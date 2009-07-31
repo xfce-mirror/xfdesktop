@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-26 01:15+0100\n"
+"POT-Creation-Date: 2009-07-30 23:17-0700\n"
 "PO-Revision-Date: 2009-06-14 02:51+0800\n"
 "Last-Translator: Hunt Xu <huntxu@live.cn>\n"
 "Language-Team: Chinese <xfce-i18n@xfce.org>\n"
@@ -19,86 +19,86 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../common/xfdesktop-common.c:87 ../common/xfdesktop-common.c:191
+#: ../common/xfdesktop-common.c:95 ../common/xfdesktop-common.c:199
 #, c-format
 msgid "Backdrop list file is not valid"
 msgstr "背景列表文件名无效"
 
-#: ../panel-plugin/desktop-menu-plugin.c:653
+#: ../panel-plugin/desktop-menu-plugin.c:639
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "无法启动 xfce4 菜单编辑器: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:676
+#: ../panel-plugin/desktop-menu-plugin.c:662
 msgid "Select Icon"
 msgstr "选择图标"
 
-#: ../panel-plugin/desktop-menu-plugin.c:678
+#: ../panel-plugin/desktop-menu-plugin.c:664
 msgid "Select Menu File"
 msgstr "选择菜单文件"
 
-#: ../panel-plugin/desktop-menu-plugin.c:705
+#: ../panel-plugin/desktop-menu-plugin.c:691
 msgid "All Files"
 msgstr "所有文件"
 
-#: ../panel-plugin/desktop-menu-plugin.c:712
+#: ../panel-plugin/desktop-menu-plugin.c:698
 msgid "Image Files"
 msgstr "图像文件"
 
-#: ../panel-plugin/desktop-menu-plugin.c:715
+#: ../panel-plugin/desktop-menu-plugin.c:701
 msgid "Menu Files"
 msgstr "菜单文件"
 
-#: ../panel-plugin/desktop-menu-plugin.c:740
+#: ../panel-plugin/desktop-menu-plugin.c:726
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Xfce 菜单"
 
-#: ../panel-plugin/desktop-menu-plugin.c:752
+#: ../panel-plugin/desktop-menu-plugin.c:738
 msgid "Button"
 msgstr "按钮"
 
-#: ../panel-plugin/desktop-menu-plugin.c:765
+#: ../panel-plugin/desktop-menu-plugin.c:751
 msgid "Button _title:"
 msgstr "按钮标题(_T)："
 
-#: ../panel-plugin/desktop-menu-plugin.c:778
+#: ../panel-plugin/desktop-menu-plugin.c:764
 msgid "_Show title in button"
 msgstr "在按钮中显示标题(_S)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:785
+#: ../panel-plugin/desktop-menu-plugin.c:771
 msgid "Menu File"
 msgstr "菜单文件"
 
-#: ../panel-plugin/desktop-menu-plugin.c:797
+#: ../panel-plugin/desktop-menu-plugin.c:783
 msgid "Use default _desktop menu file"
 msgstr "使用默认桌面菜单文件(_D)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:806
+#: ../panel-plugin/desktop-menu-plugin.c:792
 msgid "Use _custom menu file:"
 msgstr "使用自定义菜单文件(_C)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:847
+#: ../panel-plugin/desktop-menu-plugin.c:833
 msgid "_Edit Menu"
 msgstr "编辑菜单(_M)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:854
+#: ../panel-plugin/desktop-menu-plugin.c:840
 msgid "Icons"
 msgstr "图标"
 
-#: ../panel-plugin/desktop-menu-plugin.c:866
+#: ../panel-plugin/desktop-menu-plugin.c:852
 msgid "_Button icon:"
 msgstr "按钮图标(_B)："
 
-#: ../panel-plugin/desktop-menu-plugin.c:880
+#: ../panel-plugin/desktop-menu-plugin.c:866
 msgid "Show _icons in menu"
 msgstr "在菜单中显示图标(_I)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:915
+#: ../panel-plugin/desktop-menu-plugin.c:901
 msgid "There is already a panel menu registered for this screen"
 msgstr "这个屏幕已经注册了一个面板菜单"
 
-#: ../panel-plugin/desktop-menu-plugin.c:1030
+#: ../panel-plugin/desktop-menu-plugin.c:1016
 msgid "Edit Menu"
 msgstr "编辑菜单"
 
@@ -106,76 +106,209 @@ msgstr "编辑菜单"
 msgid "Shows a menu containing categories of installed applications"
 msgstr "显示包含已安装程序分类目录的菜单"
 
-#: ../src/main.c:231
+#. no need to escape markup; it's already done for us
+#: ../settings/main.c:162
+#, c-format
+msgid ""
+"%s\n"
+"<i>Size: %dx%d</i>"
+msgstr ""
+"%s\n"
+"<i>尺寸: %dx%d</i>"
+
+#: ../settings/main.c:272 ../src/xfdesktop-special-file-icon.c:259
+msgid "Home"
+msgstr "Home"
+
+#: ../settings/main.c:274
+msgid "Filesystem"
+msgstr "文件系统"
+
+#: ../settings/main.c:276
+msgid "Trash"
+msgstr "回收站"
+
+#: ../settings/main.c:278
+msgid "Removable Devices"
+msgstr "可移动设备"
+
+#: ../settings/main.c:458
+#, c-format
+msgid "Cannot create backdrop list \"%s\""
+msgstr "无法创建背景列表 \"%s\""
+
+#: ../settings/main.c:462 ../settings/main.c:779
+msgid "Backdrop List Error"
+msgstr "背景列表错误"
+
+#: ../settings/main.c:487
+msgid "Create/Load Backdrop List"
+msgstr "创建/加载背景列表"
+
+#: ../settings/main.c:511
+#, c-format
+msgid ""
+"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr "“%s”是无效背景列表文件，要覆盖吗？"
+
+#: ../settings/main.c:516
+msgid "Invalid List File"
+msgstr "无效列表文件"
+
+#: ../settings/main.c:519
+msgid "Overwriting the file will cause its contents to be lost."
+msgstr "覆盖后以前文件的内容将丢失。"
+
+#: ../settings/main.c:521
+msgid "Replace"
+msgstr "替换"
+
+#: ../settings/main.c:775
+#, c-format
+msgid "Failed to write backdrop list to \"%s\""
+msgstr "无法将背景列表写入 \"%s\"。"
+
+#: ../settings/main.c:802
+msgid "Add Image File(s)"
+msgstr "添加图像文件(s)"
+
+#: ../settings/main.c:811
+msgid "Image files"
+msgstr "图像文件"
+
+#: ../settings/main.c:816
+msgid "All files"
+msgstr "所有文件"
+
+#: ../settings/main.c:1250
+#, c-format
+msgid "Screen %d, Monitor %d (%s)"
+msgstr "屏幕 %d，显示器 %d (%s)"
+
+#: ../settings/main.c:1255
+#, c-format
+msgid "Screen %d, Monitor %d"
+msgstr "屏幕 %d，显示器 %d"
+
+#: ../settings/main.c:1258
+#, c-format
+msgid "Screen %d"
+msgstr "屏幕 %d"
+
+#: ../settings/main.c:1264
+#, c-format
+msgid "Monitor %d (%s)"
+msgstr "显示器 %d (%s)"
+
+#: ../settings/main.c:1269
+#, c-format
+msgid "Monitor %d"
+msgstr "显示器 %d"
+
+#: ../settings/main.c:1471
+msgid "Settings manager socket"
+msgstr "设置管理器套接字"
+
+#: ../settings/main.c:1471
+msgid "SOCKET ID"
+msgstr "套接字 ID"
+
+#: ../settings/main.c:1472
+msgid "Version information"
+msgstr "版本信息"
+
+#: ../settings/main.c:1492
+#, c-format
+msgid "Type '%s --help' for usage."
+msgstr "'%s --help' 可列出使用方法。"
+
+#: ../settings/main.c:1504
+msgid "The Xfce development team. All rights reserved."
+msgstr "Xfce 开发团队，版权所有。"
+
+#: ../settings/main.c:1505
+#, c-format
+msgid "Please report bugs to <%s>."
+msgstr "请向 <%s> 报告程序错误。"
+
+#: ../settings/main.c:1512
+msgid "Desktop Settings"
+msgstr "桌面设置"
+
+#: ../settings/main.c:1514
+msgid "Unable to contact settings server"
+msgstr "无法连到设置服务器"
+
+#: ../src/main.c:240
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "这是 %s 版本 %s， 运行于 Xfce %s。\n"
 
-#: ../src/main.c:233
+#: ../src/main.c:242
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "依 GTK+ %d.%d.%d 编译, 链接到 GTK+ %d.%d.%d。"
 
-#: ../src/main.c:237
+#: ../src/main.c:246
 #, c-format
 msgid "Build options:\n"
 msgstr "编译选项：\n"
 
-#: ../src/main.c:238
+#: ../src/main.c:247
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    桌面菜单：     %s\n"
 
-#: ../src/main.c:240 ../src/main.c:247 ../src/main.c:254
+#: ../src/main.c:249 ../src/main.c:256 ../src/main.c:263
 msgid "enabled"
 msgstr "启用"
 
-#: ../src/main.c:242 ../src/main.c:249 ../src/main.c:256
+#: ../src/main.c:251 ../src/main.c:258 ../src/main.c:265
 msgid "disabled"
 msgstr "禁用"
 
-#: ../src/main.c:245
+#: ../src/main.c:254
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    桌面图标：      %s\n"
 
-#: ../src/main.c:252
+#: ../src/main.c:261
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    桌面文件图标：   %s\n"
 
-#: ../src/main.c:281
+#: ../src/main.c:290
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s：未知选项： %s\n"
 
-#: ../src/main.c:282
+#: ../src/main.c:291
 #, c-format
 msgid "Options are:\n"
 msgstr "选项为：\n"
 
-#: ../src/main.c:283
+#: ../src/main.c:292
 #, c-format
 msgid "    --reload      Reload all settings, refresh image list\n"
 msgstr "    --reload    重新载入全部设置，刷新图像列表\n"
 
-#: ../src/main.c:284
+#: ../src/main.c:293
 #, c-format
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    --menu    弹出菜单 (在鼠标当前位置)\n"
 
-#: ../src/main.c:285
+#: ../src/main.c:294
 #, c-format
 msgid ""
 "    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    --windowlist    弹出窗口列表 (在鼠标当前位置)\n"
 
-#: ../src/main.c:286
+#: ../src/main.c:295
 #, c-format
 msgid "    --quit        Cause xfdesktop to quit\n"
 msgstr "     --quit        退出 xfdesktop\n"
 
-#: ../src/main.c:307
+#: ../src/main.c:316
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s 没有运行。\n"
@@ -221,12 +354,12 @@ msgstr "移除工作区(_R) “%s”"
 msgid "Desktop"
 msgstr "桌面"
 
-#: ../src/xfce-desktop.c:1009
+#: ../src/xfce-desktop.c:1010
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "无法从背景列表文件 \"%s\" 中加载图片"
 
-#: ../src/xfce-desktop.c:1011
+#: ../src/xfce-desktop.c:1012
 msgid "Desktop Error"
 msgstr "桌面错误"
 
@@ -393,7 +526,7 @@ msgid "_Open in New Window"
 msgstr "从新窗口中打开(_O)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1718
-#: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:560
+#: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:561
 msgid "_Open"
 msgstr "打开(_O)"
 
@@ -442,7 +575,7 @@ msgid "Desktop _Settings..."
 msgstr "桌面设置(_S)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2065
-#: ../src/xfdesktop-volume-icon.c:606
+#: ../src/xfdesktop-volume-icon.c:610
 msgid "_Properties..."
 msgstr "属性(_P)..."
 
@@ -600,19 +733,15 @@ msgstr ""
 "修改： %s\n"
 "大小： %s"
 
-#: ../src/xfdesktop-regular-file-icon.c:520
-#: ../src/xfdesktop-regular-file-icon.c:584
+#: ../src/xfdesktop-regular-file-icon.c:535
+#: ../src/xfdesktop-regular-file-icon.c:599
 msgid "Error"
 msgstr "错误"
 
-#: ../src/xfdesktop-regular-file-icon.c:581
+#: ../src/xfdesktop-regular-file-icon.c:596
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "重命名 \"%s\" 为 \"%s\" 失败。"
-
-#: ../src/xfdesktop-special-file-icon.c:259 ../settings/main.c:267
-msgid "Home"
-msgstr "Home"
 
 #. FIXME: also display # of items in trash
 #: ../src/xfdesktop-special-file-icon.c:482
@@ -680,17 +809,17 @@ msgstr "无法弹出 \"%s\"："
 msgid "Eject Failed"
 msgstr "弹出失败"
 
-#: ../src/xfdesktop-volume-icon.c:576
-msgid "E_ject Volume"
-msgstr "弹出卷(_J)"
-
-#: ../src/xfdesktop-volume-icon.c:586
+#: ../src/xfdesktop-volume-icon.c:578
 msgid "_Unmount Volume"
 msgstr "卸载卷(_U)"
 
-#: ../src/xfdesktop-volume-icon.c:589
+#: ../src/xfdesktop-volume-icon.c:581
 msgid "_Mount Volume"
 msgstr "挂载卷(_M)"
+
+#: ../src/xfdesktop-volume-icon.c:595
+msgid "E_ject Volume"
+msgstr "弹出卷(_J)"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
 msgid "Accessories"
@@ -763,6 +892,15 @@ msgstr "未分类应用程序"
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:2
 msgid "Other"
 msgstr "其它"
+
+#: ../modules/menu/directory-data/xfce-science.directory.in.h:1
+msgid "Science"
+msgstr "科学"
+
+#: ../modules/menu/directory-data/xfce-science.directory.in.h:2
+#, fuzzy
+msgid "Scientific software"
+msgstr "教育软件"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
 msgid "Screensaver applets"
@@ -843,135 +981,6 @@ msgstr "浏览网页"
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:2
 msgid "Web Browser"
 msgstr "网络浏览器"
-
-#. no need to escape markup; it's already done for us
-#: ../settings/main.c:157
-#, c-format
-msgid ""
-"%s\n"
-"<i>Size: %dx%d</i>"
-msgstr ""
-"%s\n"
-"<i>尺寸: %dx%d</i>"
-
-#: ../settings/main.c:269
-msgid "Filesystem"
-msgstr "文件系统"
-
-#: ../settings/main.c:271
-msgid "Trash"
-msgstr "回收站"
-
-#: ../settings/main.c:273
-msgid "Removable Devices"
-msgstr "可移动设备"
-
-#: ../settings/main.c:426
-#, c-format
-msgid "Cannot create backdrop list \"%s\""
-msgstr "无法创建背景列表 \"%s\""
-
-#: ../settings/main.c:430 ../settings/main.c:789
-msgid "Backdrop List Error"
-msgstr "背景列表错误"
-
-#: ../settings/main.c:455
-msgid "Create/Load Backdrop List"
-msgstr "创建/加载背景列表"
-
-#: ../settings/main.c:479
-#, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr "“%s”是无效背景列表文件，要覆盖吗？"
-
-#: ../settings/main.c:484
-msgid "Invalid List File"
-msgstr "无效列表文件"
-
-#: ../settings/main.c:487
-msgid "Overwriting the file will cause its contents to be lost."
-msgstr "覆盖后以前文件的内容将丢失。"
-
-#: ../settings/main.c:489
-msgid "Replace"
-msgstr "替换"
-
-#: ../settings/main.c:785
-#, c-format
-msgid "Failed to write backdrop list to \"%s\""
-msgstr "无法将背景列表写入 \"%s\"。"
-
-#: ../settings/main.c:812
-msgid "Add Image File(s)"
-msgstr "添加图像文件(s)"
-
-#: ../settings/main.c:821
-msgid "Image files"
-msgstr "图像文件"
-
-#: ../settings/main.c:826
-msgid "All files"
-msgstr "所有文件"
-
-#: ../settings/main.c:1120
-#, c-format
-msgid "Screen %d, Monitor %d (%s)"
-msgstr "屏幕 %d，显示器 %d (%s)"
-
-#: ../settings/main.c:1125
-#, c-format
-msgid "Screen %d, Monitor %d"
-msgstr "屏幕 %d，显示器 %d"
-
-#: ../settings/main.c:1128
-#, c-format
-msgid "Screen %d"
-msgstr "屏幕 %d"
-
-#: ../settings/main.c:1134
-#, c-format
-msgid "Monitor %d (%s)"
-msgstr "显示器 %d (%s)"
-
-#: ../settings/main.c:1139
-#, c-format
-msgid "Monitor %d"
-msgstr "显示器 %d"
-
-#: ../settings/main.c:1354
-msgid "Settings manager socket"
-msgstr "设置管理器套接字"
-
-#: ../settings/main.c:1354
-msgid "SOCKET ID"
-msgstr "套接字 ID"
-
-#: ../settings/main.c:1355
-msgid "Version information"
-msgstr "版本信息"
-
-#: ../settings/main.c:1375
-#, c-format
-msgid "Type '%s --help' for usage."
-msgstr "'%s --help' 可列出使用方法。"
-
-#: ../settings/main.c:1387
-msgid "The Xfce development team. All rights reserved."
-msgstr "Xfce 开发团队，版权所有。"
-
-#: ../settings/main.c:1388
-#, c-format
-msgid "Please report bugs to <%s>."
-msgstr "请向 <%s> 报告程序错误。"
-
-#: ../settings/main.c:1395
-msgid "Desktop Settings"
-msgstr "桌面设置"
-
-#: ../settings/main.c:1397
-msgid "Unable to contact settings server"
-msgstr "无法连到设置服务器"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop "
@@ -1240,13 +1249,11 @@ msgstr "无(_N)"
 msgid "_Single image"
 msgstr "单个图片(_S)"
 
-#: ../settings/xfdesktop-settings.glade.h:71
-msgid "gtk-close"
-msgstr "gtk-close"
+#~ msgid "gtk-close"
+#~ msgstr "gtk-close"
 
-#: ../settings/xfdesktop-settings.glade.h:72
-msgid "gtk-help"
-msgstr "gtk-help"
+#~ msgid "gtk-help"
+#~ msgstr "gtk-help"
 
 #~ msgid "Add menu entry"
 #~ msgstr "添加菜单条目"
@@ -1686,9 +1693,6 @@ msgstr "gtk-help"
 
 #~ msgid "Use _system font size"
 #~ msgstr "使用系统字体大小(_S)"
-
-#~ msgid "Science"
-#~ msgstr "科学"
 
 #~ msgid "Des_ktop"
 #~ msgstr "桌面(_K)"

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-26 01:15+0100\n"
+"POT-Creation-Date: 2009-07-30 23:17-0700\n"
 "PO-Revision-Date: 2009-02-11 04:59+0200\n"
 "Last-Translator: Gökmen Görgen <gkmngrgn@gmail.com>\n"
 "Language-Team: Turkish <turkce@pardus.org.tr>\n"
@@ -25,87 +25,86 @@ msgstr ""
 "X-Poedit-Country: TURKEY\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: ../common/xfdesktop-common.c:87
-#: ../common/xfdesktop-common.c:191
+#: ../common/xfdesktop-common.c:95 ../common/xfdesktop-common.c:199
 #, c-format
 msgid "Backdrop list file is not valid"
 msgstr "Arkaplan listesi dosyası geçersiz"
 
-#: ../panel-plugin/desktop-menu-plugin.c:653
+#: ../panel-plugin/desktop-menu-plugin.c:639
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "xfce4-menueditor başlatılamıyor: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:676
+#: ../panel-plugin/desktop-menu-plugin.c:662
 msgid "Select Icon"
 msgstr "Simge Seç"
 
-#: ../panel-plugin/desktop-menu-plugin.c:678
+#: ../panel-plugin/desktop-menu-plugin.c:664
 msgid "Select Menu File"
 msgstr "Menü Dosyası Seç"
 
-#: ../panel-plugin/desktop-menu-plugin.c:705
+#: ../panel-plugin/desktop-menu-plugin.c:691
 msgid "All Files"
 msgstr "Tüm Dosyalar"
 
-#: ../panel-plugin/desktop-menu-plugin.c:712
+#: ../panel-plugin/desktop-menu-plugin.c:698
 msgid "Image Files"
 msgstr "Resim Dosyaları"
 
-#: ../panel-plugin/desktop-menu-plugin.c:715
+#: ../panel-plugin/desktop-menu-plugin.c:701
 msgid "Menu Files"
 msgstr "Menü Dosyaları"
 
-#: ../panel-plugin/desktop-menu-plugin.c:740
+#: ../panel-plugin/desktop-menu-plugin.c:726
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Xfce Menüsü"
 
-#: ../panel-plugin/desktop-menu-plugin.c:752
+#: ../panel-plugin/desktop-menu-plugin.c:738
 msgid "Button"
 msgstr "Düğme"
 
-#: ../panel-plugin/desktop-menu-plugin.c:765
+#: ../panel-plugin/desktop-menu-plugin.c:751
 msgid "Button _title:"
 msgstr "Düğme _başlığı:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:778
+#: ../panel-plugin/desktop-menu-plugin.c:764
 msgid "_Show title in button"
 msgstr "_Düğmede başlığı göster"
 
-#: ../panel-plugin/desktop-menu-plugin.c:785
+#: ../panel-plugin/desktop-menu-plugin.c:771
 msgid "Menu File"
 msgstr "Menü Dosyası"
 
-#: ../panel-plugin/desktop-menu-plugin.c:797
+#: ../panel-plugin/desktop-menu-plugin.c:783
 msgid "Use default _desktop menu file"
 msgstr "Öntanımlı _masaüstü menü dosyasını kullan"
 
-#: ../panel-plugin/desktop-menu-plugin.c:806
+#: ../panel-plugin/desktop-menu-plugin.c:792
 msgid "Use _custom menu file:"
 msgstr "Şimdiki _menü dosyasını kullan"
 
-#: ../panel-plugin/desktop-menu-plugin.c:847
+#: ../panel-plugin/desktop-menu-plugin.c:833
 msgid "_Edit Menu"
 msgstr "Menüyü _Düzenle"
 
-#: ../panel-plugin/desktop-menu-plugin.c:854
+#: ../panel-plugin/desktop-menu-plugin.c:840
 msgid "Icons"
 msgstr "Simgeler"
 
-#: ../panel-plugin/desktop-menu-plugin.c:866
+#: ../panel-plugin/desktop-menu-plugin.c:852
 msgid "_Button icon:"
 msgstr "_Düğme simgesi:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:880
+#: ../panel-plugin/desktop-menu-plugin.c:866
 msgid "Show _icons in menu"
 msgstr "Menüde _simge göster"
 
-#: ../panel-plugin/desktop-menu-plugin.c:915
+#: ../panel-plugin/desktop-menu-plugin.c:901
 msgid "There is already a panel menu registered for this screen"
 msgstr "Bu ekran için zaten bir panel menüsü kayıt edilmiş"
 
-#: ../panel-plugin/desktop-menu-plugin.c:1030
+#: ../panel-plugin/desktop-menu-plugin.c:1016
 msgid "Edit Menu"
 msgstr "Menüyü Düzenle"
 
@@ -113,79 +112,211 @@ msgstr "Menüyü Düzenle"
 msgid "Shows a menu containing categories of installed applications"
 msgstr "Yüklenen uygulamalarının kategorilerini içeren menüyü göster"
 
-#: ../src/main.c:231
+#. no need to escape markup; it's already done for us
+#: ../settings/main.c:162
+#, c-format
+msgid ""
+"%s\n"
+"<i>Size: %dx%d</i>"
+msgstr ""
+"%s\n"
+"<i>Boyut: %dx%d</i>"
+
+#: ../settings/main.c:272 ../src/xfdesktop-special-file-icon.c:259
+msgid "Home"
+msgstr "Ev"
+
+#: ../settings/main.c:274
+msgid "Filesystem"
+msgstr "Dosya sistemi"
+
+#: ../settings/main.c:276
+msgid "Trash"
+msgstr "Çöp"
+
+#: ../settings/main.c:278
+msgid "Removable Devices"
+msgstr "Çıkartılabilir Aygıt"
+
+#: ../settings/main.c:458
+#, c-format
+msgid "Cannot create backdrop list \"%s\""
+msgstr "Arka plan listesi oluşturulamadı: \"%s\""
+
+#: ../settings/main.c:462 ../settings/main.c:779
+msgid "Backdrop List Error"
+msgstr "Zemin Listesi Hatası"
+
+#: ../settings/main.c:487
+msgid "Create/Load Backdrop List"
+msgstr "Arka plan listesi oluştur"
+
+#: ../settings/main.c:511
+#, c-format
+msgid ""
+"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr ""
+"\"%s\" dosyası geçerli zemin dosyası değil. Üzerine yazmak istediğinize emin "
+"misiniz?"
+
+#: ../settings/main.c:516
+msgid "Invalid List File"
+msgstr "Geçersiz Liste Dosyaları"
+
+#: ../settings/main.c:519
+msgid "Overwriting the file will cause its contents to be lost."
+msgstr "Dosyanın üstüne yazmak veri kayıplarına sebep olabilir"
+
+#: ../settings/main.c:521
+msgid "Replace"
+msgstr "Değiştir"
+
+#: ../settings/main.c:775
+#, c-format
+msgid "Failed to write backdrop list to \"%s\""
+msgstr "\"%s\" alanına zemin listesi yazılamadı"
+
+#: ../settings/main.c:802
+msgid "Add Image File(s)"
+msgstr "Resim Dosyaları Ekle"
+
+#: ../settings/main.c:811
+msgid "Image files"
+msgstr "Resim dosyaları"
+
+#: ../settings/main.c:816
+msgid "All files"
+msgstr "Tüm dosyalar"
+
+#: ../settings/main.c:1250
+#, c-format
+msgid "Screen %d, Monitor %d (%s)"
+msgstr "Ekran %d, Monitör %d (%s)"
+
+#: ../settings/main.c:1255
+#, c-format
+msgid "Screen %d, Monitor %d"
+msgstr "Ekran %d, Monitör %d"
+
+#: ../settings/main.c:1258
+#, c-format
+msgid "Screen %d"
+msgstr "Ekran %d"
+
+#: ../settings/main.c:1264
+#, c-format
+msgid "Monitor %d (%s)"
+msgstr "Ekran %d (%s)"
+
+#: ../settings/main.c:1269
+#, c-format
+msgid "Monitor %d"
+msgstr "Monitör %d"
+
+#: ../settings/main.c:1471
+msgid "Settings manager socket"
+msgstr "Ayarlar yöneticisi yuvası"
+
+#: ../settings/main.c:1471
+msgid "SOCKET ID"
+msgstr "YUVA ID'Sİ"
+
+#: ../settings/main.c:1472
+msgid "Version information"
+msgstr "Sürüm bilgisi"
+
+#: ../settings/main.c:1492
+#, c-format
+msgid "Type '%s --help' for usage."
+msgstr "Kullanım için '%s --help' yazın."
+
+#: ../settings/main.c:1504
+msgid "The Xfce development team. All rights reserved."
+msgstr "Xfce geliştirici takımı. Tüm hakları saklıdır."
+
+#: ../settings/main.c:1505
+#, c-format
+msgid "Please report bugs to <%s>."
+msgstr "Lütfen hataları bize bildirin: <%s>."
+
+#: ../settings/main.c:1512
+msgid "Desktop Settings"
+msgstr "Masaüstü Ayarları"
+
+#: ../settings/main.c:1514
+msgid "Unable to contact settings server"
+msgstr "Xfce ayar sunucusu ile bağlantı kurulamıyor"
+
+#: ../src/main.c:240
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Bu %s sürümü %s, Xfce %s masaüstünde çalışıyor.\n"
 
-#: ../src/main.c:233
+#: ../src/main.c:242
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "GTK+ %d.%d.%d ile oluşturulmuş, GTK+ %d.%d.%d ile linklenmiş"
 
-#: ../src/main.c:237
+#: ../src/main.c:246
 #, c-format
 msgid "Build options:\n"
 msgstr "Derleme seçenekleri:\n"
 
-#: ../src/main.c:238
+#: ../src/main.c:247
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Masaüstü Menüsü:           %s\n"
 
-#: ../src/main.c:240
-#: ../src/main.c:247
-#: ../src/main.c:254
+#: ../src/main.c:249 ../src/main.c:256 ../src/main.c:263
 msgid "enabled"
 msgstr "etkin"
 
-#: ../src/main.c:242
-#: ../src/main.c:249
-#: ../src/main.c:256
+#: ../src/main.c:251 ../src/main.c:258 ../src/main.c:265
 msgid "disabled"
 msgstr "etkin değil"
 
-#: ../src/main.c:245
+#: ../src/main.c:254
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Masaüstü Simgeleri:        %s\n"
 
-#: ../src/main.c:252
+#: ../src/main.c:261
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Masaüstü Dosya Simgeleri:  %s\n"
 
-#: ../src/main.c:281
+#: ../src/main.c:290
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: Bilinmeyen seçenek: %s\n"
 
-#: ../src/main.c:282
+#: ../src/main.c:291
 #, c-format
 msgid "Options are:\n"
 msgstr "Seçenekler:\n"
 
-#: ../src/main.c:283
+#: ../src/main.c:292
 #, c-format
 msgid "    --reload      Reload all settings, refresh image list\n"
 msgstr "    --reload      Tüm ayarları geri yükle, resim listesini güncelle\n"
 
-#: ../src/main.c:284
+#: ../src/main.c:293
 #, c-format
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    --menu        Menüyü aç (fare imleci konumunda)\n"
 
-#: ../src/main.c:285
+#: ../src/main.c:294
 #, c-format
-msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
+msgid ""
+"    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr "    --windowlist  Pencere listesini aç (fare imleci konumunda)\n"
 
-#: ../src/main.c:286
+#: ../src/main.c:295
 #, c-format
 msgid "    --quit        Cause xfdesktop to quit\n"
 msgstr "    --quit        Xfdesktop'ın kapanmasına neden olur\n"
 
-#: ../src/main.c:307
+#: ../src/main.c:316
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s çalışmıyor.\n"
@@ -213,8 +344,7 @@ msgstr "Çalışma Alanı %d"
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Çalışma alanı %d</i>"
 
-#: ../src/windowlist.c:370
-#: ../src/windowlist.c:373
+#: ../src/windowlist.c:370 ../src/windowlist.c:373
 msgid "_Add Workspace"
 msgstr "Çalışma Alanı _Ekle"
 
@@ -228,24 +358,25 @@ msgstr "Çalışma alanı %d'yi _Kaldır"
 msgid "_Remove Workspace '%s'"
 msgstr "Çalışma alanı '%s'i _Kaldır"
 
-#: ../src/xfce-desktop.c:742
-#: ../settings/xfdesktop-settings.glade.h:20
+#: ../src/xfce-desktop.c:742 ../settings/xfdesktop-settings.glade.h:20
 msgid "Desktop"
 msgstr "Masaüstü"
 
-#: ../src/xfce-desktop.c:1009
+#: ../src/xfce-desktop.c:1010
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "\"%s\" dosyasının listeden yüklenmesi olanaksız:"
 
-#: ../src/xfce-desktop.c:1011
+#: ../src/xfce-desktop.c:1012
 msgid "Desktop Error"
 msgstr "Masaüstü Hatası"
 
 #: ../src/xfdesktop-file-icon-manager.c:478
 #, c-format
-msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr "Xfdesktop, masaüstü öğrelerini saklamak için \"%s\" dizinini oluşturamıyor:"
+msgid ""
+"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr ""
+"Xfdesktop, masaüstü öğrelerini saklamak için \"%s\" dizinini oluşturamıyor:"
 
 #: ../src/xfdesktop-file-icon-manager.c:480
 #: ../src/xfdesktop-file-icon-manager.c:491
@@ -255,8 +386,12 @@ msgstr "Dizin Oluşturma Başarısız"
 
 #: ../src/xfdesktop-file-icon-manager.c:489
 #, c-format
-msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
-msgstr "Xfdesktop, masaüstü öğrelerini tutmak için \"%s\" dizinini oluşturamıyor; çünkü o bir dizin değil."
+msgid ""
+"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
+"folder."
+msgstr ""
+"Xfdesktop, masaüstü öğrelerini tutmak için \"%s\" dizinini oluşturamıyor; "
+"çünkü o bir dizin değil."
 
 #: ../src/xfdesktop-file-icon-manager.c:493
 msgid "Please delete or rename the file."
@@ -283,8 +418,7 @@ msgstr "Yeniden adlandır"
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "\"%s\" öğesini silmek istediğinizden emin misiniz?"
 
-#: ../src/xfdesktop-file-icon-manager.c:679
-#: ../src/xfdesktop-file-utils.c:55
+#: ../src/xfdesktop-file-icon-manager.c:679 ../src/xfdesktop-file-utils.c:55
 msgid "Question"
 msgstr "Soru"
 
@@ -304,8 +438,7 @@ msgstr "Çoklu Dosyaları Sil"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:917
-#: ../src/xfdesktop-file-icon-manager.c:1633
-#: ../src/xfdesktop-file-icon.c:140
+#: ../src/xfdesktop-file-icon-manager.c:1633 ../src/xfdesktop-file-icon.c:140
 #: ../src/xfdesktop-file-utils.c:353
 #, c-format
 msgid "Unable to launch \"%s\":"
@@ -314,8 +447,7 @@ msgstr "\"%s\" çalıştırılamıyor:"
 #: ../src/xfdesktop-file-icon-manager.c:919
 #: ../src/xfdesktop-file-icon-manager.c:977
 #: ../src/xfdesktop-file-icon-manager.c:1240
-#: ../src/xfdesktop-file-icon-manager.c:1634
-#: ../src/xfdesktop-file-icon.c:142
+#: ../src/xfdesktop-file-icon-manager.c:1634 ../src/xfdesktop-file-icon.c:142
 #: ../src/xfdesktop-file-utils.c:356
 msgid "Launch Error"
 msgstr "Çalıştırma Hatası"
@@ -324,9 +456,10 @@ msgstr "Çalıştırma Hatası"
 msgid "The application chooser could not be opened."
 msgstr "Uygulama seçicisi açılamadı."
 
-#: ../src/xfdesktop-file-icon-manager.c:979
-#: ../src/xfdesktop-file-utils.c:358
-msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
+#: ../src/xfdesktop-file-icon-manager.c:979 ../src/xfdesktop-file-utils.c:358
+msgid ""
+"This feature requires a file manager service present (such as that supplied "
+"by Thunar)."
 msgstr "Bu özellik dosya yöneticisi servisi gerektirir (Thunar gibi)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1137
@@ -345,8 +478,12 @@ msgid "Unable to create folder named \"%s\":"
 msgstr "\"%s\" adında dizin oluşturulamıyor:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1242
-msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
-msgstr "Masaüstü üzerinde çalıştırıcıları düzenlemek/oluştumak için gerekli olan \"exo-desktop-item-edit\" çalıştırılamadı."
+msgid ""
+"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
+"edit launchers and links on the desktop."
+msgstr ""
+"Masaüstü üzerinde çalıştırıcıları düzenlemek/oluştumak için gerekli olan "
+"\"exo-desktop-item-edit\" çalıştırılamadı."
 
 #: ../src/xfdesktop-file-icon-manager.c:1275
 msgid "Create New Folder"
@@ -402,8 +539,7 @@ msgid "_Open in New Window"
 msgstr "Y_eni Pencerede Aç"
 
 #: ../src/xfdesktop-file-icon-manager.c:1718
-#: ../src/xfdesktop-special-file-icon.c:633
-#: ../src/xfdesktop-volume-icon.c:560
+#: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:561
 msgid "_Open"
 msgstr "_Aç"
 
@@ -452,7 +588,7 @@ msgid "Desktop _Settings..."
 msgstr "Masaüstü _Ayarları"
 
 #: ../src/xfdesktop-file-icon-manager.c:2065
-#: ../src/xfdesktop-volume-icon.c:606
+#: ../src/xfdesktop-volume-icon.c:610
 msgid "_Properties..."
 msgstr "_Seçenekler..."
 
@@ -514,8 +650,7 @@ msgstr "Bağlantı Hedefi:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:251
 #: ../src/xfdesktop-file-properties-dialog.c:410
-#: ../src/xfdesktop-volume-icon.c:476
-#: ../src/xfdesktop-volume-icon.c:482
+#: ../src/xfdesktop-volume-icon.c:476 ../src/xfdesktop-volume-icon.c:482
 msgid "(unknown)"
 msgstr "(bilinmeyen)"
 
@@ -611,20 +746,15 @@ msgstr ""
 "Değiştirme: %s\n"
 "Büyüklük: %s"
 
-#: ../src/xfdesktop-regular-file-icon.c:520
-#: ../src/xfdesktop-regular-file-icon.c:584
+#: ../src/xfdesktop-regular-file-icon.c:535
+#: ../src/xfdesktop-regular-file-icon.c:599
 msgid "Error"
 msgstr "Hata"
 
-#: ../src/xfdesktop-regular-file-icon.c:581
+#: ../src/xfdesktop-regular-file-icon.c:596
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "\"%s\" öğesi \"%s\" adına dönüştürülemiyor:"
-
-#: ../src/xfdesktop-special-file-icon.c:259
-#: ../settings/main.c:267
-msgid "Home"
-msgstr "Ev"
 
 #. FIXME: also display # of items in trash
 #: ../src/xfdesktop-special-file-icon.c:482
@@ -640,8 +770,12 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "Xfce Çöp servisi ile bağlantı kurulamıyor"
 
 #: ../src/xfdesktop-special-file-icon.c:518
-msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
-msgstr "Xfce Çöp servisini destekleyen bir dosya yöneticisinin (Thunar gibi) kurulu olduğundan emin olun"
+msgid ""
+"Make sure you have a file manager installed that supports the Xfce Trash "
+"service, such as Thunar."
+msgstr ""
+"Xfce Çöp servisini destekleyen bir dosya yöneticisinin (Thunar gibi) kurulu "
+"olduğundan emin olun"
 
 #: ../src/xfdesktop-special-file-icon.c:651
 msgid "_Empty Trash"
@@ -690,17 +824,17 @@ msgstr "\"%s\" çıkartılamıyor:"
 msgid "Eject Failed"
 msgstr "Çıkartma Başarısız"
 
-#: ../src/xfdesktop-volume-icon.c:576
-msgid "E_ject Volume"
-msgstr "Diski _Çıkar"
-
-#: ../src/xfdesktop-volume-icon.c:586
+#: ../src/xfdesktop-volume-icon.c:578
 msgid "_Unmount Volume"
 msgstr "Diski _Ayır"
 
-#: ../src/xfdesktop-volume-icon.c:589
+#: ../src/xfdesktop-volume-icon.c:581
 msgid "_Mount Volume"
 msgstr "Birim _Bağla"
+
+#: ../src/xfdesktop-volume-icon.c:595
+msgid "E_ject Volume"
+msgstr "Diski _Çıkar"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
 msgid "Accessories"
@@ -773,6 +907,15 @@ msgstr "Diğer kategorilerde yer almamış uygulamalar"
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:2
 msgid "Other"
 msgstr "Diğer"
+
+#: ../modules/menu/directory-data/xfce-science.directory.in.h:1
+msgid "Science"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-science.directory.in.h:2
+#, fuzzy
+msgid "Scientific software"
+msgstr "Eğitimsel uygulama"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
 msgid "Screensaver applets"
@@ -853,135 +996,6 @@ msgstr "İnternette gez"
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:2
 msgid "Web Browser"
 msgstr "İnternet Tarayıcısı"
-
-#. no need to escape markup; it's already done for us
-#: ../settings/main.c:157
-#, c-format
-msgid ""
-"%s\n"
-"<i>Size: %dx%d</i>"
-msgstr ""
-"%s\n"
-"<i>Boyut: %dx%d</i>"
-
-#: ../settings/main.c:269
-msgid "Filesystem"
-msgstr "Dosya sistemi"
-
-#: ../settings/main.c:271
-msgid "Trash"
-msgstr "Çöp"
-
-#: ../settings/main.c:273
-msgid "Removable Devices"
-msgstr "Çıkartılabilir Aygıt"
-
-#: ../settings/main.c:426
-#, c-format
-msgid "Cannot create backdrop list \"%s\""
-msgstr "Arka plan listesi oluşturulamadı: \"%s\""
-
-#: ../settings/main.c:430
-#: ../settings/main.c:789
-msgid "Backdrop List Error"
-msgstr "Zemin Listesi Hatası"
-
-#: ../settings/main.c:455
-msgid "Create/Load Backdrop List"
-msgstr "Arka plan listesi oluştur"
-
-#: ../settings/main.c:479
-#, c-format
-msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr "\"%s\" dosyası geçerli zemin dosyası değil. Üzerine yazmak istediğinize emin misiniz?"
-
-#: ../settings/main.c:484
-msgid "Invalid List File"
-msgstr "Geçersiz Liste Dosyaları"
-
-#: ../settings/main.c:487
-msgid "Overwriting the file will cause its contents to be lost."
-msgstr "Dosyanın üstüne yazmak veri kayıplarına sebep olabilir"
-
-#: ../settings/main.c:489
-msgid "Replace"
-msgstr "Değiştir"
-
-#: ../settings/main.c:785
-#, c-format
-msgid "Failed to write backdrop list to \"%s\""
-msgstr "\"%s\" alanına zemin listesi yazılamadı"
-
-#: ../settings/main.c:812
-msgid "Add Image File(s)"
-msgstr "Resim Dosyaları Ekle"
-
-#: ../settings/main.c:821
-msgid "Image files"
-msgstr "Resim dosyaları"
-
-#: ../settings/main.c:826
-msgid "All files"
-msgstr "Tüm dosyalar"
-
-#: ../settings/main.c:1120
-#, c-format
-msgid "Screen %d, Monitor %d (%s)"
-msgstr "Ekran %d, Monitör %d (%s)"
-
-#: ../settings/main.c:1125
-#, c-format
-msgid "Screen %d, Monitor %d"
-msgstr "Ekran %d, Monitör %d"
-
-#: ../settings/main.c:1128
-#, c-format
-msgid "Screen %d"
-msgstr "Ekran %d"
-
-#: ../settings/main.c:1134
-#, c-format
-msgid "Monitor %d (%s)"
-msgstr "Ekran %d (%s)"
-
-#: ../settings/main.c:1139
-#, c-format
-msgid "Monitor %d"
-msgstr "Monitör %d"
-
-#: ../settings/main.c:1354
-msgid "Settings manager socket"
-msgstr "Ayarlar yöneticisi yuvası"
-
-#: ../settings/main.c:1354
-msgid "SOCKET ID"
-msgstr "YUVA ID'Sİ"
-
-#: ../settings/main.c:1355
-msgid "Version information"
-msgstr "Sürüm bilgisi"
-
-#: ../settings/main.c:1375
-#, c-format
-msgid "Type '%s --help' for usage."
-msgstr "Kullanım için '%s --help' yazın."
-
-#: ../settings/main.c:1387
-msgid "The Xfce development team. All rights reserved."
-msgstr "Xfce geliştirici takımı. Tüm hakları saklıdır."
-
-#: ../settings/main.c:1388
-#, c-format
-msgid "Please report bugs to <%s>."
-msgstr "Lütfen hataları bize bildirin: <%s>."
-
-#: ../settings/main.c:1395
-msgid "Desktop Settings"
-msgstr "Masaüstü Ayarları"
-
-#: ../settings/main.c:1397
-msgid "Unable to contact settings server"
-msgstr "Xfce ayar sunucusu ile bağlantı kurulamıyor"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop "
@@ -1192,7 +1206,8 @@ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr "Eğimin sağ veya alt rengini belirtin"
 
 #: ../settings/xfdesktop-settings.glade.h:57
-msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgid ""
+"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
 msgstr "Eğimin üst, sol veya yoğun rengini ayarlayın"
 
 #: ../settings/xfdesktop-settings.glade.h:58
@@ -1204,7 +1219,9 @@ msgid "Specify the style of the color drawn behind the backdrop image"
 msgstr "Arkaplan resminin gerisinden süzülen rengin biçemini belirleyin"
 
 #: ../settings/xfdesktop-settings.glade.h:60
-msgid "Specify the transparency level for the rounded label drawn behind the icon text"
+msgid ""
+"Specify the transparency level for the rounded label drawn behind the icon "
+"text"
 msgstr "Simgelerin altındaki metinlerin saydamlık seviyesini belirleyin"
 
 #: ../settings/xfdesktop-settings.glade.h:61
@@ -1247,80 +1264,111 @@ msgstr "_Hiçbiri"
 msgid "_Single image"
 msgstr "_Tek Resim"
 
-#: ../settings/xfdesktop-settings.glade.h:71
-msgid "gtk-close"
-msgstr "gtk-close"
+#~ msgid "gtk-close"
+#~ msgstr "gtk-close"
 
-#: ../settings/xfdesktop-settings.glade.h:72
-msgid "gtk-help"
-msgstr "gtk-help"
+#~ msgid "gtk-help"
+#~ msgstr "gtk-help"
 
 #~ msgid "Add menu entry"
 #~ msgstr "Menu girdisi ekle"
+
 #~ msgid "Type:"
 #~ msgstr "Tür:"
+
 #~ msgid "Title"
 #~ msgstr "Başlık"
+
 #~ msgid "Submenu"
 #~ msgstr "Altı menü"
+
 #~ msgid "Launcher"
 #~ msgstr "Başlatıcı"
+
 #~ msgid "Separator"
 #~ msgstr "Ayırıcı"
+
 #~ msgid "Quit"
 #~ msgstr "Çık"
+
 #~ msgid "Command:"
 #~ msgstr "Komut:"
+
 #~ msgid "Icon:"
 #~ msgstr "Simge:"
+
 #~ msgid "No icon"
 #~ msgstr "Simge yok"
+
 #~ msgid "Themed icon:"
 #~ msgstr "Temalı simge:"
+
 #~ msgid "Select icon"
 #~ msgstr "Simge seç"
+
 #~ msgid "Use startup _notification"
 #~ msgstr "Başlangıç _uyarısı kullan"
+
 #~ msgid "Run in _terminal"
 #~ msgstr "_Uçbirim içinde başlat"
+
 #~ msgid "Select command"
 #~ msgstr "Komut seç"
+
 #~ msgid "Executable Files"
 #~ msgstr "Çalıştırılabilir Dosyalar"
+
 #~ msgid "Perl Scripts"
 #~ msgstr "Perl Betikleri"
+
 #~ msgid "Python Scripts"
 #~ msgstr "Python Betikleri"
+
 #~ msgid "Ruby Scripts"
 #~ msgstr "Ruby Betikleri"
+
 #~ msgid "Shell Scripts"
 #~ msgstr "Kabuk Betikleri"
+
 #~ msgid "Add external menu entry"
 #~ msgstr "Harici menü girdisi ekle"
+
 #~ msgid "File"
 #~ msgstr "Dosya"
+
 #~ msgid "Source:"
 #~ msgstr "Kaynak:"
+
 #~ msgid "Select external menu"
 #~ msgstr "Harici menü seç"
+
 #~ msgid "Style:"
 #~ msgstr "Düzen:"
+
 #~ msgid "Simple"
 #~ msgstr "Basit"
+
 #~ msgid "Multilevel"
 #~ msgstr "Çok Katmanlı"
+
 #~ msgid "_Unique entries only"
 #~ msgstr "Sadece _farklı girdiler"
+
 #~ msgid "Edit menu entry"
 #~ msgstr "Menü girdisini düzenle"
+
 #~ msgid "Edit external menu entry"
 #~ msgstr "Harici menü girdisini düzenle"
+
 #~ msgid "Xfce4-MenuEditor"
 #~ msgstr "Xfce4-Menü Düzenleyicisi"
+
 #~ msgid "Menueditor Warning"
 #~ msgstr "Menü Düzenleyici Uyarısı"
+
 #~ msgid "xfce4-menueditor is deprecated"
 #~ msgstr "xfce4-menueditor artık kullanılmıyor"
+
 #~ msgid ""
 #~ "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
 #~ "edit the new menu file format.  You may continue and edit an old-style "
@@ -1329,136 +1377,200 @@ msgstr "gtk-help"
 #~ "Xfce'nin menü sistemi yenilendi ve xfce4-menueditor yeni menü biçimini "
 #~ "düzenleyemiyor.  Devam edebilir ve eski menü dosyasını "
 #~ "düzenleyebilirsiniz; ya da çıkabilirsiniz."
+
 #~ msgid "Continue"
 #~ msgstr "Devam"
+
 #~ msgid "_File"
 #~ msgstr "_Dosya"
+
 #~ msgid "_New"
 #~ msgstr "_Yeni"
+
 #~ msgid "Create a new empty menu"
 #~ msgstr "Yeni boş bir menü oluştur"
+
 #~ msgid "Open existing menu"
 #~ msgstr "Var olan menüyü aç"
+
 #~ msgid "Open _default menu"
 #~ msgstr "_Öntanımlı menüyü aç"
+
 #~ msgid "Open default menu"
 #~ msgstr "Öntanımlı menüyü aç"
+
 #~ msgid "_Save"
 #~ msgstr "_Kaydet"
+
 #~ msgid "Save modifications"
 #~ msgstr "Değişiklikleri kaydet"
+
 #~ msgid "Save _as..."
 #~ msgstr "_Farklı kaydet..."
+
 #~ msgid "Save menu under a given name"
 #~ msgstr "Menüyü verilen isim altında kaydet"
+
 #~ msgid "_Close"
 #~ msgstr "_Kapat"
+
 #~ msgid "Close menu"
 #~ msgstr "Menüyü kapat"
+
 #~ msgid "_Quit"
 #~ msgstr "Çı_k"
+
 #~ msgid "Quit Xfce4-Menueditor"
 #~ msgstr "Xfce4-Menü düzenleyicisinden çık"
+
 #~ msgid "_Edit"
 #~ msgstr "_Düzenle"
+
 #~ msgid "_Edit entry"
 #~ msgstr "Girdiyi _düzenle"
+
 #~ msgid "Edit selected entry"
 #~ msgstr "Seçilen girdiyi düzenle"
+
 #~ msgid "_Add entry"
 #~ msgstr "Girdi _ekle"
+
 #~ msgid "Add a new entry in the menu"
 #~ msgstr "Menüye yeni bir girdi ekle"
+
 #~ msgid "Add _external"
 #~ msgstr "_Harici menü ekle"
+
 #~ msgid "Add an external entry"
 #~ msgstr "Harici bir girdi ekle"
+
 #~ msgid "_Remove entry"
 #~ msgstr "Girdiyi _Sil"
+
 #~ msgid "Remove entry"
 #~ msgstr "Girdiyi sil"
+
 #~ msgid "_Up"
 #~ msgstr "_Yukarı"
+
 #~ msgid "Move entry up"
 #~ msgstr "Girdiyi yukarı çıkar"
+
 #~ msgid "_Down"
 #~ msgstr "_Aşağı"
+
 #~ msgid "Move entry down"
 #~ msgstr "Girdiyi aşağı kaydır"
+
 #~ msgid "_Help"
 #~ msgstr "_Yardım"
+
 #~ msgid "_About..."
 #~ msgstr "_Hakkında.."
+
 #~ msgid "Show informations about xfce4-menueditor"
 #~ msgstr "Xfce4-menü düzenleyicisi hakkında bilgileri göster"
+
 #~ msgid "Collapse all"
 #~ msgstr "Hepsini daralt"
+
 #~ msgid "Collapse all menu entries"
 #~ msgstr "Tüm menü girdilerini daralt"
+
 #~ msgid "Expand all"
 #~ msgstr "Hepsini genişlet"
+
 #~ msgid "Expand all menu entries"
 #~ msgstr "Tüm menü girdilerini genişlet"
+
 #~ msgid "Name"
 #~ msgstr "İsim"
+
 #~ msgid "Command"
 #~ msgstr "Komut"
+
 #~ msgid "Hidden"
 #~ msgstr "Gizli"
+
 #~ msgid "Are you sure you want to close the current menu?"
 #~ msgstr "Şu an ki menüyü kapatmak istediğinizden emin misiniz?"
+
 #~ msgid "Do you want to save before closing the file?"
 #~ msgstr "Dosyayı kapatmadan önce kaydetmek ister misiniz?"
+
 #~ msgid "Do you want to save before opening an other menu ?"
 #~ msgstr "Başka bir menü açmadan önce kayıt etmek ister misiniz?"
+
 #~ msgid "Ignore modifications"
 #~ msgstr "Değişiklikleri göz ardı et"
+
 #~ msgid "Open menu file"
 #~ msgstr "Menü dosyası aç"
+
 #~ msgid "Do you want to save before opening the default menu ?"
 #~ msgstr "Öntanımlı menüyü açmadan önce kaydetmek ister misiniz?"
+
 #~ msgid "Save menu file as"
 #~ msgstr "Menü dosyasını farklı kaydet"
+
 #~ msgid "Do you want to save before closing the menu ?"
 #~ msgstr "Menüyü kapatmadan önce kaydetmek ister misiniz?"
+
 #~ msgid "quit"
 #~ msgstr "çık"
+
 #~ msgid "--- separator ---"
 #~ msgstr "--- ayırıcı ---"
+
 #~ msgid "--- include ---"
 #~ msgstr "--- içer ---"
+
 #~ msgid "system"
 #~ msgstr "sistem"
+
 #~ msgid "Do you want to move the item into the submenu?"
 #~ msgstr "Bileşeni alt mebüye taşımak ister misiniz?"
+
 #~ msgid "A menu editor for Xfce4"
 #~ msgstr "Xfce4 için menü düzenleyicisi"
+
 #~ msgid "Author/Maintainer"
 #~ msgstr "Yazar/Sürüm Yöneticisi"
+
 #~ msgid "Contributor"
 #~ msgstr "Katkıcı"
+
 #~ msgid "Icon designer"
 #~ msgstr "Simge tasarımcısı"
+
 #~ msgid "You have modified the menu, do you want to save it before quitting ?"
 #~ msgstr ""
 #~ "Menüyü değiştirdiniz, çıkmadan önce değişiklikleri kaydetmek ister "
 #~ "misiniz?"
+
 #~ msgid "Forget modifications"
 #~ msgstr "Değişiklikleri göz ardı et"
+
 #~ msgid "Unable to open the menu file %s in write mode"
 #~ msgstr "%s menü dosyası yazılabilir kipte açılamıyor"
+
 #~ msgid "Graphical tool for editing the Xfce 4 menu"
 #~ msgstr "Xfce 4 menüsünü düzenlemek için arayüz"
+
 #~ msgid "Menu Editor"
 #~ msgstr "Menü Düzenleyici"
+
 #~ msgid "Xfce 4 Menu Editor"
 #~ msgstr "Xfce4 Menü Düzenleyicisi"
+
 #~ msgid "Settings for the Xfce 4 Desktop Manager"
 #~ msgstr "Xfce 4 Masaüstü Yöneticisi için Ayarlar"
+
 #~ msgid "Xfce 4 Desktop Settings"
 #~ msgstr "Xfce 4 Masaüstü Ayarları"
+
 #~ msgid "Show windows on each workspace in _submenus"
 #~ msgstr "Alt _menüler içerisinde her çalışma alanında pencereleri göster"
+
 #~ msgid "Use _Xfce to manage the desktop"
 #~ msgstr "Xfce'nin masaüstünü _yönetmesine izin ver"
-

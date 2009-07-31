@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-26 01:15+0100\n"
+"POT-Creation-Date: 2009-07-30 23:17-0700\n"
 "PO-Revision-Date: 2007-09-24 15:13+0900\n"
 "Last-Translator: ByungHyun Choi <byunghyun.choi@debianusers.org>\n"
 "Language-Team: xfce4-users-kr-i18n <xfce4-users-kr-i18n@lists.sourceforge."
@@ -16,86 +16,86 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../common/xfdesktop-common.c:87 ../common/xfdesktop-common.c:191
+#: ../common/xfdesktop-common.c:95 ../common/xfdesktop-common.c:199
 #, fuzzy, c-format
 msgid "Backdrop list file is not valid"
 msgstr "배경화면 목록 선택"
 
-#: ../panel-plugin/desktop-menu-plugin.c:653
+#: ../panel-plugin/desktop-menu-plugin.c:639
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Xfce4 메뉴 편집기 기동 실패: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:676
+#: ../panel-plugin/desktop-menu-plugin.c:662
 msgid "Select Icon"
 msgstr "아이콘 선택"
 
-#: ../panel-plugin/desktop-menu-plugin.c:678
+#: ../panel-plugin/desktop-menu-plugin.c:664
 msgid "Select Menu File"
 msgstr "메뉴 화일 선택"
 
-#: ../panel-plugin/desktop-menu-plugin.c:705
+#: ../panel-plugin/desktop-menu-plugin.c:691
 msgid "All Files"
 msgstr "모든 화일"
 
-#: ../panel-plugin/desktop-menu-plugin.c:712
+#: ../panel-plugin/desktop-menu-plugin.c:698
 msgid "Image Files"
 msgstr "그림 화일"
 
-#: ../panel-plugin/desktop-menu-plugin.c:715
+#: ../panel-plugin/desktop-menu-plugin.c:701
 msgid "Menu Files"
 msgstr "메뉴 화일"
 
-#: ../panel-plugin/desktop-menu-plugin.c:740
+#: ../panel-plugin/desktop-menu-plugin.c:726
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Xfce 메뉴"
 
-#: ../panel-plugin/desktop-menu-plugin.c:752
+#: ../panel-plugin/desktop-menu-plugin.c:738
 msgid "Button"
 msgstr "버튼"
 
-#: ../panel-plugin/desktop-menu-plugin.c:765
+#: ../panel-plugin/desktop-menu-plugin.c:751
 msgid "Button _title:"
 msgstr "버튼 이름(_t):"
 
-#: ../panel-plugin/desktop-menu-plugin.c:778
+#: ../panel-plugin/desktop-menu-plugin.c:764
 msgid "_Show title in button"
 msgstr "버튼에 이름보이기(_S)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:785
+#: ../panel-plugin/desktop-menu-plugin.c:771
 msgid "Menu File"
 msgstr "메뉴 화일"
 
-#: ../panel-plugin/desktop-menu-plugin.c:797
+#: ../panel-plugin/desktop-menu-plugin.c:783
 msgid "Use default _desktop menu file"
 msgstr "기본 데스크탑 메뉴를 사용합니다(_d)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:806
+#: ../panel-plugin/desktop-menu-plugin.c:792
 msgid "Use _custom menu file:"
 msgstr "사용자 메뉴화일 적용(_c):"
 
-#: ../panel-plugin/desktop-menu-plugin.c:847
+#: ../panel-plugin/desktop-menu-plugin.c:833
 msgid "_Edit Menu"
 msgstr "편집 메뉴(_E)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:854
+#: ../panel-plugin/desktop-menu-plugin.c:840
 msgid "Icons"
 msgstr "아이콘"
 
-#: ../panel-plugin/desktop-menu-plugin.c:866
+#: ../panel-plugin/desktop-menu-plugin.c:852
 msgid "_Button icon:"
 msgstr "버튼 아이콘(_B):"
 
-#: ../panel-plugin/desktop-menu-plugin.c:880
+#: ../panel-plugin/desktop-menu-plugin.c:866
 msgid "Show _icons in menu"
 msgstr "메뉴에 아이콘 보이기(_i)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:915
+#: ../panel-plugin/desktop-menu-plugin.c:901
 msgid "There is already a panel menu registered for this screen"
 msgstr "패널 메뉴가 이 화면에 이미 등록되어 있습니다."
 
-#: ../panel-plugin/desktop-menu-plugin.c:1030
+#: ../panel-plugin/desktop-menu-plugin.c:1016
 msgid "Edit Menu"
 msgstr "편집 메뉴"
 
@@ -103,78 +103,219 @@ msgstr "편집 메뉴"
 msgid "Shows a menu containing categories of installed applications"
 msgstr "설치된 프로그램을 분류별로 메뉴에 보이기"
 
-#: ../src/main.c:231
+#. no need to escape markup; it's already done for us
+#: ../settings/main.c:162
+#, c-format
+msgid ""
+"%s\n"
+"<i>Size: %dx%d</i>"
+msgstr ""
+
+#: ../settings/main.c:272 ../src/xfdesktop-special-file-icon.c:259
+msgid "Home"
+msgstr "홈"
+
+#: ../settings/main.c:274
+#, fuzzy
+msgid "Filesystem"
+msgstr "시스템"
+
+#: ../settings/main.c:276
+#, fuzzy
+msgid "Trash"
+msgstr "쓰레기통 오류"
+
+#: ../settings/main.c:278
+msgid "Removable Devices"
+msgstr ""
+
+#: ../settings/main.c:458
+#, fuzzy, c-format
+msgid "Cannot create backdrop list \"%s\""
+msgstr "배경화면 목록을 만듭니다."
+
+#: ../settings/main.c:462 ../settings/main.c:779
+#, fuzzy
+msgid "Backdrop List Error"
+msgstr "배경화면 목록"
+
+#: ../settings/main.c:487
+#, fuzzy
+msgid "Create/Load Backdrop List"
+msgstr "배경화면 목록을 만듭니다."
+
+#: ../settings/main.c:511
+#, c-format
+msgid ""
+"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr ""
+
+#: ../settings/main.c:516
+#, fuzzy
+msgid "Invalid List File"
+msgstr "목록 화일"
+
+#: ../settings/main.c:519
+msgid "Overwriting the file will cause its contents to be lost."
+msgstr ""
+
+#: ../settings/main.c:521
+#, fuzzy
+msgid "Replace"
+msgstr "이름 변경"
+
+#: ../settings/main.c:775
+#, fuzzy, c-format
+msgid "Failed to write backdrop list to \"%s\""
+msgstr "\"%s\"을(를) \"%s\"(으)로 변경하시 못 했습니다."
+
+#: ../settings/main.c:802
+#, fuzzy
+msgid "Add Image File(s)"
+msgstr "그림 화일"
+
+#: ../settings/main.c:811
+msgid "Image files"
+msgstr "그림 화일"
+
+#: ../settings/main.c:816
+#, fuzzy
+msgid "All files"
+msgstr "모든 화일"
+
+#: ../settings/main.c:1250
+#, fuzzy, c-format
+msgid "Screen %d, Monitor %d (%s)"
+msgstr "화면 %d, 모니터 %d"
+
+#: ../settings/main.c:1255
+#, c-format
+msgid "Screen %d, Monitor %d"
+msgstr "화면 %d, 모니터 %d"
+
+#: ../settings/main.c:1258
+#, c-format
+msgid "Screen %d"
+msgstr "화면 %d"
+
+#: ../settings/main.c:1264
+#, c-format
+msgid "Monitor %d (%s)"
+msgstr ""
+
+#: ../settings/main.c:1269
+#, fuzzy, c-format
+msgid "Monitor %d"
+msgstr "화면 %d, 모니터 %d"
+
+#: ../settings/main.c:1471
+msgid "Settings manager socket"
+msgstr ""
+
+#: ../settings/main.c:1471
+msgid "SOCKET ID"
+msgstr ""
+
+#: ../settings/main.c:1472
+#, fuzzy
+msgid "Version information"
+msgstr "정보"
+
+#: ../settings/main.c:1492
+#, c-format
+msgid "Type '%s --help' for usage."
+msgstr ""
+
+#: ../settings/main.c:1504
+msgid "The Xfce development team. All rights reserved."
+msgstr ""
+
+#: ../settings/main.c:1505
+#, c-format
+msgid "Please report bugs to <%s>."
+msgstr ""
+
+#: ../settings/main.c:1512
+msgid "Desktop Settings"
+msgstr "작업공간 설정"
+
+#: ../settings/main.c:1514
+#, fuzzy
+msgid "Unable to contact settings server"
+msgstr "쓰레기통 서비스에 연결하지 못했습니다."
+
+#: ../src/main.c:240
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "%s 버전 %s입니다. Xfce %s에서 동작 중입니다.\n"
 
-#: ../src/main.c:233
+#: ../src/main.c:242
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "GTK+ %d.%d.%d로 만들고, GTK+ %d.%d.%d로 링크했습니다."
 
-#: ../src/main.c:237
+#: ../src/main.c:246
 #, c-format
 msgid "Build options:\n"
 msgstr "빌드 옵션:\n"
 
-#: ../src/main.c:238
+#: ../src/main.c:247
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    데스크탑 메뉴:       %s\n"
 
-#: ../src/main.c:240 ../src/main.c:247 ../src/main.c:254
+#: ../src/main.c:249 ../src/main.c:256 ../src/main.c:263
 msgid "enabled"
 msgstr "사용함"
 
-#: ../src/main.c:242 ../src/main.c:249 ../src/main.c:256
+#: ../src/main.c:251 ../src/main.c:258 ../src/main.c:265
 msgid "disabled"
 msgstr "사용안함"
 
-#: ../src/main.c:245
+#: ../src/main.c:254
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    데스크탑 아이콘:     %s\n"
 
-#: ../src/main.c:252
+#: ../src/main.c:261
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    데스크탑 화일 아이콘:  %s\n"
 
-#: ../src/main.c:281
+#: ../src/main.c:290
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: 모르는 옵션: %s\n"
 
-#: ../src/main.c:282
+#: ../src/main.c:291
 #, c-format
 msgid "Options are:\n"
 msgstr "옵션은 다음과 같니다:\n"
 
-#: ../src/main.c:283
+#: ../src/main.c:292
 #, c-format
 msgid "    --reload      Reload all settings, refresh image list\n"
 msgstr ""
 "    -reload      모든 설정을 새로 읽어 오고, 그림 목록을 새로 고칩니다.\n"
 
-#: ../src/main.c:284
+#: ../src/main.c:293
 #, c-format
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    -menu        메뉴를 보여줍니다(마우스의 현재 위치에 보여줍니다).\n"
 
-#: ../src/main.c:285
+#: ../src/main.c:294
 #, c-format
 msgid ""
 "    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
 "    -windowlist  창 목록을 보여줍니다(마우스의 현재 위치에 보여줍니다).\n"
 
-#: ../src/main.c:286
+#: ../src/main.c:295
 #, c-format
 msgid "    --quit        Cause xfdesktop to quit\n"
 msgstr "   -quit        xfdesop을 종료하도록 합니다.\n"
 
-#: ../src/main.c:307
+#: ../src/main.c:316
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s는(은) 실행 중이지 않습니다.\n"
@@ -220,12 +361,12 @@ msgstr "작업공간 '%s' 삭제(_R)"
 msgid "Desktop"
 msgstr "데스크탑"
 
-#: ../src/xfce-desktop.c:1009
+#: ../src/xfce-desktop.c:1010
 #, fuzzy, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "화일 \"%s\"을(를) 만들지 못 했습니다.:"
 
-#: ../src/xfce-desktop.c:1011
+#: ../src/xfce-desktop.c:1012
 #, fuzzy
 msgid "Desktop Error"
 msgstr "데스크탑"
@@ -401,7 +542,7 @@ msgid "_Open in New Window"
 msgstr "새로운 창 열기(_O)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1718
-#: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:560
+#: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:561
 msgid "_Open"
 msgstr "열기(_O)"
 
@@ -451,7 +592,7 @@ msgid "Desktop _Settings..."
 msgstr "작업공간 설정(_S)"
 
 #: ../src/xfdesktop-file-icon-manager.c:2065
-#: ../src/xfdesktop-volume-icon.c:606
+#: ../src/xfdesktop-volume-icon.c:610
 msgid "_Properties..."
 msgstr "속성(_P)"
 
@@ -609,19 +750,15 @@ msgstr ""
 "수정:%s\n"
 "크리: %s"
 
-#: ../src/xfdesktop-regular-file-icon.c:520
-#: ../src/xfdesktop-regular-file-icon.c:584
+#: ../src/xfdesktop-regular-file-icon.c:535
+#: ../src/xfdesktop-regular-file-icon.c:599
 msgid "Error"
 msgstr "오류"
 
-#: ../src/xfdesktop-regular-file-icon.c:581
+#: ../src/xfdesktop-regular-file-icon.c:596
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "\"%s\"을(를) \"%s\"(으)로 변경하시 못 했습니다."
-
-#: ../src/xfdesktop-special-file-icon.c:259 ../settings/main.c:267
-msgid "Home"
-msgstr "홈"
 
 #. FIXME: also display # of items in trash
 #: ../src/xfdesktop-special-file-icon.c:482
@@ -688,17 +825,17 @@ msgstr "\"%s\" 추출 실패:"
 msgid "Eject Failed"
 msgstr "추출 실패"
 
-#: ../src/xfdesktop-volume-icon.c:576
-msgid "E_ject Volume"
-msgstr "추출(_j)"
-
-#: ../src/xfdesktop-volume-icon.c:586
+#: ../src/xfdesktop-volume-icon.c:578
 msgid "_Unmount Volume"
 msgstr "언마운트(_U)"
 
-#: ../src/xfdesktop-volume-icon.c:589
+#: ../src/xfdesktop-volume-icon.c:581
 msgid "_Mount Volume"
 msgstr "마운트(_M)"
+
+#: ../src/xfdesktop-volume-icon.c:595
+msgid "E_ject Volume"
+msgstr "추출(_j)"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
 msgid "Accessories"
@@ -771,6 +908,15 @@ msgstr "분류되지 않은 프로그램"
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:2
 msgid "Other"
 msgstr "기타"
+
+#: ../modules/menu/directory-data/xfce-science.directory.in.h:1
+msgid "Science"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-science.directory.in.h:2
+#, fuzzy
+msgid "Scientific software"
+msgstr "교육용 소프트웨어"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
 msgid "Screensaver applets"
@@ -851,143 +997,6 @@ msgstr "인터넷의 바다로"
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:2
 msgid "Web Browser"
 msgstr "웹 브라우져"
-
-#. no need to escape markup; it's already done for us
-#: ../settings/main.c:157
-#, c-format
-msgid ""
-"%s\n"
-"<i>Size: %dx%d</i>"
-msgstr ""
-
-#: ../settings/main.c:269
-#, fuzzy
-msgid "Filesystem"
-msgstr "시스템"
-
-#: ../settings/main.c:271
-#, fuzzy
-msgid "Trash"
-msgstr "쓰레기통 오류"
-
-#: ../settings/main.c:273
-msgid "Removable Devices"
-msgstr ""
-
-#: ../settings/main.c:426
-#, fuzzy, c-format
-msgid "Cannot create backdrop list \"%s\""
-msgstr "배경화면 목록을 만듭니다."
-
-#: ../settings/main.c:430 ../settings/main.c:789
-#, fuzzy
-msgid "Backdrop List Error"
-msgstr "배경화면 목록"
-
-#: ../settings/main.c:455
-#, fuzzy
-msgid "Create/Load Backdrop List"
-msgstr "배경화면 목록을 만듭니다."
-
-#: ../settings/main.c:479
-#, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
-
-#: ../settings/main.c:484
-#, fuzzy
-msgid "Invalid List File"
-msgstr "목록 화일"
-
-#: ../settings/main.c:487
-msgid "Overwriting the file will cause its contents to be lost."
-msgstr ""
-
-#: ../settings/main.c:489
-#, fuzzy
-msgid "Replace"
-msgstr "이름 변경"
-
-#: ../settings/main.c:785
-#, fuzzy, c-format
-msgid "Failed to write backdrop list to \"%s\""
-msgstr "\"%s\"을(를) \"%s\"(으)로 변경하시 못 했습니다."
-
-#: ../settings/main.c:812
-#, fuzzy
-msgid "Add Image File(s)"
-msgstr "그림 화일"
-
-#: ../settings/main.c:821
-msgid "Image files"
-msgstr "그림 화일"
-
-#: ../settings/main.c:826
-#, fuzzy
-msgid "All files"
-msgstr "모든 화일"
-
-#: ../settings/main.c:1120
-#, fuzzy, c-format
-msgid "Screen %d, Monitor %d (%s)"
-msgstr "화면 %d, 모니터 %d"
-
-#: ../settings/main.c:1125
-#, c-format
-msgid "Screen %d, Monitor %d"
-msgstr "화면 %d, 모니터 %d"
-
-#: ../settings/main.c:1128
-#, c-format
-msgid "Screen %d"
-msgstr "화면 %d"
-
-#: ../settings/main.c:1134
-#, c-format
-msgid "Monitor %d (%s)"
-msgstr ""
-
-#: ../settings/main.c:1139
-#, fuzzy, c-format
-msgid "Monitor %d"
-msgstr "화면 %d, 모니터 %d"
-
-#: ../settings/main.c:1354
-msgid "Settings manager socket"
-msgstr ""
-
-#: ../settings/main.c:1354
-msgid "SOCKET ID"
-msgstr ""
-
-#: ../settings/main.c:1355
-#, fuzzy
-msgid "Version information"
-msgstr "정보"
-
-#: ../settings/main.c:1375
-#, c-format
-msgid "Type '%s --help' for usage."
-msgstr ""
-
-#: ../settings/main.c:1387
-msgid "The Xfce development team. All rights reserved."
-msgstr ""
-
-#: ../settings/main.c:1388
-#, c-format
-msgid "Please report bugs to <%s>."
-msgstr ""
-
-#: ../settings/main.c:1395
-msgid "Desktop Settings"
-msgstr "작업공간 설정"
-
-#: ../settings/main.c:1397
-#, fuzzy
-msgid "Unable to contact settings server"
-msgstr "쓰레기통 서비스에 연결하지 못했습니다."
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 #, fuzzy
@@ -1260,14 +1269,6 @@ msgstr "없음"
 
 #: ../settings/xfdesktop-settings.glade.h:70
 msgid "_Single image"
-msgstr ""
-
-#: ../settings/xfdesktop-settings.glade.h:71
-msgid "gtk-close"
-msgstr ""
-
-#: ../settings/xfdesktop-settings.glade.h:72
-msgid "gtk-help"
 msgstr ""
 
 #~ msgid "Add menu entry"

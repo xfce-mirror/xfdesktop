@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-26 01:15+0100\n"
+"POT-Creation-Date: 2009-07-30 23:17-0700\n"
 "PO-Revision-Date: 2009-01-19 18:51+0100\n"
 "Last-Translator: Jérôme Guelfucci <jeromeg@xfce.org>\n"
 "Language-Team: French <xfce-i18n@xfce.org>\n"
@@ -19,86 +19,86 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../common/xfdesktop-common.c:87 ../common/xfdesktop-common.c:191
+#: ../common/xfdesktop-common.c:95 ../common/xfdesktop-common.c:199
 #, c-format
 msgid "Backdrop list file is not valid"
 msgstr "La liste de fonds d'écran n'est pas valide"
 
-#: ../panel-plugin/desktop-menu-plugin.c:653
+#: ../panel-plugin/desktop-menu-plugin.c:639
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Impossible de lancer xfce4-menueditor : %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:676
+#: ../panel-plugin/desktop-menu-plugin.c:662
 msgid "Select Icon"
 msgstr "Sélectionner l'icône"
 
-#: ../panel-plugin/desktop-menu-plugin.c:678
+#: ../panel-plugin/desktop-menu-plugin.c:664
 msgid "Select Menu File"
 msgstr "Sélectionner le fichier de menu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:705
+#: ../panel-plugin/desktop-menu-plugin.c:691
 msgid "All Files"
 msgstr "Tous les fichiers"
 
-#: ../panel-plugin/desktop-menu-plugin.c:712
+#: ../panel-plugin/desktop-menu-plugin.c:698
 msgid "Image Files"
 msgstr "Fichiers images"
 
-#: ../panel-plugin/desktop-menu-plugin.c:715
+#: ../panel-plugin/desktop-menu-plugin.c:701
 msgid "Menu Files"
 msgstr "Fichiers menus"
 
-#: ../panel-plugin/desktop-menu-plugin.c:740
+#: ../panel-plugin/desktop-menu-plugin.c:726
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Menu Xfce"
 
-#: ../panel-plugin/desktop-menu-plugin.c:752
+#: ../panel-plugin/desktop-menu-plugin.c:738
 msgid "Button"
 msgstr "Bouton"
 
-#: ../panel-plugin/desktop-menu-plugin.c:765
+#: ../panel-plugin/desktop-menu-plugin.c:751
 msgid "Button _title:"
 msgstr "_Titre du bouton :"
 
-#: ../panel-plugin/desktop-menu-plugin.c:778
+#: ../panel-plugin/desktop-menu-plugin.c:764
 msgid "_Show title in button"
 msgstr "_Afficher le titre dans le bouton"
 
-#: ../panel-plugin/desktop-menu-plugin.c:785
+#: ../panel-plugin/desktop-menu-plugin.c:771
 msgid "Menu File"
 msgstr "Fichier du menu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:797
+#: ../panel-plugin/desktop-menu-plugin.c:783
 msgid "Use default _desktop menu file"
 msgstr "Utiliser le fichier de menu par _défaut"
 
-#: ../panel-plugin/desktop-menu-plugin.c:806
+#: ../panel-plugin/desktop-menu-plugin.c:792
 msgid "Use _custom menu file:"
 msgstr "Utiliser un fichier de menu _personnalisé :"
 
-#: ../panel-plugin/desktop-menu-plugin.c:847
+#: ../panel-plugin/desktop-menu-plugin.c:833
 msgid "_Edit Menu"
 msgstr "_Éditer le Menu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:854
+#: ../panel-plugin/desktop-menu-plugin.c:840
 msgid "Icons"
 msgstr "Icônes"
 
-#: ../panel-plugin/desktop-menu-plugin.c:866
+#: ../panel-plugin/desktop-menu-plugin.c:852
 msgid "_Button icon:"
 msgstr "Icône du _bouton :"
 
-#: ../panel-plugin/desktop-menu-plugin.c:880
+#: ../panel-plugin/desktop-menu-plugin.c:866
 msgid "Show _icons in menu"
 msgstr "Afficher les _icônes dans le menu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:915
+#: ../panel-plugin/desktop-menu-plugin.c:901
 msgid "There is already a panel menu registered for this screen"
 msgstr "Il existe déjà un menu du panneau pour cet écran"
 
-#: ../panel-plugin/desktop-menu-plugin.c:1030
+#: ../panel-plugin/desktop-menu-plugin.c:1016
 msgid "Edit Menu"
 msgstr "Éditer le menu"
 
@@ -106,68 +106,203 @@ msgstr "Éditer le menu"
 msgid "Shows a menu containing categories of installed applications"
 msgstr "Affiche un menu contenant les catégories d'applications installées"
 
-#: ../src/main.c:231
+#. no need to escape markup; it's already done for us
+#: ../settings/main.c:162
+#, c-format
+msgid ""
+"%s\n"
+"<i>Size: %dx%d</i>"
+msgstr ""
+"%s\n"
+"<i>Taille : %dx%d</i>"
+
+#: ../settings/main.c:272 ../src/xfdesktop-special-file-icon.c:259
+msgid "Home"
+msgstr "Répertoire personnel"
+
+#: ../settings/main.c:274
+msgid "Filesystem"
+msgstr "Système de fichiers"
+
+#: ../settings/main.c:276
+msgid "Trash"
+msgstr "Corbeille"
+
+#: ../settings/main.c:278
+msgid "Removable Devices"
+msgstr "Périphériques amovibles"
+
+#: ../settings/main.c:458
+#, c-format
+msgid "Cannot create backdrop list \"%s\""
+msgstr "Impossible de créer la liste de fonds d'écrans \"%s\""
+
+#: ../settings/main.c:462 ../settings/main.c:779
+msgid "Backdrop List Error"
+msgstr "Éditeur de listes de fonds d'écran"
+
+#: ../settings/main.c:487
+msgid "Create/Load Backdrop List"
+msgstr "Créer/Charger la liste de fonds d'écrans"
+
+#: ../settings/main.c:511
+#, c-format
+msgid ""
+"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr ""
+"Le fichier de liste de fonds d'écran \"%s\" n'est pas valide. Voulez-vous "
+"l'écraser ?"
+
+#: ../settings/main.c:516
+msgid "Invalid List File"
+msgstr "Liste de fichiers non valide"
+
+#: ../settings/main.c:519
+msgid "Overwriting the file will cause its contents to be lost."
+msgstr "Écraser le fichier effacera son contenu."
+
+#: ../settings/main.c:521
+msgid "Replace"
+msgstr "Remplacer"
+
+#: ../settings/main.c:775
+#, c-format
+msgid "Failed to write backdrop list to \"%s\""
+msgstr "Impossible d'écrire la liste de fonds d'écran dans \"%s\""
+
+#: ../settings/main.c:802
+msgid "Add Image File(s)"
+msgstr "Ajouter un/des fichier(s) images"
+
+#: ../settings/main.c:811
+msgid "Image files"
+msgstr "Fichiers images"
+
+#: ../settings/main.c:816
+msgid "All files"
+msgstr "Tous les fichiers"
+
+#: ../settings/main.c:1250
+#, c-format
+msgid "Screen %d, Monitor %d (%s)"
+msgstr "Écran %d, moniteur %d (%s)"
+
+#: ../settings/main.c:1255
+#, c-format
+msgid "Screen %d, Monitor %d"
+msgstr "Écran %d, Moniteur %d"
+
+#: ../settings/main.c:1258
+#, c-format
+msgid "Screen %d"
+msgstr "Écran %d"
+
+#: ../settings/main.c:1264
+#, c-format
+msgid "Monitor %d (%s)"
+msgstr "Moniteur %d (%s)"
+
+#: ../settings/main.c:1269
+#, c-format
+msgid "Monitor %d"
+msgstr "Moniteur %d"
+
+#: ../settings/main.c:1471
+msgid "Settings manager socket"
+msgstr "Socket du gestionnaire de paramètres"
+
+#: ../settings/main.c:1471
+msgid "SOCKET ID"
+msgstr "ID SOCKET"
+
+#: ../settings/main.c:1472
+msgid "Version information"
+msgstr "Informations sur la version"
+
+#: ../settings/main.c:1492
+#, c-format
+msgid "Type '%s --help' for usage."
+msgstr "Saisissez '%s --help' pour afficher les options."
+
+#: ../settings/main.c:1504
+msgid "The Xfce development team. All rights reserved."
+msgstr "L'équipe de développement de Xfce. Tous droits réservés."
+
+#: ../settings/main.c:1505
+#, c-format
+msgid "Please report bugs to <%s>."
+msgstr "Veuillez signaler tout bogue à <%s>."
+
+#: ../settings/main.c:1512
+msgid "Desktop Settings"
+msgstr "Paramètres du Bureau"
+
+#: ../settings/main.c:1514
+msgid "Unable to contact settings server"
+msgstr "Impossible de contacter le serveur de paramètres"
+
+#: ../src/main.c:240
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Ceci est %s version %s, sur Xfce %s.\n"
 
-#: ../src/main.c:233
+#: ../src/main.c:242
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Compilé avec GTK+ %d.%d.%d, lié à GTK+ %d.%d.%d."
 
-#: ../src/main.c:237
+#: ../src/main.c:246
 #, c-format
 msgid "Build options:\n"
 msgstr "Options de compilation :\n"
 
-#: ../src/main.c:238
+#: ../src/main.c:247
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Menu du bureau:        %s\n"
 
-#: ../src/main.c:240 ../src/main.c:247 ../src/main.c:254
+#: ../src/main.c:249 ../src/main.c:256 ../src/main.c:263
 msgid "enabled"
 msgstr "activé"
 
-#: ../src/main.c:242 ../src/main.c:249 ../src/main.c:256
+#: ../src/main.c:251 ../src/main.c:258 ../src/main.c:265
 msgid "disabled"
 msgstr "désactivé"
 
-#: ../src/main.c:245
+#: ../src/main.c:254
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Icônes du bureau :        %s\n"
 
-#: ../src/main.c:252
+#: ../src/main.c:261
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Icônes de fichiers du bureau :  %s\n"
 
-#: ../src/main.c:281
+#: ../src/main.c:290
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: Option inconnue : %s\n"
 
-#: ../src/main.c:282
+#: ../src/main.c:291
 #, c-format
 msgid "Options are:\n"
 msgstr "Les options sont :\n"
 
-#: ../src/main.c:283
+#: ../src/main.c:292
 #, c-format
 msgid "    --reload      Reload all settings, refresh image list\n"
 msgstr ""
 "    --reload      Recharger tous le paramètres, rafraîchir la liste "
 "d'images\n"
 
-#: ../src/main.c:284
+#: ../src/main.c:293
 #, c-format
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 msgstr ""
 "    --menu        Afficher le menu (à la position actuelle de la souris)\n"
 
-#: ../src/main.c:285
+#: ../src/main.c:294
 #, c-format
 msgid ""
 "    --windowlist  Pop up the window list (at the current mouse position)\n"
@@ -175,12 +310,12 @@ msgstr ""
 "    --windowlist  Afficher la liste des fenêtres (à la position actuelle de "
 "la souris)\n"
 
-#: ../src/main.c:286
+#: ../src/main.c:295
 #, c-format
 msgid "    --quit        Cause xfdesktop to quit\n"
 msgstr "    --quit        Quitter xfdesktop\n"
 
-#: ../src/main.c:307
+#: ../src/main.c:316
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s n'est pas lancé.\n"
@@ -226,12 +361,12 @@ msgstr "_Supprimer l'espace de travail '%s'"
 msgid "Desktop"
 msgstr "Bureau"
 
-#: ../src/xfce-desktop.c:1009
+#: ../src/xfce-desktop.c:1010
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "Impossible de charger le fond d'écran depuis la liste \"%s\""
 
-#: ../src/xfce-desktop.c:1011
+#: ../src/xfce-desktop.c:1012
 msgid "Desktop Error"
 msgstr "Erreur du bureau"
 
@@ -406,7 +541,7 @@ msgid "_Open in New Window"
 msgstr "_Ouvrir dans une nouvelle fenêtre"
 
 #: ../src/xfdesktop-file-icon-manager.c:1718
-#: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:560
+#: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:561
 msgid "_Open"
 msgstr "_Ouvrir"
 
@@ -455,7 +590,7 @@ msgid "Desktop _Settings..."
 msgstr "Paramètres du _Bureau..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2065
-#: ../src/xfdesktop-volume-icon.c:606
+#: ../src/xfdesktop-volume-icon.c:610
 msgid "_Properties..."
 msgstr "_Propriétés..."
 
@@ -613,19 +748,15 @@ msgstr ""
 "Modifié: %s\n"
 "Taille: %s"
 
-#: ../src/xfdesktop-regular-file-icon.c:520
-#: ../src/xfdesktop-regular-file-icon.c:584
+#: ../src/xfdesktop-regular-file-icon.c:535
+#: ../src/xfdesktop-regular-file-icon.c:599
 msgid "Error"
 msgstr "Erreur"
 
-#: ../src/xfdesktop-regular-file-icon.c:581
+#: ../src/xfdesktop-regular-file-icon.c:596
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "Impossible de renommer \"%s\" en \"%s\":"
-
-#: ../src/xfdesktop-special-file-icon.c:259 ../settings/main.c:267
-msgid "Home"
-msgstr "Répertoire personnel"
 
 #. FIXME: also display # of items in trash
 #: ../src/xfdesktop-special-file-icon.c:482
@@ -695,17 +826,17 @@ msgstr "Impossible d'éjecter \"%s\" :"
 msgid "Eject Failed"
 msgstr "L'éjection a échoué"
 
-#: ../src/xfdesktop-volume-icon.c:576
-msgid "E_ject Volume"
-msgstr "É_jecter le périphérique"
-
-#: ../src/xfdesktop-volume-icon.c:586
+#: ../src/xfdesktop-volume-icon.c:578
 msgid "_Unmount Volume"
 msgstr "_Démonter le périphérique"
 
-#: ../src/xfdesktop-volume-icon.c:589
+#: ../src/xfdesktop-volume-icon.c:581
 msgid "_Mount Volume"
 msgstr "_Monter le périphérique"
+
+#: ../src/xfdesktop-volume-icon.c:595
+msgid "E_ject Volume"
+msgstr "É_jecter le périphérique"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
 msgid "Accessories"
@@ -778,6 +909,15 @@ msgstr "Applications ne correspondant pas aux autres catégories"
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:2
 msgid "Other"
 msgstr "Autre"
+
+#: ../modules/menu/directory-data/xfce-science.directory.in.h:1
+msgid "Science"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-science.directory.in.h:2
+#, fuzzy
+msgid "Scientific software"
+msgstr "Logiciels éducatifs"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
 msgid "Screensaver applets"
@@ -858,137 +998,6 @@ msgstr "Naviguer sur Internet"
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:2
 msgid "Web Browser"
 msgstr "Navigateur Internet"
-
-#. no need to escape markup; it's already done for us
-#: ../settings/main.c:157
-#, c-format
-msgid ""
-"%s\n"
-"<i>Size: %dx%d</i>"
-msgstr ""
-"%s\n"
-"<i>Taille : %dx%d</i>"
-
-#: ../settings/main.c:269
-msgid "Filesystem"
-msgstr "Système de fichiers"
-
-#: ../settings/main.c:271
-msgid "Trash"
-msgstr "Corbeille"
-
-#: ../settings/main.c:273
-msgid "Removable Devices"
-msgstr "Périphériques amovibles"
-
-#: ../settings/main.c:426
-#, c-format
-msgid "Cannot create backdrop list \"%s\""
-msgstr "Impossible de créer la liste de fonds d'écrans \"%s\""
-
-#: ../settings/main.c:430 ../settings/main.c:789
-msgid "Backdrop List Error"
-msgstr "Éditeur de listes de fonds d'écran"
-
-#: ../settings/main.c:455
-msgid "Create/Load Backdrop List"
-msgstr "Créer/Charger la liste de fonds d'écrans"
-
-#: ../settings/main.c:479
-#, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
-"Le fichier de liste de fonds d'écran \"%s\" n'est pas valide. Voulez-vous "
-"l'écraser ?"
-
-#: ../settings/main.c:484
-msgid "Invalid List File"
-msgstr "Liste de fichiers non valide"
-
-#: ../settings/main.c:487
-msgid "Overwriting the file will cause its contents to be lost."
-msgstr "Écraser le fichier effacera son contenu."
-
-#: ../settings/main.c:489
-msgid "Replace"
-msgstr "Remplacer"
-
-#: ../settings/main.c:785
-#, c-format
-msgid "Failed to write backdrop list to \"%s\""
-msgstr "Impossible d'écrire la liste de fonds d'écran dans \"%s\""
-
-#: ../settings/main.c:812
-msgid "Add Image File(s)"
-msgstr "Ajouter un/des fichier(s) images"
-
-#: ../settings/main.c:821
-msgid "Image files"
-msgstr "Fichiers images"
-
-#: ../settings/main.c:826
-msgid "All files"
-msgstr "Tous les fichiers"
-
-#: ../settings/main.c:1120
-#, c-format
-msgid "Screen %d, Monitor %d (%s)"
-msgstr "Écran %d, moniteur %d (%s)"
-
-#: ../settings/main.c:1125
-#, c-format
-msgid "Screen %d, Monitor %d"
-msgstr "Écran %d, Moniteur %d"
-
-#: ../settings/main.c:1128
-#, c-format
-msgid "Screen %d"
-msgstr "Écran %d"
-
-#: ../settings/main.c:1134
-#, c-format
-msgid "Monitor %d (%s)"
-msgstr "Moniteur %d (%s)"
-
-#: ../settings/main.c:1139
-#, c-format
-msgid "Monitor %d"
-msgstr "Moniteur %d"
-
-#: ../settings/main.c:1354
-msgid "Settings manager socket"
-msgstr "Socket du gestionnaire de paramètres"
-
-#: ../settings/main.c:1354
-msgid "SOCKET ID"
-msgstr "ID SOCKET"
-
-#: ../settings/main.c:1355
-msgid "Version information"
-msgstr "Informations sur la version"
-
-#: ../settings/main.c:1375
-#, c-format
-msgid "Type '%s --help' for usage."
-msgstr "Saisissez '%s --help' pour afficher les options."
-
-#: ../settings/main.c:1387
-msgid "The Xfce development team. All rights reserved."
-msgstr "L'équipe de développement de Xfce. Tous droits réservés."
-
-#: ../settings/main.c:1388
-#, c-format
-msgid "Please report bugs to <%s>."
-msgstr "Veuillez signaler tout bogue à <%s>."
-
-#: ../settings/main.c:1395
-msgid "Desktop Settings"
-msgstr "Paramètres du Bureau"
-
-#: ../settings/main.c:1397
-msgid "Unable to contact settings server"
-msgstr "Impossible de contacter le serveur de paramètres"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop "
@@ -1261,13 +1270,11 @@ msgstr "_Aucune"
 msgid "_Single image"
 msgstr "_Image unique"
 
-#: ../settings/xfdesktop-settings.glade.h:71
-msgid "gtk-close"
-msgstr "Fermer"
+#~ msgid "gtk-close"
+#~ msgstr "Fermer"
 
-#: ../settings/xfdesktop-settings.glade.h:72
-msgid "gtk-help"
-msgstr "Aide"
+#~ msgid "gtk-help"
+#~ msgstr "Aide"
 
 #~ msgid "Add menu entry"
 #~ msgstr "Ajouter un élément"

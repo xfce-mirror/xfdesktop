@@ -3,6 +3,7 @@
 common/xfdesktop-common.c
 panel-plugin/desktop-menu-plugin.c
 panel-plugin/xfce4-menu.desktop.in.in
+settings/main.c
 src/main.c
 src/menu.c
 src/windowlist.c
@@ -26,6 +27,7 @@ modules/menu/directory-data/xfce-multimedia.directory.in
 modules/menu/directory-data/xfce-network.directory.in
 modules/menu/directory-data/xfce-office.directory.in
 modules/menu/directory-data/xfce-other.directory.in
+modules/menu/directory-data/xfce-science.directory.in
 modules/menu/directory-data/xfce-screensavers.directory.in
 modules/menu/directory-data/xfce-settings.directory.in
 modules/menu/directory-data/xfce-system.directory.in
@@ -36,6 +38,5 @@ modules/menu/menu-data/xfce4-logout.desktop.in
 modules/menu/menu-data/xfce4-run-program.desktop.in
 modules/menu/menu-data/xfce4-terminal.desktop.in
 modules/menu/menu-data/xfce4-web-browser.desktop.in
-settings/main.c
 settings/xfce-backdrop-settings.desktop.in
 settings/xfdesktop-settings.glade

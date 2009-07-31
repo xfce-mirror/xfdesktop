@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-26 01:15+0100\n"
+"POT-Creation-Date: 2009-07-30 23:17-0700\n"
 "PO-Revision-Date: 2008-11-11 00:45+0200\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: Albanian <translation-team-sq@lists.sourceforge.net>\n"
@@ -15,86 +15,86 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.1\n"
 
-#: ../common/xfdesktop-common.c:87 ../common/xfdesktop-common.c:191
+#: ../common/xfdesktop-common.c:95 ../common/xfdesktop-common.c:199
 #, c-format
 msgid "Backdrop list file is not valid"
 msgstr ""
 
-#: ../panel-plugin/desktop-menu-plugin.c:653
+#: ../panel-plugin/desktop-menu-plugin.c:639
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "I pazoti të nisë përpunues menush xfce4: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:676
+#: ../panel-plugin/desktop-menu-plugin.c:662
 msgid "Select Icon"
 msgstr "Përzgjidhni Ikonë"
 
-#: ../panel-plugin/desktop-menu-plugin.c:678
+#: ../panel-plugin/desktop-menu-plugin.c:664
 msgid "Select Menu File"
 msgstr "Përzgjidhni Kartelë Menuje"
 
-#: ../panel-plugin/desktop-menu-plugin.c:705
+#: ../panel-plugin/desktop-menu-plugin.c:691
 msgid "All Files"
 msgstr "Tërë Kartelat"
 
-#: ../panel-plugin/desktop-menu-plugin.c:712
+#: ../panel-plugin/desktop-menu-plugin.c:698
 msgid "Image Files"
 msgstr "Kartela Pamje"
 
-#: ../panel-plugin/desktop-menu-plugin.c:715
+#: ../panel-plugin/desktop-menu-plugin.c:701
 msgid "Menu Files"
 msgstr "Kartela Menush"
 
-#: ../panel-plugin/desktop-menu-plugin.c:740
+#: ../panel-plugin/desktop-menu-plugin.c:726
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Menu Xfce"
 
-#: ../panel-plugin/desktop-menu-plugin.c:752
+#: ../panel-plugin/desktop-menu-plugin.c:738
 msgid "Button"
 msgstr "Buton"
 
-#: ../panel-plugin/desktop-menu-plugin.c:765
+#: ../panel-plugin/desktop-menu-plugin.c:751
 msgid "Button _title:"
 msgstr "Ti_tull butoni:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:778
+#: ../panel-plugin/desktop-menu-plugin.c:764
 msgid "_Show title in button"
 msgstr "_Shfaq titull në buton"
 
-#: ../panel-plugin/desktop-menu-plugin.c:785
+#: ../panel-plugin/desktop-menu-plugin.c:771
 msgid "Menu File"
 msgstr "Kartelë Menush"
 
-#: ../panel-plugin/desktop-menu-plugin.c:797
+#: ../panel-plugin/desktop-menu-plugin.c:783
 msgid "Use default _desktop menu file"
 msgstr "Përdor kartelë parazgjedhje menuje _desktopi"
 
-#: ../panel-plugin/desktop-menu-plugin.c:806
+#: ../panel-plugin/desktop-menu-plugin.c:792
 msgid "Use _custom menu file:"
 msgstr "Përdor kartelë _vetjake menush:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:847
+#: ../panel-plugin/desktop-menu-plugin.c:833
 msgid "_Edit Menu"
 msgstr "_Përpunoni Menu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:854
+#: ../panel-plugin/desktop-menu-plugin.c:840
 msgid "Icons"
 msgstr "Ikona"
 
-#: ../panel-plugin/desktop-menu-plugin.c:866
+#: ../panel-plugin/desktop-menu-plugin.c:852
 msgid "_Button icon:"
 msgstr "Ikonë _butoni:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:880
+#: ../panel-plugin/desktop-menu-plugin.c:866
 msgid "Show _icons in menu"
 msgstr "Shfaq _ikona në menu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:915
+#: ../panel-plugin/desktop-menu-plugin.c:901
 msgid "There is already a panel menu registered for this screen"
 msgstr "Ka tashmë një menu paneli të regjistruar për këtë ekran"
 
-#: ../panel-plugin/desktop-menu-plugin.c:1030
+#: ../panel-plugin/desktop-menu-plugin.c:1016
 msgid "Edit Menu"
 msgstr "Përpunoni Menu"
 
@@ -102,77 +102,209 @@ msgstr "Përpunoni Menu"
 msgid "Shows a menu containing categories of installed applications"
 msgstr "Shfaq një menu që përmban kategori zbatimesh të instaluara"
 
-#: ../src/main.c:231
+#. no need to escape markup; it's already done for us
+#: ../settings/main.c:162
+#, c-format
+msgid ""
+"%s\n"
+"<i>Size: %dx%d</i>"
+msgstr ""
+
+#: ../settings/main.c:272 ../src/xfdesktop-special-file-icon.c:259
+msgid "Home"
+msgstr "Hyrje"
+
+#: ../settings/main.c:274
+msgid "Filesystem"
+msgstr "Sistem kartelash"
+
+#: ../settings/main.c:276
+msgid "Trash"
+msgstr "Hedhurina"
+
+#: ../settings/main.c:278
+msgid "Removable Devices"
+msgstr "Pajisje të Heqshme"
+
+#: ../settings/main.c:458
+#, c-format
+msgid "Cannot create backdrop list \"%s\""
+msgstr ""
+
+#: ../settings/main.c:462 ../settings/main.c:779
+msgid "Backdrop List Error"
+msgstr ""
+
+#: ../settings/main.c:487
+msgid "Create/Load Backdrop List"
+msgstr ""
+
+#: ../settings/main.c:511
+#, c-format
+msgid ""
+"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr ""
+
+#: ../settings/main.c:516
+msgid "Invalid List File"
+msgstr "Kartelë e Mangët Liste"
+
+#: ../settings/main.c:519
+msgid "Overwriting the file will cause its contents to be lost."
+msgstr ""
+"Mbishkrimi i kësaj kartele do të shkaktojë humbjen e përmbajtjes së saj."
+
+#: ../settings/main.c:521
+msgid "Replace"
+msgstr "Zëvendëso"
+
+#: ../settings/main.c:775
+#, c-format
+msgid "Failed to write backdrop list to \"%s\""
+msgstr ""
+
+#: ../settings/main.c:802
+msgid "Add Image File(s)"
+msgstr "Shto Kartelë(a) Pamjesh"
+
+#: ../settings/main.c:811
+msgid "Image files"
+msgstr "Kartela pamje"
+
+#: ../settings/main.c:816
+msgid "All files"
+msgstr "Tërë kartelat "
+
+#: ../settings/main.c:1250
+#, c-format
+msgid "Screen %d, Monitor %d (%s)"
+msgstr "Ekrani %d, Monitori %d (%s)"
+
+#: ../settings/main.c:1255
+#, c-format
+msgid "Screen %d, Monitor %d"
+msgstr "Ekrani %d, Monitori %d"
+
+#: ../settings/main.c:1258
+#, c-format
+msgid "Screen %d"
+msgstr "Ekrani %d"
+
+#: ../settings/main.c:1264
+#, c-format
+msgid "Monitor %d (%s)"
+msgstr "Monitori %d (%s)"
+
+#: ../settings/main.c:1269
+#, c-format
+msgid "Monitor %d"
+msgstr "Monitori %d"
+
+#: ../settings/main.c:1471
+msgid "Settings manager socket"
+msgstr ""
+
+#: ../settings/main.c:1471
+msgid "SOCKET ID"
+msgstr ""
+
+#: ../settings/main.c:1472
+msgid "Version information"
+msgstr ""
+
+#: ../settings/main.c:1492
+#, c-format
+msgid "Type '%s --help' for usage."
+msgstr ""
+
+#: ../settings/main.c:1504
+msgid "The Xfce development team. All rights reserved."
+msgstr ""
+
+#: ../settings/main.c:1505
+#, c-format
+msgid "Please report bugs to <%s>."
+msgstr ""
+
+#: ../settings/main.c:1512
+msgid "Desktop Settings"
+msgstr "Rregullime Desktopi"
+
+#: ../settings/main.c:1514
+msgid "Unable to contact settings server"
+msgstr "I pazoti të lidhet me shërbyesin e rregullimeve"
+
+#: ../src/main.c:240
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Ky është versioni %s i %s, që po xhiron në Xfce %s.\n"
 
-#: ../src/main.c:233
+#: ../src/main.c:242
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Montuar me GTK+ %d.%d.%d, lidhur me GTK+ %d.%d.%d."
 
-#: ../src/main.c:237
+#: ../src/main.c:246
 #, c-format
 msgid "Build options:\n"
 msgstr "Mundësi montimi:\n"
 
-#: ../src/main.c:238
+#: ../src/main.c:247
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Menu Desktopi:        %s\n"
 
-#: ../src/main.c:240 ../src/main.c:247 ../src/main.c:254
+#: ../src/main.c:249 ../src/main.c:256 ../src/main.c:263
 msgid "enabled"
 msgstr "aktivizuar"
 
-#: ../src/main.c:242 ../src/main.c:249 ../src/main.c:256
+#: ../src/main.c:251 ../src/main.c:258 ../src/main.c:265
 msgid "disabled"
 msgstr "joveprues"
 
-#: ../src/main.c:245
+#: ../src/main.c:254
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Ikona Desktopi:       %s\n"
 
-#: ../src/main.c:252
+#: ../src/main.c:261
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Ikona Kartelash Desktopi:  %s\n"
 
-#: ../src/main.c:281
+#: ../src/main.c:290
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: Mundësi e panjohur: %s\n"
 
-#: ../src/main.c:282
+#: ../src/main.c:291
 #, c-format
 msgid "Options are:\n"
 msgstr "Mundësitë janë:\n"
 
-#: ../src/main.c:283
+#: ../src/main.c:292
 #, c-format
 msgid "    --reload      Reload all settings, refresh image list\n"
 msgstr "    --reload      Ringarko tërë rregullimet, rifresko listë pamjesh\n"
 
-#: ../src/main.c:284
+#: ../src/main.c:293
 #, c-format
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    --menu        Buthton menunë (te vendi i çastit i miut)\n"
 
-#: ../src/main.c:285
+#: ../src/main.c:294
 #, c-format
 msgid ""
 "    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
 "    --windowlist  Buthton listën e dritares (te vendi i çastit i miut)\n"
 
-#: ../src/main.c:286
+#: ../src/main.c:295
 #, c-format
 msgid "    --quit        Cause xfdesktop to quit\n"
 msgstr "    --quit        E bën xfdesktop-in të mbyllet\n"
 
-#: ../src/main.c:307
+#: ../src/main.c:316
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s nuk po xhiron.\n"
@@ -218,12 +350,12 @@ msgstr "_Hiq Hapësirë pune '%s'"
 msgid "Desktop"
 msgstr "Desktop"
 
-#: ../src/xfce-desktop.c:1009
+#: ../src/xfce-desktop.c:1010
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr ""
 
-#: ../src/xfce-desktop.c:1011
+#: ../src/xfce-desktop.c:1012
 msgid "Desktop Error"
 msgstr "Gabim Desktopi"
 
@@ -398,7 +530,7 @@ msgid "_Open in New Window"
 msgstr "_Hape në Dritare të Re"
 
 #: ../src/xfdesktop-file-icon-manager.c:1718
-#: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:560
+#: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:561
 msgid "_Open"
 msgstr "_Hap"
 
@@ -448,7 +580,7 @@ msgid "Desktop _Settings..."
 msgstr "R_regullime Desktopi..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2065
-#: ../src/xfdesktop-volume-icon.c:606
+#: ../src/xfdesktop-volume-icon.c:610
 msgid "_Properties..."
 msgstr "_Veti..."
 
@@ -606,19 +738,15 @@ msgstr ""
 "Ndryshuar më:%s\n"
 "Madhësi: %s"
 
-#: ../src/xfdesktop-regular-file-icon.c:520
-#: ../src/xfdesktop-regular-file-icon.c:584
+#: ../src/xfdesktop-regular-file-icon.c:535
+#: ../src/xfdesktop-regular-file-icon.c:599
 msgid "Error"
 msgstr "Gabim"
 
-#: ../src/xfdesktop-regular-file-icon.c:581
+#: ../src/xfdesktop-regular-file-icon.c:596
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "Dështoi në riemërtimin e \"%s\" si \"%s\":"
-
-#: ../src/xfdesktop-special-file-icon.c:259 ../settings/main.c:267
-msgid "Home"
-msgstr "Hyrje"
 
 #. FIXME: also display # of items in trash
 #: ../src/xfdesktop-special-file-icon.c:482
@@ -688,17 +816,17 @@ msgstr "I pazoti të nxjerrë \"%s\":"
 msgid "Eject Failed"
 msgstr "Nxjerrja Dështoi"
 
-#: ../src/xfdesktop-volume-icon.c:576
-msgid "E_ject Volume"
-msgstr "N_xirr Vëllimin"
-
-#: ../src/xfdesktop-volume-icon.c:586
+#: ../src/xfdesktop-volume-icon.c:578
 msgid "_Unmount Volume"
 msgstr "_Çmonto Vëllimin"
 
-#: ../src/xfdesktop-volume-icon.c:589
+#: ../src/xfdesktop-volume-icon.c:581
 msgid "_Mount Volume"
 msgstr "_Monto Vëllimin"
+
+#: ../src/xfdesktop-volume-icon.c:595
+msgid "E_ject Volume"
+msgstr "N_xirr Vëllimin"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
 msgid "Accessories"
@@ -771,6 +899,15 @@ msgstr "Zbatime që nuk hyjnë në ndonjë kategori"
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:2
 msgid "Other"
 msgstr "Tjetër"
+
+#: ../modules/menu/directory-data/xfce-science.directory.in.h:1
+msgid "Science"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-science.directory.in.h:2
+#, fuzzy
+msgid "Scientific software"
+msgstr "Programe edukimi"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
 msgid "Screensaver applets"
@@ -851,134 +988,6 @@ msgstr "Eksploro web-in"
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:2
 msgid "Web Browser"
 msgstr "Shfletues Web"
-
-#. no need to escape markup; it's already done for us
-#: ../settings/main.c:157
-#, c-format
-msgid ""
-"%s\n"
-"<i>Size: %dx%d</i>"
-msgstr ""
-
-#: ../settings/main.c:269
-msgid "Filesystem"
-msgstr "Sistem kartelash"
-
-#: ../settings/main.c:271
-msgid "Trash"
-msgstr "Hedhurina"
-
-#: ../settings/main.c:273
-msgid "Removable Devices"
-msgstr "Pajisje të Heqshme"
-
-#: ../settings/main.c:426
-#, c-format
-msgid "Cannot create backdrop list \"%s\""
-msgstr ""
-
-#: ../settings/main.c:430 ../settings/main.c:789
-msgid "Backdrop List Error"
-msgstr ""
-
-#: ../settings/main.c:455
-msgid "Create/Load Backdrop List"
-msgstr ""
-
-#: ../settings/main.c:479
-#, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
-
-#: ../settings/main.c:484
-msgid "Invalid List File"
-msgstr "Kartelë e Mangët Liste"
-
-#: ../settings/main.c:487
-msgid "Overwriting the file will cause its contents to be lost."
-msgstr ""
-"Mbishkrimi i kësaj kartele do të shkaktojë humbjen e përmbajtjes së saj."
-
-#: ../settings/main.c:489
-msgid "Replace"
-msgstr "Zëvendëso"
-
-#: ../settings/main.c:785
-#, c-format
-msgid "Failed to write backdrop list to \"%s\""
-msgstr ""
-
-#: ../settings/main.c:812
-msgid "Add Image File(s)"
-msgstr "Shto Kartelë(a) Pamjesh"
-
-#: ../settings/main.c:821
-msgid "Image files"
-msgstr "Kartela pamje"
-
-#: ../settings/main.c:826
-msgid "All files"
-msgstr "Tërë kartelat "
-
-#: ../settings/main.c:1120
-#, c-format
-msgid "Screen %d, Monitor %d (%s)"
-msgstr "Ekrani %d, Monitori %d (%s)"
-
-#: ../settings/main.c:1125
-#, c-format
-msgid "Screen %d, Monitor %d"
-msgstr "Ekrani %d, Monitori %d"
-
-#: ../settings/main.c:1128
-#, c-format
-msgid "Screen %d"
-msgstr "Ekrani %d"
-
-#: ../settings/main.c:1134
-#, c-format
-msgid "Monitor %d (%s)"
-msgstr "Monitori %d (%s)"
-
-#: ../settings/main.c:1139
-#, c-format
-msgid "Monitor %d"
-msgstr "Monitori %d"
-
-#: ../settings/main.c:1354
-msgid "Settings manager socket"
-msgstr ""
-
-#: ../settings/main.c:1354
-msgid "SOCKET ID"
-msgstr ""
-
-#: ../settings/main.c:1355
-msgid "Version information"
-msgstr ""
-
-#: ../settings/main.c:1375
-#, c-format
-msgid "Type '%s --help' for usage."
-msgstr ""
-
-#: ../settings/main.c:1387
-msgid "The Xfce development team. All rights reserved."
-msgstr ""
-
-#: ../settings/main.c:1388
-#, c-format
-msgid "Please report bugs to <%s>."
-msgstr ""
-
-#: ../settings/main.c:1395
-msgid "Desktop Settings"
-msgstr "Rregullime Desktopi"
-
-#: ../settings/main.c:1397
-msgid "Unable to contact settings server"
-msgstr "I pazoti të lidhet me shërbyesin e rregullimeve"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 #, fuzzy
@@ -1247,13 +1256,11 @@ msgstr "_Asnjë"
 msgid "_Single image"
 msgstr "Pmaje _njëshe"
 
-#: ../settings/xfdesktop-settings.glade.h:71
-msgid "gtk-close"
-msgstr "gtk-close"
+#~ msgid "gtk-close"
+#~ msgstr "gtk-close"
 
-#: ../settings/xfdesktop-settings.glade.h:72
-msgid "gtk-help"
-msgstr "gtk-help"
+#~ msgid "gtk-help"
+#~ msgstr "gtk-help"
 
 #~ msgid "Add menu entry"
 #~ msgstr "Shto zë menuje"

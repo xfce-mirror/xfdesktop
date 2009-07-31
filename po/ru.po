@@ -9,96 +9,96 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-26 01:15+0100\n"
+"POT-Creation-Date: 2009-07-30 23:17-0700\n"
 "PO-Revision-Date: 2009-01-30 13:02+0300\n"
 "Last-Translator: Ilya Shestopalov <yast4ik@yahoo.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: ../common/xfdesktop-common.c:87
-#: ../common/xfdesktop-common.c:191
+#: ../common/xfdesktop-common.c:95 ../common/xfdesktop-common.c:199
 #, c-format
 msgid "Backdrop list file is not valid"
 msgstr "Неправильный файл со списком фоновых картинок"
 
-#: ../panel-plugin/desktop-menu-plugin.c:653
+#: ../panel-plugin/desktop-menu-plugin.c:639
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Невозможно запустить редактор меню xfce4-menueditor: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:676
+#: ../panel-plugin/desktop-menu-plugin.c:662
 msgid "Select Icon"
 msgstr "Выбор значка"
 
-#: ../panel-plugin/desktop-menu-plugin.c:678
+#: ../panel-plugin/desktop-menu-plugin.c:664
 msgid "Select Menu File"
 msgstr "Выбор файла меню"
 
-#: ../panel-plugin/desktop-menu-plugin.c:705
+#: ../panel-plugin/desktop-menu-plugin.c:691
 msgid "All Files"
 msgstr "Все файлы"
 
-#: ../panel-plugin/desktop-menu-plugin.c:712
+#: ../panel-plugin/desktop-menu-plugin.c:698
 msgid "Image Files"
 msgstr "Файлы изображений"
 
-#: ../panel-plugin/desktop-menu-plugin.c:715
+#: ../panel-plugin/desktop-menu-plugin.c:701
 msgid "Menu Files"
 msgstr "Файлы меню"
 
-#: ../panel-plugin/desktop-menu-plugin.c:740
+#: ../panel-plugin/desktop-menu-plugin.c:726
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Меню Xfce"
 
-#: ../panel-plugin/desktop-menu-plugin.c:752
+#: ../panel-plugin/desktop-menu-plugin.c:738
 msgid "Button"
 msgstr "Кнопка"
 
-#: ../panel-plugin/desktop-menu-plugin.c:765
+#: ../panel-plugin/desktop-menu-plugin.c:751
 msgid "Button _title:"
 msgstr "_Заголовок кнопки:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:778
+#: ../panel-plugin/desktop-menu-plugin.c:764
 msgid "_Show title in button"
 msgstr "_Показывать заголовок на кнопке"
 
-#: ../panel-plugin/desktop-menu-plugin.c:785
+#: ../panel-plugin/desktop-menu-plugin.c:771
 msgid "Menu File"
 msgstr "Меню файл"
 
-#: ../panel-plugin/desktop-menu-plugin.c:797
+#: ../panel-plugin/desktop-menu-plugin.c:783
 msgid "Use default _desktop menu file"
 msgstr "Использовать меню _рабочего стола по умолчанию"
 
-#: ../panel-plugin/desktop-menu-plugin.c:806
+#: ../panel-plugin/desktop-menu-plugin.c:792
 msgid "Use _custom menu file:"
 msgstr "Использовать _другой файл меню:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:847
+#: ../panel-plugin/desktop-menu-plugin.c:833
 msgid "_Edit Menu"
 msgstr "Р_едактировать меню"
 
-#: ../panel-plugin/desktop-menu-plugin.c:854
+#: ../panel-plugin/desktop-menu-plugin.c:840
 msgid "Icons"
 msgstr "Значки"
 
-#: ../panel-plugin/desktop-menu-plugin.c:866
+#: ../panel-plugin/desktop-menu-plugin.c:852
 msgid "_Button icon:"
 msgstr "З_начок:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:880
+#: ../panel-plugin/desktop-menu-plugin.c:866
 msgid "Show _icons in menu"
 msgstr "П_оказывать значки в меню"
 
-#: ../panel-plugin/desktop-menu-plugin.c:915
+#: ../panel-plugin/desktop-menu-plugin.c:901
 msgid "There is already a panel menu registered for this screen"
 msgstr "На этом экране уже зарегистрировано меню на панели"
 
-#: ../panel-plugin/desktop-menu-plugin.c:1030
+#: ../panel-plugin/desktop-menu-plugin.c:1016
 msgid "Edit Menu"
 msgstr "Редактировать меню"
 
@@ -106,79 +106,213 @@ msgstr "Редактировать меню"
 msgid "Shows a menu containing categories of installed applications"
 msgstr "Отображает меню, содержащее категории установленных приложений"
 
-#: ../src/main.c:231
+#. no need to escape markup; it's already done for us
+#: ../settings/main.c:162
+#, c-format
+msgid ""
+"%s\n"
+"<i>Size: %dx%d</i>"
+msgstr ""
+"%s\n"
+"<i>Размер: %dx%d</i>"
+
+#: ../settings/main.c:272 ../src/xfdesktop-special-file-icon.c:259
+msgid "Home"
+msgstr "Домашний каталог"
+
+#: ../settings/main.c:274
+msgid "Filesystem"
+msgstr "Файловая система"
+
+#: ../settings/main.c:276
+msgid "Trash"
+msgstr "Корзина"
+
+#: ../settings/main.c:278
+msgid "Removable Devices"
+msgstr "Съёмные устройства"
+
+#: ../settings/main.c:458
+#, c-format
+msgid "Cannot create backdrop list \"%s\""
+msgstr "Невозможно создать список фоновых изображений \"%s\""
+
+#: ../settings/main.c:462 ../settings/main.c:779
+msgid "Backdrop List Error"
+msgstr "Ошибка списка изображений"
+
+#: ../settings/main.c:487
+msgid "Create/Load Backdrop List"
+msgstr "Создать/Загрузить список фоновых изображений"
+
+#: ../settings/main.c:511
+#, c-format
+msgid ""
+"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr ""
+"Файл \"%s\" не является правильным файлом списка фоновых изображений. "
+"Перезаписать его?"
+
+#: ../settings/main.c:516
+msgid "Invalid List File"
+msgstr "Неправильный файл списка"
+
+#: ../settings/main.c:519
+msgid "Overwriting the file will cause its contents to be lost."
+msgstr "Перезапись файла приведёт к утрате его содержимого."
+
+#: ../settings/main.c:521
+msgid "Replace"
+msgstr "Заменить"
+
+#: ../settings/main.c:775
+#, c-format
+msgid "Failed to write backdrop list to \"%s\""
+msgstr "Не удалось записать список изображений в \"%s\":"
+
+#: ../settings/main.c:802
+msgid "Add Image File(s)"
+msgstr "Добавить файл(ы) изображений"
+
+#: ../settings/main.c:811
+msgid "Image files"
+msgstr "Файлы изображений"
+
+#: ../settings/main.c:816
+msgid "All files"
+msgstr "Все файлы"
+
+#: ../settings/main.c:1250
+#, c-format
+msgid "Screen %d, Monitor %d (%s)"
+msgstr "Экран %d, монитор %d (%s)"
+
+#: ../settings/main.c:1255
+#, c-format
+msgid "Screen %d, Monitor %d"
+msgstr "Экран %d, монитор %d"
+
+#: ../settings/main.c:1258
+#, c-format
+msgid "Screen %d"
+msgstr "Экран %d"
+
+#: ../settings/main.c:1264
+#, c-format
+msgid "Monitor %d (%s)"
+msgstr "Монитор %d (%s)"
+
+#: ../settings/main.c:1269
+#, c-format
+msgid "Monitor %d"
+msgstr "Монитор %d"
+
+#: ../settings/main.c:1471
+msgid "Settings manager socket"
+msgstr "Сокет диспетчера настроек"
+
+#: ../settings/main.c:1471
+msgid "SOCKET ID"
+msgstr "ID сокета"
+
+#: ../settings/main.c:1472
+msgid "Version information"
+msgstr "Версия"
+
+#: ../settings/main.c:1492
+#, c-format
+msgid "Type '%s --help' for usage."
+msgstr "Наберите '%s --help' для использования."
+
+#: ../settings/main.c:1504
+msgid "The Xfce development team. All rights reserved."
+msgstr "Команда разработчиков Xfce. Все права защищены."
+
+#: ../settings/main.c:1505
+#, c-format
+msgid "Please report bugs to <%s>."
+msgstr "Сообщите об ошибке в <%s>."
+
+#: ../settings/main.c:1512
+msgid "Desktop Settings"
+msgstr "Рабочий стол"
+
+#: ../settings/main.c:1514
+msgid "Unable to contact settings server"
+msgstr "Не удаётся подключиться к серверу настроек"
+
+#: ../src/main.c:240
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Это %s версии %s, запущенный на Xfce %s.\n"
 
-#: ../src/main.c:233
+#: ../src/main.c:242
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Собрано с GTK+ %d.%d.%d, слинковано с GTK+ %d.%d.%d."
 
-#: ../src/main.c:237
+#: ../src/main.c:246
 #, c-format
 msgid "Build options:\n"
 msgstr "Параметры сборки:\n"
 
-#: ../src/main.c:238
+#: ../src/main.c:247
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Меню рабочего стола: %s\n"
 
-#: ../src/main.c:240
-#: ../src/main.c:247
-#: ../src/main.c:254
+#: ../src/main.c:249 ../src/main.c:256 ../src/main.c:263
 msgid "enabled"
 msgstr "включено"
 
-#: ../src/main.c:242
-#: ../src/main.c:249
-#: ../src/main.c:256
+#: ../src/main.c:251 ../src/main.c:258 ../src/main.c:265
 msgid "disabled"
 msgstr "отключено"
 
-#: ../src/main.c:245
+#: ../src/main.c:254
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Значки на рабочем столе: %s\n"
 
-#: ../src/main.c:252
+#: ../src/main.c:261
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Значки файлов на рабочем столе: %s\n"
 
-#: ../src/main.c:281
+#: ../src/main.c:290
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: неизвестный параметр: %s\n"
 
-#: ../src/main.c:282
+#: ../src/main.c:291
 #, c-format
 msgid "Options are:\n"
 msgstr "Параметры:\n"
 
-#: ../src/main.c:283
+#: ../src/main.c:292
 #, c-format
 msgid "    --reload      Reload all settings, refresh image list\n"
-msgstr "    --reload      Перезагрузить все настройки, обновить список изображений\n"
+msgstr ""
+"    --reload      Перезагрузить все настройки, обновить список изображений\n"
 
-#: ../src/main.c:284
+#: ../src/main.c:293
 #, c-format
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    --menu        Показать меню (в месте, где находится курсор мыши)\n"
 
-#: ../src/main.c:285
+#: ../src/main.c:294
 #, c-format
-msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr "    --windowlist  Показать список окон (в месте, где находится курсор мыши)\n"
+msgid ""
+"    --windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr ""
+"    --windowlist  Показать список окон (в месте, где находится курсор мыши)\n"
 
-#: ../src/main.c:286
+#: ../src/main.c:295
 #, c-format
 msgid "    --quit        Cause xfdesktop to quit\n"
 msgstr "    --quit        Завершить работу xfdesktop\n"
 
-#: ../src/main.c:307
+#: ../src/main.c:316
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s не запущен.\n"
@@ -206,8 +340,7 @@ msgstr "Рабочее место %d"
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Рабочее место %d</i>"
 
-#: ../src/windowlist.c:370
-#: ../src/windowlist.c:373
+#: ../src/windowlist.c:370 ../src/windowlist.c:373
 msgid "_Add Workspace"
 msgstr "_Добавить рабочее место"
 
@@ -221,23 +354,23 @@ msgstr "_Удалить рабочее место %d"
 msgid "_Remove Workspace '%s'"
 msgstr "_Удалить рабочее место '%s'"
 
-#: ../src/xfce-desktop.c:742
-#: ../settings/xfdesktop-settings.glade.h:20
+#: ../src/xfce-desktop.c:742 ../settings/xfdesktop-settings.glade.h:20
 msgid "Desktop"
 msgstr "Рабочий стол"
 
-#: ../src/xfce-desktop.c:1009
+#: ../src/xfce-desktop.c:1010
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "Невозможно загрузить изображение из списка \"%s\":"
 
-#: ../src/xfce-desktop.c:1011
+#: ../src/xfce-desktop.c:1012
 msgid "Desktop Error"
 msgstr "Ошибка рабочего стола"
 
 #: ../src/xfdesktop-file-icon-manager.c:478
 #, c-format
-msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgid ""
+"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr "Не удалось создать папку \"%s\" для хранения элементов рабочего стола:"
 
 #: ../src/xfdesktop-file-icon-manager.c:480
@@ -248,8 +381,12 @@ msgstr "Не удалось создать папку"
 
 #: ../src/xfdesktop-file-icon-manager.c:489
 #, c-format
-msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
-msgstr "Нельзя использовать \"%s\" для хранения элементов рабочего стола, потому что это не папка."
+msgid ""
+"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
+"folder."
+msgstr ""
+"Нельзя использовать \"%s\" для хранения элементов рабочего стола, потому что "
+"это не папка."
 
 #: ../src/xfdesktop-file-icon-manager.c:493
 msgid "Please delete or rename the file."
@@ -276,8 +413,7 @@ msgstr "Переименовать"
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "Вы уверены, что хотите удалить \"%s\"?"
 
-#: ../src/xfdesktop-file-icon-manager.c:679
-#: ../src/xfdesktop-file-utils.c:55
+#: ../src/xfdesktop-file-icon-manager.c:679 ../src/xfdesktop-file-utils.c:55
 msgid "Question"
 msgstr "Вопрос"
 
@@ -297,8 +433,7 @@ msgstr "Удалить несколько файлов"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:917
-#: ../src/xfdesktop-file-icon-manager.c:1633
-#: ../src/xfdesktop-file-icon.c:140
+#: ../src/xfdesktop-file-icon-manager.c:1633 ../src/xfdesktop-file-icon.c:140
 #: ../src/xfdesktop-file-utils.c:353
 #, c-format
 msgid "Unable to launch \"%s\":"
@@ -307,8 +442,7 @@ msgstr "Невозможно запустить \"%s\":"
 #: ../src/xfdesktop-file-icon-manager.c:919
 #: ../src/xfdesktop-file-icon-manager.c:977
 #: ../src/xfdesktop-file-icon-manager.c:1240
-#: ../src/xfdesktop-file-icon-manager.c:1634
-#: ../src/xfdesktop-file-icon.c:142
+#: ../src/xfdesktop-file-icon-manager.c:1634 ../src/xfdesktop-file-icon.c:142
 #: ../src/xfdesktop-file-utils.c:356
 msgid "Launch Error"
 msgstr "Ошибка запуска"
@@ -317,10 +451,13 @@ msgstr "Ошибка запуска"
 msgid "The application chooser could not be opened."
 msgstr "Не удаётся открыть диалог выбора приложений."
 
-#: ../src/xfdesktop-file-icon-manager.c:979
-#: ../src/xfdesktop-file-utils.c:358
-msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
-msgstr "Эта функция требует наличия службы файлового менеджера (такой, которая поддерживается в Thunar)."
+#: ../src/xfdesktop-file-icon-manager.c:979 ../src/xfdesktop-file-utils.c:358
+msgid ""
+"This feature requires a file manager service present (such as that supplied "
+"by Thunar)."
+msgstr ""
+"Эта функция требует наличия службы файлового менеджера (такой, которая "
+"поддерживается в Thunar)."
 
 #: ../src/xfdesktop-file-icon-manager.c:1137
 #, c-format
@@ -338,8 +475,12 @@ msgid "Unable to create folder named \"%s\":"
 msgstr "Не удалось создать папку с именем \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1242
-msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
-msgstr "Невозможно запустить \"exo-desktop-item-edit\", которая необходима для редактирования значков запуска и ссылок на рабочем столе."
+msgid ""
+"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
+"edit launchers and links on the desktop."
+msgstr ""
+"Невозможно запустить \"exo-desktop-item-edit\", которая необходима для "
+"редактирования значков запуска и ссылок на рабочем столе."
 
 #: ../src/xfdesktop-file-icon-manager.c:1275
 msgid "Create New Folder"
@@ -395,8 +536,7 @@ msgid "_Open in New Window"
 msgstr "Открыть в _новом окне"
 
 #: ../src/xfdesktop-file-icon-manager.c:1718
-#: ../src/xfdesktop-special-file-icon.c:633
-#: ../src/xfdesktop-volume-icon.c:560
+#: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:561
 msgid "_Open"
 msgstr "_Открыть"
 
@@ -445,7 +585,7 @@ msgid "Desktop _Settings..."
 msgstr "_Настройка рабочего стола..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2065
-#: ../src/xfdesktop-volume-icon.c:606
+#: ../src/xfdesktop-volume-icon.c:610
 msgid "_Properties..."
 msgstr "_Свойства..."
 
@@ -507,8 +647,7 @@ msgstr "Цель ссылки:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:251
 #: ../src/xfdesktop-file-properties-dialog.c:410
-#: ../src/xfdesktop-volume-icon.c:476
-#: ../src/xfdesktop-volume-icon.c:482
+#: ../src/xfdesktop-volume-icon.c:476 ../src/xfdesktop-volume-icon.c:482
 msgid "(unknown)"
 msgstr "(неизвестно)"
 
@@ -604,20 +743,15 @@ msgstr ""
 "Изменён: %s\n"
 "Размер: %s"
 
-#: ../src/xfdesktop-regular-file-icon.c:520
-#: ../src/xfdesktop-regular-file-icon.c:584
+#: ../src/xfdesktop-regular-file-icon.c:535
+#: ../src/xfdesktop-regular-file-icon.c:599
 msgid "Error"
 msgstr "Ошибка"
 
-#: ../src/xfdesktop-regular-file-icon.c:581
+#: ../src/xfdesktop-regular-file-icon.c:596
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "Не удалось переименовать \"%s\" в \"%s\":"
-
-#: ../src/xfdesktop-special-file-icon.c:259
-#: ../settings/main.c:267
-msgid "Home"
-msgstr "Домашний каталог"
 
 #. FIXME: also display # of items in trash
 #: ../src/xfdesktop-special-file-icon.c:482
@@ -633,8 +767,12 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "Не удаётся подключиться к службе корзины Xfce."
 
 #: ../src/xfdesktop-special-file-icon.c:518
-msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
-msgstr "Убедитесь, что у вас установлен файловый менеджер, который поддерживает работу с корзиной Xfce, такой как Thunar."
+msgid ""
+"Make sure you have a file manager installed that supports the Xfce Trash "
+"service, such as Thunar."
+msgstr ""
+"Убедитесь, что у вас установлен файловый менеджер, который поддерживает "
+"работу с корзиной Xfce, такой как Thunar."
 
 #: ../src/xfdesktop-special-file-icon.c:651
 msgid "_Empty Trash"
@@ -683,17 +821,17 @@ msgstr "Невозможно извлечь  \"%s\":"
 msgid "Eject Failed"
 msgstr "Не удалось извлечь"
 
-#: ../src/xfdesktop-volume-icon.c:576
-msgid "E_ject Volume"
-msgstr "_Извлечь том"
-
-#: ../src/xfdesktop-volume-icon.c:586
+#: ../src/xfdesktop-volume-icon.c:578
 msgid "_Unmount Volume"
 msgstr "О_тключить том"
 
-#: ../src/xfdesktop-volume-icon.c:589
+#: ../src/xfdesktop-volume-icon.c:581
 msgid "_Mount Volume"
 msgstr "_Подключить том"
+
+#: ../src/xfdesktop-volume-icon.c:595
+msgid "E_ject Volume"
+msgstr "_Извлечь том"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
 msgid "Accessories"
@@ -766,6 +904,15 @@ msgstr "Приложения, которые не подходят к други
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:2
 msgid "Other"
 msgstr "Прочие"
+
+#: ../modules/menu/directory-data/xfce-science.directory.in.h:1
+msgid "Science"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-science.directory.in.h:2
+#, fuzzy
+msgid "Scientific software"
+msgstr "Образовательное программное обеспечение"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
 msgid "Screensaver applets"
@@ -846,135 +993,6 @@ msgstr "Веб-браузер"
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:2
 msgid "Web Browser"
 msgstr "Веб-браузер"
-
-#. no need to escape markup; it's already done for us
-#: ../settings/main.c:157
-#, c-format
-msgid ""
-"%s\n"
-"<i>Size: %dx%d</i>"
-msgstr ""
-"%s\n"
-"<i>Размер: %dx%d</i>"
-
-#: ../settings/main.c:269
-msgid "Filesystem"
-msgstr "Файловая система"
-
-#: ../settings/main.c:271
-msgid "Trash"
-msgstr "Корзина"
-
-#: ../settings/main.c:273
-msgid "Removable Devices"
-msgstr "Съёмные устройства"
-
-#: ../settings/main.c:426
-#, c-format
-msgid "Cannot create backdrop list \"%s\""
-msgstr "Невозможно создать список фоновых изображений \"%s\""
-
-#: ../settings/main.c:430
-#: ../settings/main.c:789
-msgid "Backdrop List Error"
-msgstr "Ошибка списка изображений"
-
-#: ../settings/main.c:455
-msgid "Create/Load Backdrop List"
-msgstr "Создать/Загрузить список фоновых изображений"
-
-#: ../settings/main.c:479
-#, c-format
-msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr "Файл \"%s\" не является правильным файлом списка фоновых изображений. Перезаписать его?"
-
-#: ../settings/main.c:484
-msgid "Invalid List File"
-msgstr "Неправильный файл списка"
-
-#: ../settings/main.c:487
-msgid "Overwriting the file will cause its contents to be lost."
-msgstr "Перезапись файла приведёт к утрате его содержимого."
-
-#: ../settings/main.c:489
-msgid "Replace"
-msgstr "Заменить"
-
-#: ../settings/main.c:785
-#, c-format
-msgid "Failed to write backdrop list to \"%s\""
-msgstr "Не удалось записать список изображений в \"%s\":"
-
-#: ../settings/main.c:812
-msgid "Add Image File(s)"
-msgstr "Добавить файл(ы) изображений"
-
-#: ../settings/main.c:821
-msgid "Image files"
-msgstr "Файлы изображений"
-
-#: ../settings/main.c:826
-msgid "All files"
-msgstr "Все файлы"
-
-#: ../settings/main.c:1120
-#, c-format
-msgid "Screen %d, Monitor %d (%s)"
-msgstr "Экран %d, монитор %d (%s)"
-
-#: ../settings/main.c:1125
-#, c-format
-msgid "Screen %d, Monitor %d"
-msgstr "Экран %d, монитор %d"
-
-#: ../settings/main.c:1128
-#, c-format
-msgid "Screen %d"
-msgstr "Экран %d"
-
-#: ../settings/main.c:1134
-#, c-format
-msgid "Monitor %d (%s)"
-msgstr "Монитор %d (%s)"
-
-#: ../settings/main.c:1139
-#, c-format
-msgid "Monitor %d"
-msgstr "Монитор %d"
-
-#: ../settings/main.c:1354
-msgid "Settings manager socket"
-msgstr "Сокет диспетчера настроек"
-
-#: ../settings/main.c:1354
-msgid "SOCKET ID"
-msgstr "ID сокета"
-
-#: ../settings/main.c:1355
-msgid "Version information"
-msgstr "Версия"
-
-#: ../settings/main.c:1375
-#, c-format
-msgid "Type '%s --help' for usage."
-msgstr "Наберите '%s --help' для использования."
-
-#: ../settings/main.c:1387
-msgid "The Xfce development team. All rights reserved."
-msgstr "Команда разработчиков Xfce. Все права защищены."
-
-#: ../settings/main.c:1388
-#, c-format
-msgid "Please report bugs to <%s>."
-msgstr "Сообщите об ошибке в <%s>."
-
-#: ../settings/main.c:1395
-msgid "Desktop Settings"
-msgstr "Рабочий стол"
-
-#: ../settings/main.c:1397
-msgid "Unable to contact settings server"
-msgstr "Не удаётся подключиться к серверу настроек"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop "
@@ -1185,7 +1203,8 @@ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr "Определить \"правый\" или \"нижний\" цвет градиента"
 
 #: ../settings/xfdesktop-settings.glade.h:57
-msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgid ""
+"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
 msgstr "Определить сплошной цвет или \"левый\" или \"верхний\" цвет градиента"
 
 #: ../settings/xfdesktop-settings.glade.h:58
@@ -1197,8 +1216,12 @@ msgid "Specify the style of the color drawn behind the backdrop image"
 msgstr "Определить стиль цвета отображаемого под фоновым изображением"
 
 #: ../settings/xfdesktop-settings.glade.h:60
-msgid "Specify the transparency level for the rounded label drawn behind the icon text"
-msgstr "Определить уровень прозрачности кругловатого ярлыка, который отображается под текстомзначка"
+msgid ""
+"Specify the transparency level for the rounded label drawn behind the icon "
+"text"
+msgstr ""
+"Определить уровень прозрачности кругловатого ярлыка, который отображается "
+"под текстомзначка"
 
 #: ../settings/xfdesktop-settings.glade.h:61
 msgid "St_yle:"
@@ -1240,80 +1263,105 @@ msgstr "_Ничего"
 msgid "_Single image"
 msgstr "_Одно изображение"
 
-#: ../settings/xfdesktop-settings.glade.h:71
-msgid "gtk-close"
-msgstr ""
-
-#: ../settings/xfdesktop-settings.glade.h:72
-msgid "gtk-help"
-msgstr ""
-
 #~ msgid "Add menu entry"
 #~ msgstr "Добавить пункт меню"
+
 #~ msgid "Type:"
 #~ msgstr "Тип:"
+
 #~ msgid "Title"
 #~ msgstr "Заголовок"
+
 #~ msgid "Submenu"
 #~ msgstr "Подменю"
+
 #~ msgid "Launcher"
 #~ msgstr "Запуск"
+
 #~ msgid "Separator"
 #~ msgstr "Разделитель"
+
 #~ msgid "Quit"
 #~ msgstr "Выйти"
+
 #~ msgid "Command:"
 #~ msgstr "Команда:"
+
 #~ msgid "Icon:"
 #~ msgstr "Значок:"
+
 #~ msgid "No icon"
 #~ msgstr "Нет значка"
+
 #~ msgid "Themed icon:"
 #~ msgstr "Значок из темы:"
+
 #~ msgid "Select icon"
 #~ msgstr "Выберите значок"
+
 #~ msgid "Use startup _notification"
 #~ msgstr "Использовать _уведомление о запуске"
+
 #~ msgid "Run in _terminal"
 #~ msgstr "Запускать в _терминале"
+
 #~ msgid "Select command"
 #~ msgstr "Выберите команду"
+
 #~ msgid "Executable Files"
 #~ msgstr "Исполняемые файлы"
+
 #~ msgid "Perl Scripts"
 #~ msgstr "Скрипты Perl"
+
 #~ msgid "Python Scripts"
 #~ msgstr "Скрипты Python"
+
 #~ msgid "Ruby Scripts"
 #~ msgstr "Скрипты Ruby"
+
 #~ msgid "Shell Scripts"
 #~ msgstr "Скрипты Shell"
+
 #~ msgid "Add external menu entry"
 #~ msgstr "Добавить внешнее меню"
+
 #~ msgid "File"
 #~ msgstr "Файл"
+
 #~ msgid "Source:"
 #~ msgstr "Источник:"
+
 #~ msgid "Select external menu"
 #~ msgstr "Выберите внешнее меню"
+
 #~ msgid "Style:"
 #~ msgstr "Стиль:"
+
 #~ msgid "Simple"
 #~ msgstr "Простое"
+
 #~ msgid "Multilevel"
 #~ msgstr "Многоуровневое"
+
 #~ msgid "_Unique entries only"
 #~ msgstr "Только _неповторяющиеся пункты"
+
 #~ msgid "Edit menu entry"
 #~ msgstr "Изменить пункт меню"
+
 #~ msgid "Edit external menu entry"
 #~ msgstr "Изменить внешнее меню"
+
 #~ msgid "Xfce4-MenuEditor"
 #~ msgstr "Редактор меню Xfce 4"
+
 #~ msgid "Menueditor Warning"
 #~ msgstr "Предупреждение редактора меню"
+
 #~ msgid "xfce4-menueditor is deprecated"
 #~ msgstr "xfce4-menueditor признан устаревшим"
+
 #~ msgid ""
 #~ "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
 #~ "edit the new menu file format.  You may continue and edit an old-style "
@@ -1322,130 +1370,193 @@ msgstr ""
 #~ "Система меню Xfce была изменена. xfce4-menueditor не поддерживает новый "
 #~ "формат файла меню. Вы можете продолжить и отредактировать файл меню в "
 #~ "старом формате или выйти."
+
 #~ msgid "Continue"
 #~ msgstr "Продолжить"
+
 #~ msgid "_File"
 #~ msgstr "_Файл"
+
 #~ msgid "_New"
 #~ msgstr "_Новое"
+
 #~ msgid "Create a new empty menu"
 #~ msgstr "Создать новый файл меню"
+
 #~ msgid "Open existing menu"
 #~ msgstr "Открыть существующее меню"
+
 #~ msgid "Open _default menu"
 #~ msgstr "Открыть меню по _умолчанию"
+
 #~ msgid "Open default menu"
 #~ msgstr "Открыть меню по умолчанию"
+
 #~ msgid "_Save"
 #~ msgstr "_Сохранить"
+
 #~ msgid "Save modifications"
 #~ msgstr "Сохранить изменения"
+
 #~ msgid "Save _as..."
 #~ msgstr "Сохранить _как..."
+
 #~ msgid "Save menu under a given name"
 #~ msgstr "Сохранить меню под указанным именем"
+
 #~ msgid "_Close"
 #~ msgstr "_Закрыть"
+
 #~ msgid "Close menu"
 #~ msgstr "Закрыть меню"
+
 #~ msgid "_Quit"
 #~ msgstr "_Выйти"
+
 #~ msgid "Quit Xfce4-Menueditor"
 #~ msgstr "Выйти из редактора меню"
+
 #~ msgid "_Edit"
 #~ msgstr "_Правка"
+
 #~ msgid "_Edit entry"
 #~ msgstr "_Изменить пункт меню"
+
 #~ msgid "Edit selected entry"
 #~ msgstr "Изменить выбранный пункт"
+
 #~ msgid "_Add entry"
 #~ msgstr "_Добавить пункт меню"
+
 #~ msgid "Add a new entry in the menu"
 #~ msgstr "Добавить новый пункт в меню"
+
 #~ msgid "Add _external"
 #~ msgstr "Добавить _внешнее меню"
+
 #~ msgid "Add an external entry"
 #~ msgstr "Добавить внешнее меню"
+
 #~ msgid "_Remove entry"
 #~ msgstr "_Удалить пункт"
+
 #~ msgid "Remove entry"
 #~ msgstr "Добавить пункт меню"
+
 #~ msgid "_Up"
 #~ msgstr "_Вверх"
+
 #~ msgid "Move entry up"
 #~ msgstr "Переместить вверх"
+
 #~ msgid "_Down"
 #~ msgstr "В_низ"
+
 #~ msgid "Move entry down"
 #~ msgstr "Переместить вниз"
+
 #~ msgid "_Help"
 #~ msgstr "_Справка"
+
 #~ msgid "_About..."
 #~ msgstr "_О программе..."
+
 #~ msgid "Show informations about xfce4-menueditor"
 #~ msgstr "Показать информацию о редакторе меню"
+
 #~ msgid "Collapse all"
 #~ msgstr "Свернуть все"
+
 #~ msgid "Collapse all menu entries"
 #~ msgstr "Свернуть все пункты"
+
 #~ msgid "Expand all"
 #~ msgstr "Развернуть все"
+
 #~ msgid "Expand all menu entries"
 #~ msgstr "Развернуть все пункты"
+
 #~ msgid "Name"
 #~ msgstr "Название"
+
 #~ msgid "Command"
 #~ msgstr "Команда"
+
 #~ msgid "Hidden"
 #~ msgstr "Скрыть"
+
 #~ msgid "Are you sure you want to close the current menu?"
 #~ msgstr "Вы уверены, что хотите закрыть текущее меню?"
+
 #~ msgid "Do you want to save before closing the file?"
 #~ msgstr "Хотите сохранить файл перед тем как закрыть его?"
+
 #~ msgid "Do you want to save before opening an other menu ?"
 #~ msgstr "Хотите сохранить файл перед тем как открыть другое меню?"
+
 #~ msgid "Ignore modifications"
 #~ msgstr "Игнорировать изменения"
+
 #~ msgid "Open menu file"
 #~ msgstr "Открыть файл меню"
+
 #~ msgid "Do you want to save before opening the default menu ?"
 #~ msgstr "Хотите сохранить файл перед тем как открыть меню по умолчанию?"
+
 #~ msgid "Save menu file as"
 #~ msgstr "Сохранить файл меню как"
+
 #~ msgid "Do you want to save before closing the menu ?"
 #~ msgstr "Хотите сохранить меню, перед тем как закрыть его?"
+
 #~ msgid "quit"
 #~ msgstr "выйти"
+
 #~ msgid "--- separator ---"
 #~ msgstr "--- разделитель ---"
+
 #~ msgid "--- include ---"
 #~ msgstr "--- вставлено ---"
+
 #~ msgid "system"
 #~ msgstr "система"
+
 #~ msgid "Do you want to move the item into the submenu?"
 #~ msgstr "Хотите переместить элемент в подменю?"
+
 #~ msgid "A menu editor for Xfce4"
 #~ msgstr "Редактор меню для Xfce4"
+
 #~ msgid "Author/Maintainer"
 #~ msgstr "Автор/сопровождающий"
+
 #~ msgid "Contributor"
 #~ msgstr "Внёс вклад"
+
 #~ msgid "Icon designer"
 #~ msgstr "Дизайнер значков"
+
 #~ msgid "You have modified the menu, do you want to save it before quitting ?"
 #~ msgstr "Вы изменили меню, хотите сохранить его, перед тем как выйти?"
+
 #~ msgid "Forget modifications"
 #~ msgstr "Отменить сделанные изменения"
+
 #~ msgid "Unable to open the menu file %s in write mode"
 #~ msgstr "Невозможно открыть файл меню %s в режиме записи"
+
 #~ msgid "Graphical tool for editing the Xfce 4 menu"
 #~ msgstr "Графическая программа для правки меню Xfce 4"
+
 #~ msgid "Menu Editor"
 #~ msgstr "Редактор меню"
+
 #~ msgid "Xfce 4 Menu Editor"
 #~ msgstr "Редактор меню Xfce 4"
+
 #~ msgid "Settings for the Xfce 4 Desktop Manager"
 #~ msgstr "Настройки программы управления рабочим столом Xfce 4"
+
 #~ msgid "Xfce 4 Desktop Settings"
 #~ msgstr "Настройки рабочего стола Xfce 4"
 
@@ -1456,6 +1567,7 @@ msgstr ""
 #, fuzzy
 #~ msgid "Use _Xfce to manage the desktop"
 #~ msgstr "_Разрешить Xfce управлять рабочим столом"
+
 #~ msgid ""
 #~ "Could not save file %s: %s\n"
 #~ "\n"
@@ -1465,38 +1577,55 @@ msgstr ""
 #~ "Ошибка при сохранении файла %s: %s\n"
 #~ "\n"
 #~ "Выберите другой каталог или нажмите \"Отмена\""
+
 #~ msgid "Button Label|Desktop"
 #~ msgstr "Рабочий стол"
+
 #~ msgid "backdrops.list"
 #~ msgstr "backdrops.list"
+
 #~ msgid "Select backdrop image or list file"
 #~ msgstr "Выберите картинку или список картинок"
+
 #~ msgid "List Files (*.list)"
 #~ msgstr "Файлы списка (*.list)"
+
 #~ msgid "_Edit list..."
 #~ msgstr "_Изменить список..."
+
 #~ msgid "_New list..."
 #~ msgstr "_Создать список..."
+
 #~ msgid "S_tyle:"
 #~ msgstr "С_тиль:"
+
 #~ msgid "Auto"
 #~ msgstr "Автоматически"
+
 #~ msgid "Centered"
 #~ msgstr "По центру"
+
 #~ msgid "Tiled"
 #~ msgstr "Черепицей"
+
 #~ msgid "Stretched"
 #~ msgstr "Растянуть"
+
 #~ msgid "Scaled"
 #~ msgstr "Масштабировать"
+
 #~ msgid "Zoomed"
 #~ msgstr "Увеличить"
+
 #~ msgid "Xfce will be unable to manage your desktop (%s)."
 #~ msgstr "Xfce не сможет управлять вашим рабочим столом (%s)."
+
 #~ msgid "Unknown Error"
 #~ msgstr "Неизвестная ошибка"
+
 #~ msgid "Unable to start xfdesktop"
 #~ msgstr "Невозможно запустить xfdesktop"
+
 #~ msgid ""
 #~ "To ensure that this setting takes effect the next time you start Xfce, "
 #~ "please be sure to save your session when logging out.  If you are not "
@@ -1509,6 +1638,7 @@ msgstr ""
 #~ "не используете диспетчер сеансов Xfce (xfce4-session), вам нужно вручную "
 #~ "изменить файл ~/.config/xfce4/xinitrc.  Более подробная документация "
 #~ "доступна на сайте http://xfce.org/."
+
 #~ msgid ""
 #~ "To ensure that Xfce does not manage your desktop the next time you start "
 #~ "Xfce, please be sure to save your session when logging out.  If you are "
@@ -1521,44 +1651,63 @@ msgstr ""
 #~ "не используете диспетчер сеансов Xfce (xfce4-session), вам нужно вручную "
 #~ "изменить файл ~/.config/xfce4/xinitrc.  Более подробная документация "
 #~ "доступна на сайте http://xfce.org/."
+
 #~ msgid "_Do not show this again"
 #~ msgstr "Больше _не показывать"
+
 #~ msgid "Desktop Preferences"
 #~ msgstr "Настройка рабочего стола"
+
 #~ msgid "Stretch single backdrop onto _all monitors"
 #~ msgstr "Растягивать изображение на _все экраны"
+
 #~ msgid "Color"
 #~ msgstr "Цвет"
+
 #~ msgid "_Color Style:"
 #~ msgstr "Стиль _заполнения цветом:"
+
 #~ msgid "Solid Color"
 #~ msgstr "Однотонный"
+
 #~ msgid "Horizontal Gradient"
 #~ msgstr "Горизонтальный градиент"
+
 #~ msgid "Vertical Gradient"
 #~ msgstr "Вертикальный градиент"
+
 #~ msgid "Image"
 #~ msgstr "Изображение"
+
 #~ msgid "Show _Image"
 #~ msgstr "Показывать _изображение"
+
 #~ msgid "_File:"
 #~ msgstr "_Файл:"
+
 #~ msgid "_Behavior"
 #~ msgstr "_Поведение"
+
 #~ msgid "Select backdrop image file"
 #~ msgstr "Выберите фоновую картинку"
+
 #~ msgid "List file"
 #~ msgstr "Файл списка"
+
 #~ msgid "Edit backdrop list"
 #~ msgstr "Изменить список фоновых изображений"
+
 #~ msgid "Desktop Icons"
 #~ msgstr "Значки на рабочем столе"
+
 #~ msgid "File/launcher icons"
 #~ msgstr "Значки файлов или запуска"
+
 #~ msgid "Use _system font size"
 #~ msgstr "Использовать _системный размер шрифта"
+
 #~ msgid "Des_ktop"
 #~ msgstr "_Рабочий стол"
+
 #~ msgid "_Desktop Properties..."
 #~ msgstr "_Свойства рабочего стола..."
-

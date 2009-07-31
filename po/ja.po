@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.5.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-14 22:40+0900\n"
+"POT-Creation-Date: 2009-07-30 23:17-0700\n"
 "PO-Revision-Date: 2009-03-12 13:25+0900\n"
 "Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
@@ -19,86 +19,86 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../common/xfdesktop-common.c:87 ../common/xfdesktop-common.c:191
+#: ../common/xfdesktop-common.c:95 ../common/xfdesktop-common.c:199
 #, c-format
 msgid "Backdrop list file is not valid"
 msgstr "画像リストファイルが正しくありません"
 
-#: ../panel-plugin/desktop-menu-plugin.c:658
+#: ../panel-plugin/desktop-menu-plugin.c:639
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "xfce4-menueditor を実行できません: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:681
+#: ../panel-plugin/desktop-menu-plugin.c:662
 msgid "Select Icon"
 msgstr "アイコンを選択してください"
 
-#: ../panel-plugin/desktop-menu-plugin.c:683
+#: ../panel-plugin/desktop-menu-plugin.c:664
 msgid "Select Menu File"
 msgstr "メニューファイルを選択してください"
 
-#: ../panel-plugin/desktop-menu-plugin.c:710
+#: ../panel-plugin/desktop-menu-plugin.c:691
 msgid "All Files"
 msgstr "全てのファイル"
 
-#: ../panel-plugin/desktop-menu-plugin.c:717
+#: ../panel-plugin/desktop-menu-plugin.c:698
 msgid "Image Files"
 msgstr "画像ファイル"
 
-#: ../panel-plugin/desktop-menu-plugin.c:720
+#: ../panel-plugin/desktop-menu-plugin.c:701
 msgid "Menu Files"
 msgstr "メニューファイル"
 
-#: ../panel-plugin/desktop-menu-plugin.c:745
+#: ../panel-plugin/desktop-menu-plugin.c:726
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Xfce メニュー"
 
-#: ../panel-plugin/desktop-menu-plugin.c:757
+#: ../panel-plugin/desktop-menu-plugin.c:738
 msgid "Button"
 msgstr "ボタン"
 
-#: ../panel-plugin/desktop-menu-plugin.c:770
+#: ../panel-plugin/desktop-menu-plugin.c:751
 msgid "Button _title:"
 msgstr "ボタンタイトル(_T):"
 
-#: ../panel-plugin/desktop-menu-plugin.c:783
+#: ../panel-plugin/desktop-menu-plugin.c:764
 msgid "_Show title in button"
 msgstr "ボタンにタイトルを表示する(_S)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:790
+#: ../panel-plugin/desktop-menu-plugin.c:771
 msgid "Menu File"
 msgstr "メニューファイル"
 
-#: ../panel-plugin/desktop-menu-plugin.c:802
+#: ../panel-plugin/desktop-menu-plugin.c:783
 msgid "Use default _desktop menu file"
 msgstr "デフォルトのデスクトップメニューを使用する(_D)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:811
+#: ../panel-plugin/desktop-menu-plugin.c:792
 msgid "Use _custom menu file:"
 msgstr "指定したメニューファイルを使用する(_C):"
 
-#: ../panel-plugin/desktop-menu-plugin.c:852
+#: ../panel-plugin/desktop-menu-plugin.c:833
 msgid "_Edit Menu"
 msgstr "メニューの編集(_E)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:859
+#: ../panel-plugin/desktop-menu-plugin.c:840
 msgid "Icons"
 msgstr "アイコン"
 
-#: ../panel-plugin/desktop-menu-plugin.c:871
+#: ../panel-plugin/desktop-menu-plugin.c:852
 msgid "_Button icon:"
 msgstr "ボタンアイコン(_B):"
 
-#: ../panel-plugin/desktop-menu-plugin.c:885
+#: ../panel-plugin/desktop-menu-plugin.c:866
 msgid "Show _icons in menu"
 msgstr "メニューにアイコンを表示する(_I):"
 
-#: ../panel-plugin/desktop-menu-plugin.c:920
+#: ../panel-plugin/desktop-menu-plugin.c:901
 msgid "There is already a panel menu registered for this screen"
 msgstr "この画面には既にパネルメニューが登録されています"
 
-#: ../panel-plugin/desktop-menu-plugin.c:1035
+#: ../panel-plugin/desktop-menu-plugin.c:1016
 msgid "Edit Menu"
 msgstr "メニューの編集"
 
@@ -106,77 +106,213 @@ msgstr "メニューの編集"
 msgid "Shows a menu containing categories of installed applications"
 msgstr "インストール済みアプリケーションのカテゴリを含むメニューを表示します"
 
-#: ../src/main.c:231
+#. no need to escape markup; it's already done for us
+#: ../settings/main.c:162
+#, c-format
+msgid ""
+"%s\n"
+"<i>Size: %dx%d</i>"
+msgstr ""
+"%s\n"
+"<i>サイズ: %d x %d</i>"
+
+#: ../settings/main.c:272 ../src/xfdesktop-special-file-icon.c:259
+msgid "Home"
+msgstr "ホーム"
+
+#: ../settings/main.c:274
+msgid "Filesystem"
+msgstr "ファイルシステム"
+
+# FIXME: wtf
+#: ../settings/main.c:276
+msgid "Trash"
+msgstr "ゴミ箱"
+
+#: ../settings/main.c:278
+msgid "Removable Devices"
+msgstr "リムーバブルデバイス"
+
+#: ../settings/main.c:458
+#, c-format
+msgid "Cannot create backdrop list \"%s\""
+msgstr "画像リスト \"%s\" を作成できません"
+
+#: ../settings/main.c:462 ../settings/main.c:779
+msgid "Backdrop List Error"
+msgstr "画像リストエラー"
+
+#: ../settings/main.c:487
+msgid "Create/Load Backdrop List"
+msgstr "画像リストの作成/読み込み"
+
+#: ../settings/main.c:511
+#, c-format
+msgid ""
+"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr ""
+"ファイル \"%s\" は正常な画像リストファイルではありません。上書きしますか?"
+
+#: ../settings/main.c:516
+msgid "Invalid List File"
+msgstr "不正なリストファイル"
+
+#: ../settings/main.c:519
+msgid "Overwriting the file will cause its contents to be lost."
+msgstr "上書きするとその内容は失われます。"
+
+#: ../settings/main.c:521
+msgid "Replace"
+msgstr "置換"
+
+#: ../settings/main.c:775
+#, c-format
+msgid "Failed to write backdrop list to \"%s\""
+msgstr "画像リスト \"%s\" に書き込めませんでした"
+
+#: ../settings/main.c:802
+msgid "Add Image File(s)"
+msgstr "画像ファイルを追加"
+
+#: ../settings/main.c:811
+msgid "Image files"
+msgstr "画像ファイル"
+
+#: ../settings/main.c:816
+msgid "All files"
+msgstr "全てのファイル"
+
+#: ../settings/main.c:1250
+#, c-format
+msgid "Screen %d, Monitor %d (%s)"
+msgstr "画面 %d, モニタ %d (%s)"
+
+#: ../settings/main.c:1255
+#, c-format
+msgid "Screen %d, Monitor %d"
+msgstr "画面 %d, モニタ %d"
+
+#: ../settings/main.c:1258
+#, c-format
+msgid "Screen %d"
+msgstr "画面 %d"
+
+#: ../settings/main.c:1264
+#, c-format
+msgid "Monitor %d (%s)"
+msgstr "モニタ %d (%s)"
+
+#: ../settings/main.c:1269
+#, c-format
+msgid "Monitor %d"
+msgstr "モニタ %d"
+
+#: ../settings/main.c:1471
+msgid "Settings manager socket"
+msgstr "設定マネージャソケット"
+
+#: ../settings/main.c:1471
+msgid "SOCKET ID"
+msgstr "SOCKET ID"
+
+#: ../settings/main.c:1472
+msgid "Version information"
+msgstr "バージョン情報"
+
+#: ../settings/main.c:1492
+#, c-format
+msgid "Type '%s --help' for usage."
+msgstr "'%s --help' で使用方法が表示されます。"
+
+#: ../settings/main.c:1504
+msgid "The Xfce development team. All rights reserved."
+msgstr "The Xfce development team. All rights reserved."
+
+#: ../settings/main.c:1505
+#, c-format
+msgid "Please report bugs to <%s>."
+msgstr "バグは <%s> まで報告してください。"
+
+#: ../settings/main.c:1512
+msgid "Desktop Settings"
+msgstr "デスクトップ設定"
+
+# FIXME: wtf
+#: ../settings/main.c:1514
+msgid "Unable to contact settings server"
+msgstr "設定サーバに接続できません"
+
+#: ../src/main.c:240
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "%s バージョン %s, Xfce %s で実行されています。\n"
 
-#: ../src/main.c:233
+#: ../src/main.c:242
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Gtk+ %d.%d.%d でビルド、Gtk+ %d.%d.%d で実行しています。"
 
-#: ../src/main.c:237
+#: ../src/main.c:246
 #, c-format
 msgid "Build options:\n"
 msgstr "ビルドオプション:\n"
 
-#: ../src/main.c:238
+#: ../src/main.c:247
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    メニュー:            %s\n"
 
-#: ../src/main.c:240 ../src/main.c:247 ../src/main.c:254
+#: ../src/main.c:249 ../src/main.c:256 ../src/main.c:263
 msgid "enabled"
 msgstr "有効"
 
-#: ../src/main.c:242 ../src/main.c:249 ../src/main.c:256
+#: ../src/main.c:251 ../src/main.c:258 ../src/main.c:265
 msgid "disabled"
 msgstr "無効"
 
-#: ../src/main.c:245
+#: ../src/main.c:254
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    アイコン:            %s\n"
 
-#: ../src/main.c:252
+#: ../src/main.c:261
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    ファイルアイコン:    %s\n"
 
-#: ../src/main.c:281
+#: ../src/main.c:290
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: 不明なオプション: %s\n"
 
-#: ../src/main.c:282
+#: ../src/main.c:291
 #, c-format
 msgid "Options are:\n"
 msgstr "オプションは:\n"
 
-#: ../src/main.c:283
+#: ../src/main.c:292
 #, c-format
 msgid "    --reload      Reload all settings, refresh image list\n"
 msgstr "    --reload      全ての設定を再読込みして画像リストを更新する\n"
 
-#: ../src/main.c:284
+#: ../src/main.c:293
 #, c-format
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    --menu        現在のマウス位置でメニューをポップアップする\n"
 
-#: ../src/main.c:285
+#: ../src/main.c:294
 #, c-format
 msgid ""
 "    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
 "    --windowlist  現在のマウス位置でウィンドウリストをポップアップする\n"
 
-#: ../src/main.c:286
+#: ../src/main.c:295
 #, c-format
 msgid "    --quit        Cause xfdesktop to quit\n"
 msgstr "    --quit        xfdesktop を終了させる\n"
 
-#: ../src/main.c:307
+#: ../src/main.c:316
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s は実行されていません。\n"
@@ -222,12 +358,12 @@ msgstr "ワークスペース '%s' を削除(_R)"
 msgid "Desktop"
 msgstr "デスクトップ"
 
-#: ../src/xfce-desktop.c:1009
+#: ../src/xfce-desktop.c:1010
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "画像リストファイルからファイル \"%s\" を読み込めません"
 
-#: ../src/xfce-desktop.c:1011
+#: ../src/xfce-desktop.c:1012
 msgid "Desktop Error"
 msgstr "デスクトップエラー"
 
@@ -402,7 +538,7 @@ msgid "_Open in New Window"
 msgstr "新しいウィンドウで開く(_O)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1718
-#: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:560
+#: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:561
 msgid "_Open"
 msgstr "開く(_O)"
 
@@ -452,7 +588,7 @@ msgid "Desktop _Settings..."
 msgstr "デスクトップの設定(_S)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2065
-#: ../src/xfdesktop-volume-icon.c:606
+#: ../src/xfdesktop-volume-icon.c:610
 msgid "_Properties..."
 msgstr "プロパティ(_P)..."
 
@@ -613,19 +749,15 @@ msgstr ""
 "変更日時: %s\n"
 "サイズ: %s"
 
-#: ../src/xfdesktop-regular-file-icon.c:520
-#: ../src/xfdesktop-regular-file-icon.c:584
+#: ../src/xfdesktop-regular-file-icon.c:535
+#: ../src/xfdesktop-regular-file-icon.c:599
 msgid "Error"
 msgstr "エラー"
 
-#: ../src/xfdesktop-regular-file-icon.c:581
+#: ../src/xfdesktop-regular-file-icon.c:596
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "\"%s\" の名前を \"%s\" に変更できませんでした:"
-
-#: ../src/xfdesktop-special-file-icon.c:259 ../settings/main.c:267
-msgid "Home"
-msgstr "ホーム"
 
 #. FIXME: also display # of items in trash
 #: ../src/xfdesktop-special-file-icon.c:482
@@ -697,17 +829,17 @@ msgstr "\"%s\" を取り出せません:"
 msgid "Eject Failed"
 msgstr "取り出しに失敗しました"
 
-#: ../src/xfdesktop-volume-icon.c:576
-msgid "E_ject Volume"
-msgstr "取り出し(_J)"
-
-#: ../src/xfdesktop-volume-icon.c:586
+#: ../src/xfdesktop-volume-icon.c:578
 msgid "_Unmount Volume"
 msgstr "マウント解除(_U)"
 
-#: ../src/xfdesktop-volume-icon.c:589
+#: ../src/xfdesktop-volume-icon.c:581
 msgid "_Mount Volume"
 msgstr "マウント(_M)"
+
+#: ../src/xfdesktop-volume-icon.c:595
+msgid "E_ject Volume"
+msgstr "取り出し(_J)"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
 msgid "Accessories"
@@ -780,6 +912,15 @@ msgstr "他の分類に該当しないアプリケーション"
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:2
 msgid "Other"
 msgstr "その他"
+
+#: ../modules/menu/directory-data/xfce-science.directory.in.h:1
+msgid "Science"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-science.directory.in.h:2
+#, fuzzy
+msgid "Scientific software"
+msgstr "教育ソフトウェア"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
 msgid "Screensaver applets"
@@ -860,138 +1001,6 @@ msgstr "ウェブを閲覧します"
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:2
 msgid "Web Browser"
 msgstr "ウェブブラウザ"
-
-#. no need to escape markup; it's already done for us
-#: ../settings/main.c:157
-#, c-format
-msgid ""
-"%s\n"
-"<i>Size: %dx%d</i>"
-msgstr ""
-"%s\n"
-"<i>サイズ: %d x %d</i>"
-
-#: ../settings/main.c:269
-msgid "Filesystem"
-msgstr "ファイルシステム"
-
-# FIXME: wtf
-#: ../settings/main.c:271
-msgid "Trash"
-msgstr "ゴミ箱"
-
-#: ../settings/main.c:273
-msgid "Removable Devices"
-msgstr "リムーバブルデバイス"
-
-#: ../settings/main.c:426
-#, c-format
-msgid "Cannot create backdrop list \"%s\""
-msgstr "画像リスト \"%s\" を作成できません"
-
-#: ../settings/main.c:430 ../settings/main.c:789
-msgid "Backdrop List Error"
-msgstr "画像リストエラー"
-
-#: ../settings/main.c:455
-msgid "Create/Load Backdrop List"
-msgstr "画像リストの作成/読み込み"
-
-#: ../settings/main.c:479
-#, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
-"ファイル \"%s\" は正常な画像リストファイルではありません。上書きしますか?"
-
-#: ../settings/main.c:484
-msgid "Invalid List File"
-msgstr "不正なリストファイル"
-
-#: ../settings/main.c:487
-msgid "Overwriting the file will cause its contents to be lost."
-msgstr "上書きするとその内容は失われます。"
-
-#: ../settings/main.c:489
-msgid "Replace"
-msgstr "置換"
-
-#: ../settings/main.c:785
-#, c-format
-msgid "Failed to write backdrop list to \"%s\""
-msgstr "画像リスト \"%s\" に書き込めませんでした"
-
-#: ../settings/main.c:812
-msgid "Add Image File(s)"
-msgstr "画像ファイルを追加"
-
-#: ../settings/main.c:821
-msgid "Image files"
-msgstr "画像ファイル"
-
-#: ../settings/main.c:826
-msgid "All files"
-msgstr "全てのファイル"
-
-#: ../settings/main.c:1120
-#, c-format
-msgid "Screen %d, Monitor %d (%s)"
-msgstr "画面 %d, モニタ %d (%s)"
-
-#: ../settings/main.c:1125
-#, c-format
-msgid "Screen %d, Monitor %d"
-msgstr "画面 %d, モニタ %d"
-
-#: ../settings/main.c:1128
-#, c-format
-msgid "Screen %d"
-msgstr "画面 %d"
-
-#: ../settings/main.c:1134
-#, c-format
-msgid "Monitor %d (%s)"
-msgstr "モニタ %d (%s)"
-
-#: ../settings/main.c:1139
-#, c-format
-msgid "Monitor %d"
-msgstr "モニタ %d"
-
-#: ../settings/main.c:1354
-msgid "Settings manager socket"
-msgstr "設定マネージャソケット"
-
-#: ../settings/main.c:1354
-msgid "SOCKET ID"
-msgstr "SOCKET ID"
-
-#: ../settings/main.c:1355
-msgid "Version information"
-msgstr "バージョン情報"
-
-#: ../settings/main.c:1375
-#, c-format
-msgid "Type '%s --help' for usage."
-msgstr "'%s --help' で使用方法が表示されます。"
-
-#: ../settings/main.c:1387
-msgid "The Xfce development team. All rights reserved."
-msgstr "The Xfce development team. All rights reserved."
-
-#: ../settings/main.c:1388
-#, c-format
-msgid "Please report bugs to <%s>."
-msgstr "バグは <%s> まで報告してください。"
-
-#: ../settings/main.c:1395
-msgid "Desktop Settings"
-msgstr "デスクトップ設定"
-
-# FIXME: wtf
-#: ../settings/main.c:1397
-msgid "Unable to contact settings server"
-msgstr "設定サーバに接続できません"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop "

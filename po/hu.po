@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-01 21:12+0200\n"
+"POT-Creation-Date: 2009-07-30 23:17-0700\n"
 "PO-Revision-Date: 2009-07-08 19:52+0200\n"
 "Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
 "Language-Team: Hungarian <gnome at gnome dot hu>\n"
@@ -19,92 +19,227 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
-#: ../common/xfdesktop-common.c:87 ../common/xfdesktop-common.c:191
+#: ../common/xfdesktop-common.c:95 ../common/xfdesktop-common.c:199
 #, c-format
 msgid "Backdrop list file is not valid"
 msgstr "A háttérképek listája érvénytelen"
 
-#: ../panel-plugin/desktop-menu-plugin.c:658
+#: ../panel-plugin/desktop-menu-plugin.c:639
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Nem indítható az xfce4-menueditor: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:681
+#: ../panel-plugin/desktop-menu-plugin.c:662
 msgid "Select Icon"
 msgstr "Válasszon ikont"
 
-#: ../panel-plugin/desktop-menu-plugin.c:683
+#: ../panel-plugin/desktop-menu-plugin.c:664
 msgid "Select Menu File"
 msgstr "Válasszon menüfájlt"
 
-#: ../panel-plugin/desktop-menu-plugin.c:710
+#: ../panel-plugin/desktop-menu-plugin.c:691
 msgid "All Files"
 msgstr "Minden fájl"
 
-#: ../panel-plugin/desktop-menu-plugin.c:717
+#: ../panel-plugin/desktop-menu-plugin.c:698
 msgid "Image Files"
 msgstr "Képfájlok"
 
-#: ../panel-plugin/desktop-menu-plugin.c:720
+#: ../panel-plugin/desktop-menu-plugin.c:701
 msgid "Menu Files"
 msgstr "Menüfájlok"
 
-#: ../panel-plugin/desktop-menu-plugin.c:745
+#: ../panel-plugin/desktop-menu-plugin.c:726
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Xfce menü"
 
-#: ../panel-plugin/desktop-menu-plugin.c:757
+#: ../panel-plugin/desktop-menu-plugin.c:738
 msgid "Button"
 msgstr "Gomb"
 
-#: ../panel-plugin/desktop-menu-plugin.c:770
+#: ../panel-plugin/desktop-menu-plugin.c:751
 msgid "Button _title:"
 msgstr "G_ombfelirat:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:783
+#: ../panel-plugin/desktop-menu-plugin.c:764
 msgid "_Show title in button"
 msgstr "_Felirat megjelenítése a gombokon"
 
-#: ../panel-plugin/desktop-menu-plugin.c:790
+#: ../panel-plugin/desktop-menu-plugin.c:771
 msgid "Menu File"
 msgstr "Menüfájl"
 
-#: ../panel-plugin/desktop-menu-plugin.c:802
+#: ../panel-plugin/desktop-menu-plugin.c:783
 msgid "Use default _desktop menu file"
 msgstr "_Alapértelmezett asztali menüfájl használata"
 
-#: ../panel-plugin/desktop-menu-plugin.c:811
+#: ../panel-plugin/desktop-menu-plugin.c:792
 msgid "Use _custom menu file:"
 msgstr "_Egyéni menüfájl használata:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:852
+#: ../panel-plugin/desktop-menu-plugin.c:833
 msgid "_Edit Menu"
 msgstr "_Menü szerkesztése"
 
-#: ../panel-plugin/desktop-menu-plugin.c:859
+#: ../panel-plugin/desktop-menu-plugin.c:840
 msgid "Icons"
 msgstr "Ikonok"
 
-#: ../panel-plugin/desktop-menu-plugin.c:871
+#: ../panel-plugin/desktop-menu-plugin.c:852
 msgid "_Button icon:"
 msgstr "Go_mbikon:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:885
+#: ../panel-plugin/desktop-menu-plugin.c:866
 msgid "Show _icons in menu"
 msgstr "_Ikonok megjelenítése a menüben"
 
-#: ../panel-plugin/desktop-menu-plugin.c:920
+#: ../panel-plugin/desktop-menu-plugin.c:901
 msgid "There is already a panel menu registered for this screen"
 msgstr "Már van regisztrálva panelmenü ehhez a képernyőhöz"
 
-#: ../panel-plugin/desktop-menu-plugin.c:1035
+#: ../panel-plugin/desktop-menu-plugin.c:1016
 msgid "Edit Menu"
 msgstr "Menü szerkesztése"
 
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
-msgstr "A telepített alkalmazásokat kategóriákba sorolva megjelenítő menü megjelenítése"
+msgstr ""
+"A telepített alkalmazásokat kategóriákba sorolva megjelenítő menü "
+"megjelenítése"
+
+#. no need to escape markup; it's already done for us
+#: ../settings/main.c:162
+#, c-format
+msgid ""
+"%s\n"
+"<i>Size: %dx%d</i>"
+msgstr ""
+"%s\n"
+"<i>Méret: %dx%d</i>"
+
+#: ../settings/main.c:272 ../src/xfdesktop-special-file-icon.c:259
+msgid "Home"
+msgstr "Saját mappa"
+
+#: ../settings/main.c:274
+msgid "Filesystem"
+msgstr "Fájlrendszer"
+
+#: ../settings/main.c:276
+msgid "Trash"
+msgstr "Kuka"
+
+#: ../settings/main.c:278
+msgid "Removable Devices"
+msgstr "Cserélhető eszközök"
+
+#: ../settings/main.c:458
+#, c-format
+msgid "Cannot create backdrop list \"%s\""
+msgstr "Nem hozható létre a háttérlista („%s”)"
+
+#: ../settings/main.c:462 ../settings/main.c:779
+msgid "Backdrop List Error"
+msgstr "Háttérlistahiba"
+
+#: ../settings/main.c:487
+msgid "Create/Load Backdrop List"
+msgstr "Háttérlista létrehozása/betöltése"
+
+#: ../settings/main.c:511
+#, c-format
+msgid ""
+"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr "A fájl („%s”) nem érvényes háttérlistafájl. Felül kívánja írni?"
+
+#: ../settings/main.c:516
+msgid "Invalid List File"
+msgstr "Érvénytelen listafájl"
+
+#: ../settings/main.c:519
+msgid "Overwriting the file will cause its contents to be lost."
+msgstr "A fájl felülírásával a tartalma elvész."
+
+#: ../settings/main.c:521
+msgid "Replace"
+msgstr "Csere"
+
+#: ../settings/main.c:775
+#, c-format
+msgid "Failed to write backdrop list to \"%s\""
+msgstr "A háttérlista kiírása meghiúsult ide: („%s”)"
+
+#: ../settings/main.c:802
+msgid "Add Image File(s)"
+msgstr "Képfájlok hozzáadása"
+
+#: ../settings/main.c:811
+msgid "Image files"
+msgstr "Képfájlok"
+
+#: ../settings/main.c:816
+msgid "All files"
+msgstr "Minden fájl"
+
+#: ../settings/main.c:1250
+#, c-format
+msgid "Screen %d, Monitor %d (%s)"
+msgstr "%d. képernyő, %d. monitor (%s)"
+
+#: ../settings/main.c:1255
+#, c-format
+msgid "Screen %d, Monitor %d"
+msgstr "%d. képernyő, %d. monitor"
+
+#: ../settings/main.c:1258
+#, c-format
+msgid "Screen %d"
+msgstr "%d. képernyő"
+
+#: ../settings/main.c:1264
+#, c-format
+msgid "Monitor %d (%s)"
+msgstr "%d. monitor (%s)"
+
+#: ../settings/main.c:1269
+#, c-format
+msgid "Monitor %d"
+msgstr "%d. monitor"
+
+#: ../settings/main.c:1471
+msgid "Settings manager socket"
+msgstr "Beállításkezelő foglalat"
+
+#: ../settings/main.c:1471
+msgid "SOCKET ID"
+msgstr "FOGLALATAZONOSÍTÓ"
+
+#: ../settings/main.c:1472
+msgid "Version information"
+msgstr "Verzióinformációk"
+
+#: ../settings/main.c:1492
+#, c-format
+msgid "Type '%s --help' for usage."
+msgstr "Segítségért adja ki az „%s --help” parancsot."
+
+#: ../settings/main.c:1504
+msgid "The Xfce development team. All rights reserved."
+msgstr "Az Xfce fejlesztőcsapata. Minden jog fenntartva."
+
+#: ../settings/main.c:1505
+#, c-format
+msgid "Please report bugs to <%s>."
+msgstr "A hibákat ide jelentse: <%s>."
+
+#: ../settings/main.c:1512
+msgid "Desktop Settings"
+msgstr "Asztal beállításai"
+
+#: ../settings/main.c:1514
+msgid "Unable to contact settings server"
+msgstr "Nem érhető el a beállításkiszolgáló"
 
 #: ../src/main.c:240
 #, c-format
@@ -166,8 +301,10 @@ msgstr "    --menu        A menü megjelenítése (az aktuális egérpozícióba
 
 #: ../src/main.c:294
 #, c-format
-msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr "    --windowlist  Az ablaklista megjelenítése (az aktuális egérpozícióban)\n"
+msgid ""
+"    --windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr ""
+"    --windowlist  Az ablaklista megjelenítése (az aktuális egérpozícióban)\n"
 
 #: ../src/main.c:295
 #, c-format
@@ -231,8 +368,11 @@ msgstr "Asztalhiba"
 
 #: ../src/xfdesktop-file-icon-manager.c:478
 #, c-format
-msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr "Az Xfdesktop nem volt képes létrehozni a(z) „%s” mappát az asztal elemeinek tárolásához:"
+msgid ""
+"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr ""
+"Az Xfdesktop nem volt képes létrehozni a(z) „%s” mappát az asztal elemeinek "
+"tárolásához:"
 
 #: ../src/xfdesktop-file-icon-manager.c:480
 #: ../src/xfdesktop-file-icon-manager.c:491
@@ -245,7 +385,9 @@ msgstr "Mappa létrehozása meghiúsult"
 msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
 "folder."
-msgstr "A(z) „%s” nem használható az Xfdesktop asztali elemeinek tárolására, mert nem mappa."
+msgstr ""
+"A(z) „%s” nem használható az Xfdesktop asztali elemeinek tárolására, mert "
+"nem mappa."
 
 #: ../src/xfdesktop-file-icon-manager.c:493
 msgid "Please delete or rename the file."
@@ -314,7 +456,9 @@ msgstr "Az alkalmazásválasztó nem nyitható meg."
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
-msgstr "Ez a szolgáltatás egy fájlkezelő-szolgáltatás jelenlétét igényli (például a Thunar által biztosítottat)."
+msgstr ""
+"Ez a szolgáltatás egy fájlkezelő-szolgáltatás jelenlétét igényli (például a "
+"Thunar által biztosítottat)."
 
 #: ../src/xfdesktop-file-icon-manager.c:1137
 #, c-format
@@ -335,7 +479,9 @@ msgstr "Nem hozható létre „%s” nevű mappa:"
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
-msgstr "Nem indítható az „exo-desktop-item-edit”, amely szükséges a indítóikonok és hivatkozások létrehozásához az asztalon."
+msgstr ""
+"Nem indítható az „exo-desktop-item-edit”, amely szükséges a indítóikonok és "
+"hivatkozások létrehozásához az asztalon."
 
 #: ../src/xfdesktop-file-icon-manager.c:1275
 msgid "Create New Folder"
@@ -608,10 +754,6 @@ msgstr "Hiba"
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "Hiba történt „%s” átnevezésekor erre: „%s”:"
 
-#: ../src/xfdesktop-special-file-icon.c:259 ../settings/main.c:267
-msgid "Home"
-msgstr "Saját mappa"
-
 #. FIXME: also display # of items in trash
 #: ../src/xfdesktop-special-file-icon.c:482
 msgid "Kind: Trash"
@@ -629,7 +771,9 @@ msgstr "Nem érhető el az Xfce Kuka szolgáltatás."
 msgid ""
 "Make sure you have a file manager installed that supports the Xfce Trash "
 "service, such as Thunar."
-msgstr "Győződjön meg, hogy telepítve van az Xfce Kuka szolgáltatást támogató fájlkezelő, például a Thunar."
+msgstr ""
+"Győződjön meg, hogy telepítve van az Xfce Kuka szolgáltatást támogató "
+"fájlkezelő, például a Thunar."
 
 #: ../src/xfdesktop-special-file-icon.c:651
 msgid "_Empty Trash"
@@ -762,6 +906,15 @@ msgstr "Más kategóriába nem sorolható alkalmazások"
 msgid "Other"
 msgstr "Egyéb"
 
+#: ../modules/menu/directory-data/xfce-science.directory.in.h:1
+msgid "Science"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-science.directory.in.h:2
+#, fuzzy
+msgid "Scientific software"
+msgstr "Oktatóprogramok"
+
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
 msgid "Screensaver applets"
 msgstr "Képernyővédő alkalmazások"
@@ -841,134 +994,6 @@ msgstr "A világháló böngészése"
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:2
 msgid "Web Browser"
 msgstr "Webböngésző"
-
-#. no need to escape markup; it's already done for us
-#: ../settings/main.c:157
-#, c-format
-msgid ""
-"%s\n"
-"<i>Size: %dx%d</i>"
-msgstr ""
-"%s\n"
-"<i>Méret: %dx%d</i>"
-
-#: ../settings/main.c:269
-msgid "Filesystem"
-msgstr "Fájlrendszer"
-
-#: ../settings/main.c:271
-msgid "Trash"
-msgstr "Kuka"
-
-#: ../settings/main.c:273
-msgid "Removable Devices"
-msgstr "Cserélhető eszközök"
-
-#: ../settings/main.c:426
-#, c-format
-msgid "Cannot create backdrop list \"%s\""
-msgstr "Nem hozható létre a háttérlista („%s”)"
-
-#: ../settings/main.c:430 ../settings/main.c:789
-msgid "Backdrop List Error"
-msgstr "Háttérlistahiba"
-
-#: ../settings/main.c:455
-msgid "Create/Load Backdrop List"
-msgstr "Háttérlista létrehozása/betöltése"
-
-#: ../settings/main.c:479
-#, c-format
-msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr "A fájl („%s”) nem érvényes háttérlistafájl. Felül kívánja írni?"
-
-#: ../settings/main.c:484
-msgid "Invalid List File"
-msgstr "Érvénytelen listafájl"
-
-#: ../settings/main.c:487
-msgid "Overwriting the file will cause its contents to be lost."
-msgstr "A fájl felülírásával a tartalma elvész."
-
-#: ../settings/main.c:489
-msgid "Replace"
-msgstr "Csere"
-
-#: ../settings/main.c:785
-#, c-format
-msgid "Failed to write backdrop list to \"%s\""
-msgstr "A háttérlista kiírása meghiúsult ide: („%s”)"
-
-#: ../settings/main.c:812
-msgid "Add Image File(s)"
-msgstr "Képfájlok hozzáadása"
-
-#: ../settings/main.c:821
-msgid "Image files"
-msgstr "Képfájlok"
-
-#: ../settings/main.c:826
-msgid "All files"
-msgstr "Minden fájl"
-
-#: ../settings/main.c:1132
-#, c-format
-msgid "Screen %d, Monitor %d (%s)"
-msgstr "%d. képernyő, %d. monitor (%s)"
-
-#: ../settings/main.c:1137
-#, c-format
-msgid "Screen %d, Monitor %d"
-msgstr "%d. képernyő, %d. monitor"
-
-#: ../settings/main.c:1140
-#, c-format
-msgid "Screen %d"
-msgstr "%d. képernyő"
-
-#: ../settings/main.c:1146
-#, c-format
-msgid "Monitor %d (%s)"
-msgstr "%d. monitor (%s)"
-
-#: ../settings/main.c:1151
-#, c-format
-msgid "Monitor %d"
-msgstr "%d. monitor"
-
-#: ../settings/main.c:1366
-msgid "Settings manager socket"
-msgstr "Beállításkezelő foglalat"
-
-#: ../settings/main.c:1366
-msgid "SOCKET ID"
-msgstr "FOGLALATAZONOSÍTÓ"
-
-#: ../settings/main.c:1367
-msgid "Version information"
-msgstr "Verzióinformációk"
-
-#: ../settings/main.c:1387
-#, c-format
-msgid "Type '%s --help' for usage."
-msgstr "Segítségért adja ki az „%s --help” parancsot."
-
-#: ../settings/main.c:1399
-msgid "The Xfce development team. All rights reserved."
-msgstr "Az Xfce fejlesztőcsapata. Minden jog fenntartva."
-
-#: ../settings/main.c:1400
-#, c-format
-msgid "Please report bugs to <%s>."
-msgstr "A hibákat ide jelentse: <%s>."
-
-#: ../settings/main.c:1407
-msgid "Desktop Settings"
-msgstr "Asztal beállításai"
-
-#: ../settings/main.c:1409
-msgid "Unable to contact settings server"
-msgstr "Nem érhető el a beállításkiszolgáló"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop "
@@ -1179,7 +1204,8 @@ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr "Az átmenet „jobb oldali” vagy „alsó” színe"
 
 #: ../settings/xfdesktop-settings.glade.h:57
-msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgid ""
+"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
 msgstr "Az átmenet „bal oldali” vagy „felső” színe"
 
 #: ../settings/xfdesktop-settings.glade.h:58
@@ -1235,4 +1261,3 @@ msgstr "_Nincs"
 #: ../settings/xfdesktop-settings.glade.h:70
 msgid "_Single image"
 msgstr "_Egyetlen kép"
-

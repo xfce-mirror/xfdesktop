@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-26 01:15+0100\n"
+"POT-Creation-Date: 2009-07-30 23:17-0700\n"
 "PO-Revision-Date: 2009-04-13 22:28+0100\n"
 "Last-Translator: Carles Muñoz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: Catalan <xfce-i18n@xfce.org>\n"
@@ -21,86 +21,86 @@ msgstr ""
 "X-Poedit-Language: Catalan\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: ../common/xfdesktop-common.c:87 ../common/xfdesktop-common.c:191
+#: ../common/xfdesktop-common.c:95 ../common/xfdesktop-common.c:199
 #, c-format
 msgid "Backdrop list file is not valid"
 msgstr "El fitxer amb la llista d'imatges no és vàlid"
 
-#: ../panel-plugin/desktop-menu-plugin.c:653
+#: ../panel-plugin/desktop-menu-plugin.c:639
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "No s'ha pogut llançar xfce4-menueditor: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:676
+#: ../panel-plugin/desktop-menu-plugin.c:662
 msgid "Select Icon"
 msgstr "Seleccioneu icona"
 
-#: ../panel-plugin/desktop-menu-plugin.c:678
+#: ../panel-plugin/desktop-menu-plugin.c:664
 msgid "Select Menu File"
 msgstr "Seleccioneu un fitxer de menú"
 
-#: ../panel-plugin/desktop-menu-plugin.c:705
+#: ../panel-plugin/desktop-menu-plugin.c:691
 msgid "All Files"
 msgstr "Tots els fitxers"
 
-#: ../panel-plugin/desktop-menu-plugin.c:712
+#: ../panel-plugin/desktop-menu-plugin.c:698
 msgid "Image Files"
 msgstr "Fitxers d'imatge"
 
-#: ../panel-plugin/desktop-menu-plugin.c:715
+#: ../panel-plugin/desktop-menu-plugin.c:701
 msgid "Menu Files"
 msgstr "Fitxers de menú"
 
-#: ../panel-plugin/desktop-menu-plugin.c:740
+#: ../panel-plugin/desktop-menu-plugin.c:726
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Menú Xfce"
 
-#: ../panel-plugin/desktop-menu-plugin.c:752
+#: ../panel-plugin/desktop-menu-plugin.c:738
 msgid "Button"
 msgstr "Botó"
 
-#: ../panel-plugin/desktop-menu-plugin.c:765
+#: ../panel-plugin/desktop-menu-plugin.c:751
 msgid "Button _title:"
 msgstr "Títol del bo_tó:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:778
+#: ../panel-plugin/desktop-menu-plugin.c:764
 msgid "_Show title in button"
 msgstr "Mo_stra títol dins el botó"
 
-#: ../panel-plugin/desktop-menu-plugin.c:785
+#: ../panel-plugin/desktop-menu-plugin.c:771
 msgid "Menu File"
 msgstr "Fitxer de menú"
 
-#: ../panel-plugin/desktop-menu-plugin.c:797
+#: ../panel-plugin/desktop-menu-plugin.c:783
 msgid "Use default _desktop menu file"
 msgstr "Utilitzar el fitxer _d'escriptori predeterminat"
 
-#: ../panel-plugin/desktop-menu-plugin.c:806
+#: ../panel-plugin/desktop-menu-plugin.c:792
 msgid "Use _custom menu file:"
 msgstr "Utilitza un _fitxer de menú personalitzat:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:847
+#: ../panel-plugin/desktop-menu-plugin.c:833
 msgid "_Edit Menu"
 msgstr "_Edita Menú"
 
-#: ../panel-plugin/desktop-menu-plugin.c:854
+#: ../panel-plugin/desktop-menu-plugin.c:840
 msgid "Icons"
 msgstr "Icones"
 
-#: ../panel-plugin/desktop-menu-plugin.c:866
+#: ../panel-plugin/desktop-menu-plugin.c:852
 msgid "_Button icon:"
 msgstr "_Botó d'icona:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:880
+#: ../panel-plugin/desktop-menu-plugin.c:866
 msgid "Show _icons in menu"
 msgstr "Mostra _icones al menú"
 
-#: ../panel-plugin/desktop-menu-plugin.c:915
+#: ../panel-plugin/desktop-menu-plugin.c:901
 msgid "There is already a panel menu registered for this screen"
 msgstr "Ja hi ha un menú pel quadre a aquesta pantalla"
 
-#: ../panel-plugin/desktop-menu-plugin.c:1030
+#: ../panel-plugin/desktop-menu-plugin.c:1016
 msgid "Edit Menu"
 msgstr "Edita el menú"
 
@@ -108,67 +108,201 @@ msgstr "Edita el menú"
 msgid "Shows a menu containing categories of installed applications"
 msgstr "Mostra un menú amb les categories de les aplicacions instal·lades"
 
-#: ../src/main.c:231
+#. no need to escape markup; it's already done for us
+#: ../settings/main.c:162
+#, c-format
+msgid ""
+"%s\n"
+"<i>Size: %dx%d</i>"
+msgstr ""
+"%s\n"
+"<i>Mida: %dx%d</i>"
+
+#: ../settings/main.c:272 ../src/xfdesktop-special-file-icon.c:259
+msgid "Home"
+msgstr "Inici"
+
+#: ../settings/main.c:274
+msgid "Filesystem"
+msgstr "Sistema de fitxers"
+
+#: ../settings/main.c:276
+msgid "Trash"
+msgstr "Paperera"
+
+#: ../settings/main.c:278
+msgid "Removable Devices"
+msgstr "Dispositius extractables"
+
+#: ../settings/main.c:458
+#, c-format
+msgid "Cannot create backdrop list \"%s\""
+msgstr "No es por crear la llista d'imatges de fons «%s»"
+
+#: ../settings/main.c:462 ../settings/main.c:779
+msgid "Backdrop List Error"
+msgstr "Error en la llista d'imatges de fons"
+
+#: ../settings/main.c:487
+msgid "Create/Load Backdrop List"
+msgstr "Crea/carrega un llistat d'imatges de fons"
+
+#: ../settings/main.c:511
+#, c-format
+msgid ""
+"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr ""
+"El fitxer «%s» no és una llista d'imatges vàlida. Voleu sobreescriure'l?"
+
+#: ../settings/main.c:516
+msgid "Invalid List File"
+msgstr "Llista de fitxers invàlida"
+
+#: ../settings/main.c:519
+msgid "Overwriting the file will cause its contents to be lost."
+msgstr "Sobreescriure el fitxer farà que es perdi el seu contingut."
+
+#: ../settings/main.c:521
+msgid "Replace"
+msgstr "Substitueix"
+
+#: ../settings/main.c:775
+#, c-format
+msgid "Failed to write backdrop list to \"%s\""
+msgstr "No s'ha pogut escriure la llista d'imatges de fons a «%s»"
+
+#: ../settings/main.c:802
+msgid "Add Image File(s)"
+msgstr "Afegiu fitxers d'imatges"
+
+#: ../settings/main.c:811
+msgid "Image files"
+msgstr "Fitxers d'imatge"
+
+#: ../settings/main.c:816
+msgid "All files"
+msgstr "Tots els fitxers"
+
+#: ../settings/main.c:1250
+#, c-format
+msgid "Screen %d, Monitor %d (%s)"
+msgstr "Pantalla %d, Monitor %d (%s)"
+
+#: ../settings/main.c:1255
+#, c-format
+msgid "Screen %d, Monitor %d"
+msgstr "Pantalla %d, Monitor %d"
+
+#: ../settings/main.c:1258
+#, c-format
+msgid "Screen %d"
+msgstr "Pantalla %d"
+
+#: ../settings/main.c:1264
+#, c-format
+msgid "Monitor %d (%s)"
+msgstr "Monitor %d (%s)"
+
+#: ../settings/main.c:1269
+#, c-format
+msgid "Monitor %d"
+msgstr "Monitor %d"
+
+#: ../settings/main.c:1471
+msgid "Settings manager socket"
+msgstr "Sòcol del gestor d'akustaments"
+
+#: ../settings/main.c:1471
+msgid "SOCKET ID"
+msgstr "SÒCOL ID"
+
+#: ../settings/main.c:1472
+msgid "Version information"
+msgstr "Informació de la versió"
+
+#: ../settings/main.c:1492
+#, c-format
+msgid "Type '%s --help' for usage."
+msgstr "Feu «%s --help» per veure l'ús."
+
+#: ../settings/main.c:1504
+msgid "The Xfce development team. All rights reserved."
+msgstr "L'equip de desenvolupament de Xfce. Tots els drets reservats."
+
+#: ../settings/main.c:1505
+#, c-format
+msgid "Please report bugs to <%s>."
+msgstr "Envieu els errors a <%s>."
+
+#: ../settings/main.c:1512
+msgid "Desktop Settings"
+msgstr "Ajustaments de l'escriptori"
+
+#: ../settings/main.c:1514
+msgid "Unable to contact settings server"
+msgstr "No s’ha pogut contactar amb el servidor d'ajustaments"
+
+#: ../src/main.c:240
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Això és %s versió %s, executant-se sobre Xfce %s.\n"
 
-#: ../src/main.c:233
+#: ../src/main.c:242
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Construit sobre GTK+ %d.%d.%d, enllaçat amb GTK+ %d.%d.%d."
 
-#: ../src/main.c:237
+#: ../src/main.c:246
 #, c-format
 msgid "Build options:\n"
 msgstr "Opcions de construcció:\n"
 
-#: ../src/main.c:238
+#: ../src/main.c:247
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Menú d'escriptori:   %s\n"
 
-#: ../src/main.c:240 ../src/main.c:247 ../src/main.c:254
+#: ../src/main.c:249 ../src/main.c:256 ../src/main.c:263
 msgid "enabled"
 msgstr "habilitat"
 
-#: ../src/main.c:242 ../src/main.c:249 ../src/main.c:256
+#: ../src/main.c:251 ../src/main.c:258 ../src/main.c:265
 msgid "disabled"
 msgstr "inhabilitat"
 
-#: ../src/main.c:245
+#: ../src/main.c:254
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Icones d'escriptori: %s\n"
 
-#: ../src/main.c:252
+#: ../src/main.c:261
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Fitxer d'icones de l'escriptori: %s\n"
 
-#: ../src/main.c:281
+#: ../src/main.c:290
 #, c-format
 msgid "%s: Unknown option: %s\n"
 msgstr "%s: opció desconeguda: %s\n"
 
-#: ../src/main.c:282
+#: ../src/main.c:291
 #, c-format
 msgid "Options are:\n"
 msgstr "Són opcions:\n"
 
-#: ../src/main.c:283
+#: ../src/main.c:292
 #, c-format
 msgid "    --reload      Reload all settings, refresh image list\n"
 msgstr ""
 "    --reload      Refresca tots els paràmetres, refresca el llistat "
 "d'imatges\n"
 
-#: ../src/main.c:284
+#: ../src/main.c:293
 #, c-format
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 msgstr "    --menu        Mostra el menú (a la posició del ratolí)\n"
 
-#: ../src/main.c:285
+#: ../src/main.c:294
 #, c-format
 msgid ""
 "    --windowlist  Pop up the window list (at the current mouse position)\n"
@@ -176,12 +310,12 @@ msgstr ""
 "   --windowlist   Mostra el llistat de finestres (a la posició del\n"
 "                  ratolí)\n"
 
-#: ../src/main.c:286
+#: ../src/main.c:295
 #, c-format
 msgid "    --quit        Cause xfdesktop to quit\n"
 msgstr "   --quit         Surt  de xfdesktop\n"
 
-#: ../src/main.c:307
+#: ../src/main.c:316
 #, c-format
 msgid "%s is not running.\n"
 msgstr "No s’està executant «%s».\n"
@@ -227,12 +361,12 @@ msgstr "Sup_rimeix l'espai de treball «%s»"
 msgid "Desktop"
 msgstr "Escriptori"
 
-#: ../src/xfce-desktop.c:1009
+#: ../src/xfce-desktop.c:1010
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "No s'han pogut carregar les imatges de la llista d'imatges de fons «%s»"
 
-#: ../src/xfce-desktop.c:1011
+#: ../src/xfce-desktop.c:1012
 msgid "Desktop Error"
 msgstr "Error de l'escriptori"
 
@@ -406,7 +540,7 @@ msgid "_Open in New Window"
 msgstr "_Obre en una nova finestra"
 
 #: ../src/xfdesktop-file-icon-manager.c:1718
-#: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:560
+#: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:561
 msgid "_Open"
 msgstr "_Obre"
 
@@ -455,7 +589,7 @@ msgid "Desktop _Settings..."
 msgstr "Ajustaments de l'e_scriptori…"
 
 #: ../src/xfdesktop-file-icon-manager.c:2065
-#: ../src/xfdesktop-volume-icon.c:606
+#: ../src/xfdesktop-volume-icon.c:610
 msgid "_Properties..."
 msgstr "_Propietats…"
 
@@ -613,19 +747,15 @@ msgstr ""
 "Modificat: %s\n"
 "Mida: %s"
 
-#: ../src/xfdesktop-regular-file-icon.c:520
-#: ../src/xfdesktop-regular-file-icon.c:584
+#: ../src/xfdesktop-regular-file-icon.c:535
+#: ../src/xfdesktop-regular-file-icon.c:599
 msgid "Error"
 msgstr "Error"
 
-#: ../src/xfdesktop-regular-file-icon.c:581
+#: ../src/xfdesktop-regular-file-icon.c:596
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "No s'ha pogut canviar el nom de «%s» a «%s»:"
-
-#: ../src/xfdesktop-special-file-icon.c:259 ../settings/main.c:267
-msgid "Home"
-msgstr "Inici"
 
 #. FIXME: also display # of items in trash
 #: ../src/xfdesktop-special-file-icon.c:482
@@ -695,17 +825,17 @@ msgstr "No s'ha pogut expulsar «%s»:"
 msgid "Eject Failed"
 msgstr "No s'ha pogut expulsar"
 
-#: ../src/xfdesktop-volume-icon.c:576
-msgid "E_ject Volume"
-msgstr "_Expulsa el volum"
-
-#: ../src/xfdesktop-volume-icon.c:586
+#: ../src/xfdesktop-volume-icon.c:578
 msgid "_Unmount Volume"
 msgstr "Desm_unta el volum"
 
-#: ../src/xfdesktop-volume-icon.c:589
+#: ../src/xfdesktop-volume-icon.c:581
 msgid "_Mount Volume"
 msgstr "_Munta el volum"
+
+#: ../src/xfdesktop-volume-icon.c:595
+msgid "E_ject Volume"
+msgstr "_Expulsa el volum"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
 msgid "Accessories"
@@ -778,6 +908,15 @@ msgstr "Aplicacions que no cauen a les altres categories"
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:2
 msgid "Other"
 msgstr "Altres"
+
+#: ../modules/menu/directory-data/xfce-science.directory.in.h:1
+msgid "Science"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-science.directory.in.h:2
+#, fuzzy
+msgid "Scientific software"
+msgstr "Programari educatiu"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
 msgid "Screensaver applets"
@@ -858,136 +997,6 @@ msgstr "Navegador web"
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:2
 msgid "Web Browser"
 msgstr "Navegador"
-
-#. no need to escape markup; it's already done for us
-#: ../settings/main.c:157
-#, c-format
-msgid ""
-"%s\n"
-"<i>Size: %dx%d</i>"
-msgstr ""
-"%s\n"
-"<i>Mida: %dx%d</i>"
-
-#: ../settings/main.c:269
-msgid "Filesystem"
-msgstr "Sistema de fitxers"
-
-#: ../settings/main.c:271
-msgid "Trash"
-msgstr "Paperera"
-
-#: ../settings/main.c:273
-msgid "Removable Devices"
-msgstr "Dispositius extractables"
-
-#: ../settings/main.c:426
-#, c-format
-msgid "Cannot create backdrop list \"%s\""
-msgstr "No es por crear la llista d'imatges de fons «%s»"
-
-#: ../settings/main.c:430 ../settings/main.c:789
-msgid "Backdrop List Error"
-msgstr "Error en la llista d'imatges de fons"
-
-#: ../settings/main.c:455
-msgid "Create/Load Backdrop List"
-msgstr "Crea/carrega un llistat d'imatges de fons"
-
-#: ../settings/main.c:479
-#, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
-"El fitxer «%s» no és una llista d'imatges vàlida. Voleu sobreescriure'l?"
-
-#: ../settings/main.c:484
-msgid "Invalid List File"
-msgstr "Llista de fitxers invàlida"
-
-#: ../settings/main.c:487
-msgid "Overwriting the file will cause its contents to be lost."
-msgstr "Sobreescriure el fitxer farà que es perdi el seu contingut."
-
-#: ../settings/main.c:489
-msgid "Replace"
-msgstr "Substitueix"
-
-#: ../settings/main.c:785
-#, c-format
-msgid "Failed to write backdrop list to \"%s\""
-msgstr "No s'ha pogut escriure la llista d'imatges de fons a «%s»"
-
-#: ../settings/main.c:812
-msgid "Add Image File(s)"
-msgstr "Afegiu fitxers d'imatges"
-
-#: ../settings/main.c:821
-msgid "Image files"
-msgstr "Fitxers d'imatge"
-
-#: ../settings/main.c:826
-msgid "All files"
-msgstr "Tots els fitxers"
-
-#: ../settings/main.c:1120
-#, c-format
-msgid "Screen %d, Monitor %d (%s)"
-msgstr "Pantalla %d, Monitor %d (%s)"
-
-#: ../settings/main.c:1125
-#, c-format
-msgid "Screen %d, Monitor %d"
-msgstr "Pantalla %d, Monitor %d"
-
-#: ../settings/main.c:1128
-#, c-format
-msgid "Screen %d"
-msgstr "Pantalla %d"
-
-#: ../settings/main.c:1134
-#, c-format
-msgid "Monitor %d (%s)"
-msgstr "Monitor %d (%s)"
-
-#: ../settings/main.c:1139
-#, c-format
-msgid "Monitor %d"
-msgstr "Monitor %d"
-
-#: ../settings/main.c:1354
-msgid "Settings manager socket"
-msgstr "Sòcol del gestor d'akustaments"
-
-#: ../settings/main.c:1354
-msgid "SOCKET ID"
-msgstr "SÒCOL ID"
-
-#: ../settings/main.c:1355
-msgid "Version information"
-msgstr "Informació de la versió"
-
-#: ../settings/main.c:1375
-#, c-format
-msgid "Type '%s --help' for usage."
-msgstr "Feu «%s --help» per veure l'ús."
-
-#: ../settings/main.c:1387
-msgid "The Xfce development team. All rights reserved."
-msgstr "L'equip de desenvolupament de Xfce. Tots els drets reservats."
-
-#: ../settings/main.c:1388
-#, c-format
-msgid "Please report bugs to <%s>."
-msgstr "Envieu els errors a <%s>."
-
-#: ../settings/main.c:1395
-msgid "Desktop Settings"
-msgstr "Ajustaments de l'escriptori"
-
-#: ../settings/main.c:1397
-msgid "Unable to contact settings server"
-msgstr "No s’ha pogut contactar amb el servidor d'ajustaments"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop "
@@ -1259,13 +1268,11 @@ msgstr "_Cap"
 msgid "_Single image"
 msgstr "_Una imatge"
 
-#: ../settings/xfdesktop-settings.glade.h:71
-msgid "gtk-close"
-msgstr "gtk-close"
+#~ msgid "gtk-close"
+#~ msgstr "gtk-close"
 
-#: ../settings/xfdesktop-settings.glade.h:72
-msgid "gtk-help"
-msgstr "gtk-help"
+#~ msgid "gtk-help"
+#~ msgstr "gtk-help"
 
 #~ msgid "Add menu entry"
 #~ msgstr "Afegeix una entrada al menú"

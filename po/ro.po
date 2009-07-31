@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.6.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-21 23:29+0300\n"
+"POT-Creation-Date: 2009-07-30 23:17-0700\n"
 "PO-Revision-Date: 2009-04-21 23:23+0300\n"
 "Last-Translator: Mișu Moldovan <dumol@xfce.org>\n"
 "Language-Team: Romanian <xfce-i18n@xfce.org>\n"
@@ -17,92 +17,227 @@ msgstr ""
 "Plural-Forms: nplurals=3;plural=(n==1?0:(n==0||((n%100)>0&&(n%100)<20))?"
 "1:2)\n"
 
-#: ../common/xfdesktop-common.c:87 ../common/xfdesktop-common.c:191
+#: ../common/xfdesktop-common.c:95 ../common/xfdesktop-common.c:199
 #, c-format
 msgid "Backdrop list file is not valid"
 msgstr "Fișierul cu lista fundalurilor nu este valid"
 
-#: ../panel-plugin/desktop-menu-plugin.c:658
+#: ../panel-plugin/desktop-menu-plugin.c:639
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "Nu se poate lansa xfce4-menueditor: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:681
+#: ../panel-plugin/desktop-menu-plugin.c:662
 msgid "Select Icon"
 msgstr "Selectare iconiță"
 
-#: ../panel-plugin/desktop-menu-plugin.c:683
+#: ../panel-plugin/desktop-menu-plugin.c:664
 msgid "Select Menu File"
 msgstr "Selectare meniu fișier"
 
-#: ../panel-plugin/desktop-menu-plugin.c:710
+#: ../panel-plugin/desktop-menu-plugin.c:691
 msgid "All Files"
 msgstr "Toate fișierele"
 
-#: ../panel-plugin/desktop-menu-plugin.c:717
+#: ../panel-plugin/desktop-menu-plugin.c:698
 msgid "Image Files"
 msgstr "Fișiere tip imagine"
 
-#: ../panel-plugin/desktop-menu-plugin.c:720
+#: ../panel-plugin/desktop-menu-plugin.c:701
 msgid "Menu Files"
 msgstr "Fișiere meniu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:745
+#: ../panel-plugin/desktop-menu-plugin.c:726
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Meniu Xfce"
 
-#: ../panel-plugin/desktop-menu-plugin.c:757
+#: ../panel-plugin/desktop-menu-plugin.c:738
 msgid "Button"
 msgstr "Buton"
 
-#: ../panel-plugin/desktop-menu-plugin.c:770
+#: ../panel-plugin/desktop-menu-plugin.c:751
 msgid "Button _title:"
 msgstr "_Titlu buton:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:783
+#: ../panel-plugin/desktop-menu-plugin.c:764
 msgid "_Show title in button"
 msgstr "_Arată titlul în buton"
 
-#: ../panel-plugin/desktop-menu-plugin.c:790
+#: ../panel-plugin/desktop-menu-plugin.c:771
 msgid "Menu File"
 msgstr "Fișier meniu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:802
+#: ../panel-plugin/desktop-menu-plugin.c:783
 msgid "Use default _desktop menu file"
 msgstr "Utilizează fișierul implicit al meniului _desktop"
 
-#: ../panel-plugin/desktop-menu-plugin.c:811
+#: ../panel-plugin/desktop-menu-plugin.c:792
 msgid "Use _custom menu file:"
 msgstr "Utilizează un fișier meniu _personalizat"
 
-#: ../panel-plugin/desktop-menu-plugin.c:852
+#: ../panel-plugin/desktop-menu-plugin.c:833
 msgid "_Edit Menu"
 msgstr "_Editare meniu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:859
+#: ../panel-plugin/desktop-menu-plugin.c:840
 msgid "Icons"
 msgstr "Iconițe"
 
-#: ../panel-plugin/desktop-menu-plugin.c:871
+#: ../panel-plugin/desktop-menu-plugin.c:852
 msgid "_Button icon:"
 msgstr "Iconiță _buton:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:885
+#: ../panel-plugin/desktop-menu-plugin.c:866
 msgid "Show _icons in menu"
 msgstr "Arată _iconițele în meniu"
 
-#: ../panel-plugin/desktop-menu-plugin.c:920
+#: ../panel-plugin/desktop-menu-plugin.c:901
 msgid "There is already a panel menu registered for this screen"
 msgstr "Există deja un meniu de panou înregistrat pentru această sesiune"
 
-#: ../panel-plugin/desktop-menu-plugin.c:1035
+#: ../panel-plugin/desktop-menu-plugin.c:1016
 msgid "Edit Menu"
 msgstr "Editare meniu"
 
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
 msgstr "Arată un meniu conținând categorii de aplicații instalate"
+
+#. no need to escape markup; it's already done for us
+#: ../settings/main.c:162
+#, c-format
+msgid ""
+"%s\n"
+"<i>Size: %dx%d</i>"
+msgstr ""
+"%s\n"
+"<i>Mărime: %dx%d</i>"
+
+#: ../settings/main.c:272 ../src/xfdesktop-special-file-icon.c:259
+msgid "Home"
+msgstr "Acasă"
+
+#: ../settings/main.c:274
+msgid "Filesystem"
+msgstr "Sistem de fișiere"
+
+#: ../settings/main.c:276
+msgid "Trash"
+msgstr "Coș de gunoi"
+
+#: ../settings/main.c:278
+msgid "Removable Devices"
+msgstr "Dispozitive amovibile"
+
+#: ../settings/main.c:458
+#, c-format
+msgid "Cannot create backdrop list \"%s\""
+msgstr "Nu s-a putut crea lista imaginilor de fundal „%s”"
+
+#: ../settings/main.c:462 ../settings/main.c:779
+msgid "Backdrop List Error"
+msgstr "Eroare listă fundaluri"
+
+#: ../settings/main.c:487
+msgid "Create/Load Backdrop List"
+msgstr "Creare/Încărcare listă fundaluri"
+
+#: ../settings/main.c:511
+#, c-format
+msgid ""
+"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr ""
+"Fișierul „%s” nu este o fișier valid de tip listă de fundaluri. Doriți să-l "
+"suprascrieți?"
+
+#: ../settings/main.c:516
+msgid "Invalid List File"
+msgstr "Fișier listă nevalid"
+
+#: ../settings/main.c:519
+msgid "Overwriting the file will cause its contents to be lost."
+msgstr "Suprascrierea fișierului implică pierderea conținutului său."
+
+#: ../settings/main.c:521
+msgid "Replace"
+msgstr "Înlocuiește"
+
+#: ../settings/main.c:775
+#, c-format
+msgid "Failed to write backdrop list to \"%s\""
+msgstr "Nu s-a putut scrie lista fundalurilor în „%s”"
+
+#: ../settings/main.c:802
+msgid "Add Image File(s)"
+msgstr "Adăugare fișiere de tip imagine"
+
+#: ../settings/main.c:811
+msgid "Image files"
+msgstr "Fișiere imagine"
+
+#: ../settings/main.c:816
+msgid "All files"
+msgstr "Toate fișierele"
+
+#: ../settings/main.c:1250
+#, c-format
+msgid "Screen %d, Monitor %d (%s)"
+msgstr "Ecran %d, Monitor %d (%s)"
+
+#: ../settings/main.c:1255
+#, c-format
+msgid "Screen %d, Monitor %d"
+msgstr "Ecran %d, Monitor %d"
+
+#: ../settings/main.c:1258
+#, c-format
+msgid "Screen %d"
+msgstr "Ecran %d"
+
+#: ../settings/main.c:1264
+#, c-format
+msgid "Monitor %d (%s)"
+msgstr "Monitor %d (%s)"
+
+#: ../settings/main.c:1269
+#, c-format
+msgid "Monitor %d"
+msgstr "Monitor %d"
+
+#: ../settings/main.c:1471
+msgid "Settings manager socket"
+msgstr "Socket al managerului de opțiuni"
+
+#: ../settings/main.c:1471
+msgid "SOCKET ID"
+msgstr "SOCKET ID"
+
+#: ../settings/main.c:1472
+msgid "Version information"
+msgstr "Detalii despre versiune"
+
+#: ../settings/main.c:1492
+#, c-format
+msgid "Type '%s --help' for usage."
+msgstr "Încercați „%s --help” pentru lista opțiunilor de utilizare."
+
+#: ../settings/main.c:1504
+msgid "The Xfce development team. All rights reserved."
+msgstr "Echipa de dezvoltare Xfce. Toate drepturile sunt rezervate."
+
+#: ../settings/main.c:1505
+#, c-format
+msgid "Please report bugs to <%s>."
+msgstr "Raportați erorile la <%s>."
+
+#: ../settings/main.c:1512
+msgid "Desktop Settings"
+msgstr "Opțiuni desktop"
+
+#: ../settings/main.c:1514
+msgid "Unable to contact settings server"
+msgstr "Nu se poate contacta serverul opțiunilor"
 
 #: ../src/main.c:240
 #, c-format
@@ -401,7 +536,7 @@ msgid "_Open in New Window"
 msgstr "_Deschide în fereastră nouă"
 
 #: ../src/xfdesktop-file-icon-manager.c:1718
-#: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:560
+#: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:561
 msgid "_Open"
 msgstr "_Deschide"
 
@@ -450,7 +585,7 @@ msgid "Desktop _Settings..."
 msgstr "Preferințe des_ktop..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2065
-#: ../src/xfdesktop-volume-icon.c:606
+#: ../src/xfdesktop-volume-icon.c:610
 msgid "_Properties..."
 msgstr "_Proprietăți..."
 
@@ -608,19 +743,15 @@ msgstr ""
 "Modificat: %s\n"
 "Mărime: %s"
 
-#: ../src/xfdesktop-regular-file-icon.c:520
-#: ../src/xfdesktop-regular-file-icon.c:584
+#: ../src/xfdesktop-regular-file-icon.c:535
+#: ../src/xfdesktop-regular-file-icon.c:599
 msgid "Error"
 msgstr "Eroare"
 
-#: ../src/xfdesktop-regular-file-icon.c:581
+#: ../src/xfdesktop-regular-file-icon.c:596
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "Nu s-a putut redenumi „%s” în „%s”:"
-
-#: ../src/xfdesktop-special-file-icon.c:259 ../settings/main.c:267
-msgid "Home"
-msgstr "Acasă"
 
 #. FIXME: also display # of items in trash
 #: ../src/xfdesktop-special-file-icon.c:482
@@ -690,17 +821,17 @@ msgstr "Nu se poate ejecta „%s”:"
 msgid "Eject Failed"
 msgstr "Ejectare eșuată"
 
-#: ../src/xfdesktop-volume-icon.c:576
-msgid "E_ject Volume"
-msgstr "_Ejectare volum"
-
-#: ../src/xfdesktop-volume-icon.c:586
+#: ../src/xfdesktop-volume-icon.c:578
 msgid "_Unmount Volume"
 msgstr "_Demontare volum"
 
-#: ../src/xfdesktop-volume-icon.c:589
+#: ../src/xfdesktop-volume-icon.c:581
 msgid "_Mount Volume"
 msgstr "_Montare volum"
+
+#: ../src/xfdesktop-volume-icon.c:595
+msgid "E_ject Volume"
+msgstr "_Ejectare volum"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
 msgid "Accessories"
@@ -773,6 +904,15 @@ msgstr "Aplicații ce nu intră în celelalte categorii"
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:2
 msgid "Other"
 msgstr "Altele"
+
+#: ../modules/menu/directory-data/xfce-science.directory.in.h:1
+msgid "Science"
+msgstr ""
+
+#: ../modules/menu/directory-data/xfce-science.directory.in.h:2
+#, fuzzy
+msgid "Scientific software"
+msgstr "Software educațional"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
 msgid "Screensaver applets"
@@ -853,137 +993,6 @@ msgstr "Navigați pe Internet"
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:2
 msgid "Web Browser"
 msgstr "Navigator Internet"
-
-#. no need to escape markup; it's already done for us
-#: ../settings/main.c:157
-#, c-format
-msgid ""
-"%s\n"
-"<i>Size: %dx%d</i>"
-msgstr ""
-"%s\n"
-"<i>Mărime: %dx%d</i>"
-
-#: ../settings/main.c:269
-msgid "Filesystem"
-msgstr "Sistem de fișiere"
-
-#: ../settings/main.c:271
-msgid "Trash"
-msgstr "Coș de gunoi"
-
-#: ../settings/main.c:273
-msgid "Removable Devices"
-msgstr "Dispozitive amovibile"
-
-#: ../settings/main.c:426
-#, c-format
-msgid "Cannot create backdrop list \"%s\""
-msgstr "Nu s-a putut crea lista imaginilor de fundal „%s”"
-
-#: ../settings/main.c:430 ../settings/main.c:789
-msgid "Backdrop List Error"
-msgstr "Eroare listă fundaluri"
-
-#: ../settings/main.c:455
-msgid "Create/Load Backdrop List"
-msgstr "Creare/Încărcare listă fundaluri"
-
-#: ../settings/main.c:479
-#, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
-"Fișierul „%s” nu este o fișier valid de tip listă de fundaluri. Doriți să-l "
-"suprascrieți?"
-
-#: ../settings/main.c:484
-msgid "Invalid List File"
-msgstr "Fișier listă nevalid"
-
-#: ../settings/main.c:487
-msgid "Overwriting the file will cause its contents to be lost."
-msgstr "Suprascrierea fișierului implică pierderea conținutului său."
-
-#: ../settings/main.c:489
-msgid "Replace"
-msgstr "Înlocuiește"
-
-#: ../settings/main.c:785
-#, c-format
-msgid "Failed to write backdrop list to \"%s\""
-msgstr "Nu s-a putut scrie lista fundalurilor în „%s”"
-
-#: ../settings/main.c:812
-msgid "Add Image File(s)"
-msgstr "Adăugare fișiere de tip imagine"
-
-#: ../settings/main.c:821
-msgid "Image files"
-msgstr "Fișiere imagine"
-
-#: ../settings/main.c:826
-msgid "All files"
-msgstr "Toate fișierele"
-
-#: ../settings/main.c:1132
-#, c-format
-msgid "Screen %d, Monitor %d (%s)"
-msgstr "Ecran %d, Monitor %d (%s)"
-
-#: ../settings/main.c:1137
-#, c-format
-msgid "Screen %d, Monitor %d"
-msgstr "Ecran %d, Monitor %d"
-
-#: ../settings/main.c:1140
-#, c-format
-msgid "Screen %d"
-msgstr "Ecran %d"
-
-#: ../settings/main.c:1146
-#, c-format
-msgid "Monitor %d (%s)"
-msgstr "Monitor %d (%s)"
-
-#: ../settings/main.c:1151
-#, c-format
-msgid "Monitor %d"
-msgstr "Monitor %d"
-
-#: ../settings/main.c:1366
-msgid "Settings manager socket"
-msgstr "Socket al managerului de opțiuni"
-
-#: ../settings/main.c:1366
-msgid "SOCKET ID"
-msgstr "SOCKET ID"
-
-#: ../settings/main.c:1367
-msgid "Version information"
-msgstr "Detalii despre versiune"
-
-#: ../settings/main.c:1387
-#, c-format
-msgid "Type '%s --help' for usage."
-msgstr "Încercați „%s --help” pentru lista opțiunilor de utilizare."
-
-#: ../settings/main.c:1399
-msgid "The Xfce development team. All rights reserved."
-msgstr "Echipa de dezvoltare Xfce. Toate drepturile sunt rezervate."
-
-#: ../settings/main.c:1400
-#, c-format
-msgid "Please report bugs to <%s>."
-msgstr "Raportați erorile la <%s>."
-
-#: ../settings/main.c:1407
-msgid "Desktop Settings"
-msgstr "Opțiuni desktop"
-
-#: ../settings/main.c:1409
-msgid "Unable to contact settings server"
-msgstr "Nu se poate contacta serverul opțiunilor"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop "
