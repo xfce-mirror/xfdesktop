@@ -1,112 +1,107 @@
-# Galician translation of xfdesktop
-# Copyright (C) 2006, 2008, 2009 Leandro Regueiro
-# This file is distributed under the same license as the xfce package.
-#
-# Leandro Regueiro <leandro.regueiro@gmail.com>, 2006, 2008, 2009.
-#
-# Proxecto Trasno - Adaptación do software libre á lingua galega:  Se desexas
-# colaborar connosco, podes atopar máis información en <http://trasno.net>
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Baurzhan Muftakhidinov <baurthefirst@gmail.com>, 2009.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop 4.4.0\n"
+"Project-Id-Version: trunk\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-07-30 23:17-0700\n"
-"PO-Revision-Date: 2009-08-08 13:33+0200\n"
-"Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
-"Language-Team: Galician <proxecto@trasno.net>\n"
+"PO-Revision-Date: 2009-07-20 20:41+0600\n"
+"Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
+"Language-Team: Kazakh <kk_KZ@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"Plural-Forms: nplurals=1; plural=0\n"
 
-# backdrop=tapiz,fondo de escritorio???
 #: ../common/xfdesktop-common.c:95 ../common/xfdesktop-common.c:199
-#, fuzzy, c-format
+#, c-format
 msgid "Backdrop list file is not valid"
-msgstr "O ficheiro de lista de            fondos de escritorio/tapices???         non é un ficheiro válido"
+msgstr "Фон суреттер тізімі бар файлы қате"
 
 #: ../panel-plugin/desktop-menu-plugin.c:639
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
-msgstr "Non foi posible iniciar xfce4-menueditor: %s"
+msgstr "Xfce4-menueditor жөнелту қатесі: %s"
 
 #: ../panel-plugin/desktop-menu-plugin.c:662
 msgid "Select Icon"
-msgstr "Seleccionar unha icona..."
+msgstr "Таңбашаны таңдаңыз"
 
 #: ../panel-plugin/desktop-menu-plugin.c:664
 msgid "Select Menu File"
-msgstr "Seleccionar o ficheiro de menú"
+msgstr "Мәзір файлын таңдаңыз"
 
 #: ../panel-plugin/desktop-menu-plugin.c:691
 msgid "All Files"
-msgstr "Tódolos ficheiros"
+msgstr "Барлық файлдар"
 
 #: ../panel-plugin/desktop-menu-plugin.c:698
 msgid "Image Files"
-msgstr "Ficheiros de imaxe"
+msgstr "Сурет файлдары"
 
 #: ../panel-plugin/desktop-menu-plugin.c:701
 msgid "Menu Files"
-msgstr "Ficheiros de menú"
+msgstr "Мәзір файлдары"
 
 #: ../panel-plugin/desktop-menu-plugin.c:726
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
-msgstr "Menú de Xfce"
+msgstr "Xfce мәзірі"
 
 #: ../panel-plugin/desktop-menu-plugin.c:738
 msgid "Button"
-msgstr "Botón"
+msgstr "Батырма"
 
 #: ../panel-plugin/desktop-menu-plugin.c:751
 msgid "Button _title:"
-msgstr "_Título do botón:"
+msgstr "Батырма мә_тіні:"
 
 #: ../panel-plugin/desktop-menu-plugin.c:764
 msgid "_Show title in button"
-msgstr "Mo_strar o título no botón"
+msgstr "Батырмада мәтінді көр_сету"
 
 #: ../panel-plugin/desktop-menu-plugin.c:771
 msgid "Menu File"
-msgstr "Ficheiro de menú"
+msgstr "Мәзір файлы"
 
 #: ../panel-plugin/desktop-menu-plugin.c:783
 msgid "Use default _desktop menu file"
-msgstr "Usar o ficheiro de menú de _escritorio predeterminado"
+msgstr "Бас_тапқы жұмыс үстел мәзір файлын қолдану"
 
 #: ../panel-plugin/desktop-menu-plugin.c:792
 msgid "Use _custom menu file:"
-msgstr "Usar un ficheiro de menú _personalizado:"
+msgstr "Ба_сқа мәзір файлын қолдану:"
 
 #: ../panel-plugin/desktop-menu-plugin.c:833
 msgid "_Edit Menu"
-msgstr "_Editar menú"
+msgstr "Мәзірді түз_ету"
 
 #: ../panel-plugin/desktop-menu-plugin.c:840
 msgid "Icons"
-msgstr "Iconas"
+msgstr "Таңбашалар"
 
 #: ../panel-plugin/desktop-menu-plugin.c:852
 msgid "_Button icon:"
-msgstr "Icona do _botón:"
+msgstr "_Батырма таңбашасы:"
 
 #: ../panel-plugin/desktop-menu-plugin.c:866
 msgid "Show _icons in menu"
-msgstr "Mostrar _iconas nos menús"
+msgstr "Мәзірде т_аңбашаларды көрсету"
 
 #: ../panel-plugin/desktop-menu-plugin.c:901
 msgid "There is already a panel menu registered for this screen"
-msgstr "Xa hai un menú de panel rexistrado para esta pantalla"
+msgstr "Бұл сессия үшін тіркелген панель мәзірі бар болып тұр"
 
 #: ../panel-plugin/desktop-menu-plugin.c:1016
 msgid "Edit Menu"
-msgstr "Editar menú"
+msgstr "Мәзірді түзету"
 
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 msgid "Shows a menu containing categories of installed applications"
-msgstr "Mostra un menú que contén as categorías das aplicacións instaladas"
+msgstr "Орнатылған қолданбаларды топтарға бөлінген мәзірді көрсету"
 
 #. no need to escape markup; it's already done for us
 #: ../settings/main.c:162
@@ -116,272 +111,269 @@ msgid ""
 "<i>Size: %dx%d</i>"
 msgstr ""
 "%s\n"
-"<i>Tamaño: %dx%d</i>"
+"<i>Өлшемі: %dx%d</i>"
 
 #: ../settings/main.c:272 ../src/xfdesktop-special-file-icon.c:259
 msgid "Home"
-msgstr "Inicio"
+msgstr "Үй бумасы"
 
 #: ../settings/main.c:274
 msgid "Filesystem"
-msgstr "Sistema de ficheiros"
+msgstr "Файлдық жүйе"
 
 #: ../settings/main.c:276
 msgid "Trash"
-msgstr "Lixo"
+msgstr "Қоқыс шелегі"
 
 #: ../settings/main.c:278
 msgid "Removable Devices"
-msgstr "Dispositivos extraíbles"
+msgstr "Ауыстырмалы құрылғылар"
 
 #: ../settings/main.c:458
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot create backdrop list \"%s\""
-msgstr "Non se puido crear a lista de                  \"%s\""
+msgstr "\"%s\" фон сурет тізімі файлын жасау мүмкін емес"
 
-#, fuzzy
 #: ../settings/main.c:462 ../settings/main.c:779
 msgid "Backdrop List Error"
-msgstr "Erro de lista de              "
+msgstr "Фон суреттер тізімі файлы қате"
 
-#, fuzzy
 #: ../settings/main.c:487
 msgid "Create/Load Backdrop List"
-msgstr "Crear/cargar unha lista de                           fondos de escritorio???"
+msgstr "Фон суреттер тізімі файлын жасау/жүктеу"
 
 #: ../settings/main.c:511
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr "O ficheiro \"%s\" non é un ficheiro de lista de                 correcto. Desexa sobrescribilo?"
+msgstr ""
+"\"%s\" фон суреттер тізімі бар дұрыс файл емес. Оны үстінен жазамыз ба?"
 
 #: ../settings/main.c:516
 msgid "Invalid List File"
-msgstr "Ficheiro de lista incorrecto"
+msgstr "Қате тізім файлы"
 
 #: ../settings/main.c:519
 msgid "Overwriting the file will cause its contents to be lost."
-msgstr "A sobrescritura do ficheiro fará que se perda o seu contido."
+msgstr "Файлды үстінен жазу құрамасының жоғалуына әкеп соғады."
 
 #: ../settings/main.c:521
 msgid "Replace"
-msgstr "Substituír"
+msgstr "Алмастыру"
 
 #: ../settings/main.c:775
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to write backdrop list to \"%s\""
-msgstr "Produciuse un erro ao escribir a lista de                        en \"%s\""
+msgstr "Фон суреттер тізімі бар файлды \"%s\" -ке жазу қатесі"
 
 #: ../settings/main.c:802
 msgid "Add Image File(s)"
-msgstr "Engadir ficheiros de imaxe"
+msgstr "Сурет файл(дар)ды қосу"
 
 #: ../settings/main.c:811
 msgid "Image files"
-msgstr "Ficheiros de imaxe"
+msgstr "Сурет файлдары"
 
 #: ../settings/main.c:816
 msgid "All files"
-msgstr "Tódolos ficheiros"
+msgstr "Барлық файлдар"
 
 #: ../settings/main.c:1250
 #, c-format
 msgid "Screen %d, Monitor %d (%s)"
-msgstr "Pantalla %d, Monitor %d (%s)"
+msgstr "Экран %d, Монитор %d (%s)"
 
 #: ../settings/main.c:1255
 #, c-format
 msgid "Screen %d, Monitor %d"
-msgstr "Pantalla %d, Monitor %d"
+msgstr "Экран %d, Монитор %d"
 
 #: ../settings/main.c:1258
 #, c-format
 msgid "Screen %d"
-msgstr "Pantalla %d"
+msgstr "Экран %d"
 
 #: ../settings/main.c:1264
 #, c-format
 msgid "Monitor %d (%s)"
-msgstr "Monitor %d (%s)"
+msgstr "Монитор %d (%s)"
 
 #: ../settings/main.c:1269
 #, c-format
 msgid "Monitor %d"
-msgstr "Monitor %d"
+msgstr "Монитор %d"
 
 #: ../settings/main.c:1471
 msgid "Settings manager socket"
-msgstr "Conectador do xestor de configuración"
+msgstr "Баптаулар басқарушысының сокеті"
 
 #: ../settings/main.c:1471
 msgid "SOCKET ID"
-msgstr "ID CONECTADOR"
+msgstr "SOCKET ID"
 
 #: ../settings/main.c:1472
 msgid "Version information"
-msgstr "Información da versión"
+msgstr "Нұсқа ақпараты"
 
 #: ../settings/main.c:1492
 #, c-format
 msgid "Type '%s --help' for usage."
-msgstr "Introduza '%s --help'  para ver a información de uso."
+msgstr "Көмек үшін '%s --help' енгізіңіз."
 
 #: ../settings/main.c:1504
 msgid "The Xfce development team. All rights reserved."
-msgstr "O equipo de desenvolvemento de Xfce. Tódolos dereitos reservados."
+msgstr "Xfce өндіру тобы. Барлық құқықтары қорғалған."
 
 #: ../settings/main.c:1505
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr "Comuníquelle os erros a <%s>."
+msgstr "Ақаулықтар жөнінде хабарласыңыз: <%s>."
 
 #: ../settings/main.c:1512
 msgid "Desktop Settings"
-msgstr "Configuración do escritorio"
+msgstr "Жұмыс үстел баптаулары"
 
 #: ../settings/main.c:1514
 msgid "Unable to contact settings server"
-msgstr "Non foi posible contactar co servidor de configuración"
+msgstr "Баптаулар қызметімен байланыс орнату мүмкін емес"
 
 #: ../src/main.c:240
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr "Isto é %s versión %s, executándose en Xfce %s.\n"
+msgstr "Бұл %s, нұсқасы %s, Xfce %s қосылған.\n"
 
 #: ../src/main.c:242
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr "Construído con GTK+ %d.%d.%d, enlazado con GTK+ %d.%d.%d."
+msgstr "Жиналған GTK+ %d.%d.%d нұсқасымен, байланысқан GTK+ %d.%d.%d."
 
 #: ../src/main.c:246
 #, c-format
 msgid "Build options:\n"
-msgstr "Opcións de compilación:\n"
+msgstr "Жинау опциялары:\n"
 
 #: ../src/main.c:247
 #, c-format
 msgid "    Desktop Menu:        %s\n"
-msgstr "    Menú do escritorio:        %s\n"
+msgstr "    Жұмыс үстел мәзірі:        %s\n"
 
 #: ../src/main.c:249 ../src/main.c:256 ../src/main.c:263
 msgid "enabled"
-msgstr "activado"
+msgstr "қосулы"
 
 #: ../src/main.c:251 ../src/main.c:258 ../src/main.c:265
 msgid "disabled"
-msgstr "desactivado"
+msgstr "сөндірулі"
 
 #: ../src/main.c:254
 #, c-format
 msgid "    Desktop Icons:       %s\n"
-msgstr "    Iconas do escritorio:       %s\n"
+msgstr "    Жұмыс үстел таңбашалары:       %s\n"
 
 #: ../src/main.c:261
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr "    Iconas de ficheiro do escritorio:  %s\n"
+msgstr "    Жұмыс үстел файл таңбашалары:  %s\n"
 
 #: ../src/main.c:290
 #, c-format
 msgid "%s: Unknown option: %s\n"
-msgstr "%s: Opción descoñecida: %s\n"
+msgstr "%s: Белгісіз опция: %s\n"
 
 #: ../src/main.c:291
 #, c-format
 msgid "Options are:\n"
-msgstr "As opcións son:\n"
+msgstr "Опциялары:\n"
 
 #: ../src/main.c:292
 #, c-format
 msgid "    --reload      Reload all settings, refresh image list\n"
-msgstr ""
-"    --reload      Recarga toda a configuración, actualiza a lista de imaxes\n"
+msgstr "    --reload      Баптауларды қайта жүктеу, суреттер тізімін жаңарту\n"
 
 #: ../src/main.c:293
 #, c-format
 msgid "    --menu        Pop up the menu (at the current mouse position)\n"
-msgstr "    --menu        Mostra o menú (na posición actual do rato)\n"
+msgstr "    --menu        Мәзірді көрсету (тышқанның ағымдағы орнында)\n"
 
 #: ../src/main.c:294
 #, c-format
 msgid ""
 "    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
-"    --windowlist  Mostra a lista de ventás (na posición actual do rato)\n"
+"    --windowlist  Терезелер тізім шығару (тышқанның ағымдағы орнында)\n"
 
 #: ../src/main.c:295
 #, c-format
 msgid "    --quit        Cause xfdesktop to quit\n"
-msgstr "    --quit        Provoca a saída de xfdesktop\n"
+msgstr "    --quit        Xfdesktop жұмысын аяқтайды\n"
 
 #: ../src/main.c:316
 #, c-format
 msgid "%s is not running.\n"
-msgstr "%s non se está executando.\n"
+msgstr "%s қосулы тұрған жоқ.\n"
 
 #: ../src/menu.c:113
 msgid "_Applications"
-msgstr "_Aplicacións"
+msgstr "Қолд_анбалар"
 
 #: ../src/windowlist.c:236
 msgid "Window List"
-msgstr "Lista de ventás"
+msgstr "Терезелер тізімі"
 
 #: ../src/windowlist.c:262
 #, c-format
 msgid "<b>Workspace %d</b>"
-msgstr "<b>Espazo de traballo %d</b>"
+msgstr "<b>Жұмыс орны %d</b>"
 
 #: ../src/windowlist.c:271
 #, c-format
 msgid "Workspace %d"
-msgstr "Espazo de traballo %d"
+msgstr "Жұмыс орны %d"
 
 #: ../src/windowlist.c:273
 #, c-format
 msgid "<i>Workspace %d</i>"
-msgstr "<i>Espazo de traballo %d</i>"
+msgstr "<i>Жұмыс орны %d</i>"
 
 #: ../src/windowlist.c:370 ../src/windowlist.c:373
 msgid "_Add Workspace"
-msgstr "Engadir _espazo de traballo"
+msgstr "_Жұмыс орнын қосу"
 
 #: ../src/windowlist.c:381
 #, c-format
 msgid "_Remove Workspace %d"
-msgstr "_Eliminar o espazo de traballo %d"
+msgstr "%d _жұмыс орнын өшіру"
 
 #: ../src/windowlist.c:384
 #, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "_Eliminar o espazo de traballo '%s'"
+msgstr "'%s' жұ_мыс орнын өшіру"
 
 #: ../src/xfce-desktop.c:742 ../settings/xfdesktop-settings.glade.h:20
 msgid "Desktop"
-msgstr "Escritorio"
+msgstr "Жұмыс үстелі"
 
 #: ../src/xfce-desktop.c:1010
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
-msgstr "Non foi posible cargar a imaxe dende o ficheiro de lista de               \"%s\""
+msgstr "\"%s\" фон суреттер тізімі бар файлдан суретті жүктеу мүмкін емес"
 
 #: ../src/xfce-desktop.c:1012
 msgid "Desktop Error"
-msgstr "Erro de escritorio"
+msgstr "Жұмыс үстелі қатесі"
 
 #: ../src/xfdesktop-file-icon-manager.c:478
 #, c-format
 msgid ""
 "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr ""
-"Xfdesktop non foi quen de crear o cartafol \"%s\" para almacenar o elementos "
-"do escritorio:"
+"Xfdesktop жұмыс үстел құрамасын сақтау үшін \"%s\" бумасын жасай алмады:"
 
 #: ../src/xfdesktop-file-icon-manager.c:480
 #: ../src/xfdesktop-file-icon-manager.c:491
 #: ../src/xfdesktop-file-icon-manager.c:1206
 msgid "Create Folder Failed"
-msgstr "Fallo ao crear o cartafol"
+msgstr "Буманы жасау сәтсіз аяқталды"
 
 #: ../src/xfdesktop-file-icon-manager.c:489
 #, c-format
@@ -389,51 +381,51 @@ msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
 "folder."
 msgstr ""
-"Xfdesktop non é quen de usar \"%s\" para gardar os elementos do escritorios "
-"xa que non é un cartafol."
+"Xfdesktop жұмыс үстел құрамасын сақтау үшін \"%s\" қолдана алмайды - ол бума "
+"емес."
 
 #: ../src/xfdesktop-file-icon-manager.c:493
 msgid "Please delete or rename the file."
-msgstr "Elimine ou renomee o ficheiro."
+msgstr "Файлды өшіріңіз не атын ауыстырыңыз."
 
 #: ../src/xfdesktop-file-icon-manager.c:630
 #, c-format
 msgid "Rename \"%s\""
-msgstr "Renomear \"%s\""
+msgstr "\"%s\" атын ауыстыру"
 
 #: ../src/xfdesktop-file-icon-manager.c:637
 #: ../src/xfdesktop-file-icon-manager.c:1278
 #: ../src/xfdesktop-file-icon-manager.c:1369
 #: ../src/xfdesktop-file-icon-manager.c:1380
 msgid "Enter the new name:"
-msgstr "Introduza o novo nome:"
+msgstr "Жаңа атын енгізіңіз:"
 
 #: ../src/xfdesktop-file-icon-manager.c:639
 msgid "Rename"
-msgstr "Renomear"
+msgstr "Атын ауыстыру"
 
 #: ../src/xfdesktop-file-icon-manager.c:676
 #, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
-msgstr "Está seguro de que desexa eliminar \"%s\"?"
+msgstr "\"%s\" өшіруді шынымен қалайсыз ба?"
 
 #: ../src/xfdesktop-file-icon-manager.c:679 ../src/xfdesktop-file-utils.c:55
 msgid "Question"
-msgstr "Pregunta"
+msgstr "Сұрақ"
 
 #: ../src/xfdesktop-file-icon-manager.c:681
 #: ../src/xfdesktop-file-icon-manager.c:701
 msgid "If you delete a file, it is permanently lost."
-msgstr "Se elimina un ficheiro, este perderase para sempre."
+msgstr "Файлды өшірсеңіз, оны қайтара алмайсыз,"
 
 #: ../src/xfdesktop-file-icon-manager.c:695
 #, c-format
 msgid "Are you sure you want to delete the following %d files?"
-msgstr "Está seguro de que desexa eliminar os seguintes %d ficheiros?"
+msgstr "Келесі %d файлды өшіруді шынымен қалайсыз ба?"
 
 #: ../src/xfdesktop-file-icon-manager.c:698
 msgid "Delete Multiple Files"
-msgstr "Eliminar varios ficheiros"
+msgstr "Бірнеше файлды өшіру"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:917
@@ -441,7 +433,7 @@ msgstr "Eliminar varios ficheiros"
 #: ../src/xfdesktop-file-utils.c:353
 #, c-format
 msgid "Unable to launch \"%s\":"
-msgstr "Non se puido iniciar \"%s\":"
+msgstr "\"%s\" жөнелту қатесі:"
 
 #: ../src/xfdesktop-file-icon-manager.c:919
 #: ../src/xfdesktop-file-icon-manager.c:977
@@ -449,232 +441,231 @@ msgstr "Non se puido iniciar \"%s\":"
 #: ../src/xfdesktop-file-icon-manager.c:1634 ../src/xfdesktop-file-icon.c:142
 #: ../src/xfdesktop-file-utils.c:356
 msgid "Launch Error"
-msgstr "Erro ao iniciar"
+msgstr "Жөнелту қатесі"
 
 #: ../src/xfdesktop-file-icon-manager.c:978
 msgid "The application chooser could not be opened."
-msgstr "Non se puido abrir o selector de aplicacións."
+msgstr "Қолданбаларды таңдаушыны ашу мүмкін емес."
 
 #: ../src/xfdesktop-file-icon-manager.c:979 ../src/xfdesktop-file-utils.c:358
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
 msgstr ""
-"Esta funcionalidade require un servizo de xestor de ficheiros (como o "
-"proporcionado por Thunar)."
+"Бұл мүмкіндік бар болып тұрған файл басқарушы қызметін талап етеді (Thunar "
+"ұсынатын қызмет сияқты)."
 
 #: ../src/xfdesktop-file-icon-manager.c:1137
 #, c-format
 msgid "_Open With \"%s\""
-msgstr "_Abrir con \"%s\""
+msgstr "\"%s\" _көмегімен ашу"
 
 #: ../src/xfdesktop-file-icon-manager.c:1140
 #, c-format
 msgid "Open With \"%s\""
-msgstr "Abrir con \"%s\""
+msgstr "\"%s\" көмегімен ашу"
 
 #: ../src/xfdesktop-file-icon-manager.c:1203
 #, c-format
 msgid "Unable to create folder named \"%s\":"
-msgstr "Non foi posible crear un cartafol chamado \"%s\":"
+msgstr "\"%s\" атымен буманы жасау мүмкін емес:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1242
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr ""
-"Non se puido iniciar \"exo-desktop-item-edit\", o cal é imprescindible para "
-"crear e modificar os iniciadores e as ligazóns do escritorio."
+"\"exo-desktop-item-edit\" жөнелту қатесі, ол жұмыс үстелінде жөнелткіштерді "
+"мен сілтемелерді жасау үшін керек."
 
 #: ../src/xfdesktop-file-icon-manager.c:1275
 msgid "Create New Folder"
-msgstr "Crear un novo cartafol"
+msgstr "Жаңа буманы жасау"
 
 #: ../src/xfdesktop-file-icon-manager.c:1279
 msgid "New Folder"
-msgstr "Novo cartafol"
+msgstr "Жаңа бума"
 
 #: ../src/xfdesktop-file-icon-manager.c:1280
 #: ../src/xfdesktop-file-icon-manager.c:1371
 #: ../src/xfdesktop-file-icon-manager.c:1382
 msgid "Create"
-msgstr "Crear"
+msgstr "Жасау"
 
 #: ../src/xfdesktop-file-icon-manager.c:1316
 #, c-format
 msgid "Unable to create file named \"%s\":"
-msgstr "Non foi posible crear un ficheiro chamado \"%s\":"
+msgstr "\"%s\" атымен файлды жасау мүмкін емес:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1319
 msgid "Create File Failed"
-msgstr "Fallo ao crear o ficheiro"
+msgstr "Файлды жасау сәтсіз аяқталды"
 
 #: ../src/xfdesktop-file-icon-manager.c:1358
 #, c-format
 msgid "Create Document from template \"%s\""
-msgstr "Crear un documento a partir do modelo \"%s\""
+msgstr "\"%s\" үлгісінен құжатты жасау"
 
 #: ../src/xfdesktop-file-icon-manager.c:1377
 msgid "Create Empty File"
-msgstr "Crear un ficheiro baleiro"
+msgstr "Бос файлды жасау"
 
 #: ../src/xfdesktop-file-icon-manager.c:1381
 msgid "New Empty File"
-msgstr "Novo ficheiro baleiro"
+msgstr "Жаңа бос файл"
 
 #: ../src/xfdesktop-file-icon-manager.c:1414
 #, c-format
 msgid "Unable to create file \"%s\":"
-msgstr "Non é posible crear o ficheiro \"%s\":"
+msgstr "\"%s\" файлын жасау мүмкін емес:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1415
 msgid "Create Error"
-msgstr "Erro de creación"
+msgstr "Жасау қатесі"
 
 #: ../src/xfdesktop-file-icon-manager.c:1700
 msgid "_Open all"
-msgstr "_Abrir todo"
+msgstr "Б_арлығын ашу"
 
 #: ../src/xfdesktop-file-icon-manager.c:1716
 msgid "_Open in New Window"
-msgstr "_Abrir nunha nova ventá"
+msgstr "_Жаңа терезеде ашу"
 
 #: ../src/xfdesktop-file-icon-manager.c:1718
 #: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:561
 msgid "_Open"
-msgstr "_Abrir"
+msgstr "А_шу"
 
 #: ../src/xfdesktop-file-icon-manager.c:1733
 msgid "Create _Launcher..."
-msgstr "Crear un _iniciador..."
+msgstr "Жөне_лткішті жасау..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1754
 msgid "Create _URL Link..."
-msgstr "Crear ligazón _URL..."
+msgstr "URL сіл_темесін жасау..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1771
 msgid "Create _Folder..."
-msgstr "Crear _cartafol..."
+msgstr "_Буманы жасау..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1791
 msgid "Create From _Template"
-msgstr "_Crear a partir de modelo"
+msgstr "Үл_гіден жасау"
 
 #: ../src/xfdesktop-file-icon-manager.c:1825
 msgid "_Empty File"
-msgstr "Ficheiro _baleiro"
+msgstr "Б_ос файл"
 
 #: ../src/xfdesktop-file-icon-manager.c:1841
 msgid "_Execute"
-msgstr "_Executar"
+msgstr "О_рындау"
 
 #: ../src/xfdesktop-file-icon-manager.c:1859
 msgid "_Edit Launcher"
-msgstr "_Editar iniciador"
+msgstr "Жөн_елткішті түзету"
 
 #: ../src/xfdesktop-file-icon-manager.c:1899
 msgid "Open With"
-msgstr "Abrir con"
+msgstr "Көмегімен ашу"
 
 #: ../src/xfdesktop-file-icon-manager.c:1930
 msgid "Open With Other _Application..."
-msgstr "Abrir con outra _aplicación..."
+msgstr "Б_асқа қолданба көмегімен ашу..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2037
 msgid "_Rename..."
-msgstr "_Renomear..."
+msgstr "Атын ау_ыстыру..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2055
 msgid "Desktop _Settings..."
-msgstr "Configuración do e_scritorio..."
+msgstr "Жұмыс ү_стелінің баптаулары..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2065
 #: ../src/xfdesktop-volume-icon.c:610
 msgid "_Properties..."
-msgstr "_Propiedades..."
+msgstr "Қас_иеттері..."
 
 #: ../src/xfdesktop-file-icon-manager.c:3304
 #: ../src/xfdesktop-regular-file-icon.c:382
 #, c-format
 msgid "Failed to run \"%s\":"
-msgstr "Fallo ao executar \"%s\":"
+msgstr "\"%s\" жіберу қатесі:"
 
 #: ../src/xfdesktop-file-icon-manager.c:3306
 #: ../src/xfdesktop-regular-file-icon.c:384
 msgid "Run Error"
-msgstr "Erro de execución"
+msgstr "Жіберу қатесі"
 
 #: ../src/xfdesktop-file-icon.c:144
 msgid "The associated application could not be found or executed."
-msgstr "Non se pode atopar ou executar a aplicación asociada."
+msgstr "Сәйкестелген қолданбаны табу не орындау мүмкін емес."
 
 #: ../src/xfdesktop-file-properties-dialog.c:103
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
-msgstr ""
-"Non foi posible definir a aplicación predeterminada de \"%s\" como \"%s\":"
+msgstr "\"%s\" үшін негізгі қолданба ретінде \"%s\" орнату қатемен аяқталды:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:106
 msgid "Properties Error"
-msgstr "Erro de propiedades"
+msgstr "Қасиеттер қатесі"
 
 #: ../src/xfdesktop-file-properties-dialog.c:138
 msgid "None"
-msgstr "Ningún"
+msgstr "Жоқ"
 
 #: ../src/xfdesktop-file-properties-dialog.c:138
 msgid "Write only"
-msgstr "Só de escritura"
+msgstr "Тек жазу"
 
 #: ../src/xfdesktop-file-properties-dialog.c:138
 msgid "Read only"
-msgstr "Só de lectura"
+msgstr "Тек оқу"
 
 #: ../src/xfdesktop-file-properties-dialog.c:138
 msgid "Read & Write"
-msgstr "Lectura e escritura"
+msgstr "Оқу мен жазу"
 
 #: ../src/xfdesktop-file-properties-dialog.c:163
 msgid "General"
-msgstr "Xeral"
+msgstr "Жалпы"
 
 #: ../src/xfdesktop-file-properties-dialog.c:188
 msgid "Name:"
-msgstr "Nome:"
+msgstr "Аты:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:214
 msgid "Kind:"
-msgstr "Tipo:"
+msgstr "Түрі:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:234
 msgid "Link Target:"
-msgstr "Destino da ligazón:"
+msgstr "Сілтеме мақсаты:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:251
 #: ../src/xfdesktop-file-properties-dialog.c:410
 #: ../src/xfdesktop-volume-icon.c:476 ../src/xfdesktop-volume-icon.c:482
 msgid "(unknown)"
-msgstr "(descoñecido)"
+msgstr "(белгісіз)"
 
 #: ../src/xfdesktop-file-properties-dialog.c:273
 msgid "Open With:"
-msgstr "Abrir con:"
+msgstr "Көмегімен ашу:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:350
 msgid "Modified:"
-msgstr "Modificado:"
+msgstr "Өзгертілген:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:368
 msgid "Accessed:"
-msgstr "Accedido:"
+msgstr "Қатынаған:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:395
 msgid "Free Space:"
-msgstr "Espazo libre:"
+msgstr "Бос орын:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:397
 msgid "Size:"
-msgstr "Tamaño:"
+msgstr "Өлшемі:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:413
 #: ../src/xfdesktop-regular-file-icon.c:486
@@ -685,56 +676,56 @@ msgstr "%s (%"
 #. permissions tab
 #: ../src/xfdesktop-file-properties-dialog.c:428
 msgid "Permissions"
-msgstr "Permisos"
+msgstr "Рұқсаттар"
 
 #: ../src/xfdesktop-file-properties-dialog.c:450
 msgid "Owner:"
-msgstr "Dono:"
+msgstr "Иесі:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:472
 #: ../src/xfdesktop-file-properties-dialog.c:510
 msgid "Access:"
-msgstr "Acceso:"
+msgstr "Қатынас:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:495
 msgid "Group:"
-msgstr "Grupo:"
+msgstr "Тобы:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:533
 msgid "Others:"
-msgstr "Outros:"
+msgstr "Басқалар:"
 
 #: ../src/xfdesktop-file-utils.c:74
 msgid "Yes to _all"
-msgstr "Si a t_odo"
+msgstr "Б_арлығына иә"
 
 #: ../src/xfdesktop-file-utils.c:106
 #, c-format
 msgid "There was an error moving \"%s\" to \"%s\":"
-msgstr "Produciuse un erro ao mover \"%s\" a \"%s\":"
+msgstr "\"%s\" жаңа \"%s\" объектіге ауыстыру қатесі:"
 
 #: ../src/xfdesktop-file-utils.c:109
 #, c-format
 msgid "There was an error copying \"%s\" to \"%s\":"
-msgstr "Produciuse un erro ao copiar \"%s\" a \"%s\":"
+msgstr "\"%s\" жаңа \"%s\" объектіге көшіру қатесі:"
 
 #: ../src/xfdesktop-file-utils.c:112
 #, c-format
 msgid "There was an error linking \"%s\" to \"%s\":"
-msgstr "Produciuse un erro ao enlazar \"%s\" con \"%s\":"
+msgstr "\"%s\" жаңа \"%s\" объектіге сілтеу қатесі:"
 
 #: ../src/xfdesktop-file-utils.c:121
 msgid "File Error"
-msgstr "Erro de ficheiro"
+msgstr "Файл қатесі"
 
 #: ../src/xfdesktop-file-utils.c:137
 msgid "broken link"
-msgstr "ligazón danada"
+msgstr "қате сілтеме"
 
 #: ../src/xfdesktop-file-utils.c:141
 #, c-format
 msgid "link to %s"
-msgstr "ligazón a %s"
+msgstr "%s-ке(ге) сілтеме"
 
 #: ../src/xfdesktop-regular-file-icon.c:489
 #: ../src/xfdesktop-special-file-icon.c:496
@@ -744,49 +735,49 @@ msgid ""
 "Modified:%s\n"
 "Size: %s"
 msgstr ""
-"Tipo: %s\n"
-"Modificado:%s\n"
-"Tamaño: %s"
+"Түрі: %s\n"
+"Өзгертілген:%s\n"
+"Өлшемі: %s"
 
 #: ../src/xfdesktop-regular-file-icon.c:535
 #: ../src/xfdesktop-regular-file-icon.c:599
 msgid "Error"
-msgstr "Erro"
+msgstr "Қате"
 
 #: ../src/xfdesktop-regular-file-icon.c:596
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
-msgstr "Fallo ao renomear \"%s\" a \"%s\":"
+msgstr "\"%s\" үшін жаңа \"%s\" атын орнату қатесі:"
 
 #. FIXME: also display # of items in trash
 #: ../src/xfdesktop-special-file-icon.c:482
 msgid "Kind: Trash"
-msgstr "Tipo: Lixo"
+msgstr "Түрі: Қоқыс шелегі"
 
 #: ../src/xfdesktop-special-file-icon.c:515
 msgid "Trash Error"
-msgstr "Erro de lixo"
+msgstr "Қоқыс шелек қатесі"
 
 #: ../src/xfdesktop-special-file-icon.c:517
 msgid "Unable to contact the Xfce Trash service."
-msgstr "Non foi posible contactar co servizo de lixo de Xfce."
+msgstr "Xfce қоқыс шелегі қызметімен байланыс орнату мүмкін емес."
 
 #: ../src/xfdesktop-special-file-icon.c:518
 msgid ""
 "Make sure you have a file manager installed that supports the Xfce Trash "
 "service, such as Thunar."
 msgstr ""
-"Asegúrese de que ten instalado un xestor de ficheiros que soporte o servizo "
-"de lixo de Xfce, como Thunar."
+"Thunar сияқты, Xfce қоқыс шелегі қызметіне қолдауы бар файл басқарушысы "
+"орнатылғанына көз жеткізіңіз."
 
 #: ../src/xfdesktop-special-file-icon.c:651
 msgid "_Empty Trash"
-msgstr "_Baleirar o lixo"
+msgstr "Қоқыс шел_егін тазарту"
 
 #: ../src/xfdesktop-volume-icon.c:474
 #, c-format
 msgid "%s (%s total)"
-msgstr "%s (%s total)"
+msgstr "%s (%s барлығы)"
 
 #: ../src/xfdesktop-volume-icon.c:478
 #, c-format
@@ -795,120 +786,120 @@ msgid ""
 "Mount Point: %s\n"
 "Free Space: %s"
 msgstr ""
-"Tipo: Volume extraíble\n"
-"Punto de montaxe: %s\n"
-"Espazo baleiro: %s"
+"Түрі: Ауыстырмалы құрылғы\n"
+"Тіркеу нүктесі: %s\n"
+"Бос орны: %s"
 
 #: ../src/xfdesktop-volume-icon.c:509
 #, c-format
 msgid "Unable to mount \"%s\":"
-msgstr "Non é posible montar \"%s\":"
+msgstr "\"%s\" тіркеу мүмкін емес:"
 
 #: ../src/xfdesktop-volume-icon.c:510
 #, c-format
 msgid "Unable to unmount \"%s\":"
-msgstr "Non é posible desmontar \"%s\":"
+msgstr "\"%s\" тіркеуден босату мүмкін емес:"
 
 #: ../src/xfdesktop-volume-icon.c:513
 msgid "Mount Failed"
-msgstr "Fallo ao montar"
+msgstr "Тіркеу сәтсіз аяқталды"
 
 #: ../src/xfdesktop-volume-icon.c:513
 msgid "Unmount Failed"
-msgstr "Fallo ao desmontar"
+msgstr "Тіркеуден босату сәтсіз аяқталды"
 
 #: ../src/xfdesktop-volume-icon.c:531
 #, c-format
 msgid "Unable to eject \"%s\":"
-msgstr "Non é posible expulsar \"%s\":"
+msgstr "\"%s\" шығару мүмкін емес:"
 
 #: ../src/xfdesktop-volume-icon.c:534
 msgid "Eject Failed"
-msgstr "Fallo ao expulsar"
+msgstr "Шығару сәтсіз аяқталды"
 
 #: ../src/xfdesktop-volume-icon.c:578
 msgid "_Unmount Volume"
-msgstr "_Desmontar volume"
+msgstr "_Бөлімді тіркеуден босату"
 
 #: ../src/xfdesktop-volume-icon.c:581
 msgid "_Mount Volume"
-msgstr "_Montar volume"
+msgstr "_Бөлімді тіркеу"
 
 #: ../src/xfdesktop-volume-icon.c:595
 msgid "E_ject Volume"
-msgstr "_Expulsar volume"
+msgstr "_Бөлімді шығару"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
 msgid "Accessories"
-msgstr "Accesorios"
+msgstr "Қалыпты"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:2
 msgid "Common desktop tools and applications"
-msgstr "Aplicacións e ferramentas comúns do escritorio"
+msgstr "Жалпы пайдалы саймадар мен қолданбалар"
 
 #: ../modules/menu/directory-data/xfce-development.directory.in.h:1
 msgid "Development"
-msgstr "Desenvolvemento"
+msgstr "Өндіру"
 
 #: ../modules/menu/directory-data/xfce-development.directory.in.h:2
 msgid "Software development tools"
-msgstr "Ferramentas de desenvolvemento de software"
+msgstr "Бағдарламаларды өндіру саймандары"
 
 #: ../modules/menu/directory-data/xfce-education.directory.in.h:1
 msgid "Education"
-msgstr "Educación"
+msgstr "Білім алу"
 
 #: ../modules/menu/directory-data/xfce-education.directory.in.h:2
 msgid "Educational software"
-msgstr "Software educativo"
+msgstr "Білім алу, оқу қолданбалары"
 
 #: ../modules/menu/directory-data/xfce-games.directory.in.h:1
 msgid "Games"
-msgstr "Xogos"
+msgstr "Ойындар"
 
 #: ../modules/menu/directory-data/xfce-games.directory.in.h:2
 msgid "Games, puzzles, and other fun software"
-msgstr "Xogos, crebacabezas, e outros programas divertidos"
+msgstr "Ойндар және басқа қызықты қолданбалар"
 
 #: ../modules/menu/directory-data/xfce-graphics.directory.in.h:1
 msgid "Graphics"
-msgstr "Imaxes"
+msgstr "Сурет"
 
 #: ../modules/menu/directory-data/xfce-graphics.directory.in.h:2
 msgid "Graphics creation and manipulation applications"
-msgstr "Aplicacións para manipular e crear imaxes"
+msgstr "Суреттерді салу және өндеу қолданбалары"
 
 #: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:1
 msgid "Audio and video players and editors"
-msgstr "Editores e reprodutores de son e vídeo"
+msgstr "Аудио және видео плеерлер мен түзеткіштері"
 
 #: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:2
 msgid "Multimedia"
-msgstr "Multimedia"
+msgstr "Мультимедиа"
 
 #: ../modules/menu/directory-data/xfce-network.directory.in.h:1
 msgid "Network"
-msgstr "Rede"
+msgstr "Желі"
 
 #: ../modules/menu/directory-data/xfce-network.directory.in.h:2
 msgid "Network applications and utilities"
-msgstr "Aplicacións e utilidades de rede"
+msgstr "Желілік қолданбалар мен утилиттер"
 
 #: ../modules/menu/directory-data/xfce-office.directory.in.h:1
 msgid "Office"
-msgstr "Oficina"
+msgstr "Кеңсе"
 
 #: ../modules/menu/directory-data/xfce-office.directory.in.h:2
 msgid "Office and productivity applications"
-msgstr "Aplicacións de produtividade e de oficina"
+msgstr "Кеңселік қолданбалар"
 
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:1
 msgid "Applications that don't fit into other categories"
-msgstr "Aplicacións que non se axustan a outras categorías"
+msgstr "Ешқандай тарапқа жатпайтын қолданбалар"
 
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:2
 msgid "Other"
-msgstr "Outras"
+msgstr "Басқа"
 
 #: ../modules/menu/directory-data/xfce-science.directory.in.h:1
 msgid "Science"
@@ -917,131 +908,131 @@ msgstr ""
 #: ../modules/menu/directory-data/xfce-science.directory.in.h:2
 #, fuzzy
 msgid "Scientific software"
-msgstr "Software educativo"
+msgstr "Білім алу, оқу қолданбалары"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
 msgid "Screensaver applets"
-msgstr "Miniaplicacións de protector de pantalla"
+msgstr "Скринсейвер апплеттері"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:2
 msgid "Screensavers"
-msgstr "Protectores de pantalla"
+msgstr "Скринсейверлер"
 
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:1
 msgid "Desktop and system settings applications"
-msgstr "Aplicacións de configuración do sistema e do escritorio"
+msgstr "Жұмыс үстел мен жүйе баптаулар қолданбалары"
 
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:2
 msgid "Settings"
-msgstr "Configuración"
+msgstr "Баптаулар"
 
 #: ../modules/menu/directory-data/xfce-system.directory.in.h:1
 msgid "System"
-msgstr "Sistema"
+msgstr "Жүйе"
 
 #: ../modules/menu/directory-data/xfce-system.directory.in.h:2
 msgid "System tools and utilities"
-msgstr "Utilidades e ferramentas do sistema"
+msgstr "Жүйелік саймандар мен утилиттер"
 
 #: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:1
 msgid "About Xfce"
-msgstr "Acerca de Xfce"
+msgstr "Xfce туралы"
 
 #: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:2
 msgid "Information about the Xfce Desktop Environment"
-msgstr "Información sobre o Ambiente de Escritorio Xfce"
+msgstr "Xfce жұмыс үстелінің ортасы туралы ақпарат"
 
 #: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:1
 msgid "File Manager"
-msgstr "Xestor de ficheiros"
+msgstr "Файлдар басқарушысы"
 
 #: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:2
 msgid "Thunar file manager"
-msgstr "Xestor de ficheiros Thunar"
+msgstr "Thunar файлдар басқарушысы"
 
 #: ../modules/menu/menu-data/xfce4-help.desktop.in.h:1
 msgid "Help"
-msgstr "Axuda"
+msgstr "Көмек"
 
 #: ../modules/menu/menu-data/xfce4-help.desktop.in.h:2
 msgid "Help using Xfce"
-msgstr "Axuda sobre o uso de Xfce"
+msgstr "Xfce қолдану көмегі"
 
 #: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:1
 msgid "Log Out"
-msgstr "Terminar a sesión"
+msgstr "Шығу"
 
 #: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:2
 msgid "Log out of the Xfce Desktop"
-msgstr "Saír do Escritorio Xfce"
+msgstr "Xfce жұмыс үстелінен шығу"
 
 #: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:1
 msgid "Run Program..."
-msgstr "Executar programa..."
+msgstr "Бағдарламаны жіберу..."
 
 #: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:2
 msgid "Run a program"
-msgstr "Executar un programa"
+msgstr "Бағдарламаны жіберу"
 
 #: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:1
 msgid "Terminal"
-msgstr "Terminal"
+msgstr "Терминал"
 
 #: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:2
 msgid "Terminal emulator"
-msgstr "Emulador de terminal"
+msgstr "Терминал эмуляторы"
 
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:1
 msgid "Browse the web"
-msgstr "Navegar pola web"
+msgstr "Интернетті шолу"
 
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:2
 msgid "Web Browser"
-msgstr "Navegador web"
+msgstr "Веб браузері"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop "
-msgstr "Escritorio"
+msgstr "Жұмыс үстелі"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Set desktop background and menu and icon behaviour"
-msgstr "Definir o comportamento do fondo do escritorio, do menú e das iconas"
+msgstr "Жұмыс үстел суреті, мәзір мен таңбашалардың әрекеттерін баптау"
 
 #: ../settings/xfdesktop-settings.glade.h:1
 msgid "<b>Adjustments</b>"
-msgstr "<b>Axustes</b>"
+msgstr "<b>Баптау</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:2
 msgid "<b>Appearance</b>"
-msgstr "<b>Aparencia</b>"
+msgstr "<b>Сыртқы түрі</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:3
 msgid "<b>Colors</b>"
-msgstr "<b>Cores</b>"
+msgstr "<b>Түстер</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:4
 msgid "<b>Default Icons</b>"
-msgstr "<b>Iconas predeterminadas</b>"
+msgstr "<b>Бастапқы таңбашалар</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:5
 msgid "<b>Desktop Menu</b>"
-msgstr "<b>Menú de escritorio</b>"
+msgstr "<b>Жұмыс үстел мәзірі</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:6
 msgid "<b>Image</b>"
-msgstr "<b>Imaxe</b>"
+msgstr "<b>Сурет</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:7
 msgid "<b>Images</b>"
-msgstr "<b>Imaxes</b>"
+msgstr "<b>Суреттер</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:8
 msgid "<b>Window List Menu</b>"
-msgstr "<b>Menú de lista de ventás</b>"
+msgstr "<b>Терезелер тізімі мәзірі</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:9
 msgid "Add an image to the list"
-msgstr "Engadir unha imaxe á lista"
+msgstr "Тізімге суретті қосу"
 
 #: ../settings/xfdesktop-settings.glade.h:10
 msgid ""
@@ -1052,56 +1043,56 @@ msgid ""
 "Scaled\n"
 "Zoomed"
 msgstr ""
-"Automático\n"
-"Centrada\n"
-"Mosaico\n"
-"Estirada\n"
-"Escalada\n"
-"Ampliada"
+"Авто\n"
+"Ортасына қарай\n"
+"Плитка\n"
+"Созылған\n"
+"Өлшемі өзгертілген\n"
+"Масштабталған"
 
 #: ../settings/xfdesktop-settings.glade.h:16
 msgid "Automatically pick a random image from a list file"
-msgstr "Seleccionar automaticamente unha imaxe aleatoria dun ficheiro de lista"
+msgstr "Файлдан кез-келген суретті таңдау"
 
 #: ../settings/xfdesktop-settings.glade.h:17
 msgid "B_rightness:"
-msgstr "B_rillo:"
+msgstr "Жа_рықтылығы:"
 
 #: ../settings/xfdesktop-settings.glade.h:18
 msgid "B_utton:"
-msgstr "B_otón:"
+msgstr "Бат_ырма:"
 
 #: ../settings/xfdesktop-settings.glade.h:19
 msgid "Create a new list, or load an existing one"
-msgstr "Crea unha nova lista, ou carga unha xa existente"
+msgstr "Жаңа тізімді жасау, не бар болып тұрғанды жүктеу"
 
 #: ../settings/xfdesktop-settings.glade.h:21
 msgid "Don't display an image at all"
-msgstr "Non mostrar ningunha imaxe"
+msgstr "Суретті барлықта көрсетпеу"
 
 #: ../settings/xfdesktop-settings.glade.h:22
 msgid "Icon _size:"
-msgstr "Tamaño da _icona:"
+msgstr "Таңба_ша өлшемі:"
 
 #: ../settings/xfdesktop-settings.glade.h:23
 msgid "Icon _type:"
-msgstr "_Tipo de icona:"
+msgstr "Таңбаш_а түрі:"
 
 #: ../settings/xfdesktop-settings.glade.h:24
 msgid "Image _list"
-msgstr "Lista de imaxes"
+msgstr "Сур_еттер тізімі"
 
 #: ../settings/xfdesktop-settings.glade.h:25
 msgid "Increase or decrease the brightness of the final image"
-msgstr "Incrementar ou diminuír o brillo da imaxe final"
+msgstr "Нәтиже суреттің жарықтылығын өсіру не төмендету"
 
 #: ../settings/xfdesktop-settings.glade.h:26
 msgid "Increase or decrease the color saturation of the final image"
-msgstr "Incrementar ou diminuír a saturación da imaxe final"
+msgstr "Нәтиже суреттің түс қанықтылығын өсіру не төмендету"
 
 #: ../settings/xfdesktop-settings.glade.h:27
 msgid "Label trans_parency:"
-msgstr "Trans_parencia das etiquetas:"
+msgstr "Бел_гі мөлдірлілігі:"
 
 #: ../settings/xfdesktop-settings.glade.h:28
 msgid ""
@@ -1109,17 +1100,17 @@ msgid ""
 "Middle\n"
 "Right"
 msgstr ""
-"Esquerda\n"
-"Centro\n"
-"Dereita"
+"Сол\n"
+"Ортасы\n"
+"Оң"
 
 #: ../settings/xfdesktop-settings.glade.h:31
 msgid "Mo_difier:"
-msgstr "Mo_dificador:"
+msgstr "Мо_дификатор:"
 
 #: ../settings/xfdesktop-settings.glade.h:32
 msgid "Modi_fier:"
-msgstr "Modi_ficador:"
+msgstr "Моди_фикатор:"
 
 #: ../settings/xfdesktop-settings.glade.h:33
 msgid ""
@@ -1127,9 +1118,9 @@ msgid ""
 "Minimized application icons\n"
 "File/launcher icons"
 msgstr ""
-"Nada\n"
-"Iconas de aplicacións minimizadas\n"
-"Iconas de iniciadores/ficheiros"
+"Жоқ\n"
+"Қайырылған қолданбалар таңбашалары\n"
+"Файл/жөнелткіштер таңбашалары"
 
 #: ../settings/xfdesktop-settings.glade.h:36
 msgid ""
@@ -1138,60 +1129,58 @@ msgid ""
 "Alt\n"
 "Control"
 msgstr ""
-"Ningún\n"
+"Жоқ\n"
 "Shift\n"
 "Alt\n"
 "Control"
 
 #: ../settings/xfdesktop-settings.glade.h:40
 msgid "Remove the selected image(s) from the list"
-msgstr "Eliminar as imaxes seleccionadas da lista"
+msgstr "Таңдалған суретт(ерд)і тізімнен өшіру"
 
 #: ../settings/xfdesktop-settings.glade.h:41
 msgid "Sa_turation:"
-msgstr "Sa_turación:"
+msgstr "Қа_нықтылығы:"
 
 #: ../settings/xfdesktop-settings.glade.h:42
 msgid "Select First Color"
-msgstr "Seleccione a primeira cor"
+msgstr "Бірінші түсі"
 
 #: ../settings/xfdesktop-settings.glade.h:43
 msgid "Select Second Color"
-msgstr "Seleccione a segunda cor"
+msgstr "Екінші түсі"
 
 #: ../settings/xfdesktop-settings.glade.h:44
-#, fuzzy
 msgid "Select a single image as the backdrop"
-msgstr "Seleccione unha soa imaxe para o           fondo de escritorio???"
+msgstr "Фон сурет тізімі ретінде бір суретті таңдау"
 
 #: ../settings/xfdesktop-settings.glade.h:45
 msgid "Set desktop background and menu and icon behavior"
-msgstr "Definir o comportamento do fondo do escritorio, do menú e das iconas"
+msgstr "Жұмыс үстел суреті, мәзір мен таңбашалардың әрекеттерін баптау"
 
 #: ../settings/xfdesktop-settings.glade.h:46
 msgid "Sh_ow application icons in menu"
-msgstr "M_ostrar as iconas das aplicacións no menú"
+msgstr "Мәзір і_шінде қолданбалар таңбашаларын көрсету"
 
 #: ../settings/xfdesktop-settings.glade.h:47
 msgid "Show _application icons in menu"
-msgstr "Mostrar as iconas das _aplicacións no menú"
+msgstr "Мә_зір ішінде қолданбалар таңбашаларын көрсету"
 
 #: ../settings/xfdesktop-settings.glade.h:48
 msgid "Show _window list menu on desktop middle click"
-msgstr "Mostrar a lista de _ventás no escritorio ao premer co botón central"
+msgstr "Жұмыс үс_телінде ортасымен шерткенде терезелер тізімін көрсету"
 
 #: ../settings/xfdesktop-settings.glade.h:49
 msgid "Show applications menu on _desktop right click"
-msgstr ""
-"Mostrar o menú de aplicacións no _escritorio ao premer co botón dereito"
+msgstr "_Жұмыс үстелінде оң жақпен шерткенде қолданбалар мәзірін көрсету"
 
 #: ../settings/xfdesktop-settings.glade.h:50
 msgid "Show s_ticky windows only in active workspace"
-msgstr "Mostrar as ventás persis_tentes só no espazo de traballo activo"
+msgstr "Жабысқ_ақ терезелерді тек белсенді жұмыс орнында көрсету"
 
 #: ../settings/xfdesktop-settings.glade.h:51
 msgid "Show workspace _names in list"
-msgstr "Mostrar os _nomes dos espazos de traballo na lista"
+msgstr "Тізімде жұмыс оры_н атауын көрсету"
 
 #: ../settings/xfdesktop-settings.glade.h:52
 msgid ""
@@ -1200,77 +1189,74 @@ msgid ""
 "Vertical gradient\n"
 "Transparent"
 msgstr ""
-"Cor sólida\n"
-"Degradado horizontal\n"
-"Degradado vertical\n"
-"Transparente"
+"Біртұтас түс\n"
+"Көлденең градиент\n"
+"Тігінен градиент\n"
+"Мөлдір"
 
 #: ../settings/xfdesktop-settings.glade.h:56
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-msgstr "Especifica a cor \"dereita\" ou \"inferior\" do degradado"
+msgstr "Градиент үшін \"оң\" мен \"төменгі\" түстерін анықтайды"
 
 #: ../settings/xfdesktop-settings.glade.h:57
 msgid ""
 "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr ""
-"Especifica a cor sólida, ou a cor \"esquerda\" ou \"superior\" do degradado"
+msgstr "Градиент үшін \"сол\" мен \"үстіңгі\" түстерін анықтайды"
 
 #: ../settings/xfdesktop-settings.glade.h:58
 msgid "Specify how the image will be resized to fit the screen"
-msgstr "Especifica como se vai redimensionar a imaxe para axustarse á pantalla"
+msgstr "Экран өлшемдеріне дейін сурет қалай өзгертілетінін анықтайды"
 
 #: ../settings/xfdesktop-settings.glade.h:59
-#, fuzzy
 msgid "Specify the style of the color drawn behind the backdrop image"
-msgstr "Especificar o estilo de cor que se debuxa detrás da imaxe de                         "
+msgstr "Фон суреті астындағы түстін мөлдірлігін анықтайды"
 
 #: ../settings/xfdesktop-settings.glade.h:60
 msgid ""
 "Specify the transparency level for the rounded label drawn behind the icon "
 "text"
 msgstr ""
-"Especifica o nivel de transparencia da etiqueta redondeada que se debuxa "
-"detrás do texto da icona"
+"Таңбаша мәтіні астында орналасқан домалақша белгінің мөлдірлігін анықтайды"
 
 #: ../settings/xfdesktop-settings.glade.h:61
 msgid "St_yle:"
-msgstr "Est_ilo:"
+msgstr "Ст_илі:"
 
 #: ../settings/xfdesktop-settings.glade.h:62
 msgid "Use _submenus for the windows in each workspace"
-msgstr "Usar _submenús para as ventás de cada espazo de traballo"
+msgstr "Әр жұм_ыс орны үшін ішкі мәзірді көрсету"
 
 #: ../settings/xfdesktop-settings.glade.h:63
 msgid "Use custom _font size:"
-msgstr "Usar un tamaño do tipo de letra personalizado:"
+msgstr "Басқа қарі_п өлшемін қолдану:"
 
 #: ../settings/xfdesktop-settings.glade.h:64
 msgid "_Background"
-msgstr "_Fondo"
+msgstr "_Фон"
 
 #: ../settings/xfdesktop-settings.glade.h:65
 msgid "_Button:"
-msgstr "_Botón:"
+msgstr "_Батырма:"
 
 #: ../settings/xfdesktop-settings.glade.h:66
 msgid "_Edit desktop menu"
-msgstr "_Editar o menú de escritorio"
+msgstr "Жұмыс үст_ел мәзірін түзету"
 
 #: ../settings/xfdesktop-settings.glade.h:67
 msgid "_Icons"
-msgstr "_Iconas"
+msgstr "_Таңбашалар"
 
 #: ../settings/xfdesktop-settings.glade.h:68
 msgid "_Menus"
-msgstr "_Menús"
+msgstr "_Мәзірлер"
 
 #: ../settings/xfdesktop-settings.glade.h:69
 msgid "_None"
-msgstr "_Ningún"
+msgstr "Ж_оқ"
 
 #: ../settings/xfdesktop-settings.glade.h:70
 msgid "_Single image"
-msgstr "Unha _soa imaxe"
+msgstr "Бір с_урет"
 
 #~ msgid "gtk-close"
 #~ msgstr "gtk-close"
