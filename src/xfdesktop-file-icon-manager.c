@@ -1559,7 +1559,7 @@ xfdesktop_file_icon_menu_fill_template_menu(GtkWidget *menu,
         {
           /* allocate a new submenu for the directory */
           submenu = gtk_menu_new ();
-          exo_gtk_object_ref_sink (GTK_OBJECT (submenu));
+          g_object_ref_sink (G_OBJECT (submenu));
           gtk_menu_set_screen (GTK_MENU (submenu), gtk_widget_get_screen (menu));
 
           /* fill the submenu from the folder contents */

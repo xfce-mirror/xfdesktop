@@ -139,7 +139,7 @@ dnl calls AM_CONDITIONAL(), which cannot be in an 'if' block
 XDT_CHECK_OPTIONAL_PACKAGE([THUNARX], [thunarx-1], [thunar_minimum_version],
     [thunarx],
     [Thunar's extension mechanism, to add external features to the desktop icon implementation])
-XDT_CHECK_OPTIONAL_PACKAGE([LIBEXO], [exo-0.3], [exo_minimum_version], [exo],
+XDT_CHECK_OPTIONAL_PACKAGE([LIBEXO], [exo-1], [exo_minimum_version], [exo],
     [libexo, for nifty icon effects])
 
 
