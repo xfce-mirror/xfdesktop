@@ -243,7 +243,7 @@ xfdesktop_file_properties_dialog_show(GtkWindow *parent,
             display_name = g_filename_display_name(link_name);
             lbl = gtk_label_new(display_name);
             g_object_set(G_OBJECT(lbl),
-                         "ellipsize", EXO_PANGO_ELLIPSIZE_START,
+                         "ellipsize", PANGO_ELLIPSIZE_START,
                          NULL);
             g_free(display_name);
             g_free(link_name);
