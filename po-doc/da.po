@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop documentation\n"
-"POT-Creation-Date: 2009-04-21 12:05+0200\n"
-"PO-Revision-Date: 2009-02-18 18:54+0100\n"
+"POT-Creation-Date: 2009-04-20 14:33+0200\n"
+"PO-Revision-Date: 2009-08-19 21:15+0100\n"
 "Last-Translator: Per Kongstad <p_kongstad@op.pl>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -235,7 +235,6 @@ msgid "File/Launcher Icons"
 msgstr "Fil/programstarter ikoner"
 
 #: ../doc/C/xfdesktop.xml.in:135(para)
-#, fuzzy
 msgid ""
 "<application>@PACKAGE_NAME@</application> can also display on the desktop "
 "the contents of the <filename>$XDG_DESKTOP_DIR</filename> folder, which can "
@@ -248,14 +247,14 @@ msgid ""
 "\"http\">Thunar</ulink> file manager."
 msgstr ""
 "<application>@PACKAGE_NAME@</application> kan også vise indholdet af "
-"<filename>$XDG_CONFIG_DESKTOP</filename> på skrivebordet, som angivet per "
-"XDG-brugermappeindstillinger, i stil med de ikonvisninger der findes i mange "
-"af de andre skrivebordsmiljøer og operativsystemer. Filer kan blive "
-"arrangeret, kopieret, flyttet og henvist til og fra en filhåndtering, samt "
-"åbnes ved at bruge foretrukne programmer. Program- og URL- startere kan også "
-"oprettes på skrivebordet. Visning af filikoner er designet til at ses og "
-"føles ligesom <ulink url=\"http://thunar.xfce.org/\" type=\"http\">Thunar</"
-"ulink>-filhåndteringen."
+"<filename>$$XDG_DESKTOP_DIR</filename> mappen, som kan indstilles i  "
+"<filename>$XDG_CONFIG_HOME/user-dirs.dirs</filename>-filen (hvis du ikke har "
+"denne fil,vil der blive brugt <filename>$HOME/Desktop</filename>). Filer kan "
+"blive arrangeret, kopieret, flyttet og henvist til og fra en filhåndtering, "
+"samt åbnes ved at bruge foretrukne programmer. Program- og URL- startere kan "
+"også oprettes på skrivebordet. Visning af filikoner er designet til at ses "
+"og føles ligesom <ulink url=\"http://thunar.xfce.org/\" type=\"http"
+"\">Thunar</ulink>-filhåndteringen."
 
 #: ../doc/C/xfdesktop.xml.in:152(title)
 msgid "The Desktop Menu"
@@ -298,7 +297,6 @@ msgstr ""
 "usr/local/etc</filename>."
 
 #: ../doc/C/xfdesktop.xml.in:185(para)
-#, fuzzy
 msgid ""
 "The previous menu editor is not available anymore. However you can customize "
 "your menu by copying <filename>xfce-applications.menu</filename> to "
@@ -308,14 +306,15 @@ msgid ""
 "more information on menu editing, please see <ulink url=\"http://wiki.xfce."
 "org/howto/customize-menu\" type=\"http\">the Xfce Wiki</ulink>."
 msgstr ""
-"Den tidligere menuredigering et ikke længere tilrådighed. Du kan dog "
+"Den tidligere menuredigering er ikke længere til rådighed. Du kan dog "
 "tilpasse din menu ved at kopiere <filename>xfce-applications.menu</filename> "
-"til <filename>$XDG_CONFIG_HOME/.config/xdg/menus</filename> og ændre den med "
-"et tekstprogram såsom <application>mousepad</application> or "
-"<application>gedit</application>. Husk at filen skal være med UTF-8-kodning."
+"til <filename>$XDG_CONFIG_HOME/menus</filename> og ændre den med et "
+"tekstprogram såsom <application>mousepad</application> or "
+"<application>gedit</application>. Husk at filen skal være med UTF-8-kodning. "
+"For mere information om menuredigering, besøg venligst <ulink url=\"http://"
+"wiki.xfce.org/howto/customize-menu\" type=\"http\">the Xfce Wiki</ulink>."
 
 #: ../doc/C/xfdesktop.xml.in:197(para)
-#, fuzzy
 msgid ""
 "Further customisation can be achived by creating <ulink url=\"http://"
 "standards.freedesktop.org/desktop-entry-spec/latest/\" type=\"http\">desktop "
@@ -323,10 +322,9 @@ msgid ""
 "modify or add entries in the menu."
 msgstr ""
 "Yderligere tilpasning kan opnås ved at oprette <ulink url=\"http://standards."
-"freedesktop.org/desktop-entry-spec/latest/\" type=\"http\"> "
-"skrivebordselementer</ulink> in <filename>$XDG_CONFIG_HOME/.local/share/"
-"applications</filename> til at skjule, ændre eller tilføje elementer til "
-"menu."
+"freedesktop.org/desktop-entry-spec/latest/\" type=\"http\">desktop entries</"
+"ulink> i <filename>$XDG_DATA_HOME/applications</filename> til at skjule, "
+"ændre eller føje elementer til menu."
 
 #: ../doc/C/xfdesktop.xml.in:207(title)
 msgid "The Window List Menu"
@@ -682,12 +680,10 @@ msgid "Shows the Icons tab of the Desktop Settings dialog"
 msgstr "Viser fanebladet til ikoner i indstillingsdialogen til skrivebordet"
 
 #: ../doc/C/xfdesktop.xml.in:559(term)
-#, fuzzy
 msgid "Appearance"
 msgstr "Udseende"
 
 #: ../doc/C/xfdesktop.xml.in:562(para)
-#, fuzzy
 msgid ""
 "The <emphasis>\"Icon type\"</emphasis> dropping list allows you to set the "
 "behavior of the desktop icons. There are three options: \"None\", to disable "
@@ -696,12 +692,12 @@ msgid ""
 "icons, to show the contents of your <filename>$XDG_DESKTOP_DIR</filename> "
 "directory on the desktop."
 msgstr ""
-"<emphasis>\"Ikontype\"</emphasis> rullegardinlisten tillader dig at "
+"Rullegardinlisten <emphasis>\"Ikontype\"</emphasis> tillader dig at "
 "indstille opførsel af skrivebordets ikoner. Der findes disse 3 "
 "indstillinger: \"Ingen\", for at helt slå skrivebordikoner fra; \"Minimerede"
 "\" programikoner, for at vise ikoner minimerede eller skjulte programmer på "
-"skrivebordet; og \"Fil/starter\"-ikoner, for at vise indholdet af dit "
-"<filnavn>$XDG_CONFIG_HOME</filnavn> mappen på skrivebordet."
+"skrivebordet; og \"Fil/starter\"-ikoner, for at vise indholdet af din "
+"<filename>$XDG_DESKTOP_DIR</filename> mappe på skrivebordet."
 
 #: ../doc/C/xfdesktop.xml.in:573(para)
 msgid ""
@@ -734,7 +730,6 @@ msgstr ""
 "indholdet af en særlig sti."
 
 #: ../doc/C/xfdesktop.xml.in:596(para)
-#, fuzzy
 msgid ""
 "<emphasis>Home</emphasis> stands for your home folder, that is to say, "
 "<filename>$HOME</filename>. <emphasis>Filesystem</emphasis> stands for the "
@@ -743,11 +738,12 @@ msgid ""
 "<emphasis>Removable devices</emphasis> represents floppy drives, USB drives "
 "and keys, external hard drives, optical discs, etc."
 msgstr ""
-"<emphasis>Hjem</emphasis> betyder din hjemmemapper, For at sige at <filename>"
-"$XDG_CONFIG_HOME</filename>. <emphasis>Filsystem</emphasis> betyder rod til "
-"dit filsystem, også kendt som <filename>/</filename>. <emphasis>Papirkurv</"
+"<emphasis>Hjem</emphasis> betyder din hjemmemappe, For at sige at <filename>"
+"$HOME</filename>. <emphasis>Filsystem</emphasis> betyder rod til dit "
+"filsystem, også kendt som <filename>/</filename>. <emphasis>Papirkurv</"
 "emphasis> betyder din papirkurvsmappe, og <emphasis>Flytbare enheder</"
-"emphasis> repræsenterer floppydrev, USB-drev og -nøgler, ekterne harddiske..."
+"emphasis> repræsenterer floppydrev, USB-drev og -nøgler, eksterne harddiske, "
+"optiske drev m.v."
 
 #: ../doc/C/xfdesktop.xml.in:613(title)
 msgid "Hidden Options"
