@@ -11,7 +11,7 @@
 
 export XDT_REQUIRED_VERSION="4.7.0"
 
-(type xdt-autogen && xdt-autogen --version) >/dev/null 2>&1 || {
+(type xdt-autogen) >/dev/null 2>&1 || {
   cat >&2 <<EOF
 autogen.sh: You don't seem to have the Xfce development tools (at least
             version $XDT_REQURED_VERSION) installed on your system, which
