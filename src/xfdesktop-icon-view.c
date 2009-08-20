@@ -38,6 +38,8 @@
 
 #ifdef HAVE_LIBEXO
 #include <exo/exo.h>
+#else
+#define I_(str)  g_intern_static_string(str)
 #endif
 
 #include "xfdesktop-icon-view.h"
@@ -1146,7 +1148,9 @@ xfdesktop_icon_view_leave_notify(GtkWidget *widget,
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(user_data);
     
     if(icon_view->priv->item_under_pointer) {
+#ifdef HAVE_LIBEXO
         XfdesktopIcon *icon = icon_view->priv->item_under_pointer;
+#endif
         icon_view->priv->item_under_pointer = NULL;
 #ifdef HAVE_LIBEXO
         xfdesktop_icon_view_invalidate_icon(icon_view, icon);
