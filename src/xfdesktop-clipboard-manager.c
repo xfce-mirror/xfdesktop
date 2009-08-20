@@ -37,6 +37,9 @@
 #include "xfdesktop-file-utils.h"
 #include "xfdesktop-clipboard-manager.h"
 
+#ifndef I_
+#define I_(str)  g_intern_static_string(str)
+#endif
 
 
 enum
