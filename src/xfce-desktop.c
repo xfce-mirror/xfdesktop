@@ -149,9 +149,8 @@ static gboolean xfce_desktop_expose(GtkWidget *w,
                                     GdkEventExpose *evt);
 static gboolean xfce_desktop_delete_event(GtkWidget *w,
                                           GdkEventAny *evt);
-static void style_set_cb(GtkWidget *w,
-                         GtkStyle *old_style,
-                         gpointer user_data);
+static void xfce_desktop_style_set(GtkWidget *w,
+                                   GtkStyle *old_style);
 
 static void xfce_desktop_connect_backdrop_settings(XfceDesktop *desktop,
                                                    XfceBackdrop *backdrop,
@@ -540,6 +539,7 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
     widget_class->expose_event = xfce_desktop_expose;
     widget_class->delete_event = xfce_desktop_delete_event;
     widget_class->popup_menu = xfce_desktop_popup_menu;
+    widget_class->style_set = xfce_desktop_style_set;
     
     signals[SIG_POPULATE_ROOT_MENU] = g_signal_new("populate-root-menu",
                                                    XFCE_TYPE_DESKTOP,
@@ -768,8 +768,6 @@ xfce_desktop_realize(GtkWidget *widget)
 
     xfce_desktop_monitors_changed(desktop->priv->gscreen, desktop);
     
-    g_signal_connect(G_OBJECT(desktop), "style-set",
-                     G_CALLBACK(style_set_cb), NULL);
     g_signal_connect(G_OBJECT(desktop->priv->gscreen), "size-changed",
             G_CALLBACK(screen_size_changed_cb), desktop);
     
@@ -792,8 +790,6 @@ xfce_desktop_unrealize(GtkWidget *widget)
     
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
     
-    g_signal_handlers_disconnect_by_func(G_OBJECT(desktop),
-                                         G_CALLBACK(style_set_cb), NULL);
     if(gtk_major_version > 2
        || (gtk_major_version == 2 && gtk_minor_version >= 13))
     {
@@ -928,9 +924,8 @@ xfce_desktop_delete_event(GtkWidget *w,
 }
 
 static void
-style_set_cb(GtkWidget *w,
-             GtkStyle *old_style,
-             gpointer user_data)
+xfce_desktop_style_set(GtkWidget *w,
+                       GtkStyle *old_style)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(w);
 #ifdef ENABLE_DESKTOP_ICONS
