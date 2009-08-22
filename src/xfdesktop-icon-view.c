@@ -170,8 +170,6 @@ struct _XfdesktopIconViewPrivate
     gdouble cell_text_width_proportion;
 
     gboolean ellipsize_icon_labels;
-
-    gdouble corner_radius;
 };
 
 static gboolean xfdesktop_icon_view_button_press(GtkWidget *widget,
