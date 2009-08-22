@@ -1793,19 +1793,26 @@ xfdesktop_icon_view_expose(GtkWidget *widget,
                 continue;
             }
 
+            cairo_save(cr);
+
+            /* paint the inner rubber band area.  we clip to the
+             * rectangle in order to properly handle the border below */
             gdk_cairo_rectangle(cr, &intersect);
+            cairo_clip_preserve(cr);
             cairo_fill(cr);
+
+            /* paint whatever part of the rubber band border is inside
+             * this rectangle */
+            gdk_cairo_set_source_color(cr, icon_view->priv->selection_box_color);
+            cairo_rectangle(cr, icon_view->priv->band_rect.x + 0.5,
+                            icon_view->priv->band_rect.y + 0.5,
+                            icon_view->priv->band_rect.width - 1,
+                            icon_view->priv->band_rect.height - 1);
+            cairo_stroke(cr);
+
+            cairo_restore(cr);
         }
 
-        /* paint the border with full opacity; to avoid annoying calculations,
-         * we'll just paint the entire border even if it's not in the exposed
-         * region */
-        gdk_cairo_set_source_color(cr, icon_view->priv->selection_box_color);
-        cairo_rectangle(cr, icon_view->priv->band_rect.x + 0.5,
-                        icon_view->priv->band_rect.y + 0.5,
-                        icon_view->priv->band_rect.width - 1,
-                        icon_view->priv->band_rect.height - 1);
-        cairo_stroke(cr);
         cairo_destroy(cr);
     }
 
@@ -2462,6 +2469,11 @@ xfdesktop_paint_rounded_box(XfdesktopIconView *icon_view,
                               style->base[state].green / 65535.,
                               style->base[state].blue / 65535.,
                               alpha);
+
+        /* restrict painting to expose area */
+        cairo_rectangle(cr, expose_area->x, expose_area->y,
+                        expose_area->width, expose_area->height);
+        cairo_clip(cr);
 
         if(label_radius < 0.1) {
             cairo_rectangle(cr, box_area.x, box_area.y,
