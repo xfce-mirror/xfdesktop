@@ -874,6 +874,7 @@ xfdesktop_icon_view_focus_in(GtkWidget *widget,
     
     for(l = icon_view->priv->selected_icons; l; l = l->next) {
         xfdesktop_icon_view_invalidate_icon(icon_view, l->data, FALSE);
+        /* FIXME: hack */
         while(gtk_events_pending())
             gtk_main_iteration();
     }
@@ -894,6 +895,7 @@ xfdesktop_icon_view_focus_out(GtkWidget *widget,
 
     for(l = icon_view->priv->selected_icons; l; l = l->next) {
         xfdesktop_icon_view_invalidate_icon(icon_view, l->data, FALSE);
+        /* FIXME: hack */
         while(gtk_events_pending())
             gtk_main_iteration();
     }
@@ -1162,7 +1164,7 @@ xfdesktop_icon_view_clear_drag_highlight(XfdesktopIconView *icon_view,
                                          GdkDragContext *context)
 {
     GdkRectangle *cell_highlight;
-    
+
     cell_highlight = g_object_get_qdata(G_OBJECT(context),
                                         xfdesktop_cell_highlight_quark);
     if(!cell_highlight)
@@ -1170,12 +1172,31 @@ xfdesktop_icon_view_clear_drag_highlight(XfdesktopIconView *icon_view,
     
     if(0 == cell_highlight->width || 0 == cell_highlight->height)
         return;
-    
+
     gtk_widget_queue_draw_area(GTK_WIDGET(icon_view),
                                cell_highlight->x,
                                cell_highlight->y,
-                               cell_highlight->width + 1,
-                               cell_highlight->height + 1);
+                               1,
+                               cell_highlight->height);
+    gtk_widget_queue_draw_area(GTK_WIDGET(icon_view),
+                               cell_highlight->x + cell_highlight->width,
+                               cell_highlight->y,
+                               1,
+                               cell_highlight->height);
+    gtk_widget_queue_draw_area(GTK_WIDGET(icon_view),
+                               cell_highlight->x,
+                               cell_highlight->y,
+                               cell_highlight->width,
+                               1);
+    gtk_widget_queue_draw_area(GTK_WIDGET(icon_view),
+                               cell_highlight->x,
+                               cell_highlight->y + cell_highlight->height,
+                               cell_highlight->width + 1,  /* why? */
+                               1);
+
+    /* FIXME: hack */
+    while(gtk_events_pending())
+        gtk_main_iteration();
     
     cell_highlight->width = cell_highlight->height = 0;
 }
@@ -1596,8 +1617,7 @@ xfdesktop_icon_view_realize(GtkWidget *widget)
     xfdesktop_setup_grids(icon_view);
     
     /* unfortunately GTK_NO_WINDOW widgets don't receive events, with the
-     * exception of expose events.  however, even expose events don't seem
-     * to work for some reason. */
+     * exception of expose events. */
     gtk_widget_add_events(icon_view->priv->parent_window,
                           GDK_POINTER_MOTION_MASK | GDK_KEY_PRESS_MASK
                           | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK
@@ -1877,8 +1897,7 @@ xfdesktop_icon_view_select_between(XfdesktopIconView *icon_view,
                 icon = xfdesktop_icon_view_icon_in_cell(icon_view, i, j);
                 if(icon) {
                     xfdesktop_icon_view_select_item(icon_view, icon);
-                    /* hack alert: without waiting for each icon to get
-                     * repainted, we get weird repaint issues */
+                    /* FIXME: hack */
                     while(gtk_events_pending())
                         gtk_main_iteration();
                 }
@@ -2639,6 +2658,8 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
     GdkColor *sh_text_col = NULL;
     
     /*TRACE("entering (%s)", xfdesktop_icon_peek_label(icon));*/
+    TRACE("entering, (area=%dx%d+%d+%d)", area->width, area->height,
+          area->x, area->y);
 
     playout = icon_view->priv->playout;
     
@@ -2693,6 +2714,10 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
             pix_free = tmp;
         }
 #endif
+
+        TRACE("painting pixbuf at %dx%d+%d+%d",
+              intersection.width, intersection.height,
+              intersection.x, intersection.y);
         
         gdk_draw_pixbuf(GDK_DRAWABLE(widget->window), widget->style->black_gc,
                         pix, intersection.x - pixbuf_extents.x,
