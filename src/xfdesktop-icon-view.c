@@ -2471,14 +2471,12 @@ xfdesktop_paint_rounded_box(XfdesktopIconView *icon_view,
                               alpha);
 
         /* restrict painting to expose area */
-        cairo_rectangle(cr, expose_area->x, expose_area->y,
-                        expose_area->width, expose_area->height);
+        gdk_cairo_rectangle(cr, expose_area);
         cairo_clip(cr);
 
-        if(label_radius < 0.1) {
-            cairo_rectangle(cr, box_area.x, box_area.y,
-                            box_area.width, box_area.height);
-        } else {
+        if(label_radius < 0.1)
+            gdk_cairo_rectangle(cr, &box_area);
+        else {
             cairo_move_to(cr, box_area.x, box_area.y + label_radius);
             cairo_arc(cr, box_area.x + label_radius,
                       box_area.y + label_radius, label_radius,
