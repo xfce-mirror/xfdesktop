@@ -1,7 +1,13 @@
-Xfce 4.7.x
+Xfce 4.7.0
 ----------
 
   * Allow DnD to image list in settings dialog (bug 4337).
+  * Refactor drawing routines in XfdesktopIconView to remove most
+    flicker and most if not all repaint glitches.
+  * Use cairo to draw the rounded text label background instead of
+    the hacky PNG composition method.
+  * Make the text label corner roundness configurable via a gtkrc
+    style property.
 
 
 Xfce 4.6.2
@@ -12,6 +18,7 @@ Xfce 4.6.2
   * Never show 'Unmount' in volume context menus.
   * Always show 'Eject' in volume context menus, regardless of whether
     or not it's mounted (bug 5343).
+  * Update icon text labels when system font size changes (bug 2862).
 
 
 Xfce 4.6.1
