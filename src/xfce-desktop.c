@@ -933,9 +933,22 @@ style_set_cb(GtkWidget *w,
              gpointer user_data)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(w);
+#ifdef ENABLE_DESKTOP_ICONS
+    gdouble old_font_size;
+#endif
     
     gdk_window_set_back_pixmap(w->window, desktop->priv->bg_pixmap, FALSE);
     gtk_widget_queue_draw(w);
+
+#ifdef ENABLE_DESKTOP_ICONS
+    old_font_size = desktop->priv->system_font_size;
+    if(xfce_desktop_ensure_system_font_size(desktop) != old_font_size
+       && desktop->priv->icon_view && !desktop->priv->icons_font_size_set)
+    {
+        xfdesktop_icon_view_set_font_size(XFDESKTOP_ICON_VIEW(desktop->priv->icon_view),
+                                          desktop->priv->system_font_size);
+    }
+#endif
 }
 
 static void
