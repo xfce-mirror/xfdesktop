@@ -26,6 +26,10 @@
 #include <string.h>
 #endif
 
+#ifdef HAVE_MATH_H
+#include <math.h>
+#endif
+
 #include <glib-object.h>
 
 #include <X11/Xlib.h>
@@ -152,8 +156,6 @@ struct _XfdesktopIconViewPrivate
     gboolean drag_dest_set;
     GdkDragAction foreign_dest_actions;
     
-    GdkPixbuf *rounded_frame;
-
     guchar    label_alpha;
     guchar    selected_label_alpha;
 
@@ -1704,11 +1706,6 @@ xfdesktop_icon_view_unrealize(GtkWidget *widget)
     g_object_unref(G_OBJECT(icon_view->priv->playout));
     icon_view->priv->playout = NULL;
     
-    if(icon_view->priv->rounded_frame) {
-        g_object_unref(G_OBJECT(icon_view->priv->rounded_frame));
-        icon_view->priv->rounded_frame = NULL;
-    }
-
     if(icon_view->priv->selection_box_color) {
         gdk_color_free(icon_view->priv->selection_box_color);
         icon_view->priv->selection_box_color = NULL;
@@ -2406,110 +2403,6 @@ xfdesktop_icon_view_invalidate_icon_pixbuf(XfdesktopIconView *icon_view,
 }
 #endif
 
-
-/* Copied from Nautilus, Copyright (C) 2000 Eazel, Inc. */
-static void
-xfdesktop_clear_rounded_corners(GdkPixbuf *pix,
-                                GdkPixbuf *corners_pix)
-{
-    gint dest_width, dest_height, src_width, src_height;
-    
-    g_return_if_fail(pix && corners_pix);
-    
-    dest_width = gdk_pixbuf_get_width(pix);
-    dest_height = gdk_pixbuf_get_height(pix);
-    
-    src_width = gdk_pixbuf_get_width(corners_pix);
-    src_height = gdk_pixbuf_get_height(corners_pix);
-    
-    /* draw top left corner */
-    gdk_pixbuf_copy_area(corners_pix,
-                         0, 0,
-                         CORNER_ROUNDNESS, CORNER_ROUNDNESS,
-                         pix,
-                         0, 0);
-    
-    /* draw top right corner */
-    gdk_pixbuf_copy_area(corners_pix,
-                         src_width - CORNER_ROUNDNESS, 0,
-                         CORNER_ROUNDNESS, CORNER_ROUNDNESS,
-                         pix,
-                         dest_width - CORNER_ROUNDNESS, 0);
-
-    /* draw bottom left corner */
-    gdk_pixbuf_copy_area(corners_pix,
-                         0, src_height - CORNER_ROUNDNESS,
-                         CORNER_ROUNDNESS, CORNER_ROUNDNESS,
-                         pix,
-                         0, dest_height - CORNER_ROUNDNESS);
-    
-    /* draw bottom right corner */
-    gdk_pixbuf_copy_area(corners_pix,
-                         src_width - CORNER_ROUNDNESS,
-                         src_height - CORNER_ROUNDNESS,
-                         CORNER_ROUNDNESS, CORNER_ROUNDNESS,
-                         pix,
-                         dest_width - CORNER_ROUNDNESS,
-                         dest_height - CORNER_ROUNDNESS);
-}
-
-#define EEL_RGBA_COLOR_GET_R(color) (((color) >> 16) & 0xff)
-#define EEL_RGBA_COLOR_GET_G(color) (((color) >> 8) & 0xff)
-#define EEL_RGBA_COLOR_GET_B(color) (((color) >> 0) & 0xff)
-#define EEL_RGBA_COLOR_GET_A(color) (((color) >> 24) & 0xff)
-#define EEL_RGBA_COLOR_PACK(r, g, b, a)         \
-( (((guint32)a) << 24) |                        \
-  (((guint32)r) << 16) |                        \
-  (((guint32)g) <<  8) |                        \
-  (((guint32)b) <<  0) )
-/* Copied from Nautilus, Copyright (C) 2000 Eazel, Inc. */
-/* Multiplies each pixel in a pixbuf by the specified color */
-static void
-xfdesktop_multiply_pixbuf_rgba(GdkPixbuf *pixbuf,
-                               guint rgba)
-{
-    guchar *pixels;
-    int r, g, b, a;
-    int width, height, rowstride;
-    gboolean has_alpha;
-    int x, y;
-    guchar *p;
-
-    g_return_if_fail (gdk_pixbuf_get_colorspace (pixbuf) == GDK_COLORSPACE_RGB);
-    g_return_if_fail (gdk_pixbuf_get_n_channels (pixbuf) == 3
-              || gdk_pixbuf_get_n_channels (pixbuf) == 4);
-
-    r = EEL_RGBA_COLOR_GET_R (rgba);
-    g = EEL_RGBA_COLOR_GET_G (rgba);
-    b = EEL_RGBA_COLOR_GET_B (rgba);
-    a = EEL_RGBA_COLOR_GET_A (rgba);
-
-    width = gdk_pixbuf_get_width (pixbuf);
-    height = gdk_pixbuf_get_height (pixbuf);
-    rowstride = gdk_pixbuf_get_rowstride (pixbuf);
-    has_alpha = gdk_pixbuf_get_has_alpha (pixbuf);
-
-    pixels = gdk_pixbuf_get_pixels (pixbuf);
-
-    for (y = 0; y < height; y++) {
-        p = pixels;
-
-        for (x = 0; x < width; x++) {
-            p[0] = p[0] * r / 255;
-            p[1] = p[1] * g / 255;
-            p[2] = p[2] * b / 255;
-
-            if (has_alpha) {
-                p[3] = p[3] * a / 255;
-                p += 4;
-            } else
-                p += 3;
-        }
-
-        pixels += rowstride;
-    }
-}
-
 static void
 xfdesktop_paint_rounded_box(XfdesktopIconView *icon_view,
                             GtkStateType state,
@@ -2517,7 +2410,6 @@ xfdesktop_paint_rounded_box(XfdesktopIconView *icon_view,
                             GdkRectangle *expose_area)
 {
     GdkRectangle box_area, intersection;
-    guchar alpha;
     
     box_area = *text_area;
     box_area.x -= CORNER_ROUNDNESS;
@@ -2526,38 +2418,46 @@ xfdesktop_paint_rounded_box(XfdesktopIconView *icon_view,
     box_area.height += CORNER_ROUNDNESS * 2;
     
     if(gdk_rectangle_intersect(&box_area, expose_area, &intersection)) {
-        GdkPixbuf *box_pix = gdk_pixbuf_new(GDK_COLORSPACE_RGB, TRUE, 8,
-                                            box_area.width,
-                                            box_area.height);
+        cairo_t *cr = gdk_cairo_create(GTK_WIDGET(icon_view)->window);
         GtkStyle *style = GTK_WIDGET(icon_view)->style;
-        
-        gdk_pixbuf_fill(box_pix, 0xffffffff);
-        
-        if(!icon_view->priv->rounded_frame)
-            icon_view->priv->rounded_frame = gdk_pixbuf_new_from_file(DATADIR \
-                                                                      "/pixmaps/xfce4/xfdesktop/text-selection-frame.png",
-                                                                      NULL);
-        if (state == GTK_STATE_NORMAL)
-            alpha = icon_view->priv->label_alpha;
-        else
-            alpha = icon_view->priv->selected_label_alpha;
+        double alpha;
 
-        xfdesktop_clear_rounded_corners(box_pix,
-                                        icon_view->priv->rounded_frame);
-        xfdesktop_multiply_pixbuf_rgba(box_pix,
-                                       EEL_RGBA_COLOR_PACK(style->base[state].red >> 8, 
-                                                           style->base[state].green >> 8, 
-                                                           style->base[state].blue >> 8,
-                                                           alpha));
-        
-        gdk_draw_pixbuf(GDK_DRAWABLE(GTK_WIDGET(icon_view)->window), NULL,
-                        box_pix, intersection.x - box_area.x,
-                        intersection.y - box_area.y,
-                        intersection.x, intersection.y,
-                        intersection.width, intersection.height,
-                        GDK_RGB_DITHER_NORMAL, 0, 0);
-        
-        g_object_unref(G_OBJECT(box_pix));
+        if(state == GTK_STATE_NORMAL)
+            alpha = icon_view->priv->label_alpha / 255.;
+        else
+            alpha = icon_view->priv->selected_label_alpha / 255.;
+
+        cairo_set_source_rgba(cr, style->base[state].red / 65535.,
+                              style->base[state].green / 65535.,
+                              style->base[state].blue / 65535.,
+                              alpha);
+
+        cairo_move_to(cr, box_area.x, box_area.y + CORNER_ROUNDNESS);
+        cairo_arc(cr, box_area.x + CORNER_ROUNDNESS,
+                  box_area.y + CORNER_ROUNDNESS, CORNER_ROUNDNESS,
+                  M_PI, 3.0*M_PI/2.0);
+        cairo_line_to(cr, box_area.x + box_area.width - CORNER_ROUNDNESS,
+                      box_area.y);
+        cairo_arc(cr, box_area.x + box_area.width - CORNER_ROUNDNESS,
+                  box_area.y + CORNER_ROUNDNESS, CORNER_ROUNDNESS,
+                  3.0+M_PI/2.0, 0.0);
+        cairo_line_to(cr, box_area.x + box_area.width,
+                      box_area.y + box_area.height - CORNER_ROUNDNESS);
+        cairo_arc(cr, box_area.x + box_area.width - CORNER_ROUNDNESS,
+                  box_area.y + box_area.height - CORNER_ROUNDNESS,
+                  CORNER_ROUNDNESS,
+                  0.0, M_PI/2.0);
+        cairo_line_to(cr, box_area.x + CORNER_ROUNDNESS,
+                      box_area.y + box_area.height);
+        cairo_arc(cr, box_area.x + CORNER_ROUNDNESS,
+                  box_area.y + box_area.height - CORNER_ROUNDNESS,
+                  CORNER_ROUNDNESS,
+                  M_PI/2.0, M_PI);
+        cairo_close_path(cr);
+
+        cairo_fill(cr);
+
+        cairo_destroy(cr);
     }
 }
 

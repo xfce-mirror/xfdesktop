@@ -30,18 +30,12 @@ pixmapsxdir = $(datadir)/pixmaps/xfdesktop
 pixmapsx_DATA = \
 	xfdesktop-fallback-icon.png
 
-highlightdir = $(datadir)/pixmaps/xfce4/xfdesktop
-
-highlight_DATA = \
-	text-selection-frame.png
-
 EXTRA_DIST = \
 	$(icons32_DATA) \
 	$(icons48_DATA) \
 	$(iconssc_DATA) \
 	$(pixmaps_DATA) \
-	$(pixmapsx_DATA) \
-	$(highlight_DATA)
+	$(pixmapsx_DATA)
 
 gtk_update_icon_cache = gtk-update-icon-cache -f -t $(datadir)/icons/hicolor
 
