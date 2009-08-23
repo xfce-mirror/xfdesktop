@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-07-30 23:17-0700\n"
-"PO-Revision-Date: 2009-04-13 22:28+0100\n"
+"PO-Revision-Date: 2009-08-23 10:42+0100\n"
 "Last-Translator: Carles Muñoz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: Catalan <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,8 @@ msgstr ""
 "X-Poedit-Language: Catalan\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: ../common/xfdesktop-common.c:95 ../common/xfdesktop-common.c:199
+#: ../common/xfdesktop-common.c:95
+#: ../common/xfdesktop-common.c:199
 #, c-format
 msgid "Backdrop list file is not valid"
 msgstr "El fitxer amb la llista d'imatges no és vàlid"
@@ -118,7 +119,8 @@ msgstr ""
 "%s\n"
 "<i>Mida: %dx%d</i>"
 
-#: ../settings/main.c:272 ../src/xfdesktop-special-file-icon.c:259
+#: ../settings/main.c:272
+#: ../src/xfdesktop-special-file-icon.c:259
 msgid "Home"
 msgstr "Inici"
 
@@ -139,7 +141,8 @@ msgstr "Dispositius extractables"
 msgid "Cannot create backdrop list \"%s\""
 msgstr "No es por crear la llista d'imatges de fons «%s»"
 
-#: ../settings/main.c:462 ../settings/main.c:779
+#: ../settings/main.c:462
+#: ../settings/main.c:779
 msgid "Backdrop List Error"
 msgstr "Error en la llista d'imatges de fons"
 
@@ -149,10 +152,8 @@ msgstr "Crea/carrega un llistat d'imatges de fons"
 
 #: ../settings/main.c:511
 #, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
-"El fitxer «%s» no és una llista d'imatges vàlida. Voleu sobreescriure'l?"
+msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr "El fitxer «%s» no és una llista d'imatges vàlida. Voleu sobreescriure'l?"
 
 #: ../settings/main.c:516
 msgid "Invalid List File"
@@ -262,11 +263,15 @@ msgstr "Opcions de construcció:\n"
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Menú d'escriptori:   %s\n"
 
-#: ../src/main.c:249 ../src/main.c:256 ../src/main.c:263
+#: ../src/main.c:249
+#: ../src/main.c:256
+#: ../src/main.c:263
 msgid "enabled"
 msgstr "habilitat"
 
-#: ../src/main.c:251 ../src/main.c:258 ../src/main.c:265
+#: ../src/main.c:251
+#: ../src/main.c:258
+#: ../src/main.c:265
 msgid "disabled"
 msgstr "inhabilitat"
 
@@ -293,9 +298,7 @@ msgstr "Són opcions:\n"
 #: ../src/main.c:292
 #, c-format
 msgid "    --reload      Reload all settings, refresh image list\n"
-msgstr ""
-"    --reload      Refresca tots els paràmetres, refresca el llistat "
-"d'imatges\n"
+msgstr "    --reload      Refresca tots els paràmetres, refresca el llistat d'imatges\n"
 
 #: ../src/main.c:293
 #, c-format
@@ -304,8 +307,7 @@ msgstr "    --menu        Mostra el menú (a la posició del ratolí)\n"
 
 #: ../src/main.c:294
 #, c-format
-msgid ""
-"    --windowlist  Pop up the window list (at the current mouse position)\n"
+msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
 msgstr ""
 "   --windowlist   Mostra el llistat de finestres (a la posició del\n"
 "                  ratolí)\n"
@@ -343,7 +345,8 @@ msgstr "Espai de treball %d"
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Espai de treball %d</i>"
 
-#: ../src/windowlist.c:370 ../src/windowlist.c:373
+#: ../src/windowlist.c:370
+#: ../src/windowlist.c:373
 msgid "_Add Workspace"
 msgstr "_Afegeix espai de treball"
 
@@ -357,7 +360,8 @@ msgstr "Sup_rimeix l'espai de treball %d"
 msgid "_Remove Workspace '%s'"
 msgstr "Sup_rimeix l'espai de treball «%s»"
 
-#: ../src/xfce-desktop.c:742 ../settings/xfdesktop-settings.glade.h:20
+#: ../src/xfce-desktop.c:742
+#: ../settings/xfdesktop-settings.glade.h:20
 msgid "Desktop"
 msgstr "Escriptori"
 
@@ -372,10 +376,8 @@ msgstr "Error de l'escriptori"
 
 #: ../src/xfdesktop-file-icon-manager.c:478
 #, c-format
-msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr ""
-"No s’ha pogut crear el directori «%s» per desar elements de l’escriptori:"
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr "No s’ha pogut crear el directori «%s» per desar elements de l’escriptori:"
 
 #: ../src/xfdesktop-file-icon-manager.c:480
 #: ../src/xfdesktop-file-icon-manager.c:491
@@ -385,12 +387,8 @@ msgstr "No s'ha pogut crear el directori"
 
 #: ../src/xfdesktop-file-icon-manager.c:489
 #, c-format
-msgid ""
-"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
-"folder."
-msgstr ""
-"No s’ha pogut usar «%s» per retenir els elements de l’escriptori perquè no és "
-"un directori."
+msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
+msgstr "No s’ha pogut usar «%s» per retenir els elements de l’escriptori perquè no és un directori."
 
 #: ../src/xfdesktop-file-icon-manager.c:493
 msgid "Please delete or rename the file."
@@ -417,7 +415,8 @@ msgstr "Canvia el nom"
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "Esteu segur que voleu suprimir els següents «%s» fitxers?"
 
-#: ../src/xfdesktop-file-icon-manager.c:679 ../src/xfdesktop-file-utils.c:55
+#: ../src/xfdesktop-file-icon-manager.c:679
+#: ../src/xfdesktop-file-utils.c:55
 msgid "Question"
 msgstr "Pregunta"
 
@@ -437,7 +436,8 @@ msgstr "Suprimeix multiple fitxers"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:917
-#: ../src/xfdesktop-file-icon-manager.c:1633 ../src/xfdesktop-file-icon.c:140
+#: ../src/xfdesktop-file-icon-manager.c:1633
+#: ../src/xfdesktop-file-icon.c:140
 #: ../src/xfdesktop-file-utils.c:353
 #, c-format
 msgid "Unable to launch \"%s\":"
@@ -446,7 +446,8 @@ msgstr "No s'ha pogut executar «%s»:"
 #: ../src/xfdesktop-file-icon-manager.c:919
 #: ../src/xfdesktop-file-icon-manager.c:977
 #: ../src/xfdesktop-file-icon-manager.c:1240
-#: ../src/xfdesktop-file-icon-manager.c:1634 ../src/xfdesktop-file-icon.c:142
+#: ../src/xfdesktop-file-icon-manager.c:1634
+#: ../src/xfdesktop-file-icon.c:142
 #: ../src/xfdesktop-file-utils.c:356
 msgid "Launch Error"
 msgstr "Error durant el llançament"
@@ -455,13 +456,10 @@ msgstr "Error durant el llançament"
 msgid "The application chooser could not be opened."
 msgstr "No s'ha pogut obrir l’escollidor d’aplicacions."
 
-#: ../src/xfdesktop-file-icon-manager.c:979 ../src/xfdesktop-file-utils.c:358
-msgid ""
-"This feature requires a file manager service present (such as that supplied "
-"by Thunar)."
-msgstr ""
-"Aquesta característica demana l'ajut d'un gestor de fitxers (com per exemple "
-"el que fa Thunar)."
+#: ../src/xfdesktop-file-icon-manager.c:979
+#: ../src/xfdesktop-file-utils.c:358
+msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
+msgstr "Aquesta característica demana l'ajut d'un gestor de fitxers (com per exemple el que fa Thunar)."
 
 #: ../src/xfdesktop-file-icon-manager.c:1137
 #, c-format
@@ -479,12 +477,8 @@ msgid "Unable to create folder named \"%s\":"
 msgstr "No s'ha crear el directori anomenat «%s»:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1242
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
-msgstr ""
-"No s’ha pogut llançar «exo-desktop-item-edit», el qual s’ha de menester per "
-"crear i editar els llançadors i enllaços a l’escriptori."
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgstr "No s’ha pogut llançar «exo-desktop-item-edit», el qual s’ha de menester per crear i editar els llançadors i enllaços a l’escriptori."
 
 #: ../src/xfdesktop-file-icon-manager.c:1275
 msgid "Create New Folder"
@@ -540,7 +534,8 @@ msgid "_Open in New Window"
 msgstr "_Obre en una nova finestra"
 
 #: ../src/xfdesktop-file-icon-manager.c:1718
-#: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:561
+#: ../src/xfdesktop-special-file-icon.c:633
+#: ../src/xfdesktop-volume-icon.c:561
 msgid "_Open"
 msgstr "_Obre"
 
@@ -651,7 +646,8 @@ msgstr "Objectiu de l'enllaç:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:251
 #: ../src/xfdesktop-file-properties-dialog.c:410
-#: ../src/xfdesktop-volume-icon.c:476 ../src/xfdesktop-volume-icon.c:482
+#: ../src/xfdesktop-volume-icon.c:476
+#: ../src/xfdesktop-volume-icon.c:482
 msgid "(unknown)"
 msgstr "(desconegut)"
 
@@ -771,12 +767,8 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "No s’ha pogut contactar amb el servei de paperera Xfce"
 
 #: ../src/xfdesktop-special-file-icon.c:518
-msgid ""
-"Make sure you have a file manager installed that supports the Xfce Trash "
-"service, such as Thunar."
-msgstr ""
-"Assegureu-vos que teniu instaŀlada una aplicació que funcioni amb la "
-"paperera Xfce, com per exemple Thunar."
+msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
+msgstr "Assegureu-vos que teniu instaŀlada una aplicació que funcioni amb la paperera Xfce, com per exemple Thunar."
 
 #: ../src/xfdesktop-special-file-icon.c:651
 msgid "_Empty Trash"
@@ -911,12 +903,11 @@ msgstr "Altres"
 
 #: ../modules/menu/directory-data/xfce-science.directory.in.h:1
 msgid "Science"
-msgstr ""
+msgstr "Ciència"
 
 #: ../modules/menu/directory-data/xfce-science.directory.in.h:2
-#, fuzzy
 msgid "Scientific software"
-msgstr "Programari educatiu"
+msgstr "Programari científic"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
 msgid "Screensaver applets"
@@ -1164,8 +1155,7 @@ msgstr "Selecciona una sola imatge com a fons"
 
 #: ../settings/xfdesktop-settings.glade.h:45
 msgid "Set desktop background and menu and icon behavior"
-msgstr ""
-"Ajusta el fons de l'escriptori i el comportament del menú i de les icones"
+msgstr "Ajusta el fons de l'escriptori i el comportament del menú i de les icones"
 
 #: ../settings/xfdesktop-settings.glade.h:46
 msgid "Sh_ow application icons in menu"
@@ -1208,8 +1198,7 @@ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr "Especifica el color del degradat «dret» o «baix»"
 
 #: ../settings/xfdesktop-settings.glade.h:57
-msgid ""
-"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
 msgstr "Especifica el color sòlid, o el color del degradat «esquerra» o «dalt»"
 
 #: ../settings/xfdesktop-settings.glade.h:58
@@ -1221,12 +1210,8 @@ msgid "Specify the style of the color drawn behind the backdrop image"
 msgstr "Indiqueu l'estil del color darrere la imatge de fons"
 
 #: ../settings/xfdesktop-settings.glade.h:60
-msgid ""
-"Specify the transparency level for the rounded label drawn behind the icon "
-"text"
-msgstr ""
-"Indiqueu el nivell de transparència per l'etiqueta arrodonida darrere el "
-"text de les icones"
+msgid "Specify the transparency level for the rounded label drawn behind the icon text"
+msgstr "Indiqueu el nivell de transparència per l'etiqueta arrodonida darrere el text de les icones"
 
 #: ../settings/xfdesktop-settings.glade.h:61
 msgid "St_yle:"
@@ -1270,109 +1255,74 @@ msgstr "_Una imatge"
 
 #~ msgid "gtk-close"
 #~ msgstr "gtk-close"
-
 #~ msgid "gtk-help"
 #~ msgstr "gtk-help"
-
 #~ msgid "Add menu entry"
 #~ msgstr "Afegeix una entrada al menú"
-
 #~ msgid "Type:"
 #~ msgstr "Tipus:"
-
 #~ msgid "Title"
 #~ msgstr "Títol"
-
 #~ msgid "Submenu"
 #~ msgstr "Submenú"
-
 #~ msgid "Launcher"
 #~ msgstr "Llançador"
-
 #~ msgid "Separator"
 #~ msgstr "Separador"
-
 #~ msgid "Quit"
 #~ msgstr "Surt"
-
 #~ msgid "Command:"
 #~ msgstr "Ordre:"
-
 #~ msgid "Icon:"
 #~ msgstr "Icona:"
-
 #~ msgid "No icon"
 #~ msgstr "Sense icona"
-
 #~ msgid "Themed icon:"
 #~ msgstr "Icona amb tema:"
-
 #~ msgid "Select icon"
 #~ msgstr "Seleccioneu una icona"
-
 #~ msgid "Use startup _notification"
 #~ msgstr "Utilitza _notificació d'engegada"
-
 #~ msgid "Run in _terminal"
 #~ msgstr "Executa en un _terminal"
-
 #~ msgid "Select command"
 #~ msgstr "Esculliu ordre"
-
 #~ msgid "Executable Files"
 #~ msgstr "Fitxers executables"
-
 #~ msgid "Perl Scripts"
 #~ msgstr "Seqüència de Perl"
-
 #~ msgid "Python Scripts"
 #~ msgstr "Seqüència de Python"
-
 #~ msgid "Ruby Scripts"
 #~ msgstr "Seqüència de Ruby"
-
 #~ msgid "Shell Scripts"
 #~ msgstr "Seqüència d’intèrpret d’ordres"
-
 #~ msgid "Add external menu entry"
 #~ msgstr "Afegeix entrada d’un menú extern"
-
 #~ msgid "File"
 #~ msgstr "Fitxer"
-
 #~ msgid "Source:"
 #~ msgstr "Font:"
-
 #~ msgid "Select external menu"
 #~ msgstr "Selecciona menú extern"
-
 #~ msgid "Style:"
 #~ msgstr "Estil:"
-
 #~ msgid "Simple"
 #~ msgstr "Simple"
-
 #~ msgid "Multilevel"
 #~ msgstr "Multinivell"
-
 #~ msgid "_Unique entries only"
 #~ msgstr "Sols entrades _úniques"
-
 #~ msgid "Edit menu entry"
 #~ msgstr "Edita una entrada del menú"
-
 #~ msgid "Edit external menu entry"
 #~ msgstr "Edita una entrada del menú extern"
-
 #~ msgid "Xfce4-MenuEditor"
 #~ msgstr "Xfce4-MenuEditor"
-
 #~ msgid "Menueditor Warning"
 #~ msgstr "Advertència del editor de menús"
-
 #~ msgid "xfce4-menueditor is deprecated"
 #~ msgstr "xfce4-menueditor està desfasat"
-
 #~ msgid ""
 #~ "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
 #~ "edit the new menu file format.  You may continue and edit an old-style "
@@ -1381,202 +1331,136 @@ msgstr "_Una imatge"
 #~ "El sistema de menús de Xfce ha estat substituït i ara «xfce4-menueditor» "
 #~ "no és capaç d'editar el nou format de menú. Podeu continuar i editar "
 #~ "l'antic menú o sortir."
-
 #~ msgid "Continue"
 #~ msgstr "Continua"
-
 #~ msgid "_File"
 #~ msgstr "_Fitxer"
-
 #~ msgid "_New"
 #~ msgstr "_Nou"
-
 #~ msgid "Create a new empty menu"
 #~ msgstr "Crea un fitxer de menú Xfce4 nou"
-
 #~ msgid "Open existing menu"
 #~ msgstr "Obre un menú existent"
-
 #~ msgid "Open _default menu"
 #~ msgstr "Obre el menú pre_determinat"
-
 #~ msgid "Open default menu"
 #~ msgstr "Obre un menú predeterminat"
-
 #~ msgid "_Save"
 #~ msgstr "De_sa"
-
 #~ msgid "Save modifications"
 #~ msgstr "Desa les modificacions"
-
 #~ msgid "Save _as..."
 #~ msgstr "_Anomena i desa…"
-
 #~ msgid "Save menu under a given name"
 #~ msgstr "Desa el menú amb el nom donat"
-
 #~ msgid "_Close"
 #~ msgstr "Tan_ca"
-
 #~ msgid "Close menu"
 #~ msgstr "Tanca el menú"
-
 #~ msgid "_Quit"
 #~ msgstr "S_urt"
-
 #~ msgid "Quit Xfce4-Menueditor"
 #~ msgstr "Surt del Xfce4-Menueditor"
-
 #~ msgid "_Edit"
 #~ msgstr "_Edita"
-
 #~ msgid "_Edit entry"
 #~ msgstr "_Edita una entrada"
-
 #~ msgid "Edit selected entry"
 #~ msgstr "Edita l’entrada seleccionada"
-
 #~ msgid "_Add entry"
 #~ msgstr "_Afegeix una entrada"
-
 #~ msgid "Add a new entry in the menu"
 #~ msgstr "Afegeix una nova entrada al menú"
-
 #~ msgid "Add _external"
 #~ msgstr "Afegeix _externa"
-
 #~ msgid "Add an external entry"
 #~ msgstr "Afegeix una entrada externa"
-
 #~ msgid "_Remove entry"
 #~ msgstr "Sup_rimeix l’entrada"
-
 #~ msgid "Remove entry"
 #~ msgstr "Suprimeix una entrada"
-
 #~ msgid "_Up"
 #~ msgstr "Am_unt"
-
 #~ msgid "Move entry up"
 #~ msgstr "Mou l'entrada actual cap amunt"
-
 #~ msgid "_Down"
 #~ msgstr "Aval_l"
-
 #~ msgid "Move entry down"
 #~ msgstr "Mou l'entrada actual cap avall"
-
 #~ msgid "_Help"
 #~ msgstr "A_juda"
-
 #~ msgid "_About..."
 #~ msgstr "_Quant a…"
-
 #~ msgid "Show informations about xfce4-menueditor"
 #~ msgstr "Mostra informació quan a xfce4-menueditor"
-
 #~ msgid "Collapse all"
 #~ msgstr "Redueix tot"
-
 #~ msgid "Collapse all menu entries"
 #~ msgstr "Redueix totes les entrades del menú"
-
 #~ msgid "Expand all"
 #~ msgstr "Expandeix tot"
-
 #~ msgid "Expand all menu entries"
 #~ msgstr "Expandeix totes les entrades del menú"
-
 #~ msgid "Name"
 #~ msgstr "Nom"
-
 #~ msgid "Command"
 #~ msgstr "Ordre"
-
 #~ msgid "Hidden"
 #~ msgstr "Ocult"
-
 #~ msgid "Are you sure you want to close the current menu?"
 #~ msgstr "Esteu segur de que voleu tancar el menú actual?"
-
 #~ msgid "Do you want to save before closing the file?"
 #~ msgstr "Voleu desar abans de tancar el fitxer?"
-
 #~ msgid "Do you want to save before opening an other menu ?"
 #~ msgstr "Voleu desar abans d'obrir un altre menú?"
-
 #~ msgid "Ignore modifications"
 #~ msgstr "Ignora les modificacions"
-
 #~ msgid "Open menu file"
 #~ msgstr "Obre un fitxer de menú"
-
 #~ msgid "Do you want to save before opening the default menu ?"
 #~ msgstr "Voleu desar abans d'obrir el menú predeterminat?"
-
 #~ msgid "Save menu file as"
 #~ msgstr "Desa el fitxer de menú com"
-
 #~ msgid "Do you want to save before closing the menu ?"
 #~ msgstr "Voleu desar abans de tancar el menú?"
-
 #~ msgid "quit"
 #~ msgstr "surt"
-
 #~ msgid "--- separator ---"
 #~ msgstr "--- separador ---"
-
 #~ msgid "--- include ---"
 #~ msgstr "--- inclou ---"
-
 #~ msgid "system"
 #~ msgstr "sistema"
-
 #~ msgid "Do you want to move the item into the submenu?"
 #~ msgstr "Voleu moure aquest element al submenú?"
-
 #~ msgid "A menu editor for Xfce4"
 #~ msgstr "Un editor de menú per Xfce4"
-
 #~ msgid "Author/Maintainer"
 #~ msgstr "Autor/Mantenidor"
-
 #~ msgid "Contributor"
 #~ msgstr "Contribuïdor"
-
 #~ msgid "Icon designer"
 #~ msgstr "Dissenyador de les icones"
-
 #~ msgid "You have modified the menu, do you want to save it before quitting ?"
 #~ msgstr "Heu modificat el menú, Voleu desar-lo abans de tancar?"
-
 #~ msgid "Forget modifications"
 #~ msgstr "Ignora les modificacions"
-
 #~ msgid "Unable to open the menu file %s in write mode"
 #~ msgstr "No s’ha pogut obrir el fitxer de menú %s en mode escriptura"
-
 #~ msgid "Graphical tool for editing the Xfce 4 menu"
 #~ msgstr "Una eina gràfica per editar el menú de Xfce 4"
-
 #~ msgid "Menu Editor"
 #~ msgstr "Editor del menú"
-
 #~ msgid "Xfce 4 Menu Editor"
 #~ msgstr "Editor del menú Xfce 4"
-
 #~ msgid "Settings for the Xfce 4 Desktop Manager"
 #~ msgstr "Paràmetres pel gestor d'escriptori Xfce4"
-
 #~ msgid "Xfce 4 Desktop Settings"
 #~ msgstr "Paràmetres de l'escriptori Xfce4"
-
 #~ msgid "Show windows on each workspace in _submenus"
 #~ msgstr "Mostra les finestres dels espais de treball als _submenús"
-
 #~ msgid "Use _Xfce to manage the desktop"
 #~ msgstr "Empra _Xfce per gestionar l'escriptori"
-
 #~ msgid ""
 #~ "Could not save file %s: %s\n"
 #~ "\n"
@@ -1587,55 +1471,38 @@ msgstr "_Una imatge"
 #~ "\n"
 #~ "Si us plau indiqueu un altre ubicació o preméu cancelar al diàleg a fi de "
 #~ "descartar els c anvis."
-
 #~ msgid "Button Label|Desktop"
 #~ msgstr "Escriptori"
-
 #~ msgid "backdrops.list"
 #~ msgstr "backdrops.list"
-
 #~ msgid "Select backdrop image or list file"
 #~ msgstr "Seleccioneu imatge de rerefons o una llista fitxers"
-
 #~ msgid "List Files (*.list)"
 #~ msgstr "Llista fitxers (*.list)"
-
 #~ msgid "_Edit list..."
 #~ msgstr "_Edita llistat"
-
 #~ msgid "_New list..."
 #~ msgstr "Llista _nova"
-
 #~ msgid "S_tyle:"
 #~ msgstr "Es_til:"
-
 #~ msgid "Auto"
 #~ msgstr "Auto"
-
 #~ msgid "Centered"
 #~ msgstr "Centrat"
-
 #~ msgid "Tiled"
 #~ msgstr "En mosaic"
-
 #~ msgid "Stretched"
 #~ msgstr "Ampliat"
-
 #~ msgid "Scaled"
 #~ msgstr "Escalat"
-
 #~ msgid "Zoomed"
 #~ msgstr "Zoomed"
-
 #~ msgid "Xfce will be unable to manage your desktop (%s)."
 #~ msgstr "No s'ha pogut gestionar l'escriptori (%s) des de Xfce."
-
 #~ msgid "Unknown Error"
 #~ msgstr "Error desconegut"
-
 #~ msgid "Unable to start xfdesktop"
 #~ msgstr "No s'ha pogut engegar xfdesktop"
-
 #~ msgid ""
 #~ "To ensure that this setting takes effect the next time you start Xfce, "
 #~ "please be sure to save your session when logging out.  If you are not "
@@ -1648,7 +1515,6 @@ msgstr "_Una imatge"
 #~ "el gestor de sessions Xfce (xfce4-session) haureu d'editar manualment el "
 #~ "vostre fitxer  ~/.config/xfce4/xinitrc . Podeu trobar més detalls a la "
 #~ "documentació a http://xfce.org/. "
-
 #~ msgid ""
 #~ "To ensure that Xfce does not manage your desktop the next time you start "
 #~ "Xfce, please be sure to save your session when logging out.  If you are "
@@ -1661,63 +1527,44 @@ msgstr "_Una imatge"
 #~ "el gestor de sessions Xfce (xfce4-session) haureu d'editar manualment el "
 #~ "vostre fitxer  ~/.config/xfce4/xinitrc . Podeu trobar més detalls a la "
 #~ "documentació a http://xfce.org/. "
-
 #~ msgid "_Do not show this again"
 #~ msgstr "N_o tornis a mostrar-ho"
-
 #~ msgid "Desktop Preferences"
 #~ msgstr "Paràmetres de l'escriptori"
-
 #~ msgid "Stretch single backdrop onto _all monitors"
 #~ msgstr "_Amplia un sol rerefons per tots els monitors"
-
 #~ msgid "Color"
 #~ msgstr "Color"
-
 #~ msgid "_Color Style:"
 #~ msgstr "Estil de _color:"
-
 #~ msgid "Solid Color"
 #~ msgstr "Color sòlid"
-
 #~ msgid "Horizontal Gradient"
 #~ msgstr "Degradat horitzontal"
-
 #~ msgid "Vertical Gradient"
 #~ msgstr "Degradat vertical"
-
 #~ msgid "Image"
 #~ msgstr "Imatge"
-
 #~ msgid "Show _Image"
 #~ msgstr "Mostra _imatge"
-
 #~ msgid "_File:"
 #~ msgstr "_Fitxer:"
-
 #~ msgid "_Behavior"
 #~ msgstr "Co_mportament"
-
 #~ msgid "Select backdrop image file"
 #~ msgstr "Seleccioneu fitxer de la imatge de rerefons"
-
 #~ msgid "List file"
 #~ msgstr "Llista fitxer"
-
 #~ msgid "Edit backdrop list"
 #~ msgstr "Edita un llistat de rerefons"
-
 #~ msgid "Desktop Icons"
 #~ msgstr "Icones d'escriptori"
-
 #~ msgid "File/launcher icons"
 #~ msgstr "Icones de llançadors i fitxers"
-
 #~ msgid "Use _system font size"
 #~ msgstr "Usa la mida de la font de _sistema"
-
 #~ msgid "Des_ktop"
 #~ msgstr "Es_criptori"
-
 #~ msgid "_Desktop Properties..."
 #~ msgstr "Propietats _de l’escriptori"
+
