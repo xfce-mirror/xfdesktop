@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the xfdesktop package.
 # Lukáš Konarovský <daeltar@daeltar.org>, 2003.
 # Alois Nespor <Alois.Nespor@seznam.cz>, 2004.
-# Michal Várady <miko.vaji@gmail.com>, 2006-2008.
+# Michal Várady <miko.vaji@gmail.com>, 2006-2009.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-07-30 23:17-0700\n"
-"PO-Revision-Date: 2008-12-08 23:58+0100\n"
+"PO-Revision-Date: 2009-08-23 13:33+0100\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.3\n"
 
-#: ../common/xfdesktop-common.c:95 ../common/xfdesktop-common.c:199
+#: ../common/xfdesktop-common.c:95
+#: ../common/xfdesktop-common.c:199
 #, c-format
 msgid "Backdrop list file is not valid"
 msgstr "Soubor seznamu pozadí není platný"
@@ -115,7 +116,8 @@ msgstr ""
 "%s\n"
 "<i>Velikost: %dx%d</i>"
 
-#: ../settings/main.c:272 ../src/xfdesktop-special-file-icon.c:259
+#: ../settings/main.c:272
+#: ../src/xfdesktop-special-file-icon.c:259
 msgid "Home"
 msgstr "Domů"
 
@@ -136,7 +138,8 @@ msgstr "Vyměnitelné jednotky"
 msgid "Cannot create backdrop list \"%s\""
 msgstr "Nelze vytvořit seznam pozadí \"%s\""
 
-#: ../settings/main.c:462 ../settings/main.c:779
+#: ../settings/main.c:462
+#: ../settings/main.c:779
 msgid "Backdrop List Error"
 msgstr "Chyba seznamu pozadí"
 
@@ -146,10 +149,8 @@ msgstr "Vytvořit nebo načíst seznam pozadí"
 
 #: ../settings/main.c:511
 #, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
-"Soubor \"%s\" není platným souborem seznamu pozadí. Chcete jej přepsat?"
+msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr "Soubor \"%s\" není platným souborem seznamu pozadí. Chcete jej přepsat?"
 
 #: ../settings/main.c:516
 msgid "Invalid List File"
@@ -259,11 +260,15 @@ msgstr "Volby při sestavování:\n"
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Hlavní nabídka:         %s\n"
 
-#: ../src/main.c:249 ../src/main.c:256 ../src/main.c:263
+#: ../src/main.c:249
+#: ../src/main.c:256
+#: ../src/main.c:263
 msgid "enabled"
 msgstr "povoleno"
 
-#: ../src/main.c:251 ../src/main.c:258 ../src/main.c:265
+#: ../src/main.c:251
+#: ../src/main.c:258
+#: ../src/main.c:265
 msgid "disabled"
 msgstr "zakázáno"
 
@@ -290,8 +295,7 @@ msgstr "Možnosti jsou:\n"
 #: ../src/main.c:292
 #, c-format
 msgid "    --reload      Reload all settings, refresh image list\n"
-msgstr ""
-"   --reload      Znovu načíst všechna nastavení, obnovit seznam obrázků\n"
+msgstr "   --reload      Znovu načíst všechna nastavení, obnovit seznam obrázků\n"
 
 #: ../src/main.c:293
 #, c-format
@@ -300,10 +304,8 @@ msgstr "    --menu        Otevřít nabídku (na aktuální pozici kurzoru myši
 
 #: ../src/main.c:294
 #, c-format
-msgid ""
-"    --windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr ""
-"    --windowlist Otevřít seznam oken (na aktuální pozici kurzoru myši)\n"
+msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr "    --windowlist Otevřít seznam oken (na aktuální pozici kurzoru myši)\n"
 
 #: ../src/main.c:295
 #, c-format
@@ -338,7 +340,8 @@ msgstr "Pracovní plocha %d"
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Pracovní plocha %d</i>"
 
-#: ../src/windowlist.c:370 ../src/windowlist.c:373
+#: ../src/windowlist.c:370
+#: ../src/windowlist.c:373
 msgid "_Add Workspace"
 msgstr "_Přidat pracovní plochu"
 
@@ -352,7 +355,8 @@ msgstr "_Odebrat pracovní plochu %d"
 msgid "_Remove Workspace '%s'"
 msgstr "_Odebrat pracovní plochu '%s'"
 
-#: ../src/xfce-desktop.c:742 ../settings/xfdesktop-settings.glade.h:20
+#: ../src/xfce-desktop.c:742
+#: ../settings/xfdesktop-settings.glade.h:20
 msgid "Desktop"
 msgstr "Plocha"
 
@@ -367,10 +371,8 @@ msgstr "Chyba pracovní plochy"
 
 #: ../src/xfdesktop-file-icon-manager.c:478
 #, c-format
-msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr ""
-"Aplikace Xfdesktop nemůže vytvořit složku \"%s\" pro uložení položek plochy:"
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr "Aplikace Xfdesktop nemůže vytvořit složku \"%s\" pro uložení položek plochy:"
 
 #: ../src/xfdesktop-file-icon-manager.c:480
 #: ../src/xfdesktop-file-icon-manager.c:491
@@ -380,12 +382,8 @@ msgstr "Vytvoření složky se nezdařilo"
 
 #: ../src/xfdesktop-file-icon-manager.c:489
 #, c-format
-msgid ""
-"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
-"folder."
-msgstr ""
-"Xfdesktop nemůže použít \"%s\" pro uložení položek plochy, protože není "
-"složkou."
+msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
+msgstr "Xfdesktop nemůže použít \"%s\" pro uložení položek plochy, protože není složkou."
 
 #: ../src/xfdesktop-file-icon-manager.c:493
 msgid "Please delete or rename the file."
@@ -412,7 +410,8 @@ msgstr "Přejmenovat"
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "Opravdu chcete smazat \"%s\"?"
 
-#: ../src/xfdesktop-file-icon-manager.c:679 ../src/xfdesktop-file-utils.c:55
+#: ../src/xfdesktop-file-icon-manager.c:679
+#: ../src/xfdesktop-file-utils.c:55
 msgid "Question"
 msgstr "Otázka"
 
@@ -432,7 +431,8 @@ msgstr "Smazat více souborů"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:917
-#: ../src/xfdesktop-file-icon-manager.c:1633 ../src/xfdesktop-file-icon.c:140
+#: ../src/xfdesktop-file-icon-manager.c:1633
+#: ../src/xfdesktop-file-icon.c:140
 #: ../src/xfdesktop-file-utils.c:353
 #, c-format
 msgid "Unable to launch \"%s\":"
@@ -441,7 +441,8 @@ msgstr "Nelze spustit \"%s\":"
 #: ../src/xfdesktop-file-icon-manager.c:919
 #: ../src/xfdesktop-file-icon-manager.c:977
 #: ../src/xfdesktop-file-icon-manager.c:1240
-#: ../src/xfdesktop-file-icon-manager.c:1634 ../src/xfdesktop-file-icon.c:142
+#: ../src/xfdesktop-file-icon-manager.c:1634
+#: ../src/xfdesktop-file-icon.c:142
 #: ../src/xfdesktop-file-utils.c:356
 msgid "Launch Error"
 msgstr "Chyba při spuštění"
@@ -450,13 +451,10 @@ msgstr "Chyba při spuštění"
 msgid "The application chooser could not be opened."
 msgstr "Výběr aplikace nebylo možné otevřít."
 
-#: ../src/xfdesktop-file-icon-manager.c:979 ../src/xfdesktop-file-utils.c:358
-msgid ""
-"This feature requires a file manager service present (such as that supplied "
-"by Thunar)."
-msgstr ""
-"Tato vlastnost vyžaduje přítomnost služby správce souborů (například "
-"aplikaci Thunar)."
+#: ../src/xfdesktop-file-icon-manager.c:979
+#: ../src/xfdesktop-file-utils.c:358
+msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
+msgstr "Tato vlastnost vyžaduje přítomnost služby správce souborů (například aplikaci Thunar)."
 
 #: ../src/xfdesktop-file-icon-manager.c:1137
 #, c-format
@@ -474,12 +472,8 @@ msgid "Unable to create folder named \"%s\":"
 msgstr "Nelze vytvořit složku s názvem \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1242
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
-msgstr ""
-"Nelze spustit \"exo-desktop-item-edit\". Tato aplikace je vyžadována pro "
-"vytváření a úpravu spouštěčů a odkazů na ploše."
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgstr "Nelze spustit \"exo-desktop-item-edit\". Tato aplikace je vyžadována pro vytváření a úpravu spouštěčů a odkazů na ploše."
 
 #: ../src/xfdesktop-file-icon-manager.c:1275
 msgid "Create New Folder"
@@ -535,7 +529,8 @@ msgid "_Open in New Window"
 msgstr "_Otevřít v novém okně"
 
 #: ../src/xfdesktop-file-icon-manager.c:1718
-#: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:561
+#: ../src/xfdesktop-special-file-icon.c:633
+#: ../src/xfdesktop-volume-icon.c:561
 msgid "_Open"
 msgstr "_Otevřít"
 
@@ -646,7 +641,8 @@ msgstr "Cíl odkazu:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:251
 #: ../src/xfdesktop-file-properties-dialog.c:410
-#: ../src/xfdesktop-volume-icon.c:476 ../src/xfdesktop-volume-icon.c:482
+#: ../src/xfdesktop-volume-icon.c:476
+#: ../src/xfdesktop-volume-icon.c:482
 msgid "(unknown)"
 msgstr "(neznámý)"
 
@@ -766,12 +762,8 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "Nelze otevřít službu Koš Xfce."
 
 #: ../src/xfdesktop-special-file-icon.c:518
-msgid ""
-"Make sure you have a file manager installed that supports the Xfce Trash "
-"service, such as Thunar."
-msgstr ""
-"Ujistěte se, že máte nainstalován správce souborů podporující službu Koš "
-"Xfce, například aplikaci Thunar."
+msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
+msgstr "Ujistěte se, že máte nainstalován správce souborů podporující službu Koš Xfce, například aplikaci Thunar."
 
 #: ../src/xfdesktop-special-file-icon.c:651
 msgid "_Empty Trash"
@@ -909,9 +901,8 @@ msgid "Science"
 msgstr "Věda"
 
 #: ../modules/menu/directory-data/xfce-science.directory.in.h:2
-#, fuzzy
 msgid "Scientific software"
-msgstr "Výukový software"
+msgstr "Vědecký software"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
 msgid "Screensaver applets"
@@ -1171,8 +1162,7 @@ msgstr "Zobrazit i_kony aplikací v nabídce"
 
 #: ../settings/xfdesktop-settings.glade.h:48
 msgid "Show _window list menu on desktop middle click"
-msgstr ""
-"Zobrazit nabídku _seznam oken při kliknutí prostředním tlačítkem na plochu"
+msgstr "Zobrazit nabídku _seznam oken při kliknutí prostředním tlačítkem na plochu"
 
 #: ../settings/xfdesktop-settings.glade.h:49
 msgid "Show applications menu on _desktop right click"
@@ -1203,10 +1193,8 @@ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr "Určuje \"pravou\" nebo \"spodní\" barvu barevného přechodu"
 
 #: ../settings/xfdesktop-settings.glade.h:57
-msgid ""
-"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr ""
-"Určuje jednotnou barvu nebo \"levou\" nebo \"horní\" barvu barevného přechodu"
+msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr "Určuje jednotnou barvu nebo \"levou\" nebo \"horní\" barvu barevného přechodu"
 
 #: ../settings/xfdesktop-settings.glade.h:58
 msgid "Specify how the image will be resized to fit the screen"
@@ -1217,11 +1205,8 @@ msgid "Specify the style of the color drawn behind the backdrop image"
 msgstr "Zadejte styl barvy vykreslené pod obrázkem pozadí"
 
 #: ../settings/xfdesktop-settings.glade.h:60
-msgid ""
-"Specify the transparency level for the rounded label drawn behind the icon "
-"text"
-msgstr ""
-"Zadejte úroveň průhlednosti zaobleného popisku vykresleného za textem ikony"
+msgid "Specify the transparency level for the rounded label drawn behind the icon text"
+msgstr "Zadejte úroveň průhlednosti zaobleného popisku vykresleného za textem ikony"
 
 #: ../settings/xfdesktop-settings.glade.h:61
 msgid "St_yle:"
@@ -1265,109 +1250,74 @@ msgstr "_Jediný obrázek"
 
 #~ msgid "gtk-close"
 #~ msgstr "gtk-close"
-
 #~ msgid "gtk-help"
 #~ msgstr "gtk-help"
-
 #~ msgid "Add menu entry"
 #~ msgstr "Přidat položku nabídky"
-
 #~ msgid "Type:"
 #~ msgstr "Typ:"
-
 #~ msgid "Title"
 #~ msgstr "Titulek"
-
 #~ msgid "Submenu"
 #~ msgstr "Podnabídka"
-
 #~ msgid "Launcher"
 #~ msgstr "Spouštěč"
-
 #~ msgid "Separator"
 #~ msgstr "Oddělovač"
-
 #~ msgid "Quit"
 #~ msgstr "Konec"
-
 #~ msgid "Command:"
 #~ msgstr "Příkaz:"
-
 #~ msgid "Icon:"
 #~ msgstr "Ikona:"
-
 #~ msgid "No icon"
 #~ msgstr "Bez ikony"
-
 #~ msgid "Themed icon:"
 #~ msgstr "Ikona motivu:"
-
 #~ msgid "Select icon"
 #~ msgstr "Vybrat ikonu"
-
 #~ msgid "Use startup _notification"
 #~ msgstr "Použít _oznámení při spuštění"
-
 #~ msgid "Run in _terminal"
 #~ msgstr "Spustit v _terminálu"
-
 #~ msgid "Select command"
 #~ msgstr "Vybrat příkaz"
-
 #~ msgid "Executable Files"
 #~ msgstr "Spustitelné soubory"
-
 #~ msgid "Perl Scripts"
 #~ msgstr "Skripty jazyka Perl"
-
 #~ msgid "Python Scripts"
 #~ msgstr "Skripty jazyka Python"
-
 #~ msgid "Ruby Scripts"
 #~ msgstr "Skripty jazyka Ruby"
-
 #~ msgid "Shell Scripts"
 #~ msgstr "Shellové skripty"
-
 #~ msgid "Add external menu entry"
 #~ msgstr "Přidat externí položku nabídky"
-
 #~ msgid "File"
 #~ msgstr "Soubor"
-
 #~ msgid "Source:"
 #~ msgstr "Zdroj:"
-
 #~ msgid "Select external menu"
 #~ msgstr "Vybrat externí nabídku"
-
 #~ msgid "Style:"
 #~ msgstr "Styl:"
-
 #~ msgid "Simple"
 #~ msgstr "Jednoduchý"
-
 #~ msgid "Multilevel"
 #~ msgstr "Víceúrovňový"
-
 #~ msgid "_Unique entries only"
 #~ msgstr "Pouze _unikátní položky"
-
 #~ msgid "Edit menu entry"
 #~ msgstr "Upravit položku nabídky"
-
 #~ msgid "Edit external menu entry"
 #~ msgstr "Upravit položku externí nabídky"
-
 #~ msgid "Xfce4-MenuEditor"
 #~ msgstr "Xfce4-MenuEditor"
-
 #~ msgid "Menueditor Warning"
 #~ msgstr "Varování editoru nabídky"
-
 #~ msgid "xfce4-menueditor is deprecated"
 #~ msgstr "Aplikace xfce4-menueditor je zastaralá"
-
 #~ msgid ""
 #~ "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
 #~ "edit the new menu file format.  You may continue and edit an old-style "
@@ -1377,190 +1327,128 @@ msgstr "_Jediný obrázek"
 #~ "aplikaci xfce4-menueditor pro úpravu souborů nabídky v nové verzi. Můžete "
 #~ "pokračovat a upravovat soubor nabídky ve staré verzi nebo aplikaci "
 #~ "ukončit."
-
 #~ msgid "Continue"
 #~ msgstr "Pokračovat"
-
 #~ msgid "_File"
 #~ msgstr "_Soubor"
-
 #~ msgid "_New"
 #~ msgstr "_Nový"
-
 #~ msgid "Create a new empty menu"
 #~ msgstr "Vytvořit novou prázdnou nabídku"
-
 #~ msgid "Open existing menu"
 #~ msgstr "Otevřít existující nabídku"
-
 #~ msgid "Open _default menu"
 #~ msgstr "Otevřít vý_chozí nabídku"
-
 #~ msgid "Open default menu"
 #~ msgstr "Otevřít výchozí nabídku"
-
 #~ msgid "_Save"
 #~ msgstr "_Uložit"
-
 #~ msgid "Save modifications"
 #~ msgstr "Uložit změny"
-
 #~ msgid "Save _as..."
 #~ msgstr "Uložit j_ako..."
-
 #~ msgid "Save menu under a given name"
 #~ msgstr "Uložit nabídku pod přiděleným názvem"
-
 #~ msgid "_Close"
 #~ msgstr "_Zavřít"
-
 #~ msgid "Close menu"
 #~ msgstr "Zavřít nabídku"
-
 #~ msgid "_Quit"
 #~ msgstr "U_končit"
-
 #~ msgid "Quit Xfce4-Menueditor"
 #~ msgstr "Ukončit Xfce4-Menueditor"
-
 #~ msgid "_Edit"
 #~ msgstr "_Upravit"
-
 #~ msgid "_Edit entry"
 #~ msgstr "_Upravit položku"
-
 #~ msgid "Edit selected entry"
 #~ msgstr "Upravit vybranou položku"
-
 #~ msgid "_Add entry"
 #~ msgstr "_Přidat položku"
-
 #~ msgid "Add a new entry in the menu"
 #~ msgstr "Přidat novou položku do nabídky"
-
 #~ msgid "Add _external"
 #~ msgstr "Přidat _externí"
-
 #~ msgid "Add an external entry"
 #~ msgstr "Přidat externí položku"
-
 #~ msgid "_Remove entry"
 #~ msgstr "_Odebrat položku"
-
 #~ msgid "Remove entry"
 #~ msgstr "Odebrat položku"
-
 #~ msgid "_Up"
 #~ msgstr "_Nahoru"
-
 #~ msgid "Move entry up"
 #~ msgstr "Posunout položku nahoru"
-
 #~ msgid "_Down"
 #~ msgstr "_Dolů"
-
 #~ msgid "Move entry down"
 #~ msgstr "Posunout položku dolů"
-
 #~ msgid "_Help"
 #~ msgstr "_Nápověda"
-
 #~ msgid "_About..."
 #~ msgstr "_O aplikaci..."
-
 #~ msgid "Show informations about xfce4-menueditor"
 #~ msgstr "Zobrazit informace o aplikaci xfce4-menueditor"
-
 #~ msgid "Collapse all"
 #~ msgstr "Sbalit vše"
-
 #~ msgid "Collapse all menu entries"
 #~ msgstr "Sbalit všechny položky nabídky"
-
 #~ msgid "Expand all"
 #~ msgstr "Rozbalit vše"
-
 #~ msgid "Expand all menu entries"
 #~ msgstr "Rozbalit všechny položky nabídky"
-
 #~ msgid "Name"
 #~ msgstr "Název"
-
 #~ msgid "Command"
 #~ msgstr "Příkaz"
-
 #~ msgid "Hidden"
 #~ msgstr "Skrytý"
-
 #~ msgid "Are you sure you want to close the current menu?"
 #~ msgstr "Opravdu chcete zavřít aktuální nabídku?"
-
 #~ msgid "Do you want to save before closing the file?"
 #~ msgstr "Chcete soubor před zavřením uložit?"
-
 #~ msgid "Do you want to save before opening an other menu ?"
 #~ msgstr "Chcete tuto nabídku uložit před otevřením jiné nabídky?"
-
 #~ msgid "Ignore modifications"
 #~ msgstr "Zahodit změny"
-
 #~ msgid "Open menu file"
 #~ msgstr "Otevřít soubor s nabídkou"
-
 #~ msgid "Do you want to save before opening the default menu ?"
 #~ msgstr "Chcete tuto nabídku uložit před otevřením výchozí nabídky?"
-
 #~ msgid "Save menu file as"
 #~ msgstr "Uložit soubor s nabídkou jako"
-
 #~ msgid "Do you want to save before closing the menu ?"
 #~ msgstr "Chcete tuto nabídku před zavřením uložit?"
-
 #~ msgid "quit"
 #~ msgstr "ukončit"
-
 #~ msgid "--- separator ---"
 #~ msgstr "--- oddělovač ---"
-
 #~ msgid "--- include ---"
 #~ msgstr "--- vložit ---"
-
 #~ msgid "system"
 #~ msgstr "systémová nabídka"
-
 #~ msgid "Do you want to move the item into the submenu?"
 #~ msgstr "Chcete přesunout položku do podnabídky?"
-
 #~ msgid "A menu editor for Xfce4"
 #~ msgstr "Editor nabídky pro Xfce4"
-
 #~ msgid "Author/Maintainer"
 #~ msgstr "Autor/správce"
-
 #~ msgid "Contributor"
 #~ msgstr "Přispěvatel"
-
 #~ msgid "Icon designer"
 #~ msgstr "Návrh ikon"
-
 #~ msgid "You have modified the menu, do you want to save it before quitting ?"
 #~ msgstr "Upravili jste nabídku, chcete ji před ukončením uložit?"
-
 #~ msgid "Forget modifications"
 #~ msgstr "Zahodit úpravy"
-
 #~ msgid "Unable to open the menu file %s in write mode"
 #~ msgstr "Soubor nabídky %s nelze otevřít v režimu pro zápis"
-
 #~ msgid "Graphical tool for editing the Xfce 4 menu"
 #~ msgstr "Grafický nástroj pro úpravu nabídky prostředí Xfce 4"
-
 #~ msgid "Menu Editor"
 #~ msgstr "Editor nabídky"
-
 #~ msgid "Xfce 4 Menu Editor"
 #~ msgstr "Editor hlavní nabídky Xfce 4"
-
 #~ msgid ""
 #~ "Could not save file %s: %s\n"
 #~ "\n"
@@ -1570,67 +1458,46 @@ msgstr "_Jediný obrázek"
 #~ "Nelze uložit soubor %s: %s\n"
 #~ "\n"
 #~ "Vyberte jiné umístění nebo stiskněte tlačítko zrušit pro zahození změn "
-
 #~ msgid "Settings for the Xfce 4 Desktop Manager"
 #~ msgstr "Nastavení správce prostředí Xfce 4"
-
 #~ msgid "Xfce 4 Desktop Settings"
 #~ msgstr "Nastavení plochy prostředí Xfce 4"
-
 #~ msgid "Show windows on each workspace in _submenus"
 #~ msgstr "Zobrazovat okna každé pracovní plochy v _podnabídkách"
-
 #~ msgid "Use _Xfce to manage the desktop"
 #~ msgstr "Používat _Xfce pro správu vaší plochy"
-
 #~ msgid "Button Label|Desktop"
 #~ msgstr "Plocha"
-
 #~ msgid "backdrops.list"
 #~ msgstr "backdrops.list"
-
 #~ msgid "Select backdrop image or list file"
 #~ msgstr "Vybrat obrázek na pozadí nebo soubor se seznamem"
-
 #~ msgid "List Files (*.list)"
 #~ msgstr "Soubory seznamů (*.list)"
-
 #~ msgid "_Edit list..."
 #~ msgstr "Up_ravit seznam..."
-
 #~ msgid "_New list..."
 #~ msgstr "Nový s_eznam..."
-
 #~ msgid "S_tyle:"
 #~ msgstr "_Styl:"
-
 #~ msgid "Auto"
 #~ msgstr "Automaticky"
-
 #~ msgid "Centered"
 #~ msgstr "Vystředit"
-
 #~ msgid "Tiled"
 #~ msgstr "Dláždit"
-
 #~ msgid "Stretched"
 #~ msgstr "Roztáhnout"
-
 #~ msgid "Scaled"
 #~ msgstr "Škálovat"
-
 #~ msgid "Zoomed"
 #~ msgstr "Přiblížený"
-
 #~ msgid "Xfce will be unable to manage your desktop (%s)."
 #~ msgstr "Prostředí Xfce nebude schopno spravovat Vaši plochu (%s)."
-
 #~ msgid "Unknown Error"
 #~ msgstr "Neznámá chyba"
-
 #~ msgid "Unable to start xfdesktop"
 #~ msgstr "Nelze spustit xfdesktop"
-
 #~ msgid ""
 #~ "To ensure that this setting takes effect the next time you start Xfce, "
 #~ "please be sure to save your session when logging out.  If you are not "
@@ -1643,7 +1510,6 @@ msgstr "_Jediný obrázek"
 #~ "Správce sezení Xfce (xfce4-session), upravte ručně soubor ~/.config/xfce4/"
 #~ "xinitrc. Podrobnosti naleznete v dokumentaci poskytované na adrese http://"
 #~ "xfce.org/."
-
 #~ msgid ""
 #~ "To ensure that Xfce does not manage your desktop the next time you start "
 #~ "Xfce, please be sure to save your session when logging out.  If you are "
@@ -1656,122 +1522,88 @@ msgstr "_Jediný obrázek"
 #~ "(xfce4-session), upravte ručně soubor ~/.config/xfce4/xinitrc. "
 #~ "Podrobnosti naleznete v dokumentaci poskytované na adrese http://xfce."
 #~ "org/."
-
 #~ msgid "_Do not show this again"
 #~ msgstr "Příště už tuto zprávu _nezobrazovat"
-
 #~ msgid "Desktop Preferences"
 #~ msgstr "Nastavení plochy"
-
 #~ msgid "Stretch single backdrop onto _all monitors"
 #~ msgstr "Roz_táhnout jedno pozadí na všechny monitory"
-
 #~ msgid "Color"
 #~ msgstr "Barva"
-
 #~ msgid "_Color Style:"
 #~ msgstr "_Barevný styl:"
-
 #~ msgid "Solid Color"
 #~ msgstr "Jednobarevný"
-
 #~ msgid "Horizontal Gradient"
 #~ msgstr "Vodorovné stupňování"
-
 #~ msgid "Vertical Gradient"
 #~ msgstr "Svislé stupňování"
-
 #~ msgid "Image"
 #~ msgstr "Obrázek"
-
 #~ msgid "Show _Image"
 #~ msgstr "Zobrazit _obrázek"
-
 #~ msgid "_File:"
 #~ msgstr "So_ubor:"
-
 #~ msgid "_Behavior"
 #~ msgstr "_Chování"
-
 #~ msgid "Select backdrop image file"
 #~ msgstr "Vyberte soubor s obrázkem na pozadí"
-
 #~ msgid "List file"
 #~ msgstr "Soubor se seznamem"
-
 #~ msgid "Edit backdrop list"
 #~ msgstr "Upravit seznam pozadí"
-
 #~ msgid "Desktop Icons"
 #~ msgstr "Ikony na ploše"
-
 #~ msgid "File/launcher icons"
 #~ msgstr "Ikony souborů a spouštěčů"
-
 #~ msgid "Use _system font size"
 #~ msgstr "P_oužívat systémovou velikost písma"
-
 #~ msgid "Des_ktop"
 #~ msgstr "_Plocha"
-
 #~ msgid "_Desktop Properties..."
 #~ msgstr "_Vlastnosti plochy..."
 
 #, fuzzy
 #~ msgid "Scientific applications and tools"
 #~ msgstr "Ikony minimalizovaných aplikací"
-
 #~ msgid "Unable to quit session."
 #~ msgstr "Nelze ukončit sezení."
-
 #~ msgid ""
 #~ "Quitting the session requires that Xfce's session manager (xfce4-session) "
 #~ "is running, but it was not detected.  Please quit Xfce via another means."
 #~ msgstr ""
 #~ "Ukončení sezení vyžaduje, aby byl spuštěn správce sezení prostředí Xfce "
 #~ "(xfce4-session), který však nebyl nalezen. Ukončete Xfce jiným způsobem."
-
 #~ msgid ""
 #~ "Quitting the session requires the 'xfce4-session-logout' command, but it "
 #~ "could not be found: %s"
 #~ msgstr ""
 #~ "Ukončení sezení vyžaduje příkaz 'xfce4-session-logout', který  však nebyl "
 #~ "nalezen: %s"
-
 #~ msgid "Edit Properties"
 #~ msgstr "Upravit vlastnosti"
-
 #~ msgid ""
 #~ "Viewing the contents of the trash requires a file manager that supports "
 #~ "the Xfce trash service, such as Thunar."
 #~ msgstr ""
 #~ "Prohlížení obsahu koše vyžaduje správce souborů, který podporuje službu "
 #~ "koš prostředí Xfce, například aplikaci Thunar."
-
 #~ msgid "Unable to empty the trash."
 #~ msgstr "Nelze vysypat koš."
-
 #~ msgid "Unknown error."
 #~ msgstr "Neznámá chyba."
-
 #~ msgid " Bytes)"
 #~ msgstr "bajtů)"
-
 #~ msgid "_Copy Files"
 #~ msgstr "_Kopírovat soubory"
-
 #~ msgid "_Copy File"
 #~ msgstr "_Kopírovat soubor"
-
 #~ msgid "Cu_t Files"
 #~ msgstr "Vyj_mout soubory"
-
 #~ msgid "Cu_t File"
 #~ msgstr "Vyjmou_t soubor"
-
 #~ msgid "_Delete Files"
 #~ msgstr "_Smazat soubory"
-
 #~ msgid "_Delete File"
 #~ msgstr "_Smazat soubor"
 
@@ -1790,39 +1622,28 @@ msgstr "_Jediný obrázek"
 #, fuzzy
 #~ msgid "Are sure you want to quit?"
 #~ msgstr "Opravdu chcete smazat \"%s\"?"
-
 #~ msgid "The command doesn't exist !"
 #~ msgstr "Příkaz neexistuje!"
-
 #~ msgid "All fields must be filled to add an item."
 #~ msgstr "Pro přidání položky musí být všechny pole vyplněné."
-
 #~ msgid "The 'Name' field is required."
 #~ msgstr "Pole Název musí být vyplněné."
-
 #~ msgid "The 'Source' field is required."
 #~ msgstr "Pole Zdroj musí být vyplněné."
-
 #~ msgid "Separators cannot be edited"
 #~ msgstr "Oddělovač nemůže být upravovaný"
-
 #~ msgid "File %s doesn't exist !"
 #~ msgstr "Soubor %s neexistuje !"
-
 #~ msgid "Do you want to move the item into the parent menu?"
 #~ msgstr "Chcete přesunout položku do základního menu ?"
-
 #~ msgid "Edit"
 #~ msgstr "Upravit "
-
 #~ msgid "Add an external menu..."
 #~ msgstr "Přidat externí menu"
-
 #~ msgid "Open an Xfce4 menu file"
 #~ msgstr "Otevřít souborové menu Xfce4 "
-
 #~ msgid "Save current menu"
 #~ msgstr "Uložit aktuální menu"
-
 #~ msgid "Delete the current entry"
 #~ msgstr "Odstranit aktuální položku"
+
