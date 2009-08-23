@@ -7,9 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop VERSION\n"
-"POT-Creation-Date: 2009-04-21 12:05+0200\n"
-"PO-Revision-Date: 2009-04-13 22:23+0100\n"
-"Last-Translator: Carles Muñoz Gorriz <carlesmu@internautas.org>\n"
+"POT-Creation-Date: 2009-04-20 14:33+0200\n"
+"PO-Revision-Date: 2009-05-26 18:27+0100\n"
+"Last-Translator: Harald Servat <redcrash@gmail.com>\n"
 "Language-Team: Catalan\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -234,7 +234,6 @@ msgid "File/Launcher Icons"
 msgstr "Icones de fitxer/llançador"
 
 #: ../doc/C/xfdesktop.xml.in:135(para)
-#, fuzzy
 msgid ""
 "<application>@PACKAGE_NAME@</application> can also display on the desktop "
 "the contents of the <filename>$XDG_DESKTOP_DIR</filename> folder, which can "
@@ -301,7 +300,6 @@ msgstr ""
 "creats localment acostuma a ser <filename>/usr/local/etc</filename>."
 
 #: ../doc/C/xfdesktop.xml.in:185(para)
-#, fuzzy
 msgid ""
 "The previous menu editor is not available anymore. However you can customize "
 "your menu by copying <filename>xfce-applications.menu</filename> to "
@@ -316,10 +314,11 @@ msgstr ""
 "filename> a <filename>$XDG_CONFIG_HOME/.config/xdg/menus</filename> i "
 "modificant-lo amb un editor de text com, per exemple, <application>mousepad</"
 "application> o <application>gedit</application>. Recordeu que la codificació "
-"de caràcters ha de ser UTF-8."
+"de caràcters ha de ser UTF-8. Per a més informació sobre l'edició edl menú, "
+"visiteu  <ulink url=\"http://wiki.xfce.org/howto/customize-menu\" type=\"http"
+"\">the Xfce Wiki</ulink>."
 
 #: ../doc/C/xfdesktop.xml.in:197(para)
-#, fuzzy
 msgid ""
 "Further customisation can be achived by creating <ulink url=\"http://"
 "standards.freedesktop.org/desktop-entry-spec/latest/\" type=\"http\">desktop "
@@ -698,12 +697,10 @@ msgstr ""
 "l'escriptori"
 
 #: ../doc/C/xfdesktop.xml.in:559(term)
-#, fuzzy
 msgid "Appearance"
 msgstr "Aparença"
 
 #: ../doc/C/xfdesktop.xml.in:562(para)
-#, fuzzy
 msgid ""
 "The <emphasis>\"Icon type\"</emphasis> dropping list allows you to set the "
 "behavior of the desktop icons. There are three options: \"None\", to disable "
@@ -713,11 +710,11 @@ msgid ""
 "directory on the desktop."
 msgstr ""
 "La llista desplegable de <emphasis>«Tipus d'icones»</emphasis> us permet "
-"definir el comportament de les icones a l'escriptori. Hi han tres opcions "
+"definir el comportament de les icones a l'escriptori. Hi ha tres opcions "
 "«Cap», per inhabilitar les icones; «Icones d'aplicacions minimitzades», per "
 "mostrar a l'escriptori les icones de les aplicacions minimitzades o "
-"amagades; «Icones de fitxer/llançador», per mostrar el contingut del vostre "
-"directori <filename>$XDG_CONFIG_HOME</filename> a l'escriptori."
+"amagades; i, «Icones de fitxer/llançador», per mostrar el contingut del "
+"vostre directori <filename>$XDG_CONFIG_HOME</filename> a l'escriptori."
 
 #: ../doc/C/xfdesktop.xml.in:573(para)
 msgid ""
@@ -752,7 +749,6 @@ msgstr ""
 "concreta."
 
 #: ../doc/C/xfdesktop.xml.in:596(para)
-#, fuzzy
 msgid ""
 "<emphasis>Home</emphasis> stands for your home folder, that is to say, "
 "<filename>$HOME</filename>. <emphasis>Filesystem</emphasis> stands for the "
@@ -762,12 +758,12 @@ msgid ""
 "and keys, external hard drives, optical discs, etc."
 msgstr ""
 "<emphasis>Inici</emphasis> es refereix a la carpeta arrel del vostre usuri, "
-"això és <filename>$XDG_CONFIG_HOME</filename>. <emphasis>Sistema de fitxers</"
-"emphasis> es refereix a la carpeta arrel del sistema de fitxers, també "
-"anomenada <filename>/</filename>. <emphasis>Paperera</emphasis> es refereix "
-"a la vostre carpeta de fitxers i directoris borrats, i, "
+"és a dir <filename>$XDG_CONFIG_HOME</filename>. <emphasis>Sistema de "
+"fitxers</emphasis> es refereix a la carpeta arrel del sistema de fitxers, "
+"també anomenada <filename>/</filename>. <emphasis>Paperera</emphasis> fa "
+"referència a la vostre carpeta de fitxers i directoris borrats, i, "
 "<emphasis>Dispositius extractables</emphasis> són les disqueteres, "
-"dispositius i claus USB, discs durs externs…"
+"dispositius i claus USB, discs durs externs, discs òptics, …"
 
 #: ../doc/C/xfdesktop.xml.in:613(title)
 msgid "Hidden Options"
