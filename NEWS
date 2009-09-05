@@ -8,6 +8,9 @@ Xfce 4.7.0
     the hacky PNG composition method.
   * Make the text label corner roundness configurable via a gtkrc
     style property.
+  * Call to org.xfce.FileManager.DisplayFileProperties() for the
+    full-featured file properties dialog before falling back to our
+    own (bug 5622).
 
 
 Xfce 4.6.2
