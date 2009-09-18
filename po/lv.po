@@ -5,18 +5,19 @@
 #
 # Rihards Prieditis <rprieditis@inbox.lv>, 2007.
 # Rihards Prieditis <RPrieditis@gmail.com>, 2008.
+# Rihards Prieditis <rprieditis@gmail.com>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: lv\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-18 18:20+0200\n"
-"PO-Revision-Date: 2009-05-01 22:08+0300\n"
-"Last-Translator: Rihards Priedītis <rprieditis@gmail.com>\n"
-"Language-Team: Latvian <rprieditis@gmail.com>\n"
+"POT-Creation-Date: 2009-07-30 23:17-0700\n"
+"PO-Revision-Date: 2009-09-18 18:35+0100\n"
+"Last-Translator: Rihards Prieditis <rprieditis@gmail.com>\n"
+"Language-Team: Latvian <translation-team-lv@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
 "X-Poedit-Language: Latvian\n"
@@ -75,7 +76,7 @@ msgstr "Izvēlnes fails"
 
 #: ../panel-plugin/desktop-menu-plugin.c:783
 msgid "Use default _desktop menu file"
-msgstr "Izmantot noklusēto _darbavirsmas izvēlnes failu"
+msgstr "Izmantot noklusēto _darbvirsmas izvēlnes failu"
 
 #: ../panel-plugin/desktop-menu-plugin.c:792
 msgid "Use _custom menu file:"
@@ -237,7 +238,7 @@ msgstr "Lūdzu ziņojiet par kļūdām uz <%s>"
 
 #: ../settings/main.c:1512
 msgid "Desktop Settings"
-msgstr "Darbavirsmas uzstādījumi"
+msgstr "Darbvirsmas uzstādījumi"
 
 #: ../settings/main.c:1514
 msgid "Unable to contact settings server"
@@ -261,25 +262,25 @@ msgstr "Celšanas opcijas:\n"
 #: ../src/main.c:247
 #, c-format
 msgid "    Desktop Menu:        %s\n"
-msgstr "    Darbavirsmas izvēlne:        %s\n"
+msgstr "    Darbvirsmas izvēlne:        %s\n"
 
 #: ../src/main.c:249 ../src/main.c:256 ../src/main.c:263
 msgid "enabled"
-msgstr "iespējots"
+msgstr "ieslēgt"
 
 #: ../src/main.c:251 ../src/main.c:258 ../src/main.c:265
 msgid "disabled"
-msgstr "atspējots"
+msgstr "izslēgt"
 
 #: ../src/main.c:254
 #, c-format
 msgid "    Desktop Icons:       %s\n"
-msgstr "    Darbavirsmas ikonas:       %s\n"
+msgstr "    Darbvirsmas ikonas:       %s\n"
 
 #: ../src/main.c:261
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr "    Darbavirsmas faila ikonas:  %s\n"
+msgstr "    Darbvirsmas faila ikonas:  %s\n"
 
 #: ../src/main.c:290
 #, c-format
@@ -358,27 +359,27 @@ msgstr "_Novākt darbavietu '%s'"
 
 #: ../src/xfce-desktop.c:742 ../settings/xfdesktop-settings.glade.h:20
 msgid "Desktop"
-msgstr "Darbavirsma"
+msgstr "Darbvirsma"
 
-#: ../src/xfce-desktop.c:1018
+#: ../src/xfce-desktop.c:1010
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "Neizdevās ielādēt attēlu no aizmugures saraksta faila \"%s\":"
 
-#: ../src/xfce-desktop.c:1020
+#: ../src/xfce-desktop.c:1012
 msgid "Desktop Error"
-msgstr "Darbavirsmas kļūda"
+msgstr "Darbvirsmas kļūda"
 
 #: ../src/xfdesktop-file-icon-manager.c:478
 #, c-format
 msgid ""
 "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr ""
-"Xfdesktop nevarēja izveidot mapi \"%s\", lai glabātu darbavirsmas vienumus:"
+"Xfdesktop nevarēja izveidot mapi \"%s\", lai glabātu darbvirsmas vienumus:"
 
 #: ../src/xfdesktop-file-icon-manager.c:480
 #: ../src/xfdesktop-file-icon-manager.c:491
-#: ../src/xfdesktop-file-icon-manager.c:1241
+#: ../src/xfdesktop-file-icon-manager.c:1206
 msgid "Create Folder Failed"
 msgstr "Izveidot mapi neizdevās"
 
@@ -388,7 +389,7 @@ msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
 "folder."
 msgstr ""
-"Xfdesktop nevar izmantot \"%s\", lai saturētu darbavirsmas vienumus, jo tā "
+"Xfdesktop nevar izmantot \"%s\", lai saturētu darbvirsmas vienumus, jo tā "
 "nav mape."
 
 #: ../src/xfdesktop-file-icon-manager.c:493
@@ -401,9 +402,9 @@ msgid "Rename \"%s\""
 msgstr "Pārdēvēt \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:637
-#: ../src/xfdesktop-file-icon-manager.c:1313
-#: ../src/xfdesktop-file-icon-manager.c:1404
-#: ../src/xfdesktop-file-icon-manager.c:1415
+#: ../src/xfdesktop-file-icon-manager.c:1278
+#: ../src/xfdesktop-file-icon-manager.c:1369
+#: ../src/xfdesktop-file-icon-manager.c:1380
 msgid "Enter the new name:"
 msgstr "Ievadiet jaunu vārdu:"
 
@@ -436,7 +437,7 @@ msgstr "Dzēst vairākus failus"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:917
-#: ../src/xfdesktop-file-icon-manager.c:1668 ../src/xfdesktop-file-icon.c:140
+#: ../src/xfdesktop-file-icon-manager.c:1633 ../src/xfdesktop-file-icon.c:140
 #: ../src/xfdesktop-file-utils.c:353
 #, c-format
 msgid "Unable to launch \"%s\":"
@@ -444,8 +445,8 @@ msgstr "Neizdevās palaist \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:919
 #: ../src/xfdesktop-file-icon-manager.c:977
-#: ../src/xfdesktop-file-icon-manager.c:1275
-#: ../src/xfdesktop-file-icon-manager.c:1669 ../src/xfdesktop-file-icon.c:142
+#: ../src/xfdesktop-file-icon-manager.c:1240
+#: ../src/xfdesktop-file-icon-manager.c:1634 ../src/xfdesktop-file-icon.c:142
 #: ../src/xfdesktop-file-utils.c:356
 msgid "Launch Error"
 msgstr "Palaišanas Kļūda"
@@ -460,143 +461,143 @@ msgid ""
 "by Thunar)."
 msgstr "Šai iespējai ir nepieciešams faila pārvaldnieks, piemēram, kā Thunar."
 
-#: ../src/xfdesktop-file-icon-manager.c:1172
+#: ../src/xfdesktop-file-icon-manager.c:1137
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "_Atvērt ar \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1175
+#: ../src/xfdesktop-file-icon-manager.c:1140
 #, c-format
 msgid "Open With \"%s\""
 msgstr "Atvērt ar \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1238
+#: ../src/xfdesktop-file-icon-manager.c:1203
 #, c-format
 msgid "Unable to create folder named \"%s\":"
 msgstr "Neizdevās izveidot mapi ar nosaukumu \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:1277
+#: ../src/xfdesktop-file-icon-manager.c:1242
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr ""
 "Neizdevās palaist \"exo-desktop-item-edit\", kas ir nepieciešams, lai "
-"izveidotu un rediģētu palaidējus un saites uz darbavirsmas."
+"izveidotu un rediģētu palaidējus un saites uz darbvirsmas."
 
-#: ../src/xfdesktop-file-icon-manager.c:1310
+#: ../src/xfdesktop-file-icon-manager.c:1275
 msgid "Create New Folder"
 msgstr "Izveidot jaunu mapi"
 
-#: ../src/xfdesktop-file-icon-manager.c:1314
+#: ../src/xfdesktop-file-icon-manager.c:1279
 msgid "New Folder"
 msgstr "Jauna mape"
 
-#: ../src/xfdesktop-file-icon-manager.c:1315
-#: ../src/xfdesktop-file-icon-manager.c:1406
-#: ../src/xfdesktop-file-icon-manager.c:1417
+#: ../src/xfdesktop-file-icon-manager.c:1280
+#: ../src/xfdesktop-file-icon-manager.c:1371
+#: ../src/xfdesktop-file-icon-manager.c:1382
 msgid "Create"
 msgstr "Izveidot"
 
-#: ../src/xfdesktop-file-icon-manager.c:1351
+#: ../src/xfdesktop-file-icon-manager.c:1316
 #, c-format
 msgid "Unable to create file named \"%s\":"
 msgstr "Neizdevās izveidot failu ar nosaukumu \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:1354
+#: ../src/xfdesktop-file-icon-manager.c:1319
 msgid "Create File Failed"
 msgstr "Neizdevās izveidot failu"
 
-#: ../src/xfdesktop-file-icon-manager.c:1393
+#: ../src/xfdesktop-file-icon-manager.c:1358
 #, c-format
 msgid "Create Document from template \"%s\""
 msgstr "Izveidot dokumentu no veidnes \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1412
+#: ../src/xfdesktop-file-icon-manager.c:1377
 msgid "Create Empty File"
 msgstr "Izveidot tukšu failu"
 
-#: ../src/xfdesktop-file-icon-manager.c:1416
+#: ../src/xfdesktop-file-icon-manager.c:1381
 msgid "New Empty File"
 msgstr "Jauns tukšs fails"
 
-#: ../src/xfdesktop-file-icon-manager.c:1449
+#: ../src/xfdesktop-file-icon-manager.c:1414
 #, c-format
 msgid "Unable to create file \"%s\":"
 msgstr "Neizdevās izveidot failu \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:1450
+#: ../src/xfdesktop-file-icon-manager.c:1415
 msgid "Create Error"
 msgstr "Izveides kļūda"
 
-#: ../src/xfdesktop-file-icon-manager.c:1735
+#: ../src/xfdesktop-file-icon-manager.c:1700
 msgid "_Open all"
 msgstr "_Atvērt visu"
 
-#: ../src/xfdesktop-file-icon-manager.c:1751
+#: ../src/xfdesktop-file-icon-manager.c:1716
 msgid "_Open in New Window"
 msgstr "_Atvērt jaunā logā"
 
-#: ../src/xfdesktop-file-icon-manager.c:1753
+#: ../src/xfdesktop-file-icon-manager.c:1718
 #: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:561
 msgid "_Open"
 msgstr "_Atvērt"
 
-#: ../src/xfdesktop-file-icon-manager.c:1768
+#: ../src/xfdesktop-file-icon-manager.c:1733
 msgid "Create _Launcher..."
 msgstr "Izveidot _palaidēju..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1789
+#: ../src/xfdesktop-file-icon-manager.c:1754
 msgid "Create _URL Link..."
 msgstr "Izveidot _URL saiti..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1806
+#: ../src/xfdesktop-file-icon-manager.c:1771
 msgid "Create _Folder..."
 msgstr "Izveidot _mapi..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1826
+#: ../src/xfdesktop-file-icon-manager.c:1791
 msgid "Create From _Template"
 msgstr "Izveidot no _veidnes"
 
-#: ../src/xfdesktop-file-icon-manager.c:1860
+#: ../src/xfdesktop-file-icon-manager.c:1825
 msgid "_Empty File"
 msgstr "_Tukšs fails"
 
-#: ../src/xfdesktop-file-icon-manager.c:1876
+#: ../src/xfdesktop-file-icon-manager.c:1841
 msgid "_Execute"
 msgstr "_Izpildīt"
 
-#: ../src/xfdesktop-file-icon-manager.c:1894
+#: ../src/xfdesktop-file-icon-manager.c:1859
 msgid "_Edit Launcher"
 msgstr "_Rediģēt palaidēju"
 
-#: ../src/xfdesktop-file-icon-manager.c:1934
+#: ../src/xfdesktop-file-icon-manager.c:1899
 msgid "Open With"
 msgstr "Atvērt ar"
 
-#: ../src/xfdesktop-file-icon-manager.c:1965
+#: ../src/xfdesktop-file-icon-manager.c:1930
 msgid "Open With Other _Application..."
 msgstr "Atvērt ar citu li_etotni..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2072
+#: ../src/xfdesktop-file-icon-manager.c:2037
 msgid "_Rename..."
 msgstr "_Pārdēvēt"
 
-#: ../src/xfdesktop-file-icon-manager.c:2090
+#: ../src/xfdesktop-file-icon-manager.c:2055
 msgid "Desktop _Settings..."
-msgstr "Darbavir_smas uzstādījumi..."
+msgstr "Darbvir_smas uzstādījumi..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2100
+#: ../src/xfdesktop-file-icon-manager.c:2065
 #: ../src/xfdesktop-volume-icon.c:610
 msgid "_Properties..."
 msgstr "_Rekvizīti"
 
-#: ../src/xfdesktop-file-icon-manager.c:3339
+#: ../src/xfdesktop-file-icon-manager.c:3304
 #: ../src/xfdesktop-regular-file-icon.c:382
 #, c-format
 msgid "Failed to run \"%s\":"
 msgstr "Neizdevās palaist \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:3341
+#: ../src/xfdesktop-file-icon-manager.c:3306
 #: ../src/xfdesktop-regular-file-icon.c:384
 msgid "Run Error"
 msgstr "Izpildes kļūda"
@@ -628,7 +629,7 @@ msgstr "Tikai lasīt"
 
 #: ../src/xfdesktop-file-properties-dialog.c:138
 msgid "Read & Write"
-msgstr "Lasīt & rakstīt"
+msgstr "Lasīt un rakstīt"
 
 #: ../src/xfdesktop-file-properties-dialog.c:163
 msgid "General"
@@ -772,7 +773,7 @@ msgid ""
 "Make sure you have a file manager installed that supports the Xfce Trash "
 "service, such as Thunar."
 msgstr ""
-"Pārliecinieties, ka esat instalējuši Xfce miskastespakalpojuma atbalstošu "
+"Pārliecinieties, ka esat instalējuši Xfce miskastes pakalpojuma atbalstošu "
 "faila pārvaldnieku, piemērām, Thunar."
 
 #: ../src/xfdesktop-special-file-icon.c:651
@@ -840,7 +841,7 @@ msgstr "Piederumi"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:2
 msgid "Common desktop tools and applications"
-msgstr "Parastie darbavirsmas rīki un lietotnes"
+msgstr "Parastie darbvirsmas rīki un lietotnes"
 
 #: ../modules/menu/directory-data/xfce-development.directory.in.h:1
 msgid "Development"
@@ -864,7 +865,7 @@ msgstr "Spēles"
 
 #: ../modules/menu/directory-data/xfce-games.directory.in.h:2
 msgid "Games, puzzles, and other fun software"
-msgstr "Spēles, puzles un cita izklaides programmatūra"
+msgstr "Spēles, mīklas un cita izklaides programmatūra"
 
 #: ../modules/menu/directory-data/xfce-graphics.directory.in.h:1
 msgid "Graphics"
@@ -880,7 +881,7 @@ msgstr "Audio un video atskaņotāji un redaktori"
 
 #: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:2
 msgid "Multimedia"
-msgstr "Multimēdija"
+msgstr "Multimedija"
 
 #: ../modules/menu/directory-data/xfce-network.directory.in.h:1
 msgid "Network"
@@ -908,12 +909,11 @@ msgstr "Cits"
 
 #: ../modules/menu/directory-data/xfce-science.directory.in.h:1
 msgid "Science"
-msgstr ""
+msgstr "Zinātne"
 
 #: ../modules/menu/directory-data/xfce-science.directory.in.h:2
-#, fuzzy
 msgid "Scientific software"
-msgstr "Izglītojoša programmatūra"
+msgstr "Zinātnes programmatūra"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
 msgid "Screensaver applets"
@@ -925,7 +925,7 @@ msgstr "Ekrānsaudzētāji"
 
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:1
 msgid "Desktop and system settings applications"
-msgstr "Darbavirsmas un sistēmas lietotņu uzstādījumi"
+msgstr "Darbvirsmas un sistēmas lietotņu uzstādījumi"
 
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:2
 msgid "Settings"
@@ -945,7 +945,7 @@ msgstr "Par Xfce"
 
 #: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:2
 msgid "Information about the Xfce Desktop Environment"
-msgstr "Informācija par Xfce darbavirsmas vidi"
+msgstr "Informācija par Xfce darbvirsmas vidi"
 
 #: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:1
 msgid "File Manager"
@@ -969,7 +969,7 @@ msgstr "Atteikties"
 
 #: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:2
 msgid "Log out of the Xfce Desktop"
-msgstr "Atteikties no Xfce darbavirsmas"
+msgstr "Atteikties no Xfce darbvirsmas"
 
 #: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:1
 msgid "Run Program..."
@@ -997,11 +997,11 @@ msgstr "Tīmekļa pārlūks"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop "
-msgstr "Darbavirsma"
+msgstr "Darbvirsma"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Set desktop background and menu and icon behaviour"
-msgstr "Uzstādīt darbavirsmas fonu un izvēlnes, un ikonas uzvedību"
+msgstr "Uzstādīt darbvirsmas fonu un izvēlnes, un ikonas uzvedību"
 
 #: ../settings/xfdesktop-settings.glade.h:1
 msgid "<b>Adjustments</b>"
@@ -1021,7 +1021,7 @@ msgstr "<b>Noklusēta ikona</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:5
 msgid "<b>Desktop Menu</b>"
-msgstr "<b>Darbavirsmas izvēlne</b>"
+msgstr "<b>Darbvirsmas izvēlne</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:6
 msgid "<b>Image</b>"
@@ -1161,7 +1161,7 @@ msgstr "Izvēlēties vienu attēlu, kā aizmugures bildi"
 
 #: ../settings/xfdesktop-settings.glade.h:45
 msgid "Set desktop background and menu and icon behavior"
-msgstr "Uzstādīt darbavirsmas fonu un izvēlni, un ikonas uzvedību"
+msgstr "Uzstādīt darbvirsmas fonu un izvēlni, un ikonas uzvedību"
 
 #: ../settings/xfdesktop-settings.glade.h:46
 msgid "Sh_ow application icons in menu"
@@ -1173,11 +1173,11 @@ msgstr "Rādīt lietotnes _ikonas izvēlnē"
 
 #: ../settings/xfdesktop-settings.glade.h:48
 msgid "Show _window list menu on desktop middle click"
-msgstr "Rādīt _logu sarakstu uz vidējo klikšķi darbavirsmā"
+msgstr "Rādīt _logu sarakstu uz vidējo klikšķi darbvirsmā"
 
 #: ../settings/xfdesktop-settings.glade.h:49
 msgid "Show applications menu on _desktop right click"
-msgstr "Rādīt _lietotnes izvēlni uz labo klikšķi darbavirsmā"
+msgstr "Rādīt _lietotnes izvēlni uz labo klikšķi darbvirsmā"
 
 #: ../settings/xfdesktop-settings.glade.h:50
 msgid "Show s_ticky windows only in active workspace"
@@ -1246,7 +1246,7 @@ msgstr "_Poga:"
 
 #: ../settings/xfdesktop-settings.glade.h:66
 msgid "_Edit desktop menu"
-msgstr "_Rediģēt darbavirsmas izvēlni"
+msgstr "_Rediģēt darbvirsmas izvēlni"
 
 #: ../settings/xfdesktop-settings.glade.h:67
 msgid "_Icons"
