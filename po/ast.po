@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-30 23:17-0700\n"
+"POT-Creation-Date: 2009-09-18 18:20+0200\n"
 "PO-Revision-Date: 2009-09-10 23:54+0100\n"
 "Last-Translator: astur <malditoastur@gmail.com>\n"
 "Language-Team: Asturian <alministradores@softastur.org>\n"
@@ -10,8 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../common/xfdesktop-common.c:95
-#: ../common/xfdesktop-common.c:199
+#: ../common/xfdesktop-common.c:95 ../common/xfdesktop-common.c:199
 #, c-format
 msgid "Backdrop list file is not valid"
 msgstr "El ficheru de llista de fondos nun ye válidu"
@@ -108,8 +107,7 @@ msgstr ""
 "%s\n"
 "<i>Tamañu: %dx%d</i>"
 
-#: ../settings/main.c:272
-#: ../src/xfdesktop-special-file-icon.c:259
+#: ../settings/main.c:272 ../src/xfdesktop-special-file-icon.c:259
 msgid "Home"
 msgstr "Carpeta personal"
 
@@ -130,8 +128,7 @@ msgstr "Preseos estrayíbles"
 msgid "Cannot create backdrop list \"%s\""
 msgstr "Nun puede criase la llista de fondos \"%s\""
 
-#: ../settings/main.c:462
-#: ../settings/main.c:779
+#: ../settings/main.c:462 ../settings/main.c:779
 msgid "Backdrop List Error"
 msgstr "Fallu de llista de fondos"
 
@@ -141,8 +138,11 @@ msgstr "Criar/cargar llista de fondos"
 
 #: ../settings/main.c:511
 #, c-format
-msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr "El ficheru \"%s\" nun ye un ficheru de llista de fondos válidu. ¿Quies sobroescribilu?"
+msgid ""
+"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr ""
+"El ficheru \"%s\" nun ye un ficheru de llista de fondos válidu. ¿Quies "
+"sobroescribilu?"
 
 #: ../settings/main.c:516
 msgid "Invalid List File"
@@ -252,15 +252,11 @@ msgstr "Opciones de compilación:\n"
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Menú d'escritoriu:        %s\n"
 
-#: ../src/main.c:249
-#: ../src/main.c:256
-#: ../src/main.c:263
+#: ../src/main.c:249 ../src/main.c:256 ../src/main.c:263
 msgid "enabled"
 msgstr "activáu"
 
-#: ../src/main.c:251
-#: ../src/main.c:258
-#: ../src/main.c:265
+#: ../src/main.c:251 ../src/main.c:258 ../src/main.c:265
 msgid "disabled"
 msgstr "desactiváu"
 
@@ -287,7 +283,8 @@ msgstr "Les opciones son:\n"
 #: ../src/main.c:292
 #, c-format
 msgid "    --reload      Reload all settings, refresh image list\n"
-msgstr "    --reload      Recargar tola configuración. Anovar llista d'imáxenes\n"
+msgstr ""
+"    --reload      Recargar tola configuración. Anovar llista d'imáxenes\n"
 
 #: ../src/main.c:293
 #, c-format
@@ -296,8 +293,11 @@ msgstr "    --menu        Amuesa'l menú (baxo la posición actual del mur)\n"
 
 #: ../src/main.c:294
 #, c-format
-msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr "    --windowlist  Amuesa llista de ventanes (baxo la posición actual del mur)\n"
+msgid ""
+"    --windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr ""
+"    --windowlist  Amuesa llista de ventanes (baxo la posición actual del "
+"mur)\n"
 
 #: ../src/main.c:295
 #, c-format
@@ -332,8 +332,7 @@ msgstr "Estaya de trabayu %d"
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Estaya de trabayu %d</i>"
 
-#: ../src/windowlist.c:370
-#: ../src/windowlist.c:373
+#: ../src/windowlist.c:370 ../src/windowlist.c:373
 msgid "_Add Workspace"
 msgstr "_Amestar estaya de trabayu"
 
@@ -347,35 +346,41 @@ msgstr "Desanicia_r estaya de trabayu %d"
 msgid "_Remove Workspace '%s'"
 msgstr "Desanicia_r estaya de trabayu '%s'"
 
-#: ../src/xfce-desktop.c:742
-#: ../settings/xfdesktop-settings.glade.h:20
+#: ../src/xfce-desktop.c:742 ../settings/xfdesktop-settings.glade.h:20
 msgid "Desktop"
 msgstr "Escritoriu"
 
-#: ../src/xfce-desktop.c:1010
+#: ../src/xfce-desktop.c:1018
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "Nun pudo cargase la imaxe del ficheru cola llista de fondos \"%s\""
 
-#: ../src/xfce-desktop.c:1012
+#: ../src/xfce-desktop.c:1020
 msgid "Desktop Error"
 msgstr "Fallu d'escritoriu"
 
 #: ../src/xfdesktop-file-icon-manager.c:478
 #, c-format
-msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr "Xfdesktop nun pudo criar el direutoriu \"%s\" p'atroxar los elementos d'escritoriu:"
+msgid ""
+"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr ""
+"Xfdesktop nun pudo criar el direutoriu \"%s\" p'atroxar los elementos "
+"d'escritoriu:"
 
 #: ../src/xfdesktop-file-icon-manager.c:480
 #: ../src/xfdesktop-file-icon-manager.c:491
-#: ../src/xfdesktop-file-icon-manager.c:1206
+#: ../src/xfdesktop-file-icon-manager.c:1241
 msgid "Create Folder Failed"
 msgstr "Fallu al criar el direutoriu"
 
 #: ../src/xfdesktop-file-icon-manager.c:489
 #, c-format
-msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
-msgstr "Xfdesktop nun puede usar \"%s\" pa caltener elementos d'escritoriu porque nun ye un direutoriu."
+msgid ""
+"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
+"folder."
+msgstr ""
+"Xfdesktop nun puede usar \"%s\" pa caltener elementos d'escritoriu porque "
+"nun ye un direutoriu."
 
 #: ../src/xfdesktop-file-icon-manager.c:493
 msgid "Please delete or rename the file."
@@ -387,9 +392,9 @@ msgid "Rename \"%s\""
 msgstr "Renomar \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:637
-#: ../src/xfdesktop-file-icon-manager.c:1278
-#: ../src/xfdesktop-file-icon-manager.c:1369
-#: ../src/xfdesktop-file-icon-manager.c:1380
+#: ../src/xfdesktop-file-icon-manager.c:1313
+#: ../src/xfdesktop-file-icon-manager.c:1404
+#: ../src/xfdesktop-file-icon-manager.c:1415
 msgid "Enter the new name:"
 msgstr "Introduz el nuevu nome:"
 
@@ -402,8 +407,7 @@ msgstr "Renomar"
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "¿De xuru que quies desaniciar \"%s\"?"
 
-#: ../src/xfdesktop-file-icon-manager.c:679
-#: ../src/xfdesktop-file-utils.c:55
+#: ../src/xfdesktop-file-icon-manager.c:679 ../src/xfdesktop-file-utils.c:55
 msgid "Question"
 msgstr "Entruga"
 
@@ -423,8 +427,7 @@ msgstr "Desaniciar dellos ficheros"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:917
-#: ../src/xfdesktop-file-icon-manager.c:1633
-#: ../src/xfdesktop-file-icon.c:140
+#: ../src/xfdesktop-file-icon-manager.c:1668 ../src/xfdesktop-file-icon.c:140
 #: ../src/xfdesktop-file-utils.c:353
 #, c-format
 msgid "Unable to launch \"%s\":"
@@ -432,9 +435,8 @@ msgstr "Nun pudo llanzase \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:919
 #: ../src/xfdesktop-file-icon-manager.c:977
-#: ../src/xfdesktop-file-icon-manager.c:1240
-#: ../src/xfdesktop-file-icon-manager.c:1634
-#: ../src/xfdesktop-file-icon.c:142
+#: ../src/xfdesktop-file-icon-manager.c:1275
+#: ../src/xfdesktop-file-icon-manager.c:1669 ../src/xfdesktop-file-icon.c:142
 #: ../src/xfdesktop-file-utils.c:356
 msgid "Launch Error"
 msgstr "Fallu d'aniciu"
@@ -443,145 +445,151 @@ msgstr "Fallu d'aniciu"
 msgid "The application chooser could not be opened."
 msgstr "El seleutor d'aplicación nun pudo abrise."
 
-#: ../src/xfdesktop-file-icon-manager.c:979
-#: ../src/xfdesktop-file-utils.c:358
-msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
-msgstr "Esta funcionalidá necesita la presencia d'un alministrador de ficheros (como'l proporcionáu por Thunar)."
+#: ../src/xfdesktop-file-icon-manager.c:979 ../src/xfdesktop-file-utils.c:358
+msgid ""
+"This feature requires a file manager service present (such as that supplied "
+"by Thunar)."
+msgstr ""
+"Esta funcionalidá necesita la presencia d'un alministrador de ficheros "
+"(como'l proporcionáu por Thunar)."
 
-#: ../src/xfdesktop-file-icon-manager.c:1137
+#: ../src/xfdesktop-file-icon-manager.c:1172
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "_Abrir con \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1140
+#: ../src/xfdesktop-file-icon-manager.c:1175
 #, c-format
 msgid "Open With \"%s\""
 msgstr "Abrir con \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1203
+#: ../src/xfdesktop-file-icon-manager.c:1238
 #, c-format
 msgid "Unable to create folder named \"%s\":"
 msgstr "Nun pudo criase'l direutoriu con nome \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:1242
-msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
-msgstr "Nun pudo entamase \"exo-desktop-item-edit\", que necesítase pa criar y editar llanzadores y enllaces nel escritoriu."
+#: ../src/xfdesktop-file-icon-manager.c:1277
+msgid ""
+"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
+"edit launchers and links on the desktop."
+msgstr ""
+"Nun pudo entamase \"exo-desktop-item-edit\", que necesítase pa criar y "
+"editar llanzadores y enllaces nel escritoriu."
 
-#: ../src/xfdesktop-file-icon-manager.c:1275
+#: ../src/xfdesktop-file-icon-manager.c:1310
 msgid "Create New Folder"
 msgstr "Criar nueva carpeta"
 
-#: ../src/xfdesktop-file-icon-manager.c:1279
+#: ../src/xfdesktop-file-icon-manager.c:1314
 msgid "New Folder"
 msgstr "Nueva carpeta"
 
-#: ../src/xfdesktop-file-icon-manager.c:1280
-#: ../src/xfdesktop-file-icon-manager.c:1371
-#: ../src/xfdesktop-file-icon-manager.c:1382
+#: ../src/xfdesktop-file-icon-manager.c:1315
+#: ../src/xfdesktop-file-icon-manager.c:1406
+#: ../src/xfdesktop-file-icon-manager.c:1417
 msgid "Create"
 msgstr "Criar"
 
-#: ../src/xfdesktop-file-icon-manager.c:1316
+#: ../src/xfdesktop-file-icon-manager.c:1351
 #, c-format
 msgid "Unable to create file named \"%s\":"
 msgstr "Nun pudo criase'l ficheru con nome \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:1319
+#: ../src/xfdesktop-file-icon-manager.c:1354
 msgid "Create File Failed"
 msgstr "Fallu al criar ficheru"
 
-#: ../src/xfdesktop-file-icon-manager.c:1358
+#: ../src/xfdesktop-file-icon-manager.c:1393
 #, c-format
 msgid "Create Document from template \"%s\""
 msgstr "Criar documentu a partir de plantía \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1377
+#: ../src/xfdesktop-file-icon-manager.c:1412
 msgid "Create Empty File"
 msgstr "Criar ficheru baleru"
 
-#: ../src/xfdesktop-file-icon-manager.c:1381
+#: ../src/xfdesktop-file-icon-manager.c:1416
 msgid "New Empty File"
 msgstr "Nuevu ficheru baleru"
 
-#: ../src/xfdesktop-file-icon-manager.c:1414
+#: ../src/xfdesktop-file-icon-manager.c:1449
 #, c-format
 msgid "Unable to create file \"%s\":"
 msgstr "Nun pudo criase ficheru \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:1415
+#: ../src/xfdesktop-file-icon-manager.c:1450
 msgid "Create Error"
 msgstr "Fallu de criación"
 
-#: ../src/xfdesktop-file-icon-manager.c:1700
+#: ../src/xfdesktop-file-icon-manager.c:1735
 msgid "_Open all"
 msgstr "_Abrir too"
 
-#: ../src/xfdesktop-file-icon-manager.c:1716
+#: ../src/xfdesktop-file-icon-manager.c:1751
 msgid "_Open in New Window"
 msgstr "_Abrir en ventana nueva"
 
-#: ../src/xfdesktop-file-icon-manager.c:1718
-#: ../src/xfdesktop-special-file-icon.c:633
-#: ../src/xfdesktop-volume-icon.c:561
+#: ../src/xfdesktop-file-icon-manager.c:1753
+#: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:561
 msgid "_Open"
 msgstr "_Abrir"
 
-#: ../src/xfdesktop-file-icon-manager.c:1733
+#: ../src/xfdesktop-file-icon-manager.c:1768
 msgid "Create _Launcher..."
 msgstr "Criar _llanzador..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1754
+#: ../src/xfdesktop-file-icon-manager.c:1789
 msgid "Create _URL Link..."
 msgstr "Criar enllaz _URL..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1771
+#: ../src/xfdesktop-file-icon-manager.c:1806
 msgid "Create _Folder..."
 msgstr "Criar _direutoriu..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1791
+#: ../src/xfdesktop-file-icon-manager.c:1826
 msgid "Create From _Template"
 msgstr "Criar a partir de _plantía"
 
-#: ../src/xfdesktop-file-icon-manager.c:1825
+#: ../src/xfdesktop-file-icon-manager.c:1860
 msgid "_Empty File"
 msgstr "Ficheru _baleru"
 
-#: ../src/xfdesktop-file-icon-manager.c:1841
+#: ../src/xfdesktop-file-icon-manager.c:1876
 msgid "_Execute"
 msgstr "_Executar"
 
-#: ../src/xfdesktop-file-icon-manager.c:1859
+#: ../src/xfdesktop-file-icon-manager.c:1894
 msgid "_Edit Launcher"
 msgstr "_Editar llanzador"
 
-#: ../src/xfdesktop-file-icon-manager.c:1899
+#: ../src/xfdesktop-file-icon-manager.c:1934
 msgid "Open With"
 msgstr "Abrir con"
 
-#: ../src/xfdesktop-file-icon-manager.c:1930
+#: ../src/xfdesktop-file-icon-manager.c:1965
 msgid "Open With Other _Application..."
 msgstr "Abrir con otra _aplicación"
 
-#: ../src/xfdesktop-file-icon-manager.c:2037
+#: ../src/xfdesktop-file-icon-manager.c:2072
 msgid "_Rename..."
 msgstr "_Renomar..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2055
+#: ../src/xfdesktop-file-icon-manager.c:2090
 msgid "Desktop _Settings..."
 msgstr "_Configuración d'escritoriu..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2065
+#: ../src/xfdesktop-file-icon-manager.c:2100
 #: ../src/xfdesktop-volume-icon.c:610
 msgid "_Properties..."
 msgstr "_Propiedaes..."
 
-#: ../src/xfdesktop-file-icon-manager.c:3304
+#: ../src/xfdesktop-file-icon-manager.c:3339
 #: ../src/xfdesktop-regular-file-icon.c:382
 #, c-format
 msgid "Failed to run \"%s\":"
 msgstr "Fallu al executar \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:3306
+#: ../src/xfdesktop-file-icon-manager.c:3341
 #: ../src/xfdesktop-regular-file-icon.c:384
 msgid "Run Error"
 msgstr "Fallu d'execución"
@@ -633,8 +641,7 @@ msgstr "Destín del enllaz:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:251
 #: ../src/xfdesktop-file-properties-dialog.c:410
-#: ../src/xfdesktop-volume-icon.c:476
-#: ../src/xfdesktop-volume-icon.c:482
+#: ../src/xfdesktop-volume-icon.c:476 ../src/xfdesktop-volume-icon.c:482
 msgid "(unknown)"
 msgstr "(desconocíu)"
 
@@ -754,8 +761,12 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "Nun pudo contautase col serviciu de papelera de Xfce"
 
 #: ../src/xfdesktop-special-file-icon.c:518
-msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
-msgstr "Asegúrate de tener un alministrador de ficheros instaláu que sofite'l serviciu de papelera de Xfce, como por exemplu Thunar."
+msgid ""
+"Make sure you have a file manager installed that supports the Xfce Trash "
+"service, such as Thunar."
+msgstr ""
+"Asegúrate de tener un alministrador de ficheros instaláu que sofite'l "
+"serviciu de papelera de Xfce, como por exemplu Thunar."
 
 #: ../src/xfdesktop-special-file-icon.c:651
 msgid "_Empty Trash"
@@ -1154,11 +1165,14 @@ msgstr "Amosar iconos d'_aplicación nel menú"
 
 #: ../settings/xfdesktop-settings.glade.h:48
 msgid "Show _window list menu on desktop middle click"
-msgstr "Amosar menú de llista de _ventanes al calcar col botón central sobro l'escritoriu"
+msgstr ""
+"Amosar menú de llista de _ventanes al calcar col botón central sobro "
+"l'escritoriu"
 
 #: ../settings/xfdesktop-settings.glade.h:49
 msgid "Show applications menu on _desktop right click"
-msgstr "Amosar menú d'aplicaciones al calcar col botón drechu sobro l'_escritoriu"
+msgstr ""
+"Amosar menú d'aplicaciones al calcar col botón drechu sobro l'_escritoriu"
 
 #: ../settings/xfdesktop-settings.glade.h:50
 msgid "Show s_ticky windows only in active workspace"
@@ -1185,8 +1199,11 @@ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr "Especifica'l color de la parte \"drecha\" o \"inferior\" del gradiente"
 
 #: ../settings/xfdesktop-settings.glade.h:57
-msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr "Especifica'l color sólidu o el color de la parte \"esquierda\" o \"superior\" del gradiente"
+msgid ""
+"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr ""
+"Especifica'l color sólidu o el color de la parte \"esquierda\" o \"superior"
+"\" del gradiente"
 
 #: ../settings/xfdesktop-settings.glade.h:58
 msgid "Specify how the image will be resized to fit the screen"
@@ -1197,8 +1214,12 @@ msgid "Specify the style of the color drawn behind the backdrop image"
 msgstr "Especificar l'estilu del color dibuxáu al rodiu de la imaxe de fondu"
 
 #: ../settings/xfdesktop-settings.glade.h:60
-msgid "Specify the transparency level for the rounded label drawn behind the icon text"
-msgstr "Especificar el nivel de tresparencia pa la etiqueta redondeada debuxada al rodiu del testu d'iconu"
+msgid ""
+"Specify the transparency level for the rounded label drawn behind the icon "
+"text"
+msgstr ""
+"Especificar el nivel de tresparencia pa la etiqueta redondeada debuxada al "
+"rodiu del testu d'iconu"
 
 #: ../settings/xfdesktop-settings.glade.h:61
 msgid "St_yle:"
@@ -1242,6 +1263,6 @@ msgstr "Imaxe _cenciella"
 
 #~ msgid "gtk-close"
 #~ msgstr "gtk-close"
+
 #~ msgid "gtk-help"
 #~ msgstr "gtk-help"
-

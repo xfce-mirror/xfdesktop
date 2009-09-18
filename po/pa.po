@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pa\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-30 23:17-0700\n"
+"POT-Creation-Date: 2009-09-18 18:20+0200\n"
 "PO-Revision-Date: 2007-07-05 07:17+0530\n"
 "Last-Translator: A S Alam <aalam@users.sf.net>\n"
 "Language-Team: Punjabi <punjabi-l10n@lists.sf.net>\n"
@@ -364,12 +364,12 @@ msgstr "ਵਰਕਸਪੇਸ '%s' ਹਟਾਓ(_R)"
 msgid "Desktop"
 msgstr "ਡੈਸਕਟਾਪ"
 
-#: ../src/xfce-desktop.c:1010
+#: ../src/xfce-desktop.c:1018
 #, fuzzy, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "ਫਾਇਲ \"%s\" ਬਣਾਉਣ ਲਈ ਅਸਫ਼ਲ:"
 
-#: ../src/xfce-desktop.c:1012
+#: ../src/xfce-desktop.c:1020
 #, fuzzy
 msgid "Desktop Error"
 msgstr "ਡੈਸਕਟਾਪ"
@@ -382,7 +382,7 @@ msgstr "Xfdesktop ਡੈਸਕਟਾਪ ਆਈਟਮਾਂ ਸੰਭਾਲਣ �
 
 #: ../src/xfdesktop-file-icon-manager.c:480
 #: ../src/xfdesktop-file-icon-manager.c:491
-#: ../src/xfdesktop-file-icon-manager.c:1206
+#: ../src/xfdesktop-file-icon-manager.c:1241
 msgid "Create Folder Failed"
 msgstr "ਫੋਲਡਰ ਬਣਾਉਣਾ ਫੇਲ੍ਹ"
 
@@ -404,9 +404,9 @@ msgid "Rename \"%s\""
 msgstr "\"%s\" ਨਾਂ ਬਦਲੋ"
 
 #: ../src/xfdesktop-file-icon-manager.c:637
-#: ../src/xfdesktop-file-icon-manager.c:1278
-#: ../src/xfdesktop-file-icon-manager.c:1369
-#: ../src/xfdesktop-file-icon-manager.c:1380
+#: ../src/xfdesktop-file-icon-manager.c:1313
+#: ../src/xfdesktop-file-icon-manager.c:1404
+#: ../src/xfdesktop-file-icon-manager.c:1415
 msgid "Enter the new name:"
 msgstr "ਨਵਾਂ ਨਾਂ ਦਿਓ:"
 
@@ -439,7 +439,7 @@ msgstr "ਬਹੁਤੀਆਂ ਫਾਇਲਾਂ ਹਟਾਓ"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:917
-#: ../src/xfdesktop-file-icon-manager.c:1633 ../src/xfdesktop-file-icon.c:140
+#: ../src/xfdesktop-file-icon-manager.c:1668 ../src/xfdesktop-file-icon.c:140
 #: ../src/xfdesktop-file-utils.c:353
 #, c-format
 msgid "Unable to launch \"%s\":"
@@ -447,8 +447,8 @@ msgstr "\"%s\" ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਅਸਫ਼ਲ:"
 
 #: ../src/xfdesktop-file-icon-manager.c:919
 #: ../src/xfdesktop-file-icon-manager.c:977
-#: ../src/xfdesktop-file-icon-manager.c:1240
-#: ../src/xfdesktop-file-icon-manager.c:1634 ../src/xfdesktop-file-icon.c:142
+#: ../src/xfdesktop-file-icon-manager.c:1275
+#: ../src/xfdesktop-file-icon-manager.c:1669 ../src/xfdesktop-file-icon.c:142
 #: ../src/xfdesktop-file-utils.c:356
 msgid "Launch Error"
 msgstr "ਲਾਂਚਰ ਗਲਤੀ"
@@ -463,22 +463,22 @@ msgid ""
 "by Thunar)."
 msgstr "ਇਹ ਫੀਚਰ ਲਈ ਇੱਕ ਫਾਇਲ ਮੈਨੇਜਰ ਸੇਵਾ ਮੌਜੂਦ ਹੋਣੀ ਚਾਹੀਦੀ ਹੈ (ਜਿਵੇਂ ਕਿ ਥੰਨਰ ਵਲੋਂ ਉਪਲੱਬਧ)।"
 
-#: ../src/xfdesktop-file-icon-manager.c:1137
+#: ../src/xfdesktop-file-icon-manager.c:1172
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "\"%s\" ਨਾਲ ਖੋਲ੍ਹੋ(_O)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1140
+#: ../src/xfdesktop-file-icon-manager.c:1175
 #, c-format
 msgid "Open With \"%s\""
 msgstr "\"%s\" ਨਾਲ ਖੋਲ੍ਹੋ"
 
-#: ../src/xfdesktop-file-icon-manager.c:1203
+#: ../src/xfdesktop-file-icon-manager.c:1238
 #, c-format
 msgid "Unable to create folder named \"%s\":"
 msgstr "ਫੋਲਡਰ \"%s\" ਨਾਂ ਨਾਲ ਬਣਾਉਣ ਲਈ ਅਸਫ਼ਲ:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1242
+#: ../src/xfdesktop-file-icon-manager.c:1277
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
@@ -486,121 +486,121 @@ msgstr ""
 "\"exo-desktop-item-edit\" ਲਾਂਚ ਕਰਨ ਲਈ ਅਸਫ਼ਲ, ਜੋ ਕਿ ਡੈਸਕਟਾਪ ਉੱਤੇ ਲਾਂਚਰ ਅਤੇ ਲਿੰਕ ਬਣਾਉਣ "
 "ਅਤੇ ਸੋਧਣ ਲਈ ਲਾਜ਼ਮੀ ਹੈ।"
 
-#: ../src/xfdesktop-file-icon-manager.c:1275
+#: ../src/xfdesktop-file-icon-manager.c:1310
 msgid "Create New Folder"
 msgstr "ਨਵਾਂ ਫੋਲਡਰ ਬਣਾਓ"
 
-#: ../src/xfdesktop-file-icon-manager.c:1279
+#: ../src/xfdesktop-file-icon-manager.c:1314
 msgid "New Folder"
 msgstr "ਨਵਾਂ ਫੋਲਡਰ"
 
-#: ../src/xfdesktop-file-icon-manager.c:1280
-#: ../src/xfdesktop-file-icon-manager.c:1371
-#: ../src/xfdesktop-file-icon-manager.c:1382
+#: ../src/xfdesktop-file-icon-manager.c:1315
+#: ../src/xfdesktop-file-icon-manager.c:1406
+#: ../src/xfdesktop-file-icon-manager.c:1417
 msgid "Create"
 msgstr "ਬਣਾਓ"
 
-#: ../src/xfdesktop-file-icon-manager.c:1316
+#: ../src/xfdesktop-file-icon-manager.c:1351
 #, c-format
 msgid "Unable to create file named \"%s\":"
 msgstr "ਫਾਇਲ \"%s\" ਨਾਂ ਨਾਲ ਬਣਾਉਣ ਲਈ ਫੇਲ੍ਹ:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1319
+#: ../src/xfdesktop-file-icon-manager.c:1354
 msgid "Create File Failed"
 msgstr "ਫਾਇਲ ਬਣਾਉਣ 'ਚ ਅਸਫ਼ਲ"
 
-#: ../src/xfdesktop-file-icon-manager.c:1358
+#: ../src/xfdesktop-file-icon-manager.c:1393
 #, c-format
 msgid "Create Document from template \"%s\""
 msgstr "ਟੈਂਪਲੇਟ \"%s\" ਤੋਂ ਦਸਤਾਵੇਜ਼ ਬਣਾਓ"
 
-#: ../src/xfdesktop-file-icon-manager.c:1377
+#: ../src/xfdesktop-file-icon-manager.c:1412
 msgid "Create Empty File"
 msgstr "ਖਾਲੀ ਫਾਇਲ ਬਣਾਓ"
 
-#: ../src/xfdesktop-file-icon-manager.c:1381
+#: ../src/xfdesktop-file-icon-manager.c:1416
 msgid "New Empty File"
 msgstr "ਨਵੀਂ ਖਾਲੀ ਫਾਇਲ"
 
-#: ../src/xfdesktop-file-icon-manager.c:1414
+#: ../src/xfdesktop-file-icon-manager.c:1449
 #, c-format
 msgid "Unable to create file \"%s\":"
 msgstr "ਫਾਇਲ \"%s\" ਬਣਾਉਣ ਲਈ ਅਸਫ਼ਲ:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1415
+#: ../src/xfdesktop-file-icon-manager.c:1450
 msgid "Create Error"
 msgstr "ਬਣਾਉਣ ਗਲਤੀ"
 
-#: ../src/xfdesktop-file-icon-manager.c:1700
+#: ../src/xfdesktop-file-icon-manager.c:1735
 msgid "_Open all"
 msgstr "ਸਭ ਖੋਲ੍ਹੋ(_O)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1716
+#: ../src/xfdesktop-file-icon-manager.c:1751
 msgid "_Open in New Window"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1718
+#: ../src/xfdesktop-file-icon-manager.c:1753
 #: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:561
 msgid "_Open"
 msgstr "ਖੋਲ੍ਹੋ(_O)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1733
+#: ../src/xfdesktop-file-icon-manager.c:1768
 msgid "Create _Launcher..."
 msgstr "ਲਾਂਚਰ ਬਣਾਓ(_L)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1754
+#: ../src/xfdesktop-file-icon-manager.c:1789
 msgid "Create _URL Link..."
 msgstr "_URL ਲਿੰਕ ਬਣਾਓ..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1771
+#: ../src/xfdesktop-file-icon-manager.c:1806
 msgid "Create _Folder..."
 msgstr "ਫੋਲਡਰ ਬਣਾਓ(_F)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1791
+#: ../src/xfdesktop-file-icon-manager.c:1826
 #, fuzzy
 msgid "Create From _Template"
 msgstr "ਟੈਂਪਲੇਟ \"%s\" ਤੋਂ ਦਸਤਾਵੇਜ਼ ਬਣਾਓ"
 
-#: ../src/xfdesktop-file-icon-manager.c:1825
+#: ../src/xfdesktop-file-icon-manager.c:1860
 msgid "_Empty File"
 msgstr "ਖਾਲੀ ਫਾਇਲ(_E)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1841
+#: ../src/xfdesktop-file-icon-manager.c:1876
 msgid "_Execute"
 msgstr "ਚਲਾਓ(_E)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1859
+#: ../src/xfdesktop-file-icon-manager.c:1894
 msgid "_Edit Launcher"
 msgstr "ਲਾਂਚਰ ਸੋਧ(_E)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1899
+#: ../src/xfdesktop-file-icon-manager.c:1934
 msgid "Open With"
 msgstr "ਇਸ ਨਾਲ ਖੋਲ੍ਹੋ"
 
-#: ../src/xfdesktop-file-icon-manager.c:1930
+#: ../src/xfdesktop-file-icon-manager.c:1965
 msgid "Open With Other _Application..."
 msgstr "ਹੋਰ ਕਾਰਜ ਨਾਲ ਖੋਲ੍ਹੋ(_A)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2037
+#: ../src/xfdesktop-file-icon-manager.c:2072
 msgid "_Rename..."
 msgstr "ਨਾਂ ਬਦਲੋ(_R)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2055
+#: ../src/xfdesktop-file-icon-manager.c:2090
 msgid "Desktop _Settings..."
 msgstr "ਡੈਸਕਟਾਪ ਸੈਟਿੰਗ(_S)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2065
+#: ../src/xfdesktop-file-icon-manager.c:2100
 #: ../src/xfdesktop-volume-icon.c:610
 msgid "_Properties..."
 msgstr "ਵਿਸ਼ੇਸ਼ਤਾ(_P)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:3304
+#: ../src/xfdesktop-file-icon-manager.c:3339
 #: ../src/xfdesktop-regular-file-icon.c:382
 #, c-format
 msgid "Failed to run \"%s\":"
 msgstr "\"%s\" ਚਲਾਉਣ ਲਈ ਅਸਫ਼ਲ:"
 
-#: ../src/xfdesktop-file-icon-manager.c:3306
+#: ../src/xfdesktop-file-icon-manager.c:3341
 #: ../src/xfdesktop-regular-file-icon.c:384
 msgid "Run Error"
 msgstr "ਚਲਾਉਣ ਗਲਤੀ"

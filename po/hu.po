@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-30 23:17-0700\n"
+"POT-Creation-Date: 2009-09-18 18:20+0200\n"
 "PO-Revision-Date: 2009-07-08 19:52+0200\n"
 "Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
 "Language-Team: Hungarian <gnome at gnome dot hu>\n"
@@ -357,12 +357,12 @@ msgstr "„%s” mu_nkaterület eltávolítása"
 msgid "Desktop"
 msgstr "Asztal"
 
-#: ../src/xfce-desktop.c:1010
+#: ../src/xfce-desktop.c:1018
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "Nem tölthető be a kép a háttérlistafájlból („%s”)"
 
-#: ../src/xfce-desktop.c:1012
+#: ../src/xfce-desktop.c:1020
 msgid "Desktop Error"
 msgstr "Asztalhiba"
 
@@ -376,7 +376,7 @@ msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:480
 #: ../src/xfdesktop-file-icon-manager.c:491
-#: ../src/xfdesktop-file-icon-manager.c:1206
+#: ../src/xfdesktop-file-icon-manager.c:1241
 msgid "Create Folder Failed"
 msgstr "Mappa létrehozása meghiúsult"
 
@@ -399,9 +399,9 @@ msgid "Rename \"%s\""
 msgstr "„%s” átnevezése"
 
 #: ../src/xfdesktop-file-icon-manager.c:637
-#: ../src/xfdesktop-file-icon-manager.c:1278
-#: ../src/xfdesktop-file-icon-manager.c:1369
-#: ../src/xfdesktop-file-icon-manager.c:1380
+#: ../src/xfdesktop-file-icon-manager.c:1313
+#: ../src/xfdesktop-file-icon-manager.c:1404
+#: ../src/xfdesktop-file-icon-manager.c:1415
 msgid "Enter the new name:"
 msgstr "Adja meg az új nevet:"
 
@@ -434,7 +434,7 @@ msgstr "Több fájl törlése"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:917
-#: ../src/xfdesktop-file-icon-manager.c:1633 ../src/xfdesktop-file-icon.c:140
+#: ../src/xfdesktop-file-icon-manager.c:1668 ../src/xfdesktop-file-icon.c:140
 #: ../src/xfdesktop-file-utils.c:353
 #, c-format
 msgid "Unable to launch \"%s\":"
@@ -442,8 +442,8 @@ msgstr "„%s” nem indítható:"
 
 #: ../src/xfdesktop-file-icon-manager.c:919
 #: ../src/xfdesktop-file-icon-manager.c:977
-#: ../src/xfdesktop-file-icon-manager.c:1240
-#: ../src/xfdesktop-file-icon-manager.c:1634 ../src/xfdesktop-file-icon.c:142
+#: ../src/xfdesktop-file-icon-manager.c:1275
+#: ../src/xfdesktop-file-icon-manager.c:1669 ../src/xfdesktop-file-icon.c:142
 #: ../src/xfdesktop-file-utils.c:356
 msgid "Launch Error"
 msgstr "Indítási hiba"
@@ -460,22 +460,22 @@ msgstr ""
 "Ez a szolgáltatás egy fájlkezelő-szolgáltatás jelenlétét igényli (például a "
 "Thunar által biztosítottat)."
 
-#: ../src/xfdesktop-file-icon-manager.c:1137
+#: ../src/xfdesktop-file-icon-manager.c:1172
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "Megnyitás e_zzel: „%s”"
 
-#: ../src/xfdesktop-file-icon-manager.c:1140
+#: ../src/xfdesktop-file-icon-manager.c:1175
 #, c-format
 msgid "Open With \"%s\""
 msgstr "Megnyitás ezzel: „%s”"
 
-#: ../src/xfdesktop-file-icon-manager.c:1203
+#: ../src/xfdesktop-file-icon-manager.c:1238
 #, c-format
 msgid "Unable to create folder named \"%s\":"
 msgstr "Nem hozható létre „%s” nevű mappa:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1242
+#: ../src/xfdesktop-file-icon-manager.c:1277
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
@@ -483,120 +483,120 @@ msgstr ""
 "Nem indítható az „exo-desktop-item-edit”, amely szükséges a indítóikonok és "
 "hivatkozások létrehozásához az asztalon."
 
-#: ../src/xfdesktop-file-icon-manager.c:1275
+#: ../src/xfdesktop-file-icon-manager.c:1310
 msgid "Create New Folder"
 msgstr "Új mappa létrehozása"
 
-#: ../src/xfdesktop-file-icon-manager.c:1279
+#: ../src/xfdesktop-file-icon-manager.c:1314
 msgid "New Folder"
 msgstr "Új mappa"
 
-#: ../src/xfdesktop-file-icon-manager.c:1280
-#: ../src/xfdesktop-file-icon-manager.c:1371
-#: ../src/xfdesktop-file-icon-manager.c:1382
+#: ../src/xfdesktop-file-icon-manager.c:1315
+#: ../src/xfdesktop-file-icon-manager.c:1406
+#: ../src/xfdesktop-file-icon-manager.c:1417
 msgid "Create"
 msgstr "Létrehozás"
 
-#: ../src/xfdesktop-file-icon-manager.c:1316
+#: ../src/xfdesktop-file-icon-manager.c:1351
 #, c-format
 msgid "Unable to create file named \"%s\":"
 msgstr "Nem hozható létre „%s” nevű fájl:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1319
+#: ../src/xfdesktop-file-icon-manager.c:1354
 msgid "Create File Failed"
 msgstr "Fájl létrehozása meghiúsult"
 
-#: ../src/xfdesktop-file-icon-manager.c:1358
+#: ../src/xfdesktop-file-icon-manager.c:1393
 #, c-format
 msgid "Create Document from template \"%s\""
 msgstr "Dokumentum létrehozása a(z) „%s” sablonból"
 
-#: ../src/xfdesktop-file-icon-manager.c:1377
+#: ../src/xfdesktop-file-icon-manager.c:1412
 msgid "Create Empty File"
 msgstr "Üres fájl létrehozása"
 
-#: ../src/xfdesktop-file-icon-manager.c:1381
+#: ../src/xfdesktop-file-icon-manager.c:1416
 msgid "New Empty File"
 msgstr "Új üres fájl"
 
-#: ../src/xfdesktop-file-icon-manager.c:1414
+#: ../src/xfdesktop-file-icon-manager.c:1449
 #, c-format
 msgid "Unable to create file \"%s\":"
 msgstr "Nem hozható létre „%s” nevű fájl:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1415
+#: ../src/xfdesktop-file-icon-manager.c:1450
 msgid "Create Error"
 msgstr "Létrehozási hiba"
 
-#: ../src/xfdesktop-file-icon-manager.c:1700
+#: ../src/xfdesktop-file-icon-manager.c:1735
 msgid "_Open all"
 msgstr "Ö_sszes megnyitása"
 
-#: ../src/xfdesktop-file-icon-manager.c:1716
+#: ../src/xfdesktop-file-icon-manager.c:1751
 msgid "_Open in New Window"
 msgstr "Megnyitás új _ablakban"
 
-#: ../src/xfdesktop-file-icon-manager.c:1718
+#: ../src/xfdesktop-file-icon-manager.c:1753
 #: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:561
 msgid "_Open"
 msgstr "_Megnyitás"
 
-#: ../src/xfdesktop-file-icon-manager.c:1733
+#: ../src/xfdesktop-file-icon-manager.c:1768
 msgid "Create _Launcher..."
 msgstr "In_dítóikon létrehozása…"
 
-#: ../src/xfdesktop-file-icon-manager.c:1754
+#: ../src/xfdesktop-file-icon-manager.c:1789
 msgid "Create _URL Link..."
 msgstr "URL _hivatkozás létrehozása…"
 
-#: ../src/xfdesktop-file-icon-manager.c:1771
+#: ../src/xfdesktop-file-icon-manager.c:1806
 msgid "Create _Folder..."
 msgstr "_Mappa létrehozása…"
 
-#: ../src/xfdesktop-file-icon-manager.c:1791
+#: ../src/xfdesktop-file-icon-manager.c:1826
 msgid "Create From _Template"
 msgstr "_Létrehozás sablonból"
 
-#: ../src/xfdesktop-file-icon-manager.c:1825
+#: ../src/xfdesktop-file-icon-manager.c:1860
 msgid "_Empty File"
 msgstr "Ü_res fájl"
 
-#: ../src/xfdesktop-file-icon-manager.c:1841
+#: ../src/xfdesktop-file-icon-manager.c:1876
 msgid "_Execute"
 msgstr "_Végrehajtás"
 
-#: ../src/xfdesktop-file-icon-manager.c:1859
+#: ../src/xfdesktop-file-icon-manager.c:1894
 msgid "_Edit Launcher"
 msgstr "Indítóikon s_zerkesztése"
 
-#: ../src/xfdesktop-file-icon-manager.c:1899
+#: ../src/xfdesktop-file-icon-manager.c:1934
 msgid "Open With"
 msgstr "Megnyitás ezzel"
 
-#: ../src/xfdesktop-file-icon-manager.c:1930
+#: ../src/xfdesktop-file-icon-manager.c:1965
 msgid "Open With Other _Application..."
 msgstr "Megnyitás _más alkalmazással…"
 
-#: ../src/xfdesktop-file-icon-manager.c:2037
+#: ../src/xfdesktop-file-icon-manager.c:2072
 msgid "_Rename..."
 msgstr "Á_tnevezés…"
 
-#: ../src/xfdesktop-file-icon-manager.c:2055
+#: ../src/xfdesktop-file-icon-manager.c:2090
 msgid "Desktop _Settings..."
 msgstr "_Asztal beállításai…"
 
-#: ../src/xfdesktop-file-icon-manager.c:2065
+#: ../src/xfdesktop-file-icon-manager.c:2100
 #: ../src/xfdesktop-volume-icon.c:610
 msgid "_Properties..."
 msgstr "_Tulajdonságok..."
 
-#: ../src/xfdesktop-file-icon-manager.c:3304
+#: ../src/xfdesktop-file-icon-manager.c:3339
 #: ../src/xfdesktop-regular-file-icon.c:382
 #, c-format
 msgid "Failed to run \"%s\":"
 msgstr "„%s” futtatása meghiúsult:"
 
-#: ../src/xfdesktop-file-icon-manager.c:3306
+#: ../src/xfdesktop-file-icon-manager.c:3341
 #: ../src/xfdesktop-regular-file-icon.c:384
 msgid "Run Error"
 msgstr "Futtatási hiba"

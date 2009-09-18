@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-30 23:17-0700\n"
+"POT-Creation-Date: 2009-09-18 18:20+0200\n"
 "PO-Revision-Date: 2008-12-12 22:37+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -354,12 +354,12 @@ msgstr "_Ta bort arbetsytan \"%s\""
 msgid "Desktop"
 msgstr "Skrivbord"
 
-#: ../src/xfce-desktop.c:1010
+#: ../src/xfce-desktop.c:1018
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "Kunde inte läsa in bild från bakgrundslistfilen \"%s\""
 
-#: ../src/xfce-desktop.c:1012
+#: ../src/xfce-desktop.c:1020
 msgid "Desktop Error"
 msgstr "Skrivbordsfel"
 
@@ -373,7 +373,7 @@ msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:480
 #: ../src/xfdesktop-file-icon-manager.c:491
-#: ../src/xfdesktop-file-icon-manager.c:1206
+#: ../src/xfdesktop-file-icon-manager.c:1241
 msgid "Create Folder Failed"
 msgstr "Misslyckades med att skapa en mapp"
 
@@ -396,9 +396,9 @@ msgid "Rename \"%s\""
 msgstr "Byt namn på \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:637
-#: ../src/xfdesktop-file-icon-manager.c:1278
-#: ../src/xfdesktop-file-icon-manager.c:1369
-#: ../src/xfdesktop-file-icon-manager.c:1380
+#: ../src/xfdesktop-file-icon-manager.c:1313
+#: ../src/xfdesktop-file-icon-manager.c:1404
+#: ../src/xfdesktop-file-icon-manager.c:1415
 msgid "Enter the new name:"
 msgstr "Skriv in det nya namnet:"
 
@@ -431,7 +431,7 @@ msgstr "Ta bort flera filer"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:917
-#: ../src/xfdesktop-file-icon-manager.c:1633 ../src/xfdesktop-file-icon.c:140
+#: ../src/xfdesktop-file-icon-manager.c:1668 ../src/xfdesktop-file-icon.c:140
 #: ../src/xfdesktop-file-utils.c:353
 #, c-format
 msgid "Unable to launch \"%s\":"
@@ -439,8 +439,8 @@ msgstr "Kunde inte starta \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:919
 #: ../src/xfdesktop-file-icon-manager.c:977
-#: ../src/xfdesktop-file-icon-manager.c:1240
-#: ../src/xfdesktop-file-icon-manager.c:1634 ../src/xfdesktop-file-icon.c:142
+#: ../src/xfdesktop-file-icon-manager.c:1275
+#: ../src/xfdesktop-file-icon-manager.c:1669 ../src/xfdesktop-file-icon.c:142
 #: ../src/xfdesktop-file-utils.c:356
 msgid "Launch Error"
 msgstr "Startfel"
@@ -457,22 +457,22 @@ msgstr ""
 "Den här funktionen kräver att att en filhanterartjänst körs (som till "
 "exempel den som tillhandahålls av Thunar)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1137
+#: ../src/xfdesktop-file-icon-manager.c:1172
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "_Öppna med \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1140
+#: ../src/xfdesktop-file-icon-manager.c:1175
 #, c-format
 msgid "Open With \"%s\""
 msgstr "Öppna med \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1203
+#: ../src/xfdesktop-file-icon-manager.c:1238
 #, c-format
 msgid "Unable to create folder named \"%s\":"
 msgstr "Kunde inte skapa katalogen \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:1242
+#: ../src/xfdesktop-file-icon-manager.c:1277
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
@@ -480,120 +480,120 @@ msgstr ""
 "Kunde inte starta \"exo-desktop-item-edit\", som krävs för att skapa och "
 "redigera programstartare och länkar på skrivbordet."
 
-#: ../src/xfdesktop-file-icon-manager.c:1275
+#: ../src/xfdesktop-file-icon-manager.c:1310
 msgid "Create New Folder"
 msgstr "Skapa en ny mapp"
 
-#: ../src/xfdesktop-file-icon-manager.c:1279
+#: ../src/xfdesktop-file-icon-manager.c:1314
 msgid "New Folder"
 msgstr "Ny mapp"
 
-#: ../src/xfdesktop-file-icon-manager.c:1280
-#: ../src/xfdesktop-file-icon-manager.c:1371
-#: ../src/xfdesktop-file-icon-manager.c:1382
+#: ../src/xfdesktop-file-icon-manager.c:1315
+#: ../src/xfdesktop-file-icon-manager.c:1406
+#: ../src/xfdesktop-file-icon-manager.c:1417
 msgid "Create"
 msgstr "Skapa"
 
-#: ../src/xfdesktop-file-icon-manager.c:1316
+#: ../src/xfdesktop-file-icon-manager.c:1351
 #, c-format
 msgid "Unable to create file named \"%s\":"
 msgstr "Kunde inte skapa filen \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:1319
+#: ../src/xfdesktop-file-icon-manager.c:1354
 msgid "Create File Failed"
 msgstr "Kunde inte skapa en fil"
 
-#: ../src/xfdesktop-file-icon-manager.c:1358
+#: ../src/xfdesktop-file-icon-manager.c:1393
 #, c-format
 msgid "Create Document from template \"%s\""
 msgstr "Skapa ett dokument från mallen \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1377
+#: ../src/xfdesktop-file-icon-manager.c:1412
 msgid "Create Empty File"
 msgstr "Skapa en tom fil"
 
-#: ../src/xfdesktop-file-icon-manager.c:1381
+#: ../src/xfdesktop-file-icon-manager.c:1416
 msgid "New Empty File"
 msgstr "Ny tom fil"
 
-#: ../src/xfdesktop-file-icon-manager.c:1414
+#: ../src/xfdesktop-file-icon-manager.c:1449
 #, c-format
 msgid "Unable to create file \"%s\":"
 msgstr "Kunde inte skapa filen \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:1415
+#: ../src/xfdesktop-file-icon-manager.c:1450
 msgid "Create Error"
 msgstr "Misslyckades med att skapa"
 
-#: ../src/xfdesktop-file-icon-manager.c:1700
+#: ../src/xfdesktop-file-icon-manager.c:1735
 msgid "_Open all"
 msgstr "_Öppna alla"
 
-#: ../src/xfdesktop-file-icon-manager.c:1716
+#: ../src/xfdesktop-file-icon-manager.c:1751
 msgid "_Open in New Window"
 msgstr "_Öppna i nytt fönster"
 
-#: ../src/xfdesktop-file-icon-manager.c:1718
+#: ../src/xfdesktop-file-icon-manager.c:1753
 #: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:561
 msgid "_Open"
 msgstr "_Öppna"
 
-#: ../src/xfdesktop-file-icon-manager.c:1733
+#: ../src/xfdesktop-file-icon-manager.c:1768
 msgid "Create _Launcher..."
 msgstr "Skapa _programstartare..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1754
+#: ../src/xfdesktop-file-icon-manager.c:1789
 msgid "Create _URL Link..."
 msgstr "Skapa _URL-länk..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1771
+#: ../src/xfdesktop-file-icon-manager.c:1806
 msgid "Create _Folder..."
 msgstr "Skapa _katalog..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1791
+#: ../src/xfdesktop-file-icon-manager.c:1826
 msgid "Create From _Template"
 msgstr "Skapa från _mall"
 
-#: ../src/xfdesktop-file-icon-manager.c:1825
+#: ../src/xfdesktop-file-icon-manager.c:1860
 msgid "_Empty File"
 msgstr "_Tom fil"
 
-#: ../src/xfdesktop-file-icon-manager.c:1841
+#: ../src/xfdesktop-file-icon-manager.c:1876
 msgid "_Execute"
 msgstr "_Kör"
 
-#: ../src/xfdesktop-file-icon-manager.c:1859
+#: ../src/xfdesktop-file-icon-manager.c:1894
 msgid "_Edit Launcher"
 msgstr "_Redigera programstartare"
 
-#: ../src/xfdesktop-file-icon-manager.c:1899
+#: ../src/xfdesktop-file-icon-manager.c:1934
 msgid "Open With"
 msgstr "Öppna med"
 
-#: ../src/xfdesktop-file-icon-manager.c:1930
+#: ../src/xfdesktop-file-icon-manager.c:1965
 msgid "Open With Other _Application..."
 msgstr "Öppna med ett annat _program..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2037
+#: ../src/xfdesktop-file-icon-manager.c:2072
 msgid "_Rename..."
 msgstr "_Byt namn..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2055
+#: ../src/xfdesktop-file-icon-manager.c:2090
 msgid "Desktop _Settings..."
 msgstr "S_krivbordsinställningar..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2065
+#: ../src/xfdesktop-file-icon-manager.c:2100
 #: ../src/xfdesktop-volume-icon.c:610
 msgid "_Properties..."
 msgstr "_Egenskaper..."
 
-#: ../src/xfdesktop-file-icon-manager.c:3304
+#: ../src/xfdesktop-file-icon-manager.c:3339
 #: ../src/xfdesktop-regular-file-icon.c:382
 #, c-format
 msgid "Failed to run \"%s\":"
 msgstr "Misslyckades med att köra \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:3306
+#: ../src/xfdesktop-file-icon-manager.c:3341
 #: ../src/xfdesktop-regular-file-icon.c:384
 msgid "Run Error"
 msgstr "Körfel"

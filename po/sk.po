@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-30 23:17-0700\n"
+"POT-Creation-Date: 2009-09-18 18:20+0200\n"
 "PO-Revision-Date: 2009-09-07 20:25+0100\n"
 "Last-Translator: Robert Hartl <hartl.robert@gmail.com>\n"
 "Language-Team: slovak <sk-i18n@lists.linux.sk>\n"
@@ -15,8 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../common/xfdesktop-common.c:95
-#: ../common/xfdesktop-common.c:199
+#: ../common/xfdesktop-common.c:95 ../common/xfdesktop-common.c:199
 #, c-format
 msgid "Backdrop list file is not valid"
 msgstr "Súbor zoznam pozadí nie je platný"
@@ -113,8 +112,7 @@ msgstr ""
 "%s\n"
 "<i>Veľkosť: %dx%d</i>"
 
-#: ../settings/main.c:272
-#: ../src/xfdesktop-special-file-icon.c:259
+#: ../settings/main.c:272 ../src/xfdesktop-special-file-icon.c:259
 msgid "Home"
 msgstr "Domov"
 
@@ -135,8 +133,7 @@ msgstr "Vymeniteľné zariadenia"
 msgid "Cannot create backdrop list \"%s\""
 msgstr "Nie je možné vytvoriť zoznam pozadí \"%s\""
 
-#: ../settings/main.c:462
-#: ../settings/main.c:779
+#: ../settings/main.c:462 ../settings/main.c:779
 msgid "Backdrop List Error"
 msgstr "Chyba zoznamu pozadí"
 
@@ -146,8 +143,10 @@ msgstr "Vytvoriť alebo načítať zoznam pozadí"
 
 #: ../settings/main.c:511
 #, c-format
-msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr "Súbor \"%s\" nie je  platný súborom zoznamu pozadia.  Prajete si ho prepísať?"
+msgid ""
+"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr ""
+"Súbor \"%s\" nie je  platný súborom zoznamu pozadia.  Prajete si ho prepísať?"
 
 #: ../settings/main.c:516
 msgid "Invalid List File"
@@ -257,15 +256,11 @@ msgstr "Voľby pri zostavovaní:\n"
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Hlavná ponuka:        %s\n"
 
-#: ../src/main.c:249
-#: ../src/main.c:256
-#: ../src/main.c:263
+#: ../src/main.c:249 ../src/main.c:256 ../src/main.c:263
 msgid "enabled"
 msgstr "povolené"
 
-#: ../src/main.c:251
-#: ../src/main.c:258
-#: ../src/main.c:265
+#: ../src/main.c:251 ../src/main.c:258 ../src/main.c:265
 msgid "disabled"
 msgstr "zakázané"
 
@@ -292,7 +287,8 @@ msgstr "Možnosti sú:\n"
 #: ../src/main.c:292
 #, c-format
 msgid "    --reload      Reload all settings, refresh image list\n"
-msgstr "    -reload      Nahrať znovu všetky nastavenie, obnoviť zoznam obrázkov\n"
+msgstr ""
+"    -reload      Nahrať znovu všetky nastavenie, obnoviť zoznam obrázkov\n"
 
 #: ../src/main.c:293
 #, c-format
@@ -301,8 +297,10 @@ msgstr "    -menu        Otvoriť ponuku (na aktuálnej pozícii kurzora myši)\
 
 #: ../src/main.c:294
 #, c-format
-msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr "    -windowlist  Otvoriť zoznam okien (na aktuálnej pozícii kurzora myši)\n"
+msgid ""
+"    --windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr ""
+"    -windowlist  Otvoriť zoznam okien (na aktuálnej pozícii kurzora myši)\n"
 
 #: ../src/main.c:295
 #, c-format
@@ -337,8 +335,7 @@ msgstr "<b>Virtuálna plocha %d</b>"
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Virtuálna plocha %d</i>"
 
-#: ../src/windowlist.c:370
-#: ../src/windowlist.c:373
+#: ../src/windowlist.c:370 ../src/windowlist.c:373
 msgid "_Add Workspace"
 msgstr "_Pridať virtuálnu plochu"
 
@@ -352,35 +349,40 @@ msgstr "_Odstrániť virtuálnu plochu %d"
 msgid "_Remove Workspace '%s'"
 msgstr "_Odstrániť virtuálnu plochu '%s'"
 
-#: ../src/xfce-desktop.c:742
-#: ../settings/xfdesktop-settings.glade.h:20
+#: ../src/xfce-desktop.c:742 ../settings/xfdesktop-settings.glade.h:20
 msgid "Desktop"
 msgstr "Plocha"
 
-#: ../src/xfce-desktop.c:1010
+#: ../src/xfce-desktop.c:1018
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "Nemôžem načítať obrázok zo súboru zoznamu pozadí: \"%s\""
 
-#: ../src/xfce-desktop.c:1012
+#: ../src/xfce-desktop.c:1020
 msgid "Desktop Error"
 msgstr "Chyba pracovnej plochy"
 
 #: ../src/xfdesktop-file-icon-manager.c:478
 #, c-format
-msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr "Xfdesktop nemôže vytvoriť priečinok \"%s\" pre uloženie položiek plochy:"
+msgid ""
+"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr ""
+"Xfdesktop nemôže vytvoriť priečinok \"%s\" pre uloženie položiek plochy:"
 
 #: ../src/xfdesktop-file-icon-manager.c:480
 #: ../src/xfdesktop-file-icon-manager.c:491
-#: ../src/xfdesktop-file-icon-manager.c:1206
+#: ../src/xfdesktop-file-icon-manager.c:1241
 msgid "Create Folder Failed"
 msgstr "Vytvorenie priečinka zlyhalo"
 
 #: ../src/xfdesktop-file-icon-manager.c:489
 #, c-format
-msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
-msgstr "Xfdesktop nemôže použiť \"%s\" pre uloženie položiek plochy, pretože nie je priečinkom."
+msgid ""
+"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
+"folder."
+msgstr ""
+"Xfdesktop nemôže použiť \"%s\" pre uloženie položiek plochy, pretože nie je "
+"priečinkom."
 
 #: ../src/xfdesktop-file-icon-manager.c:493
 msgid "Please delete or rename the file."
@@ -392,9 +394,9 @@ msgid "Rename \"%s\""
 msgstr "Premenovať \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:637
-#: ../src/xfdesktop-file-icon-manager.c:1278
-#: ../src/xfdesktop-file-icon-manager.c:1369
-#: ../src/xfdesktop-file-icon-manager.c:1380
+#: ../src/xfdesktop-file-icon-manager.c:1313
+#: ../src/xfdesktop-file-icon-manager.c:1404
+#: ../src/xfdesktop-file-icon-manager.c:1415
 msgid "Enter the new name:"
 msgstr "Zadajte nový názov?"
 
@@ -407,8 +409,7 @@ msgstr "Premenovať"
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "Naozaj si želáte zmazať \"%s\"?"
 
-#: ../src/xfdesktop-file-icon-manager.c:679
-#: ../src/xfdesktop-file-utils.c:55
+#: ../src/xfdesktop-file-icon-manager.c:679 ../src/xfdesktop-file-utils.c:55
 msgid "Question"
 msgstr "Otázka"
 
@@ -428,8 +429,7 @@ msgstr "Zmazať viac súborov"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:917
-#: ../src/xfdesktop-file-icon-manager.c:1633
-#: ../src/xfdesktop-file-icon.c:140
+#: ../src/xfdesktop-file-icon-manager.c:1668 ../src/xfdesktop-file-icon.c:140
 #: ../src/xfdesktop-file-utils.c:353
 #, c-format
 msgid "Unable to launch \"%s\":"
@@ -437,9 +437,8 @@ msgstr "Nie je možné spustiť \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:919
 #: ../src/xfdesktop-file-icon-manager.c:977
-#: ../src/xfdesktop-file-icon-manager.c:1240
-#: ../src/xfdesktop-file-icon-manager.c:1634
-#: ../src/xfdesktop-file-icon.c:142
+#: ../src/xfdesktop-file-icon-manager.c:1275
+#: ../src/xfdesktop-file-icon-manager.c:1669 ../src/xfdesktop-file-icon.c:142
 #: ../src/xfdesktop-file-utils.c:356
 msgid "Launch Error"
 msgstr "Chyba pri spustení"
@@ -448,145 +447,151 @@ msgstr "Chyba pri spustení"
 msgid "The application chooser could not be opened."
 msgstr "Výber aplikácie nebolo možné otvoriť."
 
-#: ../src/xfdesktop-file-icon-manager.c:979
-#: ../src/xfdesktop-file-utils.c:358
-msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
-msgstr "Táto vlastnosť vyžaduje prítomnosť služby správcu súborov (napríklad aplikáciu Thunar)."
+#: ../src/xfdesktop-file-icon-manager.c:979 ../src/xfdesktop-file-utils.c:358
+msgid ""
+"This feature requires a file manager service present (such as that supplied "
+"by Thunar)."
+msgstr ""
+"Táto vlastnosť vyžaduje prítomnosť služby správcu súborov (napríklad "
+"aplikáciu Thunar)."
 
-#: ../src/xfdesktop-file-icon-manager.c:1137
+#: ../src/xfdesktop-file-icon-manager.c:1172
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "_Otvoriť pomocou \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1140
+#: ../src/xfdesktop-file-icon-manager.c:1175
 #, c-format
 msgid "Open With \"%s\""
 msgstr "Otvoriť pomocou \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1203
+#: ../src/xfdesktop-file-icon-manager.c:1238
 #, c-format
 msgid "Unable to create folder named \"%s\":"
 msgstr "Nie je možné vytvoriť priečinok s názvom \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:1242
-msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
-msgstr "Nie je možné spustiť \"exo-desktop-item-edit\". Táto aplikácia je vyžadovaná pri vytváraní a úpravu spúšťačov a odkazov na ploche."
+#: ../src/xfdesktop-file-icon-manager.c:1277
+msgid ""
+"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
+"edit launchers and links on the desktop."
+msgstr ""
+"Nie je možné spustiť \"exo-desktop-item-edit\". Táto aplikácia je vyžadovaná "
+"pri vytváraní a úpravu spúšťačov a odkazov na ploche."
 
-#: ../src/xfdesktop-file-icon-manager.c:1275
+#: ../src/xfdesktop-file-icon-manager.c:1310
 msgid "Create New Folder"
 msgstr "Vytvoriť nový priečinok"
 
-#: ../src/xfdesktop-file-icon-manager.c:1279
+#: ../src/xfdesktop-file-icon-manager.c:1314
 msgid "New Folder"
 msgstr "Nový priečinok"
 
-#: ../src/xfdesktop-file-icon-manager.c:1280
-#: ../src/xfdesktop-file-icon-manager.c:1371
-#: ../src/xfdesktop-file-icon-manager.c:1382
+#: ../src/xfdesktop-file-icon-manager.c:1315
+#: ../src/xfdesktop-file-icon-manager.c:1406
+#: ../src/xfdesktop-file-icon-manager.c:1417
 msgid "Create"
 msgstr "Vytvoriť"
 
-#: ../src/xfdesktop-file-icon-manager.c:1316
+#: ../src/xfdesktop-file-icon-manager.c:1351
 #, c-format
 msgid "Unable to create file named \"%s\":"
 msgstr "Nie je možné vytvoriť súbor s názvom \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:1319
+#: ../src/xfdesktop-file-icon-manager.c:1354
 msgid "Create File Failed"
 msgstr "Vytvorenie súboru zlyhalo"
 
-#: ../src/xfdesktop-file-icon-manager.c:1358
+#: ../src/xfdesktop-file-icon-manager.c:1393
 #, c-format
 msgid "Create Document from template \"%s\""
 msgstr "Vytvoriť dokument zo šablóny \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1377
+#: ../src/xfdesktop-file-icon-manager.c:1412
 msgid "Create Empty File"
 msgstr "Vytvoriť prázdny súbor"
 
-#: ../src/xfdesktop-file-icon-manager.c:1381
+#: ../src/xfdesktop-file-icon-manager.c:1416
 msgid "New Empty File"
 msgstr "Nový prázdny súbor"
 
-#: ../src/xfdesktop-file-icon-manager.c:1414
+#: ../src/xfdesktop-file-icon-manager.c:1449
 #, c-format
 msgid "Unable to create file \"%s\":"
 msgstr "NIe je možné vytvoriť súbor \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:1415
+#: ../src/xfdesktop-file-icon-manager.c:1450
 msgid "Create Error"
 msgstr "Chyba pri vytváraní"
 
-#: ../src/xfdesktop-file-icon-manager.c:1700
+#: ../src/xfdesktop-file-icon-manager.c:1735
 msgid "_Open all"
 msgstr "_Otvoriť všetko"
 
-#: ../src/xfdesktop-file-icon-manager.c:1716
+#: ../src/xfdesktop-file-icon-manager.c:1751
 msgid "_Open in New Window"
 msgstr "_Otvoriť v novom okne"
 
-#: ../src/xfdesktop-file-icon-manager.c:1718
-#: ../src/xfdesktop-special-file-icon.c:633
-#: ../src/xfdesktop-volume-icon.c:561
+#: ../src/xfdesktop-file-icon-manager.c:1753
+#: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:561
 msgid "_Open"
 msgstr "_Otvoriť"
 
-#: ../src/xfdesktop-file-icon-manager.c:1733
+#: ../src/xfdesktop-file-icon-manager.c:1768
 msgid "Create _Launcher..."
 msgstr "Vytvoriť _spúšťač..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1754
+#: ../src/xfdesktop-file-icon-manager.c:1789
 msgid "Create _URL Link..."
 msgstr "Vytvoriť odkaz _URL..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1771
+#: ../src/xfdesktop-file-icon-manager.c:1806
 msgid "Create _Folder..."
 msgstr "Vytvoriť _priečinok..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1791
+#: ../src/xfdesktop-file-icon-manager.c:1826
 msgid "Create From _Template"
 msgstr "Vytvoriť zo ša_blóny"
 
-#: ../src/xfdesktop-file-icon-manager.c:1825
+#: ../src/xfdesktop-file-icon-manager.c:1860
 msgid "_Empty File"
 msgstr "_Prázdny súbor"
 
-#: ../src/xfdesktop-file-icon-manager.c:1841
+#: ../src/xfdesktop-file-icon-manager.c:1876
 msgid "_Execute"
 msgstr "_Spustiť"
 
-#: ../src/xfdesktop-file-icon-manager.c:1859
+#: ../src/xfdesktop-file-icon-manager.c:1894
 msgid "_Edit Launcher"
 msgstr "_Upraviť spúšťač"
 
-#: ../src/xfdesktop-file-icon-manager.c:1899
+#: ../src/xfdesktop-file-icon-manager.c:1934
 msgid "Open With"
 msgstr "Otvoriť pomocou"
 
-#: ../src/xfdesktop-file-icon-manager.c:1930
+#: ../src/xfdesktop-file-icon-manager.c:1965
 msgid "Open With Other _Application..."
 msgstr "Otvoriť v inej _aplikácii..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2037
+#: ../src/xfdesktop-file-icon-manager.c:2072
 msgid "_Rename..."
 msgstr "_Premenovať..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2055
+#: ../src/xfdesktop-file-icon-manager.c:2090
 msgid "Desktop _Settings..."
 msgstr "Nastavenia plochy..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2065
+#: ../src/xfdesktop-file-icon-manager.c:2100
 #: ../src/xfdesktop-volume-icon.c:610
 msgid "_Properties..."
 msgstr "_Vlastnosti"
 
-#: ../src/xfdesktop-file-icon-manager.c:3304
+#: ../src/xfdesktop-file-icon-manager.c:3339
 #: ../src/xfdesktop-regular-file-icon.c:382
 #, c-format
 msgid "Failed to run \"%s\":"
 msgstr "Zlyhalo spustenie \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:3306
+#: ../src/xfdesktop-file-icon-manager.c:3341
 #: ../src/xfdesktop-regular-file-icon.c:384
 msgid "Run Error"
 msgstr "Chyba pri spustení"
@@ -638,8 +643,7 @@ msgstr "Cieľ odkazu:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:251
 #: ../src/xfdesktop-file-properties-dialog.c:410
-#: ../src/xfdesktop-volume-icon.c:476
-#: ../src/xfdesktop-volume-icon.c:482
+#: ../src/xfdesktop-volume-icon.c:476 ../src/xfdesktop-volume-icon.c:482
 msgid "(unknown)"
 msgstr "(neznámy)"
 
@@ -759,8 +763,12 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "Nie je možné sa pripojiť na službu Kôš Xfce"
 
 #: ../src/xfdesktop-special-file-icon.c:518
-msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
-msgstr "Uistite sa, či máte nainštalovaného správcu súborov podporujúceho službu Kôš Xfce, napríklad aplikáciu Thunar"
+msgid ""
+"Make sure you have a file manager installed that supports the Xfce Trash "
+"service, such as Thunar."
+msgstr ""
+"Uistite sa, či máte nainštalovaného správcu súborov podporujúceho službu Kôš "
+"Xfce, napríklad aplikáciu Thunar"
 
 #: ../src/xfdesktop-special-file-icon.c:651
 msgid "_Empty Trash"
@@ -1159,7 +1167,9 @@ msgstr "Zobraziť ikony _aplikácií v ponuke"
 
 #: ../settings/xfdesktop-settings.glade.h:48
 msgid "Show _window list menu on desktop middle click"
-msgstr "Zobraziť ponuku _zoznam okien pri kliknutí prostredným tlačidlom myši na plochu"
+msgstr ""
+"Zobraziť ponuku _zoznam okien pri kliknutí prostredným tlačidlom myši na "
+"plochu"
 
 #: ../settings/xfdesktop-settings.glade.h:49
 msgid "Show applications menu on _desktop right click"
@@ -1190,8 +1200,10 @@ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr "Určuje \"pravú\" alebo \"spodnú\" farbu farebného prechodu"
 
 #: ../settings/xfdesktop-settings.glade.h:57
-msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr "Určuje jednotnú farbu alebo \"ľavú\" alebo \"pravú\" farbu farebného prechodu"
+msgid ""
+"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr ""
+"Určuje jednotnú farbu alebo \"ľavú\" alebo \"pravú\" farbu farebného prechodu"
 
 #: ../settings/xfdesktop-settings.glade.h:58
 msgid "Specify how the image will be resized to fit the screen"
@@ -1202,8 +1214,11 @@ msgid "Specify the style of the color drawn behind the backdrop image"
 msgstr "Zadajte štýl farby vykreslenej pod obrázkom pozadia"
 
 #: ../settings/xfdesktop-settings.glade.h:60
-msgid "Specify the transparency level for the rounded label drawn behind the icon text"
-msgstr "Zadajte úroveň priehľadnosti zaobleného popisku vykresleného za textom ikony"
+msgid ""
+"Specify the transparency level for the rounded label drawn behind the icon "
+"text"
+msgstr ""
+"Zadajte úroveň priehľadnosti zaobleného popisku vykresleného za textom ikony"
 
 #: ../settings/xfdesktop-settings.glade.h:61
 msgid "St_yle:"
@@ -1247,24 +1262,34 @@ msgstr "_Jeden obrázok"
 
 #~ msgid "gtk-close"
 #~ msgstr "gtk-close"
+
 #~ msgid "gtk-help"
 #~ msgstr "gtk-help"
+
 #~ msgid "Add menu entry"
 #~ msgstr "Pridať položku menu"
+
 #~ msgid "Type:"
 #~ msgstr "Typ:"
+
 #~ msgid "Title"
 #~ msgstr "Titulok"
+
 #~ msgid "Submenu"
 #~ msgstr "Podmenu"
+
 #~ msgid "Launcher"
 #~ msgstr "Spúšťač"
+
 #~ msgid "Separator"
 #~ msgstr "Oddeľovač"
+
 #~ msgid "Quit"
 #~ msgstr "Koniec"
+
 #~ msgid "Command:"
 #~ msgstr "Príkaz:"
+
 #~ msgid "Icon:"
 #~ msgstr "Ikona:"
 
@@ -1279,10 +1304,13 @@ msgstr "_Jeden obrázok"
 #, fuzzy
 #~ msgid "Select icon"
 #~ msgstr "Vybrať ikonu"
+
 #~ msgid "Use startup _notification"
 #~ msgstr "Použiť štartovaciu _notifikáciu"
+
 #~ msgid "Run in _terminal"
 #~ msgstr "Spustiť v _termináli"
+
 #~ msgid "Select command"
 #~ msgstr "Vybrať príkaz"
 
@@ -1293,22 +1321,29 @@ msgstr "_Jeden obrázok"
 #, fuzzy
 #~ msgid "Add external menu entry"
 #~ msgstr "Pridať externé menu"
+
 #~ msgid "File"
 #~ msgstr "Súbor"
+
 #~ msgid "Source:"
 #~ msgstr "Zdroj:"
 
 #, fuzzy
 #~ msgid "Select external menu"
 #~ msgstr "Pridať externé menu"
+
 #~ msgid "Style:"
 #~ msgstr "Štýl:"
+
 #~ msgid "Simple"
 #~ msgstr "Jednoduché"
+
 #~ msgid "Multilevel"
 #~ msgstr "Viacúrovňové"
+
 #~ msgid "_Unique entries only"
 #~ msgstr "Len _unikátne položky"
+
 #~ msgid "Edit menu entry"
 #~ msgstr "Upraviť položku menu"
 
@@ -1323,6 +1358,7 @@ msgstr "_Jeden obrázok"
 #, fuzzy
 #~ msgid "Continue"
 #~ msgstr "Prispievateľ"
+
 #~ msgid "_File"
 #~ msgstr "_Súbor"
 
@@ -1337,6 +1373,7 @@ msgstr "_Jeden obrázok"
 #, fuzzy
 #~ msgid "Open _default menu"
 #~ msgstr "Otvoriť štandardné menu"
+
 #~ msgid "Open default menu"
 #~ msgstr "Otvoriť štandardné menu"
 
@@ -1359,6 +1396,7 @@ msgstr "_Jeden obrázok"
 #, fuzzy
 #~ msgid "Quit Xfce4-Menueditor"
 #~ msgstr "Menu Xfce"
+
 #~ msgid "_Edit"
 #~ msgstr "_Upraviť"
 
@@ -1397,8 +1435,10 @@ msgstr "_Jeden obrázok"
 #, fuzzy
 #~ msgid "Move entry down"
 #~ msgstr "Presunúť aktuálnu položku dole"
+
 #~ msgid "_Help"
 #~ msgstr "_Pomocník"
+
 #~ msgid "_About..."
 #~ msgstr "_O..."
 
@@ -1417,46 +1457,65 @@ msgstr "_Jeden obrázok"
 #, fuzzy
 #~ msgid "Expand all menu entries"
 #~ msgstr "Rozbaliť strom"
+
 #~ msgid "Name"
 #~ msgstr "Názov"
+
 #~ msgid "Command"
 #~ msgstr "Príkaz"
+
 #~ msgid "Hidden"
 #~ msgstr "Skryté"
+
 #~ msgid "Are you sure you want to close the current menu?"
 #~ msgstr "Ste si istý, že chcete zatvoriť aktuálne menu ?"
+
 #~ msgid "Do you want to save before closing the file?"
 #~ msgstr "Chcete uložiť pred zatvorením súboru ?"
+
 #~ msgid "Do you want to save before opening an other menu ?"
 #~ msgstr "Chcete uložiť pred otvorením iného menu ?"
+
 #~ msgid "Ignore modifications"
 #~ msgstr "Ignorovať modifikácie"
+
 #~ msgid "Open menu file"
 #~ msgstr "Otvoriť súborové menu"
+
 #~ msgid "Do you want to save before opening the default menu ?"
 #~ msgstr "Chcete uložiť pred otvorením štandardného menu ?"
 
 #, fuzzy
 #~ msgid "Save menu file as"
 #~ msgstr "Otvoriť súborové menu"
+
 #~ msgid "Do you want to save before closing the menu ?"
 #~ msgstr "Chcete uložiť pred zatvorením menu ?"
+
 #~ msgid "quit"
 #~ msgstr "ukončiť"
+
 #~ msgid "--- separator ---"
 #~ msgstr "--- oddeľovač ---"
+
 #~ msgid "--- include ---"
 #~ msgstr "--- obsahuje ---"
+
 #~ msgid "system"
 #~ msgstr "systém"
+
 #~ msgid "Do you want to move the item into the submenu?"
 #~ msgstr "Chcete presunúť položku do podmenu ?"
+
 #~ msgid "A menu editor for Xfce4"
 #~ msgstr "Editor menu pre Xfce4"
+
 #~ msgid "Contributor"
 #~ msgstr "Prispievateľ"
+
 #~ msgid "Icon designer"
 #~ msgstr "Návrhár ikon"
+
 #~ msgid "You have modified the menu, do you want to save it before quitting ?"
 #~ msgstr "Modifikovali ste menu, chcete ho uložiť pred ukončením ?"
 
@@ -1471,6 +1530,7 @@ msgstr "_Jeden obrázok"
 #, fuzzy
 #~ msgid "Xfce 4 Desktop Settings"
 #~ msgstr "Nastavenia plochy"
+
 #~ msgid ""
 #~ "Could not save file %s: %s\n"
 #~ "\n"
@@ -1481,50 +1541,71 @@ msgstr "_Jeden obrázok"
 #~ "\n"
 #~ "Prosím vyberte inú lokáciu alebo stlačte tlačítko zrušiť v dialógovom "
 #~ "okne k zahodeniu vašich zmien"
+
 #~ msgid "backdrops.list"
 #~ msgstr "backdrops.list"
+
 #~ msgid "Select backdrop image or list file"
 #~ msgstr "Vyberte obrázok pozadia alebo súbor zo zoznamu"
+
 #~ msgid "List Files (*.list)"
 #~ msgstr "Zoznam súborov (*.list)"
+
 #~ msgid "_Edit list..."
 #~ msgstr "_Upraviť zoznam..."
+
 #~ msgid "_New list..."
 #~ msgstr "_Nový zoznam..."
+
 #~ msgid "S_tyle:"
 #~ msgstr "Š_týl:"
+
 #~ msgid "Auto"
 #~ msgstr "Automaticky"
+
 #~ msgid "Centered"
 #~ msgstr "V strede"
+
 #~ msgid "Tiled"
 #~ msgstr "Dlaždicovať"
+
 #~ msgid "Stretched"
 #~ msgstr "Roztiahnuť"
+
 #~ msgid "Scaled"
 #~ msgstr "Škálovať"
 
 #, fuzzy
 #~ msgid "Desktop Preferences"
 #~ msgstr "Nastavenia plochy"
+
 #~ msgid "Color"
 #~ msgstr "Farba"
+
 #~ msgid "_Color Style:"
 #~ msgstr "Štýl _farby:"
+
 #~ msgid "Solid Color"
 #~ msgstr "Plná farba"
+
 #~ msgid "Horizontal Gradient"
 #~ msgstr "Horizontálne stupňovať"
+
 #~ msgid "Vertical Gradient"
 #~ msgstr "Vertikálne stupňovať"
+
 #~ msgid "Image"
 #~ msgstr "Obrázok"
+
 #~ msgid "Show _Image"
 #~ msgstr "Ukázať _obrázok"
+
 #~ msgid "_File:"
 #~ msgstr "_Súbor:"
+
 #~ msgid "Select backdrop image file"
 #~ msgstr "Vybrať súbor s obrázkom pre pozadie"
+
 #~ msgid "List file"
 #~ msgstr "Zoznam súborov"
 
@@ -1583,28 +1664,39 @@ msgstr "_Jeden obrázok"
 #, fuzzy
 #~ msgid "Are sure you want to quit?"
 #~ msgstr "Ste si istý, že chcete zatvoriť aktuálne menu ?"
+
 #~ msgid "The command doesn't exist !"
 #~ msgstr "Príkaz neexistuje !"
+
 #~ msgid "All fields must be filled to add an item."
 #~ msgstr "Pre pridanie položky musia byť vyplnené všetky polia."
+
 #~ msgid "The 'Name' field is required."
 #~ msgstr "Pole 'Názov' musí byť vyplnené."
+
 #~ msgid "The 'Source' field is required."
 #~ msgstr "Pole 'Zdroj' musí byť vyplnené."
+
 #~ msgid "Separators cannot be edited"
 #~ msgstr "Oddeľovač nemôže byť upravovaný"
+
 #~ msgid "File %s doesn't exist !"
 #~ msgstr "Súbor %s neexistuje !"
+
 #~ msgid "Do you want to move the item into the parent menu?"
 #~ msgstr "Chcete presunúť položku do rodičovského menu ?"
+
 #~ msgid "Edit"
 #~ msgstr "Upraviť"
+
 #~ msgid "Add an external menu..."
 #~ msgstr "Pridať externé menu..."
+
 #~ msgid "Open an Xfce4 menu file"
 #~ msgstr "Otvoriť súborové menu Xfce4"
+
 #~ msgid "Save current menu"
 #~ msgstr "Uložiť aktuálne menu"
+
 #~ msgid "Delete the current entry"
 #~ msgstr "Odstrániť aktuálnu položku"
-
