@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: xfce-i18n@xfce.org\n"
 "POT-Creation-Date: 2009-04-20 14:33+0200\n"
-"PO-Revision-Date: 2009-04-23 13:10+0100\n"
+"PO-Revision-Date: 2009-09-19 20:01+0100\n"
 "Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -139,7 +139,7 @@ msgstr "jerome.guelfucci@gmail.com"
 
 #: ../doc/C/xfdesktop.xml.in:74(releaseinfo)
 msgid "This manual describes <application>@PACKAGE_NAME@</application> version @PACKAGE_VERSION@."
-msgstr ""
+msgstr "Este manual describe a versión @PACKAGE_VERSION@ de <application>@PACKAGE_NAME@</application>."
 
 #: ../doc/C/xfdesktop.xml.in:80(title)
 msgid "Introduction"
@@ -151,12 +151,11 @@ msgstr ""
 
 #: ../doc/C/xfdesktop.xml.in:90(para)
 msgid "The <application>@PACKAGE_NAME@</application> package installs a settings dialog for use with the <emphasis>Xfce 4 Settings Manager</emphasis>. From this dialog you can change the backdrop image and color and change settings for the menu and the window list."
-msgstr ""
+msgstr "O paquete <application>@PACKAGE_NAME@</application> instala un diálogo de configuración que usa o <emphasis>Xestor de configuración de Xfce 4</emphasis>. Dende este diálogo pode cambiar a configuración da imaxe e maila cor de fondo e tamén a configuración do menú e da lista de ventás."
 
 #: ../doc/C/xfdesktop.xml.in:99(title)
-#, fuzzy
 msgid "Backdrop"
-msgstr "_Eliminar o telón de fondo"
+msgstr "Imaxe de fondo"
 
 #: ../doc/C/xfdesktop.xml.in:101(para)
 msgid "<application>@PACKAGE_NAME@</application> is responsible for drawing the desktop's backdrop (sometimes called \"wallpaper\") image. There are various options for setting a backdrop image. The final picture seen on the monitor is composed of a solid color or gradient, with an image or photo (with optional transparency) composited on top of the color or gradient. This allows for some interesting effects using semi-transparent images on top of various color arrangements."
@@ -168,7 +167,7 @@ msgstr "Iconas"
 
 #: ../doc/C/xfdesktop.xml.in:115(para)
 msgid "In addition to drawing the backdrop image, <application>@PACKAGE_NAME@</application> can draw icons on the desktop."
-msgstr ""
+msgstr "Ademais de mostrar a imaxe de fondo, <application>@PACKAGE_NAME@</application> pode mostrar iconas no escritorio."
 
 #: ../doc/C/xfdesktop.xml.in:121(title)
 #, fuzzy
@@ -182,16 +181,15 @@ msgstr ""
 #: ../doc/C/xfdesktop.xml.in:133(title)
 #, fuzzy
 msgid "File/Launcher Icons"
-msgstr "Texto debaixo das iconas"
+msgstr "Iconas de tipo de ficheiro"
 
 #: ../doc/C/xfdesktop.xml.in:135(para)
 msgid "<application>@PACKAGE_NAME@</application> can also display on the desktop the contents of the <filename>$XDG_DESKTOP_DIR</filename> folder, which can be set in the <filename>$XDG_CONFIG_HOME/user-dirs.dirs</filename> file (if you do not have this file, it will use <filename>$HOME/Desktop</filename>). Files can be arranged, copied, moved, and linked to and from a file manager, and opened using preferred applications. Application and URL launchers can also be created on the desktop. The file icon view is modeled to have a similar look and feel as the <ulink url=\"http://thunar.xfce.org/\" type=\"http\">Thunar</ulink> file manager."
 msgstr ""
 
 #: ../doc/C/xfdesktop.xml.in:152(title)
-#, fuzzy
 msgid "The Desktop Menu"
-msgstr "Disposición do menú"
+msgstr "O menú de escritorio"
 
 #: ../doc/C/xfdesktop.xml.in:154(para)
 msgid "A right-click on the desktop backdrop opens a menu that allows you to open a Thunar window in the Desktop directory, to create launchers, URL links, folders and files from templates. It is also possible to open the Desktop Settings and the Properties window of the Desktop directory and to start many of the applications found on your system."
@@ -199,9 +197,8 @@ msgstr ""
 
 #: ../doc/C/xfdesktop.xml.in:163(title)
 #: ../doc/C/xfdesktop.xml.in:455(term)
-#, fuzzy
 msgid "Desktop Menu"
-msgstr "Disposición do menú"
+msgstr "Menú de escritorio"
 
 #: ../doc/C/xfdesktop.xml.in:170(phrase)
 msgid "Shows <application>@PACKAGE_NAME@</application> right-click mouse menu."
@@ -220,9 +217,8 @@ msgid "Further customisation can be achived by creating <ulink url=\"http://stan
 msgstr ""
 
 #: ../doc/C/xfdesktop.xml.in:207(title)
-#, fuzzy
 msgid "The Window List Menu"
-msgstr "Lista de menú (obsoleto)"
+msgstr "O menú de lista de fiestras"
 
 #: ../doc/C/xfdesktop.xml.in:209(para)
 msgid "A middle-click on the desktop backdrop shows a list of all opened windows ordered by workspace. It also allows you to add or remove a workspace."
@@ -230,18 +226,16 @@ msgstr ""
 
 #: ../doc/C/xfdesktop.xml.in:216(title)
 #: ../doc/C/xfdesktop.xml.in:475(term)
-#, fuzzy
 msgid "Window List Menu"
-msgstr "Lista de menú (obsoleto)"
+msgstr "Menú de lista de fiestras"
 
 #: ../doc/C/xfdesktop.xml.in:223(phrase)
 msgid "Shows <application>@PACKAGE_NAME@</application> middle-click mouse menu."
 msgstr ""
 
 #: ../doc/C/xfdesktop.xml.in:231(title)
-#, fuzzy
 msgid "Desktop Settings"
-msgstr "Configuracións de escritorio"
+msgstr "Configuración de escritorio"
 
 #. Needs to be changed once xfce4-settings is documented
 #: ../doc/C/xfdesktop.xml.in:234(para)
@@ -249,22 +243,20 @@ msgid "You can start the Desktop settings dialog by clicking on the \"Desktop\" 
 msgstr ""
 
 #: ../doc/C/xfdesktop.xml.in:242(title)
-#, fuzzy
 msgid "Background Tab"
-msgstr "separador de páxina"
+msgstr "Lapela fondo"
 
 #: ../doc/C/xfdesktop.xml.in:244(para)
 msgid "The Background tab allows you to set various options related to drawing the desktop backdrop picture."
-msgstr ""
+msgstr "A lapela Fondo permítelle definir varias opcións relacionadas co debuxo da imaxe de fondo do escritorio."
 
 #: ../doc/C/xfdesktop.xml.in:250(title)
-#, fuzzy
 msgid "Desktop Settings, Background Tab"
-msgstr "Definir como fondo de _escritorio"
+msgstr "Configuración de escritorio, lapela Fondo"
 
 #: ../doc/C/xfdesktop.xml.in:258(phrase)
 msgid "Shows the Background tab of the Desktop Settings dialog"
-msgstr ""
+msgstr "Mostra a lapela Fondo do diálogo de configuración do escritorio"
 
 #: ../doc/C/xfdesktop.xml.in:268(term)
 msgid "Image"
@@ -272,7 +264,7 @@ msgstr "Imaxe"
 
 #: ../doc/C/xfdesktop.xml.in:271(para)
 msgid "Select the <emphasis>\"None\"</emphasis> option if you want <application>@PACKAGE_NAME@</application> to ignore the backdrop image and only use the selected colors."
-msgstr ""
+msgstr "Seleccione a opción <emphasis>\"Ningún\"</emphasis> se desexa que <application>@PACKAGE_NAME@</application> ignore a imaxe de fondo e só use as cores seleccionadas."
 
 #: ../doc/C/xfdesktop.xml.in:277(para)
 msgid "Select the <emphasis>\"Single image\"</emphasis> option if you want <application>@PACKAGE_NAME@</application> to draw a backdrop image."
@@ -312,7 +304,7 @@ msgstr "Cores"
 
 #: ../doc/C/xfdesktop.xml.in:351(para)
 msgid "The color style is one of four options in dropping list: a solid color, horizontal gradient, vertical gradient, or transparent."
-msgstr ""
+msgstr "O estilo de cor é unha das catro opcións da lista despregable: cor sólida, degradado horizontal, degradado vertical, ou transparente."
 
 #: ../doc/C/xfdesktop.xml.in:357(para)
 msgid "The <emphasis>\"Transparent\"</emphasis> option, when you use a colored background without backdrop image, allows you to see the windows that are under the transparent desktop window. This requires an activated compositor."
@@ -327,9 +319,8 @@ msgid "Select Background Color"
 msgstr "Seleccione a cor de fondo"
 
 #: ../doc/C/xfdesktop.xml.in:383(phrase)
-#, fuzzy
 msgid "Shows the color selection dialog"
-msgstr "O título da caixa de diálogo de selección da cor"
+msgstr "Mostra o diálogo de selección de cor"
 
 #: ../doc/C/xfdesktop.xml.in:390(listitem)
 msgid "You can use the colored ring with a triangle inside to select the color you want from the outer ring, then select the darkness or lightness of that color using the inner triangle. Corresponding values of brightness, deepness, and amount of red, green and blue light in the color appear through the entries on the right side of the window."
@@ -345,7 +336,7 @@ msgstr "\"Nome da cor\""
 
 #: ../doc/C/xfdesktop.xml.in:404(listitem)
 msgid "You can enter an HTML-style hexadecimal color value, or simply a color name, in the <placeholder-1/> entry."
-msgstr ""
+msgstr "Pode introducir un valor de cor hexadecimal do estilo de HTML, ou simplemente un nome de cor na entrada <placeholder-1/>."
 
 #: ../doc/C/xfdesktop.xml.in:411(para)
 msgid "The selected colors will fill the entire root window, and will remain visible through a transparent backdrop image."
@@ -360,18 +351,16 @@ msgid "The two sliders allow you to adjust the brightness and the saturation of 
 msgstr ""
 
 #: ../doc/C/xfdesktop.xml.in:433(title)
-#, fuzzy
 msgid "Menus Tab"
-msgstr "separador de páxina"
+msgstr "Lapela Menús"
 
 #: ../doc/C/xfdesktop.xml.in:436(title)
-#, fuzzy
 msgid "Desktop Settings, Menus Tab"
-msgstr "Restaurar todos os menús coa configuración orixinal?"
+msgstr "Configuración de escritorio, lapela Menús"
 
 #: ../doc/C/xfdesktop.xml.in:445(phrase)
 msgid "Shows the Menus tab of the Desktop Settings dialog"
-msgstr ""
+msgstr "Mostra a lapela Menús do diálogo de configuración do escritorio"
 
 #: ../doc/C/xfdesktop.xml.in:458(para)
 msgid "If you check the <emphasis>\"Show applications menu on desktop right click\"</emphasis>, the <link linkend=\"xfdesktop-menu\">applications menu</link> will be shown when right clicking on the desktop."
@@ -379,7 +368,7 @@ msgstr ""
 
 #: ../doc/C/xfdesktop.xml.in:467(para)
 msgid "The <emphasis>\"Show application icons in menu\"</emphasis> allows you to show or hide icons in the menu."
-msgstr ""
+msgstr "<emphasis>\"Mostrar as iconas das aplicacións no menú\"</emphasis> permítelle mostrar ou ocultar as iconas no menú."
 
 #: ../doc/C/xfdesktop.xml.in:478(para)
 msgid "If you check the <emphasis>\"Show window list menu on desktop middle click\"</emphasis> option, the <link linkend=\"xfdesktop-window-list\">window list menu</link> will be shown when middle clicking on the desktop."
@@ -402,18 +391,17 @@ msgid "The <emphasis>\"Show sticky windows only in active workspace\"</emphasis>
 msgstr ""
 
 #: ../doc/C/xfdesktop.xml.in:537(title)
-#, fuzzy
 msgid "Icons Tab"
-msgstr "separador de páxina"
+msgstr "Lapela Iconas"
 
 #: ../doc/C/xfdesktop.xml.in:540(title)
-#, fuzzy
 msgid "Desktop Settings, Icons Tab"
-msgstr "Configuracións que controlan a aparencia e o comportamento do escritorio"
+msgstr "Configuración de escritorio, lapela Iconas"
 
 #: ../doc/C/xfdesktop.xml.in:549(phrase)
+#, fuzzy
 msgid "Shows the Icons tab of the Desktop Settings dialog"
-msgstr ""
+msgstr "Mostra a lapela Fondo do diálogo de configuración do escritorio"
 
 #: ../doc/C/xfdesktop.xml.in:559(term)
 msgid "Appearance"
@@ -440,18 +428,16 @@ msgid "<emphasis>Home</emphasis> stands for your home folder, that is to say, <f
 msgstr ""
 
 #: ../doc/C/xfdesktop.xml.in:613(title)
-#, fuzzy
 msgid "Hidden Options"
-msgstr "Opcións de configuración:"
+msgstr "Opcións ocultas"
 
 #: ../doc/C/xfdesktop.xml.in:615(para)
 msgid "There are a number of hidden options that cannot be set by the Xfce Settings Manager. These require use of a text editor."
-msgstr ""
+msgstr "Hai un certo número de opcións ocultas que non se poden definir usando o Xestor de configuración de Xfce. A modificación de ditas opcións require o uso dun editor de texto."
 
 #: ../doc/C/xfdesktop.xml.in:622(term)
-#, fuzzy
 msgid "Icon View Text Appearance"
-msgstr "Texto da indicación da icona primaria"
+msgstr "Aparencia do texto da vista de icona"
 
 #: ../doc/C/xfdesktop.xml.in:624(para)
 msgid "The colors of the icon text and the icon text background, as well as the opacity of the icon text background, can be customized by putting directives simiar to the following in your <filename>~/.gtkrc-2.0</filename> file:"
@@ -466,9 +452,8 @@ msgid "The \"NORMAL\" entries set the color for the regular, unselected state. T
 msgstr ""
 
 #: ../doc/C/xfdesktop.xml.in:665(title)
-#, fuzzy
 msgid "Miscellaneous"
-msgstr "Misceláneo"
+msgstr "Miscelánea"
 
 #: ../doc/C/xfdesktop.xml.in:667(para)
 msgid "You can open the menu or window list from the commandline as well. This can be useful for keyboard shortcuts. To open the menu run the command <application>@PACKAGE_NAME@</application><application>--menu</application>, and for the windowlist use <application>@PACKAGE_NAME@</application><application>--windowlist</application>. To cause the current running instance to quit, run <application>@PACKAGE_NAME@</application><application>--quit</application>."
@@ -480,19 +465,19 @@ msgstr "Acerca de <application>@PACKAGE_NAME@</application>"
 
 #: ../doc/C/xfdesktop.xml.in:680(para)
 msgid "<application>@PACKAGE_NAME@</application> was written by Brian Tarricone (<email>kelnos@xfce.org</email>), Jasper Huijsmans (<email>jasper@xfce.org</email>), and Benedikt Meurer (<email>benny@xfce.org</email>). For more information, please visit the <ulink url=\"http://www.xfce.org\" type=\"http\">Xfce website</ulink>."
-msgstr ""
+msgstr "<application>@PACKAGE_NAME@</application> foi escrito por Brian Tarricone (<email>kelnos@xfce.org</email>), Jasper Huijsmans (<email>jasper@xfce.org</email>), e Benedikt Meurer (<email>benny@xfce.org</email>). Para obter máis información visite o <ulink url=\"http://www.xfce.org\" type=\"http\">sitio web de Xfce</ulink>."
 
 #: ../doc/C/xfdesktop.xml.in:689(para)
 msgid "To report a bug or make a suggestion regarding this application or this manual, use the bug tracking system at <ulink url=\"http://bugzilla.xfce.org/\" type=\"http\">http://bugzilla.xfce.org/</ulink>."
-msgstr ""
+msgstr "Para comunicar un erro ou facer unha suxestión sobre esta aplicación ou este manual, use o sistema de seguimento de erros en <ulink url=\"http://bugzilla.xfce.org/\" type=\"http\">http://bugzilla.xfce.org/</ulink>."
 
 #: ../doc/C/xfdesktop.xml.in:696(para)
 msgid "If you have questions about the use or installation of this package, please ask on the <ulink url=\"http://foo-projects.org/mailman/listinfo/xfce\" type=\"http\">xfce</ulink> mailing list. Development discussion takes place on the <ulink url=\"http://foo-projects.org/mailman/listinfo/xfce4-dev\" type=\"http\">xfce4-dev</ulink> mailing list."
-msgstr ""
+msgstr "Se ten preguntas sobre o uso ou instalación deste paquete, pregunte na rolda de correo <ulink url=\"http://foo-projects.org/mailman/listinfo/xfce\" type=\"http\">xfce</ulink>. A discusión do desenvolvemento realízase na rolda de correo <ulink url=\"http://foo-projects.org/mailman/listinfo/xfce4-dev\" type=\"http\">xfce4-dev</ulink>."
 
 #: ../doc/C/xfdesktop.xml.in:706(para)
 msgid "This program is distributed under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version."
-msgstr ""
+msgstr "Este programa distribúese baixo os termos da Licenza Pública Xeral de GNU tal como a publicou a Free Software Foundation; xa sexa a versión 2 de dita Licenza, ou (se o desexa) calquera versión posterior."
 
 #: ../doc/C/xfdesktop.xml.in:712(para)
 msgid "You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA."
