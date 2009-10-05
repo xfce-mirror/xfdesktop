@@ -1,7 +1,8 @@
 bin_PROGRAMS = xfdesktop-settings
 
 xfdesktop_settings_SOURCES = \
-	xfdesktop-settings_glade.h \
+	xfdesktop-settings-appearance-frame-ui.h \
+	xfdesktop-settings-ui.h \
 	main.c
 
 xfdesktop_settings_CFLAGS =						\
@@ -11,7 +12,6 @@ xfdesktop_settings_CFLAGS =						\
 	$(LIBEXO_CFLAGS)							\
 	$(LIBXFCE4UI_CFLAGS)						\
 	$(XFCONF_CFLAGS)							\
-	$(LIBGLADE_CFLAGS)							\
 	$(GTHREAD_CFLAGS)							\
 	-DG_LOG_DOMAIN=\"xfdesktop-settings\"		\
 	-DEXO_API_SUBJECT_TO_CHANGE					\
@@ -23,7 +23,6 @@ xfdesktop_settings_LDADD =						\
 	$(top_builddir)/common/libxfdesktop.la		\
 	$(XFCONF_LIBS)								\
 	$(LIBXFCE4UI_LIBS)							\
-	$(LIBGLADE_LIBS)							\
 	$(LIBEXO_LIBS)								\
 	$(GTHREAD_LIBS)
 
@@ -41,10 +40,13 @@ desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 if MAINTAINER_MODE
 
 BUILT_SOURCES = \
-xfdesktop-settings_glade.h
+	xfdesktop-settings-appearance-frame-ui.h \
+	xfdesktop-settings-ui.h
 
-xfdesktop-settings_glade.h: $(srcdir)/xfdesktop-settings.glade
-	exo-csource --static --name=xfdesktop_settings_glade $< >$@
+SUFFIXES: .ui
+
+%-ui.h: $(srcdir)/%-ui.xml Makefile
+	exo-csource --static --name=`basename $< .xml | sed -e 's/-/_/g'`  $< >$@
 
 endif
 

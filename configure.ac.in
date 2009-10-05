@@ -76,7 +76,6 @@ XDT_CHECK_PACKAGE([LIBXFCE4SMCLIENT_PRIVATE], [libxfce4smclient-private-1],
                   [libxfce4ui_minimum_version])
 XDT_CHECK_PACKAGE([LIBWNCK], [libwnck-1.0], [wnck_minimum_version])
 XDT_CHECK_PACKAGE([XFCONF], [libxfconf-0], [xfconf_minimum_version])
-XDT_CHECK_PACKAGE([LIBGLADE], [libglade-2.0], [2.0.0])
 
 dnl do we want desktop icons at all?
 AC_ARG_ENABLE([desktop-icons],

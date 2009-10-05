@@ -41,7 +41,6 @@
 
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <gtk/gtk.h>
-#include <glade/glade.h>
 
 #include <libxfce4util/libxfce4util.h>
 #include <xfconf/xfconf.h>
@@ -52,7 +51,8 @@
 #endif
 
 #include "xfdesktop-common.h"
-#include "xfdesktop-settings_glade.h"
+#include "xfdesktop-settings-ui.h"
+#include "xfdesktop-settings-appearance-frame-ui.h"
 
 #define PREVIEW_HEIGHT  48
 
@@ -254,7 +254,7 @@ cb_special_icon_toggled(GtkCellRendererToggle *render, gchar *path, gpointer use
 }
 
 static void
-setup_special_icon_list(GladeXML *gxml,
+setup_special_icon_list(GtkBuilder *gxml,
                         XfconfChannel *channel)
 {
     GtkWidget *treeview;
@@ -308,7 +308,7 @@ setup_special_icon_list(GladeXML *gxml,
             g_object_unref(G_OBJECT(pix));
     }
 
-    treeview = glade_xml_get_widget(gxml, "treeview_default_icons");
+    treeview = GTK_WIDGET(gtk_builder_get_object(gxml, "treeview_default_icons"));
     g_object_set_data(G_OBJECT(treeview), "xfconf-channel", channel);
     col = gtk_tree_view_column_new();
     gtk_tree_view_append_column(GTK_TREE_VIEW(treeview), col);
@@ -1198,22 +1198,20 @@ xfdesktop_settings_setup_image_treeview(AppearancePanel *panel)
 }
 
 static GtkWidget *
-xfdesktop_settings_dialog_new(GladeXML *main_gxml,
+xfdesktop_settings_dialog_new(GtkBuilder *main_gxml,
                               XfconfChannel *channel)
 {
     gint i, j, nmonitors, nscreens;
     GtkWidget *dialog, *appearance_container, *chk_custom_font_size,
               *spin_font_size, *color_style_widget, *w, *box;
 
-    dialog = glade_xml_get_widget(main_gxml, "prefs_dialog");
-    appearance_container = glade_xml_get_widget(main_gxml,
-                                                "notebook_screens");
-    gtk_widget_destroy(glade_xml_get_widget(main_gxml,
-                                            "alignment_settings"));
+    dialog = GTK_WIDGET(gtk_builder_get_object(main_gxml, "prefs_dialog"));
+    appearance_container = GTK_WIDGET(gtk_builder_get_object(main_gxml,
+                                                             "notebook_screens"));
 
-    chk_custom_font_size = glade_xml_get_widget(main_gxml,
-                                                "chk_custom_font_size");
-    spin_font_size = glade_xml_get_widget(main_gxml, "spin_font_size");
+    chk_custom_font_size = GTK_WIDGET(gtk_builder_get_object(main_gxml,
+                                                             "chk_custom_font_size"));
+    spin_font_size = GTK_WIDGET(gtk_builder_get_object(main_gxml, "spin_font_size"));
 
     g_signal_connect(G_OBJECT(chk_custom_font_size), "toggled",
                      G_CALLBACK(cb_xfdesktop_chk_custom_font_size_toggled),
@@ -1233,9 +1231,10 @@ xfdesktop_settings_dialog_new(GladeXML *main_gxml,
 
         for(j = 0; j < nmonitors; ++j) {
             gchar buf[1024];
-            GladeXML *appearance_gxml;
+            GtkBuilder *appearance_gxml;
             AppearancePanel *panel = g_new0(AppearancePanel, 1);
             GtkWidget *appearance_settings, *appearance_label;
+            GError *error = NULL;
 
             panel->channel = channel;
             panel->screen = i;
@@ -1269,11 +1268,21 @@ xfdesktop_settings_dialog_new(GladeXML *main_gxml,
                     g_snprintf(buf, sizeof(buf), _("Monitor %d"), j+1);
             }
 
-            appearance_gxml = glade_xml_new_from_buffer(xfdesktop_settings_glade,
-                                                        xfdesktop_settings_glade_length,
-                                                        "alignment_settings", NULL);
-            appearance_settings = glade_xml_get_widget(appearance_gxml,
-                                                       "alignment_settings");
+            appearance_gxml = gtk_builder_new();
+            if(!gtk_builder_add_from_string(appearance_gxml,
+                                            xfdesktop_settings_appearance_frame_ui,
+                                            xfdesktop_settings_appearance_frame_ui_length,
+                                            &error))
+            {
+                g_printerr("Failed to parse appearance settings UI description: %s\n",
+                           error->message);
+                g_error_free(error);
+                exit(1);
+            }
+
+            appearance_settings = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
+                                                                    "alignment_settings"));
+
             appearance_label = gtk_label_new_with_mnemonic(buf);
             gtk_widget_show(appearance_label);
 
@@ -1283,29 +1292,29 @@ xfdesktop_settings_dialog_new(GladeXML *main_gxml,
             /* Connect xfconf bindings */
             g_snprintf(buf, sizeof(buf), PER_SCREEN_PROP_FORMAT "/brightness",
                        i, j);
-            panel->brightness_slider = glade_xml_get_widget(appearance_gxml,
-                                                            "slider_brightness");
+            panel->brightness_slider = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
+                                                                         "slider_brightness"));
             xfconf_g_property_bind(channel, buf, G_TYPE_INT,
                                    G_OBJECT(gtk_range_get_adjustment(GTK_RANGE(panel->brightness_slider))),
                                    "value");
 
             g_snprintf(buf, sizeof(buf), PER_SCREEN_PROP_FORMAT "/saturation",
                        i, j);
-            panel->saturation_slider = glade_xml_get_widget(appearance_gxml,
-                                                            "slider_saturation");
+            panel->saturation_slider = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
+                                                                         "slider_saturation"));
             xfconf_g_property_bind(channel, buf, G_TYPE_DOUBLE,
                                    G_OBJECT(gtk_range_get_adjustment(GTK_RANGE(panel->saturation_slider))),
                                    "value");
 
-            w = glade_xml_get_widget(appearance_gxml, "combo_style");
+            w = GTK_WIDGET(gtk_builder_get_object(appearance_gxml, "combo_style"));
             gtk_combo_box_set_active(GTK_COMBO_BOX(w), 0);
             g_snprintf(buf, sizeof(buf), PER_SCREEN_PROP_FORMAT "/image-style",
                        i, j);
             xfconf_g_property_bind(channel, buf, G_TYPE_INT,
                                    G_OBJECT(w), "active");
 
-            color_style_widget = glade_xml_get_widget(appearance_gxml,
-                                                      "combo_colors");
+            color_style_widget = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
+                                                                   "combo_colors"));
             gtk_combo_box_set_active(GTK_COMBO_BOX(color_style_widget), 0);
             g_snprintf(buf, sizeof(buf), PER_SCREEN_PROP_FORMAT "/color-style",
                        i, j);
@@ -1315,16 +1324,16 @@ xfdesktop_settings_dialog_new(GladeXML *main_gxml,
                              G_CALLBACK(cb_xfdesktop_combo_color_changed),
                              panel);
 
-            panel->color1_btn = glade_xml_get_widget(appearance_gxml,
-                                                     "color1_btn");
+            panel->color1_btn = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
+                                                                  "color1_btn"));
             g_snprintf(buf, sizeof(buf), PER_SCREEN_PROP_FORMAT "/color1",
                        i, j);
             xfconf_g_property_bind_gdkcolor(channel, buf,
                                             G_OBJECT(panel->color1_btn),
                                             "color");
 
-            panel->color2_btn = glade_xml_get_widget(appearance_gxml,
-                                                     "color2_btn");
+            panel->color2_btn = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
+                                                                  "color2_btn"));
             g_snprintf(buf, sizeof(buf), PER_SCREEN_PROP_FORMAT "/color2",
                        i, j);
             xfconf_g_property_bind_gdkcolor(channel, buf,
@@ -1334,37 +1343,37 @@ xfdesktop_settings_dialog_new(GladeXML *main_gxml,
             cb_xfdesktop_combo_color_changed(GTK_COMBO_BOX(color_style_widget),
                                              panel);
 
-            panel->frame_image_list = glade_xml_get_widget(appearance_gxml,
-                                                           "frame_image_list");
+            panel->frame_image_list = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
+                                                                        "frame_image_list"));
 
-            panel->image_treeview = glade_xml_get_widget(appearance_gxml,
-                                                         "treeview_imagelist");
+            panel->image_treeview = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
+                                                                      "treeview_imagelist"));
             xfdesktop_settings_setup_image_treeview(panel);
 
-            panel->btn_plus = glade_xml_get_widget(appearance_gxml, "btn_plus");
+            panel->btn_plus = GTK_WIDGET(gtk_builder_get_object(appearance_gxml, "btn_plus"));
             g_signal_connect(G_OBJECT(panel->btn_plus), "clicked",
                              G_CALLBACK(add_file_button_clicked), panel);
 
-            panel->btn_minus = glade_xml_get_widget(appearance_gxml,
-                                                    "btn_minus");
+            panel->btn_minus = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
+                                                                 "btn_minus"));
             g_signal_connect(G_OBJECT(panel->btn_minus), "clicked",
                              G_CALLBACK(remove_file_button_clicked), panel);
 
-            panel->btn_newlist = glade_xml_get_widget(appearance_gxml,
-                                                      "btn_newlist");
+            panel->btn_newlist = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
+                                                                   "btn_newlist"));
             g_signal_connect(G_OBJECT(panel->btn_newlist), "clicked",
                              G_CALLBACK(newlist_button_clicked), panel);
 
-            panel->radio_singleimage = glade_xml_get_widget(appearance_gxml,
-                                                            "radio_singleimage");
+            panel->radio_singleimage = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
+                                                                         "radio_singleimage"));
             g_signal_connect(G_OBJECT(panel->radio_singleimage), "toggled",
                              G_CALLBACK(cb_image_type_radio_clicked), panel);
-            panel->radio_imagelist = glade_xml_get_widget(appearance_gxml,
-                                                          "radio_imagelist");
+            panel->radio_imagelist = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
+                                                                       "radio_imagelist"));
             g_signal_connect(G_OBJECT(panel->radio_imagelist), "toggled",
                              G_CALLBACK(cb_image_type_radio_clicked), panel);
-            panel->radio_none = glade_xml_get_widget(appearance_gxml,
-                                                     "radio_none");
+            panel->radio_none = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
+                                                                  "radio_none"));
             g_signal_connect(G_OBJECT(panel->radio_none), "toggled",
                              G_CALLBACK(cb_image_type_radio_clicked), panel);
             g_snprintf(buf, sizeof(buf),
@@ -1398,60 +1407,57 @@ xfdesktop_settings_dialog_new(GladeXML *main_gxml,
         }
     }
 
-    w = glade_xml_get_widget(main_gxml, "chk_show_desktop_menu");
+    w = GTK_WIDGET(gtk_builder_get_object(main_gxml, "chk_show_desktop_menu"));
     xfconf_g_property_bind(channel, SHOW_DESKTOP_MENU_PROP, G_TYPE_BOOLEAN,
                            G_OBJECT(w), "active");
-    box = glade_xml_get_widget(main_gxml, "box_menu_subopts");
+    box = GTK_WIDGET(gtk_builder_get_object(main_gxml, "box_menu_subopts"));
     g_signal_connect(G_OBJECT(w), "toggled",
                      G_CALLBACK(suboptions_set_sensitive), box);
     suboptions_set_sensitive(GTK_TOGGLE_BUTTON(w), box);
 
     xfconf_g_property_bind(channel, DESKTOP_MENU_SHOW_ICONS_PROP,
                            G_TYPE_BOOLEAN,
-                           G_OBJECT(glade_xml_get_widget(main_gxml,
-                                                         "chk_menu_show_app_icons")),
+                           G_OBJECT(GTK_WIDGET(gtk_builder_get_object(main_gxml,
+                                                                      "chk_menu_show_app_icons"))),
                            "active");
 
-    w = glade_xml_get_widget(main_gxml, "chk_show_winlist_menu");
+    w = GTK_WIDGET(gtk_builder_get_object(main_gxml, "chk_show_winlist_menu"));
     xfconf_g_property_bind(channel, WINLIST_SHOW_WINDOWS_MENU_PROP,
                            G_TYPE_BOOLEAN, G_OBJECT(w), "active");
-    box = glade_xml_get_widget(main_gxml, "box_winlist_subopts");
+    box = GTK_WIDGET(gtk_builder_get_object(main_gxml, "box_winlist_subopts"));
     g_signal_connect(G_OBJECT(w), "toggled",
                      G_CALLBACK(suboptions_set_sensitive), box);
     suboptions_set_sensitive(GTK_TOGGLE_BUTTON(w), box);
 
     xfconf_g_property_bind(channel, WINLIST_SHOW_APP_ICONS_PROP, G_TYPE_BOOLEAN,
-                           G_OBJECT(glade_xml_get_widget(main_gxml,
-                                                         "chk_winlist_show_app_icons")),
+                           gtk_builder_get_object(main_gxml, "chk_winlist_show_app_icons"),
                            "active");
 
     xfconf_g_property_bind(channel, WINLIST_SHOW_STICKY_WIN_ONCE_PROP,
                            G_TYPE_BOOLEAN,
-                           G_OBJECT(glade_xml_get_widget(main_gxml,
-                                                         "chk_show_winlist_sticky_once")),
+                           gtk_builder_get_object(main_gxml, "chk_show_winlist_sticky_once"),
                            "active");
 
-    w = glade_xml_get_widget(main_gxml, "chk_show_winlist_ws_names");
+    w = GTK_WIDGET(gtk_builder_get_object(main_gxml, "chk_show_winlist_ws_names"));
     xfconf_g_property_bind(channel, WINLIST_SHOW_WS_NAMES_PROP, G_TYPE_BOOLEAN,
                            G_OBJECT(w), "active");
-    box = glade_xml_get_widget(main_gxml, "box_winlist_names_subopts");
+    box = GTK_WIDGET(gtk_builder_get_object(main_gxml, "box_winlist_names_subopts"));
     g_signal_connect(G_OBJECT(w), "toggled",
                      G_CALLBACK(suboptions_set_sensitive), box);
     suboptions_set_sensitive(GTK_TOGGLE_BUTTON(w), box);
 
     xfconf_g_property_bind(channel, WINLIST_SHOW_WS_SUBMENUS_PROP,
                            G_TYPE_BOOLEAN,
-                           G_OBJECT(glade_xml_get_widget(main_gxml,
-                                                         "chk_show_winlist_ws_submenus")),
+                           gtk_builder_get_object(main_gxml, "chk_show_winlist_ws_submenus"),
                            "active");
 
-    w = glade_xml_get_widget(main_gxml, "combo_icons");
+    w = GTK_WIDGET(gtk_builder_get_object(main_gxml, "combo_icons"));
     gtk_combo_box_set_active(GTK_COMBO_BOX(w), 0);
     xfconf_g_property_bind(channel, DESKTOP_ICONS_STYLE_PROP, G_TYPE_INT,
                            G_OBJECT(w), "active");
     xfconf_g_property_bind(channel, DESKTOP_ICONS_ICON_SIZE_PROP, G_TYPE_UINT,
-                           G_OBJECT(gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(glade_xml_get_widget(main_gxml,
-                                                                                                        "spin_icon_size")))),
+                           G_OBJECT(gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(gtk_builder_get_object(main_gxml,
+                                                                                                          "spin_icon_size")))),
                            "value");
     xfconf_g_property_bind(channel, DESKTOP_ICONS_FONT_SIZE_PROP, G_TYPE_DOUBLE,
                            G_OBJECT(gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(spin_font_size))),
@@ -1477,7 +1483,7 @@ int
 main(int argc, char **argv)
 {
     XfconfChannel *channel;
-    GladeXML *gxml;
+    GtkBuilder *gxml;
     GtkWidget *dialog;
     GError *error = NULL;
 
@@ -1520,9 +1526,16 @@ main(int argc, char **argv)
     }
 
 
-    gxml = glade_xml_new_from_buffer(xfdesktop_settings_glade,
-                                     xfdesktop_settings_glade_length,
-                                     "prefs_dialog", NULL);
+    gxml = gtk_builder_new();
+    if(!gtk_builder_add_from_string(gxml, xfdesktop_settings_ui,
+                                    xfdesktop_settings_ui_length,
+                                    &error))
+    {
+        g_printerr("Failed to parse UI description: %s\n", error->message);
+        g_error_free(error);
+        return 1;
+    }
+
     channel = xfconf_channel_new(XFDESKTOP_CHANNEL);
 
     gdk_threads_enter();
@@ -1543,7 +1556,7 @@ main(int argc, char **argv)
 
         gdk_notify_startup_complete();
 
-        plug_child = glade_xml_get_widget(gxml, "alignment1");
+        plug_child = GTK_WIDGET(gtk_builder_get_object(gxml, "alignment1"));
         gtk_widget_reparent(plug_child, plug);
         gtk_widget_show(plug_child);
 
