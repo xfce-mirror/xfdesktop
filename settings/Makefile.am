@@ -9,7 +9,7 @@ xfdesktop_settings_CFLAGS =						\
 	-I$(top_srcdir)/common						\
 	-I$(top_srcdir)/src 						\
 	$(LIBEXO_CFLAGS)							\
-	$(LIBXFCEGUI4_CFLAGS)						\
+	$(LIBXFCE4UI_CFLAGS)						\
 	$(XFCONF_CFLAGS)							\
 	$(LIBGLADE_CFLAGS)							\
 	$(GTHREAD_CFLAGS)							\
@@ -22,7 +22,7 @@ xfdesktop_settings_CFLAGS =						\
 xfdesktop_settings_LDADD =						\
 	$(top_builddir)/common/libxfdesktop.la		\
 	$(XFCONF_LIBS)								\
-	$(LIBXFCEGUI4_LIBS)							\
+	$(LIBXFCE4UI_LIBS)							\
 	$(LIBGLADE_LIBS)							\
 	$(LIBEXO_LIBS)								\
 	$(GTHREAD_LIBS)

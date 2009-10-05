@@ -24,7 +24,7 @@
 
 #include <gtk/gtk.h>
 
-#include <libxfcegui4/libxfcegui4.h>
+#include <libxfce4ui/libxfce4ui.h>
 
 #include <thunar-vfs/thunar-vfs.h>
 
@@ -36,6 +36,7 @@
 #include "xfdesktop-file-icon.h"
 #include "xfdesktop-file-utils.h"
 #include "xfdesktop-file-properties-dialog.h"
+#include "xfdesktop-common.h"
 
 #define BORDER 8
 
@@ -294,8 +295,11 @@ xfdesktop_file_properties_dialog_show(GtkWindow *parent,
                 
                 icon_name = thunar_vfs_mime_handler_lookup_icon_name(handler,
                                                                      gtk_icon_theme_get_default());
-                if(icon_name)
-                    pix = xfce_themed_icon_load(icon_name, mw);
+                if(icon_name) {
+                    GtkIconTheme *itheme = gtk_icon_theme_get_default();
+                    pix = gtk_icon_theme_load_icon(itheme, icon_name, mw,
+                                                   ITHEME_FLAGS, NULL);
+                }
                 
                 gtk_list_store_set(ls, &itr,
                                    OPENWITH_COL_PIX, pix,

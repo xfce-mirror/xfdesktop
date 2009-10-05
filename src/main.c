@@ -1,7 +1,7 @@
 /*
  *  xfdesktop - xfce4's desktop manager
  *
- *  Copyright (c) 2004-2008 Brian Tarricone, <bjt23@cornell.edu>
+ *  Copyright (c) 2004-2009 Brian Tarricone, <bjt23@cornell.edu>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -47,7 +47,8 @@
 #include <gtk/gtk.h>
 
 #include <xfconf/xfconf.h>
-#include <libxfcegui4/libxfcegui4.h>
+#include <libxfce4ui/libxfce4ui.h>
+#include <libxfce4smclient-private/eggsmclient.h>
 
 #ifdef ENABLE_FILE_ICONS
 #include <dbus/dbus-glib.h>
@@ -60,14 +61,12 @@
 #include "menu.h"
 #include "windowlist.h"
 
-static SessionClient *client_session = NULL;
-static gboolean is_session_managed = FALSE;
+static XfceSMClient *sm_client = NULL;
 
 static void
 session_logout(void)
 {
-    g_return_if_fail(is_session_managed);
-    logout_session(client_session);
+    xfce_sm_client_request_shutdown(sm_client, XFCE_SM_CLIENT_SHUTDOWN_HINT_ASK);
 }
 
 static void
@@ -182,10 +181,8 @@ client_message_received(GtkWidget *w, GdkEventClient *evt, gpointer user_data)
                                                    GDK_CURRENT_TIME);
             return TRUE;
         } else if(!strcmp(QUIT_MESSAGE, evt->data.b)) {
-            if(is_session_managed) {
-                client_session_set_restart_style(client_session,
-                                                 SESSION_RESTART_IF_RUNNING);
-            }
+            xfce_sm_client_set_restart_style(sm_client,
+                                             XFCE_SM_CLIENT_RESTART_NORMAL);
             gtk_main_quit();
             return TRUE;
         }
@@ -215,6 +212,7 @@ xfdesktop_handle_quit_signals(gint sig,
 int
 main(int argc, char **argv)
 {
+    GOptionContext *octx;
     GdkDisplay *gdpy;
     GtkWidget **desktops;
     gint i, nscreens;
@@ -224,6 +222,17 @@ main(int argc, char **argv)
     gboolean already_running;
     gchar buf[1024];
     GError *error = NULL;
+    gboolean opt_version = FALSE, opt_reload = FALSE;
+    gboolean opt_menu = FALSE, opt_windowlist = FALSE;
+    gboolean opt_quit = FALSE;
+    const GOptionEntry main_entries[] = {
+        { "version", 'V', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_version, N_("Display version information"), NULL },
+        { "reload", 0, G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_reload, N_("Reload all settings, refresh image list"), NULL },
+        { "menu", 0, G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_menu, N_("Pop up the menu (at the current mouse position)"), NULL },
+        { "windowlist", 0, G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_windowlist, N_("Pop up the window list (at the current mouse position)"), NULL },
+        { "quit", 0, G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_quit, N_("Cause xfdesktop to quit"), NULL },
+        { NULL, 0, 0, 0, NULL, NULL, NULL }
+    };
     
     /* bind gettext textdomain */
     xfce_textdomain(GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
@@ -234,9 +243,21 @@ main(int argc, char **argv)
 #ifdef ENABLE_FILE_ICONS
     dbus_g_thread_init();
 #endif
-    gtk_init(&argc, &argv);
-        
-    if(argc > 1 && (!strcmp(argv[1], "--version") || !strcmp(argv[1], "-V"))) {
+
+    octx = g_option_context_new("");
+    g_option_context_add_main_entries(octx, main_entries, NULL);
+    g_option_context_add_group(octx, gtk_get_option_group(TRUE));
+    g_option_context_add_group(octx, xfce_sm_client_get_option_group(argc, argv));
+
+    if(!g_option_context_parse(octx, &argc, &argv, &error)) {
+        g_printerr(_("Failed to parse arguments: %s\n"), error->message);
+        g_error_free(error);
+        return 1;
+    }
+
+    g_option_context_free(octx);
+
+    if(opt_version) {
         g_print(_("This is %s version %s, running on Xfce %s.\n"), PACKAGE,
                 VERSION, xfce_version_string());
         g_print(_("Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."),
@@ -267,36 +288,14 @@ main(int argc, char **argv)
                 );
         
         return 0;
-    }
-
-    if(argc > 1) {
-        const gchar *argument = argv[1];
-        
-        /* allow both --(option) and -(option) */
-        if('-' == argument[0] && '-' == argument[1])
-            ++argument;
-        
-        if(!strcmp("-reload", argument))
-            message = RELOAD_MESSAGE;
-        else if(!strcmp("-menu", argument))
-            message = MENU_MESSAGE;
-        else if(!strcmp("-windowlist", argument))
-            message = WINDOWLIST_MESSAGE;
-        else if(!strcmp("-quit", argument))
-            message = QUIT_MESSAGE;
-        else if(!strcmp("--sm-client-id", argv[1])) {
-            /* do nothing */
-        } else {
-            g_printerr(_("%s: Unknown option: %s\n"), PACKAGE, argv[1]);
-            g_printerr(_("Options are:\n"));
-            g_printerr(_("    --reload      Reload all settings, refresh image list\n"));
-            g_printerr(_("    --menu        Pop up the menu (at the current mouse position)\n"));
-            g_printerr(_("    --windowlist  Pop up the window list (at the current mouse position)\n"));
-            g_printerr(_("    --quit        Cause xfdesktop to quit\n"));
-            
-            return 1;
-        }
-    }
+    } else if(opt_reload)
+        message = RELOAD_MESSAGE;
+    else if(opt_menu)
+        message = MENU_MESSAGE;
+    else if(opt_windowlist)
+        message = WINDOWLIST_MESSAGE;
+    else if(opt_quit)
+        message = QUIT_MESSAGE;
     
     signal(SIGPIPE, SIG_IGN);
 
@@ -309,8 +308,6 @@ main(int argc, char **argv)
         }
     }
 
-    g_print("%s[%d]: starting up\n", PACKAGE, getpid());
-    
     if(message) {
         if(!already_running)
             g_printerr(_("%s is not running.\n"), PACKAGE);
@@ -320,10 +317,17 @@ main(int argc, char **argv)
         return (already_running ? 0 : 1);
     }
     
-    client_session = client_session_new(argc, argv, NULL,
-                                        SESSION_RESTART_IMMEDIATELY, 40);
-    client_session->die = session_die;
-    is_session_managed = session_init(client_session);
+    g_print("%s[%d]: starting up\n", PACKAGE, getpid());
+
+    sm_client = xfce_sm_client_get();
+    xfce_sm_client_set_restart_style(sm_client, XFCE_SM_CLIENT_RESTART_IMMEDIATELY);
+    g_signal_connect(sm_client, "quit",
+                     G_CALLBACK(session_die), NULL);
+
+    if(!xfce_sm_client_connect(sm_client, &error) && error) {
+        g_printerr("Failed to connect to session manager: %s\n", error->message);
+        g_error_free(error);
+    }
 
 #ifdef ENABLE_FILE_ICONS
     thunar_vfs_init();
@@ -357,12 +361,11 @@ main(int argc, char **argv)
         gdk_window_lower(desktops[i]->window);
     }
     
-    if(is_session_managed) {
-        for(i = 0; i < nscreens; ++i)
-            xfce_desktop_set_session_logout_func(XFCE_DESKTOP(desktops[i]),
-                                                 session_logout);
+    for(i = 0; i < nscreens; ++i) {
+        xfce_desktop_set_session_logout_func(XFCE_DESKTOP(desktops[i]),
+                                             session_logout);
     }
-    
+
     menu_init(channel);
     windowlist_init(channel);
     

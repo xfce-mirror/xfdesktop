@@ -43,7 +43,7 @@
 #define PATH_MAX 4096
 #endif
 
-#include <libxfcegui4/libxfcegui4.h>
+#include <libxfce4ui/libxfce4ui.h>
 
 #ifdef HAVE_THUNARX
 #include <thunarx/thunarx.h>

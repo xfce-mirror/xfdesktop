@@ -35,6 +35,9 @@
 #define DEFAULT_BACKDROP_LIST    "xfce4/desktop/backdrop.list"
 #define DEFAULT_ICON_FONT_SIZE   12
 #define DEFAULT_ICON_SIZE        32
+#define ITHEME_FLAGS             (GTK_ICON_LOOKUP_USE_BUILTIN \
+                                  | GTK_ICON_LOOKUP_GENERIC_FALLBACK \
+                                  | GTK_ICON_LOOKUP_FORCE_SIZE)
 
 #define LIST_TEXT                "# xfce backdrop list"
 #define XFDESKTOP_SELECTION_FMT  "XFDESKTOP_SELECTION_%d"

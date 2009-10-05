@@ -6,7 +6,7 @@ libxfdesktop_la_SOURCES = \
 
 libxfdesktop_la_CFLAGS = \
 	-I$(top_srcdir)/src \
-	$(LIBXFCEGUI4_CFLAGS) \
+	$(LIBXFCE4UTIL_CFLAGS) \
 	$(GTK_CFLAGS)
 
 if BUILD_DESKTOP_MENU
@@ -34,5 +34,5 @@ libxfdesktop_menu_utils_la_CFLAGS = \
 endif
 
 if HAVE_CYGWIN
-  libxfdesktop_menu_la_LDLAGS = -no-undefined
+  libxfdesktop_menu_la_LDFLAGS = -no-undefined
 endif

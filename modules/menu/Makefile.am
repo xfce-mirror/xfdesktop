@@ -6,7 +6,10 @@ plugindir = $(libdir)/xfce4/modules
 
 plugin_LTLIBRARIES = xfce4_desktop_menu.la
 
-xfce4_desktop_menu_la_SOURCES = desktop-menu.c
+xfce4_desktop_menu_la_SOURCES = \
+	desktop-menu.c \
+	xfdesktop-app-menu-item.c \
+	xfdesktop-app-menu-item.h
 
 xfce4_desktop_menu_la_CFLAGS = \
 	-I$(top_srcdir)/common \
@@ -14,7 +17,7 @@ xfce4_desktop_menu_la_CFLAGS = \
 	$(GTHREAD_CFLAGS) \
 	$(LIBXFCE4MENU_CFLAGS) \
 	$(LIBX11_CFLAGS) \
-	$(LIBXFCEGUI4_CFLAGS) \
+	$(LIBXFCE4UI_CFLAGS) \
 	$(THUNAR_VFS_CFLAGS) \
 	-DSYSCONFDIR=\"$(sysconfdir)\" \
 	-DDATADIR=\"$(datadir)\" \
@@ -40,5 +43,5 @@ xfce4_desktop_menu_la_LIBADD = \
 	$(LIBXFCE4MENU_LIBS) \
 	$(LIBX11_LDFLAGS) \
 	$(LIBX11_LIBS) \
-	$(LIBXFCEGUI4_LIBS) \
+	$(LIBXFCE4UI_LIBS) \
 	$(THUNAR_VFS_LIBS)

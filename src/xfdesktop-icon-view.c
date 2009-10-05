@@ -50,7 +50,7 @@
 #include "xfdesktop-marshal.h"
 
 #include <libwnck/libwnck.h>
-#include <libxfcegui4/libxfcegui4.h>
+#include <libxfce4ui/libxfce4ui.h>
 
 #define DEFAULT_FONT_SIZE  12
 #define DEFAULT_ICON_SIZE  32

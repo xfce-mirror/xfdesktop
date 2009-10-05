@@ -43,13 +43,14 @@
 #define PATH_MAX 4096
 #endif
 
-#include <libxfcegui4/libxfcegui4.h>
+#include <libxfce4ui/libxfce4ui.h>
 
 #ifdef HAVE_THUNARX
 #include <thunarx/thunarx.h>
 #endif
 
 #include "xfdesktop-file-utils.h"
+#include "xfdesktop-common.h"
 #include "xfdesktop-regular-file-icon.h"
 
 #define EMBLEM_SYMLINK  "emblem-symbolic-link"
@@ -209,9 +210,12 @@ xfdesktop_regular_file_icon_peek_pixbuf(XfdesktopIcon *icon,
         }
         
         if(file_icon->priv->info->flags & THUNAR_VFS_FILE_FLAGS_SYMLINK) {
+            GtkIconTheme *itheme = gtk_icon_theme_get_default();
             gint sym_pix_size = size * 2 / 3;
             
-            emblem_pix = xfce_themed_icon_load(EMBLEM_SYMLINK, sym_pix_size);
+            emblem_pix = gtk_icon_theme_load_icon(itheme, EMBLEM_SYMLINK,
+                                                  sym_pix_size, ITHEME_FLAGS,
+                                                  NULL);
             if(emblem_pix) {
                 if(gdk_pixbuf_get_width(emblem_pix) != sym_pix_size
                    || gdk_pixbuf_get_height(emblem_pix) != sym_pix_size)

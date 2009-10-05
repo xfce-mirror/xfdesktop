@@ -49,7 +49,7 @@
 #define PATH_MAX 4096
 #endif
 
-#include <libxfcegui4/libxfcegui4.h>
+#include <libxfce4ui/libxfce4ui.h>
 #include <libxfce4panel/xfce-panel-plugin.h>
 #include <libxfce4panel/xfce-panel-convenience.h>
 
@@ -118,18 +118,42 @@ static GdkPixbuf *
 dmp_get_icon(const gchar *icon_name, gint size, GtkOrientation orientation)
 {
     GdkPixbuf *pix = NULL;
-    gchar *filename;
+    GtkIconTheme *itheme = gtk_icon_theme_get_default();
+    GtkIconInfo *iinfo;
+    const gchar *filename;
     gint w, h;
     
-    filename = xfce_themed_icon_lookup(icon_name, size);
-    if(!filename)
+    iinfo = gtk_icon_theme_lookup_icon(itheme, icon_name, size, 0);
+    if(!iinfo)
         return NULL;
-    
+
     w = orientation == GTK_ORIENTATION_HORIZONTAL ? -1 : size;
     h = orientation == GTK_ORIENTATION_VERTICAL ? -1 : size;
-    pix = gdk_pixbuf_new_from_file_at_scale(filename, w, h, TRUE, NULL);
+
+    filename = gtk_icon_info_get_filename(iinfo);
+    if(filename)
+        pix = gdk_pixbuf_new_from_file_at_scale(filename, w, h, TRUE, NULL);
+    else {
+        GdkPixbuf *tmp = gtk_icon_info_get_builtin_pixbuf(iinfo);
+
+        if(tmp) {
+            gint pw = gdk_pixbuf_get_width(tmp);
+            gint ph = gdk_pixbuf_get_height(tmp);
+
+            if((w != -1 && pw != w) || (h != -1 && ph != h)) {
+                if(w == -1)
+                    w = ((gdouble)h / ph) * pw;
+                else
+                    h = ((gdouble)w / pw) * ph;
+
+                pix = gdk_pixbuf_scale_simple(tmp, w, h, GDK_INTERP_BILINEAR);
+                g_object_unref(G_OBJECT(tmp));
+            } else
+                pix = tmp;
+        }
+    }
     
-    g_free(filename);
+    gtk_icon_info_free(iinfo);
     
     return pix;
 }
@@ -738,7 +762,7 @@ dmp_create_options(XfcePanelPlugin *plugin, DMPlugin *dmp)
     gtk_widget_show(topvbox);
     gtk_box_pack_start(GTK_BOX(GTK_DIALOG(dlg)->vbox), topvbox, TRUE, TRUE, 0);
     
-    frame = xfce_create_framebox(_("Button"), &frame_bin);
+    frame = xfce_gtk_frame_box_new(_("Button"), &frame_bin);
     gtk_widget_show(frame);
     gtk_box_pack_start(GTK_BOX(topvbox), frame, FALSE, FALSE, 0);
     
@@ -771,7 +795,7 @@ dmp_create_options(XfcePanelPlugin *plugin, DMPlugin *dmp)
     g_signal_connect(G_OBJECT(chk), "toggled",
             G_CALLBACK(show_title_toggled_cb), dmp);
     
-    frame = xfce_create_framebox(_("Menu File"), &frame_bin);
+    frame = xfce_gtk_frame_box_new(_("Menu File"), &frame_bin);
     gtk_widget_show(frame);
     gtk_box_pack_start(GTK_BOX(topvbox), frame, FALSE, FALSE, 0);
     
@@ -840,7 +864,7 @@ dmp_create_options(XfcePanelPlugin *plugin, DMPlugin *dmp)
             G_CALLBACK(dmp_edit_menu_clicked_cb), dmp);
 #endif
     
-    frame = xfce_create_framebox(_("Icons"), &frame_bin);
+    frame = xfce_gtk_frame_box_new(_("Icons"), &frame_bin);
     gtk_widget_show(frame);
     gtk_box_pack_start(GTK_BOX(topvbox), frame, FALSE, FALSE, 0);
     

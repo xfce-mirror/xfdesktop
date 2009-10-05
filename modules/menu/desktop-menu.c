@@ -60,7 +60,7 @@
 #include <glib.h>
 
 #include <libxfce4util/libxfce4util.h>
-#include <libxfcegui4/libxfcegui4.h>
+#include <libxfce4ui/libxfce4ui.h>
 #include <libxfce4menu/libxfce4menu.h>
 
 #ifdef HAVE_THUNAR_VFS
@@ -68,6 +68,7 @@
 #endif
 
 #include "desktop-menu-utils.h"
+#include "xfdesktop-app-menu-item.h"
 
 typedef struct
 {
@@ -333,13 +334,13 @@ desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
                 continue;
             }
             
-            mi = xfce_app_menu_item_new_full(xfce_menu_element_get_name(XFCE_MENU_ELEMENT(xfce_item)),
-                                             xfce_menu_item_get_command(xfce_item),
-                                             desktop_menu->use_menu_icons
-                                             ? xfce_menu_item_get_icon_name(xfce_item)
-                                             : NULL,
-                                             xfce_menu_item_requires_terminal(xfce_item),
-                                             xfce_menu_item_supports_startup_notification(xfce_item));
+            mi = xfdesktop_app_menu_item_new_full(xfce_menu_element_get_name(XFCE_MENU_ELEMENT(xfce_item)),
+                                                  xfce_menu_item_get_command(xfce_item),
+                                                  desktop_menu->use_menu_icons
+                                                    ? xfce_menu_item_get_icon_name(xfce_item)
+                                                    : NULL,
+                                                  xfce_menu_item_requires_terminal(xfce_item),
+                                                  xfce_menu_item_supports_startup_notification(xfce_item));
             gtk_widget_show(mi);
 
             if(menu)

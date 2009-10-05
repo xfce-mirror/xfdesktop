@@ -45,7 +45,7 @@
 
 #include <libxfce4util/libxfce4util.h>
 #include <xfconf/xfconf.h>
-#include <libxfcegui4/libxfcegui4.h>
+#include <libxfce4ui/libxfce4ui.h>
 
 #ifdef HAVE_LIBEXO
 #include <exo/exo.h>
@@ -290,9 +290,9 @@ setup_special_icon_list(GladeXML *gxml,
         GdkPixbuf *pix = NULL;
 
         if(gtk_icon_theme_has_icon(itheme, icons[i].icon))
-            pix = xfce_themed_icon_load(icons[i].icon, w);
+            pix = gtk_icon_theme_load_icon(itheme, icons[i].icon, w, 0, NULL);
         else
-            pix = xfce_themed_icon_load(icons[i].icon_fallback, w);
+            pix = gtk_icon_theme_load_icon(itheme, icons[i].icon_fallback, w, 0, NULL);
 
         gtk_list_store_append(ls, &iter);
         gtk_list_store_set(ls, &iter,
@@ -518,7 +518,7 @@ xfdesktop_settings_dialog_create_load_list(AppearancePanel *panel)
                                        primary,
                                        _("Overwriting the file will cause its contents to be lost."),
                                        GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-                                       XFCE_CUSTOM_STOCK_BUTTON, _("Replace"), GTK_STOCK_SAVE, GTK_RESPONSE_ACCEPT,
+                                       XFCE_BUTTON_TYPE_MIXED, GTK_STOCK_SAVE, _("Replace"), GTK_RESPONSE_ACCEPT,
                                        NULL);
             g_free(primary);
             g_free(shortfile);

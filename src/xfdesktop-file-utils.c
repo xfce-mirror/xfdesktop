@@ -28,7 +28,7 @@
 
 #include <gtk/gtk.h>
 
-#include <libxfcegui4/libxfcegui4.h>
+#include <libxfce4ui/libxfce4ui.h>
 
 #include <exo/exo.h>
 
@@ -42,6 +42,7 @@
 
 #include "xfdesktop-dbus-bindings-filemanager.h"
 #include "xfdesktop-file-icon.h"
+#include "xfdesktop-common.h"
 #include "xfdesktop-file-utils.h"
 
 ThunarVfsInteractiveJobResponse
@@ -54,7 +55,7 @@ xfdesktop_file_utils_interactive_job_ask(GtkWindow *parent,
     
     dlg = xfce_message_dialog_new(parent, _("Question"),
                                   GTK_STOCK_DIALOG_QUESTION, NULL, message,
-                                  NULL);
+                                  NULL, NULL);
     
     if(choices & THUNAR_VFS_INTERACTIVE_JOB_RESPONSE_CANCEL) {
         btn = gtk_button_new_from_stock(GTK_STOCK_CANCEL);
@@ -222,24 +223,31 @@ xfdesktop_file_utils_get_file_icon(const gchar *custom_icon_name,
                                    const GdkPixbuf *emblem,
                                    guint opacity)
 {
+    GtkIconTheme *itheme = gtk_icon_theme_get_default();
     GdkPixbuf *pix_theme = NULL, *pix = NULL;
     const gchar *icon_name;
     
-    if(custom_icon_name)
-        pix_theme = xfce_themed_icon_load(custom_icon_name, size);
+    if(custom_icon_name) {
+        pix_theme = gtk_icon_theme_load_icon(itheme, custom_icon_name, size,
+                                             ITHEME_FLAGS, NULL);
+    }
     
     if(!pix_theme && info) {
         icon_name = thunar_vfs_info_get_custom_icon(info);
-        if(icon_name)
-            pix_theme = xfce_themed_icon_load(icon_name, size);
+        if(icon_name) {
+            pix_theme = gtk_icon_theme_load_icon(itheme, icon_name, size,
+                                                 ITHEME_FLAGS, NULL);
+        }
     }
 
     if(!pix_theme && info && info->mime_info) {
         icon_name = thunar_vfs_mime_info_lookup_icon_name(info->mime_info,
                                                           gtk_icon_theme_get_default());
         DBG("got mime info icon name: %s", icon_name);
-        if(icon_name)
-            pix_theme = xfce_themed_icon_load(icon_name, size);
+        if(icon_name) {
+            pix_theme = gtk_icon_theme_load_icon(itheme, icon_name, size,
+                                                 ITHEME_FLAGS, NULL);
+        }
     }
 
     if(G_LIKELY(pix_theme)) {
@@ -335,13 +343,12 @@ xfdesktop_file_utils_launch_fallback(const ThunarVfsInfo *info,
         display_name = gdk_screen_make_display_name(screen);
         uri = thunar_vfs_path_dup_uri(info->path);
         
-        commandline = g_strconcat("env DISPLAY=\"", display_name,
-                                  "\" \"", file_manager_app, "\" \"",
+        commandline = g_strconcat("\"", file_manager_app, "\" \"",
                                   uri, "\"", NULL);
         
         DBG("executing:\n%s\n", commandline);
         
-        ret = xfce_exec(commandline, FALSE, TRUE, NULL);
+        ret = xfce_spawn_command_line_on_screen(screen, commandline, FALSE, TRUE, NULL);
         
         g_free(commandline);
         g_free(file_manager_app);

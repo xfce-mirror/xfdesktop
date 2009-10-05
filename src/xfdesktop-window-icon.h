@@ -22,7 +22,7 @@
 #define __XFDESKTOP_WINDOW_ICON_H__
 
 #include <glib-object.h>
-#include <libxfcegui4/libxfcegui4.h>
+#include <libxfce4ui/libxfce4ui.h>
 
 #include "xfdesktop-icon.h"
 
