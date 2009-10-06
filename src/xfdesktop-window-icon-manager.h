@@ -49,7 +49,7 @@ struct _XfdesktopWindowIconManagerClass
     GObjectClass parent;
 };
 
-GType xfdesktop_window_icon_manager_get_type() G_GNUC_CONST;
+GType xfdesktop_window_icon_manager_get_type(void) G_GNUC_CONST;
 
 XfdesktopIconViewManager *xfdesktop_window_icon_manager_new(GdkScreen *gscreen);
 

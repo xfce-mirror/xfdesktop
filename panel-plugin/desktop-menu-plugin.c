@@ -53,6 +53,9 @@
 #include <libxfce4panel/xfce-panel-plugin.h>
 #include <libxfce4panel/xfce-panel-convenience.h>
 
+#ifdef HAVE_LIBEXO
+#include <exo/exo.h>
+#endif
 #ifdef HAVE_THUNAR_VFS
 #include <thunar-vfs/thunar-vfs.h>
 #endif

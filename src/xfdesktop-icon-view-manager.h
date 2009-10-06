@@ -70,7 +70,7 @@ struct _XfdesktopIconViewManagerIface
                           guint time_);
 };
 
-GType xfdesktop_icon_view_manager_get_type() G_GNUC_CONST;
+GType xfdesktop_icon_view_manager_get_type(void) G_GNUC_CONST;
 
 /* virtual function accessors */
 

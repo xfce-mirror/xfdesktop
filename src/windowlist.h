@@ -33,7 +33,7 @@ G_BEGIN_DECLS
 
 void windowlist_init(XfconfChannel *channel);
 void windowlist_attach(XfceDesktop *desktop);
-void windowlist_cleanup();
+void windowlist_cleanup(void);
 
 G_END_DECLS
 

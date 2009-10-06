@@ -23,7 +23,7 @@
 
 G_BEGIN_DECLS
 
-gchar *xfce_desktop_get_menufile();
+gchar *xfce_desktop_get_menufile(void);
 
 G_END_DECLS
 

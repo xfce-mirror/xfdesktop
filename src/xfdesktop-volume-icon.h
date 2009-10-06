@@ -50,7 +50,7 @@ struct _XfdesktopVolumeIconClass
     XfdesktopFileIconClass parent;
 };
 
-GType xfdesktop_volume_icon_get_type() G_GNUC_CONST;
+GType xfdesktop_volume_icon_get_type(void) G_GNUC_CONST;
 
 XfdesktopVolumeIcon *xfdesktop_volume_icon_new(ThunarVfsVolume *volume,
                                                GdkScreen *screen);

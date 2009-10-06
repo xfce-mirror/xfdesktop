@@ -50,7 +50,7 @@ struct _XfdesktopRegularFileIconClass
     XfdesktopFileIconClass parent;
 };
 
-GType xfdesktop_regular_file_icon_get_type() G_GNUC_CONST;
+GType xfdesktop_regular_file_icon_get_type(void) G_GNUC_CONST;
 
 XfdesktopRegularFileIcon *xfdesktop_regular_file_icon_new(ThunarVfsInfo *info,
                                                           GdkScreen *screen);

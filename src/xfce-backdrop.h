@@ -72,7 +72,7 @@ struct _XfceBackdropClass
     void (*changed)(XfceBackdrop *backdrop);
 };
 
-GType xfce_backdrop_get_type             () G_GNUC_CONST;
+GType xfce_backdrop_get_type             (void) G_GNUC_CONST;
 
 XfceBackdrop *xfce_backdrop_new          (GdkVisual *visual);
 

@@ -61,7 +61,7 @@ struct _XfdesktopFileIconClass
     gboolean (*delete_file)(XfdesktopFileIcon *icon);
 };
 
-GType xfdesktop_file_icon_get_type() G_GNUC_CONST;
+GType xfdesktop_file_icon_get_type(void) G_GNUC_CONST;
 
 G_CONST_RETURN ThunarVfsInfo *xfdesktop_file_icon_peek_info(XfdesktopFileIcon *icon);
 void xfdesktop_file_icon_update_info(XfdesktopFileIcon *icon,

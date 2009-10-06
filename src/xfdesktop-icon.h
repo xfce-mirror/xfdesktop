@@ -77,7 +77,7 @@ struct _XfdesktopIconClass
                                       GtkWidget *menu);
 };
 
-GType xfdesktop_icon_get_type() G_GNUC_CONST;
+GType xfdesktop_icon_get_type(void) G_GNUC_CONST;
 
 /* xfdesktop virtual function accessors */
 

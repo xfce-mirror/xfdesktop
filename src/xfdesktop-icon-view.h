@@ -68,7 +68,7 @@ struct _XfdesktopIconViewClass
                             gint count);
 };
 
-GType xfdesktop_icon_view_get_type() G_GNUC_CONST;
+GType xfdesktop_icon_view_get_type(void) G_GNUC_CONST;
 
 GtkWidget *xfdesktop_icon_view_new(XfdesktopIconViewManager *manager);
 

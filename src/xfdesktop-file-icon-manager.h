@@ -51,7 +51,7 @@ struct _XfdesktopFileIconManagerClass
     GObjectClass parent;
 };
 
-GType xfdesktop_file_icon_manager_get_type() G_GNUC_CONST;
+GType xfdesktop_file_icon_manager_get_type(void) G_GNUC_CONST;
 
 XfdesktopIconViewManager *xfdesktop_file_icon_manager_new(ThunarVfsPath *folder,
                                                           XfconfChannel *channel);

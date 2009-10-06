@@ -49,7 +49,7 @@ struct _XfdesktopWindowIconClass
     XfdesktopIconClass parent;
 };
 
-GType xfdesktop_window_icon_get_type() G_GNUC_CONST;
+GType xfdesktop_window_icon_get_type(void) G_GNUC_CONST;
 
 XfdesktopWindowIcon *xfdesktop_window_icon_new(WnckWindow *window,
                                                gint workspace);

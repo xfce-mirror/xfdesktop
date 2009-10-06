@@ -33,8 +33,8 @@ G_BEGIN_DECLS
 
 void menu_init(XfconfChannel *channel);
 void menu_attach(XfceDesktop *desktop);
-void menu_reload();
-void menu_cleanup();
+void menu_reload(void);
+void menu_cleanup(void);
 
 G_END_DECLS
 

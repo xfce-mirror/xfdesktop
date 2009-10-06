@@ -71,7 +71,7 @@ struct _XfceDesktopClass
                                          GtkMenuShell *menu);
 };
 
-GType xfce_desktop_get_type                     () G_GNUC_CONST;
+GType xfce_desktop_get_type                     (void) G_GNUC_CONST;
 
 GtkWidget *xfce_desktop_new(GdkScreen *gscreen,
                             XfconfChannel *channel,
