@@ -123,17 +123,18 @@ dmp_get_icon(const gchar *icon_name, gint size, GtkOrientation orientation)
     const gchar *filename;
     gint w, h;
     
-    iinfo = gtk_icon_theme_lookup_icon(itheme, icon_name, size, 0);
-    if(!iinfo)
-        return NULL;
-
     w = orientation == GTK_ORIENTATION_HORIZONTAL ? -1 : size;
     h = orientation == GTK_ORIENTATION_VERTICAL ? -1 : size;
 
-    filename = gtk_icon_info_get_filename(iinfo);
+    iinfo = gtk_icon_theme_lookup_icon(itheme, icon_name, size, 0);
+    if(iinfo)
+        filename = gtk_icon_info_get_filename(iinfo);
+    else
+        filename = icon_name;
+
     if(filename)
         pix = gdk_pixbuf_new_from_file_at_scale(filename, w, h, TRUE, NULL);
-    else {
+    else if(iinfo) {
         GdkPixbuf *tmp = gtk_icon_info_get_builtin_pixbuf(iinfo);
 
         if(tmp) {
@@ -153,7 +154,8 @@ dmp_get_icon(const gchar *icon_name, gint size, GtkOrientation orientation)
         }
     }
     
-    gtk_icon_info_free(iinfo);
+    if(iinfo)
+        gtk_icon_info_free(iinfo);
     
     return pix;
 }
