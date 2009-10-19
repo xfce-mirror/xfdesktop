@@ -366,10 +366,11 @@ menu_activate(DMPlugin *dmp, gboolean at_pointer)
                          G_CALLBACK(menu_deactivated), dmp);
         if (!at_pointer)
           gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), TRUE);
-        xfce_panel_plugin_register_menu (dmp->plugin, GTK_MENU(menu));
         gtk_menu_popup(GTK_MENU(menu), NULL, NULL,
                        (GtkMenuPositionFunc)(at_pointer ? NULL : dmp_position_menu),
                        dmp, 1, gtk_get_current_event_time());
+        if(gtk_grab_get_current() == menu)
+            xfce_panel_plugin_register_menu(dmp->plugin, GTK_MENU(menu));
     } else
         gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), FALSE);
 }
