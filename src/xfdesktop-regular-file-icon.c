@@ -258,7 +258,8 @@ xfdesktop_regular_file_icon_get_allowed_drag_actions(XfdesktopIcon *icon)
     const ThunarVfsInfo *info = xfdesktop_file_icon_peek_info(XFDESKTOP_FILE_ICON(icon));
     GdkDragAction actions = GDK_ACTION_LINK;  /* we can always link */
     
-    g_return_val_if_fail(info, 0);
+    if(!info)
+        return 0;
     
     if(info->flags & THUNAR_VFS_FILE_FLAGS_READABLE) {
         ThunarVfsPath *parent_path;
@@ -286,7 +287,8 @@ xfdesktop_regular_file_icon_get_allowed_drop_actions(XfdesktopIcon *icon)
 {
     const ThunarVfsInfo *info = xfdesktop_file_icon_peek_info(XFDESKTOP_FILE_ICON(icon));
     
-    g_return_val_if_fail(info, 0);
+    if(!info)
+        return 0;
     
     /* if it's executable we can 'copy'.  if it's a folder we can do anything
      * if it's writable. */
@@ -311,7 +313,10 @@ xfdesktop_regular_file_icon_drag_job_error(ThunarVfsJob *job,
     XfdesktopFileUtilsFileop fileop = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(job),
                                                                         "--xfdesktop-file-icon-action"));
     
-    g_return_if_fail(regular_file_icon && src_file_icon);
+    g_return_if_fail(regular_file_icon);
+    
+    if(!src_file_icon)
+        return;
     
     xfdesktop_file_utils_handle_fileop_error(NULL,
                                              xfdesktop_file_icon_peek_info(src_file_icon),
@@ -404,11 +409,13 @@ xfdesktop_regular_file_icon_do_drop_dest(XfdesktopIcon *icon,
             return FALSE;
         
         name = thunar_vfs_path_get_name(src_info->path);
-        g_return_val_if_fail(name, FALSE);
+        if(!name)
+            return FALSE;
         
         dest_path = thunar_vfs_path_relative(regular_file_icon->priv->info->path,
                                              name);
-        g_return_val_if_fail(dest_path, FALSE);
+        if(!dest_path)
+            return FALSE;
         
         switch(action) {
             case GDK_ACTION_MOVE:

@@ -3041,7 +3041,10 @@ xfdesktop_grid_unset_position_free(XfdesktopIconView *icon_view,
 {
     guint16 row, col;
     
-    g_return_val_if_fail(xfdesktop_icon_get_position(icon, &row, &col), FALSE);
+    if(!xfdesktop_icon_get_position(icon, &row, &col)) {
+        g_warning("Trying to set free position of an icon with no position");
+        return FALSE;
+    }
     
     return xfdesktop_grid_unset_position_free_raw(icon_view, row, col, icon);
 }
@@ -3151,7 +3154,7 @@ xfdesktop_icon_view_new(XfdesktopIconViewManager *manager)
 {
     XfdesktopIconView *icon_view;
     
-    g_return_val_if_fail(manager, NULL);
+    g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW_MANAGER(manager), NULL);
     
     icon_view = g_object_new(XFDESKTOP_TYPE_ICON_VIEW, NULL);
     icon_view->priv->manager = manager;
@@ -3167,7 +3170,10 @@ xfdesktop_icon_view_add_item_internal(XfdesktopIconView *icon_view,
     GdkRectangle fake_area;
     
     /* sanity check: at this point this should be taken care of */
-    g_return_if_fail(xfdesktop_icon_get_position(icon, &row, &col));
+    if(!xfdesktop_icon_get_position(icon, &row, &col)) {
+        g_warning("Attempting to add item without a position");
+        return;
+    }
     
     xfdesktop_grid_unset_position_free(icon_view, icon);
     

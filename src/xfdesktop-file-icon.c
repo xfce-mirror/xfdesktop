@@ -106,7 +106,8 @@ xfdesktop_file_icon_activated(XfdesktopIcon *icon)
     
     TRACE("entering");
     
-    g_return_val_if_fail(info, FALSE);
+    if(!info)
+        return FALSE;
     
     icon_view = xfdesktop_icon_peek_icon_view(icon);
     toplevel = gtk_widget_get_toplevel(icon_view);

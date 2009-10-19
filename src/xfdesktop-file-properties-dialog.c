@@ -141,7 +141,8 @@ xfdesktop_file_properties_dialog_show(GtkWindow *parent,
     
     g_return_if_fail(icon);
     info = xfdesktop_file_icon_peek_info(icon);
-    g_return_if_fail(info);
+    if(!info)
+        return;
     
     pfd = pango_font_description_from_string("bold");
     gtk_icon_size_lookup(GTK_ICON_SIZE_DIALOG, &dw, &dh);

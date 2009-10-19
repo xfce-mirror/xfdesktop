@@ -333,7 +333,10 @@ xfdesktop_special_file_icon_drag_job_error(ThunarVfsJob *job,
                                                                         "--xfdesktop-file-icon-action"));
     const ThunarVfsInfo *src_info = xfdesktop_file_icon_peek_info(src_file_icon);
     
-    g_return_if_fail(special_file_icon && src_file_icon);
+    g_return_if_fail(special_file_icon);
+
+    if(!src_file_icon)
+        return;
     
     xfdesktop_file_utils_handle_fileop_error(NULL, src_info,
                                              special_file_icon->priv->info,
@@ -386,8 +389,7 @@ xfdesktop_special_file_icon_do_drop_dest(XfdesktopIcon *icon,
     
     DBG("entering");
     
-    g_return_val_if_fail(special_file_icon && src_file_icon,
-                         FALSE);
+    g_return_val_if_fail(special_file_icon && src_file_icon, FALSE);
     g_return_val_if_fail(xfdesktop_special_file_icon_get_allowed_drop_actions(icon),
                          FALSE);
     
@@ -399,11 +401,13 @@ xfdesktop_special_file_icon_do_drop_dest(XfdesktopIcon *icon,
         return FALSE;
     
     name = thunar_vfs_path_get_name(src_info->path);
-    g_return_val_if_fail(name, FALSE);
+    if(!name)
+        return FALSE;
     
     dest_path = thunar_vfs_path_relative(special_file_icon->priv->info->path,
                                          name);
-    g_return_val_if_fail(dest_path, FALSE);
+    if(!dest_path)
+        return FALSE;
     
     if(special_file_icon->priv->type == XFDESKTOP_SPECIAL_FILE_ICON_TRASH)  {
         /* any drop to the trash is a move */

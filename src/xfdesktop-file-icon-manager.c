@@ -846,7 +846,8 @@ xfdesktop_file_icon_manager_delete_selected(XfdesktopFileIconManager *fmanager,
     GList *selected, *l;
     
     selected = xfdesktop_icon_view_get_selected_items(fmanager->priv->icon_view);
-    g_return_if_fail(selected);
+    if(!selected)
+        return;
     
     /* remove anybody that's not deletable */
     for(l = selected; l; ) {
@@ -894,7 +895,7 @@ xfdesktop_file_icon_menu_mime_app_executed(GtkWidget *widget,
     XfdesktopFileIcon *icon;
     ThunarVfsMimeApplication *mime_app;
     const ThunarVfsInfo *info;
-    GList *path_list, *selected;
+    GList *path_list = NULL, *selected;
     GtkWidget *toplevel;
     GError *error = NULL;
     
@@ -905,10 +906,13 @@ xfdesktop_file_icon_menu_mime_app_executed(GtkWidget *widget,
     toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
     
     info = xfdesktop_file_icon_peek_info(icon);
-    path_list = g_list_append(NULL, info->path);
+    path_list = g_list_append(path_list, info->path);
     
     mime_app = g_object_get_qdata(G_OBJECT(widget), xfdesktop_mime_app_quark);
-    g_return_if_fail(mime_app);
+    if(!mime_app) {
+        g_list_free(path_list);
+        return;
+    }
     
     if(!thunar_vfs_mime_handler_exec(THUNAR_VFS_MIME_HANDLER(mime_app),
                                      gtk_widget_get_screen(widget),
@@ -943,7 +947,8 @@ xfdesktop_file_icon_menu_open_folder(GtkWidget *widget,
     g_list_free(selected);
     
     info = xfdesktop_file_icon_peek_info(icon);
-    g_return_if_fail(info);
+    if(!info)
+        return;
     
     toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
     
@@ -961,7 +966,8 @@ xfdesktop_file_icon_menu_open_desktop(GtkWidget *widget,
     GtkWidget *toplevel;
     
     info = xfdesktop_file_icon_peek_info(icon);
-    g_return_if_fail(info);
+    if(!info)
+        return;
     
     toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
     
@@ -1010,7 +1016,8 @@ xfdesktop_file_icon_menu_other_app(GtkWidget *widget,
     g_list_free(selected);
     
     info = xfdesktop_file_icon_peek_info(icon);
-    g_return_if_fail(info);
+    if(!info)
+        return;
     
     fileman_proxy = xfdesktop_file_utils_peek_filemanager_proxy();
     if(fileman_proxy) {
@@ -1042,7 +1049,8 @@ xfdesktop_file_icon_menu_cut(GtkWidget *widget,
     GList *files;
     
     files = xfdesktop_icon_view_get_selected_items(fmanager->priv->icon_view);
-    g_return_if_fail(files);
+    if(!files)
+        return;
     
     xfdesktop_clipboard_manager_cut_files(clipboard_manager, files);
     
@@ -1057,7 +1065,8 @@ xfdesktop_file_icon_menu_copy(GtkWidget *widget,
     GList *files;
     
     files = xfdesktop_icon_view_get_selected_items(fmanager->priv->icon_view);
-    g_return_if_fail(files);
+    if(!files)
+        return;
     
     xfdesktop_clipboard_manager_copy_files(clipboard_manager, files);
     
@@ -2848,7 +2857,8 @@ xfdesktop_file_icon_manager_load_removable_media(XfdesktopFileIconManager *fmana
     ThunarVfsVolume *volume;
     
     /* ensure we don't re-enter if we're already set up */
-    g_return_if_fail(!fmanager->priv->removable_icons);
+    if(fmanager->priv->removable_icons)
+        return;
     
     if(!thunar_volume_manager) {
         thunar_volume_manager = thunar_vfs_volume_manager_get_default();
@@ -2894,7 +2904,8 @@ xfdesktop_file_icon_manager_remove_removable_media(XfdesktopFileIconManager *fma
 {
     GList *volumes, *l;
     
-    g_return_if_fail(fmanager->priv->removable_icons);
+    if(!fmanager->priv->removable_icons)
+        return;
     
     volumes = thunar_vfs_volume_manager_get_volumes(thunar_volume_manager);
     for(l = volumes; l; l = l->next) {
@@ -2933,9 +2944,12 @@ xfdesktop_file_icon_manager_real_init(XfdesktopIconViewManager *manager,
 #ifdef HAVE_THUNARX
     ThunarxProviderFactory *thunarx_pfac;
 #endif
-    
-    g_return_val_if_fail(!fmanager->priv->inited, FALSE);
-    
+
+    if(fmanager->priv->inited) {
+        g_warning("Initializing icon manager when already inited");
+        return FALSE;
+    }
+
     fmanager->priv->icon_view = icon_view;
     
     fmanager->priv->desktop = gtk_widget_get_toplevel(GTK_WIDGET(icon_view));
@@ -3036,9 +3050,12 @@ xfdesktop_file_icon_manager_fini(XfdesktopIconViewManager *manager)
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(manager);
     gint i;
-    
-    g_return_if_fail(fmanager->priv->inited);
-    
+
+    if(!fmanager->priv->inited) {
+        g_warning("Trying to de-init icon manager when it was never inited");
+        return;
+    }
+
     fmanager->priv->inited = FALSE;
     
     if(fmanager->priv->list_job) {
