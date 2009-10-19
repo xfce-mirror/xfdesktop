@@ -254,7 +254,10 @@ xfdesktop_file_utils_get_file_icon(const gchar *custom_icon_name,
         pix = xfdesktop_file_utils_get_fallback_icon(size);
     
     /* sanity check */
-    g_return_val_if_fail(pix, NULL);
+    if(G_UNLIKELY(!pix)) {
+        g_warning("Unable to find fallback icon");
+        return NULL;
+    }
     
     if(emblem) {
         gint emblem_pix_size = gdk_pixbuf_get_width(emblem);
@@ -377,7 +380,7 @@ xfdesktop_file_utils_display_folder_cb(DBusGProxy *proxy,
 {
     XfdesktopDisplayFolderData *dfdata = user_data;
     
-    g_return_if_fail(user_data);
+    g_return_if_fail(dfdata);
     
     xfdesktop_file_utils_set_window_cursor(dfdata->parent, GDK_LEFT_PTR);
     
@@ -525,9 +528,8 @@ xfdesktop_thunarx_file_info_get_uri(ThunarxFileInfo *file_info)
     if(!info)
         return NULL;
         
-    g_return_val_if_fail(thunar_vfs_path_to_uri(info->path, buf, PATH_MAX,
-                                                NULL) > 0,
-                         NULL);
+    if(thunar_vfs_path_to_uri(info->path, buf, PATH_MAX, NULL) <= 0)
+        return NULL;
     
     return g_strdup(buf);
 }
@@ -548,9 +550,8 @@ xfdesktop_thunarx_file_info_get_parent_uri(ThunarxFileInfo *file_info)
     if(G_UNLIKELY(!parent))
         return NULL;
     
-    g_return_val_if_fail(thunar_vfs_path_to_uri(parent, buf, PATH_MAX,
-                                                NULL) > 0,
-                         NULL);
+    if(thunar_vfs_path_to_uri(parent, buf, PATH_MAX, NULL) <= 0)
+        return NULL;
     
     return g_strdup(buf);
 }

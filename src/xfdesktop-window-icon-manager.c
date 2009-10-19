@@ -389,7 +389,8 @@ window_state_changed_cb(WnckWindow *window,
         i = 0;
         max_i = wmanager->priv->nworkspaces;
     } else {
-        g_return_if_fail(ws_num != -1);
+        if(ws_num == -1)
+            return;
         i = ws_num;
         max_i = i + 1;
     }
