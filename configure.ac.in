@@ -72,8 +72,6 @@ XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0],
                   [libxfce4util_minimum_version])
 XDT_CHECK_PACKAGE([LIBXFCE4UI], [libxfce4ui-1],
                   [libxfce4ui_minimum_version])
-XDT_CHECK_PACKAGE([LIBXFCE4SMCLIENT_PRIVATE], [libxfce4smclient-private-1],
-                  [libxfce4ui_minimum_version])
 XDT_CHECK_PACKAGE([LIBWNCK], [libwnck-1.0], [wnck_minimum_version])
 XDT_CHECK_PACKAGE([XFCONF], [libxfconf-0], [xfconf_minimum_version])
 

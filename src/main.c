@@ -48,7 +48,6 @@
 
 #include <xfconf/xfconf.h>
 #include <libxfce4ui/libxfce4ui.h>
-#include <libxfce4smclient-private/eggsmclient.h>
 
 #ifdef ENABLE_FILE_ICONS
 #include <dbus/dbus-glib.h>
