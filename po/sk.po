@@ -8,12 +8,12 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-18 18:20+0200\n"
-"PO-Revision-Date: 2009-09-07 20:25+0100\n"
+"PO-Revision-Date: 2009-11-04 14:44+0100\n"
 "Last-Translator: Robert Hartl <hartl.robert@gmail.com>\n"
-"Language-Team: slovak <sk-i18n@lists.linux.sk>\n"
+"Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: 8-bit\n"
 
 #: ../common/xfdesktop-common.c:95 ../common/xfdesktop-common.c:199
 #, c-format
@@ -52,7 +52,7 @@ msgstr "Ponuka Xfce"
 
 #: ../panel-plugin/desktop-menu-plugin.c:738
 msgid "Button"
-msgstr "ITlačidlo"
+msgstr "Tlačidlo"
 
 #: ../panel-plugin/desktop-menu-plugin.c:751
 msgid "Button _title:"
@@ -154,7 +154,7 @@ msgstr "Neplatný zoznam súbrov"
 
 #: ../settings/main.c:519
 msgid "Overwriting the file will cause its contents to be lost."
-msgstr "Prepísanie súboru bude všetko jeho obsah stratený."
+msgstr "Prepísanie súboru spôsobí, že všetok jeho obsah bude stratený."
 
 #: ../settings/main.c:521
 msgid "Replace"
@@ -421,7 +421,7 @@ msgstr "Ak zmažete súbor, bude nenávratne stratený."
 #: ../src/xfdesktop-file-icon-manager.c:695
 #, c-format
 msgid "Are you sure you want to delete the following %d files?"
-msgstr "Naozaj si prajete zmazať týchto %d súborov?"
+msgstr "Naozaj si prajete zmazať nasledújúcich %d súborov?"
 
 #: ../src/xfdesktop-file-icon-manager.c:698
 msgid "Delete Multiple Files"
@@ -665,7 +665,7 @@ msgstr "Voľné miesto:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:397
 msgid "Size:"
-msgstr "Veľkosť"
+msgstr "Veľkosť:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:413
 #: ../src/xfdesktop-regular-file-icon.c:486
@@ -955,7 +955,7 @@ msgstr "Pomocník"
 
 #: ../modules/menu/menu-data/xfce4-help.desktop.in.h:2
 msgid "Help using Xfce"
-msgstr "Pomocní pre používanie Xfce"
+msgstr "Pomocník pre používanie Xfce"
 
 #: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:1
 msgid "Log Out"
@@ -1135,7 +1135,7 @@ msgstr ""
 
 #: ../settings/xfdesktop-settings.glade.h:40
 msgid "Remove the selected image(s) from the list"
-msgstr "Odstrániť označené obrázky zo zoznamu"
+msgstr "Odobrať označené obrázky zo zoznamu"
 
 #: ../settings/xfdesktop-settings.glade.h:41
 msgid "Sa_turation:"
@@ -1155,7 +1155,7 @@ msgstr "Vyberte jeden obrázok ako pozadie"
 
 #: ../settings/xfdesktop-settings.glade.h:45
 msgid "Set desktop background and menu and icon behavior"
-msgstr "Nastavenie pozadia pracovnej plochy a ponuky a chovánia ikon"
+msgstr "Nastavenie pozadia pracovnej plochy a ponuky a správania ikon"
 
 #: ../settings/xfdesktop-settings.glade.h:46
 msgid "Sh_ow application icons in menu"
@@ -1203,7 +1203,8 @@ msgstr "Určuje \"pravú\" alebo \"spodnú\" farbu farebného prechodu"
 msgid ""
 "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
 msgstr ""
-"Určuje jednotnú farbu alebo \"ľavú\" alebo \"pravú\" farbu farebného prechodu"
+"Určuje jednotnú farbu alebo \"ľavú\" alebo \"vrchnú\" farbu farebného "
+"prechodu"
 
 #: ../settings/xfdesktop-settings.glade.h:58
 msgid "Specify how the image will be resized to fit the screen"
