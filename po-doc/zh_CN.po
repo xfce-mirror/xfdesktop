@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "POT-Creation-Date: 2009-04-20 14:33+0200\n"
-"PO-Revision-Date: 2009-11-18 20:13+0800\n"
+"PO-Revision-Date: 2009-11-19 13:02+0800\n"
 "Last-Translator:  Hunt Xu <huntxu@live.cn>\n"
 "Language-Team: Chinese (Simplified) <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
@@ -251,6 +251,10 @@ msgid ""
 "Settings and the Properties window of the Desktop directory and to start "
 "many of the applications found on your system."
 msgstr ""
+"在桌面上单击右键，将打开一个菜单。通过此菜单，您可以在新建一个 Thunar 窗口打"
+"开 Desktop 目录，创建启动器或者 URL 链接，或者从模板新建目录或文件，您还可以"
+"打开桌面设置对话框或者 Desktop 目录的属性窗口，更可以启动在您机器上找到的应用"
+"程序。"
 
 #: ../doc/C/xfdesktop.xml.in:163(title) ../doc/C/xfdesktop.xml.in:455(term)
 msgid "Desktop Menu"
@@ -268,6 +272,10 @@ msgid ""
 "filename> is often <filename>/etc</filename> and for source compiles, it "
 "defaults to <filename>/usr/local/etc</filename>."
 msgstr ""
+"菜单的配置文件 <filename>xfce-application.menu</filename> 可在 <filename>"
+"$sysconfdir/xdg/menus/xfce-application.menu</filename> 找到。对于二进制包，"
+"<filename>$sysconfdir</filename> 通常为 <filename>/etc</filename>，而如果"
+"是从源码编译，则默认为 <filename>/usr/local/etc</filename>。"
 
 #: ../doc/C/xfdesktop.xml.in:185(para)
 msgid ""
@@ -279,6 +287,12 @@ msgid ""
 "more information on menu editing, please see <ulink url=\"http://wiki.xfce."
 "org/howto/customize-menu\" type=\"http\">the Xfce Wiki</ulink>."
 msgstr ""
+"之前的菜单编辑器已经不再被使用。但是您同样可以自定义您的菜单，复制 <filename>"
+"xfce-applications.menu</filename> 到 <filename>$XDG_CONFIG_HOME/menus</filename>，"
+"然后使用文本编辑器诸如 <application>mousepad</application> 或 <application>gedit</"
+"application> 对该文件进行编辑。请注意该文件的编码必须为 UTF-8。关于编辑菜单的更多"
+"信息，请查看 <ulink url=\"http://wiki.xfce.org/howto/customize-menu\" type=\"http\">"
+"Xfce Wiki</ulink>。"
 
 #: ../doc/C/xfdesktop.xml.in:197(para)
 msgid ""
@@ -287,6 +301,9 @@ msgid ""
 "entries</ulink> in <filename>$XDG_DATA_HOME/applications</filename> to hide, "
 "modify or add entries in the menu."
 msgstr ""
+"在 <filename>$XDG_DATA_HOME/applications</filename> 中创建 <ulink url=\"http://"
+"standards.freedesktop.org/desktop-entry-spec/latest/\" type=\"http\">桌面项目文件"
+"</ulink> 可以实现更自由的定制，例如在菜单中隐藏、修改或者添加项目。"
 
 #: ../doc/C/xfdesktop.xml.in:207(title)
 msgid "The Window List Menu"
@@ -297,6 +314,8 @@ msgid ""
 "A middle-click on the desktop backdrop shows a list of all opened windows "
 "ordered by workspace. It also allows you to add or remove a workspace."
 msgstr ""
+"在桌面单击鼠标中键，将显示一个以所在工作区排序的当前所有打开的窗口的列表。"
+"该列表同时允许您添加或移除一个工作区。"
 
 #: ../doc/C/xfdesktop.xml.in:216(title) ../doc/C/xfdesktop.xml.in:475(term)
 msgid "Window List Menu"
@@ -319,6 +338,8 @@ msgid ""
 "button in the <ulink url=\"xfce-mcs-manager.html#manager-dialog\" type=\"http"
 "\">Xfce Settings Manager</ulink>."
 msgstr ""
+"您可以点击 <ulink url=\"xfce-mcs-manager.html#manager-dialog\" type=\"http"
+"\">Xfce 设置管理器</ulink> 中的 “桌面” 按钮来启动桌面设置对话框。"
 
 #: ../doc/C/xfdesktop.xml.in:242(title)
 msgid "Background Tab"
@@ -329,6 +350,7 @@ msgid ""
 "The Background tab allows you to set various options related to drawing the "
 "desktop backdrop picture."
 msgstr ""
+"在背景标签中，您可以设置与桌面背景图像有关的多个选项。"
 
 #: ../doc/C/xfdesktop.xml.in:250(title)
 msgid "Desktop Settings, Background Tab"
@@ -348,12 +370,16 @@ msgid ""
 "<application>@PACKAGE_NAME@</application> to ignore the backdrop image and "
 "only use the selected colors."
 msgstr ""
+"如果您希望 <application>@PACKAGE_NAME</application> 忽略桌面背景图片设置而只"
+"使用所选的颜色，请选择 <emphasis>“无”</emphasis> 选项。"
 
 #: ../doc/C/xfdesktop.xml.in:277(para)
 msgid ""
 "Select the <emphasis>\"Single image\"</emphasis> option if you want "
 "<application>@PACKAGE_NAME@</application> to draw a backdrop image."
 msgstr ""
+"如果您希望 <application>@PACKAGE_NAME@</application> 绘出背景图像，请"
+"选择 <emphasis>“单一图像”</emphasis> 选项"
 
 #: ../doc/C/xfdesktop.xml.in:282(para)
 msgid ""
@@ -361,10 +387,12 @@ msgid ""
 "<application>@PACKAGE_NAME@</application> to randomly choose the backdrop "
 "image among a list."
 msgstr ""
+"如果您希望 <application>@PACKAGE_NAME@</application> 随机从背景图像列表中"
+"抽取一幅图像作为背景，请选择 <emphasis>“图像列表”</emphasis> 选项。"
 
 #: ../doc/C/xfdesktop.xml.in:294(term)
 msgid "Images"
-msgstr ""
+msgstr "图像"
 
 #: ../doc/C/xfdesktop.xml.in:298(para)
 msgid ""
@@ -373,6 +401,9 @@ msgid ""
 "current backdrop. <application>@PACKAGE_NAME@</application> will update the "
 "background of your desktop automatically."
 msgstr ""
+"如果您选择 <emphasis>“单一图像”</emphasis> 选项，您可以从树形列表中选择一幅"
+"图像。点击图像可将其设置为当前桌面背景。<application>@PACKAGE_NAME@</application> "
+"会自动更新您的桌面背景。"
 
 #: ../doc/C/xfdesktop.xml.in:305(para)
 msgid ""
@@ -380,6 +411,8 @@ msgid ""
 "will pop a file chooser dialog up. Images can be removed using the \"minus\" "
 "button."
 msgstr ""
+"通过点击 “添加” 按钮，您可以从弹出的文件选择对话框中添加图像至树形列表中。"
+"点击 “移除” 按钮可以移除一幅图像。"
 
 #: ../doc/C/xfdesktop.xml.in:314(para)
 msgid ""
@@ -390,6 +423,10 @@ msgid ""
 "application> will then randomly choose a backdrop among this list every time "
 "it starts."
 msgstr ""
+"如果您选择 <emphasis>“图像列表”</emphasis> 选项，您可以点击 “新建” 按钮，通过"
+"文件选择对话框选择一个已存在的列表或新建一个列表。您同样可以使用 “添加” 和 "
+"“移除” 按钮来添加或者移除图像。<application>@PACKAGE_NAME@</application> 会"
+"在其每次启动时自动从列表中选择一幅图像作为桌面背景。"
 
 #: ../doc/C/xfdesktop.xml.in:326(para)
 msgid ""
@@ -400,12 +437,19 @@ msgid ""
 "also select the <emphasis>\"Auto\"</emphasis> item if you want to let "
 "<application>@PACKAGE_NAME@</application> take care of this setting."
 msgstr ""
+"依据图像大小，您可以选择五种风格选项 (<emphasis>“居中”</emphasis>、<emphasis>“平铺”</"
+"emphasis>、<emphasis>“拉伸”</emphasis>、<emphasis>“缩放”</"
+"emphasis> 和 <emphasis>“放大”</emphasis>) 中的一种指定背景图像在桌面上的放置"
+"方式。您还可以选择 <emphasis>“自动”</emphasis> 让 <application>@PACKAGE_NAME@</"
+"application> 决定这个选项。"
 
 #: ../doc/C/xfdesktop.xml.in:341(para)
 msgid ""
 "<application>@PACKAGE_NAME@</application> supports xinerama and multiscreen "
 "modes. In multiscreen mode, the Background tab shows one tab per screen."
 msgstr ""
+"<application>@PACKAGE_NAME@</application> 支持 xinerama 和多屏模式。"
+"在多屏模式中，每个屏幕都会有自己独立的背景标签供您进行设置。"
 
 #: ../doc/C/xfdesktop.xml.in:349(term)
 msgid "Colors"
@@ -416,6 +460,8 @@ msgid ""
 "The color style is one of four options in dropping list: a solid color, "
 "horizontal gradient, vertical gradient, or transparent."
 msgstr ""
+"颜色风格可以是在下拉菜单下列四种选项中的一个: 固定颜色、水平渐变、垂直渐"
+"变、透明。"
 
 #: ../doc/C/xfdesktop.xml.in:357(para)
 msgid ""
@@ -423,6 +469,9 @@ msgid ""
 "background without backdrop image, allows you to see the windows that are "
 "under the transparent desktop window. This requires an activated compositor."
 msgstr ""
+"当您使用单一的颜色背景而没有背景图像时，<emphasis>“透明”</emphasis> 选项允许"
+"您看到在透明桌面窗口之下的窗口。这个特性需要一个活动的图像复合器配合(例如使用 Compiz、"
+"打开 Xfwm 的混合效果等)。"
 
 #: ../doc/C/xfdesktop.xml.in:365(para)
 msgid ""
@@ -431,6 +480,9 @@ msgid ""
 "either of the gradient options are selected, both the first and second "
 "colors are available. Both of the color buttons open a color chooser dialog:"
 msgstr ""
+"两个颜色按钮允许您选择桌面的颜色。当选择固定颜色选项时，只有第一个颜色被使用。"
+"当选择两种渐变效果选项中的一种时，两个颜色都将被使用。点击颜色按钮，将打开"
+"颜色选择对话框:"
 
 #: ../doc/C/xfdesktop.xml.in:375(title)
 msgid "Select Background Color"
@@ -448,28 +500,36 @@ msgid ""
 "deepness, and amount of red, green and blue light in the color appear "
 "through the entries on the right side of the window."
 msgstr ""
+"在外边的颜色环选择您所需要的颜色，然后在环内的三角形中选择该颜色的深浅程度。"
+"相应的亮度、色深和该颜色中红、绿、蓝三原色的分量将会在窗口右部的各个项目中显"
+"示。"
 
 #: ../doc/C/xfdesktop.xml.in:399(listitem)
 msgid ""
 "You can click the eyedropper, then click anywhere on your screen to select "
 "the color."
 msgstr ""
+"您可以点击拾色器，然后在屏幕的任意位置点击以选择该处的颜色。"
 
 #: ../doc/C/xfdesktop.xml.in:406(emphasis)
 msgid "\"Color Name\""
-msgstr "\"颜色名称\""
+msgstr "“颜色名称”"
 
 #: ../doc/C/xfdesktop.xml.in:404(listitem)
 msgid ""
 "You can enter an HTML-style hexadecimal color value, or simply a color name, "
 "in the <placeholder-1/> entry."
 msgstr ""
+"在 <placeholder-1/> 框中，您可以输入一个 HTML 风格的十六进制颜色值，或者简单"
+"地输入颜色名称。"
 
 #: ../doc/C/xfdesktop.xml.in:411(para)
 msgid ""
 "The selected colors will fill the entire root window, and will remain "
 "visible through a transparent backdrop image."
 msgstr ""
+"所选的颜色将会填充整个桌面 root 窗口，而且如果使用透明的背景图像，仍然透过该"
+"图像可见。"
 
 #: ../doc/C/xfdesktop.xml.in:419(term)
 msgid "Adjustments"
@@ -480,6 +540,7 @@ msgid ""
 "The two sliders allow you to adjust the brightness and the saturation of the "
 "backdrop image and or color."
 msgstr ""
+"两个滑动快允许您调整背景图像或颜色的亮度和饱和度。"
 
 #: ../doc/C/xfdesktop.xml.in:433(title)
 msgid "Menus Tab"
@@ -499,12 +560,16 @@ msgid ""
 "\"</emphasis>, the <link linkend=\"xfdesktop-menu\">applications menu</link> "
 "will be shown when right clicking on the desktop."
 msgstr ""
+"如果您选中 <emphasis>“右键单击桌面时显示应用程序菜单” </emphasis>，"
+"<link linkend=\"xfdesktop-menu\">应用程序菜单</link> 将在您右键单击桌面时显示。"
 
 #: ../doc/C/xfdesktop.xml.in:467(para)
 msgid ""
 "The <emphasis>\"Show application icons in menu\"</emphasis> allows you to "
 "show or hide icons in the menu."
 msgstr ""
+"选择 <emphasis>“在菜单中显示应用程序图标”</emphasis> 允许您选择是否在菜单中显示"
+"应用程序的图标"
 
 #: ../doc/C/xfdesktop.xml.in:478(para)
 msgid ""
@@ -512,6 +577,8 @@ msgid ""
 "\"</emphasis> option, the <link linkend=\"xfdesktop-window-list\">window "
 "list menu</link> will be shown when middle clicking on the desktop."
 msgstr ""
+"如果您选中 <emphasis>“中键单击桌面时显示窗口列表菜单” </emphasis>，"
+"<link linkend=\"xfdesktop-window-list\">窗口列表菜单</link> 将在您中键单击桌面时显示。"
 
 #: ../doc/C/xfdesktop.xml.in:488(para)
 msgid ""
@@ -520,6 +587,9 @@ msgid ""
 "<emphasis>\"Show window list menu on desktop middle click\"</emphasis> is "
 "checked."
 msgstr ""
+"<emphasis>“在菜单中显示应用程序图标”</emphasis> 选项允许您选择是否在窗口列表菜单中显示"
+"应用程序的图标。该选项仅在 <emphasis>“中键单击桌面时显示窗口列表菜单”</emphasis> "
+"选项被选中时有效。"
 
 #: ../doc/C/xfdesktop.xml.in:499(para)
 msgid ""
@@ -529,6 +599,10 @@ msgid ""
 "portion of the menu. This option is only available when <emphasis>\"Show "
 "window list menu on desktop middle click\"</emphasis> is checked."
 msgstr ""
+"<emphasis>“在列表中显示工作区名称”</emphasis> 选项允许您选择是否在窗口列表菜"
+"单中显示工作区的名称。选中该项，则窗口会分别显示在其工作区名字下方，否则所有"
+"窗口都将显示在一起。该选项仅在 <emphasis>“中键单击桌面时显示窗口列表菜单”</emphasis> "
+"选项被选中时有效。"
 
 #: ../doc/C/xfdesktop.xml.in:512(para)
 msgid ""
@@ -537,6 +611,9 @@ msgid ""
 "workspace name. This option is only available when <emphasis>\"Show "
 "workspace names in list\"</emphasis> is checked."
 msgstr ""
+"<emphasis>“为每个工作区显示独立的窗口子菜单”</emphasis> 选项允许您将窗口显示在"
+"其所在工作区名称条目下的子菜单中。该选项仅在 <emphasis>“在列表中显示工作区名称"
+"”</emphasis> 选项被选中时有效。"
 
 #: ../doc/C/xfdesktop.xml.in:523(para)
 msgid ""
@@ -544,6 +621,8 @@ msgid ""
 "option allows you to have sticky windows displayed only in the active "
 "workspace, instead of displaying their item in all workspaces."
 msgstr ""
+"<emphasis>“仅在活动工作区显示粘滞窗口”</emphasis> 允许您选择在列表中仅将粘滞"
+"窗口显示在活动工作区下，而非所有工作区下。"
 
 #: ../doc/C/xfdesktop.xml.in:537(title)
 msgid "Icons Tab"
@@ -570,6 +649,10 @@ msgid ""
 "icons, to show the contents of your <filename>$XDG_DESKTOP_DIR</filename> "
 "directory on the desktop."
 msgstr ""
+"<emphasis>“图标类型”</emphasis> 下拉菜单允许您设置桌面图标的行为方式。有三个"
+"可用选项: 选择“无”完全禁用桌面图标；选择“最小化”，将为最小化窗口或者隐藏窗口"
+"显示一个图标；选择“文件/启动器”，将在桌面上显示您 <filename>$XDG_DESKTOP_DIR"
+"</filename> 目录中的内容。"
 
 #: ../doc/C/xfdesktop.xml.in:573(para)
 msgid ""
@@ -579,6 +662,9 @@ msgid ""
 "custom font size\"</emphasis> option. If you do not check this last option, "
 "the system defaults will be used."
 msgstr ""
+"当启用桌面图标时，您可以通过 <emphasis>“图标大小”</emphasis> 选项来调整图标"
+"的大小(像素)，通过 <emphasis>“使用自定义字体大小”</emphasis> 选项来调整图标"
+"下的文本大小(点数)。如果您未选中最后这个选项，将会使用系统默认的大小。"
 
 #: ../doc/C/xfdesktop.xml.in:586(term)
 msgid "Default Icons"
@@ -591,6 +677,9 @@ msgid ""
 "clicking those icons will open a Thunar window displaying the contents of a "
 "particular path."
 msgstr ""
+"当启用 <application>@PACKAGE_NAME@</application> 的桌面图标时，下列复选框允许"
+"您选择是否在桌面上显示一些特殊的图标。双击这些图标，将会打开一个显示特定路径"
+"内容的 Thunar 窗口。"
 
 #: ../doc/C/xfdesktop.xml.in:596(para)
 msgid ""
@@ -601,6 +690,10 @@ msgid ""
 "<emphasis>Removable devices</emphasis> represents floppy drives, USB drives "
 "and keys, external hard drives, optical discs, etc."
 msgstr ""
+"<emphasis>家目录</emphasis> 代表您的用户主目录，即 <filename>$HOME</filename>。"
+"<emphasis>文件系统</emphasis> 代表您系统的根目录，即是 <filename>/</filename>。"
+"<emphasis>垃圾箱</emphasis> 代表您设定的垃圾箱的目录，还有"
+"<emphasis>可移动设备</emphasis> 代表软盘、U 盘、外部硬盘、光盘等等。"
 
 #: ../doc/C/xfdesktop.xml.in:613(title)
 msgid "Hidden Options"
@@ -611,10 +704,12 @@ msgid ""
 "There are a number of hidden options that cannot be set by the Xfce Settings "
 "Manager. These require use of a text editor."
 msgstr ""
+"还有一些隐藏选项无法使用 Xfce 设置管理器来进行设置。您需要使用文本编辑器来设置"
+"这些选项。"
 
 #: ../doc/C/xfdesktop.xml.in:622(term)
 msgid "Icon View Text Appearance"
-msgstr ""
+msgstr "图标视图中的文本外观"
 
 #: ../doc/C/xfdesktop.xml.in:624(para)
 msgid ""
@@ -622,6 +717,8 @@ msgid ""
 "opacity of the icon text background, can be customized by putting directives "
 "simiar to the following in your <filename>~/.gtkrc-2.0</filename> file:"
 msgstr ""
+"图标文本的颜色、背景色以及背景阻光度，可以通过以下方式在您的 <filename>"
+"~/.gtkrc-2.0</filename> 文件中自定义。"
 
 #: ../doc/C/xfdesktop.xml.in:646(para)
 msgid ""
@@ -629,6 +726,8 @@ msgid ""
 "\"base\" entries set the text background color, and the three \"fg\" entries "
 "set the text color."
 msgstr ""
+"第一项设置文本背景色的阻光度。三个 \"base\" 项设置文本背景色。三个 \"fg\" 项"
+"则设置文本自身的颜色。"
 
 #: ../doc/C/xfdesktop.xml.in:652(para)
 msgid ""
@@ -637,10 +736,13 @@ msgid ""
 "desktop has keyboard focus. The \"ACTIVE\" entries set the color for when "
 "the icon is selected, but the desktop does not have keyboard focus."
 msgstr ""
+"\"NORMAL\" 项设置正常的、未被选中状态下的颜色。\"SELECTED\" 项设置当桌面获得"
+"键盘输入焦点且图标处于选中状态下的颜色，\"ACTIVE\" 项设置当图标处于选中，但"
+"桌面未获得键盘输入焦点状态下的颜色。"
 
 #: ../doc/C/xfdesktop.xml.in:665(title)
 msgid "Miscellaneous"
-msgstr "杂项设置"
+msgstr "杂项"
 
 #: ../doc/C/xfdesktop.xml.in:667(para)
 msgid ""
@@ -652,6 +754,11 @@ msgid ""
 "running instance to quit, run <application>@PACKAGE_NAME@</"
 "application><application>--quit</application>."
 msgstr ""
+"您同样可以通过命令行打开菜单或者窗口列表。这个特性便于与键盘快捷键协同使用。"
+"要打开菜单，请运行 <application>@PACKAGE_NAME@</application><application>--menu</"
+"application>，要打开窗口列表，请运行 <application>@PACKAGE_NAME@</"
+"application><application>--windowlist</application>。要退出当前正在运行的实例，"
+"请运行 <application>@PACKAGE_NAME@</application><application>--quit</application>。"
 
 #: ../doc/C/xfdesktop.xml.in:678(title)
 msgid "About <application>@PACKAGE_NAME@</application>"
@@ -665,6 +772,10 @@ msgid ""
 "information, please visit the <ulink url=\"http://www.xfce.org\" type=\"http"
 "\">Xfce website</ulink>."
 msgstr ""
+"<application>@PACKAGE_NAME@</application> 由 Brian Tarricone "
+"(<email>kelnos@xfce.org</email>)、Jasper Huijsmans (<email>jasper@xfce.org</"
+"email>) 和 Benedikt Meurer (<email>benny@xfce.org</email>) 共同编写。更多信息，"
+"请查看 <ulink url=\"http://www.xfce.org\" type=\"http\">Xfce 网站</ulink>。"
 
 #: ../doc/C/xfdesktop.xml.in:689(para)
 msgid ""
@@ -672,6 +783,8 @@ msgid ""
 "manual, use the bug tracking system at <ulink url=\"http://bugzilla.xfce.org/"
 "\" type=\"http\">http://bugzilla.xfce.org/</ulink>."
 msgstr ""
+"报告软件或此份文档的错误或者提供建议，请使用 <ulink type=\"http\" "
+"url=\"http://bugzilla.xfce.org/\">Xfce Bug 追踪系统</ulink>。"
 
 #: ../doc/C/xfdesktop.xml.in:696(para)
 msgid ""
@@ -681,6 +794,10 @@ msgid ""
 "the <ulink url=\"http://foo-projects.org/mailman/listinfo/xfce4-dev\" type="
 "\"http\">xfce4-dev</ulink> mailing list."
 msgstr ""
+"假如您在安装和使用此软件的过程中遇到任何问题，请在 <ulink type=\"http\" "
+"url=\"http://foo-projects.org/mailman/listinfo/xfce\">xfce</ulink> 邮件列表中"
+"提问。软件开发方面的讨论，则在 <ulink type=\"http\" url=\"http://foo-"
+"projects.org/mailman/listinfo/xfce4-dev\">xfce4-dev</ulink> 邮件列表中进行。"
 
 #: ../doc/C/xfdesktop.xml.in:706(para)
 msgid ""
@@ -688,6 +805,8 @@ msgid ""
 "License as published by the Free Software Foundation; either version 2 of "
 "the License, or (at your option) any later version."
 msgstr ""
+"此软件在自由软件基金会发布的 GNU 通用公共许可协议的第二版或者(您可以选择)"
+"更新的版本的条款约束下发布。"
 
 #: ../doc/C/xfdesktop.xml.in:712(para)
 msgid ""
@@ -695,6 +814,9 @@ msgid ""
 "this program; if not, write to the Free Software Foundation, Inc., 51 "
 "Franklin St, Fifth Floor, Boston, MA 02110-1301, USA."
 msgstr ""
+"您应该能够随此软件获得一份 GNU 通用公共许可协议的副本；如果没有，请致信自由"
+"软件基金会: Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, "
+"Boston, MA 02110-1301, USA。"
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2.
 #: ../doc/C/xfdesktop.xml.in:0(None)
