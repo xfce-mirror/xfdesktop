@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: xfce-i18n@xfce.org\n"
 "POT-Creation-Date: 2009-04-20 14:33+0200\n"
-"PO-Revision-Date: 2009-12-18 02:18+0100\n"
+"PO-Revision-Date: 2009-12-18 13:05+0100\n"
 "Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -157,7 +157,7 @@ msgstr ""
 
 #: ../doc/C/xfdesktop.xml.in:90(para)
 msgid "The <application>@PACKAGE_NAME@</application> package installs a settings dialog for use with the <emphasis>Xfce 4 Settings Manager</emphasis>. From this dialog you can change the backdrop image and color and change settings for the menu and the window list."
-msgstr "O paquete <application>@PACKAGE_NAME@</application> instala un diálogo de configuración que usa o <emphasis>Xestor de configuración de Xfce 4</emphasis>. Dende este diálogo pode cambiar a configuración da imaxe e maila cor de fondo e tamén a configuración do menú e da lista de ventás."
+msgstr "O paquete <application>@PACKAGE_NAME@</application> instala un diálogo de configuración que usa o <emphasis>Xestor de configuración de Xfce 4</emphasis>. Dende este diálogo pode cambiar a configuración da imaxe e maila cor de fondo e tamén a configuración do menú e da lista de fiestras."
 
 #: ../doc/C/xfdesktop.xml.in:99(title)
 msgid "Backdrop"
@@ -177,7 +177,7 @@ msgstr "Ademais de mostrar a imaxe de fondo, <application>@PACKAGE_NAME@</applic
 
 #: ../doc/C/xfdesktop.xml.in:121(title)
 msgid "Minimized Window Icons"
-msgstr "Iconas de xanelas minimizadas"
+msgstr "Iconas de fiestras minimizadas"
 
 #: ../doc/C/xfdesktop.xml.in:123(para)
 msgid "One mode of operation displays minimized applications as icons on the desktop, which can be rearranged, and will remember their positions when the window is unhidden and then later minimized again. The icons also provide a right-click menu similar to the window's control menu accessed by clicking the button in the top-left corner of the window."
@@ -376,7 +376,7 @@ msgstr "<emphasis>\"Mostrar as iconas das aplicacións no menú\"</emphasis> per
 
 #: ../doc/C/xfdesktop.xml.in:478(para)
 msgid "If you check the <emphasis>\"Show window list menu on desktop middle click\"</emphasis> option, the <link linkend=\"xfdesktop-window-list\">window list menu</link> will be shown when middle clicking on the desktop."
-msgstr ""
+msgstr "Se marca a opción <emphasis>\"Mostrar o menú da lista de fiestras ao premer co botón central no escritorio\"</emphasis>, mostrarase o <link linkend=\"xfdesktop-window-list\">menú de listas de fiestras</link> cando prema co botón central do rato no escritorio."
 
 #: ../doc/C/xfdesktop.xml.in:488(para)
 msgid "The <emphasis>\"Show application icons in menu\"</emphasis> option allows you to show or hide icons in the menu. This option is only available when <emphasis>\"Show window list menu on desktop middle click\"</emphasis> is checked."
@@ -416,7 +416,7 @@ msgstr ""
 
 #: ../doc/C/xfdesktop.xml.in:573(para)
 msgid "If desktop icons are enabled, you can control the size of the icon itself (in pixels) with the <emphasis>\"Icon size\"</emphasis> option, and the font size used to display the icon text (in points) with the <emphasis>\"Use custom font size\"</emphasis> option. If you do not check this last option, the system defaults will be used."
-msgstr ""
+msgstr "Se se activan a iconas no escritorio, pode controlar o tamaño das iconas (en píxels) ca opción <emphasis>\"Tamaño das iconas\"</emphasis>, e o tamaño do tipo de letra usado para mostrar o texto das iconas (en puntos) ca opción <emphasis>\"Usar tamaño de tipo de letra personalizado\"</emphasis>. Se non marca esta última opción usaranse as predefinicións do sistema."
 
 #: ../doc/C/xfdesktop.xml.in:586(term)
 msgid "Default Icons"
@@ -424,7 +424,7 @@ msgstr "Iconas predeterminadas"
 
 #: ../doc/C/xfdesktop.xml.in:589(para)
 msgid "The checkboxes allow you to show or hide special icons on the desktop, when <application>@PACKAGE_NAME@</application> is set to draw icons. Double clicking those icons will open a Thunar window displaying the contents of a particular path."
-msgstr "As caixas de verificación permítenlle mostrar ou ocultar iconas especiais no escritorio. cando se define que <application>@PACKAGE_NAME@</application> debe debuxar as iconas. Ao facer dobre clic nesas iconas abrirase unha xanela de Thunar mostrando o contido dunha ruta particular."
+msgstr "As caixas de verificación permítenlle mostrar ou ocultar iconas especiais no escritorio. cando se define que <application>@PACKAGE_NAME@</application> debe debuxar as iconas. Ao facer dobre clic nesas iconas abrirase unha fiestra de Thunar mostrando o contido dunha ruta particular."
 
 #: ../doc/C/xfdesktop.xml.in:596(para)
 msgid "<emphasis>Home</emphasis> stands for your home folder, that is to say, <filename>$HOME</filename>. <emphasis>Filesystem</emphasis> stands for the root of your file system, also known as <filename>/</filename>. <emphasis>Trash</emphasis> stands for your trash folder, and <emphasis>Removable devices</emphasis> represents floppy drives, USB drives and keys, external hard drives, optical discs, etc."
@@ -444,11 +444,11 @@ msgstr "Aparencia do texto da vista de icona"
 
 #: ../doc/C/xfdesktop.xml.in:624(para)
 msgid "The colors of the icon text and the icon text background, as well as the opacity of the icon text background, can be customized by putting directives simiar to the following in your <filename>~/.gtkrc-2.0</filename> file:"
-msgstr ""
+msgstr "As cores do texto das iconas e do fondo do texto das iconas, así como a opacidade do fondo do texto das iconas, pode personalizarse poñendo directivas similares ás seguintes no ficheiro <filename>~/.gtkrc-2.0</filename>:"
 
 #: ../doc/C/xfdesktop.xml.in:646(para)
 msgid "The first entry sets the opacity of the rounded text background. The three \"base\" entries set the text background color, and the three \"fg\" entries set the text color."
-msgstr ""
+msgstr "A primeira entrada define a opacidade do fondo do texto redondeado. As tres entradas \"base\" definen a cor de fondo, e as tres entradas \"fg\" definen a cor do texto."
 
 #: ../doc/C/xfdesktop.xml.in:652(para)
 msgid "The \"NORMAL\" entries set the color for the regular, unselected state. The \"SELECTED\" entries set the color for when the icon is selected, and the desktop has keyboard focus. The \"ACTIVE\" entries set the color for when the icon is selected, but the desktop does not have keyboard focus."
