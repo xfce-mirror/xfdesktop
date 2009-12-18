@@ -12,94 +12,93 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-18 18:20+0200\n"
-"PO-Revision-Date: 2009-10-20 23:35+0800\n"
+"POT-Creation-Date: 2009-12-18 16:36+0000\n"
+"PO-Revision-Date: 2009-12-19 01:48+0800\n"
 "Last-Translator: Hunt Xu <huntxu@live.cn>\n"
 "Language-Team: Chinese <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.1\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../common/xfdesktop-common.c:95 ../common/xfdesktop-common.c:199
-#, c-format
+#: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
 msgid "Backdrop list file is not valid"
 msgstr "背景列表文件名无效"
 
-#: ../panel-plugin/desktop-menu-plugin.c:639
+#: ../panel-plugin/desktop-menu-plugin.c:669
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "无法启动 xfce4 菜单编辑器: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:662
+#: ../panel-plugin/desktop-menu-plugin.c:692
 msgid "Select Icon"
 msgstr "选择图标"
 
-#: ../panel-plugin/desktop-menu-plugin.c:664
+#: ../panel-plugin/desktop-menu-plugin.c:694
 msgid "Select Menu File"
 msgstr "选择菜单文件"
 
-#: ../panel-plugin/desktop-menu-plugin.c:691
+#: ../panel-plugin/desktop-menu-plugin.c:721
 msgid "All Files"
 msgstr "所有文件"
 
-#: ../panel-plugin/desktop-menu-plugin.c:698
+#: ../panel-plugin/desktop-menu-plugin.c:728
 msgid "Image Files"
 msgstr "图像文件"
 
-#: ../panel-plugin/desktop-menu-plugin.c:701
+#: ../panel-plugin/desktop-menu-plugin.c:731
 msgid "Menu Files"
 msgstr "菜单文件"
 
-#: ../panel-plugin/desktop-menu-plugin.c:726
+#: ../panel-plugin/desktop-menu-plugin.c:756
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Xfce 菜单"
 
-#: ../panel-plugin/desktop-menu-plugin.c:738
+#: ../panel-plugin/desktop-menu-plugin.c:768
 msgid "Button"
 msgstr "按钮"
 
-#: ../panel-plugin/desktop-menu-plugin.c:751
+#: ../panel-plugin/desktop-menu-plugin.c:781
 msgid "Button _title:"
 msgstr "按钮标题(_T)："
 
-#: ../panel-plugin/desktop-menu-plugin.c:764
+#: ../panel-plugin/desktop-menu-plugin.c:794
 msgid "_Show title in button"
 msgstr "在按钮中显示标题(_S)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:771
+#: ../panel-plugin/desktop-menu-plugin.c:801
 msgid "Menu File"
 msgstr "菜单文件"
 
-#: ../panel-plugin/desktop-menu-plugin.c:783
+#: ../panel-plugin/desktop-menu-plugin.c:813
 msgid "Use default _desktop menu file"
 msgstr "使用默认桌面菜单文件(_D)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:792
+#: ../panel-plugin/desktop-menu-plugin.c:822
 msgid "Use _custom menu file:"
 msgstr "使用自定义菜单文件(_C)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:833
+#: ../panel-plugin/desktop-menu-plugin.c:863
 msgid "_Edit Menu"
 msgstr "编辑菜单(_M)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:840
+#: ../panel-plugin/desktop-menu-plugin.c:870
 msgid "Icons"
 msgstr "图标"
 
-#: ../panel-plugin/desktop-menu-plugin.c:852
+#: ../panel-plugin/desktop-menu-plugin.c:882
 msgid "_Button icon:"
 msgstr "按钮图标(_B)："
 
-#: ../panel-plugin/desktop-menu-plugin.c:866
+#: ../panel-plugin/desktop-menu-plugin.c:896
 msgid "Show _icons in menu"
 msgstr "在菜单中显示图标(_I)"
 
-#: ../panel-plugin/desktop-menu-plugin.c:901
+#: ../panel-plugin/desktop-menu-plugin.c:931
 msgid "There is already a panel menu registered for this screen"
 msgstr "这个屏幕已经注册了一个面板菜单"
 
-#: ../panel-plugin/desktop-menu-plugin.c:1016
+#: ../panel-plugin/desktop-menu-plugin.c:1046
 msgid "Edit Menu"
 msgstr "编辑菜单"
 
@@ -181,135 +180,128 @@ msgstr "图像文件"
 msgid "All files"
 msgstr "所有文件"
 
-#: ../settings/main.c:1250
+#: ../settings/main.c:1249
 #, c-format
 msgid "Screen %d, Monitor %d (%s)"
 msgstr "屏幕 %d，显示器 %d (%s)"
 
-#: ../settings/main.c:1255
+#: ../settings/main.c:1254
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "屏幕 %d，显示器 %d"
 
-#: ../settings/main.c:1258
+#: ../settings/main.c:1257
 #, c-format
 msgid "Screen %d"
 msgstr "屏幕 %d"
 
-#: ../settings/main.c:1264
+#: ../settings/main.c:1263
 #, c-format
 msgid "Monitor %d (%s)"
 msgstr "显示器 %d (%s)"
 
-#: ../settings/main.c:1269
+#: ../settings/main.c:1268
 #, c-format
 msgid "Monitor %d"
 msgstr "显示器 %d"
 
-#: ../settings/main.c:1471
+#: ../settings/main.c:1477
 msgid "Settings manager socket"
 msgstr "设置管理器套接字"
 
-#: ../settings/main.c:1471
+#: ../settings/main.c:1477
 msgid "SOCKET ID"
 msgstr "套接字 ID"
 
-#: ../settings/main.c:1472
+#: ../settings/main.c:1478
 msgid "Version information"
 msgstr "版本信息"
 
-#: ../settings/main.c:1492
+#: ../settings/main.c:1498
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "'%s --help' 可列出使用方法。"
 
-#: ../settings/main.c:1504
+#: ../settings/main.c:1510
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce 开发团队，版权所有。"
 
-#: ../settings/main.c:1505
+#: ../settings/main.c:1511
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "请向 <%s> 报告程序错误。"
 
-#: ../settings/main.c:1512
+#: ../settings/main.c:1518
 msgid "Desktop Settings"
 msgstr "桌面设置"
 
-#: ../settings/main.c:1514
+#: ../settings/main.c:1520
 msgid "Unable to contact settings server"
 msgstr "无法连到设置服务器"
 
-#: ../src/main.c:240
+#: ../src/main.c:228
+msgid "Display version information"
+msgstr "显示版本信息"
+
+#: ../src/main.c:229
+msgid "Reload all settings, refresh image list"
+msgstr "重新载入全部设置，刷新图像列表"
+
+#: ../src/main.c:230
+msgid "Pop up the menu (at the current mouse position)"
+msgstr "弹出菜单 (在鼠标当前位置)"
+
+#: ../src/main.c:231
+msgid "Pop up the window list (at the current mouse position)"
+msgstr "弹出窗口列表 (在鼠标当前位置)"
+
+#: ../src/main.c:232
+msgid "Cause xfdesktop to quit"
+msgstr "退出 xfdesktop"
+
+#: ../src/main.c:252
+#, c-format
+msgid "Failed to parse arguments: %s\n"
+msgstr "无法解析参数: %s\n"
+
+#: ../src/main.c:260
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "这是 %s 版本 %s， 运行于 Xfce %s。\n"
 
-#: ../src/main.c:242
+#: ../src/main.c:262
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "依 GTK+ %d.%d.%d 编译, 链接到 GTK+ %d.%d.%d。"
 
-#: ../src/main.c:246
-#, c-format
+#: ../src/main.c:266
 msgid "Build options:\n"
 msgstr "编译选项：\n"
 
-#: ../src/main.c:247
+#: ../src/main.c:267
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    桌面菜单：     %s\n"
 
-#: ../src/main.c:249 ../src/main.c:256 ../src/main.c:263
+#: ../src/main.c:269 ../src/main.c:276 ../src/main.c:283
 msgid "enabled"
 msgstr "启用"
 
-#: ../src/main.c:251 ../src/main.c:258 ../src/main.c:265
+#: ../src/main.c:271 ../src/main.c:278 ../src/main.c:285
 msgid "disabled"
 msgstr "禁用"
 
-#: ../src/main.c:254
+#: ../src/main.c:274
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    桌面图标：      %s\n"
 
-#: ../src/main.c:261
+#: ../src/main.c:281
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    桌面文件图标：   %s\n"
 
-#: ../src/main.c:290
-#, c-format
-msgid "%s: Unknown option: %s\n"
-msgstr "%s：未知选项： %s\n"
-
-#: ../src/main.c:291
-#, c-format
-msgid "Options are:\n"
-msgstr "选项为：\n"
-
-#: ../src/main.c:292
-#, c-format
-msgid "    --reload      Reload all settings, refresh image list\n"
-msgstr "    --reload    重新载入全部设置，刷新图像列表\n"
-
-#: ../src/main.c:293
-#, c-format
-msgid "    --menu        Pop up the menu (at the current mouse position)\n"
-msgstr "    --menu    弹出菜单 (在鼠标当前位置)\n"
-
-#: ../src/main.c:294
-#, c-format
-msgid ""
-"    --windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr "    --windowlist    弹出窗口列表 (在鼠标当前位置)\n"
-
-#: ../src/main.c:295
-#, c-format
-msgid "    --quit        Cause xfdesktop to quit\n"
-msgstr "     --quit        退出 xfdesktop\n"
-
-#: ../src/main.c:316
+#: ../src/main.c:312
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s 没有运行。\n"
@@ -351,7 +343,7 @@ msgstr "移除工作区(_R) %d"
 msgid "_Remove Workspace '%s'"
 msgstr "移除工作区(_R) “%s”"
 
-#: ../src/xfce-desktop.c:742 ../settings/xfdesktop-settings.glade.h:20
+#: ../src/xfce-desktop.c:742
 msgid "Desktop"
 msgstr "桌面"
 
@@ -364,366 +356,366 @@ msgstr "无法从背景列表文件 \"%s\" 中加载图片"
 msgid "Desktop Error"
 msgstr "桌面错误"
 
-#: ../src/xfdesktop-file-icon-manager.c:478
+#: ../src/xfdesktop-file-icon-manager.c:479
 #, c-format
 msgid ""
 "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr "Xfdesktop 无法创建文件夹 \"%s\" 来存放桌面项目："
 
-#: ../src/xfdesktop-file-icon-manager.c:480
-#: ../src/xfdesktop-file-icon-manager.c:491
-#: ../src/xfdesktop-file-icon-manager.c:1241
+#: ../src/xfdesktop-file-icon-manager.c:481
+#: ../src/xfdesktop-file-icon-manager.c:492
+#: ../src/xfdesktop-file-icon-manager.c:1253
 msgid "Create Folder Failed"
 msgstr "无法创建文件夹"
 
-#: ../src/xfdesktop-file-icon-manager.c:489
+#: ../src/xfdesktop-file-icon-manager.c:490
 #, c-format
 msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
 "folder."
 msgstr "\"%s\" 不是文件夹，Xfdesktop 无法用其放置桌面项目。"
 
-#: ../src/xfdesktop-file-icon-manager.c:493
+#: ../src/xfdesktop-file-icon-manager.c:494
 msgid "Please delete or rename the file."
 msgstr "请删除或重命名文件"
 
-#: ../src/xfdesktop-file-icon-manager.c:630
+#: ../src/xfdesktop-file-icon-manager.c:631
 #, c-format
 msgid "Rename \"%s\""
 msgstr "重命名 \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:637
-#: ../src/xfdesktop-file-icon-manager.c:1313
-#: ../src/xfdesktop-file-icon-manager.c:1404
-#: ../src/xfdesktop-file-icon-manager.c:1415
+#: ../src/xfdesktop-file-icon-manager.c:638
+#: ../src/xfdesktop-file-icon-manager.c:1327
+#: ../src/xfdesktop-file-icon-manager.c:1419
+#: ../src/xfdesktop-file-icon-manager.c:1430
 msgid "Enter the new name:"
 msgstr "输入新名称："
 
-#: ../src/xfdesktop-file-icon-manager.c:639
+#: ../src/xfdesktop-file-icon-manager.c:640
 msgid "Rename"
 msgstr "重命名"
 
-#: ../src/xfdesktop-file-icon-manager.c:676
+#: ../src/xfdesktop-file-icon-manager.c:677
 #, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "您确定要删除“%s”吗？"
 
-#: ../src/xfdesktop-file-icon-manager.c:679 ../src/xfdesktop-file-utils.c:55
+#: ../src/xfdesktop-file-icon-manager.c:680 ../src/xfdesktop-file-utils.c:56
 msgid "Question"
 msgstr "问题"
 
-#: ../src/xfdesktop-file-icon-manager.c:681
-#: ../src/xfdesktop-file-icon-manager.c:701
+#: ../src/xfdesktop-file-icon-manager.c:682
+#: ../src/xfdesktop-file-icon-manager.c:702
 msgid "If you delete a file, it is permanently lost."
 msgstr "如果您删除一个文件，它将永远消失。"
 
-#: ../src/xfdesktop-file-icon-manager.c:695
+#: ../src/xfdesktop-file-icon-manager.c:696
 #, c-format
 msgid "Are you sure you want to delete the following %d files?"
 msgstr "您确定要删除下面 %d 个文件吗？"
 
-#: ../src/xfdesktop-file-icon-manager.c:698
+#: ../src/xfdesktop-file-icon-manager.c:699
 msgid "Delete Multiple Files"
 msgstr "删除多个文件"
 
 #. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:917
-#: ../src/xfdesktop-file-icon-manager.c:1668 ../src/xfdesktop-file-icon.c:140
-#: ../src/xfdesktop-file-utils.c:353
+#: ../src/xfdesktop-file-icon-manager.c:922
+#: ../src/xfdesktop-file-icon-manager.c:1683 ../src/xfdesktop-file-icon.c:141
+#: ../src/xfdesktop-file-utils.c:363
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "无法启动 \"%s\"："
 
-#: ../src/xfdesktop-file-icon-manager.c:919
-#: ../src/xfdesktop-file-icon-manager.c:977
-#: ../src/xfdesktop-file-icon-manager.c:1275
-#: ../src/xfdesktop-file-icon-manager.c:1669 ../src/xfdesktop-file-icon.c:142
-#: ../src/xfdesktop-file-utils.c:356
+#: ../src/xfdesktop-file-icon-manager.c:924
+#: ../src/xfdesktop-file-icon-manager.c:984
+#: ../src/xfdesktop-file-icon-manager.c:1287
+#: ../src/xfdesktop-file-icon-manager.c:1684 ../src/xfdesktop-file-icon.c:143
+#: ../src/xfdesktop-file-utils.c:366
 msgid "Launch Error"
 msgstr "启动错误"
 
-#: ../src/xfdesktop-file-icon-manager.c:978
+#: ../src/xfdesktop-file-icon-manager.c:985
 msgid "The application chooser could not be opened."
 msgstr "相关应用程序找不到或无法打开"
 
-#: ../src/xfdesktop-file-icon-manager.c:979 ../src/xfdesktop-file-utils.c:358
+#: ../src/xfdesktop-file-icon-manager.c:986 ../src/xfdesktop-file-utils.c:368
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
 msgstr "这项功能需要文件管理器提供相关服务(比如 Thunar 所提供的)。"
 
-#: ../src/xfdesktop-file-icon-manager.c:1172
+#: ../src/xfdesktop-file-icon-manager.c:1182
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "用 \"%s\" 打开(_O)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1175
+#: ../src/xfdesktop-file-icon-manager.c:1185
 #, c-format
 msgid "Open With \"%s\""
 msgstr "用 \"%s\" 打开"
 
-#: ../src/xfdesktop-file-icon-manager.c:1238
+#: ../src/xfdesktop-file-icon-manager.c:1250
 #, c-format
 msgid "Unable to create folder named \"%s\":"
 msgstr "无法创建文件夹 \"%s\"："
 
-#: ../src/xfdesktop-file-icon-manager.c:1277
+#: ../src/xfdesktop-file-icon-manager.c:1289
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr "无法启动创建及编辑启动器和链接所必需的 \"exo-desktop-item-edit\"。"
 
-#: ../src/xfdesktop-file-icon-manager.c:1310
+#: ../src/xfdesktop-file-icon-manager.c:1324
 msgid "Create New Folder"
 msgstr "创建新文件夹"
 
-#: ../src/xfdesktop-file-icon-manager.c:1314
+#: ../src/xfdesktop-file-icon-manager.c:1328
 msgid "New Folder"
 msgstr "新建文件夹"
 
-#: ../src/xfdesktop-file-icon-manager.c:1315
-#: ../src/xfdesktop-file-icon-manager.c:1406
-#: ../src/xfdesktop-file-icon-manager.c:1417
+#: ../src/xfdesktop-file-icon-manager.c:1329
+#: ../src/xfdesktop-file-icon-manager.c:1421
+#: ../src/xfdesktop-file-icon-manager.c:1432
 msgid "Create"
 msgstr "创建"
 
-#: ../src/xfdesktop-file-icon-manager.c:1351
+#: ../src/xfdesktop-file-icon-manager.c:1365
 #, c-format
 msgid "Unable to create file named \"%s\":"
 msgstr "无法创建文件夹 \"%s\"："
 
-#: ../src/xfdesktop-file-icon-manager.c:1354
+#: ../src/xfdesktop-file-icon-manager.c:1368
 msgid "Create File Failed"
 msgstr "创建文件失败"
 
-#: ../src/xfdesktop-file-icon-manager.c:1393
+#: ../src/xfdesktop-file-icon-manager.c:1408
 #, c-format
 msgid "Create Document from template \"%s\""
 msgstr "从模板 \"%s\" 创建文档"
 
-#: ../src/xfdesktop-file-icon-manager.c:1412
+#: ../src/xfdesktop-file-icon-manager.c:1427
 msgid "Create Empty File"
 msgstr "创建空文件"
 
-#: ../src/xfdesktop-file-icon-manager.c:1416
+#: ../src/xfdesktop-file-icon-manager.c:1431
 msgid "New Empty File"
 msgstr "新建空文件"
 
-#: ../src/xfdesktop-file-icon-manager.c:1449
+#: ../src/xfdesktop-file-icon-manager.c:1464
 #, c-format
 msgid "Unable to create file \"%s\":"
 msgstr "无法创建文件 \"%s\" ："
 
-#: ../src/xfdesktop-file-icon-manager.c:1450
+#: ../src/xfdesktop-file-icon-manager.c:1465
 msgid "Create Error"
 msgstr "创建错误"
 
-#: ../src/xfdesktop-file-icon-manager.c:1735
+#: ../src/xfdesktop-file-icon-manager.c:1750
 msgid "_Open all"
 msgstr "打开所有(_O)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1751
+#: ../src/xfdesktop-file-icon-manager.c:1766
 msgid "_Open in New Window"
 msgstr "从新窗口中打开(_O)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1753
-#: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:561
+#: ../src/xfdesktop-file-icon-manager.c:1768
+#: ../src/xfdesktop-special-file-icon.c:637 ../src/xfdesktop-volume-icon.c:565
 msgid "_Open"
 msgstr "打开(_O)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1768
+#: ../src/xfdesktop-file-icon-manager.c:1785
 msgid "Create _Launcher..."
 msgstr "创建启动器(_L)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1789
+#: ../src/xfdesktop-file-icon-manager.c:1807
 msgid "Create _URL Link..."
 msgstr "创建 URL 链接(_U)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1806
+#: ../src/xfdesktop-file-icon-manager.c:1827
 msgid "Create _Folder..."
 msgstr "创建文件夹(_F)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1826
+#: ../src/xfdesktop-file-icon-manager.c:1848
 msgid "Create From _Template"
 msgstr "从模板创建文档(_T)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1860
+#: ../src/xfdesktop-file-icon-manager.c:1878
 msgid "_Empty File"
 msgstr "空文件(_E)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1876
+#: ../src/xfdesktop-file-icon-manager.c:1894
 msgid "_Execute"
 msgstr "执行(_E)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1894
+#: ../src/xfdesktop-file-icon-manager.c:1912
 msgid "_Edit Launcher"
 msgstr "编辑启动器(_E)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1934
+#: ../src/xfdesktop-file-icon-manager.c:1952
 msgid "Open With"
 msgstr "打开方式"
 
-#: ../src/xfdesktop-file-icon-manager.c:1965
+#: ../src/xfdesktop-file-icon-manager.c:1983
 msgid "Open With Other _Application..."
 msgstr "用其它应用程序打开(_A)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2072
+#: ../src/xfdesktop-file-icon-manager.c:2090
 msgid "_Rename..."
 msgstr "重命名(_R)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2090
+#: ../src/xfdesktop-file-icon-manager.c:2108
 msgid "Desktop _Settings..."
 msgstr "桌面设置(_S)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2100
-#: ../src/xfdesktop-volume-icon.c:610
+#: ../src/xfdesktop-file-icon-manager.c:2118
+#: ../src/xfdesktop-volume-icon.c:614
 msgid "_Properties..."
 msgstr "属性(_P)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:3339
-#: ../src/xfdesktop-regular-file-icon.c:382
+#: ../src/xfdesktop-file-icon-manager.c:3370
+#: ../src/xfdesktop-regular-file-icon.c:391
 #, c-format
 msgid "Failed to run \"%s\":"
 msgstr "无法运行 \"%s\" "
 
-#: ../src/xfdesktop-file-icon-manager.c:3341
-#: ../src/xfdesktop-regular-file-icon.c:384
+#: ../src/xfdesktop-file-icon-manager.c:3372
+#: ../src/xfdesktop-regular-file-icon.c:393
 msgid "Run Error"
 msgstr "运行错误"
 
-#: ../src/xfdesktop-file-icon.c:144
+#: ../src/xfdesktop-file-icon.c:145
 msgid "The associated application could not be found or executed."
 msgstr "无法找到或执行相关应用程序。"
 
-#: ../src/xfdesktop-file-properties-dialog.c:103
+#: ../src/xfdesktop-file-properties-dialog.c:104
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
 msgstr " 无法将 \"%s\" 默认应用程序设为 \"%s\""
 
-#: ../src/xfdesktop-file-properties-dialog.c:106
+#: ../src/xfdesktop-file-properties-dialog.c:107
 msgid "Properties Error"
 msgstr "属性错误"
 
-#: ../src/xfdesktop-file-properties-dialog.c:138
+#: ../src/xfdesktop-file-properties-dialog.c:139
 msgid "None"
 msgstr "无"
 
-#: ../src/xfdesktop-file-properties-dialog.c:138
+#: ../src/xfdesktop-file-properties-dialog.c:139
 msgid "Write only"
 msgstr "只写"
 
-#: ../src/xfdesktop-file-properties-dialog.c:138
+#: ../src/xfdesktop-file-properties-dialog.c:139
 msgid "Read only"
 msgstr "只读"
 
-#: ../src/xfdesktop-file-properties-dialog.c:138
+#: ../src/xfdesktop-file-properties-dialog.c:139
 msgid "Read & Write"
 msgstr "读写"
 
-#: ../src/xfdesktop-file-properties-dialog.c:163
+#: ../src/xfdesktop-file-properties-dialog.c:165
 msgid "General"
 msgstr "常规"
 
-#: ../src/xfdesktop-file-properties-dialog.c:188
+#: ../src/xfdesktop-file-properties-dialog.c:190
 msgid "Name:"
 msgstr "名称:"
 
-#: ../src/xfdesktop-file-properties-dialog.c:214
+#: ../src/xfdesktop-file-properties-dialog.c:216
 msgid "Kind:"
 msgstr "类型："
 
-#: ../src/xfdesktop-file-properties-dialog.c:234
+#: ../src/xfdesktop-file-properties-dialog.c:236
 msgid "Link Target:"
 msgstr "链接对象："
 
-#: ../src/xfdesktop-file-properties-dialog.c:251
-#: ../src/xfdesktop-file-properties-dialog.c:410
-#: ../src/xfdesktop-volume-icon.c:476 ../src/xfdesktop-volume-icon.c:482
+#: ../src/xfdesktop-file-properties-dialog.c:253
+#: ../src/xfdesktop-file-properties-dialog.c:415
+#: ../src/xfdesktop-volume-icon.c:480 ../src/xfdesktop-volume-icon.c:486
 msgid "(unknown)"
 msgstr "(未知)"
 
-#: ../src/xfdesktop-file-properties-dialog.c:273
+#: ../src/xfdesktop-file-properties-dialog.c:275
 msgid "Open With:"
 msgstr "打开方式："
 
-#: ../src/xfdesktop-file-properties-dialog.c:350
+#: ../src/xfdesktop-file-properties-dialog.c:355
 msgid "Modified:"
 msgstr "修改："
 
-#: ../src/xfdesktop-file-properties-dialog.c:368
+#: ../src/xfdesktop-file-properties-dialog.c:373
 msgid "Accessed:"
 msgstr "访问："
 
-#: ../src/xfdesktop-file-properties-dialog.c:395
+#: ../src/xfdesktop-file-properties-dialog.c:400
 msgid "Free Space:"
 msgstr "剩余空间："
 
-#: ../src/xfdesktop-file-properties-dialog.c:397
+#: ../src/xfdesktop-file-properties-dialog.c:402
 msgid "Size:"
 msgstr "大小"
 
-#: ../src/xfdesktop-file-properties-dialog.c:413
-#: ../src/xfdesktop-regular-file-icon.c:486
-#: ../src/xfdesktop-special-file-icon.c:492
+#: ../src/xfdesktop-file-properties-dialog.c:418
+#: ../src/xfdesktop-regular-file-icon.c:497
+#: ../src/xfdesktop-special-file-icon.c:496
 msgid "%s (%"
 msgstr "%s (%"
 
 #. permissions tab
-#: ../src/xfdesktop-file-properties-dialog.c:428
+#: ../src/xfdesktop-file-properties-dialog.c:433
 msgid "Permissions"
 msgstr "权限"
 
-#: ../src/xfdesktop-file-properties-dialog.c:450
+#: ../src/xfdesktop-file-properties-dialog.c:455
 msgid "Owner:"
 msgstr "所有者："
 
-#: ../src/xfdesktop-file-properties-dialog.c:472
-#: ../src/xfdesktop-file-properties-dialog.c:510
+#: ../src/xfdesktop-file-properties-dialog.c:477
+#: ../src/xfdesktop-file-properties-dialog.c:515
 msgid "Access:"
 msgstr "访问："
 
-#: ../src/xfdesktop-file-properties-dialog.c:495
+#: ../src/xfdesktop-file-properties-dialog.c:500
 msgid "Group:"
 msgstr "群组："
 
-#: ../src/xfdesktop-file-properties-dialog.c:533
+#: ../src/xfdesktop-file-properties-dialog.c:538
 msgid "Others:"
 msgstr "其它："
 
-#: ../src/xfdesktop-file-utils.c:74
+#: ../src/xfdesktop-file-utils.c:75
 msgid "Yes to _all"
 msgstr "全部是(_A)"
 
-#: ../src/xfdesktop-file-utils.c:106
+#: ../src/xfdesktop-file-utils.c:107
 #, c-format
 msgid "There was an error moving \"%s\" to \"%s\":"
 msgstr "移动 \"%s\" 到 \"%s\" 失败。"
 
-#: ../src/xfdesktop-file-utils.c:109
+#: ../src/xfdesktop-file-utils.c:110
 #, c-format
 msgid "There was an error copying \"%s\" to \"%s\":"
 msgstr "复制 \"%s\" 到 \"%s\" 失败。"
 
-#: ../src/xfdesktop-file-utils.c:112
+#: ../src/xfdesktop-file-utils.c:113
 #, c-format
 msgid "There was an error linking \"%s\" to \"%s\":"
 msgstr "链接 \"%s\" 到 \"%s\" 失败。"
 
-#: ../src/xfdesktop-file-utils.c:121
+#: ../src/xfdesktop-file-utils.c:122
 msgid "File Error"
 msgstr "文件错误"
 
-#: ../src/xfdesktop-file-utils.c:137
+#: ../src/xfdesktop-file-utils.c:138
 msgid "broken link"
 msgstr "损坏的链接"
 
-#: ../src/xfdesktop-file-utils.c:141
+#: ../src/xfdesktop-file-utils.c:142
 #, c-format
 msgid "link to %s"
 msgstr "链接到 %s"
 
-#: ../src/xfdesktop-regular-file-icon.c:489
-#: ../src/xfdesktop-special-file-icon.c:496
+#: ../src/xfdesktop-regular-file-icon.c:500
+#: ../src/xfdesktop-special-file-icon.c:500
 #, c-format
 msgid ""
 "Kind: %s\n"
@@ -734,45 +726,45 @@ msgstr ""
 "修改： %s\n"
 "大小： %s"
 
-#: ../src/xfdesktop-regular-file-icon.c:535
-#: ../src/xfdesktop-regular-file-icon.c:599
+#: ../src/xfdesktop-regular-file-icon.c:546
+#: ../src/xfdesktop-regular-file-icon.c:610
 msgid "Error"
 msgstr "错误"
 
-#: ../src/xfdesktop-regular-file-icon.c:596
+#: ../src/xfdesktop-regular-file-icon.c:607
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "重命名 \"%s\" 为 \"%s\" 失败。"
 
 #. FIXME: also display # of items in trash
-#: ../src/xfdesktop-special-file-icon.c:482
+#: ../src/xfdesktop-special-file-icon.c:486
 msgid "Kind: Trash"
 msgstr "类型：回收站"
 
-#: ../src/xfdesktop-special-file-icon.c:515
+#: ../src/xfdesktop-special-file-icon.c:519
 msgid "Trash Error"
 msgstr "回收站错误"
 
-#: ../src/xfdesktop-special-file-icon.c:517
+#: ../src/xfdesktop-special-file-icon.c:521
 msgid "Unable to contact the Xfce Trash service."
 msgstr "无法启动回收站"
 
-#: ../src/xfdesktop-special-file-icon.c:518
+#: ../src/xfdesktop-special-file-icon.c:522
 msgid ""
 "Make sure you have a file manager installed that supports the Xfce Trash "
 "service, such as Thunar."
 msgstr "清空回收站需要安装支持xfce回收站服务的文件管理器，比如 Thunar"
 
-#: ../src/xfdesktop-special-file-icon.c:651
+#: ../src/xfdesktop-special-file-icon.c:655
 msgid "_Empty Trash"
 msgstr "清空回收站(_E)"
 
-#: ../src/xfdesktop-volume-icon.c:474
+#: ../src/xfdesktop-volume-icon.c:478
 #, c-format
 msgid "%s (%s total)"
 msgstr "%s (总共 %s)"
 
-#: ../src/xfdesktop-volume-icon.c:478
+#: ../src/xfdesktop-volume-icon.c:482
 #, c-format
 msgid ""
 "Kind: Removable Volume\n"
@@ -783,42 +775,42 @@ msgstr ""
 "挂载点： %s\n"
 "可用容量： %s"
 
-#: ../src/xfdesktop-volume-icon.c:509
+#: ../src/xfdesktop-volume-icon.c:513
 #, c-format
 msgid "Unable to mount \"%s\":"
 msgstr "无法挂载 \"%s\" ："
 
-#: ../src/xfdesktop-volume-icon.c:510
+#: ../src/xfdesktop-volume-icon.c:514
 #, c-format
 msgid "Unable to unmount \"%s\":"
 msgstr "无法卸载 \"%s\" ："
 
-#: ../src/xfdesktop-volume-icon.c:513
+#: ../src/xfdesktop-volume-icon.c:517
 msgid "Mount Failed"
 msgstr "挂载失败"
 
-#: ../src/xfdesktop-volume-icon.c:513
+#: ../src/xfdesktop-volume-icon.c:517
 msgid "Unmount Failed"
 msgstr "卸载失败"
 
-#: ../src/xfdesktop-volume-icon.c:531
+#: ../src/xfdesktop-volume-icon.c:535
 #, c-format
 msgid "Unable to eject \"%s\":"
 msgstr "无法弹出 \"%s\"："
 
-#: ../src/xfdesktop-volume-icon.c:534
+#: ../src/xfdesktop-volume-icon.c:538
 msgid "Eject Failed"
 msgstr "弹出失败"
 
-#: ../src/xfdesktop-volume-icon.c:578
+#: ../src/xfdesktop-volume-icon.c:582
 msgid "_Unmount Volume"
 msgstr "卸载卷(_U)"
 
-#: ../src/xfdesktop-volume-icon.c:581
+#: ../src/xfdesktop-volume-icon.c:585
 msgid "_Mount Volume"
 msgstr "挂载卷(_M)"
 
-#: ../src/xfdesktop-volume-icon.c:595
+#: ../src/xfdesktop-volume-icon.c:599
 msgid "E_ject Volume"
 msgstr "弹出卷(_J)"
 
@@ -990,264 +982,217 @@ msgstr "桌面"
 msgid "Set desktop background and menu and icon behaviour"
 msgstr "设置桌面背景，菜单，及图标属性"
 
-#: ../settings/xfdesktop-settings.glade.h:1
-msgid "<b>Adjustments</b>"
-msgstr "<b>调整</b>"
+#~ msgid "%s: Unknown option: %s\n"
+#~ msgstr "%s：未知选项： %s\n"
 
-#: ../settings/xfdesktop-settings.glade.h:2
-msgid "<b>Appearance</b>"
-msgstr "<b>外观</b>"
+#~ msgid "Options are:\n"
+#~ msgstr "选项为：\n"
 
-#: ../settings/xfdesktop-settings.glade.h:3
-msgid "<b>Colors</b>"
-msgstr "<b>颜色</b>"
+#~ msgid "<b>Adjustments</b>"
+#~ msgstr "<b>调整</b>"
 
-#: ../settings/xfdesktop-settings.glade.h:4
-msgid "<b>Default Icons</b>"
-msgstr "<b>缺省图标</b>"
+#~ msgid "<b>Appearance</b>"
+#~ msgstr "<b>外观</b>"
 
-#: ../settings/xfdesktop-settings.glade.h:5
-msgid "<b>Desktop Menu</b>"
-msgstr "<b>桌面菜单</b>"
+#~ msgid "<b>Colors</b>"
+#~ msgstr "<b>颜色</b>"
 
-#: ../settings/xfdesktop-settings.glade.h:6
-msgid "<b>Image</b>"
-msgstr "<b>图像</b>"
+#~ msgid "<b>Default Icons</b>"
+#~ msgstr "<b>缺省图标</b>"
 
-#: ../settings/xfdesktop-settings.glade.h:7
-msgid "<b>Images</b>"
-msgstr "<b>图像</b>"
+#~ msgid "<b>Desktop Menu</b>"
+#~ msgstr "<b>桌面菜单</b>"
 
-#: ../settings/xfdesktop-settings.glade.h:8
-msgid "<b>Window List Menu</b>"
-msgstr "<b>窗口列表菜单</b>"
+#~ msgid "<b>Image</b>"
+#~ msgstr "<b>图像</b>"
 
-#: ../settings/xfdesktop-settings.glade.h:9
-msgid "Add an image to the list"
-msgstr "给列表添加图像"
+#~ msgid "<b>Images</b>"
+#~ msgstr "<b>图像</b>"
 
-#: ../settings/xfdesktop-settings.glade.h:10
-msgid ""
-"Auto\n"
-"Centered\n"
-"Tiled\n"
-"Stretched\n"
-"Scaled\n"
-"Zoomed"
-msgstr ""
-"自动\n"
-"居中\n"
-"平铺\n"
-"放大到桌面\n"
-"按比例放大\n"
-"按比例放大到满桌面"
+#~ msgid "<b>Window List Menu</b>"
+#~ msgstr "<b>窗口列表菜单</b>"
 
-#: ../settings/xfdesktop-settings.glade.h:16
-msgid "Automatically pick a random image from a list file"
-msgstr "从列表文件中随机选择图片"
+#~ msgid "Add an image to the list"
+#~ msgstr "给列表添加图像"
 
-#: ../settings/xfdesktop-settings.glade.h:17
-msgid "B_rightness:"
-msgstr "亮度(_R)："
+#~ msgid ""
+#~ "Auto\n"
+#~ "Centered\n"
+#~ "Tiled\n"
+#~ "Stretched\n"
+#~ "Scaled\n"
+#~ "Zoomed"
+#~ msgstr ""
+#~ "自动\n"
+#~ "居中\n"
+#~ "平铺\n"
+#~ "放大到桌面\n"
+#~ "按比例放大\n"
+#~ "按比例放大到满桌面"
 
-#: ../settings/xfdesktop-settings.glade.h:18
-msgid "B_utton:"
-msgstr "按钮(_U)"
+#~ msgid "Automatically pick a random image from a list file"
+#~ msgstr "从列表文件中随机选择图片"
 
-#: ../settings/xfdesktop-settings.glade.h:19
-msgid "Create a new list, or load an existing one"
-msgstr "新建或打开列表"
+#~ msgid "B_rightness:"
+#~ msgstr "亮度(_R)："
 
-#: ../settings/xfdesktop-settings.glade.h:21
-msgid "Don't display an image at all"
-msgstr "不显示图片"
+#~ msgid "B_utton:"
+#~ msgstr "按钮(_U)"
 
-#: ../settings/xfdesktop-settings.glade.h:22
-msgid "Icon _size:"
-msgstr "图标大小(_S)"
+#~ msgid "Create a new list, or load an existing one"
+#~ msgstr "新建或打开列表"
 
-#: ../settings/xfdesktop-settings.glade.h:23
-msgid "Icon _type:"
-msgstr "图标类型(_T)"
+#~ msgid "Don't display an image at all"
+#~ msgstr "不显示图片"
 
-#: ../settings/xfdesktop-settings.glade.h:24
-msgid "Image _list"
-msgstr "图片列表(_L)"
+#~ msgid "Icon _size:"
+#~ msgstr "图标大小(_S)"
 
-#: ../settings/xfdesktop-settings.glade.h:25
-msgid "Increase or decrease the brightness of the final image"
-msgstr "增大或减小图片亮度"
+#~ msgid "Icon _type:"
+#~ msgstr "图标类型(_T)"
 
-#: ../settings/xfdesktop-settings.glade.h:26
-msgid "Increase or decrease the color saturation of the final image"
-msgstr "增大或减小图片的色饱和度"
+#~ msgid "Image _list"
+#~ msgstr "图片列表(_L)"
 
-#: ../settings/xfdesktop-settings.glade.h:27
-msgid "Label trans_parency:"
-msgstr "透明标签(_P)："
+#~ msgid "Increase or decrease the brightness of the final image"
+#~ msgstr "增大或减小图片亮度"
 
-#: ../settings/xfdesktop-settings.glade.h:28
-msgid ""
-"Left\n"
-"Middle\n"
-"Right"
-msgstr ""
-"左\n"
-"中\n"
-"右"
+#~ msgid "Increase or decrease the color saturation of the final image"
+#~ msgstr "增大或减小图片的色饱和度"
 
-#: ../settings/xfdesktop-settings.glade.h:31
-msgid "Mo_difier:"
-msgstr "修正键(_D):"
+#~ msgid "Label trans_parency:"
+#~ msgstr "透明标签(_P)："
 
-#: ../settings/xfdesktop-settings.glade.h:32
-msgid "Modi_fier:"
-msgstr "修正键(_F):"
+#~ msgid ""
+#~ "Left\n"
+#~ "Middle\n"
+#~ "Right"
+#~ msgstr ""
+#~ "左\n"
+#~ "中\n"
+#~ "右"
 
-#: ../settings/xfdesktop-settings.glade.h:33
-msgid ""
-"None\n"
-"Minimized application icons\n"
-"File/launcher icons"
-msgstr ""
-"无\n"
-"最小化应用程序图标\n"
-"文件/启动器图标"
+#~ msgid "Mo_difier:"
+#~ msgstr "修正键(_D):"
 
-#: ../settings/xfdesktop-settings.glade.h:36
-msgid ""
-"None\n"
-"Shift\n"
-"Alt\n"
-"Control"
-msgstr ""
-"无\n"
-"Shift\n"
-"Alt\n"
-"Ctrl"
+#~ msgid "Modi_fier:"
+#~ msgstr "修正键(_F):"
 
-#: ../settings/xfdesktop-settings.glade.h:40
-msgid "Remove the selected image(s) from the list"
-msgstr "从列表中去除选中的图片"
+#~ msgid ""
+#~ "None\n"
+#~ "Minimized application icons\n"
+#~ "File/launcher icons"
+#~ msgstr ""
+#~ "无\n"
+#~ "最小化应用程序图标\n"
+#~ "文件/启动器图标"
 
-#: ../settings/xfdesktop-settings.glade.h:41
-msgid "Sa_turation:"
-msgstr "饱和度(_T)"
+#~ msgid ""
+#~ "None\n"
+#~ "Shift\n"
+#~ "Alt\n"
+#~ "Control"
+#~ msgstr ""
+#~ "无\n"
+#~ "Shift\n"
+#~ "Alt\n"
+#~ "Ctrl"
 
-#: ../settings/xfdesktop-settings.glade.h:42
-msgid "Select First Color"
-msgstr "选择第一种颜色"
+#~ msgid "Remove the selected image(s) from the list"
+#~ msgstr "从列表中去除选中的图片"
 
-#: ../settings/xfdesktop-settings.glade.h:43
-msgid "Select Second Color"
-msgstr "选择第二种颜色"
+#~ msgid "Sa_turation:"
+#~ msgstr "饱和度(_T)"
 
-#: ../settings/xfdesktop-settings.glade.h:44
-msgid "Select a single image as the backdrop"
-msgstr "用特定图片做背景"
+#~ msgid "Select First Color"
+#~ msgstr "选择第一种颜色"
 
-#: ../settings/xfdesktop-settings.glade.h:45
-msgid "Set desktop background and menu and icon behavior"
-msgstr "设置桌面背景，菜单，及图标属性"
+#~ msgid "Select Second Color"
+#~ msgstr "选择第二种颜色"
 
-#: ../settings/xfdesktop-settings.glade.h:46
-msgid "Sh_ow application icons in menu"
-msgstr "在菜单中显示图标(_O)"
+#~ msgid "Select a single image as the backdrop"
+#~ msgstr "用特定图片做背景"
 
-#: ../settings/xfdesktop-settings.glade.h:47
-msgid "Show _application icons in menu"
-msgstr "在菜单中显示图标(_A)"
+#~ msgid "Set desktop background and menu and icon behavior"
+#~ msgstr "设置桌面背景，菜单，及图标属性"
 
-#: ../settings/xfdesktop-settings.glade.h:48
-msgid "Show _window list menu on desktop middle click"
-msgstr "按中键显示窗口列表菜单(_W)"
+#~ msgid "Sh_ow application icons in menu"
+#~ msgstr "在菜单中显示图标(_O)"
 
-#: ../settings/xfdesktop-settings.glade.h:49
-msgid "Show applications menu on _desktop right click"
-msgstr "按右键显示应用程序菜单(_D)"
+#~ msgid "Show _application icons in menu"
+#~ msgstr "在菜单中显示图标(_A)"
 
-#: ../settings/xfdesktop-settings.glade.h:50
-msgid "Show s_ticky windows only in active workspace"
-msgstr "只在显示活动工作区中的粘附窗口(_T)"
+#~ msgid "Show _window list menu on desktop middle click"
+#~ msgstr "按中键显示窗口列表菜单(_W)"
 
-#: ../settings/xfdesktop-settings.glade.h:51
-msgid "Show workspace _names in list"
-msgstr "在列表中显示工作区名称(_N)"
+#~ msgid "Show applications menu on _desktop right click"
+#~ msgstr "按右键显示应用程序菜单(_D)"
 
-#: ../settings/xfdesktop-settings.glade.h:52
-msgid ""
-"Solid color\n"
-"Horizontal gradient\n"
-"Vertical gradient\n"
-"Transparent"
-msgstr ""
-"单色\n"
-"水平渐变\n"
-"竖直渐变\n"
-"透明"
+#~ msgid "Show s_ticky windows only in active workspace"
+#~ msgstr "只在显示活动工作区中的粘附窗口(_T)"
 
-#: ../settings/xfdesktop-settings.glade.h:56
-msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-msgstr "指定渐变区右边或下边的颜色"
+#~ msgid "Show workspace _names in list"
+#~ msgstr "在列表中显示工作区名称(_N)"
 
-#: ../settings/xfdesktop-settings.glade.h:57
-msgid ""
-"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr "指定单一色，或者渐变区左边或上边的颜色"
+#~ msgid ""
+#~ "Solid color\n"
+#~ "Horizontal gradient\n"
+#~ "Vertical gradient\n"
+#~ "Transparent"
+#~ msgstr ""
+#~ "单色\n"
+#~ "水平渐变\n"
+#~ "竖直渐变\n"
+#~ "透明"
 
-#: ../settings/xfdesktop-settings.glade.h:58
-msgid "Specify how the image will be resized to fit the screen"
-msgstr "指定如何在屏幕摆放图片"
+#~ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
+#~ msgstr "指定渐变区右边或下边的颜色"
 
-#: ../settings/xfdesktop-settings.glade.h:59
-msgid "Specify the style of the color drawn behind the backdrop image"
-msgstr "指定背景图片后的颜色风格"
+#~ msgid ""
+#~ "Specifies the solid color, or the \"left\" or \"top\" color of the "
+#~ "gradient"
+#~ msgstr "指定单一色，或者渐变区左边或上边的颜色"
 
-#: ../settings/xfdesktop-settings.glade.h:60
-msgid ""
-"Specify the transparency level for the rounded label drawn behind the icon "
-"text"
-msgstr "指定图标文本后的园角标签的透明度"
+#~ msgid "Specify how the image will be resized to fit the screen"
+#~ msgstr "指定如何在屏幕摆放图片"
 
-#: ../settings/xfdesktop-settings.glade.h:61
-msgid "St_yle:"
-msgstr "风格(_Y)："
+#~ msgid "Specify the style of the color drawn behind the backdrop image"
+#~ msgstr "指定背景图片后的颜色风格"
 
-#: ../settings/xfdesktop-settings.glade.h:62
-msgid "Use _submenus for the windows in each workspace"
-msgstr "在每个工作区中使用窗口的子菜单(_S)"
+#~ msgid ""
+#~ "Specify the transparency level for the rounded label drawn behind the "
+#~ "icon text"
+#~ msgstr "指定图标文本后的园角标签的透明度"
 
-#: ../settings/xfdesktop-settings.glade.h:63
-msgid "Use custom _font size:"
-msgstr "使用自定义字体大小(_F)"
+#~ msgid "St_yle:"
+#~ msgstr "风格(_Y)："
 
-#: ../settings/xfdesktop-settings.glade.h:64
-msgid "_Background"
-msgstr "背景(_B)"
+#~ msgid "Use _submenus for the windows in each workspace"
+#~ msgstr "在每个工作区中使用窗口的子菜单(_S)"
 
-#: ../settings/xfdesktop-settings.glade.h:65
-msgid "_Button:"
-msgstr "按钮(_B)："
+#~ msgid "Use custom _font size:"
+#~ msgstr "使用自定义字体大小(_F)"
 
-#: ../settings/xfdesktop-settings.glade.h:66
-msgid "_Edit desktop menu"
-msgstr "编辑桌面菜单(_E)"
+#~ msgid "_Background"
+#~ msgstr "背景(_B)"
 
-#: ../settings/xfdesktop-settings.glade.h:67
-msgid "_Icons"
-msgstr "图标(_I)"
+#~ msgid "_Button:"
+#~ msgstr "按钮(_B)："
 
-#: ../settings/xfdesktop-settings.glade.h:68
-msgid "_Menus"
-msgstr "菜单(_M)"
+#~ msgid "_Edit desktop menu"
+#~ msgstr "编辑桌面菜单(_E)"
 
-#: ../settings/xfdesktop-settings.glade.h:69
-msgid "_None"
-msgstr "无(_N)"
+#~ msgid "_Icons"
+#~ msgstr "图标(_I)"
 
-#: ../settings/xfdesktop-settings.glade.h:70
-msgid "_Single image"
-msgstr "单个图片(_S)"
+#~ msgid "_Menus"
+#~ msgstr "菜单(_M)"
+
+#~ msgid "_None"
+#~ msgstr "无(_N)"
+
+#~ msgid "_Single image"
+#~ msgstr "单个图片(_S)"
 
 #~ msgid "gtk-close"
 #~ msgstr "gtk-close"
