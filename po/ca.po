@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-18 18:20+0200\n"
-"PO-Revision-Date: 2009-08-23 10:42+0100\n"
+"POT-Creation-Date: 2009-12-18 16:36+0000\n"
+"PO-Revision-Date: 2009-12-19 11:10+0100\n"
 "Last-Translator: Carles Muñoz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: Catalan <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
@@ -21,86 +21,85 @@ msgstr ""
 "X-Poedit-Language: Catalan\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: ../common/xfdesktop-common.c:95 ../common/xfdesktop-common.c:199
-#, c-format
+#: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
 msgid "Backdrop list file is not valid"
 msgstr "El fitxer amb la llista d'imatges no és vàlid"
 
-#: ../panel-plugin/desktop-menu-plugin.c:639
+#: ../panel-plugin/desktop-menu-plugin.c:669
 #, c-format
 msgid "Unable to launch xfce4-menueditor: %s"
 msgstr "No s'ha pogut llançar xfce4-menueditor: %s"
 
-#: ../panel-plugin/desktop-menu-plugin.c:662
+#: ../panel-plugin/desktop-menu-plugin.c:692
 msgid "Select Icon"
 msgstr "Seleccioneu icona"
 
-#: ../panel-plugin/desktop-menu-plugin.c:664
+#: ../panel-plugin/desktop-menu-plugin.c:694
 msgid "Select Menu File"
 msgstr "Seleccioneu un fitxer de menú"
 
-#: ../panel-plugin/desktop-menu-plugin.c:691
+#: ../panel-plugin/desktop-menu-plugin.c:721
 msgid "All Files"
 msgstr "Tots els fitxers"
 
-#: ../panel-plugin/desktop-menu-plugin.c:698
+#: ../panel-plugin/desktop-menu-plugin.c:728
 msgid "Image Files"
 msgstr "Fitxers d'imatge"
 
-#: ../panel-plugin/desktop-menu-plugin.c:701
+#: ../panel-plugin/desktop-menu-plugin.c:731
 msgid "Menu Files"
 msgstr "Fitxers de menú"
 
-#: ../panel-plugin/desktop-menu-plugin.c:726
+#: ../panel-plugin/desktop-menu-plugin.c:756
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
 msgid "Xfce Menu"
 msgstr "Menú Xfce"
 
-#: ../panel-plugin/desktop-menu-plugin.c:738
+#: ../panel-plugin/desktop-menu-plugin.c:768
 msgid "Button"
 msgstr "Botó"
 
-#: ../panel-plugin/desktop-menu-plugin.c:751
+#: ../panel-plugin/desktop-menu-plugin.c:781
 msgid "Button _title:"
 msgstr "Títol del bo_tó:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:764
+#: ../panel-plugin/desktop-menu-plugin.c:794
 msgid "_Show title in button"
 msgstr "Mo_stra títol dins el botó"
 
-#: ../panel-plugin/desktop-menu-plugin.c:771
+#: ../panel-plugin/desktop-menu-plugin.c:801
 msgid "Menu File"
 msgstr "Fitxer de menú"
 
-#: ../panel-plugin/desktop-menu-plugin.c:783
+#: ../panel-plugin/desktop-menu-plugin.c:813
 msgid "Use default _desktop menu file"
 msgstr "Utilitzar el fitxer _d'escriptori predeterminat"
 
-#: ../panel-plugin/desktop-menu-plugin.c:792
+#: ../panel-plugin/desktop-menu-plugin.c:822
 msgid "Use _custom menu file:"
 msgstr "Utilitza un _fitxer de menú personalitzat:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:833
+#: ../panel-plugin/desktop-menu-plugin.c:863
 msgid "_Edit Menu"
 msgstr "_Edita Menú"
 
-#: ../panel-plugin/desktop-menu-plugin.c:840
+#: ../panel-plugin/desktop-menu-plugin.c:870
 msgid "Icons"
 msgstr "Icones"
 
-#: ../panel-plugin/desktop-menu-plugin.c:852
+#: ../panel-plugin/desktop-menu-plugin.c:882
 msgid "_Button icon:"
 msgstr "_Botó d'icona:"
 
-#: ../panel-plugin/desktop-menu-plugin.c:866
+#: ../panel-plugin/desktop-menu-plugin.c:896
 msgid "Show _icons in menu"
 msgstr "Mostra _icones al menú"
 
-#: ../panel-plugin/desktop-menu-plugin.c:901
+#: ../panel-plugin/desktop-menu-plugin.c:931
 msgid "There is already a panel menu registered for this screen"
 msgstr "Ja hi ha un menú pel quadre a aquesta pantalla"
 
-#: ../panel-plugin/desktop-menu-plugin.c:1016
+#: ../panel-plugin/desktop-menu-plugin.c:1046
 msgid "Edit Menu"
 msgstr "Edita el menú"
 
@@ -183,139 +182,128 @@ msgstr "Fitxers d'imatge"
 msgid "All files"
 msgstr "Tots els fitxers"
 
-#: ../settings/main.c:1250
+#: ../settings/main.c:1249
 #, c-format
 msgid "Screen %d, Monitor %d (%s)"
 msgstr "Pantalla %d, Monitor %d (%s)"
 
-#: ../settings/main.c:1255
+#: ../settings/main.c:1254
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "Pantalla %d, Monitor %d"
 
-#: ../settings/main.c:1258
+#: ../settings/main.c:1257
 #, c-format
 msgid "Screen %d"
 msgstr "Pantalla %d"
 
-#: ../settings/main.c:1264
+#: ../settings/main.c:1263
 #, c-format
 msgid "Monitor %d (%s)"
 msgstr "Monitor %d (%s)"
 
-#: ../settings/main.c:1269
+#: ../settings/main.c:1268
 #, c-format
 msgid "Monitor %d"
 msgstr "Monitor %d"
 
-#: ../settings/main.c:1471
+#: ../settings/main.c:1477
 msgid "Settings manager socket"
 msgstr "Sòcol del gestor d'akustaments"
 
-#: ../settings/main.c:1471
+#: ../settings/main.c:1477
 msgid "SOCKET ID"
 msgstr "SÒCOL ID"
 
-#: ../settings/main.c:1472
+#: ../settings/main.c:1478
 msgid "Version information"
 msgstr "Informació de la versió"
 
-#: ../settings/main.c:1492
+#: ../settings/main.c:1498
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Feu «%s --help» per veure l'ús."
 
-#: ../settings/main.c:1504
+#: ../settings/main.c:1510
 msgid "The Xfce development team. All rights reserved."
 msgstr "L'equip de desenvolupament de Xfce. Tots els drets reservats."
 
-#: ../settings/main.c:1505
+#: ../settings/main.c:1511
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Envieu els errors a <%s>."
 
-#: ../settings/main.c:1512
+#: ../settings/main.c:1518
 msgid "Desktop Settings"
 msgstr "Ajustaments de l'escriptori"
 
-#: ../settings/main.c:1514
+#: ../settings/main.c:1520
 msgid "Unable to contact settings server"
 msgstr "No s’ha pogut contactar amb el servidor d'ajustaments"
 
-#: ../src/main.c:240
+#: ../src/main.c:228
+msgid "Display version information"
+msgstr "Mostra la informació de la versió"
+
+#: ../src/main.c:229
+msgid "Reload all settings, refresh image list"
+msgstr "Refresca tots els paràmetres, refresca el llistat d'imatges"
+
+#: ../src/main.c:230
+msgid "Pop up the menu (at the current mouse position)"
+msgstr "Mostra el menú (a la posició del ratolí)"
+
+#: ../src/main.c:231
+msgid "Pop up the window list (at the current mouse position)"
+msgstr "Mostra el llistat de finestres (a la posició del ratolí)"
+
+#: ../src/main.c:232
+msgid "Cause xfdesktop to quit"
+msgstr "Surt de xfdesktop"
+
+#: ../src/main.c:252
+#, c-format
+msgid "Failed to parse arguments: %s\n"
+msgstr "No s'ha pogut executar: %s\n"
+
+#: ../src/main.c:260
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Això és %s versió %s, executant-se sobre Xfce %s.\n"
 
-#: ../src/main.c:242
+#: ../src/main.c:262
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Construit sobre GTK+ %d.%d.%d, enllaçat amb GTK+ %d.%d.%d."
 
-#: ../src/main.c:246
-#, c-format
+#: ../src/main.c:266
 msgid "Build options:\n"
 msgstr "Opcions de construcció:\n"
 
-#: ../src/main.c:247
+#: ../src/main.c:267
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Menú d'escriptori:   %s\n"
 
-#: ../src/main.c:249 ../src/main.c:256 ../src/main.c:263
+#: ../src/main.c:269 ../src/main.c:276 ../src/main.c:283
 msgid "enabled"
 msgstr "habilitat"
 
-#: ../src/main.c:251 ../src/main.c:258 ../src/main.c:265
+#: ../src/main.c:271 ../src/main.c:278 ../src/main.c:285
 msgid "disabled"
 msgstr "inhabilitat"
 
-#: ../src/main.c:254
+#: ../src/main.c:274
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Icones d'escriptori: %s\n"
 
-#: ../src/main.c:261
+#: ../src/main.c:281
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Fitxer d'icones de l'escriptori: %s\n"
 
-#: ../src/main.c:290
-#, c-format
-msgid "%s: Unknown option: %s\n"
-msgstr "%s: opció desconeguda: %s\n"
-
-#: ../src/main.c:291
-#, c-format
-msgid "Options are:\n"
-msgstr "Són opcions:\n"
-
-#: ../src/main.c:292
-#, c-format
-msgid "    --reload      Reload all settings, refresh image list\n"
-msgstr ""
-"    --reload      Refresca tots els paràmetres, refresca el llistat "
-"d'imatges\n"
-
-#: ../src/main.c:293
-#, c-format
-msgid "    --menu        Pop up the menu (at the current mouse position)\n"
-msgstr "    --menu        Mostra el menú (a la posició del ratolí)\n"
-
-#: ../src/main.c:294
-#, c-format
-msgid ""
-"    --windowlist  Pop up the window list (at the current mouse position)\n"
-msgstr ""
-"   --windowlist   Mostra el llistat de finestres (a la posició del\n"
-"                  ratolí)\n"
-
-#: ../src/main.c:295
-#, c-format
-msgid "    --quit        Cause xfdesktop to quit\n"
-msgstr "   --quit         Surt  de xfdesktop\n"
-
-#: ../src/main.c:316
+#: ../src/main.c:312
 #, c-format
 msgid "%s is not running.\n"
 msgstr "No s’està executant «%s».\n"
@@ -357,7 +345,7 @@ msgstr "Sup_rimeix l'espai de treball %d"
 msgid "_Remove Workspace '%s'"
 msgstr "Sup_rimeix l'espai de treball «%s»"
 
-#: ../src/xfce-desktop.c:742 ../settings/xfdesktop-settings.glade.h:20
+#: ../src/xfce-desktop.c:742
 msgid "Desktop"
 msgstr "Escriptori"
 
@@ -370,20 +358,20 @@ msgstr "No s'han pogut carregar les imatges de la llista d'imatges de fons «%s�
 msgid "Desktop Error"
 msgstr "Error de l'escriptori"
 
-#: ../src/xfdesktop-file-icon-manager.c:478
+#: ../src/xfdesktop-file-icon-manager.c:479
 #, c-format
 msgid ""
 "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr ""
 "No s’ha pogut crear el directori «%s» per desar elements de l’escriptori:"
 
-#: ../src/xfdesktop-file-icon-manager.c:480
-#: ../src/xfdesktop-file-icon-manager.c:491
-#: ../src/xfdesktop-file-icon-manager.c:1241
+#: ../src/xfdesktop-file-icon-manager.c:481
+#: ../src/xfdesktop-file-icon-manager.c:492
+#: ../src/xfdesktop-file-icon-manager.c:1253
 msgid "Create Folder Failed"
 msgstr "No s'ha pogut crear el directori"
 
-#: ../src/xfdesktop-file-icon-manager.c:489
+#: ../src/xfdesktop-file-icon-manager.c:490
 #, c-format
 msgid ""
 "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
@@ -392,70 +380,70 @@ msgstr ""
 "No s’ha pogut usar «%s» per retenir els elements de l’escriptori perquè no és "
 "un directori."
 
-#: ../src/xfdesktop-file-icon-manager.c:493
+#: ../src/xfdesktop-file-icon-manager.c:494
 msgid "Please delete or rename the file."
 msgstr "Si us plau esborri o canvii el nom al fitxer."
 
-#: ../src/xfdesktop-file-icon-manager.c:630
+#: ../src/xfdesktop-file-icon-manager.c:631
 #, c-format
 msgid "Rename \"%s\""
 msgstr "Canvia el nom de «%s»"
 
-#: ../src/xfdesktop-file-icon-manager.c:637
-#: ../src/xfdesktop-file-icon-manager.c:1313
-#: ../src/xfdesktop-file-icon-manager.c:1404
-#: ../src/xfdesktop-file-icon-manager.c:1415
+#: ../src/xfdesktop-file-icon-manager.c:638
+#: ../src/xfdesktop-file-icon-manager.c:1327
+#: ../src/xfdesktop-file-icon-manager.c:1419
+#: ../src/xfdesktop-file-icon-manager.c:1430
 msgid "Enter the new name:"
 msgstr "Introdueixi el nou nom:"
 
-#: ../src/xfdesktop-file-icon-manager.c:639
+#: ../src/xfdesktop-file-icon-manager.c:640
 msgid "Rename"
 msgstr "Canvia el nom"
 
-#: ../src/xfdesktop-file-icon-manager.c:676
+#: ../src/xfdesktop-file-icon-manager.c:677
 #, c-format
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "Esteu segur que voleu suprimir els següents «%s» fitxers?"
 
-#: ../src/xfdesktop-file-icon-manager.c:679 ../src/xfdesktop-file-utils.c:55
+#: ../src/xfdesktop-file-icon-manager.c:680 ../src/xfdesktop-file-utils.c:56
 msgid "Question"
 msgstr "Pregunta"
 
-#: ../src/xfdesktop-file-icon-manager.c:681
-#: ../src/xfdesktop-file-icon-manager.c:701
+#: ../src/xfdesktop-file-icon-manager.c:682
+#: ../src/xfdesktop-file-icon-manager.c:702
 msgid "If you delete a file, it is permanently lost."
 msgstr "Si suprimiu un fitxer el perdreu permanentment"
 
-#: ../src/xfdesktop-file-icon-manager.c:695
+#: ../src/xfdesktop-file-icon-manager.c:696
 #, c-format
 msgid "Are you sure you want to delete the following %d files?"
 msgstr "Esteu segur que voleu suprimir els següents %d fitxers?"
 
-#: ../src/xfdesktop-file-icon-manager.c:698
+#: ../src/xfdesktop-file-icon-manager.c:699
 msgid "Delete Multiple Files"
 msgstr "Suprimeix multiple fitxers"
 
 #. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:917
-#: ../src/xfdesktop-file-icon-manager.c:1668 ../src/xfdesktop-file-icon.c:140
-#: ../src/xfdesktop-file-utils.c:353
+#: ../src/xfdesktop-file-icon-manager.c:922
+#: ../src/xfdesktop-file-icon-manager.c:1683 ../src/xfdesktop-file-icon.c:141
+#: ../src/xfdesktop-file-utils.c:363
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "No s'ha pogut executar «%s»:"
 
-#: ../src/xfdesktop-file-icon-manager.c:919
-#: ../src/xfdesktop-file-icon-manager.c:977
-#: ../src/xfdesktop-file-icon-manager.c:1275
-#: ../src/xfdesktop-file-icon-manager.c:1669 ../src/xfdesktop-file-icon.c:142
-#: ../src/xfdesktop-file-utils.c:356
+#: ../src/xfdesktop-file-icon-manager.c:924
+#: ../src/xfdesktop-file-icon-manager.c:984
+#: ../src/xfdesktop-file-icon-manager.c:1287
+#: ../src/xfdesktop-file-icon-manager.c:1684 ../src/xfdesktop-file-icon.c:143
+#: ../src/xfdesktop-file-utils.c:366
 msgid "Launch Error"
 msgstr "Error durant el llançament"
 
-#: ../src/xfdesktop-file-icon-manager.c:978
+#: ../src/xfdesktop-file-icon-manager.c:985
 msgid "The application chooser could not be opened."
 msgstr "No s'ha pogut obrir l’escollidor d’aplicacions."
 
-#: ../src/xfdesktop-file-icon-manager.c:979 ../src/xfdesktop-file-utils.c:358
+#: ../src/xfdesktop-file-icon-manager.c:986 ../src/xfdesktop-file-utils.c:368
 msgid ""
 "This feature requires a file manager service present (such as that supplied "
 "by Thunar)."
@@ -463,22 +451,22 @@ msgstr ""
 "Aquesta característica demana l'ajut d'un gestor de fitxers (com per exemple "
 "el que fa Thunar)."
 
-#: ../src/xfdesktop-file-icon-manager.c:1172
+#: ../src/xfdesktop-file-icon-manager.c:1182
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "_Obre amb «%s»"
 
-#: ../src/xfdesktop-file-icon-manager.c:1175
+#: ../src/xfdesktop-file-icon-manager.c:1185
 #, c-format
 msgid "Open With \"%s\""
 msgstr "Obre amb «%s»"
 
-#: ../src/xfdesktop-file-icon-manager.c:1238
+#: ../src/xfdesktop-file-icon-manager.c:1250
 #, c-format
 msgid "Unable to create folder named \"%s\":"
 msgstr "No s'ha crear el directori anomenat «%s»:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1277
+#: ../src/xfdesktop-file-icon-manager.c:1289
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
@@ -486,257 +474,257 @@ msgstr ""
 "No s’ha pogut llançar «exo-desktop-item-edit», el qual s’ha de menester per "
 "crear i editar els llançadors i enllaços a l’escriptori."
 
-#: ../src/xfdesktop-file-icon-manager.c:1310
+#: ../src/xfdesktop-file-icon-manager.c:1324
 msgid "Create New Folder"
 msgstr "Crea un directori"
 
-#: ../src/xfdesktop-file-icon-manager.c:1314
+#: ../src/xfdesktop-file-icon-manager.c:1328
 msgid "New Folder"
 msgstr "Directori nou"
 
-#: ../src/xfdesktop-file-icon-manager.c:1315
-#: ../src/xfdesktop-file-icon-manager.c:1406
-#: ../src/xfdesktop-file-icon-manager.c:1417
+#: ../src/xfdesktop-file-icon-manager.c:1329
+#: ../src/xfdesktop-file-icon-manager.c:1421
+#: ../src/xfdesktop-file-icon-manager.c:1432
 msgid "Create"
 msgstr "Crea"
 
-#: ../src/xfdesktop-file-icon-manager.c:1351
+#: ../src/xfdesktop-file-icon-manager.c:1365
 #, c-format
 msgid "Unable to create file named \"%s\":"
 msgstr "No s'ha pogut crear el fitxer anomenat «%s»:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1354
+#: ../src/xfdesktop-file-icon-manager.c:1368
 msgid "Create File Failed"
 msgstr "No s'ha pogut crear el fitxer"
 
-#: ../src/xfdesktop-file-icon-manager.c:1393
+#: ../src/xfdesktop-file-icon-manager.c:1408
 #, c-format
 msgid "Create Document from template \"%s\""
 msgstr "Crea un document des de la plantilla «%s»"
 
-#: ../src/xfdesktop-file-icon-manager.c:1412
+#: ../src/xfdesktop-file-icon-manager.c:1427
 msgid "Create Empty File"
 msgstr "Crea un fitxer buit"
 
-#: ../src/xfdesktop-file-icon-manager.c:1416
+#: ../src/xfdesktop-file-icon-manager.c:1431
 msgid "New Empty File"
 msgstr "Fitxer buit nou"
 
-#: ../src/xfdesktop-file-icon-manager.c:1449
+#: ../src/xfdesktop-file-icon-manager.c:1464
 #, c-format
 msgid "Unable to create file \"%s\":"
 msgstr "No s'ha pogut crear el fitxer «%s»:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1450
+#: ../src/xfdesktop-file-icon-manager.c:1465
 msgid "Create Error"
 msgstr "Error a la creació"
 
-#: ../src/xfdesktop-file-icon-manager.c:1735
+#: ../src/xfdesktop-file-icon-manager.c:1750
 msgid "_Open all"
 msgstr "_Obre tot"
 
-#: ../src/xfdesktop-file-icon-manager.c:1751
+#: ../src/xfdesktop-file-icon-manager.c:1766
 msgid "_Open in New Window"
 msgstr "_Obre en una nova finestra"
 
-#: ../src/xfdesktop-file-icon-manager.c:1753
-#: ../src/xfdesktop-special-file-icon.c:633 ../src/xfdesktop-volume-icon.c:561
+#: ../src/xfdesktop-file-icon-manager.c:1768
+#: ../src/xfdesktop-special-file-icon.c:637 ../src/xfdesktop-volume-icon.c:565
 msgid "_Open"
 msgstr "_Obre"
 
-#: ../src/xfdesktop-file-icon-manager.c:1768
+#: ../src/xfdesktop-file-icon-manager.c:1785
 msgid "Create _Launcher..."
 msgstr "Crea un _llançador…"
 
-#: ../src/xfdesktop-file-icon-manager.c:1789
+#: ../src/xfdesktop-file-icon-manager.c:1807
 msgid "Create _URL Link..."
 msgstr "Crea un enllaç _URL…"
 
-#: ../src/xfdesktop-file-icon-manager.c:1806
+#: ../src/xfdesktop-file-icon-manager.c:1827
 msgid "Create _Folder..."
 msgstr "Crea un _directori…"
 
-#: ../src/xfdesktop-file-icon-manager.c:1826
+#: ../src/xfdesktop-file-icon-manager.c:1848
 msgid "Create From _Template"
 msgstr "Crea des de la _plantilla"
 
-#: ../src/xfdesktop-file-icon-manager.c:1860
+#: ../src/xfdesktop-file-icon-manager.c:1878
 msgid "_Empty File"
 msgstr "Fitx_er buit"
 
-#: ../src/xfdesktop-file-icon-manager.c:1876
+#: ../src/xfdesktop-file-icon-manager.c:1894
 msgid "_Execute"
 msgstr "_Executa"
 
-#: ../src/xfdesktop-file-icon-manager.c:1894
+#: ../src/xfdesktop-file-icon-manager.c:1912
 msgid "_Edit Launcher"
 msgstr "_Edita llançador"
 
-#: ../src/xfdesktop-file-icon-manager.c:1934
+#: ../src/xfdesktop-file-icon-manager.c:1952
 msgid "Open With"
 msgstr "Obre amb"
 
-#: ../src/xfdesktop-file-icon-manager.c:1965
+#: ../src/xfdesktop-file-icon-manager.c:1983
 msgid "Open With Other _Application..."
 msgstr "Obre amb un altre _aplicació…"
 
-#: ../src/xfdesktop-file-icon-manager.c:2072
+#: ../src/xfdesktop-file-icon-manager.c:2090
 msgid "_Rename..."
 msgstr "Canv_ia el nom…"
 
-#: ../src/xfdesktop-file-icon-manager.c:2090
+#: ../src/xfdesktop-file-icon-manager.c:2108
 msgid "Desktop _Settings..."
 msgstr "Ajustaments de l'e_scriptori…"
 
-#: ../src/xfdesktop-file-icon-manager.c:2100
-#: ../src/xfdesktop-volume-icon.c:610
+#: ../src/xfdesktop-file-icon-manager.c:2118
+#: ../src/xfdesktop-volume-icon.c:614
 msgid "_Properties..."
 msgstr "_Propietats…"
 
-#: ../src/xfdesktop-file-icon-manager.c:3339
-#: ../src/xfdesktop-regular-file-icon.c:382
+#: ../src/xfdesktop-file-icon-manager.c:3370
+#: ../src/xfdesktop-regular-file-icon.c:391
 #, c-format
 msgid "Failed to run \"%s\":"
 msgstr "No s'ha pogut executar «%s»:"
 
-#: ../src/xfdesktop-file-icon-manager.c:3341
-#: ../src/xfdesktop-regular-file-icon.c:384
+#: ../src/xfdesktop-file-icon-manager.c:3372
+#: ../src/xfdesktop-regular-file-icon.c:393
 msgid "Run Error"
 msgstr "Error d'execució"
 
-#: ../src/xfdesktop-file-icon.c:144
+#: ../src/xfdesktop-file-icon.c:145
 msgid "The associated application could not be found or executed."
 msgstr "No s'ha pogut trobar o executar l'aplicació associada."
 
-#: ../src/xfdesktop-file-properties-dialog.c:103
+#: ../src/xfdesktop-file-properties-dialog.c:104
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
 msgstr "No s'ha pogut definir l'aplicació de «%s» per «%s»:"
 
-#: ../src/xfdesktop-file-properties-dialog.c:106
+#: ../src/xfdesktop-file-properties-dialog.c:107
 msgid "Properties Error"
 msgstr "Error a les propietats"
 
-#: ../src/xfdesktop-file-properties-dialog.c:138
+#: ../src/xfdesktop-file-properties-dialog.c:139
 msgid "None"
 msgstr "Cap"
 
-#: ../src/xfdesktop-file-properties-dialog.c:138
+#: ../src/xfdesktop-file-properties-dialog.c:139
 msgid "Write only"
 msgstr "Només escriptura"
 
-#: ../src/xfdesktop-file-properties-dialog.c:138
+#: ../src/xfdesktop-file-properties-dialog.c:139
 msgid "Read only"
 msgstr "Només lectura"
 
-#: ../src/xfdesktop-file-properties-dialog.c:138
+#: ../src/xfdesktop-file-properties-dialog.c:139
 msgid "Read & Write"
 msgstr "Llegeix i escriu"
 
-#: ../src/xfdesktop-file-properties-dialog.c:163
+#: ../src/xfdesktop-file-properties-dialog.c:165
 msgid "General"
 msgstr "General"
 
-#: ../src/xfdesktop-file-properties-dialog.c:188
+#: ../src/xfdesktop-file-properties-dialog.c:190
 msgid "Name:"
 msgstr "Nom:"
 
-#: ../src/xfdesktop-file-properties-dialog.c:214
+#: ../src/xfdesktop-file-properties-dialog.c:216
 msgid "Kind:"
 msgstr "Tipus:"
 
-#: ../src/xfdesktop-file-properties-dialog.c:234
+#: ../src/xfdesktop-file-properties-dialog.c:236
 msgid "Link Target:"
 msgstr "Objectiu de l'enllaç:"
 
-#: ../src/xfdesktop-file-properties-dialog.c:251
-#: ../src/xfdesktop-file-properties-dialog.c:410
-#: ../src/xfdesktop-volume-icon.c:476 ../src/xfdesktop-volume-icon.c:482
+#: ../src/xfdesktop-file-properties-dialog.c:253
+#: ../src/xfdesktop-file-properties-dialog.c:415
+#: ../src/xfdesktop-volume-icon.c:480 ../src/xfdesktop-volume-icon.c:486
 msgid "(unknown)"
 msgstr "(desconegut)"
 
-#: ../src/xfdesktop-file-properties-dialog.c:273
+#: ../src/xfdesktop-file-properties-dialog.c:275
 msgid "Open With:"
 msgstr "Obre amb:"
 
-#: ../src/xfdesktop-file-properties-dialog.c:350
+#: ../src/xfdesktop-file-properties-dialog.c:355
 msgid "Modified:"
 msgstr "Modificat:"
 
-#: ../src/xfdesktop-file-properties-dialog.c:368
+#: ../src/xfdesktop-file-properties-dialog.c:373
 msgid "Accessed:"
 msgstr "Accedit:"
 
-#: ../src/xfdesktop-file-properties-dialog.c:395
+#: ../src/xfdesktop-file-properties-dialog.c:400
 msgid "Free Space:"
 msgstr "Espai lliure:"
 
-#: ../src/xfdesktop-file-properties-dialog.c:397
+#: ../src/xfdesktop-file-properties-dialog.c:402
 msgid "Size:"
 msgstr "Mida:"
 
-#: ../src/xfdesktop-file-properties-dialog.c:413
-#: ../src/xfdesktop-regular-file-icon.c:486
-#: ../src/xfdesktop-special-file-icon.c:492
+#: ../src/xfdesktop-file-properties-dialog.c:418
+#: ../src/xfdesktop-regular-file-icon.c:497
+#: ../src/xfdesktop-special-file-icon.c:496
 msgid "%s (%"
 msgstr "%s (%"
 
 #. permissions tab
-#: ../src/xfdesktop-file-properties-dialog.c:428
+#: ../src/xfdesktop-file-properties-dialog.c:433
 msgid "Permissions"
 msgstr "Permisos"
 
-#: ../src/xfdesktop-file-properties-dialog.c:450
+#: ../src/xfdesktop-file-properties-dialog.c:455
 msgid "Owner:"
 msgstr "Propietari:"
 
-#: ../src/xfdesktop-file-properties-dialog.c:472
-#: ../src/xfdesktop-file-properties-dialog.c:510
+#: ../src/xfdesktop-file-properties-dialog.c:477
+#: ../src/xfdesktop-file-properties-dialog.c:515
 msgid "Access:"
 msgstr "Accés:"
 
-#: ../src/xfdesktop-file-properties-dialog.c:495
+#: ../src/xfdesktop-file-properties-dialog.c:500
 msgid "Group:"
 msgstr "Grup:"
 
-#: ../src/xfdesktop-file-properties-dialog.c:533
+#: ../src/xfdesktop-file-properties-dialog.c:538
 msgid "Others:"
 msgstr "Altres:"
 
-#: ../src/xfdesktop-file-utils.c:74
+#: ../src/xfdesktop-file-utils.c:75
 msgid "Yes to _all"
 msgstr "Sí _a tot"
 
-#: ../src/xfdesktop-file-utils.c:106
+#: ../src/xfdesktop-file-utils.c:107
 #, c-format
 msgid "There was an error moving \"%s\" to \"%s\":"
 msgstr "S’ha produït un error en moure «%s» a «%s»:"
 
-#: ../src/xfdesktop-file-utils.c:109
+#: ../src/xfdesktop-file-utils.c:110
 #, c-format
 msgid "There was an error copying \"%s\" to \"%s\":"
 msgstr "S’ha produït un error en copiar «%s» a «%s»:"
 
-#: ../src/xfdesktop-file-utils.c:112
+#: ../src/xfdesktop-file-utils.c:113
 #, c-format
 msgid "There was an error linking \"%s\" to \"%s\":"
 msgstr "S’ha produït un error en enllaçar «%s» a «%s»:"
 
-#: ../src/xfdesktop-file-utils.c:121
+#: ../src/xfdesktop-file-utils.c:122
 msgid "File Error"
 msgstr "Error al fitxer"
 
-#: ../src/xfdesktop-file-utils.c:137
+#: ../src/xfdesktop-file-utils.c:138
 msgid "broken link"
 msgstr "enllaç romput"
 
-#: ../src/xfdesktop-file-utils.c:141
+#: ../src/xfdesktop-file-utils.c:142
 #, c-format
 msgid "link to %s"
 msgstr "enllaça a %s"
 
-#: ../src/xfdesktop-regular-file-icon.c:489
-#: ../src/xfdesktop-special-file-icon.c:496
+#: ../src/xfdesktop-regular-file-icon.c:500
+#: ../src/xfdesktop-special-file-icon.c:500
 #, c-format
 msgid ""
 "Kind: %s\n"
@@ -747,30 +735,30 @@ msgstr ""
 "Modificat: %s\n"
 "Mida: %s"
 
-#: ../src/xfdesktop-regular-file-icon.c:535
-#: ../src/xfdesktop-regular-file-icon.c:599
+#: ../src/xfdesktop-regular-file-icon.c:546
+#: ../src/xfdesktop-regular-file-icon.c:610
 msgid "Error"
 msgstr "Error"
 
-#: ../src/xfdesktop-regular-file-icon.c:596
+#: ../src/xfdesktop-regular-file-icon.c:607
 #, c-format
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "No s'ha pogut canviar el nom de «%s» a «%s»:"
 
 #. FIXME: also display # of items in trash
-#: ../src/xfdesktop-special-file-icon.c:482
+#: ../src/xfdesktop-special-file-icon.c:486
 msgid "Kind: Trash"
 msgstr "Tipus: Paperera"
 
-#: ../src/xfdesktop-special-file-icon.c:515
+#: ../src/xfdesktop-special-file-icon.c:519
 msgid "Trash Error"
 msgstr "Error a la paperera"
 
-#: ../src/xfdesktop-special-file-icon.c:517
+#: ../src/xfdesktop-special-file-icon.c:521
 msgid "Unable to contact the Xfce Trash service."
 msgstr "No s’ha pogut contactar amb el servei de paperera Xfce"
 
-#: ../src/xfdesktop-special-file-icon.c:518
+#: ../src/xfdesktop-special-file-icon.c:522
 msgid ""
 "Make sure you have a file manager installed that supports the Xfce Trash "
 "service, such as Thunar."
@@ -778,16 +766,16 @@ msgstr ""
 "Assegureu-vos que teniu instaŀlada una aplicació que funcioni amb la "
 "paperera Xfce, com per exemple Thunar."
 
-#: ../src/xfdesktop-special-file-icon.c:651
+#: ../src/xfdesktop-special-file-icon.c:655
 msgid "_Empty Trash"
 msgstr "Buida la pap_erera"
 
-#: ../src/xfdesktop-volume-icon.c:474
+#: ../src/xfdesktop-volume-icon.c:478
 #, c-format
 msgid "%s (%s total)"
 msgstr "%s (%s total)"
 
-#: ../src/xfdesktop-volume-icon.c:478
+#: ../src/xfdesktop-volume-icon.c:482
 #, c-format
 msgid ""
 "Kind: Removable Volume\n"
@@ -798,42 +786,42 @@ msgstr ""
 "Punt de muntatge: %s\n"
 "Espai lliure: %s"
 
-#: ../src/xfdesktop-volume-icon.c:509
+#: ../src/xfdesktop-volume-icon.c:513
 #, c-format
 msgid "Unable to mount \"%s\":"
 msgstr "No s'ha pogut muntar «%s»:"
 
-#: ../src/xfdesktop-volume-icon.c:510
+#: ../src/xfdesktop-volume-icon.c:514
 #, c-format
 msgid "Unable to unmount \"%s\":"
 msgstr "No s'ha pogut desmuntar «%s»:"
 
-#: ../src/xfdesktop-volume-icon.c:513
+#: ../src/xfdesktop-volume-icon.c:517
 msgid "Mount Failed"
 msgstr "No s'ha pogut muntar"
 
-#: ../src/xfdesktop-volume-icon.c:513
+#: ../src/xfdesktop-volume-icon.c:517
 msgid "Unmount Failed"
 msgstr "No s'ha pogut desmuntar"
 
-#: ../src/xfdesktop-volume-icon.c:531
+#: ../src/xfdesktop-volume-icon.c:535
 #, c-format
 msgid "Unable to eject \"%s\":"
 msgstr "No s'ha pogut expulsar «%s»:"
 
-#: ../src/xfdesktop-volume-icon.c:534
+#: ../src/xfdesktop-volume-icon.c:538
 msgid "Eject Failed"
 msgstr "No s'ha pogut expulsar"
 
-#: ../src/xfdesktop-volume-icon.c:578
+#: ../src/xfdesktop-volume-icon.c:582
 msgid "_Unmount Volume"
 msgstr "Desm_unta el volum"
 
-#: ../src/xfdesktop-volume-icon.c:581
+#: ../src/xfdesktop-volume-icon.c:585
 msgid "_Mount Volume"
 msgstr "_Munta el volum"
 
-#: ../src/xfdesktop-volume-icon.c:595
+#: ../src/xfdesktop-volume-icon.c:599
 msgid "E_ject Volume"
 msgstr "_Expulsa el volum"
 
@@ -1005,267 +993,221 @@ msgstr "Escriptori "
 msgid "Set desktop background and menu and icon behaviour"
 msgstr "Fixa el fons de l'escriptori i el comportament del menú i les icones"
 
-#: ../settings/xfdesktop-settings.glade.h:1
-msgid "<b>Adjustments</b>"
-msgstr "<b>Ajustaments</b>"
+#~ msgid "%s: Unknown option: %s\n"
+#~ msgstr "%s: opció desconeguda: %s\n"
 
-#: ../settings/xfdesktop-settings.glade.h:2
-msgid "<b>Appearance</b>"
-msgstr "<b>Aparença</b>"
+#~ msgid "Options are:\n"
+#~ msgstr "Són opcions:\n"
 
-#: ../settings/xfdesktop-settings.glade.h:3
-msgid "<b>Colors</b>"
-msgstr "<b>Colors</b>"
+#~ msgid "<b>Adjustments</b>"
+#~ msgstr "<b>Ajustaments</b>"
 
-#: ../settings/xfdesktop-settings.glade.h:4
-msgid "<b>Default Icons</b>"
-msgstr "<b>Icona per defecte</b>"
+#~ msgid "<b>Appearance</b>"
+#~ msgstr "<b>Aparença</b>"
 
-#: ../settings/xfdesktop-settings.glade.h:5
-msgid "<b>Desktop Menu</b>"
-msgstr "<b>Menú de l'escriptori</b>"
+#~ msgid "<b>Colors</b>"
+#~ msgstr "<b>Colors</b>"
 
-#: ../settings/xfdesktop-settings.glade.h:6
-msgid "<b>Image</b>"
-msgstr "<b>Imatge</b>"
+#~ msgid "<b>Default Icons</b>"
+#~ msgstr "<b>Icona per defecte</b>"
 
-#: ../settings/xfdesktop-settings.glade.h:7
-msgid "<b>Images</b>"
-msgstr "<b>Imatges</b>"
+#~ msgid "<b>Desktop Menu</b>"
+#~ msgstr "<b>Menú de l'escriptori</b>"
 
-#: ../settings/xfdesktop-settings.glade.h:8
-msgid "<b>Window List Menu</b>"
-msgstr "<b>Menu de llista de finestres</b>"
+#~ msgid "<b>Image</b>"
+#~ msgstr "<b>Imatge</b>"
 
-#: ../settings/xfdesktop-settings.glade.h:9
-msgid "Add an image to the list"
-msgstr "Afegeix una imatge a la llista"
+#~ msgid "<b>Images</b>"
+#~ msgstr "<b>Imatges</b>"
 
-#: ../settings/xfdesktop-settings.glade.h:10
-msgid ""
-"Auto\n"
-"Centered\n"
-"Tiled\n"
-"Stretched\n"
-"Scaled\n"
-"Zoomed"
-msgstr ""
-"Automàtic\n"
-"Al centre\n"
-"En mosaic\n"
-"S'amplia\n"
-"S'escala\n"
-"Zoom"
+#~ msgid "<b>Window List Menu</b>"
+#~ msgstr "<b>Menu de llista de finestres</b>"
 
-#: ../settings/xfdesktop-settings.glade.h:16
-msgid "Automatically pick a random image from a list file"
-msgstr "Tria una imatge aleatòria automàticament de la llista de fitxers"
+#~ msgid "Add an image to the list"
+#~ msgstr "Afegeix una imatge a la llista"
 
-#: ../settings/xfdesktop-settings.glade.h:17
-msgid "B_rightness:"
-msgstr "_Brillantor:"
+#~ msgid ""
+#~ "Auto\n"
+#~ "Centered\n"
+#~ "Tiled\n"
+#~ "Stretched\n"
+#~ "Scaled\n"
+#~ "Zoomed"
+#~ msgstr ""
+#~ "Automàtic\n"
+#~ "Al centre\n"
+#~ "En mosaic\n"
+#~ "S'amplia\n"
+#~ "S'escala\n"
+#~ "Zoom"
 
-#: ../settings/xfdesktop-settings.glade.h:18
-msgid "B_utton:"
-msgstr "B_otó:"
+#~ msgid "Automatically pick a random image from a list file"
+#~ msgstr "Tria una imatge aleatòria automàticament de la llista de fitxers"
 
-#: ../settings/xfdesktop-settings.glade.h:19
-msgid "Create a new list, or load an existing one"
-msgstr "Crea una nova llista, o carrega una d'existent"
+#~ msgid "B_rightness:"
+#~ msgstr "_Brillantor:"
 
-#: ../settings/xfdesktop-settings.glade.h:21
-msgid "Don't display an image at all"
-msgstr "No mostris cap imatge"
+#~ msgid "B_utton:"
+#~ msgstr "B_otó:"
 
-#: ../settings/xfdesktop-settings.glade.h:22
-msgid "Icon _size:"
-msgstr "Mida de les _icones:"
+#~ msgid "Create a new list, or load an existing one"
+#~ msgstr "Crea una nova llista, o carrega una d'existent"
 
-#: ../settings/xfdesktop-settings.glade.h:23
-msgid "Icon _type:"
-msgstr "_Tipus d'icones:"
+#~ msgid "Don't display an image at all"
+#~ msgstr "No mostris cap imatge"
 
-#: ../settings/xfdesktop-settings.glade.h:24
-msgid "Image _list"
-msgstr "_Llista d'imatges"
+#~ msgid "Icon _size:"
+#~ msgstr "Mida de les _icones:"
 
-#: ../settings/xfdesktop-settings.glade.h:25
-msgid "Increase or decrease the brightness of the final image"
-msgstr "Augmenta o disminueix la brillantor de la imatge final"
+#~ msgid "Icon _type:"
+#~ msgstr "_Tipus d'icones:"
 
-#: ../settings/xfdesktop-settings.glade.h:26
-msgid "Increase or decrease the color saturation of the final image"
-msgstr "Augmenta o disminueix la saturació del color de la imatge final"
+#~ msgid "Image _list"
+#~ msgstr "_Llista d'imatges"
 
-#: ../settings/xfdesktop-settings.glade.h:27
-msgid "Label trans_parency:"
-msgstr "Trans_parència d'etiquetes:"
+#~ msgid "Increase or decrease the brightness of the final image"
+#~ msgstr "Augmenta o disminueix la brillantor de la imatge final"
 
-#: ../settings/xfdesktop-settings.glade.h:28
-msgid ""
-"Left\n"
-"Middle\n"
-"Right"
-msgstr ""
-"Esquerra\n"
-"Mig\n"
-"Dret"
+#~ msgid "Increase or decrease the color saturation of the final image"
+#~ msgstr "Augmenta o disminueix la saturació del color de la imatge final"
 
-#: ../settings/xfdesktop-settings.glade.h:31
-msgid "Mo_difier:"
-msgstr "Mo_dificador:"
+#~ msgid "Label trans_parency:"
+#~ msgstr "Trans_parència d'etiquetes:"
 
-#: ../settings/xfdesktop-settings.glade.h:32
-msgid "Modi_fier:"
-msgstr "Modi_ficador:"
+#~ msgid ""
+#~ "Left\n"
+#~ "Middle\n"
+#~ "Right"
+#~ msgstr ""
+#~ "Esquerra\n"
+#~ "Mig\n"
+#~ "Dret"
 
-#: ../settings/xfdesktop-settings.glade.h:33
-msgid ""
-"None\n"
-"Minimized application icons\n"
-"File/launcher icons"
-msgstr ""
-"Cap\n"
-"Icones d'aplicacions minimitzades\n"
-"Icones de fitxer/llançador"
+#~ msgid "Mo_difier:"
+#~ msgstr "Mo_dificador:"
 
-#: ../settings/xfdesktop-settings.glade.h:36
-msgid ""
-"None\n"
-"Shift\n"
-"Alt\n"
-"Control"
-msgstr ""
-"Cap\n"
-"Majúscules «Shift»\n"
-"Alternativa «Alt»\n"
-"Control"
+#~ msgid "Modi_fier:"
+#~ msgstr "Modi_ficador:"
 
-#: ../settings/xfdesktop-settings.glade.h:40
-msgid "Remove the selected image(s) from the list"
-msgstr "Treu la imatge o imatges seleccionades de la llista"
+#~ msgid ""
+#~ "None\n"
+#~ "Minimized application icons\n"
+#~ "File/launcher icons"
+#~ msgstr ""
+#~ "Cap\n"
+#~ "Icones d'aplicacions minimitzades\n"
+#~ "Icones de fitxer/llançador"
 
-#: ../settings/xfdesktop-settings.glade.h:41
-msgid "Sa_turation:"
-msgstr "_Saturació:"
+#~ msgid ""
+#~ "None\n"
+#~ "Shift\n"
+#~ "Alt\n"
+#~ "Control"
+#~ msgstr ""
+#~ "Cap\n"
+#~ "Majúscules «Shift»\n"
+#~ "Alternativa «Alt»\n"
+#~ "Control"
 
-#: ../settings/xfdesktop-settings.glade.h:42
-msgid "Select First Color"
-msgstr "Seleccioneu el primer color:"
+#~ msgid "Remove the selected image(s) from the list"
+#~ msgstr "Treu la imatge o imatges seleccionades de la llista"
 
-#: ../settings/xfdesktop-settings.glade.h:43
-msgid "Select Second Color"
-msgstr "Seleccioneu el segon color:"
+#~ msgid "Sa_turation:"
+#~ msgstr "_Saturació:"
 
-#: ../settings/xfdesktop-settings.glade.h:44
-msgid "Select a single image as the backdrop"
-msgstr "Selecciona una sola imatge com a fons"
+#~ msgid "Select First Color"
+#~ msgstr "Seleccioneu el primer color:"
 
-#: ../settings/xfdesktop-settings.glade.h:45
-msgid "Set desktop background and menu and icon behavior"
-msgstr ""
-"Ajusta el fons de l'escriptori i el comportament del menú i de les icones"
+#~ msgid "Select Second Color"
+#~ msgstr "Seleccioneu el segon color:"
 
-#: ../settings/xfdesktop-settings.glade.h:46
-msgid "Sh_ow application icons in menu"
-msgstr "M_ostra les icones d'aplicació al menú"
+#~ msgid "Select a single image as the backdrop"
+#~ msgstr "Selecciona una sola imatge com a fons"
 
-#: ../settings/xfdesktop-settings.glade.h:47
-msgid "Show _application icons in menu"
-msgstr "Mostra les icones d'_aplicació al menú"
+#~ msgid "Set desktop background and menu and icon behavior"
+#~ msgstr ""
+#~ "Ajusta el fons de l'escriptori i el comportament del menú i de les icones"
 
-#: ../settings/xfdesktop-settings.glade.h:48
-msgid "Show _window list menu on desktop middle click"
-msgstr "Mostra la llista de _finestres amb el botó del mig del ratolí"
+#~ msgid "Sh_ow application icons in menu"
+#~ msgstr "M_ostra les icones d'aplicació al menú"
 
-#: ../settings/xfdesktop-settings.glade.h:49
-msgid "Show applications menu on _desktop right click"
-msgstr "Mostra el menú d'_aplicacions amb el botó dret del ratolí"
+#~ msgid "Show _application icons in menu"
+#~ msgstr "Mostra les icones d'_aplicació al menú"
 
-#: ../settings/xfdesktop-settings.glade.h:50
-msgid "Show s_ticky windows only in active workspace"
-msgstr "Mostra les finestres _omnipresents només a l'espai de treball actiu"
+#~ msgid "Show _window list menu on desktop middle click"
+#~ msgstr "Mostra la llista de _finestres amb el botó del mig del ratolí"
 
-#: ../settings/xfdesktop-settings.glade.h:51
-msgid "Show workspace _names in list"
-msgstr "Mostra els _noms dels espais de treball en una llista"
+#~ msgid "Show applications menu on _desktop right click"
+#~ msgstr "Mostra el menú d'_aplicacions amb el botó dret del ratolí"
 
-#: ../settings/xfdesktop-settings.glade.h:52
-msgid ""
-"Solid color\n"
-"Horizontal gradient\n"
-"Vertical gradient\n"
-"Transparent"
-msgstr ""
-"Color sòlid\n"
-"Degradat horitzontal\n"
-"Degradat vertical\n"
-"Transparent"
+#~ msgid "Show s_ticky windows only in active workspace"
+#~ msgstr "Mostra les finestres _omnipresents només a l'espai de treball actiu"
 
-#: ../settings/xfdesktop-settings.glade.h:56
-msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-msgstr "Especifica el color del degradat «dret» o «baix»"
+#~ msgid "Show workspace _names in list"
+#~ msgstr "Mostra els _noms dels espais de treball en una llista"
 
-#: ../settings/xfdesktop-settings.glade.h:57
-msgid ""
-"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr "Especifica el color sòlid, o el color del degradat «esquerra» o «dalt»"
+#~ msgid ""
+#~ "Solid color\n"
+#~ "Horizontal gradient\n"
+#~ "Vertical gradient\n"
+#~ "Transparent"
+#~ msgstr ""
+#~ "Color sòlid\n"
+#~ "Degradat horitzontal\n"
+#~ "Degradat vertical\n"
+#~ "Transparent"
 
-#: ../settings/xfdesktop-settings.glade.h:58
-msgid "Specify how the image will be resized to fit the screen"
-msgstr "Indiqueu com es dimensionaran les imatges per cabre a la pantalla"
+#~ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
+#~ msgstr "Especifica el color del degradat «dret» o «baix»"
 
-#: ../settings/xfdesktop-settings.glade.h:59
-msgid "Specify the style of the color drawn behind the backdrop image"
-msgstr "Indiqueu l'estil del color darrere la imatge de fons"
+#~ msgid ""
+#~ "Specifies the solid color, or the \"left\" or \"top\" color of the "
+#~ "gradient"
+#~ msgstr ""
+#~ "Especifica el color sòlid, o el color del degradat «esquerra» o «dalt»"
 
-#: ../settings/xfdesktop-settings.glade.h:60
-msgid ""
-"Specify the transparency level for the rounded label drawn behind the icon "
-"text"
-msgstr ""
-"Indiqueu el nivell de transparència per l'etiqueta arrodonida darrere el "
-"text de les icones"
+#~ msgid "Specify how the image will be resized to fit the screen"
+#~ msgstr "Indiqueu com es dimensionaran les imatges per cabre a la pantalla"
 
-#: ../settings/xfdesktop-settings.glade.h:61
-msgid "St_yle:"
-msgstr "Est_il:"
+#~ msgid "Specify the style of the color drawn behind the backdrop image"
+#~ msgstr "Indiqueu l'estil del color darrere la imatge de fons"
 
-#: ../settings/xfdesktop-settings.glade.h:62
-msgid "Use _submenus for the windows in each workspace"
-msgstr "Empra _submenús per les finestres de cada espai de treball"
+#~ msgid ""
+#~ "Specify the transparency level for the rounded label drawn behind the "
+#~ "icon text"
+#~ msgstr ""
+#~ "Indiqueu el nivell de transparència per l'etiqueta arrodonida darrere el "
+#~ "text de les icones"
 
-#: ../settings/xfdesktop-settings.glade.h:63
-msgid "Use custom _font size:"
-msgstr "Empra mida de _lletra personalitzada:"
+#~ msgid "St_yle:"
+#~ msgstr "Est_il:"
 
-#: ../settings/xfdesktop-settings.glade.h:64
-msgid "_Background"
-msgstr "_Fons"
+#~ msgid "Use _submenus for the windows in each workspace"
+#~ msgstr "Empra _submenús per les finestres de cada espai de treball"
 
-#: ../settings/xfdesktop-settings.glade.h:65
-msgid "_Button:"
-msgstr "_Botó:"
+#~ msgid "Use custom _font size:"
+#~ msgstr "Empra mida de _lletra personalitzada:"
 
-#: ../settings/xfdesktop-settings.glade.h:66
-msgid "_Edit desktop menu"
-msgstr "_Edita menú"
+#~ msgid "_Background"
+#~ msgstr "_Fons"
 
-#: ../settings/xfdesktop-settings.glade.h:67
-msgid "_Icons"
-msgstr "_Icones"
+#~ msgid "_Button:"
+#~ msgstr "_Botó:"
 
-#: ../settings/xfdesktop-settings.glade.h:68
-msgid "_Menus"
-msgstr "_Menús"
+#~ msgid "_Edit desktop menu"
+#~ msgstr "_Edita menú"
 
-#: ../settings/xfdesktop-settings.glade.h:69
-msgid "_None"
-msgstr "_Cap"
+#~ msgid "_Icons"
+#~ msgstr "_Icones"
 
-#: ../settings/xfdesktop-settings.glade.h:70
-msgid "_Single image"
-msgstr "_Una imatge"
+#~ msgid "_Menus"
+#~ msgstr "_Menús"
+
+#~ msgid "_None"
+#~ msgstr "_Cap"
+
+#~ msgid "_Single image"
+#~ msgstr "_Una imatge"
 
 #~ msgid "gtk-close"
 #~ msgstr "gtk-close"
