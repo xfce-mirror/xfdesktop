@@ -51,9 +51,10 @@ SUFFIXES: .ui
 endif
 
 EXTRA_DIST = \
-	xfdesktop-settings.glade \
+	xfdesktop-settings-ui.xml \
+	xfdesktop-settings-appearance-frame-ui.xml \
 	$(desktop_in_files)
 
-CLEANFILES =  \
-$(BUILT_SOURCES) \
-$(desktop_DATA)
+CLEANFILES = \
+	$(BUILT_SOURCES) \
+	$(desktop_DATA)
