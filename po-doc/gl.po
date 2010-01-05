@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: xfce-i18n@xfce.org\n"
 "POT-Creation-Date: 2009-04-20 14:33+0200\n"
-"PO-Revision-Date: 2009-12-18 13:38+0100\n"
+"PO-Revision-Date: 2009-12-26 14:53+0100\n"
 "Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -153,7 +153,7 @@ msgstr "Introdución"
 
 #: ../doc/C/xfdesktop.xml.in:82(para)
 msgid "The <application>@PACKAGE_NAME@</application> application manages the desktop backdrop. It sets a backdrop image and/or color and it can pop up an applications menu and a list of all running applications when you click on the desktop with the right or middle mouse button respectively. As of Xfce 4.4, <application>@PACKAGE_NAME@</application> also draws icons on the desktop."
-msgstr ""
+msgstr "O aplicativo <application>@PACKAGE_NAME@</application> xestiona o fondo de escritorio. Define unha imaxe e/ou cor de fondo e mostra un menú de aplicativos e unha lista de todos os aplicativos en execución cando preme no escritorio co botón dereito ou central do rato respectivamente. En Xfce 4.4, <application>@PACKAGE_NAME@</application> tamén debuxa as iconas do escritorio."
 
 #: ../doc/C/xfdesktop.xml.in:90(para)
 msgid "The <application>@PACKAGE_NAME@</application> package installs a settings dialog for use with the <emphasis>Xfce 4 Settings Manager</emphasis>. From this dialog you can change the backdrop image and color and change settings for the menu and the window list."
@@ -165,7 +165,7 @@ msgstr "Imaxe de fondo"
 
 #: ../doc/C/xfdesktop.xml.in:101(para)
 msgid "<application>@PACKAGE_NAME@</application> is responsible for drawing the desktop's backdrop (sometimes called \"wallpaper\") image. There are various options for setting a backdrop image. The final picture seen on the monitor is composed of a solid color or gradient, with an image or photo (with optional transparency) composited on top of the color or gradient. This allows for some interesting effects using semi-transparent images on top of various color arrangements."
-msgstr ""
+msgstr "<application>@PACKAGE_NAME@</application> é responsable de debuxar a imaxe do fondo do escritorio. Hai varias opcións para configurar unha imaxe de fondo. A imaxe final que se verá no monitor está composta por unha cor sólida ou un degradado, e unha imaxe ou foto (podendo ser transparente) superposta á cor ou degradado. Isto permite obter algúns efectos interesantes usando imaxes semitransparentes enriba de diferentes cores."
 
 #: ../doc/C/xfdesktop.xml.in:113(title)
 msgid "Icons"
@@ -181,7 +181,7 @@ msgstr "Iconas de fiestras minimizadas"
 
 #: ../doc/C/xfdesktop.xml.in:123(para)
 msgid "One mode of operation displays minimized applications as icons on the desktop, which can be rearranged, and will remember their positions when the window is unhidden and then later minimized again. The icons also provide a right-click menu similar to the window's control menu accessed by clicking the button in the top-left corner of the window."
-msgstr ""
+msgstr "Un modo de operación mostra os aplicativos minimizados como iconas no escritorio, as cales se poden reordenar, e que lembrarán as súas posicións aínda cando a fiestra se mostra e despois se volve minimizar. As iconas tamén proporcionan un menú accesible ao premer co botón dereito nelas semellante ao menú de control das fiestras ao que se accede ao premer o botón situado na esquina superior esquerda da fiestra."
 
 #: ../doc/C/xfdesktop.xml.in:133(title)
 msgid "File/Launcher Icons"
@@ -189,7 +189,7 @@ msgstr "Iconas de iniciador/ficheiro"
 
 #: ../doc/C/xfdesktop.xml.in:135(para)
 msgid "<application>@PACKAGE_NAME@</application> can also display on the desktop the contents of the <filename>$XDG_DESKTOP_DIR</filename> folder, which can be set in the <filename>$XDG_CONFIG_HOME/user-dirs.dirs</filename> file (if you do not have this file, it will use <filename>$HOME/Desktop</filename>). Files can be arranged, copied, moved, and linked to and from a file manager, and opened using preferred applications. Application and URL launchers can also be created on the desktop. The file icon view is modeled to have a similar look and feel as the <ulink url=\"http://thunar.xfce.org/\" type=\"http\">Thunar</ulink> file manager."
-msgstr ""
+msgstr "<application>@PACKAGE_NAME@</application> tamén pode mostrar no escritorio o contido do cartafol <filename>$XDG_DESKTOP_DIR</filename>, o cal se pode configurar no ficheiro <filename>$XDG_CONFIG_HOME/user-dirs.dirs</filename> (se non ten este ficheiro, usarase <filename>$HOME/Desktop</filename>). Os ficheiros poden ordenarse, copiarse, moverse, e enlazarse dende e a un xestor de ficheiros, e abrirse usando os aplicativos preferidos. Os iniciadores de aplicativos e URLs tamén se poden crear no escritorio. A vista de iconas de ficheiro modelouse para ter unha aparencia semellante á do xestor de ficheiros <ulink url=\"http://thunar.xfce.org/\" type=\"http\">Thunar</ulink>."
 
 #: ../doc/C/xfdesktop.xml.in:152(title)
 msgid "The Desktop Menu"
@@ -197,7 +197,7 @@ msgstr "O menú de escritorio"
 
 #: ../doc/C/xfdesktop.xml.in:154(para)
 msgid "A right-click on the desktop backdrop opens a menu that allows you to open a Thunar window in the Desktop directory, to create launchers, URL links, folders and files from templates. It is also possible to open the Desktop Settings and the Properties window of the Desktop directory and to start many of the applications found on your system."
-msgstr ""
+msgstr "Ao premer co botón dereito do rato na imaxe de fondo do escritorio ábrese un menú que lle permite abrir unha fiestra de Thunar no directorio Escritorio, crear iniciadores, ligazóns a URL, cartafoles e ficheiros a partir de modelos. Tamén é posible abrir a Configuración do escritorio e a fiestra de Propiedades do directorio Escritorio e iniciar moitos dos aplicativos que se atopan no sistema."
 
 #: ../doc/C/xfdesktop.xml.in:163(title)
 #: ../doc/C/xfdesktop.xml.in:455(term)
@@ -206,19 +206,19 @@ msgstr "Menú de escritorio"
 
 #: ../doc/C/xfdesktop.xml.in:170(phrase)
 msgid "Shows <application>@PACKAGE_NAME@</application> right-click mouse menu."
-msgstr ""
+msgstr "Mostra o menú de <application>@PACKAGE_NAME@</application> que aparece ao premer co botón dereito do rato."
 
 #: ../doc/C/xfdesktop.xml.in:176(para)
 msgid "The menu's configuration file, <filename>xfce-applications.menu</filename>, can be found under the path <filename>$sysconfdir/xdg/menus/xfce-applications.menu</filename>. For binary packages, <filename>$sysconfdir</filename> is often <filename>/etc</filename> and for source compiles, it defaults to <filename>/usr/local/etc</filename>."
-msgstr ""
+msgstr "O ficheiro de configuración do menú, <filename>xfce-applications.menu</filename>, pode atoparse en <filename>$sysconfdir/xdg/menus/xfce-applications.menu</filename>. Para os paquetes binarios, <filename>$sysconfdir</filename> é a miúdo <filename>/etc</filename> e para as compilacións dende código fonte, é por defecto <filename>/usr/local/etc</filename>."
 
 #: ../doc/C/xfdesktop.xml.in:185(para)
 msgid "The previous menu editor is not available anymore. However you can customize your menu by copying <filename>xfce-applications.menu</filename> to <filename>$XDG_CONFIG_HOME/menus</filename> and by modifying it with a text editor such as <application>mousepad</application> or <application>gedit</application>. Please remember that the file should be UTF-8 encoded. For more information on menu editing, please see <ulink url=\"http://wiki.xfce.org/howto/customize-menu\" type=\"http\">the Xfce Wiki</ulink>."
-msgstr ""
+msgstr "O anterior editor de menú xa non está dispoñible. Aínda así poderá personalizar o menú copiando <filename>xfce-applications.menu</filename> a <filename>$XDG_CONFIG_HOME/menus</filename> e modificándoo cun editor de texto como <application>mousepad</application> ou <application>gedit</application>. Lembre que o ficheiro debe estar codificado en UTF-8. Para obter máis información sobre a edición do menú, consulte <ulink url=\"http://wiki.xfce.org/howto/customize-menu\" type=\"http\">a wiki de Xfce</ulink>."
 
 #: ../doc/C/xfdesktop.xml.in:197(para)
 msgid "Further customisation can be achived by creating <ulink url=\"http://standards.freedesktop.org/desktop-entry-spec/latest/\" type=\"http\">desktop entries</ulink> in <filename>$XDG_DATA_HOME/applications</filename> to hide, modify or add entries in the menu."
-msgstr ""
+msgstr "Pode conseguirse unha maior personalización creando <ulink url=\"http://standards.freedesktop.org/desktop-entry-spec/latest/\" type=\"http\">entradas desktop</ulink> en <filename>$XDG_DATA_HOME/applications</filename> para ocultar, modificar ou engadir entradas ao menú."
 
 #: ../doc/C/xfdesktop.xml.in:207(title)
 msgid "The Window List Menu"
@@ -226,7 +226,7 @@ msgstr "O menú de lista de fiestras"
 
 #: ../doc/C/xfdesktop.xml.in:209(para)
 msgid "A middle-click on the desktop backdrop shows a list of all opened windows ordered by workspace. It also allows you to add or remove a workspace."
-msgstr ""
+msgstr "Ao premer co botón central no fondo de escritorio móstrase unha lista de todas as fiestras abertas ordenadas por espazo de traballo. Tamén permite engadir ou eliminar un espazo de traballo."
 
 #: ../doc/C/xfdesktop.xml.in:216(title)
 #: ../doc/C/xfdesktop.xml.in:475(term)
@@ -244,7 +244,7 @@ msgstr "Configuración de escritorio"
 #. Needs to be changed once xfce4-settings is documented
 #: ../doc/C/xfdesktop.xml.in:234(para)
 msgid "You can start the Desktop settings dialog by clicking on the \"Desktop\" button in the <ulink url=\"xfce-mcs-manager.html#manager-dialog\" type=\"http\">Xfce Settings Manager</ulink>."
-msgstr ""
+msgstr "Pode iniciar o diálogo de configuración do escritorio premendo no botón \"Escritorio\" no <ulink url=\"xfce-mcs-manager.html#manager-dialog\" type=\"http\">Xestor de configuración de Xfce</ulink>."
 
 #: ../doc/C/xfdesktop.xml.in:242(title)
 msgid "Background Tab"
@@ -272,11 +272,11 @@ msgstr "Seleccione a opción <emphasis>\"Ningún\"</emphasis> se desexa que <app
 
 #: ../doc/C/xfdesktop.xml.in:277(para)
 msgid "Select the <emphasis>\"Single image\"</emphasis> option if you want <application>@PACKAGE_NAME@</application> to draw a backdrop image."
-msgstr ""
+msgstr "Seleccione a opción <emphasis>\"Imaxe única\"</emphasis> se desexa que <application>@PACKAGE_NAME@</application> mostre unha imaxe como fondo de escritorio."
 
 #: ../doc/C/xfdesktop.xml.in:282(para)
 msgid "Select the <emphasis>\"Image List\"</emphasis> option if you want <application>@PACKAGE_NAME@</application> to randomly choose the backdrop image among a list."
-msgstr ""
+msgstr "Seleccione a opción <emphasis>\"Lista de imaxes\"</emphasis> se desexa que <application>@PACKAGE_NAME@</application> seleccione aleatoriamente a imaxe de fondo de escritorio entre todas as imaxes da lista."
 
 #: ../doc/C/xfdesktop.xml.in:294(term)
 msgid "Images"
@@ -284,23 +284,23 @@ msgstr "Imaxes"
 
 #: ../doc/C/xfdesktop.xml.in:298(para)
 msgid "If you selected the <emphasis>\"Single image\"</emphasis> option, you can choose an image from the treeview. Click on an image to set it as the current backdrop. <application>@PACKAGE_NAME@</application> will update the background of your desktop automatically."
-msgstr ""
+msgstr "Se seleccionou a opción <emphasis>\"Imaxe única\"</emphasis> poderá escoller unha imaxe na vista de árbore. Prema nunha imaxe para definila como fondo de escritorio actual. <application>@PACKAGE_NAME@</application> actualizará o fondo de escritorio automaticamente."
 
 #: ../doc/C/xfdesktop.xml.in:305(para)
 msgid "You can add images to the treeview by clicking on the \"plus\" button, which will pop a file chooser dialog up. Images can be removed using the \"minus\" button."
-msgstr ""
+msgstr "Pode engadir imaxes á vista de árbore premendo no botón \"máis\", o cal mostrará un diálogo emerxente de selector de ficheiros. As imaxes eliminarse premendo no botón \"menos\"."
 
 #: ../doc/C/xfdesktop.xml.in:314(para)
 msgid "If you selected the <emphasis>\"Image list\"</emphasis> option, you can use the \"New\" button displaying a blank sheet to select an existing list or create a new one, using a file chooser. You can still use the \"plus\" and \"minus\" buttons to add and remove images. <application>@PACKAGE_NAME@</application> will then randomly choose a backdrop among this list every time it starts."
-msgstr ""
+msgstr "Se seleccionou a opción <emphasis>\"Lista de imaxes\"</emphasis>, poderá usar o botón \"Novo\" que ten unha folla en branco para seleccionar unha lista existente ou crear unha nova, usando un selector de ficheiros. Tamén poderá usar aínda os botóns \"máis\" e \"menos\" para engadir e eliminar imaxes. Despois <application>@PACKAGE_NAME@</application> escollerá de xeito aleatorio un fondo de escritorio entre as imaxes desta lista cada vez que se inicie."
 
 #: ../doc/C/xfdesktop.xml.in:326(para)
 msgid "Five Style options (<emphasis>\"Centered\"</emphasis>, <emphasis>\"Tiled\"</emphasis>, <emphasis>\"Stretched\"</emphasis>, <emphasis>\"Scaled\"</emphasis> and <emphasis>\"Zoomed\"</emphasis>) are available to specify the fitting of the backdrop image on the screen, depending on its size. You can also select the <emphasis>\"Auto\"</emphasis> item if you want to let <application>@PACKAGE_NAME@</application> take care of this setting."
-msgstr ""
+msgstr "Hai cinco opcións de estilo dispoñibles para especificar o axuste da imaxe de fondo na pantalla, dependendo do seu tamaño (<emphasis>\"Centrada\"</emphasis>, <emphasis>\"Mosaico\"</emphasis>, <emphasis>\"Estirada\"</emphasis>, <emphasis>\"Escalada\"</emphasis> e <emphasis>\"Ampliada\"</emphasis>). Tamén pode seleccionar o elemento <emphasis>\"Automático\"</emphasis> se desexa deixar que <application>@PACKAGE_NAME@</application> se ocupe desta opción."
 
 #: ../doc/C/xfdesktop.xml.in:341(para)
 msgid "<application>@PACKAGE_NAME@</application> supports xinerama and multiscreen modes. In multiscreen mode, the Background tab shows one tab per screen."
-msgstr ""
+msgstr "<application>@PACKAGE_NAME@</application> soporta os modos xinerama e multipantalla. No modo multipantalla, a lapela Fondo mostra unha lapela por pantalla."
 
 #: ../doc/C/xfdesktop.xml.in:349(term)
 msgid "Colors"
@@ -316,7 +316,7 @@ msgstr ""
 
 #: ../doc/C/xfdesktop.xml.in:365(para)
 msgid "Two colored buttons allow you to choose the colors for your desktop. When the solid color option is selected, only the first color is available. When either of the gradient options are selected, both the first and second colors are available. Both of the color buttons open a color chooser dialog:"
-msgstr ""
+msgstr "Dous botóns de cores permítenlle escoller as cores do escritorio. Cando se selecciona a opción de cor sólida, só está dispoñible a primeira cor. Cando se seleccionan as opcións de degradado, están dispoñibles tanto a primeira cor como a segunda cor. Ambos os dous botóns de cor abren un diálogo de selección de cor:"
 
 #: ../doc/C/xfdesktop.xml.in:375(title)
 msgid "Select Background Color"
@@ -328,11 +328,11 @@ msgstr "Mostra o diálogo de selección de cor"
 
 #: ../doc/C/xfdesktop.xml.in:390(listitem)
 msgid "You can use the colored ring with a triangle inside to select the color you want from the outer ring, then select the darkness or lightness of that color using the inner triangle. Corresponding values of brightness, deepness, and amount of red, green and blue light in the color appear through the entries on the right side of the window."
-msgstr ""
+msgstr "Pode usar o anel de cores co triángulo dentro para seleccionar a cor que desexe do anel exterior, e seleccionando despois a cor exacta co triángulo interior. Os valores correspondentes de brillo, profundidade, e cantidade de vermello, verde e azul da cor aparecen nas entradas do lado dereito da fiestra."
 
 #: ../doc/C/xfdesktop.xml.in:399(listitem)
 msgid "You can click the eyedropper, then click anywhere on your screen to select the color."
-msgstr ""
+msgstr "Pode premer no contagotas, e despois en calquera parte da pantalla para seleccionar a cor."
 
 #: ../doc/C/xfdesktop.xml.in:406(emphasis)
 msgid "\"Color Name\""
@@ -344,7 +344,7 @@ msgstr "Pode introducir un valor de cor hexadecimal do estilo de HTML, ou simple
 
 #: ../doc/C/xfdesktop.xml.in:411(para)
 msgid "The selected colors will fill the entire root window, and will remain visible through a transparent backdrop image."
-msgstr ""
+msgstr "As cores seleccionadas enchen toda a fiestra raíz, e permanecerán visibles a través dunha imaxe de fondo transparente."
 
 #: ../doc/C/xfdesktop.xml.in:419(term)
 msgid "Adjustments"
@@ -352,7 +352,7 @@ msgstr "Axustes"
 
 #: ../doc/C/xfdesktop.xml.in:422(para)
 msgid "The two sliders allow you to adjust the brightness and the saturation of the backdrop image and or color."
-msgstr ""
+msgstr "As dúas barras deslizantes permítenlle axustar o brillo e a saturación da imaxe de fondo e/ou da cor de fondo."
 
 #: ../doc/C/xfdesktop.xml.in:433(title)
 msgid "Menus Tab"
@@ -368,7 +368,7 @@ msgstr "Mostra a lapela Menús do diálogo de configuración do escritorio"
 
 #: ../doc/C/xfdesktop.xml.in:458(para)
 msgid "If you check the <emphasis>\"Show applications menu on desktop right click\"</emphasis>, the <link linkend=\"xfdesktop-menu\">applications menu</link> will be shown when right clicking on the desktop."
-msgstr ""
+msgstr "Se marca a opción <emphasis>\"Mostrar o menú de aplicativos ao premer co botón dereito no escritorio\"</emphasis> mostrarase o <link linkend=\"xfdesktop-menu\">menú de aplicativos</link> cando prema co botón dereito no escritorio."
 
 #: ../doc/C/xfdesktop.xml.in:467(para)
 msgid "The <emphasis>\"Show application icons in menu\"</emphasis> allows you to show or hide icons in the menu."
@@ -380,19 +380,19 @@ msgstr "Se marca a opción <emphasis>\"Mostrar o menú da lista de fiestras ao p
 
 #: ../doc/C/xfdesktop.xml.in:488(para)
 msgid "The <emphasis>\"Show application icons in menu\"</emphasis> option allows you to show or hide icons in the menu. This option is only available when <emphasis>\"Show window list menu on desktop middle click\"</emphasis> is checked."
-msgstr ""
+msgstr "A opción <emphasis>\"Mostrar iconas dos aplicativos no menú\"</emphasis> permítelle mostrar ou ocultar as iconas no menú. Esta opción só está dispoñible cando se marca <emphasis>\"Mostrar o menú de lista de fiestras ao premer co botón central no escritorio\"</emphasis>."
 
 #: ../doc/C/xfdesktop.xml.in:499(para)
 msgid "The <emphasis>\"Show workspace names in list\"</emphasis> option allows you to show or hide workspace names in the list. If checked, windows are shown under the name of their workspace. Else, they are all shown in the same portion of the menu. This option is only available when <emphasis>\"Show window list menu on desktop middle click\"</emphasis> is checked."
-msgstr ""
+msgstr "A opción <emphasis>\"Mostrar os nomes dos espazos de traballo na lista\"</emphasis> permítelle mostrar ou ocultar os nomes dos espazos de traballo na lista. Se está marcada, as fiestras móstranse baixo o nome do seu espazo de traballo. Noutro caso mostraranse todas elas na mesma parte do menú. Esta opción só está dispoñible cando se marca <emphasis>\"Mostrar o menú de lista de fiestras ao premer co botón central no escritorio\"</emphasis>."
 
 #: ../doc/C/xfdesktop.xml.in:512(para)
 msgid "The <emphasis>\"Show submenus for the windows in each workspace\"</emphasis> option allows you to have the windows displayed in a submenu titled with the workspace name. This option is only available when <emphasis>\"Show workspace names in list\"</emphasis> is checked."
-msgstr ""
+msgstr "A opción <emphasis>\"Mostrar os submenús das fiestras en cada espazo de traballo\"</emphasis> permítelle mostrar as fiestras nun submenú co nome do espazo de traballo. Esta opción só está dispoñible cando se marca <emphasis>\"Mostrar os nomes dos espazos de traballo na lista\"</emphasis>."
 
 #: ../doc/C/xfdesktop.xml.in:523(para)
 msgid "The <emphasis>\"Show sticky windows only in active workspace\"</emphasis> option allows you to have sticky windows displayed only in the active workspace, instead of displaying their item in all workspaces."
-msgstr ""
+msgstr "A opción <emphasis>\"Mostrar as fiestras persistentes só no espazo de traballo activo\"</emphasis> permítelle mostrar as fiestras persistentes só no espazo de traballo activo, en vez de mostralas en todos os espazos de traballo."
 
 #: ../doc/C/xfdesktop.xml.in:537(title)
 msgid "Icons Tab"
@@ -428,7 +428,7 @@ msgstr "As caixas de verificación permítenlle mostrar ou ocultar iconas especi
 
 #: ../doc/C/xfdesktop.xml.in:596(para)
 msgid "<emphasis>Home</emphasis> stands for your home folder, that is to say, <filename>$HOME</filename>. <emphasis>Filesystem</emphasis> stands for the root of your file system, also known as <filename>/</filename>. <emphasis>Trash</emphasis> stands for your trash folder, and <emphasis>Removable devices</emphasis> represents floppy drives, USB drives and keys, external hard drives, optical discs, etc."
-msgstr ""
+msgstr "<emphasis>Cartafol persoal</emphasis> é o seu cartafol persoal, é dicir, <filename>$HOME</filename>. <emphasis>Sistema de ficheiros</emphasis> é a raíz do sistema de ficheiros, tamén coñecida como <filename>/</filename>. <emphasis>Lixo</emphasis> é o colector de lixo, e <emphasis>Dispositivos extraíbles</emphasis> representa ás disqueteiras, unidades e memorias, discos duros externos, discos ópticos, etc."
 
 #: ../doc/C/xfdesktop.xml.in:613(title)
 msgid "Hidden Options"
@@ -460,7 +460,7 @@ msgstr "Miscelánea"
 
 #: ../doc/C/xfdesktop.xml.in:667(para)
 msgid "You can open the menu or window list from the commandline as well. This can be useful for keyboard shortcuts. To open the menu run the command <application>@PACKAGE_NAME@</application><application>--menu</application>, and for the windowlist use <application>@PACKAGE_NAME@</application><application>--windowlist</application>. To cause the current running instance to quit, run <application>@PACKAGE_NAME@</application><application>--quit</application>."
-msgstr ""
+msgstr "Tamén pode abrir o menú ou a lista de fiestras dende a liña de comandos. Isto pode ser útil para os atallos de teclado. Para abrir o menú execute o comando <application>@PACKAGE_NAME@</application><application>--menu</application>, e para abrir a lista de fiestras use <application>@PACKAGE_NAME@</application><application>--windowlist</application>. Para saír da instancia en execución actual, execute <application>@PACKAGE_NAME@</application><application>--quit</application>."
 
 #: ../doc/C/xfdesktop.xml.in:678(title)
 msgid "About <application>@PACKAGE_NAME@</application>"
