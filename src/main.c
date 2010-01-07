@@ -40,6 +40,10 @@
 #include <signal.h>
 #endif
 
+#ifdef HAVE_UNISTD_H
+#include <unistd.h>
+#endif
+
 #include <X11/Xlib.h>
 
 #include <gmodule.h>
