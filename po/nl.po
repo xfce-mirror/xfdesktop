@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-11 09:13-0500\n"
+"POT-Creation-Date: 2010-01-14 12:10+0100\n"
 "PO-Revision-Date: 2008-10-24 17:45+0100\n"
 "Last-Translator: Vincent Tunru <projects@vinnl.nl>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
@@ -403,9 +403,8 @@ msgid "Create _Folder..."
 msgstr "_Map Maken..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1800
-#, fuzzy
 msgid "Create From _Template"
-msgstr "Maak Document van voorbeeld \"%s\""
+msgstr "Maak Document Van Voorbeeld"
 
 #: ../src/xfdesktop-file-icon-manager.c:1834
 msgid "_Empty File"
@@ -575,7 +574,7 @@ msgstr "Bestands Fout"
 
 #: ../src/xfdesktop-file-utils.c:137
 msgid "broken link"
-msgstr "kapotte koppeling"
+msgstr "gebroken koppeling"
 
 #: ../src/xfdesktop-file-utils.c:141
 #, c-format
@@ -612,7 +611,7 @@ msgstr "Persoonlijke Map"
 #: ../src/xfdesktop-special-file-icon.c:486
 #, fuzzy
 msgid "Kind: Trash"
-msgstr "Soort:"
+msgstr "Soort: Afval"
 
 #: ../src/xfdesktop-special-file-icon.c:519
 msgid "Trash Error"
@@ -843,7 +842,6 @@ msgid "Terminal emulator"
 msgstr "Terminalvenster"
 
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:1
-#, fuzzy
 msgid "Browse the web"
 msgstr "Verken het internet"
 
@@ -858,16 +856,16 @@ msgid ""
 "%s\n"
 "<i>Size: %dx%d</i>"
 msgstr ""
+"%s\n"
+"<i>Grootte:%dx%d</i>"
 
 #: ../settings/main.c:269
-#, fuzzy
 msgid "Filesystem"
-msgstr "systeem"
+msgstr "Bestandsystem"
 
 #: ../settings/main.c:271
-#, fuzzy
 msgid "Trash"
-msgstr "Prullenbak fout"
+msgstr "Prullenbak"
 
 #: ../settings/main.c:273
 msgid "Removable Devices"
@@ -876,12 +874,11 @@ msgstr "Verwisselbare schijven"
 #: ../settings/main.c:426
 #, fuzzy, c-format
 msgid "Cannot create backdrop list \"%s\""
-msgstr "Lijst van achtergronden maken"
+msgstr "Kan achtergrond lijst | \"%s\" niet maken"
 
 #: ../settings/main.c:430 ../settings/main.c:789
-#, fuzzy
 msgid "Backdrop List Error"
-msgstr "Achtergrondenlijst"
+msgstr "Achtergrondenlijst Error"
 
 #: ../settings/main.c:455
 #, fuzzy
@@ -894,42 +891,38 @@ msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite 
 msgstr "Bestand \"%s\" is geen geldig bestand. Wilt u dit bestand overschrijven?"
 
 #: ../settings/main.c:484
-#, fuzzy
 msgid "Invalid List File"
-msgstr "Lijst-bestanden"
+msgstr "Lijst-bestanden fout"
 
 #: ../settings/main.c:487
 msgid "Overwriting the file will cause its contents to be lost."
 msgstr "Het overschrijven van dit bestand heeft als gevolg dat de inhoud verloren gaat."
 
 #: ../settings/main.c:489
-#, fuzzy
 msgid "Replace"
-msgstr "Hernoem"
+msgstr "Vervang"
 
 #: ../settings/main.c:785
 #, fuzzy, c-format
 msgid "Failed to write backdrop list to \"%s\""
-msgstr "Kan \"%s\" niet hernoemen naar \"%s\":"
+msgstr "Mislukt achtergrond lijst schrijven naar \"%s\""
 
 #: ../settings/main.c:812
-#, fuzzy
 msgid "Add Image File(s)"
-msgstr "Afbeeldingen"
+msgstr "Voeg Afbeelding(en) toe"
 
 #: ../settings/main.c:821
 msgid "Image files"
 msgstr "Plaatjes"
 
 #: ../settings/main.c:826
-#, fuzzy
 msgid "All files"
 msgstr "Alle Bestanden"
 
 #: ../settings/main.c:1132
-#, fuzzy, c-format
+#, c-format
 msgid "Screen %d, Monitor %d (%s)"
-msgstr "Scherm %d, Monitor %d"
+msgstr "Scherm %d, Monitor %d (%s)"
 
 #: ../settings/main.c:1137
 #, c-format
@@ -942,22 +935,22 @@ msgid "Screen %d"
 msgstr "Scherm %d"
 
 #: ../settings/main.c:1146
-#, fuzzy, c-format
+#, c-format
 msgid "Monitor %d (%s)"
-msgstr "Beheer %d (%s)"
+msgstr "Monitor %d (%s)"
 
 #: ../settings/main.c:1151
-#, fuzzy, c-format
+#, c-format
 msgid "Monitor %d"
-msgstr "Scherm %d, Monitor %d"
+msgstr "Monitor %d"
 
 #: ../settings/main.c:1366
 msgid "Settings manager socket"
-msgstr ""
+msgstr "Instellingen socket manager"
 
 #: ../settings/main.c:1366
 msgid "SOCKET ID"
-msgstr ""
+msgstr "SOCKET ID"
 
 #: ../settings/main.c:1367
 #, fuzzy
@@ -967,16 +960,16 @@ msgstr "Informatie"
 #: ../settings/main.c:1387
 #, c-format
 msgid "Type '%s --help' for usage."
-msgstr ""
+msgstr "Type '%s --help' voor gebruik."
 
 #: ../settings/main.c:1399
 msgid "The Xfce development team. All rights reserved."
-msgstr ""
+msgstr "De Xfce development team. Alle rechten voorbehouden."
 
 #: ../settings/main.c:1400
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr ""
+msgstr "Gelieve bugs rapporteren aan <%s>"
 
 #: ../settings/main.c:1407
 msgid "Desktop Settings"
@@ -985,10 +978,9 @@ msgstr "Bureaublad Instellingen"
 #: ../settings/main.c:1409
 #, fuzzy
 msgid "Unable to contact settings server"
-msgstr "Kan geen contact leggen met Xfce Prullenbak dienst."
+msgstr "Kan geen contact maken met instelling server "
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
-#, fuzzy
 msgid "Desktop "
 msgstr "Bureaublad"
 
@@ -1003,21 +995,18 @@ msgid "<b>Adjustments</b>"
 msgstr "<b>Aanpassingen</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:2
-#, fuzzy
 msgid "<b>Appearance</b>"
-msgstr "_Weergave"
+msgstr "<b>Uiterlijk</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:3
-#, fuzzy
 msgid "<b>Colors</b>"
-msgstr "<b>Werkblad %d</b>"
+msgstr "<b>Kleuren</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:4
 msgid "<b>Default Icons</b>"
 msgstr "<b>Standaard pictogrammen</b>"
 
 #: ../settings/xfdesktop-settings.glade.h:5
-#, fuzzy
 msgid "<b>Desktop Menu</b>"
 msgstr "<b>Bureaubladmenu</b>"
 
@@ -1127,12 +1116,13 @@ msgid "Modi_fier:"
 msgstr "Aangepast:"
 
 #: ../settings/xfdesktop-settings.glade.h:33
-#, fuzzy
 msgid ""
 "None\n"
 "Minimized application icons\n"
 "File/launcher icons"
-msgstr "Geminimalizeerde programma pictogrammen"
+msgstr ""
+"Geen\n"
+"Geminimalizeerde programma pictogrammen "
 
 #: ../settings/xfdesktop-settings.glade.h:36
 msgid ""
@@ -1218,25 +1208,28 @@ msgstr ""
 "Transparant"
 
 #: ../settings/xfdesktop-settings.glade.h:56
+#, fuzzy
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-msgstr "De rechter of onderste kleur van het kleurverloop"
+msgstr "De \"rechter\" of \"onderste\" kleur van het kleurverloop"
 
 #: ../settings/xfdesktop-settings.glade.h:57
-#, fuzzy
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr "De vaste kleur, of de linker of bovenste kleur van het kleurverloop"
+msgstr "De vaste kleur, of de \"linker\" of \"bovenste\" kleur van het kleurverloop"
 
 #: ../settings/xfdesktop-settings.glade.h:58
+#, fuzzy
 msgid "Specify how the image will be resized to fit the screen"
-msgstr ""
+msgstr "Geef aan hoe het beeld worden bijgesneden tot het scherm passen"
 
 #: ../settings/xfdesktop-settings.glade.h:59
+#, fuzzy
 msgid "Specify the style of the color drawn behind the backdrop image"
-msgstr ""
+msgstr "Geef de stijl van de kleur opgesteld achter de achtergrond afbeelding"
 
 #: ../settings/xfdesktop-settings.glade.h:60
+#, fuzzy
 msgid "Specify the transparency level for the rounded label drawn behind the icon text"
-msgstr ""
+msgstr "Geef de transparantie-niveau voor de afgeronde etiket opgesteld achter het icoon tekst"
 
 #: ../settings/xfdesktop-settings.glade.h:61
 #, fuzzy
@@ -1245,7 +1238,7 @@ msgstr "Stijl:"
 
 #: ../settings/xfdesktop-settings.glade.h:62
 msgid "Use _submenus for the windows in each workspace"
-msgstr ""
+msgstr "Gebruik _submenus voor de  in elke werkruimte"
 
 #: ../settings/xfdesktop-settings.glade.h:63
 #, fuzzy
