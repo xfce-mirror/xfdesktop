@@ -36,9 +36,9 @@ G_BEGIN_DECLS
 
 typedef struct _XfdesktopAppMenuItem       XfdesktopAppMenuItem;
 
-GType xfdesktop_app_menu_item_get_type                     () G_GNUC_CONST;
+GType xfdesktop_app_menu_item_get_type                     (void) G_GNUC_CONST;
 
-GtkWidget *xfdesktop_app_menu_item_new                     ();
+GtkWidget *xfdesktop_app_menu_item_new                     (void);
 
 GtkWidget *xfdesktop_app_menu_item_new_with_label          (const gchar *label);
 
