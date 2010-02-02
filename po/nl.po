@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-14 12:10+0100\n"
+"POT-Creation-Date: 2010-02-02 18:10+0100\n"
 "PO-Revision-Date: 2008-10-24 17:45+0100\n"
 "Last-Translator: Vincent Tunru <projects@vinnl.nl>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
@@ -63,19 +63,16 @@ msgid "_Show title in button"
 msgstr "_Toon titel in knop"
 
 #: ../panel-plugin/desktop-menu-plugin.c:791
-#, fuzzy
 msgid "Menu File"
-msgstr "Menubestanden"
+msgstr "Menu Bestand"
 
 #: ../panel-plugin/desktop-menu-plugin.c:803
-#, fuzzy
 msgid "Use default _desktop menu file"
-msgstr "Bureaubladmenu be_werken"
+msgstr "Gebruik standaard _bureau menu bestand"
 
 #: ../panel-plugin/desktop-menu-plugin.c:812
-#, fuzzy
 msgid "Use _custom menu file:"
-msgstr "Open menubestand"
+msgstr "Gebruik _aangepast menu bestand:"
 
 #: ../panel-plugin/desktop-menu-plugin.c:853
 msgid "_Edit Menu"
@@ -104,7 +101,7 @@ msgstr "Menu Aanpassen"
 #: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
 #, fuzzy
 msgid "Shows a menu containing categories of installed applications"
-msgstr "Toont een menu met cateforien van geinstalleerde programma's"
+msgstr "Toon een menu met categorieën van de geïnstalleerde programma's"
 
 #: ../src/main.c:240
 #, c-format
@@ -112,7 +109,7 @@ msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Dit is %s versie %s, draaiend op Xfce %s.\n"
 
 #: ../src/main.c:242
-#, fuzzy, c-format
+#, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Gemaakt met GTK+ %d.%d.%d, gelinkt aan GTK+ %d.%d.%d."
 
@@ -142,7 +139,7 @@ msgstr "    Bureaublad Pictogrammen:         %s\n"
 #: ../src/main.c:261
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr "    Bureaublad Bestandspictogrammen: %s\n"
+msgstr " Bureaublad Bestandspictogrammen: %s\n"
 
 #: ../src/main.c:290
 #, c-format
@@ -157,7 +154,7 @@ msgstr "Mogelijk opties:\n"
 #: ../src/main.c:292
 #, fuzzy, c-format
 msgid "    --reload      Reload all settings, refresh image list\n"
-msgstr "    -reload\tInstellingen opnieuw laden, bestandenlijst verversen\n"
+msgstr "    -herlaad instellingen opnieuw , bestandenlijst verversen\n"
 
 #: ../src/main.c:293
 #, fuzzy, c-format
@@ -193,9 +190,9 @@ msgid "<b>Workspace %d</b>"
 msgstr "<b>Werkblad %d</b>"
 
 #: ../src/windowlist.c:271
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace %d"
-msgstr "<b>Werkblad %d</b>"
+msgstr "Werkplek %d"
 
 #: ../src/windowlist.c:273
 #, c-format
@@ -226,9 +223,8 @@ msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "Kan bestand \"%s\" niet maken:"
 
 #: ../src/xfce-desktop.c:1025
-#, fuzzy
 msgid "Desktop Error"
-msgstr "Bureaublad"
+msgstr "Bureaublad error"
 
 #: ../src/xfdesktop-file-icon-manager.c:478
 #, c-format
@@ -324,9 +320,9 @@ msgid "Open With \"%s\""
 msgstr "Openen Met \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:1212
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to create folder named \"%s\":"
-msgstr "Kon xfce4-menueditor niet starten: %s"
+msgstr "Kan map met de naam  \"%s\" niet maken"
 
 #: ../src/xfdesktop-file-icon-manager.c:1251
 msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
@@ -349,16 +345,16 @@ msgstr "Maken"
 #: ../src/xfdesktop-file-icon-manager.c:1325
 #, fuzzy, c-format
 msgid "Unable to create file named \"%s\":"
-msgstr "Kon xfce4-menueditor niet starten: %s"
+msgstr "Kan het bestand met de naam \"%s\" niet maken:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1328
 msgid "Create File Failed"
 msgstr "Kan geen Bestand maken"
 
 #: ../src/xfdesktop-file-icon-manager.c:1367
-#, fuzzy, c-format
+#, c-format
 msgid "Create Document from template \"%s\""
-msgstr "Maak Document van voorbeeld \"%s\""
+msgstr "Maak document van voorbeeld \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:1386
 msgid "Create Empty File"
@@ -685,9 +681,8 @@ msgid "E_ject Volume"
 msgstr "Volume Uit_werpen"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
-#, fuzzy
 msgid "Accessories"
-msgstr "Geopend:"
+msgstr "Accessoires"
 
 #: ../modules/menu/directory-data/xfce-accessories.directory.in.h:2
 msgid "Common desktop tools and applications"
@@ -698,7 +693,6 @@ msgid "Development"
 msgstr "Programmeren"
 
 #: ../modules/menu/directory-data/xfce-development.directory.in.h:2
-#, fuzzy
 msgid "Software development tools"
 msgstr "Software-ontwikkelingstools"
 
@@ -711,9 +705,8 @@ msgid "Educational software"
 msgstr "Educatieve software"
 
 #: ../modules/menu/directory-data/xfce-games.directory.in.h:1
-#, fuzzy
 msgid "Games"
-msgstr "Naam"
+msgstr "Games"
 
 #: ../modules/menu/directory-data/xfce-games.directory.in.h:2
 msgid "Games, puzzles, and other fun software"
@@ -732,9 +725,8 @@ msgid "Audio and video players and editors"
 msgstr "Audio- en videospelers en -bewerkers"
 
 #: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:2
-#, fuzzy
 msgid "Multimedia"
-msgstr "Multilevel"
+msgstr "Multimedia"
 
 #: ../modules/menu/directory-data/xfce-network.directory.in.h:1
 msgid "Network"
@@ -757,9 +749,8 @@ msgid "Applications that don't fit into other categories"
 msgstr "Toepassingen die niet in andere categorieën thuishoren"
 
 #: ../modules/menu/directory-data/xfce-other.directory.in.h:2
-#, fuzzy
 msgid "Other"
-msgstr "/Overig"
+msgstr "Overig"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
 #, fuzzy
@@ -767,7 +758,6 @@ msgid "Screensaver applets"
 msgstr "Schermbeveiligings-applets"
 
 #: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:2
-#, fuzzy
 msgid "Screensavers"
 msgstr "Schermbeveiligingen"
 
@@ -776,9 +766,8 @@ msgid "Desktop and system settings applications"
 msgstr "Instellingstoepassingen"
 
 #: ../modules/menu/directory-data/xfce-settings.directory.in.h:2
-#, fuzzy
 msgid "Settings"
-msgstr "Bureaublad Instellingen"
+msgstr "Instellingen"
 
 #: ../modules/menu/directory-data/xfce-system.directory.in.h:1
 msgid "System"
@@ -805,9 +794,8 @@ msgid "Thunar file manager"
 msgstr "Thunar bestandsbeheer"
 
 #: ../modules/menu/menu-data/xfce4-help.desktop.in.h:1
-#, fuzzy
 msgid "Help"
-msgstr "_Help"
+msgstr "Help"
 
 #: ../modules/menu/menu-data/xfce4-help.desktop.in.h:2
 msgid "Help using Xfce"
@@ -820,26 +808,24 @@ msgstr "Uitloggen"
 #: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:2
 #, fuzzy
 msgid "Log out of the Xfce Desktop"
-msgstr "Instellingen van het bureaublad"
+msgstr "Log uit de Xfce desktop"
 
 #: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:1
 #, fuzzy
 msgid "Run Program..."
-msgstr "Uitvoer Fout"
+msgstr "Voer programma uit ..."
 
 #: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:2
-#, fuzzy
 msgid "Run a program"
-msgstr "Uitvoer Fout"
+msgstr "Voer een programma uit"
 
 #: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:1
 msgid "Terminal"
 msgstr "Terminal"
 
 #: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:2
-#, fuzzy
 msgid "Terminal emulator"
-msgstr "Terminalvenster"
+msgstr "Terminal emulator"
 
 #: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:1
 msgid "Browse the web"
@@ -874,7 +860,7 @@ msgstr "Verwisselbare schijven"
 #: ../settings/main.c:426
 #, fuzzy, c-format
 msgid "Cannot create backdrop list \"%s\""
-msgstr "Kan achtergrond lijst | \"%s\" niet maken"
+msgstr "Kan achtergrond lijst \"%s\" niet maken"
 
 #: ../settings/main.c:430 ../settings/main.c:789
 msgid "Backdrop List Error"
@@ -953,9 +939,8 @@ msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
 #: ../settings/main.c:1367
-#, fuzzy
 msgid "Version information"
-msgstr "Informatie"
+msgstr "Versie informatie"
 
 #: ../settings/main.c:1387
 #, c-format
@@ -976,9 +961,8 @@ msgid "Desktop Settings"
 msgstr "Bureaublad Instellingen"
 
 #: ../settings/main.c:1409
-#, fuzzy
 msgid "Unable to contact settings server"
-msgstr "Kan geen contact maken met instelling server "
+msgstr "Kan geen contact maken met de instelling server "
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop "
@@ -987,10 +971,9 @@ msgstr "Bureaublad"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 #, fuzzy
 msgid "Set desktop background and menu and icon behaviour"
-msgstr "Stel het gedrag in van de bureaubladachtergrond, het menu en de pictogrammen"
+msgstr "Bepaal het bureaublad achtergrond , menu en icoon gedrag"
 
 #: ../settings/xfdesktop-settings.glade.h:1
-#, fuzzy
 msgid "<b>Adjustments</b>"
 msgstr "<b>Aanpassingen</b>"
 
@@ -1038,25 +1021,23 @@ msgid ""
 "Zoomed"
 msgstr ""
 "Automatisch\n"
-"Centreren\n"
-"Tegelen\n"
-"Uitrekken\n"
-"Schalen\n"
-"Zoomen"
+"Gecentreerd\n"
+"Getegelt\n"
+"Uitgerekt\n"
+"Geschaald\n"
+"Gezoomt"
 
 #: ../settings/xfdesktop-settings.glade.h:16
 msgid "Automatically pick a random image from a list file"
 msgstr "Kies automatisch een willekeurige afbeelding uit een lijst"
 
 #: ../settings/xfdesktop-settings.glade.h:17
-#, fuzzy
 msgid "B_rightness:"
-msgstr "Hel_derheid aanpassen:"
+msgstr "Hel_derheid:"
 
 #: ../settings/xfdesktop-settings.glade.h:18
-#, fuzzy
 msgid "B_utton:"
-msgstr "Knop"
+msgstr "K_nop:"
 
 #: ../settings/xfdesktop-settings.glade.h:19
 msgid "Create a new list, or load an existing one"
@@ -1067,19 +1048,16 @@ msgid "Don't display an image at all"
 msgstr "Geen afbeelding weergeven"
 
 #: ../settings/xfdesktop-settings.glade.h:22
-#, fuzzy
 msgid "Icon _size:"
-msgstr "_Pictogram grootte:"
+msgstr "Pictogram _grootte:"
 
 #: ../settings/xfdesktop-settings.glade.h:23
-#, fuzzy
 msgid "Icon _type:"
-msgstr "_Pictogram grootte:"
+msgstr "Pictogram _type:"
 
 #: ../settings/xfdesktop-settings.glade.h:24
-#, fuzzy
 msgid "Image _list"
-msgstr "Afbeeldingen"
+msgstr "Afbeeldingen _lijst"
 
 #: ../settings/xfdesktop-settings.glade.h:25
 #, fuzzy
@@ -1106,14 +1084,12 @@ msgstr ""
 "Rechts"
 
 #: ../settings/xfdesktop-settings.glade.h:31
-#, fuzzy
 msgid "Mo_difier:"
-msgstr "Aangepast:"
+msgstr "Aan_passen:"
 
 #: ../settings/xfdesktop-settings.glade.h:32
-#, fuzzy
 msgid "Modi_fier:"
-msgstr "Aangepast:"
+msgstr "Aanpass_en:"
 
 #: ../settings/xfdesktop-settings.glade.h:33
 msgid ""
@@ -1141,48 +1117,42 @@ msgid "Remove the selected image(s) from the list"
 msgstr "Geselecteerde afbeelding(en) uit de lijst verwijderen"
 
 #: ../settings/xfdesktop-settings.glade.h:41
-#, fuzzy
 msgid "Sa_turation:"
 msgstr "Ver_zadigdheid:"
 
 #: ../settings/xfdesktop-settings.glade.h:42
-#, fuzzy
 msgid "Select First Color"
-msgstr "_Eerste Kleur:"
+msgstr "Selecteer de eerste kleur:"
 
 #: ../settings/xfdesktop-settings.glade.h:43
-#, fuzzy
 msgid "Select Second Color"
-msgstr "_Tweede Kleur:"
+msgstr "Selecteer de tweede kleur:"
 
 #: ../settings/xfdesktop-settings.glade.h:44
 msgid "Select a single image as the backdrop"
 msgstr "Gebruik één enkele afbeelding als achtergrond"
 
 #: ../settings/xfdesktop-settings.glade.h:45
-#, fuzzy
 msgid "Set desktop background and menu and icon behavior"
-msgstr "Stel het gedrag in van de bureaubladachtergrond, het menu en de pictogrammen"
+msgstr "Stel het achtergrond van het bureaublad, menu en pictogram gedrag in"
 
 #: ../settings/xfdesktop-settings.glade.h:46
-#, fuzzy
 msgid "Sh_ow application icons in menu"
-msgstr "Toon p_ictogrammen in menu"
+msgstr "To_on programma pictogrammen in het menu"
 
 #: ../settings/xfdesktop-settings.glade.h:47
-#, fuzzy
 msgid "Show _application icons in menu"
-msgstr "Toon p_ictogrammen in menu"
+msgstr "Toon _programma pictogrammen in het menu"
 
 #: ../settings/xfdesktop-settings.glade.h:48
 #, fuzzy
 msgid "Show _window list menu on desktop middle click"
-msgstr "Vensterlijst _tonen"
+msgstr "Toon _window lijst menu op het bureaublad bij klik midden"
 
 #: ../settings/xfdesktop-settings.glade.h:49
 #, fuzzy
 msgid "Show applications menu on _desktop right click"
-msgstr "Bureaubladmenu tonen"
+msgstr "Toon programma menu op het _bureaublad op rechter muisknop klik"
 
 #: ../settings/xfdesktop-settings.glade.h:50
 #, fuzzy
@@ -1213,13 +1183,13 @@ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr "De \"rechter\" of \"onderste\" kleur van het kleurverloop"
 
 #: ../settings/xfdesktop-settings.glade.h:57
+#, fuzzy
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
 msgstr "De vaste kleur, of de \"linker\" of \"bovenste\" kleur van het kleurverloop"
 
 #: ../settings/xfdesktop-settings.glade.h:58
-#, fuzzy
 msgid "Specify how the image will be resized to fit the screen"
-msgstr "Geef aan hoe het beeld worden bijgesneden tot het scherm passen"
+msgstr "Geef aan hoe het beeld moet worden bijgesneden tot om het scherm te passen"
 
 #: ../settings/xfdesktop-settings.glade.h:59
 #, fuzzy
@@ -1232,18 +1202,16 @@ msgid "Specify the transparency level for the rounded label drawn behind the ico
 msgstr "Geef de transparantie-niveau voor de afgeronde etiket opgesteld achter het icoon tekst"
 
 #: ../settings/xfdesktop-settings.glade.h:61
-#, fuzzy
 msgid "St_yle:"
-msgstr "Stijl:"
+msgstr "St_ijl:"
 
 #: ../settings/xfdesktop-settings.glade.h:62
 msgid "Use _submenus for the windows in each workspace"
 msgstr "Gebruik _submenus voor de  in elke werkruimte"
 
 #: ../settings/xfdesktop-settings.glade.h:63
-#, fuzzy
 msgid "Use custom _font size:"
-msgstr "Aangepaste _font grootte:"
+msgstr "Gebruik aangepaste _font grootte:"
 
 #: ../settings/xfdesktop-settings.glade.h:64
 msgid "_Background"
@@ -1254,9 +1222,8 @@ msgid "_Button:"
 msgstr "_Knop"
 
 #: ../settings/xfdesktop-settings.glade.h:66
-#, fuzzy
 msgid "_Edit desktop menu"
-msgstr "Menu be_werken"
+msgstr "_Pas bureaublad menu aan"
 
 #: ../settings/xfdesktop-settings.glade.h:67
 msgid "_Icons"
