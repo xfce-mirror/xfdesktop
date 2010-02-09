@@ -1567,6 +1567,7 @@ main(int argc, char **argv)
 
     gdk_threads_leave();
     
+    g_object_unref(G_OBJECT(channel));
     xfconf_shutdown();
 
     return 0;
