@@ -160,7 +160,7 @@ dmp_get_icon(const gchar *icon_name, gint size, GtkOrientation orientation)
     return pix;
 }
 
-static void
+static gboolean
 dmp_set_size(XfcePanelPlugin *plugin, gint wsize, DMPlugin *dmp)
 {
     gint width, height, size, pix_w = 0, pix_h = 0;
@@ -209,6 +209,8 @@ dmp_set_size(XfcePanelPlugin *plugin, gint wsize, DMPlugin *dmp)
     DBG("width: %d, height: %d", width, height);
     
     gtk_widget_set_size_request(dmp->button, width, height);
+
+    return TRUE;
 }
 
 static void
