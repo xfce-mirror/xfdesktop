@@ -1,12 +1,9 @@
 desktopdir = $(datadir)/applications
 desktop_in_files = \
 	xfce4-about-xfce.desktop.in \
-	xfce4-file-manager.desktop.in \
 	xfce4-help.desktop.in \
 	xfce4-logout.desktop.in \
-	xfce4-run-program.desktop.in \
-	xfce4-terminal.desktop.in \
-	xfce4-web-browser.desktop.in
+	xfce4-run-program.desktop.in
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 @INTLTOOL_DESKTOP_RULE@
 
