@@ -1,14 +1,9 @@
 @SET_MAKE@
 
-if BUILD_PANEL_PLUGIN
-panel_plugin_dir = panel-plugin
-endif
-
 SUBDIRS = \
 	backdrops \
 	common \
 	doc \
-	$(panel_plugin_dir) \
 	po \
 	po-doc \
 	settings \
