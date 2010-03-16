@@ -10,10 +10,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Country: GEORGIA\n"
-"X-Generator: Lokalize 0.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-Language: Georgian\n"
+"X-Poedit-Country: GEORGIA\n"
+"X-Generator: Lokalize 0.3\n"
 
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
 #, c-format
@@ -284,7 +284,7 @@ msgstr "බහලුමක් සෑදීම දෝශ සහගත විය"
 #: ../src/xfdesktop-file-icon-manager.c:490
 #, c-format
 msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
-msgstr ""
+msgstr "\"%s\"  බහලුමක් නොවන බැවින් ඩෙස්ක්ටොප් අයිතම දැරීමට භාවිතාකිරීමට  Xfdesktop අසමත් විය."
 
 #: ../src/xfdesktop-file-icon-manager.c:494
 msgid "Please delete or rename the file."
@@ -432,7 +432,7 @@ msgstr "විවෘත කරන්න (_O)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1785
 msgid "Create _Launcher..."
-msgstr ""
+msgstr "ඇරඹුමක් තනන්න (_L)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1807
 msgid "Create _URL Link..."
@@ -456,7 +456,7 @@ msgstr "ක්‍රියා කරවන්න (_E)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1912
 msgid "_Edit Launcher"
-msgstr ""
+msgstr "ඇරඹුමක සංස්කරණය කරන්න (_E)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1952
 msgid "Open With"
@@ -629,6 +629,9 @@ msgid ""
 "Modified:%s\n"
 "Size: %s"
 msgstr ""
+"වර්ගය: %s\n"
+"වෙනස්කළ:%s\n"
+"ප්‍රමාණය: %s"
 
 #: ../src/xfdesktop-regular-file-icon.c:546
 #: ../src/xfdesktop-regular-file-icon.c:610
@@ -643,7 +646,7 @@ msgstr " \"%s\" , \"%s\" ට නැවත නම්කිරීම දෝශ ස
 #. FIXME: also display # of items in trash
 #: ../src/xfdesktop-special-file-icon.c:486
 msgid "Kind: Trash"
-msgstr ""
+msgstr "වර්ගය: ඉවතලන"
 
 #: ../src/xfdesktop-special-file-icon.c:519
 msgid "Trash Error"
@@ -855,7 +858,7 @@ msgstr "වැඩතලය"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Set desktop background and menu and icon behaviour"
-msgstr ""
+msgstr "ඩෙස්ක්ටොප් පසුතල සහ මෙනු සහ අයිකන හැසිරීම සකසන්න"
 
 #~ msgid "Select Icon"
 #~ msgstr "අයිකනය තෝරන්න"
