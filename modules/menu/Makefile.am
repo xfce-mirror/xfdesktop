@@ -1,7 +1,3 @@
-SUBDIRS = \
-	directory-data \
-	menu-data
-
 plugindir = $(libdir)/xfce4/modules
 
 plugin_LTLIBRARIES = xfce4_desktop_menu.la
