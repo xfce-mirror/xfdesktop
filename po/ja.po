@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.5.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-21 00:57+0900\n"
+"POT-Creation-Date: 2010-04-28 23:56+0200\n"
 "PO-Revision-Date: 2009-10-21 00:57+0900\n"
 "Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
@@ -23,88 +23,6 @@ msgstr ""
 #, c-format
 msgid "Backdrop list file is not valid"
 msgstr "画像リストファイルが正しくありません"
-
-#: ../panel-plugin/desktop-menu-plugin.c:669
-#, c-format
-msgid "Unable to launch xfce4-menueditor: %s"
-msgstr "xfce4-menueditor を実行できません: %s"
-
-#: ../panel-plugin/desktop-menu-plugin.c:692
-msgid "Select Icon"
-msgstr "アイコンを選択してください"
-
-#: ../panel-plugin/desktop-menu-plugin.c:694
-msgid "Select Menu File"
-msgstr "メニューファイルを選択してください"
-
-#: ../panel-plugin/desktop-menu-plugin.c:721
-msgid "All Files"
-msgstr "全てのファイル"
-
-#: ../panel-plugin/desktop-menu-plugin.c:728
-msgid "Image Files"
-msgstr "画像ファイル"
-
-#: ../panel-plugin/desktop-menu-plugin.c:731
-msgid "Menu Files"
-msgstr "メニューファイル"
-
-#: ../panel-plugin/desktop-menu-plugin.c:756
-#: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
-msgid "Xfce Menu"
-msgstr "Xfce メニュー"
-
-#: ../panel-plugin/desktop-menu-plugin.c:768
-msgid "Button"
-msgstr "ボタン"
-
-#: ../panel-plugin/desktop-menu-plugin.c:781
-msgid "Button _title:"
-msgstr "ボタンタイトル(_T):"
-
-#: ../panel-plugin/desktop-menu-plugin.c:794
-msgid "_Show title in button"
-msgstr "ボタンにタイトルを表示する(_S)"
-
-#: ../panel-plugin/desktop-menu-plugin.c:801
-msgid "Menu File"
-msgstr "メニューファイル"
-
-#: ../panel-plugin/desktop-menu-plugin.c:813
-msgid "Use default _desktop menu file"
-msgstr "デフォルトのデスクトップメニューを使用する(_D)"
-
-#: ../panel-plugin/desktop-menu-plugin.c:822
-msgid "Use _custom menu file:"
-msgstr "指定したメニューファイルを使用する(_C):"
-
-#: ../panel-plugin/desktop-menu-plugin.c:863
-msgid "_Edit Menu"
-msgstr "メニューの編集(_E)"
-
-#: ../panel-plugin/desktop-menu-plugin.c:870
-msgid "Icons"
-msgstr "アイコン"
-
-#: ../panel-plugin/desktop-menu-plugin.c:882
-msgid "_Button icon:"
-msgstr "ボタンアイコン(_B):"
-
-#: ../panel-plugin/desktop-menu-plugin.c:896
-msgid "Show _icons in menu"
-msgstr "メニューにアイコンを表示する(_I):"
-
-#: ../panel-plugin/desktop-menu-plugin.c:931
-msgid "There is already a panel menu registered for this screen"
-msgstr "この画面には既にパネルメニューが登録されています"
-
-#: ../panel-plugin/desktop-menu-plugin.c:1046
-msgid "Edit Menu"
-msgstr "メニューの編集"
-
-#: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
-msgid "Shows a menu containing categories of installed applications"
-msgstr "インストール済みアプリケーションのカテゴリを含むメニューを表示します"
 
 #. no need to escape markup; it's already done for us
 #: ../settings/main.c:162
@@ -242,70 +160,70 @@ msgstr "デスクトップ設定"
 msgid "Unable to contact settings server"
 msgstr "設定サーバに接続できません"
 
-#: ../src/main.c:228
+#: ../src/main.c:236
 msgid "Display version information"
 msgstr "バージョン情報を表示する"
 
-#: ../src/main.c:229
+#: ../src/main.c:237
 msgid "Reload all settings, refresh image list"
 msgstr "全ての設定を再読込みして画像リストを更新する"
 
-#: ../src/main.c:230
+#: ../src/main.c:238
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "現在のマウス位置でメニューをポップアップする"
 
-#: ../src/main.c:231
+#: ../src/main.c:239
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "現在のマウス位置でウィンドウリストをポップアップする"
 
-#: ../src/main.c:232
+#: ../src/main.c:240
 msgid "Cause xfdesktop to quit"
 msgstr "xfdesktop を終了させる"
 
-#: ../src/main.c:252
+#: ../src/main.c:260
 #, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "引数の解析に失敗しました: %s\n"
 
-#: ../src/main.c:260
+#: ../src/main.c:268
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "%s バージョン %s, Xfce %s で実行されています。\n"
 
-#: ../src/main.c:262
+#: ../src/main.c:270
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Gtk+ %d.%d.%d でビルド、Gtk+ %d.%d.%d で実行しています。"
 
-#: ../src/main.c:266
+#: ../src/main.c:274
 #, c-format
 msgid "Build options:\n"
 msgstr "ビルドオプション:\n"
 
-#: ../src/main.c:267
+#: ../src/main.c:275
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    メニュー:            %s\n"
 
-#: ../src/main.c:269 ../src/main.c:276 ../src/main.c:283
+#: ../src/main.c:277 ../src/main.c:284 ../src/main.c:291
 msgid "enabled"
 msgstr "有効"
 
-#: ../src/main.c:271 ../src/main.c:278 ../src/main.c:285
+#: ../src/main.c:279 ../src/main.c:286 ../src/main.c:293
 msgid "disabled"
 msgstr "無効"
 
-#: ../src/main.c:274
+#: ../src/main.c:282
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    アイコン:            %s\n"
 
-#: ../src/main.c:281
+#: ../src/main.c:289
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    ファイルアイコン:    %s\n"
 
-#: ../src/main.c:312
+#: ../src/main.c:320
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s は実行されていません。\n"
@@ -347,7 +265,7 @@ msgstr "ワークスペース %d を削除(_R)"
 msgid "_Remove Workspace '%s'"
 msgstr "ワークスペース '%s' を削除(_R)"
 
-#: ../src/xfce-desktop.c:742 ../settings/xfdesktop-settings.glade.h:20
+#: ../src/xfce-desktop.c:742
 msgid "Desktop"
 msgstr "デスクトップ"
 
@@ -834,166 +752,6 @@ msgstr "マウント(_M)"
 msgid "E_ject Volume"
 msgstr "取り出し(_J)"
 
-#: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
-msgid "Accessories"
-msgstr "アクセサリ"
-
-#: ../modules/menu/directory-data/xfce-accessories.directory.in.h:2
-msgid "Common desktop tools and applications"
-msgstr "デスクトップの共通ツールやアプリケーション"
-
-#: ../modules/menu/directory-data/xfce-development.directory.in.h:1
-msgid "Development"
-msgstr "開発"
-
-#: ../modules/menu/directory-data/xfce-development.directory.in.h:2
-msgid "Software development tools"
-msgstr "ソフトウェア開発ツール"
-
-#: ../modules/menu/directory-data/xfce-education.directory.in.h:1
-msgid "Education"
-msgstr "教育"
-
-#: ../modules/menu/directory-data/xfce-education.directory.in.h:2
-msgid "Educational software"
-msgstr "教育ソフトウェア"
-
-#: ../modules/menu/directory-data/xfce-games.directory.in.h:1
-msgid "Games"
-msgstr "ゲーム"
-
-#: ../modules/menu/directory-data/xfce-games.directory.in.h:2
-msgid "Games, puzzles, and other fun software"
-msgstr "ゲーム、パズルや他の遊戯用ソフトウェア"
-
-#: ../modules/menu/directory-data/xfce-graphics.directory.in.h:1
-msgid "Graphics"
-msgstr "グラフィックス"
-
-#: ../modules/menu/directory-data/xfce-graphics.directory.in.h:2
-msgid "Graphics creation and manipulation applications"
-msgstr "グラフィックスの作成や操作アプリケーション"
-
-#: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:1
-msgid "Audio and video players and editors"
-msgstr "オーディオ、ビデオプレイヤーや編集ソフトウェア"
-
-#: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:2
-msgid "Multimedia"
-msgstr "マルチメディア"
-
-#: ../modules/menu/directory-data/xfce-network.directory.in.h:1
-msgid "Network"
-msgstr "ネットワーク"
-
-#: ../modules/menu/directory-data/xfce-network.directory.in.h:2
-msgid "Network applications and utilities"
-msgstr "ネットワークアプリケーションやユーティリティ"
-
-#: ../modules/menu/directory-data/xfce-office.directory.in.h:1
-msgid "Office"
-msgstr "オフィス"
-
-#: ../modules/menu/directory-data/xfce-office.directory.in.h:2
-msgid "Office and productivity applications"
-msgstr "事務用アプリケーション"
-
-#: ../modules/menu/directory-data/xfce-other.directory.in.h:1
-msgid "Applications that don't fit into other categories"
-msgstr "他の分類に該当しないアプリケーション"
-
-#: ../modules/menu/directory-data/xfce-other.directory.in.h:2
-msgid "Other"
-msgstr "その他"
-
-#: ../modules/menu/directory-data/xfce-science.directory.in.h:1
-msgid "Science"
-msgstr "科学"
-
-#: ../modules/menu/directory-data/xfce-science.directory.in.h:2
-msgid "Scientific software"
-msgstr "科学ソフトウェア"
-
-#: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
-msgid "Screensaver applets"
-msgstr "スクリーンセーバーアプレット"
-
-#: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:2
-msgid "Screensavers"
-msgstr "スクリーンセーバー"
-
-#: ../modules/menu/directory-data/xfce-settings.directory.in.h:1
-msgid "Desktop and system settings applications"
-msgstr "デスクトップやシステムを設定するアプリケーション"
-
-#: ../modules/menu/directory-data/xfce-settings.directory.in.h:2
-msgid "Settings"
-msgstr "設定"
-
-#: ../modules/menu/directory-data/xfce-system.directory.in.h:1
-msgid "System"
-msgstr "システム"
-
-#: ../modules/menu/directory-data/xfce-system.directory.in.h:2
-msgid "System tools and utilities"
-msgstr "システムツールおよびユーティリティ"
-
-#: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:1
-msgid "About Xfce"
-msgstr "Xfce について"
-
-#: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:2
-msgid "Information about the Xfce Desktop Environment"
-msgstr "Xfce デスクトップ環境についての情報"
-
-#: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:1
-msgid "File Manager"
-msgstr "ファイルマネージャ"
-
-#: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:2
-msgid "Thunar file manager"
-msgstr "Thuanr ファイルマネージャ"
-
-#: ../modules/menu/menu-data/xfce4-help.desktop.in.h:1
-msgid "Help"
-msgstr "ヘルプ"
-
-#: ../modules/menu/menu-data/xfce4-help.desktop.in.h:2
-msgid "Help using Xfce"
-msgstr "Xfce のマニュアルを表示します"
-
-#: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:1
-msgid "Log Out"
-msgstr "ログアウト"
-
-#: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:2
-msgid "Log out of the Xfce Desktop"
-msgstr "Xfce デスクトップからログアウトします"
-
-#: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:1
-msgid "Run Program..."
-msgstr "プログラムの実行..."
-
-#: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:2
-msgid "Run a program"
-msgstr "プログラムを実行します"
-
-#: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:1
-msgid "Terminal"
-msgstr "ターミナル"
-
-#: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:2
-msgid "Terminal emulator"
-msgstr "ターミナルエミュレータ"
-
-#: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:1
-msgid "Browse the web"
-msgstr "ウェブを閲覧します"
-
-#: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:2
-msgid "Web Browser"
-msgstr "ウェブブラウザ"
-
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop "
 msgstr "デスクトップ "
@@ -1002,267 +760,396 @@ msgstr "デスクトップ "
 msgid "Set desktop background and menu and icon behaviour"
 msgstr "デスクトップの背景およびメニューとアイコンの振る舞いを設定します"
 
-#: ../settings/xfdesktop-settings.glade.h:1
-msgid "<b>Adjustments</b>"
-msgstr "<b>調整</b>"
+#~ msgid "Unable to launch xfce4-menueditor: %s"
+#~ msgstr "xfce4-menueditor を実行できません: %s"
 
-#: ../settings/xfdesktop-settings.glade.h:2
-msgid "<b>Appearance</b>"
-msgstr "<b>外観</b>"
+#~ msgid "Select Icon"
+#~ msgstr "アイコンを選択してください"
 
-#: ../settings/xfdesktop-settings.glade.h:3
-msgid "<b>Colors</b>"
-msgstr "<b>色</b>"
+#~ msgid "Select Menu File"
+#~ msgstr "メニューファイルを選択してください"
 
-#: ../settings/xfdesktop-settings.glade.h:4
-msgid "<b>Default Icons</b>"
-msgstr "<b>デフォルトアイコン</b>"
+#~ msgid "All Files"
+#~ msgstr "全てのファイル"
 
-#: ../settings/xfdesktop-settings.glade.h:5
-msgid "<b>Desktop Menu</b>"
-msgstr "<b>デスクトップメニュー</b>"
+#~ msgid "Image Files"
+#~ msgstr "画像ファイル"
 
-#: ../settings/xfdesktop-settings.glade.h:6
-msgid "<b>Image</b>"
-msgstr "<b>画像</b>"
+#~ msgid "Menu Files"
+#~ msgstr "メニューファイル"
 
-#: ../settings/xfdesktop-settings.glade.h:7
-msgid "<b>Images</b>"
-msgstr "<b>画像</b>"
+#~ msgid "Xfce Menu"
+#~ msgstr "Xfce メニュー"
 
-#: ../settings/xfdesktop-settings.glade.h:8
-msgid "<b>Window List Menu</b>"
-msgstr "<b>ウィンドウリストメニュー</b>"
+#~ msgid "Button"
+#~ msgstr "ボタン"
 
-#: ../settings/xfdesktop-settings.glade.h:9
-msgid "Add an image to the list"
-msgstr "画像をリストに追加します"
+#~ msgid "Button _title:"
+#~ msgstr "ボタンタイトル(_T):"
 
-#: ../settings/xfdesktop-settings.glade.h:10
-msgid ""
-"Auto\n"
-"Centered\n"
-"Tiled\n"
-"Stretched\n"
-"Scaled\n"
-"Zoomed"
-msgstr ""
-"自動\n"
-"中央揃え\n"
-"タイル状\n"
-"縦横比を維持せず全画面化\n"
-"長辺を画面に合わせる\n"
-"短辺を画面に合わせる"
+#~ msgid "_Show title in button"
+#~ msgstr "ボタンにタイトルを表示する(_S)"
 
-#: ../settings/xfdesktop-settings.glade.h:16
-msgid "Automatically pick a random image from a list file"
-msgstr "リストファイルから自動的にランダムで画像を選びます"
+#~ msgid "Menu File"
+#~ msgstr "メニューファイル"
 
-#: ../settings/xfdesktop-settings.glade.h:17
-msgid "B_rightness:"
-msgstr "明度(_R):"
+#~ msgid "Use default _desktop menu file"
+#~ msgstr "デフォルトのデスクトップメニューを使用する(_D)"
 
-#: ../settings/xfdesktop-settings.glade.h:18
-msgid "B_utton:"
-msgstr "ボタン(_U):"
+#~ msgid "Use _custom menu file:"
+#~ msgstr "指定したメニューファイルを使用する(_C):"
 
-#: ../settings/xfdesktop-settings.glade.h:19
-msgid "Create a new list, or load an existing one"
-msgstr "新規リストの作成または既存のリストを読み込みます"
+#~ msgid "_Edit Menu"
+#~ msgstr "メニューの編集(_E)"
 
-#: ../settings/xfdesktop-settings.glade.h:21
-msgid "Don't display an image at all"
-msgstr "全ての画像を表示しません"
+#~ msgid "Icons"
+#~ msgstr "アイコン"
 
-#: ../settings/xfdesktop-settings.glade.h:22
-msgid "Icon _size:"
-msgstr "アイコンのサイズ(_S):"
+#~ msgid "_Button icon:"
+#~ msgstr "ボタンアイコン(_B):"
 
-#: ../settings/xfdesktop-settings.glade.h:23
-msgid "Icon _type:"
-msgstr "アイコンタイプ(_T):"
+#~ msgid "Show _icons in menu"
+#~ msgstr "メニューにアイコンを表示する(_I):"
 
-#: ../settings/xfdesktop-settings.glade.h:24
-msgid "Image _list"
-msgstr "画像リスト(_L)"
+#~ msgid "There is already a panel menu registered for this screen"
+#~ msgstr "この画面には既にパネルメニューが登録されています"
+
+#~ msgid "Edit Menu"
+#~ msgstr "メニューの編集"
+
+#~ msgid "Shows a menu containing categories of installed applications"
+#~ msgstr ""
+#~ "インストール済みアプリケーションのカテゴリを含むメニューを表示します"
+
+#~ msgid "Accessories"
+#~ msgstr "アクセサリ"
+
+#~ msgid "Common desktop tools and applications"
+#~ msgstr "デスクトップの共通ツールやアプリケーション"
+
+#~ msgid "Development"
+#~ msgstr "開発"
+
+#~ msgid "Software development tools"
+#~ msgstr "ソフトウェア開発ツール"
+
+#~ msgid "Education"
+#~ msgstr "教育"
+
+#~ msgid "Educational software"
+#~ msgstr "教育ソフトウェア"
+
+#~ msgid "Games"
+#~ msgstr "ゲーム"
+
+#~ msgid "Games, puzzles, and other fun software"
+#~ msgstr "ゲーム、パズルや他の遊戯用ソフトウェア"
+
+#~ msgid "Graphics"
+#~ msgstr "グラフィックス"
+
+#~ msgid "Graphics creation and manipulation applications"
+#~ msgstr "グラフィックスの作成や操作アプリケーション"
+
+#~ msgid "Audio and video players and editors"
+#~ msgstr "オーディオ、ビデオプレイヤーや編集ソフトウェア"
+
+#~ msgid "Multimedia"
+#~ msgstr "マルチメディア"
+
+#~ msgid "Network"
+#~ msgstr "ネットワーク"
+
+#~ msgid "Network applications and utilities"
+#~ msgstr "ネットワークアプリケーションやユーティリティ"
+
+#~ msgid "Office"
+#~ msgstr "オフィス"
+
+#~ msgid "Office and productivity applications"
+#~ msgstr "事務用アプリケーション"
+
+#~ msgid "Applications that don't fit into other categories"
+#~ msgstr "他の分類に該当しないアプリケーション"
+
+#~ msgid "Other"
+#~ msgstr "その他"
+
+#~ msgid "Science"
+#~ msgstr "科学"
+
+#~ msgid "Scientific software"
+#~ msgstr "科学ソフトウェア"
+
+#~ msgid "Screensaver applets"
+#~ msgstr "スクリーンセーバーアプレット"
+
+#~ msgid "Screensavers"
+#~ msgstr "スクリーンセーバー"
+
+#~ msgid "Desktop and system settings applications"
+#~ msgstr "デスクトップやシステムを設定するアプリケーション"
+
+#~ msgid "Settings"
+#~ msgstr "設定"
+
+#~ msgid "System"
+#~ msgstr "システム"
+
+#~ msgid "System tools and utilities"
+#~ msgstr "システムツールおよびユーティリティ"
+
+#~ msgid "About Xfce"
+#~ msgstr "Xfce について"
+
+#~ msgid "Information about the Xfce Desktop Environment"
+#~ msgstr "Xfce デスクトップ環境についての情報"
+
+#~ msgid "File Manager"
+#~ msgstr "ファイルマネージャ"
+
+#~ msgid "Thunar file manager"
+#~ msgstr "Thuanr ファイルマネージャ"
+
+#~ msgid "Help"
+#~ msgstr "ヘルプ"
+
+#~ msgid "Help using Xfce"
+#~ msgstr "Xfce のマニュアルを表示します"
+
+#~ msgid "Log Out"
+#~ msgstr "ログアウト"
+
+#~ msgid "Log out of the Xfce Desktop"
+#~ msgstr "Xfce デスクトップからログアウトします"
+
+#~ msgid "Run Program..."
+#~ msgstr "プログラムの実行..."
+
+#~ msgid "Run a program"
+#~ msgstr "プログラムを実行します"
+
+#~ msgid "Terminal"
+#~ msgstr "ターミナル"
+
+#~ msgid "Terminal emulator"
+#~ msgstr "ターミナルエミュレータ"
+
+#~ msgid "Browse the web"
+#~ msgstr "ウェブを閲覧します"
+
+#~ msgid "Web Browser"
+#~ msgstr "ウェブブラウザ"
+
+#~ msgid "<b>Adjustments</b>"
+#~ msgstr "<b>調整</b>"
+
+#~ msgid "<b>Appearance</b>"
+#~ msgstr "<b>外観</b>"
+
+#~ msgid "<b>Colors</b>"
+#~ msgstr "<b>色</b>"
+
+#~ msgid "<b>Default Icons</b>"
+#~ msgstr "<b>デフォルトアイコン</b>"
+
+#~ msgid "<b>Desktop Menu</b>"
+#~ msgstr "<b>デスクトップメニュー</b>"
+
+#~ msgid "<b>Image</b>"
+#~ msgstr "<b>画像</b>"
+
+#~ msgid "<b>Images</b>"
+#~ msgstr "<b>画像</b>"
+
+#~ msgid "<b>Window List Menu</b>"
+#~ msgstr "<b>ウィンドウリストメニュー</b>"
+
+#~ msgid "Add an image to the list"
+#~ msgstr "画像をリストに追加します"
+
+#~ msgid ""
+#~ "Auto\n"
+#~ "Centered\n"
+#~ "Tiled\n"
+#~ "Stretched\n"
+#~ "Scaled\n"
+#~ "Zoomed"
+#~ msgstr ""
+#~ "自動\n"
+#~ "中央揃え\n"
+#~ "タイル状\n"
+#~ "縦横比を維持せず全画面化\n"
+#~ "長辺を画面に合わせる\n"
+#~ "短辺を画面に合わせる"
+
+#~ msgid "Automatically pick a random image from a list file"
+#~ msgstr "リストファイルから自動的にランダムで画像を選びます"
+
+#~ msgid "B_rightness:"
+#~ msgstr "明度(_R):"
+
+#~ msgid "B_utton:"
+#~ msgstr "ボタン(_U):"
+
+#~ msgid "Create a new list, or load an existing one"
+#~ msgstr "新規リストの作成または既存のリストを読み込みます"
+
+#~ msgid "Don't display an image at all"
+#~ msgstr "全ての画像を表示しません"
+
+#~ msgid "Icon _size:"
+#~ msgstr "アイコンのサイズ(_S):"
+
+#~ msgid "Icon _type:"
+#~ msgstr "アイコンタイプ(_T):"
+
+#~ msgid "Image _list"
+#~ msgstr "画像リスト(_L)"
 
 # Tip Help
-#: ../settings/xfdesktop-settings.glade.h:25
-msgid "Increase or decrease the brightness of the final image"
-msgstr "画像の最終的な明度を調整します"
+#~ msgid "Increase or decrease the brightness of the final image"
+#~ msgstr "画像の最終的な明度を調整します"
 
 # Tip Help
-#: ../settings/xfdesktop-settings.glade.h:26
-msgid "Increase or decrease the color saturation of the final image"
-msgstr "画像の最終的な彩度を調整します"
+#~ msgid "Increase or decrease the color saturation of the final image"
+#~ msgstr "画像の最終的な彩度を調整します"
 
-#: ../settings/xfdesktop-settings.glade.h:27
-msgid "Label trans_parency:"
-msgstr "透明度(_P):"
+#~ msgid "Label trans_parency:"
+#~ msgstr "透明度(_P):"
 
-#: ../settings/xfdesktop-settings.glade.h:28
-msgid ""
-"Left\n"
-"Middle\n"
-"Right"
-msgstr ""
-"左\n"
-"中央\n"
-"右"
+#~ msgid ""
+#~ "Left\n"
+#~ "Middle\n"
+#~ "Right"
+#~ msgstr ""
+#~ "左\n"
+#~ "中央\n"
+#~ "右"
 
-#: ../settings/xfdesktop-settings.glade.h:31
-msgid "Mo_difier:"
-msgstr "変更日時(_D):"
+#~ msgid "Mo_difier:"
+#~ msgstr "変更日時(_D):"
 
-#: ../settings/xfdesktop-settings.glade.h:32
-msgid "Modi_fier:"
-msgstr "変更日時(_F):"
+#~ msgid "Modi_fier:"
+#~ msgstr "変更日時(_F):"
 
-#: ../settings/xfdesktop-settings.glade.h:33
-msgid ""
-"None\n"
-"Minimized application icons\n"
-"File/launcher icons"
-msgstr ""
-"なし\n"
-"最小化されたアプリケーションアイコン\n"
-"ファイル/ランチャアイコン"
+#~ msgid ""
+#~ "None\n"
+#~ "Minimized application icons\n"
+#~ "File/launcher icons"
+#~ msgstr ""
+#~ "なし\n"
+#~ "最小化されたアプリケーションアイコン\n"
+#~ "ファイル/ランチャアイコン"
 
-#: ../settings/xfdesktop-settings.glade.h:36
-msgid ""
-"None\n"
-"Shift\n"
-"Alt\n"
-"Control"
-msgstr ""
-"なし\n"
-"Shift\n"
-"Alt\n"
-"Control"
+#~ msgid ""
+#~ "None\n"
+#~ "Shift\n"
+#~ "Alt\n"
+#~ "Control"
+#~ msgstr ""
+#~ "なし\n"
+#~ "Shift\n"
+#~ "Alt\n"
+#~ "Control"
 
-#: ../settings/xfdesktop-settings.glade.h:40
-msgid "Remove the selected image(s) from the list"
-msgstr "選択された画像をリストから削除します"
+#~ msgid "Remove the selected image(s) from the list"
+#~ msgstr "選択された画像をリストから削除します"
 
-#: ../settings/xfdesktop-settings.glade.h:41
-msgid "Sa_turation:"
-msgstr "彩度(_T):"
+#~ msgid "Sa_turation:"
+#~ msgstr "彩度(_T):"
 
-#: ../settings/xfdesktop-settings.glade.h:42
-msgid "Select First Color"
-msgstr "第一色の選択"
+#~ msgid "Select First Color"
+#~ msgstr "第一色の選択"
 
-#: ../settings/xfdesktop-settings.glade.h:43
-msgid "Select Second Color"
-msgstr "第二色の選択"
+#~ msgid "Select Second Color"
+#~ msgstr "第二色の選択"
 
 # Tip Help
-#: ../settings/xfdesktop-settings.glade.h:44
-msgid "Select a single image as the backdrop"
-msgstr "選択した単一の画像を背景にします"
+#~ msgid "Select a single image as the backdrop"
+#~ msgstr "選択した単一の画像を背景にします"
 
-#: ../settings/xfdesktop-settings.glade.h:45
-msgid "Set desktop background and menu and icon behavior"
-msgstr "デスクトップの背景およびメニューとアイコンの振る舞いを設定します"
+#~ msgid "Set desktop background and menu and icon behavior"
+#~ msgstr "デスクトップの背景およびメニューとアイコンの振る舞いを設定します"
 
-#: ../settings/xfdesktop-settings.glade.h:46
-msgid "Sh_ow application icons in menu"
-msgstr "メニューにアイコンを表示する(_O)"
+#~ msgid "Sh_ow application icons in menu"
+#~ msgstr "メニューにアイコンを表示する(_O)"
 
-#: ../settings/xfdesktop-settings.glade.h:47
-msgid "Show _application icons in menu"
-msgstr "メニューにアイコンを表示する(_A)"
+#~ msgid "Show _application icons in menu"
+#~ msgstr "メニューにアイコンを表示する(_A)"
 
-#: ../settings/xfdesktop-settings.glade.h:48
-msgid "Show _window list menu on desktop middle click"
-msgstr "デスクトップ上での中央クリックでウィンドウリストを表示する(_W)"
+#~ msgid "Show _window list menu on desktop middle click"
+#~ msgstr "デスクトップ上での中央クリックでウィンドウリストを表示する(_W)"
 
-#: ../settings/xfdesktop-settings.glade.h:49
-msgid "Show applications menu on _desktop right click"
-msgstr "デスクトップ上での右クリックでアプリケーションメニューを表示する(_D)"
+#~ msgid "Show applications menu on _desktop right click"
+#~ msgstr ""
+#~ "デスクトップ上での右クリックでアプリケーションメニューを表示する(_D)"
 
-#: ../settings/xfdesktop-settings.glade.h:50
-msgid "Show s_ticky windows only in active workspace"
-msgstr "アクティブワークスペースにのみスティッキーウィンドウを表示する(_T)"
+#~ msgid "Show s_ticky windows only in active workspace"
+#~ msgstr "アクティブワークスペースにのみスティッキーウィンドウを表示する(_T)"
 
-#: ../settings/xfdesktop-settings.glade.h:51
-msgid "Show workspace _names in list"
-msgstr "リストにワークスペース名を表示する(_N)"
+#~ msgid "Show workspace _names in list"
+#~ msgstr "リストにワークスペース名を表示する(_N)"
 
-#: ../settings/xfdesktop-settings.glade.h:52
-msgid ""
-"Solid color\n"
-"Horizontal gradient\n"
-"Vertical gradient\n"
-"Transparent"
-msgstr ""
-"単色\n"
-"水平グラデーション\n"
-"垂直グラデーション\n"
-"透明"
+#~ msgid ""
+#~ "Solid color\n"
+#~ "Horizontal gradient\n"
+#~ "Vertical gradient\n"
+#~ "Transparent"
+#~ msgstr ""
+#~ "単色\n"
+#~ "水平グラデーション\n"
+#~ "垂直グラデーション\n"
+#~ "透明"
 
-#: ../settings/xfdesktop-settings.glade.h:56
-msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-msgstr "グラデーションの \"右側\" または \"下側\" の色を指定します"
+#~ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
+#~ msgstr "グラデーションの \"右側\" または \"下側\" の色を指定します"
 
-#: ../settings/xfdesktop-settings.glade.h:57
-msgid ""
-"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr "グラデーションの \"左側\" または \"上側\" の色を指定します"
+#~ msgid ""
+#~ "Specifies the solid color, or the \"left\" or \"top\" color of the "
+#~ "gradient"
+#~ msgstr "グラデーションの \"左側\" または \"上側\" の色を指定します"
 
-#: ../settings/xfdesktop-settings.glade.h:58
-msgid "Specify how the image will be resized to fit the screen"
-msgstr "画像を画面に合わせるスタイルを指定します"
+#~ msgid "Specify how the image will be resized to fit the screen"
+#~ msgstr "画像を画面に合わせるスタイルを指定します"
 
-#: ../settings/xfdesktop-settings.glade.h:59
-msgid "Specify the style of the color drawn behind the backdrop image"
-msgstr "背景画像の後ろで描画される背景色のスタイルを指定します"
+#~ msgid "Specify the style of the color drawn behind the backdrop image"
+#~ msgstr "背景画像の後ろで描画される背景色のスタイルを指定します"
 
-#: ../settings/xfdesktop-settings.glade.h:60
-msgid ""
-"Specify the transparency level for the rounded label drawn behind the icon "
-"text"
-msgstr "アイコンの文字の背景の透明度を指定してください"
+#~ msgid ""
+#~ "Specify the transparency level for the rounded label drawn behind the "
+#~ "icon text"
+#~ msgstr "アイコンの文字の背景の透明度を指定してください"
 
-#: ../settings/xfdesktop-settings.glade.h:61
-msgid "St_yle:"
-msgstr "スタイル(_Y):"
+#~ msgid "St_yle:"
+#~ msgstr "スタイル(_Y):"
 
-#: ../settings/xfdesktop-settings.glade.h:62
-msgid "Use _submenus for the windows in each workspace"
-msgstr "各ワークスペースのウィンドウをサブメニューで表示する(_U)"
+#~ msgid "Use _submenus for the windows in each workspace"
+#~ msgstr "各ワークスペースのウィンドウをサブメニューで表示する(_U)"
 
-#: ../settings/xfdesktop-settings.glade.h:63
-msgid "Use custom _font size:"
-msgstr "指定フォントサイズを使用する(_F):"
+#~ msgid "Use custom _font size:"
+#~ msgstr "指定フォントサイズを使用する(_F):"
 
-#: ../settings/xfdesktop-settings.glade.h:64
-msgid "_Background"
-msgstr "背景(_B)"
+#~ msgid "_Background"
+#~ msgstr "背景(_B)"
 
-#: ../settings/xfdesktop-settings.glade.h:65
-msgid "_Button:"
-msgstr "ボタン(_B):"
+#~ msgid "_Button:"
+#~ msgstr "ボタン(_B):"
 
-#: ../settings/xfdesktop-settings.glade.h:66
-msgid "_Edit desktop menu"
-msgstr "デスクトップメニューの編集(_E)"
+#~ msgid "_Edit desktop menu"
+#~ msgstr "デスクトップメニューの編集(_E)"
 
-#: ../settings/xfdesktop-settings.glade.h:67
-msgid "_Icons"
-msgstr "アイコン(_I)"
+#~ msgid "_Icons"
+#~ msgstr "アイコン(_I)"
 
-#: ../settings/xfdesktop-settings.glade.h:68
-msgid "_Menus"
-msgstr "メニュー(_M)"
+#~ msgid "_Menus"
+#~ msgstr "メニュー(_M)"
 
-#: ../settings/xfdesktop-settings.glade.h:69
-msgid "_None"
-msgstr "無し(_N)"
+#~ msgid "_None"
+#~ msgstr "無し(_N)"
 
-#: ../settings/xfdesktop-settings.glade.h:70
-msgid "_Single image"
-msgstr "単一画像(_S)"
+#~ msgid "_Single image"
+#~ msgstr "単一画像(_S)"
 
 #~ msgid "%s: Unknown option: %s\n"
 #~ msgstr "%s: 不明なオプション: %s\n"

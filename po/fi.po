@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-20 18:04+0100\n"
+"POT-Creation-Date: 2010-04-28 23:56+0200\n"
 "PO-Revision-Date: 2010-10-20 23:46+0200\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
@@ -20,88 +20,6 @@ msgstr ""
 #, c-format
 msgid "Backdrop list file is not valid"
 msgstr "Tiedosto ei ole kelvollinen taustakuvalista"
-
-#: ../panel-plugin/desktop-menu-plugin.c:669
-#, c-format
-msgid "Unable to launch xfce4-menueditor: %s"
-msgstr "xfce4-valikkoeditoria ei voitu käynnistää: %s"
-
-#: ../panel-plugin/desktop-menu-plugin.c:692
-msgid "Select Icon"
-msgstr "Valitse kuvake"
-
-#: ../panel-plugin/desktop-menu-plugin.c:694
-msgid "Select Menu File"
-msgstr "Valitse valikkotiedosto"
-
-#: ../panel-plugin/desktop-menu-plugin.c:721
-msgid "All Files"
-msgstr "Kaikki tiedostot"
-
-#: ../panel-plugin/desktop-menu-plugin.c:728
-msgid "Image Files"
-msgstr "Kuvatiedostot"
-
-#: ../panel-plugin/desktop-menu-plugin.c:731
-msgid "Menu Files"
-msgstr "Valikkotiedostot"
-
-#: ../panel-plugin/desktop-menu-plugin.c:756
-#: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
-msgid "Xfce Menu"
-msgstr "Xfce-valikko"
-
-#: ../panel-plugin/desktop-menu-plugin.c:768
-msgid "Button"
-msgstr "Painike"
-
-#: ../panel-plugin/desktop-menu-plugin.c:781
-msgid "Button _title:"
-msgstr "_Painikkeen otsake:"
-
-#: ../panel-plugin/desktop-menu-plugin.c:794
-msgid "_Show title in button"
-msgstr "_Näytä painikkeen otsake"
-
-#: ../panel-plugin/desktop-menu-plugin.c:801
-msgid "Menu File"
-msgstr "Valikkotiedosto"
-
-#: ../panel-plugin/desktop-menu-plugin.c:813
-msgid "Use default _desktop menu file"
-msgstr "Käytä _oletusvalikkotiedostoa"
-
-#: ../panel-plugin/desktop-menu-plugin.c:822
-msgid "Use _custom menu file:"
-msgstr "_Avaa mukautettu valikkotiedosto:"
-
-#: ../panel-plugin/desktop-menu-plugin.c:863
-msgid "_Edit Menu"
-msgstr "_Muokkaa valikkoa"
-
-#: ../panel-plugin/desktop-menu-plugin.c:870
-msgid "Icons"
-msgstr "Kuvakkeet"
-
-#: ../panel-plugin/desktop-menu-plugin.c:882
-msgid "_Button icon:"
-msgstr "Painikkeen _kuvake:"
-
-#: ../panel-plugin/desktop-menu-plugin.c:896
-msgid "Show _icons in menu"
-msgstr "Näytä k_uvakkeet valikossa"
-
-#: ../panel-plugin/desktop-menu-plugin.c:931
-msgid "There is already a panel menu registered for this screen"
-msgstr "Tälle näytölle on jo rekisteröity paneelivalikko"
-
-#: ../panel-plugin/desktop-menu-plugin.c:1046
-msgid "Edit Menu"
-msgstr "Muokkaa valikkoa"
-
-#: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
-msgid "Shows a menu containing categories of installed applications"
-msgstr "Näyttää asennetut ohjelmat valikossa kategorioihin järjestettynä"
 
 #. no need to escape markup; it's already done for us
 #: ../settings/main.c:162
@@ -236,70 +154,70 @@ msgstr "Työpöydän asetukset"
 msgid "Unable to contact settings server"
 msgstr "Asetuspalvelimeen ei voi yhdistää."
 
-#: ../src/main.c:232
+#: ../src/main.c:236
 msgid "Display version information"
 msgstr "Näytä versiotiedot"
 
-#: ../src/main.c:233
+#: ../src/main.c:237
 msgid "Reload all settings, refresh image list"
 msgstr "Lataa asetukset uudelleen, päivitä kuvalista"
 
-#: ../src/main.c:234
+#: ../src/main.c:238
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "Näytä valikko (hiiren nykyisessä sijainnissa)"
 
-#: ../src/main.c:235
+#: ../src/main.c:239
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "Näytä ikkunalista (hiiren nykyisessä sijainnissa)"
 
-#: ../src/main.c:236
+#: ../src/main.c:240
 msgid "Cause xfdesktop to quit"
 msgstr "Sulje xfdesktop"
 
-#: ../src/main.c:256
+#: ../src/main.c:260
 #, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "Argumenttien jäsennys epäonnistui: %s\n"
 
-#: ../src/main.c:264
+#: ../src/main.c:268
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Tämä on %s versio %s, suoritusympäristönä Xfce %s.\n"
 
-#: ../src/main.c:266
+#: ../src/main.c:270
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Kääntäessä käytössä GTK+ %d.%d.%d, nyt GTK+ %d.%d.%d."
 
-#: ../src/main.c:270
+#: ../src/main.c:274
 #, c-format
 msgid "Build options:\n"
 msgstr "Käännösvalitsimet:\n"
 
-#: ../src/main.c:271
+#: ../src/main.c:275
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Työpöytävalikko:     %s\n"
 
-#: ../src/main.c:273 ../src/main.c:280 ../src/main.c:287
+#: ../src/main.c:277 ../src/main.c:284 ../src/main.c:291
 msgid "enabled"
 msgstr "käytössä"
 
-#: ../src/main.c:275 ../src/main.c:282 ../src/main.c:289
+#: ../src/main.c:279 ../src/main.c:286 ../src/main.c:293
 msgid "disabled"
 msgstr "poissa käytöstä"
 
-#: ../src/main.c:278
+#: ../src/main.c:282
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Työpöytäkuvakkeet:   %s\n"
 
-#: ../src/main.c:285
+#: ../src/main.c:289
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Tiedostokuvakkeet:   %s\n"
 
-#: ../src/main.c:316
+#: ../src/main.c:320
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s ei ole käynnissä.\n"
@@ -820,166 +738,6 @@ msgstr "_Liitä taltio"
 msgid "E_ject Volume"
 msgstr "_Poista levy"
 
-#: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
-msgid "Accessories"
-msgstr "Apuohjelmat"
-
-#: ../modules/menu/directory-data/xfce-accessories.directory.in.h:2
-msgid "Common desktop tools and applications"
-msgstr "Yleiset työpöytätyökalut ja -sovellukset"
-
-#: ../modules/menu/directory-data/xfce-development.directory.in.h:1
-msgid "Development"
-msgstr "Sovelluskehitys"
-
-#: ../modules/menu/directory-data/xfce-development.directory.in.h:2
-msgid "Software development tools"
-msgstr "Sovellusten kehitystyökalut"
-
-#: ../modules/menu/directory-data/xfce-education.directory.in.h:1
-msgid "Education"
-msgstr "Opetus"
-
-#: ../modules/menu/directory-data/xfce-education.directory.in.h:2
-msgid "Educational software"
-msgstr "Opetusohjelmistot"
-
-#: ../modules/menu/directory-data/xfce-games.directory.in.h:1
-msgid "Games"
-msgstr "Pelit"
-
-#: ../modules/menu/directory-data/xfce-games.directory.in.h:2
-msgid "Games, puzzles, and other fun software"
-msgstr "Pelit ja muut ajanvietesovellukset"
-
-#: ../modules/menu/directory-data/xfce-graphics.directory.in.h:1
-msgid "Graphics"
-msgstr "Grafiikka"
-
-#: ../modules/menu/directory-data/xfce-graphics.directory.in.h:2
-msgid "Graphics creation and manipulation applications"
-msgstr "Kuvien luomiseen ja käsittelyyn tarkoitetut ohjelmat"
-
-#: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:1
-msgid "Audio and video players and editors"
-msgstr "Äänen ja videon toisto- ja muokkaussovellukset"
-
-#: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:2
-msgid "Multimedia"
-msgstr "Ääni ja kuva"
-
-#: ../modules/menu/directory-data/xfce-network.directory.in.h:1
-msgid "Network"
-msgstr "Verkko"
-
-#: ../modules/menu/directory-data/xfce-network.directory.in.h:2
-msgid "Network applications and utilities"
-msgstr "Verkkotyökalut ja -ohjelmistot"
-
-#: ../modules/menu/directory-data/xfce-office.directory.in.h:1
-msgid "Office"
-msgstr "Toimisto"
-
-#: ../modules/menu/directory-data/xfce-office.directory.in.h:2
-msgid "Office and productivity applications"
-msgstr "Toimisto- ja tuottavuussovellukset"
-
-#: ../modules/menu/directory-data/xfce-other.directory.in.h:1
-msgid "Applications that don't fit into other categories"
-msgstr "Sovellukset, jotka jäävät muiden ryhmien ulkopuolelle"
-
-#: ../modules/menu/directory-data/xfce-other.directory.in.h:2
-msgid "Other"
-msgstr "Muut"
-
-#: ../modules/menu/directory-data/xfce-science.directory.in.h:1
-msgid "Science"
-msgstr "Tiede"
-
-#: ../modules/menu/directory-data/xfce-science.directory.in.h:2
-msgid "Scientific software"
-msgstr "Tieteelliset ohjelmistot"
-
-#: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
-msgid "Screensaver applets"
-msgstr "Näytönsäästäjäsovelmat"
-
-#: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:2
-msgid "Screensavers"
-msgstr "Näytönsäästäjät"
-
-#: ../modules/menu/directory-data/xfce-settings.directory.in.h:1
-msgid "Desktop and system settings applications"
-msgstr "Työpöydän ja järjestelmän asetustyökalut"
-
-#: ../modules/menu/directory-data/xfce-settings.directory.in.h:2
-msgid "Settings"
-msgstr "Asetukset"
-
-#: ../modules/menu/directory-data/xfce-system.directory.in.h:1
-msgid "System"
-msgstr "Järjestelmä"
-
-#: ../modules/menu/directory-data/xfce-system.directory.in.h:2
-msgid "System tools and utilities"
-msgstr "Järjestelmätyökalut ja -sovellukset"
-
-#: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:1
-msgid "About Xfce"
-msgstr "Tietoja Xfce:stä"
-
-#: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:2
-msgid "Information about the Xfce Desktop Environment"
-msgstr "Tietoja Xfce-työpöytäympäristöstä"
-
-#: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:1
-msgid "File Manager"
-msgstr "Tiedostonhallinta"
-
-#: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:2
-msgid "Thunar file manager"
-msgstr "Thunar-tiedostonhallinta"
-
-#: ../modules/menu/menu-data/xfce4-help.desktop.in.h:1
-msgid "Help"
-msgstr "Ohje"
-
-#: ../modules/menu/menu-data/xfce4-help.desktop.in.h:2
-msgid "Help using Xfce"
-msgstr "Xfce:n käyttöohje"
-
-#: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:1
-msgid "Log Out"
-msgstr "Lopeta"
-
-#: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:2
-msgid "Log out of the Xfce Desktop"
-msgstr "Kirjaudu ulos Xfce-työpöydältä"
-
-#: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:1
-msgid "Run Program..."
-msgstr "Suorita..."
-
-#: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:2
-msgid "Run a program"
-msgstr "Suorita ohjelma"
-
-#: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:1
-msgid "Terminal"
-msgstr "Pääte"
-
-#: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:2
-msgid "Terminal emulator"
-msgstr "Pääte-emulaattori"
-
-#: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:1
-msgid "Browse the web"
-msgstr "Selaa web-sivuja"
-
-#: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:2
-msgid "Web Browser"
-msgstr "Web-selain"
-
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop "
 msgstr "Työpöytä "
@@ -987,6 +745,186 @@ msgstr "Työpöytä "
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Set desktop background and menu and icon behaviour"
 msgstr "Säädä työpöydän taustakuvaa, valikkoa ja kuvakkeita"
+
+#~ msgid "Unable to launch xfce4-menueditor: %s"
+#~ msgstr "xfce4-valikkoeditoria ei voitu käynnistää: %s"
+
+#~ msgid "Select Icon"
+#~ msgstr "Valitse kuvake"
+
+#~ msgid "Select Menu File"
+#~ msgstr "Valitse valikkotiedosto"
+
+#~ msgid "All Files"
+#~ msgstr "Kaikki tiedostot"
+
+#~ msgid "Image Files"
+#~ msgstr "Kuvatiedostot"
+
+#~ msgid "Menu Files"
+#~ msgstr "Valikkotiedostot"
+
+#~ msgid "Xfce Menu"
+#~ msgstr "Xfce-valikko"
+
+#~ msgid "Button"
+#~ msgstr "Painike"
+
+#~ msgid "Button _title:"
+#~ msgstr "_Painikkeen otsake:"
+
+#~ msgid "_Show title in button"
+#~ msgstr "_Näytä painikkeen otsake"
+
+#~ msgid "Menu File"
+#~ msgstr "Valikkotiedosto"
+
+#~ msgid "Use default _desktop menu file"
+#~ msgstr "Käytä _oletusvalikkotiedostoa"
+
+#~ msgid "Use _custom menu file:"
+#~ msgstr "_Avaa mukautettu valikkotiedosto:"
+
+#~ msgid "_Edit Menu"
+#~ msgstr "_Muokkaa valikkoa"
+
+#~ msgid "Icons"
+#~ msgstr "Kuvakkeet"
+
+#~ msgid "_Button icon:"
+#~ msgstr "Painikkeen _kuvake:"
+
+#~ msgid "Show _icons in menu"
+#~ msgstr "Näytä k_uvakkeet valikossa"
+
+#~ msgid "There is already a panel menu registered for this screen"
+#~ msgstr "Tälle näytölle on jo rekisteröity paneelivalikko"
+
+#~ msgid "Edit Menu"
+#~ msgstr "Muokkaa valikkoa"
+
+#~ msgid "Shows a menu containing categories of installed applications"
+#~ msgstr "Näyttää asennetut ohjelmat valikossa kategorioihin järjestettynä"
+
+#~ msgid "Accessories"
+#~ msgstr "Apuohjelmat"
+
+#~ msgid "Common desktop tools and applications"
+#~ msgstr "Yleiset työpöytätyökalut ja -sovellukset"
+
+#~ msgid "Development"
+#~ msgstr "Sovelluskehitys"
+
+#~ msgid "Software development tools"
+#~ msgstr "Sovellusten kehitystyökalut"
+
+#~ msgid "Education"
+#~ msgstr "Opetus"
+
+#~ msgid "Educational software"
+#~ msgstr "Opetusohjelmistot"
+
+#~ msgid "Games"
+#~ msgstr "Pelit"
+
+#~ msgid "Games, puzzles, and other fun software"
+#~ msgstr "Pelit ja muut ajanvietesovellukset"
+
+#~ msgid "Graphics"
+#~ msgstr "Grafiikka"
+
+#~ msgid "Graphics creation and manipulation applications"
+#~ msgstr "Kuvien luomiseen ja käsittelyyn tarkoitetut ohjelmat"
+
+#~ msgid "Audio and video players and editors"
+#~ msgstr "Äänen ja videon toisto- ja muokkaussovellukset"
+
+#~ msgid "Multimedia"
+#~ msgstr "Ääni ja kuva"
+
+#~ msgid "Network"
+#~ msgstr "Verkko"
+
+#~ msgid "Network applications and utilities"
+#~ msgstr "Verkkotyökalut ja -ohjelmistot"
+
+#~ msgid "Office"
+#~ msgstr "Toimisto"
+
+#~ msgid "Office and productivity applications"
+#~ msgstr "Toimisto- ja tuottavuussovellukset"
+
+#~ msgid "Applications that don't fit into other categories"
+#~ msgstr "Sovellukset, jotka jäävät muiden ryhmien ulkopuolelle"
+
+#~ msgid "Other"
+#~ msgstr "Muut"
+
+#~ msgid "Science"
+#~ msgstr "Tiede"
+
+#~ msgid "Scientific software"
+#~ msgstr "Tieteelliset ohjelmistot"
+
+#~ msgid "Screensaver applets"
+#~ msgstr "Näytönsäästäjäsovelmat"
+
+#~ msgid "Screensavers"
+#~ msgstr "Näytönsäästäjät"
+
+#~ msgid "Desktop and system settings applications"
+#~ msgstr "Työpöydän ja järjestelmän asetustyökalut"
+
+#~ msgid "Settings"
+#~ msgstr "Asetukset"
+
+#~ msgid "System"
+#~ msgstr "Järjestelmä"
+
+#~ msgid "System tools and utilities"
+#~ msgstr "Järjestelmätyökalut ja -sovellukset"
+
+#~ msgid "About Xfce"
+#~ msgstr "Tietoja Xfce:stä"
+
+#~ msgid "Information about the Xfce Desktop Environment"
+#~ msgstr "Tietoja Xfce-työpöytäympäristöstä"
+
+#~ msgid "File Manager"
+#~ msgstr "Tiedostonhallinta"
+
+#~ msgid "Thunar file manager"
+#~ msgstr "Thunar-tiedostonhallinta"
+
+#~ msgid "Help"
+#~ msgstr "Ohje"
+
+#~ msgid "Help using Xfce"
+#~ msgstr "Xfce:n käyttöohje"
+
+#~ msgid "Log Out"
+#~ msgstr "Lopeta"
+
+#~ msgid "Log out of the Xfce Desktop"
+#~ msgstr "Kirjaudu ulos Xfce-työpöydältä"
+
+#~ msgid "Run Program..."
+#~ msgstr "Suorita..."
+
+#~ msgid "Run a program"
+#~ msgstr "Suorita ohjelma"
+
+#~ msgid "Terminal"
+#~ msgstr "Pääte"
+
+#~ msgid "Terminal emulator"
+#~ msgstr "Pääte-emulaattori"
+
+#~ msgid "Browse the web"
+#~ msgstr "Selaa web-sivuja"
+
+#~ msgid "Web Browser"
+#~ msgstr "Web-selain"
 
 #~ msgid "%s: Unknown option: %s\n"
 #~ msgstr "%s: Tuntematon valitsin: %s\n"

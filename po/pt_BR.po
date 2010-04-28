@@ -5,12 +5,12 @@
 # Adriano Winter Bess <awbess@gmail.com>, 2006.
 # Og Maciel <ogmaciel@gnome.org>, 2008.
 # Fábio Nogueira <deb-user-ba@ubuntu.com>, 2008.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-13 18:05+0100\n"
+"POT-Creation-Date: 2010-04-28 23:56+0200\n"
 "PO-Revision-Date: 2009-01-16 12:43-0500\n"
 "Last-Translator: Og Maciel <ogmaciel@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <ldp-br@bazar2.conectiva.com.br>\n"
@@ -22,88 +22,6 @@ msgstr ""
 #, c-format
 msgid "Backdrop list file is not valid"
 msgstr "O arquivo com a lista de imagens de fundo não é válido"
-
-#: ../panel-plugin/desktop-menu-plugin.c:669
-#, c-format
-msgid "Unable to launch xfce4-menueditor: %s"
-msgstr "Não foi possível lançar o xfce4-menueditor: %s"
-
-#: ../panel-plugin/desktop-menu-plugin.c:692
-msgid "Select Icon"
-msgstr "Selecionar ícone"
-
-#: ../panel-plugin/desktop-menu-plugin.c:694
-msgid "Select Menu File"
-msgstr "Escolher arquivo de menu"
-
-#: ../panel-plugin/desktop-menu-plugin.c:721
-msgid "All Files"
-msgstr "Todos os arquivos"
-
-#: ../panel-plugin/desktop-menu-plugin.c:728
-msgid "Image Files"
-msgstr "Arquivo de imagens"
-
-#: ../panel-plugin/desktop-menu-plugin.c:731
-msgid "Menu Files"
-msgstr "Arquivos de Menu"
-
-#: ../panel-plugin/desktop-menu-plugin.c:756
-#: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
-msgid "Xfce Menu"
-msgstr "Menu Xfce"
-
-#: ../panel-plugin/desktop-menu-plugin.c:768
-msgid "Button"
-msgstr "Botão"
-
-#: ../panel-plugin/desktop-menu-plugin.c:781
-msgid "Button _title:"
-msgstr "_Título do botão:"
-
-#: ../panel-plugin/desktop-menu-plugin.c:794
-msgid "_Show title in button"
-msgstr "Mo_strar título no botão"
-
-#: ../panel-plugin/desktop-menu-plugin.c:801
-msgid "Menu File"
-msgstr "Arquivo de menu"
-
-#: ../panel-plugin/desktop-menu-plugin.c:813
-msgid "Use default _desktop menu file"
-msgstr "Usar arquivo pa_drão de menu da área de trabalho"
-
-#: ../panel-plugin/desktop-menu-plugin.c:822
-msgid "Use _custom menu file:"
-msgstr "Usar arquivo de menu personali_zado:"
-
-#: ../panel-plugin/desktop-menu-plugin.c:863
-msgid "_Edit Menu"
-msgstr "_Editar menu"
-
-#: ../panel-plugin/desktop-menu-plugin.c:870
-msgid "Icons"
-msgstr "Ícones"
-
-#: ../panel-plugin/desktop-menu-plugin.c:882
-msgid "_Button icon:"
-msgstr "Ícone do _botão:"
-
-#: ../panel-plugin/desktop-menu-plugin.c:896
-msgid "Show _icons in menu"
-msgstr "Mostrar _ícones no menu"
-
-#: ../panel-plugin/desktop-menu-plugin.c:931
-msgid "There is already a panel menu registered for this screen"
-msgstr "Já existe um menu de painel registrado para esta tela"
-
-#: ../panel-plugin/desktop-menu-plugin.c:1046
-msgid "Edit Menu"
-msgstr "Editar menu"
-
-#: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
-msgid "Shows a menu containing categories of installed applications"
-msgstr "Mostra um menu contendo categorias de aplicações instaladas"
 
 #. no need to escape markup; it's already done for us
 #: ../settings/main.c:162
@@ -146,8 +64,11 @@ msgstr "Criar/Carregar uma lista de imagens de fundo"
 
 #: ../settings/main.c:511
 #, c-format
-msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr "O arquivo \"%s\" não é um arquivo de imagens de fundo válido.  Você deseja sobrescrevê-lo?"
+msgid ""
+"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr ""
+"O arquivo \"%s\" não é um arquivo de imagens de fundo válido.  Você deseja "
+"sobrescrevê-lo?"
 
 #: ../settings/main.c:516
 msgid "Invalid List File"
@@ -237,70 +158,70 @@ msgstr "Configurações da área de trabalho"
 msgid "Unable to contact settings server"
 msgstr "Não foi possível contactar o servidor de configurações"
 
-#: ../src/main.c:232
+#: ../src/main.c:236
 msgid "Display version information"
 msgstr "Exibe informação da versão"
 
-#: ../src/main.c:233
+#: ../src/main.c:237
 msgid "Reload all settings, refresh image list"
 msgstr "Recarrega todas as configurações, atualiza a lista de imagens"
 
-#: ../src/main.c:234
+#: ../src/main.c:238
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "Abre o menu (na posição atual do mouse)"
 
-#: ../src/main.c:235
+#: ../src/main.c:239
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "Abre a lista de janelas (na posição atual do mouse)"
 
-#: ../src/main.c:236
+#: ../src/main.c:240
 msgid "Cause xfdesktop to quit"
 msgstr "Faz o xfdesktop sair"
 
-#: ../src/main.c:256
+#: ../src/main.c:260
 #, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "Falhou ao analisar os argumentos: %s\n"
 
-#: ../src/main.c:264
+#: ../src/main.c:268
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Este é o %s versão %s, executando no Xfce %s.\n"
 
-#: ../src/main.c:266
+#: ../src/main.c:270
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Compilado com GTK+ %d.%d.%d, ligado com GTK+ %d.%d.%d."
 
-#: ../src/main.c:270
+#: ../src/main.c:274
 #, c-format
 msgid "Build options:\n"
 msgstr "Opções de compilação:\n"
 
-#: ../src/main.c:271
+#: ../src/main.c:275
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Menu da área de trabalho:        %s\n"
 
-#: ../src/main.c:273 ../src/main.c:280 ../src/main.c:287
+#: ../src/main.c:277 ../src/main.c:284 ../src/main.c:291
 msgid "enabled"
 msgstr "habilitado"
 
-#: ../src/main.c:275 ../src/main.c:282 ../src/main.c:289
+#: ../src/main.c:279 ../src/main.c:286 ../src/main.c:293
 msgid "disabled"
 msgstr "desabilitado"
 
-#: ../src/main.c:278
+#: ../src/main.c:282
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Ícones da área de trabalho        %s\n"
 
-#: ../src/main.c:285
+#: ../src/main.c:289
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "     Ícones da área de trabalho:  %s\n"
 
-#: ../src/main.c:316
+#: ../src/main.c:320
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s não está executando.\n"
@@ -349,7 +270,9 @@ msgstr "Área de trabalho"
 #: ../src/xfce-desktop.c:1018
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
-msgstr "Não foi possível carregar a imagem do arquivo de lista de imagens de fundo \"%s\":"
+msgstr ""
+"Não foi possível carregar a imagem do arquivo de lista de imagens de fundo "
+"\"%s\":"
 
 #: ../src/xfce-desktop.c:1020
 msgid "Desktop Error"
@@ -357,8 +280,11 @@ msgstr "Erro de área de trabalho"
 
 #: ../src/xfdesktop-file-icon-manager.c:479
 #, c-format
-msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr "Xfdesktop não foi capaz de criar a pasta \"%s\" para armazenar itens da área de trabalho:"
+msgid ""
+"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr ""
+"Xfdesktop não foi capaz de criar a pasta \"%s\" para armazenar itens da área "
+"de trabalho:"
 
 #: ../src/xfdesktop-file-icon-manager.c:481
 #: ../src/xfdesktop-file-icon-manager.c:492
@@ -368,8 +294,12 @@ msgstr "Falha na Criação de Pasta"
 
 #: ../src/xfdesktop-file-icon-manager.c:490
 #, c-format
-msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
-msgstr "Xfdesktop não é capaz de usar \"%s\" para armazenar itens da área de trabalho porque não é uma pasta."
+msgid ""
+"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
+"folder."
+msgstr ""
+"Xfdesktop não é capaz de usar \"%s\" para armazenar itens da área de "
+"trabalho porque não é uma pasta."
 
 #: ../src/xfdesktop-file-icon-manager.c:494
 msgid "Please delete or rename the file."
@@ -435,8 +365,12 @@ msgid "The application chooser could not be opened."
 msgstr "A aplicativo de escolha de aplicativos não pôde ser aberta."
 
 #: ../src/xfdesktop-file-icon-manager.c:986 ../src/xfdesktop-file-utils.c:368
-msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
-msgstr "Este recurso requer um serviço de gerenciador de arquivos presente (como o provido pelo Thunar)."
+msgid ""
+"This feature requires a file manager service present (such as that supplied "
+"by Thunar)."
+msgstr ""
+"Este recurso requer um serviço de gerenciador de arquivos presente (como o "
+"provido pelo Thunar)."
 
 #: ../src/xfdesktop-file-icon-manager.c:1182
 #, c-format
@@ -454,8 +388,12 @@ msgid "Unable to create folder named \"%s\":"
 msgstr "Não foi possível criar uma pasta com o nome \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1289
-msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
-msgstr "Não é possível executar \"exo-desktop-item-edit\", que é necessário para criar e editar lançadores e ligações na área de trabalho."
+msgid ""
+"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
+"edit launchers and links on the desktop."
+msgstr ""
+"Não é possível executar \"exo-desktop-item-edit\", que é necessário para "
+"criar e editar lançadores e ligações na área de trabalho."
 
 #: ../src/xfdesktop-file-icon-manager.c:1324
 msgid "Create New Folder"
@@ -742,8 +680,12 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "Não foi possível comunicar-se com o serviço de Lixeira do Xfce."
 
 #: ../src/xfdesktop-special-file-icon.c:522
-msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
-msgstr "Certifique-se de que você possui um gerenciador de arquivos instalado que suporta o serviço de Lixeira do Xfce, como o Thunar."
+msgid ""
+"Make sure you have a file manager installed that supports the Xfce Trash "
+"service, such as Thunar."
+msgstr ""
+"Certifique-se de que você possui um gerenciador de arquivos instalado que "
+"suporta o serviço de Lixeira do Xfce, como o Thunar."
 
 #: ../src/xfdesktop-special-file-icon.c:655
 msgid "_Empty Trash"
@@ -804,166 +746,6 @@ msgstr "_Montar volume"
 msgid "E_ject Volume"
 msgstr "E_jetar volume"
 
-#: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
-msgid "Accessories"
-msgstr "Acessórios"
-
-#: ../modules/menu/directory-data/xfce-accessories.directory.in.h:2
-msgid "Common desktop tools and applications"
-msgstr "Aplicativos e ferramentas comuns da área de trabalho"
-
-#: ../modules/menu/directory-data/xfce-development.directory.in.h:1
-msgid "Development"
-msgstr "Desenvolvimento"
-
-#: ../modules/menu/directory-data/xfce-development.directory.in.h:2
-msgid "Software development tools"
-msgstr "Ferramentas de desenvolvimento de software"
-
-#: ../modules/menu/directory-data/xfce-education.directory.in.h:1
-msgid "Education"
-msgstr "Educativo"
-
-#: ../modules/menu/directory-data/xfce-education.directory.in.h:2
-msgid "Educational software"
-msgstr "Programas educativos"
-
-#: ../modules/menu/directory-data/xfce-games.directory.in.h:1
-msgid "Games"
-msgstr "Jogos"
-
-#: ../modules/menu/directory-data/xfce-games.directory.in.h:2
-msgid "Games, puzzles, and other fun software"
-msgstr "Jogos, quebra-cabeça e outros programas divertidos"
-
-#: ../modules/menu/directory-data/xfce-graphics.directory.in.h:1
-msgid "Graphics"
-msgstr "Gráficos"
-
-#: ../modules/menu/directory-data/xfce-graphics.directory.in.h:2
-msgid "Graphics creation and manipulation applications"
-msgstr "Aplicativos de criação e manipulação de gráficos"
-
-#: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:1
-msgid "Audio and video players and editors"
-msgstr "Editores e reprodutores de áudio e vídeo"
-
-#: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:2
-msgid "Multimedia"
-msgstr "Multimídia"
-
-#: ../modules/menu/directory-data/xfce-network.directory.in.h:1
-msgid "Network"
-msgstr "Internet"
-
-#: ../modules/menu/directory-data/xfce-network.directory.in.h:2
-msgid "Network applications and utilities"
-msgstr "Utilitários e aplicativos de rede"
-
-#: ../modules/menu/directory-data/xfce-office.directory.in.h:1
-msgid "Office"
-msgstr "Escritório"
-
-#: ../modules/menu/directory-data/xfce-office.directory.in.h:2
-msgid "Office and productivity applications"
-msgstr "Aplicativos de escritório e produtividade"
-
-#: ../modules/menu/directory-data/xfce-other.directory.in.h:1
-msgid "Applications that don't fit into other categories"
-msgstr "Aplicativos que não se encaixam em outras categorias"
-
-#: ../modules/menu/directory-data/xfce-other.directory.in.h:2
-msgid "Other"
-msgstr "Outros"
-
-#: ../modules/menu/directory-data/xfce-science.directory.in.h:1
-msgid "Science"
-msgstr "Ciências"
-
-#: ../modules/menu/directory-data/xfce-science.directory.in.h:2
-msgid "Scientific software"
-msgstr "Programas científicos"
-
-#: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
-msgid "Screensaver applets"
-msgstr "Miniaplicativos de proteção de tela"
-
-#: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:2
-msgid "Screensavers"
-msgstr "Protetores de tela"
-
-#: ../modules/menu/directory-data/xfce-settings.directory.in.h:1
-msgid "Desktop and system settings applications"
-msgstr "Aplicativos de configurações do sistema e da área de trabalho"
-
-#: ../modules/menu/directory-data/xfce-settings.directory.in.h:2
-msgid "Settings"
-msgstr "Configurações"
-
-#: ../modules/menu/directory-data/xfce-system.directory.in.h:1
-msgid "System"
-msgstr "Sistema"
-
-#: ../modules/menu/directory-data/xfce-system.directory.in.h:2
-msgid "System tools and utilities"
-msgstr "Utilitários e ferramentas do sistema"
-
-#: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:1
-msgid "About Xfce"
-msgstr "Sobre o Xfce"
-
-#: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:2
-msgid "Information about the Xfce Desktop Environment"
-msgstr "Informações sobre o Ambiente da Área de Trabalho do Xfce"
-
-#: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:1
-msgid "File Manager"
-msgstr "Gerenciador de Arquivos"
-
-#: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:2
-msgid "Thunar file manager"
-msgstr "Gerenciador de arquivos Thunar"
-
-#: ../modules/menu/menu-data/xfce4-help.desktop.in.h:1
-msgid "Help"
-msgstr "Ajuda"
-
-#: ../modules/menu/menu-data/xfce4-help.desktop.in.h:2
-msgid "Help using Xfce"
-msgstr "Ajuda usando o Xfce"
-
-#: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:1
-msgid "Log Out"
-msgstr "Sair"
-
-#: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:2
-msgid "Log out of the Xfce Desktop"
-msgstr "Sair do Xfce"
-
-#: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:1
-msgid "Run Program..."
-msgstr "Executar programa..."
-
-#: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:2
-msgid "Run a program"
-msgstr "Executar um programa"
-
-#: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:1
-msgid "Terminal"
-msgstr "Terminal"
-
-#: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:2
-msgid "Terminal emulator"
-msgstr "Emulador do terminal"
-
-#: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:1
-msgid "Browse the web"
-msgstr "Navegar na internet"
-
-#: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:2
-msgid "Web Browser"
-msgstr "Navegador de internet"
-
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop "
 msgstr "Área de trabalho "
@@ -971,6 +753,186 @@ msgstr "Área de trabalho "
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Set desktop background and menu and icon behaviour"
 msgstr "Definir o comportamento do segundo plano, menu e ícones"
+
+#~ msgid "Unable to launch xfce4-menueditor: %s"
+#~ msgstr "Não foi possível lançar o xfce4-menueditor: %s"
+
+#~ msgid "Select Icon"
+#~ msgstr "Selecionar ícone"
+
+#~ msgid "Select Menu File"
+#~ msgstr "Escolher arquivo de menu"
+
+#~ msgid "All Files"
+#~ msgstr "Todos os arquivos"
+
+#~ msgid "Image Files"
+#~ msgstr "Arquivo de imagens"
+
+#~ msgid "Menu Files"
+#~ msgstr "Arquivos de Menu"
+
+#~ msgid "Xfce Menu"
+#~ msgstr "Menu Xfce"
+
+#~ msgid "Button"
+#~ msgstr "Botão"
+
+#~ msgid "Button _title:"
+#~ msgstr "_Título do botão:"
+
+#~ msgid "_Show title in button"
+#~ msgstr "Mo_strar título no botão"
+
+#~ msgid "Menu File"
+#~ msgstr "Arquivo de menu"
+
+#~ msgid "Use default _desktop menu file"
+#~ msgstr "Usar arquivo pa_drão de menu da área de trabalho"
+
+#~ msgid "Use _custom menu file:"
+#~ msgstr "Usar arquivo de menu personali_zado:"
+
+#~ msgid "_Edit Menu"
+#~ msgstr "_Editar menu"
+
+#~ msgid "Icons"
+#~ msgstr "Ícones"
+
+#~ msgid "_Button icon:"
+#~ msgstr "Ícone do _botão:"
+
+#~ msgid "Show _icons in menu"
+#~ msgstr "Mostrar _ícones no menu"
+
+#~ msgid "There is already a panel menu registered for this screen"
+#~ msgstr "Já existe um menu de painel registrado para esta tela"
+
+#~ msgid "Edit Menu"
+#~ msgstr "Editar menu"
+
+#~ msgid "Shows a menu containing categories of installed applications"
+#~ msgstr "Mostra um menu contendo categorias de aplicações instaladas"
+
+#~ msgid "Accessories"
+#~ msgstr "Acessórios"
+
+#~ msgid "Common desktop tools and applications"
+#~ msgstr "Aplicativos e ferramentas comuns da área de trabalho"
+
+#~ msgid "Development"
+#~ msgstr "Desenvolvimento"
+
+#~ msgid "Software development tools"
+#~ msgstr "Ferramentas de desenvolvimento de software"
+
+#~ msgid "Education"
+#~ msgstr "Educativo"
+
+#~ msgid "Educational software"
+#~ msgstr "Programas educativos"
+
+#~ msgid "Games"
+#~ msgstr "Jogos"
+
+#~ msgid "Games, puzzles, and other fun software"
+#~ msgstr "Jogos, quebra-cabeça e outros programas divertidos"
+
+#~ msgid "Graphics"
+#~ msgstr "Gráficos"
+
+#~ msgid "Graphics creation and manipulation applications"
+#~ msgstr "Aplicativos de criação e manipulação de gráficos"
+
+#~ msgid "Audio and video players and editors"
+#~ msgstr "Editores e reprodutores de áudio e vídeo"
+
+#~ msgid "Multimedia"
+#~ msgstr "Multimídia"
+
+#~ msgid "Network"
+#~ msgstr "Internet"
+
+#~ msgid "Network applications and utilities"
+#~ msgstr "Utilitários e aplicativos de rede"
+
+#~ msgid "Office"
+#~ msgstr "Escritório"
+
+#~ msgid "Office and productivity applications"
+#~ msgstr "Aplicativos de escritório e produtividade"
+
+#~ msgid "Applications that don't fit into other categories"
+#~ msgstr "Aplicativos que não se encaixam em outras categorias"
+
+#~ msgid "Other"
+#~ msgstr "Outros"
+
+#~ msgid "Science"
+#~ msgstr "Ciências"
+
+#~ msgid "Scientific software"
+#~ msgstr "Programas científicos"
+
+#~ msgid "Screensaver applets"
+#~ msgstr "Miniaplicativos de proteção de tela"
+
+#~ msgid "Screensavers"
+#~ msgstr "Protetores de tela"
+
+#~ msgid "Desktop and system settings applications"
+#~ msgstr "Aplicativos de configurações do sistema e da área de trabalho"
+
+#~ msgid "Settings"
+#~ msgstr "Configurações"
+
+#~ msgid "System"
+#~ msgstr "Sistema"
+
+#~ msgid "System tools and utilities"
+#~ msgstr "Utilitários e ferramentas do sistema"
+
+#~ msgid "About Xfce"
+#~ msgstr "Sobre o Xfce"
+
+#~ msgid "Information about the Xfce Desktop Environment"
+#~ msgstr "Informações sobre o Ambiente da Área de Trabalho do Xfce"
+
+#~ msgid "File Manager"
+#~ msgstr "Gerenciador de Arquivos"
+
+#~ msgid "Thunar file manager"
+#~ msgstr "Gerenciador de arquivos Thunar"
+
+#~ msgid "Help"
+#~ msgstr "Ajuda"
+
+#~ msgid "Help using Xfce"
+#~ msgstr "Ajuda usando o Xfce"
+
+#~ msgid "Log Out"
+#~ msgstr "Sair"
+
+#~ msgid "Log out of the Xfce Desktop"
+#~ msgstr "Sair do Xfce"
+
+#~ msgid "Run Program..."
+#~ msgstr "Executar programa..."
+
+#~ msgid "Run a program"
+#~ msgstr "Executar um programa"
+
+#~ msgid "Terminal"
+#~ msgstr "Terminal"
+
+#~ msgid "Terminal emulator"
+#~ msgstr "Emulador do terminal"
+
+#~ msgid "Browse the web"
+#~ msgstr "Navegar na internet"
+
+#~ msgid "Web Browser"
+#~ msgstr "Navegador de internet"
 
 #~ msgid "%s: Unknown option: %s\n"
 #~ msgstr "%s: Opção desconhecida: %s\n"
@@ -1104,7 +1066,9 @@ msgstr "Definir o comportamento do segundo plano, menu e ícones"
 #~ msgstr "Selecionar uma única imagem como plano de fundo"
 
 #~ msgid "Set desktop background and menu and icon behavior"
-#~ msgstr "Definir o comportamento do segundo plano da área de trabalho, menu e ícones"
+#~ msgstr ""
+#~ "Definir o comportamento do segundo plano da área de trabalho, menu e "
+#~ "ícones"
 
 #~ msgid "Sh_ow application icons in menu"
 #~ msgstr "M_ostrar ícones de aplicativos no menu"
@@ -1113,10 +1077,14 @@ msgstr "Definir o comportamento do segundo plano, menu e ícones"
 #~ msgstr "Mostra ícones de _aplicativos no menu"
 
 #~ msgid "Show _window list menu on desktop middle click"
-#~ msgstr "Mostrar o menu da lista de _janelas ao clicar na área de trabalho com o botão do meio do mouse"
+#~ msgstr ""
+#~ "Mostrar o menu da lista de _janelas ao clicar na área de trabalho com o "
+#~ "botão do meio do mouse"
 
 #~ msgid "Show applications menu on _desktop right click"
-#~ msgstr "Mostrar o menu de aplicativos ao clicar na área _de trabalho com o botão direito"
+#~ msgstr ""
+#~ "Mostrar o menu de aplicativos ao clicar na área _de trabalho com o botão "
+#~ "direito"
 
 #~ msgid "Show s_ticky windows only in active workspace"
 #~ msgstr "Mostrar janelas fixas somen_te no espaço de trabalho atual"
@@ -1138,8 +1106,11 @@ msgstr "Definir o comportamento do segundo plano, menu e ícones"
 #~ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 #~ msgstr "Especifica a cor \"direita\" ou \"inferior\" do degradê"
 
-#~ msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-#~ msgstr "Especifica a cor sólida, ou a cor \"esquerda\" or \"supeior\" do degradê"
+#~ msgid ""
+#~ "Specifies the solid color, or the \"left\" or \"top\" color of the "
+#~ "gradient"
+#~ msgstr ""
+#~ "Especifica a cor sólida, ou a cor \"esquerda\" or \"supeior\" do degradê"
 
 #~ msgid "Specify how the image will be resized to fit the screen"
 #~ msgstr "Especificar como a imagem será redimensionada para caber na tela"
@@ -1147,8 +1118,12 @@ msgstr "Definir o comportamento do segundo plano, menu e ícones"
 #~ msgid "Specify the style of the color drawn behind the backdrop image"
 #~ msgstr "Especificar o estilo da cor desenhada por trás da imagem de fundo"
 
-#~ msgid "Specify the transparency level for the rounded label drawn behind the icon text"
-#~ msgstr "Especificar o nível de transparência para rótulos arredondados desenhados por trás do ícone "
+#~ msgid ""
+#~ "Specify the transparency level for the rounded label drawn behind the "
+#~ "icon text"
+#~ msgstr ""
+#~ "Especificar o nível de transparência para rótulos arredondados desenhados "
+#~ "por trás do ícone "
 
 #~ msgid "St_yle:"
 #~ msgstr "Est_ilo:"
@@ -1285,8 +1260,14 @@ msgstr "Definir o comportamento do segundo plano, menu e ícones"
 #~ msgid "xfce4-menueditor is deprecated"
 #~ msgstr "O editor de menus do xfce 4 está obsoleto"
 
-#~ msgid "Xfce's menu system has been replaced, and xfce4-menueditor is not able to edit the new menu file format.  You may continue and edit an old-style menu file, or quit."
-#~ msgstr "O menu do sistema do Xfce foi substituído e o editor de menus do Xfce 4 não é capaz de editar o novo formato do arquivo. Você pode continuar e editar um arquivo de menu do estilo antigo ou sair."
+#~ msgid ""
+#~ "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
+#~ "edit the new menu file format.  You may continue and edit an old-style "
+#~ "menu file, or quit."
+#~ msgstr ""
+#~ "O menu do sistema do Xfce foi substituído e o editor de menus do Xfce 4 "
+#~ "não é capaz de editar o novo formato do arquivo. Você pode continuar e "
+#~ "editar um arquivo de menu do estilo antigo ou sair."
 
 #~ msgid "Continue"
 #~ msgstr "Continuar"
@@ -1486,11 +1467,13 @@ msgstr "Definir o comportamento do segundo plano, menu e ícones"
 #~ msgid ""
 #~ "Could not save file %s: %s\n"
 #~ "\n"
-#~ "Please choose another location or press cancel in the dialog to discard your changes"
+#~ "Please choose another location or press cancel in the dialog to discard "
+#~ "your changes"
 #~ msgstr ""
 #~ "Não foi possível salvar o arquivo %s: %s\n"
 #~ "\n"
-#~ "Por favor escolha outro local ou pressione cancelar no diálogo para descartar suas alterações"
+#~ "Por favor escolha outro local ou pressione cancelar no diálogo para "
+#~ "descartar suas alterações"
 
 #~ msgid "Button Label|Desktop"
 #~ msgstr "Área de Trabalho"
@@ -1540,11 +1523,32 @@ msgstr "Definir o comportamento do segundo plano, menu e ícones"
 #~ msgid "Unable to start xfdesktop"
 #~ msgstr "Impossível iniciar xfdesktop"
 
-#~ msgid "To ensure that this setting takes effect the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
-#~ msgstr "Para garantir que esta configuração tenha efeito a próxima vez que você iniciar o Xfce, por favor certifique-se de salvar a sua sessão ao sair. Se você não está usando o Gerenciador de Sessão do Xfce (xfce4-session), você precisará editar manualmente o arquivo ~/.config/xfce4/xinitrc. Detalhes estão disponíveis na documentação contida em http://xfce.org/."
+#~ msgid ""
+#~ "To ensure that this setting takes effect the next time you start Xfce, "
+#~ "please be sure to save your session when logging out.  If you are not "
+#~ "using the Xfce Session Manager (xfce4-session), you will need to manually "
+#~ "edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
+#~ "documentation provided on http://xfce.org/."
+#~ msgstr ""
+#~ "Para garantir que esta configuração tenha efeito a próxima vez que você "
+#~ "iniciar o Xfce, por favor certifique-se de salvar a sua sessão ao sair. "
+#~ "Se você não está usando o Gerenciador de Sessão do Xfce (xfce4-session), "
+#~ "você precisará editar manualmente o arquivo ~/.config/xfce4/xinitrc. "
+#~ "Detalhes estão disponíveis na documentação contida em http://xfce.org/."
 
-#~ msgid "To ensure that Xfce does not manage your desktop the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
-#~ msgstr "Para garantir que o Xfce não gerencie sua área de trabalho a próxima vez que você iniciá-lo, por favor certifique-se de salvar a sua sessão ao sair. Se você não está usando o Gerenciador de Sessão do Xfce (xfce4-session), você precisará editar manualmente o arquivo ~/.config/xfce4/xinitrc. Detalhes estão disponíveis na documentação contida em http://xfce.org/."
+#~ msgid ""
+#~ "To ensure that Xfce does not manage your desktop the next time you start "
+#~ "Xfce, please be sure to save your session when logging out.  If you are "
+#~ "not using the Xfce Session Manager (xfce4-session), you will need to "
+#~ "manually edit your ~/.config/xfce4/xinitrc file.  Details are available "
+#~ "in the documentation provided on http://xfce.org/."
+#~ msgstr ""
+#~ "Para garantir que o Xfce não gerencie sua área de trabalho a próxima vez "
+#~ "que você iniciá-lo, por favor certifique-se de salvar a sua sessão ao "
+#~ "sair. Se você não está usando o Gerenciador de Sessão do Xfce (xfce4-"
+#~ "session), você precisará editar manualmente o arquivo ~/.config/xfce4/"
+#~ "xinitrc. Detalhes estão disponíveis na documentação contida em http://"
+#~ "xfce.org/."
 
 #~ msgid "_Do not show this again"
 #~ msgstr "_Não mostrar isto novamente"
@@ -1612,11 +1616,20 @@ msgstr "Definir o comportamento do segundo plano, menu e ícones"
 #~ msgid "Unable to quit session."
 #~ msgstr "Impossível terminar a sessão."
 
-#~ msgid "Quitting the session requires that Xfce's session manager (xfce4-session) is running, but it was not detected.  Please quit Xfce via another means."
-#~ msgstr "Terminar a sessão requer que o gerenciador de sessão do Xfce (xfce4-session) esteja rodando, mas ele não foi detectado. Por favor saia do Xfce de outra forma."
+#~ msgid ""
+#~ "Quitting the session requires that Xfce's session manager (xfce4-session) "
+#~ "is running, but it was not detected.  Please quit Xfce via another means."
+#~ msgstr ""
+#~ "Terminar a sessão requer que o gerenciador de sessão do Xfce (xfce4-"
+#~ "session) esteja rodando, mas ele não foi detectado. Por favor saia do "
+#~ "Xfce de outra forma."
 
-#~ msgid "Quitting the session requires the 'xfce4-session-logout' command, but it could not be found: %s"
-#~ msgstr "Terminar a sessão requer o comando 'xfce4-session-logout', mas ele não foi encontrado: %s"
+#~ msgid ""
+#~ "Quitting the session requires the 'xfce4-session-logout' command, but it "
+#~ "could not be found: %s"
+#~ msgstr ""
+#~ "Terminar a sessão requer o comando 'xfce4-session-logout', mas ele não "
+#~ "foi encontrado: %s"
 
 #~ msgid "Edit Properties"
 #~ msgstr "Editar Propriedades"

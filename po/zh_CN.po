@@ -7,12 +7,11 @@
 # Chris K. Zhang <plutino@gmail.com>, 2009.
 # Aron Xu <aronmalache@163.com>, 2009.
 # Hunt Xu <huntxu@live.cn>, 2009.
-
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-18 16:36+0000\n"
+"POT-Creation-Date: 2010-04-28 23:56+0200\n"
 "PO-Revision-Date: 2009-12-19 01:48+0800\n"
 "Last-Translator: Hunt Xu <huntxu@live.cn>\n"
 "Language-Team: Chinese <xfce-i18n@xfce.org>\n"
@@ -21,90 +20,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
+#, c-format
 msgid "Backdrop list file is not valid"
 msgstr "背景列表文件名无效"
-
-#: ../panel-plugin/desktop-menu-plugin.c:669
-#, c-format
-msgid "Unable to launch xfce4-menueditor: %s"
-msgstr "无法启动 xfce4 菜单编辑器: %s"
-
-#: ../panel-plugin/desktop-menu-plugin.c:692
-msgid "Select Icon"
-msgstr "选择图标"
-
-#: ../panel-plugin/desktop-menu-plugin.c:694
-msgid "Select Menu File"
-msgstr "选择菜单文件"
-
-#: ../panel-plugin/desktop-menu-plugin.c:721
-msgid "All Files"
-msgstr "所有文件"
-
-#: ../panel-plugin/desktop-menu-plugin.c:728
-msgid "Image Files"
-msgstr "图像文件"
-
-#: ../panel-plugin/desktop-menu-plugin.c:731
-msgid "Menu Files"
-msgstr "菜单文件"
-
-#: ../panel-plugin/desktop-menu-plugin.c:756
-#: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
-msgid "Xfce Menu"
-msgstr "Xfce 菜单"
-
-#: ../panel-plugin/desktop-menu-plugin.c:768
-msgid "Button"
-msgstr "按钮"
-
-#: ../panel-plugin/desktop-menu-plugin.c:781
-msgid "Button _title:"
-msgstr "按钮标题(_T)："
-
-#: ../panel-plugin/desktop-menu-plugin.c:794
-msgid "_Show title in button"
-msgstr "在按钮中显示标题(_S)"
-
-#: ../panel-plugin/desktop-menu-plugin.c:801
-msgid "Menu File"
-msgstr "菜单文件"
-
-#: ../panel-plugin/desktop-menu-plugin.c:813
-msgid "Use default _desktop menu file"
-msgstr "使用默认桌面菜单文件(_D)"
-
-#: ../panel-plugin/desktop-menu-plugin.c:822
-msgid "Use _custom menu file:"
-msgstr "使用自定义菜单文件(_C)"
-
-#: ../panel-plugin/desktop-menu-plugin.c:863
-msgid "_Edit Menu"
-msgstr "编辑菜单(_M)"
-
-#: ../panel-plugin/desktop-menu-plugin.c:870
-msgid "Icons"
-msgstr "图标"
-
-#: ../panel-plugin/desktop-menu-plugin.c:882
-msgid "_Button icon:"
-msgstr "按钮图标(_B)："
-
-#: ../panel-plugin/desktop-menu-plugin.c:896
-msgid "Show _icons in menu"
-msgstr "在菜单中显示图标(_I)"
-
-#: ../panel-plugin/desktop-menu-plugin.c:931
-msgid "There is already a panel menu registered for this screen"
-msgstr "这个屏幕已经注册了一个面板菜单"
-
-#: ../panel-plugin/desktop-menu-plugin.c:1046
-msgid "Edit Menu"
-msgstr "编辑菜单"
-
-#: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
-msgid "Shows a menu containing categories of installed applications"
-msgstr "显示包含已安装程序分类目录的菜单"
 
 #. no need to escape markup; it's already done for us
 #: ../settings/main.c:162
@@ -239,69 +157,70 @@ msgstr "桌面设置"
 msgid "Unable to contact settings server"
 msgstr "无法连到设置服务器"
 
-#: ../src/main.c:228
+#: ../src/main.c:236
 msgid "Display version information"
 msgstr "显示版本信息"
 
-#: ../src/main.c:229
+#: ../src/main.c:237
 msgid "Reload all settings, refresh image list"
 msgstr "重新载入全部设置，刷新图像列表"
 
-#: ../src/main.c:230
+#: ../src/main.c:238
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "弹出菜单 (在鼠标当前位置)"
 
-#: ../src/main.c:231
+#: ../src/main.c:239
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "弹出窗口列表 (在鼠标当前位置)"
 
-#: ../src/main.c:232
+#: ../src/main.c:240
 msgid "Cause xfdesktop to quit"
 msgstr "退出 xfdesktop"
 
-#: ../src/main.c:252
+#: ../src/main.c:260
 #, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "无法解析参数: %s\n"
 
-#: ../src/main.c:260
+#: ../src/main.c:268
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "这是 %s 版本 %s， 运行于 Xfce %s。\n"
 
-#: ../src/main.c:262
+#: ../src/main.c:270
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "依 GTK+ %d.%d.%d 编译, 链接到 GTK+ %d.%d.%d。"
 
-#: ../src/main.c:266
+#: ../src/main.c:274
+#, c-format
 msgid "Build options:\n"
 msgstr "编译选项：\n"
 
-#: ../src/main.c:267
+#: ../src/main.c:275
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    桌面菜单：     %s\n"
 
-#: ../src/main.c:269 ../src/main.c:276 ../src/main.c:283
+#: ../src/main.c:277 ../src/main.c:284 ../src/main.c:291
 msgid "enabled"
 msgstr "启用"
 
-#: ../src/main.c:271 ../src/main.c:278 ../src/main.c:285
+#: ../src/main.c:279 ../src/main.c:286 ../src/main.c:293
 msgid "disabled"
 msgstr "禁用"
 
-#: ../src/main.c:274
+#: ../src/main.c:282
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    桌面图标：      %s\n"
 
-#: ../src/main.c:281
+#: ../src/main.c:289
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    桌面文件图标：   %s\n"
 
-#: ../src/main.c:312
+#: ../src/main.c:320
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s 没有运行。\n"
@@ -814,166 +733,6 @@ msgstr "挂载卷(_M)"
 msgid "E_ject Volume"
 msgstr "弹出卷(_J)"
 
-#: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
-msgid "Accessories"
-msgstr "附件"
-
-#: ../modules/menu/directory-data/xfce-accessories.directory.in.h:2
-msgid "Common desktop tools and applications"
-msgstr "通用桌面工具和应用程序"
-
-#: ../modules/menu/directory-data/xfce-development.directory.in.h:1
-msgid "Development"
-msgstr "开发"
-
-#: ../modules/menu/directory-data/xfce-development.directory.in.h:2
-msgid "Software development tools"
-msgstr "软件开发工具"
-
-#: ../modules/menu/directory-data/xfce-education.directory.in.h:1
-msgid "Education"
-msgstr "教育"
-
-#: ../modules/menu/directory-data/xfce-education.directory.in.h:2
-msgid "Educational software"
-msgstr "教育软件"
-
-#: ../modules/menu/directory-data/xfce-games.directory.in.h:1
-msgid "Games"
-msgstr "游戏"
-
-#: ../modules/menu/directory-data/xfce-games.directory.in.h:2
-msgid "Games, puzzles, and other fun software"
-msgstr "游戏，益智和其它有趣软件"
-
-#: ../modules/menu/directory-data/xfce-graphics.directory.in.h:1
-msgid "Graphics"
-msgstr "图形图像"
-
-#: ../modules/menu/directory-data/xfce-graphics.directory.in.h:2
-msgid "Graphics creation and manipulation applications"
-msgstr "图形创建及处理程序"
-
-#: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:1
-msgid "Audio and video players and editors"
-msgstr "音频、视频播放器和编辑器"
-
-#: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:2
-msgid "Multimedia"
-msgstr "多媒体"
-
-#: ../modules/menu/directory-data/xfce-network.directory.in.h:1
-msgid "Network"
-msgstr "网络"
-
-#: ../modules/menu/directory-data/xfce-network.directory.in.h:2
-msgid "Network applications and utilities"
-msgstr "网络应用程序和实用工具"
-
-#: ../modules/menu/directory-data/xfce-office.directory.in.h:1
-msgid "Office"
-msgstr "办公"
-
-#: ../modules/menu/directory-data/xfce-office.directory.in.h:2
-msgid "Office and productivity applications"
-msgstr "办公及创作应用程序"
-
-#: ../modules/menu/directory-data/xfce-other.directory.in.h:1
-msgid "Applications that don't fit into other categories"
-msgstr "未分类应用程序"
-
-#: ../modules/menu/directory-data/xfce-other.directory.in.h:2
-msgid "Other"
-msgstr "其它"
-
-#: ../modules/menu/directory-data/xfce-science.directory.in.h:1
-msgid "Science"
-msgstr "科学"
-
-#: ../modules/menu/directory-data/xfce-science.directory.in.h:2
-msgid "Scientific software"
-msgstr "科学软件"
-
-#: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
-msgid "Screensaver applets"
-msgstr "屏保插件"
-
-#: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:2
-msgid "Screensavers"
-msgstr "屏保"
-
-#: ../modules/menu/directory-data/xfce-settings.directory.in.h:1
-msgid "Desktop and system settings applications"
-msgstr "桌面和系统设置应用程序"
-
-#: ../modules/menu/directory-data/xfce-settings.directory.in.h:2
-msgid "Settings"
-msgstr "设置"
-
-#: ../modules/menu/directory-data/xfce-system.directory.in.h:1
-msgid "System"
-msgstr "系统"
-
-#: ../modules/menu/directory-data/xfce-system.directory.in.h:2
-msgid "System tools and utilities"
-msgstr "系统工具和实用程序"
-
-#: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:1
-msgid "About Xfce"
-msgstr "关于 Xfce"
-
-#: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:2
-msgid "Information about the Xfce Desktop Environment"
-msgstr "关于 Xfce 桌面环境的信息"
-
-#: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:1
-msgid "File Manager"
-msgstr "文件管理器"
-
-#: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:2
-msgid "Thunar file manager"
-msgstr "Thunar 文件管理器"
-
-#: ../modules/menu/menu-data/xfce4-help.desktop.in.h:1
-msgid "Help"
-msgstr "帮助"
-
-#: ../modules/menu/menu-data/xfce4-help.desktop.in.h:2
-msgid "Help using Xfce"
-msgstr "帮助使用 Xfce"
-
-#: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:1
-msgid "Log Out"
-msgstr "注销"
-
-#: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:2
-msgid "Log out of the Xfce Desktop"
-msgstr "从 Xfce 桌面注销"
-
-#: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:1
-msgid "Run Program..."
-msgstr "运行程序..."
-
-#: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:2
-msgid "Run a program"
-msgstr "启动程序"
-
-#: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:1
-msgid "Terminal"
-msgstr "终端"
-
-#: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:2
-msgid "Terminal emulator"
-msgstr "终端模拟器"
-
-#: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:1
-msgid "Browse the web"
-msgstr "浏览网页"
-
-#: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:2
-msgid "Web Browser"
-msgstr "网络浏览器"
-
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop "
 msgstr "桌面"
@@ -981,6 +740,186 @@ msgstr "桌面"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Set desktop background and menu and icon behaviour"
 msgstr "设置桌面背景，菜单，及图标属性"
+
+#~ msgid "Unable to launch xfce4-menueditor: %s"
+#~ msgstr "无法启动 xfce4 菜单编辑器: %s"
+
+#~ msgid "Select Icon"
+#~ msgstr "选择图标"
+
+#~ msgid "Select Menu File"
+#~ msgstr "选择菜单文件"
+
+#~ msgid "All Files"
+#~ msgstr "所有文件"
+
+#~ msgid "Image Files"
+#~ msgstr "图像文件"
+
+#~ msgid "Menu Files"
+#~ msgstr "菜单文件"
+
+#~ msgid "Xfce Menu"
+#~ msgstr "Xfce 菜单"
+
+#~ msgid "Button"
+#~ msgstr "按钮"
+
+#~ msgid "Button _title:"
+#~ msgstr "按钮标题(_T)："
+
+#~ msgid "_Show title in button"
+#~ msgstr "在按钮中显示标题(_S)"
+
+#~ msgid "Menu File"
+#~ msgstr "菜单文件"
+
+#~ msgid "Use default _desktop menu file"
+#~ msgstr "使用默认桌面菜单文件(_D)"
+
+#~ msgid "Use _custom menu file:"
+#~ msgstr "使用自定义菜单文件(_C)"
+
+#~ msgid "_Edit Menu"
+#~ msgstr "编辑菜单(_M)"
+
+#~ msgid "Icons"
+#~ msgstr "图标"
+
+#~ msgid "_Button icon:"
+#~ msgstr "按钮图标(_B)："
+
+#~ msgid "Show _icons in menu"
+#~ msgstr "在菜单中显示图标(_I)"
+
+#~ msgid "There is already a panel menu registered for this screen"
+#~ msgstr "这个屏幕已经注册了一个面板菜单"
+
+#~ msgid "Edit Menu"
+#~ msgstr "编辑菜单"
+
+#~ msgid "Shows a menu containing categories of installed applications"
+#~ msgstr "显示包含已安装程序分类目录的菜单"
+
+#~ msgid "Accessories"
+#~ msgstr "附件"
+
+#~ msgid "Common desktop tools and applications"
+#~ msgstr "通用桌面工具和应用程序"
+
+#~ msgid "Development"
+#~ msgstr "开发"
+
+#~ msgid "Software development tools"
+#~ msgstr "软件开发工具"
+
+#~ msgid "Education"
+#~ msgstr "教育"
+
+#~ msgid "Educational software"
+#~ msgstr "教育软件"
+
+#~ msgid "Games"
+#~ msgstr "游戏"
+
+#~ msgid "Games, puzzles, and other fun software"
+#~ msgstr "游戏，益智和其它有趣软件"
+
+#~ msgid "Graphics"
+#~ msgstr "图形图像"
+
+#~ msgid "Graphics creation and manipulation applications"
+#~ msgstr "图形创建及处理程序"
+
+#~ msgid "Audio and video players and editors"
+#~ msgstr "音频、视频播放器和编辑器"
+
+#~ msgid "Multimedia"
+#~ msgstr "多媒体"
+
+#~ msgid "Network"
+#~ msgstr "网络"
+
+#~ msgid "Network applications and utilities"
+#~ msgstr "网络应用程序和实用工具"
+
+#~ msgid "Office"
+#~ msgstr "办公"
+
+#~ msgid "Office and productivity applications"
+#~ msgstr "办公及创作应用程序"
+
+#~ msgid "Applications that don't fit into other categories"
+#~ msgstr "未分类应用程序"
+
+#~ msgid "Other"
+#~ msgstr "其它"
+
+#~ msgid "Science"
+#~ msgstr "科学"
+
+#~ msgid "Scientific software"
+#~ msgstr "科学软件"
+
+#~ msgid "Screensaver applets"
+#~ msgstr "屏保插件"
+
+#~ msgid "Screensavers"
+#~ msgstr "屏保"
+
+#~ msgid "Desktop and system settings applications"
+#~ msgstr "桌面和系统设置应用程序"
+
+#~ msgid "Settings"
+#~ msgstr "设置"
+
+#~ msgid "System"
+#~ msgstr "系统"
+
+#~ msgid "System tools and utilities"
+#~ msgstr "系统工具和实用程序"
+
+#~ msgid "About Xfce"
+#~ msgstr "关于 Xfce"
+
+#~ msgid "Information about the Xfce Desktop Environment"
+#~ msgstr "关于 Xfce 桌面环境的信息"
+
+#~ msgid "File Manager"
+#~ msgstr "文件管理器"
+
+#~ msgid "Thunar file manager"
+#~ msgstr "Thunar 文件管理器"
+
+#~ msgid "Help"
+#~ msgstr "帮助"
+
+#~ msgid "Help using Xfce"
+#~ msgstr "帮助使用 Xfce"
+
+#~ msgid "Log Out"
+#~ msgstr "注销"
+
+#~ msgid "Log out of the Xfce Desktop"
+#~ msgstr "从 Xfce 桌面注销"
+
+#~ msgid "Run Program..."
+#~ msgstr "运行程序..."
+
+#~ msgid "Run a program"
+#~ msgstr "启动程序"
+
+#~ msgid "Terminal"
+#~ msgstr "终端"
+
+#~ msgid "Terminal emulator"
+#~ msgstr "终端模拟器"
+
+#~ msgid "Browse the web"
+#~ msgstr "浏览网页"
+
+#~ msgid "Web Browser"
+#~ msgstr "网络浏览器"
 
 #~ msgid "%s: Unknown option: %s\n"
 #~ msgstr "%s：未知选项： %s\n"

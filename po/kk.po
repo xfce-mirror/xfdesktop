@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: trunk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-19 18:05+0100\n"
+"POT-Creation-Date: 2010-04-28 23:56+0200\n"
 "PO-Revision-Date: 2010-03-18 17:03+0600\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <kk_KZ@googlegroups.com>\n"
@@ -16,93 +16,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 
-#: ../common/xfdesktop-common.c:96
-#: ../common/xfdesktop-common.c:200
+#: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
 #, c-format
 msgid "Backdrop list file is not valid"
 msgstr "Фон суреттер тізімі бар файлы қате"
-
-#: ../panel-plugin/desktop-menu-plugin.c:671
-#, c-format
-msgid "Unable to launch xfce4-menueditor: %s"
-msgstr "Xfce4-menueditor жөнелту қатесі: %s"
-
-#: ../panel-plugin/desktop-menu-plugin.c:694
-msgid "Select Icon"
-msgstr "Таңбашаны таңдаңыз"
-
-#: ../panel-plugin/desktop-menu-plugin.c:696
-msgid "Select Menu File"
-msgstr "Мәзір файлын таңдаңыз"
-
-#: ../panel-plugin/desktop-menu-plugin.c:723
-msgid "All Files"
-msgstr "Барлық файлдар"
-
-#: ../panel-plugin/desktop-menu-plugin.c:730
-msgid "Image Files"
-msgstr "Сурет файлдары"
-
-#: ../panel-plugin/desktop-menu-plugin.c:733
-msgid "Menu Files"
-msgstr "Мәзір файлдары"
-
-#: ../panel-plugin/desktop-menu-plugin.c:758
-#: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
-msgid "Xfce Menu"
-msgstr "Xfce мәзірі"
-
-#: ../panel-plugin/desktop-menu-plugin.c:770
-msgid "Button"
-msgstr "Батырма"
-
-#: ../panel-plugin/desktop-menu-plugin.c:783
-msgid "Button _title:"
-msgstr "Батырма мә_тіні:"
-
-#: ../panel-plugin/desktop-menu-plugin.c:796
-msgid "_Show title in button"
-msgstr "Батырмада мәтінді көр_сету"
-
-#: ../panel-plugin/desktop-menu-plugin.c:803
-msgid "Menu File"
-msgstr "Мәзір файлы"
-
-#: ../panel-plugin/desktop-menu-plugin.c:815
-msgid "Use default _desktop menu file"
-msgstr "Бас_тапқы жұмыс үстел мәзір файлын қолдану"
-
-#: ../panel-plugin/desktop-menu-plugin.c:824
-msgid "Use _custom menu file:"
-msgstr "Ба_сқа мәзір файлын қолдану:"
-
-#: ../panel-plugin/desktop-menu-plugin.c:865
-msgid "_Edit Menu"
-msgstr "Мәзірді түз_ету"
-
-#: ../panel-plugin/desktop-menu-plugin.c:872
-msgid "Icons"
-msgstr "Таңбашалар"
-
-#: ../panel-plugin/desktop-menu-plugin.c:884
-msgid "_Button icon:"
-msgstr "_Батырма таңбашасы:"
-
-#: ../panel-plugin/desktop-menu-plugin.c:898
-msgid "Show _icons in menu"
-msgstr "Мәзірде т_аңбашаларды көрсету"
-
-#: ../panel-plugin/desktop-menu-plugin.c:933
-msgid "There is already a panel menu registered for this screen"
-msgstr "Бұл сессия үшін тіркелген панель мәзірі бар болып тұр"
-
-#: ../panel-plugin/desktop-menu-plugin.c:1048
-msgid "Edit Menu"
-msgstr "Мәзірді түзету"
-
-#: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
-msgid "Shows a menu containing categories of installed applications"
-msgstr "Орнатылған қолданбаларды топтарға бөлінген мәзірді көрсету"
 
 #. no need to escape markup; it's already done for us
 #: ../settings/main.c:162
@@ -114,8 +31,7 @@ msgstr ""
 "%s\n"
 "<i>Өлшемі: %dx%d</i>"
 
-#: ../settings/main.c:272
-#: ../src/xfdesktop-special-file-icon.c:259
+#: ../settings/main.c:272 ../src/xfdesktop-special-file-icon.c:259
 msgid "Home"
 msgstr "Үй бумасы"
 
@@ -136,8 +52,7 @@ msgstr "Ауыстырмалы құрылғылар"
 msgid "Cannot create backdrop list \"%s\""
 msgstr "\"%s\" фон сурет тізімі файлын жасау мүмкін емес"
 
-#: ../settings/main.c:462
-#: ../settings/main.c:779
+#: ../settings/main.c:462 ../settings/main.c:779
 msgid "Backdrop List Error"
 msgstr "Фон суреттер тізімі файлы қате"
 
@@ -147,8 +62,10 @@ msgstr "Фон суреттер тізімі файлын жасау/жүкте�
 
 #: ../settings/main.c:511
 #, c-format
-msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr "\"%s\" фон суреттер тізімі бар дұрыс файл емес. Оны үстінен жазамыз ба?"
+msgid ""
+"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr ""
+"\"%s\" фон суреттер тізімі бар дұрыс файл емес. Оны үстінен жазамыз ба?"
 
 #: ../settings/main.c:516
 msgid "Invalid List File"
@@ -283,15 +200,11 @@ msgstr "Жинау опциялары:\n"
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Жұмыс үстел мәзірі:        %s\n"
 
-#: ../src/main.c:277
-#: ../src/main.c:284
-#: ../src/main.c:291
+#: ../src/main.c:277 ../src/main.c:284 ../src/main.c:291
 msgid "enabled"
 msgstr "қосулы"
 
-#: ../src/main.c:279
-#: ../src/main.c:286
-#: ../src/main.c:293
+#: ../src/main.c:279 ../src/main.c:286 ../src/main.c:293
 msgid "disabled"
 msgstr "сөндірулі"
 
@@ -333,8 +246,7 @@ msgstr "Жұмыс орны %d"
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Жұмыс орны %d</i>"
 
-#: ../src/windowlist.c:370
-#: ../src/windowlist.c:373
+#: ../src/windowlist.c:370 ../src/windowlist.c:373
 msgid "_Add Workspace"
 msgstr "_Жұмыс орнын қосу"
 
@@ -363,8 +275,10 @@ msgstr "Жұмыс үстелі қатесі"
 
 #: ../src/xfdesktop-file-icon-manager.c:479
 #, c-format
-msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr "Xfdesktop жұмыс үстел құрамасын сақтау үшін \"%s\" бумасын жасай алмады:"
+msgid ""
+"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr ""
+"Xfdesktop жұмыс үстел құрамасын сақтау үшін \"%s\" бумасын жасай алмады:"
 
 #: ../src/xfdesktop-file-icon-manager.c:481
 #: ../src/xfdesktop-file-icon-manager.c:492
@@ -374,8 +288,12 @@ msgstr "Буманы жасау сәтсіз аяқталды"
 
 #: ../src/xfdesktop-file-icon-manager.c:490
 #, c-format
-msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
-msgstr "Xfdesktop жұмыс үстел құрамасын сақтау үшін \"%s\" қолдана алмайды - ол бума емес."
+msgid ""
+"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
+"folder."
+msgstr ""
+"Xfdesktop жұмыс үстел құрамасын сақтау үшін \"%s\" қолдана алмайды - ол бума "
+"емес."
 
 #: ../src/xfdesktop-file-icon-manager.c:494
 msgid "Please delete or rename the file."
@@ -402,8 +320,7 @@ msgstr "Атын ауыстыру"
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "\"%s\" өшіруді шынымен қалайсыз ба?"
 
-#: ../src/xfdesktop-file-icon-manager.c:680
-#: ../src/xfdesktop-file-utils.c:56
+#: ../src/xfdesktop-file-icon-manager.c:680 ../src/xfdesktop-file-utils.c:56
 msgid "Question"
 msgstr "Сұрақ"
 
@@ -423,8 +340,7 @@ msgstr "Бірнеше файлды өшіру"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:922
-#: ../src/xfdesktop-file-icon-manager.c:1683
-#: ../src/xfdesktop-file-icon.c:141
+#: ../src/xfdesktop-file-icon-manager.c:1683 ../src/xfdesktop-file-icon.c:141
 #: ../src/xfdesktop-file-utils.c:363
 #, c-format
 msgid "Unable to launch \"%s\":"
@@ -433,8 +349,7 @@ msgstr "\"%s\" жөнелту қатесі:"
 #: ../src/xfdesktop-file-icon-manager.c:924
 #: ../src/xfdesktop-file-icon-manager.c:984
 #: ../src/xfdesktop-file-icon-manager.c:1287
-#: ../src/xfdesktop-file-icon-manager.c:1684
-#: ../src/xfdesktop-file-icon.c:143
+#: ../src/xfdesktop-file-icon-manager.c:1684 ../src/xfdesktop-file-icon.c:143
 #: ../src/xfdesktop-file-utils.c:366
 msgid "Launch Error"
 msgstr "Жөнелту қатесі"
@@ -443,10 +358,13 @@ msgstr "Жөнелту қатесі"
 msgid "The application chooser could not be opened."
 msgstr "Қолданбаларды таңдаушыны ашу мүмкін емес."
 
-#: ../src/xfdesktop-file-icon-manager.c:986
-#: ../src/xfdesktop-file-utils.c:368
-msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
-msgstr "Бұл мүмкіндік бар болып тұрған файл басқарушы қызметін талап етеді (Thunar ұсынатын қызмет сияқты)."
+#: ../src/xfdesktop-file-icon-manager.c:986 ../src/xfdesktop-file-utils.c:368
+msgid ""
+"This feature requires a file manager service present (such as that supplied "
+"by Thunar)."
+msgstr ""
+"Бұл мүмкіндік бар болып тұрған файл басқарушы қызметін талап етеді (Thunar "
+"ұсынатын қызмет сияқты)."
 
 #: ../src/xfdesktop-file-icon-manager.c:1182
 #, c-format
@@ -464,8 +382,12 @@ msgid "Unable to create folder named \"%s\":"
 msgstr "\"%s\" атымен буманы жасау мүмкін емес:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1289
-msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
-msgstr "\"exo-desktop-item-edit\" жөнелту қатесі, ол жұмыс үстелінде жөнелткіштерді мен сілтемелерді жасау үшін керек."
+msgid ""
+"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
+"edit launchers and links on the desktop."
+msgstr ""
+"\"exo-desktop-item-edit\" жөнелту қатесі, ол жұмыс үстелінде жөнелткіштерді "
+"мен сілтемелерді жасау үшін керек."
 
 #: ../src/xfdesktop-file-icon-manager.c:1324
 msgid "Create New Folder"
@@ -521,8 +443,7 @@ msgid "_Open in New Window"
 msgstr "_Жаңа терезеде ашу"
 
 #: ../src/xfdesktop-file-icon-manager.c:1768
-#: ../src/xfdesktop-special-file-icon.c:637
-#: ../src/xfdesktop-volume-icon.c:565
+#: ../src/xfdesktop-special-file-icon.c:637 ../src/xfdesktop-volume-icon.c:565
 msgid "_Open"
 msgstr "А_шу"
 
@@ -633,8 +554,7 @@ msgstr "Сілтеме мақсаты:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:253
 #: ../src/xfdesktop-file-properties-dialog.c:415
-#: ../src/xfdesktop-volume-icon.c:480
-#: ../src/xfdesktop-volume-icon.c:486
+#: ../src/xfdesktop-volume-icon.c:480 ../src/xfdesktop-volume-icon.c:486
 msgid "(unknown)"
 msgstr "(белгісіз)"
 
@@ -754,8 +674,12 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "Xfce қоқыс шелегі қызметімен байланыс орнату мүмкін емес."
 
 #: ../src/xfdesktop-special-file-icon.c:522
-msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
-msgstr "Thunar сияқты, Xfce қоқыс шелегі қызметіне қолдауы бар файл басқарушысы орнатылғанына көз жеткізіңіз."
+msgid ""
+"Make sure you have a file manager installed that supports the Xfce Trash "
+"service, such as Thunar."
+msgstr ""
+"Thunar сияқты, Xfce қоқыс шелегі қызметіне қолдауы бар файл басқарушысы "
+"орнатылғанына көз жеткізіңіз."
 
 #: ../src/xfdesktop-special-file-icon.c:655
 msgid "_Empty Trash"
@@ -816,166 +740,6 @@ msgstr "_Бөлімді тіркеу"
 msgid "E_ject Volume"
 msgstr "_Бөлімді шығару"
 
-#: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
-msgid "Accessories"
-msgstr "Қалыпты"
-
-#: ../modules/menu/directory-data/xfce-accessories.directory.in.h:2
-msgid "Common desktop tools and applications"
-msgstr "Жалпы пайдалы саймадар мен қолданбалар"
-
-#: ../modules/menu/directory-data/xfce-development.directory.in.h:1
-msgid "Development"
-msgstr "Өндіру"
-
-#: ../modules/menu/directory-data/xfce-development.directory.in.h:2
-msgid "Software development tools"
-msgstr "Бағдарламаларды өндіру саймандары"
-
-#: ../modules/menu/directory-data/xfce-education.directory.in.h:1
-msgid "Education"
-msgstr "Білім алу"
-
-#: ../modules/menu/directory-data/xfce-education.directory.in.h:2
-msgid "Educational software"
-msgstr "Білім алу, оқу қолданбалары"
-
-#: ../modules/menu/directory-data/xfce-games.directory.in.h:1
-msgid "Games"
-msgstr "Ойындар"
-
-#: ../modules/menu/directory-data/xfce-games.directory.in.h:2
-msgid "Games, puzzles, and other fun software"
-msgstr "Ойндар және басқа қызықты қолданбалар"
-
-#: ../modules/menu/directory-data/xfce-graphics.directory.in.h:1
-msgid "Graphics"
-msgstr "Бейнелеу"
-
-#: ../modules/menu/directory-data/xfce-graphics.directory.in.h:2
-msgid "Graphics creation and manipulation applications"
-msgstr "Суреттерді салу және өндеу қолданбалары"
-
-#: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:1
-msgid "Audio and video players and editors"
-msgstr "Аудио және видео плеерлер мен түзеткіштері"
-
-#: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:2
-msgid "Multimedia"
-msgstr "Мультимедиа"
-
-#: ../modules/menu/directory-data/xfce-network.directory.in.h:1
-msgid "Network"
-msgstr "Желілік"
-
-#: ../modules/menu/directory-data/xfce-network.directory.in.h:2
-msgid "Network applications and utilities"
-msgstr "Желілік қолданбалар мен утилиттер"
-
-#: ../modules/menu/directory-data/xfce-office.directory.in.h:1
-msgid "Office"
-msgstr "Кеңселік"
-
-#: ../modules/menu/directory-data/xfce-office.directory.in.h:2
-msgid "Office and productivity applications"
-msgstr "Кеңселік қолданбалар"
-
-#: ../modules/menu/directory-data/xfce-other.directory.in.h:1
-msgid "Applications that don't fit into other categories"
-msgstr "Ешқандай тарапқа жатпайтын қолданбалар"
-
-#: ../modules/menu/directory-data/xfce-other.directory.in.h:2
-msgid "Other"
-msgstr "Басқа"
-
-#: ../modules/menu/directory-data/xfce-science.directory.in.h:1
-msgid "Science"
-msgstr "Ғылым"
-
-#: ../modules/menu/directory-data/xfce-science.directory.in.h:2
-msgid "Scientific software"
-msgstr "Ғылыми қолданбалар"
-
-#: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
-msgid "Screensaver applets"
-msgstr "Скринсейвер апплеттері"
-
-#: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:2
-msgid "Screensavers"
-msgstr "Скринсейверлер"
-
-#: ../modules/menu/directory-data/xfce-settings.directory.in.h:1
-msgid "Desktop and system settings applications"
-msgstr "Жұмыс үстел мен жүйе баптаулар қолданбалары"
-
-#: ../modules/menu/directory-data/xfce-settings.directory.in.h:2
-msgid "Settings"
-msgstr "Баптаулар"
-
-#: ../modules/menu/directory-data/xfce-system.directory.in.h:1
-msgid "System"
-msgstr "Жүйе"
-
-#: ../modules/menu/directory-data/xfce-system.directory.in.h:2
-msgid "System tools and utilities"
-msgstr "Жүйелік саймандар мен утилиттер"
-
-#: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:1
-msgid "About Xfce"
-msgstr "Xfce туралы"
-
-#: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:2
-msgid "Information about the Xfce Desktop Environment"
-msgstr "Xfce жұмыс үстел ортасы туралы ақпарат"
-
-#: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:1
-msgid "File Manager"
-msgstr "Файлдар басқарушысы"
-
-#: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:2
-msgid "Thunar file manager"
-msgstr "Thunar файлдар басқарушысы"
-
-#: ../modules/menu/menu-data/xfce4-help.desktop.in.h:1
-msgid "Help"
-msgstr "Көмек"
-
-#: ../modules/menu/menu-data/xfce4-help.desktop.in.h:2
-msgid "Help using Xfce"
-msgstr "Xfce қолдану көмегі"
-
-#: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:1
-msgid "Log Out"
-msgstr "Шығу"
-
-#: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:2
-msgid "Log out of the Xfce Desktop"
-msgstr "Xfce жұмыс үстелінен шығу"
-
-#: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:1
-msgid "Run Program..."
-msgstr "Бағдарламаны жіберу..."
-
-#: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:2
-msgid "Run a program"
-msgstr "Бағдарламаны жіберу"
-
-#: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:1
-msgid "Terminal"
-msgstr "Терминал"
-
-#: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:2
-msgid "Terminal emulator"
-msgstr "Терминал эмуляторы"
-
-#: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:1
-msgid "Browse the web"
-msgstr "Интернетті шолу"
-
-#: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:2
-msgid "Web Browser"
-msgstr "Веб браузері"
-
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop "
 msgstr "Жұмыс үстелі"
@@ -983,6 +747,186 @@ msgstr "Жұмыс үстелі"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Set desktop background and menu and icon behaviour"
 msgstr "Жұмыс үстел суреті, мәзір мен таңбашалардың әрекеттерін баптау"
+
+#~ msgid "Unable to launch xfce4-menueditor: %s"
+#~ msgstr "Xfce4-menueditor жөнелту қатесі: %s"
+
+#~ msgid "Select Icon"
+#~ msgstr "Таңбашаны таңдаңыз"
+
+#~ msgid "Select Menu File"
+#~ msgstr "Мәзір файлын таңдаңыз"
+
+#~ msgid "All Files"
+#~ msgstr "Барлық файлдар"
+
+#~ msgid "Image Files"
+#~ msgstr "Сурет файлдары"
+
+#~ msgid "Menu Files"
+#~ msgstr "Мәзір файлдары"
+
+#~ msgid "Xfce Menu"
+#~ msgstr "Xfce мәзірі"
+
+#~ msgid "Button"
+#~ msgstr "Батырма"
+
+#~ msgid "Button _title:"
+#~ msgstr "Батырма мә_тіні:"
+
+#~ msgid "_Show title in button"
+#~ msgstr "Батырмада мәтінді көр_сету"
+
+#~ msgid "Menu File"
+#~ msgstr "Мәзір файлы"
+
+#~ msgid "Use default _desktop menu file"
+#~ msgstr "Бас_тапқы жұмыс үстел мәзір файлын қолдану"
+
+#~ msgid "Use _custom menu file:"
+#~ msgstr "Ба_сқа мәзір файлын қолдану:"
+
+#~ msgid "_Edit Menu"
+#~ msgstr "Мәзірді түз_ету"
+
+#~ msgid "Icons"
+#~ msgstr "Таңбашалар"
+
+#~ msgid "_Button icon:"
+#~ msgstr "_Батырма таңбашасы:"
+
+#~ msgid "Show _icons in menu"
+#~ msgstr "Мәзірде т_аңбашаларды көрсету"
+
+#~ msgid "There is already a panel menu registered for this screen"
+#~ msgstr "Бұл сессия үшін тіркелген панель мәзірі бар болып тұр"
+
+#~ msgid "Edit Menu"
+#~ msgstr "Мәзірді түзету"
+
+#~ msgid "Shows a menu containing categories of installed applications"
+#~ msgstr "Орнатылған қолданбаларды топтарға бөлінген мәзірді көрсету"
+
+#~ msgid "Accessories"
+#~ msgstr "Қалыпты"
+
+#~ msgid "Common desktop tools and applications"
+#~ msgstr "Жалпы пайдалы саймадар мен қолданбалар"
+
+#~ msgid "Development"
+#~ msgstr "Өндіру"
+
+#~ msgid "Software development tools"
+#~ msgstr "Бағдарламаларды өндіру саймандары"
+
+#~ msgid "Education"
+#~ msgstr "Білім алу"
+
+#~ msgid "Educational software"
+#~ msgstr "Білім алу, оқу қолданбалары"
+
+#~ msgid "Games"
+#~ msgstr "Ойындар"
+
+#~ msgid "Games, puzzles, and other fun software"
+#~ msgstr "Ойндар және басқа қызықты қолданбалар"
+
+#~ msgid "Graphics"
+#~ msgstr "Бейнелеу"
+
+#~ msgid "Graphics creation and manipulation applications"
+#~ msgstr "Суреттерді салу және өндеу қолданбалары"
+
+#~ msgid "Audio and video players and editors"
+#~ msgstr "Аудио және видео плеерлер мен түзеткіштері"
+
+#~ msgid "Multimedia"
+#~ msgstr "Мультимедиа"
+
+#~ msgid "Network"
+#~ msgstr "Желілік"
+
+#~ msgid "Network applications and utilities"
+#~ msgstr "Желілік қолданбалар мен утилиттер"
+
+#~ msgid "Office"
+#~ msgstr "Кеңселік"
+
+#~ msgid "Office and productivity applications"
+#~ msgstr "Кеңселік қолданбалар"
+
+#~ msgid "Applications that don't fit into other categories"
+#~ msgstr "Ешқандай тарапқа жатпайтын қолданбалар"
+
+#~ msgid "Other"
+#~ msgstr "Басқа"
+
+#~ msgid "Science"
+#~ msgstr "Ғылым"
+
+#~ msgid "Scientific software"
+#~ msgstr "Ғылыми қолданбалар"
+
+#~ msgid "Screensaver applets"
+#~ msgstr "Скринсейвер апплеттері"
+
+#~ msgid "Screensavers"
+#~ msgstr "Скринсейверлер"
+
+#~ msgid "Desktop and system settings applications"
+#~ msgstr "Жұмыс үстел мен жүйе баптаулар қолданбалары"
+
+#~ msgid "Settings"
+#~ msgstr "Баптаулар"
+
+#~ msgid "System"
+#~ msgstr "Жүйе"
+
+#~ msgid "System tools and utilities"
+#~ msgstr "Жүйелік саймандар мен утилиттер"
+
+#~ msgid "About Xfce"
+#~ msgstr "Xfce туралы"
+
+#~ msgid "Information about the Xfce Desktop Environment"
+#~ msgstr "Xfce жұмыс үстел ортасы туралы ақпарат"
+
+#~ msgid "File Manager"
+#~ msgstr "Файлдар басқарушысы"
+
+#~ msgid "Thunar file manager"
+#~ msgstr "Thunar файлдар басқарушысы"
+
+#~ msgid "Help"
+#~ msgstr "Көмек"
+
+#~ msgid "Help using Xfce"
+#~ msgstr "Xfce қолдану көмегі"
+
+#~ msgid "Log Out"
+#~ msgstr "Шығу"
+
+#~ msgid "Log out of the Xfce Desktop"
+#~ msgstr "Xfce жұмыс үстелінен шығу"
+
+#~ msgid "Run Program..."
+#~ msgstr "Бағдарламаны жіберу..."
+
+#~ msgid "Run a program"
+#~ msgstr "Бағдарламаны жіберу"
+
+#~ msgid "Terminal"
+#~ msgstr "Терминал"
+
+#~ msgid "Terminal emulator"
+#~ msgstr "Терминал эмуляторы"
+
+#~ msgid "Browse the web"
+#~ msgstr "Интернетті шолу"
+
+#~ msgid "Web Browser"
+#~ msgstr "Веб браузері"
 
 #~ msgid "%s: Unknown option: %s\n"
 #~ msgstr "%s: Белгісіз опция: %s\n"

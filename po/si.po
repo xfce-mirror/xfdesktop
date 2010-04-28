@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-16 06:05+0100\n"
+"POT-Creation-Date: 2010-04-28 23:56+0200\n"
 "PO-Revision-Date: 2009-08-22 13:56+0530\n"
 "Last-Translator: Danishka Navin <danishka@gmail.com>\n"
 "Language-Team: Sinhalese <danishka@gmail.com>\n"
@@ -61,7 +61,8 @@ msgstr "තැනීම/ප්‍රවේශය පසුතිර ලැයි
 
 #: ../settings/main.c:511
 #, c-format
-msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgid ""
+"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
 msgstr " \"%s\" ගොනුව වලංගු පසුතිර ලැයිස්තු ගොනුවක් නොවේ. ඔබට එය මත ලිවීමට අවශ්‍යද?"
 
 #: ../settings/main.c:516
@@ -272,7 +273,8 @@ msgstr "වැඩතල දෝෂය"
 
 #: ../src/xfdesktop-file-icon-manager.c:479
 #, c-format
-msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgid ""
+"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr "පසුතල අයිතම ගබඩා කිරීමට \"%s\" බහලුම සෑදීමට Xfdesktop අසමත් විය:"
 
 #: ../src/xfdesktop-file-icon-manager.c:481
@@ -283,8 +285,11 @@ msgstr "බහලුමක් සෑදීම දෝශ සහගත විය"
 
 #: ../src/xfdesktop-file-icon-manager.c:490
 #, c-format
-msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
-msgstr "\"%s\"  බහලුමක් නොවන බැවින් ඩෙස්ක්ටොප් අයිතම දැරීමට භාවිතාකිරීමට  Xfdesktop අසමත් විය."
+msgid ""
+"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
+"folder."
+msgstr ""
+"\"%s\"  බහලුමක් නොවන බැවින් ඩෙස්ක්ටොප් අයිතම දැරීමට භාවිතාකිරීමට  Xfdesktop අසමත් විය."
 
 #: ../src/xfdesktop-file-icon-manager.c:494
 msgid "Please delete or rename the file."
@@ -350,7 +355,9 @@ msgid "The application chooser could not be opened."
 msgstr "යෙදුම් තෝරනය විවෘත කළ නොහැකි විය."
 
 #: ../src/xfdesktop-file-icon-manager.c:986 ../src/xfdesktop-file-utils.c:368
-msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
+msgid ""
+"This feature requires a file manager service present (such as that supplied "
+"by Thunar)."
 msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:1182
@@ -369,8 +376,12 @@ msgid "Unable to create folder named \"%s\":"
 msgstr "\"%s\" නමින් ‍බහලුම තැනීම අසමත්:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1289
-msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
-msgstr "ඩෙස්ක්ටොප්හි ආරම්භක සහ සබැඳියන් තැනීම සහ සංස්කරණයට අවශ්‍ය  \"exo-desktop-item-edit\" දියත් කිරීමට අසමර්ථ විය."
+msgid ""
+"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
+"edit launchers and links on the desktop."
+msgstr ""
+"ඩෙස්ක්ටොප්හි ආරම්භක සහ සබැඳියන් තැනීම සහ සංස්කරණයට අවශ්‍ය  \"exo-desktop-item-edit\" "
+"දියත් කිරීමට අසමර්ථ විය."
 
 #: ../src/xfdesktop-file-icon-manager.c:1324
 msgid "Create New Folder"
@@ -657,7 +668,9 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "Xfce ඉවත ලෑමේ සේවාව සමග සම්බන්ධය අසමර්ථ විය."
 
 #: ../src/xfdesktop-special-file-icon.c:522
-msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
+msgid ""
+"Make sure you have a file manager installed that supports the Xfce Trash "
+"service, such as Thunar."
 msgstr ""
 
 #: ../src/xfdesktop-special-file-icon.c:655
@@ -719,142 +732,6 @@ msgstr "පරිමාව _Mount කරන්න"
 msgid "E_ject Volume"
 msgstr "පරිමාව E_ject  කරන්න"
 
-#: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
-msgid "Accessories"
-msgstr "උපාංග"
-
-#: ../modules/menu/directory-data/xfce-accessories.directory.in.h:2
-msgid "Common desktop tools and applications"
-msgstr "පොදු පසුතල මෙවලම් සහ යෙදුම්"
-
-#: ../modules/menu/directory-data/xfce-development.directory.in.h:1
-msgid "Development"
-msgstr "සංවර්ධනය"
-
-#: ../modules/menu/directory-data/xfce-development.directory.in.h:2
-msgid "Software development tools"
-msgstr "මෘදුකාංග සංවර්ධන මෙවලම්"
-
-#: ../modules/menu/directory-data/xfce-education.directory.in.h:1
-msgid "Education"
-msgstr "අධ්‍යාපනික"
-
-#: ../modules/menu/directory-data/xfce-education.directory.in.h:2
-msgid "Educational software"
-msgstr "අධ්‍යාපනික මෘදුකාංග"
-
-#: ../modules/menu/directory-data/xfce-games.directory.in.h:1
-msgid "Games"
-msgstr "ක්‍රීඩා"
-
-#: ../modules/menu/directory-data/xfce-games.directory.in.h:2
-msgid "Games, puzzles, and other fun software"
-msgstr "ක්‍රීඩා, ප්‍රෙහෙලිකා, සහ වෙනත් විනෝදජනක මෘදුකාංග"
-
-#: ../modules/menu/directory-data/xfce-graphics.directory.in.h:1
-msgid "Graphics"
-msgstr "චිත්‍රක"
-
-#: ../modules/menu/directory-data/xfce-graphics.directory.in.h:2
-msgid "Graphics creation and manipulation applications"
-msgstr "චිත්‍රක නිමැව්ම් සහ හැසිරවීමේ යෙදුම්"
-
-#: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:1
-msgid "Audio and video players and editors"
-msgstr "ශ්‍රව්‍ය සහ දෘශ්‍ය ධාවක සහ සංස්කාරක"
-
-#: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:2
-msgid "Multimedia"
-msgstr "බහුමාධ්‍යය"
-
-#: ../modules/menu/directory-data/xfce-network.directory.in.h:1
-msgid "Network"
-msgstr "ජාලය"
-
-#: ../modules/menu/directory-data/xfce-network.directory.in.h:2
-msgid "Network applications and utilities"
-msgstr "ජාල යෙදුම් සහ උපයෝග"
-
-#: ../modules/menu/directory-data/xfce-office.directory.in.h:1
-msgid "Office"
-msgstr "කාර්‍යයාලීය"
-
-#: ../modules/menu/directory-data/xfce-office.directory.in.h:2
-msgid "Office and productivity applications"
-msgstr "කාර්යාල සහ නිෂ්පාදකතා යෙදවුම්"
-
-#: ../modules/menu/directory-data/xfce-other.directory.in.h:1
-msgid "Applications that don't fit into other categories"
-msgstr "වෙනත්  ප්‍රවර්ග වලට නොගැලපෙන යෙදුම්"
-
-#: ../modules/menu/directory-data/xfce-other.directory.in.h:2
-msgid "Other"
-msgstr "වෙනත්"
-
-#: ../modules/menu/directory-data/xfce-science.directory.in.h:1
-msgid "Science"
-msgstr "විද්‍යාව"
-
-#: ../modules/menu/directory-data/xfce-science.directory.in.h:2
-msgid "Scientific software"
-msgstr "විද්‍යාත්මක මෘදුකාංග"
-
-#: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
-msgid "Screensaver applets"
-msgstr "තිර සුරැකුම් ඇප්ලට්"
-
-#: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:2
-msgid "Screensavers"
-msgstr "තිරසුරැකුම්"
-
-#: ../modules/menu/directory-data/xfce-settings.directory.in.h:1
-msgid "Desktop and system settings applications"
-msgstr "ඩෙස්ක්ටොප් සහ  පද්ධති සිටුවම් යෙදුම්"
-
-#: ../modules/menu/directory-data/xfce-settings.directory.in.h:2
-msgid "Settings"
-msgstr "සිටුවම්"
-
-#: ../modules/menu/directory-data/xfce-system.directory.in.h:1
-msgid "System"
-msgstr "පද්ධතිය"
-
-#: ../modules/menu/directory-data/xfce-system.directory.in.h:2
-msgid "System tools and utilities"
-msgstr "පද්ධති මෙවලම් සහ  උපයෝග"
-
-#: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:1
-msgid "About Xfce"
-msgstr "Xfce පිළිබඳ"
-
-#: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:2
-msgid "Information about the Xfce Desktop Environment"
-msgstr "Xfce Desktop පාරිසරිකය  ගැන තොරතුරු"
-
-#: ../modules/menu/menu-data/xfce4-help.desktop.in.h:1
-msgid "Help"
-msgstr "උදව්"
-
-#: ../modules/menu/menu-data/xfce4-help.desktop.in.h:2
-msgid "Help using Xfce"
-msgstr "Xfce භාවිතයෙන් උදව්"
-
-#: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:1
-msgid "Log Out"
-msgstr "ඉවත් වන්න"
-
-#: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:2
-msgid "Log out of the Xfce Desktop"
-msgstr " Xfce Desktop ඉවත් වන්න"
-
-#: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:1
-msgid "Run Program..."
-msgstr "වැඩසටහන ක්‍රියාත්මක කරන්න..."
-
-#: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:2
-msgid "Run a program"
-msgstr "ක්‍රමලේඛය ධාවනය කරන්න"
-
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop "
 msgstr "වැඩතලය"
@@ -862,6 +739,108 @@ msgstr "වැඩතලය"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Set desktop background and menu and icon behaviour"
 msgstr "ඩෙස්ක්ටොප් පසුතල සහ මෙනු සහ අයිකන හැසිරීම සකසන්න"
+
+#~ msgid "Accessories"
+#~ msgstr "උපාංග"
+
+#~ msgid "Common desktop tools and applications"
+#~ msgstr "පොදු පසුතල මෙවලම් සහ යෙදුම්"
+
+#~ msgid "Development"
+#~ msgstr "සංවර්ධනය"
+
+#~ msgid "Software development tools"
+#~ msgstr "මෘදුකාංග සංවර්ධන මෙවලම්"
+
+#~ msgid "Education"
+#~ msgstr "අධ්‍යාපනික"
+
+#~ msgid "Educational software"
+#~ msgstr "අධ්‍යාපනික මෘදුකාංග"
+
+#~ msgid "Games"
+#~ msgstr "ක්‍රීඩා"
+
+#~ msgid "Games, puzzles, and other fun software"
+#~ msgstr "ක්‍රීඩා, ප්‍රෙහෙලිකා, සහ වෙනත් විනෝදජනක මෘදුකාංග"
+
+#~ msgid "Graphics"
+#~ msgstr "චිත්‍රක"
+
+#~ msgid "Graphics creation and manipulation applications"
+#~ msgstr "චිත්‍රක නිමැව්ම් සහ හැසිරවීමේ යෙදුම්"
+
+#~ msgid "Audio and video players and editors"
+#~ msgstr "ශ්‍රව්‍ය සහ දෘශ්‍ය ධාවක සහ සංස්කාරක"
+
+#~ msgid "Multimedia"
+#~ msgstr "බහුමාධ්‍යය"
+
+#~ msgid "Network"
+#~ msgstr "ජාලය"
+
+#~ msgid "Network applications and utilities"
+#~ msgstr "ජාල යෙදුම් සහ උපයෝග"
+
+#~ msgid "Office"
+#~ msgstr "කාර්‍යයාලීය"
+
+#~ msgid "Office and productivity applications"
+#~ msgstr "කාර්යාල සහ නිෂ්පාදකතා යෙදවුම්"
+
+#~ msgid "Applications that don't fit into other categories"
+#~ msgstr "වෙනත්  ප්‍රවර්ග වලට නොගැලපෙන යෙදුම්"
+
+#~ msgid "Other"
+#~ msgstr "වෙනත්"
+
+#~ msgid "Science"
+#~ msgstr "විද්‍යාව"
+
+#~ msgid "Scientific software"
+#~ msgstr "විද්‍යාත්මක මෘදුකාංග"
+
+#~ msgid "Screensaver applets"
+#~ msgstr "තිර සුරැකුම් ඇප්ලට්"
+
+#~ msgid "Screensavers"
+#~ msgstr "තිරසුරැකුම්"
+
+#~ msgid "Desktop and system settings applications"
+#~ msgstr "ඩෙස්ක්ටොප් සහ  පද්ධති සිටුවම් යෙදුම්"
+
+#~ msgid "Settings"
+#~ msgstr "සිටුවම්"
+
+#~ msgid "System"
+#~ msgstr "පද්ධතිය"
+
+#~ msgid "System tools and utilities"
+#~ msgstr "පද්ධති මෙවලම් සහ  උපයෝග"
+
+#~ msgid "About Xfce"
+#~ msgstr "Xfce පිළිබඳ"
+
+#~ msgid "Information about the Xfce Desktop Environment"
+#~ msgstr "Xfce Desktop පාරිසරිකය  ගැන තොරතුරු"
+
+#~ msgid "Help"
+#~ msgstr "උදව්"
+
+#~ msgid "Help using Xfce"
+#~ msgstr "Xfce භාවිතයෙන් උදව්"
+
+#~ msgid "Log Out"
+#~ msgstr "ඉවත් වන්න"
+
+#~ msgid "Log out of the Xfce Desktop"
+#~ msgstr " Xfce Desktop ඉවත් වන්න"
+
+#~ msgid "Run Program..."
+#~ msgstr "වැඩසටහන ක්‍රියාත්මක කරන්න..."
+
+#~ msgid "Run a program"
+#~ msgstr "ක්‍රමලේඛය ධාවනය කරන්න"
 
 #~ msgid "Select Icon"
 #~ msgstr "අයිකනය තෝරන්න"

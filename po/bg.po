@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-24 18:05+0100\n"
+"POT-Creation-Date: 2010-04-28 23:56+0200\n"
 "PO-Revision-Date: 2010-03-24 23:02+0200\n"
 "Last-Translator: Krasimir Chonov <mk2616@abv.bg>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
@@ -15,8 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../common/xfdesktop-common.c:96
-#: ../common/xfdesktop-common.c:200
+#: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
 #, fuzzy, c-format
 msgid "Backdrop list file is not valid"
 msgstr "Избира име на файл с фонове"
@@ -31,8 +30,7 @@ msgstr ""
 "%s\n"
 "<i>Размер: %dx%d</i>"
 
-#: ../settings/main.c:272
-#: ../src/xfdesktop-special-file-icon.c:259
+#: ../settings/main.c:272 ../src/xfdesktop-special-file-icon.c:259
 msgid "Home"
 msgstr "Домашна папка"
 
@@ -53,8 +51,7 @@ msgstr "Преносими устройства"
 msgid "Cannot create backdrop list \"%s\""
 msgstr "Създава списък с фонове"
 
-#: ../settings/main.c:462
-#: ../settings/main.c:779
+#: ../settings/main.c:462 ../settings/main.c:779
 #, fuzzy
 msgid "Backdrop List Error"
 msgstr "Списък с фонове"
@@ -66,8 +63,10 @@ msgstr "Създава списък с фонове"
 
 #: ../settings/main.c:511
 #, c-format
-msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr "Файлът „%s“ не е валиден файл с backdrop списък. Искате ли да се презапише?"
+msgid ""
+"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr ""
+"Файлът „%s“ не е валиден файл с backdrop списък. Искате ли да се презапише?"
 
 #: ../settings/main.c:516
 #, fuzzy
@@ -203,15 +202,11 @@ msgstr "Опции за изграждане:\n"
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Меню на плота:        %s\n"
 
-#: ../src/main.c:277
-#: ../src/main.c:284
-#: ../src/main.c:291
+#: ../src/main.c:277 ../src/main.c:284 ../src/main.c:291
 msgid "enabled"
 msgstr "включено"
 
-#: ../src/main.c:279
-#: ../src/main.c:286
-#: ../src/main.c:293
+#: ../src/main.c:279 ../src/main.c:286 ../src/main.c:293
 msgid "disabled"
 msgstr "изключено"
 
@@ -253,8 +248,7 @@ msgstr "Работно място %d"
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Работно място %d</i>"
 
-#: ../src/windowlist.c:370
-#: ../src/windowlist.c:373
+#: ../src/windowlist.c:370 ../src/windowlist.c:373
 msgid "_Add Workspace"
 msgstr "_Добавяне на работно място"
 
@@ -283,7 +277,8 @@ msgstr "Грешка в плота"
 
 #: ../src/xfdesktop-file-icon-manager.c:479
 #, c-format
-msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgid ""
+"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:481
@@ -294,7 +289,9 @@ msgstr "Създаването на папка е неупешно"
 
 #: ../src/xfdesktop-file-icon-manager.c:490
 #, c-format
-msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
+msgid ""
+"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
+"folder."
 msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:494
@@ -322,8 +319,7 @@ msgstr "Преименуване"
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "Сигурни ли сте, че искате да изтриете „%s“?"
 
-#: ../src/xfdesktop-file-icon-manager.c:680
-#: ../src/xfdesktop-file-utils.c:56
+#: ../src/xfdesktop-file-icon-manager.c:680 ../src/xfdesktop-file-utils.c:56
 msgid "Question"
 msgstr "Въпрос"
 
@@ -343,8 +339,7 @@ msgstr "Изтриване на множество файлове"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:922
-#: ../src/xfdesktop-file-icon-manager.c:1683
-#: ../src/xfdesktop-file-icon.c:141
+#: ../src/xfdesktop-file-icon-manager.c:1683 ../src/xfdesktop-file-icon.c:141
 #: ../src/xfdesktop-file-utils.c:363
 #, c-format
 msgid "Unable to launch \"%s\":"
@@ -353,8 +348,7 @@ msgstr "Не може да се изпълни „%s“:"
 #: ../src/xfdesktop-file-icon-manager.c:924
 #: ../src/xfdesktop-file-icon-manager.c:984
 #: ../src/xfdesktop-file-icon-manager.c:1287
-#: ../src/xfdesktop-file-icon-manager.c:1684
-#: ../src/xfdesktop-file-icon.c:143
+#: ../src/xfdesktop-file-icon-manager.c:1684 ../src/xfdesktop-file-icon.c:143
 #: ../src/xfdesktop-file-utils.c:366
 msgid "Launch Error"
 msgstr "Грешка при стартиране"
@@ -363,9 +357,10 @@ msgstr "Грешка при стартиране"
 msgid "The application chooser could not be opened."
 msgstr "Програмата за избор не може да се стартира."
 
-#: ../src/xfdesktop-file-icon-manager.c:986
-#: ../src/xfdesktop-file-utils.c:368
-msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
+#: ../src/xfdesktop-file-icon-manager.c:986 ../src/xfdesktop-file-utils.c:368
+msgid ""
+"This feature requires a file manager service present (such as that supplied "
+"by Thunar)."
 msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:1182
@@ -384,7 +379,9 @@ msgid "Unable to create folder named \"%s\":"
 msgstr "Не може да се създаде папка с името „%s“"
 
 #: ../src/xfdesktop-file-icon-manager.c:1289
-msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgid ""
+"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
+"edit launchers and links on the desktop."
 msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:1324
@@ -441,8 +438,7 @@ msgid "_Open in New Window"
 msgstr "_Отваряне в нов прозорец"
 
 #: ../src/xfdesktop-file-icon-manager.c:1768
-#: ../src/xfdesktop-special-file-icon.c:637
-#: ../src/xfdesktop-volume-icon.c:565
+#: ../src/xfdesktop-special-file-icon.c:637 ../src/xfdesktop-volume-icon.c:565
 msgid "_Open"
 msgstr "_Отваряне"
 
@@ -553,8 +549,7 @@ msgstr "Цел:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:253
 #: ../src/xfdesktop-file-properties-dialog.c:415
-#: ../src/xfdesktop-volume-icon.c:480
-#: ../src/xfdesktop-volume-icon.c:486
+#: ../src/xfdesktop-volume-icon.c:480 ../src/xfdesktop-volume-icon.c:486
 msgid "(unknown)"
 msgstr "(неизвестен)"
 
@@ -674,8 +669,12 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "Не може да се свърже с услугата „Xfce Trash“."
 
 #: ../src/xfdesktop-special-file-icon.c:522
-msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
-msgstr "Проверете дали имате инсталиран файлов мениджър, който поддържа услугата „Xfce Trash“, например Thunar."
+msgid ""
+"Make sure you have a file manager installed that supports the Xfce Trash "
+"service, such as Thunar."
+msgstr ""
+"Проверете дали имате инсталиран файлов мениджър, който поддържа услугата "
+"„Xfce Trash“, например Thunar."
 
 #: ../src/xfdesktop-special-file-icon.c:655
 msgid "_Empty Trash"
@@ -736,142 +735,6 @@ msgstr "_Монтиране"
 msgid "E_ject Volume"
 msgstr "И_зваждане"
 
-#: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
-msgid "Accessories"
-msgstr "Помощни програми"
-
-#: ../modules/menu/directory-data/xfce-accessories.directory.in.h:2
-msgid "Common desktop tools and applications"
-msgstr "Общи инструменти и програми"
-
-#: ../modules/menu/directory-data/xfce-development.directory.in.h:1
-msgid "Development"
-msgstr "Разработка"
-
-#: ../modules/menu/directory-data/xfce-development.directory.in.h:2
-msgid "Software development tools"
-msgstr "Инструменти за разработка на софтуер"
-
-#: ../modules/menu/directory-data/xfce-education.directory.in.h:1
-msgid "Education"
-msgstr "Обучение"
-
-#: ../modules/menu/directory-data/xfce-education.directory.in.h:2
-msgid "Educational software"
-msgstr "Софтуер за обучение"
-
-#: ../modules/menu/directory-data/xfce-games.directory.in.h:1
-msgid "Games"
-msgstr "Игри"
-
-#: ../modules/menu/directory-data/xfce-games.directory.in.h:2
-msgid "Games, puzzles, and other fun software"
-msgstr "Игри, пъзели и друг софтуер за забавление"
-
-#: ../modules/menu/directory-data/xfce-graphics.directory.in.h:1
-msgid "Graphics"
-msgstr "Графика"
-
-#: ../modules/menu/directory-data/xfce-graphics.directory.in.h:2
-msgid "Graphics creation and manipulation applications"
-msgstr "Програми за създаване и обработка на изображения"
-
-#: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:1
-msgid "Audio and video players and editors"
-msgstr "Аудио/видео плеъри и редактори"
-
-#: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:2
-msgid "Multimedia"
-msgstr "Мултимедия"
-
-#: ../modules/menu/directory-data/xfce-network.directory.in.h:1
-msgid "Network"
-msgstr "Мрежа"
-
-#: ../modules/menu/directory-data/xfce-network.directory.in.h:2
-msgid "Network applications and utilities"
-msgstr "Мрежови програми и инструменти"
-
-#: ../modules/menu/directory-data/xfce-office.directory.in.h:1
-msgid "Office"
-msgstr "Офис"
-
-#: ../modules/menu/directory-data/xfce-office.directory.in.h:2
-msgid "Office and productivity applications"
-msgstr "Офис приложения"
-
-#: ../modules/menu/directory-data/xfce-other.directory.in.h:1
-msgid "Applications that don't fit into other categories"
-msgstr "Програми, които не са подходящи за другите категории"
-
-#: ../modules/menu/directory-data/xfce-other.directory.in.h:2
-msgid "Other"
-msgstr "Други"
-
-#: ../modules/menu/directory-data/xfce-science.directory.in.h:1
-msgid "Science"
-msgstr "Наука"
-
-#: ../modules/menu/directory-data/xfce-science.directory.in.h:2
-msgid "Scientific software"
-msgstr "Научен софтуер"
-
-#: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
-msgid "Screensaver applets"
-msgstr ""
-
-#: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:2
-msgid "Screensavers"
-msgstr "Предпазители на екрана"
-
-#: ../modules/menu/directory-data/xfce-settings.directory.in.h:1
-msgid "Desktop and system settings applications"
-msgstr "Програми за настройване на системата"
-
-#: ../modules/menu/directory-data/xfce-settings.directory.in.h:2
-msgid "Settings"
-msgstr "Настройки"
-
-#: ../modules/menu/directory-data/xfce-system.directory.in.h:1
-msgid "System"
-msgstr "Система"
-
-#: ../modules/menu/directory-data/xfce-system.directory.in.h:2
-msgid "System tools and utilities"
-msgstr "Системни инструменти"
-
-#: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:1
-msgid "About Xfce"
-msgstr "Относно Xfce"
-
-#: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:2
-msgid "Information about the Xfce Desktop Environment"
-msgstr "Информация за графичната среда Xfce"
-
-#: ../modules/menu/menu-data/xfce4-help.desktop.in.h:1
-msgid "Help"
-msgstr "Помощ"
-
-#: ../modules/menu/menu-data/xfce4-help.desktop.in.h:2
-msgid "Help using Xfce"
-msgstr "Помощ за Xfce"
-
-#: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:1
-msgid "Log Out"
-msgstr "Излизане"
-
-#: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:2
-msgid "Log out of the Xfce Desktop"
-msgstr "Излизане от Xfce"
-
-#: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:1
-msgid "Run Program..."
-msgstr "Изпълнение на програма..."
-
-#: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:2
-msgid "Run a program"
-msgstr "Изпълнение на програма"
-
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop "
 msgstr "Плот"
@@ -879,6 +742,105 @@ msgstr "Плот"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Set desktop background and menu and icon behaviour"
 msgstr "Задаване на фон, менюта и поведение на иконите"
+
+#~ msgid "Accessories"
+#~ msgstr "Помощни програми"
+
+#~ msgid "Common desktop tools and applications"
+#~ msgstr "Общи инструменти и програми"
+
+#~ msgid "Development"
+#~ msgstr "Разработка"
+
+#~ msgid "Software development tools"
+#~ msgstr "Инструменти за разработка на софтуер"
+
+#~ msgid "Education"
+#~ msgstr "Обучение"
+
+#~ msgid "Educational software"
+#~ msgstr "Софтуер за обучение"
+
+#~ msgid "Games"
+#~ msgstr "Игри"
+
+#~ msgid "Games, puzzles, and other fun software"
+#~ msgstr "Игри, пъзели и друг софтуер за забавление"
+
+#~ msgid "Graphics"
+#~ msgstr "Графика"
+
+#~ msgid "Graphics creation and manipulation applications"
+#~ msgstr "Програми за създаване и обработка на изображения"
+
+#~ msgid "Audio and video players and editors"
+#~ msgstr "Аудио/видео плеъри и редактори"
+
+#~ msgid "Multimedia"
+#~ msgstr "Мултимедия"
+
+#~ msgid "Network"
+#~ msgstr "Мрежа"
+
+#~ msgid "Network applications and utilities"
+#~ msgstr "Мрежови програми и инструменти"
+
+#~ msgid "Office"
+#~ msgstr "Офис"
+
+#~ msgid "Office and productivity applications"
+#~ msgstr "Офис приложения"
+
+#~ msgid "Applications that don't fit into other categories"
+#~ msgstr "Програми, които не са подходящи за другите категории"
+
+#~ msgid "Other"
+#~ msgstr "Други"
+
+#~ msgid "Science"
+#~ msgstr "Наука"
+
+#~ msgid "Scientific software"
+#~ msgstr "Научен софтуер"
+
+#~ msgid "Screensavers"
+#~ msgstr "Предпазители на екрана"
+
+#~ msgid "Desktop and system settings applications"
+#~ msgstr "Програми за настройване на системата"
+
+#~ msgid "Settings"
+#~ msgstr "Настройки"
+
+#~ msgid "System"
+#~ msgstr "Система"
+
+#~ msgid "System tools and utilities"
+#~ msgstr "Системни инструменти"
+
+#~ msgid "About Xfce"
+#~ msgstr "Относно Xfce"
+
+#~ msgid "Information about the Xfce Desktop Environment"
+#~ msgstr "Информация за графичната среда Xfce"
+
+#~ msgid "Help"
+#~ msgstr "Помощ"
+
+#~ msgid "Help using Xfce"
+#~ msgstr "Помощ за Xfce"
+
+#~ msgid "Log Out"
+#~ msgstr "Излизане"
+
+#~ msgid "Log out of the Xfce Desktop"
+#~ msgstr "Излизане от Xfce"
+
+#~ msgid "Run Program..."
+#~ msgstr "Изпълнение на програма..."
+
+#~ msgid "Run a program"
+#~ msgstr "Изпълнение на програма"
 
 #, fuzzy
 #~ msgid "Image Files"
@@ -947,6 +909,7 @@ msgstr "Задаване на фон, менюта и поведение на и
 #, fuzzy
 #~ msgid "File"
 #~ msgstr "Файл:"
+
 #~ msgid "Style:"
 #~ msgstr "Стил:"
 
@@ -965,6 +928,7 @@ msgstr "Задаване на фон, менюта и поведение на и
 #, fuzzy
 #~ msgid "Xfce 4 Desktop Settings"
 #~ msgstr "Настройки на работните места"
+
 #~ msgid ""
 #~ "Could not save file %s: %s\n"
 #~ "\n"
@@ -1011,12 +975,14 @@ msgstr "Задаване на фон, менюта и поведение на и
 #, fuzzy
 #~ msgid "Desktop Preferences"
 #~ msgstr "Настройки на работните места"
+
 #~ msgid "Color"
 #~ msgstr "Цвят"
 
 #, fuzzy
 #~ msgid "_Color Style:"
 #~ msgstr "Стил:"
+
 #~ msgid "Image"
 #~ msgstr "Изображение"
 
@@ -1031,6 +997,7 @@ msgstr "Задаване на фон, менюта и поведение на и
 #, fuzzy
 #~ msgid "Select backdrop image file"
 #~ msgstr "Изберте файл с картинка"
+
 #~ msgid "List file"
 #~ msgstr "Списък"
 
@@ -1077,4 +1044,3 @@ msgstr "Задаване на фон, менюта и поведение на и
 #, fuzzy
 #~ msgid "Edit"
 #~ msgstr "Редактира списък"
-

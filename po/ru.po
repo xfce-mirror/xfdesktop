@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-26 18:04+0100\n"
+"POT-Creation-Date: 2010-04-28 23:56+0200\n"
 "PO-Revision-Date: 2010-01-26 13:02+0300\n"
 "Last-Translator: Denis Koryavov <dkoryavov@yandex.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -24,88 +24,6 @@ msgstr ""
 #, c-format
 msgid "Backdrop list file is not valid"
 msgstr "Неправильный файл со списком фоновых картинок"
-
-#: ../panel-plugin/desktop-menu-plugin.c:669
-#, c-format
-msgid "Unable to launch xfce4-menueditor: %s"
-msgstr "Невозможно запустить редактор меню xfce4-menueditor: %s"
-
-#: ../panel-plugin/desktop-menu-plugin.c:692
-msgid "Select Icon"
-msgstr "Выбор значка"
-
-#: ../panel-plugin/desktop-menu-plugin.c:694
-msgid "Select Menu File"
-msgstr "Выбор файла меню"
-
-#: ../panel-plugin/desktop-menu-plugin.c:721
-msgid "All Files"
-msgstr "Все файлы"
-
-#: ../panel-plugin/desktop-menu-plugin.c:728
-msgid "Image Files"
-msgstr "Файлы изображений"
-
-#: ../panel-plugin/desktop-menu-plugin.c:731
-msgid "Menu Files"
-msgstr "Файлы меню"
-
-#: ../panel-plugin/desktop-menu-plugin.c:756
-#: ../panel-plugin/xfce4-menu.desktop.in.in.h:2
-msgid "Xfce Menu"
-msgstr "Меню Xfce"
-
-#: ../panel-plugin/desktop-menu-plugin.c:768
-msgid "Button"
-msgstr "Кнопка"
-
-#: ../panel-plugin/desktop-menu-plugin.c:781
-msgid "Button _title:"
-msgstr "_Заголовок кнопки:"
-
-#: ../panel-plugin/desktop-menu-plugin.c:794
-msgid "_Show title in button"
-msgstr "_Показывать заголовок на кнопке"
-
-#: ../panel-plugin/desktop-menu-plugin.c:801
-msgid "Menu File"
-msgstr "Меню файл"
-
-#: ../panel-plugin/desktop-menu-plugin.c:813
-msgid "Use default _desktop menu file"
-msgstr "Использовать меню _рабочего стола по умолчанию"
-
-#: ../panel-plugin/desktop-menu-plugin.c:822
-msgid "Use _custom menu file:"
-msgstr "Использовать _другой файл меню:"
-
-#: ../panel-plugin/desktop-menu-plugin.c:863
-msgid "_Edit Menu"
-msgstr "Р_едактировать меню"
-
-#: ../panel-plugin/desktop-menu-plugin.c:870
-msgid "Icons"
-msgstr "Значки"
-
-#: ../panel-plugin/desktop-menu-plugin.c:882
-msgid "_Button icon:"
-msgstr "З_начок:"
-
-#: ../panel-plugin/desktop-menu-plugin.c:896
-msgid "Show _icons in menu"
-msgstr "П_оказывать значки в меню"
-
-#: ../panel-plugin/desktop-menu-plugin.c:931
-msgid "There is already a panel menu registered for this screen"
-msgstr "На этом экране уже зарегистрировано меню на панели"
-
-#: ../panel-plugin/desktop-menu-plugin.c:1046
-msgid "Edit Menu"
-msgstr "Редактировать меню"
-
-#: ../panel-plugin/xfce4-menu.desktop.in.in.h:1
-msgid "Shows a menu containing categories of installed applications"
-msgstr "Отображает меню, содержащее категории установленных приложений"
 
 #. no need to escape markup; it's already done for us
 #: ../settings/main.c:162
@@ -242,70 +160,70 @@ msgstr "Рабочий стол"
 msgid "Unable to contact settings server"
 msgstr "Не удаётся подключиться к серверу настроек"
 
-#: ../src/main.c:232
+#: ../src/main.c:236
 msgid "Display version information"
 msgstr "Отображать информацию о версии"
 
-#: ../src/main.c:233
+#: ../src/main.c:237
 msgid "Reload all settings, refresh image list"
 msgstr " Перезагрузить все настройки, обновить список изображений"
 
-#: ../src/main.c:234
+#: ../src/main.c:238
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "Показать меню (в месте, где находится курсор мыши)"
 
-#: ../src/main.c:235
+#: ../src/main.c:239
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "Показать список окон (в месте, где находится курсор мыши)"
 
-#: ../src/main.c:236
+#: ../src/main.c:240
 msgid "Cause xfdesktop to quit"
 msgstr "Завершить работу xfdesktop"
 
-#: ../src/main.c:256
-#,c-format
+#: ../src/main.c:260
+#, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "Не удалось разобрать аргументы: %s\n"
 
-#: ../src/main.c:264
+#: ../src/main.c:268
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Это %s версии %s, запущенный на Xfce %s.\n"
 
-#: ../src/main.c:266
+#: ../src/main.c:270
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Собрано с GTK+ %d.%d.%d, слинковано с GTK+ %d.%d.%d."
 
-#: ../src/main.c:270
+#: ../src/main.c:274
 #, c-format
 msgid "Build options:\n"
 msgstr "Параметры сборки:\n"
 
-#: ../src/main.c:271
+#: ../src/main.c:275
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Меню рабочего стола: %s\n"
 
-#: ../src/main.c:273 ../src/main.c:280 ../src/main.c:287
+#: ../src/main.c:277 ../src/main.c:284 ../src/main.c:291
 msgid "enabled"
 msgstr "включено"
 
-#: ../src/main.c:275 ../src/main.c:282 ../src/main.c:289
+#: ../src/main.c:279 ../src/main.c:286 ../src/main.c:293
 msgid "disabled"
 msgstr "отключено"
 
-#: ../src/main.c:278
+#: ../src/main.c:282
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Значки на рабочем столе: %s\n"
 
-#: ../src/main.c:285
+#: ../src/main.c:289
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Значки файлов на рабочем столе: %s\n"
 
-#: ../src/main.c:316
+#: ../src/main.c:320
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s не запущен.\n"
@@ -826,166 +744,6 @@ msgstr "_Подключить том"
 msgid "E_ject Volume"
 msgstr "_Извлечь том"
 
-#: ../modules/menu/directory-data/xfce-accessories.directory.in.h:1
-msgid "Accessories"
-msgstr "Инструменты"
-
-#: ../modules/menu/directory-data/xfce-accessories.directory.in.h:2
-msgid "Common desktop tools and applications"
-msgstr "Служебные программы"
-
-#: ../modules/menu/directory-data/xfce-development.directory.in.h:1
-msgid "Development"
-msgstr "Разработка"
-
-#: ../modules/menu/directory-data/xfce-development.directory.in.h:2
-msgid "Software development tools"
-msgstr "Инструменты для разработки программного обеспечения"
-
-#: ../modules/menu/directory-data/xfce-education.directory.in.h:1
-msgid "Education"
-msgstr "Обучение"
-
-#: ../modules/menu/directory-data/xfce-education.directory.in.h:2
-msgid "Educational software"
-msgstr "Образовательное программное обеспечение"
-
-#: ../modules/menu/directory-data/xfce-games.directory.in.h:1
-msgid "Games"
-msgstr "Игры"
-
-#: ../modules/menu/directory-data/xfce-games.directory.in.h:2
-msgid "Games, puzzles, and other fun software"
-msgstr "Игры, головоломки и другие забавные программы"
-
-#: ../modules/menu/directory-data/xfce-graphics.directory.in.h:1
-msgid "Graphics"
-msgstr "Графика"
-
-#: ../modules/menu/directory-data/xfce-graphics.directory.in.h:2
-msgid "Graphics creation and manipulation applications"
-msgstr "Программы для создания и редактирования изображений"
-
-#: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:1
-msgid "Audio and video players and editors"
-msgstr "Музыкальные и видеопроигрыватели и редакторы"
-
-#: ../modules/menu/directory-data/xfce-multimedia.directory.in.h:2
-msgid "Multimedia"
-msgstr "Аудио и видео"
-
-#: ../modules/menu/directory-data/xfce-network.directory.in.h:1
-msgid "Network"
-msgstr "Сеть и Интернет"
-
-#: ../modules/menu/directory-data/xfce-network.directory.in.h:2
-msgid "Network applications and utilities"
-msgstr "Программы для работы с сетью"
-
-#: ../modules/menu/directory-data/xfce-office.directory.in.h:1
-msgid "Office"
-msgstr "Офис"
-
-#: ../modules/menu/directory-data/xfce-office.directory.in.h:2
-msgid "Office and productivity applications"
-msgstr "Офисные приложения"
-
-#: ../modules/menu/directory-data/xfce-other.directory.in.h:1
-msgid "Applications that don't fit into other categories"
-msgstr "Приложения, которые не подходят к другим категориям"
-
-#: ../modules/menu/directory-data/xfce-other.directory.in.h:2
-msgid "Other"
-msgstr "Прочие"
-
-#: ../modules/menu/directory-data/xfce-science.directory.in.h:1
-msgid "Science"
-msgstr "Наука"
-
-#: ../modules/menu/directory-data/xfce-science.directory.in.h:2
-msgid "Scientific software"
-msgstr "Научное программное обеспечение"
-
-#: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:1
-msgid "Screensaver applets"
-msgstr "Хранители экрана"
-
-#: ../modules/menu/directory-data/xfce-screensavers.directory.in.h:2
-msgid "Screensavers"
-msgstr "Хранители экрана"
-
-#: ../modules/menu/directory-data/xfce-settings.directory.in.h:1
-msgid "Desktop and system settings applications"
-msgstr "Настройки системы и рабочего стола"
-
-#: ../modules/menu/directory-data/xfce-settings.directory.in.h:2
-msgid "Settings"
-msgstr "Настройки"
-
-#: ../modules/menu/directory-data/xfce-system.directory.in.h:1
-msgid "System"
-msgstr "Система"
-
-#: ../modules/menu/directory-data/xfce-system.directory.in.h:2
-msgid "System tools and utilities"
-msgstr "Системные утилиты"
-
-#: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:1
-msgid "About Xfce"
-msgstr "О Xfce"
-
-#: ../modules/menu/menu-data/xfce4-about-xfce.desktop.in.h:2
-msgid "Information about the Xfce Desktop Environment"
-msgstr "Информация о рабочей среде Xfce"
-
-#: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:1
-msgid "File Manager"
-msgstr "Файловый менеджер"
-
-#: ../modules/menu/menu-data/xfce4-file-manager.desktop.in.h:2
-msgid "Thunar file manager"
-msgstr "Файловый менеджер Thunar"
-
-#: ../modules/menu/menu-data/xfce4-help.desktop.in.h:1
-msgid "Help"
-msgstr "Справка"
-
-#: ../modules/menu/menu-data/xfce4-help.desktop.in.h:2
-msgid "Help using Xfce"
-msgstr "Справка по использованию Xfce"
-
-#: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:1
-msgid "Log Out"
-msgstr "Выйти"
-
-#: ../modules/menu/menu-data/xfce4-logout.desktop.in.h:2
-msgid "Log out of the Xfce Desktop"
-msgstr "Выйти из Xfce"
-
-#: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:1
-msgid "Run Program..."
-msgstr "Выполнить..."
-
-#: ../modules/menu/menu-data/xfce4-run-program.desktop.in.h:2
-msgid "Run a program"
-msgstr "Запуск программы"
-
-#: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:1
-msgid "Terminal"
-msgstr "Терминал"
-
-#: ../modules/menu/menu-data/xfce4-terminal.desktop.in.h:2
-msgid "Terminal emulator"
-msgstr "Эмулятор терминал"
-
-#: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:1
-msgid "Browse the web"
-msgstr "Веб-браузер"
-
-#: ../modules/menu/menu-data/xfce4-web-browser.desktop.in.h:2
-msgid "Web Browser"
-msgstr "Веб-браузер"
-
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop "
 msgstr "Рабочий стол"
@@ -993,6 +751,186 @@ msgstr "Рабочий стол"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Set desktop background and menu and icon behaviour"
 msgstr "Установить фон рабочего стола, меню и режим иконок"
+
+#~ msgid "Unable to launch xfce4-menueditor: %s"
+#~ msgstr "Невозможно запустить редактор меню xfce4-menueditor: %s"
+
+#~ msgid "Select Icon"
+#~ msgstr "Выбор значка"
+
+#~ msgid "Select Menu File"
+#~ msgstr "Выбор файла меню"
+
+#~ msgid "All Files"
+#~ msgstr "Все файлы"
+
+#~ msgid "Image Files"
+#~ msgstr "Файлы изображений"
+
+#~ msgid "Menu Files"
+#~ msgstr "Файлы меню"
+
+#~ msgid "Xfce Menu"
+#~ msgstr "Меню Xfce"
+
+#~ msgid "Button"
+#~ msgstr "Кнопка"
+
+#~ msgid "Button _title:"
+#~ msgstr "_Заголовок кнопки:"
+
+#~ msgid "_Show title in button"
+#~ msgstr "_Показывать заголовок на кнопке"
+
+#~ msgid "Menu File"
+#~ msgstr "Меню файл"
+
+#~ msgid "Use default _desktop menu file"
+#~ msgstr "Использовать меню _рабочего стола по умолчанию"
+
+#~ msgid "Use _custom menu file:"
+#~ msgstr "Использовать _другой файл меню:"
+
+#~ msgid "_Edit Menu"
+#~ msgstr "Р_едактировать меню"
+
+#~ msgid "Icons"
+#~ msgstr "Значки"
+
+#~ msgid "_Button icon:"
+#~ msgstr "З_начок:"
+
+#~ msgid "Show _icons in menu"
+#~ msgstr "П_оказывать значки в меню"
+
+#~ msgid "There is already a panel menu registered for this screen"
+#~ msgstr "На этом экране уже зарегистрировано меню на панели"
+
+#~ msgid "Edit Menu"
+#~ msgstr "Редактировать меню"
+
+#~ msgid "Shows a menu containing categories of installed applications"
+#~ msgstr "Отображает меню, содержащее категории установленных приложений"
+
+#~ msgid "Accessories"
+#~ msgstr "Инструменты"
+
+#~ msgid "Common desktop tools and applications"
+#~ msgstr "Служебные программы"
+
+#~ msgid "Development"
+#~ msgstr "Разработка"
+
+#~ msgid "Software development tools"
+#~ msgstr "Инструменты для разработки программного обеспечения"
+
+#~ msgid "Education"
+#~ msgstr "Обучение"
+
+#~ msgid "Educational software"
+#~ msgstr "Образовательное программное обеспечение"
+
+#~ msgid "Games"
+#~ msgstr "Игры"
+
+#~ msgid "Games, puzzles, and other fun software"
+#~ msgstr "Игры, головоломки и другие забавные программы"
+
+#~ msgid "Graphics"
+#~ msgstr "Графика"
+
+#~ msgid "Graphics creation and manipulation applications"
+#~ msgstr "Программы для создания и редактирования изображений"
+
+#~ msgid "Audio and video players and editors"
+#~ msgstr "Музыкальные и видеопроигрыватели и редакторы"
+
+#~ msgid "Multimedia"
+#~ msgstr "Аудио и видео"
+
+#~ msgid "Network"
+#~ msgstr "Сеть и Интернет"
+
+#~ msgid "Network applications and utilities"
+#~ msgstr "Программы для работы с сетью"
+
+#~ msgid "Office"
+#~ msgstr "Офис"
+
+#~ msgid "Office and productivity applications"
+#~ msgstr "Офисные приложения"
+
+#~ msgid "Applications that don't fit into other categories"
+#~ msgstr "Приложения, которые не подходят к другим категориям"
+
+#~ msgid "Other"
+#~ msgstr "Прочие"
+
+#~ msgid "Science"
+#~ msgstr "Наука"
+
+#~ msgid "Scientific software"
+#~ msgstr "Научное программное обеспечение"
+
+#~ msgid "Screensaver applets"
+#~ msgstr "Хранители экрана"
+
+#~ msgid "Screensavers"
+#~ msgstr "Хранители экрана"
+
+#~ msgid "Desktop and system settings applications"
+#~ msgstr "Настройки системы и рабочего стола"
+
+#~ msgid "Settings"
+#~ msgstr "Настройки"
+
+#~ msgid "System"
+#~ msgstr "Система"
+
+#~ msgid "System tools and utilities"
+#~ msgstr "Системные утилиты"
+
+#~ msgid "About Xfce"
+#~ msgstr "О Xfce"
+
+#~ msgid "Information about the Xfce Desktop Environment"
+#~ msgstr "Информация о рабочей среде Xfce"
+
+#~ msgid "File Manager"
+#~ msgstr "Файловый менеджер"
+
+#~ msgid "Thunar file manager"
+#~ msgstr "Файловый менеджер Thunar"
+
+#~ msgid "Help"
+#~ msgstr "Справка"
+
+#~ msgid "Help using Xfce"
+#~ msgstr "Справка по использованию Xfce"
+
+#~ msgid "Log Out"
+#~ msgstr "Выйти"
+
+#~ msgid "Log out of the Xfce Desktop"
+#~ msgstr "Выйти из Xfce"
+
+#~ msgid "Run Program..."
+#~ msgstr "Выполнить..."
+
+#~ msgid "Run a program"
+#~ msgstr "Запуск программы"
+
+#~ msgid "Terminal"
+#~ msgstr "Терминал"
+
+#~ msgid "Terminal emulator"
+#~ msgstr "Эмулятор терминал"
+
+#~ msgid "Browse the web"
+#~ msgstr "Веб-браузер"
+
+#~ msgid "Web Browser"
+#~ msgstr "Веб-браузер"
 
 #~ msgid "%s: Unknown option: %s\n"
 #~ msgstr "%s: неизвестный параметр: %s\n"
