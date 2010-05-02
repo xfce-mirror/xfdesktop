@@ -1,13 +1,13 @@
 # Japanese translation of the manual from the xfdesktop package.
 # Copyright (C) 2004-2007 Brian J. Tarricone.
 # This file is distributed under the same license as the xfdesktop package.
-# Masato Hashimoto <cabezon.hashimoto@gmail.com>, 2009.
+# Masato Hashimoto <cabezon.hashimoto@gmail.com>, 2009,2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.5.93\n"
-"POT-Creation-Date: 2009-04-21 12:05+0200\n"
-"PO-Revision-Date: 2009-03-20 11:09+0900\n"
+"POT-Creation-Date: 2010-05-02 14:50+0900\n"
+"PO-Revision-Date: 2010-05-02 14:50+0900\n"
 "Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
@@ -241,15 +241,16 @@ msgid ""
 "similar look and feel as the <ulink url=\"http://thunar.xfce.org/\" type="
 "\"http\">Thunar</ulink> file manager."
 msgstr ""
-"<application>@PACKAGE_NAME@</application> はまた、XDG ユーザディレクトリ仕様"
-"として <filename>$XDG_CONFIG_DESKTOP</filename> フォルダの内容を、他の多くの"
-"デスクトップ環境やオペレーティングシステムと同じようにデスクトップに表示する"
-"こともできます。ファイルはファイルマネージャから、整列、コピー、移動、あるい"
-"はリンクの作成などが行え、またあらかじめ割り当てられたアプリケーションで開く"
-"こともできます。アプリケーションおよび URL のランチャをデスクトップ上に作成す"
-"ることもできます。ファイルアイコン表示は、<ulink url=\"http://thunar.xfce."
-"org/\" type=\"http\">Thunar</ulink> ファイルマネージャのルックアンドフィール"
-"にならって作成されています。"
+"<application>@PACKAGE_NAME@</application> はまた、他の多くのデスクトップ環境"
+"やオペレーティングシステムと同様に、XDG ユーザディレクトリ仕様として "
+"<filename>$XDG_CONFIG_HOME/user-dirs.dirs</filename> で設定された <filename>"
+"$XDG_CONFIG_DESKTOP</filename> フォルダ (存在しない場合は <filename>$HOME/"
+"Desktop</filename>) の内容をデスクトップに表示することもできます。ファイルは"
+"ファイルマネージャから、整列、コピー、移動、あるいはリンクの作成などが行え、"
+"またあらかじめ割り当てられたアプリケーションで開くこともできます。アプリケー"
+"ションおよび URL のランチャをデスクトップ上に作成することもできます。ファイル"
+"アイコン表示は、<ulink url=\"http://thunar.xfce.org/\" type=\"http\">Thunar</"
+"ulink> ファイルマネージャのルックアンドフィールにならって作成されています。"
 
 #: ../doc/C/xfdesktop.xml.in:152(title)
 msgid "The Desktop Menu"
@@ -264,9 +265,10 @@ msgid ""
 "many of the applications found on your system."
 msgstr ""
 "デスクトップの背景上で右クリックすると、デスクトップフォルダを Thunar で開い"
-"たり、ランチャ、URL リンク、フォルダ、またはテンプレートからファイルを作成す"
-"るメニューを表示します。また、デスクトップ設定やデスクトップウィンドウのプロ"
-"パティ、およびシステム内の多くのアプリケーションを起動することもできます。"
+"たり、ランチャ、URL リンク、フォルダ、またはテンプレートからファイルを作成し"
+"たりするメニューを表示します。また、デスクトップ設定やデスクトップウィンドウ"
+"のプロパティ、およびシステム内の多くのアプリケーションを起動することもできま"
+"す。"
 
 #: ../doc/C/xfdesktop.xml.in:163(title) ../doc/C/xfdesktop.xml.in:455(term)
 msgid "Desktop Menu"
@@ -307,7 +309,8 @@ msgstr ""
 "$XDG_CONFIG_HOME/menus</filename> にコピーし、<application>mousepad</"
 "application> や <application>gedit</application> などのテキストエディタで編集"
 "します。ファイルの文字エンコーディングは UTF-8 でなければならないことを忘れな"
-"いでください。"
+"いでください。より詳しい情報は <ulink url=\"http://wiki.xfce.org/howto/"
+"customize-menu\" type=\"http\">Xfce Wiki</ulink> をご覧ください。"
 
 #: ../doc/C/xfdesktop.xml.in:197(para)
 msgid ""
@@ -319,7 +322,7 @@ msgstr ""
 "この他のカスタマイズとして、<filename>$XDG_DATA_HOME/applications</filename> "
 "に <ulink url=\"http://standards.freedesktop.org/desktop-entry-spec/latest/"
 "\" type=\"http\">デスクトップエントリ</ulink> を作成することによってメニュー"
-"エントリの非表示、修正、または追加が指定できるようになります。"
+"エントリの非表示、修正、あるいは追加が指定できるようになります。"
 
 #: ../doc/C/xfdesktop.xml.in:207(title)
 msgid "The Window List Menu"
@@ -464,7 +467,7 @@ msgstr ""
 "ル状\"</emphasis>, <emphasis>\"縦横比を維持せず全画面化\"</emphasis>, "
 "<emphasis>\"長辺を画面に合わせる\"</emphasis> および <emphasis>\"短辺を画面に"
 "合わせる\"</emphasis>) は背景画像を画面サイズにあわせるためのオプションです。"
-"また、<emphasis>\"自動\"</emphasis> を選ぶと <application>@PACKAGE_NAME@</"
+"<emphasis>\"自動\"</emphasis> を選ぶと <application>@PACKAGE_NAME@</"
 "application> が自動的に解決します。"
 
 #: ../doc/C/xfdesktop.xml.in:341(para)
@@ -629,10 +632,10 @@ msgid ""
 msgstr ""
 "<emphasis>\"リストにワークスペース名を表示する\"</emphasis> オプションでリス"
 "トにワークスペース名を表示させることができます。チェックマークをつけると、"
-"ウィンドウ名はそのワークスペース名の下に表示されるようになります。つけなけれ"
-"ばメニュー内にまとめて表示されます。このオプションは <emphasis>\"デスクトップ"
-"上での中央クリックでウィンドウリストを表示する\"</emphasis> にチェックマーク"
-"がつけられている場合のみ有効になります。"
+"ウィンドウ名はそのワークスペース名の下に表示されます。つけなければまとめて表"
+"示されます。このオプションは <emphasis>\"デスクトップ上での中央クリックでウィ"
+"ンドウリストを表示する\"</emphasis> にチェックマークがつけられている場合のみ"
+"有効になります。"
 
 #: ../doc/C/xfdesktop.xml.in:512(para)
 msgid ""
@@ -734,7 +737,7 @@ msgstr ""
 "のルート ( <filename>/</filename> とも表記されます) を表します。<emphasis>ゴ"
 "ミ箱</emphasis> はゴミ箱フォルダを表します。<emphasis>リムーバブルデバイス</"
 "emphasis> はフロッピードライブ、USB デバイスや USB キー、外付けハードディスク"
-"ドライブなどのリムーバブルデバイスを表します。"
+"ドライブ、あるいは光学ドライブなどを表します。"
 
 #: ../doc/C/xfdesktop.xml.in:613(title)
 msgid "Hidden Options"
@@ -800,12 +803,12 @@ msgid ""
 msgstr ""
 "メニューやウィンドウリストはコマンドラインからも開くことができます。これは"
 "キーボードショートカットに設定するときに役立ちます。メニューを開くときはコマ"
-"ンド <application>@PACKAGE_NAME@</application><application>--menu</"
+"ンド <application>@PACKAGE_NAME@</application> <application>--menu</"
 "application> を、ウィンドウリストを開くときはコマンド "
-"<application>@PACKAGE_NAME@</application><application>--windowlist</"
+"<application>@PACKAGE_NAME@</application> <application>--windowlist</"
 "application> を使用します。現在動作中のインスタンスを終了させる場合は "
-"<application>@PACKAGE_NAME@</application><application>--quit</application> を"
-"使用します。"
+"<application>@PACKAGE_NAME@</application> <application>--quit</application> "
+"を使用します。"
 
 #: ../doc/C/xfdesktop.xml.in:678(title)
 msgid "About <application>@PACKAGE_NAME@</application>"
@@ -869,7 +872,7 @@ msgstr ""
 "もし無いのであればフリーソフトウェア財団 51 Franklin St, Fifth Floor, "
 "Boston, MA 02110-1301, USA に連絡してください。"
 
-#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2.
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
 #: ../doc/C/xfdesktop.xml.in:0(None)
 msgid "translator-credits"
-msgstr "Masato Hashimoto <cabezon.hashimoto@gmail.com>, 2009."
+msgstr "Masato Hashimoto <hashimo@xfce.org>, 2009, 2010."
