@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-28 23:56+0200\n"
+"POT-Creation-Date: 2010-05-05 04:05+0000\n"
 "PO-Revision-Date: 2009-08-21 10:59+0200\n"
 "Last-Translator: Piarres Beobide <pi@beobide.net>\n"
 "Language-Team: Euskara\n"
@@ -65,11 +65,8 @@ msgstr "Sortu/Kargatu atzealde zerrenda"
 
 #: ../settings/main.c:511
 #, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
-"\"%s\" fitxategia ez da baliozko atzealde zerrenda fitxategi bat. Gainidatzi "
-"nahi al duzu?"
+msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr "\"%s\" fitxategia ez da baliozko atzealde zerrenda fitxategi bat. Gainidatzi nahi al duzu?"
 
 #: ../settings/main.c:516
 msgid "Invalid List File"
@@ -160,34 +157,29 @@ msgid "Unable to contact settings server"
 msgstr "Ezin da ezarpen zerbitzaria konektatu"
 
 #: ../src/main.c:236
-#, fuzzy
 msgid "Display version information"
-msgstr "Bertsio argibideak"
+msgstr "Bistarazi bertsio argibideak"
 
 #: ../src/main.c:237
-#, fuzzy
 msgid "Reload all settings, refresh image list"
-msgstr "    -reload      Ezarpen guztiak birkargatu, irudi zerrenda freskatu\n"
+msgstr "Ezarpen guztiak birkargatu, irudi zerrenda freskatu"
 
 #: ../src/main.c:238
-#, fuzzy
 msgid "Pop up the menu (at the current mouse position)"
-msgstr "    -menu        Menua bistarazi (saguaren kokalekuan)\n"
+msgstr "Menua bistarazi (saguaren kokalekuan)"
 
 #: ../src/main.c:239
-#, fuzzy
 msgid "Pop up the window list (at the current mouse position)"
-msgstr "    -windowlist  Leiho zerrenda bistarazi (saguaren kokalekuan)\n"
+msgstr "Leiho zerrenda bistarazi (saguaren kokalekuan)"
 
 #: ../src/main.c:240
-#, fuzzy
 msgid "Cause xfdesktop to quit"
-msgstr "    -quit        xfdesktop itxi egiten du\n"
+msgstr "xfdesktop itxi egiten du"
 
 #: ../src/main.c:260
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to parse arguments: %s\n"
-msgstr "Huts \"%s\"-abiarazterakoan:"
+msgstr "Huts argumentuak analizatzean: %s\n"
 
 #: ../src/main.c:268
 #, c-format
@@ -284,10 +276,8 @@ msgstr "Idazmahai errorea"
 
 #: ../src/xfdesktop-file-icon-manager.c:479
 #, c-format
-msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr ""
-"Xfdesktop ez da idazmahai elementuak gordetzeko \"%s\" karpeta sortzeko gai."
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr "Xfdesktop ez da idazmahai elementuak gordetzeko \"%s\" karpeta sortzeko gai."
 
 #: ../src/xfdesktop-file-icon-manager.c:481
 #: ../src/xfdesktop-file-icon-manager.c:492
@@ -297,12 +287,8 @@ msgstr "Huts karpeta sortzean"
 
 #: ../src/xfdesktop-file-icon-manager.c:490
 #, c-format
-msgid ""
-"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
-"folder."
-msgstr ""
-"Xfdesktop ez da \"%s\" idazmahai elementuak gordetzeko erabiltzeko gai ez "
-"bait da karpeta bat."
+msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
+msgstr "Xfdesktop ez da \"%s\" idazmahai elementuak gordetzeko erabiltzeko gai ez bait da karpeta bat."
 
 #: ../src/xfdesktop-file-icon-manager.c:494
 msgid "Please delete or rename the file."
@@ -368,12 +354,8 @@ msgid "The application chooser could not be opened."
 msgstr "Aplikazio hautatzailea ezin da ireki."
 
 #: ../src/xfdesktop-file-icon-manager.c:986 ../src/xfdesktop-file-utils.c:368
-msgid ""
-"This feature requires a file manager service present (such as that supplied "
-"by Thunar)."
-msgstr ""
-"Ezaugarri honek fitxategi kudeaketa zerbitzu bat instalaturik egotea behar "
-"du (Thunar-ek duena bezalakoa)"
+msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
+msgstr "Ezaugarri honek fitxategi kudeaketa zerbitzu bat instalaturik egotea behar du (Thunar-ek duena bezalakoa)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1182
 #, c-format
@@ -391,12 +373,8 @@ msgid "Unable to create folder named \"%s\":"
 msgstr "Ezin da \"%s\" izeneko karpeta bat sortu:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1289
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
-msgstr ""
-"Ezin da \"exo-desktop-item-edit\" abiarazi zein beharrezkoa da abiarazleak "
-"eta idazmahai loturak sortu eta editatzeko."
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgstr "Ezin da \"exo-desktop-item-edit\" abiarazi zein beharrezkoa da abiarazleak eta idazmahai loturak sortu eta editatzeko."
 
 #: ../src/xfdesktop-file-icon-manager.c:1324
 msgid "Create New Folder"
@@ -683,12 +661,8 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "Ezin da Xfce zakarrontzi zerbitzuarekin harremanetan ipini."
 
 #: ../src/xfdesktop-special-file-icon.c:522
-msgid ""
-"Make sure you have a file manager installed that supports the Xfce Trash "
-"service, such as Thunar."
-msgstr ""
-"Ziurtatu Xfce zakarrontzi zerbitzuarekin bateragarri den fitxategi "
-"kudeatzaile bat erabili behar da, thunar bezalakoa."
+msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
+msgstr "Ziurtatu Xfce zakarrontzi zerbitzuarekin bateragarri den fitxategi kudeatzaile bat erabili behar da, thunar bezalakoa."
 
 #: ../src/xfdesktop-special-file-icon.c:655
 msgid "_Empty Trash"
@@ -1078,8 +1052,7 @@ msgstr "Ezarri idazmahaieko atzeko plano eta menua eta ikono ingurunea"
 #~ msgstr "Ikusi _aplikazio ikonoak menuan"
 
 #~ msgid "Show _window list menu on desktop middle click"
-#~ msgstr ""
-#~ "Ikusi lei_ho zerrenda menua idazmahaia erdiko botoiaz klikatzerakoan"
+#~ msgstr "Ikusi lei_ho zerrenda menua idazmahaia erdiko botoiaz klikatzerakoan"
 
 #~ msgid "Show applications menu on _desktop right click"
 #~ msgstr "Ikusi i_dazmahai menu idazmahaia ekuineko botoiaz klikatzerakoan"
@@ -1104,12 +1077,8 @@ msgstr "Ezarri idazmahaieko atzeko plano eta menua eta ikono ingurunea"
 #~ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 #~ msgstr "Gradientearen \"eskuineko\" edo \"beheko\" kolorea ezartzen du"
 
-#~ msgid ""
-#~ "Specifies the solid color, or the \"left\" or \"top\" color of the "
-#~ "gradient"
-#~ msgstr ""
-#~ "Kolore solidoa ezartzen du, edo gradientearen \"ezkerreko\" edo \"goiko\" "
-#~ "kolorea"
+#~ msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+#~ msgstr "Kolore solidoa ezartzen du, edo gradientearen \"ezkerreko\" edo \"goiko\" kolorea"
 
 #~ msgid "Specify how the image will be resized to fit the screen"
 #~ msgstr "Zehaztu pantailara doitzeko irudia tamainaz nola aldatuko den."
@@ -1117,9 +1086,7 @@ msgstr "Ezarri idazmahaieko atzeko plano eta menua eta ikono ingurunea"
 #~ msgid "Specify the style of the color drawn behind the backdrop image"
 #~ msgstr "Zehaztu idazpaper irudiaren atzean margotiko den kolorearen estiloa"
 
-#~ msgid ""
-#~ "Specify the transparency level for the rounded label drawn behind the "
-#~ "icon text"
+#~ msgid "Specify the transparency level for the rounded label drawn behind the icon text"
 #~ msgstr "Zehaztu ikonoaren testuaren etiketaren inguruko gardentasun maila"
 
 #~ msgid "St_yle:"
@@ -1257,14 +1224,8 @@ msgstr "Ezarri idazmahaieko atzeko plano eta menua eta ikono ingurunea"
 #~ msgid "xfce4-menueditor is deprecated"
 #~ msgstr "xfce4-menueditor zaharkiturik dago"
 
-#~ msgid ""
-#~ "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
-#~ "edit the new menu file format.  You may continue and edit an old-style "
-#~ "menu file, or quit."
-#~ msgstr ""
-#~ "Xfce menu sistema aldatua izan da eta xfce4-menueditor ez da gai menu "
-#~ "fitxategi formatua editatzeko gai.  Aurrera jarraitu eta sistema-zahar "
-#~ "moduko fitxategia editatu edo itxi."
+#~ msgid "Xfce's menu system has been replaced, and xfce4-menueditor is not able to edit the new menu file format.  You may continue and edit an old-style menu file, or quit."
+#~ msgstr "Xfce menu sistema aldatua izan da eta xfce4-menueditor ez da gai menu fitxategi formatua editatzeko gai.  Aurrera jarraitu eta sistema-zahar moduko fitxategia editatu edo itxi."
 
 #~ msgid "Continue"
 #~ msgstr "Jarraitu"
