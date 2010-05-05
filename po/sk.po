@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-28 23:56+0200\n"
+"POT-Creation-Date: 2010-05-05 16:05+0000\n"
 "PO-Revision-Date: 2009-11-04 14:44+0100\n"
 "Last-Translator: Robert Hartl <hartl.robert@gmail.com>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
@@ -61,10 +61,8 @@ msgstr "Vytvoriť alebo načítať zoznam pozadí"
 
 #: ../settings/main.c:511
 #, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
-"Súbor \"%s\" nie je  platný súborom zoznamu pozadia.  Prajete si ho prepísať?"
+msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr "Súbor \"%s\" nie je  platný súborom zoznamu pozadia.  Prajete si ho prepísať?"
 
 #: ../settings/main.c:516
 msgid "Invalid List File"
@@ -159,31 +157,25 @@ msgid "Display version information"
 msgstr "Zobrazí informácie o verzií"
 
 #: ../src/main.c:237
-#, fuzzy
 msgid "Reload all settings, refresh image list"
-msgstr ""
-"    -reload      Nahrať znovu všetky nastavenie, obnoviť zoznam obrázkov\n"
+msgstr "Znovu načíta všetky nastavenia, obnoví zoznam obrázkov"
 
 #: ../src/main.c:238
-#, fuzzy
 msgid "Pop up the menu (at the current mouse position)"
-msgstr "    -menu        Otvoriť ponuku (na aktuálnej pozícii kurzora myši)\n"
+msgstr "Otvorí ponuku (na aktuálnej pozícii kurzora myši)"
 
 #: ../src/main.c:239
-#, fuzzy
 msgid "Pop up the window list (at the current mouse position)"
-msgstr ""
-"    -windowlist  Otvoriť zoznam okien (na aktuálnej pozícii kurzora myši)\n"
+msgstr "Otvorí zoznam okien (na aktuálnej pozícii kurzora myši)"
 
 #: ../src/main.c:240
-#, fuzzy
 msgid "Cause xfdesktop to quit"
-msgstr "    --quit       Ukončiť správcu plochy xfdesktop\n"
+msgstr "Ukončí správcu plochy xfdesktop"
 
 #: ../src/main.c:260
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to parse arguments: %s\n"
-msgstr "Zlyhalo spustenie \"%s\":"
+msgstr "Nepodarilo sa spracovanie argumentov: %s\n"
 
 #: ../src/main.c:268
 #, c-format
@@ -280,10 +272,8 @@ msgstr "Chyba pracovnej plochy"
 
 #: ../src/xfdesktop-file-icon-manager.c:479
 #, c-format
-msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr ""
-"Xfdesktop nemôže vytvoriť priečinok \"%s\" pre uloženie položiek plochy:"
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr "Xfdesktop nemôže vytvoriť priečinok \"%s\" pre uloženie položiek plochy:"
 
 #: ../src/xfdesktop-file-icon-manager.c:481
 #: ../src/xfdesktop-file-icon-manager.c:492
@@ -293,12 +283,8 @@ msgstr "Vytvorenie priečinka zlyhalo"
 
 #: ../src/xfdesktop-file-icon-manager.c:490
 #, c-format
-msgid ""
-"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
-"folder."
-msgstr ""
-"Xfdesktop nemôže použiť \"%s\" pre uloženie položiek plochy, pretože nie je "
-"priečinkom."
+msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
+msgstr "Xfdesktop nemôže použiť \"%s\" pre uloženie položiek plochy, pretože nie je priečinkom."
 
 #: ../src/xfdesktop-file-icon-manager.c:494
 msgid "Please delete or rename the file."
@@ -364,12 +350,8 @@ msgid "The application chooser could not be opened."
 msgstr "Výber aplikácie nebolo možné otvoriť."
 
 #: ../src/xfdesktop-file-icon-manager.c:986 ../src/xfdesktop-file-utils.c:368
-msgid ""
-"This feature requires a file manager service present (such as that supplied "
-"by Thunar)."
-msgstr ""
-"Táto vlastnosť vyžaduje prítomnosť služby správcu súborov (napríklad "
-"aplikáciu Thunar)."
+msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
+msgstr "Táto vlastnosť vyžaduje prítomnosť služby správcu súborov (napríklad aplikáciu Thunar)."
 
 #: ../src/xfdesktop-file-icon-manager.c:1182
 #, c-format
@@ -387,12 +369,8 @@ msgid "Unable to create folder named \"%s\":"
 msgstr "Nie je možné vytvoriť priečinok s názvom \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1289
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
-msgstr ""
-"Nie je možné spustiť \"exo-desktop-item-edit\". Táto aplikácia je vyžadovaná "
-"pri vytváraní a úpravu spúšťačov a odkazov na ploche."
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgstr "Nie je možné spustiť \"exo-desktop-item-edit\". Táto aplikácia je vyžadovaná pri vytváraní a úpravu spúšťačov a odkazov na ploche."
 
 #: ../src/xfdesktop-file-icon-manager.c:1324
 msgid "Create New Folder"
@@ -679,12 +657,8 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "Nie je možné sa pripojiť na službu Kôš Xfce"
 
 #: ../src/xfdesktop-special-file-icon.c:522
-msgid ""
-"Make sure you have a file manager installed that supports the Xfce Trash "
-"service, such as Thunar."
-msgstr ""
-"Uistite sa, či máte nainštalovaného správcu súborov podporujúceho službu Kôš "
-"Xfce, napríklad aplikáciu Thunar"
+msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
+msgstr "Uistite sa, či máte nainštalovaného správcu súborov podporujúceho službu Kôš Xfce, napríklad aplikáciu Thunar"
 
 #: ../src/xfdesktop-special-file-icon.c:655
 msgid "_Empty Trash"
@@ -1074,13 +1048,10 @@ msgstr "Nastavenie pracovnej plochy, ponúk a správanie ikon"
 #~ msgstr "Zobraziť ikony _aplikácií v ponuke"
 
 #~ msgid "Show _window list menu on desktop middle click"
-#~ msgstr ""
-#~ "Zobraziť ponuku _zoznam okien pri kliknutí prostredným tlačidlom myši na "
-#~ "plochu"
+#~ msgstr "Zobraziť ponuku _zoznam okien pri kliknutí prostredným tlačidlom myši na plochu"
 
 #~ msgid "Show applications menu on _desktop right click"
-#~ msgstr ""
-#~ "Zobraziť _hlavnú ponuku pri kliknutí pravým tlačidlom myši na plochu"
+#~ msgstr "Zobraziť _hlavnú ponuku pri kliknutí pravým tlačidlom myši na plochu"
 
 #~ msgid "Show s_ticky windows only in active workspace"
 #~ msgstr "Zobrazovať _prilepené okná iba v aktívnej pracovnej ploche"
@@ -1102,12 +1073,8 @@ msgstr "Nastavenie pracovnej plochy, ponúk a správanie ikon"
 #~ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 #~ msgstr "Určuje \"pravú\" alebo \"spodnú\" farbu farebného prechodu"
 
-#~ msgid ""
-#~ "Specifies the solid color, or the \"left\" or \"top\" color of the "
-#~ "gradient"
-#~ msgstr ""
-#~ "Určuje jednotnú farbu alebo \"ľavú\" alebo \"vrchnú\" farbu farebného "
-#~ "prechodu"
+#~ msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+#~ msgstr "Určuje jednotnú farbu alebo \"ľavú\" alebo \"vrchnú\" farbu farebného prechodu"
 
 #~ msgid "Specify how the image will be resized to fit the screen"
 #~ msgstr "Zadajte spôsob prispôsobenia obrázku veľkosti obrazovky"
@@ -1115,12 +1082,8 @@ msgstr "Nastavenie pracovnej plochy, ponúk a správanie ikon"
 #~ msgid "Specify the style of the color drawn behind the backdrop image"
 #~ msgstr "Zadajte štýl farby vykreslenej pod obrázkom pozadia"
 
-#~ msgid ""
-#~ "Specify the transparency level for the rounded label drawn behind the "
-#~ "icon text"
-#~ msgstr ""
-#~ "Zadajte úroveň priehľadnosti zaobleného popisku vykresleného za textom "
-#~ "ikony"
+#~ msgid "Specify the transparency level for the rounded label drawn behind the icon text"
+#~ msgstr "Zadajte úroveň priehľadnosti zaobleného popisku vykresleného za textom ikony"
 
 #~ msgid "St_yle:"
 #~ msgstr "Š_týl:"
@@ -1392,13 +1355,11 @@ msgstr "Nastavenie pracovnej plochy, ponúk a správanie ikon"
 #~ msgid ""
 #~ "Could not save file %s: %s\n"
 #~ "\n"
-#~ "Please choose another location or press cancel in the dialog to discard "
-#~ "your changes"
+#~ "Please choose another location or press cancel in the dialog to discard your changes"
 #~ msgstr ""
 #~ "Nemôžem uložiť súbor %s: %s\n"
 #~ "\n"
-#~ "Prosím vyberte inú lokáciu alebo stlačte tlačítko zrušiť v dialógovom "
-#~ "okne k zahodeniu vašich zmien"
+#~ "Prosím vyberte inú lokáciu alebo stlačte tlačítko zrušiť v dialógovom okne k zahodeniu vašich zmien"
 
 #~ msgid "backdrops.list"
 #~ msgstr "backdrops.list"
