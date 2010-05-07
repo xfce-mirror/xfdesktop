@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop git\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-28 23:56+0200\n"
-"PO-Revision-Date: 2009-10-03 17:09+0200\n"
+"POT-Creation-Date: 2010-05-07 10:05+0000\n"
+"PO-Revision-Date: 2010-05-07 17:50+0200\n"
 "Last-Translator: Evaggelos Balaskas <ebalaskas@ebalaskas.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
 "MIME-Version: 1.0\n"
@@ -18,8 +18,10 @@ msgstr ""
 "X-Poedit-Language: Greek\n"
 "X-Poedit-Country: GREECE\n"
 "X-Poedit-SourceCharset: utf-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\\n\n"
 
-#: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
+#: ../common/xfdesktop-common.c:96
+#: ../common/xfdesktop-common.c:200
 #, c-format
 msgid "Backdrop list file is not valid"
 msgstr "Το αρχείο δεν είναι έγκυρο"
@@ -34,7 +36,8 @@ msgstr ""
 "%s\n"
 "<i>Μέγεθος %dx%d</i>"
 
-#: ../settings/main.c:272 ../src/xfdesktop-special-file-icon.c:259
+#: ../settings/main.c:272
+#: ../src/xfdesktop-special-file-icon.c:259
 msgid "Home"
 msgstr "Αρχικός κατάλογος"
 
@@ -55,7 +58,8 @@ msgstr "Αφαιρούμενα μέσα"
 msgid "Cannot create backdrop list \"%s\""
 msgstr "Δεν ήταν δυνατή η δημιουργία του αρχείου λίστας \"%s\""
 
-#: ../settings/main.c:462 ../settings/main.c:779
+#: ../settings/main.c:462
+#: ../settings/main.c:779
 msgid "Backdrop List Error"
 msgstr "Σφάλμα στη λίστα παρασκηνίων"
 
@@ -65,11 +69,8 @@ msgstr "Δημιουργία/φόρτωση λίστας παρασκηνίων"
 
 #: ../settings/main.c:511
 #, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
-"Το αρχείο \"%s\" δεν είναι έγκυρο αρχείο λίστας εικόνων παρασκηνίου. Θέλετε "
-"να το αντικαταστήσετε;"
+msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr "Το αρχείο \"%s\" δεν είναι έγκυρο αρχείο λίστας εικόνων παρασκηνίου. Θέλετε να το αντικαταστήσετε;"
 
 #: ../settings/main.c:516
 msgid "Invalid List File"
@@ -160,38 +161,29 @@ msgid "Unable to contact settings server"
 msgstr "Δεν ήταν δυνατή η επικοινωνία με τον εξυπηρετητή ρυθμίσεων"
 
 #: ../src/main.c:236
-#, fuzzy
 msgid "Display version information"
-msgstr "Πληροφορίες έκδοσης"
+msgstr "Εμφάνιση πληροφορίες έκδοσης"
 
 #: ../src/main.c:237
-#, fuzzy
 msgid "Reload all settings, refresh image list"
-msgstr ""
-"    --reload      Επαναφόρτωση όλων των ρυθμίσεων, ανανέωση της λίστας "
-"εικόνων\n"
+msgstr "Επαναφόρτωση όλων των ρυθμίσεων, ανανέωση της λίστας εικόνων"
 
 #: ../src/main.c:238
-#, fuzzy
 msgid "Pop up the menu (at the current mouse position)"
-msgstr "    --menu       Εμφάνιση του μενού (στην τρέχουσα θέση του κέρσορα)\n"
+msgstr "Εμφάνιση αυτού του μενού (στην τρέχουσα θέση του κέρσορα)"
 
 #: ../src/main.c:239
-#, fuzzy
 msgid "Pop up the window list (at the current mouse position)"
-msgstr ""
-"    --windowlist Εμφάνιση της λίστας παραθύρων (στην τρέχουσα θέση του "
-"κέρσορα)\n"
+msgstr "Εμφάνιση της λίστας παραθύρων (στην τρέχουσα θέση του κέρσορα)"
 
 #: ../src/main.c:240
-#, fuzzy
 msgid "Cause xfdesktop to quit"
-msgstr "    --quit       Εξαναγκάζει το xfdesktop σε τερματισμό\n"
+msgstr "Προκάλεσε τον τερματισμό του xfdesktop"
 
 #: ../src/main.c:260
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to parse arguments: %s\n"
-msgstr "Η εκτέλεση του \"%s\" απέτυχε:"
+msgstr "Αδυναμία ανάλυσης των παραμέτρων: %s\n"
 
 #: ../src/main.c:268
 #, c-format
@@ -213,11 +205,15 @@ msgstr "Επιλογές:\n"
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Μενού επιφάνειας εργασίας:         %s\n"
 
-#: ../src/main.c:277 ../src/main.c:284 ../src/main.c:291
+#: ../src/main.c:277
+#: ../src/main.c:284
+#: ../src/main.c:291
 msgid "enabled"
 msgstr "ενεργοποιημένο"
 
-#: ../src/main.c:279 ../src/main.c:286 ../src/main.c:293
+#: ../src/main.c:279
+#: ../src/main.c:286
+#: ../src/main.c:293
 msgid "disabled"
 msgstr "απενεργοποιημένο"
 
@@ -259,7 +255,8 @@ msgstr "Χώρος εργασίας %d"
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Χώρος εργασίας %d</i>"
 
-#: ../src/windowlist.c:370 ../src/windowlist.c:373
+#: ../src/windowlist.c:370
+#: ../src/windowlist.c:373
 msgid "_Add Workspace"
 msgstr "_Προσθήκη χώρου εργασίας"
 
@@ -288,11 +285,8 @@ msgstr "Σφάλμα επιφάνεια εργασίας"
 
 #: ../src/xfdesktop-file-icon-manager.c:479
 #, c-format
-msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr ""
-"Δεν ήταν δυνατή η δημιουργία του φακέλου \"%s\" για τα αντικείμενα της "
-"επιφάνειας εργασίας:"
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr "Δεν ήταν δυνατή η δημιουργία του φακέλου \"%s\" για τα αντικείμενα της επιφάνειας εργασίας:"
 
 #: ../src/xfdesktop-file-icon-manager.c:481
 #: ../src/xfdesktop-file-icon-manager.c:492
@@ -302,12 +296,8 @@ msgstr "Η δημιουργία του φακέλου απέτυχε"
 
 #: ../src/xfdesktop-file-icon-manager.c:490
 #, c-format
-msgid ""
-"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
-"folder."
-msgstr ""
-"Δεν είναι δυνατή η χρήση του \"%s\" για τα αντικείμενα της επιφάνεια "
-"εργασίας επειδή δεν είναι φάκελος."
+msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
+msgstr "Δεν είναι δυνατή η χρήση του \"%s\" για τα αντικείμενα της επιφάνεια εργασίας επειδή δεν είναι φάκελος."
 
 #: ../src/xfdesktop-file-icon-manager.c:494
 msgid "Please delete or rename the file."
@@ -334,7 +324,8 @@ msgstr "Μετονομασία"
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "Είσαστε βέβαιοι ότι θέλετε να διαγράψετε οριστικά το \"%s\";"
 
-#: ../src/xfdesktop-file-icon-manager.c:680 ../src/xfdesktop-file-utils.c:56
+#: ../src/xfdesktop-file-icon-manager.c:680
+#: ../src/xfdesktop-file-utils.c:56
 msgid "Question"
 msgstr "Ερώτηση"
 
@@ -346,8 +337,7 @@ msgstr "Εάν διαγράψετε ένα αρχείο, χάνεται για �
 #: ../src/xfdesktop-file-icon-manager.c:696
 #, c-format
 msgid "Are you sure you want to delete the following %d files?"
-msgstr ""
-"Είσαστε βέβαιοι ότι θέλετε να διαγράψετε οριστικά τα  %d επιλεγμένα αρχεία;"
+msgstr "Είσαστε βέβαιοι ότι θέλετε να διαγράψετε οριστικά τα  %d επιλεγμένα αρχεία;"
 
 #: ../src/xfdesktop-file-icon-manager.c:699
 msgid "Delete Multiple Files"
@@ -355,7 +345,8 @@ msgstr "Διαγραφή πολλαπλών αρχείων"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:922
-#: ../src/xfdesktop-file-icon-manager.c:1683 ../src/xfdesktop-file-icon.c:141
+#: ../src/xfdesktop-file-icon-manager.c:1683
+#: ../src/xfdesktop-file-icon.c:141
 #: ../src/xfdesktop-file-utils.c:363
 #, c-format
 msgid "Unable to launch \"%s\":"
@@ -364,7 +355,8 @@ msgstr "Η εκκίνηση του \"%s\" απέτυχε:"
 #: ../src/xfdesktop-file-icon-manager.c:924
 #: ../src/xfdesktop-file-icon-manager.c:984
 #: ../src/xfdesktop-file-icon-manager.c:1287
-#: ../src/xfdesktop-file-icon-manager.c:1684 ../src/xfdesktop-file-icon.c:143
+#: ../src/xfdesktop-file-icon-manager.c:1684
+#: ../src/xfdesktop-file-icon.c:143
 #: ../src/xfdesktop-file-utils.c:366
 msgid "Launch Error"
 msgstr "Σφάλμα εκτέλεσης"
@@ -373,13 +365,10 @@ msgstr "Σφάλμα εκτέλεσης"
 msgid "The application chooser could not be opened."
 msgstr "Η εφαρμογή επιλογής εφαρμογών δεν ήταν δυνατό να εκτελεστεί."
 
-#: ../src/xfdesktop-file-icon-manager.c:986 ../src/xfdesktop-file-utils.c:368
-msgid ""
-"This feature requires a file manager service present (such as that supplied "
-"by Thunar)."
-msgstr ""
-"Αυτό το χαρακτηριστικό απαιτεί μια υπηρεσία διαχειριστή αρχείων (όπως αυτή "
-"που παρέχει ο Thunar)."
+#: ../src/xfdesktop-file-icon-manager.c:986
+#: ../src/xfdesktop-file-utils.c:368
+msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
+msgstr "Αυτό το χαρακτηριστικό απαιτεί μια υπηρεσία διαχειριστή αρχείων (όπως αυτή που παρέχει ο Thunar)."
 
 #: ../src/xfdesktop-file-icon-manager.c:1182
 #, c-format
@@ -397,13 +386,8 @@ msgid "Unable to create folder named \"%s\":"
 msgstr "Δεν ήταν δυνατή η δημιουργία φακέλου με όνομα \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1289
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
-msgstr ""
-"Δεν ήταν δυνατή η εκκίνηση του \"exo-desktop-item-edit\", που απαιτείται για "
-"τη δημιουργία και την επεξεργασία εκκινητών και συνδέσμων στην επιφάνεια "
-"εργασίας."
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgstr "Δεν ήταν δυνατή η εκκίνηση του \"exo-desktop-item-edit\", που απαιτείται για τη δημιουργία και την επεξεργασία εκκινητών και συνδέσμων στην επιφάνεια εργασίας."
 
 #: ../src/xfdesktop-file-icon-manager.c:1324
 msgid "Create New Folder"
@@ -459,7 +443,8 @@ msgid "_Open in New Window"
 msgstr "Άνοιγμ_α σε νέο παράθυρο"
 
 #: ../src/xfdesktop-file-icon-manager.c:1768
-#: ../src/xfdesktop-special-file-icon.c:637 ../src/xfdesktop-volume-icon.c:565
+#: ../src/xfdesktop-special-file-icon.c:637
+#: ../src/xfdesktop-volume-icon.c:565
 msgid "_Open"
 msgstr "_Άνοιγμα"
 
@@ -530,8 +515,7 @@ msgstr "Η σχετιζόμενη εφαρμογή δεν ήταν δυνατό 
 #: ../src/xfdesktop-file-properties-dialog.c:104
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
-msgstr ""
-"Ο ορισμός της προκαθορισμένης εφαρμογής για το \"%s\" σε \"%s\" απέτυχε."
+msgstr "Ο ορισμός της προκαθορισμένης εφαρμογής για το \"%s\" σε \"%s\" απέτυχε."
 
 #: ../src/xfdesktop-file-properties-dialog.c:107
 msgid "Properties Error"
@@ -571,7 +555,8 @@ msgstr "Προορισμός:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:253
 #: ../src/xfdesktop-file-properties-dialog.c:415
-#: ../src/xfdesktop-volume-icon.c:480 ../src/xfdesktop-volume-icon.c:486
+#: ../src/xfdesktop-volume-icon.c:480
+#: ../src/xfdesktop-volume-icon.c:486
 msgid "(unknown)"
 msgstr "(άγνωστο)"
 
@@ -691,12 +676,8 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "Δεν ήταν δυνατή η επικοινωνία με την υπηρεσία απορριμμάτων του Xfce."
 
 #: ../src/xfdesktop-special-file-icon.c:522
-msgid ""
-"Make sure you have a file manager installed that supports the Xfce Trash "
-"service, such as Thunar."
-msgstr ""
-"Σιγουρευτείτε ότι υπάρχει εγκατεστημένος ένας διαχειριστής αρχείων που "
-"υποστηρίζει την υπηρεσία απορριμμάτων του Xfce, όπως το Thunar."
+msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
+msgstr "Σιγουρευτείτε ότι υπάρχει εγκατεστημένος ένας διαχειριστής αρχείων που υποστηρίζει την υπηρεσία απορριμμάτων του Xfce, όπως το Thunar."
 
 #: ../src/xfdesktop-special-file-icon.c:655
 msgid "_Empty Trash"
@@ -765,402 +746,3 @@ msgstr "Επιφάνεια εργασίας"
 msgid "Set desktop background and menu and icon behaviour"
 msgstr "Ρύθμιση φόντου και συμπεριφοράς μενού και εικονιδίων"
 
-#~ msgid "Unable to launch xfce4-menueditor: %s"
-#~ msgstr "Αδυναμία εκκίνησης του επεξεργαστή μενού του Xfce: %s"
-
-#~ msgid "Select Icon"
-#~ msgstr "Επιλογή εικονιδίου"
-
-#~ msgid "Select Menu File"
-#~ msgstr "Επιλογή αρχείου μενού"
-
-#~ msgid "All Files"
-#~ msgstr "Όλα τα αρχεία"
-
-#~ msgid "Image Files"
-#~ msgstr "Αρχεία εικόνων"
-
-#~ msgid "Menu Files"
-#~ msgstr "Αρχεία μενού"
-
-#~ msgid "Xfce Menu"
-#~ msgstr "Μενού του Xfce"
-
-#~ msgid "Button"
-#~ msgstr "Κουμπί"
-
-#~ msgid "Button _title:"
-#~ msgstr "Τίτλος _κουμπιού:"
-
-#~ msgid "_Show title in button"
-#~ msgstr "_Προβολή τίτλου στο κουμπί"
-
-#~ msgid "Menu File"
-#~ msgstr "Αρχείο μενού"
-
-#~ msgid "Use default _desktop menu file"
-#~ msgstr "Χρήση προκαθορισμένου αρχείου _μενού"
-
-#~ msgid "Use _custom menu file:"
-#~ msgstr "Χρήση _προσαρμοσμένου αρχείου μενού"
-
-#~ msgid "_Edit Menu"
-#~ msgstr "_Επεξεργασία του μενού"
-
-#~ msgid "Icons"
-#~ msgstr "Εικονίδια"
-
-#~ msgid "_Button icon:"
-#~ msgstr "Εικονίδιο _κουμπιού"
-
-#~ msgid "Show _icons in menu"
-#~ msgstr "Εμφάνιση εικον_ιδίων στο μενού"
-
-#~ msgid "There is already a panel menu registered for this screen"
-#~ msgstr "Υπάρχει ήδη ένα μενού σε ταμπλό για αυτή την οθόνη"
-
-#~ msgid "Edit Menu"
-#~ msgstr "Επεξεργασία μενού"
-
-#~ msgid "Shows a menu containing categories of installed applications"
-#~ msgstr ""
-#~ "Εμφανίζει ένα μενού που περιέχει τις κατηγορίες των εγκατεστημένων "
-#~ "εφαρμογών"
-
-#~ msgid "%s: Unknown option: %s\n"
-#~ msgstr "%s: Άγνωστη επιλογή: %s\n"
-
-#~ msgid "Options are:\n"
-#~ msgstr "Οι επιλογές είναι:\n"
-
-#~ msgid "Accessories"
-#~ msgstr "Βοηθήματα"
-
-#~ msgid "Common desktop tools and applications"
-#~ msgstr "Κοινές εφαρμογές και εργαλεία επιφ.εργασίας"
-
-#~ msgid "Development"
-#~ msgstr "Ανάπτυξη"
-
-#~ msgid "Software development tools"
-#~ msgstr "Εργαλεία ανάπτυξης λογισμικού"
-
-#~ msgid "Education"
-#~ msgstr "Εκπαίδευση"
-
-#~ msgid "Educational software"
-#~ msgstr "Εκπαιδευτικό λογισμικό"
-
-#~ msgid "Games"
-#~ msgstr "Παιχνίδια"
-
-#~ msgid "Games, puzzles, and other fun software"
-#~ msgstr "Παιχνίδια, παζλ, και άλλο διασκεδαστικό λογισμικό"
-
-#~ msgid "Graphics"
-#~ msgstr "Γραφικά"
-
-#~ msgid "Graphics creation and manipulation applications"
-#~ msgstr "Εφαρμογές δημιουργίας και επεξεργασίας γραφικών"
-
-#~ msgid "Audio and video players and editors"
-#~ msgstr "Εφαρμογές αναπαραγωγής και επεξεργασίας μουσικής και βίντεο"
-
-#~ msgid "Multimedia"
-#~ msgstr "Πολυμέσα"
-
-#~ msgid "Network"
-#~ msgstr "Δίκτυο"
-
-#~ msgid "Network applications and utilities"
-#~ msgstr "Εφαρμογές και εργαλεία δικτύου"
-
-#~ msgid "Office"
-#~ msgstr "Γραφείο"
-
-#~ msgid "Office and productivity applications"
-#~ msgstr "Εφαρμογές γραφείου"
-
-#~ msgid "Applications that don't fit into other categories"
-#~ msgstr "Εφαρμογές που δεν ταιριάζουν σε άλλες κατηγορίες"
-
-#~ msgid "Other"
-#~ msgstr "Άλλο"
-
-#~ msgid "Science"
-#~ msgstr "Επιστήμη"
-
-#~ msgid "Scientific software"
-#~ msgstr "Επιστημονικό λογισμικό"
-
-#~ msgid "Screensaver applets"
-#~ msgstr "Εφαρμογίδια προφύλαξης οθόνης"
-
-#~ msgid "Screensavers"
-#~ msgstr "Προφύλαξη οθόνης"
-
-#~ msgid "Desktop and system settings applications"
-#~ msgstr "Εφαρμογές ρυθμίσεων"
-
-#~ msgid "Settings"
-#~ msgstr "Ρυθμίσεις"
-
-#~ msgid "System"
-#~ msgstr "Σύστημα"
-
-#~ msgid "System tools and utilities"
-#~ msgstr "Εργαλεία συστήματος"
-
-#~ msgid "About Xfce"
-#~ msgstr "Περί του Xfce"
-
-#~ msgid "Information about the Xfce Desktop Environment"
-#~ msgstr "Πληροφορίες σχετικά με το περιβάλλον εργασίας Xfce"
-
-#~ msgid "File Manager"
-#~ msgstr "Διαχειριστής αρχείων"
-
-#~ msgid "Thunar file manager"
-#~ msgstr "Διαχειριστής αρχείων Thunar"
-
-#~ msgid "Help"
-#~ msgstr "Βοήθεια"
-
-#~ msgid "Help using Xfce"
-#~ msgstr "Βοήθεια για το Xfce"
-
-#~ msgid "Log Out"
-#~ msgstr "Αποσύνδεση"
-
-#~ msgid "Log out of the Xfce Desktop"
-#~ msgstr "Αποσυνδεθείτε από το Xfce"
-
-#~ msgid "Run Program..."
-#~ msgstr "Εκτέλεση..."
-
-#~ msgid "Run a program"
-#~ msgstr "Εκτέλεση προγράμματος"
-
-#~ msgid "Terminal"
-#~ msgstr "Τερματικό"
-
-#~ msgid "Terminal emulator"
-#~ msgstr "Προσομοιωτής τερματικού"
-
-#~ msgid "Browse the web"
-#~ msgstr "Περιηγητής ιστοσελίδων"
-
-#~ msgid "Web Browser"
-#~ msgstr "Περιηγητής Ιστού"
-
-#~ msgid "<b>Adjustments</b>"
-#~ msgstr "<b>Προσαρμογή</b>"
-
-#~ msgid "<b>Appearance</b>"
-#~ msgstr "<b>Εμφάνιση</b>"
-
-#~ msgid "<b>Colors</b>"
-#~ msgstr "<b>Χρώματα</b>"
-
-#~ msgid "<b>Default Icons</b>"
-#~ msgstr "<b>Προεπιλεγμένα εικονίδια</b>"
-
-#~ msgid "<b>Desktop Menu</b>"
-#~ msgstr "<b>Μενού επιφάνειας εργασίας</b>"
-
-#~ msgid "<b>Image</b>"
-#~ msgstr "<b>Εικόνα</b>"
-
-#~ msgid "<b>Images</b>"
-#~ msgstr "<b>Εικόνες</b>"
-
-#~ msgid "<b>Window List Menu</b>"
-#~ msgstr "<b>Μενού λίστας παραθύρων</b>"
-
-#~ msgid "Add an image to the list"
-#~ msgstr "Προσθήκη εικόνας στη λίστα"
-
-#~ msgid ""
-#~ "Auto\n"
-#~ "Centered\n"
-#~ "Tiled\n"
-#~ "Stretched\n"
-#~ "Scaled\n"
-#~ "Zoomed"
-#~ msgstr ""
-#~ "Αυτόματο\n"
-#~ "Κεντραρισμένο\n"
-#~ "Σε παράθεση\n"
-#~ "Τέντωμα\n"
-#~ "Μεγέθυνση\n"
-#~ "Σμίκρυνση"
-
-#~ msgid "Automatically pick a random image from a list file"
-#~ msgstr "Αυτόματη επιλογή μιας τυχαίας εικόνας από λίστα"
-
-#~ msgid "B_rightness:"
-#~ msgstr "Φ_ωτεινότητα:"
-
-#~ msgid "B_utton:"
-#~ msgstr "Κο_υμπί"
-
-#~ msgid "Create a new list, or load an existing one"
-#~ msgstr "Δημιουργία μιας νέας λίστας ή άνοιγμα υπάρχουσας"
-
-#~ msgid "Don't display an image at all"
-#~ msgstr "Χωρίς εικόνα"
-
-#~ msgid "Icon _size:"
-#~ msgstr "Μέγεθος ε_ικονιδίων:"
-
-#~ msgid "Icon _type:"
-#~ msgstr "_Τύπος εικονιδίων:"
-
-#~ msgid "Image _list"
-#~ msgstr "_Λίστα εικόνων"
-
-#~ msgid "Increase or decrease the brightness of the final image"
-#~ msgstr "Αύξηση ή μείωση της φωτεινότητας της εικόνας"
-
-#~ msgid "Increase or decrease the color saturation of the final image"
-#~ msgstr "Αύξηση ή μείωση του κορεσμού της εικόνας"
-
-#~ msgid "Label trans_parency:"
-#~ msgstr "Δια_φάνεια ετικέττας"
-
-#~ msgid ""
-#~ "Left\n"
-#~ "Middle\n"
-#~ "Right"
-#~ msgstr ""
-#~ "Αριστερά\n"
-#~ "Κέντρο\n"
-#~ "Δεξιά"
-
-#~ msgid "Mo_difier:"
-#~ msgstr "Τροποποιήθηκε:"
-
-#~ msgid "Modi_fier:"
-#~ msgstr "Τροποποιήθηκε:"
-
-#~ msgid ""
-#~ "None\n"
-#~ "Minimized application icons\n"
-#~ "File/launcher icons"
-#~ msgstr ""
-#~ "Καθόλου\n"
-#~ "Ελαχιστοποιημένες εφαρμογές\n"
-#~ "Αρχεία και συντομεύσεις"
-
-#~ msgid ""
-#~ "None\n"
-#~ "Shift\n"
-#~ "Alt\n"
-#~ "Control"
-#~ msgstr ""
-#~ "Κανένα\n"
-#~ "Shift\n"
-#~ "Alt\n"
-#~ "Control"
-
-#~ msgid "Remove the selected image(s) from the list"
-#~ msgstr "Διαγραφή των επιλεγμένων αρχείων από τη λίστα"
-
-#~ msgid "Sa_turation:"
-#~ msgstr "Κορεσ_μός:"
-
-#~ msgid "Select First Color"
-#~ msgstr "Επιλογή πρώτου χρώματος"
-
-#~ msgid "Select Second Color"
-#~ msgstr "Επιλογή δεύτερου χρώματος"
-
-#~ msgid "Select a single image as the backdrop"
-#~ msgstr "Επιλογή μίας εικόνας για παρασκήνιο"
-
-#~ msgid "Set desktop background and menu and icon behavior"
-#~ msgstr "Ρϋθμιση εικόνας παρασκηνίου και συμπεριφοράς μενού και εικονιδίων"
-
-#~ msgid "Sh_ow application icons in menu"
-#~ msgstr "Εμφάνιση εικον_ιδίων στο μενού"
-
-#~ msgid "Show _application icons in menu"
-#~ msgstr "Εμφάνιση εικον_ιδίων στο μενού"
-
-#~ msgid "Show _window list menu on desktop middle click"
-#~ msgstr "Εμφάνιση _λίστας παραθύρων στο μεσαίο κλικ"
-
-#~ msgid "Show applications menu on _desktop right click"
-#~ msgstr "Εμφάνιση μενού εφαρμογών στο δεξί κλικ"
-
-#~ msgid "Show s_ticky windows only in active workspace"
-#~ msgstr "Εμφάνιση των κολλώδη παραθύρων μόνο στον ενεργό χώρο εργασίας"
-
-#~ msgid "Show workspace _names in list"
-#~ msgstr "Προβολή των ονομάτων των χώρων εργασίας στη λίστα"
-
-#~ msgid ""
-#~ "Solid color\n"
-#~ "Horizontal gradient\n"
-#~ "Vertical gradient\n"
-#~ "Transparent"
-#~ msgstr ""
-#~ "Συμπαγές χρώμα\n"
-#~ "Οριζόντια διαβάθμιση\n"
-#~ "Κάθετη διαβάθμιση\n"
-#~ "Διαφανές"
-
-#~ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-#~ msgstr "Ορίζει το \"δεξί\" ή \"κάτω\" χρώμα της διαβάθμισης"
-
-#~ msgid ""
-#~ "Specifies the solid color, or the \"left\" or \"top\" color of the "
-#~ "gradient"
-#~ msgstr ""
-#~ "Ορίζει το συμπαγές χρώμα ή το \"αριστερό\" ή \"πάνω\" χρώμα της "
-#~ "διαβάθμισης"
-
-#~ msgid "Specify how the image will be resized to fit the screen"
-#~ msgstr ""
-#~ "Ορίζει πως θα γίνεται η παραμόρφωση της εικόνας για να χωρέσει στην οθόνη"
-
-#~ msgid "Specify the style of the color drawn behind the backdrop image"
-#~ msgstr ""
-#~ "Ορίζει το στυλ του χρώματος που υπάρχει πίσω από την εικόνα παρασκηνίου"
-
-#~ msgid ""
-#~ "Specify the transparency level for the rounded label drawn behind the "
-#~ "icon text"
-#~ msgstr ""
-#~ "Ορίζει το επίπεδο διαφάνειας για το στρογγυλεμένο ταμπελάκι που "
-#~ "εμφανίζεται πίσω από το κείμενο των εικονιδίων"
-
-#~ msgid "St_yle:"
-#~ msgstr "Στ_υλ:"
-
-#~ msgid "Use _submenus for the windows in each workspace"
-#~ msgstr "Χρή_ση υπομενού για τα παράθυρα σε κάθε χώρο εργασίας"
-
-#~ msgid "Use custom _font size:"
-#~ msgstr "Προσαρμοσμένο μέγεθος _γραμματοσειράς:"
-
-#~ msgid "_Background"
-#~ msgstr "_Παρασκήνιο"
-
-#~ msgid "_Button:"
-#~ msgstr "_Κουμπί"
-
-#~ msgid "_Edit desktop menu"
-#~ msgstr "_Επεξεργασία του μενού"
-
-#~ msgid "_Icons"
-#~ msgstr "Ε_ικονίδια"
-
-#~ msgid "_Menus"
-#~ msgstr "_Μενού"
-
-#~ msgid "_None"
-#~ msgstr "Κα_θόλου"
-
-#~ msgid "_Single image"
-#~ msgstr "_Μία εικόνα"
