@@ -1,11 +1,6 @@
 #!/bin/sh
 #
-# $Id$
-#
-# Copyright (c) 2002-2005
-#         The Xfce development team. All rights reserved.
-#
-# Written for Xfce by Benedikt Meurer <benny@xfce.org>.
+# Copyright (c) 2002-2010 Xfce Development Team
 #
 
 (type xdt-autogen) >/dev/null 2>&1 || {
@@ -18,31 +13,58 @@ EOF
   exit 1
 }
 
-# verify that po/LINGUAS is present
-(test -f po/LINGUAS) >/dev/null 2>&1 || {
-  cat >&2 <<EOF
-autogen.sh: The file po/LINGUAS could not be found. Please check your snapshot
-            or try to checkout again.
-EOF
-  exit 1
-}
-
-# substitute revision and linguas
-linguas=`sed -e '/^#/d' po/LINGUAS`
-if [ -d .git/svn ]; then
-  revision=$(git svn find-rev origin/trunk 2>/dev/null ||
-             git svn find-rev trunk 2>/dev/null ||
-             git svn find-rev HEAD 2>/dev/null ||
-             git svn find-rev master 2>/dev/null)
+# portability for awk
+awk_tests="gawk mawk nawk awk"
+if test -z "$AWK"; then
+  for a in $awk_tests; do
+    if type $a >/dev/null 2>&1; then
+      AWK=$a
+      break
+    fi
+  done
 else
-  revision=`LC_ALL=C svn info $0 | awk '/^Revision: / {printf "%05d\n", $2}'`
+  if ! type $AWK >/dev/null 2>/dev/null; then
+    unset AWK
+  fi
 fi
-[ "$revision" ] || revision=UNKNOWN
+if test -z "$AWK"; then
+  echo "autogen.sh: The 'awk' program (one of $awk_tests) is" >&2
+  echo "            required, but cannot be found." >&2
+  exit 1
+fi
+
+# substitute revision
+if test -d .git/svn; then
+    revision=`git svn find-rev trunk 2>/dev/null ||
+              git svn find-rev origin/trunk 2>/dev/null ||
+              git svn find-rev HEAD 2>/dev/null ||
+              git svn find-rev master 2>/dev/null`
+elif test -d .git; then
+    revision=`git rev-parse --short HEAD`
+elif test -d .svn; then
+    revision=`LC_ALL=C svn info $0 | $AWK '/^Revision: / {printf "%05d\n", $2}'`
+fi
+if test "x$revision" = "x"; then
+    revision="UNKNOWN"
+fi
+
+# substitute the linguas
+linguas=`cd "po" 2>/dev/null && ls *.po 2>/dev/null | $AWK 'BEGIN { FS="."; ORS=" " } { print $1 }'`
+if test "x$linguas" = "x"; then
+    echo "autogen.sh: No po files were found, aborting." >&2
+    exit 1
+fi
 
 sed -e "s/@LINGUAS@/${linguas}/g" \
     -e "s/@REVISION@/${revision}/g" \
-    < "configure.ac.in" > "configure.ac"
+    < "configure.in.in" > "configure.in"
 
 exec xdt-autogen $@
+
+# xdt-autogen clean does not remove all generated files
+(test x"clean" = x"$1") && {
+  rm -f configure.in
+  rm -f INSTALL
+} || true
 
 # vi:set ts=2 sw=2 et ai:
