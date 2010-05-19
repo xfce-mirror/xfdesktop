@@ -100,19 +100,7 @@
     <sect2 id="xfdesktop-file-icons">
       <title>Fil/programstarter ikoner</title>
       
-      <para>
-        <application>@PACKAGE_NAME@</application> can also display on the desktop the contents of the 
-        <filename>$XDG_DESKTOP_DIR</filename> folder, which can be set in
-        the <filename>$XDG_CONFIG_HOME/user-dirs.dirs</filename> file (if you
-        do not have this file, it will use <filename>$HOME/Desktop</filename>).
-        Files can be arranged, copied, moved, 
-        and linked to and from a file manager, and opened using 
-        preferred applications.  Application and URL launchers can 
-        also be created on the desktop.  The file icon view is modeled 
-        to have a similar look and feel as the
-        <ulink url="http://thunar.xfce.org/" type="http">Thunar</ulink> file
-        manager.
-      </para>
+      <para><application>@PACKAGE_NAME@</application> kan også vise indholdet af <filename>$$XDG_DESKTOP_DIR</filename> mappen, som kan indstilles i  <filename>$XDG_CONFIG_HOME/user-dirs.dirs</filename>-filen (hvis du ikke har denne fil,vil der blive brugt <filename>$HOME/Desktop</filename>). Filer kan blive arrangeret, kopieret, flyttet og henvist til og fra en filhåndtering, samt åbnes ved at bruge foretrukne programmer. Program- og URL- startere kan også oprettes på skrivebordet. Visning af filikoner er designet til at ses og føles ligesom <ulink url="http://thunar.xfce.org/" type="http">Thunar</ulink>-filhåndteringen.</para>
     </sect2>
   </sect1>
 
@@ -137,24 +125,9 @@
     
     <para>Menuens indstillingsfil, <filename>xfce-applications.menu</filename>, kan findes i stien  <filename>$sysconfdir/xdg/menus/xfce-applications.menu</filename>. For binære pakker, <filename>$sysconfdir</filename> er ofte <filename>/etc</filename> og for kildekompileringer er standarden <filename>/usr/local/etc</filename>.</para>
     
-    <para>
-      The previous menu editor is not available anymore. 
-      However you can customize your menu by copying 
-      <filename>xfce-applications.menu</filename> to
-      <filename>$XDG_CONFIG_HOME/menus</filename> and by modifying it
-      with a text editor such as <application>mousepad</application> or
-      <application>gedit</application>. Please remember that the file 
-      should be UTF-8 encoded.  For more information on menu editing, please
-      see <ulink url="http://wiki.xfce.org/howto/customize-menu" type="http">the
-      Xfce Wiki</ulink>.
-    </para>
+    <para>Den tidligere menuredigering er ikke længere til rådighed. Du kan dog tilpasse din menu ved at kopiere <filename>xfce-applications.menu</filename> til <filename>$XDG_CONFIG_HOME/menus</filename> og ændre den med et tekstprogram såsom <application>mousepad</application> or <application>gedit</application>. Husk at filen skal være med UTF-8-kodning. For mere information om menuredigering, besøg venligst <ulink url="http://wiki.xfce.org/howto/customize-menu" type="http">the Xfce Wiki</ulink>.</para>
     
-    <para>
-      Further customisation can be achived by creating 
-      <ulink url="http://standards.freedesktop.org/desktop-entry-spec/latest/" type="http">desktop
-      entries</ulink> in <filename>$XDG_DATA_HOME/applications</filename> to
-      hide, modify or add entries in the menu.
-    </para>
+    <para>Yderligere tilpasning kan opnås ved at oprette <ulink url="http://standards.freedesktop.org/desktop-entry-spec/latest/" type="http">desktop entries</ulink> i <filename>$XDG_DATA_HOME/applications</filename> til at skjule, ændre eller føje elementer til menu.</para>
     
   </sect1>
   
@@ -372,19 +345,10 @@
       
       <variablelist>
         <varlistentry>
-          <term>Appearance</term>
+          <term>Udseende</term>
           
           <listitem>
-            <para>
-              The <emphasis>"Icon type"</emphasis> dropping list allows
-              you to set the behavior of the desktop icons. There are
-              three options: "None", to disable desktop icons entirely; 
-              "Minimized" application icons, to show icons for 
-              minimized or hidden applications on the desktop; 
-              and "File/launcher" icons, to show the contents of your
-              <filename>$XDG_DESKTOP_DIR</filename> directory on the 
-              desktop.
-            </para>
+            <para>Rullegardinlisten <emphasis>"Ikontype"</emphasis> tillader dig at indstille opførsel af skrivebordets ikoner. Der findes disse 3 indstillinger: "Ingen", for at helt slå skrivebordikoner fra; "Minimerede" programikoner, for at vise ikoner minimerede eller skjulte programmer på skrivebordet; og "Fil/starter"-ikoner, for at vise indholdet af din <filename>$XDG_DESKTOP_DIR</filename> mappe på skrivebordet.</para>
             
             <para>Hvis skrivebordsikoner er slået til, kan du indstille størrelsen på selve ikonet (i pixels) med <emphasis>"Ikonstørrelse"</emphasis>-indstillingen, samt skriftstørrelsen der bruges i ikonteksten (i punkter). Ved at vælge <emphasis>'"Brug tilpasset skriftstørrelse"</emphasis>-indstillingen. Hvis du ikke afkrydser denne sidste indstilling vil systemstandard blive brugt.</para>
           </listitem>
@@ -396,16 +360,7 @@
           <listitem>
             <para>Denne afkrydsningsboks tillader dig at vise eller skjule specialikoner på skrivebordet, når <application>@PACKAGE_NAME@ er indstillet til tegne ikoner. Dobbeltklik p</application></para>
             
-            <para>
-              <emphasis>Home</emphasis> stands for your home folder, that
-              is to say, <filename>$HOME</filename>.
-              <emphasis>Filesystem</emphasis> stands for the root of your
-              file system, also known as <filename>/</filename>.
-              <emphasis>Trash</emphasis> stands for your trash folder,
-              and <emphasis>Removable devices</emphasis> represents
-              floppy drives, USB drives and keys, external hard drives, optical
-              discs, etc.
-            </para>
+            <para><emphasis>Hjem</emphasis> betyder din hjemmemappe, For at sige at <filename>$HOME</filename>. <emphasis>Filsystem</emphasis> betyder rod til dit filsystem, også kendt som <filename>/</filename>. <emphasis>Papirkurv</emphasis> betyder din papirkurvsmappe, og <emphasis>Flytbare enheder</emphasis> repræsenterer floppydrev, USB-drev og -nøgler, eksterne harddiske, optiske drev m.v.</para>
           </listitem>
         </varlistentry>
       </variablelist>

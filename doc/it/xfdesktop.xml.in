@@ -23,7 +23,7 @@
     
     <copyright>
       <year>2004</year> <holder>François Le Clainche</holder>
-    </copyright>
+    </copyright><copyright><year>2009, 2010</year><holder>Cristian Marchi (cri.penta@gmail.com)</holder></copyright>
     
 <!-- documentation translators: uncomment this and fill in your information.
     <copyright>
@@ -100,19 +100,7 @@
     <sect2 id="xfdesktop-file-icons">
       <title>Icone di file e avviatori</title>
       
-      <para>
-        <application>@PACKAGE_NAME@</application> can also display on the desktop the contents of the 
-        <filename>$XDG_DESKTOP_DIR</filename> folder, which can be set in
-        the <filename>$XDG_CONFIG_HOME/user-dirs.dirs</filename> file (if you
-        do not have this file, it will use <filename>$HOME/Desktop</filename>).
-        Files can be arranged, copied, moved, 
-        and linked to and from a file manager, and opened using 
-        preferred applications.  Application and URL launchers can 
-        also be created on the desktop.  The file icon view is modeled 
-        to have a similar look and feel as the
-        <ulink url="http://thunar.xfce.org/" type="http">Thunar</ulink> file
-        manager.
-      </para>
+      <para><application>@PACKAGE_NAME@</application> è anche in grado di visualizzare sulla scrivania il contenuto della cartella <filename>$XDG_DESKTOP_DIR</filename>, che può essere impostato nel file <filename>$XDG_CONFIG_HOME/user-dirs.dirs</filename> (se non si possiede questo file, verrà utilizzata <filename>$HOME/Desktop</filename>). I file possono essere ordinati, copiati, spostati, collegati da e a un gestore di file, e aperti utilizzando l'applicazione che si preferisce. Sulla scrivania è anche possibile creare degli avviatori per applicazioni e collegamenti. La visualizzazione a icona dei file è progettata per avere uno stile e un aspetto simile a quello del gestore di file <ulink url="http://thunar.xfce.org/" type="http">Thunar</ulink>.</para>
     </sect2>
   </sect1>
 
@@ -137,24 +125,9 @@
     
     <para>Il file di configurazione del menu, <filename>xfce-applications.menu</filename>, può essere raggiunto al percorso <filename>$sysconfdir/xdg/menus/xfce-applications.menu</filename>. Per i pacchetti binari, <filename>$sysconfdir</filename> è spesso <filename>/etc</filename> mentre, per la compilazione da sorgente, è di norma <filename>/usr/local/etc</filename>.</para>
     
-    <para>
-      The previous menu editor is not available anymore. 
-      However you can customize your menu by copying 
-      <filename>xfce-applications.menu</filename> to
-      <filename>$XDG_CONFIG_HOME/menus</filename> and by modifying it
-      with a text editor such as <application>mousepad</application> or
-      <application>gedit</application>. Please remember that the file 
-      should be UTF-8 encoded.  For more information on menu editing, please
-      see <ulink url="http://wiki.xfce.org/howto/customize-menu" type="http">the
-      Xfce Wiki</ulink>.
-    </para>
+    <para>Il precedente editor del menu non è più disponibile. Comunque, il menu può essere personalizzato copiando il file <filename>xfce-applications.menu</filename> in <filename>$XDG_CONFIG_HOME/menus</filename> e modificandolo con un editor di testo quale <application>mousepad</application> o <application>gedit</application>. Si ricorda che il file deve avere la codifica UTF-8. Per maggiori informazioni sulla modifica del menu, consultare la <ulink url="http://wiki.xfce.org/howto/customize-menu" type="http">Wiki di Xfce</ulink>.</para>
     
-    <para>
-      Further customisation can be achived by creating 
-      <ulink url="http://standards.freedesktop.org/desktop-entry-spec/latest/" type="http">desktop
-      entries</ulink> in <filename>$XDG_DATA_HOME/applications</filename> to
-      hide, modify or add entries in the menu.
-    </para>
+    <para>Ulteriori personalizzazioni possono essere effettuate creando delle <ulink url="http://standards.freedesktop.org/desktop-entry-spec/latest/" type="http"> desktop entries</ulink> in <filename>$XDG_DATA_HOME/applications</filename> al fine di nascondere, modificare o aggiungere delle voci al menu.</para>
     
   </sect1>
   
@@ -372,19 +345,10 @@
       
       <variablelist>
         <varlistentry>
-          <term>Appearance</term>
+          <term>Aspetto</term>
           
           <listitem>
-            <para>
-              The <emphasis>"Icon type"</emphasis> dropping list allows
-              you to set the behavior of the desktop icons. There are
-              three options: "None", to disable desktop icons entirely; 
-              "Minimized" application icons, to show icons for 
-              minimized or hidden applications on the desktop; 
-              and "File/launcher" icons, to show the contents of your
-              <filename>$XDG_DESKTOP_DIR</filename> directory on the 
-              desktop.
-            </para>
+            <para>La lista a comparsa <emphasis>«tipo di icone»</emphasis> permette di impostare il comportamento delle icone sulla scrivania. Sono disponibili tre opzioni: «nessuno», per disabilitare completamente le icone della scrivania; «icone della applicazioni minimizzate» per mostrare, sulla scrivania, le icone delle applicazioni nascoste o minimizzate; «icone di file e avviatori», per mostrare, sulla scrivania, il contenuto della propria cartella <filename>$XDG_DESKTOP_DIR</filename>.</para>
             
             <para>Se sono attivate le icone sulla scrivania, è possibile controllare la dimensione (in pixel) dell'icona con l'opzione <emphasis>«dimensione icona»</emphasis>, e l'altezza (in punti) del tipo di carattere utilizzato per visualizzare il testo dell'icona attraverso l'opzione <emphasis>«usa una dimensione del carattere personalizzata»</emphasis>. Se quest'ultima opzione non è selezionata, verranno utilizzate le impostazioni predefinite di sistema.</para>
           </listitem>
@@ -396,16 +360,7 @@
           <listitem>
             <para>Le opzioni spuntabili permettono di mostrare o nascondere delle speciali icone sulla scrivania, quando <application>@PACKAGE_NAME@</application> è impostato per disegnare le icone. Facendo un doppio clic su queste icone, si aprirà una finestra di Thunar in cui sarà visualizzato il contenuto di un particolare percorso.</para>
             
-            <para>
-              <emphasis>Home</emphasis> stands for your home folder, that
-              is to say, <filename>$HOME</filename>.
-              <emphasis>Filesystem</emphasis> stands for the root of your
-              file system, also known as <filename>/</filename>.
-              <emphasis>Trash</emphasis> stands for your trash folder,
-              and <emphasis>Removable devices</emphasis> represents
-              floppy drives, USB drives and keys, external hard drives, optical
-              discs, etc.
-            </para>
+            <para><emphasis>Casa</emphasis> rappresenta la propria cartella casa, cioè <filename>$HOME</filename>. <emphasis>File system</emphasis> rappresenta la radice del proprio file system, indicato anche come <filename>/</filename>. <emphasis>Cestino</emphasis> rappresenta la propria cartella del cestino, mentre <emphasis>dispositivi rimovibili</emphasis> rappresenta i dischi floppy, le unità USB, i dischi rigidi esterni, i lettori ottici ecc...</para>
           </listitem>
         </varlistentry>
       </variablelist>

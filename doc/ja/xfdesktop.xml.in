@@ -23,7 +23,7 @@
     
     <copyright>
       <year>2004</year> <holder>François Le Clainche</holder>
-    </copyright><copyright><year>2009.</year><holder>Masato Hashimoto (cabezon.hashimoto@gmail.com)</holder></copyright>
+    </copyright><copyright><year>2009, 2010.</year><holder>Masato Hashimoto (hashimo@xfce.org)</holder></copyright>
     
 <!-- documentation translators: uncomment this and fill in your information.
     <copyright>
@@ -100,14 +100,14 @@
     <sect2 id="xfdesktop-file-icons">
       <title>ファイル/ランチャアイコン</title>
       
-      <para><application>@PACKAGE_NAME@</application> はまた、XDG ユーザディレクトリ仕様として <filename>$XDG_CONFIG_DESKTOP</filename> フォルダの内容を、他の多くのデスクトップ環境やオペレーティングシステムと同じようにデスクトップに表示することもできます。ファイルはファイルマネージャから、整列、コピー、移動、あるいはリンクの作成などが行え、またあらかじめ割り当てられたアプリケーションで開くこともできます。アプリケーションおよび URL のランチャをデスクトップ上に作成することもできます。ファイルアイコン表示は、<ulink url="http://thunar.xfce.org/" type="http">Thunar</ulink> ファイルマネージャのルックアンドフィールにならって作成されています。</para>
+      <para><application>@PACKAGE_NAME@</application> はまた、他の多くのデスクトップ環境やオペレーティングシステムと同様に、XDG ユーザディレクトリ仕様として <filename>$XDG_CONFIG_HOME/user-dirs.dirs</filename> で設定された <filename>$XDG_CONFIG_DESKTOP</filename> フォルダ (存在しない場合は <filename>$HOME/Desktop</filename>) の内容をデスクトップに表示することもできます。ファイルはファイルマネージャから、整列、コピー、移動、あるいはリンクの作成などが行え、またあらかじめ割り当てられたアプリケーションで開くこともできます。アプリケーションおよび URL のランチャをデスクトップ上に作成することもできます。ファイルアイコン表示は、<ulink url="http://thunar.xfce.org/" type="http">Thunar</ulink> ファイルマネージャのルックアンドフィールにならって作成されています。</para>
     </sect2>
   </sect1>
 
   <sect1 id="xfdesktop-menu">
     <title>デスクトップメニュー</title>
     
-    <para>デスクトップの背景上で右クリックすると、デスクトップフォルダを Thunar で開いたり、ランチャ、URL リンク、フォルダ、またはテンプレートからファイルを作成するメニューを表示します。また、デスクトップ設定やデスクトップウィンドウのプロパティ、およびシステム内の多くのアプリケーションを起動することもできます。</para>
+    <para>デスクトップの背景上で右クリックすると、デスクトップフォルダを Thunar で開いたり、ランチャ、URL リンク、フォルダ、またはテンプレートからファイルを作成したりするメニューを表示します。また、デスクトップ設定やデスクトップウィンドウのプロパティ、およびシステム内の多くのアプリケーションを起動することもできます。</para>
     
     <figure id="root-menu-fig">
       <title>デスクトップメニュー</title>
@@ -125,9 +125,9 @@
     
     <para>このメニューの設定ファイル <filename>xfce-applications.menu</filename> は、<filename>$sysconfdir/xdg/menus/xfce-applications.menu</filename> 配下にあります。バイナリパッケージの場合 <filename>$sysconfdir</filename> は多くの場合 <filename>/etc</filename> であり、またソースコンパイルしたものは、デフォルトでは <filename>/usr/local/etc</filename> になります。</para>
     
-    <para>以前にあったメニューエディタは利用できません。しかし、次の手順でカスタマイズが可能です: <filename>xfce-applications.menu</filename> を <filename>$XDG_CONFIG_HOME/menus</filename> にコピーし、<application>mousepad</application> や <application>gedit</application> などのテキストエディタで編集します。ファイルの文字エンコーディングは UTF-8 でなければならないことを忘れないでください。</para>
+    <para>以前にあったメニューエディタは利用できません。しかし、次の手順でカスタマイズが可能です: <filename>xfce-applications.menu</filename> を <filename>$XDG_CONFIG_HOME/menus</filename> にコピーし、<application>mousepad</application> や <application>gedit</application> などのテキストエディタで編集します。ファイルの文字エンコーディングは UTF-8 でなければならないことを忘れないでください。より詳しい情報は <ulink url="http://wiki.xfce.org/howto/customize-menu" type="http">Xfce Wiki</ulink> をご覧ください。</para>
     
-    <para>この他のカスタマイズとして、<filename>$XDG_DATA_HOME/applications</filename> に <ulink url="http://standards.freedesktop.org/desktop-entry-spec/latest/" type="http">デスクトップエントリ</ulink> を作成することによってメニューエントリの非表示、修正、または追加が指定できるようになります。</para>
+    <para>この他のカスタマイズとして、<filename>$XDG_DATA_HOME/applications</filename> に <ulink url="http://standards.freedesktop.org/desktop-entry-spec/latest/" type="http">デスクトップエントリ</ulink> を作成することによってメニューエントリの非表示、修正、あるいは追加が指定できるようになります。</para>
     
   </sect1>
   
@@ -210,7 +210,7 @@
           
           <!-- Images layout options -->
           <listitem>
-            <para>5 つのスタイルオプション (<emphasis>"中央揃え"</emphasis>, <emphasis>"タイル状"</emphasis>, <emphasis>"縦横比を維持せず全画面化"</emphasis>, <emphasis>"長辺を画面に合わせる"</emphasis> および <emphasis>"短辺を画面に合わせる"</emphasis>) は背景画像を画面サイズにあわせるためのオプションです。また、<emphasis>"自動"</emphasis> を選ぶと <application>@PACKAGE_NAME@</application> が自動的に解決します。</para>
+            <para>5 つのスタイルオプション (<emphasis>"中央揃え"</emphasis>, <emphasis>"タイル状"</emphasis>, <emphasis>"縦横比を維持せず全画面化"</emphasis>, <emphasis>"長辺を画面に合わせる"</emphasis> および <emphasis>"短辺を画面に合わせる"</emphasis>) は背景画像を画面サイズにあわせるためのオプションです。<emphasis>"自動"</emphasis> を選ぶと <application>@PACKAGE_NAME@</application> が自動的に解決します。</para>
           </listitem>
           
           <!-- To be confirmed as I don't have multiscreen -->
@@ -310,7 +310,7 @@
           
           <!-- Add link to xfwm4 documentation to change workspaces names -->
           <listitem>
-            <para><emphasis>"リストにワークスペース名を表示する"</emphasis> オプションでリストにワークスペース名を表示させることができます。チェックマークをつけると、ウィンドウ名はそのワークスペース名の下に表示されるようになります。つけなければメニュー内にまとめて表示されます。このオプションは <emphasis>"デスクトップ上での中央クリックでウィンドウリストを表示する"</emphasis> にチェックマークがつけられている場合のみ有効になります。</para>
+            <para><emphasis>"リストにワークスペース名を表示する"</emphasis> オプションでリストにワークスペース名を表示させることができます。チェックマークをつけると、ウィンドウ名はそのワークスペース名の下に表示されます。つけなければまとめて表示されます。このオプションは <emphasis>"デスクトップ上での中央クリックでウィンドウリストを表示する"</emphasis> にチェックマークがつけられている場合のみ有効になります。</para>
           </listitem>
           
           <listitem>
@@ -360,7 +360,7 @@
           <listitem>
             <para>このチェックボックスでは、<application>@PACKAGE_NAME@</application> がアイコンを表示するよう設定されているときにデスクトップに表示する特殊アイコンを設定できます。デスクトップでこれらのアイコンをダブルクリックすると Thunar ファイルマネージャでそれぞれのパスの内容が表示されます。</para>
             
-            <para><emphasis>ホーム</emphasis> は <filename>$HOME</filename> で示されるホームフォルダを表します。<emphasis>ファイルシステム</emphasis> はファイルシステムのルート ( <filename>/</filename> とも表記されます) を表します。<emphasis>ゴミ箱</emphasis> はゴミ箱フォルダを表します。<emphasis>リムーバブルデバイス</emphasis> はフロッピードライブ、USB デバイスや USB キー、外付けハードディスクドライブなどのリムーバブルデバイスを表します。</para>
+            <para><emphasis>ホーム</emphasis> は <filename>$HOME</filename> で示されるホームフォルダを表します。<emphasis>ファイルシステム</emphasis> はファイルシステムのルート ( <filename>/</filename> とも表記されます) を表します。<emphasis>ゴミ箱</emphasis> はゴミ箱フォルダを表します。<emphasis>リムーバブルデバイス</emphasis> はフロッピードライブ、USB デバイスや USB キー、外付けハードディスクドライブ、あるいは光学ドライブなどを表します。</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -404,7 +404,7 @@ widget_class "*XfdesktopIconView*" style "xfdesktop-icon-view"]]>
   <sect1 id="xfdesktop-misc">
     <title>その他</title>
     
-    <para>メニューやウィンドウリストはコマンドラインからも開くことができます。これはキーボードショートカットに設定するときに役立ちます。メニューを開くときはコマンド <application>@PACKAGE_NAME@</application><application>--menu</application> を、ウィンドウリストを開くときはコマンド <application>@PACKAGE_NAME@</application><application>--windowlist</application> を使用します。現在動作中のインスタンスを終了させる場合は <application>@PACKAGE_NAME@</application><application>--quit</application> を使用します。</para>
+    <para>メニューやウィンドウリストはコマンドラインからも開くことができます。これはキーボードショートカットに設定するときに役立ちます。メニューを開くときはコマンド <application>@PACKAGE_NAME@</application> <application>--menu</application> を、ウィンドウリストを開くときはコマンド <application>@PACKAGE_NAME@</application> <application>--windowlist</application> を使用します。現在動作中のインスタンスを終了させる場合は <application>@PACKAGE_NAME@</application> <application>--quit</application> を使用します。</para>
   </sect1>
   
   <sect1 id="xfdesktop-copyright">

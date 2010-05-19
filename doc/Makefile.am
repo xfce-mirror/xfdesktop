@@ -1,11 +1,13 @@
 SUBDIRS = 	\
+	am		\
 	C 		\
 	ca 		\
 	da 		\
 	fr 		\
 	gl 		\
 	it		\
-	ja
+	ja		\
+	ug
 
 noinst_DATA = \
 	xfce-nochunk.xsl

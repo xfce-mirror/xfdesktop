@@ -1,0 +1,676 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!ENTITY date "January 2007">
+<!ENTITY appversion "@PACKAGE_VERSION@">
+<!ENTITY app "<application>@PACKAGE_NAME@</application>">
+]>
+<article id="xfdesktop" lang="ug">
+  
+  <articleinfo>
+    <title>Xfce 4 ئۈستەليۈزى باشقۇرغۇ</title>
+    
+    <copyright>
+      <year>2008</year> <holder>Jérôme Guelfucci</holder>
+    </copyright>
+
+    <copyright>
+      <year>2004-2007</year> <holder>Brian Tarricone</holder>
+    </copyright>
+    
+    <copyright>
+      <year>2004</year> <holder>Jasper Huijsmans</holder>
+    </copyright>
+    
+    <copyright>
+      <year>2004</year> <holder>François Le Clainche</holder>
+    </copyright>
+    
+<!-- documentation translators: uncomment this and fill in your information.
+    <copyright>
+      <year>2002</year> <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+    </copyright>
+  -->
+
+<!-- I don;t know about this
+    <legalnotice id="legalnotice">
+      <para>
+        This document is provided under the terms of the GNU GPL, version
+        2 or (at your option) any later version.
+      </para>
+    </legalnotice>
+  -->
+    
+    <authorgroup>
+      <author>
+        <firstname>Brian</firstname> <surname>Tarricone</surname>
+        <affiliation>
+          <address><email>kelnos@xfce.org</email></address>
+        </affiliation>
+      </author>
+      <author>
+        <firstname>Jasper</firstname> <surname>Huijsmans</surname>
+        <affiliation>
+          <address><email>jasper@xfce.org</email></address>
+        </affiliation>
+      </author>
+      
+      <author>
+        <firstname>François</firstname> <surname>Le Clainche</surname>
+        <affiliation>
+          <address><email>fleclainche@wanadoo.fr</email></address>
+        </affiliation>
+      </author>
+
+      <author>
+        <firstname>Jérôme</firstname> <surname>Guelfucci</surname>
+        <affiliation>
+          <address><email>jerome.guelfucci@gmail.com</email></address>
+        </affiliation>
+      </author>
+    </authorgroup>
+    
+    <releaseinfo>بۇ <application>@PACKAGE_NAME@</application> نىڭ  @PACKAGE_VERSION@ نەشرىڭ قوللانمىسى</releaseinfo>
+  </articleinfo>
+  
+  <sect1 id="xfdesktop-intro">
+    <title>كىرىش سوز</title>
+    
+    <para>
+      The <application>@PACKAGE_NAME@</application> application manages the desktop backdrop. It sets a
+      backdrop image and/or color and it can pop up an applications
+      menu and a list of all running applications when you click on the desktop
+      with the right or middle mouse button respectively.  As of Xfce 4.4,
+      <application>@PACKAGE_NAME@</application> also draws icons on the desktop.
+    </para>
+    
+    <para>
+      The <application>@PACKAGE_NAME@</application> package installs a settings dialog for use with 
+      the <emphasis>Xfce 4 Settings Manager</emphasis>. From this dialog you 
+      can change the backdrop image and color and change settings for the menu
+      and the window list.
+    </para>
+  </sect1>
+  
+  <sect1 id="xfdesktop-backdrop">
+    <title>Backdrop</title>
+    
+    <para>
+      <application>@PACKAGE_NAME@</application> is responsible for drawing the desktop's backdrop (sometimes called
+      "wallpaper") image.  There are various options for setting a backdrop
+      image.  The final picture seen on the monitor is composed of a solid
+      color or gradient, with an image or photo (with optional transparency)
+      composited on top of the color or gradient.  This allows for some
+      interesting effects using semi-transparent images on top of various
+      color arrangements.
+    </para>
+  </sect1>
+  
+  <sect1 id="xfdesktop-icons">
+    <title>سىنبەلگىلەر</title>
+    
+    <para>
+      In addition to drawing the backdrop image, <application>@PACKAGE_NAME@</application> can draw icons on the
+      desktop.
+    </para>
+    
+    <sect2 id="xfdesktop-window-icons">
+      <title>پروگرامما ئەڭ كىچىك ھالەتكە كەلتۈرۈلگەندىكى سىنبەلگە</title>
+      
+      <para>
+        One mode of operation displays minimized applications as icons on the
+        desktop, which can be rearranged, and will remember their positions
+        when the window is unhidden and then later minimized again.  The icons
+        also provide a right-click menu similar to the window's control menu
+        accessed by clicking the button in the top-left corner of the window.
+      </para>
+    </sect2>
+    
+    <sect2 id="xfdesktop-file-icons">
+      <title>ھۆججەت/ئىجراچى سىنبەلگىلىرى</title>
+      
+      <para>
+        <application>@PACKAGE_NAME@</application> can also display on the desktop the contents of the 
+        <filename>$XDG_DESKTOP_DIR</filename> folder, which can be set in
+        the <filename>$XDG_CONFIG_HOME/user-dirs.dirs</filename> file (if you
+        do not have this file, it will use <filename>$HOME/Desktop</filename>).
+        Files can be arranged, copied, moved, 
+        and linked to and from a file manager, and opened using 
+        preferred applications.  Application and URL launchers can 
+        also be created on the desktop.  The file icon view is modeled 
+        to have a similar look and feel as the
+        <ulink url="http://thunar.xfce.org/" type="http">Thunar</ulink> file
+        manager.
+      </para>
+    </sect2>
+  </sect1>
+
+  <sect1 id="xfdesktop-menu">
+    <title>ئۈستەليۈزى Menu سى</title>
+    
+    <para>
+      A right-click on the desktop backdrop opens a menu that allows you to
+      open a Thunar window in the Desktop directory, to create launchers,
+      URL links, folders and files from templates. It is also possible to
+      open the Desktop Settings and the Properties window of the Desktop 
+      directory and to start many of the applications found on your system.
+    </para>
+    
+    <figure id="root-menu-fig">
+      <title>ئۈستەليۈزى Menu سى</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/root_menu.png" format="PNG"/>
+          </imageobject> 
+          <textobject>
+            <phrase>Shows <application>@PACKAGE_NAME@</application> right-click mouse menu.</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+    </figure>
+    
+    <para>
+      The menu's configuration file, <filename>xfce-applications.menu</filename>, 
+      can be found under the path
+      <filename>$sysconfdir/xdg/menus/xfce-applications.menu</filename>. 
+      For binary packages, <filename>$sysconfdir</filename> is often
+      <filename>/etc</filename> and for source compiles, it defaults to
+      <filename>/usr/local/etc</filename>.
+    </para>
+    
+    <para>
+      The previous menu editor is not available anymore. 
+      However you can customize your menu by copying 
+      <filename>xfce-applications.menu</filename> to
+      <filename>$XDG_CONFIG_HOME/menus</filename> and by modifying it
+      with a text editor such as <application>mousepad</application> or
+      <application>gedit</application>. Please remember that the file 
+      should be UTF-8 encoded.  For more information on menu editing, please
+      see <ulink url="http://wiki.xfce.org/howto/customize-menu" type="http">the
+      Xfce Wiki</ulink>.
+    </para>
+    
+    <para>
+      Further customisation can be achived by creating 
+      <ulink url="http://standards.freedesktop.org/desktop-entry-spec/latest/" type="http">desktop
+      entries</ulink> in <filename>$XDG_DATA_HOME/applications</filename> to
+      hide, modify or add entries in the menu.
+    </para>
+    
+  </sect1>
+  
+  <sect1 id="xfdesktop-window-list">
+    <title>كۆزنەك تىزىملىكى Menu سى</title>
+    
+    <para>
+      A middle-click on the desktop backdrop shows a list of all opened 
+      windows ordered by workspace. It also allows you to add or remove 
+      a workspace.
+    </para>
+
+    <figure id="root-menu2-fig">
+      <title>كۆزنەك تىزىملىكى Menu سى</title> 
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/root_menu2.png" format="PNG"/>
+          </imageobject> 
+          <textobject>
+            <phrase>Shows <application>@PACKAGE_NAME@</application> middle-click mouse menu.</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+    </figure>
+  </sect1>
+  
+  <sect1 id="xfdesktop-settings">
+    <title>ئۈستەليۈزى تەڭشىكى</title>
+    
+    <!-- Needs to be changed once xfce4-settings is documented -->
+    <para>
+      You can start the Desktop settings dialog by clicking on the
+      "Desktop" button in the 
+      <ulink url="xfce-mcs-manager.html#manager-dialog" type="http">Xfce Settings Manager</ulink>.
+    </para>
+    
+    <sect2 id="xfdesktop-settings-background">
+      <title>Background بەتكۈچ</title>
+      
+      <para>
+        The Background tab allows you to set various options related to
+        drawing the desktop backdrop picture.
+      </para>
+      
+      <figure id="xfdesktop-background-fig">
+        <title>ئۈستەليۈزى تەڭشىكى، Background بەتكۈچى</title> 
+        <screenshot>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/xfdesktop-background-tab.png" format="PNG"/>
+            </imageobject> 
+            <textobject>
+              <phrase>
+                Shows the Background tab of the Desktop Settings dialog
+              </phrase>
+            </textobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+      
+      <variablelist>
+        <varlistentry>
+          <term>سۈرەت</term>
+          
+          <listitem>
+            <para>
+              Select the <emphasis>"None"</emphasis> option if you want 
+              <application>@PACKAGE_NAME@</application> to ignore the backdrop image and only use the selected 
+              colors.
+            </para>
+            
+            <para>
+              Select the <emphasis>"Single image"</emphasis> option if 
+              you want <application>@PACKAGE_NAME@</application> to draw a backdrop image.
+            </para>
+            
+            <para>
+              Select the <emphasis>"Image List"</emphasis> option if you 
+              want <application>@PACKAGE_NAME@</application> to randomly choose the backdrop image among a list.
+            </para>
+            
+            <para>
+              
+            </para>
+          </listitem>
+        </varlistentry>
+        
+        <varlistentry>
+          <term>سۈرەتلەر</term>
+          
+          <!-- Single image stuff -->
+          <listitem>
+            <para>
+              If you selected the <emphasis>"Single image"</emphasis> option, 
+              you can choose an image from the treeview. Click on an image 
+              to set it as the current backdrop. <application>@PACKAGE_NAME@</application> will update the 
+              background of your desktop automatically.
+            </para>
+            
+            <para>
+              You can add images to the treeview by clicking on the "plus"
+              button, which will pop a file chooser dialog up. Images can be
+              removed using the "minus" button.
+            </para>
+          </listitem>
+            
+          <!-- Image list stuff -->
+          <listitem>
+            <para>
+              If you selected the <emphasis>"Image list"</emphasis> option, 
+              you can use the "New" button displaying a blank sheet to select 
+              an existing list or create a new one, using a file chooser. 
+              You can still use the "plus" and "minus" buttons to add 
+              and remove images. <application>@PACKAGE_NAME@</application> will then randomly choose a backdrop
+              among this list every time it starts.
+            </para>
+          </listitem>
+          
+          <!-- Images layout options -->
+          <listitem>
+            <para>
+              Five Style options (<emphasis>"Centered"</emphasis>, 
+              <emphasis>"Tiled"</emphasis>, 
+              <emphasis>"Stretched"</emphasis>, 
+              <emphasis>"Scaled"</emphasis> and 
+              <emphasis>"Zoomed"</emphasis>) 
+              are available to specify the fitting of the backdrop image 
+              on the screen, depending on its size. You can also select 
+              the <emphasis>"Auto"</emphasis> item if you want to let <application>@PACKAGE_NAME@</application> 
+              take care of this setting.
+            </para>
+          </listitem>
+          
+          <!-- To be confirmed as I don't have multiscreen -->
+          <listitem>
+            <para>
+              <application>@PACKAGE_NAME@</application> supports xinerama and multiscreen modes. In 
+              multiscreen mode, the Background tab shows one tab per screen.
+            </para>
+          </listitem>
+        </varlistentry>
+        
+        <varlistentry>
+          <term>رەڭ</term>
+          <listitem>
+            <para>
+              The color style is one of four options in dropping list: 
+              a solid color, horizontal gradient, vertical gradient, or 
+              transparent.
+            </para>
+            
+            <para>
+              The <emphasis>"Transparent"</emphasis> option, when you use
+              a colored background without backdrop image, allows you
+              to see the windows that are under the transparent desktop
+              window. This requires an activated compositor.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Two colored buttons allow you to choose the colors for your 
+              desktop. When the solid color option is selected, only the 
+              first color is available.  When either of the gradient 
+              options are selected, both the first and second colors 
+              are available.  Both of the color buttons open a color 
+              chooser dialog:
+            </para>
+            
+            <figure id="select_bg_color-fig">
+              <title>Background رەڭگىنى تاللاش</title>
+              <screenshot>
+                <mediaobject>
+                  <imageobject>
+                    <imagedata fileref="images/select_bg_color.png" format="PNG"/>
+                    </imageobject>
+                  <textobject>
+                    <phrase>Background رەڭگىنى تاللاش دىئالوگىنى كۆرسىتىدۇ</phrase>
+                  </textobject>
+                </mediaobject>
+              </screenshot>
+            </figure>
+            
+            <itemizedlist>
+              <listitem>
+                You can use the colored ring with a triangle inside to
+                select the color you want from the outer ring, then select the
+                darkness or lightness of that color using the inner triangle.
+                Corresponding values of brightness, deepness, and amount of red,
+                green and blue light in the color appear through the entries on
+                the right side of the window.
+              </listitem>
+              
+              <listitem>
+                You can click the eyedropper, then click anywhere on your
+                screen to select the color.
+              </listitem>
+              
+              <listitem>
+                You can enter an HTML-style hexadecimal color value, or
+                simply a color name, in the <emphasis>"رەڭ ئاتى"</emphasis> 
+                entry.
+              </listitem>
+            </itemizedlist>
+            
+            <para>
+              The selected colors will fill the entire root window, and will 
+              remain visible through a transparent backdrop image.
+            </para>
+          </listitem>
+        </varlistentry>
+        
+        <varlistentry>
+          <term>تەڭشەش</term>
+          
+          <listitem>
+            <para>2 ئىككى دانە sliders ئارقىلىق backdrop سۈرىتى  ياكى رېڭىنىڭ يورۇقلۇقى ۋە  saturation نى تەڭشىگىلى بولىدۇ.</para>
+          </listitem>
+        </varlistentry>
+             
+      </variablelist>
+    </sect2>
+    
+    <sect2 id="xfdesktop-settings-menus">
+      <title>Menus بەتكۈچى</title>
+      
+      <figure id="xfdesktop-menus-tab-fig">
+        <title>ئۈستەليۈزى تەڭشىكى، Menus بەتكۈچى</title> 
+        
+        <screenshot>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/xfdesktop-menus-tab.png" format="PNG"/>
+            </imageobject>
+            <textobject>
+              <phrase>
+                Shows the Menus tab of the Desktop Settings dialog
+              </phrase>
+            </textobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+      
+      <variablelist>
+        <varlistentry>
+          <term>ئۈستەليۈزى Menu سى</term>
+          
+          <listitem>
+            <para>
+              If you check the 
+              <emphasis>"Show applications menu on desktop right click"</emphasis>,
+              the <link linkend="xfdesktop-menu">applications menu</link>
+              will be shown when right clicking on the desktop.
+            </para>
+          </listitem>
+          
+          <lisitem>
+            <para>
+              The <emphasis>"Show application icons in menu"</emphasis>
+              allows you to show or hide icons in the menu.
+            </para>
+          </lisitem>
+        </varlistentry>
+        
+        <varlistentry>
+          <term>كۆزنەك تىزىملىكى Menu سى</term>
+          
+          <listitem>
+            <para>
+              If you check the 
+              <emphasis>"Show window list menu on desktop middle click"</emphasis>
+              option, the 
+              <link linkend="xfdesktop-window-list">window list menu</link>
+              will be shown when middle clicking on the desktop.
+            </para>
+          </listitem>
+          
+          <listitem>
+            <para>
+              The <emphasis>"Show application icons in menu"</emphasis>
+              option allows you to show or hide icons in the menu. This 
+              option is only available when 
+              <emphasis>"Show window list menu on desktop middle click"</emphasis> 
+              is checked.
+            </para>
+          </listitem>
+          
+          <!-- Add link to xfwm4 documentation to change workspaces names -->
+          <listitem>
+            <para>
+              The 
+              <emphasis>"Show workspace names in list"</emphasis> 
+              option allows you to show or hide workspace  names in the list. 
+              If checked, windows are shown under the name of their workspace. 
+              Else, they are all shown in the same portion of the menu. 
+              This option is only available when 
+              <emphasis>"Show window list menu on desktop middle click"</emphasis>
+              is checked.
+            </para>
+          </listitem>
+          
+          <listitem>
+            <para>
+              The 
+              <emphasis>"Show submenus for the windows in each workspace"</emphasis>
+              option allows you to have the windows displayed in a submenu 
+              titled with the workspace name. This option is only available 
+              when
+              <emphasis>"Show workspace names in list"</emphasis> is checked.
+            </para>
+          </listitem>
+          
+          <listitem>
+            <para>
+              The 
+              <emphasis>"Show sticky windows only in active workspace"</emphasis>
+              option allows you to have sticky windows displayed only in 
+              the active workspace, instead of displaying their item in 
+              all workspaces.
+            </para>
+          </listitem>
+          
+        </varlistentry>
+      </variablelist>
+    </sect2>
+   
+    <sect2 id="xfdesktop-settings-icons">
+      <title>سىنبەلگە بەتكۈچى</title>
+      
+      <figure id="xfdesktop-icons-tab-fig">
+        <title>ئۈستەليۈزى تەڭشىكى، سىنبەلگە بەتكۈچى</title> 
+        
+        <screenshot>
+          <mediaobject>
+            <imageobject>
+              <imagedata fileref="images/xfdesktop-icons-tab.png" format="PNG"/>
+            </imageobject>
+            <textobject>
+              <phrase>
+                Shows the Icons tab of the Desktop Settings dialog
+              </phrase>
+            </textobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
+      
+      <variablelist>
+        <varlistentry>
+          <term>كۆرۈنۈشى</term>
+          
+          <listitem>
+            <para>
+              The <emphasis>"Icon type"</emphasis> dropping list allows
+              you to set the behavior of the desktop icons. There are
+              three options: "None", to disable desktop icons entirely; 
+              "Minimized" application icons, to show icons for 
+              minimized or hidden applications on the desktop; 
+              and "File/launcher" icons, to show the contents of your
+              <filename>$XDG_DESKTOP_DIR</filename> directory on the 
+              desktop.
+            </para>
+            
+            <para>
+             If desktop icons are enabled, you can control the size of the icon
+             itself (in pixels) with the <emphasis>"Icon size"</emphasis>
+             option, and the font size used to display the icon text
+             (in points) with the 
+             <emphasis>"Use custom font size"</emphasis> option. If you 
+             do not check this last option, the system defaults will be
+             used.
+            </para>
+          </listitem>
+        </varlistentry>
+        
+        <varlistentry>
+          <term>كۆڭۈلدىكى سىنبەلگىلەر</term>
+          
+          <listitem>
+            <para>
+              The checkboxes allow you to show or hide special icons on
+              the desktop, when <application>@PACKAGE_NAME@</application> is set to draw icons. Double 
+              clicking those icons will open a Thunar window displaying
+              the contents of a particular path.
+            </para>
+            
+            <para>
+              <emphasis>Home</emphasis> stands for your home folder, that
+              is to say, <filename>$HOME</filename>.
+              <emphasis>Filesystem</emphasis> stands for the root of your
+              file system, also known as <filename>/</filename>.
+              <emphasis>Trash</emphasis> stands for your trash folder,
+              and <emphasis>Removable devices</emphasis> represents
+              floppy drives, USB drives and keys, external hard drives, optical
+              discs, etc.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+  </sect1>
+  
+  <sect1 id="xfdesktop-hidden-options">
+    <title>يوشۇرۇن تاللانمىلار</title>
+    
+    <para>Xfce تەڭشەك باشقۇرغۇدا تەڭشىگىلى بولمايدىغان بىر نەچچە تاللانمىلار بار، بۇلارنى تېكىست تەھرىرلىگۈدە تەڭشەشكە بولىدۇ.</para>
+    
+    <variablelist>
+      <varlistentry>
+        <term>Icon View Text Appearance</term>
+        <listitem>
+          <para>
+            The colors of the icon text and the icon text background, as well
+            as the opacity of the icon text background, can be customized
+            by putting directives simiar to the following in your
+            <filename>~/.gtkrc-2.0</filename> file:
+          </para>
+          
+          <programlisting>
+<![CDATA[style "xfdesktop-icon-view" {
+    XfdesktopIconView::label-alpha = 75
+
+    base[NORMAL] = "#00ff00"
+    base[SELECTED] = "#5050ff"
+    base[ACTIVE] = "#0000ff"
+
+    fg[NORMAL] = "#ff0000"
+    fg[SELECTED] = "#ff0000"
+    fg[ACTIVE] = "#ff0000"
+}
+widget_class "*XfdesktopIconView*" style "xfdesktop-icon-view"]]>
+          </programlisting>
+          
+          <para>
+            The first entry sets the opacity of the rounded text background.
+            The three "base" entries set the text background color, and the
+            three "fg" entries set the text color.
+          </para>
+          
+          <para>
+            The "NORMAL" entries set the color for the regular, unselected
+            state.  The "SELECTED" entries set the color for when the icon
+            is selected, and the desktop has keyboard focus.  The "ACTIVE"
+            entries set the color for when the icon is selected, but the
+            desktop does not have keyboard focus.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </sect1>
+
+  <sect1 id="xfdesktop-misc">
+    <title>Miscellaneous</title>
+    
+    <para>
+      You can open the menu or window list from the commandline as well.
+      This can be useful for keyboard shortcuts. To open the menu run the
+      command <application>@PACKAGE_NAME@</application> <application>--menu</application>, and for the windowlist 
+      use <application>@PACKAGE_NAME@</application> <application>--windowlist</application>.  To cause the
+      current running instance to quit, run <application>@PACKAGE_NAME@</application>
+      <application>--quit</application>.
+    </para>
+  </sect1>
+  
+  <sect1 id="xfdesktop-copyright">
+    <title><application>@PACKAGE_NAME@</application> ھەققىدە</title>
+    
+    <para><application>@PACKAGE_NAME@</application> نىڭ ئاپتورلىرى Brian Tarricone (<email>kelnos@xfce.org</email>)، Jasper Huijsmans (<email>jasper@xfce.org</email>) ۋە Benedikt Meurer (<email>benny@xfce.org</email>) . تەپسىلىي ئۇچۇرلارنى <ulink url="http://www.xfce.org" type="http">Xfce تورىدىن </ulink> كۆرۈڭ.</para>
+
+    <para>مەزكۇر پروگراممىنىڭ قوللانمىسىدىكى كەمتۈك ۋە تەكلىپ پىكىرلەرنى،  bug كەمتۈك tracking سىستېمىسى <ulink url="http://bugzilla.xfce.org/" type="http">http://bugzilla.xfce.org/</ulink> غا يوللاڭ.</para>
+    
+    <para>مەزكۇر پروگراممىنى ئىشلىتىش ۋە ئورنىتىش ھەققىدىكى سوئاللارنى <ulink url="http://foo-projects.org/mailman/listinfo/xfce" type="http">xfce</ulink> ئېلخەت گۇرۇپپىسىدىن سوراڭ. ئىجادىيەت ھەققىدىكى مۇنازىرىلەر <ulink url="http://foo-projects.org/mailman/listinfo/xfce4-dev" type="http">xfce4-dev</ulink> ئېلخەت گۇرۇپپىسىدا ئېلىپ بېرىلىۋاتىدۇ.</para>
+    
+    <para>مەزكۇر پروگرامما Free Software Foundation ئېلان قىلغان GNU ئاممىۋى ئىجازەتنامىسىنىڭ 2- نەشرىگە ئاساسەن تارقىتىلغان بولۇپ، ئۇنىڭدىن كېيىنكى نەشرلىرىمۇ ماس كېلىدۇ.</para>
+    
+    <para>مەزكۇر پروگراممىغا GNU ئاممىۋى ئىجازەتنامىسى قوشۇپ تارقىتىلغان، ئەگەر ئىجازەتنامە يوق بولسا Free Software Foundation 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA بىلەن ئالاقە قىلىڭ.</para>
+  </sect1>
+  
+</article>
