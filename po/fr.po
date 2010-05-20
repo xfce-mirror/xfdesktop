@@ -6,12 +6,12 @@
 # Maximilian Schleiss <maximilian@xfce.org>, 2006-2008.
 # Mike Massonnet <mmassonnet@xfce.org>, 2008.
 # Jérôme Guelfucci <jeromeg@xfce.org>, 2009.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-28 23:56+0200\n"
+"POT-Creation-Date: 2010-05-20 16:06+0000\n"
 "PO-Revision-Date: 2009-01-19 18:51+0100\n"
 "Last-Translator: Jérôme Guelfucci <jeromeg@xfce.org>\n"
 "Language-Team: French <xfce-i18n@xfce.org>\n"
@@ -65,11 +65,8 @@ msgstr "Créer/Charger la liste de fonds d'écrans"
 
 #: ../settings/main.c:511
 #, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
-"Le fichier de liste de fonds d'écran \"%s\" n'est pas valide. Voulez-vous "
-"l'écraser ?"
+msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr "Le fichier de liste de fonds d'écran \"%s\" n'est pas valide. Voulez-vous l'écraser ?"
 
 #: ../settings/main.c:516
 msgid "Invalid List File"
@@ -160,39 +157,29 @@ msgid "Unable to contact settings server"
 msgstr "Impossible de contacter le serveur de paramètres"
 
 #: ../src/main.c:236
-#, fuzzy
 msgid "Display version information"
-msgstr "Informations sur la version"
+msgstr "Afficher la version"
 
 #: ../src/main.c:237
-#, fuzzy
 msgid "Reload all settings, refresh image list"
-msgstr ""
-"    --reload      Recharger tous le paramètres, rafraîchir la liste "
-"d'images\n"
+msgstr "Recharger tous le paramètres, rafraîchir la liste d'images"
 
 #: ../src/main.c:238
-#, fuzzy
 msgid "Pop up the menu (at the current mouse position)"
-msgstr ""
-"    --menu        Afficher le menu (à la position actuelle de la souris)\n"
+msgstr "Afficher le menu (à la position actuelle de la souris)"
 
 #: ../src/main.c:239
-#, fuzzy
 msgid "Pop up the window list (at the current mouse position)"
-msgstr ""
-"    --windowlist  Afficher la liste des fenêtres (à la position actuelle de "
-"la souris)\n"
+msgstr "Afficher la liste des fenêtres (à la position actuelle de la souris)"
 
 #: ../src/main.c:240
-#, fuzzy
 msgid "Cause xfdesktop to quit"
-msgstr "    --quit        Quitter xfdesktop\n"
+msgstr "Quitter xfdesktop"
 
 #: ../src/main.c:260
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to parse arguments: %s\n"
-msgstr "Impossible de lancer \"%s\" :"
+msgstr "Échec à l'analyse des données : %s\n"
 
 #: ../src/main.c:268
 #, c-format
@@ -289,11 +276,8 @@ msgstr "Erreur du bureau"
 
 #: ../src/xfdesktop-file-icon-manager.c:479
 #, c-format
-msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr ""
-"Xfdesktop n'a pas pu créer le dossier \"%s\" pour stocker les éléments du "
-"bureau:"
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr "Xfdesktop n'a pas pu créer le dossier \"%s\" pour stocker les éléments du bureau:"
 
 #: ../src/xfdesktop-file-icon-manager.c:481
 #: ../src/xfdesktop-file-icon-manager.c:492
@@ -303,12 +287,8 @@ msgstr "Impossible de créer le dossier"
 
 #: ../src/xfdesktop-file-icon-manager.c:490
 #, c-format
-msgid ""
-"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
-"folder."
-msgstr ""
-"Xfdesktop ne peut pas utilliser \"%s\" pour stocker les éléments du bureau "
-"car ce n'est pas un dossier."
+msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
+msgstr "Xfdesktop ne peut pas utilliser \"%s\" pour stocker les éléments du bureau car ce n'est pas un dossier."
 
 #: ../src/xfdesktop-file-icon-manager.c:494
 msgid "Please delete or rename the file."
@@ -374,12 +354,8 @@ msgid "The application chooser could not be opened."
 msgstr "Le sélecteur d'applications n'a pas pu être ouvert."
 
 #: ../src/xfdesktop-file-icon-manager.c:986 ../src/xfdesktop-file-utils.c:368
-msgid ""
-"This feature requires a file manager service present (such as that supplied "
-"by Thunar)."
-msgstr ""
-"Cette option requiert la présence d'un gestionnaire de fichier (comme "
-"Thunar)."
+msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
+msgstr "Cette option requiert la présence d'un gestionnaire de fichier (comme Thunar)."
 
 #: ../src/xfdesktop-file-icon-manager.c:1182
 #, c-format
@@ -397,12 +373,8 @@ msgid "Unable to create folder named \"%s\":"
 msgstr "Impossible de créer le dossier nommé \"%s\" :"
 
 #: ../src/xfdesktop-file-icon-manager.c:1289
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
-msgstr ""
-"Impossible de lancer \"exo-desktop-item-edit\", qui est nécessaire à la "
-"création et l'édition de lanceurs et de liens sur le bureau."
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgstr "Impossible de lancer \"exo-desktop-item-edit\", qui est nécessaire à la création et l'édition de lanceurs et de liens sur le bureau."
 
 #: ../src/xfdesktop-file-icon-manager.c:1324
 msgid "Create New Folder"
@@ -689,12 +661,8 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "Impossible de contacter le service de corbeille de Xfce."
 
 #: ../src/xfdesktop-special-file-icon.c:522
-msgid ""
-"Make sure you have a file manager installed that supports the Xfce Trash "
-"service, such as Thunar."
-msgstr ""
-"Assurez-vous d'avoir un gestionnaire de fichiers, tel que thunar, prennant "
-"en charge le service de corbeille de Xfce."
+msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
+msgstr "Assurez-vous d'avoir un gestionnaire de fichiers, tel que thunar, prennant en charge le service de corbeille de Xfce."
 
 #: ../src/xfdesktop-special-file-icon.c:655
 msgid "_Empty Trash"
@@ -883,7 +851,6 @@ msgstr "Régler le fond d'écran, le menu et le comportement des icônes"
 #~ msgid "Other"
 #~ msgstr "Autre"
 
-#, fuzzy
 #~ msgid "Scientific software"
 #~ msgstr "Logiciels éducatifs"
 
@@ -1082,15 +1049,13 @@ msgstr "Régler le fond d'écran, le menu et le comportement des icônes"
 #~ msgstr "Afficher les icô_nes des applications dans le menu"
 
 #~ msgid "Show _window list menu on desktop middle click"
-#~ msgstr ""
-#~ "Afficher le _menu listant des fenêtres d'un clic milieu sur le bureau"
+#~ msgstr "Afficher le _menu listant des fenêtres d'un clic milieu sur le bureau"
 
 #~ msgid "Show applications menu on _desktop right click"
 #~ msgstr "Afficher le _menu des applications d'un clic droit sur le bureau"
 
 #~ msgid "Show s_ticky windows only in active workspace"
-#~ msgstr ""
-#~ "N'afficher les fenêtres _collantes que dans l'espace de travail actif"
+#~ msgstr "N'afficher les fenêtres _collantes que dans l'espace de travail actif"
 
 #~ msgid "Show workspace _names in list"
 #~ msgstr "Afficher les _noms des espaces de travail dans la liste"
@@ -1109,33 +1074,23 @@ msgstr "Régler le fond d'écran, le menu et le comportement des icônes"
 #~ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 #~ msgstr "Défini la couleur \"droite\" ou \"basse\" du gradient"
 
-#~ msgid ""
-#~ "Specifies the solid color, or the \"left\" or \"top\" color of the "
-#~ "gradient"
-#~ msgstr ""
-#~ "Défini la couleur pleine ou la couleur \"gauche\" ou \"haute\" du gradient"
+#~ msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+#~ msgstr "Défini la couleur pleine ou la couleur \"gauche\" ou \"haute\" du gradient"
 
 #~ msgid "Specify how the image will be resized to fit the screen"
-#~ msgstr ""
-#~ "Spécifier comment l'image doit être redimensionnée pour s'adapter à "
-#~ "l'écran"
+#~ msgstr "Spécifier comment l'image doit être redimensionnée pour s'adapter à l'écran"
 
 #~ msgid "Specify the style of the color drawn behind the backdrop image"
 #~ msgstr "Spécifier le style de la couleur dessinée derrière le fond d'écran"
 
-#~ msgid ""
-#~ "Specify the transparency level for the rounded label drawn behind the "
-#~ "icon text"
-#~ msgstr ""
-#~ "Spécifier le niveau de transparence de l'étiquette arrondie derrière la "
-#~ "légende d'une icône"
+#~ msgid "Specify the transparency level for the rounded label drawn behind the icon text"
+#~ msgstr "Spécifier le niveau de transparence de l'étiquette arrondie derrière la légende d'une icône"
 
 #~ msgid "St_yle:"
 #~ msgstr "St_yle :"
 
 #~ msgid "Use _submenus for the windows in each workspace"
-#~ msgstr ""
-#~ "Utiliser des _sous-menus pour les fenêtres de chaque espace de travail"
+#~ msgstr "Utiliser des _sous-menus pour les fenêtres de chaque espace de travail"
 
 #~ msgid "Use custom _font size:"
 #~ msgstr "Utiliser une taille de _police personnalisée :"
@@ -1266,14 +1221,8 @@ msgstr "Régler le fond d'écran, le menu et le comportement des icônes"
 #~ msgid "xfce4-menueditor is deprecated"
 #~ msgstr "xfce4-menueditor est obsolète"
 
-#~ msgid ""
-#~ "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
-#~ "edit the new menu file format.  You may continue and edit an old-style "
-#~ "menu file, or quit."
-#~ msgstr ""
-#~ "Le système du menu Xfce à été remplacé, et xfce4-menueditor n'est pas "
-#~ "capable d'éditer le nouveau format du menu. Vous pouvez continuer et "
-#~ "éditer un ancien menu, ou quitter."
+#~ msgid "Xfce's menu system has been replaced, and xfce4-menueditor is not able to edit the new menu file format.  You may continue and edit an old-style menu file, or quit."
+#~ msgstr "Le système du menu Xfce à été remplacé, et xfce4-menueditor n'est pas capable d'éditer le nouveau format du menu. Vous pouvez continuer et éditer un ancien menu, ou quitter."
 
 #~ msgid "Continue"
 #~ msgstr "Continuer"
@@ -1441,8 +1390,7 @@ msgstr "Régler le fond d'écran, le menu et le comportement des icônes"
 #~ msgstr "Conception d'icône"
 
 #~ msgid "You have modified the menu, do you want to save it before quitting ?"
-#~ msgstr ""
-#~ "Le menu a été modifié, désirez-vous le sauvegarder avent de quitter ?"
+#~ msgstr "Le menu a été modifié, désirez-vous le sauvegarder avent de quitter ?"
 
 #~ msgid "Forget modifications"
 #~ msgstr "Ignorer les modifications"
