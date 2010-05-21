@@ -1,12 +1,22 @@
 Xfce 4.6.2
 ----------
 
-  * Add Catalan and Galician translations of the manual.
-  * Fix inability to delete broken symlinks on the desktop (bug 5387).
-  * Never show 'Unmount' in volume context menus.
+  * Build fixes for GIT.
+  * Rebuild doc directory.
+  * Add libexo to CFLAGS and LIBS for panel plugin.
+  * Fix detection of rename/delete ability.
+  * Fix compilation when libexo isn't present.
+  * Update icon text labels when system font size changes (bug #2862).
+  * Set mnemonic widget properly for icon type/size labels (bug #5555).
   * Always show 'Eject' in volume context menus, regardless of whether
-    or not it's mounted (bug 5343).
-  * Update icon text labels when system font size changes (bug 2862).
+    or not it's mounted (bug #5343).
+  * Never show 'Unmount' in volume context menus.
+  * Use GtkBindingSet for keyboard handling on desktop.
+  * Only register menu with panel if popup succeeded (bug #5792).
+  * Fix inability to delete broken symlinks on the desktop (bug 5387).
+  * Don't misuse the g_return_(val_)?if_fail() macros as much (bug #5791).
+  * Translation updates (el, es, gl, it, pl, pt, ru, tr, ro, lv, ca,
+    ur, ur_PK, hu, ast, da, sk, nn, nl, si, am, kk, ja, ug, fr).
 
 
 Xfce 4.6.1
