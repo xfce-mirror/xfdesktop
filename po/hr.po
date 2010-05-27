@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-26 04:07+0000\n"
+"POT-Creation-Date: 2010-05-27 04:06+0000\n"
 "PO-Revision-Date: 2010-05-26 01:47+0200\n"
 "Last-Translator: Ivica Kolić<ikoli@yahoo.com> <>\n"
 "Language-Team: Croatian <>\n"
@@ -95,27 +95,27 @@ msgstr "Sve datoteke"
 #: ../settings/main.c:1249
 #, c-format
 msgid "Screen %d, Monitor %d (%s)"
-msgstr ""
+msgstr "Zaslon% d,% d Monitor (% s)"
 
 #: ../settings/main.c:1254
 #, c-format
 msgid "Screen %d, Monitor %d"
-msgstr ""
+msgstr "Zaslon% d,% d Monitor"
 
 #: ../settings/main.c:1257
 #, c-format
 msgid "Screen %d"
-msgstr ""
+msgstr "Zaslon% d"
 
 #: ../settings/main.c:1263
 #, c-format
 msgid "Monitor %d (%s)"
-msgstr ""
+msgstr "Monitor% d (% s)"
 
 #: ../settings/main.c:1268
 #, c-format
 msgid "Monitor %d"
-msgstr ""
+msgstr "Monitor%d"
 
 #: ../settings/main.c:1477
 msgid "Settings manager socket"
@@ -194,8 +194,7 @@ msgstr ""
 #: ../src/main.c:275
 #, c-format
 msgid "    Desktop Menu:        %s\n"
-msgstr ""
-"Izbornik radne površine:  %s\n"
+msgstr "Izbornik radne površine:  %s\n"
 
 #: ../src/main.c:277 ../src/main.c:284 ../src/main.c:291
 msgid "enabled"
@@ -273,18 +272,18 @@ msgstr "Greška radne površine"
 #: ../src/xfdesktop-file-icon-manager.c:479
 #, c-format
 msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr ""
+msgstr "Xfdesktop nije bio u mogućnosti to stvoriti mapu \\ \"% s \" za pohranu stavki na radnoj površini:"
 
 #: ../src/xfdesktop-file-icon-manager.c:481
 #: ../src/xfdesktop-file-icon-manager.c:492
 #: ../src/xfdesktop-file-icon-manager.c:1253
 msgid "Create Folder Failed"
-msgstr ""
+msgstr "Nisam uspio napraviti mapu"
 
 #: ../src/xfdesktop-file-icon-manager.c:490
 #, c-format
 msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
-msgstr ""
+msgstr "Xfdesktop se ne mogu koristiti \\ \"% s \" za održavanje stavki na radnoj površini, jer nije mapa."
 
 #: ../src/xfdesktop-file-icon-manager.c:494
 msgid "Please delete or rename the file."
@@ -327,7 +326,7 @@ msgstr "Jeste li sigurni da želite izbrisati slijedaće %d datoteke"
 
 #: ../src/xfdesktop-file-icon-manager.c:699
 msgid "Delete Multiple Files"
-msgstr ""
+msgstr "Obriši više datoteka"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:922
@@ -335,7 +334,7 @@ msgstr ""
 #: ../src/xfdesktop-file-utils.c:363
 #, c-format
 msgid "Unable to launch \"%s\":"
-msgstr ""
+msgstr "Nije moguće pokrenuti \\ \"% s \":"
 
 #: ../src/xfdesktop-file-icon-manager.c:924
 #: ../src/xfdesktop-file-icon-manager.c:984
@@ -351,7 +350,7 @@ msgstr "Birač programa se ne može otvoriti"
 
 #: ../src/xfdesktop-file-icon-manager.c:986 ../src/xfdesktop-file-utils.c:368
 msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
-msgstr ""
+msgstr "Ova značajka zahtijeva prisutnost servisa upravitelha datotekama (kao što je dobivate od Thunar)."
 
 #: ../src/xfdesktop-file-icon-manager.c:1182
 #, c-format
@@ -366,7 +365,7 @@ msgstr "Otvori pomoću \"%s\""
 #: ../src/xfdesktop-file-icon-manager.c:1250
 #, c-format
 msgid "Unable to create folder named \"%s\":"
-msgstr ""
+msgstr "Nije moguće izraditi mapu naziva \\ \"% s \":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1289
 msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
@@ -389,16 +388,16 @@ msgstr "Napravi"
 #: ../src/xfdesktop-file-icon-manager.c:1365
 #, c-format
 msgid "Unable to create file named \"%s\":"
-msgstr ""
+msgstr "Ne mogu stvoriti datoteku naziva \\ \"% s \":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1368
 msgid "Create File Failed"
-msgstr ""
+msgstr "Stvaranje datoteke nije uspjelo"
 
 #: ../src/xfdesktop-file-icon-manager.c:1408
 #, c-format
 msgid "Create Document from template \"%s\""
-msgstr ""
+msgstr "Stvaranje dokumenta iz predloška \\ \"% s \""
 
 #: ../src/xfdesktop-file-icon-manager.c:1427
 msgid "Create Empty File"
@@ -411,11 +410,11 @@ msgstr "Nova prazna datoteka"
 #: ../src/xfdesktop-file-icon-manager.c:1464
 #, c-format
 msgid "Unable to create file \"%s\":"
-msgstr ""
+msgstr "Ne mogu stvoriti datoteku \\ \"% s \":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1465
 msgid "Create Error"
-msgstr ""
+msgstr "Greškastvaranja"
 
 #: ../src/xfdesktop-file-icon-manager.c:1750
 msgid "_Open all"
@@ -483,21 +482,21 @@ msgstr "_Svojstva"
 #: ../src/xfdesktop-regular-file-icon.c:391
 #, c-format
 msgid "Failed to run \"%s\":"
-msgstr ""
+msgstr "Nisam uspio pokrenuti \\ \"% s \":"
 
 #: ../src/xfdesktop-file-icon-manager.c:3372
 #: ../src/xfdesktop-regular-file-icon.c:393
 msgid "Run Error"
-msgstr ""
+msgstr "Greška pokretanja"
 
 #: ../src/xfdesktop-file-icon.c:145
 msgid "The associated application could not be found or executed."
-msgstr ""
+msgstr "Povezane programe nije moguće pronaći ili izvršiti."
 
 #: ../src/xfdesktop-file-properties-dialog.c:104
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
-msgstr ""
+msgstr "Nije moguće postaviti zadaniprogram za \\ \"% s \" za \\ \"% s \":"
 
 #: ../src/xfdesktop-file-properties-dialog.c:107
 msgid "Properties Error"
@@ -505,7 +504,7 @@ msgstr "Greška svojstava"
 
 #: ../src/xfdesktop-file-properties-dialog.c:139
 msgid "None"
-msgstr ""
+msgstr "Nijedan"
 
 #: ../src/xfdesktop-file-properties-dialog.c:139
 msgid "Write only"
@@ -529,7 +528,7 @@ msgstr "Ime:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:216
 msgid "Kind:"
-msgstr ""
+msgstr "Vrsta:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:236
 msgid "Link Target:"
@@ -547,7 +546,7 @@ msgstr "Otvori pomoću"
 
 #: ../src/xfdesktop-file-properties-dialog.c:355
 msgid "Modified:"
-msgstr ""
+msgstr "Izmjenjeno:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:373
 msgid "Accessed:"
@@ -565,7 +564,7 @@ msgstr "Veličina:"
 #: ../src/xfdesktop-regular-file-icon.c:497
 #: ../src/xfdesktop-special-file-icon.c:496
 msgid "%s (%"
-msgstr ""
+msgstr "% s (%"
 
 #. permissions tab
 #: ../src/xfdesktop-file-properties-dialog.c:433
@@ -614,7 +613,7 @@ msgstr "Greška datoteke"
 
 #: ../src/xfdesktop-file-utils.c:138
 msgid "broken link"
-msgstr ""
+msgstr "neispravana poveznica"
 
 #: ../src/xfdesktop-file-utils.c:142
 #, c-format
@@ -651,11 +650,11 @@ msgstr "Greška smeća"
 
 #: ../src/xfdesktop-special-file-icon.c:521
 msgid "Unable to contact the Xfce Trash service."
-msgstr ""
+msgstr "Nije moguće kontaktirati servis Xfce smeće."
 
 #: ../src/xfdesktop-special-file-icon.c:522
 msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
-msgstr ""
+msgstr "Provjerite da li imate instaliran upravitelj datotekama koji podržava uslugu Xfce smeće, kao što je Thunar."
 
 #: ../src/xfdesktop-special-file-icon.c:655
 msgid "_Empty Trash"
@@ -664,7 +663,7 @@ msgstr "_Isprazni smeće"
 #: ../src/xfdesktop-volume-icon.c:478
 #, c-format
 msgid "%s (%s total)"
-msgstr ""
+msgstr "% S (% s ukupno)"
 
 #: ../src/xfdesktop-volume-icon.c:482
 #, c-format
@@ -695,7 +694,7 @@ msgstr ""
 #: ../src/xfdesktop-volume-icon.c:535
 #, c-format
 msgid "Unable to eject \"%s\":"
-msgstr ""
+msgstr "Ne mogu izbaciti \\ \"% s \":"
 
 #: ../src/xfdesktop-volume-icon.c:538
 msgid "Eject Failed"
@@ -719,4 +718,4 @@ msgstr "Radna površina"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Set desktop background and menu and icon behaviour"
-msgstr ""
+msgstr "Postavljanje ponašanja pozadine radne površine i izbornika i ikona"
