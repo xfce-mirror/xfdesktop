@@ -538,6 +538,7 @@ xfdesktop_app_menu_item_new_full(const gchar *label,
                         NULL);
 }
 
+#if 0
 /**
  * xfdesktop_app_menu_item_new_from_desktop_entry:
  * @entry: An #XfceDesktopEntry describing the menu item to create.
@@ -669,6 +670,7 @@ xfdesktop_app_menu_item_new_from_desktop_entry(XfceDesktopEntry *entry,
     
     return GTK_WIDGET(app_menu_item);
 }
+#endif
 
 /**
  * xfdesktop_app_menu_item_set_name:

@@ -53,8 +53,10 @@ GtkWidget *xfdesktop_app_menu_item_new_full                (const gchar *label,
                                                             gboolean needs_term,
                                                             gboolean snotify);
 
+#if 0
 GtkWidget *xfdesktop_app_menu_item_new_from_desktop_entry  (XfceDesktopEntry *entry,
                                                             gboolean show_icon);
+#endif
 
 void xfdesktop_app_menu_item_set_name                      (XfdesktopAppMenuItem *app_menu_item,
                                                             const gchar *name);
