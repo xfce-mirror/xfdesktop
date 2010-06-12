@@ -79,10 +79,10 @@ void xfdesktop_file_utils_open_folder(const ThunarVfsInfo *info,
                                       GtkWindow *parent);
 
 
-gboolean xfdesktop_file_utils_dbus_init();
-DBusGProxy *xfdesktop_file_utils_peek_trash_proxy();
-DBusGProxy *xfdesktop_file_utils_peek_filemanager_proxy();
-void xfdesktop_file_utils_dbus_cleanup();
+gboolean xfdesktop_file_utils_dbus_init(void);
+DBusGProxy *xfdesktop_file_utils_peek_trash_proxy(void);
+DBusGProxy *xfdesktop_file_utils_peek_filemanager_proxy(void);
+void xfdesktop_file_utils_dbus_cleanup(void);
 
 
 
