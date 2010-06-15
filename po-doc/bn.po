@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Sadia Afroz <sadia@ankur.org.bd>, 2010.
+# Ummey Salma <snigdha@ankur.org.bd>, 2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: bn\n"
 "POT-Creation-Date: 2009-04-20 14:33+0200\n"
-"PO-Revision-Date: 2010-02-28 17:25+0600\n"
-"Last-Translator: Sadia Afroz <sadia@ankur.org.bd>\n"
+"PO-Revision-Date: 2010-06-15 17:25+0600\n"
+"Last-Translator: Ummey Salma <snigdha@ankur.org.bd>\n"
 "Language-Team: Bengali <ankur-bd-l10n@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -210,6 +211,7 @@ msgstr ""
 msgid "Minimized Window Icons"
 msgstr "ন্যূনতম বিস্তারের উইন্ডোর আইকন"
 
+# snigdha
 #: ../doc/C/xfdesktop.xml.in:123(para)
 msgid ""
 "One mode of operation displays minimized applications as icons on the "
@@ -218,11 +220,17 @@ msgid ""
 "right-click menu similar to the window's control menu accessed by clicking "
 "the button in the top-left corner of the window."
 msgstr ""
+"অপারেশনের একটি মোড নূন্যতম বিস্তারের অ্যাপ্লিকেশনকে আইকন আকারে ডেস্কটপে "
+"প্রদর্শন করে, যা আবার পুনর্বিন্যাস করা যায় এবং উইন্ডো আড়াল করা হলেও অবস্থান "
+"মনে রাখবে ও পরে আবার নূন্যতম বিস্তৃত হয়ে যাবে। উইন্ডোর উপরে-বাম কোণের "
+"বোতামে ক্লিক করলে এর কন্ট্রোল মেনুতে যেমন প্রবেশ করা যায় এই আইকনেও সেরকম "
+"একটি ডান-ক্লিক মেনু আছে।"
 
 #: ../doc/C/xfdesktop.xml.in:133(title)
 msgid "File/Launcher Icons"
 msgstr "ফাইল/চালুকরণ আইকন"
 
+# snigdha
 #: ../doc/C/xfdesktop.xml.in:135(para)
 msgid ""
 "<application>@PACKAGE_NAME@</application> can also display on the desktop "
@@ -235,11 +243,21 @@ msgid ""
 "similar look and feel as the <ulink url=\"http://thunar.xfce.org/\" type="
 "\"http\">Thunar</ulink> file manager."
 msgstr ""
+"<application>@PACKAGE_NAME@</application> ডেস্কটপে "
+"<filename>$XDG_DESKTOP_DIR</filename> ফোল্ডারের বিষয়বস্তু প্রদর্শন করতে "
+"পারে, যা <filename>$XDG_CONFIG_HOME/user-dirs.dirs</filename> (এই ফাইলটি না "
+"থাকে তবে <filename>$HOME/Desktop</filename>) ফাইলেও স্থাপন করা যেতে পারে। "
+"ফাইলগুলো সজ্জিতকরন, অনুলিপিকরন, স্থানান্তর, ফাইল ব্যবস্থাপক হতে বা এর সাথে "
+"সংযুক্তকরন ছাড়াও পছন্দনীয় অ্যাপ্লিকেশন দ্বারা ফাইলটি খোলা যায়। ডেস্কটপে "
+"অ্যাপ্লিকেশন ও URL লঞ্চারও তৈরী করা যায়। ফাইল আইকন ভিউটিকে <ulink "
+"url=\"http://thunar.xfce.org/\" type=\"http\">Thunar</ulink> ফাইল ম্যানেজার এর "
+"মত করেই তৈরী করা হয়েছে।"
 
 #: ../doc/C/xfdesktop.xml.in:152(title)
 msgid "The Desktop Menu"
 msgstr "ডেস্কটপ মেনু"
 
+# snigdha
 #: ../doc/C/xfdesktop.xml.in:154(para)
 msgid ""
 "A right-click on the desktop backdrop opens a menu that allows you to open a "
@@ -248,6 +266,10 @@ msgid ""
 "Settings and the Properties window of the Desktop directory and to start "
 "many of the applications found on your system."
 msgstr ""
+"ডেস্কটপ ব্যাকড্রপে ডান-ক্লিক করলে একটি মেনু আসে যেখানে আপনি ডেক্সটপ "
+"ডিরেক্টরীতে টেমপ্লট থেকে লঞ্চার, URL লিংক, ফোল্ডার ও ফাইল তৈরী করার জন্য "
+"Thunar উইন্ডো খুলতে পারবেন। ডেক্সটপ ডিেরক্টরীর ডেক্সটপ সেটিংস ও প্রপার্টিজ "
+"উইন্ডো খোলা এবং আপনার সিস্টেমের অনেক অ্যাপ্লিকেশনও শুরু করা সম্ভব হয়।"
 
 #: ../doc/C/xfdesktop.xml.in:163(title) ../doc/C/xfdesktop.xml.in:455(term)
 msgid "Desktop Menu"
@@ -271,6 +293,7 @@ msgstr ""
 "<filename>/etc</filename> এবং উৎস কম্পাইলের জন্য, এর পূর্বনির্ধারিত মান "
 "<filename>/usr/local/etc</filename>।"
 
+# snigdha
 #: ../doc/C/xfdesktop.xml.in:185(para)
 msgid ""
 "The previous menu editor is not available anymore. However you can customize "
@@ -281,7 +304,16 @@ msgid ""
 "more information on menu editing, please see <ulink url=\"http://wiki.xfce."
 "org/howto/customize-menu\" type=\"http\">the Xfce Wiki</ulink>."
 msgstr ""
+"পূর্ববর্তী মেনু সম্পাদক এখন বিদ্যমান নেই। উপরন্তু মেনুকে আপনার পছন্দসই  করতে "
+"<filename>xfce-অ্যাপ্লিকেশন.মেনু</filename> কে "
+"<filename>$XDG_CONFIG_HOME/menus</filename> এ অনুলিপি করে এবং "
+"<application>মাউসপ্যাড</application> বা <application>gedit</application> "
+"টেক্সট সম্পাদকের সাহায্যে পরিবর্তন করে নিতে পারেন। অনুগ্রহ করে মনে রাখবেন "
+"ফাইলটি যাতে অবশ্যই UTF-8 এনকোডেড হয়। মেনু সম্পাদনার আরও তথ্যের জন্য <ulink "
+"url=\"http://wiki.xfce.org/howto/customize-menu\" type=\"http\"> Xfce "
+"উইকি</ulink> দেখুন।"
 
+# snigdha
 #: ../doc/C/xfdesktop.xml.in:197(para)
 msgid ""
 "Further customisation can be achived by creating <ulink url=\"http://"
@@ -289,6 +321,11 @@ msgid ""
 "entries</ulink> in <filename>$XDG_DATA_HOME/applications</filename> to hide, "
 "modify or add entries in the menu."
 msgstr ""
+"মেনুকে পছন্দনীয় করে তোলার জন্য "
+"<filename>$XDG_DATA_HOME/applications</filename> এ <ulink "
+"url=\"http://standards.freedesktop.org/desktop-entry-spec/latest/\" "
+"type=\"http\">ডেস্কটপ ভুক্তি</ulink> তৈরী করে মেনুতে কোনো তালিকা আড়াল, "
+"পরিবর্তন ও সংযোজন করা যায়।"
 
 #: ../doc/C/xfdesktop.xml.in:207(title)
 msgid "The Window List Menu"
@@ -383,6 +420,7 @@ msgstr ""
 msgid "Images"
 msgstr "ছবি"
 
+# snigdha
 #: ../doc/C/xfdesktop.xml.in:298(para)
 msgid ""
 "If you selected the <emphasis>\"Single image\"</emphasis> option, you can "
@@ -390,13 +428,20 @@ msgid ""
 "current backdrop. <application>@PACKAGE_NAME@</application> will update the "
 "background of your desktop automatically."
 msgstr ""
+"আপনি <emphasis>\"একক ছবি\"</emphasis> অপশন নির্বাচন করলে ট্রিভিউ থেকে একটি ছবি "
+"বাছাই করতে পারেন। বর্তমান ব্যাকড্রপ হিসাবে নির্ধারন করার জন্য একটি ছবিতে "
+"ক্লিক করুন। <application>@PACKAGE_NAME@</application> স্বয়ংক্রিয়ভাবে আপনার "
+"ডেক্সটপ পটভূমিকে হালনাগাদ করে দিবে।"
 
+# snigdha
 #: ../doc/C/xfdesktop.xml.in:305(para)
 msgid ""
 "You can add images to the treeview by clicking on the \"plus\" button, which "
 "will pop a file chooser dialog up. Images can be removed using the \"minus\" "
 "button."
 msgstr ""
+"\"প্লাস\" বোতামে ক্লিক করে আপনি ট্রিভিউতে ছবি যোগ করতে পারেন, যা পছন্দকারী "
+"ডায়ালগ আপে ফাইলটি পপ করবে। \"মাইনাস\" বোতামে ক্লিক করে ছবিটি সরিয়ে ফেলা যাবে।"
 
 #: ../doc/C/xfdesktop.xml.in:314(para)
 msgid ""
@@ -833,4 +878,6 @@ msgstr ""
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2.
 #: ../doc/C/xfdesktop.xml.in:0(None)
 msgid "translator-credits"
-msgstr "সাদিয়া আফরোজ <sadia@ankur.org.bd>, ২০১০"
+msgstr ""
+"সাদিয়া আফরোজ <sadia@ankur.org.bd>, ২০১০\nউম্মে সালমা <snigdha@ankur.org.bd>, "
+"২০১০"
