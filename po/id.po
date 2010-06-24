@@ -2,12 +2,12 @@
 # Copyright (C) 2003-2006 The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
 # Andhika Padmawan <andhika.padmawan@gmail.com>, 2008.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-28 23:56+0200\n"
+"POT-Creation-Date: 2010-06-24 10:07+0000\n"
 "PO-Revision-Date: 2008-12-21 21:17+0700\n"
 "Last-Translator: Andhika Padmawan <andhika.padmawan@gmail.com>\n"
 "Language-Team: Indonesian <id@li.org>\n"
@@ -61,11 +61,8 @@ msgstr "Buat/Muat Senarai Latar Belakang"
 
 #: ../settings/main.c:511
 #, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
-"Berkas \"%s\" bukan berkas senarai latar belakang yang sah. Anda ingin "
-"menimpanya?"
+msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr "Berkas \"%s\" bukan berkas senarai latar belakang yang sah. Anda ingin menimpanya?"
 
 #: ../settings/main.c:516
 msgid "Invalid List File"
@@ -156,36 +153,29 @@ msgid "Unable to contact settings server"
 msgstr "Tak dapat menghubungi server pengaturan"
 
 #: ../src/main.c:236
-#, fuzzy
 msgid "Display version information"
-msgstr "Informasi versi"
+msgstr "Tampilkan informasi versi"
 
 #: ../src/main.c:237
-#, fuzzy
 msgid "Reload all settings, refresh image list"
-msgstr ""
-"    --reload      Muat ulang semua pengaturan, segarkan senarai citra\n"
+msgstr "Muat ulang semua pengaturan, segarkan senarai citra"
 
 #: ../src/main.c:238
-#, fuzzy
 msgid "Pop up the menu (at the current mouse position)"
-msgstr "    --menu        Munculkan menu (di posisi tetikus sekarang)\n"
+msgstr "Munculkan menu (di posisi tetikus sekarang)"
 
 #: ../src/main.c:239
-#, fuzzy
 msgid "Pop up the window list (at the current mouse position)"
-msgstr ""
-"    --windowlist  Munculkan senarai jendela (di posisi tetikus sekarang)\n"
+msgstr "Munculkan senarai jendela (di posisi tetikus sekarang)"
 
 #: ../src/main.c:240
-#, fuzzy
 msgid "Cause xfdesktop to quit"
-msgstr "    --quit        Menyebabkan xfdesktop untuk berhenti\n"
+msgstr "Menyebabkan xfdesktop untuk berhenti"
 
 #: ../src/main.c:260
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to parse arguments: %s\n"
-msgstr "Gagal menjalankan \"%s\":"
+msgstr "Gagal mengurai argumen: %s\n"
 
 #: ../src/main.c:268
 #, c-format
@@ -282,10 +272,8 @@ msgstr "Galat Destop"
 
 #: ../src/xfdesktop-file-icon-manager.c:479
 #, c-format
-msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr ""
-"Xfdesktop tak dapat membuat folder \"%s\" tempat menyimpan item destop:"
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr "Xfdesktop tak dapat membuat folder \"%s\" tempat menyimpan item destop:"
 
 #: ../src/xfdesktop-file-icon-manager.c:481
 #: ../src/xfdesktop-file-icon-manager.c:492
@@ -295,12 +283,8 @@ msgstr "Gagal Membuat Folder"
 
 #: ../src/xfdesktop-file-icon-manager.c:490
 #, c-format
-msgid ""
-"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
-"folder."
-msgstr ""
-"Xfdesktop tak dapat menggunakan \"%s\" untuk menahan item destop karena itu "
-"bukan folder."
+msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
+msgstr "Xfdesktop tak dapat menggunakan \"%s\" untuk menahan item destop karena itu bukan folder."
 
 #: ../src/xfdesktop-file-icon-manager.c:494
 msgid "Please delete or rename the file."
@@ -366,12 +350,8 @@ msgid "The application chooser could not be opened."
 msgstr "Pemilih aplikasi tak dapat dibuka."
 
 #: ../src/xfdesktop-file-icon-manager.c:986 ../src/xfdesktop-file-utils.c:368
-msgid ""
-"This feature requires a file manager service present (such as that supplied "
-"by Thunar)."
-msgstr ""
-"Fitur ini memerlukan adanya layanan manajer berkas (seperti yang disediakan "
-"oleh Thunar)."
+msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
+msgstr "Fitur ini memerlukan adanya layanan manajer berkas (seperti yang disediakan oleh Thunar)."
 
 #: ../src/xfdesktop-file-icon-manager.c:1182
 #, c-format
@@ -389,12 +369,8 @@ msgid "Unable to create folder named \"%s\":"
 msgstr "Tak dapat membuat folder yang bernama \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1289
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
-msgstr ""
-"Tak dapat menjalankan \"exo-desktop-item-edit\", yang diperlukan untuk "
-"membuat dan menyunting peluncur serta tautan di destop."
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgstr "Tak dapat menjalankan \"exo-desktop-item-edit\", yang diperlukan untuk membuat dan menyunting peluncur serta tautan di destop."
 
 #: ../src/xfdesktop-file-icon-manager.c:1324
 msgid "Create New Folder"
@@ -681,12 +657,8 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "Tak dapat menghubungi layanan Tempat Sampah Xfce."
 
 #: ../src/xfdesktop-special-file-icon.c:522
-msgid ""
-"Make sure you have a file manager installed that supports the Xfce Trash "
-"service, such as Thunar."
-msgstr ""
-"Pastikan bahwa anda telah menginstal manajer berkas yang mendukung layanan "
-"Tempat Sampah Xfce, seperti Thunar."
+msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
+msgstr "Pastikan bahwa anda telah menginstal manajer berkas yang mendukung layanan Tempat Sampah Xfce, seperti Thunar."
 
 #: ../src/xfdesktop-special-file-icon.c:655
 msgid "_Empty Trash"
@@ -875,7 +847,6 @@ msgstr "Atur latar belakang desktop dan menu serta perilaku ikon"
 #~ msgid "Other"
 #~ msgstr "Lainnya"
 
-#, fuzzy
 #~ msgid "Scientific software"
 #~ msgstr "Peranti lunak pendidikan"
 
@@ -1099,11 +1070,8 @@ msgstr "Atur latar belakang desktop dan menu serta perilaku ikon"
 #~ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 #~ msgstr "Tentukan warna \"kanan\" atau \"bawah\" dari gradasi"
 
-#~ msgid ""
-#~ "Specifies the solid color, or the \"left\" or \"top\" color of the "
-#~ "gradient"
-#~ msgstr ""
-#~ "Tentukan warna solid, atau warna \"kiri\" atau \"atas\" dari gradasi"
+#~ msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+#~ msgstr "Tentukan warna solid, atau warna \"kiri\" atau \"atas\" dari gradasi"
 
 #~ msgid "Specify how the image will be resized to fit the screen"
 #~ msgstr "Tentukan bagaimana citra akan diubah ukuran agar pas dengan layar"
@@ -1111,12 +1079,8 @@ msgstr "Atur latar belakang desktop dan menu serta perilaku ikon"
 #~ msgid "Specify the style of the color drawn behind the backdrop image"
 #~ msgstr "Tentukan gaya warna yang digambar di belakang citra latar belakang"
 
-#~ msgid ""
-#~ "Specify the transparency level for the rounded label drawn behind the "
-#~ "icon text"
-#~ msgstr ""
-#~ "Tentukan level transparansi untuk label bundar yang digambar di belakang "
-#~ "teks ikon"
+#~ msgid "Specify the transparency level for the rounded label drawn behind the icon text"
+#~ msgstr "Tentukan level transparansi untuk label bundar yang digambar di belakang teks ikon"
 
 #~ msgid "St_yle:"
 #~ msgstr "Ga_ya:"
@@ -1253,14 +1217,8 @@ msgstr "Atur latar belakang desktop dan menu serta perilaku ikon"
 #~ msgid "xfce4-menueditor is deprecated"
 #~ msgstr "xfce4-menueditor telah kuno"
 
-#~ msgid ""
-#~ "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
-#~ "edit the new menu file format.  You may continue and edit an old-style "
-#~ "menu file, or quit."
-#~ msgstr ""
-#~ "Sistem menu Xfce telah diganti, dan xfce-menueditor tak lagi dapat "
-#~ "digunakan menyunting format berkas menu baru. Anda dapat melanjutkan dan "
-#~ "menyunting berkas menu gaya lama, atau keluar."
+#~ msgid "Xfce's menu system has been replaced, and xfce4-menueditor is not able to edit the new menu file format.  You may continue and edit an old-style menu file, or quit."
+#~ msgstr "Sistem menu Xfce telah diganti, dan xfce-menueditor tak lagi dapat digunakan menyunting format berkas menu baru. Anda dapat melanjutkan dan menyunting berkas menu gaya lama, atau keluar."
 
 #~ msgid "Continue"
 #~ msgstr "Lanjutkan"
@@ -1460,13 +1418,11 @@ msgstr "Atur latar belakang desktop dan menu serta perilaku ikon"
 #~ msgid ""
 #~ "Could not save file %s: %s\n"
 #~ "\n"
-#~ "Please choose another location or press cancel in the dialog to discard "
-#~ "your changes"
+#~ "Please choose another location or press cancel in the dialog to discard your changes"
 #~ msgstr ""
 #~ "Tak dapat menyimpan berkas %s: %s\n"
 #~ "\n"
-#~ "Silakan pilih lokasi lain atau tekan batal pada dialog untuk membatalkan "
-#~ "perubahan anda"
+#~ "Silakan pilih lokasi lain atau tekan batal pada dialog untuk membatalkan perubahan anda"
 
 #~ msgid "Button Label|Desktop"
 #~ msgstr "Destop"
@@ -1516,32 +1472,11 @@ msgstr "Atur latar belakang desktop dan menu serta perilaku ikon"
 #~ msgid "Unable to start xfdesktop"
 #~ msgstr "Tak dapat menjalankan xfdesktop"
 
-#~ msgid ""
-#~ "To ensure that this setting takes effect the next time you start Xfce, "
-#~ "please be sure to save your session when logging out.  If you are not "
-#~ "using the Xfce Session Manager (xfce4-session), you will need to manually "
-#~ "edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
-#~ "documentation provided on http://xfce.org/."
-#~ msgstr ""
-#~ "Untuk memastikan bahwa pengaturan ini akan berjalan ketika lain kali anda "
-#~ "menjalankan Xfce, pastikan untuk menyimpan sesi anda ketika log keluar.  "
-#~ "Jika anda tidak menggunakan Manajer Sesi Xfce (xfce4-session), anda perlu "
-#~ "menyunting secara manual berkas ~/.config/xfce4/xinitrc.  Keterangan "
-#~ "lebih lanjut tersedia pada dokumentasi yang ada di http://xfce.org/."
+#~ msgid "To ensure that this setting takes effect the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
+#~ msgstr "Untuk memastikan bahwa pengaturan ini akan berjalan ketika lain kali anda menjalankan Xfce, pastikan untuk menyimpan sesi anda ketika log keluar.  Jika anda tidak menggunakan Manajer Sesi Xfce (xfce4-session), anda perlu menyunting secara manual berkas ~/.config/xfce4/xinitrc.  Keterangan lebih lanjut tersedia pada dokumentasi yang ada di http://xfce.org/."
 
-#~ msgid ""
-#~ "To ensure that Xfce does not manage your desktop the next time you start "
-#~ "Xfce, please be sure to save your session when logging out.  If you are "
-#~ "not using the Xfce Session Manager (xfce4-session), you will need to "
-#~ "manually edit your ~/.config/xfce4/xinitrc file.  Details are available "
-#~ "in the documentation provided on http://xfce.org/."
-#~ msgstr ""
-#~ "Untuk memastikan bahwa Xfce tidak mengatur destop anda ketika lain kali "
-#~ "anda menjalankan Xfce, pastikan untuk menyimpan sesi anda ketika log "
-#~ "keluar.  Jika anda tidak menggunakan Manajer Sesi Xfce (xfce4-session), "
-#~ "anda perlu menyunting secara manual berkas ~/.config/xfce4/xinitrc.  "
-#~ "Keterangan lebih lanjut tersedia pada dokumentasi yang ada di http://xfce."
-#~ "org/."
+#~ msgid "To ensure that Xfce does not manage your desktop the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
+#~ msgstr "Untuk memastikan bahwa Xfce tidak mengatur destop anda ketika lain kali anda menjalankan Xfce, pastikan untuk menyimpan sesi anda ketika log keluar.  Jika anda tidak menggunakan Manajer Sesi Xfce (xfce4-session), anda perlu menyunting secara manual berkas ~/.config/xfce4/xinitrc.  Keterangan lebih lanjut tersedia pada dokumentasi yang ada di http://xfce.org/."
 
 #~ msgid "_Do not show this again"
 #~ msgstr "Jangan tampilkan ini lagi (_D)"
