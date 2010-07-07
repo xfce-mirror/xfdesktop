@@ -6,14 +6,14 @@
 # Fabio Riga <usul@aruba.it>, 2009.
 # Gianluca Foddis <gianluca.foddis@gmail.com>, 2009.
 # Cristian Marchi <cri.penta@gmail.com>, 2010.
-#
-#
-#
+# 
+# 
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-06 12:10+0100\n"
+"POT-Creation-Date: 2010-07-07 16:15+0000\n"
 "PO-Revision-Date: 2010-02-06 16:14+0100\n"
 "Last-Translator: Cristian Marchi <cri.penta@gmail.com>\n"
 "Language-Team: Italian <xfce-it-translators@googlegroups.com>\n"
@@ -30,8 +30,7 @@ msgstr ""
 # monitor = monitor (nel senso di schermo del pc)
 # screen = schermo
 # title = etichetta (riferita al pulsante)
-#: ../common/xfdesktop-common.c:87
-#: ../common/xfdesktop-common.c:191
+#: ../common/xfdesktop-common.c:87 ../common/xfdesktop-common.c:191
 #, c-format
 msgid "Backdrop list file is not valid"
 msgstr "Il file di lista degli sfondi non è valido"
@@ -43,11 +42,11 @@ msgstr "Impossibile avviare l'editor del menu di Xfce4: %s"
 
 #: ../panel-plugin/desktop-menu-plugin.c:682
 msgid "Select Icon"
-msgstr "Seleziona un'icona"
+msgstr "Selezionare un'icona"
 
 #: ../panel-plugin/desktop-menu-plugin.c:684
 msgid "Select Menu File"
-msgstr "Seleziona un file del menu"
+msgstr "Selezionare un file del menu"
 
 #: ../panel-plugin/desktop-menu-plugin.c:711
 msgid "All Files"
@@ -88,7 +87,7 @@ msgstr "Usa il file del menu della scrivania _predefinito"
 
 #: ../panel-plugin/desktop-menu-plugin.c:812
 msgid "Use _custom menu file:"
-msgstr "Usa un file di menu pe_rsonalizzato:"
+msgstr "Usa un file del menu pe_rsonalizzato:"
 
 #: ../panel-plugin/desktop-menu-plugin.c:853
 msgid "_Edit Menu"
@@ -136,17 +135,13 @@ msgstr "Opzioni di compilazione:\n"
 #: ../src/main.c:247
 #, c-format
 msgid "    Desktop Menu:        %s\n"
-msgstr "    Menu della scrivania:  %s\n"
+msgstr "Menu della scrivania:  %s\n"
 
-#: ../src/main.c:249
-#: ../src/main.c:256
-#: ../src/main.c:263
+#: ../src/main.c:249 ../src/main.c:256 ../src/main.c:263
 msgid "enabled"
 msgstr "abilitato"
 
-#: ../src/main.c:251
-#: ../src/main.c:258
-#: ../src/main.c:265
+#: ../src/main.c:251 ../src/main.c:258 ../src/main.c:265
 msgid "disabled"
 msgstr "disabilitato"
 
@@ -218,8 +213,7 @@ msgstr "Spazio di lavoro %d"
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Spazio di lavoro %d</i>"
 
-#: ../src/windowlist.c:370
-#: ../src/windowlist.c:373
+#: ../src/windowlist.c:370 ../src/windowlist.c:373
 msgid "_Add Workspace"
 msgstr "_Aggiungi spazio di lavoro"
 
@@ -233,8 +227,7 @@ msgstr "_Rimuovi spazio di lavoro %d"
 msgid "_Remove Workspace '%s'"
 msgstr "_Rimuovi spazio di lavoro \"%s\""
 
-#: ../src/xfce-desktop.c:742
-#: ../settings/xfdesktop-settings.glade.h:20
+#: ../src/xfce-desktop.c:742 ../settings/xfdesktop-settings.glade.h:20
 msgid "Desktop"
 msgstr "Scrivania"
 
@@ -288,8 +281,7 @@ msgstr "Rinomina"
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "Eliminare davvero \"%s\"?"
 
-#: ../src/xfdesktop-file-icon-manager.c:679
-#: ../src/xfdesktop-file-utils.c:55
+#: ../src/xfdesktop-file-icon-manager.c:679 ../src/xfdesktop-file-utils.c:55
 msgid "Question"
 msgstr "Domanda"
 
@@ -309,8 +301,7 @@ msgstr "Elimina più file"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:921
-#: ../src/xfdesktop-file-icon-manager.c:1642
-#: ../src/xfdesktop-file-icon.c:141
+#: ../src/xfdesktop-file-icon-manager.c:1642 ../src/xfdesktop-file-icon.c:141
 #: ../src/xfdesktop-file-utils.c:356
 #, c-format
 msgid "Unable to launch \"%s\":"
@@ -319,8 +310,7 @@ msgstr "Impossibile avviare \"%s\":"
 #: ../src/xfdesktop-file-icon-manager.c:923
 #: ../src/xfdesktop-file-icon-manager.c:983
 #: ../src/xfdesktop-file-icon-manager.c:1249
-#: ../src/xfdesktop-file-icon-manager.c:1643
-#: ../src/xfdesktop-file-icon.c:143
+#: ../src/xfdesktop-file-icon-manager.c:1643 ../src/xfdesktop-file-icon.c:143
 #: ../src/xfdesktop-file-utils.c:359
 msgid "Launch Error"
 msgstr "Errore di avvio"
@@ -329,8 +319,7 @@ msgstr "Errore di avvio"
 msgid "The application chooser could not be opened."
 msgstr "Il selettore delle applicazioni non può essere aperto."
 
-#: ../src/xfdesktop-file-icon-manager.c:985
-#: ../src/xfdesktop-file-utils.c:361
+#: ../src/xfdesktop-file-icon-manager.c:985 ../src/xfdesktop-file-utils.c:361
 msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
 msgstr "Questa funzionalità richiede la presenza di un servizio di gestione dei file (come ad esempio quello fornito da Thunar)."
 
@@ -408,8 +397,7 @@ msgid "_Open in New Window"
 msgstr "Apri in una nuova _finestra"
 
 #: ../src/xfdesktop-file-icon-manager.c:1727
-#: ../src/xfdesktop-special-file-icon.c:637
-#: ../src/xfdesktop-volume-icon.c:565
+#: ../src/xfdesktop-special-file-icon.c:637 ../src/xfdesktop-volume-icon.c:565
 msgid "_Open"
 msgstr "_Apri"
 
@@ -521,8 +509,7 @@ msgstr "Collegato a:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:252
 #: ../src/xfdesktop-file-properties-dialog.c:411
-#: ../src/xfdesktop-volume-icon.c:480
-#: ../src/xfdesktop-volume-icon.c:486
+#: ../src/xfdesktop-volume-icon.c:480 ../src/xfdesktop-volume-icon.c:486
 msgid "(unknown)"
 msgstr "(sconosciuto)"
 
@@ -628,8 +615,7 @@ msgstr "Errore"
 msgid "Failed to rename \"%s\" to \"%s\":"
 msgstr "Impossibile rinominare «%s» in «%s»:"
 
-#: ../src/xfdesktop-special-file-icon.c:259
-#: ../settings/main.c:267
+#: ../src/xfdesktop-special-file-icon.c:259 ../settings/main.c:267
 msgid "Home"
 msgstr "Casa"
 
@@ -889,8 +875,7 @@ msgstr "Dispositivi rimovibili"
 msgid "Cannot create backdrop list \"%s\""
 msgstr "Impossibile creare la lista degli sfondi \"%s\""
 
-#: ../settings/main.c:430
-#: ../settings/main.c:789
+#: ../settings/main.c:430 ../settings/main.c:789
 msgid "Backdrop List Error"
 msgstr "Errore nella lista degli sfondi"
 
@@ -1255,566 +1240,512 @@ msgstr "_Nessuna"
 msgid "_Single image"
 msgstr "Immagine _singola"
 
-msgid "Add menu entry"
-msgstr "Aggiunge una voce al menu"
+#~ msgid "Add menu entry"
+#~ msgstr "Aggiunge una voce al menu"
 
-msgid "Type:"
-msgstr "Tipo:"
+#~ msgid "Type:"
+#~ msgstr "Tipo:"
 
-msgid "Title"
-msgstr "Titolo"
+#~ msgid "Title"
+#~ msgstr "Titolo"
 
-msgid "Submenu"
-msgstr "Sottomenu"
+#~ msgid "Submenu"
+#~ msgstr "Sottomenu"
 
-msgid "Separator"
-msgstr "Separatore"
+#~ msgid "Separator"
+#~ msgstr "Separatore"
 
-msgid "Quit"
-msgstr "Esci"
+#~ msgid "Quit"
+#~ msgstr "Esci"
 
-msgid "Command:"
-msgstr "Comando:"
+#~ msgid "Command:"
+#~ msgstr "Comando:"
 
-msgid "Themed icon:"
-msgstr "Icona a tema:"
+#~ msgid "Themed icon:"
+#~ msgstr "Icona a tema:"
 
-msgid "Use startup _notification"
-msgstr "Usa _notifica di avvio"
+#~ msgid "Use startup _notification"
+#~ msgstr "Usa _notifica di avvio"
 
-msgid "Run in _terminal"
-msgstr "Avvia in un _terminale"
+#~ msgid "Run in _terminal"
+#~ msgstr "Avvia in un _terminale"
 
-msgid "Perl Scripts"
-msgstr "Script in Perl"
+#~ msgid "Perl Scripts"
+#~ msgstr "Script in Perl"
 
-msgid "Python Scripts"
-msgstr "Script in Python"
+#~ msgid "Python Scripts"
+#~ msgstr "Script in Python"
 
-msgid "Ruby Scripts"
-msgstr "Script in Ruby"
+#~ msgid "Ruby Scripts"
+#~ msgstr "Script in Ruby"
 
-msgid "Shell Scripts"
-msgstr "Script per la shell"
+#~ msgid "Shell Scripts"
+#~ msgstr "Script per la shell"
 
-msgid "Add external menu entry"
-msgstr "Aggiunge una voce per menu esterno"
+#~ msgid "Add external menu entry"
+#~ msgstr "Aggiunge una voce per menu esterno"
 
-msgid "Source:"
-msgstr "Sorgente:"
+#~ msgid "Source:"
+#~ msgstr "Sorgente:"
 
-msgid "Style:"
-msgstr "Stile:"
+#~ msgid "Style:"
+#~ msgstr "Stile:"
 
-msgid "Simple"
-msgstr "Semplice"
+#~ msgid "Simple"
+#~ msgstr "Semplice"
 
-msgid "_Unique entries only"
-msgstr "Solo voci _uniche"
+#~ msgid "_Unique entries only"
+#~ msgstr "Solo voci _uniche"
 
-msgid "Edit external menu entry"
-msgstr "Modifica voce per menu esterno"
+#~ msgid "Edit external menu entry"
+#~ msgstr "Modifica voce per menu esterno"
 
-msgid "Menueditor Warning"
-msgstr "Avviso dell'editor del menu"
+#~ msgid "Menueditor Warning"
+#~ msgstr "Avviso dell'editor del menu"
 
-msgid "xfce4-menueditor is deprecated"
-msgstr "L'utilizzo dell'editor del menu di Xfce4 è sconsigliato."
+#~ msgid "xfce4-menueditor is deprecated"
+#~ msgstr "L'utilizzo dell'editor del menu di Xfce4 è sconsigliato."
 
-msgid "Xfce's menu system has been replaced, and xfce4-menueditor is not able to edit the new menu file format.  You may continue and edit an old-style menu file, or quit."
-msgstr "Il menu di sistema di Xfce è stato sostituito e l'editor del menu di Xfce4 non è in grado di modificare il nuovo formato del file. Si può continuare e modificare il file nel vecchio formato oppure uscire."
+#~ msgid "Xfce's menu system has been replaced, and xfce4-menueditor is not able to edit the new menu file format.  You may continue and edit an old-style menu file, or quit."
+#~ msgstr "Il menu di sistema di Xfce è stato sostituito e l'editor del menu di Xfce4 non è in grado di modificare il nuovo formato del file. Si può continuare e modificare il file nel vecchio formato oppure uscire."
 
-msgid "Continue"
-msgstr "Continua"
+#~ msgid "Continue"
+#~ msgstr "Continua"
 
-msgid "_New"
-msgstr "_Nuovo"
+#~ msgid "_New"
+#~ msgstr "_Nuovo"
 
-msgid "Open existing menu"
-msgstr "Apre un menu esistente"
+#~ msgid "Open existing menu"
+#~ msgstr "Apre un menu esistente"
 
-msgid "Open _default menu"
-msgstr "Apri il menu pre_definito"
+#~ msgid "Open _default menu"
+#~ msgstr "Apri il menu pre_definito"
 
-msgid "Open default menu"
-msgstr "Apre il menu predefinito"
+#~ msgid "Open default menu"
+#~ msgstr "Apre il menu predefinito"
 
-msgid "_Save"
-msgstr "_Salva"
+#~ msgid "_Save"
+#~ msgstr "_Salva"
 
-msgid "Save modifications"
-msgstr "Salva le modifiche"
+#~ msgid "Save modifications"
+#~ msgstr "Salva le modifiche"
 
-msgid "Save _as..."
-msgstr "Sa_lva con nome..."
+#~ msgid "Save _as..."
+#~ msgstr "Sa_lva con nome..."
 
-msgid "Save menu under a given name"
-msgstr "Salva il menu con il nome dato"
+#~ msgid "Save menu under a given name"
+#~ msgstr "Salva il menu con il nome dato"
 
-msgid "_Close"
-msgstr "_Chiudi"
+#~ msgid "_Close"
+#~ msgstr "_Chiudi"
 
-msgid "Close menu"
-msgstr "Chiude il menu"
+#~ msgid "Close menu"
+#~ msgstr "Chiude il menu"
 
-msgid "_Quit"
-msgstr "_Esci"
+#~ msgid "_Quit"
+#~ msgstr "_Esci"
 
-msgid "Quit Xfce4-Menueditor"
-msgstr "Esce dall'editor del menu di Xfce4"
+#~ msgid "Quit Xfce4-Menueditor"
+#~ msgstr "Esce dall'editor del menu di Xfce4"
 
-msgid "Edit selected entry"
-msgstr "Modifica la voce selezionata"
+#~ msgid "Edit selected entry"
+#~ msgstr "Modifica la voce selezionata"
 
-msgid "_Add entry"
-msgstr "_Aggiungi una voce"
+#~ msgid "_Add entry"
+#~ msgstr "_Aggiungi una voce"
 
-msgid "Add a new entry in the menu"
-msgstr "Aggiunge una nuova voce al menu"
+#~ msgid "Add a new entry in the menu"
+#~ msgstr "Aggiunge una nuova voce al menu"
 
-msgid "Add _external"
-msgstr "Aggiungi menu _esterno"
+#~ msgid "Add _external"
+#~ msgstr "Aggiungi menu _esterno"
 
-msgid "Add an external entry"
-msgstr "Aggiunge una voce esterna"
+#~ msgid "Add an external entry"
+#~ msgstr "Aggiunge una voce esterna"
 
-msgid "_Remove entry"
-msgstr "_Rimuovi voce"
+#~ msgid "_Remove entry"
+#~ msgstr "_Rimuovi voce"
 
-msgid "Remove entry"
-msgstr "Rimuovi la voce"
+#~ msgid "Remove entry"
+#~ msgstr "Rimuovi la voce"
 
-msgid "_Up"
-msgstr "_Su"
+#~ msgid "_Up"
+#~ msgstr "_Su"
 
-msgid "Move entry up"
-msgstr "Sposta la voce in alto"
+#~ msgid "Move entry up"
+#~ msgstr "Sposta la voce in alto"
 
-msgid "_Down"
-msgstr "_Giù"
+#~ msgid "_Down"
+#~ msgstr "_Giù"
 
-msgid "Move entry down"
-msgstr "Sposta la voce in basso"
+#~ msgid "Move entry down"
+#~ msgstr "Sposta la voce in basso"
 
-msgid "_About..."
-msgstr "_Informazioni..."
+#~ msgid "_About..."
+#~ msgstr "_Informazioni..."
 
-msgid "Collapse all"
-msgstr "Comprimi tutto"
+#~ msgid "Collapse all"
+#~ msgstr "Comprimi tutto"
 
-msgid "Collapse all menu entries"
-msgstr "Comprimi tutte le voci del menu"
+#~ msgid "Collapse all menu entries"
+#~ msgstr "Comprimi tutte le voci del menu"
 
-msgid "Expand all menu entries"
-msgstr "Espandi tutte le voci del menu"
+#~ msgid "Expand all menu entries"
+#~ msgstr "Espandi tutte le voci del menu"
 
-msgid "Command"
-msgstr "Comando"
+#~ msgid "Command"
+#~ msgstr "Comando"
 
-msgid "Hidden"
-msgstr "Nascosto"
+#~ msgid "Hidden"
+#~ msgstr "Nascosto"
 
-msgid "Do you want to save before opening an other menu ?"
-msgstr "Salvare prima di aprire un altro menu?"
+#~ msgid "Do you want to save before opening an other menu ?"
+#~ msgstr "Salvare prima di aprire un altro menu?"
 
-msgid "Ignore modifications"
-msgstr "Ignora le modifiche"
+#~ msgid "Ignore modifications"
+#~ msgstr "Ignora le modifiche"
 
-msgid "Do you want to save before opening the default menu ?"
-msgstr "Salvare prima di aprire il menu predefinito?"
+#~ msgid "Do you want to save before opening the default menu ?"
+#~ msgstr "Salvare prima di aprire il menu predefinito?"
 
-msgid "Do you want to save before closing the menu ?"
-msgstr "Salvare prima di chiudere il menu?"
+#~ msgid "Do you want to save before closing the menu ?"
+#~ msgstr "Salvare prima di chiudere il menu?"
 
-msgid "quit"
-msgstr "esci"
+#~ msgid "quit"
+#~ msgstr "esci"
 
-msgid "--- separator ---"
-msgstr "--- separatore ---"
+#~ msgid "--- separator ---"
+#~ msgstr "--- separatore ---"
 
-msgid "--- include ---"
-msgstr "--- includi ---"
+#~ msgid "--- include ---"
+#~ msgstr "--- includi ---"
 
-msgid "Do you want to move the item into the submenu?"
-msgstr "Spostare la voce nel sottomenu?"
+#~ msgid "Do you want to move the item into the submenu?"
+#~ msgstr "Spostare la voce nel sottomenu?"
 
-msgid "A menu editor for Xfce4"
-msgstr "Un editor del menu per Xfce4"
+#~ msgid "A menu editor for Xfce4"
+#~ msgstr "Un editor del menu per Xfce4"
 
-msgid "Author/Maintainer"
-msgstr "Autore/Responsabile"
+#~ msgid "Author/Maintainer"
+#~ msgstr "Autore/Responsabile"
 
-msgid "Contributor"
-msgstr "Collaboratore"
+#~ msgid "Contributor"
+#~ msgstr "Collaboratore"
 
-msgid "Icon designer"
-msgstr "Generatore di icone"
+#~ msgid "Icon designer"
+#~ msgstr "Generatore di icone"
 
-msgid "You have modified the menu, do you want to save it before quitting ?"
-msgstr "Il menu è stato modificato, salvarlo prima di uscire?"
+#~ msgid "You have modified the menu, do you want to save it before quitting ?"
+#~ msgstr "Il menu è stato modificato, salvarlo prima di uscire?"
 
-msgid "Forget modifications"
-msgstr "Ignora le modifiche"
+#~ msgid "Forget modifications"
+#~ msgstr "Ignora le modifiche"
 
-msgid "Unable to open the menu file %s in write mode"
-msgstr "Impossibile aprire il file del menu %s in scrittura"
+#~ msgid "Unable to open the menu file %s in write mode"
+#~ msgstr "Impossibile aprire il file del menu %s in scrittura"
 
-msgid "Graphical tool for editing the Xfce 4 menu"
-msgstr "Strumento grafico per modificare il menu di Xfce 4"
+#~ msgid "Graphical tool for editing the Xfce 4 menu"
+#~ msgstr "Strumento grafico per modificare il menu di Xfce 4"
 
-msgid "gtk-close"
-msgstr "Chiudere"
+#~ msgid "gtk-close"
+#~ msgstr "Chiudere"
 
-msgid "gtk-help"
-msgstr "Aiuto"
+#~ msgid "gtk-help"
+#~ msgstr "Aiuto"
 
-msgid "The command doesn't exist !"
-msgstr "Il comando non esiste!"
+#~ msgid "The command doesn't exist !"
+#~ msgstr "Il comando non esiste!"
 
-msgid "All fields must be filled to add an item."
-msgstr "Per aggiungere un elemento tutti i campi devono essere riempiti."
+#~ msgid "All fields must be filled to add an item."
+#~ msgstr "Per aggiungere un elemento tutti i campi devono essere riempiti."
 
-msgid "The 'Name' field is required."
-msgstr "Il campo 'Nome' e' obbligatorio."
+#~ msgid "The 'Name' field is required."
+#~ msgstr "Il campo 'Nome' e' obbligatorio."
 
-msgid "The 'Source' field is required."
-msgstr "Il campo 'Sorgente' e' obbligatorio."
+#~ msgid "The 'Source' field is required."
+#~ msgstr "Il campo 'Sorgente' e' obbligatorio."
 
-msgid "Separators cannot be edited"
-msgstr "I separatori non possono essere modificati"
+#~ msgid "Separators cannot be edited"
+#~ msgstr "I separatori non possono essere modificati"
 
-msgid "File %s doesn't exist !"
-msgstr "Il file %s non esiste!"
+#~ msgid "File %s doesn't exist !"
+#~ msgstr "Il file %s non esiste!"
 
-msgid "Save current menu"
-msgstr "Salva il menu corrente"
+#~ msgid "Save current menu"
+#~ msgstr "Salva il menu corrente"
 
-msgid "Delete the current entry"
-msgstr "Elimina l'elemento corrente"
+#~ msgid "Delete the current entry"
+#~ msgstr "Elimina l'elemento corrente"
 
-msgid ""
-"Could not save file %s: %s\n"
-"\n"
-"Please choose another location or press cancel in the dialog to discard your changes"
-msgstr ""
-"Impossibile salvare il file %s: %s\n"
-"\n"
-"Scegliere un'altra locazione o premere \"Annulla\" per tralasciare le modifiche"
+#~ msgid ""
+#~ "Could not save file %s: %s\n"
+#~ "\n"
+#~ "Please choose another location or press cancel in the dialog to discard your changes"
+#~ msgstr ""
+#~ "Impossibile salvare il file %s: %s\n"
+#~ "\n"
+#~ "Scegliere un'altra locazione o premere \"Annulla\" per tralasciare le modifiche"
 
-msgid "List Files (*.list)"
-msgstr "Lista File (*.list)"
+#~ msgid "List Files (*.list)"
+#~ msgstr "Lista File (*.list)"
 
-msgid "_Edit list..."
-msgstr "_Modifica lista..."
+#~ msgid "_Edit list..."
+#~ msgstr "_Modifica lista..."
 
-msgid "_New list..."
-msgstr "_Nuova lista..."
+#~ msgid "_New list..."
+#~ msgstr "_Nuova lista..."
 
-msgid "S_tyle:"
-msgstr "S_tile:"
+#~ msgid "S_tyle:"
+#~ msgstr "S_tile:"
 
-msgid "Centered"
-msgstr "Centrato"
+#~ msgid "Centered"
+#~ msgstr "Centrato"
 
-msgid "Stretched"
-msgstr "Stirato"
+#~ msgid "Stretched"
+#~ msgstr "Stirato"
 
-msgid "_Do not show this again"
-msgstr "_Non mostrare più questo messaggio"
+#~ msgid "_Do not show this again"
+#~ msgstr "_Non mostrare più questo messaggio"
 
-msgid "Color"
-msgstr "Colore"
+#~ msgid "Color"
+#~ msgstr "Colore"
 
-msgid "_Color Style:"
-msgstr "_Stile colore:"
+#~ msgid "_Color Style:"
+#~ msgstr "_Stile colore:"
 
-msgid "Solid Color"
-msgstr "Tinta unita"
+#~ msgid "Solid Color"
+#~ msgstr "Tinta unita"
 
-msgid "Horizontal Gradient"
-msgstr "Gradiente orizzontale"
+#~ msgid "Horizontal Gradient"
+#~ msgstr "Gradiente orizzontale"
 
-msgid "Vertical Gradient"
-msgstr "Gradiente verticale"
+#~ msgid "Vertical Gradient"
+#~ msgstr "Gradiente verticale"
 
-msgid "Show _Image"
-msgstr "Mostra _Immagine"
+#~ msgid "Show _Image"
+#~ msgstr "Mostra _Immagine"
 
-msgid "_File:"
-msgstr "_File:"
+#~ msgid "_File:"
+#~ msgstr "_File:"
 
-msgid "Select backdrop image file"
-msgstr "Scegliere l'immagine di sfondo"
+#~ msgid "Select backdrop image file"
+#~ msgstr "Scegliere l'immagine di sfondo"
 
-msgid "Unknown error."
-msgstr "Errore sconosciuto"
+#~ msgid "Unknown error."
+#~ msgstr "Errore sconosciuto"
 
-msgid "Do you want to move the item into the parent menu?"
-msgstr "Spostare la voce nel menu di livello superiore?"
+#~ msgid "Do you want to move the item into the parent menu?"
+#~ msgstr "Spostare la voce nel menu di livello superiore?"
 
-msgid "Add an external menu..."
-msgstr "Aggiungi un menu esterno..."
+#~ msgid "Add an external menu..."
+#~ msgstr "Aggiungi un menu esterno..."
 
-msgid "Open an Xfce4 menu file"
-msgstr "Apre un file del menu di Xfce4"
+#~ msgid "Open an Xfce4 menu file"
+#~ msgstr "Apre un file del menu di Xfce4"
 
-msgid "Quitting the session requires that Xfce's session manager (xfce4-session) is running, but it was not detected.  Please quit Xfce via another means."
-msgstr "Per uscire dalla sessione è necessario che il gestore sessioni di Xfce (xfce4-session) sia avviato, ma non è stato trovato.  Si dovrà utilizzare un altro modo per uscire."
+#~ msgid "Quitting the session requires that Xfce's session manager (xfce4-session) is running, but it was not detected.  Please quit Xfce via another means."
+#~ msgstr "Per uscire dalla sessione è necessario che il gestore sessioni di Xfce (xfce4-session) sia avviato, ma non è stato trovato.  Si dovrà utilizzare un altro modo per uscire."
 
-msgid "Quitting the session requires the 'xfce4-session-logout' command, but it could not be found: %s"
-msgstr "Per uscire dalla sessione è necessario il comando \"xfce4-session-logout\", ma non è stato trovato: %s"
+#~ msgid "Quitting the session requires the 'xfce4-session-logout' command, but it could not be found: %s"
+#~ msgstr "Per uscire dalla sessione è necessario il comando \"xfce4-session-logout\", ma non è stato trovato: %s"
 
-msgid "Button Label|Desktop"
-msgstr "Scrivania"
+#~ msgid "Button Label|Desktop"
+#~ msgstr "Scrivania"
 
-msgid "Xfce will be unable to manage your desktop (%s)."
-msgstr "Xfce non gestirà la scrivania (%s)."
+#~ msgid "Xfce will be unable to manage your desktop (%s)."
+#~ msgstr "Xfce non gestirà la scrivania (%s)."
 
-msgid "To ensure that this setting takes effect the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
-msgstr "Per fare in modo che queste impostazioni abbiano effetto la prossima volta che verrà avviato Xfce, assicurarsi di salvare la sessione all'uscita.  Se non si sta usando il gestore sessione di Xfce (xfce4-session), sarà necessario modificare il file ~/.config/xfce4/xinitrc.  I dettagli sono disponibili nella documentazione fornita su http://xfce.org."
+#~ msgid "To ensure that this setting takes effect the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
+#~ msgstr "Per fare in modo che queste impostazioni abbiano effetto la prossima volta che verrà avviato Xfce, assicurarsi di salvare la sessione all'uscita.  Se non si sta usando il gestore sessione di Xfce (xfce4-session), sarà necessario modificare il file ~/.config/xfce4/xinitrc.  I dettagli sono disponibili nella documentazione fornita su http://xfce.org."
 
-msgid "To ensure that Xfce does not manage your desktop the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
-msgstr "Per fare in modo che Xfce non gestisca la scrivania la prossima volta che verrà avviato Xfce, assicurarsi di salvare la sessione all'uscita.  Se non si sta usando il gestore sessione di Xfce (xfce4-session), sarà necessario modificare il file ~/.config/xfce4/xinitrc.  I dettagli sono disponibili nella documentazione fornita su http://xfce.org."
+#~ msgid "To ensure that Xfce does not manage your desktop the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
+#~ msgstr "Per fare in modo che Xfce non gestisca la scrivania la prossima volta che verrà avviato Xfce, assicurarsi di salvare la sessione all'uscita.  Se non si sta usando il gestore sessione di Xfce (xfce4-session), sarà necessario modificare il file ~/.config/xfce4/xinitrc.  I dettagli sono disponibili nella documentazione fornita su http://xfce.org."
 
-msgid "Allow _Xfce to manage the desktop"
-msgstr "Permetti a _Xfce di amministrare la scrivania"
+#~ msgid "Allow _Xfce to manage the desktop"
+#~ msgstr "Permetti a _Xfce di amministrare la scrivania"
 
-msgid "Stretch single backdrop onto _all monitors"
-msgstr "Distendi l'immagine di sfondo su _tutti i monitor"
+#~ msgid "Stretch single backdrop onto _all monitors"
+#~ msgstr "Distendi l'immagine di sfondo su _tutti i monitor"
 
-msgid "_Behavior"
-msgstr "C_omportamento"
+#~ msgid "_Behavior"
+#~ msgstr "C_omportamento"
 
-msgid "File/launcher icons"
-msgstr "Icone di file e avviatori"
+#~ msgid "File/launcher icons"
+#~ msgstr "Icone di file e avviatori"
 
-#, fuzzy
 #~ msgid "Launcher"
 #~ msgstr "_Modifica avviatore"
 
-#, fuzzy
 #~ msgid "Icon:"
 #~ msgstr "Icone"
 
-#, fuzzy
 #~ msgid "No icon"
 #~ msgstr "_Icona del pulsante:"
 
-#, fuzzy
 #~ msgid "Select icon"
 #~ msgstr "Seleziona un'icona"
 
-#, fuzzy
 #~ msgid "Select command"
 #~ msgstr "Seleziona un'icona"
 
-#, fuzzy
 #~ msgid "Executable Files"
 #~ msgstr "Espulsione fallita"
 
-#, fuzzy
 #~ msgid "File"
 #~ msgstr "Tutti i file"
 
-#, fuzzy
 #~ msgid "Select external menu"
 #~ msgstr "Seleziona un file del menu"
 
-#, fuzzy
 #~ msgid "Multilevel"
 #~ msgstr "Multimedia"
 
-#, fuzzy
 #~ msgid "Edit menu entry"
 #~ msgstr "Modifica menu"
 
-#, fuzzy
 #~ msgid "Xfce4-MenuEditor"
 #~ msgstr "Menu Xfce"
 
-#, fuzzy
 #~ msgid "_File"
 #~ msgstr "File _vuoto"
 
-#, fuzzy
 #~ msgid "Create a new empty menu"
 #~ msgstr "Crea file vuoto"
 
-#, fuzzy
 #~ msgid "_Edit"
 #~ msgstr "_Modifica menu"
 
-#, fuzzy
 #~ msgid "_Edit entry"
 #~ msgstr "_Modifica menu"
 
-#, fuzzy
 #~ msgid "_Help"
 #~ msgstr "Aiuto"
 
-#, fuzzy
 #~ msgid "Show informations about xfce4-menueditor"
 #~ msgstr "Impossibile avviare l'editor del menu di Xfce4: %s"
 
-#, fuzzy
 #~ msgid "Expand all"
 #~ msgstr "_Apri tutti"
 
-#  Name
-#, fuzzy
 #~ msgid "Name"
 #~ msgstr "Nome:"
 
-#, fuzzy
 #~ msgid "Are you sure you want to close the current menu?"
 #~ msgstr "Eliminare davvero i seguenti %d file?"
 
-#, fuzzy
 #~ msgid "Do you want to save before closing the file?"
 #~ msgstr "Eliminare davvero i seguenti %d file?"
 
-#, fuzzy
 #~ msgid "Open menu file"
 #~ msgstr "Usa un file di menu pe_rsonalizzato:"
 
-#, fuzzy
 #~ msgid "Save menu file as"
 #~ msgstr "Seleziona un file del menu"
 
-#, fuzzy
 #~ msgid "system"
 #~ msgstr "Sistema"
 
-#, fuzzy
 #~ msgid "Menu Editor"
 #~ msgstr "File del menu"
 
-#, fuzzy
 #~ msgid "Xfce 4 Menu Editor"
 #~ msgstr "Menu Xfce"
 
-#, fuzzy
 #~ msgid "Xfce 4 Desktop Settings"
 #~ msgstr "Impostazioni della scrivania"
 
-#, fuzzy
 #~ msgid "backdrops.list"
 #~ msgstr "Errore nella lista degli sfondi"
 
-#, fuzzy
 #~ msgid "Select backdrop image or list file"
-#~ msgstr ""
-#~ "Impossibile caricare l'immagine dal file di lista degli sfondi \"%s\":"
+#~ msgstr "Impossibile caricare l'immagine dal file di lista degli sfondi \"%s\":"
 
-#, fuzzy
 #~ msgid "Auto"
 #~ msgstr "Pulsante"
 
-#, fuzzy
 #~ msgid "Tiled"
 #~ msgstr "disabilitato"
 
-#, fuzzy
 #~ msgid "Scaled"
 #~ msgstr "abilitato"
 
-#, fuzzy
 #~ msgid "Unknown Error"
 #~ msgstr "Errore di avvio"
 
-#, fuzzy
 #~ msgid "Unable to start xfdesktop"
 #~ msgstr "Impossibile creare il file \"%s\":"
 
-#, fuzzy
 #~ msgid "Desktop Preferences"
 #~ msgstr "Impostazioni della scrivania"
 
-#, fuzzy
 #~ msgid "Image"
 #~ msgstr "Immagini"
 
-#, fuzzy
 #~ msgid "List file"
 #~ msgstr "File di lista non valido"
 
-#, fuzzy
 #~ msgid "Desktop Icons"
 #~ msgstr "Scrivania"
 
-#, fuzzy
 #~ msgid "Des_ktop"
 #~ msgstr "Scrivania"
 
-#, fuzzy
 #~ msgid "_Desktop Properties..."
 #~ msgstr "_Proprietà..."
 
-#, fuzzy
 #~ msgid "Scientific applications and tools"
 #~ msgstr "Applicazioni e accessori di rete"
 
-#, fuzzy
 #~ msgid "Unable to quit session."
 #~ msgstr "Impossibile montare \"%s\":"
 
-#, fuzzy
 #~ msgid "Unable to empty the trash."
 #~ msgstr "Impossibile contattare il cestino di Xfce."
 
-#, fuzzy
 #~ msgid "_Copy Files"
 #~ msgstr "File _vuoto"
 
-#, fuzzy
 #~ msgid "_Copy File"
 #~ msgstr "File _vuoto"
 
-#, fuzzy
 #~ msgid "Cu_t Files"
 #~ msgstr "File del menu"
 
-#, fuzzy
 #~ msgid "Cu_t File"
 #~ msgstr "File _vuoto"
 
-#, fuzzy
 #~ msgid "_Delete Files"
 #~ msgstr "Elimina più file"
 
-#, fuzzy
 #~ msgid "_Delete File"
 #~ msgstr "Seleziona un file del menu"
 
-#, fuzzy
 #~ msgid "_Paste Files"
 #~ msgstr "Immagini"
 
-#, fuzzy
 #~ msgid "Are sure you want to quit?"
 #~ msgstr "Eliminare davvero \"%s\"?"
 
-#, fuzzy
 #~ msgid "Edit"
 #~ msgstr "Modifica menu"
 
-#, fuzzy
 #~ msgid "Edit backdrop list"
 #~ msgstr "Scrittura della lista degli sfondi in «%s» non riuscita."
 
-#, fuzzy
 #~ msgid "Use _system font size"
 #~ msgstr "Usa un file di menu pe_rsonalizzato:"
 
-#, fuzzy
 #~ msgid "Edit Properties"
 #~ msgstr "_Proprietà..."
+
 #~ msgid "Display version information"
 #~ msgstr "Mostra le informazioni di versione"
+
 #~ msgid "Failed to parse arguments: %s\n"
 #~ msgstr "Impossibile elaborare gli argomenti: \"%s\"\n"
+
 #~ msgid "Science"
 #~ msgstr "Scienza"
+
 #~ msgid "Scientific software"
 #~ msgstr "Software scientifico"
-
