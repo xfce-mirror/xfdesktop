@@ -6,12 +6,12 @@
 # Fabian Nowak <timystery@arcor.de>, 2005-2008.
 # Nico Schümann <nico@prog.nico22.de>, 2007.
 # Enrico Tröger <enrico@xfce.org>, 2007-2009.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-28 23:56+0200\n"
+"POT-Creation-Date: 2010-08-22 16:07+0000\n"
 "PO-Revision-Date: 2009-01-24 08:56+0100\n"
 "Last-Translator: Enrico Tröger <enrico@xfce.org>\n"
 "Language-Team: German <xfce-i18n-de@xfce.org>\n"
@@ -66,11 +66,8 @@ msgstr "Liste mit Hintergrundbildern erstellen/laden"
 
 #: ../settings/main.c:511
 #, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
-"Die Datei »%s« ist keine gültige Liste mit Hintergrundbildern. Soll sie "
-"überschrieben werden?"
+msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr "Die Datei »%s« ist keine gültige Liste mit Hintergrundbildern. Soll sie überschrieben werden?"
 
 #: ../settings/main.c:516
 msgid "Invalid List File"
@@ -161,35 +158,29 @@ msgid "Unable to contact settings server"
 msgstr "Konnte den Einstellungsdienst nicht kontaktieren."
 
 #: ../src/main.c:236
-#, fuzzy
 msgid "Display version information"
-msgstr "Versionsinformation"
+msgstr "Versionsinformation anzeigen"
 
 #: ../src/main.c:237
-#, fuzzy
 msgid "Reload all settings, refresh image list"
-msgstr "    --reload      Einstellungen neu laden, Hintergrundbild erneuern\n"
+msgstr " Einstellungen neu laden, Bilderliste erneuern"
 
 #: ../src/main.c:238
-#, fuzzy
 msgid "Pop up the menu (at the current mouse position)"
-msgstr "    --menu        Das Menü (an der Zeigerposition) erscheinen lassen\n"
+msgstr "Das Menü (an der Zeigerposition) erscheinen lassen"
 
 #: ../src/main.c:239
-#, fuzzy
 msgid "Pop up the window list (at the current mouse position)"
-msgstr ""
-"    --windowlist  Fensterliste (an der Zeigerposition) erscheinen lassen\n"
+msgstr "Fensterliste (an der Zeigerposition) erscheinen lassen"
 
 #: ../src/main.c:240
-#, fuzzy
 msgid "Cause xfdesktop to quit"
-msgstr "    --quit        Xfdesktop beenden\n"
+msgstr "Xfdesktop beenden"
 
 #: ../src/main.c:260
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to parse arguments: %s\n"
-msgstr "Konnte »%s« nicht ausführen:"
+msgstr "Konnte Argumente nicht parsen: %s"
 
 #: ../src/main.c:268
 #, c-format
@@ -286,11 +277,8 @@ msgstr "Fehler"
 
 #: ../src/xfdesktop-file-icon-manager.c:479
 #, c-format
-msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr ""
-"Xfdesktop konnte den Ordner »%s« zum Speichern von Elementen des "
-"Schreibtischs nicht erstellen:"
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr "Xfdesktop konnte den Ordner »%s« zum Speichern von Elementen des Schreibtischs nicht erstellen:"
 
 #: ../src/xfdesktop-file-icon-manager.c:481
 #: ../src/xfdesktop-file-icon-manager.c:492
@@ -300,12 +288,8 @@ msgstr "Erstellen des Ordners fehlgeschlagen"
 
 #: ../src/xfdesktop-file-icon-manager.c:490
 #, c-format
-msgid ""
-"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
-"folder."
-msgstr ""
-"Xfdesktop kann in »%s« keine Elemente des Schreibtischs unterbringen, weil es "
-"kein Ordner ist."
+msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
+msgstr "Xfdesktop kann in »%s« keine Elemente des Schreibtischs unterbringen, weil es kein Ordner ist."
 
 #: ../src/xfdesktop-file-icon-manager.c:494
 msgid "Please delete or rename the file."
@@ -371,12 +355,8 @@ msgid "The application chooser could not be opened."
 msgstr "Der Anwendungswähler konnte nicht geöffnet werden."
 
 #: ../src/xfdesktop-file-icon-manager.c:986 ../src/xfdesktop-file-utils.c:368
-msgid ""
-"This feature requires a file manager service present (such as that supplied "
-"by Thunar)."
-msgstr ""
-"Diese Funktion benötigt den Dienst eines Dateimanagers (wie er z.B. von "
-"Thunar bereitgestellt wird)."
+msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
+msgstr "Diese Funktion benötigt den Dienst eines Dateimanagers (wie er z.B. von Thunar bereitgestellt wird)."
 
 #: ../src/xfdesktop-file-icon-manager.c:1182
 #, c-format
@@ -394,12 +374,8 @@ msgid "Unable to create folder named \"%s\":"
 msgstr "Konnte den Ordner »%s« nicht erstellen:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1289
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
-msgstr ""
-"Kann »exo-desktop-item-edit« nicht starten, was zum Erstellen und Bearbeiten "
-"von Startern und Verknüpfungen auf dem Schreibtisch benötigt wird."
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgstr "Kann »exo-desktop-item-edit« nicht starten, was zum Erstellen und Bearbeiten von Startern und Verknüpfungen auf dem Schreibtisch benötigt wird."
 
 #: ../src/xfdesktop-file-icon-manager.c:1324
 msgid "Create New Folder"
@@ -686,12 +662,8 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "Konnte den Papierkorbdienst nicht ansprechen."
 
 #: ../src/xfdesktop-special-file-icon.c:522
-msgid ""
-"Make sure you have a file manager installed that supports the Xfce Trash "
-"service, such as Thunar."
-msgstr ""
-"Stellen Sie sicher, dass Sie einen Dateimanager installiert haben, der einen "
-"Papierkorb bereitstellt, wie z.B. »Thunar«."
+msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
+msgstr "Stellen Sie sicher, dass Sie einen Dateimanager installiert haben, der einen Papierkorb bereitstellt, wie z.B. »Thunar«."
 
 #: ../src/xfdesktop-special-file-icon.c:655
 msgid "_Empty Trash"
@@ -758,9 +730,7 @@ msgstr "Schreibtisch"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Set desktop background and menu and icon behaviour"
-msgstr ""
-"Stellen Sie den Hintergrund des Schreibtischs sowie das Menü- und "
-"Symbolverhalten ein"
+msgstr "Stellen Sie den Hintergrund des Schreibtischs sowie das Menü- und Symbolverhalten ein"
 
 #~ msgid "Unable to launch xfce4-menueditor: %s"
 #~ msgstr "Konnte »xfce4-menueditor« nicht starten: %s"
@@ -882,7 +852,6 @@ msgstr ""
 #~ msgid "Other"
 #~ msgstr "Andere"
 
-#, fuzzy
 #~ msgid "Scientific software"
 #~ msgstr "Bildungsprogramme"
 
@@ -1072,9 +1041,7 @@ msgstr ""
 #~ msgstr "Ein einzelnes Bild als Hintergrundbild wählen"
 
 #~ msgid "Set desktop background and menu and icon behavior"
-#~ msgstr ""
-#~ "Stellen Sie den Hintergrund des Schreibtischs sowie das Menü- und "
-#~ "Symbolverhalten ein"
+#~ msgstr "Stellen Sie den Hintergrund des Schreibtischs sowie das Menü- und Symbolverhalten ein"
 
 #~ msgid "Sh_ow application icons in menu"
 #~ msgstr "_Anwendungssymbole im Menü anzeigen"
@@ -1108,28 +1075,17 @@ msgstr ""
 #~ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 #~ msgstr "Gibt die »rechte« oder »untere« Farbe des Verlaufs an"
 
-#~ msgid ""
-#~ "Specifies the solid color, or the \"left\" or \"top\" color of the "
-#~ "gradient"
-#~ msgstr ""
-#~ "Gibt die durchgehend zu verwendende Farbe an oder die »linke« "
-#~ "beziehungsweise »obere« Farbe des Verlaufs"
+#~ msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+#~ msgstr "Gibt die durchgehend zu verwendende Farbe an oder die »linke« beziehungsweise »obere« Farbe des Verlaufs"
 
 #~ msgid "Specify how the image will be resized to fit the screen"
-#~ msgstr ""
-#~ "Legt die Methode fest, mit der das Bild auf die Bildschirmgröße angepasst "
-#~ "wird"
+#~ msgstr "Legt die Methode fest, mit der das Bild auf die Bildschirmgröße angepasst wird"
 
 #~ msgid "Specify the style of the color drawn behind the backdrop image"
-#~ msgstr ""
-#~ "Gibt an, wie die Farbe hinter dem Hintergrundbild dargestellt werden soll"
+#~ msgstr "Gibt an, wie die Farbe hinter dem Hintergrundbild dargestellt werden soll"
 
-#~ msgid ""
-#~ "Specify the transparency level for the rounded label drawn behind the "
-#~ "icon text"
-#~ msgstr ""
-#~ "Gibt die Durchsichtigkeit für den abgerundeten Hintergrund der "
-#~ "Symbolbeschriftung an"
+#~ msgid "Specify the transparency level for the rounded label drawn behind the icon text"
+#~ msgstr "Gibt die Durchsichtigkeit für den abgerundeten Hintergrund der Symbolbeschriftung an"
 
 #~ msgid "St_yle:"
 #~ msgstr "S_til:"
