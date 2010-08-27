@@ -27,6 +27,12 @@ desktop_icon_sources = \
 	xfdesktop-window-icon-manager.c \
 	xfdesktop-window-icon-manager.h
 
+desktop_menu_sources = \
+	xfce-desktop-menu.c \
+	xfce-desktop-menu.h \
+	xfdesktop-app-menu-item.c \
+	xfdesktop-app-menu-item.h
+
 desktop_file_icon_sources = \
 	xfdesktop-clipboard-manager.c \
 	xfdesktop-clipboard-manager.h \
@@ -58,22 +64,18 @@ xfdesktop_CFLAGS = \
 	-DXFCEMODDIR=\"$(libdir)/xfce4/modules\" \
 	$(LIBX11_CFLAGS)	\
 	$(GTHREAD_CFLAGS) \
-	$(GMODULE_CFLAGS) \
 	$(LIBXFCE4UTIL_CFLAGS) \
 	$(LIBXFCE4UI_CFLAGS) \
 	$(LIBXFCE4SMCLIENT_PRIVATE_CFLAGS) \
 	$(LIBWNCK_CFLAGS) \
-	$(XFCONF_CFLAGS)
+	$(XFCONF_CFLAGS) \
+	$(GARCON_CFLAGS)
 
 xfdesktop_LDFLAGS = \
 	-export-dynamic
 
 # cygwin link order requires this split
 xfdesktop_LDADD = $(top_builddir)/common/libxfdesktop.la
-if BUILD_DESKTOP_MENU
-  xfdesktop_LDADD += $(top_builddir)/common/libxfdesktop-menu.la
-  xfdesktop_DEPENDENCIES = $(top_builddir)/common/libxfdesktop-menu.la
-endif
 xfdesktop_LDADD += \
 	$(LIBX11_LDFLAGS) \
 	$(LIBX11_LIBS) \
@@ -82,7 +84,18 @@ xfdesktop_LDADD += \
 	$(LIBXFCE4UI_LIBS) \
 	$(LIBXFCE4SMCLIENT_PRIVATE_LIBS) \
 	$(LIBWNCK_LIBS) \
-	$(XFCONF_LIBS)
+	$(XFCONF_LIBS) \
+	$(GARCON_LIBS)
+
+if BUILD_DESKTOP_MENU
+xfdesktop_SOURCES += $(desktop_menu_sources)
+
+xfdesktop_CFLAGS += \
+	$(GARCON_CFLAGS)
+
+xfdesktop_LDADD += \
+	$(GARCON_LIBS)
+endif
 
 if ENABLE_DESKTOP_ICONS
 
@@ -182,6 +195,7 @@ endif
 endif
 
 EXTRA_DIST = \
+	$(desktop_menu_sources) \
 	$(desktop_icon_sources) \
 	$(desktop_file_icon_sources) \
 	xfdesktop-marshal.list

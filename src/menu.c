@@ -31,15 +31,13 @@
 #endif
 
 #include <glib.h>
-#include <gmodule.h>
 #include <gtk/gtk.h>
 
 #include <libxfce4util/libxfce4util.h>
 
 #include "menu.h"
 #ifdef USE_DESKTOP_MENU
-#include "desktop-menu-stub.h"
-#include "xfdesktop-common.h"
+#include "xfce-desktop-menu.h"
 #endif
 
 #ifdef USE_DESKTOP_MENU

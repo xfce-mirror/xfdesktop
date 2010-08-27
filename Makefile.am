@@ -7,7 +7,6 @@ SUBDIRS = \
 	po \
 	settings \
 	src \
-	modules \
 	pixmaps
 
 manpagedir = $(mandir)/man1

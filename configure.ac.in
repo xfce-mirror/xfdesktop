@@ -18,7 +18,7 @@ m4_define([gtk_minimum_version], [2.14.0])
 m4_define([libxfce4util_minimum_version], [4.6.0])
 m4_define([libxfce4ui_minimum_version], [4.7.0])
 m4_define([xfce_minimum_version], [4.6.0])
-m4_define([xfce4menu_minimum_version], [4.6.0])
+m4_define([garcon_minimum_version], [0.1.1])
 m4_define([exo_minimum_version], [0.3.100])
 m4_define([thunar_minimum_version], [1.0.0])
 m4_define([dbus_minimum_version], [0.34])
@@ -44,6 +44,7 @@ AM_CONDITIONAL([HAVE_CYGWIN], [test "`uname | grep \"CYGWIN\"`" != ""])
 
 dnl check for basic programs
 AC_PROG_CC
+AM_PROG_CC_C_O
 AC_PROG_INSTALL
 AC_PROG_LIBTOOL
 AC_PROG_INTLTOOL([intltool_minimum_version], [no-xml])
@@ -152,12 +153,12 @@ if test "x$ac_cv_enable_desktop_menu" = "xno"; then
     build_desktop_menu="no"
 else
     dnl time for more abuse!
-    XDT_CHECK_PACKAGE([LIBXFCE4MENU], [libxfce4menu-0.1],
-                      [xfce4menu_minimum_version], [build_desktop_menu="yes"],
+    XDT_CHECK_PACKAGE([GARCON], [garcon-1],
+                      [garcon_minimum_version], [build_desktop_menu="yes"],
                       [
-echo "*** Optional package libxfce4menu-0.1 was either not found on your system"
+echo "*** Optional package garcon-1 was either not found on your system"
 echo "*** or is too old.  Please install or upgrade to at least version"
-echo "*** xfce4menu_minimum_version, or adjust the PKG_CONFIG_PATH environment variable"
+echo "*** garcon_minimum_version, or adjust the PKG_CONFIG_PATH environment variable"
 echo "*** if you installed the new version of the package in a nonstandard"
 echo "*** prefix.  Desktop menu will be disabled."
 build_desktop_menu="no"
@@ -243,8 +244,6 @@ doc/manual/images/Makefile
 doc/manual/images/fr/Makefile
 doc/manual/images/ja/Makefile
 doc/manual/po/Makefile
-modules/Makefile
-modules/menu/Makefile
 pixmaps/Makefile
 po/Makefile.in
 settings/Makefile

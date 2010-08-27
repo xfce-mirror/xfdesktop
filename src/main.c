@@ -50,7 +50,6 @@
 
 #include <X11/Xlib.h>
 
-#include <gmodule.h>
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
 

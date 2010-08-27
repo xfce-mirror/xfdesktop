@@ -1,5 +1,0 @@
-SUBDIRS = 
-
-if BUILD_DESKTOP_MENU
-SUBDIRS += menu
-endif
