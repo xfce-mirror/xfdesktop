@@ -340,7 +340,7 @@ xfce_desktop_menu_new(const gchar *menu_file,
                            gboolean deferred)
 {
     XfceDesktopMenu *desktop_menu = g_new0(XfceDesktopMenu, 1);
-    
+
     desktop_menu->use_menu_icons = TRUE;
     desktop_menu->cache_menu_items = TRUE;  /* FIXME: hidden pref? */
     
@@ -357,7 +357,10 @@ xfce_desktop_menu_new(const gchar *menu_file,
             desktop_menu = NULL;
         }
     }
-    
+
+    garcon_set_environment("XFCE");
+
+    _deskmenu_icon_theme = gtk_icon_theme_get_default();
     g_signal_connect(G_OBJECT(_deskmenu_icon_theme), "changed",
                      G_CALLBACK(itheme_changed_cb), desktop_menu);
     
