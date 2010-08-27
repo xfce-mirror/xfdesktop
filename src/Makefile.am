@@ -141,10 +141,10 @@ DISTCLEANFILES = $(BUILT_SOURCES)
 xfdesktop-marshal.h: stamp-xfdesktop-marshal.h
 	@true
 stamp-xfdesktop-marshal.h: xfdesktop-marshal.list Makefile
-	glib-genmarshal --prefix=xfdesktop_marshal xfdesktop-marshal.list --header > xfdesktop-marshal.h
+	$(AM_V_GEN) glib-genmarshal --prefix=xfdesktop_marshal xfdesktop-marshal.list --header > xfdesktop-marshal.h && \
 	echo timestamp > $(@F)
 xfdesktop-marshal.c: xfdesktop-marshal.list Makefile
-	echo '#include "xfdesktop-marshal.h"' > xfdesktop-marshal.c
+	$(AM_V_GEN) echo '#include "xfdesktop-marshal.h"' > xfdesktop-marshal.c && \
 	glib-genmarshal --prefix=xfdesktop_marshal xfdesktop-marshal.list --body >> xfdesktop-marshal.c
 
 enum_headers = \
@@ -154,7 +154,7 @@ enum_headers = \
 xfce-desktop-enum-types.h: stamp-xfce-desktop-enum-types.h
 	@true
 stamp-xfce-desktop-enum-types.h: $(enum_headers) Makefile
-	( cd $(srcdir) && glib-mkenums \
+	$(AM_V_GEN) ( cd $(srcdir) && glib-mkenums \
 	      --fhead "#ifndef __XFCE_DESKTOP_ENUM_TYPES_H__\n#define __XFCE_DESKTOP_ENUM_TYPES_H__\nG_BEGIN_DECLS\n" \
 	      --fprod "/* enumerations from \"@filename@\" */\n" \
 	      --vhead "GType @enum_name@_get_type (void) G_GNUC_CONST;\n#define XFCE_TYPE_@ENUMSHORT@ (@enum_name@_get_type())\n" \
@@ -164,7 +164,7 @@ stamp-xfce-desktop-enum-types.h: $(enum_headers) Makefile
 	      && rm -f xgen-xdeth \
 		  && echo timestamp > $(@F)
 xfce-desktop-enum-types.c: $(enum_headers) Makefile
-	( cd $(srcdir) && glib-mkenums \
+	$(AM_V_GEN) ( cd $(srcdir) && glib-mkenums \
 	      --fhead "#undef GTK_DISABLE_DEPRECATED\n#define GTK_ENABLE_BROKEN\n#include \"xfce-desktop.h\"\n#include \"xfce-backdrop.h\"\n#include \"xfce-desktop-enum-types.h\"" \
 	      --fprod "\n/* enumerations from \"@filename@\" */" \
 	      --vhead "GType\n@enum_name@_get_type (void)\n{\n\tstatic GType type = 0;\n\tif (type == 0) {\n\tstatic const G@Type@Value values[] = {"\
@@ -185,10 +185,10 @@ DISTCLEANFILES += \
 	xfdesktop-dbus-bindings-trash.h
 
 xfdesktop-dbus-bindings-filemanager.h: $(srcdir)/xfdesktop-dbus-bindings-filemanager.xml Makefile
-	dbus-binding-tool --mode=glib-client --prefix=org_xfce_FileManager $(srcdir)/xfdesktop-dbus-bindings-filemanager.xml > xfdesktop-dbus-bindings-filemanager.h
+	$(AM_V_GEN) dbus-binding-tool --mode=glib-client --prefix=org_xfce_FileManager $(srcdir)/xfdesktop-dbus-bindings-filemanager.xml > xfdesktop-dbus-bindings-filemanager.h
 
 xfdesktop-dbus-bindings-trash.h: $(srcdir)/xfdesktop-dbus-bindings-trash.xml Makefile
-	dbus-binding-tool --mode=glib-client --prefix=org_xfce_Trash $(srcdir)/xfdesktop-dbus-bindings-trash.xml > xfdesktop-dbus-bindings-trash.h
+	$(AM_V_GEN) dbus-binding-tool --mode=glib-client --prefix=org_xfce_Trash $(srcdir)/xfdesktop-dbus-bindings-trash.xml > xfdesktop-dbus-bindings-trash.h
 
 endif
 

@@ -35,6 +35,7 @@ XFDESKTOP_VERSION=xfdesktop_version
 AM_INIT_AUTOMAKE([xfdesktop], [$XFDESKTOP_VERSION])
 AM_CONFIG_HEADER([config.h])
 AM_MAINTAINER_MODE
+m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 
 dnl check for UNIX variants
 AC_AIX

@@ -48,7 +48,7 @@ BUILT_SOURCES = \
 SUFFIXES: .ui
 
 %-ui.h: $(srcdir)/%-ui.xml Makefile
-	exo-csource --static --name=`basename $< .xml | sed -e 's/-/_/g'`  $< >$@
+	$(AM_V_GEN) exo-csource --static --name=`basename $< .xml | sed -e 's/-/_/g'`  $< >$@
 
 endif
 
