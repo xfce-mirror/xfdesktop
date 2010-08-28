@@ -11,10 +11,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-28 23:56+0200\n"
+"POT-Creation-Date: 2010-08-28 16:27+0200\n"
 "PO-Revision-Date: 2009-12-19 01:48+0800\n"
 "Last-Translator: Hunt Xu <huntxu@live.cn>\n"
 "Language-Team: Chinese <xfce-i18n@xfce.org>\n"
+"Language: zh\n"
 "MIME-Version: 1.1\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -157,75 +158,83 @@ msgstr "桌面设置"
 msgid "Unable to contact settings server"
 msgstr "无法连到设置服务器"
 
-#: ../src/main.c:236
+#: ../settings/xfce-backdrop-settings.desktop.in.h:1
+msgid "Desktop "
+msgstr "桌面"
+
+#: ../settings/xfce-backdrop-settings.desktop.in.h:2
+msgid "Set desktop background and menu and icon behaviour"
+msgstr "设置桌面背景，菜单，及图标属性"
+
+#: ../src/main.c:235
 msgid "Display version information"
 msgstr "显示版本信息"
 
-#: ../src/main.c:237
+#: ../src/main.c:236
 msgid "Reload all settings, refresh image list"
 msgstr "重新载入全部设置，刷新图像列表"
 
-#: ../src/main.c:238
+#: ../src/main.c:237
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "弹出菜单 (在鼠标当前位置)"
 
-#: ../src/main.c:239
+#: ../src/main.c:238
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "弹出窗口列表 (在鼠标当前位置)"
 
-#: ../src/main.c:240
+#: ../src/main.c:239
 msgid "Cause xfdesktop to quit"
 msgstr "退出 xfdesktop"
 
-#: ../src/main.c:260
+#: ../src/main.c:259
 #, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "无法解析参数: %s\n"
 
-#: ../src/main.c:268
+#: ../src/main.c:267
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "这是 %s 版本 %s， 运行于 Xfce %s。\n"
 
-#: ../src/main.c:270
+#: ../src/main.c:269
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "依 GTK+ %d.%d.%d 编译, 链接到 GTK+ %d.%d.%d。"
 
-#: ../src/main.c:274
+#: ../src/main.c:273
 #, c-format
 msgid "Build options:\n"
 msgstr "编译选项：\n"
 
-#: ../src/main.c:275
+#: ../src/main.c:274
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    桌面菜单：     %s\n"
 
-#: ../src/main.c:277 ../src/main.c:284 ../src/main.c:291
+#: ../src/main.c:276 ../src/main.c:283 ../src/main.c:290
 msgid "enabled"
 msgstr "启用"
 
-#: ../src/main.c:279 ../src/main.c:286 ../src/main.c:293
+#: ../src/main.c:278 ../src/main.c:285 ../src/main.c:292
 msgid "disabled"
 msgstr "禁用"
 
-#: ../src/main.c:282
+#: ../src/main.c:281
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    桌面图标：      %s\n"
 
-#: ../src/main.c:289
+#: ../src/main.c:288
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    桌面文件图标：   %s\n"
 
-#: ../src/main.c:320
+#: ../src/main.c:319
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s 没有运行。\n"
 
-#: ../src/menu.c:113
+#: ../src/menu.c:111
 msgid "_Applications"
 msgstr " 应用程序(_A)"
 
@@ -274,6 +283,75 @@ msgstr "无法从背景列表文件 \"%s\" 中加载图片"
 #: ../src/xfce-desktop.c:1020
 msgid "Desktop Error"
 msgstr "桌面错误"
+
+#: ../src/xfdesktop-app-menu-item.c:234
+#, fuzzy
+msgid "Needs terminal"
+msgstr "终端"
+
+#: ../src/xfdesktop-app-menu-item.c:235
+msgid "Whether or not the command needs a terminal to execute"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:241
+msgid "Command"
+msgstr "命令"
+
+#: ../src/xfdesktop-app-menu-item.c:242
+msgid "The command to run when the item is clicked"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:248
+#, fuzzy
+msgid "Icon name"
+msgstr "图标设计者"
+
+#: ../src/xfdesktop-app-menu-item.c:249
+msgid "The name of the themed icon to display next to the item"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:255
+msgid "Label"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:256
+msgid "The label displayed in the item"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:262
+#, fuzzy
+msgid "Startup notification"
+msgstr "使用启动提示(_N)"
+
+#: ../src/xfdesktop-app-menu-item.c:263
+msgid "Whether or not the app supports startup notification"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:269
+msgid "Use underline"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:270
+msgid "Whether or not to use an underscore in the label as a keyboard mnemonic"
+msgstr ""
+
+#. printf is to be translator-friendly
+#: ../src/xfdesktop-file-icon.c:141 ../src/xfdesktop-file-icon-manager.c:922
+#: ../src/xfdesktop-file-icon-manager.c:1683 ../src/xfdesktop-file-utils.c:363
+#, c-format
+msgid "Unable to launch \"%s\":"
+msgstr "无法启动 \"%s\"："
+
+#: ../src/xfdesktop-file-icon.c:143 ../src/xfdesktop-file-icon-manager.c:924
+#: ../src/xfdesktop-file-icon-manager.c:984
+#: ../src/xfdesktop-file-icon-manager.c:1287
+#: ../src/xfdesktop-file-icon-manager.c:1684 ../src/xfdesktop-file-utils.c:366
+msgid "Launch Error"
+msgstr "启动错误"
+
+#: ../src/xfdesktop-file-icon.c:145
+msgid "The associated application could not be found or executed."
+msgstr "无法找到或执行相关应用程序。"
 
 #: ../src/xfdesktop-file-icon-manager.c:479
 #, c-format
@@ -336,22 +414,6 @@ msgstr "您确定要删除下面 %d 个文件吗？"
 #: ../src/xfdesktop-file-icon-manager.c:699
 msgid "Delete Multiple Files"
 msgstr "删除多个文件"
-
-#. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:922
-#: ../src/xfdesktop-file-icon-manager.c:1683 ../src/xfdesktop-file-icon.c:141
-#: ../src/xfdesktop-file-utils.c:363
-#, c-format
-msgid "Unable to launch \"%s\":"
-msgstr "无法启动 \"%s\"："
-
-#: ../src/xfdesktop-file-icon-manager.c:924
-#: ../src/xfdesktop-file-icon-manager.c:984
-#: ../src/xfdesktop-file-icon-manager.c:1287
-#: ../src/xfdesktop-file-icon-manager.c:1684 ../src/xfdesktop-file-icon.c:143
-#: ../src/xfdesktop-file-utils.c:366
-msgid "Launch Error"
-msgstr "启动错误"
 
 #: ../src/xfdesktop-file-icon-manager.c:985
 msgid "The application chooser could not be opened."
@@ -501,10 +563,6 @@ msgstr "无法运行 \"%s\" "
 #: ../src/xfdesktop-regular-file-icon.c:393
 msgid "Run Error"
 msgstr "运行错误"
-
-#: ../src/xfdesktop-file-icon.c:145
-msgid "The associated application could not be found or executed."
-msgstr "无法找到或执行相关应用程序。"
 
 #: ../src/xfdesktop-file-properties-dialog.c:104
 #, c-format
@@ -733,14 +791,6 @@ msgstr "挂载卷(_M)"
 msgid "E_ject Volume"
 msgstr "弹出卷(_J)"
 
-#: ../settings/xfce-backdrop-settings.desktop.in.h:1
-msgid "Desktop "
-msgstr "桌面"
-
-#: ../settings/xfce-backdrop-settings.desktop.in.h:2
-msgid "Set desktop background and menu and icon behaviour"
-msgstr "设置桌面背景，菜单，及图标属性"
-
 #~ msgid "Unable to launch xfce4-menueditor: %s"
 #~ msgstr "无法启动 xfce4 菜单编辑器: %s"
 
@@ -908,9 +958,6 @@ msgstr "设置桌面背景，菜单，及图标属性"
 
 #~ msgid "Run a program"
 #~ msgstr "启动程序"
-
-#~ msgid "Terminal"
-#~ msgstr "终端"
 
 #~ msgid "Terminal emulator"
 #~ msgstr "终端模拟器"
@@ -1175,9 +1222,6 @@ msgstr "设置桌面背景，菜单，及图标属性"
 #~ msgid "Select icon"
 #~ msgstr "选择图标"
 
-#~ msgid "Use startup _notification"
-#~ msgstr "使用启动提示(_N)"
-
 #~ msgid "Run in _terminal"
 #~ msgstr "在终端中运行(_T)"
 
@@ -1354,9 +1398,6 @@ msgstr "设置桌面背景，菜单，及图标属性"
 #~ msgid "Name"
 #~ msgstr "名称"
 
-#~ msgid "Command"
-#~ msgstr "命令"
-
 #~ msgid "Hidden"
 #~ msgstr "隐藏"
 
@@ -1407,9 +1448,6 @@ msgstr "设置桌面背景，菜单，及图标属性"
 
 #~ msgid "Contributor"
 #~ msgstr "其他作出贡献人员"
-
-#~ msgid "Icon designer"
-#~ msgstr "图标设计者"
 
 #~ msgid "You have modified the menu, do you want to save it before quitting ?"
 #~ msgstr "您修改了菜单，您要在退出前保存吗？"

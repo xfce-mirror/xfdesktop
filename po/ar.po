@@ -12,10 +12,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-28 23:56+0200\n"
+"POT-Creation-Date: 2010-08-28 16:27+0200\n"
 "PO-Revision-Date: 2008-07-17 13:24+0200\n"
 "Last-Translator: Mohamed Magdy <mohamedmk@gmail.com>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
+"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -168,80 +169,89 @@ msgstr "إعدادات المكتب"
 msgid "Unable to contact settings server"
 msgstr "فشل في الوصول الى خدمة سلة المهملات"
 
-#: ../src/main.c:236
+#: ../settings/xfce-backdrop-settings.desktop.in.h:1
+#, fuzzy
+msgid "Desktop "
+msgstr "سطح المكتب"
+
+#: ../settings/xfce-backdrop-settings.desktop.in.h:2
+msgid "Set desktop background and menu and icon behaviour"
+msgstr ""
+
+#: ../src/main.c:235
 #, fuzzy
 msgid "Display version information"
 msgstr "معلومات"
 
-#: ../src/main.c:237
+#: ../src/main.c:236
 #, fuzzy
 msgid "Reload all settings, refresh image list"
 msgstr "····--اعد تحميل······اعد تحميل جميع الخيارات,·اعد·تحميل لائحة الصور \n"
 
-#: ../src/main.c:238
+#: ../src/main.c:237
 #, fuzzy
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "····--قائمة······اظهر القائمة في مكان الحالي للفأرة \n"
 
-#: ../src/main.c:239
+#: ../src/main.c:238
 #, fuzzy
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "   --لائحة النوافذ  أظهر لائحة النوافذ(عند المكان الحالي للفأرة) \n"
 
-#: ../src/main.c:240
+#: ../src/main.c:239
 #, fuzzy
 msgid "Cause xfdesktop to quit"
 msgstr "····--خروج········خروج من·xfdesktop \n"
 
-#: ../src/main.c:260
+#: ../src/main.c:259
 #, fuzzy, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "فشل في تنفيذ \"%s\""
 
-#: ../src/main.c:268
+#: ../src/main.c:267
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "هذا هو %s نسخة %s ،  يعمل على اكسفس %s.\n"
 
-#: ../src/main.c:270
+#: ../src/main.c:269
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Built·with·GTK+·%d.%d.%d,·linked·with·GTK+·%d.%d.%d."
 
-#: ../src/main.c:274
+#: ../src/main.c:273
 #, c-format
 msgid "Build options:\n"
 msgstr "خيارات البناء:\n"
 
-#: ../src/main.c:275
+#: ../src/main.c:274
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "···قائمة المكتب:········%s\n"
 
-#: ../src/main.c:277 ../src/main.c:284 ../src/main.c:291
+#: ../src/main.c:276 ../src/main.c:283 ../src/main.c:290
 msgid "enabled"
 msgstr "تمكين"
 
-#: ../src/main.c:279 ../src/main.c:286 ../src/main.c:293
+#: ../src/main.c:278 ../src/main.c:285 ../src/main.c:292
 msgid "disabled"
 msgstr "معطل"
 
-#: ../src/main.c:282
+#: ../src/main.c:281
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    أيقونات سطح المكتب:       %s\n"
 
-#: ../src/main.c:289
+#: ../src/main.c:288
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "أيقونات ملف سطح المكتب:  %s\n"
 
-#: ../src/main.c:320
+#: ../src/main.c:319
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s لاتعمل.\n"
 
-#: ../src/menu.c:113
+#: ../src/menu.c:111
 msgid "_Applications"
 msgstr ""
 
@@ -291,6 +301,75 @@ msgstr "فشل في انشاء ملف·\"%s\""
 #, fuzzy
 msgid "Desktop Error"
 msgstr "سطح المكتب"
+
+#: ../src/xfdesktop-app-menu-item.c:234
+#, fuzzy
+msgid "Needs terminal"
+msgstr "طرفيّة"
+
+#: ../src/xfdesktop-app-menu-item.c:235
+msgid "Whether or not the command needs a terminal to execute"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:241
+msgid "Command"
+msgstr "أمر"
+
+#: ../src/xfdesktop-app-menu-item.c:242
+msgid "The command to run when the item is clicked"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:248
+#, fuzzy
+msgid "Icon name"
+msgstr "مصمم الأيقونات"
+
+#: ../src/xfdesktop-app-menu-item.c:249
+msgid "The name of the themed icon to display next to the item"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:255
+msgid "Label"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:256
+msgid "The label displayed in the item"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:262
+#, fuzzy
+msgid "Startup notification"
+msgstr "استخدم _تبليغات بدأ التشغيل"
+
+#: ../src/xfdesktop-app-menu-item.c:263
+msgid "Whether or not the app supports startup notification"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:269
+msgid "Use underline"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:270
+msgid "Whether or not to use an underscore in the label as a keyboard mnemonic"
+msgstr ""
+
+#. printf is to be translator-friendly
+#: ../src/xfdesktop-file-icon.c:141 ../src/xfdesktop-file-icon-manager.c:922
+#: ../src/xfdesktop-file-icon-manager.c:1683 ../src/xfdesktop-file-utils.c:363
+#, c-format
+msgid "Unable to launch \"%s\":"
+msgstr "فشل في اقلاع \"%s\" :"
+
+#: ../src/xfdesktop-file-icon.c:143 ../src/xfdesktop-file-icon-manager.c:924
+#: ../src/xfdesktop-file-icon-manager.c:984
+#: ../src/xfdesktop-file-icon-manager.c:1287
+#: ../src/xfdesktop-file-icon-manager.c:1684 ../src/xfdesktop-file-utils.c:366
+msgid "Launch Error"
+msgstr "خطأ في الإقلاع"
+
+#: ../src/xfdesktop-file-icon.c:145
+msgid "The associated application could not be found or executed."
+msgstr "البرنامج المرتبط بالملف غير موجود او غير قابل للتنفيذ."
 
 #: ../src/xfdesktop-file-icon-manager.c:479
 #, c-format
@@ -353,22 +432,6 @@ msgstr "هل أنت متأكد أنك تريد حذف الملفات التال�
 #: ../src/xfdesktop-file-icon-manager.c:699
 msgid "Delete Multiple Files"
 msgstr "حذف عدة ملفات"
-
-#. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:922
-#: ../src/xfdesktop-file-icon-manager.c:1683 ../src/xfdesktop-file-icon.c:141
-#: ../src/xfdesktop-file-utils.c:363
-#, c-format
-msgid "Unable to launch \"%s\":"
-msgstr "فشل في اقلاع \"%s\" :"
-
-#: ../src/xfdesktop-file-icon-manager.c:924
-#: ../src/xfdesktop-file-icon-manager.c:984
-#: ../src/xfdesktop-file-icon-manager.c:1287
-#: ../src/xfdesktop-file-icon-manager.c:1684 ../src/xfdesktop-file-icon.c:143
-#: ../src/xfdesktop-file-utils.c:366
-msgid "Launch Error"
-msgstr "خطأ في الإقلاع"
 
 #: ../src/xfdesktop-file-icon-manager.c:985
 msgid "The application chooser could not be opened."
@@ -521,10 +584,6 @@ msgstr "فشل في تنفيذ \"%s\""
 #: ../src/xfdesktop-regular-file-icon.c:393
 msgid "Run Error"
 msgstr "خطأ في التنفيذ"
-
-#: ../src/xfdesktop-file-icon.c:145
-msgid "The associated application could not be found or executed."
-msgstr "البرنامج المرتبط بالملف غير موجود او غير قابل للتنفيذ."
 
 #: ../src/xfdesktop-file-properties-dialog.c:104
 #, c-format
@@ -748,15 +807,6 @@ msgstr "ضم الج_زء"
 msgid "E_ject Volume"
 msgstr "أخ_رج الجزء"
 
-#: ../settings/xfce-backdrop-settings.desktop.in.h:1
-#, fuzzy
-msgid "Desktop "
-msgstr "سطح المكتب"
-
-#: ../settings/xfce-backdrop-settings.desktop.in.h:2
-msgid "Set desktop background and menu and icon behaviour"
-msgstr ""
-
 #~ msgid "Unable to launch xfce4-menueditor: %s"
 #~ msgstr "تعذّر اطلاق xfce4-menueditor: %s"
 
@@ -929,9 +979,6 @@ msgstr ""
 #~ msgid "Run a program"
 #~ msgstr "تشغيل برنامج"
 
-#~ msgid "Terminal"
-#~ msgstr "طرفيّة"
-
 #~ msgid "Terminal emulator"
 #~ msgstr "محاكي الطرفية"
 
@@ -1082,9 +1129,6 @@ msgstr ""
 
 #~ msgid "Select icon"
 #~ msgstr "انتقي أيقونة"
-
-#~ msgid "Use startup _notification"
-#~ msgstr "استخدم _تبليغات بدأ التشغيل"
 
 #~ msgid "Run in _terminal"
 #~ msgstr "شغِّل في ال_طرفية"
@@ -1252,9 +1296,6 @@ msgstr ""
 #~ msgid "Name"
 #~ msgstr "اسم"
 
-#~ msgid "Command"
-#~ msgstr "أمر"
-
 #~ msgid "Hidden"
 #~ msgstr "مخفي"
 
@@ -1305,9 +1346,6 @@ msgstr ""
 
 #~ msgid "Contributor"
 #~ msgstr "مساهم"
-
-#~ msgid "Icon designer"
-#~ msgstr "مصمم الأيقونات"
 
 #~ msgid "You have modified the menu, do you want to save it before quitting ?"
 #~ msgstr "لقد عدّلت القائمة، أترغب في حفظها قبل الخروج ؟"

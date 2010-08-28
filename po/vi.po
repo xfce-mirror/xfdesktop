@@ -9,10 +9,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-28 23:56+0200\n"
+"POT-Creation-Date: 2010-08-28 16:27+0200\n"
 "PO-Revision-Date: 2006-09-05 03:05+0400\n"
 "Last-Translator: Phan Vĩnh Thịnh <teppi82@gmail.com>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
+"Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -165,81 +166,90 @@ msgstr "Các thiết lập desktop"
 msgid "Unable to contact settings server"
 msgstr "Không mở được sọt rác."
 
-#: ../src/main.c:236
+#: ../settings/xfce-backdrop-settings.desktop.in.h:1
+#, fuzzy
+msgid "Desktop "
+msgstr "Desktop"
+
+#: ../settings/xfce-backdrop-settings.desktop.in.h:2
+msgid "Set desktop background and menu and icon behaviour"
+msgstr ""
+
+#: ../src/main.c:235
 #, fuzzy
 msgid "Display version information"
 msgstr "Thông tin"
 
-#: ../src/main.c:237
+#: ../src/main.c:236
 #, fuzzy
 msgid "Reload all settings, refresh image list"
 msgstr "    -reload     Nạp lại mọi thiết lập, cập nhật danh sách hình ảnh\n"
 
-#: ../src/main.c:238
+#: ../src/main.c:237
 #, fuzzy
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "    -menu        Mở ra trình đơn (ở vị trí con chuột hiện tại)\n"
 
-#: ../src/main.c:239
+#: ../src/main.c:238
 #, fuzzy
 msgid "Pop up the window list (at the current mouse position)"
 msgstr ""
 "    -windowlist  Mở ra danh sách cửa sổ (ở vị trí con chuột hiện tại)\n"
 
-#: ../src/main.c:240
+#: ../src/main.c:239
 #, fuzzy
 msgid "Cause xfdesktop to quit"
 msgstr "    -quit        Thoát xfdesktop\n"
 
-#: ../src/main.c:260
+#: ../src/main.c:259
 #, fuzzy, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "Lỗi chạy \"%s\":"
 
-#: ../src/main.c:268
+#: ../src/main.c:267
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Đây là %s phiên bản %s, chạy trên Xfce %s.\n"
 
-#: ../src/main.c:270
+#: ../src/main.c:269
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Biên dịch với GTK+ %d.%d.%d, liên kết với GTK+ %d.%d.%d."
 
-#: ../src/main.c:274
+#: ../src/main.c:273
 #, c-format
 msgid "Build options:\n"
 msgstr "Tùy chọn biên dịch:\n"
 
-#: ../src/main.c:275
+#: ../src/main.c:274
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Thực đơn màn hình:        %s\n"
 
-#: ../src/main.c:277 ../src/main.c:284 ../src/main.c:291
+#: ../src/main.c:276 ../src/main.c:283 ../src/main.c:290
 msgid "enabled"
 msgstr "bật"
 
-#: ../src/main.c:279 ../src/main.c:286 ../src/main.c:293
+#: ../src/main.c:278 ../src/main.c:285 ../src/main.c:292
 msgid "disabled"
 msgstr "tắt"
 
-#: ../src/main.c:282
+#: ../src/main.c:281
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Biểu tượng màn hình:       %s\n"
 
-#: ../src/main.c:289
+#: ../src/main.c:288
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Biểu tượng màn hình:  %s\n"
 
-#: ../src/main.c:320
+#: ../src/main.c:319
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s không chạy.\n"
 
-#: ../src/menu.c:113
+#: ../src/menu.c:111
 msgid "_Applications"
 msgstr ""
 
@@ -289,6 +299,75 @@ msgstr "Không tạo được tập tin \"%s\":"
 #, fuzzy
 msgid "Desktop Error"
 msgstr "Desktop"
+
+#: ../src/xfdesktop-app-menu-item.c:234
+#, fuzzy
+msgid "Needs terminal"
+msgstr "Trạm cuối"
+
+#: ../src/xfdesktop-app-menu-item.c:235
+msgid "Whether or not the command needs a terminal to execute"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:241
+msgid "Command"
+msgstr "Lệnh"
+
+#: ../src/xfdesktop-app-menu-item.c:242
+msgid "The command to run when the item is clicked"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:248
+#, fuzzy
+msgid "Icon name"
+msgstr "Người thiết kế biểu tượng"
+
+#: ../src/xfdesktop-app-menu-item.c:249
+msgid "The name of the themed icon to display next to the item"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:255
+msgid "Label"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:256
+msgid "The label displayed in the item"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:262
+#, fuzzy
+msgid "Startup notification"
+msgstr "Dùng thông _báo khởi động"
+
+#: ../src/xfdesktop-app-menu-item.c:263
+msgid "Whether or not the app supports startup notification"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:269
+msgid "Use underline"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:270
+msgid "Whether or not to use an underscore in the label as a keyboard mnemonic"
+msgstr ""
+
+#. printf is to be translator-friendly
+#: ../src/xfdesktop-file-icon.c:141 ../src/xfdesktop-file-icon-manager.c:922
+#: ../src/xfdesktop-file-icon-manager.c:1683 ../src/xfdesktop-file-utils.c:363
+#, c-format
+msgid "Unable to launch \"%s\":"
+msgstr "Không chạy được \"%s\":"
+
+#: ../src/xfdesktop-file-icon.c:143 ../src/xfdesktop-file-icon-manager.c:924
+#: ../src/xfdesktop-file-icon-manager.c:984
+#: ../src/xfdesktop-file-icon-manager.c:1287
+#: ../src/xfdesktop-file-icon-manager.c:1684 ../src/xfdesktop-file-utils.c:366
+msgid "Launch Error"
+msgstr "Lỗi chạy"
+
+#: ../src/xfdesktop-file-icon.c:145
+msgid "The associated application could not be found or executed."
+msgstr "Không tìm thấy hoặc không chạy được ứng dụng để mở tập tin."
 
 #: ../src/xfdesktop-file-icon-manager.c:479
 #, c-format
@@ -353,22 +432,6 @@ msgstr "Bạn có chắc bạn muốn xóa %d tập tin sau?"
 #: ../src/xfdesktop-file-icon-manager.c:699
 msgid "Delete Multiple Files"
 msgstr "Xóa nhiều tập tin"
-
-#. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:922
-#: ../src/xfdesktop-file-icon-manager.c:1683 ../src/xfdesktop-file-icon.c:141
-#: ../src/xfdesktop-file-utils.c:363
-#, c-format
-msgid "Unable to launch \"%s\":"
-msgstr "Không chạy được \"%s\":"
-
-#: ../src/xfdesktop-file-icon-manager.c:924
-#: ../src/xfdesktop-file-icon-manager.c:984
-#: ../src/xfdesktop-file-icon-manager.c:1287
-#: ../src/xfdesktop-file-icon-manager.c:1684 ../src/xfdesktop-file-icon.c:143
-#: ../src/xfdesktop-file-utils.c:366
-msgid "Launch Error"
-msgstr "Lỗi chạy"
 
 #: ../src/xfdesktop-file-icon-manager.c:985
 #, fuzzy
@@ -524,10 +587,6 @@ msgstr "Lỗi chạy \"%s\":"
 #: ../src/xfdesktop-regular-file-icon.c:393
 msgid "Run Error"
 msgstr "Lỗi chạy"
-
-#: ../src/xfdesktop-file-icon.c:145
-msgid "The associated application could not be found or executed."
-msgstr "Không tìm thấy hoặc không chạy được ứng dụng để mở tập tin."
 
 #: ../src/xfdesktop-file-properties-dialog.c:104
 #, c-format
@@ -759,15 +818,6 @@ msgstr "_Gắn ổ"
 msgid "E_ject Volume"
 msgstr "Đẩy đĩa _ra"
 
-#: ../settings/xfce-backdrop-settings.desktop.in.h:1
-#, fuzzy
-msgid "Desktop "
-msgstr "Desktop"
-
-#: ../settings/xfce-backdrop-settings.desktop.in.h:2
-msgid "Set desktop background and menu and icon behaviour"
-msgstr ""
-
 #~ msgid "Unable to launch xfce4-menueditor: %s"
 #~ msgstr "Không thể gọi xfce4-menueditor: %s"
 
@@ -878,9 +928,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Run a program"
 #~ msgstr "Lỗi chạy"
-
-#~ msgid "Terminal"
-#~ msgstr "Trạm cuối"
 
 #~ msgid "Web Browser"
 #~ msgstr "Trình duyệt web"
@@ -1016,9 +1063,6 @@ msgstr ""
 
 #~ msgid "Select icon"
 #~ msgstr "Chọn biểu tượng"
-
-#~ msgid "Use startup _notification"
-#~ msgstr "Dùng thông _báo khởi động"
 
 #~ msgid "Run in _terminal"
 #~ msgstr "Chạy ở _trạm cuối"
@@ -1187,9 +1231,6 @@ msgstr ""
 #~ msgid "Name"
 #~ msgstr "Tên"
 
-#~ msgid "Command"
-#~ msgstr "Lệnh"
-
 #~ msgid "Hidden"
 #~ msgstr "Ẩn"
 
@@ -1240,9 +1281,6 @@ msgstr ""
 
 #~ msgid "Contributor"
 #~ msgstr "Người đóng góp"
-
-#~ msgid "Icon designer"
-#~ msgstr "Người thiết kế biểu tượng"
 
 #~ msgid "You have modified the menu, do you want to save it before quitting ?"
 #~ msgstr "Bạn đã thay đổi trình đơn, bạn có muốn lưu trước khi thoát ?"

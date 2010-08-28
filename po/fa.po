@@ -7,10 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-28 23:56+0200\n"
+"POT-Creation-Date: 2010-08-28 16:27+0200\n"
 "PO-Revision-Date: 2005-10-09 22:14+0900\n"
 "Last-Translator: Abbas Izad <abbasizad@hotmail.com>\n"
 "Language-Team: Persian <translation-team-fa@lists.sourceforge.net>\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -162,82 +163,91 @@ msgstr "تنظیمات رومیزی"
 msgid "Unable to contact settings server"
 msgstr "نمیتوان ویرایشگر منوی Xfce4 را راه انداخت: %s"
 
-#: ../src/main.c:236
+#: ../settings/xfce-backdrop-settings.desktop.in.h:1
+#, fuzzy
+msgid "Desktop "
+msgstr "رومیزی"
+
+#: ../settings/xfce-backdrop-settings.desktop.in.h:2
+msgid "Set desktop background and menu and icon behaviour"
+msgstr ""
+
+#: ../src/main.c:235
 #, fuzzy
 msgid "Display version information"
 msgstr "نادیده گیری تغییرات"
 
-#: ../src/main.c:237
+#: ../src/main.c:236
 #, fuzzy
 msgid "Reload all settings, refresh image list"
 msgstr ""
 "    -reload     همه تنظیمات را بارگذاری مجدد کرده و لیست تصویر نوسازی میشود\n"
 
-#: ../src/main.c:238
+#: ../src/main.c:237
 #, fuzzy
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "    -menu        ,باز کردن منو (در جای موشی کنونی)\n"
 
-#: ../src/main.c:239
+#: ../src/main.c:238
 #, fuzzy
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "    -windowlist  باز کردن لیست پنجره (در جای موشی کنونی )\n"
 
-#: ../src/main.c:240
+#: ../src/main.c:239
 msgid "Cause xfdesktop to quit"
 msgstr ""
 
-#: ../src/main.c:260
+#: ../src/main.c:259
 #, fuzzy, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "نمیتوان ویرایشگر منوی Xfce4 را راه انداخت: %s"
 
-#: ../src/main.c:268
+#: ../src/main.c:267
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr ""
 
-#: ../src/main.c:270
+#: ../src/main.c:269
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr ""
 
-#: ../src/main.c:274
+#: ../src/main.c:273
 #, c-format
 msgid "Build options:\n"
 msgstr ""
 
-#: ../src/main.c:275
+#: ../src/main.c:274
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr ""
 
-#: ../src/main.c:277 ../src/main.c:284 ../src/main.c:291
+#: ../src/main.c:276 ../src/main.c:283 ../src/main.c:290
 #, fuzzy
 msgid "enabled"
 msgstr "مقیاس شده"
 
-#: ../src/main.c:279 ../src/main.c:286 ../src/main.c:293
+#: ../src/main.c:278 ../src/main.c:285 ../src/main.c:292
 #, fuzzy
 msgid "disabled"
 msgstr "چیده شده"
 
-#: ../src/main.c:282
+#: ../src/main.c:281
 #, fuzzy, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "منوی رومیزی"
 
-#: ../src/main.c:289
+#: ../src/main.c:288
 #, fuzzy, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "منوی رومیزی"
 
-#: ../src/main.c:320
+#: ../src/main.c:319
 #, c-format
 msgid "%s is not running.\n"
 msgstr ""
 
-#: ../src/menu.c:113
+#: ../src/menu.c:111
 msgid "_Applications"
 msgstr ""
 
@@ -287,6 +297,77 @@ msgstr "نمیتوان ویرایشگر منوی Xfce4 را راه انداخت:
 #, fuzzy
 msgid "Desktop Error"
 msgstr "رومیزی"
+
+#: ../src/xfdesktop-app-menu-item.c:234
+#, fuzzy
+msgid "Needs terminal"
+msgstr "اجرا در _پایانه"
+
+#: ../src/xfdesktop-app-menu-item.c:235
+msgid "Whether or not the command needs a terminal to execute"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:241
+msgid "Command"
+msgstr "فرمان"
+
+#: ../src/xfdesktop-app-menu-item.c:242
+#, fuzzy
+msgid "The command to run when the item is clicked"
+msgstr "فرمان وجود ندارد!"
+
+#: ../src/xfdesktop-app-menu-item.c:248
+#, fuzzy
+msgid "Icon name"
+msgstr "طراح شمایل"
+
+#: ../src/xfdesktop-app-menu-item.c:249
+msgid "The name of the themed icon to display next to the item"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:255
+msgid "Label"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:256
+msgid "The label displayed in the item"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:262
+#, fuzzy
+msgid "Startup notification"
+msgstr "استفاده از _یادآوری شروعی"
+
+#: ../src/xfdesktop-app-menu-item.c:263
+msgid "Whether or not the app supports startup notification"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:269
+msgid "Use underline"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:270
+msgid "Whether or not to use an underscore in the label as a keyboard mnemonic"
+msgstr ""
+
+#. printf is to be translator-friendly
+#: ../src/xfdesktop-file-icon.c:141 ../src/xfdesktop-file-icon-manager.c:922
+#: ../src/xfdesktop-file-icon-manager.c:1683 ../src/xfdesktop-file-utils.c:363
+#, fuzzy, c-format
+msgid "Unable to launch \"%s\":"
+msgstr "نمیتوان ویرایشگر منوی Xfce4 را راه انداخت: %s"
+
+#: ../src/xfdesktop-file-icon.c:143 ../src/xfdesktop-file-icon-manager.c:924
+#: ../src/xfdesktop-file-icon-manager.c:984
+#: ../src/xfdesktop-file-icon-manager.c:1287
+#: ../src/xfdesktop-file-icon-manager.c:1684 ../src/xfdesktop-file-utils.c:366
+#, fuzzy
+msgid "Launch Error"
+msgstr "پرتابگر"
+
+#: ../src/xfdesktop-file-icon.c:145
+msgid "The associated application could not be found or executed."
+msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:479
 #, c-format
@@ -351,23 +432,6 @@ msgstr "آیا مطمئن هستید که میخواهید منوی کنونی �
 #, fuzzy
 msgid "Delete Multiple Files"
 msgstr "انتخاب پرونده منو"
-
-#. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:922
-#: ../src/xfdesktop-file-icon-manager.c:1683 ../src/xfdesktop-file-icon.c:141
-#: ../src/xfdesktop-file-utils.c:363
-#, fuzzy, c-format
-msgid "Unable to launch \"%s\":"
-msgstr "نمیتوان ویرایشگر منوی Xfce4 را راه انداخت: %s"
-
-#: ../src/xfdesktop-file-icon-manager.c:924
-#: ../src/xfdesktop-file-icon-manager.c:984
-#: ../src/xfdesktop-file-icon-manager.c:1287
-#: ../src/xfdesktop-file-icon-manager.c:1684 ../src/xfdesktop-file-icon.c:143
-#: ../src/xfdesktop-file-utils.c:366
-#, fuzzy
-msgid "Launch Error"
-msgstr "پرتابگر"
 
 #: ../src/xfdesktop-file-icon-manager.c:985
 msgid "The application chooser could not be opened."
@@ -524,10 +588,6 @@ msgstr "نمیتوان ویرایشگر منوی Xfce4 را راه انداخت:
 #: ../src/xfdesktop-file-icon-manager.c:3372
 #: ../src/xfdesktop-regular-file-icon.c:393
 msgid "Run Error"
-msgstr ""
-
-#: ../src/xfdesktop-file-icon.c:145
-msgid "The associated application could not be found or executed."
 msgstr ""
 
 #: ../src/xfdesktop-file-properties-dialog.c:104
@@ -759,15 +819,6 @@ msgstr ""
 msgid "E_ject Volume"
 msgstr ""
 
-#: ../settings/xfce-backdrop-settings.desktop.in.h:1
-#, fuzzy
-msgid "Desktop "
-msgstr "رومیزی"
-
-#: ../settings/xfce-backdrop-settings.desktop.in.h:2
-msgid "Set desktop background and menu and icon behaviour"
-msgstr ""
-
 #~ msgid "Unable to launch xfce4-menueditor: %s"
 #~ msgstr "نمیتوان ویرایشگر منوی Xfce4 را راه انداخت: %s"
 
@@ -982,12 +1033,6 @@ msgstr ""
 #~ msgid "Select icon"
 #~ msgstr "انتخاب شمایل"
 
-#~ msgid "Use startup _notification"
-#~ msgstr "استفاده از _یادآوری شروعی"
-
-#~ msgid "Run in _terminal"
-#~ msgstr "اجرا در _پایانه"
-
 #~ msgid "Select command"
 #~ msgstr "انتخاب فرمان"
 
@@ -1138,9 +1183,6 @@ msgstr ""
 #~ msgid "Name"
 #~ msgstr "نام"
 
-#~ msgid "Command"
-#~ msgstr "فرمان"
-
 #~ msgid "Hidden"
 #~ msgstr "پنهان"
 
@@ -1189,9 +1231,6 @@ msgstr ""
 
 #~ msgid "Contributor"
 #~ msgstr "اهداگر"
-
-#~ msgid "Icon designer"
-#~ msgstr "طراح شمایل"
 
 #~ msgid "You have modified the menu, do you want to save it before quitting ?"
 #~ msgstr "شما منو را تغییر داده‌اید، آیا میخواهید آن را پیش از ترک ذخیره کنید؟"
@@ -1341,9 +1380,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Are sure you want to quit?"
 #~ msgstr "آیا مطمئن هستید که میخواهید منوی کنونی را ببندید؟"
-
-#~ msgid "The command doesn't exist !"
-#~ msgstr "فرمان وجود ندارد!"
 
 #~ msgid "All fields must be filled to add an item."
 #~ msgstr "برای افزودن یک آیتم همه محوطه‌ها باید پر شوند."

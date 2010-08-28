@@ -10,10 +10,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lv\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-28 23:56+0200\n"
+"POT-Creation-Date: 2010-08-28 16:27+0200\n"
 "PO-Revision-Date: 2009-09-18 18:35+0100\n"
 "Last-Translator: Rihards Prieditis <rprieditis@gmail.com>\n"
 "Language-Team: Latvian <translation-team-lv@lists.sourceforge.net>\n"
+"Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -162,82 +163,90 @@ msgstr "Darbvirsmas uzstādījumi"
 msgid "Unable to contact settings server"
 msgstr "Neizdevās sazināties ar uzstādījumu serveri"
 
-#: ../src/main.c:236
+#: ../settings/xfce-backdrop-settings.desktop.in.h:1
+msgid "Desktop "
+msgstr "Darbvirsma"
+
+#: ../settings/xfce-backdrop-settings.desktop.in.h:2
+msgid "Set desktop background and menu and icon behaviour"
+msgstr "Uzstādīt darbvirsmas fonu un izvēlnes, un ikonas uzvedību"
+
+#: ../src/main.c:235
 #, fuzzy
 msgid "Display version information"
 msgstr "Versijas informācija"
 
-#: ../src/main.c:237
+#: ../src/main.c:236
 #, fuzzy
 msgid "Reload all settings, refresh image list"
 msgstr ""
 "    --reload      Pārlādē visus uzstādījumus, atsvaidzina attēlu sarakstu\n"
 
-#: ../src/main.c:238
+#: ../src/main.c:237
 #, fuzzy
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "    --menu        Atver izvēlni pie patreizējā peles kursora\n"
 
-#: ../src/main.c:239
+#: ../src/main.c:238
 #, fuzzy
 msgid "Pop up the window list (at the current mouse position)"
 msgstr ""
 "    --windowlist  Atver izlecošu logu ar logu sarakstu pie peles kursora\n"
 
-#: ../src/main.c:240
+#: ../src/main.c:239
 #, fuzzy
 msgid "Cause xfdesktop to quit"
 msgstr "    --quit        Beigt darbu ar xfdesktop\n"
 
-#: ../src/main.c:260
+#: ../src/main.c:259
 #, fuzzy, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "Neizdevās palaist \"%s\":"
 
-#: ../src/main.c:268
+#: ../src/main.c:267
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Šī ir %s versija %s, kura skrien uz Xfce %s.\n"
 
-#: ../src/main.c:270
+#: ../src/main.c:269
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Celts ar GTK+ %d.%d.%d, saistīts ar GTK+ %d.%d.%d."
 
-#: ../src/main.c:274
+#: ../src/main.c:273
 #, c-format
 msgid "Build options:\n"
 msgstr "Celšanas opcijas:\n"
 
-#: ../src/main.c:275
+#: ../src/main.c:274
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Darbvirsmas izvēlne:        %s\n"
 
-#: ../src/main.c:277 ../src/main.c:284 ../src/main.c:291
+#: ../src/main.c:276 ../src/main.c:283 ../src/main.c:290
 msgid "enabled"
 msgstr "ieslēgt"
 
-#: ../src/main.c:279 ../src/main.c:286 ../src/main.c:293
+#: ../src/main.c:278 ../src/main.c:285 ../src/main.c:292
 msgid "disabled"
 msgstr "izslēgt"
 
-#: ../src/main.c:282
+#: ../src/main.c:281
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Darbvirsmas ikonas:       %s\n"
 
-#: ../src/main.c:289
+#: ../src/main.c:288
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Darbvirsmas faila ikonas:  %s\n"
 
-#: ../src/main.c:320
+#: ../src/main.c:319
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s nav palaists.\n"
 
-#: ../src/menu.c:113
+#: ../src/menu.c:111
 msgid "_Applications"
 msgstr "_Lietotnes"
 
@@ -286,6 +295,75 @@ msgstr "Neizdevās ielādēt attēlu no aizmugures saraksta faila \"%s\":"
 #: ../src/xfce-desktop.c:1020
 msgid "Desktop Error"
 msgstr "Darbvirsmas kļūda"
+
+#: ../src/xfdesktop-app-menu-item.c:234
+#, fuzzy
+msgid "Needs terminal"
+msgstr "Terminālis"
+
+#: ../src/xfdesktop-app-menu-item.c:235
+msgid "Whether or not the command needs a terminal to execute"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:241
+msgid "Command"
+msgstr "Komanda"
+
+#: ../src/xfdesktop-app-menu-item.c:242
+msgid "The command to run when the item is clicked"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:248
+#, fuzzy
+msgid "Icon name"
+msgstr "Ikonu autors"
+
+#: ../src/xfdesktop-app-menu-item.c:249
+msgid "The name of the themed icon to display next to the item"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:255
+msgid "Label"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:256
+msgid "The label displayed in the item"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:262
+#, fuzzy
+msgid "Startup notification"
+msgstr "Izmantot sāknēša_nas paziņošanu"
+
+#: ../src/xfdesktop-app-menu-item.c:263
+msgid "Whether or not the app supports startup notification"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:269
+msgid "Use underline"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:270
+msgid "Whether or not to use an underscore in the label as a keyboard mnemonic"
+msgstr ""
+
+#. printf is to be translator-friendly
+#: ../src/xfdesktop-file-icon.c:141 ../src/xfdesktop-file-icon-manager.c:922
+#: ../src/xfdesktop-file-icon-manager.c:1683 ../src/xfdesktop-file-utils.c:363
+#, c-format
+msgid "Unable to launch \"%s\":"
+msgstr "Neizdevās palaist \"%s\":"
+
+#: ../src/xfdesktop-file-icon.c:143 ../src/xfdesktop-file-icon-manager.c:924
+#: ../src/xfdesktop-file-icon-manager.c:984
+#: ../src/xfdesktop-file-icon-manager.c:1287
+#: ../src/xfdesktop-file-icon-manager.c:1684 ../src/xfdesktop-file-utils.c:366
+msgid "Launch Error"
+msgstr "Palaišanas Kļūda"
+
+#: ../src/xfdesktop-file-icon.c:145
+msgid "The associated application could not be found or executed."
+msgstr "Piesaistītā lietotne netika atrasta vai izpildīta"
 
 #: ../src/xfdesktop-file-icon-manager.c:479
 #, c-format
@@ -351,22 +429,6 @@ msgstr "Esat drošs, ka vēlaties dzēst sekojošos %d failus?"
 #: ../src/xfdesktop-file-icon-manager.c:699
 msgid "Delete Multiple Files"
 msgstr "Dzēst vairākus failus"
-
-#. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:922
-#: ../src/xfdesktop-file-icon-manager.c:1683 ../src/xfdesktop-file-icon.c:141
-#: ../src/xfdesktop-file-utils.c:363
-#, c-format
-msgid "Unable to launch \"%s\":"
-msgstr "Neizdevās palaist \"%s\":"
-
-#: ../src/xfdesktop-file-icon-manager.c:924
-#: ../src/xfdesktop-file-icon-manager.c:984
-#: ../src/xfdesktop-file-icon-manager.c:1287
-#: ../src/xfdesktop-file-icon-manager.c:1684 ../src/xfdesktop-file-icon.c:143
-#: ../src/xfdesktop-file-utils.c:366
-msgid "Launch Error"
-msgstr "Palaišanas Kļūda"
 
 #: ../src/xfdesktop-file-icon-manager.c:985
 msgid "The application chooser could not be opened."
@@ -518,10 +580,6 @@ msgstr "Neizdevās palaist \"%s\":"
 #: ../src/xfdesktop-regular-file-icon.c:393
 msgid "Run Error"
 msgstr "Izpildes kļūda"
-
-#: ../src/xfdesktop-file-icon.c:145
-msgid "The associated application could not be found or executed."
-msgstr "Piesaistītā lietotne netika atrasta vai izpildīta"
 
 #: ../src/xfdesktop-file-properties-dialog.c:104
 #, c-format
@@ -752,14 +810,6 @@ msgstr "_Montēt sējumu"
 msgid "E_ject Volume"
 msgstr "I_zgrūst sējumu"
 
-#: ../settings/xfce-backdrop-settings.desktop.in.h:1
-msgid "Desktop "
-msgstr "Darbvirsma"
-
-#: ../settings/xfce-backdrop-settings.desktop.in.h:2
-msgid "Set desktop background and menu and icon behaviour"
-msgstr "Uzstādīt darbvirsmas fonu un izvēlnes, un ikonas uzvedību"
-
 #~ msgid "Unable to launch xfce4-menueditor: %s"
 #~ msgstr "Neizdevās palaist xfce4-menueditor: %s"
 
@@ -933,9 +983,6 @@ msgstr "Uzstādīt darbvirsmas fonu un izvēlnes, un ikonas uzvedību"
 
 #~ msgid "Run a program"
 #~ msgstr "Izpildīt programmu"
-
-#~ msgid "Terminal"
-#~ msgstr "Terminālis"
 
 #~ msgid "Terminal emulator"
 #~ msgstr "Termināla emulators"
@@ -1196,9 +1243,6 @@ msgstr "Uzstādīt darbvirsmas fonu un izvēlnes, un ikonas uzvedību"
 #~ msgid "Select icon"
 #~ msgstr "Norādiet ikonu"
 
-#~ msgid "Use startup _notification"
-#~ msgstr "Izmantot sāknēša_nas paziņošanu"
-
 #~ msgid "Run in _terminal"
 #~ msgstr "Izpildīt _terminālī"
 
@@ -1376,9 +1420,6 @@ msgstr "Uzstādīt darbvirsmas fonu un izvēlnes, un ikonas uzvedību"
 #~ msgid "Name"
 #~ msgstr "Nosaukums"
 
-#~ msgid "Command"
-#~ msgstr "Komanda"
-
 #~ msgid "Hidden"
 #~ msgstr "Slēpts"
 
@@ -1429,9 +1470,6 @@ msgstr "Uzstādīt darbvirsmas fonu un izvēlnes, un ikonas uzvedību"
 
 #~ msgid "Contributor"
 #~ msgstr "Atbalstītāji"
-
-#~ msgid "Icon designer"
-#~ msgstr "Ikonu autors"
 
 #~ msgid "You have modified the menu, do you want to save it before quitting ?"
 #~ msgstr "Jūs esat mainījis izvēlni, vai vēlaties saglabāt pirms aizvēršanas?"

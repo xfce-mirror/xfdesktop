@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-24 19:18+0200\n"
+"POT-Creation-Date: 2010-08-28 16:27+0200\n"
 "PO-Revision-Date: 2009-01-24 08:56+0100\n"
 "Last-Translator: Enrico Tröger <enrico@xfce.org>\n"
 "Language-Team: German <xfce-i18n-de@xfce.org>\n"
@@ -161,75 +161,85 @@ msgstr "Hintergrundeinstellungen"
 msgid "Unable to contact settings server"
 msgstr "Konnte den Einstellungsdienst nicht kontaktieren."
 
-#: ../src/main.c:236
+#: ../settings/xfce-backdrop-settings.desktop.in.h:1
+msgid "Desktop "
+msgstr "Schreibtisch"
+
+#: ../settings/xfce-backdrop-settings.desktop.in.h:2
+msgid "Set desktop background and menu and icon behaviour"
+msgstr ""
+"Stellen Sie den Hintergrund des Schreibtischs sowie das Menü- und "
+"Symbolverhalten ein"
+
+#: ../src/main.c:235
 msgid "Display version information"
 msgstr "Versionsinformation anzeigen"
 
-#: ../src/main.c:237
+#: ../src/main.c:236
 msgid "Reload all settings, refresh image list"
 msgstr " Einstellungen neu laden, Bilderliste erneuern"
 
-#: ../src/main.c:238
+#: ../src/main.c:237
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "Das Menü (an der Zeigerposition) erscheinen lassen"
 
-#: ../src/main.c:239
+#: ../src/main.c:238
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "Fensterliste (an der Zeigerposition) erscheinen lassen"
 
-#: ../src/main.c:240
+#: ../src/main.c:239
 msgid "Cause xfdesktop to quit"
 msgstr "Xfdesktop beenden"
 
-#: ../src/main.c:260
+#: ../src/main.c:259
 #, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "Konnte Argumente nicht parsen: %s\n"
 
-#: ../src/main.c:268
+#: ../src/main.c:267
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Dies ist %s Version %s, auf Xfce %s.\n"
 
-#: ../src/main.c:270
+#: ../src/main.c:269
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Erstellt mit GTK+ %d.%d.%d, verknüpft mit GTK+ %d.%d.%d."
 
-#: ../src/main.c:274
+#: ../src/main.c:273
 #, c-format
 msgid "Build options:\n"
 msgstr "Optionen bei der Erstellung:\n"
 
-#: ../src/main.c:275
+#: ../src/main.c:274
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Programm-Menü:        %s\n"
 
-#: ../src/main.c:277 ../src/main.c:284 ../src/main.c:291
+#: ../src/main.c:276 ../src/main.c:283 ../src/main.c:290
 msgid "enabled"
 msgstr "aktiviert"
 
-#: ../src/main.c:279 ../src/main.c:286 ../src/main.c:293
+#: ../src/main.c:278 ../src/main.c:285 ../src/main.c:292
 msgid "disabled"
 msgstr "deaktiviert"
 
-#: ../src/main.c:282
+#: ../src/main.c:281
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Symbole auf dem Schreibtisch:       %s\n"
 
-#: ../src/main.c:289
+#: ../src/main.c:288
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Symbole für Dateien auf dem Schreibtisch:  %s\n"
 
-#: ../src/main.c:320
+#: ../src/main.c:319
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s läuft nicht.\n"
 
-#: ../src/menu.c:113
+#: ../src/menu.c:111
 msgid "_Applications"
 msgstr "_Anwendungen"
 
@@ -278,6 +288,74 @@ msgstr "Konnte Bild aus Liste »%s« nicht laden"
 #: ../src/xfce-desktop.c:1020
 msgid "Desktop Error"
 msgstr "Fehler"
+
+#: ../src/xfdesktop-app-menu-item.c:234
+#, fuzzy
+msgid "Needs terminal"
+msgstr "Terminal"
+
+#: ../src/xfdesktop-app-menu-item.c:235
+msgid "Whether or not the command needs a terminal to execute"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:241
+msgid "Command"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:242
+msgid "The command to run when the item is clicked"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:248
+#, fuzzy
+msgid "Icon name"
+msgstr "Sym_bolgröße:"
+
+#: ../src/xfdesktop-app-menu-item.c:249
+msgid "The name of the themed icon to display next to the item"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:255
+msgid "Label"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:256
+msgid "The label displayed in the item"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:262
+msgid "Startup notification"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:263
+msgid "Whether or not the app supports startup notification"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:269
+msgid "Use underline"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:270
+msgid "Whether or not to use an underscore in the label as a keyboard mnemonic"
+msgstr ""
+
+#. printf is to be translator-friendly
+#: ../src/xfdesktop-file-icon.c:141 ../src/xfdesktop-file-icon-manager.c:922
+#: ../src/xfdesktop-file-icon-manager.c:1683 ../src/xfdesktop-file-utils.c:363
+#, c-format
+msgid "Unable to launch \"%s\":"
+msgstr "Konnte »%s« nicht starten:"
+
+#: ../src/xfdesktop-file-icon.c:143 ../src/xfdesktop-file-icon-manager.c:924
+#: ../src/xfdesktop-file-icon-manager.c:984
+#: ../src/xfdesktop-file-icon-manager.c:1287
+#: ../src/xfdesktop-file-icon-manager.c:1684 ../src/xfdesktop-file-utils.c:366
+msgid "Launch Error"
+msgstr "Fehler beim Ausführen"
+
+#: ../src/xfdesktop-file-icon.c:145
+msgid "The associated application could not be found or executed."
+msgstr "Die verknüpfte Anwendung konnte nicht gefunden oder ausgeführt werden."
 
 #: ../src/xfdesktop-file-icon-manager.c:479
 #, c-format
@@ -344,22 +422,6 @@ msgstr "Wollen Sie die folgende(n) %d Datei(en) wirklich löschen?"
 #: ../src/xfdesktop-file-icon-manager.c:699
 msgid "Delete Multiple Files"
 msgstr "Mehrere Dateien löschen"
-
-#. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:922
-#: ../src/xfdesktop-file-icon-manager.c:1683 ../src/xfdesktop-file-icon.c:141
-#: ../src/xfdesktop-file-utils.c:363
-#, c-format
-msgid "Unable to launch \"%s\":"
-msgstr "Konnte »%s« nicht starten:"
-
-#: ../src/xfdesktop-file-icon-manager.c:924
-#: ../src/xfdesktop-file-icon-manager.c:984
-#: ../src/xfdesktop-file-icon-manager.c:1287
-#: ../src/xfdesktop-file-icon-manager.c:1684 ../src/xfdesktop-file-icon.c:143
-#: ../src/xfdesktop-file-utils.c:366
-msgid "Launch Error"
-msgstr "Fehler beim Ausführen"
 
 #: ../src/xfdesktop-file-icon-manager.c:985
 msgid "The application chooser could not be opened."
@@ -513,10 +575,6 @@ msgstr "Konnte »%s« nicht ausführen:"
 #: ../src/xfdesktop-regular-file-icon.c:393
 msgid "Run Error"
 msgstr "Fehler beim Ausführen"
-
-#: ../src/xfdesktop-file-icon.c:145
-msgid "The associated application could not be found or executed."
-msgstr "Die verknüpfte Anwendung konnte nicht gefunden oder ausgeführt werden."
 
 #: ../src/xfdesktop-file-properties-dialog.c:104
 #, c-format
@@ -747,16 +805,6 @@ msgstr "Datenträger _einhängen"
 msgid "E_ject Volume"
 msgstr "Datenträger aus_werfen"
 
-#: ../settings/xfce-backdrop-settings.desktop.in.h:1
-msgid "Desktop "
-msgstr "Schreibtisch"
-
-#: ../settings/xfce-backdrop-settings.desktop.in.h:2
-msgid "Set desktop background and menu and icon behaviour"
-msgstr ""
-"Stellen Sie den Hintergrund des Schreibtischs sowie das Menü- und "
-"Symbolverhalten ein"
-
 #~ msgid "Unable to launch xfce4-menueditor: %s"
 #~ msgstr "Konnte »xfce4-menueditor« nicht starten: %s"
 
@@ -928,9 +976,6 @@ msgstr ""
 #~ msgid "Run a program"
 #~ msgstr "Ein Programm ausführen"
 
-#~ msgid "Terminal"
-#~ msgstr "Terminal"
-
 #~ msgid "Terminal emulator"
 #~ msgstr "Terminalemulator"
 
@@ -996,9 +1041,6 @@ msgstr ""
 
 #~ msgid "Don't display an image at all"
 #~ msgstr "Überhaupt kein Bild anzeigen"
-
-#~ msgid "Icon _size:"
-#~ msgstr "Sym_bolgröße:"
 
 #~ msgid "Icon _type:"
 #~ msgstr "S_ymboltyp:"

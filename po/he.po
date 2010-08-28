@@ -2,7 +2,7 @@
 # Hebrew translations for xfdesktop package.
 # Copyright (C) 2003-2006 The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
-# 
+#
 # Dotan Kamber <kamberd@yahoo.com>, 2004, 2006.
 # Jonatan Perry <Jonatan443@walla.co.il>, 2004.
 # Yuval Tanny <tanai@int.gov.il>, 2004, 2006.
@@ -10,10 +10,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-17 04:07+0000\n"
+"POT-Creation-Date: 2010-08-28 16:27+0200\n"
 "PO-Revision-Date: 2006-11-11 21:39+0200\n"
 "Last-Translator: Yuval Tanny <tanai@int.gov.il>\n"
 "Language-Team: Hebrew\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -65,8 +66,10 @@ msgstr "Create/Load Backdrop List"
 
 #: ../settings/main.c:511
 #, c-format
-msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgid ""
+"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr ""
+"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
 
 #: ../settings/main.c:516
 msgid "Invalid List File"
@@ -156,75 +159,83 @@ msgstr "הגדרות שולחן עבודה"
 msgid "Unable to contact settings server"
 msgstr "לא ניתן ליצור קשר עם שרת ההגדרות"
 
-#: ../src/main.c:236
+#: ../settings/xfce-backdrop-settings.desktop.in.h:1
+msgid "Desktop "
+msgstr "שולחן עבודה"
+
+#: ../settings/xfce-backdrop-settings.desktop.in.h:2
+msgid "Set desktop background and menu and icon behaviour"
+msgstr "הגדרת התנהגות הרקע, התפריט והסמלים"
+
+#: ../src/main.c:235
 msgid "Display version information"
 msgstr "Display version information"
 
-#: ../src/main.c:237
+#: ../src/main.c:236
 msgid "Reload all settings, refresh image list"
 msgstr "Reload all settings, refresh image list"
 
-#: ../src/main.c:238
+#: ../src/main.c:237
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "Pop up the menu (at the current mouse position)"
 
-#: ../src/main.c:239
+#: ../src/main.c:238
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "Pop up the window list (at the current mouse position)"
 
-#: ../src/main.c:240
+#: ../src/main.c:239
 msgid "Cause xfdesktop to quit"
 msgstr "Cause xfdesktop to quit"
 
-#: ../src/main.c:260
+#: ../src/main.c:259
 #, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "Failed to parse arguments: %s\n"
 
-#: ../src/main.c:268
+#: ../src/main.c:267
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "זהו %s מגרסה %s, מופעל על Xfce %s.\n"
 
-#: ../src/main.c:270
+#: ../src/main.c:269
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "נבנה עם GTK+ %d.%d/%d, מקושר עם GTK+ %d.%d.%d."
 
-#: ../src/main.c:274
+#: ../src/main.c:273
 #, c-format
 msgid "Build options:\n"
 msgstr "אפשרויות בניה:\n"
 
-#: ../src/main.c:275
+#: ../src/main.c:274
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    תפריט שולחן העבודה:        %s\n"
 
-#: ../src/main.c:277 ../src/main.c:284 ../src/main.c:291
+#: ../src/main.c:276 ../src/main.c:283 ../src/main.c:290
 msgid "enabled"
 msgstr "מופעל"
 
-#: ../src/main.c:279 ../src/main.c:286 ../src/main.c:293
+#: ../src/main.c:278 ../src/main.c:285 ../src/main.c:292
 msgid "disabled"
 msgstr "מבוטל"
 
-#: ../src/main.c:282
+#: ../src/main.c:281
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    סמלי שולחן העבודה:       %s\n"
 
-#: ../src/main.c:289
+#: ../src/main.c:288
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    סמלי קבצי שולחן העבודה:       %s\n"
 
-#: ../src/main.c:320
+#: ../src/main.c:319
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s לא פועל.\n"
 
-#: ../src/menu.c:113
+#: ../src/menu.c:111
 msgid "_Applications"
 msgstr "_יישומים"
 
@@ -274,9 +285,79 @@ msgstr "לא ניתן לטעון את התמונה מקובץ רשימת הטפ�
 msgid "Desktop Error"
 msgstr "שגיאה בשולחן העבודה"
 
+#: ../src/xfdesktop-app-menu-item.c:234
+#, fuzzy
+msgid "Needs terminal"
+msgstr "מסוף"
+
+#: ../src/xfdesktop-app-menu-item.c:235
+msgid "Whether or not the command needs a terminal to execute"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:241
+msgid "Command"
+msgstr "פקודה"
+
+#: ../src/xfdesktop-app-menu-item.c:242
+msgid "The command to run when the item is clicked"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:248
+#, fuzzy
+msgid "Icon name"
+msgstr "מעצבי סמלים"
+
+#: ../src/xfdesktop-app-menu-item.c:249
+msgid "The name of the themed icon to display next to the item"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:255
+msgid "Label"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:256
+msgid "The label displayed in the item"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:262
+#, fuzzy
+msgid "Startup notification"
+msgstr "השתמש בהתראת _פתיחה"
+
+#: ../src/xfdesktop-app-menu-item.c:263
+msgid "Whether or not the app supports startup notification"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:269
+msgid "Use underline"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:270
+msgid "Whether or not to use an underscore in the label as a keyboard mnemonic"
+msgstr ""
+
+#. printf is to be translator-friendly
+#: ../src/xfdesktop-file-icon.c:141 ../src/xfdesktop-file-icon-manager.c:922
+#: ../src/xfdesktop-file-icon-manager.c:1683 ../src/xfdesktop-file-utils.c:363
+#, c-format
+msgid "Unable to launch \"%s\":"
+msgstr "אין אפשרות לשגר \"%s\":"
+
+#: ../src/xfdesktop-file-icon.c:143 ../src/xfdesktop-file-icon-manager.c:924
+#: ../src/xfdesktop-file-icon-manager.c:984
+#: ../src/xfdesktop-file-icon-manager.c:1287
+#: ../src/xfdesktop-file-icon-manager.c:1684 ../src/xfdesktop-file-utils.c:366
+msgid "Launch Error"
+msgstr "שגיאת הפעלה"
+
+#: ../src/xfdesktop-file-icon.c:145
+msgid "The associated application could not be found or executed."
+msgstr "לא הייתה אפשרות למצוא או להפעיל את היישום המקושר."
+
 #: ../src/xfdesktop-file-icon-manager.c:479
 #, c-format
-msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgid ""
+"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr "לא ניתן ליצור את התיקייה \"%s\" בשביל לשמור שם את פריטי שולחן העבודה:"
 
 #: ../src/xfdesktop-file-icon-manager.c:481
@@ -287,8 +368,12 @@ msgstr "יצירת תיקיה נכשלה"
 
 #: ../src/xfdesktop-file-icon-manager.c:490
 #, c-format
-msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
-msgstr "לא ניתן להשתמש ב\"%s\" בשביל לשמור שם את פריטי שולחן העבודה משום זה לא תיקייה."
+msgid ""
+"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
+"folder."
+msgstr ""
+"לא ניתן להשתמש ב\"%s\" בשביל לשמור שם את פריטי שולחן העבודה משום זה לא "
+"תיקייה."
 
 #: ../src/xfdesktop-file-icon-manager.c:494
 msgid "Please delete or rename the file."
@@ -333,29 +418,17 @@ msgstr "האם אתה בטוח שברצונך למחוק את %d הקבצים ה
 msgid "Delete Multiple Files"
 msgstr "מחיקת מספר קבצים"
 
-#. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:922
-#: ../src/xfdesktop-file-icon-manager.c:1683 ../src/xfdesktop-file-icon.c:141
-#: ../src/xfdesktop-file-utils.c:363
-#, c-format
-msgid "Unable to launch \"%s\":"
-msgstr "אין אפשרות לשגר \"%s\":"
-
-#: ../src/xfdesktop-file-icon-manager.c:924
-#: ../src/xfdesktop-file-icon-manager.c:984
-#: ../src/xfdesktop-file-icon-manager.c:1287
-#: ../src/xfdesktop-file-icon-manager.c:1684 ../src/xfdesktop-file-icon.c:143
-#: ../src/xfdesktop-file-utils.c:366
-msgid "Launch Error"
-msgstr "שגיאת הפעלה"
-
 #: ../src/xfdesktop-file-icon-manager.c:985
 msgid "The application chooser could not be opened."
 msgstr "לא ניתן לפתוח את בוחר היישומים."
 
 #: ../src/xfdesktop-file-icon-manager.c:986 ../src/xfdesktop-file-utils.c:368
-msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
-msgstr "אפשרות זו דורשת נוכחות של שירות מנהל קבצים (כמו לדוגמה זה המסופק על ידי Thunar)."
+msgid ""
+"This feature requires a file manager service present (such as that supplied "
+"by Thunar)."
+msgstr ""
+"אפשרות זו דורשת נוכחות של שירות מנהל קבצים (כמו לדוגמה זה המסופק על ידי "
+"Thunar)."
 
 #: ../src/xfdesktop-file-icon-manager.c:1182
 #, c-format
@@ -373,8 +446,12 @@ msgid "Unable to create folder named \"%s\":"
 msgstr "אין אפשרות ליצור תיקיה בשם \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1289
-msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
-msgstr "איו אפשרות להפעיל את \"exo-desktop-item-edit\", אשר נחוץ כדי ליצור ולערוך משגרים וקיצורי דרך על שולחן העבודה."
+msgid ""
+"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
+"edit launchers and links on the desktop."
+msgstr ""
+"איו אפשרות להפעיל את \"exo-desktop-item-edit\", אשר נחוץ כדי ליצור ולערוך "
+"משגרים וקיצורי דרך על שולחן העבודה."
 
 #: ../src/xfdesktop-file-icon-manager.c:1324
 msgid "Create New Folder"
@@ -493,10 +570,6 @@ msgstr "אין אפשרות להריץ את \"%s\":"
 #: ../src/xfdesktop-regular-file-icon.c:393
 msgid "Run Error"
 msgstr "שגיאת הרצה"
-
-#: ../src/xfdesktop-file-icon.c:145
-msgid "The associated application could not be found or executed."
-msgstr "לא הייתה אפשרות למצוא או להפעיל את היישום המקושר."
 
 #: ../src/xfdesktop-file-properties-dialog.c:104
 #, c-format
@@ -661,8 +734,11 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "אין אפשרות ליצור קשר עם שירות סל המחזור של Xfce."
 
 #: ../src/xfdesktop-special-file-icon.c:522
-msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
-msgstr "יש לוודא שמותקן סייר קבצים אשר תומך בשרותי סל המחזור של Xfce, כמו Thunar."
+msgid ""
+"Make sure you have a file manager installed that supports the Xfce Trash "
+"service, such as Thunar."
+msgstr ""
+"יש לוודא שמותקן סייר קבצים אשר תומך בשרותי סל המחזור של Xfce, כמו Thunar."
 
 #: ../src/xfdesktop-special-file-icon.c:655
 msgid "_Empty Trash"
@@ -722,14 +798,6 @@ msgstr "_חבר כרך"
 #: ../src/xfdesktop-volume-icon.c:599
 msgid "E_ject Volume"
 msgstr "_הוצא כרך"
-
-#: ../settings/xfce-backdrop-settings.desktop.in.h:1
-msgid "Desktop "
-msgstr "שולחן עבודה"
-
-#: ../settings/xfce-backdrop-settings.desktop.in.h:2
-msgid "Set desktop background and menu and icon behaviour"
-msgstr "הגדרת התנהגות הרקע, התפריט והסמלים"
 
 #~ msgid "Unable to launch xfce4-menueditor: %s"
 #~ msgstr "אין אפשרות להפעיל את עורך התפריטים של Xfce4: %s"
@@ -851,9 +919,6 @@ msgstr "הגדרת התנהגות הרקע, התפריט והסמלים"
 #~ msgid "Run a program"
 #~ msgstr "שגיאת הרצה"
 
-#~ msgid "Terminal"
-#~ msgstr "מסוף"
-
 #~ msgid "Web Browser"
 #~ msgstr "דפדפן אינטרנט"
 
@@ -964,9 +1029,6 @@ msgstr "הגדרת התנהגות הרקע, התפריט והסמלים"
 
 #~ msgid "Select icon"
 #~ msgstr "בחר סמל"
-
-#~ msgid "Use startup _notification"
-#~ msgstr "השתמש בהתראת _פתיחה"
 
 #~ msgid "Run in _terminal"
 #~ msgstr "הפעל ב_מסוף"
@@ -1133,9 +1195,6 @@ msgstr "הגדרת התנהגות הרקע, התפריט והסמלים"
 #~ msgid "Name"
 #~ msgstr "שם"
 
-#~ msgid "Command"
-#~ msgstr "פקודה"
-
 #~ msgid "Hidden"
 #~ msgstr "מוסתר"
 
@@ -1187,9 +1246,6 @@ msgstr "הגדרת התנהגות הרקע, התפריט והסמלים"
 #~ msgid "Contributor"
 #~ msgstr "תורמים"
 
-#~ msgid "Icon designer"
-#~ msgstr "מעצבי סמלים"
-
 #~ msgid "You have modified the menu, do you want to save it before quitting ?"
 #~ msgstr "שינית את התפריט, האם ברצונך לשמור לפני היציאה?"
 
@@ -1220,11 +1276,13 @@ msgstr "הגדרת התנהגות הרקע, התפריט והסמלים"
 #~ msgid ""
 #~ "Could not save file %s: %s\n"
 #~ "\n"
-#~ "Please choose another location or press cancel in the dialog to discard your changes"
+#~ "Please choose another location or press cancel in the dialog to discard "
+#~ "your changes"
 #~ msgstr ""
 #~ "אין אפשרות לשמור קובץ %s: %s\n"
 #~ "\n"
-#~ "יש לבחור מיקום אחר או ללחוץ על ביטול בתיבת הדו-שיח בשביל לא לשמור את השינויים"
+#~ "יש לבחור מיקום אחר או ללחוץ על ביטול בתיבת הדו-שיח בשביל לא לשמור את "
+#~ "השינויים"
 
 #~ msgid "Button Label|Desktop"
 #~ msgstr "שולחן עבודה"
@@ -1274,11 +1332,29 @@ msgstr "הגדרת התנהגות הרקע, התפריט והסמלים"
 #~ msgid "Unable to start xfdesktop"
 #~ msgstr "לא ניתן להתחיל את xfdesktop"
 
-#~ msgid "To ensure that this setting takes effect the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
-#~ msgstr "כדי לוודא שהגדרות אלה יישומו בפעם הבאה שתפעיל את Xfce, אנא דאג לשמור את ההפעלה ביציאה. אם אינך עושה שימוש במנהלך ההפעלה של Xfce (xfce4-session),יהיה עליך לערוך ידנית את הקובץ ~/.config/xfce4/xinitrc. פרטים נוספים זמינים בתיעוד הנמצא ב- http://xfce.org/."
+#~ msgid ""
+#~ "To ensure that this setting takes effect the next time you start Xfce, "
+#~ "please be sure to save your session when logging out.  If you are not "
+#~ "using the Xfce Session Manager (xfce4-session), you will need to manually "
+#~ "edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
+#~ "documentation provided on http://xfce.org/."
+#~ msgstr ""
+#~ "כדי לוודא שהגדרות אלה יישומו בפעם הבאה שתפעיל את Xfce, אנא דאג לשמור את "
+#~ "ההפעלה ביציאה. אם אינך עושה שימוש במנהלך ההפעלה של Xfce (xfce4-session),"
+#~ "יהיה עליך לערוך ידנית את הקובץ ~/.config/xfce4/xinitrc. פרטים נוספים "
+#~ "זמינים בתיעוד הנמצא ב- http://xfce.org/."
 
-#~ msgid "To ensure that Xfce does not manage your desktop the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
-#~ msgstr "כדי לוודא ש- Xfce אינו מנהל את שולחן העבודה שלך בפעם הבאה שיותחל Xfce, נא לוודא שמירת ההפעלה ביציאה. אם אינך עושה שימוש במנהלך ההפעלה של Xfce (xfce4-session) יהיה עליך לערוך ידנית את הקובץ  ~/.config/xfce4/xinitrc. פרטים זמינים בתיעוד הנמצא ב- http://xfce.org/."
+#~ msgid ""
+#~ "To ensure that Xfce does not manage your desktop the next time you start "
+#~ "Xfce, please be sure to save your session when logging out.  If you are "
+#~ "not using the Xfce Session Manager (xfce4-session), you will need to "
+#~ "manually edit your ~/.config/xfce4/xinitrc file.  Details are available "
+#~ "in the documentation provided on http://xfce.org/."
+#~ msgstr ""
+#~ "כדי לוודא ש- Xfce אינו מנהל את שולחן העבודה שלך בפעם הבאה שיותחל Xfce, נא "
+#~ "לוודא שמירת ההפעלה ביציאה. אם אינך עושה שימוש במנהלך ההפעלה של Xfce "
+#~ "(xfce4-session) יהיה עליך לערוך ידנית את הקובץ  ~/.config/xfce4/xinitrc. "
+#~ "פרטים זמינים בתיעוד הנמצא ב- http://xfce.org/."
 
 #~ msgid "_Do not show this again"
 #~ msgstr "_אל תציג זאת שוב"
@@ -1346,11 +1422,18 @@ msgstr "הגדרת התנהגות הרקע, התפריט והסמלים"
 #~ msgid "Unable to quit session."
 #~ msgstr "אין אפשרות לצאת מההפעלה"
 
-#~ msgid "Quitting the session requires that Xfce's session manager (xfce4-session) is running, but it was not detected.  Please quit Xfce via another means."
-#~ msgstr "יציאה מההפעלה מחייבת את פעולת מנהל ההפעלה של Xfce (xfce4-session) אך זה לא אותר. נא לצאת מ-Xfce באמצעי אחר."
+#~ msgid ""
+#~ "Quitting the session requires that Xfce's session manager (xfce4-session) "
+#~ "is running, but it was not detected.  Please quit Xfce via another means."
+#~ msgstr ""
+#~ "יציאה מההפעלה מחייבת את פעולת מנהל ההפעלה של Xfce (xfce4-session) אך זה "
+#~ "לא אותר. נא לצאת מ-Xfce באמצעי אחר."
 
-#~ msgid "Quitting the session requires the 'xfce4-session-logout' command, but it could not be found: %s"
-#~ msgstr "יציאה מההפעלה מצריכה את הפקודה xfce4-session-logout אך זו לא נמצאה: %s"
+#~ msgid ""
+#~ "Quitting the session requires the 'xfce4-session-logout' command, but it "
+#~ "could not be found: %s"
+#~ msgstr ""
+#~ "יציאה מההפעלה מצריכה את הפקודה xfce4-session-logout אך זו לא נמצאה: %s"
 
 #~ msgid "Edit Properties"
 #~ msgstr "עריכת מאפיינים"

@@ -6,10 +6,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-28 23:56+0200\n"
+"POT-Creation-Date: 2010-08-28 16:27+0200\n"
 "PO-Revision-Date: 2008-11-11 00:45+0200\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: Albanian <translation-team-sq@lists.sourceforge.net>\n"
+"Language: sq\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -152,80 +153,90 @@ msgstr "Rregullime Desktopi"
 msgid "Unable to contact settings server"
 msgstr "I pazoti të lidhet me shërbyesin e rregullimeve"
 
-#: ../src/main.c:236
+#: ../settings/xfce-backdrop-settings.desktop.in.h:1
+#, fuzzy
+msgid "Desktop "
+msgstr "Desktop"
+
+#: ../settings/xfce-backdrop-settings.desktop.in.h:2
+#, fuzzy
+msgid "Set desktop background and menu and icon behaviour"
+msgstr "Caktoni sfond desktopi dhe sjellje menush dhe ikonash"
+
+#: ../src/main.c:235
 msgid "Display version information"
 msgstr ""
 
-#: ../src/main.c:237
+#: ../src/main.c:236
 #, fuzzy
 msgid "Reload all settings, refresh image list"
 msgstr "    --reload      Ringarko tërë rregullimet, rifresko listë pamjesh\n"
 
-#: ../src/main.c:238
+#: ../src/main.c:237
 #, fuzzy
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "    --menu        Buthton menunë (te vendi i çastit i miut)\n"
 
-#: ../src/main.c:239
+#: ../src/main.c:238
 #, fuzzy
 msgid "Pop up the window list (at the current mouse position)"
 msgstr ""
 "    --windowlist  Buthton listën e dritares (te vendi i çastit i miut)\n"
 
-#: ../src/main.c:240
+#: ../src/main.c:239
 #, fuzzy
 msgid "Cause xfdesktop to quit"
 msgstr "    --quit        E bën xfdesktop-in të mbyllet\n"
 
-#: ../src/main.c:260
+#: ../src/main.c:259
 #, fuzzy, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "Xhirimi i \"%s\" dështoi:"
 
-#: ../src/main.c:268
+#: ../src/main.c:267
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Ky është versioni %s i %s, që po xhiron në Xfce %s.\n"
 
-#: ../src/main.c:270
+#: ../src/main.c:269
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Montuar me GTK+ %d.%d.%d, lidhur me GTK+ %d.%d.%d."
 
-#: ../src/main.c:274
+#: ../src/main.c:273
 #, c-format
 msgid "Build options:\n"
 msgstr "Mundësi montimi:\n"
 
-#: ../src/main.c:275
+#: ../src/main.c:274
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Menu Desktopi:        %s\n"
 
-#: ../src/main.c:277 ../src/main.c:284 ../src/main.c:291
+#: ../src/main.c:276 ../src/main.c:283 ../src/main.c:290
 msgid "enabled"
 msgstr "aktivizuar"
 
-#: ../src/main.c:279 ../src/main.c:286 ../src/main.c:293
+#: ../src/main.c:278 ../src/main.c:285 ../src/main.c:292
 msgid "disabled"
 msgstr "joveprues"
 
-#: ../src/main.c:282
+#: ../src/main.c:281
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Ikona Desktopi:       %s\n"
 
-#: ../src/main.c:289
+#: ../src/main.c:288
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Ikona Kartelash Desktopi:  %s\n"
 
-#: ../src/main.c:320
+#: ../src/main.c:319
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s nuk po xhiron.\n"
 
-#: ../src/menu.c:113
+#: ../src/menu.c:111
 msgid "_Applications"
 msgstr "_Zbatime"
 
@@ -274,6 +285,75 @@ msgstr ""
 #: ../src/xfce-desktop.c:1020
 msgid "Desktop Error"
 msgstr "Gabim Desktopi"
+
+#: ../src/xfdesktop-app-menu-item.c:234
+#, fuzzy
+msgid "Needs terminal"
+msgstr "Terminal"
+
+#: ../src/xfdesktop-app-menu-item.c:235
+msgid "Whether or not the command needs a terminal to execute"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:241
+msgid "Command"
+msgstr "Urdhër"
+
+#: ../src/xfdesktop-app-menu-item.c:242
+msgid "The command to run when the item is clicked"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:248
+#, fuzzy
+msgid "Icon name"
+msgstr "Hartues ikonash"
+
+#: ../src/xfdesktop-app-menu-item.c:249
+msgid "The name of the themed icon to display next to the item"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:255
+msgid "Label"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:256
+msgid "The label displayed in the item"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:262
+#, fuzzy
+msgid "Startup notification"
+msgstr "Përdor _njoftime nisjesh"
+
+#: ../src/xfdesktop-app-menu-item.c:263
+msgid "Whether or not the app supports startup notification"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:269
+msgid "Use underline"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:270
+msgid "Whether or not to use an underscore in the label as a keyboard mnemonic"
+msgstr ""
+
+#. printf is to be translator-friendly
+#: ../src/xfdesktop-file-icon.c:141 ../src/xfdesktop-file-icon-manager.c:922
+#: ../src/xfdesktop-file-icon-manager.c:1683 ../src/xfdesktop-file-utils.c:363
+#, c-format
+msgid "Unable to launch \"%s\":"
+msgstr "I pazoti të nisë \"%s\":"
+
+#: ../src/xfdesktop-file-icon.c:143 ../src/xfdesktop-file-icon-manager.c:924
+#: ../src/xfdesktop-file-icon-manager.c:984
+#: ../src/xfdesktop-file-icon-manager.c:1287
+#: ../src/xfdesktop-file-icon-manager.c:1684 ../src/xfdesktop-file-utils.c:366
+msgid "Launch Error"
+msgstr "Gabim Nisësi"
+
+#: ../src/xfdesktop-file-icon.c:145
+msgid "The associated application could not be found or executed."
+msgstr "Zbatimi i shoqëruar kësaj nuk u gjet apo nuk ekzekutua dot."
 
 #: ../src/xfdesktop-file-icon-manager.c:479
 #, c-format
@@ -340,22 +420,6 @@ msgstr "Jeni i sigurt se doni të fshihe %d kartelat vijuese?"
 #: ../src/xfdesktop-file-icon-manager.c:699
 msgid "Delete Multiple Files"
 msgstr "Fshi Shumë Kartela"
-
-#. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:922
-#: ../src/xfdesktop-file-icon-manager.c:1683 ../src/xfdesktop-file-icon.c:141
-#: ../src/xfdesktop-file-utils.c:363
-#, c-format
-msgid "Unable to launch \"%s\":"
-msgstr "I pazoti të nisë \"%s\":"
-
-#: ../src/xfdesktop-file-icon-manager.c:924
-#: ../src/xfdesktop-file-icon-manager.c:984
-#: ../src/xfdesktop-file-icon-manager.c:1287
-#: ../src/xfdesktop-file-icon-manager.c:1684 ../src/xfdesktop-file-icon.c:143
-#: ../src/xfdesktop-file-utils.c:366
-msgid "Launch Error"
-msgstr "Gabim Nisësi"
 
 #: ../src/xfdesktop-file-icon-manager.c:985
 msgid "The application chooser could not be opened."
@@ -510,10 +574,6 @@ msgstr "Xhirimi i \"%s\" dështoi:"
 #: ../src/xfdesktop-regular-file-icon.c:393
 msgid "Run Error"
 msgstr "Gabim Xhirimi"
-
-#: ../src/xfdesktop-file-icon.c:145
-msgid "The associated application could not be found or executed."
-msgstr "Zbatimi i shoqëruar kësaj nuk u gjet apo nuk ekzekutua dot."
 
 #: ../src/xfdesktop-file-properties-dialog.c:104
 #, c-format
@@ -744,16 +804,6 @@ msgstr "_Monto Vëllimin"
 msgid "E_ject Volume"
 msgstr "N_xirr Vëllimin"
 
-#: ../settings/xfce-backdrop-settings.desktop.in.h:1
-#, fuzzy
-msgid "Desktop "
-msgstr "Desktop"
-
-#: ../settings/xfce-backdrop-settings.desktop.in.h:2
-#, fuzzy
-msgid "Set desktop background and menu and icon behaviour"
-msgstr "Caktoni sfond desktopi dhe sjellje menush dhe ikonash"
-
 #~ msgid "Unable to launch xfce4-menueditor: %s"
 #~ msgstr "I pazoti të nisë përpunues menush xfce4: %s"
 
@@ -925,9 +975,6 @@ msgstr "Caktoni sfond desktopi dhe sjellje menush dhe ikonash"
 
 #~ msgid "Run a program"
 #~ msgstr "Xhironi një program"
-
-#~ msgid "Terminal"
-#~ msgstr "Terminal"
 
 #~ msgid "Terminal emulator"
 #~ msgstr "Emulues terminali"
@@ -1158,9 +1205,6 @@ msgstr "Caktoni sfond desktopi dhe sjellje menush dhe ikonash"
 #~ msgid "Select icon"
 #~ msgstr "Përzgjidhni ikonë"
 
-#~ msgid "Use startup _notification"
-#~ msgstr "Përdor _njoftime nisjesh"
-
 #~ msgid "Run in _terminal"
 #~ msgstr "Xhiroje në t_erminal"
 
@@ -1339,9 +1383,6 @@ msgstr "Caktoni sfond desktopi dhe sjellje menush dhe ikonash"
 #~ msgid "Name"
 #~ msgstr "Emër"
 
-#~ msgid "Command"
-#~ msgstr "Urdhër"
-
 #~ msgid "Hidden"
 #~ msgstr "Padukshëm"
 
@@ -1392,9 +1433,6 @@ msgstr "Caktoni sfond desktopi dhe sjellje menush dhe ikonash"
 
 #~ msgid "Contributor"
 #~ msgstr "Pjesëmarrës"
-
-#~ msgid "Icon designer"
-#~ msgstr "Hartues ikonash"
 
 #~ msgid "You have modified the menu, do you want to save it before quitting ?"
 #~ msgstr "Keni ndryshuar menunë, doni të ruhen para se të dilni ?"

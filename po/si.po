@@ -3,10 +3,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-28 23:56+0200\n"
+"POT-Creation-Date: 2010-08-28 16:27+0200\n"
 "PO-Revision-Date: 2009-08-22 13:56+0530\n"
 "Last-Translator: Danishka Navin <danishka@gmail.com>\n"
 "Language-Team: Sinhalese <danishka@gmail.com>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -153,75 +154,83 @@ msgstr "වැඩතල සිටුවම්"
 msgid "Unable to contact settings server"
 msgstr "සිටුවම් සේවාදායකයට සම්බන්ධවිය නොහැක"
 
-#: ../src/main.c:236
+#: ../settings/xfce-backdrop-settings.desktop.in.h:1
+msgid "Desktop "
+msgstr "වැඩතලය"
+
+#: ../settings/xfce-backdrop-settings.desktop.in.h:2
+msgid "Set desktop background and menu and icon behaviour"
+msgstr "ඩෙස්ක්ටොප් පසුතල සහ මෙනු සහ අයිකන හැසිරීම සකසන්න"
+
+#: ../src/main.c:235
 msgid "Display version information"
 msgstr "වෙලුම් තොරතුරු පෙන්වන්න"
 
-#: ../src/main.c:237
+#: ../src/main.c:236
 msgid "Reload all settings, refresh image list"
 msgstr "සියළු සිටුවම් නැවත ප්‍රවේශ කරන්න, පින්තූර ලැයිස්තුව නැවත අලුත් කරන්න"
 
-#: ../src/main.c:238
+#: ../src/main.c:237
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "‍මෙනුව පැන නැගීම (මවුසයේ දැනට පවතින ස්ථානයේ)"
 
-#: ../src/main.c:239
+#: ../src/main.c:238
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "කවුළු ලැයිස්තුව පැන නැගීම (මවුසයේ දැනට පවතින ස්ථානයේ)"
 
-#: ../src/main.c:240
+#: ../src/main.c:239
 msgid "Cause xfdesktop to quit"
 msgstr "xfdesktop ඉවත් වීමට හේතුවේ"
 
-#: ../src/main.c:260
+#: ../src/main.c:259
 #, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr ""
 
-#: ../src/main.c:268
+#: ../src/main.c:267
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Xfce %s ධාවනය වන %s අනුවාදය %s වේ.\n"
 
-#: ../src/main.c:270
+#: ../src/main.c:269
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr ""
 
-#: ../src/main.c:274
+#: ../src/main.c:273
 #, c-format
 msgid "Build options:\n"
 msgstr "අභිරුචි ගොඩනගන්න:\n"
 
-#: ../src/main.c:275
+#: ../src/main.c:274
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    වැඩතල මෙනුව:        %s\n"
 
-#: ../src/main.c:277 ../src/main.c:284 ../src/main.c:291
+#: ../src/main.c:276 ../src/main.c:283 ../src/main.c:290
 msgid "enabled"
 msgstr "සක්‍රීය කළ"
 
-#: ../src/main.c:279 ../src/main.c:286 ../src/main.c:293
+#: ../src/main.c:278 ../src/main.c:285 ../src/main.c:292
 msgid "disabled"
 msgstr "අක්‍රීය කළ"
 
-#: ../src/main.c:282
+#: ../src/main.c:281
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "පසුතළ අයිකන: %s\n"
 
-#: ../src/main.c:289
+#: ../src/main.c:288
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "පසුතළ ගොනු අයිකන: %s\n"
 
-#: ../src/main.c:320
+#: ../src/main.c:319
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s ධාවනය නොවේ.\n"
 
-#: ../src/menu.c:113
+#: ../src/menu.c:111
 msgid "_Applications"
 msgstr "යෙදුම් (_A)"
 
@@ -270,6 +279,74 @@ msgstr "පසුතිර ලැයිස්තු ගොනුවෙන් ප
 #: ../src/xfce-desktop.c:1020
 msgid "Desktop Error"
 msgstr "වැඩතල දෝෂය"
+
+#: ../src/xfdesktop-app-menu-item.c:234
+#, fuzzy
+msgid "Needs terminal"
+msgstr "ටර්මිනලය"
+
+#: ../src/xfdesktop-app-menu-item.c:235
+msgid "Whether or not the command needs a terminal to execute"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:241
+msgid "Command"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:242
+msgid "The command to run when the item is clicked"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:248
+#, fuzzy
+msgid "Icon name"
+msgstr "අයිකන ප්‍රමාණය(_s):"
+
+#: ../src/xfdesktop-app-menu-item.c:249
+msgid "The name of the themed icon to display next to the item"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:255
+msgid "Label"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:256
+msgid "The label displayed in the item"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:262
+msgid "Startup notification"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:263
+msgid "Whether or not the app supports startup notification"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:269
+msgid "Use underline"
+msgstr ""
+
+#: ../src/xfdesktop-app-menu-item.c:270
+msgid "Whether or not to use an underscore in the label as a keyboard mnemonic"
+msgstr ""
+
+#. printf is to be translator-friendly
+#: ../src/xfdesktop-file-icon.c:141 ../src/xfdesktop-file-icon-manager.c:922
+#: ../src/xfdesktop-file-icon-manager.c:1683 ../src/xfdesktop-file-utils.c:363
+#, c-format
+msgid "Unable to launch \"%s\":"
+msgstr "\"%s\" ප්‍රවේශයට අසමත්:"
+
+#: ../src/xfdesktop-file-icon.c:143 ../src/xfdesktop-file-icon-manager.c:924
+#: ../src/xfdesktop-file-icon-manager.c:984
+#: ../src/xfdesktop-file-icon-manager.c:1287
+#: ../src/xfdesktop-file-icon-manager.c:1684 ../src/xfdesktop-file-utils.c:366
+msgid "Launch Error"
+msgstr "ප්‍රවේශ දෝශය"
+
+#: ../src/xfdesktop-file-icon.c:145
+msgid "The associated application could not be found or executed."
+msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:479
 #, c-format
@@ -333,22 +410,6 @@ msgstr "මතු සඳහන් %d ගොනු මැකීමට අවශ�
 #: ../src/xfdesktop-file-icon-manager.c:699
 msgid "Delete Multiple Files"
 msgstr "ගොනු කිහිපයක් මකන්න"
-
-#. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:922
-#: ../src/xfdesktop-file-icon-manager.c:1683 ../src/xfdesktop-file-icon.c:141
-#: ../src/xfdesktop-file-utils.c:363
-#, c-format
-msgid "Unable to launch \"%s\":"
-msgstr "\"%s\" ප්‍රවේශයට අසමත්:"
-
-#: ../src/xfdesktop-file-icon-manager.c:924
-#: ../src/xfdesktop-file-icon-manager.c:984
-#: ../src/xfdesktop-file-icon-manager.c:1287
-#: ../src/xfdesktop-file-icon-manager.c:1684 ../src/xfdesktop-file-icon.c:143
-#: ../src/xfdesktop-file-utils.c:366
-msgid "Launch Error"
-msgstr "ප්‍රවේශ දෝශය"
 
 #: ../src/xfdesktop-file-icon-manager.c:985
 msgid "The application chooser could not be opened."
@@ -500,10 +561,6 @@ msgstr "\"%s\" ධාවනයට අසමර්ථ විය:"
 #: ../src/xfdesktop-regular-file-icon.c:393
 msgid "Run Error"
 msgstr "ධාවන දෝශය"
-
-#: ../src/xfdesktop-file-icon.c:145
-msgid "The associated application could not be found or executed."
-msgstr ""
 
 #: ../src/xfdesktop-file-properties-dialog.c:104
 #, c-format
@@ -732,14 +789,6 @@ msgstr "පරිමාව _Mount කරන්න"
 msgid "E_ject Volume"
 msgstr "පරිමාව E_ject  කරන්න"
 
-#: ../settings/xfce-backdrop-settings.desktop.in.h:1
-msgid "Desktop "
-msgstr "වැඩතලය"
-
-#: ../settings/xfce-backdrop-settings.desktop.in.h:2
-msgid "Set desktop background and menu and icon behaviour"
-msgstr "ඩෙස්ක්ටොප් පසුතල සහ මෙනු සහ අයිකන හැසිරීම සකසන්න"
-
 #~ msgid "Accessories"
 #~ msgstr "උපාංග"
 
@@ -878,9 +927,6 @@ msgstr "ඩෙස්ක්ටොප් පසුතල සහ මෙනු ස�
 #~ msgid "File Manager"
 #~ msgstr "ගොනු කළමණාකරු"
 
-#~ msgid "Terminal"
-#~ msgstr "ටර්මිනලය"
-
 #~ msgid "Terminal emulator"
 #~ msgstr "Terminal Emulator"
 
@@ -898,9 +944,6 @@ msgstr "ඩෙස්ක්ටොප් පසුතල සහ මෙනු ස�
 
 #~ msgid "<b>Images</b>"
 #~ msgstr "<b>පිංතූර</b>"
-
-#~ msgid "Icon _size:"
-#~ msgstr "අයිකන ප්‍රමාණය(_s):"
 
 #~ msgid "Icon _type:"
 #~ msgstr "අයිකන වර්ගය (_t):"
