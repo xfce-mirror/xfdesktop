@@ -117,7 +117,13 @@ dist-hook: dist-check-doc doc-build.stamp
 		fi \
 	done
 
+# css file
+cssdir = $(docdir)/html
+css_DATA = \
+	xfdesktop.css
+
 EXTRA_DIST = \
+	$(css_DATA) \
 	$(STYLESHEET) \
 	$(DOCUMENT)
 
