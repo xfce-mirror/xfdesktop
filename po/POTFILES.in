@@ -1,23 +1,29 @@
 # List of source files containing translatable strings.
 
 common/xfdesktop-common.c
+
 settings/main.c
+settings/xfce-backdrop-settings.desktop.in
+settings/xfdesktop-settings-appearance-frame-ui.xml
+settings/xfdesktop-settings-ui.xml
+
 src/main.c
 src/menu.c
 src/windowlist.c
+src/xfce-backdrop.c
 src/xfce-desktop.c
+src/xfce-desktop-menu.c
+src/xfdesktop-app-menu-item.c
 src/xfdesktop-clipboard-manager.c
-src/xfdesktop-file-icon-manager.c
 src/xfdesktop-file-icon.c
+src/xfdesktop-file-icon-manager.c
 src/xfdesktop-file-properties-dialog.c
 src/xfdesktop-file-utils.c
+src/xfdesktop-icon.c
 src/xfdesktop-icon-view.c
+src/xfdesktop-icon-view-manager.c
 src/xfdesktop-regular-file-icon.c
 src/xfdesktop-special-file-icon.c
 src/xfdesktop-volume-icon.c
-
-# files added by intltool-prepare.
-settings/xfce-backdrop-settings.desktop.in
-settings/xfdesktop-settings-ui.xml
-settings/xfdesktop-settings-appearance-frame-ui.xml
-
+src/xfdesktop-window-icon.c
+src/xfdesktop-window-icon-manager.c
