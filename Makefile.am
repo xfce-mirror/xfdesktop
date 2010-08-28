@@ -5,7 +5,6 @@ SUBDIRS = \
 	common \
 	doc \
 	po \
-	po-doc \
 	settings \
 	src \
 	modules \
@@ -29,11 +28,10 @@ DISTCLEANFILES = \
 	intltool-update
 
 DISTCHECK_CONFIGURE_FLAGS = \
-	--enable-xsltproc \
-	--enable-xml2po
+	--enable-gen-doc
 
-AUTOMAKE_OPTIONS =							\
-	1.8								\
+AUTOMAKE_OPTIONS = \
+	1.8 \
 	dist-bzip2
 
 distclean-local:

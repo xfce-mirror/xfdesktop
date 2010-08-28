@@ -1,13 +1,4 @@
 SUBDIRS = 	\
-	C 		\
-	ca 		\
-	da 		\
-	fr 		\
-	gl 		\
-	it		\
-	ja
-
-noinst_DATA = \
-	xfce-nochunk.xsl
+	manual
 
 EXTRA_DIST = $(noinst_DATA) README.kiosk
