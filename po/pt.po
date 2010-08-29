@@ -3,19 +3,19 @@
 # This file is distributed under the same license as the xfdesktop package.
 # Nuno Donato <nunodonato@gmail.com>, 2004.
 # Nuno Miguel <nunis@netcabo.pt>, 2007, 2008, 2009.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-28 16:27+0200\n"
+"POT-Creation-Date: 2010-08-29 16:06+0000\n"
 "PO-Revision-Date: 2010-01-04 11:47-0000\n"
 "Last-Translator: Sergio Marques <smarquespt@gmail.com>\n"
 "Language-Team: \n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "X-Poedit-Language: Portuguese\n"
 "X-Poedit-Country: PORTUGAL\n"
 
@@ -65,11 +65,8 @@ msgstr "Criar/Carregar Lista de Fundos"
 
 #: ../settings/main.c:511
 #, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
-"O ficheiro \"%s\" não é um ficheiro de lista de fundos válido. Deseja "
-"sobrescrevê-lo?"
+msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr "O ficheiro \"%s\" não é um ficheiro de lista de fundos válido. Deseja sobrescrevê-lo?"
 
 #: ../settings/main.c:516
 msgid "Invalid List File"
@@ -286,13 +283,12 @@ msgid "Desktop Error"
 msgstr "Erro no Ambiente de Trabalho"
 
 #: ../src/xfdesktop-app-menu-item.c:234
-#, fuzzy
 msgid "Needs terminal"
-msgstr "Terminal"
+msgstr "Precisa do terminal"
 
 #: ../src/xfdesktop-app-menu-item.c:235
 msgid "Whether or not the command needs a terminal to execute"
-msgstr ""
+msgstr "Se o comando necessita ou não do terminal para ser executado"
 
 #: ../src/xfdesktop-app-menu-item.c:241
 msgid "Command"
@@ -300,41 +296,39 @@ msgstr "Comando"
 
 #: ../src/xfdesktop-app-menu-item.c:242
 msgid "The command to run when the item is clicked"
-msgstr ""
+msgstr "O comando a executar ao clicar no item"
 
 #: ../src/xfdesktop-app-menu-item.c:248
-#, fuzzy
 msgid "Icon name"
-msgstr "Designer de ícones"
+msgstr "Nome do ícone"
 
 #: ../src/xfdesktop-app-menu-item.c:249
 msgid "The name of the themed icon to display next to the item"
-msgstr ""
+msgstr "O nome do ícone a exibir junto ao item"
 
 #: ../src/xfdesktop-app-menu-item.c:255
 msgid "Label"
-msgstr ""
+msgstr "Texto"
 
 #: ../src/xfdesktop-app-menu-item.c:256
 msgid "The label displayed in the item"
-msgstr ""
+msgstr "O texto exibido no item"
 
 #: ../src/xfdesktop-app-menu-item.c:262
-#, fuzzy
 msgid "Startup notification"
-msgstr "Usar _notificação de arranque"
+msgstr "Notificação de arranque"
 
 #: ../src/xfdesktop-app-menu-item.c:263
 msgid "Whether or not the app supports startup notification"
-msgstr ""
+msgstr "Se a aplicação suporta ou não a notificação de arranque"
 
 #: ../src/xfdesktop-app-menu-item.c:269
 msgid "Use underline"
-msgstr ""
+msgstr "Utilizar texto sublinhado"
 
 #: ../src/xfdesktop-app-menu-item.c:270
 msgid "Whether or not to use an underscore in the label as a keyboard mnemonic"
-msgstr ""
+msgstr "Se deve ser utilizado ou não \"underscore\" no texto como mnemónica de teclado"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon.c:141 ../src/xfdesktop-file-icon-manager.c:922
@@ -356,11 +350,8 @@ msgstr "A aplicação associada não foi encontrada ou executada."
 
 #: ../src/xfdesktop-file-icon-manager.c:479
 #, c-format
-msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr ""
-"Xfdesktop foi incapaz de criar a pasta \"%s\" para armazenar os itens do "
-"ambiente de trabalho:"
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr "Xfdesktop foi incapaz de criar a pasta \"%s\" para armazenar os itens do ambiente de trabalho:"
 
 #: ../src/xfdesktop-file-icon-manager.c:481
 #: ../src/xfdesktop-file-icon-manager.c:492
@@ -370,12 +361,8 @@ msgstr "Falhou a Criação de Pasta"
 
 #: ../src/xfdesktop-file-icon-manager.c:490
 #, c-format
-msgid ""
-"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
-"folder."
-msgstr ""
-"Xfdesktop é incapaz de usar \"%s\" para lidar com itens do ambiente de "
-"trabalho por não ser uma pasta."
+msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
+msgstr "Xfdesktop é incapaz de usar \"%s\" para lidar com itens do ambiente de trabalho por não ser uma pasta."
 
 #: ../src/xfdesktop-file-icon-manager.c:494
 msgid "Please delete or rename the file."
@@ -425,12 +412,8 @@ msgid "The application chooser could not be opened."
 msgstr "O selector de aplicações não pôde ser aberto."
 
 #: ../src/xfdesktop-file-icon-manager.c:986 ../src/xfdesktop-file-utils.c:368
-msgid ""
-"This feature requires a file manager service present (such as that supplied "
-"by Thunar)."
-msgstr ""
-"Esta funcionalidade requer a presença de um serviço de gestor de ficheiros "
-"(como o Thunar)."
+msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
+msgstr "Esta funcionalidade requer a presença de um serviço de gestor de ficheiros (como o Thunar)."
 
 #: ../src/xfdesktop-file-icon-manager.c:1182
 #, c-format
@@ -448,12 +431,8 @@ msgid "Unable to create folder named \"%s\":"
 msgstr "Incapaz de criar a pasta de nome \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1289
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
-msgstr ""
-"Incapaz de lançar \"exo-desktop-item-edit\", necessário para criar e editar "
-"lançadores e atalhos no ambiente de trabalho."
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgstr "Incapaz de lançar \"exo-desktop-item-edit\", necessário para criar e editar lançadores e atalhos no ambiente de trabalho."
 
 #: ../src/xfdesktop-file-icon-manager.c:1324
 msgid "Create New Folder"
@@ -736,12 +715,8 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "Incapaz de contactar o serviço de Lixo Xfce."
 
 #: ../src/xfdesktop-special-file-icon.c:522
-msgid ""
-"Make sure you have a file manager installed that supports the Xfce Trash "
-"service, such as Thunar."
-msgstr ""
-"Verifique se tem tem um gestor de ficheiros instalado que suporte o serviço "
-"de Lixo do Xfce, como o Thunar."
+msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
+msgstr "Verifique se tem tem um gestor de ficheiros instalado que suporte o serviço de Lixo do Xfce, como o Thunar."
 
 #: ../src/xfdesktop-special-file-icon.c:655
 msgid "_Empty Trash"
@@ -1145,11 +1120,8 @@ msgstr "E_jectar Volume"
 #~ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 #~ msgstr "Especificar a cor \"direita\" ou \"inferior\" do gradiente"
 
-#~ msgid ""
-#~ "Specifies the solid color, or the \"left\" or \"top\" color of the "
-#~ "gradient"
-#~ msgstr ""
-#~ "Especificar a cor sólida, ou \"esquerda\" ou \"superior\" do gradiente"
+#~ msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+#~ msgstr "Especificar a cor sólida, ou \"esquerda\" ou \"superior\" do gradiente"
 
 #~ msgid "Specify how the image will be resized to fit the screen"
 #~ msgstr "Especifica como a imagem será redimensionada para caber no ecrã"
@@ -1157,12 +1129,8 @@ msgstr "E_jectar Volume"
 #~ msgid "Specify the style of the color drawn behind the backdrop image"
 #~ msgstr "Especificar o estilo da cor desenhada por trás da imagem de fundo"
 
-#~ msgid ""
-#~ "Specify the transparency level for the rounded label drawn behind the "
-#~ "icon text"
-#~ msgstr ""
-#~ "Especificar o nível de transparência para rótulos arredondados desenhados "
-#~ "por trás do ícone"
+#~ msgid "Specify the transparency level for the rounded label drawn behind the icon text"
+#~ msgstr "Especificar o nível de transparência para rótulos arredondados desenhados por trás do ícone"
 
 #~ msgid "St_yle:"
 #~ msgstr "Es_tilo:"
@@ -1296,14 +1264,8 @@ msgstr "E_jectar Volume"
 #~ msgid "xfce4-menueditor is deprecated"
 #~ msgstr "xfce4-menueditor está obsoleto"
 
-#~ msgid ""
-#~ "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
-#~ "edit the new menu file format.  You may continue and edit an old-style "
-#~ "menu file, or quit."
-#~ msgstr ""
-#~ "O sistema de menu do Xfce foi substituído e o xfce4-menueditor é incapaz "
-#~ "de editar o novo formato de ficheiro do menu. Pode continuar e editar no "
-#~ "antigo estilo de ficheiro de menu, ou sair."
+#~ msgid "Xfce's menu system has been replaced, and xfce4-menueditor is not able to edit the new menu file format.  You may continue and edit an old-style menu file, or quit."
+#~ msgstr "O sistema de menu do Xfce foi substituído e o xfce4-menueditor é incapaz de editar o novo formato de ficheiro do menu. Pode continuar e editar no antigo estilo de ficheiro de menu, ou sair."
 
 #~ msgid "Continue"
 #~ msgstr "Continuar"
@@ -1497,10 +1459,8 @@ msgstr "E_jectar Volume"
 #~ msgid ""
 #~ "Could not save file %s: %s\n"
 #~ "\n"
-#~ "Please choose another location or press cancel in the dialog to discard "
-#~ "your changes"
+#~ "Please choose another location or press cancel in the dialog to discard your changes"
 #~ msgstr ""
 #~ "Incapaz de gravar o ficheiro %s: %s\n"
 #~ "\n"
-#~ "Por favor escolha outra localização ou pressione cancelar no diálogo para "
-#~ "desfazer as suas alterações"
+#~ "Por favor escolha outra localização ou pressione cancelar no diálogo para desfazer as suas alterações"
