@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-28 16:27+0200\n"
-"PO-Revision-Date: 2009-12-19 11:10+0100\n"
+"POT-Creation-Date: 2010-08-31 10:07+0000\n"
+"PO-Revision-Date: 2010-08-31 17:29+0100\n"
 "Last-Translator: Carles Muñoz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: Catalan <xfce-i18n@xfce.org>\n"
 "Language: ca\n"
@@ -192,7 +192,7 @@ msgstr "Surt de xfdesktop"
 #: ../src/main.c:259
 #, c-format
 msgid "Failed to parse arguments: %s\n"
-msgstr "No s'ha pogut executar: %s\n"
+msgstr "No s'ha pogut interpretar els arguments: %s\n"
 
 #: ../src/main.c:267
 #, c-format
@@ -230,7 +230,7 @@ msgstr "    Icones d'escriptori: %s\n"
 #: ../src/main.c:288
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr "    Fitxer d'icones de l'escriptori: %s\n"
+msgstr "    Fitxer d'icones d'escriptori: %s\n"
 
 #: ../src/main.c:319
 #, c-format
@@ -289,13 +289,12 @@ msgid "Desktop Error"
 msgstr "Error de l'escriptori"
 
 #: ../src/xfdesktop-app-menu-item.c:234
-#, fuzzy
 msgid "Needs terminal"
-msgstr "Terminal"
+msgstr "Cal un terminal"
 
 #: ../src/xfdesktop-app-menu-item.c:235
 msgid "Whether or not the command needs a terminal to execute"
-msgstr ""
+msgstr "Si cal o no un terminal per executar l'ordre"
 
 #: ../src/xfdesktop-app-menu-item.c:241
 msgid "Command"
@@ -303,41 +302,39 @@ msgstr "Ordre"
 
 #: ../src/xfdesktop-app-menu-item.c:242
 msgid "The command to run when the item is clicked"
-msgstr ""
+msgstr "L'ordre a executar quan es selecciona l'element"
 
 #: ../src/xfdesktop-app-menu-item.c:248
-#, fuzzy
 msgid "Icon name"
-msgstr "Dissenyador de les icones"
+msgstr "Nom d'icona"
 
 #: ../src/xfdesktop-app-menu-item.c:249
 msgid "The name of the themed icon to display next to the item"
-msgstr ""
+msgstr "El nom del tema d'icones per mostrar junt amb l'element"
 
 #: ../src/xfdesktop-app-menu-item.c:255
 msgid "Label"
-msgstr ""
+msgstr "Etiqueta"
 
 #: ../src/xfdesktop-app-menu-item.c:256
 msgid "The label displayed in the item"
-msgstr ""
+msgstr "L'etiqueta que es mostra en l'element"
 
 #: ../src/xfdesktop-app-menu-item.c:262
-#, fuzzy
 msgid "Startup notification"
-msgstr "Utilitza _notificació d'engegada"
+msgstr "Notificació d'engegada"
 
 #: ../src/xfdesktop-app-menu-item.c:263
 msgid "Whether or not the app supports startup notification"
-msgstr ""
+msgstr "Si funciona o no l'aplicació amb notificació d'engegada"
 
 #: ../src/xfdesktop-app-menu-item.c:269
 msgid "Use underline"
-msgstr ""
+msgstr "Empra subratllat"
 
 #: ../src/xfdesktop-app-menu-item.c:270
 msgid "Whether or not to use an underscore in the label as a keyboard mnemonic"
-msgstr ""
+msgstr "Si s'empra o no el subratllat en l'etiqueta com a senyal mnemotècnica"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon.c:141 ../src/xfdesktop-file-icon-manager.c:922
