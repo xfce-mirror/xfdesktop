@@ -2,19 +2,19 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Baurzhan Muftakhidinov <baurthefirst@gmail.com>, 2009.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: trunk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-28 16:27+0200\n"
+"POT-Creation-Date: 2010-08-30 22:06+0000\n"
 "PO-Revision-Date: 2010-08-03 10:24+0600\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <kk_KZ@googlegroups.com>\n"
-"Language: kk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: kk\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
@@ -63,10 +63,8 @@ msgstr "Фон суреттер тізімі файлын жасау/жүкте�
 
 #: ../settings/main.c:511
 #, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
-"\"%s\" фон суреттер тізімі бар дұрыс файл емес. Оны үстінен жазамыз ба?"
+msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr "\"%s\" фон суреттер тізімі бар дұрыс файл емес. Оны үстінен жазамыз ба?"
 
 #: ../settings/main.c:516
 msgid "Invalid List File"
@@ -283,54 +281,52 @@ msgid "Desktop Error"
 msgstr "Жұмыс үстел қатесі"
 
 #: ../src/xfdesktop-app-menu-item.c:234
-#, fuzzy
 msgid "Needs terminal"
-msgstr "Терминал"
+msgstr "Терминалды талап етеді"
 
 #: ../src/xfdesktop-app-menu-item.c:235
 msgid "Whether or not the command needs a terminal to execute"
-msgstr ""
+msgstr "Команда жөнелтілу үшін терминалды талап ете ма, соны көрсетеді"
 
 #: ../src/xfdesktop-app-menu-item.c:241
 msgid "Command"
-msgstr ""
+msgstr "Команда"
 
 #: ../src/xfdesktop-app-menu-item.c:242
 msgid "The command to run when the item is clicked"
-msgstr ""
+msgstr "Нәрсе шертілген кезде жөнелтілетін команда"
 
 #: ../src/xfdesktop-app-menu-item.c:248
-#, fuzzy
 msgid "Icon name"
-msgstr "Таңба_ша өлшемі:"
+msgstr "Таңбаша аты"
 
 #: ../src/xfdesktop-app-menu-item.c:249
 msgid "The name of the themed icon to display next to the item"
-msgstr ""
+msgstr "Нәрсенің қасында көрсетілетін темасы бар таңбаша"
 
 #: ../src/xfdesktop-app-menu-item.c:255
 msgid "Label"
-msgstr ""
+msgstr "Белгі"
 
 #: ../src/xfdesktop-app-menu-item.c:256
 msgid "The label displayed in the item"
-msgstr ""
+msgstr "Нәрседе көрсетілетін белгі"
 
 #: ../src/xfdesktop-app-menu-item.c:262
 msgid "Startup notification"
-msgstr ""
+msgstr "Қосылу хабарламасы"
 
 #: ../src/xfdesktop-app-menu-item.c:263
 msgid "Whether or not the app supports startup notification"
-msgstr ""
+msgstr "Қолданба қосылу хабарламасын қолдай ма, соны көрсетеді"
 
 #: ../src/xfdesktop-app-menu-item.c:269
 msgid "Use underline"
-msgstr ""
+msgstr "Астыңғы сызуды қолдану"
 
 #: ../src/xfdesktop-app-menu-item.c:270
 msgid "Whether or not to use an underscore in the label as a keyboard mnemonic"
-msgstr ""
+msgstr "Пернетақта жарлығы үшін белгі атауында астыңғы сызуды қолдану"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon.c:141 ../src/xfdesktop-file-icon-manager.c:922
@@ -352,10 +348,8 @@ msgstr "Сәйкестелген қолданбаны табу не орында
 
 #: ../src/xfdesktop-file-icon-manager.c:479
 #, c-format
-msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr ""
-"Xfdesktop жұмыс үстел құрамасын сақтау үшін \"%s\" бумасын жасай алмады:"
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr "Xfdesktop жұмыс үстел құрамасын сақтау үшін \"%s\" бумасын жасай алмады:"
 
 #: ../src/xfdesktop-file-icon-manager.c:481
 #: ../src/xfdesktop-file-icon-manager.c:492
@@ -365,12 +359,8 @@ msgstr "Буманы жасау сәтсіз аяқталды"
 
 #: ../src/xfdesktop-file-icon-manager.c:490
 #, c-format
-msgid ""
-"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
-"folder."
-msgstr ""
-"Xfdesktop жұмыс үстел құрамасын сақтау үшін \"%s\" қолдана алмайды - өйткені "
-"ол бума емес."
+msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
+msgstr "Xfdesktop жұмыс үстел құрамасын сақтау үшін \"%s\" қолдана алмайды - өйткені ол бума емес."
 
 #: ../src/xfdesktop-file-icon-manager.c:494
 msgid "Please delete or rename the file."
@@ -420,12 +410,8 @@ msgid "The application chooser could not be opened."
 msgstr "Қолданбаларды таңдаушыны ашу мүмкін емес."
 
 #: ../src/xfdesktop-file-icon-manager.c:986 ../src/xfdesktop-file-utils.c:368
-msgid ""
-"This feature requires a file manager service present (such as that supplied "
-"by Thunar)."
-msgstr ""
-"Бұл мүмкіндік бар болып тұрған файл басқарушы қызметін талап етеді (Thunar "
-"ұсынатын қызмет сияқты)."
+msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
+msgstr "Бұл мүмкіндік бар болып тұрған файл басқарушы қызметін талап етеді (Thunar ұсынатын қызмет сияқты)."
 
 #: ../src/xfdesktop-file-icon-manager.c:1182
 #, c-format
@@ -443,12 +429,8 @@ msgid "Unable to create folder named \"%s\":"
 msgstr "\"%s\" атымен буманы жасау мүмкін емес:"
 
 #: ../src/xfdesktop-file-icon-manager.c:1289
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
-msgstr ""
-"\"exo-desktop-item-edit\" жөнелту қатесі, ол жұмыс үстелінде жөнелткіштерді "
-"мен сілтемелерді жасау үшін керек."
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgstr "\"exo-desktop-item-edit\" жөнелту қатесі, ол жұмыс үстелінде жөнелткіштерді мен сілтемелерді жасау үшін керек."
 
 #: ../src/xfdesktop-file-icon-manager.c:1324
 msgid "Create New Folder"
@@ -731,12 +713,8 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "Xfce қоқыс шелегі қызметімен байланыс орнату мүмкін емес."
 
 #: ../src/xfdesktop-special-file-icon.c:522
-msgid ""
-"Make sure you have a file manager installed that supports the Xfce Trash "
-"service, such as Thunar."
-msgstr ""
-"Thunar сияқты, Xfce қоқыс шелегі қызметіне қолдауы бар файл басқарушысы "
-"орнатылғанына көз жеткізіңіз."
+msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
+msgstr "Thunar сияқты, Xfce қоқыс шелегі қызметіне қолдауы бар файл басқарушысы орнатылғанына көз жеткізіңіз."
 
 #: ../src/xfdesktop-special-file-icon.c:655
 msgid "_Empty Trash"
@@ -1137,9 +1115,7 @@ msgstr "Бөлімді _шығару"
 #~ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 #~ msgstr "Градиент үшін \"оң\" мен \"төменгі\" түстерін анықтайды"
 
-#~ msgid ""
-#~ "Specifies the solid color, or the \"left\" or \"top\" color of the "
-#~ "gradient"
+#~ msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
 #~ msgstr "Градиент үшін \"сол\" мен \"үстіңгі\" түстерін анықтайды"
 
 #~ msgid "Specify how the image will be resized to fit the screen"
@@ -1148,11 +1124,8 @@ msgstr "Бөлімді _шығару"
 #~ msgid "Specify the style of the color drawn behind the backdrop image"
 #~ msgstr "Фон суреті астындағы түстін мөлдірлігін анықтайды"
 
-#~ msgid ""
-#~ "Specify the transparency level for the rounded label drawn behind the "
-#~ "icon text"
-#~ msgstr ""
-#~ "Таңбаша мәтіні астында орналасқан домалақша белгінің мөлдірлігін анықтайды"
+#~ msgid "Specify the transparency level for the rounded label drawn behind the icon text"
+#~ msgstr "Таңбаша мәтіні астында орналасқан домалақша белгінің мөлдірлігін анықтайды"
 
 #~ msgid "St_yle:"
 #~ msgstr "Ст_илі:"
