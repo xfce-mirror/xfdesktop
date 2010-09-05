@@ -1,6 +1,14 @@
-Xfce 4.7.0
-----------
+Xfdesktop 4.7.0
+---------------
 
+  * Depend on exo-1 (0.5).
+  * Drop dependency on libxfcegui4 and use libxfce4ui.
+  * Remove the menu panel plugin, this is now included in the panel.
+  * Remove various .desktop files for the menu, those are now
+    included in the packages they belong to (exo, utils and session).
+  * Remove the .directory files, those are now shipped with Garcon.
+  * Drop the libxfce4menu dependency and use Garcon.
+  * Build documentation during make dist.
   * Allow DnD to image list in settings dialog (bug 4337).
   * Refactor drawing routines in XfdesktopIconView to remove most
     flicker and most if not all repaint glitches.
@@ -11,17 +19,29 @@ Xfce 4.7.0
   * Call to org.xfce.FileManager.DisplayFileProperties() for the
     full-featured file properties dialog before falling back to our
     own (bug 5622).
+  * Translation updates: ca, kk, pt, it, da, zh_TW, de, he, id, hr,
+    fr, ru, si.
 
 
 Xfce 4.6.2
 ----------
 
-  * Add Catalan and Galician translations of the manual.
-  * Fix inability to delete broken symlinks on the desktop (bug 5387).
-  * Never show 'Unmount' in volume context menus.
+  * Build fixes for GIT.
+  * Rebuild doc directory.
+  * Add libexo to CFLAGS and LIBS for panel plugin.
+  * Fix detection of rename/delete ability.
+  * Fix compilation when libexo isn't present.
+  * Update icon text labels when system font size changes (bug #2862).
+  * Set mnemonic widget properly for icon type/size labels (bug #5555).
   * Always show 'Eject' in volume context menus, regardless of whether
-    or not it's mounted (bug 5343).
-  * Update icon text labels when system font size changes (bug 2862).
+    or not it's mounted (bug #5343).
+  * Never show 'Unmount' in volume context menus.
+  * Use GtkBindingSet for keyboard handling on desktop.
+  * Only register menu with panel if popup succeeded (bug #5792).
+  * Fix inability to delete broken symlinks on the desktop (bug 5387).
+  * Don't misuse the g_return_(val_)?if_fail() macros as much (bug #5791).
+  * Translation updates (el, es, gl, it, pl, pt, ru, tr, ro, lv, ca,
+    ur, ur_PK, hu, ast, da, sk, nn, nl, si, am, kk, ja, ug, fr).
 
 
 Xfce 4.6.1
@@ -64,8 +84,8 @@ Xfce 4.6beta2 (Xfce 4.5.92):
 
   * Display 'Audio' and 'Video' categories in the multimedia submenu.
   * Fix multiple image selection in settings dialog file chooser (bug 4522).
-  * Always use the XfceMenuElement interface for reading the display names 
-    of menu items and menus. This ensures that items appear sorted in 
+  * Always use the XfceMenuElement interface for reading the display names
+    of menu items and menus. This ensures that items appear sorted in
     alphabetic order.
 
 
@@ -166,7 +186,7 @@ Xfce 4.6alpha (Xfce 4.5.90):
 - Clean out stale entries in file icon position file (bug 3267).
 - Some minor memory leak fixes (some still remain, likely).
 - Fix --disable-menu-editor configure option.
-- Always use button 0 in gtk_menu_popup() as GTK+ 2.11+ expects the 
+- Always use button 0 in gtk_menu_popup() as GTK+ 2.11+ expects the
   same button to be pressed or it doesn't activate the entry (bug 3359).
 - Don't set workspace for sticky windows in windowlist (bug 3317).
 - Fix missing xfce_rc_close() causing memleak and too many open file
@@ -190,9 +210,9 @@ Xfce 4.6alpha (Xfce 4.5.90):
 
     We're just about ready to release Xfce 4.4.0!  Hooray!  There have been
     many changes since my last entry.
-    
+
     Change since 4.4rc2:
-    
+
       * Fix support for applications that do pseudo-transparency (bug 2508).
       * Change how icon cell size is calculated to avoid weirdness at large
         sizes (bug 1546).
@@ -204,9 +224,9 @@ Xfce 4.6alpha (Xfce 4.5.90):
         stretch mode (bug 2573).
       * Fix some possible (but unliklely) NULL pointer dereferences.
       * Update documentation.
-    
+
     Changes since 4.4rc1:
-    
+
       * Fix crash when non-file:// URIs are dropped on the desktop (bug 2229).
       * Handle Xinerama-enabled setups correctly so icons aren't placed in
         "dead areas" or on the boundary between monitors (bug 1538).
@@ -224,7 +244,7 @@ Xfce 4.6alpha (Xfce 4.5.90):
       * Fix 100% CPU problem when the desktop folder is deleted (bug 2160).
 
     Changes since 4.4beta2:
-    
+
       * Fix backdrop image tearing during expose (bug 1944).
       * Show icon tooltips where appropriate (bug 1526).
       * Use thunarx extensions for the icon context menus and properties
@@ -242,9 +262,9 @@ Xfce 4.6alpha (Xfce 4.5.90):
       * Don't allow cut or delete if the file/dir isn't writeable (buf 2081).
       * Memory leak fixes (bug 1910).
       * Put the icon context menu on the proper screen (bug 2351).
-    
+
     Changes since 4.4beta1:
-    
+
       * Attempt to create ~/Desktop/ if it doesn't exist (bug 1691).
       * Fix non-ejectable media showing as ejectable.
       * Fix removable media not appearing when its mount point has not yet
@@ -275,7 +295,7 @@ Xfce 4.6alpha (Xfce 4.5.90):
     icons, xfdesktop supports traditional desktop file icons.  This
     functionality requires very recent versions of libexo and thunar-vfs to
     be present and installed before compiling xfdesktop.
-    
+
     Olivier and Benny just put together the 4.4beta1 release over the weekend,
     so we're (finally!) gearing up to release 4.4.0 final within the next 4-6
     weeks (hopefully).
@@ -295,19 +315,19 @@ Xfce 4.6alpha (Xfce 4.5.90):
     representing all your minimized applications, a la CDE.  Other
     projects (xffm, Thunar) will address the need for file and launcher
     icons.
-    
+
     The Xfce menu panel plugin has seen several improvements, including
     some menu generation speed enhancements, and the ability to put a
     text title in the button, as well as using non-square icons.
-    
+
     On the bugfix front, notably, you can bind 'xfdesktop -menu' and
     'xfdesktop -windowlist' to keys now, and it should work properly all
     the time.
-    
+
     There are a few small enhancements to the backdrop functionality,
     such as the ability to stretch a single image across a Xinerama-
     enabled desktop.
-    
+
     I suppose that's all for now.  Development of Xfce as a whole has been
     moving somewhat slowly lately, so 4.4.0 may not be coming as soon as
     we'd like.
@@ -389,7 +409,7 @@ Xfce 4.6alpha (Xfce 4.5.90):
 20031019:
 ---------
 
-	* Add '-reload', '-menu' and '-windowlist' arguments to xfdesktop to 
+	* Add '-reload', '-menu' and '-windowlist' arguments to xfdesktop to
 	  make it reaload/refresh the image, popup the menu or popup the
 	  windowlist repectively.
 
