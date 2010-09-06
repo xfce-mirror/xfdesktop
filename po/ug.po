@@ -9,11 +9,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.5.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-28 16:27+0200\n"
+"POT-Creation-Date: 2010-09-06 04:07+0000\n"
 "PO-Revision-Date: 2009-10-21 00:57+0900\n"
 "Last-Translator: Gheyret T.Kenji <gheyret@gmail.com>\n"
 "Language-Team:Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -48,7 +47,7 @@ msgstr "ئەخلەت ساندۇقى"
 
 #: ../settings/main.c:278
 msgid "Removable Devices"
-msgstr "Removable ئۈسكۈنىلەر"
+msgstr "ھەرىكەتچان ئۈسكۈنىلەر"
 
 #: ../settings/main.c:458
 #, c-format
@@ -160,36 +159,36 @@ msgstr "تەڭشەك مۇلازىمېتىر بىلەن ئۇلىنالمىدى"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop "
-msgstr "ئۈستەل يۈزى "
+msgstr "ئۈستەليۈزى "
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Set desktop background and menu and icon behaviour"
-msgstr ""
+msgstr "ئۈستەليۈزى تېگى، تىزىملىك ۋە سىنبەلگە ھەرىكىتىنى بەلگىلەش"
 
 #: ../src/main.c:235
 msgid "Display version information"
-msgstr ""
+msgstr "نەشر ئۇچۇرىنى كۆرسەت"
 
 #: ../src/main.c:236
 msgid "Reload all settings, refresh image list"
-msgstr ""
+msgstr "بارلىق تەڭشەكنى قايتا ئوقۇش، سۈرەت تىزىملىكىنى يېڭىلاش"
 
 #: ../src/main.c:237
 msgid "Pop up the menu (at the current mouse position)"
-msgstr ""
+msgstr "تىزىملىكنى كۆرسەت(چاشقىنەكنىڭ ھازىرقى ئورنىدا)"
 
 #: ../src/main.c:238
 msgid "Pop up the window list (at the current mouse position)"
-msgstr ""
+msgstr "كۆزنەك تىزىملىكىنى كۆرسەت(چاشقىنەكنىڭ ھازىرقى ئورنىدا)"
 
 #: ../src/main.c:239
 msgid "Cause xfdesktop to quit"
-msgstr ""
+msgstr "xfdesktop نىڭ ئاخىرلىشىشنى كەلتۈرۈپ چىقىرىدۇ"
 
 #: ../src/main.c:259
 #, c-format
 msgid "Failed to parse arguments: %s\n"
-msgstr ""
+msgstr "پارامېتىرلارنى يېشىش مەغلۇپ بولدى: %s\n"
 
 #: ../src/main.c:267
 #, c-format
@@ -209,7 +208,7 @@ msgstr "Build تاللانمىلىرى:\n"
 #: ../src/main.c:274
 #, c-format
 msgid "    Desktop Menu:        %s\n"
-msgstr "        Menu:            %s\n"
+msgstr "    ئۈستەليۈزى تىزىملىكى:            %s\n"
 
 #: ../src/main.c:276 ../src/main.c:283 ../src/main.c:290
 msgid "enabled"
@@ -222,12 +221,12 @@ msgstr "چەكلەنگەن"
 #: ../src/main.c:281
 #, c-format
 msgid "    Desktop Icons:       %s\n"
-msgstr "        سىنبەلگە:            %s\n"
+msgstr "    ئۈستەليۈزى سىنبەلگىلىرى:            %s\n"
 
 #: ../src/main.c:288
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr "        ھۆججەت سىنبەلگىسى:    %s\n"
+msgstr "    ئۈستەليۈزى ھۆججەت سىنبەلگىلىرى:    %s\n"
 
 #: ../src/main.c:319
 #, c-format
@@ -245,94 +244,92 @@ msgstr "كۆزنەك تىزىملىكى"
 #: ../src/windowlist.c:262
 #, c-format
 msgid "<b>Workspace %d</b>"
-msgstr "<b>Workspace %d</b>"
+msgstr "<b>خىزمەت مۇھىتى %d</b>"
 
 #: ../src/windowlist.c:271
 #, c-format
 msgid "Workspace %d"
-msgstr "Workspace %d"
+msgstr "خىزمەت مۇھىتى %d"
 
 #: ../src/windowlist.c:273
 #, c-format
 msgid "<i>Workspace %d</i>"
-msgstr "<i>Workspace %d</i>"
+msgstr "<i>خىزمەت مۇھىتى %d</i>"
 
 #: ../src/windowlist.c:370 ../src/windowlist.c:373
 msgid "_Add Workspace"
-msgstr "Workspace قوش(_A)"
+msgstr "خىزمەت مۇھىتى قوش(_A)"
 
 #: ../src/windowlist.c:381
 #, c-format
 msgid "_Remove Workspace %d"
-msgstr "Workspace %d نى ئۆچۈر(_R)"
+msgstr "خىزمەت مۇھىتى %d نى ئۆچۈر(_R)"
 
 #: ../src/windowlist.c:384
 #, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "Workspace '%s' نى ئۆچۈر(_R)"
+msgstr "خىزمەت مۇھىتى '%s' نى ئۆچۈر(_R)"
 
 #: ../src/xfce-desktop.c:742
 msgid "Desktop"
-msgstr "ئۈستەل يۈزى"
+msgstr "ئۈستەليۈزى"
 
 #: ../src/xfce-desktop.c:1018
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
-msgstr "backdrop تىزما ھۆججىتىدىن سۈرەت \"%s\" نى ئوقۇغىلى بولمىدى"
+msgstr "backdrop تىزىملىك ھۆججىتىدىن سۈرەت \"%s\" نى ئوقۇغىلى بولمىدى"
 
 #: ../src/xfce-desktop.c:1020
 msgid "Desktop Error"
 msgstr "ئۈستەليۈزى خاتالىقى"
 
 #: ../src/xfdesktop-app-menu-item.c:234
-#, fuzzy
 msgid "Needs terminal"
-msgstr "ターミナル"
+msgstr "تېرمىنال زۆرۈر"
 
 #: ../src/xfdesktop-app-menu-item.c:235
 msgid "Whether or not the command needs a terminal to execute"
-msgstr ""
+msgstr "بۇيرۇقنى ئىجرا قىلىش ئۈچۈن تېرمىنال زۆرۈرمۇ ئەمەسمۇ بەلگىلەيدۇ"
 
 #: ../src/xfdesktop-app-menu-item.c:241
 msgid "Command"
-msgstr ""
+msgstr "بۇيرۇق"
 
 #: ../src/xfdesktop-app-menu-item.c:242
 msgid "The command to run when the item is clicked"
-msgstr ""
+msgstr "تۈر چېكىلگەندە ئىجرا بولىدىغان بۇيرۇق"
 
 #: ../src/xfdesktop-app-menu-item.c:248
-#, fuzzy
 msgid "Icon name"
-msgstr "アイコンのサイズ(_S):"
+msgstr "سىنبەلگە ئاتى(_S):"
 
 #: ../src/xfdesktop-app-menu-item.c:249
 msgid "The name of the themed icon to display next to the item"
-msgstr ""
+msgstr "تۈرنىڭ يېنىدا كۆرسىتىدىغان سىنبەلگىنىڭ ئاتى"
 
 #: ../src/xfdesktop-app-menu-item.c:255
 msgid "Label"
-msgstr ""
+msgstr "ئەن"
 
 #: ../src/xfdesktop-app-menu-item.c:256
 msgid "The label displayed in the item"
-msgstr ""
+msgstr "تۇرنىڭ ئىچىدە كۆرسىتىدىغان ئەن"
 
 #: ../src/xfdesktop-app-menu-item.c:262
 msgid "Startup notification"
-msgstr ""
+msgstr "قوزغىلىش ئۇقتۇرۇشى"
 
 #: ../src/xfdesktop-app-menu-item.c:263
 msgid "Whether or not the app supports startup notification"
-msgstr ""
+msgstr "پروگرامما قوزغىلىش ئۇقتۇرۇشىنى قوللامدۇ قوللىمامدۇ كۆرسىتىدۇ"
 
 #: ../src/xfdesktop-app-menu-item.c:269
 msgid "Use underline"
-msgstr ""
+msgstr "پەسسىزىق ئىشلەت"
 
 #: ../src/xfdesktop-app-menu-item.c:270
 msgid "Whether or not to use an underscore in the label as a keyboard mnemonic"
-msgstr ""
+msgstr "تىزىملىك تېزلەتمە كۇنۇپكىسىدا پەسسىزىق ئىشلىتەمدۇ بەلگىلەيدۇ"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon.c:141 ../src/xfdesktop-file-icon-manager.c:922
@@ -453,7 +450,7 @@ msgid ""
 "edit launchers and links on the desktop."
 msgstr ""
 "ئۈستەليۈزىگە ئىجراچى ياساش ياكى ئۇلانما ياساشتا زۆرۈر بولغان \"exo-desktop-"
-"item-edit\" نى ئىجرا قىلالمىدى. "
+"item-edit\" نى ئىجرا قىلالمىدى."
 
 #: ../src/xfdesktop-file-icon-manager.c:1324
 msgid "Create New Folder"
@@ -805,400 +802,3 @@ msgstr "Volume نى Mount قىل(_M)"
 #: ../src/xfdesktop-volume-icon.c:599
 msgid "E_ject Volume"
 msgstr "Volume نى چىقار(_J)"
-
-#~ msgid "Unable to launch xfce4-menueditor: %s"
-#~ msgstr "xfce4-menueditor を実行できません: %s"
-
-#~ msgid "Select Icon"
-#~ msgstr "アイコンを選択してください"
-
-#~ msgid "Select Menu File"
-#~ msgstr "メニューファイルを選択してください"
-
-#~ msgid "All Files"
-#~ msgstr "全てのファイル"
-
-#~ msgid "Image Files"
-#~ msgstr "画像ファイル"
-
-#~ msgid "Menu Files"
-#~ msgstr "メニューファイル"
-
-#~ msgid "Xfce Menu"
-#~ msgstr "Xfce メニュー"
-
-#~ msgid "Button"
-#~ msgstr "ボタン"
-
-#~ msgid "Button _title:"
-#~ msgstr "ボタンタイトル(_T):"
-
-#~ msgid "_Show title in button"
-#~ msgstr "ボタンにタイトルを表示する(_S)"
-
-#~ msgid "Menu File"
-#~ msgstr "メニューファイル"
-
-#~ msgid "Use default _desktop menu file"
-#~ msgstr "デフォルトのデスクトップメニューを使用する(_D)"
-
-#~ msgid "Use _custom menu file:"
-#~ msgstr "指定したメニューファイルを使用する(_C):"
-
-#~ msgid "_Edit Menu"
-#~ msgstr "メニューの編集(_E)"
-
-#~ msgid "Icons"
-#~ msgstr "アイコン"
-
-#~ msgid "_Button icon:"
-#~ msgstr "ボタンアイコン(_B):"
-
-#~ msgid "Show _icons in menu"
-#~ msgstr "メニューにアイコンを表示する(_I):"
-
-#~ msgid "There is already a panel menu registered for this screen"
-#~ msgstr "この画面には既にパネルメニューが登録されています"
-
-#~ msgid "Edit Menu"
-#~ msgstr "メニューの編集"
-
-#~ msgid "Shows a menu containing categories of installed applications"
-#~ msgstr ""
-#~ "インストール済みアプリケーションのカテゴリを含むメニューを表示します"
-
-#~ msgid "Accessories"
-#~ msgstr "アクセサリ"
-
-#~ msgid "Common desktop tools and applications"
-#~ msgstr "デスクトップの共通ツールやアプリケーション"
-
-#~ msgid "Development"
-#~ msgstr "開発"
-
-#~ msgid "Software development tools"
-#~ msgstr "ソフトウェア開発ツール"
-
-#~ msgid "Education"
-#~ msgstr "教育"
-
-#~ msgid "Educational software"
-#~ msgstr "教育ソフトウェア"
-
-#~ msgid "Games"
-#~ msgstr "ゲーム"
-
-#~ msgid "Games, puzzles, and other fun software"
-#~ msgstr "ゲーム、パズルや他の遊戯用ソフトウェア"
-
-#~ msgid "Graphics"
-#~ msgstr "グラフィックス"
-
-#~ msgid "Graphics creation and manipulation applications"
-#~ msgstr "グラフィックスの作成や操作アプリケーション"
-
-#~ msgid "Audio and video players and editors"
-#~ msgstr "オーディオ、ビデオプレイヤーや編集ソフトウェア"
-
-#~ msgid "Multimedia"
-#~ msgstr "マルチメディア"
-
-#~ msgid "Network"
-#~ msgstr "ネットワーク"
-
-#~ msgid "Network applications and utilities"
-#~ msgstr "ネットワークアプリケーションやユーティリティ"
-
-#~ msgid "Office"
-#~ msgstr "オフィス"
-
-#~ msgid "Office and productivity applications"
-#~ msgstr "事務用アプリケーション"
-
-#~ msgid "Applications that don't fit into other categories"
-#~ msgstr "他の分類に該当しないアプリケーション"
-
-#~ msgid "Other"
-#~ msgstr "その他"
-
-#~ msgid "Science"
-#~ msgstr "科学"
-
-#~ msgid "Scientific software"
-#~ msgstr "科学ソフトウェア"
-
-#~ msgid "Screensaver applets"
-#~ msgstr "スクリーンセーバーアプレット"
-
-#~ msgid "Screensavers"
-#~ msgstr "スクリーンセーバー"
-
-#~ msgid "Desktop and system settings applications"
-#~ msgstr "デスクトップやシステムを設定するアプリケーション"
-
-#~ msgid "Settings"
-#~ msgstr "設定"
-
-#~ msgid "System"
-#~ msgstr "システム"
-
-#~ msgid "System tools and utilities"
-#~ msgstr "システムツールおよびユーティリティ"
-
-#~ msgid "About Xfce"
-#~ msgstr "Xfce について"
-
-#~ msgid "Information about the Xfce Desktop Environment"
-#~ msgstr "Xfce デスクトップ環境についての情報"
-
-#~ msgid "File Manager"
-#~ msgstr "ファイルマネージャ"
-
-#~ msgid "Thunar file manager"
-#~ msgstr "Thuanr ファイルマネージャ"
-
-#~ msgid "Help"
-#~ msgstr "ヘルプ"
-
-#~ msgid "Help using Xfce"
-#~ msgstr "Xfce のマニュアルを表示します"
-
-#~ msgid "Log Out"
-#~ msgstr "ログアウト"
-
-#~ msgid "Log out of the Xfce Desktop"
-#~ msgstr "Xfce デスクトップからログアウトします"
-
-#~ msgid "Run Program..."
-#~ msgstr "プログラムの実行..."
-
-#~ msgid "Run a program"
-#~ msgstr "プログラムを実行します"
-
-#~ msgid "Terminal emulator"
-#~ msgstr "ターミナルエミュレータ"
-
-#~ msgid "Browse the web"
-#~ msgstr "ウェブを閲覧します"
-
-#~ msgid "Web Browser"
-#~ msgstr "ウェブブラウザ"
-
-#~ msgid "<b>Adjustments</b>"
-#~ msgstr "<b>調整</b>"
-
-#~ msgid "<b>Appearance</b>"
-#~ msgstr "<b>外観</b>"
-
-#~ msgid "<b>Colors</b>"
-#~ msgstr "<b>色</b>"
-
-#~ msgid "<b>Default Icons</b>"
-#~ msgstr "<b>デフォルトアイコン</b>"
-
-#~ msgid "<b>Desktop Menu</b>"
-#~ msgstr "<b>デスクトップメニュー</b>"
-
-#~ msgid "<b>Image</b>"
-#~ msgstr "<b>画像</b>"
-
-#~ msgid "<b>Images</b>"
-#~ msgstr "<b>画像</b>"
-
-#~ msgid "<b>Window List Menu</b>"
-#~ msgstr "<b>ウィンドウリストメニュー</b>"
-
-#~ msgid "Add an image to the list"
-#~ msgstr "画像をリストに追加します"
-
-#~ msgid ""
-#~ "Auto\n"
-#~ "Centered\n"
-#~ "Tiled\n"
-#~ "Stretched\n"
-#~ "Scaled\n"
-#~ "Zoomed"
-#~ msgstr ""
-#~ "自動\n"
-#~ "中央揃え\n"
-#~ "タイル状\n"
-#~ "縦横比を維持せず全画面化\n"
-#~ "長辺を画面に合わせる\n"
-#~ "短辺を画面に合わせる"
-
-#~ msgid "Automatically pick a random image from a list file"
-#~ msgstr "リストファイルから自動的にランダムで画像を選びます"
-
-#~ msgid "B_rightness:"
-#~ msgstr "明度(_R):"
-
-#~ msgid "B_utton:"
-#~ msgstr "ボタン(_U):"
-
-#~ msgid "Create a new list, or load an existing one"
-#~ msgstr "新規リストの作成または既存のリストを読み込みます"
-
-#~ msgid "Don't display an image at all"
-#~ msgstr "全ての画像を表示しません"
-
-#~ msgid "Icon _type:"
-#~ msgstr "アイコンタイプ(_T):"
-
-#~ msgid "Image _list"
-#~ msgstr "画像リスト(_L)"
-
-# Tip Help
-#~ msgid "Increase or decrease the brightness of the final image"
-#~ msgstr "画像の最終的な明度を調整します"
-
-# Tip Help
-#~ msgid "Increase or decrease the color saturation of the final image"
-#~ msgstr "画像の最終的な彩度を調整します"
-
-#~ msgid "Label trans_parency:"
-#~ msgstr "透明度(_P):"
-
-#~ msgid ""
-#~ "Left\n"
-#~ "Middle\n"
-#~ "Right"
-#~ msgstr ""
-#~ "左\n"
-#~ "中央\n"
-#~ "右"
-
-#~ msgid "Mo_difier:"
-#~ msgstr "変更日時(_D):"
-
-#~ msgid "Modi_fier:"
-#~ msgstr "変更日時(_F):"
-
-#~ msgid ""
-#~ "None\n"
-#~ "Minimized application icons\n"
-#~ "File/launcher icons"
-#~ msgstr ""
-#~ "なし\n"
-#~ "最小化されたアプリケーションアイコン\n"
-#~ "ファイル/ランチャアイコン"
-
-#~ msgid ""
-#~ "None\n"
-#~ "Shift\n"
-#~ "Alt\n"
-#~ "Control"
-#~ msgstr ""
-#~ "なし\n"
-#~ "Shift\n"
-#~ "Alt\n"
-#~ "Control"
-
-#~ msgid "Remove the selected image(s) from the list"
-#~ msgstr "選択された画像をリストから削除します"
-
-#~ msgid "Sa_turation:"
-#~ msgstr "彩度(_T):"
-
-#~ msgid "Select First Color"
-#~ msgstr "第一色の選択"
-
-#~ msgid "Select Second Color"
-#~ msgstr "第二色の選択"
-
-# Tip Help
-#~ msgid "Select a single image as the backdrop"
-#~ msgstr "選択した単一の画像を背景にします"
-
-#~ msgid "Set desktop background and menu and icon behavior"
-#~ msgstr "デスクトップの背景およびメニューとアイコンの振る舞いを設定します"
-
-#~ msgid "Sh_ow application icons in menu"
-#~ msgstr "メニューにアイコンを表示する(_O)"
-
-#~ msgid "Show _application icons in menu"
-#~ msgstr "メニューにアイコンを表示する(_A)"
-
-#~ msgid "Show _window list menu on desktop middle click"
-#~ msgstr "デスクトップ上での中央クリックでウィンドウリストを表示する(_W)"
-
-#~ msgid "Show applications menu on _desktop right click"
-#~ msgstr ""
-#~ "デスクトップ上での右クリックでアプリケーションメニューを表示する(_D)"
-
-#~ msgid "Show s_ticky windows only in active workspace"
-#~ msgstr "アクティブワークスペースにのみスティッキーウィンドウを表示する(_T)"
-
-#~ msgid "Show workspace _names in list"
-#~ msgstr "リストにワークスペース名を表示する(_N)"
-
-#~ msgid ""
-#~ "Solid color\n"
-#~ "Horizontal gradient\n"
-#~ "Vertical gradient\n"
-#~ "Transparent"
-#~ msgstr ""
-#~ "単色\n"
-#~ "水平グラデーション\n"
-#~ "垂直グラデーション\n"
-#~ "透明"
-
-#~ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-#~ msgstr "グラデーションの \"右側\" または \"下側\" の色を指定します"
-
-#~ msgid ""
-#~ "Specifies the solid color, or the \"left\" or \"top\" color of the "
-#~ "gradient"
-#~ msgstr "グラデーションの \"左側\" または \"上側\" の色を指定します"
-
-#~ msgid "Specify how the image will be resized to fit the screen"
-#~ msgstr "画像を画面に合わせるスタイルを指定します"
-
-#~ msgid "Specify the style of the color drawn behind the backdrop image"
-#~ msgstr "背景画像の後ろで描画される背景色のスタイルを指定します"
-
-#~ msgid ""
-#~ "Specify the transparency level for the rounded label drawn behind the "
-#~ "icon text"
-#~ msgstr "アイコンの文字の背景の透明度を指定してください"
-
-#~ msgid "St_yle:"
-#~ msgstr "スタイル(_Y):"
-
-#~ msgid "Use _submenus for the windows in each workspace"
-#~ msgstr "各ワークスペースのウィンドウをサブメニューで表示する(_U)"
-
-#~ msgid "Use custom _font size:"
-#~ msgstr "指定フォントサイズを使用する(_F):"
-
-#~ msgid "_Background"
-#~ msgstr "背景(_B)"
-
-#~ msgid "_Button:"
-#~ msgstr "ボタン(_B):"
-
-#~ msgid "_Edit desktop menu"
-#~ msgstr "デスクトップメニューの編集(_E)"
-
-#~ msgid "_Icons"
-#~ msgstr "アイコン(_I)"
-
-#~ msgid "_Menus"
-#~ msgstr "メニュー(_M)"
-
-#~ msgid "_None"
-#~ msgstr "無し(_N)"
-
-#~ msgid "_Single image"
-#~ msgstr "単一画像(_S)"
-
-#~ msgid "%s: Unknown option: %s\n"
-#~ msgstr "%s: 不明なオプション: %s\n"
-
-#~ msgid "Options are:\n"
-#~ msgstr "オプションは:\n"
-
-#~ msgid "gtk-close"
-#~ msgstr "閉じる"
-
-#~ msgid "gtk-help"
-#~ msgstr "ヘルプ"
