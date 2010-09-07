@@ -5,21 +5,20 @@
 # Anthony Ivanoff <a-i@bk.ru>, 2004, 2005.
 # Andrey Fedoseev <andrey.fedoseev@gmail.com>, 2006.
 # Denis Koryavov <dkoryavov@yandex.ru>, 2010.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-28 16:27+0200\n"
+"POT-Creation-Date: 2010-09-07 04:07+0000\n"
 "PO-Revision-Date: 2010-01-26 13:02+0300\n"
 "Last-Translator: Denis Koryavov <dkoryavov@yandex.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
-"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
 #, c-format
@@ -67,11 +66,8 @@ msgstr "Создать/Загрузить список фоновых изобр
 
 #: ../settings/main.c:511
 #, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
-"Файл \"%s\" не является правильным файлом списка фоновых изображений. "
-"Перезаписать его?"
+msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr "Файл \"%s\" не является правильным файлом списка фоновых изображений. Перезаписать его?"
 
 #: ../settings/main.c:516
 msgid "Invalid List File"
@@ -288,13 +284,12 @@ msgid "Desktop Error"
 msgstr "Ошибка рабочего стола"
 
 #: ../src/xfdesktop-app-menu-item.c:234
-#, fuzzy
 msgid "Needs terminal"
-msgstr "Терминал"
+msgstr "Запускать в терминале"
 
 #: ../src/xfdesktop-app-menu-item.c:235
 msgid "Whether or not the command needs a terminal to execute"
-msgstr ""
+msgstr "Необходим ли терминал для выполнения команды"
 
 #: ../src/xfdesktop-app-menu-item.c:241
 msgid "Command"
@@ -302,7 +297,7 @@ msgstr "Команда"
 
 #: ../src/xfdesktop-app-menu-item.c:242
 msgid "The command to run when the item is clicked"
-msgstr ""
+msgstr "Команда, запускаемая при нажатии элемента"
 
 #: ../src/xfdesktop-app-menu-item.c:248
 #, fuzzy
@@ -315,16 +310,15 @@ msgstr ""
 
 #: ../src/xfdesktop-app-menu-item.c:255
 msgid "Label"
-msgstr ""
+msgstr "Метка"
 
 #: ../src/xfdesktop-app-menu-item.c:256
 msgid "The label displayed in the item"
 msgstr ""
 
 #: ../src/xfdesktop-app-menu-item.c:262
-#, fuzzy
 msgid "Startup notification"
-msgstr "Использовать _уведомление о запуске"
+msgstr "Уведомление о запуске"
 
 #: ../src/xfdesktop-app-menu-item.c:263
 msgid "Whether or not the app supports startup notification"
@@ -358,8 +352,7 @@ msgstr "Связанное с этим файлом приложение не м
 
 #: ../src/xfdesktop-file-icon-manager.c:479
 #, c-format
-msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 msgstr "Не удалось создать папку \"%s\" для хранения элементов рабочего стола:"
 
 #: ../src/xfdesktop-file-icon-manager.c:481
@@ -370,12 +363,8 @@ msgstr "Не удалось создать папку"
 
 #: ../src/xfdesktop-file-icon-manager.c:490
 #, c-format
-msgid ""
-"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
-"folder."
-msgstr ""
-"Нельзя использовать \"%s\" для хранения элементов рабочего стола, потому что "
-"это не папка."
+msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
+msgstr "Нельзя использовать \"%s\" для хранения элементов рабочего стола, потому что это не папка."
 
 #: ../src/xfdesktop-file-icon-manager.c:494
 msgid "Please delete or rename the file."
@@ -425,12 +414,8 @@ msgid "The application chooser could not be opened."
 msgstr "Не удаётся открыть диалог выбора приложений."
 
 #: ../src/xfdesktop-file-icon-manager.c:986 ../src/xfdesktop-file-utils.c:368
-msgid ""
-"This feature requires a file manager service present (such as that supplied "
-"by Thunar)."
-msgstr ""
-"Эта функция требует наличия службы файлового менеджера (такой, которая "
-"поддерживается в Thunar)."
+msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
+msgstr "Эта функция требует наличия службы файлового менеджера (такой, которая поддерживается в Thunar)."
 
 #: ../src/xfdesktop-file-icon-manager.c:1182
 #, c-format
@@ -448,12 +433,8 @@ msgid "Unable to create folder named \"%s\":"
 msgstr "Не удалось создать папку с именем \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1289
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
-msgstr ""
-"Невозможно запустить \"exo-desktop-item-edit\", которая необходима для "
-"редактирования значков запуска и ссылок на рабочем столе."
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgstr "Невозможно запустить \"exo-desktop-item-edit\", которая необходима для редактирования значков запуска и ссылок на рабочем столе."
 
 #: ../src/xfdesktop-file-icon-manager.c:1324
 msgid "Create New Folder"
@@ -736,12 +717,8 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "Не удаётся подключиться к службе корзины Xfce."
 
 #: ../src/xfdesktop-special-file-icon.c:522
-msgid ""
-"Make sure you have a file manager installed that supports the Xfce Trash "
-"service, such as Thunar."
-msgstr ""
-"Убедитесь, что у вас установлен файловый менеджер, который поддерживает "
-"работу с корзиной Xfce, такой как Thunar."
+msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
+msgstr "Убедитесь, что у вас установлен файловый менеджер, который поддерживает работу с корзиной Xfce, такой как Thunar."
 
 #: ../src/xfdesktop-special-file-icon.c:655
 msgid "_Empty Trash"
@@ -1145,25 +1122,17 @@ msgstr "_Извлечь том"
 #~ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 #~ msgstr "Определить \"правый\" или \"нижний\" цвет градиента"
 
-#~ msgid ""
-#~ "Specifies the solid color, or the \"left\" or \"top\" color of the "
-#~ "gradient"
-#~ msgstr ""
-#~ "Определить сплошной цвет или \"левый\" или \"верхний\" цвет градиента"
+#~ msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+#~ msgstr "Определить сплошной цвет или \"левый\" или \"верхний\" цвет градиента"
 
 #~ msgid "Specify how the image will be resized to fit the screen"
-#~ msgstr ""
-#~ "Определить как будет изменяться размер изображения до размера экрана"
+#~ msgstr "Определить как будет изменяться размер изображения до размера экрана"
 
 #~ msgid "Specify the style of the color drawn behind the backdrop image"
 #~ msgstr "Определить стиль цвета отображаемого под фоновым изображением"
 
-#~ msgid ""
-#~ "Specify the transparency level for the rounded label drawn behind the "
-#~ "icon text"
-#~ msgstr ""
-#~ "Определить уровень прозрачности кругловатого ярлыка, который отображается "
-#~ "под текстомзначка"
+#~ msgid "Specify the transparency level for the rounded label drawn behind the icon text"
+#~ msgstr "Определить уровень прозрачности кругловатого ярлыка, который отображается под текстомзначка"
 
 #~ msgid "St_yle:"
 #~ msgstr "Ст_иль:"
@@ -1291,14 +1260,8 @@ msgstr "_Извлечь том"
 #~ msgid "xfce4-menueditor is deprecated"
 #~ msgstr "xfce4-menueditor признан устаревшим"
 
-#~ msgid ""
-#~ "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
-#~ "edit the new menu file format.  You may continue and edit an old-style "
-#~ "menu file, or quit."
-#~ msgstr ""
-#~ "Система меню Xfce была изменена. xfce4-menueditor не поддерживает новый "
-#~ "формат файла меню. Вы можете продолжить и отредактировать файл меню в "
-#~ "старом формате или выйти."
+#~ msgid "Xfce's menu system has been replaced, and xfce4-menueditor is not able to edit the new menu file format.  You may continue and edit an old-style menu file, or quit."
+#~ msgstr "Система меню Xfce была изменена. xfce4-menueditor не поддерживает новый формат файла меню. Вы можете продолжить и отредактировать файл меню в старом формате или выйти."
 
 #~ msgid "Continue"
 #~ msgstr "Продолжить"
@@ -1483,19 +1446,16 @@ msgstr "_Извлечь том"
 #~ msgid "Xfce 4 Desktop Settings"
 #~ msgstr "Настройки рабочего стола Xfce 4"
 
-#, fuzzy
 #~ msgid "Show windows on each workspace in _submenus"
 #~ msgstr "Отображать окна каждого рабочего места в виде под_меню"
 
-#, fuzzy
 #~ msgid "Use _Xfce to manage the desktop"
 #~ msgstr "_Разрешить Xfce управлять рабочим столом"
 
 #~ msgid ""
 #~ "Could not save file %s: %s\n"
 #~ "\n"
-#~ "Please choose another location or press cancel in the dialog to discard "
-#~ "your changes"
+#~ "Please choose another location or press cancel in the dialog to discard your changes"
 #~ msgstr ""
 #~ "Ошибка при сохранении файла %s: %s\n"
 #~ "\n"
@@ -1549,31 +1509,11 @@ msgstr "_Извлечь том"
 #~ msgid "Unable to start xfdesktop"
 #~ msgstr "Невозможно запустить xfdesktop"
 
-#~ msgid ""
-#~ "To ensure that this setting takes effect the next time you start Xfce, "
-#~ "please be sure to save your session when logging out.  If you are not "
-#~ "using the Xfce Session Manager (xfce4-session), you will need to manually "
-#~ "edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
-#~ "documentation provided on http://xfce.org/."
-#~ msgstr ""
-#~ "Чтобы убедится, что Xfce не будет управлять вашим рабочим столом при "
-#~ "следующем запуске, убедитесь, что вы сохранили сеанс при выходе.  Если вы "
-#~ "не используете диспетчер сеансов Xfce (xfce4-session), вам нужно вручную "
-#~ "изменить файл ~/.config/xfce4/xinitrc.  Более подробная документация "
-#~ "доступна на сайте http://xfce.org/."
+#~ msgid "To ensure that this setting takes effect the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
+#~ msgstr "Чтобы убедится, что Xfce не будет управлять вашим рабочим столом при следующем запуске, убедитесь, что вы сохранили сеанс при выходе.  Если вы не используете диспетчер сеансов Xfce (xfce4-session), вам нужно вручную изменить файл ~/.config/xfce4/xinitrc.  Более подробная документация доступна на сайте http://xfce.org/."
 
-#~ msgid ""
-#~ "To ensure that Xfce does not manage your desktop the next time you start "
-#~ "Xfce, please be sure to save your session when logging out.  If you are "
-#~ "not using the Xfce Session Manager (xfce4-session), you will need to "
-#~ "manually edit your ~/.config/xfce4/xinitrc file.  Details are available "
-#~ "in the documentation provided on http://xfce.org/."
-#~ msgstr ""
-#~ "Чтобы убедится, что Xfce не будет управлять вашим рабочим столом при "
-#~ "следующем запуске, убедитесь, что вы сохранили сеанс при выходе.  Если вы "
-#~ "не используете диспетчер сеансов Xfce (xfce4-session), вам нужно вручную "
-#~ "изменить файл ~/.config/xfce4/xinitrc.  Более подробная документация "
-#~ "доступна на сайте http://xfce.org/."
+#~ msgid "To ensure that Xfce does not manage your desktop the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
+#~ msgstr "Чтобы убедится, что Xfce не будет управлять вашим рабочим столом при следующем запуске, убедитесь, что вы сохранили сеанс при выходе.  Если вы не используете диспетчер сеансов Xfce (xfce4-session), вам нужно вручную изменить файл ~/.config/xfce4/xinitrc.  Более подробная документация доступна на сайте http://xfce.org/."
 
 #~ msgid "_Do not show this again"
 #~ msgstr "Больше _не показывать"
