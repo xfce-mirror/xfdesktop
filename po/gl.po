@@ -1,24 +1,24 @@
 # Galician translation of xfdesktop
 # Copyright (C) 2006, 2008, 2009, 2010 Leandro Regueiro
 # This file is distributed under the same license as the xfce package.
-#
+# 
 # Leandro Regueiro <leandro.regueiro@gmail.com>, 2006, 2008, 2009, 2010.
-#
+# 
 # Proxecto Trasno - Adaptación do software libre á lingua galega:  Se desexas
 # colaborar connosco, podes atopar máis información en <http://trasno.net>
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-28 16:27+0200\n"
+"POT-Creation-Date: 2010-09-09 10:06+0000\n"
 "PO-Revision-Date: 2010-01-06 12:38+0100\n"
 "Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
-"Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: gl\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
 # backdrop=fondo de escritorio
@@ -72,11 +72,8 @@ msgstr "Crear/cargar lista de fondos de escritorio"
 # backdrop=fondo de escritorio
 #: ../settings/main.c:511
 #, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
-"O ficheiro \"%s\" non é un ficheiro de lista de fondos de escritorio "
-"correcto. Desexa sobrescribilo?"
+msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr "O ficheiro \"%s\" non é un ficheiro de lista de fondos de escritorio correcto. Desexa sobrescribilo?"
 
 #: ../settings/main.c:516
 msgid "Invalid List File"
@@ -94,8 +91,7 @@ msgstr "Substituír"
 #: ../settings/main.c:775
 #, c-format
 msgid "Failed to write backdrop list to \"%s\""
-msgstr ""
-"Produciuse un erro ao escribir a lista de fondos de escritorio en \"%s\""
+msgstr "Produciuse un erro ao escribir a lista de fondos de escritorio en \"%s\""
 
 #: ../settings/main.c:802
 msgid "Add Image File(s)"
@@ -289,63 +285,60 @@ msgstr "Escritorio"
 #: ../src/xfce-desktop.c:1018
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
-msgstr ""
-"Non foi posible cargar a imaxe dende o ficheiro de lista de fondos de "
-"escritorio \"%s\""
+msgstr "Non foi posible cargar a imaxe dende o ficheiro de lista de fondos de escritorio \"%s\""
 
 #: ../src/xfce-desktop.c:1020
 msgid "Desktop Error"
 msgstr "Erro de escritorio"
 
 #: ../src/xfdesktop-app-menu-item.c:234
-#, fuzzy
 msgid "Needs terminal"
-msgstr "Terminal"
+msgstr "Precisa terminal"
 
 #: ../src/xfdesktop-app-menu-item.c:235
 msgid "Whether or not the command needs a terminal to execute"
-msgstr ""
+msgstr "Indica se un comando precisa unha terminal para executarse"
 
 #: ../src/xfdesktop-app-menu-item.c:241
 msgid "Command"
-msgstr ""
+msgstr "Comando"
 
 #: ../src/xfdesktop-app-menu-item.c:242
 msgid "The command to run when the item is clicked"
-msgstr ""
+msgstr "O comando que se executa ao premer no elemento"
 
 #: ../src/xfdesktop-app-menu-item.c:248
-#, fuzzy
 msgid "Icon name"
-msgstr "Tamaño da _icona:"
+msgstr "Nome da icona"
 
 #: ../src/xfdesktop-app-menu-item.c:249
 msgid "The name of the themed icon to display next to the item"
-msgstr ""
+msgstr "O nome da icona de tema que se mostra a carón do elemento"
 
 #: ../src/xfdesktop-app-menu-item.c:255
 msgid "Label"
-msgstr ""
+msgstr "Etiqueta"
 
 #: ../src/xfdesktop-app-menu-item.c:256
 msgid "The label displayed in the item"
-msgstr ""
+msgstr "A etiqueta do elemento"
 
 #: ../src/xfdesktop-app-menu-item.c:262
 msgid "Startup notification"
-msgstr ""
+msgstr "Notificación de inicio"
 
 #: ../src/xfdesktop-app-menu-item.c:263
 msgid "Whether or not the app supports startup notification"
-msgstr ""
+msgstr "Indica se o aplicativo admite notificación de inicio"
 
 #: ../src/xfdesktop-app-menu-item.c:269
 msgid "Use underline"
-msgstr ""
+msgstr "Usar subliñado"
 
 #: ../src/xfdesktop-app-menu-item.c:270
+#, fuzzy
 msgid "Whether or not to use an underscore in the label as a keyboard mnemonic"
-msgstr ""
+msgstr "Indica se se usa o subliñado na etiqueta para "
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon.c:141 ../src/xfdesktop-file-icon-manager.c:922
@@ -367,11 +360,8 @@ msgstr "Non se pode atopar ou executar a aplicación asociada."
 
 #: ../src/xfdesktop-file-icon-manager.c:479
 #, c-format
-msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr ""
-"Xfdesktop non foi quen de crear o cartafol \"%s\" para almacenar o elementos "
-"do escritorio:"
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr "Xfdesktop non foi quen de crear o cartafol \"%s\" para almacenar o elementos do escritorio:"
 
 #: ../src/xfdesktop-file-icon-manager.c:481
 #: ../src/xfdesktop-file-icon-manager.c:492
@@ -381,12 +371,8 @@ msgstr "Fallo ao crear o cartafol"
 
 #: ../src/xfdesktop-file-icon-manager.c:490
 #, c-format
-msgid ""
-"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
-"folder."
-msgstr ""
-"Xfdesktop non é quen de usar \"%s\" para gardar os elementos do escritorios "
-"xa que non é un cartafol."
+msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
+msgstr "Xfdesktop non é quen de usar \"%s\" para gardar os elementos do escritorios xa que non é un cartafol."
 
 #: ../src/xfdesktop-file-icon-manager.c:494
 msgid "Please delete or rename the file."
@@ -436,12 +422,8 @@ msgid "The application chooser could not be opened."
 msgstr "Non se puido abrir o selector de aplicacións."
 
 #: ../src/xfdesktop-file-icon-manager.c:986 ../src/xfdesktop-file-utils.c:368
-msgid ""
-"This feature requires a file manager service present (such as that supplied "
-"by Thunar)."
-msgstr ""
-"Esta funcionalidade require un servizo de xestor de ficheiros (como o "
-"proporcionado por Thunar)."
+msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
+msgstr "Esta funcionalidade require un servizo de xestor de ficheiros (como o proporcionado por Thunar)."
 
 #: ../src/xfdesktop-file-icon-manager.c:1182
 #, c-format
@@ -459,12 +441,8 @@ msgid "Unable to create folder named \"%s\":"
 msgstr "Non foi posible crear un cartafol chamado \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1289
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
-msgstr ""
-"Non se puido iniciar \"exo-desktop-item-edit\", o cal é imprescindible para "
-"crear e modificar os iniciadores e as ligazóns do escritorio."
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgstr "Non se puido iniciar \"exo-desktop-item-edit\", o cal é imprescindible para crear e modificar os iniciadores e as ligazóns do escritorio."
 
 #: ../src/xfdesktop-file-icon-manager.c:1324
 msgid "Create New Folder"
@@ -587,8 +565,7 @@ msgstr "Erro de execución"
 #: ../src/xfdesktop-file-properties-dialog.c:104
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
-msgstr ""
-"Non foi posible definir a aplicación predeterminada de \"%s\" como \"%s\":"
+msgstr "Non foi posible definir a aplicación predeterminada de \"%s\" como \"%s\":"
 
 #: ../src/xfdesktop-file-properties-dialog.c:107
 msgid "Properties Error"
@@ -748,12 +725,8 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "Non foi posible contactar co servizo de lixo de Xfce."
 
 #: ../src/xfdesktop-special-file-icon.c:522
-msgid ""
-"Make sure you have a file manager installed that supports the Xfce Trash "
-"service, such as Thunar."
-msgstr ""
-"Asegúrese de que ten instalado un xestor de ficheiros que soporte o servizo "
-"de lixo de Xfce, como Thunar."
+msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
+msgstr "Asegúrese de que ten instalado un xestor de ficheiros que soporte o servizo de lixo de Xfce, como Thunar."
 
 #: ../src/xfdesktop-special-file-icon.c:655
 msgid "_Empty Trash"
@@ -1040,8 +1013,7 @@ msgstr "_Expulsar volume"
 #~ "Ampliada"
 
 #~ msgid "Automatically pick a random image from a list file"
-#~ msgstr ""
-#~ "Seleccionar automaticamente unha imaxe aleatoria dun ficheiro de lista"
+#~ msgstr "Seleccionar automaticamente unha imaxe aleatoria dun ficheiro de lista"
 
 #~ msgid "B_rightness:"
 #~ msgstr "B_rillo:"
