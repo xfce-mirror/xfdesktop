@@ -1,21 +1,21 @@
 # Ukrainian translation of xfdesktop.
 # Copyright (C) 2003-2006 The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
-#
+# 
 # Maxim Dziumanenko <dziumanenko@gmail.com>, 2003-2006.
 # Dmitry Nikitin <luckas_fb@mail.ru>, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-28 16:27+0200\n"
+"POT-Creation-Date: 2010-09-26 22:09+0000\n"
 "PO-Revision-Date: 2008-11-26 19:20+0200\n"
 "Last-Translator: Dmitry Nikitin <luckas_fb@mail.ru>\n"
 "Language-Team: Ukrainian <xfce4-dev@xfce.org>\n"
-"Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: uk\n"
 "X-Generator: KBabel 1.11.4\n"
 
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
@@ -64,11 +64,8 @@ msgstr "Створити/завантажити список фонових зо
 
 #: ../settings/main.c:511
 #, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
-"Файл \"%s\" не є правильним файлом списку фонових зображень.  Бажаєте "
-"перезаписати його?"
+msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr "Файл \"%s\" не є правильним файлом списку фонових зображень.  Бажаєте перезаписати його?"
 
 #: ../settings/main.c:516
 msgid "Invalid List File"
@@ -278,21 +275,19 @@ msgstr "Робочий стіл"
 #: ../src/xfce-desktop.c:1018
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
-msgstr ""
-"Неможливо завантажити зображення із файлу списку фонових зображень \"%s\""
+msgstr "Неможливо завантажити зображення із файлу списку фонових зображень \"%s\""
 
 #: ../src/xfce-desktop.c:1020
 msgid "Desktop Error"
 msgstr "Помилка стільниці"
 
 #: ../src/xfdesktop-app-menu-item.c:234
-#, fuzzy
 msgid "Needs terminal"
-msgstr "Термінал"
+msgstr "Потрібно термінал"
 
 #: ../src/xfdesktop-app-menu-item.c:235
 msgid "Whether or not the command needs a terminal to execute"
-msgstr ""
+msgstr "Потрібно чи непотрібно термінал для запуску"
 
 #: ../src/xfdesktop-app-menu-item.c:241
 msgid "Command"
@@ -300,12 +295,11 @@ msgstr "Команда"
 
 #: ../src/xfdesktop-app-menu-item.c:242
 msgid "The command to run when the item is clicked"
-msgstr ""
+msgstr "Команда, яка буде запускатися при клацанні"
 
 #: ../src/xfdesktop-app-menu-item.c:248
-#, fuzzy
 msgid "Icon name"
-msgstr "Дизайнер значків"
+msgstr "Назва іконки"
 
 #: ../src/xfdesktop-app-menu-item.c:249
 msgid "The name of the themed icon to display next to the item"
@@ -313,16 +307,15 @@ msgstr ""
 
 #: ../src/xfdesktop-app-menu-item.c:255
 msgid "Label"
-msgstr ""
+msgstr "Мітка"
 
 #: ../src/xfdesktop-app-menu-item.c:256
 msgid "The label displayed in the item"
 msgstr ""
 
 #: ../src/xfdesktop-app-menu-item.c:262
-#, fuzzy
 msgid "Startup notification"
-msgstr "Використовувати _сповіщення про запуск"
+msgstr "Cповіщення про запуск"
 
 #: ../src/xfdesktop-app-menu-item.c:263
 msgid "Whether or not the app supports startup notification"
@@ -330,7 +323,7 @@ msgstr ""
 
 #: ../src/xfdesktop-app-menu-item.c:269
 msgid "Use underline"
-msgstr ""
+msgstr "Використати підкреслення"
 
 #: ../src/xfdesktop-app-menu-item.c:270
 msgid "Whether or not to use an underscore in the label as a keyboard mnemonic"
@@ -356,11 +349,8 @@ msgstr "Пов'язану з цим файлом програму неможли
 
 #: ../src/xfdesktop-file-icon-manager.c:479
 #, c-format
-msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr ""
-"Xfdesktop не може створити теку \"%s\" для зберігання об'єктів робочого "
-"столу:"
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr "Xfdesktop не може створити теку \"%s\" для зберігання об'єктів робочого столу:"
 
 #: ../src/xfdesktop-file-icon-manager.c:481
 #: ../src/xfdesktop-file-icon-manager.c:492
@@ -370,12 +360,8 @@ msgstr "Не вдається створити теку"
 
 #: ../src/xfdesktop-file-icon-manager.c:490
 #, c-format
-msgid ""
-"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
-"folder."
-msgstr ""
-"Xfdesktop не може використовувати \"%s\" для зберігання об'єктів, оскільки "
-"це не тека."
+msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
+msgstr "Xfdesktop не може використовувати \"%s\" для зберігання об'єктів, оскільки це не тека."
 
 #: ../src/xfdesktop-file-icon-manager.c:494
 msgid "Please delete or rename the file."
@@ -425,12 +411,8 @@ msgid "The application chooser could not be opened."
 msgstr "Пов'язану з цим файлом програму неможливо знайти чи виконати."
 
 #: ../src/xfdesktop-file-icon-manager.c:986 ../src/xfdesktop-file-utils.c:368
-msgid ""
-"This feature requires a file manager service present (such as that supplied "
-"by Thunar)."
-msgstr ""
-"Ця функція вимагає наявності файлового менеджера (наприклад, підтримується "
-"Thunar)."
+msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
+msgstr "Ця функція вимагає наявності файлового менеджера (наприклад, підтримується Thunar)."
 
 #: ../src/xfdesktop-file-icon-manager.c:1182
 #, c-format
@@ -448,12 +430,8 @@ msgid "Unable to create folder named \"%s\":"
 msgstr "Не вдається створити теку з назвою \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1289
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
-msgstr ""
-"Неможливо запустити \"exo-desktop-item-edit\", яка потрібна для редагування "
-"значків запуску та посилань  на робочому столі."
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgstr "Неможливо запустити \"exo-desktop-item-edit\", яка потрібна для редагування значків запуску та посилань  на робочому столі."
 
 #: ../src/xfdesktop-file-icon-manager.c:1324
 msgid "Create New Folder"
@@ -736,12 +714,8 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "Не вдається підключитися до служби смітника Xfce."
 
 #: ../src/xfdesktop-special-file-icon.c:522
-msgid ""
-"Make sure you have a file manager installed that supports the Xfce Trash "
-"service, such as Thunar."
-msgstr ""
-"Перевірте, що у вас встановлено файловий менеджер, який підтримує роботу зі "
-"смітником Xfce, наприклад Thunar."
+msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
+msgstr "Перевірте, що у вас встановлено файловий менеджер, який підтримує роботу зі смітником Xfce, наприклад Thunar."
 
 #: ../src/xfdesktop-special-file-icon.c:655
 msgid "_Empty Trash"
@@ -1055,8 +1029,7 @@ msgstr "Вит_ягнути том"
 #~ msgstr "Збільшувати або зменшувати яскравість останнього зображення"
 
 #~ msgid "Increase or decrease the color saturation of the final image"
-#~ msgstr ""
-#~ "Збільшувати або зменшувати насиченість кольорів останнього зображення"
+#~ msgstr "Збільшувати або зменшувати насиченість кольорів останнього зображення"
 
 #~ msgid "Label trans_parency:"
 #~ msgstr "Про_зора мітка:"
@@ -1121,8 +1094,7 @@ msgstr "Вит_ягнути том"
 #~ msgstr "Відобр_ажати значки програм у меню"
 
 #~ msgid "Show _window list menu on desktop middle click"
-#~ msgstr ""
-#~ "Показувати меню _списку вікон на стільниці при клацанні середньою кнопкою"
+#~ msgstr "Показувати меню _списку вікон на стільниці при клацанні середньою кнопкою"
 
 #~ msgid "Show applications menu on _desktop right click"
 #~ msgstr "Показувати _меню програм на стільниці при клацанні правою кнопкою"
@@ -1147,25 +1119,17 @@ msgstr "Вит_ягнути том"
 #~ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 #~ msgstr "Призначити \"правий\" чи \"нижній\" колір градієнту"
 
-#~ msgid ""
-#~ "Specifies the solid color, or the \"left\" or \"top\" color of the "
-#~ "gradient"
-#~ msgstr ""
-#~ "Призначити суцільний колір, або \"лівий\" чи \"верхній\" колір градієнту"
+#~ msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+#~ msgstr "Призначити суцільний колір, або \"лівий\" чи \"верхній\" колір градієнту"
 
 #~ msgid "Specify how the image will be resized to fit the screen"
 #~ msgstr "Призначити як зображення буде змінювати розмір до розмірів екрану"
 
 #~ msgid "Specify the style of the color drawn behind the backdrop image"
-#~ msgstr ""
-#~ "Призначити стиль кольору, що буде відображатись під фоновим зображенням"
+#~ msgstr "Призначити стиль кольору, що буде відображатись під фоновим зображенням"
 
-#~ msgid ""
-#~ "Specify the transparency level for the rounded label drawn behind the "
-#~ "icon text"
-#~ msgstr ""
-#~ "Призначити рівень прозорості круглих міток, що відображається під текстом "
-#~ "значка"
+#~ msgid "Specify the transparency level for the rounded label drawn behind the icon text"
+#~ msgstr "Призначити рівень прозорості круглих міток, що відображається під текстом значка"
 
 #~ msgid "St_yle:"
 #~ msgstr "Ст_иль:"
@@ -1299,14 +1263,8 @@ msgstr "Вит_ягнути том"
 #~ msgid "xfce4-menueditor is deprecated"
 #~ msgstr "Редактор меню xfce4 не рекомендується"
 
-#~ msgid ""
-#~ "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
-#~ "edit the new menu file format.  You may continue and edit an old-style "
-#~ "menu file, or quit."
-#~ msgstr ""
-#~ "Система меню Xfce була замінена, і редактор меню xfce4 більше не дієвий   "
-#~ "для редагування нового формату меню. Ви можете продовжити редагування "
-#~ "файлу меню, або вийти."
+#~ msgid "Xfce's menu system has been replaced, and xfce4-menueditor is not able to edit the new menu file format.  You may continue and edit an old-style menu file, or quit."
+#~ msgstr "Система меню Xfce була замінена, і редактор меню xfce4 більше не дієвий   для редагування нового формату меню. Ви можете продовжити редагування файлу меню, або вийти."
 
 #~ msgid "Continue"
 #~ msgstr "Продовжити"
