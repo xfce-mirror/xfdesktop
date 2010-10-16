@@ -6,16 +6,16 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop 4.4.0\n"
+"Project-Id-Version: xfdesktop 4.7.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-28 16:27+0200\n"
-"PO-Revision-Date: 2010-10-20 23:46+0200\n"
+"POT-Creation-Date: 2010-10-16 10:09+0000\n"
+"PO-Revision-Date: 2010-10-16 16:22+0300\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
-"Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fi\n"
 
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
 #, c-format
@@ -282,13 +282,12 @@ msgid "Desktop Error"
 msgstr "Työpöytävirhe"
 
 #: ../src/xfdesktop-app-menu-item.c:234
-#, fuzzy
 msgid "Needs terminal"
-msgstr "Pääte"
+msgstr "Tarvitsee päätteen"
 
 #: ../src/xfdesktop-app-menu-item.c:235
 msgid "Whether or not the command needs a terminal to execute"
-msgstr ""
+msgstr "Määrittää, suoritetaanko komento päätteessä"
 
 #: ../src/xfdesktop-app-menu-item.c:241
 msgid "Command"
@@ -296,41 +295,40 @@ msgstr "Komento"
 
 #: ../src/xfdesktop-app-menu-item.c:242
 msgid "The command to run when the item is clicked"
-msgstr ""
+msgstr "Napsautettaessa suoritettava komento"
 
 #: ../src/xfdesktop-app-menu-item.c:248
-#, fuzzy
 msgid "Icon name"
-msgstr "Kuvakesuunnittelija"
+msgstr "Kuvakkeen nimi"
 
 #: ../src/xfdesktop-app-menu-item.c:249
 msgid "The name of the themed icon to display next to the item"
-msgstr ""
+msgstr "Kohteen vieressä näytettävän teemakuvakkeen nimi"
 
 #: ../src/xfdesktop-app-menu-item.c:255
 msgid "Label"
-msgstr ""
+msgstr "Teksti"
 
 #: ../src/xfdesktop-app-menu-item.c:256
 msgid "The label displayed in the item"
-msgstr ""
+msgstr "Kohteen näkyvä teksti"
 
 #: ../src/xfdesktop-app-menu-item.c:262
-#, fuzzy
 msgid "Startup notification"
-msgstr "Käytä käynnistyksen _huomautusta"
+msgstr "Käynnistysilmaisin"
 
 #: ../src/xfdesktop-app-menu-item.c:263
 msgid "Whether or not the app supports startup notification"
-msgstr ""
+msgstr "Määrittää, tukeeko sovellus käynnistysilmaisinta"
 
 #: ../src/xfdesktop-app-menu-item.c:269
 msgid "Use underline"
-msgstr ""
+msgstr "Alaviiva käytössä"
 
 #: ../src/xfdesktop-app-menu-item.c:270
 msgid "Whether or not to use an underscore in the label as a keyboard mnemonic"
 msgstr ""
+"Kohteen tekstissä olevaa alaviivaa seuraava merkki toimii pikanäppäimenä"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon.c:141 ../src/xfdesktop-file-icon-manager.c:922
