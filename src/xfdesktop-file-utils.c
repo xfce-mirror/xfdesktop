@@ -155,22 +155,48 @@ xfdesktop_file_utils_get_file_kind(const ThunarVfsInfo *info,
 
 
 GList *
-xfdesktop_file_utils_file_icon_list_to_path_list(GList *icon_list)
+xfdesktop_file_utils_file_icon_list_to_file_list(GList *icon_list)
 {
-    GList *path_list = NULL, *l;
+    GList *file_list = NULL, *l;
     XfdesktopFileIcon *icon;
-    const ThunarVfsInfo *info;
+    GFile *file;
     
     for(l = icon_list; l; l = l->next) {
         icon = XFDESKTOP_FILE_ICON(l->data);
-        info = xfdesktop_file_icon_peek_info(icon);
-        if(info) {
-            path_list = g_list_prepend(path_list,
-                                       thunar_vfs_path_ref(info->path));
-        }
+        file = xfdesktop_file_icon_peek_file(icon);
+        file_list = g_list_prepend(file_list, g_object_ref(file));
     }
     
-    return g_list_reverse(path_list);
+    return g_list_reverse(file_list);
+}
+
+gchar *
+xfdesktop_file_utils_file_list_to_string(GList *list)
+{
+  GString *string;
+  GList *lp;
+  gchar *uri;
+
+  /* allocate initial string */
+  string = g_string_new(NULL);
+
+  for (lp = list; lp != NULL; lp = lp->next)
+    {
+      uri = g_file_get_uri(lp->data);
+      string = g_string_append(string, uri);
+      g_free(uri);
+
+      string = g_string_append(string, "\r\n");
+    }
+
+  return g_string_free(string, FALSE);
+}
+
+void
+xfdesktop_file_utils_file_list_free(GList *file_list)
+{
+  g_list_foreach(file_list, (GFunc) g_object_unref, NULL);
+  g_list_free(file_list);
 }
 
 static GdkPixbuf *xfdesktop_fallback_icon = NULL;

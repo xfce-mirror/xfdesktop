@@ -1,5 +1,6 @@
 /*-
  * Copyright (c) 2005-2006 Benedikt Meurer <benny@xfce.org>
+ * Copyright (c) 2010      Jannis Pohlmann <jannis@xfce.org>
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
@@ -30,11 +31,9 @@
 #include <string.h>
 #endif
 
-#include <gtk/gtk.h>
+#include <gio/gio.h>
 
-#ifdef HAVE_THUNAR_VFS
-#include <thunar-vfs/thunar-vfs.h>
-#endif
+#include <gtk/gtk.h>
 
 #include "xfdesktop-clipboard-manager.h"
 #include "xfdesktop-file-icon.h"
@@ -66,36 +65,36 @@ enum
 
 
 
-static void xfdesktop_clipboard_manager_class_init         (XfdesktopClipboardManagerClass *klass);
-static void xfdesktop_clipboard_manager_init               (XfdesktopClipboardManager      *manager);
-static void xfdesktop_clipboard_manager_finalize           (GObject                        *object);
-static void xfdesktop_clipboard_manager_get_property       (GObject *object,
-                                                            guint prop_id,
-                                                            GValue *value,
-                                                            GParamSpec *pspec);
+static void xfdesktop_clipboard_manager_class_init        (XfdesktopClipboardManagerClass *klass);
+static void xfdesktop_clipboard_manager_init              (XfdesktopClipboardManager      *manager);
+static void xfdesktop_clipboard_manager_finalize          (GObject                        *object);
+static void xfdesktop_clipboard_manager_get_property      (GObject                        *object,
+                                                           guint                           prop_id,
+                                                           GValue                         *value,
+                                                           GParamSpec                     *pspec);
 
-static void xfdesktop_clipboard_manager_file_destroyed     (XfdesktopClipboardManager      *manager,
-                                                            XfdesktopFileIcon              *file);
-static void xfdesktop_clipboard_manager_owner_changed      (GtkClipboard                   *clipboard,
-                                                            GdkEventOwnerChange            *event,
-                                                            XfdesktopClipboardManager      *manager);
+static void xfdesktop_clipboard_manager_file_destroyed    (XfdesktopClipboardManager      *manager,
+                                                           XfdesktopFileIcon              *file);
+static void xfdesktop_clipboard_manager_owner_changed     (GtkClipboard                   *clipboard,
+                                                           GdkEventOwnerChange            *event,
+                                                           XfdesktopClipboardManager      *manager);
 #if 0
-static void xfdesktop_clipboard_manager_contents_received  (GtkClipboard *clipboard,
-                                                            GtkSelectionData *selection_data,
-                                                            gpointer user_data);
+static void xfdesktop_clipboard_manager_contents_received (GtkClipboard                   *clipboard,
+                                                           GtkSelectionData               *selection_data,
+                                                           gpointer                        user_data);
 #endif
-static void xfdesktop_clipboard_manager_targets_received   (GtkClipboard                   *clipboard,
-                                                            GtkSelectionData               *selection_data,
-                                                            gpointer                        user_data);
-static void xfdesktop_clipboard_manager_get_callback       (GtkClipboard                   *clipboard,
-                                                            GtkSelectionData               *selection_data,
-                                                            guint                           info,
-                                                            gpointer                        user_data);
-static void xfdesktop_clipboard_manager_clear_callback     (GtkClipboard                   *clipboard,
-                                                            gpointer                        user_data);
-static void xfdesktop_clipboard_manager_transfer_files     (XfdesktopClipboardManager      *manager,
-                                                            gboolean                        copy,
-                                                            GList                          *files);
+static void xfdesktop_clipboard_manager_targets_received  (GtkClipboard                   *clipboard,
+                                                           GtkSelectionData               *selection_data,
+                                                           gpointer                        user_data);
+static void xfdesktop_clipboard_manager_get_callback      (GtkClipboard                   *clipboard,
+                                                           GtkSelectionData               *selection_data,
+                                                           guint                           info,
+                                                           gpointer                        user_data);
+static void xfdesktop_clipboard_manager_clear_callback    (GtkClipboard                   *clipboard,
+                                                           gpointer                        user_data);
+static void xfdesktop_clipboard_manager_transfer_files    (XfdesktopClipboardManager      *manager,
+                                                           gboolean                        copy,
+                                                           GList                          *files);
 
 
 
@@ -121,9 +120,9 @@ struct _XfdesktopClipboardManager
 typedef struct
 {
   XfdesktopClipboardManager *manager;
-  ThunarVfsPath          *target_path;
-  GtkWidget              *widget;
-  GClosure               *new_files_closure;
+  GFile                     *target_file;
+  GtkWidget                 *widget;
+  GClosure                  *new_files_closure;
   XfdesktopFileIconManager *fmanager;
 } XfdesktopClipboardPasteRequest;
 
@@ -437,7 +436,7 @@ xfdesktop_clipboard_manager_get_callback (GtkClipboard     *clipboard,
                                           gpointer          user_data)
 {
   XfdesktopClipboardManager *manager = XFDESKTOP_CLIPBOARD_MANAGER (user_data);
-  GList                  *path_list = NULL;
+  GList                  *file_list = NULL;
   gchar                  *string_list;
   gchar                  *data;
 
@@ -445,11 +444,11 @@ xfdesktop_clipboard_manager_get_callback (GtkClipboard     *clipboard,
   g_return_if_fail (XFDESKTOP_IS_CLIPBOARD_MANAGER (manager));
   g_return_if_fail (manager->clipboard == clipboard);
 
-  /* determine the path list from the file list */
-  path_list = xfdesktop_file_utils_file_icon_list_to_path_list(manager->files);
+  /* determine the file list from the icon list */
+  file_list = xfdesktop_file_utils_file_icon_list_to_file_list (manager->files);
 
-  /* determine the string representation of the path list */
-  string_list = thunar_vfs_path_list_to_string (path_list);
+  /* determine the string representation of the file list */
+  string_list = xfdesktop_file_utils_file_list_to_string (file_list);
 
   switch (target_info)
     {
@@ -468,7 +467,7 @@ xfdesktop_clipboard_manager_get_callback (GtkClipboard     *clipboard,
     }
 
   /* cleanup */
-  thunar_vfs_path_list_free (path_list);
+  xfdesktop_file_utils_file_list_free (file_list);
   g_free (string_list);
 }
 

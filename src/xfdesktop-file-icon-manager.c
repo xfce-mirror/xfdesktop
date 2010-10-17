@@ -3484,7 +3484,7 @@ xfdesktop_file_icon_manager_drag_data_get(XfdesktopIconViewManager *manager,
                                           guint info,
                                           guint time_)
 {
-    GList *path_list;
+    GList *file_list;
     gchar *str;
     
     TRACE("entering");
@@ -3492,12 +3492,13 @@ xfdesktop_file_icon_manager_drag_data_get(XfdesktopIconViewManager *manager,
     g_return_if_fail(drag_icons);
     g_return_if_fail(info == TARGET_TEXT_URI_LIST);
     
-    path_list = xfdesktop_file_utils_file_icon_list_to_path_list(drag_icons);
-    str = thunar_vfs_path_list_to_string(path_list);
+    file_list = xfdesktop_file_utils_file_icon_list_to_file_list(drag_icons);
+    str = xfdesktop_file_utils_file_list_to_string(file_list);
+
     gtk_selection_data_set(data, data->target, 8, (guchar *)str, strlen(str));
     
     g_free(str);
-    thunar_vfs_path_list_free(path_list);
+    xfdesktop_file_utils_file_list_free(file_list);
 }
 
 

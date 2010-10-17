@@ -1,5 +1,6 @@
 /*-
  * Copyright (c) 2005 Benedikt Meurer <benny@xfce.org>
+ * Copyright (c) 2010 Jannis Pohlmann <jannis@xfce.org>
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
@@ -22,9 +23,7 @@
 #ifndef __XFDESKTOP_CLIPBOARD_MANAGER_H__
 #define __XFDESKTOP_CLIPBOARD_MANAGER_H__
 
-#ifdef HAVE_THUNAR_VFS
-#include <thunar-vfs/thunar-vfs.h>
-#endif
+#include <gio/gio.h>
 
 G_BEGIN_DECLS;
 
@@ -41,23 +40,23 @@ typedef struct _XfdesktopClipboardManager      XfdesktopClipboardManager;
 #define XFDESKTOP_IS_CLIPBAORD_MANAGER_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), XFDESKTOP_TYPE_CLIPBOARD_MANAGER))
 #define XFDESKTOP_CLIPBOARD_MANAGER_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), XFDESKTOP_TYPE_CLIPBAORD_MANAGER, XfdesktopClipboardManagerClass))
 
-GType                   xfdesktop_clipboard_manager_get_type        (void) G_GNUC_CONST;
+GType                      xfdesktop_clipboard_manager_get_type        (void) G_GNUC_CONST;
 
-XfdesktopClipboardManager *xfdesktop_clipboard_manager_get_for_display (GdkDisplay             *display);
+XfdesktopClipboardManager *xfdesktop_clipboard_manager_get_for_display (GdkDisplay                      *display);
 
-gboolean                xfdesktop_clipboard_manager_get_can_paste   (XfdesktopClipboardManager *manager);
+gboolean                   xfdesktop_clipboard_manager_get_can_paste   (XfdesktopClipboardManager       *manager);
 
-gboolean                xfdesktop_clipboard_manager_has_cutted_file (XfdesktopClipboardManager *manager,
-                                                                     const struct _XfdesktopFileIcon       *file);
+gboolean                   xfdesktop_clipboard_manager_has_cutted_file (XfdesktopClipboardManager       *manager,
+                                                                        const struct _XfdesktopFileIcon *file);
 
-void                    xfdesktop_clipboard_manager_copy_files      (XfdesktopClipboardManager *manager,
-                                                                     GList                  *files);
-void                    xfdesktop_clipboard_manager_cut_files       (XfdesktopClipboardManager *manager,
-                                                                     GList                  *files);
-void                    xfdesktop_clipboard_manager_paste_files     (XfdesktopClipboardManager *manager,
-                                                                     ThunarVfsPath *target_path,
-                                                                     GtkWidget *widget,
-                                                                     GClosure *new_files_closure);
+void                       xfdesktop_clipboard_manager_copy_files      (XfdesktopClipboardManager       *manager,
+                                                                        GList                           *files);
+void                       xfdesktop_clipboard_manager_cut_files       (XfdesktopClipboardManager       *manager,
+                                                                        GList                           *files);
+void                       xfdesktop_clipboard_manager_paste_files     (XfdesktopClipboardManager       *manager,
+                                                                        GFile                           *target_file,
+                                                                        GtkWidget                       *widget,
+                                                                        GClosure                        *new_files_closure);
 
 G_END_DECLS;
 
