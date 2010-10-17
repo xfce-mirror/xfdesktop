@@ -48,6 +48,26 @@
 #define WINDOWLIST_MESSAGE "windowlist"
 #define QUIT_MESSAGE       "quit"
 
+/**
+ * File information namespaces queried for #GFileInfo objects.
+ */
+#define XFDESKTOP_FILE_INFO_NAMESPACE \
+  "access::*," \
+  "id::*," \
+  "mountable::*," \
+  "preview::*," \
+  "standard::*," \
+  "time::*," \
+  "thumbnail::*," \
+  "trash::*," \
+  "unix::*"
+
+/**
+ * Filesystem information namespaces queried for #GFileInfo * objects.
+ */
+#define XFDESKTOP_FILESYSTEM_INFO_NAMESPACE \
+  "filesystem::*"
+
 G_BEGIN_DECLS
 
 gchar **xfdesktop_backdrop_list_load(const gchar *filename,

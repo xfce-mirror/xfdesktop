@@ -3,6 +3,7 @@
  *
  *  Copyright(c) 2006 Brian Tarricone, <bjt23@cornell.edu>
  *  Copyright(c) 2006 Benedikt Meurer, <benny@xfce.org>
+ *  Copyright(c) 2010 Jannis Pohlmann, <jannis@xfce.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -43,6 +44,8 @@
 #define PATH_MAX 4096
 #endif
 
+#include <gio/gio.h>
+
 #include <libxfce4ui/libxfce4ui.h>
 
 #ifdef HAVE_THUNARX
@@ -61,6 +64,9 @@ struct _XfdesktopRegularFileIconPrivate
     gchar *tooltip;
     guint pix_opacity;
     gint cur_pix_size;
+    GFileInfo *ginfo;
+    GFileInfo *filesystem_info;
+    GFile *file;
     ThunarVfsInfo *info;
     GdkScreen *gscreen;
 };
@@ -158,6 +164,14 @@ xfdesktop_regular_file_icon_finalize(GObject *obj)
     
     if(icon->priv->info)
         thunar_vfs_info_unref(icon->priv->info);
+
+    if(icon->priv->ginfo)
+        g_object_unref(icon->priv->ginfo);
+
+    if(icon->priv->filesystem_info)
+        g_object_unref(icon->priv->filesystem_info);
+
+    g_object_unref(icon->priv->file);
     
     if(icon->priv->tooltip)
         g_free(icon->priv->tooltip);
@@ -658,10 +672,29 @@ XfdesktopRegularFileIcon *
 xfdesktop_regular_file_icon_new(ThunarVfsInfo *info,
                                 GdkScreen *screen)
 {
+    gchar *path;
+
     XfdesktopRegularFileIcon *regular_file_icon = g_object_new(XFDESKTOP_TYPE_REGULAR_FILE_ICON, NULL);
+
     regular_file_icon->priv->info = thunar_vfs_info_ref(info);
     regular_file_icon->priv->gscreen = screen;
     
+    /* convert the ThunarVfsPath into a GFile */
+    path = thunar_vfs_path_dup_string(info->path);
+    regular_file_icon->priv->file = g_file_new_for_path(path);
+    g_free(path);
+
+    /* query file information from GIO */
+    regular_file_icon->priv->ginfo = g_file_query_info(regular_file_icon->priv->file,
+                                                       XFDESKTOP_FILE_INFO_NAMESPACE,
+                                                       G_FILE_QUERY_INFO_NONE,
+                                                       NULL, NULL);
+
+    /* query file system information from GIO */
+    regular_file_icon->priv->filesystem_info = g_file_query_filesystem_info(regular_file_icon->priv->file,
+                                                                            XFDESKTOP_FILESYSTEM_INFO_NAMESPACE,
+                                                                            NULL, NULL);
+
     g_signal_connect_swapped(G_OBJECT(gtk_icon_theme_get_for_screen(screen)),
                              "changed",
                              G_CALLBACK(xfdesktop_regular_file_icon_invalidate_pixbuf),
