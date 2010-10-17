@@ -40,9 +40,9 @@
 #include <thunarx/thunarx.h>
 #endif
 
-#include "xfdesktop-dbus-bindings-filemanager.h"
-#include "xfdesktop-file-icon.h"
 #include "xfdesktop-common.h"
+#include "xfdesktop-file-icon.h"
+#include "xfdesktop-file-manager-proxy.h"
 #include "xfdesktop-file-utils.h"
 
 ThunarVfsInteractiveJobResponse
@@ -416,20 +416,22 @@ xfdesktop_file_utils_open_folder(const ThunarVfsInfo *info,
         XfdesktopDisplayFolderData *dfdata = g_new(XfdesktopDisplayFolderData, 1);
         gchar *uri = thunar_vfs_path_dup_uri(info->path);
         gchar *display_name = gdk_screen_make_display_name(screen);
+        gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
         
         dfdata->info = info;
         dfdata->screen = screen;
         dfdata->parent = parent;
-        if(!org_xfce_FileManager_display_folder_async(fileman_proxy,
-                                                      uri, display_name,
-                                                      xfdesktop_file_utils_display_folder_cb,
-                                                      dfdata))
+        if(!xfdesktop_file_manager_proxy_display_folder_async(fileman_proxy,
+                                                              uri, display_name, startup_id,
+                                                              xfdesktop_file_utils_display_folder_cb,
+                                                              dfdata))
         {
             xfdesktop_file_utils_launch_fallback(info, screen, parent);
             g_free(dfdata);
         } else
             xfdesktop_file_utils_set_window_cursor(parent, GDK_WATCH);
         
+        g_free(startup_id);
         g_free(uri);
         g_free(display_name);
     } else

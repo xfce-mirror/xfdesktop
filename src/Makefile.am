@@ -41,8 +41,6 @@ desktop_menu_sources = \
 desktop_file_icon_sources = \
 	xfdesktop-clipboard-manager.c \
 	xfdesktop-clipboard-manager.h \
-	xfdesktop-dbus-bindings-filemanager.h \
-	xfdesktop-dbus-bindings-trash.h \
 	xfdesktop-file-icon.c \
 	xfdesktop-file-icon.h \
 	xfdesktop-file-icon-manager.c \
@@ -187,14 +185,33 @@ xfce-desktop-enum-types.c: $(enum_headers) Makefile
 if ENABLE_FILE_ICONS
 
 xfdesktop_built_sources += \
-	xfdesktop-dbus-bindings-filemanager.h \
-	xfdesktop-dbus-bindings-trash.h
+	xfdesktop-file-manager-proxy.h \
+	xfdesktop-thunar-proxy.h \
+	xfdesktop-trash-proxy.h
 
-xfdesktop-dbus-bindings-filemanager.h: $(srcdir)/xfdesktop-dbus-bindings-filemanager.xml Makefile
-	$(AM_V_GEN) dbus-binding-tool --mode=glib-client --prefix=org_xfce_FileManager $(srcdir)/xfdesktop-dbus-bindings-filemanager.xml > xfdesktop-dbus-bindings-filemanager.h
+xfdesktop-file-manager-proxy.h: $(srcdir)/xfdesktop-file-manager-dbus.xml Makefile
+	$(AM_V_GEN) ( \
+		dbus-binding-tool --mode=glib-client \
+			$(srcdir)/xfdesktop-file-manager-dbus.xml > xfdesktop-file-manager-proxy.h \
+		&& sed -i -e 's/org_xfce_FileManager/xfdesktop_file_manager_proxy/g' \
+			xfdesktop-file-manager-proxy.h \
+	)
+			
+xfdesktop-thunar-proxy.h: $(srcdir)/xfdesktop-thunar-dbus.xml Makefile
+	$(AM_V_GEN) ( \
+		dbus-binding-tool --mode=glib-client \
+			$(srcdir)/xfdesktop-thunar-dbus.xml > xfdesktop-thunar-proxy.h \
+		&& sed -i -e 's/org_xfce_Thunar/xfdesktop_thunar_proxy/g' \
+			xfdesktop-thunar-proxy.h \
+	)
 
-xfdesktop-dbus-bindings-trash.h: $(srcdir)/xfdesktop-dbus-bindings-trash.xml Makefile
-	$(AM_V_GEN) dbus-binding-tool --mode=glib-client --prefix=org_xfce_Trash $(srcdir)/xfdesktop-dbus-bindings-trash.xml > xfdesktop-dbus-bindings-trash.h
+xfdesktop-trash-proxy.h: $(srcdir)/xfdesktop-trash-dbus.xml Makefile
+	$(AM_V_GEN) ( \
+		dbus-binding-tool --mode=glib-client \
+			$(srcdir)/xfdesktop-trash-dbus.xml > xfdesktop-trash-proxy.h \
+		&& sed -i -e 's/org_xfce_Trash/xfdesktop_trash_proxy/g' \
+			xfdesktop-trash-proxy.h \
+	)
 
 endif
 

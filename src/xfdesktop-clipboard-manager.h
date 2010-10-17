@@ -22,6 +22,10 @@
 #ifndef __XFDESKTOP_CLIPBOARD_MANAGER_H__
 #define __XFDESKTOP_CLIPBOARD_MANAGER_H__
 
+#ifdef HAVE_THUNAR_VFS
+#include <thunar-vfs/thunar-vfs.h>
+#endif
+
 G_BEGIN_DECLS;
 
 /* fwd decl */

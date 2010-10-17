@@ -32,10 +32,14 @@
 
 #include <gtk/gtk.h>
 
+#ifdef HAVE_THUNAR_VFS
+#include <thunar-vfs/thunar-vfs.h>
+#endif
+
+#include "xfdesktop-clipboard-manager.h"
 #include "xfdesktop-file-icon.h"
 #include "xfdesktop-file-icon-manager.h"
 #include "xfdesktop-file-utils.h"
-#include "xfdesktop-clipboard-manager.h"
 
 #ifndef I_
 #define I_(str)  g_intern_static_string(str)

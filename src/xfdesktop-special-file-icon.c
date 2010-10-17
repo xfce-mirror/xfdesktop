@@ -48,8 +48,8 @@
 #endif
 
 #include "xfdesktop-file-utils.h"
-#include "xfdesktop-dbus-bindings-trash.h"
 #include "xfdesktop-special-file-icon.h"
+#include "xfdesktop-trash-proxy.h"
 
 struct _XfdesktopSpecialFileIconPrivate
 {
@@ -572,11 +572,12 @@ xfdesktop_special_file_icon_trash_open(GtkWidget *w,
     
     if(G_LIKELY(file_icon->priv->dbus_proxy)) {
         gchar *display_name = gdk_screen_make_display_name(file_icon->priv->gscreen);
+        gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
         
-        if(!org_xfce_Trash_display_trash_async(file_icon->priv->dbus_proxy,
-                                               display_name,
-                                               xfdesktop_special_file_icon_trash_open_cb,
-                                               file_icon))
+        if(!xfdesktop_trash_proxy_display_trash_async(file_icon->priv->dbus_proxy,
+                                                      display_name, startup_id,
+                                                      xfdesktop_special_file_icon_trash_open_cb,
+                                                      file_icon))
         {
             xfdesktop_special_file_icon_trash_handle_error(file_icon,
                                                            "DisplayTrash",
@@ -592,6 +593,7 @@ xfdesktop_special_file_icon_trash_open(GtkWidget *w,
                                                    GDK_WATCH);
         }
             
+        g_free(startup_id);
         g_free(display_name);
     }
 }
@@ -604,17 +606,20 @@ xfdesktop_special_file_icon_trash_empty(GtkWidget *w,
     
     if(G_LIKELY(file_icon->priv->dbus_proxy)) {
         gchar *display_name = gdk_screen_make_display_name(file_icon->priv->gscreen);
+        gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
         
-        if(!org_xfce_Trash_empty_trash_async(file_icon->priv->dbus_proxy,
-                                             display_name,
-                                             xfdesktop_special_file_icon_trash_empty_cb,
-                                             file_icon))
+        if(!xfdesktop_trash_proxy_empty_trash_async(file_icon->priv->dbus_proxy,
+                                                    display_name, startup_id,
+                                                    xfdesktop_special_file_icon_trash_empty_cb,
+                                                    file_icon))
         {
             xfdesktop_special_file_icon_trash_handle_error(file_icon,
                                                            "EmptyTrash",
                                                             NULL);
         } else
             g_object_ref(G_OBJECT(file_icon));
+
+        g_free(startup_id);
         g_free(display_name);
     }
 }
@@ -764,9 +769,9 @@ xfdesktop_special_file_icon_new(XfdesktopSpecialFileIconType type,
                                         G_CALLBACK(xfdesktop_special_file_icon_trash_changed_cb),
                                         special_file_icon, NULL);
             
-            call = org_xfce_Trash_query_trash_async(special_file_icon->priv->dbus_proxy,
-                                                    xfdesktop_special_file_icon_query_trash_cb,
-                                                    special_file_icon);
+            call = xfdesktop_trash_proxy_query_trash_async(special_file_icon->priv->dbus_proxy,
+                                                           xfdesktop_special_file_icon_query_trash_cb,
+                                                           special_file_icon);
             if(!call) {
                 xfdesktop_special_file_icon_trash_handle_error(special_file_icon,
                                                                "QueryTrash",

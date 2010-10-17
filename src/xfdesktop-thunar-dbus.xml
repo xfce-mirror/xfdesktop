@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+   $Id$
+   
+   Copyright (c) 2006 Benedikt Meurer <benny@xfce.org>
+  
+   This program is free software; you can redistribute it and/or modify it
+   under the terms of the GNU General Public License as published by the Free
+   Software Foundation; either version 2 of the License, or (at your option)
+   any later version.
+  
+   This program is distributed in the hope that it will be useful, but WITHOUT
+   ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+   FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+   more details.
+  
+   You should have received a copy of the GNU General Public License along with
+   this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+   Place, Suite 330, Boston, MA  02111-1307  USA
+-->
+
+<node name="/org/xfce/FileManager">
+  <!--
+    org.xfce.Thunar
+
+    The Thunar specific interface, which provides Thunar specific
+    methods, and which should not be implemented by any other
+    file manager.
+
+    This interface is also subject to change. So, unless you know
+    what you are doing, and you want to limit yourself to Thunar,
+    do not use this interface, but use org.xfce.FileManager instead.
+  -->
+  <interface name="org.xfce.Thunar">
+    <annotation name="org.freedesktop.DBus.GLib.CSymbol" value="thunar_dbus_service" />
+
+    <!--
+      BulkRename (working_directory : STRING, filenames : ARRAY OF STRING, standalone : BOOLEAN, display : STRING, startup_id : STRING) : VOID
+
+      working_directory : the default directory for the "Add Files" dialog of the
+                          bulk rename window. May also be the empty string, in
+                          which case the current working directory of the file
+                          manager process will be used. This is also used to
+                          translated relative file paths in the filenames below
+                          to absolute paths.
+      filenames         : the list of file:-URIs or absolute paths that should
+                          appear in the bulk renamer list by default. May also
+                          be an empty list. any file that is neither an absolute
+                          path nor a file:-URI will be translated into an
+                          absolute path relative to the working_directory.
+      standalone        : TRUE if the bulk rename dialog should appear like a
+                          standalone application. This is usually what you want.
+                          It should only be FALSE when invoked from another file
+                          management tool and its obvious to the user that a
+                          bunch of selected files will be renamed.
+      display           : the screen on which to launch the filenames or ""
+                          to use the default screen of the file manager.
+      startup_id        : the DESKTOP_STARTUP_ID environment variable for properly
+                           handling startup notification and focus stealing.
+    -->
+    <method name="BulkRename">
+      <arg direction="in" name="working_directory" type="s" />
+      <arg direction="in" name="filenames" type="as" />
+      <arg direction="in" name="standalone" type="b" />
+      <arg direction="in" name="display" type="s" />
+      <arg direction="in" name="startup_id" type="s" />
+    </method>
+
+
+    <!--
+      Terminate () : VOID
+
+      Tells a running Thunar instance to terminate immediately.
+    -->
+    <method name="Terminate">
+    </method>
+  </interface>
+</node>
+
+<!-- vi:set ts=2 sw=2 et ai: -->

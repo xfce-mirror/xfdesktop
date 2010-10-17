@@ -58,19 +58,19 @@
 #include <thunarx/thunarx.h>
 #endif
 
-#include "xfdesktop-icon-view.h"
-#include "xfdesktop-file-utils.h"
+#include "xfce-desktop.h"
+#include "xfdesktop-clipboard-manager.h"
+#include "xfdesktop-common.h"
 #include "xfdesktop-file-icon.h"
+#include "xfdesktop-file-icon-manager.h"
+#include "xfdesktop-file-utils.h"
+#include "xfdesktop-file-manager-proxy.h"
+#include "xfdesktop-file-properties-dialog.h"
+#include "xfdesktop-icon-view.h"
 #include "xfdesktop-regular-file-icon.h"
 #include "xfdesktop-special-file-icon.h"
+#include "xfdesktop-trash-proxy.h"
 #include "xfdesktop-volume-icon.h"
-#include "xfdesktop-clipboard-manager.h"
-#include "xfdesktop-file-properties-dialog.h"
-#include "xfdesktop-dbus-bindings-trash.h"
-#include "xfdesktop-dbus-bindings-filemanager.h"
-#include "xfdesktop-file-icon-manager.h"
-#include "xfdesktop-common.h"
-#include "xfce-desktop.h"
 
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4ui/libxfce4ui.h>
@@ -795,7 +795,7 @@ xfdesktop_file_icon_manager_trash_files(XfdesktopFileIconManager *fmanager,
 {
     DBusGProxy *trash_proxy = xfdesktop_file_utils_peek_trash_proxy();
     DBusGProxyCall *call;
-    gchar **uris, *display_name;
+    gchar **uris, *display_name, *startup_id;
     GList *l;
     gint i, nfiles;
     const ThunarVfsInfo *info;
@@ -816,13 +816,15 @@ xfdesktop_file_icon_manager_trash_files(XfdesktopFileIconManager *fmanager,
     uris[nfiles] = NULL;
     
     display_name = gdk_screen_make_display_name(fmanager->priv->gscreen);
+
+    startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
     
     tdata = g_new(XfdesktopTrashFilesData, 1);
-    call = org_xfce_Trash_move_to_trash_async(trash_proxy, (const char **)uris,
-                                              display_name,
-                                              xfdesktop_file_icon_manager_trash_files_cb,
-                                              tdata);
-    
+    call = xfdesktop_trash_proxy_move_to_trash_async(trash_proxy, (const char **)uris,
+                                                     display_name, startup_id,
+                                                     xfdesktop_file_icon_manager_trash_files_cb, 
+                                                     tdata);
+
     if(call) {
         tdata->fmanager = fmanager;
         tdata->proxy = g_object_ref(G_OBJECT(trash_proxy));
@@ -833,6 +835,7 @@ xfdesktop_file_icon_manager_trash_files(XfdesktopFileIconManager *fmanager,
     } else
         g_free(tdata);
     
+    g_free(startup_id);
     g_strfreev(uris);
     g_free(display_name);
     
@@ -1023,12 +1026,13 @@ xfdesktop_file_icon_menu_other_app(GtkWidget *widget,
     if(fileman_proxy) {
         gchar *uri = thunar_vfs_path_dup_uri(info->path);
         gchar *display_name = gdk_screen_make_display_name(fmanager->priv->gscreen);
+        gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
         
-        if(!org_xfce_FileManager_display_chooser_dialog_async(fileman_proxy,
-                                                              uri, TRUE,
-                                                              display_name,
-                                                              xfdesktop_file_icon_manager_display_chooser_cb,
-                                                              fmanager))
+        if(!xfdesktop_file_manager_proxy_display_chooser_dialog_async(fileman_proxy,
+                                                                      uri, TRUE,
+                                                                      display_name, startup_id,
+                                                                      xfdesktop_file_icon_manager_display_chooser_cb,
+                                                                      fmanager))
         {
             xfdesktop_file_icon_manager_display_chooser_error(fmanager);
         } else {
@@ -1036,6 +1040,8 @@ xfdesktop_file_icon_menu_other_app(GtkWidget *widget,
             xfdesktop_file_utils_set_window_cursor(GTK_WINDOW(toplevel),
                                                    GDK_WATCH);
         }
+
+        g_free(startup_id);
         g_free(uri);
         g_free(display_name);
     }

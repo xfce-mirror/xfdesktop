@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-   $Id: thunar-dbus-service-infos.xml 22583 2006-07-30 22:49:35Z benny $
+   $Id$
    
    Copyright (c) 2006 Benedikt Meurer <benny@xfce.org>
   
@@ -33,38 +33,46 @@
     <!--
       DisplayTrash (display : STRING) : VOID
 
-      display : the screen on which to display the trash folder
-                contents or "" to use the default screen of the
-                file manager.
+      display    : the screen on which to display the trash folder
+                   contents or "" to use the default screen of the
+                   file manager.
+      startup_id : the DESKTOP_STARTUP_ID environment variable for properly
+                   handling startup notification and focus stealing.
 
       Opens a new file manager window showing the trash folder
       contents.
     -->
     <method name="DisplayTrash">
       <arg direction="in" name="display" type="s" />
+      <arg direction="in" name="startup_id" type="s" />
     </method>
 
     <!--
       EmptyTrash (display : STRING) : VOID
 
-      display : the screen on which to display the confirmation of
-                the operation and the progress status or "" to use
-                the default screen of the file manager.
+      display    : the screen on which to display the confirmation of
+                   the operation and the progress status or "" to use
+                   the default screen of the file manager.
+      startup_id : the DESKTOP_STARTUP_ID environment variable for properly
+                   handling startup notification and focus stealing.
 
       Tells the file manager to empty the trash bin.
     -->
     <method name="EmptyTrash">
       <arg direction="in" name="display" type="s" />
+      <arg direction="in" name="startup_id" type="s" />
     </method>
 
     <!--
       MoveToTrash (uris : ARRAY OF STRING, display : STRING) : VOID
 
-      filenames : an array of file:-URIs or absolute paths for the files
-                  that should be moved to the trash can.
-      display   : the screen on which to display the progress dialog
-                  and possible error messages and confirmation dialogs
-                  or "" to use the default screen of the file manager.
+      filenames  : an array of file:-URIs or absolute paths for the files
+                   that should be moved to the trash can.
+      display    : the screen on which to display the progress dialog
+                   and possible error messages and confirmation dialogs
+                   or "" to use the default screen of the file manager.
+      startup_id : the DESKTOP_STARTUP_ID environment variable for properly
+                   handling startup notification and focus stealing.
 
       Tells the file manager to move all files specified by the filenames
       to the trash bin.
@@ -72,6 +80,7 @@
     <method name="MoveToTrash">
       <arg direction="in" name="filenames" type="as" />
       <arg direction="in" name="display" type="s" />
+      <arg direction="in" name="startup_id" type="s" />
     </method>
 
     <!--
@@ -97,3 +106,5 @@
     <signal name="TrashChanged" />
   </interface>
 </node>
+
+<!-- vi:set ts=2 sw=2 et ai: -->
