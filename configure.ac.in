@@ -65,7 +65,17 @@ dnl Check for X11 installed
 XDT_CHECK_LIBX11_REQUIRE
 XDT_CHECK_LIBSM
 
+dnl Check for dbus-binding-tool
+AC_ARG_VAR([DBUS_BINDING_TOOL], [Tool to generate C bindings from XML D-Bus interface definitions])
+AC_PATH_PROG([DBUS_BINDING_TOOL], [dbus-binding-tool], [no])
+if test x"$DBUS_BINDING_TOOL" = x"no"; then
+  AC_MSG_ERROR([could not find dbus-binding-tool in \$PATH. You can run
+  ./configure DBUS_BINDING_TOOL=/path/to/dbus-binding-tool to define 
+  a custom location for it.])
+fi
+
 dnl required
+XDT_CHECK_PACKAGE([GIO], [gio-2.0], [glib_minimum_version])
 XDT_CHECK_PACKAGE([GMODULE], [gmodule-2.0], [glib_minimum_version])
 XDT_CHECK_PACKAGE([GOBJECT], [gobject-2.0], [glib_minimum_version])
 XDT_CHECK_PACKAGE([GTHREAD], [gthread-2.0], [glib_minimum_version])

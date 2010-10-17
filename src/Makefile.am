@@ -62,14 +62,16 @@ xfdesktop_CFLAGS = \
 	-DDATADIR=\"$(datadir)\" \
 	-DSYSCONFDIR=\"$(sysconfdir)\" \
 	-DXFCEMODDIR=\"$(libdir)/xfce4/modules\" \
-	$(LIBX11_CFLAGS)	\
+        $(GIO_CFLAGS) \
+        $(GLIB_CFLAGS) \
 	$(GTHREAD_CFLAGS) \
+        $(GTK_CFLAGS) \
+	$(LIBX11_CFLAGS) \
 	$(LIBXFCE4UTIL_CFLAGS) \
 	$(LIBXFCE4UI_CFLAGS) \
 	$(LIBXFCE4SMCLIENT_PRIVATE_CFLAGS) \
 	$(LIBWNCK_CFLAGS) \
-	$(XFCONF_CFLAGS) \
-	$(GARCON_CFLAGS)
+	$(XFCONF_CFLAGS)
 
 xfdesktop_LDFLAGS = \
 	-export-dynamic
@@ -77,17 +79,20 @@ xfdesktop_LDFLAGS = \
 # cygwin link order requires this split
 xfdesktop_LDADD = $(top_builddir)/common/libxfdesktop.la
 xfdesktop_LDADD += \
+        $(GIO_LIBS) \
+        $(GLIB_LIBS) \
+	$(GTHREAD_LIBS) \
+        $(GTK_LIBS) \
 	$(LIBX11_LDFLAGS) \
 	$(LIBX11_LIBS) \
-	$(GTHREAD_LIBS) \
 	$(LIBXFCE4UTIL_LIBS) \
 	$(LIBXFCE4UI_LIBS) \
 	$(LIBXFCE4SMCLIENT_PRIVATE_LIBS) \
 	$(LIBWNCK_LIBS) \
-	$(XFCONF_LIBS) \
-	$(GARCON_LIBS)
+	$(XFCONF_LIBS)
 
 if BUILD_DESKTOP_MENU
+
 xfdesktop_SOURCES += $(desktop_menu_sources)
 
 xfdesktop_CFLAGS += \
@@ -95,6 +100,7 @@ xfdesktop_CFLAGS += \
 
 xfdesktop_LDADD += \
 	$(GARCON_LIBS)
+
 endif
 
 if ENABLE_DESKTOP_ICONS
@@ -107,7 +113,6 @@ xfdesktop_CFLAGS += \
 
 xfdesktop_LDADD += \
 	$(LIBEXO_LIBS)
-
 
 if ENABLE_FILE_ICONS
 
