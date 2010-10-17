@@ -1,6 +1,15 @@
+# vi:set ts=8 sw=8 noet ai nocindent syntax=automake:
+
 bin_PROGRAMS = xfdesktop
 
+xfdesktop_built_sources = \
+	xfce-desktop-enum-types.c \
+	xfce-desktop-enum-types.h \
+	xfdesktop-marshal.c \
+	xfdesktop-marshal.h
+
 xfdesktop_SOURCES = \
+	$(xfdesktop_built_sources) \
 	main.c \
 	menu.c \
 	menu.h \
@@ -9,11 +18,7 @@ xfdesktop_SOURCES = \
 	xfce-backdrop.c \
 	xfce-backdrop.h \
 	xfce-desktop.c \
-	xfce-desktop.h \
-	xfce-desktop-enum-types.c \
-	xfce-desktop-enum-types.h \
-	xfdesktop-marshal.c \
-	xfdesktop-marshal.h
+	xfce-desktop.h
 
 desktop_icon_sources = \
 	xfdesktop-icon.c \
@@ -135,13 +140,12 @@ endif
 if MAINTAINER_MODE
 
 BUILT_SOURCES = \
-	xfdesktop-marshal.c \
-	xfdesktop-marshal.h \
-	stamp-xfce-desktop-enum-types.h \
-	xfce-desktop-enum-types.c \
-	xfce-desktop-enum-types.h
+	$(xfdesktop_built_sources)
 
-DISTCLEANFILES = $(BUILT_SOURCES)
+DISTCLEANFILES = \
+	$(xfdesktop_built_sources) \
+	stamp-xfdesktop-marshal.h \
+	stamp-xfce-desktop-enum-types.h
 
 xfdesktop-marshal.h: stamp-xfdesktop-marshal.h
 	@true
@@ -182,10 +186,7 @@ xfce-desktop-enum-types.c: $(enum_headers) Makefile
 
 if ENABLE_FILE_ICONS
 
-BUILT_SOURCES += \
-	xfdesktop-dbus-bindings-filemanager.h \
-	xfdesktop-dbus-bindings-trash.h
-DISTCLEANFILES += \
+xfdesktop_built_sources += \
 	xfdesktop-dbus-bindings-filemanager.h \
 	xfdesktop-dbus-bindings-trash.h
 
