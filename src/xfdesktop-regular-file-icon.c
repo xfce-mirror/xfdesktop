@@ -64,7 +64,7 @@ struct _XfdesktopRegularFileIconPrivate
     gchar *tooltip;
     guint pix_opacity;
     gint cur_pix_size;
-    GFileInfo *ginfo;
+    GFileInfo *file_info;
     GFileInfo *filesystem_info;
     GFile *file;
     ThunarVfsInfo *info;
@@ -84,6 +84,9 @@ static gboolean xfdesktop_regular_file_icon_do_drop_dest(XfdesktopIcon *icon,
                                                          GdkDragAction action);
 
 static G_CONST_RETURN ThunarVfsInfo *xfdesktop_regular_file_icon_peek_info(XfdesktopFileIcon *icon);
+static GFileInfo *xfdesktop_regular_file_icon_peek_file_info(XfdesktopFileIcon *icon);
+static GFileInfo *xfdesktop_regular_file_icon_peek_filesystem_info(XfdesktopFileIcon *icon);
+static GFile *xfdesktop_regular_file_icon_peek_file(XfdesktopFileIcon *icon);
 static void xfdesktop_regular_file_icon_update_info(XfdesktopFileIcon *icon,
                                                     ThunarVfsInfo *info);
 static gboolean xfdesktop_regular_file_can_write_parent(XfdesktopFileIcon *icon);
@@ -133,6 +136,9 @@ xfdesktop_regular_file_icon_class_init(XfdesktopRegularFileIconClass *klass)
     icon_class->do_drop_dest = xfdesktop_regular_file_icon_do_drop_dest;
     
     file_icon_class->peek_info = xfdesktop_regular_file_icon_peek_info;
+    file_icon_class->peek_file_info = xfdesktop_regular_file_icon_peek_file_info;
+    file_icon_class->peek_filesystem_info = xfdesktop_regular_file_icon_peek_filesystem_info;
+    file_icon_class->peek_file = xfdesktop_regular_file_icon_peek_file;
     file_icon_class->update_info = xfdesktop_regular_file_icon_update_info;
     file_icon_class->can_rename_file = xfdesktop_regular_file_can_write_parent;
     file_icon_class->rename_file = xfdesktop_regular_file_icon_rename_file;
@@ -165,8 +171,8 @@ xfdesktop_regular_file_icon_finalize(GObject *obj)
     if(icon->priv->info)
         thunar_vfs_info_unref(icon->priv->info);
 
-    if(icon->priv->ginfo)
-        g_object_unref(icon->priv->ginfo);
+    if(icon->priv->file_info)
+        g_object_unref(icon->priv->file_info);
 
     if(icon->priv->filesystem_info)
         g_object_unref(icon->priv->filesystem_info);
@@ -190,7 +196,9 @@ xfdesktop_regular_file_icon_tfi_init(ThunarxFileInfoIface *iface)
     iface->get_mime_type = xfdesktop_thunarx_file_info_get_mime_type;
     iface->has_mime_type = xfdesktop_thunarx_file_info_has_mime_type;
     iface->is_directory = xfdesktop_thunarx_file_info_is_directory;
-    iface->get_vfs_info = xfdesktop_thunarx_file_info_get_vfs_info;
+    iface->get_file_info = xfdesktop_thunarx_file_info_get_file_info;
+    iface->get_filesystem_info = xfdesktop_thunarx_file_info_get_filesystem_info;
+    iface->get_location = xfdesktop_thunarx_file_info_get_location;
 }
 #endif
 
@@ -641,6 +649,27 @@ xfdesktop_regular_file_icon_peek_info(XfdesktopFileIcon *icon)
     return XFDESKTOP_REGULAR_FILE_ICON(icon)->priv->info;
 }
 
+static GFileInfo *
+xfdesktop_regular_file_icon_peek_file_info(XfdesktopFileIcon *icon)
+{
+    g_return_val_if_fail(XFDESKTOP_IS_REGULAR_FILE_ICON(icon), NULL);
+    return XFDESKTOP_REGULAR_FILE_ICON(icon)->priv->file_info;
+}
+
+static GFileInfo *
+xfdesktop_regular_file_icon_peek_filesystem_info(XfdesktopFileIcon *icon)
+{
+    g_return_val_if_fail(XFDESKTOP_IS_REGULAR_FILE_ICON(icon), NULL);
+    return XFDESKTOP_REGULAR_FILE_ICON(icon)->priv->filesystem_info;
+}
+
+static GFile *
+xfdesktop_regular_file_icon_peek_file(XfdesktopFileIcon *icon)
+{
+    g_return_val_if_fail(XFDESKTOP_IS_REGULAR_FILE_ICON(icon), NULL);
+    return XFDESKTOP_REGULAR_FILE_ICON(icon)->priv->file;
+}
+
 static void
 xfdesktop_regular_file_icon_update_info(XfdesktopFileIcon *icon,
                                         ThunarVfsInfo *info)
@@ -685,10 +714,10 @@ xfdesktop_regular_file_icon_new(ThunarVfsInfo *info,
     g_free(path);
 
     /* query file information from GIO */
-    regular_file_icon->priv->ginfo = g_file_query_info(regular_file_icon->priv->file,
-                                                       XFDESKTOP_FILE_INFO_NAMESPACE,
-                                                       G_FILE_QUERY_INFO_NONE,
-                                                       NULL, NULL);
+    regular_file_icon->priv->file_info = g_file_query_info(regular_file_icon->priv->file,
+                                                           XFDESKTOP_FILE_INFO_NAMESPACE,
+                                                           G_FILE_QUERY_INFO_NONE,
+                                                           NULL, NULL);
 
     /* query file system information from GIO */
     regular_file_icon->priv->filesystem_info = g_file_query_filesystem_info(regular_file_icon->priv->file,

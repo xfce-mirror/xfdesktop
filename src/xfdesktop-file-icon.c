@@ -2,6 +2,7 @@
  *  xfdesktop - xfce4's desktop manager
  *
  *  Copyright (c) 2006 Brian Tarricone, <bjt23@cornell.edu>
+ *  Copyright (c) 2010 Jannis Pohlmann, <jannis@xfce.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -174,6 +175,51 @@ xfdesktop_file_icon_peek_info(XfdesktopFileIcon *icon)
     
     if(klass->peek_info)
        return klass->peek_info(icon);
+    else
+        return NULL;
+}
+
+GFileInfo *
+xfdesktop_file_icon_peek_file_info(XfdesktopFileIcon *icon)
+{
+    XfdesktopFileIconClass *klass;
+    
+    g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON(icon), NULL);
+    
+    klass = XFDESKTOP_FILE_ICON_GET_CLASS(icon);
+    
+    if(klass->peek_file_info)
+       return klass->peek_file_info(icon);
+    else
+        return NULL;
+}
+
+GFileInfo *
+xfdesktop_file_icon_peek_filesystem_info(XfdesktopFileIcon *icon)
+{
+    XfdesktopFileIconClass *klass;
+    
+    g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON(icon), NULL);
+    
+    klass = XFDESKTOP_FILE_ICON_GET_CLASS(icon);
+    
+    if(klass->peek_filesystem_info)
+       return klass->peek_filesystem_info(icon);
+    else
+        return NULL;
+}
+
+GFile *
+xfdesktop_file_icon_peek_file(XfdesktopFileIcon *icon)
+{
+    XfdesktopFileIconClass *klass;
+    
+    g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON(icon), NULL);
+    
+    klass = XFDESKTOP_FILE_ICON_GET_CLASS(icon);
+    
+    if(klass->peek_file)
+       return klass->peek_file(icon);
     else
         return NULL;
 }

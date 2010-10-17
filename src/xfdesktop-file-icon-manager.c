@@ -3,6 +3,7 @@
  *
  *  Copyright(c) 2006 Brian Tarricone, <bjt23@cornell.edu>
  *  Copyright(c) 2006 Benedikt Meurer, <benny@xfce.org>
+ *  Copyright(c) 2010 Jannis Pohlmann, <jannis@xfce.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by

@@ -2,6 +2,7 @@
  *  xfdesktop - xfce4's desktop manager
  *
  *  Copyright (c) 2006 Brian Tarricone, <bjt23@cornell.edu>
+ *  Copyright (c) 2010 Jannis Pohlmann, <jannis@xfce.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -21,6 +22,7 @@
 #ifndef __XFDESKTOP_FILE_ICON_H__
 #define __XFDESKTOP_FILE_ICON_H__
 
+#include <gio/gio.h>
 #include <gtk/gtk.h>
 
 #include <thunar-vfs/thunar-vfs.h>
@@ -52,6 +54,9 @@ struct _XfdesktopFileIconClass
     
     /*< virtual functions >*/
     G_CONST_RETURN ThunarVfsInfo *(*peek_info)(XfdesktopFileIcon *icon);
+    GFileInfo *(*peek_file_info)(XfdesktopFileIcon *icon);
+    GFileInfo *(*peek_filesystem_info)(XfdesktopFileIcon *icon);
+    GFile *(*peek_file)(XfdesktopFileIcon *icon);
     void (*update_info)(XfdesktopFileIcon *icon, ThunarVfsInfo *info);
     
     gboolean (*can_rename_file)(XfdesktopFileIcon *icon);
@@ -64,6 +69,9 @@ struct _XfdesktopFileIconClass
 GType xfdesktop_file_icon_get_type(void) G_GNUC_CONST;
 
 G_CONST_RETURN ThunarVfsInfo *xfdesktop_file_icon_peek_info(XfdesktopFileIcon *icon);
+GFileInfo *xfdesktop_file_icon_peek_file_info(XfdesktopFileIcon *icon);
+GFileInfo *xfdesktop_file_icon_peek_filesystem_info(XfdesktopFileIcon *icon);
+GFile *xfdesktop_file_icon_peek_file(XfdesktopFileIcon *icon);
 void xfdesktop_file_icon_update_info(XfdesktopFileIcon *icon,
                                      ThunarVfsInfo *info);
 

@@ -3,6 +3,7 @@
  *
  *  Copyright(c) 2006 Brian Tarricone, <bjt23@cornell.edu>
  *  Copyright(c) 2006 Benedikt Meurer, <benny@xfce.org>
+ *  Copyright(c) 2010 Jannis Pohlmann, <jannis@xfce.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -39,6 +40,8 @@
 #define PATH_MAX 4096
 #endif
 
+#include <gio/gio.h>
+
 #include <libxfce4ui/libxfce4ui.h>
 
 #include <dbus/dbus-glib.h>
@@ -47,6 +50,7 @@
 #include <thunarx/thunarx.h>
 #endif
 
+#include "xfdesktop-common.h"
 #include "xfdesktop-file-utils.h"
 #include "xfdesktop-special-file-icon.h"
 #include "xfdesktop-trash-proxy.h"
@@ -58,6 +62,9 @@ struct _XfdesktopSpecialFileIconPrivate
     gchar *tooltip;
     gint cur_pix_size;
     ThunarVfsInfo *info;
+    GFileInfo *file_info;
+    GFileInfo *filesystem_info;
+    GFile *file;
     GdkScreen *gscreen;
     
     /* only needed for trash */
@@ -81,6 +88,9 @@ static gboolean xfdesktop_special_file_icon_populate_context_menu(XfdesktopIcon 
                                                                   GtkWidget *menu);
 
 static G_CONST_RETURN ThunarVfsInfo *xfdesktop_special_file_icon_peek_info(XfdesktopFileIcon *icon);
+static GFileInfo *xfdesktop_special_file_icon_peek_file_info(XfdesktopFileIcon *icon);
+static GFileInfo *xfdesktop_special_file_icon_peek_filesystem_info(XfdesktopFileIcon *icon);
+static GFile *xfdesktop_special_file_icon_peek_file(XfdesktopFileIcon *icon);
 
 #ifdef HAVE_THUNARX
 static void xfdesktop_special_file_icon_tfi_init(ThunarxFileInfoIface *iface);
@@ -126,6 +136,9 @@ xfdesktop_special_file_icon_class_init(XfdesktopSpecialFileIconClass *klass)
     icon_class->populate_context_menu = xfdesktop_special_file_icon_populate_context_menu;
     
     file_icon_class->peek_info = xfdesktop_special_file_icon_peek_info;
+    file_icon_class->peek_file_info = xfdesktop_special_file_icon_peek_file_info;
+    file_icon_class->peek_filesystem_info = xfdesktop_special_file_icon_peek_filesystem_info;
+    file_icon_class->peek_file = xfdesktop_special_file_icon_peek_file;
     file_icon_class->can_rename_file = (gboolean (*)(XfdesktopFileIcon *))gtk_false;
     file_icon_class->can_delete_file = (gboolean (*)(XfdesktopFileIcon *))gtk_false;
 }
@@ -193,7 +206,9 @@ xfdesktop_special_file_icon_tfi_init(ThunarxFileInfoIface *iface)
     iface->get_mime_type = xfdesktop_thunarx_file_info_get_mime_type;
     iface->has_mime_type = xfdesktop_thunarx_file_info_has_mime_type;
     iface->is_directory = xfdesktop_thunarx_file_info_is_directory;
-    iface->get_vfs_info = xfdesktop_thunarx_file_info_get_vfs_info;
+    iface->get_file_info = xfdesktop_thunarx_file_info_get_file_info;
+    iface->get_filesystem_info = xfdesktop_thunarx_file_info_get_filesystem_info;
+    iface->get_location = xfdesktop_thunarx_file_info_get_location;
 }
 #endif  /* HAVE_THUNARX */
 
@@ -680,6 +695,26 @@ xfdesktop_special_file_icon_peek_info(XfdesktopFileIcon *icon)
     return XFDESKTOP_SPECIAL_FILE_ICON(icon)->priv->info;
 }
 
+static GFileInfo *
+xfdesktop_special_file_icon_peek_file_info(XfdesktopFileIcon *icon)
+{
+    g_return_val_if_fail(XFDESKTOP_IS_SPECIAL_FILE_ICON(icon), NULL);
+    return XFDESKTOP_SPECIAL_FILE_ICON(icon)->priv->file_info;
+}
+
+static GFileInfo *
+xfdesktop_special_file_icon_peek_filesystem_info(XfdesktopFileIcon *icon)
+{
+    g_return_val_if_fail(XFDESKTOP_IS_SPECIAL_FILE_ICON(icon), NULL);
+    return XFDESKTOP_SPECIAL_FILE_ICON(icon)->priv->filesystem_info;
+}
+
+static GFile *
+xfdesktop_special_file_icon_peek_file(XfdesktopFileIcon *icon)
+{
+    g_return_val_if_fail(XFDESKTOP_IS_SPECIAL_FILE_ICON(icon), NULL);
+    return XFDESKTOP_SPECIAL_FILE_ICON(icon)->priv->file;
+}
 
 static void
 xfdesktop_special_file_icon_trash_changed_cb(DBusGProxy *proxy,
@@ -729,6 +764,7 @@ xfdesktop_special_file_icon_new(XfdesktopSpecialFileIconType type,
 {
     XfdesktopSpecialFileIcon *special_file_icon;
     ThunarVfsPath *path = NULL;
+    gchar *pathname;
     
     switch(type) {
         case XFDESKTOP_SPECIAL_FILE_ICON_FILESYSTEM:
@@ -752,6 +788,23 @@ xfdesktop_special_file_icon_new(XfdesktopSpecialFileIconType type,
     special_file_icon->priv->gscreen = screen;
     special_file_icon->priv->info = thunar_vfs_info_new_for_path(path, NULL);
     thunar_vfs_path_unref(path);
+
+    /* convert the ThunarVfsPath into a GFile */
+    pathname = thunar_vfs_path_dup_string(special_file_icon->priv->info->path);
+    special_file_icon->priv->file = g_file_new_for_path(pathname);
+    g_free(pathname);
+
+    /* query file information from GIO */
+    special_file_icon->priv->file_info = g_file_query_info(special_file_icon->priv->file,
+                                                           XFDESKTOP_FILE_INFO_NAMESPACE,
+                                                           G_FILE_QUERY_INFO_NONE,
+                                                           NULL, NULL);
+
+    /* query file system information from GIO */
+    special_file_icon->priv->filesystem_info = g_file_query_filesystem_info(special_file_icon->priv->file,
+                                                                            XFDESKTOP_FILESYSTEM_INFO_NAMESPACE,
+                                                                            NULL, NULL);
+
     if(G_UNLIKELY(!special_file_icon->priv->info)) {
         g_object_unref(G_OBJECT(special_file_icon));
         return NULL;

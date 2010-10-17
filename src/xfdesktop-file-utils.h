@@ -2,6 +2,7 @@
  *  xfdesktop - xfce4's desktop manager
  *
  *  Copyright(c) 2006 Brian Tarricone, <bjt23@cornell.edu>
+ *  Copyright(c) 2010 Jannis Pohlmann, <jannis@xfce.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -95,7 +96,9 @@ gchar *xfdesktop_thunarx_file_info_get_mime_type(ThunarxFileInfo *file_info);
 gboolean xfdesktop_thunarx_file_info_has_mime_type(ThunarxFileInfo *file_info,
                                                    const gchar *mime_type);
 gboolean xfdesktop_thunarx_file_info_is_directory(ThunarxFileInfo *file_info);
-ThunarVfsInfo *xfdesktop_thunarx_file_info_get_vfs_info(ThunarxFileInfo *file_info);
+GFile *xfdesktop_thunarx_file_info_get_location(ThunarxFileInfo *file_info);
+GFileInfo *xfdesktop_thunarx_file_info_get_file_info(ThunarxFileInfo *file_info);
+GFileInfo *xfdesktop_thunarx_file_info_get_filesystem_info(ThunarxFileInfo *file_info);
 #endif
 
 #endif

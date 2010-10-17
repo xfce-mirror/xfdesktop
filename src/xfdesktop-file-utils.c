@@ -2,6 +2,7 @@
  *  xfdesktop - xfce4's desktop manager
  *
  *  Copyright(c) 2006 Brian Tarricone, <bjt23@cornell.edu>
+ *  Copyright(c) 2010 Jannis Pohlmann, <jannis@xfce.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -623,12 +624,28 @@ xfdesktop_thunarx_file_info_is_directory(ThunarxFileInfo *file_info)
     return (info && info->type == THUNAR_VFS_FILE_TYPE_DIRECTORY);
 }
 
-ThunarVfsInfo *
-xfdesktop_thunarx_file_info_get_vfs_info(ThunarxFileInfo *file_info)
+GFileInfo *
+xfdesktop_thunarx_file_info_get_file_info(ThunarxFileInfo *file_info)
 {
     XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(file_info);
-    const ThunarVfsInfo *info = xfdesktop_file_icon_peek_info(icon);
-    return info ? thunar_vfs_info_copy(info) : NULL;
+    GFileInfo *info = xfdesktop_file_icon_peek_file_info(icon);
+    return info ? g_object_ref (info) : NULL;
+}
+
+GFileInfo *
+xfdesktop_thunarx_file_info_get_filesystem_info(ThunarxFileInfo *file_info)
+{
+    XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(file_info);
+    GFileInfo *info = xfdesktop_file_icon_peek_filesystem_info(icon);
+    return info ? g_object_ref (info) : NULL;
+}
+
+GFile *
+xfdesktop_thunarx_file_info_get_location(ThunarxFileInfo *file_info)
+{
+    XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(file_info);
+    GFile *file = xfdesktop_file_icon_peek_file(icon);
+    return g_object_ref (file);
 }
 
 #endif  /* HAVE_THUNARX */

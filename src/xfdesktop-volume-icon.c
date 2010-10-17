@@ -3,6 +3,7 @@
  *
  *  Copyright(c) 2006 Brian Tarricone, <bjt23@cornell.edu>
  *  Copyright(c) 2006 Benedikt Meurer, <benny@xfce.org>
+ *  Copyright(c) 2010 Jannis Pohlmann, <jannis@xfce.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -43,6 +44,8 @@
 #define PATH_MAX 4096
 #endif
 
+#include <gio/gio.h>
+
 #include <libxfce4ui/libxfce4ui.h>
 
 #ifdef HAVE_THUNARX
@@ -60,6 +63,9 @@ struct _XfdesktopVolumeIconPrivate
     gint cur_pix_size;
     ThunarVfsVolume *volume;
     ThunarVfsInfo *info;
+    GFileInfo *file_info;
+    GFileInfo *filesystem_info;
+    GFile *file;
     GdkScreen *gscreen;
 };
 
@@ -78,6 +84,9 @@ static gboolean xfdesktop_volume_icon_populate_context_menu(XfdesktopIcon *icon,
                                                             GtkWidget *menu);
 
 static G_CONST_RETURN ThunarVfsInfo *xfdesktop_volume_icon_peek_info(XfdesktopFileIcon *icon);
+static GFileInfo *xfdesktop_volume_icon_peek_file_info(XfdesktopFileIcon *icon);
+static GFileInfo *xfdesktop_volume_icon_peek_filesystem_info(XfdesktopFileIcon *icon);
+static GFile *xfdesktop_volume_icon_peek_file(XfdesktopFileIcon *icon);
 static void xfdesktop_volume_icon_update_info(XfdesktopFileIcon *icon,
                                               ThunarVfsInfo *info);
 static gboolean xfdesktop_volume_icon_activated(XfdesktopIcon *icon);
@@ -125,6 +134,9 @@ xfdesktop_volume_icon_class_init(XfdesktopVolumeIconClass *klass)
     icon_class->activated = xfdesktop_volume_icon_activated;
     
     file_icon_class->peek_info = xfdesktop_volume_icon_peek_info;
+    file_icon_class->peek_file_info = xfdesktop_volume_icon_peek_file_info;
+    file_icon_class->peek_filesystem_info = xfdesktop_volume_icon_peek_filesystem_info;
+    file_icon_class->peek_file = xfdesktop_volume_icon_peek_file;
     file_icon_class->update_info = xfdesktop_volume_icon_update_info;
     file_icon_class->can_rename_file = (gboolean (*)(XfdesktopFileIcon *))gtk_false;
     file_icon_class->can_delete_file = (gboolean (*)(XfdesktopFileIcon *))gtk_false;
@@ -177,7 +189,9 @@ xfdesktop_volume_icon_tfi_init(ThunarxFileInfoIface *iface)
     iface->get_mime_type = xfdesktop_thunarx_file_info_get_mime_type;
     iface->has_mime_type = xfdesktop_thunarx_file_info_has_mime_type;
     iface->is_directory = xfdesktop_thunarx_file_info_is_directory;
-    iface->get_vfs_info = xfdesktop_thunarx_file_info_get_vfs_info;
+    iface->get_file_info = xfdesktop_thunarx_file_info_get_file_info;
+    iface->get_filesystem_info = xfdesktop_thunarx_file_info_get_filesystem_info;
+    iface->get_location = xfdesktop_thunarx_file_info_get_location;
 }
 #endif  /* HAVE_THUNARX */
 
@@ -632,6 +646,27 @@ xfdesktop_volume_icon_peek_info(XfdesktopFileIcon *icon)
 {
     g_return_val_if_fail(XFDESKTOP_IS_VOLUME_ICON(icon), NULL);
     return XFDESKTOP_VOLUME_ICON(icon)->priv->info;
+}
+
+static GFileInfo *
+xfdesktop_volume_icon_peek_file_info(XfdesktopFileIcon *icon)
+{
+    g_return_val_if_fail(XFDESKTOP_IS_VOLUME_ICON(icon), NULL);
+    return XFDESKTOP_VOLUME_ICON(icon)->priv->file_info;
+}
+
+static GFileInfo *
+xfdesktop_volume_icon_peek_filesystem_info(XfdesktopFileIcon *icon)
+{
+    g_return_val_if_fail(XFDESKTOP_IS_VOLUME_ICON(icon), NULL);
+    return XFDESKTOP_VOLUME_ICON(icon)->priv->filesystem_info;
+}
+
+static GFile *
+xfdesktop_volume_icon_peek_file(XfdesktopFileIcon *icon)
+{
+    g_return_val_if_fail(XFDESKTOP_IS_VOLUME_ICON(icon), NULL);
+    return XFDESKTOP_VOLUME_ICON(icon)->priv->file;
 }
 
 static void
