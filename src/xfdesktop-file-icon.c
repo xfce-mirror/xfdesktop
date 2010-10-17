@@ -238,6 +238,20 @@ xfdesktop_file_icon_update_info(XfdesktopFileIcon *icon,
        klass->update_info(icon, info);
 }
 
+void
+xfdesktop_file_icon_update_file_info(XfdesktopFileIcon *icon,
+                                     GFileInfo *info)
+{
+    XfdesktopFileIconClass *klass;
+    
+    g_return_if_fail(XFDESKTOP_IS_FILE_ICON(icon));
+    
+    klass = XFDESKTOP_FILE_ICON_GET_CLASS(icon);
+    
+    if(klass->update_file_info)
+       klass->update_file_info(icon, info);
+}
+
 gboolean
 xfdesktop_file_icon_can_rename_file(XfdesktopFileIcon *icon)
 {
