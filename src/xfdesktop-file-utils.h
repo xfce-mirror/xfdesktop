@@ -77,7 +77,7 @@ gboolean xfdesktop_file_utils_launch_fallback(const ThunarVfsInfo *info,
                                               GdkScreen *screen,
                                               GtkWindow *parent);
 
-void xfdesktop_file_utils_open_folder(const ThunarVfsInfo *info,
+void xfdesktop_file_utils_open_folder(GFile *file,
                                       GdkScreen *screen,
                                       GtkWindow *parent);
 

@@ -400,69 +400,73 @@ xfdesktop_file_utils_launch_fallback(const ThunarVfsInfo *info,
     return ret;
 }
 
-typedef struct
-{
-    const ThunarVfsInfo *info;
-    GdkScreen *screen;
-    GtkWindow *parent;
-} XfdesktopDisplayFolderData;
-
 static void
 xfdesktop_file_utils_display_folder_cb(DBusGProxy *proxy,
                                        GError *error,
                                        gpointer user_data)
 {
-    XfdesktopDisplayFolderData *dfdata = user_data;
+    GtkWindow *parent = user_data;
+
+    g_return_if_fail(GTK_IS_WINDOW(parent));
     
-    g_return_if_fail(dfdata);
-    
-    xfdesktop_file_utils_set_window_cursor(dfdata->parent, GDK_LEFT_PTR);
+    xfdesktop_file_utils_set_window_cursor(parent, GDK_LEFT_PTR);
     
     if(error) {
-        xfdesktop_file_utils_launch_fallback(dfdata->info, dfdata->screen,
-                                             dfdata->parent);
+        xfce_message_dialog(parent,
+                            _("Launch Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("The folder could not be opened"),
+                            _("This feature requires a file manager service to "
+                              "be present (such as the one supplied by Thunar)."),
+                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
     }
-    
-    g_free(user_data);
 }
 
 void
-xfdesktop_file_utils_open_folder(const ThunarVfsInfo *info,
+xfdesktop_file_utils_open_folder(GFile *file,
                                  GdkScreen *screen,
                                  GtkWindow *parent)
 {
     DBusGProxy *fileman_proxy;
     
-    g_return_if_fail(info && (screen || parent));
+    g_return_if_fail(G_IS_FILE(file));
+    g_return_if_fail(GDK_IS_SCREEN(screen) || GTK_IS_WINDOW(parent));
     
     if(!screen)
         screen = gtk_widget_get_screen(GTK_WIDGET(parent));
     
     fileman_proxy = xfdesktop_file_utils_peek_filemanager_proxy();
     if(fileman_proxy) {
-        XfdesktopDisplayFolderData *dfdata = g_new(XfdesktopDisplayFolderData, 1);
-        gchar *uri = thunar_vfs_path_dup_uri(info->path);
+        gchar *uri = g_file_get_uri(file);
         gchar *display_name = gdk_screen_make_display_name(screen);
         gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
         
-        dfdata->info = info;
-        dfdata->screen = screen;
-        dfdata->parent = parent;
         if(!xfdesktop_file_manager_proxy_display_folder_async(fileman_proxy,
                                                               uri, display_name, startup_id,
-                                                              xfdesktop_file_utils_display_folder_cb,
-                                                              dfdata))
+                                                              parent ? xfdesktop_file_utils_display_folder_cb : NULL,
+                                                              parent))
         {
-            xfdesktop_file_utils_launch_fallback(info, screen, parent);
-            g_free(dfdata);
-        } else
-            xfdesktop_file_utils_set_window_cursor(parent, GDK_WATCH);
+            xfce_message_dialog(parent,
+                                _("Launch Error"), GTK_STOCK_DIALOG_ERROR,
+                                _("The folder could not be opened"),
+                                _("This feature requires a file manager service to "
+                                  "be present (such as the one supplied by Thunar)."),
+                                GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+        } else {
+            if(parent)
+                xfdesktop_file_utils_set_window_cursor(parent, GDK_WATCH);
+        }
         
         g_free(startup_id);
         g_free(uri);
         g_free(display_name);
-    } else
-        xfdesktop_file_utils_launch_fallback(info, screen, parent);
+    } else {
+        xfce_message_dialog(parent,
+                            _("Launch Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("The folder could not be opened"),
+                            _("This feature requires a file manager service to "
+                              "be present (such as the one supplied by Thunar)."),
+                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+    }
 }
 
 

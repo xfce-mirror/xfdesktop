@@ -23,7 +23,7 @@
 #include <config.h>
 #endif
 
-#include <glib-object.h>
+#include <gio/gio.h>
 
 #include <libxfce4ui/libxfce4ui.h>
 
@@ -101,12 +101,13 @@ xfdesktop_file_icon_activated(XfdesktopIcon *icon)
 {
     XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
     const ThunarVfsInfo *info = xfdesktop_file_icon_peek_info(file_icon);
+    GFile *file = xfdesktop_file_icon_peek_file(file_icon);
     GtkWidget *icon_view, *toplevel;
     GdkScreen *gscreen;
     gboolean success = FALSE;
     
     TRACE("entering");
-    
+
     if(!info)
         return FALSE;
     
@@ -115,7 +116,7 @@ xfdesktop_file_icon_activated(XfdesktopIcon *icon)
     gscreen = gtk_widget_get_screen(icon_view);
     
     if(info->type == THUNAR_VFS_FILE_TYPE_DIRECTORY) {
-        xfdesktop_file_utils_open_folder(info, gscreen, GTK_WINDOW(toplevel));
+        xfdesktop_file_utils_open_folder(file, gscreen, GTK_WINDOW(toplevel));
         success = TRUE;
     } else {
         if(info->flags & THUNAR_VFS_FILE_FLAGS_EXECUTABLE) {

@@ -52,7 +52,7 @@
 #define PATH_MAX 4096
 #endif
 
-#include <glib-object.h>
+#include <gio/gio.h>
 #include <gdk/gdkkeysyms.h>
 
 #ifdef HAVE_THUNARX
@@ -942,7 +942,7 @@ xfdesktop_file_icon_menu_open_folder(GtkWidget *widget,
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
     XfdesktopFileIcon *icon;
     GList *selected;
-    const ThunarVfsInfo *info;
+    GFile *file;
     GtkWidget *toplevel;
     
     selected = xfdesktop_icon_view_get_selected_items(fmanager->priv->icon_view);
@@ -950,13 +950,11 @@ xfdesktop_file_icon_menu_open_folder(GtkWidget *widget,
     icon = XFDESKTOP_FILE_ICON(selected->data);
     g_list_free(selected);
     
-    info = xfdesktop_file_icon_peek_info(icon);
-    if(!info)
-        return;
+    file = xfdesktop_file_icon_peek_file(icon);
     
     toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
     
-    xfdesktop_file_utils_open_folder(info, fmanager->priv->gscreen,
+    xfdesktop_file_utils_open_folder(file, fmanager->priv->gscreen,
                                      GTK_WINDOW(toplevel));
 }
 
@@ -966,16 +964,16 @@ xfdesktop_file_icon_menu_open_desktop(GtkWidget *widget,
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
     XfdesktopFileIcon *icon = fmanager->priv->desktop_icon;
-    const ThunarVfsInfo *info;
+    GFile *file;
     GtkWidget *toplevel;
     
-    info = xfdesktop_file_icon_peek_info(icon);
-    if(!info)
+    file = xfdesktop_file_icon_peek_file(icon);
+    if(!file)
         return;
     
     toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
     
-    xfdesktop_file_utils_open_folder(info, fmanager->priv->gscreen,
+    xfdesktop_file_utils_open_folder(file, fmanager->priv->gscreen,
                                      GTK_WINDOW(toplevel));
 }
 
@@ -987,7 +985,8 @@ xfdesktop_file_icon_manager_display_chooser_error(XfdesktopFileIconManager *fman
     xfce_message_dialog(GTK_WINDOW(toplevel),
                         _("Launch Error"), GTK_STOCK_DIALOG_ERROR,
                         _("The application chooser could not be opened."),
-                        _("This feature requires a file manager service present (such as that supplied by Thunar)."),
+                        _("This feature requires a file manager service to "
+                          "be present (such as the one supplied by Thunar)."),
                         GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
 }
 
