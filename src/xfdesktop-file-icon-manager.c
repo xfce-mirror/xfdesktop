@@ -1068,58 +1068,20 @@ xfdesktop_file_icon_menu_properties(GtkWidget *widget,
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
     GList *selected;
-    DBusGConnection *conn;
     XfdesktopFileIcon *icon;
-    gboolean dbus_call_ok = FALSE;
+    GtkWidget *toplevel;
+    GFile *file;
     
     selected = xfdesktop_icon_view_get_selected_items(fmanager->priv->icon_view);
     g_return_if_fail(g_list_length(selected) == 1);
     icon = XFDESKTOP_FILE_ICON(selected->data);
     g_list_free(selected);
     
-    conn = dbus_g_bus_get(DBUS_BUS_SESSION, NULL);
-    if(G_LIKELY(conn)) {
-        GdkScreen *screen = gtk_widget_get_screen(GTK_WIDGET(fmanager->priv->icon_view));
-        gchar *display_name = gdk_screen_make_display_name(screen);
-        DBusGProxy *proxy;
-        const ThunarVfsInfo *info;
-        gchar *uri = NULL;
-
-        proxy = dbus_g_proxy_new_for_name(conn,
-                                          "org.xfce.Thunar",
-                                          "/org/xfce/FileManager",
-                                          "org.xfce.FileManager");
-
-        info = xfdesktop_file_icon_peek_info(icon);
-        if(info && info->path)
-            uri = thunar_vfs_path_dup_uri(info->path);
-
-        if(uri) {
-            dbus_call_ok = dbus_g_proxy_call(proxy, "DisplayFileProperties",
-                                             NULL,
-                                             G_TYPE_STRING, uri,
-                                             G_TYPE_STRING, display_name,
-                                             G_TYPE_INVALID,
-                                             G_TYPE_INVALID);
-            g_free(uri);
-        }
-
-        g_object_unref(G_OBJECT(proxy));
-        dbus_g_connection_unref(conn);
-    }
-
-    if(!dbus_call_ok) {
-        GtkWidget *parent;
-        parent = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
-
-        xfdesktop_file_properties_dialog_show(GTK_WINDOW(parent), icon,
-#ifdef HAVE_THUNARX
-                                              fmanager->priv->thunarx_properties_providers
-#else
-                                              NULL
-#endif
-                                              );
-    }
+    file = xfdesktop_file_icon_peek_file(icon);
+    toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
+    
+    xfdesktop_file_utils_show_properties_dialog(file, fmanager->priv->gscreen, 
+                                                GTK_WINDOW(toplevel));
 }
 
 static void
