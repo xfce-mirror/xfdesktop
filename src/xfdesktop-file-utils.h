@@ -80,6 +80,9 @@ gboolean xfdesktop_file_utils_launch_fallback(const ThunarVfsInfo *info,
 void xfdesktop_file_utils_open_folder(GFile *file,
                                       GdkScreen *screen,
                                       GtkWindow *parent);
+void xfdesktop_file_utils_rename_file(GFile *file,
+                                      GdkScreen *screen,
+                                      GtkWindow *parent);
 
 
 gboolean xfdesktop_file_utils_dbus_init(void);

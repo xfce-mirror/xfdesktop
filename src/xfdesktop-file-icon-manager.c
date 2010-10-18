@@ -610,47 +610,19 @@ xfdesktop_file_icon_menu_rename(GtkWidget *widget,
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
     XfdesktopFileIcon *icon;
     GList *selected;
-    const ThunarVfsInfo *info;
-    GtkWidget *dlg, *entry = NULL, *toplevel;
-    GdkPixbuf *pix;
-    gchar *title;
-    gint w, h;
+    GFile *file;
+    GtkWidget *toplevel;
     
     selected = xfdesktop_icon_view_get_selected_items(fmanager->priv->icon_view);
     g_return_if_fail(g_list_length(selected) == 1);
     icon = XFDESKTOP_FILE_ICON(selected->data);
     g_list_free(selected);
+    
+    file = xfdesktop_file_icon_peek_file(icon);
     toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
     
-    info = xfdesktop_file_icon_peek_info(icon);
-    
-    /* make sure the icon doesn't get destroyed while the dialog is open */
-    g_object_ref(G_OBJECT(icon));
-    
-    title = g_strdup_printf(_("Rename \"%s\""), info->display_name);
-    gtk_icon_size_lookup(GTK_ICON_SIZE_DIALOG, &w, &h);
-    pix = xfdesktop_icon_peek_pixbuf(XFDESKTOP_ICON(icon), w);
-    
-    dlg = xfdesktop_file_icon_create_entry_dialog(title,
-                                                  GTK_WINDOW(toplevel),
-                                                  pix,
-                                                  _("Enter the new name:"),
-                                                  info->display_name,
-                                                  _("Rename"),
-                                                  &entry);
-    g_free(title);
-    
-    if(GTK_RESPONSE_ACCEPT == gtk_dialog_run(GTK_DIALOG(dlg))) {
-        gchar *new_name;
-        
-        new_name = gtk_editable_get_chars(GTK_EDITABLE(entry), 0, -1);
-        xfdesktop_file_icon_rename_file(icon, new_name);
-        
-        g_free(new_name);
-    }
-    
-    gtk_widget_destroy(dlg);
-    g_object_unref(G_OBJECT(icon));
+    xfdesktop_file_utils_rename_file(file, fmanager->priv->gscreen, 
+                                     GTK_WINDOW(toplevel));
 }
 
 enum
