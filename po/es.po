@@ -4,19 +4,19 @@
 # Edscott Wilson Garcia <edscott@xfce.org>, 2004.
 # Rudy Godoy <rudy@stone-head.org>, 2005.
 # Abel Martín <abel.martin.ruiz@gmail.com>, 2008-2009.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-28 16:27+0200\n"
+"POT-Creation-Date: 2010-10-18 22:08+0000\n"
 "PO-Revision-Date: 2009-12-18 19:06+0100\n"
 "Last-Translator: Abel Martín Ruiz <abel.martin.ruiz@gmail.com>\n"
 "Language-Team: Spanish/ES <xfce-i18n@xfce.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
 #, c-format
@@ -64,11 +64,8 @@ msgstr "Crear/cargar lista de fondos"
 
 #: ../settings/main.c:511
 #, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
-"El archivo \"%s\" no es un archivo de lista de fondos válido. ¿Desea "
-"sobreescribirlo?"
+msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr "El archivo \"%s\" no es un archivo de lista de fondos válido. ¿Desea sobreescribirlo?"
 
 #: ../settings/main.c:516
 msgid "Invalid List File"
@@ -285,13 +282,12 @@ msgid "Desktop Error"
 msgstr "Error de escritorio"
 
 #: ../src/xfdesktop-app-menu-item.c:234
-#, fuzzy
 msgid "Needs terminal"
-msgstr "Terminal"
+msgstr "Requiere terminal"
 
 #: ../src/xfdesktop-app-menu-item.c:235
 msgid "Whether or not the command needs a terminal to execute"
-msgstr ""
+msgstr "Si necesita o no un terminal para ejecutarse"
 
 #: ../src/xfdesktop-app-menu-item.c:241
 msgid "Command"
@@ -300,7 +296,7 @@ msgstr "Comando"
 #: ../src/xfdesktop-app-menu-item.c:242
 #, fuzzy
 msgid "The command to run when the item is clicked"
-msgstr "Â¡La orden no existe!"
+msgstr "El comando a ejecutar cuando el objeto es cliqueado"
 
 #: ../src/xfdesktop-app-menu-item.c:248
 #, fuzzy
@@ -313,16 +309,15 @@ msgstr ""
 
 #: ../src/xfdesktop-app-menu-item.c:255
 msgid "Label"
-msgstr ""
+msgstr "Etiqueta"
 
 #: ../src/xfdesktop-app-menu-item.c:256
 msgid "The label displayed in the item"
-msgstr ""
+msgstr "La etiqueta a mostrar en el objeto"
 
 #: ../src/xfdesktop-app-menu-item.c:262
-#, fuzzy
 msgid "Startup notification"
-msgstr "Utilizar _notificación de inicio"
+msgstr "Notificación de inicio"
 
 #: ../src/xfdesktop-app-menu-item.c:263
 msgid "Whether or not the app supports startup notification"
@@ -356,11 +351,8 @@ msgstr "La aplicación asociada no pudo ser encontrada ni ejecutada."
 
 #: ../src/xfdesktop-file-icon-manager.c:479
 #, c-format
-msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr ""
-"Xfdesktop no pudo crear el directorio \"%s\" para almacenar los elementos de "
-"escritorio:"
+msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+msgstr "Xfdesktop no pudo crear el directorio \"%s\" para almacenar los elementos de escritorio:"
 
 #: ../src/xfdesktop-file-icon-manager.c:481
 #: ../src/xfdesktop-file-icon-manager.c:492
@@ -370,12 +362,8 @@ msgstr "Fallo al crear el directorio"
 
 #: ../src/xfdesktop-file-icon-manager.c:490
 #, c-format
-msgid ""
-"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
-"folder."
-msgstr ""
-"Xfdesktop no puede usar \"%s\" para contener elementos de escritorio porque "
-"no es un directorio."
+msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
+msgstr "Xfdesktop no puede usar \"%s\" para contener elementos de escritorio porque no es un directorio."
 
 #: ../src/xfdesktop-file-icon-manager.c:494
 msgid "Please delete or rename the file."
@@ -425,12 +413,8 @@ msgid "The application chooser could not be opened."
 msgstr "El selector de aplicación no pudo abrirse."
 
 #: ../src/xfdesktop-file-icon-manager.c:986 ../src/xfdesktop-file-utils.c:368
-msgid ""
-"This feature requires a file manager service present (such as that supplied "
-"by Thunar)."
-msgstr ""
-"Esta funcionalidad necesita la presencia de un administrador de archivos "
-"(como el proporcionado por Thunar)."
+msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
+msgstr "Esta funcionalidad necesita la presencia de un administrador de archivos (como el proporcionado por Thunar)."
 
 #: ../src/xfdesktop-file-icon-manager.c:1182
 #, c-format
@@ -448,12 +432,8 @@ msgid "Unable to create folder named \"%s\":"
 msgstr "No se pudo crear el directorio con nombre \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1289
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
-msgstr ""
-"No se pudo iniciar \"exo-desktop-item-edit\", el cual se necesita para crear "
-"y editar lanzadores y enlaces en el escritorio."
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgstr "No se pudo iniciar \"exo-desktop-item-edit\", el cual se necesita para crear y editar lanzadores y enlaces en el escritorio."
 
 #: ../src/xfdesktop-file-icon-manager.c:1324
 msgid "Create New Folder"
@@ -576,8 +556,7 @@ msgstr "Error de ejecución"
 #: ../src/xfdesktop-file-properties-dialog.c:104
 #, c-format
 msgid "Unable to set default application for \"%s\" to \"%s\":"
-msgstr ""
-"No se pudo configurar \"%2$s\" como aplicación por defecto para \"%1$s\":"
+msgstr "No se pudo configurar \"%2$s\" como aplicación por defecto para \"%1$s\":"
 
 #: ../src/xfdesktop-file-properties-dialog.c:107
 msgid "Properties Error"
@@ -737,12 +716,8 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "No se pudo contactar con el servicio de papelera de Xfce"
 
 #: ../src/xfdesktop-special-file-icon.c:522
-msgid ""
-"Make sure you have a file manager installed that supports the Xfce Trash "
-"service, such as Thunar."
-msgstr ""
-"Asegúrese de tener un administrador de archivos instalado que soporte el "
-"servicio de papelera de Xfce, como por ejemplo Thunar."
+msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
+msgstr "Asegúrese de tener un administrador de archivos instalado que soporte el servicio de papelera de Xfce, como por ejemplo Thunar."
 
 #: ../src/xfdesktop-special-file-icon.c:655
 msgid "_Empty Trash"
@@ -1029,8 +1004,7 @@ msgstr "E_xpulsar volumen"
 #~ "Ampliado"
 
 #~ msgid "Automatically pick a random image from a list file"
-#~ msgstr ""
-#~ "Seleccionar automáticamente una imagen aleatoria de un archivo de lista"
+#~ msgstr "Seleccionar automáticamente una imagen aleatoria de un archivo de lista"
 
 #~ msgid "B_rightness:"
 #~ msgstr "B_rillo:"
@@ -1113,8 +1087,7 @@ msgstr "E_xpulsar volumen"
 #~ msgstr "Seleccionar una sola imagen como fondo"
 
 #~ msgid "Set desktop background and menu and icon behavior"
-#~ msgstr ""
-#~ "Configure el fondo de escritorio y el comportamiento de menús e iconos"
+#~ msgstr "Configure el fondo de escritorio y el comportamiento de menús e iconos"
 
 #~ msgid "Sh_ow application icons in menu"
 #~ msgstr "_Mostrar iconos de aplicación en el menú"
@@ -1123,14 +1096,10 @@ msgstr "E_xpulsar volumen"
 #~ msgstr "Mostrar iconos de _aplicación en el menú"
 
 #~ msgid "Show _window list menu on desktop middle click"
-#~ msgstr ""
-#~ "Mostrar menú de lista de _ventanas al hacer clic con el botón central "
-#~ "sobre el escritorio"
+#~ msgstr "Mostrar menú de lista de _ventanas al hacer clic con el botón central sobre el escritorio"
 
 #~ msgid "Show applications menu on _desktop right click"
-#~ msgstr ""
-#~ "Mostrar menú de aplicaciones al hacer clic con el botón derecho sobre el "
-#~ "_escritorio"
+#~ msgstr "Mostrar menú de aplicaciones al hacer clic con el botón derecho sobre el _escritorio"
 
 #~ msgid "Show s_ticky windows only in active workspace"
 #~ msgstr "Mostrar ventanas adhe_sivas sólo en el área de trabajo activa"
@@ -1150,30 +1119,19 @@ msgstr "E_xpulsar volumen"
 #~ "Transparente"
 
 #~ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-#~ msgstr ""
-#~ "Especifica el color de la parte \"derecha\" o \"inferior\" del gradiente"
+#~ msgstr "Especifica el color de la parte \"derecha\" o \"inferior\" del gradiente"
 
-#~ msgid ""
-#~ "Specifies the solid color, or the \"left\" or \"top\" color of the "
-#~ "gradient"
-#~ msgstr ""
-#~ "Especifica el color sólido o el color de la parte \"izquierda\" o "
-#~ "\"superior\" del gradiente"
+#~ msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+#~ msgstr "Especifica el color sólido o el color de la parte \"izquierda\" o \"superior\" del gradiente"
 
 #~ msgid "Specify how the image will be resized to fit the screen"
-#~ msgstr ""
-#~ "Especificar cómo se redimensionará la imagen para ajustarse a la pantalla"
+#~ msgstr "Especificar cómo se redimensionará la imagen para ajustarse a la pantalla"
 
 #~ msgid "Specify the style of the color drawn behind the backdrop image"
-#~ msgstr ""
-#~ "Especificar el estilo del color dibujado detrás de la imagen de fondo"
+#~ msgstr "Especificar el estilo del color dibujado detrás de la imagen de fondo"
 
-#~ msgid ""
-#~ "Specify the transparency level for the rounded label drawn behind the "
-#~ "icon text"
-#~ msgstr ""
-#~ "Especificar el nivel de transparencia para la etiqueta redondeada "
-#~ "dibujada detrás del texto de icono"
+#~ msgid "Specify the transparency level for the rounded label drawn behind the icon text"
+#~ msgstr "Especificar el nivel de transparencia para la etiqueta redondeada dibujada detrás del texto de icono"
 
 #~ msgid "St_yle:"
 #~ msgstr "Est_ilo:"
@@ -1307,14 +1265,8 @@ msgstr "E_xpulsar volumen"
 #~ msgid "xfce4-menueditor is deprecated"
 #~ msgstr "xfce4-menueditor es obsoleto"
 
-#~ msgid ""
-#~ "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
-#~ "edit the new menu file format.  You may continue and edit an old-style "
-#~ "menu file, or quit."
-#~ msgstr ""
-#~ "El sistema de menú de Xfce ha sido sustituido y xfce4-menueditor no puede "
-#~ "editar el nuevo formato de archivo. Puede continuar y editar un archivo "
-#~ "con el formato anterior o abandonar."
+#~ msgid "Xfce's menu system has been replaced, and xfce4-menueditor is not able to edit the new menu file format.  You may continue and edit an old-style menu file, or quit."
+#~ msgstr "El sistema de menú de Xfce ha sido sustituido y xfce4-menueditor no puede editar el nuevo formato de archivo. Puede continuar y editar un archivo con el formato anterior o abandonar."
 
 #~ msgid "Continue"
 #~ msgstr "Continuar"
@@ -1508,8 +1460,7 @@ msgstr "E_xpulsar volumen"
 #~ msgid ""
 #~ "Could not save file %s: %s\n"
 #~ "\n"
-#~ "Please choose another location or press cancel in the dialog to discard "
-#~ "your changes"
+#~ "Please choose another location or press cancel in the dialog to discard your changes"
 #~ msgstr ""
 #~ "No se pudo guardar archivo %s: %s\n"
 #~ "\n"
@@ -1520,8 +1471,7 @@ msgstr "E_xpulsar volumen"
 #~ msgstr "fondos.list"
 
 #~ msgid "Select backdrop image or list file"
-#~ msgstr ""
-#~ "Seleccione imagen de fondo de escritorio o archivo de lista de fondos"
+#~ msgstr "Seleccione imagen de fondo de escritorio o archivo de lista de fondos"
 
 #~ msgid "List Files (*.list)"
 #~ msgstr "Listar archivos (*.list)"
@@ -1559,13 +1509,7 @@ msgstr "E_xpulsar volumen"
 #~ msgid "Unable to start xfdesktop"
 #~ msgstr "No se pudo iniciar xfdesktop"
 
-#, fuzzy
-#~ msgid ""
-#~ "To ensure that this setting takes effect the next time you start Xfce, "
-#~ "please be sure to save your session when logging out.  If you are not "
-#~ "using the Xfce Session Manager (xfce4-session), you will need to manually "
-#~ "edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
-#~ "documentation provided on http://xfce.org/."
+#~ msgid "To ensure that this setting takes effect the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
 #~ msgstr ""
 #~ "Para asegurarse de que Xfce no gestione su sesión la próxima vez que\n"
 #~ "inicie Xfce, por favor asegurese guardar su sesión cuando finalice. Si\n"
@@ -1573,12 +1517,7 @@ msgstr "E_xpulsar volumen"
 #~ "editar manualmente el archivo ~/.config/xfce4/xinitrc. Mayor detalle en\n"
 #~ "la documentación publicada en http://xfce.org."
 
-#~ msgid ""
-#~ "To ensure that Xfce does not manage your desktop the next time you start "
-#~ "Xfce, please be sure to save your session when logging out.  If you are "
-#~ "not using the Xfce Session Manager (xfce4-session), you will need to "
-#~ "manually edit your ~/.config/xfce4/xinitrc file.  Details are available "
-#~ "in the documentation provided on http://xfce.org/."
+#~ msgid "To ensure that Xfce does not manage your desktop the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
 #~ msgstr ""
 #~ "Para asegurarse de que Xfce no gestione su sesión la próxima vez que\n"
 #~ "inicie Xfce, por favor asegurese guardar su sesión cuando finalice. Si\n"
@@ -1589,7 +1528,6 @@ msgstr "E_xpulsar volumen"
 #~ msgid "_Do not show this again"
 #~ msgstr "N_o mostrar esto nuevamente"
 
-#, fuzzy
 #~ msgid "Desktop Preferences"
 #~ msgstr "Configuración del escritorio"
 
@@ -1626,36 +1564,28 @@ msgstr "E_xpulsar volumen"
 #~ msgid "List file"
 #~ msgstr "Archivo de Lista"
 
-#, fuzzy
 #~ msgid "Desktop Icons"
 #~ msgstr "Menú del escritorio"
 
-#, fuzzy
 #~ msgid "Des_ktop"
 #~ msgstr "Escritorio"
 
-#, fuzzy
 #~ msgid "_Desktop Properties..."
 #~ msgstr "Editar propiedades"
 
-#, fuzzy
 #~ msgid "Scientific applications and tools"
 #~ msgstr "Mostrar iconos de _aplicaciones"
 
 #~ msgid "Unable to quit session."
 #~ msgstr "No se pudo finalizar la sesión."
 
-#~ msgid ""
-#~ "Quitting the session requires that Xfce's session manager (xfce4-session) "
-#~ "is running, but it was not detected.  Please quit Xfce via another means."
+#~ msgid "Quitting the session requires that Xfce's session manager (xfce4-session) is running, but it was not detected.  Please quit Xfce via another means."
 #~ msgstr ""
 #~ "Para finalizar la sesión se requiere que el gestor de sesión\n"
 #~ "(xfce4-session) este en ejecución, pero éste no ha sido detectado. Por\n"
 #~ "favor utilice otros medios para salir."
 
-#~ msgid ""
-#~ "Quitting the session requires the 'xfce4-session-logout' command, but it "
-#~ "could not be found: %s"
+#~ msgid "Quitting the session requires the 'xfce4-session-logout' command, but it could not be found: %s"
 #~ msgstr ""
 #~ "Para finalizar la sesión se requiere la orden Â«xece4-session-logoutÂ»,\n"
 #~ "que no ha sido encontrada: %s"
@@ -1663,43 +1593,33 @@ msgstr "E_xpulsar volumen"
 #~ msgid "Edit Properties"
 #~ msgstr "Editar propiedades"
 
-#, fuzzy
 #~ msgid "Unable to empty the trash."
 #~ msgstr "No se pudo finalizar la sesión."
 
-#, fuzzy
 #~ msgid "Unknown error."
 #~ msgstr "Error desconocido"
 
-#, fuzzy
 #~ msgid "_Copy Files"
 #~ msgstr "_Archivo"
 
-#, fuzzy
 #~ msgid "_Copy File"
 #~ msgstr "_Archivo"
 
-#, fuzzy
 #~ msgid "Cu_t Files"
 #~ msgstr "_Archivo"
 
-#, fuzzy
 #~ msgid "Cu_t File"
 #~ msgstr "_Archivo"
 
-#, fuzzy
 #~ msgid "_Delete Files"
 #~ msgstr "Seleccionar archivo de menú"
 
-#, fuzzy
 #~ msgid "_Delete File"
 #~ msgstr "Seleccionar archivo de menú"
 
-#, fuzzy
 #~ msgid "_Paste Files"
 #~ msgstr "Listar archivos"
 
-#, fuzzy
 #~ msgid "Are sure you want to quit?"
 #~ msgstr "¿Está seguro(a) que quiere cerrar el menú actual?"
 
