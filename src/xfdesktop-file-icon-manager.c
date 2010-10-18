@@ -773,21 +773,20 @@ xfdesktop_file_icon_manager_trash_files_cb(DBusGProxy *proxy,
                                            GError *error,
                                            gpointer user_data)
 {
-    XfdesktopTrashFilesData *tdata = user_data;
-    
+    XfdesktopFileIconManager *fmanager = user_data;
+
+    g_return_if_fail(fmanager);
+
     if(error) {
-        /* fallback to normal deletion */
-        xfdesktop_file_icon_manager_delete_files(tdata->fmanager, tdata->files);
+        GtkWidget *parent = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
+
+        xfce_message_dialog(GTK_WINDOW (parent),
+                            _("Trash Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("The selected files could not be trashed"),
+                            _("This feature requires a file manager service to "
+                              "be present (such as the one supplied by Thunar)."),
+                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
     }
-    
-    tdata->fmanager->priv->active_trash_calls = g_list_remove(tdata->fmanager->priv->active_trash_calls,
-                                                              tdata);
-    
-    g_object_unref(G_OBJECT(tdata->proxy));
-    g_list_foreach(tdata->files, (GFunc)g_object_unref, NULL);
-    g_list_free(tdata->files);
-    
-    g_free(tdata);
 }
 
 static gboolean
@@ -795,12 +794,11 @@ xfdesktop_file_icon_manager_trash_files(XfdesktopFileIconManager *fmanager,
                                         GList *files)
 {
     DBusGProxy *trash_proxy = xfdesktop_file_utils_peek_trash_proxy();
-    DBusGProxyCall *call;
+    gboolean result = TRUE;
     gchar **uris, *display_name, *startup_id;
     GList *l;
     gint i, nfiles;
-    const ThunarVfsInfo *info;
-    XfdesktopTrashFilesData *tdata;
+    GFile *file;
     
     g_return_val_if_fail(files, TRUE);
     
@@ -811,36 +809,36 @@ xfdesktop_file_icon_manager_trash_files(XfdesktopFileIconManager *fmanager,
     uris = g_new(gchar *, nfiles + 1);
     
     for(l = files, i = 0; l; l = l->next, ++i) {
-        info = xfdesktop_file_icon_peek_info(XFDESKTOP_FILE_ICON(l->data));
-        uris[i] = thunar_vfs_path_dup_uri(info->path);
+        file = xfdesktop_file_icon_peek_file(XFDESKTOP_FILE_ICON(l->data));
+        uris[i] = g_file_get_uri(file);
     }
     uris[nfiles] = NULL;
     
     display_name = gdk_screen_make_display_name(fmanager->priv->gscreen);
-
     startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
     
-    tdata = g_new(XfdesktopTrashFilesData, 1);
-    call = xfdesktop_trash_proxy_move_to_trash_async(trash_proxy, (const char **)uris,
-                                                     display_name, startup_id,
-                                                     xfdesktop_file_icon_manager_trash_files_cb, 
-                                                     tdata);
+    if (!xfdesktop_trash_proxy_move_to_trash_async(trash_proxy, (const char **)uris,
+                                                   display_name, startup_id,
+                                                   xfdesktop_file_icon_manager_trash_files_cb, 
+                                                   fmanager))
+    {
+        GtkWidget *parent = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
 
-    if(call) {
-        tdata->fmanager = fmanager;
-        tdata->proxy = g_object_ref(G_OBJECT(trash_proxy));
-        tdata->call = call;
-        tdata->files = files;
-        fmanager->priv->active_trash_calls = g_list_prepend(fmanager->priv->active_trash_calls,
-                                                            tdata);
-    } else
-        g_free(tdata);
+        xfce_message_dialog(GTK_WINDOW (parent),
+                            _("Trash Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("The selected files could not be trashed"),
+                            _("This feature requires a file manager service to "
+                              "be present (such as the one supplied by Thunar)."),
+                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+
+        result = FALSE;
+    }
     
     g_free(startup_id);
     g_strfreev(uris);
     g_free(display_name);
     
-    return !!call;
+    return result;
 }
 
 static void
@@ -880,13 +878,14 @@ xfdesktop_file_icon_manager_delete_selected(XfdesktopFileIconManager *fmanager,
     /* make sure the icons don't get destroyed while we're working */
     g_list_foreach(selected, (GFunc)g_object_ref, NULL);
     
-    if(force_delete || !xfdesktop_file_icon_manager_trash_files(fmanager,
-                                                                selected))
-    {
+    if (!force_delete) {
+        xfdesktop_file_icon_manager_trash_files(fmanager, selected);
+    } else {
         xfdesktop_file_icon_manager_delete_files(fmanager, selected);
-        g_list_foreach(selected, (GFunc)g_object_unref, NULL);
-        g_list_free(selected);
     }
+      
+    g_list_foreach(selected, (GFunc)g_object_unref, NULL);
+    g_list_free(selected);
     
     xfdesktop_file_icon_position_changed(NULL, fmanager);
 }
