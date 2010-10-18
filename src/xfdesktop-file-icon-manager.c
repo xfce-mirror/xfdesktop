@@ -125,8 +125,6 @@ struct _XfdesktopFileIconManagerPrivate
     GtkTargetList *drag_targets;
     GtkTargetList *drop_targets;
     
-    GList *active_trash_calls;
-    
 #ifdef HAVE_THUNARX
     GList *thunarx_menu_providers;
     GList *thunarx_properties_providers;
@@ -3076,23 +3074,6 @@ xfdesktop_file_icon_manager_fini(XfdesktopIconViewManager *manager)
                                              fmanager);
         g_object_unref(G_OBJECT(fmanager->priv->list_job));
         fmanager->priv->list_job = NULL;
-    }
-    
-    if(fmanager->priv->active_trash_calls) {
-        GList *l;
-        XfdesktopTrashFilesData *tdata;
-        
-        for(l = fmanager->priv->active_trash_calls; l; l = l->next) {
-            tdata = l->data;
-            dbus_g_proxy_cancel_call(tdata->proxy, tdata->call);
-            g_object_unref(tdata->proxy);
-            g_list_foreach(tdata->files, (GFunc)g_object_unref, NULL);
-            g_list_free(tdata->files);
-            g_free(tdata);
-        }
-        
-        g_list_free(fmanager->priv->active_trash_calls);
-        fmanager->priv->active_trash_calls = NULL;
     }
     
     g_signal_handlers_disconnect_by_func(G_OBJECT(fmanager->priv->desktop),
