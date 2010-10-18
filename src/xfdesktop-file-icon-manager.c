@@ -1090,15 +1090,10 @@ xfdesktop_file_icon_manager_desktop_properties(GtkWidget *widget,
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
     GtkWidget *parent = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
+    GFile *file = xfdesktop_file_icon_peek_file (fmanager->priv->desktop_icon);
     
-    xfdesktop_file_properties_dialog_show(GTK_WINDOW(parent),
-                                          fmanager->priv->desktop_icon,
-#ifdef HAVE_THUNARX
-                                          fmanager->priv->thunarx_properties_providers
-#else
-                                          NULL
-#endif
-                                          );
+    xfdesktop_file_utils_show_properties_dialog(file, fmanager->priv->gscreen,
+                                                GTK_WINDOW(parent));
 }
 
 static GtkWidget *
