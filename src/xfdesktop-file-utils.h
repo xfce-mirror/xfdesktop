@@ -90,6 +90,9 @@ void xfdesktop_file_utils_create_file(GFile *parent_folder,
 void xfdesktop_file_utils_show_properties_dialog(GFile *file,
                                                  GdkScreen *screen,
                                                  GtkWindow *parent);
+void xfdesktop_file_utils_launch(GFile *file,
+                                 GdkScreen *screen,
+                                 GtkWindow *parent);
 
 
 gboolean xfdesktop_file_utils_dbus_init(void);

@@ -658,6 +658,68 @@ xfdesktop_file_utils_show_properties_dialog(GFile *file,
     }
 }
 
+static void
+xfdesktop_file_utils_launch_cb(DBusGProxy *proxy,
+                               GError *error,
+                               gpointer user_data)
+{
+    GtkWindow *parent = user_data;
+
+    if(error) {
+        xfce_message_dialog(parent,
+                            _("Launch Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("The file could not be opened"),
+                            _("This feature requires a file manager service to "
+                              "be present (such as the one supplied by Thunar)."),
+                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+    }
+}
+
+void
+xfdesktop_file_utils_launch(GFile *file,
+                            GdkScreen *screen,
+                            GtkWindow *parent)
+{
+    DBusGProxy *fileman_proxy;
+    
+    g_return_if_fail(G_IS_FILE(file));
+    g_return_if_fail(GDK_IS_SCREEN(screen) || GTK_IS_WINDOW(parent));
+    
+    if(!screen)
+        screen = gtk_widget_get_screen(GTK_WIDGET(parent));
+    
+    fileman_proxy = xfdesktop_file_utils_peek_filemanager_proxy();
+    if(fileman_proxy) {
+        gchar *uri = g_file_get_uri(file);
+        gchar *display_name = gdk_screen_make_display_name(screen);
+        gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
+        
+        if(!xfdesktop_file_manager_proxy_launch_async(fileman_proxy,
+                                                      uri, display_name, startup_id,
+                                                      xfdesktop_file_utils_launch_cb,
+                                                      parent))
+        {
+            xfce_message_dialog(parent,
+                                _("Launch Error"), GTK_STOCK_DIALOG_ERROR,
+                                _("The file could not be opened"),
+                                _("This feature requires a file manager service to "
+                                  "be present (such as the one supplied by Thunar)."),
+                                GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+        }
+        
+        g_free(startup_id);
+        g_free(uri);
+        g_free(display_name);
+    } else {
+        xfce_message_dialog(parent,
+                            _("Launch Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("The file could not be opened"),
+                            _("This feature requires a file manager service to "
+                              "be present (such as the one supplied by Thunar)."),
+                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+    }
+}
+
 static gint dbus_ref_cnt = 0;
 static DBusGConnection *dbus_gconn = NULL;
 static DBusGProxy *dbus_trash_proxy = NULL;

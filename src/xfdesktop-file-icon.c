@@ -100,11 +100,10 @@ static gboolean
 xfdesktop_file_icon_activated(XfdesktopIcon *icon)
 {
     XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
-    const ThunarVfsInfo *info = xfdesktop_file_icon_peek_info(file_icon);
+    GFileInfo *info = xfdesktop_file_icon_peek_file_info(file_icon);
     GFile *file = xfdesktop_file_icon_peek_file(file_icon);
     GtkWidget *icon_view, *toplevel;
     GdkScreen *gscreen;
-    gboolean success = FALSE;
     
     TRACE("entering");
 
@@ -114,54 +113,13 @@ xfdesktop_file_icon_activated(XfdesktopIcon *icon)
     icon_view = xfdesktop_icon_peek_icon_view(icon);
     toplevel = gtk_widget_get_toplevel(icon_view);
     gscreen = gtk_widget_get_screen(icon_view);
-    
-    if(info->type == THUNAR_VFS_FILE_TYPE_DIRECTORY) {
+
+    if(g_file_info_get_file_type(info) == G_FILE_TYPE_DIRECTORY)
         xfdesktop_file_utils_open_folder(file, gscreen, GTK_WINDOW(toplevel));
-        success = TRUE;
-    } else {
-        if(info->flags & THUNAR_VFS_FILE_FLAGS_EXECUTABLE) {
-            success = thunar_vfs_info_execute(info, gscreen, NULL,
-                                                xfce_get_homedir(), NULL);
-        }
-        
-        if(!success) {
-            ThunarVfsMimeDatabase *mime_database;
-            ThunarVfsMimeApplication *mime_app;
-            
-            mime_database = thunar_vfs_mime_database_get_default();
-            
-            mime_app = thunar_vfs_mime_database_get_default_application(mime_database,
-                                                                        info->mime_info);
-            if(mime_app) {
-                GList *path_list = g_list_prepend(NULL, info->path);
-                
-                DBG("executing");
-                
-                success = thunar_vfs_mime_handler_exec(THUNAR_VFS_MIME_HANDLER(mime_app),
-                                                       gscreen, path_list, NULL);
-                if(!success) {
-                    gchar *primary = g_markup_printf_escaped(_("Unable to launch \"%s\":"),
-                                                             info->display_name);
-                    xfce_message_dialog(GTK_WINDOW(toplevel), _("Launch Error"),
-                                        GTK_STOCK_DIALOG_ERROR, primary,
-                                        _("The associated application could not be found or executed."),
-                                        GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
-                    g_free(primary);
-                }
-                
-                g_object_unref(G_OBJECT(mime_app));
-                g_list_free(path_list);
-            } else {
-                success = xfdesktop_file_utils_launch_fallback(info,
-                                                               gscreen,
-                                                               GTK_WINDOW(toplevel));
-            }
-            
-            g_object_unref(G_OBJECT(mime_database));
-        }
-    }
+    else
+        xfdesktop_file_utils_launch(file, gscreen, GTK_WINDOW(toplevel));
     
-    return success;
+    return TRUE;
 }
 
 
