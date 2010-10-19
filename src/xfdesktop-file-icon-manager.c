@@ -3131,8 +3131,8 @@ xfdesktop_file_icon_manager_drag_drop(XfdesktopIconViewManager *manager,
         if(drop_icon) {
             /* don't allow a drop on an icon that isn't a folder (i.e., not
              * on an icon that's an executable */
-            const ThunarVfsInfo *info = xfdesktop_file_icon_peek_info(XFDESKTOP_FILE_ICON(drop_icon));
-            if(!info || !(info->type & THUNAR_VFS_FILE_TYPE_DIRECTORY))
+            GFileInfo *info = xfdesktop_file_icon_peek_file_info(XFDESKTOP_FILE_ICON(drop_icon));
+            if(!info || g_file_info_get_file_type(info) != G_FILE_TYPE_DIRECTORY)
                 return FALSE;
         }
     }
