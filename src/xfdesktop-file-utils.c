@@ -532,6 +532,71 @@ xfdesktop_file_utils_rename_file(GFile *file,
 }
 
 static void
+xfdesktop_file_utils_create_file_cb(DBusGProxy *proxy,
+                                    GError *error,
+                                    gpointer user_data)
+{
+    GtkWindow *parent = user_data;
+
+    if(error) {
+        xfce_message_dialog(parent,
+                            _("Create File Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("Could not create a new file"),
+                            _("This feature requires a file manager service to "
+                              "be present (such as the one supplied by Thunar)."),
+                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+    }
+}
+
+void
+xfdesktop_file_utils_create_file(GFile *parent_folder,
+                                 const gchar *content_type,
+                                 GdkScreen *screen,
+                                 GtkWindow *parent)
+{
+    DBusGProxy *fileman_proxy;
+    
+    g_return_if_fail(G_IS_FILE(parent_folder));
+    g_return_if_fail(GDK_IS_SCREEN(screen) || GTK_IS_WINDOW(parent));
+    
+    if(!screen)
+        screen = gtk_widget_get_screen(GTK_WIDGET(parent));
+    
+    fileman_proxy = xfdesktop_file_utils_peek_filemanager_proxy();
+    if(fileman_proxy) {
+        gchar *parent_directory = g_file_get_uri(parent_folder);
+        gchar *display_name = gdk_screen_make_display_name(screen);
+        gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
+        
+        if(!xfdesktop_file_manager_proxy_create_file_async(fileman_proxy, 
+                                                           parent_directory, 
+                                                           content_type, display_name,
+                                                           startup_id,
+                                                           xfdesktop_file_utils_create_file_cb,
+                                                           parent))
+        {
+            xfce_message_dialog(parent,
+                                _("Create File Error"), GTK_STOCK_DIALOG_ERROR,
+                                _("Could not create a new file"),
+                                _("This feature requires a file manager service to "
+                                  "be present (such as the one supplied by Thunar)."),
+                                GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+        }
+        
+        g_free(startup_id);
+        g_free(parent_directory);
+        g_free(display_name);
+    } else {
+        xfce_message_dialog(parent,
+                            _("Create File Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("Could not create a new file"),
+                            _("This feature requires a file manager service to "
+                              "be present (such as the one supplied by Thunar)."),
+                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+    }
+}
+
+static void
 xfdesktop_file_utils_show_properties_dialog_cb(DBusGProxy *proxy,
                                                GError *error,
                                                gpointer user_data)

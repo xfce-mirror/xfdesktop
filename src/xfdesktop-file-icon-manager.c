@@ -105,7 +105,7 @@ struct _XfdesktopFileIconManagerPrivate
     
     GdkScreen *gscreen;
     
-    ThunarVfsPath *folder;
+    GFile *folder;
     XfdesktopFileIcon *desktop_icon;
     ThunarVfsMonitor *monitor;
     ThunarVfsMonitorHandle *handle;
@@ -167,7 +167,7 @@ static void xfdesktop_file_icon_manager_drag_data_get(XfdesktopIconViewManager *
                                                       guint info,
                                                       guint time_);
 
-static gboolean xfdesktop_file_icon_manager_check_create_desktop_folder(ThunarVfsPath *path);
+static gboolean xfdesktop_file_icon_manager_check_create_desktop_folder(GFile *file);
 static void xfdesktop_file_icon_manager_load_desktop_folder(XfdesktopFileIconManager *fmanager);
 static void xfdesktop_file_icon_manager_load_removable_media(XfdesktopFileIconManager *fmanager);
 static void xfdesktop_file_icon_manager_remove_removable_media(XfdesktopFileIconManager *fmanager);
@@ -228,9 +228,9 @@ xfdesktop_file_icon_manager_class_init(XfdesktopFileIconManagerClass *klass)
     gobject_class->finalize = xfdesktop_file_icon_manager_finalize;
     
     g_object_class_install_property(gobject_class, PROP_FOLDER,
-                                    g_param_spec_boxed("folder", "Thunar VFS Folder",
+                                    g_param_spec_object("folder", "Desktop Folder",
                                                        "Folder this icon manager manages",
-                                                       THUNAR_VFS_TYPE_PATH,
+                                                       G_TYPE_FILE,
                                                        G_PARAM_READWRITE
                                                        | G_PARAM_CONSTRUCT_ONLY
                                                        | G_PARAM_STATIC_NAME
@@ -296,9 +296,8 @@ xfdesktop_file_icon_manager_set_property(GObject *object,
     
     switch(property_id) {
         case PROP_FOLDER:
-            fmanager->priv->folder = thunar_vfs_path_ref((ThunarVfsPath *)g_value_get_boxed(value));
-            if(fmanager->priv->folder)
-                xfdesktop_file_icon_manager_check_create_desktop_folder(fmanager->priv->folder);
+            fmanager->priv->folder = g_value_dup_object(value);
+            xfdesktop_file_icon_manager_check_create_desktop_folder(fmanager->priv->folder);
             break;
 
         case PROP_SHOW_FILESYSTEM:
@@ -339,7 +338,7 @@ xfdesktop_file_icon_manager_get_property(GObject *object,
     
     switch(property_id) {
         case PROP_FOLDER:
-            g_value_set_boxed(value, fmanager->priv->folder);
+            g_value_set_object(value, fmanager->priv->folder);
             break;
 
         case PROP_SHOW_FILESYSTEM:
@@ -379,7 +378,7 @@ xfdesktop_file_icon_manager_finalize(GObject *obj)
     gtk_target_list_unref(fmanager->priv->drag_targets);
     gtk_target_list_unref(fmanager->priv->drop_targets);
     
-    thunar_vfs_path_unref(fmanager->priv->folder);
+    g_object_unref(fmanager->priv->folder);
     
     G_OBJECT_CLASS(xfdesktop_file_icon_manager_parent_class)->finalize(obj);
 }
@@ -463,44 +462,56 @@ __migrate_old_icon_positions(XfdesktopFileIconManager *fmanager)
 }
 
 static gboolean
-xfdesktop_file_icon_manager_check_create_desktop_folder(ThunarVfsPath *path)
+xfdesktop_file_icon_manager_check_create_desktop_folder(GFile *folder)
 {
-    gboolean ret = TRUE;
-    gchar *pathname;
+    GFileInfo *info;
+    GError *error = NULL;
+    gboolean result = TRUE;
+    gchar *primary;
     
-    g_return_val_if_fail(path, FALSE);
-    
-    pathname = thunar_vfs_path_dup_string(path);
-    if(!g_file_test(pathname, G_FILE_TEST_EXISTS)) {
-        /* would prefer to use thunar_vfs_make_directory() here,
-         * but i don't want to use an async operation */
-        if(mkdir(pathname, 0700)) {
-            gchar *primary = g_markup_printf_escaped(_("Xfdesktop was unable to create the folder \"%s\" to store desktop items:"),
-                                                     pathname);
-            xfce_message_dialog(NULL, _("Create Folder Failed"),
+    g_return_val_if_fail(G_IS_FILE(folder), FALSE);
+
+    info = g_file_query_info(folder, XFDESKTOP_FILE_INFO_NAMESPACE,
+                             G_FILE_QUERY_INFO_NONE, NULL, NULL);
+
+    if(info == NULL) {
+        if(!g_file_make_directory_with_parents(folder, NULL, &error)) {
+            gchar *uri = g_file_get_uri(folder);
+            gchar *display_name = g_filename_display_basename(uri);
+            primary = g_markup_printf_escaped(_("Could not create the desktop folder \"%s\""),
+                                              display_name);
+            g_free(display_name);
+            g_free(uri);
+
+            xfce_message_dialog(NULL, _("Desktop Folder Error"),
                                 GTK_STOCK_DIALOG_WARNING, primary,
-                                strerror(errno), GTK_STOCK_CLOSE,
+                                error->message, GTK_STOCK_CLOSE,
                                 GTK_RESPONSE_ACCEPT, NULL);
             g_free(primary);
-            
-            ret = FALSE;
+
+            result = FALSE;
         }
-    } else if(!g_file_test(pathname, G_FILE_TEST_IS_DIR)) {
-        gchar *primary = g_markup_printf_escaped(_("Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."),
-                                                 pathname);
-        xfce_message_dialog(NULL, _("Create Folder Failed"),
-                            GTK_STOCK_DIALOG_WARNING, primary,
-                            _("Please delete or rename the file."),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
-                            NULL);
-        g_free(primary);
-        
-        ret = FALSE;
+    } else {
+        if(g_file_info_get_file_type(info) != G_FILE_TYPE_DIRECTORY) {
+            gchar *uri = g_file_get_uri(folder);
+            gchar *display_name = g_filename_display_basename(uri);
+            primary = g_markup_printf_escaped(_("Could not create the desktop folder \"%s\""),
+                                              display_name);
+            g_free(display_name);
+            g_free(uri);
+
+            xfce_message_dialog(NULL, _("Desktop Folder Error"),
+                                GTK_STOCK_DIALOG_WARNING, primary,
+                                _("A normal file with the same name already exists. "
+                                  "Please delete or rename it."), GTK_STOCK_CLOSE,
+                                GTK_RESPONSE_ACCEPT, NULL);
+            g_free(primary);
+
+            result = FALSE;
+        }
     }
-    
-    g_free(pathname);
-    
-    return ret;
+
+    return result;
 }
 
 
@@ -1171,25 +1182,6 @@ xfdesktop_file_icon_menu_free_icon_list(GtkMenu *menu,
 }
 
 static void
-xfdesktop_file_icon_create_directory_error(ThunarVfsJob *job,
-                                           GError *error,
-                                           gpointer user_data)
-{
-    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
-    GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
-    const gchar *folder_name = g_object_get_data(G_OBJECT(job),
-                                                 "xfdesktop-folder-name");
-    gchar *primary = g_markup_printf_escaped(_("Unable to create folder named \"%s\":"),
-                                             folder_name);
-    
-    xfce_message_dialog(GTK_WINDOW(toplevel), _("Create Folder Failed"),
-                        GTK_STOCK_DIALOG_ERROR, primary, error->message,
-                        GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
-    
-    g_free(primary);
-}
-
-static void
 xfdesktop_file_icon_menu_create_launcher(GtkWidget *widget,
                                          gpointer user_data)
 {
@@ -1207,7 +1199,7 @@ xfdesktop_file_icon_menu_create_launcher(GtkWidget *widget,
                               display_name, pathstr);
     } else {
         const gchar *type = g_object_get_data(G_OBJECT(widget), "xfdesktop-launcher-type");
-        pathstr = thunar_vfs_path_dup_string(fmanager->priv->folder);
+        pathstr = g_file_get_path(fmanager->priv->folder);
         if(G_UNLIKELY(!type))
             type = "Application";
         cmd = g_strdup_printf("exo-desktop-item-edit \"--display=%s\" --create-new --type %s \"%s\"",
@@ -1234,55 +1226,13 @@ xfdesktop_file_icon_menu_create_folder(GtkWidget *widget,
                                        gpointer user_data)
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
-    GtkWidget *dlg, *entry = NULL, *toplevel;
-    ThunarVfsMimeInfo *minfo;
-    GdkPixbuf *pix = NULL;
+    GtkWidget *toplevel;
     
     toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
     
-    minfo = thunar_vfs_mime_database_get_info(thunar_mime_database,
-                                              "inode/directory");
-    if(minfo) {
-        gint w, h;
-        GtkIconTheme *itheme = gtk_icon_theme_get_default();
-        const gchar *icon_name = thunar_vfs_mime_info_lookup_icon_name(minfo,
-                                                                       itheme);
-
-        gtk_icon_size_lookup(GTK_ICON_SIZE_DIALOG, &w, &h);
-        pix = gtk_icon_theme_load_icon(itheme, icon_name, w, ITHEME_FLAGS, NULL);
-        thunar_vfs_mime_info_unref(minfo);
-    }
-    
-    dlg = xfdesktop_file_icon_create_entry_dialog(_("Create New Folder"),
-                                                  GTK_WINDOW(toplevel),
-                                                  pix,
-                                                  _("Enter the new name:"),
-                                                  _("New Folder"),
-                                                  _("Create"),
-                                                  &entry);
-    
-    if(pix)
-        g_object_unref(G_OBJECT(pix));
-    
-    if(GTK_RESPONSE_ACCEPT == gtk_dialog_run(GTK_DIALOG(dlg))) {
-        gchar *name = gtk_editable_get_chars(GTK_EDITABLE(entry), 0, -1);
-        ThunarVfsPath *path = thunar_vfs_path_relative(fmanager->priv->folder,
-                                                       name);
-        ThunarVfsJob *job = thunar_vfs_make_directory(path, NULL);
-        if(job) {
-            g_object_set_data_full(G_OBJECT(job), "xfdesktop-folder-name",
-                                   name, (GDestroyNotify)g_free);
-            g_signal_connect(G_OBJECT(job), "error",
-                             G_CALLBACK(xfdesktop_file_icon_create_directory_error),
-                             fmanager);
-            g_signal_connect(G_OBJECT(job), "finished",
-                             G_CALLBACK(g_object_unref), NULL);
-            /* don't free |name|, GObject will do it */
-        } else
-            g_free(name);
-        thunar_vfs_path_unref(path);
-    }
-    gtk_widget_destroy(dlg);
+    xfdesktop_file_utils_create_file(fmanager->priv->folder, "inode/directory",
+                                     fmanager->priv->gscreen,
+                                     GTK_WINDOW(toplevel));
 }
 
 static void
@@ -1370,9 +1320,12 @@ xfdesktop_file_icon_template_item_activated(GtkWidget *mi,
     
     if(GTK_RESPONSE_ACCEPT == gtk_dialog_run(GTK_DIALOG(dlg))) {
         gchar *name = gtk_editable_get_chars(GTK_EDITABLE(entry), 0, -1);
-        ThunarVfsPath *path = thunar_vfs_path_relative(fmanager->priv->folder,
-                                                       name);
+        gchar *pathname = g_file_get_path(fmanager->priv->folder);
+        ThunarVfsPath *desktop_path = thunar_vfs_path_new(pathname, NULL);
+        ThunarVfsPath *path = thunar_vfs_path_relative(desktop_path, name);
         GError *error = NULL;
+        thunar_vfs_path_unref(desktop_path);
+        g_free(pathname);
         
         if(info)
             job = thunar_vfs_copy_file(info->path, path, &error);
@@ -2407,6 +2360,8 @@ xfdesktop_file_icon_manager_refresh_icons(XfdesktopFileIconManager *fmanager)
     /* add back removable media */
     if(fmanager->priv->show_removable_media)
         xfdesktop_file_icon_manager_load_removable_media(fmanager);
+
+    g_debug ("refresh icons: folder = %s", g_file_get_path(fmanager->priv->folder));
     
     /* reload and add ~/Desktop/ */
     xfdesktop_file_icon_manager_load_desktop_folder(fmanager);
@@ -2522,6 +2477,7 @@ xfdesktop_file_icon_manager_vfs_monitor_cb(ThunarVfsMonitor *monitor,
             DBG("got created event");
             
             /* make sure it's not the desktop folder itself */
+            /* TODO this will fail because folder is not a ThunarVfsPath */
             if(thunar_vfs_path_equal(fmanager->priv->folder, event_path))
                 return;
             
@@ -2624,10 +2580,14 @@ xfdesktop_file_icon_manager_listdir_finished_cb(ThunarVfsJob *job,
     }
     
     if(!fmanager->priv->handle) {
+        gchar *pathname = g_file_get_path(fmanager->priv->folder);
+        ThunarVfsPath *path = thunar_vfs_path_new(pathname, NULL);
         fmanager->priv->handle = thunar_vfs_monitor_add_directory(fmanager->priv->monitor,
-                                                                  fmanager->priv->folder,
+                                                                  path,
                                                                   xfdesktop_file_icon_manager_vfs_monitor_cb,
                                                                   fmanager);
+        thunar_vfs_path_unref(path);
+        g_free(pathname);
     }
     
     g_object_unref(G_OBJECT(job));
@@ -2650,6 +2610,9 @@ xfdesktop_file_icon_manager_listdir_error_cb(ThunarVfsJob *job,
 static void
 xfdesktop_file_icon_manager_load_desktop_folder(XfdesktopFileIconManager *fmanager)
 {
+    ThunarVfsPath *path;
+    gchar *pathname;
+
     if(fmanager->priv->deferred_icons) {
         g_list_foreach(fmanager->priv->deferred_icons,
                        (GFunc)thunar_vfs_info_unref, NULL);
@@ -2670,9 +2633,14 @@ xfdesktop_file_icon_manager_load_desktop_folder(XfdesktopFileIconManager *fmanag
                                              fmanager);
         g_object_unref(G_OBJECT(fmanager->priv->list_job));
     }
+
+    pathname = g_file_get_uri(fmanager->priv->folder);
+    path = thunar_vfs_path_new(pathname, NULL);
+    g_free(pathname);
     
-    fmanager->priv->list_job = thunar_vfs_listdir(fmanager->priv->folder,
-                                                  NULL);
+    fmanager->priv->list_job = thunar_vfs_listdir(path, NULL);
+
+    thunar_vfs_path_unref(path);
     
     g_signal_connect(G_OBJECT(fmanager->priv->list_job), "error",
                      G_CALLBACK(xfdesktop_file_icon_manager_listdir_error_cb),
@@ -2870,6 +2838,9 @@ static gboolean
 xfdesktop_file_icon_manager_real_init(XfdesktopIconViewManager *manager,
                                       XfdesktopIconView *icon_view)
 {
+    ThunarVfsPath *path;
+    gchar *pathname;
+
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(manager);
     ThunarVfsInfo *desktop_info;
     gint i;
@@ -2943,6 +2914,8 @@ xfdesktop_file_icon_manager_real_init(XfdesktopIconViewManager *manager,
     if(!xfdesktop_file_utils_dbus_init())
         g_warning("Unable to initialise D-Bus.  Some xfdesktop features may be unavailable.");
     
+    g_debug ("real init: folder = %s", g_file_get_path(fmanager->priv->folder));
+    
     /* do this in the reverse order stuff should be displayed */
     xfdesktop_file_icon_manager_load_desktop_folder(fmanager);
     if(fmanager->priv->show_removable_media)
@@ -2967,7 +2940,11 @@ xfdesktop_file_icon_manager_real_init(XfdesktopIconViewManager *manager,
     
     /* keep around a dummy icon for the desktop folder for use with thunarx
      * and the properties dialog */
-    desktop_info = thunar_vfs_info_new_for_path(fmanager->priv->folder, NULL);
+    pathname = g_file_get_path(fmanager->priv->folder);
+    path = thunar_vfs_path_new(pathname, NULL);
+    desktop_info = thunar_vfs_info_new_for_path(path, NULL);
+    thunar_vfs_path_unref(path);
+    g_free(pathname);
     fmanager->priv->desktop_icon = XFDESKTOP_FILE_ICON(xfdesktop_regular_file_icon_new(desktop_info,
                                                                                        fmanager->priv->gscreen));
     thunar_vfs_info_unref(desktop_info);
@@ -3109,21 +3086,21 @@ xfdesktop_file_icon_manager_drag_drop(XfdesktopIconViewManager *manager,
          * Thunar, Copyright (c) Benedikt Meurer */
         gint prop_len;
         guchar *prop_text = NULL;
-        ThunarVfsPath *src_path, *path;
+        GFile *source_file, *file;
         gchar *uri = NULL;
         
         if(drop_icon) {
-            const ThunarVfsInfo *info = xfdesktop_file_icon_peek_info(XFDESKTOP_FILE_ICON(drop_icon));
+            GFileInfo *info = xfdesktop_file_icon_peek_file_info(XFDESKTOP_FILE_ICON(drop_icon));
             if(!info)
                 return FALSE;
             
-            if(!(info->type & THUNAR_VFS_FILE_TYPE_DIRECTORY))
+            if(g_file_info_get_file_type(info) != G_FILE_TYPE_DIRECTORY)
                 return FALSE;
             
-            src_path = info->path;
+            source_file = xfdesktop_file_icon_peek_file(XFDESKTOP_FILE_ICON(drop_icon));
             
         } else
-            src_path = fmanager->priv->folder;
+            source_file = fmanager->priv->folder;
         
         if(gdk_property_get(context->source_window,
                             gdk_atom_intern("XdndDirectSave0", FALSE),
@@ -3133,9 +3110,10 @@ xfdesktop_file_icon_manager_drag_drop(XfdesktopIconViewManager *manager,
         {
             prop_text = g_realloc(prop_text, prop_len + 1);
             prop_text[prop_len] = 0;
-            
-            path = thunar_vfs_path_relative(src_path, (const gchar *)prop_text);
-            uri = thunar_vfs_path_dup_uri(path);
+
+            file = g_file_resolve_relative_path(source_file, (const gchar *)prop_text);
+            uri = g_file_get_uri(file);
+            g_object_unref(file);
             
             gdk_property_change(context->source_window,
                                 gdk_atom_intern("XdndDirectSave0", FALSE),
@@ -3143,7 +3121,6 @@ xfdesktop_file_icon_manager_drag_drop(XfdesktopIconViewManager *manager,
                                 GDK_PROP_MODE_REPLACE, (const guchar *)uri,
                                 strlen(uri));
             
-            thunar_vfs_path_unref(path);
             g_free(prop_text);
             g_free(uri);
         }
@@ -3192,10 +3169,14 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
                                                guint time_)
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(manager);
+#if 1
     XfdesktopFileIcon *file_icon = NULL;
     const ThunarVfsInfo *tinfo = NULL;
+#endif
     gboolean copy_only = TRUE, drop_ok = FALSE;
+#if 1
     GList *path_list;
+#endif
     
     if(info == TARGET_XDND_DIRECT_SAVE0) {
         /* we don't suppose XdndDirectSave stage 3, result F, i.e., the app
@@ -3216,21 +3197,21 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
         drop_ok = TRUE;
     } else if(info == TARGET_NETSCAPE_URL) {
         /* data is "URL\nTITLE" */
-        ThunarVfsPath *src_path = NULL;
+        GFile *source_file = NULL;
         gchar *exo_desktop_item_edit = g_find_program_in_path("exo-desktop-item-edit");
         
         if(drop_icon) {
-            const ThunarVfsInfo *finfo = xfdesktop_file_icon_peek_info(XFDESKTOP_FILE_ICON(drop_icon));
-            if(finfo && finfo->type & THUNAR_VFS_FILE_TYPE_DIRECTORY)
-                src_path = finfo->path;
+            GFileInfo *finfo = xfdesktop_file_icon_peek_file_info(XFDESKTOP_FILE_ICON(drop_icon));
+            if(g_file_info_get_file_type(finfo) == G_FILE_TYPE_DIRECTORY)
+                source_file = xfdesktop_file_icon_peek_file(XFDESKTOP_FILE_ICON(drop_icon));
         } else
-            src_path = fmanager->priv->folder;
+            source_file = fmanager->priv->folder;
         
-        if(src_path && exo_desktop_item_edit) {
+        if(source_file && exo_desktop_item_edit) {
             gchar **parts = g_strsplit((const gchar *)data->data, "\n", -1);
             
             if(2 == g_strv_length(parts)) {
-                gchar *cwd = thunar_vfs_path_dup_string(src_path);
+                gchar *cwd = g_file_get_uri(source_file);
                 gchar *myargv[16];
                 gint i = 0;
                 
@@ -3262,6 +3243,7 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
         
         g_free(exo_desktop_item_edit);
     } else if(info == TARGET_TEXT_URI_LIST) {
+#if 1
         if(drop_icon) {
             file_icon = XFDESKTOP_FILE_ICON(drop_icon);
             tinfo = xfdesktop_file_icon_peek_info(file_icon);
@@ -3318,10 +3300,19 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
                 if(tinfo && (dest_is_special || dest_is_volume))
                     base_dest_path = thunar_vfs_path_ref(tinfo->path);
                 else if(tinfo && tinfo->type == THUNAR_VFS_FILE_TYPE_DIRECTORY) {
-                    base_dest_path = thunar_vfs_path_relative(fmanager->priv->folder,
+                    gchar *pathname = g_file_get_path(fmanager->priv->folder);
+                    ThunarVfsPath *path = thunar_vfs_path_new(pathname, NULL);
+                    base_dest_path = thunar_vfs_path_relative(path,
                                                               thunar_vfs_path_get_name(tinfo->path));
-                } else
-                    base_dest_path = thunar_vfs_path_ref(fmanager->priv->folder);
+                    thunar_vfs_path_unref(path);
+                    g_free(pathname);
+                } else {
+                    gchar *pathname = g_file_get_path(fmanager->priv->folder);
+                    ThunarVfsPath *path = thunar_vfs_path_new(pathname, NULL);
+                    base_dest_path = thunar_vfs_path_ref(path);
+                    thunar_vfs_path_unref(path);
+                    g_free(pathname);
+                }
                 
                 for(l = path_list; l; l = l->next) {
                     ThunarVfsPath *path = (ThunarVfsPath *)l->data;
@@ -3376,6 +3367,7 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
             
             thunar_vfs_path_list_free(path_list);
         }
+#endif
     }
     
     DBG("finishing drop on desktop from external source: drop_ok=%s, copy_only=%s",
@@ -3413,7 +3405,7 @@ xfdesktop_file_icon_manager_drag_data_get(XfdesktopIconViewManager *manager,
 /* public api */
 
 XfdesktopIconViewManager *
-xfdesktop_file_icon_manager_new(ThunarVfsPath *folder,
+xfdesktop_file_icon_manager_new(GFile *folder,
                                 XfconfChannel *channel)
 {
     XfdesktopFileIconManager *fmanager;

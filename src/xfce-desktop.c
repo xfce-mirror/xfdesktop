@@ -209,26 +209,13 @@ xfce_desktop_setup_icon_view(XfceDesktop *desktop)
 #ifdef ENABLE_FILE_ICONS
         case XFCE_DESKTOP_ICON_STYLE_FILES:
             {
-                ThunarVfsPath *path;
-                gchar *desktop_path;
+                GFile *file;
+                const gchar *desktop_path;
                 
-#if GLIB_CHECK_VERSION(2, 14, 0)
-                /* glib always returns non-NULL for _DESKTOP */
-                desktop_path = g_strdup(g_get_user_special_dir(G_USER_DIRECTORY_DESKTOP));
-#else
-                desktop_path = xfce_get_homefile("Desktop", NULL);
-#endif
-
-                path = thunar_vfs_path_new(desktop_path, NULL);
-                if(path) {
-                    manager = xfdesktop_file_icon_manager_new(path, 
-                                                              desktop->priv->channel);
-                    thunar_vfs_path_unref(path);
-                } else {
-                    g_critical("Unable to create ThunarVfsPath for '%s'",
-                               desktop_path);
-                }
-                g_free(desktop_path);
+                desktop_path = g_get_user_special_dir(G_USER_DIRECTORY_DESKTOP);
+                file = g_file_new_for_path(desktop_path);
+                manager = xfdesktop_file_icon_manager_new(file, desktop->priv->channel);
+                g_object_unref(file);
             }
             break;
 #endif

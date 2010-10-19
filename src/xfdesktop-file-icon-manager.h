@@ -53,7 +53,7 @@ struct _XfdesktopFileIconManagerClass
 
 GType xfdesktop_file_icon_manager_get_type(void) G_GNUC_CONST;
 
-XfdesktopIconViewManager *xfdesktop_file_icon_manager_new(ThunarVfsPath *folder,
+XfdesktopIconViewManager *xfdesktop_file_icon_manager_new(GFile *folder,
                                                           XfconfChannel *channel);
 
 void xfdesktop_file_icon_manager_set_show_removable_media(XfdesktopFileIconManager *manager,
