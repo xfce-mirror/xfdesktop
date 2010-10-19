@@ -107,8 +107,7 @@ struct _XfdesktopFileIconManagerPrivate
     
     GFile *folder;
     XfdesktopFileIcon *desktop_icon;
-    ThunarVfsMonitor *monitor;
-    ThunarVfsMonitorHandle *handle;
+    GFileMonitor *monitor;
     ThunarVfsJob *list_job;
     
     GHashTable *icons;
@@ -2242,8 +2241,12 @@ xfdesktop_file_icon_manager_add_regular_icon(XfdesktopFileIconManager *fmanager,
                                              XFDESKTOP_FILE_ICON(icon),
                                              defer_if_missing))
     {
-        g_hash_table_replace(fmanager->priv->icons,
-                             thunar_vfs_path_ref(info->path), icon);
+        gchar *uri = thunar_vfs_path_dup_uri(info->path);
+        GFile *file = g_file_new_for_uri(uri);
+
+        g_hash_table_replace(fmanager->priv->icons, file, icon);
+        g_free(uri);
+
         return XFDESKTOP_FILE_ICON(icon);
     } else {
         g_object_unref(G_OBJECT(icon));
@@ -2361,8 +2364,6 @@ xfdesktop_file_icon_manager_refresh_icons(XfdesktopFileIconManager *fmanager)
     if(fmanager->priv->show_removable_media)
         xfdesktop_file_icon_manager_load_removable_media(fmanager);
 
-    g_debug ("refresh icons: folder = %s", g_file_get_path(fmanager->priv->folder));
-    
     /* reload and add ~/Desktop/ */
     xfdesktop_file_icon_manager_load_desktop_folder(fmanager);
 }
@@ -2444,77 +2445,91 @@ xfdesktop_file_icon_manager_key_press(GtkWidget *widget,
 }
 
 static void
-xfdesktop_file_icon_manager_vfs_monitor_cb(ThunarVfsMonitor *monitor,
-                                           ThunarVfsMonitorHandle *handle,
-                                           ThunarVfsMonitorEvent event,
-                                           ThunarVfsPath *handle_path,
-                                           ThunarVfsPath *event_path,
-                                           gpointer user_data)
+xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
+                                         GFile            *file,
+                                         GFile            *other_file,
+                                         GFileMonitorEvent event,
+                                         gpointer          user_data)
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
     XfdesktopFileIcon *icon;
     ThunarVfsInfo *info;
-    
+    ThunarVfsPath *path;
+    GFileInfo *file_info;
+    gchar *pathname;
+
     switch(event) {
-        case THUNAR_VFS_MONITOR_EVENT_CHANGED:
-            DBG("got changed event");
+        case G_FILE_MONITOR_EVENT_CHANGES_DONE_HINT:
+            DBG("got changes done hint event: %s", g_file_get_path(file));
             
-            icon = g_hash_table_lookup(fmanager->priv->icons, event_path);
+            icon = g_hash_table_lookup(fmanager->priv->icons, file);
             if(icon) {
-                DBG("found event_path in HT");
+                DBG("found file in HT");
                 
-                info = thunar_vfs_info_new_for_path(event_path, NULL);
-                if(info) {
-                    xfdesktop_file_icon_update_info(icon, info);
-                    thunar_vfs_info_unref(info);
-                }
-                
-                break;
+                /* TODO remove this workaround to convert the GFile into a ThunarVfsInfo.
+                 * Instead, load the GFileInfo for it and call update_file_info */
+                pathname = g_file_get_path(file);
+                path = thunar_vfs_path_new(pathname, NULL);
+                info = thunar_vfs_info_new_for_path(path, NULL);
+
+                xfdesktop_file_icon_update_info(icon, info);
+
+                /*thunar_vfs_info_unref(info);*/
+                thunar_vfs_path_unref(path);
+                g_free(pathname);
             }
-            /* fall through - not sure why this is needed sometimes */
-        
-        case THUNAR_VFS_MONITOR_EVENT_CREATED:
+            break;
+        case G_FILE_MONITOR_EVENT_CREATED:
             DBG("got created event");
-            
+
             /* make sure it's not the desktop folder itself */
-            /* TODO this will fail because folder is not a ThunarVfsPath */
-            if(thunar_vfs_path_equal(fmanager->priv->folder, event_path))
+            if(g_file_equal(fmanager->priv->folder, file))
                 return;
-            
+
             /* first make sure we don't already have an icon for this path.
-             * this seems to be necessary as thunar-vfs does not emit a
-             * DELETED signal if a file is overwritten with another file of
-             * the same name. */
-            icon = g_hash_table_lookup(fmanager->priv->icons, event_path);
+             * this seems to be necessary to avoid inconsistencies */
+            icon = g_hash_table_lookup(fmanager->priv->icons, file);
             if(icon) {
                 xfdesktop_icon_view_remove_item(fmanager->priv->icon_view,
                                                 XFDESKTOP_ICON(icon));
-                g_hash_table_remove(fmanager->priv->icons, event_path);
+                g_hash_table_remove(fmanager->priv->icons, file);
             }
             
-            info = thunar_vfs_info_new_for_path(event_path, NULL);
-            if(info) {
-                if((info->flags & THUNAR_VFS_FILE_FLAGS_HIDDEN) == 0) {
-                    /* FIXME: memleak? */
-                    /*thunar_vfs_path_ref(event_path);*/
+            file_info = g_file_query_info(file, XFDESKTOP_FILE_INFO_NAMESPACE,
+                                          G_FILE_QUERY_INFO_NONE, NULL, NULL);
+            if(file_info) {
+                gboolean is_hidden = g_file_info_get_attribute_boolean(file_info,
+                                                                       G_FILE_ATTRIBUTE_STANDARD_IS_HIDDEN);
+                if(!is_hidden) {
+                    /* TODO remove this workaround to convert the GFile into a ThunarVfsInfo.
+                     * Instead, load the GFileInfo for it and use that */
+                    pathname = g_file_get_path(file);
+                    path = thunar_vfs_path_new(pathname, NULL);
+                    info = thunar_vfs_info_new_for_path(path, NULL);
+
                     xfdesktop_file_icon_manager_add_regular_icon(fmanager,
                                                                  info, FALSE);
+
+                    /*thunar_vfs_info_unref(info);*/
+                    thunar_vfs_path_unref(path);
+                    g_free(pathname);
                 }
                 
                 thunar_vfs_info_unref(info);
             }
+
             break;
-        
-        case THUNAR_VFS_MONITOR_EVENT_DELETED:
+        case G_FILE_MONITOR_EVENT_DELETED:
             DBG("got deleted event");
-            icon = g_hash_table_lookup(fmanager->priv->icons, event_path);
+            g_debug("got deleted event: %s", g_file_get_path(file));
+
+            icon = g_hash_table_lookup(fmanager->priv->icons, file);
             if(icon) {
                 xfdesktop_icon_view_remove_item(fmanager->priv->icon_view,
                                                 XFDESKTOP_ICON(icon));
-                g_hash_table_remove(fmanager->priv->icons, event_path);
+                g_hash_table_remove(fmanager->priv->icons, file);
             } else {
-                const ThunarVfsInfo *finfo = xfdesktop_file_icon_peek_info(fmanager->priv->desktop_icon);
-                if(!finfo || thunar_vfs_path_equal(event_path, finfo->path)) {
+                if(g_file_equal(file, fmanager->priv->folder)) {
                     DBG("~/Desktop disappeared!");
                     /* yes, refresh before and after is correct */
                     xfdesktop_file_icon_manager_refresh_icons(fmanager);
@@ -2523,10 +2538,10 @@ xfdesktop_file_icon_manager_vfs_monitor_cb(ThunarVfsMonitor *monitor,
                 }
             }
             break;
-        
+        default:
+            break;
     }
 }
-
 
 static gboolean
 xfdesktop_file_icon_manager_listdir_infos_ready_cb(ThunarVfsJob *job,
@@ -2579,15 +2594,13 @@ xfdesktop_file_icon_manager_listdir_finished_cb(ThunarVfsJob *job,
         fmanager->priv->deferred_icons = NULL;
     }
     
-    if(!fmanager->priv->handle) {
-        gchar *pathname = g_file_get_path(fmanager->priv->folder);
-        ThunarVfsPath *path = thunar_vfs_path_new(pathname, NULL);
-        fmanager->priv->handle = thunar_vfs_monitor_add_directory(fmanager->priv->monitor,
-                                                                  path,
-                                                                  xfdesktop_file_icon_manager_vfs_monitor_cb,
-                                                                  fmanager);
-        thunar_vfs_path_unref(path);
-        g_free(pathname);
+    if(!fmanager->priv->monitor) {
+        fmanager->priv->monitor = g_file_monitor(fmanager->priv->folder,
+                                                 G_FILE_MONITOR_NONE,
+                                                 NULL, NULL);
+        g_signal_connect(fmanager->priv->monitor, "changed",
+                         G_CALLBACK(xfdesktop_file_icon_manager_file_changed),
+                         fmanager);
     }
     
     g_object_unref(G_OBJECT(job));
@@ -2899,11 +2912,9 @@ xfdesktop_file_icon_manager_real_init(XfdesktopIconViewManager *manager,
                      G_CALLBACK(xfdesktop_file_icon_manager_key_press),
                      fmanager);
     
-    fmanager->priv->monitor = thunar_vfs_monitor_get_default();
-    
-    fmanager->priv->icons = g_hash_table_new_full(thunar_vfs_path_hash,
-                                                  thunar_vfs_path_equal,
-                                                  (GDestroyNotify)thunar_vfs_path_unref,
+    fmanager->priv->icons = g_hash_table_new_full((GHashFunc)g_file_hash,
+                                                  (GEqualFunc)g_file_equal,
+                                                  (GDestroyNotify)g_object_unref,
                                                   (GDestroyNotify)g_object_unref);
     
     fmanager->priv->special_icons = g_hash_table_new_full(g_direct_hash,
@@ -2913,8 +2924,6 @@ xfdesktop_file_icon_manager_real_init(XfdesktopIconViewManager *manager,
     
     if(!xfdesktop_file_utils_dbus_init())
         g_warning("Unable to initialise D-Bus.  Some xfdesktop features may be unavailable.");
-    
-    g_debug ("real init: folder = %s", g_file_get_path(fmanager->priv->folder));
     
     /* do this in the reverse order stuff should be displayed */
     xfdesktop_file_icon_manager_load_desktop_folder(fmanager);
@@ -3025,13 +3034,11 @@ xfdesktop_file_icon_manager_fini(XfdesktopIconViewManager *manager)
         fmanager->priv->deferred_icons = NULL;
     }
     
-    if(fmanager->priv->handle) {
-        thunar_vfs_monitor_remove(fmanager->priv->monitor,
-                                  fmanager->priv->handle);
-        fmanager->priv->handle = NULL;
-    }
-    
-    g_object_unref(G_OBJECT(fmanager->priv->monitor));
+    /* disconnect from the file monitor and release it */
+    g_signal_handlers_disconnect_by_func(fmanager->priv->monitor,
+                                         G_CALLBACK(xfdesktop_file_icon_manager_file_changed),
+                                         fmanager);
+    g_object_unref(fmanager->priv->monitor);
     fmanager->priv->monitor = NULL;
     
     g_object_unref(G_OBJECT(fmanager->priv->desktop_icon));
