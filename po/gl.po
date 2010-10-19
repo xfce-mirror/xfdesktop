@@ -1,18 +1,18 @@
 # Galician translation of xfdesktop
 # Copyright (C) 2006, 2008, 2009, 2010 Leandro Regueiro
 # This file is distributed under the same license as the xfce package.
-# 
+#
 # Leandro Regueiro <leandro.regueiro@gmail.com>, 2006, 2008, 2009, 2010.
-# 
+#
 # Proxecto Trasno - Adaptación do software libre á lingua galega:  Se desexas
 # colaborar connosco, podes atopar máis información en <http://trasno.net>
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-09-09 10:06+0000\n"
-"PO-Revision-Date: 2010-01-06 12:38+0100\n"
+"PO-Revision-Date: 2010-10-19 18:44+0100\n"
 "Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
 # backdrop=fondo de escritorio
-#: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
+#: ../common/xfdesktop-common.c:96
+#: ../common/xfdesktop-common.c:200
 #, c-format
 msgid "Backdrop list file is not valid"
 msgstr "O ficheiro de lista de fondos de escritorio non é válido"
@@ -37,7 +38,8 @@ msgstr ""
 "%s\n"
 "<i>Tamaño: %dx%d</i>"
 
-#: ../settings/main.c:272 ../src/xfdesktop-special-file-icon.c:259
+#: ../settings/main.c:272
+#: ../src/xfdesktop-special-file-icon.c:259
 msgid "Home"
 msgstr "Inicio"
 
@@ -60,7 +62,8 @@ msgid "Cannot create backdrop list \"%s\""
 msgstr "Non se puido crear a lista de fondos de escritorio \"%s\""
 
 # backdrop=fondo de escritorio
-#: ../settings/main.c:462 ../settings/main.c:779
+#: ../settings/main.c:462
+#: ../settings/main.c:779
 msgid "Backdrop List Error"
 msgstr "Erro na lista de fondos de escritorio"
 
@@ -186,7 +189,7 @@ msgstr "Mostra o menú (na posición actual do rato)"
 
 #: ../src/main.c:238
 msgid "Pop up the window list (at the current mouse position)"
-msgstr "Mostra a lista de fiestras (na posición actual do rato)"
+msgstr "Mostra a lista de xanelas (na posición actual do rato)"
 
 #: ../src/main.c:239
 msgid "Cause xfdesktop to quit"
@@ -217,11 +220,15 @@ msgstr "Opcións de compilación:\n"
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Menú do escritorio:        %s\n"
 
-#: ../src/main.c:276 ../src/main.c:283 ../src/main.c:290
+#: ../src/main.c:276
+#: ../src/main.c:283
+#: ../src/main.c:290
 msgid "enabled"
 msgstr "activado"
 
-#: ../src/main.c:278 ../src/main.c:285 ../src/main.c:292
+#: ../src/main.c:278
+#: ../src/main.c:285
+#: ../src/main.c:292
 msgid "disabled"
 msgstr "desactivado"
 
@@ -246,7 +253,7 @@ msgstr "_Aplicacións"
 
 #: ../src/windowlist.c:236
 msgid "Window List"
-msgstr "Lista de fiestras"
+msgstr "Lista de xanelas"
 
 #: ../src/windowlist.c:262
 #, c-format
@@ -263,7 +270,8 @@ msgstr "Espazo de traballo %d"
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Espazo de traballo %d</i>"
 
-#: ../src/windowlist.c:370 ../src/windowlist.c:373
+#: ../src/windowlist.c:370
+#: ../src/windowlist.c:373
 msgid "_Add Workspace"
 msgstr "Engadir _espazo de traballo"
 
@@ -297,15 +305,15 @@ msgstr "Precisa terminal"
 
 #: ../src/xfdesktop-app-menu-item.c:235
 msgid "Whether or not the command needs a terminal to execute"
-msgstr "Indica se un comando precisa unha terminal para executarse"
+msgstr "Indica se unha orde precisa unha terminal para executarse"
 
 #: ../src/xfdesktop-app-menu-item.c:241
 msgid "Command"
-msgstr "Comando"
+msgstr "Orde"
 
 #: ../src/xfdesktop-app-menu-item.c:242
 msgid "The command to run when the item is clicked"
-msgstr "O comando que se executa ao premer no elemento"
+msgstr "A orde que se executa ao premer no elemento"
 
 #: ../src/xfdesktop-app-menu-item.c:248
 msgid "Icon name"
@@ -341,16 +349,20 @@ msgid "Whether or not to use an underscore in the label as a keyboard mnemonic"
 msgstr "Indica se se usa o subliñado na etiqueta para "
 
 #. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon.c:141 ../src/xfdesktop-file-icon-manager.c:922
-#: ../src/xfdesktop-file-icon-manager.c:1683 ../src/xfdesktop-file-utils.c:363
+#: ../src/xfdesktop-file-icon.c:141
+#: ../src/xfdesktop-file-icon-manager.c:922
+#: ../src/xfdesktop-file-icon-manager.c:1683
+#: ../src/xfdesktop-file-utils.c:363
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Non se puido iniciar \"%s\":"
 
-#: ../src/xfdesktop-file-icon.c:143 ../src/xfdesktop-file-icon-manager.c:924
+#: ../src/xfdesktop-file-icon.c:143
+#: ../src/xfdesktop-file-icon-manager.c:924
 #: ../src/xfdesktop-file-icon-manager.c:984
 #: ../src/xfdesktop-file-icon-manager.c:1287
-#: ../src/xfdesktop-file-icon-manager.c:1684 ../src/xfdesktop-file-utils.c:366
+#: ../src/xfdesktop-file-icon-manager.c:1684
+#: ../src/xfdesktop-file-utils.c:366
 msgid "Launch Error"
 msgstr "Erro ao iniciar"
 
@@ -399,7 +411,8 @@ msgstr "Renomear"
 msgid "Are you sure that you want to delete \"%s\"?"
 msgstr "Está seguro de que desexa eliminar \"%s\"?"
 
-#: ../src/xfdesktop-file-icon-manager.c:680 ../src/xfdesktop-file-utils.c:56
+#: ../src/xfdesktop-file-icon-manager.c:680
+#: ../src/xfdesktop-file-utils.c:56
 msgid "Question"
 msgstr "Pregunta"
 
@@ -421,7 +434,8 @@ msgstr "Eliminar varios ficheiros"
 msgid "The application chooser could not be opened."
 msgstr "Non se puido abrir o selector de aplicacións."
 
-#: ../src/xfdesktop-file-icon-manager.c:986 ../src/xfdesktop-file-utils.c:368
+#: ../src/xfdesktop-file-icon-manager.c:986
+#: ../src/xfdesktop-file-utils.c:368
 msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
 msgstr "Esta funcionalidade require un servizo de xestor de ficheiros (como o proporcionado por Thunar)."
 
@@ -495,10 +509,11 @@ msgstr "_Abrir todo"
 
 #: ../src/xfdesktop-file-icon-manager.c:1766
 msgid "_Open in New Window"
-msgstr "_Abrir nunha nova fiestra"
+msgstr "_Abrir nunha nova xanela"
 
 #: ../src/xfdesktop-file-icon-manager.c:1768
-#: ../src/xfdesktop-special-file-icon.c:637 ../src/xfdesktop-volume-icon.c:565
+#: ../src/xfdesktop-special-file-icon.c:637
+#: ../src/xfdesktop-volume-icon.c:565
 msgid "_Open"
 msgstr "_Abrir"
 
@@ -605,7 +620,8 @@ msgstr "Destino da ligazón:"
 
 #: ../src/xfdesktop-file-properties-dialog.c:253
 #: ../src/xfdesktop-file-properties-dialog.c:415
-#: ../src/xfdesktop-volume-icon.c:480 ../src/xfdesktop-volume-icon.c:486
+#: ../src/xfdesktop-volume-icon.c:480
+#: ../src/xfdesktop-volume-icon.c:486
 msgid "(unknown)"
 msgstr "(descoñecido)"
 
@@ -789,214 +805,144 @@ msgstr "_Expulsar volume"
 
 #~ msgid "Unable to launch xfce4-menueditor: %s"
 #~ msgstr "Non foi posible iniciar xfce4-menueditor: %s"
-
 #~ msgid "Select Icon"
 #~ msgstr "Seleccionar unha icona..."
-
 #~ msgid "Select Menu File"
 #~ msgstr "Seleccionar o ficheiro de menú"
-
 #~ msgid "All Files"
 #~ msgstr "Todos os ficheiros"
-
 #~ msgid "Image Files"
 #~ msgstr "Ficheiros de imaxe"
-
 #~ msgid "Menu Files"
 #~ msgstr "Ficheiros de menú"
-
 #~ msgid "Xfce Menu"
 #~ msgstr "Menú de Xfce"
-
 #~ msgid "Button"
 #~ msgstr "Botón"
-
 #~ msgid "Button _title:"
 #~ msgstr "_Título do botón:"
-
 #~ msgid "_Show title in button"
 #~ msgstr "Mo_strar o título no botón"
-
 #~ msgid "Menu File"
 #~ msgstr "Ficheiro de menú"
-
 #~ msgid "Use default _desktop menu file"
 #~ msgstr "Usar o ficheiro de menú de _escritorio predeterminado"
-
 #~ msgid "Use _custom menu file:"
 #~ msgstr "Usar un ficheiro de menú _personalizado:"
-
 #~ msgid "_Edit Menu"
 #~ msgstr "_Editar menú"
-
 #~ msgid "Icons"
 #~ msgstr "Iconas"
-
 #~ msgid "_Button icon:"
 #~ msgstr "Icona do _botón:"
-
 #~ msgid "Show _icons in menu"
 #~ msgstr "Mostrar _iconas nos menús"
-
 #~ msgid "There is already a panel menu registered for this screen"
 #~ msgstr "Xa hai un menú de panel rexistrado para esta pantalla"
-
 #~ msgid "Edit Menu"
 #~ msgstr "Editar menú"
-
 #~ msgid "Shows a menu containing categories of installed applications"
 #~ msgstr "Mostra un menú que contén as categorías das aplicacións instaladas"
-
 #~ msgid "Accessories"
 #~ msgstr "Accesorios"
-
 #~ msgid "Common desktop tools and applications"
 #~ msgstr "Aplicacións e ferramentas comúns do escritorio"
-
 #~ msgid "Development"
 #~ msgstr "Desenvolvemento"
-
 #~ msgid "Software development tools"
 #~ msgstr "Ferramentas de desenvolvemento de software"
-
 #~ msgid "Education"
 #~ msgstr "Educación"
-
 #~ msgid "Educational software"
 #~ msgstr "Software educativo"
-
 #~ msgid "Games"
 #~ msgstr "Xogos"
-
 #~ msgid "Games, puzzles, and other fun software"
 #~ msgstr "Xogos, crebacabezas, e outros programas divertidos"
-
 #~ msgid "Graphics"
 #~ msgstr "Imaxes"
-
 #~ msgid "Graphics creation and manipulation applications"
 #~ msgstr "Aplicacións para manipular e crear imaxes"
-
 #~ msgid "Audio and video players and editors"
 #~ msgstr "Editores e reprodutores de son e vídeo"
-
 #~ msgid "Multimedia"
 #~ msgstr "Multimedia"
-
 #~ msgid "Network"
 #~ msgstr "Rede"
-
 #~ msgid "Network applications and utilities"
 #~ msgstr "Aplicacións e utilidades de rede"
-
 #~ msgid "Office"
 #~ msgstr "Oficina"
-
 #~ msgid "Office and productivity applications"
 #~ msgstr "Aplicacións de produtividade e de oficina"
-
 #~ msgid "Applications that don't fit into other categories"
 #~ msgstr "Aplicacións que non se axustan a outras categorías"
-
 #~ msgid "Other"
 #~ msgstr "Outras"
-
 #~ msgid "Science"
 #~ msgstr "Ciencia"
-
 #~ msgid "Scientific software"
 #~ msgstr "Software científico"
-
 #~ msgid "Screensaver applets"
 #~ msgstr "Miniaplicacións de protector de pantalla"
-
 #~ msgid "Screensavers"
 #~ msgstr "Protectores de pantalla"
-
 #~ msgid "Desktop and system settings applications"
 #~ msgstr "Aplicacións de configuración do sistema e do escritorio"
-
 #~ msgid "Settings"
 #~ msgstr "Configuración"
-
 #~ msgid "System"
 #~ msgstr "Sistema"
-
 #~ msgid "System tools and utilities"
 #~ msgstr "Utilidades e ferramentas do sistema"
-
 #~ msgid "About Xfce"
 #~ msgstr "Acerca de Xfce"
-
 #~ msgid "Information about the Xfce Desktop Environment"
 #~ msgstr "Información sobre o Ambiente de Escritorio Xfce"
-
 #~ msgid "File Manager"
 #~ msgstr "Xestor de ficheiros"
-
 #~ msgid "Thunar file manager"
 #~ msgstr "Xestor de ficheiros Thunar"
-
 #~ msgid "Help"
 #~ msgstr "Axuda"
-
 #~ msgid "Help using Xfce"
 #~ msgstr "Axuda sobre o uso de Xfce"
-
 #~ msgid "Log Out"
 #~ msgstr "Terminar a sesión"
-
 #~ msgid "Log out of the Xfce Desktop"
 #~ msgstr "Saír do Escritorio Xfce"
-
 #~ msgid "Run Program..."
 #~ msgstr "Executar programa..."
-
 #~ msgid "Run a program"
 #~ msgstr "Executar un programa"
-
 #~ msgid "Terminal emulator"
 #~ msgstr "Emulador de terminal"
-
 #~ msgid "Browse the web"
 #~ msgstr "Navegar pola web"
-
 #~ msgid "Web Browser"
 #~ msgstr "Navegador web"
-
 #~ msgid "%s: Unknown option: %s\n"
 #~ msgstr "%s: Opción descoñecida: %s\n"
-
 #~ msgid "Options are:\n"
 #~ msgstr "As opcións son:\n"
-
 #~ msgid "<b>Adjustments</b>"
 #~ msgstr "<b>Axustes</b>"
-
 #~ msgid "<b>Appearance</b>"
 #~ msgstr "<b>Aparencia</b>"
-
 #~ msgid "<b>Colors</b>"
 #~ msgstr "<b>Cores</b>"
-
 #~ msgid "<b>Default Icons</b>"
 #~ msgstr "<b>Iconas predeterminadas</b>"
-
 #~ msgid "<b>Desktop Menu</b>"
 #~ msgstr "<b>Menú de escritorio</b>"
-
 #~ msgid "<b>Image</b>"
 #~ msgstr "<b>Imaxe</b>"
-
 #~ msgid "<b>Images</b>"
 #~ msgstr "<b>Imaxes</b>"
-
 #~ msgid "<b>Window List Menu</b>"
 #~ msgstr "<b>Menú de lista de ventás</b>"
-
 #~ msgid "Add an image to the list"
 #~ msgstr "Engadir unha imaxe á lista"
-
 #~ msgid ""
 #~ "Auto\n"
 #~ "Centered\n"
@@ -1011,37 +957,26 @@ msgstr "_Expulsar volume"
 #~ "Estirada\n"
 #~ "Escalada\n"
 #~ "Ampliada"
-
 #~ msgid "Automatically pick a random image from a list file"
 #~ msgstr "Seleccionar automaticamente unha imaxe aleatoria dun ficheiro de lista"
-
 #~ msgid "B_rightness:"
 #~ msgstr "B_rillo:"
-
 #~ msgid "B_utton:"
 #~ msgstr "B_otón:"
-
 #~ msgid "Create a new list, or load an existing one"
 #~ msgstr "Crea unha nova lista, ou carga unha xa existente"
-
 #~ msgid "Don't display an image at all"
 #~ msgstr "Non mostrar ningunha imaxe"
-
 #~ msgid "Icon _type:"
 #~ msgstr "_Tipo de icona:"
-
 #~ msgid "Image _list"
 #~ msgstr "Lista de imaxes"
-
 #~ msgid "Increase or decrease the brightness of the final image"
 #~ msgstr "Incrementar ou diminuír o brillo da imaxe final"
-
 #~ msgid "Increase or decrease the color saturation of the final image"
 #~ msgstr "Incrementar ou diminuír a saturación da imaxe final"
-
 #~ msgid "Label trans_parency:"
 #~ msgstr "Trans_parencia das etiquetas:"
-
 #~ msgid ""
 #~ "Left\n"
 #~ "Middle\n"
@@ -1050,13 +985,10 @@ msgstr "_Expulsar volume"
 #~ "Esquerda\n"
 #~ "Centro\n"
 #~ "Dereita"
-
 #~ msgid "Mo_difier:"
 #~ msgstr "Mo_dificador:"
-
 #~ msgid "Modi_fier:"
 #~ msgstr "Modi_ficador:"
-
 #~ msgid ""
 #~ "None\n"
 #~ "Minimized application icons\n"
@@ -1065,7 +997,6 @@ msgstr "_Expulsar volume"
 #~ "Nada\n"
 #~ "Iconas de aplicacións minimizadas\n"
 #~ "Iconas de iniciadores/ficheiros"
-
 #~ msgid ""
 #~ "None\n"
 #~ "Shift\n"
@@ -1076,15 +1007,12 @@ msgstr "_Expulsar volume"
 #~ "Shift\n"
 #~ "Alt\n"
 #~ "Control"
-
 #~ msgid "Remove the selected image(s) from the list"
 #~ msgstr "Eliminar as imaxes seleccionadas da lista"
-
 #~ msgid "Sa_turation:"
 #~ msgstr "Sa_turación:"
-
 #~ msgid "Select First Color"
 #~ msgstr "Seleccione a primeira cor"
-
 #~ msgid "Select Second Color"
 #~ msgstr "Seleccione a segunda cor"
+
