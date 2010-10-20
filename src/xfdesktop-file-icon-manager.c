@@ -109,6 +109,7 @@ struct _XfdesktopFileIconManagerPrivate
     XfdesktopFileIcon *desktop_icon;
     GFileMonitor *monitor;
     ThunarVfsJob *list_job;
+    GFileEnumerator *enumerator;
     
     GHashTable *icons;
     GHashTable *removable_icons;
@@ -2160,11 +2161,9 @@ xfdesktop_file_icon_manager_add_icon(XfdesktopFileIconManager *fmanager,
         do_add = TRUE;
     } else {
         if(defer_if_missing) {
-            ThunarVfsInfo *info = (ThunarVfsInfo *)xfdesktop_file_icon_peek_info(icon);
-            if(info) {
-                fmanager->priv->deferred_icons = g_list_prepend(fmanager->priv->deferred_icons,
-                                                                thunar_vfs_info_ref(info));
-            }
+            GFile *file = xfdesktop_file_icon_peek_file(icon);
+            fmanager->priv->deferred_icons = g_list_prepend(fmanager->priv->deferred_icons,
+                                                            g_object_ref(file));
         } else
             do_add = TRUE;
     }
@@ -2521,7 +2520,6 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
             break;
         case G_FILE_MONITOR_EVENT_DELETED:
             DBG("got deleted event");
-            g_debug("got deleted event: %s", g_file_get_path(file));
 
             icon = g_hash_table_lookup(fmanager->priv->icons, file);
             if(icon) {
@@ -2543,81 +2541,90 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
     }
 }
 
-static gboolean
-xfdesktop_file_icon_manager_listdir_infos_ready_cb(ThunarVfsJob *job,
-                                                   GList *infos,
-                                                   gpointer user_data)
-{
-    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
-    GList *l;
-    ThunarVfsInfo *info;
-    
-    g_return_val_if_fail(job == fmanager->priv->list_job, FALSE);
-    
-    TRACE("entering");
-    
-    for(l = infos; l; l = l->next) {
-        info = l->data;
-        
-        DBG("got a ThunarVfsInfo: %s", info->display_name);
-        
-        if((info->flags & THUNAR_VFS_FILE_FLAGS_HIDDEN) != 0)
-            continue;
-        
-        /* FIXME: memleak? */
-        /*thunar_vfs_path_ref(info->path);*/
-        xfdesktop_file_icon_manager_add_regular_icon(fmanager, info, TRUE);
-    }
-    
-    return FALSE;
-}
-
 static void
-xfdesktop_file_icon_manager_listdir_finished_cb(ThunarVfsJob *job,
-                                                gpointer user_data)
+xfdesktop_file_icon_manager_files_ready(GFileEnumerator *enumerator,
+                                        GAsyncResult *result,
+                                        gpointer user_data)
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
-    GList *l;
-    
-    g_return_if_fail(job == fmanager->priv->list_job);
-    
-    TRACE("entering");
-    
-    if(fmanager->priv->deferred_icons) {
-        for(l = fmanager->priv->deferred_icons; l; l = l->next) {
-            xfdesktop_file_icon_manager_add_regular_icon(fmanager,
-                                                         (ThunarVfsInfo *)l->data,
-                                                         FALSE);
-            thunar_vfs_info_unref((ThunarVfsInfo *)l->data);
+    GError *error = NULL;
+    GList *files, *l;
+    gboolean is_hidden;
+
+    g_return_if_fail(enumerator == fmanager->priv->enumerator);
+
+    files = g_file_enumerator_next_files_finish(enumerator, result, &error);
+
+    if(!files) {
+        if(error) {
+            GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
+            xfce_message_dialog(gtk_widget_is_toplevel(toplevel) ? GTK_WINDOW(toplevel) : NULL,
+                                _("Load Error"),
+                                GTK_STOCK_DIALOG_WARNING, 
+                                _("Failed to load the desktop folder"), error->message,
+                                GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
         }
-        g_list_free(fmanager->priv->deferred_icons);
-        fmanager->priv->deferred_icons = NULL;
-    }
-    
-    if(!fmanager->priv->monitor) {
-        fmanager->priv->monitor = g_file_monitor(fmanager->priv->folder,
-                                                 G_FILE_MONITOR_NONE,
-                                                 NULL, NULL);
-        g_signal_connect(fmanager->priv->monitor, "changed",
-                         G_CALLBACK(xfdesktop_file_icon_manager_file_changed),
-                         fmanager);
-    }
-    
-    g_object_unref(G_OBJECT(job));
-    fmanager->priv->list_job = NULL;
-}
 
-static void
-xfdesktop_file_icon_manager_listdir_error_cb(ThunarVfsJob *job,
-                                             GError *error,
-                                             gpointer user_data)
-{
-    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
-    
-    g_return_if_fail(job == fmanager->priv->list_job);
-    
-    g_warning("Got error from thunar-vfs on loading directory: %s",
-              error->message);
+        g_object_unref(fmanager->priv->enumerator);
+        fmanager->priv->enumerator = NULL;
+
+        if(fmanager->priv->deferred_icons) {
+            for(l = fmanager->priv->deferred_icons; l; l = l->next) {
+                gchar *pathname = g_file_get_path(l->data);
+                ThunarVfsPath *path = thunar_vfs_path_new(pathname, NULL);
+                ThunarVfsInfo *info = thunar_vfs_info_new_for_path(path, NULL);
+
+                xfdesktop_file_icon_manager_add_regular_icon(fmanager, info, FALSE);
+
+                thunar_vfs_info_unref(info);
+                thunar_vfs_path_unref(path);
+                g_free(pathname);
+                g_object_unref(l->data);
+            }
+            g_list_free(fmanager->priv->deferred_icons);
+            fmanager->priv->deferred_icons = NULL;
+        }
+
+
+        if(!fmanager->priv->monitor) {
+            fmanager->priv->monitor = g_file_monitor(fmanager->priv->folder,
+                                                     G_FILE_MONITOR_NONE,
+                                                     NULL, NULL);
+            g_signal_connect(fmanager->priv->monitor, "changed",
+                             G_CALLBACK(xfdesktop_file_icon_manager_file_changed),
+                             fmanager);
+        }
+    } else {
+        for(l = files; l; l = l->next) {
+            DBG("got a GFileInfo: %s", g_file_info_get_display_name(l->data));
+            
+            is_hidden = g_file_info_get_attribute_boolean(l->data,
+                                                          G_FILE_ATTRIBUTE_STANDARD_IS_HIDDEN);
+            if(!is_hidden) {
+                const gchar *basename = g_file_info_get_name(l->data);
+                GFile *file = g_file_get_child(fmanager->priv->folder, basename);
+                gchar *pathname = g_file_get_path(file);
+                ThunarVfsPath *path = thunar_vfs_path_new(pathname, NULL);
+                ThunarVfsInfo *info = thunar_vfs_info_new_for_path(path, NULL);
+
+                xfdesktop_file_icon_manager_add_regular_icon(fmanager, info, TRUE);
+
+                thunar_vfs_info_unref(info);
+                thunar_vfs_path_unref(path);
+                g_free(pathname);
+                g_object_unref(file);
+            }
+
+            g_object_unref(l->data);
+        }
+
+        g_list_free(files);
+
+        g_file_enumerator_next_files_async(fmanager->priv->enumerator,
+                                           10, G_PRIORITY_DEFAULT, NULL,
+                                           (GAsyncReadyCallback) xfdesktop_file_icon_manager_files_ready,
+                                           fmanager);
+    }
 }
 
 static void
@@ -2633,37 +2640,23 @@ xfdesktop_file_icon_manager_load_desktop_folder(XfdesktopFileIconManager *fmanag
         fmanager->priv->deferred_icons = NULL;
     }
     
-    if(fmanager->priv->list_job) {
-        thunar_vfs_job_cancel(fmanager->priv->list_job);
-        g_signal_handlers_disconnect_by_func(G_OBJECT(fmanager->priv->list_job),
-                                             G_CALLBACK(xfdesktop_file_icon_manager_listdir_error_cb),
-                                             fmanager);
-        g_signal_handlers_disconnect_by_func(G_OBJECT(fmanager->priv->list_job),
-                                             G_CALLBACK(xfdesktop_file_icon_manager_listdir_finished_cb),
-                                             fmanager);
-        g_signal_handlers_disconnect_by_func(G_OBJECT(fmanager->priv->list_job),
-                                             G_CALLBACK(xfdesktop_file_icon_manager_listdir_infos_ready_cb),
-                                             fmanager);
-        g_object_unref(G_OBJECT(fmanager->priv->list_job));
+    if(fmanager->priv->enumerator) {
+        g_object_unref(fmanager->priv->enumerator);
+        fmanager->priv->enumerator = NULL;
     }
 
-    pathname = g_file_get_uri(fmanager->priv->folder);
-    path = thunar_vfs_path_new(pathname, NULL);
-    g_free(pathname);
-    
-    fmanager->priv->list_job = thunar_vfs_listdir(path, NULL);
+    fmanager->priv->enumerator = g_file_enumerate_children(fmanager->priv->folder,
+                                                           XFDESKTOP_FILE_INFO_NAMESPACE,
+                                                           G_FILE_QUERY_INFO_NONE,
+                                                           NULL, NULL);
 
-    thunar_vfs_path_unref(path);
-    
-    g_signal_connect(G_OBJECT(fmanager->priv->list_job), "error",
-                     G_CALLBACK(xfdesktop_file_icon_manager_listdir_error_cb),
-                     fmanager);
-    g_signal_connect(G_OBJECT(fmanager->priv->list_job), "finished",
-                     G_CALLBACK(xfdesktop_file_icon_manager_listdir_finished_cb),
-                     fmanager);
-    g_signal_connect(G_OBJECT(fmanager->priv->list_job), "infos-ready",
-                     G_CALLBACK(xfdesktop_file_icon_manager_listdir_infos_ready_cb),
-                     fmanager);
+    if(fmanager->priv->enumerator) {
+        g_file_enumerator_next_files_async(fmanager->priv->enumerator,
+                                           10, G_PRIORITY_DEFAULT, NULL,
+                                           (GAsyncReadyCallback) xfdesktop_file_icon_manager_files_ready,
+                                           fmanager);
+
+    }
 }
 
 static void
@@ -2976,19 +2969,9 @@ xfdesktop_file_icon_manager_fini(XfdesktopIconViewManager *manager)
 
     fmanager->priv->inited = FALSE;
     
-    if(fmanager->priv->list_job) {
-        thunar_vfs_job_cancel(fmanager->priv->list_job);
-        g_signal_handlers_disconnect_by_func(G_OBJECT(fmanager->priv->list_job),
-                                             G_CALLBACK(xfdesktop_file_icon_manager_listdir_error_cb),
-                                             fmanager);
-        g_signal_handlers_disconnect_by_func(G_OBJECT(fmanager->priv->list_job),
-                                             G_CALLBACK(xfdesktop_file_icon_manager_listdir_finished_cb),
-                                             fmanager);
-        g_signal_handlers_disconnect_by_func(G_OBJECT(fmanager->priv->list_job),
-                                             G_CALLBACK(xfdesktop_file_icon_manager_listdir_infos_ready_cb),
-                                             fmanager);
-        g_object_unref(G_OBJECT(fmanager->priv->list_job));
-        fmanager->priv->list_job = NULL;
+    if(fmanager->priv->enumerator) {
+        g_object_unref(fmanager->priv->enumerator);
+        fmanager->priv->enumerator = NULL;
     }
     
     g_signal_handlers_disconnect_by_func(G_OBJECT(fmanager->priv->desktop),
@@ -3029,7 +3012,7 @@ xfdesktop_file_icon_manager_fini(XfdesktopIconViewManager *manager)
     
     if(fmanager->priv->deferred_icons) {
         g_list_foreach(fmanager->priv->deferred_icons,
-                       (GFunc)thunar_vfs_info_unref, NULL);
+                       (GFunc)g_object_unref, NULL);
         g_list_free(fmanager->priv->deferred_icons);
         fmanager->priv->deferred_icons = NULL;
     }
