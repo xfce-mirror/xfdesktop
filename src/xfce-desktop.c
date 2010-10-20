@@ -919,7 +919,8 @@ xfce_desktop_style_set(GtkWidget *w,
     gdouble old_font_size;
 #endif
     
-    gdk_window_set_back_pixmap(w->window, desktop->priv->bg_pixmap, FALSE);
+    if(GDK_IS_WINDOW(desktop->priv->bg_pixmap))
+        gdk_window_set_back_pixmap(w->window, desktop->priv->bg_pixmap, FALSE);
     gtk_widget_queue_draw(w);
 
 #ifdef ENABLE_DESKTOP_ICONS
