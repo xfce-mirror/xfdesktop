@@ -23,6 +23,13 @@
 #include <config.h>
 #endif
 
+#ifdef HAVE_SYS_PARAM_H
+#include <sys/param.h>
+#endif
+
+#ifdef HAVE_PWD_H
+#include <pwd.h>
+#endif
 #ifdef HAVE_STRING_H
 #include <string.h>
 #endif
@@ -151,6 +158,51 @@ xfdesktop_file_utils_get_file_kind(const ThunarVfsInfo *info,
     }
     
     return str;
+}
+
+static
+gboolean xfdesktop_file_utils_is_desktop_file(GFileInfo *info)
+{
+    const gchar *content_type;
+    gboolean is_desktop_file = FALSE;
+
+    content_type = g_file_info_get_content_type(info);
+    if(content_type)
+        is_desktop_file = g_content_type_equals(content_type, "application/x-desktop");
+
+    return is_desktop_file 
+        && !g_str_has_suffix(g_file_info_get_name(info), ".directory");
+}
+
+gboolean
+xfdesktop_file_utils_file_is_executable(GFileInfo *info)
+{
+    const gchar *content_type;
+    gboolean can_execute = FALSE;
+
+    g_return_val_if_fail(G_IS_FILE_INFO(info), FALSE);
+
+    if(g_file_info_get_attribute_boolean(info, G_FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE)) {
+        /* get the content type of the file */
+        content_type = g_file_info_get_content_type(info);
+        if(content_type != NULL) {
+#ifdef G_OS_WIN32
+            /* check for .exe, .bar or .com */
+            can_execute = g_content_type_can_be_executable(content_type);
+#else
+            /* check if the content type is save to execute, we don't use
+             * g_content_type_can_be_executable() for unix because it also returns
+             * true for "text/plain" and we don't want that */
+            if(g_content_type_is_a(content_type, "application/x-executable")
+               || g_content_type_is_a(content_type, "application/x-shellscript"))
+            {
+                can_execute = TRUE;
+            }
+#endif
+        }
+    }
+
+    return can_execute || xfdesktop_file_utils_is_desktop_file(info);
 }
 
 
@@ -400,6 +452,91 @@ xfdesktop_file_utils_launch_fallback(const ThunarVfsInfo *info,
     return ret;
 }
 
+static gchar *
+xfdesktop_file_utils_change_working_directory (const gchar *new_directory)
+{
+  gchar *old_directory;
+
+  g_return_val_if_fail(new_directory && *new_directory != '\0', NULL);
+
+  /* allocate a path buffer for the old working directory */
+  old_directory = g_malloc0(sizeof(gchar) * MAXPATHLEN);
+
+  /* try to determine the current working directory */
+#ifdef G_PLATFORM_WIN32
+  if(!_getcwd(old_directory, MAXPATHLEN))
+#else
+  if(!getcwd (old_directory, MAXPATHLEN))
+#endif
+  {
+      /* working directory couldn't be determined, reset the buffer */
+      g_free(old_directory);
+      old_directory = NULL;
+  }
+
+  /* try switching to the new working directory */
+#ifdef G_PLATFORM_WIN32
+  if(_chdir (new_directory))
+#else
+  if(chdir (new_directory))
+#endif
+  {
+      /* switching failed, we don't need to return the old directory */
+      g_free(old_directory);
+      old_directory = NULL;
+  }
+
+  return old_directory;
+}
+
+gboolean
+xfdesktop_file_utils_app_info_launch(GAppInfo *app_info,
+                                     GFile *working_directory,
+                                     GList *files,
+                                     GAppLaunchContext *context,
+                                     GError **error)
+{
+    gboolean result = FALSE;
+    gchar *new_path = NULL;
+    gchar *old_path = NULL;
+
+    g_return_val_if_fail(G_IS_APP_INFO(app_info), FALSE);
+    g_return_val_if_fail(working_directory == NULL || G_IS_FILE(working_directory), FALSE);
+    g_return_val_if_fail(files != NULL && files->data != NULL, FALSE);
+    g_return_val_if_fail(G_IS_APP_LAUNCH_CONTEXT(context), FALSE);
+    g_return_val_if_fail(error == NULL || *error == NULL, FALSE);
+
+    /* check if we want to set the working directory of the spawned app */
+    if(working_directory) {
+        /* determine the working directory path */
+        new_path = g_file_get_path(working_directory);
+        if(new_path) {
+            /* switch to the desired working directory, remember that 
+             * of xfdesktop itself */
+            old_path = xfdesktop_file_utils_change_working_directory(new_path);
+
+            /* forget about the new working directory path */
+            g_free(new_path);
+        }
+    }
+
+    /* launch the paths with the specified app info */
+    result = g_app_info_launch(app_info, files, context, error);
+
+    /* check if we need to reset the working directory to the one xfdesktop was
+     * opened from */
+    if(old_path) {
+        /* switch to xfdesktop's original working directory */
+        new_path = xfdesktop_file_utils_change_working_directory(old_path);
+
+        /* clean up */
+        g_free (new_path);
+        g_free (old_path);
+    }
+
+    return result;
+}
+
 static void
 xfdesktop_file_utils_display_folder_cb(DBusGProxy *proxy,
                                        GError *error,
@@ -415,8 +552,7 @@ xfdesktop_file_utils_display_folder_cb(DBusGProxy *proxy,
         xfce_message_dialog(parent,
                             _("Launch Error"), GTK_STOCK_DIALOG_ERROR,
                             _("The folder could not be opened"),
-                            _("This feature requires a file manager service to "
-                              "be present (such as the one supplied by Thunar)."),
+                            error->message,
                             GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
     }
 }
@@ -480,8 +616,7 @@ xfdesktop_file_utils_rename_file_cb(DBusGProxy *proxy,
         xfce_message_dialog(parent,
                             _("Rename Error"), GTK_STOCK_DIALOG_ERROR,
                             _("The file could not be renamed"),
-                            _("This feature requires a file manager service to "
-                              "be present (such as the one supplied by Thunar)."),
+                            error->message,
                             GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
     }
 }
@@ -542,8 +677,7 @@ xfdesktop_file_utils_create_file_cb(DBusGProxy *proxy,
         xfce_message_dialog(parent,
                             _("Create File Error"), GTK_STOCK_DIALOG_ERROR,
                             _("Could not create a new file"),
-                            _("This feature requires a file manager service to "
-                              "be present (such as the one supplied by Thunar)."),
+                            error->message,
                             GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
     }
 }
@@ -607,8 +741,7 @@ xfdesktop_file_utils_show_properties_dialog_cb(DBusGProxy *proxy,
         xfce_message_dialog(parent,
                             _("File Properties Error"), GTK_STOCK_DIALOG_ERROR,
                             _("The file properties dialog could not be opened"),
-                            _("This feature requires a file manager service to "
-                              "be present (such as the one supplied by Thunar)."),
+                            error->message,
                             GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
     }
 }
@@ -669,8 +802,7 @@ xfdesktop_file_utils_launch_cb(DBusGProxy *proxy,
         xfce_message_dialog(parent,
                             _("Launch Error"), GTK_STOCK_DIALOG_ERROR,
                             _("The file could not be opened"),
-                            _("This feature requires a file manager service to "
-                              "be present (such as the one supplied by Thunar)."),
+                            error->message,
                             GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
     }
 }
@@ -693,6 +825,8 @@ xfdesktop_file_utils_launch(GFile *file,
         gchar *uri = g_file_get_uri(file);
         gchar *display_name = gdk_screen_make_display_name(screen);
         gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
+
+        g_debug ("launching %s", uri);
         
         if(!xfdesktop_file_manager_proxy_launch_async(fileman_proxy,
                                                       uri, display_name, startup_id,

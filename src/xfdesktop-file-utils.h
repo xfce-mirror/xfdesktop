@@ -57,6 +57,7 @@ void xfdesktop_file_utils_move_into(GtkWindow *parent,
 
 gchar *xfdesktop_file_utils_get_file_kind(const ThunarVfsInfo *info,
                                           gboolean *is_link);
+gboolean xfdesktop_file_utils_file_is_executable(GFileInfo *info);
 
 GList *xfdesktop_file_utils_file_icon_list_to_file_list(GList *icon_list);
 gchar *xfdesktop_file_utils_file_list_to_string(GList *file_list);
@@ -76,6 +77,12 @@ void xfdesktop_file_utils_set_window_cursor(GtkWindow *window,
 gboolean xfdesktop_file_utils_launch_fallback(const ThunarVfsInfo *info,
                                               GdkScreen *screen,
                                               GtkWindow *parent);
+
+gboolean xfdesktop_file_utils_app_info_launch(GAppInfo *app_info,
+                                              GFile *working_directory,
+                                              GList *files,
+                                              GAppLaunchContext *context,
+                                              GError **error);
 
 void xfdesktop_file_utils_open_folder(GFile *file,
                                       GdkScreen *screen,
