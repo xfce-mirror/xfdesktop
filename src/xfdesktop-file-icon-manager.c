@@ -960,73 +960,27 @@ xfdesktop_file_icon_menu_open_desktop(GtkWidget *widget,
 }
 
 static void
-xfdesktop_file_icon_manager_display_chooser_error(XfdesktopFileIconManager *fmanager)
-{
-    GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
-    
-    xfce_message_dialog(GTK_WINDOW(toplevel),
-                        _("Launch Error"), GTK_STOCK_DIALOG_ERROR,
-                        _("The application chooser could not be opened."),
-                        _("This feature requires a file manager service to "
-                          "be present (such as the one supplied by Thunar)."),
-                        GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
-}
-
-static void
-xfdesktop_file_icon_manager_display_chooser_cb(DBusGProxy *proxy,
-                                               GError *error,
-                                               gpointer user_data)
-{
-    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
-    GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
-    
-    xfdesktop_file_utils_set_window_cursor(GTK_WINDOW(toplevel), GDK_LEFT_PTR);
-    if(error)
-        xfdesktop_file_icon_manager_display_chooser_error(fmanager);
-}
-
-static void
 xfdesktop_file_icon_menu_other_app(GtkWidget *widget,
                                    gpointer user_data)
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
     XfdesktopFileIcon *icon;
+    GtkWidget *toplevel;
     GList *selected;
-    const ThunarVfsInfo *info;
-    DBusGProxy *fileman_proxy;
+    GFile *file;
     
     selected = xfdesktop_icon_view_get_selected_items(fmanager->priv->icon_view);
     g_return_if_fail(g_list_length(selected) == 1);
     icon = XFDESKTOP_FILE_ICON(selected->data);
     g_list_free(selected);
     
-    info = xfdesktop_file_icon_peek_info(icon);
-    if(!info)
-        return;
-    
-    fileman_proxy = xfdesktop_file_utils_peek_filemanager_proxy();
-    if(fileman_proxy) {
-        gchar *uri = thunar_vfs_path_dup_uri(info->path);
-        gchar *display_name = gdk_screen_make_display_name(fmanager->priv->gscreen);
-        gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
-        
-        if(!xfdesktop_file_manager_proxy_display_chooser_dialog_async(fileman_proxy,
-                                                                      uri, TRUE,
-                                                                      display_name, startup_id,
-                                                                      xfdesktop_file_icon_manager_display_chooser_cb,
-                                                                      fmanager))
-        {
-            xfdesktop_file_icon_manager_display_chooser_error(fmanager);
-        } else {
-            GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
-            xfdesktop_file_utils_set_window_cursor(GTK_WINDOW(toplevel),
-                                                   GDK_WATCH);
-        }
+    toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
 
-        g_free(startup_id);
-        g_free(uri);
-        g_free(display_name);
-    }
+    file = xfdesktop_file_icon_peek_file(icon);
+
+    xfdesktop_file_utils_display_chooser_dialog(file, TRUE, 
+                                                fmanager->priv->gscreen, 
+                                                GTK_WINDOW(toplevel));
 }
 
 static void
