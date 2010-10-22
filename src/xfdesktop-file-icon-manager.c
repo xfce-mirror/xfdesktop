@@ -2360,19 +2360,14 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
             
             icon = g_hash_table_lookup(fmanager->priv->icons, file);
             if(icon) {
-                DBG("found file in HT");
+                file_info = g_file_query_info(file, XFDESKTOP_FILE_INFO_NAMESPACE,
+                                              G_FILE_QUERY_INFO_NONE, NULL, NULL);
                 
-                /* TODO remove this workaround to convert the GFile into a ThunarVfsInfo.
-                 * Instead, load the GFileInfo for it and call update_file_info */
-                pathname = g_file_get_path(file);
-                path = thunar_vfs_path_new(pathname, NULL);
-                info = thunar_vfs_info_new_for_path(path, NULL);
+                /* the file info query HAS to succeed because the file still exists */
+                g_assert(file_info);
 
-                xfdesktop_file_icon_update_info(icon, info);
-
-                /*thunar_vfs_info_unref(info);*/
-                thunar_vfs_path_unref(path);
-                g_free(pathname);
+                xfdesktop_file_icon_update_file_info(icon, file_info);
+                g_object_unref(file_info);
             }
             break;
         case G_FILE_MONITOR_EVENT_CREATED:
