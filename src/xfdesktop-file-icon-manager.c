@@ -1067,7 +1067,6 @@ static GtkWidget *
 xfdesktop_menu_item_from_app_info(XfdesktopFileIconManager *fmanager,
                                   XfdesktopFileIcon *icon,
                                   GAppInfo *app_info,
-                                  gint icon_size,
                                   gboolean with_mnemonic,
                                   gboolean with_title_prefix)
 {
@@ -1533,7 +1532,6 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
     GList *selected, *app_infos, *l;
     GtkWidget *mi, *img, *tmpl_menu;
     gboolean multi_sel, have_templates = FALSE, got_custom_menu = FALSE;
-    gint w = 0, h = 0;
     ThunarVfsPath *templates_path;
     gchar *templates_path_str = NULL;
     gboolean templates_dir_is_home = FALSE;
@@ -1554,8 +1552,6 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
     info = xfdesktop_file_icon_peek_file_info(file_icon);
     
     multi_sel = (g_list_length(selected) > 1);
-    
-    gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &w, &h);
     
     if(!multi_sel) {
         got_custom_menu = xfdesktop_icon_populate_context_menu(XFDESKTOP_ICON(selected->data),
@@ -1740,7 +1736,7 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                     GAppInfo *app_info = G_APP_INFO(app_infos->data);
                     
                     mi = xfdesktop_menu_item_from_app_info(fmanager, file_icon,
-                                                           app_info, w, TRUE, TRUE);
+                                                           app_info, TRUE, TRUE);
                     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
                     
                     g_object_unref(app_info);
@@ -1773,7 +1769,7 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                             app_info = G_APP_INFO(l->data);
                             mi = xfdesktop_menu_item_from_app_info(fmanager,
                                                                    file_icon, app_info,
-                                                                   w, FALSE, TRUE);
+                                                                   FALSE, TRUE);
                             gtk_menu_shell_append(GTK_MENU_SHELL(app_infos_menu), mi);
                             g_object_unref(app_info);
                         }
