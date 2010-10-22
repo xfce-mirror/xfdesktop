@@ -605,8 +605,10 @@ xfdesktop_regular_file_icon_update_file_info(XfdesktopFileIcon *icon,
                                              GFileInfo *info)
 {
     XfdesktopRegularFileIcon *regular_file_icon = XFDESKTOP_REGULAR_FILE_ICON(icon);
+    ThunarVfsPath *path;
     const gchar *old_display_name, *new_display_name;
     gboolean label_changed = FALSE;
+    gchar *uri;
     
     g_return_if_fail(XFDESKTOP_IS_REGULAR_FILE_ICON(icon));
     g_return_if_fail(G_IS_FILE_INFO(info));
@@ -624,7 +626,11 @@ xfdesktop_regular_file_icon_update_file_info(XfdesktopFileIcon *icon,
         regular_file_icon->priv->file_info = NULL;
     }
 
-    regular_file_icon->priv->info = g_object_ref(info);
+    uri = g_file_get_uri(regular_file_icon->priv->file);
+    path = thunar_vfs_path_new(uri, NULL);
+    regular_file_icon->priv->info = thunar_vfs_info_new_for_path(path, NULL);
+    thunar_vfs_path_unref(path);
+    g_free(uri);
     
     if(label_changed)
         xfdesktop_icon_label_changed(XFDESKTOP_ICON(icon));
@@ -638,31 +644,41 @@ xfdesktop_regular_file_icon_update_file_info(XfdesktopFileIcon *icon,
 /* public API */
 
 XfdesktopRegularFileIcon *
-xfdesktop_regular_file_icon_new(ThunarVfsInfo *info,
+xfdesktop_regular_file_icon_new(GFile *file,
+                                GFileInfo *file_info,
                                 GdkScreen *screen)
 {
-    gchar *path;
+    XfdesktopRegularFileIcon *regular_file_icon;
+    ThunarVfsPath *path;
+    gchar *uri;
 
-    XfdesktopRegularFileIcon *regular_file_icon = g_object_new(XFDESKTOP_TYPE_REGULAR_FILE_ICON, NULL);
+    g_return_val_if_fail(G_IS_FILE(file), NULL);
+    g_return_val_if_fail(G_IS_FILE_INFO(file_info), NULL);
+    g_return_val_if_fail(GDK_IS_SCREEN(screen), NULL);
 
-    regular_file_icon->priv->info = thunar_vfs_info_ref(info);
-    regular_file_icon->priv->gscreen = screen;
+    regular_file_icon = g_object_new(XFDESKTOP_TYPE_REGULAR_FILE_ICON, NULL);
+
+    regular_file_icon->priv->file = g_object_ref(file);
+    regular_file_icon->priv->file_info = g_object_ref(file_info);
+
+    /* query file system information from GIO */
+    regular_file_icon->priv->filesystem_info = g_file_query_filesystem_info(regular_file_icon->priv->file,
+                                                                            XFDESKTOP_FILESYSTEM_INFO_NAMESPACE,
+                                                                            NULL, NULL);
+
+    uri = g_file_get_uri(file);
+    path = thunar_vfs_path_new(uri, NULL);
+    regular_file_icon->priv->info = thunar_vfs_info_new_for_path(path, NULL);
+    thunar_vfs_path_unref(path);
+    g_free(uri);
     
-    /* convert the ThunarVfsPath into a GFile */
-    path = thunar_vfs_path_dup_string(info->path);
-    regular_file_icon->priv->file = g_file_new_for_path(path);
-    g_free(path);
-
     /* query file information from GIO */
     regular_file_icon->priv->file_info = g_file_query_info(regular_file_icon->priv->file,
                                                            XFDESKTOP_FILE_INFO_NAMESPACE,
                                                            G_FILE_QUERY_INFO_NONE,
                                                            NULL, NULL);
 
-    /* query file system information from GIO */
-    regular_file_icon->priv->filesystem_info = g_file_query_filesystem_info(regular_file_icon->priv->file,
-                                                                            XFDESKTOP_FILESYSTEM_INFO_NAMESPACE,
-                                                                            NULL, NULL);
+    regular_file_icon->priv->gscreen = screen;
 
     g_signal_connect_swapped(G_OBJECT(gtk_icon_theme_get_for_screen(screen)),
                              "changed",

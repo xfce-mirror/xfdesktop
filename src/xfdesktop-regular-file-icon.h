@@ -52,7 +52,8 @@ struct _XfdesktopRegularFileIconClass
 
 GType xfdesktop_regular_file_icon_get_type(void) G_GNUC_CONST;
 
-XfdesktopRegularFileIcon *xfdesktop_regular_file_icon_new(ThunarVfsInfo *info,
+XfdesktopRegularFileIcon *xfdesktop_regular_file_icon_new(GFile *file,
+                                                          GFileInfo *file_info,
                                                           GdkScreen *screen);
 
 void xfdesktop_regular_file_icon_set_pixbuf_opacity(XfdesktopRegularFileIcon *icon,
