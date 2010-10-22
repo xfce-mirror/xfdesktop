@@ -61,7 +61,6 @@ struct _XfdesktopFileIconClass
     void (*update_file_info)(XfdesktopFileIcon *icon, GFileInfo *info);
     
     gboolean (*can_rename_file)(XfdesktopFileIcon *icon);
-    gboolean (*rename_file)(XfdesktopFileIcon *icon, const gchar *new_name);
     
     gboolean (*can_delete_file)(XfdesktopFileIcon *icon);
     gboolean (*delete_file)(XfdesktopFileIcon *icon);
@@ -79,8 +78,6 @@ void xfdesktop_file_icon_update_file_info(XfdesktopFileIcon *icon,
                                           GFileInfo *info);
 
 gboolean xfdesktop_file_icon_can_rename_file(XfdesktopFileIcon *icon);
-gboolean xfdesktop_file_icon_rename_file(XfdesktopFileIcon *icon,
-                                         const gchar *new_name);
 
 gboolean xfdesktop_file_icon_can_delete_file(XfdesktopFileIcon *icon);
 gboolean xfdesktop_file_icon_delete_file(XfdesktopFileIcon *icon);

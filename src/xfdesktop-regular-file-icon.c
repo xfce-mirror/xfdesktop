@@ -92,8 +92,6 @@ static void xfdesktop_regular_file_icon_update_info(XfdesktopFileIcon *icon,
 static void xfdesktop_regular_file_icon_update_file_info(XfdesktopFileIcon *icon,
                                                          GFileInfo *info);
 static gboolean xfdesktop_regular_file_can_write_parent(XfdesktopFileIcon *icon);
-static gboolean xfdesktop_regular_file_icon_rename_file(XfdesktopFileIcon *icon,
-                                                        const gchar *new_name);
 static gboolean xfdesktop_regular_file_icon_delete_file(XfdesktopFileIcon *icon);
 
 #ifdef HAVE_THUNARX
@@ -144,7 +142,6 @@ xfdesktop_regular_file_icon_class_init(XfdesktopRegularFileIconClass *klass)
     file_icon_class->update_info = xfdesktop_regular_file_icon_update_info;
     file_icon_class->update_file_info = xfdesktop_regular_file_icon_update_file_info;
     file_icon_class->can_rename_file = xfdesktop_regular_file_can_write_parent;
-    file_icon_class->rename_file = xfdesktop_regular_file_icon_rename_file;
     file_icon_class->can_delete_file = xfdesktop_regular_file_can_write_parent;
     file_icon_class->delete_file = xfdesktop_regular_file_icon_delete_file;
 }
@@ -614,35 +611,6 @@ xfdesktop_regular_file_icon_delete_file(XfdesktopFileIcon *icon)
     
     /* no real way to signal success or failure at this point */
     return (job != NULL);
-}
-
-static gboolean
-xfdesktop_regular_file_icon_rename_file(XfdesktopFileIcon *icon,
-                                        const gchar *new_name)
-{
-    XfdesktopRegularFileIcon *regular_file_icon = XFDESKTOP_REGULAR_FILE_ICON(icon);
-    GError *error = NULL;
-    
-    g_return_val_if_fail(XFDESKTOP_IS_REGULAR_FILE_ICON(icon) && new_name
-                         && *new_name, FALSE);
-    
-    if(!thunar_vfs_info_rename(regular_file_icon->priv->info, new_name, &error)) {
-        GtkWidget *icon_view = xfdesktop_icon_peek_icon_view(XFDESKTOP_ICON(icon));
-        GtkWidget *toplevel = gtk_widget_get_toplevel(icon_view);
-        gchar *primary = g_markup_printf_escaped(_("Failed to rename \"%s\" to \"%s\":"),
-                                                 regular_file_icon->priv->info->display_name,
-                                                 new_name);
-        xfce_message_dialog(GTK_WINDOW(toplevel), _("Error"),
-                            GTK_STOCK_DIALOG_ERROR,
-                            primary, error->message,
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
-        g_free(primary);
-        g_error_free(error);
-        
-        return FALSE;
-    }
-    
-    return TRUE;
 }
 
 static G_CONST_RETURN ThunarVfsInfo *

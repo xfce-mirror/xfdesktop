@@ -227,23 +227,6 @@ xfdesktop_file_icon_can_rename_file(XfdesktopFileIcon *icon)
 }
 
 gboolean
-xfdesktop_file_icon_rename_file(XfdesktopFileIcon *icon,
-                                const gchar *new_name)
-{
-    XfdesktopFileIconClass *klass;
-    
-    g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON(icon), FALSE);
-    g_return_val_if_fail(new_name && *new_name, FALSE);
-    
-    klass = XFDESKTOP_FILE_ICON_GET_CLASS(icon);
-    
-    if(klass->rename_file)
-       return klass->rename_file(icon, new_name);
-    else
-        return FALSE;
-}
-
-gboolean
 xfdesktop_file_icon_can_delete_file(XfdesktopFileIcon *icon)
 {
     XfdesktopFileIconClass *klass;
