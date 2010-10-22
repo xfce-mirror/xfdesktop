@@ -92,14 +92,10 @@ static void xfdesktop_regular_file_icon_update_info(XfdesktopFileIcon *icon,
 static void xfdesktop_regular_file_icon_update_file_info(XfdesktopFileIcon *icon,
                                                          GFileInfo *info);
 static gboolean xfdesktop_regular_file_can_write_parent(XfdesktopFileIcon *icon);
-static gboolean xfdesktop_regular_file_icon_delete_file(XfdesktopFileIcon *icon);
 
 #ifdef HAVE_THUNARX
 static void xfdesktop_regular_file_icon_tfi_init(ThunarxFileInfoIface *iface);
 #endif
-
-static void xfdesktop_delete_file_finished(ThunarVfsJob *job,
-                                           gpointer user_data);
 
 static inline void xfdesktop_regular_file_icon_invalidate_pixbuf(XfdesktopRegularFileIcon *icon);
 
@@ -143,7 +139,6 @@ xfdesktop_regular_file_icon_class_init(XfdesktopRegularFileIconClass *klass)
     file_icon_class->update_file_info = xfdesktop_regular_file_icon_update_file_info;
     file_icon_class->can_rename_file = xfdesktop_regular_file_can_write_parent;
     file_icon_class->can_delete_file = xfdesktop_regular_file_can_write_parent;
-    file_icon_class->delete_file = xfdesktop_regular_file_icon_delete_file;
 }
 
 static void
@@ -552,65 +547,6 @@ xfdesktop_regular_file_can_write_parent(XfdesktopFileIcon *icon)
 
     return writable;
 
-}
-
-static void
-xfdesktop_delete_file_error(ThunarVfsJob *job,
-                            GError *error,
-                            gpointer user_data)
-{
-    XfdesktopRegularFileIcon *icon = XFDESKTOP_REGULAR_FILE_ICON(user_data);
-    GtkWidget *icon_view = xfdesktop_icon_peek_icon_view(XFDESKTOP_ICON(icon));
-    GtkWidget *toplevel = gtk_widget_get_toplevel(icon_view);
-    gchar *primary = g_markup_printf_escaped("There was an error deleting \"%s\":",
-                                             icon->priv->info->display_name);
-                                     
-    xfce_message_dialog(GTK_WINDOW(toplevel), _("Error"),
-                        GTK_STOCK_DIALOG_ERROR, primary,
-                        error->message, GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
-                        NULL);
-    
-    g_free(primary);
-}
-
-static void
-xfdesktop_delete_file_finished(ThunarVfsJob *job,
-                               gpointer user_data)
-{
-    XfdesktopRegularFileIcon *icon = XFDESKTOP_REGULAR_FILE_ICON(user_data);
-    
-    if(!xfdesktop_file_icon_remove_active_job(XFDESKTOP_FILE_ICON(icon), job))
-        g_critical("ThunarVfsJob 0x%p not found in active jobs list", job);
-    
-    g_object_unref(G_OBJECT(job));
-    g_object_unref(G_OBJECT(icon));
-}
-
-static gboolean
-xfdesktop_regular_file_icon_delete_file(XfdesktopFileIcon *icon)
-{
-    XfdesktopRegularFileIcon *regular_file_icon = XFDESKTOP_REGULAR_FILE_ICON(icon);
-    ThunarVfsJob *job;
-    
-    job = thunar_vfs_unlink_file(regular_file_icon->priv->info->path, NULL);
-    
-    if(job) {
-        g_object_set_data(G_OBJECT(job), "--xfdesktop-file-icon-callback",
-                          G_CALLBACK(xfdesktop_delete_file_finished));
-        g_object_set_data(G_OBJECT(job), "--xfdesktop-file-icon-data", icon);
-        xfdesktop_file_icon_add_active_job(XFDESKTOP_FILE_ICON(regular_file_icon),
-                                           job);
-        
-        g_signal_connect(G_OBJECT(job), "error",
-                         G_CALLBACK(xfdesktop_delete_file_error), icon);
-        g_signal_connect(G_OBJECT(job), "finished",
-                         G_CALLBACK(xfdesktop_delete_file_finished), icon);
-        
-        g_object_ref(G_OBJECT(icon));
-    }
-    
-    /* no real way to signal success or failure at this point */
-    return (job != NULL);
 }
 
 static G_CONST_RETURN ThunarVfsInfo *

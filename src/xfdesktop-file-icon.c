@@ -241,22 +241,6 @@ xfdesktop_file_icon_can_delete_file(XfdesktopFileIcon *icon)
         return FALSE;
 }
 
-gboolean
-xfdesktop_file_icon_delete_file(XfdesktopFileIcon *icon)
-{
-    XfdesktopFileIconClass *klass;
-    
-    g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON(icon), FALSE);
-    
-    klass = XFDESKTOP_FILE_ICON_GET_CLASS(icon);
-    
-    if(klass->delete_file)
-       return klass->delete_file(icon);
-    else
-        return FALSE;
-}
-
-
 void
 xfdesktop_file_icon_add_active_job(XfdesktopFileIcon *icon,
                                    ThunarVfsJob *job)

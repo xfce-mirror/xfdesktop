@@ -646,106 +646,16 @@ static void
 xfdesktop_file_icon_manager_delete_files(XfdesktopFileIconManager *fmanager,
                                          GList *files)
 {
-    GList *l;
-    gchar *primary;
-    gint ret = GTK_RESPONSE_CANCEL;
-    XfdesktopIcon *icon;
     GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
-    
-    if(g_list_length(files) == 1) {
-        icon = XFDESKTOP_ICON(files->data);
-        
-        primary = g_markup_printf_escaped(_("Are you sure that you want to delete \"%s\"?"),
-                                          xfdesktop_icon_peek_label(icon));
-        ret = xfce_message_dialog(GTK_WINDOW(toplevel),
-                                  _("Question"), GTK_STOCK_DIALOG_QUESTION,
-                                  primary,
-                                  _("If you delete a file, it is permanently lost."),
-                                  GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-                                  GTK_STOCK_DELETE, GTK_RESPONSE_ACCEPT, NULL);
-        g_free(primary);
-    } else {
-        GtkWidget *dlg, *treeview, *vbox, *sw, *cancel_btn, *delete_btn;
-        GtkListStore *ls;
-        GtkTreeIter itr;
-        GtkTreeViewColumn *col;
-        GtkCellRenderer *render;
-        gint w,h;
-        
-        gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &w, &h);
-        
-        primary = g_strdup_printf(_("Are you sure you want to delete the following %d files?"),
-                                  g_list_length(files));
-        dlg = xfce_message_dialog_new(GTK_WINDOW(toplevel),
-                                      _("Delete Multiple Files"),
-                                      GTK_STOCK_DIALOG_QUESTION,
-                                      primary,
-                                      _("If you delete a file, it is permanently lost."),
-                                      NULL, NULL);
-        g_free(primary);
-        vbox = GTK_DIALOG(dlg)->vbox;
-        
-        sw = gtk_scrolled_window_new(NULL, NULL);
-        gtk_scrolled_window_set_shadow_type(GTK_SCROLLED_WINDOW(sw),
-                                            GTK_SHADOW_ETCHED_IN);
-        gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(sw),
-                                       GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
-        gtk_widget_show(sw);
-        gtk_box_pack_start(GTK_BOX(vbox), sw, TRUE, TRUE, 0);
-        
-        ls = gtk_list_store_new(N_COLS, GDK_TYPE_PIXBUF, G_TYPE_STRING);
-        for(l = files; l; l = l->next) {
-            icon = XFDESKTOP_ICON(l->data);
-            gtk_list_store_append(ls, &itr);
-            gtk_list_store_set(ls, &itr,
-                               COL_PIX, xfdesktop_icon_peek_pixbuf(icon, w),
-                               COL_NAME, xfdesktop_icon_peek_label(icon),
-                               -1);
-        }
-        
-        treeview = gtk_tree_view_new_with_model(GTK_TREE_MODEL(ls));
-        gtk_tree_view_set_headers_visible(GTK_TREE_VIEW(treeview), FALSE);
-        gtk_tree_selection_set_mode(gtk_tree_view_get_selection(GTK_TREE_VIEW(treeview)),
-                                    GTK_SELECTION_NONE);
-        
-        render = gtk_cell_renderer_pixbuf_new();
-        col = gtk_tree_view_column_new_with_attributes("pix", render,
-                                                       "pixbuf", COL_PIX, NULL);
-        gtk_tree_view_append_column(GTK_TREE_VIEW(treeview), col);
-        
-        render = gtk_cell_renderer_text_new();
-        g_object_set(G_OBJECT(render),
-                     "ellipsize", PANGO_ELLIPSIZE_END,
-                     "ellipsize-set", TRUE,
-                     NULL);
-        col = gtk_tree_view_column_new_with_attributes("label", render,
-                                                       "text", COL_NAME, NULL);
-        gtk_tree_view_append_column(GTK_TREE_VIEW(treeview), col);
-        
-        gtk_widget_show(treeview);
-        gtk_container_add(GTK_CONTAINER(sw), treeview);
-        
-        cancel_btn = gtk_button_new_from_stock(GTK_STOCK_CANCEL);
-        gtk_widget_show(cancel_btn);
-        gtk_dialog_add_action_widget(GTK_DIALOG(dlg), cancel_btn,
-                                     GTK_RESPONSE_CANCEL);
-        
-        delete_btn = gtk_button_new_from_stock(GTK_STOCK_DELETE);
-        GTK_WIDGET_SET_FLAGS(delete_btn, GTK_CAN_DEFAULT);
-        gtk_widget_show(delete_btn);
-        gtk_dialog_add_action_widget(GTK_DIALOG(dlg), delete_btn,
-                                     GTK_RESPONSE_ACCEPT);
-        
-        gtk_dialog_set_default_response(GTK_DIALOG(dlg), GTK_RESPONSE_ACCEPT);
-        gtk_widget_show(dlg);
-        gtk_widget_grab_focus(delete_btn);
-        
-        ret = gtk_dialog_run(GTK_DIALOG(dlg));
-        gtk_widget_destroy(dlg);
-    }
-        
-    if(GTK_RESPONSE_ACCEPT == ret)
-        g_list_foreach(files, (GFunc)xfdesktop_file_icon_delete_file, NULL);
+    GList *gfiles = NULL, *lp;
+
+    for(lp = g_list_last(files); lp != NULL; lp = lp->prev)
+        gfiles = g_list_prepend(gfiles, xfdesktop_file_icon_peek_file(lp->data));
+
+    xfdesktop_file_utils_unlink_files(gfiles, fmanager->priv->gscreen, 
+                                      GTK_WINDOW(toplevel));
+
+    g_list_free(gfiles);
 }
 
 static void

@@ -674,6 +674,82 @@ xfdesktop_file_utils_rename_file(GFile *file,
 }
 
 static void
+xfdesktop_file_utils_unlink_files_cb(DBusGProxy *proxy,
+                                     GError *error,
+                                     gpointer user_data)
+{
+    GtkWindow *parent = user_data;
+
+    if(parent)
+        xfdesktop_file_utils_set_window_cursor(parent, GDK_LEFT_PTR);
+    
+    if(error) {
+        xfce_message_dialog(parent,
+                            _("Delete Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("The selected files could not be deleted"),
+                            error->message,
+                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+    }
+}
+
+void
+xfdesktop_file_utils_unlink_files(GList *files,
+                                  GdkScreen *screen,
+                                  GtkWindow *parent)
+{
+    DBusGProxy *fileman_proxy;
+    
+    g_return_if_fail(files != NULL && G_IS_FILE(files->data));
+    g_return_if_fail(GDK_IS_SCREEN(screen) || GTK_IS_WINDOW(parent));
+    
+    if(!screen)
+        screen = gtk_widget_get_screen(GTK_WIDGET(parent));
+    
+    fileman_proxy = xfdesktop_file_utils_peek_filemanager_proxy();
+    if(fileman_proxy) {
+        guint nfiles = g_list_length(files);
+        gchar **uris = g_new0(gchar *, nfiles+1);
+        gchar *display_name = gdk_screen_make_display_name(screen);
+        gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
+        GList *lp;
+        gint n;
+
+        /* convert GFile list into an array of URIs */
+        for(n = 0, lp = files; lp != NULL; ++n, lp = lp->next)
+            uris[n] = g_file_get_uri(lp->data);
+        uris[n] = NULL;
+        
+        if(!xfdesktop_file_manager_proxy_unlink_files_async(fileman_proxy,
+                                                            NULL, (const gchar **)uris, 
+                                                            display_name, startup_id,
+                                                            xfdesktop_file_utils_unlink_files_cb,
+                                                            parent))
+        {
+            xfce_message_dialog(parent,
+                                _("Delete Error"), GTK_STOCK_DIALOG_ERROR,
+                                _("The selected files could not be deleted"),
+                                _("This feature requires a file manager service to "
+                                  "be present (such as the one supplied by Thunar)."),
+                                GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+        } else {
+            if(parent)
+              xfdesktop_file_utils_set_window_cursor(parent, GDK_WATCH);
+        }
+        
+        g_free(startup_id);
+        g_strfreev(uris);
+        g_free(display_name);
+    } else {
+        xfce_message_dialog(parent,
+                            _("Delete Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("The selected files could not be deleted"),
+                            _("This feature requires a file manager service to "
+                              "be present (such as the one supplied by Thunar)."),
+                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+    }
+}
+
+static void
 xfdesktop_file_utils_create_file_cb(DBusGProxy *proxy,
                                     GError *error,
                                     gpointer user_data)

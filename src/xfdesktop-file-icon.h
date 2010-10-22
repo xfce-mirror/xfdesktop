@@ -61,9 +61,7 @@ struct _XfdesktopFileIconClass
     void (*update_file_info)(XfdesktopFileIcon *icon, GFileInfo *info);
     
     gboolean (*can_rename_file)(XfdesktopFileIcon *icon);
-    
     gboolean (*can_delete_file)(XfdesktopFileIcon *icon);
-    gboolean (*delete_file)(XfdesktopFileIcon *icon);
 };
 
 GType xfdesktop_file_icon_get_type(void) G_GNUC_CONST;
@@ -80,7 +78,6 @@ void xfdesktop_file_icon_update_file_info(XfdesktopFileIcon *icon,
 gboolean xfdesktop_file_icon_can_rename_file(XfdesktopFileIcon *icon);
 
 gboolean xfdesktop_file_icon_can_delete_file(XfdesktopFileIcon *icon);
-gboolean xfdesktop_file_icon_delete_file(XfdesktopFileIcon *icon);
 
 void xfdesktop_file_icon_add_active_job(XfdesktopFileIcon *icon,
                                         ThunarVfsJob *job);
