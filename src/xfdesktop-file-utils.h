@@ -107,6 +107,10 @@ void xfdesktop_file_utils_show_properties_dialog(GFile *file,
 void xfdesktop_file_utils_launch(GFile *file,
                                  GdkScreen *screen,
                                  GtkWindow *parent);
+void xfdesktop_file_utils_execute(GFile *working_directory,
+                                  GFile *file,
+                                  GList *files,
+                                  GdkScreen *screen);
 void xfdesktop_file_utils_display_chooser_dialog(GFile *file,
                                                  gboolean open,
                                                  GdkScreen *screen,

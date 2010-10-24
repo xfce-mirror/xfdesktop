@@ -275,7 +275,7 @@ xfdesktop_regular_file_icon_get_allowed_drag_actions(XfdesktopIcon *icon)
     GFileInfo *info = xfdesktop_file_icon_peek_file_info(XFDESKTOP_FILE_ICON(icon));
     GFile *file = xfdesktop_file_icon_peek_file(XFDESKTOP_FILE_ICON(icon));
     GdkDragAction actions = GDK_ACTION_LINK;  /* we can always link */
-    
+
     if(!info)
         return 0;
 
@@ -297,7 +297,6 @@ xfdesktop_regular_file_icon_get_allowed_drag_actions(XfdesktopIcon *icon)
             if(g_file_info_get_attribute_boolean(parent_info,
                                                  G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
             {
-                g_debug("can move %s", g_file_get_uri(file));
                 actions |= GDK_ACTION_MOVE;
             }
             g_object_unref(parent_info);
@@ -318,15 +317,16 @@ xfdesktop_regular_file_icon_get_allowed_drop_actions(XfdesktopIcon *icon)
     
     /* if it's executable we can 'copy'.  if it's a folder we can do anything
      * if it's writable. */
-    if(g_file_info_get_attribute_boolean(info, G_FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE))
-        return GDK_ACTION_COPY;
-    else if(g_file_info_get_file_type(info) == G_FILE_TYPE_DIRECTORY
-            && g_file_info_get_attribute_boolean(info, 
-                                                 G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
-    {
-        return GDK_ACTION_MOVE | GDK_ACTION_COPY | GDK_ACTION_LINK;
-    } else
-        return 0;
+    if(g_file_info_get_file_type(info) == G_FILE_TYPE_DIRECTORY) {
+        if(g_file_info_get_attribute_boolean(info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
+            return GDK_ACTION_MOVE | GDK_ACTION_COPY | GDK_ACTION_LINK;
+    } else {
+        if(xfdesktop_file_utils_file_is_executable(info)) {
+            return GDK_ACTION_COPY;
+        }
+    }
+
+    return 0;
 }
 
 gboolean
@@ -352,37 +352,16 @@ xfdesktop_regular_file_icon_do_drop_dest(XfdesktopIcon *icon,
         return FALSE;
     
     if(g_file_info_get_file_type(regular_file_icon->priv->file_info) != G_FILE_TYPE_DIRECTORY
-       && g_file_info_get_attribute_boolean(regular_file_icon->priv->file_info,
-                                            G_FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE))
+       && xfdesktop_file_utils_file_is_executable(regular_file_icon->priv->file_info))
     {
-        /* TODO Use the new Thunar D-Bus method Execute() which takes a 
-         * working directory, a file to execute, a string array of arguments, 
-         * a screen and a startup ID */
-#if 0
-        GList *path_list = g_list_prepend(NULL, src_info->path);
-        GError *error = NULL;
-        gboolean succeeded;
-        
-        succeeded = thunar_vfs_info_execute(regular_file_icon->priv->info,
-                                            regular_file_icon->priv->gscreen,
-                                            path_list,
-                                            xfce_get_homedir(),
-                                            &error);
-        g_list_free(path_list);
-        
-        if(!succeeded) {
-            gchar *primary = g_markup_printf_escaped(_("Failed to run \"%s\":"),
-                                                     regular_file_icon->priv->info->display_name);
-            xfce_message_dialog(NULL, _("Run Error"), GTK_STOCK_DIALOG_ERROR,
-                                primary, error->message,
-                                GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
-            g_free(primary);
-            g_error_free(error);
-            
-            return FALSE;
-        }
-        
-#endif
+        GList files;
+
+        files.data = src_file;
+        files.prev = files.next = NULL;
+
+        xfdesktop_file_utils_execute(NULL, regular_file_icon->priv->file, &files,
+                                     regular_file_icon->priv->gscreen);
+
         return TRUE;
     } else {
         GFile *parent, *dest_file;
