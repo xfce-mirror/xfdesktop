@@ -626,6 +626,8 @@ xfdesktop_regular_file_icon_update_file_info(XfdesktopFileIcon *icon,
         regular_file_icon->priv->file_info = NULL;
     }
 
+    regular_file_icon->priv->file_info = g_object_ref(info);
+
     uri = g_file_get_uri(regular_file_icon->priv->file);
     path = thunar_vfs_path_new(uri, NULL);
     regular_file_icon->priv->info = thunar_vfs_info_new_for_path(path, NULL);
