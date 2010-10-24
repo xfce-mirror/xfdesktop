@@ -820,6 +820,79 @@ xfdesktop_file_utils_create_file(GFile *parent_folder,
 }
 
 static void
+xfdesktop_file_utils_create_file_from_template_cb(DBusGProxy *proxy,
+                                                  GError *error,
+                                                  gpointer user_data)
+{
+    GtkWindow *parent = user_data;
+
+    if(parent)
+        xfdesktop_file_utils_set_window_cursor(parent, GDK_LEFT_PTR);
+    
+    if(error) {
+        xfce_message_dialog(parent,
+                            _("Create Document Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("Could not create a new document from the template"),
+                            error->message,
+                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+    }
+}
+
+void
+xfdesktop_file_utils_create_file_from_template(GFile *parent_folder,
+                                               GFile *template_file,
+                                               GdkScreen *screen,
+                                               GtkWindow *parent)
+{
+    DBusGProxy *fileman_proxy;
+    
+    g_return_if_fail(G_IS_FILE(parent_folder));
+    g_return_if_fail(G_IS_FILE(template_file));
+    g_return_if_fail(GDK_IS_SCREEN(screen) || GTK_IS_WINDOW(parent));
+    
+    if(!screen)
+        screen = gtk_widget_get_screen(GTK_WIDGET(parent));
+    
+    fileman_proxy = xfdesktop_file_utils_peek_filemanager_proxy();
+    if(fileman_proxy) {
+        gchar *parent_directory = g_file_get_uri(parent_folder);
+        gchar *template_uri = g_file_get_uri(template_file);
+        gchar *display_name = gdk_screen_make_display_name(screen);
+        gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
+        
+        if(!xfdesktop_file_manager_proxy_create_file_from_template_async(fileman_proxy, 
+                                                                         parent_directory, 
+                                                                         template_uri,
+                                                                         display_name,
+                                                                         startup_id,
+                                                                         xfdesktop_file_utils_create_file_from_template_cb,
+                                                                         parent))
+        {
+            xfce_message_dialog(parent,
+                                _("Create Document Error"), GTK_STOCK_DIALOG_ERROR,
+                                _("Could not create a new document from the template"),
+                                _("This feature requires a file manager service to "
+                                  "be present (such as the one supplied by Thunar)."),
+                                GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+        } else {
+            if(parent)
+              xfdesktop_file_utils_set_window_cursor(parent, GDK_WATCH);
+        }
+        
+        g_free(startup_id);
+        g_free(parent_directory);
+        g_free(display_name);
+    } else {
+        xfce_message_dialog(parent,
+                            _("Create Document Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("Could not create a new document from the template"),
+                            _("This feature requires a file manager service to "
+                              "be present (such as the one supplied by Thunar)."),
+                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+    }
+}
+
+static void
 xfdesktop_file_utils_show_properties_dialog_cb(DBusGProxy *proxy,
                                                GError *error,
                                                gpointer user_data)

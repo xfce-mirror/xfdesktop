@@ -304,6 +304,23 @@
       <arg direction="in" name="display" type="s" />
       <arg direction="in" name="startup_id" type="s" />
     </method>
+
+    <!--
+      CreateFileFromTemplate(working_directory : STRING, template_uri : STRING, display : STRING, start_id : STRING) : VOID
+
+      parent_directory : the parent directory in which the file will be created.
+      template_uri     : the URI or absolute path to the template file.
+      display          : the screen on which to launch the filenames or ""
+                         to use the default screen of the file manager.
+      startup_id       : the DESKTOP_STARTUP_ID environment variable for properly
+                         handling startup notification and focus stealing.
+    -->
+    <method name="CreateFileFromTemplate">
+      <arg direction="in" name="parent_directory" type="s" />
+      <arg direction="in" name="template_uri" type="s" />
+      <arg direction="in" name="display" type="s" />
+      <arg direction="in" name="startup_id" type="s" />
+    </method>
   </interface>
 </node>
 
