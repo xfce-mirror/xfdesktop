@@ -272,28 +272,37 @@ xfdesktop_regular_file_icon_peek_label(XfdesktopIcon *icon)
 static GdkDragAction
 xfdesktop_regular_file_icon_get_allowed_drag_actions(XfdesktopIcon *icon)
 {
-    const ThunarVfsInfo *info = xfdesktop_file_icon_peek_info(XFDESKTOP_FILE_ICON(icon));
+    GFileInfo *info = xfdesktop_file_icon_peek_file_info(XFDESKTOP_FILE_ICON(icon));
+    GFile *file = xfdesktop_file_icon_peek_file(XFDESKTOP_FILE_ICON(icon));
     GdkDragAction actions = GDK_ACTION_LINK;  /* we can always link */
     
     if(!info)
         return 0;
-    
-    if(info->flags & THUNAR_VFS_FILE_FLAGS_READABLE) {
-        ThunarVfsPath *parent_path;
-        ThunarVfsInfo *parent_info;
+
+    if(g_file_info_get_attribute_boolean(info,
+                                         G_FILE_ATTRIBUTE_ACCESS_CAN_READ))
+    {
+        GFileInfo *parent_info;
+        GFile *parent_file;
         
         actions |= GDK_ACTION_COPY;
         
         /* we can only move if the parent is writable */
-        parent_path = thunar_vfs_path_get_parent(info->path);
-        parent_info = thunar_vfs_info_new_for_path(parent_path, NULL);
+        parent_file = g_file_get_parent(file);
+        parent_info = g_file_query_info(parent_file, 
+                                        XFDESKTOP_FILE_INFO_NAMESPACE,
+                                        G_FILE_QUERY_INFO_NONE, 
+                                        NULL, NULL);
         if(parent_info) {
-            if(parent_info->flags & THUNAR_VFS_FILE_FLAGS_WRITABLE)
+            if(g_file_info_get_attribute_boolean(parent_info,
+                                                 G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
+            {
+                g_debug("can move %s", g_file_get_uri(file));
                 actions |= GDK_ACTION_MOVE;
-            thunar_vfs_info_unref(parent_info);
+            }
+            g_object_unref(parent_info);
         }
-        
-        /* |parent_path| is owned by |info| */
+        g_object_unref(parent_file);
     }
     
     return actions;
@@ -302,17 +311,18 @@ xfdesktop_regular_file_icon_get_allowed_drag_actions(XfdesktopIcon *icon)
 static GdkDragAction
 xfdesktop_regular_file_icon_get_allowed_drop_actions(XfdesktopIcon *icon)
 {
-    const ThunarVfsInfo *info = xfdesktop_file_icon_peek_info(XFDESKTOP_FILE_ICON(icon));
+    GFileInfo *info = xfdesktop_file_icon_peek_file_info(XFDESKTOP_FILE_ICON(icon));
     
     if(!info)
         return 0;
     
     /* if it's executable we can 'copy'.  if it's a folder we can do anything
      * if it's writable. */
-    if(info->flags & THUNAR_VFS_FILE_FLAGS_EXECUTABLE)
+    if(g_file_info_get_attribute_boolean(info, G_FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE))
         return GDK_ACTION_COPY;
-    else if(THUNAR_VFS_FILE_TYPE_DIRECTORY == info->type
-            && info->flags & THUNAR_VFS_FILE_FLAGS_WRITABLE)
+    else if(g_file_info_get_file_type(info) == G_FILE_TYPE_DIRECTORY
+            && g_file_info_get_attribute_boolean(info, 
+                                                 G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
     {
         return GDK_ACTION_MOVE | GDK_ACTION_COPY | GDK_ACTION_LINK;
     } else
