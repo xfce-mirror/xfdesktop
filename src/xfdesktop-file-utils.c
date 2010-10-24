@@ -958,6 +958,79 @@ xfdesktop_file_utils_display_chooser_dialog(GFile *file,
     }
 }
 
+void
+xfdesktop_file_utils_transfer_file(GdkDragAction action,
+                                   GFile *source_file,
+                                   GFile *target_file,
+                                   GdkScreen *screen)
+{
+    DBusGProxy *fileman_proxy;
+    
+    g_return_if_fail(G_IS_FILE(source_file));
+    g_return_if_fail(G_IS_FILE(target_file));
+    g_return_if_fail(screen == NULL || GDK_IS_SCREEN(screen));
+    
+    if(!screen)
+        screen = gdk_display_get_default_screen(gdk_display_get_default());
+    
+    fileman_proxy = xfdesktop_file_utils_peek_filemanager_proxy();
+    if(fileman_proxy) {
+        GError *error = NULL;
+        gchar *source_uris[2] = { g_file_get_uri(source_file), NULL };
+        gchar *target_uris[2] = { g_file_get_uri(target_file), NULL };
+        gchar *display_name = gdk_screen_make_display_name(screen);
+        gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
+
+        switch(action) {
+            case GDK_ACTION_MOVE:
+                xfdesktop_file_manager_proxy_move_into(fileman_proxy, NULL,
+                                                       (const gchar **)source_uris, 
+                                                       (const gchar *)target_uris[0],
+                                                       display_name, startup_id,
+                                                       &error);
+                break;
+            case GDK_ACTION_COPY:
+                xfdesktop_file_manager_proxy_copy_to(fileman_proxy, NULL,
+                                                     (const gchar **)source_uris, 
+                                                     (const gchar **)target_uris,
+                                                     display_name, startup_id,
+                                                     &error);
+                break;
+            case GDK_ACTION_LINK:
+                xfdesktop_file_manager_proxy_link_into(fileman_proxy, NULL,
+                                                       (const gchar **)source_uris, 
+                                                       (const gchar *)target_uris[0],
+                                                       display_name, startup_id,
+                                                       &error);
+                break;
+            default:
+                g_warning("Unsupported transfer action");
+        }
+
+        if(error) {
+            xfce_message_dialog(NULL,
+                                _("Transfer Error"), GTK_STOCK_DIALOG_ERROR,
+                                _("The file transfer could not be performed"),
+                                error->message, GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, 
+                                NULL);
+
+            g_error_free(error);
+        }
+        
+        g_free(startup_id);
+        g_free(display_name);
+        g_free(target_uris[0]);
+        g_free(source_uris[0]);
+    } else {
+        xfce_message_dialog(NULL,
+                            _("Transfer Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("The file transfer could not be performed"),
+                            _("This feature requires a file manager service to "
+                              "be present (such as the one supplied by Thunar)."),
+                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+    }
+}
+
 static gint dbus_ref_cnt = 0;
 static DBusGConnection *dbus_gconn = NULL;
 static DBusGProxy *dbus_trash_proxy = NULL;

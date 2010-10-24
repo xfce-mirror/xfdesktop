@@ -111,6 +111,10 @@ void xfdesktop_file_utils_display_chooser_dialog(GFile *file,
                                                  gboolean open,
                                                  GdkScreen *screen,
                                                  GtkWindow *parent);
+void xfdesktop_file_utils_transfer_file(GdkDragAction action,
+                                        GFile *source_file,
+                                        GFile *target_file,
+                                        GdkScreen *screen);
 
 
 gboolean xfdesktop_file_utils_dbus_init(void);
