@@ -66,7 +66,6 @@
 #include "xfdesktop-file-icon-manager.h"
 #include "xfdesktop-file-utils.h"
 #include "xfdesktop-file-manager-proxy.h"
-#include "xfdesktop-file-properties-dialog.h"
 #include "xfdesktop-icon-view.h"
 #include "xfdesktop-regular-file-icon.h"
 #include "xfdesktop-special-file-icon.h"

@@ -53,7 +53,6 @@
 #endif
 
 #include "xfdesktop-file-utils.h"
-#include "xfdesktop-file-properties-dialog.h"
 #include "xfdesktop-volume-icon.h"
 
 struct _XfdesktopVolumeIconPrivate
@@ -560,7 +559,12 @@ xfdesktop_volume_icon_menu_properties(GtkWidget *widget,
                                       gpointer user_data)
 {
     XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(user_data);        
-    xfdesktop_file_properties_dialog_show(NULL, icon, NULL);
+    GFile *file;
+    
+    file = xfdesktop_file_icon_peek_file(icon);
+    xfdesktop_file_utils_show_properties_dialog(file, 
+                                                XFDESKTOP_VOLUME_ICON(icon)->priv->gscreen, 
+                                                NULL);
 }
 
 static gboolean
@@ -627,7 +631,7 @@ xfdesktop_volume_icon_populate_context_menu(XfdesktopIcon *icon,
     gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
     gtk_widget_show(mi);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-    if(!volume_icon->priv->info)
+    if(!volume_icon->priv->file_info)
         gtk_widget_set_sensitive(mi, FALSE);
     else {
         g_signal_connect(G_OBJECT(mi), "activate",
