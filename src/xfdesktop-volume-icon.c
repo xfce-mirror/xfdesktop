@@ -241,16 +241,14 @@ xfdesktop_volume_icon_peek_pixbuf(XfdesktopIcon *icon,
     
     if(size != file_icon->priv->cur_pix_size)
         xfdesktop_volume_icon_invalidate_pixbuf(file_icon);
-    
+
     if(!file_icon->priv->pix) {
         icon_name = thunar_vfs_volume_lookup_icon_name(file_icon->priv->volume,
                                                        gtk_icon_theme_get_default());
         
-        file_icon->priv->pix = xfdesktop_file_utils_get_file_icon(icon_name,
-                                                                  file_icon->priv->info,
-                                                                  size,
-                                                                  NULL,
-                                                                  100);
+        file_icon->priv->pix = xfdesktop_file_utils_get_file_icon(icon_name, 
+                                                                  file_icon->priv->file_info,
+                                                                  size, NULL, 100);
         
         file_icon->priv->cur_pix_size = size;
     }

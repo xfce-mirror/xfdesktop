@@ -232,32 +232,17 @@ xfdesktop_special_file_icon_peek_pixbuf(XfdesktopIcon *icon,
     
     if(!file_icon->priv->pix) {
         const gchar *custom_icon_name = NULL;
-        GtkIconTheme *icon_theme = gtk_icon_theme_get_for_screen(file_icon->priv->gscreen);
-        
-        if(XFDESKTOP_SPECIAL_FILE_ICON_HOME == file_icon->priv->type) {
-            if(gtk_icon_theme_has_icon(icon_theme, "user-home"))
-                custom_icon_name = "user-home";
-            else if(gtk_icon_theme_has_icon(icon_theme, "gnome-fs-desktop"))
-                custom_icon_name = "gnome-fs-desktop";
-        } else if(XFDESKTOP_SPECIAL_FILE_ICON_TRASH == file_icon->priv->type) {
-            if(file_icon->priv->trash_full) {
-                if(gtk_icon_theme_has_icon(icon_theme, "user-trash-full"))
-                    custom_icon_name = "user-trash-full";
-                else if(gtk_icon_theme_has_icon(icon_theme, "gnome-fs-trash-full"))
-                    custom_icon_name = "gnome-fs-trash-full";
-            } else {
-                if(gtk_icon_theme_has_icon(icon_theme, "user-trash"))
-                    custom_icon_name = "user-trash";
-                else if(gtk_icon_theme_has_icon(icon_theme, "gnome-fs-trash-empty"))
-                    custom_icon_name = "gnome-fs-trash-empty";
-            }
-        }
+
+        /* use a custom icon name for the local filesystem root */
+        GFile *parent = g_file_get_parent(file_icon->priv->file);
+        if(!parent && g_file_has_uri_scheme(file_icon->priv->file, "file"))
+            custom_icon_name = "drive-harddisk";
+        if(parent)
+            g_object_unref(parent);
         
         file_icon->priv->pix = xfdesktop_file_utils_get_file_icon(custom_icon_name,
-                                                                  file_icon->priv->info,
-                                                                  size,
-                                                                  NULL,
-                                                                  100);
+                                                                  file_icon->priv->file_info,
+                                                                  size, NULL, 100);
         
         file_icon->priv->cur_pix_size = size;
     }
@@ -764,7 +749,7 @@ xfdesktop_special_file_icon_new(XfdesktopSpecialFileIconType type,
 {
     XfdesktopSpecialFileIcon *special_file_icon;
     ThunarVfsPath *path = NULL;
-    gchar *pathname;
+    gchar *uri;
     
     switch(type) {
         case XFDESKTOP_SPECIAL_FILE_ICON_FILESYSTEM:
@@ -790,9 +775,9 @@ xfdesktop_special_file_icon_new(XfdesktopSpecialFileIconType type,
     thunar_vfs_path_unref(path);
 
     /* convert the ThunarVfsPath into a GFile */
-    pathname = thunar_vfs_path_dup_string(special_file_icon->priv->info->path);
-    special_file_icon->priv->file = g_file_new_for_path(pathname);
-    g_free(pathname);
+    uri = thunar_vfs_path_dup_uri(special_file_icon->priv->info->path);
+    special_file_icon->priv->file = g_file_new_for_uri(uri);
+    g_free(uri);
 
     /* query file information from GIO */
     special_file_icon->priv->file_info = g_file_query_info(special_file_icon->priv->file,

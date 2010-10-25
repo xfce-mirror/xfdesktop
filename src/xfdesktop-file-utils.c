@@ -160,8 +160,8 @@ xfdesktop_file_utils_get_file_kind(const ThunarVfsInfo *info,
     return str;
 }
 
-static
-gboolean xfdesktop_file_utils_is_desktop_file(GFileInfo *info)
+gboolean 
+xfdesktop_file_utils_is_desktop_file(GFileInfo *info)
 {
     const gchar *content_type;
     gboolean is_desktop_file = FALSE;
@@ -297,14 +297,13 @@ xfdesktop_file_utils_get_fallback_icon(gint size)
 
 GdkPixbuf *
 xfdesktop_file_utils_get_file_icon(const gchar *custom_icon_name,
-                                   ThunarVfsInfo *info,
+                                   GFileInfo *info,
                                    gint size,
                                    const GdkPixbuf *emblem,
                                    guint opacity)
 {
     GtkIconTheme *itheme = gtk_icon_theme_get_default();
     GdkPixbuf *pix_theme = NULL, *pix = NULL;
-    const gchar *icon_name;
     
     if(custom_icon_name) {
         pix_theme = gtk_icon_theme_load_icon(itheme, custom_icon_name, size,
@@ -312,20 +311,24 @@ xfdesktop_file_utils_get_file_icon(const gchar *custom_icon_name,
     }
     
     if(!pix_theme && info) {
-        icon_name = thunar_vfs_info_get_custom_icon(info);
-        if(icon_name) {
-            pix_theme = gtk_icon_theme_load_icon(itheme, icon_name, size,
-                                                 ITHEME_FLAGS, NULL);
-        }
-    }
-
-    if(!pix_theme && info && info->mime_info) {
-        icon_name = thunar_vfs_mime_info_lookup_icon_name(info->mime_info,
-                                                          gtk_icon_theme_get_default());
-        DBG("got mime info icon name: %s", icon_name);
-        if(icon_name) {
-            pix_theme = gtk_icon_theme_load_icon(itheme, icon_name, size,
-                                                 ITHEME_FLAGS, NULL);
+        GIcon *icon = g_file_info_get_icon(info);
+        if(icon) {
+            if(G_IS_THEMED_ICON(icon)) {
+              GtkIconInfo *icon_info = gtk_icon_theme_lookup_by_gicon(itheme,
+                                                                      icon, size,
+                                                                      ITHEME_FLAGS);
+              if(icon_info) {
+                  pix_theme = gtk_icon_info_load_icon(icon_info, NULL);
+                  gtk_icon_info_free(icon_info);
+              }
+            } else if(G_IS_LOADABLE_ICON(icon)) {
+                GInputStream *stream = g_loadable_icon_load(G_LOADABLE_ICON(icon), 
+                                                            size, NULL, NULL, NULL);
+                if(stream) {
+                    pix = gdk_pixbuf_new_from_stream(stream, NULL, NULL);
+                    g_object_unref(stream);
+                }
+            }
         }
     }
 

@@ -57,6 +57,7 @@ void xfdesktop_file_utils_move_into(GtkWindow *parent,
 
 gchar *xfdesktop_file_utils_get_file_kind(const ThunarVfsInfo *info,
                                           gboolean *is_link);
+gboolean xfdesktop_file_utils_is_desktop_file(GFileInfo *info);
 gboolean xfdesktop_file_utils_file_is_executable(GFileInfo *info);
 
 GList *xfdesktop_file_utils_file_icon_list_to_file_list(GList *icon_list);
@@ -66,7 +67,7 @@ void xfdesktop_file_utils_file_list_free(GList *file_list);
 GdkPixbuf *xfdesktop_file_utils_get_fallback_icon(gint size);
 
 GdkPixbuf *xfdesktop_file_utils_get_file_icon(const gchar *custom_icon_name,
-                                              ThunarVfsInfo *info,
+                                              GFileInfo *info,
                                               gint size,
                                               const GdkPixbuf *emblem,
                                               guint opacity);

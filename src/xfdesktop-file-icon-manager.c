@@ -108,7 +108,6 @@ struct _XfdesktopFileIconManagerPrivate
     GFile *folder;
     XfdesktopFileIcon *desktop_icon;
     GFileMonitor *monitor;
-    ThunarVfsJob *list_job;
     GFileEnumerator *enumerator;
     
     GHashTable *icons;

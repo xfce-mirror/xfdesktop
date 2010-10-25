@@ -212,21 +212,55 @@ xfdesktop_regular_file_icon_peek_pixbuf(XfdesktopIcon *icon,
                                         gint size)
 {
     XfdesktopRegularFileIcon *file_icon = XFDESKTOP_REGULAR_FILE_ICON(icon);
-    const gchar *icon_name = NULL;
+    gchar *icon_name = NULL;
     GdkPixbuf *emblem_pix = NULL;
-    
+
     if(size != file_icon->priv->cur_pix_size)
         xfdesktop_regular_file_icon_invalidate_pixbuf(file_icon);
-    
+
     if(!file_icon->priv->pix) {
-        /* check the application's binary name like thunar does (bug 1956) */
-        if(!file_icon->priv->pix
-           && file_icon->priv->info->flags & THUNAR_VFS_FILE_FLAGS_EXECUTABLE)
-        {
-            icon_name = thunar_vfs_path_get_name(file_icon->priv->info->path);
+        /* create a GFile for the $HOME/.thumbnails/ directory */
+        gchar *thumbnail_dir_path = g_build_filename(xfce_get_homedir(), 
+                                                     ".thumbnails", NULL);
+        GFile *thumbnail_dir = g_file_new_for_path(thumbnail_dir_path);
+
+        if(g_file_has_prefix(file_icon->priv->file, thumbnail_dir)) {
+            /* use the filename as custom icon name for thumbnails */
+            icon_name = g_file_get_path(file_icon->priv->file);
+        } else if(xfdesktop_file_utils_is_desktop_file(file_icon->priv->file_info)) {
+            gchar *contents;
+            gsize length;
+
+            /* try to load the file into memory */
+            if(g_file_load_contents(file_icon->priv->file, NULL, &contents, &length, 
+                                    NULL, NULL)) 
+            {
+                /* allocate a new key file */
+                GKeyFile *key_file = g_key_file_new();
+
+                /* try to parse the key file from the contents of the file */
+                if (g_key_file_load_from_data(key_file, contents, length, 0, NULL)) {
+                    /* try to determine the custom icon name */
+                    icon_name = g_key_file_get_string(key_file,
+                                                      G_KEY_FILE_DESKTOP_GROUP,
+                                                      G_KEY_FILE_DESKTOP_KEY_ICON,
+                                                      NULL);
+                }
+
+                /* free key file and in-memory data */
+                g_key_file_free(key_file);
+                g_free(contents);
+            }
         }
-        
-        if(file_icon->priv->info->flags & THUNAR_VFS_FILE_FLAGS_SYMLINK) {
+
+        /* release thumbnail path */
+        g_object_unref(thumbnail_dir);
+        g_free(thumbnail_dir_path);
+
+        /* load the symlink emblem if necessary */
+        if(g_file_info_get_attribute_boolean(file_icon->priv->file_info, 
+                                             G_FILE_ATTRIBUTE_STANDARD_IS_SYMLINK)) 
+        {
             GtkIconTheme *itheme = gtk_icon_theme_get_default();
             gint sym_pix_size = size * 2 / 3;
             
@@ -241,22 +275,23 @@ xfdesktop_regular_file_icon_peek_pixbuf(XfdesktopIcon *icon,
                                                              sym_pix_size,
                                                              sym_pix_size,
                                                              GDK_INTERP_BILINEAR);
-                    g_object_unref(G_OBJECT(emblem_pix));
+                    g_object_unref(emblem_pix);
                     emblem_pix = tmp;
                 }
             }
         }
         
-        file_icon->priv->pix = xfdesktop_file_utils_get_file_icon(icon_name,
-                                                                  file_icon->priv->info,
-                                                                  size,
-                                                                  emblem_pix,
+        file_icon->priv->pix = xfdesktop_file_utils_get_file_icon(icon_name, 
+                                                                  file_icon->priv->file_info, 
+                                                                  size, emblem_pix,
                                                                   file_icon->priv->pix_opacity);
         
-        if(emblem_pix)
-             g_object_unref(G_OBJECT(emblem_pix));
-        
         file_icon->priv->cur_pix_size = size;
+
+        if(emblem_pix)
+             g_object_unref(emblem_pix);
+        
+        g_free(icon_name);
     }
     
     return file_icon->priv->pix;
