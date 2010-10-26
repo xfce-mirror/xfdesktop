@@ -751,7 +751,7 @@ xfdesktop_file_utils_trash_files(GList *files,
         g_free(display_name);
     } else {
         xfce_message_dialog(parent,
-                            _("Delete Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("Trash Error"), GTK_STOCK_DIALOG_ERROR,
                             _("The selected files could not be moved to the trash"),
                             _("This feature requires a trash service to "
                               "be present (such as the one supplied by Thunar)."),
