@@ -69,7 +69,6 @@ struct _XfdesktopSpecialFileIconPrivate
     
     /* only needed for trash */
     DBusGProxy *dbus_proxy;
-    DBusGProxyCall *dbus_querytrash_call;
     gboolean trash_full;
 };
 
@@ -98,9 +97,6 @@ static void xfdesktop_special_file_icon_tfi_init(ThunarxFileInfoIface *iface);
 
 
 static inline void xfdesktop_special_file_icon_invalidate_pixbuf(XfdesktopSpecialFileIcon *icon);
-static void xfdesktop_special_file_icon_trash_changed_cb(DBusGProxy *proxy,
-                                                         gboolean trash_full,
-                                                         gpointer user_data);
 
 
 #ifdef HAVE_THUNARX
@@ -161,19 +157,13 @@ xfdesktop_special_file_icon_finalize(GObject *obj)
                                          G_CALLBACK(xfdesktop_special_file_icon_invalidate_pixbuf),
                                          icon);
     
-    if(icon->priv->dbus_proxy) {
-        if(icon->priv->dbus_querytrash_call) {
-            dbus_g_proxy_cancel_call(icon->priv->dbus_proxy,
-                                     icon->priv->dbus_querytrash_call);
-        }
-        dbus_g_proxy_disconnect_signal(icon->priv->dbus_proxy, "TrashChanged",
-                                       G_CALLBACK(xfdesktop_special_file_icon_trash_changed_cb),
-                                       icon);
-        g_object_unref(G_OBJECT(icon->priv->dbus_proxy));
-    }
-    
     if(icon->priv->pix)
         g_object_unref(G_OBJECT(icon->priv->pix));
+
+    g_object_unref(icon->priv->file);
+
+    if(icon->priv->file_info)
+        g_object_unref(icon->priv->file_info);
     
     if(icon->priv->info)
         thunar_vfs_info_unref(icon->priv->info);
@@ -270,8 +260,8 @@ xfdesktop_special_file_icon_get_allowed_drag_actions(XfdesktopIcon *icon)
     switch(special_file_icon->priv->type) {
         case XFDESKTOP_SPECIAL_FILE_ICON_FILESYSTEM:
             /* move is just impossible, and copy seems a bit retarded.  link
-             * is possible, but thunar-vfs doesn't support it (deliberately). */
-            actions = 0;
+             * is possible */
+            actions = GDK_ACTION_LINK;
             break;
         
         case XFDESKTOP_SPECIAL_FILE_ICON_HOME:
@@ -281,9 +271,9 @@ xfdesktop_special_file_icon_get_allowed_drag_actions(XfdesktopIcon *icon)
             break;
             
         case XFDESKTOP_SPECIAL_FILE_ICON_TRASH:
-            /* i don't think we can even do a link here; thunar doesn't let
-             * us, anyway. */
-            actions = 0;
+            /* move is impossible, but we can copy and link the trash root
+             * anywhere */
+            actions = GDK_ACTION_COPY | GDK_ACTION_LINK;
             break;
     }
     
@@ -294,85 +284,25 @@ static GdkDragAction
 xfdesktop_special_file_icon_get_allowed_drop_actions(XfdesktopIcon *icon)
 {
     XfdesktopSpecialFileIcon *special_file_icon = XFDESKTOP_SPECIAL_FILE_ICON(icon);
-    const ThunarVfsInfo *info;
+    GFileInfo *info;
     GdkDragAction actions = 0;
-    
-    switch(special_file_icon->priv->type) {
-        case XFDESKTOP_SPECIAL_FILE_ICON_FILESYSTEM:
-            /* we should hope the user isn't running as root, but we might as
-             * well let them hang themselves if they are */
-            info = xfdesktop_file_icon_peek_info(XFDESKTOP_FILE_ICON(icon));
-            if(info && info->flags & THUNAR_VFS_FILE_FLAGS_WRITABLE)
+
+    if(special_file_icon->priv->type != XFDESKTOP_SPECIAL_FILE_ICON_TRASH) {
+        info = xfdesktop_file_icon_peek_file_info(XFDESKTOP_FILE_ICON(icon));
+        if(info) {
+            if(g_file_info_get_attribute_boolean(info,
+                                                 G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
+            {
+                DBG("can move, copy and link");
                 actions = GDK_ACTION_MOVE | GDK_ACTION_COPY | GDK_ACTION_LINK;
-            else
-                actions = 0;
-            break;
-        
-        case XFDESKTOP_SPECIAL_FILE_ICON_HOME:
-            /* assume the user can write to their own home directory */
-            actions = GDK_ACTION_MOVE | GDK_ACTION_COPY | GDK_ACTION_LINK;
-            break;
-            
-        case XFDESKTOP_SPECIAL_FILE_ICON_TRASH:
-            actions = GDK_ACTION_MOVE;  /* anything else is just silly */
-            break;
+            }
+        }
+    } else {
+        DBG("can move");
+        actions = GDK_ACTION_MOVE; /* everything else is just silly */
     }
     
     return actions;
-}
-
-static void
-xfdesktop_special_file_icon_drag_job_error(ThunarVfsJob *job,
-                                           GError *error,
-                                           gpointer user_data)
-{
-    XfdesktopSpecialFileIcon *special_file_icon = XFDESKTOP_SPECIAL_FILE_ICON(user_data);
-    XfdesktopFileIcon *src_file_icon = g_object_get_data(G_OBJECT(job),
-                                                         "--xfdesktop-src-file-icon");
-    XfdesktopFileUtilsFileop fileop = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(job),
-                                                                        "--xfdesktop-file-icon-action"));
-    const ThunarVfsInfo *src_info = xfdesktop_file_icon_peek_info(src_file_icon);
-    
-    g_return_if_fail(special_file_icon);
-
-    if(!src_file_icon)
-        return;
-    
-    xfdesktop_file_utils_handle_fileop_error(NULL, src_info,
-                                             special_file_icon->priv->info,
-                                             fileop, error);
-}
-
-static ThunarVfsInteractiveJobResponse
-xfdesktop_special_file_icon_interactive_job_ask(ThunarVfsJob *job,
-                                                const gchar *message,
-                                                ThunarVfsInteractiveJobResponse choices,
-                                                gpointer user_data)
-{
-    GtkWidget *icon_view = xfdesktop_icon_peek_icon_view(XFDESKTOP_ICON(user_data));
-    GtkWidget *toplevel = gtk_widget_get_toplevel(icon_view);
-    return xfdesktop_file_utils_interactive_job_ask(GTK_WINDOW(toplevel),
-                                                    message, choices);
-}
-
-static void
-xfdesktop_special_file_icon_drag_job_finished(ThunarVfsJob *job,
-                                      gpointer user_data)
-{
-    XfdesktopSpecialFileIcon *special_file_icon = XFDESKTOP_SPECIAL_FILE_ICON(user_data);
-    XfdesktopFileIcon *src_file_icon = g_object_get_data(G_OBJECT(job),
-                                                         "--xfdesktop-src-file-icon");
-    
-    if(!xfdesktop_file_icon_remove_active_job(XFDESKTOP_FILE_ICON(special_file_icon), job))
-        g_critical("ThunarVfsJob 0x%p not found in active jobs list", job);
-    
-    if(!xfdesktop_file_icon_remove_active_job(src_file_icon, job))
-        g_critical("ThunarVfsJob 0x%p not found in active jobs list", job);
-    
-    g_object_unref(G_OBJECT(job));
-    
-    g_object_unref(G_OBJECT(src_file_icon));
-    g_object_unref(G_OBJECT(special_file_icon));
 }
 
 static gboolean
@@ -382,10 +312,10 @@ xfdesktop_special_file_icon_do_drop_dest(XfdesktopIcon *icon,
 {
     XfdesktopSpecialFileIcon *special_file_icon = XFDESKTOP_SPECIAL_FILE_ICON(icon);
     XfdesktopFileIcon *src_file_icon = XFDESKTOP_FILE_ICON(src_icon);
-    const ThunarVfsInfo *src_info;
-    ThunarVfsJob *job = NULL;
-    const gchar *name = NULL;
-    ThunarVfsPath *dest_path;
+    GFileInfo *src_info;
+    GFile *src_file;
+    GFile *dest_file = NULL;
+    gboolean result = FALSE;
     
     DBG("entering");
     
@@ -393,86 +323,58 @@ xfdesktop_special_file_icon_do_drop_dest(XfdesktopIcon *icon,
     g_return_val_if_fail(xfdesktop_special_file_icon_get_allowed_drop_actions(icon),
                          FALSE);
     
-    src_info = xfdesktop_file_icon_peek_info(src_file_icon);
+    src_file = xfdesktop_file_icon_peek_file(src_file_icon);
+
+    src_info = xfdesktop_file_icon_peek_file_info(src_file_icon);
     if(!src_info)
         return FALSE;
     
-    if(thunar_vfs_path_is_root(src_info->path))
-        return FALSE;
+    if(special_file_icon->priv->type == XFDESKTOP_SPECIAL_FILE_ICON_TRASH) {
+        GList files;
+
+        DBG("doing trash");
+
+        /* fake a file list */
+        files.data = src_file;
+        files.prev = files.next = NULL;
+
+        /* let the trash service handle the trash operation */
+        xfdesktop_file_utils_trash_files(&files, special_file_icon->priv->gscreen, NULL);
+    } else {
+        gchar *name = g_file_get_basename(src_file);
+        if(!name)
+            return FALSE;
     
-    name = thunar_vfs_path_get_name(src_info->path);
-    if(!name)
-        return FALSE;
-    
-    dest_path = thunar_vfs_path_relative(special_file_icon->priv->info->path,
-                                         name);
-    if(!dest_path)
-        return FALSE;
-    
-    if(special_file_icon->priv->type == XFDESKTOP_SPECIAL_FILE_ICON_TRASH)  {
-        /* any drop to the trash is a move */
-        action = GDK_ACTION_MOVE;
-    }
-    
-    switch(action) {
-        case GDK_ACTION_MOVE:
-            DBG("doing move");
-            job = thunar_vfs_move_file(src_info->path, dest_path, NULL);
-            break;
-        
-        case GDK_ACTION_COPY:
-            DBG("doing copy");
-            job = thunar_vfs_copy_file(src_info->path, dest_path, NULL);
+        switch(action) {
+            case GDK_ACTION_MOVE:
+                DBG("doing move");
+                dest_file = g_object_ref(special_file_icon->priv->file);
                 break;
-        
-        case GDK_ACTION_LINK:
-            DBG("doing link");
-            job = thunar_vfs_link_file(src_info->path, dest_path, NULL);
-            break;
-        
-        default:
-            g_warning("Unsupported drag action: %d", action);
+            case GDK_ACTION_COPY:
+                DBG("doing copy");
+                dest_file = g_file_get_child(special_file_icon->priv->file, name);
+                break;
+            case GDK_ACTION_LINK:
+                DBG("doing link");
+                dest_file = g_object_ref(special_file_icon->priv->file);
+                break;
+            default:
+                g_warning("Unsupported drag action: %d", action);
+        }
+
+        /* let the file manager service move/copy/link the file */
+        if(dest_file) {
+            xfdesktop_file_utils_transfer_file(action, src_file, dest_file,
+                                               special_file_icon->priv->gscreen);
+
+            result = TRUE;
+        }
+
+        g_object_unref(dest_file);
+        g_free(name);
     }
-        
-    thunar_vfs_path_unref(dest_path);
-    
-    if(job) {
-        DBG("got job, action initiated");
-        
-        /* ensure they aren't destroyed until the job is finished */
-        g_object_ref(G_OBJECT(src_file_icon));
-        g_object_ref(G_OBJECT(special_file_icon));
-        
-        g_object_set_data(G_OBJECT(job), "--xfdesktop-file-icon-callback",
-                          G_CALLBACK(xfdesktop_special_file_icon_drag_job_finished));
-        g_object_set_data(G_OBJECT(job), "--xfdesktop-file-icon-data", icon);
-        xfdesktop_file_icon_add_active_job(XFDESKTOP_FILE_ICON(special_file_icon),
-                                           job);
-        xfdesktop_file_icon_add_active_job(src_file_icon, job);
-        
-        g_object_set_data(G_OBJECT(job), "--xfdesktop-src-file-icon",
-                          src_file_icon);
-        g_object_set_data(G_OBJECT(job), "--xfdesktop-file-icon-action",
-                          GINT_TO_POINTER(action == GDK_ACTION_MOVE
-                                          ? XFDESKTOP_FILE_UTILS_FILEOP_MOVE
-                                          : (action == GDK_ACTION_COPY
-                                             ? XFDESKTOP_FILE_UTILS_FILEOP_COPY
-                                             : XFDESKTOP_FILE_UTILS_FILEOP_LINK)));
-        g_signal_connect(G_OBJECT(job), "error",
-                         G_CALLBACK(xfdesktop_special_file_icon_drag_job_error),
-                         special_file_icon);
-        g_signal_connect(G_OBJECT(job), "ask",
-                         G_CALLBACK(xfdesktop_special_file_icon_interactive_job_ask),
-                         special_file_icon);
-        g_signal_connect(G_OBJECT(job), "finished",
-                         G_CALLBACK(xfdesktop_special_file_icon_drag_job_finished),
-                         special_file_icon);
-        
-        return TRUE;
-    } else
-        return FALSE;
-    
-    return FALSE;
+
+    return result;
 }
 
 static G_CONST_RETURN gchar *
@@ -701,46 +603,6 @@ xfdesktop_special_file_icon_peek_file(XfdesktopFileIcon *icon)
     return XFDESKTOP_SPECIAL_FILE_ICON(icon)->priv->file;
 }
 
-static void
-xfdesktop_special_file_icon_trash_changed_cb(DBusGProxy *proxy,
-                                             gboolean trash_full,
-                                             gpointer user_data)
-{
-    XfdesktopSpecialFileIcon *special_file_icon = XFDESKTOP_SPECIAL_FILE_ICON(user_data);
-    
-    TRACE("entering (%p, %d, %p)", proxy, trash_full, user_data);
-    
-    if(trash_full == special_file_icon->priv->trash_full)
-        return;
-    
-    special_file_icon->priv->trash_full = trash_full;
-    
-    xfdesktop_special_file_icon_invalidate_pixbuf(special_file_icon);
-    xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(special_file_icon));
-}
-
-static void
-xfdesktop_special_file_icon_query_trash_cb(DBusGProxy *proxy,
-                                           gboolean trash_full,
-                                           GError *error,
-                                           gpointer user_data)
-{
-    XfdesktopSpecialFileIcon *icon = XFDESKTOP_SPECIAL_FILE_ICON(user_data);
-    
-    if(error) {
-        xfdesktop_special_file_icon_trash_handle_error(icon,
-                                                       "QueryTrash",
-                                                       error->message);
-    } else {
-        icon->priv->trash_full = trash_full;
-        xfdesktop_special_file_icon_invalidate_pixbuf(icon);
-        xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(icon));
-    }
-    
-    icon->priv->dbus_querytrash_call = NULL;
-}
-
-
 /* public API */
 
 XfdesktopSpecialFileIcon *
@@ -749,19 +611,20 @@ xfdesktop_special_file_icon_new(XfdesktopSpecialFileIconType type,
 {
     XfdesktopSpecialFileIcon *special_file_icon;
     ThunarVfsPath *path = NULL;
+    GFile *file = NULL;
     gchar *uri;
     
     switch(type) {
         case XFDESKTOP_SPECIAL_FILE_ICON_FILESYSTEM:
-            path = thunar_vfs_path_get_for_root();
+            file = g_file_new_for_uri("file:///");
             break;
         
         case XFDESKTOP_SPECIAL_FILE_ICON_HOME:
-            path = thunar_vfs_path_get_for_home();
+            file = g_file_new_for_path(xfce_get_homedir());
             break;
         
         case XFDESKTOP_SPECIAL_FILE_ICON_TRASH:
-            path = thunar_vfs_path_get_for_trash();
+            file = g_file_new_for_uri("trash:///");
             break;
         
         default:
@@ -771,57 +634,29 @@ xfdesktop_special_file_icon_new(XfdesktopSpecialFileIconType type,
     special_file_icon = g_object_new(XFDESKTOP_TYPE_SPECIAL_FILE_ICON, NULL);
     special_file_icon->priv->type = type;
     special_file_icon->priv->gscreen = screen;
-    special_file_icon->priv->info = thunar_vfs_info_new_for_path(path, NULL);
-    thunar_vfs_path_unref(path);
+    special_file_icon->priv->file = file;
 
-    /* convert the ThunarVfsPath into a GFile */
-    uri = thunar_vfs_path_dup_uri(special_file_icon->priv->info->path);
-    special_file_icon->priv->file = g_file_new_for_uri(uri);
-    g_free(uri);
-
-    /* query file information from GIO */
-    special_file_icon->priv->file_info = g_file_query_info(special_file_icon->priv->file,
+    special_file_icon->priv->file_info = g_file_query_info(file, 
                                                            XFDESKTOP_FILE_INFO_NAMESPACE,
                                                            G_FILE_QUERY_INFO_NONE,
                                                            NULL, NULL);
+
+    if(!special_file_icon->priv->file_info) {
+        g_object_unref(special_file_icon);
+        return NULL;
+    }
 
     /* query file system information from GIO */
     special_file_icon->priv->filesystem_info = g_file_query_filesystem_info(special_file_icon->priv->file,
                                                                             XFDESKTOP_FILESYSTEM_INFO_NAMESPACE,
                                                                             NULL, NULL);
 
-    if(G_UNLIKELY(!special_file_icon->priv->info)) {
-        g_object_unref(G_OBJECT(special_file_icon));
-        return NULL;
-    }
-    
-    if(XFDESKTOP_SPECIAL_FILE_ICON_TRASH == type) {
-        DBusGProxy *trash_proxy = xfdesktop_file_utils_peek_trash_proxy();
-            
-        if(G_LIKELY(trash_proxy)) {
-            DBusGProxyCall *call;
-            
-            special_file_icon->priv->dbus_proxy = g_object_ref(G_OBJECT(trash_proxy));
-            dbus_g_proxy_connect_signal(special_file_icon->priv->dbus_proxy,
-                                        "TrashChanged",
-                                        G_CALLBACK(xfdesktop_special_file_icon_trash_changed_cb),
-                                        special_file_icon, NULL);
-            
-            call = xfdesktop_trash_proxy_query_trash_async(special_file_icon->priv->dbus_proxy,
-                                                           xfdesktop_special_file_icon_query_trash_cb,
-                                                           special_file_icon);
-            if(!call) {
-                xfdesktop_special_file_icon_trash_handle_error(special_file_icon,
-                                                               "QueryTrash",
-                                                               NULL);
-            }
-            special_file_icon->priv->dbus_querytrash_call = call;
-        } else {
-            /* we might as well just bail here */
-            g_object_unref(G_OBJECT(special_file_icon));
-            return NULL;
-        }
-    }
+    /* query a ThunarVfsInfo for the icon URI */
+    uri = g_file_get_uri(file);
+    path = thunar_vfs_path_new(uri, NULL);
+    special_file_icon->priv->info = thunar_vfs_info_new_for_path(path, NULL);
+    thunar_vfs_path_unref(path);
+    g_free(uri);
     
     g_signal_connect_swapped(G_OBJECT(gtk_icon_theme_get_for_screen(screen)),
                              "changed",

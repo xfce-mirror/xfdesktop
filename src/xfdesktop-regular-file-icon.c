@@ -373,6 +373,7 @@ xfdesktop_regular_file_icon_do_drop_dest(XfdesktopIcon *icon,
     XfdesktopFileIcon *src_file_icon = XFDESKTOP_FILE_ICON(src_icon);
     GFileInfo *src_info;
     GFile *src_file;
+    gboolean result = FALSE;
     
     DBG("entering");
     
@@ -397,7 +398,7 @@ xfdesktop_regular_file_icon_do_drop_dest(XfdesktopIcon *icon,
         xfdesktop_file_utils_execute(NULL, regular_file_icon->priv->file, &files,
                                      regular_file_icon->priv->gscreen);
 
-        return TRUE;
+        result = TRUE;
     } else {
         GFile *parent, *dest_file;
         gchar *name;
@@ -425,16 +426,18 @@ xfdesktop_regular_file_icon_do_drop_dest(XfdesktopIcon *icon,
                 g_warning("Unsupported drag action: %d", action);
         }
 
-        xfdesktop_file_utils_transfer_file(action, src_file, dest_file,
-                                           regular_file_icon->priv->gscreen);
+        if(dest_file) {
+            xfdesktop_file_utils_transfer_file(action, src_file, dest_file,
+                                               regular_file_icon->priv->gscreen);
+
+            result = TRUE;
+        }
 
         g_object_unref(dest_file);
         g_free(name);
-        
-        return TRUE;
     }
     
-    return FALSE;
+    return result;
 }
 
 static G_CONST_RETURN gchar *

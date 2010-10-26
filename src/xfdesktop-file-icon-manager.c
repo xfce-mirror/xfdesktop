@@ -2000,6 +2000,8 @@ xfdesktop_file_icon_manager_add_special_file_icon(XfdesktopFileIconManager *fman
                                             XFDESKTOP_FILE_ICON(icon),
                                             FALSE))
     {
+        /* TODO need to make file monitoring work for special icons like
+         * the filesystem root and the trash bin */
         g_hash_table_replace(fmanager->priv->special_icons,
                              GINT_TO_POINTER(type), icon);
         return XFDESKTOP_FILE_ICON(icon);
