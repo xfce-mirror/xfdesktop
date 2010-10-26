@@ -91,6 +91,9 @@ void xfdesktop_file_utils_open_folder(GFile *file,
 void xfdesktop_file_utils_rename_file(GFile *file,
                                       GdkScreen *screen,
                                       GtkWindow *parent);
+void xfdesktop_file_utils_trash_files(GList *files,
+                                       GdkScreen *screen,
+                                       GtkWindow *parent);
 void xfdesktop_file_utils_unlink_files(GList *files,
                                        GdkScreen *screen,
                                        GtkWindow *parent);
