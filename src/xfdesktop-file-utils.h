@@ -59,6 +59,7 @@ gchar *xfdesktop_file_utils_get_file_kind(const ThunarVfsInfo *info,
                                           gboolean *is_link);
 gboolean xfdesktop_file_utils_is_desktop_file(GFileInfo *info);
 gboolean xfdesktop_file_utils_file_is_executable(GFileInfo *info);
+gchar *xfdesktop_file_utils_format_time_for_display(guint64 file_time);
 
 GList *xfdesktop_file_utils_file_icon_list_to_file_list(GList *icon_list);
 gchar *xfdesktop_file_utils_file_list_to_string(GList *file_list);

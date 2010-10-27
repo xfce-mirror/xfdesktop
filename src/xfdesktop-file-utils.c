@@ -33,6 +33,9 @@
 #ifdef HAVE_STRING_H
 #include <string.h>
 #endif
+#ifdef HAVE_TIME_H
+#include <time.h>
+#endif
 
 #include <gtk/gtk.h>
 
@@ -206,6 +209,56 @@ xfdesktop_file_utils_file_is_executable(GFileInfo *info)
     return can_execute || xfdesktop_file_utils_is_desktop_file(info);
 }
 
+gchar *
+xfdesktop_file_utils_format_time_for_display(guint64 file_time)
+{
+  const gchar *date_format;
+  struct tm *tfile;
+  time_t ftime;
+  GDate dfile;
+  GDate dnow;
+  gchar buffer[128];
+  gint diff;
+
+  /* check if the file_time is valid */
+  if(file_time != 0) {
+      ftime = (time_t) file_time;
+
+      /* determine the local file time */
+      tfile = localtime(&ftime);
+
+      /* setup the dates for the time values */
+      g_date_set_time_t(&dfile, (time_t) ftime);
+      g_date_set_time_t(&dnow, time(NULL));
+
+      /* determine the difference in days */
+      diff = g_date_get_julian(&dnow) - g_date_get_julian(&dfile);
+      if(diff == 0) {
+          /* TRANSLATORS: file was modified less than one day ago */
+          strftime(buffer, 128, _("Today at %X"), tfile);
+          return g_strdup(buffer);
+      } else if(diff == 1) {
+          /* TRANSLATORS: file was modified less than two days ago */
+          strftime(buffer, 128, _("Yesterday at %X"), tfile);
+          return g_strdup(buffer);
+      } else {
+          if (diff > 1 && diff < 7) {
+              /* Days from last week */
+              date_format = _("%A at %X");
+          } else {
+              /* Any other date */
+              date_format = _("%x at %X");
+          }
+
+          /* format the date string accordingly */
+          strftime(buffer, 128, date_format, tfile);
+          return g_strdup(buffer);
+      }
+  }
+
+  /* the file_time is invalid */
+  return g_strdup(_("Unknown"));
+}
 
 GList *
 xfdesktop_file_utils_file_icon_list_to_file_list(GList *icon_list)
