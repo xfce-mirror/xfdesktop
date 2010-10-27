@@ -445,24 +445,33 @@ xfdesktop_regular_file_icon_peek_tooltip(XfdesktopIcon *icon)
 {
     XfdesktopRegularFileIcon *regular_file_icon = XFDESKTOP_REGULAR_FILE_ICON(icon);
     
-    if(!regular_file_icon->priv->info)
-       return NULL;  /* FIXME: implement something here */
-    
     if(!regular_file_icon->priv->tooltip) {
-        gchar mod[64], *kind, sizebuf[64], *size;
-        struct tm *tm = localtime(&regular_file_icon->priv->info->mtime);
+        GFileInfo *info = xfdesktop_file_icon_peek_file_info(XFDESKTOP_FILE_ICON(icon));
+        const gchar *content_type;
+        gchar *description, *size_string, *time_string;
+        guint64 size, mtime;
 
-        strftime(mod, 64, "%Y-%m-%d %H:%M:%S", tm);
-        kind = xfdesktop_file_utils_get_file_kind(regular_file_icon->priv->info, NULL);
-        thunar_vfs_humanize_size(regular_file_icon->priv->info->size, sizebuf, 64);
-        size = g_strdup_printf(_("%s (%" G_GINT64_FORMAT " Bytes)"), sizebuf,
-                              (gint64)regular_file_icon->priv->info->size);
-        
-        regular_file_icon->priv->tooltip = g_strdup_printf(_("Kind: %s\nModified:%s\nSize: %s"),
-                                                   kind, mod, size);
-        
-        g_free(kind);
-        g_free(size);
+        if(!info)
+            return NULL;
+
+        content_type = g_file_info_get_content_type(info);
+        description = g_content_type_get_description(content_type);
+
+        size = g_file_info_get_attribute_uint64(info,
+                                                G_FILE_ATTRIBUTE_STANDARD_SIZE);
+        size_string = g_format_size_for_display(size);
+
+        mtime = g_file_info_get_attribute_uint64(info,
+                                                 G_FILE_ATTRIBUTE_TIME_MODIFIED);
+        time_string = xfdesktop_file_utils_format_time_for_display(mtime);
+
+        regular_file_icon->priv->tooltip =
+            g_strdup_printf(_("Type: %s\nSize: %s\nLast modified: %s"),
+                            description, size_string, time_string);
+
+        g_free(time_string);
+        g_free(size_string);
+        g_free(description);
     }
     
     return regular_file_icon->priv->tooltip;

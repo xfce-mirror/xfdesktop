@@ -383,27 +383,53 @@ xfdesktop_special_file_icon_peek_tooltip(XfdesktopIcon *icon)
     XfdesktopSpecialFileIcon *special_file_icon = XFDESKTOP_SPECIAL_FILE_ICON(icon);
     
     if(!special_file_icon->priv->tooltip) {
-        if(XFDESKTOP_SPECIAL_FILE_ICON_TRASH == special_file_icon->priv->type) {
-            /* FIXME: also display # of items in trash */
-            special_file_icon->priv->tooltip = g_strdup(_("Kind: Trash"));
-        } else {
-            gchar mod[64], *kind, sizebuf[64], *size;
-            struct tm *tm = localtime(&special_file_icon->priv->info->mtime);
+        GFileInfo *info = xfdesktop_file_icon_peek_file_info(XFDESKTOP_FILE_ICON(icon));
 
-            strftime(mod, 64, "%Y-%m-%d %H:%M:%S", tm);
-            kind = xfdesktop_file_utils_get_file_kind(special_file_icon->priv->info,
-                                                      NULL);
-            thunar_vfs_humanize_size(special_file_icon->priv->info->size,
-                                     sizebuf, 64);
-            size = g_strdup_printf(_("%s (%" G_GINT64_FORMAT " Bytes)"),
-                                   sizebuf,
-                                  (gint64)special_file_icon->priv->info->size);
-            
-            special_file_icon->priv->tooltip = g_strdup_printf(_("Kind: %s\nModified:%s\nSize: %s"),
-                                                               kind, mod, size);
-            
-            g_free(kind);
-            g_free(size);
+        if(!info)
+            return NULL;
+
+        if(XFDESKTOP_SPECIAL_FILE_ICON_TRASH == special_file_icon->priv->type) {
+            guint item_count = g_file_info_get_attribute_uint32(info, 
+                                                                G_FILE_ATTRIBUTE_TRASH_ITEM_COUNT);
+
+            if(item_count == 0) {
+                special_file_icon->priv->tooltip = g_strdup(_("Trash is empty"));
+            } else {
+                special_file_icon->priv->tooltip = g_strdup_printf(g_dngettext(GETTEXT_PACKAGE,
+                                                                               _("Trash contains one item"),
+                                                                               _("Trash contains %d items"),
+                                                                               item_count), 
+
+                                                                   item_count);
+            }
+        } else {
+            const gchar *description;
+            gchar *size_string, *time_string;
+            guint64 size, mtime;
+
+            if(special_file_icon->priv->type == XFDESKTOP_SPECIAL_FILE_ICON_FILESYSTEM)
+                description = _("File System");
+            else if(special_file_icon->priv->type == XFDESKTOP_SPECIAL_FILE_ICON_HOME)
+                description = _("Home");
+            else {
+                description = g_file_info_get_attribute_string(info,
+                                                               G_FILE_ATTRIBUTE_STANDARD_DESCRIPTION);
+            }
+
+            size = g_file_info_get_attribute_uint64(info,
+                                                    G_FILE_ATTRIBUTE_STANDARD_SIZE);
+            size_string = g_format_size_for_display(size);
+
+            mtime = g_file_info_get_attribute_uint64(info,
+                                                     G_FILE_ATTRIBUTE_TIME_MODIFIED);
+            time_string = xfdesktop_file_utils_format_time_for_display(mtime);
+
+            special_file_icon->priv->tooltip = 
+                g_strdup_printf(_("%s\nSize: %s\nLast modified: %s"),
+                                description, size_string, time_string);
+
+            g_free(size_string);
+            g_free(time_string);
         }
     }
     
