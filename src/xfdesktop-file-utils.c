@@ -1291,108 +1291,78 @@ gchar *
 xfdesktop_thunarx_file_info_get_name(ThunarxFileInfo *file_info)
 {
     XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(file_info);
-    const ThunarVfsInfo *info = xfdesktop_file_icon_peek_info(icon);
+    GFile *file = xfdesktop_file_icon_peek_file(icon);
     
-    if(info)
-        return g_strdup(thunar_vfs_path_get_name(info->path));
-    else
-        return NULL;
+    return file ? g_file_get_basename(file) : NULL;
 }
 
 gchar *
 xfdesktop_thunarx_file_info_get_uri(ThunarxFileInfo *file_info)
 {
     XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(file_info);
-    const ThunarVfsInfo *info = xfdesktop_file_icon_peek_info(icon);
-    gchar buf[PATH_MAX];
+    GFile *file = xfdesktop_file_icon_peek_file(icon);
     
-    if(!info)
-        return NULL;
-        
-    if(thunar_vfs_path_to_uri(info->path, buf, PATH_MAX, NULL) <= 0)
-        return NULL;
-    
-    return g_strdup(buf);
+    return file ? g_file_get_uri(file) : NULL;
 }
 
 gchar *
 xfdesktop_thunarx_file_info_get_parent_uri(ThunarxFileInfo *file_info)
 {
     XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(file_info);
-    const ThunarVfsInfo *info = xfdesktop_file_icon_peek_info(icon);
-    ThunarVfsPath *parent;
-    gchar buf[PATH_MAX];
+    GFile *file = xfdesktop_file_icon_peek_file(icon);
+    gchar *uri = NULL;
     
-    if(!info)
-        return NULL;
-    
-    parent = thunar_vfs_path_get_parent(info->path);
-    
-    if(G_UNLIKELY(!parent))
-        return NULL;
-    
-    if(thunar_vfs_path_to_uri(parent, buf, PATH_MAX, NULL) <= 0)
-        return NULL;
-    
-    return g_strdup(buf);
+    if(file) {
+        GFile *parent = g_file_get_parent(file);
+        if(parent) {
+            uri = g_file_get_uri(parent);
+            g_object_unref(parent);
+        }
+    }
+
+    return uri;
 }
 
 gchar *
 xfdesktop_thunarx_file_info_get_uri_scheme_file(ThunarxFileInfo *file_info)
 {
-    return g_strdup("file");
+    XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(file_info);
+    GFile *file = xfdesktop_file_icon_peek_file(icon);
+    
+    return file ? g_file_get_uri_scheme(file) : NULL;
 }
     
 gchar *
 xfdesktop_thunarx_file_info_get_mime_type(ThunarxFileInfo *file_info)
 {
     XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(file_info);
-    const ThunarVfsInfo *info = xfdesktop_file_icon_peek_info(icon);
+    GFileInfo *info = xfdesktop_file_icon_peek_file_info(icon);
     
-    if(!info || !info->mime_info)
-        return NULL;
-    
-    return g_strdup(thunar_vfs_mime_info_get_name(info->mime_info));
+    return info ? g_strdup(g_file_info_get_content_type(info)) : NULL;
 }
 
 gboolean
 xfdesktop_thunarx_file_info_has_mime_type(ThunarxFileInfo *file_info,
-                                      const gchar *mime_type)
+                                          const gchar *mime_type)
 {
     XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(file_info);
-    const ThunarVfsInfo *info = xfdesktop_file_icon_peek_info(icon);
-    ThunarVfsMimeDatabase *mime_db;
-    GList *mime_infos, *l;
-    ThunarVfsMimeInfo *minfo;
-    gboolean has_type = FALSE;
+    GFileInfo *info = xfdesktop_file_icon_peek_file_info(icon);
+    const gchar *content_type;
     
-    if(!info || !info->mime_info)
+    if(!info)
         return FALSE;
-    
-    mime_db = thunar_vfs_mime_database_get_default();
-    
-    mime_infos = thunar_vfs_mime_database_get_infos_for_info(mime_db,
-                                                             info->mime_info);
-    for(l = mime_infos; l; l = l->next) {
-        minfo = (ThunarVfsMimeInfo *)l->data;
-        if(!g_ascii_strcasecmp(mime_type, thunar_vfs_mime_info_get_name(minfo))) {
-            has_type = TRUE;
-            break;
-        }
-    }
-    thunar_vfs_mime_info_list_free(mime_infos);
-    
-    g_object_unref(G_OBJECT(mime_db));
-    
-    return has_type;
+
+    content_type = g_file_info_get_content_type(info);
+    return g_content_type_is_a(mime_type, content_type);
 }
 
 gboolean
 xfdesktop_thunarx_file_info_is_directory(ThunarxFileInfo *file_info)
 {
     XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(file_info);
-    const ThunarVfsInfo *info = xfdesktop_file_icon_peek_info(icon);
-    return (info && info->type == THUNAR_VFS_FILE_TYPE_DIRECTORY);
+    GFileInfo *info = xfdesktop_file_icon_peek_file_info(icon);
+
+    return (info && g_file_info_get_file_type(info) == G_FILE_TYPE_DIRECTORY);
 }
 
 GFileInfo *
