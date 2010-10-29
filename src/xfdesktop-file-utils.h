@@ -61,17 +61,20 @@ gboolean xfdesktop_file_utils_is_desktop_file(GFileInfo *info);
 gboolean xfdesktop_file_utils_file_is_executable(GFileInfo *info);
 gchar *xfdesktop_file_utils_format_time_for_display(guint64 file_time);
 
+gboolean xfdesktop_file_utils_volume_is_present(GVolume *volume);
+gboolean xfdesktop_file_utils_volume_is_removable(GVolume *volume);
+
 GList *xfdesktop_file_utils_file_icon_list_to_file_list(GList *icon_list);
 gchar *xfdesktop_file_utils_file_list_to_string(GList *file_list);
 void xfdesktop_file_utils_file_list_free(GList *file_list);
 
 GdkPixbuf *xfdesktop_file_utils_get_fallback_icon(gint size);
 
-GdkPixbuf *xfdesktop_file_utils_get_file_icon(const gchar *custom_icon_name,
-                                              GFileInfo *info,
-                                              gint size,
-                                              const GdkPixbuf *emblem,
-                                              guint opacity);
+GdkPixbuf *xfdesktop_file_utils_get_icon(const gchar *custom_icon_name,
+                                         GIcon *icon,
+                                         gint size,
+                                         const GdkPixbuf *emblem,
+                                         guint opacity);
 
 void xfdesktop_file_utils_set_window_cursor(GtkWindow *window,
                                             GdkCursorType cursor_type);

@@ -219,6 +219,8 @@ xfdesktop_regular_file_icon_peek_pixbuf(XfdesktopIcon *icon,
         xfdesktop_regular_file_icon_invalidate_pixbuf(file_icon);
 
     if(!file_icon->priv->pix) {
+        GIcon *gicon = NULL;
+
         /* create a GFile for the $HOME/.thumbnails/ directory */
         gchar *thumbnail_dir_path = g_build_filename(xfce_get_homedir(), 
                                                      ".thumbnails", NULL);
@@ -280,11 +282,13 @@ xfdesktop_regular_file_icon_peek_pixbuf(XfdesktopIcon *icon,
                 }
             }
         }
+
+        if(file_icon->priv->file_info)
+            gicon = g_file_info_get_icon(file_icon->priv->file_info);
         
-        file_icon->priv->pix = xfdesktop_file_utils_get_file_icon(icon_name, 
-                                                                  file_icon->priv->file_info, 
-                                                                  size, emblem_pix,
-                                                                  file_icon->priv->pix_opacity);
+        file_icon->priv->pix = xfdesktop_file_utils_get_icon(icon_name, gicon, 
+                                                             size, emblem_pix,
+                                                             file_icon->priv->pix_opacity);
         
         file_icon->priv->cur_pix_size = size;
 
@@ -400,7 +404,7 @@ xfdesktop_regular_file_icon_do_drop_dest(XfdesktopIcon *icon,
 
         result = TRUE;
     } else {
-        GFile *parent, *dest_file;
+        GFile *parent, *dest_file = NULL;
         gchar *name;
         
         parent = g_file_get_parent(src_file);
@@ -430,10 +434,11 @@ xfdesktop_regular_file_icon_do_drop_dest(XfdesktopIcon *icon,
             xfdesktop_file_utils_transfer_file(action, src_file, dest_file,
                                                regular_file_icon->priv->gscreen);
 
+            g_object_unref(dest_file);
+
             result = TRUE;
         }
 
-        g_object_unref(dest_file);
         g_free(name);
     }
     
@@ -587,6 +592,12 @@ xfdesktop_regular_file_icon_update_file_info(XfdesktopFileIcon *icon,
     }
 
     regular_file_icon->priv->file_info = g_object_ref(info);
+
+    if(regular_file_icon->priv->filesystem_info)
+        g_object_unref(regular_file_icon->priv->filesystem_info);
+    regular_file_icon->priv->filesystem_info = g_file_query_filesystem_info(regular_file_icon->priv->file,
+                                                                            XFDESKTOP_FILESYSTEM_INFO_NAMESPACE,
+                                                                            NULL, NULL);
 
     uri = g_file_get_uri(regular_file_icon->priv->file);
     path = thunar_vfs_path_new(uri, NULL);

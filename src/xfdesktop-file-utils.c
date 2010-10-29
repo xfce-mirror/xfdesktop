@@ -260,6 +260,72 @@ xfdesktop_file_utils_format_time_for_display(guint64 file_time)
   return g_strdup(_("Unknown"));
 }
 
+gboolean
+xfdesktop_file_utils_volume_is_present(GVolume *volume)
+{
+  gboolean has_media = FALSE;
+  gboolean is_shadowed = FALSE;
+  GDrive *drive;
+  GMount *mount;
+
+  g_return_val_if_fail(G_IS_VOLUME(volume), FALSE);
+
+  drive = g_volume_get_drive (volume);
+  if(drive) {
+      has_media = g_drive_has_media(drive);
+      g_object_unref(drive);
+  }
+
+  mount = g_volume_get_mount(volume);
+  if(mount) {
+      is_shadowed = g_mount_is_shadowed(mount);
+      g_object_unref(mount);
+  }
+
+  return has_media && !is_shadowed;
+}
+
+gboolean
+xfdesktop_file_utils_volume_is_removable(GVolume *volume)
+{
+  gboolean can_eject = FALSE;
+  gboolean can_mount = FALSE;
+  gboolean can_unmount = FALSE;
+  gboolean is_removable = FALSE;
+  GDrive *drive;
+  GMount *mount;
+
+  g_return_val_if_fail(G_IS_VOLUME(volume), FALSE);
+  
+  /* check if the volume can be ejected */
+  can_eject = g_volume_can_eject(volume);
+
+  /* determine the drive for the volume */
+  drive = g_volume_get_drive(volume);
+  if(drive) {
+      /*check if the drive media can be removed */
+      is_removable = g_drive_is_media_removable(drive);
+
+      /* release the drive */
+      g_object_unref(drive);
+  }
+
+  /* determine the mount for the volume (if it is mounted at all) */
+  mount = g_volume_get_mount(volume);
+  if(mount) {
+      /* check if the volume can be unmounted */
+      can_unmount = g_mount_can_unmount(mount);
+
+      /* release the mount */
+      g_object_unref(mount);
+  }
+
+  /* determine whether the device can be mounted */
+  can_mount = g_volume_can_mount(volume);
+
+  return can_eject || can_unmount || is_removable || can_mount;
+}
+
 GList *
 xfdesktop_file_utils_file_icon_list_to_file_list(GList *icon_list)
 {
@@ -350,11 +416,11 @@ xfdesktop_file_utils_get_fallback_icon(gint size)
 }
 
 GdkPixbuf *
-xfdesktop_file_utils_get_file_icon(const gchar *custom_icon_name,
-                                   GFileInfo *info,
-                                   gint size,
-                                   const GdkPixbuf *emblem,
-                                   guint opacity)
+xfdesktop_file_utils_get_icon(const gchar *custom_icon_name,
+                              GIcon *icon,
+                              gint size,
+                              const GdkPixbuf *emblem,
+                              guint opacity)
 {
     GtkIconTheme *itheme = gtk_icon_theme_get_default();
     GdkPixbuf *pix_theme = NULL, *pix = NULL;
@@ -364,24 +430,21 @@ xfdesktop_file_utils_get_file_icon(const gchar *custom_icon_name,
                                              ITHEME_FLAGS, NULL);
     }
     
-    if(!pix_theme && info) {
-        GIcon *icon = g_file_info_get_icon(info);
-        if(icon) {
-            if(G_IS_THEMED_ICON(icon)) {
-              GtkIconInfo *icon_info = gtk_icon_theme_lookup_by_gicon(itheme,
-                                                                      icon, size,
-                                                                      ITHEME_FLAGS);
-              if(icon_info) {
-                  pix_theme = gtk_icon_info_load_icon(icon_info, NULL);
-                  gtk_icon_info_free(icon_info);
-              }
-            } else if(G_IS_LOADABLE_ICON(icon)) {
-                GInputStream *stream = g_loadable_icon_load(G_LOADABLE_ICON(icon), 
-                                                            size, NULL, NULL, NULL);
-                if(stream) {
-                    pix = gdk_pixbuf_new_from_stream(stream, NULL, NULL);
-                    g_object_unref(stream);
-                }
+    if(!pix_theme && icon) {
+        if(G_IS_THEMED_ICON(icon)) {
+          GtkIconInfo *icon_info = gtk_icon_theme_lookup_by_gicon(itheme,
+                                                                  icon, size,
+                                                                  ITHEME_FLAGS);
+          if(icon_info) {
+              pix_theme = gtk_icon_info_load_icon(icon_info, NULL);
+              gtk_icon_info_free(icon_info);
+          }
+        } else if(G_IS_LOADABLE_ICON(icon)) {
+            GInputStream *stream = g_loadable_icon_load(G_LOADABLE_ICON(icon), 
+                                                        size, NULL, NULL, NULL);
+            if(stream) {
+                pix = gdk_pixbuf_new_from_stream(stream, NULL, NULL);
+                g_object_unref(stream);
             }
         }
     }

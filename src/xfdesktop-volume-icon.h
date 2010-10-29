@@ -21,9 +21,7 @@
 #ifndef __XFDESKTOP_VOLUME_ICON_H__
 #define __XFDESKTOP_VOLUME_ICON_H__
 
-#include <glib-object.h>
-
-#include <thunar-vfs/thunar-vfs.h>
+#include <gio/gio.h>
 
 #include "xfdesktop-file-icon.h"
 
@@ -52,10 +50,10 @@ struct _XfdesktopVolumeIconClass
 
 GType xfdesktop_volume_icon_get_type(void) G_GNUC_CONST;
 
-XfdesktopVolumeIcon *xfdesktop_volume_icon_new(ThunarVfsVolume *volume,
+XfdesktopVolumeIcon *xfdesktop_volume_icon_new(GVolume *volume,
                                                GdkScreen *screen);
 
-G_CONST_RETURN ThunarVfsVolume *xfdesktop_volume_icon_peek_volume(XfdesktopVolumeIcon *icon);
+GVolume *xfdesktop_volume_icon_peek_volume(XfdesktopVolumeIcon *icon);
 
 
 G_END_DECLS

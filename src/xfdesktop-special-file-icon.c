@@ -221,6 +221,7 @@ xfdesktop_special_file_icon_peek_pixbuf(XfdesktopIcon *icon,
         xfdesktop_special_file_icon_invalidate_pixbuf(file_icon);
     
     if(!file_icon->priv->pix) {
+        GIcon *gicon = NULL;
         const gchar *custom_icon_name = NULL;
 
         /* use a custom icon name for the local filesystem root */
@@ -229,10 +230,12 @@ xfdesktop_special_file_icon_peek_pixbuf(XfdesktopIcon *icon,
             custom_icon_name = "drive-harddisk";
         if(parent)
             g_object_unref(parent);
+
+        if(file_icon->priv->file_info)
+            gicon = g_file_info_get_icon(file_icon->priv->file_info);
         
-        file_icon->priv->pix = xfdesktop_file_utils_get_file_icon(custom_icon_name,
-                                                                  file_icon->priv->file_info,
-                                                                  size, NULL, 100);
+        file_icon->priv->pix = xfdesktop_file_utils_get_icon(custom_icon_name, gicon,
+                                                             size, NULL, 100);
         
         file_icon->priv->cur_pix_size = size;
     }
