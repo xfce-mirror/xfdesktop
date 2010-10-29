@@ -22,7 +22,6 @@
 #ifndef __XFDESKTOP_FILE_UTILS_H__
 #define __XFDESKTOP_FILE_UTILS_H__
 
-#include <thunar-vfs/thunar-vfs.h>
 #include <dbus/dbus-glib.h>
 
 #ifdef HAVE_THUNARX
@@ -30,30 +29,6 @@
 #endif
 
 #include "xfdesktop-file-icon.h"
-
-ThunarVfsInteractiveJobResponse xfdesktop_file_utils_interactive_job_ask(GtkWindow *parent,
-                                                                         const gchar *message,
-                                                                         ThunarVfsInteractiveJobResponse choices);
-
-typedef enum
-{
-    XFDESKTOP_FILE_UTILS_FILEOP_MOVE = 0,
-    XFDESKTOP_FILE_UTILS_FILEOP_COPY,
-    XFDESKTOP_FILE_UTILS_FILEOP_LINK,
-} XfdesktopFileUtilsFileop;
-
-void xfdesktop_file_utils_handle_fileop_error(GtkWindow *parent,
-                                              const ThunarVfsInfo *src_info,
-                                              const ThunarVfsInfo *dest_info,
-                                              XfdesktopFileUtilsFileop fileop,
-                                              GError *error);
-
-void xfdesktop_file_utils_copy_into(GtkWindow *parent,
-                                    GList *path_list,
-                                    ThunarVfsPath *dest_path);
-void xfdesktop_file_utils_move_into(GtkWindow *parent,
-                                    GList *path_list,
-                                    ThunarVfsPath *dest_path);
 
 gboolean xfdesktop_file_utils_is_desktop_file(GFileInfo *info);
 gboolean xfdesktop_file_utils_file_is_executable(GFileInfo *info);

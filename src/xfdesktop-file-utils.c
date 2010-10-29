@@ -36,14 +36,15 @@
 #ifdef HAVE_TIME_H
 #include <time.h>
 #endif
+#ifdef HAVE_UNISTD_H
+#include <unistd.h>
+#endif
 
 #include <gtk/gtk.h>
 
 #include <libxfce4ui/libxfce4ui.h>
 
 #include <exo/exo.h>
-
-#include <thunar-vfs/thunar-vfs.h>
 
 #include <dbus/dbus-glib-lowlevel.h>
 
@@ -56,87 +57,6 @@
 #include "xfdesktop-file-manager-proxy.h"
 #include "xfdesktop-file-utils.h"
 #include "xfdesktop-trash-proxy.h"
-
-ThunarVfsInteractiveJobResponse
-xfdesktop_file_utils_interactive_job_ask(GtkWindow *parent,
-                                         const gchar *message,
-                                         ThunarVfsInteractiveJobResponse choices)
-{
-    GtkWidget *dlg, *btn;
-    gint resp;
-    
-    dlg = xfce_message_dialog_new(parent, _("Question"),
-                                  GTK_STOCK_DIALOG_QUESTION, NULL, message,
-                                  NULL, NULL);
-    
-    if(choices & THUNAR_VFS_INTERACTIVE_JOB_RESPONSE_CANCEL) {
-        btn = gtk_button_new_from_stock(GTK_STOCK_CANCEL);
-        gtk_widget_show(btn);
-        gtk_dialog_add_action_widget(GTK_DIALOG(dlg), btn,
-                                     THUNAR_VFS_INTERACTIVE_JOB_RESPONSE_CANCEL);
-    }
-    
-    if(choices & THUNAR_VFS_INTERACTIVE_JOB_RESPONSE_NO) {
-        btn = gtk_button_new_from_stock(GTK_STOCK_NO);
-        gtk_widget_show(btn);
-        gtk_dialog_add_action_widget(GTK_DIALOG(dlg), btn,
-                                     THUNAR_VFS_INTERACTIVE_JOB_RESPONSE_NO);
-    }
-    
-    if(choices & THUNAR_VFS_INTERACTIVE_JOB_RESPONSE_YES_ALL) {
-        btn = gtk_button_new_with_mnemonic(_("Yes to _all"));
-        gtk_widget_show(btn);
-        gtk_dialog_add_action_widget(GTK_DIALOG(dlg), btn,
-                                     THUNAR_VFS_INTERACTIVE_JOB_RESPONSE_YES_ALL);
-    }
-    
-    if(choices & THUNAR_VFS_INTERACTIVE_JOB_RESPONSE_YES) {
-        btn = gtk_button_new_from_stock(GTK_STOCK_YES);
-        gtk_widget_show(btn);
-        gtk_dialog_add_action_widget(GTK_DIALOG(dlg), btn,
-                                     THUNAR_VFS_INTERACTIVE_JOB_RESPONSE_YES);
-    }
-    
-    resp = gtk_dialog_run(GTK_DIALOG(dlg));
-    
-    gtk_widget_destroy(dlg);
-    
-    return (ThunarVfsInteractiveJobResponse)resp;
-}
-
-void
-xfdesktop_file_utils_handle_fileop_error(GtkWindow *parent,
-                                         const ThunarVfsInfo *src_info,
-                                         const ThunarVfsInfo *dest_info,
-                                         XfdesktopFileUtilsFileop fileop,
-                                         GError *error)
-{
-    if(error) {
-        gchar *primary_fmt, *primary;
-        
-        switch(fileop) {
-            case XFDESKTOP_FILE_UTILS_FILEOP_MOVE:
-                primary_fmt = _("There was an error moving \"%s\" to \"%s\":");
-                break;
-            case XFDESKTOP_FILE_UTILS_FILEOP_COPY:
-                primary_fmt = _("There was an error copying \"%s\" to \"%s\":");
-                break;
-            case XFDESKTOP_FILE_UTILS_FILEOP_LINK:
-                primary_fmt = _("There was an error linking \"%s\" to \"%s\":");
-                break;
-            default:
-                return;
-        }
-        
-        primary = g_strdup_printf(primary_fmt,
-                                  src_info->display_name,
-                                  dest_info->display_name);
-        xfce_message_dialog(parent, _("File Error"), GTK_STOCK_DIALOG_ERROR,
-                            primary, error->message,
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
-        g_free(primary);
-    }
-}
 
 gboolean 
 xfdesktop_file_utils_is_desktop_file(GFileInfo *info)
