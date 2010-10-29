@@ -192,7 +192,7 @@ xfdesktop_clipboard_manager_class_init (XfdesktopClipboardManagerClass *klass)
                                    PROP_CAN_PASTE,
                                    g_param_spec_boolean ("can-paste", "can-pase", "can-paste",
                                                          FALSE,
-                                                         EXO_PARAM_READABLE));
+                                                         G_PARAM_READABLE));
   /**
    * XfdesktopClipboardManager::changed:
    * @manager : a #XfdesktopClipboardManager.
