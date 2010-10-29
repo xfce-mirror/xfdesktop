@@ -25,8 +25,6 @@
 #include <gio/gio.h>
 #include <gtk/gtk.h>
 
-#include <thunar-vfs/thunar-vfs.h>
-
 #include "xfdesktop-icon.h"
 
 G_BEGIN_DECLS
@@ -53,7 +51,6 @@ struct _XfdesktopFileIconClass
     XfdesktopIconClass parent;
     
     /*< virtual functions >*/
-    G_CONST_RETURN ThunarVfsInfo *(*peek_info)(XfdesktopFileIcon *icon);
     GFileInfo *(*peek_file_info)(XfdesktopFileIcon *icon);
     GFileInfo *(*peek_filesystem_info)(XfdesktopFileIcon *icon);
     GFile *(*peek_file)(XfdesktopFileIcon *icon);
@@ -65,7 +62,6 @@ struct _XfdesktopFileIconClass
 
 GType xfdesktop_file_icon_get_type(void) G_GNUC_CONST;
 
-G_CONST_RETURN ThunarVfsInfo *xfdesktop_file_icon_peek_info(XfdesktopFileIcon *icon);
 GFileInfo *xfdesktop_file_icon_peek_file_info(XfdesktopFileIcon *icon);
 GFileInfo *xfdesktop_file_icon_peek_filesystem_info(XfdesktopFileIcon *icon);
 GFile *xfdesktop_file_icon_peek_file(XfdesktopFileIcon *icon);
@@ -75,12 +71,6 @@ void xfdesktop_file_icon_update_file_info(XfdesktopFileIcon *icon,
 gboolean xfdesktop_file_icon_can_rename_file(XfdesktopFileIcon *icon);
 
 gboolean xfdesktop_file_icon_can_delete_file(XfdesktopFileIcon *icon);
-
-void xfdesktop_file_icon_add_active_job(XfdesktopFileIcon *icon,
-                                        ThunarVfsJob *job);
-gboolean xfdesktop_file_icon_remove_active_job(XfdesktopFileIcon *icon,
-                                               ThunarVfsJob *job);
-
 
 G_END_DECLS
 

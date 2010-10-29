@@ -59,7 +59,6 @@ struct _XfdesktopVolumeIconPrivate
     gint cur_pix_size;
     gchar *label;
     GVolume *volume;
-    ThunarVfsInfo *info;
     GFileInfo *file_info;
     GFileInfo *filesystem_info;
     GFile *file;
@@ -80,7 +79,6 @@ static gboolean xfdesktop_volume_icon_do_drop_dest(XfdesktopIcon *icon,
 static gboolean xfdesktop_volume_icon_populate_context_menu(XfdesktopIcon *icon,
                                                             GtkWidget *menu);
 
-static G_CONST_RETURN ThunarVfsInfo *xfdesktop_volume_icon_peek_info(XfdesktopFileIcon *icon);
 static GFileInfo *xfdesktop_volume_icon_peek_file_info(XfdesktopFileIcon *icon);
 static GFileInfo *xfdesktop_volume_icon_peek_filesystem_info(XfdesktopFileIcon *icon);
 static GFile *xfdesktop_volume_icon_peek_file(XfdesktopFileIcon *icon);
@@ -128,7 +126,6 @@ xfdesktop_volume_icon_class_init(XfdesktopVolumeIconClass *klass)
     icon_class->populate_context_menu = xfdesktop_volume_icon_populate_context_menu;
     icon_class->activated = xfdesktop_volume_icon_activated;
     
-    file_icon_class->peek_info = xfdesktop_volume_icon_peek_info;
     file_icon_class->peek_file_info = xfdesktop_volume_icon_peek_file_info;
     file_icon_class->peek_filesystem_info = xfdesktop_volume_icon_peek_filesystem_info;
     file_icon_class->peek_file = xfdesktop_volume_icon_peek_file;
@@ -162,9 +159,6 @@ xfdesktop_volume_icon_finalize(GObject *obj)
     if(icon->priv->pix)
         g_object_unref(G_OBJECT(icon->priv->pix));
     
-    if(icon->priv->info)
-        thunar_vfs_info_unref(icon->priv->info);
-
     if(icon->priv->file_info)
         g_object_unref(icon->priv->file_info);
 
@@ -709,13 +703,6 @@ xfdesktop_volume_icon_populate_context_menu(XfdesktopIcon *icon,
     return TRUE;
 }
 
-
-static G_CONST_RETURN ThunarVfsInfo *
-xfdesktop_volume_icon_peek_info(XfdesktopFileIcon *icon)
-{
-    g_return_val_if_fail(XFDESKTOP_IS_VOLUME_ICON(icon), NULL);
-    return XFDESKTOP_VOLUME_ICON(icon)->priv->info;
-}
 
 static GFileInfo *
 xfdesktop_volume_icon_peek_file_info(XfdesktopFileIcon *icon)

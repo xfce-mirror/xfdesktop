@@ -61,7 +61,6 @@ struct _XfdesktopSpecialFileIconPrivate
     GdkPixbuf *pix;
     gchar *tooltip;
     gint cur_pix_size;
-    ThunarVfsInfo *info;
     GFileInfo *file_info;
     GFileInfo *filesystem_info;
     GFile *file;
@@ -86,7 +85,6 @@ static gboolean xfdesktop_special_file_icon_do_drop_dest(XfdesktopIcon *icon,
 static gboolean xfdesktop_special_file_icon_populate_context_menu(XfdesktopIcon *icon,
                                                                   GtkWidget *menu);
 
-static G_CONST_RETURN ThunarVfsInfo *xfdesktop_special_file_icon_peek_info(XfdesktopFileIcon *icon);
 static GFileInfo *xfdesktop_special_file_icon_peek_file_info(XfdesktopFileIcon *icon);
 static GFileInfo *xfdesktop_special_file_icon_peek_filesystem_info(XfdesktopFileIcon *icon);
 static GFile *xfdesktop_special_file_icon_peek_file(XfdesktopFileIcon *icon);
@@ -131,7 +129,6 @@ xfdesktop_special_file_icon_class_init(XfdesktopSpecialFileIconClass *klass)
     icon_class->do_drop_dest = xfdesktop_special_file_icon_do_drop_dest;
     icon_class->populate_context_menu = xfdesktop_special_file_icon_populate_context_menu;
     
-    file_icon_class->peek_info = xfdesktop_special_file_icon_peek_info;
     file_icon_class->peek_file_info = xfdesktop_special_file_icon_peek_file_info;
     file_icon_class->peek_filesystem_info = xfdesktop_special_file_icon_peek_filesystem_info;
     file_icon_class->peek_file = xfdesktop_special_file_icon_peek_file;
@@ -164,9 +161,6 @@ xfdesktop_special_file_icon_finalize(GObject *obj)
 
     if(icon->priv->file_info)
         g_object_unref(icon->priv->file_info);
-    
-    if(icon->priv->info)
-        thunar_vfs_info_unref(icon->priv->info);
     
     if(icon->priv->tooltip)
         g_free(icon->priv->tooltip);
@@ -247,11 +241,14 @@ static G_CONST_RETURN gchar *
 xfdesktop_special_file_icon_peek_label(XfdesktopIcon *icon)
 {
     XfdesktopSpecialFileIcon *special_file_icon = XFDESKTOP_SPECIAL_FILE_ICON(icon);
+    GFileInfo *info = special_file_icon->priv->file_info;
     
     if(XFDESKTOP_SPECIAL_FILE_ICON_HOME == special_file_icon->priv->type)
         return _("Home");
+    else if(XFDESKTOP_SPECIAL_FILE_ICON_FILESYSTEM == special_file_icon->priv->type)
+        return _("File System");
     else
-        return special_file_icon->priv->info->display_name;
+        return info ? g_file_info_get_display_name(info) : NULL;
 }
 
 static GdkDragAction
@@ -603,14 +600,6 @@ xfdesktop_special_file_icon_populate_context_menu(XfdesktopIcon *icon,
     return TRUE;
 }
 
-
-static G_CONST_RETURN ThunarVfsInfo *
-xfdesktop_special_file_icon_peek_info(XfdesktopFileIcon *icon)
-{
-    g_return_val_if_fail(XFDESKTOP_IS_SPECIAL_FILE_ICON(icon), NULL);
-    return XFDESKTOP_SPECIAL_FILE_ICON(icon)->priv->info;
-}
-
 static GFileInfo *
 xfdesktop_special_file_icon_peek_file_info(XfdesktopFileIcon *icon)
 {
@@ -639,9 +628,7 @@ xfdesktop_special_file_icon_new(XfdesktopSpecialFileIconType type,
                                 GdkScreen *screen)
 {
     XfdesktopSpecialFileIcon *special_file_icon;
-    ThunarVfsPath *path = NULL;
     GFile *file = NULL;
-    gchar *uri;
     
     switch(type) {
         case XFDESKTOP_SPECIAL_FILE_ICON_FILESYSTEM:
@@ -680,13 +667,6 @@ xfdesktop_special_file_icon_new(XfdesktopSpecialFileIconType type,
                                                                             XFDESKTOP_FILESYSTEM_INFO_NAMESPACE,
                                                                             NULL, NULL);
 
-    /* query a ThunarVfsInfo for the icon URI */
-    uri = g_file_get_uri(file);
-    path = thunar_vfs_path_new(uri, NULL);
-    special_file_icon->priv->info = thunar_vfs_info_new_for_path(path, NULL);
-    thunar_vfs_path_unref(path);
-    g_free(uri);
-    
     g_signal_connect_swapped(G_OBJECT(gtk_icon_theme_get_for_screen(screen)),
                              "changed",
                              G_CALLBACK(xfdesktop_special_file_icon_invalidate_pixbuf),

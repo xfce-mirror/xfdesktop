@@ -96,21 +96,6 @@ xfdesktop_file_icon_activated(XfdesktopIcon *icon)
 }
 
 
-G_CONST_RETURN ThunarVfsInfo *
-xfdesktop_file_icon_peek_info(XfdesktopFileIcon *icon)
-{
-    XfdesktopFileIconClass *klass;
-    
-    g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON(icon), NULL);
-    
-    klass = XFDESKTOP_FILE_ICON_GET_CLASS(icon);
-    
-    if(klass->peek_info)
-       return klass->peek_info(icon);
-    else
-        return NULL;
-}
-
 GFileInfo *
 xfdesktop_file_icon_peek_file_info(XfdesktopFileIcon *icon)
 {
