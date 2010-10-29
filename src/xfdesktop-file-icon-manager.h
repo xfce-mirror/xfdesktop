@@ -23,7 +23,6 @@
 
 #include <glib.h>
 #include <xfconf/xfconf.h>
-#include <thunar-vfs/thunar-vfs.h>
 
 #include "xfdesktop-special-file-icon.h"
 #include "xfdesktop-icon-view-manager.h"

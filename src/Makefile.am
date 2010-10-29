@@ -121,12 +121,10 @@ xfdesktop_SOURCES += $(desktop_file_icon_sources)
 
 xfdesktop_CFLAGS += \
 	-DDBUS_API_SUBJECT_TO_CHANGE \
-	$(THUNAR_VFS_CFLAGS) \
 	$(THUNARX_CFLAGS) \
 	$(DBUS_CFLAGS)
 
 xfdesktop_LDADD += \
-	$(THUNAR_VFS_LIBS) \
 	$(THUNARX_LIBS) \
 	$(DBUS_LIBS)
 

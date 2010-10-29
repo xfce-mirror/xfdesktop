@@ -20,7 +20,6 @@ m4_define([libxfce4ui_minimum_version], [4.7.0])
 m4_define([xfce_minimum_version], [4.6.0])
 m4_define([garcon_minimum_version], [0.1.1])
 m4_define([exo_minimum_version], [0.3.100])
-m4_define([thunar_vfs_minimum_version], [1.0.0])
 m4_define([thunar_minimum_version], [1.1.0])
 m4_define([dbus_minimum_version], [0.34])
 m4_define([wnck_minimum_version], [2.12])
@@ -116,14 +115,6 @@ fi
 
 if test "x$enable_desktop_icons" = "xyes" -a "x$enable_file_icons" = "xyes"; then
     dnl here i shall abuse the XDT_CHECK_PACKAGE macro
-    XDT_CHECK_PACKAGE([THUNAR_VFS], [thunar-vfs-1],
-                      [thunar_vfs_minimum_version], [], [
-echo "*** Optional package thunar-vfs-1 was either not found on your system"
-echo "*** or is too old.  Please install or upgrade to at least version"
-echo "*** thunar_minimum_version, or adjust the PKG_CONFIG_PATH environment variable"
-echo "*** if you installed the new version of the package in a nonstandard"
-echo "*** prefix.  File/launcher icons will be disabled."
-])
     XDT_CHECK_PACKAGE([DBUS], [dbus-glib-1], [dbus_minimum_version], [], [
 echo "*** Optional package dbus-glib-1 was either not found on your system"
 echo "*** or is too old.  Please install or upgrade to at least version"
@@ -132,14 +123,10 @@ echo "*** if you installed the new version of the package in a nonstandard"
 echo "*** prefix.  File/launcher icons will be disabled."
 ])
     enable_file_icons="no"
-    if test "x$THUNAR_VFS_VERSION" != "x"; then
-        already_have_thunar_vfs=yes
-        
-        if test "x$DBUS_VERSION" != "x"; then
-            enable_file_icons="yes"
-            AC_DEFINE([ENABLE_FILE_ICONS], [1],
-                      [Define if file icons should be enabled])
-        fi
+    if test "x$DBUS_VERSION" != "x"; then
+        enable_file_icons="yes"
+        AC_DEFINE([ENABLE_FILE_ICONS], [1],
+                  [Define if file icons should be enabled])
     fi
 fi
 
@@ -181,32 +168,6 @@ build_desktop_menu="no"
     fi
 fi
 AM_CONDITIONAL([BUILD_DESKTOP_MENU], [test "x$build_desktop_menu" = "xyes"])
-
-dnl time for more abuse.  if we don't yet have thunar-vfs, we still might want
-dnl it for desktop menu directory monitoring.
-AC_ARG_ENABLE([desktop-menu-dir-monitor],
-              [AC_HELP_STRING([--disable-desktop-menu-dir-monitor],
-                              [Don't use thunar-vfs to monitor menu files to automatically update the desktop menu when needed. (default=enabled)])],
-              [want_thunar_vfs=$enableval],
-              [want_thunar_vfs=yes])
-if test "x$want_thunar_vfs" = "xyes" -a "x$build_desktop_menu" = "xyes"; then
-    if test "x$already_have_thunar_vfs" != "xyes"; then
-        XDT_CHECK_PACKAGE([THUNAR_VFS], [thunar-vfs-1],
-                          [thunar_vfs_minimum_version], [have_thunar_vfs=yes], [
-echo "*** Optional package thunar-vfs-1 was either not found on your system"
-echo "*** or is too old.  Please install or upgrade to at least version"
-echo "*** thunar_minimum_version, or adjust the PKG_CONFIG_PATH environment variable"
-echo "*** if you installed the new version of the package in a nonstandard"
-echo "*** prefix.  Desktop menu directory monitoring will be disabled."
-])
-    fi
-
-    if test "x$have_thunar_vfs" = "xyes" \
-       -o "x$already_have_thunar_vfs" = "xyes"
-    then
-        AC_DEFINE([HAVE_THUNAR_VFS], [1], [Define if thunar-vfs is present.])
-    fi
-fi
 
 AC_ARG_WITH([file-manager-fallback],
     [AC_HELP_STRING([--with-file-manager-fallback=PATH],

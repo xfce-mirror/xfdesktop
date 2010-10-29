@@ -23,8 +23,6 @@
 
 #include <glib-object.h>
 
-#include <thunar-vfs/thunar-vfs.h>
-
 #include "xfdesktop-file-icon.h"
 
 G_BEGIN_DECLS
