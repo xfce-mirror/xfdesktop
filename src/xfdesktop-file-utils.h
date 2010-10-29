@@ -63,7 +63,9 @@ gboolean xfdesktop_file_utils_volume_is_present(GVolume *volume);
 gboolean xfdesktop_file_utils_volume_is_removable(GVolume *volume);
 
 GList *xfdesktop_file_utils_file_icon_list_to_file_list(GList *icon_list);
+GList *xfdesktop_file_utils_file_list_from_string(const gchar *string);
 gchar *xfdesktop_file_utils_file_list_to_string(GList *file_list);
+gchar **xfdesktop_file_utils_file_list_to_uri_array(GList *file_list);
 void xfdesktop_file_utils_file_list_free(GList *file_list);
 
 GdkPixbuf *xfdesktop_file_utils_get_fallback_icon(gint size);
@@ -121,6 +123,10 @@ void xfdesktop_file_utils_transfer_file(GdkDragAction action,
                                         GFile *source_file,
                                         GFile *target_file,
                                         GdkScreen *screen);
+void xfdesktop_file_utils_transfer_files(GdkDragAction action,
+                                         GList *source_files,
+                                         GList *target_files,
+                                         GdkScreen *screen);
 
 
 gboolean xfdesktop_file_utils_dbus_init(void);
