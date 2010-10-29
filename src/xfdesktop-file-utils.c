@@ -138,32 +138,6 @@ xfdesktop_file_utils_handle_fileop_error(GtkWindow *parent,
     }
 }
 
-gchar *
-xfdesktop_file_utils_get_file_kind(const ThunarVfsInfo *info,
-                                   gboolean *is_link)
-{
-    gchar *str = NULL;
-
-    if(!strcmp(thunar_vfs_mime_info_get_name(info->mime_info),
-               "inode/symlink"))
-    {
-        str = g_strdup(_("broken link"));
-        if(is_link)
-            *is_link = TRUE;
-    } else if(info->flags & THUNAR_VFS_FILE_FLAGS_SYMLINK) {
-        str = g_strdup_printf(_("link to %s"),
-                              thunar_vfs_mime_info_get_comment(info->mime_info));
-        if(is_link)
-            *is_link = TRUE;
-    } else {
-        str = g_strdup(thunar_vfs_mime_info_get_comment(info->mime_info));
-        if(is_link)
-            *is_link = FALSE;
-    }
-    
-    return str;
-}
-
 gboolean 
 xfdesktop_file_utils_is_desktop_file(GFileInfo *info)
 {
@@ -521,55 +495,6 @@ xfdesktop_file_utils_set_window_cursor(GtkWindow *window,
         gdk_window_set_cursor(GTK_WIDGET(window)->window, cursor);
         gdk_cursor_unref(cursor);
     }
-}
-
-gboolean
-xfdesktop_file_utils_launch_fallback(const ThunarVfsInfo *info,
-                                     GdkScreen *screen,
-                                     GtkWindow *parent)
-{
-    gboolean ret = FALSE;
-    gchar *file_manager_app;
-    
-    g_return_val_if_fail(info, FALSE);
-    
-    file_manager_app = g_find_program_in_path(FILE_MANAGER_FALLBACK);
-    if(file_manager_app) {
-        gchar *commandline, *uri, *display_name;
-        
-        if(!screen && parent)
-            screen = gtk_widget_get_screen(GTK_WIDGET(parent));
-        else if(!screen)
-            screen = gdk_display_get_default_screen(gdk_display_get_default());
-        
-        display_name = gdk_screen_make_display_name(screen);
-        uri = thunar_vfs_path_dup_uri(info->path);
-        
-        commandline = g_strconcat("\"", file_manager_app, "\" \"",
-                                  uri, "\"", NULL);
-        
-        DBG("executing:\n%s\n", commandline);
-        
-        ret = xfce_spawn_command_line_on_screen(screen, commandline, FALSE, TRUE, NULL);
-        
-        g_free(commandline);
-        g_free(file_manager_app);
-        g_free(uri);
-        g_free(display_name);
-    }
-    
-    if(!ret) {
-        gchar *primary = g_markup_printf_escaped(_("Unable to launch \"%s\":"),
-                                                 info->display_name);
-        xfce_message_dialog(GTK_WINDOW(parent),
-                            _("Launch Error"), GTK_STOCK_DIALOG_ERROR,
-                            primary,
-                            _("This feature requires a file manager service present (such as that supplied by Thunar)."),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
-        g_free(primary);
-    }
-    
-    return ret;
 }
 
 static gchar *

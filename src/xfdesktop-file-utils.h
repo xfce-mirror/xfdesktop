@@ -55,8 +55,6 @@ void xfdesktop_file_utils_move_into(GtkWindow *parent,
                                     GList *path_list,
                                     ThunarVfsPath *dest_path);
 
-gchar *xfdesktop_file_utils_get_file_kind(const ThunarVfsInfo *info,
-                                          gboolean *is_link);
 gboolean xfdesktop_file_utils_is_desktop_file(GFileInfo *info);
 gboolean xfdesktop_file_utils_file_is_executable(GFileInfo *info);
 gchar *xfdesktop_file_utils_format_time_for_display(guint64 file_time);
@@ -78,10 +76,6 @@ GdkPixbuf *xfdesktop_file_utils_get_icon(const gchar *custom_icon_name,
 
 void xfdesktop_file_utils_set_window_cursor(GtkWindow *window,
                                             GdkCursorType cursor_type);
-
-gboolean xfdesktop_file_utils_launch_fallback(const ThunarVfsInfo *info,
-                                              GdkScreen *screen,
-                                              GtkWindow *parent);
 
 gboolean xfdesktop_file_utils_app_info_launch(GAppInfo *app_info,
                                               GFile *working_directory,
