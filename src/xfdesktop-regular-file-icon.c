@@ -87,8 +87,6 @@ static G_CONST_RETURN ThunarVfsInfo *xfdesktop_regular_file_icon_peek_info(Xfdes
 static GFileInfo *xfdesktop_regular_file_icon_peek_file_info(XfdesktopFileIcon *icon);
 static GFileInfo *xfdesktop_regular_file_icon_peek_filesystem_info(XfdesktopFileIcon *icon);
 static GFile *xfdesktop_regular_file_icon_peek_file(XfdesktopFileIcon *icon);
-static void xfdesktop_regular_file_icon_update_info(XfdesktopFileIcon *icon,
-                                                    ThunarVfsInfo *info);
 static void xfdesktop_regular_file_icon_update_file_info(XfdesktopFileIcon *icon,
                                                          GFileInfo *info);
 static gboolean xfdesktop_regular_file_can_write_parent(XfdesktopFileIcon *icon);
@@ -135,7 +133,6 @@ xfdesktop_regular_file_icon_class_init(XfdesktopRegularFileIconClass *klass)
     file_icon_class->peek_file_info = xfdesktop_regular_file_icon_peek_file_info;
     file_icon_class->peek_filesystem_info = xfdesktop_regular_file_icon_peek_filesystem_info;
     file_icon_class->peek_file = xfdesktop_regular_file_icon_peek_file;
-    file_icon_class->update_info = xfdesktop_regular_file_icon_update_info;
     file_icon_class->update_file_info = xfdesktop_regular_file_icon_update_file_info;
     file_icon_class->can_rename_file = xfdesktop_regular_file_can_write_parent;
     file_icon_class->can_delete_file = xfdesktop_regular_file_can_write_parent;
@@ -540,29 +537,6 @@ xfdesktop_regular_file_icon_peek_file(XfdesktopFileIcon *icon)
 {
     g_return_val_if_fail(XFDESKTOP_IS_REGULAR_FILE_ICON(icon), NULL);
     return XFDESKTOP_REGULAR_FILE_ICON(icon)->priv->file;
-}
-
-static void
-xfdesktop_regular_file_icon_update_info(XfdesktopFileIcon *icon,
-                                        ThunarVfsInfo *info)
-{
-    XfdesktopRegularFileIcon *regular_file_icon = XFDESKTOP_REGULAR_FILE_ICON(icon);
-    gboolean label_changed = TRUE;
-    
-    g_return_if_fail(XFDESKTOP_IS_REGULAR_FILE_ICON(icon) && info);
-    
-    if(!strcmp(regular_file_icon->priv->info->display_name, info->display_name))
-        label_changed = FALSE;
-    
-    thunar_vfs_info_unref(regular_file_icon->priv->info);
-    regular_file_icon->priv->info = thunar_vfs_info_ref(info);
-    
-    if(label_changed)
-        xfdesktop_icon_label_changed(XFDESKTOP_ICON(icon));
-    
-    /* not really easy to check if this changed or not, so just invalidate it */
-    xfdesktop_regular_file_icon_invalidate_pixbuf(regular_file_icon);
-    xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(icon));
 }
 
 static void

@@ -32,7 +32,6 @@
 
 struct _XfdesktopFileIconPrivate
 {
-    GList *active_jobs;
 };
 
 static void xfdesktop_file_icon_finalize(GObject *obj);
@@ -67,32 +66,6 @@ xfdesktop_file_icon_init(XfdesktopFileIcon *icon)
 static void
 xfdesktop_file_icon_finalize(GObject *obj)
 {
-    XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(obj);
-    
-    if(icon->priv->active_jobs) {
-        GList *l;
-        ThunarVfsJob *job;
-        GCallback cb;
-        
-        for(l = icon->priv->active_jobs; l; l = l->next) {
-            job = THUNAR_VFS_JOB(l->data);
-            cb = g_object_get_data(G_OBJECT(job),
-                                             "--xfdesktop-file-icon-callback");
-            if(cb) {
-                gpointer data = g_object_get_data(obj,
-                                                  "--xfdesktop-file-icon-data");
-                g_signal_handlers_disconnect_by_func(G_OBJECT(job),
-                                                     G_CALLBACK(cb),
-                                                     data);
-                g_object_set_data(G_OBJECT(job),
-                                  "--xfdesktop-file-icon-callback", NULL);
-            }
-            thunar_vfs_job_cancel(job);
-            g_object_unref(G_OBJECT(job));
-        }
-        g_list_free(icon->priv->active_jobs);
-    }
-    
     G_OBJECT_CLASS(xfdesktop_file_icon_parent_class)->finalize(obj);
 }
 
@@ -184,20 +157,6 @@ xfdesktop_file_icon_peek_file(XfdesktopFileIcon *icon)
 }
 
 void
-xfdesktop_file_icon_update_info(XfdesktopFileIcon *icon,
-                                ThunarVfsInfo *info)
-{
-    XfdesktopFileIconClass *klass;
-    
-    g_return_if_fail(XFDESKTOP_IS_FILE_ICON(icon));
-    
-    klass = XFDESKTOP_FILE_ICON_GET_CLASS(icon);
-    
-    if(klass->update_info)
-       klass->update_info(icon, info);
-}
-
-void
 xfdesktop_file_icon_update_file_info(XfdesktopFileIcon *icon,
                                      GFileInfo *info)
 {
@@ -238,27 +197,5 @@ xfdesktop_file_icon_can_delete_file(XfdesktopFileIcon *icon)
     if(klass->can_delete_file)
        return klass->can_delete_file(icon);
     else
-        return FALSE;
-}
-
-void
-xfdesktop_file_icon_add_active_job(XfdesktopFileIcon *icon,
-                                   ThunarVfsJob *job)
-{
-    g_return_if_fail(XFDESKTOP_IS_FILE_ICON(icon) && job);
-    
-    icon->priv->active_jobs = g_list_prepend(icon->priv->active_jobs,
-                                             g_object_ref(G_OBJECT(job)));
-}
-
-gboolean
-xfdesktop_file_icon_remove_active_job(XfdesktopFileIcon *icon,
-                                      ThunarVfsJob *job)
-{
-    if(g_list_find(icon->priv->active_jobs, job)) {
-        icon->priv->active_jobs = g_list_remove(icon->priv->active_jobs, job);
-        g_object_unref(G_OBJECT(job));
-        return TRUE;
-    } else
         return FALSE;
 }

@@ -57,7 +57,6 @@ struct _XfdesktopFileIconClass
     GFileInfo *(*peek_file_info)(XfdesktopFileIcon *icon);
     GFileInfo *(*peek_filesystem_info)(XfdesktopFileIcon *icon);
     GFile *(*peek_file)(XfdesktopFileIcon *icon);
-    void (*update_info)(XfdesktopFileIcon *icon, ThunarVfsInfo *info);
     void (*update_file_info)(XfdesktopFileIcon *icon, GFileInfo *info);
     
     gboolean (*can_rename_file)(XfdesktopFileIcon *icon);
@@ -70,8 +69,6 @@ G_CONST_RETURN ThunarVfsInfo *xfdesktop_file_icon_peek_info(XfdesktopFileIcon *i
 GFileInfo *xfdesktop_file_icon_peek_file_info(XfdesktopFileIcon *icon);
 GFileInfo *xfdesktop_file_icon_peek_filesystem_info(XfdesktopFileIcon *icon);
 GFile *xfdesktop_file_icon_peek_file(XfdesktopFileIcon *icon);
-void xfdesktop_file_icon_update_info(XfdesktopFileIcon *icon,
-                                     ThunarVfsInfo *info);
 void xfdesktop_file_icon_update_file_info(XfdesktopFileIcon *icon,
                                           GFileInfo *info);
 
