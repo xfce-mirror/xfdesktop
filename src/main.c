@@ -58,7 +58,6 @@
 
 #ifdef ENABLE_FILE_ICONS
 #include <dbus/dbus-glib.h>
-#include <thunar-vfs/thunar-vfs.h>
 #endif
 
 #include "xfdesktop-common.h"
@@ -335,10 +334,6 @@ main(int argc, char **argv)
         g_error_free(error);
     }
 
-#ifdef ENABLE_FILE_ICONS
-    thunar_vfs_init();
-#endif
-    
     gdpy = gdk_display_get_default();
 
     if(!xfconf_init(&error)) {
@@ -403,10 +398,6 @@ main(int argc, char **argv)
     g_free(desktops);
     
     xfconf_shutdown();
-    
-#ifdef ENABLE_FILE_ICONS
-    thunar_vfs_shutdown();
-#endif
     
     return 0;
 }
