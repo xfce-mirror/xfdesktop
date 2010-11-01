@@ -106,12 +106,18 @@ G_DEFINE_TYPE(XfdesktopVolumeIcon, xfdesktop_volume_icon,
 
 
 
+static GQuark xfdesktop_volume_icon_activated_quark;
+
+
+
 static void
 xfdesktop_volume_icon_class_init(XfdesktopVolumeIconClass *klass)
 {
     GObjectClass *gobject_class = (GObjectClass *)klass;
     XfdesktopIconClass *icon_class = (XfdesktopIconClass *)klass;
     XfdesktopFileIconClass *file_icon_class = (XfdesktopFileIconClass *)klass;
+
+    xfdesktop_volume_icon_activated_quark = g_quark_from_static_string("xfdesktop-volume-icon-activated");
     
     g_type_class_add_private(klass, sizeof(XfdesktopVolumeIconClass));
     
@@ -542,11 +548,21 @@ xfdesktop_volume_icon_mount_finish(GObject *object,
         }
 
         if(file && info) {
+            gboolean activated = FALSE;
+
             if(icon->priv->file)
                 g_object_unref(icon->priv->file);
             icon->priv->file = g_object_ref(file);
 
             xfdesktop_file_icon_update_file_info(XFDESKTOP_FILE_ICON(icon), info);
+
+            activated = GPOINTER_TO_UINT(g_object_get_qdata(G_OBJECT(icon), 
+                                                            xfdesktop_volume_icon_activated_quark));
+            if(activated) {
+                XfdesktopIcon *icon_p = XFDESKTOP_ICON(icon);
+                XFDESKTOP_ICON_CLASS(xfdesktop_volume_icon_parent_class)->activated(icon_p);
+            }
+            g_object_set_qdata(G_OBJECT(icon), xfdesktop_volume_icon_activated_quark, NULL);
         } else {
             if(icon->priv->file)
                 g_object_unref(icon->priv->file);
@@ -575,7 +591,7 @@ xfdesktop_volume_icon_menu_toggle_mount(GtkWidget *widget,
     
     volume = xfdesktop_volume_icon_peek_volume(icon);
     mount = g_volume_get_mount(volume);
-    
+
     if(mount) {
         if(g_volume_can_eject(volume)) {
 #ifdef HAVE_LIBNOTIFY
@@ -772,17 +788,22 @@ xfdesktop_volume_icon_activated(XfdesktopIcon *icon_p)
     mount = g_volume_get_mount(volume);
     
     if(!mount) {
-        /* TODO we need to call the parent classes activated handler
-         * in the mount callback in order to open the mount point in
-         * the file manager */
+        /* set the activated flag so we can chain the event up to the 
+         * parent class in the mount finish callback */
+        g_object_set_qdata(G_OBJECT(icon), xfdesktop_volume_icon_activated_quark,
+                           GUINT_TO_POINTER(TRUE));
+
+        /* mount the volume and open the folder in the mount finish callback */
         xfdesktop_volume_icon_menu_toggle_mount(NULL, icon);
+
         return TRUE;
     } else {
         g_object_unref(mount);
+
+        /* chain up to the parent class (where the mount point folder is
+         * opened in the file manager) */
+        return XFDESKTOP_ICON_CLASS(xfdesktop_volume_icon_parent_class)->activated(icon_p);
     }
-    
-    /* chain up */
-    return XFDESKTOP_ICON_CLASS(xfdesktop_volume_icon_parent_class)->activated(icon_p);
 }
 
 XfdesktopVolumeIcon *
