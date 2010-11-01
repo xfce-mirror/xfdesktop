@@ -86,10 +86,11 @@ void xfdesktop_file_utils_show_properties_dialog(GFile *file,
 void xfdesktop_file_utils_launch(GFile *file,
                                  GdkScreen *screen,
                                  GtkWindow *parent);
-void xfdesktop_file_utils_execute(GFile *working_directory,
-                                  GFile *file,
-                                  GList *files,
-                                  GdkScreen *screen);
+gboolean xfdesktop_file_utils_execute(GFile *working_directory,
+                                      GFile *file,
+                                      GList *files,
+                                      GdkScreen *screen,
+                                      GtkWindow *parent);
 void xfdesktop_file_utils_display_chooser_dialog(GFile *file,
                                                  gboolean open,
                                                  GdkScreen *screen,
@@ -98,10 +99,10 @@ void xfdesktop_file_utils_transfer_file(GdkDragAction action,
                                         GFile *source_file,
                                         GFile *target_file,
                                         GdkScreen *screen);
-void xfdesktop_file_utils_transfer_files(GdkDragAction action,
-                                         GList *source_files,
-                                         GList *target_files,
-                                         GdkScreen *screen);
+gboolean xfdesktop_file_utils_transfer_files(GdkDragAction action,
+                                             GList *source_files,
+                                             GList *target_files,
+                                             GdkScreen *screen);
 
 
 gboolean xfdesktop_file_utils_dbus_init(void);

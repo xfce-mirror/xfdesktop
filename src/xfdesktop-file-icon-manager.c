@@ -2880,17 +2880,14 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
         
         file_list = xfdesktop_file_utils_file_list_from_string((const gchar *)data->data);
         if(file_list) {
-            if(tinfo && xfdesktop_file_utils_file_is_executable(tinfo)) {
-                xfdesktop_file_utils_execute(fmanager->priv->folder,
-                                             tfile, file_list,
-                                             fmanager->priv->gscreen);
-                
-                /* TODO check the result of the D-Bus method and the above function
-                 * call, and only set drop_ok on success */
-                drop_ok = TRUE;
-            } else if(tfile && g_file_has_uri_scheme(tfile, "trash")) {
-                GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
+            GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
 
+            if(tinfo && xfdesktop_file_utils_file_is_executable(tinfo)) {
+                drop_ok = xfdesktop_file_utils_execute(fmanager->priv->folder,
+                                                       tfile, file_list,
+                                                       fmanager->priv->gscreen,
+                                                       GTK_WINDOW(toplevel));
+            } else if(tfile && g_file_has_uri_scheme(tfile, "trash")) {
                 /* move files to the trash */
                 xfdesktop_file_utils_trash_files(file_list,
                                                  fmanager->priv->gscreen,
@@ -2931,16 +2928,13 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
                 if(dest_file_list) {
                     dest_file_list = g_list_reverse(dest_file_list);
 
-                    xfdesktop_file_utils_transfer_files(context->action, 
-                                                        file_list, dest_file_list,
-                                                        fmanager->priv->gscreen);
+                    drop_ok =xfdesktop_file_utils_transfer_files(context->action, 
+                                                                 file_list, 
+                                                                 dest_file_list,
+                                                                 fmanager->priv->gscreen);
                 }
 
                 xfdesktop_file_utils_file_list_free(dest_file_list);
-
-                /* TODO check the result of the D-Bus method and the above
-                 * function call in order to set drop_ok to TRUE or FALSE */
-                drop_ok = TRUE;
             }
         }
     }

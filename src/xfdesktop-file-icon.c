@@ -89,6 +89,8 @@ xfdesktop_file_icon_activated(XfdesktopIcon *icon)
 
     if(g_file_info_get_file_type(info) == G_FILE_TYPE_DIRECTORY)
         xfdesktop_file_utils_open_folder(file, gscreen, GTK_WINDOW(toplevel));
+    else if(xfdesktop_file_utils_file_is_executable(info))
+        xfdesktop_file_utils_execute(NULL, file, NULL, gscreen, GTK_WINDOW(toplevel));
     else
         xfdesktop_file_utils_launch(file, gscreen, GTK_WINDOW(toplevel));
     

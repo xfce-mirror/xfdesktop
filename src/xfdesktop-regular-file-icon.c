@@ -394,7 +394,7 @@ xfdesktop_regular_file_icon_do_drop_dest(XfdesktopIcon *icon,
         files.prev = files.next = NULL;
 
         xfdesktop_file_utils_execute(NULL, regular_file_icon->priv->file, &files,
-                                     regular_file_icon->priv->gscreen);
+                                     regular_file_icon->priv->gscreen, NULL);
 
         result = TRUE;
     } else {

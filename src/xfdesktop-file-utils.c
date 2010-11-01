@@ -941,8 +941,8 @@ xfdesktop_file_utils_launch(GFile *file,
             xfce_message_dialog(parent,
                                 _("Launch Error"), GTK_STOCK_DIALOG_ERROR,
                                 _("The file could not be opened"),
-                                error->message, GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
-                                NULL);
+                                error->message, 
+                                GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
 
             g_error_free(error);
         }
@@ -962,17 +962,20 @@ xfdesktop_file_utils_launch(GFile *file,
     }
 }
 
-void
+gboolean
 xfdesktop_file_utils_execute(GFile *working_directory,
                              GFile *file,
                              GList *files,
-                             GdkScreen *screen)
+                             GdkScreen *screen,
+                             GtkWindow *parent)
 {
     DBusGProxy *fileman_proxy;
+    gboolean success = TRUE;
     
-    g_return_if_fail(working_directory == NULL || G_IS_FILE(working_directory));
-    g_return_if_fail(G_IS_FILE(file));
-    g_return_if_fail(screen == NULL || GDK_IS_SCREEN(screen));
+    g_return_val_if_fail(working_directory == NULL || G_IS_FILE(working_directory), FALSE);
+    g_return_val_if_fail(G_IS_FILE(file), FALSE);
+    g_return_val_if_fail(screen == NULL || GDK_IS_SCREEN(screen), FALSE);
+    g_return_val_if_fail(parent == NULL || GTK_IS_WINDOW(parent), FALSE);
     
     if(!screen)
         screen = gdk_display_get_default_screen(gdk_display_get_default());
@@ -1002,8 +1005,8 @@ xfdesktop_file_utils_execute(GFile *working_directory,
             gchar *name = g_filename_display_basename(filename);
             gchar *primary = g_markup_printf_escaped(_("Failed to run \"%s\""), name);
 
-            xfce_message_dialog(NULL,
-                                _("Run Error"), GTK_STOCK_DIALOG_ERROR,
+            xfce_message_dialog(parent,
+                                _("Launch Error"), GTK_STOCK_DIALOG_ERROR,
                                 primary, error->message, 
                                 GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
                                 NULL);
@@ -1013,6 +1016,8 @@ xfdesktop_file_utils_execute(GFile *working_directory,
             g_free(filename);
 
             g_error_free(error);
+
+            success = FALSE;
         }
         
         g_free(startup_id);
@@ -1025,7 +1030,7 @@ xfdesktop_file_utils_execute(GFile *working_directory,
         gchar *name = g_filename_display_basename(filename);
         gchar *primary = g_markup_printf_escaped(_("Failed to run \"%s\""), name);
 
-        xfce_message_dialog(NULL,
+        xfce_message_dialog(parent,
                             _("Launch Error"), GTK_STOCK_DIALOG_ERROR,
                             primary,
                             _("This feature requires a file manager service to "
@@ -1035,7 +1040,11 @@ xfdesktop_file_utils_execute(GFile *working_directory,
         g_free(primary);
         g_free(name);
         g_free(filename);
+
+        success = FALSE;
     }
+
+    return success;
 }
 
 void
@@ -1164,17 +1173,18 @@ xfdesktop_file_utils_transfer_file(GdkDragAction action,
     }
 }
 
-void
+gboolean
 xfdesktop_file_utils_transfer_files(GdkDragAction action,
                                     GList *source_files,
                                     GList *target_files,
                                     GdkScreen *screen)
 {
     DBusGProxy *fileman_proxy;
+    gboolean success = TRUE;
     
-    g_return_if_fail(source_files != NULL && G_IS_FILE(source_files->data));
-    g_return_if_fail(target_files != NULL && G_IS_FILE(target_files->data));
-    g_return_if_fail(screen == NULL || GDK_IS_SCREEN(screen));
+    g_return_val_if_fail(source_files != NULL && G_IS_FILE(source_files->data), FALSE);
+    g_return_val_if_fail(target_files != NULL && G_IS_FILE(target_files->data), FALSE);
+    g_return_val_if_fail(screen == NULL || GDK_IS_SCREEN(screen), FALSE);
 
     if(!screen)
         screen = gdk_display_get_default_screen(gdk_display_get_default());
@@ -1211,6 +1221,8 @@ xfdesktop_file_utils_transfer_files(GdkDragAction action,
                 break;
             default:
                 g_warning("Unsupported transfer action");
+                success = FALSE;
+                break;
         }
 
         if(error) {
@@ -1221,6 +1233,8 @@ xfdesktop_file_utils_transfer_files(GdkDragAction action,
                                 NULL);
 
             g_error_free(error);
+
+            success = FALSE;
         }
         
         g_free(startup_id);
@@ -1234,7 +1248,11 @@ xfdesktop_file_utils_transfer_files(GdkDragAction action,
                             _("This feature requires a file manager service to "
                               "be present (such as the one supplied by Thunar)."),
                             GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+
+        success = FALSE;
     }
+
+    return success;
 }
 
 static gint dbus_ref_cnt = 0;
