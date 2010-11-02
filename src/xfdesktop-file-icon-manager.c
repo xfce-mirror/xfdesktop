@@ -1329,7 +1329,7 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
     GList *selected, *app_infos, *l;
     GtkWidget *mi, *img, *tmpl_menu;
     gboolean multi_sel, have_templates = FALSE, got_custom_menu = FALSE;
-    GFile *templates_dir, *home_dir;
+    GFile *templates_dir = NULL, *home_dir;
     const gchar *templates_dir_path = NULL;
 #ifdef HAVE_THUNARX
     GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
