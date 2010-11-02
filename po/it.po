@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-02 11:09+0000\n"
+"POT-Creation-Date: 2010-11-02 17:09+0000\n"
 "PO-Revision-Date: 2010-02-06 16:15+0100\n"
 "Last-Translator: Cristian Marchi <cri.penta@gmail.com>\n"
 "Language-Team: Italian <xfce-it-translators@googlegroups.com>\n"
@@ -345,19 +345,18 @@ msgstr "Se usare un trattino basso nell'etichetta come tasto mnemonico"
 
 #: ../src/xfdesktop-file-icon-manager.c:479
 #: ../src/xfdesktop-file-icon-manager.c:496
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create the desktop folder \"%s\""
-msgstr "Impossibile creare la lista degli sfondi \"%s\""
+msgstr "Impossibile creare la cartella della scrivania \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:484
 #: ../src/xfdesktop-file-icon-manager.c:501
-#, fuzzy
 msgid "Desktop Folder Error"
-msgstr "Errore nella scrivania"
+msgstr "Errore cartella scrivania"
 
 #: ../src/xfdesktop-file-icon-manager.c:503
 msgid "A normal file with the same name already exists. Please delete or rename it."
-msgstr ""
+msgstr "Esiste già un file normale con lo stesso nome. Cancellarlo o rinominarlo."
 
 #: ../src/xfdesktop-file-icon-manager.c:606
 #: ../src/xfdesktop-file-icon-manager.c:650 ../src/xfdesktop-file-utils.c:733
@@ -683,7 +682,7 @@ msgid ""
 msgstr ""
 "Volume rimovibile\n"
 "Montato in \"%s\"\n"
-"%s rimanente (%s totale)"
+"%s rimanenti (%s totali)"
 
 #: ../src/xfdesktop-volume-icon.c:420
 msgid ""
