@@ -48,6 +48,10 @@
 #include <thunarx/thunarx.h>
 #endif
 
+#ifdef HAVE_LIBNOTIFY
+#include "xfdesktop-notify.h"
+#endif
+
 #include "xfdesktop-common.h"
 #include "xfdesktop-file-utils.h"
 #include "xfdesktop-volume-icon.h"
@@ -456,9 +460,7 @@ xfdesktop_volume_icon_eject_finish(GObject *object,
     }
 
 #ifdef HAVE_LIBNOTIFY
-#if 0
-    xfdesktop_notify_eject_finish(mount);
-#endif
+    xfdesktop_notify_eject_finish(volume);
 #endif
 
     g_object_unref(icon);
@@ -500,9 +502,7 @@ xfdesktop_volume_icon_unmount_finish(GObject *object,
     }
 
 #ifdef HAVE_LIBNOTIFY
-#if 0
     xfdesktop_notify_unmount_finish(mount);
-#endif
 #endif
 
     g_object_unref(icon);
@@ -595,10 +595,7 @@ xfdesktop_volume_icon_menu_toggle_mount(GtkWidget *widget,
     if(mount) {
         if(g_volume_can_eject(volume)) {
 #ifdef HAVE_LIBNOTIFY
-#if 0
-            /* TODO */
             xfdesktop_notify_eject(volume);
-#endif
 #endif
 
             g_volume_eject(volume, G_MOUNT_UNMOUNT_NONE, NULL,
@@ -606,10 +603,7 @@ xfdesktop_volume_icon_menu_toggle_mount(GtkWidget *widget,
                            g_object_ref(icon));
         } else {
 #ifdef HAVE_LIBNOTIFY
-#if 0
-            /* TODO */
             xfdesktop_notify_unmount(mount);
-#endif
 #endif
 
             g_mount_unmount(mount, G_MOUNT_UNMOUNT_NONE, NULL,

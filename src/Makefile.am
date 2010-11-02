@@ -8,8 +8,15 @@ xfdesktop_built_sources = \
 	xfdesktop-marshal.c \
 	xfdesktop-marshal.h
 
+if HAVE_LIBNOTIFY
+xfdesktop_notify_sources = \
+	xfdesktop-notify.c \
+	xfdesktop-notify.h
+endif
+
 xfdesktop_SOURCES = \
 	$(xfdesktop_built_sources) \
+	$(xfdesktop_notify_sources) \
 	main.c \
 	menu.c \
 	menu.h \
@@ -67,6 +74,7 @@ xfdesktop_CFLAGS = \
         $(GLIB_CFLAGS) \
 	$(GTHREAD_CFLAGS) \
         $(GTK_CFLAGS) \
+	$(LIBNOTIFY_CFLAGS) \
 	$(LIBX11_CFLAGS) \
 	$(LIBXFCE4UTIL_CFLAGS) \
 	$(LIBXFCE4UI_CFLAGS) \
@@ -84,6 +92,7 @@ xfdesktop_LDADD += \
         $(GLIB_LIBS) \
 	$(GTHREAD_LIBS) \
         $(GTK_LIBS) \
+	$(LIBNOTIFY_LIBS) \
 	$(LIBX11_LDFLAGS) \
 	$(LIBX11_LIBS) \
 	$(LIBXFCE4UTIL_LIBS) \
