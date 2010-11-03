@@ -510,118 +510,104 @@ msgid "Rename Error"
 msgstr "Berrizendatze errorea"
 
 #: ../src/xfdesktop-file-utils.c:616 ../src/xfdesktop-file-utils.c:631
-#, fuzzy
 msgid "The file could not be renamed"
-msgstr "Aplikazio hautatzailea ezin da ireki."
+msgstr "Ezin da fitxategia berrizendatu"
 
 #: ../src/xfdesktop-file-utils.c:674 ../src/xfdesktop-file-utils.c:689
-#, fuzzy
 msgid "Delete Error"
-msgstr "Sortze errorea"
+msgstr "Ezabatze errorea"
 
 #: ../src/xfdesktop-file-utils.c:675 ../src/xfdesktop-file-utils.c:690
-#, fuzzy
 msgid "The selected files could not be deleted"
-msgstr "Loturiko aplikazioa ezin da aurkitu edo abiarazi."
+msgstr "Ezin dira hautatutako fitxategiak ezabatu"
 
 #: ../src/xfdesktop-file-utils.c:734 ../src/xfdesktop-file-utils.c:749
 msgid "The selected files could not be moved to the trash"
-msgstr ""
+msgstr "Ezin dira hautatutako fitxategiak zaborrontzira mugitu"
 
 #: ../src/xfdesktop-file-utils.c:750
-#, fuzzy
 msgid "This feature requires a trash service to be present (such as the one supplied by Thunar)."
-msgstr "Ezaugarri honek fitxategi kudeaketa zerbitzu bat instalaturik egotea behar du (Thunar-ek duena bezalakoa)"
+msgstr "Ezaugarri honek zaborrontzi zerbitzu bat instalaturik egotea behar du (Thunar-ek duena bezalakoa)"
 
 #: ../src/xfdesktop-file-utils.c:786 ../src/xfdesktop-file-utils.c:801
-#, fuzzy
 msgid "Create File Error"
-msgstr "Sortze errorea"
+msgstr "Fitxategi sortze errorea"
 
 #: ../src/xfdesktop-file-utils.c:787 ../src/xfdesktop-file-utils.c:802
 msgid "Could not create a new file"
-msgstr ""
+msgstr "Ezin da fitxategi berria sortu"
 
 #: ../src/xfdesktop-file-utils.c:842 ../src/xfdesktop-file-utils.c:857
-#, fuzzy
 msgid "Create Document Error"
-msgstr "Sortze errorea"
+msgstr "Dokumentu sortze errorea"
 
 #: ../src/xfdesktop-file-utils.c:843 ../src/xfdesktop-file-utils.c:858
-#, fuzzy
 msgid "Could not create a new document from the template"
-msgstr "Sortu dokumentua \"%s\" txantiloitik"
+msgstr "Ezin da dokumentu beri b at sortu txantiloitik"
 
 #: ../src/xfdesktop-file-utils.c:892 ../src/xfdesktop-file-utils.c:907
-#, fuzzy
 msgid "File Properties Error"
-msgstr "Propietate errorea"
+msgstr "Fitxategi propietate errorea"
 
 #: ../src/xfdesktop-file-utils.c:893 ../src/xfdesktop-file-utils.c:908
-#, fuzzy
 msgid "The file properties dialog could not be opened"
-msgstr "Aplikazio hautatzailea ezin da ireki."
+msgstr "Ezin da fitxategi propietate leihoa  ezin da ireki."
 
 #: ../src/xfdesktop-file-utils.c:943 ../src/xfdesktop-file-utils.c:958
-#, fuzzy
 msgid "The file could not be opened"
-msgstr "Aplikazio hautatzailea ezin da ireki."
+msgstr "Fitxategia ezin izan da ireki"
 
 #: ../src/xfdesktop-file-utils.c:1006 ../src/xfdesktop-file-utils.c:1031
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to run \"%s\""
-msgstr "Huts \"%s\"-abiarazterakoan:"
+msgstr "Huts \"%s\" abiaraztean:"
 
 #: ../src/xfdesktop-file-utils.c:1081 ../src/xfdesktop-file-utils.c:1096
-#, fuzzy
 msgid "The application chooser could not be opened"
 msgstr "Aplikazio hautatzailea ezin da ireki."
 
 #: ../src/xfdesktop-file-utils.c:1154 ../src/xfdesktop-file-utils.c:1168
 #: ../src/xfdesktop-file-utils.c:1230 ../src/xfdesktop-file-utils.c:1246
-#, fuzzy
 msgid "Transfer Error"
-msgstr "Zakarrontzi errorea"
+msgstr "Transferentzia errorea"
 
 #: ../src/xfdesktop-file-utils.c:1155 ../src/xfdesktop-file-utils.c:1169
 #: ../src/xfdesktop-file-utils.c:1231 ../src/xfdesktop-file-utils.c:1247
-#, fuzzy
 msgid "The file transfer could not be performed"
-msgstr "Aplikazio hautatzailea ezin da ireki."
+msgstr "Ezin izan da fitxategi transferentzia burutu"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:97
-#, fuzzy
 msgid "Unmounting device"
-msgstr "Huts desmuntatzerakoan"
+msgstr "Gailua desmuntatzen"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:100
 #, c-format
 msgid "The device \"%s\" is being unmounted by the system. Please do not remove the media or disconnect the drive"
-msgstr ""
+msgstr "Sistema \"%s\" gailua desmuntatzen ari da. Mesedez ez gailua kendu edo deskonektatu"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:107 ../src/xfdesktop-notify.c:220
 msgid "Writing data to device"
-msgstr ""
+msgstr "Datuak gailuan idazten"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:110 ../src/xfdesktop-notify.c:223
 #, c-format
 msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
-msgstr ""
+msgstr "Kendu al aurretik \"%s\" gailuan idatzi behar diren datuak daude. Mesedez ez gailua kendu edo deskonektatu"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:211
 msgid "Ejecting device"
-msgstr ""
+msgstr "Gailua ebazten"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:214
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
-msgstr ""
+msgstr "\"%s\" gailua ebatzia izango da. Honek denbora bat behar dezake"
 
 #: ../src/xfdesktop-regular-file-icon.c:468
 #, c-format
@@ -630,12 +616,14 @@ msgid ""
 "Size: %s\n"
 "Last modified: %s"
 msgstr ""
+"Mota: %s\n"
+"Tamaina: %s\n"
+"Azkene raldaketa: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:249
 #: ../src/xfdesktop-special-file-icon.c:411
-#, fuzzy
 msgid "File System"
-msgstr "Fitxategi-sistema"
+msgstr "Fitxategi sistema"
 
 #: ../src/xfdesktop-special-file-icon.c:396
 msgid "Trash is empty"
