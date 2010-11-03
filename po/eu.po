@@ -627,16 +627,16 @@ msgstr "Fitxategi sistema"
 
 #: ../src/xfdesktop-special-file-icon.c:396
 msgid "Trash is empty"
-msgstr ""
+msgstr "Zaborrontzia hutsik dago"
 
 #: ../src/xfdesktop-special-file-icon.c:399
 msgid "Trash contains one item"
-msgstr ""
+msgstr "Zaborrontziak elementu bat du"
 
 #: ../src/xfdesktop-special-file-icon.c:400
 #, c-format
 msgid "Trash contains %d items"
-msgstr ""
+msgstr "Zaborrontziak %d elementu ditu"
 
 #: ../src/xfdesktop-special-file-icon.c:428
 #, c-format
@@ -645,6 +645,9 @@ msgid ""
 "Size: %s\n"
 "Last modified: %s"
 msgstr ""
+"%s\n"
+"Tamaina: %s\n"
+"Azken eraldaketa: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:449
 msgid "Unable to contact the Xfce Trash service."
@@ -659,39 +662,37 @@ msgid "_Empty Trash"
 msgstr "_Hustu zakarrontzia"
 
 #: ../src/xfdesktop-volume-icon.c:413
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Removable Volume\n"
 "Mounted in \"%s\"\n"
 "%s left (%s total)"
 msgstr ""
-"Mota: bolumen aldagarria\n"
-"Muntatze puntua: %s\n"
-"Leku librea: %s"
+"Bolumen aldagarria\n"
+"Muntatze puntua: \"%s\"\n"
+"Leku librea: %s (%s guztira)"
 
 #: ../src/xfdesktop-volume-icon.c:420
-#, fuzzy
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
 msgstr ""
-"Mota: bolumen aldagarria\n"
-"Muntatze puntua: %s\n"
-"Leku librea: %s"
+"Bolumen aldagarria\n"
+"Muntatu gabea"
 
 #: ../src/xfdesktop-volume-icon.c:446 ../src/xfdesktop-volume-icon.c:488
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to eject \"%s\""
-msgstr "Ezin da \"%s\" atera:"
+msgstr "Ezin da \"%s\" ebatzi:"
 
 #: ../src/xfdesktop-volume-icon.c:451 ../src/xfdesktop-volume-icon.c:493
 msgid "Eject Failed"
 msgstr "Huts ateratzerakoan"
 
 #: ../src/xfdesktop-volume-icon.c:525
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to mount \"%s\""
-msgstr "Huts \"%s\"-abiarazterakoan:"
+msgstr "Huts \"%s\" muntatzerakoan:"
 
 #: ../src/xfdesktop-volume-icon.c:528
 msgid "Mount Failed"
