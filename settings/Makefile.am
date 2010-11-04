@@ -47,14 +47,14 @@ BUILT_SOURCES = \
 
 SUFFIXES: .ui
 
-%-ui.h: $(srcdir)/%-ui.xml Makefile
-	$(AM_V_GEN) exo-csource --static --name=`basename $< .xml | sed -e 's/-/_/g'`  $< >$@
+%-ui.h: $(srcdir)/%-ui.glade Makefile
+	$(AM_V_GEN) exo-csource --static --name=`basename $< .glade | sed -e 's/-/_/g'`  $< >$@
 
 endif
 
 EXTRA_DIST = \
-	xfdesktop-settings-ui.xml \
-	xfdesktop-settings-appearance-frame-ui.xml \
+	xfdesktop-settings-ui.glade \
+	xfdesktop-settings-appearance-frame-ui.glade \
 	$(desktop_in_files)
 
 CLEANFILES = \
