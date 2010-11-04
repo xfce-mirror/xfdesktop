@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.7.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-04 00:34+0100\n"
-"PO-Revision-Date: 2010-10-16 16:22+0300\n"
+"POT-Creation-Date: 2010-11-04 05:09+0000\n"
+"PO-Revision-Date: 2010-11-04 11:53+0200\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
-"Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
-"Language: fi\n"
+"Language-Team: Finnish <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fi\n"
 
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
 #, c-format
@@ -52,7 +52,7 @@ msgstr "Irrotettavat taltiot"
 #: ../settings/main.c:458
 #, c-format
 msgid "Cannot create backdrop list \"%s\""
-msgstr "Ei voi luoda taustakuvalistaa \"%s\""
+msgstr "Ei voi luoda taustakuvalistaa \"%s\"."
 
 #: ../settings/main.c:462 ../settings/main.c:779
 msgid "Backdrop List Error"
@@ -74,7 +74,7 @@ msgstr "Taustakuvalista ei kelpaa"
 
 #: ../settings/main.c:519
 msgid "Overwriting the file will cause its contents to be lost."
-msgstr "Jos korvaat tiedoston, sen sisältö menetetään"
+msgstr "Jos korvaat tiedoston, sen sisältö menetetään."
 
 #: ../settings/main.c:521
 msgid "Replace"
@@ -83,7 +83,7 @@ msgstr "Korvaa"
 #: ../settings/main.c:775
 #, c-format
 msgid "Failed to write backdrop list to \"%s\""
-msgstr "Taustakuvalistan kirjoitus epäonnistui kohteeseen \"%s\""
+msgstr "Taustakuvalistan kirjoitus epäonnistui kohteeseen \"%s\"."
 
 #: ../settings/main.c:802
 msgid "Add Image File(s)"
@@ -276,7 +276,7 @@ msgstr "Työpöytä"
 #: ../src/xfce-desktop.c:1006
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
-msgstr "Taustakuvalistan kuvaa ei voi ladata tiedostosta \"%s\""
+msgstr "Taustakuvalistalla \"%s\" olevan kuvan lataaminen epäonnistui."
 
 #: ../src/xfce-desktop.c:1008
 msgid "Desktop Error"
@@ -333,20 +333,21 @@ msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:479
 #: ../src/xfdesktop-file-icon-manager.c:496
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create the desktop folder \"%s\""
-msgstr "Ei voi luoda taustakuvalistaa \"%s\""
+msgstr "Työpöytäkansiota \"%s\" ei voi luoda."
 
 #: ../src/xfdesktop-file-icon-manager.c:484
 #: ../src/xfdesktop-file-icon-manager.c:501
-#, fuzzy
 msgid "Desktop Folder Error"
-msgstr "Työpöytävirhe"
+msgstr "Työpöytäkansiovirhe"
 
 #: ../src/xfdesktop-file-icon-manager.c:503
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr ""
+"Tiedostonimi on jo tavallisen tiedoston käytössä. Poista se tai nimeä se "
+"uudelleen."
 
 #: ../src/xfdesktop-file-icon-manager.c:606
 #: ../src/xfdesktop-file-icon-manager.c:650 ../src/xfdesktop-file-utils.c:733
@@ -356,9 +357,8 @@ msgstr "Roskakorivirhe"
 
 #: ../src/xfdesktop-file-icon-manager.c:607
 #: ../src/xfdesktop-file-icon-manager.c:651
-#, fuzzy
 msgid "The selected files could not be trashed"
-msgstr "Sovelluksen valitsinta ei voitu avata."
+msgstr "Valittuja tiedostoja ei voitu siirtää roskakoriin."
 
 #: ../src/xfdesktop-file-icon-manager.c:608
 #: ../src/xfdesktop-file-icon-manager.c:652 ../src/xfdesktop-file-utils.c:582
@@ -367,7 +367,6 @@ msgstr "Sovelluksen valitsinta ei voitu avata."
 #: ../src/xfdesktop-file-utils.c:909 ../src/xfdesktop-file-utils.c:959
 #: ../src/xfdesktop-file-utils.c:1036 ../src/xfdesktop-file-utils.c:1097
 #: ../src/xfdesktop-file-utils.c:1170 ../src/xfdesktop-file-utils.c:1248
-#, fuzzy
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
@@ -477,143 +476,124 @@ msgid "_Properties..."
 msgstr "_Ominaisuudet..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2243
-#, fuzzy
 msgid "Load Error"
-msgstr "Käynnistysvirhe"
+msgstr "Latausvirhe"
 
 #: ../src/xfdesktop-file-icon-manager.c:2245
 msgid "Failed to load the desktop folder"
-msgstr ""
+msgstr "Työpöytäkansion lataaminen epäonnistui"
 
 #. TRANSLATORS: file was modified less than one day ago
 #: ../src/xfdesktop-file-utils.c:132
 #, c-format
 msgid "Today at %X"
-msgstr ""
+msgstr "Tänään klo %X"
 
 #. TRANSLATORS: file was modified less than two days ago
 #: ../src/xfdesktop-file-utils.c:136
 #, c-format
 msgid "Yesterday at %X"
-msgstr ""
+msgstr "Eilen klo %X"
 
 #. Days from last week
 #: ../src/xfdesktop-file-utils.c:141
 #, c-format
 msgid "%A at %X"
-msgstr ""
+msgstr "%A klo %X"
 
 #. Any other date
 #: ../src/xfdesktop-file-utils.c:144
 #, c-format
 msgid "%x at %X"
-msgstr ""
+msgstr "%x klo %X"
 
 #. the file_time is invalid
 #: ../src/xfdesktop-file-utils.c:154
-#, fuzzy
 msgid "Unknown"
-msgstr "(tuntematon)"
+msgstr "Ei tiedossa"
 
 #: ../src/xfdesktop-file-utils.c:566 ../src/xfdesktop-file-utils.c:581
-#, fuzzy
 msgid "The folder could not be opened"
-msgstr "Sovelluksen valitsinta ei voitu avata."
+msgstr "Kansion avaaminen epäonnistui."
 
 #: ../src/xfdesktop-file-utils.c:615 ../src/xfdesktop-file-utils.c:630
-#, fuzzy
 msgid "Rename Error"
-msgstr "Suoritusvirhe"
+msgstr "Nimeämisvirhe"
 
 #: ../src/xfdesktop-file-utils.c:616 ../src/xfdesktop-file-utils.c:631
-#, fuzzy
 msgid "The file could not be renamed"
-msgstr "Sovelluksen valitsinta ei voitu avata."
+msgstr "Tiedoston nimeäminen epäonnistui."
 
 #: ../src/xfdesktop-file-utils.c:674 ../src/xfdesktop-file-utils.c:689
-#, fuzzy
 msgid "Delete Error"
-msgstr "Luomisvirhe"
+msgstr "Poistovirhe"
 
 #: ../src/xfdesktop-file-utils.c:675 ../src/xfdesktop-file-utils.c:690
-#, fuzzy
 msgid "The selected files could not be deleted"
-msgstr "Oletussovellusta ei löydy, tai sitä ei voi suorittaa."
+msgstr "Valittujen tiedostojen poisto epäonnistui."
 
 #: ../src/xfdesktop-file-utils.c:734 ../src/xfdesktop-file-utils.c:749
 msgid "The selected files could not be moved to the trash"
-msgstr ""
+msgstr "Valittujen tiedostojen siirto roskakoriin epäonnistui"
 
 #: ../src/xfdesktop-file-utils.c:750
-#, fuzzy
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
 msgstr ""
-"Toiminto vaatii tiedostonhallintapalvelun (jollaisen tarjoaa esimerkiksi "
-"Thunar)."
+"Toiminto vaatii roskakoripalvelun (jollaisen tarjoaa esimerkiksi Thunar)."
 
 #: ../src/xfdesktop-file-utils.c:786 ../src/xfdesktop-file-utils.c:801
-#, fuzzy
 msgid "Create File Error"
-msgstr "Luomisvirhe"
+msgstr "Tiedoston luomisvirhe"
 
 #: ../src/xfdesktop-file-utils.c:787 ../src/xfdesktop-file-utils.c:802
 msgid "Could not create a new file"
-msgstr ""
+msgstr "Tiedoston luominen epäonnistui."
 
 #: ../src/xfdesktop-file-utils.c:842 ../src/xfdesktop-file-utils.c:857
-#, fuzzy
 msgid "Create Document Error"
-msgstr "Luomisvirhe"
+msgstr "Asiakirjan luomisvirhe"
 
 #: ../src/xfdesktop-file-utils.c:843 ../src/xfdesktop-file-utils.c:858
-#, fuzzy
 msgid "Could not create a new document from the template"
-msgstr "Luo asiakirja mallista \"%s\""
+msgstr "Asiakirjan luominen mallia käyttäen epäonnistui."
 
 #: ../src/xfdesktop-file-utils.c:892 ../src/xfdesktop-file-utils.c:907
-#, fuzzy
 msgid "File Properties Error"
 msgstr "Ominaisuusvirhe"
 
 #: ../src/xfdesktop-file-utils.c:893 ../src/xfdesktop-file-utils.c:908
-#, fuzzy
 msgid "The file properties dialog could not be opened"
-msgstr "Sovelluksen valitsinta ei voitu avata."
+msgstr "Tiedoston ominaisuusikkunan avaaminen epäonnistui."
 
 #: ../src/xfdesktop-file-utils.c:943 ../src/xfdesktop-file-utils.c:958
-#, fuzzy
 msgid "The file could not be opened"
-msgstr "Sovelluksen valitsinta ei voitu avata."
+msgstr "Tiedoston avaaminen epäonnistui."
 
 #: ../src/xfdesktop-file-utils.c:1006 ../src/xfdesktop-file-utils.c:1031
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to run \"%s\""
-msgstr "Kohteen \"%s\" suorittaminen epäonnistui:"
+msgstr "Kohteen \"%s\" suorittaminen epäonnistui."
 
 #: ../src/xfdesktop-file-utils.c:1081 ../src/xfdesktop-file-utils.c:1096
-#, fuzzy
 msgid "The application chooser could not be opened"
 msgstr "Sovelluksen valitsinta ei voitu avata."
 
 #: ../src/xfdesktop-file-utils.c:1154 ../src/xfdesktop-file-utils.c:1168
 #: ../src/xfdesktop-file-utils.c:1230 ../src/xfdesktop-file-utils.c:1246
-#, fuzzy
 msgid "Transfer Error"
-msgstr "Roskakorivirhe"
+msgstr "Siirtovirhe"
 
 #: ../src/xfdesktop-file-utils.c:1155 ../src/xfdesktop-file-utils.c:1169
 #: ../src/xfdesktop-file-utils.c:1231 ../src/xfdesktop-file-utils.c:1247
-#, fuzzy
 msgid "The file transfer could not be performed"
-msgstr "Sovelluksen valitsinta ei voitu avata."
+msgstr "Tiedoston siirto epäonnistui."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:97
-#, fuzzy
 msgid "Unmounting device"
-msgstr "Irrottaminen epäonnistui"
+msgstr "Irrotetaan taltio"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:100
@@ -622,11 +602,13 @@ msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the "
 "media or disconnect the drive"
 msgstr ""
+"Taltiota \"%s\" irrotetaan tiedostojärjestelmästä. Älä poista taltiota "
+"asemasta tai laitetta tietokoneesta."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:107 ../src/xfdesktop-notify.c:220
 msgid "Writing data to device"
-msgstr ""
+msgstr "Kirjoitetaan laitteelle"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:110 ../src/xfdesktop-notify.c:223
@@ -635,17 +617,19 @@ msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be "
 "removed. Please do not remove the media or disconnect the drive"
 msgstr ""
+"Laitteelle \"%s\" täytyy kirjoittaa tietoa ennen sen irrottamista. Älä "
+"poista taltiota tai irrota laitetta."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:211
 msgid "Ejecting device"
-msgstr ""
+msgstr "Poistetaan taltio"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:214
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
-msgstr ""
+msgstr "Poistetaan taltiota asemasta \"%s\". Tämä voi viedä hetken aikaa."
 
 #: ../src/xfdesktop-regular-file-icon.c:468
 #, c-format
@@ -654,25 +638,27 @@ msgid ""
 "Size: %s\n"
 "Last modified: %s"
 msgstr ""
+"Tyyppi: %s\n"
+"Koko: %s\n"
+"Muokattu: %s\n"
 
 #: ../src/xfdesktop-special-file-icon.c:249
 #: ../src/xfdesktop-special-file-icon.c:411
-#, fuzzy
 msgid "File System"
 msgstr "Tiedostojärjestelmä"
 
 #: ../src/xfdesktop-special-file-icon.c:396
 msgid "Trash is empty"
-msgstr ""
+msgstr "Roskakori on tyhjä."
 
 #: ../src/xfdesktop-special-file-icon.c:399
 msgid "Trash contains one item"
-msgstr ""
+msgstr "Roskakorissa on yksi kohde."
 
 #: ../src/xfdesktop-special-file-icon.c:400
 #, c-format
 msgid "Trash contains %d items"
-msgstr ""
+msgstr "Roskakorissa on %d kohdetta."
 
 #: ../src/xfdesktop-special-file-icon.c:428
 #, c-format
@@ -681,6 +667,9 @@ msgid ""
 "Size: %s\n"
 "Last modified: %s"
 msgstr ""
+"%s\n"
+"Koko: %s\n"
+"Muokattu: %s\n"
 
 #: ../src/xfdesktop-special-file-icon.c:449
 msgid "Unable to contact the Xfce Trash service."
@@ -699,39 +688,37 @@ msgid "_Empty Trash"
 msgstr "_Tyhjennä roskakori"
 
 #: ../src/xfdesktop-volume-icon.c:413
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Removable Volume\n"
 "Mounted in \"%s\"\n"
 "%s left (%s total)"
 msgstr ""
-"Tyyppi: Irrotettava taltio\n"
+"Irrotettava taltio\n"
 "Liitospiste: %s\n"
-"Vapaa tila: %s"
+"Vapaa tila: %s / %s"
 
 #: ../src/xfdesktop-volume-icon.c:420
-#, fuzzy
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
 msgstr ""
-"Tyyppi: Irrotettava taltio\n"
-"Liitospiste: %s\n"
-"Vapaa tila: %s"
+"Irrotettava taltio\n"
+"Ei liitetty"
 
 #: ../src/xfdesktop-volume-icon.c:446 ../src/xfdesktop-volume-icon.c:488
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to eject \"%s\""
-msgstr "Ei voi poistaa levyä \"%s\":"
+msgstr "Taltion \"%s\" irrottaminen epäonnistui."
 
 #: ../src/xfdesktop-volume-icon.c:451 ../src/xfdesktop-volume-icon.c:493
 msgid "Eject Failed"
-msgstr "Levyn poistaminen epäonnistui"
+msgstr "Poistaminen epäonnistui"
 
 #: ../src/xfdesktop-volume-icon.c:525
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to mount \"%s\""
-msgstr "Kohteen \"%s\" suorittaminen epäonnistui:"
+msgstr "Kohteen \"%s\" liittäminen epäonnistui."
 
 #: ../src/xfdesktop-volume-icon.c:528
 msgid "Mount Failed"
@@ -739,866 +726,8 @@ msgstr "Liittäminen epäonnistui"
 
 #: ../src/xfdesktop-volume-icon.c:669 ../src/xfdesktop-volume-icon.c:672
 msgid "E_ject Volume"
-msgstr "_Poista levy"
+msgstr "_Irrota taltio"
 
 #: ../src/xfdesktop-volume-icon.c:679
 msgid "_Mount Volume"
 msgstr "_Liitä taltio"
-
-#~ msgid ""
-#~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-#~ msgstr "Xfdesktop ei voinut luoda kansiota \"%s\" työpöydän tiedostoille:"
-
-#~ msgid "Create Folder Failed"
-#~ msgstr "Kansion luominen epäonnistui"
-
-#~ msgid ""
-#~ "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not "
-#~ "a folder."
-#~ msgstr ""
-#~ "Xfdesktop ei voi käyttää polkua \"%s\" työpöydän tiedostojen "
-#~ "säilyttämiseen, koska se ei ole kansio."
-
-#~ msgid "Please delete or rename the file."
-#~ msgstr "Poista kyseinen tiedosto tai nimeä se uudelleen."
-
-#~ msgid "Rename \"%s\""
-#~ msgstr "Nimeä \"%s\" uudelleen"
-
-#~ msgid "Enter the new name:"
-#~ msgstr "Syötä uusi nimi:"
-
-#~ msgid "Rename"
-#~ msgstr "Nimeä uudelleen"
-
-#~ msgid "Are you sure that you want to delete \"%s\"?"
-#~ msgstr "Haluatko varmasti poistaa kohteen \"%s\"?"
-
-#~ msgid "Question"
-#~ msgstr "Kysymys"
-
-#~ msgid "If you delete a file, it is permanently lost."
-#~ msgstr "Jos poistat tiedoston, sitä ei voi palauttaa."
-
-#~ msgid "Are you sure you want to delete the following %d files?"
-#~ msgstr "Haluatko varmasti poistaa seuraavat %d tiedostoa?"
-
-#~ msgid "Delete Multiple Files"
-#~ msgstr "Poista useita tiedostoja"
-
-#~ msgid "Unable to create folder named \"%s\":"
-#~ msgstr "Ei voi luoda kansiota \"%s\":"
-
-#~ msgid "Create New Folder"
-#~ msgstr "Luo uusi kansio"
-
-#~ msgid "New Folder"
-#~ msgstr "Uusi kansio"
-
-#~ msgid "Create"
-#~ msgstr "Luo"
-
-#~ msgid "Unable to create file named \"%s\":"
-#~ msgstr "Ei voi luoda tiedostoa \"%s\":"
-
-#~ msgid "Create File Failed"
-#~ msgstr "Tiedoston luominen epäonnistui"
-
-#~ msgid "Create Empty File"
-#~ msgstr "Luo tyhjä tiedosto"
-
-#~ msgid "New Empty File"
-#~ msgstr "Uusi tyhjä tiedosto"
-
-#~ msgid "Unable to create file \"%s\":"
-#~ msgstr "Tiedostoa \"%s\" ei voi luoda:"
-
-#~ msgid "Unable to set default application for \"%s\" to \"%s\":"
-#~ msgstr "Ei voi asettaa tyypille \"%s\" oletussovellusta \"%s\":"
-
-#~ msgid "None"
-#~ msgstr "Ei mitään"
-
-#~ msgid "Write only"
-#~ msgstr "Vain kirjoitus"
-
-#~ msgid "Read only"
-#~ msgstr "Vain luku"
-
-#~ msgid "Read & Write"
-#~ msgstr "Luku ja kirjoitus"
-
-#~ msgid "General"
-#~ msgstr "Yleiset"
-
-#~ msgid "Name:"
-#~ msgstr "Nimi:"
-
-#~ msgid "Kind:"
-#~ msgstr "Tyyppi:"
-
-#~ msgid "Link Target:"
-#~ msgstr "Linkin kohde:"
-
-#~ msgid "Open With:"
-#~ msgstr "Avaa sovelluksessa:"
-
-#~ msgid "Modified:"
-#~ msgstr "Muokattu:"
-
-#~ msgid "Accessed:"
-#~ msgstr "Käytetty:"
-
-#~ msgid "Free Space:"
-#~ msgstr "Vapaata tilaa:"
-
-#~ msgid "Size:"
-#~ msgstr "Koko:"
-
-#~ msgid "%s (%"
-#~ msgstr "%s (%"
-
-#~ msgid "Permissions"
-#~ msgstr "Käyttöoikeudet"
-
-#~ msgid "Owner:"
-#~ msgstr "Omistaja:"
-
-#~ msgid "Access:"
-#~ msgstr "Käyttöoikeus:"
-
-#~ msgid "Group:"
-#~ msgstr "Ryhmä:"
-
-#~ msgid "Others:"
-#~ msgstr "Muut:"
-
-#~ msgid "Yes to _all"
-#~ msgstr "Kyllä k_aikkiin"
-
-#~ msgid "There was an error moving \"%s\" to \"%s\":"
-#~ msgstr "Virhe siirrettäessä kohdetta \"%s\" kohteeseen \"%s\":"
-
-#~ msgid "There was an error copying \"%s\" to \"%s\":"
-#~ msgstr "Virhe kopioitaessa kohdetta \"%s\" kohteeseen \"%s\":"
-
-#~ msgid "There was an error linking \"%s\" to \"%s\":"
-#~ msgstr "Virhe linkitettäessä kohdetta \"%s\" kohteeseen \"%s\":"
-
-#~ msgid "File Error"
-#~ msgstr "Tiedostovirhe"
-
-#~ msgid "broken link"
-#~ msgstr "rikkinäinen linkki"
-
-#~ msgid "link to %s"
-#~ msgstr "linkki kohteeseen %s"
-
-#~ msgid ""
-#~ "Kind: %s\n"
-#~ "Modified:%s\n"
-#~ "Size: %s"
-#~ msgstr ""
-#~ "Tyyppi: %s\n"
-#~ "Muokattu:%s\n"
-#~ "Koko: %s"
-
-#~ msgid "Error"
-#~ msgstr "Virhe"
-
-#~ msgid "Failed to rename \"%s\" to \"%s\":"
-#~ msgstr "Nimen \"%s\" muuttaminen muotoon \"%s\" epäonnistui:"
-
-#~ msgid "Kind: Trash"
-#~ msgstr "Tyyppi: Roskakori"
-
-#~ msgid "%s (%s total)"
-#~ msgstr "%s (yhteensä %s)"
-
-#~ msgid "Unable to mount \"%s\":"
-#~ msgstr "Ei voi liittää kohdetta \"%s\":"
-
-#~ msgid "Unable to unmount \"%s\":"
-#~ msgstr "Ei voi irrottaa kohdetta \"%s\":"
-
-#~ msgid "_Unmount Volume"
-#~ msgstr "_Irrota taltio"
-
-#~ msgid "Unable to launch xfce4-menueditor: %s"
-#~ msgstr "xfce4-valikkoeditoria ei voitu käynnistää: %s"
-
-#~ msgid "Select Icon"
-#~ msgstr "Valitse kuvake"
-
-#~ msgid "Select Menu File"
-#~ msgstr "Valitse valikkotiedosto"
-
-#~ msgid "All Files"
-#~ msgstr "Kaikki tiedostot"
-
-#~ msgid "Image Files"
-#~ msgstr "Kuvatiedostot"
-
-#~ msgid "Menu Files"
-#~ msgstr "Valikkotiedostot"
-
-#~ msgid "Xfce Menu"
-#~ msgstr "Xfce-valikko"
-
-#~ msgid "Button"
-#~ msgstr "Painike"
-
-#~ msgid "Button _title:"
-#~ msgstr "_Painikkeen otsake:"
-
-#~ msgid "_Show title in button"
-#~ msgstr "_Näytä painikkeen otsake"
-
-#~ msgid "Menu File"
-#~ msgstr "Valikkotiedosto"
-
-#~ msgid "Use default _desktop menu file"
-#~ msgstr "Käytä _oletusvalikkotiedostoa"
-
-#~ msgid "Use _custom menu file:"
-#~ msgstr "_Avaa mukautettu valikkotiedosto:"
-
-#~ msgid "_Edit Menu"
-#~ msgstr "_Muokkaa valikkoa"
-
-#~ msgid "Icons"
-#~ msgstr "Kuvakkeet"
-
-#~ msgid "_Button icon:"
-#~ msgstr "Painikkeen _kuvake:"
-
-#~ msgid "Show _icons in menu"
-#~ msgstr "Näytä k_uvakkeet valikossa"
-
-#~ msgid "There is already a panel menu registered for this screen"
-#~ msgstr "Tälle näytölle on jo rekisteröity paneelivalikko"
-
-#~ msgid "Edit Menu"
-#~ msgstr "Muokkaa valikkoa"
-
-#~ msgid "Shows a menu containing categories of installed applications"
-#~ msgstr "Näyttää asennetut ohjelmat valikossa kategorioihin järjestettynä"
-
-#~ msgid "Accessories"
-#~ msgstr "Apuohjelmat"
-
-#~ msgid "Common desktop tools and applications"
-#~ msgstr "Yleiset työpöytätyökalut ja -sovellukset"
-
-#~ msgid "Development"
-#~ msgstr "Sovelluskehitys"
-
-#~ msgid "Software development tools"
-#~ msgstr "Sovellusten kehitystyökalut"
-
-#~ msgid "Education"
-#~ msgstr "Opetus"
-
-#~ msgid "Educational software"
-#~ msgstr "Opetusohjelmistot"
-
-#~ msgid "Games"
-#~ msgstr "Pelit"
-
-#~ msgid "Games, puzzles, and other fun software"
-#~ msgstr "Pelit ja muut ajanvietesovellukset"
-
-#~ msgid "Graphics"
-#~ msgstr "Grafiikka"
-
-#~ msgid "Graphics creation and manipulation applications"
-#~ msgstr "Kuvien luomiseen ja käsittelyyn tarkoitetut ohjelmat"
-
-#~ msgid "Audio and video players and editors"
-#~ msgstr "Äänen ja videon toisto- ja muokkaussovellukset"
-
-#~ msgid "Multimedia"
-#~ msgstr "Ääni ja kuva"
-
-#~ msgid "Network"
-#~ msgstr "Verkko"
-
-#~ msgid "Network applications and utilities"
-#~ msgstr "Verkkotyökalut ja -ohjelmistot"
-
-#~ msgid "Office"
-#~ msgstr "Toimisto"
-
-#~ msgid "Office and productivity applications"
-#~ msgstr "Toimisto- ja tuottavuussovellukset"
-
-#~ msgid "Applications that don't fit into other categories"
-#~ msgstr "Sovellukset, jotka jäävät muiden ryhmien ulkopuolelle"
-
-#~ msgid "Other"
-#~ msgstr "Muut"
-
-#~ msgid "Science"
-#~ msgstr "Tiede"
-
-#~ msgid "Scientific software"
-#~ msgstr "Tieteelliset ohjelmistot"
-
-#~ msgid "Screensaver applets"
-#~ msgstr "Näytönsäästäjäsovelmat"
-
-#~ msgid "Screensavers"
-#~ msgstr "Näytönsäästäjät"
-
-#~ msgid "Desktop and system settings applications"
-#~ msgstr "Työpöydän ja järjestelmän asetustyökalut"
-
-#~ msgid "Settings"
-#~ msgstr "Asetukset"
-
-#~ msgid "System"
-#~ msgstr "Järjestelmä"
-
-#~ msgid "System tools and utilities"
-#~ msgstr "Järjestelmätyökalut ja -sovellukset"
-
-#~ msgid "About Xfce"
-#~ msgstr "Tietoja Xfce:stä"
-
-#~ msgid "Information about the Xfce Desktop Environment"
-#~ msgstr "Tietoja Xfce-työpöytäympäristöstä"
-
-#~ msgid "File Manager"
-#~ msgstr "Tiedostonhallinta"
-
-#~ msgid "Thunar file manager"
-#~ msgstr "Thunar-tiedostonhallinta"
-
-#~ msgid "Help"
-#~ msgstr "Ohje"
-
-#~ msgid "Help using Xfce"
-#~ msgstr "Xfce:n käyttöohje"
-
-#~ msgid "Log Out"
-#~ msgstr "Lopeta"
-
-#~ msgid "Log out of the Xfce Desktop"
-#~ msgstr "Kirjaudu ulos Xfce-työpöydältä"
-
-#~ msgid "Run Program..."
-#~ msgstr "Suorita..."
-
-#~ msgid "Run a program"
-#~ msgstr "Suorita ohjelma"
-
-#~ msgid "Terminal emulator"
-#~ msgstr "Pääte-emulaattori"
-
-#~ msgid "Browse the web"
-#~ msgstr "Selaa web-sivuja"
-
-#~ msgid "Web Browser"
-#~ msgstr "Web-selain"
-
-#~ msgid "%s: Unknown option: %s\n"
-#~ msgstr "%s: Tuntematon valitsin: %s\n"
-
-#~ msgid "Options are:\n"
-#~ msgstr "Valitsimet ovat:\n"
-
-#~ msgid "<b>Adjustments</b>"
-#~ msgstr "<b>Säädöt</b>"
-
-#~ msgid "<b>Appearance</b>"
-#~ msgstr "<b>Ulkoasu</b>"
-
-#~ msgid "<b>Colors</b>"
-#~ msgstr "<b>Värit</b>"
-
-#~ msgid "<b>Default Icons</b>"
-#~ msgstr "<b>Oletuskuvakkeet</b>"
-
-#~ msgid "<b>Desktop Menu</b>"
-#~ msgstr "<b>Työpöytävalikko</b>"
-
-#~ msgid "<b>Image</b>"
-#~ msgstr "<b>Kuva</b>"
-
-#~ msgid "<b>Images</b>"
-#~ msgstr "<b>Kuvat</b>"
-
-#~ msgid "<b>Window List Menu</b>"
-#~ msgstr "<b>Ikkunalistavalikko</b>"
-
-#~ msgid "Add an image to the list"
-#~ msgstr "Lisää kuva listaan"
-
-#~ msgid ""
-#~ "Auto\n"
-#~ "Centered\n"
-#~ "Tiled\n"
-#~ "Stretched\n"
-#~ "Scaled\n"
-#~ "Zoomed"
-#~ msgstr ""
-#~ "Automaattinen\n"
-#~ "Keskitetty\n"
-#~ "Rinnakkain\n"
-#~ "Venytetty\n"
-#~ "Skaalattu\n"
-#~ "Suurennettu"
-
-#~ msgid "Automatically pick a random image from a list file"
-#~ msgstr "Valitse satunnainen kuva listatiedostosta"
-
-#~ msgid "B_rightness:"
-#~ msgstr "Ki_rkkaus:"
-
-#~ msgid "B_utton:"
-#~ msgstr "_Painike:"
-
-#~ msgid "Create a new list, or load an existing one"
-#~ msgstr "Luo uusi lista tai lataa olemassaoleva"
-
-#~ msgid "Don't display an image at all"
-#~ msgstr "Älä näytä kuvaa"
-
-#~ msgid "Icon _size:"
-#~ msgstr "Kuvakkeen _koko:"
-
-#~ msgid "Icon _type:"
-#~ msgstr "Kuvakkeen _tyyppi:"
-
-#~ msgid "Image _list"
-#~ msgstr "K_uvalista"
-
-#~ msgid "Increase or decrease the brightness of the final image"
-#~ msgstr "Lisää tai vähennä kuvan kirkkautta"
-
-#~ msgid "Increase or decrease the color saturation of the final image"
-#~ msgstr "Lisää tai vähennä kuvan värikylläisyyttä"
-
-#~ msgid "Label trans_parency:"
-#~ msgstr "Nimikkeen läpi_näkyvyys:"
-
-#~ msgid ""
-#~ "Left\n"
-#~ "Middle\n"
-#~ "Right"
-#~ msgstr ""
-#~ "Vasemmalle\n"
-#~ "Keskelle\n"
-#~ "Oikealle"
-
-#~ msgid "Mo_difier:"
-#~ msgstr "_Muuntonäppäin:"
-
-#~ msgid "Modi_fier:"
-#~ msgstr "_Muuntonäppäin:"
-
-#~ msgid ""
-#~ "None\n"
-#~ "Minimized application icons\n"
-#~ "File/launcher icons"
-#~ msgstr ""
-#~ "Ei mitään\n"
-#~ "Pienennettyjen sovellusten kuvakkeet\n"
-#~ "Tiedostojen/Käynnistimien kuvakkeet"
-
-#~ msgid ""
-#~ "None\n"
-#~ "Shift\n"
-#~ "Alt\n"
-#~ "Control"
-#~ msgstr ""
-#~ "Ei mitään\n"
-#~ "Vaihto\n"
-#~ "Alt\n"
-#~ "Ctrl"
-
-#~ msgid "Remove the selected image(s) from the list"
-#~ msgstr "Poista valittu kuva tai kuvat listalta"
-
-#~ msgid "Sa_turation:"
-#~ msgstr "_Värikylläisyys:"
-
-#~ msgid "Select First Color"
-#~ msgstr "Valitse ensimmäinen väri"
-
-#~ msgid "Select Second Color"
-#~ msgstr "Valitse toinen väri"
-
-#~ msgid "Select a single image as the backdrop"
-#~ msgstr "Valitse yksittäinen taustakuva"
-
-#~ msgid "Set desktop background and menu and icon behavior"
-#~ msgstr "Säädä työpöydän taustakuvaa, valikkoa ja kuvakkeita"
-
-#~ msgid "Sh_ow application icons in menu"
-#~ msgstr "Näytä kuv_akkeet valikossa"
-
-#~ msgid "Show _application icons in menu"
-#~ msgstr "Näytä kuv_akkeet valikossa"
-
-#~ msgid "Show _window list menu on desktop middle click"
-#~ msgstr "Näytä i_kkunalista keskipainikkeella"
-
-#~ msgid "Show applications menu on _desktop right click"
-#~ msgstr "Näytä t_yöpöytävalikko oikealla painikkeella"
-
-#~ msgid "Show s_ticky windows only in active workspace"
-#~ msgstr "Näytä kiinnitetyt ikkunat vain _aktiivisessa työtilassa"
-
-#~ msgid "Show workspace _names in list"
-#~ msgstr "Listaa työtilojen _nimet"
-
-#~ msgid ""
-#~ "Solid color\n"
-#~ "Horizontal gradient\n"
-#~ "Vertical gradient\n"
-#~ "Transparent"
-#~ msgstr ""
-#~ "Yksi väri\n"
-#~ "Vaakasuuntainen väriliuku\n"
-#~ "Pystysuuntainen väriliuku\n"
-#~ "Läpinäkyvä"
-
-#~ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-#~ msgstr "Määrittää väriliu'un \"oikean\" tai \"alemman\" värin"
-
-#~ msgid ""
-#~ "Specifies the solid color, or the \"left\" or \"top\" color of the "
-#~ "gradient"
-#~ msgstr ""
-#~ "Määrittää ainoan värin, tai väriliu'un \"vasemman\" tai \"ylemmän\" värin"
-
-#~ msgid "Specify how the image will be resized to fit the screen"
-#~ msgstr "Määritä, kuinka kuvan koko sovitetaan näytölle"
-
-#~ msgid "Specify the style of the color drawn behind the backdrop image"
-#~ msgstr "Määritä taustakuvan alle jäävän työpöydän värityyli"
-
-#~ msgid ""
-#~ "Specify the transparency level for the rounded label drawn behind the "
-#~ "icon text"
-#~ msgstr ""
-#~ "Määritä kuvaketekstin alle piirrettävän pyöristetyn taustan läpinäkyvyys."
-
-#~ msgid "St_yle:"
-#~ msgstr "T_yyli:"
-
-#~ msgid "Use _submenus for the windows in each workspace"
-#~ msgstr "Näytä jokaisen työtilan ikkunat ala_valikoissa"
-
-#~ msgid "Use custom _font size:"
-#~ msgstr "Mukautettu ki_rjasinkoko:"
-
-#~ msgid "_Background"
-#~ msgstr "_Tausta"
-
-#~ msgid "_Button:"
-#~ msgstr "_Painike:"
-
-#~ msgid "_Edit desktop menu"
-#~ msgstr "_Muokkaa valikkoa"
-
-#~ msgid "_Icons"
-#~ msgstr "K_uvakkeet"
-
-#~ msgid "_Menus"
-#~ msgstr "_Valikot"
-
-#~ msgid "_None"
-#~ msgstr "_Ei mitään"
-
-#~ msgid "_Single image"
-#~ msgstr "_Yksi kuva"
-
-#~ msgid "gtk-close"
-#~ msgstr "gtk-close"
-
-#~ msgid "gtk-help"
-#~ msgstr "gtk-help"
-
-#~ msgid "Add menu entry"
-#~ msgstr "Lisää kohde valikkoon"
-
-#~ msgid "Type:"
-#~ msgstr "Tyyppi:"
-
-#~ msgid "Title"
-#~ msgstr "Otsake"
-
-#~ msgid "Submenu"
-#~ msgstr "Alivalikko"
-
-#~ msgid "Launcher"
-#~ msgstr "Käynnistin"
-
-#~ msgid "Separator"
-#~ msgstr "Erotin"
-
-#~ msgid "Quit"
-#~ msgstr "Lopeta"
-
-#~ msgid "Command:"
-#~ msgstr "Komento:"
-
-#~ msgid "Icon:"
-#~ msgstr "Kuvake:"
-
-#~ msgid "No icon"
-#~ msgstr "Ei kuvaketta"
-
-#~ msgid "Themed icon:"
-#~ msgstr "Teemakuvake:"
-
-#~ msgid "Select icon"
-#~ msgstr "Valitse kuvake"
-
-#~ msgid "Run in _terminal"
-#~ msgstr "Suorita _päätteessä"
-
-#~ msgid "Select command"
-#~ msgstr "Valitse komento"
-
-#~ msgid "Executable Files"
-#~ msgstr "Suoritettavat tiedostot"
-
-#~ msgid "Perl Scripts"
-#~ msgstr "Perl-komentotiedostot"
-
-#~ msgid "Python Scripts"
-#~ msgstr "Python-komentotiedostot"
-
-#~ msgid "Ruby Scripts"
-#~ msgstr "Ruby-komentotiedostot"
-
-#~ msgid "Shell Scripts"
-#~ msgstr "Komentotulkin käskysarjat"
-
-#~ msgid "Add external menu entry"
-#~ msgstr "Lisää ulkoinen valikko"
-
-#~ msgid "File"
-#~ msgstr "Tiedosto"
-
-#~ msgid "Source:"
-#~ msgstr "Lähde:"
-
-#~ msgid "Select external menu"
-#~ msgstr "Valitse ulkoinen valikko"
-
-#~ msgid "Style:"
-#~ msgstr "Tyyli:"
-
-#~ msgid "Simple"
-#~ msgstr "Yksinkertainen"
-
-#~ msgid "Multilevel"
-#~ msgstr "Monitasoinen"
-
-#~ msgid "_Unique entries only"
-#~ msgstr "Vain _yksilöllisiä kohteita"
-
-#~ msgid "Edit menu entry"
-#~ msgstr "Muokkaa valikon kohdetta"
-
-#~ msgid "Edit external menu entry"
-#~ msgstr "Muokkaa ulkoista valikkokohdetta"
-
-#~ msgid "Xfce4-MenuEditor"
-#~ msgstr "Xfce4-valikkoeditori"
-
-#~ msgid "Menueditor Warning"
-#~ msgstr "Valikkoeditorin varoitus"
-
-#~ msgid "xfce4-menueditor is deprecated"
-#~ msgstr "xfce4-menueditor on vanhentunut"
-
-#~ msgid ""
-#~ "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
-#~ "edit the new menu file format.  You may continue and edit an old-style "
-#~ "menu file, or quit."
-#~ msgstr ""
-#~ "Xfce:n valikko on korvattu uudella, eikä xfce4-menueditor tue uutta "
-#~ "valikkotiedostomuotoa. Voit jatkaa muokkaamaan vanhanmuotoista "
-#~ "valikkotiedostoa tai lopettaa."
-
-#~ msgid "Continue"
-#~ msgstr "Jatka"
-
-#~ msgid "_File"
-#~ msgstr "_Tiedosto"
-
-#~ msgid "_New"
-#~ msgstr "_Uusi"
-
-#~ msgid "Create a new empty menu"
-#~ msgstr "Luo uusi tyhjä valikko"
-
-#~ msgid "Open existing menu"
-#~ msgstr "Avaa olemassa oleva valikko"
-
-#~ msgid "Open _default menu"
-#~ msgstr "Avaa _oletusvalikko"
-
-#~ msgid "Open default menu"
-#~ msgstr "Avaa oletusvalikko"
-
-#~ msgid "_Save"
-#~ msgstr "_Tallenna"
-
-#~ msgid "Save modifications"
-#~ msgstr "Tallenna muutokset"
-
-#~ msgid "Save _as..."
-#~ msgstr "Tallenna _nimellä..."
-
-#~ msgid "Save menu under a given name"
-#~ msgstr "Tallenna valikko annetulla nimellä"
-
-#~ msgid "_Close"
-#~ msgstr "_Sulje"
-
-#~ msgid "Close menu"
-#~ msgstr "Sulje valikko"
-
-#~ msgid "_Quit"
-#~ msgstr "_Lopeta"
-
-#~ msgid "Quit Xfce4-Menueditor"
-#~ msgstr "Poistu Xfce-4 valikkoeditorista"
-
-#~ msgid "_Edit"
-#~ msgstr "_Muokkaa"
-
-#~ msgid "_Edit entry"
-#~ msgstr "_Muokkaa kohdetta"
-
-#~ msgid "Edit selected entry"
-#~ msgstr "Muokkaa valittua kohdetta"
-
-#~ msgid "_Add entry"
-#~ msgstr "_Lisää kohde"
-
-#~ msgid "Add a new entry in the menu"
-#~ msgstr "Lisää uusi kohde valikkoon"
-
-#~ msgid "Add _external"
-#~ msgstr "Lisää _ulkoinen"
-
-#~ msgid "Add an external entry"
-#~ msgstr "Lisää ulkoinen kohde"
-
-#~ msgid "_Remove entry"
-#~ msgstr "_Poista kohde"
-
-#~ msgid "Remove entry"
-#~ msgstr "Poista kohde"
-
-#~ msgid "_Up"
-#~ msgstr "_Ylös"
-
-#~ msgid "Move entry up"
-#~ msgstr "Siirrä kohdetta ylös"
-
-#~ msgid "_Down"
-#~ msgstr "_Alas"
-
-#~ msgid "Move entry down"
-#~ msgstr "Siirrä kohdetta alas"
-
-#~ msgid "_Help"
-#~ msgstr "_Ohje"
-
-#~ msgid "_About..."
-#~ msgstr "T_ietoja..."
-
-#~ msgid "Show informations about xfce4-menueditor"
-#~ msgstr "Näytä tietoja xfce4-valikkoeditorista"
-
-#~ msgid "Collapse all"
-#~ msgstr "Supista kaikki"
-
-#~ msgid "Collapse all menu entries"
-#~ msgstr "Supista kaikki valikon kohteet"
-
-#~ msgid "Expand all"
-#~ msgstr "Laajenna kaikki"
-
-#~ msgid "Expand all menu entries"
-#~ msgstr "Laajenna kaikki valikon kohteet"
-
-#~ msgid "Name"
-#~ msgstr "Nimi"
-
-#~ msgid "Hidden"
-#~ msgstr "Piilotettu"
-
-#~ msgid "Are you sure you want to close the current menu?"
-#~ msgstr "Haluatko varmasti sulkea nykyisen valikon?"
-
-#~ msgid "Do you want to save before closing the file?"
-#~ msgstr "Haluatko tallentaa ennen tiedoston sulkemista?"
-
-#~ msgid "Do you want to save before opening an other menu ?"
-#~ msgstr "Haluatko tallentaa ennen toisen valikon avaamista?"
-
-#~ msgid "Ignore modifications"
-#~ msgstr "Hylkää muutokset"
-
-#~ msgid "Open menu file"
-#~ msgstr "Avaa valikkotiedosto"
-
-#~ msgid "Do you want to save before opening the default menu ?"
-#~ msgstr "Haluatko tallentaa ennen oletusvalikon avaamista?"
-
-#~ msgid "Save menu file as"
-#~ msgstr "Tallenna valikkotiedosto nimellä"
-
-#~ msgid "Do you want to save before closing the menu ?"
-#~ msgstr "Haluatko tallentaa ennen valikon sulkemista?"
-
-#~ msgid "quit"
-#~ msgstr "lopeta"
-
-#~ msgid "--- separator ---"
-#~ msgstr "--- erotin ---"
-
-#~ msgid "--- include ---"
-#~ msgstr "--- sisällytys ---"
-
-#~ msgid "system"
-#~ msgstr "järjestelmä"
-
-#~ msgid "Do you want to move the item into the submenu?"
-#~ msgstr "Haluatko siirtää kohteen alivalikkoon?"
-
-#~ msgid "A menu editor for Xfce4"
-#~ msgstr "Valikkoeditori Xfce4:lle"
-
-#~ msgid "Author/Maintainer"
-#~ msgstr "Kehittäjä/ylläpitäjä"
-
-#~ msgid "Contributor"
-#~ msgstr "Avustava kehittäjä"
-
-#~ msgid "You have modified the menu, do you want to save it before quitting ?"
-#~ msgstr "Olet muokannut valikkoa, haluatko tallentaa sen ennen lopettamista?"
-
-#~ msgid "Forget modifications"
-#~ msgstr "Hylkää muutokset"
-
-#~ msgid "Unable to open the menu file %s in write mode"
-#~ msgstr "Valikkotiedostoa %s ei voi avata kirjoitettavaksi"
-
-#~ msgid "Graphical tool for editing the Xfce 4 menu"
-#~ msgstr "Graafinen työkalu Xfce 4:n valikon muokkaamiseen"
-
-#~ msgid "Menu Editor"
-#~ msgstr "Valikkoeditori"
-
-#~ msgid "Xfce 4 Menu Editor"
-#~ msgstr "Xfce 4 valikkoeditori"
