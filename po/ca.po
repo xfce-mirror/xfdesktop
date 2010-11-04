@@ -796,24 +796,20 @@ msgid "Rename Error"
 msgstr "Error en canviar el nom"
 
 #: ../src/xfdesktop-file-utils.c:682 ../src/xfdesktop-file-utils.c:697
-#, fuzzy
 msgid "The file could not be renamed"
-msgstr "No s'ha pogut obrir l’escollidor d’aplicacions."
+msgstr "No s'ha pogut canviar el nom del fitxer"
 
 #: ../src/xfdesktop-file-utils.c:740 ../src/xfdesktop-file-utils.c:755
-#, fuzzy
 msgid "Delete Error"
-msgstr "Error a la creació"
+msgstr "Error durant la supressió"
 
 #: ../src/xfdesktop-file-utils.c:741 ../src/xfdesktop-file-utils.c:756
-#, fuzzy
 msgid "The selected files could not be deleted"
-msgstr "No s'ha pogut trobar o executar l'aplicació associada."
+msgstr "No s'ha pogut suprimir els fitxers seleccionats"
 
 #: ../src/xfdesktop-file-utils.c:800 ../src/xfdesktop-file-utils.c:815
-#, fuzzy
 msgid "The selected files could not be moved to the trash"
-msgstr "No s'ha pogut obrir l’escollidor d’aplicacions."
+msgstr "No s'ha pogut moure a la paperera els fitxers seleccionats"
 
 #: ../src/xfdesktop-file-utils.c:816
 #, fuzzy
@@ -821,19 +817,16 @@ msgid "This feature requires a trash service to be present (such as the one supp
 msgstr "Aquesta característica demana l'ajut d'un gestor de fitxers (com per exemple el que fa Thunar)."
 
 #: ../src/xfdesktop-file-utils.c:852 ../src/xfdesktop-file-utils.c:867
-#, fuzzy
 msgid "Create File Error"
-msgstr "Error a la creació"
+msgstr "Error a la creació del fitxer"
 
 #: ../src/xfdesktop-file-utils.c:853 ../src/xfdesktop-file-utils.c:868
-#, fuzzy
 msgid "Could not create a new file"
-msgstr "No es por crear la llista d'imatges de fons «%s»"
+msgstr "No s'ha pogut crear un fitxer nou"
 
 #: ../src/xfdesktop-file-utils.c:908 ../src/xfdesktop-file-utils.c:923
-#, fuzzy
 msgid "Create Document Error"
-msgstr "Error a la creació"
+msgstr "Error a la creació del document"
 
 #: ../src/xfdesktop-file-utils.c:909 ../src/xfdesktop-file-utils.c:924
 #, fuzzy
@@ -841,47 +834,40 @@ msgid "Could not create a new document from the template"
 msgstr "Crea un document des de la plantilla «%s»"
 
 #: ../src/xfdesktop-file-utils.c:958 ../src/xfdesktop-file-utils.c:973
-#, fuzzy
 msgid "File Properties Error"
-msgstr "Error a les propietats"
+msgstr "Error a les propietats del fitxer"
 
 #: ../src/xfdesktop-file-utils.c:959 ../src/xfdesktop-file-utils.c:974
-#, fuzzy
 msgid "The file properties dialog could not be opened"
-msgstr "No s'ha pogut obrir l’escollidor d’aplicacions."
+msgstr "No s'ha pogut obrir el diàleg de propietats del fitxer"
 
 #: ../src/xfdesktop-file-utils.c:1009 ../src/xfdesktop-file-utils.c:1024
-#, fuzzy
 msgid "The file could not be opened"
-msgstr "No s'ha pogut obrir l’escollidor d’aplicacions."
+msgstr "No s'ha pogut obrir el fitxer"
 
 #: ../src/xfdesktop-file-utils.c:1072 ../src/xfdesktop-file-utils.c:1097
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to run \"%s\""
-msgstr "No s'ha pogut executar «%s»:"
+msgstr "No s'ha pogut executar \"%s\""
 
 #: ../src/xfdesktop-file-utils.c:1147 ../src/xfdesktop-file-utils.c:1162
-#, fuzzy
 msgid "The application chooser could not be opened"
-msgstr "No s'ha pogut obrir l’escollidor d’aplicacions."
+msgstr "No es pot obrir el seleccionador d'aplicacions"
 
 #: ../src/xfdesktop-file-utils.c:1220 ../src/xfdesktop-file-utils.c:1234
 #: ../src/xfdesktop-file-utils.c:1296 ../src/xfdesktop-file-utils.c:1312
-#, fuzzy
 msgid "Transfer Error"
-msgstr "Error a la paperera"
+msgstr "Error en la transferència"
 
 #: ../src/xfdesktop-file-utils.c:1221 ../src/xfdesktop-file-utils.c:1235
 #: ../src/xfdesktop-file-utils.c:1297 ../src/xfdesktop-file-utils.c:1313
-#, fuzzy
 msgid "The file transfer could not be performed"
-msgstr "No s'ha pogut obrir l’escollidor d’aplicacions."
+msgstr "La transferència de fitxers no s'ha pogut realitzar"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:97
-#, fuzzy
 msgid "Unmounting device"
-msgstr "No s'ha pogut desmuntar"
+msgstr "Desmuntant el dispositiu"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:100
@@ -892,7 +878,7 @@ msgstr ""
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:107 ../src/xfdesktop-notify.c:220
 msgid "Writing data to device"
-msgstr ""
+msgstr "Escrivint dades al dispositiu"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:110 ../src/xfdesktop-notify.c:223
@@ -902,15 +888,14 @@ msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:211
-#, fuzzy
 msgid "Ejecting device"
-msgstr "No s'ha pogut desmuntar"
+msgstr "Expulsant el dispositiu"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:214
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
-msgstr ""
+msgstr "S'està expulsant el dispositiu \"%s\". Això pot trigar una estona."
 
 #: ../src/xfdesktop-regular-file-icon.c:468
 #, c-format
@@ -919,6 +904,9 @@ msgid ""
 "Size: %s\n"
 "Last modified: %s"
 msgstr ""
+"Tipus: %s\n"
+"Tamany; %s\n"
+"Darrera modificació: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:249
 #: ../src/xfdesktop-special-file-icon.c:411
