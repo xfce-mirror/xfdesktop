@@ -10,13 +10,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.5.92\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-04 00:34+0100\n"
+"POT-Creation-Date: 2010-11-04 19:51+0100\n"
 "PO-Revision-Date: 2009-07-15 21:16+0100\n"
 "Last-Translator: Piotr Sokół <piotr.sokol@10g.pl>\n"
 "Language-Team: Polish\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
@@ -167,6 +167,308 @@ msgstr "Pulpit"
 msgid "Set desktop background and menu and icon behaviour"
 msgstr "Konfiguruje tło pulpitu oraz ustawienia menu programów i ikon"
 
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
+msgid "<b>Adjustments</b>"
+msgstr "<b>Korekcja</b>"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
+msgid "<b>Colors</b>"
+msgstr "<b>Kolory</b>"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
+msgid "<b>Image</b>"
+msgstr "<b>Obraz</b>"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
+msgid "<b>Images</b>"
+msgstr "<b>Obrazy</b>"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
+msgid "Add an image to the list"
+msgstr "Dodaje obraz do listy"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
+#: ../settings/xfdesktop-settings-ui.glade.h:6
+msgid "Auto"
+msgstr "Automatyczny"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
+msgid "Automatically pick a random image from a list file"
+msgstr "Wyświetla w tle pulpitu obraz wylosowany z listy"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
+msgid "B_rightness:"
+msgstr "_Jasność:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
+#: ../settings/xfdesktop-settings-ui.glade.h:8
+msgid "Centered"
+msgstr "Wyśrodkuj"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
+msgid "Create a new list, or load an existing one"
+msgstr "Tworzy nową listę lub wczytuje już istniejącą listę"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
+msgid "Don't display an image at all"
+msgstr "Nie wyświetla obrazu w tle pulpitu"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
+#: ../settings/xfdesktop-settings-ui.glade.h:12
+#, fuzzy
+msgid "Horizontal gradient"
+msgstr "Gradient poziomy"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
+msgid "Image _list"
+msgstr "_Lista"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
+msgid "Increase or decrease the brightness of the final image"
+msgstr "Reguluje jasność tła pulpitu"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
+msgid "Increase or decrease the color saturation of the final image"
+msgstr "Reguluje nasycenie tła pulpitu"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
+msgid "Remove the selected image(s) from the list"
+msgstr "Usuwa zaznaczone obrazy z listy"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
+msgid "Sa_turation:"
+msgstr "_Nasycenie:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
+#: ../settings/xfdesktop-settings-ui.glade.h:23
+msgid "Scaled"
+msgstr "Skaluj"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
+msgid "Select First Color"
+msgstr "Wybór pierwszego koloru"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
+msgid "Select Second Color"
+msgstr "Wybór drugiego koloru"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
+msgid "Select a single image as the backdrop"
+msgstr "Wyświetla w tle pulpitu pojedynczy obraz"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
+#: ../settings/xfdesktop-settings-ui.glade.h:32
+#, fuzzy
+msgid "Solid color"
+msgstr "Jednolity"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
+msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
+msgstr "Określa „prawy” bądź „dolny” kolor gradientu"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
+msgid ""
+"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr "Określa kolor jednolity albo „lewy” bądź „górny” kolor gradientu"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
+msgid "Specify how the image will be resized to fit the screen"
+msgstr "Określa w jaki sposób obraz będzie wyświetlony w tle pulpitu"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
+msgid "Specify the style of the color drawn behind the backdrop image"
+msgstr ""
+"Określa sposób w jaki tło pulpitu wyświetlone pod obrazem zostanie pokryte "
+"kolorem "
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
+msgid "St_yle:"
+msgstr "_Styl:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
+#: ../settings/xfdesktop-settings-ui.glade.h:34
+msgid "Stretched"
+msgstr "Rozciągnięty"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
+#: ../settings/xfdesktop-settings-ui.glade.h:35
+msgid "Tiled"
+msgstr "Kafelki"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
+#: ../settings/xfdesktop-settings-ui.glade.h:36
+msgid "Transparent"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
+#: ../settings/xfdesktop-settings-ui.glade.h:39
+#, fuzzy
+msgid "Vertical gradient"
+msgstr "Gradient pionowy"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
+#: ../settings/xfdesktop-settings-ui.glade.h:40
+msgid "Zoomed"
+msgstr "Powiększenie"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
+msgid "_None"
+msgstr "_Brak"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
+msgid "_Single image"
+msgstr "_Pojedynczy"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:1
+msgid "<b>Appearance</b>"
+msgstr "<b>Wygląd</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:2
+msgid "<b>Default Icons</b>"
+msgstr "<b>Domyślne</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:3
+msgid "<b>Desktop Menu</b>"
+msgstr "<b>Menu programów</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:4
+msgid "<b>Window List Menu</b>"
+msgstr "<b>Lista okien</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:5
+msgid "Alt"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:7
+msgid "B_utton:"
+msgstr "_Przycisk:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:9
+#, fuzzy
+msgid "Control"
+msgstr "Współpraca"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:729
+msgid "Desktop"
+msgstr "Pulpit"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:11
+msgid "File/launcher icons"
+msgstr "Pliki/ikony aktywatorów"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:13
+msgid "Icon _size:"
+msgstr "_Rozmiar:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:14
+msgid "Icon _type:"
+msgstr "_Typ:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:15
+msgid "Label trans_parency:"
+msgstr "_Przezroczystość etykiet:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:16
+msgid "Left"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:17
+msgid "Middle"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:18
+#, fuzzy
+msgid "Minimized application icons"
+msgstr ""
+"Brak\n"
+"Zminimalizowane okna\n"
+"Pliki i aktywatory"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:19
+msgid "Mo_difier:"
+msgstr "Mo_dyfikator:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:20
+msgid "Modi_fier:"
+msgstr "Mody_fikator:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:21
+msgid "None"
+msgstr "Brak"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:22
+msgid "Right"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:24
+msgid "Set desktop background and menu and icon behavior"
+msgstr "Konfiguruje tło pulpitu oraz ustawienia menu i ikon"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:25
+msgid "Sh_ow application icons in menu"
+msgstr "Ik_ony w menu"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:26
+msgid "Shift"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:27
+msgid "Show _application icons in menu"
+msgstr "I_kony w menu"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:28
+msgid "Show _window list menu on desktop middle click"
+msgstr "Wyświet_lanie po kliknięciu środkowym klawiszem myszy"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:29
+msgid "Show applications menu on _desktop right click"
+msgstr "W_yświetlanie po kliknięciu prawym klawiszem myszy"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:30
+msgid "Show s_ticky windows only in active workspace"
+msgstr "_Przypięte okna tylko w bieżącym obszarze roboczym"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:31
+msgid "Show workspace _names in list"
+msgstr "_Nazwy obszarów roboczych"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:33
+#, fuzzy
+msgid ""
+"Specify the transparency level for the rounded label drawn behind the icon "
+"text"
+msgstr ""
+"Określa poziom przezroczystości zaokrąglonych etykiet wyświetlanych za "
+"tekstem ikon"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:37
+msgid "Use _submenus for the windows in each workspace"
+msgstr "Okna każdego obszaru roboczego w o_sobnym menu"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:38
+msgid "Use custom _font size:"
+msgstr "Wł_asny rozmiar czcionki:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:41
+msgid "_Background"
+msgstr "_Tło"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:42
+msgid "_Button:"
+msgstr "_Przycisk:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:43
+msgid "_Edit desktop menu"
+msgstr "_Edytuj menu programów"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:44
+msgid "_Icons"
+msgstr "_Ikony"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:45
+msgid "_Menus"
+msgstr "M_enu"
+
 #: ../src/main.c:234
 #, fuzzy
 msgid "Display version information"
@@ -277,10 +579,6 @@ msgstr "_Usuń obszar roboczy %d"
 msgid "_Remove Workspace '%s'"
 msgstr "_Usuń obszar roboczy „%s”"
 
-#: ../src/xfce-desktop.c:729
-msgid "Desktop"
-msgstr "Pulpit"
-
 #: ../src/xfce-desktop.c:1006
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
@@ -360,8 +658,8 @@ msgid ""
 msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:606
-#: ../src/xfdesktop-file-icon-manager.c:650 ../src/xfdesktop-file-utils.c:733
-#: ../src/xfdesktop-file-utils.c:748 ../src/xfdesktop-special-file-icon.c:447
+#: ../src/xfdesktop-file-icon-manager.c:650 ../src/xfdesktop-file-utils.c:799
+#: ../src/xfdesktop-file-utils.c:814 ../src/xfdesktop-special-file-icon.c:447
 msgid "Trash Error"
 msgstr "Błąd kosza"
 
@@ -372,12 +670,12 @@ msgid "The selected files could not be trashed"
 msgstr "Nie powiodło się uruchomienie wybieracza aplikacji."
 
 #: ../src/xfdesktop-file-icon-manager.c:608
-#: ../src/xfdesktop-file-icon-manager.c:652 ../src/xfdesktop-file-utils.c:582
-#: ../src/xfdesktop-file-utils.c:632 ../src/xfdesktop-file-utils.c:691
-#: ../src/xfdesktop-file-utils.c:803 ../src/xfdesktop-file-utils.c:859
-#: ../src/xfdesktop-file-utils.c:909 ../src/xfdesktop-file-utils.c:959
-#: ../src/xfdesktop-file-utils.c:1036 ../src/xfdesktop-file-utils.c:1097
-#: ../src/xfdesktop-file-utils.c:1170 ../src/xfdesktop-file-utils.c:1248
+#: ../src/xfdesktop-file-icon-manager.c:652 ../src/xfdesktop-file-utils.c:648
+#: ../src/xfdesktop-file-utils.c:698 ../src/xfdesktop-file-utils.c:757
+#: ../src/xfdesktop-file-utils.c:869 ../src/xfdesktop-file-utils.c:925
+#: ../src/xfdesktop-file-utils.c:975 ../src/xfdesktop-file-utils.c:1025
+#: ../src/xfdesktop-file-utils.c:1102 ../src/xfdesktop-file-utils.c:1163
+#: ../src/xfdesktop-file-utils.c:1236 ../src/xfdesktop-file-utils.c:1314
 #, fuzzy
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
@@ -393,11 +691,11 @@ msgstr "Nie można uruchomić „%s”:"
 
 #: ../src/xfdesktop-file-icon-manager.c:754
 #: ../src/xfdesktop-file-icon-manager.c:998
-#: ../src/xfdesktop-file-icon-manager.c:1311 ../src/xfdesktop-file-utils.c:565
-#: ../src/xfdesktop-file-utils.c:580 ../src/xfdesktop-file-utils.c:942
-#: ../src/xfdesktop-file-utils.c:957 ../src/xfdesktop-file-utils.c:1009
-#: ../src/xfdesktop-file-utils.c:1034 ../src/xfdesktop-file-utils.c:1080
-#: ../src/xfdesktop-file-utils.c:1095
+#: ../src/xfdesktop-file-icon-manager.c:1311 ../src/xfdesktop-file-utils.c:631
+#: ../src/xfdesktop-file-utils.c:646 ../src/xfdesktop-file-utils.c:1008
+#: ../src/xfdesktop-file-utils.c:1023 ../src/xfdesktop-file-utils.c:1075
+#: ../src/xfdesktop-file-utils.c:1100 ../src/xfdesktop-file-utils.c:1146
+#: ../src/xfdesktop-file-utils.c:1161
 msgid "Launch Error"
 msgstr "Błąd uruchamiania"
 
@@ -491,127 +789,130 @@ msgid "Load Error"
 msgstr "Błąd uruchamiania"
 
 #: ../src/xfdesktop-file-icon-manager.c:2245
+#, fuzzy
 msgid "Failed to load the desktop folder"
-msgstr ""
+msgstr "Nie można utworzyć pliku listy obrazów „%s”"
 
 #. TRANSLATORS: file was modified less than one day ago
-#: ../src/xfdesktop-file-utils.c:132
+#: ../src/xfdesktop-file-utils.c:137
 #, c-format
 msgid "Today at %X"
 msgstr ""
 
 #. TRANSLATORS: file was modified less than two days ago
-#: ../src/xfdesktop-file-utils.c:136
+#: ../src/xfdesktop-file-utils.c:141
 #, c-format
 msgid "Yesterday at %X"
 msgstr ""
 
 #. Days from last week
-#: ../src/xfdesktop-file-utils.c:141
+#: ../src/xfdesktop-file-utils.c:146
 #, c-format
 msgid "%A at %X"
 msgstr ""
 
 #. Any other date
-#: ../src/xfdesktop-file-utils.c:144
+#: ../src/xfdesktop-file-utils.c:149
 #, c-format
 msgid "%x at %X"
 msgstr ""
 
 #. the file_time is invalid
-#: ../src/xfdesktop-file-utils.c:154
+#: ../src/xfdesktop-file-utils.c:159
 #, fuzzy
 msgid "Unknown"
 msgstr "(nieznany)"
 
-#: ../src/xfdesktop-file-utils.c:566 ../src/xfdesktop-file-utils.c:581
+#: ../src/xfdesktop-file-utils.c:632 ../src/xfdesktop-file-utils.c:647
 #, fuzzy
 msgid "The folder could not be opened"
 msgstr "Nie powiodło się uruchomienie wybieracza aplikacji."
 
-#: ../src/xfdesktop-file-utils.c:615 ../src/xfdesktop-file-utils.c:630
+#: ../src/xfdesktop-file-utils.c:681 ../src/xfdesktop-file-utils.c:696
 #, fuzzy
 msgid "Rename Error"
 msgstr "Błąd uruchamiania"
 
-#: ../src/xfdesktop-file-utils.c:616 ../src/xfdesktop-file-utils.c:631
+#: ../src/xfdesktop-file-utils.c:682 ../src/xfdesktop-file-utils.c:697
 #, fuzzy
 msgid "The file could not be renamed"
 msgstr "Nie powiodło się uruchomienie wybieracza aplikacji."
 
-#: ../src/xfdesktop-file-utils.c:674 ../src/xfdesktop-file-utils.c:689
+#: ../src/xfdesktop-file-utils.c:740 ../src/xfdesktop-file-utils.c:755
 #, fuzzy
 msgid "Delete Error"
 msgstr "Błąd tworzenia"
 
-#: ../src/xfdesktop-file-utils.c:675 ../src/xfdesktop-file-utils.c:690
+#: ../src/xfdesktop-file-utils.c:741 ../src/xfdesktop-file-utils.c:756
 #, fuzzy
 msgid "The selected files could not be deleted"
 msgstr "Przypisany program nie został znaleziony lub nie można go uruchomić."
 
-#: ../src/xfdesktop-file-utils.c:734 ../src/xfdesktop-file-utils.c:749
+#: ../src/xfdesktop-file-utils.c:800 ../src/xfdesktop-file-utils.c:815
+#, fuzzy
 msgid "The selected files could not be moved to the trash"
-msgstr ""
+msgstr "Nie powiodło się uruchomienie wybieracza aplikacji."
 
-#: ../src/xfdesktop-file-utils.c:750
+#: ../src/xfdesktop-file-utils.c:816
 #, fuzzy
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
 msgstr "Ta opcja wymaga menedżera plików takiego jak Thunar."
 
-#: ../src/xfdesktop-file-utils.c:786 ../src/xfdesktop-file-utils.c:801
+#: ../src/xfdesktop-file-utils.c:852 ../src/xfdesktop-file-utils.c:867
 #, fuzzy
 msgid "Create File Error"
 msgstr "Błąd tworzenia"
 
-#: ../src/xfdesktop-file-utils.c:787 ../src/xfdesktop-file-utils.c:802
+#: ../src/xfdesktop-file-utils.c:853 ../src/xfdesktop-file-utils.c:868
+#, fuzzy
 msgid "Could not create a new file"
-msgstr ""
+msgstr "Nie można utworzyć pliku listy obrazów „%s”"
 
-#: ../src/xfdesktop-file-utils.c:842 ../src/xfdesktop-file-utils.c:857
+#: ../src/xfdesktop-file-utils.c:908 ../src/xfdesktop-file-utils.c:923
 #, fuzzy
 msgid "Create Document Error"
 msgstr "Błąd tworzenia"
 
-#: ../src/xfdesktop-file-utils.c:843 ../src/xfdesktop-file-utils.c:858
+#: ../src/xfdesktop-file-utils.c:909 ../src/xfdesktop-file-utils.c:924
 #, fuzzy
 msgid "Could not create a new document from the template"
 msgstr "Utwórz dokument z szablonu „%s”"
 
-#: ../src/xfdesktop-file-utils.c:892 ../src/xfdesktop-file-utils.c:907
+#: ../src/xfdesktop-file-utils.c:958 ../src/xfdesktop-file-utils.c:973
 #, fuzzy
 msgid "File Properties Error"
 msgstr "Błąd właściwości"
 
-#: ../src/xfdesktop-file-utils.c:893 ../src/xfdesktop-file-utils.c:908
+#: ../src/xfdesktop-file-utils.c:959 ../src/xfdesktop-file-utils.c:974
 #, fuzzy
 msgid "The file properties dialog could not be opened"
 msgstr "Nie powiodło się uruchomienie wybieracza aplikacji."
 
-#: ../src/xfdesktop-file-utils.c:943 ../src/xfdesktop-file-utils.c:958
+#: ../src/xfdesktop-file-utils.c:1009 ../src/xfdesktop-file-utils.c:1024
 #, fuzzy
 msgid "The file could not be opened"
 msgstr "Nie powiodło się uruchomienie wybieracza aplikacji."
 
-#: ../src/xfdesktop-file-utils.c:1006 ../src/xfdesktop-file-utils.c:1031
+#: ../src/xfdesktop-file-utils.c:1072 ../src/xfdesktop-file-utils.c:1097
 #, fuzzy, c-format
 msgid "Failed to run \"%s\""
 msgstr "Nie udało się uruchomić „%s”:"
 
-#: ../src/xfdesktop-file-utils.c:1081 ../src/xfdesktop-file-utils.c:1096
+#: ../src/xfdesktop-file-utils.c:1147 ../src/xfdesktop-file-utils.c:1162
 #, fuzzy
 msgid "The application chooser could not be opened"
 msgstr "Nie powiodło się uruchomienie wybieracza aplikacji."
 
-#: ../src/xfdesktop-file-utils.c:1154 ../src/xfdesktop-file-utils.c:1168
-#: ../src/xfdesktop-file-utils.c:1230 ../src/xfdesktop-file-utils.c:1246
+#: ../src/xfdesktop-file-utils.c:1220 ../src/xfdesktop-file-utils.c:1234
+#: ../src/xfdesktop-file-utils.c:1296 ../src/xfdesktop-file-utils.c:1312
 #, fuzzy
 msgid "Transfer Error"
 msgstr "Błąd kosza"
 
-#: ../src/xfdesktop-file-utils.c:1155 ../src/xfdesktop-file-utils.c:1169
-#: ../src/xfdesktop-file-utils.c:1231 ../src/xfdesktop-file-utils.c:1247
+#: ../src/xfdesktop-file-utils.c:1221 ../src/xfdesktop-file-utils.c:1235
+#: ../src/xfdesktop-file-utils.c:1297 ../src/xfdesktop-file-utils.c:1313
 #, fuzzy
 msgid "The file transfer could not be performed"
 msgstr "Nie powiodło się uruchomienie wybieracza aplikacji."
@@ -645,8 +946,9 @@ msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:211
+#, fuzzy
 msgid "Ejecting device"
-msgstr ""
+msgstr "Odmontowanie nieudane"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:214
@@ -752,582 +1054,6 @@ msgstr "_Wysuń"
 msgid "_Mount Volume"
 msgstr "_Zamontuj"
 
-#~ msgid ""
-#~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-#~ msgstr "Nie udało się utworzyć katalogu „%s” dla elementów pulpitu:"
-
-#~ msgid "Create Folder Failed"
-#~ msgstr "Nie udało się utworzyć katalogu"
-
-#~ msgid ""
-#~ "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not "
-#~ "a folder."
-#~ msgstr ""
-#~ "Nie można użyć „%s” do przechowywania elementów pulpitu ponieważ nie jest "
-#~ "to katalog."
-
-#~ msgid "Please delete or rename the file."
-#~ msgstr "Proszę usunąć lub zmienić nazwę pliku."
-
-#~ msgid "Rename \"%s\""
-#~ msgstr "Zmiana nazwy „%s”"
-
-#~ msgid "Enter the new name:"
-#~ msgstr "Proszę wprowadzić nazwę:"
-
-#~ msgid "Rename"
-#~ msgstr "Zmień nazwę"
-
-#~ msgid "Are you sure that you want to delete \"%s\"?"
-#~ msgstr "Usunąć „%s”?"
-
-#~ msgid "Question"
-#~ msgstr "Pytanie"
-
-#~ msgid "If you delete a file, it is permanently lost."
-#~ msgstr "Plik zostanie nieodwracalnie usunięty."
-
-#~ msgid "Are you sure you want to delete the following %d files?"
-#~ msgstr "Usunąć %d plików?"
-
-#~ msgid "Delete Multiple Files"
-#~ msgstr "Usuń wiele plików"
-
-#~ msgid "Unable to create folder named \"%s\":"
-#~ msgstr "Nie można utworzyć katalogu o nazwie „%s”:"
-
-#~ msgid "Create New Folder"
-#~ msgstr "Tworzenie katalogu"
-
-#~ msgid "New Folder"
-#~ msgstr "Nowy katalog"
-
-#~ msgid "Create"
-#~ msgstr "_Utwórz"
-
-#~ msgid "Unable to create file named \"%s\":"
-#~ msgstr "Nie można utworzyć pliku o nazwie „%s”:"
-
-#~ msgid "Create File Failed"
-#~ msgstr "Nie udało się utworzyć pliku"
-
-#~ msgid "Create Empty File"
-#~ msgstr "Utwórz pusty plik"
-
-#~ msgid "New Empty File"
-#~ msgstr "Nowy pusty plik"
-
-#~ msgid "Unable to create file \"%s\":"
-#~ msgstr "Nie udało się utworzyć pliku „%s”:"
-
-#~ msgid "Unable to set default application for \"%s\" to \"%s\":"
-#~ msgstr "Nie można ustawić domyślnego programu dla „%s” na „%s”:"
-
-#~ msgid "None"
-#~ msgstr "Brak"
-
-#~ msgid "Write only"
-#~ msgstr "Tylko do zapisu"
-
-#~ msgid "Read only"
-#~ msgstr "Tylko do odczytu"
-
-#~ msgid "Read & Write"
-#~ msgstr "Do odczytu i zapisu"
-
-#~ msgid "General"
-#~ msgstr "Ogólne"
-
-#~ msgid "Name:"
-#~ msgstr "Nazwa:"
-
-#~ msgid "Kind:"
-#~ msgstr "Typ:"
-
-#~ msgid "Link Target:"
-#~ msgstr "Cel dowiązania:"
-
-#~ msgid "Open With:"
-#~ msgstr "Otwierany za pomocą:"
-
-#~ msgid "Modified:"
-#~ msgstr "Ostatnio zmodyfikowany:"
-
-#~ msgid "Accessed:"
-#~ msgstr "Ostatnio otwarty:"
-
-#~ msgid "Free Space:"
-#~ msgstr "Wolna przestrzeń:"
-
-#~ msgid "Size:"
-#~ msgstr "Rozmiar:"
-
-#~ msgid "%s (%"
-#~ msgstr "%s (%"
-
-#~ msgid "Permissions"
-#~ msgstr "Uprawnienia"
-
-#~ msgid "Owner:"
-#~ msgstr "Właściciel: "
-
-#~ msgid "Access:"
-#~ msgstr "Dostęp:"
-
-#~ msgid "Group:"
-#~ msgstr "Grupa:"
-
-#~ msgid "Others:"
-#~ msgstr "Inne:"
-
-#~ msgid "Yes to _all"
-#~ msgstr "Tak na _wszystkie"
-
-#~ msgid "There was an error moving \"%s\" to \"%s\":"
-#~ msgstr "Podczas przenoszenia „%s” do „%s” wystąpił błąd:"
-
-#~ msgid "There was an error copying \"%s\" to \"%s\":"
-#~ msgstr "Podczas kopiowania „%s” do „%s” wystąpił błąd:"
-
-#~ msgid "There was an error linking \"%s\" to \"%s\":"
-#~ msgstr "Podczas dowiązywania „%s” do „%s” wystąpił błąd:"
-
-#~ msgid "File Error"
-#~ msgstr "Błąd pliku"
-
-#~ msgid "broken link"
-#~ msgstr "uszkodzone dowiązanie"
-
-#~ msgid "link to %s"
-#~ msgstr "dowiązanie do %s"
-
-#~ msgid ""
-#~ "Kind: %s\n"
-#~ "Modified:%s\n"
-#~ "Size: %s"
-#~ msgstr ""
-#~ "Typ: %s\n"
-#~ "Modyfikacja:%s\n"
-#~ "Rozmiar: %s"
-
-#~ msgid "Error"
-#~ msgstr "Błąd"
-
-#~ msgid "Failed to rename \"%s\" to \"%s\":"
-#~ msgstr "Nie udało się zmienić nazwy „%s” na „%s”:"
-
-#~ msgid "Kind: Trash"
-#~ msgstr "Typ: kosz"
-
-#~ msgid "%s (%s total)"
-#~ msgstr "%s (ogólnie %s)"
-
-#~ msgid "Unable to mount \"%s\":"
-#~ msgstr "Nie można zamontować „%s”:"
-
-#~ msgid "Unable to unmount \"%s\":"
-#~ msgstr "Nie można odmontować „%s”:"
-
-#~ msgid "_Unmount Volume"
-#~ msgstr "_Odmontuj"
-
-#~ msgid "Unable to launch xfce4-menueditor: %s"
-#~ msgstr "Nie można uruchomić xfce4-menueditor: %s"
-
-#~ msgid "Select Icon"
-#~ msgstr "Wybierz ikonę"
-
-#~ msgid "Select Menu File"
-#~ msgstr "Wybierz plik menu"
-
-#~ msgid "All Files"
-#~ msgstr "Wszystkie pliki"
-
-#~ msgid "Image Files"
-#~ msgstr "Pliki graficzne"
-
-#~ msgid "Menu Files"
-#~ msgstr "Pliki menu"
-
-#~ msgid "Xfce Menu"
-#~ msgstr "Menu Xfce"
-
-#~ msgid "Button"
-#~ msgstr "Przycisk"
-
-#~ msgid "Button _title:"
-#~ msgstr "_Etykieta:"
-
-#~ msgid "_Show title in button"
-#~ msgstr "Etykieta obok _ikony"
-
-#~ msgid "Menu File"
-#~ msgstr "Plik menu"
-
-#~ msgid "Use default _desktop menu file"
-#~ msgstr "_Domyślny"
-
-#~ msgid "Use _custom menu file:"
-#~ msgstr "Wł_asny:"
-
-#~ msgid "_Edit Menu"
-#~ msgstr "_Edytuj menu..."
-
-#~ msgid "Icons"
-#~ msgstr "Ikony"
-
-#~ msgid "_Button icon:"
-#~ msgstr "_Ikona przycisku:"
-
-#~ msgid "Show _icons in menu"
-#~ msgstr "_Ikony w menu"
-
-#~ msgid "There is already a panel menu registered for this screen"
-#~ msgstr "Już jest przypisane menu panelu dla tego ekranu"
-
-#~ msgid "Edit Menu"
-#~ msgstr "Edytuj menu"
-
-#~ msgid "Shows a menu containing categories of installed applications"
-#~ msgstr "Pokaż menu z kategoriami zainstalowanych aplikacji"
-
-#~ msgid "%s: Unknown option: %s\n"
-#~ msgstr "%s: Nieznana opcja: %s\n"
-
-#~ msgid "Options are:\n"
-#~ msgstr "Opcje:\n"
-
-#~ msgid "Accessories"
-#~ msgstr "Akcesoria"
-
-#~ msgid "Common desktop tools and applications"
-#~ msgstr "Popularne narzędzia i programy systemowe"
-
-#~ msgid "Development"
-#~ msgstr "Programowanie"
-
-#~ msgid "Software development tools"
-#~ msgstr "Programowanie"
-
-#~ msgid "Education"
-#~ msgstr "Edukacja"
-
-#~ msgid "Educational software"
-#~ msgstr "Oprogramowanie edukacyjne"
-
-#~ msgid "Games"
-#~ msgstr "Gry"
-
-#, fuzzy
-#~ msgid "Games, puzzles, and other fun software"
-#~ msgstr "Gry, układanki i tym podobne oprogramowanie"
-
-#~ msgid "Graphics"
-#~ msgstr "Grafika"
-
-#, fuzzy
-#~ msgid "Graphics creation and manipulation applications"
-#~ msgstr "Programy do tworzenia i pracy z grafiką"
-
-#~ msgid "Audio and video players and editors"
-#~ msgstr "Odtwarzacze oraz edytory audio i wideo"
-
-#~ msgid "Multimedia"
-#~ msgstr "Multimedia"
-
-#~ msgid "Network"
-#~ msgstr "Sieć"
-
-#~ msgid "Network applications and utilities"
-#~ msgstr "Program i narzędzia sieciowe"
-
-#~ msgid "Office"
-#~ msgstr "Biuro"
-
-#~ msgid "Office and productivity applications"
-#~ msgstr "Programy biurowe"
-
-#~ msgid "Applications that don't fit into other categories"
-#~ msgstr "Programy niepasujące do innych kategorii"
-
-#~ msgid "Other"
-#~ msgstr "Inne"
-
-#~ msgid "Science"
-#~ msgstr "Nauka"
-
-#, fuzzy
-#~ msgid "Scientific software"
-#~ msgstr "Oprogramowanie edukacyjne"
-
-#~ msgid "Screensaver applets"
-#~ msgstr "Aplety wygaszacza ekranu"
-
-#~ msgid "Screensavers"
-#~ msgstr "Wygaszacze ekranu"
-
-#~ msgid "Desktop and system settings applications"
-#~ msgstr "Programy do konfiguracji środowiska graficznego i systemu"
-
-#~ msgid "Settings"
-#~ msgstr "Ustawienia"
-
-#~ msgid "System"
-#~ msgstr "System"
-
-#~ msgid "System tools and utilities"
-#~ msgstr "Systemowe narzędzia i programy użytkowe"
-
-#~ msgid "About Xfce"
-#~ msgstr "O środowisku graficznym Xfce"
-
-#~ msgid "Information about the Xfce Desktop Environment"
-#~ msgstr "Informacje o środowisku graficznym Xfce"
-
-#~ msgid "File Manager"
-#~ msgstr "Menedżer plików"
-
-#~ msgid "Thunar file manager"
-#~ msgstr "Menedżer plików Thunar"
-
-#~ msgid "Help"
-#~ msgstr "Pomoc"
-
-#~ msgid "Help using Xfce"
-#~ msgstr "Pomoc dla Xfce"
-
-#~ msgid "Log Out"
-#~ msgstr "Wyloguj"
-
-#~ msgid "Log out of the Xfce Desktop"
-#~ msgstr "Wyloguj się z Xfce"
-
-#~ msgid "Run Program..."
-#~ msgstr "Uruchom program..."
-
-#~ msgid "Run a program"
-#~ msgstr "Uruchom program"
-
-#~ msgid "Terminal emulator"
-#~ msgstr "Emulator terminala"
-
-#~ msgid "Browse the web"
-#~ msgstr "Przeglądaj internet"
-
-#~ msgid "Web Browser"
-#~ msgstr "Przeglądarka internetowa"
-
-#~ msgid "<b>Adjustments</b>"
-#~ msgstr "<b>Korekcja</b>"
-
-#~ msgid "<b>Appearance</b>"
-#~ msgstr "<b>Wygląd</b>"
-
-#~ msgid "<b>Colors</b>"
-#~ msgstr "<b>Kolory</b>"
-
-#~ msgid "<b>Default Icons</b>"
-#~ msgstr "<b>Domyślne</b>"
-
-#~ msgid "<b>Desktop Menu</b>"
-#~ msgstr "<b>Menu programów</b>"
-
-#~ msgid "<b>Image</b>"
-#~ msgstr "<b>Obraz</b>"
-
-#~ msgid "<b>Images</b>"
-#~ msgstr "<b>Obrazy</b>"
-
-#~ msgid "<b>Window List Menu</b>"
-#~ msgstr "<b>Lista okien</b>"
-
-#~ msgid "Add an image to the list"
-#~ msgstr "Dodaje obraz do listy"
-
-#~ msgid ""
-#~ "Auto\n"
-#~ "Centered\n"
-#~ "Tiled\n"
-#~ "Stretched\n"
-#~ "Scaled\n"
-#~ "Zoomed"
-#~ msgstr ""
-#~ "Automatyczny\n"
-#~ "Wyśrodkowany\n"
-#~ "Sąsiadujący\n"
-#~ "Rozciągnięty\n"
-#~ "Przeskalowany\n"
-#~ "Powiększony"
-
-#~ msgid "Automatically pick a random image from a list file"
-#~ msgstr "Wyświetla w tle pulpitu obraz wylosowany z listy"
-
-#~ msgid "B_rightness:"
-#~ msgstr "_Jasność:"
-
-#~ msgid "B_utton:"
-#~ msgstr "_Przycisk:"
-
-#~ msgid "Create a new list, or load an existing one"
-#~ msgstr "Tworzy nową listę lub wczytuje już istniejącą listę"
-
-#~ msgid "Don't display an image at all"
-#~ msgstr "Nie wyświetla obrazu w tle pulpitu"
-
-#~ msgid "Icon _size:"
-#~ msgstr "_Rozmiar:"
-
-#~ msgid "Icon _type:"
-#~ msgstr "_Typ:"
-
-#~ msgid "Image _list"
-#~ msgstr "_Lista"
-
-#~ msgid "Increase or decrease the brightness of the final image"
-#~ msgstr "Reguluje jasność tła pulpitu"
-
-#~ msgid "Increase or decrease the color saturation of the final image"
-#~ msgstr "Reguluje nasycenie tła pulpitu"
-
-#~ msgid "Label trans_parency:"
-#~ msgstr "_Przezroczystość etykiet:"
-
-#~ msgid ""
-#~ "Left\n"
-#~ "Middle\n"
-#~ "Right"
-#~ msgstr ""
-#~ "Lewo\n"
-#~ "Środek\n"
-#~ "Prawo"
-
-#~ msgid "Mo_difier:"
-#~ msgstr "Mo_dyfikator:"
-
-#~ msgid "Modi_fier:"
-#~ msgstr "Mody_fikator:"
-
-#~ msgid ""
-#~ "None\n"
-#~ "Minimized application icons\n"
-#~ "File/launcher icons"
-#~ msgstr ""
-#~ "Brak\n"
-#~ "Zminimalizowane okna\n"
-#~ "Pliki i aktywatory"
-
-#~ msgid ""
-#~ "None\n"
-#~ "Shift\n"
-#~ "Alt\n"
-#~ "Control"
-#~ msgstr ""
-#~ "Brak\n"
-#~ "Shift\n"
-#~ "Alt\n"
-#~ "Control"
-
-#~ msgid "Remove the selected image(s) from the list"
-#~ msgstr "Usuwa zaznaczone obrazy z listy"
-
-#~ msgid "Sa_turation:"
-#~ msgstr "_Nasycenie:"
-
-#~ msgid "Select First Color"
-#~ msgstr "Wybór pierwszego koloru"
-
-#~ msgid "Select Second Color"
-#~ msgstr "Wybór drugiego koloru"
-
-#~ msgid "Select a single image as the backdrop"
-#~ msgstr "Wyświetla w tle pulpitu pojedynczy obraz"
-
-#~ msgid "Set desktop background and menu and icon behavior"
-#~ msgstr "Konfiguruje tło pulpitu oraz ustawienia menu i ikon"
-
-#~ msgid "Sh_ow application icons in menu"
-#~ msgstr "Ik_ony w menu"
-
-#~ msgid "Show _application icons in menu"
-#~ msgstr "I_kony w menu"
-
-#~ msgid "Show _window list menu on desktop middle click"
-#~ msgstr "Wyświet_lanie po kliknięciu środkowym klawiszem myszy"
-
-#~ msgid "Show applications menu on _desktop right click"
-#~ msgstr "W_yświetlanie po kliknięciu prawym klawiszem myszy"
-
-#~ msgid "Show s_ticky windows only in active workspace"
-#~ msgstr "_Przypięte okna tylko w bieżącym obszarze roboczym"
-
-#~ msgid "Show workspace _names in list"
-#~ msgstr "_Nazwy obszarów roboczych"
-
-#~ msgid ""
-#~ "Solid color\n"
-#~ "Horizontal gradient\n"
-#~ "Vertical gradient\n"
-#~ "Transparent"
-#~ msgstr ""
-#~ "Jednolity\n"
-#~ "Gradient pionowy\n"
-#~ "Gradient poziomy\n"
-#~ "Przezroczysty"
-
-#~ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-#~ msgstr "Określa „prawy” bądź „dolny” kolor gradientu"
-
-#~ msgid ""
-#~ "Specifies the solid color, or the \"left\" or \"top\" color of the "
-#~ "gradient"
-#~ msgstr "Określa kolor jednolity albo „lewy” bądź „górny” kolor gradientu"
-
-#~ msgid "Specify how the image will be resized to fit the screen"
-#~ msgstr "Określa w jaki sposób obraz będzie wyświetlony w tle pulpitu"
-
-#~ msgid "Specify the style of the color drawn behind the backdrop image"
-#~ msgstr ""
-#~ "Określa sposób w jaki tło pulpitu wyświetlone pod obrazem zostanie "
-#~ "pokryte kolorem "
-
-#, fuzzy
-#~ msgid ""
-#~ "Specify the transparency level for the rounded label drawn behind the "
-#~ "icon text"
-#~ msgstr ""
-#~ "Określa poziom przezroczystości zaokrąglonych etykiet wyświetlanych za "
-#~ "tekstem ikon"
-
-#~ msgid "St_yle:"
-#~ msgstr "_Styl:"
-
-#~ msgid "Use _submenus for the windows in each workspace"
-#~ msgstr "Okna każdego obszaru roboczego w o_sobnym menu"
-
-#~ msgid "Use custom _font size:"
-#~ msgstr "Wł_asny rozmiar czcionki:"
-
-#~ msgid "_Background"
-#~ msgstr "_Tło"
-
-#~ msgid "_Button:"
-#~ msgstr "_Przycisk:"
-
-#~ msgid "_Edit desktop menu"
-#~ msgstr "_Edytuj menu programów"
-
-#~ msgid "_Icons"
-#~ msgstr "_Ikony"
-
-#~ msgid "_Menus"
-#~ msgstr "M_enu"
-
-#~ msgid "_None"
-#~ msgstr "_Brak"
-
-#~ msgid "_Single image"
-#~ msgstr "_Pojedynczy"
-
 #~ msgid "Add menu entry"
 #~ msgstr "Dodawanie wpisu"
 
@@ -1349,6 +1075,9 @@ msgstr "_Zamontuj"
 #~ msgid "Quit"
 #~ msgstr "Wyłącz"
 
+#~ msgid "Name:"
+#~ msgstr "Nazwa:"
+
 #~ msgid "Command:"
 #~ msgstr "Polecenie:"
 
@@ -1363,6 +1092,15 @@ msgstr "_Zamontuj"
 
 #~ msgid "Select icon"
 #~ msgstr "Wybór ikony"
+
+#~ msgid "All Files"
+#~ msgstr "Wszystkie pliki"
+
+#~ msgid "Image Files"
+#~ msgstr "Pliki graficzne"
+
+#~ msgid "Use startup _notification"
+#~ msgstr "_Powiadamianie o uruchamianiu"
 
 #~ msgid "Run in _terminal"
 #~ msgstr "Uruchamianie w _terminalu"
@@ -1391,11 +1129,17 @@ msgstr "_Zamontuj"
 #~ msgid "File"
 #~ msgstr "Plik"
 
+#~ msgid "System"
+#~ msgstr "System"
+
 #~ msgid "Source:"
 #~ msgstr "Źródło:"
 
 #~ msgid "Select external menu"
 #~ msgstr "Wybierz zewnętrzne menu"
+
+#~ msgid "Menu Files"
+#~ msgstr "Pliki menu"
 
 #~ msgid "Style:"
 #~ msgstr "Styl:"
@@ -1550,6 +1294,9 @@ msgstr "_Zamontuj"
 #~ msgid "Do you want to save before closing the file?"
 #~ msgstr "Zapisać zmiany przed zamknięciem pliku?"
 
+#~ msgid "Question"
+#~ msgstr "Pytanie"
+
 #~ msgid "Do you want to save before opening an other menu ?"
 #~ msgstr "Zapisać zmiany przed otwarciem innego pliku?"
 
@@ -1592,6 +1339,9 @@ msgstr "_Zamontuj"
 #~ msgid "Contributor"
 #~ msgstr "Współpraca"
 
+#~ msgid "Icon designer"
+#~ msgstr "Projektant ikon"
+
 #~ msgid "You have modified the menu, do you want to save it before quitting ?"
 #~ msgstr "Menu zostało zmodyfikowane. Zapisać zmiany?"
 
@@ -1601,6 +1351,292 @@ msgstr "_Zamontuj"
 #~ msgid "Unable to open the menu file %s in write mode"
 #~ msgstr "Nie można otworzyć pliku menu „%s” do zapisu"
 
+#~ msgid "Unable to launch xfce4-menueditor: %s"
+#~ msgstr "Nie można uruchomić xfce4-menueditor: %s"
+
+#~ msgid "Select Icon"
+#~ msgstr "Wybierz ikonę"
+
+#~ msgid "Select Menu File"
+#~ msgstr "Wybierz plik menu"
+
+#~ msgid "Xfce Menu"
+#~ msgstr "Menu Xfce"
+
+#~ msgid "Button"
+#~ msgstr "Przycisk"
+
+#~ msgid "Button _title:"
+#~ msgstr "_Etykieta:"
+
+#~ msgid "_Show title in button"
+#~ msgstr "Etykieta obok _ikony"
+
+#~ msgid "Menu File"
+#~ msgstr "Plik menu"
+
+#~ msgid "Use default _desktop menu file"
+#~ msgstr "_Domyślny"
+
+#~ msgid "Use _custom menu file:"
+#~ msgstr "Wł_asny:"
+
+#~ msgid "_Edit Menu"
+#~ msgstr "_Edytuj menu..."
+
+#~ msgid "Icons"
+#~ msgstr "Ikony"
+
+#~ msgid "_Button icon:"
+#~ msgstr "_Ikona przycisku:"
+
+#~ msgid "Show _icons in menu"
+#~ msgstr "_Ikony w menu"
+
+#~ msgid "There is already a panel menu registered for this screen"
+#~ msgstr "Już jest przypisane menu panelu dla tego ekranu"
+
+#~ msgid "Edit Menu"
+#~ msgstr "Edytuj menu"
+
+#~ msgid "Shows a menu containing categories of installed applications"
+#~ msgstr "Pokaż menu z kategoriami zainstalowanych aplikacji"
+
+#~ msgid "%s: Unknown option: %s\n"
+#~ msgstr "%s: Nieznana opcja: %s\n"
+
+#~ msgid "Options are:\n"
+#~ msgstr "Opcje:\n"
+
+#~ msgid "    --reload      Reload all settings, refresh image list\n"
+#~ msgstr ""
+#~ "  --reload\t\tWczytuje ustawienia ponownie, odświeża listę obrazów\n"
+
+#~ msgid "    --menu        Pop up the menu (at the current mouse position)\n"
+#~ msgstr "  --menu\t\tWyświetla menu w miejscu kursora myszy\n"
+
+#~ msgid ""
+#~ "    --windowlist  Pop up the window list (at the current mouse position)\n"
+#~ msgstr "  --windowlist\t\tWyświetla listę okien w miejscu kursora myszy\n"
+
+#~ msgid "    --quit        Cause xfdesktop to quit\n"
+#~ msgstr "  --quit\t\tKończy program\n"
+
+#~ msgid ""
+#~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+#~ msgstr "Nie udało się utworzyć katalogu „%s” dla elementów pulpitu:"
+
+#~ msgid "Create Folder Failed"
+#~ msgstr "Nie udało się utworzyć katalogu"
+
+#~ msgid ""
+#~ "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not "
+#~ "a folder."
+#~ msgstr ""
+#~ "Nie można użyć „%s” do przechowywania elementów pulpitu ponieważ nie jest "
+#~ "to katalog."
+
+#~ msgid "Please delete or rename the file."
+#~ msgstr "Proszę usunąć lub zmienić nazwę pliku."
+
+#~ msgid "Rename \"%s\""
+#~ msgstr "Zmiana nazwy „%s”"
+
+#~ msgid "Enter the new name:"
+#~ msgstr "Proszę wprowadzić nazwę:"
+
+#~ msgid "Rename"
+#~ msgstr "Zmień nazwę"
+
+#~ msgid "Are you sure that you want to delete \"%s\"?"
+#~ msgstr "Usunąć „%s”?"
+
+#~ msgid "If you delete a file, it is permanently lost."
+#~ msgstr "Plik zostanie nieodwracalnie usunięty."
+
+#~ msgid "Are you sure you want to delete the following %d files?"
+#~ msgstr "Usunąć %d plików?"
+
+#~ msgid "Delete Multiple Files"
+#~ msgstr "Usuń wiele plików"
+
+#~ msgid "The application chooser could not be opened."
+#~ msgstr "Nie powiodło się uruchomienie wybieracza aplikacji."
+
+#~ msgid ""
+#~ "This feature requires a file manager service present (such as that "
+#~ "supplied by Thunar)."
+#~ msgstr "Ta opcja wymaga menedżera plików takiego jak Thunar."
+
+#~ msgid "Unable to create folder named \"%s\":"
+#~ msgstr "Nie można utworzyć katalogu o nazwie „%s”:"
+
+#~ msgid "Create New Folder"
+#~ msgstr "Tworzenie katalogu"
+
+#~ msgid "New Folder"
+#~ msgstr "Nowy katalog"
+
+#~ msgid "Create"
+#~ msgstr "_Utwórz"
+
+#~ msgid "Unable to create file named \"%s\":"
+#~ msgstr "Nie można utworzyć pliku o nazwie „%s”:"
+
+#~ msgid "Create File Failed"
+#~ msgstr "Nie udało się utworzyć pliku"
+
+#~ msgid "Create Document from template \"%s\""
+#~ msgstr "Utwórz dokument z szablonu „%s”"
+
+#~ msgid "Create Empty File"
+#~ msgstr "Utwórz pusty plik"
+
+#~ msgid "New Empty File"
+#~ msgstr "Nowy pusty plik"
+
+#~ msgid "Unable to create file \"%s\":"
+#~ msgstr "Nie udało się utworzyć pliku „%s”:"
+
+#~ msgid "Create Error"
+#~ msgstr "Błąd tworzenia"
+
+#~ msgid "Failed to run \"%s\":"
+#~ msgstr "Nie udało się uruchomić „%s”:"
+
+#~ msgid "Run Error"
+#~ msgstr "Błąd uruchamiania"
+
+#~ msgid "The associated application could not be found or executed."
+#~ msgstr ""
+#~ "Przypisany program nie został znaleziony lub nie można go uruchomić."
+
+#~ msgid "Unable to set default application for \"%s\" to \"%s\":"
+#~ msgstr "Nie można ustawić domyślnego programu dla „%s” na „%s”:"
+
+#~ msgid "Properties Error"
+#~ msgstr "Błąd właściwości"
+
+#~ msgid "Write only"
+#~ msgstr "Tylko do zapisu"
+
+#~ msgid "Read only"
+#~ msgstr "Tylko do odczytu"
+
+#~ msgid "Read & Write"
+#~ msgstr "Do odczytu i zapisu"
+
+#~ msgid "General"
+#~ msgstr "Ogólne"
+
+#~ msgid "Kind:"
+#~ msgstr "Typ:"
+
+#~ msgid "Link Target:"
+#~ msgstr "Cel dowiązania:"
+
+#~ msgid "(unknown)"
+#~ msgstr "(nieznany)"
+
+#~ msgid "Open With:"
+#~ msgstr "Otwierany za pomocą:"
+
+#~ msgid "Modified:"
+#~ msgstr "Ostatnio zmodyfikowany:"
+
+#~ msgid "Accessed:"
+#~ msgstr "Ostatnio otwarty:"
+
+#~ msgid "Free Space:"
+#~ msgstr "Wolna przestrzeń:"
+
+#~ msgid "Size:"
+#~ msgstr "Rozmiar:"
+
+#~ msgid "%s (%"
+#~ msgstr "%s (%"
+
+#~ msgid "Permissions"
+#~ msgstr "Uprawnienia"
+
+#~ msgid "Owner:"
+#~ msgstr "Właściciel: "
+
+#~ msgid "Access:"
+#~ msgstr "Dostęp:"
+
+#~ msgid "Group:"
+#~ msgstr "Grupa:"
+
+#~ msgid "Others:"
+#~ msgstr "Inne:"
+
+#~ msgid "Yes to _all"
+#~ msgstr "Tak na _wszystkie"
+
+#~ msgid "There was an error moving \"%s\" to \"%s\":"
+#~ msgstr "Podczas przenoszenia „%s” do „%s” wystąpił błąd:"
+
+#~ msgid "There was an error copying \"%s\" to \"%s\":"
+#~ msgstr "Podczas kopiowania „%s” do „%s” wystąpił błąd:"
+
+#~ msgid "There was an error linking \"%s\" to \"%s\":"
+#~ msgstr "Podczas dowiązywania „%s” do „%s” wystąpił błąd:"
+
+#~ msgid "File Error"
+#~ msgstr "Błąd pliku"
+
+#~ msgid "broken link"
+#~ msgstr "uszkodzone dowiązanie"
+
+#~ msgid "link to %s"
+#~ msgstr "dowiązanie do %s"
+
+#~ msgid ""
+#~ "Kind: %s\n"
+#~ "Modified:%s\n"
+#~ "Size: %s"
+#~ msgstr ""
+#~ "Typ: %s\n"
+#~ "Modyfikacja:%s\n"
+#~ "Rozmiar: %s"
+
+#~ msgid "Error"
+#~ msgstr "Błąd"
+
+#~ msgid "Failed to rename \"%s\" to \"%s\":"
+#~ msgstr "Nie udało się zmienić nazwy „%s” na „%s”:"
+
+#~ msgid "Kind: Trash"
+#~ msgstr "Typ: kosz"
+
+#~ msgid "%s (%s total)"
+#~ msgstr "%s (ogólnie %s)"
+
+#~ msgid ""
+#~ "Kind: Removable Volume\n"
+#~ "Mount Point: %s\n"
+#~ "Free Space: %s"
+#~ msgstr ""
+#~ "Typ: nośnik wymienny\n"
+#~ "Punkt montowania: %s\n"
+#~ "Wolne miejsce: %s"
+
+#~ msgid "Unable to mount \"%s\":"
+#~ msgstr "Nie można zamontować „%s”:"
+
+#~ msgid "Unable to unmount \"%s\":"
+#~ msgstr "Nie można odmontować „%s”:"
+
+#~ msgid "Unmount Failed"
+#~ msgstr "Odmontowanie nieudane"
+
+#~ msgid "Unable to eject \"%s\":"
+#~ msgstr "Nie można wysunąć „%s”:"
+
+#~ msgid "_Unmount Volume"
+#~ msgstr "_Odmontuj"
+
 #~ msgid "Graphical tool for editing the Xfce 4 menu"
 #~ msgstr "Graficzne narzędzie do edycji menu Xfce 4"
 
@@ -1609,6 +1645,186 @@ msgstr "_Zamontuj"
 
 #~ msgid "Xfce 4 Menu Editor"
 #~ msgstr "Edytor menu Xfce 4"
+
+#~ msgid "Accessories"
+#~ msgstr "Akcesoria"
+
+#~ msgid "Common desktop tools and applications"
+#~ msgstr "Popularne narzędzia i programy systemowe"
+
+#~ msgid "Development"
+#~ msgstr "Programowanie"
+
+#~ msgid "Software development tools"
+#~ msgstr "Programowanie"
+
+#~ msgid "Education"
+#~ msgstr "Edukacja"
+
+#~ msgid "Educational software"
+#~ msgstr "Oprogramowanie edukacyjne"
+
+#~ msgid "Games"
+#~ msgstr "Gry"
+
+#, fuzzy
+#~ msgid "Games, puzzles, and other fun software"
+#~ msgstr "Gry, układanki i tym podobne oprogramowanie"
+
+#~ msgid "Graphics"
+#~ msgstr "Grafika"
+
+#, fuzzy
+#~ msgid "Graphics creation and manipulation applications"
+#~ msgstr "Programy do tworzenia i pracy z grafiką"
+
+#~ msgid "Audio and video players and editors"
+#~ msgstr "Odtwarzacze oraz edytory audio i wideo"
+
+#~ msgid "Multimedia"
+#~ msgstr "Multimedia"
+
+#~ msgid "Network"
+#~ msgstr "Sieć"
+
+#~ msgid "Network applications and utilities"
+#~ msgstr "Program i narzędzia sieciowe"
+
+#~ msgid "Office"
+#~ msgstr "Biuro"
+
+#~ msgid "Office and productivity applications"
+#~ msgstr "Programy biurowe"
+
+#~ msgid "Applications that don't fit into other categories"
+#~ msgstr "Programy niepasujące do innych kategorii"
+
+#~ msgid "Other"
+#~ msgstr "Inne"
+
+#~ msgid "Screensaver applets"
+#~ msgstr "Aplety wygaszacza ekranu"
+
+#~ msgid "Screensavers"
+#~ msgstr "Wygaszacze ekranu"
+
+#~ msgid "Desktop and system settings applications"
+#~ msgstr "Programy do konfiguracji środowiska graficznego i systemu"
+
+#~ msgid "Settings"
+#~ msgstr "Ustawienia"
+
+#~ msgid "System tools and utilities"
+#~ msgstr "Systemowe narzędzia i programy użytkowe"
+
+#~ msgid "About Xfce"
+#~ msgstr "O środowisku graficznym Xfce"
+
+#~ msgid "Information about the Xfce Desktop Environment"
+#~ msgstr "Informacje o środowisku graficznym Xfce"
+
+#~ msgid "File Manager"
+#~ msgstr "Menedżer plików"
+
+#~ msgid "Thunar file manager"
+#~ msgstr "Menedżer plików Thunar"
+
+#~ msgid "Help"
+#~ msgstr "Pomoc"
+
+#~ msgid "Help using Xfce"
+#~ msgstr "Pomoc dla Xfce"
+
+#~ msgid "Log Out"
+#~ msgstr "Wyloguj"
+
+#~ msgid "Log out of the Xfce Desktop"
+#~ msgstr "Wyloguj się z Xfce"
+
+#~ msgid "Run Program..."
+#~ msgstr "Uruchom program..."
+
+#~ msgid "Run a program"
+#~ msgstr "Uruchom program"
+
+#~ msgid "Terminal"
+#~ msgstr "Terminal"
+
+#~ msgid "Terminal emulator"
+#~ msgstr "Emulator terminala"
+
+#~ msgid "Browse the web"
+#~ msgstr "Przeglądaj internet"
+
+#~ msgid "Web Browser"
+#~ msgstr "Przeglądarka internetowa"
+
+#~ msgid ""
+#~ "Auto\n"
+#~ "Centered\n"
+#~ "Tiled\n"
+#~ "Stretched\n"
+#~ "Scaled\n"
+#~ "Zoomed"
+#~ msgstr ""
+#~ "Automatyczny\n"
+#~ "Wyśrodkowany\n"
+#~ "Sąsiadujący\n"
+#~ "Rozciągnięty\n"
+#~ "Przeskalowany\n"
+#~ "Powiększony"
+
+#~ msgid ""
+#~ "Left\n"
+#~ "Middle\n"
+#~ "Right"
+#~ msgstr ""
+#~ "Lewo\n"
+#~ "Środek\n"
+#~ "Prawo"
+
+#~ msgid ""
+#~ "None\n"
+#~ "Minimized application icons\n"
+#~ "File/launcher icons"
+#~ msgstr ""
+#~ "Brak\n"
+#~ "Zminimalizowane okna\n"
+#~ "Pliki i aktywatory"
+
+#~ msgid ""
+#~ "None\n"
+#~ "Shift\n"
+#~ "Alt\n"
+#~ "Control"
+#~ msgstr ""
+#~ "Brak\n"
+#~ "Shift\n"
+#~ "Alt\n"
+#~ "Control"
+
+#~ msgid ""
+#~ "Solid color\n"
+#~ "Horizontal gradient\n"
+#~ "Vertical gradient\n"
+#~ "Transparent"
+#~ msgstr ""
+#~ "Jednolity\n"
+#~ "Gradient pionowy\n"
+#~ "Gradient poziomy\n"
+#~ "Przezroczysty"
+
+#~ msgid "Solid Color"
+#~ msgstr "Jednolity"
+
+#~ msgid "Horizontal Gradient"
+#~ msgstr "Gradient poziomy"
+
+#~ msgid "Vertical Gradient"
+#~ msgstr "Gradient pionowy"
+
+#~ msgid "The command doesn't exist !"
+#~ msgstr "Polecenie nie istnieje !"
 
 #~ msgid "Settings for the Xfce 4 Desktop Manager"
 #~ msgstr "Ustawienia XFCE 4 Menadżera Pulpitów"
@@ -1651,24 +1867,6 @@ msgstr "_Zamontuj"
 
 #~ msgid "S_tyle:"
 #~ msgstr "_Styl:"
-
-#~ msgid "Auto"
-#~ msgstr "Automatyczny"
-
-#~ msgid "Centered"
-#~ msgstr "Wyśrodkuj"
-
-#~ msgid "Tiled"
-#~ msgstr "Kafelki"
-
-#~ msgid "Stretched"
-#~ msgstr "Rozciągnięty"
-
-#~ msgid "Scaled"
-#~ msgstr "Skaluj"
-
-#~ msgid "Zoomed"
-#~ msgstr "Powiększenie"
 
 #~ msgid "Xfce will be unable to manage your desktop (%s)."
 #~ msgstr "Xfce nie będzie w stanie zarządzać pulpitem (%s)"
@@ -1716,15 +1914,6 @@ msgstr "_Zamontuj"
 #~ msgid "_Color Style:"
 #~ msgstr "Styl _koloru:"
 
-#~ msgid "Solid Color"
-#~ msgstr "Jednolity"
-
-#~ msgid "Horizontal Gradient"
-#~ msgstr "Gradient poziomy"
-
-#~ msgid "Vertical Gradient"
-#~ msgstr "Gradient pionowy"
-
 #~ msgid "Image"
 #~ msgstr "Obrazek"
 
@@ -1749,9 +1938,6 @@ msgstr "_Zamontuj"
 #~ msgid "Desktop Icons"
 #~ msgstr "Ikony pulpitu"
 
-#~ msgid "File/launcher icons"
-#~ msgstr "Pliki/ikony aktywatorów"
-
 #~ msgid "Use _system font size"
 #~ msgstr "Użyj _systemowego rozmiaru czcionki"
 
@@ -1760,6 +1946,9 @@ msgstr "_Zamontuj"
 
 #~ msgid "_Desktop Properties..."
 #~ msgstr "_Właściwości Pulpitu..."
+
+#~ msgid "Science"
+#~ msgstr "Nauka"
 
 #, fuzzy
 #~ msgid "Scientific applications and tools"
@@ -1865,3 +2054,7 @@ msgstr "_Zamontuj"
 
 #~ msgid "Delete the current entry"
 #~ msgstr "Usuń bieżący element"
+
+#, fuzzy
+#~ msgid "Scientific software"
+#~ msgstr "Oprogramowanie edukacyjne"

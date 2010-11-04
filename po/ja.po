@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.5.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-04 00:34+0100\n"
+"POT-Creation-Date: 2010-11-04 19:51+0100\n"
 "PO-Revision-Date: 2009-10-21 00:57+0900\n"
 "Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
@@ -170,6 +170,303 @@ msgstr "デスクトップ "
 msgid "Set desktop background and menu and icon behaviour"
 msgstr "デスクトップの背景およびメニューとアイコンの振る舞いを設定します"
 
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
+msgid "<b>Adjustments</b>"
+msgstr "<b>調整</b>"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
+msgid "<b>Colors</b>"
+msgstr "<b>色</b>"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
+msgid "<b>Image</b>"
+msgstr "<b>画像</b>"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
+msgid "<b>Images</b>"
+msgstr "<b>画像</b>"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
+msgid "Add an image to the list"
+msgstr "画像をリストに追加します"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
+#: ../settings/xfdesktop-settings-ui.glade.h:6
+msgid "Auto"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
+msgid "Automatically pick a random image from a list file"
+msgstr "リストファイルから自動的にランダムで画像を選びます"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
+msgid "B_rightness:"
+msgstr "明度(_R):"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
+#: ../settings/xfdesktop-settings-ui.glade.h:8
+msgid "Centered"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
+msgid "Create a new list, or load an existing one"
+msgstr "新規リストの作成または既存のリストを読み込みます"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
+msgid "Don't display an image at all"
+msgstr "すべての画像を表示しません"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
+#: ../settings/xfdesktop-settings-ui.glade.h:12
+msgid "Horizontal gradient"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
+msgid "Image _list"
+msgstr "画像リスト(_L)"
+
+# Tip Help
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
+msgid "Increase or decrease the brightness of the final image"
+msgstr "画像の最終的な明度を調整します"
+
+# Tip Help
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
+msgid "Increase or decrease the color saturation of the final image"
+msgstr "画像の最終的な彩度を調整します"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
+msgid "Remove the selected image(s) from the list"
+msgstr "選択された画像をリストから削除します"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
+msgid "Sa_turation:"
+msgstr "彩度(_T):"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
+#: ../settings/xfdesktop-settings-ui.glade.h:23
+msgid "Scaled"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
+msgid "Select First Color"
+msgstr "第一色の選択"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
+msgid "Select Second Color"
+msgstr "第二色の選択"
+
+# Tip Help
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
+msgid "Select a single image as the backdrop"
+msgstr "選択した単一の画像を背景にします"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
+#: ../settings/xfdesktop-settings-ui.glade.h:32
+msgid "Solid color"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
+msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
+msgstr "グラデーションの \"右側\" または \"下側\" の色を指定します"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
+msgid ""
+"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr "グラデーションの \"左側\" または \"上側\" の色を指定します"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
+msgid "Specify how the image will be resized to fit the screen"
+msgstr "画像を画面に合わせるスタイルを指定します"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
+msgid "Specify the style of the color drawn behind the backdrop image"
+msgstr "背景画像の後ろで描画される背景色のスタイルを指定します"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
+msgid "St_yle:"
+msgstr "スタイル(_Y):"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
+#: ../settings/xfdesktop-settings-ui.glade.h:34
+msgid "Stretched"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
+#: ../settings/xfdesktop-settings-ui.glade.h:35
+msgid "Tiled"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
+#: ../settings/xfdesktop-settings-ui.glade.h:36
+msgid "Transparent"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
+#: ../settings/xfdesktop-settings-ui.glade.h:39
+msgid "Vertical gradient"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
+#: ../settings/xfdesktop-settings-ui.glade.h:40
+msgid "Zoomed"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
+msgid "_None"
+msgstr "無し(_N)"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
+msgid "_Single image"
+msgstr "単一画像(_S)"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:1
+msgid "<b>Appearance</b>"
+msgstr "<b>外観</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:2
+msgid "<b>Default Icons</b>"
+msgstr "<b>デフォルトアイコン</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:3
+msgid "<b>Desktop Menu</b>"
+msgstr "<b>デスクトップメニュー</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:4
+msgid "<b>Window List Menu</b>"
+msgstr "<b>ウィンドウリストメニュー</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:5
+msgid "Alt"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:7
+msgid "B_utton:"
+msgstr "ボタン(_U):"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:9
+msgid "Control"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:729
+msgid "Desktop"
+msgstr "デスクトップ"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:11
+msgid "File/launcher icons"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:13
+#, fuzzy
+msgid "Icon _size:"
+msgstr "アイコンタイプ(_T):"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:14
+msgid "Icon _type:"
+msgstr "アイコンタイプ(_T):"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:15
+msgid "Label trans_parency:"
+msgstr "透明度(_P):"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:16
+msgid "Left"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:17
+msgid "Middle"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:18
+#, fuzzy
+msgid "Minimized application icons"
+msgstr ""
+"なし\n"
+"最小化されたアプリケーションアイコン\n"
+"ファイル/ランチャアイコン"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:19
+msgid "Mo_difier:"
+msgstr "変更日時(_D):"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:20
+msgid "Modi_fier:"
+msgstr "変更日時(_F):"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:21
+msgid "None"
+msgstr "無し"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:22
+msgid "Right"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:24
+msgid "Set desktop background and menu and icon behavior"
+msgstr "デスクトップの背景およびメニューとアイコンの振る舞いを設定します"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:25
+msgid "Sh_ow application icons in menu"
+msgstr "メニューにアイコンを表示する(_O)"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:26
+msgid "Shift"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:27
+msgid "Show _application icons in menu"
+msgstr "メニューにアイコンを表示する(_A)"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:28
+msgid "Show _window list menu on desktop middle click"
+msgstr "デスクトップ上での中央クリックでウィンドウリストを表示する(_W)"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:29
+msgid "Show applications menu on _desktop right click"
+msgstr "デスクトップ上での右クリックでアプリケーションメニューを表示する(_D)"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:30
+msgid "Show s_ticky windows only in active workspace"
+msgstr "アクティブワークスペースにのみスティッキーウィンドウを表示する(_T)"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:31
+msgid "Show workspace _names in list"
+msgstr "リストにワークスペース名を表示する(_N)"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:33
+msgid ""
+"Specify the transparency level for the rounded label drawn behind the icon "
+"text"
+msgstr "アイコンの文字の背景の透明度を指定してください"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:37
+msgid "Use _submenus for the windows in each workspace"
+msgstr "各ワークスペースのウィンドウをサブメニューで表示する(_U)"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:38
+msgid "Use custom _font size:"
+msgstr "指定フォントサイズを使用する(_F):"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:41
+msgid "_Background"
+msgstr "背景(_B)"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:42
+msgid "_Button:"
+msgstr "ボタン(_B):"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:43
+msgid "_Edit desktop menu"
+msgstr "デスクトップメニューの編集(_E)"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:44
+msgid "_Icons"
+msgstr "アイコン(_I)"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:45
+msgid "_Menus"
+msgstr "メニュー(_M)"
+
 #: ../src/main.c:234
 msgid "Display version information"
 msgstr "バージョン情報を表示する"
@@ -275,10 +572,6 @@ msgstr "ワークスペース %d を削除(_R)"
 msgid "_Remove Workspace '%s'"
 msgstr "ワークスペース '%s' を削除(_R)"
 
-#: ../src/xfce-desktop.c:729
-msgid "Desktop"
-msgstr "デスクトップ"
-
 #: ../src/xfce-desktop.c:1006
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
@@ -357,8 +650,8 @@ msgstr ""
 
 # FIXME: wtf
 #: ../src/xfdesktop-file-icon-manager.c:606
-#: ../src/xfdesktop-file-icon-manager.c:650 ../src/xfdesktop-file-utils.c:733
-#: ../src/xfdesktop-file-utils.c:748 ../src/xfdesktop-special-file-icon.c:447
+#: ../src/xfdesktop-file-icon-manager.c:650 ../src/xfdesktop-file-utils.c:799
+#: ../src/xfdesktop-file-utils.c:814 ../src/xfdesktop-special-file-icon.c:447
 msgid "Trash Error"
 msgstr "ゴミ箱エラー"
 
@@ -369,12 +662,12 @@ msgid "The selected files could not be trashed"
 msgstr "アプリケーション選択ウィンドウを開けませんでした。"
 
 #: ../src/xfdesktop-file-icon-manager.c:608
-#: ../src/xfdesktop-file-icon-manager.c:652 ../src/xfdesktop-file-utils.c:582
-#: ../src/xfdesktop-file-utils.c:632 ../src/xfdesktop-file-utils.c:691
-#: ../src/xfdesktop-file-utils.c:803 ../src/xfdesktop-file-utils.c:859
-#: ../src/xfdesktop-file-utils.c:909 ../src/xfdesktop-file-utils.c:959
-#: ../src/xfdesktop-file-utils.c:1036 ../src/xfdesktop-file-utils.c:1097
-#: ../src/xfdesktop-file-utils.c:1170 ../src/xfdesktop-file-utils.c:1248
+#: ../src/xfdesktop-file-icon-manager.c:652 ../src/xfdesktop-file-utils.c:648
+#: ../src/xfdesktop-file-utils.c:698 ../src/xfdesktop-file-utils.c:757
+#: ../src/xfdesktop-file-utils.c:869 ../src/xfdesktop-file-utils.c:925
+#: ../src/xfdesktop-file-utils.c:975 ../src/xfdesktop-file-utils.c:1025
+#: ../src/xfdesktop-file-utils.c:1102 ../src/xfdesktop-file-utils.c:1163
+#: ../src/xfdesktop-file-utils.c:1236 ../src/xfdesktop-file-utils.c:1314
 #, fuzzy
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
@@ -391,11 +684,11 @@ msgstr "\"%s\" を実行できません:"
 
 #: ../src/xfdesktop-file-icon-manager.c:754
 #: ../src/xfdesktop-file-icon-manager.c:998
-#: ../src/xfdesktop-file-icon-manager.c:1311 ../src/xfdesktop-file-utils.c:565
-#: ../src/xfdesktop-file-utils.c:580 ../src/xfdesktop-file-utils.c:942
-#: ../src/xfdesktop-file-utils.c:957 ../src/xfdesktop-file-utils.c:1009
-#: ../src/xfdesktop-file-utils.c:1034 ../src/xfdesktop-file-utils.c:1080
-#: ../src/xfdesktop-file-utils.c:1095
+#: ../src/xfdesktop-file-icon-manager.c:1311 ../src/xfdesktop-file-utils.c:631
+#: ../src/xfdesktop-file-utils.c:646 ../src/xfdesktop-file-utils.c:1008
+#: ../src/xfdesktop-file-utils.c:1023 ../src/xfdesktop-file-utils.c:1075
+#: ../src/xfdesktop-file-utils.c:1100 ../src/xfdesktop-file-utils.c:1146
+#: ../src/xfdesktop-file-utils.c:1161
 msgid "Launch Error"
 msgstr "実行エラー"
 
@@ -492,71 +785,73 @@ msgid "Load Error"
 msgstr "実行エラー"
 
 #: ../src/xfdesktop-file-icon-manager.c:2245
+#, fuzzy
 msgid "Failed to load the desktop folder"
-msgstr ""
+msgstr "画像リスト \"%s\" を作成できません"
 
 #. TRANSLATORS: file was modified less than one day ago
-#: ../src/xfdesktop-file-utils.c:132
+#: ../src/xfdesktop-file-utils.c:137
 #, c-format
 msgid "Today at %X"
 msgstr ""
 
 #. TRANSLATORS: file was modified less than two days ago
-#: ../src/xfdesktop-file-utils.c:136
+#: ../src/xfdesktop-file-utils.c:141
 #, c-format
 msgid "Yesterday at %X"
 msgstr ""
 
 #. Days from last week
-#: ../src/xfdesktop-file-utils.c:141
+#: ../src/xfdesktop-file-utils.c:146
 #, c-format
 msgid "%A at %X"
 msgstr ""
 
 #. Any other date
-#: ../src/xfdesktop-file-utils.c:144
+#: ../src/xfdesktop-file-utils.c:149
 #, c-format
 msgid "%x at %X"
 msgstr ""
 
 #. the file_time is invalid
-#: ../src/xfdesktop-file-utils.c:154
+#: ../src/xfdesktop-file-utils.c:159
 #, fuzzy
 msgid "Unknown"
 msgstr "(不明)"
 
-#: ../src/xfdesktop-file-utils.c:566 ../src/xfdesktop-file-utils.c:581
+#: ../src/xfdesktop-file-utils.c:632 ../src/xfdesktop-file-utils.c:647
 #, fuzzy
 msgid "The folder could not be opened"
 msgstr "アプリケーション選択ウィンドウを開けませんでした。"
 
-#: ../src/xfdesktop-file-utils.c:615 ../src/xfdesktop-file-utils.c:630
+#: ../src/xfdesktop-file-utils.c:681 ../src/xfdesktop-file-utils.c:696
 #, fuzzy
 msgid "Rename Error"
 msgstr "実行エラー"
 
-#: ../src/xfdesktop-file-utils.c:616 ../src/xfdesktop-file-utils.c:631
+#: ../src/xfdesktop-file-utils.c:682 ../src/xfdesktop-file-utils.c:697
 #, fuzzy
 msgid "The file could not be renamed"
 msgstr "アプリケーション選択ウィンドウを開けませんでした。"
 
-#: ../src/xfdesktop-file-utils.c:674 ../src/xfdesktop-file-utils.c:689
+#: ../src/xfdesktop-file-utils.c:740 ../src/xfdesktop-file-utils.c:755
 #, fuzzy
 msgid "Delete Error"
 msgstr "作成エラー"
 
-#: ../src/xfdesktop-file-utils.c:675 ../src/xfdesktop-file-utils.c:690
+#: ../src/xfdesktop-file-utils.c:741 ../src/xfdesktop-file-utils.c:756
 #, fuzzy
 msgid "The selected files could not be deleted"
 msgstr ""
 "関連付けられているアプリケーションが見つからないか、または実行できませんでし"
 "た。"
 
-#: ../src/xfdesktop-file-utils.c:734 ../src/xfdesktop-file-utils.c:749
+#: ../src/xfdesktop-file-utils.c:800 ../src/xfdesktop-file-utils.c:815
+#, fuzzy
 msgid "The selected files could not be moved to the trash"
-msgstr ""
+msgstr "アプリケーション選択ウィンドウを開けませんでした。"
 
-#: ../src/xfdesktop-file-utils.c:750
+#: ../src/xfdesktop-file-utils.c:816
 #, fuzzy
 msgid ""
 "This feature requires a trash service to be present (such as the one "
@@ -564,59 +859,60 @@ msgid ""
 msgstr ""
 "この機能には (Thunar が提供するような) ファイルマネージャサービスが必要です。"
 
-#: ../src/xfdesktop-file-utils.c:786 ../src/xfdesktop-file-utils.c:801
+#: ../src/xfdesktop-file-utils.c:852 ../src/xfdesktop-file-utils.c:867
 #, fuzzy
 msgid "Create File Error"
 msgstr "作成エラー"
 
-#: ../src/xfdesktop-file-utils.c:787 ../src/xfdesktop-file-utils.c:802
+#: ../src/xfdesktop-file-utils.c:853 ../src/xfdesktop-file-utils.c:868
+#, fuzzy
 msgid "Could not create a new file"
-msgstr ""
+msgstr "画像リスト \"%s\" を作成できません"
 
-#: ../src/xfdesktop-file-utils.c:842 ../src/xfdesktop-file-utils.c:857
+#: ../src/xfdesktop-file-utils.c:908 ../src/xfdesktop-file-utils.c:923
 #, fuzzy
 msgid "Create Document Error"
 msgstr "作成エラー"
 
-#: ../src/xfdesktop-file-utils.c:843 ../src/xfdesktop-file-utils.c:858
+#: ../src/xfdesktop-file-utils.c:909 ../src/xfdesktop-file-utils.c:924
 #, fuzzy
 msgid "Could not create a new document from the template"
 msgstr "テンプレート \"%s\" からドキュメントを作成"
 
-#: ../src/xfdesktop-file-utils.c:892 ../src/xfdesktop-file-utils.c:907
+#: ../src/xfdesktop-file-utils.c:958 ../src/xfdesktop-file-utils.c:973
 #, fuzzy
 msgid "File Properties Error"
 msgstr "プロパティエラー"
 
-#: ../src/xfdesktop-file-utils.c:893 ../src/xfdesktop-file-utils.c:908
+#: ../src/xfdesktop-file-utils.c:959 ../src/xfdesktop-file-utils.c:974
 #, fuzzy
 msgid "The file properties dialog could not be opened"
 msgstr "アプリケーション選択ウィンドウを開けませんでした。"
 
-#: ../src/xfdesktop-file-utils.c:943 ../src/xfdesktop-file-utils.c:958
+#: ../src/xfdesktop-file-utils.c:1009 ../src/xfdesktop-file-utils.c:1024
 #, fuzzy
 msgid "The file could not be opened"
 msgstr "アプリケーション選択ウィンドウを開けませんでした。"
 
-#: ../src/xfdesktop-file-utils.c:1006 ../src/xfdesktop-file-utils.c:1031
+#: ../src/xfdesktop-file-utils.c:1072 ../src/xfdesktop-file-utils.c:1097
 #, fuzzy, c-format
 msgid "Failed to run \"%s\""
 msgstr "\"%s\" の実行に失敗しました:"
 
-#: ../src/xfdesktop-file-utils.c:1081 ../src/xfdesktop-file-utils.c:1096
+#: ../src/xfdesktop-file-utils.c:1147 ../src/xfdesktop-file-utils.c:1162
 #, fuzzy
 msgid "The application chooser could not be opened"
 msgstr "アプリケーション選択ウィンドウを開けませんでした。"
 
 # FIXME: wtf
-#: ../src/xfdesktop-file-utils.c:1154 ../src/xfdesktop-file-utils.c:1168
-#: ../src/xfdesktop-file-utils.c:1230 ../src/xfdesktop-file-utils.c:1246
+#: ../src/xfdesktop-file-utils.c:1220 ../src/xfdesktop-file-utils.c:1234
+#: ../src/xfdesktop-file-utils.c:1296 ../src/xfdesktop-file-utils.c:1312
 #, fuzzy
 msgid "Transfer Error"
 msgstr "ゴミ箱エラー"
 
-#: ../src/xfdesktop-file-utils.c:1155 ../src/xfdesktop-file-utils.c:1169
-#: ../src/xfdesktop-file-utils.c:1231 ../src/xfdesktop-file-utils.c:1247
+#: ../src/xfdesktop-file-utils.c:1221 ../src/xfdesktop-file-utils.c:1235
+#: ../src/xfdesktop-file-utils.c:1297 ../src/xfdesktop-file-utils.c:1313
 #, fuzzy
 msgid "The file transfer could not be performed"
 msgstr "アプリケーション選択ウィンドウを開けませんでした。"
@@ -650,8 +946,9 @@ msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:211
+#, fuzzy
 msgid "Ejecting device"
-msgstr ""
+msgstr "マウント解除に失敗しました"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:214
@@ -758,6 +1055,87 @@ msgstr "取り出し(_J)"
 msgid "_Mount Volume"
 msgstr "マウント(_M)"
 
+#~ msgid "Unable to launch xfce4-menueditor: %s"
+#~ msgstr "xfce4-menueditor を実行できません: %s"
+
+#~ msgid "Select Icon"
+#~ msgstr "アイコンを選択してください"
+
+#~ msgid "Select Menu File"
+#~ msgstr "メニューファイルを選択してください"
+
+#~ msgid "All Files"
+#~ msgstr "すべてのファイル"
+
+#~ msgid "Image Files"
+#~ msgstr "画像ファイル"
+
+#~ msgid "Menu Files"
+#~ msgstr "メニューファイル"
+
+#~ msgid "Xfce Menu"
+#~ msgstr "Xfce メニュー"
+
+#~ msgid "Button"
+#~ msgstr "ボタン"
+
+#~ msgid "Button _title:"
+#~ msgstr "ボタンタイトル(_T):"
+
+#~ msgid "_Show title in button"
+#~ msgstr "ボタンにタイトルを表示する(_S)"
+
+#~ msgid "Menu File"
+#~ msgstr "メニューファイル"
+
+#~ msgid "Use default _desktop menu file"
+#~ msgstr "デフォルトのデスクトップメニューを使用する(_D)"
+
+#~ msgid "Use _custom menu file:"
+#~ msgstr "指定したメニューファイルを使用する(_C):"
+
+#~ msgid "_Edit Menu"
+#~ msgstr "メニューの編集(_E)"
+
+#~ msgid "Icons"
+#~ msgstr "アイコン"
+
+#~ msgid "_Button icon:"
+#~ msgstr "ボタンアイコン(_B):"
+
+#~ msgid "Show _icons in menu"
+#~ msgstr "メニューにアイコンを表示する(_I):"
+
+#~ msgid "There is already a panel menu registered for this screen"
+#~ msgstr "この画面には既にパネルメニューが登録されています"
+
+#~ msgid "Edit Menu"
+#~ msgstr "メニューの編集"
+
+#~ msgid "Shows a menu containing categories of installed applications"
+#~ msgstr ""
+#~ "インストール済みアプリケーションのカテゴリを含むメニューを表示します"
+
+#~ msgid "%s: Unknown option: %s\n"
+#~ msgstr "%s: 不明なオプション: %s\n"
+
+#~ msgid "Options are:\n"
+#~ msgstr "オプションは:\n"
+
+#~ msgid "    --reload      Reload all settings, refresh image list\n"
+#~ msgstr "    --reload      全ての設定を再読込みして画像リストを更新する\n"
+
+#~ msgid "    --menu        Pop up the menu (at the current mouse position)\n"
+#~ msgstr "    --menu        現在のマウス位置でメニューをポップアップする\n"
+
+#~ msgid ""
+#~ "    --windowlist  Pop up the window list (at the current mouse position)\n"
+#~ msgstr ""
+#~ "    --windowlist  現在のマウス位置でウィンドウリストをポップアップする\n"
+
+#~ msgid "    --quit        Cause xfdesktop to quit\n"
+#~ msgstr "    --quit        xfdesktop を終了させる\n"
+
 #~ msgid ""
 #~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 #~ msgstr ""
@@ -801,6 +1179,16 @@ msgstr "マウント(_M)"
 #~ msgid "Delete Multiple Files"
 #~ msgstr "複数のファイルを削除"
 
+#~ msgid "The application chooser could not be opened."
+#~ msgstr "アプリケーション選択ウィンドウを開けませんでした。"
+
+#~ msgid ""
+#~ "This feature requires a file manager service present (such as that "
+#~ "supplied by Thunar)."
+#~ msgstr ""
+#~ "この機能には (Thunar が提供するような) ファイルマネージャサービスが必要で"
+#~ "す。"
+
 #~ msgid "Unable to create folder named \"%s\":"
 #~ msgstr "フォルダ \"%s\" を作成できません:"
 
@@ -819,6 +1207,9 @@ msgstr "マウント(_M)"
 #~ msgid "Create File Failed"
 #~ msgstr "ファイルの作成に失敗しました"
 
+#~ msgid "Create Document from template \"%s\""
+#~ msgstr "テンプレート \"%s\" からドキュメントを作成"
+
 #~ msgid "Create Empty File"
 #~ msgstr "空のファイルの作成"
 
@@ -828,11 +1219,25 @@ msgstr "マウント(_M)"
 #~ msgid "Unable to create file \"%s\":"
 #~ msgstr "ファイル \"%s\" を作成できません:"
 
+#~ msgid "Create Error"
+#~ msgstr "作成エラー"
+
+#~ msgid "Failed to run \"%s\":"
+#~ msgstr "\"%s\" の実行に失敗しました:"
+
+#~ msgid "Run Error"
+#~ msgstr "実行エラー"
+
+#~ msgid "The associated application could not be found or executed."
+#~ msgstr ""
+#~ "関連付けられているアプリケーションが見つからないか、または実行できませんで"
+#~ "した。"
+
 #~ msgid "Unable to set default application for \"%s\" to \"%s\":"
 #~ msgstr "\"%s\" の標準アプリケーションを \"%s\" にできません:"
 
-#~ msgid "None"
-#~ msgstr "無し"
+#~ msgid "Properties Error"
+#~ msgstr "プロパティエラー"
 
 #~ msgid "Write only"
 #~ msgstr "書込専用"
@@ -854,6 +1259,9 @@ msgstr "マウント(_M)"
 
 #~ msgid "Link Target:"
 #~ msgstr "リンク先:"
+
+#~ msgid "(unknown)"
+#~ msgstr "(不明)"
 
 #~ msgid "Open With:"
 #~ msgstr "これで開く:"
@@ -931,75 +1339,29 @@ msgstr "マウント(_M)"
 #~ msgid "%s (%s total)"
 #~ msgstr "%s (合計 %s)"
 
+#~ msgid ""
+#~ "Kind: Removable Volume\n"
+#~ "Mount Point: %s\n"
+#~ "Free Space: %s"
+#~ msgstr ""
+#~ "種類: リムーバブルボリューム\n"
+#~ "マウントポイント: %s\n"
+#~ "空き容量: %s"
+
 #~ msgid "Unable to mount \"%s\":"
 #~ msgstr "\"%s\" をマウントできません:"
 
 #~ msgid "Unable to unmount \"%s\":"
 #~ msgstr "\"%s\" をマウント解除できません:"
 
+#~ msgid "Unmount Failed"
+#~ msgstr "マウント解除に失敗しました"
+
+#~ msgid "Unable to eject \"%s\":"
+#~ msgstr "\"%s\" を取り出せません:"
+
 #~ msgid "_Unmount Volume"
 #~ msgstr "マウント解除(_U)"
-
-#~ msgid "Unable to launch xfce4-menueditor: %s"
-#~ msgstr "xfce4-menueditor を実行できません: %s"
-
-#~ msgid "Select Icon"
-#~ msgstr "アイコンを選択してください"
-
-#~ msgid "Select Menu File"
-#~ msgstr "メニューファイルを選択してください"
-
-#~ msgid "All Files"
-#~ msgstr "すべてのファイル"
-
-#~ msgid "Image Files"
-#~ msgstr "画像ファイル"
-
-#~ msgid "Menu Files"
-#~ msgstr "メニューファイル"
-
-#~ msgid "Xfce Menu"
-#~ msgstr "Xfce メニュー"
-
-#~ msgid "Button"
-#~ msgstr "ボタン"
-
-#~ msgid "Button _title:"
-#~ msgstr "ボタンタイトル(_T):"
-
-#~ msgid "_Show title in button"
-#~ msgstr "ボタンにタイトルを表示する(_S)"
-
-#~ msgid "Menu File"
-#~ msgstr "メニューファイル"
-
-#~ msgid "Use default _desktop menu file"
-#~ msgstr "デフォルトのデスクトップメニューを使用する(_D)"
-
-#~ msgid "Use _custom menu file:"
-#~ msgstr "指定したメニューファイルを使用する(_C):"
-
-#~ msgid "_Edit Menu"
-#~ msgstr "メニューの編集(_E)"
-
-#~ msgid "Icons"
-#~ msgstr "アイコン"
-
-#~ msgid "_Button icon:"
-#~ msgstr "ボタンアイコン(_B):"
-
-#~ msgid "Show _icons in menu"
-#~ msgstr "メニューにアイコンを表示する(_I):"
-
-#~ msgid "There is already a panel menu registered for this screen"
-#~ msgstr "この画面には既にパネルメニューが登録されています"
-
-#~ msgid "Edit Menu"
-#~ msgstr "メニューの編集"
-
-#~ msgid "Shows a menu containing categories of installed applications"
-#~ msgstr ""
-#~ "インストール済みアプリケーションのカテゴリを含むメニューを表示します"
 
 #~ msgid "Accessories"
 #~ msgstr "アクセサリ"
@@ -1055,12 +1417,6 @@ msgstr "マウント(_M)"
 #~ msgid "Other"
 #~ msgstr "その他"
 
-#~ msgid "Science"
-#~ msgstr "科学"
-
-#~ msgid "Scientific software"
-#~ msgstr "科学ソフトウェア"
-
 #~ msgid "Screensaver applets"
 #~ msgstr "スクリーンセーバーアプレット"
 
@@ -1109,6 +1465,9 @@ msgstr "マウント(_M)"
 #~ msgid "Run a program"
 #~ msgstr "プログラムを実行します"
 
+#~ msgid "Terminal"
+#~ msgstr "ターミナル"
+
 #~ msgid "Terminal emulator"
 #~ msgstr "ターミナルエミュレータ"
 
@@ -1117,33 +1476,6 @@ msgstr "マウント(_M)"
 
 #~ msgid "Web Browser"
 #~ msgstr "ウェブブラウザ"
-
-#~ msgid "<b>Adjustments</b>"
-#~ msgstr "<b>調整</b>"
-
-#~ msgid "<b>Appearance</b>"
-#~ msgstr "<b>外観</b>"
-
-#~ msgid "<b>Colors</b>"
-#~ msgstr "<b>色</b>"
-
-#~ msgid "<b>Default Icons</b>"
-#~ msgstr "<b>デフォルトアイコン</b>"
-
-#~ msgid "<b>Desktop Menu</b>"
-#~ msgstr "<b>デスクトップメニュー</b>"
-
-#~ msgid "<b>Image</b>"
-#~ msgstr "<b>画像</b>"
-
-#~ msgid "<b>Images</b>"
-#~ msgstr "<b>画像</b>"
-
-#~ msgid "<b>Window List Menu</b>"
-#~ msgstr "<b>ウィンドウリストメニュー</b>"
-
-#~ msgid "Add an image to the list"
-#~ msgstr "画像をリストに追加します"
 
 #~ msgid ""
 #~ "Auto\n"
@@ -1160,38 +1492,6 @@ msgstr "マウント(_M)"
 #~ "長辺を画面に合わせる\n"
 #~ "短辺を画面に合わせる"
 
-#~ msgid "Automatically pick a random image from a list file"
-#~ msgstr "リストファイルから自動的にランダムで画像を選びます"
-
-#~ msgid "B_rightness:"
-#~ msgstr "明度(_R):"
-
-#~ msgid "B_utton:"
-#~ msgstr "ボタン(_U):"
-
-#~ msgid "Create a new list, or load an existing one"
-#~ msgstr "新規リストの作成または既存のリストを読み込みます"
-
-#~ msgid "Don't display an image at all"
-#~ msgstr "すべての画像を表示しません"
-
-#~ msgid "Icon _type:"
-#~ msgstr "アイコンタイプ(_T):"
-
-#~ msgid "Image _list"
-#~ msgstr "画像リスト(_L)"
-
-# Tip Help
-#~ msgid "Increase or decrease the brightness of the final image"
-#~ msgstr "画像の最終的な明度を調整します"
-
-# Tip Help
-#~ msgid "Increase or decrease the color saturation of the final image"
-#~ msgstr "画像の最終的な彩度を調整します"
-
-#~ msgid "Label trans_parency:"
-#~ msgstr "透明度(_P):"
-
 #~ msgid ""
 #~ "Left\n"
 #~ "Middle\n"
@@ -1200,12 +1500,6 @@ msgstr "マウント(_M)"
 #~ "左\n"
 #~ "中央\n"
 #~ "右"
-
-#~ msgid "Mo_difier:"
-#~ msgstr "変更日時(_D):"
-
-#~ msgid "Modi_fier:"
-#~ msgstr "変更日時(_F):"
 
 #~ msgid ""
 #~ "None\n"
@@ -1227,44 +1521,6 @@ msgstr "マウント(_M)"
 #~ "Alt\n"
 #~ "Control"
 
-#~ msgid "Remove the selected image(s) from the list"
-#~ msgstr "選択された画像をリストから削除します"
-
-#~ msgid "Sa_turation:"
-#~ msgstr "彩度(_T):"
-
-#~ msgid "Select First Color"
-#~ msgstr "第一色の選択"
-
-#~ msgid "Select Second Color"
-#~ msgstr "第二色の選択"
-
-# Tip Help
-#~ msgid "Select a single image as the backdrop"
-#~ msgstr "選択した単一の画像を背景にします"
-
-#~ msgid "Set desktop background and menu and icon behavior"
-#~ msgstr "デスクトップの背景およびメニューとアイコンの振る舞いを設定します"
-
-#~ msgid "Sh_ow application icons in menu"
-#~ msgstr "メニューにアイコンを表示する(_O)"
-
-#~ msgid "Show _application icons in menu"
-#~ msgstr "メニューにアイコンを表示する(_A)"
-
-#~ msgid "Show _window list menu on desktop middle click"
-#~ msgstr "デスクトップ上での中央クリックでウィンドウリストを表示する(_W)"
-
-#~ msgid "Show applications menu on _desktop right click"
-#~ msgstr ""
-#~ "デスクトップ上での右クリックでアプリケーションメニューを表示する(_D)"
-
-#~ msgid "Show s_ticky windows only in active workspace"
-#~ msgstr "アクティブワークスペースにのみスティッキーウィンドウを表示する(_T)"
-
-#~ msgid "Show workspace _names in list"
-#~ msgstr "リストにワークスペース名を表示する(_N)"
-
 #~ msgid ""
 #~ "Solid color\n"
 #~ "Horizontal gradient\n"
@@ -1276,63 +1532,14 @@ msgstr "マウント(_M)"
 #~ "垂直グラデーション\n"
 #~ "透明"
 
-#~ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-#~ msgstr "グラデーションの \"右側\" または \"下側\" の色を指定します"
-
-#~ msgid ""
-#~ "Specifies the solid color, or the \"left\" or \"top\" color of the "
-#~ "gradient"
-#~ msgstr "グラデーションの \"左側\" または \"上側\" の色を指定します"
-
-#~ msgid "Specify how the image will be resized to fit the screen"
-#~ msgstr "画像を画面に合わせるスタイルを指定します"
-
-#~ msgid "Specify the style of the color drawn behind the backdrop image"
-#~ msgstr "背景画像の後ろで描画される背景色のスタイルを指定します"
-
-#~ msgid ""
-#~ "Specify the transparency level for the rounded label drawn behind the "
-#~ "icon text"
-#~ msgstr "アイコンの文字の背景の透明度を指定してください"
-
-#~ msgid "St_yle:"
-#~ msgstr "スタイル(_Y):"
-
-#~ msgid "Use _submenus for the windows in each workspace"
-#~ msgstr "各ワークスペースのウィンドウをサブメニューで表示する(_U)"
-
-#~ msgid "Use custom _font size:"
-#~ msgstr "指定フォントサイズを使用する(_F):"
-
-#~ msgid "_Background"
-#~ msgstr "背景(_B)"
-
-#~ msgid "_Button:"
-#~ msgstr "ボタン(_B):"
-
-#~ msgid "_Edit desktop menu"
-#~ msgstr "デスクトップメニューの編集(_E)"
-
-#~ msgid "_Icons"
-#~ msgstr "アイコン(_I)"
-
-#~ msgid "_Menus"
-#~ msgstr "メニュー(_M)"
-
-#~ msgid "_None"
-#~ msgstr "無し(_N)"
-
-#~ msgid "_Single image"
-#~ msgstr "単一画像(_S)"
-
-#~ msgid "%s: Unknown option: %s\n"
-#~ msgstr "%s: 不明なオプション: %s\n"
-
-#~ msgid "Options are:\n"
-#~ msgstr "オプションは:\n"
-
 #~ msgid "gtk-close"
 #~ msgstr "閉じる"
 
 #~ msgid "gtk-help"
 #~ msgstr "ヘルプ"
+
+#~ msgid "Science"
+#~ msgstr "科学"
+
+#~ msgid "Scientific software"
+#~ msgstr "科学ソフトウェア"

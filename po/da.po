@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-04 00:34+0100\n"
+"POT-Creation-Date: 2010-11-04 19:51+0100\n"
 "PO-Revision-Date: 2009-12-18 18:46+0100\n"
 "Last-Translator: Per Kongstad <p_kongstad@op.pl>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -168,6 +168,303 @@ msgstr "Skrivebord "
 msgid "Set desktop background and menu and icon behaviour"
 msgstr "Indstil skrivebordsbaggrund og menu- samt ikonopførsel"
 
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
+msgid "<b>Adjustments</b>"
+msgstr "<b>Justeringer</b>"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
+msgid "<b>Colors</b>"
+msgstr "<b>Farver</b>"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
+msgid "<b>Image</b>"
+msgstr "<b>Billede</b>"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
+msgid "<b>Images</b>"
+msgstr "<b>Billeder</b>"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
+msgid "Add an image to the list"
+msgstr "Tilføj et billede til listen"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
+#: ../settings/xfdesktop-settings-ui.glade.h:6
+msgid "Auto"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
+msgid "Automatically pick a random image from a list file"
+msgstr "Udvælg automatisk et tilfældigt billede fra en filliste"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
+msgid "B_rightness:"
+msgstr "_Lysstyrke:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
+#: ../settings/xfdesktop-settings-ui.glade.h:8
+msgid "Centered"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
+msgid "Create a new list, or load an existing one"
+msgstr "Opret en ny liste eller indlæs en eksisterende"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
+msgid "Don't display an image at all"
+msgstr "Vis ikke billeder overhovedet"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
+#: ../settings/xfdesktop-settings-ui.glade.h:12
+msgid "Horizontal gradient"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
+msgid "Image _list"
+msgstr "Billed_liste"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
+msgid "Increase or decrease the brightness of the final image"
+msgstr "Forøg eller formindsk lysstyrke af det sidste billede"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
+msgid "Increase or decrease the color saturation of the final image"
+msgstr "Forøg eller formindsk farvemætning af det sidste billede"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
+msgid "Remove the selected image(s) from the list"
+msgstr "Fjern de(t) markerede billede(r) fra listen"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
+msgid "Sa_turation:"
+msgstr "Mæt_ning:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
+#: ../settings/xfdesktop-settings-ui.glade.h:23
+msgid "Scaled"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
+msgid "Select First Color"
+msgstr "Vælg første farve"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
+msgid "Select Second Color"
+msgstr "Vælg anden farve"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
+msgid "Select a single image as the backdrop"
+msgstr "Vælg et enkelt billede som baggrund"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
+#: ../settings/xfdesktop-settings-ui.glade.h:32
+msgid "Solid color"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
+msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
+msgstr "Angiver den \"højre\" eller \"'bund\" af farveaftagningen"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
+msgid ""
+"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr ""
+"Angiver den ensartede farve, eller \"venstre\" eller \"'top\" af "
+"farveaftagningen"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
+msgid "Specify how the image will be resized to fit the screen"
+msgstr "Angiv, hvordan billede vil blive tilpasset til at passe til skærmen"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
+msgid "Specify the style of the color drawn behind the backdrop image"
+msgstr "Angiv stilen til farven bag baggrundbillede"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
+msgid "St_yle:"
+msgstr "S_til:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
+#: ../settings/xfdesktop-settings-ui.glade.h:34
+msgid "Stretched"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
+#: ../settings/xfdesktop-settings-ui.glade.h:35
+msgid "Tiled"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
+#: ../settings/xfdesktop-settings-ui.glade.h:36
+msgid "Transparent"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
+#: ../settings/xfdesktop-settings-ui.glade.h:39
+msgid "Vertical gradient"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
+#: ../settings/xfdesktop-settings-ui.glade.h:40
+msgid "Zoomed"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
+msgid "_None"
+msgstr "_Ingen"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
+msgid "_Single image"
+msgstr "_Enkeltbillede"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:1
+msgid "<b>Appearance</b>"
+msgstr "<b>Udseende</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:2
+msgid "<b>Default Icons</b>"
+msgstr "<b>Standardikoner</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:3
+msgid "<b>Desktop Menu</b>"
+msgstr "<b>Skrivebordsmenu</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:4
+msgid "<b>Window List Menu</b>"
+msgstr "<b>Vindueslistemenu</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:5
+msgid "Alt"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:7
+msgid "B_utton:"
+msgstr "_Knap:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:9
+#, fuzzy
+msgid "Control"
+msgstr "Bidragsyder"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:729
+msgid "Desktop"
+msgstr "Skrivebord"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:11
+msgid "File/launcher icons"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:13
+msgid "Icon _size:"
+msgstr "Ikon_størrelse:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:14
+msgid "Icon _type:"
+msgstr "Ikon_type:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:15
+msgid "Label trans_parency:"
+msgstr "Etiket_gennemsigtighed:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:16
+msgid "Left"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:17
+msgid "Middle"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:18
+#, fuzzy
+msgid "Minimized application icons"
+msgstr ""
+"Intet\n"
+"Miniatureprogramikoner\n"
+"Fil-/starterikoner"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:19
+msgid "Mo_difier:"
+msgstr "Ju_stéring:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:20
+msgid "Modi_fier:"
+msgstr "Jus_téring:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:21
+msgid "None"
+msgstr "Ingen"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:22
+msgid "Right"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:24
+msgid "Set desktop background and menu and icon behavior"
+msgstr "Indstil skrivebordsbaggrund og menu- samt ikonopførsel"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:25
+msgid "Sh_ow application icons in menu"
+msgstr "Vis _programikoner på menu"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:26
+msgid "Shift"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:27
+msgid "Show _application icons in menu"
+msgstr "Vis _programikoner på menu"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:28
+msgid "Show _window list menu on desktop middle click"
+msgstr "Vis _vindueslistemenu ved midterklik på skrivebord"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:29
+msgid "Show applications menu on _desktop right click"
+msgstr "Vis skrivebords_menu ved højreklik på skrivebord"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:30
+msgid "Show s_ticky windows only in active workspace"
+msgstr "Vis kun _klæbende vinduer i aktive arbejdsområder"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:31
+msgid "Show workspace _names in list"
+msgstr "Vis arbejdsområde_navne på liste"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:33
+msgid ""
+"Specify the transparency level for the rounded label drawn behind the icon "
+"text"
+msgstr ""
+"Angiv det gennemsigtige niveau til afrundet mærkat trukket bag ikonteksten"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:37
+msgid "Use _submenus for the windows in each workspace"
+msgstr "Brug _undermenuer til vinduer på hvert arbejdsområde"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:38
+msgid "Use custom _font size:"
+msgstr "Brug _tilpasset skriftstørrelse:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:41
+msgid "_Background"
+msgstr "_Baggrund"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:42
+msgid "_Button:"
+msgstr "_Knap:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:43
+msgid "_Edit desktop menu"
+msgstr "_Redigér skrivebordsmenu"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:44
+msgid "_Icons"
+msgstr "_Ikoner"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:45
+msgid "_Menus"
+msgstr "_Menuer"
+
 #: ../src/main.c:234
 msgid "Display version information"
 msgstr "Vis versionsinformation"
@@ -273,10 +570,6 @@ msgstr "_Fjern arbejdsområde %d"
 msgid "_Remove Workspace '%s'"
 msgstr "F_jern arbejdsområde '%s'"
 
-#: ../src/xfce-desktop.c:729
-msgid "Desktop"
-msgstr "Skrivebord"
-
 #: ../src/xfce-desktop.c:1006
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
@@ -353,8 +646,8 @@ msgstr ""
 "eller omdøbe den."
 
 #: ../src/xfdesktop-file-icon-manager.c:606
-#: ../src/xfdesktop-file-icon-manager.c:650 ../src/xfdesktop-file-utils.c:733
-#: ../src/xfdesktop-file-utils.c:748 ../src/xfdesktop-special-file-icon.c:447
+#: ../src/xfdesktop-file-icon-manager.c:650 ../src/xfdesktop-file-utils.c:799
+#: ../src/xfdesktop-file-utils.c:814 ../src/xfdesktop-special-file-icon.c:447
 msgid "Trash Error"
 msgstr "Papirkurvsfejl"
 
@@ -364,12 +657,12 @@ msgid "The selected files could not be trashed"
 msgstr "Den valgte fil kunne ikke slettes"
 
 #: ../src/xfdesktop-file-icon-manager.c:608
-#: ../src/xfdesktop-file-icon-manager.c:652 ../src/xfdesktop-file-utils.c:582
-#: ../src/xfdesktop-file-utils.c:632 ../src/xfdesktop-file-utils.c:691
-#: ../src/xfdesktop-file-utils.c:803 ../src/xfdesktop-file-utils.c:859
-#: ../src/xfdesktop-file-utils.c:909 ../src/xfdesktop-file-utils.c:959
-#: ../src/xfdesktop-file-utils.c:1036 ../src/xfdesktop-file-utils.c:1097
-#: ../src/xfdesktop-file-utils.c:1170 ../src/xfdesktop-file-utils.c:1248
+#: ../src/xfdesktop-file-icon-manager.c:652 ../src/xfdesktop-file-utils.c:648
+#: ../src/xfdesktop-file-utils.c:698 ../src/xfdesktop-file-utils.c:757
+#: ../src/xfdesktop-file-utils.c:869 ../src/xfdesktop-file-utils.c:925
+#: ../src/xfdesktop-file-utils.c:975 ../src/xfdesktop-file-utils.c:1025
+#: ../src/xfdesktop-file-utils.c:1102 ../src/xfdesktop-file-utils.c:1163
+#: ../src/xfdesktop-file-utils.c:1236 ../src/xfdesktop-file-utils.c:1314
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
@@ -386,11 +679,11 @@ msgstr "Kunne ikke starte \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:754
 #: ../src/xfdesktop-file-icon-manager.c:998
-#: ../src/xfdesktop-file-icon-manager.c:1311 ../src/xfdesktop-file-utils.c:565
-#: ../src/xfdesktop-file-utils.c:580 ../src/xfdesktop-file-utils.c:942
-#: ../src/xfdesktop-file-utils.c:957 ../src/xfdesktop-file-utils.c:1009
-#: ../src/xfdesktop-file-utils.c:1034 ../src/xfdesktop-file-utils.c:1080
-#: ../src/xfdesktop-file-utils.c:1095
+#: ../src/xfdesktop-file-icon-manager.c:1311 ../src/xfdesktop-file-utils.c:631
+#: ../src/xfdesktop-file-utils.c:646 ../src/xfdesktop-file-utils.c:1008
+#: ../src/xfdesktop-file-utils.c:1023 ../src/xfdesktop-file-utils.c:1075
+#: ../src/xfdesktop-file-utils.c:1100 ../src/xfdesktop-file-utils.c:1146
+#: ../src/xfdesktop-file-utils.c:1161
 msgid "Launch Error"
 msgstr "Starterfejl"
 
@@ -487,59 +780,59 @@ msgid "Failed to load the desktop folder"
 msgstr "Kunne ikke indlæse skrivebordsmappen"
 
 #. TRANSLATORS: file was modified less than one day ago
-#: ../src/xfdesktop-file-utils.c:132
+#: ../src/xfdesktop-file-utils.c:137
 #, c-format
 msgid "Today at %X"
 msgstr "I dag klokken %X"
 
 #. TRANSLATORS: file was modified less than two days ago
-#: ../src/xfdesktop-file-utils.c:136
+#: ../src/xfdesktop-file-utils.c:141
 #, c-format
 msgid "Yesterday at %X"
 msgstr "I går klokken %X"
 
 #. Days from last week
-#: ../src/xfdesktop-file-utils.c:141
+#: ../src/xfdesktop-file-utils.c:146
 #, c-format
 msgid "%A at %X"
 msgstr "%A klokken %X"
 
 #. Any other date
-#: ../src/xfdesktop-file-utils.c:144
+#: ../src/xfdesktop-file-utils.c:149
 #, c-format
 msgid "%x at %X"
 msgstr "%x klokken %X"
 
 #. the file_time is invalid
-#: ../src/xfdesktop-file-utils.c:154
+#: ../src/xfdesktop-file-utils.c:159
 msgid "Unknown"
 msgstr "Ukendt"
 
-#: ../src/xfdesktop-file-utils.c:566 ../src/xfdesktop-file-utils.c:581
+#: ../src/xfdesktop-file-utils.c:632 ../src/xfdesktop-file-utils.c:647
 msgid "The folder could not be opened"
 msgstr "Mappen kunne ikke åbnes"
 
-#: ../src/xfdesktop-file-utils.c:615 ../src/xfdesktop-file-utils.c:630
+#: ../src/xfdesktop-file-utils.c:681 ../src/xfdesktop-file-utils.c:696
 msgid "Rename Error"
 msgstr "Omdøbningsfejl"
 
-#: ../src/xfdesktop-file-utils.c:616 ../src/xfdesktop-file-utils.c:631
+#: ../src/xfdesktop-file-utils.c:682 ../src/xfdesktop-file-utils.c:697
 msgid "The file could not be renamed"
 msgstr "Filen kunne ikke omdøbes"
 
-#: ../src/xfdesktop-file-utils.c:674 ../src/xfdesktop-file-utils.c:689
+#: ../src/xfdesktop-file-utils.c:740 ../src/xfdesktop-file-utils.c:755
 msgid "Delete Error"
 msgstr "Sletningsfejl"
 
-#: ../src/xfdesktop-file-utils.c:675 ../src/xfdesktop-file-utils.c:690
+#: ../src/xfdesktop-file-utils.c:741 ../src/xfdesktop-file-utils.c:756
 msgid "The selected files could not be deleted"
 msgstr "De valgte filer kunne ikke slettes"
 
-#: ../src/xfdesktop-file-utils.c:734 ../src/xfdesktop-file-utils.c:749
+#: ../src/xfdesktop-file-utils.c:800 ../src/xfdesktop-file-utils.c:815
 msgid "The selected files could not be moved to the trash"
 msgstr "De valgte filer kunne ikke flyttes til papirklurven."
 
-#: ../src/xfdesktop-file-utils.c:750
+#: ../src/xfdesktop-file-utils.c:816
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
@@ -547,50 +840,50 @@ msgstr ""
 "Denne egenskab kræver at en filhåndteringsservice er tilstede (som den "
 "Thunar levererer)."
 
-#: ../src/xfdesktop-file-utils.c:786 ../src/xfdesktop-file-utils.c:801
+#: ../src/xfdesktop-file-utils.c:852 ../src/xfdesktop-file-utils.c:867
 msgid "Create File Error"
 msgstr "Fejl ved oprettelse af fil"
 
-#: ../src/xfdesktop-file-utils.c:787 ../src/xfdesktop-file-utils.c:802
+#: ../src/xfdesktop-file-utils.c:853 ../src/xfdesktop-file-utils.c:868
 msgid "Could not create a new file"
 msgstr "Kunne ikke oprette en ny fil"
 
-#: ../src/xfdesktop-file-utils.c:842 ../src/xfdesktop-file-utils.c:857
+#: ../src/xfdesktop-file-utils.c:908 ../src/xfdesktop-file-utils.c:923
 msgid "Create Document Error"
 msgstr "Fejl ved oprettelse af dokument"
 
-#: ../src/xfdesktop-file-utils.c:843 ../src/xfdesktop-file-utils.c:858
+#: ../src/xfdesktop-file-utils.c:909 ../src/xfdesktop-file-utils.c:924
 msgid "Could not create a new document from the template"
 msgstr "Kunne ikke oprette et nyt dokument fra skabelonen"
 
-#: ../src/xfdesktop-file-utils.c:892 ../src/xfdesktop-file-utils.c:907
+#: ../src/xfdesktop-file-utils.c:958 ../src/xfdesktop-file-utils.c:973
 msgid "File Properties Error"
 msgstr "Fejl ved filegenskaber"
 
-#: ../src/xfdesktop-file-utils.c:893 ../src/xfdesktop-file-utils.c:908
+#: ../src/xfdesktop-file-utils.c:959 ../src/xfdesktop-file-utils.c:974
 msgid "The file properties dialog could not be opened"
 msgstr "Filegenskabsdialogen kunne ikke åbnes"
 
-#: ../src/xfdesktop-file-utils.c:943 ../src/xfdesktop-file-utils.c:958
+#: ../src/xfdesktop-file-utils.c:1009 ../src/xfdesktop-file-utils.c:1024
 msgid "The file could not be opened"
 msgstr "Filen kunne ikke åbnes"
 
-#: ../src/xfdesktop-file-utils.c:1006 ../src/xfdesktop-file-utils.c:1031
+#: ../src/xfdesktop-file-utils.c:1072 ../src/xfdesktop-file-utils.c:1097
 #, c-format
 msgid "Failed to run \"%s\""
 msgstr "Kunne ikke køre \"%s\""
 
-#: ../src/xfdesktop-file-utils.c:1081 ../src/xfdesktop-file-utils.c:1096
+#: ../src/xfdesktop-file-utils.c:1147 ../src/xfdesktop-file-utils.c:1162
 msgid "The application chooser could not be opened"
 msgstr "Programvælgeren kunne ikke åbnes"
 
-#: ../src/xfdesktop-file-utils.c:1154 ../src/xfdesktop-file-utils.c:1168
-#: ../src/xfdesktop-file-utils.c:1230 ../src/xfdesktop-file-utils.c:1246
+#: ../src/xfdesktop-file-utils.c:1220 ../src/xfdesktop-file-utils.c:1234
+#: ../src/xfdesktop-file-utils.c:1296 ../src/xfdesktop-file-utils.c:1312
 msgid "Transfer Error"
 msgstr "Overførselsfejl"
 
-#: ../src/xfdesktop-file-utils.c:1155 ../src/xfdesktop-file-utils.c:1169
-#: ../src/xfdesktop-file-utils.c:1231 ../src/xfdesktop-file-utils.c:1247
+#: ../src/xfdesktop-file-utils.c:1221 ../src/xfdesktop-file-utils.c:1235
+#: ../src/xfdesktop-file-utils.c:1297 ../src/xfdesktop-file-utils.c:1313
 msgid "The file transfer could not be performed"
 msgstr "Filoverførsel kunne ikke udføres"
 
@@ -736,6 +1029,88 @@ msgstr "_Udskub arkiv"
 msgid "_Mount Volume"
 msgstr "_Montér arkiv"
 
+#~ msgid "Unable to launch xfce4-menueditor: %s"
+#~ msgstr "Kunne ikke starte Xfce4-menuredigering: %s"
+
+#~ msgid "Select Icon"
+#~ msgstr "Vælg ikon"
+
+#~ msgid "Select Menu File"
+#~ msgstr "Vælg menufil"
+
+#~ msgid "All Files"
+#~ msgstr "Alle filer"
+
+#~ msgid "Image Files"
+#~ msgstr "Billedfiler"
+
+#~ msgid "Menu Files"
+#~ msgstr "Menufiler"
+
+#~ msgid "Xfce Menu"
+#~ msgstr "Xfce-menu"
+
+#~ msgid "Button"
+#~ msgstr "Knap"
+
+#~ msgid "Button _title:"
+#~ msgstr "Knap_titel:"
+
+#~ msgid "_Show title in button"
+#~ msgstr "_Vis titel på knap"
+
+#~ msgid "Menu File"
+#~ msgstr "Menufil"
+
+#~ msgid "Use default _desktop menu file"
+#~ msgstr "Brug _standardskrivebords-menufil"
+
+#~ msgid "Use _custom menu file:"
+#~ msgstr "Brug _tilpasset menufil:"
+
+#~ msgid "_Edit Menu"
+#~ msgstr "_Redigér menu"
+
+#~ msgid "Icons"
+#~ msgstr "Ikoner"
+
+#~ msgid "_Button icon:"
+#~ msgstr "_Knapikon:"
+
+#~ msgid "Show _icons in menu"
+#~ msgstr "Vis _ikoner på menuen"
+
+#~ msgid "There is already a panel menu registered for this screen"
+#~ msgstr "Der er allerede en panelmenu registreret for denne skærm"
+
+#~ msgid "Edit Menu"
+#~ msgstr "Redigér menu"
+
+#~ msgid "Shows a menu containing categories of installed applications"
+#~ msgstr "Viser en menu indeholdende kategorier af installerede programmer"
+
+#~ msgid "%s: Unknown option: %s\n"
+#~ msgstr "%s: Ukendt tilvalg: %s\n"
+
+#~ msgid "Options are:\n"
+#~ msgstr "Tilvalgmuligheder er:\n"
+
+#~ msgid "    --reload      Reload all settings, refresh image list\n"
+#~ msgstr ""
+#~ "    --reload      Genindlæs alle indstillinger og genopfrisk "
+#~ "billledliste\n"
+
+#~ msgid "    --menu        Pop up the menu (at the current mouse position)\n"
+#~ msgstr "    --menu        Åben menuen (på musens nuværende position)\n"
+
+#~ msgid ""
+#~ "    --windowlist  Pop up the window list (at the current mouse position)\n"
+#~ msgstr ""
+#~ "    --windowlist  Åben vindueslisten (på musens nuværende position)\n"
+
+#~ msgid "    --quit        Cause xfdesktop to quit\n"
+#~ msgstr "    --quit        Vil afslutte xfdesktop\n"
+
 #~ msgid ""
 #~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 #~ msgstr ""
@@ -779,6 +1154,16 @@ msgstr "_Montér arkiv"
 #~ msgid "Delete Multiple Files"
 #~ msgstr "Slet flere filer"
 
+#~ msgid "The application chooser could not be opened."
+#~ msgstr "Programvælgeren kunne ikke startes."
+
+#~ msgid ""
+#~ "This feature requires a file manager service present (such as that "
+#~ "supplied by Thunar)."
+#~ msgstr ""
+#~ "Denne egenskab kræver at en filhåndteringsservice er tilstede (som den "
+#~ "Thunar levererer)."
+
 #~ msgid "Unable to create folder named \"%s\":"
 #~ msgstr "Kunne ikke oprette mappe navngivet \"%s\":"
 
@@ -797,6 +1182,9 @@ msgstr "_Montér arkiv"
 #~ msgid "Create File Failed"
 #~ msgstr "Kunne ikke oprette fil"
 
+#~ msgid "Create Document from template \"%s\""
+#~ msgstr "Opret dokument fra skabelon \"%s\""
+
 #~ msgid "Create Empty File"
 #~ msgstr "Opret tom fil"
 
@@ -806,11 +1194,23 @@ msgstr "_Montér arkiv"
 #~ msgid "Unable to create file \"%s\":"
 #~ msgstr "Kunne ikke oprette fil \"%s\":"
 
+#~ msgid "Create Error"
+#~ msgstr "Oprettelsesfejl"
+
+#~ msgid "Failed to run \"%s\":"
+#~ msgstr "Kunne ikke køre \"%s\":"
+
+#~ msgid "Run Error"
+#~ msgstr "Kørselsfejl"
+
+#~ msgid "The associated application could not be found or executed."
+#~ msgstr "Det tilknyttede program kunne ikke findes eller køres."
+
 #~ msgid "Unable to set default application for \"%s\" to \"%s\":"
 #~ msgstr "Kunne ikke indstille standardprogram for \"%s\" til \"%s\":"
 
-#~ msgid "None"
-#~ msgstr "Ingen"
+#~ msgid "Properties Error"
+#~ msgstr "Egenskabsfejl"
 
 #~ msgid "Write only"
 #~ msgstr "Skriv kun"
@@ -832,6 +1232,9 @@ msgstr "_Montér arkiv"
 
 #~ msgid "Link Target:"
 #~ msgstr "Henvisningmål:"
+
+#~ msgid "(unknown)"
+#~ msgstr "(ukendt)"
 
 #~ msgid "Open With:"
 #~ msgstr "Åben med:"
@@ -908,74 +1311,29 @@ msgstr "_Montér arkiv"
 #~ msgid "%s (%s total)"
 #~ msgstr "%s (%s total)"
 
+#~ msgid ""
+#~ "Kind: Removable Volume\n"
+#~ "Mount Point: %s\n"
+#~ "Free Space: %s"
+#~ msgstr ""
+#~ "Type: Fjernbart arkiv\n"
+#~ "Monteringspunkt: %s\n"
+#~ "Fri plads: %s"
+
 #~ msgid "Unable to mount \"%s\":"
 #~ msgstr "Kunne ikke montere \"%s\":"
 
 #~ msgid "Unable to unmount \"%s\":"
 #~ msgstr "Kunne ikke afmontere \"%s\":"
 
+#~ msgid "Unmount Failed"
+#~ msgstr "Afmonteringsfejl"
+
+#~ msgid "Unable to eject \"%s\":"
+#~ msgstr "Kunne ikke skubbe \"%s\" ud:"
+
 #~ msgid "_Unmount Volume"
 #~ msgstr "_Afmontér arkiv"
-
-#~ msgid "Unable to launch xfce4-menueditor: %s"
-#~ msgstr "Kunne ikke starte Xfce4-menuredigering: %s"
-
-#~ msgid "Select Icon"
-#~ msgstr "Vælg ikon"
-
-#~ msgid "Select Menu File"
-#~ msgstr "Vælg menufil"
-
-#~ msgid "All Files"
-#~ msgstr "Alle filer"
-
-#~ msgid "Image Files"
-#~ msgstr "Billedfiler"
-
-#~ msgid "Menu Files"
-#~ msgstr "Menufiler"
-
-#~ msgid "Xfce Menu"
-#~ msgstr "Xfce-menu"
-
-#~ msgid "Button"
-#~ msgstr "Knap"
-
-#~ msgid "Button _title:"
-#~ msgstr "Knap_titel:"
-
-#~ msgid "_Show title in button"
-#~ msgstr "_Vis titel på knap"
-
-#~ msgid "Menu File"
-#~ msgstr "Menufil"
-
-#~ msgid "Use default _desktop menu file"
-#~ msgstr "Brug _standardskrivebords-menufil"
-
-#~ msgid "Use _custom menu file:"
-#~ msgstr "Brug _tilpasset menufil:"
-
-#~ msgid "_Edit Menu"
-#~ msgstr "_Redigér menu"
-
-#~ msgid "Icons"
-#~ msgstr "Ikoner"
-
-#~ msgid "_Button icon:"
-#~ msgstr "_Knapikon:"
-
-#~ msgid "Show _icons in menu"
-#~ msgstr "Vis _ikoner på menuen"
-
-#~ msgid "There is already a panel menu registered for this screen"
-#~ msgstr "Der er allerede en panelmenu registreret for denne skærm"
-
-#~ msgid "Edit Menu"
-#~ msgstr "Redigér menu"
-
-#~ msgid "Shows a menu containing categories of installed applications"
-#~ msgstr "Viser en menu indeholdende kategorier af installerede programmer"
 
 #~ msgid "Accessories"
 #~ msgstr "Tilbehør"
@@ -1031,12 +1389,6 @@ msgstr "_Montér arkiv"
 #~ msgid "Other"
 #~ msgstr "Andet"
 
-#~ msgid "Science"
-#~ msgstr "Videnskab"
-
-#~ msgid "Scientific software"
-#~ msgstr "Videnskabelig software"
-
 #~ msgid "Screensaver applets"
 #~ msgstr "Miniprogram til pauseskærm"
 
@@ -1085,6 +1437,9 @@ msgstr "_Montér arkiv"
 #~ msgid "Run a program"
 #~ msgstr "Kør et program"
 
+#~ msgid "Terminal"
+#~ msgstr "Terminal"
+
 #~ msgid "Terminal emulator"
 #~ msgstr "Teminalemulator"
 
@@ -1093,39 +1448,6 @@ msgstr "_Montér arkiv"
 
 #~ msgid "Web Browser"
 #~ msgstr "Webbrowser"
-
-#~ msgid "%s: Unknown option: %s\n"
-#~ msgstr "%s: Ukendt tilvalg: %s\n"
-
-#~ msgid "Options are:\n"
-#~ msgstr "Tilvalgmuligheder er:\n"
-
-#~ msgid "<b>Adjustments</b>"
-#~ msgstr "<b>Justeringer</b>"
-
-#~ msgid "<b>Appearance</b>"
-#~ msgstr "<b>Udseende</b>"
-
-#~ msgid "<b>Colors</b>"
-#~ msgstr "<b>Farver</b>"
-
-#~ msgid "<b>Default Icons</b>"
-#~ msgstr "<b>Standardikoner</b>"
-
-#~ msgid "<b>Desktop Menu</b>"
-#~ msgstr "<b>Skrivebordsmenu</b>"
-
-#~ msgid "<b>Image</b>"
-#~ msgstr "<b>Billede</b>"
-
-#~ msgid "<b>Images</b>"
-#~ msgstr "<b>Billeder</b>"
-
-#~ msgid "<b>Window List Menu</b>"
-#~ msgstr "<b>Vindueslistemenu</b>"
-
-#~ msgid "Add an image to the list"
-#~ msgstr "Tilføj et billede til listen"
 
 #~ msgid ""
 #~ "Auto\n"
@@ -1142,39 +1464,6 @@ msgstr "_Montér arkiv"
 #~ "Skaleret\n"
 #~ "Forstørret"
 
-#~ msgid "Automatically pick a random image from a list file"
-#~ msgstr "Udvælg automatisk et tilfældigt billede fra en filliste"
-
-#~ msgid "B_rightness:"
-#~ msgstr "_Lysstyrke:"
-
-#~ msgid "B_utton:"
-#~ msgstr "_Knap:"
-
-#~ msgid "Create a new list, or load an existing one"
-#~ msgstr "Opret en ny liste eller indlæs en eksisterende"
-
-#~ msgid "Don't display an image at all"
-#~ msgstr "Vis ikke billeder overhovedet"
-
-#~ msgid "Icon _size:"
-#~ msgstr "Ikon_størrelse:"
-
-#~ msgid "Icon _type:"
-#~ msgstr "Ikon_type:"
-
-#~ msgid "Image _list"
-#~ msgstr "Billed_liste"
-
-#~ msgid "Increase or decrease the brightness of the final image"
-#~ msgstr "Forøg eller formindsk lysstyrke af det sidste billede"
-
-#~ msgid "Increase or decrease the color saturation of the final image"
-#~ msgstr "Forøg eller formindsk farvemætning af det sidste billede"
-
-#~ msgid "Label trans_parency:"
-#~ msgstr "Etiket_gennemsigtighed:"
-
 #~ msgid ""
 #~ "Left\n"
 #~ "Middle\n"
@@ -1183,12 +1472,6 @@ msgstr "_Montér arkiv"
 #~ "Venstre\n"
 #~ "Midten\n"
 #~ "Højre"
-
-#~ msgid "Mo_difier:"
-#~ msgstr "Ju_stéring:"
-
-#~ msgid "Modi_fier:"
-#~ msgstr "Jus_téring:"
 
 #~ msgid ""
 #~ "None\n"
@@ -1210,42 +1493,6 @@ msgstr "_Montér arkiv"
 #~ "Alt\n"
 #~ "Control"
 
-#~ msgid "Remove the selected image(s) from the list"
-#~ msgstr "Fjern de(t) markerede billede(r) fra listen"
-
-#~ msgid "Sa_turation:"
-#~ msgstr "Mæt_ning:"
-
-#~ msgid "Select First Color"
-#~ msgstr "Vælg første farve"
-
-#~ msgid "Select Second Color"
-#~ msgstr "Vælg anden farve"
-
-#~ msgid "Select a single image as the backdrop"
-#~ msgstr "Vælg et enkelt billede som baggrund"
-
-#~ msgid "Set desktop background and menu and icon behavior"
-#~ msgstr "Indstil skrivebordsbaggrund og menu- samt ikonopførsel"
-
-#~ msgid "Sh_ow application icons in menu"
-#~ msgstr "Vis _programikoner på menu"
-
-#~ msgid "Show _application icons in menu"
-#~ msgstr "Vis _programikoner på menu"
-
-#~ msgid "Show _window list menu on desktop middle click"
-#~ msgstr "Vis _vindueslistemenu ved midterklik på skrivebord"
-
-#~ msgid "Show applications menu on _desktop right click"
-#~ msgstr "Vis skrivebords_menu ved højreklik på skrivebord"
-
-#~ msgid "Show s_ticky windows only in active workspace"
-#~ msgstr "Vis kun _klæbende vinduer i aktive arbejdsområder"
-
-#~ msgid "Show workspace _names in list"
-#~ msgstr "Vis arbejdsområde_navne på liste"
-
 #~ msgid ""
 #~ "Solid color\n"
 #~ "Horizontal gradient\n"
@@ -1257,63 +1504,20 @@ msgstr "_Montér arkiv"
 #~ "Lodret aftagning\n"
 #~ "Gennemsigtig"
 
-#~ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-#~ msgstr "Angiver den \"højre\" eller \"'bund\" af farveaftagningen"
-
-#~ msgid ""
-#~ "Specifies the solid color, or the \"left\" or \"top\" color of the "
-#~ "gradient"
-#~ msgstr ""
-#~ "Angiver den ensartede farve, eller \"venstre\" eller \"'top\" af "
-#~ "farveaftagningen"
-
-#~ msgid "Specify how the image will be resized to fit the screen"
-#~ msgstr "Angiv, hvordan billede vil blive tilpasset til at passe til skærmen"
-
-#~ msgid "Specify the style of the color drawn behind the backdrop image"
-#~ msgstr "Angiv stilen til farven bag baggrundbillede"
-
-#~ msgid ""
-#~ "Specify the transparency level for the rounded label drawn behind the "
-#~ "icon text"
-#~ msgstr ""
-#~ "Angiv det gennemsigtige niveau til afrundet mærkat trukket bag ikonteksten"
-
-#~ msgid "St_yle:"
-#~ msgstr "S_til:"
-
-#~ msgid "Use _submenus for the windows in each workspace"
-#~ msgstr "Brug _undermenuer til vinduer på hvert arbejdsområde"
-
-#~ msgid "Use custom _font size:"
-#~ msgstr "Brug _tilpasset skriftstørrelse:"
-
-#~ msgid "_Background"
-#~ msgstr "_Baggrund"
-
-#~ msgid "_Button:"
-#~ msgstr "_Knap:"
-
-#~ msgid "_Edit desktop menu"
-#~ msgstr "_Redigér skrivebordsmenu"
-
-#~ msgid "_Icons"
-#~ msgstr "_Ikoner"
-
-#~ msgid "_Menus"
-#~ msgstr "_Menuer"
-
-#~ msgid "_None"
-#~ msgstr "_Ingen"
-
-#~ msgid "_Single image"
-#~ msgstr "_Enkeltbillede"
-
 #~ msgid "gtk-close"
 #~ msgstr "gtk-afslut"
 
 #~ msgid "gtk-help"
 #~ msgstr "gtk-hjælp"
+
+#~ msgid "Use startup _notification"
+#~ msgstr "Brug _opstartpåmindelse"
+
+#~ msgid "Contributor"
+#~ msgstr "Bidragsyder"
+
+#~ msgid "Icon designer"
+#~ msgstr "Ikondesigner"
 
 #~ msgid "Add menu entry"
 #~ msgstr "Tilføj menupunkt"
@@ -1576,9 +1780,6 @@ msgstr "_Montér arkiv"
 #~ msgid "Author/Maintainer"
 #~ msgstr "Forfatter/vedligeholder"
 
-#~ msgid "Contributor"
-#~ msgstr "Bidragsyder"
-
 #~ msgid "You have modified the menu, do you want to save it before quitting ?"
 #~ msgstr "Du har ændret menuen. Vil du gemme inden du afslutter ?"
 
@@ -1596,3 +1797,9 @@ msgstr "_Montér arkiv"
 
 #~ msgid "Xfce 4 Menu Editor"
 #~ msgstr "Xfce4-menuredigering"
+
+#~ msgid "Science"
+#~ msgstr "Videnskab"
+
+#~ msgid "Scientific software"
+#~ msgstr "Videnskabelig software"
