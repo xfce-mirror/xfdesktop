@@ -6,19 +6,19 @@
 # Fabian Nowak <timystery@arcor.de>, 2005-2008.
 # Nico Schümann <nico@prog.nico22.de>, 2007.
 # Enrico Tröger <enrico@xfce.org>, 2007-2009.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-04 20:14+0100\n"
+"POT-Creation-Date: 2010-11-04 18:56+0000\n"
 "PO-Revision-Date: 2009-01-24 08:56+0100\n"
 "Last-Translator: Enrico Tröger <enrico@xfce.org>\n"
 "Language-Team: German <xfce-i18n-de@xfce.org>\n"
-"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
@@ -68,11 +68,8 @@ msgstr "Liste mit Hintergrundbildern erstellen/laden"
 
 #: ../settings/main.c:511
 #, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
-"Die Datei »%s« ist keine gültige Liste mit Hintergrundbildern. Soll sie "
-"überschrieben werden?"
+msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr "Die Datei »%s« ist keine gültige Liste mit Hintergrundbildern. Soll sie überschrieben werden?"
 
 #: ../settings/main.c:516
 msgid "Invalid List File"
@@ -168,9 +165,7 @@ msgstr "Schreibtisch"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Set desktop background and menu and icon behaviour"
-msgstr ""
-"Stellen Sie den Hintergrund des Schreibtischs sowie das Menü- und "
-"Symbolverhalten ein"
+msgstr "Stellen Sie den Hintergrund des Schreibtischs sowie das Menü- und Symbolverhalten ein"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
 msgid "<b>Adjustments</b>"
@@ -208,7 +203,7 @@ msgstr "He_lligkeit:"
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
 #: ../settings/xfdesktop-settings-ui.glade.h:8
 msgid "Centered"
-msgstr ""
+msgstr "Zentriert"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
 msgid "Create a new list, or load an existing one"
@@ -221,7 +216,7 @@ msgstr "Überhaupt kein Bild anzeigen"
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
 #: ../settings/xfdesktop-settings-ui.glade.h:12
 msgid "Horizontal gradient"
-msgstr ""
+msgstr "Horizontaler Verlauf"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
 msgid "Image _list"
@@ -246,7 +241,7 @@ msgstr "Sätt_igung:"
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 #: ../settings/xfdesktop-settings-ui.glade.h:23
 msgid "Scaled"
-msgstr ""
+msgstr "Skaliert"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
 msgid "Select First Color"
@@ -270,22 +265,16 @@ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr "Gibt die »rechte« oder »untere« Farbe des Verlaufs an"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
-msgid ""
-"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr ""
-"Gibt die durchgehend zu verwendende Farbe an oder die »linke« "
-"beziehungsweise »obere« Farbe des Verlaufs"
+msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr "Gibt die durchgehend zu verwendende Farbe an oder die »linke« beziehungsweise »obere« Farbe des Verlaufs"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid "Specify how the image will be resized to fit the screen"
-msgstr ""
-"Legt die Methode fest, mit der das Bild auf die Bildschirmgröße angepasst "
-"wird"
+msgstr "Legt die Methode fest, mit der das Bild auf die Bildschirmgröße angepasst wird"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "Specify the style of the color drawn behind the backdrop image"
-msgstr ""
-"Gibt an, wie die Farbe hinter dem Hintergrundbild dargestellt werden soll"
+msgstr "Gibt an, wie die Farbe hinter dem Hintergrundbild dargestellt werden soll"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
 msgid "St_yle:"
@@ -294,7 +283,7 @@ msgstr "S_til:"
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
 #: ../settings/xfdesktop-settings-ui.glade.h:34
 msgid "Stretched"
-msgstr ""
+msgstr "Gestreckt"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
 #: ../settings/xfdesktop-settings-ui.glade.h:35
@@ -304,12 +293,12 @@ msgstr ""
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
 #: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid "Transparent"
-msgstr ""
+msgstr "Transparent"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
 #: ../settings/xfdesktop-settings-ui.glade.h:39
 msgid "Vertical gradient"
-msgstr ""
+msgstr "Vertikaler Verlauf"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
 #: ../settings/xfdesktop-settings-ui.glade.h:40
@@ -361,9 +350,8 @@ msgid "File/launcher icons"
 msgstr ""
 
 #: ../settings/xfdesktop-settings-ui.glade.h:13
-#, fuzzy
 msgid "Icon _size:"
-msgstr "S_ymboltyp:"
+msgstr "S_ymbolgröße:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:14
 msgid "Icon _type:"
@@ -382,12 +370,8 @@ msgid "Middle"
 msgstr ""
 
 #: ../settings/xfdesktop-settings-ui.glade.h:18
-#, fuzzy
 msgid "Minimized application icons"
-msgstr ""
-"Keine\n"
-"Minimierte Anwendungssymbole\n"
-"Datei-/Startersymbole"
+msgstr "Minimierte Anwendungssymbole"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:19
 msgid "Mo_difier:"
@@ -407,9 +391,7 @@ msgstr ""
 
 #: ../settings/xfdesktop-settings-ui.glade.h:24
 msgid "Set desktop background and menu and icon behavior"
-msgstr ""
-"Stellen Sie den Hintergrund des Schreibtischs sowie das Menü- und "
-"Symbolverhalten ein"
+msgstr "Stellen Sie den Hintergrund des Schreibtischs sowie das Menü- und Symbolverhalten ein"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:25
 msgid "Sh_ow application icons in menu"
@@ -440,12 +422,8 @@ msgid "Show workspace _names in list"
 msgstr "_Namen der Arbeitsflächen in der Liste anzeigen"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
-msgid ""
-"Specify the transparency level for the rounded label drawn behind the icon "
-"text"
-msgstr ""
-"Gibt die Durchsichtigkeit für den abgerundeten Hintergrund der "
-"Symbolbeschriftung an"
+msgid "Specify the transparency level for the rounded label drawn behind the icon text"
+msgstr "Gibt die Durchsichtigkeit für den abgerundeten Hintergrund der Symbolbeschriftung an"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "Use _submenus for the windows in each workspace"
@@ -611,8 +589,7 @@ msgstr "Symbolname"
 
 #: ../src/xfdesktop-app-menu-item.c:249
 msgid "The name of the themed icon to display next to the item"
-msgstr ""
-"Der Name des Thema-Symbols, das neben dem Eintrag angezeigt werden soll"
+msgstr "Der Name des Thema-Symbols, das neben dem Eintrag angezeigt werden soll"
 
 #: ../src/xfdesktop-app-menu-item.c:255
 msgid "Label"
@@ -636,9 +613,7 @@ msgstr "Unterstrich einsetzen"
 
 #: ../src/xfdesktop-app-menu-item.c:270
 msgid "Whether or not to use an underscore in the label as a keyboard mnemonic"
-msgstr ""
-"Ein Unterstrich kann dazu eingesetzt werden, in der Beschriftung ein Zeichen "
-"als Tastenkürzel zu deklarieren"
+msgstr "Ein Unterstrich kann dazu eingesetzt werden, in der Beschriftung ein Zeichen als Tastenkürzel zu deklarieren"
 
 #: ../src/xfdesktop-file-icon-manager.c:479
 #: ../src/xfdesktop-file-icon-manager.c:496
@@ -653,9 +628,9 @@ msgid "Desktop Folder Error"
 msgstr "Fehler"
 
 #: ../src/xfdesktop-file-icon-manager.c:503
-msgid ""
-"A normal file with the same name already exists. Please delete or rename it."
-msgstr ""
+#, fuzzy
+msgid "A normal file with the same name already exists. Please delete or rename it."
+msgstr "Eine Datei mit dem selben Namen existiert bereits."
 
 #: ../src/xfdesktop-file-icon-manager.c:606
 #: ../src/xfdesktop-file-icon-manager.c:650 ../src/xfdesktop-file-utils.c:799
@@ -677,12 +652,8 @@ msgstr "Der Anwendungswähler konnte nicht geöffnet werden."
 #: ../src/xfdesktop-file-utils.c:1102 ../src/xfdesktop-file-utils.c:1163
 #: ../src/xfdesktop-file-utils.c:1236 ../src/xfdesktop-file-utils.c:1314
 #, fuzzy
-msgid ""
-"This feature requires a file manager service to be present (such as the one "
-"supplied by Thunar)."
-msgstr ""
-"Diese Funktion benötigt den Dienst eines Dateimanagers (wie er z.B. von "
-"Thunar bereitgestellt wird)."
+msgid "This feature requires a file manager service to be present (such as the one supplied by Thunar)."
+msgstr "Diese Funktion benötigt den Dienst eines Dateimanagers (wie er z.B. von Thunar bereitgestellt wird)."
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:752
@@ -712,12 +683,8 @@ msgid "Open With \"%s\""
 msgstr "Öffnen mit »%s«"
 
 #: ../src/xfdesktop-file-icon-manager.c:1000
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
-msgstr ""
-"Kann »exo-desktop-item-edit« nicht starten, was zum Erstellen und Bearbeiten "
-"von Startern und Verknüpfungen auf dem Schreibtisch benötigt wird."
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgstr "Kann »exo-desktop-item-edit« nicht starten, was zum Erstellen und Bearbeiten von Startern und Verknüpfungen auf dem Schreibtisch benötigt wird."
 
 #: ../src/xfdesktop-file-icon-manager.c:1368
 msgid "_Open all"
@@ -799,19 +766,19 @@ msgstr "Kann die Liste mit Hintergrundbildern »%s« nicht erstellen"
 #: ../src/xfdesktop-file-utils.c:137
 #, c-format
 msgid "Today at %X"
-msgstr ""
+msgstr "Heute um %X"
 
 #. TRANSLATORS: file was modified less than two days ago
 #: ../src/xfdesktop-file-utils.c:141
 #, c-format
 msgid "Yesterday at %X"
-msgstr ""
+msgstr "Gestern um %X"
 
 #. Days from last week
 #: ../src/xfdesktop-file-utils.c:146
 #, c-format
 msgid "%A at %X"
-msgstr ""
+msgstr "%A um %X"
 
 #. Any other date
 #: ../src/xfdesktop-file-utils.c:149
@@ -821,7 +788,6 @@ msgstr ""
 
 #. the file_time is invalid
 #: ../src/xfdesktop-file-utils.c:159
-#, fuzzy
 msgid "Unknown"
 msgstr "(unbekannt)"
 
@@ -831,9 +797,8 @@ msgid "The folder could not be opened"
 msgstr "Der Anwendungswähler konnte nicht geöffnet werden."
 
 #: ../src/xfdesktop-file-utils.c:681 ../src/xfdesktop-file-utils.c:696
-#, fuzzy
 msgid "Rename Error"
-msgstr "Fehler beim Ausführen"
+msgstr "Fehler beim Umbenennen"
 
 #: ../src/xfdesktop-file-utils.c:682 ../src/xfdesktop-file-utils.c:697
 #, fuzzy
@@ -841,9 +806,8 @@ msgid "The file could not be renamed"
 msgstr "Der Anwendungswähler konnte nicht geöffnet werden."
 
 #: ../src/xfdesktop-file-utils.c:740 ../src/xfdesktop-file-utils.c:755
-#, fuzzy
 msgid "Delete Error"
-msgstr "Fehler beim Erstellen"
+msgstr "Fehler beim Löschen"
 
 #: ../src/xfdesktop-file-utils.c:741 ../src/xfdesktop-file-utils.c:756
 #, fuzzy
@@ -851,18 +815,13 @@ msgid "The selected files could not be deleted"
 msgstr "Die verknüpfte Anwendung konnte nicht gefunden oder ausgeführt werden."
 
 #: ../src/xfdesktop-file-utils.c:800 ../src/xfdesktop-file-utils.c:815
-#, fuzzy
 msgid "The selected files could not be moved to the trash"
-msgstr "Der Anwendungswähler konnte nicht geöffnet werden."
+msgstr "Die ausgewählte Datei konnte nicht in den Papierkorb verschoben werden."
 
 #: ../src/xfdesktop-file-utils.c:816
 #, fuzzy
-msgid ""
-"This feature requires a trash service to be present (such as the one "
-"supplied by Thunar)."
-msgstr ""
-"Diese Funktion benötigt den Dienst eines Dateimanagers (wie er z.B. von "
-"Thunar bereitgestellt wird)."
+msgid "This feature requires a trash service to be present (such as the one supplied by Thunar)."
+msgstr "Diese Funktion benötigt den Dienst eines Dateimanagers (wie er z.B. von Thunar bereitgestellt wird)."
 
 #: ../src/xfdesktop-file-utils.c:852 ../src/xfdesktop-file-utils.c:867
 #, fuzzy
@@ -930,9 +889,7 @@ msgstr "Aushängen fehlgeschlagen"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:100
 #, c-format
-msgid ""
-"The device \"%s\" is being unmounted by the system. Please do not remove the "
-"media or disconnect the drive"
+msgid "The device \"%s\" is being unmounted by the system. Please do not remove the media or disconnect the drive"
 msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
@@ -943,16 +900,13 @@ msgstr ""
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:110 ../src/xfdesktop-notify.c:223
 #, c-format
-msgid ""
-"There is data that needs to be written to the device \"%s\" before it can be "
-"removed. Please do not remove the media or disconnect the drive"
+msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
 msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:211
-#, fuzzy
 msgid "Ejecting device"
-msgstr "Aushängen fehlgeschlagen"
+msgstr "Laufwerk wird ausgehängt."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:214
@@ -967,25 +921,27 @@ msgid ""
 "Size: %s\n"
 "Last modified: %s"
 msgstr ""
+"Typ: %s\n"
+"Größe: %s\n"
+"Zuletzt bearbeitet: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:249
 #: ../src/xfdesktop-special-file-icon.c:411
-#, fuzzy
 msgid "File System"
 msgstr "Dateiystem"
 
 #: ../src/xfdesktop-special-file-icon.c:396
 msgid "Trash is empty"
-msgstr ""
+msgstr "Der Papierkorb ist leer."
 
 #: ../src/xfdesktop-special-file-icon.c:399
 msgid "Trash contains one item"
-msgstr ""
+msgstr "Der Papierkorb enthält eine Datei."
 
 #: ../src/xfdesktop-special-file-icon.c:400
 #, c-format
 msgid "Trash contains %d items"
-msgstr ""
+msgstr "Der Papierkorb enthält %d Dateien."
 
 #: ../src/xfdesktop-special-file-icon.c:428
 #, c-format
@@ -994,57 +950,54 @@ msgid ""
 "Size: %s\n"
 "Last modified: %s"
 msgstr ""
+"%s\n"
+"Größe: %s\n"
+"Zuletzt bearbeitet: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:449
 msgid "Unable to contact the Xfce Trash service."
 msgstr "Konnte den Papierkorbdienst nicht ansprechen."
 
 #: ../src/xfdesktop-special-file-icon.c:450
-msgid ""
-"Make sure you have a file manager installed that supports the Xfce Trash "
-"service, such as Thunar."
-msgstr ""
-"Stellen Sie sicher, dass Sie einen Dateimanager installiert haben, der einen "
-"Papierkorb bereitstellt, wie z.B. »Thunar«."
+msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
+msgstr "Stellen Sie sicher, dass Sie einen Dateimanager installiert haben, der einen Papierkorb bereitstellt, wie z.B. »Thunar«."
 
 #: ../src/xfdesktop-special-file-icon.c:588
 msgid "_Empty Trash"
 msgstr "_Papierkorb leeren"
 
 #: ../src/xfdesktop-volume-icon.c:413
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Removable Volume\n"
 "Mounted in \"%s\"\n"
 "%s left (%s total)"
 msgstr ""
-"Typ: Entfernbarer Datenträger\n"
+"Entfernbarer Datenträger\n"
 "Einhängepunkt: %s\n"
-"Verfügbarer Speicherplatz: %s"
+"Verfügbarer Speicherplatz: %s (von %s)"
 
 #: ../src/xfdesktop-volume-icon.c:420
-#, fuzzy
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
 msgstr ""
-"Typ: Entfernbarer Datenträger\n"
-"Einhängepunkt: %s\n"
-"Verfügbarer Speicherplatz: %s"
+"Entfernbarer Datenträger\n"
+"Nicht eingehängt"
 
 #: ../src/xfdesktop-volume-icon.c:446 ../src/xfdesktop-volume-icon.c:488
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to eject \"%s\""
-msgstr "Konnte »%s« nicht auswerfen:"
+msgstr "Konnte »%s« nicht auswerfen"
 
 #: ../src/xfdesktop-volume-icon.c:451 ../src/xfdesktop-volume-icon.c:493
 msgid "Eject Failed"
 msgstr "Auswerfen fehlgeschlagen"
 
 #: ../src/xfdesktop-volume-icon.c:525
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to mount \"%s\""
-msgstr "Konnte »%s« nicht ausführen:"
+msgstr "Konnte »%s« nicht einhängen"
 
 #: ../src/xfdesktop-volume-icon.c:528
 msgid "Mount Failed"
@@ -1125,36 +1078,25 @@ msgstr "Datenträger _einhängen"
 #~ msgstr "Optionen sind:\n"
 
 #~ msgid "    --reload      Reload all settings, refresh image list\n"
-#~ msgstr ""
-#~ "    --reload      Einstellungen neu laden, Hintergrundbild erneuern\n"
+#~ msgstr "    --reload      Einstellungen neu laden, Hintergrundbild erneuern\n"
 
 #~ msgid "    --menu        Pop up the menu (at the current mouse position)\n"
-#~ msgstr ""
-#~ "    --menu        Das Menü (an der Zeigerposition) erscheinen lassen\n"
+#~ msgstr "    --menu        Das Menü (an der Zeigerposition) erscheinen lassen\n"
 
-#~ msgid ""
-#~ "    --windowlist  Pop up the window list (at the current mouse position)\n"
-#~ msgstr ""
-#~ "    --windowlist  Fensterliste (an der Zeigerposition) erscheinen lassen\n"
+#~ msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
+#~ msgstr "    --windowlist  Fensterliste (an der Zeigerposition) erscheinen lassen\n"
 
 #~ msgid "    --quit        Cause xfdesktop to quit\n"
 #~ msgstr "    --quit        Xfdesktop beenden\n"
 
-#~ msgid ""
-#~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-#~ msgstr ""
-#~ "Xfdesktop konnte den Ordner »%s« zum Speichern von Elementen des "
-#~ "Schreibtischs nicht erstellen:"
+#~ msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+#~ msgstr "Xfdesktop konnte den Ordner »%s« zum Speichern von Elementen des Schreibtischs nicht erstellen:"
 
 #~ msgid "Create Folder Failed"
 #~ msgstr "Erstellen des Ordners fehlgeschlagen"
 
-#~ msgid ""
-#~ "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not "
-#~ "a folder."
-#~ msgstr ""
-#~ "Xfdesktop kann in »%s« keine Elemente des Schreibtischs unterbringen, "
-#~ "weil es kein Ordner ist."
+#~ msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
+#~ msgstr "Xfdesktop kann in »%s« keine Elemente des Schreibtischs unterbringen, weil es kein Ordner ist."
 
 #~ msgid "Please delete or rename the file."
 #~ msgstr "Bitte löschen Sie die Datei oder benennen Sie sie um."
@@ -1186,12 +1128,8 @@ msgstr "Datenträger _einhängen"
 #~ msgid "The application chooser could not be opened."
 #~ msgstr "Der Anwendungswähler konnte nicht geöffnet werden."
 
-#~ msgid ""
-#~ "This feature requires a file manager service present (such as that "
-#~ "supplied by Thunar)."
-#~ msgstr ""
-#~ "Diese Funktion benötigt den Dienst eines Dateimanagers (wie er z.B. von "
-#~ "Thunar bereitgestellt wird)."
+#~ msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
+#~ msgstr "Diese Funktion benötigt den Dienst eines Dateimanagers (wie er z.B. von Thunar bereitgestellt wird)."
 
 #~ msgid "Unable to create folder named \"%s\":"
 #~ msgstr "Konnte den Ordner »%s« nicht erstellen:"
@@ -1233,8 +1171,7 @@ msgstr "Datenträger _einhängen"
 #~ msgstr "Fehler beim Ausführen"
 
 #~ msgid "The associated application could not be found or executed."
-#~ msgstr ""
-#~ "Die verknüpfte Anwendung konnte nicht gefunden oder ausgeführt werden."
+#~ msgstr "Die verknüpfte Anwendung konnte nicht gefunden oder ausgeführt werden."
 
 #~ msgid "Unable to set default application for \"%s\" to \"%s\":"
 #~ msgstr "Kann Standardanwendung für »%s« nicht auf »%s« setzen:"
