@@ -190,7 +190,7 @@ msgstr "Ein Bild zur Liste hinzufügen"
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
 #: ../settings/xfdesktop-settings-ui.glade.h:6
 msgid "Auto"
-msgstr ""
+msgstr "Automatisch"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
 msgid "Automatically pick a random image from a list file"
@@ -258,7 +258,7 @@ msgstr "Ein einzelnes Bild als Hintergrundbild wählen"
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
 #: ../settings/xfdesktop-settings-ui.glade.h:32
 msgid "Solid color"
-msgstr ""
+msgstr "Durchgängige Farbe"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
@@ -288,7 +288,7 @@ msgstr "Gestreckt"
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
 #: ../settings/xfdesktop-settings-ui.glade.h:35
 msgid "Tiled"
-msgstr ""
+msgstr "Gekachelt"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
 #: ../settings/xfdesktop-settings-ui.glade.h:36
@@ -303,7 +303,7 @@ msgstr "Vertikaler Verlauf"
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
 #: ../settings/xfdesktop-settings-ui.glade.h:40
 msgid "Zoomed"
-msgstr ""
+msgstr "Vergrößert"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
 msgid "_None"
@@ -331,7 +331,7 @@ msgstr "<b>Fensterliste</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:5
 msgid "Alt"
-msgstr ""
+msgstr "Alt"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:7
 msgid "B_utton:"
@@ -339,7 +339,7 @@ msgstr "_Schaltfläche:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:9
 msgid "Control"
-msgstr ""
+msgstr "Strg"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:729
 msgid "Desktop"
@@ -347,7 +347,7 @@ msgstr "Schreibtisch"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:11
 msgid "File/launcher icons"
-msgstr ""
+msgstr "Datei-/Startersymbole"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:13
 msgid "Icon _size:"
@@ -363,11 +363,11 @@ msgstr "_Durchsichtigkeit der Beschriftung"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:16
 msgid "Left"
-msgstr ""
+msgstr "Links"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:17
 msgid "Middle"
-msgstr ""
+msgstr "Mitte"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:18
 msgid "Minimized application icons"
@@ -387,7 +387,7 @@ msgstr "Keine"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:22
 msgid "Right"
-msgstr ""
+msgstr "Rechts"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:24
 msgid "Set desktop background and menu and icon behavior"
@@ -399,7 +399,7 @@ msgstr "_Anwendungssymbole im Menü anzeigen"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:26
 msgid "Shift"
-msgstr ""
+msgstr "Shift"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "Show _application icons in menu"
@@ -617,20 +617,18 @@ msgstr "Ein Unterstrich kann dazu eingesetzt werden, in der Beschriftung ein Zei
 
 #: ../src/xfdesktop-file-icon-manager.c:479
 #: ../src/xfdesktop-file-icon-manager.c:496
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create the desktop folder \"%s\""
-msgstr "Kann die Liste mit Hintergrundbildern »%s« nicht erstellen"
+msgstr "Konnte den Ordner mit Hintergrundbildern »%s« nicht erstellen"
 
 #: ../src/xfdesktop-file-icon-manager.c:484
 #: ../src/xfdesktop-file-icon-manager.c:501
-#, fuzzy
 msgid "Desktop Folder Error"
-msgstr "Fehler"
+msgstr "Fehler im Ordner »Desktop«"
 
 #: ../src/xfdesktop-file-icon-manager.c:503
-#, fuzzy
 msgid "A normal file with the same name already exists. Please delete or rename it."
-msgstr "Eine Datei mit dem selben Namen existiert bereits."
+msgstr "Eine Datei mit demselben Namen existiert bereits. Bitte löschen Sie diese oder benennen sie um."
 
 #: ../src/xfdesktop-file-icon-manager.c:606
 #: ../src/xfdesktop-file-icon-manager.c:650 ../src/xfdesktop-file-utils.c:799
@@ -640,9 +638,8 @@ msgstr "Fehler"
 
 #: ../src/xfdesktop-file-icon-manager.c:607
 #: ../src/xfdesktop-file-icon-manager.c:651
-#, fuzzy
 msgid "The selected files could not be trashed"
-msgstr "Der Anwendungswähler konnte nicht geöffnet werden."
+msgstr "Die ausgewählten Dateien konnten nicht in den Papierkorb verschoben werden"
 
 #: ../src/xfdesktop-file-icon-manager.c:608
 #: ../src/xfdesktop-file-icon-manager.c:652 ../src/xfdesktop-file-utils.c:648
@@ -651,7 +648,6 @@ msgstr "Der Anwendungswähler konnte nicht geöffnet werden."
 #: ../src/xfdesktop-file-utils.c:975 ../src/xfdesktop-file-utils.c:1025
 #: ../src/xfdesktop-file-utils.c:1102 ../src/xfdesktop-file-utils.c:1163
 #: ../src/xfdesktop-file-utils.c:1236 ../src/xfdesktop-file-utils.c:1314
-#, fuzzy
 msgid "This feature requires a file manager service to be present (such as the one supplied by Thunar)."
 msgstr "Diese Funktion benötigt den Dienst eines Dateimanagers (wie er z.B. von Thunar bereitgestellt wird)."
 
@@ -753,14 +749,12 @@ msgid "_Properties..."
 msgstr "_Eigenschaften..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2243
-#, fuzzy
 msgid "Load Error"
-msgstr "Fehler beim Ausführen"
+msgstr "Fehler beim Laden"
 
 #: ../src/xfdesktop-file-icon-manager.c:2245
-#, fuzzy
 msgid "Failed to load the desktop folder"
-msgstr "Kann die Liste mit Hintergrundbildern »%s« nicht erstellen"
+msgstr "Konnte den Desktop-Ordner nicht laden"
 
 #. TRANSLATORS: file was modified less than one day ago
 #: ../src/xfdesktop-file-utils.c:137
@@ -784,7 +778,7 @@ msgstr "%A um %X"
 #: ../src/xfdesktop-file-utils.c:149
 #, c-format
 msgid "%x at %X"
-msgstr ""
+msgstr "%x bei %X"
 
 #. the file_time is invalid
 #: ../src/xfdesktop-file-utils.c:159
@@ -792,116 +786,101 @@ msgid "Unknown"
 msgstr "(unbekannt)"
 
 #: ../src/xfdesktop-file-utils.c:632 ../src/xfdesktop-file-utils.c:647
-#, fuzzy
 msgid "The folder could not be opened"
-msgstr "Der Anwendungswähler konnte nicht geöffnet werden."
+msgstr "Der Ordner konnte nicht geöffnet werden"
 
 #: ../src/xfdesktop-file-utils.c:681 ../src/xfdesktop-file-utils.c:696
 msgid "Rename Error"
 msgstr "Fehler beim Umbenennen"
 
 #: ../src/xfdesktop-file-utils.c:682 ../src/xfdesktop-file-utils.c:697
-#, fuzzy
 msgid "The file could not be renamed"
-msgstr "Der Anwendungswähler konnte nicht geöffnet werden."
+msgstr "Die Datei konnte nicht umbenannt werden"
 
 #: ../src/xfdesktop-file-utils.c:740 ../src/xfdesktop-file-utils.c:755
 msgid "Delete Error"
 msgstr "Fehler beim Löschen"
 
 #: ../src/xfdesktop-file-utils.c:741 ../src/xfdesktop-file-utils.c:756
-#, fuzzy
 msgid "The selected files could not be deleted"
-msgstr "Die verknüpfte Anwendung konnte nicht gefunden oder ausgeführt werden."
+msgstr "Die ausgewählten Dateien konnten nicht entfernt werden"
 
 #: ../src/xfdesktop-file-utils.c:800 ../src/xfdesktop-file-utils.c:815
 msgid "The selected files could not be moved to the trash"
 msgstr "Die ausgewählte Datei konnte nicht in den Papierkorb verschoben werden."
 
 #: ../src/xfdesktop-file-utils.c:816
-#, fuzzy
 msgid "This feature requires a trash service to be present (such as the one supplied by Thunar)."
-msgstr "Diese Funktion benötigt den Dienst eines Dateimanagers (wie er z.B. von Thunar bereitgestellt wird)."
+msgstr "Diese Funktion benötigt den Dienst eines Papierkorb-Managers (wie er z.B. von Thunar bereitgestellt wird)."
 
 #: ../src/xfdesktop-file-utils.c:852 ../src/xfdesktop-file-utils.c:867
-#, fuzzy
 msgid "Create File Error"
-msgstr "Fehler beim Erstellen"
+msgstr "Fehler beim Dateierstellen"
 
 #: ../src/xfdesktop-file-utils.c:853 ../src/xfdesktop-file-utils.c:868
-#, fuzzy
 msgid "Could not create a new file"
-msgstr "Kann die Liste mit Hintergrundbildern »%s« nicht erstellen"
+msgstr "Konnte neue Datei nicht erstellen"
 
 #: ../src/xfdesktop-file-utils.c:908 ../src/xfdesktop-file-utils.c:923
-#, fuzzy
 msgid "Create Document Error"
-msgstr "Fehler beim Erstellen"
+msgstr "Fehler beim Dokumenterstellen"
 
 #: ../src/xfdesktop-file-utils.c:909 ../src/xfdesktop-file-utils.c:924
-#, fuzzy
 msgid "Could not create a new document from the template"
-msgstr "Dokument aus Vorlage »%s« erstellen"
+msgstr "Konnte kein Dokument von Vorlage erstellen"
 
 #: ../src/xfdesktop-file-utils.c:958 ../src/xfdesktop-file-utils.c:973
-#, fuzzy
 msgid "File Properties Error"
-msgstr "Fehler"
+msgstr "Fehler bei Dateieigenschaften"
 
 #: ../src/xfdesktop-file-utils.c:959 ../src/xfdesktop-file-utils.c:974
-#, fuzzy
 msgid "The file properties dialog could not be opened"
-msgstr "Der Anwendungswähler konnte nicht geöffnet werden."
+msgstr "Der Eigenschaftendialog konnte nicht geöffnet werden"
 
 #: ../src/xfdesktop-file-utils.c:1009 ../src/xfdesktop-file-utils.c:1024
-#, fuzzy
 msgid "The file could not be opened"
-msgstr "Der Anwendungswähler konnte nicht geöffnet werden."
+msgstr "Die Datei konnte nicht geöffnet werden"
 
 #: ../src/xfdesktop-file-utils.c:1072 ../src/xfdesktop-file-utils.c:1097
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to run \"%s\""
-msgstr "Konnte »%s« nicht ausführen:"
+msgstr "Konnte »%s« nicht ausführen"
 
 #: ../src/xfdesktop-file-utils.c:1147 ../src/xfdesktop-file-utils.c:1162
-#, fuzzy
 msgid "The application chooser could not be opened"
-msgstr "Der Anwendungswähler konnte nicht geöffnet werden."
+msgstr "Der Anwendungswähler konnte nicht geöffnet werden"
 
 #: ../src/xfdesktop-file-utils.c:1220 ../src/xfdesktop-file-utils.c:1234
 #: ../src/xfdesktop-file-utils.c:1296 ../src/xfdesktop-file-utils.c:1312
-#, fuzzy
 msgid "Transfer Error"
-msgstr "Fehler"
+msgstr "Übertragungsfehler"
 
 #: ../src/xfdesktop-file-utils.c:1221 ../src/xfdesktop-file-utils.c:1235
 #: ../src/xfdesktop-file-utils.c:1297 ../src/xfdesktop-file-utils.c:1313
-#, fuzzy
 msgid "The file transfer could not be performed"
-msgstr "Der Anwendungswähler konnte nicht geöffnet werden."
+msgstr "Die Datei konnte nicht übertragen werden."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:97
-#, fuzzy
 msgid "Unmounting device"
-msgstr "Aushängen fehlgeschlagen"
+msgstr "Gerät aushängen "
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:100
 #, c-format
 msgid "The device \"%s\" is being unmounted by the system. Please do not remove the media or disconnect the drive"
-msgstr ""
+msgstr "Das Gerät »%s« wird aus dem System ausgehängt. Bitte entfernen Sie das Medium nicht und trennen Sie das Gerät auch nicht vom Rechner"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:107 ../src/xfdesktop-notify.c:220
 msgid "Writing data to device"
-msgstr ""
+msgstr "Daten auf Gerät schreiben"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:110 ../src/xfdesktop-notify.c:223
 #, c-format
 msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
-msgstr ""
+msgstr "Daten müssen noch auf das Gerät »%s« geschrieben werden, bevor es entfernt werden kann. Bitte entfernen Sie das Medium nicht und trennen Sie das Gerät auch nicht vom Rechner"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:211
@@ -912,7 +891,7 @@ msgstr "Laufwerk wird ausgehängt."
 #: ../src/xfdesktop-notify.c:214
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
-msgstr ""
+msgstr "Das Gerät »%s« wird ausgeworfen. Dies kann etwas dauern"
 
 #: ../src/xfdesktop-regular-file-icon.c:468
 #, c-format
