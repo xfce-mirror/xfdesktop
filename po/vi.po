@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-28 16:27+0200\n"
+"POT-Creation-Date: 2010-11-04 00:34+0100\n"
 "PO-Revision-Date: 2006-09-05 03:05+0400\n"
 "Last-Translator: Phan Vĩnh Thịnh <teppi82@gmail.com>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
@@ -33,7 +33,8 @@ msgid ""
 "<i>Size: %dx%d</i>"
 msgstr ""
 
-#: ../settings/main.c:272 ../src/xfdesktop-special-file-icon.c:259
+#: ../settings/main.c:272 ../src/xfdesktop-special-file-icon.c:247
+#: ../src/xfdesktop-special-file-icon.c:413
 msgid "Home"
 msgstr "Cá nhân"
 
@@ -175,76 +176,76 @@ msgstr "Desktop"
 msgid "Set desktop background and menu and icon behaviour"
 msgstr ""
 
-#: ../src/main.c:235
+#: ../src/main.c:234
 #, fuzzy
 msgid "Display version information"
 msgstr "Thông tin"
 
-#: ../src/main.c:236
+#: ../src/main.c:235
 #, fuzzy
 msgid "Reload all settings, refresh image list"
 msgstr "    -reload     Nạp lại mọi thiết lập, cập nhật danh sách hình ảnh\n"
 
-#: ../src/main.c:237
+#: ../src/main.c:236
 #, fuzzy
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "    -menu        Mở ra trình đơn (ở vị trí con chuột hiện tại)\n"
 
-#: ../src/main.c:238
+#: ../src/main.c:237
 #, fuzzy
 msgid "Pop up the window list (at the current mouse position)"
 msgstr ""
 "    -windowlist  Mở ra danh sách cửa sổ (ở vị trí con chuột hiện tại)\n"
 
-#: ../src/main.c:239
+#: ../src/main.c:238
 #, fuzzy
 msgid "Cause xfdesktop to quit"
 msgstr "    -quit        Thoát xfdesktop\n"
 
-#: ../src/main.c:259
+#: ../src/main.c:258
 #, fuzzy, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "Lỗi chạy \"%s\":"
 
-#: ../src/main.c:267
+#: ../src/main.c:266
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Đây là %s phiên bản %s, chạy trên Xfce %s.\n"
 
-#: ../src/main.c:269
+#: ../src/main.c:268
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Biên dịch với GTK+ %d.%d.%d, liên kết với GTK+ %d.%d.%d."
 
-#: ../src/main.c:273
+#: ../src/main.c:272
 #, c-format
 msgid "Build options:\n"
 msgstr "Tùy chọn biên dịch:\n"
 
-#: ../src/main.c:274
+#: ../src/main.c:273
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Thực đơn màn hình:        %s\n"
 
-#: ../src/main.c:276 ../src/main.c:283 ../src/main.c:290
+#: ../src/main.c:275 ../src/main.c:282 ../src/main.c:289
 msgid "enabled"
 msgstr "bật"
 
-#: ../src/main.c:278 ../src/main.c:285 ../src/main.c:292
+#: ../src/main.c:277 ../src/main.c:284 ../src/main.c:291
 msgid "disabled"
 msgstr "tắt"
 
-#: ../src/main.c:281
+#: ../src/main.c:280
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Biểu tượng màn hình:       %s\n"
 
-#: ../src/main.c:288
+#: ../src/main.c:287
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Biểu tượng màn hình:  %s\n"
 
-#: ../src/main.c:319
+#: ../src/main.c:318
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s không chạy.\n"
@@ -286,16 +287,16 @@ msgstr "Gỡ _bỏ vùng làm việc %d"
 msgid "_Remove Workspace '%s'"
 msgstr "Gỡ _bỏ vùng làm việc '%s'"
 
-#: ../src/xfce-desktop.c:742
+#: ../src/xfce-desktop.c:729
 msgid "Desktop"
 msgstr "Desktop"
 
-#: ../src/xfce-desktop.c:1018
+#: ../src/xfce-desktop.c:1006
 #, fuzzy, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "Không tạo được tập tin \"%s\":"
 
-#: ../src/xfce-desktop.c:1020
+#: ../src/xfce-desktop.c:1008
 #, fuzzy
 msgid "Desktop Error"
 msgstr "Desktop"
@@ -351,117 +352,79 @@ msgstr ""
 msgid "Whether or not to use an underscore in the label as a keyboard mnemonic"
 msgstr ""
 
-#. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon.c:141 ../src/xfdesktop-file-icon-manager.c:922
-#: ../src/xfdesktop-file-icon-manager.c:1683 ../src/xfdesktop-file-utils.c:363
-#, c-format
-msgid "Unable to launch \"%s\":"
-msgstr "Không chạy được \"%s\":"
+#: ../src/xfdesktop-file-icon-manager.c:479
+#: ../src/xfdesktop-file-icon-manager.c:496
+#, fuzzy, c-format
+msgid "Could not create the desktop folder \"%s\""
+msgstr "Tạo danh sách phông nền"
 
-#: ../src/xfdesktop-file-icon.c:143 ../src/xfdesktop-file-icon-manager.c:924
-#: ../src/xfdesktop-file-icon-manager.c:984
-#: ../src/xfdesktop-file-icon-manager.c:1287
-#: ../src/xfdesktop-file-icon-manager.c:1684 ../src/xfdesktop-file-utils.c:366
-msgid "Launch Error"
+#: ../src/xfdesktop-file-icon-manager.c:484
+#: ../src/xfdesktop-file-icon-manager.c:501
+#, fuzzy
+msgid "Desktop Folder Error"
+msgstr "Desktop"
+
+#: ../src/xfdesktop-file-icon-manager.c:503
+msgid ""
+"A normal file with the same name already exists. Please delete or rename it."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:606
+#: ../src/xfdesktop-file-icon-manager.c:650 ../src/xfdesktop-file-utils.c:733
+#: ../src/xfdesktop-file-utils.c:748 ../src/xfdesktop-special-file-icon.c:447
+#, fuzzy
+msgid "Trash Error"
 msgstr "Lỗi chạy"
 
-#: ../src/xfdesktop-file-icon.c:145
-msgid "The associated application could not be found or executed."
-msgstr "Không tìm thấy hoặc không chạy được ứng dụng để mở tập tin."
-
-#: ../src/xfdesktop-file-icon-manager.c:479
-#, c-format
-msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-msgstr "Xfdesktop không tạo được thư mục \"%s\" để phục hồi các mục màn hình:"
-
-#: ../src/xfdesktop-file-icon-manager.c:481
-#: ../src/xfdesktop-file-icon-manager.c:492
-#: ../src/xfdesktop-file-icon-manager.c:1253
-msgid "Create Folder Failed"
-msgstr "Lỗi tạo thư mục"
-
-#: ../src/xfdesktop-file-icon-manager.c:490
-#, c-format
-msgid ""
-"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
-"folder."
-msgstr ""
-"Xfdesktop không dùng được \"%s\" để chứa các mục màn hình vì nó không phải "
-"là thư mục."
-
-#: ../src/xfdesktop-file-icon-manager.c:494
-msgid "Please delete or rename the file."
-msgstr "Xin hãy xóa hoặc đổi tên tập tin."
-
-#: ../src/xfdesktop-file-icon-manager.c:631
-#, c-format
-msgid "Rename \"%s\""
-msgstr "Đổi tên \"%s\""
-
-#: ../src/xfdesktop-file-icon-manager.c:638
-#: ../src/xfdesktop-file-icon-manager.c:1327
-#: ../src/xfdesktop-file-icon-manager.c:1419
-#: ../src/xfdesktop-file-icon-manager.c:1430
-msgid "Enter the new name:"
-msgstr "Nhập tên mới:"
-
-#: ../src/xfdesktop-file-icon-manager.c:640
-msgid "Rename"
-msgstr "Đổi tên"
-
-#: ../src/xfdesktop-file-icon-manager.c:677
-#, c-format
-msgid "Are you sure that you want to delete \"%s\"?"
-msgstr "Bạn có chắc bạn muốn xóa \"%s\"?"
-
-#: ../src/xfdesktop-file-icon-manager.c:680 ../src/xfdesktop-file-utils.c:56
-msgid "Question"
-msgstr "Câu hỏi"
-
-#: ../src/xfdesktop-file-icon-manager.c:682
-#: ../src/xfdesktop-file-icon-manager.c:702
-msgid "If you delete a file, it is permanently lost."
-msgstr "Nếu xóa tập tin này, thì nó sẽ mất vĩnh viễn."
-
-#: ../src/xfdesktop-file-icon-manager.c:696
-#, c-format
-msgid "Are you sure you want to delete the following %d files?"
-msgstr "Bạn có chắc bạn muốn xóa %d tập tin sau?"
-
-#: ../src/xfdesktop-file-icon-manager.c:699
-msgid "Delete Multiple Files"
-msgstr "Xóa nhiều tập tin"
-
-#: ../src/xfdesktop-file-icon-manager.c:985
+#: ../src/xfdesktop-file-icon-manager.c:607
+#: ../src/xfdesktop-file-icon-manager.c:651
 #, fuzzy
-msgid "The application chooser could not be opened."
+msgid "The selected files could not be trashed"
 msgstr "Không tìm thấy hoặc không chạy được ứng dụng để mở tập tin."
 
-#: ../src/xfdesktop-file-icon-manager.c:986 ../src/xfdesktop-file-utils.c:368
+#: ../src/xfdesktop-file-icon-manager.c:608
+#: ../src/xfdesktop-file-icon-manager.c:652 ../src/xfdesktop-file-utils.c:582
+#: ../src/xfdesktop-file-utils.c:632 ../src/xfdesktop-file-utils.c:691
+#: ../src/xfdesktop-file-utils.c:803 ../src/xfdesktop-file-utils.c:859
+#: ../src/xfdesktop-file-utils.c:909 ../src/xfdesktop-file-utils.c:959
+#: ../src/xfdesktop-file-utils.c:1036 ../src/xfdesktop-file-utils.c:1097
+#: ../src/xfdesktop-file-utils.c:1170 ../src/xfdesktop-file-utils.c:1248
+#, fuzzy
 msgid ""
-"This feature requires a file manager service present (such as that supplied "
-"by Thunar)."
+"This feature requires a file manager service to be present (such as the one "
+"supplied by Thunar)."
 msgstr ""
 "Tính năng này cần dịch vụ của một trình quản lý tập tin (Thunar có một dịch "
 "vụ như vậy)."
 
-#: ../src/xfdesktop-file-icon-manager.c:1182
+#. printf is to be translator-friendly
+#: ../src/xfdesktop-file-icon-manager.c:752
+#: ../src/xfdesktop-file-icon-manager.c:1310
+#, c-format
+msgid "Unable to launch \"%s\":"
+msgstr "Không chạy được \"%s\":"
+
+#: ../src/xfdesktop-file-icon-manager.c:754
+#: ../src/xfdesktop-file-icon-manager.c:998
+#: ../src/xfdesktop-file-icon-manager.c:1311 ../src/xfdesktop-file-utils.c:565
+#: ../src/xfdesktop-file-utils.c:580 ../src/xfdesktop-file-utils.c:942
+#: ../src/xfdesktop-file-utils.c:957 ../src/xfdesktop-file-utils.c:1009
+#: ../src/xfdesktop-file-utils.c:1034 ../src/xfdesktop-file-utils.c:1080
+#: ../src/xfdesktop-file-utils.c:1095
+msgid "Launch Error"
+msgstr "Lỗi chạy"
+
+#: ../src/xfdesktop-file-icon-manager.c:922
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "_Mở bằng \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1185
+#: ../src/xfdesktop-file-icon-manager.c:925
 #, c-format
 msgid "Open With \"%s\""
 msgstr "Mở bằng \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1250
-#, c-format
-msgid "Unable to create folder named \"%s\":"
-msgstr "Không tạo được thư mục \"%s\":"
-
-#: ../src/xfdesktop-file-icon-manager.c:1289
+#: ../src/xfdesktop-file-icon-manager.c:1000
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
@@ -469,291 +432,285 @@ msgstr ""
 "Không chạy được \"exo-desktop-item-edit\" cần thiết để tạo và sửa các trình "
 "gọi và liên kết trên màn hình."
 
-#: ../src/xfdesktop-file-icon-manager.c:1324
-msgid "Create New Folder"
-msgstr "Tạo thư mục mới"
-
-#: ../src/xfdesktop-file-icon-manager.c:1328
-msgid "New Folder"
-msgstr "Thư mục mới"
-
-#: ../src/xfdesktop-file-icon-manager.c:1329
-#: ../src/xfdesktop-file-icon-manager.c:1421
-#: ../src/xfdesktop-file-icon-manager.c:1432
-msgid "Create"
-msgstr "Tạo"
-
-#: ../src/xfdesktop-file-icon-manager.c:1365
-#, c-format
-msgid "Unable to create file named \"%s\":"
-msgstr "Không tạo được tập tin \"%s\":"
-
 #: ../src/xfdesktop-file-icon-manager.c:1368
-msgid "Create File Failed"
-msgstr "Lỗi tạo tập tin"
-
-#: ../src/xfdesktop-file-icon-manager.c:1408
-#, c-format
-msgid "Create Document from template \"%s\""
-msgstr "Tạo thư mục từ mẫu \"%s\""
-
-#: ../src/xfdesktop-file-icon-manager.c:1427
-msgid "Create Empty File"
-msgstr "Tạo tập tin rỗng"
-
-#: ../src/xfdesktop-file-icon-manager.c:1431
-msgid "New Empty File"
-msgstr "Tập tin rỗng mới"
-
-#: ../src/xfdesktop-file-icon-manager.c:1464
-#, c-format
-msgid "Unable to create file \"%s\":"
-msgstr "Không tạo được tập tin \"%s\":"
-
-#: ../src/xfdesktop-file-icon-manager.c:1465
-msgid "Create Error"
-msgstr "Lỗi tạo"
-
-#: ../src/xfdesktop-file-icon-manager.c:1750
 msgid "_Open all"
 msgstr "_Mở hết"
 
-#: ../src/xfdesktop-file-icon-manager.c:1766
+#: ../src/xfdesktop-file-icon-manager.c:1384
 msgid "_Open in New Window"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1768
-#: ../src/xfdesktop-special-file-icon.c:637 ../src/xfdesktop-volume-icon.c:565
+#: ../src/xfdesktop-file-icon-manager.c:1386
+#: ../src/xfdesktop-special-file-icon.c:570 ../src/xfdesktop-volume-icon.c:653
 msgid "_Open"
 msgstr "_Mở"
 
-#: ../src/xfdesktop-file-icon-manager.c:1785
+#. create launcher item
+#: ../src/xfdesktop-file-icon-manager.c:1405
 msgid "Create _Launcher..."
 msgstr "Tạo trình _gọi..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1807
+#. create link item
+#: ../src/xfdesktop-file-icon-manager.c:1421
 msgid "Create _URL Link..."
 msgstr "Tạo liên kết _URL..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1827
+#. create folder item
+#: ../src/xfdesktop-file-icon-manager.c:1437
 msgid "Create _Folder..."
 msgstr "Tạo thư _mục..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1848
+#. create from template submenu
+#: ../src/xfdesktop-file-icon-manager.c:1452
 #, fuzzy
 msgid "Create From _Template"
 msgstr "Tạo thư mục từ mẫu \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1878
+#: ../src/xfdesktop-file-icon-manager.c:1479
 msgid "_Empty File"
 msgstr "Tậ_p tin rỗng"
 
-#: ../src/xfdesktop-file-icon-manager.c:1894
+#: ../src/xfdesktop-file-icon-manager.c:1495
 msgid "_Execute"
 msgstr "_Chạy"
 
-#: ../src/xfdesktop-file-icon-manager.c:1912
+#: ../src/xfdesktop-file-icon-manager.c:1515
 msgid "_Edit Launcher"
 msgstr "_Sửa trình gọi"
 
-#: ../src/xfdesktop-file-icon-manager.c:1952
+#: ../src/xfdesktop-file-icon-manager.c:1550
 msgid "Open With"
 msgstr "Mở bằng"
 
-#: ../src/xfdesktop-file-icon-manager.c:1983
+#: ../src/xfdesktop-file-icon-manager.c:1577
 msgid "Open With Other _Application..."
 msgstr "Mở bằng ứng dụng _khác..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2090
+#: ../src/xfdesktop-file-icon-manager.c:1665
 msgid "_Rename..."
 msgstr "Đổi _tên"
 
-#: ../src/xfdesktop-file-icon-manager.c:2108
+#: ../src/xfdesktop-file-icon-manager.c:1683
 msgid "Desktop _Settings..."
 msgstr "_Thiết lập desktop..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2118
-#: ../src/xfdesktop-volume-icon.c:614
+#: ../src/xfdesktop-file-icon-manager.c:1693
+#: ../src/xfdesktop-volume-icon.c:701
 msgid "_Properties..."
 msgstr "_Thuộc tính..."
 
-#: ../src/xfdesktop-file-icon-manager.c:3370
-#: ../src/xfdesktop-regular-file-icon.c:391
-#, c-format
-msgid "Failed to run \"%s\":"
-msgstr "Lỗi chạy \"%s\":"
-
-#: ../src/xfdesktop-file-icon-manager.c:3372
-#: ../src/xfdesktop-regular-file-icon.c:393
-msgid "Run Error"
+#: ../src/xfdesktop-file-icon-manager.c:2243
+#, fuzzy
+msgid "Load Error"
 msgstr "Lỗi chạy"
 
-#: ../src/xfdesktop-file-properties-dialog.c:104
+#: ../src/xfdesktop-file-icon-manager.c:2245
+msgid "Failed to load the desktop folder"
+msgstr ""
+
+#. TRANSLATORS: file was modified less than one day ago
+#: ../src/xfdesktop-file-utils.c:132
 #, c-format
-msgid "Unable to set default application for \"%s\" to \"%s\":"
-msgstr "Không đặt được ứng dụng mặc định cho \"%s\" thành \"%s\":"
+msgid "Today at %X"
+msgstr ""
 
-#: ../src/xfdesktop-file-properties-dialog.c:107
-msgid "Properties Error"
-msgstr "Lỗi thuộc tính"
+#. TRANSLATORS: file was modified less than two days ago
+#: ../src/xfdesktop-file-utils.c:136
+#, c-format
+msgid "Yesterday at %X"
+msgstr ""
 
-#: ../src/xfdesktop-file-properties-dialog.c:139
-msgid "None"
-msgstr "Không"
+#. Days from last week
+#: ../src/xfdesktop-file-utils.c:141
+#, c-format
+msgid "%A at %X"
+msgstr ""
 
-#: ../src/xfdesktop-file-properties-dialog.c:139
-msgid "Write only"
-msgstr "Chỉ ghi"
+#. Any other date
+#: ../src/xfdesktop-file-utils.c:144
+#, c-format
+msgid "%x at %X"
+msgstr ""
 
-#: ../src/xfdesktop-file-properties-dialog.c:139
-msgid "Read only"
-msgstr "Chỉ đọc"
-
-#: ../src/xfdesktop-file-properties-dialog.c:139
-msgid "Read & Write"
-msgstr "Ghi & đọc"
-
-#: ../src/xfdesktop-file-properties-dialog.c:165
-msgid "General"
-msgstr "Chung"
-
-#: ../src/xfdesktop-file-properties-dialog.c:190
-msgid "Name:"
-msgstr "Tên:"
-
-#: ../src/xfdesktop-file-properties-dialog.c:216
-msgid "Kind:"
-msgstr "Dạng:"
-
-#: ../src/xfdesktop-file-properties-dialog.c:236
-msgid "Link Target:"
-msgstr "Đích liên kết:"
-
-#: ../src/xfdesktop-file-properties-dialog.c:253
-#: ../src/xfdesktop-file-properties-dialog.c:415
-#: ../src/xfdesktop-volume-icon.c:480 ../src/xfdesktop-volume-icon.c:486
-msgid "(unknown)"
+#. the file_time is invalid
+#: ../src/xfdesktop-file-utils.c:154
+#, fuzzy
+msgid "Unknown"
 msgstr "(không rõ)"
 
-#: ../src/xfdesktop-file-properties-dialog.c:275
-msgid "Open With:"
-msgstr "Mở bằng:"
-
-#: ../src/xfdesktop-file-properties-dialog.c:355
-msgid "Modified:"
-msgstr "Đã sửa:"
-
-#: ../src/xfdesktop-file-properties-dialog.c:373
-msgid "Accessed:"
-msgstr "Truy cập:"
-
-#: ../src/xfdesktop-file-properties-dialog.c:400
-msgid "Free Space:"
-msgstr "Còn trống:"
-
-#: ../src/xfdesktop-file-properties-dialog.c:402
-msgid "Size:"
-msgstr "Kích thước:"
-
-#: ../src/xfdesktop-file-properties-dialog.c:418
-#: ../src/xfdesktop-regular-file-icon.c:497
-#: ../src/xfdesktop-special-file-icon.c:496
-msgid "%s (%"
-msgstr "%s (%"
-
-#. permissions tab
-#: ../src/xfdesktop-file-properties-dialog.c:433
-msgid "Permissions"
-msgstr "Quyền"
-
-#: ../src/xfdesktop-file-properties-dialog.c:455
-msgid "Owner:"
-msgstr "Sở hữu:"
-
-#: ../src/xfdesktop-file-properties-dialog.c:477
-#: ../src/xfdesktop-file-properties-dialog.c:515
-msgid "Access:"
-msgstr "Truy cập:"
-
-#: ../src/xfdesktop-file-properties-dialog.c:500
-msgid "Group:"
-msgstr "Nhóm:"
-
-#: ../src/xfdesktop-file-properties-dialog.c:538
-msgid "Others:"
-msgstr "Khác:"
-
-#: ../src/xfdesktop-file-utils.c:75
-msgid "Yes to _all"
-msgstr "Luôn _có"
-
-#: ../src/xfdesktop-file-utils.c:107
-#, c-format
-msgid "There was an error moving \"%s\" to \"%s\":"
-msgstr "Có lỗi khi di chuyển \"%s \" tới \"%s\":"
-
-#: ../src/xfdesktop-file-utils.c:110
-#, c-format
-msgid "There was an error copying \"%s\" to \"%s\":"
-msgstr "Có lỗi khi sao chép \"%s\" tới \"%s\":"
-
-#: ../src/xfdesktop-file-utils.c:113
-#, c-format
-msgid "There was an error linking \"%s\" to \"%s\":"
-msgstr "Có lỗi khi tạo liên kết \"%s\" tới \"%s\":"
-
-#: ../src/xfdesktop-file-utils.c:122
-msgid "File Error"
-msgstr "Lỗi tập tin"
-
-#: ../src/xfdesktop-file-utils.c:138
-msgid "broken link"
-msgstr "liên kết hỏng"
-
-#: ../src/xfdesktop-file-utils.c:142
-#, c-format
-msgid "link to %s"
-msgstr "liên kết tới %s"
-
-#: ../src/xfdesktop-regular-file-icon.c:500
-#: ../src/xfdesktop-special-file-icon.c:500
-#, c-format
-msgid ""
-"Kind: %s\n"
-"Modified:%s\n"
-"Size: %s"
-msgstr ""
-"Dạng: %s\n"
-"Đã sửa:%s\n"
-"Cỡ: %s"
-
-#: ../src/xfdesktop-regular-file-icon.c:546
-#: ../src/xfdesktop-regular-file-icon.c:610
-msgid "Error"
-msgstr "Lỗi"
-
-#: ../src/xfdesktop-regular-file-icon.c:607
-#, c-format
-msgid "Failed to rename \"%s\" to \"%s\":"
-msgstr "Lỗi đổi tên \"%s\" thành \"%s\":"
-
-#. FIXME: also display # of items in trash
-#: ../src/xfdesktop-special-file-icon.c:486
+#: ../src/xfdesktop-file-utils.c:566 ../src/xfdesktop-file-utils.c:581
 #, fuzzy
-msgid "Kind: Trash"
-msgstr "Dạng:"
+msgid "The folder could not be opened"
+msgstr "Không tìm thấy hoặc không chạy được ứng dụng để mở tập tin."
 
-#: ../src/xfdesktop-special-file-icon.c:519
+#: ../src/xfdesktop-file-utils.c:615 ../src/xfdesktop-file-utils.c:630
 #, fuzzy
-msgid "Trash Error"
+msgid "Rename Error"
 msgstr "Lỗi chạy"
 
-#: ../src/xfdesktop-special-file-icon.c:521
+#: ../src/xfdesktop-file-utils.c:616 ../src/xfdesktop-file-utils.c:631
+#, fuzzy
+msgid "The file could not be renamed"
+msgstr "Không tìm thấy hoặc không chạy được ứng dụng để mở tập tin."
+
+#: ../src/xfdesktop-file-utils.c:674 ../src/xfdesktop-file-utils.c:689
+#, fuzzy
+msgid "Delete Error"
+msgstr "Lỗi tạo"
+
+#: ../src/xfdesktop-file-utils.c:675 ../src/xfdesktop-file-utils.c:690
+#, fuzzy
+msgid "The selected files could not be deleted"
+msgstr "Không tìm thấy hoặc không chạy được ứng dụng để mở tập tin."
+
+#: ../src/xfdesktop-file-utils.c:734 ../src/xfdesktop-file-utils.c:749
+msgid "The selected files could not be moved to the trash"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:750
+#, fuzzy
+msgid ""
+"This feature requires a trash service to be present (such as the one "
+"supplied by Thunar)."
+msgstr ""
+"Tính năng này cần dịch vụ của một trình quản lý tập tin (Thunar có một dịch "
+"vụ như vậy)."
+
+#: ../src/xfdesktop-file-utils.c:786 ../src/xfdesktop-file-utils.c:801
+#, fuzzy
+msgid "Create File Error"
+msgstr "Lỗi tạo"
+
+#: ../src/xfdesktop-file-utils.c:787 ../src/xfdesktop-file-utils.c:802
+msgid "Could not create a new file"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:842 ../src/xfdesktop-file-utils.c:857
+#, fuzzy
+msgid "Create Document Error"
+msgstr "Lỗi tạo"
+
+#: ../src/xfdesktop-file-utils.c:843 ../src/xfdesktop-file-utils.c:858
+#, fuzzy
+msgid "Could not create a new document from the template"
+msgstr "Tạo thư mục từ mẫu \"%s\""
+
+#: ../src/xfdesktop-file-utils.c:892 ../src/xfdesktop-file-utils.c:907
+#, fuzzy
+msgid "File Properties Error"
+msgstr "Lỗi thuộc tính"
+
+#: ../src/xfdesktop-file-utils.c:893 ../src/xfdesktop-file-utils.c:908
+#, fuzzy
+msgid "The file properties dialog could not be opened"
+msgstr "Không tìm thấy hoặc không chạy được ứng dụng để mở tập tin."
+
+#: ../src/xfdesktop-file-utils.c:943 ../src/xfdesktop-file-utils.c:958
+#, fuzzy
+msgid "The file could not be opened"
+msgstr "Không tìm thấy hoặc không chạy được ứng dụng để mở tập tin."
+
+#: ../src/xfdesktop-file-utils.c:1006 ../src/xfdesktop-file-utils.c:1031
+#, fuzzy, c-format
+msgid "Failed to run \"%s\""
+msgstr "Lỗi chạy \"%s\":"
+
+#: ../src/xfdesktop-file-utils.c:1081 ../src/xfdesktop-file-utils.c:1096
+#, fuzzy
+msgid "The application chooser could not be opened"
+msgstr "Không tìm thấy hoặc không chạy được ứng dụng để mở tập tin."
+
+#: ../src/xfdesktop-file-utils.c:1154 ../src/xfdesktop-file-utils.c:1168
+#: ../src/xfdesktop-file-utils.c:1230 ../src/xfdesktop-file-utils.c:1246
+#, fuzzy
+msgid "Transfer Error"
+msgstr "Lỗi chạy"
+
+#: ../src/xfdesktop-file-utils.c:1155 ../src/xfdesktop-file-utils.c:1169
+#: ../src/xfdesktop-file-utils.c:1231 ../src/xfdesktop-file-utils.c:1247
+#, fuzzy
+msgid "The file transfer could not be performed"
+msgstr "Không tìm thấy hoặc không chạy được ứng dụng để mở tập tin."
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:97
+#, fuzzy
+msgid "Unmounting device"
+msgstr "Lỗi khi bỏ gắn"
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:100
+#, c-format
+msgid ""
+"The device \"%s\" is being unmounted by the system. Please do not remove the "
+"media or disconnect the drive"
+msgstr ""
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:107 ../src/xfdesktop-notify.c:220
+msgid "Writing data to device"
+msgstr ""
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:110 ../src/xfdesktop-notify.c:223
+#, c-format
+msgid ""
+"There is data that needs to be written to the device \"%s\" before it can be "
+"removed. Please do not remove the media or disconnect the drive"
+msgstr ""
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:211
+msgid "Ejecting device"
+msgstr ""
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:214
+#, c-format
+msgid "The device \"%s\" is being ejected. This may take some time"
+msgstr ""
+
+#: ../src/xfdesktop-regular-file-icon.c:468
+#, c-format
+msgid ""
+"Type: %s\n"
+"Size: %s\n"
+"Last modified: %s"
+msgstr ""
+
+#: ../src/xfdesktop-special-file-icon.c:249
+#: ../src/xfdesktop-special-file-icon.c:411
+#, fuzzy
+msgid "File System"
+msgstr "hệ thống"
+
+#: ../src/xfdesktop-special-file-icon.c:396
+msgid "Trash is empty"
+msgstr ""
+
+#: ../src/xfdesktop-special-file-icon.c:399
+msgid "Trash contains one item"
+msgstr ""
+
+#: ../src/xfdesktop-special-file-icon.c:400
+#, c-format
+msgid "Trash contains %d items"
+msgstr ""
+
+#: ../src/xfdesktop-special-file-icon.c:428
+#, c-format
+msgid ""
+"%s\n"
+"Size: %s\n"
+"Last modified: %s"
+msgstr ""
+
+#: ../src/xfdesktop-special-file-icon.c:449
 #, fuzzy
 msgid "Unable to contact the Xfce Trash service."
 msgstr "Không mở được sọt rác."
 
-#: ../src/xfdesktop-special-file-icon.c:522
+#: ../src/xfdesktop-special-file-icon.c:450
 #, fuzzy
 msgid ""
 "Make sure you have a file manager installed that supports the Xfce Trash "
@@ -762,61 +719,227 @@ msgstr ""
 "Để dọn sạch sọt rác cần dùng một trình quản lý tập tin hỗ trợ dịch vụ sọt "
 "rác của Xfce, như Thunar."
 
-#: ../src/xfdesktop-special-file-icon.c:655
+#: ../src/xfdesktop-special-file-icon.c:588
 msgid "_Empty Trash"
 msgstr "_Dọn sạch sọt rác"
 
-#: ../src/xfdesktop-volume-icon.c:478
-#, c-format
-msgid "%s (%s total)"
-msgstr ""
-
-#: ../src/xfdesktop-volume-icon.c:482
+#: ../src/xfdesktop-volume-icon.c:413
 #, c-format
 msgid ""
-"Kind: Removable Volume\n"
-"Mount Point: %s\n"
-"Free Space: %s"
+"Removable Volume\n"
+"Mounted in \"%s\"\n"
+"%s left (%s total)"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:513
-#, c-format
-msgid "Unable to mount \"%s\":"
-msgstr "Không gắn được \"%s\":"
+#: ../src/xfdesktop-volume-icon.c:420
+msgid ""
+"Removable Volume\n"
+"Not mounted yet"
+msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:514
-#, c-format
-msgid "Unable to unmount \"%s\":"
-msgstr "Không bỏ gắn được \"%s\":"
-
-#: ../src/xfdesktop-volume-icon.c:517
-msgid "Mount Failed"
-msgstr "Lỗi khi gắn"
-
-#: ../src/xfdesktop-volume-icon.c:517
-msgid "Unmount Failed"
-msgstr "Lỗi khi bỏ gắn"
-
-#: ../src/xfdesktop-volume-icon.c:535
-#, c-format
-msgid "Unable to eject \"%s\":"
+#: ../src/xfdesktop-volume-icon.c:446 ../src/xfdesktop-volume-icon.c:488
+#, fuzzy, c-format
+msgid "Failed to eject \"%s\""
 msgstr "Không đẩy ra được \"%s\":"
 
-#: ../src/xfdesktop-volume-icon.c:538
+#: ../src/xfdesktop-volume-icon.c:451 ../src/xfdesktop-volume-icon.c:493
 msgid "Eject Failed"
 msgstr "Đẩy ra không thành công"
 
-#: ../src/xfdesktop-volume-icon.c:582
-msgid "_Unmount Volume"
-msgstr "_Bỏ gắn"
+#: ../src/xfdesktop-volume-icon.c:525
+#, fuzzy, c-format
+msgid "Failed to mount \"%s\""
+msgstr "Lỗi chạy \"%s\":"
 
-#: ../src/xfdesktop-volume-icon.c:585
+#: ../src/xfdesktop-volume-icon.c:528
+msgid "Mount Failed"
+msgstr "Lỗi khi gắn"
+
+#: ../src/xfdesktop-volume-icon.c:669 ../src/xfdesktop-volume-icon.c:672
+msgid "E_ject Volume"
+msgstr "Đẩy đĩa _ra"
+
+#: ../src/xfdesktop-volume-icon.c:679
 msgid "_Mount Volume"
 msgstr "_Gắn ổ"
 
-#: ../src/xfdesktop-volume-icon.c:599
-msgid "E_ject Volume"
-msgstr "Đẩy đĩa _ra"
+#~ msgid ""
+#~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+#~ msgstr ""
+#~ "Xfdesktop không tạo được thư mục \"%s\" để phục hồi các mục màn hình:"
+
+#~ msgid "Create Folder Failed"
+#~ msgstr "Lỗi tạo thư mục"
+
+#~ msgid ""
+#~ "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not "
+#~ "a folder."
+#~ msgstr ""
+#~ "Xfdesktop không dùng được \"%s\" để chứa các mục màn hình vì nó không "
+#~ "phải là thư mục."
+
+#~ msgid "Please delete or rename the file."
+#~ msgstr "Xin hãy xóa hoặc đổi tên tập tin."
+
+#~ msgid "Rename \"%s\""
+#~ msgstr "Đổi tên \"%s\""
+
+#~ msgid "Enter the new name:"
+#~ msgstr "Nhập tên mới:"
+
+#~ msgid "Rename"
+#~ msgstr "Đổi tên"
+
+#~ msgid "Are you sure that you want to delete \"%s\"?"
+#~ msgstr "Bạn có chắc bạn muốn xóa \"%s\"?"
+
+#~ msgid "Question"
+#~ msgstr "Câu hỏi"
+
+#~ msgid "If you delete a file, it is permanently lost."
+#~ msgstr "Nếu xóa tập tin này, thì nó sẽ mất vĩnh viễn."
+
+#~ msgid "Are you sure you want to delete the following %d files?"
+#~ msgstr "Bạn có chắc bạn muốn xóa %d tập tin sau?"
+
+#~ msgid "Delete Multiple Files"
+#~ msgstr "Xóa nhiều tập tin"
+
+#~ msgid "Unable to create folder named \"%s\":"
+#~ msgstr "Không tạo được thư mục \"%s\":"
+
+#~ msgid "Create New Folder"
+#~ msgstr "Tạo thư mục mới"
+
+#~ msgid "New Folder"
+#~ msgstr "Thư mục mới"
+
+#~ msgid "Create"
+#~ msgstr "Tạo"
+
+#~ msgid "Unable to create file named \"%s\":"
+#~ msgstr "Không tạo được tập tin \"%s\":"
+
+#~ msgid "Create File Failed"
+#~ msgstr "Lỗi tạo tập tin"
+
+#~ msgid "Create Empty File"
+#~ msgstr "Tạo tập tin rỗng"
+
+#~ msgid "New Empty File"
+#~ msgstr "Tập tin rỗng mới"
+
+#~ msgid "Unable to create file \"%s\":"
+#~ msgstr "Không tạo được tập tin \"%s\":"
+
+#~ msgid "Unable to set default application for \"%s\" to \"%s\":"
+#~ msgstr "Không đặt được ứng dụng mặc định cho \"%s\" thành \"%s\":"
+
+#~ msgid "None"
+#~ msgstr "Không"
+
+#~ msgid "Write only"
+#~ msgstr "Chỉ ghi"
+
+#~ msgid "Read only"
+#~ msgstr "Chỉ đọc"
+
+#~ msgid "Read & Write"
+#~ msgstr "Ghi & đọc"
+
+#~ msgid "General"
+#~ msgstr "Chung"
+
+#~ msgid "Name:"
+#~ msgstr "Tên:"
+
+#~ msgid "Kind:"
+#~ msgstr "Dạng:"
+
+#~ msgid "Link Target:"
+#~ msgstr "Đích liên kết:"
+
+#~ msgid "Open With:"
+#~ msgstr "Mở bằng:"
+
+#~ msgid "Modified:"
+#~ msgstr "Đã sửa:"
+
+#~ msgid "Accessed:"
+#~ msgstr "Truy cập:"
+
+#~ msgid "Free Space:"
+#~ msgstr "Còn trống:"
+
+#~ msgid "Size:"
+#~ msgstr "Kích thước:"
+
+#~ msgid "%s (%"
+#~ msgstr "%s (%"
+
+#~ msgid "Permissions"
+#~ msgstr "Quyền"
+
+#~ msgid "Owner:"
+#~ msgstr "Sở hữu:"
+
+#~ msgid "Access:"
+#~ msgstr "Truy cập:"
+
+#~ msgid "Group:"
+#~ msgstr "Nhóm:"
+
+#~ msgid "Others:"
+#~ msgstr "Khác:"
+
+#~ msgid "Yes to _all"
+#~ msgstr "Luôn _có"
+
+#~ msgid "There was an error moving \"%s\" to \"%s\":"
+#~ msgstr "Có lỗi khi di chuyển \"%s \" tới \"%s\":"
+
+#~ msgid "There was an error copying \"%s\" to \"%s\":"
+#~ msgstr "Có lỗi khi sao chép \"%s\" tới \"%s\":"
+
+#~ msgid "There was an error linking \"%s\" to \"%s\":"
+#~ msgstr "Có lỗi khi tạo liên kết \"%s\" tới \"%s\":"
+
+#~ msgid "File Error"
+#~ msgstr "Lỗi tập tin"
+
+#~ msgid "broken link"
+#~ msgstr "liên kết hỏng"
+
+#~ msgid "link to %s"
+#~ msgstr "liên kết tới %s"
+
+#~ msgid ""
+#~ "Kind: %s\n"
+#~ "Modified:%s\n"
+#~ "Size: %s"
+#~ msgstr ""
+#~ "Dạng: %s\n"
+#~ "Đã sửa:%s\n"
+#~ "Cỡ: %s"
+
+#~ msgid "Error"
+#~ msgstr "Lỗi"
+
+#~ msgid "Failed to rename \"%s\" to \"%s\":"
+#~ msgstr "Lỗi đổi tên \"%s\" thành \"%s\":"
+
+#, fuzzy
+#~ msgid "Kind: Trash"
+#~ msgstr "Dạng:"
+
+#~ msgid "Unable to mount \"%s\":"
+#~ msgstr "Không gắn được \"%s\":"
+
+#~ msgid "Unable to unmount \"%s\":"
+#~ msgstr "Không bỏ gắn được \"%s\":"
+
+#~ msgid "_Unmount Volume"
+#~ msgstr "_Bỏ gắn"
 
 #~ msgid "Unable to launch xfce4-menueditor: %s"
 #~ msgstr "Không thể gọi xfce4-menueditor: %s"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.6.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-28 16:27+0200\n"
+"POT-Creation-Date: 2010-11-04 00:34+0100\n"
 "PO-Revision-Date: 2009-04-21 23:23+0300\n"
 "Last-Translator: Mișu Moldovan <dumol@xfce.org>\n"
 "Language-Team: Romanian <xfce-i18n@xfce.org>\n"
@@ -33,7 +33,8 @@ msgstr ""
 "%s\n"
 "<i>Mărime: %dx%d</i>"
 
-#: ../settings/main.c:272 ../src/xfdesktop-special-file-icon.c:259
+#: ../settings/main.c:272 ../src/xfdesktop-special-file-icon.c:247
+#: ../src/xfdesktop-special-file-icon.c:413
 msgid "Home"
 msgstr "Acasă"
 
@@ -168,78 +169,78 @@ msgstr ""
 "Schimbați fundalul desktopului și funcționalitatea meniurilor și iconițelor "
 "sale"
 
-#: ../src/main.c:235
+#: ../src/main.c:234
 #, fuzzy
 msgid "Display version information"
 msgstr "Detalii despre versiune"
 
-#: ../src/main.c:236
+#: ../src/main.c:235
 #, fuzzy
 msgid "Reload all settings, refresh image list"
 msgstr ""
 "    --reload      Reîncarcă preferințele, actualizează lista imaginilor\n"
 
-#: ../src/main.c:237
+#: ../src/main.c:236
 #, fuzzy
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "    --menu        Deschide meniul (la poziția curentă a mausului)\n"
 
-#: ../src/main.c:238
+#: ../src/main.c:237
 #, fuzzy
 msgid "Pop up the window list (at the current mouse position)"
 msgstr ""
 "    --windowlist  Deschide lista ferestrelor (la poziția curentă a "
 "mausului)\n"
 
-#: ../src/main.c:239
+#: ../src/main.c:238
 #, fuzzy
 msgid "Cause xfdesktop to quit"
 msgstr "    --quit        Cere închiderea aplicației xfdesktop\n"
 
-#: ../src/main.c:259
+#: ../src/main.c:258
 #, fuzzy, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "Nu se poate porni „%s”:"
 
-#: ../src/main.c:267
+#: ../src/main.c:266
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Acesta este %s versiunea %s, pornit în Xfce %s.\n"
 
-#: ../src/main.c:269
+#: ../src/main.c:268
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Compilat cu GTK+ %d.%d.%d, pornit cu GTK+ %d.%d.%d."
 
-#: ../src/main.c:273
+#: ../src/main.c:272
 #, c-format
 msgid "Build options:\n"
 msgstr "Opțiuni de compilare:\n"
 
-#: ../src/main.c:274
+#: ../src/main.c:273
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Meniu desktop:        %s\n"
 
-#: ../src/main.c:276 ../src/main.c:283 ../src/main.c:290
+#: ../src/main.c:275 ../src/main.c:282 ../src/main.c:289
 msgid "enabled"
 msgstr "da"
 
-#: ../src/main.c:278 ../src/main.c:285 ../src/main.c:292
+#: ../src/main.c:277 ../src/main.c:284 ../src/main.c:291
 msgid "disabled"
 msgstr "nu"
 
-#: ../src/main.c:281
+#: ../src/main.c:280
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Iconițe desktop:       %s\n"
 
-#: ../src/main.c:288
+#: ../src/main.c:287
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Iconițe fișiere desktop:  %s\n"
 
-#: ../src/main.c:319
+#: ../src/main.c:318
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s nu este pornit.\n"
@@ -281,16 +282,16 @@ msgstr "Șt_erge spațiul de lucru %d"
 msgid "_Remove Workspace '%s'"
 msgstr "Șt_erge spațiul de lucru „%s”"
 
-#: ../src/xfce-desktop.c:742
+#: ../src/xfce-desktop.c:729
 msgid "Desktop"
 msgstr "Desktop"
 
-#: ../src/xfce-desktop.c:1018
+#: ../src/xfce-desktop.c:1006
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "Nu se poate încărca imaginea din fișierul cu lista fundalurilor „%s”:"
 
-#: ../src/xfce-desktop.c:1020
+#: ../src/xfce-desktop.c:1008
 msgid "Desktop Error"
 msgstr "Eroare desktop"
 
@@ -344,117 +345,78 @@ msgstr ""
 msgid "Whether or not to use an underscore in the label as a keyboard mnemonic"
 msgstr ""
 
-#. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon.c:141 ../src/xfdesktop-file-icon-manager.c:922
-#: ../src/xfdesktop-file-icon-manager.c:1683 ../src/xfdesktop-file-utils.c:363
-#, c-format
-msgid "Unable to launch \"%s\":"
-msgstr "Nu se poate lansa „%s”:"
-
-#: ../src/xfdesktop-file-icon.c:143 ../src/xfdesktop-file-icon-manager.c:924
-#: ../src/xfdesktop-file-icon-manager.c:984
-#: ../src/xfdesktop-file-icon-manager.c:1287
-#: ../src/xfdesktop-file-icon-manager.c:1684 ../src/xfdesktop-file-utils.c:366
-msgid "Launch Error"
-msgstr "Eroare la lansare"
-
-#: ../src/xfdesktop-file-icon.c:145
-msgid "The associated application could not be found or executed."
-msgstr "Aplicația asociată nu a putut fi găsită ori pornită."
-
 #: ../src/xfdesktop-file-icon-manager.c:479
-#, c-format
+#: ../src/xfdesktop-file-icon-manager.c:496
+#, fuzzy, c-format
+msgid "Could not create the desktop folder \"%s\""
+msgstr "Nu s-a putut crea lista imaginilor de fundal „%s”"
+
+#: ../src/xfdesktop-file-icon-manager.c:484
+#: ../src/xfdesktop-file-icon-manager.c:501
+#, fuzzy
+msgid "Desktop Folder Error"
+msgstr "Eroare desktop"
+
+#: ../src/xfdesktop-file-icon-manager.c:503
 msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+"A normal file with the same name already exists. Please delete or rename it."
 msgstr ""
-"Nu s-a putut crea dosarul „%s” pentru stocarea elementelor desktopului:"
 
-#: ../src/xfdesktop-file-icon-manager.c:481
-#: ../src/xfdesktop-file-icon-manager.c:492
-#: ../src/xfdesktop-file-icon-manager.c:1253
-msgid "Create Folder Failed"
-msgstr "Crearea dosarului a eșuat"
+#: ../src/xfdesktop-file-icon-manager.c:606
+#: ../src/xfdesktop-file-icon-manager.c:650 ../src/xfdesktop-file-utils.c:733
+#: ../src/xfdesktop-file-utils.c:748 ../src/xfdesktop-special-file-icon.c:447
+msgid "Trash Error"
+msgstr "Eroare coș de gunoi"
 
-#: ../src/xfdesktop-file-icon-manager.c:490
-#, c-format
-msgid ""
-"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
-"folder."
-msgstr ""
-"Nu se poate utiliza „%s” pentru stocarea elementelor desktopului pentru că "
-"nu este un dosar"
-
-#: ../src/xfdesktop-file-icon-manager.c:494
-msgid "Please delete or rename the file."
-msgstr "Este necesar să ștergeți sau să redenumiți fișierul."
-
-#: ../src/xfdesktop-file-icon-manager.c:631
-#, c-format
-msgid "Rename \"%s\""
-msgstr "Redenumire „%s”"
-
-#: ../src/xfdesktop-file-icon-manager.c:638
-#: ../src/xfdesktop-file-icon-manager.c:1327
-#: ../src/xfdesktop-file-icon-manager.c:1419
-#: ../src/xfdesktop-file-icon-manager.c:1430
-msgid "Enter the new name:"
-msgstr "Introduceți noul nume:"
-
-#: ../src/xfdesktop-file-icon-manager.c:640
-msgid "Rename"
-msgstr "Redenumește"
-
-#: ../src/xfdesktop-file-icon-manager.c:677
-#, c-format
-msgid "Are you sure that you want to delete \"%s\"?"
-msgstr "Sigur doriți să ștergeți „%s”?"
-
-#: ../src/xfdesktop-file-icon-manager.c:680 ../src/xfdesktop-file-utils.c:56
-msgid "Question"
-msgstr "Întrebare"
-
-#: ../src/xfdesktop-file-icon-manager.c:682
-#: ../src/xfdesktop-file-icon-manager.c:702
-msgid "If you delete a file, it is permanently lost."
-msgstr "Ștergerea unui fișier implică pierderea sa definitivă."
-
-#: ../src/xfdesktop-file-icon-manager.c:696
-#, c-format
-msgid "Are you sure you want to delete the following %d files?"
-msgstr "Sigur doriți să ștergeți următoarele %d fișiere?"
-
-#: ../src/xfdesktop-file-icon-manager.c:699
-msgid "Delete Multiple Files"
-msgstr "Ștergere fișiere multiple"
-
-#: ../src/xfdesktop-file-icon-manager.c:985
-msgid "The application chooser could not be opened."
+#: ../src/xfdesktop-file-icon-manager.c:607
+#: ../src/xfdesktop-file-icon-manager.c:651
+#, fuzzy
+msgid "The selected files could not be trashed"
 msgstr "Selectorul aplicației nu a putut fi pornit."
 
-#: ../src/xfdesktop-file-icon-manager.c:986 ../src/xfdesktop-file-utils.c:368
+#: ../src/xfdesktop-file-icon-manager.c:608
+#: ../src/xfdesktop-file-icon-manager.c:652 ../src/xfdesktop-file-utils.c:582
+#: ../src/xfdesktop-file-utils.c:632 ../src/xfdesktop-file-utils.c:691
+#: ../src/xfdesktop-file-utils.c:803 ../src/xfdesktop-file-utils.c:859
+#: ../src/xfdesktop-file-utils.c:909 ../src/xfdesktop-file-utils.c:959
+#: ../src/xfdesktop-file-utils.c:1036 ../src/xfdesktop-file-utils.c:1097
+#: ../src/xfdesktop-file-utils.c:1170 ../src/xfdesktop-file-utils.c:1248
+#, fuzzy
 msgid ""
-"This feature requires a file manager service present (such as that supplied "
-"by Thunar)."
+"This feature requires a file manager service to be present (such as the one "
+"supplied by Thunar)."
 msgstr ""
 "Această facilitate necesită suport din partea unui manager de fișiere "
 "(precum Thunar)."
 
-#: ../src/xfdesktop-file-icon-manager.c:1182
+#. printf is to be translator-friendly
+#: ../src/xfdesktop-file-icon-manager.c:752
+#: ../src/xfdesktop-file-icon-manager.c:1310
+#, c-format
+msgid "Unable to launch \"%s\":"
+msgstr "Nu se poate lansa „%s”:"
+
+#: ../src/xfdesktop-file-icon-manager.c:754
+#: ../src/xfdesktop-file-icon-manager.c:998
+#: ../src/xfdesktop-file-icon-manager.c:1311 ../src/xfdesktop-file-utils.c:565
+#: ../src/xfdesktop-file-utils.c:580 ../src/xfdesktop-file-utils.c:942
+#: ../src/xfdesktop-file-utils.c:957 ../src/xfdesktop-file-utils.c:1009
+#: ../src/xfdesktop-file-utils.c:1034 ../src/xfdesktop-file-utils.c:1080
+#: ../src/xfdesktop-file-utils.c:1095
+msgid "Launch Error"
+msgstr "Eroare la lansare"
+
+#: ../src/xfdesktop-file-icon-manager.c:922
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "_Deschide cu „%s”"
 
-#: ../src/xfdesktop-file-icon-manager.c:1185
+#: ../src/xfdesktop-file-icon-manager.c:925
 #, c-format
 msgid "Open With \"%s\""
 msgstr "Deschide cu „%s”"
 
-#: ../src/xfdesktop-file-icon-manager.c:1250
-#, c-format
-msgid "Unable to create folder named \"%s\":"
-msgstr "Nu se poate crea dosarul cu numele „%s”"
-
-#: ../src/xfdesktop-file-icon-manager.c:1289
+#: ../src/xfdesktop-file-icon-manager.c:1000
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
@@ -462,287 +424,283 @@ msgstr ""
 "Nu se poate porni „exo-desktop-item-edit”, aplicație necesară pentru crearea "
 "și editarea de lansatori și scurtături pe desktop."
 
-#: ../src/xfdesktop-file-icon-manager.c:1324
-msgid "Create New Folder"
-msgstr "Creare dosar nou"
-
-#: ../src/xfdesktop-file-icon-manager.c:1328
-msgid "New Folder"
-msgstr "Nou dosar"
-
-#: ../src/xfdesktop-file-icon-manager.c:1329
-#: ../src/xfdesktop-file-icon-manager.c:1421
-#: ../src/xfdesktop-file-icon-manager.c:1432
-msgid "Create"
-msgstr "Creează"
-
-#: ../src/xfdesktop-file-icon-manager.c:1365
-#, c-format
-msgid "Unable to create file named \"%s\":"
-msgstr "Nu se poate crea fișierul cu numele „%s”:"
-
 #: ../src/xfdesktop-file-icon-manager.c:1368
-msgid "Create File Failed"
-msgstr "Crearea fișierului a eșuat"
-
-#: ../src/xfdesktop-file-icon-manager.c:1408
-#, c-format
-msgid "Create Document from template \"%s\""
-msgstr "Creați un document utilizând șablonul „%s”"
-
-#: ../src/xfdesktop-file-icon-manager.c:1427
-msgid "Create Empty File"
-msgstr "Creare fișier gol"
-
-#: ../src/xfdesktop-file-icon-manager.c:1431
-msgid "New Empty File"
-msgstr "Nou fișier gol"
-
-#: ../src/xfdesktop-file-icon-manager.c:1464
-#, c-format
-msgid "Unable to create file \"%s\":"
-msgstr "Nu se poate crea fișierul „%s”:"
-
-#: ../src/xfdesktop-file-icon-manager.c:1465
-msgid "Create Error"
-msgstr "Eroare la creare"
-
-#: ../src/xfdesktop-file-icon-manager.c:1750
 msgid "_Open all"
 msgstr "_Deschide tot"
 
-#: ../src/xfdesktop-file-icon-manager.c:1766
+#: ../src/xfdesktop-file-icon-manager.c:1384
 msgid "_Open in New Window"
 msgstr "_Deschide în fereastră nouă"
 
-#: ../src/xfdesktop-file-icon-manager.c:1768
-#: ../src/xfdesktop-special-file-icon.c:637 ../src/xfdesktop-volume-icon.c:565
+#: ../src/xfdesktop-file-icon-manager.c:1386
+#: ../src/xfdesktop-special-file-icon.c:570 ../src/xfdesktop-volume-icon.c:653
 msgid "_Open"
 msgstr "_Deschide"
 
-#: ../src/xfdesktop-file-icon-manager.c:1785
+#. create launcher item
+#: ../src/xfdesktop-file-icon-manager.c:1405
 msgid "Create _Launcher..."
 msgstr "Creează un l_ansator..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1807
+#. create link item
+#: ../src/xfdesktop-file-icon-manager.c:1421
 msgid "Create _URL Link..."
 msgstr "Creează un link de tip _URL..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1827
+#. create folder item
+#: ../src/xfdesktop-file-icon-manager.c:1437
 msgid "Create _Folder..."
 msgstr "Creează un do_sar..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1848
+#. create from template submenu
+#: ../src/xfdesktop-file-icon-manager.c:1452
 msgid "Create From _Template"
 msgstr "Creează din șa_blon"
 
-#: ../src/xfdesktop-file-icon-manager.c:1878
+#: ../src/xfdesktop-file-icon-manager.c:1479
 msgid "_Empty File"
 msgstr "Fișier g_ol"
 
-#: ../src/xfdesktop-file-icon-manager.c:1894
+#: ../src/xfdesktop-file-icon-manager.c:1495
 msgid "_Execute"
 msgstr "E_xecută"
 
-#: ../src/xfdesktop-file-icon-manager.c:1912
+#: ../src/xfdesktop-file-icon-manager.c:1515
 msgid "_Edit Launcher"
 msgstr "_Editare lansator"
 
-#: ../src/xfdesktop-file-icon-manager.c:1952
+#: ../src/xfdesktop-file-icon-manager.c:1550
 msgid "Open With"
 msgstr "Deschide cu"
 
-#: ../src/xfdesktop-file-icon-manager.c:1983
+#: ../src/xfdesktop-file-icon-manager.c:1577
 msgid "Open With Other _Application..."
 msgstr "Deschide cu o altă _aplicație..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2090
+#: ../src/xfdesktop-file-icon-manager.c:1665
 msgid "_Rename..."
 msgstr "_Redenumire..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2108
+#: ../src/xfdesktop-file-icon-manager.c:1683
 msgid "Desktop _Settings..."
 msgstr "Preferințe des_ktop..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2118
-#: ../src/xfdesktop-volume-icon.c:614
+#: ../src/xfdesktop-file-icon-manager.c:1693
+#: ../src/xfdesktop-volume-icon.c:701
 msgid "_Properties..."
 msgstr "_Proprietăți..."
 
-#: ../src/xfdesktop-file-icon-manager.c:3370
-#: ../src/xfdesktop-regular-file-icon.c:391
+#: ../src/xfdesktop-file-icon-manager.c:2243
+#, fuzzy
+msgid "Load Error"
+msgstr "Eroare la lansare"
+
+#: ../src/xfdesktop-file-icon-manager.c:2245
+msgid "Failed to load the desktop folder"
+msgstr ""
+
+#. TRANSLATORS: file was modified less than one day ago
+#: ../src/xfdesktop-file-utils.c:132
 #, c-format
-msgid "Failed to run \"%s\":"
-msgstr "Nu se poate porni „%s”:"
+msgid "Today at %X"
+msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:3372
-#: ../src/xfdesktop-regular-file-icon.c:393
-msgid "Run Error"
-msgstr "Eroare la pornire"
-
-#: ../src/xfdesktop-file-properties-dialog.c:104
+#. TRANSLATORS: file was modified less than two days ago
+#: ../src/xfdesktop-file-utils.c:136
 #, c-format
-msgid "Unable to set default application for \"%s\" to \"%s\":"
-msgstr "Nu se poate desemna aplicația implicită pentru „%s” ca „%s”:"
+msgid "Yesterday at %X"
+msgstr ""
 
-#: ../src/xfdesktop-file-properties-dialog.c:107
-msgid "Properties Error"
-msgstr "Eroare proprietăți"
+#. Days from last week
+#: ../src/xfdesktop-file-utils.c:141
+#, c-format
+msgid "%A at %X"
+msgstr ""
 
-#: ../src/xfdesktop-file-properties-dialog.c:139
-msgid "None"
-msgstr "Nu"
+#. Any other date
+#: ../src/xfdesktop-file-utils.c:144
+#, c-format
+msgid "%x at %X"
+msgstr ""
 
-#: ../src/xfdesktop-file-properties-dialog.c:139
-msgid "Write only"
-msgstr "Doar scriere"
-
-#: ../src/xfdesktop-file-properties-dialog.c:139
-msgid "Read only"
-msgstr "Doar citire"
-
-#: ../src/xfdesktop-file-properties-dialog.c:139
-msgid "Read & Write"
-msgstr "Citire și scriere"
-
-#: ../src/xfdesktop-file-properties-dialog.c:165
-msgid "General"
-msgstr "Generale"
-
-#: ../src/xfdesktop-file-properties-dialog.c:190
-msgid "Name:"
-msgstr "Nume:"
-
-#: ../src/xfdesktop-file-properties-dialog.c:216
-msgid "Kind:"
-msgstr "Tip:"
-
-#: ../src/xfdesktop-file-properties-dialog.c:236
-msgid "Link Target:"
-msgstr "Ținta legăturii:"
-
-#: ../src/xfdesktop-file-properties-dialog.c:253
-#: ../src/xfdesktop-file-properties-dialog.c:415
-#: ../src/xfdesktop-volume-icon.c:480 ../src/xfdesktop-volume-icon.c:486
-msgid "(unknown)"
+#. the file_time is invalid
+#: ../src/xfdesktop-file-utils.c:154
+#, fuzzy
+msgid "Unknown"
 msgstr "(necunoscut)"
 
-#: ../src/xfdesktop-file-properties-dialog.c:275
-msgid "Open With:"
-msgstr "Deschide cu:"
+#: ../src/xfdesktop-file-utils.c:566 ../src/xfdesktop-file-utils.c:581
+#, fuzzy
+msgid "The folder could not be opened"
+msgstr "Selectorul aplicației nu a putut fi pornit."
 
-#: ../src/xfdesktop-file-properties-dialog.c:355
-msgid "Modified:"
-msgstr "Modificat:"
+#: ../src/xfdesktop-file-utils.c:615 ../src/xfdesktop-file-utils.c:630
+#, fuzzy
+msgid "Rename Error"
+msgstr "Eroare la pornire"
 
-#: ../src/xfdesktop-file-properties-dialog.c:373
-msgid "Accessed:"
-msgstr "Accesat:"
+#: ../src/xfdesktop-file-utils.c:616 ../src/xfdesktop-file-utils.c:631
+#, fuzzy
+msgid "The file could not be renamed"
+msgstr "Selectorul aplicației nu a putut fi pornit."
 
-#: ../src/xfdesktop-file-properties-dialog.c:400
-msgid "Free Space:"
-msgstr "Spațiu liber:"
+#: ../src/xfdesktop-file-utils.c:674 ../src/xfdesktop-file-utils.c:689
+#, fuzzy
+msgid "Delete Error"
+msgstr "Eroare la creare"
 
-#: ../src/xfdesktop-file-properties-dialog.c:402
-msgid "Size:"
-msgstr "Mărime:"
+#: ../src/xfdesktop-file-utils.c:675 ../src/xfdesktop-file-utils.c:690
+#, fuzzy
+msgid "The selected files could not be deleted"
+msgstr "Aplicația asociată nu a putut fi găsită ori pornită."
 
-#: ../src/xfdesktop-file-properties-dialog.c:418
-#: ../src/xfdesktop-regular-file-icon.c:497
-#: ../src/xfdesktop-special-file-icon.c:496
-msgid "%s (%"
-msgstr "%s (%"
-
-#. permissions tab
-#: ../src/xfdesktop-file-properties-dialog.c:433
-msgid "Permissions"
-msgstr "Drepturi"
-
-#: ../src/xfdesktop-file-properties-dialog.c:455
-msgid "Owner:"
-msgstr "Deținător:"
-
-#: ../src/xfdesktop-file-properties-dialog.c:477
-#: ../src/xfdesktop-file-properties-dialog.c:515
-msgid "Access:"
-msgstr "Acces:"
-
-#: ../src/xfdesktop-file-properties-dialog.c:500
-msgid "Group:"
-msgstr "Grup:"
-
-#: ../src/xfdesktop-file-properties-dialog.c:538
-msgid "Others:"
-msgstr "Altele:"
-
-#: ../src/xfdesktop-file-utils.c:75
-msgid "Yes to _all"
-msgstr "D_a pentru tot"
-
-#: ../src/xfdesktop-file-utils.c:107
-#, c-format
-msgid "There was an error moving \"%s\" to \"%s\":"
-msgstr "A intervenit o eroare la mutarea „%s” în „%s”:"
-
-#: ../src/xfdesktop-file-utils.c:110
-#, c-format
-msgid "There was an error copying \"%s\" to \"%s\":"
-msgstr "A intervenit o eroare la copierea „%s” în „%s”:"
-
-#: ../src/xfdesktop-file-utils.c:113
-#, c-format
-msgid "There was an error linking \"%s\" to \"%s\":"
-msgstr "A intervenit o eroare la crearea legăturii „%s” către „%s”:"
-
-#: ../src/xfdesktop-file-utils.c:122
-msgid "File Error"
-msgstr "Eroare fișier"
-
-#: ../src/xfdesktop-file-utils.c:138
-msgid "broken link"
-msgstr "legătură invalidă"
-
-#: ../src/xfdesktop-file-utils.c:142
-#, c-format
-msgid "link to %s"
-msgstr "legătură către %s"
-
-#: ../src/xfdesktop-regular-file-icon.c:500
-#: ../src/xfdesktop-special-file-icon.c:500
-#, c-format
-msgid ""
-"Kind: %s\n"
-"Modified:%s\n"
-"Size: %s"
+#: ../src/xfdesktop-file-utils.c:734 ../src/xfdesktop-file-utils.c:749
+msgid "The selected files could not be moved to the trash"
 msgstr ""
-"Tip: %s\n"
-"Modificat: %s\n"
-"Mărime: %s"
 
-#: ../src/xfdesktop-regular-file-icon.c:546
-#: ../src/xfdesktop-regular-file-icon.c:610
-msgid "Error"
-msgstr "Eroare"
+#: ../src/xfdesktop-file-utils.c:750
+#, fuzzy
+msgid ""
+"This feature requires a trash service to be present (such as the one "
+"supplied by Thunar)."
+msgstr ""
+"Această facilitate necesită suport din partea unui manager de fișiere "
+"(precum Thunar)."
 
-#: ../src/xfdesktop-regular-file-icon.c:607
-#, c-format
-msgid "Failed to rename \"%s\" to \"%s\":"
-msgstr "Nu s-a putut redenumi „%s” în „%s”:"
+#: ../src/xfdesktop-file-utils.c:786 ../src/xfdesktop-file-utils.c:801
+#, fuzzy
+msgid "Create File Error"
+msgstr "Eroare la creare"
 
-#. FIXME: also display # of items in trash
-#: ../src/xfdesktop-special-file-icon.c:486
-msgid "Kind: Trash"
-msgstr "Tip: Coș de gunoi"
+#: ../src/xfdesktop-file-utils.c:787 ../src/xfdesktop-file-utils.c:802
+msgid "Could not create a new file"
+msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:519
-msgid "Trash Error"
+#: ../src/xfdesktop-file-utils.c:842 ../src/xfdesktop-file-utils.c:857
+#, fuzzy
+msgid "Create Document Error"
+msgstr "Eroare la creare"
+
+#: ../src/xfdesktop-file-utils.c:843 ../src/xfdesktop-file-utils.c:858
+#, fuzzy
+msgid "Could not create a new document from the template"
+msgstr "Creați un document utilizând șablonul „%s”"
+
+#: ../src/xfdesktop-file-utils.c:892 ../src/xfdesktop-file-utils.c:907
+#, fuzzy
+msgid "File Properties Error"
+msgstr "Eroare proprietăți"
+
+#: ../src/xfdesktop-file-utils.c:893 ../src/xfdesktop-file-utils.c:908
+#, fuzzy
+msgid "The file properties dialog could not be opened"
+msgstr "Selectorul aplicației nu a putut fi pornit."
+
+#: ../src/xfdesktop-file-utils.c:943 ../src/xfdesktop-file-utils.c:958
+#, fuzzy
+msgid "The file could not be opened"
+msgstr "Selectorul aplicației nu a putut fi pornit."
+
+#: ../src/xfdesktop-file-utils.c:1006 ../src/xfdesktop-file-utils.c:1031
+#, fuzzy, c-format
+msgid "Failed to run \"%s\""
+msgstr "Nu se poate porni „%s”:"
+
+#: ../src/xfdesktop-file-utils.c:1081 ../src/xfdesktop-file-utils.c:1096
+#, fuzzy
+msgid "The application chooser could not be opened"
+msgstr "Selectorul aplicației nu a putut fi pornit."
+
+#: ../src/xfdesktop-file-utils.c:1154 ../src/xfdesktop-file-utils.c:1168
+#: ../src/xfdesktop-file-utils.c:1230 ../src/xfdesktop-file-utils.c:1246
+#, fuzzy
+msgid "Transfer Error"
 msgstr "Eroare coș de gunoi"
 
-#: ../src/xfdesktop-special-file-icon.c:521
+#: ../src/xfdesktop-file-utils.c:1155 ../src/xfdesktop-file-utils.c:1169
+#: ../src/xfdesktop-file-utils.c:1231 ../src/xfdesktop-file-utils.c:1247
+#, fuzzy
+msgid "The file transfer could not be performed"
+msgstr "Selectorul aplicației nu a putut fi pornit."
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:97
+#, fuzzy
+msgid "Unmounting device"
+msgstr "Demontare eșuată"
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:100
+#, c-format
+msgid ""
+"The device \"%s\" is being unmounted by the system. Please do not remove the "
+"media or disconnect the drive"
+msgstr ""
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:107 ../src/xfdesktop-notify.c:220
+msgid "Writing data to device"
+msgstr ""
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:110 ../src/xfdesktop-notify.c:223
+#, c-format
+msgid ""
+"There is data that needs to be written to the device \"%s\" before it can be "
+"removed. Please do not remove the media or disconnect the drive"
+msgstr ""
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:211
+msgid "Ejecting device"
+msgstr ""
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:214
+#, c-format
+msgid "The device \"%s\" is being ejected. This may take some time"
+msgstr ""
+
+#: ../src/xfdesktop-regular-file-icon.c:468
+#, c-format
+msgid ""
+"Type: %s\n"
+"Size: %s\n"
+"Last modified: %s"
+msgstr ""
+
+#: ../src/xfdesktop-special-file-icon.c:249
+#: ../src/xfdesktop-special-file-icon.c:411
+#, fuzzy
+msgid "File System"
+msgstr "Sistem de fișiere"
+
+#: ../src/xfdesktop-special-file-icon.c:396
+msgid "Trash is empty"
+msgstr ""
+
+#: ../src/xfdesktop-special-file-icon.c:399
+msgid "Trash contains one item"
+msgstr ""
+
+#: ../src/xfdesktop-special-file-icon.c:400
+#, c-format
+msgid "Trash contains %d items"
+msgstr ""
+
+#: ../src/xfdesktop-special-file-icon.c:428
+#, c-format
+msgid ""
+"%s\n"
+"Size: %s\n"
+"Last modified: %s"
+msgstr ""
+
+#: ../src/xfdesktop-special-file-icon.c:449
 msgid "Unable to contact the Xfce Trash service."
 msgstr "Nu se poate contacta serviciul Xfce Trash"
 
-#: ../src/xfdesktop-special-file-icon.c:522
+#: ../src/xfdesktop-special-file-icon.c:450
 msgid ""
 "Make sure you have a file manager installed that supports the Xfce Trash "
 "service, such as Thunar."
@@ -750,64 +708,236 @@ msgstr ""
 "Asigurați-vă ca aveți instalat un manager de fișiere cu suport pentru "
 "serviciul Xfce Trash (precum Thunar)."
 
-#: ../src/xfdesktop-special-file-icon.c:655
+#: ../src/xfdesktop-special-file-icon.c:588
 msgid "_Empty Trash"
 msgstr "_Golește gunoiul"
 
-#: ../src/xfdesktop-volume-icon.c:478
-#, c-format
-msgid "%s (%s total)"
-msgstr "%s (%s în total)"
-
-#: ../src/xfdesktop-volume-icon.c:482
-#, c-format
+#: ../src/xfdesktop-volume-icon.c:413
+#, fuzzy, c-format
 msgid ""
-"Kind: Removable Volume\n"
-"Mount Point: %s\n"
-"Free Space: %s"
+"Removable Volume\n"
+"Mounted in \"%s\"\n"
+"%s left (%s total)"
 msgstr ""
 "Tip: Volum amovibil\n"
 "Montat în: %s\n"
 "Spațiu liber: %s"
 
-#: ../src/xfdesktop-volume-icon.c:513
-#, c-format
-msgid "Unable to mount \"%s\":"
-msgstr "Nu se poate monta „%s”:"
+#: ../src/xfdesktop-volume-icon.c:420
+#, fuzzy
+msgid ""
+"Removable Volume\n"
+"Not mounted yet"
+msgstr ""
+"Tip: Volum amovibil\n"
+"Montat în: %s\n"
+"Spațiu liber: %s"
 
-#: ../src/xfdesktop-volume-icon.c:514
-#, c-format
-msgid "Unable to unmount \"%s\":"
-msgstr "Nu se poate demonta „%s”:"
-
-#: ../src/xfdesktop-volume-icon.c:517
-msgid "Mount Failed"
-msgstr "Montare eșuată"
-
-#: ../src/xfdesktop-volume-icon.c:517
-msgid "Unmount Failed"
-msgstr "Demontare eșuată"
-
-#: ../src/xfdesktop-volume-icon.c:535
-#, c-format
-msgid "Unable to eject \"%s\":"
+#: ../src/xfdesktop-volume-icon.c:446 ../src/xfdesktop-volume-icon.c:488
+#, fuzzy, c-format
+msgid "Failed to eject \"%s\""
 msgstr "Nu se poate ejecta „%s”:"
 
-#: ../src/xfdesktop-volume-icon.c:538
+#: ../src/xfdesktop-volume-icon.c:451 ../src/xfdesktop-volume-icon.c:493
 msgid "Eject Failed"
 msgstr "Ejectare eșuată"
 
-#: ../src/xfdesktop-volume-icon.c:582
-msgid "_Unmount Volume"
-msgstr "_Demontare volum"
+#: ../src/xfdesktop-volume-icon.c:525
+#, fuzzy, c-format
+msgid "Failed to mount \"%s\""
+msgstr "Nu se poate porni „%s”:"
 
-#: ../src/xfdesktop-volume-icon.c:585
+#: ../src/xfdesktop-volume-icon.c:528
+msgid "Mount Failed"
+msgstr "Montare eșuată"
+
+#: ../src/xfdesktop-volume-icon.c:669 ../src/xfdesktop-volume-icon.c:672
+msgid "E_ject Volume"
+msgstr "_Ejectare volum"
+
+#: ../src/xfdesktop-volume-icon.c:679
 msgid "_Mount Volume"
 msgstr "_Montare volum"
 
-#: ../src/xfdesktop-volume-icon.c:599
-msgid "E_ject Volume"
-msgstr "_Ejectare volum"
+#~ msgid ""
+#~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+#~ msgstr ""
+#~ "Nu s-a putut crea dosarul „%s” pentru stocarea elementelor desktopului:"
+
+#~ msgid "Create Folder Failed"
+#~ msgstr "Crearea dosarului a eșuat"
+
+#~ msgid ""
+#~ "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not "
+#~ "a folder."
+#~ msgstr ""
+#~ "Nu se poate utiliza „%s” pentru stocarea elementelor desktopului pentru "
+#~ "că nu este un dosar"
+
+#~ msgid "Please delete or rename the file."
+#~ msgstr "Este necesar să ștergeți sau să redenumiți fișierul."
+
+#~ msgid "Rename \"%s\""
+#~ msgstr "Redenumire „%s”"
+
+#~ msgid "Enter the new name:"
+#~ msgstr "Introduceți noul nume:"
+
+#~ msgid "Rename"
+#~ msgstr "Redenumește"
+
+#~ msgid "Are you sure that you want to delete \"%s\"?"
+#~ msgstr "Sigur doriți să ștergeți „%s”?"
+
+#~ msgid "Question"
+#~ msgstr "Întrebare"
+
+#~ msgid "If you delete a file, it is permanently lost."
+#~ msgstr "Ștergerea unui fișier implică pierderea sa definitivă."
+
+#~ msgid "Are you sure you want to delete the following %d files?"
+#~ msgstr "Sigur doriți să ștergeți următoarele %d fișiere?"
+
+#~ msgid "Delete Multiple Files"
+#~ msgstr "Ștergere fișiere multiple"
+
+#~ msgid "Unable to create folder named \"%s\":"
+#~ msgstr "Nu se poate crea dosarul cu numele „%s”"
+
+#~ msgid "Create New Folder"
+#~ msgstr "Creare dosar nou"
+
+#~ msgid "New Folder"
+#~ msgstr "Nou dosar"
+
+#~ msgid "Create"
+#~ msgstr "Creează"
+
+#~ msgid "Unable to create file named \"%s\":"
+#~ msgstr "Nu se poate crea fișierul cu numele „%s”:"
+
+#~ msgid "Create File Failed"
+#~ msgstr "Crearea fișierului a eșuat"
+
+#~ msgid "Create Empty File"
+#~ msgstr "Creare fișier gol"
+
+#~ msgid "New Empty File"
+#~ msgstr "Nou fișier gol"
+
+#~ msgid "Unable to create file \"%s\":"
+#~ msgstr "Nu se poate crea fișierul „%s”:"
+
+#~ msgid "Unable to set default application for \"%s\" to \"%s\":"
+#~ msgstr "Nu se poate desemna aplicația implicită pentru „%s” ca „%s”:"
+
+#~ msgid "None"
+#~ msgstr "Nu"
+
+#~ msgid "Write only"
+#~ msgstr "Doar scriere"
+
+#~ msgid "Read only"
+#~ msgstr "Doar citire"
+
+#~ msgid "Read & Write"
+#~ msgstr "Citire și scriere"
+
+#~ msgid "General"
+#~ msgstr "Generale"
+
+#~ msgid "Name:"
+#~ msgstr "Nume:"
+
+#~ msgid "Kind:"
+#~ msgstr "Tip:"
+
+#~ msgid "Link Target:"
+#~ msgstr "Ținta legăturii:"
+
+#~ msgid "Open With:"
+#~ msgstr "Deschide cu:"
+
+#~ msgid "Modified:"
+#~ msgstr "Modificat:"
+
+#~ msgid "Accessed:"
+#~ msgstr "Accesat:"
+
+#~ msgid "Free Space:"
+#~ msgstr "Spațiu liber:"
+
+#~ msgid "Size:"
+#~ msgstr "Mărime:"
+
+#~ msgid "%s (%"
+#~ msgstr "%s (%"
+
+#~ msgid "Permissions"
+#~ msgstr "Drepturi"
+
+#~ msgid "Owner:"
+#~ msgstr "Deținător:"
+
+#~ msgid "Access:"
+#~ msgstr "Acces:"
+
+#~ msgid "Group:"
+#~ msgstr "Grup:"
+
+#~ msgid "Others:"
+#~ msgstr "Altele:"
+
+#~ msgid "Yes to _all"
+#~ msgstr "D_a pentru tot"
+
+#~ msgid "There was an error moving \"%s\" to \"%s\":"
+#~ msgstr "A intervenit o eroare la mutarea „%s” în „%s”:"
+
+#~ msgid "There was an error copying \"%s\" to \"%s\":"
+#~ msgstr "A intervenit o eroare la copierea „%s” în „%s”:"
+
+#~ msgid "There was an error linking \"%s\" to \"%s\":"
+#~ msgstr "A intervenit o eroare la crearea legăturii „%s” către „%s”:"
+
+#~ msgid "File Error"
+#~ msgstr "Eroare fișier"
+
+#~ msgid "broken link"
+#~ msgstr "legătură invalidă"
+
+#~ msgid "link to %s"
+#~ msgstr "legătură către %s"
+
+#~ msgid ""
+#~ "Kind: %s\n"
+#~ "Modified:%s\n"
+#~ "Size: %s"
+#~ msgstr ""
+#~ "Tip: %s\n"
+#~ "Modificat: %s\n"
+#~ "Mărime: %s"
+
+#~ msgid "Error"
+#~ msgstr "Eroare"
+
+#~ msgid "Failed to rename \"%s\" to \"%s\":"
+#~ msgstr "Nu s-a putut redenumi „%s” în „%s”:"
+
+#~ msgid "Kind: Trash"
+#~ msgstr "Tip: Coș de gunoi"
+
+#~ msgid "%s (%s total)"
+#~ msgstr "%s (%s în total)"
+
+#~ msgid "Unable to mount \"%s\":"
+#~ msgstr "Nu se poate monta „%s”:"
+
+#~ msgid "Unable to unmount \"%s\":"
+#~ msgstr "Nu se poate demonta „%s”:"
+
+#~ msgid "_Unmount Volume"
+#~ msgstr "_Demontare volum"
 
 #~ msgid "Unable to launch xfce4-menueditor: %s"
 #~ msgstr "Nu se poate lansa xfce4-menueditor: %s"

@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-03 05:09+0000\n"
+"POT-Creation-Date: 2010-11-04 00:34+0100\n"
 "PO-Revision-Date: 2009-08-21 10:59+0200\n"
 "Last-Translator: Piarres Beobide <pi@beobide.net>\n"
 "Language-Team: Euskara\n"
+"Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: eu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Virtaal 0.4.0\n"
 
@@ -66,8 +66,11 @@ msgstr "Sortu/Kargatu atzealde zerrenda"
 
 #: ../settings/main.c:511
 #, c-format
-msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr "\"%s\" fitxategia ez da baliozko atzealde zerrenda fitxategi bat. Gainidatzi nahi al duzu?"
+msgid ""
+"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr ""
+"\"%s\" fitxategia ez da baliozko atzealde zerrenda fitxategi bat. Gainidatzi "
+"nahi al duzu?"
 
 #: ../settings/main.c:516
 msgid "Invalid List File"
@@ -343,8 +346,11 @@ msgid "Desktop Folder Error"
 msgstr "Mahaigain karpeta errorea"
 
 #: ../src/xfdesktop-file-icon-manager.c:503
-msgid "A normal file with the same name already exists. Please delete or rename it."
-msgstr "Dagoeneko badago izen berdineko fitxategi arrunt bat. Mesedez ezabatu edo berrizendatu ezazu."
+msgid ""
+"A normal file with the same name already exists. Please delete or rename it."
+msgstr ""
+"Dagoeneko badago izen berdineko fitxategi arrunt bat. Mesedez ezabatu edo "
+"berrizendatu ezazu."
 
 #: ../src/xfdesktop-file-icon-manager.c:606
 #: ../src/xfdesktop-file-icon-manager.c:650 ../src/xfdesktop-file-utils.c:733
@@ -364,8 +370,12 @@ msgstr "Aplikazio hautatzailea ezin da ireki."
 #: ../src/xfdesktop-file-utils.c:909 ../src/xfdesktop-file-utils.c:959
 #: ../src/xfdesktop-file-utils.c:1036 ../src/xfdesktop-file-utils.c:1097
 #: ../src/xfdesktop-file-utils.c:1170 ../src/xfdesktop-file-utils.c:1248
-msgid "This feature requires a file manager service to be present (such as the one supplied by Thunar)."
-msgstr "Ezaugarri honek fitxategi kudeaketa zerbitzu bat instalaturik egotea behar du (Thunar-ek duena bezalakoa)"
+msgid ""
+"This feature requires a file manager service to be present (such as the one "
+"supplied by Thunar)."
+msgstr ""
+"Ezaugarri honek fitxategi kudeaketa zerbitzu bat instalaturik egotea behar "
+"du (Thunar-ek duena bezalakoa)"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:752
@@ -395,8 +405,12 @@ msgid "Open With \"%s\""
 msgstr "\"%s\"-(re)kin Ireki"
 
 #: ../src/xfdesktop-file-icon-manager.c:1000
-msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
-msgstr "Ezin da \"exo-desktop-item-edit\" abiarazi zein beharrezkoa da abiarazleak eta idazmahai loturak sortu eta editatzeko."
+msgid ""
+"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
+"edit launchers and links on the desktop."
+msgstr ""
+"Ezin da \"exo-desktop-item-edit\" abiarazi zein beharrezkoa da abiarazleak "
+"eta idazmahai loturak sortu eta editatzeko."
 
 #: ../src/xfdesktop-file-icon-manager.c:1368
 msgid "_Open all"
@@ -526,8 +540,12 @@ msgid "The selected files could not be moved to the trash"
 msgstr "Ezin dira hautatutako fitxategiak zaborrontzira mugitu"
 
 #: ../src/xfdesktop-file-utils.c:750
-msgid "This feature requires a trash service to be present (such as the one supplied by Thunar)."
-msgstr "Ezaugarri honek zaborrontzi zerbitzu bat instalaturik egotea behar du (Thunar-ek duena bezalakoa)"
+msgid ""
+"This feature requires a trash service to be present (such as the one "
+"supplied by Thunar)."
+msgstr ""
+"Ezaugarri honek zaborrontzi zerbitzu bat instalaturik egotea behar du "
+"(Thunar-ek duena bezalakoa)"
 
 #: ../src/xfdesktop-file-utils.c:786 ../src/xfdesktop-file-utils.c:801
 msgid "Create File Error"
@@ -584,8 +602,12 @@ msgstr "Gailua desmuntatzen"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:100
 #, c-format
-msgid "The device \"%s\" is being unmounted by the system. Please do not remove the media or disconnect the drive"
-msgstr "Sistema \"%s\" gailua desmuntatzen ari da. Mesedez ez gailua kendu edo deskonektatu"
+msgid ""
+"The device \"%s\" is being unmounted by the system. Please do not remove the "
+"media or disconnect the drive"
+msgstr ""
+"Sistema \"%s\" gailua desmuntatzen ari da. Mesedez ez gailua kendu edo "
+"deskonektatu"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:107 ../src/xfdesktop-notify.c:220
@@ -595,8 +617,12 @@ msgstr "Datuak gailuan idazten"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:110 ../src/xfdesktop-notify.c:223
 #, c-format
-msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
-msgstr "Kendu al aurretik \"%s\" gailuan idatzi behar diren datuak daude. Mesedez ez gailua kendu edo deskonektatu"
+msgid ""
+"There is data that needs to be written to the device \"%s\" before it can be "
+"removed. Please do not remove the media or disconnect the drive"
+msgstr ""
+"Kendu al aurretik \"%s\" gailuan idatzi behar diren datuak daude. Mesedez ez "
+"gailua kendu edo deskonektatu"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:211
@@ -654,8 +680,12 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "Ezin da Xfce zakarrontzi zerbitzuarekin harremanetan ipini."
 
 #: ../src/xfdesktop-special-file-icon.c:450
-msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
-msgstr "Ziurtatu Xfce zakarrontzi zerbitzuarekin bateragarri den fitxategi kudeatzaile bat erabili behar da, thunar bezalakoa."
+msgid ""
+"Make sure you have a file manager installed that supports the Xfce Trash "
+"service, such as Thunar."
+msgstr ""
+"Ziurtatu Xfce zakarrontzi zerbitzuarekin bateragarri den fitxategi "
+"kudeatzaile bat erabili behar da, thunar bezalakoa."
 
 #: ../src/xfdesktop-special-file-icon.c:588
 msgid "_Empty Trash"
@@ -706,14 +736,21 @@ msgstr "Bolumena _atera"
 msgid "_Mount Volume"
 msgstr "Bolumena _muntatu"
 
-#~ msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-#~ msgstr "Xfdesktop ez da idazmahai elementuak gordetzeko \"%s\" karpeta sortzeko gai."
+#~ msgid ""
+#~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+#~ msgstr ""
+#~ "Xfdesktop ez da idazmahai elementuak gordetzeko \"%s\" karpeta sortzeko "
+#~ "gai."
 
 #~ msgid "Create Folder Failed"
 #~ msgstr "Huts karpeta sortzean"
 
-#~ msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
-#~ msgstr "Xfdesktop ez da \"%s\" idazmahai elementuak gordetzeko erabiltzeko gai ez bait da karpeta bat."
+#~ msgid ""
+#~ "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not "
+#~ "a folder."
+#~ msgstr ""
+#~ "Xfdesktop ez da \"%s\" idazmahai elementuak gordetzeko erabiltzeko gai ez "
+#~ "bait da karpeta bat."
 
 #~ msgid "Please delete or rename the file."
 #~ msgstr "Mesedez fitxategia ezabatu edo berrizendatu."
@@ -1198,7 +1235,8 @@ msgstr "Bolumena _muntatu"
 #~ msgstr "Ikusi _aplikazio ikonoak menuan"
 
 #~ msgid "Show _window list menu on desktop middle click"
-#~ msgstr "Ikusi lei_ho zerrenda menua idazmahaia erdiko botoiaz klikatzerakoan"
+#~ msgstr ""
+#~ "Ikusi lei_ho zerrenda menua idazmahaia erdiko botoiaz klikatzerakoan"
 
 #~ msgid "Show applications menu on _desktop right click"
 #~ msgstr "Ikusi i_dazmahai menu idazmahaia ekuineko botoiaz klikatzerakoan"
@@ -1223,8 +1261,12 @@ msgstr "Bolumena _muntatu"
 #~ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 #~ msgstr "Gradientearen \"eskuineko\" edo \"beheko\" kolorea ezartzen du"
 
-#~ msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-#~ msgstr "Kolore solidoa ezartzen du, edo gradientearen \"ezkerreko\" edo \"goiko\" kolorea"
+#~ msgid ""
+#~ "Specifies the solid color, or the \"left\" or \"top\" color of the "
+#~ "gradient"
+#~ msgstr ""
+#~ "Kolore solidoa ezartzen du, edo gradientearen \"ezkerreko\" edo \"goiko\" "
+#~ "kolorea"
 
 #~ msgid "Specify how the image will be resized to fit the screen"
 #~ msgstr "Zehaztu pantailara doitzeko irudia tamainaz nola aldatuko den."
@@ -1232,7 +1274,9 @@ msgstr "Bolumena _muntatu"
 #~ msgid "Specify the style of the color drawn behind the backdrop image"
 #~ msgstr "Zehaztu idazpaper irudiaren atzean margotiko den kolorearen estiloa"
 
-#~ msgid "Specify the transparency level for the rounded label drawn behind the icon text"
+#~ msgid ""
+#~ "Specify the transparency level for the rounded label drawn behind the "
+#~ "icon text"
 #~ msgstr "Zehaztu ikonoaren testuaren etiketaren inguruko gardentasun maila"
 
 #~ msgid "St_yle:"
@@ -1367,8 +1411,14 @@ msgstr "Bolumena _muntatu"
 #~ msgid "xfce4-menueditor is deprecated"
 #~ msgstr "xfce4-menueditor zaharkiturik dago"
 
-#~ msgid "Xfce's menu system has been replaced, and xfce4-menueditor is not able to edit the new menu file format.  You may continue and edit an old-style menu file, or quit."
-#~ msgstr "Xfce menu sistema aldatua izan da eta xfce4-menueditor ez da gai menu fitxategi formatua editatzeko gai.  Aurrera jarraitu eta sistema-zahar moduko fitxategia editatu edo itxi."
+#~ msgid ""
+#~ "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
+#~ "edit the new menu file format.  You may continue and edit an old-style "
+#~ "menu file, or quit."
+#~ msgstr ""
+#~ "Xfce menu sistema aldatua izan da eta xfce4-menueditor ez da gai menu "
+#~ "fitxategi formatua editatzeko gai.  Aurrera jarraitu eta sistema-zahar "
+#~ "moduko fitxategia editatu edo itxi."
 
 #~ msgid "Continue"
 #~ msgstr "Jarraitu"

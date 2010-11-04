@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-28 16:27+0200\n"
+"POT-Creation-Date: 2010-11-04 00:34+0100\n"
 "PO-Revision-Date: 2006-10-25 21:57+0530\n"
 "Last-Translator: sonam rinchen <somindruk@druknet.bt>\n"
 "Language-Team: dzongkha <pgeyleg@dit.gov.bt>\n"
@@ -33,7 +33,8 @@ msgid ""
 "<i>Size: %dx%d</i>"
 msgstr ""
 
-#: ../settings/main.c:272 ../src/xfdesktop-special-file-icon.c:259
+#: ../settings/main.c:272 ../src/xfdesktop-special-file-icon.c:247
+#: ../src/xfdesktop-special-file-icon.c:413
 msgid "Home"
 msgstr "ཁྱིམ།"
 
@@ -175,77 +176,77 @@ msgstr "ཌེཀསི་ཊོཔ།"
 msgid "Set desktop background and menu and icon behaviour"
 msgstr ""
 
-#: ../src/main.c:235
+#: ../src/main.c:234
 #, fuzzy
 msgid "Display version information"
 msgstr "བརྡ་དོན།"
 
-#: ../src/main.c:236
+#: ../src/main.c:235
 #, fuzzy
 msgid "Reload all settings, refresh image list"
 msgstr ""
 "--ཡང་བསྐྱར་མངོན་གསལ་འབད་  སྒྲིག་སྟངས་ཚུ་ཆ་མཉམ་ཡང་བསྐྱར་མངོན་གསལ་འབད་ གཟུགས་བརྙན་ཐོ་ཡིག་ཡང་"
 "སེལ་འབད། \n"
 
-#: ../src/main.c:237
+#: ../src/main.c:236
 #, fuzzy
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "--དཀར་ཆག་  དཀར་ཆག་འདི་(ད་ལྟོའི་མཱའུསི་གནས་ས་ལུ་) འགོ་བཙུགས།\n"
 
-#: ../src/main.c:238
+#: ../src/main.c:237
 #, fuzzy
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "--སྒོ་སྒྲིག་ཐོ་ཡིག་ སྒོ་སྒྲིག་ཐོ་ཡིག་འདི་(ད་ལྟོའི་མཱའུསི་གནས་ས་ལུ་)འགོ་བཙུགས།\n"
 
-#: ../src/main.c:239
+#: ../src/main.c:238
 #, fuzzy
 msgid "Cause xfdesktop to quit"
 msgstr "--སྤང་  ཨེཀསི་ཨེཕ་ཌེཀསི་ཊོཔ་སྤང་ནི་ལུ་རྒྱུ་རྐྱེན། \n"
 
-#: ../src/main.c:259
+#: ../src/main.c:258
 #, fuzzy, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "\"%s\" གཡོག་བཀོལ་ནི་ལུ་འཐུས་ཤོར་བྱུང་ཡོདཔ་:"
 
-#: ../src/main.c:267
+#: ../src/main.c:266
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "ཨ་ནི་འདི་ %s ཐོན་རིམ་ %s ཨིན་ ཨེཀསི་ཨེཕ་སི་ཨི་ %s གུ་གཡོག་བཀོལ་དོ།\n"
 
-#: ../src/main.c:269
+#: ../src/main.c:268
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "ཇི་ཊི་ཀེ་+ %d.%d.%d གི་ཐོག་ལས་བཟོ་   ཇི་ཊི་ཀེ་+ %d.%d.%d ཐོག་ལས་འབྲེལ་མཐུད་འབད།"
 
-#: ../src/main.c:273
+#: ../src/main.c:272
 #, c-format
 msgid "Build options:\n"
 msgstr "གདམ་ཁ་ཚུ་བཟོ་བརྩིགས་འབད་:\n"
 
-#: ../src/main.c:274
+#: ../src/main.c:273
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "ཌེཀསི་ཊོཔ་དཀར་ཆག་: %s\n"
 
-#: ../src/main.c:276 ../src/main.c:283 ../src/main.c:290
+#: ../src/main.c:275 ../src/main.c:282 ../src/main.c:289
 msgid "enabled"
 msgstr "ལྕོགས་ཅན་བཟོ་ཡོདཔ།"
 
-#: ../src/main.c:278 ../src/main.c:285 ../src/main.c:292
+#: ../src/main.c:277 ../src/main.c:284 ../src/main.c:291
 msgid "disabled"
 msgstr "ལྕོགས་མིན་ཐལ་ཡོདཔ།"
 
-#: ../src/main.c:281
+#: ../src/main.c:280
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "ཌེཀསི་ཊོཔ་ངོས་དཔར་ཚུ་: %s\n"
 
-#: ../src/main.c:288
+#: ../src/main.c:287
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "ཌེཀསི་ཊོཔ་ཡིག་སྣོད་ངོས་དཔར་ཚུ་: %s\n"
 
-#: ../src/main.c:319
+#: ../src/main.c:318
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s གཡོག་མི་བཀོལ་བས།\n"
@@ -287,16 +288,16 @@ msgstr "ལཱ་གི་ས་སྒོ་ %d རྩ་བསྐྲད་ག�
 msgid "_Remove Workspace '%s'"
 msgstr "ལཱ་གི་ས་སྒོ་ '%s' རྩ་བསྐྲད་གཏང་།(_R)"
 
-#: ../src/xfce-desktop.c:742
+#: ../src/xfce-desktop.c:729
 msgid "Desktop"
 msgstr "ཌེཀསི་ཊོཔ།"
 
-#: ../src/xfce-desktop.c:1018
+#: ../src/xfce-desktop.c:1006
 #, fuzzy, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "ཡིག་སྣོད་\"%s\" གསར་བསྐྲུན་འབད་མི་ཚུགས་:"
 
-#: ../src/xfce-desktop.c:1020
+#: ../src/xfce-desktop.c:1008
 #, fuzzy
 msgid "Desktop Error"
 msgstr "ཌེཀསི་ཊོཔ།"
@@ -352,118 +353,78 @@ msgstr ""
 msgid "Whether or not to use an underscore in the label as a keyboard mnemonic"
 msgstr ""
 
-#. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon.c:141 ../src/xfdesktop-file-icon-manager.c:922
-#: ../src/xfdesktop-file-icon-manager.c:1683 ../src/xfdesktop-file-utils.c:363
-#, c-format
-msgid "Unable to launch \"%s\":"
-msgstr "\"%s\" གསར་བཙུགས་མ་ཚུགས་:"
-
-#: ../src/xfdesktop-file-icon.c:143 ../src/xfdesktop-file-icon-manager.c:924
-#: ../src/xfdesktop-file-icon-manager.c:984
-#: ../src/xfdesktop-file-icon-manager.c:1287
-#: ../src/xfdesktop-file-icon-manager.c:1684 ../src/xfdesktop-file-utils.c:366
-msgid "Launch Error"
-msgstr "འཛོལ་བ་གསར་བཙུགས་འབད།"
-
-#: ../src/xfdesktop-file-icon.c:145
-msgid "The associated application could not be found or executed."
-msgstr "འབྲེལ་བའི་གློག་རིམ་འདི་འཚོལ་ནི་ ཡང་ན་ ལག་ལེན་འཐབ་མ་ཚུགས།"
-
 #: ../src/xfdesktop-file-icon-manager.c:479
-#, c-format
+#: ../src/xfdesktop-file-icon-manager.c:496
+#, fuzzy, c-format
+msgid "Could not create the desktop folder \"%s\""
+msgstr "རྒྱབ་ཁུངས་ཐོ་ཡིག་གསར་བསྐྲུན་འབད།"
+
+#: ../src/xfdesktop-file-icon-manager.c:484
+#: ../src/xfdesktop-file-icon-manager.c:501
+#, fuzzy
+msgid "Desktop Folder Error"
+msgstr "ཌེཀསི་ཊོཔ།"
+
+#: ../src/xfdesktop-file-icon-manager.c:503
 msgid ""
-"Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+"A normal file with the same name already exists. Please delete or rename it."
 msgstr ""
-"ཌེཀསི་ཊོཔ་རྣམ་གྲངས་ཚུ་གསོག་འཇོག་འབད་ནི་ལུ་ཨེཀསི་ཨེཕ་ཌེཀསི་ཊོཔ་འདི་གིས་སྣོད་འཛིན་ \"%s\" གསར་བསྐྲུན་"
-"འབད་མ་ཚུགས་:"
 
-#: ../src/xfdesktop-file-icon-manager.c:481
-#: ../src/xfdesktop-file-icon-manager.c:492
-#: ../src/xfdesktop-file-icon-manager.c:1253
-msgid "Create Folder Failed"
-msgstr "འཐུས་ཤོར་བྱུང་ཡོད་མི་སྣོད་འཛིན་གསར་བསྐྲུན་འབད།"
+#: ../src/xfdesktop-file-icon-manager.c:606
+#: ../src/xfdesktop-file-icon-manager.c:650 ../src/xfdesktop-file-utils.c:733
+#: ../src/xfdesktop-file-utils.c:748 ../src/xfdesktop-special-file-icon.c:447
+msgid "Trash Error"
+msgstr "ཕྱགས་ཧོད་འཛོལ་བ།"
 
-#: ../src/xfdesktop-file-icon-manager.c:490
-#, c-format
-msgid ""
-"Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a "
-"folder."
-msgstr ""
-"ཌེཀསི་ཊོཔ་རྣམ་གྲངས་ཚུ་འཆང་ནི་ལུ་ཨེཀསི་ཨེཕ་ཌེཀསི་ཊོཔ་འདི་གིས་\"%s\"ལག་ལེན་འཐབ་མི་ཚུགས་ག་ཅི་འབད་ཟེར་"
-"བ་ཅིན་དེ་སྣོད་འཛིན་མེན།"
-
-#: ../src/xfdesktop-file-icon-manager.c:494
-msgid "Please delete or rename the file."
-msgstr "ཡིག་སྣོད་བཏོན་གཏང་ ཡང་ན་ གསར་བསྐྲུན་འབད་གནང་།"
-
-#: ../src/xfdesktop-file-icon-manager.c:631
-#, c-format
-msgid "Rename \"%s\""
-msgstr "\"%s\" བསྐྱར་མིང་བཏགས།"
-
-#: ../src/xfdesktop-file-icon-manager.c:638
-#: ../src/xfdesktop-file-icon-manager.c:1327
-#: ../src/xfdesktop-file-icon-manager.c:1419
-#: ../src/xfdesktop-file-icon-manager.c:1430
-msgid "Enter the new name:"
-msgstr "མིང་གསརཔ་བཙུགས་:"
-
-#: ../src/xfdesktop-file-icon-manager.c:640
-msgid "Rename"
-msgstr "བསྐྱར་མིང་བཏགས།"
-
-#: ../src/xfdesktop-file-icon-manager.c:677
-#, c-format
-msgid "Are you sure that you want to delete \"%s\"?"
-msgstr "ཁྱོད་ཀྱིས་ \"%s\" བཏོན་གཏང་ནི་ལུ་ངེས་གཏན་ཨིན་ན?"
-
-#: ../src/xfdesktop-file-icon-manager.c:680 ../src/xfdesktop-file-utils.c:56
-msgid "Question"
-msgstr "དྲི་བ།"
-
-#: ../src/xfdesktop-file-icon-manager.c:682
-#: ../src/xfdesktop-file-icon-manager.c:702
-msgid "If you delete a file, it is permanently lost."
-msgstr "ཁྱོད་ཀྱིས་ཡིག་སྣོད་བཏོན་གཏང་པ་ཅིན་ དེ་རྟག་བརྟན་སྦེ་བརླག་སྟོར་ཞུགསཔ་ཨིན།"
-
-#: ../src/xfdesktop-file-icon-manager.c:696
-#, c-format
-msgid "Are you sure you want to delete the following %d files?"
-msgstr "ཁྱོད་ཀྱིས་འོག་གི་ %d ཡིག་སྣོད་ཚུ་བཏོན་གཏང་ནི་ལུ་ངེས་གཏན་ཨིན་ན?"
-
-#: ../src/xfdesktop-file-icon-manager.c:699
-msgid "Delete Multiple Files"
-msgstr "སྣ་མང་ཡིག་སྣོད་ཚུ་བཏོན་གཏང་།"
-
-#: ../src/xfdesktop-file-icon-manager.c:985
-msgid "The application chooser could not be opened."
+#: ../src/xfdesktop-file-icon-manager.c:607
+#: ../src/xfdesktop-file-icon-manager.c:651
+#, fuzzy
+msgid "The selected files could not be trashed"
 msgstr "གློག་རིམ་གདམ་ཁ་བརྐྱབ་མི་ཁ་ཕྱེ་མ་ཚུགས།"
 
-#: ../src/xfdesktop-file-icon-manager.c:986 ../src/xfdesktop-file-utils.c:368
+#: ../src/xfdesktop-file-icon-manager.c:608
+#: ../src/xfdesktop-file-icon-manager.c:652 ../src/xfdesktop-file-utils.c:582
+#: ../src/xfdesktop-file-utils.c:632 ../src/xfdesktop-file-utils.c:691
+#: ../src/xfdesktop-file-utils.c:803 ../src/xfdesktop-file-utils.c:859
+#: ../src/xfdesktop-file-utils.c:909 ../src/xfdesktop-file-utils.c:959
+#: ../src/xfdesktop-file-utils.c:1036 ../src/xfdesktop-file-utils.c:1097
+#: ../src/xfdesktop-file-utils.c:1170 ../src/xfdesktop-file-utils.c:1248
+#, fuzzy
 msgid ""
-"This feature requires a file manager service present (such as that supplied "
-"by Thunar)."
+"This feature requires a file manager service to be present (such as the one "
+"supplied by Thunar)."
 msgstr ""
 "ཨ་ནི་ཁྱད་རྣམ་ལུ་ (ཐུ་ནར་གྱིས་བཀྲམ་སྤེལ་འབད་ཡོད་མི་བཟུམ་མའི་) ཡིག་སྣོད་འཛིན་སྐྱོང་པའི་ཞབས་ཏོགས་ངོ་འབྱོར་"
 "དགོས་མཁོ་ཡོདཔ་ཨིན།"
 
-#: ../src/xfdesktop-file-icon-manager.c:1182
+#. printf is to be translator-friendly
+#: ../src/xfdesktop-file-icon-manager.c:752
+#: ../src/xfdesktop-file-icon-manager.c:1310
+#, c-format
+msgid "Unable to launch \"%s\":"
+msgstr "\"%s\" གསར་བཙུགས་མ་ཚུགས་:"
+
+#: ../src/xfdesktop-file-icon-manager.c:754
+#: ../src/xfdesktop-file-icon-manager.c:998
+#: ../src/xfdesktop-file-icon-manager.c:1311 ../src/xfdesktop-file-utils.c:565
+#: ../src/xfdesktop-file-utils.c:580 ../src/xfdesktop-file-utils.c:942
+#: ../src/xfdesktop-file-utils.c:957 ../src/xfdesktop-file-utils.c:1009
+#: ../src/xfdesktop-file-utils.c:1034 ../src/xfdesktop-file-utils.c:1080
+#: ../src/xfdesktop-file-utils.c:1095
+msgid "Launch Error"
+msgstr "འཛོལ་བ་གསར་བཙུགས་འབད།"
+
+#: ../src/xfdesktop-file-icon-manager.c:922
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "\"%s\"་གཅིག་ཁར་ཁ་ཕྱེ། (_O)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1185
+#: ../src/xfdesktop-file-icon-manager.c:925
 #, c-format
 msgid "Open With \"%s\""
 msgstr "\"%s\" གཅིག་ཁར་ཁ་ཕྱེ། (_O)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1250
-#, c-format
-msgid "Unable to create folder named \"%s\":"
-msgstr "\"%s\" མིང་བཏགས་ཡོད་མི་སྣོད་འཛིན་གསར་བསྐྲུན་འབད་མི་ཚུགས་:"
-
-#: ../src/xfdesktop-file-icon-manager.c:1289
+#: ../src/xfdesktop-file-icon-manager.c:1000
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
@@ -471,289 +432,284 @@ msgstr ""
 "ཌེཀསི་ཊོཔ་གུ་འབྲེལ་ལམ་ཚུ་དང་གསར་བཙུགས་འབད་མི་ཚུ་ཞུན་དག་དང་གསར་བསྐྲུན་འབད་ནི་ལུ་དགོས་མཁོ་ཡོད་མི་ "
 "\"exo-desktop-item-edit\" གསར་བཙུགས་འབད་མི་ཚུགས།"
 
-#: ../src/xfdesktop-file-icon-manager.c:1324
-msgid "Create New Folder"
-msgstr "སྣོད་འཛིན་གསརཔ་གསར་བསྐྲུན་འབད།"
-
-#: ../src/xfdesktop-file-icon-manager.c:1328
-msgid "New Folder"
-msgstr "སྣོད་འཛིན་གསརཔ།"
-
-#: ../src/xfdesktop-file-icon-manager.c:1329
-#: ../src/xfdesktop-file-icon-manager.c:1421
-#: ../src/xfdesktop-file-icon-manager.c:1432
-msgid "Create"
-msgstr "གསར་བསྐྲུན་འབད།"
-
-#: ../src/xfdesktop-file-icon-manager.c:1365
-#, c-format
-msgid "Unable to create file named \"%s\":"
-msgstr "\"%s\" མིང་བཀགས་ཡོད་མི་ཡིག་སྣོད་གསར་བསྐྲུན་འབད་མི་ཚུགས་:"
-
 #: ../src/xfdesktop-file-icon-manager.c:1368
-msgid "Create File Failed"
-msgstr "འཐུས་ཤོར་བྱུང་ཡོད་མི་ཡིག་སྣོད་གསར་བསྐྲུན་འབད།"
-
-#: ../src/xfdesktop-file-icon-manager.c:1408
-#, c-format
-msgid "Create Document from template \"%s\""
-msgstr "ཊེམ་པེལེཊི་ \"%s\" ལས་ཡིག་ཆ་གསར་བསྐྲུན་འབད།"
-
-#: ../src/xfdesktop-file-icon-manager.c:1427
-msgid "Create Empty File"
-msgstr "ཡིག་སྣོད་སྟོངམ་གསར་བསྐྲུན་འབད།"
-
-#: ../src/xfdesktop-file-icon-manager.c:1431
-msgid "New Empty File"
-msgstr "ཡིག་སྣོད་སྟོངམ་གསརཔ།"
-
-#: ../src/xfdesktop-file-icon-manager.c:1464
-#, c-format
-msgid "Unable to create file \"%s\":"
-msgstr "ཡིག་སྣོད་\"%s\" གསར་བསྐྲུན་འབད་མི་ཚུགས་:"
-
-#: ../src/xfdesktop-file-icon-manager.c:1465
-msgid "Create Error"
-msgstr "འཛོལ་བ་གསར་བསྐྲུན་འབད།"
-
-#: ../src/xfdesktop-file-icon-manager.c:1750
 msgid "_Open all"
 msgstr "ཆ་མཉམ་ཁ་ཕྱེ། (_O)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1766
+#: ../src/xfdesktop-file-icon-manager.c:1384
 msgid "_Open in New Window"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1768
-#: ../src/xfdesktop-special-file-icon.c:637 ../src/xfdesktop-volume-icon.c:565
+#: ../src/xfdesktop-file-icon-manager.c:1386
+#: ../src/xfdesktop-special-file-icon.c:570 ../src/xfdesktop-volume-icon.c:653
 msgid "_Open"
 msgstr "ཁ་ཕྱེ། (_O)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1785
+#. create launcher item
+#: ../src/xfdesktop-file-icon-manager.c:1405
 msgid "Create _Launcher..."
 msgstr "གསར་བཙུགས་འབད་མི་གསར་བསྐྲུན་འབད་...(_L)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1807
+#. create link item
+#: ../src/xfdesktop-file-icon-manager.c:1421
 msgid "Create _URL Link..."
 msgstr "ཡུ་ཨར་ཨེལ་འབྲེལ་ལམ་གསར་བསྐྲུན་འབད་...(_U)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1827
+#. create folder item
+#: ../src/xfdesktop-file-icon-manager.c:1437
 msgid "Create _Folder..."
 msgstr "སྣོད་འཛིན་གསར་བསྐྲུན་འབད་...(_F)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1848
+#. create from template submenu
+#: ../src/xfdesktop-file-icon-manager.c:1452
 #, fuzzy
 msgid "Create From _Template"
 msgstr "ཊེམ་པེལེཊི་ \"%s\" ལས་ཡིག་ཆ་གསར་བསྐྲུན་འབད།"
 
-#: ../src/xfdesktop-file-icon-manager.c:1878
+#: ../src/xfdesktop-file-icon-manager.c:1479
 msgid "_Empty File"
 msgstr "ཡིག་སྣོད་སྟོངམ། (_E)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1894
+#: ../src/xfdesktop-file-icon-manager.c:1495
 msgid "_Execute"
 msgstr "ལག་ལེན་འཐབ། (_E)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1912
+#: ../src/xfdesktop-file-icon-manager.c:1515
 msgid "_Edit Launcher"
 msgstr "གསར་བཙུགས་འབད་མི་ཞུན་དག་རྐྱབས། (_E)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1952
+#: ../src/xfdesktop-file-icon-manager.c:1550
 msgid "Open With"
 msgstr "གི་ཐོག་ལས་ཁ་ཕྱེ།"
 
-#: ../src/xfdesktop-file-icon-manager.c:1983
+#: ../src/xfdesktop-file-icon-manager.c:1577
 msgid "Open With Other _Application..."
 msgstr "གློག་རིམ་གཞན་གྱི་ཐོག་ལས་ཁ་ཕྱེ་...(_A)"
 
-#: ../src/xfdesktop-file-icon-manager.c:2090
+#: ../src/xfdesktop-file-icon-manager.c:1665
 msgid "_Rename..."
 msgstr "བསྐྱར་མིང་བཏགས་...(_R)"
 
-#: ../src/xfdesktop-file-icon-manager.c:2108
+#: ../src/xfdesktop-file-icon-manager.c:1683
 msgid "Desktop _Settings..."
 msgstr "ཌིཀསི་ཊོཔ་སྒྲིག་སྟངས་ཚུ་...(_S)"
 
-#: ../src/xfdesktop-file-icon-manager.c:2118
-#: ../src/xfdesktop-volume-icon.c:614
+#: ../src/xfdesktop-file-icon-manager.c:1693
+#: ../src/xfdesktop-volume-icon.c:701
 msgid "_Properties..."
 msgstr "རྒྱུ་དངོས་ཚུ་...(_P)"
 
-#: ../src/xfdesktop-file-icon-manager.c:3370
-#: ../src/xfdesktop-regular-file-icon.c:391
+#: ../src/xfdesktop-file-icon-manager.c:2243
+#, fuzzy
+msgid "Load Error"
+msgstr "འཛོལ་བ་གསར་བཙུགས་འབད།"
+
+#: ../src/xfdesktop-file-icon-manager.c:2245
+msgid "Failed to load the desktop folder"
+msgstr ""
+
+#. TRANSLATORS: file was modified less than one day ago
+#: ../src/xfdesktop-file-utils.c:132
 #, c-format
-msgid "Failed to run \"%s\":"
-msgstr "\"%s\" གཡོག་བཀོལ་ནི་ལུ་འཐུས་ཤོར་བྱུང་ཡོདཔ་:"
+msgid "Today at %X"
+msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:3372
-#: ../src/xfdesktop-regular-file-icon.c:393
-msgid "Run Error"
-msgstr "འཛོལ་བ་གཡོག་བཀོལ།"
-
-#: ../src/xfdesktop-file-properties-dialog.c:104
+#. TRANSLATORS: file was modified less than two days ago
+#: ../src/xfdesktop-file-utils.c:136
 #, c-format
-msgid "Unable to set default application for \"%s\" to \"%s\":"
-msgstr "\"%s\" ལུ་ \"%s\" གི་དོན་ལས་སྔོན་སྒྲིག་གློག་རིམ་གཞི་སྒྲིག་འབད་མི་ཚུགས་:"
+msgid "Yesterday at %X"
+msgstr ""
 
-#: ../src/xfdesktop-file-properties-dialog.c:107
-msgid "Properties Error"
-msgstr "རྒྱུ་དངོས་ཚུའི་འཛོལ་བ།"
+#. Days from last week
+#: ../src/xfdesktop-file-utils.c:141
+#, c-format
+msgid "%A at %X"
+msgstr ""
 
-#: ../src/xfdesktop-file-properties-dialog.c:139
-msgid "None"
-msgstr "ཅི་མེད།"
+#. Any other date
+#: ../src/xfdesktop-file-utils.c:144
+#, c-format
+msgid "%x at %X"
+msgstr ""
 
-#: ../src/xfdesktop-file-properties-dialog.c:139
-msgid "Write only"
-msgstr "འབྲི་ནི་རྐྱངམ་གཅིག།"
-
-#: ../src/xfdesktop-file-properties-dialog.c:139
-msgid "Read only"
-msgstr "ལྷག་ནི་རྐྱངམ་གཅིག།"
-
-#: ../src/xfdesktop-file-properties-dialog.c:139
-msgid "Read & Write"
-msgstr "ལྷག་ནི་དང་འབྲི་ནི།"
-
-#: ../src/xfdesktop-file-properties-dialog.c:165
-msgid "General"
-msgstr "ཡོངས་ཁྱབ།"
-
-#: ../src/xfdesktop-file-properties-dialog.c:190
-msgid "Name:"
-msgstr "མིང་:"
-
-#: ../src/xfdesktop-file-properties-dialog.c:216
-msgid "Kind:"
-msgstr "དབྱེ་ཁག་:"
-
-#: ../src/xfdesktop-file-properties-dialog.c:236
-msgid "Link Target:"
-msgstr "འབྲེལ་ལམ་དམིགས་གཏད་:"
-
-#: ../src/xfdesktop-file-properties-dialog.c:253
-#: ../src/xfdesktop-file-properties-dialog.c:415
-#: ../src/xfdesktop-volume-icon.c:480 ../src/xfdesktop-volume-icon.c:486
-msgid "(unknown)"
+#. the file_time is invalid
+#: ../src/xfdesktop-file-utils.c:154
+#, fuzzy
+msgid "Unknown"
 msgstr "(མ་ཤེསཔ་)"
 
-#: ../src/xfdesktop-file-properties-dialog.c:275
-msgid "Open With:"
-msgstr "གི་ཐོག་ལས་ཁ་ཕྱེ་:"
-
-#: ../src/xfdesktop-file-properties-dialog.c:355
-msgid "Modified:"
-msgstr "ལེགས་བཅོས་འབད་ཡོདཔ་:"
-
-#: ../src/xfdesktop-file-properties-dialog.c:373
-msgid "Accessed:"
-msgstr "འཛུལ་སྤཡོད་འབད་ཡོདཔ་:"
-
-#: ../src/xfdesktop-file-properties-dialog.c:400
-msgid "Free Space:"
-msgstr "བར་སྟོང་སྟོངམ་:"
-
-#: ../src/xfdesktop-file-properties-dialog.c:402
-msgid "Size:"
-msgstr "ཚད་:"
-
-#: ../src/xfdesktop-file-properties-dialog.c:418
-#: ../src/xfdesktop-regular-file-icon.c:497
-#: ../src/xfdesktop-special-file-icon.c:496
-msgid "%s (%"
-msgstr "%s (%"
-
-#. permissions tab
-#: ../src/xfdesktop-file-properties-dialog.c:433
-msgid "Permissions"
-msgstr "གནང་བ་ཚུ།"
-
-#: ../src/xfdesktop-file-properties-dialog.c:455
-msgid "Owner:"
-msgstr "བདག་པོ་:"
-
-#: ../src/xfdesktop-file-properties-dialog.c:477
-#: ../src/xfdesktop-file-properties-dialog.c:515
-msgid "Access:"
-msgstr "འཛུལ་སྤྱོད་:"
-
-#: ../src/xfdesktop-file-properties-dialog.c:500
-msgid "Group:"
-msgstr "སྡེ་ཚན་:"
-
-#: ../src/xfdesktop-file-properties-dialog.c:538
-msgid "Others:"
-msgstr "གཞན་ཚུ་:"
-
-#: ../src/xfdesktop-file-utils.c:75
-msgid "Yes to _all"
-msgstr "ཆ་མཉམ་ལུ་བཏུབ། (_a)"
-
-#: ../src/xfdesktop-file-utils.c:107
-#, c-format
-msgid "There was an error moving \"%s\" to \"%s\":"
-msgstr " \"%s\" ལུ་  \"%s\" སྤོ་བཤུད་འབད་བའི་སྐབས་འཛོལ་བ་འདུག་:"
-
-#: ../src/xfdesktop-file-utils.c:110
-#, c-format
-msgid "There was an error copying \"%s\" to \"%s\":"
-msgstr " \"%s\" ལུ་  \"%s\" འདྲ་བཤུས་བརྐྱབ་པའི་སྐབས་འཛོལ་བ་འདུག་:"
-
-#: ../src/xfdesktop-file-utils.c:113
-#, c-format
-msgid "There was an error linking \"%s\" to \"%s\":"
-msgstr " \"%s\" ལུ་  \"%s\" འབྲེལ་མཐུད་འབད་བའི་སྐབས་འཛོལ་བ་འདུག་:"
-
-#: ../src/xfdesktop-file-utils.c:122
-msgid "File Error"
-msgstr "ཡིག་སྣོད་འཛོལ་བ།"
-
-#: ../src/xfdesktop-file-utils.c:138
-msgid "broken link"
-msgstr "འབྲེལ་ལམ་ཆད་པ།"
-
-#: ../src/xfdesktop-file-utils.c:142
-#, c-format
-msgid "link to %s"
-msgstr "%s ལུ་འབྲེལ་མཐུད་འབད།"
-
-#: ../src/xfdesktop-regular-file-icon.c:500
-#: ../src/xfdesktop-special-file-icon.c:500
-#, c-format
-msgid ""
-"Kind: %s\n"
-"Modified:%s\n"
-"Size: %s"
-msgstr ""
-"དབྱེ་ཁག་: %s\n"
-"ལེགས་བཅོས་གྲུབ་ཡོདཔ་:%s\n"
-"ཚད་: %s"
-
-#: ../src/xfdesktop-regular-file-icon.c:546
-#: ../src/xfdesktop-regular-file-icon.c:610
-msgid "Error"
-msgstr "འཛོལ་བ།"
-
-#: ../src/xfdesktop-regular-file-icon.c:607
-#, c-format
-msgid "Failed to rename \"%s\" to \"%s\":"
-msgstr " \"%s\" ལུ་  \"%s\" བསྐྱར་མིང་བཏགས་ནི་ལུ་འཐུས་ཤོར་བྱུང་ཡོདཔ་:"
-
-#. FIXME: also display # of items in trash
-#: ../src/xfdesktop-special-file-icon.c:486
+#: ../src/xfdesktop-file-utils.c:566 ../src/xfdesktop-file-utils.c:581
 #, fuzzy
-msgid "Kind: Trash"
-msgstr "དབྱེ་ཁག་:"
+msgid "The folder could not be opened"
+msgstr "གློག་རིམ་གདམ་ཁ་བརྐྱབ་མི་ཁ་ཕྱེ་མ་ཚུགས།"
 
-#: ../src/xfdesktop-special-file-icon.c:519
-msgid "Trash Error"
+#: ../src/xfdesktop-file-utils.c:615 ../src/xfdesktop-file-utils.c:630
+#, fuzzy
+msgid "Rename Error"
+msgstr "འཛོལ་བ་གཡོག་བཀོལ།"
+
+#: ../src/xfdesktop-file-utils.c:616 ../src/xfdesktop-file-utils.c:631
+#, fuzzy
+msgid "The file could not be renamed"
+msgstr "གློག་རིམ་གདམ་ཁ་བརྐྱབ་མི་ཁ་ཕྱེ་མ་ཚུགས།"
+
+#: ../src/xfdesktop-file-utils.c:674 ../src/xfdesktop-file-utils.c:689
+#, fuzzy
+msgid "Delete Error"
+msgstr "འཛོལ་བ་གསར་བསྐྲུན་འབད།"
+
+#: ../src/xfdesktop-file-utils.c:675 ../src/xfdesktop-file-utils.c:690
+#, fuzzy
+msgid "The selected files could not be deleted"
+msgstr "འབྲེལ་བའི་གློག་རིམ་འདི་འཚོལ་ནི་ ཡང་ན་ ལག་ལེན་འཐབ་མ་ཚུགས།"
+
+#: ../src/xfdesktop-file-utils.c:734 ../src/xfdesktop-file-utils.c:749
+msgid "The selected files could not be moved to the trash"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:750
+#, fuzzy
+msgid ""
+"This feature requires a trash service to be present (such as the one "
+"supplied by Thunar)."
+msgstr ""
+"ཨ་ནི་ཁྱད་རྣམ་ལུ་ (ཐུ་ནར་གྱིས་བཀྲམ་སྤེལ་འབད་ཡོད་མི་བཟུམ་མའི་) ཡིག་སྣོད་འཛིན་སྐྱོང་པའི་ཞབས་ཏོགས་ངོ་འབྱོར་"
+"དགོས་མཁོ་ཡོདཔ་ཨིན།"
+
+#: ../src/xfdesktop-file-utils.c:786 ../src/xfdesktop-file-utils.c:801
+#, fuzzy
+msgid "Create File Error"
+msgstr "འཛོལ་བ་གསར་བསྐྲུན་འབད།"
+
+#: ../src/xfdesktop-file-utils.c:787 ../src/xfdesktop-file-utils.c:802
+msgid "Could not create a new file"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:842 ../src/xfdesktop-file-utils.c:857
+#, fuzzy
+msgid "Create Document Error"
+msgstr "འཛོལ་བ་གསར་བསྐྲུན་འབད།"
+
+#: ../src/xfdesktop-file-utils.c:843 ../src/xfdesktop-file-utils.c:858
+#, fuzzy
+msgid "Could not create a new document from the template"
+msgstr "ཊེམ་པེལེཊི་ \"%s\" ལས་ཡིག་ཆ་གསར་བསྐྲུན་འབད།"
+
+#: ../src/xfdesktop-file-utils.c:892 ../src/xfdesktop-file-utils.c:907
+#, fuzzy
+msgid "File Properties Error"
+msgstr "རྒྱུ་དངོས་ཚུའི་འཛོལ་བ།"
+
+#: ../src/xfdesktop-file-utils.c:893 ../src/xfdesktop-file-utils.c:908
+#, fuzzy
+msgid "The file properties dialog could not be opened"
+msgstr "གློག་རིམ་གདམ་ཁ་བརྐྱབ་མི་ཁ་ཕྱེ་མ་ཚུགས།"
+
+#: ../src/xfdesktop-file-utils.c:943 ../src/xfdesktop-file-utils.c:958
+#, fuzzy
+msgid "The file could not be opened"
+msgstr "གློག་རིམ་གདམ་ཁ་བརྐྱབ་མི་ཁ་ཕྱེ་མ་ཚུགས།"
+
+#: ../src/xfdesktop-file-utils.c:1006 ../src/xfdesktop-file-utils.c:1031
+#, fuzzy, c-format
+msgid "Failed to run \"%s\""
+msgstr "\"%s\" གཡོག་བཀོལ་ནི་ལུ་འཐུས་ཤོར་བྱུང་ཡོདཔ་:"
+
+#: ../src/xfdesktop-file-utils.c:1081 ../src/xfdesktop-file-utils.c:1096
+#, fuzzy
+msgid "The application chooser could not be opened"
+msgstr "གློག་རིམ་གདམ་ཁ་བརྐྱབ་མི་ཁ་ཕྱེ་མ་ཚུགས།"
+
+#: ../src/xfdesktop-file-utils.c:1154 ../src/xfdesktop-file-utils.c:1168
+#: ../src/xfdesktop-file-utils.c:1230 ../src/xfdesktop-file-utils.c:1246
+#, fuzzy
+msgid "Transfer Error"
 msgstr "ཕྱགས་ཧོད་འཛོལ་བ།"
 
-#: ../src/xfdesktop-special-file-icon.c:521
+#: ../src/xfdesktop-file-utils.c:1155 ../src/xfdesktop-file-utils.c:1169
+#: ../src/xfdesktop-file-utils.c:1231 ../src/xfdesktop-file-utils.c:1247
+#, fuzzy
+msgid "The file transfer could not be performed"
+msgstr "གློག་རིམ་གདམ་ཁ་བརྐྱབ་མི་ཁ་ཕྱེ་མ་ཚུགས།"
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:97
+#, fuzzy
+msgid "Unmounting device"
+msgstr "བརྩེགས་བཤོལ་འཐུས་ཤོར་བྱུང་ཡོདཔ།"
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:100
+#, c-format
+msgid ""
+"The device \"%s\" is being unmounted by the system. Please do not remove the "
+"media or disconnect the drive"
+msgstr ""
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:107 ../src/xfdesktop-notify.c:220
+msgid "Writing data to device"
+msgstr ""
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:110 ../src/xfdesktop-notify.c:223
+#, c-format
+msgid ""
+"There is data that needs to be written to the device \"%s\" before it can be "
+"removed. Please do not remove the media or disconnect the drive"
+msgstr ""
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:211
+msgid "Ejecting device"
+msgstr ""
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:214
+#, c-format
+msgid "The device \"%s\" is being ejected. This may take some time"
+msgstr ""
+
+#: ../src/xfdesktop-regular-file-icon.c:468
+#, c-format
+msgid ""
+"Type: %s\n"
+"Size: %s\n"
+"Last modified: %s"
+msgstr ""
+
+#: ../src/xfdesktop-special-file-icon.c:249
+#: ../src/xfdesktop-special-file-icon.c:411
+#, fuzzy
+msgid "File System"
+msgstr "རིམ་ལུགས།"
+
+#: ../src/xfdesktop-special-file-icon.c:396
+msgid "Trash is empty"
+msgstr ""
+
+#: ../src/xfdesktop-special-file-icon.c:399
+msgid "Trash contains one item"
+msgstr ""
+
+#: ../src/xfdesktop-special-file-icon.c:400
+#, c-format
+msgid "Trash contains %d items"
+msgstr ""
+
+#: ../src/xfdesktop-special-file-icon.c:428
+#, c-format
+msgid ""
+"%s\n"
+"Size: %s\n"
+"Last modified: %s"
+msgstr ""
+
+#: ../src/xfdesktop-special-file-icon.c:449
 msgid "Unable to contact the Xfce Trash service."
 msgstr "ཨེཀསི་ཨེཕ་སི་ཨི་ཕྱགས་ཧོད་ཞབས་ཏོག་འབྲེལ་བ་འཐབ་མི་ཚུགས།"
 
-#: ../src/xfdesktop-special-file-icon.c:522
+#: ../src/xfdesktop-special-file-icon.c:450
 msgid ""
 "Make sure you have a file manager installed that supports the Xfce Trash "
 "service, such as Thunar."
@@ -761,61 +717,228 @@ msgstr ""
 "ཁྱོད་ལུ་ ཐུ་ནར་བཟུམ་མའི་ ཨེཀསི་ཨེཕ་སི་ཨི་ཕྱགས་ཧོད་ཞབས་ཏོག་རྒྱབ་སྐྱོར་འབད་མི་གཞི་བཙུགས་ཡོད་པའི་ཡིག་སྣོད་"
 "འཛིན་སྐྱོང་པ་ཡོདཔ་ངེས་གཏན་བཟོ།"
 
-#: ../src/xfdesktop-special-file-icon.c:655
+#: ../src/xfdesktop-special-file-icon.c:588
 msgid "_Empty Trash"
 msgstr "ཕྱགས་ཧོད་སྟོངམ། (_E)"
 
-#: ../src/xfdesktop-volume-icon.c:478
-#, c-format
-msgid "%s (%s total)"
-msgstr ""
-
-#: ../src/xfdesktop-volume-icon.c:482
+#: ../src/xfdesktop-volume-icon.c:413
 #, c-format
 msgid ""
-"Kind: Removable Volume\n"
-"Mount Point: %s\n"
-"Free Space: %s"
+"Removable Volume\n"
+"Mounted in \"%s\"\n"
+"%s left (%s total)"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:513
-#, c-format
-msgid "Unable to mount \"%s\":"
-msgstr "\"%s\" སྦྱར་བརྩེགས་འབད་མི་ཚུགས་:"
+#: ../src/xfdesktop-volume-icon.c:420
+msgid ""
+"Removable Volume\n"
+"Not mounted yet"
+msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:514
-#, c-format
-msgid "Unable to unmount \"%s\":"
-msgstr "\"%s\" བརྩེགས་བཤོལ་འབད་མི་ཚུགས་:"
-
-#: ../src/xfdesktop-volume-icon.c:517
-msgid "Mount Failed"
-msgstr "སྦྱར་བརྩེགས་འཐུས་ཤོར་བྱུང་ཡོདཔ།"
-
-#: ../src/xfdesktop-volume-icon.c:517
-msgid "Unmount Failed"
-msgstr "བརྩེགས་བཤོལ་འཐུས་ཤོར་བྱུང་ཡོདཔ།"
-
-#: ../src/xfdesktop-volume-icon.c:535
-#, c-format
-msgid "Unable to eject \"%s\":"
+#: ../src/xfdesktop-volume-icon.c:446 ../src/xfdesktop-volume-icon.c:488
+#, fuzzy, c-format
+msgid "Failed to eject \"%s\""
 msgstr "\"%s\" ཕྱིར་བཏོན་མི་ཚུགས་:"
 
-#: ../src/xfdesktop-volume-icon.c:538
+#: ../src/xfdesktop-volume-icon.c:451 ../src/xfdesktop-volume-icon.c:493
 msgid "Eject Failed"
 msgstr "ཕྱིར་བཏོན་འཐུས་ཤོར་བྱུང་ཡོདཔ།"
 
-#: ../src/xfdesktop-volume-icon.c:582
-msgid "_Unmount Volume"
-msgstr "སྐད་ཤུགས་སྦྱར་བརྩེགས་བཤོལ། (_U)"
+#: ../src/xfdesktop-volume-icon.c:525
+#, fuzzy, c-format
+msgid "Failed to mount \"%s\""
+msgstr "\"%s\" གཡོག་བཀོལ་ནི་ལུ་འཐུས་ཤོར་བྱུང་ཡོདཔ་:"
 
-#: ../src/xfdesktop-volume-icon.c:585
+#: ../src/xfdesktop-volume-icon.c:528
+msgid "Mount Failed"
+msgstr "སྦྱར་བརྩེགས་འཐུས་ཤོར་བྱུང་ཡོདཔ།"
+
+#: ../src/xfdesktop-volume-icon.c:669 ../src/xfdesktop-volume-icon.c:672
+msgid "E_ject Volume"
+msgstr "སྐད་ཤུགས་ཕྱིར་བཏོན། (_j)"
+
+#: ../src/xfdesktop-volume-icon.c:679
 msgid "_Mount Volume"
 msgstr "སྐད་ཤུགས་སྦྱར་བརྩེགས་འབད། (_M)"
 
-#: ../src/xfdesktop-volume-icon.c:599
-msgid "E_ject Volume"
-msgstr "སྐད་ཤུགས་ཕྱིར་བཏོན། (_j)"
+#~ msgid ""
+#~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+#~ msgstr ""
+#~ "ཌེཀསི་ཊོཔ་རྣམ་གྲངས་ཚུ་གསོག་འཇོག་འབད་ནི་ལུ་ཨེཀསི་ཨེཕ་ཌེཀསི་ཊོཔ་འདི་གིས་སྣོད་འཛིན་ \"%s\" གསར་"
+#~ "བསྐྲུན་འབད་མ་ཚུགས་:"
+
+#~ msgid "Create Folder Failed"
+#~ msgstr "འཐུས་ཤོར་བྱུང་ཡོད་མི་སྣོད་འཛིན་གསར་བསྐྲུན་འབད།"
+
+#~ msgid ""
+#~ "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not "
+#~ "a folder."
+#~ msgstr ""
+#~ "ཌེཀསི་ཊོཔ་རྣམ་གྲངས་ཚུ་འཆང་ནི་ལུ་ཨེཀསི་ཨེཕ་ཌེཀསི་ཊོཔ་འདི་གིས་\"%s\"ལག་ལེན་འཐབ་མི་ཚུགས་ག་ཅི་འབད་"
+#~ "ཟེར་བ་ཅིན་དེ་སྣོད་འཛིན་མེན།"
+
+#~ msgid "Please delete or rename the file."
+#~ msgstr "ཡིག་སྣོད་བཏོན་གཏང་ ཡང་ན་ གསར་བསྐྲུན་འབད་གནང་།"
+
+#~ msgid "Rename \"%s\""
+#~ msgstr "\"%s\" བསྐྱར་མིང་བཏགས།"
+
+#~ msgid "Enter the new name:"
+#~ msgstr "མིང་གསརཔ་བཙུགས་:"
+
+#~ msgid "Rename"
+#~ msgstr "བསྐྱར་མིང་བཏགས།"
+
+#~ msgid "Are you sure that you want to delete \"%s\"?"
+#~ msgstr "ཁྱོད་ཀྱིས་ \"%s\" བཏོན་གཏང་ནི་ལུ་ངེས་གཏན་ཨིན་ན?"
+
+#~ msgid "Question"
+#~ msgstr "དྲི་བ།"
+
+#~ msgid "If you delete a file, it is permanently lost."
+#~ msgstr "ཁྱོད་ཀྱིས་ཡིག་སྣོད་བཏོན་གཏང་པ་ཅིན་ དེ་རྟག་བརྟན་སྦེ་བརླག་སྟོར་ཞུགསཔ་ཨིན།"
+
+#~ msgid "Are you sure you want to delete the following %d files?"
+#~ msgstr "ཁྱོད་ཀྱིས་འོག་གི་ %d ཡིག་སྣོད་ཚུ་བཏོན་གཏང་ནི་ལུ་ངེས་གཏན་ཨིན་ན?"
+
+#~ msgid "Delete Multiple Files"
+#~ msgstr "སྣ་མང་ཡིག་སྣོད་ཚུ་བཏོན་གཏང་།"
+
+#~ msgid "Unable to create folder named \"%s\":"
+#~ msgstr "\"%s\" མིང་བཏགས་ཡོད་མི་སྣོད་འཛིན་གསར་བསྐྲུན་འབད་མི་ཚུགས་:"
+
+#~ msgid "Create New Folder"
+#~ msgstr "སྣོད་འཛིན་གསརཔ་གསར་བསྐྲུན་འབད།"
+
+#~ msgid "New Folder"
+#~ msgstr "སྣོད་འཛིན་གསརཔ།"
+
+#~ msgid "Create"
+#~ msgstr "གསར་བསྐྲུན་འབད།"
+
+#~ msgid "Unable to create file named \"%s\":"
+#~ msgstr "\"%s\" མིང་བཀགས་ཡོད་མི་ཡིག་སྣོད་གསར་བསྐྲུན་འབད་མི་ཚུགས་:"
+
+#~ msgid "Create File Failed"
+#~ msgstr "འཐུས་ཤོར་བྱུང་ཡོད་མི་ཡིག་སྣོད་གསར་བསྐྲུན་འབད།"
+
+#~ msgid "Create Empty File"
+#~ msgstr "ཡིག་སྣོད་སྟོངམ་གསར་བསྐྲུན་འབད།"
+
+#~ msgid "New Empty File"
+#~ msgstr "ཡིག་སྣོད་སྟོངམ་གསརཔ།"
+
+#~ msgid "Unable to create file \"%s\":"
+#~ msgstr "ཡིག་སྣོད་\"%s\" གསར་བསྐྲུན་འབད་མི་ཚུགས་:"
+
+#~ msgid "Unable to set default application for \"%s\" to \"%s\":"
+#~ msgstr "\"%s\" ལུ་ \"%s\" གི་དོན་ལས་སྔོན་སྒྲིག་གློག་རིམ་གཞི་སྒྲིག་འབད་མི་ཚུགས་:"
+
+#~ msgid "None"
+#~ msgstr "ཅི་མེད།"
+
+#~ msgid "Write only"
+#~ msgstr "འབྲི་ནི་རྐྱངམ་གཅིག།"
+
+#~ msgid "Read only"
+#~ msgstr "ལྷག་ནི་རྐྱངམ་གཅིག།"
+
+#~ msgid "Read & Write"
+#~ msgstr "ལྷག་ནི་དང་འབྲི་ནི།"
+
+#~ msgid "General"
+#~ msgstr "ཡོངས་ཁྱབ།"
+
+#~ msgid "Name:"
+#~ msgstr "མིང་:"
+
+#~ msgid "Kind:"
+#~ msgstr "དབྱེ་ཁག་:"
+
+#~ msgid "Link Target:"
+#~ msgstr "འབྲེལ་ལམ་དམིགས་གཏད་:"
+
+#~ msgid "Open With:"
+#~ msgstr "གི་ཐོག་ལས་ཁ་ཕྱེ་:"
+
+#~ msgid "Modified:"
+#~ msgstr "ལེགས་བཅོས་འབད་ཡོདཔ་:"
+
+#~ msgid "Accessed:"
+#~ msgstr "འཛུལ་སྤཡོད་འབད་ཡོདཔ་:"
+
+#~ msgid "Free Space:"
+#~ msgstr "བར་སྟོང་སྟོངམ་:"
+
+#~ msgid "Size:"
+#~ msgstr "ཚད་:"
+
+#~ msgid "%s (%"
+#~ msgstr "%s (%"
+
+#~ msgid "Permissions"
+#~ msgstr "གནང་བ་ཚུ།"
+
+#~ msgid "Owner:"
+#~ msgstr "བདག་པོ་:"
+
+#~ msgid "Access:"
+#~ msgstr "འཛུལ་སྤྱོད་:"
+
+#~ msgid "Group:"
+#~ msgstr "སྡེ་ཚན་:"
+
+#~ msgid "Others:"
+#~ msgstr "གཞན་ཚུ་:"
+
+#~ msgid "Yes to _all"
+#~ msgstr "ཆ་མཉམ་ལུ་བཏུབ། (_a)"
+
+#~ msgid "There was an error moving \"%s\" to \"%s\":"
+#~ msgstr " \"%s\" ལུ་  \"%s\" སྤོ་བཤུད་འབད་བའི་སྐབས་འཛོལ་བ་འདུག་:"
+
+#~ msgid "There was an error copying \"%s\" to \"%s\":"
+#~ msgstr " \"%s\" ལུ་  \"%s\" འདྲ་བཤུས་བརྐྱབ་པའི་སྐབས་འཛོལ་བ་འདུག་:"
+
+#~ msgid "There was an error linking \"%s\" to \"%s\":"
+#~ msgstr " \"%s\" ལུ་  \"%s\" འབྲེལ་མཐུད་འབད་བའི་སྐབས་འཛོལ་བ་འདུག་:"
+
+#~ msgid "File Error"
+#~ msgstr "ཡིག་སྣོད་འཛོལ་བ།"
+
+#~ msgid "broken link"
+#~ msgstr "འབྲེལ་ལམ་ཆད་པ།"
+
+#~ msgid "link to %s"
+#~ msgstr "%s ལུ་འབྲེལ་མཐུད་འབད།"
+
+#~ msgid ""
+#~ "Kind: %s\n"
+#~ "Modified:%s\n"
+#~ "Size: %s"
+#~ msgstr ""
+#~ "དབྱེ་ཁག་: %s\n"
+#~ "ལེགས་བཅོས་གྲུབ་ཡོདཔ་:%s\n"
+#~ "ཚད་: %s"
+
+#~ msgid "Error"
+#~ msgstr "འཛོལ་བ།"
+
+#~ msgid "Failed to rename \"%s\" to \"%s\":"
+#~ msgstr " \"%s\" ལུ་  \"%s\" བསྐྱར་མིང་བཏགས་ནི་ལུ་འཐུས་ཤོར་བྱུང་ཡོདཔ་:"
+
+#, fuzzy
+#~ msgid "Kind: Trash"
+#~ msgstr "དབྱེ་ཁག་:"
+
+#~ msgid "Unable to mount \"%s\":"
+#~ msgstr "\"%s\" སྦྱར་བརྩེགས་འབད་མི་ཚུགས་:"
+
+#~ msgid "Unable to unmount \"%s\":"
+#~ msgstr "\"%s\" བརྩེགས་བཤོལ་འབད་མི་ཚུགས་:"
+
+#~ msgid "_Unmount Volume"
+#~ msgstr "སྐད་ཤུགས་སྦྱར་བརྩེགས་བཤོལ། (_U)"
 
 #~ msgid "Unable to launch xfce4-menueditor: %s"
 #~ msgstr "ཨེཀསི་ཨེཕ་སི་ཨི་༤གསར་བཙུགས་འབད་མི་ཚུགས་: %s"

@@ -2,19 +2,19 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Baurzhan Muftakhidinov <baurthefirst@gmail.com>, 2009.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: trunk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-02 05:09+0000\n"
+"POT-Creation-Date: 2010-11-04 00:34+0100\n"
 "PO-Revision-Date: 2010-08-03 10:24+0600\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <kk_KZ@googlegroups.com>\n"
+"Language: kk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: kk\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
@@ -64,8 +64,10 @@ msgstr "Фон суреттер тізімі файлын жасау/жүкте�
 
 #: ../settings/main.c:511
 #, c-format
-msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr "\"%s\" фон суреттер тізімі бар дұрыс файл емес. Оны үстінен жазамыз ба?"
+msgid ""
+"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr ""
+"\"%s\" фон суреттер тізімі бар дұрыс файл емес. Оны үстінен жазамыз ба?"
 
 #: ../settings/main.c:516
 msgid "Invalid List File"
@@ -341,8 +343,10 @@ msgid "Desktop Folder Error"
 msgstr "Жұмыс үстел бумасының қатесі"
 
 #: ../src/xfdesktop-file-icon-manager.c:503
-msgid "A normal file with the same name already exists. Please delete or rename it."
-msgstr "Ондай атауы бар файл бар болып тұр. Алдымен оны өшіріңіз не атын өзгертіңіз."
+msgid ""
+"A normal file with the same name already exists. Please delete or rename it."
+msgstr ""
+"Ондай атауы бар файл бар болып тұр. Алдымен оны өшіріңіз не атын өзгертіңіз."
 
 #: ../src/xfdesktop-file-icon-manager.c:606
 #: ../src/xfdesktop-file-icon-manager.c:650 ../src/xfdesktop-file-utils.c:733
@@ -362,8 +366,12 @@ msgstr "Ерекшеленген файлдарды қоқыс шелегіне 
 #: ../src/xfdesktop-file-utils.c:909 ../src/xfdesktop-file-utils.c:959
 #: ../src/xfdesktop-file-utils.c:1036 ../src/xfdesktop-file-utils.c:1097
 #: ../src/xfdesktop-file-utils.c:1170 ../src/xfdesktop-file-utils.c:1248
-msgid "This feature requires a file manager service to be present (such as the one supplied by Thunar)."
-msgstr "Бұл мүмкіндік бар болып тұрған файлдар басқарушы қызметін талап етеді (Thunar ұсынатын қызмет сияқты)."
+msgid ""
+"This feature requires a file manager service to be present (such as the one "
+"supplied by Thunar)."
+msgstr ""
+"Бұл мүмкіндік бар болып тұрған файлдар басқарушы қызметін талап етеді "
+"(Thunar ұсынатын қызмет сияқты)."
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:752
@@ -393,8 +401,12 @@ msgid "Open With \"%s\""
 msgstr "\"%s\" көмегімен ашу"
 
 #: ../src/xfdesktop-file-icon-manager.c:1000
-msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
-msgstr "\"exo-desktop-item-edit\" жөнелту қатесі, ол жұмыс үстелінде жөнелткіштерді мен сілтемелерді жасау үшін керек."
+msgid ""
+"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
+"edit launchers and links on the desktop."
+msgstr ""
+"\"exo-desktop-item-edit\" жөнелту қатесі, ол жұмыс үстелінде жөнелткіштерді "
+"мен сілтемелерді жасау үшін керек."
 
 #: ../src/xfdesktop-file-icon-manager.c:1368
 msgid "_Open all"
@@ -524,8 +536,12 @@ msgid "The selected files could not be moved to the trash"
 msgstr "Ерекшеленген файлдарды қоқыс шелегіне тастау мүмкін емес"
 
 #: ../src/xfdesktop-file-utils.c:750
-msgid "This feature requires a trash service to be present (such as the one supplied by Thunar)."
-msgstr "Бұл мүмкіндік бар болып тұрған қоқыс шелегі қызметін талап етеді (Thunar ұсынатын қызмет сияқты)."
+msgid ""
+"This feature requires a trash service to be present (such as the one "
+"supplied by Thunar)."
+msgstr ""
+"Бұл мүмкіндік бар болып тұрған қоқыс шелегі қызметін талап етеді (Thunar "
+"ұсынатын қызмет сияқты)."
 
 #: ../src/xfdesktop-file-utils.c:786 ../src/xfdesktop-file-utils.c:801
 msgid "Create File Error"
@@ -582,8 +598,12 @@ msgstr "Құрылғыны тіркеуден босату"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:100
 #, c-format
-msgid "The device \"%s\" is being unmounted by the system. Please do not remove the media or disconnect the drive"
-msgstr "\"%s\" құрылғысын жүйе тіркеуден босатуда. Дискті не тасушыны әзірше алып тастамаңыз."
+msgid ""
+"The device \"%s\" is being unmounted by the system. Please do not remove the "
+"media or disconnect the drive"
+msgstr ""
+"\"%s\" құрылғысын жүйе тіркеуден босатуда. Дискті не тасушыны әзірше алып "
+"тастамаңыз."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:107 ../src/xfdesktop-notify.c:220
@@ -593,8 +613,12 @@ msgstr "Құрылғыға ақпаратты жазу"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:110 ../src/xfdesktop-notify.c:223
 #, c-format
-msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
-msgstr "\"%s\" құрылғысы алынғанша дейін, оған жазылу керек ақпарат бар. Дискті не тасушыны әзірше алып тастамаңыз."
+msgid ""
+"There is data that needs to be written to the device \"%s\" before it can be "
+"removed. Please do not remove the media or disconnect the drive"
+msgstr ""
+"\"%s\" құрылғысы алынғанша дейін, оған жазылу керек ақпарат бар. Дискті не "
+"тасушыны әзірше алып тастамаңыз."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:211
@@ -652,8 +676,12 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "Xfce қоқыс шелегі қызметімен байланыс орнату мүмкін емес."
 
 #: ../src/xfdesktop-special-file-icon.c:450
-msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
-msgstr "Thunar сияқты, Xfce қоқыс шелегі қызметіне қолдауы бар файл басқарушысы орнатылғанына көз жеткізіңіз."
+msgid ""
+"Make sure you have a file manager installed that supports the Xfce Trash "
+"service, such as Thunar."
+msgstr ""
+"Thunar сияқты, Xfce қоқыс шелегі қызметіне қолдауы бар файл басқарушысы "
+"орнатылғанына көз жеткізіңіз."
 
 #: ../src/xfdesktop-special-file-icon.c:588
 msgid "_Empty Trash"
@@ -704,14 +732,20 @@ msgstr "Бөлімді _шығару"
 msgid "_Mount Volume"
 msgstr "Бө_лімді тіркеу"
 
-#~ msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-#~ msgstr "Xfdesktop жұмыс үстел құрамасын сақтау үшін \"%s\" бумасын жасай алмады:"
+#~ msgid ""
+#~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+#~ msgstr ""
+#~ "Xfdesktop жұмыс үстел құрамасын сақтау үшін \"%s\" бумасын жасай алмады:"
 
 #~ msgid "Create Folder Failed"
 #~ msgstr "Буманы жасау сәтсіз аяқталды"
 
-#~ msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
-#~ msgstr "Xfdesktop жұмыс үстел құрамасын сақтау үшін \"%s\" қолдана алмайды - өйткені ол бума емес."
+#~ msgid ""
+#~ "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not "
+#~ "a folder."
+#~ msgstr ""
+#~ "Xfdesktop жұмыс үстел құрамасын сақтау үшін \"%s\" қолдана алмайды - "
+#~ "өйткені ол бума емес."
 
 #~ msgid "Please delete or rename the file."
 #~ msgstr "Файлды өшіріңіз не атын ауыстырыңыз."
@@ -768,7 +802,8 @@ msgstr "Бө_лімді тіркеу"
 #~ msgstr "\"%s\" файлын жасау мүмкін емес:"
 
 #~ msgid "Unable to set default application for \"%s\" to \"%s\":"
-#~ msgstr "\"%s\" үшін негізгі қолданба ретінде \"%s\" орнату қатемен аяқталды:"
+#~ msgstr ""
+#~ "\"%s\" үшін негізгі қолданба ретінде \"%s\" орнату қатемен аяқталды:"
 
 #~ msgid "None"
 #~ msgstr "Жоқ"
@@ -1218,7 +1253,9 @@ msgstr "Бө_лімді тіркеу"
 #~ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 #~ msgstr "Градиент үшін \"оң\" мен \"төменгі\" түстерін анықтайды"
 
-#~ msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+#~ msgid ""
+#~ "Specifies the solid color, or the \"left\" or \"top\" color of the "
+#~ "gradient"
 #~ msgstr "Градиент үшін \"сол\" мен \"үстіңгі\" түстерін анықтайды"
 
 #~ msgid "Specify how the image will be resized to fit the screen"
@@ -1227,8 +1264,11 @@ msgstr "Бө_лімді тіркеу"
 #~ msgid "Specify the style of the color drawn behind the backdrop image"
 #~ msgstr "Фон суреті астындағы түстін мөлдірлігін анықтайды"
 
-#~ msgid "Specify the transparency level for the rounded label drawn behind the icon text"
-#~ msgstr "Таңбаша мәтіні астында орналасқан домалақша белгінің мөлдірлігін анықтайды"
+#~ msgid ""
+#~ "Specify the transparency level for the rounded label drawn behind the "
+#~ "icon text"
+#~ msgstr ""
+#~ "Таңбаша мәтіні астында орналасқан домалақша белгінің мөлдірлігін анықтайды"
 
 #~ msgid "St_yle:"
 #~ msgstr "Ст_илі:"
