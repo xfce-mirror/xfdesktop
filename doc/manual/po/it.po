@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop trunk\n"
 "POT-Creation-Date: 2010-08-28 11:37+0200\n"
-"PO-Revision-Date: 2010-04-27 09:14+0100\n"
+"PO-Revision-Date: 2010-11-04 15:41+0100\n"
 "Last-Translator: Cristian Marchi <cri.penta@gmail.com>\n"
 "Language-Team: Italian Translation Team <xfce-it-translators@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -146,7 +146,7 @@ msgstr "Introduzione"
 
 #: xfdesktop.xml82(para)
 msgid "The <application>@PACKAGE_NAME@</application> application manages the desktop backdrop. It sets a backdrop image and/or color and it can pop up an applications menu and a list of all running applications when you click on the desktop with the right or middle mouse button respectively. As of Xfce 4.4, <application>@PACKAGE_NAME@</application> also draws icons on the desktop."
-msgstr "L'applicazione <application>@PACKAGE_NAME@</application> gestisce lo sfondo della scrivania. Permette di impostare un'immagine o un colore di sfondo, di mostrare un menu delle applicazioni e di visualizzare un elenco di quelle in esecuzione facendo clic sulla scrivania rispettivamente con il tasto destro o con quello centrale del mouse.A partire da Xfce 4.4, <application>@PACKAGE_NAME@</application> disegna anche le icone sulla scrivania."
+msgstr "L'applicazione <application>@PACKAGE_NAME@</application> gestisce lo sfondo della scrivania. Permette di impostare un'immagine o un colore di sfondo, di mostrare un menu delle applicazioni e di visualizzare un elenco di quelle in esecuzione facendo clic sulla scrivania rispettivamente con il tasto destro o con quello centrale del mouse. A partire da Xfce 4.4, <application>@PACKAGE_NAME@</application> disegna anche le icone sulla scrivania."
 
 #: xfdesktop.xml90(para)
 msgid "The <application>@PACKAGE_NAME@</application> package installs a settings dialog for use with the <emphasis>Xfce 4 Settings Manager</emphasis>. From this dialog you can change the backdrop image and color and change settings for the menu and the window list."
@@ -158,7 +158,7 @@ msgstr "Sfondo"
 
 #: xfdesktop.xml101(para)
 msgid "<application>@PACKAGE_NAME@</application> is responsible for drawing the desktop's backdrop (sometimes called \"wallpaper\") image. There are various options for setting a backdrop image. The final picture seen on the monitor is composed of a solid color or gradient, with an image or photo (with optional transparency) composited on top of the color or gradient. This allows for some interesting effects using semi-transparent images on top of various color arrangements."
-msgstr "<application>@PACKAGE_NAME@</application> è addetto alla visualizzazione dello sfondo della scrivania (chiamato anche \"rivestimento\"). Sono possibili diverse opzioniriguardanti la configurazione di un'immagine di sfondo. Il risultato finale è costituito dalla sovrapposizione di un colore solido (o di un gradiente) e di una immagine (o fotografia); in questo modo sono realizzabili degli effetti particaolari utilizzando delle immagini semi trasparenti al di sopra di varie combinazioi di colore."
+msgstr "<application>@PACKAGE_NAME@</application> è addetto alla visualizzazione dello sfondo della scrivania (chiamato anche \"rivestimento\"). Sono possibili diverse opzioni riguardanti la configurazione di un'immagine di sfondo. Il risultato finale è costituito dalla sovrapposizione di un colore solido (o di un gradiente) e di una immagine (o fotografia); in questo modo sono realizzabili degli effetti particolari utilizzando delle immagini semi trasparenti al di sopra di varie combinazioni di colore."
 
 #: xfdesktop.xml113(title)
 msgid "Icons"
@@ -182,7 +182,7 @@ msgstr "Icone di file e avviatori"
 
 #: xfdesktop.xml135(para)
 msgid "<application>@PACKAGE_NAME@</application> can also display on the desktop the contents of the <filename>$XDG_DESKTOP_DIR</filename> folder, which can be set in the <filename>$XDG_CONFIG_HOME/user-dirs.dirs</filename> file (if you do not have this file, it will use <filename>$HOME/Desktop</filename>). Files can be arranged, copied, moved, and linked to and from a file manager, and opened using preferred applications. Application and URL launchers can also be created on the desktop. The file icon view is modeled to have a similar look and feel as the <ulink url=\"http://thunar.xfce.org/\" type=\"http\">Thunar</ulink> file manager."
-msgstr "<application>@PACKAGE_NAME@</application> è anche in grado di visualizzare sulla scrivania il contenuto della cartella <filename>$XDG_DESKTOP_DIR</filename>, che può essere impostato nel file <filename>$XDG_CONFIG_HOME/user-dirs.dirs</filename> (se non si possiede questo file, verrà utilizzata <filename>$HOME/Desktop</filename>). I file possono essere ordinati, copiati, spostati, collegati da e a un gestore di file, e aperti utilizzando l'applicazione che si preferisce. Sulla scrivania è anche possibile creare degli avviatori per applicazioni e collegamenti. La visualizzazione a icona dei file è progettata per avere uno stile e un aspetto simile a quello del gestore di file <ulink url=\"http://thunar.xfce.org/\" type=\"http\">Thunar</ulink>."
+msgstr "<application>@PACKAGE_NAME@</application> è anche in grado di visualizzare sulla scrivania il contenuto della cartella <filename>$XDG_DESKTOP_DIR</filename>, che può essere impostato nel file <filename>$XDG_CONFIG_HOME/user-dirs.dirs</filename> (se non si possiede questo file, verrà utilizzata <filename>$HOME/Scrivania</filename>). I file possono essere ordinati, copiati, spostati, collegati da e a un gestore di file, e aperti utilizzando l'applicazione che si preferisce. Sulla scrivania è anche possibile creare degli avviatori per applicazioni e collegamenti. La visualizzazione a icona dei file è progettata per avere uno stile e un aspetto simile a quello del gestore di file <ulink url=\"http://thunar.xfce.org/\" type=\"http\">Thunar</ulink>."
 
 #: xfdesktop.xml152(title)
 msgid "The Desktop Menu"
@@ -190,7 +190,7 @@ msgstr "Il menu della scrivania"
 
 #: xfdesktop.xml154(para)
 msgid "A right-click on the desktop backdrop opens a menu that allows you to open a Thunar window in the Desktop directory, to create launchers, URL links, folders and files from templates. It is also possible to open the Desktop Settings and the Properties window of the Desktop directory and to start many of the applications found on your system."
-msgstr "Con un clic del tasto destro del mouse sullo sfondo della scrivania, verrà aperto un menu che permette di aprire una finestra di Thunar nella directory Desktop, di creare degli avviatori, dei collegamenti URL, delle cartelle e dei file a partire da modelli. È noltre possibile accedere alle impostazioni della scrivania e alla finestra delle proprietà della directory Desktop, e avviare la maggior parte delle applicazioni presenti nel sistema."
+msgstr "Con un clic del tasto destro del mouse sullo sfondo della scrivania, verrà aperto un menu che permette di aprire una finestra di Thunar nella cartella Scrivania, di creare degli avviatori, dei collegamenti URL, delle cartelle e dei file a partire da modelli. È inoltre possibile accedere alle impostazioni della scrivania e alla finestra delle proprietà della cartella Scrivania, e avviare la maggior parte delle applicazioni presenti nel sistema."
 
 #: xfdesktop.xml163(title) xfdesktop.xml455(term)
 msgid "Desktop Menu"
@@ -210,7 +210,7 @@ msgstr "Il precedente editor del menu non è più disponibile. Comunque, il menu
 
 #: xfdesktop.xml197(para)
 msgid "Further customisation can be achived by creating <ulink url=\"http://standards.freedesktop.org/desktop-entry-spec/latest/\" type=\"http\">desktop entries</ulink> in <filename>$XDG_DATA_HOME/applications</filename> to hide, modify or add entries in the menu."
-msgstr "Ulteriori personalizzazioni possono essere effettuate creando delle <ulink url=\"http://standards.freedesktop.org/desktop-entry-spec/latest/\" type=\"http\"> desktop entries</ulink> in <filename>$XDG_DATA_HOME/applications</filename> al fine di nascondere, modificare o aggiungere delle voci al menu."
+msgstr "Ulteriori personalizzazioni possono essere effettuate creando delle <ulink url=\"http://standards.freedesktop.org/desktop-entry-spec/latest/\" type=\"http\"> voci \"desktop\"</ulink> in <filename>$XDG_DATA_HOME/applications</filename> al fine di nascondere, modificare o aggiungere delle voci al menu."
 
 #: xfdesktop.xml207(title)
 msgid "The Window List Menu"
@@ -235,23 +235,23 @@ msgstr "Impostazioni della scrivania"
 #. Needs to be changed once xfce4-settings is documented
 #: xfdesktop.xml234(para)
 msgid "You can start the Desktop settings dialog by clicking on the \"Desktop\" button in the <ulink url=\"xfce-mcs-manager.html#manager-dialog\" type=\"http\">Xfce Settings Manager</ulink>."
-msgstr "La finestra delle impostazioni della scrivania può essere avviata facendo un clic sul pulsante «scrivania» presente nel <ulink url=\"xfce-mcs-manager.html#manager-dialog\" type=\"http\">gestore delle impostazioni di Xfce</ulink>."
+msgstr "La finestra delle impostazioni della scrivania può essere avviata facendo un clic sul pulsante \"Scrivania\" presente nel <ulink url=\"xfce-mcs-manager.html#manager-dialog\" type=\"http\">gestore delle impostazioni di Xfce</ulink>."
 
 #: xfdesktop.xml242(title)
 msgid "Background Tab"
-msgstr "Linguetta dello sfondo"
+msgstr "Scheda dello sfondo"
 
 #: xfdesktop.xml244(para)
 msgid "The Background tab allows you to set various options related to drawing the desktop backdrop picture."
-msgstr "La linguetta dello sfondo permette di configurare varie opzioni relative alla visualizzazione dll'immagine di sfondo della scrivania."
+msgstr "La scheda dello sfondo permette di configurare varie opzioni relative alla visualizzazione dell'immagine di sfondo della scrivania."
 
 #: xfdesktop.xml250(title)
 msgid "Desktop Settings, Background Tab"
-msgstr "Impostazioni della scrivania, linguetta dello sfondo"
+msgstr "Impostazioni della scrivania, scheda dello sfondo"
 
 #: xfdesktop.xml258(phrase)
 msgid "Shows the Background tab of the Desktop Settings dialog"
-msgstr "Mostra la linguetta dello sfondo nella finestra di dialogo delle impostazioni della scrivania"
+msgstr "Mostra la scheda dello sfondo nella finestra di dialogo delle impostazioni della scrivania"
 
 #: xfdesktop.xml268(term)
 msgid "Image"
@@ -267,7 +267,7 @@ msgstr "Selezionare l'opzione <emphasis>«immagine singola»</emphasis> se si de
 
 #: xfdesktop.xml282(para)
 msgid "Select the <emphasis>\"Image List\"</emphasis> option if you want <application>@PACKAGE_NAME@</application> to randomly choose the backdrop image among a list."
-msgstr "Selezionare l'opzione in <emphasis>«lista di immagini»</emphasis> per far sì che <application>@PACKAGE_NAME@</application>scelga casualmente un'immagine di sfondo da una lista."
+msgstr "Selezionare l'opzione in <emphasis>«lista di immagini»</emphasis> per far sì che <application>@PACKAGE_NAME@</application> scelga casualmente un'immagine di sfondo da una lista."
 
 #: xfdesktop.xml294(term)
 msgid "Images"
@@ -295,7 +295,7 @@ msgstr "Sono disponibili cinque opzioni (<emphasis>«centrato»</emphasis>, <emp
 #. To be confirmed as I don't have multiscreen
 #: xfdesktop.xml334(para)
 msgid "<application>@PACKAGE_NAME@</application> supports xinerama and multiscreen modes. In multiscreen mode, the Background tab shows one tab per screen."
-msgstr "<application>@PACKAGE_NAME@</application> supporta xinerama e la modalità multi schermo. In questo caso, la linguetta dello sfondo mostra una linguetta per ogni schermo."
+msgstr "<application>@PACKAGE_NAME@</application> supporta xinerama e la modalità multi schermo. In questo caso, la scheda dello sfondo mostra una scheda per ogni schermo."
 
 #: xfdesktop.xml342(term)
 msgid "Colors"
@@ -307,11 +307,11 @@ msgstr "Lo stile del colore può essere scelto tra quattro opzioni: colore solid
 
 #: xfdesktop.xml350(para)
 msgid "The <emphasis>\"Transparent\"</emphasis> option, when you use a colored background without backdrop image, allows you to see the windows that are under the transparent desktop window. This requires an activated compositor."
-msgstr "L'opzione <emphasis>«trasparente»</emphasis> (quando si utilizza uno sfondo colorato senza aver impostato un'immagine), permette di vedere le finestre che si trovano al di sottodella finestra trasparente della scrivania. Questa opzione richiede la presenza di un compositore."
+msgstr "L'opzione <emphasis>«trasparente»</emphasis> (quando si utilizza uno sfondo colorato senza aver impostato un'immagine), permette di vedere le finestre che si trovano al di sotto della finestra trasparente della scrivania. Questa opzione richiede la presenza di un compositore."
 
 #: xfdesktop.xml357(para)
 msgid "Two colored buttons allow you to choose the colors for your desktop. When the solid color option is selected, only the first color is available. When either of the gradient options are selected, both the first and second colors are available. Both of the color buttons open a color chooser dialog:"
-msgstr "Due pulsanti colorati permettono di scegliere il colore da assegnare alla scrivania.Quando è selezionata l'opzione del colore solido, è disponibile solamente il primo colore. Quando invece è selezionata una delle opzioni gradiente, sia il primo che il secondo colore sono disponibili. Entrambi i pulsanti del colore permettono di aprire una finestra di scelta del colore:"
+msgstr "Due pulsanti colorati permettono di scegliere il colore da assegnare alla scrivania. Quando è selezionata l'opzione del colore solido, è disponibile solamente il primo colore. Quando invece è selezionata una delle opzioni gradiente, sia il primo che il secondo colore sono disponibili. Entrambi i pulsanti del colore permettono di aprire una finestra di scelta del colore:"
 
 #: xfdesktop.xml368(title)
 msgid "Select Background Color"
@@ -343,19 +343,19 @@ msgstr "Regolazioni"
 
 #: xfdesktop.xml422(para)
 msgid "The two sliders allow you to adjust the brightness and the saturation of the backdrop image and or color."
-msgstr "Le due barre scorrevoli permetton di regolare la luminosità e la saturazione del colore o dell'immagine di sfondo."
+msgstr "Le due barre scorrevoli permettono di regolare la luminosità e la saturazione del colore o dell'immagine di sfondo."
 
 #: xfdesktop.xml433(title)
 msgid "Menus Tab"
-msgstr "Linguetta dei menu"
+msgstr "Scheda dei menu"
 
 #: xfdesktop.xml436(title)
 msgid "Desktop Settings, Menus Tab"
-msgstr "Impostazioni della scrivania, linguetta dei menu"
+msgstr "Impostazioni della scrivania, scheda dei menu"
 
 #: xfdesktop.xml445(phrase)
 msgid "Shows the Menus tab of the Desktop Settings dialog"
-msgstr "Mostra la linguetta dei menu nella finestra di dialogo delle impostazioni della scrivania"
+msgstr "Mostra la scheda dei menu nella finestra di dialogo delle impostazioni della scrivania"
 
 #: xfdesktop.xml458(para)
 msgid "If you check the <emphasis>\"Show applications menu on desktop right click\"</emphasis>, the <link linkend=\"xfdesktop-menu\">applications menu</link> will be shown when right clicking on the desktop."
@@ -371,7 +371,7 @@ msgstr "Se viene abilitata l'opzione <emphasis>«mostra la lista delle finestre 
 
 #: xfdesktop.xml484(para)
 msgid "The <emphasis>\"Show application icons in menu\"</emphasis> option allows you to show or hide icons in the menu. This option is only available when <emphasis>\"Show window list menu on desktop middle click\"</emphasis> is checked."
-msgstr "L'opazione <emphasis>«visualizza le applicazioni nel menu»</emphasis> permette di mostrare o nascondere le icone nel menu. Questa opzione è disponibile solamente quando la voce <emphasis>«mostra la lista delle finestre premendo il tasto centrale»</emphasis> è abilitata."
+msgstr "L'opzione <emphasis>«visualizza le applicazioni nel menu»</emphasis> permette di mostrare o nascondere le icone nel menu. Questa opzione è disponibile solamente quando la voce <emphasis>«mostra la lista delle finestre premendo il tasto centrale»</emphasis> è abilitata."
 
 #. Add link to xfwm4 documentation to change workspaces names
 #: xfdesktop.xml493(para)
@@ -380,7 +380,7 @@ msgstr "L'opzione <emphasis>«mostra nella lista i nomi degli spazi di lavoro»<
 
 #: xfdesktop.xml504(para)
 msgid "The <emphasis>\"Show submenus for the windows in each workspace\"</emphasis> option allows you to have the windows displayed in a submenu titled with the workspace name. This option is only available when <emphasis>\"Show workspace names in list\"</emphasis> is checked."
-msgstr "L'opzione <emphasis>«usa i sottomenu per le finestre in ogni apazio di lavoro»</emphasis>, permette di visualizzare le finestre in un sottomenu titolato con il nome dello spazio di lavoro. Questa opzione è disponibile esclusivamente quando è abilitata l'opzione <emphasis>«mostra nella lista i nomi degli spazi di lavoro»</emphasis>."
+msgstr "L'opzione <emphasis>«usa i sottomenu per le finestre in ogni spazio di lavoro»</emphasis>, permette di visualizzare le finestre in un sottomenu titolato con il nome dello spazio di lavoro. Questa opzione è disponibile esclusivamente quando è abilitata l'opzione <emphasis>«mostra nella lista i nomi degli spazi di lavoro»</emphasis>."
 
 #: xfdesktop.xml513(para)
 msgid "The <emphasis>\"Show sticky windows only in active workspace\"</emphasis> option allows you to have sticky windows displayed only in the active workspace, instead of displaying their item in all workspaces."
@@ -388,15 +388,15 @@ msgstr "L'opzione <emphasis>«mostra le finestre permanenti solo nello spazio di
 
 #: xfdesktop.xml527(title)
 msgid "Icons Tab"
-msgstr "Linguetta delle icone"
+msgstr "Scheda delle icone"
 
 #: xfdesktop.xml530(title)
 msgid "Desktop Settings, Icons Tab"
-msgstr "Impostazioni della scrivania, linguetta delle icone"
+msgstr "Impostazioni della scrivania, scheda delle icone"
 
 #: xfdesktop.xml539(phrase)
 msgid "Shows the Icons tab of the Desktop Settings dialog"
-msgstr "Mostra la linguetta del comportamento della finestra di dialogo delle impostazioni della scrivania"
+msgstr "Mostra la scheda del comportamento della finestra di dialogo delle impostazioni della scrivania"
 
 #: xfdesktop.xml549(term)
 msgid "Appearance"
