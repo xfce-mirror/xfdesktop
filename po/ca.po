@@ -2,25 +2,25 @@
 # xfdesktop for XFce desktop environment.
 # Copyright (C) 2003-2006 The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
-#
+# 
 # Carles Muñoz Gorriz <carlesmu@internautas.org>, 2003-2004, 2006, 2008-2009.
 # Pau Ruŀlan Ferragut <paurullan@bulma.net>, 2005-2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-04 20:14+0100\n"
+"POT-Creation-Date: 2010-11-04 18:56+0000\n"
 "PO-Revision-Date: 2010-08-31 17:29+0100\n"
 "Last-Translator: Carles Muñoz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: Catalan <xfce-i18n@xfce.org>\n"
-"Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.2\n"
+"Language: ca\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Language: Catalan\n"
 "X-Poedit-SourceCharset: utf-8\n"
+"X-Generator: KBabel 1.11.2\n"
 
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
 #, c-format
@@ -69,10 +69,8 @@ msgstr "Crea/carrega un llistat d'imatges de fons"
 
 #: ../settings/main.c:511
 #, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
-"El fitxer «%s» no és una llista d'imatges vàlida. Voleu sobreescriure'l?"
+msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr "El fitxer «%s» no és una llista d'imatges vàlida. Voleu sobreescriure'l?"
 
 #: ../settings/main.c:516
 msgid "Invalid List File"
@@ -218,7 +216,6 @@ msgstr "No mostris cap imatge"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
 #: ../settings/xfdesktop-settings-ui.glade.h:12
-#, fuzzy
 msgid "Horizontal gradient"
 msgstr "Degradat horitzontal"
 
@@ -261,7 +258,6 @@ msgstr "Selecciona una sola imatge com a fons"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
 #: ../settings/xfdesktop-settings-ui.glade.h:32
-#, fuzzy
 msgid "Solid color"
 msgstr "Color sòlid"
 
@@ -270,8 +266,7 @@ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr "Especifica el color del degradat «dret» o «baix»"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
-msgid ""
-"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
 msgstr "Especifica el color sòlid, o el color del degradat «esquerra» o «dalt»"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
@@ -299,11 +294,10 @@ msgstr "En mosaic"
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
 #: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid "Transparent"
-msgstr ""
+msgstr "Transparent"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
 #: ../settings/xfdesktop-settings-ui.glade.h:39
-#, fuzzy
 msgid "Vertical gradient"
 msgstr "Degradat vertical"
 
@@ -338,16 +332,15 @@ msgstr "<b>Menu de llista de finestres</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:5
 msgid "Alt"
-msgstr ""
+msgstr "Alt"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:7
 msgid "B_utton:"
 msgstr "B_otó:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:9
-#, fuzzy
 msgid "Control"
-msgstr "Contribuïdor"
+msgstr "Control"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:729
 msgid "Desktop"
@@ -371,19 +364,15 @@ msgstr "Trans_parència d'etiquetes:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:16
 msgid "Left"
-msgstr ""
+msgstr "Esquerra"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:17
 msgid "Middle"
-msgstr ""
+msgstr "Central"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:18
-#, fuzzy
 msgid "Minimized application icons"
-msgstr ""
-"Cap\n"
-"Icones d'aplicacions minimitzades\n"
-"Icones de fitxer/llançador"
+msgstr "Icones d'aplicacions minimitzades"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:19
 msgid "Mo_difier:"
@@ -399,12 +388,11 @@ msgstr "Cap"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:22
 msgid "Right"
-msgstr ""
+msgstr "Dreta"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:24
 msgid "Set desktop background and menu and icon behavior"
-msgstr ""
-"Ajusta el fons de l'escriptori i el comportament del menú i de les icones"
+msgstr "Ajusta el fons de l'escriptori i el comportament del menú i de les icones"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:25
 msgid "Sh_ow application icons in menu"
@@ -412,7 +400,7 @@ msgstr "M_ostra les icones d'aplicació al menú"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:26
 msgid "Shift"
-msgstr ""
+msgstr "Shift"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "Show _application icons in menu"
@@ -435,12 +423,8 @@ msgid "Show workspace _names in list"
 msgstr "Mostra els _noms dels espais de treball en una llista"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
-msgid ""
-"Specify the transparency level for the rounded label drawn behind the icon "
-"text"
-msgstr ""
-"Indiqueu el nivell de transparència per l'etiqueta arrodonida darrere el "
-"text de les icones"
+msgid "Specify the transparency level for the rounded label drawn behind the icon text"
+msgstr "Indiqueu el nivell de transparència per l'etiqueta arrodonida darrere el text de les icones"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "Use _submenus for the windows in each workspace"
@@ -578,8 +562,7 @@ msgstr "Sup_rimeix l'espai de treball «%s»"
 #: ../src/xfce-desktop.c:1006
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
-msgstr ""
-"No s'han pogut carregar les imatges de la llista d'imatges de fons «%s»"
+msgstr "No s'han pogut carregar les imatges de la llista d'imatges de fons «%s»"
 
 #: ../src/xfce-desktop.c:1008
 msgid "Desktop Error"
@@ -635,19 +618,17 @@ msgstr "Si s'empra o no el subratllat en l'etiqueta com a senyal mnemotècnica"
 
 #: ../src/xfdesktop-file-icon-manager.c:479
 #: ../src/xfdesktop-file-icon-manager.c:496
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create the desktop folder \"%s\""
-msgstr "No es por crear la llista d'imatges de fons «%s»"
+msgstr "No s'ha pogut crear la carpeta de l'escriptori \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:484
 #: ../src/xfdesktop-file-icon-manager.c:501
-#, fuzzy
 msgid "Desktop Folder Error"
-msgstr "Error de l'escriptori"
+msgstr "Error en la carpeta de l'escriptori"
 
 #: ../src/xfdesktop-file-icon-manager.c:503
-msgid ""
-"A normal file with the same name already exists. Please delete or rename it."
+msgid "A normal file with the same name already exists. Please delete or rename it."
 msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:606
@@ -658,9 +639,8 @@ msgstr "Error a la paperera"
 
 #: ../src/xfdesktop-file-icon-manager.c:607
 #: ../src/xfdesktop-file-icon-manager.c:651
-#, fuzzy
 msgid "The selected files could not be trashed"
-msgstr "No s'ha pogut obrir l’escollidor d’aplicacions."
+msgstr "No s'ha pogut esborrar els fitxers seleccionats"
 
 #: ../src/xfdesktop-file-icon-manager.c:608
 #: ../src/xfdesktop-file-icon-manager.c:652 ../src/xfdesktop-file-utils.c:648
@@ -670,12 +650,8 @@ msgstr "No s'ha pogut obrir l’escollidor d’aplicacions."
 #: ../src/xfdesktop-file-utils.c:1102 ../src/xfdesktop-file-utils.c:1163
 #: ../src/xfdesktop-file-utils.c:1236 ../src/xfdesktop-file-utils.c:1314
 #, fuzzy
-msgid ""
-"This feature requires a file manager service to be present (such as the one "
-"supplied by Thunar)."
-msgstr ""
-"Aquesta característica demana l'ajut d'un gestor de fitxers (com per exemple "
-"el que fa Thunar)."
+msgid "This feature requires a file manager service to be present (such as the one supplied by Thunar)."
+msgstr "Aquesta característica demana l'ajut d'un gestor de fitxers (com per exemple el que fa Thunar)."
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:752
@@ -705,12 +681,8 @@ msgid "Open With \"%s\""
 msgstr "Obre amb «%s»"
 
 #: ../src/xfdesktop-file-icon-manager.c:1000
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
-msgstr ""
-"No s’ha pogut llançar «exo-desktop-item-edit», el qual s’ha de menester per "
-"crear i editar els llançadors i enllaços a l’escriptori."
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgstr "No s’ha pogut llançar «exo-desktop-item-edit», el qual s’ha de menester per crear i editar els llançadors i enllaços a l’escriptori."
 
 #: ../src/xfdesktop-file-icon-manager.c:1368
 msgid "_Open all"
@@ -779,54 +751,49 @@ msgid "_Properties..."
 msgstr "_Propietats…"
 
 #: ../src/xfdesktop-file-icon-manager.c:2243
-#, fuzzy
 msgid "Load Error"
-msgstr "Error durant el llançament"
+msgstr "No s'ha pogut carregar"
 
 #: ../src/xfdesktop-file-icon-manager.c:2245
-#, fuzzy
 msgid "Failed to load the desktop folder"
-msgstr "No es por crear la llista d'imatges de fons «%s»"
+msgstr "No s'ha pogut carregar la carpeta de l'escriptori"
 
 #. TRANSLATORS: file was modified less than one day ago
 #: ../src/xfdesktop-file-utils.c:137
 #, c-format
 msgid "Today at %X"
-msgstr ""
+msgstr "Avui a les %X"
 
 #. TRANSLATORS: file was modified less than two days ago
 #: ../src/xfdesktop-file-utils.c:141
 #, c-format
 msgid "Yesterday at %X"
-msgstr ""
+msgstr "Ahir a les %X"
 
 #. Days from last week
 #: ../src/xfdesktop-file-utils.c:146
 #, c-format
 msgid "%A at %X"
-msgstr ""
+msgstr "%A a les %X"
 
 #. Any other date
 #: ../src/xfdesktop-file-utils.c:149
 #, c-format
 msgid "%x at %X"
-msgstr ""
+msgstr "%x a les %X"
 
 #. the file_time is invalid
 #: ../src/xfdesktop-file-utils.c:159
-#, fuzzy
 msgid "Unknown"
-msgstr "(desconegut)"
+msgstr "Desconegut"
 
 #: ../src/xfdesktop-file-utils.c:632 ../src/xfdesktop-file-utils.c:647
-#, fuzzy
 msgid "The folder could not be opened"
-msgstr "No s'ha pogut obrir l’escollidor d’aplicacions."
+msgstr "No s'ha pogut obrir la carpeta"
 
 #: ../src/xfdesktop-file-utils.c:681 ../src/xfdesktop-file-utils.c:696
-#, fuzzy
 msgid "Rename Error"
-msgstr "Error d'execució"
+msgstr "Error en canviar el nom"
 
 #: ../src/xfdesktop-file-utils.c:682 ../src/xfdesktop-file-utils.c:697
 #, fuzzy
@@ -850,12 +817,8 @@ msgstr "No s'ha pogut obrir l’escollidor d’aplicacions."
 
 #: ../src/xfdesktop-file-utils.c:816
 #, fuzzy
-msgid ""
-"This feature requires a trash service to be present (such as the one "
-"supplied by Thunar)."
-msgstr ""
-"Aquesta característica demana l'ajut d'un gestor de fitxers (com per exemple "
-"el que fa Thunar)."
+msgid "This feature requires a trash service to be present (such as the one supplied by Thunar)."
+msgstr "Aquesta característica demana l'ajut d'un gestor de fitxers (com per exemple el que fa Thunar)."
 
 #: ../src/xfdesktop-file-utils.c:852 ../src/xfdesktop-file-utils.c:867
 #, fuzzy
@@ -923,9 +886,7 @@ msgstr "No s'ha pogut desmuntar"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:100
 #, c-format
-msgid ""
-"The device \"%s\" is being unmounted by the system. Please do not remove the "
-"media or disconnect the drive"
+msgid "The device \"%s\" is being unmounted by the system. Please do not remove the media or disconnect the drive"
 msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
@@ -936,9 +897,7 @@ msgstr ""
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:110 ../src/xfdesktop-notify.c:223
 #, c-format
-msgid ""
-"There is data that needs to be written to the device \"%s\" before it can be "
-"removed. Please do not remove the media or disconnect the drive"
+msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
 msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
@@ -993,12 +952,8 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "No s’ha pogut contactar amb el servei de paperera Xfce"
 
 #: ../src/xfdesktop-special-file-icon.c:450
-msgid ""
-"Make sure you have a file manager installed that supports the Xfce Trash "
-"service, such as Thunar."
-msgstr ""
-"Assegureu-vos que teniu instaŀlada una aplicació que funcioni amb la "
-"paperera Xfce, com per exemple Thunar."
+msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
+msgstr "Assegureu-vos que teniu instaŀlada una aplicació que funcioni amb la paperera Xfce, com per exemple Thunar."
 
 #: ../src/xfdesktop-special-file-icon.c:588
 msgid "_Empty Trash"
@@ -1118,15 +1073,12 @@ msgstr "_Munta el volum"
 #~ msgstr "Són opcions:\n"
 
 #~ msgid "    --reload      Reload all settings, refresh image list\n"
-#~ msgstr ""
-#~ "    --reload      Refresca tots els paràmetres, refresca el llistat "
-#~ "d'imatges\n"
+#~ msgstr "    --reload      Refresca tots els paràmetres, refresca el llistat d'imatges\n"
 
 #~ msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 #~ msgstr "    --menu        Mostra el menú (a la posició del ratolí)\n"
 
-#~ msgid ""
-#~ "    --windowlist  Pop up the window list (at the current mouse position)\n"
+#~ msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
 #~ msgstr ""
 #~ "   --windowlist   Mostra el llistat de finestres (a la posició del\n"
 #~ "                  ratolí)\n"
@@ -1134,20 +1086,14 @@ msgstr "_Munta el volum"
 #~ msgid "    --quit        Cause xfdesktop to quit\n"
 #~ msgstr "   --quit         Surt  de xfdesktop\n"
 
-#~ msgid ""
-#~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-#~ msgstr ""
-#~ "No s’ha pogut crear el directori «%s» per desar elements de l’escriptori:"
+#~ msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+#~ msgstr "No s’ha pogut crear el directori «%s» per desar elements de l’escriptori:"
 
 #~ msgid "Create Folder Failed"
 #~ msgstr "No s'ha pogut crear el directori"
 
-#~ msgid ""
-#~ "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not "
-#~ "a folder."
-#~ msgstr ""
-#~ "No s’ha pogut usar «%s» per retenir els elements de l’escriptori perquè "
-#~ "no és un directori."
+#~ msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
+#~ msgstr "No s’ha pogut usar «%s» per retenir els elements de l’escriptori perquè no és un directori."
 
 #~ msgid "Please delete or rename the file."
 #~ msgstr "Si us plau esborri o canvii el nom al fitxer."
@@ -1179,12 +1125,8 @@ msgstr "_Munta el volum"
 #~ msgid "The application chooser could not be opened."
 #~ msgstr "No s'ha pogut obrir l’escollidor d’aplicacions."
 
-#~ msgid ""
-#~ "This feature requires a file manager service present (such as that "
-#~ "supplied by Thunar)."
-#~ msgstr ""
-#~ "Aquesta característica demana l'ajut d'un gestor de fitxers (com per "
-#~ "exemple el que fa Thunar)."
+#~ msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
+#~ msgstr "Aquesta característica demana l'ajut d'un gestor de fitxers (com per exemple el que fa Thunar)."
 
 #~ msgid "Unable to create folder named \"%s\":"
 #~ msgstr "No s'ha crear el directori anomenat «%s»:"
@@ -1652,14 +1594,8 @@ msgstr "_Munta el volum"
 #~ msgid "xfce4-menueditor is deprecated"
 #~ msgstr "xfce4-menueditor està desfasat"
 
-#~ msgid ""
-#~ "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
-#~ "edit the new menu file format.  You may continue and edit an old-style "
-#~ "menu file, or quit."
-#~ msgstr ""
-#~ "El sistema de menús de Xfce ha estat substituït i ara «xfce4-menueditor» "
-#~ "no és capaç d'editar el nou format de menú. Podeu continuar i editar "
-#~ "l'antic menú o sortir."
+#~ msgid "Xfce's menu system has been replaced, and xfce4-menueditor is not able to edit the new menu file format.  You may continue and edit an old-style menu file, or quit."
+#~ msgstr "El sistema de menús de Xfce ha estat substituït i ara «xfce4-menueditor» no és capaç d'editar el nou format de menú. Podeu continuar i editar l'antic menú o sortir."
 
 #~ msgid "Continue"
 #~ msgstr "Continua"
@@ -1850,13 +1786,11 @@ msgstr "_Munta el volum"
 #~ msgid ""
 #~ "Could not save file %s: %s\n"
 #~ "\n"
-#~ "Please choose another location or press cancel in the dialog to discard "
-#~ "your changes"
+#~ "Please choose another location or press cancel in the dialog to discard your changes"
 #~ msgstr ""
 #~ "No s'ha pogut desar l'arxiu %s: %s\n"
 #~ "\n"
-#~ "Si us plau indiqueu un altre ubicació o preméu cancelar al diàleg a fi de "
-#~ "descartar els c anvis."
+#~ "Si us plau indiqueu un altre ubicació o preméu cancelar al diàleg a fi de descartar els c anvis."
 
 #~ msgid "Button Label|Desktop"
 #~ msgstr "Escriptori"
@@ -1888,31 +1822,11 @@ msgstr "_Munta el volum"
 #~ msgid "Unable to start xfdesktop"
 #~ msgstr "No s'ha pogut engegar xfdesktop"
 
-#~ msgid ""
-#~ "To ensure that this setting takes effect the next time you start Xfce, "
-#~ "please be sure to save your session when logging out.  If you are not "
-#~ "using the Xfce Session Manager (xfce4-session), you will need to manually "
-#~ "edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
-#~ "documentation provided on http://xfce.org/."
-#~ msgstr ""
-#~ "Per assegurar que Xfce no gestiona el seu escriptori la següent vegada "
-#~ "que inicieu Xfce, si us plau deseu la sessió en sortir. Si no esteu usant "
-#~ "el gestor de sessions Xfce (xfce4-session) haureu d'editar manualment el "
-#~ "vostre fitxer  ~/.config/xfce4/xinitrc . Podeu trobar més detalls a la "
-#~ "documentació a http://xfce.org/. "
+#~ msgid "To ensure that this setting takes effect the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
+#~ msgstr "Per assegurar que Xfce no gestiona el seu escriptori la següent vegada que inicieu Xfce, si us plau deseu la sessió en sortir. Si no esteu usant el gestor de sessions Xfce (xfce4-session) haureu d'editar manualment el vostre fitxer  ~/.config/xfce4/xinitrc . Podeu trobar més detalls a la documentació a http://xfce.org/. "
 
-#~ msgid ""
-#~ "To ensure that Xfce does not manage your desktop the next time you start "
-#~ "Xfce, please be sure to save your session when logging out.  If you are "
-#~ "not using the Xfce Session Manager (xfce4-session), you will need to "
-#~ "manually edit your ~/.config/xfce4/xinitrc file.  Details are available "
-#~ "in the documentation provided on http://xfce.org/."
-#~ msgstr ""
-#~ "Per assegurar que Xfce no gestiona el seu escriptori la següent vegada "
-#~ "que inicieu Xfce, si us plau deseu la sessió en sortir. Si no esteu usant "
-#~ "el gestor de sessions Xfce (xfce4-session) haureu d'editar manualment el "
-#~ "vostre fitxer  ~/.config/xfce4/xinitrc . Podeu trobar més detalls a la "
-#~ "documentació a http://xfce.org/. "
+#~ msgid "To ensure that Xfce does not manage your desktop the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
+#~ msgstr "Per assegurar que Xfce no gestiona el seu escriptori la següent vegada que inicieu Xfce, si us plau deseu la sessió en sortir. Si no esteu usant el gestor de sessions Xfce (xfce4-session) haureu d'editar manualment el vostre fitxer  ~/.config/xfce4/xinitrc . Podeu trobar més detalls a la documentació a http://xfce.org/. "
 
 #~ msgid "_Do not show this again"
 #~ msgstr "N_o tornis a mostrar-ho"
