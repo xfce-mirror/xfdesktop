@@ -87,6 +87,9 @@ XDT_CHECK_PACKAGE([LIBXFCE4UI], [libxfce4ui-1],
 XDT_CHECK_PACKAGE([LIBWNCK], [libwnck-1.0], [wnck_minimum_version])
 XDT_CHECK_PACKAGE([XFCONF], [libxfconf-0], [xfconf_minimum_version])
 
+XDT_CHECK_OPTIONAL_PACKAGE([GIO_UNIX], [gio-unix-2.0], [glib_minimum_version], [gio-unix],
+    [gio-unix, for special treatment of mount points on UNIX])
+
 dnl do we want desktop icons at all?
 AC_ARG_ENABLE([desktop-icons],
     [AC_HELP_STRING([--disable-desktop-icons],
@@ -242,6 +245,11 @@ fi
 echo "* Build desktop menu module:                    $build_desktop_menu"
 echo "* Build support for desktop icons:              $enable_desktop_icons"
 echo "      Include support for file/launcher icons:  $enable_file_icons"
+if test x"$GIO_UNIX_FOUND" = x"yes"; then
+echo "* Special treatment for mount points on UNIX:   yes"
+else
+echo "* Special treatment for mount points on UNIX:   no"
+fi
 if test x"$LIBNOTIFY_FOUND" = x"yes"; then
 echo "* Mount notification support:                   yes"
 else

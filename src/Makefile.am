@@ -71,6 +71,7 @@ xfdesktop_CFLAGS = \
 	-DSYSCONFDIR=\"$(sysconfdir)\" \
 	-DXFCEMODDIR=\"$(libdir)/xfce4/modules\" \
         $(GIO_CFLAGS) \
+	$(GIO_UNIX_CFLAGS) \
         $(GLIB_CFLAGS) \
 	$(GTHREAD_CFLAGS) \
         $(GTK_CFLAGS) \
@@ -89,6 +90,7 @@ xfdesktop_LDFLAGS = \
 xfdesktop_LDADD = $(top_builddir)/common/libxfdesktop.la
 xfdesktop_LDADD += \
         $(GIO_LIBS) \
+	$(GIO_UNIX_LIBS) \
         $(GLIB_LIBS) \
 	$(GTHREAD_LIBS) \
         $(GTK_LIBS) \

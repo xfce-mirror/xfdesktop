@@ -40,6 +40,11 @@
 #include <unistd.h>
 #endif
 
+#include <gio/gio.h>
+#ifdef HAVE_GIO_UNIX
+#include <gio/gunixmounts.h>
+#endif
+
 #include <gtk/gtk.h>
 
 #include <libxfce4ui/libxfce4ui.h>
@@ -106,78 +111,134 @@ xfdesktop_file_utils_file_is_executable(GFileInfo *info)
 gchar *
 xfdesktop_file_utils_format_time_for_display(guint64 file_time)
 {
-  const gchar *date_format;
-  struct tm *tfile;
-  time_t ftime;
-  GDate dfile;
-  GDate dnow;
-  gchar buffer[128];
-  gint diff;
+    const gchar *date_format;
+    struct tm *tfile;
+    time_t ftime;
+    GDate dfile;
+    GDate dnow;
+    gchar buffer[128];
+    gint diff;
 
-  /* check if the file_time is valid */
-  if(file_time != 0) {
-      ftime = (time_t) file_time;
+    /* check if the file_time is valid */
+    if(file_time != 0) {
+        ftime = (time_t) file_time;
 
-      /* determine the local file time */
-      tfile = localtime(&ftime);
+        /* determine the local file time */
+        tfile = localtime(&ftime);
 
-      /* setup the dates for the time values */
-      g_date_set_time_t(&dfile, (time_t) ftime);
-      g_date_set_time_t(&dnow, time(NULL));
+        /* setup the dates for the time values */
+        g_date_set_time_t(&dfile, (time_t) ftime);
+        g_date_set_time_t(&dnow, time(NULL));
 
-      /* determine the difference in days */
-      diff = g_date_get_julian(&dnow) - g_date_get_julian(&dfile);
-      if(diff == 0) {
-          /* TRANSLATORS: file was modified less than one day ago */
-          strftime(buffer, 128, _("Today at %X"), tfile);
-          return g_strdup(buffer);
-      } else if(diff == 1) {
-          /* TRANSLATORS: file was modified less than two days ago */
-          strftime(buffer, 128, _("Yesterday at %X"), tfile);
-          return g_strdup(buffer);
-      } else {
-          if (diff > 1 && diff < 7) {
-              /* Days from last week */
-              date_format = _("%A at %X");
-          } else {
-              /* Any other date */
-              date_format = _("%x at %X");
-          }
+        /* determine the difference in days */
+        diff = g_date_get_julian(&dnow) - g_date_get_julian(&dfile);
+        if(diff == 0) {
+            /* TRANSLATORS: file was modified less than one day ago */
+            strftime(buffer, 128, _("Today at %X"), tfile);
+            return g_strdup(buffer);
+        } else if(diff == 1) {
+            /* TRANSLATORS: file was modified less than two days ago */
+            strftime(buffer, 128, _("Yesterday at %X"), tfile);
+            return g_strdup(buffer);
+        } else {
+            if (diff > 1 && diff < 7) {
+                /* Days from last week */
+                date_format = _("%A at %X");
+            } else {
+                /* Any other date */
+                date_format = _("%x at %X");
+            }
 
-          /* format the date string accordingly */
-          strftime(buffer, 128, date_format, tfile);
-          return g_strdup(buffer);
-      }
-  }
+            /* format the date string accordingly */
+            strftime(buffer, 128, date_format, tfile);
+            return g_strdup(buffer);
+        }
+    }
 
-  /* the file_time is invalid */
-  return g_strdup(_("Unknown"));
+    /* the file_time is invalid */
+    return g_strdup(_("Unknown"));
 }
 
 gboolean
 xfdesktop_file_utils_volume_is_present(GVolume *volume)
 {
-  gboolean has_media = FALSE;
-  gboolean is_shadowed = FALSE;
-  GDrive *drive;
-  GMount *mount;
+    gboolean has_media = FALSE;
+    gboolean is_shadowed = FALSE;
+    GDrive *drive;
+    GMount *mount;
 
-  g_return_val_if_fail(G_IS_VOLUME(volume), FALSE);
+    g_return_val_if_fail(G_IS_VOLUME(volume), FALSE);
 
-  drive = g_volume_get_drive (volume);
-  if(drive) {
-      has_media = g_drive_has_media(drive);
-      g_object_unref(drive);
-  }
+    drive = g_volume_get_drive (volume);
+    if(drive) {
+        has_media = g_drive_has_media(drive);
+        g_object_unref(drive);
+    }
 
-  mount = g_volume_get_mount(volume);
-  if(mount) {
-      is_shadowed = g_mount_is_shadowed(mount);
-      g_object_unref(mount);
-  }
+    mount = g_volume_get_mount(volume);
+    if(mount) {
+        is_shadowed = g_mount_is_shadowed(mount);
+        g_object_unref(mount);
+    }
 
-  return has_media && !is_shadowed;
+    return has_media && !is_shadowed;
 }
+
+#ifdef HAVE_GIO_UNIX
+static gboolean
+xfdesktop_file_utils_mount_is_internal (GMount *mount)
+{
+    const gchar *point_mount_path;
+    gboolean is_internal = FALSE;
+    GFile *root;
+    GList *lp;
+    GList *mount_points;
+    gchar *mount_path;
+
+    g_return_val_if_fail(G_IS_MOUNT(mount), FALSE);
+
+    /* determine the mount path */
+    root = g_mount_get_root(mount);
+    mount_path = g_file_get_path(root);
+    g_object_unref(root);
+
+    /* assume non-internal if we cannot determine the path */
+    if (!mount_path)
+        return FALSE;
+
+    if (g_unix_is_mount_path_system_internal(mount_path)) {
+        /* mark as internal */
+        is_internal = TRUE;
+    } else {
+        /* get a list of all mount points */
+        mount_points = g_unix_mount_points_get(NULL);
+
+        /* search for the mount point associated with the mount entry */
+        for (lp = mount_points; !is_internal && lp != NULL; lp = lp->next) {
+            point_mount_path = g_unix_mount_point_get_mount_path(lp->data);
+
+            /* check if this is the mount point we are looking for */
+            if (g_strcmp0(mount_path, point_mount_path) == 0) {
+                /* mark as internal if the user cannot mount this device */
+                if (!g_unix_mount_point_is_user_mountable(lp->data))
+                    is_internal = TRUE;
+            }
+                
+            /* free the mount point, we no longer need it */
+            g_unix_mount_point_free(lp->data);
+        }
+
+        /* free the mount point list */
+        g_list_free(mount_points);
+    }
+
+    g_free(mount_path);
+
+    return is_internal;
+}
+#endif
+
+
 
 gboolean
 xfdesktop_file_utils_volume_is_removable(GVolume *volume)
@@ -186,6 +247,7 @@ xfdesktop_file_utils_volume_is_removable(GVolume *volume)
   gboolean can_mount = FALSE;
   gboolean can_unmount = FALSE;
   gboolean is_removable = FALSE;
+  gboolean is_internal = FALSE;
   GDrive *drive;
   GMount *mount;
 
@@ -207,6 +269,10 @@ xfdesktop_file_utils_volume_is_removable(GVolume *volume)
   /* determine the mount for the volume (if it is mounted at all) */
   mount = g_volume_get_mount(volume);
   if(mount) {
+#ifdef HAVE_GIO_UNIX
+      is_internal = xfdesktop_file_utils_mount_is_internal (mount);
+#endif
+
       /* check if the volume can be unmounted */
       can_unmount = g_mount_can_unmount(mount);
 
@@ -217,7 +283,7 @@ xfdesktop_file_utils_volume_is_removable(GVolume *volume)
   /* determine whether the device can be mounted */
   can_mount = g_volume_can_mount(volume);
 
-  return can_eject || can_unmount || is_removable || can_mount;
+  return (!is_internal) && (can_eject || can_unmount || is_removable || can_mount);
 }
 
 GList *
