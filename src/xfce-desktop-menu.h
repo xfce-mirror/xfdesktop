@@ -20,7 +20,6 @@
 #define _XFCE_DESKTOP_MENU_H_
 
 #include "xfce-desktop.h"
-
 #include <xfconf/xfconf.h>
 
 G_BEGIN_DECLS
@@ -32,11 +31,6 @@ XfceDesktopMenu *xfce_desktop_menu_new(const gchar *menu_file,
 void xfce_desktop_menu_populate_menu(XfceDesktopMenu *desktop_menu,
                                           GtkWidget *menu);
 GtkWidget *xfce_desktop_menu_get_widget(XfceDesktopMenu *desktop_menu);
-G_CONST_RETURN gchar *xfce_desktop_menu_get_menu_file(XfceDesktopMenu *desktop_menu);
-gboolean xfce_desktop_menu_need_update(XfceDesktopMenu *desktop_menu);
-void xfce_desktop_menu_start_autoregen(XfceDesktopMenu *desktop_menu,
-                                            guint delay);
-void xfce_desktop_menu_stop_autoregen(XfceDesktopMenu *desktop_menu);
 void xfce_desktop_menu_force_regen(XfceDesktopMenu *desktop_menu);
 void xfce_desktop_menu_set_show_icons(XfceDesktopMenu *desktop_menu,
                                            gboolean show_icons);

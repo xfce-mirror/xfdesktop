@@ -49,7 +49,6 @@ static gboolean show_desktop_menu_icons = TRUE;
 static void
 _stop_menu_module(void) {
     if(desktop_menu) {
-        xfce_desktop_menu_stop_autoregen(desktop_menu);
         xfce_desktop_menu_destroy(desktop_menu);
         desktop_menu = NULL;
     }
@@ -61,7 +60,6 @@ _start_menu_module(void)
     desktop_menu = xfce_desktop_menu_new(NULL, TRUE);
     if(desktop_menu) {
         xfce_desktop_menu_set_show_icons(desktop_menu, show_desktop_menu_icons);
-        xfce_desktop_menu_start_autoregen(desktop_menu, 10);
         return TRUE;
     } else {
         g_warning("%s: Unable to initialise menu module. Right-click menu will be unavailable.\n", PACKAGE);
@@ -83,9 +81,6 @@ menu_populate(XfceDesktop *desktop,
     
     if(!desktop_menu)
         return;
-    
-    if(xfce_desktop_menu_need_update(desktop_menu))
-        xfce_desktop_menu_force_regen(desktop_menu);
     
     /* check to see if the menu is empty.  if not, add the desktop menu
      * to a submenu */

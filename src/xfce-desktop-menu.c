@@ -1,5 +1,5 @@
 /*  xfce4
- *  
+ *
  *  Copyright (C) 2002-2003 Jasper Huijsmans (huysmans@users.sourceforge.net)
  *                     2003 Biju Chacko (botsie@users.sourceforge.net)
  *                     2004 Danny Milosavljevic <danny.milo@gmx.net>
@@ -71,13 +71,10 @@ struct _XfceDesktopMenu
 {
     GarconMenu *garcon_menu;
 
-    gboolean cache_menu_items;
-    GList *menu_item_cache;
-	
     gchar *filename;  /* file the menu is currently using */
-    
+
     gboolean use_menu_icons;  /* show menu icons? */
-	
+
     gint idle_id;  /* source id for idled generation */
 };
 
@@ -89,21 +86,18 @@ static gboolean _generate_menu_idled(gpointer data);
 static gboolean _generate_menu(XfceDesktopMenu *desktop_menu);
 static void desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
                                    GarconMenu *garcon_menu,
-                                   GtkWidget *menu,
-                                   GList **menu_items_return);
+                                   GtkWidget *menu);
 
 static void
-itheme_changed_cb(GtkIconTheme *itheme, gpointer user_data)
+xfce_desktop_menu_reload(XfceDesktopMenu *desktop_menu)
 {
-    XfceDesktopMenu *desktop_menu = user_data;
-
     /* this fixes bugs 3615 and 4342.  if both the .desktop files
      * and icon theme change very quickly after each other, we'll
      * get a crash when the icon theme gets regenerated when calling
      * gtk_icon_theme_lookup_icon(), which triggers a recursive regen.
      * so we'll idle the regen, and make sure we don't enter it
      * recursively.  same deal for _something_changed(). */
-
+    DBG("Schedule menu reload");
     if(!desktop_menu->idle_id)
         desktop_menu->idle_id = g_idle_add(_generate_menu_idled, desktop_menu);
 }
@@ -117,8 +111,7 @@ itheme_changed_cb(GtkIconTheme *itheme, gpointer user_data)
 static void
 desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
                        GarconMenu *garcon_menu,
-                       GtkWidget *menu,
-                       GList **menu_items_return)
+                       GtkWidget *menu)
 {
     GList *items, *l;
     GtkWidget *submenu, *mi, *img;
@@ -127,9 +120,9 @@ desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
     GarconMenuItem *garcon_item;
     const gchar *name, *icon_name;
 
-    g_return_if_fail((menu && !menu_items_return)
-                     || (!menu && menu_items_return));
-    
+    g_return_if_fail(GTK_IS_MENU(menu));
+    g_return_if_fail(GARCON_IS_MENU(garcon_menu));
+
     items = garcon_menu_get_elements(garcon_menu);
     for(l = items; l; l = l->next) {
         if(!garcon_menu_element_get_visible(l->data))
@@ -140,15 +133,15 @@ desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
             garcon_submenu = l->data;
             garcon_directory = garcon_menu_get_directory(garcon_submenu);
             icon_name = NULL;
-            
+
             submenu = gtk_menu_new();
             gtk_widget_show(submenu);
-            
+
             if(garcon_directory) {
                 if(desktop_menu->use_menu_icons)
                     icon_name = garcon_menu_directory_get_icon_name(garcon_directory);
             }
-            
+
             name = garcon_menu_element_get_name(GARCON_MENU_ELEMENT(garcon_submenu));
 
             mi = gtk_image_menu_item_new_with_label(name);
@@ -161,14 +154,11 @@ desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
             gtk_widget_show(mi);
             gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi), submenu);
 
-            if(menu)
-                gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-            else
-                *menu_items_return = g_list_prepend(*menu_items_return, mi);
-            
+            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+
             desktop_menu_add_items(desktop_menu, garcon_submenu,
-                                   submenu, NULL);
-            
+                                   submenu);
+
             /* we have to check emptiness down here instead of at the top of the
              * loop because there may be further submenus that are empty */
             if(!(tmpl = gtk_container_get_children(GTK_CONTAINER(submenu))))
@@ -179,32 +169,17 @@ desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
             mi = gtk_separator_menu_item_new();
             gtk_widget_show(mi);
 
-            if(menu)
-                gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-            else
-                *menu_items_return = g_list_prepend(*menu_items_return, mi);
+            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
         } else if(GARCON_IS_MENU_ITEM(l->data)) {
             garcon_item = l->data;
-            
-            mi = xfdesktop_app_menu_item_new_full(garcon_menu_element_get_name(GARCON_MENU_ELEMENT(garcon_item)),
-                                                  garcon_menu_item_get_command(garcon_item),
-                                                  desktop_menu->use_menu_icons
-                                                    ? garcon_menu_item_get_icon_name(garcon_item)
-                                                    : NULL,
-                                                  garcon_menu_item_requires_terminal(garcon_item),
-                                                  garcon_menu_item_supports_startup_notification(garcon_item));
+
+            mi = xfdesktop_app_menu_item_new (GARCON_MENU_ITEM (garcon_item));
             gtk_widget_show(mi);
 
-            if(menu)
-                gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-            else
-                *menu_items_return = g_list_prepend(*menu_items_return, mi);
+            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
         }
     }
     g_list_free(items);
-
-    if(menu_items_return)
-        *menu_items_return = g_list_reverse(*menu_items_return);
 }
 
 static gboolean
@@ -214,7 +189,7 @@ _generate_menu(XfceDesktopMenu *desktop_menu)
     XfceKiosk *kiosk;
     gboolean user_menu;
     GError *error = NULL;
-    
+
     _xfce_desktop_menu_free_menudata(desktop_menu);
 
     if(!desktop_menu->filename) {
@@ -225,8 +200,11 @@ _generate_menu(XfceDesktopMenu *desktop_menu)
     kiosk = xfce_kiosk_new("xfdesktop");
     user_menu = xfce_kiosk_query(kiosk, "UserMenu");
     xfce_kiosk_free(kiosk);
-    
+
     DBG("menu file name is %s", desktop_menu->filename);
+
+    if(desktop_menu->garcon_menu)
+        g_object_unref(G_OBJECT(desktop_menu->garcon_menu));
 
     desktop_menu->garcon_menu = garcon_menu_new_for_path(desktop_menu->filename);
 
@@ -238,10 +216,8 @@ _generate_menu(XfceDesktopMenu *desktop_menu)
         return FALSE;
     }
 
-    if(desktop_menu->cache_menu_items) {
-        desktop_menu_add_items(desktop_menu, desktop_menu->garcon_menu,
-                               NULL, &desktop_menu->menu_item_cache);
-    }
+    g_signal_connect_swapped(desktop_menu->garcon_menu, "reload-required",
+                             G_CALLBACK(xfce_desktop_menu_reload), desktop_menu);
 
     return ret;
 }
@@ -249,18 +225,11 @@ _generate_menu(XfceDesktopMenu *desktop_menu)
 static void
 _xfce_desktop_menu_free_menudata(XfceDesktopMenu *desktop_menu)
 {
-    if(desktop_menu->menu_item_cache) {
-        g_list_foreach(desktop_menu->menu_item_cache,
-                       (GFunc)gtk_widget_destroy, NULL);
-        g_list_free(desktop_menu->menu_item_cache);
-        desktop_menu->menu_item_cache = NULL;
-    }
-
     if(desktop_menu->garcon_menu) {
         g_object_unref(G_OBJECT(desktop_menu->garcon_menu));
         desktop_menu->garcon_menu = NULL;
     }
-    
+
     desktop_menu->garcon_menu = NULL;
 }
 
@@ -268,24 +237,13 @@ static gboolean
 _generate_menu_idled(gpointer data)
 {
     XfceDesktopMenu *desktop_menu = data;
-    
+
     g_return_val_if_fail(data != NULL, FALSE);
-    
+
     _generate_menu(desktop_menu);
     desktop_menu->idle_id = 0;
-    
-    return FALSE;
-}
 
-static void
-desktop_menu_recache(gpointer data,
-                     GObject *where_the_object_was)
-{
-    XfceDesktopMenu *desktop_menu = data;
-    if(!desktop_menu->menu_item_cache) {
-        desktop_menu_add_items(desktop_menu, desktop_menu->garcon_menu,
-                               NULL, &desktop_menu->menu_item_cache);
-    }
+    return FALSE;
 }
 
 static gchar *
@@ -301,7 +259,7 @@ xfce_desktop_get_menufile(void)
     kiosk = xfce_kiosk_new("xfdesktop");
     user_menu = xfce_kiosk_query(kiosk, "UserMenu");
     xfce_kiosk_free(kiosk);
-    
+
     if(user_menu) {
         gchar *file = xfce_resource_save_location(XFCE_RESOURCE_CONFIG,
                                                   "menus/xfce-applications.menu",
@@ -314,7 +272,7 @@ xfce_desktop_get_menufile(void)
                 g_free(file);
         }
     }
-    
+
     all_dirs = xfce_resource_lookup_all(XFCE_RESOURCE_CONFIG,
                                         "menus/xfce-applications.menu");
     for(i = 0; all_dirs[i]; i++) {
@@ -342,13 +300,14 @@ xfce_desktop_menu_new(const gchar *menu_file,
     XfceDesktopMenu *desktop_menu = g_new0(XfceDesktopMenu, 1);
 
     desktop_menu->use_menu_icons = TRUE;
-    desktop_menu->cache_menu_items = TRUE;  /* FIXME: hidden pref? */
-    
+
+    garcon_set_environment("XFCE");
+
     if(menu_file)
         desktop_menu->filename = g_strdup(menu_file);
     else
         desktop_menu->filename = xfce_desktop_get_menufile();
-    
+
     if(deferred)
         desktop_menu->idle_id = g_idle_add(_generate_menu_idled, desktop_menu);
     else {
@@ -358,12 +317,10 @@ xfce_desktop_menu_new(const gchar *menu_file,
         }
     }
 
-    garcon_set_environment("XFCE");
-
     _deskmenu_icon_theme = gtk_icon_theme_get_default();
-    g_signal_connect(G_OBJECT(_deskmenu_icon_theme), "changed",
-                     G_CALLBACK(itheme_changed_cb), desktop_menu);
-    
+    g_signal_connect_swapped(G_OBJECT(_deskmenu_icon_theme), "changed",
+                     G_CALLBACK(xfce_desktop_menu_reload), desktop_menu);
+
     return desktop_menu;
 }
 
@@ -372,7 +329,7 @@ xfce_desktop_menu_populate_menu(XfceDesktopMenu *desktop_menu,
                                      GtkWidget *menu)
 {
     g_return_if_fail(desktop_menu && menu);
-    
+
     if(!desktop_menu->garcon_menu) {
         if(desktop_menu->idle_id) {
             g_source_remove(desktop_menu->idle_id);
@@ -383,64 +340,27 @@ xfce_desktop_menu_populate_menu(XfceDesktopMenu *desktop_menu,
             return;
     }
 
-    if(desktop_menu->menu_item_cache) {
-        GList *l;
-        for(l = desktop_menu->menu_item_cache; l; l = l->next)
-            gtk_menu_shell_append(GTK_MENU_SHELL(menu), l->data);
-        g_list_free(desktop_menu->menu_item_cache);
-        desktop_menu->menu_item_cache = NULL;
-        g_object_weak_ref(G_OBJECT(menu), desktop_menu_recache,
-                          desktop_menu);
-    } else {
-        desktop_menu_add_items(desktop_menu, desktop_menu->garcon_menu,
-                               GTK_WIDGET(menu), NULL);
-    }
+    desktop_menu_add_items(desktop_menu, desktop_menu->garcon_menu,
+                           GTK_WIDGET(menu));
 }
 
 GtkWidget *
 xfce_desktop_menu_get_widget(XfceDesktopMenu *desktop_menu)
 {
     GtkWidget *menu;
-    
+
     g_return_val_if_fail(desktop_menu != NULL, NULL);
-    
+
     menu = gtk_menu_new();
-    
+
     xfce_desktop_menu_populate_menu(desktop_menu, menu);
-    
+
     if(!desktop_menu->garcon_menu) {
-        gtk_widget_destroy(menu);
-        return NULL;
+       gtk_widget_destroy(menu);
+       return NULL;
     }
-    
+
     return menu;
-}
-
-G_CONST_RETURN gchar *
-xfce_desktop_menu_get_menu_file(XfceDesktopMenu *desktop_menu)
-{
-    g_return_val_if_fail(desktop_menu != NULL, NULL);
-    
-    return desktop_menu->filename;
-}
-
-gboolean
-xfce_desktop_menu_need_update(XfceDesktopMenu *desktop_menu)
-{
-    return FALSE;
-}
-
-void
-xfce_desktop_menu_start_autoregen(XfceDesktopMenu *desktop_menu,
-                                       guint delay)
-{
-    /* noop */
-}
-
-void
-xfce_desktop_menu_stop_autoregen(XfceDesktopMenu *desktop_menu)
-{
-    /* noop */
 }
 
 void
@@ -448,7 +368,7 @@ xfce_desktop_menu_force_regen(XfceDesktopMenu *desktop_menu)
 {
     TRACE("dummy");
     g_return_if_fail(desktop_menu != NULL);
-    
+
     if(desktop_menu->idle_id) {
         g_source_remove(desktop_menu->idle_id);
         desktop_menu->idle_id = 0;
@@ -462,9 +382,10 @@ xfce_desktop_menu_set_show_icons(XfceDesktopMenu *desktop_menu,
                                       gboolean show_icons)
 {
     g_return_if_fail(desktop_menu != NULL);
-    
+
     if(desktop_menu->use_menu_icons != show_icons) {
         desktop_menu->use_menu_icons = show_icons;
+        xfdesktop_app_menu_item_set_show_icon(show_icons);
         if(desktop_menu->idle_id) {
             g_source_remove(desktop_menu->idle_id);
             desktop_menu->idle_id = 0;
@@ -477,18 +398,26 @@ void
 xfce_desktop_menu_destroy(XfceDesktopMenu *desktop_menu)
 {
     g_return_if_fail(desktop_menu != NULL);
-    TRACE("dummy");
-    
+    TRACE("menu destroyed");
+
     if(desktop_menu->idle_id) {
         g_source_remove(desktop_menu->idle_id);
         desktop_menu->idle_id = 0;
     }
-    
+
     g_signal_handlers_disconnect_by_func(_deskmenu_icon_theme,
-                                         G_CALLBACK(itheme_changed_cb),
+                                         G_CALLBACK(xfce_desktop_menu_reload),
                                          desktop_menu);
-    
+
     _xfce_desktop_menu_free_menudata(desktop_menu);
+
     g_free(desktop_menu->filename);
+
+    if(desktop_menu->garcon_menu) {
+        g_signal_handlers_disconnect_by_func(desktop_menu->garcon_menu,
+            G_CALLBACK(xfce_desktop_menu_reload), desktop_menu);
+        g_object_unref(G_OBJECT(desktop_menu->garcon_menu));
+    }
+
     g_free(desktop_menu);
 }

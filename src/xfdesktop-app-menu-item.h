@@ -1,4 +1,4 @@
-/* 
+/*
  * A GtkImageMenuItem subclass that handles menu items that are
  * intended to represent launchable applications.
  *
@@ -24,6 +24,7 @@
 #define __XFDESKTOP_APP_MENU_ITEM_H__
 
 #include <glib-object.h>
+#include <garcon/garcon.h>
 
 G_BEGIN_DECLS
 
@@ -36,54 +37,11 @@ G_BEGIN_DECLS
 
 typedef struct _XfdesktopAppMenuItem       XfdesktopAppMenuItem;
 
-GType xfdesktop_app_menu_item_get_type                     (void) G_GNUC_CONST;
+GType      xfdesktop_app_menu_item_get_type      (void) G_GNUC_CONST;
 
-GtkWidget *xfdesktop_app_menu_item_new                     (void);
+GtkWidget *xfdesktop_app_menu_item_new           (GarconMenuItem *item);
 
-GtkWidget *xfdesktop_app_menu_item_new_with_label          (const gchar *label);
-
-GtkWidget *xfdesktop_app_menu_item_new_with_mnemonic       (const gchar *label);
-
-GtkWidget *xfdesktop_app_menu_item_new_with_command        (const gchar *label,
-                                                            const gchar *command);
-
-GtkWidget *xfdesktop_app_menu_item_new_full                (const gchar *label,
-                                                            const gchar *command,
-                                                            const gchar *icon_filename,
-                                                            gboolean needs_term,
-                                                            gboolean snotify);
-
-#if 0
-GtkWidget *xfdesktop_app_menu_item_new_from_desktop_entry  (XfceDesktopEntry *entry,
-                                                            gboolean show_icon);
-#endif
-
-void xfdesktop_app_menu_item_set_name                      (XfdesktopAppMenuItem *app_menu_item,
-                                                            const gchar *name);
-													   
-void xfdesktop_app_menu_item_set_icon_name                 (XfdesktopAppMenuItem *app_menu_item,
-                                                            const gchar *filename);
-													   
-void xfdesktop_app_menu_item_set_command                   (XfdesktopAppMenuItem *app_menu_item,
-                                                            const gchar *command);
-													   
-void xfdesktop_app_menu_item_set_needs_term                (XfdesktopAppMenuItem *app_menu_item,
-                                                            gboolean needs_term);
-													   
-void xfdesktop_app_menu_item_set_startup_notification      (XfdesktopAppMenuItem *app_menu_item,
-                                                            gboolean snotify);
-													   
-G_CONST_RETURN gchar *xfdesktop_app_menu_item_get_name     (XfdesktopAppMenuItem *app_menu_item);
-
-G_CONST_RETURN gchar *xfdesktop_app_menu_item_get_icon_name(XfdesktopAppMenuItem *app_menu_item);
-
-G_CONST_RETURN gchar *xfdesktop_app_menu_item_get_command  (XfdesktopAppMenuItem *app_menu_item);
-
-gboolean xfdesktop_app_menu_item_get_needs_term            (XfdesktopAppMenuItem *app_menu_item);
-
-gboolean xfdesktop_app_menu_item_get_startup_notification  (XfdesktopAppMenuItem *app_menu_item);
-
-void xfdesktop_app_menu_item_set_icon_theme_name           (const gchar *theme_name);
+void       xfdesktop_app_menu_item_set_show_icon (gboolean        show_icon);
 
 G_END_DECLS
 
