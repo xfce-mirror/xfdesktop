@@ -769,13 +769,13 @@ msgstr "Вчора в %X"
 #: ../src/xfdesktop-file-utils.c:146
 #, c-format
 msgid "%A at %X"
-msgstr ""
+msgstr "%A о %X"
 
 #. Any other date
 #: ../src/xfdesktop-file-utils.c:149
 #, c-format
 msgid "%x at %X"
-msgstr ""
+msgstr "%x о %X"
 
 #. the file_time is invalid
 #: ../src/xfdesktop-file-utils.c:159
@@ -854,44 +854,41 @@ msgstr "Помилка передачі"
 
 #: ../src/xfdesktop-file-utils.c:1221 ../src/xfdesktop-file-utils.c:1235
 #: ../src/xfdesktop-file-utils.c:1297 ../src/xfdesktop-file-utils.c:1313
-#, fuzzy
 msgid "The file transfer could not be performed"
-msgstr "Пов'язану з цим файлом програму неможливо знайти чи виконати."
+msgstr "Передача файлу не може бути виконана"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:97
-#, fuzzy
 msgid "Unmounting device"
-msgstr "Помилка відключення"
+msgstr "Відключення пристрою"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:100
 #, c-format
 msgid "The device \"%s\" is being unmounted by the system. Please do not remove the media or disconnect the drive"
-msgstr ""
+msgstr "Пристрій \"%s\" був демонтований системою. Будь ласка не витягуйте носій чи не від'єднуйте пристрій"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:107 ../src/xfdesktop-notify.c:220
 msgid "Writing data to device"
-msgstr ""
+msgstr "Запис даних на пристрій"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:110 ../src/xfdesktop-notify.c:223
 #, c-format
 msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
-msgstr ""
+msgstr "Є дані, які повинні бути записані на пристрій \"%s\" перед тим як він буде витягнутий. Будь ласка не витягуйте носій чи не від'єднуйте пристрій"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:211
-#, fuzzy
 msgid "Ejecting device"
-msgstr "Помилка відключення"
+msgstr "Витягування пристрою"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:214
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
-msgstr ""
+msgstr "Пристрій \"%s\" в даний час витягується. Це може зайняти деякий час"
 
 #: ../src/xfdesktop-regular-file-icon.c:468
 #, c-format
@@ -900,25 +897,27 @@ msgid ""
 "Size: %s\n"
 "Last modified: %s"
 msgstr ""
+"Тип: %s\n"
+"Розмір: %s\n"
+"Остання зміна: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:249
 #: ../src/xfdesktop-special-file-icon.c:411
-#, fuzzy
 msgid "File System"
 msgstr "Файлова система"
 
 #: ../src/xfdesktop-special-file-icon.c:396
 msgid "Trash is empty"
-msgstr ""
+msgstr "Смітник порожній"
 
 #: ../src/xfdesktop-special-file-icon.c:399
 msgid "Trash contains one item"
-msgstr ""
+msgstr "Смітник має один елемент"
 
 #: ../src/xfdesktop-special-file-icon.c:400
 #, c-format
 msgid "Trash contains %d items"
-msgstr ""
+msgstr "Смітник має %d елементів"
 
 #: ../src/xfdesktop-special-file-icon.c:428
 #, c-format
@@ -927,6 +926,9 @@ msgid ""
 "Size: %s\n"
 "Last modified: %s"
 msgstr ""
+"%s\n"
+"Розмір: %s\n"
+"Остання зміна: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:449
 msgid "Unable to contact the Xfce Trash service."
@@ -941,39 +943,37 @@ msgid "_Empty Trash"
 msgstr "О_чистити смітник"
 
 #: ../src/xfdesktop-volume-icon.c:413
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Removable Volume\n"
 "Mounted in \"%s\"\n"
 "%s left (%s total)"
 msgstr ""
-"Вигляд: З'ємний розділ\n"
-"Точка монтування: %s\n"
-"Вільне місце: %s"
+"З'ємний розділ\n"
+"Змонтований в \"%s\"\n"
+"%s залишилось (%s всього)"
 
 #: ../src/xfdesktop-volume-icon.c:420
-#, fuzzy
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
 msgstr ""
-"Вигляд: З'ємний розділ\n"
-"Точка монтування: %s\n"
-"Вільне місце: %s"
+"З'ємний розділ\n"
+"Зараз не змонтовано"
 
 #: ../src/xfdesktop-volume-icon.c:446 ../src/xfdesktop-volume-icon.c:488
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to eject \"%s\""
-msgstr "Не вдається витягнути \"%s\":"
+msgstr "Не вдається витягнути \"%s\""
 
 #: ../src/xfdesktop-volume-icon.c:451 ../src/xfdesktop-volume-icon.c:493
 msgid "Eject Failed"
 msgstr "Не вдається витягнути"
 
 #: ../src/xfdesktop-volume-icon.c:525
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to mount \"%s\""
-msgstr "Не вдається запустити \"%s\":"
+msgstr "Не вдається змонтувати \"%s\""
 
 #: ../src/xfdesktop-volume-icon.c:528
 msgid "Mount Failed"
