@@ -629,7 +629,7 @@ msgstr "Error en la carpeta de l'escriptori"
 
 #: ../src/xfdesktop-file-icon-manager.c:503
 msgid "A normal file with the same name already exists. Please delete or rename it."
-msgstr ""
+msgstr "Ja existeix un fitxer amb el nom indicat. Elimineu-lo o canvieu-li el nom,"
 
 #: ../src/xfdesktop-file-icon-manager.c:606
 #: ../src/xfdesktop-file-icon-manager.c:650 ../src/xfdesktop-file-utils.c:799
@@ -649,9 +649,8 @@ msgstr "No s'ha pogut esborrar els fitxers seleccionats"
 #: ../src/xfdesktop-file-utils.c:975 ../src/xfdesktop-file-utils.c:1025
 #: ../src/xfdesktop-file-utils.c:1102 ../src/xfdesktop-file-utils.c:1163
 #: ../src/xfdesktop-file-utils.c:1236 ../src/xfdesktop-file-utils.c:1314
-#, fuzzy
 msgid "This feature requires a file manager service to be present (such as the one supplied by Thunar)."
-msgstr "Aquesta característica demana l'ajut d'un gestor de fitxers (com per exemple el que fa Thunar)."
+msgstr "Aquesta característica demana l'ajut d'un gestor de fitxers (com per exemple, el que proveeix el Thunar)."
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:752
@@ -812,9 +811,8 @@ msgid "The selected files could not be moved to the trash"
 msgstr "No s'ha pogut moure a la paperera els fitxers seleccionats"
 
 #: ../src/xfdesktop-file-utils.c:816
-#, fuzzy
 msgid "This feature requires a trash service to be present (such as the one supplied by Thunar)."
-msgstr "Aquesta característica demana l'ajut d'un gestor de fitxers (com per exemple el que fa Thunar)."
+msgstr "Aquesta característica demana l'ajut del gestor de la paperera (com per exemple, el que proveeix el Thunar)."
 
 #: ../src/xfdesktop-file-utils.c:852 ../src/xfdesktop-file-utils.c:867
 msgid "Create File Error"
@@ -883,7 +881,7 @@ msgstr "Escrivint dades al dispositiu"
 #: ../src/xfdesktop-notify.c:110 ../src/xfdesktop-notify.c:223
 #, c-format
 msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
-msgstr ""
+msgstr "S'ha d'escriure dades al dispositiu \"%s\" abans de ser expulsat. Si us plau, no expulseu ni desconnecteu el dispositiu."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:211
