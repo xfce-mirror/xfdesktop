@@ -280,7 +280,7 @@ msgstr "Ст_иль:"
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
 #: ../settings/xfdesktop-settings-ui.glade.h:34
 msgid "Stretched"
-msgstr ""
+msgstr "Розтягнутий"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
 #: ../settings/xfdesktop-settings-ui.glade.h:35
@@ -327,7 +327,6 @@ msgid "<b>Window List Menu</b>"
 msgstr "<b>Меню списку вікон</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:5
-#, fuzzy
 msgid "Alt"
 msgstr "Alt"
 
@@ -336,7 +335,6 @@ msgid "B_utton:"
 msgstr "_Кнопка"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:9
-#, fuzzy
 msgid "Control"
 msgstr "Control"
 
@@ -759,13 +757,13 @@ msgstr "Неможливо завантажити теку стільниці"
 #: ../src/xfdesktop-file-utils.c:137
 #, c-format
 msgid "Today at %X"
-msgstr ""
+msgstr "Сьогодні о %X"
 
 #. TRANSLATORS: file was modified less than two days ago
 #: ../src/xfdesktop-file-utils.c:141
 #, c-format
 msgid "Yesterday at %X"
-msgstr ""
+msgstr "Вчора в %X"
 
 #. Days from last week
 #: ../src/xfdesktop-file-utils.c:146
@@ -781,95 +779,78 @@ msgstr ""
 
 #. the file_time is invalid
 #: ../src/xfdesktop-file-utils.c:159
-#, fuzzy
 msgid "Unknown"
-msgstr "(невідомо)"
+msgstr "Невідомий"
 
 #: ../src/xfdesktop-file-utils.c:632 ../src/xfdesktop-file-utils.c:647
-#, fuzzy
 msgid "The folder could not be opened"
-msgstr "Пов'язану з цим файлом програму неможливо знайти чи виконати."
+msgstr "Теку неможливо відкрити"
 
 #: ../src/xfdesktop-file-utils.c:681 ../src/xfdesktop-file-utils.c:696
-#, fuzzy
 msgid "Rename Error"
-msgstr "Помилка при виконанні"
+msgstr "Помилка при перейменуванні"
 
 #: ../src/xfdesktop-file-utils.c:682 ../src/xfdesktop-file-utils.c:697
-#, fuzzy
 msgid "The file could not be renamed"
-msgstr "Пов'язану з цим файлом програму неможливо знайти чи виконати."
+msgstr "Файл не може бути перейменований"
 
 #: ../src/xfdesktop-file-utils.c:740 ../src/xfdesktop-file-utils.c:755
-#, fuzzy
 msgid "Delete Error"
-msgstr "Помилка при створенні"
+msgstr "Помилка при видаленні"
 
 #: ../src/xfdesktop-file-utils.c:741 ../src/xfdesktop-file-utils.c:756
-#, fuzzy
 msgid "The selected files could not be deleted"
-msgstr "Пов'язану з цим файлом програму неможливо знайти чи виконати."
+msgstr "Вибраний файл не може бути видалений"
 
 #: ../src/xfdesktop-file-utils.c:800 ../src/xfdesktop-file-utils.c:815
-#, fuzzy
 msgid "The selected files could not be moved to the trash"
-msgstr "Пов'язану з цим файлом програму неможливо знайти чи виконати."
+msgstr "Вибраний файл не може бути переміщений в смітник"
 
 #: ../src/xfdesktop-file-utils.c:816
-#, fuzzy
 msgid "This feature requires a trash service to be present (such as the one supplied by Thunar)."
-msgstr "Ця функція вимагає наявності файлового менеджера (наприклад, підтримується Thunar)."
+msgstr "Ця функція вимагає наявності сервісу файлового менеджера (один з таких підтримується Thunar)."
 
 #: ../src/xfdesktop-file-utils.c:852 ../src/xfdesktop-file-utils.c:867
-#, fuzzy
 msgid "Create File Error"
-msgstr "Помилка при створенні"
+msgstr "Помилка при створенні файлу"
 
 #: ../src/xfdesktop-file-utils.c:853 ../src/xfdesktop-file-utils.c:868
-#, fuzzy
 msgid "Could not create a new file"
-msgstr "Неможливо створити список фонових зображень \"%s\""
+msgstr "Неможливо створити новий файл"
 
 #: ../src/xfdesktop-file-utils.c:908 ../src/xfdesktop-file-utils.c:923
-#, fuzzy
 msgid "Create Document Error"
-msgstr "Помилка при створенні"
+msgstr "Помилка при створенні документу"
 
 #: ../src/xfdesktop-file-utils.c:909 ../src/xfdesktop-file-utils.c:924
-#, fuzzy
 msgid "Could not create a new document from the template"
-msgstr "Створити документ з шаблону \"%s\""
+msgstr "Неможливо створити документ з шаблону"
 
 #: ../src/xfdesktop-file-utils.c:958 ../src/xfdesktop-file-utils.c:973
-#, fuzzy
 msgid "File Properties Error"
-msgstr "Помилка у властивостях"
+msgstr "Помилка у властивостях файлу"
 
 #: ../src/xfdesktop-file-utils.c:959 ../src/xfdesktop-file-utils.c:974
-#, fuzzy
 msgid "The file properties dialog could not be opened"
-msgstr "Пов'язану з цим файлом програму неможливо знайти чи виконати."
+msgstr "Неможливо відкрити діалог властивостей файлу"
 
 #: ../src/xfdesktop-file-utils.c:1009 ../src/xfdesktop-file-utils.c:1024
-#, fuzzy
 msgid "The file could not be opened"
-msgstr "Пов'язану з цим файлом програму неможливо знайти чи виконати."
+msgstr "Неможливо відкрити файл"
 
 #: ../src/xfdesktop-file-utils.c:1072 ../src/xfdesktop-file-utils.c:1097
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to run \"%s\""
-msgstr "Не вдається запустити \"%s\":"
+msgstr "Не вдалось запустити \"%s\""
 
 #: ../src/xfdesktop-file-utils.c:1147 ../src/xfdesktop-file-utils.c:1162
-#, fuzzy
 msgid "The application chooser could not be opened"
-msgstr "Пов'язану з цим файлом програму неможливо знайти чи виконати."
+msgstr "Не вдалось відкрити вибір програм"
 
 #: ../src/xfdesktop-file-utils.c:1220 ../src/xfdesktop-file-utils.c:1234
 #: ../src/xfdesktop-file-utils.c:1296 ../src/xfdesktop-file-utils.c:1312
-#, fuzzy
 msgid "Transfer Error"
-msgstr "Помилка смітника"
+msgstr "Помилка передачі"
 
 #: ../src/xfdesktop-file-utils.c:1221 ../src/xfdesktop-file-utils.c:1235
 #: ../src/xfdesktop-file-utils.c:1297 ../src/xfdesktop-file-utils.c:1313
