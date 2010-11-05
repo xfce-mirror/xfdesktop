@@ -8,20 +8,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop git\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-04 20:14+0100\n"
-"PO-Revision-Date: 2010-05-07 17:50+0200\n"
+"POT-Creation-Date: 2010-11-05 11:09+0000\n"
+"PO-Revision-Date: 2010-11-05 16:52+0200\n"
 "Last-Translator: Evaggelos Balaskas <ebalaskas@ebalaskas.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
-"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\\n\\n\n"
 "X-Poedit-Language: Greek\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Country: GREECE\n"
 
-#: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
+#: ../common/xfdesktop-common.c:96
+#: ../common/xfdesktop-common.c:200
 #, c-format
 msgid "Backdrop list file is not valid"
 msgstr "Το αρχείο δεν είναι έγκυρο"
@@ -36,7 +37,8 @@ msgstr ""
 "%s\n"
 "<i>Μέγεθος %dx%d</i>"
 
-#: ../settings/main.c:272 ../src/xfdesktop-special-file-icon.c:247
+#: ../settings/main.c:272
+#: ../src/xfdesktop-special-file-icon.c:247
 #: ../src/xfdesktop-special-file-icon.c:413
 msgid "Home"
 msgstr "Αρχικός κατάλογος"
@@ -58,7 +60,8 @@ msgstr "Αφαιρούμενα μέσα"
 msgid "Cannot create backdrop list \"%s\""
 msgstr "Δεν ήταν δυνατή η δημιουργία του αρχείου λίστας \"%s\""
 
-#: ../settings/main.c:462 ../settings/main.c:779
+#: ../settings/main.c:462
+#: ../settings/main.c:779
 msgid "Backdrop List Error"
 msgstr "Σφάλμα στη λίστα παρασκηνίων"
 
@@ -68,11 +71,8 @@ msgstr "Δημιουργία/φόρτωση λίστας παρασκηνίων"
 
 #: ../settings/main.c:511
 #, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
-"Το αρχείο \"%s\" δεν είναι έγκυρο αρχείο λίστας εικόνων παρασκηνίου. Θέλετε "
-"να το αντικαταστήσετε;"
+msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr "Το αρχείο \"%s\" δεν είναι έγκυρο αρχείο λίστας εικόνων παρασκηνίου. Θέλετε να το αντικαταστήσετε;"
 
 #: ../settings/main.c:516
 msgid "Invalid List File"
@@ -172,37 +172,36 @@ msgstr "Ρύθμιση φόντου και συμπεριφοράς μενού �
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
 msgid "<b>Adjustments</b>"
-msgstr ""
+msgstr "<b>Προσαρμογές</b>"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
-#, fuzzy
 msgid "<b>Colors</b>"
-msgstr "<b>Χώρος εργασίας %d</b>"
+msgstr "<b>Χρώματα</b>"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
 msgid "<b>Image</b>"
-msgstr ""
+msgstr "<b>Εικόνα</b>"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
 msgid "<b>Images</b>"
-msgstr ""
+msgstr "<b>Εικόνες</b>"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
 msgid "Add an image to the list"
-msgstr ""
+msgstr "Προσθήκη εικόνας στην λίστα"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
 #: ../settings/xfdesktop-settings-ui.glade.h:6
 msgid "Auto"
-msgstr ""
+msgstr "Αυτόματα"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
 msgid "Automatically pick a random image from a list file"
-msgstr ""
+msgstr "Αυτόματη επιλογή τυχαίας εικόνας από λίστα αρχείων"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
 msgid "B_rightness:"
-msgstr ""
+msgstr "Φωτεινότητα:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
 #: ../settings/xfdesktop-settings-ui.glade.h:8
@@ -272,8 +271,7 @@ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
-msgid ""
-"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
 msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
@@ -315,18 +313,16 @@ msgid "Zoomed"
 msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
-#, fuzzy
 msgid "_None"
-msgstr "Καθόλου"
+msgstr "_Κανένα"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
 msgid "_Single image"
 msgstr ""
 
 #: ../settings/xfdesktop-settings-ui.glade.h:1
-#, fuzzy
 msgid "<b>Appearance</b>"
-msgstr "<b>Χώρος εργασίας %d</b>"
+msgstr "<b>Εμφάνιση</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:2
 msgid "<b>Default Icons</b>"
@@ -337,9 +333,8 @@ msgid "<b>Desktop Menu</b>"
 msgstr ""
 
 #: ../settings/xfdesktop-settings-ui.glade.h:4
-#, fuzzy
 msgid "<b>Window List Menu</b>"
-msgstr "Λίστα παραθύρων"
+msgstr "<b>Λίστα παραθύρων</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:5
 msgid "Alt"
@@ -350,11 +345,11 @@ msgid "B_utton:"
 msgstr ""
 
 #: ../settings/xfdesktop-settings-ui.glade.h:9
-#, fuzzy
 msgid "Control"
-msgstr "Συντελεστής"
+msgstr ""
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:729
+#: ../settings/xfdesktop-settings-ui.glade.h:10
+#: ../src/xfce-desktop.c:729
 msgid "Desktop"
 msgstr "Επιφάνεια εργασίας"
 
@@ -444,9 +439,7 @@ msgid "Show workspace _names in list"
 msgstr ""
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
-msgid ""
-"Specify the transparency level for the rounded label drawn behind the icon "
-"text"
+msgid "Specify the transparency level for the rounded label drawn behind the icon text"
 msgstr ""
 
 #: ../settings/xfdesktop-settings-ui.glade.h:37
@@ -522,11 +515,15 @@ msgstr "Επιλογές:\n"
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Μενού επιφάνειας εργασίας:         %s\n"
 
-#: ../src/main.c:275 ../src/main.c:282 ../src/main.c:289
+#: ../src/main.c:275
+#: ../src/main.c:282
+#: ../src/main.c:289
 msgid "enabled"
 msgstr "ενεργοποιημένο"
 
-#: ../src/main.c:277 ../src/main.c:284 ../src/main.c:291
+#: ../src/main.c:277
+#: ../src/main.c:284
+#: ../src/main.c:291
 msgid "disabled"
 msgstr "απενεργοποιημένο"
 
@@ -568,7 +565,8 @@ msgstr "Χώρος εργασίας %d"
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Χώρος εργασίας %d</i>"
 
-#: ../src/windowlist.c:370 ../src/windowlist.c:373
+#: ../src/windowlist.c:370
+#: ../src/windowlist.c:373
 msgid "_Add Workspace"
 msgstr "_Προσθήκη χώρου εργασίας"
 
@@ -652,13 +650,14 @@ msgid "Desktop Folder Error"
 msgstr "Σφάλμα επιφάνεια εργασίας"
 
 #: ../src/xfdesktop-file-icon-manager.c:503
-msgid ""
-"A normal file with the same name already exists. Please delete or rename it."
+msgid "A normal file with the same name already exists. Please delete or rename it."
 msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:606
-#: ../src/xfdesktop-file-icon-manager.c:650 ../src/xfdesktop-file-utils.c:799
-#: ../src/xfdesktop-file-utils.c:814 ../src/xfdesktop-special-file-icon.c:447
+#: ../src/xfdesktop-file-icon-manager.c:650
+#: ../src/xfdesktop-file-utils.c:799
+#: ../src/xfdesktop-file-utils.c:814
+#: ../src/xfdesktop-special-file-icon.c:447
 msgid "Trash Error"
 msgstr "Σφάλμα απορριμμάτων"
 
@@ -669,19 +668,21 @@ msgid "The selected files could not be trashed"
 msgstr "Η εφαρμογή επιλογής εφαρμογών δεν ήταν δυνατό να εκτελεστεί."
 
 #: ../src/xfdesktop-file-icon-manager.c:608
-#: ../src/xfdesktop-file-icon-manager.c:652 ../src/xfdesktop-file-utils.c:648
-#: ../src/xfdesktop-file-utils.c:698 ../src/xfdesktop-file-utils.c:757
-#: ../src/xfdesktop-file-utils.c:869 ../src/xfdesktop-file-utils.c:925
-#: ../src/xfdesktop-file-utils.c:975 ../src/xfdesktop-file-utils.c:1025
-#: ../src/xfdesktop-file-utils.c:1102 ../src/xfdesktop-file-utils.c:1163
-#: ../src/xfdesktop-file-utils.c:1236 ../src/xfdesktop-file-utils.c:1314
+#: ../src/xfdesktop-file-icon-manager.c:652
+#: ../src/xfdesktop-file-utils.c:648
+#: ../src/xfdesktop-file-utils.c:698
+#: ../src/xfdesktop-file-utils.c:757
+#: ../src/xfdesktop-file-utils.c:869
+#: ../src/xfdesktop-file-utils.c:925
+#: ../src/xfdesktop-file-utils.c:975
+#: ../src/xfdesktop-file-utils.c:1025
+#: ../src/xfdesktop-file-utils.c:1102
+#: ../src/xfdesktop-file-utils.c:1163
+#: ../src/xfdesktop-file-utils.c:1236
+#: ../src/xfdesktop-file-utils.c:1314
 #, fuzzy
-msgid ""
-"This feature requires a file manager service to be present (such as the one "
-"supplied by Thunar)."
-msgstr ""
-"Αυτό το χαρακτηριστικό απαιτεί μια υπηρεσία διαχειριστή αρχείων (όπως αυτή "
-"που παρέχει ο Thunar)."
+msgid "This feature requires a file manager service to be present (such as the one supplied by Thunar)."
+msgstr "Αυτό το χαρακτηριστικό απαιτεί μια υπηρεσία διαχειριστή αρχείων (όπως αυτή που παρέχει ο Thunar)."
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:752
@@ -692,10 +693,14 @@ msgstr "Η εκκίνηση του \"%s\" απέτυχε:"
 
 #: ../src/xfdesktop-file-icon-manager.c:754
 #: ../src/xfdesktop-file-icon-manager.c:998
-#: ../src/xfdesktop-file-icon-manager.c:1311 ../src/xfdesktop-file-utils.c:631
-#: ../src/xfdesktop-file-utils.c:646 ../src/xfdesktop-file-utils.c:1008
-#: ../src/xfdesktop-file-utils.c:1023 ../src/xfdesktop-file-utils.c:1075
-#: ../src/xfdesktop-file-utils.c:1100 ../src/xfdesktop-file-utils.c:1146
+#: ../src/xfdesktop-file-icon-manager.c:1311
+#: ../src/xfdesktop-file-utils.c:631
+#: ../src/xfdesktop-file-utils.c:646
+#: ../src/xfdesktop-file-utils.c:1008
+#: ../src/xfdesktop-file-utils.c:1023
+#: ../src/xfdesktop-file-utils.c:1075
+#: ../src/xfdesktop-file-utils.c:1100
+#: ../src/xfdesktop-file-utils.c:1146
 #: ../src/xfdesktop-file-utils.c:1161
 msgid "Launch Error"
 msgstr "Σφάλμα εκτέλεσης"
@@ -711,13 +716,8 @@ msgid "Open With \"%s\""
 msgstr "Άνοιγμα με \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:1000
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
-msgstr ""
-"Δεν ήταν δυνατή η εκκίνηση του \"exo-desktop-item-edit\", που απαιτείται για "
-"τη δημιουργία και την επεξεργασία εκκινητών και συνδέσμων στην επιφάνεια "
-"εργασίας."
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgstr "Δεν ήταν δυνατή η εκκίνηση του \"exo-desktop-item-edit\", που απαιτείται για τη δημιουργία και την επεξεργασία εκκινητών και συνδέσμων στην επιφάνεια εργασίας."
 
 #: ../src/xfdesktop-file-icon-manager.c:1368
 msgid "_Open all"
@@ -728,7 +728,8 @@ msgid "_Open in New Window"
 msgstr "Άνοιγμ_α σε νέο παράθυρο"
 
 #: ../src/xfdesktop-file-icon-manager.c:1386
-#: ../src/xfdesktop-special-file-icon.c:570 ../src/xfdesktop-volume-icon.c:653
+#: ../src/xfdesktop-special-file-icon.c:570
+#: ../src/xfdesktop-volume-icon.c:653
 msgid "_Open"
 msgstr "_Άνοιγμα"
 
@@ -825,98 +826,113 @@ msgstr ""
 msgid "Unknown"
 msgstr "(άγνωστο)"
 
-#: ../src/xfdesktop-file-utils.c:632 ../src/xfdesktop-file-utils.c:647
+#: ../src/xfdesktop-file-utils.c:632
+#: ../src/xfdesktop-file-utils.c:647
 #, fuzzy
 msgid "The folder could not be opened"
 msgstr "Η εφαρμογή επιλογής εφαρμογών δεν ήταν δυνατό να εκτελεστεί."
 
-#: ../src/xfdesktop-file-utils.c:681 ../src/xfdesktop-file-utils.c:696
+#: ../src/xfdesktop-file-utils.c:681
+#: ../src/xfdesktop-file-utils.c:696
 #, fuzzy
 msgid "Rename Error"
 msgstr "Σφάλμα Εκτέλεσης"
 
-#: ../src/xfdesktop-file-utils.c:682 ../src/xfdesktop-file-utils.c:697
+#: ../src/xfdesktop-file-utils.c:682
+#: ../src/xfdesktop-file-utils.c:697
 #, fuzzy
 msgid "The file could not be renamed"
 msgstr "Η εφαρμογή επιλογής εφαρμογών δεν ήταν δυνατό να εκτελεστεί."
 
-#: ../src/xfdesktop-file-utils.c:740 ../src/xfdesktop-file-utils.c:755
+#: ../src/xfdesktop-file-utils.c:740
+#: ../src/xfdesktop-file-utils.c:755
 #, fuzzy
 msgid "Delete Error"
 msgstr "Σφάλμα δημιουργίας"
 
-#: ../src/xfdesktop-file-utils.c:741 ../src/xfdesktop-file-utils.c:756
+#: ../src/xfdesktop-file-utils.c:741
+#: ../src/xfdesktop-file-utils.c:756
 #, fuzzy
 msgid "The selected files could not be deleted"
 msgstr "Η σχετιζόμενη εφαρμογή δεν ήταν δυνατό να βρεθεί ή να εκτελεστεί."
 
-#: ../src/xfdesktop-file-utils.c:800 ../src/xfdesktop-file-utils.c:815
+#: ../src/xfdesktop-file-utils.c:800
+#: ../src/xfdesktop-file-utils.c:815
 #, fuzzy
 msgid "The selected files could not be moved to the trash"
 msgstr "Η εφαρμογή επιλογής εφαρμογών δεν ήταν δυνατό να εκτελεστεί."
 
 #: ../src/xfdesktop-file-utils.c:816
 #, fuzzy
-msgid ""
-"This feature requires a trash service to be present (such as the one "
-"supplied by Thunar)."
-msgstr ""
-"Αυτό το χαρακτηριστικό απαιτεί μια υπηρεσία διαχειριστή αρχείων (όπως αυτή "
-"που παρέχει ο Thunar)."
+msgid "This feature requires a trash service to be present (such as the one supplied by Thunar)."
+msgstr "Αυτό το χαρακτηριστικό απαιτεί μια υπηρεσία διαχειριστή αρχείων (όπως αυτή που παρέχει ο Thunar)."
 
-#: ../src/xfdesktop-file-utils.c:852 ../src/xfdesktop-file-utils.c:867
+#: ../src/xfdesktop-file-utils.c:852
+#: ../src/xfdesktop-file-utils.c:867
 #, fuzzy
 msgid "Create File Error"
 msgstr "Σφάλμα δημιουργίας"
 
-#: ../src/xfdesktop-file-utils.c:853 ../src/xfdesktop-file-utils.c:868
+#: ../src/xfdesktop-file-utils.c:853
+#: ../src/xfdesktop-file-utils.c:868
 #, fuzzy
 msgid "Could not create a new file"
 msgstr "Δεν ήταν δυνατή η δημιουργία του αρχείου λίστας \"%s\""
 
-#: ../src/xfdesktop-file-utils.c:908 ../src/xfdesktop-file-utils.c:923
+#: ../src/xfdesktop-file-utils.c:908
+#: ../src/xfdesktop-file-utils.c:923
 #, fuzzy
 msgid "Create Document Error"
 msgstr "Σφάλμα δημιουργίας"
 
-#: ../src/xfdesktop-file-utils.c:909 ../src/xfdesktop-file-utils.c:924
+#: ../src/xfdesktop-file-utils.c:909
+#: ../src/xfdesktop-file-utils.c:924
 #, fuzzy
 msgid "Could not create a new document from the template"
 msgstr "Δημιουργία εγγράφου από πρότυπο \"%s\""
 
-#: ../src/xfdesktop-file-utils.c:958 ../src/xfdesktop-file-utils.c:973
+#: ../src/xfdesktop-file-utils.c:958
+#: ../src/xfdesktop-file-utils.c:973
 #, fuzzy
 msgid "File Properties Error"
 msgstr "Σφάλμα ιδιοτήτων"
 
-#: ../src/xfdesktop-file-utils.c:959 ../src/xfdesktop-file-utils.c:974
+#: ../src/xfdesktop-file-utils.c:959
+#: ../src/xfdesktop-file-utils.c:974
 #, fuzzy
 msgid "The file properties dialog could not be opened"
 msgstr "Η εφαρμογή επιλογής εφαρμογών δεν ήταν δυνατό να εκτελεστεί."
 
-#: ../src/xfdesktop-file-utils.c:1009 ../src/xfdesktop-file-utils.c:1024
+#: ../src/xfdesktop-file-utils.c:1009
+#: ../src/xfdesktop-file-utils.c:1024
 #, fuzzy
 msgid "The file could not be opened"
 msgstr "Η εφαρμογή επιλογής εφαρμογών δεν ήταν δυνατό να εκτελεστεί."
 
-#: ../src/xfdesktop-file-utils.c:1072 ../src/xfdesktop-file-utils.c:1097
+#: ../src/xfdesktop-file-utils.c:1072
+#: ../src/xfdesktop-file-utils.c:1097
 #, fuzzy, c-format
 msgid "Failed to run \"%s\""
 msgstr "Η εκτέλεση του \"%s\" απέτυχε:"
 
-#: ../src/xfdesktop-file-utils.c:1147 ../src/xfdesktop-file-utils.c:1162
+#: ../src/xfdesktop-file-utils.c:1147
+#: ../src/xfdesktop-file-utils.c:1162
 #, fuzzy
 msgid "The application chooser could not be opened"
 msgstr "Η εφαρμογή επιλογής εφαρμογών δεν ήταν δυνατό να εκτελεστεί."
 
-#: ../src/xfdesktop-file-utils.c:1220 ../src/xfdesktop-file-utils.c:1234
-#: ../src/xfdesktop-file-utils.c:1296 ../src/xfdesktop-file-utils.c:1312
+#: ../src/xfdesktop-file-utils.c:1220
+#: ../src/xfdesktop-file-utils.c:1234
+#: ../src/xfdesktop-file-utils.c:1296
+#: ../src/xfdesktop-file-utils.c:1312
 #, fuzzy
 msgid "Transfer Error"
 msgstr "Σφάλμα απορριμμάτων"
 
-#: ../src/xfdesktop-file-utils.c:1221 ../src/xfdesktop-file-utils.c:1235
-#: ../src/xfdesktop-file-utils.c:1297 ../src/xfdesktop-file-utils.c:1313
+#: ../src/xfdesktop-file-utils.c:1221
+#: ../src/xfdesktop-file-utils.c:1235
+#: ../src/xfdesktop-file-utils.c:1297
+#: ../src/xfdesktop-file-utils.c:1313
 #, fuzzy
 msgid "The file transfer could not be performed"
 msgstr "Η εφαρμογή επιλογής εφαρμογών δεν ήταν δυνατό να εκτελεστεί."
@@ -930,22 +946,20 @@ msgstr "Η αποπροσάρτηση απέτυχε"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:100
 #, c-format
-msgid ""
-"The device \"%s\" is being unmounted by the system. Please do not remove the "
-"media or disconnect the drive"
+msgid "The device \"%s\" is being unmounted by the system. Please do not remove the media or disconnect the drive"
 msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:107 ../src/xfdesktop-notify.c:220
+#: ../src/xfdesktop-notify.c:107
+#: ../src/xfdesktop-notify.c:220
 msgid "Writing data to device"
 msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:110 ../src/xfdesktop-notify.c:223
+#: ../src/xfdesktop-notify.c:110
+#: ../src/xfdesktop-notify.c:223
 #, c-format
-msgid ""
-"There is data that needs to be written to the device \"%s\" before it can be "
-"removed. Please do not remove the media or disconnect the drive"
+msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
 msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
@@ -1000,12 +1014,8 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "Δεν ήταν δυνατή η επικοινωνία με την υπηρεσία απορριμμάτων του Xfce."
 
 #: ../src/xfdesktop-special-file-icon.c:450
-msgid ""
-"Make sure you have a file manager installed that supports the Xfce Trash "
-"service, such as Thunar."
-msgstr ""
-"Σιγουρευτείτε ότι υπάρχει εγκατεστημένος ένας διαχειριστής αρχείων που "
-"υποστηρίζει την υπηρεσία απορριμμάτων του Xfce, όπως το Thunar."
+msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
+msgstr "Σιγουρευτείτε ότι υπάρχει εγκατεστημένος ένας διαχειριστής αρχείων που υποστηρίζει την υπηρεσία απορριμμάτων του Xfce, όπως το Thunar."
 
 #: ../src/xfdesktop-special-file-icon.c:588
 msgid "_Empty Trash"
@@ -1032,12 +1042,14 @@ msgstr ""
 "Σημείο προσάρτησης: %s\n"
 "Ελεύθερος χώρος: %s"
 
-#: ../src/xfdesktop-volume-icon.c:446 ../src/xfdesktop-volume-icon.c:488
+#: ../src/xfdesktop-volume-icon.c:446
+#: ../src/xfdesktop-volume-icon.c:488
 #, fuzzy, c-format
 msgid "Failed to eject \"%s\""
 msgstr "Δεν ήταν δυνατή η αποβολή του \"%s\":"
 
-#: ../src/xfdesktop-volume-icon.c:451 ../src/xfdesktop-volume-icon.c:493
+#: ../src/xfdesktop-volume-icon.c:451
+#: ../src/xfdesktop-volume-icon.c:493
 msgid "Eject Failed"
 msgstr "Η αποβολή απέτυχε"
 
@@ -1050,7 +1062,8 @@ msgstr "Η εκτέλεση του \"%s\" απέτυχε:"
 msgid "Mount Failed"
 msgstr "Η προσάρτηση απέτυχε"
 
-#: ../src/xfdesktop-volume-icon.c:669 ../src/xfdesktop-volume-icon.c:672
+#: ../src/xfdesktop-volume-icon.c:669
+#: ../src/xfdesktop-volume-icon.c:672
 msgid "E_ject Volume"
 msgstr "Απο_βολή τόμου"
 
@@ -1058,927 +1071,3 @@ msgstr "Απο_βολή τόμου"
 msgid "_Mount Volume"
 msgstr "Προ_σάρτηση τόμου"
 
-#~ msgid "Unable to launch xfce4-menueditor: %s"
-#~ msgstr "Αδυναμία εκκίνησης του επεξεργαστή μενού του Xfce: %s"
-
-#~ msgid "Select Icon"
-#~ msgstr "Επιλογή εικονιδίου"
-
-#~ msgid "Select Menu File"
-#~ msgstr "Επιλογή αρχείου μενού"
-
-#~ msgid "All Files"
-#~ msgstr "Όλα τα αρχεία"
-
-#~ msgid "Image Files"
-#~ msgstr "Αρχεία εικόνων"
-
-#~ msgid "Menu Files"
-#~ msgstr "Αρχεία μενού"
-
-#~ msgid "Xfce Menu"
-#~ msgstr "Μενού του Xfce"
-
-#~ msgid "Button"
-#~ msgstr "Κουμπί"
-
-#~ msgid "Button _title:"
-#~ msgstr "Τίτλος _κουμπιού:"
-
-#~ msgid "_Show title in button"
-#~ msgstr "_Προβολή τίτλου στο κουμπί"
-
-#~ msgid "Menu File"
-#~ msgstr "Αρχείο μενού"
-
-#~ msgid "Use default _desktop menu file"
-#~ msgstr "Χρήση προκαθορισμένου αρχείου _μενού"
-
-#~ msgid "Use _custom menu file:"
-#~ msgstr "Χρήση _προσαρμοσμένου αρχείου μενού"
-
-#~ msgid "_Edit Menu"
-#~ msgstr "_Επεξεργασία του μενού"
-
-#~ msgid "Icons"
-#~ msgstr "Εικονίδια"
-
-#~ msgid "_Button icon:"
-#~ msgstr "Εικονίδιο _κουμπιού"
-
-#~ msgid "Show _icons in menu"
-#~ msgstr "Εμφάνιση εικον_ιδίων στο μενού"
-
-#~ msgid "There is already a panel menu registered for this screen"
-#~ msgstr "Υπάρχει ήδη ένα μενού σε ταμπλό για αυτή την οθόνη"
-
-#~ msgid "Edit Menu"
-#~ msgstr "Επεξεργασία μενού"
-
-#~ msgid "Shows a menu containing categories of installed applications"
-#~ msgstr ""
-#~ "Εμφανίζει ένα μενού που περιέχει τις κατηγορίες των εγκατεστημένων "
-#~ "εφαρμογών"
-
-#~ msgid "%s: Unknown option: %s\n"
-#~ msgstr "%s: Άγνωστη επιλογή: %s\n"
-
-#~ msgid "Options are:\n"
-#~ msgstr "Οι επιλογές είναι:\n"
-
-#~ msgid "    --reload      Reload all settings, refresh image list\n"
-#~ msgstr ""
-#~ "    --reload      Επαναφόρτωση όλων των ρυθμίσεων, ανανέωση της λίστας "
-#~ "εικόνων\n"
-
-#~ msgid "    --menu        Pop up the menu (at the current mouse position)\n"
-#~ msgstr ""
-#~ "    --menu       Εμφάνιση του μενού (στην τρέχουσα θέση του κέρσορα)\n"
-
-#~ msgid ""
-#~ "    --windowlist  Pop up the window list (at the current mouse position)\n"
-#~ msgstr ""
-#~ "    --windowlist Εμφάνιση της λίστας παραθύρων (στην τρέχουσα θέση του "
-#~ "κέρσορα)\n"
-
-#~ msgid "    --quit        Cause xfdesktop to quit\n"
-#~ msgstr "    --quit       Εξαναγκάζει το xfdesktop σε τερματισμό\n"
-
-#~ msgid ""
-#~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-#~ msgstr ""
-#~ "Δεν ήταν δυνατή η δημιουργία του φακέλου \"%s\" για τα αντικείμενα της "
-#~ "επιφάνειας εργασίας:"
-
-#~ msgid "Create Folder Failed"
-#~ msgstr "Η δημιουργία του φακέλου απέτυχε"
-
-#~ msgid ""
-#~ "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not "
-#~ "a folder."
-#~ msgstr ""
-#~ "Δεν είναι δυνατή η χρήση του \"%s\" για τα αντικείμενα της επιφάνεια "
-#~ "εργασίας επειδή δεν είναι φάκελος."
-
-#~ msgid "Please delete or rename the file."
-#~ msgstr "Παρακαλώ διαγράψτε ή μετονομάστε το αρχείο."
-
-#~ msgid "Rename \"%s\""
-#~ msgstr "Μετονομασία του \"%s\""
-
-#~ msgid "Enter the new name:"
-#~ msgstr "Εισάγετε το νέο όνομα:"
-
-#~ msgid "Rename"
-#~ msgstr "Μετονομασία"
-
-#~ msgid "Are you sure that you want to delete \"%s\"?"
-#~ msgstr "Είσαστε βέβαιοι ότι θέλετε να διαγράψετε οριστικά το \"%s\";"
-
-#~ msgid "Question"
-#~ msgstr "Ερώτηση"
-
-#~ msgid "If you delete a file, it is permanently lost."
-#~ msgstr "Εάν διαγράψετε ένα αρχείο, χάνεται για πάντα."
-
-#~ msgid "Are you sure you want to delete the following %d files?"
-#~ msgstr ""
-#~ "Είσαστε βέβαιοι ότι θέλετε να διαγράψετε οριστικά τα  %d επιλεγμένα "
-#~ "αρχεία;"
-
-#~ msgid "Delete Multiple Files"
-#~ msgstr "Διαγραφή πολλαπλών αρχείων"
-
-#~ msgid "The application chooser could not be opened."
-#~ msgstr "Η εφαρμογή επιλογής εφαρμογών δεν ήταν δυνατό να εκτελεστεί."
-
-#~ msgid ""
-#~ "This feature requires a file manager service present (such as that "
-#~ "supplied by Thunar)."
-#~ msgstr ""
-#~ "Αυτό το χαρακτηριστικό απαιτεί μια υπηρεσία διαχειριστή αρχείων (όπως "
-#~ "αυτή που παρέχει ο Thunar)."
-
-#~ msgid "Unable to create folder named \"%s\":"
-#~ msgstr "Δεν ήταν δυνατή η δημιουργία φακέλου με όνομα \"%s\":"
-
-#~ msgid "Create New Folder"
-#~ msgstr "Δημιουργία νέου φακέλου"
-
-#~ msgid "New Folder"
-#~ msgstr "Νέος φάκελος"
-
-#~ msgid "Create"
-#~ msgstr "Δημιουργία"
-
-#~ msgid "Unable to create file named \"%s\":"
-#~ msgstr "Δεν ήταν δυνατή η δημιουργία αρχείου με όνομα \"%s\":"
-
-#~ msgid "Create File Failed"
-#~ msgstr "Η δημιουργία του αρχείου απέτυχε"
-
-#~ msgid "Create Document from template \"%s\""
-#~ msgstr "Δημιουργία εγγράφου από πρότυπο \"%s\""
-
-#~ msgid "Create Empty File"
-#~ msgstr "Δημιουργία κενού αρχείου"
-
-#~ msgid "New Empty File"
-#~ msgstr "Νέο κενό αρχείο"
-
-#~ msgid "Unable to create file \"%s\":"
-#~ msgstr "Δεν ήταν δυνατή η δημιουργία του αρχείου \"%s\":"
-
-#~ msgid "Create Error"
-#~ msgstr "Σφάλμα δημιουργίας"
-
-#~ msgid "Failed to run \"%s\":"
-#~ msgstr "Η εκτέλεση του \"%s\" απέτυχε:"
-
-#~ msgid "Run Error"
-#~ msgstr "Σφάλμα Εκτέλεσης"
-
-#~ msgid "The associated application could not be found or executed."
-#~ msgstr "Η σχετιζόμενη εφαρμογή δεν ήταν δυνατό να βρεθεί ή να εκτελεστεί."
-
-#~ msgid "Unable to set default application for \"%s\" to \"%s\":"
-#~ msgstr ""
-#~ "Ο ορισμός της προκαθορισμένης εφαρμογής για το \"%s\" σε \"%s\" απέτυχε."
-
-#~ msgid "Properties Error"
-#~ msgstr "Σφάλμα ιδιοτήτων"
-
-#~ msgid "Write only"
-#~ msgstr "Μόνο εγγραφή"
-
-#~ msgid "Read only"
-#~ msgstr "Μόνο για ανάγνωση"
-
-#~ msgid "Read & Write"
-#~ msgstr "Εγγραφή & Ανάγνωση"
-
-#~ msgid "General"
-#~ msgstr "Γενικές"
-
-#~ msgid "Name:"
-#~ msgstr "Όνομα:"
-
-#~ msgid "Kind:"
-#~ msgstr "Είδος:"
-
-#~ msgid "Link Target:"
-#~ msgstr "Προορισμός:"
-
-#~ msgid "(unknown)"
-#~ msgstr "(άγνωστο)"
-
-#~ msgid "Open With:"
-#~ msgstr "Άνοιγμα με:"
-
-#~ msgid "Modified:"
-#~ msgstr "Τροποποιήθηκε:"
-
-#~ msgid "Accessed:"
-#~ msgstr "Προσπελάστηκε:"
-
-#~ msgid "Free Space:"
-#~ msgstr "Ελεύθερος Χώρος:"
-
-#~ msgid "Size:"
-#~ msgstr "Μέγεθος:"
-
-#~ msgid "%s (%"
-#~ msgstr "%s (%"
-
-#~ msgid "Permissions"
-#~ msgstr "Δικαιώματα"
-
-#~ msgid "Owner:"
-#~ msgstr "Ιδιοκτήτης:"
-
-#~ msgid "Access:"
-#~ msgstr "Πρόσβαση:"
-
-#~ msgid "Group:"
-#~ msgstr "Ομάδα:"
-
-#~ msgid "Others:"
-#~ msgstr "Άλλα:"
-
-#~ msgid "Yes to _all"
-#~ msgstr "Ναι σε ό_λα"
-
-#~ msgid "There was an error moving \"%s\" to \"%s\":"
-#~ msgstr "Προέκυψε ένα σφάλμα κατά τη μετακίνηση του \"%s\" σε \"%s\":"
-
-#~ msgid "There was an error copying \"%s\" to \"%s\":"
-#~ msgstr "Προέκυψε ένα σφάλμα κατά την αντιγραφή του \"%s\" σε \"%s\":"
-
-#~ msgid "There was an error linking \"%s\" to \"%s\":"
-#~ msgstr ""
-#~ "Προέκυψε ένα σφάλμα κατά τη δημιουργία δεσμού από \"%s\" στο \"%s\":"
-
-#~ msgid "File Error"
-#~ msgstr "Σφάλμα αρχείου"
-
-#~ msgid "broken link"
-#~ msgstr "σπασμένος δεσμός"
-
-#~ msgid "link to %s"
-#~ msgstr "σύνδεσμος στο %s"
-
-#~ msgid ""
-#~ "Kind: %s\n"
-#~ "Modified:%s\n"
-#~ "Size: %s"
-#~ msgstr ""
-#~ "Είδος: %s\n"
-#~ "Τροποποιήθηκε: %s\n"
-#~ "Μέγεθος: %s"
-
-#~ msgid "Error"
-#~ msgstr "Σφάλμα"
-
-#~ msgid "Failed to rename \"%s\" to \"%s\":"
-#~ msgstr "Η μετονομασία του \"%s\" σε \"%s\" απέτυχε:"
-
-#~ msgid "Kind: Trash"
-#~ msgstr "Είδος: Απορρίμματα"
-
-#~ msgid "%s (%s total)"
-#~ msgstr "%s (σύνολο %s)"
-
-#~ msgid ""
-#~ "Kind: Removable Volume\n"
-#~ "Mount Point: %s\n"
-#~ "Free Space: %s"
-#~ msgstr ""
-#~ "Είδος: Αφαιρούμενο μέσο\n"
-#~ "Σημείο προσάρτησης: %s\n"
-#~ "Ελεύθερος χώρος: %s"
-
-#~ msgid "Unable to mount \"%s\":"
-#~ msgstr "Δεν ήταν δυνατή η προσάρτηση του \"%s\":"
-
-#~ msgid "Unable to unmount \"%s\":"
-#~ msgstr "Δεν ήταν δυνατή η αποπροσάρτηση του \"%s\":"
-
-#~ msgid "Unmount Failed"
-#~ msgstr "Η αποπροσάρτηση απέτυχε"
-
-#~ msgid "Unable to eject \"%s\":"
-#~ msgstr "Δεν ήταν δυνατή η αποβολή του \"%s\":"
-
-#~ msgid "_Unmount Volume"
-#~ msgstr "Αποπρο_σάρτηση τόμου"
-
-#~ msgid "Accessories"
-#~ msgstr "Βοηθήματα"
-
-#~ msgid "Common desktop tools and applications"
-#~ msgstr "Κοινές εφαρμογές και εργαλεία επιφ.εργασίας"
-
-#~ msgid "Development"
-#~ msgstr "Ανάπτυξη"
-
-#~ msgid "Software development tools"
-#~ msgstr "Εργαλεία ανάπτυξης λογισμικού"
-
-#~ msgid "Education"
-#~ msgstr "Εκπαίδευση"
-
-#~ msgid "Educational software"
-#~ msgstr "Εκπαιδευτικό λογισμικό"
-
-#~ msgid "Games"
-#~ msgstr "Παιχνίδια"
-
-#~ msgid "Games, puzzles, and other fun software"
-#~ msgstr "Παιχνίδια, παζλ, και άλλο διασκεδαστικό λογισμικό"
-
-#~ msgid "Graphics"
-#~ msgstr "Γραφικά"
-
-#~ msgid "Graphics creation and manipulation applications"
-#~ msgstr "Εφαρμογές δημιουργίας και επεξεργασίας γραφικών"
-
-#~ msgid "Audio and video players and editors"
-#~ msgstr "Εφαρμογές αναπαραγωγής και επεξεργασίας μουσικής και βίντεο"
-
-#~ msgid "Multimedia"
-#~ msgstr "Πολυμέσα"
-
-#~ msgid "Network"
-#~ msgstr "Δίκτυο"
-
-#~ msgid "Network applications and utilities"
-#~ msgstr "Εφαρμογές και εργαλεία δικτύου"
-
-#~ msgid "Office"
-#~ msgstr "Γραφείο"
-
-#~ msgid "Office and productivity applications"
-#~ msgstr "Εφαρμογές γραφείου"
-
-#~ msgid "Applications that don't fit into other categories"
-#~ msgstr "Εφαρμογές που δεν ταιριάζουν σε άλλες κατηγορίες"
-
-#~ msgid "Other"
-#~ msgstr "Άλλο"
-
-#~ msgid "Screensaver applets"
-#~ msgstr "Εφαρμογίδια προφύλαξης οθόνης"
-
-#~ msgid "Screensavers"
-#~ msgstr "Προφύλαξη οθόνης"
-
-#~ msgid "Desktop and system settings applications"
-#~ msgstr "Εφαρμογές ρυθμίσεων"
-
-#~ msgid "Settings"
-#~ msgstr "Ρυθμίσεις"
-
-#~ msgid "System"
-#~ msgstr "Σύστημα"
-
-#~ msgid "System tools and utilities"
-#~ msgstr "Εργαλεία συστήματος"
-
-#~ msgid "About Xfce"
-#~ msgstr "Περί του Xfce"
-
-#~ msgid "Information about the Xfce Desktop Environment"
-#~ msgstr "Πληροφορίες σχετικά με το περιβάλλον εργασίας Xfce"
-
-#~ msgid "File Manager"
-#~ msgstr "Διαχειριστής αρχείων"
-
-#~ msgid "Thunar file manager"
-#~ msgstr "Διαχειριστής αρχείων Thunar"
-
-#~ msgid "Help"
-#~ msgstr "Βοήθεια"
-
-#~ msgid "Help using Xfce"
-#~ msgstr "Βοήθεια για το Xfce"
-
-#~ msgid "Log Out"
-#~ msgstr "Αποσύνδεση"
-
-#~ msgid "Log out of the Xfce Desktop"
-#~ msgstr "Αποσυνδεθείτε από το Xfce"
-
-#~ msgid "Run Program..."
-#~ msgstr "Εκτέλεση..."
-
-#~ msgid "Run a program"
-#~ msgstr "Εκτέλεση προγράμματος"
-
-#~ msgid "Terminal"
-#~ msgstr "Τερματικό"
-
-#~ msgid "Terminal emulator"
-#~ msgstr "Προσομοιωτής τερματικού"
-
-#~ msgid "Browse the web"
-#~ msgstr "Περιηγητής ιστοσελίδων"
-
-#~ msgid "Web Browser"
-#~ msgstr "Περιηγητής Ιστού"
-
-#~ msgid ""
-#~ "Auto\n"
-#~ "Centered\n"
-#~ "Tiled\n"
-#~ "Stretched\n"
-#~ "Scaled\n"
-#~ "Zoomed"
-#~ msgstr ""
-#~ "Αυτόματο\n"
-#~ "Κεντραρισμένο\n"
-#~ "Σε παράθεση\n"
-#~ "Τέντωμα\n"
-#~ "Μεγέθυνση\n"
-#~ "Σμίκρυνση"
-
-#~ msgid ""
-#~ "Left\n"
-#~ "Middle\n"
-#~ "Right"
-#~ msgstr ""
-#~ "Αριστερά\n"
-#~ "Κέντρο\n"
-#~ "Δεξιά"
-
-#~ msgid ""
-#~ "None\n"
-#~ "Shift\n"
-#~ "Alt\n"
-#~ "Control"
-#~ msgstr ""
-#~ "Κανένα\n"
-#~ "Shift\n"
-#~ "Alt\n"
-#~ "Control"
-
-#~ msgid ""
-#~ "Solid color\n"
-#~ "Horizontal gradient\n"
-#~ "Vertical gradient\n"
-#~ "Transparent"
-#~ msgstr ""
-#~ "Συμπαγές χρώμα\n"
-#~ "Οριζόντια διαβάθμιση\n"
-#~ "Κάθετη διαβάθμιση\n"
-#~ "Διαφανές"
-
-#~ msgid "Add menu entry"
-#~ msgstr "Προσθήκη νέας καταχώρησης μενού"
-
-#~ msgid "Type:"
-#~ msgstr "Τύπος:"
-
-#~ msgid "Title"
-#~ msgstr "Τίτλος"
-
-#~ msgid "Submenu"
-#~ msgstr "Υπομενού"
-
-#~ msgid "Launcher"
-#~ msgstr "Εκκινητής"
-
-#~ msgid "Separator"
-#~ msgstr "Διαχωριστικό"
-
-#~ msgid "Quit"
-#~ msgstr "Έξοδος"
-
-#~ msgid "Command:"
-#~ msgstr "Εντολή:"
-
-#~ msgid "Icon:"
-#~ msgstr "Εικονίδιο:"
-
-#~ msgid "No icon"
-#~ msgstr "Χωρίς εικονίδιο"
-
-#~ msgid "Themed icon:"
-#~ msgstr "Εικονίδιο θέματος:"
-
-#~ msgid "Select icon"
-#~ msgstr "Επιλογή εικονιδίου"
-
-#~ msgid "Use startup _notification"
-#~ msgstr "Χρήση ειδοποίησης _εκκίνησης"
-
-#~ msgid "Run in _terminal"
-#~ msgstr "Εκτέλεση σε τερματι_κό"
-
-#~ msgid "Select command"
-#~ msgstr "Επιλογή εντολής"
-
-#~ msgid "Executable Files"
-#~ msgstr "Εκτελέσιμα αρχεία"
-
-#~ msgid "Perl Scripts"
-#~ msgstr "Δέσμες ενεργειών Perl"
-
-#~ msgid "Python Scripts"
-#~ msgstr "Δέσμες ενεργειών Python"
-
-#~ msgid "Ruby Scripts"
-#~ msgstr "Δέσμες ενεργειών Ruby"
-
-#~ msgid "Shell Scripts"
-#~ msgstr "Δέσμες ενεργειών κέλυφους"
-
-#~ msgid "Add external menu entry"
-#~ msgstr "Προσθήκη εγγραφής μενού"
-
-#~ msgid "File"
-#~ msgstr "Αρχείο"
-
-#~ msgid "Source:"
-#~ msgstr "Πηγή:"
-
-#~ msgid "Select external menu"
-#~ msgstr "Επιλογή εξωτερικού μενού"
-
-#~ msgid "Style:"
-#~ msgstr "Στυλ:"
-
-#~ msgid "Simple"
-#~ msgstr "Απλό"
-
-#~ msgid "Multilevel"
-#~ msgstr "Πολυεπίπεδο"
-
-#~ msgid "_Unique entries only"
-#~ msgstr "_Μοναδικές καταχωρήσεις μόνο"
-
-#~ msgid "Edit menu entry"
-#~ msgstr "Επεξεργασία καταχώρησης μενού"
-
-#~ msgid "Edit external menu entry"
-#~ msgstr "Επεξεργασία εξωτερικής εγγραφής μενού"
-
-#~ msgid "Xfce4-MenuEditor"
-#~ msgstr "Xfce4-MenuEditor"
-
-#~ msgid "Menueditor Warning"
-#~ msgstr "Προειδοποίηση"
-
-#~ msgid "xfce4-menueditor is deprecated"
-#~ msgstr "Ο επεξεργαστής μενού είναι ξεπερασμένος"
-
-#~ msgid ""
-#~ "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
-#~ "edit the new menu file format.  You may continue and edit an old-style "
-#~ "menu file, or quit."
-#~ msgstr ""
-#~ "Το σύστημα μενού του Xfce έχει αλλάξει, και ο επεξεργαστής μενού δεν έχει "
-#~ "ενημερωθεί ωστε να μπορεί να τροποποιήσει τη νέα μορφή. Μπορείτε να "
-#~ "συνεχίσετε και να επεξεργαστήτε ένα αρχείο προηγούμενης μορφής, ή να "
-#~ "κλείσετε."
-
-#~ msgid "Continue"
-#~ msgstr "Συνέχεια"
-
-#~ msgid "_File"
-#~ msgstr "_Αρχείο"
-
-#~ msgid "_New"
-#~ msgstr "_Νέο"
-
-#~ msgid "Create a new empty menu"
-#~ msgstr "Δημιουργία νέου κενού μενού"
-
-#~ msgid "Open existing menu"
-#~ msgstr "Άνοιγμα υπάρχοντος μενού"
-
-#~ msgid "Open _default menu"
-#~ msgstr "Άνοιγμα _προεπιλεγμένου μενού"
-
-#~ msgid "Open default menu"
-#~ msgstr "Άνοιγμα προκαθορισμένου μενού"
-
-#~ msgid "_Save"
-#~ msgstr "Απο_θήκευση"
-
-#~ msgid "Save modifications"
-#~ msgstr "Αποθήκευση τροποποιήσεων"
-
-#~ msgid "Save _as..."
-#~ msgstr "Αποθήκευση ως..."
-
-#~ msgid "Save menu under a given name"
-#~ msgstr "Αποθήκευση ως"
-
-#~ msgid "_Close"
-#~ msgstr "_Κλείσιμο"
-
-#~ msgid "Close menu"
-#~ msgstr "Κλείσιμο μενού"
-
-#~ msgid "_Quit"
-#~ msgstr "Έ_ξοδος"
-
-#~ msgid "Quit Xfce4-Menueditor"
-#~ msgstr "Έξοδος από το Xfce4-Menueditor"
-
-#~ msgid "_Edit"
-#~ msgstr "_Επεξεργασία"
-
-#~ msgid "_Edit entry"
-#~ msgstr "_Επεξεργασία εγγραφής"
-
-#~ msgid "Edit selected entry"
-#~ msgstr "Επεξεργασία επιλεγμένης εγγραφής"
-
-#~ msgid "_Add entry"
-#~ msgstr "_Προσθήκη εγγραφής"
-
-#~ msgid "Add a new entry in the menu"
-#~ msgstr "Προσθήκη νέας εγγραφής στο μενού"
-
-#~ msgid "Add _external"
-#~ msgstr "Προσθήκη ε_ξωτερικής"
-
-#~ msgid "Add an external entry"
-#~ msgstr "Προσθήκη νέας εξωτερικής εγγραφής"
-
-#~ msgid "_Remove entry"
-#~ msgstr "_Διαγραφή εγγραφής"
-
-#~ msgid "Remove entry"
-#~ msgstr "Διαγραφή εγγραφής"
-
-#~ msgid "_Up"
-#~ msgstr "_Επάνω"
-
-#~ msgid "Move entry up"
-#~ msgstr "Μετακίνηση εγγραφής προς τα επάνω"
-
-#~ msgid "_Down"
-#~ msgstr "_Κάτω"
-
-#~ msgid "Move entry down"
-#~ msgstr "Μετακίνηση εγγραφής προς τα κάτω"
-
-#~ msgid "_Help"
-#~ msgstr "_Βοήθεια"
-
-#~ msgid "_About..."
-#~ msgstr "_Περί..."
-
-#~ msgid "Show informations about xfce4-menueditor"
-#~ msgstr "Πληροφορίες για το xfce4-menueditor"
-
-#~ msgid "Collapse all"
-#~ msgstr "Σύμπτυξη όλων"
-
-#~ msgid "Collapse all menu entries"
-#~ msgstr "Σύμπτυξη όλων των εγγραφών του μενού"
-
-#~ msgid "Expand all"
-#~ msgstr "Ανάπτυξη όλων"
-
-#~ msgid "Expand all menu entries"
-#~ msgstr "Ανάπτυξη όλων των εγγραφών του μενού"
-
-#~ msgid "Name"
-#~ msgstr "Όνομα"
-
-#~ msgid "Hidden"
-#~ msgstr "Κρυμμένο"
-
-#~ msgid "Are you sure you want to close the current menu?"
-#~ msgstr "Είστε σίγουρος/η ότι θέλετε να κλείσετε αυτό το μενού;"
-
-#~ msgid "Do you want to save before closing the file?"
-#~ msgstr "Θέλετε να αποθηκεύσετε πριν κλείσετε το αρχείο;"
-
-#~ msgid "Do you want to save before opening an other menu ?"
-#~ msgstr "Θέλετε να αποθηκεύσετε πριν ανοίξετε ένα άλλο μενού;"
-
-#~ msgid "Ignore modifications"
-#~ msgstr "Αγνόηση τροποποιήσεων"
-
-#~ msgid "Open menu file"
-#~ msgstr "Άνοιγμα αρχείου μενού"
-
-#~ msgid "Do you want to save before opening the default menu ?"
-#~ msgstr "Θέλετε να αποθηκεύσετε πριν ανοίξετε το προκαθορισμένου μενού;"
-
-#~ msgid "Save menu file as"
-#~ msgstr "Αποθήκευση αρχείου μενού ως"
-
-#~ msgid "Do you want to save before closing the menu ?"
-#~ msgstr "Θέλετε να αποθηκεύσετε πριν κλείσετε το μενού;"
-
-#~ msgid "quit"
-#~ msgstr "έξοδος"
-
-#~ msgid "--- separator ---"
-#~ msgstr "--- διαχωριστικό ---"
-
-#~ msgid "--- include ---"
-#~ msgstr "--- περίληψη ---"
-
-#~ msgid "system"
-#~ msgstr "σύστημα"
-
-#~ msgid "Do you want to move the item into the submenu?"
-#~ msgstr "Θέλετε να μετακινήσετε το αντικείμενο στο υπομενού;"
-
-#~ msgid "A menu editor for Xfce4"
-#~ msgstr "Επεξεργαστής μενού για το Xfce 4"
-
-#~ msgid "Author/Maintainer"
-#~ msgstr "Δημιουργός"
-
-#~ msgid "Icon designer"
-#~ msgstr "Σχεδιαστής εικονιδίων"
-
-#~ msgid "You have modified the menu, do you want to save it before quitting ?"
-#~ msgstr ""
-#~ "Έχετε μεταβάλλει το μενού, θέλετε να το αποθηκεύσετε πριν την έξοδο;"
-
-#~ msgid "Forget modifications"
-#~ msgstr "Ξέχασε τις τροποποιήσεις"
-
-#~ msgid "Unable to open the menu file %s in write mode"
-#~ msgstr "Δεν ήταν δυνατό το άνοιγμα του αρχείου μενού %s για εγγραφή"
-
-#~ msgid "Graphical tool for editing the Xfce 4 menu"
-#~ msgstr "Γραφικό εργαλείο για την επεξεργασία του Xfce 4 μενού"
-
-#~ msgid "Menu Editor"
-#~ msgstr "Επεξεργαστής μενού"
-
-#~ msgid "Xfce 4 Menu Editor"
-#~ msgstr "Επεξεργαστής μενού Xfce 4"
-
-#~ msgid "Settings for the Xfce 4 Desktop Manager"
-#~ msgstr "Ρυθμίσεις Διαχειριστή επιφάνειας εργασίας Xfce 4"
-
-#~ msgid "Xfce 4 Desktop Settings"
-#~ msgstr "Ρυθμίσεις επιφάνειας εργασίας Xfce 4"
-
-#, fuzzy
-#~ msgid "Use _Xfce to manage the desktop"
-#~ msgstr "Να επιτρέπεται στο _Xfce να διαχειρίζεται την επιφάνεια εργασίας"
-
-#~ msgid ""
-#~ "Could not save file %s: %s\n"
-#~ "\n"
-#~ "Please choose another location or press cancel in the dialog to discard "
-#~ "your changes"
-#~ msgstr ""
-#~ "Η αποθήκευση του αρχείου %s δεν ήταν δυνατή: %s\n"
-#~ "\n"
-#~ "Παρακαλώ επιλέξτε μια άλλη τοποθεσία ή επιλέξτε άκυρο στο πλαίσιο "
-#~ "διαλόγου για να απαλείψετε τις αλλαγές σας"
-
-#~ msgid "Button Label|Desktop"
-#~ msgstr ""
-#~ "Επιφάνεια\n"
-#~ "Εργασίας"
-
-#~ msgid "backdrops.list"
-#~ msgstr "backdrops.list"
-
-#~ msgid "Select backdrop image or list file"
-#~ msgstr "Επιλέξτε εικόνα παρασκηνίου ή αρχείο λίστας εικόνων παρασκηνίου"
-
-#~ msgid "List Files (*.list)"
-#~ msgstr "Αρχεία λίστας (*.list)"
-
-#~ msgid "_Edit list..."
-#~ msgstr "_Επεξεργασία λίστας..."
-
-#~ msgid "_New list..."
-#~ msgstr "_Νέα λίστα..."
-
-#~ msgid "S_tyle:"
-#~ msgstr "Σ_τυλ:"
-
-#~ msgid "Xfce will be unable to manage your desktop (%s)."
-#~ msgstr ""
-#~ "Το Xfce δε θα μπορεί να διαχειριστεί την επιφάνεια εργασίας σας (%s)."
-
-#~ msgid "Unknown Error"
-#~ msgstr "Άγνωστο σφάλμα"
-
-#~ msgid "Unable to start xfdesktop"
-#~ msgstr "Αδύνατη η εκκίνηση του xfdesktop"
-
-#~ msgid ""
-#~ "To ensure that this setting takes effect the next time you start Xfce, "
-#~ "please be sure to save your session when logging out.  If you are not "
-#~ "using the Xfce Session Manager (xfce4-session), you will need to manually "
-#~ "edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
-#~ "documentation provided on http://xfce.org/."
-#~ msgstr ""
-#~ "Για να σιγουρευτείτε θα εφαρμοστεί η ρύθμιση την επόμενη φορά που θα "
-#~ "ξεκινήσετε το Xfce, αποθηκεύσετε τη συνεδρία σας όταν αποσυνδεθείτε. Αν "
-#~ "δε χρησιμοποιείτε τον Διαχειριστή συνεδρίας του Xfce (xfce4-session), θα "
-#~ "πρέπει να επεξεργαστείτε χειροκίνητα το αρχείο ~/.config/xfce4/xinitrc. "
-#~ "Υπάρχουν λεπτομέρειες διαθέσιμες στην τεκμηρίωση που διατίθεται στο "
-#~ "http://xfce.org/."
-
-#~ msgid ""
-#~ "To ensure that Xfce does not manage your desktop the next time you start "
-#~ "Xfce, please be sure to save your session when logging out.  If you are "
-#~ "not using the Xfce Session Manager (xfce4-session), you will need to "
-#~ "manually edit your ~/.config/xfce4/xinitrc file.  Details are available "
-#~ "in the documentation provided on http://xfce.org/."
-#~ msgstr ""
-#~ "Για να σιγουρευτείτε ότι το Xfce δε θα διαχειρίζεται την επιφάνεια "
-#~ "εργασίας σας την επόμενη φορά που θα το ξεκινήσετε, αποθηκεύσετε τη "
-#~ "συνεδρία σας όταν αποσυνδεθείτε. Αν δε χρησιμοποιείτε τον Διαχειριστή "
-#~ "συνεδρίας του Xfce (xfce4-session), θα πρέπει να επεξεργαστείτε "
-#~ "χειροκίνητα το αρχείο ~/.config/xfce4/xinitrc. Υπάρχουν λεπτομέρειες "
-#~ "διαθέσιμες στην τεκμηρίωση που διατίθεται στο http://xfce.org/."
-
-#~ msgid "_Do not show this again"
-#~ msgstr "_Να μην εμφανιστεί ξανά αυτή η προειδοποίηση"
-
-#~ msgid "Desktop Preferences"
-#~ msgstr "Προτιμήσεις επιφάνεια εργασίας"
-
-#~ msgid "Stretch single backdrop onto _all monitors"
-#~ msgstr "Επέκταση μιας εικόνας παρασκηνίου σε όλες τις _οθόνες"
-
-#~ msgid "Color"
-#~ msgstr "Χρώμα"
-
-#~ msgid "_Color Style:"
-#~ msgstr "Στυλ _Χρώματος"
-
-#~ msgid "Image"
-#~ msgstr "Εικόνα"
-
-#~ msgid "Show _Image"
-#~ msgstr "Εμφάνιση ει_κόνας"
-
-#~ msgid "_File:"
-#~ msgstr "_Αρχείο:"
-
-#~ msgid "_Behavior"
-#~ msgstr "_Συμπεριφορά"
-
-#~ msgid "Select backdrop image file"
-#~ msgstr "Επιλέξτε ένα αρχείο εικόνας για το παρασκήνιο"
-
-#~ msgid "List file"
-#~ msgstr "Αρχείο λίστας"
-
-#~ msgid "Edit backdrop list"
-#~ msgstr "Επεξεργασία λίστας παρασκηνίων"
-
-#~ msgid "Desktop Icons"
-#~ msgstr "Εικονίδια επιφάνειας εργασίας"
-
-#~ msgid "Use _system font size"
-#~ msgstr "Χρήση μεγέθους γραμματοσειράς _συστήματος"
-
-#~ msgid "Des_ktop"
-#~ msgstr "Ε_πιφάνεια εργασίας"
-
-#~ msgid "_Desktop Properties..."
-#~ msgstr "_Ιδιότητες επιφάνειας εργασίας..."
-
-#~ msgid "Science"
-#~ msgstr "Επιστήμη"
-
-#, fuzzy
-#~ msgid "Scientific applications and tools"
-#~ msgstr "Ελαχιστοποιημένες εφαρμογές"
-
-#~ msgid "Unable to quit session."
-#~ msgstr "Δεν ήταν δυνατή η έξοδος από τη συνεδρία."
-
-#~ msgid ""
-#~ "Quitting the session requires that Xfce's session manager (xfce4-session) "
-#~ "is running, but it was not detected.  Please quit Xfce via another means."
-#~ msgstr ""
-#~ "Για να γίνει η έξοδος πρέπει να εκτελείται ο διαχειριστής συνεδρίας του "
-#~ "Xfce (xfce4-session) αλλά δεν εντοπίστηκε. Παρακαλώ βγείτε από το Xfce με "
-#~ "άλλα μέσα."
-
-#~ msgid ""
-#~ "Quitting the session requires the 'xfce4-session-logout' command, but it "
-#~ "could not be found: %s"
-#~ msgstr ""
-#~ "Για να γίνει η έξοδος απαιτείται η εντολή 'xfce4-session-logout', αλλά "
-#~ "δεν είναι δυνατό να βρεθεί: %s"
-
-#~ msgid "Edit Properties"
-#~ msgstr "Επεξεργασία ιδιοτήτων"
-
-#~ msgid " Bytes)"
-#~ msgstr " Bytes)"
-
-#~ msgid "Unknown error."
-#~ msgstr "Άγνωστο σφάλμα."
