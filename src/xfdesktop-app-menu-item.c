@@ -173,7 +173,7 @@ xfdesktop_app_menu_item_set_icon(XfdesktopAppMenuItem *app_menu_item)
     GdkPixbuf *pixbuf = NULL;
     GtkWidget *image;
     GtkIconTheme *icon_theme;
-    gchar *p, *name;
+    gchar *p, *name = NULL;
     gchar *filename;
 
     icon_name = garcon_menu_item_get_icon_name(app_menu_item->item);
@@ -199,7 +199,7 @@ xfdesktop_app_menu_item_set_icon(XfdesktopAppMenuItem *app_menu_item)
 
                 /* maybe they point to a file in the pixbufs folder */
                 if (G_UNLIKELY(pixbuf == NULL)) {
-                    filename = g_build_filename("pixmaps", name, NULL);
+                    filename = g_build_filename("pixmaps", icon_name, NULL);
                     name = xfce_resource_lookup(XFCE_RESOURCE_DATA, filename);
                     g_free(filename);
 
