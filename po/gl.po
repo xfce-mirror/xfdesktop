@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-04 18:56+0000\n"
+"POT-Creation-Date: 2010-11-08 11:09+0000\n"
 "PO-Revision-Date: 2010-10-19 18:44+0100\n"
 "Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -429,11 +429,11 @@ msgstr "Mostrar os _nomes dos espazos de traballo na lista"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
 msgid "Specify the transparency level for the rounded label drawn behind the icon text"
-msgstr ""
+msgstr "Especificar o nivel de transparencia da etiqueta redondeada que se mostra arredor do texto da icona"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "Use _submenus for the windows in each workspace"
-msgstr ""
+msgstr "Usar _submenús para as xanelas de cada espazo de traballo"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:38
 msgid "Use custom _font size:"
@@ -527,7 +527,7 @@ msgstr "    Iconas de ficheiro do escritorio:  %s\n"
 msgid "%s is not running.\n"
 msgstr "%s non se está executando.\n"
 
-#: ../src/menu.c:111
+#: ../src/menu.c:106
 msgid "_Applications"
 msgstr "_Aplicacións"
 
@@ -573,54 +573,6 @@ msgstr "Non foi posible cargar a imaxe dende o ficheiro de lista de fondos de es
 #: ../src/xfce-desktop.c:1008
 msgid "Desktop Error"
 msgstr "Erro de escritorio"
-
-#: ../src/xfdesktop-app-menu-item.c:234
-msgid "Needs terminal"
-msgstr "Precisa terminal"
-
-#: ../src/xfdesktop-app-menu-item.c:235
-msgid "Whether or not the command needs a terminal to execute"
-msgstr "Indica se unha orde precisa unha terminal para executarse"
-
-#: ../src/xfdesktop-app-menu-item.c:241
-msgid "Command"
-msgstr "Orde"
-
-#: ../src/xfdesktop-app-menu-item.c:242
-msgid "The command to run when the item is clicked"
-msgstr "A orde que se executa ao premer no elemento"
-
-#: ../src/xfdesktop-app-menu-item.c:248
-msgid "Icon name"
-msgstr "Nome da icona"
-
-#: ../src/xfdesktop-app-menu-item.c:249
-msgid "The name of the themed icon to display next to the item"
-msgstr "O nome da icona de tema que se mostra a carón do elemento"
-
-#: ../src/xfdesktop-app-menu-item.c:255
-msgid "Label"
-msgstr "Etiqueta"
-
-#: ../src/xfdesktop-app-menu-item.c:256
-msgid "The label displayed in the item"
-msgstr "A etiqueta do elemento"
-
-#: ../src/xfdesktop-app-menu-item.c:262
-msgid "Startup notification"
-msgstr "Notificación de inicio"
-
-#: ../src/xfdesktop-app-menu-item.c:263
-msgid "Whether or not the app supports startup notification"
-msgstr "Indica se o aplicativo admite notificación de inicio"
-
-#: ../src/xfdesktop-app-menu-item.c:269
-msgid "Use underline"
-msgstr "Usar subliñado"
-
-#: ../src/xfdesktop-app-menu-item.c:270
-msgid "Whether or not to use an underscore in the label as a keyboard mnemonic"
-msgstr "Indica se se usa ou non o guión baixo na etiqueta como mnemónico de teclado"
 
 # backdrop=fondo de escritorio
 #: ../src/xfdesktop-file-icon-manager.c:479
@@ -999,6 +951,42 @@ msgstr "_Expulsar volume"
 #: ../src/xfdesktop-volume-icon.c:679
 msgid "_Mount Volume"
 msgstr "_Montar volume"
+
+#~ msgid "Needs terminal"
+#~ msgstr "Precisa terminal"
+
+#~ msgid "Whether or not the command needs a terminal to execute"
+#~ msgstr "Indica se unha orde precisa unha terminal para executarse"
+
+#~ msgid "Command"
+#~ msgstr "Orde"
+
+#~ msgid "The command to run when the item is clicked"
+#~ msgstr "A orde que se executa ao premer no elemento"
+
+#~ msgid "Icon name"
+#~ msgstr "Nome da icona"
+
+#~ msgid "The name of the themed icon to display next to the item"
+#~ msgstr "O nome da icona de tema que se mostra a carón do elemento"
+
+#~ msgid "Label"
+#~ msgstr "Etiqueta"
+
+#~ msgid "The label displayed in the item"
+#~ msgstr "A etiqueta do elemento"
+
+#~ msgid "Startup notification"
+#~ msgstr "Notificación de inicio"
+
+#~ msgid "Whether or not the app supports startup notification"
+#~ msgstr "Indica se o aplicativo admite notificación de inicio"
+
+#~ msgid "Use underline"
+#~ msgstr "Usar subliñado"
+
+#~ msgid "Whether or not to use an underscore in the label as a keyboard mnemonic"
+#~ msgstr "Indica se se usa ou non o guión baixo na etiqueta como mnemónico de teclado"
 
 #~ msgid "Unable to launch xfce4-menueditor: %s"
 #~ msgstr "Non foi posible iniciar xfce4-menueditor: %s"
