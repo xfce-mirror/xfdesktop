@@ -1452,7 +1452,11 @@ xfdesktop_settings_dialog_new(GtkBuilder *main_gxml,
                            "active");
 
     w = GTK_WIDGET(gtk_builder_get_object(main_gxml, "combo_icons"));
-    gtk_combo_box_set_active(GTK_COMBO_BOX(w), 0);
+#ifdef ENABLE_FILE_ICONS
+    gtk_combo_box_set_active(GTK_COMBO_BOX(w), 2);
+#else
+    gtk_combo_box_set_active(GTK_COMBO_BOX(w), 1);
+#endif
     xfconf_g_property_bind(channel, DESKTOP_ICONS_STYLE_PROP, G_TYPE_INT,
                            G_OBJECT(w), "active");
     xfconf_g_property_bind(channel, DESKTOP_ICONS_ICON_SIZE_PROP, G_TYPE_UINT,
