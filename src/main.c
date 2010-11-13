@@ -331,7 +331,7 @@ main(int argc, char **argv)
 
     if(!xfce_sm_client_connect(sm_client, &error) && error) {
         g_printerr("Failed to connect to session manager: %s\n", error->message);
-        g_error_free(error);
+        g_clear_error(&error);
     }
 
     gdpy = gdk_display_get_default();
