@@ -2,6 +2,7 @@
  *  xfdesktop - xfce4's desktop manager
  *
  *  Copyright (c) 2006 Brian Tarricone, <bjt23@cornell.edu>
+ *  Copyright (c) 2010 Jannis Pohlmann, <jannis@xfce.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -28,17 +29,16 @@
 
 #include <glib-object.h>
 
-#include <libxfce4util/libxfce4util.h>
-#include <libxfce4ui/libxfce4ui.h>
 #include <libwnck/libwnck.h>
+
+#include <libxfce4util/libxfce4util.h>
+
+#include <libxfce4ui/libxfce4ui.h>
 
 #include "xfdesktop-icon-view.h"
 #include "xfdesktop-window-icon.h"
 #include "xfdesktop-window-icon-manager.h"
 #include "xfce-desktop.h"
-
-
-static gboolean __wnck_has_new_active_workspace_changed_signal = TRUE;
 
 static void xfdesktop_window_icon_manager_set_property(GObject *object,
                                                        guint property_id,
@@ -93,7 +93,6 @@ static void
 xfdesktop_window_icon_manager_class_init(XfdesktopWindowIconManagerClass *klass)
 {
     GObjectClass *gobject_class = (GObjectClass *)klass;
-    guint sig_id;
     
     g_type_class_add_private(klass, sizeof(XfdesktopWindowIconManagerPrivate));
     
@@ -107,21 +106,6 @@ xfdesktop_window_icon_manager_class_init(XfdesktopWindowIconManagerClass *klass)
                                                         GDK_TYPE_SCREEN,
                                                         G_PARAM_READWRITE
                                                         | G_PARAM_CONSTRUCT_ONLY));
-
-    /* make sure the class is alive; g_signal_lookup() fails otherwise */
-    if(!g_type_class_peek(WNCK_TYPE_SCREEN))
-        g_type_class_ref(WNCK_TYPE_SCREEN);
-    sig_id = g_signal_lookup("active-workspace-changed", WNCK_TYPE_SCREEN);
-    if(sig_id) {
-        GSignalQuery query;
-
-        g_signal_query(sig_id, &query);
-        if(query.n_params == 0)
-            __wnck_has_new_active_workspace_changed_signal = FALSE;
-        else
-            __wnck_has_new_active_workspace_changed_signal = TRUE;
-        DBG("active-workspace-changed signal has %d param(s)\n", query.n_params);
-    }
 }
 
 static void
@@ -236,20 +220,12 @@ xfdesktop_add_window_icons_foreach(gpointer key,
 
 static void
 workspace_changed_cb(WnckScreen *wnck_screen,
-                     gpointer arg1,
+                     WnckWorkspace *previously_active_space,
                      gpointer user_data)
 {
-    XfdesktopWindowIconManager *wmanager;
+    XfdesktopWindowIconManager *wmanager = XFDESKTOP_WINDOW_ICON_MANAGER(user_data);
     gint n;
     WnckWorkspace *ws;
-
-    /* as of libwnck 2.20, the "active-workspace-changed" signal has
-     * a new prototype with an extra argument.  previous versions don't
-     * have this argument, so we fudge this here (bug 4395). */
-    if(G_LIKELY(__wnck_has_new_active_workspace_changed_signal))
-        wmanager = XFDESKTOP_WINDOW_ICON_MANAGER(user_data);
-    else
-        wmanager = XFDESKTOP_WINDOW_ICON_MANAGER(arg1);
 
     ws = wnck_screen_get_active_workspace(wmanager->priv->wnck_screen);
     if(!WNCK_IS_WORKSPACE(ws)) {

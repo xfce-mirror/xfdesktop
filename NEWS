@@ -5,6 +5,9 @@ Xfdesktop 4.7.x
     items to the right-click menu.
   * Select the correct icon style in the desktop settings on first 
     start (bug #6798).
+  * Depend on libwnck >= 2.22 so we no longer have to implement hacks
+    for the two different "active-workspace-changed" signal variants
+    in libwnck (bug #6638).
 
 
 Xfdesktop 4.7.2
