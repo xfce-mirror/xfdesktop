@@ -424,19 +424,6 @@ __migrate_old_icon_positions(XfdesktopFileIconManager *fmanager)
                         g_error_free(error);
                     }
 
-                    FILE *fp = fopen(new_file, "w");
-                    gboolean success = FALSE;
-                    if(fp) {
-                        success = (fwrite(contents, 1, length, fp) == length);
-                        success = !fclose(fp);
-                    }
-                    
-                    if(!success) {
-                        g_critical("Unable to write to %s: %s", new_file,
-                                   strerror(errno));
-                    }
-#endif
-                    
                     g_free(contents);
                 } else {
                     g_critical("Unable to read from %s: %s", old_file,
