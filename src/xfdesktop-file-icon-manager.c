@@ -416,7 +416,6 @@ __migrate_old_icon_positions(XfdesktopFileIconManager *fmanager)
                 GError *error = NULL;
                 
                 if(g_file_get_contents(old_file, &contents, &length, &error)) {
-#if GLIB_CHECK_VERSION(2, 8, 0)
                     if(!g_file_set_contents(new_file, contents, length,
                                             &error))
                     {
@@ -424,7 +423,7 @@ __migrate_old_icon_positions(XfdesktopFileIconManager *fmanager)
                                    error->message);
                         g_error_free(error);
                     }
-#else
+
                     FILE *fp = fopen(new_file, "w");
                     gboolean success = FALSE;
                     if(fp) {

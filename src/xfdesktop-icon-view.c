@@ -313,14 +313,12 @@ static gboolean xfdesktop_icon_view_icon_find_position(XfdesktopIconView *icon_v
 static gboolean xfdesktop_icon_view_shift_area_to_cell(XfdesktopIconView *icon_view,
                                                        XfdesktopIcon *icon,
                                                        GdkRectangle *text_area);
-#if GTK_CHECK_VERSION(2, 12, 0)
 static gboolean xfdesktop_icon_view_show_tooltip(GtkWidget *widget,
                                                  gint x,
                                                  gint y,
                                                  gboolean keyboard_tooltip,
                                                  GtkTooltip *tooltip,
                                                  gpointer user_data);
-#endif
 
 static void xfdesktop_icon_view_real_select_all(XfdesktopIconView *icon_view);
 static void xfdesktop_icon_view_real_unselect_all(XfdesktopIconView *icon_view);
@@ -641,11 +639,9 @@ xfdesktop_icon_view_init(XfdesktopIconView *icon_view)
                                                         icon_view_n_targets);
     gtk_drag_dest_set(GTK_WIDGET(icon_view), 0, NULL, 0, GDK_ACTION_MOVE);
     
-#if GTK_CHECK_VERSION(2, 12, 0)
     g_object_set(G_OBJECT(icon_view), "has-tooltip", TRUE, NULL);
     g_signal_connect(G_OBJECT(icon_view), "query-tooltip",
                      G_CALLBACK(xfdesktop_icon_view_show_tooltip), NULL);
-#endif
     
     GTK_WIDGET_SET_FLAGS(GTK_WIDGET(icon_view), GTK_NO_WINDOW);
 }
@@ -931,7 +927,6 @@ xfdesktop_icon_view_maybe_begin_drag(XfdesktopIconView *icon_view,
     return TRUE;
 }
 
-#if GTK_CHECK_VERSION(2, 12, 0)
 static gboolean
 xfdesktop_icon_view_show_tooltip(GtkWidget *widget,
                                  gint x,
@@ -957,7 +952,6 @@ xfdesktop_icon_view_show_tooltip(GtkWidget *widget,
 
     return TRUE;
 }
-#endif
 
 static gboolean
 xfdesktop_icon_view_motion_notify(GtkWidget *widget,

@@ -1241,7 +1241,6 @@ xfdesktop_settings_dialog_new(GtkBuilder *main_gxml,
             panel->monitor = j;
 
             if(nscreens > 1 && nmonitors > 1) {
-#if GTK_CHECK_VERSION(2, 13, 0)
                 gchar *monitor_name = gdk_screen_get_monitor_plug_name(screen,
                                                                        j);
                 if(monitor_name) {
@@ -1250,13 +1249,11 @@ xfdesktop_settings_dialog_new(GtkBuilder *main_gxml,
                                monitor_name);
                     g_free(monitor_name);
                 } else
-#endif
                     g_snprintf(buf, sizeof(buf), _("Screen %d, Monitor %d"),
                                i+1, j+1);
             } else if(nscreens > 1)
                 g_snprintf(buf, sizeof(buf), _("Screen %d"), i+1);
             else {
-#if GTK_CHECK_VERSION(2, 13, 0)
                 gchar *monitor_name = gdk_screen_get_monitor_plug_name(screen,
                                                                        j);
                 if(monitor_name) {
@@ -1264,7 +1261,6 @@ xfdesktop_settings_dialog_new(GtkBuilder *main_gxml,
                                j+1, monitor_name);
                     g_free(monitor_name);
                 } else
-#endif
                     g_snprintf(buf, sizeof(buf), _("Monitor %d"), j+1);
             }
 

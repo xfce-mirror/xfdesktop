@@ -537,9 +537,7 @@ xfdesktop_clipboard_manager_transfer_files (XfdesktopClipboardManager *manager,
                                 G_OBJECT (manager));
 
   /* Need to fake a "owner-change" event here if the Xserver doesn't support clipboard notification */
-#if GTK_CHECK_VERSION(2,6,0)
   if (!gdk_display_supports_selection_notification (gtk_clipboard_get_display (manager->clipboard)))
-#endif
     {
       xfdesktop_clipboard_manager_owner_changed (manager->clipboard, NULL, manager);
     }
