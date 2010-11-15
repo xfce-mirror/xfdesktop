@@ -258,7 +258,7 @@ windowlist_populate(XfceDesktop *desktop,
             ws_name = wnck_workspace_get_name(wnck_workspace);
             
             if(wnck_workspace == active_workspace) {
-                if(!ws_name || atoi(ws_name) == i+1)
+                if(ws_name == NULL || *ws_name == '\0')
                     ws_label = g_strdup_printf(_("<b>Workspace %d</b>"), i+1);
                 else {
                     gchar *ws_name_esc = g_markup_escape_text(ws_name, strlen(ws_name));
@@ -266,7 +266,7 @@ windowlist_populate(XfceDesktop *desktop,
                     g_free(ws_name_esc);
                 }
             } else {  /* don't italicise if we're showing stuff in submenus */
-                if(!ws_name || atoi(ws_name) == i+1) {
+                if(ws_name == NULL || *ws_name == '\0') {
                     if(wl_submenus)
                         ws_label = g_strdup_printf(_("Workspace %d"), i+1);
                     else
