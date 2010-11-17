@@ -24,14 +24,13 @@
 #include <glib.h>
 #include <gio/gio.h>
 
-#include <libnotify/notify.h>
-
 G_BEGIN_DECLS
 
 void xfdesktop_notify_unmount        (GMount  *mount);
 void xfdesktop_notify_unmount_finish (GMount  *mount);
 void xfdesktop_notify_eject          (GVolume *volume);
 void xfdesktop_notify_eject_finish   (GVolume *volume);
+void xfdesktop_notify_uninit         (void);
 
 G_END_DECLS
 

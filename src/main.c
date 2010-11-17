@@ -66,6 +66,10 @@
 #include "menu.h"
 #include "windowlist.h"
 
+#ifdef HAVE_LIBNOTIFY
+#include "xfdesktop-notify.h"
+#endif
+
 static XfceSMClient *sm_client = NULL;
 
 static void
@@ -398,6 +402,10 @@ main(int argc, char **argv)
     g_free(desktops);
     
     xfconf_shutdown();
+
+#ifdef HAVE_LIBNOTIFY
+    xfdesktop_notify_uninit();
+#endif
     
     return 0;
 }

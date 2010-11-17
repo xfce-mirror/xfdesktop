@@ -36,6 +36,34 @@
 
 
 
+static gboolean xfdesktop_notify_initted = FALSE;
+
+
+
+static gboolean
+xfdesktop_notify_init (void)
+{
+  gchar *spec_version = NULL;
+
+  if (!xfdesktop_notify_initted
+      && notify_init (PACKAGE_NAME))
+    {
+      /* we do this to work around bugs in libnotify < 0.6.0. Older
+       * versions crash in notify_uninit() when no notifications are
+       * displayed before. These versions also segfault when the
+       * ret_spec_version parameter of notify_get_server_info is
+       * NULL... */
+      notify_get_server_info (NULL, NULL, NULL, &spec_version);
+      g_free (spec_version);
+
+      xfdesktop_notify_initted = TRUE;
+    }
+
+  return xfdesktop_notify_initted;
+}
+
+
+
 void
 xfdesktop_notify_unmount (GMount *mount)
 {
@@ -52,6 +80,9 @@ xfdesktop_notify_unmount (GMount *mount)
   gchar               *name;
 
   g_return_if_fail (G_IS_MOUNT (mount));
+
+  if (!xfdesktop_notify_init ())
+    return;
 
   mount_point = g_mount_get_root (mount);
   
@@ -163,6 +194,9 @@ xfdesktop_notify_eject (GVolume *volume)
 
   g_return_if_fail (G_IS_VOLUME (volume));
 
+  if (!xfdesktop_notify_init ())
+    return;
+
   mount = g_volume_get_mount (volume);
   if (mount != NULL)
     {
@@ -254,4 +288,14 @@ xfdesktop_notify_eject_finish (GVolume *volume)
       notify_notification_close (notification, NULL);
       g_object_set_data (G_OBJECT (volume), "xfdesktop-notification", NULL);
     }
+}
+
+
+
+void
+xfdesktop_notify_uninit (void)
+{
+  if (xfdesktop_notify_initted
+      && notify_is_initted ())
+    notify_uninit ();
 }
