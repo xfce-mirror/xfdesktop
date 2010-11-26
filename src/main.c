@@ -330,6 +330,7 @@ main(int argc, char **argv)
 
     sm_client = xfce_sm_client_get();
     xfce_sm_client_set_restart_style(sm_client, XFCE_SM_CLIENT_RESTART_IMMEDIATELY);
+    xfce_sm_client_set_priority(sm_client, XFCE_SM_CLIENT_PRIORITY_DESKTOP);
     g_signal_connect(sm_client, "quit",
                      G_CALLBACK(session_die), NULL);
 
