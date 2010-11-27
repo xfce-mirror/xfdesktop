@@ -109,7 +109,6 @@ menu_populate(XfceDesktop *desktop,
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             
             gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi), desktop_menu_widget);
-            gtk_widget_show(desktop_menu_widget);
         }
     } else {
         /* just get the menu as a list of toplevel GtkMenuItems instead of

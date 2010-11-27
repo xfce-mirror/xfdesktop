@@ -1327,7 +1327,6 @@ xfce_desktop_do_menu_popup(XfceDesktop *desktop,
     
     menu = gtk_menu_new();
     gtk_menu_set_screen(GTK_MENU(menu), screen);
-    gtk_widget_show(menu);
     g_signal_connect_swapped(G_OBJECT(menu), "deactivate",
                              G_CALLBACK(g_idle_add),
                              (gpointer)xfce_desktop_menu_destroy_idled);

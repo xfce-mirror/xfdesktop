@@ -135,7 +135,6 @@ desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
             icon_name = NULL;
 
             submenu = gtk_menu_new();
-            gtk_widget_show(submenu);
 
             if(garcon_directory) {
                 if(desktop_menu->use_menu_icons)

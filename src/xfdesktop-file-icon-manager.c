@@ -1440,7 +1440,6 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
                     
                     tmpl_menu = gtk_menu_new();
-                    gtk_widget_show(tmpl_menu);
                     gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi), tmpl_menu);
                     
                     home_dir = g_file_new_for_path(xfce_get_homedir());
@@ -1538,7 +1537,6 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
                             
                             app_infos_menu = gtk_menu_new();
-                            gtk_widget_show(app_infos_menu);
                             gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi),
                                                       app_infos_menu);
                         } else

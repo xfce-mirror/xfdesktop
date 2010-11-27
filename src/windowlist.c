@@ -227,7 +227,6 @@ windowlist_populate(XfceDesktop *desktop,
     if(menu_children) {
         GtkWidget *tmpmenu = gtk_menu_new();
         gtk_menu_set_screen(GTK_MENU(tmpmenu), gscreen);
-        gtk_widget_show(tmpmenu);
         
         mi = gtk_separator_menu_item_new();
         gtk_widget_show(mi);
@@ -296,7 +295,6 @@ windowlist_populate(XfceDesktop *desktop,
             
             if(wl_submenus) {
                 submenu = gtk_menu_new();
-                gtk_widget_show(submenu);
                 gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi), submenu);
             } else {
                 mi = gtk_separator_menu_item_new();
