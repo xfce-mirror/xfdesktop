@@ -165,7 +165,9 @@ xfdesktop_file_utils_volume_is_present(GVolume *volume)
     gboolean has_media = FALSE;
     gboolean is_shadowed = FALSE;
     GDrive *drive;
+#if GLIB_CHECK_VERSION (2, 20, 0)
     GMount *mount;
+#endif
 
     g_return_val_if_fail(G_IS_VOLUME(volume), FALSE);
 
@@ -175,11 +177,13 @@ xfdesktop_file_utils_volume_is_present(GVolume *volume)
         g_object_unref(drive);
     }
 
+#if GLIB_CHECK_VERSION (2, 20, 0)
     mount = g_volume_get_mount(volume);
     if(mount) {
         is_shadowed = g_mount_is_shadowed(mount);
         g_object_unref(mount);
     }
+#endif
 
     return has_media && !is_shadowed;
 }
