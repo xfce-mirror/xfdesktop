@@ -26,8 +26,7 @@ G_BEGIN_DECLS
 
 typedef struct _XfceDesktopMenu XfceDesktopMenu;
 
-XfceDesktopMenu *xfce_desktop_menu_new(const gchar *menu_file,
-                                            gboolean deferred);
+XfceDesktopMenu *xfce_desktop_menu_new(gboolean deferred);
 void xfce_desktop_menu_populate_menu(XfceDesktopMenu *desktop_menu,
                                           GtkWidget *menu);
 GtkWidget *xfce_desktop_menu_get_widget(XfceDesktopMenu *desktop_menu);

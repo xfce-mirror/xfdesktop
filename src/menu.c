@@ -57,7 +57,7 @@ _stop_menu_module(void) {
 static gboolean
 _start_menu_module(void)
 {
-    desktop_menu = xfce_desktop_menu_new(NULL, TRUE);
+    desktop_menu = xfce_desktop_menu_new(TRUE);
     if(desktop_menu) {
         xfce_desktop_menu_set_show_icons(desktop_menu, show_desktop_menu_icons);
         return TRUE;

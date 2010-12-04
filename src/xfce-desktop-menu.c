@@ -4,7 +4,7 @@
  *                     2003 Biju Chacko (botsie@users.sourceforge.net)
  *                     2004 Danny Milosavljevic <danny.milo@gmx.net>
  *                2004-2008 Brian Tarricone <bjt23@cornell.edu>
- *                     2009 Jannis Pohlmann <jannis@xfce.org>
+ *                2009-2010 Jannis Pohlmann <jannis@xfce.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -185,31 +185,19 @@ static gboolean
 _generate_menu(XfceDesktopMenu *desktop_menu)
 {
     gboolean ret = TRUE;
-    XfceKiosk *kiosk;
-    gboolean user_menu;
     GError *error = NULL;
 
     _xfce_desktop_menu_free_menudata(desktop_menu);
 
-    if(!desktop_menu->filename) {
-        g_critical("%s: can't load menu: no menu file found", PACKAGE);
-        return FALSE;
-    }
+    /* allocate a menu for the ${XDG_MENU_PREFIX}applications.menu file */
+    desktop_menu->garcon_menu = garcon_menu_new_applications();
 
-    kiosk = xfce_kiosk_new("xfdesktop");
-    user_menu = xfce_kiosk_query(kiosk, "UserMenu");
-    xfce_kiosk_free(kiosk);
-
-    DBG("menu file name is %s", desktop_menu->filename);
-
-    if(desktop_menu->garcon_menu)
-        g_object_unref(G_OBJECT(desktop_menu->garcon_menu));
-
-    desktop_menu->garcon_menu = garcon_menu_new_for_path(desktop_menu->filename);
+    /* make sure the member variable is set to NULL when the object is destroyed */
+    g_object_add_weak_pointer (G_OBJECT (desktop_menu->garcon_menu), 
+                               (gpointer) &desktop_menu->garcon_menu);
 
     if(!garcon_menu_load (desktop_menu->garcon_menu, NULL, &error)) {
-        g_critical("Unable to create GarconMenu from file '%s': %s",
-                   desktop_menu->filename, error->message);
+        g_warning("Unable to load menu: %s", error->message);
         g_error_free(error);
         _xfce_desktop_menu_free_menudata(desktop_menu);
         return FALSE;
@@ -226,10 +214,7 @@ _xfce_desktop_menu_free_menudata(XfceDesktopMenu *desktop_menu)
 {
     if(desktop_menu->garcon_menu) {
         g_object_unref(G_OBJECT(desktop_menu->garcon_menu));
-        desktop_menu->garcon_menu = NULL;
     }
-
-    desktop_menu->garcon_menu = NULL;
 }
 
 static gboolean
@@ -245,67 +230,14 @@ _generate_menu_idled(gpointer data)
     return FALSE;
 }
 
-static gchar *
-xfce_desktop_get_menufile(void)
-{
-    XfceKiosk *kiosk;
-    gboolean user_menu;
-    gchar *menu_file = NULL;
-    gchar **all_dirs;
-    const gchar *userhome = xfce_get_homedir();
-    gint i;
-
-    kiosk = xfce_kiosk_new("xfdesktop");
-    user_menu = xfce_kiosk_query(kiosk, "UserMenu");
-    xfce_kiosk_free(kiosk);
-
-    if(user_menu) {
-        gchar *file = xfce_resource_save_location(XFCE_RESOURCE_CONFIG,
-                                                  "menus/xfce-applications.menu",
-                                                  FALSE);
-        if(file) {
-            DBG("checking %s", file);
-            if(g_file_test(file, G_FILE_TEST_IS_REGULAR))
-                return file;
-            else
-                g_free(file);
-        }
-    }
-
-    all_dirs = xfce_resource_lookup_all(XFCE_RESOURCE_CONFIG,
-                                        "menus/xfce-applications.menu");
-    for(i = 0; all_dirs[i]; i++) {
-        DBG("checking %s", all_dirs[i]);
-        if(user_menu || strstr(all_dirs[i], userhome) != all_dirs[i]) {
-            if(g_file_test(all_dirs[i], G_FILE_TEST_IS_REGULAR)) {
-                menu_file = g_strdup(all_dirs[i]);
-                break;
-            }
-        }
-    }
-    g_strfreev(all_dirs);
-
-    if(!menu_file)
-        g_warning("%s: Could not locate a menu definition file", PACKAGE);
-
-    return menu_file;
-}
-
-
 XfceDesktopMenu *
-xfce_desktop_menu_new(const gchar *menu_file,
-                           gboolean deferred)
+xfce_desktop_menu_new(gboolean deferred)
 {
     XfceDesktopMenu *desktop_menu = g_new0(XfceDesktopMenu, 1);
 
     desktop_menu->use_menu_icons = TRUE;
 
     garcon_set_environment("XFCE");
-
-    if(menu_file)
-        desktop_menu->filename = g_strdup(menu_file);
-    else
-        desktop_menu->filename = xfce_desktop_get_menufile();
 
     if(deferred)
         desktop_menu->idle_id = g_idle_add(_generate_menu_idled, desktop_menu);
@@ -409,8 +341,6 @@ xfce_desktop_menu_destroy(XfceDesktopMenu *desktop_menu)
                                          desktop_menu);
 
     _xfce_desktop_menu_free_menudata(desktop_menu);
-
-    g_free(desktop_menu->filename);
 
     if(desktop_menu->garcon_menu) {
         g_signal_handlers_disconnect_by_func(desktop_menu->garcon_menu,
