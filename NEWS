@@ -1,13 +1,22 @@
-Xfdesktop 4.7.x
+Xfdesktop 4.7.3
 ---------------
 
   * Fix a crash caused by accessing the wrong variable when adding
     items to the right-click menu.
-  * Select the correct icon style in the desktop settings on first 
+  * Select the correct icon style in the desktop settings on first
     start (bug #6798).
   * Depend on libwnck >= 2.22 so we no longer have to implement hacks
     for the two different "active-workspace-changed" signal variants
     in libwnck (bug #6638).
+  * Add menu item monitoring.
+  * Fix critical when session manager is not running (bug #6822).
+  * Remove checks for older GLib/GTK+ versions that are no longer needed.
+  * Allow workspace names that start with a number (bug #6318).
+  * Delay notification initialization until we show one.
+  * Set the correct session priority.
+  * Do not call gtk_widget_show() on menus (bug #6198).
+  * Translation updates: gl, ca, de, it, kk, fi, sk, pt, uk, el,
+    zh_TW, da, id, eu, hu, lt.
 
 
 Xfdesktop 4.7.2
@@ -26,7 +35,7 @@ Xfdesktop 4.7.1
     introduced in Thunar 1.1.3.
   * Port xfdesktop to thunarx-2.
   * Translation updates: Portuguese, Basque, Italian, Danish, Kazakh,
-    Galician, Catalan (Valencian), Spanish (Castilian), Swedish, 
+    Galician, Catalan (Valencian), Spanish (Castilian), Swedish,
     Finnish, Greek, Japanese, Ukrainian, Russian, Chinese (Taiwan),
     German, Uyghur.
 
