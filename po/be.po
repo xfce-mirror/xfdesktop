@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-04 20:14+0100\n"
+"POT-Creation-Date: 2010-12-05 16:00+0100\n"
 "PO-Revision-Date: 2007-09-10 00:02+0300\n"
 "Last-Translator: Alexander Nyakhaychyk <nyakhaychyk@gmail.com>\n"
 "Language-Team: Belarusian <xfce-i18n@xfce.org>\n"
@@ -102,27 +102,27 @@ msgstr "Файлы з відарысамі"
 msgid "All files"
 msgstr "Усе файлы"
 
-#: ../settings/main.c:1249
+#: ../settings/main.c:1248
 #, fuzzy, c-format
 msgid "Screen %d, Monitor %d (%s)"
 msgstr "Экран %d, манітор %d"
 
-#: ../settings/main.c:1254
+#: ../settings/main.c:1252
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "Экран %d, манітор %d"
 
-#: ../settings/main.c:1257
+#: ../settings/main.c:1255
 #, c-format
 msgid "Screen %d"
 msgstr "Экран %d"
 
-#: ../settings/main.c:1263
+#: ../settings/main.c:1260
 #, c-format
 msgid "Monitor %d (%s)"
 msgstr ""
 
-#: ../settings/main.c:1268
+#: ../settings/main.c:1264
 #, fuzzy, c-format
 msgid "Monitor %d"
 msgstr "Экран %d, манітор %d"
@@ -493,113 +493,113 @@ msgstr "Значкі"
 msgid "_Menus"
 msgstr "Мэню"
 
-#: ../src/main.c:234
+#: ../src/main.c:238
 #, fuzzy
 msgid "Display version information"
 msgstr "Зьвесткі"
 
-#: ../src/main.c:235
+#: ../src/main.c:239
 #, fuzzy
 msgid "Reload all settings, refresh image list"
 msgstr ""
 "    --reload      Перачытаць усе настаўленьні, абнавіць сьпіс відарысаў\n"
 
-#: ../src/main.c:236
+#: ../src/main.c:240
 #, fuzzy
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "    --menu        Паказаць мэню (побач з мышой)\n"
 
-#: ../src/main.c:237
+#: ../src/main.c:241
 #, fuzzy
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "    --windowlist  Паказаць сьпіс вокнаў (побач з мышой)\n"
 
-#: ../src/main.c:238
+#: ../src/main.c:242
 #, fuzzy
 msgid "Cause xfdesktop to quit"
 msgstr "    --quit        Завяршыць працу xfdesktop\n"
 
-#: ../src/main.c:258
+#: ../src/main.c:262
 #, fuzzy, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "Немагчыма выканаць: \"%s\""
 
-#: ../src/main.c:266
+#: ../src/main.c:270
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Гэта %s вэрсіі %s, працуе ў Xfce %s.\n"
 
-#: ../src/main.c:268
+#: ../src/main.c:272
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Пабудаваны з GTK+ %d.%d.%d, зьвязаны з GTK+ %d.%d.%d."
 
-#: ../src/main.c:272
+#: ../src/main.c:276
 #, c-format
 msgid "Build options:\n"
 msgstr "Опцыі сборкі:\n"
 
-#: ../src/main.c:273
+#: ../src/main.c:277
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Мэню Стальца: %s\n"
 
-#: ../src/main.c:275 ../src/main.c:282 ../src/main.c:289
+#: ../src/main.c:279 ../src/main.c:286 ../src/main.c:293
 msgid "enabled"
 msgstr "уключана"
 
-#: ../src/main.c:277 ../src/main.c:284 ../src/main.c:291
+#: ../src/main.c:281 ../src/main.c:288 ../src/main.c:295
 msgid "disabled"
 msgstr "выключаны"
 
-#: ../src/main.c:280
+#: ../src/main.c:284
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Значкі Стальца: %s\n"
 
-#: ../src/main.c:287
+#: ../src/main.c:291
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Значкі Стальца:  %s\n"
 
-#: ../src/main.c:318
+#: ../src/main.c:322
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s не выконваецца.\n"
 
-#: ../src/menu.c:111
+#: ../src/menu.c:106
 msgid "_Applications"
 msgstr ""
 
-#: ../src/windowlist.c:236
+#: ../src/windowlist.c:235
 msgid "Window List"
 msgstr ""
 
-#: ../src/windowlist.c:262
+#: ../src/windowlist.c:261
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>Працоўная прастора %d</b>"
 
-#: ../src/windowlist.c:271
+#: ../src/windowlist.c:270
 #, c-format
 msgid "Workspace %d"
 msgstr "Працоўная прастора %d"
 
-#: ../src/windowlist.c:273
+#: ../src/windowlist.c:272
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Працоўная прастора %d</i>"
 
-#: ../src/windowlist.c:370 ../src/windowlist.c:373
+#: ../src/windowlist.c:368 ../src/windowlist.c:371
 msgid "_Add Workspace"
 msgstr "Д_адаць працоўную прастору"
 
-#: ../src/windowlist.c:381
+#: ../src/windowlist.c:379
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "Вы_даліць працоўную прастору %d"
 
-#: ../src/windowlist.c:384
+#: ../src/windowlist.c:382
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "Вы_даліць працоўную прастору \"%s\""
@@ -614,94 +614,42 @@ msgstr "Немагчыма стварыць файл \"%s\":"
 msgid "Desktop Error"
 msgstr "Сталец"
 
-#: ../src/xfdesktop-app-menu-item.c:234
-#, fuzzy
-msgid "Needs terminal"
-msgstr "Тэрмінал"
-
-#: ../src/xfdesktop-app-menu-item.c:235
-msgid "Whether or not the command needs a terminal to execute"
-msgstr ""
-
-#: ../src/xfdesktop-app-menu-item.c:241
-msgid "Command"
-msgstr "Загад"
-
-#: ../src/xfdesktop-app-menu-item.c:242
-#, fuzzy
-msgid "The command to run when the item is clicked"
-msgstr "Загад не йснуе!"
-
-#: ../src/xfdesktop-app-menu-item.c:248
-#, fuzzy
-msgid "Icon name"
-msgstr "Распрацоўка значак"
-
-#: ../src/xfdesktop-app-menu-item.c:249
-msgid "The name of the themed icon to display next to the item"
-msgstr ""
-
-#: ../src/xfdesktop-app-menu-item.c:255
-msgid "Label"
-msgstr ""
-
-#: ../src/xfdesktop-app-menu-item.c:256
-msgid "The label displayed in the item"
-msgstr ""
-
-#: ../src/xfdesktop-app-menu-item.c:262
-#, fuzzy
-msgid "Startup notification"
-msgstr "Нагадваньне аб _запуску"
-
-#: ../src/xfdesktop-app-menu-item.c:263
-msgid "Whether or not the app supports startup notification"
-msgstr ""
-
-#: ../src/xfdesktop-app-menu-item.c:269
-msgid "Use underline"
-msgstr ""
-
-#: ../src/xfdesktop-app-menu-item.c:270
-msgid "Whether or not to use an underscore in the label as a keyboard mnemonic"
-msgstr ""
-
-#: ../src/xfdesktop-file-icon-manager.c:479
-#: ../src/xfdesktop-file-icon-manager.c:496
+#: ../src/xfdesktop-file-icon-manager.c:465
+#: ../src/xfdesktop-file-icon-manager.c:482
 #, fuzzy, c-format
 msgid "Could not create the desktop folder \"%s\""
 msgstr "Стварыць сьпіс тла"
 
-#: ../src/xfdesktop-file-icon-manager.c:484
-#: ../src/xfdesktop-file-icon-manager.c:501
+#: ../src/xfdesktop-file-icon-manager.c:470
+#: ../src/xfdesktop-file-icon-manager.c:487
 #, fuzzy
 msgid "Desktop Folder Error"
 msgstr "Сталец"
 
-#: ../src/xfdesktop-file-icon-manager.c:503
+#: ../src/xfdesktop-file-icon-manager.c:489
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:606
-#: ../src/xfdesktop-file-icon-manager.c:650 ../src/xfdesktop-file-utils.c:799
-#: ../src/xfdesktop-file-utils.c:814 ../src/xfdesktop-special-file-icon.c:447
+#: ../src/xfdesktop-file-icon-manager.c:592
+#: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:803
+#: ../src/xfdesktop-file-utils.c:818 ../src/xfdesktop-special-file-icon.c:447
 msgid "Trash Error"
 msgstr "Памылка Сьметніцы"
 
-#: ../src/xfdesktop-file-icon-manager.c:607
-#: ../src/xfdesktop-file-icon-manager.c:651
+#: ../src/xfdesktop-file-icon-manager.c:593
+#: ../src/xfdesktop-file-icon-manager.c:637
 #, fuzzy
 msgid "The selected files could not be trashed"
 msgstr "Немагчыма адкрыць абіральнік дастасаваньняў."
 
-#: ../src/xfdesktop-file-icon-manager.c:608
-#: ../src/xfdesktop-file-icon-manager.c:652 ../src/xfdesktop-file-utils.c:648
-#: ../src/xfdesktop-file-utils.c:698 ../src/xfdesktop-file-utils.c:757
-#: ../src/xfdesktop-file-utils.c:869 ../src/xfdesktop-file-utils.c:925
-#: ../src/xfdesktop-file-utils.c:975 ../src/xfdesktop-file-utils.c:1025
-#: ../src/xfdesktop-file-utils.c:1102 ../src/xfdesktop-file-utils.c:1163
-#: ../src/xfdesktop-file-utils.c:1236 ../src/xfdesktop-file-utils.c:1314
+#: ../src/xfdesktop-file-icon-manager.c:594
+#: ../src/xfdesktop-file-icon-manager.c:638 ../src/xfdesktop-file-utils.c:652
+#: ../src/xfdesktop-file-utils.c:702 ../src/xfdesktop-file-utils.c:761
+#: ../src/xfdesktop-file-utils.c:873 ../src/xfdesktop-file-utils.c:929
+#: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:1029
+#: ../src/xfdesktop-file-utils.c:1106 ../src/xfdesktop-file-utils.c:1167
+#: ../src/xfdesktop-file-utils.c:1240 ../src/xfdesktop-file-utils.c:1318
 #, fuzzy
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
@@ -710,33 +658,33 @@ msgstr ""
 "Гэтая функцыя патрабуе прысутнасьці кіраўніка файлаў (напрыклад, Thunar)."
 
 #. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:752
-#: ../src/xfdesktop-file-icon-manager.c:1310
+#: ../src/xfdesktop-file-icon-manager.c:738
+#: ../src/xfdesktop-file-icon-manager.c:1296
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Немагчыма запусьціць \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:754
-#: ../src/xfdesktop-file-icon-manager.c:998
-#: ../src/xfdesktop-file-icon-manager.c:1311 ../src/xfdesktop-file-utils.c:631
-#: ../src/xfdesktop-file-utils.c:646 ../src/xfdesktop-file-utils.c:1008
-#: ../src/xfdesktop-file-utils.c:1023 ../src/xfdesktop-file-utils.c:1075
-#: ../src/xfdesktop-file-utils.c:1100 ../src/xfdesktop-file-utils.c:1146
-#: ../src/xfdesktop-file-utils.c:1161
+#: ../src/xfdesktop-file-icon-manager.c:740
+#: ../src/xfdesktop-file-icon-manager.c:984
+#: ../src/xfdesktop-file-icon-manager.c:1297 ../src/xfdesktop-file-utils.c:635
+#: ../src/xfdesktop-file-utils.c:650 ../src/xfdesktop-file-utils.c:1012
+#: ../src/xfdesktop-file-utils.c:1027 ../src/xfdesktop-file-utils.c:1079
+#: ../src/xfdesktop-file-utils.c:1104 ../src/xfdesktop-file-utils.c:1150
+#: ../src/xfdesktop-file-utils.c:1165
 msgid "Launch Error"
 msgstr "Памылка запуску"
 
-#: ../src/xfdesktop-file-icon-manager.c:922
+#: ../src/xfdesktop-file-icon-manager.c:908
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "_Адчыніць у \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:925
+#: ../src/xfdesktop-file-icon-manager.c:911
 #, c-format
 msgid "Open With \"%s\""
 msgstr "Адчыніць у \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1000
+#: ../src/xfdesktop-file-icon-manager.c:986
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
@@ -744,79 +692,79 @@ msgstr ""
 "Немагчыма запусьціць праграму \"exo-desktop-item-edit\", якая патрабуецца "
 "для стварэньня й рэдагаваньня запускальнікаў і спасылкан на Стальцэ."
 
-#: ../src/xfdesktop-file-icon-manager.c:1368
+#: ../src/xfdesktop-file-icon-manager.c:1354
 msgid "_Open all"
 msgstr "Адчыніць _усе"
 
-#: ../src/xfdesktop-file-icon-manager.c:1384
+#: ../src/xfdesktop-file-icon-manager.c:1370
 msgid "_Open in New Window"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1386
+#: ../src/xfdesktop-file-icon-manager.c:1372
 #: ../src/xfdesktop-special-file-icon.c:570 ../src/xfdesktop-volume-icon.c:653
 msgid "_Open"
 msgstr "_Адкрыць"
 
 #. create launcher item
-#: ../src/xfdesktop-file-icon-manager.c:1405
+#: ../src/xfdesktop-file-icon-manager.c:1391
 msgid "Create _Launcher..."
 msgstr "Стварыць за_пускальнік"
 
 #. create link item
-#: ../src/xfdesktop-file-icon-manager.c:1421
+#: ../src/xfdesktop-file-icon-manager.c:1407
 msgid "Create _URL Link..."
 msgstr "Стварыць _URL спасылку..."
 
 #. create folder item
-#: ../src/xfdesktop-file-icon-manager.c:1437
+#: ../src/xfdesktop-file-icon-manager.c:1423
 msgid "Create _Folder..."
 msgstr "Стварыць _тэчку..."
 
 #. create from template submenu
-#: ../src/xfdesktop-file-icon-manager.c:1452
+#: ../src/xfdesktop-file-icon-manager.c:1438
 #, fuzzy
 msgid "Create From _Template"
 msgstr "Стварыць дакумэнт з шаблёна \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1479
+#: ../src/xfdesktop-file-icon-manager.c:1464
 msgid "_Empty File"
 msgstr "Пу_сты файл"
 
-#: ../src/xfdesktop-file-icon-manager.c:1495
+#: ../src/xfdesktop-file-icon-manager.c:1480
 msgid "_Execute"
 msgstr "Вы_кананьне"
 
-#: ../src/xfdesktop-file-icon-manager.c:1515
+#: ../src/xfdesktop-file-icon-manager.c:1500
 msgid "_Edit Launcher"
 msgstr "_Рэдагаваць запускальнік"
 
-#: ../src/xfdesktop-file-icon-manager.c:1550
+#: ../src/xfdesktop-file-icon-manager.c:1535
 msgid "Open With"
 msgstr "Адчыніць у"
 
-#: ../src/xfdesktop-file-icon-manager.c:1577
+#: ../src/xfdesktop-file-icon-manager.c:1561
 msgid "Open With Other _Application..."
 msgstr "Адчыніць у іншым д_астасаваньні..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1665
+#: ../src/xfdesktop-file-icon-manager.c:1649
 msgid "_Rename..."
 msgstr "Перай_менаваньне..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1683
+#: ../src/xfdesktop-file-icon-manager.c:1667
 msgid "Desktop _Settings..."
 msgstr "На_стаўленьні стальца..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1693
+#: ../src/xfdesktop-file-icon-manager.c:1677
 #: ../src/xfdesktop-volume-icon.c:701
 msgid "_Properties..."
 msgstr "_Уласьцівасьці..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2243
+#: ../src/xfdesktop-file-icon-manager.c:2231
 #, fuzzy
 msgid "Load Error"
 msgstr "Памылка запуску"
 
-#: ../src/xfdesktop-file-icon-manager.c:2245
+#: ../src/xfdesktop-file-icon-manager.c:2233
 #, fuzzy
 msgid "Failed to load the desktop folder"
 msgstr "Стварыць сьпіс тла"
@@ -851,37 +799,37 @@ msgstr ""
 msgid "Unknown"
 msgstr "(невядома)"
 
-#: ../src/xfdesktop-file-utils.c:632 ../src/xfdesktop-file-utils.c:647
+#: ../src/xfdesktop-file-utils.c:636 ../src/xfdesktop-file-utils.c:651
 #, fuzzy
 msgid "The folder could not be opened"
 msgstr "Немагчыма адкрыць абіральнік дастасаваньняў."
 
-#: ../src/xfdesktop-file-utils.c:681 ../src/xfdesktop-file-utils.c:696
+#: ../src/xfdesktop-file-utils.c:685 ../src/xfdesktop-file-utils.c:700
 #, fuzzy
 msgid "Rename Error"
 msgstr "Памылка запуску"
 
-#: ../src/xfdesktop-file-utils.c:682 ../src/xfdesktop-file-utils.c:697
+#: ../src/xfdesktop-file-utils.c:686 ../src/xfdesktop-file-utils.c:701
 #, fuzzy
 msgid "The file could not be renamed"
 msgstr "Немагчыма адкрыць абіральнік дастасаваньняў."
 
-#: ../src/xfdesktop-file-utils.c:740 ../src/xfdesktop-file-utils.c:755
+#: ../src/xfdesktop-file-utils.c:744 ../src/xfdesktop-file-utils.c:759
 #, fuzzy
 msgid "Delete Error"
 msgstr "Памылка стварэньня"
 
-#: ../src/xfdesktop-file-utils.c:741 ../src/xfdesktop-file-utils.c:756
+#: ../src/xfdesktop-file-utils.c:745 ../src/xfdesktop-file-utils.c:760
 #, fuzzy
 msgid "The selected files could not be deleted"
 msgstr "Немагчыма адшукаць звязанае дастасаваньне."
 
-#: ../src/xfdesktop-file-utils.c:800 ../src/xfdesktop-file-utils.c:815
+#: ../src/xfdesktop-file-utils.c:804 ../src/xfdesktop-file-utils.c:819
 #, fuzzy
 msgid "The selected files could not be moved to the trash"
 msgstr "Немагчыма адкрыць абіральнік дастасаваньняў."
 
-#: ../src/xfdesktop-file-utils.c:816
+#: ../src/xfdesktop-file-utils.c:820
 #, fuzzy
 msgid ""
 "This feature requires a trash service to be present (such as the one "
@@ -889,71 +837,71 @@ msgid ""
 msgstr ""
 "Гэтая функцыя патрабуе прысутнасьці кіраўніка файлаў (напрыклад, Thunar)."
 
-#: ../src/xfdesktop-file-utils.c:852 ../src/xfdesktop-file-utils.c:867
+#: ../src/xfdesktop-file-utils.c:856 ../src/xfdesktop-file-utils.c:871
 #, fuzzy
 msgid "Create File Error"
 msgstr "Памылка стварэньня"
 
-#: ../src/xfdesktop-file-utils.c:853 ../src/xfdesktop-file-utils.c:868
+#: ../src/xfdesktop-file-utils.c:857 ../src/xfdesktop-file-utils.c:872
 #, fuzzy
 msgid "Could not create a new file"
 msgstr "Стварыць сьпіс тла"
 
-#: ../src/xfdesktop-file-utils.c:908 ../src/xfdesktop-file-utils.c:923
+#: ../src/xfdesktop-file-utils.c:912 ../src/xfdesktop-file-utils.c:927
 #, fuzzy
 msgid "Create Document Error"
 msgstr "Памылка стварэньня"
 
-#: ../src/xfdesktop-file-utils.c:909 ../src/xfdesktop-file-utils.c:924
+#: ../src/xfdesktop-file-utils.c:913 ../src/xfdesktop-file-utils.c:928
 #, fuzzy
 msgid "Could not create a new document from the template"
 msgstr "Стварыць дакумэнт з шаблёна \"%s\""
 
-#: ../src/xfdesktop-file-utils.c:958 ../src/xfdesktop-file-utils.c:973
+#: ../src/xfdesktop-file-utils.c:962 ../src/xfdesktop-file-utils.c:977
 #, fuzzy
 msgid "File Properties Error"
 msgstr "Памылкі ўласьцівасьцяў"
 
-#: ../src/xfdesktop-file-utils.c:959 ../src/xfdesktop-file-utils.c:974
+#: ../src/xfdesktop-file-utils.c:963 ../src/xfdesktop-file-utils.c:978
 #, fuzzy
 msgid "The file properties dialog could not be opened"
 msgstr "Немагчыма адкрыць абіральнік дастасаваньняў."
 
-#: ../src/xfdesktop-file-utils.c:1009 ../src/xfdesktop-file-utils.c:1024
+#: ../src/xfdesktop-file-utils.c:1013 ../src/xfdesktop-file-utils.c:1028
 #, fuzzy
 msgid "The file could not be opened"
 msgstr "Немагчыма адкрыць абіральнік дастасаваньняў."
 
-#: ../src/xfdesktop-file-utils.c:1072 ../src/xfdesktop-file-utils.c:1097
+#: ../src/xfdesktop-file-utils.c:1076 ../src/xfdesktop-file-utils.c:1101
 #, fuzzy, c-format
 msgid "Failed to run \"%s\""
 msgstr "Немагчыма выканаць: \"%s\""
 
-#: ../src/xfdesktop-file-utils.c:1147 ../src/xfdesktop-file-utils.c:1162
+#: ../src/xfdesktop-file-utils.c:1151 ../src/xfdesktop-file-utils.c:1166
 #, fuzzy
 msgid "The application chooser could not be opened"
 msgstr "Немагчыма адкрыць абіральнік дастасаваньняў."
 
-#: ../src/xfdesktop-file-utils.c:1220 ../src/xfdesktop-file-utils.c:1234
-#: ../src/xfdesktop-file-utils.c:1296 ../src/xfdesktop-file-utils.c:1312
+#: ../src/xfdesktop-file-utils.c:1224 ../src/xfdesktop-file-utils.c:1238
+#: ../src/xfdesktop-file-utils.c:1300 ../src/xfdesktop-file-utils.c:1316
 #, fuzzy
 msgid "Transfer Error"
 msgstr "Памылка Сьметніцы"
 
-#: ../src/xfdesktop-file-utils.c:1221 ../src/xfdesktop-file-utils.c:1235
-#: ../src/xfdesktop-file-utils.c:1297 ../src/xfdesktop-file-utils.c:1313
+#: ../src/xfdesktop-file-utils.c:1225 ../src/xfdesktop-file-utils.c:1239
+#: ../src/xfdesktop-file-utils.c:1301 ../src/xfdesktop-file-utils.c:1317
 #, fuzzy
 msgid "The file transfer could not be performed"
 msgstr "Немагчыма адкрыць абіральнік дастасаваньняў."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:97
+#: ../src/xfdesktop-notify.c:128
 #, fuzzy
 msgid "Unmounting device"
 msgstr "Збой адмантаваньня"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:100
+#: ../src/xfdesktop-notify.c:131
 #, c-format
 msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the "
@@ -961,12 +909,12 @@ msgid ""
 msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:107 ../src/xfdesktop-notify.c:220
+#: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
 msgid "Writing data to device"
 msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:110 ../src/xfdesktop-notify.c:223
+#: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
 #, c-format
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be "
@@ -974,13 +922,13 @@ msgid ""
 msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:211
+#: ../src/xfdesktop-notify.c:253
 #, fuzzy
 msgid "Ejecting device"
 msgstr "Збой адмантаваньня"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:214
+#: ../src/xfdesktop-notify.c:256
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
 msgstr ""
@@ -1075,6 +1023,25 @@ msgstr "Вы_зваліць падзел"
 #: ../src/xfdesktop-volume-icon.c:679
 msgid "_Mount Volume"
 msgstr "Пры_мантаваць падзел"
+
+#, fuzzy
+#~ msgid "Needs terminal"
+#~ msgstr "Тэрмінал"
+
+#~ msgid "Command"
+#~ msgstr "Загад"
+
+#, fuzzy
+#~ msgid "The command to run when the item is clicked"
+#~ msgstr "Загад не йснуе!"
+
+#, fuzzy
+#~ msgid "Icon name"
+#~ msgstr "Распрацоўка значак"
+
+#, fuzzy
+#~ msgid "Startup notification"
+#~ msgstr "Нагадваньне аб _запуску"
 
 #~ msgid "Unable to launch xfce4-menueditor: %s"
 #~ msgstr "Немагчыма запусьціць aunch xfce4-menueditor: %s"

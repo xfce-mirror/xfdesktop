@@ -1,11 +1,12 @@
-Xfdesktop 4.7.x
+Xfdesktop 4.7.4
 ---------------
 
+  * Add checks for an API change in libnotify 0.7.0 (bug #6915).
+  * Avoid GTK+ 2.18 and GIO 2.20 function calls (or at least guard them
+    so that xfdesktop still builds with older versions).
   * Let garcon choose the default applications menu file using
     XDG_MENU_PREFIX. Drop the UserMenu kiosk option as the panel
     sort of allows to bypass it anyway.
-  * Avoid GTK+ 2.18 and GIO 2.20 function calls (or at least guard them
-    so that xfdesktop still builds with older versions).
 
 
 Xfdesktop 4.7.3

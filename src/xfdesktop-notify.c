@@ -144,8 +144,12 @@ xfdesktop_notify_unmount (GMount *mount)
                                    name);
     }
 
+#ifdef NOTIFY_CHECK_VERSION
 #if NOTIFY_CHECK_VERSION (0, 7, 0)
   notification = notify_notification_new (summary, message, icon_name);
+#else
+  notification = notify_notification_new (summary, message, icon_name, NULL);
+#endif
 #else
   notification = notify_notification_new (summary, message, icon_name, NULL);
 #endif
@@ -264,8 +268,12 @@ xfdesktop_notify_eject (GVolume *volume)
                                    name);
     }
 
+#ifdef NOTIFY_CHECK_VERSION
 #if NOTIFY_CHECK_VERSION (0, 7, 0)
   notification = notify_notification_new (summary, message, icon_name);
+#else
+  notification = notify_notification_new (summary, message, icon_name, NULL);
+#endif
 #else
   notification = notify_notification_new (summary, message, icon_name, NULL);
 #endif
