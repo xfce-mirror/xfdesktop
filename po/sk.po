@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-05 16:00+0100\n"
+"POT-Creation-Date: 2010-12-06 17:09+0000\n"
 "PO-Revision-Date: 2009-11-04 14:44+0100\n"
 "Last-Translator: Robert Hartl <hartl.robert@gmail.com>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
-"Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8-bit\n"
+"Language: sk\n"
 
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
 #, c-format
@@ -63,10 +63,8 @@ msgstr "Vytvoriť alebo načítať zoznam pozadí"
 
 #: ../settings/main.c:511
 #, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
-"Súbor \"%s\" nie je  platný súborom zoznamu pozadia.  Prajete si ho prepísať?"
+msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr "Súbor \"%s\" nie je  platný súborom zoznamu pozadia.  Prajete si ho prepísať?"
 
 #: ../settings/main.c:516
 msgid "Invalid List File"
@@ -212,9 +210,8 @@ msgstr "Nezobrazí žiadny obrázok"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
 #: ../settings/xfdesktop-settings-ui.glade.h:12
-#, fuzzy
 msgid "Horizontal gradient"
-msgstr "Horizontálne stupňovať"
+msgstr "Vodorovný prechod"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
 msgid "Image _list"
@@ -255,20 +252,16 @@ msgstr "Vyberte jeden obrázok ako pozadie"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
 #: ../settings/xfdesktop-settings-ui.glade.h:32
-#, fuzzy
 msgid "Solid color"
-msgstr "Plná farba"
+msgstr "Jednofarebné"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr "Určuje \"pravú\" alebo \"spodnú\" farbu farebného prechodu"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
-msgid ""
-"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr ""
-"Určuje jednotnú farbu alebo \"ľavú\" alebo \"vrchnú\" farbu farebného "
-"prechodu"
+msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr "Určuje jednotnú farbu alebo \"ľavú\" alebo \"vrchnú\" farbu farebného prechodu"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid "Specify how the image will be resized to fit the screen"
@@ -295,13 +288,12 @@ msgstr "Dlaždicovať"
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
 #: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid "Transparent"
-msgstr ""
+msgstr "Priesvitné"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
 #: ../settings/xfdesktop-settings-ui.glade.h:39
-#, fuzzy
 msgid "Vertical gradient"
-msgstr "Vertikálne stupňovať"
+msgstr "Zvislý prechod"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
 #: ../settings/xfdesktop-settings-ui.glade.h:40
@@ -334,16 +326,15 @@ msgstr "<b>Ponuka zoznamu okien</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:5
 msgid "Alt"
-msgstr ""
+msgstr "Alt"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:7
 msgid "B_utton:"
 msgstr "_Tlačidlo:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:9
-#, fuzzy
 msgid "Control"
-msgstr "Prispievateľ"
+msgstr "Control"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:729
 msgid "Desktop"
@@ -374,12 +365,8 @@ msgid "Middle"
 msgstr ""
 
 #: ../settings/xfdesktop-settings-ui.glade.h:18
-#, fuzzy
 msgid "Minimized application icons"
-msgstr ""
-"Žiadne\n"
-"Ikony minimalizovaných aplikácií\n"
-"Ikony súborov a spúšťačov"
+msgstr "Ikony minimalizovaných aplikácií"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:19
 msgid "Mo_difier:"
@@ -407,7 +394,7 @@ msgstr "Zobraziť _ikony aplikácií v ponuke"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:26
 msgid "Shift"
-msgstr ""
+msgstr "Shift"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "Show _application icons in menu"
@@ -415,9 +402,7 @@ msgstr "Zobraziť ikony _aplikácií v ponuke"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:28
 msgid "Show _window list menu on desktop middle click"
-msgstr ""
-"Zobraziť ponuku _zoznam okien pri kliknutí prostredným tlačidlom myši na "
-"plochu"
+msgstr "Zobraziť ponuku _zoznam okien pri kliknutí prostredným tlačidlom myši na plochu"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:29
 msgid "Show applications menu on _desktop right click"
@@ -432,11 +417,8 @@ msgid "Show workspace _names in list"
 msgstr "Zobrazovať _názvy pracovných plôch v ponuke"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
-msgid ""
-"Specify the transparency level for the rounded label drawn behind the icon "
-"text"
-msgstr ""
-"Zadajte úroveň priehľadnosti zaobleného popisku vykresleného za textom ikony"
+msgid "Specify the transparency level for the rounded label drawn behind the icon text"
+msgstr "Zadajte úroveň priehľadnosti zaobleného popisku vykresleného za textom ikony"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "Use _submenus for the windows in each workspace"
@@ -588,13 +570,11 @@ msgstr "Nie je možné vytvoriť zoznam pozadí \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:470
 #: ../src/xfdesktop-file-icon-manager.c:487
-#, fuzzy
 msgid "Desktop Folder Error"
-msgstr "Chyba pracovnej plochy"
+msgstr "Chyba priečinku pracovnej plochy"
 
 #: ../src/xfdesktop-file-icon-manager.c:489
-msgid ""
-"A normal file with the same name already exists. Please delete or rename it."
+msgid "A normal file with the same name already exists. Please delete or rename it."
 msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:592
@@ -617,12 +597,8 @@ msgstr "Výber aplikácie nebolo možné otvoriť."
 #: ../src/xfdesktop-file-utils.c:1106 ../src/xfdesktop-file-utils.c:1167
 #: ../src/xfdesktop-file-utils.c:1240 ../src/xfdesktop-file-utils.c:1318
 #, fuzzy
-msgid ""
-"This feature requires a file manager service to be present (such as the one "
-"supplied by Thunar)."
-msgstr ""
-"Táto vlastnosť vyžaduje prítomnosť služby správcu súborov (napríklad "
-"aplikáciu Thunar)."
+msgid "This feature requires a file manager service to be present (such as the one supplied by Thunar)."
+msgstr "Táto vlastnosť vyžaduje prítomnosť služby správcu súborov (napríklad aplikáciu Thunar)."
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:738
@@ -652,12 +628,8 @@ msgid "Open With \"%s\""
 msgstr "Otvoriť pomocou \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:986
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
-msgstr ""
-"Nie je možné spustiť \"exo-desktop-item-edit\". Táto aplikácia je vyžadovaná "
-"pri vytváraní a úpravu spúšťačov a odkazov na ploche."
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgstr "Nie je možné spustiť \"exo-desktop-item-edit\". Táto aplikácia je vyžadovaná pri vytváraní a úpravu spúšťačov a odkazov na ploche."
 
 #: ../src/xfdesktop-file-icon-manager.c:1354
 msgid "_Open all"
@@ -726,9 +698,8 @@ msgid "_Properties..."
 msgstr "_Vlastnosti"
 
 #: ../src/xfdesktop-file-icon-manager.c:2231
-#, fuzzy
 msgid "Load Error"
-msgstr "Chyba pri spustení"
+msgstr "Chyba pri načítaní"
 
 #: ../src/xfdesktop-file-icon-manager.c:2233
 #, fuzzy
@@ -761,14 +732,12 @@ msgstr "%x o %X"
 
 #. the file_time is invalid
 #: ../src/xfdesktop-file-utils.c:159
-#, fuzzy
 msgid "Unknown"
-msgstr "(neznámy)"
+msgstr "Neznámy"
 
 #: ../src/xfdesktop-file-utils.c:636 ../src/xfdesktop-file-utils.c:651
-#, fuzzy
 msgid "The folder could not be opened"
-msgstr "Výber aplikácie nebolo možné otvoriť."
+msgstr "Priečinok nie je možné otvoriť"
 
 #: ../src/xfdesktop-file-utils.c:685 ../src/xfdesktop-file-utils.c:700
 #, fuzzy
@@ -797,12 +766,8 @@ msgstr "Výber aplikácie nebolo možné otvoriť."
 
 #: ../src/xfdesktop-file-utils.c:820
 #, fuzzy
-msgid ""
-"This feature requires a trash service to be present (such as the one "
-"supplied by Thunar)."
-msgstr ""
-"Táto vlastnosť vyžaduje prítomnosť služby správcu súborov (napríklad "
-"aplikáciu Thunar)."
+msgid "This feature requires a trash service to be present (such as the one supplied by Thunar)."
+msgstr "Táto vlastnosť vyžaduje prítomnosť služby správcu súborov (napríklad aplikáciu Thunar)."
 
 #: ../src/xfdesktop-file-utils.c:856 ../src/xfdesktop-file-utils.c:871
 #, fuzzy
@@ -870,9 +835,7 @@ msgstr "Odpojenie zlyhalo"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:131
 #, c-format
-msgid ""
-"The device \"%s\" is being unmounted by the system. Please do not remove the "
-"media or disconnect the drive"
+msgid "The device \"%s\" is being unmounted by the system. Please do not remove the media or disconnect the drive"
 msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
@@ -883,9 +846,7 @@ msgstr ""
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
 #, c-format
-msgid ""
-"There is data that needs to be written to the device \"%s\" before it can be "
-"removed. Please do not remove the media or disconnect the drive"
+msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
 msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
@@ -942,12 +903,8 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "Nie je možné sa pripojiť na službu Kôš Xfce"
 
 #: ../src/xfdesktop-special-file-icon.c:450
-msgid ""
-"Make sure you have a file manager installed that supports the Xfce Trash "
-"service, such as Thunar."
-msgstr ""
-"Uistite sa, či máte nainštalovaného správcu súborov podporujúceho službu Kôš "
-"Xfce, napríklad aplikáciu Thunar"
+msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
+msgstr "Uistite sa, či máte nainštalovaného správcu súborov podporujúceho službu Kôš Xfce, napríklad aplikáciu Thunar"
 
 #: ../src/xfdesktop-special-file-icon.c:588
 msgid "_Empty Trash"
@@ -1080,35 +1037,25 @@ msgstr "_Pripojiť zväzok"
 #~ msgstr "Možnosti sú:\n"
 
 #~ msgid "    --reload      Reload all settings, refresh image list\n"
-#~ msgstr ""
-#~ "    -reload      Nahrať znovu všetky nastavenie, obnoviť zoznam obrázkov\n"
+#~ msgstr "    -reload      Nahrať znovu všetky nastavenie, obnoviť zoznam obrázkov\n"
 
 #~ msgid "    --menu        Pop up the menu (at the current mouse position)\n"
-#~ msgstr ""
-#~ "    -menu        Otvorí ponuku (na aktuálnej pozícii kurzora myši)\n"
+#~ msgstr "    -menu        Otvorí ponuku (na aktuálnej pozícii kurzora myši)\n"
 
-#~ msgid ""
-#~ "    --windowlist  Pop up the window list (at the current mouse position)\n"
-#~ msgstr ""
-#~ "    -windowlist  Otvorí zoznam okien (na aktuálnej pozícii kurzora myši)\n"
+#~ msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
+#~ msgstr "    -windowlist  Otvorí zoznam okien (na aktuálnej pozícii kurzora myši)\n"
 
 #~ msgid "    --quit        Cause xfdesktop to quit\n"
 #~ msgstr "    --quit       Ukončí správcu plochy xfdesktop\n"
 
-#~ msgid ""
-#~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-#~ msgstr ""
-#~ "Xfdesktop nemôže vytvoriť priečinok \"%s\" pre uloženie položiek plochy:"
+#~ msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+#~ msgstr "Xfdesktop nemôže vytvoriť priečinok \"%s\" pre uloženie položiek plochy:"
 
 #~ msgid "Create Folder Failed"
 #~ msgstr "Vytvorenie priečinka zlyhalo"
 
-#~ msgid ""
-#~ "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not "
-#~ "a folder."
-#~ msgstr ""
-#~ "Xfdesktop nemôže použiť \"%s\" pre uloženie položiek plochy, pretože nie "
-#~ "je priečinkom."
+#~ msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
+#~ msgstr "Xfdesktop nemôže použiť \"%s\" pre uloženie položiek plochy, pretože nie je priečinkom."
 
 #~ msgid "Please delete or rename the file."
 #~ msgstr "Zmažte alebo premenujte súbor."
@@ -1140,12 +1087,8 @@ msgstr "_Pripojiť zväzok"
 #~ msgid "The application chooser could not be opened."
 #~ msgstr "Výber aplikácie nebolo možné otvoriť."
 
-#~ msgid ""
-#~ "This feature requires a file manager service present (such as that "
-#~ "supplied by Thunar)."
-#~ msgstr ""
-#~ "Táto vlastnosť vyžaduje prítomnosť služby správcu súborov (napríklad "
-#~ "aplikáciu Thunar)."
+#~ msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
+#~ msgstr "Táto vlastnosť vyžaduje prítomnosť služby správcu súborov (napríklad aplikáciu Thunar)."
 
 #~ msgid "Unable to create folder named \"%s\":"
 #~ msgstr "Nie je možné vytvoriť priečinok s názvom \"%s\":"
@@ -1736,13 +1679,11 @@ msgstr "_Pripojiť zväzok"
 #~ msgid ""
 #~ "Could not save file %s: %s\n"
 #~ "\n"
-#~ "Please choose another location or press cancel in the dialog to discard "
-#~ "your changes"
+#~ "Please choose another location or press cancel in the dialog to discard your changes"
 #~ msgstr ""
 #~ "Nemôžem uložiť súbor %s: %s\n"
 #~ "\n"
-#~ "Prosím vyberte inú lokáciu alebo stlačte tlačítko zrušiť v dialógovom "
-#~ "okne k zahodeniu vašich zmien"
+#~ "Prosím vyberte inú lokáciu alebo stlačte tlačítko zrušiť v dialógovom okne k zahodeniu vašich zmien"
 
 #~ msgid "backdrops.list"
 #~ msgstr "backdrops.list"
