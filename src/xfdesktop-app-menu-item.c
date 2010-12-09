@@ -251,7 +251,7 @@ xfdesktop_app_menu_item_changed(XfdesktopAppMenuItem *app_menu_item)
         gtk_widget_show(child);
     } else {
         g_return_if_fail(GTK_IS_LABEL(child));
-        gtk_label_set_text (GTK_LABEL (child), label ? label : "");
+        gtk_label_set_text(GTK_LABEL(child), label);
     }
 #endif
 }
