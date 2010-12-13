@@ -4,20 +4,20 @@
 # Zuza Software Foundation (Translate.org.za), 2004.
 # Translate.org.za <info@translate.org.za>, 2007.
 # Jeff Bailes <thepizzaking@gmail.com>, 2009.
-#
-#
+# 
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-05 16:00+0100\n"
+"POT-Creation-Date: 2010-12-13 05:10+0000\n"
 "PO-Revision-Date: 2009-01-27 13:37+1100\n"
-"Last-Translator:  <>\n"
+"Last-Translator: <>\n"
 "Language-Team: \n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding:\n"
+"Content-Transfer-Encoding: \n"
+"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
@@ -67,10 +67,8 @@ msgstr "Create/Load Backdrop List"
 
 #: ../settings/main.c:511
 #, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
 
 #: ../settings/main.c:516
 msgid "Invalid List File"
@@ -216,9 +214,8 @@ msgstr "Don't display an image at all"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
 #: ../settings/xfdesktop-settings-ui.glade.h:12
-#, fuzzy
 msgid "Horizontal gradient"
-msgstr "Horizontal Gradient"
+msgstr "Horizontal gradient"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
 msgid "Image _list"
@@ -259,19 +256,16 @@ msgstr "Select a single image as the backdrop"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
 #: ../settings/xfdesktop-settings-ui.glade.h:32
-#, fuzzy
 msgid "Solid color"
-msgstr "Solid Colour"
+msgstr "Solid colour"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr "Specifies the \"right\" or \"bottom\" colour of the gradient"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
-msgid ""
-"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr ""
-"Specifies the solid colour, or the \"left\" or \"top\" colour of the gradient"
+msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr "Specifies the solid colour, or the \"left\" or \"top\" colour of the gradient"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid "Specify how the image will be resized to fit the screen"
@@ -298,13 +292,12 @@ msgstr "Tiled"
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
 #: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid "Transparent"
-msgstr ""
+msgstr "Transparent"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
 #: ../settings/xfdesktop-settings-ui.glade.h:39
-#, fuzzy
 msgid "Vertical gradient"
-msgstr "Vertical Gradient"
+msgstr "Vertical gradient"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
 #: ../settings/xfdesktop-settings-ui.glade.h:40
@@ -337,16 +330,15 @@ msgstr "<b>Window List Menu</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:5
 msgid "Alt"
-msgstr ""
+msgstr "Alt"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:7
 msgid "B_utton:"
 msgstr "B_utton:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:9
-#, fuzzy
 msgid "Control"
-msgstr "Contributor"
+msgstr "Control"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:729
 msgid "Desktop"
@@ -370,19 +362,15 @@ msgstr "Label trans_parency:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:16
 msgid "Left"
-msgstr ""
+msgstr "Left"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:17
 msgid "Middle"
-msgstr ""
+msgstr "Middle"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:18
-#, fuzzy
 msgid "Minimized application icons"
-msgstr ""
-"None\n"
-"Minimised application icons\n"
-"File/launcher icons"
+msgstr "Minimised application icons"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:19
 msgid "Mo_difier:"
@@ -398,7 +386,7 @@ msgstr "None"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:22
 msgid "Right"
-msgstr ""
+msgstr "Right"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:24
 msgid "Set desktop background and menu and icon behavior"
@@ -410,7 +398,7 @@ msgstr "Sh_ow application icons in menu"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:26
 msgid "Shift"
-msgstr ""
+msgstr "Shift"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "Show _application icons in menu"
@@ -433,12 +421,8 @@ msgid "Show workspace _names in list"
 msgstr "Show workspace _names in list"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
-msgid ""
-"Specify the transparency level for the rounded label drawn behind the icon "
-"text"
-msgstr ""
-"Specify the transparency level for the rounded label drawn behind the icon "
-"text"
+msgid "Specify the transparency level for the rounded label drawn behind the icon text"
+msgstr "Specify the transparency level for the rounded label drawn behind the icon text"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "Use _submenus for the windows in each workspace"
@@ -469,35 +453,29 @@ msgid "_Menus"
 msgstr "_Menus"
 
 #: ../src/main.c:238
-#, fuzzy
 msgid "Display version information"
-msgstr "Version information"
+msgstr "Display version information"
 
 #: ../src/main.c:239
-#, fuzzy
 msgid "Reload all settings, refresh image list"
-msgstr "    --reload      Reload all settings, refresh image list\n"
+msgstr "Reload all settings, refresh image list"
 
 #: ../src/main.c:240
-#, fuzzy
 msgid "Pop up the menu (at the current mouse position)"
-msgstr "    --menu        Pop up the menu (at the current mouse position)\n"
+msgstr "Pop up the menu (at the current mouse position)"
 
 #: ../src/main.c:241
-#, fuzzy
 msgid "Pop up the window list (at the current mouse position)"
-msgstr ""
-"    --windowlist  Pop up the window list (at the current mouse position)\n"
+msgstr "Pop up the window list (at the current mouse position)"
 
 #: ../src/main.c:242
-#, fuzzy
 msgid "Cause xfdesktop to quit"
-msgstr "    --quit        Cause xfdesktop to quit\n"
+msgstr "Cause xfdesktop to quit"
 
 #: ../src/main.c:262
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to parse arguments: %s\n"
-msgstr "Failed to run \"%s\":"
+msgstr "Failed to parse arguments: %s\n"
 
 #: ../src/main.c:270
 #, c-format
@@ -590,20 +568,18 @@ msgstr "Desktop Error"
 
 #: ../src/xfdesktop-file-icon-manager.c:465
 #: ../src/xfdesktop-file-icon-manager.c:482
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create the desktop folder \"%s\""
-msgstr "Cannot create backdrop list \"%s\""
+msgstr "Could not create the desktop folder \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:470
 #: ../src/xfdesktop-file-icon-manager.c:487
-#, fuzzy
 msgid "Desktop Folder Error"
-msgstr "Desktop Error"
+msgstr "Desktop Folder Error"
 
 #: ../src/xfdesktop-file-icon-manager.c:489
-msgid ""
-"A normal file with the same name already exists. Please delete or rename it."
-msgstr ""
+msgid "A normal file with the same name already exists. Please delete or rename it."
+msgstr "A normal file with the same name already exists. Please delete or rename it."
 
 #: ../src/xfdesktop-file-icon-manager.c:592
 #: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:803
@@ -613,9 +589,8 @@ msgstr "Wastebasket Error"
 
 #: ../src/xfdesktop-file-icon-manager.c:593
 #: ../src/xfdesktop-file-icon-manager.c:637
-#, fuzzy
 msgid "The selected files could not be trashed"
-msgstr "The application chooser could not be opened."
+msgstr "The selected files could not be trashed"
 
 #: ../src/xfdesktop-file-icon-manager.c:594
 #: ../src/xfdesktop-file-icon-manager.c:638 ../src/xfdesktop-file-utils.c:652
@@ -624,13 +599,8 @@ msgstr "The application chooser could not be opened."
 #: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:1029
 #: ../src/xfdesktop-file-utils.c:1106 ../src/xfdesktop-file-utils.c:1167
 #: ../src/xfdesktop-file-utils.c:1240 ../src/xfdesktop-file-utils.c:1318
-#, fuzzy
-msgid ""
-"This feature requires a file manager service to be present (such as the one "
-"supplied by Thunar)."
-msgstr ""
-"This feature requires a file manager service present (such as that supplied "
-"by Thunar)."
+msgid "This feature requires a file manager service to be present (such as the one supplied by Thunar)."
+msgstr "This feature requires a file manager service to be present (such as the one supplied by Thunar)."
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:738
@@ -660,12 +630,8 @@ msgid "Open With \"%s\""
 msgstr "Open With \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:986
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
-msgstr ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgstr "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
 
 #: ../src/xfdesktop-file-icon-manager.c:1354
 msgid "_Open all"
@@ -734,179 +700,149 @@ msgid "_Properties..."
 msgstr "_Properties..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2231
-#, fuzzy
 msgid "Load Error"
-msgstr "Launch Error"
+msgstr "Load Error"
 
 #: ../src/xfdesktop-file-icon-manager.c:2233
-#, fuzzy
 msgid "Failed to load the desktop folder"
-msgstr "Cannot create backdrop list \"%s\""
+msgstr "Failed to load the desktop folder"
 
 #. TRANSLATORS: file was modified less than one day ago
 #: ../src/xfdesktop-file-utils.c:137
 #, c-format
 msgid "Today at %X"
-msgstr ""
+msgstr "Today at %X"
 
 #. TRANSLATORS: file was modified less than two days ago
 #: ../src/xfdesktop-file-utils.c:141
 #, c-format
 msgid "Yesterday at %X"
-msgstr ""
+msgstr "Yesterday at %X"
 
 #. Days from last week
 #: ../src/xfdesktop-file-utils.c:146
 #, c-format
 msgid "%A at %X"
-msgstr ""
+msgstr "%A at %X"
 
 #. Any other date
 #: ../src/xfdesktop-file-utils.c:149
 #, c-format
 msgid "%x at %X"
-msgstr ""
+msgstr "%x at %X"
 
 #. the file_time is invalid
 #: ../src/xfdesktop-file-utils.c:159
-#, fuzzy
 msgid "Unknown"
-msgstr "(unknown)"
+msgstr "Unknown"
 
 #: ../src/xfdesktop-file-utils.c:636 ../src/xfdesktop-file-utils.c:651
-#, fuzzy
 msgid "The folder could not be opened"
-msgstr "The application chooser could not be opened."
+msgstr "The folder could not be opened"
 
 #: ../src/xfdesktop-file-utils.c:685 ../src/xfdesktop-file-utils.c:700
-#, fuzzy
 msgid "Rename Error"
-msgstr "Run Error"
+msgstr "Rename Error"
 
 #: ../src/xfdesktop-file-utils.c:686 ../src/xfdesktop-file-utils.c:701
-#, fuzzy
 msgid "The file could not be renamed"
-msgstr "The application chooser could not be opened."
+msgstr "The file could not be renamed"
 
 #: ../src/xfdesktop-file-utils.c:744 ../src/xfdesktop-file-utils.c:759
-#, fuzzy
 msgid "Delete Error"
-msgstr "Create Error"
+msgstr "Delete Error"
 
 #: ../src/xfdesktop-file-utils.c:745 ../src/xfdesktop-file-utils.c:760
-#, fuzzy
 msgid "The selected files could not be deleted"
-msgstr "The associated application could not be found or executed."
+msgstr "The selected files could not be deleted"
 
 #: ../src/xfdesktop-file-utils.c:804 ../src/xfdesktop-file-utils.c:819
-#, fuzzy
 msgid "The selected files could not be moved to the trash"
-msgstr "The application chooser could not be opened."
+msgstr "The selected files could not be moved to the wastebasket"
 
 #: ../src/xfdesktop-file-utils.c:820
-#, fuzzy
-msgid ""
-"This feature requires a trash service to be present (such as the one "
-"supplied by Thunar)."
-msgstr ""
-"This feature requires a file manager service present (such as that supplied "
-"by Thunar)."
+msgid "This feature requires a trash service to be present (such as the one supplied by Thunar)."
+msgstr "This feature requires a wastebasket service to be present (such as the one supplied by Thunar)."
 
 #: ../src/xfdesktop-file-utils.c:856 ../src/xfdesktop-file-utils.c:871
-#, fuzzy
 msgid "Create File Error"
-msgstr "Create Error"
+msgstr "Create File Error"
 
 #: ../src/xfdesktop-file-utils.c:857 ../src/xfdesktop-file-utils.c:872
-#, fuzzy
 msgid "Could not create a new file"
-msgstr "Cannot create backdrop list \"%s\""
+msgstr "Could not create a new file"
 
 #: ../src/xfdesktop-file-utils.c:912 ../src/xfdesktop-file-utils.c:927
-#, fuzzy
 msgid "Create Document Error"
-msgstr "Create Error"
+msgstr "Create Document Error"
 
 #: ../src/xfdesktop-file-utils.c:913 ../src/xfdesktop-file-utils.c:928
-#, fuzzy
 msgid "Could not create a new document from the template"
-msgstr "Create Document from template \"%s\""
+msgstr "Could not create a new document from the template"
 
 #: ../src/xfdesktop-file-utils.c:962 ../src/xfdesktop-file-utils.c:977
-#, fuzzy
 msgid "File Properties Error"
-msgstr "Properties Error"
+msgstr "File Properties Error"
 
 #: ../src/xfdesktop-file-utils.c:963 ../src/xfdesktop-file-utils.c:978
-#, fuzzy
 msgid "The file properties dialog could not be opened"
-msgstr "The application chooser could not be opened."
+msgstr "The file properties dialogue could not be opened"
 
 #: ../src/xfdesktop-file-utils.c:1013 ../src/xfdesktop-file-utils.c:1028
-#, fuzzy
 msgid "The file could not be opened"
-msgstr "The application chooser could not be opened."
+msgstr "The file could not be opened"
 
 #: ../src/xfdesktop-file-utils.c:1076 ../src/xfdesktop-file-utils.c:1101
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to run \"%s\""
-msgstr "Failed to run \"%s\":"
+msgstr "Failed to run \"%s\""
 
 #: ../src/xfdesktop-file-utils.c:1151 ../src/xfdesktop-file-utils.c:1166
-#, fuzzy
 msgid "The application chooser could not be opened"
-msgstr "The application chooser could not be opened."
+msgstr "The application chooser could not be opened"
 
 #: ../src/xfdesktop-file-utils.c:1224 ../src/xfdesktop-file-utils.c:1238
 #: ../src/xfdesktop-file-utils.c:1300 ../src/xfdesktop-file-utils.c:1316
-#, fuzzy
 msgid "Transfer Error"
-msgstr "Wastebasket Error"
+msgstr "Transfer Error"
 
 #: ../src/xfdesktop-file-utils.c:1225 ../src/xfdesktop-file-utils.c:1239
 #: ../src/xfdesktop-file-utils.c:1301 ../src/xfdesktop-file-utils.c:1317
-#, fuzzy
 msgid "The file transfer could not be performed"
-msgstr "The application chooser could not be opened."
+msgstr "The file transfer could not be performed"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:128
-#, fuzzy
 msgid "Unmounting device"
-msgstr "Unmount Failed"
+msgstr "Unmounting device"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:131
 #, c-format
-msgid ""
-"The device \"%s\" is being unmounted by the system. Please do not remove the "
-"media or disconnect the drive"
-msgstr ""
+msgid "The device \"%s\" is being unmounted by the system. Please do not remove the media or disconnect the drive"
+msgstr "The device \"%s\" is being unmounted by the system. Please do not remove the media or disconnect the drive"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
 msgid "Writing data to device"
-msgstr ""
+msgstr "Writing data to device"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
 #, c-format
-msgid ""
-"There is data that needs to be written to the device \"%s\" before it can be "
-"removed. Please do not remove the media or disconnect the drive"
-msgstr ""
+msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
+msgstr "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:253
-#, fuzzy
 msgid "Ejecting device"
-msgstr "Unmount Failed"
+msgstr "Ejecting device"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:256
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
-msgstr ""
+msgstr "The device \"%s\" is being ejected. This may take some time"
 
 #: ../src/xfdesktop-regular-file-icon.c:468
 #, c-format
@@ -915,25 +851,27 @@ msgid ""
 "Size: %s\n"
 "Last modified: %s"
 msgstr ""
+"Type: %s\n"
+"Size: %s\n"
+"Last modified: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:249
 #: ../src/xfdesktop-special-file-icon.c:411
-#, fuzzy
 msgid "File System"
-msgstr "Filesystem"
+msgstr "File System"
 
 #: ../src/xfdesktop-special-file-icon.c:396
 msgid "Trash is empty"
-msgstr ""
+msgstr "Wastebasket is empty"
 
 #: ../src/xfdesktop-special-file-icon.c:399
 msgid "Trash contains one item"
-msgstr ""
+msgstr "Wastebasket contains one item"
 
 #: ../src/xfdesktop-special-file-icon.c:400
 #, c-format
 msgid "Trash contains %d items"
-msgstr ""
+msgstr "Wastebasket contains %d items"
 
 #: ../src/xfdesktop-special-file-icon.c:428
 #, c-format
@@ -942,57 +880,54 @@ msgid ""
 "Size: %s\n"
 "Last modified: %s"
 msgstr ""
+"%s\n"
+"Size: %s\n"
+"Last modified: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:449
 msgid "Unable to contact the Xfce Trash service."
 msgstr "Unable to contact the Xfce Wastebasket service."
 
 #: ../src/xfdesktop-special-file-icon.c:450
-msgid ""
-"Make sure you have a file manager installed that supports the Xfce Trash "
-"service, such as Thunar."
-msgstr ""
-"Make sure you have a file manager installed that supports the Xfce "
-"Watebasket service, such as Thunar."
+msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
+msgstr "Make sure you have a file manager installed that supports the Xfce Watebasket service, such as Thunar."
 
 #: ../src/xfdesktop-special-file-icon.c:588
 msgid "_Empty Trash"
 msgstr "_Empty Wastebasket"
 
 #: ../src/xfdesktop-volume-icon.c:413
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Removable Volume\n"
 "Mounted in \"%s\"\n"
 "%s left (%s total)"
 msgstr ""
-"Kind: Removable Volume\n"
-"Mount Point: %s\n"
-"Free Space: %s"
+"Removable Volume\n"
+"Mounted in \"%s\"\n"
+"%s left (%s total)"
 
 #: ../src/xfdesktop-volume-icon.c:420
-#, fuzzy
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
 msgstr ""
-"Kind: Removable Volume\n"
-"Mount Point: %s\n"
-"Free Space: %s"
+"Removable Volume\n"
+"Not mounted yet"
 
 #: ../src/xfdesktop-volume-icon.c:446 ../src/xfdesktop-volume-icon.c:488
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to eject \"%s\""
-msgstr "Unable to eject \"%s\":"
+msgstr "Failed to eject \"%s\""
 
 #: ../src/xfdesktop-volume-icon.c:451 ../src/xfdesktop-volume-icon.c:493
 msgid "Eject Failed"
 msgstr "Eject Failed"
 
 #: ../src/xfdesktop-volume-icon.c:525
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to mount \"%s\""
-msgstr "Failed to run \"%s\":"
+msgstr "Failed to mount \"%s\""
 
 #: ../src/xfdesktop-volume-icon.c:528
 msgid "Mount Failed"
@@ -1006,22 +941,18 @@ msgstr "E_ject Volume"
 msgid "_Mount Volume"
 msgstr "_Mount Volume"
 
-#, fuzzy
 #~ msgid "Needs terminal"
 #~ msgstr "Terminal"
 
 #~ msgid "Command"
 #~ msgstr "Command"
 
-#, fuzzy
 #~ msgid "The command to run when the item is clicked"
 #~ msgstr "The command doesn't exist!"
 
-#, fuzzy
 #~ msgid "Icon name"
 #~ msgstr "Icon designer"
 
-#, fuzzy
 #~ msgid "Startup notification"
 #~ msgstr "Use startup _notification"
 
@@ -1097,28 +1028,20 @@ msgstr "_Mount Volume"
 #~ msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 #~ msgstr "    --menu        Pop up the menu (at the current mouse position)\n"
 
-#~ msgid ""
-#~ "    --windowlist  Pop up the window list (at the current mouse position)\n"
-#~ msgstr ""
-#~ "    --windowlist  Pop up the window list (at the current mouse position)\n"
+#~ msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
+#~ msgstr "    --windowlist  Pop up the window list (at the current mouse position)\n"
 
 #~ msgid "    --quit        Cause xfdesktop to quit\n"
 #~ msgstr "    --quit        Cause xfdesktop to quit\n"
 
-#~ msgid ""
-#~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-#~ msgstr ""
-#~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+#~ msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+#~ msgstr "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 
 #~ msgid "Create Folder Failed"
 #~ msgstr "Create Folder Failed"
 
-#~ msgid ""
-#~ "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not "
-#~ "a folder."
-#~ msgstr ""
-#~ "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not "
-#~ "a folder."
+#~ msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
+#~ msgstr "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
 
 #~ msgid "Please delete or rename the file."
 #~ msgstr "Please delete or rename the file."
@@ -1150,12 +1073,8 @@ msgstr "_Mount Volume"
 #~ msgid "The application chooser could not be opened."
 #~ msgstr "The application chooser could not be opened."
 
-#~ msgid ""
-#~ "This feature requires a file manager service present (such as that "
-#~ "supplied by Thunar)."
-#~ msgstr ""
-#~ "This feature requires a file manager service present (such as that "
-#~ "supplied by Thunar)."
+#~ msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
+#~ msgstr "This feature requires a file manager service present (such as that supplied by Thunar)."
 
 #~ msgid "Unable to create folder named \"%s\":"
 #~ msgstr "Unable to create folder named \"%s\":"
@@ -1614,14 +1533,8 @@ msgstr "_Mount Volume"
 #~ msgid "xfce4-menueditor is deprecated"
 #~ msgstr "xfce4-menueditor is deprecated"
 
-#~ msgid ""
-#~ "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
-#~ "edit the new menu file format.  You may continue and edit an old-style "
-#~ "menu file, or quit."
-#~ msgstr ""
-#~ "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
-#~ "edit the new menu file format.  You may continue and edit an old-style "
-#~ "menu file, or quit."
+#~ msgid "Xfce's menu system has been replaced, and xfce4-menueditor is not able to edit the new menu file format.  You may continue and edit an old-style menu file, or quit."
+#~ msgstr "Xfce's menu system has been replaced, and xfce4-menueditor is not able to edit the new menu file format.  You may continue and edit an old-style menu file, or quit."
 
 #~ msgid "Continue"
 #~ msgstr "Continue"
@@ -1803,24 +1716,20 @@ msgstr "_Mount Volume"
 #~ msgid "Xfce 4 Desktop Settings"
 #~ msgstr "Xfce 4 Desktop Settings"
 
-#, fuzzy
 #~ msgid "Show windows on each workspace in _submenus"
 #~ msgstr "Show windows on each workspace in sub_menus"
 
-#, fuzzy
 #~ msgid "Use _Xfce to manage the desktop"
 #~ msgstr "Allow _Xfce to manage the desktop"
 
 #~ msgid ""
 #~ "Could not save file %s: %s\n"
 #~ "\n"
-#~ "Please choose another location or press cancel in the dialog to discard "
-#~ "your changes"
+#~ "Please choose another location or press cancel in the dialog to discard your changes"
 #~ msgstr ""
 #~ "Could not save file %s: %s\n"
 #~ "\n"
-#~ "Please choose another location or press cancel in the dialogue to discard "
-#~ "your changes"
+#~ "Please choose another location or press cancel in the dialogue to discard your changes"
 
 #~ msgid "Button Label|Desktop"
 #~ msgstr "Desktop"
@@ -1852,31 +1761,11 @@ msgstr "_Mount Volume"
 #~ msgid "Unable to start xfdesktop"
 #~ msgstr "Unable to start xfdesktop"
 
-#~ msgid ""
-#~ "To ensure that this setting takes effect the next time you start Xfce, "
-#~ "please be sure to save your session when logging out.  If you are not "
-#~ "using the Xfce Session Manager (xfce4-session), you will need to manually "
-#~ "edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
-#~ "documentation provided on http://xfce.org/."
-#~ msgstr ""
-#~ "To ensure that this setting takes effect the next time you start Xfce, "
-#~ "please be sure to save your session when logging out.  If you are not "
-#~ "using the Xfce Session Manager (xfce4-session), you will need to manually "
-#~ "edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
-#~ "documentation provided on http://xfce.org/."
+#~ msgid "To ensure that this setting takes effect the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
+#~ msgstr "To ensure that this setting takes effect the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
 
-#~ msgid ""
-#~ "To ensure that Xfce does not manage your desktop the next time you start "
-#~ "Xfce, please be sure to save your session when logging out.  If you are "
-#~ "not using the Xfce Session Manager (xfce4-session), you will need to "
-#~ "manually edit your ~/.config/xfce4/xinitrc file.  Details are available "
-#~ "in the documentation provided on http://xfce.org/."
-#~ msgstr ""
-#~ "To ensure that Xfce does not manage your desktop the next time you start "
-#~ "Xfce, please be sure to save your session when logging out.  If you are "
-#~ "not using the Xfce Session Manager (xfce4-session), you will need to "
-#~ "manually edit your ~/.config/xfce4/xinitrc file.  Details are available "
-#~ "in the documentation provided on http://xfce.org/."
+#~ msgid "To ensure that Xfce does not manage your desktop the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
+#~ msgstr "To ensure that Xfce does not manage your desktop the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
 
 #~ msgid "_Do not show this again"
 #~ msgstr "_Do not show this again"
@@ -1929,56 +1818,39 @@ msgstr "_Mount Volume"
 #~ msgid "Unable to quit session."
 #~ msgstr "Unable to quit session."
 
-#~ msgid ""
-#~ "Quitting the session requires that Xfce's session manager (xfce4-session) "
-#~ "is running, but it was not detected.  Please quit Xfce via another means."
-#~ msgstr ""
-#~ "Quitting the session requires that Xfce's session manager (xfce4-session) "
-#~ "is running, but it was not detected.  Please quit Xfce via another means."
+#~ msgid "Quitting the session requires that Xfce's session manager (xfce4-session) is running, but it was not detected.  Please quit Xfce via another means."
+#~ msgstr "Quitting the session requires that Xfce's session manager (xfce4-session) is running, but it was not detected.  Please quit Xfce via another means."
 
-#~ msgid ""
-#~ "Quitting the session requires the 'xfce4-session-logout' command, but it "
-#~ "could not be found: %s"
-#~ msgstr ""
-#~ "Quitting the session requires the 'xfce4-session-logout' command, but it "
-#~ "could not be found: %s"
+#~ msgid "Quitting the session requires the 'xfce4-session-logout' command, but it could not be found: %s"
+#~ msgstr "Quitting the session requires the 'xfce4-session-logout' command, but it could not be found: %s"
 
 #~ msgid "Edit Properties"
 #~ msgstr "Edit Properties"
 
-#, fuzzy
 #~ msgid "Unable to empty the trash."
 #~ msgstr "Unable to launch xfce4-menueditor: %s"
 
-#, fuzzy
 #~ msgid "_Copy Files"
 #~ msgstr "_File"
 
-#, fuzzy
 #~ msgid "_Copy File"
 #~ msgstr "_File"
 
-#, fuzzy
 #~ msgid "Cu_t Files"
 #~ msgstr "_File"
 
-#, fuzzy
 #~ msgid "Cu_t File"
 #~ msgstr "_File"
 
-#, fuzzy
 #~ msgid "_Delete Files"
 #~ msgstr "Select Menu File"
 
-#, fuzzy
 #~ msgid "_Delete File"
 #~ msgstr "Select Menu File"
 
-#, fuzzy
 #~ msgid "_Paste Files"
 #~ msgstr "List Files"
 
-#, fuzzy
 #~ msgid "Are sure you want to quit?"
 #~ msgstr "Are you sure you want to close the current menu?"
 
@@ -2015,6 +1887,5 @@ msgstr "_Mount Volume"
 #~ msgid "Delete the current entry"
 #~ msgstr "Delete the current entry"
 
-#, fuzzy
 #~ msgid "Scientific software"
 #~ msgstr "Educational software"
