@@ -122,12 +122,14 @@ msgid "Monitor %d"
 msgstr "Monitorius %d"
 
 #: ../settings/main.c:1477
+#, fuzzy
 msgid "Settings manager socket"
-msgstr ""
+msgstr "Nustatymų tvarkymo prievadas"
 
 #: ../settings/main.c:1477
+#, fuzzy
 msgid "SOCKET ID"
-msgstr ""
+msgstr "PRIEVADO ID"
 
 #: ../settings/main.c:1478
 msgid "Version information"
@@ -405,12 +407,14 @@ msgid "Minimized application icons"
 msgstr "Sumažintos programų piktogramos"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:19
+#, fuzzy
 msgid "Mo_difier:"
-msgstr ""
+msgstr "Mo_difier:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:20
+#, fuzzy
 msgid "Modi_fier:"
-msgstr ""
+msgstr "Modi_fier:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:21
 #, fuzzy
@@ -427,9 +431,8 @@ msgid "Set desktop background and menu and icon behavior"
 msgstr "Nustatyti darbalaukio fono ir meniu ir piktogramos elgseną"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:25
-#, fuzzy
 msgid "Sh_ow application icons in menu"
-msgstr "Sh_ow taikymo piktogramas meniu"
+msgstr "Rodyti programų piktogramas meniu"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:26
 #, fuzzy
@@ -439,25 +442,27 @@ msgstr "Perėjimas"
 #: ../settings/xfdesktop-settings-ui.glade.h:27
 #, fuzzy
 msgid "Show _application icons in menu"
-msgstr "Rodyti ikonas meniu"
+msgstr "Rodyti programų piktogramas meniu"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:28
 #, fuzzy
 msgid "Show _window list menu on desktop middle click"
-msgstr "Rodyti langų _sąrašą"
+msgstr "Rodyti _langų sąrašo meniu darbalaukyje spustelėjus vidurinį pelės mygtuką"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:29
 #, fuzzy
 msgid "Show applications menu on _desktop right click"
-msgstr "Rodyti darbastalio _meniu"
+msgstr "Rodyti programų meniu _darbalaukyje spustelėjus dešinįjį pelės mygtuką"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:30
+#, fuzzy
 msgid "Show s_ticky windows only in active workspace"
-msgstr ""
+msgstr "Rodyti prisegamus langus tik aktyvioje darbo srityje"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:31
+#, fuzzy
 msgid "Show workspace _names in list"
-msgstr ""
+msgstr "Rodyti darbo sričių _pavadinimus sąraše"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
 #, fuzzy
@@ -465,119 +470,124 @@ msgid "Specify the transparency level for the rounded label drawn behind the ico
 msgstr "Nurodykite, už piktogramos teksto piešiamos kortelės, skaidrumo lygį "
 
 #: ../settings/xfdesktop-settings-ui.glade.h:37
+#, fuzzy
 msgid "Use _submenus for the windows in each workspace"
-msgstr ""
+msgstr "Naudoti _submeniu langams kiekvienoje darbo srityje"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:38
 #, fuzzy
 msgid "Use custom _font size:"
-msgstr "Atidaryti meniu failą"
+msgstr "Naudokite pasirinktą _šrifto dydį:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:41
+#, fuzzy
 msgid "_Background"
-msgstr ""
+msgstr "_Fonas"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:42
 #, fuzzy
 msgid "_Button:"
-msgstr "_Mygtuko ikona:"
+msgstr "_Mygtukai:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:43
 #, fuzzy
 msgid "_Edit desktop menu"
-msgstr "_Meniu"
+msgstr "_Taisyti darbastalio meniu"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:44
 #, fuzzy
 msgid "_Icons"
-msgstr "Ikona:"
+msgstr "_Ikonos"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:45
 #, fuzzy
 msgid "_Menus"
-msgstr "Meniu failai"
+msgstr "_Meniu"
 
 #: ../src/main.c:238
 #, fuzzy
 msgid "Display version information"
-msgstr "Atmesti modifikacijas"
+msgstr "Rodyti versijos informaciją"
 
 #: ../src/main.c:239
 #, fuzzy
 msgid "Reload all settings, refresh image list"
-msgstr "    -reload      Perkrauti visus nustaytmus, atnaujinti paveikslų sąrašą\n"
+msgstr "Perkrauti visus nustatymus, atnaujinti paveikslų sąrašą\n"
 
 #: ../src/main.c:240
 #, fuzzy
 msgid "Pop up the menu (at the current mouse position)"
-msgstr "    -menu        Išskleidžiamas meniu (esamoje pelės pozicijoje)\n"
+msgstr "Išskleidžiamas meniu (esamoje pelės pozicijoje)"
 
 #: ../src/main.c:241
 #, fuzzy
 msgid "Pop up the window list (at the current mouse position)"
-msgstr "    -windowlist  Išskleidžiamas langų sąrašas (esamoje pelės pozicijoje)\n"
+msgstr "Išskleidžiamas langų sąrašas (esamoje pelės pozicijoje)"
 
 #: ../src/main.c:242
+#, fuzzy
 msgid "Cause xfdesktop to quit"
-msgstr ""
+msgstr "Priežastis xfdesktop mesti"
 
 #: ../src/main.c:262
 #, fuzzy, c-format
 msgid "Failed to parse arguments: %s\n"
-msgstr "Neįmanoma paleisti xfce4-menueditor:·%s"
+msgstr "Nepavyko apdoroti argumentų: %s\n"
 
 #: ../src/main.c:270
-#, c-format
+#, c-format, fuzzy
 msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr ""
+msgstr "Tai yra %s versija %s, veikia Xfce %s.\\ n"
 
 #: ../src/main.c:272
-#, c-format
+#, c-format, fuzzy
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr ""
+msgstr "Sukurta su GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 
 #: ../src/main.c:276
-#, c-format
+#, c-format, fuzzy
 msgid "Build options:\n"
-msgstr ""
+msgstr "Sukurkite puslapį: \\ n"
 
 #: ../src/main.c:277
-#, c-format
+#, c-format, fuzzy
 msgid "    Desktop Menu:        %s\n"
-msgstr ""
+msgstr "Darbalaukio Meniu: %s\n"
 
 #: ../src/main.c:279 ../src/main.c:286 ../src/main.c:293
 #, fuzzy
 msgid "enabled"
-msgstr "Mastelis"
+msgstr "įjungta"
 
 #: ../src/main.c:281 ../src/main.c:288 ../src/main.c:295
 #, fuzzy
 msgid "disabled"
-msgstr "_Išklotas"
+msgstr "išjungta"
 
 #: ../src/main.c:284
 #, fuzzy, c-format
 msgid "    Desktop Icons:       %s\n"
-msgstr "Darbastalio Meniu"
+msgstr "Darbalaukio piktogramos: %s\n"
 
 #: ../src/main.c:291
 #, fuzzy, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr "Darbastalio Meniu"
+msgstr "Darbalaukio Failų piktogramos: %s\n"
 
 #: ../src/main.c:322
-#, c-format
+#, c-format, fuzzy
 msgid "%s is not running.\n"
-msgstr ""
+msgstr "%s nėra paleistas.\n"
 
 #: ../src/menu.c:106
+#, fuzzy
 msgid "_Applications"
-msgstr ""
+msgstr "_Applications"
 
 #: ../src/windowlist.c:235
+#, fuzzy
 msgid "Window List"
-msgstr ""
+msgstr "Langų sąrašas"
 
 #: ../src/windowlist.c:261
 #, c-format
@@ -587,7 +597,7 @@ msgstr "<b>Darbo laukas %d</b>"
 #: ../src/windowlist.c:270
 #, fuzzy, c-format
 msgid "Workspace %d"
-msgstr "<b>Darbo laukas %d</b>"
+msgstr "Darbo sritis %d"
 
 #: ../src/windowlist.c:272
 #, c-format
