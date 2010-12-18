@@ -573,7 +573,6 @@ msgstr "Kunde inte skapa skrivbordsmappen \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:470
 #: ../src/xfdesktop-file-icon-manager.c:487
-#, fuzzy
 msgid "Desktop Folder Error"
 msgstr "Skrivbordsfel"
 
@@ -589,7 +588,6 @@ msgstr "Papperskorgsfel"
 
 #: ../src/xfdesktop-file-icon-manager.c:593
 #: ../src/xfdesktop-file-icon-manager.c:637
-#, fuzzy
 msgid "The selected files could not be trashed"
 msgstr "Programväljaren kunde inte öppnas."
 
@@ -706,9 +704,8 @@ msgid "Load Error"
 msgstr "Inläsningsfel"
 
 #: ../src/xfdesktop-file-icon-manager.c:2233
-#, fuzzy
 msgid "Failed to load the desktop folder"
-msgstr "Kan inte skapa bakgrundslistan \"%s\""
+msgstr "En vanlig fil med samma namn finns redan. Ta bort eller byt namn på den."
 
 #. TRANSLATORS: file was modified less than one day ago
 #: ../src/xfdesktop-file-utils.c:137
@@ -773,14 +770,12 @@ msgid "This feature requires a trash service to be present (such as the one supp
 msgstr "Den här funktionen kräver att att en filhanterartjänst körs (som till exempel den som tillhandahålls av Thunar)"
 
 #: ../src/xfdesktop-file-utils.c:856 ../src/xfdesktop-file-utils.c:871
-#, fuzzy
 msgid "Create File Error"
-msgstr "Misslyckades med att skapa"
+msgstr "Fel vid borttagning"
 
 #: ../src/xfdesktop-file-utils.c:857 ../src/xfdesktop-file-utils.c:872
-#, fuzzy
 msgid "Could not create a new file"
-msgstr "Kan inte skapa bakgrundslistan \"%s\""
+msgstr "Kunde inte skapa en ny fil"
 
 #: ../src/xfdesktop-file-utils.c:912 ../src/xfdesktop-file-utils.c:927
 #, fuzzy
@@ -803,9 +798,8 @@ msgid "The file properties dialog could not be opened"
 msgstr "Programväljaren kunde inte öppnas."
 
 #: ../src/xfdesktop-file-utils.c:1013 ../src/xfdesktop-file-utils.c:1028
-#, fuzzy
 msgid "The file could not be opened"
-msgstr "Programväljaren kunde inte öppnas."
+msgstr "Filen kunde inte öppnas"
 
 #: ../src/xfdesktop-file-utils.c:1076 ../src/xfdesktop-file-utils.c:1101
 #, c-format
@@ -813,9 +807,8 @@ msgid "Failed to run \"%s\""
 msgstr "Misslyckades med att köra \"%s\""
 
 #: ../src/xfdesktop-file-utils.c:1151 ../src/xfdesktop-file-utils.c:1166
-#, fuzzy
 msgid "The application chooser could not be opened"
-msgstr "Programväljaren kunde inte öppnas."
+msgstr "Programväljaren kunde inte öppnas"
 
 #: ../src/xfdesktop-file-utils.c:1224 ../src/xfdesktop-file-utils.c:1238
 #: ../src/xfdesktop-file-utils.c:1300 ../src/xfdesktop-file-utils.c:1316
@@ -824,9 +817,8 @@ msgstr "Överföringsfel"
 
 #: ../src/xfdesktop-file-utils.c:1225 ../src/xfdesktop-file-utils.c:1239
 #: ../src/xfdesktop-file-utils.c:1301 ../src/xfdesktop-file-utils.c:1317
-#, fuzzy
 msgid "The file transfer could not be performed"
-msgstr "Programväljaren kunde inte öppnas."
+msgstr "Filöverföringen kunde inte genomföras"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:128
@@ -842,25 +834,24 @@ msgstr ""
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
 msgid "Writing data to device"
-msgstr ""
+msgstr "Skriver data till enheten"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
 #, c-format
 msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
-msgstr ""
+msgstr "Misslyckades med att köra \"%s\""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:253
-#, fuzzy
 msgid "Ejecting device"
-msgstr "Avmontering misslyckades"
+msgstr "Matar ut enheten"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:256
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
-msgstr ""
+msgstr "Enheten \"%s\" håller på att matas ut. Detta kan ta lite tid"
 
 #: ../src/xfdesktop-regular-file-icon.c:468
 #, c-format
@@ -869,10 +860,12 @@ msgid ""
 "Size: %s\n"
 "Last modified: %s"
 msgstr ""
+"Typ: %s\n"
+"Storlek: %s\n"
+"Senast ändrad: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:249
 #: ../src/xfdesktop-special-file-icon.c:411
-#, fuzzy
 msgid "File System"
 msgstr "Filsystem"
 
