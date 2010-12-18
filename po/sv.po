@@ -829,7 +829,7 @@ msgstr "Avmonterar enheten"
 #: ../src/xfdesktop-notify.c:131
 #, c-format
 msgid "The device \"%s\" is being unmounted by the system. Please do not remove the media or disconnect the drive"
-msgstr ""
+msgstr "Enheten \"%s\" håller på att avmonteras av systemet. Ta inte bort mediumet eller koppla inte från enheten"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
@@ -871,16 +871,16 @@ msgstr "Filsystem"
 
 #: ../src/xfdesktop-special-file-icon.c:396
 msgid "Trash is empty"
-msgstr ""
+msgstr "Papperskorgen är tom"
 
 #: ../src/xfdesktop-special-file-icon.c:399
 msgid "Trash contains one item"
-msgstr ""
+msgstr "Papperskorgen innehåller ett objekt"
 
 #: ../src/xfdesktop-special-file-icon.c:400
 #, c-format
 msgid "Trash contains %d items"
-msgstr ""
+msgstr "Papperskorgen innehåller %d objekt"
 
 #: ../src/xfdesktop-special-file-icon.c:428
 #, c-format
@@ -889,6 +889,9 @@ msgid ""
 "Size: %s\n"
 "Last modified: %s"
 msgstr ""
+"%s\n"
+"Storlek: %s\n"
+"Senast ändrad: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:449
 msgid "Unable to contact the Xfce Trash service."
@@ -903,39 +906,37 @@ msgid "_Empty Trash"
 msgstr "_Töm papperskorgen"
 
 #: ../src/xfdesktop-volume-icon.c:413
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Removable Volume\n"
 "Mounted in \"%s\"\n"
 "%s left (%s total)"
 msgstr ""
-"Typ: Flyttbar volym\n"
-"Monteringspunkt: %s\n"
-"Ledigt utrymme: %s"
+"Flyttbar volym\n"
+"Monterad på \"%s\"\n"
+"%s ledigt (%s totalt)"
 
 #: ../src/xfdesktop-volume-icon.c:420
-#, fuzzy
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
 msgstr ""
-"Typ: Flyttbar volym\n"
-"Monteringspunkt: %s\n"
-"Ledigt utrymme: %s"
+"Flyttbar volym\n"
+"Inte monterad ännu"
 
 #: ../src/xfdesktop-volume-icon.c:446 ../src/xfdesktop-volume-icon.c:488
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to eject \"%s\""
-msgstr "Kunde inte mata ut \"%s\":"
+msgstr "Misslyckades med att mata ut \"%s\""
 
 #: ../src/xfdesktop-volume-icon.c:451 ../src/xfdesktop-volume-icon.c:493
 msgid "Eject Failed"
 msgstr "Utmatning misslyckades"
 
 #: ../src/xfdesktop-volume-icon.c:525
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to mount \"%s\""
-msgstr "Misslyckades med att köra \"%s\":"
+msgstr "Misslyckades med att montera \"%s\""
 
 #: ../src/xfdesktop-volume-icon.c:528
 msgid "Mount Failed"
