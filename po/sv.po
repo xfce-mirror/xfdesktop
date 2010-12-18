@@ -4,19 +4,19 @@
 # Joakim Andreasson <joakim.andreasson@gmx.net>, 2003-2004.
 # Alexander Toresson <alexander.toresson@gmail.com>, 2006
 # Daniel Nylander <po@danielnylander.se>, 2008.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-05 16:00+0100\n"
+"POT-Creation-Date: 2010-12-18 17:11+0000\n"
 "PO-Revision-Date: 2010-10-17 17:18+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
-"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: sv\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
@@ -66,10 +66,8 @@ msgstr "Skapa/läs in bakgrundslista"
 
 #: ../settings/main.c:511
 #, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
-"Filen \"%s\" är inte en giltig bakgrundslistfil.  Vill du skriva över den?"
+msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr "Filen \"%s\" är inte en giltig bakgrundslistfil.  Vill du skriva över den?"
 
 #: ../settings/main.c:516
 msgid "Invalid List File"
@@ -215,9 +213,8 @@ msgstr "Visa inte någon bild alls"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
 #: ../settings/xfdesktop-settings-ui.glade.h:12
-#, fuzzy
 msgid "Horizontal gradient"
-msgstr "Horizontell övergång"
+msgstr "Horizontell gradient"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
 msgid "Image _list"
@@ -258,19 +255,16 @@ msgstr "Välj en enda bild som bakgrund"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
 #: ../settings/xfdesktop-settings-ui.glade.h:32
-#, fuzzy
 msgid "Solid color"
-msgstr "Solid färg"
+msgstr "Enfärgad"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr "Anger \"höger\" eller \"nedre\" färg av gradienten"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
-msgid ""
-"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr ""
-"Anger färg för enfärgad eller \"vänster\" eller \"övre\" färg av gradienten"
+msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr "Anger färg för enfärgad eller \"vänster\" eller \"övre\" färg av gradienten"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid "Specify how the image will be resized to fit the screen"
@@ -297,19 +291,17 @@ msgstr "Uppradad"
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
 #: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid "Transparent"
-msgstr ""
+msgstr "Genomskinlig"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
 #: ../settings/xfdesktop-settings-ui.glade.h:39
-#, fuzzy
 msgid "Vertical gradient"
-msgstr "Vertical övergång"
+msgstr "Vertikal gradient"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
 #: ../settings/xfdesktop-settings-ui.glade.h:40
-#, fuzzy
 msgid "Zoomed"
-msgstr "Hem"
+msgstr "Zoomad"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
 msgid "_None"
@@ -336,8 +328,9 @@ msgid "<b>Window List Menu</b>"
 msgstr "<b>Fönsterlistmeny</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:5
+#, fuzzy
 msgid "Alt"
-msgstr ""
+msgstr "Alt"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:7
 msgid "B_utton:"
@@ -346,7 +339,7 @@ msgstr "K_napp:"
 #: ../settings/xfdesktop-settings-ui.glade.h:9
 #, fuzzy
 msgid "Control"
-msgstr "Bidragsgivare"
+msgstr "Control"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:729
 msgid "Desktop"
@@ -370,19 +363,15 @@ msgstr "Genomskinlighet för eti_kett:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:16
 msgid "Left"
-msgstr ""
+msgstr "Vänster"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:17
 msgid "Middle"
-msgstr ""
+msgstr "Mitten"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:18
-#, fuzzy
 msgid "Minimized application icons"
-msgstr ""
-"Inga\n"
-"Minimerade programikoner\n"
-"Fil-/programstartarikoner"
+msgstr "Minimerade programikoner"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:19
 msgid "Mo_difier:"
@@ -398,7 +387,7 @@ msgstr "Inga"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:22
 msgid "Right"
-msgstr ""
+msgstr "Höger"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:24
 msgid "Set desktop background and menu and icon behavior"
@@ -410,7 +399,7 @@ msgstr "Visa prog_ramikoner i menyn"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:26
 msgid "Shift"
-msgstr ""
+msgstr "Skift"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "Show _application icons in menu"
@@ -433,12 +422,8 @@ msgid "Show workspace _names in list"
 msgstr "Visa _namn på arbetsytor i lista"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
-msgid ""
-"Specify the transparency level for the rounded label drawn behind the icon "
-"text"
-msgstr ""
-"Ange nivå av genomskinlighet för rundade etiketter som ritas ut bakom "
-"ikontexten"
+msgid "Specify the transparency level for the rounded label drawn behind the icon text"
+msgstr "Ange nivå av genomskinlighet för rundade etiketter som ritas ut bakom ikontexten"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "Use _submenus for the windows in each workspace"
@@ -584,9 +569,9 @@ msgstr "Skrivbordsfel"
 
 #: ../src/xfdesktop-file-icon-manager.c:465
 #: ../src/xfdesktop-file-icon-manager.c:482
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create the desktop folder \"%s\""
-msgstr "Kan inte skapa bakgrundslistan \"%s\""
+msgstr "Kunde inte skapa skrivbordsmappen \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:470
 #: ../src/xfdesktop-file-icon-manager.c:487
@@ -595,8 +580,7 @@ msgid "Desktop Folder Error"
 msgstr "Skrivbordsfel"
 
 #: ../src/xfdesktop-file-icon-manager.c:489
-msgid ""
-"A normal file with the same name already exists. Please delete or rename it."
+msgid "A normal file with the same name already exists. Please delete or rename it."
 msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:592
@@ -619,12 +603,8 @@ msgstr "Programväljaren kunde inte öppnas."
 #: ../src/xfdesktop-file-utils.c:1106 ../src/xfdesktop-file-utils.c:1167
 #: ../src/xfdesktop-file-utils.c:1240 ../src/xfdesktop-file-utils.c:1318
 #, fuzzy
-msgid ""
-"This feature requires a file manager service to be present (such as the one "
-"supplied by Thunar)."
-msgstr ""
-"Den här funktionen kräver att att en filhanterartjänst körs (som till "
-"exempel den som tillhandahålls av Thunar)"
+msgid "This feature requires a file manager service to be present (such as the one supplied by Thunar)."
+msgstr "Den här funktionen kräver att att en filhanterartjänst körs (som till exempel den som tillhandahålls av Thunar)"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:738
@@ -654,12 +634,8 @@ msgid "Open With \"%s\""
 msgstr "Öppna med \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:986
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
-msgstr ""
-"Kunde inte starta \"exo-desktop-item-edit\", som krävs för att skapa och "
-"redigera programstartare och länkar på skrivbordet."
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgstr "Kunde inte starta \"exo-desktop-item-edit\", som krävs för att skapa och redigera programstartare och länkar på skrivbordet."
 
 #: ../src/xfdesktop-file-icon-manager.c:1354
 msgid "_Open all"
@@ -728,9 +704,8 @@ msgid "_Properties..."
 msgstr "_Egenskaper..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2231
-#, fuzzy
 msgid "Load Error"
-msgstr "Startfel"
+msgstr "Inläsningsfel"
 
 #: ../src/xfdesktop-file-icon-manager.c:2233
 #, fuzzy
@@ -741,36 +716,34 @@ msgstr "Kan inte skapa bakgrundslistan \"%s\""
 #: ../src/xfdesktop-file-utils.c:137
 #, c-format
 msgid "Today at %X"
-msgstr ""
+msgstr "Idag kl %X"
 
 #. TRANSLATORS: file was modified less than two days ago
 #: ../src/xfdesktop-file-utils.c:141
 #, c-format
 msgid "Yesterday at %X"
-msgstr ""
+msgstr "Igår kl %X"
 
 #. Days from last week
 #: ../src/xfdesktop-file-utils.c:146
 #, c-format
 msgid "%A at %X"
-msgstr ""
+msgstr "%A kl %X"
 
 #. Any other date
 #: ../src/xfdesktop-file-utils.c:149
 #, c-format
 msgid "%x at %X"
-msgstr ""
+msgstr "%x kl %X"
 
 #. the file_time is invalid
 #: ../src/xfdesktop-file-utils.c:159
-#, fuzzy
 msgid "Unknown"
-msgstr "(okänt)"
+msgstr "Okänt"
 
 #: ../src/xfdesktop-file-utils.c:636 ../src/xfdesktop-file-utils.c:651
-#, fuzzy
 msgid "The folder could not be opened"
-msgstr "Programväljaren kunde inte öppnas."
+msgstr "Mappen kunde inte öppnas"
 
 #: ../src/xfdesktop-file-utils.c:685 ../src/xfdesktop-file-utils.c:700
 #, fuzzy
@@ -799,12 +772,8 @@ msgstr "Programväljaren kunde inte öppnas."
 
 #: ../src/xfdesktop-file-utils.c:820
 #, fuzzy
-msgid ""
-"This feature requires a trash service to be present (such as the one "
-"supplied by Thunar)."
-msgstr ""
-"Den här funktionen kräver att att en filhanterartjänst körs (som till "
-"exempel den som tillhandahålls av Thunar)"
+msgid "This feature requires a trash service to be present (such as the one supplied by Thunar)."
+msgstr "Den här funktionen kräver att att en filhanterartjänst körs (som till exempel den som tillhandahålls av Thunar)"
 
 #: ../src/xfdesktop-file-utils.c:856 ../src/xfdesktop-file-utils.c:871
 #, fuzzy
@@ -872,9 +841,7 @@ msgstr "Avmontering misslyckades"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:131
 #, c-format
-msgid ""
-"The device \"%s\" is being unmounted by the system. Please do not remove the "
-"media or disconnect the drive"
+msgid "The device \"%s\" is being unmounted by the system. Please do not remove the media or disconnect the drive"
 msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
@@ -885,9 +852,7 @@ msgstr ""
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
 #, c-format
-msgid ""
-"There is data that needs to be written to the device \"%s\" before it can be "
-"removed. Please do not remove the media or disconnect the drive"
+msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
 msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
@@ -942,12 +907,8 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "Kunde inte kontakta papperskorgstjänsten i Xfce."
 
 #: ../src/xfdesktop-special-file-icon.c:450
-msgid ""
-"Make sure you have a file manager installed that supports the Xfce Trash "
-"service, such as Thunar."
-msgstr ""
-"Kontrollera att du har en filhanterare installerad som stödjer "
-"papperskorgstjänsten i Xfce, som till exempel Thunar."
+msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
+msgstr "Kontrollera att du har en filhanterare installerad som stödjer papperskorgstjänsten i Xfce, som till exempel Thunar."
 
 #: ../src/xfdesktop-special-file-icon.c:588
 msgid "_Empty Trash"
@@ -1033,11 +994,8 @@ msgstr "_Montera volym"
 #~ msgid "Use underline"
 #~ msgstr "Använd understreck"
 
-#~ msgid ""
-#~ "Whether or not to use an underscore in the label as a keyboard mnemonic"
-#~ msgstr ""
-#~ "Huruvida ett understreck i etiketten ska användas som snabbtangent eller "
-#~ "inte"
+#~ msgid "Whether or not to use an underscore in the label as a keyboard mnemonic"
+#~ msgstr "Huruvida ett understreck i etiketten ska användas som snabbtangent eller inte"
 
 #~ msgid "Unable to launch xfce4-menueditor: %s"
 #~ msgstr "Kunde inte starta xfce4-menueditor: %s"
@@ -1111,28 +1069,20 @@ msgstr "_Montera volym"
 #~ msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 #~ msgstr "    --menu        Öppna menyn (vid muspekarens position)\n"
 
-#~ msgid ""
-#~ "    --windowlist  Pop up the window list (at the current mouse position)\n"
+#~ msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
 #~ msgstr "    --windowlist  Öppna fönsterlistan (vid muspekarens position)\n"
 
 #~ msgid "    --quit        Cause xfdesktop to quit\n"
 #~ msgstr "    --quit        Stäng ned xfdesktop\n"
 
-#~ msgid ""
-#~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-#~ msgstr ""
-#~ "Xfdesktop misslyckades att skapa mappen \"%s\", som skulle användas till "
-#~ "att spara innehållet på skrivbordet i:"
+#~ msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+#~ msgstr "Xfdesktop misslyckades att skapa mappen \"%s\", som skulle användas till att spara innehållet på skrivbordet i:"
 
 #~ msgid "Create Folder Failed"
 #~ msgstr "Misslyckades med att skapa en mapp"
 
-#~ msgid ""
-#~ "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not "
-#~ "a folder."
-#~ msgstr ""
-#~ "Xfdesktop kan inte spara innehållet på skrivbordet i \"%s\" eftersom det "
-#~ "inte är en katalog."
+#~ msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
+#~ msgstr "Xfdesktop kan inte spara innehållet på skrivbordet i \"%s\" eftersom det inte är en katalog."
 
 #~ msgid "Please delete or rename the file."
 #~ msgstr "Var god ta bort eller byt namn på filen."
@@ -1164,12 +1114,8 @@ msgstr "_Montera volym"
 #~ msgid "The application chooser could not be opened."
 #~ msgstr "Programväljaren kunde inte öppnas."
 
-#~ msgid ""
-#~ "This feature requires a file manager service present (such as that "
-#~ "supplied by Thunar)."
-#~ msgstr ""
-#~ "Den här funktionen kräver att att en filhanterartjänst körs (som till "
-#~ "exempel den som tillhandahålls av Thunar)"
+#~ msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
+#~ msgstr "Den här funktionen kräver att att en filhanterartjänst körs (som till exempel den som tillhandahålls av Thunar)"
 
 #~ msgid "Unable to create folder named \"%s\":"
 #~ msgstr "Kunde inte skapa katalogen \"%s\":"
@@ -1631,14 +1577,8 @@ msgstr "_Montera volym"
 #~ msgid "xfce4-menueditor is deprecated"
 #~ msgstr "xfce4-menueditor är utfasad"
 
-#~ msgid ""
-#~ "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
-#~ "edit the new menu file format.  You may continue and edit an old-style "
-#~ "menu file, or quit."
-#~ msgstr ""
-#~ "Xfce:s menysystem har ersatts och xfce4-menueditor kan inte redigera det "
-#~ "nya menyfilsformatet.  Du kan avsluta eller fortsätta och redigera en "
-#~ "menyfil med det gamla formatet."
+#~ msgid "Xfce's menu system has been replaced, and xfce4-menueditor is not able to edit the new menu file format.  You may continue and edit an old-style menu file, or quit."
+#~ msgstr "Xfce:s menysystem har ersatts och xfce4-menueditor kan inte redigera det nya menyfilsformatet.  Du kan avsluta eller fortsätta och redigera en menyfil med det gamla formatet."
 
 #~ msgid "Continue"
 #~ msgstr "Fortsätt"
@@ -1797,8 +1737,7 @@ msgstr "_Montera volym"
 #~ msgstr "Upphovsman/Ansvarig"
 
 #~ msgid "You have modified the menu, do you want to save it before quitting ?"
-#~ msgstr ""
-#~ "Du har gjort ändringar i menyn, vill du spara den innan du avslutar?"
+#~ msgstr "Du har gjort ändringar i menyn, vill du spara den innan du avslutar?"
 
 #~ msgid "Forget modifications"
 #~ msgstr "Förkasta ändringar"
@@ -1821,20 +1760,17 @@ msgstr "_Montera volym"
 #~ msgid "Xfce 4 Desktop Settings"
 #~ msgstr "Xfce 4 Inställningar för Skrivbordet"
 
-#, fuzzy
 #~ msgid "Use _Xfce to manage the desktop"
 #~ msgstr "Tillåt _Xfce att hantera ditt skrivbord"
 
 #~ msgid ""
 #~ "Could not save file %s: %s\n"
 #~ "\n"
-#~ "Please choose another location or press cancel in the dialog to discard "
-#~ "your changes"
+#~ "Please choose another location or press cancel in the dialog to discard your changes"
 #~ msgstr ""
 #~ "Kunde inte spara fil %s: %s\n"
 #~ "\n"
-#~ "Vänligen välj en annan plats eller tryck Avbryt i dialogen för att "
-#~ "kassera dina ändringar"
+#~ "Vänligen välj en annan plats eller tryck Avbryt i dialogen för att kassera dina ändringar"
 
 #~ msgid "Button Label|Desktop"
 #~ msgstr "Skrivbord"
@@ -1863,31 +1799,11 @@ msgstr "_Montera volym"
 #~ msgid "Unable to start xfdesktop"
 #~ msgstr "Kunde inte starta xfdesktop"
 
-#~ msgid ""
-#~ "To ensure that this setting takes effect the next time you start Xfce, "
-#~ "please be sure to save your session when logging out.  If you are not "
-#~ "using the Xfce Session Manager (xfce4-session), you will need to manually "
-#~ "edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
-#~ "documentation provided on http://xfce.org/."
-#~ msgstr ""
-#~ "För att försäkra dig om att Xfce kommer att hantera ditt skrivbord näste "
-#~ "gång du startar Xfce, var säker på att du sparar din session när du "
-#~ "loggar ut. Om du inte använder Xfce's sessionshanterare (xfce4-session) "
-#~ "kommer du behöva att redigera din ~/.config/xfce4/xinitrc fil manuellt. "
-#~ "Detaljer finns i dokumentationen på http://xfce.org/."
+#~ msgid "To ensure that this setting takes effect the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
+#~ msgstr "För att försäkra dig om att Xfce kommer att hantera ditt skrivbord näste gång du startar Xfce, var säker på att du sparar din session när du loggar ut. Om du inte använder Xfce's sessionshanterare (xfce4-session) kommer du behöva att redigera din ~/.config/xfce4/xinitrc fil manuellt. Detaljer finns i dokumentationen på http://xfce.org/."
 
-#~ msgid ""
-#~ "To ensure that Xfce does not manage your desktop the next time you start "
-#~ "Xfce, please be sure to save your session when logging out.  If you are "
-#~ "not using the Xfce Session Manager (xfce4-session), you will need to "
-#~ "manually edit your ~/.config/xfce4/xinitrc file.  Details are available "
-#~ "in the documentation provided on http://xfce.org/."
-#~ msgstr ""
-#~ "För att försäkra dig om att Xfce inte kommer att hantera ditt skrivbord "
-#~ "näste gång du startar Xfce, var säker på att du sparar din session när du "
-#~ "loggar ut. Om du inte använder Xfce's sessionshanterare (xfce4-session) "
-#~ "kommer du behöva att redigera din ~/.config/xfce4/xinitrc fil manuellt. "
-#~ "Detaljer finns i dokumentationen på http://xfce.org/."
+#~ msgid "To ensure that Xfce does not manage your desktop the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
+#~ msgstr "För att försäkra dig om att Xfce inte kommer att hantera ditt skrivbord näste gång du startar Xfce, var säker på att du sparar din session när du loggar ut. Om du inte använder Xfce's sessionshanterare (xfce4-session) kommer du behöva att redigera din ~/.config/xfce4/xinitrc fil manuellt. Detaljer finns i dokumentationen på http://xfce.org/."
 
 #~ msgid "_Do not show this again"
 #~ msgstr "_Visa inte detta igen"
@@ -1940,27 +1856,17 @@ msgstr "_Montera volym"
 #~ msgid "Science"
 #~ msgstr "Vetenskap"
 
-#, fuzzy
 #~ msgid "Scientific applications and tools"
 #~ msgstr "Ikoner för minimerade program"
 
 #~ msgid "Unable to quit session."
 #~ msgstr "Kunde inte avsluta sessionen."
 
-#~ msgid ""
-#~ "Quitting the session requires that Xfce's session manager (xfce4-session) "
-#~ "is running, but it was not detected.  Please quit Xfce via another means."
-#~ msgstr ""
-#~ "För att avsluta sessionen krävs att du kör Xfce's sessionshanterare "
-#~ "(xfce4-session), men den hittades inte. Var god avsluta Xfce på något "
-#~ "annat sätt."
+#~ msgid "Quitting the session requires that Xfce's session manager (xfce4-session) is running, but it was not detected.  Please quit Xfce via another means."
+#~ msgstr "För att avsluta sessionen krävs att du kör Xfce's sessionshanterare (xfce4-session), men den hittades inte. Var god avsluta Xfce på något annat sätt."
 
-#~ msgid ""
-#~ "Quitting the session requires the 'xfce4-session-logout' command, but it "
-#~ "could not be found: %s"
-#~ msgstr ""
-#~ "För att avsluta sessionen krävs kommandot xfce4-session-logout, men det "
-#~ "hittades inte: %s"
+#~ msgid "Quitting the session requires the 'xfce4-session-logout' command, but it could not be found: %s"
+#~ msgstr "För att avsluta sessionen krävs kommandot xfce4-session-logout, men det hittades inte: %s"
 
 #~ msgid "Edit Properties"
 #~ msgstr "Redigera egenskaper"
