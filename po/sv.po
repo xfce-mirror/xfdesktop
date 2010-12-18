@@ -328,7 +328,6 @@ msgid "<b>Window List Menu</b>"
 msgstr "<b>Fönsterlistmeny</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:5
-#, fuzzy
 msgid "Alt"
 msgstr "Alt"
 
@@ -337,7 +336,6 @@ msgid "B_utton:"
 msgstr "K_napp:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:9
-#, fuzzy
 msgid "Control"
 msgstr "Control"
 
@@ -581,7 +579,7 @@ msgstr "Skrivbordsfel"
 
 #: ../src/xfdesktop-file-icon-manager.c:489
 msgid "A normal file with the same name already exists. Please delete or rename it."
-msgstr ""
+msgstr "En vanlig fil med samma namn finns redan. Ta bort eller byt namn på den."
 
 #: ../src/xfdesktop-file-icon-manager.c:592
 #: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:803
@@ -756,9 +754,8 @@ msgid "The file could not be renamed"
 msgstr "Programväljaren kunde inte öppnas."
 
 #: ../src/xfdesktop-file-utils.c:744 ../src/xfdesktop-file-utils.c:759
-#, fuzzy
 msgid "Delete Error"
-msgstr "Misslyckades med att skapa"
+msgstr "Fel vid borttagning"
 
 #: ../src/xfdesktop-file-utils.c:745 ../src/xfdesktop-file-utils.c:760
 #, fuzzy
@@ -811,9 +808,9 @@ msgid "The file could not be opened"
 msgstr "Programväljaren kunde inte öppnas."
 
 #: ../src/xfdesktop-file-utils.c:1076 ../src/xfdesktop-file-utils.c:1101
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to run \"%s\""
-msgstr "Misslyckades med att köra \"%s\":"
+msgstr "Misslyckades med att köra \"%s\""
 
 #: ../src/xfdesktop-file-utils.c:1151 ../src/xfdesktop-file-utils.c:1166
 #, fuzzy
@@ -822,9 +819,8 @@ msgstr "Programväljaren kunde inte öppnas."
 
 #: ../src/xfdesktop-file-utils.c:1224 ../src/xfdesktop-file-utils.c:1238
 #: ../src/xfdesktop-file-utils.c:1300 ../src/xfdesktop-file-utils.c:1316
-#, fuzzy
 msgid "Transfer Error"
-msgstr "Papperskorgsfel"
+msgstr "Överföringsfel"
 
 #: ../src/xfdesktop-file-utils.c:1225 ../src/xfdesktop-file-utils.c:1239
 #: ../src/xfdesktop-file-utils.c:1301 ../src/xfdesktop-file-utils.c:1317
@@ -834,9 +830,8 @@ msgstr "Programväljaren kunde inte öppnas."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:128
-#, fuzzy
 msgid "Unmounting device"
-msgstr "Avmontering misslyckades"
+msgstr "Avmonterar enheten"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:131
