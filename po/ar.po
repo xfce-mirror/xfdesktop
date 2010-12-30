@@ -2,7 +2,7 @@
 # Arabic translations for xfdesktop package.
 # Copyright (C) 2003-2006 The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
-#
+# 
 # Saleh Alhathal <hathalsal@hotmail.com>, 2004.
 # Khaled Hosny <khaledhosny@eglug.org>, 2007.
 # Ahmed Mansour <911freak@gmail.com>,  2007.
@@ -12,21 +12,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-05 16:00+0100\n"
+"POT-Creation-Date: 2010-12-29 23:11+0000\n"
 "PO-Revision-Date: 2008-07-17 13:24+0200\n"
 "Last-Translator: Mohamed Magdy <mohamedmk@gmail.com>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
-"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: Plural-Forms: nplurals=4; plural=n==1 ? 0 : n==2 ? 1 : n>=3 && "
-"n<=10 ? 2 : 3\n"
+"Language: ar\n"
+"Plural-Forms: Plural-Forms: nplurals=4; plural=n==1 ? 0 : n==2 ? 1 : n>=3 && n<=10 ? 2 : 3\n"
 
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
-#, fuzzy, c-format
+#, c-format
 msgid "Backdrop list file is not valid"
-msgstr "اختر اسم ملف لائحة الإفلات الخلفي"
+msgstr "قائمة الخلفية غير سليمة"
 
 #. no need to escape markup; it's already done for us
 #: ../settings/main.c:162
@@ -35,6 +34,8 @@ msgid ""
 "%s\n"
 "<i>Size: %dx%d</i>"
 msgstr ""
+"%s\n"
+"<i>حجم: %dx%d</i>"
 
 #: ../settings/main.c:272 ../src/xfdesktop-special-file-icon.c:247
 #: ../src/xfdesktop-special-file-icon.c:413
@@ -42,77 +43,68 @@ msgid "Home"
 msgstr "الموطن"
 
 #: ../settings/main.c:274
-#, fuzzy
 msgid "Filesystem"
-msgstr "النظام"
+msgstr "نظام الملفات"
 
 #: ../settings/main.c:276
-#, fuzzy
 msgid "Trash"
-msgstr "خطأ في سلة المهملات"
+msgstr "المهملات"
 
 #: ../settings/main.c:278
 msgid "Removable Devices"
-msgstr ""
+msgstr "أجهزة قابلة للإزالة"
 
 #: ../settings/main.c:458
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot create backdrop list \"%s\""
-msgstr "إنشاء لائحة إفلات خلفي"
+msgstr "لا يمكن إنشاء قائمة الخلفية \"%s\""
 
 #: ../settings/main.c:462 ../settings/main.c:779
-#, fuzzy
 msgid "Backdrop List Error"
-msgstr "خطأ في المواصفات"
+msgstr "خطأفي قائمة الخلفية"
 
 #: ../settings/main.c:487
-#, fuzzy
 msgid "Create/Load Backdrop List"
-msgstr "إنشاء لائحة إفلات خلفي"
+msgstr "إنشاء/تحميل قائمة الخلفية"
 
 #: ../settings/main.c:511
 #, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
+msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr "الملف \"%s\" ليس قائمة خلفية سليمة. هل تود الكتابة فوقه؟"
 
 #: ../settings/main.c:516
-#, fuzzy
 msgid "Invalid List File"
-msgstr "لائحة الملفات"
+msgstr "القائمة غبر سليمة"
 
 #: ../settings/main.c:519
 msgid "Overwriting the file will cause its contents to be lost."
-msgstr ""
+msgstr "الكتابة فوق الملف سينتج عنها فقذان المحتويات."
 
 #: ../settings/main.c:521
-#, fuzzy
 msgid "Replace"
-msgstr "_غير اسم"
+msgstr "إستبدال"
 
 #: ../settings/main.c:775
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to write backdrop list to \"%s\""
-msgstr "فشل في تغيير اسم \"%s\" الى \"%s\":"
+msgstr "فشل في كتابة قائمة الخلفية إلى \"%s\""
 
 #: ../settings/main.c:802
-#, fuzzy
 msgid "Add Image File(s)"
-msgstr "ملفات صور"
+msgstr "أضف ملف(ات) الصور"
 
 #: ../settings/main.c:811
 msgid "Image files"
 msgstr "ملفات صور"
 
 #: ../settings/main.c:816
-#, fuzzy
 msgid "All files"
 msgstr "كل الملفات"
 
 #: ../settings/main.c:1248
-#, fuzzy, c-format
+#, c-format
 msgid "Screen %d, Monitor %d (%s)"
-msgstr "الشاشة %d، المراقبة %d"
+msgstr "الشاشة %d, المراقبة %d (%s)"
 
 #: ../settings/main.c:1252
 #, c-format
@@ -127,48 +119,46 @@ msgstr "الشاشة %d"
 #: ../settings/main.c:1260
 #, c-format
 msgid "Monitor %d (%s)"
-msgstr ""
+msgstr "المراقب %d (%s)"
 
 #: ../settings/main.c:1264
-#, fuzzy, c-format
+#, c-format
 msgid "Monitor %d"
-msgstr "الشاشة %d، المراقبة %d"
+msgstr "المراقب %d"
 
 #: ../settings/main.c:1477
 msgid "Settings manager socket"
-msgstr ""
+msgstr "مقبس مدير الإعدادات"
 
 #: ../settings/main.c:1477
 msgid "SOCKET ID"
-msgstr ""
+msgstr "مقبس المعرف"
 
 #: ../settings/main.c:1478
-#, fuzzy
 msgid "Version information"
-msgstr "معلومات"
+msgstr "معلومات النسخة"
 
 #: ../settings/main.c:1498
 #, c-format
 msgid "Type '%s --help' for usage."
-msgstr ""
+msgstr "طباعة '%s --help' للإستعمال."
 
 #: ../settings/main.c:1510
 msgid "The Xfce development team. All rights reserved."
-msgstr ""
+msgstr "فريق تطوير XFCE . كل الحقوق محفوظة"
 
 #: ../settings/main.c:1511
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr ""
+msgstr "أبلغ عن الخلل إلى <%s>."
 
 #: ../settings/main.c:1518
 msgid "Desktop Settings"
 msgstr "إعدادات المكتب"
 
 #: ../settings/main.c:1520
-#, fuzzy
 msgid "Unable to contact settings server"
-msgstr "فشل في الوصول الى خدمة سلة المهملات"
+msgstr "تعطيل الإتصال إعدادات الخادوم"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 #, fuzzy
@@ -286,8 +276,7 @@ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
-msgid ""
-"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
 msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
@@ -464,9 +453,7 @@ msgid "Show workspace _names in list"
 msgstr "أظهر أ_سماء مساحات العمل في لائحة"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
-msgid ""
-"Specify the transparency level for the rounded label drawn behind the icon "
-"text"
+msgid "Specify the transparency level for the rounded label drawn behind the icon text"
 msgstr ""
 
 #: ../settings/xfdesktop-settings-ui.glade.h:37
@@ -635,8 +622,7 @@ msgid "Desktop Folder Error"
 msgstr "سطح المكتب"
 
 #: ../src/xfdesktop-file-icon-manager.c:489
-msgid ""
-"A normal file with the same name already exists. Please delete or rename it."
+msgid "A normal file with the same name already exists. Please delete or rename it."
 msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:592
@@ -659,9 +645,7 @@ msgstr "فشل في فتح قائمة البرامج"
 #: ../src/xfdesktop-file-utils.c:1106 ../src/xfdesktop-file-utils.c:1167
 #: ../src/xfdesktop-file-utils.c:1240 ../src/xfdesktop-file-utils.c:1318
 #, fuzzy
-msgid ""
-"This feature requires a file manager service to be present (such as the one "
-"supplied by Thunar)."
+msgid "This feature requires a file manager service to be present (such as the one supplied by Thunar)."
 msgstr "هذه الخاصية بحاجة الى خدمة مدير الملفات (مثل Thunar)"
 
 #. printf is to be translator-friendly
@@ -692,12 +676,8 @@ msgid "Open With \"%s\""
 msgstr "_افتح·بـ\"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:986
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
-msgstr ""
-"فشل في تنفيد \"exo-desktop-item-edit\" الضروري لإنشاء و تحرير المٌقلع و روابط "
-"على سطح المكتب"
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgstr "فشل في تنفيد \"exo-desktop-item-edit\" الضروري لإنشاء و تحرير المٌقلع و روابط على سطح المكتب"
 
 #: ../src/xfdesktop-file-icon-manager.c:1354
 msgid "_Open all"
@@ -838,9 +818,7 @@ msgstr "فشل في فتح قائمة البرامج"
 
 #: ../src/xfdesktop-file-utils.c:820
 #, fuzzy
-msgid ""
-"This feature requires a trash service to be present (such as the one "
-"supplied by Thunar)."
+msgid "This feature requires a trash service to be present (such as the one supplied by Thunar)."
 msgstr "هذه الخاصية بحاجة الى خدمة مدير الملفات (مثل Thunar)"
 
 #: ../src/xfdesktop-file-utils.c:856 ../src/xfdesktop-file-utils.c:871
@@ -909,9 +887,7 @@ msgstr "فشل إلغاء الضم"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:131
 #, c-format
-msgid ""
-"The device \"%s\" is being unmounted by the system. Please do not remove the "
-"media or disconnect the drive"
+msgid "The device \"%s\" is being unmounted by the system. Please do not remove the media or disconnect the drive"
 msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
@@ -922,9 +898,7 @@ msgstr ""
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
 #, c-format
-msgid ""
-"There is data that needs to be written to the device \"%s\" before it can be "
-"removed. Please do not remove the media or disconnect the drive"
+msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
 msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
@@ -979,9 +953,7 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "فشل في الوصول الى خدمة سلة المهملات"
 
 #: ../src/xfdesktop-special-file-icon.c:450
-msgid ""
-"Make sure you have a file manager installed that supports the Xfce Trash "
-"service, such as Thunar."
+msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
 msgstr "تأكد من إمتلاك مدير ملفات يمتلك خدمة سلة المهملات مثل Thunar"
 
 #: ../src/xfdesktop-special-file-icon.c:588
@@ -1028,18 +1000,15 @@ msgstr "أخ_رج الجزء"
 msgid "_Mount Volume"
 msgstr "ضم الج_زء"
 
-#, fuzzy
 #~ msgid "Needs terminal"
 #~ msgstr "طرفيّة"
 
 #~ msgid "Command"
 #~ msgstr "أمر"
 
-#, fuzzy
 #~ msgid "Icon name"
 #~ msgstr "مصمم الأيقونات"
 
-#, fuzzy
 #~ msgid "Startup notification"
 #~ msgstr "استخدم _تبليغات بدأ التشغيل"
 
@@ -1110,29 +1079,24 @@ msgstr "ضم الج_زء"
 #~ msgstr "الخيارات كالتالي:\n"
 
 #~ msgid "    --reload      Reload all settings, refresh image list\n"
-#~ msgstr ""
-#~ "····--اعد تحميل······اعد تحميل جميع الخيارات,·اعد·تحميل لائحة الصور \n"
+#~ msgstr "····--اعد تحميل······اعد تحميل جميع الخيارات,·اعد·تحميل لائحة الصور \n"
 
 #~ msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 #~ msgstr "····--قائمة······اظهر القائمة في مكان الحالي للفأرة \n"
 
-#~ msgid ""
-#~ "    --windowlist  Pop up the window list (at the current mouse position)\n"
+#~ msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
 #~ msgstr "   --لائحة النوافذ  أظهر لائحة النوافذ(عند المكان الحالي للفأرة) \n"
 
 #~ msgid "    --quit        Cause xfdesktop to quit\n"
 #~ msgstr "····--خروج········خروج من·xfdesktop \n"
 
-#~ msgid ""
-#~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+#~ msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 #~ msgstr "فشل في انشاء المجلد \"%s\" لتسجيل عناصر المكتب:"
 
 #~ msgid "Create Folder Failed"
 #~ msgstr "فشل في انشاء المجلد"
 
-#~ msgid ""
-#~ "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not "
-#~ "a folder."
+#~ msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
 #~ msgstr "فشل في استعمال \"%s\"لتسجيل عناصر المكتب لأنه ليس مجلد"
 
 #~ msgid "Please delete or rename the file."
@@ -1165,9 +1129,7 @@ msgstr "ضم الج_زء"
 #~ msgid "The application chooser could not be opened."
 #~ msgstr "فشل في فتح قائمة البرامج"
 
-#~ msgid ""
-#~ "This feature requires a file manager service present (such as that "
-#~ "supplied by Thunar)."
+#~ msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
 #~ msgstr "هذه الخاصية بحاجة الى خدمة مدير الملفات (مثل Thunar)"
 
 #~ msgid "Unable to create folder named \"%s\":"
@@ -1302,7 +1264,6 @@ msgstr "ضم الج_زء"
 #~ msgid "Failed to rename \"%s\" to \"%s\":"
 #~ msgstr "فشل في تغيير اسم \"%s\" الى \"%s\":"
 
-#, fuzzy
 #~ msgid "Kind: Trash"
 #~ msgstr "نوع:"
 
@@ -1435,7 +1396,6 @@ msgstr "ضم الج_زء"
 #~ msgid "Web Browser"
 #~ msgstr "مستعرض الوب"
 
-#, fuzzy
 #~ msgid ""
 #~ "None\n"
 #~ "Minimized application icons\n"
@@ -1550,7 +1510,6 @@ msgstr "ضم الج_زء"
 #~ msgid "Xfce4-MenuEditor"
 #~ msgstr "محرر قائمة Xfce4"
 
-#, fuzzy
 #~ msgid "Menueditor Warning"
 #~ msgstr "محرر القائمة"
 
@@ -1734,11 +1693,9 @@ msgstr "ضم الج_زء"
 #~ msgid "Xfce 4 Desktop Settings"
 #~ msgstr "إعدادات سطح مكتب Xfce 4"
 
-#, fuzzy
 #~ msgid "Show windows on each workspace in _submenus"
 #~ msgstr "أظهر النوافذ في كل مساحة عمل في قوائم _فرعية"
 
-#, fuzzy
 #~ msgid "Use _Xfce to manage the desktop"
 #~ msgstr "تمكين XFCE من التحكم بالمكتب"
 
@@ -1772,29 +1729,11 @@ msgstr "ضم الج_زء"
 #~ msgid "Unable to start xfdesktop"
 #~ msgstr "فشل في انطلاق xfdesktop"
 
-#~ msgid ""
-#~ "To ensure that this setting takes effect the next time you start Xfce, "
-#~ "please be sure to save your session when logging out.  If you are not "
-#~ "using the Xfce Session Manager (xfce4-session), you will need to manually "
-#~ "edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
-#~ "documentation provided on http://xfce.org/."
-#~ msgstr ""
-#~ "للتاكد من أن هذه الخيارات ستأخد بعين الإعتبار المرة القادمة التي تشغل بها "
-#~ "الجهاز، تأكد·من·تسجيل·الجلسة·عند·الخروج.··اذا·لم·تكن·تستعمل· (xfce4-"
-#~ "session)··عليك·ان·تحرر·يدويا·ملف·./config/xfce4/xinitrc/"
-#~ "مزيد·من·التفاصيل·موجودة·في·http://xfce.org"
+#~ msgid "To ensure that this setting takes effect the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
+#~ msgstr "للتاكد من أن هذه الخيارات ستأخد بعين الإعتبار المرة القادمة التي تشغل بها الجهاز، تأكد·من·تسجيل·الجلسة·عند·الخروج.··اذا·لم·تكن·تستعمل· (xfce4-session)··عليك·ان·تحرر·يدويا·ملف·./config/xfce4/xinitrc/مزيد·من·التفاصيل·موجودة·في·http://xfce.org"
 
-#~ msgid ""
-#~ "To ensure that Xfce does not manage your desktop the next time you start "
-#~ "Xfce, please be sure to save your session when logging out.  If you are "
-#~ "not using the Xfce Session Manager (xfce4-session), you will need to "
-#~ "manually edit your ~/.config/xfce4/xinitrc file.  Details are available "
-#~ "in the documentation provided on http://xfce.org/."
-#~ msgstr ""
-#~ "للتأكد من أن Xfce لا يدير واجهة المكتب المرة القادمة عندما تشغل Xfce، "
-#~ "تأكد من تسجيل الجلسة عند الخروج.  اذا لم تكن تستعمل ·(xfce4-session)  "
-#~ "عليك ان تحرر يدويا ملف ./config/xfce4/xinitrc/مزيد من التفاصيل موجودة في "
-#~ "http://xfce.org"
+#~ msgid "To ensure that Xfce does not manage your desktop the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
+#~ msgstr "للتأكد من أن Xfce لا يدير واجهة المكتب المرة القادمة عندما تشغل Xfce، تأكد من تسجيل الجلسة عند الخروج.  اذا لم تكن تستعمل ·(xfce4-session)  عليك ان تحرر يدويا ملف ./config/xfce4/xinitrc/مزيد من التفاصيل موجودة في http://xfce.org"
 
 #~ msgid "_Do not show this again"
 #~ msgstr "_لا تظهر هذا مرة ثانية"
@@ -1847,27 +1786,17 @@ msgstr "ضم الج_زء"
 #~ msgid "Unable to quit session."
 #~ msgstr "تعذّر الخروج من الجلسة."
 
-#~ msgid ""
-#~ "Quitting the session requires that Xfce's session manager (xfce4-session) "
-#~ "is running, but it was not detected.  Please quit Xfce via another means."
-#~ msgstr ""
-#~ "يحتاج الخروج من الجلسة لكون (xfce4-session) يعمل، لكن لم يُتعرّف عليه. فضلا "
-#~ "اخرج من Xfce بوسيلة اخرى."
+#~ msgid "Quitting the session requires that Xfce's session manager (xfce4-session) is running, but it was not detected.  Please quit Xfce via another means."
+#~ msgstr "يحتاج الخروج من الجلسة لكون (xfce4-session) يعمل، لكن لم يُتعرّف عليه. فضلا اخرج من Xfce بوسيلة اخرى."
 
-#~ msgid ""
-#~ "Quitting the session requires the 'xfce4-session-logout' command, but it "
-#~ "could not be found: %s"
-#~ msgstr ""
-#~ "يتطلّب الخروج من الجلسة وجود أمر 'xfce4-session-logout'، لكن لم يُعثر عليه: "
-#~ "%s"
+#~ msgid "Quitting the session requires the 'xfce4-session-logout' command, but it could not be found: %s"
+#~ msgstr "يتطلّب الخروج من الجلسة وجود أمر 'xfce4-session-logout'، لكن لم يُعثر عليه: %s"
 
 #~ msgid " Bytes)"
 #~ msgstr "بايتس"
 
-#, fuzzy
 #~ msgid "Scientific applications and tools"
 #~ msgstr "تطبيقات وأدوات الشبكة"
 
-#, fuzzy
 #~ msgid "Scientific software"
 #~ msgstr "برامج تعليمية"
