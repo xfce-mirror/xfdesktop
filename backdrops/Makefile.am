@@ -4,7 +4,6 @@
 backdropsdir = $(datadir)/xfce4/backdrops
 
 backdrops_DATA =							\
-	flower.png							\
 	xfce4gradientcurve.png						\
 	xfce4logo.png							\
 	xfce-in-a-grid.png						\
