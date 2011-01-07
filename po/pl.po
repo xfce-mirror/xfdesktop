@@ -4,20 +4,22 @@
 # Robert Kurowski <koorek@o2.pl>, 2005.
 # Piotr Maliński <riklaunim@gmail.com>, 2006.
 # Szymon Kałasz <szymon_maestro@gazeta.pl>, 2006.
-# Piotr Sokół <piotr.sokol@10g.pl>, 2009.
+# Piotr Sokół <psokol@jabster.pl>, 2009, 2011.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop 4.5.92\n"
+"Project-Id-Version: xfdesktop 4.7.5\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-05 16:00+0100\n"
-"PO-Revision-Date: 2009-07-15 21:16+0100\n"
-"Last-Translator: Piotr Sokół <piotr.sokol@10g.pl>\n"
-"Language-Team: Polish\n"
-"Language: \n"
+"POT-Creation-Date: 2011-01-06 11:11+0000\n"
+"PO-Revision-Date: 2011-01-07 14:03+0100\n"
+"Last-Translator: Piotr Sokół <psokol@jabster.pl>\n"
+"Language-Team: Polish <>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
+"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : ((n%10>=2 && n%10<=4 && (n"
+"%100<10 || n%100>=20)) ? 1 : 2));\n"
 
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
 #, c-format
@@ -37,7 +39,7 @@ msgstr ""
 #: ../settings/main.c:272 ../src/xfdesktop-special-file-icon.c:247
 #: ../src/xfdesktop-special-file-icon.c:413
 msgid "Home"
-msgstr "Katalog domowy"
+msgstr "Katalog użytkownika"
 
 #: ../settings/main.c:274
 msgid "Filesystem"
@@ -72,11 +74,11 @@ msgstr "Plik „%s” nie jest poprawnym plikiem listy obrazów. Nadpisać go?"
 
 #: ../settings/main.c:516
 msgid "Invalid List File"
-msgstr "Niewłaściwy plik listy"
+msgstr "Niepoprawny plik listy"
 
 #: ../settings/main.c:519
 msgid "Overwriting the file will cause its contents to be lost."
-msgstr "Nadpisanie pliku usunie jego zawartość."
+msgstr "Zastąpienie pliku spowoduje usunięcie jego dotychczasowej zawartość."
 
 #: ../settings/main.c:521
 msgid "Replace"
@@ -130,7 +132,7 @@ msgstr "Określa gniazdo menedżera ustawień"
 
 #: ../settings/main.c:1477
 msgid "SOCKET ID"
-msgstr "ID GNIAZDA"
+msgstr "ID_GNIAZDA"
 
 #: ../settings/main.c:1478
 msgid "Version information"
@@ -139,17 +141,17 @@ msgstr "Informacje o wersji"
 #: ../settings/main.c:1498
 #, c-format
 msgid "Type '%s --help' for usage."
-msgstr "Wpisz „%s --help” aby wypisać komunikat pomocy."
+msgstr "Proszę wprowadzić „%s --help”, aby wypisać komunikat pomocy."
 
 #: ../settings/main.c:1510
 msgid "The Xfce development team. All rights reserved."
 msgstr ""
-"Zespół twórców środowiska graficznego Xfce. Wszystkie prawa zastrzeżone."
+"Zespół twórców środowiska graficznego Xfce. Wszystkie prawa zastrzeżone."
 
 #: ../settings/main.c:1511
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr "Błędy proszę zgłaszać na <%s>."
+msgstr "Proszę zgłaszać błędy na adres <%s>."
 
 #: ../settings/main.c:1518
 msgid "Desktop Settings"
@@ -190,7 +192,7 @@ msgstr "Dodaje obraz do listy"
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
 #: ../settings/xfdesktop-settings-ui.glade.h:6
 msgid "Auto"
-msgstr "Automatyczny"
+msgstr "Automatycznie"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
 msgid "Automatically pick a random image from a list file"
@@ -203,7 +205,7 @@ msgstr "_Jasność:"
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
 #: ../settings/xfdesktop-settings-ui.glade.h:8
 msgid "Centered"
-msgstr "Wyśrodkuj"
+msgstr "Wyśrodkowanie"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
 msgid "Create a new list, or load an existing one"
@@ -215,7 +217,6 @@ msgstr "Nie wyświetla obrazu w tle pulpitu"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
 #: ../settings/xfdesktop-settings-ui.glade.h:12
-#, fuzzy
 msgid "Horizontal gradient"
 msgstr "Gradient poziomy"
 
@@ -242,7 +243,7 @@ msgstr "_Nasycenie:"
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 #: ../settings/xfdesktop-settings-ui.glade.h:23
 msgid "Scaled"
-msgstr "Skaluj"
+msgstr "Przeskalowanie"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
 msgid "Select First Color"
@@ -258,28 +259,27 @@ msgstr "Wyświetla w tle pulpitu pojedynczy obraz"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
 #: ../settings/xfdesktop-settings-ui.glade.h:32
-#, fuzzy
 msgid "Solid color"
 msgstr "Jednolity"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-msgstr "Określa „prawy” bądź „dolny” kolor gradientu"
+msgstr "Określa drugorzędny kolor tła pulpitu"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
 msgid ""
 "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr "Określa kolor jednolity albo „lewy” bądź „górny” kolor gradientu"
+msgstr "Określa podstawowy kolor tła pulpitu"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid "Specify how the image will be resized to fit the screen"
-msgstr "Określa w jaki sposób obraz będzie wyświetlony w tle pulpitu"
+msgstr "Określa sposób w jaki obraz będzie wyświetlony na tle pulpitu"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "Specify the style of the color drawn behind the backdrop image"
 msgstr ""
 "Określa sposób w jaki tło pulpitu wyświetlone pod obrazem zostanie pokryte "
-"kolorem "
+"kolorem"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
 msgid "St_yle:"
@@ -288,21 +288,20 @@ msgstr "_Styl:"
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
 #: ../settings/xfdesktop-settings-ui.glade.h:34
 msgid "Stretched"
-msgstr "Rozciągnięty"
+msgstr "Rozciągnięcie"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
 #: ../settings/xfdesktop-settings-ui.glade.h:35
 msgid "Tiled"
-msgstr "Kafelki"
+msgstr "Sąsiadująco"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
 #: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid "Transparent"
-msgstr ""
+msgstr "Przezroczysty"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
 #: ../settings/xfdesktop-settings-ui.glade.h:39
-#, fuzzy
 msgid "Vertical gradient"
 msgstr "Gradient pionowy"
 
@@ -329,15 +328,15 @@ msgstr "<b>Domyślne</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:3
 msgid "<b>Desktop Menu</b>"
-msgstr "<b>Menu programów</b>"
+msgstr "<b>Programy</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:4
 msgid "<b>Window List Menu</b>"
-msgstr "<b>Lista okien</b>"
+msgstr "<b>Okna</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:5
 msgid "Alt"
-msgstr ""
+msgstr "Alt"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:7
 msgid "B_utton:"
@@ -354,7 +353,7 @@ msgstr "Pulpit"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:11
 msgid "File/launcher icons"
-msgstr "Pliki/ikony aktywatorów"
+msgstr "Pliki i aktywatory"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:13
 msgid "Icon _size:"
@@ -370,19 +369,15 @@ msgstr "_Przezroczystość etykiet:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:16
 msgid "Left"
-msgstr ""
+msgstr "Lewy"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:17
 msgid "Middle"
-msgstr ""
+msgstr "Środkowy"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:18
-#, fuzzy
 msgid "Minimized application icons"
-msgstr ""
-"Brak\n"
-"Zminimalizowane okna\n"
-"Pliki i aktywatory"
+msgstr "Zminimalizowane okna"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:19
 msgid "Mo_difier:"
@@ -398,7 +393,7 @@ msgstr "Brak"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:22
 msgid "Right"
-msgstr ""
+msgstr "Prawy"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:24
 msgid "Set desktop background and menu and icon behavior"
@@ -410,7 +405,7 @@ msgstr "Ik_ony w menu"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:26
 msgid "Shift"
-msgstr ""
+msgstr "Shift"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "Show _application icons in menu"
@@ -433,7 +428,6 @@ msgid "Show workspace _names in list"
 msgstr "_Nazwy obszarów roboczych"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
-#, fuzzy
 msgid ""
 "Specify the transparency level for the rounded label drawn behind the icon "
 "text"
@@ -470,44 +464,41 @@ msgid "_Menus"
 msgstr "M_enu"
 
 #: ../src/main.c:238
-#, fuzzy
 msgid "Display version information"
-msgstr "Informacje o wersji"
+msgstr "Wypisuje informacje o wersji i kończy"
 
 #: ../src/main.c:239
-#, fuzzy
 msgid "Reload all settings, refresh image list"
-msgstr "  --reload\t\tWczytuje ustawienia ponownie, odświeża listę obrazów\n"
+msgstr "Wczytuje ponownie ustawienia, odświeża listę obrazów"
 
 #: ../src/main.c:240
-#, fuzzy
 msgid "Pop up the menu (at the current mouse position)"
-msgstr "  --menu\t\tWyświetla menu w miejscu kursora myszy\n"
+msgstr "Wyświetla menu programów w położeniu kursora myszy"
 
 #: ../src/main.c:241
-#, fuzzy
 msgid "Pop up the window list (at the current mouse position)"
-msgstr "  --windowlist\t\tWyświetla listę okien w miejscu kursora myszy\n"
+msgstr "Wyświetla menu okien w położeniu kursora myszy"
 
 #: ../src/main.c:242
-#, fuzzy
 msgid "Cause xfdesktop to quit"
-msgstr "  --quit\t\tKończy program\n"
+msgstr "Kończy działanie programu"
 
 #: ../src/main.c:262
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to parse arguments: %s\n"
-msgstr "Nie udało się uruchomić „%s”:"
+msgstr "Nie udało się przetworzyć argumentów: %s\n"
 
 #: ../src/main.c:270
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr "To jest %s wersja %s, działająca pod Xfce %s.\n"
+msgstr "Program %s wersja %s, uruchomiony w środowisku Xfce %s.\n"
 
 #: ../src/main.c:272
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr "Skompilowane pod GTK+ %d.%d.%d, linkowane z GTK+ %d.%d.%d."
+msgstr ""
+"Skompilowano przy użyciu Gtk+-%d.%d.%d, uruchomiono przy użyciu Gtk+-%d.%d."
+"%d."
 
 #: ../src/main.c:276
 #, c-format
@@ -548,7 +539,7 @@ msgstr "_Programy"
 
 #: ../src/windowlist.c:235
 msgid "Window List"
-msgstr "Lista okien"
+msgstr "Menu okien"
 
 #: ../src/windowlist.c:261
 #, c-format
@@ -590,20 +581,21 @@ msgstr "Błąd pulpitu"
 
 #: ../src/xfdesktop-file-icon-manager.c:465
 #: ../src/xfdesktop-file-icon-manager.c:482
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create the desktop folder \"%s\""
-msgstr "Nie można utworzyć pliku listy obrazów „%s”"
+msgstr "Nie można utworzyć katalogu pulpitu „%s”"
 
 #: ../src/xfdesktop-file-icon-manager.c:470
 #: ../src/xfdesktop-file-icon-manager.c:487
-#, fuzzy
 msgid "Desktop Folder Error"
-msgstr "Błąd pulpitu"
+msgstr "Błąd katalogu pulpitu"
 
 #: ../src/xfdesktop-file-icon-manager.c:489
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr ""
+"Zwykły plik o tej samej nazwie już istnieje. Proszę go usunąć lub zmienić "
+"jego nazwę."
 
 #: ../src/xfdesktop-file-icon-manager.c:592
 #: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:803
@@ -613,9 +605,8 @@ msgstr "Błąd kosza"
 
 #: ../src/xfdesktop-file-icon-manager.c:593
 #: ../src/xfdesktop-file-icon-manager.c:637
-#, fuzzy
 msgid "The selected files could not be trashed"
-msgstr "Nie powiodło się uruchomienie wybieracza aplikacji."
+msgstr "Nie można usunąć zaznaczonych plików"
 
 #: ../src/xfdesktop-file-icon-manager.c:594
 #: ../src/xfdesktop-file-icon-manager.c:638 ../src/xfdesktop-file-utils.c:652
@@ -624,11 +615,11 @@ msgstr "Nie powiodło się uruchomienie wybieracza aplikacji."
 #: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:1029
 #: ../src/xfdesktop-file-utils.c:1106 ../src/xfdesktop-file-utils.c:1167
 #: ../src/xfdesktop-file-utils.c:1240 ../src/xfdesktop-file-utils.c:1318
-#, fuzzy
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
-msgstr "Ta opcja wymaga menedżera plików takiego jak Thunar."
+msgstr ""
+"Ta cecha wymaga obecności menedżera plików (takiego jak program Thunar)."
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:738
@@ -662,8 +653,8 @@ msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr ""
-"Nie można uruchomić „exo-desktop-item-edit”, potrzebnego do tworzenia oraz "
-"edytowania aktywatorów i łączy na pulpicie."
+"Nie można uruchomić programu „exo-desktop-item-edit”, potrzebnego do "
+"tworzenia oraz edytowania aktywatorów i łączy z poziomu pulpitu."
 
 #: ../src/xfdesktop-file-icon-manager.c:1354
 msgid "_Open all"
@@ -704,7 +695,7 @@ msgstr "_Pusty plik"
 
 #: ../src/xfdesktop-file-icon-manager.c:1480
 msgid "_Execute"
-msgstr "_Wykonaj"
+msgstr "_Uruchom"
 
 #: ../src/xfdesktop-file-icon-manager.c:1500
 msgid "_Edit Launcher"
@@ -716,7 +707,7 @@ msgstr "Otwórz za pomocą"
 
 #: ../src/xfdesktop-file-icon-manager.c:1561
 msgid "Open With Other _Application..."
-msgstr "Otwórz za pomocą innego _programu..."
+msgstr "Otwórz za pomocą innego p_rogramu..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1649
 msgid "_Rename..."
@@ -732,144 +723,125 @@ msgid "_Properties..."
 msgstr "_Właściwości..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2231
-#, fuzzy
 msgid "Load Error"
-msgstr "Błąd uruchamiania"
+msgstr "Błąd wczytywania"
 
 #: ../src/xfdesktop-file-icon-manager.c:2233
-#, fuzzy
 msgid "Failed to load the desktop folder"
-msgstr "Nie można utworzyć pliku listy obrazów „%s”"
+msgstr "Nie udało się wczytać katalogu pulpitu"
 
 #. TRANSLATORS: file was modified less than one day ago
 #: ../src/xfdesktop-file-utils.c:137
 #, c-format
 msgid "Today at %X"
-msgstr ""
+msgstr "Dzisiaj o %X"
 
 #. TRANSLATORS: file was modified less than two days ago
 #: ../src/xfdesktop-file-utils.c:141
 #, c-format
 msgid "Yesterday at %X"
-msgstr ""
+msgstr "Wczoraj o %X"
 
 #. Days from last week
 #: ../src/xfdesktop-file-utils.c:146
 #, c-format
 msgid "%A at %X"
-msgstr ""
+msgstr "%A o %X"
 
 #. Any other date
 #: ../src/xfdesktop-file-utils.c:149
 #, c-format
 msgid "%x at %X"
-msgstr ""
+msgstr "%x o %X"
 
 #. the file_time is invalid
 #: ../src/xfdesktop-file-utils.c:159
-#, fuzzy
 msgid "Unknown"
-msgstr "(nieznany)"
+msgstr "Nieznany"
 
 #: ../src/xfdesktop-file-utils.c:636 ../src/xfdesktop-file-utils.c:651
-#, fuzzy
 msgid "The folder could not be opened"
-msgstr "Nie powiodło się uruchomienie wybieracza aplikacji."
+msgstr "Nie można otworzyć katalogu"
 
 #: ../src/xfdesktop-file-utils.c:685 ../src/xfdesktop-file-utils.c:700
-#, fuzzy
 msgid "Rename Error"
-msgstr "Błąd uruchamiania"
+msgstr "Błąd zmiany nazwy"
 
 #: ../src/xfdesktop-file-utils.c:686 ../src/xfdesktop-file-utils.c:701
-#, fuzzy
 msgid "The file could not be renamed"
-msgstr "Nie powiodło się uruchomienie wybieracza aplikacji."
+msgstr "Nie można zmienić nazwy pliku"
 
 #: ../src/xfdesktop-file-utils.c:744 ../src/xfdesktop-file-utils.c:759
-#, fuzzy
 msgid "Delete Error"
-msgstr "Błąd tworzenia"
+msgstr "Błąd usuwania"
 
 #: ../src/xfdesktop-file-utils.c:745 ../src/xfdesktop-file-utils.c:760
-#, fuzzy
 msgid "The selected files could not be deleted"
-msgstr "Przypisany program nie został znaleziony lub nie można go uruchomić."
+msgstr "Nie można usunąć zaznaczonych plików"
 
 #: ../src/xfdesktop-file-utils.c:804 ../src/xfdesktop-file-utils.c:819
-#, fuzzy
 msgid "The selected files could not be moved to the trash"
-msgstr "Nie powiodło się uruchomienie wybieracza aplikacji."
+msgstr "Nie można przenieść do kosza zaznaczonych plików."
 
 #: ../src/xfdesktop-file-utils.c:820
-#, fuzzy
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
-msgstr "Ta opcja wymaga menedżera plików takiego jak Thunar."
+msgstr ""
+"Ta cecha wymaga obecności usługi kosza (takiej jaką dostarcza program "
+"Thunar)."
 
 #: ../src/xfdesktop-file-utils.c:856 ../src/xfdesktop-file-utils.c:871
-#, fuzzy
 msgid "Create File Error"
-msgstr "Błąd tworzenia"
+msgstr "Błąd tworzenia pliku"
 
 #: ../src/xfdesktop-file-utils.c:857 ../src/xfdesktop-file-utils.c:872
-#, fuzzy
 msgid "Could not create a new file"
-msgstr "Nie można utworzyć pliku listy obrazów „%s”"
+msgstr "Nie można utworzyć nowego pliku"
 
 #: ../src/xfdesktop-file-utils.c:912 ../src/xfdesktop-file-utils.c:927
-#, fuzzy
 msgid "Create Document Error"
-msgstr "Błąd tworzenia"
+msgstr "Błąd tworzenia dokumentu"
 
 #: ../src/xfdesktop-file-utils.c:913 ../src/xfdesktop-file-utils.c:928
-#, fuzzy
 msgid "Could not create a new document from the template"
-msgstr "Utwórz dokument z szablonu „%s”"
+msgstr "Nie można utworzyć nowego dokumentu z szablonu"
 
 #: ../src/xfdesktop-file-utils.c:962 ../src/xfdesktop-file-utils.c:977
-#, fuzzy
 msgid "File Properties Error"
-msgstr "Błąd właściwości"
+msgstr "Błąd właściwości pliku"
 
 #: ../src/xfdesktop-file-utils.c:963 ../src/xfdesktop-file-utils.c:978
-#, fuzzy
 msgid "The file properties dialog could not be opened"
-msgstr "Nie powiodło się uruchomienie wybieracza aplikacji."
+msgstr "Nie można otworzyć okna właściwości pliku"
 
 #: ../src/xfdesktop-file-utils.c:1013 ../src/xfdesktop-file-utils.c:1028
-#, fuzzy
 msgid "The file could not be opened"
-msgstr "Nie powiodło się uruchomienie wybieracza aplikacji."
+msgstr "Nie można otworzyć pliku"
 
 #: ../src/xfdesktop-file-utils.c:1076 ../src/xfdesktop-file-utils.c:1101
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to run \"%s\""
-msgstr "Nie udało się uruchomić „%s”:"
+msgstr "Nie udało się uruchomić „%s”"
 
 #: ../src/xfdesktop-file-utils.c:1151 ../src/xfdesktop-file-utils.c:1166
-#, fuzzy
 msgid "The application chooser could not be opened"
-msgstr "Nie powiodło się uruchomienie wybieracza aplikacji."
+msgstr "Nie można otworzyć okna wyboru programu"
 
 #: ../src/xfdesktop-file-utils.c:1224 ../src/xfdesktop-file-utils.c:1238
 #: ../src/xfdesktop-file-utils.c:1300 ../src/xfdesktop-file-utils.c:1316
-#, fuzzy
 msgid "Transfer Error"
-msgstr "Błąd kosza"
+msgstr "Błąd przesyłania"
 
 #: ../src/xfdesktop-file-utils.c:1225 ../src/xfdesktop-file-utils.c:1239
 #: ../src/xfdesktop-file-utils.c:1301 ../src/xfdesktop-file-utils.c:1317
-#, fuzzy
 msgid "The file transfer could not be performed"
-msgstr "Nie powiodło się uruchomienie wybieracza aplikacji."
+msgstr "Nie można przesłać pliku"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:128
-#, fuzzy
 msgid "Unmounting device"
-msgstr "Odmontowanie nieudane"
+msgstr "Odmontowywanie nośnika"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:131
@@ -878,11 +850,13 @@ msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the "
 "media or disconnect the drive"
 msgstr ""
+"Trwa odmontowywanie nośnika „%s”. Proszę nie wysuwać nośnika bądź odłączać "
+"napędu."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
 msgid "Writing data to device"
-msgstr ""
+msgstr "Zapisywanie danych na nośniku"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
@@ -891,18 +865,19 @@ msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be "
 "removed. Please do not remove the media or disconnect the drive"
 msgstr ""
+"Pewne dane muszą zostać zapisane na nośniku „%s” przed jego wysunięciem. "
+"Proszę nie wysuwać nośnika bądź odłączać napędu."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:253
-#, fuzzy
 msgid "Ejecting device"
-msgstr "Odmontowanie nieudane"
+msgstr "Wysuwanie nośnika"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:256
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
-msgstr ""
+msgstr "Trwa wysuwanie nośnika „%s”. Może to potrwać dłuższy czas."
 
 #: ../src/xfdesktop-regular-file-icon.c:468
 #, c-format
@@ -911,25 +886,27 @@ msgid ""
 "Size: %s\n"
 "Last modified: %s"
 msgstr ""
+"Typ: %s\n"
+"Rozmiar: %s\n"
+"Ostatnio zmodyfikowany: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:249
 #: ../src/xfdesktop-special-file-icon.c:411
-#, fuzzy
 msgid "File System"
 msgstr "System plików"
 
 #: ../src/xfdesktop-special-file-icon.c:396
 msgid "Trash is empty"
-msgstr ""
+msgstr "Pusty"
 
 #: ../src/xfdesktop-special-file-icon.c:399
 msgid "Trash contains one item"
-msgstr ""
+msgstr "Zawiera jeden element"
 
 #: ../src/xfdesktop-special-file-icon.c:400
 #, c-format
 msgid "Trash contains %d items"
-msgstr ""
+msgstr "Zawiera %d elementów"
 
 #: ../src/xfdesktop-special-file-icon.c:428
 #, c-format
@@ -938,6 +915,9 @@ msgid ""
 "Size: %s\n"
 "Last modified: %s"
 msgstr ""
+"%s\n"
+"Rozmiar: %s\n"
+"Ostatnio zmodyfikowany: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:449
 msgid "Unable to contact the Xfce Trash service."
@@ -956,39 +936,37 @@ msgid "_Empty Trash"
 msgstr "Opróżnij _kosz"
 
 #: ../src/xfdesktop-volume-icon.c:413
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Removable Volume\n"
 "Mounted in \"%s\"\n"
 "%s left (%s total)"
 msgstr ""
-"Typ: nośnik wymienny\n"
-"Punkt montowania: %s\n"
-"Wolne miejsce: %s"
+"Nośnik wymienny\n"
+"Zamontowany w położeniu „%s”\n"
+"Pozostało %s wolnej przestrzeni (łącznie %s)"
 
 #: ../src/xfdesktop-volume-icon.c:420
-#, fuzzy
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
 msgstr ""
-"Typ: nośnik wymienny\n"
-"Punkt montowania: %s\n"
-"Wolne miejsce: %s"
+"Nośnik wymienny\n"
+"Nie zamontowany"
 
 #: ../src/xfdesktop-volume-icon.c:446 ../src/xfdesktop-volume-icon.c:488
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to eject \"%s\""
-msgstr "Nie można wysunąć „%s”:"
+msgstr "Nie udało się wysunąć „%s”"
 
 #: ../src/xfdesktop-volume-icon.c:451 ../src/xfdesktop-volume-icon.c:493
 msgid "Eject Failed"
 msgstr "Wysuwanie nieudane"
 
 #: ../src/xfdesktop-volume-icon.c:525
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to mount \"%s\""
-msgstr "Nie udało się uruchomić „%s”:"
+msgstr "Nie udało się zamontować „%s”"
 
 #: ../src/xfdesktop-volume-icon.c:528
 msgid "Mount Failed"
