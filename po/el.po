@@ -3,20 +3,21 @@
 # This file is distributed under the same license as the xfdesktop package.
 # Stavros Giannouris <stavrosg@hellug.gr>, 2005-2006, 2008.
 # Stathis Kamperis <ekamperi@auth.gr>, 2006.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop git\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-13 05:11+0000\n"
+"POT-Creation-Date: 2011-01-16 17:44+0100\n"
 "PO-Revision-Date: 2011-01-07 17:54+0200\n"
 "Last-Translator: Spiros Georgaras <sng@hellug.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: el\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\\n\\n\\nX-Poedit-Language: Greek\\nX-Poedit-SourceCharset: utf-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\\n\\n\\nX-Poedit-Language: Greek"
+"\\nX-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Country: GREECE\n"
 
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
@@ -66,8 +67,11 @@ msgstr "Δημιουργία/φόρτωση λίστας παρασκηνίων"
 
 #: ../settings/main.c:511
 #, c-format
-msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr "Το αρχείο \"%s\" δεν είναι έγκυρο αρχείο λίστας εικόνων φόντου. Θέλετε να το αντικαταστήσετε;"
+msgid ""
+"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr ""
+"Το αρχείο \"%s\" δεν είναι έγκυρο αρχείο λίστας εικόνων φόντου. Θέλετε να το "
+"αντικαταστήσετε;"
 
 #: ../settings/main.c:516
 msgid "Invalid List File"
@@ -263,12 +267,15 @@ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr "Ορίζει το χρώμα \"δεξιά\" ή \"κάτω\" της διαβάθμισης"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
-msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr "Ορίζει το συμπαγές χρώμα, ή το \"αριστερό\" ή \"πάνω\" χρώμα της διαβάθμισης"
+msgid ""
+"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr ""
+"Ορίζει το συμπαγές χρώμα, ή το \"αριστερό\" ή \"πάνω\" χρώμα της διαβάθμισης"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid "Specify how the image will be resized to fit the screen"
-msgstr "Καθορίστε πώς θα αλλάξει το μέγεθός της εικόνας για να χωρέσει στην οθόνη"
+msgstr ""
+"Καθορίστε πώς θα αλλάξει το μέγεθός της εικόνας για να χωρέσει στην οθόνη"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "Specify the style of the color drawn behind the backdrop image"
@@ -420,7 +427,9 @@ msgid "Show workspace _names in list"
 msgstr "Εμφάνιση ο_νομάτων περιοχών εργασίας στη λίστα"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
-msgid "Specify the transparency level for the rounded label drawn behind the icon text"
+msgid ""
+"Specify the transparency level for the rounded label drawn behind the icon "
+"text"
 msgstr "Ορίστε τη διαφάνεια της ετικέττας εικονιδίου"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:37
@@ -577,8 +586,11 @@ msgid "Desktop Folder Error"
 msgstr "Σφάλμα φακέλου επιφάνεια εργασίας"
 
 #: ../src/xfdesktop-file-icon-manager.c:489
-msgid "A normal file with the same name already exists. Please delete or rename it."
-msgstr "Ένα κανονικό αρχείο με το ίδιο όνομα υπάρχει ήδη. Παρακαλούμε να το διαγράψετε ή να το μετονομάσετε."
+msgid ""
+"A normal file with the same name already exists. Please delete or rename it."
+msgstr ""
+"Ένα κανονικό αρχείο με το ίδιο όνομα υπάρχει ήδη. Παρακαλούμε να το "
+"διαγράψετε ή να το μετονομάσετε."
 
 #: ../src/xfdesktop-file-icon-manager.c:592
 #: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:803
@@ -598,8 +610,12 @@ msgstr "Τα επιλεγμένα αρχεία δεν ήταν δυνατό να
 #: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:1029
 #: ../src/xfdesktop-file-utils.c:1106 ../src/xfdesktop-file-utils.c:1167
 #: ../src/xfdesktop-file-utils.c:1240 ../src/xfdesktop-file-utils.c:1318
-msgid "This feature requires a file manager service to be present (such as the one supplied by Thunar)."
-msgstr "Αυτό το χαρακτηριστικό απαιτεί μια υπηρεσία διαχειριστή απορριμμάτων (όπως αυτή που παρέχει ο Thunar)."
+msgid ""
+"This feature requires a file manager service to be present (such as the one "
+"supplied by Thunar)."
+msgstr ""
+"Αυτό το χαρακτηριστικό απαιτεί μια υπηρεσία διαχειριστή απορριμμάτων (όπως "
+"αυτή που παρέχει ο Thunar)."
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:738
@@ -629,8 +645,13 @@ msgid "Open With \"%s\""
 msgstr "Άνοιγμα με \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:986
-msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
-msgstr "Δεν ήταν δυνατή η εκκίνηση του \"exo-desktop-item-edit\", που απαιτείται για τη δημιουργία και την επεξεργασία εκκινητών και συνδέσμων στην επιφάνεια εργασίας."
+msgid ""
+"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
+"edit launchers and links on the desktop."
+msgstr ""
+"Δεν ήταν δυνατή η εκκίνηση του \"exo-desktop-item-edit\", που απαιτείται για "
+"τη δημιουργία και την επεξεργασία εκκινητών και συνδέσμων στην επιφάνεια "
+"εργασίας."
 
 #: ../src/xfdesktop-file-icon-manager.c:1354
 msgid "_Open all"
@@ -760,8 +781,12 @@ msgid "The selected files could not be moved to the trash"
 msgstr "Τα επιλεγμένα αρχεία δεν μπόρεσαν να μετακινηθούν στα απορρίμματα"
 
 #: ../src/xfdesktop-file-utils.c:820
-msgid "This feature requires a trash service to be present (such as the one supplied by Thunar)."
-msgstr "Αυτό το χαρακτηριστικό απαιτεί μια υπηρεσία διαχείρισης απορριμμάτων (όπως αυτή που παρέχει ο Thunar)."
+msgid ""
+"This feature requires a trash service to be present (such as the one "
+"supplied by Thunar)."
+msgstr ""
+"Αυτό το χαρακτηριστικό απαιτεί μια υπηρεσία διαχείρισης απορριμμάτων (όπως "
+"αυτή που παρέχει ο Thunar)."
 
 #: ../src/xfdesktop-file-utils.c:856 ../src/xfdesktop-file-utils.c:871
 msgid "Create File Error"
@@ -818,8 +843,12 @@ msgstr "Αποπροσάρτηση συσκευής"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:131
 #, c-format
-msgid "The device \"%s\" is being unmounted by the system. Please do not remove the media or disconnect the drive"
-msgstr "Η συσκευή \\ \"% s \" αποπροσαρτείται από το σύστημα. Παρακαλώ μην αφαιρέσετε το μέσο ή αποσυνδέσετε τη συσκευή"
+msgid ""
+"The device \"%s\" is being unmounted by the system. Please do not remove the "
+"media or disconnect the drive"
+msgstr ""
+"Η συσκευή \\ \"% s \" αποπροσαρτείται από το σύστημα. Παρακαλώ μην "
+"αφαιρέσετε το μέσο ή αποσυνδέσετε τη συσκευή"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
@@ -829,8 +858,12 @@ msgstr "Εγγραφή δεδομένων στη συσκευή"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
 #, c-format
-msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
-msgstr "Υπάρχουν δεδομένα που πρέπει να εγγραφούν στη συσκευή \"%s\" πριν να μπορεί να αφαιρεθεί. Παρακαλώ μην αφαιρέσετε το μέσο ή αποσυνδέσετε τη συσκευή"
+msgid ""
+"There is data that needs to be written to the device \"%s\" before it can be "
+"removed. Please do not remove the media or disconnect the drive"
+msgstr ""
+"Υπάρχουν δεδομένα που πρέπει να εγγραφούν στη συσκευή \"%s\" πριν να μπορεί "
+"να αφαιρεθεί. Παρακαλώ μην αφαιρέσετε το μέσο ή αποσυνδέσετε τη συσκευή"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:253
@@ -888,8 +921,12 @@ msgid "Unable to contact the Xfce Trash service."
 msgstr "Δεν ήταν δυνατή η επικοινωνία με την υπηρεσία απορριμμάτων του Xfce."
 
 #: ../src/xfdesktop-special-file-icon.c:450
-msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
-msgstr "Σιγουρευτείτε ότι υπάρχει εγκατεστημένος ένας διαχειριστής αρχείων που υποστηρίζει την υπηρεσία απορριμμάτων του Xfce, όπως το Thunar."
+msgid ""
+"Make sure you have a file manager installed that supports the Xfce Trash "
+"service, such as Thunar."
+msgstr ""
+"Σιγουρευτείτε ότι υπάρχει εγκατεστημένος ένας διαχειριστής αρχείων που "
+"υποστηρίζει την υπηρεσία απορριμμάτων του Xfce, όπως το Thunar."
 
 #: ../src/xfdesktop-special-file-icon.c:588
 msgid "_Empty Trash"

@@ -5,26 +5,26 @@ dnl
 
 dnl version info
 m4_define([xfdesktop_version_major], [4])
-m4_define([xfdesktop_version_minor], [7])
-m4_define([xfdesktop_version_micro], [5])
+m4_define([xfdesktop_version_minor], [8])
+m4_define([xfdesktop_version_micro], [0])
 m4_define([xfdesktop_version_nano], [])
 m4_define([xfdesktop_version_build], [@REVISION@])
-m4_define([xfdesktop_version_tag],[git])
+m4_define([xfdesktop_version_tag],[])
 m4_define([xfdesktop_version], [xfdesktop_version_major().xfdesktop_version_minor().xfdesktop_version_micro()ifelse(xfdesktop_version_nano(), [], [], [.xfdesktop_version_nano()])ifelse(xfdesktop_version_tag(), [git], [xfdesktop_version_tag()-xfdesktop_version_build()], [xfdesktop_version_tag()])])
 
 dnl minimum required versions
 m4_define([glib_minimum_version], [2.18.0])
 m4_define([gtk_minimum_version], [2.14.0])
-m4_define([libxfce4util_minimum_version], [4.6.0])
-m4_define([libxfce4ui_minimum_version], [4.7.0])
-m4_define([xfce_minimum_version], [4.6.0])
+m4_define([libxfce4util_minimum_version], [4.8.0])
+m4_define([libxfce4ui_minimum_version], [4.8.0])
+m4_define([xfce_minimum_version], [4.8.0])
 m4_define([garcon_minimum_version], [0.1.2])
-m4_define([exo_minimum_version], [0.3.100])
-m4_define([thunar_minimum_version], [1.1.3])
+m4_define([exo_minimum_version], [0.6.0])
+m4_define([thunar_minimum_version], [1.2.0])
 m4_define([dbus_minimum_version], [0.34])
 m4_define([wnck_minimum_version], [2.22])
 m4_define([intltool_minimum_version], [0.31])
-m4_define([xfconf_minimum_version], [4.6.0])
+m4_define([xfconf_minimum_version], [4.8.0])
 
 dnl init autoconf
 AC_INIT([xfdesktop], [xfdesktop_version], [http://bugzilla.xfce.org/])
