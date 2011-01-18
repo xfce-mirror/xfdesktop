@@ -1,8 +1,8 @@
 /*
  *  xfdesktop - xfce4's desktop manager
  *
- *  Copyright(c) 2006 Brian Tarricone, <bjt23@cornell.edu>
- *  Copyright(c) 2010 Jannis Pohlmann, <jannis@xfce.org>
+ *  Copyright(c) 2006      Brian Tarricone, <bjt23@cornell.edu>
+ *  Copyright(c) 2010-2011 Jannis Pohlmann, <jannis@xfce.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -33,6 +33,11 @@
 gboolean xfdesktop_file_utils_is_desktop_file(GFileInfo *info);
 gboolean xfdesktop_file_utils_file_is_executable(GFileInfo *info);
 gchar *xfdesktop_file_utils_format_time_for_display(guint64 file_time);
+GKeyFile *xfdesktop_file_utils_query_key_file(GFile *file, 
+                                              GCancellable *cancellable, 
+                                              GError **error);
+gchar *xfdesktop_file_utils_get_display_name(GFile *file,
+                                             GFileInfo *info);
 
 gboolean xfdesktop_file_utils_volume_is_present(GVolume *volume);
 gboolean xfdesktop_file_utils_volume_is_removable(GVolume *volume);

@@ -3,7 +3,7 @@
  *
  *  Copyright(c) 2006 Brian Tarricone, <bjt23@cornell.edu>
  *  Copyright(c) 2006 Benedikt Meurer, <benny@xfce.org>
- *  Copyright(c) 2010 Jannis Pohlmann, <jannis@xfce.org>
+ *  Copyright(c) 2010-2011 Jannis Pohlmann, <jannis@xfce.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -61,6 +61,7 @@
 struct _XfdesktopRegularFileIconPrivate
 {
     GdkPixbuf *pix;
+    gchar *display_name;
     gchar *tooltip;
     guint pix_opacity;
     gint cur_pix_size;
@@ -142,6 +143,7 @@ xfdesktop_regular_file_icon_init(XfdesktopRegularFileIcon *icon)
                                              XFDESKTOP_TYPE_REGULAR_FILE_ICON,
                                              XfdesktopRegularFileIconPrivate);
     icon->priv->pix_opacity = 100;
+    icon->priv->display_name = NULL;
 }
 
 static void
@@ -153,7 +155,7 @@ xfdesktop_regular_file_icon_finalize(GObject *obj)
     g_signal_handlers_disconnect_by_func(G_OBJECT(itheme),
                                          G_CALLBACK(xfdesktop_regular_file_icon_invalidate_pixbuf),
                                          icon);
-    
+
     if(icon->priv->pix)
         g_object_unref(G_OBJECT(icon->priv->pix));
     
@@ -164,6 +166,8 @@ xfdesktop_regular_file_icon_finalize(GObject *obj)
         g_object_unref(icon->priv->filesystem_info);
 
     g_object_unref(icon->priv->file);
+    
+    g_free(icon->priv->display_name);
     
     if(icon->priv->tooltip)
         g_free(icon->priv->tooltip);
@@ -295,11 +299,11 @@ xfdesktop_regular_file_icon_peek_pixbuf(XfdesktopIcon *icon,
 static G_CONST_RETURN gchar *
 xfdesktop_regular_file_icon_peek_label(XfdesktopIcon *icon)
 {
-    GFileInfo *info = XFDESKTOP_REGULAR_FILE_ICON(icon)->priv->file_info;
+    XfdesktopRegularFileIcon *regular_file_icon = XFDESKTOP_REGULAR_FILE_ICON(icon);
 
     g_return_val_if_fail(XFDESKTOP_IS_REGULAR_FILE_ICON(icon), NULL);
 
-    return info ? g_file_info_get_display_name(info) : NULL;
+    return regular_file_icon->priv->display_name;
 }
 
 static GdkDragAction
@@ -534,21 +538,15 @@ xfdesktop_regular_file_icon_update_file_info(XfdesktopFileIcon *icon,
                                              GFileInfo *info)
 {
     XfdesktopRegularFileIcon *regular_file_icon = XFDESKTOP_REGULAR_FILE_ICON(icon);
-    const gchar *old_display_name, *new_display_name;
+    const gchar *old_display_name;
+    gchar *new_display_name;
     gboolean label_changed = FALSE;
     
     g_return_if_fail(XFDESKTOP_IS_REGULAR_FILE_ICON(icon));
     g_return_if_fail(G_IS_FILE_INFO(info));
 
+    /* release the old file info */
     if(regular_file_icon->priv->file_info) { 
-        old_display_name = g_file_info_get_attribute_string(regular_file_icon->priv->file_info,
-                                                            G_FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME);
-        new_display_name = g_file_info_get_attribute_string(info,
-                                                            G_FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME);
-
-        label_changed = (g_strcmp0(old_display_name, new_display_name) != 0);
-
-        /* release the old file info */
         g_object_unref(regular_file_icon->priv->file_info);
         regular_file_icon->priv->file_info = NULL;
     }
@@ -557,12 +555,28 @@ xfdesktop_regular_file_icon_update_file_info(XfdesktopFileIcon *icon,
 
     if(regular_file_icon->priv->filesystem_info)
         g_object_unref(regular_file_icon->priv->filesystem_info);
+
     regular_file_icon->priv->filesystem_info = g_file_query_filesystem_info(regular_file_icon->priv->file,
                                                                             XFDESKTOP_FILESYSTEM_INFO_NAMESPACE,
                                                                             NULL, NULL);
 
-    if(label_changed)
+    /* get both, old and new display name */
+    old_display_name = regular_file_icon->priv->display_name;
+    new_display_name = xfdesktop_file_utils_get_display_name(regular_file_icon->priv->file,
+                                                             regular_file_icon->priv->file_info);
+
+    /* check whether the display name has changed with the info update */
+    if(g_strcmp0 (old_display_name, new_display_name) != 0) {
+        /* replace the display name */
+        g_free (regular_file_icon->priv->display_name);
+        regular_file_icon->priv->display_name = new_display_name;
+
+        /* notify listeners of the label change */
         xfdesktop_icon_label_changed(XFDESKTOP_ICON(icon));
+    } else {
+        /* no change, release the new display name */
+        g_free (new_display_name);
+    }
     
     /* not really easy to check if this changed or not, so just invalidate it */
     xfdesktop_regular_file_icon_invalidate_pixbuf(regular_file_icon);
@@ -587,6 +601,10 @@ xfdesktop_regular_file_icon_new(GFile *file,
 
     regular_file_icon->priv->file = g_object_ref(file);
     regular_file_icon->priv->file_info = g_object_ref(file_info);
+
+    /* set the display name */
+    regular_file_icon->priv->display_name = xfdesktop_file_utils_get_display_name(file, 
+                                                                                  file_info);
 
     /* query file system information from GIO */
     regular_file_icon->priv->filesystem_info = g_file_query_filesystem_info(regular_file_icon->priv->file,
