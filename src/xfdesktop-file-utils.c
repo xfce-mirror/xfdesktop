@@ -1,8 +1,8 @@
 /*
  *  xfdesktop - xfce4's desktop manager
  *
- *  Copyright(c) 2006 Brian Tarricone, <bjt23@cornell.edu>
- *  Copyright(c) 2010 Jannis Pohlmann, <jannis@xfce.org>
+ *  Copyright(c) 2006      Brian Tarricone, <bjt23@cornell.edu>
+ *  Copyright(c) 2010-2011 Jannis Pohlmann, <jannis@xfce.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -157,6 +157,80 @@ xfdesktop_file_utils_format_time_for_display(guint64 file_time)
 
     /* the file_time is invalid */
     return g_strdup(_("Unknown"));
+}
+
+GKeyFile *
+xfdesktop_file_utils_query_key_file(GFile *file,
+                                    GCancellable *cancellable,
+                                    GError **error)
+{
+    GKeyFile *key_file;
+    gchar *contents = NULL;
+    gsize length;
+
+    g_return_val_if_fail(G_IS_FILE(file), NULL);
+    g_return_val_if_fail(cancellable == NULL || G_IS_CANCELLABLE(cancellable), NULL);
+    g_return_val_if_fail(error == NULL || *error == NULL, NULL);
+
+    /* try to load the entire file into memory */
+    if (!g_file_load_contents(file, cancellable, &contents, &length, NULL, error))
+        return NULL;
+
+    /* allocate a new key file */
+    key_file = g_key_file_new();
+
+    /* try to parse the key file from the contents of the file */
+    if (length == 0
+        || g_key_file_load_from_data(key_file, contents, length,
+                                     G_KEY_FILE_KEEP_COMMENTS
+                                     | G_KEY_FILE_KEEP_TRANSLATIONS,
+                                     error))
+    {
+        g_free(contents);
+        return key_file;
+    }
+    else
+    {
+        g_free(contents);
+        g_key_file_free(key_file);
+        return NULL;
+    }
+}
+
+gchar *
+xfdesktop_file_utils_get_display_name(GFile *file,
+                                      GFileInfo *info)
+{
+    GKeyFile *key_file;
+    gchar *display_name = NULL;
+
+    g_return_val_if_fail(G_IS_FILE_INFO(info), NULL);
+
+    /* check if we have a desktop entry */
+    if(xfdesktop_file_utils_is_desktop_file(info)) {
+        /* try to load its data into a GKeyFile */
+        key_file = xfdesktop_file_utils_query_key_file(file, NULL, NULL);
+        if(key_file) {
+            /* try to parse the display name */
+            display_name = g_key_file_get_string(key_file, 
+                                                 G_KEY_FILE_DESKTOP_GROUP,
+                                                 G_KEY_FILE_DESKTOP_KEY_NAME,
+                                                 NULL);
+            
+            /* free the key file */
+            g_key_file_free (key_file);
+        }
+    }
+
+    /* use the default display name as a fallback */
+    if(!display_name 
+       || *display_name == '\0' 
+       || !g_utf8_validate(display_name, -1, NULL))
+    {
+        display_name = g_strdup(g_file_info_get_display_name(info));
+    }
+
+    return display_name;
 }
 
 gboolean
