@@ -1,8 +1,8 @@
 /*
  *  xfdesktop - xfce4's desktop manager
  *
- *  Copyright (c) 2006 Brian Tarricone, <bjt23@cornell.edu>
- *  Copyright (c) 2010 Jannis Pohlmann, <jannis@xfce.org>
+ *  Copyright (c) 2006      Brian Tarricone, <bjt23@cornell.edu>
+ *  Copyright (c) 2010-2011 Jannis Pohlmann, <jannis@xfce.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -30,10 +30,6 @@
 #include "xfdesktop-file-utils.h"
 #include "xfdesktop-file-icon.h"
 
-struct _XfdesktopFileIconPrivate
-{
-};
-
 static void xfdesktop_file_icon_finalize(GObject *obj);
 
 static gboolean xfdesktop_file_icon_activated(XfdesktopIcon *icon);
@@ -49,8 +45,6 @@ xfdesktop_file_icon_class_init(XfdesktopFileIconClass *klass)
     GObjectClass *gobject_class = (GObjectClass *)klass;
     XfdesktopIconClass *icon_class = (XfdesktopIconClass *)klass;
     
-    g_type_class_add_private(klass, sizeof(XfdesktopFileIconPrivate));
-    
     gobject_class->finalize = xfdesktop_file_icon_finalize;
     
     icon_class->activated = xfdesktop_file_icon_activated;
@@ -59,8 +53,6 @@ xfdesktop_file_icon_class_init(XfdesktopFileIconClass *klass)
 static void
 xfdesktop_file_icon_init(XfdesktopFileIcon *icon)
 {
-    icon->priv = G_TYPE_INSTANCE_GET_PRIVATE(icon, XFDESKTOP_TYPE_FILE_ICON,
-                                             XfdesktopFileIconPrivate);
 }
 
 static void
