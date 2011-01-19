@@ -400,6 +400,14 @@ screen_size_changed_cb(GdkScreen *gscreen, gpointer user_data)
 }
 
 static void
+screen_composited_changed_cb(GdkScreen *gscreen,
+                             gpointer user_data)
+{
+    /* fake a screen size changed, so the background is properly set */
+    screen_size_changed_cb(gscreen, user_data);
+}
+
+static void
 xfce_desktop_monitors_changed(GdkScreen *gscreen,
                               gpointer user_data)
 {
@@ -757,6 +765,8 @@ xfce_desktop_realize(GtkWidget *widget)
     
     g_signal_connect(G_OBJECT(desktop->priv->gscreen), "size-changed",
             G_CALLBACK(screen_size_changed_cb), desktop);
+    g_signal_connect(G_OBJECT(desktop->priv->gscreen), "composited-changed",
+            G_CALLBACK(screen_composited_changed_cb), desktop);
     
     gtk_widget_add_events(GTK_WIDGET(desktop), GDK_EXPOSURE_MASK);
     
@@ -795,6 +805,8 @@ xfce_desktop_unrealize(GtkWidget *widget)
     
     g_signal_handlers_disconnect_by_func(G_OBJECT(desktop->priv->gscreen),
             G_CALLBACK(screen_size_changed_cb), desktop);
+    g_signal_handlers_disconnect_by_func(G_OBJECT(desktop->priv->gscreen),
+            G_CALLBACK(screen_composited_changed_cb), desktop);
     
     groot = gdk_screen_get_root_window(desktop->priv->gscreen);
     gdk_property_delete(groot, gdk_atom_intern("XFCE_DESKTOP_WINDOW", FALSE));
