@@ -540,7 +540,6 @@ xfdesktop_regular_file_icon_update_file_info(XfdesktopFileIcon *icon,
     XfdesktopRegularFileIcon *regular_file_icon = XFDESKTOP_REGULAR_FILE_ICON(icon);
     const gchar *old_display_name;
     gchar *new_display_name;
-    gboolean label_changed = FALSE;
     
     g_return_if_fail(XFDESKTOP_IS_REGULAR_FILE_ICON(icon));
     g_return_if_fail(G_IS_FILE_INFO(info));
