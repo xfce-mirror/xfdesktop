@@ -499,6 +499,8 @@ xfdesktop_file_utils_get_icon(const gchar *custom_icon_name,
     if(custom_icon_name) {
         pix_theme = gtk_icon_theme_load_icon(itheme, custom_icon_name, size,
                                              ITHEME_FLAGS, NULL);
+        if(!pix_theme && *custom_icon_name == '/' && g_file_test(custom_icon_name, G_FILE_TEST_IS_REGULAR))
+            pix_theme = gdk_pixbuf_new_from_file_at_size(custom_icon_name, size, size, NULL);
     }
     
     if(!pix_theme && icon) {
