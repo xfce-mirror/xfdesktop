@@ -4,6 +4,7 @@
  *  Copyright (c) 2008 Stephan Arts <stephan@xfce.org>
  *  Copyright (c) 2008 Brian Tarricone <bjt23@cornell.edu>
  *  Copyright (c) 2008 Jérôme Guelfucci <jerome.guelfucci@gmail.com>
+ *  Copyright (c) 2011 Jannis Pohlmann <jannis@xfce.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -212,6 +213,7 @@ static gpointer
 xfdesktop_settings_create_all_previews(gpointer data)
 {
     GtkTreeModel *model = data;
+    GtkTreeView *tree_view;
     GtkTreeIter iter;
 
     gdk_threads_enter();
@@ -220,6 +222,21 @@ xfdesktop_settings_create_all_previews(gpointer data)
             xfdesktop_settings_do_single_preview(model, &iter);
         } while(gtk_tree_model_iter_next(model, &iter));
     }
+
+    /* if possible, scroll to the selected image */
+    tree_view = g_object_get_data(G_OBJECT(model), "xfdesktop-tree-view");
+    if(tree_view) {
+        GtkTreeSelection *selection = gtk_tree_view_get_selection(tree_view);
+
+        if(gtk_tree_selection_get_mode(selection) != GTK_SELECTION_MULTIPLE
+           && gtk_tree_selection_get_selected(selection, NULL, &iter)) 
+        {
+            GtkTreePath *path = gtk_tree_model_get_path(model, &iter);
+            gtk_tree_view_scroll_to_cell(tree_view, path, NULL, TRUE, 0.0, 0.0);
+        }
+    }
+    g_object_set_data(G_OBJECT(model), "xfdesktop-tree-view", NULL);
+
     gdk_threads_leave();
 
     g_object_unref(G_OBJECT(model));
@@ -693,6 +710,12 @@ xfdesktop_settings_dialog_populate_image_list(AppearancePanel *panel)
     if(image_file_iter) {
         gtk_tree_selection_select_iter(sel, image_file_iter);
         gtk_tree_iter_free(image_file_iter);
+
+        /* remember the tree view to scroll to the selected image in the
+         * thread that creates all the previews */
+        g_object_set_data_full(G_OBJECT(ls), "xfdesktop-tree-view", 
+                               g_object_ref(panel->image_treeview),
+                               g_object_unref);
     }
 
     /* generate previews of each image -- the new thread will own
