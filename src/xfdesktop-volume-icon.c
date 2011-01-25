@@ -1,9 +1,9 @@
 /*
  *  xfdesktop - xfce4's desktop manager
  *
- *  Copyright(c) 2006 Brian Tarricone, <bjt23@cornell.edu>
- *  Copyright(c) 2006 Benedikt Meurer, <benny@xfce.org>
- *  Copyright(c) 2010 Jannis Pohlmann, <jannis@xfce.org>
+ *  Copyright(c) 2006      Brian Tarricone, <bjt23@cornell.edu>
+ *  Copyright(c) 2006      Benedikt Meurer, <benny@xfce.org>
+ *  Copyright(c) 2010-2011 Jannis Pohlmann, <jannis@xfce.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -67,6 +67,9 @@ struct _XfdesktopVolumeIconPrivate
     GFileInfo *filesystem_info;
     GFile *file;
     GdkScreen *gscreen;
+
+    guint changed_timeout_id;
+    guint changed_timeout_count;
 };
 
 static void xfdesktop_volume_icon_finalize(GObject *obj);
@@ -89,6 +92,9 @@ static GFile *xfdesktop_volume_icon_peek_file(XfdesktopFileIcon *icon);
 static void xfdesktop_volume_icon_update_file_info(XfdesktopFileIcon *icon,
                                                    GFileInfo *info);
 static gboolean xfdesktop_volume_icon_activated(XfdesktopIcon *icon);
+static gboolean volume_icon_changed_timeout(XfdesktopVolumeIcon *icon);
+static void xfdesktop_volume_icon_changed(GVolume *volume, 
+                                          XfdesktopVolumeIcon *volume_icon);
 
 #ifdef HAVE_THUNARX
 static void xfdesktop_volume_icon_tfi_init(ThunarxFileInfoIface *iface);
@@ -156,6 +162,10 @@ xfdesktop_volume_icon_finalize(GObject *obj)
 {
     XfdesktopVolumeIcon *icon = XFDESKTOP_VOLUME_ICON(obj);
     GtkIconTheme *itheme = gtk_icon_theme_get_for_screen(icon->priv->gscreen);
+
+    /* remove pending change timeouts */
+    if(icon->priv->changed_timeout_id > 0)
+        g_source_remove(icon->priv->changed_timeout_id);
     
     g_signal_handlers_disconnect_by_func(G_OBJECT(itheme),
                                          G_CALLBACK(xfdesktop_volume_icon_invalidate_pixbuf),
@@ -800,6 +810,134 @@ xfdesktop_volume_icon_activated(XfdesktopIcon *icon_p)
     }
 }
 
+static gboolean
+volume_icon_changed_timeout(XfdesktopVolumeIcon *volume_icon)
+{
+    GMount *mount;
+    gboolean mounted_before = FALSE;
+    gboolean mounted_after = FALSE;
+
+    g_return_val_if_fail(XFDESKTOP_IS_VOLUME_ICON(volume_icon), FALSE);
+
+    DBG("TIMEOUT");
+
+    /* reset the icon's mount point information */
+    if(volume_icon->priv->file) {
+        g_object_unref(volume_icon->priv->file);
+        volume_icon->priv->file = NULL;
+
+        /* apparently the volume was mounted before, otherwise
+         * we wouldn't have had a mount point for it */
+        mounted_before = TRUE;
+    }
+    if(volume_icon->priv->file_info) {
+        g_object_unref(volume_icon->priv->file_info);
+        volume_icon->priv->file_info = NULL;
+    }
+    if(volume_icon->priv->filesystem_info) {
+        g_object_unref(volume_icon->priv->filesystem_info);
+        volume_icon->priv->filesystem_info = NULL;
+    }
+
+    /* check if we have a valid mount now */
+    mount = g_volume_get_mount(volume_icon->priv->volume);
+    if(mount) {
+        /* load mount point information */
+        volume_icon->priv->file = g_mount_get_root(mount);
+        volume_icon->priv->file_info = 
+            g_file_query_info(volume_icon->priv->file, 
+                              XFDESKTOP_FILE_INFO_NAMESPACE,
+                              G_FILE_QUERY_INFO_NONE,
+                              NULL, NULL);
+        volume_icon->priv->filesystem_info = 
+            g_file_query_filesystem_info(volume_icon->priv->file,
+                                         XFDESKTOP_FILESYSTEM_INFO_NAMESPACE,
+                                         NULL, NULL);
+
+        /* release the mount itself */
+        g_object_unref(mount);
+
+        /* the device is mounted now (we have a mount point for it) */
+        mounted_after = TRUE;
+    }
+
+    DBG("MOUNTED BEFORE: %d, MOUNTED AFTER: %d", mounted_before, mounted_after);
+
+    if(mounted_before != mounted_after) {
+        /* invalidate the tooltip */
+        if(volume_icon->priv->tooltip) {
+            g_free(volume_icon->priv->tooltip);
+            volume_icon->priv->tooltip = NULL;
+        }
+
+        /* not really easy to check if this changed or not, so just invalidate it */
+        xfdesktop_volume_icon_invalidate_pixbuf(volume_icon);
+        xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(volume_icon));
+
+        /* finalize the timeout source */
+        volume_icon->priv->changed_timeout_id = 0;
+        return FALSE;
+    } else {
+        /* increment the timeout counter */
+        volume_icon->priv->changed_timeout_count += 1;
+
+        if(volume_icon->priv->changed_timeout_count >= 5) {
+            /* finalize the timeout source */
+            volume_icon->priv->changed_timeout_id = 0;
+            return FALSE;
+        } else {
+            DBG("TRY AGAIN");
+            return TRUE;
+        }
+    }
+}
+
+static void
+xfdesktop_volume_icon_changed(GVolume *volume,
+                              XfdesktopVolumeIcon *volume_icon)
+{
+    gboolean is_present;
+
+    g_return_if_fail(G_IS_VOLUME(volume));
+    g_return_if_fail(XFDESKTOP_IS_VOLUME_ICON(volume_icon));
+
+    DBG("VOLUME CHANGED");
+
+    is_present = xfdesktop_file_utils_volume_is_present(volume);
+    if(!is_present) {
+        /* don't do anything because the icon will be removed from 
+         * the file icon manager anyway */
+        return;
+    }
+
+    DBG("VOLUME STILL PRESENT");
+
+    /**
+     * NOTE: We use a timeout here to check if the volume is 
+     * now mounted (or has been unmounted). This timeout seems
+     * to be needed because when the "changed" signal is emitted,
+     * the GMount is always NULL. In a 500ms timeout we check
+     * at most 5 times for a valid mount until we give up. This
+     * hopefully is a suitable workaround for most machines and
+     * drives. 
+     */
+
+    /* abort an existing timeout, we may have to run it a few times
+     * once again for the new event */
+    if(volume_icon->priv->changed_timeout_id > 0) {
+        g_source_remove(volume_icon->priv->changed_timeout_id);
+        volume_icon->priv->changed_timeout_id = 0;
+    }
+
+    /* reset timeout information and start a timeout */
+    volume_icon->priv->changed_timeout_count = 0;
+    volume_icon->priv->changed_timeout_id =
+        g_timeout_add_full(G_PRIORITY_LOW, 500, 
+                           (GSourceFunc) volume_icon_changed_timeout, 
+                           g_object_ref(volume_icon),
+                           g_object_unref);
+}
+
 XfdesktopVolumeIcon *
 xfdesktop_volume_icon_new(GVolume *volume,
                           GdkScreen *screen)
@@ -825,6 +963,10 @@ xfdesktop_volume_icon_new(GVolume *volume,
                                                                           NULL, NULL);
         g_object_unref(mount);
     }
+
+    g_signal_connect(volume, "changed", 
+                     G_CALLBACK(xfdesktop_volume_icon_changed), 
+                     volume_icon);
     
     return volume_icon;
 }
