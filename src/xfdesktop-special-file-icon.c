@@ -1,9 +1,9 @@
 /*
  *  xfdesktop - xfce4's desktop manager
  *
- *  Copyright(c) 2006 Brian Tarricone, <bjt23@cornell.edu>
- *  Copyright(c) 2006 Benedikt Meurer, <benny@xfce.org>
- *  Copyright(c) 2010 Jannis Pohlmann, <jannis@xfce.org>
+ *  Copyright(c) 2006      Brian Tarricone, <bjt23@cornell.edu>
+ *  Copyright(c) 2006      Benedikt Meurer, <benny@xfce.org>
+ *  Copyright(c) 2010-2011 Jannis Pohlmann, <jannis@xfce.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -61,6 +61,7 @@ struct _XfdesktopSpecialFileIconPrivate
     GdkPixbuf *pix;
     gchar *tooltip;
     gint cur_pix_size;
+    GFileMonitor *monitor;
     GFileInfo *file_info;
     GFileInfo *filesystem_info;
     GFile *file;
@@ -68,7 +69,7 @@ struct _XfdesktopSpecialFileIconPrivate
     
     /* only needed for trash */
     DBusGProxy *dbus_proxy;
-    gboolean trash_full;
+    gboolean trash_item_count;
 };
 
 static void xfdesktop_special_file_icon_finalize(GObject *obj);
@@ -88,6 +89,11 @@ static gboolean xfdesktop_special_file_icon_populate_context_menu(XfdesktopIcon 
 static GFileInfo *xfdesktop_special_file_icon_peek_file_info(XfdesktopFileIcon *icon);
 static GFileInfo *xfdesktop_special_file_icon_peek_filesystem_info(XfdesktopFileIcon *icon);
 static GFile *xfdesktop_special_file_icon_peek_file(XfdesktopFileIcon *icon);
+static void xfdesktop_special_file_icon_changed(GFileMonitor *monitor,
+                                                GFile *file,
+                                                GFile *other_file,
+                                                GFileMonitorEvent event,
+                                                XfdesktopSpecialFileIcon *special_file_icon);
 
 #ifdef HAVE_THUNARX
 static void xfdesktop_special_file_icon_tfi_init(ThunarxFileInfoIface *iface);
@@ -153,10 +159,17 @@ xfdesktop_special_file_icon_finalize(GObject *obj)
     g_signal_handlers_disconnect_by_func(G_OBJECT(itheme),
                                          G_CALLBACK(xfdesktop_special_file_icon_invalidate_pixbuf),
                                          icon);
-    
+
     if(icon->priv->pix)
         g_object_unref(G_OBJECT(icon->priv->pix));
 
+    if(icon->priv->monitor) {
+        g_signal_handlers_disconnect_by_func(icon->priv->monitor,
+                                             G_CALLBACK(xfdesktop_special_file_icon_changed),
+                                             icon);
+        g_object_unref(icon->priv->monitor);
+    }
+    
     g_object_unref(icon->priv->file);
 
     if(icon->priv->file_info)
@@ -389,18 +402,15 @@ xfdesktop_special_file_icon_peek_tooltip(XfdesktopIcon *icon)
             return NULL;
 
         if(XFDESKTOP_SPECIAL_FILE_ICON_TRASH == special_file_icon->priv->type) {
-            guint item_count = g_file_info_get_attribute_uint32(info, 
-                                                                G_FILE_ATTRIBUTE_TRASH_ITEM_COUNT);
-
-            if(item_count == 0) {
+            if(special_file_icon->priv->trash_item_count == 0) {
                 special_file_icon->priv->tooltip = g_strdup(_("Trash is empty"));
             } else {
                 special_file_icon->priv->tooltip = g_strdup_printf(g_dngettext(GETTEXT_PACKAGE,
                                                                                _("Trash contains one item"),
                                                                                _("Trash contains %d items"),
-                                                                               item_count), 
+                                                                               special_file_icon->priv->trash_item_count), 
 
-                                                                   item_count);
+                                                                   special_file_icon->priv->trash_item_count);
             }
         } else {
             const gchar *description;
@@ -590,7 +600,7 @@ xfdesktop_special_file_icon_populate_context_menu(XfdesktopIcon *icon,
         gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
     gtk_widget_show(mi);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-    if(special_file_icon->priv->trash_full) {
+    if(special_file_icon->priv->trash_item_count > 0) {
         g_signal_connect(G_OBJECT(mi), "activate",
                          G_CALLBACK(xfdesktop_special_file_icon_trash_empty),
                          icon);
@@ -619,6 +629,56 @@ xfdesktop_special_file_icon_peek_file(XfdesktopFileIcon *icon)
 {
     g_return_val_if_fail(XFDESKTOP_IS_SPECIAL_FILE_ICON(icon), NULL);
     return XFDESKTOP_SPECIAL_FILE_ICON(icon)->priv->file;
+}
+
+static void
+xfdesktop_special_file_icon_changed(GFileMonitor *monitor,
+                                    GFile *file,
+                                    GFile *other_file,
+                                    GFileMonitorEvent event,
+                                    XfdesktopSpecialFileIcon *special_file_icon)
+{
+    g_return_if_fail(G_IS_FILE_MONITOR(monitor));
+    g_return_if_fail(G_IS_FILE(file));
+    g_return_if_fail(XFDESKTOP_IS_SPECIAL_FILE_ICON(special_file_icon));
+
+    /* release the old file information */
+    if(special_file_icon->priv->file_info) {
+        g_object_unref(special_file_icon->priv->file_info);
+        special_file_icon->priv->file_info = NULL;
+    }
+
+    /* release the old file system information */
+    if(special_file_icon->priv->filesystem_info) {
+        g_object_unref(special_file_icon->priv->filesystem_info);
+        special_file_icon->priv->filesystem_info = NULL;
+    }
+
+    /* reload the file information */
+    special_file_icon->priv->file_info = g_file_query_info(special_file_icon->priv->file, 
+                                                           XFDESKTOP_FILE_INFO_NAMESPACE,
+                                                           G_FILE_QUERY_INFO_NONE,
+                                                           NULL, NULL);
+
+    /* reload the file system information */
+    special_file_icon->priv->filesystem_info = g_file_query_filesystem_info(special_file_icon->priv->file,
+                                                                            XFDESKTOP_FILESYSTEM_INFO_NAMESPACE,
+                                                                            NULL, NULL);
+
+    /* update the trash full state */
+    if(special_file_icon->priv->file_info 
+       && special_file_icon->priv->type == XFDESKTOP_SPECIAL_FILE_ICON_TRASH) 
+    {
+        special_file_icon->priv->trash_item_count = g_file_info_get_attribute_uint32(special_file_icon->priv->file_info, 
+                                                                                     G_FILE_ATTRIBUTE_TRASH_ITEM_COUNT);
+    }
+
+    /* invalidate the tooltip */
+    special_file_icon->priv->tooltip = NULL;
+
+    /* update the icon */
+    xfdesktop_special_file_icon_invalidate_pixbuf(special_file_icon);
+    xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(special_file_icon));
 }
 
 /* public API */
@@ -667,10 +727,25 @@ xfdesktop_special_file_icon_new(XfdesktopSpecialFileIconType type,
                                                                             XFDESKTOP_FILESYSTEM_INFO_NAMESPACE,
                                                                             NULL, NULL);
 
+    if(type == XFDESKTOP_SPECIAL_FILE_ICON_TRASH) {
+        special_file_icon->priv->trash_item_count = g_file_info_get_attribute_uint32(special_file_icon->priv->file_info, 
+                                                                                     G_FILE_ATTRIBUTE_TRASH_ITEM_COUNT);
+    }
+
     g_signal_connect_swapped(G_OBJECT(gtk_icon_theme_get_for_screen(screen)),
                              "changed",
                              G_CALLBACK(xfdesktop_special_file_icon_invalidate_pixbuf),
                              special_file_icon);
+
+    special_file_icon->priv->monitor = g_file_monitor(special_file_icon->priv->file,
+                                                      G_FILE_MONITOR_NONE,
+                                                      NULL, NULL);
+    if(special_file_icon->priv->monitor) {
+        g_signal_connect(special_file_icon->priv->monitor,
+                         "changed",
+                         G_CALLBACK(xfdesktop_special_file_icon_changed),
+                         special_file_icon);
+    }
     
     return special_file_icon;
 }
