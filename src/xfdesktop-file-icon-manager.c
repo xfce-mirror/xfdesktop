@@ -1,9 +1,9 @@
 /*
  *  xfdesktop - xfce4's desktop manager
  *
- *  Copyright(c) 2006 Brian Tarricone, <bjt23@cornell.edu>
- *  Copyright(c) 2006 Benedikt Meurer, <benny@xfce.org>
- *  Copyright(c) 2010 Jannis Pohlmann, <jannis@xfce.org>
+ *  Copyright(c) 2006      Brian Tarricone, <bjt23@cornell.edu>
+ *  Copyright(c) 2006      Benedikt Meurer, <benny@xfce.org>
+ *  Copyright(c) 2010-2011 Jannis Pohlmann, <jannis@xfce.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -1972,8 +1972,6 @@ xfdesktop_file_icon_manager_add_special_file_icon(XfdesktopFileIconManager *fman
                                             XFDESKTOP_FILE_ICON(icon),
                                             FALSE))
     {
-        /* TODO need to make file monitoring work for special icons like
-         * the filesystem root and the trash bin */
         g_hash_table_replace(fmanager->priv->special_icons,
                              GINT_TO_POINTER(type), icon);
         return XFDESKTOP_FILE_ICON(icon);
