@@ -44,8 +44,6 @@
 
 #include <libxfce4ui/libxfce4ui.h>
 
-#include <dbus/dbus-glib.h>
-
 #ifdef HAVE_THUNARX
 #include <thunarx/thunarx.h>
 #endif
@@ -53,7 +51,6 @@
 #include "xfdesktop-common.h"
 #include "xfdesktop-file-utils.h"
 #include "xfdesktop-special-file-icon.h"
-#include "xfdesktop-trash-proxy.h"
 
 struct _XfdesktopSpecialFileIconPrivate
 {
@@ -68,7 +65,6 @@ struct _XfdesktopSpecialFileIconPrivate
     GdkScreen *gscreen;
     
     /* only needed for trash */
-    DBusGProxy *dbus_proxy;
     gboolean trash_item_count;
 };
 
@@ -447,93 +443,18 @@ xfdesktop_special_file_icon_peek_tooltip(XfdesktopIcon *icon)
 }
 
 static void
-xfdesktop_special_file_icon_trash_handle_error(XfdesktopSpecialFileIcon *icon,
-                                               const gchar *method,
-                                               const gchar *message)
-{
-    GtkWidget *icon_view = xfdesktop_icon_peek_icon_view(XFDESKTOP_ICON(icon));
-    GtkWidget *toplevel = gtk_widget_get_toplevel(icon_view);
-    GtkWidget *dlg = xfce_message_dialog_new(GTK_WINDOW(toplevel),
-                                             _("Trash Error"),
-                                             GTK_STOCK_DIALOG_WARNING,
-                                             _("Unable to contact the Xfce Trash service."),
-                                             _("Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."),
-                                             GTK_STOCK_CLOSE,
-                                             GTK_RESPONSE_ACCEPT, NULL);
-    gtk_dialog_run(GTK_DIALOG(dlg));
-    gtk_widget_destroy(dlg);
-    
-    g_warning("org.xfce.Trash.%s failed: %s", method ? method : "??",
-              message ? message : "??");
-}
-
-static void
-xfdesktop_special_file_icon_trash_open_cb(DBusGProxy *proxy,
-                                          GError *error,
-                                          gpointer user_data)
-{
-    GtkWidget *icon_view, *toplevel;
-    
-    icon_view = xfdesktop_icon_peek_icon_view(XFDESKTOP_ICON(user_data));
-    toplevel = gtk_widget_get_toplevel(icon_view);
-    xfdesktop_file_utils_set_window_cursor(GTK_WINDOW(toplevel),
-                                           GDK_LEFT_PTR);
-    
-    if(error) {
-        xfdesktop_special_file_icon_trash_handle_error(XFDESKTOP_SPECIAL_FILE_ICON(user_data),
-                                                       "DisplayTrash",
-                                                        error->message);
-    }
-    
-    g_object_unref(G_OBJECT(user_data));
-}
-
-static void
-xfdesktop_special_file_icon_trash_empty_cb(DBusGProxy *proxy,
-                                           GError *error,
-                                           gpointer user_data)
-{
-    if(error) {
-        xfdesktop_special_file_icon_trash_handle_error(XFDESKTOP_SPECIAL_FILE_ICON(user_data),
-                                                       "EmptyTrash",
-                                                        error->message);
-    }
-    
-    g_object_unref(G_OBJECT(user_data));
-}
-
-static void
 xfdesktop_special_file_icon_trash_open(GtkWidget *w,
                                        gpointer user_data)
 {
     XfdesktopSpecialFileIcon *file_icon = XFDESKTOP_SPECIAL_FILE_ICON(user_data);
+    GtkWidget *icon_view, *toplevel;
+
+    icon_view = xfdesktop_icon_peek_icon_view(XFDESKTOP_ICON(file_icon));
+    toplevel = gtk_widget_get_toplevel(icon_view);
     
-    if(G_LIKELY(file_icon->priv->dbus_proxy)) {
-        gchar *display_name = gdk_screen_make_display_name(file_icon->priv->gscreen);
-        gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
-        
-        if(!xfdesktop_trash_proxy_display_trash_async(file_icon->priv->dbus_proxy,
-                                                      display_name, startup_id,
-                                                      xfdesktop_special_file_icon_trash_open_cb,
-                                                      file_icon))
-        {
-            xfdesktop_special_file_icon_trash_handle_error(file_icon,
-                                                           "DisplayTrash",
-                                                            NULL);
-        } else {
-            GtkWidget *icon_view, *toplevel;
-            
-            g_object_ref(G_OBJECT(file_icon));
-            
-            icon_view = xfdesktop_icon_peek_icon_view(XFDESKTOP_ICON(file_icon));
-            toplevel = gtk_widget_get_toplevel(icon_view);
-            xfdesktop_file_utils_set_window_cursor(GTK_WINDOW(toplevel),
-                                                   GDK_WATCH);
-        }
-            
-        g_free(startup_id);
-        g_free(display_name);
-    }
+    xfdesktop_file_utils_open_folder(file_icon->priv->file,
+                                     file_icon->priv->gscreen,
+                                     GTK_WINDOW(toplevel));
 }
 
 static void
@@ -541,25 +462,13 @@ xfdesktop_special_file_icon_trash_empty(GtkWidget *w,
                                         gpointer user_data)
 {
     XfdesktopSpecialFileIcon *file_icon = XFDESKTOP_SPECIAL_FILE_ICON(user_data);
-    
-    if(G_LIKELY(file_icon->priv->dbus_proxy)) {
-        gchar *display_name = gdk_screen_make_display_name(file_icon->priv->gscreen);
-        gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
-        
-        if(!xfdesktop_trash_proxy_empty_trash_async(file_icon->priv->dbus_proxy,
-                                                    display_name, startup_id,
-                                                    xfdesktop_special_file_icon_trash_empty_cb,
-                                                    file_icon))
-        {
-            xfdesktop_special_file_icon_trash_handle_error(file_icon,
-                                                           "EmptyTrash",
-                                                            NULL);
-        } else
-            g_object_ref(G_OBJECT(file_icon));
+    GtkWidget *icon_view, *toplevel;
 
-        g_free(startup_id);
-        g_free(display_name);
-    }
+    icon_view = xfdesktop_icon_peek_icon_view(XFDESKTOP_ICON(file_icon));
+    toplevel = gtk_widget_get_toplevel(icon_view);
+
+    xfdesktop_file_utils_empty_trash(file_icon->priv->gscreen,
+                                     GTK_WINDOW(toplevel));
 }
 
 static gboolean
