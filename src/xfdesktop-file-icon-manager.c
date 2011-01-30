@@ -2135,19 +2135,24 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
     GFileInfo *file_info;
 
     switch(event) {
-        case G_FILE_MONITOR_EVENT_CHANGES_DONE_HINT:
-            DBG("got changes done hint event: %s", g_file_get_path(file));
+        case G_FILE_MONITOR_EVENT_CHANGED:
+            DBG("got changed event: %s", g_file_get_path(file));
             
             icon = g_hash_table_lookup(fmanager->priv->icons, file);
             if(icon) {
                 file_info = g_file_query_info(file, XFDESKTOP_FILE_INFO_NAMESPACE,
                                               G_FILE_QUERY_INFO_NONE, NULL, NULL);
                 
-                /* the file info query HAS to succeed because the file still exists */
-                g_assert(file_info);
-
-                xfdesktop_file_icon_update_file_info(icon, file_info);
-                g_object_unref(file_info);
+                if(file_info) {
+                    /* update the icon if the file still exists */
+                    xfdesktop_file_icon_update_file_info(icon, file_info);
+                    g_object_unref(file_info);
+                } else {
+                    /* remove the icon as the file no longer seems to be existing */
+                    xfdesktop_icon_view_remove_item(fmanager->priv->icon_view,
+                                                    XFDESKTOP_ICON(icon));
+                    g_hash_table_remove(fmanager->priv->icons, file);
+                }
             }
             break;
         case G_FILE_MONITOR_EVENT_CREATED:
