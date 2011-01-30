@@ -3,14 +3,14 @@
 # Copyright (C) 2003-2006 The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
 #
-# Carles Muñoz Gorriz <carlesmu@internautas.org>, 2003-2004, 2006, 2008-2009.
+# Carles Muñoz Gorriz <carlesmu@internautas.org>, 2003-2004, 2006, 2008-2011.
 # Pau Ruŀlan Ferragut <paurullan@bulma.net>, 2005-2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-16 17:44+0100\n"
-"PO-Revision-Date: 2010-08-31 17:29+0100\n"
+"POT-Creation-Date: 2011-01-30 11:29+0000\n"
+"PO-Revision-Date: 2011-01-30 15:30+0100\n"
 "Last-Translator: Carles Muñoz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: Catalan <xfce-i18n@xfce.org>\n"
 "Language: ca\n"
@@ -28,7 +28,7 @@ msgid "Backdrop list file is not valid"
 msgstr "El fitxer amb la llista d'imatges no és vàlid"
 
 #. no need to escape markup; it's already done for us
-#: ../settings/main.c:162
+#: ../settings/main.c:163
 #, c-format
 msgid ""
 "%s\n"
@@ -37,128 +37,128 @@ msgstr ""
 "%s\n"
 "<i>Mida: %dx%d</i>"
 
-#: ../settings/main.c:272 ../src/xfdesktop-special-file-icon.c:247
-#: ../src/xfdesktop-special-file-icon.c:413
+#: ../settings/main.c:289 ../src/xfdesktop-special-file-icon.c:256
+#: ../src/xfdesktop-special-file-icon.c:419
 msgid "Home"
 msgstr "Inici"
 
-#: ../settings/main.c:274
+#: ../settings/main.c:291
 msgid "Filesystem"
 msgstr "Sistema de fitxers"
 
-#: ../settings/main.c:276
+#: ../settings/main.c:293
 msgid "Trash"
 msgstr "Paperera"
 
-#: ../settings/main.c:278
+#: ../settings/main.c:295
 msgid "Removable Devices"
 msgstr "Dispositius extractables"
 
-#: ../settings/main.c:458
+#: ../settings/main.c:475
 #, c-format
 msgid "Cannot create backdrop list \"%s\""
 msgstr "No es por crear la llista d'imatges de fons «%s»"
 
-#: ../settings/main.c:462 ../settings/main.c:779
+#: ../settings/main.c:479 ../settings/main.c:802
 msgid "Backdrop List Error"
 msgstr "Error en la llista d'imatges de fons"
 
-#: ../settings/main.c:487
+#: ../settings/main.c:504
 msgid "Create/Load Backdrop List"
 msgstr "Crea/carrega un llistat d'imatges de fons"
 
-#: ../settings/main.c:511
+#: ../settings/main.c:528
 #, c-format
 msgid ""
 "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
 msgstr ""
 "El fitxer «%s» no és una llista d'imatges vàlida. Voleu sobreescriure'l?"
 
-#: ../settings/main.c:516
+#: ../settings/main.c:533
 msgid "Invalid List File"
 msgstr "Llista de fitxers invàlida"
 
-#: ../settings/main.c:519
+#: ../settings/main.c:536
 msgid "Overwriting the file will cause its contents to be lost."
 msgstr "Sobreescriure el fitxer farà que es perdi el seu contingut."
 
-#: ../settings/main.c:521
+#: ../settings/main.c:538
 msgid "Replace"
 msgstr "Substitueix"
 
-#: ../settings/main.c:775
+#: ../settings/main.c:798
 #, c-format
 msgid "Failed to write backdrop list to \"%s\""
 msgstr "No s'ha pogut escriure la llista d'imatges de fons a «%s»"
 
-#: ../settings/main.c:802
+#: ../settings/main.c:825
 msgid "Add Image File(s)"
 msgstr "Afegiu fitxers d'imatges"
 
-#: ../settings/main.c:811
+#: ../settings/main.c:834
 msgid "Image files"
 msgstr "Fitxers d'imatge"
 
-#: ../settings/main.c:816
+#: ../settings/main.c:839
 msgid "All files"
 msgstr "Tots els fitxers"
 
-#: ../settings/main.c:1248
+#: ../settings/main.c:1271
 #, c-format
 msgid "Screen %d, Monitor %d (%s)"
 msgstr "Pantalla %d, Monitor %d (%s)"
 
-#: ../settings/main.c:1252
+#: ../settings/main.c:1275
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "Pantalla %d, Monitor %d"
 
-#: ../settings/main.c:1255
+#: ../settings/main.c:1278
 #, c-format
 msgid "Screen %d"
 msgstr "Pantalla %d"
 
-#: ../settings/main.c:1260
+#: ../settings/main.c:1283
 #, c-format
 msgid "Monitor %d (%s)"
 msgstr "Monitor %d (%s)"
 
-#: ../settings/main.c:1264
+#: ../settings/main.c:1287
 #, c-format
 msgid "Monitor %d"
 msgstr "Monitor %d"
 
-#: ../settings/main.c:1477
+#: ../settings/main.c:1500
 msgid "Settings manager socket"
 msgstr "Sòcol del gestor d'akustaments"
 
-#: ../settings/main.c:1477
+#: ../settings/main.c:1500
 msgid "SOCKET ID"
 msgstr "SÒCOL ID"
 
-#: ../settings/main.c:1478
+#: ../settings/main.c:1501
 msgid "Version information"
 msgstr "Informació de la versió"
 
-#: ../settings/main.c:1498
+#: ../settings/main.c:1521
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Feu «%s --help» per veure l'ús."
 
-#: ../settings/main.c:1510
+#: ../settings/main.c:1533
 msgid "The Xfce development team. All rights reserved."
 msgstr "L'equip de desenvolupament de Xfce. Tots els drets reservats."
 
-#: ../settings/main.c:1511
+#: ../settings/main.c:1534
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Envieu els errors a <%s>."
 
-#: ../settings/main.c:1518
+#: ../settings/main.c:1541
 msgid "Desktop Settings"
 msgstr "Ajustaments de l'escriptori"
 
-#: ../settings/main.c:1520
+#: ../settings/main.c:1543
 msgid "Unable to contact settings server"
 msgstr "No s’ha pogut contactar amb el servidor d'ajustaments"
 
@@ -595,8 +595,9 @@ msgstr ""
 "Ja existeix un fitxer amb el nom indicat. Elimineu-lo o canvieu-li el nom,"
 
 #: ../src/xfdesktop-file-icon-manager.c:592
-#: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:803
-#: ../src/xfdesktop-file-utils.c:818 ../src/xfdesktop-special-file-icon.c:447
+#: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:879
+#: ../src/xfdesktop-file-utils.c:894 ../src/xfdesktop-file-utils.c:926
+#: ../src/xfdesktop-file-utils.c:940
 msgid "Trash Error"
 msgstr "Error a la paperera"
 
@@ -606,12 +607,12 @@ msgid "The selected files could not be trashed"
 msgstr "No s'ha pogut esborrar els fitxers seleccionats"
 
 #: ../src/xfdesktop-file-icon-manager.c:594
-#: ../src/xfdesktop-file-icon-manager.c:638 ../src/xfdesktop-file-utils.c:652
-#: ../src/xfdesktop-file-utils.c:702 ../src/xfdesktop-file-utils.c:761
-#: ../src/xfdesktop-file-utils.c:873 ../src/xfdesktop-file-utils.c:929
-#: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:1029
-#: ../src/xfdesktop-file-utils.c:1106 ../src/xfdesktop-file-utils.c:1167
-#: ../src/xfdesktop-file-utils.c:1240 ../src/xfdesktop-file-utils.c:1318
+#: ../src/xfdesktop-file-icon-manager.c:638 ../src/xfdesktop-file-utils.c:728
+#: ../src/xfdesktop-file-utils.c:778 ../src/xfdesktop-file-utils.c:837
+#: ../src/xfdesktop-file-utils.c:995 ../src/xfdesktop-file-utils.c:1051
+#: ../src/xfdesktop-file-utils.c:1101 ../src/xfdesktop-file-utils.c:1151
+#: ../src/xfdesktop-file-utils.c:1228 ../src/xfdesktop-file-utils.c:1289
+#: ../src/xfdesktop-file-utils.c:1362 ../src/xfdesktop-file-utils.c:1440
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
@@ -628,11 +629,11 @@ msgstr "No s'ha pogut executar «%s»:"
 
 #: ../src/xfdesktop-file-icon-manager.c:740
 #: ../src/xfdesktop-file-icon-manager.c:984
-#: ../src/xfdesktop-file-icon-manager.c:1297 ../src/xfdesktop-file-utils.c:635
-#: ../src/xfdesktop-file-utils.c:650 ../src/xfdesktop-file-utils.c:1012
-#: ../src/xfdesktop-file-utils.c:1027 ../src/xfdesktop-file-utils.c:1079
-#: ../src/xfdesktop-file-utils.c:1104 ../src/xfdesktop-file-utils.c:1150
-#: ../src/xfdesktop-file-utils.c:1165
+#: ../src/xfdesktop-file-icon-manager.c:1297 ../src/xfdesktop-file-utils.c:711
+#: ../src/xfdesktop-file-utils.c:726 ../src/xfdesktop-file-utils.c:1134
+#: ../src/xfdesktop-file-utils.c:1149 ../src/xfdesktop-file-utils.c:1201
+#: ../src/xfdesktop-file-utils.c:1226 ../src/xfdesktop-file-utils.c:1272
+#: ../src/xfdesktop-file-utils.c:1287
 msgid "Launch Error"
 msgstr "Error durant el llançament"
 
@@ -663,7 +664,7 @@ msgid "_Open in New Window"
 msgstr "_Obre en una nova finestra"
 
 #: ../src/xfdesktop-file-icon-manager.c:1372
-#: ../src/xfdesktop-special-file-icon.c:570 ../src/xfdesktop-volume-icon.c:653
+#: ../src/xfdesktop-special-file-icon.c:489 ../src/xfdesktop-volume-icon.c:663
 msgid "_Open"
 msgstr "_Obre"
 
@@ -716,15 +717,15 @@ msgid "Desktop _Settings..."
 msgstr "Ajustaments de l'e_scriptori…"
 
 #: ../src/xfdesktop-file-icon-manager.c:1677
-#: ../src/xfdesktop-volume-icon.c:701
+#: ../src/xfdesktop-volume-icon.c:711
 msgid "_Properties..."
 msgstr "_Propietats…"
 
-#: ../src/xfdesktop-file-icon-manager.c:2231
+#: ../src/xfdesktop-file-icon-manager.c:2229
 msgid "Load Error"
 msgstr "No s'ha pogut carregar"
 
-#: ../src/xfdesktop-file-icon-manager.c:2233
+#: ../src/xfdesktop-file-icon-manager.c:2231
 msgid "Failed to load the desktop folder"
 msgstr "No s'ha pogut carregar la carpeta de l'escriptori"
 
@@ -757,31 +758,31 @@ msgstr "%x a les %X"
 msgid "Unknown"
 msgstr "Desconegut"
 
-#: ../src/xfdesktop-file-utils.c:636 ../src/xfdesktop-file-utils.c:651
+#: ../src/xfdesktop-file-utils.c:712 ../src/xfdesktop-file-utils.c:727
 msgid "The folder could not be opened"
 msgstr "No s'ha pogut obrir la carpeta"
 
-#: ../src/xfdesktop-file-utils.c:685 ../src/xfdesktop-file-utils.c:700
+#: ../src/xfdesktop-file-utils.c:761 ../src/xfdesktop-file-utils.c:776
 msgid "Rename Error"
 msgstr "Error en canviar el nom"
 
-#: ../src/xfdesktop-file-utils.c:686 ../src/xfdesktop-file-utils.c:701
+#: ../src/xfdesktop-file-utils.c:762 ../src/xfdesktop-file-utils.c:777
 msgid "The file could not be renamed"
 msgstr "No s'ha pogut canviar el nom del fitxer"
 
-#: ../src/xfdesktop-file-utils.c:744 ../src/xfdesktop-file-utils.c:759
+#: ../src/xfdesktop-file-utils.c:820 ../src/xfdesktop-file-utils.c:835
 msgid "Delete Error"
 msgstr "Error durant la supressió"
 
-#: ../src/xfdesktop-file-utils.c:745 ../src/xfdesktop-file-utils.c:760
+#: ../src/xfdesktop-file-utils.c:821 ../src/xfdesktop-file-utils.c:836
 msgid "The selected files could not be deleted"
 msgstr "No s'ha pogut suprimir els fitxers seleccionats"
 
-#: ../src/xfdesktop-file-utils.c:804 ../src/xfdesktop-file-utils.c:819
+#: ../src/xfdesktop-file-utils.c:880 ../src/xfdesktop-file-utils.c:895
 msgid "The selected files could not be moved to the trash"
 msgstr "No s'ha pogut moure a la paperera els fitxers seleccionats"
 
-#: ../src/xfdesktop-file-utils.c:820
+#: ../src/xfdesktop-file-utils.c:896 ../src/xfdesktop-file-utils.c:942
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
@@ -789,50 +790,54 @@ msgstr ""
 "Aquesta característica demana l'ajut del gestor de la paperera (com per "
 "exemple, el que proveeix el Thunar)."
 
-#: ../src/xfdesktop-file-utils.c:856 ../src/xfdesktop-file-utils.c:871
+#: ../src/xfdesktop-file-utils.c:927 ../src/xfdesktop-file-utils.c:941
+msgid "Could not empty the trash"
+msgstr "No s'ha pogut buidar la paperera"
+
+#: ../src/xfdesktop-file-utils.c:978 ../src/xfdesktop-file-utils.c:993
 msgid "Create File Error"
 msgstr "Error a la creació del fitxer"
 
-#: ../src/xfdesktop-file-utils.c:857 ../src/xfdesktop-file-utils.c:872
+#: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:994
 msgid "Could not create a new file"
 msgstr "No s'ha pogut crear un fitxer nou"
 
-#: ../src/xfdesktop-file-utils.c:912 ../src/xfdesktop-file-utils.c:927
+#: ../src/xfdesktop-file-utils.c:1034 ../src/xfdesktop-file-utils.c:1049
 msgid "Create Document Error"
 msgstr "Error a la creació del document"
 
-#: ../src/xfdesktop-file-utils.c:913 ../src/xfdesktop-file-utils.c:928
+#: ../src/xfdesktop-file-utils.c:1035 ../src/xfdesktop-file-utils.c:1050
 msgid "Could not create a new document from the template"
 msgstr "No s'ha pogut crear un nou document a partir de la plantilla"
 
-#: ../src/xfdesktop-file-utils.c:962 ../src/xfdesktop-file-utils.c:977
+#: ../src/xfdesktop-file-utils.c:1084 ../src/xfdesktop-file-utils.c:1099
 msgid "File Properties Error"
 msgstr "Error a les propietats del fitxer"
 
-#: ../src/xfdesktop-file-utils.c:963 ../src/xfdesktop-file-utils.c:978
+#: ../src/xfdesktop-file-utils.c:1085 ../src/xfdesktop-file-utils.c:1100
 msgid "The file properties dialog could not be opened"
 msgstr "No s'ha pogut obrir el diàleg de propietats del fitxer"
 
-#: ../src/xfdesktop-file-utils.c:1013 ../src/xfdesktop-file-utils.c:1028
+#: ../src/xfdesktop-file-utils.c:1135 ../src/xfdesktop-file-utils.c:1150
 msgid "The file could not be opened"
 msgstr "No s'ha pogut obrir el fitxer"
 
-#: ../src/xfdesktop-file-utils.c:1076 ../src/xfdesktop-file-utils.c:1101
+#: ../src/xfdesktop-file-utils.c:1198 ../src/xfdesktop-file-utils.c:1223
 #, c-format
 msgid "Failed to run \"%s\""
 msgstr "No s'ha pogut executar \"%s\""
 
-#: ../src/xfdesktop-file-utils.c:1151 ../src/xfdesktop-file-utils.c:1166
+#: ../src/xfdesktop-file-utils.c:1273 ../src/xfdesktop-file-utils.c:1288
 msgid "The application chooser could not be opened"
 msgstr "No es pot obrir el seleccionador d'aplicacions"
 
-#: ../src/xfdesktop-file-utils.c:1224 ../src/xfdesktop-file-utils.c:1238
-#: ../src/xfdesktop-file-utils.c:1300 ../src/xfdesktop-file-utils.c:1316
+#: ../src/xfdesktop-file-utils.c:1346 ../src/xfdesktop-file-utils.c:1360
+#: ../src/xfdesktop-file-utils.c:1422 ../src/xfdesktop-file-utils.c:1438
 msgid "Transfer Error"
 msgstr "Error en la transferència"
 
-#: ../src/xfdesktop-file-utils.c:1225 ../src/xfdesktop-file-utils.c:1239
-#: ../src/xfdesktop-file-utils.c:1301 ../src/xfdesktop-file-utils.c:1317
+#: ../src/xfdesktop-file-utils.c:1347 ../src/xfdesktop-file-utils.c:1361
+#: ../src/xfdesktop-file-utils.c:1423 ../src/xfdesktop-file-utils.c:1439
 msgid "The file transfer could not be performed"
 msgstr "La transferència de fitxers no s'ha pogut realitzar"
 
@@ -877,7 +882,7 @@ msgstr "Expulsant el dispositiu"
 msgid "The device \"%s\" is being ejected. This may take some time"
 msgstr "S'està expulsant el dispositiu \"%s\". Això pot trigar una estona."
 
-#: ../src/xfdesktop-regular-file-icon.c:468
+#: ../src/xfdesktop-regular-file-icon.c:472
 #, c-format
 msgid ""
 "Type: %s\n"
@@ -888,25 +893,25 @@ msgstr ""
 "Tamany; %s\n"
 "Darrera modificació: %s"
 
-#: ../src/xfdesktop-special-file-icon.c:249
-#: ../src/xfdesktop-special-file-icon.c:411
+#: ../src/xfdesktop-special-file-icon.c:258
+#: ../src/xfdesktop-special-file-icon.c:417
 msgid "File System"
 msgstr "Sistema de fitxers"
 
-#: ../src/xfdesktop-special-file-icon.c:396
+#: ../src/xfdesktop-special-file-icon.c:402
 msgid "Trash is empty"
 msgstr "La paperera és buida"
 
-#: ../src/xfdesktop-special-file-icon.c:399
+#: ../src/xfdesktop-special-file-icon.c:405
 msgid "Trash contains one item"
 msgstr "La paperera conté un element"
 
-#: ../src/xfdesktop-special-file-icon.c:400
+#: ../src/xfdesktop-special-file-icon.c:406
 #, c-format
 msgid "Trash contains %d items"
 msgstr "La paperera conté %d elements"
 
-#: ../src/xfdesktop-special-file-icon.c:428
+#: ../src/xfdesktop-special-file-icon.c:434
 #, c-format
 msgid ""
 "%s\n"
@@ -917,23 +922,11 @@ msgstr ""
 "Tamany: %s\n"
 "Darrera modificació: %s"
 
-#: ../src/xfdesktop-special-file-icon.c:449
-msgid "Unable to contact the Xfce Trash service."
-msgstr "No s’ha pogut contactar amb el servei de paperera Xfce"
-
-#: ../src/xfdesktop-special-file-icon.c:450
-msgid ""
-"Make sure you have a file manager installed that supports the Xfce Trash "
-"service, such as Thunar."
-msgstr ""
-"Assegureu-vos que teniu instaŀlada una aplicació que funcioni amb la "
-"paperera Xfce, com per exemple Thunar."
-
-#: ../src/xfdesktop-special-file-icon.c:588
+#: ../src/xfdesktop-special-file-icon.c:507
 msgid "_Empty Trash"
 msgstr "Buida la pap_erera"
 
-#: ../src/xfdesktop-volume-icon.c:413
+#: ../src/xfdesktop-volume-icon.c:423
 #, c-format
 msgid ""
 "Removable Volume\n"
@@ -944,7 +937,7 @@ msgstr ""
 "Muntat a \"%s\"\n"
 "%s lliure (%s en total)"
 
-#: ../src/xfdesktop-volume-icon.c:420
+#: ../src/xfdesktop-volume-icon.c:430
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
@@ -952,31 +945,41 @@ msgstr ""
 "Volum extraïble\n"
 "No muntat encara"
 
-#: ../src/xfdesktop-volume-icon.c:446 ../src/xfdesktop-volume-icon.c:488
+#: ../src/xfdesktop-volume-icon.c:456 ../src/xfdesktop-volume-icon.c:498
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "No s'ha pogut expulsar \"%s\""
 
-#: ../src/xfdesktop-volume-icon.c:451 ../src/xfdesktop-volume-icon.c:493
+#: ../src/xfdesktop-volume-icon.c:461 ../src/xfdesktop-volume-icon.c:503
 msgid "Eject Failed"
 msgstr "No s'ha pogut expulsar"
 
-#: ../src/xfdesktop-volume-icon.c:525
+#: ../src/xfdesktop-volume-icon.c:535
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "No s'ha pogut muntar \"%s\""
 
-#: ../src/xfdesktop-volume-icon.c:528
+#: ../src/xfdesktop-volume-icon.c:538
 msgid "Mount Failed"
 msgstr "No s'ha pogut muntar"
 
-#: ../src/xfdesktop-volume-icon.c:669 ../src/xfdesktop-volume-icon.c:672
+#: ../src/xfdesktop-volume-icon.c:679 ../src/xfdesktop-volume-icon.c:682
 msgid "E_ject Volume"
 msgstr "_Expulsa el volum"
 
-#: ../src/xfdesktop-volume-icon.c:679
+#: ../src/xfdesktop-volume-icon.c:689
 msgid "_Mount Volume"
 msgstr "_Munta el volum"
+
+#~ msgid "Unable to contact the Xfce Trash service."
+#~ msgstr "No s’ha pogut contactar amb el servei de paperera Xfce"
+
+#~ msgid ""
+#~ "Make sure you have a file manager installed that supports the Xfce Trash "
+#~ "service, such as Thunar."
+#~ msgstr ""
+#~ "Assegureu-vos que teniu instaŀlada una aplicació que funcioni amb la "
+#~ "paperera Xfce, com per exemple Thunar."
 
 #~ msgid "Needs terminal"
 #~ msgstr "Cal un terminal"
