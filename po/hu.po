@@ -1,7 +1,7 @@
 # Hungarian translation of xfdesktop
 # Copyright (C) 2009, 2010. Free Software Foundation, Inc.
 # This file is distributed under the same license as the xfdesktop package.
-# 
+#
 # Somogyi Peter <jerry@gnu>, 2003.
 # Egmont Koblinger <egmont@uhulinux.hu>, 2003.
 # SZERVÁC Attila <sas@321>, 2004-2009.
@@ -10,14 +10,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-29 17:35+0000\n"
+"POT-Creation-Date: 2011-01-30 19:22+0100\n"
 "PO-Revision-Date: 2010-11-28 01:13+0100\n"
 "Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
 "Language-Team: Hungarian <gnome at fsf dot hu>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.11.4\n"
 
@@ -68,7 +68,8 @@ msgstr "Háttérlista létrehozása/betöltése"
 
 #: ../settings/main.c:528
 #, c-format
-msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgid ""
+"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
 msgstr "A fájl („%s”) nem érvényes háttérlistafájl. Felül kívánja írni?"
 
 #: ../settings/main.c:533
@@ -265,7 +266,8 @@ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr "Az átmenet „jobb oldali” vagy „alsó” színe"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
-msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgid ""
+"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
 msgstr "Az átmenet „bal oldali” vagy „felső” színe"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
@@ -341,7 +343,7 @@ msgstr "_Gomb:"
 msgid "Control"
 msgstr "Control"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:729
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:737
 msgid "Desktop"
 msgstr "Asztal"
 
@@ -422,7 +424,9 @@ msgid "Show workspace _names in list"
 msgstr "M_unkaterület-nevek megjelenítése a listában"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
-msgid "Specify the transparency level for the rounded label drawn behind the icon text"
+msgid ""
+"Specify the transparency level for the rounded label drawn behind the icon "
+"text"
 msgstr "Az ikon szövege mögötti lekerekített címke átlátszóságának megadása"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:37
@@ -558,12 +562,12 @@ msgstr "%d. munkat_erület eltávolítása"
 msgid "_Remove Workspace '%s'"
 msgstr "„%s” mu_nkaterület eltávolítása"
 
-#: ../src/xfce-desktop.c:1006
+#: ../src/xfce-desktop.c:1018
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "Nem tölthető be a kép a háttérlistafájlból („%s”)"
 
-#: ../src/xfce-desktop.c:1008
+#: ../src/xfce-desktop.c:1020
 msgid "Desktop Error"
 msgstr "Asztalhiba"
 
@@ -579,7 +583,8 @@ msgid "Desktop Folder Error"
 msgstr "Asztal mappa hiba"
 
 #: ../src/xfdesktop-file-icon-manager.c:489
-msgid "A normal file with the same name already exists. Please delete or rename it."
+msgid ""
+"A normal file with the same name already exists. Please delete or rename it."
 msgstr "Már létezik ilyen nevű normál fájl. Törölje vagy nevezze át."
 
 #: ../src/xfdesktop-file-icon-manager.c:592
@@ -601,8 +606,12 @@ msgstr "A kijelölt fájlok nem dobhatók a Kukába"
 #: ../src/xfdesktop-file-utils.c:1101 ../src/xfdesktop-file-utils.c:1151
 #: ../src/xfdesktop-file-utils.c:1228 ../src/xfdesktop-file-utils.c:1289
 #: ../src/xfdesktop-file-utils.c:1362 ../src/xfdesktop-file-utils.c:1440
-msgid "This feature requires a file manager service to be present (such as the one supplied by Thunar)."
-msgstr "Ez a szolgáltatás egy fájlkezelő-szolgáltatás jelenlétét igényli (például a Thunar által biztosítottat)."
+msgid ""
+"This feature requires a file manager service to be present (such as the one "
+"supplied by Thunar)."
+msgstr ""
+"Ez a szolgáltatás egy fájlkezelő-szolgáltatás jelenlétét igényli (például a "
+"Thunar által biztosítottat)."
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:738
@@ -632,8 +641,12 @@ msgid "Open With \"%s\""
 msgstr "Megnyitás ezzel: „%s”"
 
 #: ../src/xfdesktop-file-icon-manager.c:986
-msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
-msgstr "Nem indítható az „exo-desktop-item-edit”, amely szükséges a indítóikonok és hivatkozások létrehozásához az asztalon."
+msgid ""
+"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
+"edit launchers and links on the desktop."
+msgstr ""
+"Nem indítható az „exo-desktop-item-edit”, amely szükséges a indítóikonok és "
+"hivatkozások létrehozásához az asztalon."
 
 #: ../src/xfdesktop-file-icon-manager.c:1354
 msgid "_Open all"
@@ -701,11 +714,11 @@ msgstr "_Asztal beállításai…"
 msgid "_Properties..."
 msgstr "_Tulajdonságok..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2229
+#: ../src/xfdesktop-file-icon-manager.c:2234
 msgid "Load Error"
 msgstr "Betöltési hiba"
 
-#: ../src/xfdesktop-file-icon-manager.c:2231
+#: ../src/xfdesktop-file-icon-manager.c:2236
 msgid "Failed to load the desktop folder"
 msgstr "Az asztal mappa betöltése meghiúsult"
 
@@ -763,8 +776,12 @@ msgid "The selected files could not be moved to the trash"
 msgstr "A kijelölt fájlok nem helyezhetők át a Kukába"
 
 #: ../src/xfdesktop-file-utils.c:896 ../src/xfdesktop-file-utils.c:942
-msgid "This feature requires a trash service to be present (such as the one supplied by Thunar)."
-msgstr "Ez a szolgáltatás egy kukaszolgáltatás jelenlétét igényli (például a Thunar által biztosítottat)."
+msgid ""
+"This feature requires a trash service to be present (such as the one "
+"supplied by Thunar)."
+msgstr ""
+"Ez a szolgáltatás egy kukaszolgáltatás jelenlétét igényli (például a Thunar "
+"által biztosítottat)."
 
 #: ../src/xfdesktop-file-utils.c:927 ../src/xfdesktop-file-utils.c:941
 msgid "Could not empty the trash"
@@ -825,8 +842,12 @@ msgstr "Eszköz leválasztása"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:131
 #, c-format
-msgid "The device \"%s\" is being unmounted by the system. Please do not remove the media or disconnect the drive"
-msgstr "A(z) „%s” eszköz leválasztása a rendszerről. Ne távolítsa el az adathordozót, és ne kapcsolja le a meghajtót"
+msgid ""
+"The device \"%s\" is being unmounted by the system. Please do not remove the "
+"media or disconnect the drive"
+msgstr ""
+"A(z) „%s” eszköz leválasztása a rendszerről. Ne távolítsa el az "
+"adathordozót, és ne kapcsolja le a meghajtót"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
@@ -836,8 +857,12 @@ msgstr "Adatok eszközre írása"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
 #, c-format
-msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
-msgstr "Adatokat kell a(z) „%s” eszközre írni annak eltávolítása előtt. Ne távolítsa el az adathordozót, és ne kapcsolja le a meghajtót"
+msgid ""
+"There is data that needs to be written to the device \"%s\" before it can be "
+"removed. Please do not remove the media or disconnect the drive"
+msgstr ""
+"Adatokat kell a(z) „%s” eszközre írni annak eltávolítása előtt. Ne távolítsa "
+"el az adathordozót, és ne kapcsolja le a meghajtót"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:253
@@ -942,5 +967,9 @@ msgstr "Kötet _csatolása"
 #~ msgid "Unable to contact the Xfce Trash service."
 #~ msgstr "Nem érhető el az Xfce Kuka szolgáltatás."
 
-#~ msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
-#~ msgstr "Győződjön meg, hogy telepítve van az Xfce Kuka szolgáltatást támogató fájlkezelő, például a Thunar."
+#~ msgid ""
+#~ "Make sure you have a file manager installed that supports the Xfce Trash "
+#~ "service, such as Thunar."
+#~ msgstr ""
+#~ "Győződjön meg, hogy telepítve van az Xfce Kuka szolgáltatást támogató "
+#~ "fájlkezelő, például a Thunar."

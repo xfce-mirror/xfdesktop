@@ -6,19 +6,19 @@
 # Maximilian Schleiss <maximilian@xfce.org>, 2006-2008.
 # Mike Massonnet <mmassonnet@xfce.org>, 2008.
 # Jérôme Guelfucci <jeromeg@xfce.org>, 2009.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-29 17:35+0000\n"
+"POT-Creation-Date: 2011-01-30 19:22+0100\n"
 "PO-Revision-Date: 2011-01-15 17:52+0100\n"
 "Last-Translator: Jérôme Guelfucci <jeromeg@xfce.org>\n"
 "Language-Team: French <xfce-i18n@xfce.org>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
 #, c-format
@@ -67,8 +67,11 @@ msgstr "Créer/Charger la liste de fonds d'écrans"
 
 #: ../settings/main.c:528
 #, c-format
-msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr "Le fichier de liste de fonds d'écran \"%s\" n'est pas valide. Voulez-vous l'écraser ?"
+msgid ""
+"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr ""
+"Le fichier de liste de fonds d'écran \"%s\" n'est pas valide. Voulez-vous "
+"l'écraser ?"
 
 #: ../settings/main.c:533
 msgid "Invalid List File"
@@ -264,12 +267,15 @@ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr "Défini la couleur \"droite\" ou \"basse\" du gradient"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
-msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr "Défini la couleur pleine ou la couleur \"gauche\" ou \"haute\" du gradient"
+msgid ""
+"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr ""
+"Défini la couleur pleine ou la couleur \"gauche\" ou \"haute\" du gradient"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid "Specify how the image will be resized to fit the screen"
-msgstr "Spécifier comment l'image doit être redimensionnée pour s'adapter à l'écran"
+msgstr ""
+"Spécifier comment l'image doit être redimensionnée pour s'adapter à l'écran"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "Specify the style of the color drawn behind the backdrop image"
@@ -340,7 +346,7 @@ msgstr "Bo_uton :"
 msgid "Control"
 msgstr "Ctrl"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:729
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:737
 msgid "Desktop"
 msgstr "Bureau"
 
@@ -421,8 +427,12 @@ msgid "Show workspace _names in list"
 msgstr "Afficher les _noms des espaces de travail dans la liste"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
-msgid "Specify the transparency level for the rounded label drawn behind the icon text"
-msgstr "Spécifier le niveau de transparence de l'étiquette arrondie derrière la légende d'une icône"
+msgid ""
+"Specify the transparency level for the rounded label drawn behind the icon "
+"text"
+msgstr ""
+"Spécifier le niveau de transparence de l'étiquette arrondie derrière la "
+"légende d'une icône"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "Use _submenus for the windows in each workspace"
@@ -557,12 +567,12 @@ msgstr "_Supprimer l'espace de travail %d"
 msgid "_Remove Workspace '%s'"
 msgstr "_Supprimer l'espace de travail '%s'"
 
-#: ../src/xfce-desktop.c:1006
+#: ../src/xfce-desktop.c:1018
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "Impossible de charger le fond d'écran depuis la liste \"%s\""
 
-#: ../src/xfce-desktop.c:1008
+#: ../src/xfce-desktop.c:1020
 msgid "Desktop Error"
 msgstr "Erreur du bureau"
 
@@ -578,8 +588,11 @@ msgid "Desktop Folder Error"
 msgstr "Erreur dans le répertoire du bureau"
 
 #: ../src/xfdesktop-file-icon-manager.c:489
-msgid "A normal file with the same name already exists. Please delete or rename it."
-msgstr "Un fichier régulier avec le même nom existe déjà. Veuillez le supprimer ou le renommer."
+msgid ""
+"A normal file with the same name already exists. Please delete or rename it."
+msgstr ""
+"Un fichier régulier avec le même nom existe déjà. Veuillez le supprimer ou "
+"le renommer."
 
 #: ../src/xfdesktop-file-icon-manager.c:592
 #: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:879
@@ -600,8 +613,12 @@ msgstr "Les fichiers sélectionnés n'on pas pû être supprimés."
 #: ../src/xfdesktop-file-utils.c:1101 ../src/xfdesktop-file-utils.c:1151
 #: ../src/xfdesktop-file-utils.c:1228 ../src/xfdesktop-file-utils.c:1289
 #: ../src/xfdesktop-file-utils.c:1362 ../src/xfdesktop-file-utils.c:1440
-msgid "This feature requires a file manager service to be present (such as the one supplied by Thunar)."
-msgstr "Cette fonctionnalité requiert la présence d'un gestionnaire de fichiers (comme Thunar)."
+msgid ""
+"This feature requires a file manager service to be present (such as the one "
+"supplied by Thunar)."
+msgstr ""
+"Cette fonctionnalité requiert la présence d'un gestionnaire de fichiers "
+"(comme Thunar)."
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:738
@@ -631,8 +648,12 @@ msgid "Open With \"%s\""
 msgstr "Ouvrir avec \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:986
-msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
-msgstr "Impossible de lancer \"exo-desktop-item-edit\", qui est nécessaire à la création et l'édition de lanceurs et de liens sur le bureau."
+msgid ""
+"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
+"edit launchers and links on the desktop."
+msgstr ""
+"Impossible de lancer \"exo-desktop-item-edit\", qui est nécessaire à la "
+"création et l'édition de lanceurs et de liens sur le bureau."
 
 #: ../src/xfdesktop-file-icon-manager.c:1354
 msgid "_Open all"
@@ -700,11 +721,11 @@ msgstr "Paramètres du _Bureau..."
 msgid "_Properties..."
 msgstr "_Propriétés..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2229
+#: ../src/xfdesktop-file-icon-manager.c:2234
 msgid "Load Error"
 msgstr "Erreur de chargement"
 
-#: ../src/xfdesktop-file-icon-manager.c:2231
+#: ../src/xfdesktop-file-icon-manager.c:2236
 msgid "Failed to load the desktop folder"
 msgstr "Impossible de charger le répertoire du bureau"
 
@@ -762,8 +783,12 @@ msgid "The selected files could not be moved to the trash"
 msgstr "Les fichiers sélectionnés n'ont pu être déplacer dans la corbeille"
 
 #: ../src/xfdesktop-file-utils.c:896 ../src/xfdesktop-file-utils.c:942
-msgid "This feature requires a trash service to be present (such as the one supplied by Thunar)."
-msgstr "Cette fonctionnalité requiert la présence d'un service de corbeille (par exemple Thunar)."
+msgid ""
+"This feature requires a trash service to be present (such as the one "
+"supplied by Thunar)."
+msgstr ""
+"Cette fonctionnalité requiert la présence d'un service de corbeille (par "
+"exemple Thunar)."
 
 #: ../src/xfdesktop-file-utils.c:927 ../src/xfdesktop-file-utils.c:941
 msgid "Could not empty the trash"
@@ -824,8 +849,12 @@ msgstr "Démonter le périphérique"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:131
 #, c-format
-msgid "The device \"%s\" is being unmounted by the system. Please do not remove the media or disconnect the drive"
-msgstr "Le périphérique « %s » est entrain d'être retiré du système. Veuillez ne pas déconnecter le média."
+msgid ""
+"The device \"%s\" is being unmounted by the system. Please do not remove the "
+"media or disconnect the drive"
+msgstr ""
+"Le périphérique « %s » est entrain d'être retiré du système. Veuillez ne pas "
+"déconnecter le média."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
@@ -835,8 +864,12 @@ msgstr "Écriture des données vers le périphérique"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
 #, c-format
-msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
-msgstr "Des données sont en attente d'écriture vers le périphérique \"%s\" avant de pouvoir être retiré. Veuillez ne pas déconnecter le média."
+msgid ""
+"There is data that needs to be written to the device \"%s\" before it can be "
+"removed. Please do not remove the media or disconnect the drive"
+msgstr ""
+"Des données sont en attente d'écriture vers le périphérique \"%s\" avant de "
+"pouvoir être retiré. Veuillez ne pas déconnecter le média."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:253
@@ -847,7 +880,8 @@ msgstr "Éjection du périphérique"
 #: ../src/xfdesktop-notify.c:256
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
-msgstr "Le périphérique \"%s\" est en cours d'éjection. Cela va prendre un instant."
+msgstr ""
+"Le périphérique \"%s\" est en cours d'éjection. Cela va prendre un instant."
 
 #: ../src/xfdesktop-regular-file-icon.c:472
 #, c-format
@@ -941,8 +975,12 @@ msgstr "_Monter le périphérique"
 #~ msgid "Unable to contact the Xfce Trash service."
 #~ msgstr "Impossible de contacter le service de corbeille de Xfce."
 
-#~ msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
-#~ msgstr "Assurez-vous d'avoir un gestionnaire de fichiers, tel que thunar, prennant en charge le service de corbeille de Xfce."
+#~ msgid ""
+#~ "Make sure you have a file manager installed that supports the Xfce Trash "
+#~ "service, such as Thunar."
+#~ msgstr ""
+#~ "Assurez-vous d'avoir un gestionnaire de fichiers, tel que thunar, "
+#~ "prennant en charge le service de corbeille de Xfce."
 
 #~ msgid "Needs terminal"
 #~ msgstr "Terminal"
@@ -1023,25 +1061,38 @@ msgstr "_Monter le périphérique"
 #~ msgstr "Les options sont :\n"
 
 #~ msgid "    --reload      Reload all settings, refresh image list\n"
-#~ msgstr "    --reload      Recharger tous le paramètres, rafraîchir la liste d'images\n"
+#~ msgstr ""
+#~ "    --reload      Recharger tous le paramètres, rafraîchir la liste "
+#~ "d'images\n"
 
 #~ msgid "    --menu        Pop up the menu (at the current mouse position)\n"
-#~ msgstr "    --menu        Afficher le menu (à la position actuelle de la souris)\n"
+#~ msgstr ""
+#~ "    --menu        Afficher le menu (à la position actuelle de la souris)\n"
 
-#~ msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
-#~ msgstr "    --windowlist  Afficher la liste des fenêtres (à la position actuelle de la souris)\n"
+#~ msgid ""
+#~ "    --windowlist  Pop up the window list (at the current mouse position)\n"
+#~ msgstr ""
+#~ "    --windowlist  Afficher la liste des fenêtres (à la position actuelle "
+#~ "de la souris)\n"
 
 #~ msgid "    --quit        Cause xfdesktop to quit\n"
 #~ msgstr "    --quit        Quitter xfdesktop\n"
 
-#~ msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-#~ msgstr "Xfdesktop n'a pas pu créer le dossier \"%s\" pour stocker les éléments du bureau:"
+#~ msgid ""
+#~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+#~ msgstr ""
+#~ "Xfdesktop n'a pas pu créer le dossier \"%s\" pour stocker les éléments du "
+#~ "bureau:"
 
 #~ msgid "Create Folder Failed"
 #~ msgstr "Impossible de créer le dossier"
 
-#~ msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
-#~ msgstr "Xfdesktop ne peut pas utilliser \"%s\" pour stocker les éléments du bureau car ce n'est pas un dossier."
+#~ msgid ""
+#~ "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not "
+#~ "a folder."
+#~ msgstr ""
+#~ "Xfdesktop ne peut pas utilliser \"%s\" pour stocker les éléments du "
+#~ "bureau car ce n'est pas un dossier."
 
 #~ msgid "Please delete or rename the file."
 #~ msgstr "Veuillez effacer ou renommer le fichier."
@@ -1073,8 +1124,12 @@ msgstr "_Monter le périphérique"
 #~ msgid "The application chooser could not be opened."
 #~ msgstr "Le sélecteur d'applications n'a pas pu être ouvert."
 
-#~ msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
-#~ msgstr "Cette option requiert la présence d'un gestionnaire de fichier (comme Thunar)."
+#~ msgid ""
+#~ "This feature requires a file manager service present (such as that "
+#~ "supplied by Thunar)."
+#~ msgstr ""
+#~ "Cette option requiert la présence d'un gestionnaire de fichier (comme "
+#~ "Thunar)."
 
 #~ msgid "Unable to create folder named \"%s\":"
 #~ msgstr "Impossible de créer le dossier nommé \"%s\" :"
@@ -1119,7 +1174,8 @@ msgstr "_Monter le périphérique"
 #~ msgstr "L'application associée n'a pas pu être trouvée ou lancée."
 
 #~ msgid "Unable to set default application for \"%s\" to \"%s\":"
-#~ msgstr "Impossible de définir l'application par défaut pour \"%s\" à \"%s\" :"
+#~ msgstr ""
+#~ "Impossible de définir l'application par défaut pour \"%s\" à \"%s\" :"
 
 #~ msgid "Properties Error"
 #~ msgstr "Erreur de propriétés"
@@ -1527,8 +1583,14 @@ msgstr "_Monter le périphérique"
 #~ msgid "xfce4-menueditor is deprecated"
 #~ msgstr "xfce4-menueditor est obsolète"
 
-#~ msgid "Xfce's menu system has been replaced, and xfce4-menueditor is not able to edit the new menu file format.  You may continue and edit an old-style menu file, or quit."
-#~ msgstr "Le système du menu Xfce à été remplacé, et xfce4-menueditor n'est pas capable d'éditer le nouveau format du menu. Vous pouvez continuer et éditer un ancien menu, ou quitter."
+#~ msgid ""
+#~ "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
+#~ "edit the new menu file format.  You may continue and edit an old-style "
+#~ "menu file, or quit."
+#~ msgstr ""
+#~ "Le système du menu Xfce à été remplacé, et xfce4-menueditor n'est pas "
+#~ "capable d'éditer le nouveau format du menu. Vous pouvez continuer et "
+#~ "éditer un ancien menu, ou quitter."
 
 #~ msgid "Continue"
 #~ msgstr "Continuer"
@@ -1687,7 +1749,8 @@ msgstr "_Monter le périphérique"
 #~ msgstr "Auteur/Mainteneur"
 
 #~ msgid "You have modified the menu, do you want to save it before quitting ?"
-#~ msgstr "Le menu a été modifié, désirez-vous le sauvegarder avent de quitter ?"
+#~ msgstr ""
+#~ "Le menu a été modifié, désirez-vous le sauvegarder avent de quitter ?"
 
 #~ msgid "Forget modifications"
 #~ msgstr "Ignorer les modifications"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-16 17:44+0100\n"
+"POT-Creation-Date: 2011-01-30 19:22+0100\n"
 "PO-Revision-Date: 2009-12-18 18:46+0100\n"
 "Last-Translator: Per Kongstad <p_kongstad@op.pl>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -25,7 +25,7 @@ msgid "Backdrop list file is not valid"
 msgstr "Baggrundsliste er ikke gyldig"
 
 #. no need to escape markup; it's already done for us
-#: ../settings/main.c:162
+#: ../settings/main.c:163
 #, c-format
 msgid ""
 "%s\n"
@@ -34,37 +34,37 @@ msgstr ""
 "%s\n"
 "<i>Størrelse: %dx%d</i>"
 
-#: ../settings/main.c:272 ../src/xfdesktop-special-file-icon.c:247
-#: ../src/xfdesktop-special-file-icon.c:413
+#: ../settings/main.c:289 ../src/xfdesktop-special-file-icon.c:256
+#: ../src/xfdesktop-special-file-icon.c:419
 msgid "Home"
 msgstr "Hjem"
 
-#: ../settings/main.c:274
+#: ../settings/main.c:291
 msgid "Filesystem"
 msgstr "Filsystem"
 
-#: ../settings/main.c:276
+#: ../settings/main.c:293
 msgid "Trash"
 msgstr "Papirkurv"
 
-#: ../settings/main.c:278
+#: ../settings/main.c:295
 msgid "Removable Devices"
 msgstr "Fjernbare enheder"
 
-#: ../settings/main.c:458
+#: ../settings/main.c:475
 #, c-format
 msgid "Cannot create backdrop list \"%s\""
 msgstr "Kan ikke oprette baggrundsliste \"%s\""
 
-#: ../settings/main.c:462 ../settings/main.c:779
+#: ../settings/main.c:479 ../settings/main.c:802
 msgid "Backdrop List Error"
 msgstr "Baggrundslistefejl"
 
-#: ../settings/main.c:487
+#: ../settings/main.c:504
 msgid "Create/Load Backdrop List"
 msgstr "Opret/indlæs baggrundsliste"
 
-#: ../settings/main.c:511
+#: ../settings/main.c:528
 #, c-format
 msgid ""
 "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
@@ -72,91 +72,91 @@ msgstr ""
 "Fil \"%s\" er ikke en gyldig baggrundsfilliste.  Ønsker du at overskrive "
 "denne?"
 
-#: ../settings/main.c:516
+#: ../settings/main.c:533
 msgid "Invalid List File"
 msgstr "Ugyldig filliste"
 
-#: ../settings/main.c:519
+#: ../settings/main.c:536
 msgid "Overwriting the file will cause its contents to be lost."
 msgstr "Overskrivning af filen vil medføre, at indholdet går tabt."
 
-#: ../settings/main.c:521
+#: ../settings/main.c:538
 msgid "Replace"
 msgstr "Udskift"
 
-#: ../settings/main.c:775
+#: ../settings/main.c:798
 #, c-format
 msgid "Failed to write backdrop list to \"%s\""
 msgstr "Kunne ikke skrive baggrundsliste til \"%s\""
 
-#: ../settings/main.c:802
+#: ../settings/main.c:825
 msgid "Add Image File(s)"
 msgstr "Tilføj billedfil(er)"
 
-#: ../settings/main.c:811
+#: ../settings/main.c:834
 msgid "Image files"
 msgstr "Billedfiler"
 
-#: ../settings/main.c:816
+#: ../settings/main.c:839
 msgid "All files"
 msgstr "Alle filer"
 
-#: ../settings/main.c:1248
+#: ../settings/main.c:1271
 #, c-format
 msgid "Screen %d, Monitor %d (%s)"
 msgstr "Skærm %d, monitor %d (%s)"
 
-#: ../settings/main.c:1252
+#: ../settings/main.c:1275
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "Skærm %d, monitor %d"
 
-#: ../settings/main.c:1255
+#: ../settings/main.c:1278
 #, c-format
 msgid "Screen %d"
 msgstr "Skærm %d"
 
-#: ../settings/main.c:1260
+#: ../settings/main.c:1283
 #, c-format
 msgid "Monitor %d (%s)"
 msgstr "Skærm %d (%s)"
 
-#: ../settings/main.c:1264
+#: ../settings/main.c:1287
 #, c-format
 msgid "Monitor %d"
 msgstr "Skærm %d"
 
-#: ../settings/main.c:1477
+#: ../settings/main.c:1500
 msgid "Settings manager socket"
 msgstr "Sokkel for indstillingshåndtering"
 
-#: ../settings/main.c:1477
+#: ../settings/main.c:1500
 msgid "SOCKET ID"
 msgstr "SOKKEL-ID"
 
-#: ../settings/main.c:1478
+#: ../settings/main.c:1501
 msgid "Version information"
 msgstr "Versionsinformation"
 
-#: ../settings/main.c:1498
+#: ../settings/main.c:1521
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Tast '%s --help' for brug."
 
-#: ../settings/main.c:1510
+#: ../settings/main.c:1533
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce-udviklingsholdet. Alle rettigheder forbeholdes."
 
-#: ../settings/main.c:1511
+#: ../settings/main.c:1534
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Rapportér venligst fejl til <%s>."
 
-#: ../settings/main.c:1518
+#: ../settings/main.c:1541
 msgid "Desktop Settings"
 msgstr "Skrivebordsindstillinger"
 
-#: ../settings/main.c:1520
+#: ../settings/main.c:1543
 msgid "Unable to contact settings server"
 msgstr "Kunne ikke forbinde til indstilllingsserver"
 
@@ -345,7 +345,7 @@ msgstr "_Knap:"
 msgid "Control"
 msgstr "Kontrol"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:729
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:737
 msgid "Desktop"
 msgstr "Skrivebord"
 
@@ -565,12 +565,12 @@ msgstr "_Fjern arbejdsområde %d"
 msgid "_Remove Workspace '%s'"
 msgstr "F_jern arbejdsområde '%s'"
 
-#: ../src/xfce-desktop.c:1006
+#: ../src/xfce-desktop.c:1018
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "Kunne ikke indlæse billede fra baggrundsfilliste \"%s\""
 
-#: ../src/xfce-desktop.c:1008
+#: ../src/xfce-desktop.c:1020
 msgid "Desktop Error"
 msgstr "Skrivebordsfejl"
 
@@ -593,8 +593,9 @@ msgstr ""
 "eller omdøbe den."
 
 #: ../src/xfdesktop-file-icon-manager.c:592
-#: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:803
-#: ../src/xfdesktop-file-utils.c:818 ../src/xfdesktop-special-file-icon.c:447
+#: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:879
+#: ../src/xfdesktop-file-utils.c:894 ../src/xfdesktop-file-utils.c:926
+#: ../src/xfdesktop-file-utils.c:940
 msgid "Trash Error"
 msgstr "Papirkurvsfejl"
 
@@ -604,12 +605,12 @@ msgid "The selected files could not be trashed"
 msgstr "Den valgte fil kunne ikke slettes"
 
 #: ../src/xfdesktop-file-icon-manager.c:594
-#: ../src/xfdesktop-file-icon-manager.c:638 ../src/xfdesktop-file-utils.c:652
-#: ../src/xfdesktop-file-utils.c:702 ../src/xfdesktop-file-utils.c:761
-#: ../src/xfdesktop-file-utils.c:873 ../src/xfdesktop-file-utils.c:929
-#: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:1029
-#: ../src/xfdesktop-file-utils.c:1106 ../src/xfdesktop-file-utils.c:1167
-#: ../src/xfdesktop-file-utils.c:1240 ../src/xfdesktop-file-utils.c:1318
+#: ../src/xfdesktop-file-icon-manager.c:638 ../src/xfdesktop-file-utils.c:728
+#: ../src/xfdesktop-file-utils.c:778 ../src/xfdesktop-file-utils.c:837
+#: ../src/xfdesktop-file-utils.c:995 ../src/xfdesktop-file-utils.c:1051
+#: ../src/xfdesktop-file-utils.c:1101 ../src/xfdesktop-file-utils.c:1151
+#: ../src/xfdesktop-file-utils.c:1228 ../src/xfdesktop-file-utils.c:1289
+#: ../src/xfdesktop-file-utils.c:1362 ../src/xfdesktop-file-utils.c:1440
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
@@ -626,11 +627,11 @@ msgstr "Kunne ikke starte \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:740
 #: ../src/xfdesktop-file-icon-manager.c:984
-#: ../src/xfdesktop-file-icon-manager.c:1297 ../src/xfdesktop-file-utils.c:635
-#: ../src/xfdesktop-file-utils.c:650 ../src/xfdesktop-file-utils.c:1012
-#: ../src/xfdesktop-file-utils.c:1027 ../src/xfdesktop-file-utils.c:1079
-#: ../src/xfdesktop-file-utils.c:1104 ../src/xfdesktop-file-utils.c:1150
-#: ../src/xfdesktop-file-utils.c:1165
+#: ../src/xfdesktop-file-icon-manager.c:1297 ../src/xfdesktop-file-utils.c:711
+#: ../src/xfdesktop-file-utils.c:726 ../src/xfdesktop-file-utils.c:1134
+#: ../src/xfdesktop-file-utils.c:1149 ../src/xfdesktop-file-utils.c:1201
+#: ../src/xfdesktop-file-utils.c:1226 ../src/xfdesktop-file-utils.c:1272
+#: ../src/xfdesktop-file-utils.c:1287
 msgid "Launch Error"
 msgstr "Starterfejl"
 
@@ -661,7 +662,7 @@ msgid "_Open in New Window"
 msgstr "_Åben i nyt vindue"
 
 #: ../src/xfdesktop-file-icon-manager.c:1372
-#: ../src/xfdesktop-special-file-icon.c:570 ../src/xfdesktop-volume-icon.c:653
+#: ../src/xfdesktop-special-file-icon.c:489 ../src/xfdesktop-volume-icon.c:663
 msgid "_Open"
 msgstr "_Åben"
 
@@ -714,15 +715,15 @@ msgid "Desktop _Settings..."
 msgstr "Skrivebords_indstillinger..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1677
-#: ../src/xfdesktop-volume-icon.c:701
+#: ../src/xfdesktop-volume-icon.c:711
 msgid "_Properties..."
 msgstr "_Egenskaber..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2231
+#: ../src/xfdesktop-file-icon-manager.c:2234
 msgid "Load Error"
 msgstr "Starterfejl"
 
-#: ../src/xfdesktop-file-icon-manager.c:2233
+#: ../src/xfdesktop-file-icon-manager.c:2236
 msgid "Failed to load the desktop folder"
 msgstr "Kunne ikke indlæse skrivebordsmappen"
 
@@ -755,31 +756,31 @@ msgstr "%x klokken %X"
 msgid "Unknown"
 msgstr "Ukendt"
 
-#: ../src/xfdesktop-file-utils.c:636 ../src/xfdesktop-file-utils.c:651
+#: ../src/xfdesktop-file-utils.c:712 ../src/xfdesktop-file-utils.c:727
 msgid "The folder could not be opened"
 msgstr "Mappen kunne ikke åbnes"
 
-#: ../src/xfdesktop-file-utils.c:685 ../src/xfdesktop-file-utils.c:700
+#: ../src/xfdesktop-file-utils.c:761 ../src/xfdesktop-file-utils.c:776
 msgid "Rename Error"
 msgstr "Omdøbningsfejl"
 
-#: ../src/xfdesktop-file-utils.c:686 ../src/xfdesktop-file-utils.c:701
+#: ../src/xfdesktop-file-utils.c:762 ../src/xfdesktop-file-utils.c:777
 msgid "The file could not be renamed"
 msgstr "Filen kunne ikke omdøbes"
 
-#: ../src/xfdesktop-file-utils.c:744 ../src/xfdesktop-file-utils.c:759
+#: ../src/xfdesktop-file-utils.c:820 ../src/xfdesktop-file-utils.c:835
 msgid "Delete Error"
 msgstr "Sletningsfejl"
 
-#: ../src/xfdesktop-file-utils.c:745 ../src/xfdesktop-file-utils.c:760
+#: ../src/xfdesktop-file-utils.c:821 ../src/xfdesktop-file-utils.c:836
 msgid "The selected files could not be deleted"
 msgstr "De valgte filer kunne ikke slettes"
 
-#: ../src/xfdesktop-file-utils.c:804 ../src/xfdesktop-file-utils.c:819
+#: ../src/xfdesktop-file-utils.c:880 ../src/xfdesktop-file-utils.c:895
 msgid "The selected files could not be moved to the trash"
 msgstr "De valgte filer kunne ikke flyttes til papirklurven."
 
-#: ../src/xfdesktop-file-utils.c:820
+#: ../src/xfdesktop-file-utils.c:896 ../src/xfdesktop-file-utils.c:942
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
@@ -787,50 +788,55 @@ msgstr ""
 "Denne egenskab kræver at en filhåndteringsservice er tilstede (som den "
 "Thunar levererer)."
 
-#: ../src/xfdesktop-file-utils.c:856 ../src/xfdesktop-file-utils.c:871
+#: ../src/xfdesktop-file-utils.c:927 ../src/xfdesktop-file-utils.c:941
+#, fuzzy
+msgid "Could not empty the trash"
+msgstr "Kan ikke oprette skrivebordsmappen \"%s\""
+
+#: ../src/xfdesktop-file-utils.c:978 ../src/xfdesktop-file-utils.c:993
 msgid "Create File Error"
 msgstr "Fejl ved oprettelse af fil"
 
-#: ../src/xfdesktop-file-utils.c:857 ../src/xfdesktop-file-utils.c:872
+#: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:994
 msgid "Could not create a new file"
 msgstr "Kunne ikke oprette en ny fil"
 
-#: ../src/xfdesktop-file-utils.c:912 ../src/xfdesktop-file-utils.c:927
+#: ../src/xfdesktop-file-utils.c:1034 ../src/xfdesktop-file-utils.c:1049
 msgid "Create Document Error"
 msgstr "Fejl ved oprettelse af dokument"
 
-#: ../src/xfdesktop-file-utils.c:913 ../src/xfdesktop-file-utils.c:928
+#: ../src/xfdesktop-file-utils.c:1035 ../src/xfdesktop-file-utils.c:1050
 msgid "Could not create a new document from the template"
 msgstr "Kunne ikke oprette et nyt dokument fra skabelonen"
 
-#: ../src/xfdesktop-file-utils.c:962 ../src/xfdesktop-file-utils.c:977
+#: ../src/xfdesktop-file-utils.c:1084 ../src/xfdesktop-file-utils.c:1099
 msgid "File Properties Error"
 msgstr "Fejl ved filegenskaber"
 
-#: ../src/xfdesktop-file-utils.c:963 ../src/xfdesktop-file-utils.c:978
+#: ../src/xfdesktop-file-utils.c:1085 ../src/xfdesktop-file-utils.c:1100
 msgid "The file properties dialog could not be opened"
 msgstr "Filegenskabsdialogen kunne ikke åbnes"
 
-#: ../src/xfdesktop-file-utils.c:1013 ../src/xfdesktop-file-utils.c:1028
+#: ../src/xfdesktop-file-utils.c:1135 ../src/xfdesktop-file-utils.c:1150
 msgid "The file could not be opened"
 msgstr "Filen kunne ikke åbnes"
 
-#: ../src/xfdesktop-file-utils.c:1076 ../src/xfdesktop-file-utils.c:1101
+#: ../src/xfdesktop-file-utils.c:1198 ../src/xfdesktop-file-utils.c:1223
 #, c-format
 msgid "Failed to run \"%s\""
 msgstr "Kunne ikke køre \"%s\""
 
-#: ../src/xfdesktop-file-utils.c:1151 ../src/xfdesktop-file-utils.c:1166
+#: ../src/xfdesktop-file-utils.c:1273 ../src/xfdesktop-file-utils.c:1288
 msgid "The application chooser could not be opened"
 msgstr "Programvælgeren kunne ikke åbnes"
 
-#: ../src/xfdesktop-file-utils.c:1224 ../src/xfdesktop-file-utils.c:1238
-#: ../src/xfdesktop-file-utils.c:1300 ../src/xfdesktop-file-utils.c:1316
+#: ../src/xfdesktop-file-utils.c:1346 ../src/xfdesktop-file-utils.c:1360
+#: ../src/xfdesktop-file-utils.c:1422 ../src/xfdesktop-file-utils.c:1438
 msgid "Transfer Error"
 msgstr "Overførselsfejl"
 
-#: ../src/xfdesktop-file-utils.c:1225 ../src/xfdesktop-file-utils.c:1239
-#: ../src/xfdesktop-file-utils.c:1301 ../src/xfdesktop-file-utils.c:1317
+#: ../src/xfdesktop-file-utils.c:1347 ../src/xfdesktop-file-utils.c:1361
+#: ../src/xfdesktop-file-utils.c:1423 ../src/xfdesktop-file-utils.c:1439
 msgid "The file transfer could not be performed"
 msgstr "Filoverførsel kunne ikke udføres"
 
@@ -875,7 +881,7 @@ msgstr "Udskubber enhed"
 msgid "The device \"%s\" is being ejected. This may take some time"
 msgstr "Enheden \"%s\" bliver skubbet ud. Dette kan tage lidt tid"
 
-#: ../src/xfdesktop-regular-file-icon.c:468
+#: ../src/xfdesktop-regular-file-icon.c:472
 #, c-format
 msgid ""
 "Type: %s\n"
@@ -886,25 +892,25 @@ msgstr ""
 "Size: %s\n"
 "Last modificeret: %s"
 
-#: ../src/xfdesktop-special-file-icon.c:249
-#: ../src/xfdesktop-special-file-icon.c:411
+#: ../src/xfdesktop-special-file-icon.c:258
+#: ../src/xfdesktop-special-file-icon.c:417
 msgid "File System"
 msgstr "Filsystem"
 
-#: ../src/xfdesktop-special-file-icon.c:396
+#: ../src/xfdesktop-special-file-icon.c:402
 msgid "Trash is empty"
 msgstr "Papirkurven er tom"
 
-#: ../src/xfdesktop-special-file-icon.c:399
+#: ../src/xfdesktop-special-file-icon.c:405
 msgid "Trash contains one item"
 msgstr "Papirkurven indeholder et objekt"
 
-#: ../src/xfdesktop-special-file-icon.c:400
+#: ../src/xfdesktop-special-file-icon.c:406
 #, c-format
 msgid "Trash contains %d items"
 msgstr "Papirkurven indeholder %d objekter"
 
-#: ../src/xfdesktop-special-file-icon.c:428
+#: ../src/xfdesktop-special-file-icon.c:434
 #, c-format
 msgid ""
 "%s\n"
@@ -915,23 +921,11 @@ msgstr ""
 "Størrelse: %s\n"
 "Sidst modificeret: %s"
 
-#: ../src/xfdesktop-special-file-icon.c:449
-msgid "Unable to contact the Xfce Trash service."
-msgstr "Kunne ikke forbinde til Xfce-papirkurvservicen."
-
-#: ../src/xfdesktop-special-file-icon.c:450
-msgid ""
-"Make sure you have a file manager installed that supports the Xfce Trash "
-"service, such as Thunar."
-msgstr ""
-"Kontrollér, at du har en filhåndtering som understøtter Xfce-"
-"papirkurvservicen, eksempelvis Thunar."
-
-#: ../src/xfdesktop-special-file-icon.c:588
+#: ../src/xfdesktop-special-file-icon.c:507
 msgid "_Empty Trash"
 msgstr "_Tøm papirskurven"
 
-#: ../src/xfdesktop-volume-icon.c:413
+#: ../src/xfdesktop-volume-icon.c:423
 #, c-format
 msgid ""
 "Removable Volume\n"
@@ -942,7 +936,7 @@ msgstr ""
 "Monteret i \"%s\"\n"
 "%s tilbage (%s total)"
 
-#: ../src/xfdesktop-volume-icon.c:420
+#: ../src/xfdesktop-volume-icon.c:430
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
@@ -950,31 +944,41 @@ msgstr ""
 "Fjernbart arkiv\n"
 "Ikke monteret endnu"
 
-#: ../src/xfdesktop-volume-icon.c:446 ../src/xfdesktop-volume-icon.c:488
+#: ../src/xfdesktop-volume-icon.c:456 ../src/xfdesktop-volume-icon.c:498
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "Kunne ikke skubbe \"%s\" ud"
 
-#: ../src/xfdesktop-volume-icon.c:451 ../src/xfdesktop-volume-icon.c:493
+#: ../src/xfdesktop-volume-icon.c:461 ../src/xfdesktop-volume-icon.c:503
 msgid "Eject Failed"
 msgstr "Udskubning fejlede"
 
-#: ../src/xfdesktop-volume-icon.c:525
+#: ../src/xfdesktop-volume-icon.c:535
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "Kunne ikke montere \"%s\""
 
-#: ../src/xfdesktop-volume-icon.c:528
+#: ../src/xfdesktop-volume-icon.c:538
 msgid "Mount Failed"
 msgstr "Monteringsfejl"
 
-#: ../src/xfdesktop-volume-icon.c:669 ../src/xfdesktop-volume-icon.c:672
+#: ../src/xfdesktop-volume-icon.c:679 ../src/xfdesktop-volume-icon.c:682
 msgid "E_ject Volume"
 msgstr "_Udskub arkiv"
 
-#: ../src/xfdesktop-volume-icon.c:679
+#: ../src/xfdesktop-volume-icon.c:689
 msgid "_Mount Volume"
 msgstr "_Montér arkiv"
+
+#~ msgid "Unable to contact the Xfce Trash service."
+#~ msgstr "Kunne ikke forbinde til Xfce-papirkurvservicen."
+
+#~ msgid ""
+#~ "Make sure you have a file manager installed that supports the Xfce Trash "
+#~ "service, such as Thunar."
+#~ msgstr ""
+#~ "Kontrollér, at du har en filhåndtering som understøtter Xfce-"
+#~ "papirkurvservicen, eksempelvis Thunar."
 
 #~ msgid "Needs terminal"
 #~ msgstr "Terminal påkrævet"

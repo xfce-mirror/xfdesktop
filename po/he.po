@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-16 17:44+0100\n"
+"POT-Creation-Date: 2011-01-30 19:22+0100\n"
 "PO-Revision-Date: 2006-11-11 21:39+0200\n"
 "Last-Translator: Yuval Tanny <tanai@int.gov.il>\n"
 "Language-Team: Hebrew\n"
@@ -26,7 +26,7 @@ msgid "Backdrop list file is not valid"
 msgstr "קובץ רשימת הטפטים אינו תקני"
 
 #. no need to escape markup; it's already done for us
-#: ../settings/main.c:162
+#: ../settings/main.c:163
 #, c-format
 msgid ""
 "%s\n"
@@ -35,128 +35,128 @@ msgstr ""
 "%s\n"
 "<i>ממדים: %dx%d</i>"
 
-#: ../settings/main.c:272 ../src/xfdesktop-special-file-icon.c:247
-#: ../src/xfdesktop-special-file-icon.c:413
+#: ../settings/main.c:289 ../src/xfdesktop-special-file-icon.c:256
+#: ../src/xfdesktop-special-file-icon.c:419
 msgid "Home"
 msgstr "בית"
 
-#: ../settings/main.c:274
+#: ../settings/main.c:291
 msgid "Filesystem"
 msgstr "מערכת קבצים"
 
-#: ../settings/main.c:276
+#: ../settings/main.c:293
 msgid "Trash"
 msgstr "סל מחזור"
 
-#: ../settings/main.c:278
+#: ../settings/main.c:295
 msgid "Removable Devices"
 msgstr "התקנים נשלפים"
 
-#: ../settings/main.c:458
+#: ../settings/main.c:475
 #, c-format
 msgid "Cannot create backdrop list \"%s\""
 msgstr "Cannot create backdrop list \"%s\""
 
-#: ../settings/main.c:462 ../settings/main.c:779
+#: ../settings/main.c:479 ../settings/main.c:802
 msgid "Backdrop List Error"
 msgstr "Backdrop List Error"
 
-#: ../settings/main.c:487
+#: ../settings/main.c:504
 msgid "Create/Load Backdrop List"
 msgstr "Create/Load Backdrop List"
 
-#: ../settings/main.c:511
+#: ../settings/main.c:528
 #, c-format
 msgid ""
 "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
 msgstr ""
 "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
 
-#: ../settings/main.c:516
+#: ../settings/main.c:533
 msgid "Invalid List File"
 msgstr "קובץ רשימה שגוי"
 
-#: ../settings/main.c:519
+#: ../settings/main.c:536
 msgid "Overwriting the file will cause its contents to be lost."
 msgstr "Overwriting the file will cause its contents to be lost."
 
-#: ../settings/main.c:521
+#: ../settings/main.c:538
 msgid "Replace"
 msgstr "החלפה"
 
-#: ../settings/main.c:775
+#: ../settings/main.c:798
 #, c-format
 msgid "Failed to write backdrop list to \"%s\""
 msgstr "Failed to write backdrop list to \"%s\""
 
-#: ../settings/main.c:802
+#: ../settings/main.c:825
 msgid "Add Image File(s)"
 msgstr "הוספת קובץ/י תמונה"
 
-#: ../settings/main.c:811
+#: ../settings/main.c:834
 msgid "Image files"
 msgstr "קבצי תמונה"
 
-#: ../settings/main.c:816
+#: ../settings/main.c:839
 msgid "All files"
 msgstr "כל הקבצים"
 
-#: ../settings/main.c:1248
+#: ../settings/main.c:1271
 #, c-format
 msgid "Screen %d, Monitor %d (%s)"
 msgstr "מסך %d, צג %d (%s)"
 
-#: ../settings/main.c:1252
+#: ../settings/main.c:1275
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "מסך %d, צג %d"
 
-#: ../settings/main.c:1255
+#: ../settings/main.c:1278
 #, c-format
 msgid "Screen %d"
 msgstr "מסך %d"
 
-#: ../settings/main.c:1260
+#: ../settings/main.c:1283
 #, c-format
 msgid "Monitor %d (%s)"
 msgstr "צג %d (%s)"
 
-#: ../settings/main.c:1264
+#: ../settings/main.c:1287
 #, c-format
 msgid "Monitor %d"
 msgstr "צג %d"
 
-#: ../settings/main.c:1477
+#: ../settings/main.c:1500
 msgid "Settings manager socket"
 msgstr "Settings manager socket"
 
-#: ../settings/main.c:1477
+#: ../settings/main.c:1500
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: ../settings/main.c:1478
+#: ../settings/main.c:1501
 msgid "Version information"
 msgstr "פרטי הגרסה"
 
-#: ../settings/main.c:1498
+#: ../settings/main.c:1521
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Type '%s --help' for usage."
 
-#: ../settings/main.c:1510
+#: ../settings/main.c:1533
 msgid "The Xfce development team. All rights reserved."
 msgstr "צוות הפיתוח של Xfce. כל הזכויות שמורות"
 
-#: ../settings/main.c:1511
+#: ../settings/main.c:1534
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "נא לדווח על באגים אל <%s>."
 
-#: ../settings/main.c:1518
+#: ../settings/main.c:1541
 msgid "Desktop Settings"
 msgstr "הגדרות שולחן עבודה"
 
-#: ../settings/main.c:1520
+#: ../settings/main.c:1543
 msgid "Unable to contact settings server"
 msgstr "לא ניתן ליצור קשר עם שרת ההגדרות"
 
@@ -351,7 +351,7 @@ msgstr "לחצן"
 msgid "Control"
 msgstr "תורמים"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:729
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:737
 msgid "Desktop"
 msgstr "שולחן עבודה"
 
@@ -572,12 +572,12 @@ msgstr "_הסר סביבת עבודה %d"
 msgid "_Remove Workspace '%s'"
 msgstr "_הסר סביבת עבודה %s"
 
-#: ../src/xfce-desktop.c:1006
+#: ../src/xfce-desktop.c:1018
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "לא ניתן לטעון את התמונה מקובץ רשימת הטפטים \"%s\""
 
-#: ../src/xfce-desktop.c:1008
+#: ../src/xfce-desktop.c:1020
 msgid "Desktop Error"
 msgstr "שגיאה בשולחן העבודה"
 
@@ -599,8 +599,9 @@ msgid ""
 msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:592
-#: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:803
-#: ../src/xfdesktop-file-utils.c:818 ../src/xfdesktop-special-file-icon.c:447
+#: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:879
+#: ../src/xfdesktop-file-utils.c:894 ../src/xfdesktop-file-utils.c:926
+#: ../src/xfdesktop-file-utils.c:940
 msgid "Trash Error"
 msgstr "שגיאת בסל מחזור"
 
@@ -611,12 +612,12 @@ msgid "The selected files could not be trashed"
 msgstr "לא ניתן לפתוח את בוחר היישומים."
 
 #: ../src/xfdesktop-file-icon-manager.c:594
-#: ../src/xfdesktop-file-icon-manager.c:638 ../src/xfdesktop-file-utils.c:652
-#: ../src/xfdesktop-file-utils.c:702 ../src/xfdesktop-file-utils.c:761
-#: ../src/xfdesktop-file-utils.c:873 ../src/xfdesktop-file-utils.c:929
-#: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:1029
-#: ../src/xfdesktop-file-utils.c:1106 ../src/xfdesktop-file-utils.c:1167
-#: ../src/xfdesktop-file-utils.c:1240 ../src/xfdesktop-file-utils.c:1318
+#: ../src/xfdesktop-file-icon-manager.c:638 ../src/xfdesktop-file-utils.c:728
+#: ../src/xfdesktop-file-utils.c:778 ../src/xfdesktop-file-utils.c:837
+#: ../src/xfdesktop-file-utils.c:995 ../src/xfdesktop-file-utils.c:1051
+#: ../src/xfdesktop-file-utils.c:1101 ../src/xfdesktop-file-utils.c:1151
+#: ../src/xfdesktop-file-utils.c:1228 ../src/xfdesktop-file-utils.c:1289
+#: ../src/xfdesktop-file-utils.c:1362 ../src/xfdesktop-file-utils.c:1440
 #, fuzzy
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
@@ -634,11 +635,11 @@ msgstr "אין אפשרות לשגר \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:740
 #: ../src/xfdesktop-file-icon-manager.c:984
-#: ../src/xfdesktop-file-icon-manager.c:1297 ../src/xfdesktop-file-utils.c:635
-#: ../src/xfdesktop-file-utils.c:650 ../src/xfdesktop-file-utils.c:1012
-#: ../src/xfdesktop-file-utils.c:1027 ../src/xfdesktop-file-utils.c:1079
-#: ../src/xfdesktop-file-utils.c:1104 ../src/xfdesktop-file-utils.c:1150
-#: ../src/xfdesktop-file-utils.c:1165
+#: ../src/xfdesktop-file-icon-manager.c:1297 ../src/xfdesktop-file-utils.c:711
+#: ../src/xfdesktop-file-utils.c:726 ../src/xfdesktop-file-utils.c:1134
+#: ../src/xfdesktop-file-utils.c:1149 ../src/xfdesktop-file-utils.c:1201
+#: ../src/xfdesktop-file-utils.c:1226 ../src/xfdesktop-file-utils.c:1272
+#: ../src/xfdesktop-file-utils.c:1287
 msgid "Launch Error"
 msgstr "שגיאת הפעלה"
 
@@ -669,7 +670,7 @@ msgid "_Open in New Window"
 msgstr "_פתיחה בחלון חדש"
 
 #: ../src/xfdesktop-file-icon-manager.c:1372
-#: ../src/xfdesktop-special-file-icon.c:570 ../src/xfdesktop-volume-icon.c:653
+#: ../src/xfdesktop-special-file-icon.c:489 ../src/xfdesktop-volume-icon.c:663
 msgid "_Open"
 msgstr "_פתיחה"
 
@@ -722,16 +723,16 @@ msgid "Desktop _Settings..."
 msgstr "הגדרות שולחן עבודה..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1677
-#: ../src/xfdesktop-volume-icon.c:701
+#: ../src/xfdesktop-volume-icon.c:711
 msgid "_Properties..."
 msgstr "_מאפיינים..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2231
+#: ../src/xfdesktop-file-icon-manager.c:2234
 #, fuzzy
 msgid "Load Error"
 msgstr "שגיאת הפעלה"
 
-#: ../src/xfdesktop-file-icon-manager.c:2233
+#: ../src/xfdesktop-file-icon-manager.c:2236
 #, fuzzy
 msgid "Failed to load the desktop folder"
 msgstr "Cannot create backdrop list \"%s\""
@@ -766,37 +767,37 @@ msgstr ""
 msgid "Unknown"
 msgstr "(לא ידוע)"
 
-#: ../src/xfdesktop-file-utils.c:636 ../src/xfdesktop-file-utils.c:651
+#: ../src/xfdesktop-file-utils.c:712 ../src/xfdesktop-file-utils.c:727
 #, fuzzy
 msgid "The folder could not be opened"
 msgstr "לא ניתן לפתוח את בוחר היישומים."
 
-#: ../src/xfdesktop-file-utils.c:685 ../src/xfdesktop-file-utils.c:700
+#: ../src/xfdesktop-file-utils.c:761 ../src/xfdesktop-file-utils.c:776
 #, fuzzy
 msgid "Rename Error"
 msgstr "שגיאת הרצה"
 
-#: ../src/xfdesktop-file-utils.c:686 ../src/xfdesktop-file-utils.c:701
+#: ../src/xfdesktop-file-utils.c:762 ../src/xfdesktop-file-utils.c:777
 #, fuzzy
 msgid "The file could not be renamed"
 msgstr "לא ניתן לפתוח את בוחר היישומים."
 
-#: ../src/xfdesktop-file-utils.c:744 ../src/xfdesktop-file-utils.c:759
+#: ../src/xfdesktop-file-utils.c:820 ../src/xfdesktop-file-utils.c:835
 #, fuzzy
 msgid "Delete Error"
 msgstr "שגיאת יצירה"
 
-#: ../src/xfdesktop-file-utils.c:745 ../src/xfdesktop-file-utils.c:760
+#: ../src/xfdesktop-file-utils.c:821 ../src/xfdesktop-file-utils.c:836
 #, fuzzy
 msgid "The selected files could not be deleted"
 msgstr "לא הייתה אפשרות למצוא או להפעיל את היישום המקושר."
 
-#: ../src/xfdesktop-file-utils.c:804 ../src/xfdesktop-file-utils.c:819
+#: ../src/xfdesktop-file-utils.c:880 ../src/xfdesktop-file-utils.c:895
 #, fuzzy
 msgid "The selected files could not be moved to the trash"
 msgstr "לא ניתן לפתוח את בוחר היישומים."
 
-#: ../src/xfdesktop-file-utils.c:820
+#: ../src/xfdesktop-file-utils.c:896 ../src/xfdesktop-file-utils.c:942
 #, fuzzy
 msgid ""
 "This feature requires a trash service to be present (such as the one "
@@ -805,59 +806,64 @@ msgstr ""
 "אפשרות זו דורשת נוכחות של שירות מנהל קבצים (כמו לדוגמה זה המסופק על ידי "
 "Thunar)."
 
-#: ../src/xfdesktop-file-utils.c:856 ../src/xfdesktop-file-utils.c:871
+#: ../src/xfdesktop-file-utils.c:927 ../src/xfdesktop-file-utils.c:941
+#, fuzzy
+msgid "Could not empty the trash"
+msgstr "Cannot create backdrop list \"%s\""
+
+#: ../src/xfdesktop-file-utils.c:978 ../src/xfdesktop-file-utils.c:993
 #, fuzzy
 msgid "Create File Error"
 msgstr "שגיאת יצירה"
 
-#: ../src/xfdesktop-file-utils.c:857 ../src/xfdesktop-file-utils.c:872
+#: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:994
 #, fuzzy
 msgid "Could not create a new file"
 msgstr "Cannot create backdrop list \"%s\""
 
-#: ../src/xfdesktop-file-utils.c:912 ../src/xfdesktop-file-utils.c:927
+#: ../src/xfdesktop-file-utils.c:1034 ../src/xfdesktop-file-utils.c:1049
 #, fuzzy
 msgid "Create Document Error"
 msgstr "שגיאת יצירה"
 
-#: ../src/xfdesktop-file-utils.c:913 ../src/xfdesktop-file-utils.c:928
+#: ../src/xfdesktop-file-utils.c:1035 ../src/xfdesktop-file-utils.c:1050
 #, fuzzy
 msgid "Could not create a new document from the template"
 msgstr "יצירת מסמך מתבנית \"%s\""
 
-#: ../src/xfdesktop-file-utils.c:962 ../src/xfdesktop-file-utils.c:977
+#: ../src/xfdesktop-file-utils.c:1084 ../src/xfdesktop-file-utils.c:1099
 #, fuzzy
 msgid "File Properties Error"
 msgstr "שגיאת מאפיינים"
 
-#: ../src/xfdesktop-file-utils.c:963 ../src/xfdesktop-file-utils.c:978
+#: ../src/xfdesktop-file-utils.c:1085 ../src/xfdesktop-file-utils.c:1100
 #, fuzzy
 msgid "The file properties dialog could not be opened"
 msgstr "לא ניתן לפתוח את בוחר היישומים."
 
-#: ../src/xfdesktop-file-utils.c:1013 ../src/xfdesktop-file-utils.c:1028
+#: ../src/xfdesktop-file-utils.c:1135 ../src/xfdesktop-file-utils.c:1150
 #, fuzzy
 msgid "The file could not be opened"
 msgstr "לא ניתן לפתוח את בוחר היישומים."
 
-#: ../src/xfdesktop-file-utils.c:1076 ../src/xfdesktop-file-utils.c:1101
+#: ../src/xfdesktop-file-utils.c:1198 ../src/xfdesktop-file-utils.c:1223
 #, fuzzy, c-format
 msgid "Failed to run \"%s\""
 msgstr "אין אפשרות להריץ את \"%s\":"
 
-#: ../src/xfdesktop-file-utils.c:1151 ../src/xfdesktop-file-utils.c:1166
+#: ../src/xfdesktop-file-utils.c:1273 ../src/xfdesktop-file-utils.c:1288
 #, fuzzy
 msgid "The application chooser could not be opened"
 msgstr "לא ניתן לפתוח את בוחר היישומים."
 
-#: ../src/xfdesktop-file-utils.c:1224 ../src/xfdesktop-file-utils.c:1238
-#: ../src/xfdesktop-file-utils.c:1300 ../src/xfdesktop-file-utils.c:1316
+#: ../src/xfdesktop-file-utils.c:1346 ../src/xfdesktop-file-utils.c:1360
+#: ../src/xfdesktop-file-utils.c:1422 ../src/xfdesktop-file-utils.c:1438
 #, fuzzy
 msgid "Transfer Error"
 msgstr "שגיאת בסל מחזור"
 
-#: ../src/xfdesktop-file-utils.c:1225 ../src/xfdesktop-file-utils.c:1239
-#: ../src/xfdesktop-file-utils.c:1301 ../src/xfdesktop-file-utils.c:1317
+#: ../src/xfdesktop-file-utils.c:1347 ../src/xfdesktop-file-utils.c:1361
+#: ../src/xfdesktop-file-utils.c:1423 ../src/xfdesktop-file-utils.c:1439
 #, fuzzy
 msgid "The file transfer could not be performed"
 msgstr "לא ניתן לפתוח את בוחר היישומים."
@@ -901,7 +907,7 @@ msgstr "ניתוק העיגון כשל"
 msgid "The device \"%s\" is being ejected. This may take some time"
 msgstr ""
 
-#: ../src/xfdesktop-regular-file-icon.c:468
+#: ../src/xfdesktop-regular-file-icon.c:472
 #, c-format
 msgid ""
 "Type: %s\n"
@@ -909,26 +915,26 @@ msgid ""
 "Last modified: %s"
 msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:249
-#: ../src/xfdesktop-special-file-icon.c:411
+#: ../src/xfdesktop-special-file-icon.c:258
+#: ../src/xfdesktop-special-file-icon.c:417
 #, fuzzy
 msgid "File System"
 msgstr "מערכת קבצים"
 
-#: ../src/xfdesktop-special-file-icon.c:396
+#: ../src/xfdesktop-special-file-icon.c:402
 msgid "Trash is empty"
 msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:399
+#: ../src/xfdesktop-special-file-icon.c:405
 msgid "Trash contains one item"
 msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:400
+#: ../src/xfdesktop-special-file-icon.c:406
 #, c-format
 msgid "Trash contains %d items"
 msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:428
+#: ../src/xfdesktop-special-file-icon.c:434
 #, c-format
 msgid ""
 "%s\n"
@@ -936,22 +942,11 @@ msgid ""
 "Last modified: %s"
 msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:449
-msgid "Unable to contact the Xfce Trash service."
-msgstr "אין אפשרות ליצור קשר עם שירות סל המחזור של Xfce."
-
-#: ../src/xfdesktop-special-file-icon.c:450
-msgid ""
-"Make sure you have a file manager installed that supports the Xfce Trash "
-"service, such as Thunar."
-msgstr ""
-"יש לוודא שמותקן סייר קבצים אשר תומך בשרותי סל המחזור של Xfce, כמו Thunar."
-
-#: ../src/xfdesktop-special-file-icon.c:588
+#: ../src/xfdesktop-special-file-icon.c:507
 msgid "_Empty Trash"
 msgstr "סל מחזור _ריק"
 
-#: ../src/xfdesktop-volume-icon.c:413
+#: ../src/xfdesktop-volume-icon.c:423
 #, fuzzy, c-format
 msgid ""
 "Removable Volume\n"
@@ -962,7 +957,7 @@ msgstr ""
 "נקודת עגינה: %s\n"
 "שטח פנוי: %s"
 
-#: ../src/xfdesktop-volume-icon.c:420
+#: ../src/xfdesktop-volume-icon.c:430
 #, fuzzy
 msgid ""
 "Removable Volume\n"
@@ -972,31 +967,40 @@ msgstr ""
 "נקודת עגינה: %s\n"
 "שטח פנוי: %s"
 
-#: ../src/xfdesktop-volume-icon.c:446 ../src/xfdesktop-volume-icon.c:488
+#: ../src/xfdesktop-volume-icon.c:456 ../src/xfdesktop-volume-icon.c:498
 #, fuzzy, c-format
 msgid "Failed to eject \"%s\""
 msgstr "אין אפשרות להוציא את \"%s\":"
 
-#: ../src/xfdesktop-volume-icon.c:451 ../src/xfdesktop-volume-icon.c:493
+#: ../src/xfdesktop-volume-icon.c:461 ../src/xfdesktop-volume-icon.c:503
 msgid "Eject Failed"
 msgstr "הוצאה כשלה"
 
-#: ../src/xfdesktop-volume-icon.c:525
+#: ../src/xfdesktop-volume-icon.c:535
 #, fuzzy, c-format
 msgid "Failed to mount \"%s\""
 msgstr "אין אפשרות להריץ את \"%s\":"
 
-#: ../src/xfdesktop-volume-icon.c:528
+#: ../src/xfdesktop-volume-icon.c:538
 msgid "Mount Failed"
 msgstr "העיגון כשל"
 
-#: ../src/xfdesktop-volume-icon.c:669 ../src/xfdesktop-volume-icon.c:672
+#: ../src/xfdesktop-volume-icon.c:679 ../src/xfdesktop-volume-icon.c:682
 msgid "E_ject Volume"
 msgstr "_הוצא כרך"
 
-#: ../src/xfdesktop-volume-icon.c:679
+#: ../src/xfdesktop-volume-icon.c:689
 msgid "_Mount Volume"
 msgstr "_חבר כרך"
+
+#~ msgid "Unable to contact the Xfce Trash service."
+#~ msgstr "אין אפשרות ליצור קשר עם שירות סל המחזור של Xfce."
+
+#~ msgid ""
+#~ "Make sure you have a file manager installed that supports the Xfce Trash "
+#~ "service, such as Thunar."
+#~ msgstr ""
+#~ "יש לוודא שמותקן סייר קבצים אשר תומך בשרותי סל המחזור של Xfce, כמו Thunar."
 
 #, fuzzy
 #~ msgid "Needs terminal"

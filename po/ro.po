@@ -2,20 +2,21 @@
 # Copyright (C) 2003-2011 The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
 # Mișu Moldovan <dumol@xfce.org>, 2004-2011.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-29 17:35+0000\n"
+"POT-Creation-Date: 2011-01-30 19:22+0100\n"
 "PO-Revision-Date: 2011-01-15 23:49+0200\n"
 "Last-Translator: Mișu Moldovan <dumol@xfce.org>\n"
 "Language-Team: Romanian <debian-l10n-romanian@lists.debian.org>\n"
+"Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ro\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2);;\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+"20)) ? 1 : 2);;\n"
 "X-Generator: Virtaal 0.6.1\n"
 
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
@@ -65,8 +66,11 @@ msgstr "Creare/Încărcare listă de fundaluri"
 
 #: ../settings/main.c:528
 #, c-format
-msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr "Fișierul „%s” nu este un fișier valid de tip listă de fundaluri. Doriți să-l suprascrieți?"
+msgid ""
+"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr ""
+"Fișierul „%s” nu este un fișier valid de tip listă de fundaluri. Doriți să-l "
+"suprascrieți?"
 
 #: ../settings/main.c:533
 msgid "Invalid List File"
@@ -162,7 +166,9 @@ msgstr "Desktop "
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Set desktop background and menu and icon behaviour"
-msgstr "Schimbați fundalul desktopului și funcționalitatea meniului și iconițelor sale"
+msgstr ""
+"Schimbați fundalul desktopului și funcționalitatea meniului și iconițelor "
+"sale"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
 msgid "<b>Adjustments</b>"
@@ -262,8 +268,10 @@ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr "Specificați culoarea din dreapta ori de jos a degradeului"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
-msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr "Specificați culoarea unică ori culoarea din stânga ori de sus a degradeului"
+msgid ""
+"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr ""
+"Specificați culoarea unică ori culoarea din stânga ori de sus a degradeului"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid "Specify how the image will be resized to fit the screen"
@@ -338,7 +346,7 @@ msgstr "B_uton:"
 msgid "Control"
 msgstr "Control"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:729
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:737
 msgid "Desktop"
 msgstr "Desktop"
 
@@ -419,8 +427,12 @@ msgid "Show workspace _names in list"
 msgstr "Arată în listă _numele spațiilor de lucru"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
-msgid "Specify the transparency level for the rounded label drawn behind the icon text"
-msgstr "Specificați nivelul de transparență al etichetei rotunjite desenate în spatele textului iconiței"
+msgid ""
+"Specify the transparency level for the rounded label drawn behind the icon "
+"text"
+msgstr ""
+"Specificați nivelul de transparență al etichetei rotunjite desenate în "
+"spatele textului iconiței"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "Use _submenus for the windows in each workspace"
@@ -555,12 +567,12 @@ msgstr "Șt_erge spațiul de lucru %d"
 msgid "_Remove Workspace '%s'"
 msgstr "Șt_erge spațiul de lucru „%s”"
 
-#: ../src/xfce-desktop.c:1006
+#: ../src/xfce-desktop.c:1018
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "Nu se poate încărca imaginea din fișierul cu lista fundalurilor „%s”:"
 
-#: ../src/xfce-desktop.c:1008
+#: ../src/xfce-desktop.c:1020
 msgid "Desktop Error"
 msgstr "Eroare de desktop"
 
@@ -576,8 +588,11 @@ msgid "Desktop Folder Error"
 msgstr "Eroare de dosar pe desktop"
 
 #: ../src/xfdesktop-file-icon-manager.c:489
-msgid "A normal file with the same name already exists. Please delete or rename it."
-msgstr "Există deja un fișier normal cu același nume. Trebuie să-l ștergeți sau să-l redenumiți."
+msgid ""
+"A normal file with the same name already exists. Please delete or rename it."
+msgstr ""
+"Există deja un fișier normal cu același nume. Trebuie să-l ștergeți sau să-l "
+"redenumiți."
 
 #: ../src/xfdesktop-file-icon-manager.c:592
 #: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:879
@@ -598,8 +613,12 @@ msgstr "Fișierele selectate nu au putut fi mutate la coș."
 #: ../src/xfdesktop-file-utils.c:1101 ../src/xfdesktop-file-utils.c:1151
 #: ../src/xfdesktop-file-utils.c:1228 ../src/xfdesktop-file-utils.c:1289
 #: ../src/xfdesktop-file-utils.c:1362 ../src/xfdesktop-file-utils.c:1440
-msgid "This feature requires a file manager service to be present (such as the one supplied by Thunar)."
-msgstr "Această facilitate necesită suport din partea unui manager de fișiere (precum Thunar)."
+msgid ""
+"This feature requires a file manager service to be present (such as the one "
+"supplied by Thunar)."
+msgstr ""
+"Această facilitate necesită suport din partea unui manager de fișiere "
+"(precum Thunar)."
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:738
@@ -629,8 +648,12 @@ msgid "Open With \"%s\""
 msgstr "Deschide cu „%s”"
 
 #: ../src/xfdesktop-file-icon-manager.c:986
-msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
-msgstr "Nu se poate porni „exo-desktop-item-edit”, care e necesar pentru crearea și editarea de lansatori și scurtături pe desktop."
+msgid ""
+"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
+"edit launchers and links on the desktop."
+msgstr ""
+"Nu se poate porni „exo-desktop-item-edit”, care e necesar pentru crearea și "
+"editarea de lansatori și scurtături pe desktop."
 
 #: ../src/xfdesktop-file-icon-manager.c:1354
 msgid "_Open all"
@@ -698,11 +721,11 @@ msgstr "Preferințe des_ktop..."
 msgid "_Properties..."
 msgstr "_Proprietăți..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2229
+#: ../src/xfdesktop-file-icon-manager.c:2234
 msgid "Load Error"
 msgstr "Eroare la încărcare"
 
-#: ../src/xfdesktop-file-icon-manager.c:2231
+#: ../src/xfdesktop-file-icon-manager.c:2236
 msgid "Failed to load the desktop folder"
 msgstr "Nu s-a putut încărca dosarul de pe desktop"
 
@@ -760,8 +783,12 @@ msgid "The selected files could not be moved to the trash"
 msgstr "Fișierele selectate nu au putut fi mutate la coșul de gunoi"
 
 #: ../src/xfdesktop-file-utils.c:896 ../src/xfdesktop-file-utils.c:942
-msgid "This feature requires a trash service to be present (such as the one supplied by Thunar)."
-msgstr "Această facilitate necesită suport din partea unui manager de fișiere (precum Thunar)."
+msgid ""
+"This feature requires a trash service to be present (such as the one "
+"supplied by Thunar)."
+msgstr ""
+"Această facilitate necesită suport din partea unui manager de fișiere "
+"(precum Thunar)."
 
 #: ../src/xfdesktop-file-utils.c:927 ../src/xfdesktop-file-utils.c:941
 msgid "Could not empty the trash"
@@ -822,8 +849,12 @@ msgstr "Se demontează dispozitivul"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:131
 #, c-format
-msgid "The device \"%s\" is being unmounted by the system. Please do not remove the media or disconnect the drive"
-msgstr "Dispozitivul „%s” este demontat de către sistem. Nu-l scoateți și nu-l deconectați în cursul acestei proceduri "
+msgid ""
+"The device \"%s\" is being unmounted by the system. Please do not remove the "
+"media or disconnect the drive"
+msgstr ""
+"Dispozitivul „%s” este demontat de către sistem. Nu-l scoateți și nu-l "
+"deconectați în cursul acestei proceduri "
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
@@ -833,8 +864,12 @@ msgstr "Se scriu date pe dispozitiv"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
 #, c-format
-msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
-msgstr "Există date ce trebuie scrise pe dispozitivul „%s” înainte de a putea fi  demontat. Nu-l scoateți și nu-l deconectați în cursul acestei proceduri"
+msgid ""
+"There is data that needs to be written to the device \"%s\" before it can be "
+"removed. Please do not remove the media or disconnect the drive"
+msgstr ""
+"Există date ce trebuie scrise pe dispozitivul „%s” înainte de a putea fi  "
+"demontat. Nu-l scoateți și nu-l deconectați în cursul acestei proceduri"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:253
@@ -939,5 +974,9 @@ msgstr "_Montare volum"
 #~ msgid "Unable to contact the Xfce Trash service."
 #~ msgstr "Nu se poate contacta serviciul Xfce Trash."
 
-#~ msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
-#~ msgstr "Asigurați-vă ca aveți instalat un manager de fișiere cu suport pentru serviciul Xfce Trash (precum Thunar)."
+#~ msgid ""
+#~ "Make sure you have a file manager installed that supports the Xfce Trash "
+#~ "service, such as Thunar."
+#~ msgstr ""
+#~ "Asigurați-vă ca aveți instalat un manager de fișiere cu suport pentru "
+#~ "serviciul Xfce Trash (precum Thunar)."

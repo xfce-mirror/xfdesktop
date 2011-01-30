@@ -1,24 +1,24 @@
 # $Id$
-# 
+#
 # Japanese translations for xfdesktop package.
 # Copyright (C) 2003-2007 The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
 # Zhao Ji <zhao-ji@awz.ne.jp>, 2003.
 # Daichi Kawahata <daichi@xfce.org>, 2005-2007.
 # Nobuhiro Iwamatsu <iwamatsu@nigauri.org>, 2008.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.5.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-29 23:31+0000\n"
+"POT-Creation-Date: 2011-01-30 19:22+0100\n"
 "PO-Revision-Date: 2010-11-05 19:38+0900\n"
 "Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ja\n"
 
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
 #, c-format
@@ -68,8 +68,10 @@ msgstr "画像リストの作成/読み込み"
 
 #: ../settings/main.c:528
 #, c-format
-msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr "ファイル \"%s\" は正常な画像リストファイルではありません。上書きしますか?"
+msgid ""
+"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr ""
+"ファイル \"%s\" は正常な画像リストファイルではありません。上書きしますか?"
 
 #: ../settings/main.c:533
 msgid "Invalid List File"
@@ -269,7 +271,8 @@ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr "グラデーションの \"右側\" または \"下側\" の色を指定します"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
-msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgid ""
+"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
 msgstr "グラデーションの \"左側\" または \"上側\" の色を指定します"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
@@ -345,7 +348,7 @@ msgstr "ボタン(_U):"
 msgid "Control"
 msgstr "Control"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:729
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:737
 msgid "Desktop"
 msgstr "デスクトップ"
 
@@ -426,7 +429,9 @@ msgid "Show workspace _names in list"
 msgstr "リストにワークスペース名を表示する(_N)"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
-msgid "Specify the transparency level for the rounded label drawn behind the icon text"
+msgid ""
+"Specify the transparency level for the rounded label drawn behind the icon "
+"text"
 msgstr "アイコンの文字の背景の透明度を指定してください"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:37
@@ -562,12 +567,12 @@ msgstr "ワークスペース %d を削除(_R)"
 msgid "_Remove Workspace '%s'"
 msgstr "ワークスペース '%s' を削除(_R)"
 
-#: ../src/xfce-desktop.c:1006
+#: ../src/xfce-desktop.c:1018
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "画像リストファイルからファイル \"%s\" を読み込めません"
 
-#: ../src/xfce-desktop.c:1008
+#: ../src/xfce-desktop.c:1020
 msgid "Desktop Error"
 msgstr "デスクトップエラー"
 
@@ -583,8 +588,11 @@ msgid "Desktop Folder Error"
 msgstr "デスクトップフォルダエラー"
 
 #: ../src/xfdesktop-file-icon-manager.c:489
-msgid "A normal file with the same name already exists. Please delete or rename it."
-msgstr "同じ名前の通常ファイルがすでに存在します。そちらを削除または変名してください。"
+msgid ""
+"A normal file with the same name already exists. Please delete or rename it."
+msgstr ""
+"同じ名前の通常ファイルがすでに存在します。そちらを削除または変名してくださ"
+"い。"
 
 # FIXME: wtf
 #: ../src/xfdesktop-file-icon-manager.c:592
@@ -606,8 +614,11 @@ msgstr "選択したファイルをゴミ箱に捨てることができません
 #: ../src/xfdesktop-file-utils.c:1101 ../src/xfdesktop-file-utils.c:1151
 #: ../src/xfdesktop-file-utils.c:1228 ../src/xfdesktop-file-utils.c:1289
 #: ../src/xfdesktop-file-utils.c:1362 ../src/xfdesktop-file-utils.c:1440
-msgid "This feature requires a file manager service to be present (such as the one supplied by Thunar)."
-msgstr "この機能には (Thunar が提供するような) ファイルマネージャサービスが必要です。"
+msgid ""
+"This feature requires a file manager service to be present (such as the one "
+"supplied by Thunar)."
+msgstr ""
+"この機能には (Thunar が提供するような) ファイルマネージャサービスが必要です。"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:738
@@ -639,8 +650,12 @@ msgid "Open With \"%s\""
 msgstr "%s で開く"
 
 #: ../src/xfdesktop-file-icon-manager.c:986
-msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
-msgstr "\"exo-desktop-item-edit\" を実行できません。これはデスクトップにランチャやリンクを作成したり編集したりするために必要です。"
+msgid ""
+"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
+"edit launchers and links on the desktop."
+msgstr ""
+"\"exo-desktop-item-edit\" を実行できません。これはデスクトップにランチャやリ"
+"ンクを作成したり編集したりするために必要です。"
 
 #: ../src/xfdesktop-file-icon-manager.c:1354
 msgid "_Open all"
@@ -709,11 +724,11 @@ msgstr "デスクトップの設定(_S)..."
 msgid "_Properties..."
 msgstr "プロパティ(_P)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2229
+#: ../src/xfdesktop-file-icon-manager.c:2234
 msgid "Load Error"
 msgstr "読み込みエラー"
 
-#: ../src/xfdesktop-file-icon-manager.c:2231
+#: ../src/xfdesktop-file-icon-manager.c:2236
 msgid "Failed to load the desktop folder"
 msgstr "デスクトップフォルダの読み込みに失敗しました"
 
@@ -771,7 +786,9 @@ msgid "The selected files could not be moved to the trash"
 msgstr "選択したファイルをゴミ箱へ移動できませんでした"
 
 #: ../src/xfdesktop-file-utils.c:896 ../src/xfdesktop-file-utils.c:942
-msgid "This feature requires a trash service to be present (such as the one supplied by Thunar)."
+msgid ""
+"This feature requires a trash service to be present (such as the one "
+"supplied by Thunar)."
 msgstr "この機能には (Thunar が提供するような) ゴミ箱サービスが必要です。"
 
 #: ../src/xfdesktop-file-utils.c:927 ../src/xfdesktop-file-utils.c:941
@@ -833,8 +850,12 @@ msgstr "デバイスのマウントを解除しています"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:131
 #, c-format
-msgid "The device \"%s\" is being unmounted by the system. Please do not remove the media or disconnect the drive"
-msgstr "システムはデバイス \"%s\" はマウントを解除しています。メディアを取り出したりデバイスを切り離したりしないでください。"
+msgid ""
+"The device \"%s\" is being unmounted by the system. Please do not remove the "
+"media or disconnect the drive"
+msgstr ""
+"システムはデバイス \"%s\" はマウントを解除しています。メディアを取り出したり"
+"デバイスを切り離したりしないでください。"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
@@ -844,8 +865,12 @@ msgstr "デバイスへデータ書き込んでいます"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
 #, c-format
-msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
-msgstr "デバイス \"%s\" を取り外す前に書き込まなければならないデータが存在します。メディアを取り出したりドライブを切り離したりしないでください。"
+msgid ""
+"There is data that needs to be written to the device \"%s\" before it can be "
+"removed. Please do not remove the media or disconnect the drive"
+msgstr ""
+"デバイス \"%s\" を取り外す前に書き込まなければならないデータが存在します。メ"
+"ディアを取り出したりドライブを切り離したりしないでください。"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:253
@@ -950,8 +975,12 @@ msgstr "マウント(_M)"
 #~ msgid "Unable to contact the Xfce Trash service."
 #~ msgstr "Xfce ゴミ収集サービスにコンタクトできません。"
 
-#~ msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
-#~ msgstr "Thunar のような Xfce ゴミ収集サービスをサポートしたファイルマネージャがインストールされているか確認してください。"
+#~ msgid ""
+#~ "Make sure you have a file manager installed that supports the Xfce Trash "
+#~ "service, such as Thunar."
+#~ msgstr ""
+#~ "Thunar のような Xfce ゴミ収集サービスをサポートしたファイルマネージャがイ"
+#~ "ンストールされているか確認してください。"
 
 #~ msgid "Needs terminal"
 #~ msgstr "ターミナルが必要"
@@ -986,17 +1015,26 @@ msgstr "マウント(_M)"
 #~ msgid "Use underline"
 #~ msgstr "アンダーラインの使用"
 
-#~ msgid "Whether or not to use an underscore in the label as a keyboard mnemonic"
-#~ msgstr "ラベルにあるアンダースコアをキーボードニーモニクとして使用するかどうか指定します"
+#~ msgid ""
+#~ "Whether or not to use an underscore in the label as a keyboard mnemonic"
+#~ msgstr ""
+#~ "ラベルにあるアンダースコアをキーボードニーモニクとして使用するかどうか指定"
+#~ "します"
 
-#~ msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-#~ msgstr "デスクトップのアイテムを保存するフォルダ \"%s\" を作成できませんでした:"
+#~ msgid ""
+#~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+#~ msgstr ""
+#~ "デスクトップのアイテムを保存するフォルダ \"%s\" を作成できませんでした:"
 
 #~ msgid "Create Folder Failed"
 #~ msgstr "フォルダの作成に失敗しました"
 
-#~ msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
-#~ msgstr "\"%s\" はフォルダではありませんので、デスクトップのアイテムを保存できません。"
+#~ msgid ""
+#~ "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not "
+#~ "a folder."
+#~ msgstr ""
+#~ "\"%s\" はフォルダではありませんので、デスクトップのアイテムを保存できませ"
+#~ "ん。"
 
 #~ msgid "Please delete or rename the file."
 #~ msgstr "ファイルを削除するか名前を変えてください。"

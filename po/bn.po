@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-16 17:44+0100\n"
+"POT-Creation-Date: 2011-01-30 19:22+0100\n"
 "PO-Revision-Date: 2010-02-24 16:45+0600\n"
 "Last-Translator: Sadia Afroz <sadia@ankur.org.bd>\n"
 "Language-Team: Bengali <ankur-bd-l10n@googlegroups.com>\n"
@@ -22,7 +22,7 @@ msgid "Backdrop list file is not valid"
 msgstr "ব্যাকড্রপ তালিকার ফাইল কার্যকর নয়"
 
 #. no need to escape markup; it's already done for us
-#: ../settings/main.c:162
+#: ../settings/main.c:163
 #, c-format
 msgid ""
 "%s\n"
@@ -31,37 +31,37 @@ msgstr ""
 "%s\n"
 "<i>আকার: %dx%d</i>"
 
-#: ../settings/main.c:272 ../src/xfdesktop-special-file-icon.c:247
-#: ../src/xfdesktop-special-file-icon.c:413
+#: ../settings/main.c:289 ../src/xfdesktop-special-file-icon.c:256
+#: ../src/xfdesktop-special-file-icon.c:419
 msgid "Home"
 msgstr "হোম"
 
-#: ../settings/main.c:274
+#: ../settings/main.c:291
 msgid "Filesystem"
 msgstr "ফাইলসিস্টেম"
 
-#: ../settings/main.c:276
+#: ../settings/main.c:293
 msgid "Trash"
 msgstr "আবর্জনা"
 
-#: ../settings/main.c:278
+#: ../settings/main.c:295
 msgid "Removable Devices"
 msgstr "অপসারণযোগ্য ডিভাইস"
 
-#: ../settings/main.c:458
+#: ../settings/main.c:475
 #, c-format
 msgid "Cannot create backdrop list \"%s\""
 msgstr "ব্যাকড্রপ তালিকা \"%s\" তৈরি করা যাচ্ছেনা"
 
-#: ../settings/main.c:462 ../settings/main.c:779
+#: ../settings/main.c:479 ../settings/main.c:802
 msgid "Backdrop List Error"
 msgstr "ব্যাকড্রপ তালিকায় ত্রুটি "
 
-#: ../settings/main.c:487
+#: ../settings/main.c:504
 msgid "Create/Load Backdrop List"
 msgstr "ব্যাকড্রপ তালিকা তৈরি/লোড"
 
-#: ../settings/main.c:511
+#: ../settings/main.c:528
 #, c-format
 msgid ""
 "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
@@ -69,91 +69,91 @@ msgstr ""
 "\"%s\" ফাইলটি কার্যকর ব্যাকড্রপ তালিকা ফাইল নয়। আপনি কি এটাকে প্রতিস্থাপন করতে "
 "চান?"
 
-#: ../settings/main.c:516
+#: ../settings/main.c:533
 msgid "Invalid List File"
 msgstr "অকার্যকর তালিকা ফাইল"
 
-#: ../settings/main.c:519
+#: ../settings/main.c:536
 msgid "Overwriting the file will cause its contents to be lost."
 msgstr "ফাইলটি প্রতিস্থাপন করলে এর বিষয়বস্তু হারিয়ে যাবে।"
 
-#: ../settings/main.c:521
+#: ../settings/main.c:538
 msgid "Replace"
 msgstr "প্রতিস্থাপন"
 
-#: ../settings/main.c:775
+#: ../settings/main.c:798
 #, c-format
 msgid "Failed to write backdrop list to \"%s\""
 msgstr "\"%s\"-এ ব্যাকড্রপ তালিকা লিখতে ব্যর্থ"
 
-#: ../settings/main.c:802
+#: ../settings/main.c:825
 msgid "Add Image File(s)"
 msgstr "ছবির ফাইল যোগ"
 
-#: ../settings/main.c:811
+#: ../settings/main.c:834
 msgid "Image files"
 msgstr "ছবির ফাইল"
 
-#: ../settings/main.c:816
+#: ../settings/main.c:839
 msgid "All files"
 msgstr "সকল ফাইল"
 
-#: ../settings/main.c:1248
+#: ../settings/main.c:1271
 #, c-format
 msgid "Screen %d, Monitor %d (%s)"
 msgstr "পর্দা %d, মনিটর %d (%s)"
 
-#: ../settings/main.c:1252
+#: ../settings/main.c:1275
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "পর্দা %d, মনিটর %d"
 
-#: ../settings/main.c:1255
+#: ../settings/main.c:1278
 #, c-format
 msgid "Screen %d"
 msgstr "পর্দা %d"
 
-#: ../settings/main.c:1260
+#: ../settings/main.c:1283
 #, c-format
 msgid "Monitor %d (%s)"
 msgstr "মনিটর %d (%s)"
 
-#: ../settings/main.c:1264
+#: ../settings/main.c:1287
 #, c-format
 msgid "Monitor %d"
 msgstr "মনিটর %d"
 
-#: ../settings/main.c:1477
+#: ../settings/main.c:1500
 msgid "Settings manager socket"
 msgstr "সেটিংস ব্যবস্থাপক সকেট"
 
-#: ../settings/main.c:1477
+#: ../settings/main.c:1500
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: ../settings/main.c:1478
+#: ../settings/main.c:1501
 msgid "Version information"
 msgstr "সংস্করণ তথ্যাবলী"
 
-#: ../settings/main.c:1498
+#: ../settings/main.c:1521
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "ব্যবহারের জন্য '%s --সহায়তা' টাইপ করুন।"
 
-#: ../settings/main.c:1510
+#: ../settings/main.c:1533
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce ডেভেলপমেন্ট টিম। সকল অধিকার সংরক্ষিত।"
 
-#: ../settings/main.c:1511
+#: ../settings/main.c:1534
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "অনুগ্রহ করে বাগগুলো <%s>-এ রিপোর্ট করুন।"
 
-#: ../settings/main.c:1518
+#: ../settings/main.c:1541
 msgid "Desktop Settings"
 msgstr "ডেস্কটপ সেটিংসমূহ"
 
-#: ../settings/main.c:1520
+#: ../settings/main.c:1543
 msgid "Unable to contact settings server"
 msgstr "সেটিংস সার্ভারের সাথে যোগাযোগ করতে ব্যর্থ"
 
@@ -347,7 +347,7 @@ msgstr "বোতাম"
 msgid "Control"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:729
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:737
 msgid "Desktop"
 msgstr "ডেস্কটপ"
 
@@ -577,12 +577,12 @@ msgstr "%d কর্মপরিসর অপসারণ (_R)"
 msgid "_Remove Workspace '%s'"
 msgstr "'%s' কর্মপরিসর অপসারণ (_R)"
 
-#: ../src/xfce-desktop.c:1006
+#: ../src/xfce-desktop.c:1018
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "ব্যাকড্রপ তালিকা ফাইল \"%s\" থেকে ছবি লোড করতে ব্যর্থ"
 
-#: ../src/xfce-desktop.c:1008
+#: ../src/xfce-desktop.c:1020
 msgid "Desktop Error"
 msgstr "ডেস্কটপ ত্রুটি "
 
@@ -604,8 +604,9 @@ msgid ""
 msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:592
-#: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:803
-#: ../src/xfdesktop-file-utils.c:818 ../src/xfdesktop-special-file-icon.c:447
+#: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:879
+#: ../src/xfdesktop-file-utils.c:894 ../src/xfdesktop-file-utils.c:926
+#: ../src/xfdesktop-file-utils.c:940
 msgid "Trash Error"
 msgstr "আবর্জনা ত্রুটি "
 
@@ -616,12 +617,12 @@ msgid "The selected files could not be trashed"
 msgstr "অ্যাপ্লিকেশন বাছাইকারক খোলা যায়নি।"
 
 #: ../src/xfdesktop-file-icon-manager.c:594
-#: ../src/xfdesktop-file-icon-manager.c:638 ../src/xfdesktop-file-utils.c:652
-#: ../src/xfdesktop-file-utils.c:702 ../src/xfdesktop-file-utils.c:761
-#: ../src/xfdesktop-file-utils.c:873 ../src/xfdesktop-file-utils.c:929
-#: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:1029
-#: ../src/xfdesktop-file-utils.c:1106 ../src/xfdesktop-file-utils.c:1167
-#: ../src/xfdesktop-file-utils.c:1240 ../src/xfdesktop-file-utils.c:1318
+#: ../src/xfdesktop-file-icon-manager.c:638 ../src/xfdesktop-file-utils.c:728
+#: ../src/xfdesktop-file-utils.c:778 ../src/xfdesktop-file-utils.c:837
+#: ../src/xfdesktop-file-utils.c:995 ../src/xfdesktop-file-utils.c:1051
+#: ../src/xfdesktop-file-utils.c:1101 ../src/xfdesktop-file-utils.c:1151
+#: ../src/xfdesktop-file-utils.c:1228 ../src/xfdesktop-file-utils.c:1289
+#: ../src/xfdesktop-file-utils.c:1362 ../src/xfdesktop-file-utils.c:1440
 #, fuzzy
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
@@ -639,11 +640,11 @@ msgstr "\"%s\" চালু করতে ব্যর্থ:"
 
 #: ../src/xfdesktop-file-icon-manager.c:740
 #: ../src/xfdesktop-file-icon-manager.c:984
-#: ../src/xfdesktop-file-icon-manager.c:1297 ../src/xfdesktop-file-utils.c:635
-#: ../src/xfdesktop-file-utils.c:650 ../src/xfdesktop-file-utils.c:1012
-#: ../src/xfdesktop-file-utils.c:1027 ../src/xfdesktop-file-utils.c:1079
-#: ../src/xfdesktop-file-utils.c:1104 ../src/xfdesktop-file-utils.c:1150
-#: ../src/xfdesktop-file-utils.c:1165
+#: ../src/xfdesktop-file-icon-manager.c:1297 ../src/xfdesktop-file-utils.c:711
+#: ../src/xfdesktop-file-utils.c:726 ../src/xfdesktop-file-utils.c:1134
+#: ../src/xfdesktop-file-utils.c:1149 ../src/xfdesktop-file-utils.c:1201
+#: ../src/xfdesktop-file-utils.c:1226 ../src/xfdesktop-file-utils.c:1272
+#: ../src/xfdesktop-file-utils.c:1287
 msgid "Launch Error"
 msgstr "চালুকরণ ত্রুটি "
 
@@ -674,7 +675,7 @@ msgid "_Open in New Window"
 msgstr "নতুন উইন্ডোতে খুলুন (_O)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1372
-#: ../src/xfdesktop-special-file-icon.c:570 ../src/xfdesktop-volume-icon.c:653
+#: ../src/xfdesktop-special-file-icon.c:489 ../src/xfdesktop-volume-icon.c:663
 msgid "_Open"
 msgstr "খুলুন (_O)"
 
@@ -727,16 +728,16 @@ msgid "Desktop _Settings..."
 msgstr "ডেস্কটপ সেটিংসমূহ... (_S)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1677
-#: ../src/xfdesktop-volume-icon.c:701
+#: ../src/xfdesktop-volume-icon.c:711
 msgid "_Properties..."
 msgstr "বৈশিষ্ট্যাবলী... (_P)"
 
-#: ../src/xfdesktop-file-icon-manager.c:2231
+#: ../src/xfdesktop-file-icon-manager.c:2234
 #, fuzzy
 msgid "Load Error"
 msgstr "চালুকরণ ত্রুটি "
 
-#: ../src/xfdesktop-file-icon-manager.c:2233
+#: ../src/xfdesktop-file-icon-manager.c:2236
 msgid "Failed to load the desktop folder"
 msgstr ""
 
@@ -770,36 +771,36 @@ msgstr ""
 msgid "Unknown"
 msgstr "(অজানা)"
 
-#: ../src/xfdesktop-file-utils.c:636 ../src/xfdesktop-file-utils.c:651
+#: ../src/xfdesktop-file-utils.c:712 ../src/xfdesktop-file-utils.c:727
 #, fuzzy
 msgid "The folder could not be opened"
 msgstr "অ্যাপ্লিকেশন বাছাইকারক খোলা যায়নি।"
 
-#: ../src/xfdesktop-file-utils.c:685 ../src/xfdesktop-file-utils.c:700
+#: ../src/xfdesktop-file-utils.c:761 ../src/xfdesktop-file-utils.c:776
 #, fuzzy
 msgid "Rename Error"
 msgstr "চালানোতে ত্রুটি "
 
-#: ../src/xfdesktop-file-utils.c:686 ../src/xfdesktop-file-utils.c:701
+#: ../src/xfdesktop-file-utils.c:762 ../src/xfdesktop-file-utils.c:777
 #, fuzzy
 msgid "The file could not be renamed"
 msgstr "অ্যাপ্লিকেশন বাছাইকারক খোলা যায়নি।"
 
-#: ../src/xfdesktop-file-utils.c:744 ../src/xfdesktop-file-utils.c:759
+#: ../src/xfdesktop-file-utils.c:820 ../src/xfdesktop-file-utils.c:835
 #, fuzzy
 msgid "Delete Error"
 msgstr "তৈরি করায় ত্রুটি"
 
-#: ../src/xfdesktop-file-utils.c:745 ../src/xfdesktop-file-utils.c:760
+#: ../src/xfdesktop-file-utils.c:821 ../src/xfdesktop-file-utils.c:836
 #, fuzzy
 msgid "The selected files could not be deleted"
 msgstr "সহকারী অ্যাপ্লিকেশন পাওয়া যায়নি বা চালানো যায়নি।"
 
-#: ../src/xfdesktop-file-utils.c:804 ../src/xfdesktop-file-utils.c:819
+#: ../src/xfdesktop-file-utils.c:880 ../src/xfdesktop-file-utils.c:895
 msgid "The selected files could not be moved to the trash"
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:820
+#: ../src/xfdesktop-file-utils.c:896 ../src/xfdesktop-file-utils.c:942
 #, fuzzy
 msgid ""
 "This feature requires a trash service to be present (such as the one "
@@ -808,58 +809,63 @@ msgstr ""
 "এই বৈশিষ্ট্যটিতে একটি ফাইল ব্যবস্থাপক সার্ভিস উপস্থিত থাকা আবশ্যকীয় (থুনার যেমনটি "
 "সরবরাহ করে)।"
 
-#: ../src/xfdesktop-file-utils.c:856 ../src/xfdesktop-file-utils.c:871
+#: ../src/xfdesktop-file-utils.c:927 ../src/xfdesktop-file-utils.c:941
+#, fuzzy
+msgid "Could not empty the trash"
+msgstr "ব্যাকড্রপ তালিকা \"%s\" তৈরি করা যাচ্ছেনা"
+
+#: ../src/xfdesktop-file-utils.c:978 ../src/xfdesktop-file-utils.c:993
 #, fuzzy
 msgid "Create File Error"
 msgstr "তৈরি করায় ত্রুটি"
 
-#: ../src/xfdesktop-file-utils.c:857 ../src/xfdesktop-file-utils.c:872
+#: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:994
 msgid "Could not create a new file"
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:912 ../src/xfdesktop-file-utils.c:927
+#: ../src/xfdesktop-file-utils.c:1034 ../src/xfdesktop-file-utils.c:1049
 #, fuzzy
 msgid "Create Document Error"
 msgstr "তৈরি করায় ত্রুটি"
 
-#: ../src/xfdesktop-file-utils.c:913 ../src/xfdesktop-file-utils.c:928
+#: ../src/xfdesktop-file-utils.c:1035 ../src/xfdesktop-file-utils.c:1050
 #, fuzzy
 msgid "Could not create a new document from the template"
 msgstr "\"%s\" ফর্মা থেকে নথি তৈরি"
 
-#: ../src/xfdesktop-file-utils.c:962 ../src/xfdesktop-file-utils.c:977
+#: ../src/xfdesktop-file-utils.c:1084 ../src/xfdesktop-file-utils.c:1099
 #, fuzzy
 msgid "File Properties Error"
 msgstr "বৈশিষ্ট্যাবলী ত্রুটি "
 
-#: ../src/xfdesktop-file-utils.c:963 ../src/xfdesktop-file-utils.c:978
+#: ../src/xfdesktop-file-utils.c:1085 ../src/xfdesktop-file-utils.c:1100
 #, fuzzy
 msgid "The file properties dialog could not be opened"
 msgstr "অ্যাপ্লিকেশন বাছাইকারক খোলা যায়নি।"
 
-#: ../src/xfdesktop-file-utils.c:1013 ../src/xfdesktop-file-utils.c:1028
+#: ../src/xfdesktop-file-utils.c:1135 ../src/xfdesktop-file-utils.c:1150
 #, fuzzy
 msgid "The file could not be opened"
 msgstr "অ্যাপ্লিকেশন বাছাইকারক খোলা যায়নি।"
 
-#: ../src/xfdesktop-file-utils.c:1076 ../src/xfdesktop-file-utils.c:1101
+#: ../src/xfdesktop-file-utils.c:1198 ../src/xfdesktop-file-utils.c:1223
 #, fuzzy, c-format
 msgid "Failed to run \"%s\""
 msgstr "\"%s\" চালাতে ব্যর্থ:"
 
-#: ../src/xfdesktop-file-utils.c:1151 ../src/xfdesktop-file-utils.c:1166
+#: ../src/xfdesktop-file-utils.c:1273 ../src/xfdesktop-file-utils.c:1288
 #, fuzzy
 msgid "The application chooser could not be opened"
 msgstr "অ্যাপ্লিকেশন বাছাইকারক খোলা যায়নি।"
 
-#: ../src/xfdesktop-file-utils.c:1224 ../src/xfdesktop-file-utils.c:1238
-#: ../src/xfdesktop-file-utils.c:1300 ../src/xfdesktop-file-utils.c:1316
+#: ../src/xfdesktop-file-utils.c:1346 ../src/xfdesktop-file-utils.c:1360
+#: ../src/xfdesktop-file-utils.c:1422 ../src/xfdesktop-file-utils.c:1438
 #, fuzzy
 msgid "Transfer Error"
 msgstr "আবর্জনা ত্রুটি "
 
-#: ../src/xfdesktop-file-utils.c:1225 ../src/xfdesktop-file-utils.c:1239
-#: ../src/xfdesktop-file-utils.c:1301 ../src/xfdesktop-file-utils.c:1317
+#: ../src/xfdesktop-file-utils.c:1347 ../src/xfdesktop-file-utils.c:1361
+#: ../src/xfdesktop-file-utils.c:1423 ../src/xfdesktop-file-utils.c:1439
 #, fuzzy
 msgid "The file transfer could not be performed"
 msgstr "অ্যাপ্লিকেশন বাছাইকারক খোলা যায়নি।"
@@ -902,7 +908,7 @@ msgstr ""
 msgid "The device \"%s\" is being ejected. This may take some time"
 msgstr ""
 
-#: ../src/xfdesktop-regular-file-icon.c:468
+#: ../src/xfdesktop-regular-file-icon.c:472
 #, c-format
 msgid ""
 "Type: %s\n"
@@ -910,26 +916,26 @@ msgid ""
 "Last modified: %s"
 msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:249
-#: ../src/xfdesktop-special-file-icon.c:411
+#: ../src/xfdesktop-special-file-icon.c:258
+#: ../src/xfdesktop-special-file-icon.c:417
 #, fuzzy
 msgid "File System"
 msgstr "ফাইলসিস্টেম"
 
-#: ../src/xfdesktop-special-file-icon.c:396
+#: ../src/xfdesktop-special-file-icon.c:402
 msgid "Trash is empty"
 msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:399
+#: ../src/xfdesktop-special-file-icon.c:405
 msgid "Trash contains one item"
 msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:400
+#: ../src/xfdesktop-special-file-icon.c:406
 #, c-format
 msgid "Trash contains %d items"
 msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:428
+#: ../src/xfdesktop-special-file-icon.c:434
 #, c-format
 msgid ""
 "%s\n"
@@ -937,23 +943,11 @@ msgid ""
 "Last modified: %s"
 msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:449
-msgid "Unable to contact the Xfce Trash service."
-msgstr "Xfce আবর্জনা সার্ভিসের সাথে যোগাযোগ করতে ব্যর্থ।"
-
-#: ../src/xfdesktop-special-file-icon.c:450
-msgid ""
-"Make sure you have a file manager installed that supports the Xfce Trash "
-"service, such as Thunar."
-msgstr ""
-"আপনি নিশ্চিত হোন যে আপনার একটি ফাইল ব্যবস্থাপক ইনস্টল করা রয়েছে যা Xfce আবর্জনা "
-"সার্ভিস সমর্থন করে, যেমন থুনার।"
-
-#: ../src/xfdesktop-special-file-icon.c:588
+#: ../src/xfdesktop-special-file-icon.c:507
 msgid "_Empty Trash"
 msgstr "আবর্জনা ফাঁকা (_E)"
 
-#: ../src/xfdesktop-volume-icon.c:413
+#: ../src/xfdesktop-volume-icon.c:423
 #, fuzzy, c-format
 msgid ""
 "Removable Volume\n"
@@ -964,7 +958,7 @@ msgstr ""
 "মাউন্ট পয়েন্ট: %s\n"
 "ফাঁকাস্থান: %s"
 
-#: ../src/xfdesktop-volume-icon.c:420
+#: ../src/xfdesktop-volume-icon.c:430
 #, fuzzy
 msgid ""
 "Removable Volume\n"
@@ -974,31 +968,41 @@ msgstr ""
 "মাউন্ট পয়েন্ট: %s\n"
 "ফাঁকাস্থান: %s"
 
-#: ../src/xfdesktop-volume-icon.c:446 ../src/xfdesktop-volume-icon.c:488
+#: ../src/xfdesktop-volume-icon.c:456 ../src/xfdesktop-volume-icon.c:498
 #, fuzzy, c-format
 msgid "Failed to eject \"%s\""
 msgstr "\"%s\" নির্গত করতে ব্যর্থ:"
 
-#: ../src/xfdesktop-volume-icon.c:451 ../src/xfdesktop-volume-icon.c:493
+#: ../src/xfdesktop-volume-icon.c:461 ../src/xfdesktop-volume-icon.c:503
 msgid "Eject Failed"
 msgstr "নির্গমন ব্যর্থ"
 
-#: ../src/xfdesktop-volume-icon.c:525
+#: ../src/xfdesktop-volume-icon.c:535
 #, fuzzy, c-format
 msgid "Failed to mount \"%s\""
 msgstr "\"%s\" চালাতে ব্যর্থ:"
 
-#: ../src/xfdesktop-volume-icon.c:528
+#: ../src/xfdesktop-volume-icon.c:538
 msgid "Mount Failed"
 msgstr "মাউন্ট ব্যর্থ"
 
-#: ../src/xfdesktop-volume-icon.c:669 ../src/xfdesktop-volume-icon.c:672
+#: ../src/xfdesktop-volume-icon.c:679 ../src/xfdesktop-volume-icon.c:682
 msgid "E_ject Volume"
 msgstr "খন্ড নির্গত (_j)"
 
-#: ../src/xfdesktop-volume-icon.c:679
+#: ../src/xfdesktop-volume-icon.c:689
 msgid "_Mount Volume"
 msgstr "খন্ড মাউন্ট (_M)"
+
+#~ msgid "Unable to contact the Xfce Trash service."
+#~ msgstr "Xfce আবর্জনা সার্ভিসের সাথে যোগাযোগ করতে ব্যর্থ।"
+
+#~ msgid ""
+#~ "Make sure you have a file manager installed that supports the Xfce Trash "
+#~ "service, such as Thunar."
+#~ msgstr ""
+#~ "আপনি নিশ্চিত হোন যে আপনার একটি ফাইল ব্যবস্থাপক ইনস্টল করা রয়েছে যা Xfce "
+#~ "আবর্জনা সার্ভিস সমর্থন করে, যেমন থুনার।"
 
 #, fuzzy
 #~ msgid "Needs terminal"
