@@ -576,6 +576,10 @@ xfdesktop_regular_file_icon_update_file_info(XfdesktopFileIcon *icon,
         /* no change, release the new display name */
         g_free (new_display_name);
     }
+
+    /* invalidate the tooltip */
+    g_free(regular_file_icon->priv->tooltip);
+    regular_file_icon->priv->tooltip = NULL;
     
     /* not really easy to check if this changed or not, so just invalidate it */
     xfdesktop_regular_file_icon_invalidate_pixbuf(regular_file_icon);

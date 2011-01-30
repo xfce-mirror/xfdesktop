@@ -583,6 +583,7 @@ xfdesktop_special_file_icon_changed(GFileMonitor *monitor,
     }
 
     /* invalidate the tooltip */
+    g_free(special_file_icon->priv->tooltip);
     special_file_icon->priv->tooltip = NULL;
 
     /* update the icon */
