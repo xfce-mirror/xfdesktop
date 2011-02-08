@@ -11,14 +11,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-30 19:22+0100\n"
+"POT-Creation-Date: 2011-02-08 11:30+0000\n"
 "PO-Revision-Date: 2010-11-27 22:17+0800\n"
 "Last-Translator: Hunt Xu <huntxu@live.cn>\n"
 "Language-Team: Chinese <xfce-i18n@xfce.org>\n"
-"Language: zh\n"
 "MIME-Version: 1.1\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh\n"
 
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
 #, c-format
@@ -67,8 +67,7 @@ msgstr "创建/加载背景列表"
 
 #: ../settings/main.c:528
 #, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
 msgstr "“%s”是无效背景列表文件，要覆盖吗？"
 
 #: ../settings/main.c:533
@@ -265,8 +264,7 @@ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr "指定渐变区右边或下边的颜色"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
-msgid ""
-"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
 msgstr "指定单一色，或者渐变区左边或上边的颜色"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
@@ -423,9 +421,7 @@ msgid "Show workspace _names in list"
 msgstr "在列表中显示工作区名称(_N)"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
-msgid ""
-"Specify the transparency level for the rounded label drawn behind the icon "
-"text"
+msgid "Specify the transparency level for the rounded label drawn behind the icon text"
 msgstr "指定图标文本后的园角标签的透明度"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:37
@@ -582,8 +578,7 @@ msgid "Desktop Folder Error"
 msgstr "桌面目录错误"
 
 #: ../src/xfdesktop-file-icon-manager.c:489
-msgid ""
-"A normal file with the same name already exists. Please delete or rename it."
+msgid "A normal file with the same name already exists. Please delete or rename it."
 msgstr "一个同名的文件已经存在。请删除或者重命名该文件。"
 
 #: ../src/xfdesktop-file-icon-manager.c:592
@@ -605,9 +600,7 @@ msgstr "所选文件无法被移动至回收站"
 #: ../src/xfdesktop-file-utils.c:1101 ../src/xfdesktop-file-utils.c:1151
 #: ../src/xfdesktop-file-utils.c:1228 ../src/xfdesktop-file-utils.c:1289
 #: ../src/xfdesktop-file-utils.c:1362 ../src/xfdesktop-file-utils.c:1440
-msgid ""
-"This feature requires a file manager service to be present (such as the one "
-"supplied by Thunar)."
+msgid "This feature requires a file manager service to be present (such as the one supplied by Thunar)."
 msgstr "这项功能需要文件管理器提供相关服务(比如 Thunar 所提供的)。"
 
 #. printf is to be translator-friendly
@@ -638,9 +631,7 @@ msgid "Open With \"%s\""
 msgstr "用 \"%s\" 打开"
 
 #: ../src/xfdesktop-file-icon-manager.c:986
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
 msgstr "无法启动创建及编辑启动器和链接所必需的 \"exo-desktop-item-edit\"。"
 
 #: ../src/xfdesktop-file-icon-manager.c:1354
@@ -771,15 +762,12 @@ msgid "The selected files could not be moved to the trash"
 msgstr "所选文件无法被移动到回收站"
 
 #: ../src/xfdesktop-file-utils.c:896 ../src/xfdesktop-file-utils.c:942
-msgid ""
-"This feature requires a trash service to be present (such as the one "
-"supplied by Thunar)."
+msgid "This feature requires a trash service to be present (such as the one supplied by Thunar)."
 msgstr "这项功能需要文件管理器提供相关服务(比如 Thunar 所提供的)。"
 
 #: ../src/xfdesktop-file-utils.c:927 ../src/xfdesktop-file-utils.c:941
-#, fuzzy
 msgid "Could not empty the trash"
-msgstr "无法创建桌面目录 \"%s\""
+msgstr "无法清空垃圾箱"
 
 #: ../src/xfdesktop-file-utils.c:978 ../src/xfdesktop-file-utils.c:993
 msgid "Create File Error"
@@ -836,11 +824,8 @@ msgstr "正在卸载设备"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:131
 #, c-format
-msgid ""
-"The device \"%s\" is being unmounted by the system. Please do not remove the "
-"media or disconnect the drive"
-msgstr ""
-"设备 \"%s\" 正在从系统中被移除。请暂时不要移除媒体或者断开到驱动器的连接。"
+msgid "The device \"%s\" is being unmounted by the system. Please do not remove the media or disconnect the drive"
+msgstr "设备 \"%s\" 正在从系统中被移除。请暂时不要移除媒体或者断开到驱动器的连接。"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
@@ -850,12 +835,8 @@ msgstr "正在写入数据到设备"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
 #, c-format
-msgid ""
-"There is data that needs to be written to the device \"%s\" before it can be "
-"removed. Please do not remove the media or disconnect the drive"
-msgstr ""
-"设备 \"%s\" 被移除之前仍有数据需要写入。请暂时不要移除媒体或者断开到驱动器的"
-"连接。"
+msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
+msgstr "设备 \"%s\" 被移除之前仍有数据需要写入。请暂时不要移除媒体或者断开到驱动器的连接。"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:253
@@ -960,23 +941,18 @@ msgstr "挂载卷(_M)"
 #~ msgid "Unable to contact the Xfce Trash service."
 #~ msgstr "无法连接 Xfce 回收站服务"
 
-#~ msgid ""
-#~ "Make sure you have a file manager installed that supports the Xfce Trash "
-#~ "service, such as Thunar."
+#~ msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
 #~ msgstr "清空回收站需要安装支持xfce回收站服务的文件管理器，比如 Thunar"
 
-#, fuzzy
 #~ msgid "Needs terminal"
 #~ msgstr "终端"
 
 #~ msgid "Command"
 #~ msgstr "命令"
 
-#, fuzzy
 #~ msgid "Icon name"
 #~ msgstr "图标设计者"
 
-#, fuzzy
 #~ msgid "Startup notification"
 #~ msgstr "使用启动提示(_N)"
 
@@ -1052,23 +1028,19 @@ msgstr "挂载卷(_M)"
 #~ msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 #~ msgstr "    --menu    弹出菜单 (在鼠标当前位置)\n"
 
-#~ msgid ""
-#~ "    --windowlist  Pop up the window list (at the current mouse position)\n"
+#~ msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
 #~ msgstr "    --windowlist    弹出窗口列表 (在鼠标当前位置)\n"
 
 #~ msgid "    --quit        Cause xfdesktop to quit\n"
 #~ msgstr "     --quit        退出 xfdesktop\n"
 
-#~ msgid ""
-#~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+#~ msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 #~ msgstr "Xfdesktop 无法创建文件夹 \"%s\" 来存放桌面项目："
 
 #~ msgid "Create Folder Failed"
 #~ msgstr "无法创建文件夹"
 
-#~ msgid ""
-#~ "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not "
-#~ "a folder."
+#~ msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
 #~ msgstr "\"%s\" 不是文件夹，Xfdesktop 无法用其放置桌面项目。"
 
 #~ msgid "Please delete or rename the file."
@@ -1101,9 +1073,7 @@ msgstr "挂载卷(_M)"
 #~ msgid "The application chooser could not be opened."
 #~ msgstr "相关应用程序找不到或无法打开"
 
-#~ msgid ""
-#~ "This feature requires a file manager service present (such as that "
-#~ "supplied by Thunar)."
+#~ msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
 #~ msgstr "这项功能需要文件管理器提供相关服务(比如 Thunar 所提供的)。"
 
 #~ msgid "Unable to create folder named \"%s\":"
@@ -1566,13 +1536,8 @@ msgstr "挂载卷(_M)"
 #~ msgid "xfce4-menueditor is deprecated"
 #~ msgstr "xfce4-menueditor已过时，请不要再使用"
 
-#~ msgid ""
-#~ "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
-#~ "edit the new menu file format.  You may continue and edit an old-style "
-#~ "menu file, or quit."
-#~ msgstr ""
-#~ "Xfce 菜单系统做过更改，xfce4-menueditor 无法编辑新菜单文件格式，您可以继续"
-#~ "编辑旧风格菜单文件或退出。"
+#~ msgid "Xfce's menu system has been replaced, and xfce4-menueditor is not able to edit the new menu file format.  You may continue and edit an old-style menu file, or quit."
+#~ msgstr "Xfce 菜单系统做过更改，xfce4-menueditor 无法编辑新菜单文件格式，您可以继续编辑旧风格菜单文件或退出。"
 
 #~ msgid "Continue"
 #~ msgstr "继续"
@@ -1754,19 +1719,16 @@ msgstr "挂载卷(_M)"
 #~ msgid "Xfce 4 Desktop Settings"
 #~ msgstr "xfce 4 桌面设置"
 
-#, fuzzy
 #~ msgid "Show windows on each workspace in _submenus"
 #~ msgstr "在各个工作区子菜单中显示窗口(_M)"
 
-#, fuzzy
 #~ msgid "Use _Xfce to manage the desktop"
 #~ msgstr "允许xfce管理桌面(_X)"
 
 #~ msgid ""
 #~ "Could not save file %s: %s\n"
 #~ "\n"
-#~ "Please choose another location or press cancel in the dialog to discard "
-#~ "your changes"
+#~ "Please choose another location or press cancel in the dialog to discard your changes"
 #~ msgstr ""
 #~ "无法保存文件 %s: %s\n"
 #~ "\n"
@@ -1802,27 +1764,11 @@ msgstr "挂载卷(_M)"
 #~ msgid "Unable to start xfdesktop"
 #~ msgstr "无法启动 xfdesktop"
 
-#~ msgid ""
-#~ "To ensure that this setting takes effect the next time you start Xfce, "
-#~ "please be sure to save your session when logging out.  If you are not "
-#~ "using the Xfce Session Manager (xfce4-session), you will need to manually "
-#~ "edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
-#~ "documentation provided on http://xfce.org/."
-#~ msgstr ""
-#~ "为使在下次启动xfce时此次设置生效，退出时请确认保存你的会话。如果你现在不是"
-#~ "使用会话管理器，需要手动编辑您的 ~/.config/xfce4/xinitrc 文件详细说明可在 "
-#~ "http://xfce.org/  提供的文档中找到。"
+#~ msgid "To ensure that this setting takes effect the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
+#~ msgstr "为使在下次启动xfce时此次设置生效，退出时请确认保存你的会话。如果你现在不是使用会话管理器，需要手动编辑您的 ~/.config/xfce4/xinitrc 文件详细说明可在 http://xfce.org/  提供的文档中找到。"
 
-#~ msgid ""
-#~ "To ensure that Xfce does not manage your desktop the next time you start "
-#~ "Xfce, please be sure to save your session when logging out.  If you are "
-#~ "not using the Xfce Session Manager (xfce4-session), you will need to "
-#~ "manually edit your ~/.config/xfce4/xinitrc file.  Details are available "
-#~ "in the documentation provided on http://xfce.org/."
-#~ msgstr ""
-#~ "为使在下次启动xfce时此次设置生效，退出时请确认保存你的会话。如果你现在不是"
-#~ "使用会话管理器，需要手动编辑您的 ~/.config/xfce4/xinitrc 文件详细说明可在 "
-#~ "http://xfce.org/  提供的文档中找到。"
+#~ msgid "To ensure that Xfce does not manage your desktop the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
+#~ msgstr "为使在下次启动xfce时此次设置生效，退出时请确认保存你的会话。如果你现在不是使用会话管理器，需要手动编辑您的 ~/.config/xfce4/xinitrc 文件详细说明可在 http://xfce.org/  提供的文档中找到。"
 
 #~ msgid "_Do not show this again"
 #~ msgstr "下次不再显示(_D)"
@@ -1875,26 +1821,18 @@ msgstr "挂载卷(_M)"
 #~ msgid "_Desktop Properties..."
 #~ msgstr "桌面属性(_D)..."
 
-#, fuzzy
 #~ msgid "Scientific applications and tools"
 #~ msgstr "显示最小化应用程序图标"
 
 #~ msgid "Unable to quit session."
 #~ msgstr "无法退出会话。"
 
-#~ msgid ""
-#~ "Quitting the session requires that Xfce's session manager (xfce4-session) "
-#~ "is running, but it was not detected.  Please quit Xfce via another means."
-#~ msgstr ""
-#~ "退出会话需要 xfce 的会话管理器(xfce4-session)正在进行，目前没有检测到，请"
-#~ "用其它方式退出 xfce"
+#~ msgid "Quitting the session requires that Xfce's session manager (xfce4-session) is running, but it was not detected.  Please quit Xfce via another means."
+#~ msgstr "退出会话需要 xfce 的会话管理器(xfce4-session)正在进行，目前没有检测到，请用其它方式退出 xfce"
 
-#~ msgid ""
-#~ "Quitting the session requires the 'xfce4-session-logout' command, but it "
-#~ "could not be found: %s"
+#~ msgid "Quitting the session requires the 'xfce4-session-logout' command, but it could not be found: %s"
 #~ msgstr "退出当前会话需要 'xfce4-session-logout' 命令，但是无法找到：%s"
 
-#, fuzzy
 #~ msgid "Edit Properties"
 #~ msgstr "属性(_P)..."
 
