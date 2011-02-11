@@ -1,21 +1,21 @@
 # Ukrainian translation of xfdesktop.
 # Copyright (C) 2003-2006 The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
-#
+# 
 # Maxim Dziumanenko <dziumanenko@gmail.com>, 2003-2006.
 # Dmitry Nikitin <luckas_fb@mail.ru>, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-16 17:44+0100\n"
+"POT-Creation-Date: 2011-02-11 17:12+0000\n"
 "PO-Revision-Date: 2008-11-26 19:20+0200\n"
 "Last-Translator: Dmitry Nikitin <luckas_fb@mail.ru>\n"
 "Language-Team: Ukrainian <xfce4-dev@xfce.org>\n"
-"Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: uk\n"
 "X-Generator: KBabel 1.11.4\n"
 
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
@@ -24,7 +24,7 @@ msgid "Backdrop list file is not valid"
 msgstr "Неправильний файл списку фонових зображень"
 
 #. no need to escape markup; it's already done for us
-#: ../settings/main.c:162
+#: ../settings/main.c:163
 #, c-format
 msgid ""
 "%s\n"
@@ -33,129 +33,126 @@ msgstr ""
 "%s\n"
 "<i>Розмір: %dx%d</i>"
 
-#: ../settings/main.c:272 ../src/xfdesktop-special-file-icon.c:247
-#: ../src/xfdesktop-special-file-icon.c:413
+#: ../settings/main.c:289 ../src/xfdesktop-special-file-icon.c:256
+#: ../src/xfdesktop-special-file-icon.c:419
 msgid "Home"
 msgstr "Домашній каталог"
 
-#: ../settings/main.c:274
+#: ../settings/main.c:291
 msgid "Filesystem"
 msgstr "Файлова система"
 
-#: ../settings/main.c:276
+#: ../settings/main.c:293
 msgid "Trash"
 msgstr "Смітник"
 
-#: ../settings/main.c:278
+#: ../settings/main.c:295
 msgid "Removable Devices"
 msgstr "З'ємні пристрої"
 
-#: ../settings/main.c:458
+#: ../settings/main.c:475
 #, c-format
 msgid "Cannot create backdrop list \"%s\""
 msgstr "Неможливо створити список фонових зображень \"%s\""
 
-#: ../settings/main.c:462 ../settings/main.c:779
+#: ../settings/main.c:479 ../settings/main.c:802
 msgid "Backdrop List Error"
 msgstr "Помилка списку фонових зображень"
 
-#: ../settings/main.c:487
+#: ../settings/main.c:504
 msgid "Create/Load Backdrop List"
 msgstr "Створити/завантажити список фонових зображень"
 
-#: ../settings/main.c:511
+#: ../settings/main.c:528
 #, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
-"Файл \"%s\" не є правильним файлом списку фонових зображень.  Бажаєте "
-"перезаписати його?"
+msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr "Файл \"%s\" не є правильним файлом списку фонових зображень.  Бажаєте перезаписати його?"
 
-#: ../settings/main.c:516
+#: ../settings/main.c:533
 msgid "Invalid List File"
 msgstr "Неправильний файл списку"
 
-#: ../settings/main.c:519
+#: ../settings/main.c:536
 msgid "Overwriting the file will cause its contents to be lost."
 msgstr "Перезапис файлу призведе до втрати його змісту."
 
-#: ../settings/main.c:521
+#: ../settings/main.c:538
 msgid "Replace"
 msgstr "Замінити"
 
-#: ../settings/main.c:775
+#: ../settings/main.c:798
 #, c-format
 msgid "Failed to write backdrop list to \"%s\""
 msgstr "Невдача запису файлу фонових зображень в \"%s\""
 
-#: ../settings/main.c:802
+#: ../settings/main.c:825
 msgid "Add Image File(s)"
 msgstr "Додати файл(и) зображення"
 
-#: ../settings/main.c:811
+#: ../settings/main.c:834
 msgid "Image files"
 msgstr "Файли зображень"
 
-#: ../settings/main.c:816
+#: ../settings/main.c:839
 msgid "All files"
 msgstr "Всі файли"
 
-#: ../settings/main.c:1248
+#: ../settings/main.c:1271
 #, c-format
 msgid "Screen %d, Monitor %d (%s)"
 msgstr "Екран %d, Монітор %d (%s)"
 
-#: ../settings/main.c:1252
+#: ../settings/main.c:1275
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "Екран %d, монітор %d"
 
-#: ../settings/main.c:1255
+#: ../settings/main.c:1278
 #, c-format
 msgid "Screen %d"
 msgstr "Екран %d"
 
-#: ../settings/main.c:1260
+#: ../settings/main.c:1283
 #, c-format
 msgid "Monitor %d (%s)"
 msgstr "Монітор %d (%s)"
 
-#: ../settings/main.c:1264
+#: ../settings/main.c:1287
 #, c-format
 msgid "Monitor %d"
 msgstr "Монітор %d"
 
-#: ../settings/main.c:1477
+#: ../settings/main.c:1500
 msgid "Settings manager socket"
 msgstr "Сокет менеджера властивостей"
 
-#: ../settings/main.c:1477
+#: ../settings/main.c:1500
 msgid "SOCKET ID"
 msgstr "ID сокета"
 
-#: ../settings/main.c:1478
+#: ../settings/main.c:1501
 msgid "Version information"
 msgstr "Інформація про версію"
 
-#: ../settings/main.c:1498
+#: ../settings/main.c:1521
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Наберіть '%s --help' для використання."
 
-#: ../settings/main.c:1510
+#: ../settings/main.c:1533
 msgid "The Xfce development team. All rights reserved."
 msgstr "Команда розробників Xfce. Всі права застережено."
 
-#: ../settings/main.c:1511
+#: ../settings/main.c:1534
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "По помилки повідомляйте для <%s>."
 
-#: ../settings/main.c:1518
+#: ../settings/main.c:1541
 msgid "Desktop Settings"
 msgstr "Параметри робочого столу"
 
-#: ../settings/main.c:1520
+#: ../settings/main.c:1543
 msgid "Unable to contact settings server"
 msgstr "Не вдається зв'язатися з сервером властивостей."
 
@@ -265,10 +262,8 @@ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr "Призначити \"правий\" чи \"нижній\" колір градієнту"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
-msgid ""
-"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr ""
-"Призначити суцільний колір, або \"лівий\" чи \"верхній\" колір градієнту"
+msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr "Призначити суцільний колір, або \"лівий\" чи \"верхній\" колір градієнту"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid "Specify how the image will be resized to fit the screen"
@@ -276,8 +271,7 @@ msgstr "Призначити як зображення буде змінюват
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "Specify the style of the color drawn behind the backdrop image"
-msgstr ""
-"Призначити стиль кольору, що буде відображатись під фоновим зображенням"
+msgstr "Призначити стиль кольору, що буде відображатись під фоновим зображенням"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
 msgid "St_yle:"
@@ -344,7 +338,7 @@ msgstr "_Кнопка"
 msgid "Control"
 msgstr "Control"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:729
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:737
 msgid "Desktop"
 msgstr "Робочий стіл"
 
@@ -410,8 +404,7 @@ msgstr "Відобр_ажати значки програм у меню"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:28
 msgid "Show _window list menu on desktop middle click"
-msgstr ""
-"Показувати меню _списку вікон на стільниці при клацанні середньою кнопкою"
+msgstr "Показувати меню _списку вікон на стільниці при клацанні середньою кнопкою"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:29
 msgid "Show applications menu on _desktop right click"
@@ -426,12 +419,8 @@ msgid "Show workspace _names in list"
 msgstr "Показувати _імена робочих областей у списку"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
-msgid ""
-"Specify the transparency level for the rounded label drawn behind the icon "
-"text"
-msgstr ""
-"Призначити рівень прозорості круглих міток, що відображається під текстом "
-"значка"
+msgid "Specify the transparency level for the rounded label drawn behind the icon text"
+msgstr "Призначити рівень прозорості круглих міток, що відображається під текстом значка"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "Use _submenus for the windows in each workspace"
@@ -566,13 +555,12 @@ msgstr "В_идалити робочу область %d"
 msgid "_Remove Workspace '%s'"
 msgstr "В_идалити робочу область \"%s\""
 
-#: ../src/xfce-desktop.c:1006
+#: ../src/xfce-desktop.c:1018
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
-msgstr ""
-"Неможливо завантажити зображення із файлу списку фонових зображень \"%s\""
+msgstr "Неможливо завантажити зображення із файлу списку фонових зображень \"%s\""
 
-#: ../src/xfce-desktop.c:1008
+#: ../src/xfce-desktop.c:1020
 msgid "Desktop Error"
 msgstr "Помилка стільниці"
 
@@ -588,15 +576,13 @@ msgid "Desktop Folder Error"
 msgstr "Помилка теки стільниці"
 
 #: ../src/xfdesktop-file-icon-manager.c:489
-msgid ""
-"A normal file with the same name already exists. Please delete or rename it."
-msgstr ""
-"Звичайний файл з такою самою назвою вже існує. Будь ласка видаліть його, або "
-"перейменуйте."
+msgid "A normal file with the same name already exists. Please delete or rename it."
+msgstr "Звичайний файл з такою самою назвою вже існує. Будь ласка видаліть його, або перейменуйте."
 
 #: ../src/xfdesktop-file-icon-manager.c:592
-#: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:803
-#: ../src/xfdesktop-file-utils.c:818 ../src/xfdesktop-special-file-icon.c:447
+#: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:879
+#: ../src/xfdesktop-file-utils.c:894 ../src/xfdesktop-file-utils.c:926
+#: ../src/xfdesktop-file-utils.c:940
 msgid "Trash Error"
 msgstr "Помилка смітника"
 
@@ -606,18 +592,14 @@ msgid "The selected files could not be trashed"
 msgstr "Вибрані файли не можуть бути видалені"
 
 #: ../src/xfdesktop-file-icon-manager.c:594
-#: ../src/xfdesktop-file-icon-manager.c:638 ../src/xfdesktop-file-utils.c:652
-#: ../src/xfdesktop-file-utils.c:702 ../src/xfdesktop-file-utils.c:761
-#: ../src/xfdesktop-file-utils.c:873 ../src/xfdesktop-file-utils.c:929
-#: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:1029
-#: ../src/xfdesktop-file-utils.c:1106 ../src/xfdesktop-file-utils.c:1167
-#: ../src/xfdesktop-file-utils.c:1240 ../src/xfdesktop-file-utils.c:1318
-msgid ""
-"This feature requires a file manager service to be present (such as the one "
-"supplied by Thunar)."
-msgstr ""
-"Ця функція вимагає наявності сервісу файлового менеджера (один з таких "
-"підтримується Thunar)."
+#: ../src/xfdesktop-file-icon-manager.c:638 ../src/xfdesktop-file-utils.c:728
+#: ../src/xfdesktop-file-utils.c:778 ../src/xfdesktop-file-utils.c:837
+#: ../src/xfdesktop-file-utils.c:995 ../src/xfdesktop-file-utils.c:1051
+#: ../src/xfdesktop-file-utils.c:1101 ../src/xfdesktop-file-utils.c:1151
+#: ../src/xfdesktop-file-utils.c:1228 ../src/xfdesktop-file-utils.c:1289
+#: ../src/xfdesktop-file-utils.c:1362 ../src/xfdesktop-file-utils.c:1440
+msgid "This feature requires a file manager service to be present (such as the one supplied by Thunar)."
+msgstr "Ця функція вимагає наявності сервісу файлового менеджера (один з таких підтримується Thunar)."
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:738
@@ -628,11 +610,11 @@ msgstr "Не вдається запустити \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:740
 #: ../src/xfdesktop-file-icon-manager.c:984
-#: ../src/xfdesktop-file-icon-manager.c:1297 ../src/xfdesktop-file-utils.c:635
-#: ../src/xfdesktop-file-utils.c:650 ../src/xfdesktop-file-utils.c:1012
-#: ../src/xfdesktop-file-utils.c:1027 ../src/xfdesktop-file-utils.c:1079
-#: ../src/xfdesktop-file-utils.c:1104 ../src/xfdesktop-file-utils.c:1150
-#: ../src/xfdesktop-file-utils.c:1165
+#: ../src/xfdesktop-file-icon-manager.c:1297 ../src/xfdesktop-file-utils.c:711
+#: ../src/xfdesktop-file-utils.c:726 ../src/xfdesktop-file-utils.c:1134
+#: ../src/xfdesktop-file-utils.c:1149 ../src/xfdesktop-file-utils.c:1201
+#: ../src/xfdesktop-file-utils.c:1226 ../src/xfdesktop-file-utils.c:1272
+#: ../src/xfdesktop-file-utils.c:1287
 msgid "Launch Error"
 msgstr "Помилка запуску"
 
@@ -647,12 +629,8 @@ msgid "Open With \"%s\""
 msgstr "Відкрити у програмі \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:986
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
-msgstr ""
-"Неможливо запустити \"exo-desktop-item-edit\", яка потрібна для редагування "
-"значків запуску та посилань  на робочому столі."
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgstr "Неможливо запустити \"exo-desktop-item-edit\", яка потрібна для редагування значків запуску та посилань  на робочому столі."
 
 #: ../src/xfdesktop-file-icon-manager.c:1354
 msgid "_Open all"
@@ -663,7 +641,7 @@ msgid "_Open in New Window"
 msgstr "Відкрити в _новому вікні"
 
 #: ../src/xfdesktop-file-icon-manager.c:1372
-#: ../src/xfdesktop-special-file-icon.c:570 ../src/xfdesktop-volume-icon.c:653
+#: ../src/xfdesktop-special-file-icon.c:489 ../src/xfdesktop-volume-icon.c:663
 msgid "_Open"
 msgstr "_Відкрити"
 
@@ -716,15 +694,15 @@ msgid "Desktop _Settings..."
 msgstr "П_араметри робочого столу..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1677
-#: ../src/xfdesktop-volume-icon.c:701
+#: ../src/xfdesktop-volume-icon.c:711
 msgid "_Properties..."
 msgstr "В_ластивості..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2231
+#: ../src/xfdesktop-file-icon-manager.c:2234
 msgid "Load Error"
 msgstr "Помилка завантаження"
 
-#: ../src/xfdesktop-file-icon-manager.c:2233
+#: ../src/xfdesktop-file-icon-manager.c:2236
 msgid "Failed to load the desktop folder"
 msgstr "Неможливо завантажити теку стільниці"
 
@@ -757,82 +735,82 @@ msgstr "%x о %X"
 msgid "Unknown"
 msgstr "Невідомий"
 
-#: ../src/xfdesktop-file-utils.c:636 ../src/xfdesktop-file-utils.c:651
+#: ../src/xfdesktop-file-utils.c:712 ../src/xfdesktop-file-utils.c:727
 msgid "The folder could not be opened"
 msgstr "Теку неможливо відкрити"
 
-#: ../src/xfdesktop-file-utils.c:685 ../src/xfdesktop-file-utils.c:700
+#: ../src/xfdesktop-file-utils.c:761 ../src/xfdesktop-file-utils.c:776
 msgid "Rename Error"
 msgstr "Помилка при перейменуванні"
 
-#: ../src/xfdesktop-file-utils.c:686 ../src/xfdesktop-file-utils.c:701
+#: ../src/xfdesktop-file-utils.c:762 ../src/xfdesktop-file-utils.c:777
 msgid "The file could not be renamed"
 msgstr "Файл не може бути перейменований"
 
-#: ../src/xfdesktop-file-utils.c:744 ../src/xfdesktop-file-utils.c:759
+#: ../src/xfdesktop-file-utils.c:820 ../src/xfdesktop-file-utils.c:835
 msgid "Delete Error"
 msgstr "Помилка при видаленні"
 
-#: ../src/xfdesktop-file-utils.c:745 ../src/xfdesktop-file-utils.c:760
+#: ../src/xfdesktop-file-utils.c:821 ../src/xfdesktop-file-utils.c:836
 msgid "The selected files could not be deleted"
 msgstr "Вибраний файл не може бути видалений"
 
-#: ../src/xfdesktop-file-utils.c:804 ../src/xfdesktop-file-utils.c:819
+#: ../src/xfdesktop-file-utils.c:880 ../src/xfdesktop-file-utils.c:895
 msgid "The selected files could not be moved to the trash"
 msgstr "Вибраний файл не може бути переміщений в смітник"
 
-#: ../src/xfdesktop-file-utils.c:820
-msgid ""
-"This feature requires a trash service to be present (such as the one "
-"supplied by Thunar)."
-msgstr ""
-"Ця функція вимагає наявності сервісу файлового менеджера (один з таких "
-"підтримується Thunar)."
+#: ../src/xfdesktop-file-utils.c:896 ../src/xfdesktop-file-utils.c:942
+msgid "This feature requires a trash service to be present (such as the one supplied by Thunar)."
+msgstr "Ця функція вимагає наявності сервісу файлового менеджера (один з таких підтримується Thunar)."
 
-#: ../src/xfdesktop-file-utils.c:856 ../src/xfdesktop-file-utils.c:871
+#: ../src/xfdesktop-file-utils.c:927 ../src/xfdesktop-file-utils.c:941
+msgid "Could not empty the trash"
+msgstr "Не можу спорожнити смітник"
+
+#: ../src/xfdesktop-file-utils.c:978 ../src/xfdesktop-file-utils.c:993
 msgid "Create File Error"
 msgstr "Помилка при створенні файлу"
 
-#: ../src/xfdesktop-file-utils.c:857 ../src/xfdesktop-file-utils.c:872
+#: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:994
 msgid "Could not create a new file"
 msgstr "Неможливо створити новий файл"
 
-#: ../src/xfdesktop-file-utils.c:912 ../src/xfdesktop-file-utils.c:927
+#: ../src/xfdesktop-file-utils.c:1034 ../src/xfdesktop-file-utils.c:1049
 msgid "Create Document Error"
 msgstr "Помилка при створенні документу"
 
-#: ../src/xfdesktop-file-utils.c:913 ../src/xfdesktop-file-utils.c:928
+#: ../src/xfdesktop-file-utils.c:1035 ../src/xfdesktop-file-utils.c:1050
 msgid "Could not create a new document from the template"
 msgstr "Неможливо створити документ з шаблону"
 
-#: ../src/xfdesktop-file-utils.c:962 ../src/xfdesktop-file-utils.c:977
+#: ../src/xfdesktop-file-utils.c:1084 ../src/xfdesktop-file-utils.c:1099
 msgid "File Properties Error"
 msgstr "Помилка у властивостях файлу"
 
-#: ../src/xfdesktop-file-utils.c:963 ../src/xfdesktop-file-utils.c:978
+#: ../src/xfdesktop-file-utils.c:1085 ../src/xfdesktop-file-utils.c:1100
 msgid "The file properties dialog could not be opened"
 msgstr "Неможливо відкрити діалог властивостей файлу"
 
-#: ../src/xfdesktop-file-utils.c:1013 ../src/xfdesktop-file-utils.c:1028
+#: ../src/xfdesktop-file-utils.c:1135 ../src/xfdesktop-file-utils.c:1150
 msgid "The file could not be opened"
 msgstr "Неможливо відкрити файл"
 
-#: ../src/xfdesktop-file-utils.c:1076 ../src/xfdesktop-file-utils.c:1101
+#: ../src/xfdesktop-file-utils.c:1198 ../src/xfdesktop-file-utils.c:1223
 #, c-format
 msgid "Failed to run \"%s\""
 msgstr "Не вдалось запустити \"%s\""
 
-#: ../src/xfdesktop-file-utils.c:1151 ../src/xfdesktop-file-utils.c:1166
+#: ../src/xfdesktop-file-utils.c:1273 ../src/xfdesktop-file-utils.c:1288
 msgid "The application chooser could not be opened"
 msgstr "Не вдалось відкрити вибір програм"
 
-#: ../src/xfdesktop-file-utils.c:1224 ../src/xfdesktop-file-utils.c:1238
-#: ../src/xfdesktop-file-utils.c:1300 ../src/xfdesktop-file-utils.c:1316
+#: ../src/xfdesktop-file-utils.c:1346 ../src/xfdesktop-file-utils.c:1360
+#: ../src/xfdesktop-file-utils.c:1422 ../src/xfdesktop-file-utils.c:1438
 msgid "Transfer Error"
 msgstr "Помилка передачі"
 
-#: ../src/xfdesktop-file-utils.c:1225 ../src/xfdesktop-file-utils.c:1239
-#: ../src/xfdesktop-file-utils.c:1301 ../src/xfdesktop-file-utils.c:1317
+#: ../src/xfdesktop-file-utils.c:1347 ../src/xfdesktop-file-utils.c:1361
+#: ../src/xfdesktop-file-utils.c:1423 ../src/xfdesktop-file-utils.c:1439
 msgid "The file transfer could not be performed"
 msgstr "Передача файлу не може бути виконана"
 
@@ -844,12 +822,8 @@ msgstr "Відключення пристрою"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:131
 #, c-format
-msgid ""
-"The device \"%s\" is being unmounted by the system. Please do not remove the "
-"media or disconnect the drive"
-msgstr ""
-"Пристрій \"%s\" був демонтований системою. Будь ласка не витягуйте носій чи "
-"не від'єднуйте пристрій"
+msgid "The device \"%s\" is being unmounted by the system. Please do not remove the media or disconnect the drive"
+msgstr "Пристрій \"%s\" був демонтований системою. Будь ласка не витягуйте носій чи не від'єднуйте пристрій"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
@@ -859,12 +833,8 @@ msgstr "Запис даних на пристрій"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
 #, c-format
-msgid ""
-"There is data that needs to be written to the device \"%s\" before it can be "
-"removed. Please do not remove the media or disconnect the drive"
-msgstr ""
-"Є дані, які повинні бути записані на пристрій \"%s\" перед тим як він буде "
-"витягнутий. Будь ласка не витягуйте носій чи не від'єднуйте пристрій"
+msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
+msgstr "Є дані, які повинні бути записані на пристрій \"%s\" перед тим як він буде витягнутий. Будь ласка не витягуйте носій чи не від'єднуйте пристрій"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:253
@@ -877,7 +847,7 @@ msgstr "Витягування пристрою"
 msgid "The device \"%s\" is being ejected. This may take some time"
 msgstr "Пристрій \"%s\" в даний час витягується. Це може зайняти деякий час"
 
-#: ../src/xfdesktop-regular-file-icon.c:468
+#: ../src/xfdesktop-regular-file-icon.c:472
 #, c-format
 msgid ""
 "Type: %s\n"
@@ -888,25 +858,25 @@ msgstr ""
 "Розмір: %s\n"
 "Остання зміна: %s"
 
-#: ../src/xfdesktop-special-file-icon.c:249
-#: ../src/xfdesktop-special-file-icon.c:411
+#: ../src/xfdesktop-special-file-icon.c:258
+#: ../src/xfdesktop-special-file-icon.c:417
 msgid "File System"
 msgstr "Файлова система"
 
-#: ../src/xfdesktop-special-file-icon.c:396
+#: ../src/xfdesktop-special-file-icon.c:402
 msgid "Trash is empty"
 msgstr "Смітник порожній"
 
-#: ../src/xfdesktop-special-file-icon.c:399
+#: ../src/xfdesktop-special-file-icon.c:405
 msgid "Trash contains one item"
 msgstr "Смітник має один елемент"
 
-#: ../src/xfdesktop-special-file-icon.c:400
+#: ../src/xfdesktop-special-file-icon.c:406
 #, c-format
 msgid "Trash contains %d items"
 msgstr "Смітник має %d елементів"
 
-#: ../src/xfdesktop-special-file-icon.c:428
+#: ../src/xfdesktop-special-file-icon.c:434
 #, c-format
 msgid ""
 "%s\n"
@@ -917,23 +887,11 @@ msgstr ""
 "Розмір: %s\n"
 "Остання зміна: %s"
 
-#: ../src/xfdesktop-special-file-icon.c:449
-msgid "Unable to contact the Xfce Trash service."
-msgstr "Не вдається підключитися до служби смітника Xfce."
-
-#: ../src/xfdesktop-special-file-icon.c:450
-msgid ""
-"Make sure you have a file manager installed that supports the Xfce Trash "
-"service, such as Thunar."
-msgstr ""
-"Перевірте, що у вас встановлено файловий менеджер, який підтримує роботу зі "
-"смітником Xfce, наприклад Thunar."
-
-#: ../src/xfdesktop-special-file-icon.c:588
+#: ../src/xfdesktop-special-file-icon.c:507
 msgid "_Empty Trash"
 msgstr "О_чистити смітник"
 
-#: ../src/xfdesktop-volume-icon.c:413
+#: ../src/xfdesktop-volume-icon.c:423
 #, c-format
 msgid ""
 "Removable Volume\n"
@@ -944,7 +902,7 @@ msgstr ""
 "Змонтований в \"%s\"\n"
 "%s залишилось (%s всього)"
 
-#: ../src/xfdesktop-volume-icon.c:420
+#: ../src/xfdesktop-volume-icon.c:430
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
@@ -952,31 +910,37 @@ msgstr ""
 "З'ємний розділ\n"
 "Зараз не змонтовано"
 
-#: ../src/xfdesktop-volume-icon.c:446 ../src/xfdesktop-volume-icon.c:488
+#: ../src/xfdesktop-volume-icon.c:456 ../src/xfdesktop-volume-icon.c:498
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "Не вдається витягнути \"%s\""
 
-#: ../src/xfdesktop-volume-icon.c:451 ../src/xfdesktop-volume-icon.c:493
+#: ../src/xfdesktop-volume-icon.c:461 ../src/xfdesktop-volume-icon.c:503
 msgid "Eject Failed"
 msgstr "Не вдається витягнути"
 
-#: ../src/xfdesktop-volume-icon.c:525
+#: ../src/xfdesktop-volume-icon.c:535
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "Не вдається змонтувати \"%s\""
 
-#: ../src/xfdesktop-volume-icon.c:528
+#: ../src/xfdesktop-volume-icon.c:538
 msgid "Mount Failed"
 msgstr "Помилка підключення"
 
-#: ../src/xfdesktop-volume-icon.c:669 ../src/xfdesktop-volume-icon.c:672
+#: ../src/xfdesktop-volume-icon.c:679 ../src/xfdesktop-volume-icon.c:682
 msgid "E_ject Volume"
 msgstr "Вит_ягнути том"
 
-#: ../src/xfdesktop-volume-icon.c:679
+#: ../src/xfdesktop-volume-icon.c:689
 msgid "_Mount Volume"
 msgstr "_Підключити том"
+
+#~ msgid "Unable to contact the Xfce Trash service."
+#~ msgstr "Не вдається підключитися до служби смітника Xfce."
+
+#~ msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
+#~ msgstr "Перевірте, що у вас встановлено файловий менеджер, який підтримує роботу зі смітником Xfce, наприклад Thunar."
 
 #~ msgid "Needs terminal"
 #~ msgstr "Потрібно термінал"
@@ -1011,8 +975,7 @@ msgstr "_Підключити том"
 #~ msgid "Use underline"
 #~ msgstr "Використати підкреслення"
 
-#~ msgid ""
-#~ "Whether or not to use an underscore in the label as a keyboard mnemonic"
+#~ msgid "Whether or not to use an underscore in the label as a keyboard mnemonic"
 #~ msgstr "Використовувати чи ні підкреслення в мітці як мнемонічна клавіатура"
 
 #~ msgid "Unable to launch xfce4-menueditor: %s"
@@ -1082,38 +1045,25 @@ msgstr "_Підключити том"
 #~ msgstr "Параметри:\n"
 
 #~ msgid "    --reload      Reload all settings, refresh image list\n"
-#~ msgstr ""
-#~ "    --reload      Перезавантажити усі параметри, оновити перелік "
-#~ "зображень\n"
+#~ msgstr "    --reload      Перезавантажити усі параметри, оновити перелік зображень\n"
 
 #~ msgid "    --menu        Pop up the menu (at the current mouse position)\n"
-#~ msgstr ""
-#~ "    --menu        Показати меню (у місці, де знаходиться курсор миші)\n"
+#~ msgstr "    --menu        Показати меню (у місці, де знаходиться курсор миші)\n"
 
-#~ msgid ""
-#~ "    --windowlist  Pop up the window list (at the current mouse position)\n"
-#~ msgstr ""
-#~ "    --windowlist  Показати перелік вікон (у місці, де знаходиться курсор "
-#~ "миші)\n"
+#~ msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
+#~ msgstr "    --windowlist  Показати перелік вікон (у місці, де знаходиться курсор миші)\n"
 
 #~ msgid "    --quit        Cause xfdesktop to quit\n"
 #~ msgstr "    --quit        Вийти з xfdesktop\n"
 
-#~ msgid ""
-#~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-#~ msgstr ""
-#~ "Xfdesktop не може створити теку \"%s\" для зберігання об'єктів робочого "
-#~ "столу:"
+#~ msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+#~ msgstr "Xfdesktop не може створити теку \"%s\" для зберігання об'єктів робочого столу:"
 
 #~ msgid "Create Folder Failed"
 #~ msgstr "Не вдається створити теку"
 
-#~ msgid ""
-#~ "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not "
-#~ "a folder."
-#~ msgstr ""
-#~ "Xfdesktop не може використовувати \"%s\" для зберігання об'єктів, "
-#~ "оскільки це не тека."
+#~ msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
+#~ msgstr "Xfdesktop не може використовувати \"%s\" для зберігання об'єктів, оскільки це не тека."
 
 #~ msgid "Please delete or rename the file."
 #~ msgstr "Видаліть або перейменуйте файл."
@@ -1145,12 +1095,8 @@ msgstr "_Підключити том"
 #~ msgid "The application chooser could not be opened."
 #~ msgstr "Пов'язану з цим файлом програму неможливо знайти чи виконати."
 
-#~ msgid ""
-#~ "This feature requires a file manager service present (such as that "
-#~ "supplied by Thunar)."
-#~ msgstr ""
-#~ "Ця функція вимагає наявності файлового менеджера (наприклад, "
-#~ "підтримується Thunar)."
+#~ msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
+#~ msgstr "Ця функція вимагає наявності файлового менеджера (наприклад, підтримується Thunar)."
 
 #~ msgid "Unable to create folder named \"%s\":"
 #~ msgstr "Не вдається створити теку з назвою \"%s\":"
@@ -1603,14 +1549,8 @@ msgstr "_Підключити том"
 #~ msgid "xfce4-menueditor is deprecated"
 #~ msgstr "Редактор меню xfce4 не рекомендується"
 
-#~ msgid ""
-#~ "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
-#~ "edit the new menu file format.  You may continue and edit an old-style "
-#~ "menu file, or quit."
-#~ msgstr ""
-#~ "Система меню Xfce була замінена, і редактор меню xfce4 більше не дієвий   "
-#~ "для редагування нового формату меню. Ви можете продовжити редагування "
-#~ "файлу меню, або вийти."
+#~ msgid "Xfce's menu system has been replaced, and xfce4-menueditor is not able to edit the new menu file format.  You may continue and edit an old-style menu file, or quit."
+#~ msgstr "Система меню Xfce була замінена, і редактор меню xfce4 більше не дієвий   для редагування нового формату меню. Ви можете продовжити редагування файлу меню, або вийти."
 
 #~ msgid "Continue"
 #~ msgstr "Продовжити"
