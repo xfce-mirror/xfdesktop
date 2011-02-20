@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-30 19:22+0100\n"
+"POT-Creation-Date: 2011-02-20 05:30+0000\n"
 "PO-Revision-Date: 2009-12-18 18:46+0100\n"
 "Last-Translator: Per Kongstad <p_kongstad@op.pl>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
-"Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: da\n"
 "X-Poedit-Language: Danish\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Country: DENMARK\n"
@@ -66,11 +66,8 @@ msgstr "Opret/indlæs baggrundsliste"
 
 #: ../settings/main.c:528
 #, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
-"Fil \"%s\" er ikke en gyldig baggrundsfilliste.  Ønsker du at overskrive "
-"denne?"
+msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr "Fil \"%s\" er ikke en gyldig baggrundsfilliste.  Ønsker du at overskrive denne?"
 
 #: ../settings/main.c:533
 msgid "Invalid List File"
@@ -266,11 +263,8 @@ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr "Angiver den \"højre\" eller \"'bund\" af farveaftagningen"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
-msgid ""
-"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr ""
-"Angiver den ensartede farve, eller \"venstre\" eller \"'top\" af "
-"farveaftagningen"
+msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr "Angiver den ensartede farve, eller \"venstre\" eller \"'top\" af farveaftagningen"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid "Specify how the image will be resized to fit the screen"
@@ -426,11 +420,8 @@ msgid "Show workspace _names in list"
 msgstr "Vis arbejdsområde_navne på liste"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
-msgid ""
-"Specify the transparency level for the rounded label drawn behind the icon "
-"text"
-msgstr ""
-"Angiv det gennemsigtige niveau til afrundet mærkat trukket bag ikonteksten"
+msgid "Specify the transparency level for the rounded label drawn behind the icon text"
+msgstr "Angiv det gennemsigtige niveau til afrundet mærkat trukket bag ikonteksten"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "Use _submenus for the windows in each workspace"
@@ -586,11 +577,8 @@ msgid "Desktop Folder Error"
 msgstr "Skrivebordsmappefejl"
 
 #: ../src/xfdesktop-file-icon-manager.c:489
-msgid ""
-"A normal file with the same name already exists. Please delete or rename it."
-msgstr ""
-"En standard fil med det samme navn findes allerede. Du bedes enten slette "
-"eller omdøbe den."
+msgid "A normal file with the same name already exists. Please delete or rename it."
+msgstr "En standard fil med det samme navn findes allerede. Du bedes enten slette eller omdøbe den."
 
 #: ../src/xfdesktop-file-icon-manager.c:592
 #: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:879
@@ -611,12 +599,8 @@ msgstr "Den valgte fil kunne ikke slettes"
 #: ../src/xfdesktop-file-utils.c:1101 ../src/xfdesktop-file-utils.c:1151
 #: ../src/xfdesktop-file-utils.c:1228 ../src/xfdesktop-file-utils.c:1289
 #: ../src/xfdesktop-file-utils.c:1362 ../src/xfdesktop-file-utils.c:1440
-msgid ""
-"This feature requires a file manager service to be present (such as the one "
-"supplied by Thunar)."
-msgstr ""
-"Denne egenskab kræver at en filhåndteringsservice er tilstede (som den "
-"Thunar levererer)."
+msgid "This feature requires a file manager service to be present (such as the one supplied by Thunar)."
+msgstr "Denne egenskab kræver at en filhåndteringsservice er tilstede (som den Thunar levererer)."
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:738
@@ -646,12 +630,8 @@ msgid "Open With \"%s\""
 msgstr "Åben med \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:986
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
-msgstr ""
-"Kunne ikke starte \"exo-desktop-item-edit\", som er nødvendigt for "
-"oprettelse eller redigering af startere og henvisninger til skrivebordet."
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgstr "Kunne ikke starte \"exo-desktop-item-edit\", som er nødvendigt for oprettelse eller redigering af startere og henvisninger til skrivebordet."
 
 #: ../src/xfdesktop-file-icon-manager.c:1354
 msgid "_Open all"
@@ -781,17 +761,12 @@ msgid "The selected files could not be moved to the trash"
 msgstr "De valgte filer kunne ikke flyttes til papirklurven."
 
 #: ../src/xfdesktop-file-utils.c:896 ../src/xfdesktop-file-utils.c:942
-msgid ""
-"This feature requires a trash service to be present (such as the one "
-"supplied by Thunar)."
-msgstr ""
-"Denne egenskab kræver at en filhåndteringsservice er tilstede (som den "
-"Thunar levererer)."
+msgid "This feature requires a trash service to be present (such as the one supplied by Thunar)."
+msgstr "Denne egenskab kræver at en filhåndteringsservice er tilstede (som den Thunar levererer)."
 
 #: ../src/xfdesktop-file-utils.c:927 ../src/xfdesktop-file-utils.c:941
-#, fuzzy
 msgid "Could not empty the trash"
-msgstr "Kan ikke oprette skrivebordsmappen \"%s\""
+msgstr "Kan ikke tømme papirkurven"
 
 #: ../src/xfdesktop-file-utils.c:978 ../src/xfdesktop-file-utils.c:993
 msgid "Create File Error"
@@ -848,12 +823,8 @@ msgstr "Afmontering af enhed"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:131
 #, c-format
-msgid ""
-"The device \"%s\" is being unmounted by the system. Please do not remove the "
-"media or disconnect the drive"
-msgstr ""
-"Enheden \"%s\" bliver afmonteret af systemet. Vær venlig ikke at fjerne "
-"mediet eller afbryde drevet"
+msgid "The device \"%s\" is being unmounted by the system. Please do not remove the media or disconnect the drive"
+msgstr "Enheden \"%s\" bliver afmonteret af systemet. Vær venlig ikke at fjerne mediet eller afbryde drevet"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
@@ -863,12 +834,8 @@ msgstr "Skriver data til enhed"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
 #, c-format
-msgid ""
-"There is data that needs to be written to the device \"%s\" before it can be "
-"removed. Please do not remove the media or disconnect the drive"
-msgstr ""
-"Der findes data som skal skrives til enheden \"%s\" før den kan fjernes. Vær "
-"venlig ikke at fjerne mediet eller afbryde drevet"
+msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
+msgstr "Der findes data som skal skrives til enheden \"%s\" før den kan fjernes. Vær venlig ikke at fjerne mediet eller afbryde drevet"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:253
@@ -973,12 +940,8 @@ msgstr "_Montér arkiv"
 #~ msgid "Unable to contact the Xfce Trash service."
 #~ msgstr "Kunne ikke forbinde til Xfce-papirkurvservicen."
 
-#~ msgid ""
-#~ "Make sure you have a file manager installed that supports the Xfce Trash "
-#~ "service, such as Thunar."
-#~ msgstr ""
-#~ "Kontrollér, at du har en filhåndtering som understøtter Xfce-"
-#~ "papirkurvservicen, eksempelvis Thunar."
+#~ msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
+#~ msgstr "Kontrollér, at du har en filhåndtering som understøtter Xfce-papirkurvservicen, eksempelvis Thunar."
 
 #~ msgid "Needs terminal"
 #~ msgstr "Terminal påkrævet"
@@ -1013,10 +976,8 @@ msgstr "_Montér arkiv"
 #~ msgid "Use underline"
 #~ msgstr "Brug understregning"
 
-#~ msgid ""
-#~ "Whether or not to use an underscore in the label as a keyboard mnemonic"
-#~ msgstr ""
-#~ "Om brug af understregning eller ej i titlen som et tastatur-mnemonic"
+#~ msgid "Whether or not to use an underscore in the label as a keyboard mnemonic"
+#~ msgstr "Om brug af understregning eller ej i titlen som et tastatur-mnemonic"
 
 #~ msgid "Unable to launch xfce4-menueditor: %s"
 #~ msgstr "Kunne ikke starte Xfce4-menuredigering: %s"
@@ -1085,36 +1046,25 @@ msgstr "_Montér arkiv"
 #~ msgstr "Tilvalgmuligheder er:\n"
 
 #~ msgid "    --reload      Reload all settings, refresh image list\n"
-#~ msgstr ""
-#~ "    --reload      Genindlæs alle indstillinger og genopfrisk "
-#~ "billledliste\n"
+#~ msgstr "    --reload      Genindlæs alle indstillinger og genopfrisk billledliste\n"
 
 #~ msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 #~ msgstr "    --menu        Åben menuen (på musens nuværende position)\n"
 
-#~ msgid ""
-#~ "    --windowlist  Pop up the window list (at the current mouse position)\n"
-#~ msgstr ""
-#~ "    --windowlist  Åben vindueslisten (på musens nuværende position)\n"
+#~ msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
+#~ msgstr "    --windowlist  Åben vindueslisten (på musens nuværende position)\n"
 
 #~ msgid "    --quit        Cause xfdesktop to quit\n"
 #~ msgstr "    --quit        Vil afslutte xfdesktop\n"
 
-#~ msgid ""
-#~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-#~ msgstr ""
-#~ "Xfdesktop kunne ikke oprette mappen \"%s\" til at gemme "
-#~ "skrivebordselementer:"
+#~ msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+#~ msgstr "Xfdesktop kunne ikke oprette mappen \"%s\" til at gemme skrivebordselementer:"
 
 #~ msgid "Create Folder Failed"
 #~ msgstr "Kunne ikke oprette mappe"
 
-#~ msgid ""
-#~ "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not "
-#~ "a folder."
-#~ msgstr ""
-#~ "Xfdesktop kan ikke bruge \"%s\" til at gemme skrivebordselementer, da det "
-#~ "ikke er en mappe."
+#~ msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
+#~ msgstr "Xfdesktop kan ikke bruge \"%s\" til at gemme skrivebordselementer, da det ikke er en mappe."
 
 #~ msgid "Please delete or rename the file."
 #~ msgstr "Slet venligst eller omdøb filen."
@@ -1146,12 +1096,8 @@ msgstr "_Montér arkiv"
 #~ msgid "The application chooser could not be opened."
 #~ msgstr "Programvælgeren kunne ikke startes."
 
-#~ msgid ""
-#~ "This feature requires a file manager service present (such as that "
-#~ "supplied by Thunar)."
-#~ msgstr ""
-#~ "Denne egenskab kræver at en filhåndteringsservice er tilstede (som den "
-#~ "Thunar levererer)."
+#~ msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
+#~ msgstr "Denne egenskab kræver at en filhåndteringsservice er tilstede (som den Thunar levererer)."
 
 #~ msgid "Unable to create folder named \"%s\":"
 #~ msgstr "Kunne ikke oprette mappe navngivet \"%s\":"
@@ -1604,14 +1550,8 @@ msgstr "_Montér arkiv"
 #~ msgid "xfce4-menueditor is deprecated"
 #~ msgstr "Xfce4-menuredigering er forældet"
 
-#~ msgid ""
-#~ "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
-#~ "edit the new menu file format.  You may continue and edit an old-style "
-#~ "menu file, or quit."
-#~ msgstr ""
-#~ "Xfce's menusystem er blevet udskiftet, og Xfce4-menuredigering er ikke i "
-#~ "stand til at redigere det nye menufilformat. Du kan fortsætte med at "
-#~ "redigere en forældet menufil eller afslutte."
+#~ msgid "Xfce's menu system has been replaced, and xfce4-menueditor is not able to edit the new menu file format.  You may continue and edit an old-style menu file, or quit."
+#~ msgstr "Xfce's menusystem er blevet udskiftet, og Xfce4-menuredigering er ikke i stand til at redigere det nye menufilformat. Du kan fortsætte med at redigere en forældet menufil eller afslutte."
 
 #~ msgid "Continue"
 #~ msgstr "Fortsæt"
