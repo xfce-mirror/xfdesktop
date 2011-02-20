@@ -11,6 +11,8 @@ Xfdesktop 4.x.y
   * Fix crash when cancelling a file download (bug #6876).
   * Properly invalidate tooltips on file changes.
   * Make sure the background is reloaded on compositing changes.
+  * Fix a crash on focus in when items are selected (bug #7313).
+    Reported and fixed by Ambroz Bizjak.
 
 
 Xfdesktop 4.8.0
