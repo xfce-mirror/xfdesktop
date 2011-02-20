@@ -126,8 +126,6 @@ struct _XfdesktopIconViewPrivate
     
     guint grid_resize_timeout;
     
-    GHashTable *repaint_queue;
-    
     GtkSelectionMode sel_mode;
     guint maybe_begin_drag:1,
           definitely_dragging:1,
@@ -292,7 +290,6 @@ static void xfdesktop_screen_size_changed_cb(GdkScreen *gscreen,
 static GdkFilterReturn xfdesktop_rootwin_watch_workarea(GdkXEvent *gxevent,
                                                         GdkEvent *event,
                                                         gpointer user_data);
-static gboolean xfdesktop_icon_view_repaint_queued_icon(gpointer user_data);
 static gboolean xfdesktop_get_workarea_single(XfdesktopIconView *icon_view,
                                               guint ws_num,
                                               gint *xorigin,
@@ -305,7 +302,6 @@ static inline gboolean xfdesktop_rectangle_contains_point(GdkRectangle *rect,
                                                           gint y);
 static void xfdesktop_icon_view_modify_font_size(XfdesktopIconView *icon_view,
                                                  gdouble size);
-static void xfdesktop_ird_free(XfdesktopIdleRepaintData *ird);
 static void xfdesktop_icon_view_add_item_internal(XfdesktopIconView *icon_view,
                                                   XfdesktopIcon *icon);
 static gboolean xfdesktop_icon_view_icon_find_position(XfdesktopIconView *icon_view,
@@ -617,11 +613,6 @@ xfdesktop_icon_view_init(XfdesktopIconView *icon_view)
                                                   XFDESKTOP_TYPE_ICON_VIEW,
                                                   XfdesktopIconViewPrivate);
     
-    icon_view->priv->repaint_queue = g_hash_table_new_full(g_direct_hash,
-                                                           g_direct_equal,
-                                                           NULL,
-                                                           (GDestroyNotify)xfdesktop_ird_free);
-    
     icon_view->priv->icon_size = DEFAULT_ICON_SIZE;
     icon_view->priv->font_size = DEFAULT_FONT_SIZE;
 
@@ -659,8 +650,6 @@ xfdesktop_icon_view_finalize(GObject *obj)
     gtk_target_list_unref(icon_view->priv->native_targets);
     gtk_target_list_unref(icon_view->priv->source_targets);
     gtk_target_list_unref(icon_view->priv->dest_targets);
-    
-    g_hash_table_destroy(icon_view->priv->repaint_queue);
     
     g_list_foreach(icon_view->priv->pending_icons, (GFunc)g_object_unref, NULL);
     g_list_free(icon_view->priv->pending_icons);
@@ -764,9 +753,6 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
                 icon_view->priv->press_start_x = evt->x;
                 icon_view->priv->press_start_y = evt->y;
             } else if(evt->button == 3) {
-                /* avoid repaint delay -- FIXME: why the hell is this here? */
-                while(gtk_events_pending())
-                    gtk_main_iteration();
                 /* XfceDesktop will handle signalling the icon view manager
                  * to show the context menu */
                 return FALSE;
@@ -868,9 +854,6 @@ xfdesktop_icon_view_focus_in(GtkWidget *widget,
     
     for(l = icon_view->priv->selected_icons; l; l = l->next) {
         xfdesktop_icon_view_invalidate_icon(icon_view, l->data, FALSE);
-        /* FIXME: hack */
-        while(gtk_events_pending())
-            gtk_main_iteration();
     }
     
     return FALSE;
@@ -889,9 +872,6 @@ xfdesktop_icon_view_focus_out(GtkWidget *widget,
 
     for(l = icon_view->priv->selected_icons; l; l = l->next) {
         xfdesktop_icon_view_invalidate_icon(icon_view, l->data, FALSE);
-        /* FIXME: hack */
-        while(gtk_events_pending())
-            gtk_main_iteration();
     }
 
     return FALSE;
@@ -1185,10 +1165,6 @@ xfdesktop_icon_view_clear_drag_highlight(XfdesktopIconView *icon_view,
                                cell_highlight->y + cell_highlight->height,
                                cell_highlight->width + 1,  /* why? */
                                1);
-
-    /* FIXME: hack */
-    while(gtk_events_pending())
-        gtk_main_iteration();
     
     cell_highlight->width = cell_highlight->height = 0;
 }
@@ -1896,9 +1872,6 @@ xfdesktop_icon_view_select_between(XfdesktopIconView *icon_view,
                 icon = xfdesktop_icon_view_icon_in_cell(icon_view, i, j);
                 if(icon) {
                     xfdesktop_icon_view_select_item(icon_view, icon);
-                    /* FIXME: hack */
-                    while(gtk_events_pending())
-                        gtk_main_iteration();
                 }
             }
         }
@@ -2162,50 +2135,35 @@ xfdesktop_screen_size_changed_cb(GdkScreen *gscreen,
 }
 
 static void
-xfdesktop_ird_free(XfdesktopIdleRepaintData *ird)
-{
-    if(ird->source_id)
-        g_source_remove(ird->source_id);
-    
-    g_slice_free(XfdesktopIdleRepaintData, ird);
-}
-
-static void
 xfdesktop_icon_view_repaint_icons(XfdesktopIconView *icon_view,
                                   GdkRectangle *area)
 {
     GdkRectangle extents, dummy;
     GList *l;
     XfdesktopIcon *icon;
-
+    
+    /* fist paint non-selected items, then paint selected items */
     for(l = icon_view->priv->icons; l; l = l->next) {
         icon = (XfdesktopIcon *)l->data;
+        if (g_list_find(icon_view->priv->selected_icons, icon))
+            continue;
 
         if(!xfdesktop_icon_get_extents(icon, NULL, NULL, &extents)
            || gdk_rectangle_intersect(area, &extents, &dummy))
         {
-            /* we can't idle repaint icons while we're rubber banding, or
-             * we get nasty artifacts */
-            if(!icon_view->priv->definitely_rubber_banding
-               && g_list_find(icon_view->priv->selected_icons, icon))
-            {
-                /* save it for last to avoid painting another icon over top of
-                 * part of this one if it has an overly-large label */
-                guint source_id;
-                XfdesktopIdleRepaintData *ird;
+            xfdesktop_icon_view_paint_icon(icon_view, icon, area);
+        }
+    }
+    
+    for(l = icon_view->priv->icons; l; l = l->next) {
+        icon = (XfdesktopIcon *)l->data;
+        if (!g_list_find(icon_view->priv->selected_icons, icon))
+            continue;
 
-                ird = g_slice_new0(XfdesktopIdleRepaintData);
-                ird->icon_view = icon_view;
-                ird->icon = icon;
-                memcpy(&ird->area, area, sizeof(GdkRectangle));
-
-                source_id = g_idle_add(xfdesktop_icon_view_repaint_queued_icon,
-                                       ird);
-                ird->source_id = source_id;
-
-                g_hash_table_replace(icon_view->priv->repaint_queue, icon, ird);
-            } else
-                xfdesktop_icon_view_paint_icon(icon_view, icon, area);
+        if(!xfdesktop_icon_get_extents(icon, NULL, NULL, &extents)
+           || gdk_rectangle_intersect(area, &extents, &dummy))
+        {
+            xfdesktop_icon_view_paint_icon(icon_view, icon, area);
         }
     }
 }
@@ -2820,21 +2778,6 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
 #endif
 }
 
-static gboolean
-xfdesktop_icon_view_repaint_queued_icon(gpointer user_data)
-{
-    XfdesktopIdleRepaintData *ird = user_data;
-    
-    xfdesktop_icon_view_paint_icon(ird->icon_view, ird->icon, &ird->area);
-    
-    ird->source_id = 0;
-    
-    /* this frees |ird| */
-    g_hash_table_remove(ird->icon_view->priv->repaint_queue, ird->icon);
-    
-    return FALSE;
-}
-
 static void
 xfdesktop_grid_do_resize(XfdesktopIconView *icon_view)
 {
@@ -3256,8 +3199,6 @@ xfdesktop_icon_view_remove_item(XfdesktopIconView *icon_view,
     
     l = g_list_find(icon_view->priv->icons, icon);
     if(l) {
-        g_hash_table_remove(icon_view->priv->repaint_queue, icon);
-        
         g_signal_handlers_disconnect_by_func(G_OBJECT(icon),
                                              G_CALLBACK(xfdesktop_icon_view_icon_changed),
                                              icon_view);
@@ -3299,9 +3240,6 @@ xfdesktop_icon_view_remove_all(XfdesktopIconView *icon_view)
     guint16 row, col;
     
     g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view));
-    
-    g_hash_table_foreach_remove(icon_view->priv->repaint_queue,
-                                (GHRFunc)gtk_true, NULL);
     
     if(icon_view->priv->pending_icons) {
         g_list_foreach(icon_view->priv->pending_icons, (GFunc)g_object_unref,
