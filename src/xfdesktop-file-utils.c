@@ -212,10 +212,11 @@ xfdesktop_file_utils_get_display_name(GFile *file,
         key_file = xfdesktop_file_utils_query_key_file(file, NULL, NULL);
         if(key_file) {
             /* try to parse the display name */
-            display_name = g_key_file_get_string(key_file, 
-                                                 G_KEY_FILE_DESKTOP_GROUP,
-                                                 G_KEY_FILE_DESKTOP_KEY_NAME,
-                                                 NULL);
+            display_name = g_key_file_get_locale_string(key_file, 
+                                                        G_KEY_FILE_DESKTOP_GROUP,
+                                                        G_KEY_FILE_DESKTOP_KEY_NAME,
+                                                        NULL,
+                                                        NULL);
             
             /* free the key file */
             g_key_file_free (key_file);
