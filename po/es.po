@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-11 11:12+0000\n"
+"POT-Creation-Date: 2011-03-11 17:12+0000\n"
 "PO-Revision-Date: 2009-12-18 19:06+0100\n"
 "Last-Translator: Abel Martín Ruiz <abel.martin.ruiz@gmail.com>\n"
 "Language-Team: Spanish/ES <xfce-i18n@xfce.org>\n"
@@ -761,7 +761,6 @@ msgid "The selected files could not be moved to the trash"
 msgstr "Los archivos seleccionados no pueden ser movidos a la papelera"
 
 #: ../src/xfdesktop-file-utils.c:896 ../src/xfdesktop-file-utils.c:942
-#, fuzzy
 msgid "This feature requires a trash service to be present (such as the one supplied by Thunar)."
 msgstr "Esta funcionalidad necesita la presencia de un servicio de papelera de archivos (como el proporcionado por Thunar)."
 
@@ -804,7 +803,7 @@ msgstr "Fallo al ejecutar \"%s\""
 
 #: ../src/xfdesktop-file-utils.c:1273 ../src/xfdesktop-file-utils.c:1288
 msgid "The application chooser could not be opened"
-msgstr ""
+msgstr "El selector de aplicaciones no "
 
 #: ../src/xfdesktop-file-utils.c:1346 ../src/xfdesktop-file-utils.c:1360
 #: ../src/xfdesktop-file-utils.c:1422 ../src/xfdesktop-file-utils.c:1438
@@ -825,29 +824,29 @@ msgstr "Desmontando dispositivo"
 #: ../src/xfdesktop-notify.c:131
 #, c-format
 msgid "The device \"%s\" is being unmounted by the system. Please do not remove the media or disconnect the drive"
-msgstr ""
+msgstr "El dispositivo \"%s\" esta siendo desmontando por el sistema. Por favor no extraiga el soporte o desconecte el dispositivo"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
 msgid "Writing data to device"
-msgstr ""
+msgstr "Escribiendo datos en el dispositivo"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
 #, c-format
 msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
-msgstr ""
+msgstr "Hay datos que deben ser escritos en el dispositivo \"%s\" antes de que pueda ser desconectado. Por favor, no extraiga el soporte ni desconecte el dispositivo."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:253
 msgid "Ejecting device"
-msgstr ""
+msgstr "Expulsando dispositivo"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:256
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
-msgstr ""
+msgstr "El dispositivo \"%s\" esta siendo expulsado. Esto puede llevar algo de tiempo"
 
 #: ../src/xfdesktop-regular-file-icon.c:472
 #, c-format
@@ -856,25 +855,27 @@ msgid ""
 "Size: %s\n"
 "Last modified: %s"
 msgstr ""
+"Tipo: %s\n"
+"Tamaño: %s\n"
+"Fecha de modificación: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:258
 #: ../src/xfdesktop-special-file-icon.c:417
-#, fuzzy
 msgid "File System"
 msgstr "Sistema de archivos"
 
 #: ../src/xfdesktop-special-file-icon.c:402
 msgid "Trash is empty"
-msgstr ""
+msgstr "La papelera está vacía"
 
 #: ../src/xfdesktop-special-file-icon.c:405
 msgid "Trash contains one item"
-msgstr ""
+msgstr "La papelera contiene un solo ítem"
 
 #: ../src/xfdesktop-special-file-icon.c:406
 #, c-format
 msgid "Trash contains %d items"
-msgstr ""
+msgstr "La papelera contiene %d ítems"
 
 #: ../src/xfdesktop-special-file-icon.c:434
 #, c-format
@@ -883,45 +884,46 @@ msgid ""
 "Size: %s\n"
 "Last modified: %s"
 msgstr ""
+"%s\n"
+"Tamaño: %s\n"
+"Fecha de modificación: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:507
 msgid "_Empty Trash"
 msgstr "_Vaciar papelera"
 
 #: ../src/xfdesktop-volume-icon.c:423
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Removable Volume\n"
 "Mounted in \"%s\"\n"
 "%s left (%s total)"
 msgstr ""
-"Tipo: volumen extraíble\n"
+"Volumen extraíble\n"
 "Punto de montaje: %s\n"
-"Espacio libre: %s"
+"Espacio libre: %s (total: %s)"
 
 #: ../src/xfdesktop-volume-icon.c:430
-#, fuzzy
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
 msgstr ""
-"Tipo: volumen extraíble\n"
-"Punto de montaje: %s\n"
-"Espacio libre: %s"
+"Volumen extraíble\n"
+"Aún no montado"
 
 #: ../src/xfdesktop-volume-icon.c:456 ../src/xfdesktop-volume-icon.c:498
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to eject \"%s\""
-msgstr "No se pudo expulsar \"%s\":"
+msgstr "No se pudo expulsar \"%s\""
 
 #: ../src/xfdesktop-volume-icon.c:461 ../src/xfdesktop-volume-icon.c:503
 msgid "Eject Failed"
 msgstr "Fallo al expulsar"
 
 #: ../src/xfdesktop-volume-icon.c:535
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to mount \"%s\""
-msgstr "Fallo al ejecutar \"%s\""
+msgstr "No se pudo montar \"%s\""
 
 #: ../src/xfdesktop-volume-icon.c:538
 msgid "Mount Failed"
