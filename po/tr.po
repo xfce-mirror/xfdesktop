@@ -484,9 +484,9 @@ msgid "Cause xfdesktop to quit"
 msgstr "    --quit        Xfdesktop'ın kapanmasına neden olur\n"
 
 #: ../src/main.c:262
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to parse arguments: %s\n"
-msgstr "\"%s\" başlatılamadı:"
+msgstr "Argüman ayrıştırması başarısız: %s\n"
 
 #: ../src/main.c:270
 #, c-format
@@ -579,9 +579,9 @@ msgstr "Masaüstü Hatası"
 
 #: ../src/xfdesktop-file-icon-manager.c:465
 #: ../src/xfdesktop-file-icon-manager.c:482
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create the desktop folder \"%s\""
-msgstr "Arka plan listesi oluşturulamadı: \"%s\""
+msgstr "Masaüstü dizini oluşturulamadı: \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:470
 #: ../src/xfdesktop-file-icon-manager.c:487
@@ -717,9 +717,8 @@ msgid "Load Error"
 msgstr "Yükleme Hatası"
 
 #: ../src/xfdesktop-file-icon-manager.c:2236
-#, fuzzy
 msgid "Failed to load the desktop folder"
-msgstr "Arka plan listesi oluşturulamadı: \"%s\""
+msgstr "Masaüstü dizini yüklenemedi"
 
 #. TRANSLATORS: file was modified less than one day ago
 #: ../src/xfdesktop-file-utils.c:137
@@ -747,9 +746,8 @@ msgstr "%x %X'de"
 
 #. the file_time is invalid
 #: ../src/xfdesktop-file-utils.c:159
-#, fuzzy
 msgid "Unknown"
-msgstr "(bilinmeyen)"
+msgstr "Bilinmeyen"
 
 #: ../src/xfdesktop-file-utils.c:712 ../src/xfdesktop-file-utils.c:727
 msgid "The folder could not be opened"
@@ -760,23 +758,20 @@ msgid "Rename Error"
 msgstr "Yeniden Adlandırma Hatası"
 
 #: ../src/xfdesktop-file-utils.c:762 ../src/xfdesktop-file-utils.c:777
-#, fuzzy
 msgid "The file could not be renamed"
-msgstr "Uygulama seçicisi açılamadı."
+msgstr "Dosya yeniden adlandırılamadı"
 
 #: ../src/xfdesktop-file-utils.c:820 ../src/xfdesktop-file-utils.c:835
 msgid "Delete Error"
 msgstr "Silme Hatası"
 
 #: ../src/xfdesktop-file-utils.c:821 ../src/xfdesktop-file-utils.c:836
-#, fuzzy
 msgid "The selected files could not be deleted"
-msgstr "İlişkilendirilen uygulama bulunamadı veya öldürülmüş."
+msgstr "Seçilen dosyalar silinemedi"
 
 #: ../src/xfdesktop-file-utils.c:880 ../src/xfdesktop-file-utils.c:895
-#, fuzzy
 msgid "The selected files could not be moved to the trash"
-msgstr "Uygulama seçicisi açılamadı."
+msgstr "Seçilen dosyalar çöp kutusuna taşınamadı"
 
 #: ../src/xfdesktop-file-utils.c:896 ../src/xfdesktop-file-utils.c:942
 #, fuzzy
@@ -784,14 +779,12 @@ msgid "This feature requires a trash service to be present (such as the one supp
 msgstr "Bu özellik dosya yöneticisi servisi gerektirir (Thunar gibi)"
 
 #: ../src/xfdesktop-file-utils.c:927 ../src/xfdesktop-file-utils.c:941
-#, fuzzy
 msgid "Could not empty the trash"
-msgstr "Arka plan listesi oluşturulamadı: \"%s\""
+msgstr "Çöp Kutusu boşaltılamadı"
 
 #: ../src/xfdesktop-file-utils.c:978 ../src/xfdesktop-file-utils.c:993
-#, fuzzy
 msgid "Create File Error"
-msgstr "Oluşturma Hatası"
+msgstr "Dosya Oluşturma Hatası"
 
 #: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:994
 #, fuzzy
@@ -799,9 +792,8 @@ msgid "Could not create a new file"
 msgstr "Arka plan listesi oluşturulamadı: \"%s\""
 
 #: ../src/xfdesktop-file-utils.c:1034 ../src/xfdesktop-file-utils.c:1049
-#, fuzzy
 msgid "Create Document Error"
-msgstr "Oluşturma Hatası"
+msgstr "Dökuman Oluşturma Hatası"
 
 #: ../src/xfdesktop-file-utils.c:1035 ../src/xfdesktop-file-utils.c:1050
 #, fuzzy
@@ -809,35 +801,30 @@ msgid "Could not create a new document from the template"
 msgstr "\"%s\" şablonundan Döküman Oluştur"
 
 #: ../src/xfdesktop-file-utils.c:1084 ../src/xfdesktop-file-utils.c:1099
-#, fuzzy
 msgid "File Properties Error"
-msgstr "Seçenekler Hatası"
+msgstr "Dosya Seçenekleri Hatası"
 
 #: ../src/xfdesktop-file-utils.c:1085 ../src/xfdesktop-file-utils.c:1100
-#, fuzzy
 msgid "The file properties dialog could not be opened"
-msgstr "Uygulama seçicisi açılamadı."
+msgstr "Dosya özellikleri penceresi açılamadı"
 
 #: ../src/xfdesktop-file-utils.c:1135 ../src/xfdesktop-file-utils.c:1150
-#, fuzzy
 msgid "The file could not be opened"
-msgstr "Uygulama seçicisi açılamadı."
+msgstr "Dosya açılamadı"
 
 #: ../src/xfdesktop-file-utils.c:1198 ../src/xfdesktop-file-utils.c:1223
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to run \"%s\""
 msgstr "\"%s\" başlatılamadı:"
 
 #: ../src/xfdesktop-file-utils.c:1273 ../src/xfdesktop-file-utils.c:1288
-#, fuzzy
 msgid "The application chooser could not be opened"
 msgstr "Uygulama seçicisi açılamadı."
 
 #: ../src/xfdesktop-file-utils.c:1346 ../src/xfdesktop-file-utils.c:1360
 #: ../src/xfdesktop-file-utils.c:1422 ../src/xfdesktop-file-utils.c:1438
-#, fuzzy
 msgid "Transfer Error"
-msgstr "Çöp Hatası"
+msgstr "Taşıma Hatası"
 
 #: ../src/xfdesktop-file-utils.c:1347 ../src/xfdesktop-file-utils.c:1361
 #: ../src/xfdesktop-file-utils.c:1423 ../src/xfdesktop-file-utils.c:1439
@@ -855,7 +842,7 @@ msgstr "Kaldırma Başarısız"
 #: ../src/xfdesktop-notify.c:131
 #, c-format
 msgid "The device \"%s\" is being unmounted by the system. Please do not remove the media or disconnect the drive"
-msgstr ""
+msgstr "\"%s\" aygıtı sistemden is being unmounted by the system. Please do not remove the media or disconnect the drive"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
