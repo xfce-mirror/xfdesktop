@@ -787,9 +787,8 @@ msgid "Create File Error"
 msgstr "Dosya Oluşturma Hatası"
 
 #: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:994
-#, fuzzy
 msgid "Could not create a new file"
-msgstr "Arka plan listesi oluşturulamadı: \"%s\""
+msgstr "Yeni dosya oluşturulamadı"
 
 #: ../src/xfdesktop-file-utils.c:1034 ../src/xfdesktop-file-utils.c:1049
 msgid "Create Document Error"
@@ -834,9 +833,8 @@ msgstr "Uygulama seçicisi açılamadı."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:128
-#, fuzzy
 msgid "Unmounting device"
-msgstr "Kaldırma Başarısız"
+msgstr "Aygıt ayrılıyor"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:131
@@ -857,9 +855,8 @@ msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:253
-#, fuzzy
 msgid "Ejecting device"
-msgstr "Kaldırma Başarısız"
+msgstr "Aygıt çıkarılıyor"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:256
@@ -880,9 +877,8 @@ msgstr ""
 
 #: ../src/xfdesktop-special-file-icon.c:258
 #: ../src/xfdesktop-special-file-icon.c:417
-#, fuzzy
 msgid "File System"
-msgstr "Dosya sistemi"
+msgstr "Dosya Sistemi"
 
 #: ../src/xfdesktop-special-file-icon.c:402
 msgid "Trash is empty"
@@ -934,18 +930,18 @@ msgstr ""
 "Boş Alan:%s"
 
 #: ../src/xfdesktop-volume-icon.c:456 ../src/xfdesktop-volume-icon.c:498
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to eject \"%s\""
-msgstr "\"%s\" çıkartılamıyor:"
+msgstr "\"%s\" çıkartılamadı"
 
 #: ../src/xfdesktop-volume-icon.c:461 ../src/xfdesktop-volume-icon.c:503
 msgid "Eject Failed"
 msgstr "Çıkartma Başarısız"
 
 #: ../src/xfdesktop-volume-icon.c:535
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to mount \"%s\""
-msgstr "\"%s\" başlatılamadı:"
+msgstr "\"%s\" bağlanamadı"
 
 #: ../src/xfdesktop-volume-icon.c:538
 msgid "Mount Failed"
