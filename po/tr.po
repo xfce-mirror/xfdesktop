@@ -477,7 +477,7 @@ msgstr "Pencere listesini aç (fare imleci konumunda)"
 #: ../src/main.c:242
 #, fuzzy
 msgid "Cause xfdesktop to quit"
-msgstr " Xfdesktop'ın kapanmasına neden olur\n"
+msgstr " xfdesktop'ın kapanmasına neden olur\n"
 
 #: ../src/main.c:262
 #, c-format
@@ -843,9 +843,9 @@ msgstr "Aygıta veri yazmak"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
-#, c-format
+#, c-format, fuzzy
 msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
-msgstr ""
+msgstr "\"%s\" aygıtı çıkartılmadan önce bazı verilerin yazılması gerekiyor. Lütfen ortam aygıtını çıkarmayın veya sürücünün bağlantısını kesmeyin."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:253
