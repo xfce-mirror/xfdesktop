@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-17 05:32+0000\n"
+"POT-Creation-Date: 2011-03-18 23:47+0000\n"
 "PO-Revision-Date: 2009-10-14 15:09+0200\n"
 "Last-Translator: Ertuğrul HAZAR <ertugrulhazar@gmail.com>\n"
 "Language-Team: Turkish <turkce@pardus.org.tr>\n"
@@ -475,9 +475,8 @@ msgid "Pop up the window list (at the current mouse position)"
 msgstr "Pencere listesini aç (fare imleci konumunda)"
 
 #: ../src/main.c:242
-#, fuzzy
 msgid "Cause xfdesktop to quit"
-msgstr " xfdesktop'ın kapanmasına neden olur\n"
+msgstr " xfdesktop'ın kapanmasına neden olur"
 
 #: ../src/main.c:262
 #, c-format
@@ -607,7 +606,6 @@ msgstr "Seçilen dosyalar silinemedi"
 #: ../src/xfdesktop-file-utils.c:1101 ../src/xfdesktop-file-utils.c:1151
 #: ../src/xfdesktop-file-utils.c:1228 ../src/xfdesktop-file-utils.c:1289
 #: ../src/xfdesktop-file-utils.c:1362 ../src/xfdesktop-file-utils.c:1440
-#, fuzzy
 msgid "This feature requires a file manager service to be present (such as the one supplied by Thunar)."
 msgstr "Bu özellik dosya yöneticisi servisi gerektirir (Thunar gibi)"
 
@@ -770,9 +768,8 @@ msgid "The selected files could not be moved to the trash"
 msgstr "Seçilen dosyalar çöp kutusuna taşınamadı"
 
 #: ../src/xfdesktop-file-utils.c:896 ../src/xfdesktop-file-utils.c:942
-#, fuzzy
 msgid "This feature requires a trash service to be present (such as the one supplied by Thunar)."
-msgstr "Bu özellik dosya yöneticisi servisi gerektirir (Thunar gibi)"
+msgstr ""
 
 #: ../src/xfdesktop-file-utils.c:927 ../src/xfdesktop-file-utils.c:941
 msgid "Could not empty the trash"
@@ -843,7 +840,7 @@ msgstr "Aygıta veri yazmak"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
-#, c-format, fuzzy
+#, c-format
 msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
 msgstr "\"%s\" aygıtı çıkartılmadan önce bazı verilerin yazılması gerekiyor. Lütfen ortam aygıtını çıkarmayın veya sürücünün bağlantısını kesmeyin."
 
@@ -903,25 +900,23 @@ msgid "_Empty Trash"
 msgstr "Çöpü _Boşalt"
 
 #: ../src/xfdesktop-volume-icon.c:423
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Removable Volume\n"
 "Mounted in \"%s\"\n"
 "%s left (%s total)"
 msgstr ""
-"Tür: Çıkartılabilir Birim\n"
-"Bağlama Noktası:%s\n"
-"Boş Alan:%s"
+"Çıkartılabilir Aygıt\n"
+"Bağlama Noktası: \"%s\"\n"
+"Boş Alan: %s (Toplam Alan: %s)"
 
 #: ../src/xfdesktop-volume-icon.c:430
-#, fuzzy
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
 msgstr ""
-"Tür: Çıkartılabilir Birim\n"
-"Bağlama Noktası:%s\n"
-"Boş Alan:%s"
+"Çıkartılabilir Aygıt\n"
+"Bağlı değil"
 
 #: ../src/xfdesktop-volume-icon.c:456 ../src/xfdesktop-volume-icon.c:498
 #, c-format
