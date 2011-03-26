@@ -202,7 +202,7 @@ msgstr "Menünün yapılandırma dosyası olan <filename>xfce-applications.menu<
 
 #: ./xfdesktop.xml185(para)
 msgid "The previous menu editor is not available anymore. However you can customize your menu by copying <filename>xfce-applications.menu</filename> to <filename>$XDG_CONFIG_HOME/menus</filename> and by modifying it with a text editor such as <application>mousepad</application> or <application>gedit</application>. Please remember that the file should be UTF-8 encoded. For more information on menu editing, please see <ulink url=\"http://wiki.xfce.org/howto/customize-menu\" type=\"http\">the Xfce Wiki</ulink>."
-msgstr ""
+msgstr "Eski menü düzenleyici artık bulunmasa da <filename>xfce-applications.menu</filename> dosyasını <filename>$XDG_CONFIG_HOME/menus</filename> dizinine kopyalayarak <application>mousepad</application> ya da <application>gedit</application> gibi bir editörle düzenleyerek menüzünü özelleştirebilirsiniz. Dosyanın UTF-8 ile kodlanması gerektiğini unutmayın. Menü düzenlemek hakkında detaylı bilgi <ulink url=\"http://wiki.xfce.org/howto/customize-menu\" type=\"http\">Xfce Wiki</ulink>sinde bulunmaktadır."
 
 #: ./xfdesktop.xml197(para)
 msgid "Further customisation can be achived by creating <ulink url=\"http://standards.freedesktop.org/desktop-entry-spec/latest/\" type=\"http\">desktop entries</ulink> in <filename>$XDG_DATA_HOME/applications</filename> to hide, modify or add entries in the menu."
@@ -291,7 +291,7 @@ msgstr ""
 #. To be confirmed as I don't have multiscreen
 #: ./xfdesktop.xml334(para)
 msgid "<application>@PACKAGE_NAME@</application> supports xinerama and multiscreen modes. In multiscreen mode, the Background tab shows one tab per screen."
-msgstr ""
+msgstr "<application>@PACKAGE_NAME@</application> uygulaması xinerama ve çoklu ekran modlarını destekler. Çoklu ekran modunda Background sekmesi her ekran için bir sekme gösterir."
 
 #: ./xfdesktop.xml342(term)
 msgid "Colors"
@@ -299,11 +299,11 @@ msgstr "Renkler"
 
 #: ./xfdesktop.xml344(para)
 msgid "The color style is one of four options in dropping list: a solid color, horizontal gradient, vertical gradient, or transparent."
-msgstr ""
+msgstr "Renk sitili dört farklı seçenekten biri olabilir: düz renk, yatay değişim, dikey değişim ve şeffaf."
 
 #: ./xfdesktop.xml350(para)
 msgid "The <emphasis>\"Transparent\"</emphasis> option, when you use a colored background without backdrop image, allows you to see the windows that are under the transparent desktop window. This requires an activated compositor."
-msgstr ""
+msgstr "Şeffaf seçeneğinde, eğer bir duvar kağıdı olmadan renkli bir masaüstü kullanıyorsanız şeffaf pencerenin altındaki pencereleri görebilrisiniz."
 
 #: ./xfdesktop.xml357(para)
 msgid "Two colored buttons allow you to choose the colors for your desktop. When the solid color option is selected, only the first color is available. When either of the gradient options are selected, both the first and second colors are available. Both of the color buttons open a color chooser dialog:"
