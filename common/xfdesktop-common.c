@@ -63,16 +63,16 @@ xfdesktop_backdrop_list_is_valid(const gchar *path)
     gchar buf[512];
     gint size;
     gboolean is_list = FALSE;
-    
+
     size = sizeof(LIST_TEXT);
-    
+
     if(!(fp = fopen (path, "r")))
         return FALSE;
-    
+
     if(fgets(buf, size, fp) && !strncmp(LIST_TEXT, buf, size - 1))
         is_list = TRUE;
     fclose(fp);
-    
+
     return is_list;
 }
 
@@ -220,7 +220,7 @@ xfdesktop_backdrop_list_choose_random(const gchar *filename,
 #endif
         __initialized = TRUE;
     }
-    
+
     do {
         if(tries++ == n_items) {
             /* this isn't precise, but if we've failed to get a good
@@ -258,7 +258,7 @@ pixbuf_loader_size_cb(GdkPixbufLoader *loader, gint width, gint height,
         gpointer user_data)
 {
     gboolean *size_read = user_data;
-    
+
     if(width > 0 && height > 0)
         *size_read = TRUE;
 }
@@ -270,18 +270,18 @@ xfdesktop_image_file_is_valid(const gchar *filename)
     int fd;
     gboolean size_read = FALSE;
     guchar buf[4096];
-    gsize len;
+    gssize len;
 
     g_return_val_if_fail(filename, FALSE);
-    
+
     fd = open(filename, O_RDONLY|O_BINARY);
     if(fd < 0)
         return FALSE;
-    
+
     loader = gdk_pixbuf_loader_new();
     g_signal_connect(G_OBJECT(loader), "size-prepared",
             G_CALLBACK(pixbuf_loader_size_cb), &size_read);
-    
+
     do {
         len = read(fd, buf, sizeof(buf));
         if(len > 0) {
@@ -291,11 +291,11 @@ xfdesktop_image_file_is_valid(const gchar *filename)
                 break;
         }
     } while(len > 0);
-    
+
     close(fd);
     gdk_pixbuf_loader_close(loader, NULL);
     g_object_unref(G_OBJECT(loader));
-    
+
     return size_read;
 }
 
@@ -307,7 +307,7 @@ xfdesktop_check_is_running(Window *xid)
     gint xscreen = -1;
     gchar selection_name[100];
     Atom selection_atom;
-    
+
     if(display) {
         if((p=g_strrstr(display, ".")))
             xscreen = atoi(p);
@@ -329,20 +329,20 @@ xfdesktop_send_client_message(Window xid, const gchar *msg)
 {
     GdkEventClient gev;
     GtkWidget *win;
-    
+
     win = gtk_invisible_new();
     gtk_widget_realize(win);
-    
+
     gev.type = GDK_CLIENT_EVENT;
     gev.window = win->window;
     gev.send_event = TRUE;
     gev.message_type = gdk_atom_intern("STRING", FALSE);
     gev.data_format = 8;
     strcpy(gev.data.b, msg);
-    
+
     gdk_event_send_client_message((GdkEvent *)&gev, (GdkNativeWindow)xid);
     gdk_flush();
-    
+
     gtk_widget_destroy(win);
 }
 
