@@ -203,23 +203,13 @@ xfdesktop_window_icon_populate_context_menu(XfdesktopIcon *icon,
 {
     XfdesktopWindowIcon *window_icon = XFDESKTOP_WINDOW_ICON(icon);
     GtkWidget *amenu = wnck_create_window_action_menu(window_icon->priv->window);
-    GList *items, *l;
-    
-    /* this is unfortunately slightly retarded */
-    items = gtk_container_get_children(GTK_CONTAINER(amenu));
-    for(l = items; l; l = l->next) {
-        GtkWidget *mi = l->data;
-        g_object_ref(G_OBJECT(mi));
-        gtk_container_remove(GTK_CONTAINER(amenu), mi);
-        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-        g_object_unref(G_OBJECT(mi));
-    }
-    g_list_free(items);
-    gtk_widget_destroy(amenu);
-    
-    if(!items)
-        return FALSE;
-    
+    GtkWidget *mi;
+
+    mi = gtk_menu_item_new_with_mnemonic("_Window Actions");
+    gtk_menu_item_set_submenu (GTK_MENU_ITEM(mi), amenu);
+    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+    gtk_widget_show_all(mi);
+
     return TRUE;
 }
 
