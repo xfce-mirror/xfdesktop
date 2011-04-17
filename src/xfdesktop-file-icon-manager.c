@@ -1022,6 +1022,10 @@ xfdesktop_file_icon_template_item_activated(GtkWidget *mi,
         xfdesktop_file_utils_create_file_from_template(fmanager->priv->folder, file,
                                                        fmanager->priv->gscreen,
                                                         GTK_WINDOW(toplevel));
+    } else {
+        xfdesktop_file_utils_create_file(fmanager->priv->folder, "text/plain",
+                                         fmanager->priv->gscreen,
+                                         GTK_WINDOW(toplevel));
     }
 }
 
