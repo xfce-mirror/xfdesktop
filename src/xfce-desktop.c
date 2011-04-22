@@ -275,6 +275,7 @@ static void
 set_real_root_window_pixmap(GdkScreen *gscreen,
                             GdkPixmap *pmap)
 {
+#if 0 /* see bug #7442 */
     Window xid;
     GdkWindow *groot;
     
@@ -296,8 +297,9 @@ set_real_root_window_pixmap(GdkScreen *gscreen,
     /* and set the root window's BG pixmap, because aterm is somewhat lame. */
     gdk_window_set_back_pixmap(groot, pmap, FALSE);
     /* there really should be a standard for this crap... */
-    
+
     gdk_error_trap_pop();
+#endif
 }
 
 static void
@@ -805,15 +807,19 @@ xfce_desktop_unrealize(GtkWidget *widget)
             G_CALLBACK(screen_size_changed_cb), desktop);
     g_signal_handlers_disconnect_by_func(G_OBJECT(desktop->priv->gscreen),
             G_CALLBACK(screen_composited_changed_cb), desktop);
+
+    gdk_error_trap_push();
     
     groot = gdk_screen_get_root_window(desktop->priv->gscreen);
     gdk_property_delete(groot, gdk_atom_intern("XFCE_DESKTOP_WINDOW", FALSE));
     gdk_property_delete(groot, gdk_atom_intern("NAUTILUS_DESKTOP_WINDOW_ID", FALSE));
+
+#if 0 /* see bug #7442 */
     gdk_property_delete(groot, gdk_atom_intern("_XROOTPMAP_ID", FALSE));
     gdk_property_delete(groot, gdk_atom_intern("ESETROOT_PMAP_ID", FALSE));
     gdk_window_set_back_pixmap(groot, NULL, FALSE);
-    gdk_flush();
-    
+#endif
+
     if(desktop->priv->backdrops) {
         for(i = 0; i < desktop->priv->nbackdrops; i++) {
             g_snprintf(property_name, 128, XFDESKTOP_IMAGE_FILE_FMT, i);
@@ -823,7 +829,10 @@ xfce_desktop_unrealize(GtkWidget *widget)
         g_free(desktop->priv->backdrops);
         desktop->priv->backdrops = NULL;
     }
-    
+
+    gdk_flush();
+    gdk_error_trap_pop();
+
     g_object_unref(G_OBJECT(desktop->priv->bg_pixmap));
     desktop->priv->bg_pixmap = NULL;
     
