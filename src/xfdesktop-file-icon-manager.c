@@ -1318,7 +1318,7 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
     GFileInfo *info = NULL;
     GList *selected, *app_infos, *l;
     GtkWidget *mi, *img, *tmpl_menu;
-    gboolean multi_sel, have_templates = FALSE, got_custom_menu = FALSE;
+    gboolean multi_sel, got_custom_menu = FALSE;
     GFile *templates_dir = NULL, *home_dir;
     const gchar *templates_dir_path = NULL;
 #ifdef HAVE_THUNARX
@@ -1454,9 +1454,9 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
 
                     if(templates_dir && !g_file_equal(home_dir, templates_dir))
                     {
-                        have_templates = xfdesktop_file_icon_menu_fill_template_menu(tmpl_menu,
-                                                                                     templates_dir,
-                                                                                     fmanager);
+                        xfdesktop_file_icon_menu_fill_template_menu(tmpl_menu,
+                                                                    templates_dir,
+                                                                    fmanager);
                     }
 
                     if(templates_dir)
