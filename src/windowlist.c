@@ -137,8 +137,6 @@ menu_item_from_wnck_window(WnckWindow *wnck_window, gint icon_width,
 {
     GtkWidget *mi, *img = NULL;
     gchar *title;
-    WnckScreen *wnck_screen;
-    WnckWorkspace *wnck_workspace, *active_workspace;
     GString *label;
     GdkPixbuf *icon, *tmp;
     gint w, h;
@@ -150,10 +148,6 @@ menu_item_from_wnck_window(WnckWindow *wnck_window, gint icon_width,
 
     label = g_string_new(title);
     g_free(title);
-
-    wnck_screen = wnck_window_get_screen(wnck_window);
-    active_workspace = wnck_screen_get_active_workspace(wnck_screen);
-    wnck_workspace = wnck_window_get_workspace(wnck_window);
 
     if(wnck_window_is_active(wnck_window)) {
         g_string_prepend(label, "<i>");

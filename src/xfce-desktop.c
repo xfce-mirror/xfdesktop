@@ -716,7 +716,6 @@ xfce_desktop_realize(GtkWidget *widget)
     GdkAtom atom;
     gint sw, sh;
     Window xid;
-    GdkDisplay *gdpy;
     GdkWindow *groot;
     
     TRACE("entering");
@@ -746,8 +745,7 @@ xfce_desktop_realize(GtkWidget *widget)
             gdk_atom_intern("_NET_WM_WINDOW_TYPE", FALSE),
             gdk_atom_intern("ATOM", FALSE), 32,
             GDK_PROP_MODE_REPLACE, (guchar *)&atom, 1);
-    
-    gdpy = gdk_screen_get_display(desktop->priv->gscreen);
+
     xid = GDK_WINDOW_XID(GTK_WIDGET(desktop)->window);
     groot = gdk_screen_get_root_window(desktop->priv->gscreen);
     
@@ -897,15 +895,12 @@ static gboolean
 xfce_desktop_expose(GtkWidget *w,
                     GdkEventExpose *evt)
 {
-    XfceDesktop *desktop;
     GList *children, *l;
     
     /*TRACE("entering");*/
     
     if(evt->count != 0)
         return FALSE;
-    
-    desktop = XFCE_DESKTOP(w);
     
     gdk_window_clear_area(w->window, evt->area.x, evt->area.y,
                           evt->area.width, evt->area.height);

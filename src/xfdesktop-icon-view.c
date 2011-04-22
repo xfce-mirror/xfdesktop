@@ -881,7 +881,6 @@ static gboolean
 xfdesktop_icon_view_maybe_begin_drag(XfdesktopIconView *icon_view,
                                      GdkEventMotion *evt)
 {
-    GdkDragContext *context;
     GdkDragAction actions;
     
     /* sanity check */
@@ -898,9 +897,9 @@ xfdesktop_icon_view_maybe_begin_drag(XfdesktopIconView *icon_view,
     actions = GDK_ACTION_MOVE | (icon_view->priv->drag_source_set ?
                                  icon_view->priv->foreign_source_actions : 0);
     
-    context = gtk_drag_begin(GTK_WIDGET(icon_view),
-                             icon_view->priv->source_targets,
-                             actions, 1, (GdkEvent *)evt);
+    gtk_drag_begin(GTK_WIDGET(icon_view),
+                   icon_view->priv->source_targets,
+                   actions, 1, (GdkEvent *)evt);
     
     DBG("DRAG BEGIN!");
     
