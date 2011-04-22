@@ -1,7 +1,13 @@
-Xfdesktop 4.8.x
+Xfdesktop 4.8.2
 ---------------
   * Fix a crash on focus in when items are selected (bug #7313).
     Reported and fixed by Ambroz Bizjak.
+  * Retrieve the translated desktop file name.
+  * Fix potential crash in xfdesktop-settings (bug #7301).
+  * Fix creation of empty file from template menu (bug #7230).
+  * Stop altering the root window pixmap to avoid X crash (bug #7442).
+  * Translation updates: Ukrainian, Turkish, Lithuanian, Swedish,
+    Danish, Chinese, Romanian, Kazakh.
 
 
 Xfdesktop 4.8.1
