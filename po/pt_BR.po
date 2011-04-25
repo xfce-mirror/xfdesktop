@@ -6,7 +6,7 @@
 # Og Maciel <ogmaciel@gnome.org>, 2008.
 # Fábio Nogueira <deb-user-ba@ubuntu.com>, 2008.
 # Sérgio Cipolla <secipolla@gmail.com>, 2011.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.8.2\n"
@@ -20,8 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pt_BR\n"
 
-#: ../common/xfdesktop-common.c:96
-#: ../common/xfdesktop-common.c:200
+#: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
 #, c-format
 msgid "Backdrop list file is not valid"
 msgstr "O arquivo com a lista de imagens de fundo não é válido"
@@ -36,8 +35,7 @@ msgstr ""
 "%s\n"
 "<i>Tamanho: %dx%d</i>"
 
-#: ../settings/main.c:289
-#: ../src/xfdesktop-special-file-icon.c:256
+#: ../settings/main.c:289 ../src/xfdesktop-special-file-icon.c:256
 #: ../src/xfdesktop-special-file-icon.c:419
 msgid "Home"
 msgstr "Início"
@@ -59,8 +57,7 @@ msgstr "Dispositivos removíveis"
 msgid "Cannot create backdrop list \"%s\""
 msgstr "Não foi possível criar a lista de imagens de fundo \"%s\""
 
-#: ../settings/main.c:479
-#: ../settings/main.c:802
+#: ../settings/main.c:479 ../settings/main.c:802
 msgid "Backdrop List Error"
 msgstr "Erro na lista de imagens de fundo"
 
@@ -343,8 +340,7 @@ msgstr "B_otão:"
 msgid "Control"
 msgstr "Controle"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10
-#: ../src/xfce-desktop.c:737
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:737
 msgid "Desktop"
 msgstr "Área de trabalho"
 
@@ -503,15 +499,11 @@ msgstr "Opções de compilação:\n"
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Menu da área de trabalho:               %s\n"
 
-#: ../src/main.c:279
-#: ../src/main.c:286
-#: ../src/main.c:293
+#: ../src/main.c:279 ../src/main.c:286 ../src/main.c:293
 msgid "enabled"
 msgstr "habilitado"
 
-#: ../src/main.c:281
-#: ../src/main.c:288
-#: ../src/main.c:295
+#: ../src/main.c:281 ../src/main.c:288 ../src/main.c:295
 msgid "disabled"
 msgstr "desabilitado"
 
@@ -553,8 +545,7 @@ msgstr "Espaço de trabalho %d"
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Espaço de trabalho %d</i>"
 
-#: ../src/windowlist.c:368
-#: ../src/windowlist.c:371
+#: ../src/windowlist.c:368 ../src/windowlist.c:371
 msgid "_Add Workspace"
 msgstr "_Adicionar espaço de trabalho"
 
@@ -593,10 +584,8 @@ msgid "A normal file with the same name already exists. Please delete or rename 
 msgstr "Um arquivo comum com o mesmo nome já existe. Por favor, apague-o ou renomeie-o."
 
 #: ../src/xfdesktop-file-icon-manager.c:592
-#: ../src/xfdesktop-file-icon-manager.c:636
-#: ../src/xfdesktop-file-utils.c:880
-#: ../src/xfdesktop-file-utils.c:895
-#: ../src/xfdesktop-file-utils.c:927
+#: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:880
+#: ../src/xfdesktop-file-utils.c:895 ../src/xfdesktop-file-utils.c:927
 #: ../src/xfdesktop-file-utils.c:941
 msgid "Trash Error"
 msgstr "Erro ao mover para a lixeira"
@@ -607,18 +596,12 @@ msgid "The selected files could not be trashed"
 msgstr "Os arquivos selecionados não puderam ser movidos para a lixeira"
 
 #: ../src/xfdesktop-file-icon-manager.c:594
-#: ../src/xfdesktop-file-icon-manager.c:638
-#: ../src/xfdesktop-file-utils.c:729
-#: ../src/xfdesktop-file-utils.c:779
-#: ../src/xfdesktop-file-utils.c:838
-#: ../src/xfdesktop-file-utils.c:996
-#: ../src/xfdesktop-file-utils.c:1052
-#: ../src/xfdesktop-file-utils.c:1102
-#: ../src/xfdesktop-file-utils.c:1152
-#: ../src/xfdesktop-file-utils.c:1229
-#: ../src/xfdesktop-file-utils.c:1290
-#: ../src/xfdesktop-file-utils.c:1363
-#: ../src/xfdesktop-file-utils.c:1441
+#: ../src/xfdesktop-file-icon-manager.c:638 ../src/xfdesktop-file-utils.c:729
+#: ../src/xfdesktop-file-utils.c:779 ../src/xfdesktop-file-utils.c:838
+#: ../src/xfdesktop-file-utils.c:996 ../src/xfdesktop-file-utils.c:1052
+#: ../src/xfdesktop-file-utils.c:1102 ../src/xfdesktop-file-utils.c:1152
+#: ../src/xfdesktop-file-utils.c:1229 ../src/xfdesktop-file-utils.c:1290
+#: ../src/xfdesktop-file-utils.c:1363 ../src/xfdesktop-file-utils.c:1441
 msgid "This feature requires a file manager service to be present (such as the one supplied by Thunar)."
 msgstr "Este recurso requer um serviço de gerenciador de arquivos presente (como o provido pelo Thunar)."
 
@@ -631,14 +614,10 @@ msgstr "Não foi possível executar \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:740
 #: ../src/xfdesktop-file-icon-manager.c:984
-#: ../src/xfdesktop-file-icon-manager.c:1297
-#: ../src/xfdesktop-file-utils.c:712
-#: ../src/xfdesktop-file-utils.c:727
-#: ../src/xfdesktop-file-utils.c:1135
-#: ../src/xfdesktop-file-utils.c:1150
-#: ../src/xfdesktop-file-utils.c:1202
-#: ../src/xfdesktop-file-utils.c:1227
-#: ../src/xfdesktop-file-utils.c:1273
+#: ../src/xfdesktop-file-icon-manager.c:1297 ../src/xfdesktop-file-utils.c:712
+#: ../src/xfdesktop-file-utils.c:727 ../src/xfdesktop-file-utils.c:1135
+#: ../src/xfdesktop-file-utils.c:1150 ../src/xfdesktop-file-utils.c:1202
+#: ../src/xfdesktop-file-utils.c:1227 ../src/xfdesktop-file-utils.c:1273
 #: ../src/xfdesktop-file-utils.c:1288
 msgid "Launch Error"
 msgstr "Erro ao lançar"
@@ -666,8 +645,7 @@ msgid "_Open in New Window"
 msgstr "Ab_rir em nova janela"
 
 #: ../src/xfdesktop-file-icon-manager.c:1372
-#: ../src/xfdesktop-special-file-icon.c:489
-#: ../src/xfdesktop-volume-icon.c:663
+#: ../src/xfdesktop-special-file-icon.c:489 ../src/xfdesktop-volume-icon.c:663
 msgid "_Open"
 msgstr "A_brir"
 
@@ -736,13 +714,13 @@ msgstr "Falhou ao carregar a pasta da área de trabalho"
 #: ../src/xfdesktop-file-utils.c:137
 #, c-format
 msgid "Today at %X"
-msgstr "Hoje às %X"
+msgstr "hoje às %X"
 
 #. TRANSLATORS: file was modified less than two days ago
 #: ../src/xfdesktop-file-utils.c:141
 #, c-format
 msgid "Yesterday at %X"
-msgstr "Ontem às %X"
+msgstr "ontem às %X"
 
 #. Days from last week
 #: ../src/xfdesktop-file-utils.c:146
@@ -761,103 +739,82 @@ msgstr "%x às %X"
 msgid "Unknown"
 msgstr "Desconhecido"
 
-#: ../src/xfdesktop-file-utils.c:713
-#: ../src/xfdesktop-file-utils.c:728
+#: ../src/xfdesktop-file-utils.c:713 ../src/xfdesktop-file-utils.c:728
 msgid "The folder could not be opened"
 msgstr "A pasta não pôde ser aberta"
 
-#: ../src/xfdesktop-file-utils.c:762
-#: ../src/xfdesktop-file-utils.c:777
+#: ../src/xfdesktop-file-utils.c:762 ../src/xfdesktop-file-utils.c:777
 msgid "Rename Error"
 msgstr "Erro ao renomear"
 
-#: ../src/xfdesktop-file-utils.c:763
-#: ../src/xfdesktop-file-utils.c:778
+#: ../src/xfdesktop-file-utils.c:763 ../src/xfdesktop-file-utils.c:778
 msgid "The file could not be renamed"
 msgstr "O arquivo não pôde ser renomeado"
 
-#: ../src/xfdesktop-file-utils.c:821
-#: ../src/xfdesktop-file-utils.c:836
+#: ../src/xfdesktop-file-utils.c:821 ../src/xfdesktop-file-utils.c:836
 msgid "Delete Error"
 msgstr "Erro ao excluir"
 
-#: ../src/xfdesktop-file-utils.c:822
-#: ../src/xfdesktop-file-utils.c:837
+#: ../src/xfdesktop-file-utils.c:822 ../src/xfdesktop-file-utils.c:837
 msgid "The selected files could not be deleted"
 msgstr "Os arquivos selecionados não puderam ser excluídos"
 
-#: ../src/xfdesktop-file-utils.c:881
-#: ../src/xfdesktop-file-utils.c:896
+#: ../src/xfdesktop-file-utils.c:881 ../src/xfdesktop-file-utils.c:896
 msgid "The selected files could not be moved to the trash"
 msgstr "Os arquivos selecionados não puderam ser movidos para a lixeira"
 
-#: ../src/xfdesktop-file-utils.c:897
-#: ../src/xfdesktop-file-utils.c:943
+#: ../src/xfdesktop-file-utils.c:897 ../src/xfdesktop-file-utils.c:943
 msgid "This feature requires a trash service to be present (such as the one supplied by Thunar)."
 msgstr "Este recurso requer um serviço de lixeira presente (como o provido pelo Thunar)."
 
-#: ../src/xfdesktop-file-utils.c:928
-#: ../src/xfdesktop-file-utils.c:942
+#: ../src/xfdesktop-file-utils.c:928 ../src/xfdesktop-file-utils.c:942
 msgid "Could not empty the trash"
 msgstr "Não foi possível esvaziar a lixeira"
 
-#: ../src/xfdesktop-file-utils.c:979
-#: ../src/xfdesktop-file-utils.c:994
+#: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:994
 msgid "Create File Error"
 msgstr "Erro ao criar arquivo"
 
-#: ../src/xfdesktop-file-utils.c:980
-#: ../src/xfdesktop-file-utils.c:995
+#: ../src/xfdesktop-file-utils.c:980 ../src/xfdesktop-file-utils.c:995
 msgid "Could not create a new file"
 msgstr "Não foi possível criar um novo arquivo"
 
-#: ../src/xfdesktop-file-utils.c:1035
-#: ../src/xfdesktop-file-utils.c:1050
+#: ../src/xfdesktop-file-utils.c:1035 ../src/xfdesktop-file-utils.c:1050
 msgid "Create Document Error"
 msgstr "Erro ao criar documento"
 
-#: ../src/xfdesktop-file-utils.c:1036
-#: ../src/xfdesktop-file-utils.c:1051
+#: ../src/xfdesktop-file-utils.c:1036 ../src/xfdesktop-file-utils.c:1051
 msgid "Could not create a new document from the template"
 msgstr "Não foi possível criar um novo documento a partir do modelo"
 
-#: ../src/xfdesktop-file-utils.c:1085
-#: ../src/xfdesktop-file-utils.c:1100
+#: ../src/xfdesktop-file-utils.c:1085 ../src/xfdesktop-file-utils.c:1100
 msgid "File Properties Error"
 msgstr "Erro nas propriedades de arquivo"
 
-#: ../src/xfdesktop-file-utils.c:1086
-#: ../src/xfdesktop-file-utils.c:1101
+#: ../src/xfdesktop-file-utils.c:1086 ../src/xfdesktop-file-utils.c:1101
 msgid "The file properties dialog could not be opened"
 msgstr "O diálogo de propriedades do arquivo não pôde ser aberto"
 
-#: ../src/xfdesktop-file-utils.c:1136
-#: ../src/xfdesktop-file-utils.c:1151
+#: ../src/xfdesktop-file-utils.c:1136 ../src/xfdesktop-file-utils.c:1151
 msgid "The file could not be opened"
 msgstr "O arquivo não pôde ser aberto"
 
-#: ../src/xfdesktop-file-utils.c:1199
-#: ../src/xfdesktop-file-utils.c:1224
+#: ../src/xfdesktop-file-utils.c:1199 ../src/xfdesktop-file-utils.c:1224
 #, c-format
 msgid "Failed to run \"%s\""
 msgstr "Falhou ao executar \"%s\""
 
-#: ../src/xfdesktop-file-utils.c:1274
-#: ../src/xfdesktop-file-utils.c:1289
+#: ../src/xfdesktop-file-utils.c:1274 ../src/xfdesktop-file-utils.c:1289
 msgid "The application chooser could not be opened"
 msgstr "O selecionador de aplicativos não pôde ser aberto"
 
-#: ../src/xfdesktop-file-utils.c:1347
-#: ../src/xfdesktop-file-utils.c:1361
-#: ../src/xfdesktop-file-utils.c:1423
-#: ../src/xfdesktop-file-utils.c:1439
+#: ../src/xfdesktop-file-utils.c:1347 ../src/xfdesktop-file-utils.c:1361
+#: ../src/xfdesktop-file-utils.c:1423 ../src/xfdesktop-file-utils.c:1439
 msgid "Transfer Error"
 msgstr "Erro ao transferir"
 
-#: ../src/xfdesktop-file-utils.c:1348
-#: ../src/xfdesktop-file-utils.c:1362
-#: ../src/xfdesktop-file-utils.c:1424
-#: ../src/xfdesktop-file-utils.c:1440
+#: ../src/xfdesktop-file-utils.c:1348 ../src/xfdesktop-file-utils.c:1362
+#: ../src/xfdesktop-file-utils.c:1424 ../src/xfdesktop-file-utils.c:1440
 msgid "The file transfer could not be performed"
 msgstr "A transferência do arquivo não pôde ser realizada"
 
@@ -873,14 +830,12 @@ msgid "The device \"%s\" is being unmounted by the system. Please do not remove 
 msgstr "O dispositivo \"%s\" está sendo desmontado pelo sistema. Por favor não remova a mídia ou desconecte a unidade"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:138
-#: ../src/xfdesktop-notify.c:262
+#: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
 msgid "Writing data to device"
 msgstr "Escrevendo dados no dispositivo"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:141
-#: ../src/xfdesktop-notify.c:265
+#: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
 #, c-format
 msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
 msgstr "Existem dados que precisam ser escritos no dispositivo \"%s\" antes que ele possa ser removido. Por favor não remova a mídia ou desconecte a unidade"
@@ -959,14 +914,12 @@ msgstr ""
 "Volume removível\n"
 "Não montado ainda"
 
-#: ../src/xfdesktop-volume-icon.c:456
-#: ../src/xfdesktop-volume-icon.c:498
+#: ../src/xfdesktop-volume-icon.c:456 ../src/xfdesktop-volume-icon.c:498
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "Falhou ao ejetar \"%s\""
 
-#: ../src/xfdesktop-volume-icon.c:461
-#: ../src/xfdesktop-volume-icon.c:503
+#: ../src/xfdesktop-volume-icon.c:461 ../src/xfdesktop-volume-icon.c:503
 msgid "Eject Failed"
 msgstr "Falhou ao ejetar"
 
@@ -979,8 +932,7 @@ msgstr "Falhou ao montar \"%s\""
 msgid "Mount Failed"
 msgstr "Falhou ao montar"
 
-#: ../src/xfdesktop-volume-icon.c:679
-#: ../src/xfdesktop-volume-icon.c:682
+#: ../src/xfdesktop-volume-icon.c:679 ../src/xfdesktop-volume-icon.c:682
 msgid "E_ject Volume"
 msgstr "E_jetar volume"
 
@@ -991,25 +943,18 @@ msgstr "_Montar volume"
 #~ msgid "Unable to contact the Xfce Trash service."
 #~ msgstr "Não foi possível comunicar-se com o serviço de Lixeira do Xfce."
 
-#~ msgid ""
-#~ "Make sure you have a file manager installed that supports the Xfce Trash "
-#~ "service, such as Thunar."
-#~ msgstr ""
-#~ "Certifique-se de que você possui um gerenciador de arquivos instalado que "
-#~ "suporta o serviço de Lixeira do Xfce, como o Thunar."
+#~ msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
+#~ msgstr "Certifique-se de que você possui um gerenciador de arquivos instalado que suporta o serviço de Lixeira do Xfce, como o Thunar."
 
-#, fuzzy
 #~ msgid "Needs terminal"
 #~ msgstr "Terminal"
 
 #~ msgid "Command"
 #~ msgstr "Comando"
 
-#, fuzzy
 #~ msgid "Icon name"
 #~ msgstr "Projetista de ícones"
 
-#, fuzzy
 #~ msgid "Startup notification"
 #~ msgstr "Use _notificação na inicialização"
 
@@ -1080,36 +1025,25 @@ msgstr "_Montar volume"
 #~ msgstr "As opções são:\n"
 
 #~ msgid "    --reload      Reload all settings, refresh image list\n"
-#~ msgstr ""
-#~ "    --reload      Recarrega todas as configurações, atualiza a lista de "
-#~ "imagens\n"
+#~ msgstr "    --reload      Recarrega todas as configurações, atualiza a lista de imagens\n"
 
 #~ msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 #~ msgstr "    --menu        Abrir o menu (na posição atual do mouse)\n"
 
-#~ msgid ""
-#~ "    --windowlist  Pop up the window list (at the current mouse position)\n"
-#~ msgstr ""
-#~ "    --windowlist  Abre a lista de janelas (na posição atual do mouse)\n"
+#~ msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
+#~ msgstr "    --windowlist  Abre a lista de janelas (na posição atual do mouse)\n"
 
 #~ msgid "    --quit        Cause xfdesktop to quit\n"
 #~ msgstr "    --quit        Faz o xfdesktop sair\n"
 
-#~ msgid ""
-#~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-#~ msgstr ""
-#~ "Xfdesktop não foi capaz de criar a pasta \"%s\" para armazenar itens da "
-#~ "área de trabalho:"
+#~ msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+#~ msgstr "Xfdesktop não foi capaz de criar a pasta \"%s\" para armazenar itens da área de trabalho:"
 
 #~ msgid "Create Folder Failed"
 #~ msgstr "Falha na Criação de Pasta"
 
-#~ msgid ""
-#~ "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not "
-#~ "a folder."
-#~ msgstr ""
-#~ "Xfdesktop não é capaz de usar \"%s\" para armazenar itens da área de "
-#~ "trabalho porque não é uma pasta."
+#~ msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
+#~ msgstr "Xfdesktop não é capaz de usar \"%s\" para armazenar itens da área de trabalho porque não é uma pasta."
 
 #~ msgid "Please delete or rename the file."
 #~ msgstr "Por favor remova ou renomeie o arquivo."
@@ -1141,12 +1075,8 @@ msgstr "_Montar volume"
 #~ msgid "The application chooser could not be opened."
 #~ msgstr "A aplicativo de escolha de aplicativos não pôde ser aberta."
 
-#~ msgid ""
-#~ "This feature requires a file manager service present (such as that "
-#~ "supplied by Thunar)."
-#~ msgstr ""
-#~ "Este recurso requer um serviço de gerenciador de arquivos presente (como "
-#~ "o provido pelo Thunar)."
+#~ msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
+#~ msgstr "Este recurso requer um serviço de gerenciador de arquivos presente (como o provido pelo Thunar)."
 
 #~ msgid "Unable to create folder named \"%s\":"
 #~ msgstr "Não foi possível criar uma pasta com o nome \"%s\":"
@@ -1191,8 +1121,7 @@ msgstr "_Montar volume"
 #~ msgstr "O aplicativo associado não pode ser encontrado ou executado."
 
 #~ msgid "Unable to set default application for \"%s\" to \"%s\":"
-#~ msgstr ""
-#~ "Não foi possível ajustar o aplicativo padrão para \"%s\" para \"%s\":"
+#~ msgstr "Não foi possível ajustar o aplicativo padrão para \"%s\" para \"%s\":"
 
 #~ msgid "Properties Error"
 #~ msgstr "Erro de propriedades"
@@ -1609,14 +1538,8 @@ msgstr "_Montar volume"
 #~ msgid "xfce4-menueditor is deprecated"
 #~ msgstr "O editor de menus do xfce 4 está obsoleto"
 
-#~ msgid ""
-#~ "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
-#~ "edit the new menu file format.  You may continue and edit an old-style "
-#~ "menu file, or quit."
-#~ msgstr ""
-#~ "O menu do sistema do Xfce foi substituído e o editor de menus do Xfce 4 "
-#~ "não é capaz de editar o novo formato do arquivo. Você pode continuar e "
-#~ "editar um arquivo de menu do estilo antigo ou sair."
+#~ msgid "Xfce's menu system has been replaced, and xfce4-menueditor is not able to edit the new menu file format.  You may continue and edit an old-style menu file, or quit."
+#~ msgstr "O menu do sistema do Xfce foi substituído e o editor de menus do Xfce 4 não é capaz de editar o novo formato do arquivo. Você pode continuar e editar um arquivo de menu do estilo antigo ou sair."
 
 #~ msgid "Continue"
 #~ msgstr "Continuar"
@@ -1807,13 +1730,11 @@ msgstr "_Montar volume"
 #~ msgid ""
 #~ "Could not save file %s: %s\n"
 #~ "\n"
-#~ "Please choose another location or press cancel in the dialog to discard "
-#~ "your changes"
+#~ "Please choose another location or press cancel in the dialog to discard your changes"
 #~ msgstr ""
 #~ "Não foi possível salvar o arquivo %s: %s\n"
 #~ "\n"
-#~ "Por favor escolha outro local ou pressione cancelar no diálogo para "
-#~ "descartar suas alterações"
+#~ "Por favor escolha outro local ou pressione cancelar no diálogo para descartar suas alterações"
 
 #~ msgid "Button Label|Desktop"
 #~ msgstr "Área de Trabalho"
@@ -1845,32 +1766,11 @@ msgstr "_Montar volume"
 #~ msgid "Unable to start xfdesktop"
 #~ msgstr "Impossível iniciar xfdesktop"
 
-#~ msgid ""
-#~ "To ensure that this setting takes effect the next time you start Xfce, "
-#~ "please be sure to save your session when logging out.  If you are not "
-#~ "using the Xfce Session Manager (xfce4-session), you will need to manually "
-#~ "edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
-#~ "documentation provided on http://xfce.org/."
-#~ msgstr ""
-#~ "Para garantir que esta configuração tenha efeito a próxima vez que você "
-#~ "iniciar o Xfce, por favor certifique-se de salvar a sua sessão ao sair. "
-#~ "Se você não está usando o Gerenciador de Sessão do Xfce (xfce4-session), "
-#~ "você precisará editar manualmente o arquivo ~/.config/xfce4/xinitrc. "
-#~ "Detalhes estão disponíveis na documentação contida em http://xfce.org/."
+#~ msgid "To ensure that this setting takes effect the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
+#~ msgstr "Para garantir que esta configuração tenha efeito a próxima vez que você iniciar o Xfce, por favor certifique-se de salvar a sua sessão ao sair. Se você não está usando o Gerenciador de Sessão do Xfce (xfce4-session), você precisará editar manualmente o arquivo ~/.config/xfce4/xinitrc. Detalhes estão disponíveis na documentação contida em http://xfce.org/."
 
-#~ msgid ""
-#~ "To ensure that Xfce does not manage your desktop the next time you start "
-#~ "Xfce, please be sure to save your session when logging out.  If you are "
-#~ "not using the Xfce Session Manager (xfce4-session), you will need to "
-#~ "manually edit your ~/.config/xfce4/xinitrc file.  Details are available "
-#~ "in the documentation provided on http://xfce.org/."
-#~ msgstr ""
-#~ "Para garantir que o Xfce não gerencie sua área de trabalho a próxima vez "
-#~ "que você iniciá-lo, por favor certifique-se de salvar a sua sessão ao "
-#~ "sair. Se você não está usando o Gerenciador de Sessão do Xfce (xfce4-"
-#~ "session), você precisará editar manualmente o arquivo ~/.config/xfce4/"
-#~ "xinitrc. Detalhes estão disponíveis na documentação contida em http://"
-#~ "xfce.org/."
+#~ msgid "To ensure that Xfce does not manage your desktop the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
+#~ msgstr "Para garantir que o Xfce não gerencie sua área de trabalho a próxima vez que você iniciá-lo, por favor certifique-se de salvar a sua sessão ao sair. Se você não está usando o Gerenciador de Sessão do Xfce (xfce4-session), você precisará editar manualmente o arquivo ~/.config/xfce4/xinitrc. Detalhes estão disponíveis na documentação contida em http://xfce.org/."
 
 #~ msgid "_Do not show this again"
 #~ msgstr "_Não mostrar isto novamente"
@@ -1929,20 +1829,11 @@ msgstr "_Montar volume"
 #~ msgid "Unable to quit session."
 #~ msgstr "Impossível terminar a sessão."
 
-#~ msgid ""
-#~ "Quitting the session requires that Xfce's session manager (xfce4-session) "
-#~ "is running, but it was not detected.  Please quit Xfce via another means."
-#~ msgstr ""
-#~ "Terminar a sessão requer que o gerenciador de sessão do Xfce (xfce4-"
-#~ "session) esteja rodando, mas ele não foi detectado. Por favor saia do "
-#~ "Xfce de outra forma."
+#~ msgid "Quitting the session requires that Xfce's session manager (xfce4-session) is running, but it was not detected.  Please quit Xfce via another means."
+#~ msgstr "Terminar a sessão requer que o gerenciador de sessão do Xfce (xfce4-session) esteja rodando, mas ele não foi detectado. Por favor saia do Xfce de outra forma."
 
-#~ msgid ""
-#~ "Quitting the session requires the 'xfce4-session-logout' command, but it "
-#~ "could not be found: %s"
-#~ msgstr ""
-#~ "Terminar a sessão requer o comando 'xfce4-session-logout', mas ele não "
-#~ "foi encontrado: %s"
+#~ msgid "Quitting the session requires the 'xfce4-session-logout' command, but it could not be found: %s"
+#~ msgstr "Terminar a sessão requer o comando 'xfce4-session-logout', mas ele não foi encontrado: %s"
 
 #~ msgid "Edit Properties"
 #~ msgstr "Editar Propriedades"
