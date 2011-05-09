@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-09 10:34+0000\n"
+"POT-Creation-Date: 2011-05-09 16:35+0000\n"
 "PO-Revision-Date: 2008-10-24 17:45+0100\n"
 "Last-Translator: Pjotr\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
@@ -63,8 +63,11 @@ msgstr "Maak of laad achtergrondenlijst"
 
 #: ../settings/main.c:528
 #, c-format
-msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr "Bestand \"%s\" is geen geldig achtergrondenlijstbestand. Wilt u het overschrijven?"
+msgid ""
+"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr ""
+"Bestand \"%s\" is geen geldig achtergrondenlijstbestand. Wilt u het "
+"overschrijven?"
 
 #: ../settings/main.c:533
 msgid "Invalid List File"
@@ -72,7 +75,9 @@ msgstr "Ongeldig lijstbestand"
 
 #: ../settings/main.c:536
 msgid "Overwriting the file will cause its contents to be lost."
-msgstr "Het overschrijven van dit bestand heeft als gevolg dat de inhoud verloren gaat."
+msgstr ""
+"Het overschrijven van dit bestand heeft als gevolg dat de inhoud verloren "
+"gaat."
 
 #: ../settings/main.c:538
 msgid "Replace"
@@ -135,16 +140,16 @@ msgstr "Versie-informatie"
 #: ../settings/main.c:1521
 #, c-format
 msgid "Type '%s --help' for usage."
-msgstr "Type '%s -- help' voor gebruik."
+msgstr "Tik '%s -- help' voor gebruik."
 
 #: ../settings/main.c:1533
 msgid "The Xfce development team. All rights reserved."
-msgstr "Het Xfce-ontwerpteam. Alle rechten voorbehouden."
+msgstr "De Xfce-ontwikkelploeg. Alle rechten voorbehouden."
 
 #: ../settings/main.c:1534
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr "Gelieve fouten te rapporteren aan <%s>"
+msgstr "Gelieve fouten te melden aan <%s>"
 
 #: ../settings/main.c:1541
 msgid "Desktop Settings"
@@ -160,7 +165,9 @@ msgstr "Bureaublad"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Set desktop background and menu and icon behaviour"
-msgstr "Stel de bureaubladachtergrond in en het gedrag van het menu en de pictogrammen"
+msgstr ""
+"Stel de bureaubladachtergrond in en het gedrag van het menu en de "
+"pictogrammen"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
 msgid "<b>Adjustments</b>"
@@ -260,16 +267,23 @@ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr "Specificeert de rechter- of onderste kleur van het kleurverloop"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
-msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr "Specificeert de enkele kleur, of de linker of bovenste kleur van het kleurverloop"
+msgid ""
+"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr ""
+"Specificeert de enkele kleur, of de linker of bovenste kleur van het "
+"kleurverloop"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid "Specify how the image will be resized to fit the screen"
-msgstr "Specificeer hoe het formaat van de afbeelding zal worden aangepast om te passen op het scherm"
+msgstr ""
+"Specificeer hoe het formaat van de afbeelding zal worden aangepast om te "
+"passen op het scherm"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "Specify the style of the color drawn behind the backdrop image"
-msgstr "Specificeer de stijl van de kleur die getekend zal worden achter de achtergrondafbeelding"
+msgstr ""
+"Specificeer de stijl van de kleur die getekend zal worden achter de "
+"achtergrondafbeelding"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
 msgid "St_yle:"
@@ -370,11 +384,11 @@ msgstr "Geminimaliseerde programmapictogrammen"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:19
 msgid "Mo_difier:"
-msgstr "Aangepast:"
+msgstr "Aanpasser:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:20
 msgid "Modi_fier:"
-msgstr "Aangepast:"
+msgstr "Aanpasser:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:21
 msgid "None"
@@ -386,7 +400,8 @@ msgstr "Rechts"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:24
 msgid "Set desktop background and menu and icon behavior"
-msgstr "Stel het gedrag in van de bureaubladachtergrond, het menu en de pictogrammen"
+msgstr ""
+"Stel het gedrag in van de bureaubladachtergrond, het menu en de pictogrammen"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:25
 msgid "Sh_ow application icons in menu"
@@ -406,7 +421,7 @@ msgstr "Vensterlijst _tonen"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:29
 msgid "Show applications menu on _desktop right click"
-msgstr "_Bureaubladmenu tonen"
+msgstr "_Toepassingenmenu tonen bij rechtsklik muis op bureaublad"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:30
 msgid "Show s_ticky windows only in active workspace"
@@ -417,8 +432,12 @@ msgid "Show workspace _names in list"
 msgstr "Geef de _namen van werkbladen weer in een lijst"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
-msgid "Specify the transparency level for the rounded label drawn behind the icon text"
-msgstr "Specificeer het transparantieniveau voor het afgeronde etiket dat achter de tekst van het pictogram wordt getekend"
+msgid ""
+"Specify the transparency level for the rounded label drawn behind the icon "
+"text"
+msgstr ""
+"Specificeer het transparantieniveau voor het afgeronde etiket dat achter de "
+"tekst van het pictogram wordt getekend"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "Use _submenus for the windows in each workspace"
@@ -466,7 +485,7 @@ msgstr "Laat de vensterlijst omhoogspringen (op de huidige muispositie)"
 
 #: ../src/main.c:242
 msgid "Cause xfdesktop to quit"
-msgstr "Sluit Xfdesktop af"
+msgstr "Sluit xfdesktop af"
 
 #: ../src/main.c:262
 #, c-format
@@ -518,7 +537,7 @@ msgstr "%s draait niet.\n"
 
 #: ../src/menu.c:106
 msgid "_Applications"
-msgstr "_Applicaties"
+msgstr "_Toepassingen"
 
 #: ../src/windowlist.c:229
 msgid "Window List"
@@ -560,7 +579,7 @@ msgstr "Kon afbeelding niet laden vanuit het achtergrondenlijstbestand \"%s\""
 
 #: ../src/xfce-desktop.c:1024
 msgid "Desktop Error"
-msgstr "Bureaublad error"
+msgstr "Bureaublad fout"
 
 #: ../src/xfdesktop-file-icon-manager.c:465
 #: ../src/xfdesktop-file-icon-manager.c:482
@@ -574,8 +593,11 @@ msgid "Desktop Folder Error"
 msgstr "Bureaublad mapfout"
 
 #: ../src/xfdesktop-file-icon-manager.c:489
-msgid "A normal file with the same name already exists. Please delete or rename it."
-msgstr "Een normaal bestand met dezelfde naam bestaat al. Gelieve dit te verwijderen of te hernoemen."
+msgid ""
+"A normal file with the same name already exists. Please delete or rename it."
+msgstr ""
+"Een normaal bestand met dezelfde naam bestaat al. Gelieve dit te verwijderen "
+"of te hernoemen."
 
 #: ../src/xfdesktop-file-icon-manager.c:592
 #: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:880
@@ -587,7 +609,8 @@ msgstr "Prullenbak fout"
 #: ../src/xfdesktop-file-icon-manager.c:593
 #: ../src/xfdesktop-file-icon-manager.c:637
 msgid "The selected files could not be trashed"
-msgstr "De geselecteerde bestanden konden niet naar de prullenbak worden verplaatst"
+msgstr ""
+"De geselecteerde bestanden konden niet naar de prullenbak worden verplaatst"
 
 #: ../src/xfdesktop-file-icon-manager.c:594
 #: ../src/xfdesktop-file-icon-manager.c:638 ../src/xfdesktop-file-utils.c:729
@@ -596,8 +619,12 @@ msgstr "De geselecteerde bestanden konden niet naar de prullenbak worden verplaa
 #: ../src/xfdesktop-file-utils.c:1102 ../src/xfdesktop-file-utils.c:1152
 #: ../src/xfdesktop-file-utils.c:1229 ../src/xfdesktop-file-utils.c:1290
 #: ../src/xfdesktop-file-utils.c:1363 ../src/xfdesktop-file-utils.c:1441
-msgid "This feature requires a file manager service to be present (such as the one supplied by Thunar)."
-msgstr "Voor deze mogelijkheid moet er een bestandsbeheerdienst actief zijn (zoals die van Thunar)."
+msgid ""
+"This feature requires a file manager service to be present (such as the one "
+"supplied by Thunar)."
+msgstr ""
+"Voor deze mogelijkheid moet er een bestandsbeheerdienst actief zijn (zoals "
+"die van Thunar)."
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:738
@@ -627,8 +654,12 @@ msgid "Open With \"%s\""
 msgstr "Openen Met \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:986
-msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
-msgstr "Kon \"exo-desktop-item-edit\" niet uitvoeren, welke vereist is voor het maken en bewerken van snelstarters en snelkoppelingen op het bureaublad."
+msgid ""
+"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
+"edit launchers and links on the desktop."
+msgstr ""
+"Kon \"exo-desktop-item-edit\" niet uitvoeren, welke vereist is voor het "
+"maken en bewerken van snelstarters en snelkoppelingen op het bureaublad."
 
 #: ../src/xfdesktop-file-icon-manager.c:1358
 msgid "_Open all"
@@ -651,7 +682,7 @@ msgstr "_Starter Maken..."
 #. create link item
 #: ../src/xfdesktop-file-icon-manager.c:1411
 msgid "Create _URL Link..."
-msgstr "_URL Link Maken..."
+msgstr "_URL Koppeling Maken..."
 
 #. create folder item
 #: ../src/xfdesktop-file-icon-manager.c:1427
@@ -673,7 +704,7 @@ msgstr "_Uitvoeren"
 
 #: ../src/xfdesktop-file-icon-manager.c:1504
 msgid "_Edit Launcher"
-msgstr "Starter _Aanpassen"
+msgstr "Starter _Bewerken"
 
 #: ../src/xfdesktop-file-icon-manager.c:1539
 msgid "Open With"
@@ -755,11 +786,16 @@ msgstr "De geselecteerde bestanden konden niet worden gewist"
 
 #: ../src/xfdesktop-file-utils.c:881 ../src/xfdesktop-file-utils.c:896
 msgid "The selected files could not be moved to the trash"
-msgstr "De geselecteerde bestanden konden niet worden verplaatst naar de prullenbak"
+msgstr ""
+"De geselecteerde bestanden konden niet worden verplaatst naar de prullenbak"
 
 #: ../src/xfdesktop-file-utils.c:897 ../src/xfdesktop-file-utils.c:943
-msgid "This feature requires a trash service to be present (such as the one supplied by Thunar)."
-msgstr "Voor deze mogelijkheid moet er een prullenbakdienst actief zijn (zoals die van Thunar)."
+msgid ""
+"This feature requires a trash service to be present (such as the one "
+"supplied by Thunar)."
+msgstr ""
+"Voor deze mogelijkheid moet er een prullenbakdienst actief zijn (zoals die "
+"van Thunar)."
 
 #: ../src/xfdesktop-file-utils.c:928 ../src/xfdesktop-file-utils.c:942
 msgid "Could not empty the trash"
@@ -820,8 +856,12 @@ msgstr "Apparaat wordt ontkoppeld"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:131
 #, c-format
-msgid "The device \"%s\" is being unmounted by the system. Please do not remove the media or disconnect the drive"
-msgstr "Het apparaat \"%s\" wordt door het systeem ontkoppeld. Gelieve het niet te verwijderen."
+msgid ""
+"The device \"%s\" is being unmounted by the system. Please do not remove the "
+"media or disconnect the drive"
+msgstr ""
+"Het apparaat \"%s\" wordt door het systeem ontkoppeld. Gelieve het niet te "
+"verwijderen."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
@@ -831,8 +871,12 @@ msgstr "Gegevens aan het schrijven naar het apparaat"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
 #, c-format
-msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
-msgstr "Er zijn gegevens die naar het apparaat \"%s\" geschreven moeten worden, voordat het kan worden verwijderd. Gelieve het dus niet te verwijderen."
+msgid ""
+"There is data that needs to be written to the device \"%s\" before it can be "
+"removed. Please do not remove the media or disconnect the drive"
+msgstr ""
+"Er zijn gegevens die naar het apparaat \"%s\" geschreven moeten worden, "
+"voordat het kan worden verwijderd. Gelieve het dus niet te verwijderen."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:253
@@ -938,8 +982,12 @@ msgstr "Volume Aan_koppelen"
 #~ msgid "Unable to contact the Xfce Trash service."
 #~ msgstr "Kan geen contact leggen met Xfce Prullenbakdienst."
 
-#~ msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
-#~ msgstr "Zorg dat er een bestandsbeheerder (bijvoorbeeld Thunar) is geïnstalleerd, met ondersteuning voor de prullenbakdienst van Xfce."
+#~ msgid ""
+#~ "Make sure you have a file manager installed that supports the Xfce Trash "
+#~ "service, such as Thunar."
+#~ msgstr ""
+#~ "Zorg dat er een bestandsbeheerder (bijvoorbeeld Thunar) is geïnstalleerd, "
+#~ "met ondersteuning voor de prullenbakdienst van Xfce."
 
 #~ msgid "Needs terminal"
 #~ msgstr "Terminal"
@@ -987,7 +1035,7 @@ msgstr "Volume Aan_koppelen"
 #~ msgstr "Menubestand"
 
 #~ msgid "Use default _desktop menu file"
-#~ msgstr "Gebruik standaard _desktop menu bestand"
+#~ msgstr "Gebruik standaard _bureaubladmenu-bestand"
 
 #~ msgid "Use _custom menu file:"
 #~ msgstr "Gebruik _aangepast menubestand"
@@ -1011,34 +1059,39 @@ msgstr "Volume Aan_koppelen"
 #~ msgstr "Menu Aanpassen"
 
 #~ msgid "Shows a menu containing categories of installed applications"
-#~ msgstr "Toont een menu met cateforien van geinstalleerde programma's"
+#~ msgstr "Toont een menu met categorieën van geinstalleerde programma's"
 
 #~ msgid "%s: Unknown option: %s\n"
 #~ msgstr "%s: Onbekende optie: %s\n"
 
 #~ msgid "Options are:\n"
-#~ msgstr "Mogelijk opties:\n"
+#~ msgstr "Mogelijke opties:\n"
 
 #~ msgid "    --reload      Reload all settings, refresh image list\n"
-#~ msgstr "    -herlaad instellingen opnieuw , ververs bestandenlijst\n"
+#~ msgstr "   --reload      Laad alle instellingen opnieuw, ververs afbeeldingenlijst\n"
 
 #~ msgid "    --menu        Pop up the menu (at the current mouse position)\n"
-#~ msgstr "    -menu\tBureaubladmenu tonen (op huidige muispositie)\n"
+#~ msgstr "    -menu        Bureaubladmenu tonen (op huidige muispositie)\n"
 
-#~ msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
-#~ msgstr "    -windowlist\tVensterlijst tonen (op huidige muispositie)\n"
+#~ msgid ""
+#~ "    --windowlist  Pop up the window list (at the current mouse position)\n"
+#~ msgstr ""
+#~ "    --windowlist  Vensterlijst tonen (op huidige muispositie)\n"
 
 #~ msgid "    --quit        Cause xfdesktop to quit\n"
 #~ msgstr "    --quit       Xf-werkomgeving afsluiten\n"
 
-#~ msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+#~ msgid ""
+#~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
 #~ msgstr "Kon geen map \"%s\" aanmaken om bureaubladbestanden in op te slaan:"
 
 #~ msgid "Create Folder Failed"
-#~ msgstr "Kan geen Map maken"
+#~ msgstr "Kon geen Map maken"
 
-#~ msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
-#~ msgstr "\"%s\" moet een map zijn om bureaubladbestanden in op te slaan,"
+#~ msgid ""
+#~ "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not "
+#~ "a folder."
+#~ msgstr "\"%s\" moet een map zijn om bureaubladbestanden in op te kunnen slaan."
 
 #~ msgid "Please delete or rename the file."
 #~ msgstr "Gelieve het bestand te hernoemen of te verwijderen."
@@ -1062,7 +1115,7 @@ msgstr "Volume Aan_koppelen"
 #~ msgstr "Als u een bestand verwijdert, dan is het permanent verloren."
 
 #~ msgid "Are you sure you want to delete the following %d files?"
-#~ msgstr "Weet u zeker dat u de volgende %d bestanden wilt verwijderen?"
+#~ msgstr "Weet u zeker dat u de volgende %d bestanden wil verwijderen?"
 
 #~ msgid "Delete Multiple Files"
 #~ msgstr "Meerdere bestanden verwijderen"
@@ -1070,8 +1123,12 @@ msgstr "Volume Aan_koppelen"
 #~ msgid "The application chooser could not be opened."
 #~ msgstr "De programmakiezer kan niet worden geopend."
 
-#~ msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
-#~ msgstr "Voor deze mogelijkheid moet er een bestandsbeheer-dienst actief zijn (zoals die van Thunar)."
+#~ msgid ""
+#~ "This feature requires a file manager service present (such as that "
+#~ "supplied by Thunar)."
+#~ msgstr ""
+#~ "Voor deze mogelijkheid moet er een bestandsbeheer-dienst actief zijn "
+#~ "(zoals die van Thunar)."
 
 #~ msgid "Unable to create folder named \"%s\":"
 #~ msgstr "Kon geen map maken met de naam \"%s\":"
@@ -1092,7 +1149,7 @@ msgstr "Volume Aan_koppelen"
 #~ msgstr "Kan geen Bestand maken"
 
 #~ msgid "Create Document from template \"%s\""
-#~ msgstr "Maak document van voorbeeld \"%s\""
+#~ msgstr "Maak document van sjabloon \"%s\""
 
 #~ msgid "Create Empty File"
 #~ msgstr "Leeg Bestand Maken"
@@ -1113,7 +1170,7 @@ msgstr "Volume Aan_koppelen"
 #~ msgstr "Uitvoer Fout"
 
 #~ msgid "The associated application could not be found or executed."
-#~ msgstr "De bijbehorende applicatie kon niet gevonden of uitgevoerd worden."
+#~ msgstr "De bijbehorende toepassing kon niet gevonden of uitgevoerd worden."
 
 #~ msgid "Unable to set default application for \"%s\" to \"%s\":"
 #~ msgstr "Kan de standaard-toepassing voor \"%s\" niet instellen op \"%s\":"
@@ -1140,7 +1197,7 @@ msgstr "Volume Aan_koppelen"
 #~ msgstr "Soort:"
 
 #~ msgid "Link Target:"
-#~ msgstr "Pad:"
+#~ msgstr "Koppelingsdoel:"
 
 #~ msgid "(unknown)"
 #~ msgstr "(onbekend)"
@@ -1176,7 +1233,7 @@ msgstr "Volume Aan_koppelen"
 #~ msgstr "Groep:"
 
 #~ msgid "Others:"
-#~ msgstr "Iedereen:"
+#~ msgstr "Anderen:"
 
 #~ msgid "Yes to _all"
 #~ msgstr "Ja op _alles"
@@ -1215,7 +1272,7 @@ msgstr "Volume Aan_koppelen"
 #~ msgstr "Kan \"%s\" niet hernoemen naar \"%s\":"
 
 #~ msgid "Kind: Trash"
-#~ msgstr "Soort: Rotzooi"
+#~ msgstr "Soort: Prullenbak"
 
 #~ msgid "%s (%s total)"
 #~ msgstr "%s (%s in totaal)"
@@ -1225,7 +1282,7 @@ msgstr "Volume Aan_koppelen"
 #~ "Mount Point: %s\n"
 #~ "Free Space: %s"
 #~ msgstr ""
-#~ "Type: Verwisselbare schijf\n"
+#~ "Type: Verwisselbaar medium\n"
 #~ "Koppelpunt: %s\n"
 #~ "Vrije ruimte: %s"
 
@@ -1242,7 +1299,7 @@ msgstr "Volume Aan_koppelen"
 #~ msgstr "Kan \"%s\" niet uitwerpen:"
 
 #~ msgid "_Unmount Volume"
-#~ msgstr "Volume _Ontkoppelen"
+#~ msgstr "Medium _Ontkoppelen"
 
 #~ msgid "Accessories"
 #~ msgstr "Accessoires"
@@ -1251,10 +1308,10 @@ msgstr "Volume Aan_koppelen"
 #~ msgstr "Veelgebruikte hulpmiddelen en toepassingen"
 
 #~ msgid "Development"
-#~ msgstr "Programmeren"
+#~ msgstr "Ontwikkeling"
 
 #~ msgid "Software development tools"
-#~ msgstr "Software-ontwikkelingstools"
+#~ msgstr "Software-ontwikkelingsgereedschappen"
 
 #~ msgid "Education"
 #~ msgstr "Educatief"
@@ -1290,7 +1347,7 @@ msgstr "Volume Aan_koppelen"
 #~ msgstr "Kantoor"
 
 #~ msgid "Office and productivity applications"
-#~ msgstr "Kantoortoepassingen"
+#~ msgstr "Kantoor- en productiviteitstoepassingen"
 
 #~ msgid "Applications that don't fit into other categories"
 #~ msgstr "Toepassingen die niet in andere categorieën thuishoren"
@@ -1314,7 +1371,7 @@ msgstr "Volume Aan_koppelen"
 #~ msgstr "Systeem"
 
 #~ msgid "System tools and utilities"
-#~ msgstr "Systeembeheer-toepassingen"
+#~ msgstr "Systeemgereedschappen en -hulpmiddelen"
 
 #~ msgid "About Xfce"
 #~ msgstr "Over Xfce"
@@ -1326,7 +1383,7 @@ msgstr "Volume Aan_koppelen"
 #~ msgstr "Bestandbeheerder"
 
 #~ msgid "Thunar file manager"
-#~ msgstr "Thunar bestandbeheer"
+#~ msgstr "Thunar bestandbeheerder"
 
 #~ msgid "Help"
 #~ msgstr "_Hulp"
@@ -1356,7 +1413,7 @@ msgstr "Volume Aan_koppelen"
 #~ msgstr "Verken het web"
 
 #~ msgid "Web Browser"
-#~ msgstr "Web Browser"
+#~ msgstr "Webbrowser"
 
 #~ msgid ""
 #~ "Auto\n"
@@ -1388,7 +1445,7 @@ msgstr "Volume Aan_koppelen"
 #~ "File/launcher icons"
 #~ msgstr ""
 #~ "Geen\n"
-#~ "Geminimalizeerde toepassingspictogrammen\n"
+#~ "Geminimaliseerde toepassingspictogrammen\n"
 #~ "Bestand/starterpictogrammen"
 
 #~ msgid ""
@@ -1432,10 +1489,10 @@ msgstr "Volume Aan_koppelen"
 #~ msgstr "Verticale Gradiënt"
 
 #~ msgid "gtk-close"
-#~ msgstr "Sluiter"
+#~ msgstr "gtk-close"
 
 #~ msgid "gtk-help"
-#~ msgstr "Hulp"
+#~ msgstr "gtk-help"
 
 #~ msgid "Add menu entry"
 #~ msgstr "Menu-optie toevoegen"
@@ -1516,7 +1573,7 @@ msgstr "Volume Aan_koppelen"
 #~ msgstr "Multiniveau"
 
 #~ msgid "_Unique entries only"
-#~ msgstr "Enkel _unieke onderdelen"
+#~ msgstr "Uitsluitend _unieke velden"
 
 #~ msgid "Edit menu entry"
 #~ msgstr "Bewerk menu-onderdeel"
@@ -1533,8 +1590,14 @@ msgstr "Volume Aan_koppelen"
 #~ msgid "xfce4-menueditor is deprecated"
 #~ msgstr "xfce4-menubewerker is verouderd"
 
-#~ msgid "Xfce's menu system has been replaced, and xfce4-menueditor is not able to edit the new menu file format.  You may continue and edit an old-style menu file, or quit."
-#~ msgstr "Xfce's menubeheer is vernieuwd en kan dientengevolge niet meer bewerkt worden met xfce4-menubewerker. U kunt alsnog een menu in de oude stijl bewerken, of sluiten."
+#~ msgid ""
+#~ "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
+#~ "edit the new menu file format.  You may continue and edit an old-style "
+#~ "menu file, or quit."
+#~ msgstr ""
+#~ "Xfce's menubeheer is vernieuwd en kan dientengevolge niet meer bewerkt "
+#~ "worden met xfce4-menubewerker. U kunt alsnog een menu in de oude stijl "
+#~ "bewerken, of sluiten."
 
 #~ msgid "Continue"
 #~ msgstr "Ga door"
@@ -1663,7 +1726,8 @@ msgstr "Volume Aan_koppelen"
 #~ msgstr "Open menubestand"
 
 #~ msgid "Do you want to save before opening the default menu ?"
-#~ msgstr "Wilt u de wijzigingen opslaan voor het openen van het standaardmenu?"
+#~ msgstr ""
+#~ "Wilt u de wijzigingen opslaan voor het openen van het standaardmenu?"
 
 #~ msgid "Save menu file as"
 #~ msgstr "Open menubestand"
@@ -1725,11 +1789,13 @@ msgstr "Volume Aan_koppelen"
 #~ msgid ""
 #~ "Could not save file %s: %s\n"
 #~ "\n"
-#~ "Please choose another location or press cancel in the dialog to discard your changes"
+#~ "Please choose another location or press cancel in the dialog to discard "
+#~ "your changes"
 #~ msgstr ""
 #~ "Kon bestand %s niet opslaan: %s\n"
 #~ "\n"
-#~ "Gelieve een andere locatie te kiezen, of druk op annuleren in het dialoogvenster om uw wijzigingen weg te gooien"
+#~ "Gelieve een andere locatie te kiezen, of druk op annuleren in het "
+#~ "dialoogvenster om uw wijzigingen weg te gooien"
 
 #~ msgid "Button Label|Desktop"
 #~ msgstr "Bureaublad"
