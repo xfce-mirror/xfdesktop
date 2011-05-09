@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-08 04:33+0000\n"
+"POT-Creation-Date: 2011-05-09 10:34+0000\n"
 "PO-Revision-Date: 2008-10-24 17:45+0100\n"
 "Last-Translator: Pjotr\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
@@ -79,7 +79,7 @@ msgid "Replace"
 msgstr "Vervang"
 
 #: ../settings/main.c:798
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to write backdrop list to \"%s\""
 msgstr "Kon achtergrondenlijst niet schrijven naar \"%s\""
 
@@ -111,12 +111,12 @@ msgid "Screen %d"
 msgstr "Scherm %d"
 
 #: ../settings/main.c:1283
-#, fuzzy, c-format
+#, c-format
 msgid "Monitor %d (%s)"
 msgstr "Monitor %d (%s)"
 
 #: ../settings/main.c:1287
-#, fuzzy, c-format
+#, c-format
 msgid "Monitor %d"
 msgstr "Monitor %d"
 
@@ -126,10 +126,9 @@ msgstr "Contactpunt voor instellingenbeheerder"
 
 #: ../settings/main.c:1500
 msgid "SOCKET ID"
-msgstr ""
+msgstr "SOCKET ID"
 
 #: ../settings/main.c:1501
-#, fuzzy
 msgid "Version information"
 msgstr "Versie-informatie"
 
@@ -152,12 +151,10 @@ msgid "Desktop Settings"
 msgstr "Bureaublad-instellingen"
 
 #: ../settings/main.c:1543
-#, fuzzy
 msgid "Unable to contact settings server"
 msgstr "Kan geen contact leggen met de instellingendienst."
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
-#, fuzzy
 msgid "Desktop "
 msgstr "Bureaublad"
 
@@ -368,9 +365,8 @@ msgid "Middle"
 msgstr "Midden"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:18
-#, fuzzy
 msgid "Minimized application icons"
-msgstr "Geminimalizeerde programmapictogrammen"
+msgstr "Geminimaliseerde programmapictogrammen"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:19
 msgid "Mo_difier:"
@@ -473,9 +469,9 @@ msgid "Cause xfdesktop to quit"
 msgstr "Sluit Xfdesktop af"
 
 #: ../src/main.c:262
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to parse arguments: %s\n"
-msgstr "Kan %s\n niet uitvoeren:"
+msgstr "Kon argumenten niet ontleden: %s\n"
 
 #: ../src/main.c:270
 #, c-format
@@ -488,7 +484,7 @@ msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Gemaakt met GTK+ %d.%d.%d, gekoppeld aan GTK+ %d.%d.%d."
 
 #: ../src/main.c:276
-#, fuzzy, c-format
+#, c-format
 msgid "Build options:\n"
 msgstr "Build-opties:\n"
 
@@ -600,7 +596,6 @@ msgstr "De geselecteerde bestanden konden niet naar de prullenbak worden verplaa
 #: ../src/xfdesktop-file-utils.c:1102 ../src/xfdesktop-file-utils.c:1152
 #: ../src/xfdesktop-file-utils.c:1229 ../src/xfdesktop-file-utils.c:1290
 #: ../src/xfdesktop-file-utils.c:1363 ../src/xfdesktop-file-utils.c:1441
-#, fuzzy
 msgid "This feature requires a file manager service to be present (such as the one supplied by Thunar)."
 msgstr "Voor deze mogelijkheid moet er een bestandsbeheerdienst actief zijn (zoals die van Thunar)."
 
@@ -665,9 +660,8 @@ msgstr "_Map Maken..."
 
 #. create from template submenu
 #: ../src/xfdesktop-file-icon-manager.c:1442
-#, fuzzy
 msgid "Create From _Template"
-msgstr "Maak Document van voorbeeld \"%s\""
+msgstr "Maak vanuit _Sjabloon"
 
 #: ../src/xfdesktop-file-icon-manager.c:1468
 msgid "_Empty File"
@@ -736,9 +730,8 @@ msgstr "%x om %X"
 
 #. the file_time is invalid
 #: ../src/xfdesktop-file-utils.c:159
-#, fuzzy
 msgid "Unknown"
-msgstr "(onbekend)"
+msgstr "Onbekend"
 
 #: ../src/xfdesktop-file-utils.c:713 ../src/xfdesktop-file-utils.c:728
 msgid "The folder could not be opened"
@@ -897,25 +890,24 @@ msgid "_Empty Trash"
 msgstr "Prullenbak L_egen"
 
 #: ../src/xfdesktop-volume-icon.c:423
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Removable Volume\n"
 "Mounted in \"%s\"\n"
 "%s left (%s total)"
 msgstr ""
-"Type: Verwisselbare schijf\n"
-"Koppelpunt: \"%s\"\n"
-"%s over (%s totaal)"
+"Verwisselbare schijf\n"
+"Aangekoppeld in \"%s\"\n"
+"%s over (%s totaal)\r\n"
+"\t"
 
 #: ../src/xfdesktop-volume-icon.c:430
-#, fuzzy
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
 msgstr ""
 "Verwisselbare schijf\n"
 "Nog niet aangekoppeld"
-
 
 #: ../src/xfdesktop-volume-icon.c:456 ../src/xfdesktop-volume-icon.c:498
 #, c-format
