@@ -1,13 +1,14 @@
 # Dutch translations for xfdesktop package.
-# Copyright (C) 2003-2006 The Xfce development team.
+# Copyright (C) The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
 # Jasper Huijsmans <jasper@xfce.org>, 2004.
-#
+# Pjotr, 2011.
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-26 16:34+0000\n"
+"POT-Creation-Date: 2011-05-27 04:34+0000\n"
 "PO-Revision-Date: 2008-10-24 17:45+0100\n"
 "Last-Translator: Pjotr\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
@@ -76,8 +77,8 @@ msgstr "Ongeldig lijstbestand"
 #: ../settings/main.c:536
 msgid "Overwriting the file will cause its contents to be lost."
 msgstr ""
-"Het overschrijven van dit bestand heeft als gevolg dat de "
-"inhoud verloren gaat."
+"Het overschrijven van dit bestand heeft als gevolg dat de inhoud verloren "
+"gaat."
 
 #: ../settings/main.c:538
 msgid "Replace"
@@ -166,8 +167,8 @@ msgstr "Bureaublad"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Set desktop background and menu and icon behaviour"
 msgstr ""
-"Stel de bureaubladachtergrond in en het gedrag van het "
-"menu en de pictogrammen"
+"Stel de bureaubladachtergrond in en het gedrag van het menu en de "
+"pictogrammen"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
 msgid "<b>Adjustments</b>"
@@ -276,8 +277,8 @@ msgstr ""
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid "Specify how the image will be resized to fit the screen"
 msgstr ""
-"Specificeer hoe het formaat van de afbeelding zal worden "
-"aangepast om te passen op het scherm"
+"Specificeer hoe het formaat van de afbeelding zal worden aangepast om te "
+"passen op het scherm"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "Specify the style of the color drawn behind the backdrop image"
@@ -401,8 +402,7 @@ msgstr "Rechts"
 #: ../settings/xfdesktop-settings-ui.glade.h:24
 msgid "Set desktop background and menu and icon behavior"
 msgstr ""
-"Stel het gedrag in van de bureaubladachtergrond, "
-"het menu en de pictogrammen"
+"Stel het gedrag in van de bureaubladachtergrond, het menu en de pictogrammen"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:25
 msgid "Sh_ow application icons in menu"
@@ -576,8 +576,7 @@ msgstr "Werkblad '%s' _verwijderen"
 #: ../src/xfce-desktop.c:1022
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
-msgstr "Kon afbeelding niet laden vanuit het "
-"achtergrondenlijstbestand \"%s\""
+msgstr "Kon afbeelding niet laden vanuit het achtergrondenlijstbestand \"%s\""
 
 #: ../src/xfce-desktop.c:1024
 msgid "Desktop Error"
@@ -612,8 +611,7 @@ msgstr "Prullenbakfout"
 #: ../src/xfdesktop-file-icon-manager.c:637
 msgid "The selected files could not be trashed"
 msgstr ""
-"De geselecteerde bestanden konden niet naar "
-"de prullenbak worden verplaatst"
+"De geselecteerde bestanden konden niet naar de prullenbak worden verplaatst"
 
 #: ../src/xfdesktop-file-icon-manager.c:594
 #: ../src/xfdesktop-file-icon-manager.c:638 ../src/xfdesktop-file-utils.c:729
@@ -790,8 +788,7 @@ msgstr "De geselecteerde bestanden konden niet worden gewist"
 #: ../src/xfdesktop-file-utils.c:881 ../src/xfdesktop-file-utils.c:896
 msgid "The selected files could not be moved to the trash"
 msgstr ""
-"De geselecteerde bestanden konden niet worden verplaatst "
-"naar de prullenbak"
+"De geselecteerde bestanden konden niet worden verplaatst naar de prullenbak"
 
 #: ../src/xfdesktop-file-utils.c:897 ../src/xfdesktop-file-utils.c:943
 msgid ""
@@ -827,8 +824,7 @@ msgstr "Fout in bestandeigenschappen"
 
 #: ../src/xfdesktop-file-utils.c:1086 ../src/xfdesktop-file-utils.c:1101
 msgid "The file properties dialog could not be opened"
-msgstr "De dialoog voor de bestandeigenschappen kon "
-"niet worden geopend"
+msgstr "De dialoog voor de bestandeigenschappen kon niet worden geopend"
 
 #: ../src/xfdesktop-file-utils.c:1136 ../src/xfdesktop-file-utils.c:1151
 msgid "The file could not be opened"
@@ -1077,11 +1073,14 @@ msgstr "Medium Aan_koppelen"
 #~ "afbeeldingenlijst\n"
 
 #~ msgid "    --menu        Pop up the menu (at the current mouse position)\n"
-#~ msgstr "    -menu        Bureaubladmenu laten opspringen (op huidige muispositie)\n"
+#~ msgstr ""
+#~ "    -menu        Bureaubladmenu laten opspringen (op huidige "
+#~ "muispositie)\n"
 
 #~ msgid ""
 #~ "    --windowlist  Pop up the window list (at the current mouse position)\n"
-#~ msgstr "    --windowlist  Vensterlijst laten opspringen (op huidige muispositie)\n"
+#~ msgstr ""
+#~ "    --windowlist  Vensterlijst laten opspringen (op huidige muispositie)\n"
 
 #~ msgid "    --quit        Cause xfdesktop to quit\n"
 #~ msgstr "    --quit       Xf-werkomgeving afsluiten\n"
