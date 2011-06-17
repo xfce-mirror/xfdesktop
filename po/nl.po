@@ -1,4 +1,4 @@
-# Dutch translations for xfdesktop package.
+# Dutch translation for the xfdesktop package.
 # Copyright (C) The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
 # Jasper Huijsmans <jasper@xfce.org>, 2004.
@@ -8,14 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-27 04:34+0000\n"
-"PO-Revision-Date: 2008-10-24 17:45+0100\n"
+"POT-Creation-Date: 2011-06-17 10:36+0000\n"
+"PO-Revision-Date: 2011-06-15 17:45+0200\n"
 "Last-Translator: Pjotr\n"
-"Language-Team: Dutch <vertaling@vrijschrift.org>\n"
+"Language-Team: Dutch (Flemish)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl\n"
+"Language: nl (Dutch)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
 #, c-format
@@ -47,7 +48,7 @@ msgstr "Prullenbak"
 
 #: ../settings/main.c:295
 msgid "Removable Devices"
-msgstr "Verwisselbare Apparaten"
+msgstr "Verwijderbare Apparaten"
 
 #: ../settings/main.c:475
 #, c-format
@@ -132,7 +133,7 @@ msgstr "Contactpunt voor instellingenbeheerder"
 
 #: ../settings/main.c:1500
 msgid "SOCKET ID"
-msgstr "SOCKET ID"
+msgstr "CONTACTPUNT ID"
 
 #: ../settings/main.c:1501
 msgid "Version information"
@@ -317,7 +318,7 @@ msgstr "Ingezoomed"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
 msgid "_None"
-msgstr "Geen"
+msgstr "_Geen"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
 msgid "_Single image"
@@ -361,7 +362,7 @@ msgstr "Bestand/Starterpictogrammen"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:13
 msgid "Icon _size:"
-msgstr "_Pictogram grootte:"
+msgstr "_Pictogramgrootte:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:14
 msgid "Icon _type:"
@@ -385,11 +386,11 @@ msgstr "Geminimaliseerde toepassingspictogrammen"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:19
 msgid "Mo_difier:"
-msgstr "Aanpasser:"
+msgstr "Aan_passer:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:20
 msgid "Modi_fier:"
-msgstr "Aanpasser:"
+msgstr "Aan_passer:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:21
 msgid "None"
@@ -529,7 +530,7 @@ msgstr "    Bureaubladpictogrammen:         %s\n"
 #: ../src/main.c:291
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr "    Bureaublad Bestandspictogrammen: %s\n"
+msgstr "    Bureaublad Bestandpictogrammen: %s\n"
 
 #: ../src/main.c:322
 #, c-format
@@ -941,7 +942,7 @@ msgid ""
 "Mounted in \"%s\"\n"
 "%s left (%s total)"
 msgstr ""
-"Verwisselbaar Medium\n"
+"Verwijderbaar Medium\n"
 "Aangekoppeld in \"%s\"\n"
 "%s over (%s totaal)"
 
@@ -950,7 +951,7 @@ msgid ""
 "Removable Volume\n"
 "Not mounted yet"
 msgstr ""
-"Verwisselbaar Medium\n"
+"Verwijderbaar Medium\n"
 "Nog niet aangekoppeld"
 
 #: ../src/xfdesktop-volume-icon.c:456 ../src/xfdesktop-volume-icon.c:498
@@ -990,7 +991,7 @@ msgstr "Medium Aan_koppelen"
 #~ "met ondersteuning voor de prullenbakdienst van Xfce."
 
 #~ msgid "Needs terminal"
-#~ msgstr "Terminal nodig"
+#~ msgstr "Heeft terminal nodig"
 
 #~ msgid "Command"
 #~ msgstr "Opdracht"
@@ -1132,7 +1133,7 @@ msgstr "Medium Aan_koppelen"
 #~ "This feature requires a file manager service present (such as that "
 #~ "supplied by Thunar)."
 #~ msgstr ""
-#~ "Voor deze mogelijkheid moet er een bestandsbeheer-dienst actief zijn "
+#~ "Voor deze mogelijkheid moet er een bestandbeheer-dienst actief zijn "
 #~ "(zoals die van Thunar)."
 
 #~ msgid "Unable to create folder named \"%s\":"
@@ -1202,7 +1203,7 @@ msgstr "Medium Aan_koppelen"
 #~ msgstr "Soort:"
 
 #~ msgid "Link Target:"
-#~ msgstr "Koppelingsdoel:"
+#~ msgstr "Koppelingdoel:"
 
 #~ msgid "(unknown)"
 #~ msgstr "(onbekend)"
@@ -1310,7 +1311,7 @@ msgstr "Medium Aan_koppelen"
 #~ msgstr "Hulpmiddelen"
 
 #~ msgid "Common desktop tools and applications"
-#~ msgstr "Veelgebruikte hulpmiddelen en toepassingen"
+#~ msgstr "Veelgebruikte gereedschappen en toepassingen"
 
 #~ msgid "Development"
 #~ msgstr "Ontwikkeling"
@@ -1328,7 +1329,7 @@ msgstr "Medium Aan_koppelen"
 #~ msgstr "Spelletjes"
 
 #~ msgid "Games, puzzles, and other fun software"
-#~ msgstr "Spelletjes, puzzels en ander tijdverdrijf"
+#~ msgstr "Spelletjes, puzzels en ander prettig tijdverdrijf"
 
 #~ msgid "Graphics"
 #~ msgstr "Grafisch"
@@ -1361,7 +1362,7 @@ msgstr "Medium Aan_koppelen"
 #~ msgstr "Overig"
 
 #~ msgid "Screensaver applets"
-#~ msgstr "Schermbeveiligingstoepassingen"
+#~ msgstr "Schermbeveiligingtoepassingen"
 
 #~ msgid "Screensavers"
 #~ msgstr "Schermbeveiligingen"
@@ -1450,7 +1451,7 @@ msgstr "Medium Aan_koppelen"
 #~ "File/launcher icons"
 #~ msgstr ""
 #~ "Geen\n"
-#~ "Geminimaliseerde toepassingspictogrammen\n"
+#~ "Geminimaliseerde toepassingpictogrammen\n"
 #~ "Bestand/starterpictogrammen"
 
 #~ msgid ""
