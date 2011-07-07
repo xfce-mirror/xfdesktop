@@ -8,20 +8,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.8.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-20 04:14+0000\n"
+"POT-Creation-Date: 2011-07-07 10:14+0000\n"
 "PO-Revision-Date: 2011-06-20 12:52+0100\n"
 "Last-Translator: Tomáš Vadina <kyberdev@gmail.com>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Country: SLOVAKIA\n"
 "Language: sk\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
 "X-Poedit-Language: Slovak\n"
-"X-Poedit-Country: SLOVAKIA\n"
 
-#: ../common/xfdesktop-common.c:96
-#: ../common/xfdesktop-common.c:200
+#: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
 #, c-format
 msgid "Backdrop list file is not valid"
 msgstr "Súbor zoznam pozadí nie je platný"
@@ -36,8 +35,7 @@ msgstr ""
 "%s\n"
 "<i>Veľkosť: %dx%d</i>"
 
-#: ../settings/main.c:289
-#: ../src/xfdesktop-special-file-icon.c:256
+#: ../settings/main.c:289 ../src/xfdesktop-special-file-icon.c:256
 #: ../src/xfdesktop-special-file-icon.c:419
 msgid "Home"
 msgstr "Domov"
@@ -59,8 +57,7 @@ msgstr "Vymeniteľné zariadenia"
 msgid "Cannot create backdrop list \"%s\""
 msgstr "Nie je možné vytvoriť zoznam pozadí \"%s\""
 
-#: ../settings/main.c:479
-#: ../settings/main.c:802
+#: ../settings/main.c:479 ../settings/main.c:802
 msgid "Backdrop List Error"
 msgstr "Chyba zoznamu pozadí"
 
@@ -343,8 +340,7 @@ msgstr "_Tlačidlo:"
 msgid "Control"
 msgstr "Ovládanie"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10
-#: ../src/xfce-desktop.c:738
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:738
 msgid "Desktop"
 msgstr "Plocha"
 
@@ -438,7 +434,7 @@ msgstr "Použiť vlastnú veľkosť _písma:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:41
 msgid "_Background"
-msgstr "_Pozadie"
+msgstr "Po_zadie"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:42
 msgid "_Button:"
@@ -454,7 +450,7 @@ msgstr "_Ikony"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:45
 msgid "_Menus"
-msgstr "_Ponuky"
+msgstr "Po_nuky"
 
 #: ../src/main.c:238
 msgid "Display version information"
@@ -501,15 +497,11 @@ msgstr "Voľby pri zostavovaní:\n"
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Hlavná ponuka:        %s\n"
 
-#: ../src/main.c:279
-#: ../src/main.c:286
-#: ../src/main.c:293
+#: ../src/main.c:279 ../src/main.c:286 ../src/main.c:293
 msgid "enabled"
 msgstr "povolené"
 
-#: ../src/main.c:281
-#: ../src/main.c:288
-#: ../src/main.c:295
+#: ../src/main.c:281 ../src/main.c:288 ../src/main.c:295
 msgid "disabled"
 msgstr "zakázané"
 
@@ -551,8 +543,7 @@ msgstr "<b>Virtuálna plocha %d</b>"
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Virtuálna plocha %d</i>"
 
-#: ../src/windowlist.c:362
-#: ../src/windowlist.c:365
+#: ../src/windowlist.c:362 ../src/windowlist.c:365
 msgid "_Add Workspace"
 msgstr "_Pridať virtuálnu plochu"
 
@@ -591,10 +582,8 @@ msgid "A normal file with the same name already exists. Please delete or rename 
 msgstr "Súbor s rovnakým názvom už existuje. Zmažte ho, alebo premenujte."
 
 #: ../src/xfdesktop-file-icon-manager.c:592
-#: ../src/xfdesktop-file-icon-manager.c:636
-#: ../src/xfdesktop-file-utils.c:880
-#: ../src/xfdesktop-file-utils.c:895
-#: ../src/xfdesktop-file-utils.c:927
+#: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:880
+#: ../src/xfdesktop-file-utils.c:895 ../src/xfdesktop-file-utils.c:927
 #: ../src/xfdesktop-file-utils.c:941
 msgid "Trash Error"
 msgstr "Chyba koša"
@@ -605,18 +594,12 @@ msgid "The selected files could not be trashed"
 msgstr "Vybrané súbory nie je možné presunúť do koša"
 
 #: ../src/xfdesktop-file-icon-manager.c:594
-#: ../src/xfdesktop-file-icon-manager.c:638
-#: ../src/xfdesktop-file-utils.c:729
-#: ../src/xfdesktop-file-utils.c:779
-#: ../src/xfdesktop-file-utils.c:838
-#: ../src/xfdesktop-file-utils.c:996
-#: ../src/xfdesktop-file-utils.c:1052
-#: ../src/xfdesktop-file-utils.c:1102
-#: ../src/xfdesktop-file-utils.c:1152
-#: ../src/xfdesktop-file-utils.c:1229
-#: ../src/xfdesktop-file-utils.c:1290
-#: ../src/xfdesktop-file-utils.c:1363
-#: ../src/xfdesktop-file-utils.c:1441
+#: ../src/xfdesktop-file-icon-manager.c:638 ../src/xfdesktop-file-utils.c:729
+#: ../src/xfdesktop-file-utils.c:779 ../src/xfdesktop-file-utils.c:838
+#: ../src/xfdesktop-file-utils.c:996 ../src/xfdesktop-file-utils.c:1052
+#: ../src/xfdesktop-file-utils.c:1102 ../src/xfdesktop-file-utils.c:1152
+#: ../src/xfdesktop-file-utils.c:1229 ../src/xfdesktop-file-utils.c:1290
+#: ../src/xfdesktop-file-utils.c:1363 ../src/xfdesktop-file-utils.c:1441
 msgid "This feature requires a file manager service to be present (such as the one supplied by Thunar)."
 msgstr "Táto vlastnosť vyžaduje prítomnosť služby správcu súborov (napríklad aplikáciu Thunar)."
 
@@ -629,14 +612,10 @@ msgstr "Nie je možné spustiť \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:740
 #: ../src/xfdesktop-file-icon-manager.c:984
-#: ../src/xfdesktop-file-icon-manager.c:1301
-#: ../src/xfdesktop-file-utils.c:712
-#: ../src/xfdesktop-file-utils.c:727
-#: ../src/xfdesktop-file-utils.c:1135
-#: ../src/xfdesktop-file-utils.c:1150
-#: ../src/xfdesktop-file-utils.c:1202
-#: ../src/xfdesktop-file-utils.c:1227
-#: ../src/xfdesktop-file-utils.c:1273
+#: ../src/xfdesktop-file-icon-manager.c:1301 ../src/xfdesktop-file-utils.c:712
+#: ../src/xfdesktop-file-utils.c:727 ../src/xfdesktop-file-utils.c:1135
+#: ../src/xfdesktop-file-utils.c:1150 ../src/xfdesktop-file-utils.c:1202
+#: ../src/xfdesktop-file-utils.c:1227 ../src/xfdesktop-file-utils.c:1273
 #: ../src/xfdesktop-file-utils.c:1288
 msgid "Launch Error"
 msgstr "Chyba pri spustení"
@@ -664,8 +643,7 @@ msgid "_Open in New Window"
 msgstr "_Otvoriť v novom okne"
 
 #: ../src/xfdesktop-file-icon-manager.c:1376
-#: ../src/xfdesktop-special-file-icon.c:489
-#: ../src/xfdesktop-volume-icon.c:663
+#: ../src/xfdesktop-special-file-icon.c:489 ../src/xfdesktop-volume-icon.c:663
 msgid "_Open"
 msgstr "_Otvoriť"
 
@@ -759,103 +737,82 @@ msgstr "%x o %X"
 msgid "Unknown"
 msgstr "Neznámy"
 
-#: ../src/xfdesktop-file-utils.c:713
-#: ../src/xfdesktop-file-utils.c:728
+#: ../src/xfdesktop-file-utils.c:713 ../src/xfdesktop-file-utils.c:728
 msgid "The folder could not be opened"
 msgstr "Priečinok nie je možné otvoriť"
 
-#: ../src/xfdesktop-file-utils.c:762
-#: ../src/xfdesktop-file-utils.c:777
+#: ../src/xfdesktop-file-utils.c:762 ../src/xfdesktop-file-utils.c:777
 msgid "Rename Error"
 msgstr "Chyba premenovania"
 
-#: ../src/xfdesktop-file-utils.c:763
-#: ../src/xfdesktop-file-utils.c:778
+#: ../src/xfdesktop-file-utils.c:763 ../src/xfdesktop-file-utils.c:778
 msgid "The file could not be renamed"
 msgstr "Súbor nie je možné premenovať"
 
-#: ../src/xfdesktop-file-utils.c:821
-#: ../src/xfdesktop-file-utils.c:836
+#: ../src/xfdesktop-file-utils.c:821 ../src/xfdesktop-file-utils.c:836
 msgid "Delete Error"
 msgstr "Chyba pri mazaní"
 
-#: ../src/xfdesktop-file-utils.c:822
-#: ../src/xfdesktop-file-utils.c:837
+#: ../src/xfdesktop-file-utils.c:822 ../src/xfdesktop-file-utils.c:837
 msgid "The selected files could not be deleted"
 msgstr "Vybrané súbory nie je možné zmazať"
 
-#: ../src/xfdesktop-file-utils.c:881
-#: ../src/xfdesktop-file-utils.c:896
+#: ../src/xfdesktop-file-utils.c:881 ../src/xfdesktop-file-utils.c:896
 msgid "The selected files could not be moved to the trash"
 msgstr "Vybrané súbory nie je možné presunúť do koša"
 
-#: ../src/xfdesktop-file-utils.c:897
-#: ../src/xfdesktop-file-utils.c:943
+#: ../src/xfdesktop-file-utils.c:897 ../src/xfdesktop-file-utils.c:943
 msgid "This feature requires a trash service to be present (such as the one supplied by Thunar)."
 msgstr "Táto vlastnosť vyžaduje prítomnosť služby koša (napríklad dodávanú v rámci aplikácie Thunar)."
 
-#: ../src/xfdesktop-file-utils.c:928
-#: ../src/xfdesktop-file-utils.c:942
+#: ../src/xfdesktop-file-utils.c:928 ../src/xfdesktop-file-utils.c:942
 msgid "Could not empty the trash"
 msgstr "Kôš nie je možné vysypať"
 
-#: ../src/xfdesktop-file-utils.c:979
-#: ../src/xfdesktop-file-utils.c:994
+#: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:994
 msgid "Create File Error"
 msgstr "Chyba pri vytváraní súboru"
 
-#: ../src/xfdesktop-file-utils.c:980
-#: ../src/xfdesktop-file-utils.c:995
+#: ../src/xfdesktop-file-utils.c:980 ../src/xfdesktop-file-utils.c:995
 msgid "Could not create a new file"
 msgstr "Nie je možné vytvoriť nový súbor"
 
-#: ../src/xfdesktop-file-utils.c:1035
-#: ../src/xfdesktop-file-utils.c:1050
+#: ../src/xfdesktop-file-utils.c:1035 ../src/xfdesktop-file-utils.c:1050
 msgid "Create Document Error"
 msgstr "Chyba pri vytváraní dokumentu"
 
-#: ../src/xfdesktop-file-utils.c:1036
-#: ../src/xfdesktop-file-utils.c:1051
+#: ../src/xfdesktop-file-utils.c:1036 ../src/xfdesktop-file-utils.c:1051
 msgid "Could not create a new document from the template"
 msgstr "Zo šablóny nie je možné vytvoriť nový dokument"
 
-#: ../src/xfdesktop-file-utils.c:1085
-#: ../src/xfdesktop-file-utils.c:1100
+#: ../src/xfdesktop-file-utils.c:1085 ../src/xfdesktop-file-utils.c:1100
 msgid "File Properties Error"
 msgstr "Chyba vlastností súboru"
 
-#: ../src/xfdesktop-file-utils.c:1086
-#: ../src/xfdesktop-file-utils.c:1101
+#: ../src/xfdesktop-file-utils.c:1086 ../src/xfdesktop-file-utils.c:1101
 msgid "The file properties dialog could not be opened"
 msgstr "Dialógové okno vlastností súboru nie je možné otvoriť"
 
-#: ../src/xfdesktop-file-utils.c:1136
-#: ../src/xfdesktop-file-utils.c:1151
+#: ../src/xfdesktop-file-utils.c:1136 ../src/xfdesktop-file-utils.c:1151
 msgid "The file could not be opened"
 msgstr "Súbor nie je možné otvoriť"
 
-#: ../src/xfdesktop-file-utils.c:1199
-#: ../src/xfdesktop-file-utils.c:1224
+#: ../src/xfdesktop-file-utils.c:1199 ../src/xfdesktop-file-utils.c:1224
 #, c-format
 msgid "Failed to run \"%s\""
 msgstr "Zlyhalo spustenie \"%s\""
 
-#: ../src/xfdesktop-file-utils.c:1274
-#: ../src/xfdesktop-file-utils.c:1289
+#: ../src/xfdesktop-file-utils.c:1274 ../src/xfdesktop-file-utils.c:1289
 msgid "The application chooser could not be opened"
 msgstr "Výber aplikácie nebolo možné otvoriť"
 
-#: ../src/xfdesktop-file-utils.c:1347
-#: ../src/xfdesktop-file-utils.c:1361
-#: ../src/xfdesktop-file-utils.c:1423
-#: ../src/xfdesktop-file-utils.c:1439
+#: ../src/xfdesktop-file-utils.c:1347 ../src/xfdesktop-file-utils.c:1361
+#: ../src/xfdesktop-file-utils.c:1423 ../src/xfdesktop-file-utils.c:1439
 msgid "Transfer Error"
 msgstr "Chyba pri prenose"
 
-#: ../src/xfdesktop-file-utils.c:1348
-#: ../src/xfdesktop-file-utils.c:1362
-#: ../src/xfdesktop-file-utils.c:1424
-#: ../src/xfdesktop-file-utils.c:1440
+#: ../src/xfdesktop-file-utils.c:1348 ../src/xfdesktop-file-utils.c:1362
+#: ../src/xfdesktop-file-utils.c:1424 ../src/xfdesktop-file-utils.c:1440
 msgid "The file transfer could not be performed"
 msgstr "Prenos súboru nie je možné uskutočniť"
 
@@ -871,14 +828,12 @@ msgid "The device \"%s\" is being unmounted by the system. Please do not remove 
 msgstr "Systém odpája zariadenie \"%s\". Neodoberajte médium ani neodpájajte jednotku"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:138
-#: ../src/xfdesktop-notify.c:262
+#: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
 msgid "Writing data to device"
 msgstr "Zápis dát do zariadenia"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:141
-#: ../src/xfdesktop-notify.c:265
+#: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
 #, c-format
 msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
 msgstr "Dáta je potrebné zapísať na zariadenie \"%s\" pred jeho odobratím. Neodoberajte médium ani neodpájajte jednotku"
@@ -957,14 +912,12 @@ msgstr ""
 "Vymeniteľný zväzok\n"
 "Zatiaľ nie je pripojený"
 
-#: ../src/xfdesktop-volume-icon.c:456
-#: ../src/xfdesktop-volume-icon.c:498
+#: ../src/xfdesktop-volume-icon.c:456 ../src/xfdesktop-volume-icon.c:498
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "Nepodarilo sa vysunúť \"%s\""
 
-#: ../src/xfdesktop-volume-icon.c:461
-#: ../src/xfdesktop-volume-icon.c:503
+#: ../src/xfdesktop-volume-icon.c:461 ../src/xfdesktop-volume-icon.c:503
 msgid "Eject Failed"
 msgstr "Vysunutie zlyhalo"
 
@@ -977,8 +930,7 @@ msgstr "Pripojenie \"%s\" zlyhalo"
 msgid "Mount Failed"
 msgstr "Pripojenie zlyhalo"
 
-#: ../src/xfdesktop-volume-icon.c:679
-#: ../src/xfdesktop-volume-icon.c:682
+#: ../src/xfdesktop-volume-icon.c:679 ../src/xfdesktop-volume-icon.c:682
 msgid "E_ject Volume"
 msgstr "_Vysunúť zväzok"
 
@@ -989,12 +941,8 @@ msgstr "_Pripojiť zväzok"
 #~ msgid "Unable to contact the Xfce Trash service."
 #~ msgstr "Nie je možné sa pripojiť na službu Kôš Xfce"
 
-#~ msgid ""
-#~ "Make sure you have a file manager installed that supports the Xfce Trash "
-#~ "service, such as Thunar."
-#~ msgstr ""
-#~ "Uistite sa, či máte nainštalovaného správcu súborov podporujúceho službu "
-#~ "Kôš Xfce, napríklad aplikáciu Thunar"
+#~ msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
+#~ msgstr "Uistite sa, či máte nainštalovaného správcu súborov podporujúceho službu Kôš Xfce, napríklad aplikáciu Thunar"
 
 #~ msgid "Needs terminal"
 #~ msgstr "Terminál"
@@ -1078,35 +1026,25 @@ msgstr "_Pripojiť zväzok"
 #~ msgstr "Možnosti sú:\n"
 
 #~ msgid "    --reload      Reload all settings, refresh image list\n"
-#~ msgstr ""
-#~ "    -reload      Nahrať znovu všetky nastavenie, obnoviť zoznam obrázkov\n"
+#~ msgstr "    -reload      Nahrať znovu všetky nastavenie, obnoviť zoznam obrázkov\n"
 
 #~ msgid "    --menu        Pop up the menu (at the current mouse position)\n"
-#~ msgstr ""
-#~ "    -menu        Otvorí ponuku (na aktuálnej pozícii kurzora myši)\n"
+#~ msgstr "    -menu        Otvorí ponuku (na aktuálnej pozícii kurzora myši)\n"
 
-#~ msgid ""
-#~ "    --windowlist  Pop up the window list (at the current mouse position)\n"
-#~ msgstr ""
-#~ "    -windowlist  Otvorí zoznam okien (na aktuálnej pozícii kurzora myši)\n"
+#~ msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
+#~ msgstr "    -windowlist  Otvorí zoznam okien (na aktuálnej pozícii kurzora myši)\n"
 
 #~ msgid "    --quit        Cause xfdesktop to quit\n"
 #~ msgstr "    --quit       Ukončí správcu plochy xfdesktop\n"
 
-#~ msgid ""
-#~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-#~ msgstr ""
-#~ "Xfdesktop nemôže vytvoriť priečinok \"%s\" pre uloženie položiek plochy:"
+#~ msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+#~ msgstr "Xfdesktop nemôže vytvoriť priečinok \"%s\" pre uloženie položiek plochy:"
 
 #~ msgid "Create Folder Failed"
 #~ msgstr "Vytvorenie priečinka zlyhalo"
 
-#~ msgid ""
-#~ "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not "
-#~ "a folder."
-#~ msgstr ""
-#~ "Xfdesktop nemôže použiť \"%s\" pre uloženie položiek plochy, pretože nie "
-#~ "je priečinkom."
+#~ msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
+#~ msgstr "Xfdesktop nemôže použiť \"%s\" pre uloženie položiek plochy, pretože nie je priečinkom."
 
 #~ msgid "Please delete or rename the file."
 #~ msgstr "Zmažte alebo premenujte súbor."
@@ -1138,12 +1076,8 @@ msgstr "_Pripojiť zväzok"
 #~ msgid "The application chooser could not be opened."
 #~ msgstr "Výber aplikácie nebolo možné otvoriť."
 
-#~ msgid ""
-#~ "This feature requires a file manager service present (such as that "
-#~ "supplied by Thunar)."
-#~ msgstr ""
-#~ "Táto vlastnosť vyžaduje prítomnosť služby správcu súborov (napríklad "
-#~ "aplikáciu Thunar)."
+#~ msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
+#~ msgstr "Táto vlastnosť vyžaduje prítomnosť služby správcu súborov (napríklad aplikáciu Thunar)."
 
 #~ msgid "Unable to create folder named \"%s\":"
 #~ msgstr "Nie je možné vytvoriť priečinok s názvom \"%s\":"
@@ -1734,13 +1668,11 @@ msgstr "_Pripojiť zväzok"
 #~ msgid ""
 #~ "Could not save file %s: %s\n"
 #~ "\n"
-#~ "Please choose another location or press cancel in the dialog to discard "
-#~ "your changes"
+#~ "Please choose another location or press cancel in the dialog to discard your changes"
 #~ msgstr ""
 #~ "Nemôžem uložiť súbor %s: %s\n"
 #~ "\n"
-#~ "Prosím vyberte inú lokáciu alebo stlačte tlačítko zrušiť v dialógovom "
-#~ "okne k zahodeniu vašich zmien"
+#~ "Prosím vyberte inú lokáciu alebo stlačte tlačítko zrušiť v dialógovom okne k zahodeniu vašich zmien"
 
 #~ msgid "backdrops.list"
 #~ msgstr "backdrops.list"
