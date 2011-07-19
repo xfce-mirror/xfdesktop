@@ -776,7 +776,6 @@ msgid "Could not empty the trash"
 msgstr "No se pudo finalizar la sesión."
 
 #: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:994
-#, fuzzy
 msgid "Create File Error"
 msgstr "Error de creación"
 
@@ -796,22 +795,19 @@ msgid "Could not create a new document from the template"
 msgstr "Crear documento a partir de plantilla \"%s\""
 
 #: ../src/xfdesktop-file-utils.c:1085 ../src/xfdesktop-file-utils.c:1100
-#, fuzzy
 msgid "File Properties Error"
-msgstr "Error de propiedades"
+msgstr "Error de propiedades del archivo"
 
 #: ../src/xfdesktop-file-utils.c:1086 ../src/xfdesktop-file-utils.c:1101
-#, fuzzy
 msgid "The file properties dialog could not be opened"
-msgstr "El selector de aplicación no pudo abrirse."
+msgstr "El selector de aplicación no pudo abrirse"
 
 #: ../src/xfdesktop-file-utils.c:1136 ../src/xfdesktop-file-utils.c:1151
-#, fuzzy
 msgid "The file could not be opened"
-msgstr "El selector de aplicación no pudo abrirse."
+msgstr "El archivo no pudo ser abierto"
 
 #: ../src/xfdesktop-file-utils.c:1199 ../src/xfdesktop-file-utils.c:1224
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to run \"%s\""
 msgstr "Fallo al ejecutar \"%s\""
 
@@ -834,9 +830,8 @@ msgstr "El selector de aplicación no pudo abrirse."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:128
-#, fuzzy
 msgid "Unmounting device"
-msgstr "Fallo al desmontar"
+msgstr "Desmontando dispositivo"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:131
