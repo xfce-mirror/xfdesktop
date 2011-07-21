@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-17 10:36+0000\n"
-"PO-Revision-Date: 2011-06-15 17:45+0200\n"
+"POT-Creation-Date: 2011-07-21 16:36+0000\n"
+"PO-Revision-Date: 2011-07-20 17:45+0200\n"
 "Last-Translator: Pjotr\n"
 "Language-Team: Dutch (Flemish)\n"
 "MIME-Version: 1.0\n"
@@ -159,7 +159,7 @@ msgstr "Bureaublad-instellingen"
 
 #: ../settings/main.c:1543
 msgid "Unable to contact settings server"
-msgstr "Kan geen contact leggen met de instellingendienst."
+msgstr "Kan geen contact maken met de instellingendienst."
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop "
@@ -215,7 +215,7 @@ msgstr "Maak een nieuwe lijst, of laad een bestaande lijst"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
 msgid "Don't display an image at all"
-msgstr "Geen afbeelding weergeven"
+msgstr "Geen enkele afbeelding weergeven"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
 #: ../settings/xfdesktop-settings-ui.glade.h:12
@@ -362,15 +362,15 @@ msgstr "Bestand/Starterpictogrammen"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:13
 msgid "Icon _size:"
-msgstr "_Pictogramgrootte:"
+msgstr "Pictogram_grootte:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:14
 msgid "Icon _type:"
-msgstr "_Pictogramtype:"
+msgstr "Pictogram_type:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:15
 msgid "Label trans_parency:"
-msgstr "Transparantie van etiketten:"
+msgstr "Door_zichtigheid van etiketten:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:16
 msgid "Left"
@@ -390,7 +390,7 @@ msgstr "Aan_passer:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:20
 msgid "Modi_fier:"
-msgstr "Aan_passer:"
+msgstr "_Aanpasser:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:21
 msgid "None"
@@ -419,11 +419,11 @@ msgstr "Toon toep_assingspictogrammen in menu"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:28
 msgid "Show _window list menu on desktop middle click"
-msgstr "Vensterlijstmenu _tonen bij middelklik op bureaublad"
+msgstr "_Vensterlijstmenu tonen bij middelklik op bureaublad"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:29
 msgid "Show applications menu on _desktop right click"
-msgstr "_Toepassingenmenu tonen bij rechtsklik op bureaublad"
+msgstr "Toepassingen_menu tonen bij rechtsklik op bureaublad"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:30
 msgid "Show s_ticky windows only in active workspace"
@@ -530,7 +530,7 @@ msgstr "    Bureaubladpictogrammen:         %s\n"
 #: ../src/main.c:291
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr "    Bureaublad Bestandpictogrammen: %s\n"
+msgstr "    Pictogrammen voor bureaubladbestanden: %s\n"
 
 #: ../src/main.c:322
 #, c-format
@@ -784,12 +784,12 @@ msgstr "Verwijderfout"
 
 #: ../src/xfdesktop-file-utils.c:822 ../src/xfdesktop-file-utils.c:837
 msgid "The selected files could not be deleted"
-msgstr "De geselecteerde bestanden konden niet worden gewist"
+msgstr "De gekozen bestanden konden niet worden gewist"
 
 #: ../src/xfdesktop-file-utils.c:881 ../src/xfdesktop-file-utils.c:896
 msgid "The selected files could not be moved to the trash"
 msgstr ""
-"De geselecteerde bestanden konden niet worden verplaatst naar de prullenbak"
+"De gekozen bestanden konden niet worden verplaatst naar de prullenbak"
 
 #: ../src/xfdesktop-file-utils.c:897 ../src/xfdesktop-file-utils.c:943
 msgid ""
@@ -853,7 +853,7 @@ msgstr "Het overbrengen van het bestand kon niet worden uitgevoerd"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:128
 msgid "Unmounting device"
-msgstr "Apparaat wordt ontkoppeld"
+msgstr "Apparaat aan het ontkoppelen"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:131
@@ -1170,10 +1170,10 @@ msgstr "Medium Aan_koppelen"
 #~ msgstr "Maakfout"
 
 #~ msgid "Failed to run \"%s\":"
-#~ msgstr "Kan \"%s\" niet uitvoeren:"
+#~ msgstr "Kan \"%s\" niet draaien:"
 
 #~ msgid "Run Error"
-#~ msgstr "Uitvoerfout"
+#~ msgstr "Draaifout"
 
 #~ msgid "The associated application could not be found or executed."
 #~ msgstr "De bijbehorende toepassing kon niet gevonden of uitgevoerd worden."
@@ -1296,7 +1296,7 @@ msgstr "Medium Aan_koppelen"
 #~ msgstr "Kan \"%s\" niet aankoppelen:"
 
 #~ msgid "Unable to unmount \"%s\":"
-#~ msgstr "Kan \"%s\" niet loskoppelen:"
+#~ msgstr "Kan \"%s\" niet ontkoppelen:"
 
 #~ msgid "Unmount Failed"
 #~ msgstr "Ontkoppelen is mislukt"
@@ -1474,7 +1474,7 @@ msgstr "Medium Aan_koppelen"
 #~ "Eén kleur\n"
 #~ "Horizontaal kleurverloop\n"
 #~ "Verticaal kleurverloop\n"
-#~ "Transparant"
+#~ "Doorzichtig"
 
 #~ msgid "Use startup _notification"
 #~ msgstr "Opstart_notificatie gebruiken"
@@ -1540,7 +1540,7 @@ msgstr "Medium Aan_koppelen"
 #~ msgstr "Uitvoeren in _terminal"
 
 #~ msgid "Select command"
-#~ msgstr "Opdracht selecteren"
+#~ msgstr "Opdracht kiezen"
 
 #~ msgid "Executable Files"
 #~ msgstr "Uitvoerbare Bestanden"
@@ -1567,7 +1567,7 @@ msgstr "Medium Aan_koppelen"
 #~ msgstr "Bron:"
 
 #~ msgid "Select external menu"
-#~ msgstr "Een extern menu selecteren"
+#~ msgstr "Extern menu kiezen"
 
 #~ msgid "Style:"
 #~ msgstr "Stijl:"
