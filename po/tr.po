@@ -208,7 +208,7 @@ msgstr "_Parlaklığı ayarla:"
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
 #: ../settings/xfdesktop-settings-ui.glade.h:8
 msgid "Centered"
-msgstr ""
+msgstr "Ortalanmış"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
 msgid "Create a new list, or load an existing one"
@@ -221,7 +221,7 @@ msgstr "Resmi gösterme"
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
 #: ../settings/xfdesktop-settings-ui.glade.h:12
 msgid "Horizontal gradient"
-msgstr ""
+msgstr "Yatay eğim"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
 msgid "Image _list"
@@ -246,7 +246,7 @@ msgstr "Do_ygunluk"
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 #: ../settings/xfdesktop-settings-ui.glade.h:23
 msgid "Scaled"
-msgstr ""
+msgstr "Ölçeklenmiş"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
 msgid "Select First Color"
@@ -263,7 +263,7 @@ msgstr "Tek bir resmi arkaplan olarak seç"
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
 #: ../settings/xfdesktop-settings-ui.glade.h:32
 msgid "Solid color"
-msgstr ""
+msgstr "Düz renk"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
@@ -288,12 +288,12 @@ msgstr "_Düzen:"
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
 #: ../settings/xfdesktop-settings-ui.glade.h:34
 msgid "Stretched"
-msgstr ""
+msgstr "Gerilmiş"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
 #: ../settings/xfdesktop-settings-ui.glade.h:35
 msgid "Tiled"
-msgstr ""
+msgstr "Bölünmüş"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
 #: ../settings/xfdesktop-settings-ui.glade.h:36
@@ -303,12 +303,12 @@ msgstr "Saydam"
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
 #: ../settings/xfdesktop-settings-ui.glade.h:39
 msgid "Vertical gradient"
-msgstr ""
+msgstr "Dikey eğim"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
 #: ../settings/xfdesktop-settings-ui.glade.h:40
 msgid "Zoomed"
-msgstr ""
+msgstr "Yakınlaştırılmış"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
 msgid "_None"
@@ -373,7 +373,7 @@ msgstr "Sol"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:17
 msgid "Middle"
-msgstr ""
+msgstr "Orta"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:18
 #, fuzzy
@@ -596,7 +596,7 @@ msgstr "Masaüstü Hatası"
 
 #: ../src/xfdesktop-file-icon-manager.c:489
 msgid "A normal file with the same name already exists. Please delete or rename it."
-msgstr ""
+msgstr "Aynı isimde bir dosya zaten var. Lütfen silin veya yeniden adlandırın."
 
 #: ../src/xfdesktop-file-icon-manager.c:592
 #: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:880
@@ -733,25 +733,25 @@ msgstr "Arka plan listesi oluşturulamadı: \"%s\""
 #: ../src/xfdesktop-file-utils.c:137
 #, c-format
 msgid "Today at %X"
-msgstr ""
+msgstr "Bugün %X'de"
 
 #. TRANSLATORS: file was modified less than two days ago
 #: ../src/xfdesktop-file-utils.c:141
 #, c-format
 msgid "Yesterday at %X"
-msgstr ""
+msgstr "Dün %X'de"
 
 #. Days from last week
 #: ../src/xfdesktop-file-utils.c:146
 #, c-format
 msgid "%A at %X"
-msgstr ""
+msgstr "%A %X'de"
 
 #. Any other date
 #: ../src/xfdesktop-file-utils.c:149
 #, c-format
 msgid "%x at %X"
-msgstr ""
+msgstr "%x %X'de"
 
 #. the file_time is invalid
 #: ../src/xfdesktop-file-utils.c:159
@@ -866,18 +866,18 @@ msgstr "Kaldırma Başarısız"
 #: ../src/xfdesktop-notify.c:131
 #, c-format
 msgid "The device \"%s\" is being unmounted by the system. Please do not remove the media or disconnect the drive"
-msgstr ""
+msgstr "\"%s\" aygıtı sistemden is being unmounted by the system. Please do not remove the media or disconnect the drive"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
 msgid "Writing data to device"
-msgstr ""
+msgstr "Aygıta veri yazılıyor"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
 #, c-format
 msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
-msgstr ""
+msgstr "\"%s\" aygıtı çıkartılmadan önce bazı verilerin yazılması gerekiyor. Lütfen ortam aygıtını çıkarmayın veya sürücünün bağlantısını kesmeyin."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:253
@@ -889,7 +889,7 @@ msgstr "Kaldırma Başarısız"
 #: ../src/xfdesktop-notify.c:256
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
-msgstr ""
+msgstr "\"%s\" çıkarılıyor. Bu biraz zaman alabilir."
 
 #: ../src/xfdesktop-regular-file-icon.c:472
 #, c-format
@@ -898,6 +898,9 @@ msgid ""
 "Size: %s\n"
 "Last modified: %s"
 msgstr ""
+"Tip: %s\n"
+"Boyut: %s\n"
+"Son değiştirme: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:258
 #: ../src/xfdesktop-special-file-icon.c:417
@@ -907,16 +910,16 @@ msgstr "Dosya sistemi"
 
 #: ../src/xfdesktop-special-file-icon.c:402
 msgid "Trash is empty"
-msgstr ""
+msgstr "Çöp boş"
 
 #: ../src/xfdesktop-special-file-icon.c:405
 msgid "Trash contains one item"
-msgstr ""
+msgstr "Çöpte bir öğe var"
 
 #: ../src/xfdesktop-special-file-icon.c:406
 #, c-format
 msgid "Trash contains %d items"
-msgstr ""
+msgstr "Çöpte %d öğe var"
 
 #: ../src/xfdesktop-special-file-icon.c:434
 #, c-format
@@ -925,6 +928,9 @@ msgid ""
 "Size: %s\n"
 "Last modified: %s"
 msgstr ""
+"%s\n"
+"Boyut: %s\n"
+"Son değiştirme: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:507
 msgid "_Empty Trash"
