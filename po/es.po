@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-10 16:37+0000\n"
+"POT-Creation-Date: 2011-08-18 10:37+0000\n"
 "PO-Revision-Date: 2009-12-18 19:06+0100\n"
 "Last-Translator: Abel Martín Ruiz <abel.martin.ruiz@gmail.com>\n"
 "Language-Team: Spanish/ES <xfce-i18n@xfce.org>\n"
@@ -742,58 +742,48 @@ msgid "The folder could not be opened"
 msgstr "El selector de aplicación no pudo abrirse."
 
 #: ../src/xfdesktop-file-utils.c:762 ../src/xfdesktop-file-utils.c:777
-#, fuzzy
 msgid "Rename Error"
-msgstr "Cambiar el nombre de error"
+msgstr "Error de Renombrar"
 
 #: ../src/xfdesktop-file-utils.c:763 ../src/xfdesktop-file-utils.c:778
-#, fuzzy
 msgid "The file could not be renamed"
-msgstr "El selector de aplicación no pudo abrirse."
+msgstr "El archivo no se puede renombrar"
 
 #: ../src/xfdesktop-file-utils.c:821 ../src/xfdesktop-file-utils.c:836
-#, fuzzy
 msgid "Delete Error"
-msgstr "Eliminar error"
+msgstr "Error de Eliminar"
 
 #: ../src/xfdesktop-file-utils.c:822 ../src/xfdesktop-file-utils.c:837
-#, fuzzy
 msgid "The selected files could not be deleted"
 msgstr "La aplicación asociada no pudo ser encontrada ni ejecutada."
 
 #: ../src/xfdesktop-file-utils.c:881 ../src/xfdesktop-file-utils.c:896
-#, fuzzy
 msgid "The selected files could not be moved to the trash"
 msgstr "El selector de aplicación no pudo abrirse."
 
 #: ../src/xfdesktop-file-utils.c:897 ../src/xfdesktop-file-utils.c:943
-#, fuzzy
 msgid "This feature requires a trash service to be present (such as the one supplied by Thunar)."
 msgstr "Esta funcionalidad necesita la presencia de un administrador de archivos (como el proporcionado por Thunar)."
 
 #: ../src/xfdesktop-file-utils.c:928 ../src/xfdesktop-file-utils.c:942
-#, fuzzy
 msgid "Could not empty the trash"
-msgstr "No se pudo finalizar la sesión."
+msgstr "No se puede vaciar la basura"
 
 #: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:994
 msgid "Create File Error"
 msgstr "Error de creación"
 
 #: ../src/xfdesktop-file-utils.c:980 ../src/xfdesktop-file-utils.c:995
-#, fuzzy
 msgid "Could not create a new file"
-msgstr "No se puede crear la lista de fondos \"%s\""
+msgstr "No se puede crear un nuevo archivo"
 
 #: ../src/xfdesktop-file-utils.c:1035 ../src/xfdesktop-file-utils.c:1050
-#, fuzzy
 msgid "Create Document Error"
-msgstr "Error de creación"
+msgstr "Error de Creación de Documento"
 
 #: ../src/xfdesktop-file-utils.c:1036 ../src/xfdesktop-file-utils.c:1051
-#, fuzzy
 msgid "Could not create a new document from the template"
-msgstr "Crear documento a partir de plantilla \"%s\""
+msgstr "No se puede crear un nuevo documento a partir de la plantilla"
 
 #: ../src/xfdesktop-file-utils.c:1085 ../src/xfdesktop-file-utils.c:1100
 msgid "File Properties Error"
@@ -813,21 +803,18 @@ msgid "Failed to run \"%s\""
 msgstr "Fallo al ejecutar \"%s\""
 
 #: ../src/xfdesktop-file-utils.c:1274 ../src/xfdesktop-file-utils.c:1289
-#, fuzzy
 msgid "The application chooser could not be opened"
-msgstr "El selector de aplicación no pudo abrirse."
+msgstr "El selector de aplicaciones no se pudo abrir"
 
 #: ../src/xfdesktop-file-utils.c:1347 ../src/xfdesktop-file-utils.c:1361
 #: ../src/xfdesktop-file-utils.c:1423 ../src/xfdesktop-file-utils.c:1439
-#, fuzzy
 msgid "Transfer Error"
-msgstr "Error de papelera"
+msgstr "Error de Transferencia "
 
 #: ../src/xfdesktop-file-utils.c:1348 ../src/xfdesktop-file-utils.c:1362
 #: ../src/xfdesktop-file-utils.c:1424 ../src/xfdesktop-file-utils.c:1440
-#, fuzzy
 msgid "The file transfer could not be performed"
-msgstr "El selector de aplicación no pudo abrirse."
+msgstr "La transferencia de archivos no se puede realizar"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:128
@@ -843,7 +830,7 @@ msgstr ""
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
 msgid "Writing data to device"
-msgstr ""
+msgstr "Escribiendo datos al dispositivo"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
@@ -853,9 +840,8 @@ msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:253
-#, fuzzy
 msgid "Ejecting device"
-msgstr "Fallo al desmontar"
+msgstr "Expulsando dispositivo"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:256
@@ -878,16 +864,16 @@ msgstr "Sistema de Archivos"
 
 #: ../src/xfdesktop-special-file-icon.c:402
 msgid "Trash is empty"
-msgstr ""
+msgstr "La basura está vacía"
 
 #: ../src/xfdesktop-special-file-icon.c:405
 msgid "Trash contains one item"
-msgstr ""
+msgstr "La basura contiene un elemento"
 
 #: ../src/xfdesktop-special-file-icon.c:406
 #, c-format
 msgid "Trash contains %d items"
-msgstr ""
+msgstr "La basura contiene %d elementos"
 
 #: ../src/xfdesktop-special-file-icon.c:434
 #, c-format
