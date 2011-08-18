@@ -343,9 +343,8 @@ msgid "Desktop"
 msgstr "Escritorio"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:11
-#, fuzzy
 msgid "File/launcher icons"
-msgstr "Archivo / lanzador de iconos"
+msgstr "Iconos de archivo/lanzador"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:13
 msgid "Icon _size:"
@@ -578,7 +577,7 @@ msgstr "Error de la carpeta de escritorio"
 
 #: ../src/xfdesktop-file-icon-manager.c:489
 msgid "A normal file with the same name already exists. Please delete or rename it."
-msgstr ""
+msgstr "Un archivo normal con el mismo nombre existe. Por favor renombre o borre, este archivo."
 
 #: ../src/xfdesktop-file-icon-manager.c:592
 #: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:880
@@ -737,9 +736,8 @@ msgid "Unknown"
 msgstr "Desconocido"
 
 #: ../src/xfdesktop-file-utils.c:713 ../src/xfdesktop-file-utils.c:728
-#, fuzzy
 msgid "The folder could not be opened"
-msgstr "El selector de aplicación no pudo abrirse."
+msgstr "La carpeta no se puede abrir"
 
 #: ../src/xfdesktop-file-utils.c:762 ../src/xfdesktop-file-utils.c:777
 msgid "Rename Error"
@@ -847,7 +845,7 @@ msgstr "Expulsando dispositivo"
 #: ../src/xfdesktop-notify.c:256
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
-msgstr ""
+msgstr "El dispositivo \"%s\" está siendo expulsado. Esto puede tomar algo de tiempo."
 
 #: ../src/xfdesktop-regular-file-icon.c:472
 #, c-format
@@ -856,6 +854,9 @@ msgid ""
 "Size: %s\n"
 "Last modified: %s"
 msgstr ""
+"Tipo: %s\n"
+"Tamaño: %s\n"
+"Última modificación: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:258
 #: ../src/xfdesktop-special-file-icon.c:417
@@ -882,6 +883,9 @@ msgid ""
 "Size: %s\n"
 "Last modified: %s"
 msgstr ""
+"%s\n"
+"Tamaño: %s\n"
+"Última modificación: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:507
 msgid "_Empty Trash"
@@ -909,18 +913,18 @@ msgstr ""
 "Espacio libre: %s"
 
 #: ../src/xfdesktop-volume-icon.c:456 ../src/xfdesktop-volume-icon.c:498
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to eject \"%s\""
-msgstr "No se pudo expulsar \"%s\":"
+msgstr "Falló al expulsar \"%s\""
 
 #: ../src/xfdesktop-volume-icon.c:461 ../src/xfdesktop-volume-icon.c:503
 msgid "Eject Failed"
 msgstr "Fallo al expulsar"
 
 #: ../src/xfdesktop-volume-icon.c:535
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to mount \"%s\""
-msgstr "Fallo al ejecutar \"%s\""
+msgstr "Falló al montar \"%s\""
 
 #: ../src/xfdesktop-volume-icon.c:538
 msgid "Mount Failed"
