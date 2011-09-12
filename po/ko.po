@@ -2,25 +2,24 @@
 # Copyright (C) 2003-2006 The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
 # ByungHyun Choi <byunghyun.choi@gmail.com>, 2005.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-30 19:22+0100\n"
+"POT-Creation-Date: 2011-09-12 04:37+0000\n"
 "PO-Revision-Date: 2007-09-24 15:13+0900\n"
 "Last-Translator: ByungHyun Choi <byunghyun.choi@debianusers.org>\n"
-"Language-Team: xfce4-users-kr-i18n <xfce4-users-kr-i18n@lists.sourceforge."
-"net>\n"
-"Language: \n"
+"Language-Team: xfce4-users-kr-i18n <xfce4-users-kr-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
-#, fuzzy, c-format
+#, c-format
 msgid "Backdrop list file is not valid"
-msgstr "배경화면 목록 선택"
+msgstr "배경 목록 파일이 유효하지 않습니다"
 
 #. no need to escape markup; it's already done for us
 #: ../settings/main.c:163
@@ -29,6 +28,8 @@ msgid ""
 "%s\n"
 "<i>Size: %dx%d</i>"
 msgstr ""
+"%s\n"
+"<i>용량: %dx%d</i>"
 
 #: ../settings/main.c:289 ../src/xfdesktop-special-file-icon.c:256
 #: ../src/xfdesktop-special-file-icon.c:419
@@ -36,77 +37,68 @@ msgid "Home"
 msgstr "홈"
 
 #: ../settings/main.c:291
-#, fuzzy
 msgid "Filesystem"
-msgstr "시스템"
+msgstr "파일 시스템"
 
 #: ../settings/main.c:293
-#, fuzzy
 msgid "Trash"
-msgstr "쓰레기통 오류"
+msgstr "쓰레기통"
 
 #: ../settings/main.c:295
 msgid "Removable Devices"
-msgstr ""
+msgstr "이동식 장치"
 
 #: ../settings/main.c:475
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot create backdrop list \"%s\""
-msgstr "배경화면 목록을 만듭니다."
+msgstr "배경 목록 \"%s\"을 만들 수 없습니다"
 
 #: ../settings/main.c:479 ../settings/main.c:802
-#, fuzzy
 msgid "Backdrop List Error"
-msgstr "배경화면 목록"
+msgstr "배경 목록 오류"
 
 #: ../settings/main.c:504
-#, fuzzy
 msgid "Create/Load Backdrop List"
-msgstr "배경화면 목록을 만듭니다."
+msgstr "배경 목록을 만들거나 불러오기"
 
 #: ../settings/main.c:528
 #, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
+msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr "파일 \"%s\"는 유효한 배경 목록 파일이 아닙니다. 덮어 쓰시렵니까?"
 
 #: ../settings/main.c:533
-#, fuzzy
 msgid "Invalid List File"
-msgstr "목록 화일"
+msgstr "잘못된 목록 화일"
 
 #: ../settings/main.c:536
 msgid "Overwriting the file will cause its contents to be lost."
-msgstr ""
+msgstr "파일을 엎어쓰면 내용을 잃을 것입니다."
 
 #: ../settings/main.c:538
-#, fuzzy
 msgid "Replace"
-msgstr "이름 변경"
+msgstr "대체"
 
 #: ../settings/main.c:798
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to write backdrop list to \"%s\""
-msgstr "\"%s\"을(를) \"%s\"(으)로 변경하시 못 했습니다."
+msgstr "배경 목록을 \"%s\"에 쓸 수 없습니다"
 
 #: ../settings/main.c:825
-#, fuzzy
 msgid "Add Image File(s)"
-msgstr "그림 화일"
+msgstr "그림 화일 더하기"
 
 #: ../settings/main.c:834
 msgid "Image files"
 msgstr "그림 화일"
 
 #: ../settings/main.c:839
-#, fuzzy
 msgid "All files"
-msgstr "모든 화일"
+msgstr "모든 화일들"
 
 #: ../settings/main.c:1271
-#, fuzzy, c-format
+#, c-format
 msgid "Screen %d, Monitor %d (%s)"
-msgstr "화면 %d, 모니터 %d"
+msgstr "화면 %d, 모니터 %d (%s)"
 
 #: ../settings/main.c:1275
 #, c-format
@@ -121,80 +113,74 @@ msgstr "화면 %d"
 #: ../settings/main.c:1283
 #, c-format
 msgid "Monitor %d (%s)"
-msgstr ""
+msgstr "모니터 %d (%s)"
 
 #: ../settings/main.c:1287
-#, fuzzy, c-format
+#, c-format
 msgid "Monitor %d"
-msgstr "화면 %d, 모니터 %d"
+msgstr "모니터 %d"
 
 #: ../settings/main.c:1500
 msgid "Settings manager socket"
-msgstr ""
+msgstr "관리자 소켓 설정"
 
 #: ../settings/main.c:1500
 msgid "SOCKET ID"
-msgstr ""
+msgstr "SOCKET ID"
 
 #: ../settings/main.c:1501
-#, fuzzy
 msgid "Version information"
-msgstr "정보"
+msgstr "버전 정보"
 
 #: ../settings/main.c:1521
 #, c-format
 msgid "Type '%s --help' for usage."
-msgstr ""
+msgstr "사용법을 보려면 '%s --help'를 입력하십시오"
 
 #: ../settings/main.c:1533
 msgid "The Xfce development team. All rights reserved."
-msgstr ""
+msgstr "Xfce 개발 팀. All rights reserved."
 
 #: ../settings/main.c:1534
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr ""
+msgstr "<%s>로 버그를 보고하여 주시기 바랍니다."
 
 #: ../settings/main.c:1541
 msgid "Desktop Settings"
 msgstr "작업공간 설정"
 
 #: ../settings/main.c:1543
-#, fuzzy
 msgid "Unable to contact settings server"
-msgstr "쓰레기통 서비스에 연결하지 못했습니다."
+msgstr "설정 서버에 연결할 수 없습니다."
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
-#, fuzzy
 msgid "Desktop "
-msgstr "데스크탑"
+msgstr "데스크톱"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Set desktop background and menu and icon behaviour"
-msgstr ""
+msgstr "데스크톱 배경화면과 메뉴 그리고 아이콘 동작 설정"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
 msgid "<b>Adjustments</b>"
-msgstr ""
+msgstr "<b>조정</b>"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
-#, fuzzy
 msgid "<b>Colors</b>"
-msgstr "<b>작업공간 %d</b>"
+msgstr "<b>색</b>"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
-#, fuzzy
 msgid "<b>Image</b>"
-msgstr "겉 모습(_A)"
+msgstr "<b>그림</b>"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
-#, fuzzy
 msgid "<b>Images</b>"
-msgstr "<b>작업공간 %d</b>"
+msgstr "<b>그림들</b>"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
 msgid "Add an image to the list"
-msgstr ""
+msgstr "목록에 그림 더하기"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
 #: ../settings/xfdesktop-settings-ui.glade.h:6
@@ -203,10 +189,9 @@ msgstr "자동"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
 msgid "Automatically pick a random image from a list file"
-msgstr ""
+msgstr "목록으로부터 임의의 그림을 자동으로 고르기"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
-#, fuzzy
 msgid "B_rightness:"
 msgstr "밝기 조절(_B):"
 
@@ -217,38 +202,36 @@ msgstr "가운데"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
 msgid "Create a new list, or load an existing one"
-msgstr ""
+msgstr "새 목록을 만들거나, 이미 존재하는것을 불러옵니다"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
 msgid "Don't display an image at all"
-msgstr ""
+msgstr "이 그림을 절대로 표시하지 않습니다"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
 #: ../settings/xfdesktop-settings-ui.glade.h:12
-#, fuzzy
 msgid "Horizontal gradient"
-msgstr "수평으로 색 변화"
+msgstr "수평 그레디언트"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
-#, fuzzy
 msgid "Image _list"
-msgstr "그림 화일"
+msgstr "그림 목록(_l)"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
 msgid "Increase or decrease the brightness of the final image"
-msgstr ""
+msgstr "최종 그림의 밝기를 늘리거나 줄입니다"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
 msgid "Increase or decrease the color saturation of the final image"
-msgstr ""
+msgstr "최종 그림의 색 채도를 늘리거나 줄입니다"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
 msgid "Remove the selected image(s) from the list"
-msgstr ""
+msgstr "목록으로부터 선택된 그림(들)을 제거합니다"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Sa_turation:"
-msgstr ""
+msgstr "채도(_t):"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 #: ../settings/xfdesktop-settings-ui.glade.h:23
@@ -256,41 +239,37 @@ msgid "Scaled"
 msgstr "크기조절"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
-#, fuzzy
 msgid "Select First Color"
-msgstr "첫번째 색(_r):"
+msgstr "첫번째 색 선택"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
-#, fuzzy
 msgid "Select Second Color"
-msgstr "두번째 색(_S):"
+msgstr "두번째 색 선택"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
 msgid "Select a single image as the backdrop"
-msgstr ""
+msgstr "단일 이미지를 배경 처럼 선택"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
 #: ../settings/xfdesktop-settings-ui.glade.h:32
-#, fuzzy
 msgid "Solid color"
 msgstr "단색"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-msgstr ""
+msgstr "그래디언트의 \"오른쪽\" 혹은 \"아래\" 방향의 색을 정합니다"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
-msgid ""
-"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr ""
+msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr "그래디언트의 \"왼쪽\" 혹은 \"위\" 방향의 색을 정합니다"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid "Specify how the image will be resized to fit the screen"
-msgstr ""
+msgstr "그림을 어떻게 화면에 맞게 크기 조정할 것인지 정합니다"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "Specify the style of the color drawn behind the backdrop image"
-msgstr ""
+msgstr "배경 그림 뒤에 채워질 색의 방식을 정합니다"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
 #, fuzzy
@@ -366,7 +345,7 @@ msgstr "버튼"
 msgid "Control"
 msgstr "도와주신 분들"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:737
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:738
 msgid "Desktop"
 msgstr "데스크탑"
 
@@ -457,9 +436,7 @@ msgid "Show workspace _names in list"
 msgstr "리스트에 작업 공간 이름 보이기(_n)"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
-msgid ""
-"Specify the transparency level for the rounded label drawn behind the icon "
-"text"
+msgid "Specify the transparency level for the rounded label drawn behind the icon text"
 msgstr ""
 
 #: ../settings/xfdesktop-settings-ui.glade.h:37
@@ -503,8 +480,7 @@ msgstr "정보"
 #: ../src/main.c:239
 #, fuzzy
 msgid "Reload all settings, refresh image list"
-msgstr ""
-"    -reload      모든 설정을 새로 읽어 오고, 그림 목록을 새로 고칩니다.\n"
+msgstr "    -reload      모든 설정을 새로 읽어 오고, 그림 목록을 새로 고칩니다.\n"
 
 #: ../src/main.c:240
 #, fuzzy
@@ -514,8 +490,7 @@ msgstr "    -menu        메뉴를 보여줍니다(마우스의 현재 위치에
 #: ../src/main.c:241
 #, fuzzy
 msgid "Pop up the window list (at the current mouse position)"
-msgstr ""
-"    -windowlist  창 목록을 보여줍니다(마우스의 현재 위치에 보여줍니다).\n"
+msgstr "    -windowlist  창 목록을 보여줍니다(마우스의 현재 위치에 보여줍니다).\n"
 
 #: ../src/main.c:242
 #, fuzzy
@@ -574,45 +549,45 @@ msgstr "%s는(은) 실행 중이지 않습니다.\n"
 msgid "_Applications"
 msgstr ""
 
-#: ../src/windowlist.c:235
+#: ../src/windowlist.c:229
 msgid "Window List"
 msgstr "창 목록"
 
-#: ../src/windowlist.c:261
+#: ../src/windowlist.c:255
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>작업공간 %d</b>"
 
-#: ../src/windowlist.c:270
+#: ../src/windowlist.c:264
 #, c-format
 msgid "Workspace %d"
 msgstr "작업공간 %d"
 
-#: ../src/windowlist.c:272
+#: ../src/windowlist.c:266
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<i>작업공간 %d</i>"
 
-#: ../src/windowlist.c:368 ../src/windowlist.c:371
+#: ../src/windowlist.c:362 ../src/windowlist.c:365
 msgid "_Add Workspace"
 msgstr "작업공간 추가(_A)"
 
-#: ../src/windowlist.c:379
+#: ../src/windowlist.c:373
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "작업공간 %d 삭제(_R)"
 
-#: ../src/windowlist.c:382
+#: ../src/windowlist.c:376
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "작업공간 '%s' 삭제(_R)"
 
-#: ../src/xfce-desktop.c:1018
+#: ../src/xfce-desktop.c:1022
 #, fuzzy, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "화일 \"%s\"을(를) 만들지 못 했습니다.:"
 
-#: ../src/xfce-desktop.c:1020
+#: ../src/xfce-desktop.c:1024
 #, fuzzy
 msgid "Desktop Error"
 msgstr "데스크탑"
@@ -630,14 +605,13 @@ msgid "Desktop Folder Error"
 msgstr "데스크탑"
 
 #: ../src/xfdesktop-file-icon-manager.c:489
-msgid ""
-"A normal file with the same name already exists. Please delete or rename it."
+msgid "A normal file with the same name already exists. Please delete or rename it."
 msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:592
-#: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:879
-#: ../src/xfdesktop-file-utils.c:894 ../src/xfdesktop-file-utils.c:926
-#: ../src/xfdesktop-file-utils.c:940
+#: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:880
+#: ../src/xfdesktop-file-utils.c:895 ../src/xfdesktop-file-utils.c:927
+#: ../src/xfdesktop-file-utils.c:941
 msgid "Trash Error"
 msgstr "쓰레기통 오류"
 
@@ -648,34 +622,30 @@ msgid "The selected files could not be trashed"
 msgstr "응용프로그램 선택기를 열지 못했습니다."
 
 #: ../src/xfdesktop-file-icon-manager.c:594
-#: ../src/xfdesktop-file-icon-manager.c:638 ../src/xfdesktop-file-utils.c:728
-#: ../src/xfdesktop-file-utils.c:778 ../src/xfdesktop-file-utils.c:837
-#: ../src/xfdesktop-file-utils.c:995 ../src/xfdesktop-file-utils.c:1051
-#: ../src/xfdesktop-file-utils.c:1101 ../src/xfdesktop-file-utils.c:1151
-#: ../src/xfdesktop-file-utils.c:1228 ../src/xfdesktop-file-utils.c:1289
-#: ../src/xfdesktop-file-utils.c:1362 ../src/xfdesktop-file-utils.c:1440
+#: ../src/xfdesktop-file-icon-manager.c:638 ../src/xfdesktop-file-utils.c:729
+#: ../src/xfdesktop-file-utils.c:779 ../src/xfdesktop-file-utils.c:838
+#: ../src/xfdesktop-file-utils.c:996 ../src/xfdesktop-file-utils.c:1052
+#: ../src/xfdesktop-file-utils.c:1102 ../src/xfdesktop-file-utils.c:1152
+#: ../src/xfdesktop-file-utils.c:1229 ../src/xfdesktop-file-utils.c:1290
+#: ../src/xfdesktop-file-utils.c:1363 ../src/xfdesktop-file-utils.c:1441
 #, fuzzy
-msgid ""
-"This feature requires a file manager service to be present (such as the one "
-"supplied by Thunar)."
-msgstr ""
-"이 기능을 사용하시려면 Thunar에서 제공하는 화일 관리자 같은 서비스가 필요합니"
-"다."
+msgid "This feature requires a file manager service to be present (such as the one supplied by Thunar)."
+msgstr "이 기능을 사용하시려면 Thunar에서 제공하는 화일 관리자 같은 서비스가 필요합니다."
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:738
-#: ../src/xfdesktop-file-icon-manager.c:1296
+#: ../src/xfdesktop-file-icon-manager.c:1300
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "실행 실패 \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:740
 #: ../src/xfdesktop-file-icon-manager.c:984
-#: ../src/xfdesktop-file-icon-manager.c:1297 ../src/xfdesktop-file-utils.c:711
-#: ../src/xfdesktop-file-utils.c:726 ../src/xfdesktop-file-utils.c:1134
-#: ../src/xfdesktop-file-utils.c:1149 ../src/xfdesktop-file-utils.c:1201
-#: ../src/xfdesktop-file-utils.c:1226 ../src/xfdesktop-file-utils.c:1272
-#: ../src/xfdesktop-file-utils.c:1287
+#: ../src/xfdesktop-file-icon-manager.c:1301 ../src/xfdesktop-file-utils.c:712
+#: ../src/xfdesktop-file-utils.c:727 ../src/xfdesktop-file-utils.c:1135
+#: ../src/xfdesktop-file-utils.c:1150 ../src/xfdesktop-file-utils.c:1202
+#: ../src/xfdesktop-file-utils.c:1227 ../src/xfdesktop-file-utils.c:1273
+#: ../src/xfdesktop-file-utils.c:1288
 msgid "Launch Error"
 msgstr "실행 오류"
 
@@ -690,86 +660,82 @@ msgid "Open With \"%s\""
 msgstr "\"%s\"로 엽니다"
 
 #: ../src/xfdesktop-file-icon-manager.c:986
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
-msgstr ""
-"데스크탑에 실행기와 링크를 만들고 수정할 수 있는 \"exo-desktop-item-edit\"을 "
-"기동시키지 못 했습니다."
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgstr "데스크탑에 실행기와 링크를 만들고 수정할 수 있는 \"exo-desktop-item-edit\"을 기동시키지 못 했습니다."
 
-#: ../src/xfdesktop-file-icon-manager.c:1354
+#: ../src/xfdesktop-file-icon-manager.c:1358
 msgid "_Open all"
 msgstr "모두 열기(_O)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1370
+#: ../src/xfdesktop-file-icon-manager.c:1374
 msgid "_Open in New Window"
 msgstr "새로운 창 열기(_O)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1372
+#: ../src/xfdesktop-file-icon-manager.c:1376
 #: ../src/xfdesktop-special-file-icon.c:489 ../src/xfdesktop-volume-icon.c:663
 msgid "_Open"
 msgstr "열기(_O)"
 
 #. create launcher item
-#: ../src/xfdesktop-file-icon-manager.c:1391
+#: ../src/xfdesktop-file-icon-manager.c:1395
 msgid "Create _Launcher..."
 msgstr "실행기 작성...(_L)"
 
 #. create link item
-#: ../src/xfdesktop-file-icon-manager.c:1407
+#: ../src/xfdesktop-file-icon-manager.c:1411
 msgid "Create _URL Link..."
 msgstr "URL 링크 생성(_U)"
 
 #. create folder item
-#: ../src/xfdesktop-file-icon-manager.c:1423
+#: ../src/xfdesktop-file-icon-manager.c:1427
 msgid "Create _Folder..."
 msgstr "새로운 디렉토리 생성(_F)"
 
 #. create from template submenu
-#: ../src/xfdesktop-file-icon-manager.c:1438
+#: ../src/xfdesktop-file-icon-manager.c:1442
 #, fuzzy
 msgid "Create From _Template"
 msgstr "템플릿 \"%s\"로부터 문서 생성"
 
-#: ../src/xfdesktop-file-icon-manager.c:1464
+#: ../src/xfdesktop-file-icon-manager.c:1468
 msgid "_Empty File"
 msgstr "빈 화일(_E)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1480
+#: ../src/xfdesktop-file-icon-manager.c:1484
 msgid "_Execute"
 msgstr "실행(_E)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1500
+#: ../src/xfdesktop-file-icon-manager.c:1504
 msgid "_Edit Launcher"
 msgstr "실행기 편집(_E)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1535
+#: ../src/xfdesktop-file-icon-manager.c:1539
 msgid "Open With"
 msgstr "열어볼 프로그램"
 
-#: ../src/xfdesktop-file-icon-manager.c:1561
+#: ../src/xfdesktop-file-icon-manager.c:1565
 msgid "Open With Other _Application..."
 msgstr "다른 프로그램으로 열어 볼까요(_A)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1649
+#: ../src/xfdesktop-file-icon-manager.c:1653
 msgid "_Rename..."
 msgstr "이름 바꾸기(_R)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1667
+#: ../src/xfdesktop-file-icon-manager.c:1671
 msgid "Desktop _Settings..."
 msgstr "작업공간 설정(_S)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1677
+#: ../src/xfdesktop-file-icon-manager.c:1681
 #: ../src/xfdesktop-volume-icon.c:711
 msgid "_Properties..."
 msgstr "속성(_P)"
 
-#: ../src/xfdesktop-file-icon-manager.c:2234
+#: ../src/xfdesktop-file-icon-manager.c:2238
 #, fuzzy
 msgid "Load Error"
 msgstr "실행 오류"
 
-#: ../src/xfdesktop-file-icon-manager.c:2236
+#: ../src/xfdesktop-file-icon-manager.c:2240
 #, fuzzy
 msgid "Failed to load the desktop folder"
 msgstr "배경화면 목록을 만듭니다."
@@ -804,103 +770,99 @@ msgstr ""
 msgid "Unknown"
 msgstr "(모름)"
 
-#: ../src/xfdesktop-file-utils.c:712 ../src/xfdesktop-file-utils.c:727
+#: ../src/xfdesktop-file-utils.c:713 ../src/xfdesktop-file-utils.c:728
 #, fuzzy
 msgid "The folder could not be opened"
 msgstr "응용프로그램 선택기를 열지 못했습니다."
 
-#: ../src/xfdesktop-file-utils.c:761 ../src/xfdesktop-file-utils.c:776
+#: ../src/xfdesktop-file-utils.c:762 ../src/xfdesktop-file-utils.c:777
 #, fuzzy
 msgid "Rename Error"
 msgstr "실행 오류"
 
-#: ../src/xfdesktop-file-utils.c:762 ../src/xfdesktop-file-utils.c:777
+#: ../src/xfdesktop-file-utils.c:763 ../src/xfdesktop-file-utils.c:778
 #, fuzzy
 msgid "The file could not be renamed"
 msgstr "응용프로그램 선택기를 열지 못했습니다."
 
-#: ../src/xfdesktop-file-utils.c:820 ../src/xfdesktop-file-utils.c:835
+#: ../src/xfdesktop-file-utils.c:821 ../src/xfdesktop-file-utils.c:836
 #, fuzzy
 msgid "Delete Error"
 msgstr "작성 오류"
 
-#: ../src/xfdesktop-file-utils.c:821 ../src/xfdesktop-file-utils.c:836
+#: ../src/xfdesktop-file-utils.c:822 ../src/xfdesktop-file-utils.c:837
 #, fuzzy
 msgid "The selected files could not be deleted"
 msgstr "해당하는 프로그램을 못 찾았거나 실행시키지 못 했습니다."
 
-#: ../src/xfdesktop-file-utils.c:880 ../src/xfdesktop-file-utils.c:895
+#: ../src/xfdesktop-file-utils.c:881 ../src/xfdesktop-file-utils.c:896
 #, fuzzy
 msgid "The selected files could not be moved to the trash"
 msgstr "응용프로그램 선택기를 열지 못했습니다."
 
-#: ../src/xfdesktop-file-utils.c:896 ../src/xfdesktop-file-utils.c:942
+#: ../src/xfdesktop-file-utils.c:897 ../src/xfdesktop-file-utils.c:943
 #, fuzzy
-msgid ""
-"This feature requires a trash service to be present (such as the one "
-"supplied by Thunar)."
-msgstr ""
-"이 기능을 사용하시려면 Thunar에서 제공하는 화일 관리자 같은 서비스가 필요합니"
-"다."
+msgid "This feature requires a trash service to be present (such as the one supplied by Thunar)."
+msgstr "이 기능을 사용하시려면 Thunar에서 제공하는 화일 관리자 같은 서비스가 필요합니다."
 
-#: ../src/xfdesktop-file-utils.c:927 ../src/xfdesktop-file-utils.c:941
+#: ../src/xfdesktop-file-utils.c:928 ../src/xfdesktop-file-utils.c:942
 #, fuzzy
 msgid "Could not empty the trash"
 msgstr "배경화면 목록을 만듭니다."
 
-#: ../src/xfdesktop-file-utils.c:978 ../src/xfdesktop-file-utils.c:993
+#: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:994
 #, fuzzy
 msgid "Create File Error"
 msgstr "작성 오류"
 
-#: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:994
+#: ../src/xfdesktop-file-utils.c:980 ../src/xfdesktop-file-utils.c:995
 #, fuzzy
 msgid "Could not create a new file"
 msgstr "배경화면 목록을 만듭니다."
 
-#: ../src/xfdesktop-file-utils.c:1034 ../src/xfdesktop-file-utils.c:1049
+#: ../src/xfdesktop-file-utils.c:1035 ../src/xfdesktop-file-utils.c:1050
 #, fuzzy
 msgid "Create Document Error"
 msgstr "작성 오류"
 
-#: ../src/xfdesktop-file-utils.c:1035 ../src/xfdesktop-file-utils.c:1050
+#: ../src/xfdesktop-file-utils.c:1036 ../src/xfdesktop-file-utils.c:1051
 #, fuzzy
 msgid "Could not create a new document from the template"
 msgstr "템플릿 \"%s\"로부터 문서 생성"
 
-#: ../src/xfdesktop-file-utils.c:1084 ../src/xfdesktop-file-utils.c:1099
+#: ../src/xfdesktop-file-utils.c:1085 ../src/xfdesktop-file-utils.c:1100
 #, fuzzy
 msgid "File Properties Error"
 msgstr "속성 오류"
 
-#: ../src/xfdesktop-file-utils.c:1085 ../src/xfdesktop-file-utils.c:1100
+#: ../src/xfdesktop-file-utils.c:1086 ../src/xfdesktop-file-utils.c:1101
 #, fuzzy
 msgid "The file properties dialog could not be opened"
 msgstr "응용프로그램 선택기를 열지 못했습니다."
 
-#: ../src/xfdesktop-file-utils.c:1135 ../src/xfdesktop-file-utils.c:1150
+#: ../src/xfdesktop-file-utils.c:1136 ../src/xfdesktop-file-utils.c:1151
 #, fuzzy
 msgid "The file could not be opened"
 msgstr "응용프로그램 선택기를 열지 못했습니다."
 
-#: ../src/xfdesktop-file-utils.c:1198 ../src/xfdesktop-file-utils.c:1223
+#: ../src/xfdesktop-file-utils.c:1199 ../src/xfdesktop-file-utils.c:1224
 #, fuzzy, c-format
 msgid "Failed to run \"%s\""
 msgstr "\"%s\" 실행 실패"
 
-#: ../src/xfdesktop-file-utils.c:1273 ../src/xfdesktop-file-utils.c:1288
+#: ../src/xfdesktop-file-utils.c:1274 ../src/xfdesktop-file-utils.c:1289
 #, fuzzy
 msgid "The application chooser could not be opened"
 msgstr "응용프로그램 선택기를 열지 못했습니다."
 
-#: ../src/xfdesktop-file-utils.c:1346 ../src/xfdesktop-file-utils.c:1360
-#: ../src/xfdesktop-file-utils.c:1422 ../src/xfdesktop-file-utils.c:1438
+#: ../src/xfdesktop-file-utils.c:1347 ../src/xfdesktop-file-utils.c:1361
+#: ../src/xfdesktop-file-utils.c:1423 ../src/xfdesktop-file-utils.c:1439
 #, fuzzy
 msgid "Transfer Error"
 msgstr "쓰레기통 오류"
 
-#: ../src/xfdesktop-file-utils.c:1347 ../src/xfdesktop-file-utils.c:1361
-#: ../src/xfdesktop-file-utils.c:1423 ../src/xfdesktop-file-utils.c:1439
+#: ../src/xfdesktop-file-utils.c:1348 ../src/xfdesktop-file-utils.c:1362
+#: ../src/xfdesktop-file-utils.c:1424 ../src/xfdesktop-file-utils.c:1440
 #, fuzzy
 msgid "The file transfer could not be performed"
 msgstr "응용프로그램 선택기를 열지 못했습니다."
@@ -914,9 +876,7 @@ msgstr "언마운트 실패"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:131
 #, c-format
-msgid ""
-"The device \"%s\" is being unmounted by the system. Please do not remove the "
-"media or disconnect the drive"
+msgid "The device \"%s\" is being unmounted by the system. Please do not remove the media or disconnect the drive"
 msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
@@ -927,9 +887,7 @@ msgstr ""
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
 #, c-format
-msgid ""
-"There is data that needs to be written to the device \"%s\" before it can be "
-"removed. Please do not remove the media or disconnect the drive"
+msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
 msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
@@ -1026,24 +984,18 @@ msgstr "마운트(_M)"
 #~ msgid "Unable to contact the Xfce Trash service."
 #~ msgstr "쓰레기통 서비스에 연결하지 못했습니다."
 
-#~ msgid ""
-#~ "Make sure you have a file manager installed that supports the Xfce Trash "
-#~ "service, such as Thunar."
-#~ msgstr ""
-#~ "Thunar처럼 Xfce 쓰레기 서비스를 지원하는 화일관리자가 있는지 확인하십시오."
+#~ msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
+#~ msgstr "Thunar처럼 Xfce 쓰레기 서비스를 지원하는 화일관리자가 있는지 확인하십시오."
 
-#, fuzzy
 #~ msgid "Needs terminal"
 #~ msgstr "터미널"
 
 #~ msgid "Command"
 #~ msgstr "명령"
 
-#, fuzzy
 #~ msgid "Icon name"
 #~ msgstr "아이콘 디자인"
 
-#, fuzzy
 #~ msgid "Startup notification"
 #~ msgstr "시작과 동시에 알림(_n)"
 
@@ -1114,36 +1066,25 @@ msgstr "마운트(_M)"
 #~ msgstr "옵션은 다음과 같니다:\n"
 
 #~ msgid "    --reload      Reload all settings, refresh image list\n"
-#~ msgstr ""
-#~ "    -reload      모든 설정을 새로 읽어 오고, 그림 목록을 새로 고칩니다.\n"
+#~ msgstr "    -reload      모든 설정을 새로 읽어 오고, 그림 목록을 새로 고칩니다.\n"
 
 #~ msgid "    --menu        Pop up the menu (at the current mouse position)\n"
-#~ msgstr ""
-#~ "    -menu        메뉴를 보여줍니다(마우스의 현재 위치에 보여줍니다).\n"
+#~ msgstr "    -menu        메뉴를 보여줍니다(마우스의 현재 위치에 보여줍니다).\n"
 
-#~ msgid ""
-#~ "    --windowlist  Pop up the window list (at the current mouse position)\n"
-#~ msgstr ""
-#~ "    -windowlist  창 목록을 보여줍니다(마우스의 현재 위치에 보여줍니다).\n"
+#~ msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
+#~ msgstr "    -windowlist  창 목록을 보여줍니다(마우스의 현재 위치에 보여줍니다).\n"
 
 #~ msgid "    --quit        Cause xfdesktop to quit\n"
 #~ msgstr "   -quit        xfdesop을 종료하도록 합니다.\n"
 
-#~ msgid ""
-#~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-#~ msgstr ""
-#~ "Xfdesktop에서 데스크탑 항목을 저장하는 디렉토리 \"%s\"를(을) 만들지 못 했"
-#~ "습니다.:"
+#~ msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+#~ msgstr "Xfdesktop에서 데스크탑 항목을 저장하는 디렉토리 \"%s\"를(을) 만들지 못 했습니다.:"
 
 #~ msgid "Create Folder Failed"
 #~ msgstr "디렉토리 생성 실패"
 
-#~ msgid ""
-#~ "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not "
-#~ "a folder."
-#~ msgstr ""
-#~ "\"%s\"는 디렉토리가 아니므로 Xfdesktop에서 데스크탑 항목을 저장하는 디렉토"
-#~ "리로 사용할 수 없습니다."
+#~ msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
+#~ msgstr "\"%s\"는 디렉토리가 아니므로 Xfdesktop에서 데스크탑 항목을 저장하는 디렉토리로 사용할 수 없습니다."
 
 #~ msgid "Please delete or rename the file."
 #~ msgstr "화일을 삭제하거나 이름을 변경하십시오."
@@ -1175,12 +1116,8 @@ msgstr "마운트(_M)"
 #~ msgid "The application chooser could not be opened."
 #~ msgstr "응용프로그램 선택기를 열지 못했습니다."
 
-#~ msgid ""
-#~ "This feature requires a file manager service present (such as that "
-#~ "supplied by Thunar)."
-#~ msgstr ""
-#~ "이 기능을 사용하시려면 Thunar에서 제공하는 화일 관리자 같은 서비스가 필요"
-#~ "합니다."
+#~ msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
+#~ msgstr "이 기능을 사용하시려면 Thunar에서 제공하는 화일 관리자 같은 서비스가 필요합니다."
 
 #~ msgid "Unable to create folder named \"%s\":"
 #~ msgstr "디렉토리 \"%s\"을(를) 만들지 못 했습니다."
@@ -1323,7 +1260,6 @@ msgstr "마운트(_M)"
 #~ msgid "Failed to rename \"%s\" to \"%s\":"
 #~ msgstr "\"%s\"을(를) \"%s\"(으)로 변경하시 못 했습니다."
 
-#, fuzzy
 #~ msgid "Kind: Trash"
 #~ msgstr "종류:"
 
@@ -1456,7 +1392,6 @@ msgstr "마운트(_M)"
 #~ msgid "Web Browser"
 #~ msgstr "웹 브라우져"
 
-#, fuzzy
 #~ msgid ""
 #~ "None\n"
 #~ "Minimized application icons\n"
@@ -1577,14 +1512,8 @@ msgstr "마운트(_M)"
 #~ msgid "xfce4-menueditor is deprecated"
 #~ msgstr "xfce4-menueditor는 한물 간 물건입니다."
 
-#~ msgid ""
-#~ "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
-#~ "edit the new menu file format.  You may continue and edit an old-style "
-#~ "menu file, or quit."
-#~ msgstr ""
-#~ "Xfce의 메뉴 시스템이 바뀌었기 때문에 xfce4-menueditor로는 새로운 메뉴 화일"
-#~ "을 수정할 수 없습니다만 그래도 한물 간 형식의 화일은 수정하실 수 있습니"
-#~ "다. 아니면 그냥 종료하십시오."
+#~ msgid "Xfce's menu system has been replaced, and xfce4-menueditor is not able to edit the new menu file format.  You may continue and edit an old-style menu file, or quit."
+#~ msgstr "Xfce의 메뉴 시스템이 바뀌었기 때문에 xfce4-menueditor로는 새로운 메뉴 화일을 수정할 수 없습니다만 그래도 한물 간 형식의 화일은 수정하실 수 있습니다. 아니면 그냥 종료하십시오."
 
 #~ msgid "Continue"
 #~ msgstr "계속"
@@ -1766,19 +1695,16 @@ msgstr "마운트(_M)"
 #~ msgid "Xfce 4 Desktop Settings"
 #~ msgstr "Xfce 4 데스크탑 설정"
 
-#, fuzzy
 #~ msgid "Show windows on each workspace in _submenus"
 #~ msgstr "부메뉴에 각 작업공간의 창 보이기(_m)"
 
-#, fuzzy
 #~ msgid "Use _Xfce to manage the desktop"
 #~ msgstr "Xfce로 데스크탑을 관리하겠습니다.(_X)"
 
 #~ msgid ""
 #~ "Could not save file %s: %s\n"
 #~ "\n"
-#~ "Please choose another location or press cancel in the dialog to discard "
-#~ "your changes"
+#~ "Please choose another location or press cancel in the dialog to discard your changes"
 #~ msgstr ""
 #~ "%s를(을) 저장할 수 없습니다: %s\n"
 #~ "\n"
@@ -1814,29 +1740,11 @@ msgstr "마운트(_M)"
 #~ msgid "Unable to start xfdesktop"
 #~ msgstr "xfdesktop을 기동시키지 못 했습니다."
 
-#~ msgid ""
-#~ "To ensure that this setting takes effect the next time you start Xfce, "
-#~ "please be sure to save your session when logging out.  If you are not "
-#~ "using the Xfce Session Manager (xfce4-session), you will need to manually "
-#~ "edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
-#~ "documentation provided on http://xfce.org/."
-#~ msgstr ""
-#~ "다음 번에 xfce를 기동시키면서 설정을 적용하시려면, 로그 아웃할 때 세션을 "
-#~ "저장하십시오. Xfce 세션 관리자(xfce4-session)을 사용하지 않으면, ~/."
-#~ "config/xfce4/xinitrc 화일을 직접 수정하십시오. 자세한 것은 http://xfce."
-#~ "org/에서 제공하는 문서를 참고하십시오."
+#~ msgid "To ensure that this setting takes effect the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
+#~ msgstr "다음 번에 xfce를 기동시키면서 설정을 적용하시려면, 로그 아웃할 때 세션을 저장하십시오. Xfce 세션 관리자(xfce4-session)을 사용하지 않으면, ~/.config/xfce4/xinitrc 화일을 직접 수정하십시오. 자세한 것은 http://xfce.org/에서 제공하는 문서를 참고하십시오."
 
-#~ msgid ""
-#~ "To ensure that Xfce does not manage your desktop the next time you start "
-#~ "Xfce, please be sure to save your session when logging out.  If you are "
-#~ "not using the Xfce Session Manager (xfce4-session), you will need to "
-#~ "manually edit your ~/.config/xfce4/xinitrc file.  Details are available "
-#~ "in the documentation provided on http://xfce.org/."
-#~ msgstr ""
-#~ "다음 번에 xfce를 기동시키면서 데스크탑을 관리하지 않으려면, 로그 아웃할 "
-#~ "때 세션을 저장하십시오. Xfce 세션 관리자(xfce4-session)을 사용하지 않으"
-#~ "면, ~/.config/xfce4/xinitrc 화일을 직접 수정하십시오. 자세한 것은 http://"
-#~ "xfce.org/에서 제공하는 문서를 참고하십시오."
+#~ msgid "To ensure that Xfce does not manage your desktop the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
+#~ msgstr "다음 번에 xfce를 기동시키면서 데스크탑을 관리하지 않으려면, 로그 아웃할 때 세션을 저장하십시오. Xfce 세션 관리자(xfce4-session)을 사용하지 않으면, ~/.config/xfce4/xinitrc 화일을 직접 수정하십시오. 자세한 것은 http://xfce.org/에서 제공하는 문서를 참고하십시오."
 
 #~ msgid "_Do not show this again"
 #~ msgstr "다시 보지 않겠습니다.(_D)"
@@ -1892,23 +1800,14 @@ msgstr "마운트(_M)"
 #~ msgid "Unable to quit session."
 #~ msgstr "세센을 종료하지 못 했습니다."
 
-#~ msgid ""
-#~ "Quitting the session requires that Xfce's session manager (xfce4-session) "
-#~ "is running, but it was not detected.  Please quit Xfce via another means."
-#~ msgstr ""
-#~ "실행 중인 Xfce 세션관리자(xfce4-session)를 찾을 수 있어야만 세션 관리자를 "
-#~ "종료할 수 있습니다. 다른 방법으로 Xfce를 종료하시기 바랍니다."
+#~ msgid "Quitting the session requires that Xfce's session manager (xfce4-session) is running, but it was not detected.  Please quit Xfce via another means."
+#~ msgstr "실행 중인 Xfce 세션관리자(xfce4-session)를 찾을 수 있어야만 세션 관리자를 종료할 수 있습니다. 다른 방법으로 Xfce를 종료하시기 바랍니다."
 
-#~ msgid ""
-#~ "Quitting the session requires the 'xfce4-session-logout' command, but it "
-#~ "could not be found: %s"
-#~ msgstr ""
-#~ "세션을 종료하려면 'xfce4-session-logout' 명령이 있어야 합니다. %s를(을) 찾"
-#~ "지 못했습니다."
+#~ msgid "Quitting the session requires the 'xfce4-session-logout' command, but it could not be found: %s"
+#~ msgstr "세션을 종료하려면 'xfce4-session-logout' 명령이 있어야 합니다. %s를(을) 찾지 못했습니다."
 
 #~ msgid "Edit Properties"
 #~ msgstr "속성 변경"
 
-#, fuzzy
 #~ msgid "Scientific software"
 #~ msgstr "교육용 소프트웨어"
