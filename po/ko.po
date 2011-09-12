@@ -93,7 +93,7 @@ msgstr "그림 화일"
 
 #: ../settings/main.c:839
 msgid "All files"
-msgstr "모든 화일들"
+msgstr "모든 파일들"
 
 #: ../settings/main.c:1271
 #, c-format
@@ -338,11 +338,11 @@ msgstr "Control"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:738
 msgid "Desktop"
-msgstr "데스크탑"
+msgstr "데스크톱"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:11
 msgid "File/launcher icons"
-msgstr "화일/실행기 아이콘"
+msgstr "파일/실행기 아이콘"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:13
 msgid "Icon _size:"
@@ -401,19 +401,16 @@ msgid "Show _application icons in menu"
 msgstr "메뉴에 프로그램 아이콘 보이기(_a)"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:28
-#, fuzzy
 msgid "Show _window list menu on desktop middle click"
-msgstr "가운데 버튼 클릭으로 창 목록 보이기(_w)"
+msgstr "데스크톱에서 가운데 단추를 눌러 창 목록 메뉴 보이기(_w)"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:29
-#, fuzzy
 msgid "Show applications menu on _desktop right click"
-msgstr "오른쪽 버튼 클릭으로 데스크탑 메뉴 보이기(_d)"
+msgstr "데스크톱에서 오른쪽 단추를 눌러 프로그램 메뉴 보이기(_d)"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:30
-#, fuzzy
 msgid "Show s_ticky windows only in active workspace"
-msgstr "끈끈이 창을 활성화된 작업공간에만 보이기(_a)"
+msgstr "작업공간에 끈적이 창만 보이기(_t)"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:31
 msgid "Show workspace _names in list"
@@ -421,11 +418,11 @@ msgstr "리스트에 작업 공간 이름 보이기(_n)"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
 msgid "Specify the transparency level for the rounded label drawn behind the icon text"
-msgstr ""
+msgstr "아이콘 본문 뒤에 그려진 모서리가 둥글게 그려진 레이블의 투명도를 정합니다"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "Use _submenus for the windows in each workspace"
-msgstr ""
+msgstr "각각의 작업공간에서 창을 위한 하위메뉴를 사용하기(_s)"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:38
 #, fuzzy
@@ -504,7 +501,7 @@ msgstr "빌드 옵션:\n"
 #: ../src/main.c:277
 #, c-format
 msgid "    Desktop Menu:        %s\n"
-msgstr "    데스크탑 메뉴:       %s\n"
+msgstr "데스크톱 메뉴: %s\n"
 
 #: ../src/main.c:279 ../src/main.c:286 ../src/main.c:293
 msgid "enabled"
@@ -517,12 +514,12 @@ msgstr "사용안함"
 #: ../src/main.c:284
 #, c-format
 msgid "    Desktop Icons:       %s\n"
-msgstr "    데스크탑 아이콘:     %s\n"
+msgstr "데스크톱 아이콘: %s\n"
 
 #: ../src/main.c:291
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr "    데스크탑 화일 아이콘:  %s\n"
+msgstr "데스크톱 파일 아이콘:  %s\n"
 
 #: ../src/main.c:322
 #, c-format
@@ -572,9 +569,8 @@ msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "화일 \"%s\"을(를) 만들지 못 했습니다.:"
 
 #: ../src/xfce-desktop.c:1024
-#, fuzzy
 msgid "Desktop Error"
-msgstr "데스크탑"
+msgstr "데스크톱 오류"
 
 #: ../src/xfdesktop-file-icon-manager.c:465
 #: ../src/xfdesktop-file-icon-manager.c:482
@@ -584,9 +580,8 @@ msgstr "배경화면 목록을 만듭니다."
 
 #: ../src/xfdesktop-file-icon-manager.c:470
 #: ../src/xfdesktop-file-icon-manager.c:487
-#, fuzzy
 msgid "Desktop Folder Error"
-msgstr "데스크탑"
+msgstr "데스크톱 폴더 오류"
 
 #: ../src/xfdesktop-file-icon-manager.c:489
 msgid "A normal file with the same name already exists. Please delete or rename it."
@@ -645,7 +640,7 @@ msgstr "\"%s\"로 엽니다"
 
 #: ../src/xfdesktop-file-icon-manager.c:986
 msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
-msgstr "데스크탑에 실행기와 링크를 만들고 수정할 수 있는 \"exo-desktop-item-edit\"을 기동시키지 못 했습니다."
+msgstr "데스크톱에 실행기와 링크를 만들고 수정하는데 필요한 \"exo-desktop-item-edit\"을 실행하지 못했습니다."
 
 #: ../src/xfdesktop-file-icon-manager.c:1358
 msgid "_Open all"
