@@ -51,7 +51,7 @@ msgstr "이동식 장치"
 #: ../settings/main.c:475
 #, c-format
 msgid "Cannot create backdrop list \"%s\""
-msgstr "배경 목록 \"%s\"을 만들 수 없습니다"
+msgstr "배경 목록 \"%s\"을(를) 만들 수 없습니다"
 
 #: ../settings/main.c:479 ../settings/main.c:802
 msgid "Backdrop List Error"
@@ -64,7 +64,7 @@ msgstr "배경 목록을 만들거나 불러오기"
 #: ../settings/main.c:528
 #, c-format
 msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr "파일 \"%s\"는 유효한 배경 목록 파일이 아닙니다. 덮어 쓰시렵니까?"
+msgstr "파일 \"%s\"은(는) 유효한 배경 목록 파일이 아닙니다. 덮어 쓰시렵니까?"
 
 #: ../settings/main.c:533
 msgid "Invalid List File"
@@ -76,7 +76,7 @@ msgstr "파일을 엎어쓰면 내용을 잃을 것입니다."
 
 #: ../settings/main.c:538
 msgid "Replace"
-msgstr "대체"
+msgstr "바꾸기"
 
 #: ../settings/main.c:798
 #, c-format
@@ -93,7 +93,7 @@ msgstr "그림 화일"
 
 #: ../settings/main.c:839
 msgid "All files"
-msgstr "모든 파일들"
+msgstr "모든 파일"
 
 #: ../settings/main.c:1271
 #, c-format
@@ -135,7 +135,7 @@ msgstr "버전 정보"
 #: ../settings/main.c:1521
 #, c-format
 msgid "Type '%s --help' for usage."
-msgstr "사용법을 보려면 '%s --help'를 입력하십시오"
+msgstr "사용법을 보려면 '%s --help'를 입력하십시오."
 
 #: ../settings/main.c:1533
 msgid "The Xfce development team. All rights reserved."
@@ -193,7 +193,7 @@ msgstr "목록으로부터 임의의 그림을 자동으로 고르기"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
 msgid "B_rightness:"
-msgstr "밝기 조절(_B):"
+msgstr "밝기 조절(_r):"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
 #: ../settings/xfdesktop-settings-ui.glade.h:8
@@ -236,7 +236,7 @@ msgstr "채도(_t):"
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 #: ../settings/xfdesktop-settings-ui.glade.h:23
 msgid "Scaled"
-msgstr "크기조절"
+msgstr "크기 조절됨"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
 msgid "Select First Color"
@@ -342,7 +342,7 @@ msgstr "데스크톱"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:11
 msgid "File/launcher icons"
-msgstr "파일/실행기 아이콘"
+msgstr "파일/실행 아이콘"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:13
 msgid "Icon _size:"
@@ -628,7 +628,7 @@ msgstr "\"%s\"(으)로 엽니다"
 
 #: ../src/xfdesktop-file-icon-manager.c:986
 msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
-msgstr "데스크톱에 실행기와 링크를 만들고 수정하는데 필요한 \"exo-desktop-item-edit\"을 실행하지 못했습니다."
+msgstr "데스크톱에 실행 아이콘과 링크를 만들고 수정하는데 필요한 \"exo-desktop-item-edit\"을 실행하지 못했습니다."
 
 #: ../src/xfdesktop-file-icon-manager.c:1358
 msgid "_Open all"
@@ -646,7 +646,7 @@ msgstr "열기(_O)"
 #. create launcher item
 #: ../src/xfdesktop-file-icon-manager.c:1395
 msgid "Create _Launcher..."
-msgstr "실행기 만들기...(_L)"
+msgstr "실행 아이콘 만들기...(_L)"
 
 #. create link item
 #: ../src/xfdesktop-file-icon-manager.c:1411
@@ -673,7 +673,7 @@ msgstr "실행(_E)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1504
 msgid "_Edit Launcher"
-msgstr "실행기 편집(_E)"
+msgstr "실행 아이콘 편집(_E)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1539
 msgid "Open With"
