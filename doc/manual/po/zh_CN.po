@@ -244,8 +244,8 @@ msgstr ""
 "可以管理、复制、移动文件，可以与文件管理器相互创建"
 "链接，可以使用首选的应用程序打开文件。还可以在桌面"
 "上创建应用程序和 URL 启动器。模块化的文件图标视图"
-"具有相似外观，就像 <ulink url=\"http://thunar.xfce.org/\""
-" type=\"http\">Thunar</ulink> 文件管理器。"
+"具有相似外观，就像 <ulink url=\"http://thunar.xfce.org/\" "
+"type=\"http\">Thunar</ulink> 文件管理器。"
 
 #: xfdesktop.xml:152(title)
 msgid "The Desktop Menu"
@@ -260,7 +260,7 @@ msgid ""
 "many of the applications found on your system."
 msgstr ""
 "右击桌面背景会打开一个菜单，此菜单让您在桌面目录中打开 Thunar 窗口，"
-"以便创建启动器、 URL 链接，从模板新建文件夹或文件。还可能打开桌面目录"
+"以便创建启动器、URL 链接，从模板新建文件夹或文件。还可能打开桌面目录"
 "的桌面设置和属性窗口，并启动在您的系统中发现的很多应用程序。"
 
 #: xfdesktop.xml:163(title) xfdesktop.xml:455(term)
@@ -384,7 +384,7 @@ msgid ""
 "<application>@PACKAGE_NAME@</application> to draw a backdrop image."
 msgstr ""
 "如果您要 <application>@PACKAGE_NAME@</application> 绘出背景图片，选择 "
-"<emphasis>“单一图像”</emphasis> 选项"
+"<emphasis>“单一图片”</emphasis> 选项。"
 
 #: xfdesktop.xml:282(para)
 msgid ""
@@ -392,8 +392,8 @@ msgid ""
 "<application>@PACKAGE_NAME@</application> to randomly choose the backdrop "
 "image among a list."
 msgstr ""
-"如果您要 <application>@PACKAGE_NAME@</application> 随机从背景图片列表中"
-"随机选择，选择 <emphasis>“图像列表”</emphasis> 选项。"
+"如果您要 <application>@PACKAGE_NAME@</application> 从背景图片列表中"
+"随机选择，选择 <emphasis>“图片列表”</emphasis> 选项。"
 
 #: xfdesktop.xml:294(term)
 msgid "Images"
@@ -407,8 +407,8 @@ msgid ""
 "current backdrop. <application>@PACKAGE_NAME@</application> will update the "
 "background of your desktop automatically."
 msgstr ""
-"如果您选中了 <emphasis>“单一图像”</emphasis> 选项，您可以从树形列表"
-"中选择一图片。点击图像可将其设置为当前桌面背景。<application>@PACKAGE_NAME@</"
+"如果您选中了 <emphasis>“单一图片”</emphasis> 选项，您可以从树形列表"
+"中选择一图片。点击图片可将其设置为当前桌面背景。<application>@PACKAGE_NAME@</"
 "application> 会自动更新您的桌面背景。"
 
 #: xfdesktop.xml:304(para)
@@ -448,7 +448,7 @@ msgid ""
 msgstr ""
 "依据其大小，有五种样式选项(<emphasis>“居中”</emphasis>、<emphasis>“平铺”</"
 "emphasis>、<emphasis>“拉伸”</emphasis>、<emphasis>“伸缩”</emphasis> 和 "
-"<emphasis>“缩放”</emphasis>) 用来指定背景图片在屏幕上的放置"
+"<emphasis>“缩放”</emphasis>)用来指定背景图片在屏幕上的放置"
 "方式。您也可以选择 <emphasis>“自动”</emphasis> 让 "
 "<application>@PACKAGE_NAME@</application> 去管此设置。"
 
@@ -588,7 +588,7 @@ msgid ""
 "checked."
 msgstr ""
 "<emphasis>“在菜单中显示应用程序图标”</emphasis> 选项让您在菜单中显示或隐藏图标。"
-"该选项仅在 <emphasis>“中击桌面时显示窗口列表菜单”</emphasis> 选项被选中时有效。"
+"该选项仅在选中 <emphasis>“中击桌面时显示窗口列表菜单”</emphasis> 时有效。"
 
 #. Add link to xfwm4 documentation to change workspaces names
 #: xfdesktop.xml:493(para)
@@ -726,8 +726,8 @@ msgid ""
 "\"base\" entries set the text background color, and the three \"fg\" entries "
 "set the text color."
 msgstr ""
-"第一个条目设置文本背景的阻光度。三个 “base” 条目设置文本背景颜色。"
-"三个 “fg” 条目则设置文本颜色。"
+"第一个条目设置文本背景的阻光度。三个 \"base\" 条目设置文本背景颜色。"
+"三个 \"fg\" 条目则设置文本颜色。"
 
 #: xfdesktop.xml:642(para)
 msgid ""
@@ -736,8 +736,8 @@ msgid ""
 "desktop has keyboard focus. The \"ACTIVE\" entries set the color for when "
 "the icon is selected, but the desktop does not have keyboard focus."
 msgstr ""
-"“NORMAL” 条目设置正常的、未选中状态下的颜色。“SELECTED” 条目设置"
-"当图标处于选中且桌面获得键盘焦点状态下的颜色，“ACTIVE” 条目设置当图标"
+"\"NORMAL\" 条目设置正常的、未选中状态下的颜色。\"SELECTED\" 条目设置"
+"当图标处于选中且桌面获得键盘焦点状态下的颜色，\"ACTIVE\" 条目设置当图标"
 "处于选中但桌面未获得键盘焦点状态下的颜色。"
 
 #: xfdesktop.xml:655(title)
@@ -784,8 +784,8 @@ msgid ""
 "manual, use the bug tracking system at <ulink url=\"http://bugzilla.xfce.org/"
 "\" type=\"http\">http://bugzilla.xfce.org/</ulink>."
 msgstr ""
-"要汇报缺陷或就此文档或手册提出建议，使用缺陷追踪系统 <ulink url=\"
-""http://bugzilla.xfce.org/\" type=\"http\">http://bugzilla.xfce.org/</ulink>。"
+"要汇报缺陷或就此文档或手册提出建议，使用缺陷追踪系统 <ulink url=\""
+"http://bugzilla.xfce.org/\" type=\"http\">http://bugzilla.xfce.org/</ulink>。"
 
 #: xfdesktop.xml:686(para)
 msgid ""
