@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-19 10:13+0000\n"
+"POT-Creation-Date: 2011-10-29 22:08+0000\n"
 "PO-Revision-Date: 2010-05-27 22:41+0200\n"
 "Last-Translator: Ivica Kolić<ikoli@yahoo.com> <>\n"
 "Language-Team: Croatian hr<>\n"
@@ -64,7 +64,8 @@ msgstr "Napravi/Učitaj Pozadinsku Listu"
 
 #: ../settings/main.c:528
 #, c-format
-msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgid ""
+"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
 msgstr "Datoteka \"%s\" nije valjana pozadinska lista. Želite li je zamjeniti?"
 
 #: ../settings/main.c:533
@@ -194,7 +195,7 @@ msgstr "Automatski odabrati slučajnu sliku s popisa datoteka"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
 msgid "B_rightness:"
-msgstr ""
+msgstr "S_vjetlina:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
 #: ../settings/xfdesktop-settings-ui.glade.h:8
@@ -261,7 +262,8 @@ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr "Određuje \\ \"desno \" ili \\ \"dolje\" boje gradijenta"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
-msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgid ""
+"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
 msgstr "Određuje  boju, ili \\ \"lijevo \" ili \\ \"vrh \" boje gradijenta"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
@@ -327,7 +329,7 @@ msgstr ""
 
 #: ../settings/xfdesktop-settings-ui.glade.h:5
 msgid "Alt"
-msgstr ""
+msgstr "Alt"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:7
 msgid "B_utton:"
@@ -355,7 +357,7 @@ msgstr "Tip _ikone"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:15
 msgid "Label trans_parency:"
-msgstr ""
+msgstr "Prozi_rnost natpisa:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:16
 msgid "Left"
@@ -418,7 +420,9 @@ msgid "Show workspace _names in list"
 msgstr "Pokaži imena _radnih prostora na listi"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
-msgid "Specify the transparency level for the rounded label drawn behind the icon text"
+msgid ""
+"Specify the transparency level for the rounded label drawn behind the icon "
+"text"
 msgstr ""
 
 #: ../settings/xfdesktop-settings-ui.glade.h:37
@@ -575,8 +579,11 @@ msgid "Desktop Folder Error"
 msgstr "Greška radne površine"
 
 #: ../src/xfdesktop-file-icon-manager.c:489
-msgid "A normal file with the same name already exists. Please delete or rename it."
-msgstr "Normalna datoteka s istim imenom već postoji.Molim izbrišite je ili preimenujte."
+msgid ""
+"A normal file with the same name already exists. Please delete or rename it."
+msgstr ""
+"Normalna datoteka s istim imenom već postoji.Molim izbrišite je ili "
+"preimenujte."
 
 #: ../src/xfdesktop-file-icon-manager.c:592
 #: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:880
@@ -597,8 +604,12 @@ msgstr ""
 #: ../src/xfdesktop-file-utils.c:1102 ../src/xfdesktop-file-utils.c:1152
 #: ../src/xfdesktop-file-utils.c:1229 ../src/xfdesktop-file-utils.c:1290
 #: ../src/xfdesktop-file-utils.c:1363 ../src/xfdesktop-file-utils.c:1441
-msgid "This feature requires a file manager service to be present (such as the one supplied by Thunar)."
-msgstr "Ova značajka zahtijeva prisutnost servisa upravitelja datotekama (kao što je dobivate od Thunar)."
+msgid ""
+"This feature requires a file manager service to be present (such as the one "
+"supplied by Thunar)."
+msgstr ""
+"Ova značajka zahtijeva prisutnost servisa upravitelja datotekama (kao što je "
+"dobivate od Thunar)."
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:738
@@ -628,8 +639,12 @@ msgid "Open With \"%s\""
 msgstr "Otvori pomoću \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:986
-msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
-msgstr "Ne mogu pokrenuti \"exo-desktop-item-edit\" što je potrebno za kreiranje i uređivanje kratica na radnoj površini."
+msgid ""
+"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
+"edit launchers and links on the desktop."
+msgstr ""
+"Ne mogu pokrenuti \"exo-desktop-item-edit\" što je potrebno za kreiranje i "
+"uređivanje kratica na radnoj površini."
 
 #: ../src/xfdesktop-file-icon-manager.c:1358
 msgid "_Open all"
@@ -759,8 +774,12 @@ msgid "The selected files could not be moved to the trash"
 msgstr "Izabrane datoteke se ne mogu premjestiti u smeće"
 
 #: ../src/xfdesktop-file-utils.c:897 ../src/xfdesktop-file-utils.c:943
-msgid "This feature requires a trash service to be present (such as the one supplied by Thunar)."
-msgstr "Ova značajka zahtijeva prisutnost servisa smeća (kao što je dobivate od Thunar)."
+msgid ""
+"This feature requires a trash service to be present (such as the one "
+"supplied by Thunar)."
+msgstr ""
+"Ova značajka zahtijeva prisutnost servisa smeća (kao što je dobivate od "
+"Thunar)."
 
 #: ../src/xfdesktop-file-utils.c:928 ../src/xfdesktop-file-utils.c:942
 msgid "Could not empty the trash"
@@ -816,13 +835,15 @@ msgstr "Ne može se izvesti prijenos datoteke"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:128
 msgid "Unmounting device"
-msgstr ""
+msgstr "Demontiram uređaj"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:131
 #, c-format
-msgid "The device \"%s\" is being unmounted by the system. Please do not remove the media or disconnect the drive"
-msgstr ""
+msgid ""
+"The device \"%s\" is being unmounted by the system. Please do not remove the "
+"media or disconnect the drive"
+msgstr "Uređaj  \"%s\"  je odmontiran od strane sustava. Molimo vas da ne uklonite medij ili odspojite pogon"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
@@ -832,8 +853,10 @@ msgstr "Zapisujem podatke na uređaj"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
 #, c-format
-msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
-msgstr ""
+msgid ""
+"There is data that needs to be written to the device \"%s\" before it can be "
+"removed. Please do not remove the media or disconnect the drive"
+msgstr "Tusu podci koji bi trebali biti zapisan na uređaj \"%s\" prije nego što ga se može ukloniti. Molimo vas da ne uklonite medij ili odspojite pogon"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:253
@@ -936,17 +959,28 @@ msgstr "_Montiraj uređaj"
 #~ msgid "Unable to contact the Xfce Trash service."
 #~ msgstr "Nije moguće kontaktirati  Xfce servis smeća"
 
-#~ msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
-#~ msgstr "Provjerite da li imate instaliran upravitelj datotekama koji podržava uslugu Xfce smeće, kao što je Thunar."
+#~ msgid ""
+#~ "Make sure you have a file manager installed that supports the Xfce Trash "
+#~ "service, such as Thunar."
+#~ msgstr ""
+#~ "Provjerite da li imate instaliran upravitelj datotekama koji podržava "
+#~ "uslugu Xfce smeće, kao što je Thunar."
 
-#~ msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-#~ msgstr "Xfdesktop nije bio u mogućnosti to stvoriti mapu \"%s\" za pohranu stavki na radnoj površini:"
+#~ msgid ""
+#~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+#~ msgstr ""
+#~ "Xfdesktop nije bio u mogućnosti to stvoriti mapu \"%s\" za pohranu stavki "
+#~ "na radnoj površini:"
 
 #~ msgid "Create Folder Failed"
 #~ msgstr "Nisam uspio napraviti mapu"
 
-#~ msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
-#~ msgstr "Xfdesktop se ne može koristiti \"%s\" za održavanje stavki na radnoj površini, jer nije mapa."
+#~ msgid ""
+#~ "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not "
+#~ "a folder."
+#~ msgstr ""
+#~ "Xfdesktop se ne može koristiti \"%s\" za održavanje stavki na radnoj "
+#~ "površini, jer nije mapa."
 
 #~ msgid "Please delete or rename the file."
 #~ msgstr "Izbrišite ili preimenujte datoteku"
