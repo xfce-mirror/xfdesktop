@@ -7,15 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-04 17:21+0000\n"
+"POT-Creation-Date: 2011-11-05 05:21+0000\n"
 "PO-Revision-Date: 2010-05-27 22:41+0200\n"
 "Last-Translator: Ivica Kolić<ikoli@yahoo.com> <>\n"
 "Language-Team: Croatian hr<>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
 #, c-format
@@ -191,11 +192,11 @@ msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
 msgid "Automatically pick a random image from a list file"
-msgstr ""
+msgstr "Automatski odabrati slučajnu sliku s popisa datoteka"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
 msgid "B_rightness:"
-msgstr ""
+msgstr "S_vjetlina:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
 #: ../settings/xfdesktop-settings-ui.glade.h:8
@@ -213,7 +214,7 @@ msgstr "Nemoj uopće prikazati sliku"
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
 #: ../settings/xfdesktop-settings-ui.glade.h:12
 msgid "Horizontal gradient"
-msgstr ""
+msgstr "Vodoravni gradijent"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
 msgid "Image _list"
@@ -221,19 +222,19 @@ msgstr "Lista _slika"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
 msgid "Increase or decrease the brightness of the final image"
-msgstr ""
+msgstr "Povećanje ili smanjenje svjetline konačne slike"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
 msgid "Increase or decrease the color saturation of the final image"
-msgstr ""
+msgstr "Povećanje ili smanjenje zasićenosti boje na konačnoj slici"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
 msgid "Remove the selected image(s) from the list"
-msgstr ""
+msgstr "Ukloni odabrane sliku(e) sa popisa"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Sa_turation:"
-msgstr ""
+msgstr "Za_sićenost:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 #: ../settings/xfdesktop-settings-ui.glade.h:23
@@ -250,7 +251,7 @@ msgstr "Odaberi drugu boju"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
 msgid "Select a single image as the backdrop"
-msgstr ""
+msgstr "Odaberite jednu sliku kao pozadinu"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
 #: ../settings/xfdesktop-settings-ui.glade.h:32
@@ -259,16 +260,16 @@ msgstr "Puna boja"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-msgstr ""
+msgstr "Određuje \\ \"desno \" ili \\ \"dolje\" boje gradijenta"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
 msgid ""
 "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr ""
+msgstr "Određuje  boju, ili \\ \"lijevo \" ili \\ \"vrh \" boje gradijenta"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid "Specify how the image will be resized to fit the screen"
-msgstr ""
+msgstr "Odredite kako će  se promjeniti veličina salike da pristaje na zaslon"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "Specify the style of the color drawn behind the backdrop image"
@@ -296,7 +297,7 @@ msgstr "Prozirno"
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
 #: ../settings/xfdesktop-settings-ui.glade.h:39
 msgid "Vertical gradient"
-msgstr ""
+msgstr "Okomiti gradijent"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
 #: ../settings/xfdesktop-settings-ui.glade.h:40
@@ -309,7 +310,7 @@ msgstr "_Nijedan"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
 msgid "_Single image"
-msgstr ""
+msgstr "_Jedna slika"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:1
 msgid "<b>Appearance</b>"
@@ -329,11 +330,11 @@ msgstr ""
 
 #: ../settings/xfdesktop-settings-ui.glade.h:5
 msgid "Alt"
-msgstr ""
+msgstr "Alt"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:7
 msgid "B_utton:"
-msgstr ""
+msgstr "D_ugme:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:9
 msgid "Control"
@@ -357,7 +358,7 @@ msgstr "Tip _ikone"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:15
 msgid "Label trans_parency:"
-msgstr ""
+msgstr "Prozi_rnost natpisa:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:16
 msgid "Left"
@@ -369,7 +370,7 @@ msgstr "Sredina"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:18
 msgid "Minimized application icons"
-msgstr ""
+msgstr "Smanjene ikone programa"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:19
 msgid "Mo_difier:"
@@ -405,7 +406,7 @@ msgstr "Pokaži _ikone programa u izborniku"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:28
 msgid "Show _window list menu on desktop middle click"
-msgstr ""
+msgstr "Prikaži _desnim klikom listu izbornika prozora na radnoj površini "
 
 #: ../settings/xfdesktop-settings-ui.glade.h:29
 msgid "Show applications menu on _desktop right click"
@@ -439,7 +440,7 @@ msgstr "_Pozadina"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:42
 msgid "_Button:"
-msgstr ""
+msgstr "_Dugme:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:43
 msgid "_Edit desktop menu"
@@ -783,7 +784,7 @@ msgstr ""
 
 #: ../src/xfdesktop-file-utils.c:928 ../src/xfdesktop-file-utils.c:942
 msgid "Could not empty the trash"
-msgstr "Ne mogu isprazniti smeće "
+msgstr "Ne mogu isprazniti smeće"
 
 #: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:994
 msgid "Create File Error"
@@ -835,7 +836,7 @@ msgstr "Ne može se izvesti prijenos datoteke"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:128
 msgid "Unmounting device"
-msgstr ""
+msgstr "Demontiram uređaj"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:131
@@ -844,11 +845,13 @@ msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the "
 "media or disconnect the drive"
 msgstr ""
+"Uređaj  \"%s\"  je odmontiran od strane sustava. Molimo vas da ne uklonite "
+"medij ili odspojite pogon"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
 msgid "Writing data to device"
-msgstr ""
+msgstr "Zapisujem podatke na uređaj"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
@@ -857,6 +860,8 @@ msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be "
 "removed. Please do not remove the media or disconnect the drive"
 msgstr ""
+"Tusu podci koji bi trebali biti zapisan na uređaj \"%s\" prije nego što ga "
+"se može ukloniti. Molimo vas da ne uklonite medij ili odspojite pogon"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:253
