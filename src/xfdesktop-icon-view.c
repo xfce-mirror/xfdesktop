@@ -1356,6 +1356,7 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
     GdkAtom target = GDK_NONE;
     XfdesktopIcon *icon;
     guint16 old_row, old_col, row, col;
+    GList *l;
     XfdesktopIcon *icon_on_dest = NULL;
     
     TRACE("entering: (%d,%d)", x, y);
@@ -1375,7 +1376,6 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
     
     if(target == gdk_atom_intern("XFDESKTOP_ICON", FALSE)) {
         if(icon_on_dest) {
-            GList *l;
             gboolean ret = FALSE;
             
             for(l = icon_view->priv->selected_icons; l; l = l->next) {
@@ -1395,10 +1395,20 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
         icon = icon_view->priv->cursor;
         g_return_val_if_fail(icon, FALSE);
         
-        /* clear out old position */
-        xfdesktop_icon_view_invalidate_icon(icon_view, icon, FALSE);
-        if(xfdesktop_icon_get_position(icon, &old_row, &old_col))
-            xfdesktop_grid_set_position_free(icon_view, old_row, old_col);
+        /* 1: Remove all the icons that are going to be moved from
+         *    the desktop. That's in case the icons being moved
+         *    want to rearrange themselves there.
+         * 2: We need to move the icon that's being dragged since the
+         *    user explicitly wants to drop it in that spot.
+         * 3: We just append all the other icons in any spot that's
+         *    open. */
+        for(l = icon_view->priv->selected_icons; l; l = l->next) {
+            /* clear out old position */
+            xfdesktop_icon_view_invalidate_icon(icon_view, l->data, FALSE);
+            if(xfdesktop_icon_get_position(l->data, &old_row, &old_col))
+                xfdesktop_grid_set_position_free(icon_view, old_row, old_col);
+        }
+
         /* set new position */
         xfdesktop_icon_set_position(icon, row, col);
         xfdesktop_grid_unset_position_free(icon_view, icon);
@@ -1406,6 +1416,31 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
         /* clear out old extents, if any */
         /* FIXME: is this right? */
         xfdesktop_icon_view_invalidate_icon(icon_view, icon, TRUE);
+
+        /* Now that we have moved the icon the user selected,
+         * append all the other selected icons after it. */
+        for(l = icon_view->priv->selected_icons; l; l = l->next) {
+            if(l->data == icon)
+                continue;
+
+            /* Find the next available spot for an icon */
+            do {
+                if(row + 1 >= icon_view->priv->nrows) {
+                    ++col;
+                    row = 0;
+                } else {
+                    ++row;
+                }
+            } while(!xfdesktop_grid_is_free_position(icon_view, row, col));
+
+            /* set new position */
+            xfdesktop_icon_set_position(l->data, row, col);
+            xfdesktop_grid_unset_position_free(icon_view, l->data);
+
+            /* clear out old extents, if any */
+            /* FIXME: is this right? */
+            xfdesktop_icon_view_invalidate_icon(icon_view, l->data, TRUE);
+        }
         
         DBG("drag succeeded");
         
