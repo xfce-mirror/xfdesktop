@@ -4,14 +4,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop.master.xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-30 19:22+0100\n"
+"POT-Creation-Date: 2011-11-29 11:06+0000\n"
 "PO-Revision-Date: 2010-05-03 09:51+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic <rglug@rglug.org>\n"
-"Language: is\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: is\n"
 "X-Generator: KBabel 1.11.4\n"
 
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
@@ -30,15 +30,15 @@ msgstr ""
 #: ../settings/main.c:289 ../src/xfdesktop-special-file-icon.c:256
 #: ../src/xfdesktop-special-file-icon.c:419
 msgid "Home"
-msgstr ""
+msgstr "Heim"
 
 #: ../settings/main.c:291
 msgid "Filesystem"
-msgstr ""
+msgstr "Skráakerfi"
 
 #: ../settings/main.c:293
 msgid "Trash"
-msgstr ""
+msgstr "Ruslið"
 
 #: ../settings/main.c:295
 msgid "Removable Devices"
@@ -73,7 +73,7 @@ msgstr ""
 
 #: ../settings/main.c:538
 msgid "Replace"
-msgstr ""
+msgstr "Skipta út"
 
 #: ../settings/main.c:798
 #, c-format
@@ -82,7 +82,7 @@ msgstr ""
 
 #: ../settings/main.c:825
 msgid "Add Image File(s)"
-msgstr ""
+msgstr "Setja inn mynd/ir"
 
 #: ../settings/main.c:834
 #, fuzzy
@@ -91,7 +91,7 @@ msgstr "Myndir"
 
 #: ../settings/main.c:839
 msgid "All files"
-msgstr ""
+msgstr "Allar skrár"
 
 #: ../settings/main.c:1271
 #, c-format
@@ -342,7 +342,7 @@ msgstr ""
 msgid "Control"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:737
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:738
 #, fuzzy
 msgid "Desktop"
 msgstr "Skjáborðsvalmynd"
@@ -534,46 +534,46 @@ msgstr ""
 msgid "_Applications"
 msgstr ""
 
-#: ../src/windowlist.c:235
+#: ../src/windowlist.c:229
 #, fuzzy
 msgid "Window List"
 msgstr "Valmynd gluggalista"
 
-#: ../src/windowlist.c:261
+#: ../src/windowlist.c:255
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr ""
 
-#: ../src/windowlist.c:270
+#: ../src/windowlist.c:264
 #, c-format
 msgid "Workspace %d"
 msgstr ""
 
-#: ../src/windowlist.c:272
+#: ../src/windowlist.c:266
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr ""
 
-#: ../src/windowlist.c:368 ../src/windowlist.c:371
+#: ../src/windowlist.c:362 ../src/windowlist.c:365
 msgid "_Add Workspace"
 msgstr ""
 
-#: ../src/windowlist.c:379
+#: ../src/windowlist.c:373
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr ""
 
-#: ../src/windowlist.c:382
+#: ../src/windowlist.c:376
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr ""
 
-#: ../src/xfce-desktop.c:1018
+#: ../src/xfce-desktop.c:1022
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr ""
 
-#: ../src/xfce-desktop.c:1020
+#: ../src/xfce-desktop.c:1024
 #, fuzzy
 msgid "Desktop Error"
 msgstr "Skjáborðsvalmynd"
@@ -596,9 +596,9 @@ msgid ""
 msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:592
-#: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:879
-#: ../src/xfdesktop-file-utils.c:894 ../src/xfdesktop-file-utils.c:926
-#: ../src/xfdesktop-file-utils.c:940
+#: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:880
+#: ../src/xfdesktop-file-utils.c:895 ../src/xfdesktop-file-utils.c:927
+#: ../src/xfdesktop-file-utils.c:941
 msgid "Trash Error"
 msgstr ""
 
@@ -608,12 +608,12 @@ msgid "The selected files could not be trashed"
 msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:594
-#: ../src/xfdesktop-file-icon-manager.c:638 ../src/xfdesktop-file-utils.c:728
-#: ../src/xfdesktop-file-utils.c:778 ../src/xfdesktop-file-utils.c:837
-#: ../src/xfdesktop-file-utils.c:995 ../src/xfdesktop-file-utils.c:1051
-#: ../src/xfdesktop-file-utils.c:1101 ../src/xfdesktop-file-utils.c:1151
-#: ../src/xfdesktop-file-utils.c:1228 ../src/xfdesktop-file-utils.c:1289
-#: ../src/xfdesktop-file-utils.c:1362 ../src/xfdesktop-file-utils.c:1440
+#: ../src/xfdesktop-file-icon-manager.c:638 ../src/xfdesktop-file-utils.c:729
+#: ../src/xfdesktop-file-utils.c:779 ../src/xfdesktop-file-utils.c:838
+#: ../src/xfdesktop-file-utils.c:996 ../src/xfdesktop-file-utils.c:1052
+#: ../src/xfdesktop-file-utils.c:1102 ../src/xfdesktop-file-utils.c:1152
+#: ../src/xfdesktop-file-utils.c:1229 ../src/xfdesktop-file-utils.c:1290
+#: ../src/xfdesktop-file-utils.c:1363 ../src/xfdesktop-file-utils.c:1441
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
@@ -621,18 +621,18 @@ msgstr ""
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:738
-#: ../src/xfdesktop-file-icon-manager.c:1296
+#: ../src/xfdesktop-file-icon-manager.c:1300
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:740
 #: ../src/xfdesktop-file-icon-manager.c:984
-#: ../src/xfdesktop-file-icon-manager.c:1297 ../src/xfdesktop-file-utils.c:711
-#: ../src/xfdesktop-file-utils.c:726 ../src/xfdesktop-file-utils.c:1134
-#: ../src/xfdesktop-file-utils.c:1149 ../src/xfdesktop-file-utils.c:1201
-#: ../src/xfdesktop-file-utils.c:1226 ../src/xfdesktop-file-utils.c:1272
-#: ../src/xfdesktop-file-utils.c:1287
+#: ../src/xfdesktop-file-icon-manager.c:1301 ../src/xfdesktop-file-utils.c:712
+#: ../src/xfdesktop-file-utils.c:727 ../src/xfdesktop-file-utils.c:1135
+#: ../src/xfdesktop-file-utils.c:1150 ../src/xfdesktop-file-utils.c:1202
+#: ../src/xfdesktop-file-utils.c:1227 ../src/xfdesktop-file-utils.c:1273
+#: ../src/xfdesktop-file-utils.c:1288
 msgid "Launch Error"
 msgstr ""
 
@@ -652,79 +652,79 @@ msgid ""
 "edit launchers and links on the desktop."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1354
+#: ../src/xfdesktop-file-icon-manager.c:1358
 msgid "_Open all"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1370
+#: ../src/xfdesktop-file-icon-manager.c:1374
 msgid "_Open in New Window"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1372
+#: ../src/xfdesktop-file-icon-manager.c:1376
 #: ../src/xfdesktop-special-file-icon.c:489 ../src/xfdesktop-volume-icon.c:663
 msgid "_Open"
 msgstr ""
 
 #. create launcher item
-#: ../src/xfdesktop-file-icon-manager.c:1391
+#: ../src/xfdesktop-file-icon-manager.c:1395
 msgid "Create _Launcher..."
 msgstr ""
 
 #. create link item
-#: ../src/xfdesktop-file-icon-manager.c:1407
+#: ../src/xfdesktop-file-icon-manager.c:1411
 msgid "Create _URL Link..."
 msgstr ""
 
 #. create folder item
-#: ../src/xfdesktop-file-icon-manager.c:1423
+#: ../src/xfdesktop-file-icon-manager.c:1427
 msgid "Create _Folder..."
 msgstr ""
 
 #. create from template submenu
-#: ../src/xfdesktop-file-icon-manager.c:1438
+#: ../src/xfdesktop-file-icon-manager.c:1442
 msgid "Create From _Template"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1464
+#: ../src/xfdesktop-file-icon-manager.c:1468
 msgid "_Empty File"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1480
+#: ../src/xfdesktop-file-icon-manager.c:1484
 msgid "_Execute"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1500
+#: ../src/xfdesktop-file-icon-manager.c:1504
 msgid "_Edit Launcher"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1535
+#: ../src/xfdesktop-file-icon-manager.c:1539
 msgid "Open With"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1561
+#: ../src/xfdesktop-file-icon-manager.c:1565
 msgid "Open With Other _Application..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1649
+#: ../src/xfdesktop-file-icon-manager.c:1653
 msgid "_Rename..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1667
+#: ../src/xfdesktop-file-icon-manager.c:1671
 #, fuzzy
 msgid "Desktop _Settings..."
 msgstr "Skjáborðsstillingar"
 
-#: ../src/xfdesktop-file-icon-manager.c:1677
+#: ../src/xfdesktop-file-icon-manager.c:1681
 #: ../src/xfdesktop-volume-icon.c:711
 msgid "_Properties..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2234
+#: ../src/xfdesktop-file-icon-manager.c:2238
 #, fuzzy
 msgid "Load Error"
 msgstr "Skjáborðsvalmynd"
 
-#: ../src/xfdesktop-file-icon-manager.c:2236
+#: ../src/xfdesktop-file-icon-manager.c:2240
 msgid "Failed to load the desktop folder"
 msgstr ""
 
@@ -757,85 +757,85 @@ msgstr ""
 msgid "Unknown"
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:712 ../src/xfdesktop-file-utils.c:727
+#: ../src/xfdesktop-file-utils.c:713 ../src/xfdesktop-file-utils.c:728
 msgid "The folder could not be opened"
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:761 ../src/xfdesktop-file-utils.c:776
+#: ../src/xfdesktop-file-utils.c:762 ../src/xfdesktop-file-utils.c:777
 msgid "Rename Error"
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:762 ../src/xfdesktop-file-utils.c:777
+#: ../src/xfdesktop-file-utils.c:763 ../src/xfdesktop-file-utils.c:778
 msgid "The file could not be renamed"
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:820 ../src/xfdesktop-file-utils.c:835
+#: ../src/xfdesktop-file-utils.c:821 ../src/xfdesktop-file-utils.c:836
 #, fuzzy
 msgid "Delete Error"
 msgstr "Skjáborðsvalmynd"
 
-#: ../src/xfdesktop-file-utils.c:821 ../src/xfdesktop-file-utils.c:836
+#: ../src/xfdesktop-file-utils.c:822 ../src/xfdesktop-file-utils.c:837
 msgid "The selected files could not be deleted"
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:880 ../src/xfdesktop-file-utils.c:895
+#: ../src/xfdesktop-file-utils.c:881 ../src/xfdesktop-file-utils.c:896
 msgid "The selected files could not be moved to the trash"
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:896 ../src/xfdesktop-file-utils.c:942
+#: ../src/xfdesktop-file-utils.c:897 ../src/xfdesktop-file-utils.c:943
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:927 ../src/xfdesktop-file-utils.c:941
+#: ../src/xfdesktop-file-utils.c:928 ../src/xfdesktop-file-utils.c:942
 msgid "Could not empty the trash"
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:978 ../src/xfdesktop-file-utils.c:993
+#: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:994
 msgid "Create File Error"
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:994
+#: ../src/xfdesktop-file-utils.c:980 ../src/xfdesktop-file-utils.c:995
 msgid "Could not create a new file"
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:1034 ../src/xfdesktop-file-utils.c:1049
+#: ../src/xfdesktop-file-utils.c:1035 ../src/xfdesktop-file-utils.c:1050
 msgid "Create Document Error"
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:1035 ../src/xfdesktop-file-utils.c:1050
+#: ../src/xfdesktop-file-utils.c:1036 ../src/xfdesktop-file-utils.c:1051
 msgid "Could not create a new document from the template"
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:1084 ../src/xfdesktop-file-utils.c:1099
+#: ../src/xfdesktop-file-utils.c:1085 ../src/xfdesktop-file-utils.c:1100
 msgid "File Properties Error"
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:1085 ../src/xfdesktop-file-utils.c:1100
+#: ../src/xfdesktop-file-utils.c:1086 ../src/xfdesktop-file-utils.c:1101
 msgid "The file properties dialog could not be opened"
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:1135 ../src/xfdesktop-file-utils.c:1150
+#: ../src/xfdesktop-file-utils.c:1136 ../src/xfdesktop-file-utils.c:1151
 msgid "The file could not be opened"
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:1198 ../src/xfdesktop-file-utils.c:1223
+#: ../src/xfdesktop-file-utils.c:1199 ../src/xfdesktop-file-utils.c:1224
 #, c-format
 msgid "Failed to run \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:1273 ../src/xfdesktop-file-utils.c:1288
+#: ../src/xfdesktop-file-utils.c:1274 ../src/xfdesktop-file-utils.c:1289
 msgid "The application chooser could not be opened"
-msgstr ""
-
-#: ../src/xfdesktop-file-utils.c:1346 ../src/xfdesktop-file-utils.c:1360
-#: ../src/xfdesktop-file-utils.c:1422 ../src/xfdesktop-file-utils.c:1438
-msgid "Transfer Error"
 msgstr ""
 
 #: ../src/xfdesktop-file-utils.c:1347 ../src/xfdesktop-file-utils.c:1361
 #: ../src/xfdesktop-file-utils.c:1423 ../src/xfdesktop-file-utils.c:1439
+msgid "Transfer Error"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:1348 ../src/xfdesktop-file-utils.c:1362
+#: ../src/xfdesktop-file-utils.c:1424 ../src/xfdesktop-file-utils.c:1440
 msgid "The file transfer could not be performed"
 msgstr ""
 
