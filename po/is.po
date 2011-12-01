@@ -13,8 +13,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: is\n"
-"X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: KBabel 1.11.4\n"
 
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
 #, c-format
@@ -240,11 +240,11 @@ msgstr "Skalað"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
 msgid "Select First Color"
-msgstr ""
+msgstr "Velja Fyrsta Lit"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
 msgid "Select Second Color"
-msgstr ""
+msgstr "Velja Annan Lit"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
 msgid "Select a single image as the backdrop"
@@ -386,11 +386,11 @@ msgstr "Hægri"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:24
 msgid "Set desktop background and menu and icon behavior"
-msgstr ""
+msgstr "Setja skjámynd, valmynd og hegðun tákna"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:25
 msgid "Sh_ow application icons in menu"
-msgstr ""
+msgstr "Sý_na tákn forrita í valmynd"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:26
 msgid "Shift"
@@ -398,7 +398,7 @@ msgstr "Shift-lykill"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "Show _application icons in menu"
-msgstr ""
+msgstr "Sýna tákn _forrita í valmynd"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:28
 msgid "Show _window list menu on desktop middle click"
@@ -568,7 +568,7 @@ msgstr "Skjáborðsvilla"
 #: ../src/xfdesktop-file-icon-manager.c:482
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
-msgstr ""
+msgstr "Ekki var hægt að búa til möppu \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:470
 #: ../src/xfdesktop-file-icon-manager.c:487
@@ -578,6 +578,8 @@ msgstr "Villa í skjáborðsmöppu"
 #: ../src/xfdesktop-file-icon-manager.c:489
 msgid "A normal file with the same name already exists. Please delete or rename it."
 msgstr ""
+"Venjuleg skrá er nú þegar með þetta nafn.\r\n"
+"Vinsamlegast eyddu eða breyttu nafni á skránni."
 
 #: ../src/xfdesktop-file-icon-manager.c:592
 #: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:880
@@ -589,7 +591,7 @@ msgstr "Villa í rusli"
 #: ../src/xfdesktop-file-icon-manager.c:593
 #: ../src/xfdesktop-file-icon-manager.c:637
 msgid "The selected files could not be trashed"
-msgstr ""
+msgstr "Það var ekki hægt að eyða þessari skrá"
 
 #: ../src/xfdesktop-file-icon-manager.c:594
 #: ../src/xfdesktop-file-icon-manager.c:638 ../src/xfdesktop-file-utils.c:729
@@ -771,7 +773,7 @@ msgstr ""
 
 #: ../src/xfdesktop-file-utils.c:928 ../src/xfdesktop-file-utils.c:942
 msgid "Could not empty the trash"
-msgstr ""
+msgstr "Ekki var hægt að tæma ruslakörfu"
 
 #: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:994
 msgid "Create File Error"
@@ -779,7 +781,7 @@ msgstr ""
 
 #: ../src/xfdesktop-file-utils.c:980 ../src/xfdesktop-file-utils.c:995
 msgid "Could not create a new file"
-msgstr ""
+msgstr "Ekki var hægt að búa til nýja skrá"
 
 #: ../src/xfdesktop-file-utils.c:1035 ../src/xfdesktop-file-utils.c:1050
 msgid "Create Document Error"
@@ -799,7 +801,7 @@ msgstr ""
 
 #: ../src/xfdesktop-file-utils.c:1136 ../src/xfdesktop-file-utils.c:1151
 msgid "The file could not be opened"
-msgstr ""
+msgstr "Þessi skrá gat ekki verið opnuð"
 
 #: ../src/xfdesktop-file-utils.c:1199 ../src/xfdesktop-file-utils.c:1224
 #, c-format
@@ -849,7 +851,7 @@ msgstr ""
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:253
 msgid "Ejecting device"
-msgstr ""
+msgstr "Taka tæki út"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:256
@@ -876,12 +878,12 @@ msgstr "Ruslafatan er tóm"
 
 #: ../src/xfdesktop-special-file-icon.c:405
 msgid "Trash contains one item"
-msgstr ""
+msgstr "Ruslakarfa inniheldur aðeins eina skrá"
 
 #: ../src/xfdesktop-special-file-icon.c:406
 #, c-format
 msgid "Trash contains %d items"
-msgstr ""
+msgstr "Rusla karfa inniheldur %d skrár"
 
 #: ../src/xfdesktop-special-file-icon.c:434
 #, c-format
@@ -890,6 +892,9 @@ msgid ""
 "Size: %s\n"
 "Last modified: %s"
 msgstr ""
+"%s\n"
+"Stærð: %s\n"
+"Seinast breytt: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:507
 msgid "_Empty Trash"
@@ -934,4 +939,3 @@ msgstr ""
 #: ../src/xfdesktop-volume-icon.c:689
 msgid "_Mount Volume"
 msgstr "_Tengja gagnahirslu"
-
