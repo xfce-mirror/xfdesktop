@@ -1340,29 +1340,29 @@ xfce_desktop_do_menu_popup(XfceDesktop *desktop,
         screen = gtk_widget_get_screen(GTK_WIDGET(desktop));
     else
         screen = gdk_display_get_default_screen(gdk_display_get_default());
-    
-    menu = gtk_menu_new();
-    gtk_menu_set_screen(GTK_MENU(menu), screen);
-    g_signal_connect_swapped(G_OBJECT(menu), "deactivate",
-                             G_CALLBACK(g_idle_add),
-                             (gpointer)xfce_desktop_menu_destroy_idled);
-    
-    g_signal_emit(G_OBJECT(desktop), populate_signal, 0, menu);
-    
-    /* if nobody populated the menu, don't do anything */
-    menu_children = gtk_container_get_children(GTK_CONTAINER(menu));
-    if(!menu_children) {
-        gtk_widget_destroy(menu);
-        return;
-    }
-    
-    g_list_free(menu_children);
-    
-    gtk_menu_attach_to_widget(GTK_MENU(menu), GTK_WIDGET(desktop), NULL);
-    
+
     if(xfdesktop_popup_grab_available(gdk_screen_get_root_window(screen),
                                       activate_time))
     {
+        menu = gtk_menu_new();
+        gtk_menu_set_screen(GTK_MENU(menu), screen);
+        g_signal_connect_swapped(G_OBJECT(menu), "deactivate",
+                                 G_CALLBACK(g_idle_add),
+                                 (gpointer)xfce_desktop_menu_destroy_idled);
+
+        g_signal_emit(G_OBJECT(desktop), populate_signal, 0, menu);
+
+        /* if nobody populated the menu, don't do anything */
+        menu_children = gtk_container_get_children(GTK_CONTAINER(menu));
+        if(!menu_children) {
+            gtk_widget_destroy(menu);
+            return;
+        }
+
+        g_list_free(menu_children);
+
+        gtk_menu_attach_to_widget(GTK_MENU(menu), GTK_WIDGET(desktop), NULL);
+
         /* bug #3652: for some reason passing the correct button here breaks
          * on some systems but not others.  always pass 0 for now. */
         gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL, 0,
