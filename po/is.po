@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: is\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-29 11:06+0000\n"
+"POT-Creation-Date: 2011-12-07 08:15+0000\n"
 "PO-Revision-Date: 2011-12-01 09:17+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic <translation-team-is@lists.sourceforge.net>\n"
@@ -63,7 +63,8 @@ msgstr ""
 
 #: ../settings/main.c:528
 #, c-format
-msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgid ""
+"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
 msgstr ""
 
 #: ../settings/main.c:533
@@ -72,7 +73,7 @@ msgstr "Ógild listaskrá"
 
 #: ../settings/main.c:536
 msgid "Overwriting the file will cause its contents to be lost."
-msgstr ""
+msgstr "Ef þú skrifar yfir skránna mun innihald hennar vera óaðgengilegt."
 
 #: ../settings/main.c:538
 msgid "Replace"
@@ -125,8 +126,9 @@ msgid "Settings manager socket"
 msgstr ""
 
 #: ../settings/main.c:1500
+#, fuzzy
 msgid "SOCKET ID"
-msgstr ""
+msgstr "SOCKET ID"
 
 #: ../settings/main.c:1501
 msgid "Version information"
@@ -219,15 +221,15 @@ msgstr "Mynda_listi"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
 msgid "Increase or decrease the brightness of the final image"
-msgstr ""
+msgstr "Bæta við eða af birtustigi seinustu myndarinnar"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
 msgid "Increase or decrease the color saturation of the final image"
-msgstr ""
+msgstr "Bæta við eða af litmettun seinustu myndarinnar"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
 msgid "Remove the selected image(s) from the list"
-msgstr ""
+msgstr "Fjarlægja vald(ar) mynd(ir) frá lista"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Sa_turation:"
@@ -260,12 +262,13 @@ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
-msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgid ""
+"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
 msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid "Specify how the image will be resized to fit the screen"
-msgstr ""
+msgstr "Veldu hvernig mynd verður endurstækkuð til að passa á skjá"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "Specify the style of the color drawn behind the backdrop image"
@@ -298,7 +301,7 @@ msgstr "Lóðréttur litstigull"
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
 #: ../settings/xfdesktop-settings-ui.glade.h:40
 msgid "Zoomed"
-msgstr ""
+msgstr "Aðdráttur"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
 msgid "_None"
@@ -402,19 +405,19 @@ msgstr "Sýna tákn _forrita í valmynd"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:28
 msgid "Show _window list menu on desktop middle click"
-msgstr ""
+msgstr "Sýna _glugga lista valmynd á skjáborði miðju músarsmell"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:29
 msgid "Show applications menu on _desktop right click"
-msgstr ""
+msgstr "Sýna forrita valmynd á _skjáborðs hægri músarsmell"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:30
 msgid "Show s_ticky windows only in active workspace"
-msgstr ""
+msgstr "Sýna l_ímda glugga aðeins á virkum vinnusvæðum"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:31
 msgid "Show workspace _names in list"
-msgstr ""
+msgstr "Sýna _nöfn vinnusvæða á lista"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
 msgid ""
@@ -424,11 +427,11 @@ msgstr ""
 
 #: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "Use _submenus for the windows in each workspace"
-msgstr ""
+msgstr "Nota _undirvalmyndir fyrir glugga í hverju vinnusvæði"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:38
 msgid "Use custom _font size:"
-msgstr ""
+msgstr "Nota sjálfgefna _letur stærð:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:41
 msgid "_Background"
@@ -456,7 +459,7 @@ msgstr "Birta útgáfuupplýsingar"
 
 #: ../src/main.c:239
 msgid "Reload all settings, refresh image list"
-msgstr ""
+msgstr "Endurhlaða allar stillingar, endurnýja myndar lista"
 
 #: ../src/main.c:240
 msgid "Pop up the menu (at the current mouse position)"
@@ -576,7 +579,8 @@ msgid "Desktop Folder Error"
 msgstr "Villa í skjáborðsmöppu"
 
 #: ../src/xfdesktop-file-icon-manager.c:489
-msgid "A normal file with the same name already exists. Please delete or rename it."
+msgid ""
+"A normal file with the same name already exists. Please delete or rename it."
 msgstr ""
 "Venjuleg skrá er nú þegar með þetta nafn.\r\n"
 "Vinsamlegast eyddu eða breyttu nafni á skránni."
@@ -610,7 +614,7 @@ msgstr ""
 #: ../src/xfdesktop-file-icon-manager.c:1300
 #, c-format
 msgid "Unable to launch \"%s\":"
-msgstr ""
+msgstr "Ekki tókst að keyra \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:740
 #: ../src/xfdesktop-file-icon-manager.c:984
@@ -777,7 +781,7 @@ msgstr "Ekki var hægt að tæma ruslakörfu"
 
 #: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:994
 msgid "Create File Error"
-msgstr ""
+msgstr "Villa við að Búa til Skrá"
 
 #: ../src/xfdesktop-file-utils.c:980 ../src/xfdesktop-file-utils.c:995
 msgid "Could not create a new file"
@@ -785,19 +789,19 @@ msgstr "Ekki var hægt að búa til nýja skrá"
 
 #: ../src/xfdesktop-file-utils.c:1035 ../src/xfdesktop-file-utils.c:1050
 msgid "Create Document Error"
-msgstr ""
+msgstr "Villa við að Búa til Skjal"
 
 #: ../src/xfdesktop-file-utils.c:1036 ../src/xfdesktop-file-utils.c:1051
 msgid "Could not create a new document from the template"
-msgstr ""
+msgstr "Tókst ekki að búa til skjal frá þessu sniðmóti"
 
 #: ../src/xfdesktop-file-utils.c:1085 ../src/xfdesktop-file-utils.c:1100
 msgid "File Properties Error"
-msgstr ""
+msgstr "Villa í Skráar stillingum"
 
 #: ../src/xfdesktop-file-utils.c:1086 ../src/xfdesktop-file-utils.c:1101
 msgid "The file properties dialog could not be opened"
-msgstr ""
+msgstr "Skráar stillingar glugginn gat ekki verið opnaður"
 
 #: ../src/xfdesktop-file-utils.c:1136 ../src/xfdesktop-file-utils.c:1151
 msgid "The file could not be opened"
@@ -806,11 +810,11 @@ msgstr "Þessi skrá gat ekki verið opnuð"
 #: ../src/xfdesktop-file-utils.c:1199 ../src/xfdesktop-file-utils.c:1224
 #, c-format
 msgid "Failed to run \"%s\""
-msgstr ""
+msgstr "Mistókst að keyra \"%s\""
 
 #: ../src/xfdesktop-file-utils.c:1274 ../src/xfdesktop-file-utils.c:1289
 msgid "The application chooser could not be opened"
-msgstr ""
+msgstr "Forrita veljarinn gat ekki verið opnaður"
 
 #: ../src/xfdesktop-file-utils.c:1347 ../src/xfdesktop-file-utils.c:1361
 #: ../src/xfdesktop-file-utils.c:1423 ../src/xfdesktop-file-utils.c:1439
@@ -825,7 +829,7 @@ msgstr ""
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:128
 msgid "Unmounting device"
-msgstr ""
+msgstr "Aftengja tæki"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:131
@@ -833,7 +837,7 @@ msgstr ""
 msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the "
 "media or disconnect the drive"
-msgstr ""
+msgstr "Tækið \"%s\" er að aftengjast af kerfinu. Vinstamlegast ekki fjarlægja tæki."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
@@ -846,7 +850,7 @@ msgstr "Skrifa upplýsingar á tæki"
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be "
 "removed. Please do not remove the media or disconnect the drive"
-msgstr ""
+msgstr "Það eru gögn sem þurfa vera skrifuð á tækið \"%s\" áður enn það verður fjarlægt. Vinsamlegast ekki fjarlægja tæki."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:253
@@ -866,6 +870,9 @@ msgid ""
 "Size: %s\n"
 "Last modified: %s"
 msgstr ""
+"Tegund: %s\n"
+"Stærð: %s\n"
+"Seinast breytt: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:258
 #: ../src/xfdesktop-special-file-icon.c:417
@@ -913,20 +920,22 @@ msgid ""
 "Removable Volume\n"
 "Not mounted yet"
 msgstr ""
+"Færanlegt tæki\n"
+"Ekki tengjanlegt strax"
 
 #: ../src/xfdesktop-volume-icon.c:456 ../src/xfdesktop-volume-icon.c:498
 #, c-format
 msgid "Failed to eject \"%s\""
-msgstr ""
+msgstr "Mistókst að spýta út \"%s\""
 
 #: ../src/xfdesktop-volume-icon.c:461 ../src/xfdesktop-volume-icon.c:503
 msgid "Eject Failed"
-msgstr ""
+msgstr "Spýting mistókst"
 
 #: ../src/xfdesktop-volume-icon.c:535
 #, c-format
 msgid "Failed to mount \"%s\""
-msgstr ""
+msgstr "Mistókst að tengja \"%s\""
 
 #: ../src/xfdesktop-volume-icon.c:538
 msgid "Mount Failed"
@@ -934,7 +943,7 @@ msgstr "Tenging mistókst"
 
 #: ../src/xfdesktop-volume-icon.c:679 ../src/xfdesktop-volume-icon.c:682
 msgid "E_ject Volume"
-msgstr ""
+msgstr "S_pýta Tæki"
 
 #: ../src/xfdesktop-volume-icon.c:689
 msgid "_Mount Volume"
