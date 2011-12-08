@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: is\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-07 08:15+0000\n"
+"POT-Creation-Date: 2011-12-08 08:39+0000\n"
 "PO-Revision-Date: 2011-12-01 09:17+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic <translation-team-is@lists.sourceforge.net>\n"
@@ -154,7 +154,7 @@ msgstr "Skjáborðsstillingar"
 
 #: ../settings/main.c:1543
 msgid "Unable to contact settings server"
-msgstr ""
+msgstr "Gat ekki tengt við stillingar þjón"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop "
@@ -819,12 +819,12 @@ msgstr "Forrita veljarinn gat ekki verið opnaður"
 #: ../src/xfdesktop-file-utils.c:1347 ../src/xfdesktop-file-utils.c:1361
 #: ../src/xfdesktop-file-utils.c:1423 ../src/xfdesktop-file-utils.c:1439
 msgid "Transfer Error"
-msgstr ""
+msgstr "Flutningar Villa"
 
 #: ../src/xfdesktop-file-utils.c:1348 ../src/xfdesktop-file-utils.c:1362
 #: ../src/xfdesktop-file-utils.c:1424 ../src/xfdesktop-file-utils.c:1440
 msgid "The file transfer could not be performed"
-msgstr ""
+msgstr "Skráa flutningur gat ekki verið framkvæmdur"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:128
@@ -837,7 +837,8 @@ msgstr "Aftengja tæki"
 msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the "
 "media or disconnect the drive"
-msgstr "Tækið \"%s\" er að aftengjast af kerfinu. Vinstamlegast ekki fjarlægja tæki."
+msgstr ""
+"Tækið \"%s\" er að aftengjast af kerfinu. Vinstamlegast ekki fjarlægja tæki."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
@@ -850,7 +851,9 @@ msgstr "Skrifa upplýsingar á tæki"
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be "
 "removed. Please do not remove the media or disconnect the drive"
-msgstr "Það eru gögn sem þurfa vera skrifuð á tækið \"%s\" áður enn það verður fjarlægt. Vinsamlegast ekki fjarlægja tæki."
+msgstr ""
+"Það eru gögn sem þurfa vera skrifuð á tækið \"%s\" áður enn það verður "
+"fjarlægt. Vinsamlegast ekki fjarlægja tæki."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:253
@@ -861,7 +864,7 @@ msgstr "Taka tæki út"
 #: ../src/xfdesktop-notify.c:256
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
-msgstr ""
+msgstr "Tækinu \"%s\" er verið að spýta út. Þetta getur tekið smá tíma"
 
 #: ../src/xfdesktop-regular-file-icon.c:472
 #, c-format
