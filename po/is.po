@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: is\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-12-08 08:39+0000\n"
-"PO-Revision-Date: 2011-12-01 09:17+0000\n"
+"PO-Revision-Date: 2011-12-10 08:49+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic <translation-team-is@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -63,8 +63,7 @@ msgstr ""
 
 #: ../settings/main.c:528
 #, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
 msgstr ""
 
 #: ../settings/main.c:533
@@ -73,7 +72,7 @@ msgstr "Ógild listaskrá"
 
 #: ../settings/main.c:536
 msgid "Overwriting the file will cause its contents to be lost."
-msgstr "Ef þú skrifar yfir skránna mun innihald hennar vera óaðgengilegt."
+msgstr "Ef þú skrifar yfir skrána mun innihald hennar tapast."
 
 #: ../settings/main.c:538
 msgid "Replace"
@@ -123,12 +122,11 @@ msgstr "Skjátæki %d"
 
 #: ../settings/main.c:1500
 msgid "Settings manager socket"
-msgstr ""
+msgstr "Sökkull stillingastjórnunar"
 
 #: ../settings/main.c:1500
-#, fuzzy
 msgid "SOCKET ID"
-msgstr "SOCKET ID"
+msgstr "AUÐKENNI SÖKKULS - ID"
 
 #: ../settings/main.c:1501
 msgid "Version information"
@@ -154,7 +152,7 @@ msgstr "Skjáborðsstillingar"
 
 #: ../settings/main.c:1543
 msgid "Unable to contact settings server"
-msgstr "Gat ekki tengt við stillingar þjón"
+msgstr "Gat ekki tengt við stillingaþjón"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop "
@@ -229,7 +227,7 @@ msgstr "Bæta við eða af litmettun seinustu myndarinnar"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
 msgid "Remove the selected image(s) from the list"
-msgstr "Fjarlægja vald(ar) mynd(ir) frá lista"
+msgstr "Fjarlægja vald(ar) mynd(ir) úr lista"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Sa_turation:"
@@ -242,11 +240,11 @@ msgstr "Skalað"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
 msgid "Select First Color"
-msgstr "Velja Fyrsta Lit"
+msgstr "Velja fyrsta lit"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
 msgid "Select Second Color"
-msgstr "Velja Annan Lit"
+msgstr "Velja annan lit"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
 msgid "Select a single image as the backdrop"
@@ -262,8 +260,7 @@ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
-msgid ""
-"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
 msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
@@ -405,11 +402,11 @@ msgstr "Sýna tákn _forrita í valmynd"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:28
 msgid "Show _window list menu on desktop middle click"
-msgstr "Sýna _glugga lista valmynd á skjáborði miðju músarsmell"
+msgstr "Sýna _gluggalistavalmynd með miðju-músarsmell á skjáborð"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:29
 msgid "Show applications menu on _desktop right click"
-msgstr "Sýna forrita valmynd á _skjáborðs hægri músarsmell"
+msgstr "Sýna _forritavalmynd með hægri-músarsmell á skjáborð"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:30
 msgid "Show s_ticky windows only in active workspace"
@@ -463,11 +460,11 @@ msgstr "Endurhlaða allar stillingar, endurnýja myndar lista"
 
 #: ../src/main.c:240
 msgid "Pop up the menu (at the current mouse position)"
-msgstr ""
+msgstr "Láta valmynd spretta upp (við músarbendil)"
 
 #: ../src/main.c:241
 msgid "Pop up the window list (at the current mouse position)"
-msgstr ""
+msgstr "Láta gluggalista spretta upp (við músarbendil)"
 
 #: ../src/main.c:242
 msgid "Cause xfdesktop to quit"
@@ -476,7 +473,7 @@ msgstr "Láta xfdesktop hætta"
 #: ../src/main.c:262
 #, c-format
 msgid "Failed to parse arguments: %s\n"
-msgstr ""
+msgstr "Mistókst að þátta viðföng: %s\n"
 
 #: ../src/main.c:270
 #, c-format
@@ -579,8 +576,7 @@ msgid "Desktop Folder Error"
 msgstr "Villa í skjáborðsmöppu"
 
 #: ../src/xfdesktop-file-icon-manager.c:489
-msgid ""
-"A normal file with the same name already exists. Please delete or rename it."
+msgid "A normal file with the same name already exists. Please delete or rename it."
 msgstr ""
 "Venjuleg skrá er nú þegar með þetta nafn.\r\n"
 "Vinsamlegast eyddu eða breyttu nafni á skránni."
@@ -837,8 +833,7 @@ msgstr "Aftengja tæki"
 msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the "
 "media or disconnect the drive"
-msgstr ""
-"Tækið \"%s\" er að aftengjast af kerfinu. Vinstamlegast ekki fjarlægja tæki."
+msgstr "Tækið \"%s\" er að aftengjast af kerfinu. Vinstamlegast ekki fjarlægja tæki."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
@@ -951,3 +946,4 @@ msgstr "S_pýta Tæki"
 #: ../src/xfdesktop-volume-icon.c:689
 msgid "_Mount Volume"
 msgstr "_Tengja gagnahirslu"
+
