@@ -888,6 +888,15 @@ xfdesktop_file_icon_menu_delete(GtkWidget *widget,
 }
 
 static void
+xfdesktop_file_icon_menu_paste(GtkWidget *widget,
+                               gpointer user_data)
+{
+    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
+    if(widget && fmanager)
+        xfdesktop_clipboard_manager_paste_files(clipboard_manager, fmanager->priv->folder, widget, NULL);
+}
+
+static void
 xfdesktop_file_icon_menu_properties(GtkWidget *widget,
                                     gpointer user_data)
 {
@@ -1646,7 +1655,11 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
             mi = gtk_image_menu_item_new_from_stock(GTK_STOCK_PASTE, NULL);
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-            /* FIXME: implement */
+            if(xfdesktop_clipboard_manager_get_can_paste(clipboard_manager)) {
+                g_signal_connect(G_OBJECT(mi), "activate",
+                                 G_CALLBACK(xfdesktop_file_icon_menu_paste),
+                                 fmanager);
+            } else
             gtk_widget_set_sensitive(mi, FALSE);
         } else {
             mi = gtk_image_menu_item_new_from_stock(GTK_STOCK_COPY, NULL);
@@ -2136,6 +2149,18 @@ xfdesktop_file_icon_manager_key_press(GtkWidget *widget,
             }
             return TRUE;
         
+        case GDK_v:
+        case GDK_V:
+            if(!(evt->state & GDK_CONTROL_MASK)
+               || (evt->state & (GDK_SHIFT_MASK|GDK_MOD1_MASK|GDK_MOD4_MASK)))
+            {
+                return FALSE;
+            }
+            if(xfdesktop_clipboard_manager_get_can_paste(clipboard_manager)) {
+                xfdesktop_clipboard_manager_paste_files(clipboard_manager, fmanager->priv->folder, widget, NULL);
+            }
+            return TRUE;
+
         case GDK_r:
         case GDK_R:
             if(!(evt->state & GDK_CONTROL_MASK)
