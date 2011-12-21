@@ -2,25 +2,24 @@
 # Copyright (C) 2003-2006 The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
 # Sylvain Vedrenne <sylvain.vedrenne@free.fr>, 2005.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-30 19:22+0100\n"
+"POT-Creation-Date: 2011-12-21 19:57+0000\n"
 "PO-Revision-Date: 2005-10-10 07:28+0900\n"
 "Last-Translator: Sylvain Vedrenne <sylvain.vedrenne@free.fr>\n"
 "Language-Team: Esperanto <translation-team-eo@lists.sourceforge.net>\n"
-"Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"nplurals=2; plural=(n != 1);\n"
+"Content-Transfer-Encoding: 8bit\nnplurals=2; plural=(n != 1);\n"
+"Language: eo\n"
 
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
-#, fuzzy, c-format
+#, c-format
 msgid "Backdrop list file is not valid"
-msgstr "Elektu dosiernomon de fonbilda listo"
+msgstr "Listo pri fonbildaj dosieroj ne validas"
 
 #. no need to escape markup; it's already done for us
 #: ../settings/main.c:163
@@ -29,84 +28,78 @@ msgid ""
 "%s\n"
 "<i>Size: %dx%d</i>"
 msgstr ""
+"%s\n"
+"<i>Grando: %dx%d</i>"
 
 #: ../settings/main.c:289 ../src/xfdesktop-special-file-icon.c:256
 #: ../src/xfdesktop-special-file-icon.c:419
 msgid "Home"
-msgstr ""
+msgstr "Hejmo"
 
 #: ../settings/main.c:291
-#, fuzzy
 msgid "Filesystem"
-msgstr "sistemo"
+msgstr "Dosiersistemo"
 
 #: ../settings/main.c:293
-#, fuzzy
 msgid "Trash"
-msgstr "Eraro"
+msgstr "Rubujo"
 
 #: ../settings/main.c:295
 msgid "Removable Devices"
-msgstr ""
+msgstr "Demeteblaj aparatoj"
 
 #: ../settings/main.c:475
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot create backdrop list \"%s\""
-msgstr "Kreu fonbildan liston"
+msgstr "Listo de fonbildaj dosieroj \"%s\" ne kreeblas"
 
 #: ../settings/main.c:479 ../settings/main.c:802
-#, fuzzy
 msgid "Backdrop List Error"
-msgstr "Fonbilda Listo"
+msgstr "Eraro pri listo de fonbildaj dosieroj"
 
 #: ../settings/main.c:504
-#, fuzzy
 msgid "Create/Load Backdrop List"
-msgstr "Kreu fonbildan liston"
+msgstr "Krei/ŝarĝi liston de fonbildaj dosieroj"
 
 #: ../settings/main.c:528
 #, c-format
 msgid ""
 "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
+msgstr "Dosiero \"%s\" ne estas valida listo de fonbildaj dosieroj. Ĉu vi deziras anstataŭigi ĝin?"
 
 #: ../settings/main.c:533
-#, fuzzy
 msgid "Invalid List File"
-msgstr "Listaj Dosieroj"
+msgstr "Nevalida dosierlisto"
 
 #: ../settings/main.c:536
 msgid "Overwriting the file will cause its contents to be lost."
-msgstr ""
+msgstr "Anstataŭigante la dosieron, la nuna enhavo perdiĝos."
 
 #: ../settings/main.c:538
-#, fuzzy
 msgid "Replace"
-msgstr "Laŭskaligita"
+msgstr "Anstataŭigi"
 
 #: ../settings/main.c:798
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to write backdrop list to \"%s\""
-msgstr "Modifiu fonbildan liston"
+msgstr "Skribado de listo de fonbildaj dosieroj en \"%s\" fiaskis"
 
 #: ../settings/main.c:825
-#, fuzzy
 msgid "Add Image File(s)"
-msgstr "Bildajn Dosierojn"
+msgstr "Aldoni bildo(j)n"
 
 #: ../settings/main.c:834
 msgid "Image files"
 msgstr "Bildaj dosieroj"
 
 #: ../settings/main.c:839
-#, fuzzy
 msgid "All files"
-msgstr "Ĉiujn dosierojn"
+msgstr "Ĉiuj dosieroj"
 
 #: ../settings/main.c:1271
-#, fuzzy, c-format
+#, c-format
 msgid "Screen %d, Monitor %d (%s)"
-msgstr "Ekrano %d, Monitoro %d"
+msgstr "Ekrano %d, Monitoro %d (%s)"
 
 #: ../settings/main.c:1275
 #, c-format
@@ -121,12 +114,12 @@ msgstr "Ekrano %d"
 #: ../settings/main.c:1283
 #, c-format
 msgid "Monitor %d (%s)"
-msgstr ""
+msgstr "Monitoro %d (%s)"
 
 #: ../settings/main.c:1287
-#, fuzzy, c-format
+#, c-format
 msgid "Monitor %d"
-msgstr "Ekrano %d, Monitoro %d"
+msgstr "Monitoro %d"
 
 #: ../settings/main.c:1500
 msgid "Settings manager socket"
@@ -134,12 +127,11 @@ msgstr ""
 
 #: ../settings/main.c:1500
 msgid "SOCKET ID"
-msgstr ""
+msgstr "IDENTIGILO DE ŜTOPILINGO"
 
 #: ../settings/main.c:1501
-#, fuzzy
 msgid "Version information"
-msgstr "Informo"
+msgstr "Informoj pri versio"
 
 #: ../settings/main.c:1521
 #, c-format
@@ -363,7 +355,7 @@ msgstr "Butono"
 msgid "Control"
 msgstr "Partoprenanto"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:737
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:738
 msgid "Desktop"
 msgstr "Labortablo"
 
@@ -570,45 +562,45 @@ msgstr ""
 msgid "_Applications"
 msgstr ""
 
-#: ../src/windowlist.c:235
+#: ../src/windowlist.c:229
 msgid "Window List"
 msgstr ""
 
-#: ../src/windowlist.c:261
+#: ../src/windowlist.c:255
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>Laborspaco %d</b>"
 
-#: ../src/windowlist.c:270
+#: ../src/windowlist.c:264
 #, fuzzy, c-format
 msgid "Workspace %d"
 msgstr "<b>Laborspaco %d</b>"
 
-#: ../src/windowlist.c:272
+#: ../src/windowlist.c:266
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Laborspaco %d</i>"
 
-#: ../src/windowlist.c:368 ../src/windowlist.c:371
+#: ../src/windowlist.c:362 ../src/windowlist.c:365
 msgid "_Add Workspace"
 msgstr "_Aldonu Laborspacon"
 
-#: ../src/windowlist.c:379
+#: ../src/windowlist.c:373
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "_Forigu Laborspacon %d"
 
-#: ../src/windowlist.c:382
+#: ../src/windowlist.c:376
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "_Forigu Laborspacon '%s'"
 
-#: ../src/xfce-desktop.c:1018
+#: ../src/xfce-desktop.c:1022
 #, fuzzy, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "Malsukcesas lanĉi 'xfce4-menueditor': %s"
 
-#: ../src/xfce-desktop.c:1020
+#: ../src/xfce-desktop.c:1024
 #, fuzzy
 msgid "Desktop Error"
 msgstr "Labortablo"
@@ -631,9 +623,9 @@ msgid ""
 msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:592
-#: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:879
-#: ../src/xfdesktop-file-utils.c:894 ../src/xfdesktop-file-utils.c:926
-#: ../src/xfdesktop-file-utils.c:940
+#: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:880
+#: ../src/xfdesktop-file-utils.c:895 ../src/xfdesktop-file-utils.c:927
+#: ../src/xfdesktop-file-utils.c:941
 #, fuzzy
 msgid "Trash Error"
 msgstr "Eraro"
@@ -644,12 +636,12 @@ msgid "The selected files could not be trashed"
 msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:594
-#: ../src/xfdesktop-file-icon-manager.c:638 ../src/xfdesktop-file-utils.c:728
-#: ../src/xfdesktop-file-utils.c:778 ../src/xfdesktop-file-utils.c:837
-#: ../src/xfdesktop-file-utils.c:995 ../src/xfdesktop-file-utils.c:1051
-#: ../src/xfdesktop-file-utils.c:1101 ../src/xfdesktop-file-utils.c:1151
-#: ../src/xfdesktop-file-utils.c:1228 ../src/xfdesktop-file-utils.c:1289
-#: ../src/xfdesktop-file-utils.c:1362 ../src/xfdesktop-file-utils.c:1440
+#: ../src/xfdesktop-file-icon-manager.c:638 ../src/xfdesktop-file-utils.c:729
+#: ../src/xfdesktop-file-utils.c:779 ../src/xfdesktop-file-utils.c:838
+#: ../src/xfdesktop-file-utils.c:996 ../src/xfdesktop-file-utils.c:1052
+#: ../src/xfdesktop-file-utils.c:1102 ../src/xfdesktop-file-utils.c:1152
+#: ../src/xfdesktop-file-utils.c:1229 ../src/xfdesktop-file-utils.c:1290
+#: ../src/xfdesktop-file-utils.c:1363 ../src/xfdesktop-file-utils.c:1441
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
@@ -657,18 +649,18 @@ msgstr ""
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:738
-#: ../src/xfdesktop-file-icon-manager.c:1296
+#: ../src/xfdesktop-file-icon-manager.c:1300
 #, fuzzy, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Malsukcesas lanĉi 'xfce4-menueditor': %s"
 
 #: ../src/xfdesktop-file-icon-manager.c:740
 #: ../src/xfdesktop-file-icon-manager.c:984
-#: ../src/xfdesktop-file-icon-manager.c:1297 ../src/xfdesktop-file-utils.c:711
-#: ../src/xfdesktop-file-utils.c:726 ../src/xfdesktop-file-utils.c:1134
-#: ../src/xfdesktop-file-utils.c:1149 ../src/xfdesktop-file-utils.c:1201
-#: ../src/xfdesktop-file-utils.c:1226 ../src/xfdesktop-file-utils.c:1272
-#: ../src/xfdesktop-file-utils.c:1287
+#: ../src/xfdesktop-file-icon-manager.c:1301 ../src/xfdesktop-file-utils.c:712
+#: ../src/xfdesktop-file-utils.c:727 ../src/xfdesktop-file-utils.c:1135
+#: ../src/xfdesktop-file-utils.c:1150 ../src/xfdesktop-file-utils.c:1202
+#: ../src/xfdesktop-file-utils.c:1227 ../src/xfdesktop-file-utils.c:1273
+#: ../src/xfdesktop-file-utils.c:1288
 #, fuzzy
 msgid "Launch Error"
 msgstr "Eraro"
@@ -689,84 +681,84 @@ msgid ""
 "edit launchers and links on the desktop."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1354
+#: ../src/xfdesktop-file-icon-manager.c:1358
 msgid "_Open all"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1370
+#: ../src/xfdesktop-file-icon-manager.c:1374
 msgid "_Open in New Window"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1372
+#: ../src/xfdesktop-file-icon-manager.c:1376
 #: ../src/xfdesktop-special-file-icon.c:489 ../src/xfdesktop-volume-icon.c:663
 msgid "_Open"
 msgstr ""
 
 #. create launcher item
-#: ../src/xfdesktop-file-icon-manager.c:1391
+#: ../src/xfdesktop-file-icon-manager.c:1395
 #, fuzzy
 msgid "Create _Launcher..."
 msgstr "Lanĉilo"
 
 #. create link item
-#: ../src/xfdesktop-file-icon-manager.c:1407
+#: ../src/xfdesktop-file-icon-manager.c:1411
 msgid "Create _URL Link..."
 msgstr ""
 
 #. create folder item
-#: ../src/xfdesktop-file-icon-manager.c:1423
+#: ../src/xfdesktop-file-icon-manager.c:1427
 #, fuzzy
 msgid "Create _Folder..."
 msgstr "Modifiu fonbildan liston"
 
 #. create from template submenu
-#: ../src/xfdesktop-file-icon-manager.c:1438
+#: ../src/xfdesktop-file-icon-manager.c:1442
 msgid "Create From _Template"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1464
+#: ../src/xfdesktop-file-icon-manager.c:1468
 #, fuzzy
 msgid "_Empty File"
 msgstr "_Dosiero"
 
-#: ../src/xfdesktop-file-icon-manager.c:1480
+#: ../src/xfdesktop-file-icon-manager.c:1484
 msgid "_Execute"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1500
+#: ../src/xfdesktop-file-icon-manager.c:1504
 #, fuzzy
 msgid "_Edit Launcher"
 msgstr "Lanĉilo"
 
-#: ../src/xfdesktop-file-icon-manager.c:1535
+#: ../src/xfdesktop-file-icon-manager.c:1539
 msgid "Open With"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1561
+#: ../src/xfdesktop-file-icon-manager.c:1565
 msgid "Open With Other _Application..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1649
+#: ../src/xfdesktop-file-icon-manager.c:1653
 msgid "_Rename..."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1667
+#: ../src/xfdesktop-file-icon-manager.c:1671
 #, fuzzy
 msgid "Desktop _Settings..."
 msgstr "Labortablaj Parametroj"
 
-#: ../src/xfdesktop-file-icon-manager.c:1677
+#: ../src/xfdesktop-file-icon-manager.c:1681
 #: ../src/xfdesktop-volume-icon.c:711
 #, fuzzy
 msgid "_Properties..."
 msgstr "Modifiu fonbildan liston"
 
-#: ../src/xfdesktop-file-icon-manager.c:2234
+#: ../src/xfdesktop-file-icon-manager.c:2238
 #, fuzzy
 msgid "Load Error"
 msgstr "Eraro"
 
-#: ../src/xfdesktop-file-icon-manager.c:2236
+#: ../src/xfdesktop-file-icon-manager.c:2240
 #, fuzzy
 msgid "Failed to load the desktop folder"
 msgstr "Kreu fonbildan liston"
@@ -801,93 +793,93 @@ msgstr ""
 msgid "Unknown"
 msgstr "Nekonata Eraro"
 
-#: ../src/xfdesktop-file-utils.c:712 ../src/xfdesktop-file-utils.c:727
+#: ../src/xfdesktop-file-utils.c:713 ../src/xfdesktop-file-utils.c:728
 msgid "The folder could not be opened"
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:761 ../src/xfdesktop-file-utils.c:776
+#: ../src/xfdesktop-file-utils.c:762 ../src/xfdesktop-file-utils.c:777
 #, fuzzy
 msgid "Rename Error"
 msgstr "Eraro"
 
-#: ../src/xfdesktop-file-utils.c:762 ../src/xfdesktop-file-utils.c:777
+#: ../src/xfdesktop-file-utils.c:763 ../src/xfdesktop-file-utils.c:778
 msgid "The file could not be renamed"
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:820 ../src/xfdesktop-file-utils.c:835
+#: ../src/xfdesktop-file-utils.c:821 ../src/xfdesktop-file-utils.c:836
 #, fuzzy
 msgid "Delete Error"
 msgstr "Modifiu fonbildan liston"
 
-#: ../src/xfdesktop-file-utils.c:821 ../src/xfdesktop-file-utils.c:836
+#: ../src/xfdesktop-file-utils.c:822 ../src/xfdesktop-file-utils.c:837
 msgid "The selected files could not be deleted"
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:880 ../src/xfdesktop-file-utils.c:895
+#: ../src/xfdesktop-file-utils.c:881 ../src/xfdesktop-file-utils.c:896
 msgid "The selected files could not be moved to the trash"
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:896 ../src/xfdesktop-file-utils.c:942
+#: ../src/xfdesktop-file-utils.c:897 ../src/xfdesktop-file-utils.c:943
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:927 ../src/xfdesktop-file-utils.c:941
+#: ../src/xfdesktop-file-utils.c:928 ../src/xfdesktop-file-utils.c:942
 #, fuzzy
 msgid "Could not empty the trash"
 msgstr "Malsukcesas lanĉi xfdesktop"
 
-#: ../src/xfdesktop-file-utils.c:978 ../src/xfdesktop-file-utils.c:993
+#: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:994
 #, fuzzy
 msgid "Create File Error"
 msgstr "Modifiu fonbildan liston"
 
-#: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:994
+#: ../src/xfdesktop-file-utils.c:980 ../src/xfdesktop-file-utils.c:995
 #, fuzzy
 msgid "Could not create a new file"
 msgstr "Kreu fonbildan liston"
 
-#: ../src/xfdesktop-file-utils.c:1034 ../src/xfdesktop-file-utils.c:1049
+#: ../src/xfdesktop-file-utils.c:1035 ../src/xfdesktop-file-utils.c:1050
 #, fuzzy
 msgid "Create Document Error"
 msgstr "Modifiu fonbildan liston"
 
-#: ../src/xfdesktop-file-utils.c:1035 ../src/xfdesktop-file-utils.c:1050
+#: ../src/xfdesktop-file-utils.c:1036 ../src/xfdesktop-file-utils.c:1051
 #, fuzzy
 msgid "Could not create a new document from the template"
 msgstr "Kreu fonbildan liston"
 
-#: ../src/xfdesktop-file-utils.c:1084 ../src/xfdesktop-file-utils.c:1099
+#: ../src/xfdesktop-file-utils.c:1085 ../src/xfdesktop-file-utils.c:1100
 #, fuzzy
 msgid "File Properties Error"
 msgstr "Modifiu fonbildan liston"
 
-#: ../src/xfdesktop-file-utils.c:1085 ../src/xfdesktop-file-utils.c:1100
+#: ../src/xfdesktop-file-utils.c:1086 ../src/xfdesktop-file-utils.c:1101
 msgid "The file properties dialog could not be opened"
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:1135 ../src/xfdesktop-file-utils.c:1150
+#: ../src/xfdesktop-file-utils.c:1136 ../src/xfdesktop-file-utils.c:1151
 msgid "The file could not be opened"
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:1198 ../src/xfdesktop-file-utils.c:1223
+#: ../src/xfdesktop-file-utils.c:1199 ../src/xfdesktop-file-utils.c:1224
 #, fuzzy, c-format
 msgid "Failed to run \"%s\""
 msgstr "Malsukcesas lanĉi 'xfce4-menueditor': %s"
 
-#: ../src/xfdesktop-file-utils.c:1273 ../src/xfdesktop-file-utils.c:1288
+#: ../src/xfdesktop-file-utils.c:1274 ../src/xfdesktop-file-utils.c:1289
 msgid "The application chooser could not be opened"
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:1346 ../src/xfdesktop-file-utils.c:1360
-#: ../src/xfdesktop-file-utils.c:1422 ../src/xfdesktop-file-utils.c:1438
+#: ../src/xfdesktop-file-utils.c:1347 ../src/xfdesktop-file-utils.c:1361
+#: ../src/xfdesktop-file-utils.c:1423 ../src/xfdesktop-file-utils.c:1439
 #, fuzzy
 msgid "Transfer Error"
 msgstr "Eraro"
 
-#: ../src/xfdesktop-file-utils.c:1347 ../src/xfdesktop-file-utils.c:1361
-#: ../src/xfdesktop-file-utils.c:1423 ../src/xfdesktop-file-utils.c:1439
+#: ../src/xfdesktop-file-utils.c:1348 ../src/xfdesktop-file-utils.c:1362
+#: ../src/xfdesktop-file-utils.c:1424 ../src/xfdesktop-file-utils.c:1440
 msgid "The file transfer could not be performed"
 msgstr ""
 
@@ -1011,26 +1003,21 @@ msgstr ""
 msgid "_Mount Volume"
 msgstr ""
 
-#, fuzzy
 #~ msgid "Unable to contact the Xfce Trash service."
 #~ msgstr "Malsukcesas lanĉi 'xfce4-menueditor': %s"
 
-#, fuzzy
 #~ msgid "Needs terminal"
 #~ msgstr "Lanĉu en _terminalo"
 
 #~ msgid "Command"
 #~ msgstr "Komando"
 
-#, fuzzy
 #~ msgid "The command to run when the item is clicked"
 #~ msgstr "La komando ne ekzistas !"
 
-#, fuzzy
 #~ msgid "Icon name"
 #~ msgstr "Piktograma redaktilo"
 
-#, fuzzy
 #~ msgid "Startup notification"
 #~ msgstr "Uzu lanĉan _informigon"
 
@@ -1085,7 +1072,6 @@ msgstr ""
 #~ msgid "Show _icons in menu"
 #~ msgstr "Montru la _piktogramojn ĉe la menuo"
 
-#, fuzzy
 #~ msgid "Edit Menu"
 #~ msgstr "_Modifiu Menuon"
 
@@ -1095,146 +1081,114 @@ msgstr ""
 #~ msgid "Options are:\n"
 #~ msgstr "La opcioj estas:\n"
 
-#, fuzzy
 #~ msgid "    --reload      Reload all settings, refresh image list\n"
 #~ msgstr ""
 #~ "    -reload      Reŝargu ĉiujn parametrojn, refreŝigu la bildan liston\n"
 
-#, fuzzy
 #~ msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 #~ msgstr "    -menu        Ŝprucigu la menuon (ĉe la kuranta muspozicio)\n"
 
-#, fuzzy
 #~ msgid ""
 #~ "    --windowlist  Pop up the window list (at the current mouse position)\n"
 #~ msgstr ""
 #~ "    -windowlist  Ŝprucigu la fenestran liston (ĉe la kuranta muspozicio)\n"
 
-#, fuzzy
 #~ msgid "    --quit        Cause xfdesktop to quit\n"
 #~ msgstr "    -quit        Faras ke xfdesktop adiaŭas\n"
 
-#, fuzzy
 #~ msgid "Rename"
 #~ msgstr "Laŭskaligita"
 
-#, fuzzy
 #~ msgid "Are you sure that you want to delete \"%s\"?"
 #~ msgstr "Ĉu vi vere volas fermi la kurantan menuon?"
 
 #~ msgid "Question"
 #~ msgstr "Demando"
 
-#, fuzzy
 #~ msgid "Are you sure you want to delete the following %d files?"
 #~ msgstr "Ĉu vi vere volas fermi la kurantan menuon?"
 
-#, fuzzy
 #~ msgid "Delete Multiple Files"
 #~ msgstr "Elektu Menuan Dosieron"
 
-#, fuzzy
 #~ msgid "Unable to create folder named \"%s\":"
 #~ msgstr "Malsukcesas lanĉi 'xfce4-menueditor': %s"
 
-#, fuzzy
 #~ msgid "Unable to create file named \"%s\":"
 #~ msgstr "Malsukcesas lanĉi 'xfce4-menueditor': %s"
 
-#, fuzzy
 #~ msgid "Create File Failed"
 #~ msgstr "Elektu Menuan Dosieron"
 
-#, fuzzy
 #~ msgid "Unable to create file \"%s\":"
 #~ msgstr "Malsukcesas lanĉi 'xfce4-menueditor': %s"
 
-#, fuzzy
 #~ msgid "Create Error"
 #~ msgstr "Modifiu fonbildan liston"
 
-#, fuzzy
 #~ msgid "Failed to run \"%s\":"
 #~ msgstr "Malsukcesas lanĉi 'xfce4-menueditor': %s"
 
-#, fuzzy
 #~ msgid "Run Error"
 #~ msgstr "Eraro"
 
-#, fuzzy
 #~ msgid "Properties Error"
 #~ msgstr "Modifiu fonbildan liston"
 
 #~ msgid "Name:"
 #~ msgstr "Nomon:"
 
-#, fuzzy
 #~ msgid "Others:"
 #~ msgstr "/Alia"
 
-#, fuzzy
 #~ msgid "File Error"
 #~ msgstr "Eraro"
 
 #~ msgid "Error"
 #~ msgstr "Eraro"
 
-#, fuzzy
 #~ msgid "Unable to mount \"%s\":"
 #~ msgstr "Malsukcesas lanĉi 'xfce4-menueditor': %s"
 
-#, fuzzy
 #~ msgid "Unable to unmount \"%s\":"
 #~ msgstr "Malsukcesas lanĉi 'xfce4-menueditor': %s"
 
-#, fuzzy
 #~ msgid "Unmount Failed"
 #~ msgstr "Menua Dosiero"
 
-#, fuzzy
 #~ msgid "Unable to eject \"%s\":"
 #~ msgstr "Malsukcesas lanĉi 'xfce4-menueditor': %s"
 
-#, fuzzy
 #~ msgid "Software development tools"
 #~ msgstr "Ĉefa programisto"
 
-#, fuzzy
 #~ msgid "Games"
 #~ msgstr "Nomo"
 
-#, fuzzy
 #~ msgid "Multimedia"
 #~ msgstr "Plurnivela"
 
-#, fuzzy
 #~ msgid "Other"
 #~ msgstr "/Alia"
 
-#, fuzzy
 #~ msgid "Settings"
 #~ msgstr "Labortablaj Parametroj"
 
 #~ msgid "System"
 #~ msgstr "Sistemo"
 
-#, fuzzy
 #~ msgid "Help"
 #~ msgstr "_Helpu"
 
-#, fuzzy
 #~ msgid "Log out of the Xfce Desktop"
 #~ msgstr "Parametroj por la Xfce 4 Administrilo de Labortablo"
 
-#, fuzzy
 #~ msgid "Run Program..."
 #~ msgstr "Eraro"
 
-#, fuzzy
 #~ msgid "Run a program"
 #~ msgstr "Eraro"
 
-#, fuzzy
 #~ msgid ""
 #~ "None\n"
 #~ "Minimized application icons\n"
@@ -1295,26 +1249,21 @@ msgstr ""
 #~ msgid "Icon:"
 #~ msgstr "Piktogramon:"
 
-#, fuzzy
 #~ msgid "No icon"
 #~ msgstr "_Butonan piktogramon:"
 
-#, fuzzy
 #~ msgid "Themed icon:"
 #~ msgstr "Elektu Piktogramon"
 
-#, fuzzy
 #~ msgid "Select icon"
 #~ msgstr "Elektu Piktogramon"
 
 #~ msgid "Select command"
 #~ msgstr "Elektu komandon"
 
-#, fuzzy
 #~ msgid "Executable Files"
 #~ msgstr "Elektu Menuan Dosieron"
 
-#, fuzzy
 #~ msgid "Add external menu entry"
 #~ msgstr "Aldonu eksteran menuon"
 
@@ -1324,7 +1273,6 @@ msgstr ""
 #~ msgid "Source:"
 #~ msgstr "Fonton:"
 
-#, fuzzy
 #~ msgid "Select external menu"
 #~ msgstr "Aldonu eksteran menuon"
 
@@ -1343,96 +1291,75 @@ msgstr ""
 #~ msgid "Edit menu entry"
 #~ msgstr "Modifiu menuan elementon"
 
-#, fuzzy
 #~ msgid "Edit external menu entry"
 #~ msgstr "Aldonu eksteran menuon"
 
-#, fuzzy
 #~ msgid "Xfce4-MenuEditor"
 #~ msgstr "Xfce 4 Menua Redaktilo"
 
-#, fuzzy
 #~ msgid "Menueditor Warning"
 #~ msgstr "Menua Radaktilo"
 
-#, fuzzy
 #~ msgid "Continue"
 #~ msgstr "Partoprenanto"
 
 #~ msgid "_File"
 #~ msgstr "_Dosiero"
 
-#, fuzzy
 #~ msgid "Create a new empty menu"
 #~ msgstr "Kreu Xfce4-an menuan dosieron"
 
-#, fuzzy
 #~ msgid "Open existing menu"
 #~ msgstr "Malfermu la implican menuon"
 
-#, fuzzy
 #~ msgid "Open _default menu"
 #~ msgstr "Malfermu la implican menuon"
 
 #~ msgid "Open default menu"
 #~ msgstr "Malfermu la implican menuon"
 
-#, fuzzy
 #~ msgid "Save modifications"
 #~ msgstr "Forgesu la ŝanĝojn"
 
-#, fuzzy
 #~ msgid "Save _as..."
 #~ msgstr "Konservu kiel..."
 
-#, fuzzy
 #~ msgid "Close menu"
 #~ msgstr "Fermu la kurantan menuon"
 
-#, fuzzy
 #~ msgid "_Quit"
 #~ msgstr "Adiaŭu"
 
-#, fuzzy
 #~ msgid "Quit Xfce4-Menueditor"
 #~ msgstr "Xfce 4 Menua Redaktilo"
 
 #~ msgid "_Edit"
 #~ msgstr "_Modifiu"
 
-#, fuzzy
 #~ msgid "_Edit entry"
 #~ msgstr "Modifiu menuan elementon"
 
-#, fuzzy
 #~ msgid "Edit selected entry"
 #~ msgstr "Modifiu menuan elementon"
 
-#, fuzzy
 #~ msgid "_Add entry"
 #~ msgstr "Aldonu menuan elementon"
 
-#, fuzzy
 #~ msgid "Add a new entry in the menu"
 #~ msgstr "Aldonu elementon al la menuo"
 
-#, fuzzy
 #~ msgid "Add _external"
 #~ msgstr "Aldonu eksteran menuon"
 
-#, fuzzy
 #~ msgid "Add an external entry"
 #~ msgstr "Aldonu eksteran menuon"
 
-#, fuzzy
 #~ msgid "Remove entry"
 #~ msgstr "Aldonu menuan elementon"
 
-#, fuzzy
 #~ msgid "Move entry up"
 #~ msgstr "Suprenmovu la kurantan elementon"
 
-#, fuzzy
 #~ msgid "Move entry down"
 #~ msgstr "Malsuprenmovu la kurantan elementon"
 
@@ -1442,19 +1369,15 @@ msgstr ""
 #~ msgid "_About..."
 #~ msgstr "_Pri..."
 
-#, fuzzy
 #~ msgid "Show informations about xfce4-menueditor"
 #~ msgstr "Malsukcesas lanĉi 'xfce4-menueditor': %s"
 
-#, fuzzy
 #~ msgid "Collapse all"
 #~ msgstr "Fermu la arbon"
 
-#, fuzzy
 #~ msgid "Collapse all menu entries"
 #~ msgstr "Fermu la arbon"
 
-#, fuzzy
 #~ msgid "Expand all menu entries"
 #~ msgstr "Disvastigu la arbon"
 
@@ -1482,7 +1405,6 @@ msgstr ""
 #~ msgid "Do you want to save before opening the default menu ?"
 #~ msgstr "Ĉu konservu antaŭ malfermi la implican menuon ?"
 
-#, fuzzy
 #~ msgid "Save menu file as"
 #~ msgstr "Malfermu menuan dosieron"
 
@@ -1510,7 +1432,6 @@ msgstr ""
 #~ msgid "You have modified the menu, do you want to save it before quitting ?"
 #~ msgstr "La menuo estis modifita de vi, ĉu konservu ĝin antaŭ adiaŭi ?"
 
-#, fuzzy
 #~ msgid "Forget modifications"
 #~ msgstr "Ignoru la ŝanĝojn"
 
@@ -1529,7 +1450,6 @@ msgstr ""
 #~ msgid "Xfce 4 Desktop Settings"
 #~ msgstr "Xfce 4 Labortablaj Parametroj"
 
-#, fuzzy
 #~ msgid "Use _Xfce to manage the desktop"
 #~ msgstr "Faru ke _Xfce administradas la labortablon"
 
@@ -1567,7 +1487,6 @@ msgstr ""
 #~ msgid "Unable to start xfdesktop"
 #~ msgstr "Malsukcesas lanĉi xfdesktop"
 
-#, fuzzy
 #~ msgid ""
 #~ "To ensure that this setting takes effect the next time you start Xfce, "
 #~ "please be sure to save your session when logging out.  If you are not "
@@ -1603,7 +1522,6 @@ msgstr ""
 #~ msgid "_Do not show this again"
 #~ msgstr "_Ne montru ĉi tiun denove"
 
-#, fuzzy
 #~ msgid "Desktop Preferences"
 #~ msgstr "Labortablaj Parametroj"
 
@@ -1628,63 +1546,48 @@ msgstr ""
 #~ msgid "List file"
 #~ msgstr "Lista dosiero"
 
-#, fuzzy
 #~ msgid "Desktop Icons"
 #~ msgstr "Labortabla Menuo"
 
-#, fuzzy
 #~ msgid "Des_ktop"
 #~ msgstr "Labortablo"
 
-#, fuzzy
 #~ msgid "_Desktop Properties..."
 #~ msgstr "Modifiu fonbildan liston"
 
-#, fuzzy
 #~ msgid "Scientific applications and tools"
 #~ msgstr "Montru la _aplikaĵajn piktogramojn"
 
-#, fuzzy
 #~ msgid "Unable to quit session."
 #~ msgstr "Malsukcesas lanĉi xfdesktop"
 
-#, fuzzy
 #~ msgid "Edit Properties"
 #~ msgstr "Modifiu fonbildan liston"
 
-#, fuzzy
 #~ msgid "Unknown error."
 #~ msgstr "Nekonata Eraro"
 
-#, fuzzy
 #~ msgid "_Copy Files"
 #~ msgstr "_Dosiero"
 
-#, fuzzy
 #~ msgid "_Copy File"
 #~ msgstr "_Dosiero"
 
-#, fuzzy
 #~ msgid "Cu_t Files"
 #~ msgstr "_Dosiero"
 
-#, fuzzy
 #~ msgid "Cu_t File"
 #~ msgstr "_Dosiero"
 
-#, fuzzy
 #~ msgid "_Delete Files"
 #~ msgstr "Elektu Menuan Dosieron"
 
-#, fuzzy
 #~ msgid "_Delete File"
 #~ msgstr "Elektu Menuan Dosieron"
 
-#, fuzzy
 #~ msgid "_Paste Files"
 #~ msgstr "Listaj Dosieroj"
 
-#, fuzzy
 #~ msgid "Are sure you want to quit?"
 #~ msgstr "Ĉu vi vere volas fermi la kurantan menuon?"
 
