@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-01 16:14+0000\n"
+"POT-Creation-Date: 2011-12-30 11:15+0000\n"
 "PO-Revision-Date: 2009-10-14 15:09+0200\n"
 "Last-Translator: Ertuğrul HAZAR <ertugrulhazar@gmail.com>\n"
 "Language-Team: Turkish <turkce@pardus.org.tr>\n"
@@ -73,8 +73,11 @@ msgstr "Arka plan listesi oluştur"
 
 #: ../settings/main.c:528
 #, c-format
-msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr "\"%s\" dosyası geçerli zemin dosyası değil. Üzerine yazmak istediğinize emin misiniz?"
+msgid ""
+"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr ""
+"\"%s\" dosyası geçerli zemin dosyası değil. Üzerine yazmak istediğinize emin "
+"misiniz?"
 
 #: ../settings/main.c:533
 msgid "Invalid List File"
@@ -270,7 +273,8 @@ msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr "Eğimin sağ veya alt rengini belirtin"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
-msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgid ""
+"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
 msgstr "Eğimin üst, sol veya yoğun rengini ayarlayın"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
@@ -336,16 +340,15 @@ msgstr "Pencere Listesi Menüsü"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:5
 msgid "Alt"
-msgstr ""
+msgstr "Alt"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:7
 msgid "B_utton:"
 msgstr "_Düğme"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:9
-#, fuzzy
 msgid "Control"
-msgstr "Katkıcı"
+msgstr "Control"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:738
 msgid "Desktop"
@@ -405,7 +408,7 @@ msgstr "Menüde _simgeleri göster"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:26
 msgid "Shift"
-msgstr ""
+msgstr "Shift"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "Show _application icons in menu"
@@ -428,7 +431,9 @@ msgid "Show workspace _names in list"
 msgstr "Listede çalışma alanı isimlerini _göster"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
-msgid "Specify the transparency level for the rounded label drawn behind the icon text"
+msgid ""
+"Specify the transparency level for the rounded label drawn behind the icon "
+"text"
 msgstr "Simgelerin altındaki metinlerin saydamlık seviyesini belirleyin"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:37
@@ -589,7 +594,8 @@ msgid "Desktop Folder Error"
 msgstr "Masaüstü Dizini Hatası"
 
 #: ../src/xfdesktop-file-icon-manager.c:489
-msgid "A normal file with the same name already exists. Please delete or rename it."
+msgid ""
+"A normal file with the same name already exists. Please delete or rename it."
 msgstr "Aynı isimde bir dosya zaten var. Lütfen silin veya yeniden adlandırın."
 
 #: ../src/xfdesktop-file-icon-manager.c:592
@@ -611,7 +617,9 @@ msgstr "Seçilen dosyalar silinemedi"
 #: ../src/xfdesktop-file-utils.c:1102 ../src/xfdesktop-file-utils.c:1152
 #: ../src/xfdesktop-file-utils.c:1229 ../src/xfdesktop-file-utils.c:1290
 #: ../src/xfdesktop-file-utils.c:1363 ../src/xfdesktop-file-utils.c:1441
-msgid "This feature requires a file manager service to be present (such as the one supplied by Thunar)."
+msgid ""
+"This feature requires a file manager service to be present (such as the one "
+"supplied by Thunar)."
 msgstr "Bu özellik dosya yöneticisi servisi gerektirir (Thunar gibi)"
 
 #. printf is to be translator-friendly
@@ -642,8 +650,12 @@ msgid "Open With \"%s\""
 msgstr "\"%s\" Uygulaması İle Aç"
 
 #: ../src/xfdesktop-file-icon-manager.c:986
-msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
-msgstr "Masaüstü üzerinde çalıştırıcıları düzenlemek/oluştumak için gerekli olan \"exo-desktop-item-edit\" çalıştırılamadı."
+msgid ""
+"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
+"edit launchers and links on the desktop."
+msgstr ""
+"Masaüstü üzerinde çalıştırıcıları düzenlemek/oluştumak için gerekli olan "
+"\"exo-desktop-item-edit\" çalıştırılamadı."
 
 #: ../src/xfdesktop-file-icon-manager.c:1358
 msgid "_Open all"
@@ -773,8 +785,12 @@ msgid "The selected files could not be moved to the trash"
 msgstr "Seçili dosyalar çöpe taşınamadı"
 
 #: ../src/xfdesktop-file-utils.c:897 ../src/xfdesktop-file-utils.c:943
-msgid "This feature requires a trash service to be present (such as the one supplied by Thunar)."
-msgstr "Bu özellik (Thunar'ın sağladığına benzer) bir geri dönüşüm servisine ihtiyaç duyar."
+msgid ""
+"This feature requires a trash service to be present (such as the one "
+"supplied by Thunar)."
+msgstr ""
+"Bu özellik (Thunar'ın sağladığına benzer) bir geri dönüşüm servisine ihtiyaç "
+"duyar."
 
 #: ../src/xfdesktop-file-utils.c:928 ../src/xfdesktop-file-utils.c:942
 msgid "Could not empty the trash"
@@ -835,8 +851,12 @@ msgstr "Aygıt ayrılıyor"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:131
 #, c-format
-msgid "The device \"%s\" is being unmounted by the system. Please do not remove the media or disconnect the drive"
-msgstr "\"%s\" aygıtı sistemden is being unmounted by the system. Please do not remove the media or disconnect the drive"
+msgid ""
+"The device \"%s\" is being unmounted by the system. Please do not remove the "
+"media or disconnect the drive"
+msgstr ""
+"\"%s\" aygıtı sistemden is being unmounted by the system. Please do not "
+"remove the media or disconnect the drive"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
@@ -846,8 +866,12 @@ msgstr "Aygıta veri yazılıyor"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
 #, c-format
-msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
-msgstr "\"%s\" aygıtı çıkartılmadan önce bazı verilerin yazılması gerekiyor. Lütfen ortam aygıtını çıkarmayın veya sürücünün bağlantısını kesmeyin."
+msgid ""
+"There is data that needs to be written to the device \"%s\" before it can be "
+"removed. Please do not remove the media or disconnect the drive"
+msgstr ""
+"\"%s\" aygıtı çıkartılmadan önce bazı verilerin yazılması gerekiyor. Lütfen "
+"ortam aygıtını çıkarmayın veya sürücünün bağlantısını kesmeyin."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:253
@@ -952,8 +976,12 @@ msgstr "Birim _Bağla"
 #~ msgid "Unable to contact the Xfce Trash service."
 #~ msgstr "Xfce Çöp servisi ile bağlantı kurulamıyor"
 
-#~ msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
-#~ msgstr "Xfce Çöp servisini destekleyen bir dosya yöneticisinin (Thunar gibi) kurulu olduğundan emin olun"
+#~ msgid ""
+#~ "Make sure you have a file manager installed that supports the Xfce Trash "
+#~ "service, such as Thunar."
+#~ msgstr ""
+#~ "Xfce Çöp servisini destekleyen bir dosya yöneticisinin (Thunar gibi) "
+#~ "kurulu olduğundan emin olun"
 
 #~ msgid "Needs terminal"
 #~ msgstr "Uçbirim"
@@ -1034,25 +1062,34 @@ msgstr "Birim _Bağla"
 #~ msgstr "Seçenekler:\n"
 
 #~ msgid "    --reload      Reload all settings, refresh image list\n"
-#~ msgstr "    --reload      Tüm ayarları geri yükle, resim listesini güncelle\n"
+#~ msgstr ""
+#~ "    --reload      Tüm ayarları geri yükle, resim listesini güncelle\n"
 
 #~ msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 #~ msgstr "    --menu        Menüyü aç (fare imleci konumunda)\n"
 
-#~ msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
+#~ msgid ""
+#~ "    --windowlist  Pop up the window list (at the current mouse position)\n"
 #~ msgstr "    --windowlist  Pencere listesini aç (fare imleci konumunda)\n"
 
 #~ msgid "    --quit        Cause xfdesktop to quit\n"
 #~ msgstr "    --quit        Xfdesktop'ın kapanmasına neden olur\n"
 
-#~ msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-#~ msgstr "Xfdesktop, masaüstü öğrelerini saklamak için \"%s\" dizinini oluşturamıyor:"
+#~ msgid ""
+#~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+#~ msgstr ""
+#~ "Xfdesktop, masaüstü öğrelerini saklamak için \"%s\" dizinini "
+#~ "oluşturamıyor:"
 
 #~ msgid "Create Folder Failed"
 #~ msgstr "Dizin Oluşturma Başarısız"
 
-#~ msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
-#~ msgstr "Xfdesktop, masaüstü öğrelerini tutmak için \"%s\" dizinini oluşturamıyor; çünkü o bir dizin değil."
+#~ msgid ""
+#~ "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not "
+#~ "a folder."
+#~ msgstr ""
+#~ "Xfdesktop, masaüstü öğrelerini tutmak için \"%s\" dizinini oluşturamıyor; "
+#~ "çünkü o bir dizin değil."
 
 #~ msgid "Please delete or rename the file."
 #~ msgstr "Lütfen dosyayı silin veya yeniden adlandırın."
@@ -1084,7 +1121,9 @@ msgstr "Birim _Bağla"
 #~ msgid "The application chooser could not be opened."
 #~ msgstr "Uygulama seçicisi açılamadı."
 
-#~ msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
+#~ msgid ""
+#~ "This feature requires a file manager service present (such as that "
+#~ "supplied by Thunar)."
 #~ msgstr "Bu özellik dosya yöneticisi servisi gerektirir (Thunar gibi)"
 
 #~ msgid "Unable to create folder named \"%s\":"
@@ -1538,8 +1577,14 @@ msgstr "Birim _Bağla"
 #~ msgid "xfce4-menueditor is deprecated"
 #~ msgstr "xfce4-menueditor artık kullanılmıyor"
 
-#~ msgid "Xfce's menu system has been replaced, and xfce4-menueditor is not able to edit the new menu file format.  You may continue and edit an old-style menu file, or quit."
-#~ msgstr "Xfce'nin menü sistemi yenilendi ve xfce4-menueditor yeni menü biçimini düzenleyemiyor.  Devam edebilir ve eski menü dosyasını düzenleyebilirsiniz; ya da çıkabilirsiniz."
+#~ msgid ""
+#~ "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
+#~ "edit the new menu file format.  You may continue and edit an old-style "
+#~ "menu file, or quit."
+#~ msgstr ""
+#~ "Xfce'nin menü sistemi yenilendi ve xfce4-menueditor yeni menü biçimini "
+#~ "düzenleyemiyor.  Devam edebilir ve eski menü dosyasını "
+#~ "düzenleyebilirsiniz; ya da çıkabilirsiniz."
 
 #~ msgid "Continue"
 #~ msgstr "Devam"
@@ -1698,7 +1743,9 @@ msgstr "Birim _Bağla"
 #~ msgstr "Yazar/Sürüm Yöneticisi"
 
 #~ msgid "You have modified the menu, do you want to save it before quitting ?"
-#~ msgstr "Menüyü değiştirdiniz, çıkmadan önce değişiklikleri kaydetmek ister misiniz?"
+#~ msgstr ""
+#~ "Menüyü değiştirdiniz, çıkmadan önce değişiklikleri kaydetmek ister "
+#~ "misiniz?"
 
 #~ msgid "Forget modifications"
 #~ msgstr "Değişiklikleri göz ardı et"
