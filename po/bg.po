@@ -1,25 +1,29 @@
-# Bulgarian translation of xfdesktop.
-# Copyright (C) 2003-2006 The Xfce development team.
-# This file is distributed under the same license as the xfdesktop package.
-# Miroslav Yordanov <miordanov@i-space.org>, 2004.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop 4.4.0\n"
+"Project-Id-Version: xfdesktop.xfce.4.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-30 19:22+0100\n"
-"PO-Revision-Date: 2010-03-24 23:02+0200\n"
-"Last-Translator: Krasimir Chonov <mk2616@abv.bg>\n"
-"Language-Team: Bulgarian <dict@fsa-bg.org>\n"
-"Language: bg\n"
+"POT-Creation-Date: 2012-01-01 06:03+0000\n"
+"PO-Revision-Date: 2012-01-01 13:14+0200\n"
+"Last-Translator: Milen Milev <fanfolet@gmail.com>\n"
+"Language-Team: BULGARIAN\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: BULGARIAN\n"
+"X-Poedit-Country: BULGARIA\n"
+"X-Poedit-SourceCharset: utf-8\n"
 
-#: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
-#, fuzzy, c-format
+#: ../common/xfdesktop-common.c:96
+#: ../common/xfdesktop-common.c:200
+#, c-format
 msgid "Backdrop list file is not valid"
-msgstr "Избира име на файл с фонове"
+msgstr "Файлът с backdrop списъка не е валиден"
 
 #. no need to escape markup; it's already done for us
 #: ../settings/main.c:163
@@ -31,7 +35,8 @@ msgstr ""
 "%s\n"
 "<i>Размер: %dx%d</i>"
 
-#: ../settings/main.c:289 ../src/xfdesktop-special-file-icon.c:256
+#: ../settings/main.c:289
+#: ../src/xfdesktop-special-file-icon.c:256
 #: ../src/xfdesktop-special-file-icon.c:419
 msgid "Home"
 msgstr "Домашна папка"
@@ -42,59 +47,55 @@ msgstr "Файлова система"
 
 #: ../settings/main.c:293
 msgid "Trash"
-msgstr "Кошче"
+msgstr "Боклук"
 
 #: ../settings/main.c:295
 msgid "Removable Devices"
-msgstr "Преносими устройства"
+msgstr "Преносими устойства"
 
 #: ../settings/main.c:475
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot create backdrop list \"%s\""
-msgstr "Създава списък с фонове"
+msgstr "Не може да се създаде backdrop списък \"%s\""
 
-#: ../settings/main.c:479 ../settings/main.c:802
-#, fuzzy
+#: ../settings/main.c:479
+#: ../settings/main.c:802
 msgid "Backdrop List Error"
-msgstr "Списък с фонове"
+msgstr "Грешка в backdrop списъка"
 
 #: ../settings/main.c:504
-#, fuzzy
 msgid "Create/Load Backdrop List"
-msgstr "Създава списък с фонове"
+msgstr "Създай/Зареди backdrop списък"
 
 #: ../settings/main.c:528
 #, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
-"Файлът „%s“ не е валиден файл с backdrop списък. Искате ли да се презапише?"
+msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr "Файла \"%s\" не е валиден файл за backdrop списък. Искате ли да го презапишете?"
 
 #: ../settings/main.c:533
-#, fuzzy
 msgid "Invalid List File"
-msgstr "Списък"
+msgstr "Невалиден списък"
 
 #: ../settings/main.c:536
 msgid "Overwriting the file will cause its contents to be lost."
-msgstr "Презаписването на файла ще изтрие предишното му съдържание."
+msgstr "Презаписването на файла ще унищожи съдържанието му."
 
 #: ../settings/main.c:538
 msgid "Replace"
-msgstr "Заменяне"
+msgstr "Замени"
 
 #: ../settings/main.c:798
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to write backdrop list to \"%s\""
-msgstr "Редактира списъка с фонове"
+msgstr "Не може да се запише backdrop списъка в \"%s\""
 
 #: ../settings/main.c:825
 msgid "Add Image File(s)"
-msgstr "Добавяне на картина(и)"
+msgstr "Добави изображени(я)"
 
 #: ../settings/main.c:834
 msgid "Image files"
-msgstr "Файлове с картинки"
+msgstr "Изображения"
 
 #: ../settings/main.c:839
 msgid "All files"
@@ -127,20 +128,20 @@ msgstr "Монитор %d"
 
 #: ../settings/main.c:1500
 msgid "Settings manager socket"
-msgstr ""
+msgstr "Гнездо на управление на настройките"
 
 #: ../settings/main.c:1500
 msgid "SOCKET ID"
-msgstr ""
+msgstr "SOCKET ID"
 
 #: ../settings/main.c:1501
 msgid "Version information"
-msgstr "Информация за версията"
+msgstr "Инфо за версията"
 
 #: ../settings/main.c:1521
 #, c-format
 msgid "Type '%s --help' for usage."
-msgstr "Напишете '%s --help' за начин на употреба."
+msgstr "Въведи  '%s --help'  за начин на употреба."
 
 #: ../settings/main.c:1533
 msgid "The Xfce development team. All rights reserved."
@@ -149,7 +150,7 @@ msgstr "Екипът за разработка на Xfce. Всички прав�
 #: ../settings/main.c:1534
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr "Докладвайте за грешки на <%s>."
+msgstr "Докладвай грешки на <%s>."
 
 #: ../settings/main.c:1541
 msgid "Desktop Settings"
@@ -157,7 +158,7 @@ msgstr "Настройки на плота"
 
 #: ../settings/main.c:1543
 msgid "Unable to contact settings server"
-msgstr "Не може да се свърже със сървъра за настройки"
+msgstr "Не може да се свърже с сървъра за настройките"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop "
@@ -165,594 +166,580 @@ msgstr "Плот"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Set desktop background and menu and icon behaviour"
-msgstr "Задаване на фон, менюта и поведение на иконите"
+msgstr "Задай тапет на десктопа и поведението на менюто и иконите"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
 msgid "<b>Adjustments</b>"
-msgstr ""
+msgstr "<b>Наместване</b>"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
-#, fuzzy
 msgid "<b>Colors</b>"
-msgstr "Работно място %d"
+msgstr "<b>Цветове</b>"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
-#, fuzzy
 msgid "<b>Image</b>"
-msgstr "Работно място %d"
+msgstr "<b>Изображение</b>"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
-#, fuzzy
 msgid "<b>Images</b>"
-msgstr "Работно място %d"
+msgstr "<b>Изображения</b>"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
 msgid "Add an image to the list"
-msgstr ""
+msgstr "Добави изображение към списъка"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
 #: ../settings/xfdesktop-settings-ui.glade.h:6
-#, fuzzy
 msgid "Auto"
-msgstr "Автоматичен"
+msgstr "Авто"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
 msgid "Automatically pick a random image from a list file"
-msgstr ""
+msgstr "Автоматично избирай случайно изображение от списък"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
 msgid "B_rightness:"
-msgstr ""
+msgstr "Яркост:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
 #: ../settings/xfdesktop-settings-ui.glade.h:8
-#, fuzzy
 msgid "Centered"
-msgstr "Центриран"
+msgstr "Центрирано"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
 msgid "Create a new list, or load an existing one"
-msgstr ""
+msgstr "Създай нов списък, или зареди съществуващ"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
 msgid "Don't display an image at all"
-msgstr ""
+msgstr "Не показвай изображението изобщо"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
 #: ../settings/xfdesktop-settings-ui.glade.h:12
 msgid "Horizontal gradient"
-msgstr ""
+msgstr "Хоризонтално преливане"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
-#, fuzzy
 msgid "Image _list"
-msgstr "Файлове с картинки"
+msgstr "Списък с изображения"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
 msgid "Increase or decrease the brightness of the final image"
-msgstr ""
+msgstr "Увеличи или намали яркостта на последното изображение"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
 msgid "Increase or decrease the color saturation of the final image"
-msgstr ""
+msgstr "Увеличи или намали цветността на последното изображение"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
 msgid "Remove the selected image(s) from the list"
-msgstr ""
+msgstr "Премахни избраното изображение от списъка"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Sa_turation:"
-msgstr ""
+msgstr "Наситеност:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 #: ../settings/xfdesktop-settings-ui.glade.h:23
-#, fuzzy
 msgid "Scaled"
-msgstr "Пропорционален"
+msgstr "Мащабирано"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
-#, fuzzy
 msgid "Select First Color"
-msgstr "Цвят"
+msgstr "Избери първия цвят"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
-#, fuzzy
 msgid "Select Second Color"
-msgstr "Цвят на фона:"
+msgstr "Избери втория цвят"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
 msgid "Select a single image as the backdrop"
-msgstr ""
+msgstr "Задай едно изображение за backdrop"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
 #: ../settings/xfdesktop-settings-ui.glade.h:32
 msgid "Solid color"
-msgstr ""
+msgstr "Плътен цвят"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-msgstr ""
+msgstr "Определя \"right\" или \"bottom\" цвят на преливането"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
-msgid ""
-"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
 msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid "Specify how the image will be resized to fit the screen"
-msgstr ""
+msgstr "Определя как изображението ще бъде оразмерено на екрана"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "Specify the style of the color drawn behind the backdrop image"
-msgstr ""
+msgstr "Задай стилът на цвета, който ще се използва зад backdrop изображението"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
-#, fuzzy
 msgid "St_yle:"
 msgstr "Стил:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
 #: ../settings/xfdesktop-settings-ui.glade.h:34
 msgid "Stretched"
-msgstr ""
+msgstr "Разпънато:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
 #: ../settings/xfdesktop-settings-ui.glade.h:35
-#, fuzzy
 msgid "Tiled"
-msgstr "Керемиден"
+msgstr "На плочки"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
 #: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid "Transparent"
-msgstr ""
+msgstr "Прозрачно"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
 #: ../settings/xfdesktop-settings-ui.glade.h:39
 msgid "Vertical gradient"
-msgstr ""
+msgstr "Вертикално преливане"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
 #: ../settings/xfdesktop-settings-ui.glade.h:40
 msgid "Zoomed"
-msgstr ""
+msgstr "Увеличено"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
-#, fuzzy
 msgid "_None"
-msgstr "Нищо"
+msgstr "Без"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
 msgid "_Single image"
-msgstr ""
+msgstr "Само едно изображение"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:1
-#, fuzzy
 msgid "<b>Appearance</b>"
-msgstr "Работно място %d"
+msgstr "<b>Изглед</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:2
-#, fuzzy
 msgid "<b>Default Icons</b>"
-msgstr "Работно място %d"
+msgstr "<b>Икони по подразбиране</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:3
 msgid "<b>Desktop Menu</b>"
-msgstr ""
+msgstr "<b>Десктоп меню</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:4
-#, fuzzy
 msgid "<b>Window List Menu</b>"
-msgstr "Списък с прозорци"
+msgstr "<b>Меню със списък на прозорците</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:5
 msgid "Alt"
-msgstr ""
+msgstr "Alt"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:7
-#, fuzzy
 msgid "B_utton:"
-msgstr "Автоматичен"
+msgstr "Бутон:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:9
 msgid "Control"
-msgstr ""
+msgstr "Control"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:737
+#: ../settings/xfdesktop-settings-ui.glade.h:10
+#: ../src/xfce-desktop.c:738
 msgid "Desktop"
-msgstr "Работно Място"
+msgstr "Плот"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:11
 msgid "File/launcher icons"
-msgstr ""
+msgstr "Икони за файла/стартера"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:13
 msgid "Icon _size:"
-msgstr ""
+msgstr "Размер на иконата:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:14
 msgid "Icon _type:"
-msgstr ""
+msgstr "Тип на иконата:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:15
 msgid "Label trans_parency:"
-msgstr ""
+msgstr "Прозрачност на етикета:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:16
 msgid "Left"
-msgstr ""
+msgstr "Ляво"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:17
 msgid "Middle"
-msgstr ""
+msgstr "В средата"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:18
 msgid "Minimized application icons"
-msgstr ""
+msgstr "Икони за минимизираните програми"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:19
-#, fuzzy
 msgid "Mo_difier:"
-msgstr "Променен на:"
+msgstr "Модификатор:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:20
-#, fuzzy
 msgid "Modi_fier:"
-msgstr "Променен на:"
+msgstr "Модификатор:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:21
 msgid "None"
-msgstr "Нищо"
+msgstr "Без"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:22
 msgid "Right"
-msgstr ""
+msgstr "Дясно"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:24
-#, fuzzy
 msgid "Set desktop background and menu and icon behavior"
-msgstr "Задаване на фон, менюта и поведение на иконите"
+msgstr "Задай тапет на десктопа и поведението на менюто и иконите"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:25
 msgid "Sh_ow application icons in menu"
-msgstr ""
+msgstr "Покажи иконите на програмите в менюто"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:26
 msgid "Shift"
-msgstr ""
+msgstr "Shift"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "Show _application icons in menu"
-msgstr ""
+msgstr "Покажи иконите на програмите в менюто"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:28
 msgid "Show _window list menu on desktop middle click"
-msgstr ""
+msgstr "Покажи меню на списъка с прозорците при клик на средния бутон на мишката върху плота"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:29
 msgid "Show applications menu on _desktop right click"
-msgstr ""
+msgstr "Покажи менюто на програмите при клик на десния бутон на мишката върху плота"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:30
 msgid "Show s_ticky windows only in active workspace"
-msgstr ""
+msgstr "Покажи залепените прозорци само на активното работно място"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:31
 msgid "Show workspace _names in list"
-msgstr ""
+msgstr "Покажи имената на работните места в списък"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
-msgid ""
-"Specify the transparency level for the rounded label drawn behind the icon "
-"text"
-msgstr ""
+msgid "Specify the transparency level for the rounded label drawn behind the icon text"
+msgstr "Задай нивото на прозрачност за прозореца под текста на етикета на иконите "
 
 #: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "Use _submenus for the windows in each workspace"
-msgstr ""
+msgstr "Използвай подменюта за прозорците във вяко работно място"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:38
 msgid "Use custom _font size:"
-msgstr ""
+msgstr "Използвай собствен размер на шрифта:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:41
 msgid "_Background"
-msgstr ""
+msgstr "Фон:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:42
-#, fuzzy
 msgid "_Button:"
-msgstr "Автоматичен"
+msgstr "Бутон:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:43
 msgid "_Edit desktop menu"
-msgstr ""
+msgstr "Редактирай менюто на десктопа"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:44
 msgid "_Icons"
-msgstr ""
+msgstr "Икони"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:45
-#, fuzzy
 msgid "_Menus"
-msgstr "Файлове с картинки"
+msgstr "Менюта"
 
 #: ../src/main.c:238
 msgid "Display version information"
-msgstr "Информация за версията"
+msgstr "Покажи инфо за версията"
 
 #: ../src/main.c:239
 msgid "Reload all settings, refresh image list"
-msgstr "Презареждане на всички настройки, обновяване на списъка с картини"
+msgstr "Презареди всички настройки, обнови списъка с изображения"
 
 #: ../src/main.c:240
 msgid "Pop up the menu (at the current mouse position)"
-msgstr ""
+msgstr "Покажи менюто (в позицията на показалеца на мишката)"
 
 #: ../src/main.c:241
 msgid "Pop up the window list (at the current mouse position)"
-msgstr ""
+msgstr "Покажи списъка с прозорците (в позицията на показалеца на мишката)"
 
 #: ../src/main.c:242
 msgid "Cause xfdesktop to quit"
-msgstr ""
+msgstr "Причина за излизане от xfdesktop "
 
 #: ../src/main.c:262
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to parse arguments: %s\n"
-msgstr "Неуспешен опит за изпълнение на „%s“:"
+msgstr "Не може да се парснат аргументите: %s\n"
 
 #: ../src/main.c:270
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr "Това е %s, версия %s, работеща с Xfce %s.\n"
+msgstr "Това е %s версия на %s, работеща на Xfce %s.\n"
 
 #: ../src/main.c:272
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr "Изграден с GTK+ %d.%d.%d, свързан с GTK+ %d.%d.%d."
+msgstr ""
 
 #: ../src/main.c:276
 #, c-format
 msgid "Build options:\n"
-msgstr "Опции за изграждане:\n"
+msgstr ""
 
 #: ../src/main.c:277
 #, c-format
 msgid "    Desktop Menu:        %s\n"
-msgstr "    Меню на плота:        %s\n"
+msgstr "    Десктоп меню:        %s\n"
 
-#: ../src/main.c:279 ../src/main.c:286 ../src/main.c:293
+#: ../src/main.c:279
+#: ../src/main.c:286
+#: ../src/main.c:293
 msgid "enabled"
-msgstr "включено"
+msgstr "разрешено"
 
-#: ../src/main.c:281 ../src/main.c:288 ../src/main.c:295
+#: ../src/main.c:281
+#: ../src/main.c:288
+#: ../src/main.c:295
 msgid "disabled"
-msgstr "изключено"
+msgstr "забранено"
 
 #: ../src/main.c:284
 #, c-format
 msgid "    Desktop Icons:       %s\n"
-msgstr "    Икони на плота:       %s\n"
+msgstr "    Десктоп икони:       %s\n"
 
 #: ../src/main.c:291
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr "    Файлове на плота:  %s\n"
+msgstr "    Десктоп икони за файлове:  %s\n"
 
 #: ../src/main.c:322
 #, c-format
 msgid "%s is not running.\n"
-msgstr "%s не се изпълнява.\n"
+msgstr "%s не е стартиран(а).\n"
 
 #: ../src/menu.c:106
 msgid "_Applications"
-msgstr "_Програми"
+msgstr "Програми"
 
-#: ../src/windowlist.c:235
+#: ../src/windowlist.c:229
 msgid "Window List"
 msgstr "Списък с прозорци"
 
-#: ../src/windowlist.c:261
+#: ../src/windowlist.c:255
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>Работно място %d</b>"
 
-#: ../src/windowlist.c:270
+#: ../src/windowlist.c:264
 #, c-format
 msgid "Workspace %d"
 msgstr "Работно място %d"
 
-#: ../src/windowlist.c:272
+#: ../src/windowlist.c:266
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Работно място %d</i>"
 
-#: ../src/windowlist.c:368 ../src/windowlist.c:371
+#: ../src/windowlist.c:362
+#: ../src/windowlist.c:365
 msgid "_Add Workspace"
-msgstr "_Добавяне на работно място"
+msgstr "Добави Работно място"
 
-#: ../src/windowlist.c:379
+#: ../src/windowlist.c:373
 #, c-format
 msgid "_Remove Workspace %d"
-msgstr "_Премахване на работно място %d"
+msgstr "Премахни Работно място %d"
 
-#: ../src/windowlist.c:382
+#: ../src/windowlist.c:376
 #, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "_Премахване на работно място „%s“"
+msgstr "Премахни Работно място '%s'"
 
-#: ../src/xfce-desktop.c:1018
-#, fuzzy, c-format
+#: ../src/xfce-desktop.c:1022
+#, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
-msgstr "Избор на изображение или списък"
+msgstr ""
 
-#: ../src/xfce-desktop.c:1020
+#: ../src/xfce-desktop.c:1024
 msgid "Desktop Error"
-msgstr "Грешка в плота"
+msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:465
 #: ../src/xfdesktop-file-icon-manager.c:482
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create the desktop folder \"%s\""
-msgstr "Създава списък с фонове"
+msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:470
 #: ../src/xfdesktop-file-icon-manager.c:487
-#, fuzzy
 msgid "Desktop Folder Error"
-msgstr "Грешка в плота"
+msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:489
-msgid ""
-"A normal file with the same name already exists. Please delete or rename it."
+msgid "A normal file with the same name already exists. Please delete or rename it."
 msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:592
-#: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:879
-#: ../src/xfdesktop-file-utils.c:894 ../src/xfdesktop-file-utils.c:926
-#: ../src/xfdesktop-file-utils.c:940
+#: ../src/xfdesktop-file-icon-manager.c:636
+#: ../src/xfdesktop-file-utils.c:880
+#: ../src/xfdesktop-file-utils.c:895
+#: ../src/xfdesktop-file-utils.c:927
+#: ../src/xfdesktop-file-utils.c:941
 msgid "Trash Error"
-msgstr "Грешка в кошчето"
+msgstr "Грешка в Боклука"
 
 #: ../src/xfdesktop-file-icon-manager.c:593
 #: ../src/xfdesktop-file-icon-manager.c:637
-#, fuzzy
 msgid "The selected files could not be trashed"
-msgstr "Програмата за избор не може да се стартира."
+msgstr "Избраните файлове не могат да се изхвърлят на Боклука"
 
 #: ../src/xfdesktop-file-icon-manager.c:594
-#: ../src/xfdesktop-file-icon-manager.c:638 ../src/xfdesktop-file-utils.c:728
-#: ../src/xfdesktop-file-utils.c:778 ../src/xfdesktop-file-utils.c:837
-#: ../src/xfdesktop-file-utils.c:995 ../src/xfdesktop-file-utils.c:1051
-#: ../src/xfdesktop-file-utils.c:1101 ../src/xfdesktop-file-utils.c:1151
-#: ../src/xfdesktop-file-utils.c:1228 ../src/xfdesktop-file-utils.c:1289
-#: ../src/xfdesktop-file-utils.c:1362 ../src/xfdesktop-file-utils.c:1440
-msgid ""
-"This feature requires a file manager service to be present (such as the one "
-"supplied by Thunar)."
+#: ../src/xfdesktop-file-icon-manager.c:638
+#: ../src/xfdesktop-file-utils.c:729
+#: ../src/xfdesktop-file-utils.c:779
+#: ../src/xfdesktop-file-utils.c:838
+#: ../src/xfdesktop-file-utils.c:996
+#: ../src/xfdesktop-file-utils.c:1052
+#: ../src/xfdesktop-file-utils.c:1102
+#: ../src/xfdesktop-file-utils.c:1152
+#: ../src/xfdesktop-file-utils.c:1229
+#: ../src/xfdesktop-file-utils.c:1290
+#: ../src/xfdesktop-file-utils.c:1363
+#: ../src/xfdesktop-file-utils.c:1441
+msgid "This feature requires a file manager service to be present (such as the one supplied by Thunar)."
 msgstr ""
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:738
-#: ../src/xfdesktop-file-icon-manager.c:1296
+#: ../src/xfdesktop-file-icon-manager.c:1300
 #, c-format
 msgid "Unable to launch \"%s\":"
-msgstr "Не може да се изпълни „%s“:"
+msgstr "Не може да се стартира \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:740
 #: ../src/xfdesktop-file-icon-manager.c:984
-#: ../src/xfdesktop-file-icon-manager.c:1297 ../src/xfdesktop-file-utils.c:711
-#: ../src/xfdesktop-file-utils.c:726 ../src/xfdesktop-file-utils.c:1134
-#: ../src/xfdesktop-file-utils.c:1149 ../src/xfdesktop-file-utils.c:1201
-#: ../src/xfdesktop-file-utils.c:1226 ../src/xfdesktop-file-utils.c:1272
-#: ../src/xfdesktop-file-utils.c:1287
+#: ../src/xfdesktop-file-icon-manager.c:1301
+#: ../src/xfdesktop-file-utils.c:712
+#: ../src/xfdesktop-file-utils.c:727
+#: ../src/xfdesktop-file-utils.c:1135
+#: ../src/xfdesktop-file-utils.c:1150
+#: ../src/xfdesktop-file-utils.c:1202
+#: ../src/xfdesktop-file-utils.c:1227
+#: ../src/xfdesktop-file-utils.c:1273
+#: ../src/xfdesktop-file-utils.c:1288
 msgid "Launch Error"
 msgstr "Грешка при стартиране"
 
 #: ../src/xfdesktop-file-icon-manager.c:908
 #, c-format
 msgid "_Open With \"%s\""
-msgstr "_Отваряне с „%s“"
+msgstr "Отвори с \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:911
 #, c-format
 msgid "Open With \"%s\""
-msgstr "Отваряне с „%s“"
+msgstr "Отвори с \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:986
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1354
+#: ../src/xfdesktop-file-icon-manager.c:1358
 msgid "_Open all"
-msgstr "_Отваряне на всички"
+msgstr "Отвори всички"
 
-#: ../src/xfdesktop-file-icon-manager.c:1370
+#: ../src/xfdesktop-file-icon-manager.c:1374
 msgid "_Open in New Window"
-msgstr "_Отваряне в нов прозорец"
+msgstr "Отвори в нов прозорец"
 
-#: ../src/xfdesktop-file-icon-manager.c:1372
-#: ../src/xfdesktop-special-file-icon.c:489 ../src/xfdesktop-volume-icon.c:663
+#: ../src/xfdesktop-file-icon-manager.c:1376
+#: ../src/xfdesktop-special-file-icon.c:489
+#: ../src/xfdesktop-volume-icon.c:663
 msgid "_Open"
-msgstr "_Отваряне"
+msgstr "Отвори"
 
 #. create launcher item
-#: ../src/xfdesktop-file-icon-manager.c:1391
+#: ../src/xfdesktop-file-icon-manager.c:1395
 msgid "Create _Launcher..."
-msgstr "Създаване на _стартер..."
+msgstr "Създай стартер..."
 
 #. create link item
-#: ../src/xfdesktop-file-icon-manager.c:1407
+#: ../src/xfdesktop-file-icon-manager.c:1411
 msgid "Create _URL Link..."
-msgstr "Създаване на _интернет връзка..."
+msgstr "Създай URL връзка..."
 
 #. create folder item
-#: ../src/xfdesktop-file-icon-manager.c:1423
+#: ../src/xfdesktop-file-icon-manager.c:1427
 msgid "Create _Folder..."
-msgstr "Създаване на _папка..."
+msgstr "Създай папка..."
 
 #. create from template submenu
-#: ../src/xfdesktop-file-icon-manager.c:1438
+#: ../src/xfdesktop-file-icon-manager.c:1442
 msgid "Create From _Template"
-msgstr "Създаване от _шаблон"
+msgstr "Създай от шаблон"
 
-#: ../src/xfdesktop-file-icon-manager.c:1464
+#: ../src/xfdesktop-file-icon-manager.c:1468
 msgid "_Empty File"
-msgstr "_Празен файл"
+msgstr "Празен файл"
 
-#: ../src/xfdesktop-file-icon-manager.c:1480
+#: ../src/xfdesktop-file-icon-manager.c:1484
 msgid "_Execute"
-msgstr "_Изпълнение"
+msgstr "Изпълни"
 
-#: ../src/xfdesktop-file-icon-manager.c:1500
+#: ../src/xfdesktop-file-icon-manager.c:1504
 msgid "_Edit Launcher"
-msgstr "_Редактиране на стартер"
+msgstr "Редактирай стартер"
 
-#: ../src/xfdesktop-file-icon-manager.c:1535
+#: ../src/xfdesktop-file-icon-manager.c:1539
 msgid "Open With"
-msgstr "Отваряне с"
+msgstr "Отвори с"
 
-#: ../src/xfdesktop-file-icon-manager.c:1561
+#: ../src/xfdesktop-file-icon-manager.c:1565
 msgid "Open With Other _Application..."
-msgstr "Отваряне с друга _програма..."
+msgstr "Отвори с друга програма"
 
-#: ../src/xfdesktop-file-icon-manager.c:1649
+#: ../src/xfdesktop-file-icon-manager.c:1653
 msgid "_Rename..."
-msgstr "_Преименуване..."
+msgstr "Преименувай..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1667
+#: ../src/xfdesktop-file-icon-manager.c:1671
 msgid "Desktop _Settings..."
-msgstr "Настройки на _плота..."
+msgstr "Настройки на плота..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1677
+#: ../src/xfdesktop-file-icon-manager.c:1681
 #: ../src/xfdesktop-volume-icon.c:711
 msgid "_Properties..."
-msgstr "_Свойства..."
+msgstr "Свойства..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2234
-#, fuzzy
+#: ../src/xfdesktop-file-icon-manager.c:2238
 msgid "Load Error"
-msgstr "Грешка при стартиране"
+msgstr "Грешка при зареждане"
 
-#: ../src/xfdesktop-file-icon-manager.c:2236
-#, fuzzy
+#: ../src/xfdesktop-file-icon-manager.c:2240
 msgid "Failed to load the desktop folder"
-msgstr "Създава списък с фонове"
+msgstr ""
 
 #. TRANSLATORS: file was modified less than one day ago
 #: ../src/xfdesktop-file-utils.c:137
 #, c-format
 msgid "Today at %X"
-msgstr ""
+msgstr "Днес в %X"
 
 #. TRANSLATORS: file was modified less than two days ago
 #: ../src/xfdesktop-file-utils.c:141
 #, c-format
 msgid "Yesterday at %X"
-msgstr ""
+msgstr "Вчера в %X"
 
 #. Days from last week
 #: ../src/xfdesktop-file-utils.c:146
@@ -768,140 +755,137 @@ msgstr ""
 
 #. the file_time is invalid
 #: ../src/xfdesktop-file-utils.c:159
-#, fuzzy
 msgid "Unknown"
-msgstr "(неизвестен)"
-
-#: ../src/xfdesktop-file-utils.c:712 ../src/xfdesktop-file-utils.c:727
-#, fuzzy
-msgid "The folder could not be opened"
-msgstr "Програмата за избор не може да се стартира."
-
-#: ../src/xfdesktop-file-utils.c:761 ../src/xfdesktop-file-utils.c:776
-#, fuzzy
-msgid "Rename Error"
-msgstr "Грешка при изпълнение"
-
-#: ../src/xfdesktop-file-utils.c:762 ../src/xfdesktop-file-utils.c:777
-#, fuzzy
-msgid "The file could not be renamed"
-msgstr "Програмата за избор не може да се стартира."
-
-#: ../src/xfdesktop-file-utils.c:820 ../src/xfdesktop-file-utils.c:835
-#, fuzzy
-msgid "Delete Error"
-msgstr "Грешка при създаване"
-
-#: ../src/xfdesktop-file-utils.c:821 ../src/xfdesktop-file-utils.c:836
-#, fuzzy
-msgid "The selected files could not be deleted"
-msgstr "Избраната програма не може да бъде намерета или изпълнена."
-
-#: ../src/xfdesktop-file-utils.c:880 ../src/xfdesktop-file-utils.c:895
-#, fuzzy
-msgid "The selected files could not be moved to the trash"
-msgstr "Програмата за избор не може да се стартира."
-
-#: ../src/xfdesktop-file-utils.c:896 ../src/xfdesktop-file-utils.c:942
-msgid ""
-"This feature requires a trash service to be present (such as the one "
-"supplied by Thunar)."
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:927 ../src/xfdesktop-file-utils.c:941
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:713
+#: ../src/xfdesktop-file-utils.c:728
+msgid "The folder could not be opened"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:762
+#: ../src/xfdesktop-file-utils.c:777
+msgid "Rename Error"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:763
+#: ../src/xfdesktop-file-utils.c:778
+msgid "The file could not be renamed"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:821
+#: ../src/xfdesktop-file-utils.c:836
+msgid "Delete Error"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:822
+#: ../src/xfdesktop-file-utils.c:837
+msgid "The selected files could not be deleted"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:881
+#: ../src/xfdesktop-file-utils.c:896
+msgid "The selected files could not be moved to the trash"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:897
+#: ../src/xfdesktop-file-utils.c:943
+msgid "This feature requires a trash service to be present (such as the one supplied by Thunar)."
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:928
+#: ../src/xfdesktop-file-utils.c:942
 msgid "Could not empty the trash"
-msgstr "Създава списък с фонове"
+msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:978 ../src/xfdesktop-file-utils.c:993
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:979
+#: ../src/xfdesktop-file-utils.c:994
 msgid "Create File Error"
-msgstr "Грешка при създаване"
+msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:994
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:980
+#: ../src/xfdesktop-file-utils.c:995
 msgid "Could not create a new file"
-msgstr "Създава списък с фонове"
+msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:1034 ../src/xfdesktop-file-utils.c:1049
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:1035
+#: ../src/xfdesktop-file-utils.c:1050
 msgid "Create Document Error"
-msgstr "Грешка при създаване"
+msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:1035 ../src/xfdesktop-file-utils.c:1050
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:1036
+#: ../src/xfdesktop-file-utils.c:1051
 msgid "Could not create a new document from the template"
-msgstr "Създаване на документ от шаблона „%s“"
+msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:1084 ../src/xfdesktop-file-utils.c:1099
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:1085
+#: ../src/xfdesktop-file-utils.c:1100
 msgid "File Properties Error"
-msgstr "Грешка в свойствата"
+msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:1085 ../src/xfdesktop-file-utils.c:1100
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:1086
+#: ../src/xfdesktop-file-utils.c:1101
 msgid "The file properties dialog could not be opened"
-msgstr "Програмата за избор не може да се стартира."
+msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:1135 ../src/xfdesktop-file-utils.c:1150
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:1136
+#: ../src/xfdesktop-file-utils.c:1151
 msgid "The file could not be opened"
-msgstr "Програмата за избор не може да се стартира."
+msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:1198 ../src/xfdesktop-file-utils.c:1223
-#, fuzzy, c-format
+#: ../src/xfdesktop-file-utils.c:1199
+#: ../src/xfdesktop-file-utils.c:1224
+#, c-format
 msgid "Failed to run \"%s\""
-msgstr "Неуспешен опит за изпълнение на „%s“:"
+msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:1273 ../src/xfdesktop-file-utils.c:1288
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:1274
+#: ../src/xfdesktop-file-utils.c:1289
 msgid "The application chooser could not be opened"
-msgstr "Програмата за избор не може да се стартира."
+msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:1346 ../src/xfdesktop-file-utils.c:1360
-#: ../src/xfdesktop-file-utils.c:1422 ../src/xfdesktop-file-utils.c:1438
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:1347
+#: ../src/xfdesktop-file-utils.c:1361
+#: ../src/xfdesktop-file-utils.c:1423
+#: ../src/xfdesktop-file-utils.c:1439
 msgid "Transfer Error"
-msgstr "Грешка в кошчето"
+msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:1347 ../src/xfdesktop-file-utils.c:1361
-#: ../src/xfdesktop-file-utils.c:1423 ../src/xfdesktop-file-utils.c:1439
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:1348
+#: ../src/xfdesktop-file-utils.c:1362
+#: ../src/xfdesktop-file-utils.c:1424
+#: ../src/xfdesktop-file-utils.c:1440
 msgid "The file transfer could not be performed"
-msgstr "Програмата за избор не може да се стартира."
+msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:128
-#, fuzzy
 msgid "Unmounting device"
-msgstr "Демонтирането е неуспешно"
+msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:131
 #, c-format
-msgid ""
-"The device \"%s\" is being unmounted by the system. Please do not remove the "
-"media or disconnect the drive"
+msgid "The device \"%s\" is being unmounted by the system. Please do not remove the media or disconnect the drive"
 msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
+#: ../src/xfdesktop-notify.c:138
+#: ../src/xfdesktop-notify.c:262
 msgid "Writing data to device"
 msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
+#: ../src/xfdesktop-notify.c:141
+#: ../src/xfdesktop-notify.c:265
 #, c-format
-msgid ""
-"There is data that needs to be written to the device \"%s\" before it can be "
-"removed. Please do not remove the media or disconnect the drive"
+msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
 msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:253
-#, fuzzy
 msgid "Ejecting device"
-msgstr "Демонтирането е неуспешно"
+msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:256
@@ -919,9 +903,8 @@ msgstr ""
 
 #: ../src/xfdesktop-special-file-icon.c:258
 #: ../src/xfdesktop-special-file-icon.c:417
-#, fuzzy
 msgid "File System"
-msgstr "Файлова система"
+msgstr ""
 
 #: ../src/xfdesktop-special-file-icon.c:402
 msgid "Trash is empty"
@@ -946,485 +929,48 @@ msgstr ""
 
 #: ../src/xfdesktop-special-file-icon.c:507
 msgid "_Empty Trash"
-msgstr "_Изпразване на кошчето"
+msgstr ""
 
 #: ../src/xfdesktop-volume-icon.c:423
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Removable Volume\n"
 "Mounted in \"%s\"\n"
 "%s left (%s total)"
 msgstr ""
-"Вид: Преносима памет\n"
-"Място на монтиране: %s\n"
-"Свободна памет: %s"
 
 #: ../src/xfdesktop-volume-icon.c:430
-#, fuzzy
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
 msgstr ""
-"Вид: Преносима памет\n"
-"Място на монтиране: %s\n"
-"Свободна памет: %s"
 
-#: ../src/xfdesktop-volume-icon.c:456 ../src/xfdesktop-volume-icon.c:498
-#, fuzzy, c-format
+#: ../src/xfdesktop-volume-icon.c:456
+#: ../src/xfdesktop-volume-icon.c:498
+#, c-format
 msgid "Failed to eject \"%s\""
-msgstr "„%s“ не може да се извади:"
+msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:461 ../src/xfdesktop-volume-icon.c:503
+#: ../src/xfdesktop-volume-icon.c:461
+#: ../src/xfdesktop-volume-icon.c:503
 msgid "Eject Failed"
-msgstr "Изваждането е неуспешно:"
+msgstr ""
 
 #: ../src/xfdesktop-volume-icon.c:535
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to mount \"%s\""
-msgstr "Неуспешен опит за изпълнение на „%s“:"
+msgstr ""
 
 #: ../src/xfdesktop-volume-icon.c:538
 msgid "Mount Failed"
-msgstr "Монтирането е неуспешно"
+msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:679 ../src/xfdesktop-volume-icon.c:682
+#: ../src/xfdesktop-volume-icon.c:679
+#: ../src/xfdesktop-volume-icon.c:682
 msgid "E_ject Volume"
-msgstr "И_зваждане"
+msgstr ""
 
 #: ../src/xfdesktop-volume-icon.c:689
 msgid "_Mount Volume"
-msgstr "_Монтиране"
+msgstr ""
 
-#~ msgid "Unable to contact the Xfce Trash service."
-#~ msgstr "Не може да се свърже с услугата „Xfce Trash“."
-
-#~ msgid ""
-#~ "Make sure you have a file manager installed that supports the Xfce Trash "
-#~ "service, such as Thunar."
-#~ msgstr ""
-#~ "Проверете дали имате инсталиран файлов мениджър, който поддържа услугата "
-#~ "„Xfce Trash“, например Thunar."
-
-#, fuzzy
-#~ msgid "Image Files"
-#~ msgstr "Файлове с картинки"
-
-#, fuzzy
-#~ msgid "Menu Files"
-#~ msgstr "Файлове с картинки"
-
-#, fuzzy
-#~ msgid "Button"
-#~ msgstr "Автоматичен"
-
-#, fuzzy
-#~ msgid "Menu File"
-#~ msgstr "Файлове с картинки"
-
-#, fuzzy
-#~ msgid "Edit Menu"
-#~ msgstr "Редактира списък"
-
-#~ msgid "Create Folder Failed"
-#~ msgstr "Създаването на папка е неупешно"
-
-#~ msgid "Please delete or rename the file."
-#~ msgstr "Изтрийте или преименувайте файла."
-
-#~ msgid "Rename \"%s\""
-#~ msgstr "Преименуване на „%s“"
-
-#~ msgid "Enter the new name:"
-#~ msgstr "Ново име:"
-
-#~ msgid "Rename"
-#~ msgstr "Преименуване"
-
-#~ msgid "Are you sure that you want to delete \"%s\"?"
-#~ msgstr "Сигурни ли сте, че искате да изтриете „%s“?"
-
-#~ msgid "Question"
-#~ msgstr "Въпрос"
-
-#~ msgid "If you delete a file, it is permanently lost."
-#~ msgstr "Когато изтриете файл, той се изтрива за постоянно."
-
-#~ msgid "Are you sure you want to delete the following %d files?"
-#~ msgstr "Сигурни ли сте, че искате да изтриете %d файла?"
-
-#~ msgid "Delete Multiple Files"
-#~ msgstr "Изтриване на множество файлове"
-
-#~ msgid "Unable to create folder named \"%s\":"
-#~ msgstr "Не може да се създаде папка с името „%s“"
-
-#~ msgid "Create New Folder"
-#~ msgstr "Създаване на папка"
-
-#~ msgid "New Folder"
-#~ msgstr "Нова папка"
-
-#~ msgid "Create"
-#~ msgstr "Създаване"
-
-#~ msgid "Unable to create file named \"%s\":"
-#~ msgstr "Не може да се създаде файл с името „%s“:"
-
-#~ msgid "Create File Failed"
-#~ msgstr "Създаването на файл е неуспешно"
-
-#~ msgid "Create Empty File"
-#~ msgstr "Създаване на празен файл"
-
-#~ msgid "New Empty File"
-#~ msgstr "Нов файл"
-
-#~ msgid "Unable to create file \"%s\":"
-#~ msgstr "Не може да се създаде файла „%s“:"
-
-#, fuzzy
-#~ msgid "Create Error"
-#~ msgstr "Редактира списъка с фонове"
-
-#~ msgid "Unable to set default application for \"%s\" to \"%s\":"
-#~ msgstr "Не може да се зададе стандартна програма за „%s“ на „%s“:"
-
-#, fuzzy
-#~ msgid "Properties Error"
-#~ msgstr "Редактира списъка с фонове"
-
-#~ msgid "Write only"
-#~ msgstr "Само запис"
-
-#~ msgid "Read only"
-#~ msgstr "Само четене"
-
-#~ msgid "Read & Write"
-#~ msgstr "Четене и запис"
-
-#~ msgid "General"
-#~ msgstr "Общи"
-
-#~ msgid "Name:"
-#~ msgstr "Име:"
-
-#~ msgid "Kind:"
-#~ msgstr "Вид:"
-
-#~ msgid "Link Target:"
-#~ msgstr "Цел:"
-
-#~ msgid "Open With:"
-#~ msgstr "Отваряне с:"
-
-#~ msgid "Accessed:"
-#~ msgstr "Достъпван на:"
-
-#~ msgid "Free Space:"
-#~ msgstr "Свободно място:"
-
-#~ msgid "Size:"
-#~ msgstr "Големина:"
-
-#~ msgid "%s (%"
-#~ msgstr "%s (%"
-
-#~ msgid "Permissions"
-#~ msgstr "Права"
-
-#~ msgid "Owner:"
-#~ msgstr "Собственик:"
-
-#~ msgid "Access:"
-#~ msgstr "Достъп:"
-
-#~ msgid "Group:"
-#~ msgstr "Група:"
-
-#~ msgid "Others:"
-#~ msgstr "Други:"
-
-#~ msgid "Yes to _all"
-#~ msgstr "Да на _всички"
-
-#~ msgid "There was an error moving \"%s\" to \"%s\":"
-#~ msgstr "Грешка при преместване на „%s“ към „%s“:"
-
-#~ msgid "There was an error copying \"%s\" to \"%s\":"
-#~ msgstr "Грешка при копиране на „%s“ към „%s“:"
-
-#~ msgid "There was an error linking \"%s\" to \"%s\":"
-#~ msgstr "Грешка при свързване на „%s“ към „%s“:"
-
-#~ msgid "File Error"
-#~ msgstr "Грешка във файл"
-
-#~ msgid "broken link"
-#~ msgstr "счупена връзка"
-
-#~ msgid "link to %s"
-#~ msgstr "Връзка до %s"
-
-#~ msgid ""
-#~ "Kind: %s\n"
-#~ "Modified:%s\n"
-#~ "Size: %s"
-#~ msgstr ""
-#~ "Вид: %s\n"
-#~ "Променен на:%s\n"
-#~ "Големина: %s"
-
-#~ msgid "Error"
-#~ msgstr "Грешка"
-
-#~ msgid "Failed to rename \"%s\" to \"%s\":"
-#~ msgstr "Не може да се преименува от \"%s\" на \"%s\":"
-
-#~ msgid "Kind: Trash"
-#~ msgstr "Вид: Кошче"
-
-#~ msgid "%s (%s total)"
-#~ msgstr "%s (общо %s)"
-
-#~ msgid "Unable to mount \"%s\":"
-#~ msgstr "„%s“ не може да се монтира:"
-
-#~ msgid "Unable to unmount \"%s\":"
-#~ msgstr "„%s“ не може да се демонтира:"
-
-#, fuzzy
-#~ msgid "Unmount Failed"
-#~ msgstr "Файлове с картинки"
-
-#~ msgid "_Unmount Volume"
-#~ msgstr "_Демонтиране"
-
-#~ msgid "Accessories"
-#~ msgstr "Помощни програми"
-
-#~ msgid "Common desktop tools and applications"
-#~ msgstr "Общи инструменти и програми"
-
-#~ msgid "Development"
-#~ msgstr "Разработка"
-
-#~ msgid "Software development tools"
-#~ msgstr "Инструменти за разработка на софтуер"
-
-#~ msgid "Education"
-#~ msgstr "Обучение"
-
-#~ msgid "Educational software"
-#~ msgstr "Софтуер за обучение"
-
-#~ msgid "Games"
-#~ msgstr "Игри"
-
-#~ msgid "Games, puzzles, and other fun software"
-#~ msgstr "Игри, пъзели и друг софтуер за забавление"
-
-#~ msgid "Graphics"
-#~ msgstr "Графика"
-
-#~ msgid "Graphics creation and manipulation applications"
-#~ msgstr "Програми за създаване и обработка на изображения"
-
-#~ msgid "Audio and video players and editors"
-#~ msgstr "Аудио/видео плеъри и редактори"
-
-#~ msgid "Multimedia"
-#~ msgstr "Мултимедия"
-
-#~ msgid "Network"
-#~ msgstr "Мрежа"
-
-#~ msgid "Network applications and utilities"
-#~ msgstr "Мрежови програми и инструменти"
-
-#~ msgid "Office"
-#~ msgstr "Офис"
-
-#~ msgid "Office and productivity applications"
-#~ msgstr "Офис приложения"
-
-#~ msgid "Applications that don't fit into other categories"
-#~ msgstr "Програми, които не са подходящи за другите категории"
-
-#~ msgid "Other"
-#~ msgstr "Други"
-
-#~ msgid "Screensavers"
-#~ msgstr "Предпазители на екрана"
-
-#~ msgid "Desktop and system settings applications"
-#~ msgstr "Програми за настройване на системата"
-
-#~ msgid "Settings"
-#~ msgstr "Настройки"
-
-#~ msgid "System"
-#~ msgstr "Система"
-
-#~ msgid "System tools and utilities"
-#~ msgstr "Системни инструменти"
-
-#~ msgid "About Xfce"
-#~ msgstr "Относно Xfce"
-
-#~ msgid "Information about the Xfce Desktop Environment"
-#~ msgstr "Информация за графичната среда Xfce"
-
-#~ msgid "Help"
-#~ msgstr "Помощ"
-
-#~ msgid "Help using Xfce"
-#~ msgstr "Помощ за Xfce"
-
-#~ msgid "Log Out"
-#~ msgstr "Излизане"
-
-#~ msgid "Log out of the Xfce Desktop"
-#~ msgstr "Излизане от Xfce"
-
-#~ msgid "Run Program..."
-#~ msgstr "Изпълнение на програма..."
-
-#~ msgid "Run a program"
-#~ msgstr "Изпълнение на програма"
-
-#, fuzzy
-#~ msgid "Title"
-#~ msgstr "Керемиден"
-
-#, fuzzy
-#~ msgid "Executable Files"
-#~ msgstr "Файл:"
-
-#, fuzzy
-#~ msgid "File"
-#~ msgstr "Файл:"
-
-#~ msgid "Style:"
-#~ msgstr "Стил:"
-
-#, fuzzy
-#~ msgid "_File"
-#~ msgstr "Файл:"
-
-#, fuzzy
-#~ msgid "_Edit entry"
-#~ msgstr "Редактира списък"
-
-#, fuzzy
-#~ msgid "Name"
-#~ msgstr "Име:"
-
-#, fuzzy
-#~ msgid "Xfce 4 Desktop Settings"
-#~ msgstr "Настройки на работните места"
-
-#~ msgid ""
-#~ "Could not save file %s: %s\n"
-#~ "\n"
-#~ "Please choose another location or press cancel in the dialog to discard "
-#~ "your changes"
-#~ msgstr ""
-#~ "Не мога да запазя файл·%s:·%s\n"
-#~ "\n"
-#~ "Моля изберете друго място или отказ в диалога за да откажете вашите "
-#~ "промени"
-
-#, fuzzy
-#~ msgid "backdrops.list"
-#~ msgstr "Редактира списъка с фонове"
-
-#, fuzzy
-#~ msgid "_Edit list..."
-#~ msgstr "Редактира списък"
-
-#, fuzzy
-#~ msgid "_New list..."
-#~ msgstr "Нов списък"
-
-#, fuzzy
-#~ msgid "S_tyle:"
-#~ msgstr "Стил:"
-
-#, fuzzy
-#~ msgid "Desktop Preferences"
-#~ msgstr "Настройки на работните места"
-
-#~ msgid "Color"
-#~ msgstr "Цвят"
-
-#, fuzzy
-#~ msgid "_Color Style:"
-#~ msgstr "Стил:"
-
-#~ msgid "Image"
-#~ msgstr "Изображение"
-
-#, fuzzy
-#~ msgid "Show _Image"
-#~ msgstr "Изображение"
-
-#, fuzzy
-#~ msgid "_File:"
-#~ msgstr "Файл:"
-
-#, fuzzy
-#~ msgid "Select backdrop image file"
-#~ msgstr "Изберте файл с картинка"
-
-#~ msgid "List file"
-#~ msgstr "Списък"
-
-#, fuzzy
-#~ msgid "Desktop Icons"
-#~ msgstr "Работно Място"
-
-#, fuzzy
-#~ msgid "Des_ktop"
-#~ msgstr "Работно Място"
-
-#, fuzzy
-#~ msgid "_Desktop Properties..."
-#~ msgstr "Редактира списъка с фонове"
-
-#, fuzzy
-#~ msgid "Edit Properties"
-#~ msgstr "Редактира списъка с фонове"
-
-#, fuzzy
-#~ msgid "_Copy Files"
-#~ msgstr "Файл:"
-
-#, fuzzy
-#~ msgid "_Copy File"
-#~ msgstr "Файл:"
-
-#, fuzzy
-#~ msgid "Cu_t Files"
-#~ msgstr "Файл:"
-
-#, fuzzy
-#~ msgid "Cu_t File"
-#~ msgstr "Файл:"
-
-#, fuzzy
-#~ msgid "_Delete Files"
-#~ msgstr "Файл:"
-
-#, fuzzy
-#~ msgid "_Paste Files"
-#~ msgstr "Списък"
-
-#, fuzzy
-#~ msgid "Edit"
-#~ msgstr "Редактира списък"
-
-#~ msgid "Science"
-#~ msgstr "Наука"
-
-#~ msgid "Scientific software"
-#~ msgstr "Научен софтуер"
