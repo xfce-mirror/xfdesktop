@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop 4.x\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-01-06 14:03+0000\n"
-"PO-Revision-Date: 2012-01-06 18:39+0200\n"
+"PO-Revision-Date: 2012-01-13 08:47+0200\n"
 "Last-Translator: Algimantas Margevičius <margevicius.algimantas@gmail.com>\n"
 "Language-Team: Lietuvių <>\n"
 "Language: lt\n"
@@ -62,7 +62,7 @@ msgstr "Fonų sąrašo klaida"
 
 #: ../settings/main.c:504
 msgid "Create/Load Backdrop List"
-msgstr "Sukurti / įkelti fonų sąrašą"
+msgstr "Sukurti/įkelti fonų sąrašą"
 
 #: ../settings/main.c:528
 #, c-format
@@ -320,15 +320,15 @@ msgstr "<b>Išvaizda</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:2
 msgid "<b>Default Icons</b>"
-msgstr "<b>Numatytos Piktogramos</b>"
+msgstr "<b>Numatytos piktogramos</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:3
 msgid "<b>Desktop Menu</b>"
-msgstr "<b>Darbalaukio Meniu</b>"
+msgstr "<b>Darbalaukio meniu</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:4
 msgid "<b>Window List Menu</b>"
-msgstr "<b>Langų Sąrašo Meniu</b>"
+msgstr "<b>Langų sąrašo meniu</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:5
 msgid "Alt"
@@ -409,11 +409,11 @@ msgstr "Meniu rodyti pro_gramų piktogramas"
 #: ../settings/xfdesktop-settings-ui.glade.h:28
 msgid "Show _window list menu on desktop middle click"
 msgstr ""
-"Darbalaukyje spustelėjus _vidurinį pelės mygtuką rodyti langų sąrašo menių"
+"Darbalaukyje spustelėjus _vidurinį pelės mygtuką rodyti langų sąrašo meniu"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:29
 msgid "Show applications menu on _desktop right click"
-msgstr "Darbalaukyje spustelėjus _dešinįjį pelės mygtuką rodyti programų menių"
+msgstr "Darbalaukyje spustelėjus _dešinįjį pelės mygtuką rodyti programų meniu"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:30
 msgid "Show s_ticky windows only in active workspace"
@@ -431,7 +431,7 @@ msgstr "Nurodykite, už piktogramos teksto piešiamos kortelės, skaidrumo lygį
 
 #: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "Use _submenus for the windows in each workspace"
-msgstr "Darbo srityje langams parodyti naudoti _submeniu"
+msgstr "Darbo srityje langams parodyti naudoti _papildomus meniu"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:38
 msgid "Use custom _font size:"
@@ -475,7 +475,7 @@ msgstr "Išskleidžiamas langų sąrašas (esamoje pelės pozicijoje)"
 
 #: ../src/main.c:242
 msgid "Cause xfdesktop to quit"
-msgstr "Priežastis xfdesktop mesti"
+msgstr "Privertė Xfdesktop užsiverti"
 
 #: ../src/main.c:262
 #, c-format
@@ -555,12 +555,12 @@ msgstr "_Pridėti darbo vietą"
 #: ../src/windowlist.c:373
 #, c-format
 msgid "_Remove Workspace %d"
-msgstr "_Pašalinti Darbo vietą %d"
+msgstr "_Pašalinti darbo vietą %d"
 
 #: ../src/windowlist.c:376
 #, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "_Pašalinti Darbo vieta '%s'"
+msgstr "_Pašalinti darbo vieta „%s“"
 
 #: ../src/xfce-desktop.c:1022
 #, c-format
@@ -666,7 +666,7 @@ msgstr "_Open"
 #. create launcher item
 #: ../src/xfdesktop-file-icon-manager.c:1395
 msgid "Create _Launcher..."
-msgstr "Sukurti _Leistuką..."
+msgstr "Sukurti _leistuką..."
 
 #. create link item
 #: ../src/xfdesktop-file-icon-manager.c:1411
@@ -676,12 +676,12 @@ msgstr "Sukurti _URL nuorodą..."
 #. create folder item
 #: ../src/xfdesktop-file-icon-manager.c:1427
 msgid "Create _Folder..."
-msgstr "Sukurti _Aplanką ..."
+msgstr "Sukurti _aplanką ..."
 
 #. create from template submenu
 #: ../src/xfdesktop-file-icon-manager.c:1442
 msgid "Create From _Template"
-msgstr "Sukurti iš _Šablono"
+msgstr "Sukurti iš _šablono"
 
 #: ../src/xfdesktop-file-icon-manager.c:1468
 msgid "_Empty File"
@@ -693,7 +693,7 @@ msgstr "_Vykdyti"
 
 #: ../src/xfdesktop-file-icon-manager.c:1504
 msgid "_Edit Launcher"
-msgstr "_Taisyti Leistuką"
+msgstr "_Taisyti leistuką"
 
 #: ../src/xfdesktop-file-icon-manager.c:1539
 msgid "Open With"
@@ -919,7 +919,7 @@ msgstr ""
 
 #: ../src/xfdesktop-special-file-icon.c:507
 msgid "_Empty Trash"
-msgstr "_Ištuštinti Šiukšlinę"
+msgstr "_Ištuštinti šiukšlinę"
 
 #: ../src/xfdesktop-volume-icon.c:423
 #, c-format
