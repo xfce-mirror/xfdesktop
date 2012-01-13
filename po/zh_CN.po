@@ -185,11 +185,11 @@ msgstr "<b>图片</b>"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
 msgid "<b>Images</b>"
-msgstr "<b>图像</b>"
+msgstr "<b>图片</b>"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
 msgid "Add an image to the list"
-msgstr "给列表添加图像"
+msgstr "给列表添加图片"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
 #: ../settings/xfdesktop-settings-ui.glade.h:6
@@ -211,11 +211,11 @@ msgstr "居中"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
 msgid "Create a new list, or load an existing one"
-msgstr "新建或打开列表"
+msgstr "创建新列表，或打开已存在的一个"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
 msgid "Don't display an image at all"
-msgstr "不显示图片"
+msgstr "什么图片都不显示"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
 #: ../settings/xfdesktop-settings-ui.glade.h:12
@@ -228,24 +228,24 @@ msgstr "图片列表(_L)"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
 msgid "Increase or decrease the brightness of the final image"
-msgstr "增大或减小图片亮度"
+msgstr "增大或减小最终图片的亮度"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
 msgid "Increase or decrease the color saturation of the final image"
-msgstr "增大或减小图片的色饱和度"
+msgstr "增大或减小最终图片的色饱和度"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
 msgid "Remove the selected image(s) from the list"
-msgstr "从列表中去除选中的图片"
+msgstr "从列表中移除选中的图片"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Sa_turation:"
-msgstr "饱和度(_T)"
+msgstr "饱和度(_T)："
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 #: ../settings/xfdesktop-settings-ui.glade.h:23
 msgid "Scaled"
-msgstr "缩放"
+msgstr "伸缩"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
 msgid "Select First Color"
@@ -262,28 +262,30 @@ msgstr "用特定图片做背景"
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
 #: ../settings/xfdesktop-settings-ui.glade.h:32
 msgid "Solid color"
-msgstr "单一颜色"
+msgstr "纯色"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-msgstr "指定渐变区右边或下边的颜色"
+msgstr "指定渐变区 “右边” 或 “下边” 的颜色"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
 msgid ""
 "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr "指定单一色，或者渐变区左边或上边的颜色"
+msgstr ""
+"指定纯色，或渐变区 “左边” 或 “上边” 的"
+"颜色"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid "Specify how the image will be resized to fit the screen"
-msgstr "指定如何在屏幕摆放图片"
+msgstr "指定如何调整图片大小以适应屏幕"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "Specify the style of the color drawn behind the backdrop image"
-msgstr "指定背景图片后的颜色风格"
+msgstr "指定背景图片后的颜色绘制样式"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
 msgid "St_yle:"
-msgstr "风格(_Y)："
+msgstr "样式(_Y)："
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
 #: ../settings/xfdesktop-settings-ui.glade.h:34
@@ -324,7 +326,7 @@ msgstr "<b>外观</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:2
 msgid "<b>Default Icons</b>"
-msgstr "<b>缺省图标</b>"
+msgstr "<b>默认图标</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:3
 msgid "<b>Desktop Menu</b>"
@@ -340,11 +342,11 @@ msgstr "Alt"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:7
 msgid "B_utton:"
-msgstr "按钮(_U)"
+msgstr "按钮(_U)："
 
 #: ../settings/xfdesktop-settings-ui.glade.h:9
 msgid "Control"
-msgstr "控制"
+msgstr "Ctrl"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:738
 msgid "Desktop"
@@ -352,19 +354,19 @@ msgstr "桌面"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:11
 msgid "File/launcher icons"
-msgstr "文件/启动选项图标"
+msgstr "文件/启动器图标"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:13
 msgid "Icon _size:"
-msgstr "图标大小(_S)"
+msgstr "图标大小(_S)："
 
 #: ../settings/xfdesktop-settings-ui.glade.h:14
 msgid "Icon _type:"
-msgstr "图标类型(_T)"
+msgstr "图标类型(_T)："
 
 #: ../settings/xfdesktop-settings-ui.glade.h:15
 msgid "Label trans_parency:"
-msgstr "透明标签(_P):"
+msgstr "标签透明度(_P)："
 
 #: ../settings/xfdesktop-settings-ui.glade.h:16
 msgid "Left"
@@ -380,11 +382,11 @@ msgstr "最小化应用程序图标"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:19
 msgid "Mo_difier:"
-msgstr "修正键(_D):"
+msgstr "修饰键(_D)："
 
 #: ../settings/xfdesktop-settings-ui.glade.h:20
 msgid "Modi_fier:"
-msgstr "修正键(_F):"
+msgstr "修饰键(_F)："
 
 #: ../settings/xfdesktop-settings-ui.glade.h:21
 msgid "None"
@@ -396,11 +398,11 @@ msgstr "右"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:24
 msgid "Set desktop background and menu and icon behavior"
-msgstr "设置桌面背景，菜单，及图标属性"
+msgstr "设置桌面背景和菜单，以及图标行为"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:25
 msgid "Sh_ow application icons in menu"
-msgstr "在菜单中显示图标(_O)"
+msgstr "在菜单中显示应用程序图标(_O)"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:26
 msgid "Shift"
@@ -408,19 +410,19 @@ msgstr "Shift"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "Show _application icons in menu"
-msgstr "在菜单中显示图标(_A)"
+msgstr "在菜单中显示应用程序图标(_A)"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:28
 msgid "Show _window list menu on desktop middle click"
-msgstr "按中键显示窗口列表菜单(_W)"
+msgstr "在桌面上中击时显示窗口列表菜单(_W)"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:29
 msgid "Show applications menu on _desktop right click"
-msgstr "按右键显示应用程序菜单(_D)"
+msgstr "在桌面上右击时显示应用程序菜单(_D)"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:30
 msgid "Show s_ticky windows only in active workspace"
-msgstr "只在显示活动工作区中的粘附窗口(_T)"
+msgstr "仅在活动工作区中粘滞窗口(_T)"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:31
 msgid "Show workspace _names in list"
