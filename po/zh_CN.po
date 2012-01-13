@@ -198,7 +198,7 @@ msgstr "自动"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
 msgid "Automatically pick a random image from a list file"
-msgstr "从列表文件中随机选择图片"
+msgstr "从列表文件中挑选一个随机图片"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
 msgid "B_rightness:"
@@ -211,7 +211,7 @@ msgstr "居中"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
 msgid "Create a new list, or load an existing one"
-msgstr "创建新列表，或打开已存在的一个"
+msgstr "创建新列表，或加载已存在的一个"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
 msgid "Don't display an image at all"
@@ -257,7 +257,7 @@ msgstr "选择第二种颜色"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
 msgid "Select a single image as the backdrop"
-msgstr "用特定图片做背景"
+msgstr "选择单一图片做背景"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
 #: ../settings/xfdesktop-settings-ui.glade.h:32
@@ -318,7 +318,7 @@ msgstr "无(_N)"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
 msgid "_Single image"
-msgstr "单个图片(_S)"
+msgstr "单一图片(_S)"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:1
 msgid "<b>Appearance</b>"
@@ -422,7 +422,7 @@ msgstr "在桌面上右击时显示应用程序菜单(_D)"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:30
 msgid "Show s_ticky windows only in active workspace"
-msgstr "仅在活动工作区中粘滞窗口(_T)"
+msgstr "仅在活动工作区中显示已粘滞窗口(_T)"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:31
 msgid "Show workspace _names in list"
@@ -432,7 +432,7 @@ msgstr "在列表中显示工作区名称(_N)"
 msgid ""
 "Specify the transparency level for the rounded label drawn behind the icon "
 "text"
-msgstr "指定图标文本后的园角标签的透明度"
+msgstr "指定图标文字后的园角标签绘制的透明度等级"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "Use _submenus for the windows in each workspace"
@@ -440,7 +440,7 @@ msgstr "在每个工作区中使用窗口的子菜单(_S)"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:38
 msgid "Use custom _font size:"
-msgstr "使用自定义字体大小(_F)"
+msgstr "使用自定义的字体大小(_F)："
 
 #: ../settings/xfdesktop-settings-ui.glade.h:41
 msgid "_Background"
@@ -468,34 +468,34 @@ msgstr "显示版本信息"
 
 #: ../src/main.c:239
 msgid "Reload all settings, refresh image list"
-msgstr "重新载入全部设置，刷新图像列表"
+msgstr "重载所有设置，刷新图片列表"
 
 #: ../src/main.c:240
 msgid "Pop up the menu (at the current mouse position)"
-msgstr "弹出菜单 (在鼠标当前位置)"
+msgstr "弹出菜单(在当前的鼠标位置)"
 
 #: ../src/main.c:241
 msgid "Pop up the window list (at the current mouse position)"
-msgstr "弹出窗口列表 (在鼠标当前位置)"
+msgstr "弹出窗口列表(在当前的鼠标位置)"
 
 #: ../src/main.c:242
 msgid "Cause xfdesktop to quit"
-msgstr "退出 xfdesktop"
+msgstr "导致 xfdesktop 退出"
 
 #: ../src/main.c:262
 #, c-format
 msgid "Failed to parse arguments: %s\n"
-msgstr "无法解析参数: %s\n"
+msgstr "无法解析参数：%s\n"
 
 #: ../src/main.c:270
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr "这是 %s 版本 %s， 运行于 Xfce %s。\n"
+msgstr "此是 %s 版 %s，运行于 Xfce %s。\n"
 
 #: ../src/main.c:272
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr "依 GTK+ %d.%d.%d 编译, 链接到 GTK+ %d.%d.%d。"
+msgstr "以 GTK+ %d.%d.%d 编译，与 GTK+ %d.%d.%d 链接。"
 
 #: ../src/main.c:276
 #, c-format
@@ -505,7 +505,7 @@ msgstr "编译选项：\n"
 #: ../src/main.c:277
 #, c-format
 msgid "    Desktop Menu:        %s\n"
-msgstr "    桌面菜单：     %s\n"
+msgstr "    桌面菜单：        %s\n"
 
 #: ../src/main.c:279 ../src/main.c:286 ../src/main.c:293
 msgid "enabled"
@@ -528,11 +528,11 @@ msgstr "    桌面文件图标：   %s\n"
 #: ../src/main.c:322
 #, c-format
 msgid "%s is not running.\n"
-msgstr "%s 没有运行。\n"
+msgstr "%s 不在运行。\n"
 
 #: ../src/menu.c:106
 msgid "_Applications"
-msgstr " 应用程序(_A)"
+msgstr "应用程序(_A)"
 
 #: ../src/windowlist.c:229
 msgid "Window List"
@@ -560,17 +560,17 @@ msgstr "添加工作区(_A)"
 #: ../src/windowlist.c:373
 #, c-format
 msgid "_Remove Workspace %d"
-msgstr "移除工作区(_R) %d"
+msgstr "移除工作区 %d(_R)"
 
 #: ../src/windowlist.c:376
 #, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "移除工作区(_R) “%s”"
+msgstr "移除工作区 ‘%s’(_R)"
 
 #: ../src/xfce-desktop.c:1022
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
-msgstr "无法从背景列表文件 \"%s\" 中加载图片"
+msgstr "未能从背景列表文件 “%s” 中加载图片"
 
 #: ../src/xfce-desktop.c:1024
 msgid "Desktop Error"
