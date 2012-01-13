@@ -617,8 +617,8 @@ msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
 msgstr ""
-"此功能需要有文件管理器服务存在"
-"(比如 Thunar 所提供的功能)。"
+"此功能需要有文件管理器服务存在(比如 "
+"Thunar 所提供的功能)。"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:738
@@ -776,17 +776,19 @@ msgstr "删除错误"
 
 #: ../src/xfdesktop-file-utils.c:822 ../src/xfdesktop-file-utils.c:837
 msgid "The selected files could not be deleted"
-msgstr "所选文件无法被删除"
+msgstr "未能删除选中的文件"
 
 #: ../src/xfdesktop-file-utils.c:881 ../src/xfdesktop-file-utils.c:896
 msgid "The selected files could not be moved to the trash"
-msgstr "所选文件无法被移动到回收站"
+msgstr "未能将选中的文件移至回收站"
 
 #: ../src/xfdesktop-file-utils.c:897 ../src/xfdesktop-file-utils.c:943
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
-msgstr "这项功能需要文件管理器提供相关服务(比如 Thunar 所提供的)。"
+msgstr ""
+"此功能需要有回收站服务存在(比如 Thunar "
+"所提供的功能)。"
 
 #: ../src/xfdesktop-file-utils.c:928 ../src/xfdesktop-file-utils.c:942
 msgid "Could not empty the trash"
@@ -798,7 +800,7 @@ msgstr "创建文件错误"
 
 #: ../src/xfdesktop-file-utils.c:980 ../src/xfdesktop-file-utils.c:995
 msgid "Could not create a new file"
-msgstr "无法创建一个新文件"
+msgstr "未能创建新文件"
 
 #: ../src/xfdesktop-file-utils.c:1035 ../src/xfdesktop-file-utils.c:1050
 msgid "Create Document Error"
@@ -806,7 +808,7 @@ msgstr "创建文档错误"
 
 #: ../src/xfdesktop-file-utils.c:1036 ../src/xfdesktop-file-utils.c:1051
 msgid "Could not create a new document from the template"
-msgstr "无法从模板创建一个新文档"
+msgstr "未能从模板创建新文档"
 
 #: ../src/xfdesktop-file-utils.c:1085 ../src/xfdesktop-file-utils.c:1100
 msgid "File Properties Error"
@@ -814,30 +816,30 @@ msgstr "文件属性错误"
 
 #: ../src/xfdesktop-file-utils.c:1086 ../src/xfdesktop-file-utils.c:1101
 msgid "The file properties dialog could not be opened"
-msgstr "无法打开文件属性对话框"
+msgstr "未能打开文件属性对话框"
 
 #: ../src/xfdesktop-file-utils.c:1136 ../src/xfdesktop-file-utils.c:1151
 msgid "The file could not be opened"
-msgstr "无法打开该文件"
+msgstr "未能打开此文件"
 
 #: ../src/xfdesktop-file-utils.c:1199 ../src/xfdesktop-file-utils.c:1224
 #, c-format
 msgid "Failed to run \"%s\""
-msgstr "无法运行 \"%s\""
+msgstr "无法运行 “%s”"
 
 #: ../src/xfdesktop-file-utils.c:1274 ../src/xfdesktop-file-utils.c:1289
 msgid "The application chooser could not be opened"
-msgstr "无法打开应用程序选择器"
+msgstr "未能打开应用程序选择器"
 
 #: ../src/xfdesktop-file-utils.c:1347 ../src/xfdesktop-file-utils.c:1361
 #: ../src/xfdesktop-file-utils.c:1423 ../src/xfdesktop-file-utils.c:1439
 msgid "Transfer Error"
-msgstr "移动错误"
+msgstr "传输错误"
 
 #: ../src/xfdesktop-file-utils.c:1348 ../src/xfdesktop-file-utils.c:1362
 #: ../src/xfdesktop-file-utils.c:1424 ../src/xfdesktop-file-utils.c:1440
 msgid "The file transfer could not be performed"
-msgstr "无法执行文件移动"
+msgstr "未能执行文件传输"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:128
@@ -851,7 +853,8 @@ msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the "
 "media or disconnect the drive"
 msgstr ""
-"设备 \"%s\" 正在从系统中被移除。请暂时不要移除媒体或者断开到驱动器的连接。"
+"系统正在卸载设备 “%s”。"
+"请不要移除介质或断开驱动器。"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
