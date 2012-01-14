@@ -72,7 +72,7 @@ msgstr "创建/载入背景列表"
 msgid ""
 "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
 msgstr ""
-"“%s” 是无效的背景列表文件。"
+"“%s” 不是有效的背景列表文件。"
 "您想要改写它吗？"
 
 #: ../settings/main.c:533
@@ -198,7 +198,7 @@ msgstr "自动"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
 msgid "Automatically pick a random image from a list file"
-msgstr "从列表文件中挑选一个随机图片"
+msgstr "从列表文件中自动挑选一个随机图片"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
 msgid "B_rightness:"
@@ -228,11 +228,11 @@ msgstr "图片列表(_L)"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
 msgid "Increase or decrease the brightness of the final image"
-msgstr "增大或减小最终图片的亮度"
+msgstr "增加或减弱最终图片的亮度"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
 msgid "Increase or decrease the color saturation of the final image"
-msgstr "增大或减小最终图片的色饱和度"
+msgstr "增加或减弱最终图片的颜色饱和度"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
 msgid "Remove the selected image(s) from the list"
@@ -436,7 +436,7 @@ msgstr "指定图标文字后的园角标签绘制的透明度等级"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "Use _submenus for the windows in each workspace"
-msgstr "在每个工作区中使用窗口的子菜单(_S)"
+msgstr "在每个工作区中为窗口使用子菜单(_S)"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:38
 msgid "Use custom _font size:"
@@ -792,7 +792,7 @@ msgstr ""
 
 #: ../src/xfdesktop-file-utils.c:928 ../src/xfdesktop-file-utils.c:942
 msgid "Could not empty the trash"
-msgstr "无法清空回收站"
+msgstr "未能清空回收站"
 
 #: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:994
 msgid "Create File Error"
@@ -859,7 +859,7 @@ msgstr ""
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
 msgid "Writing data to device"
-msgstr "正往设备写入数据"
+msgstr "正在向设备写入数据"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
@@ -942,7 +942,7 @@ msgid ""
 "Removable Volume\n"
 "Not mounted yet"
 msgstr ""
-"可移动卷设备\n"
+"可移动卷\n"
 "还未挂载"
 
 #: ../src/xfdesktop-volume-icon.c:456 ../src/xfdesktop-volume-icon.c:498
