@@ -1,4 +1,2 @@
-SUBDIRS = 	\
-	manual
 
-EXTRA_DIST = $(noinst_DATA) README.kiosk
+EXTRA_DIST = README.kiosk README.xfconf

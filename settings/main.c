@@ -1494,6 +1494,15 @@ xfdesktop_settings_dialog_new(GtkBuilder *main_gxml,
     return dialog;
 }
 
+static void
+xfdesktop_settings_response(GtkWidget *dialog, gint response_id)
+{
+    if(response_id == GTK_RESPONSE_HELP)
+        xfce_dialog_show_help(GTK_WINDOW(dialog), "xfdesktop", "preferences", NULL);
+    else
+        gtk_main_quit();
+}
+
 static GdkNativeWindow opt_socket_id = 0;
 static gboolean opt_version = FALSE;
 static GOptionEntry option_entries[] = {
@@ -1563,12 +1572,17 @@ main(int argc, char **argv)
 
     gdk_threads_enter();
 
-    dialog = xfdesktop_settings_dialog_new(gxml, channel);
     if(opt_socket_id == 0) {
-        g_object_unref(G_OBJECT(gxml));
+        dialog = xfdesktop_settings_dialog_new(gxml, channel);
 
-        while(gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_HELP)
-            g_spawn_command_line_async("xfhelp4 xfdesktop.html", NULL);
+        g_signal_connect(dialog, "response",
+                         G_CALLBACK(xfdesktop_settings_response), NULL);
+        gtk_window_present(GTK_WINDOW (dialog));
+
+        /* To prevent the settings dialog to be saved in the session */
+        gdk_set_sm_client_id("FAKE ID");
+
+        gtk_main();
     } else {
         GtkWidget *plug, *plug_child;
 
@@ -1583,10 +1597,10 @@ main(int argc, char **argv)
         gtk_widget_reparent(plug_child, plug);
         gtk_widget_show(plug_child);
 
-        g_object_unref(G_OBJECT(gxml));
-
         gtk_main();
     }
+
+    g_object_unref(G_OBJECT(gxml));
 
     gdk_threads_leave();
     

@@ -14,7 +14,6 @@ manpage_DATA = xfdesktop.1
 
 EXTRA_DIST = \
 	TODO \
-	xfdesktop.spec \
 	intltool-extract.in \
 	intltool-merge.in \
 	intltool-update.in \
@@ -26,19 +25,15 @@ DISTCLEANFILES = \
 	intltool-merge \
 	intltool-update
 
-DISTCHECK_CONFIGURE_FLAGS = \
-	--enable-gen-doc
-
 AUTOMAKE_OPTIONS = \
 	1.8 \
 	dist-bzip2
 
+distuninstallcheck_listfiles = \
+	find . -type f -print | grep -v ./share/icons/hicolor/icon-theme.cache
+
 distclean-local:
 	-rm -rf *.cache *~
-
-rpm: distcheck
-	rpmbuild -ta $(PACKAGE)-$(VERSION).tar.gz
-	@rm -f $(PACKAGE)-$(VERSION).tar.gz
 
 .PHONY: ChangeLog
 
