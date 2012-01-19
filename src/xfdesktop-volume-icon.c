@@ -52,6 +52,10 @@
 #include "xfdesktop-notify.h"
 #endif
 
+#ifdef HAVE_LIBEXO
+#include <exo/exo.h>
+#endif
+
 #include "xfdesktop-common.h"
 #include "xfdesktop-file-utils.h"
 #include "xfdesktop-volume-icon.h"
@@ -224,6 +228,30 @@ xfdesktop_volume_icon_invalidate_pixbuf(XfdesktopVolumeIcon *icon)
     }
 }
 
+static gboolean
+xfdesktop_volume_icon_is_mounted(XfdesktopIcon *icon)
+{
+    GVolume *volume = NULL;
+    GMount *mount = NULL;
+    gboolean ret = FALSE;
+    XfdesktopVolumeIcon *volume_icon = XFDESKTOP_VOLUME_ICON(icon);
+
+    g_return_val_if_fail(XFDESKTOP_IS_VOLUME_ICON(icon), FALSE);
+
+    volume = xfdesktop_volume_icon_peek_volume(volume_icon);
+
+    if(volume != NULL)
+        mount = g_volume_get_mount(volume);
+
+    if(mount != NULL) {
+        ret = TRUE;
+        g_object_unref(mount);
+    } else {
+        ret = FALSE;
+    }
+
+    return ret;
+}
 
 static GdkPixbuf *
 xfdesktop_volume_icon_peek_pixbuf(XfdesktopIcon *icon,
@@ -244,6 +272,19 @@ xfdesktop_volume_icon_peek_pixbuf(XfdesktopIcon *icon,
 
         file_icon->priv->pix = xfdesktop_file_utils_get_icon(NULL, gicon, size, 
                                                              NULL, 100);
+
+#ifdef HAVE_LIBEXO
+        /* If the volume isn't mounted show it as semi-transparent */
+        if(!xfdesktop_volume_icon_is_mounted(icon)) {
+            GdkPixbuf *temp;
+            temp = exo_gdk_pixbuf_lucent(file_icon->priv->pix, 50);
+
+            if(temp != NULL) {
+                g_object_unref(G_OBJECT(file_icon->priv->pix));
+                file_icon->priv->pix = temp;
+            }
+        }
+#endif
         
         file_icon->priv->cur_pix_size = size;
     }
@@ -268,10 +309,6 @@ xfdesktop_volume_icon_peek_label(XfdesktopIcon *icon)
 static GdkDragAction
 xfdesktop_volume_icon_get_allowed_drag_actions(XfdesktopIcon *icon)
 {
-    XfdesktopVolumeIcon *volume_icon = XFDESKTOP_VOLUME_ICON(icon);
-    GVolume *volume;
-    GMount *mount;
-    
     /* volume icons more or less represent the volume's mount point, usually
      * (hopefully) a local path.  so when it's mounted, we certainly can't move
      * the mount point, but copying and linking should be OK.  when not mounted,
@@ -281,10 +318,7 @@ xfdesktop_volume_icon_get_allowed_drag_actions(XfdesktopIcon *icon)
     /* FIXME: should i allow all actions if not mounted as well, and try to
      * mount and resolve on drop? */
     
-    volume = xfdesktop_volume_icon_peek_volume(volume_icon);
-
-    mount = g_volume_get_mount(volume);
-    if(mount) {
+    if(xfdesktop_volume_icon_is_mounted(icon)) {
         GFileInfo *info = xfdesktop_file_icon_peek_file_info(XFDESKTOP_FILE_ICON(icon));
         if(info) {
             if(g_file_info_get_attribute_boolean(info, G_FILE_ATTRIBUTE_ACCESS_CAN_READ))
@@ -292,8 +326,6 @@ xfdesktop_volume_icon_get_allowed_drag_actions(XfdesktopIcon *icon)
             else
                 return GDK_ACTION_LINK;
         }
-
-        g_object_unref(mount);
     }
     
     return 0;
@@ -302,26 +334,18 @@ xfdesktop_volume_icon_get_allowed_drag_actions(XfdesktopIcon *icon)
 static GdkDragAction
 xfdesktop_volume_icon_get_allowed_drop_actions(XfdesktopIcon *icon)
 {
-    XfdesktopVolumeIcon *volume_icon = XFDESKTOP_VOLUME_ICON(icon);
-    GVolume *volume;
-    GMount *mount;
-    
     /* if not mounted, it doesn't really make sense to allow any operations
      * here.  if mounted, we should allow everything if it's writable. */
     
     /* FIXME: should i allow all actions if not mounted as well, and try to
      * mount and resolve on drop? */
 
-    volume = xfdesktop_volume_icon_peek_volume(volume_icon);
-
-    mount = g_volume_get_mount(volume);
-    if(mount) {
+    if(xfdesktop_volume_icon_is_mounted(icon)) {
         GFileInfo *info = xfdesktop_file_icon_peek_file_info(XFDESKTOP_FILE_ICON(icon));
         if(info) {
             if(g_file_info_get_attribute_boolean(info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
                 return GDK_ACTION_MOVE | GDK_ACTION_COPY | GDK_ACTION_LINK;
         }
-        g_object_unref(mount);
     }
     
     return 0;
