@@ -229,7 +229,7 @@ xfdesktop_settings_create_all_previews(gpointer data)
         GtkTreeSelection *selection = gtk_tree_view_get_selection(tree_view);
 
         if(gtk_tree_selection_get_mode(selection) != GTK_SELECTION_MULTIPLE
-           && gtk_tree_selection_get_selected(selection, NULL, &iter)) 
+           && gtk_tree_selection_get_selected(selection, NULL, &iter))
         {
             GtkTreePath *path = gtk_tree_model_get_path(model, &iter);
             gtk_tree_view_scroll_to_cell(tree_view, path, NULL, TRUE, 0.0, 0.0);
@@ -713,7 +713,7 @@ xfdesktop_settings_dialog_populate_image_list(AppearancePanel *panel)
 
         /* remember the tree view to scroll to the selected image in the
          * thread that creates all the previews */
-        g_object_set_data_full(G_OBJECT(ls), "xfdesktop-tree-view", 
+        g_object_set_data_full(G_OBJECT(ls), "xfdesktop-tree-view",
                                g_object_ref(panel->image_treeview),
                                g_object_unref);
     }
@@ -958,7 +958,7 @@ cb_image_type_radio_clicked(GtkWidget *w,
 {
     AppearancePanel *panel = user_data;
     gchar prop_image_show[1024], prop_image_path[1024];
-    
+
     if(!gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(w)))
         return;
 
@@ -1220,15 +1220,14 @@ xfdesktop_settings_setup_image_treeview(AppearancePanel *panel)
                      G_CALLBACK(image_treeview_drag_data_received), panel);
 }
 
-static GtkWidget *
-xfdesktop_settings_dialog_new(GtkBuilder *main_gxml,
-                              XfconfChannel *channel)
+static void
+xfdesktop_settings_dialog_add_screens(GtkBuilder *main_gxml,
+                                      XfconfChannel *channel)
 {
     gint i, j, nmonitors, nscreens;
-    GtkWidget *dialog, *appearance_container, *chk_custom_font_size,
+    GtkWidget *appearance_container, *chk_custom_font_size,
               *spin_font_size, *color_style_widget, *w, *box;
 
-    dialog = GTK_WIDGET(gtk_builder_get_object(main_gxml, "prefs_dialog"));
     appearance_container = GTK_WIDGET(gtk_builder_get_object(main_gxml,
                                                              "notebook_screens"));
 
@@ -1253,6 +1252,7 @@ xfdesktop_settings_dialog_new(GtkBuilder *main_gxml,
         }
 
         for(j = 0; j < nmonitors; ++j) {
+
             gchar buf[1024];
             GtkBuilder *appearance_gxml;
             AppearancePanel *panel = g_new0(AppearancePanel, 1);
@@ -1490,8 +1490,6 @@ xfdesktop_settings_dialog_new(GtkBuilder *main_gxml,
                            "active");
 
     setup_special_icon_list(main_gxml, channel);
-
-    return dialog;
 }
 
 static void
@@ -1570,11 +1568,12 @@ main(int argc, char **argv)
 
     channel = xfconf_channel_new(XFDESKTOP_CHANNEL);
 
+    xfdesktop_settings_dialog_add_screens(gxml, channel);
+
     gdk_threads_enter();
 
     if(opt_socket_id == 0) {
-        dialog = xfdesktop_settings_dialog_new(gxml, channel);
-
+        dialog = GTK_WIDGET(gtk_builder_get_object(gxml, "prefs_dialog"));
         g_signal_connect(dialog, "response",
                          G_CALLBACK(xfdesktop_settings_response), NULL);
         gtk_window_present(GTK_WINDOW (dialog));
@@ -1603,7 +1602,7 @@ main(int argc, char **argv)
     g_object_unref(G_OBJECT(gxml));
 
     gdk_threads_leave();
-    
+
     g_object_unref(G_OBJECT(channel));
     xfconf_shutdown();
 
