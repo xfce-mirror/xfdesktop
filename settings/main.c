@@ -149,8 +149,6 @@ xfdesktop_settings_do_single_preview(GtkTreeModel *model,
                        COL_FILENAME, &filename,
                        -1);
 
-    gdk_threads_leave();
-
     pix = gdk_pixbuf_new_from_file(filename, NULL);
     g_free(filename);
     if(pix) {
@@ -173,8 +171,6 @@ xfdesktop_settings_do_single_preview(GtkTreeModel *model,
     }
     g_free(name);
 
-    gdk_threads_enter();
-
     if(new_name) {
         gtk_list_store_set(GTK_LIST_STORE(model), iter,
                            COL_NAME, new_name,
@@ -196,10 +192,12 @@ xfdesktop_settings_create_some_previews(gpointer data)
     PreviewData *pdata = data;
     GSList *l;
 
-    gdk_threads_enter();
+    GDK_THREADS_ENTER ();
+
     for(l = pdata->iters; l; l = l->next)
         xfdesktop_settings_do_single_preview(pdata->model, l->data);
-    gdk_threads_leave();
+
+    GDK_THREADS_LEAVE ();
 
     g_object_unref(G_OBJECT(pdata->model));
     g_slist_foreach(pdata->iters, (GFunc)gtk_tree_iter_free, NULL);
@@ -216,7 +214,8 @@ xfdesktop_settings_create_all_previews(gpointer data)
     GtkTreeView *tree_view;
     GtkTreeIter iter;
 
-    gdk_threads_enter();
+    GDK_THREADS_ENTER ();
+
     if(gtk_tree_model_get_iter_first(model, &iter)) {
         do {
             xfdesktop_settings_do_single_preview(model, &iter);
@@ -237,7 +236,7 @@ xfdesktop_settings_create_all_previews(gpointer data)
     }
     g_object_set_data(G_OBJECT(model), "xfdesktop-tree-view", NULL);
 
-    gdk_threads_leave();
+    GDK_THREADS_LEAVE ();
 
     g_object_unref(G_OBJECT(model));
 
@@ -1517,9 +1516,6 @@ main(int argc, char **argv)
     GtkWidget *dialog;
     GError *error = NULL;
 
-    g_thread_init(NULL);
-    gdk_threads_init();
-
     xfce_textdomain(GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
 
     if(!gtk_init_with_args(&argc, &argv, "", option_entries, PACKAGE, &error)) {
@@ -1570,8 +1566,6 @@ main(int argc, char **argv)
 
     xfdesktop_settings_dialog_add_screens(gxml, channel);
 
-    gdk_threads_enter();
-
     if(opt_socket_id == 0) {
         dialog = GTK_WIDGET(gtk_builder_get_object(gxml, "prefs_dialog"));
         g_signal_connect(dialog, "response",
@@ -1600,8 +1594,6 @@ main(int argc, char **argv)
     }
 
     g_object_unref(G_OBJECT(gxml));
-
-    gdk_threads_leave();
 
     g_object_unref(G_OBJECT(channel));
     xfconf_shutdown();
