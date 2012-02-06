@@ -2778,6 +2778,92 @@ xfdesktop_file_icon_manager_drag_drop(XfdesktopIconViewManager *manager,
     return TRUE;
 }
 
+static void xfdesktop_dnd_item(GtkWidget *item, GdkDragAction *action)
+{
+    *action = GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(item), "action"));
+}
+
+static void xfdesktop_dnd_item_cancel(GtkWidget *item, GdkDragAction *action)
+{
+    *action = 0;
+}
+
+/**
+ * xfdesktop_dnd_menu:
+ * @manager     : the #XfdesktopIconViewManager instance
+ * @drop_icon   : the #XfdesktopIcon to which is being dropped.
+ * @context     : the #GdkDragContext of the icons being dropped.
+ * @row         : the row on the desktop to drop to.
+ * @col         : the col on the desktop to drop to.
+ * @ time_      : the starting time of the drag event.
+ * Pops up a menu that asks the user to choose one of the
+ * actions or to cancel the drop. Sets context->action to
+ * the new action the user selected or 0 on cancel.
+ * Portions of this code was copied from thunar-dnd.c
+ * Copyright (c) 2005-2006 Benedikt Meurer <benny@xfce.org>
+ * Copyright (c) 2009-2011 Jannis Pohlmann <jannis@xfce.org>
+ **/
+static void xfdesktop_dnd_menu (XfdesktopIconViewManager *manager,
+                                XfdesktopIcon *drop_icon,
+                                GdkDragContext *context,
+                                guint16 row,
+                                guint16 col,
+                                guint time_)
+{
+    static GdkDragAction    actions[] = { GDK_ACTION_COPY, GDK_ACTION_MOVE, GDK_ACTION_LINK };
+    static const gchar      *action_names[] = { N_ ("Copy _Here") , N_ ("_Move Here") , N_ ("_Link Here") };
+    static const gchar      *action_icons[] = { "stock_folder-copy", "stock_folder-move", NULL };
+    GtkWidget *menu;
+    GtkWidget *item;
+    GtkWidget  *image;
+    guint menu_item, signal_id;
+    GMainLoop *loop;
+    gint response;
+    menu = gtk_menu_new();
+
+    /* This adds the Copy, Move, & Link options */
+    for(menu_item = 0; menu_item < G_N_ELEMENTS(actions); menu_item++) {
+        item = gtk_image_menu_item_new_with_mnemonic(_(action_names[menu_item]));
+        gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
+        g_signal_connect(G_OBJECT(item), "activate", G_CALLBACK(xfdesktop_dnd_item), &response);
+        g_object_set_data(G_OBJECT(item), "action", GUINT_TO_POINTER(actions[menu_item]));
+        /* add image to the menu item */
+        if(G_LIKELY(action_icons[menu_item] != NULL)) {
+            image = gtk_image_new_from_icon_name(action_icons[menu_item], GTK_ICON_SIZE_MENU);
+            gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(item), image);
+            gtk_widget_show(image);
+        }
+
+        gtk_widget_show(item);
+    }
+
+    /* Add a seperator */
+    item = gtk_separator_menu_item_new();
+    gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
+    gtk_widget_show(item);
+
+    /* Cancel option */
+    item = gtk_image_menu_item_new_from_stock(GTK_STOCK_CANCEL, NULL);
+    gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
+    g_signal_connect(G_OBJECT(item), "activate", G_CALLBACK(xfdesktop_dnd_item_cancel), &response);
+    gtk_widget_show(item);
+
+    gtk_widget_show(menu);
+    g_object_ref_sink(G_OBJECT(menu));
+
+    /* Loop until we get a user response */
+    loop = g_main_loop_new(NULL, FALSE);
+    signal_id = g_signal_connect_swapped(G_OBJECT(menu), "deactivate", G_CALLBACK(g_main_loop_quit), loop);
+    gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL, 3, time_);
+    g_main_loop_run(loop);
+    g_signal_handler_disconnect(G_OBJECT(menu), signal_id);
+    g_main_loop_unref(loop);
+
+    context->action = response;
+
+    g_object_unref(G_OBJECT(menu));
+}
+
 static void
 xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager,
                                                XfdesktopIcon *drop_icon,
@@ -2794,6 +2880,20 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
     GFile *tfile = NULL;
     gboolean copy_only = TRUE, drop_ok = FALSE;
     GList *file_list;
+    gboolean user_selected_action = FALSE;
+
+    TRACE("entering");
+
+    if(context->action == GDK_ACTION_ASK) {
+        xfdesktop_dnd_menu(manager, drop_icon, context, row, col, time_);
+
+        if(context->action == 0) {
+            gtk_drag_finish(context, FALSE, FALSE, time_);
+            return;
+        }
+        /* The user picked whether to move or copy the files */
+        user_selected_action = TRUE;
+    }
 
     if(info == TARGET_XDND_DIRECT_SAVE0) {
         /* we don't suppose XdndDirectSave stage 3, result F, i.e., the app
@@ -2866,7 +2966,7 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
             tinfo = xfdesktop_file_icon_peek_file_info(file_icon);
         }
         
-        copy_only = (context->action != GDK_ACTION_MOVE);
+        copy_only = (context->action == GDK_ACTION_COPY);
         
         if(tfile && g_file_has_uri_scheme(tfile, "trash") && copy_only) {
             gtk_drag_finish(context, FALSE, FALSE, time_);
@@ -2907,12 +3007,48 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
                     base_dest_file = g_object_ref(fmanager->priv->folder);
                 }
 
+                /* If the user didn't pick whether to copy or move via
+                 * a GDK_ACTION_ASK then determine if we should move/copy
+                 * by checking if the files are on the same file system.
+                 */
+                if(user_selected_action == FALSE) {
+                    GFileInfo *src_info, *dest_info;
+                    const gchar *src_name, *dest_name;
+                    dest_info = g_file_query_info(base_dest_file,
+                                                  G_FILE_ATTRIBUTE_ID_FILESYSTEM,
+                                                  G_FILE_QUERY_INFO_NONE,
+                                                  NULL,
+                                                  NULL);
+                    src_info = g_file_query_info(file_list->data,
+                                                 G_FILE_ATTRIBUTE_ID_FILESYSTEM,
+                                                 G_FILE_QUERY_INFO_NONE,
+                                                 NULL,
+                                                 NULL);
+
+                    if(dest_info != NULL && src_info != NULL) {
+                        dest_name = g_file_info_get_attribute_string(dest_info,
+                                                G_FILE_ATTRIBUTE_ID_FILESYSTEM);
+                        src_name = g_file_info_get_attribute_string(src_info,
+                                                G_FILE_ATTRIBUTE_ID_FILESYSTEM);
+
+                        if(g_strcmp0(src_name, dest_name) == 0) {
+                            copy_only = FALSE;
+                            context->action = GDK_ACTION_MOVE;
+                        }
+                    }
+
+                    if(dest_info != NULL)
+                        g_object_unref(dest_info);
+                    if(src_info != NULL)
+                        g_object_unref(src_info);
+                }
+
                 for (l = file_list; l; l = l->next) {
                     gchar *dest_basename = g_file_get_basename(l->data);
 
                     if(dest_basename && *dest_basename != '\0') {
                         /* If we copy a file, we need to use the new absolute filename
-                         * as the destination. If we move, we need to use the destination
+                         * as the destination. If we move or link, we need to use the destination
                          * directory. */
                         if(copy_only) {
                             GFile *dest_file = g_file_get_child(base_dest_file, dest_basename);
@@ -2936,7 +3072,11 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
                                                                   fmanager->priv->gscreen);
                 }
 
-                xfdesktop_file_utils_file_list_free(dest_file_list);
+                if(copy_only) {
+                    xfdesktop_file_utils_file_list_free(dest_file_list);
+                } else {
+                    g_list_free(dest_file_list);
+                }
             }
         }
     }

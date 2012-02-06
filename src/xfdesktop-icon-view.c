@@ -48,6 +48,7 @@
 
 #include "xfdesktop-icon-view.h"
 #include "xfdesktop-marshal.h"
+#include "xfce-desktop.h"
 
 #include <libwnck/libwnck.h>
 #include <libxfce4ui/libxfce4ui.h>
@@ -744,7 +745,7 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
                     xfdesktop_icon_view_select_item(icon_view, icon);
             }
             
-            if(evt->button == 1) {
+            if(evt->button == 1 || evt->button == 3) {
                 /* we might be the start of a drag */
                 DBG("setting stuff");
                 icon_view->priv->maybe_begin_drag = TRUE;
@@ -752,10 +753,6 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
                 icon_view->priv->definitely_rubber_banding = FALSE;
                 icon_view->priv->press_start_x = evt->x;
                 icon_view->priv->press_start_y = evt->y;
-            } else if(evt->button == 3) {
-                /* XfceDesktop will handle signalling the icon view manager
-                 * to show the context menu */
-                return FALSE;
             }
             
             return TRUE;
@@ -809,8 +806,11 @@ xfdesktop_icon_view_button_release(GtkWidget *widget,
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(user_data);
     
     TRACE("entering btn=%d", evt->button);
-    
-    if(evt->button == 1) {
+
+    if(evt->button == 3 && !icon_view->priv->definitely_dragging && !icon_view->priv->definitely_rubber_banding)
+        xfce_desktop_popup_root_menu(XFCE_DESKTOP(widget), evt->button, evt->time);
+
+    if(evt->button == 1 || evt->button == 3) {
         DBG("unsetting stuff");
         icon_view->priv->definitely_dragging = FALSE;
         icon_view->priv->maybe_begin_drag = FALSE;
@@ -897,9 +897,15 @@ xfdesktop_icon_view_maybe_begin_drag(XfdesktopIconView *icon_view,
     actions = GDK_ACTION_MOVE | (icon_view->priv->drag_source_set ?
                                  icon_view->priv->foreign_source_actions : 0);
     
+    if(evt->state != GDK_BUTTON3_MASK) {
     gtk_drag_begin(GTK_WIDGET(icon_view),
                    icon_view->priv->source_targets,
                    actions, 1, (GdkEvent *)evt);
+    } else {
+        gtk_drag_begin(GTK_WIDGET(icon_view),
+                   icon_view->priv->source_targets,
+                   actions | GDK_ACTION_ASK, 3, (GdkEvent *)evt);
+    }
     
     DBG("DRAG BEGIN!");
     
