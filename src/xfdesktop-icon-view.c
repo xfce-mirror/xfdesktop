@@ -815,8 +815,14 @@ xfdesktop_icon_view_button_release(GtkWidget *widget,
     
     TRACE("entering btn=%d", evt->button);
 
-    if(evt->button == 3 && !icon_view->priv->definitely_dragging && !icon_view->priv->definitely_rubber_banding)
-        xfce_desktop_popup_root_menu(XFCE_DESKTOP(widget), evt->button, evt->time);
+    if((evt->button == 3 || (evt->button == 1 && (evt->state & GDK_SHIFT_MASK))) &&
+       icon_view->priv->definitely_dragging == FALSE &&
+       icon_view->priv->definitely_rubber_banding == FALSE)
+    {
+        xfce_desktop_popup_root_menu(XFCE_DESKTOP(widget),
+                                     evt->button,
+                                     evt->time);
+    }
 
     if(evt->button == 1 || evt->button == 3) {
         DBG("unsetting stuff");
@@ -1876,7 +1882,7 @@ xfdesktop_icon_view_select_between(XfdesktopIconView *icon_view,
     {
         if(start_row > end_row || (start_row == end_row && start_col > end_col)) {
             /* flip start and end */
-            guint16 tmpr = start_row, tmpc = end_row;
+            guint16 tmpr = start_row, tmpc = start_col;
 
             start_row = end_row;
             start_col = end_col;

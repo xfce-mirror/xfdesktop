@@ -861,10 +861,6 @@ xfce_desktop_button_press_event(GtkWidget *w,
             xfce_desktop_popup_secondary_root_menu(XFCE_DESKTOP(w),
                                                    button, evt->time);
             return TRUE;
-        } else if(button == 3 || (button == 1 && (state & GDK_SHIFT_MASK))) {
-            xfce_desktop_popup_root_menu(XFCE_DESKTOP(w),
-                                         button, evt->time);
-            return TRUE;
         }
     }
     
