@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-09 02:06+0000\n"
+"POT-Creation-Date: 2012-02-07 09:12+0000\n"
 "PO-Revision-Date: 2010-11-27 22:17+0800\n"
 "Last-Translator: Chipong Luo <chipong_l@yahoo.com>\n"
 "Language-Team: Chinese (Simplified) <xfce-i18n@xfce.org>\n"
@@ -28,7 +28,7 @@ msgid "Backdrop list file is not valid"
 msgstr "背景列表文件无效"
 
 #. no need to escape markup; it's already done for us
-#: ../settings/main.c:163
+#: ../settings/main.c:161
 #, c-format
 msgid ""
 "%s\n"
@@ -37,129 +37,128 @@ msgstr ""
 "%s\n"
 "<i>大小：%dx%d</i>"
 
-#: ../settings/main.c:289 ../src/xfdesktop-special-file-icon.c:256
+#: ../settings/main.c:288 ../src/xfdesktop-special-file-icon.c:256
 #: ../src/xfdesktop-special-file-icon.c:419
 msgid "Home"
 msgstr "主文件夹"
 
-#: ../settings/main.c:291
+#: ../settings/main.c:290
 msgid "Filesystem"
 msgstr "文件系统"
 
-#: ../settings/main.c:293
+#: ../settings/main.c:292
 msgid "Trash"
 msgstr "回收站"
 
-#: ../settings/main.c:295
+#: ../settings/main.c:294
 msgid "Removable Devices"
 msgstr "可移动设备"
 
-#: ../settings/main.c:475
+#: ../settings/main.c:474
 #, c-format
 msgid "Cannot create backdrop list \"%s\""
 msgstr "未能创建背景列表 “%s”"
 
-#: ../settings/main.c:479 ../settings/main.c:802
+#: ../settings/main.c:478 ../settings/main.c:801
 msgid "Backdrop List Error"
 msgstr "背景列表错误"
 
-#: ../settings/main.c:504
+#: ../settings/main.c:503
 msgid "Create/Load Backdrop List"
 msgstr "创建/载入背景列表"
 
-#: ../settings/main.c:528
+#: ../settings/main.c:527
 #, c-format
 msgid ""
 "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
 msgstr ""
-"“%s” 不是有效的背景列表文件。"
-"您想要改写它吗？"
+"“%s” 不是有效的背景列表文件。您想要改写它吗？"
 
-#: ../settings/main.c:533
+#: ../settings/main.c:532
 msgid "Invalid List File"
 msgstr "无效的列表文件"
 
-#: ../settings/main.c:536
+#: ../settings/main.c:535
 msgid "Overwriting the file will cause its contents to be lost."
 msgstr "改写文件会导致其内容丢失。"
 
-#: ../settings/main.c:538
+#: ../settings/main.c:537
 msgid "Replace"
 msgstr "替换"
 
-#: ../settings/main.c:798
+#: ../settings/main.c:797
 #, c-format
 msgid "Failed to write backdrop list to \"%s\""
 msgstr "无法将背景列表写入 “%s”。"
 
-#: ../settings/main.c:825
+#: ../settings/main.c:824
 msgid "Add Image File(s)"
 msgstr "添加图片文件"
 
-#: ../settings/main.c:834
+#: ../settings/main.c:833
 msgid "Image files"
 msgstr "图片文件"
 
-#: ../settings/main.c:839
+#: ../settings/main.c:838
 msgid "All files"
 msgstr "所有文件"
 
-#: ../settings/main.c:1271
+#: ../settings/main.c:1270
 #, c-format
 msgid "Screen %d, Monitor %d (%s)"
 msgstr "屏幕 %d，显示器 %d(%s)"
 
-#: ../settings/main.c:1275
+#: ../settings/main.c:1274
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "屏幕 %d，显示器 %d"
 
-#: ../settings/main.c:1278
+#: ../settings/main.c:1277
 #, c-format
 msgid "Screen %d"
 msgstr "屏幕 %d"
 
-#: ../settings/main.c:1283
+#: ../settings/main.c:1282
 #, c-format
 msgid "Monitor %d (%s)"
 msgstr "显示器 %d(%s)"
 
-#: ../settings/main.c:1287
+#: ../settings/main.c:1286
 #, c-format
 msgid "Monitor %d"
 msgstr "显示器 %d"
 
-#: ../settings/main.c:1500
+#: ../settings/main.c:1506
 msgid "Settings manager socket"
 msgstr "设置管理器套接字"
 
-#: ../settings/main.c:1500
+#: ../settings/main.c:1506
 msgid "SOCKET ID"
 msgstr "套接字 ID"
 
-#: ../settings/main.c:1501
+#: ../settings/main.c:1507
 msgid "Version information"
 msgstr "版本信息"
 
-#: ../settings/main.c:1521
+#: ../settings/main.c:1524
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "输入 ‘%s --help’ 获取用法。"
 
-#: ../settings/main.c:1533
+#: ../settings/main.c:1536
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce 开发团队。保留所有权利。"
 
-#: ../settings/main.c:1534
+#: ../settings/main.c:1537
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "请向 <%s> 报告缺陷。"
 
-#: ../settings/main.c:1541
+#: ../settings/main.c:1544
 msgid "Desktop Settings"
 msgstr "桌面设置"
 
-#: ../settings/main.c:1543
+#: ../settings/main.c:1546
 msgid "Unable to contact settings server"
 msgstr "未能与设置服务器联系"
 
@@ -169,7 +168,7 @@ msgstr "桌面 "
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Set desktop background and menu and icon behaviour"
-msgstr "设置桌面背景和菜单，以及图标行为"
+msgstr "设置桌面背景和菜单以及图标行为"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
 msgid "<b>Adjustments</b>"
@@ -271,9 +270,7 @@ msgstr "指定渐变区 “右边” 或 “下边” 的颜色"
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
 msgid ""
 "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr ""
-"指定纯色，或渐变区 “左边” 或 “上边” 的"
-"颜色"
+msgstr "指定纯色，或渐变区 “左边” 或 “上边” 的颜色"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid "Specify how the image will be resized to fit the screen"
@@ -398,7 +395,7 @@ msgstr "右"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:24
 msgid "Set desktop background and menu and icon behavior"
-msgstr "设置桌面背景和菜单，以及图标行为"
+msgstr "设置桌面背景和菜单以及图标行为"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:25
 msgid "Sh_ow application icons in menu"
@@ -432,7 +429,7 @@ msgstr "在列表中显示工作区名称(_N)"
 msgid ""
 "Specify the transparency level for the rounded label drawn behind the icon "
 "text"
-msgstr "指定图标文字后的园角标签绘制的透明度等级"
+msgstr "指定图标文字后的圆角标签绘制的透明度等级"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "Use _submenus for the windows in each workspace"
@@ -480,7 +477,7 @@ msgstr "弹出窗口列表(在当前的鼠标位置)"
 
 #: ../src/main.c:242
 msgid "Cause xfdesktop to quit"
-msgstr "导致 xfdesktop 退出"
+msgstr "导致 Xfdesktop 退出"
 
 #: ../src/main.c:262
 #, c-format
@@ -509,11 +506,11 @@ msgstr "    桌面菜单：        %s\n"
 
 #: ../src/main.c:279 ../src/main.c:286 ../src/main.c:293
 msgid "enabled"
-msgstr "启用"
+msgstr "已启用"
 
 #: ../src/main.c:281 ../src/main.c:288 ../src/main.c:295
 msgid "disabled"
-msgstr "禁用"
+msgstr "已禁用"
 
 #: ../src/main.c:284
 #, c-format
@@ -591,8 +588,7 @@ msgstr "桌面文件夹错误"
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr ""
-"一个正常的同名文件已经存在。"
-"请删除或重命名它。"
+"一个正常的同名文件已经存在。请删除或重命名它。"
 
 #: ../src/xfdesktop-file-icon-manager.c:592
 #: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:880
@@ -617,8 +613,8 @@ msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
 msgstr ""
-"此功能需要有文件管理器服务存在(比如 "
-"Thunar 所提供的功能)。"
+"此功能需要有文件管理器服务存在(比如 Thunar "
+"所提供的功能)。"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:738
@@ -652,8 +648,8 @@ msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr ""
-"未能启动 “exo-desktop-item-edit”，"
-"它是在桌面上创建和编辑启动器和链接所需的。"
+"未能启动 “exo-desktop-item-edit”，它是"
+"在桌面上创建和编辑启动器和链接所需的。"
 
 #: ../src/xfdesktop-file-icon-manager.c:1358
 msgid "_Open all"
@@ -787,8 +783,8 @@ msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
 msgstr ""
-"此功能需要有回收站服务存在(比如 Thunar "
-"所提供的功能)。"
+"此功能需要有回收站服务存在(比如 Thunar 所"
+"提供的功能)。"
 
 #: ../src/xfdesktop-file-utils.c:928 ../src/xfdesktop-file-utils.c:942
 msgid "Could not empty the trash"
@@ -853,8 +849,8 @@ msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the "
 "media or disconnect the drive"
 msgstr ""
-"系统正在卸载设备 “%s”。"
-"请不要移除介质或断开驱动器。"
+"系统正在卸载设备 “%s”。请不要移除"
+"介质或断开驱动器。"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
@@ -868,8 +864,8 @@ msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be "
 "removed. Please do not remove the media or disconnect the drive"
 msgstr ""
-"在可以移除设备 “%s” 之前有数据需要"
-"写入其中。请不要移除介质或断开驱动器"
+"在可以移除设备 “%s” 之前有数据需要写入"
+"其中。请不要移除介质或断开驱动器"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:253
