@@ -47,6 +47,7 @@
 #endif
 
 #include "xfdesktop-icon-view.h"
+#include "xfdesktop-file-icon-manager.h"
 #include "xfdesktop-marshal.h"
 #include "xfce-desktop.h"
 
@@ -2795,10 +2796,16 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
 static void
 xfdesktop_grid_do_resize(XfdesktopIconView *icon_view)
 {
+    XfdesktopFileIconManager *fmanager;
     GList *l, *leftovers = NULL;
     
-    /* move all icons into the pending_icons list */
+    //* move all icons into the pending_icons list and remove from the desktop */
     for(l = icon_view->priv->icons; l; l = l->next) {
+        guint16 old_row, old_col;
+
+        if(xfdesktop_icon_get_position(XFDESKTOP_ICON(l->data), &old_row, &old_col))
+            xfdesktop_grid_set_position_free(icon_view, old_row, old_col);
+
         g_signal_handlers_disconnect_by_func(G_OBJECT(l->data),
                                              G_CALLBACK(xfdesktop_icon_view_icon_changed),
                                              icon_view);
@@ -2816,10 +2823,28 @@ xfdesktop_grid_do_resize(XfdesktopIconView *icon_view)
     xfdesktop_setup_grids(icon_view);
     
     DUMP_GRID_LAYOUT(icon_view);
-    
+
+#ifdef ENABLE_FILE_ICONS    
+    fmanager = XFDESKTOP_FILE_ICON_MANAGER(icon_view->priv->manager);
+#endif
+
     /* add all icons back */
     for(l = icon_view->priv->pending_icons; l; l = l->next) {
+        gint16 row, col;
         XfdesktopIcon *icon = XFDESKTOP_ICON(l->data);
+
+#ifdef ENABLE_FILE_ICONS
+        /* Try to get the cached position for the new resolution */
+        if(xfdesktop_file_icon_manager_get_cached_icon_position(
+                                                            fmanager,
+                                                            xfdesktop_icon_peek_label(icon),
+                                                            &row,
+                                                            &col))
+        {
+            xfdesktop_icon_set_position(icon, row, col);
+        }
+#endif
+
         if(xfdesktop_icon_view_icon_find_position(icon_view, icon))
             xfdesktop_icon_view_add_item_internal(icon_view, icon);
         else

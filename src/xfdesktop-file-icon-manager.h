@@ -68,6 +68,11 @@ void xfdesktop_file_icon_manager_set_show_thumbnails(XfdesktopFileIconManager *m
                                                      gboolean show_thumbnails);
 gboolean xfdesktop_file_icon_manager_get_show_thumbnails(XfdesktopFileIconManager *manager);
 
+gboolean xfdesktop_file_icon_manager_get_cached_icon_position(
+                                                    XfdesktopFileIconManager *fmanager,
+                                                    const gchar *name,
+                                                    gint16 *row,
+                                                    gint16 *col);
 
 G_END_DECLS
 
