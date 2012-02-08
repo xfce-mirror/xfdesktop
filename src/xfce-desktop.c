@@ -336,13 +336,7 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     if(!pix)
         return;
     
-    if(desktop->priv->nbackdrops == 1) {
-        /* single monitor */
-        rect.x = rect.y = 0;
-        rect.width = gdk_screen_get_width(gscreen);
-        rect.height = gdk_screen_get_height(gscreen);
-    } else
-        gdk_screen_get_monitor_geometry(gscreen, monitor, &rect);
+    gdk_screen_get_monitor_geometry(gscreen, monitor, &rect);
 
     gdk_draw_pixbuf(GDK_DRAWABLE(pmap), GTK_WIDGET(desktop)->style->black_gc,
                     pix, 0, 0, rect.x, rect.y,
