@@ -7,13 +7,13 @@
 # Chris K. Zhang <plutino@gmail.com>, 2009.
 # Aron Xu <aronmalache@163.com>, 2009.
 # Hunt Xu <huntxu@live.cn>, 2009, 2010.
-# Chipong Luo <chipong_l@yahoo.com>, 2012.
+# Chipong Luo <chipong.luo@yahoo.com>, 2011, 2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-07 09:12+0000\n"
+"POT-Creation-Date: 2012-02-08 02:36+0000\n"
 "PO-Revision-Date: 2010-11-27 22:17+0800\n"
 "Last-Translator: Chipong Luo <chipong_l@yahoo.com>\n"
 "Language-Team: Chinese (Simplified) <xfce-i18n@xfce.org>\n"
@@ -71,8 +71,7 @@ msgstr "创建/载入背景列表"
 #, c-format
 msgid ""
 "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
-"“%s” 不是有效的背景列表文件。您想要改写它吗？"
+msgstr "“%s” 不是有效的背景列表文件。您想要改写它吗？"
 
 #: ../settings/main.c:532
 msgid "Invalid List File"
@@ -587,8 +586,7 @@ msgstr "桌面文件夹错误"
 #: ../src/xfdesktop-file-icon-manager.c:489
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
-msgstr ""
-"一个正常的同名文件已经存在。请删除或重命名它。"
+msgstr "一个正常的同名文件已经存在。请删除或重命名它。"
 
 #: ../src/xfdesktop-file-icon-manager.c:592
 #: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:880
@@ -612,9 +610,7 @@ msgstr "未能废弃选中的文件"
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
-msgstr ""
-"此功能需要有文件管理器服务存在(比如 Thunar "
-"所提供的功能)。"
+msgstr "此功能需要有文件管理器服务存在(比如 Thunar 所提供的功能)。"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:738
@@ -648,8 +644,7 @@ msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr ""
-"未能启动 “exo-desktop-item-edit”，它是"
-"在桌面上创建和编辑启动器和链接所需的。"
+"未能启动 “exo-desktop-item-edit”，它是在桌面上创建和编辑启动器和链接所需的。"
 
 #: ../src/xfdesktop-file-icon-manager.c:1358
 msgid "_Open all"
@@ -782,9 +777,7 @@ msgstr "未能将选中的文件移至回收站"
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
-msgstr ""
-"此功能需要有回收站服务存在(比如 Thunar 所"
-"提供的功能)。"
+msgstr "此功能需要有回收站服务存在(比如 Thunar 所提供的功能)。"
 
 #: ../src/xfdesktop-file-utils.c:928 ../src/xfdesktop-file-utils.c:942
 msgid "Could not empty the trash"
@@ -848,9 +841,7 @@ msgstr "正在卸载设备"
 msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the "
 "media or disconnect the drive"
-msgstr ""
-"系统正在卸载设备 “%s”。请不要移除"
-"介质或断开驱动器。"
+msgstr "系统正在卸载设备 “%s”。请不要移除介质或断开驱动器。"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
@@ -863,9 +854,7 @@ msgstr "正在向设备写入数据"
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be "
 "removed. Please do not remove the media or disconnect the drive"
-msgstr ""
-"在可以移除设备 “%s” 之前有数据需要写入"
-"其中。请不要移除介质或断开驱动器"
+msgstr "在可以移除设备 “%s” 之前有数据需要写入其中。请不要移除介质或断开驱动器"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:253
