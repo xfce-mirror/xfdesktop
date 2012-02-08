@@ -1,4 +1,4 @@
-README for xfdesktop version 4.5
+README for xfdesktop
 ================================
 
 WHAT IS IT?
@@ -40,7 +40,7 @@ You'd want to add something like this to your ~/.gtkrc-2.0 file:
 style "xfdesktop-icon-view" {
     XfdesktopIconView::label-alpha = 75
     XfdesktopIconView::selected-label-alpha = 100
-    XfdesktopIconVIew::ellipsize-icon-labels = 1
+    XfdesktopIconView::ellipsize-icon-labels = 1
     XfdesktopIconView::tooltip-size = 128
 
     XfdesktopIconView::shadow-x-offset = 1
@@ -50,7 +50,7 @@ style "xfdesktop-icon-view" {
     XfdesktopIconView::selected-shadow-y-offset = 2
     XfdesktopIconView::selected-shadow-color = "#00ff00"
 
-    XfdesktopIconVIew::cell-spacing = 6
+    XfdesktopIconView::cell-spacing = 6
     XfdesktopIconView::cell-padding = 6
     XfdesktopIconView::cell-text-width-proportion = 2.5
 
