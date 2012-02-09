@@ -107,6 +107,8 @@ typedef struct
 
     GtkWidget *backdrop_cycle_spinbox;
     GtkWidget *backdrop_cycle_chkbox;
+
+    GtkWidget *chk_xinerama_stretch;
 } AppearancePanel;
 
 typedef struct
@@ -1459,6 +1461,23 @@ xfdesktop_settings_dialog_add_screens(GtkBuilder *main_gxml,
                                                                    "btn_newlist"));
             g_signal_connect(G_OBJECT(panel->btn_newlist), "clicked",
                              G_CALLBACK(newlist_button_clicked), panel);
+
+            panel->chk_xinerama_stretch = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
+                                                                            "chk_xinerama_stretch"));
+
+            /* The first monitor has the option of doing the xinerama-stretch,
+             * but only if there's multiple monitors attached. Make it invisible
+             * in all other cases.
+             */
+            if(j == 0 && nmonitors > 1) {
+                g_snprintf(buf, sizeof(buf), "/backdrop/screen%d/xinerama-stretch",
+                           i);
+                xfconf_g_property_bind(channel, buf, G_TYPE_BOOLEAN,
+                                        G_OBJECT(panel->chk_xinerama_stretch), "active");
+                gtk_widget_set_sensitive(panel->chk_xinerama_stretch, TRUE);
+            } else {
+                gtk_widget_hide(panel->chk_xinerama_stretch);
+            }
 
             panel->backdrop_cycle_chkbox = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
                                                                              "chk_cycle_backdrop"));
