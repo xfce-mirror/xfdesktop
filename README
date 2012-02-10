@@ -41,6 +41,7 @@ style "xfdesktop-icon-view" {
     XfdesktopIconView::label-alpha = 75
     XfdesktopIconView::selected-label-alpha = 100
     XfdesktopIconVIew::ellipsize-icon-labels = 1
+    XfdesktopIconView::tooltip-size = 128
 
     XfdesktopIconView::shadow-x-offset = 1
     XfdesktopIconView::shadow-y-offset = 1
@@ -63,11 +64,14 @@ style "xfdesktop-icon-view" {
 }
 widget_class "*XfdesktopIconView*" style "xfdesktop-icon-view"
 
-The first three entries set the opacity of the rounded text background
+The first four entries set the opacity of the rounded text background
 (allowed values are from 0 (totally transparent) to 255 (totally opaque),
 and whether or not unselected icons get their labels ellipsized
 (truncated) to fit on one line.  (The 'selected-' version controls the
-opacity of icons that have been selected with the mouse.)
+opacity of icons that have been selected with the mouse.) The tooltip-size
+determines how large the image preview will be when the mouse is hovered
+over an icon (allowed values are from 0 (not shown) to 512, values larger
+than 256 may cause poor image quality however.)
 
 The second six entries can be used to enable a text shadow to be painted
 with the icon labels.  The offsets are in pixels.  Setting them to 0 (the

@@ -73,6 +73,9 @@ struct _XfdesktopIconClass
     
     G_CONST_RETURN gchar *(*peek_tooltip)(XfdesktopIcon *icon);
     
+    void (*set_thumbnail_file)(XfdesktopIcon *icon, GFile *file);
+    void (*delete_thumbnail_file)(XfdesktopIcon *icon);
+
     gboolean (*populate_context_menu)(XfdesktopIcon *icon,
                                       GtkWidget *menu);
 };
@@ -105,6 +108,9 @@ gboolean xfdesktop_icon_populate_context_menu(XfdesktopIcon *icon,
 
 GtkWidget *xfdesktop_icon_peek_icon_view(XfdesktopIcon *icon);
 
+void xfdesktop_icon_set_thumbnail_file(XfdesktopIcon *icon, GFile *file);
+void xfdesktop_icon_delete_thumbnail(XfdesktopIcon *icon);
+
 /*< signal triggers >*/
 
 void xfdesktop_icon_pixbuf_changed(XfdesktopIcon *icon);
@@ -123,7 +129,6 @@ gboolean xfdesktop_icon_get_extents(XfdesktopIcon *icon,
                                     GdkRectangle *pixbuf_extents,
                                     GdkRectangle *text_extents,
                                     GdkRectangle *total_extents);
-void xfdesktop_icon_mark_extents_dirty(XfdesktopIcon *icon);
 
 G_END_DECLS
 

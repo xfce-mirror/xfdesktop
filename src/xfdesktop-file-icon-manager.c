@@ -71,6 +71,7 @@
 #include "xfdesktop-special-file-icon.h"
 #include "xfdesktop-trash-proxy.h"
 #include "xfdesktop-volume-icon.h"
+#include "xfdesktop-thumbnailer.h"
 
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4ui/libxfce4ui.h>
@@ -82,6 +83,7 @@
 #define SETTING_SHOW_HOME        "/desktop-icons/file-icons/show-home"
 #define SETTING_SHOW_TRASH       "/desktop-icons/file-icons/show-trash"
 #define SETTING_SHOW_REMOVABLE   "/desktop-icons/file-icons/show-removable"
+#define SETTING_SHOW_THUMBNAILS  "/desktop-icons/show-thumbnails"
 
 enum
 {
@@ -91,6 +93,7 @@ enum
     PROP_SHOW_HOME,
     PROP_SHOW_TRASH,
     PROP_SHOW_REMOVABLE,
+    PROP_SHOW_THUMBNAILS
 };
 
 struct _XfdesktopFileIconManagerPrivate
@@ -117,6 +120,7 @@ struct _XfdesktopFileIconManagerPrivate
     
     gboolean show_removable_media;
     gboolean show_special[XFDESKTOP_SPECIAL_FILE_ICON_TRASH+1];
+    gboolean show_thumbnails;
     
     guint save_icons_id;
     
@@ -129,6 +133,8 @@ struct _XfdesktopFileIconManagerPrivate
     GList *thunarx_menu_providers;
     GList *thunarx_properties_providers;
 #endif
+
+    XfdesktopThumbnailer *thumbnailer;
 };
 
 static void xfdesktop_file_icon_manager_set_property(GObject *object,
@@ -175,6 +181,10 @@ static void xfdesktop_file_icon_manager_remove_removable_media(XfdesktopFileIcon
 static void xfdesktop_file_icon_position_changed(XfdesktopFileIcon *icon,
                                                  gpointer user_data);
 
+static void xfdesktop_file_icon_manager_update_image(GtkWidget *widget,
+                                                     gchar *srcfile,
+                                                     gchar *thumbfile,
+                                                     XfdesktopFileIconManager *fmanager);
 
 G_DEFINE_TYPE_EXTENDED(XfdesktopFileIconManager,
                        xfdesktop_file_icon_manager,
@@ -264,6 +274,12 @@ xfdesktop_file_icon_manager_class_init(XfdesktopFileIconManagerClass *klass)
                                                          "show removable",
                                                          TRUE,
                                                          XFDESKTOP_PARAM_FLAGS));
+    g_object_class_install_property(gobject_class, PROP_SHOW_THUMBNAILS,
+                                    g_param_spec_boolean("show-thumbnails",
+                                                         "show-thumbnails",
+                                                         "show-thumbnails",
+                                                         TRUE,
+                                                         XFDESKTOP_PARAM_FLAGS));
 #undef XFDESKTOP_PARAM_FLAGS
 
     xfdesktop_app_info_quark = g_quark_from_static_string("xfdesktop-app-info-quark");
@@ -282,6 +298,10 @@ xfdesktop_file_icon_manager_init(XfdesktopFileIconManager *fmanager)
                                                        n_drag_targets);
     fmanager->priv->drop_targets = gtk_target_list_new(drop_targets,
                                                        n_drop_targets);
+
+    fmanager->priv->thumbnailer = xfdesktop_thumbnailer_new();
+
+    g_signal_connect(G_OBJECT(fmanager->priv->thumbnailer), "thumbnail-ready", G_CALLBACK(xfdesktop_file_icon_manager_update_image), fmanager);
 }
 
 static void
@@ -321,6 +341,11 @@ xfdesktop_file_icon_manager_set_property(GObject *object,
                                                                  g_value_get_boolean(value));
             break;
 
+        case PROP_SHOW_THUMBNAILS:
+            xfdesktop_file_icon_manager_set_show_thumbnails(fmanager,
+                                                            g_value_get_boolean(value));
+            break;
+
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
     }
@@ -357,6 +382,10 @@ xfdesktop_file_icon_manager_get_property(GObject *object,
         case PROP_SHOW_REMOVABLE:
             g_value_set_boolean(value, fmanager->priv->show_removable_media);
             break;
+
+        case PROP_SHOW_THUMBNAILS:
+            g_value_set_boolean(value, fmanager->priv->show_thumbnails);
+            break;
         
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
@@ -377,6 +406,7 @@ xfdesktop_file_icon_manager_finalize(GObject *obj)
     gtk_target_list_unref(fmanager->priv->drop_targets);
     
     g_object_unref(fmanager->priv->folder);
+    g_object_unref(fmanager->priv->thumbnailer);
     
     G_OBJECT_CLASS(xfdesktop_file_icon_manager_parent_class)->finalize(obj);
 }
@@ -1829,6 +1859,15 @@ xfdesktop_file_icon_manager_add_icon(XfdesktopFileIconManager *fmanager,
     gint16 row = -1, col = -1;
     gboolean do_add = FALSE;
     const gchar *name;
+    GFile *file;
+
+    file = xfdesktop_file_icon_peek_file(icon);
+
+    if(fmanager->priv->show_thumbnails && g_file_get_path(file) != NULL) {
+        xfdesktop_thumbnailer_queue_thumbnail(fmanager->priv->thumbnailer,
+                                              g_file_get_path(file));
+    }
+
     
     name = xfdesktop_icon_peek_label(XFDESKTOP_ICON(icon));
     if(xfdesktop_file_icon_manager_get_cached_icon_position(fmanager, name,
@@ -1839,7 +1878,6 @@ xfdesktop_file_icon_manager_add_icon(XfdesktopFileIconManager *fmanager,
         do_add = TRUE;
     } else {
         if(defer_if_missing) {
-            GFile *file = xfdesktop_file_icon_peek_file(icon);
             fmanager->priv->deferred_icons = g_list_prepend(fmanager->priv->deferred_icons,
                                                             g_object_ref(file));
         } else
@@ -2195,6 +2233,13 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
 
             icon = g_hash_table_lookup(fmanager->priv->icons, file);
             if(icon) {
+                /* Always try to remove thumbnail so it doesn't take up
+                 * space on the user's disk.
+                 */
+                xfdesktop_thumbnailer_delete_thumbnail(fmanager->priv->thumbnailer,
+                                                       g_file_get_path(file));
+                xfdesktop_icon_delete_thumbnail(XFDESKTOP_ICON(icon));
+
                 xfdesktop_icon_view_remove_item(fmanager->priv->icon_view,
                                                 XFDESKTOP_ICON(icon));
                 g_hash_table_remove(fmanager->priv->icons, file);
@@ -3136,6 +3181,8 @@ xfdesktop_file_icon_manager_new(GFile *folder,
                            G_OBJECT(fmanager), "show-trash");
     xfconf_g_property_bind(channel, SETTING_SHOW_REMOVABLE, G_TYPE_BOOLEAN,
                            G_OBJECT(fmanager), "show-removable");
+    xfconf_g_property_bind(channel, SETTING_SHOW_THUMBNAILS, G_TYPE_BOOLEAN,
+                           G_OBJECT(fmanager), "show-thumbnails");
 
     return XFDESKTOP_ICON_VIEW_MANAGER(fmanager);
 }
@@ -3165,6 +3212,64 @@ xfdesktop_file_icon_manager_get_show_removable_media(XfdesktopFileIconManager *m
 {
     g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON_MANAGER(manager), FALSE);
     return manager->priv->show_removable_media;
+}
+
+static void
+xfdesktop_file_icon_manager_requeue_thumbnails(gpointer key,
+                                               gpointer value,
+                                               gpointer data)
+{
+    GFile *file = key;
+    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(data);
+
+    xfdesktop_thumbnailer_queue_thumbnail(fmanager->priv->thumbnailer,
+                                          g_file_get_path(file));
+}
+
+static void
+xfdesktop_file_icon_manager_remove_thumbnails(gpointer key,
+                                              gpointer value,
+                                              gpointer data)
+{
+    XfdesktopRegularFileIcon *icon = XFDESKTOP_REGULAR_FILE_ICON(value);
+
+    xfdesktop_icon_delete_thumbnail(XFDESKTOP_ICON(icon));
+}
+
+void
+xfdesktop_file_icon_manager_set_show_thumbnails(XfdesktopFileIconManager *manager,
+                                                gboolean show_thumbnails)
+{
+    g_return_if_fail(XFDESKTOP_IS_FILE_ICON_MANAGER(manager));
+
+    if(show_thumbnails == manager->priv->show_thumbnails)
+        return;
+
+    manager->priv->show_thumbnails = show_thumbnails;
+
+    if(!manager->priv->inited)
+        return;
+
+    if(show_thumbnails) {
+        /* We have to request to create the thumbnails everytime. */
+         g_hash_table_foreach(manager->priv->icons,
+                         xfdesktop_file_icon_manager_requeue_thumbnails,
+                         manager);
+    } else {
+        /* We have to remove the thumbnails because the regular file
+         * icons can't easily check if thumbnails are allowed.
+         */
+         g_hash_table_foreach(manager->priv->icons,
+                         xfdesktop_file_icon_manager_remove_thumbnails,
+                         manager);
+    }
+}
+
+gboolean
+xfdesktop_file_icon_manager_get_show_thumbnails(XfdesktopFileIconManager *manager)
+{
+    g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON_MANAGER(manager), FALSE);
+    return manager->priv->show_thumbnails;
 }
 
 void
@@ -3207,4 +3312,27 @@ xfdesktop_file_icon_manager_get_show_special_file(XfdesktopFileIconManager *mana
                          FALSE);
     
     return manager->priv->show_special[type];
+}
+
+static void
+xfdesktop_file_icon_manager_update_image(GtkWidget *widget,
+                                         gchar *srcfile,
+                                         gchar *thumbfile,
+                                         XfdesktopFileIconManager *manager)
+{
+    GFile *file;
+    XfdesktopIcon *icon;
+
+    g_return_if_fail(srcfile && thumbfile);
+    g_return_if_fail(XFDESKTOP_FILE_ICON_MANAGER(manager));
+
+    file = g_file_new_for_path(srcfile);
+
+    icon = g_hash_table_lookup(manager->priv->icons, file);
+    if(icon)
+    {
+        g_object_unref(file);
+        file = g_file_new_for_path(thumbfile);
+        xfdesktop_icon_set_thumbnail_file(icon, file);
+    }
 }

@@ -169,6 +169,7 @@ struct _XfdesktopIconViewPrivate
     gdouble cell_text_width_proportion;
 
     gboolean ellipsize_icon_labels;
+    guint    tooltip_size;
 };
 
 static gboolean xfdesktop_icon_view_button_press(GtkWidget *widget,
@@ -545,6 +546,13 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
                                                                 "The radius of the rounded corners of the text background",
                                                                 0.0, 50.0, 4.0,
                                                                 G_PARAM_READABLE));
+
+    gtk_widget_class_install_style_property(widget_class,
+                                            g_param_spec_uint("tooltip-size",
+                                                              "Tooltip Image Size",
+                                                              "The size of the tooltip image preview",
+                                                              0, 512, 128,
+                                                              G_PARAM_READABLE));
 
     /* same binding entries as GtkIconView */
     gtk_binding_entry_add_signal(binding_set, GDK_a, GDK_CONTROL_MASK,
@@ -932,7 +940,13 @@ xfdesktop_icon_view_show_tooltip(GtkWidget *widget,
     tip_text = xfdesktop_icon_peek_tooltip(icon_view->priv->item_under_pointer);
     if(!tip_text)
         return FALSE;
-    
+
+    if(icon_view->priv->tooltip_size > 0) {
+        gtk_tooltip_set_icon(tooltip,
+                xfdesktop_icon_peek_pixbuf(icon_view->priv->item_under_pointer,
+                                           icon_view->priv->tooltip_size));
+    }
+
     gtk_tooltip_set_text(tooltip, tip_text);
 
     return TRUE;
@@ -1382,7 +1396,6 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
         
         /* clear out old extents, if any */
         /* FIXME: is this right? */
-        //xfdesktop_icon_mark_extents_dirty(icon);
         xfdesktop_icon_view_invalidate_icon(icon_view, icon, TRUE);
         
         DBG("drag succeeded");
@@ -1520,12 +1533,14 @@ xfdesktop_icon_view_style_set(GtkWidget *widget,
                          "cell-padding", &icon_view->priv->cell_padding,
                          "cell-text-width-proportion", &icon_view->priv->cell_text_width_proportion,
                          "ellipsize-icon-labels", &icon_view->priv->ellipsize_icon_labels,
+                         "tooltip-size", &icon_view->priv->tooltip_size,
                          NULL);
 
     DBG("cell spacing is %d", icon_view->priv->cell_spacing);
     DBG("cell padding is %d", icon_view->priv->cell_padding);
     DBG("cell text width proportion is %f", icon_view->priv->cell_text_width_proportion);
     DBG("ellipsize icon label is %s", icon_view->priv->ellipsize_icon_labels?"true":"false");
+    DBG("tooltip size is %d", icon_view->priv->tooltip_size);
 
     if(icon_view->priv->selection_box_color) {
         gdk_color_free(icon_view->priv->selection_box_color);
@@ -2628,29 +2643,17 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
 
     playout = icon_view->priv->playout;
     
-    if(xfdesktop_icon_get_extents(icon, &pixbuf_extents,
-                                   &text_extents, &total_extents))
+    xfdesktop_icon_get_extents(icon, &pixbuf_extents,
+                               &text_extents, &total_extents);
+    xfdesktop_icon_view_setup_pango_layout(icon_view, icon, playout);
+
+    if(!xfdesktop_icon_view_update_icon_extents(icon_view, icon,
+                                                &pixbuf_extents,
+                                                &text_extents,
+                                                &total_extents))
     {
-        xfdesktop_icon_view_setup_pango_layout(icon_view, icon, playout);
-    } else {
-        /* if we get here, it's likely that the expose area doesn't
-         * include everything we *actually* need to repaint.  the
-         * extents should be recalculated before invalidating rects
-         * in the first place.  for now just fix it up and re-expose
-         * the correct area. */
-        if(!xfdesktop_icon_view_update_icon_extents(icon_view, icon,
-                                                    &pixbuf_extents,
-                                                    &text_extents,
-                                                    &total_extents))
-        {
-            g_warning("Can't update extents for icon '%s'",
-                      xfdesktop_icon_peek_label(icon));
-        } else {
-            gtk_widget_queue_draw_area(GTK_WIDGET(icon_view),
-                                       total_extents.x, total_extents.y,
-                                       total_extents.width, total_extents.height);
-        }
-        return;
+        g_warning("Can't update extents for icon '%s'",
+                  xfdesktop_icon_peek_label(icon));
     }
 
     if(g_list_find(icon_view->priv->selected_icons, icon)) {
@@ -2790,7 +2793,6 @@ xfdesktop_grid_do_resize(XfdesktopIconView *icon_view)
     
     /* move all icons into the pending_icons list */
     for(l = icon_view->priv->icons; l; l = l->next) {
-        xfdesktop_icon_mark_extents_dirty(XFDESKTOP_ICON(l->data));
         g_signal_handlers_disconnect_by_func(G_OBJECT(l->data),
                                              G_CALLBACK(xfdesktop_icon_view_icon_changed),
                                              icon_view);
@@ -3210,7 +3212,6 @@ xfdesktop_icon_view_remove_item(XfdesktopIconView *icon_view,
         
         if(xfdesktop_icon_get_position(icon, &row, &col)) {
             xfdesktop_icon_view_invalidate_icon(icon_view, icon, FALSE);
-            xfdesktop_icon_mark_extents_dirty(icon);
             xfdesktop_grid_set_position_free(icon_view, row, col);
         }
         icon_view->priv->icons = g_list_delete_link(icon_view->priv->icons, l);
@@ -3258,7 +3259,6 @@ xfdesktop_icon_view_remove_all(XfdesktopIconView *icon_view)
         if(xfdesktop_icon_get_position(icon, &row, &col)) {
             xfdesktop_icon_view_invalidate_icon(icon_view, icon, FALSE);
             xfdesktop_grid_set_position_free(icon_view, row, col);
-            xfdesktop_icon_mark_extents_dirty(icon);
         }
         
         g_signal_handlers_disconnect_by_func(G_OBJECT(l->data),

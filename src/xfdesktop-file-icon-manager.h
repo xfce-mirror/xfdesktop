@@ -64,6 +64,10 @@ void xfdesktop_file_icon_manager_set_show_special_file(XfdesktopFileIconManager 
                                                        gboolean show_special_file);
 gboolean xfdesktop_file_icon_manager_get_show_special_file(XfdesktopFileIconManager *manager,
                                                            XfdesktopSpecialFileIconType type);
+void xfdesktop_file_icon_manager_set_show_thumbnails(XfdesktopFileIconManager *manager,
+                                                     gboolean show_thumbnails);
+gboolean xfdesktop_file_icon_manager_get_show_thumbnails(XfdesktopFileIconManager *manager);
+
 
 G_END_DECLS
 

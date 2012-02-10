@@ -70,6 +70,7 @@
 #define DESKTOP_ICONS_ICON_SIZE_PROP         "/desktop-icons/icon-size"
 #define DESKTOP_ICONS_FONT_SIZE_PROP         "/desktop-icons/font-size"
 #define DESKTOP_ICONS_CUSTOM_FONT_SIZE_PROP  "/desktop-icons/use-custom-font-size"
+#define DESKTOP_ICONS_SHOW_THUMBNAILS_PROP   "/desktop-icons/show-thumbnails"
 #define DESKTOP_ICONS_SHOW_HOME              "/desktop-icons/file-icons/show-home"
 #define DESKTOP_ICONS_SHOW_TRASH             "/desktop-icons/file-icons/show-trash"
 #define DESKTOP_ICONS_SHOW_FILESYSTEM        "/desktop-icons/file-icons/show-filesystem"
@@ -758,6 +759,41 @@ cb_xfdesktop_chk_custom_font_size_toggled(GtkCheckButton *button,
 }
 
 static gboolean
+xfdesktop_spin_icon_size_timer(GtkSpinButton *button)
+{
+    XfconfChannel *channel = g_object_get_data(G_OBJECT(button), "xfconf-chanel");
+
+    g_return_val_if_fail(XFCONF_IS_CHANNEL(channel), FALSE);
+
+    xfconf_channel_set_uint(channel,
+                            DESKTOP_ICONS_ICON_SIZE_PROP,
+                            gtk_spin_button_get_value(button));
+
+    return FALSE;
+}
+
+static void
+cb_xfdesktop_spin_icon_size_changed(GtkSpinButton *button,
+                                    gpointer user_data)
+{
+    guint timer_id = 0;
+
+    g_object_set_data(G_OBJECT(button), "xfconf-chanel", user_data);
+
+    timer_id = GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(button), "timer-id"));
+    if(timer_id != 0) {
+        g_source_remove(timer_id);
+        timer_id = 0;
+    }
+
+    timer_id = g_timeout_add(2000,
+                             (GSourceFunc)xfdesktop_spin_icon_size_timer,
+                             button);
+
+    g_object_set_data(G_OBJECT(button), "timer-id", GUINT_TO_POINTER(timer_id));
+}
+
+static gboolean
 xfdesktop_settings_save_backdrop_list(AppearancePanel *panel,
                                       GtkTreeModel *model)
 {
@@ -1225,10 +1261,22 @@ xfdesktop_settings_dialog_add_screens(GtkBuilder *main_gxml,
 {
     gint i, j, nmonitors, nscreens;
     GtkWidget *appearance_container, *chk_custom_font_size,
-              *spin_font_size, *color_style_widget, *w, *box;
+              *spin_font_size, *color_style_widget, *w, *box,
+              *spin_icon_size, *chk_show_thumbnails;
 
     appearance_container = GTK_WIDGET(gtk_builder_get_object(main_gxml,
                                                              "notebook_screens"));
+
+    spin_icon_size = GTK_WIDGET(gtk_builder_get_object(main_gxml, "spin_icon_size"));
+
+    g_signal_connect(G_OBJECT(spin_icon_size), "value-changed",
+                     G_CALLBACK(cb_xfdesktop_spin_icon_size_changed),
+                     channel);
+
+    gtk_spin_button_set_value(GTK_SPIN_BUTTON(spin_icon_size),
+                              xfconf_channel_get_uint(channel,
+                                                      DESKTOP_ICONS_ICON_SIZE_PROP,
+                                                      DEFAULT_ICON_SIZE));
 
     chk_custom_font_size = GTK_WIDGET(gtk_builder_get_object(main_gxml,
                                                              "chk_custom_font_size"));
@@ -1237,6 +1285,9 @@ xfdesktop_settings_dialog_add_screens(GtkBuilder *main_gxml,
     g_signal_connect(G_OBJECT(chk_custom_font_size), "toggled",
                      G_CALLBACK(cb_xfdesktop_chk_custom_font_size_toggled),
                      spin_font_size);
+
+    chk_show_thumbnails = GTK_WIDGET(gtk_builder_get_object(main_gxml,
+                                                            "chk_show_thumbnails"));
 
     nscreens = gdk_display_get_n_screens(gdk_display_get_default());
 
@@ -1477,15 +1528,14 @@ xfdesktop_settings_dialog_add_screens(GtkBuilder *main_gxml,
 #endif
     xfconf_g_property_bind(channel, DESKTOP_ICONS_STYLE_PROP, G_TYPE_INT,
                            G_OBJECT(w), "active");
-    xfconf_g_property_bind(channel, DESKTOP_ICONS_ICON_SIZE_PROP, G_TYPE_UINT,
-                           G_OBJECT(gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(gtk_builder_get_object(main_gxml,
-                                                                                                          "spin_icon_size")))),
-                           "value");
     xfconf_g_property_bind(channel, DESKTOP_ICONS_FONT_SIZE_PROP, G_TYPE_DOUBLE,
                            G_OBJECT(gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(spin_font_size))),
                            "value");
     xfconf_g_property_bind(channel, DESKTOP_ICONS_CUSTOM_FONT_SIZE_PROP,
                            G_TYPE_BOOLEAN, G_OBJECT(chk_custom_font_size),
+                           "active");
+    xfconf_g_property_bind(channel, DESKTOP_ICONS_SHOW_THUMBNAILS_PROP,
+                           G_TYPE_BOOLEAN, G_OBJECT(chk_show_thumbnails),
                            "active");
 
     setup_special_icon_list(main_gxml, channel);

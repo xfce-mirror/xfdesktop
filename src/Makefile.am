@@ -4,9 +4,7 @@ bin_PROGRAMS = xfdesktop
 
 xfdesktop_built_sources = \
 	xfce-desktop-enum-types.c \
-	xfce-desktop-enum-types.h \
-	xfdesktop-marshal.c \
-	xfdesktop-marshal.h
+	xfce-desktop-enum-types.h
 
 if HAVE_LIBNOTIFY
 xfdesktop_notify_sources = \
@@ -149,17 +147,8 @@ BUILT_SOURCES = \
 
 DISTCLEANFILES = \
 	$(xfdesktop_built_sources) \
-	stamp-xfdesktop-marshal.h \
 	stamp-xfce-desktop-enum-types.h
 
-xfdesktop-marshal.h: stamp-xfdesktop-marshal.h
-	@true
-stamp-xfdesktop-marshal.h: xfdesktop-marshal.list Makefile
-	$(AM_V_GEN) glib-genmarshal --prefix=xfdesktop_marshal xfdesktop-marshal.list --header > xfdesktop-marshal.h && \
-	echo timestamp > $(@F)
-xfdesktop-marshal.c: xfdesktop-marshal.list Makefile
-	$(AM_V_GEN) echo '#include "xfdesktop-marshal.h"' > xfdesktop-marshal.c && \
-	glib-genmarshal --prefix=xfdesktop_marshal xfdesktop-marshal.list --body >> xfdesktop-marshal.c
 
 enum_headers = \
 	xfce-backdrop.h \
@@ -227,5 +216,4 @@ endif
 EXTRA_DIST = \
 	$(desktop_menu_sources) \
 	$(desktop_icon_sources) \
-	$(desktop_file_icon_sources) \
-	xfdesktop-marshal.list
+	$(desktop_file_icon_sources)
