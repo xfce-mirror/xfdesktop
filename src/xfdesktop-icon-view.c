@@ -1101,6 +1101,8 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget,
         }
     }
     
+    gdk_event_request_motions(evt);
+
     return ret;
 }
 
@@ -1614,7 +1616,7 @@ xfdesktop_icon_view_realize(GtkWidget *widget)
     /* unfortunately GTK_NO_WINDOW widgets don't receive events, with the
      * exception of expose events. */
     gtk_widget_add_events(icon_view->priv->parent_window,
-                          GDK_POINTER_MOTION_MASK | GDK_KEY_PRESS_MASK
+                          GDK_POINTER_MOTION_HINT_MASK | GDK_KEY_PRESS_MASK
                           | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK
                           | GDK_FOCUS_CHANGE_MASK | GDK_EXPOSURE_MASK
                           | GDK_LEAVE_NOTIFY_MASK);
