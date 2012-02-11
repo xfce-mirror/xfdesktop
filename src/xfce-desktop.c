@@ -1462,3 +1462,14 @@ xfce_desktop_refresh(XfceDesktop *desktop)
     xfce_desktop_setup_icon_view(desktop);
 #endif
 }
+
+void xfce_desktop_arrange_icons(XfceDesktop *desktop)
+{
+    g_return_if_fail(XFCE_IS_DESKTOP(desktop));
+
+#ifdef ENABLE_DESKTOP_ICONS
+    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(desktop->priv->icon_view));
+
+    xfdesktop_icon_view_sort_icons(XFDESKTOP_ICON_VIEW(desktop->priv->icon_view));
+#endif
+}

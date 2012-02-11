@@ -47,6 +47,7 @@
 #define RELOAD_MESSAGE     "reload"
 #define MENU_MESSAGE       "menu"
 #define WINDOWLIST_MESSAGE "windowlist"
+#define ARRANGE_MESSAGE    "arrange"
 #define QUIT_MESSAGE       "quit"
 
 /**

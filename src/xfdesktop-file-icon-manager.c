@@ -899,6 +899,14 @@ xfdesktop_file_icon_menu_paste(GtkWidget *widget,
 }
 
 static void
+xfdesktop_file_icon_menu_arrange_icons(GtkWidget *widget,
+                                       gpointer user_data)
+{
+    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
+    xfdesktop_icon_view_sort_icons(fmanager->priv->icon_view);
+}
+
+static void
 xfdesktop_file_icon_menu_properties(GtkWidget *widget,
                                     gpointer user_data)
 {
@@ -1711,6 +1719,16 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
         gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
         
         if(file_icon == fmanager->priv->desktop_icon) {
+            img = gtk_image_new_from_stock(GTK_STOCK_SORT_ASCENDING, GTK_ICON_SIZE_MENU);
+            gtk_widget_show(img);
+            mi = gtk_image_menu_item_new_with_mnemonic(_("_Arrange Desktop Icons"));
+            gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+            gtk_widget_show(mi);
+            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+            g_signal_connect(G_OBJECT(mi), "activate",
+                             G_CALLBACK(xfdesktop_file_icon_menu_arrange_icons),
+                             fmanager);
+
             img = gtk_image_new_from_stock(GTK_STOCK_PREFERENCES, GTK_ICON_SIZE_MENU);
             gtk_widget_show(img);
             mi = gtk_image_menu_item_new_with_mnemonic(_("Desktop _Settings..."));

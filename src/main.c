@@ -189,6 +189,11 @@ client_message_received(GtkWidget *w, GdkEventClient *evt, gpointer user_data)
             xfce_desktop_popup_secondary_root_menu(XFCE_DESKTOP(w), 0,
                                                    GDK_CURRENT_TIME);
             return TRUE;
+#ifdef ENABLE_FILE_ICONS
+        } else if(!strcmp(ARRANGE_MESSAGE, evt->data.b)) {
+            xfce_desktop_arrange_icons(XFCE_DESKTOP(w));
+            return TRUE;
+#endif
         } else if(!strcmp(QUIT_MESSAGE, evt->data.b)) {
             xfce_sm_client_set_restart_style(sm_client,
                                              XFCE_SM_CLIENT_RESTART_NORMAL);
@@ -233,12 +238,15 @@ main(int argc, char **argv)
     GError *error = NULL;
     gboolean opt_version = FALSE, opt_reload = FALSE;
     gboolean opt_menu = FALSE, opt_windowlist = FALSE;
-    gboolean opt_quit = FALSE;
+    gboolean opt_arrange = FALSE, opt_quit = FALSE;
     const GOptionEntry main_entries[] = {
         { "version", 'V', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_version, N_("Display version information"), NULL },
         { "reload", 0, G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_reload, N_("Reload all settings, refresh image list"), NULL },
         { "menu", 0, G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_menu, N_("Pop up the menu (at the current mouse position)"), NULL },
         { "windowlist", 0, G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_windowlist, N_("Pop up the window list (at the current mouse position)"), NULL },
+#ifdef ENABLE_FILE_ICONS
+        { "arrange", 0, G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_arrange, N_("Automatically arrange all the icons on the desktop"), NULL },
+#endif
         { "quit", 0, G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_quit, N_("Cause xfdesktop to quit"), NULL },
         { NULL, 0, 0, 0, NULL, NULL, NULL }
     };
@@ -303,6 +311,8 @@ main(int argc, char **argv)
         message = MENU_MESSAGE;
     else if(opt_windowlist)
         message = WINDOWLIST_MESSAGE;
+    else if(opt_arrange)
+        message = ARRANGE_MESSAGE;
     else if(opt_quit)
         message = QUIT_MESSAGE;
     

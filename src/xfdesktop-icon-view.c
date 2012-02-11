@@ -50,6 +50,7 @@
 #include "xfdesktop-file-icon-manager.h"
 #include "xfdesktop-marshal.h"
 #include "xfce-desktop.h"
+#include "xfdesktop-volume-icon.h"
 
 #include <libwnck/libwnck.h>
 #include <libxfce4ui/libxfce4ui.h>
@@ -1501,6 +1502,106 @@ xfdesktop_icon_view_drag_data_received(GtkWidget *widget,
                                                    icon_on_dest,
                                                    context, row, col, data,
                                                    info, time_);
+}
+
+static gint
+xfdesktop_icon_view_compare_icons(gconstpointer *a,
+                                  gconstpointer *b)
+{
+    XfdesktopIcon *a_icon, *b_icon;
+    const gchar *a_str, *b_str;
+
+    a_icon = XFDESKTOP_ICON(a);
+    b_icon = XFDESKTOP_ICON(b);
+
+    a_str = xfdesktop_icon_peek_label(a_icon);
+    b_str = xfdesktop_icon_peek_label(b_icon);
+
+    if(a_str == NULL)
+        a_str = "";
+    if(b_str == NULL)
+        b_str = "";
+
+    return g_utf8_collate(a_str, b_str);
+}
+
+static void
+xfdesktop_icon_view_append_icons(XfdesktopIconView *icon_view,
+                                 GList *icon_list,
+                                 guint16 *row,
+                                 guint16 *col)
+{
+    GList *l = NULL;
+    for(l = icon_list; l; l = l->next) {
+
+        /* Find the next available spot for an icon */
+        do {
+            if(*row + 1 >= icon_view->priv->nrows) {
+                ++*col;
+                *row = 0;
+            } else {
+                ++*row;
+            }
+        } while(!xfdesktop_grid_is_free_position(icon_view, *row, *col));
+
+        /* set new position */
+        xfdesktop_icon_set_position(l->data, *row, *col);
+        xfdesktop_grid_unset_position_free(icon_view, l->data);
+
+        xfdesktop_icon_view_invalidate_icon(icon_view, l->data, TRUE);
+    }
+}
+
+void
+xfdesktop_icon_view_sort_icons(XfdesktopIconView *icon_view)
+{
+#ifdef ENABLE_FILE_ICONS
+    GList *l = NULL;
+    GList *special_icons = NULL;
+    GList *folder_icons = NULL;
+    GList *regular_icons = NULL;
+    guint16 row = 0;
+    guint16 col = -1; /* start at -1 because we'll increment it */
+
+    for(l = icon_view->priv->icons; l; l = l->next) {
+        guint16 old_row, old_col;
+
+        /* clear out old position */
+        xfdesktop_icon_view_invalidate_icon(icon_view, l->data, FALSE);
+
+        if(xfdesktop_icon_get_position(l->data, &old_row, &old_col))
+            xfdesktop_grid_set_position_free(icon_view, old_row, old_col);
+
+        /* Add it to the correct list */
+        if(XFDESKTOP_IS_SPECIAL_FILE_ICON(l->data) ||
+           XFDESKTOP_IS_VOLUME_ICON(l->data)) {
+            special_icons = g_list_insert_sorted(special_icons,
+                                                 l->data,
+                                                 (GCompareFunc)xfdesktop_icon_view_compare_icons);
+        } else if(XFDESKTOP_IS_FILE_ICON(l->data) &&
+                  g_file_query_file_type(xfdesktop_file_icon_peek_file(l->data),
+                                         G_FILE_QUERY_INFO_NONE,
+                                         NULL) == G_FILE_TYPE_DIRECTORY) {
+            folder_icons = g_list_insert_sorted(folder_icons,
+                                                 l->data,
+                                                 (GCompareFunc)xfdesktop_icon_view_compare_icons);
+        } else {
+            regular_icons = g_list_insert_sorted(regular_icons,
+                                                 l->data,
+                                                 (GCompareFunc)xfdesktop_icon_view_compare_icons);
+        }
+    }
+
+    /* Append the icons: special, folder, then regular */
+    xfdesktop_icon_view_append_icons(icon_view, special_icons, &row, &col);
+    xfdesktop_icon_view_append_icons(icon_view, folder_icons, &row, &col);
+    xfdesktop_icon_view_append_icons(icon_view, regular_icons, &row, &col);
+
+
+    g_list_free(special_icons);
+    g_list_free(folder_icons);
+    g_list_free(regular_icons);
+#endif
 }
 
 static void
