@@ -51,9 +51,11 @@
 #include "xfdesktop-marshal.h"
 #include "xfce-desktop.h"
 #include "xfdesktop-volume-icon.h"
+#include "xfdesktop-common.h"
 
 #include <libwnck/libwnck.h>
 #include <libxfce4ui/libxfce4ui.h>
+#include <xfconf/xfconf.h>
 
 #define DEFAULT_FONT_SIZE  12
 #define DEFAULT_ICON_SIZE  32
@@ -138,6 +140,8 @@ struct _XfdesktopIconViewPrivate
     gint press_start_y;
     GdkRectangle band_rect;
 
+    XfconfChannel *channel;
+
     GdkColor *selection_box_color;
     guchar selection_box_alpha;
     
@@ -172,7 +176,18 @@ struct _XfdesktopIconViewPrivate
 
     gboolean ellipsize_icon_labels;
     guint    tooltip_size;
+
+    gboolean single_click;
 };
+
+static void xfce_icon_view_set_property(GObject *object,
+                                        guint property_id,
+                                        const GValue *value,
+                                        GParamSpec *pspec);
+static void xfce_icon_view_get_property(GObject *object,
+                                        guint property_id,
+                                        GValue *value,
+                                        GParamSpec *pspec);
 
 static gboolean xfdesktop_icon_view_button_press(GtkWidget *widget,
                                                  GdkEventButton *evt,
@@ -341,6 +356,13 @@ enum
     TARGET_XFDESKTOP_ICON = 9999,
 };
 
+enum
+{
+    PROP_0 = 0,
+    PROP_SINGLE_CLICK,
+};
+
+
 static const GtkTargetEntry icon_view_targets[] = {
     { "XFDESKTOP_ICON", GTK_TARGET_SAME_APP, TARGET_XFDESKTOP_ICON }
 };
@@ -366,6 +388,8 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
     g_type_class_add_private(klass, sizeof(XfdesktopIconViewPrivate));
     
     gobject_class->finalize = xfdesktop_icon_view_finalize;
+    gobject_class->set_property = xfce_icon_view_set_property;
+    gobject_class->get_property = xfce_icon_view_get_property;
     
     widget_class->style_set = xfdesktop_icon_view_style_set;
     widget_class->realize = xfdesktop_icon_view_realize;
@@ -556,6 +580,21 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
                                                               0, 512, 128,
                                                               G_PARAM_READABLE));
 
+#define XFDESKTOP_PARAM_FLAGS  (G_PARAM_READWRITE \
+                                | G_PARAM_CONSTRUCT \
+                                | G_PARAM_STATIC_NAME \
+                                | G_PARAM_STATIC_NICK \
+                                | G_PARAM_STATIC_BLURB)
+
+    g_object_class_install_property(gobject_class, PROP_SINGLE_CLICK,
+                                    g_param_spec_boolean("single-click",
+                                                         "single-click",
+                                                         "single-click",
+                                                         FALSE,
+                                                         XFDESKTOP_PARAM_FLAGS));
+
+#undef XFDESKTOP_PARAM_FLAGS
+
     /* same binding entries as GtkIconView */
     gtk_binding_entry_add_signal(binding_set, GDK_a, GDK_CONTROL_MASK,
                                  "select-all", 0);
@@ -644,6 +683,14 @@ xfdesktop_icon_view_init(XfdesktopIconView *icon_view)
     g_object_set(G_OBJECT(icon_view), "has-tooltip", TRUE, NULL);
     g_signal_connect(G_OBJECT(icon_view), "query-tooltip",
                      G_CALLBACK(xfdesktop_icon_view_show_tooltip), NULL);
+
+    icon_view->priv->channel = xfconf_channel_new (XFDESKTOP_CHANNEL);
+
+    xfconf_g_property_bind(icon_view->priv->channel,
+                           "/desktop-icons/single-click",
+                           G_TYPE_BOOLEAN,
+                           G_OBJECT(icon_view),
+                           "single_click");
     
     GTK_WIDGET_SET_FLAGS(GTK_WIDGET(icon_view), GTK_NO_WINDOW);
 }
@@ -665,8 +712,51 @@ xfdesktop_icon_view_finalize(GObject *obj)
     g_list_foreach(icon_view->priv->pending_icons, (GFunc)g_object_unref, NULL);
     g_list_free(icon_view->priv->pending_icons);
     /* icon_view->priv->icons should be cleared in _unrealize() */
+
+    if (icon_view->priv->channel) {
+        g_object_unref (icon_view->priv->channel);
+        icon_view->priv->channel = NULL;
+    }
     
     G_OBJECT_CLASS(xfdesktop_icon_view_parent_class)->finalize(obj);
+}
+
+static void
+xfce_icon_view_set_property(GObject *object,
+                            guint property_id,
+                            const GValue *value,
+                            GParamSpec *pspec)
+{
+    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(object);
+
+    switch(property_id) {
+        case PROP_SINGLE_CLICK:
+            icon_view->priv->single_click = g_value_get_boolean (value);
+            break;
+
+        default:
+            G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
+            break;
+    }
+}
+
+static void
+xfce_icon_view_get_property(GObject *object,
+                           guint property_id,
+                           GValue *value,
+                           GParamSpec *pspec)
+{
+    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(object);
+
+    switch(property_id) {
+        case PROP_SINGLE_CLICK:
+            g_value_set_boolean(value, icon_view->priv->single_click);
+            break;
+
+        default:
+            G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
+            break;
+    }
 }
 
 static void
@@ -809,6 +899,14 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
 }
 
 static gboolean
+xfdesktop_icon_view_get_single_click(XfdesktopIconView *icon_view)
+{
+    g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view), FALSE);
+
+    return icon_view->priv->single_click;
+}
+
+static gboolean
 xfdesktop_icon_view_button_release(GtkWidget *widget,
                                    GdkEventButton *evt,
                                    gpointer user_data)
@@ -816,6 +914,24 @@ xfdesktop_icon_view_button_release(GtkWidget *widget,
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(user_data);
     
     TRACE("entering btn=%d", evt->button);
+
+    /* single-click */
+    if(xfdesktop_icon_view_get_single_click(icon_view)
+       && evt->button == 1
+       && !(evt->state & GDK_SHIFT_MASK)
+       && !(evt->state & GDK_CONTROL_MASK)
+       && !icon_view->priv->definitely_dragging
+       && !icon_view->priv->definitely_rubber_banding) {
+        XfdesktopIcon *icon;
+        GList *icon_l = g_list_find_custom(icon_view->priv->icons, evt,
+                                           (GCompareFunc)xfdesktop_check_icon_clicked);
+        if(icon_l && (icon = icon_l->data)) {
+            icon_view->priv->cursor = icon;
+            g_signal_emit(G_OBJECT(icon_view), __signals[SIG_ICON_ACTIVATED],
+                          0, NULL);
+            xfdesktop_icon_activated(icon);
+        }
+    }
 
     if((evt->button == 3 || (evt->button == 1 && (evt->state & GDK_SHIFT_MASK))) &&
        icon_view->priv->definitely_dragging == FALSE &&
@@ -888,6 +1004,12 @@ xfdesktop_icon_view_focus_out(GtkWidget *widget,
 
     for(l = icon_view->priv->selected_icons; l; l = l->next) {
         xfdesktop_icon_view_invalidate_icon(icon_view, l->data, FALSE);
+    }
+
+    if(G_UNLIKELY(icon_view->priv->single_click)) {
+        if(G_LIKELY(icon_view->priv->parent_window->window != NULL)) {
+            gdk_window_set_cursor(icon_view->priv->parent_window->window, NULL);
+        }
     }
 
     return FALSE;
@@ -1077,6 +1199,11 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget,
         /* normal movement; highlight icons as they go under the pointer */
         
         if(icon_view->priv->item_under_pointer) {
+            if(G_UNLIKELY(icon_view->priv->single_click)) {
+                GdkCursor *cursor = gdk_cursor_new(GDK_HAND2);
+                gdk_window_set_cursor(evt->window, cursor);
+                gdk_cursor_unref(cursor);
+            }
             if(!xfdesktop_icon_get_extents(icon_view->priv->item_under_pointer,
                                            NULL, NULL, &extents)
                || !xfdesktop_rectangle_contains_point(&extents, evt->x, evt->y))
@@ -1088,6 +1215,9 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget,
 #endif
             }
         } else {
+            if(G_UNLIKELY(icon_view->priv->single_click)) {
+                gdk_window_set_cursor(evt->window, NULL);
+            }
             icon = xfdesktop_icon_view_widget_coords_to_item(icon_view,
                                                              evt->x,
                                                              evt->y);
@@ -1122,6 +1252,12 @@ xfdesktop_icon_view_leave_notify(GtkWidget *widget,
 #ifdef HAVE_LIBEXO
         xfdesktop_icon_view_invalidate_icon(icon_view, icon, FALSE);
 #endif
+    }
+
+    if(G_UNLIKELY(icon_view->priv->single_click)) {
+        if(GTK_WIDGET_REALIZED(widget)) {
+            gdk_window_set_cursor(widget->window, NULL);
+        }
     }
     
     return FALSE;

@@ -70,6 +70,7 @@
 #define DESKTOP_ICONS_ICON_SIZE_PROP         "/desktop-icons/icon-size"
 #define DESKTOP_ICONS_FONT_SIZE_PROP         "/desktop-icons/font-size"
 #define DESKTOP_ICONS_CUSTOM_FONT_SIZE_PROP  "/desktop-icons/use-custom-font-size"
+#define DESKTOP_ICONS_SINGLE_CLICK_PROP      "/desktop-icons/single-click"
 #define DESKTOP_ICONS_SHOW_THUMBNAILS_PROP   "/desktop-icons/show-thumbnails"
 #define DESKTOP_ICONS_SHOW_HOME              "/desktop-icons/file-icons/show-home"
 #define DESKTOP_ICONS_SHOW_TRASH             "/desktop-icons/file-icons/show-trash"
@@ -1291,7 +1292,7 @@ xfdesktop_settings_dialog_add_screens(GtkBuilder *main_gxml,
     gint i, j, nmonitors, nscreens;
     GtkWidget *appearance_container, *chk_custom_font_size,
               *spin_font_size, *color_style_widget, *w, *box,
-              *spin_icon_size, *chk_show_thumbnails;
+              *spin_icon_size, *chk_show_thumbnails, *chk_single_click;
 
     appearance_container = GTK_WIDGET(gtk_builder_get_object(main_gxml,
                                                              "notebook_screens"));
@@ -1310,6 +1311,9 @@ xfdesktop_settings_dialog_add_screens(GtkBuilder *main_gxml,
     chk_custom_font_size = GTK_WIDGET(gtk_builder_get_object(main_gxml,
                                                              "chk_custom_font_size"));
     spin_font_size = GTK_WIDGET(gtk_builder_get_object(main_gxml, "spin_font_size"));
+
+    chk_single_click = GTK_WIDGET(gtk_builder_get_object(main_gxml,
+                                                         "chk_single_click"));
 
     g_signal_connect(G_OBJECT(chk_custom_font_size), "toggled",
                      G_CALLBACK(cb_xfdesktop_chk_custom_font_size_toggled),
@@ -1602,6 +1606,9 @@ xfdesktop_settings_dialog_add_screens(GtkBuilder *main_gxml,
                            "active");
     xfconf_g_property_bind(channel, DESKTOP_ICONS_SHOW_THUMBNAILS_PROP,
                            G_TYPE_BOOLEAN, G_OBJECT(chk_show_thumbnails),
+                           "active");
+    xfconf_g_property_bind(channel, DESKTOP_ICONS_SINGLE_CLICK_PROP,
+                           G_TYPE_BOOLEAN, G_OBJECT(chk_single_click),
                            "active");
 
     setup_special_icon_list(main_gxml, channel);
