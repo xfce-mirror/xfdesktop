@@ -17,6 +17,14 @@
     <property name="page_size">0</property>
     <property name="value">1</property>
   </object>
+  <object class="GtkAdjustment" id="adjustment3">
+    <property name="upper">65535</property>
+    <property name="lower">1</property>
+    <property name="page_increment">10</property>
+    <property name="step_increment">1</property>
+    <property name="page_size">0</property>
+    <property name="value">10</property>
+  </object>
   <object class="GtkListStore" id="model1">
     <columns>
       <column type="gchararray"/>
@@ -528,6 +536,46 @@
             <property name="position">1</property>
           </packing>
         </child>
+        <child>
+          <object class="GtkHBox" id="hbox9">
+            <property name="visible">True</property>
+            <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+            <property name="spacing">4</property>
+            <child>
+              <object class="GtkCheckButton" id="chk_cycle_backdrop">
+                <property name="visible">True</property>
+                <property name="sensitive">False</property>
+                <property name="can_focus">True</property>
+                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                <property name="label" translatable="yes">_Change the background (in minutes):</property>
+                <property name="tooltip-text" translatable="yes">While in image list mode, select this option to automatically select a different background from the image list after a set number of minutes.</property>
+                <property name="use_underline">True</property>
+                <property name="draw_indicator">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+              </packing>
+            </child>
+          <child>
+            <object class="GtkSpinButton" id="spin_backdrop_time_minutes">
+              <property name="visible">True</property>
+              <property name="sensitive">False</property>
+              <property name="can_focus">True</property>
+              <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+              <property name="adjustment">adjustment3</property>
+              <property name="tooltip-text" translatable="yes">Number of minutes before a different background is randomly selected from the list.</property>
+            </object>
+            <packing>
+              <property name="expand">False</property>
+              <property name="position">2</property>
+            </packing>
+          </child>
+        </object>
+        <packing>
+          <property name="expand">False</property>
+          <property name="position">2</property>
+        </packing>
+      </child>
       </object>
     </child>
   </object>

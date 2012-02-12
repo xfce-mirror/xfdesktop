@@ -104,6 +104,9 @@ typedef struct
 
     GtkWidget *brightness_slider;
     GtkWidget *saturation_slider;
+
+    GtkWidget *backdrop_cycle_spinbox;
+    GtkWidget *backdrop_cycle_chkbox;
 } AppearancePanel;
 
 typedef struct
@@ -758,6 +761,21 @@ cb_xfdesktop_chk_custom_font_size_toggled(GtkCheckButton *button,
                              gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(button)));
 }
 
+static void
+cb_xfdesktop_chk_cycle_backdrop_toggled(GtkCheckButton *button,
+                                        gpointer user_data)
+{
+    gboolean sensitive = FALSE;
+    GtkWidget *spin_button = GTK_WIDGET(user_data);
+
+    if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(button)) &&
+       gtk_widget_get_sensitive(GTK_WIDGET(button))) {
+           sensitive = TRUE;
+    }
+
+    gtk_widget_set_sensitive(spin_button, sensitive);
+}
+
 static gboolean
 xfdesktop_spin_icon_size_timer(GtkSpinButton *button)
 {
@@ -1024,6 +1042,8 @@ cb_image_type_radio_clicked(GtkWidget *w,
         gtk_widget_set_sensitive(panel->btn_minus, FALSE);
         gtk_widget_set_sensitive(panel->btn_newlist, FALSE);
         gtk_widget_set_sensitive(panel->frame_image_list, TRUE);
+        gtk_widget_set_sensitive(panel->backdrop_cycle_chkbox, FALSE);
+        gtk_widget_set_sensitive(panel->backdrop_cycle_spinbox, FALSE);
         DBG("show_image=%s", panel->show_image?"true":"false");
         if(!panel->show_image) {
             panel->show_image = TRUE;
@@ -1049,6 +1069,11 @@ cb_image_type_radio_clicked(GtkWidget *w,
         gtk_widget_set_sensitive(panel->btn_minus, TRUE);
         gtk_widget_set_sensitive(panel->btn_newlist, TRUE);
         gtk_widget_set_sensitive(panel->frame_image_list, TRUE);
+        gtk_widget_set_sensitive(panel->backdrop_cycle_chkbox, TRUE);
+        if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(panel->backdrop_cycle_chkbox)))
+            gtk_widget_set_sensitive(panel->backdrop_cycle_spinbox, TRUE);
+        else
+            gtk_widget_set_sensitive(panel->backdrop_cycle_spinbox, FALSE);
         DBG("show_image=%s", panel->show_image?"true":"false");
         if(!panel->show_image) {
             panel->show_image = TRUE;
@@ -1057,6 +1082,8 @@ cb_image_type_radio_clicked(GtkWidget *w,
     } else if(w == panel->radio_none) {
         DBG("widget is none");
         gtk_widget_set_sensitive(panel->frame_image_list, FALSE);
+        gtk_widget_set_sensitive(panel->backdrop_cycle_chkbox, FALSE);
+        gtk_widget_set_sensitive(panel->backdrop_cycle_spinbox, FALSE);
         DBG("show_image=%s", panel->show_image?"true":"false");
         if(panel->show_image) {
             panel->show_image = FALSE;
@@ -1432,6 +1459,26 @@ xfdesktop_settings_dialog_add_screens(GtkBuilder *main_gxml,
                                                                    "btn_newlist"));
             g_signal_connect(G_OBJECT(panel->btn_newlist), "clicked",
                              G_CALLBACK(newlist_button_clicked), panel);
+
+            panel->backdrop_cycle_chkbox = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
+                                                                             "chk_cycle_backdrop"));
+            panel->backdrop_cycle_spinbox = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
+                                                                             "spin_backdrop_time_minutes"));
+
+            g_signal_connect(G_OBJECT(panel->backdrop_cycle_chkbox), "toggled",
+                            G_CALLBACK(cb_xfdesktop_chk_cycle_backdrop_toggled),
+                            panel->backdrop_cycle_spinbox);
+
+            g_snprintf(buf, sizeof(buf), PER_SCREEN_PROP_FORMAT "/backdrop-cycle-enable",
+                       i, j);
+            xfconf_g_property_bind(channel, buf, G_TYPE_BOOLEAN,
+                                   G_OBJECT(panel->backdrop_cycle_chkbox), "active");
+
+            g_snprintf(buf, sizeof(buf), PER_SCREEN_PROP_FORMAT "/backdrop-cycle-timer",
+                       i, j);
+            xfconf_g_property_bind(channel, buf, G_TYPE_UINT,
+                           G_OBJECT(gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(panel->backdrop_cycle_spinbox))),
+                           "value");
 
             panel->radio_singleimage = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
                                                                          "radio_singleimage"));

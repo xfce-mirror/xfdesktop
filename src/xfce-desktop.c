@@ -363,6 +363,28 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
 }
 
 static void
+backdrop_cycle_cb(XfceBackdrop *backdrop, gpointer user_data)
+{
+    const gchar* backdrop_list;
+
+    g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
+
+    backdrop_list = xfce_backdrop_get_list(backdrop);
+
+    if(xfdesktop_backdrop_list_is_valid(backdrop_list)) {
+        gchar *backdrop_file;
+        GError *error = NULL;
+
+        backdrop_file = xfdesktop_backdrop_list_choose_random(backdrop_list,
+                                                              &error);
+
+        xfce_backdrop_set_image_filename(backdrop, backdrop_file);
+        g_free(backdrop_file);
+        backdrop_changed_cb(backdrop, user_data);
+    }
+}
+
+static void
 screen_size_changed_cb(GdkScreen *gscreen, gpointer user_data)
 {
     XfceDesktop *desktop = user_data;
@@ -434,6 +456,9 @@ xfce_desktop_monitors_changed(GdkScreen *gscreen,
                 g_signal_connect(G_OBJECT(desktop->priv->backdrops[0]),
                                  "changed",
                                  G_CALLBACK(backdrop_changed_cb), desktop);
+                g_signal_connect(G_OBJECT(desktop->priv->backdrops[0]),
+                                 "cycle",
+                                 G_CALLBACK(backdrop_cycle_cb), desktop);
             }
             desktop->priv->nbackdrops = 1;
         }
@@ -458,6 +483,10 @@ xfce_desktop_monitors_changed(GdkScreen *gscreen,
                     g_signal_connect(G_OBJECT(desktop->priv->backdrops[i]),
                                      "changed",
                                      G_CALLBACK(backdrop_changed_cb),
+                                     desktop);
+                    g_signal_connect(G_OBJECT(desktop->priv->backdrops[i]),
+                                     "cycle",
+                                     G_CALLBACK(backdrop_cycle_cb),
                                      desktop);
                 }
             }
@@ -626,7 +655,7 @@ xfce_desktop_finalize(GObject *object)
     
     g_object_unref(G_OBJECT(desktop->priv->channel));
     g_free(desktop->priv->property_prefix);
-    
+
     G_OBJECT_CLASS(xfce_desktop_parent_class)->finalize(object);
 }
 
@@ -1029,8 +1058,13 @@ xfce_desktop_image_filename_changed(XfconfChannel *channel,
 
             xfce_backdrop_set_image_filename(backdrop, backdrop_file);
             g_free(backdrop_file);
-        } else
+
+            xfce_backdrop_set_list(backdrop, g_strdup(filename));
+        } else {
             xfce_backdrop_set_image_filename(backdrop, filename);
+
+            xfce_backdrop_set_list(backdrop, NULL);
+        }
     }
 }
 
@@ -1081,6 +1115,16 @@ xfce_desktop_connect_backdrop_settings(XfceDesktop *desktop,
     g_strlcat(buf, "saturation", sizeof(buf));
     xfconf_g_property_bind(channel, buf, G_TYPE_DOUBLE,
                            G_OBJECT(backdrop), "saturation");
+
+    buf[pp_len] = 0;
+    g_strlcat(buf, "backdrop-cycle-enable", sizeof(buf));
+    xfconf_g_property_bind(channel, buf, G_TYPE_BOOLEAN,
+                           G_OBJECT(backdrop), "backdrop-cycle-enable");
+
+    buf[pp_len] = 0;
+    g_strlcat(buf, "backdrop-cycle-timer", sizeof(buf));
+    xfconf_g_property_bind(channel, buf, G_TYPE_UINT,
+                           G_OBJECT(backdrop), "backdrop-cycle-timer");
 
     /* the image filename could be an image or a backdrop list, so we
      * can't just bind the property directly */
