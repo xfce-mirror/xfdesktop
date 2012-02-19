@@ -570,13 +570,11 @@ xfdesktop_file_utils_get_icon(const gchar *custom_icon_name,
         }
     }
 
-#ifdef HAVE_LIBEXO
     if(opacity != 100) {
         GdkPixbuf *tmp = exo_gdk_pixbuf_lucent(pix, opacity);
         g_object_unref(G_OBJECT(pix));
         pix = tmp;
     }
-#endif
 
     return pix;
 }

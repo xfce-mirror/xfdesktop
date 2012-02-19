@@ -52,9 +52,7 @@
 #include "xfdesktop-notify.h"
 #endif
 
-#ifdef HAVE_LIBEXO
 #include <exo/exo.h>
-#endif
 
 #include "xfdesktop-common.h"
 #include "xfdesktop-file-utils.h"
@@ -273,7 +271,6 @@ xfdesktop_volume_icon_peek_pixbuf(XfdesktopIcon *icon,
         file_icon->priv->pix = xfdesktop_file_utils_get_icon(NULL, gicon, size, 
                                                              NULL, 100);
 
-#ifdef HAVE_LIBEXO
         /* If the volume isn't mounted show it as semi-transparent */
         if(!xfdesktop_volume_icon_is_mounted(icon)) {
             GdkPixbuf *temp;
@@ -284,7 +281,6 @@ xfdesktop_volume_icon_peek_pixbuf(XfdesktopIcon *icon,
                 file_icon->priv->pix = temp;
             }
         }
-#endif
         
         file_icon->priv->cur_pix_size = size;
     }

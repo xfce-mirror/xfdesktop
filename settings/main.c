@@ -46,10 +46,7 @@
 #include <libxfce4util/libxfce4util.h>
 #include <xfconf/xfconf.h>
 #include <libxfce4ui/libxfce4ui.h>
-
-#ifdef HAVE_LIBEXO
 #include <exo/exo.h>
-#endif
 
 #include "xfdesktop-common.h"
 #include "xfdesktop-settings-ui.h"
@@ -897,9 +894,7 @@ add_file_button_clicked(GtkWidget *button,
                                (GtkFileFilterFunc)gtk_true, NULL, NULL);
     gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(chooser), filter);
 
-#ifdef HAVE_LIBEXO
     exo_gtk_file_chooser_add_thumbnail_preview(GTK_FILE_CHOOSER(chooser));
-#endif
 
     if(gtk_dialog_run(GTK_DIALOG(chooser)) == GTK_RESPONSE_ACCEPT) {
         GSList *filenames = gtk_file_chooser_get_filenames(GTK_FILE_CHOOSER(chooser));

@@ -39,12 +39,7 @@
 #include <gdk/gdkx.h>
 #include <gdk/gdkkeysyms.h>
 #include <gtk/gtk.h>
-
-#ifdef HAVE_LIBEXO
 #include <exo/exo.h>
-#else
-#define I_(str)  g_intern_static_string(str)
-#endif
 
 #include "xfdesktop-icon-view.h"
 #include "xfdesktop-file-icon-manager.h"
@@ -262,10 +257,10 @@ static void xfdesktop_icon_view_invalidate_icon(XfdesktopIconView *icon_view,
                                                 gboolean recalc_extents);
 static void xfdesktop_icon_view_icon_changed(XfdesktopIcon *icon,
                                              gpointer user_data);
-#ifdef HAVE_LIBEXO
+
 static void xfdesktop_icon_view_invalidate_icon_pixbuf(XfdesktopIconView *icon_view,
                                                        XfdesktopIcon *icon);
-#endif
+
 static void xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
                                            XfdesktopIcon *icon,
                                            GdkRectangle *area);
@@ -1210,9 +1205,8 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget,
             {
                 icon = icon_view->priv->item_under_pointer;
                 icon_view->priv->item_under_pointer = NULL;
-#ifdef HAVE_LIBEXO
+
                 xfdesktop_icon_view_invalidate_icon_pixbuf(icon_view, icon);
-#endif
             }
         } else {
             if(G_UNLIKELY(icon_view->priv->single_click)) {
@@ -1225,9 +1219,8 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget,
                && xfdesktop_rectangle_contains_point(&extents, evt->x, evt->y))
             {
                 icon_view->priv->item_under_pointer = icon;
-#ifdef HAVE_LIBEXO
+
                 xfdesktop_icon_view_invalidate_icon_pixbuf(icon_view, icon);
-#endif
             }
         }
     }
@@ -1245,13 +1238,10 @@ xfdesktop_icon_view_leave_notify(GtkWidget *widget,
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(user_data);
     
     if(icon_view->priv->item_under_pointer) {
-#ifdef HAVE_LIBEXO
         XfdesktopIcon *icon = icon_view->priv->item_under_pointer;
-#endif
         icon_view->priv->item_under_pointer = NULL;
-#ifdef HAVE_LIBEXO
+
         xfdesktop_icon_view_invalidate_icon(icon_view, icon, FALSE);
-#endif
     }
 
     if(G_UNLIKELY(icon_view->priv->single_click)) {
@@ -2659,7 +2649,6 @@ xfdesktop_icon_view_invalidate_icon(XfdesktopIconView *icon_view,
     }
 }
 
-#ifdef HAVE_LIBEXO
 static void
 xfdesktop_icon_view_invalidate_icon_pixbuf(XfdesktopIconView *icon_view,
                                            XfdesktopIcon *icon)
@@ -2685,7 +2674,6 @@ xfdesktop_icon_view_invalidate_icon_pixbuf(XfdesktopIconView *icon_view,
         }
     }
 }
-#endif
 
 static void
 xfdesktop_paint_rounded_box(XfdesktopIconView *icon_view,
@@ -2949,7 +2937,6 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
         GdkPixbuf *pix = xfdesktop_icon_peek_pixbuf(icon, ICON_SIZE);
         GdkPixbuf *pix_free = NULL;
 
-#ifdef HAVE_LIBEXO
         if(state != GTK_STATE_NORMAL) {
             pix_free = exo_gdk_pixbuf_colorize(pix, &widget->style->base[state]);
             pix = pix_free;
@@ -2962,7 +2949,6 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
             pix = tmp;
             pix_free = tmp;
         }
-#endif
 
         TRACE("painting pixbuf at %dx%d+%d+%d",
               intersection.width, intersection.height,

@@ -36,9 +36,7 @@
 #include <time.h>
 #endif
 
-#ifdef HAVE_LIBEXO
 #include <exo/exo.h>
-#endif
 
 #ifndef PATH_MAX
 #define PATH_MAX 4096
