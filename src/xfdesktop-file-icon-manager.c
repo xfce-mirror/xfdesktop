@@ -3097,18 +3097,20 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
 
                 /* If the user didn't pick whether to copy or move via
                  * a GDK_ACTION_ASK then determine if we should move/copy
-                 * by checking if the files are on the same file system.
+                 * by checking if the files are on the same filesystem
+                 * and are writable by the user.
                  */
                 if(user_selected_action == FALSE) {
                     GFileInfo *src_info, *dest_info;
                     const gchar *src_name, *dest_name;
+
                     dest_info = g_file_query_info(base_dest_file,
-                                                  G_FILE_ATTRIBUTE_ID_FILESYSTEM,
+                                                  XFDESKTOP_FILE_INFO_NAMESPACE,
                                                   G_FILE_QUERY_INFO_NONE,
                                                   NULL,
                                                   NULL);
                     src_info = g_file_query_info(file_list->data,
-                                                 G_FILE_ATTRIBUTE_ID_FILESYSTEM,
+                                                 XFDESKTOP_FILE_INFO_NAMESPACE,
                                                  G_FILE_QUERY_INFO_NONE,
                                                  NULL,
                                                  NULL);
@@ -3119,7 +3121,10 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
                         src_name = g_file_info_get_attribute_string(src_info,
                                                 G_FILE_ATTRIBUTE_ID_FILESYSTEM);
 
-                        if(g_strcmp0(src_name, dest_name) == 0) {
+                        if((g_strcmp0(src_name, dest_name) == 0)
+                           && g_file_info_get_attribute_boolean(src_info,
+                                            G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
+                        {
                             copy_only = FALSE;
                             context->action = GDK_ACTION_MOVE;
                         }
