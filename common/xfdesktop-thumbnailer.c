@@ -130,8 +130,8 @@ xfdesktop_thumbnailer_init(GObject *object)
                                     "org.freedesktop.thumbnails.Thumbnailer1");
 
         if(thumbnailer->priv->proxy) {
-            gchar **supported_uris;
-            gchar **supported_flavors;
+            gchar **supported_uris = NULL;
+            gchar **supported_flavors = NULL;
 
             dbus_g_object_register_marshaller(
                     (GClosureMarshal) xfdesktop_marshal_VOID__UINT_BOXED,
