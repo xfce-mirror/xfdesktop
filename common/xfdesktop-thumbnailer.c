@@ -38,6 +38,7 @@
 
 #include <dbus/dbus-glib.h>
 
+#include <libxfce4util/libxfce4util.h>
 #include "xfdesktop-thumbnailer.h"
 #include "xfdesktop-marshal.h"
 
@@ -166,14 +167,13 @@ xfdesktop_thumbnailer_init(GObject *object)
             if(supported_flavors != NULL) {
                 gint n;
                 for(n = 0; supported_flavors[n] != NULL; ++n) {
-                    g_debug("flavor: %s", supported_flavors[n]);
                     if(g_strcmp0(supported_flavors[n], "large")) {
                         thumbnailer->priv->big_thumbnails = TRUE;
                     }
                 }
             } else {
                 thumbnailer->priv->big_thumbnails = FALSE;
-                g_debug("Thumbnailer failed to Get Flavors");
+                g_warning("Thumbnailer failed calling GetFlavors");
             }
 
             g_strfreev(supported_flavors);
@@ -300,7 +300,7 @@ xfdesktop_thumbnailer_is_supported(XfdesktopThumbnailer *thumbnailer,
     mime_type = xfdesktop_get_file_mimetype(file);
 
     if(mime_type == NULL) {
-        g_warning("File has no mime type");
+        DBG("File %s has no mime type", file);
         return FALSE;
     }
 
@@ -334,7 +334,7 @@ xfdesktop_thumbnailer_queue_thumbnail(XfdesktopThumbnailer *thumbnailer,
     g_return_val_if_fail(file != NULL, FALSE);
 
     if(!xfdesktop_thumbnailer_is_supported(thumbnailer, file)) {
-        g_debug("file: %s not supported", file);
+        DBG("file: %s not supported", file);
         return FALSE;
     }
     if(thumbnailer->priv->request_timer_id) {
@@ -533,7 +533,7 @@ xfdesktop_thumbnailer_thumbnail_ready_dbus(DBusGProxy *proxy,
                                               ".thumbnails", thumbnail_flavor,
                                               filename, NULL);
 
-            g_debug("thumbnail-ready src: %s thumbnail: %s",
+            DBG("thumbnail-ready src: %s thumbnail: %s",
                     (char*)iter->data,
                     thumbnail_location);
 
