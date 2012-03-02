@@ -516,12 +516,26 @@ xfdesktop_regular_file_icon_peek_tooltip(XfdesktopIcon *icon)
     
     if(!regular_file_icon->priv->tooltip) {
         GFileInfo *info = xfdesktop_file_icon_peek_file_info(XFDESKTOP_FILE_ICON(icon));
-        const gchar *content_type;
+        const gchar *content_type, *comment = NULL;
         gchar *description, *size_string, *time_string;
         guint64 size, mtime;
+        gboolean is_desktop_file = FALSE;
 
         if(!info)
             return NULL;
+
+        if(g_content_type_equals(g_file_info_get_content_type(info),
+                                 "application/x-desktop"))
+        {
+            is_desktop_file = TRUE;
+        }
+        else
+        {
+          gchar *uri = g_file_get_uri(regular_file_icon->priv->file);
+          if(g_str_has_suffix(uri, ".desktop"))
+              is_desktop_file = TRUE;
+          g_free(uri);
+        }
 
         content_type = g_file_info_get_content_type(info);
         description = g_content_type_get_description(content_type);
@@ -534,9 +548,33 @@ xfdesktop_regular_file_icon_peek_tooltip(XfdesktopIcon *icon)
                                                  G_FILE_ATTRIBUTE_TIME_MODIFIED);
         time_string = xfdesktop_file_utils_format_time_for_display(mtime);
 
+        /* Extract the Comment entry from the .desktop file */
+        if(is_desktop_file)
+        {
+            gchar *path = g_file_get_path(regular_file_icon->priv->file);
+            XfceRc *rcfile = xfce_rc_simple_open(path, TRUE);
+            g_free(path);
+
+            if(rcfile) {
+                xfce_rc_set_group(rcfile, "Desktop Entry");
+                comment = xfce_rc_read_entry(rcfile, "Comment", NULL);
+            }
+
+            xfce_rc_close(rcfile);
+        }
+
         regular_file_icon->priv->tooltip =
             g_strdup_printf(_("Type: %s\nSize: %s\nLast modified: %s"),
                             description, size_string, time_string);
+
+        /* Prepend the comment to the tooltip */
+        if(is_desktop_file && comment != NULL) {
+            gchar *tooltip = regular_file_icon->priv->tooltip;
+            regular_file_icon->priv->tooltip = g_strdup_printf("%s\n%s",
+                                                               comment,
+                                                               tooltip);
+            g_free(tooltip);
+        }
 
         g_free(time_string);
         g_free(size_string);
