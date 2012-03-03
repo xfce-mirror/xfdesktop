@@ -304,12 +304,6 @@ static void xfdesktop_screen_size_changed_cb(GdkScreen *gscreen,
 static GdkFilterReturn xfdesktop_rootwin_watch_workarea(GdkXEvent *gxevent,
                                                         GdkEvent *event,
                                                         gpointer user_data);
-static gboolean xfdesktop_get_workarea_single(XfdesktopIconView *icon_view,
-                                              guint ws_num,
-                                              gint *xorigin,
-                                              gint *yorigin,
-                                              gint *width,
-                                              gint *height);
 static void xfdesktop_grid_do_resize(XfdesktopIconView *icon_view);
 static inline gboolean xfdesktop_rectangle_contains_point(GdkRectangle *rect,
                                                           gint x,
@@ -3128,7 +3122,7 @@ xfdesktop_grid_resize_timeout(gpointer user_data)
 }
 
 
-static gboolean
+gboolean
 xfdesktop_get_workarea_single(XfdesktopIconView *icon_view,
                               guint ws_num,
                               gint *xorigin,

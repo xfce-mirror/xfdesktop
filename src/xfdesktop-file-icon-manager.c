@@ -1781,13 +1781,22 @@ xfdesktop_file_icon_manager_save_icons(gpointer user_data)
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
     gchar relpath[PATH_MAX], *tmppath, *path;
     XfceRc *rcfile;
+    gint x = 0, y = 0, width = 0, height = 0;
     
     fmanager->priv->save_icons_id = 0;
-    
+
+    xfdesktop_get_workarea_single(fmanager->priv->icon_view,
+                                  0,
+                                  &x,
+                                  &y,
+                                  &width,
+                                  &height);
+
     g_snprintf(relpath, PATH_MAX, "xfce4/desktop/icons.screen%d-%dx%d.rc",
                gdk_screen_get_number(fmanager->priv->gscreen),
-               gdk_screen_get_width(fmanager->priv->gscreen),
-               gdk_screen_get_height(fmanager->priv->gscreen));
+               width,
+               height);
+
     path = xfce_resource_save_location(XFCE_RESOURCE_CONFIG, relpath, TRUE);
     if(!path)
         return FALSE;
@@ -1853,11 +1862,20 @@ xfdesktop_file_icon_manager_get_cached_icon_position(XfdesktopFileIconManager *f
     gchar relpath[PATH_MAX];
     gchar *filename = NULL;
     gboolean ret = FALSE;
+    gint x = 0, y = 0, width = 0, height = 0;
+
+    xfdesktop_get_workarea_single(fmanager->priv->icon_view,
+                                  0,
+                                  &x,
+                                  &y,
+                                  &width,
+                                  &height);
     
     g_snprintf(relpath, PATH_MAX, "xfce4/desktop/icons.screen%d-%dx%d.rc",
                gdk_screen_get_number(fmanager->priv->gscreen),
-               gdk_screen_get_width(fmanager->priv->gscreen),
-               gdk_screen_get_height(fmanager->priv->gscreen));
+               width,
+               height);
+
     filename = xfce_resource_lookup(XFCE_RESOURCE_CONFIG, relpath);
 
     /* Check if we have to migrate from the old file format */
