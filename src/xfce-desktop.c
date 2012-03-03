@@ -335,8 +335,29 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     pix = xfce_backdrop_get_pixbuf(backdrop);
     if(!pix)
         return;
-    
-    gdk_screen_get_monitor_geometry(gscreen, monitor, &rect);
+
+    if(desktop->priv->xinerama_stretch) {
+        GdkRectangle monitor_rect;
+
+        gdk_screen_get_monitor_geometry(gscreen, 0, &rect);
+
+        /* Get the lowest x and y value for all the monitors in
+         * case none of them start at 0,0 for whatever reason.
+         */
+        for(i = 1; i < (guint)gdk_screen_get_n_monitors(gscreen); i++) {
+            gdk_screen_get_monitor_geometry(gscreen, i, &monitor_rect);
+
+            if(monitor_rect.x < rect.x)
+                rect.x = monitor_rect.x;
+            if(monitor_rect.y < rect.y)
+                rect.y = monitor_rect.y;
+        }
+
+        rect.width = gdk_screen_get_width(gscreen);
+        rect.height = gdk_screen_get_height(gscreen);
+    } else {
+        gdk_screen_get_monitor_geometry(gscreen, monitor, &rect);
+    }
 
     gdk_draw_pixbuf(GDK_DRAWABLE(pmap), GTK_WIDGET(desktop)->style->black_gc,
                     pix, 0, 0, rect.x, rect.y,
