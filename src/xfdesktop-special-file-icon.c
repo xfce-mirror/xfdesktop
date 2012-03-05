@@ -65,7 +65,7 @@ struct _XfdesktopSpecialFileIconPrivate
     GdkScreen *gscreen;
     
     /* only needed for trash */
-    gboolean trash_item_count;
+    guint trash_item_count;
 };
 
 static void xfdesktop_special_file_icon_finalize(GObject *obj);
@@ -90,6 +90,7 @@ static void xfdesktop_special_file_icon_changed(GFileMonitor *monitor,
                                                 GFile *other_file,
                                                 GFileMonitorEvent event,
                                                 XfdesktopSpecialFileIcon *special_file_icon);
+static void xfdesktop_special_file_icon_update_trash_count(XfdesktopSpecialFileIcon *special_file_icon);
 
 #ifdef HAVE_THUNARX
 static void xfdesktop_special_file_icon_tfi_init(ThunarxFileInfoIface *iface);
@@ -219,29 +220,43 @@ xfdesktop_special_file_icon_peek_pixbuf(XfdesktopIcon *icon,
                                         gint size)
 {
     XfdesktopSpecialFileIcon *file_icon = XFDESKTOP_SPECIAL_FILE_ICON(icon);
-    
+    GIcon *gicon = NULL;
+    const gchar *custom_icon_name = NULL;
+    GFile *parent = NULL;
+
     if(size != file_icon->priv->cur_pix_size)
         xfdesktop_special_file_icon_invalidate_pixbuf(file_icon);
-    
-    if(!file_icon->priv->pix) {
-        GIcon *gicon = NULL;
-        const gchar *custom_icon_name = NULL;
 
-        /* use a custom icon name for the local filesystem root */
-        GFile *parent = g_file_get_parent(file_icon->priv->file);
-        if(!parent && g_file_has_uri_scheme(file_icon->priv->file, "file"))
-            custom_icon_name = "drive-harddisk";
-        if(parent)
-            g_object_unref(parent);
+    /* Already have a good icon */
+    if(file_icon->priv->pix != NULL)
+        return file_icon->priv->pix;
 
-        if(file_icon->priv->file_info)
-            gicon = g_file_info_get_icon(file_icon->priv->file_info);
-        
-        file_icon->priv->pix = xfdesktop_file_utils_get_icon(custom_icon_name, gicon,
-                                                             size, NULL, 100);
-        
-        file_icon->priv->cur_pix_size = size;
+    /* use a custom icon name for the local filesystem root */
+    parent = g_file_get_parent(file_icon->priv->file);
+    if(!parent && g_file_has_uri_scheme(file_icon->priv->file, "file"))
+        custom_icon_name = "drive-harddisk";
+    if(parent)
+        g_object_unref(parent);
+
+    /* use a custom icon for the trash, based on it having files
+     * the user can delete */
+    if(file_icon->priv->type == XFDESKTOP_SPECIAL_FILE_ICON_TRASH) {
+        if(file_icon->priv->trash_item_count == 0)
+            custom_icon_name = "user-trash";
+        else
+            custom_icon_name = "user-trash-full";
     }
+
+    if(file_icon->priv->file_info)
+        gicon = g_file_info_get_icon(file_icon->priv->file_info);
+
+    file_icon->priv->pix = xfdesktop_file_utils_get_icon(custom_icon_name,
+                                                         gicon,
+                                                         size,
+                                                         NULL,
+                                                         100);
+
+    file_icon->priv->cur_pix_size = size;
     
     return file_icon->priv->pix;
 }
@@ -477,12 +492,9 @@ xfdesktop_special_file_icon_populate_context_menu(XfdesktopIcon *icon,
 {
     XfdesktopSpecialFileIcon *special_file_icon = XFDESKTOP_SPECIAL_FILE_ICON(icon);
     GtkWidget *mi, *img;
-    GtkIconTheme *icon_theme;
     
     if(XFDESKTOP_SPECIAL_FILE_ICON_TRASH != special_file_icon->priv->type)
         return FALSE;
-    
-    icon_theme = gtk_icon_theme_get_default();
     
     img = gtk_image_new_from_stock(GTK_STOCK_OPEN, GTK_ICON_SIZE_MENU);
     gtk_widget_show(img);
@@ -496,13 +508,12 @@ xfdesktop_special_file_icon_populate_context_menu(XfdesktopIcon *icon,
     mi = gtk_separator_menu_item_new();
     gtk_widget_show(mi);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-    
-    if(gtk_icon_theme_has_icon(icon_theme, "user-trash"))
+
+    if(special_file_icon->priv->trash_item_count == 0) {
         img = gtk_image_new_from_icon_name("user-trash", GTK_ICON_SIZE_MENU);
-    else if(gtk_icon_theme_has_icon(icon_theme, "gnome-fs-trash-empty"))
-        img = gtk_image_new_from_icon_name("gnome-fs-trash-empty", GTK_ICON_SIZE_MENU);
-    else
-        img = NULL;
+    } else {
+        img = gtk_image_new_from_icon_name("user-trash-full", GTK_ICON_SIZE_MENU);
+    }
     
     mi = gtk_image_menu_item_new_with_mnemonic(_("_Empty Trash"));
     if(img)
@@ -575,12 +586,8 @@ xfdesktop_special_file_icon_changed(GFileMonitor *monitor,
                                                                             NULL, NULL);
 
     /* update the trash full state */
-    if(special_file_icon->priv->file_info 
-       && special_file_icon->priv->type == XFDESKTOP_SPECIAL_FILE_ICON_TRASH) 
-    {
-        special_file_icon->priv->trash_item_count = g_file_info_get_attribute_uint32(special_file_icon->priv->file_info, 
-                                                                                     G_FILE_ATTRIBUTE_TRASH_ITEM_COUNT);
-    }
+    if(special_file_icon->priv->type == XFDESKTOP_SPECIAL_FILE_ICON_TRASH)
+        xfdesktop_special_file_icon_update_trash_count(special_file_icon);
 
     /* invalidate the tooltip */
     g_free(special_file_icon->priv->tooltip);
@@ -589,6 +596,54 @@ xfdesktop_special_file_icon_changed(GFileMonitor *monitor,
     /* update the icon */
     xfdesktop_special_file_icon_invalidate_pixbuf(special_file_icon);
     xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(special_file_icon));
+}
+
+static void
+xfdesktop_special_file_icon_update_trash_count(XfdesktopSpecialFileIcon *special_file_icon)
+{
+    GFileEnumerator *enumerator;
+    GFileInfo *f_info;
+    gint n = 0;
+
+    g_return_if_fail(XFDESKTOP_IS_SPECIAL_FILE_ICON(special_file_icon));
+
+    if(special_file_icon->priv->file_info == NULL
+       || special_file_icon->priv->type != XFDESKTOP_SPECIAL_FILE_ICON_TRASH)
+    {
+        return;
+    }
+
+    special_file_icon->priv->trash_item_count = g_file_info_get_attribute_uint32(
+                                                    special_file_icon->priv->file_info,
+                                                    G_FILE_ATTRIBUTE_TRASH_ITEM_COUNT);
+
+    if(special_file_icon->priv->trash_item_count == 0)
+        return;
+
+    /* The trash count may return a number of files the user can't
+     * currently delete, for example if the file is in a removable
+     * drive that isn't mounted.
+     */
+    enumerator = g_file_enumerate_children(special_file_icon->priv->file,
+                                           G_FILE_ATTRIBUTE_ACCESS_CAN_DELETE,
+                                           G_FILE_QUERY_INFO_NONE,
+                                           NULL,
+                                           NULL);
+    if(enumerator == NULL)
+        return;
+
+    for(f_info = g_file_enumerator_next_file(enumerator, NULL, NULL);
+        f_info != NULL;
+        f_info = g_file_enumerator_next_file(enumerator, NULL, NULL))
+    {
+          n++;
+          g_object_unref(f_info);
+    }
+
+    g_file_enumerator_close(enumerator, NULL, NULL);
+    g_object_unref(enumerator);
+
+    special_file_icon->priv->trash_item_count = n;
 }
 
 /* public API */
@@ -636,11 +691,9 @@ xfdesktop_special_file_icon_new(XfdesktopSpecialFileIconType type,
     special_file_icon->priv->filesystem_info = g_file_query_filesystem_info(special_file_icon->priv->file,
                                                                             XFDESKTOP_FILESYSTEM_INFO_NAMESPACE,
                                                                             NULL, NULL);
-
-    if(type == XFDESKTOP_SPECIAL_FILE_ICON_TRASH) {
-        special_file_icon->priv->trash_item_count = g_file_info_get_attribute_uint32(special_file_icon->priv->file_info, 
-                                                                                     G_FILE_ATTRIBUTE_TRASH_ITEM_COUNT);
-    }
+    /* update the trash full state */
+    if(type == XFDESKTOP_SPECIAL_FILE_ICON_TRASH)
+        xfdesktop_special_file_icon_update_trash_count(special_file_icon);
 
     g_signal_connect_swapped(G_OBJECT(gtk_icon_theme_get_for_screen(screen)),
                              "changed",

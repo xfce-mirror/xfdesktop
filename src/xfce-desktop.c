@@ -335,14 +335,29 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     pix = xfce_backdrop_get_pixbuf(backdrop);
     if(!pix)
         return;
-    
-    if(desktop->priv->nbackdrops == 1) {
-        /* single monitor */
-        rect.x = rect.y = 0;
+
+    if(desktop->priv->xinerama_stretch) {
+        GdkRectangle monitor_rect;
+
+        gdk_screen_get_monitor_geometry(gscreen, 0, &rect);
+
+        /* Get the lowest x and y value for all the monitors in
+         * case none of them start at 0,0 for whatever reason.
+         */
+        for(i = 1; i < (guint)gdk_screen_get_n_monitors(gscreen); i++) {
+            gdk_screen_get_monitor_geometry(gscreen, i, &monitor_rect);
+
+            if(monitor_rect.x < rect.x)
+                rect.x = monitor_rect.x;
+            if(monitor_rect.y < rect.y)
+                rect.y = monitor_rect.y;
+        }
+
         rect.width = gdk_screen_get_width(gscreen);
         rect.height = gdk_screen_get_height(gscreen);
-    } else
+    } else {
         gdk_screen_get_monitor_geometry(gscreen, monitor, &rect);
+    }
 
     gdk_draw_pixbuf(GDK_DRAWABLE(pmap), GTK_WIDGET(desktop)->style->black_gc,
                     pix, 0, 0, rect.x, rect.y,
@@ -360,6 +375,28 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     
     /* do this again so apps watching the root win notice the update */
     set_real_root_window_pixmap(gscreen, pmap);
+}
+
+static void
+backdrop_cycle_cb(XfceBackdrop *backdrop, gpointer user_data)
+{
+    const gchar* backdrop_list;
+
+    g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
+
+    backdrop_list = xfce_backdrop_get_list(backdrop);
+
+    if(xfdesktop_backdrop_list_is_valid(backdrop_list)) {
+        gchar *backdrop_file;
+        GError *error = NULL;
+
+        backdrop_file = xfdesktop_backdrop_list_choose_random(backdrop_list,
+                                                              &error);
+
+        xfce_backdrop_set_image_filename(backdrop, backdrop_file);
+        g_free(backdrop_file);
+        backdrop_changed_cb(backdrop, user_data);
+    }
 }
 
 static void
@@ -434,6 +471,9 @@ xfce_desktop_monitors_changed(GdkScreen *gscreen,
                 g_signal_connect(G_OBJECT(desktop->priv->backdrops[0]),
                                  "changed",
                                  G_CALLBACK(backdrop_changed_cb), desktop);
+                g_signal_connect(G_OBJECT(desktop->priv->backdrops[0]),
+                                 "cycle",
+                                 G_CALLBACK(backdrop_cycle_cb), desktop);
             }
             desktop->priv->nbackdrops = 1;
         }
@@ -458,6 +498,10 @@ xfce_desktop_monitors_changed(GdkScreen *gscreen,
                     g_signal_connect(G_OBJECT(desktop->priv->backdrops[i]),
                                      "changed",
                                      G_CALLBACK(backdrop_changed_cb),
+                                     desktop);
+                    g_signal_connect(G_OBJECT(desktop->priv->backdrops[i]),
+                                     "cycle",
+                                     G_CALLBACK(backdrop_cycle_cb),
                                      desktop);
                 }
             }
@@ -626,7 +670,7 @@ xfce_desktop_finalize(GObject *object)
     
     g_object_unref(G_OBJECT(desktop->priv->channel));
     g_free(desktop->priv->property_prefix);
-    
+
     G_OBJECT_CLASS(xfce_desktop_parent_class)->finalize(object);
 }
 
@@ -853,17 +897,19 @@ xfce_desktop_button_press_event(GtkWidget *w,
 {
     guint button = evt->button;
     guint state = evt->state;
-    
+    g_return_val_if_fail(XFCE_IS_DESKTOP(w), FALSE);
+
     if(evt->type == GDK_BUTTON_PRESS) {
-        if(button == 2 || (button == 1 && (state & GDK_SHIFT_MASK)
-                           && (state & GDK_CONTROL_MASK)))
+        if(XFCE_DESKTOP(w)->priv->icons_style == XFCE_DESKTOP_ICON_STYLE_NONE
+           && (button == 3 || (button == 1 && (state & GDK_SHIFT_MASK)))) {
+            xfce_desktop_popup_root_menu(XFCE_DESKTOP(w),
+                                         button,
+                                         evt->time);
+        } else if(button == 2 || (button == 1 && (state & GDK_SHIFT_MASK)
+                                  && (state & GDK_CONTROL_MASK)))
         {
             xfce_desktop_popup_secondary_root_menu(XFCE_DESKTOP(w),
                                                    button, evt->time);
-            return TRUE;
-        } else if(button == 3 || (button == 1 && (state & GDK_SHIFT_MASK))) {
-            xfce_desktop_popup_root_menu(XFCE_DESKTOP(w),
-                                         button, evt->time);
             return TRUE;
         }
     }
@@ -1033,8 +1079,13 @@ xfce_desktop_image_filename_changed(XfconfChannel *channel,
 
             xfce_backdrop_set_image_filename(backdrop, backdrop_file);
             g_free(backdrop_file);
-        } else
+
+            xfce_backdrop_set_list(backdrop, g_strdup(filename));
+        } else {
             xfce_backdrop_set_image_filename(backdrop, filename);
+
+            xfce_backdrop_set_list(backdrop, NULL);
+        }
     }
 }
 
@@ -1085,6 +1136,16 @@ xfce_desktop_connect_backdrop_settings(XfceDesktop *desktop,
     g_strlcat(buf, "saturation", sizeof(buf));
     xfconf_g_property_bind(channel, buf, G_TYPE_DOUBLE,
                            G_OBJECT(backdrop), "saturation");
+
+    buf[pp_len] = 0;
+    g_strlcat(buf, "backdrop-cycle-enable", sizeof(buf));
+    xfconf_g_property_bind(channel, buf, G_TYPE_BOOLEAN,
+                           G_OBJECT(backdrop), "backdrop-cycle-enable");
+
+    buf[pp_len] = 0;
+    g_strlcat(buf, "backdrop-cycle-timer", sizeof(buf));
+    xfconf_g_property_bind(channel, buf, G_TYPE_UINT,
+                           G_OBJECT(backdrop), "backdrop-cycle-timer");
 
     /* the image filename could be an image or a backdrop list, so we
      * can't just bind the property directly */
@@ -1340,29 +1401,29 @@ xfce_desktop_do_menu_popup(XfceDesktop *desktop,
         screen = gtk_widget_get_screen(GTK_WIDGET(desktop));
     else
         screen = gdk_display_get_default_screen(gdk_display_get_default());
-    
-    menu = gtk_menu_new();
-    gtk_menu_set_screen(GTK_MENU(menu), screen);
-    g_signal_connect_swapped(G_OBJECT(menu), "deactivate",
-                             G_CALLBACK(g_idle_add),
-                             (gpointer)xfce_desktop_menu_destroy_idled);
-    
-    g_signal_emit(G_OBJECT(desktop), populate_signal, 0, menu);
-    
-    /* if nobody populated the menu, don't do anything */
-    menu_children = gtk_container_get_children(GTK_CONTAINER(menu));
-    if(!menu_children) {
-        gtk_widget_destroy(menu);
-        return;
-    }
-    
-    g_list_free(menu_children);
-    
-    gtk_menu_attach_to_widget(GTK_MENU(menu), GTK_WIDGET(desktop), NULL);
-    
+
     if(xfdesktop_popup_grab_available(gdk_screen_get_root_window(screen),
                                       activate_time))
     {
+        menu = gtk_menu_new();
+        gtk_menu_set_screen(GTK_MENU(menu), screen);
+        g_signal_connect_swapped(G_OBJECT(menu), "deactivate",
+                                 G_CALLBACK(g_idle_add),
+                                 (gpointer)xfce_desktop_menu_destroy_idled);
+
+        g_signal_emit(G_OBJECT(desktop), populate_signal, 0, menu);
+
+        /* if nobody populated the menu, don't do anything */
+        menu_children = gtk_container_get_children(GTK_CONTAINER(menu));
+        if(!menu_children) {
+            gtk_widget_destroy(menu);
+            return;
+        }
+
+        g_list_free(menu_children);
+
+        gtk_menu_attach_to_widget(GTK_MENU(menu), GTK_WIDGET(desktop), NULL);
+
         /* bug #3652: for some reason passing the correct button here breaks
          * on some systems but not others.  always pass 0 for now. */
         gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL, 0,
@@ -1426,5 +1487,16 @@ xfce_desktop_refresh(XfceDesktop *desktop)
         desktop->priv->icon_view = NULL;
     }
     xfce_desktop_setup_icon_view(desktop);
+#endif
+}
+
+void xfce_desktop_arrange_icons(XfceDesktop *desktop)
+{
+    g_return_if_fail(XFCE_IS_DESKTOP(desktop));
+
+#ifdef ENABLE_DESKTOP_ICONS
+    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(desktop->priv->icon_view));
+
+    xfdesktop_icon_view_sort_icons(XFDESKTOP_ICON_VIEW(desktop->priv->icon_view));
 #endif
 }

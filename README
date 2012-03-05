@@ -1,4 +1,4 @@
-README for xfdesktop version 4.5
+README for xfdesktop
 ================================
 
 WHAT IS IT?
@@ -17,14 +17,16 @@ MINIMUM REQUIREMENTS
 ~~~~~~~~~~~~~~~~~~~~
 
 * intltool 0.34
-* GTK+ 2.10.0
-* libxfce4util 4.5.0svn-r26490
-* libxfcegui4 4.5.2svn-r27035
-* libwnck 2.12.0
-* libxfce4menu 0.1.0svn-r26507 (optional; required for apps menu)
-* libthunar-vfs 0.8.0  (optional; required for file icons)
+* GTK+ 2.14.0
+* libxfce4util 4.8
+* libxfce4ui 4.9
+* libwnck 2.22
+* libexo 0.6
+* xfconf 4.8
+* garcon 0.1.2 (optional; required for apps menu)
+* thunar 1.2 (optional; required for file icons)
 * dbus-glib 0.34  (optional; required for file icons)
-* libexo 0.3.2 (optional)
+* tumbler 1.6 (optional; enables thumbnail previews for file icons)
 
 
 HIDDEN CUSTOMISATIONS
@@ -40,7 +42,8 @@ You'd want to add something like this to your ~/.gtkrc-2.0 file:
 style "xfdesktop-icon-view" {
     XfdesktopIconView::label-alpha = 75
     XfdesktopIconView::selected-label-alpha = 100
-    XfdesktopIconVIew::ellipsize-icon-labels = 1
+    XfdesktopIconView::ellipsize-icon-labels = 1
+    XfdesktopIconView::tooltip-size = 128
 
     XfdesktopIconView::shadow-x-offset = 1
     XfdesktopIconView::shadow-y-offset = 1
@@ -49,7 +52,7 @@ style "xfdesktop-icon-view" {
     XfdesktopIconView::selected-shadow-y-offset = 2
     XfdesktopIconView::selected-shadow-color = "#00ff00"
 
-    XfdesktopIconVIew::cell-spacing = 6
+    XfdesktopIconView::cell-spacing = 6
     XfdesktopIconView::cell-padding = 6
     XfdesktopIconView::cell-text-width-proportion = 2.5
 
@@ -63,11 +66,14 @@ style "xfdesktop-icon-view" {
 }
 widget_class "*XfdesktopIconView*" style "xfdesktop-icon-view"
 
-The first three entries set the opacity of the rounded text background
+The first four entries set the opacity of the rounded text background
 (allowed values are from 0 (totally transparent) to 255 (totally opaque),
 and whether or not unselected icons get their labels ellipsized
 (truncated) to fit on one line.  (The 'selected-' version controls the
-opacity of icons that have been selected with the mouse.)
+opacity of icons that have been selected with the mouse.) The tooltip-size
+determines how large the image preview will be when the mouse is hovered
+over an icon (allowed values are from 0 (not shown) to 512, values larger
+than 256 may cause poor image quality however.)
 
 The second six entries can be used to enable a text shadow to be painted
 with the icon labels.  The offsets are in pixels.  Setting them to 0 (the

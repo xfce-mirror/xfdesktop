@@ -46,10 +46,7 @@
 #include <libxfce4util/libxfce4util.h>
 #include <xfconf/xfconf.h>
 #include <libxfce4ui/libxfce4ui.h>
-
-#ifdef HAVE_LIBEXO
 #include <exo/exo.h>
-#endif
 
 #include "xfdesktop-common.h"
 #include "xfdesktop-settings-ui.h"
@@ -70,6 +67,8 @@
 #define DESKTOP_ICONS_ICON_SIZE_PROP         "/desktop-icons/icon-size"
 #define DESKTOP_ICONS_FONT_SIZE_PROP         "/desktop-icons/font-size"
 #define DESKTOP_ICONS_CUSTOM_FONT_SIZE_PROP  "/desktop-icons/use-custom-font-size"
+#define DESKTOP_ICONS_SINGLE_CLICK_PROP      "/desktop-icons/single-click"
+#define DESKTOP_ICONS_SHOW_THUMBNAILS_PROP   "/desktop-icons/show-thumbnails"
 #define DESKTOP_ICONS_SHOW_HOME              "/desktop-icons/file-icons/show-home"
 #define DESKTOP_ICONS_SHOW_TRASH             "/desktop-icons/file-icons/show-trash"
 #define DESKTOP_ICONS_SHOW_FILESYSTEM        "/desktop-icons/file-icons/show-filesystem"
@@ -103,6 +102,11 @@ typedef struct
 
     GtkWidget *brightness_slider;
     GtkWidget *saturation_slider;
+
+    GtkWidget *backdrop_cycle_spinbox;
+    GtkWidget *backdrop_cycle_chkbox;
+
+    GtkWidget *chk_xinerama_stretch;
 } AppearancePanel;
 
 typedef struct
@@ -757,6 +761,56 @@ cb_xfdesktop_chk_custom_font_size_toggled(GtkCheckButton *button,
                              gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(button)));
 }
 
+static void
+cb_xfdesktop_chk_cycle_backdrop_toggled(GtkCheckButton *button,
+                                        gpointer user_data)
+{
+    gboolean sensitive = FALSE;
+    GtkWidget *spin_button = GTK_WIDGET(user_data);
+
+    if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(button)) &&
+       gtk_widget_get_sensitive(GTK_WIDGET(button))) {
+           sensitive = TRUE;
+    }
+
+    gtk_widget_set_sensitive(spin_button, sensitive);
+}
+
+static gboolean
+xfdesktop_spin_icon_size_timer(GtkSpinButton *button)
+{
+    XfconfChannel *channel = g_object_get_data(G_OBJECT(button), "xfconf-chanel");
+
+    g_return_val_if_fail(XFCONF_IS_CHANNEL(channel), FALSE);
+
+    xfconf_channel_set_uint(channel,
+                            DESKTOP_ICONS_ICON_SIZE_PROP,
+                            gtk_spin_button_get_value(button));
+
+    return FALSE;
+}
+
+static void
+cb_xfdesktop_spin_icon_size_changed(GtkSpinButton *button,
+                                    gpointer user_data)
+{
+    guint timer_id = 0;
+
+    g_object_set_data(G_OBJECT(button), "xfconf-chanel", user_data);
+
+    timer_id = GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(button), "timer-id"));
+    if(timer_id != 0) {
+        g_source_remove(timer_id);
+        timer_id = 0;
+    }
+
+    timer_id = g_timeout_add(2000,
+                             (GSourceFunc)xfdesktop_spin_icon_size_timer,
+                             button);
+
+    g_object_set_data(G_OBJECT(button), "timer-id", GUINT_TO_POINTER(timer_id));
+}
+
 static gboolean
 xfdesktop_settings_save_backdrop_list(AppearancePanel *panel,
                                       GtkTreeModel *model)
@@ -840,9 +894,7 @@ add_file_button_clicked(GtkWidget *button,
                                (GtkFileFilterFunc)gtk_true, NULL, NULL);
     gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(chooser), filter);
 
-#ifdef HAVE_LIBEXO
     exo_gtk_file_chooser_add_thumbnail_preview(GTK_FILE_CHOOSER(chooser));
-#endif
 
     if(gtk_dialog_run(GTK_DIALOG(chooser)) == GTK_RESPONSE_ACCEPT) {
         GSList *filenames = gtk_file_chooser_get_filenames(GTK_FILE_CHOOSER(chooser));
@@ -988,6 +1040,8 @@ cb_image_type_radio_clicked(GtkWidget *w,
         gtk_widget_set_sensitive(panel->btn_minus, FALSE);
         gtk_widget_set_sensitive(panel->btn_newlist, FALSE);
         gtk_widget_set_sensitive(panel->frame_image_list, TRUE);
+        gtk_widget_set_sensitive(panel->backdrop_cycle_chkbox, FALSE);
+        gtk_widget_set_sensitive(panel->backdrop_cycle_spinbox, FALSE);
         DBG("show_image=%s", panel->show_image?"true":"false");
         if(!panel->show_image) {
             panel->show_image = TRUE;
@@ -1013,6 +1067,11 @@ cb_image_type_radio_clicked(GtkWidget *w,
         gtk_widget_set_sensitive(panel->btn_minus, TRUE);
         gtk_widget_set_sensitive(panel->btn_newlist, TRUE);
         gtk_widget_set_sensitive(panel->frame_image_list, TRUE);
+        gtk_widget_set_sensitive(panel->backdrop_cycle_chkbox, TRUE);
+        if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(panel->backdrop_cycle_chkbox)))
+            gtk_widget_set_sensitive(panel->backdrop_cycle_spinbox, TRUE);
+        else
+            gtk_widget_set_sensitive(panel->backdrop_cycle_spinbox, FALSE);
         DBG("show_image=%s", panel->show_image?"true":"false");
         if(!panel->show_image) {
             panel->show_image = TRUE;
@@ -1021,6 +1080,8 @@ cb_image_type_radio_clicked(GtkWidget *w,
     } else if(w == panel->radio_none) {
         DBG("widget is none");
         gtk_widget_set_sensitive(panel->frame_image_list, FALSE);
+        gtk_widget_set_sensitive(panel->backdrop_cycle_chkbox, FALSE);
+        gtk_widget_set_sensitive(panel->backdrop_cycle_spinbox, FALSE);
         DBG("show_image=%s", panel->show_image?"true":"false");
         if(panel->show_image) {
             panel->show_image = FALSE;
@@ -1225,18 +1286,36 @@ xfdesktop_settings_dialog_add_screens(GtkBuilder *main_gxml,
 {
     gint i, j, nmonitors, nscreens;
     GtkWidget *appearance_container, *chk_custom_font_size,
-              *spin_font_size, *color_style_widget, *w, *box;
+              *spin_font_size, *color_style_widget, *w, *box,
+              *spin_icon_size, *chk_show_thumbnails, *chk_single_click;
 
     appearance_container = GTK_WIDGET(gtk_builder_get_object(main_gxml,
                                                              "notebook_screens"));
+
+    spin_icon_size = GTK_WIDGET(gtk_builder_get_object(main_gxml, "spin_icon_size"));
+
+    g_signal_connect(G_OBJECT(spin_icon_size), "value-changed",
+                     G_CALLBACK(cb_xfdesktop_spin_icon_size_changed),
+                     channel);
+
+    gtk_spin_button_set_value(GTK_SPIN_BUTTON(spin_icon_size),
+                              xfconf_channel_get_uint(channel,
+                                                      DESKTOP_ICONS_ICON_SIZE_PROP,
+                                                      DEFAULT_ICON_SIZE));
 
     chk_custom_font_size = GTK_WIDGET(gtk_builder_get_object(main_gxml,
                                                              "chk_custom_font_size"));
     spin_font_size = GTK_WIDGET(gtk_builder_get_object(main_gxml, "spin_font_size"));
 
+    chk_single_click = GTK_WIDGET(gtk_builder_get_object(main_gxml,
+                                                         "chk_single_click"));
+
     g_signal_connect(G_OBJECT(chk_custom_font_size), "toggled",
                      G_CALLBACK(cb_xfdesktop_chk_custom_font_size_toggled),
                      spin_font_size);
+
+    chk_show_thumbnails = GTK_WIDGET(gtk_builder_get_object(main_gxml,
+                                                            "chk_show_thumbnails"));
 
     nscreens = gdk_display_get_n_screens(gdk_display_get_default());
 
@@ -1382,6 +1461,43 @@ xfdesktop_settings_dialog_add_screens(GtkBuilder *main_gxml,
             g_signal_connect(G_OBJECT(panel->btn_newlist), "clicked",
                              G_CALLBACK(newlist_button_clicked), panel);
 
+            panel->chk_xinerama_stretch = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
+                                                                            "chk_xinerama_stretch"));
+
+            /* The first monitor has the option of doing the xinerama-stretch,
+             * but only if there's multiple monitors attached. Make it invisible
+             * in all other cases.
+             */
+            if(j == 0 && nmonitors > 1) {
+                g_snprintf(buf, sizeof(buf), "/backdrop/screen%d/xinerama-stretch",
+                           i);
+                xfconf_g_property_bind(channel, buf, G_TYPE_BOOLEAN,
+                                        G_OBJECT(panel->chk_xinerama_stretch), "active");
+                gtk_widget_set_sensitive(panel->chk_xinerama_stretch, TRUE);
+            } else {
+                gtk_widget_hide(panel->chk_xinerama_stretch);
+            }
+
+            panel->backdrop_cycle_chkbox = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
+                                                                             "chk_cycle_backdrop"));
+            panel->backdrop_cycle_spinbox = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
+                                                                             "spin_backdrop_time_minutes"));
+
+            g_signal_connect(G_OBJECT(panel->backdrop_cycle_chkbox), "toggled",
+                            G_CALLBACK(cb_xfdesktop_chk_cycle_backdrop_toggled),
+                            panel->backdrop_cycle_spinbox);
+
+            g_snprintf(buf, sizeof(buf), PER_SCREEN_PROP_FORMAT "/backdrop-cycle-enable",
+                       i, j);
+            xfconf_g_property_bind(channel, buf, G_TYPE_BOOLEAN,
+                                   G_OBJECT(panel->backdrop_cycle_chkbox), "active");
+
+            g_snprintf(buf, sizeof(buf), PER_SCREEN_PROP_FORMAT "/backdrop-cycle-timer",
+                       i, j);
+            xfconf_g_property_bind(channel, buf, G_TYPE_UINT,
+                           G_OBJECT(gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(panel->backdrop_cycle_spinbox))),
+                           "value");
+
             panel->radio_singleimage = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
                                                                          "radio_singleimage"));
             g_signal_connect(G_OBJECT(panel->radio_singleimage), "toggled",
@@ -1477,15 +1593,17 @@ xfdesktop_settings_dialog_add_screens(GtkBuilder *main_gxml,
 #endif
     xfconf_g_property_bind(channel, DESKTOP_ICONS_STYLE_PROP, G_TYPE_INT,
                            G_OBJECT(w), "active");
-    xfconf_g_property_bind(channel, DESKTOP_ICONS_ICON_SIZE_PROP, G_TYPE_UINT,
-                           G_OBJECT(gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(gtk_builder_get_object(main_gxml,
-                                                                                                          "spin_icon_size")))),
-                           "value");
     xfconf_g_property_bind(channel, DESKTOP_ICONS_FONT_SIZE_PROP, G_TYPE_DOUBLE,
                            G_OBJECT(gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(spin_font_size))),
                            "value");
     xfconf_g_property_bind(channel, DESKTOP_ICONS_CUSTOM_FONT_SIZE_PROP,
                            G_TYPE_BOOLEAN, G_OBJECT(chk_custom_font_size),
+                           "active");
+    xfconf_g_property_bind(channel, DESKTOP_ICONS_SHOW_THUMBNAILS_PROP,
+                           G_TYPE_BOOLEAN, G_OBJECT(chk_show_thumbnails),
+                           "active");
+    xfconf_g_property_bind(channel, DESKTOP_ICONS_SINGLE_CLICK_PROP,
+                           G_TYPE_BOOLEAN, G_OBJECT(chk_single_click),
                            "active");
 
     setup_special_icon_list(main_gxml, channel);

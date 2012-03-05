@@ -70,6 +70,7 @@ struct _XfceBackdropClass
     
     /*< signals >*/
     void (*changed)(XfceBackdrop *backdrop);
+    void (*cycle)(XfceBackdrop *backdrop);
 };
 
 GType xfce_backdrop_get_type             (void) G_GNUC_CONST;
@@ -113,6 +114,11 @@ void xfce_backdrop_set_image_filename    (XfceBackdrop *backdrop,
 G_CONST_RETURN gchar *xfce_backdrop_get_image_filename
                                          (XfceBackdrop *backdrop);
 
+void xfce_backdrop_set_list              (XfceBackdrop *backdrop,
+                                          gchar *backdrop_list);
+G_CONST_RETURN gchar *xfce_backdrop_get_list
+                                         (XfceBackdrop *backdrop);
+
 void xfce_backdrop_set_brightness        (XfceBackdrop *backdrop,
                                           gint brightness);
 gint xfce_backdrop_get_brightness        (XfceBackdrop *backdrop);
@@ -120,6 +126,14 @@ gint xfce_backdrop_get_brightness        (XfceBackdrop *backdrop);
 void xfce_backdrop_set_saturation        (XfceBackdrop *backdrop,
                                           gdouble saturation);
 gdouble xfce_backdrop_get_saturation     (XfceBackdrop *backdrop);
+
+void xfce_backdrop_set_cycle_backdrop    (XfceBackdrop *backdrop,
+                                          gboolean cycle_backdrop);
+gboolean xfce_backdrop_get_cycle_backdrop(XfceBackdrop *backdrop);
+
+void xfce_backdrop_set_cycle_timer       (XfceBackdrop *backdrop,
+                                          guint cycle_timer);
+guint xfce_backdrop_get_cycle_timer      (XfceBackdrop *backdrop);
 
 GdkPixbuf *xfce_backdrop_get_pixbuf      (XfceBackdrop *backdrop);
 

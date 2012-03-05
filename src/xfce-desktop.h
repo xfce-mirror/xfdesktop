@@ -116,6 +116,8 @@ void xfce_desktop_popup_secondary_root_menu(XfceDesktop *desktop,
 
 void xfce_desktop_refresh(XfceDesktop *desktop);
 
+void xfce_desktop_arrange_icons(XfceDesktop *desktop);
+
 G_END_DECLS
 
 #endif

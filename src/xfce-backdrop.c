@@ -52,6 +52,7 @@ static void xfce_backdrop_get_property(GObject *object,
                                        guint property_id,
                                        GValue *value,
                                        GParamSpec *pspec);
+static void xfce_backdrop_timer(XfceBackdrop *backdrop);
 
 struct _XfceBackdropPriv
 {
@@ -65,14 +66,20 @@ struct _XfceBackdropPriv
     gboolean show_image;
     XfceBackdropImageStyle image_style;
     gchar *image_path;
+    gchar *backdrop_list;
     
     gint brightness;
     gdouble saturation;
+
+    gboolean cycle_backdrop;
+    guint cycle_timer;
+    guint cycle_timer_id;
 };
 
 enum
 {
     BACKDROP_CHANGED,
+    BACKDROP_CYCLE,
     LAST_SIGNAL,
 };
 
@@ -87,6 +94,8 @@ enum
     PROP_IMAGE_FILENAME,
     PROP_BRIGHTNESS,
     PROP_SATURATION,
+    PROP_BACKDROP_CYCLE_ENABLE,
+    PROP_BACKDROP_CYCLE_TIMER,
 };
 
 static guint backdrop_signals[LAST_SIGNAL] = { 0, };
@@ -240,6 +249,10 @@ xfce_backdrop_class_init(XfceBackdropClass *klass)
             G_OBJECT_CLASS_TYPE(gobject_class), G_SIGNAL_RUN_FIRST,
             G_STRUCT_OFFSET(XfceBackdropClass, changed), NULL, NULL,
             g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
+    backdrop_signals[BACKDROP_CYCLE] = g_signal_new("cycle",
+            G_OBJECT_CLASS_TYPE(gobject_class), G_SIGNAL_RUN_FIRST,
+            G_STRUCT_OFFSET(XfceBackdropClass, cycle), NULL, NULL,
+            g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
 
 #define XFDESKTOP_PARAM_FLAGS  (G_PARAM_READWRITE \
                                 | G_PARAM_CONSTRUCT \
@@ -305,6 +318,20 @@ xfce_backdrop_class_init(XfceBackdropClass *klass)
                                                         -10.0, 10.0, 1.0,
                                                         XFDESKTOP_PARAM_FLAGS));
 
+    g_object_class_install_property(gobject_class, PROP_BACKDROP_CYCLE_ENABLE,
+                                    g_param_spec_boolean("backdrop-cycle-enable",
+                                                         "backdrop-cycle-enable",
+                                                         "backdrop-cycle-enable",
+                                                         FALSE,
+                                                         XFDESKTOP_PARAM_FLAGS));
+
+    g_object_class_install_property(gobject_class, PROP_BACKDROP_CYCLE_TIMER,
+                                    g_param_spec_uint("backdrop-cycle-timer",
+                                                     "backdrop-cycle-timer",
+                                                     "backdrop-cycle-timer",
+                                                     0, G_MAXUSHORT, 10,
+                                                     XFDESKTOP_PARAM_FLAGS));
+
 #undef XFDESKTOP_PARAM_FLAGS
 }
 
@@ -314,6 +341,8 @@ xfce_backdrop_init(XfceBackdrop *backdrop)
     backdrop->priv = G_TYPE_INSTANCE_GET_PRIVATE(backdrop, XFCE_TYPE_BACKDROP,
                                                  XfceBackdropPriv);
     backdrop->priv->show_image = TRUE;
+    backdrop->priv->cycle_timer_id = 0;
+    backdrop->priv->backdrop_list = NULL;
 
     /* color defaults */
     backdrop->priv->color1.red = 0x1515;
@@ -333,7 +362,17 @@ xfce_backdrop_finalize(GObject *object)
     
     if(backdrop->priv->image_path)
         g_free(backdrop->priv->image_path);
-    
+
+    if(backdrop->priv->cycle_timer_id != 0) {
+        g_source_remove(backdrop->priv->cycle_timer_id);
+        backdrop->priv->cycle_timer_id = 0;
+    }
+
+    if(backdrop->priv->backdrop_list != NULL) {
+        g_free(backdrop->priv->backdrop_list);
+        backdrop->priv->backdrop_list = NULL;
+    }
+
     G_OBJECT_CLASS(xfce_backdrop_parent_class)->finalize(object);
 }
 
@@ -384,6 +423,14 @@ xfce_backdrop_set_property(GObject *object,
             xfce_backdrop_set_saturation(backdrop, g_value_get_double(value));
             break;
 
+        case PROP_BACKDROP_CYCLE_ENABLE:
+            xfce_backdrop_set_cycle_backdrop(backdrop, g_value_get_boolean(value));
+            break;
+
+        case PROP_BACKDROP_CYCLE_TIMER:
+            xfce_backdrop_set_cycle_timer(backdrop, g_value_get_uint(value));
+            break;
+
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
             break;
@@ -430,6 +477,14 @@ xfce_backdrop_get_property(GObject *object,
 
         case PROP_SATURATION:
             g_value_set_double(value, xfce_backdrop_get_saturation(backdrop));
+            break;
+
+        case PROP_BACKDROP_CYCLE_ENABLE:
+            g_value_set_boolean(value, xfce_backdrop_get_cycle_backdrop(backdrop));
+            break;
+
+        case PROP_BACKDROP_CYCLE_TIMER:
+            g_value_set_uint(value, xfce_backdrop_get_cycle_timer(backdrop));
             break;
 
         default:
@@ -701,6 +756,37 @@ xfce_backdrop_get_image_filename(XfceBackdrop *backdrop)
 }
 
 /**
+ * xfce_backdrop_set_list:
+ * @backdrop: An #XfceBackdrop.
+ * @backdrop_list: A list of backdrop images.
+ *
+ * Sets the internal list of wallpaper images assigned to this backdrop.
+ * Frees any previous backdrop list before setting the new one.
+ * [Transfer full]
+ **/
+void
+xfce_backdrop_set_list(XfceBackdrop *backdrop,
+                       gchar *backdrop_list)
+{
+    g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
+
+    if(backdrop->priv->backdrop_list != NULL) {
+        g_free(backdrop->priv->backdrop_list);
+        backdrop->priv->backdrop_list = NULL;
+    }
+
+    backdrop->priv->backdrop_list = backdrop_list;
+}
+
+G_CONST_RETURN gchar*
+xfce_backdrop_get_list(XfceBackdrop *backdrop)
+{
+    g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), NULL);
+
+    return backdrop->priv->backdrop_list;
+}
+
+/**
  * xfce_backdrop_set_brightness:
  * @backdrop: An #XfceBackdrop.
  * @brightness: A brightness value.
@@ -743,6 +829,76 @@ xfce_backdrop_get_saturation(XfceBackdrop *backdrop)
 {
     g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), 1.0);
     return backdrop->priv->saturation;
+}
+
+static void
+xfce_backdrop_timer(XfceBackdrop *backdrop)
+{
+    g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
+
+    g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_CYCLE], 0);
+}
+
+/**
+ * xfce_backdrop_set_cycle_timer:
+ * @backdrop: An #XfceBackdrop.
+ * @cycle_timer: The amount of time, in minutes, to wait before changing the
+ *               background image.
+ *
+ * If cycle_backdrop is enabled then this function will change the backdrop
+ * image based on the cycle_timer, a value between 0 and G_MAXUSHORT.
+ * A value of 0 indicates that the backdrop should not be changed.
+ **/
+void
+xfce_backdrop_set_cycle_timer(XfceBackdrop *backdrop, guint cycle_timer)
+{
+    g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
+
+    if(cycle_timer > G_MAXUSHORT)
+        cycle_timer = G_MAXUSHORT;
+
+    backdrop->priv->cycle_timer = cycle_timer;
+
+    if(backdrop->priv->cycle_timer_id != 0) {
+        g_source_remove(backdrop->priv->cycle_timer_id);
+        backdrop->priv->cycle_timer_id = 0;
+    }
+
+    if(backdrop->priv->cycle_timer != 0 &&
+       backdrop->priv->cycle_backdrop == TRUE) {
+        backdrop->priv->cycle_timer_id = g_timeout_add_seconds(backdrop->priv->cycle_timer * 60,
+                                                               (GSourceFunc)xfce_backdrop_timer,
+                                                               backdrop);
+    }
+}
+
+guint
+xfce_backdrop_get_cycle_timer(XfceBackdrop *backdrop)
+{
+    g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), 0);
+    return backdrop->priv->cycle_timer;
+}
+
+void
+xfce_backdrop_set_cycle_backdrop(XfceBackdrop *backdrop,
+                                 gboolean cycle_backdrop)
+{
+    g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
+
+    if(backdrop->priv->cycle_backdrop != cycle_backdrop) {
+        backdrop->priv->cycle_backdrop = cycle_backdrop;
+        /* Start or stop the backdrop changing */
+        xfce_backdrop_set_cycle_timer(backdrop,
+                                      xfce_backdrop_get_cycle_timer(backdrop));
+    }
+}
+
+gboolean
+xfce_backdrop_get_cycle_backdrop(XfceBackdrop *backdrop)
+{
+    g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), 0);
+
+    return backdrop->priv->cycle_backdrop;
 }
 
 /**
