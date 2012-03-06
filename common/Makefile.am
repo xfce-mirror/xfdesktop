@@ -1,10 +1,13 @@
 noinst_LTLIBRARIES = libxfdesktop.la
 
-libxfdesktop_la_SOURCES = \
-	xfdesktop-common.c \
-	xfdesktop-common.h \
+libxfdesktop_built_sources = \
 	xfdesktop-marshal.c \
 	xfdesktop-marshal.h
+
+libxfdesktop_la_SOURCES = \
+	$(libxfdesktop_built_sources) \
+	xfdesktop-common.c \
+	xfdesktop-common.h
 
 libxfdesktop_la_CFLAGS = \
 	-I$(top_srcdir)/src \
@@ -25,21 +28,22 @@ libxfdesktop_la_CFLAGS += \
 endif
 endif
 
-DISTCLEANFILES = \
-	$(xfdesktop_built_sources) \
-	stamp-xfdesktop-marshal.h \
-	xfdesktop-marshal.c \
-	xfdesktop-marshal.h
+if MAINTAINER_MODE
 
-xfdesktop-marshal.h: stamp-xfdesktop-marshal.h
-	@true
-stamp-xfdesktop-marshal.h: xfdesktop-marshal.list Makefile
-	$(AM_V_GEN) glib-genmarshal --prefix=xfdesktop_marshal xfdesktop-marshal.list --header > xfdesktop-marshal.h && \
-	echo timestamp > $(@F)
+xfdesktop-marshal.h: xfdesktop-marshal.list Makefile
+	$(AM_V_GEN) glib-genmarshal --prefix=xfdesktop_marshal --internal --header $< > $@
+
 xfdesktop-marshal.c: xfdesktop-marshal.list Makefile
-	$(AM_V_GEN) echo '#include "xfdesktop-marshal.h"' > xfdesktop-marshal.c && \
-	glib-genmarshal --prefix=xfdesktop_marshal xfdesktop-marshal.list --body >> xfdesktop-marshal.c && \
-	glib-genmarshal --prefix=xfdesktop_marshal xfdesktop-marshal.list --header > xfdesktop-marshal.h
+	$(AM_V_GEN) echo '#include "xfdesktop-marshal.h"' > $@ \
+	&& glib-genmarshal --prefix=xfdesktop_marshal --body $< >> $@
+
+DISTCLEANFILES = \
+	$(libxfdesktop_built_sources)
+
+BUILT_SOURCES = \
+	$(libxfdesktop_built_sources)
+
+endif
 
 EXTRA_DIST = \
 	xfdesktop-marshal.list
