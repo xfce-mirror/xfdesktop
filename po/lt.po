@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-28 11:24+0000\n"
-"PO-Revision-Date: 2012-01-28 17:40+0200\n"
+"POT-Creation-Date: 2012-03-06 07:51+0000\n"
+"PO-Revision-Date: 2012-03-06 18:10+0200\n"
 "Last-Translator: Algimantas Margevičius <margevicius.algimantas@gmail.com>\n"
 "Language-Team: Lietuvių <>\n"
 "Language: lt\n"
@@ -25,7 +25,7 @@ msgid "Backdrop list file is not valid"
 msgstr "Netinkamas fonų sąrašo failas"
 
 #. no need to escape markup; it's already done for us
-#: ../settings/main.c:161
+#: ../settings/main.c:165
 #, c-format
 msgid ""
 "%s\n"
@@ -34,127 +34,127 @@ msgstr ""
 "%s\n"
 "<i>Dydis: %dx%d</i>"
 
-#: ../settings/main.c:288 ../src/xfdesktop-special-file-icon.c:256
-#: ../src/xfdesktop-special-file-icon.c:419
+#: ../settings/main.c:292 ../src/xfdesktop-special-file-icon.c:271
+#: ../src/xfdesktop-special-file-icon.c:434
 msgid "Home"
 msgstr "Pradžia"
 
-#: ../settings/main.c:290
+#: ../settings/main.c:294
 msgid "Filesystem"
 msgstr "Failų sistema"
 
-#: ../settings/main.c:292
+#: ../settings/main.c:296
 msgid "Trash"
 msgstr "Šiukšlinė"
 
-#: ../settings/main.c:294
+#: ../settings/main.c:298
 msgid "Removable Devices"
 msgstr "Išimami įrenginiai"
 
-#: ../settings/main.c:474
+#: ../settings/main.c:478
 #, c-format
 msgid "Cannot create backdrop list \"%s\""
 msgstr "Nepavyko sukurti fonų sąrašo „%s“"
 
-#: ../settings/main.c:478 ../settings/main.c:801
+#: ../settings/main.c:482 ../settings/main.c:855
 msgid "Backdrop List Error"
 msgstr "Fonų sąrašo klaida"
 
-#: ../settings/main.c:503
+#: ../settings/main.c:507
 msgid "Create/Load Backdrop List"
 msgstr "Sukurti/įkelti fonų sąrašą"
 
-#: ../settings/main.c:527
+#: ../settings/main.c:531
 #, c-format
 msgid ""
 "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
 msgstr "Failas „%s“ nėra tinkamas fonų sąrašo failas. Ar norite jį perrašyti?"
 
-#: ../settings/main.c:532
+#: ../settings/main.c:536
 msgid "Invalid List File"
 msgstr "Netinkamas sąrašo failas"
 
-#: ../settings/main.c:535
+#: ../settings/main.c:539
 msgid "Overwriting the file will cause its contents to be lost."
 msgstr "Perrašant failą galima prarasti informaciją."
 
-#: ../settings/main.c:537
+#: ../settings/main.c:541
 msgid "Replace"
 msgstr "Pakeisti"
 
-#: ../settings/main.c:797
+#: ../settings/main.c:851
 #, c-format
 msgid "Failed to write backdrop list to \"%s\""
 msgstr "Nepavyko įrašyti fonų sąrašo į „%s“"
 
-#: ../settings/main.c:824
+#: ../settings/main.c:878
 msgid "Add Image File(s)"
 msgstr "Pridėti atvaizdo failą(-us)"
 
-#: ../settings/main.c:833
+#: ../settings/main.c:887
 msgid "Image files"
 msgstr "Paveikslėlių failai"
 
-#: ../settings/main.c:838
+#: ../settings/main.c:892
 msgid "All files"
 msgstr "Visi failai"
 
-#: ../settings/main.c:1270
+#: ../settings/main.c:1349
 #, c-format
 msgid "Screen %d, Monitor %d (%s)"
 msgstr "Ekranas %d, vaizduoklis %d (%s)"
 
-#: ../settings/main.c:1274
+#: ../settings/main.c:1353
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "Ekranas %d, vaizduoklis %d"
 
-#: ../settings/main.c:1277
+#: ../settings/main.c:1356
 #, c-format
 msgid "Screen %d"
 msgstr "Ekranas %d"
 
-#: ../settings/main.c:1282
+#: ../settings/main.c:1361
 #, c-format
 msgid "Monitor %d (%s)"
 msgstr "Vaizduoklis %d (%s)"
 
-#: ../settings/main.c:1286
+#: ../settings/main.c:1365
 #, c-format
 msgid "Monitor %d"
 msgstr "Vaizduoklis %d"
 
-#: ../settings/main.c:1506
+#: ../settings/main.c:1624
 msgid "Settings manager socket"
 msgstr "Nustatymų tvarkymo lizdas"
 
-#: ../settings/main.c:1506
+#: ../settings/main.c:1624
 msgid "SOCKET ID"
 msgstr "LIZDO ID"
 
-#: ../settings/main.c:1507
+#: ../settings/main.c:1625
 msgid "Version information"
 msgstr "Versijos informacija"
 
-#: ../settings/main.c:1524
+#: ../settings/main.c:1642
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Bandykite „%s --help“ dėl naudojimo."
 
-#: ../settings/main.c:1536
+#: ../settings/main.c:1654
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce kūrėjų komanda. Visos teisės saugomos."
 
-#: ../settings/main.c:1537
+#: ../settings/main.c:1655
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Apie klaidas pranešti <%s>."
 
-#: ../settings/main.c:1544
+#: ../settings/main.c:1662
 msgid "Desktop Settings"
 msgstr "Darbalaukio nuostatos"
 
-#: ../settings/main.c:1546
+#: ../settings/main.c:1664
 msgid "Unable to contact settings server"
 msgstr "Nepavyko susisiekti su nustatymų serveriu"
 
@@ -230,87 +230,119 @@ msgid "Increase or decrease the color saturation of the final image"
 msgstr "Padidinti arba sumažinti galutinio atvaizdo spalvų sodrumą"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
+msgid ""
+"Number of minutes before a different background is randomly selected from "
+"the list."
+msgstr ""
+"Minučių skaičius, prieš atsitiktinai pasirenkant kitą foną, iš pasirinktųjų "
+"sąrašo."
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Remove the selected image(s) from the list"
 msgstr "Pašalinti pasirinktą atvaizdą(-us) iš sąrašo"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 msgid "Sa_turation:"
 msgstr "So_drumas:"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
 #: ../settings/xfdesktop-settings-ui.glade.h:23
 msgid "Scaled"
 msgstr "Ištemptas"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
 msgid "Select First Color"
 msgstr "Pasirinkite pirmą spalvą"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
 msgid "Select Second Color"
 msgstr "Pasirinkite antrą spalvą"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
 msgid "Select a single image as the backdrop"
 msgstr "Pasirinkite vieną atvaizdą kaip foną"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
-#: ../settings/xfdesktop-settings-ui.glade.h:32
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
+#: ../settings/xfdesktop-settings-ui.glade.h:35
 msgid "Solid color"
 msgstr "Vientisa spalva"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr "Nurodyti „dešiniąją“ arba „apatinę“ perėjimo spalvą"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid ""
 "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
 msgstr ""
 "Nurodyti vientisą spalvą, arba „kairiąją“ ar „viršutinę“ perėjimo spalvą"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "Specify how the image will be resized to fit the screen"
 msgstr "Nurodykite, kaip vaizdas bus pakeistas, kad tilptų ekrane"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
 msgid "Specify the style of the color drawn behind the backdrop image"
 msgstr "Nurodykite spalvos, užpildančios foną už atvaizdo, stilių"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
+msgid "St_retch this background across all monitors."
+msgstr "_Ištempti šį foną per visus ekranus."
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
 msgid "St_yle:"
 msgstr "S_tilius:"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
-#: ../settings/xfdesktop-settings-ui.glade.h:34
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
+#: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "Stretched"
 msgstr "Ištemptas"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
-#: ../settings/xfdesktop-settings-ui.glade.h:35
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
+#: ../settings/xfdesktop-settings-ui.glade.h:38
 msgid "Tiled"
 msgstr "Išklotas"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
-#: ../settings/xfdesktop-settings-ui.glade.h:36
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
+#: ../settings/xfdesktop-settings-ui.glade.h:39
 msgid "Transparent"
 msgstr "Permatomas"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
-#: ../settings/xfdesktop-settings-ui.glade.h:39
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
+#: ../settings/xfdesktop-settings-ui.glade.h:42
 msgid "Vertical gradient"
 msgstr "Vertikalus perėjimas"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
-#: ../settings/xfdesktop-settings-ui.glade.h:40
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
+msgid ""
+"When multiple monitors are present, select this option to stretch the "
+"current background over all of them."
+msgstr ""
+"Kai yra keli ekranai, pasirinkite šią parinktį fono ištempimui per visus "
+"ekranus."
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
+msgid ""
+"While in image list mode, select this option to automatically select a "
+"different background from the image list after a set number of minutes."
+msgstr ""
+"Paveikslėlių sąrašo režime, pasirinkite šią parinktį norėdami automatiškai "
+"parinkti kitą foną po numatyto laiko tarpo."
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:36
+#: ../settings/xfdesktop-settings-ui.glade.h:43
 msgid "Zoomed"
 msgstr "Padidintas"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:37
+msgid "_Change the background (in minutes):"
+msgstr "_Keisti foną kas (minutėmis):"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:38
 msgid "_None"
 msgstr "_Nieko"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:39
 msgid "_Single image"
 msgstr "_Vienas atvaizdas"
 
@@ -342,7 +374,7 @@ msgstr "_Mygtukas:"
 msgid "Control"
 msgstr "Kontrolės"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:738
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:782
 msgid "Desktop"
 msgstr "Darbalaukis"
 
@@ -391,136 +423,156 @@ msgid "Right"
 msgstr "Dešinėje"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:24
+msgid ""
+"Select this option to display preview-able files on the desktop as "
+"automatically generated thumbnail icons."
+msgstr ""
+"Pasirinkite šią parinkty norėdami matyti peržiūrimus darbastalio failus kaip "
+"automatiškai sugeneruotas miniatiūrų piktogramas."
+
+#: ../settings/xfdesktop-settings-ui.glade.h:25
 msgid "Set desktop background and menu and icon behavior"
 msgstr "Nustatyti darbalaukio fono, meniu ir piktogramų elgseną"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:25
+#: ../settings/xfdesktop-settings-ui.glade.h:26
 msgid "Sh_ow application icons in menu"
 msgstr "Meniu rodyti prog_ramų piktogramas"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:26
+#: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "Shift"
 msgstr "Shift"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:27
+#: ../settings/xfdesktop-settings-ui.glade.h:28
 msgid "Show _application icons in menu"
 msgstr "Meniu rodyti pro_gramų piktogramas"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:28
+#: ../settings/xfdesktop-settings-ui.glade.h:29
 msgid "Show _window list menu on desktop middle click"
 msgstr ""
 "Darbalaukyje spustelėjus _vidurinį pelės mygtuką rodyti langų sąrašo meniu"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:29
+#: ../settings/xfdesktop-settings-ui.glade.h:30
 msgid "Show applications menu on _desktop right click"
 msgstr "Darbalaukyje spustelėjus _dešinįjį pelės mygtuką rodyti programų meniu"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:30
+#: ../settings/xfdesktop-settings-ui.glade.h:31
 msgid "Show s_ticky windows only in active workspace"
 msgstr "Rodyti _prisegamus langus tik aktyvioje darbo srityje"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:31
+#: ../settings/xfdesktop-settings-ui.glade.h:32
+msgid "Show t_humbnails"
+msgstr "Rodyti _miniatiūras"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:33
 msgid "Show workspace _names in list"
 msgstr "Sąraše rodyti darbo sričių pavadi_nimus"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:33
+#: ../settings/xfdesktop-settings-ui.glade.h:34
+msgid "Single _click to activate items"
+msgstr "Aktyvuoti _vienu pelės mygtuko paspaudimu"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid ""
 "Specify the transparency level for the rounded label drawn behind the icon "
 "text"
 msgstr "Nurodykite, už piktogramos teksto piešiamos kortelės, skaidrumo lygį"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:37
+#: ../settings/xfdesktop-settings-ui.glade.h:40
 msgid "Use _submenus for the windows in each workspace"
 msgstr "Darbo srityje langams parodyti naudoti _papildomus meniu"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:38
+#: ../settings/xfdesktop-settings-ui.glade.h:41
 msgid "Use custom _font size:"
 msgstr "_Naudoti parinktą šrifto dydį:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:41
+#: ../settings/xfdesktop-settings-ui.glade.h:44
 msgid "_Background"
 msgstr "_Fonas"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:42
+#: ../settings/xfdesktop-settings-ui.glade.h:45
 msgid "_Button:"
 msgstr "_Mygtukas:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:43
+#: ../settings/xfdesktop-settings-ui.glade.h:46
 msgid "_Edit desktop menu"
 msgstr "_Taisyti darbalaukio meniu"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:44
+#: ../settings/xfdesktop-settings-ui.glade.h:47
 msgid "_Icons"
 msgstr "P_iktogramos"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:45
+#: ../settings/xfdesktop-settings-ui.glade.h:48
 msgid "_Menus"
 msgstr "_Meniu"
 
-#: ../src/main.c:238
+#: ../src/main.c:243
 msgid "Display version information"
 msgstr "Rodyti versijos informaciją"
 
-#: ../src/main.c:239
+#: ../src/main.c:244
 msgid "Reload all settings, refresh image list"
 msgstr "Perkrauti visus nustatymus, atnaujinti paveikslų sąrašą"
 
-#: ../src/main.c:240
+#: ../src/main.c:245
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "Iššokantis meniu (esamoje pelės pozicijoje)"
 
-#: ../src/main.c:241
+#: ../src/main.c:246
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "Iššokantis langų sąrašas (esamoje pelės pozicijoje)"
 
-#: ../src/main.c:242
+#: ../src/main.c:248
+msgid "Automatically arrange all the icons on the desktop"
+msgstr "Automatiškai surikiuoti visas darbastalio piktogramas"
+
+#: ../src/main.c:250
 msgid "Cause xfdesktop to quit"
 msgstr "Privertė Xfdesktop užsiverti"
 
-#: ../src/main.c:262
+#: ../src/main.c:270
 #, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "Nepavyko apdoroti argumentų: %s\n"
 
-#: ../src/main.c:270
+#: ../src/main.c:278
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Tai yra %s versija %s, veikia Xfce %s.\n"
 
-#: ../src/main.c:272
+#: ../src/main.c:280
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Sukurta su GTK+ %d.%d.%d, susieta su GTK+ %d.%d.%d."
 
-#: ../src/main.c:276
+#: ../src/main.c:284
 #, c-format
 msgid "Build options:\n"
 msgstr "Kompiliavimo parinktys:\n"
 
-#: ../src/main.c:277
+#: ../src/main.c:285
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Darbalaukio Meniu:        %s\n"
 
-#: ../src/main.c:279 ../src/main.c:286 ../src/main.c:293
+#: ../src/main.c:287 ../src/main.c:294 ../src/main.c:301
 msgid "enabled"
 msgstr "įjungta"
 
-#: ../src/main.c:281 ../src/main.c:288 ../src/main.c:295
+#: ../src/main.c:289 ../src/main.c:296 ../src/main.c:303
 msgid "disabled"
 msgstr "išjungta"
 
-#: ../src/main.c:284
+#: ../src/main.c:292
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Darbalaukio piktogramos: %s\n"
 
-#: ../src/main.c:291
+#: ../src/main.c:299
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "Darbalaukio failų piktogramos: %s\n"
 
-#: ../src/main.c:322
+#: ../src/main.c:332
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s nėra paleistas.\n"
@@ -562,52 +614,52 @@ msgstr "_Pašalinti darbo vietą %d"
 msgid "_Remove Workspace '%s'"
 msgstr "_Pašalinti darbo vieta „%s“"
 
-#: ../src/xfce-desktop.c:1022
+#: ../src/xfce-desktop.c:1068
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "Nepavyko įkelti paveikslėlių iš fonų sąrašo failo „%s“"
 
-#: ../src/xfce-desktop.c:1024
+#: ../src/xfce-desktop.c:1070
 msgid "Desktop Error"
 msgstr "Darbalaukio klaida"
 
-#: ../src/xfdesktop-file-icon-manager.c:465
-#: ../src/xfdesktop-file-icon-manager.c:482
+#: ../src/xfdesktop-file-icon-manager.c:497
+#: ../src/xfdesktop-file-icon-manager.c:514
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
 msgstr "Nepavyko sukurti darbalaukio aplanko „%s“"
 
-#: ../src/xfdesktop-file-icon-manager.c:470
-#: ../src/xfdesktop-file-icon-manager.c:487
+#: ../src/xfdesktop-file-icon-manager.c:502
+#: ../src/xfdesktop-file-icon-manager.c:519
 msgid "Desktop Folder Error"
 msgstr "Darbalaukio aplanko klaida"
 
-#: ../src/xfdesktop-file-icon-manager.c:489
+#: ../src/xfdesktop-file-icon-manager.c:521
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr ""
 "Paprastas failas su tokiu pačiu pavadinimu jau egzistuoja. Prašome jį "
 "ištrinti ar pervadinti."
 
-#: ../src/xfdesktop-file-icon-manager.c:592
-#: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:880
-#: ../src/xfdesktop-file-utils.c:895 ../src/xfdesktop-file-utils.c:927
-#: ../src/xfdesktop-file-utils.c:941
+#: ../src/xfdesktop-file-icon-manager.c:624
+#: ../src/xfdesktop-file-icon-manager.c:668 ../src/xfdesktop-file-utils.c:878
+#: ../src/xfdesktop-file-utils.c:893 ../src/xfdesktop-file-utils.c:925
+#: ../src/xfdesktop-file-utils.c:939
 msgid "Trash Error"
 msgstr "Šiukšlinės klaida"
 
-#: ../src/xfdesktop-file-icon-manager.c:593
-#: ../src/xfdesktop-file-icon-manager.c:637
+#: ../src/xfdesktop-file-icon-manager.c:625
+#: ../src/xfdesktop-file-icon-manager.c:669
 msgid "The selected files could not be trashed"
 msgstr "Pasirinkti failai negali būti pašalinti"
 
-#: ../src/xfdesktop-file-icon-manager.c:594
-#: ../src/xfdesktop-file-icon-manager.c:638 ../src/xfdesktop-file-utils.c:729
-#: ../src/xfdesktop-file-utils.c:779 ../src/xfdesktop-file-utils.c:838
-#: ../src/xfdesktop-file-utils.c:996 ../src/xfdesktop-file-utils.c:1052
-#: ../src/xfdesktop-file-utils.c:1102 ../src/xfdesktop-file-utils.c:1152
-#: ../src/xfdesktop-file-utils.c:1229 ../src/xfdesktop-file-utils.c:1290
-#: ../src/xfdesktop-file-utils.c:1363 ../src/xfdesktop-file-utils.c:1441
+#: ../src/xfdesktop-file-icon-manager.c:626
+#: ../src/xfdesktop-file-icon-manager.c:670 ../src/xfdesktop-file-utils.c:727
+#: ../src/xfdesktop-file-utils.c:777 ../src/xfdesktop-file-utils.c:836
+#: ../src/xfdesktop-file-utils.c:994 ../src/xfdesktop-file-utils.c:1050
+#: ../src/xfdesktop-file-utils.c:1100 ../src/xfdesktop-file-utils.c:1150
+#: ../src/xfdesktop-file-utils.c:1227 ../src/xfdesktop-file-utils.c:1288
+#: ../src/xfdesktop-file-utils.c:1361 ../src/xfdesktop-file-utils.c:1439
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
@@ -616,33 +668,33 @@ msgstr ""
 "„Thunar“)."
 
 #. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:738
-#: ../src/xfdesktop-file-icon-manager.c:1300
+#: ../src/xfdesktop-file-icon-manager.c:770
+#: ../src/xfdesktop-file-icon-manager.c:1349
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Nepavyko paleisti „%s“:"
 
-#: ../src/xfdesktop-file-icon-manager.c:740
-#: ../src/xfdesktop-file-icon-manager.c:984
-#: ../src/xfdesktop-file-icon-manager.c:1301 ../src/xfdesktop-file-utils.c:712
-#: ../src/xfdesktop-file-utils.c:727 ../src/xfdesktop-file-utils.c:1135
-#: ../src/xfdesktop-file-utils.c:1150 ../src/xfdesktop-file-utils.c:1202
-#: ../src/xfdesktop-file-utils.c:1227 ../src/xfdesktop-file-utils.c:1273
-#: ../src/xfdesktop-file-utils.c:1288
+#: ../src/xfdesktop-file-icon-manager.c:772
+#: ../src/xfdesktop-file-icon-manager.c:1033
+#: ../src/xfdesktop-file-icon-manager.c:1350 ../src/xfdesktop-file-utils.c:710
+#: ../src/xfdesktop-file-utils.c:725 ../src/xfdesktop-file-utils.c:1133
+#: ../src/xfdesktop-file-utils.c:1148 ../src/xfdesktop-file-utils.c:1200
+#: ../src/xfdesktop-file-utils.c:1225 ../src/xfdesktop-file-utils.c:1271
+#: ../src/xfdesktop-file-utils.c:1286
 msgid "Launch Error"
 msgstr "Paleidimo klaida"
 
-#: ../src/xfdesktop-file-icon-manager.c:908
+#: ../src/xfdesktop-file-icon-manager.c:957
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "_Atverti su „%s“"
 
-#: ../src/xfdesktop-file-icon-manager.c:911
+#: ../src/xfdesktop-file-icon-manager.c:960
 #, c-format
 msgid "Open With \"%s\""
 msgstr "Atverti su „%s“"
 
-#: ../src/xfdesktop-file-icon-manager.c:986
+#: ../src/xfdesktop-file-icon-manager.c:1035
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
@@ -650,79 +702,95 @@ msgstr ""
 "Nepavyko paleisti „exo-desktop-item-edit“, kuris yra būtinas kurti ir "
 "redaguoti leistukus ir nuorodas ant darbalaukio."
 
-#: ../src/xfdesktop-file-icon-manager.c:1358
+#: ../src/xfdesktop-file-icon-manager.c:1407
 msgid "_Open all"
 msgstr "_Atverti visus"
 
-#: ../src/xfdesktop-file-icon-manager.c:1374
+#: ../src/xfdesktop-file-icon-manager.c:1423
 msgid "_Open in New Window"
 msgstr "_Atverti naujame lange"
 
-#: ../src/xfdesktop-file-icon-manager.c:1376
-#: ../src/xfdesktop-special-file-icon.c:489 ../src/xfdesktop-volume-icon.c:663
+#: ../src/xfdesktop-file-icon-manager.c:1425
+#: ../src/xfdesktop-special-file-icon.c:501 ../src/xfdesktop-volume-icon.c:683
 msgid "_Open"
 msgstr "_Atverti"
 
 #. create launcher item
-#: ../src/xfdesktop-file-icon-manager.c:1395
+#: ../src/xfdesktop-file-icon-manager.c:1444
 msgid "Create _Launcher..."
 msgstr "Sukurti _leistuką..."
 
 #. create link item
-#: ../src/xfdesktop-file-icon-manager.c:1411
+#: ../src/xfdesktop-file-icon-manager.c:1460
 msgid "Create _URL Link..."
 msgstr "Sukurti _URL nuorodą..."
 
 #. create folder item
-#: ../src/xfdesktop-file-icon-manager.c:1427
+#: ../src/xfdesktop-file-icon-manager.c:1476
 msgid "Create _Folder..."
 msgstr "Sukurti _aplanką ..."
 
 #. create from template submenu
-#: ../src/xfdesktop-file-icon-manager.c:1442
+#: ../src/xfdesktop-file-icon-manager.c:1491
 msgid "Create From _Template"
 msgstr "Sukurti iš _šablono"
 
-#: ../src/xfdesktop-file-icon-manager.c:1468
+#: ../src/xfdesktop-file-icon-manager.c:1517
 msgid "_Empty File"
 msgstr "_Tuščias failas"
 
-#: ../src/xfdesktop-file-icon-manager.c:1484
+#: ../src/xfdesktop-file-icon-manager.c:1533
 msgid "_Execute"
 msgstr "_Vykdyti"
 
-#: ../src/xfdesktop-file-icon-manager.c:1504
+#: ../src/xfdesktop-file-icon-manager.c:1553
 msgid "_Edit Launcher"
 msgstr "_Taisyti leistuką"
 
-#: ../src/xfdesktop-file-icon-manager.c:1539
+#: ../src/xfdesktop-file-icon-manager.c:1588
 msgid "Open With"
 msgstr "Atverti su"
 
-#: ../src/xfdesktop-file-icon-manager.c:1565
+#: ../src/xfdesktop-file-icon-manager.c:1614
 msgid "Open With Other _Application..."
 msgstr "Atverti su kita _programa..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1653
+#: ../src/xfdesktop-file-icon-manager.c:1706
 msgid "_Rename..."
 msgstr "_Pervardinti..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1671
+#: ../src/xfdesktop-file-icon-manager.c:1724
+msgid "_Arrange Desktop Icons"
+msgstr "_Surikiuoti darbastalio piktogramas"
+
+#: ../src/xfdesktop-file-icon-manager.c:1734
 msgid "Desktop _Settings..."
 msgstr "Darbalaukio _nuostatos..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1681
-#: ../src/xfdesktop-volume-icon.c:711
+#: ../src/xfdesktop-file-icon-manager.c:1744
+#: ../src/xfdesktop-volume-icon.c:731
 msgid "_Properties..."
 msgstr "_Savybės..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2238
+#: ../src/xfdesktop-file-icon-manager.c:2362
 msgid "Load Error"
 msgstr "Įkrovimo klaida"
 
-#: ../src/xfdesktop-file-icon-manager.c:2240
+#: ../src/xfdesktop-file-icon-manager.c:2364
 msgid "Failed to load the desktop folder"
 msgstr "Nepavyko įkrauti darbalaukio aplanko"
+
+#: ../src/xfdesktop-file-icon-manager.c:2938
+msgid "Copy _Here"
+msgstr "Kopijuo_ti čia"
+
+#: ../src/xfdesktop-file-icon-manager.c:2938
+msgid "_Move Here"
+msgstr "_Perkelti čia"
+
+#: ../src/xfdesktop-file-icon-manager.c:2938
+msgid "_Link Here"
+msgstr "_Sukurti nuorodą čia"
 
 #. TRANSLATORS: file was modified less than one day ago
 #: ../src/xfdesktop-file-utils.c:137
@@ -753,31 +821,31 @@ msgstr "%x %X"
 msgid "Unknown"
 msgstr "Nežinomas"
 
-#: ../src/xfdesktop-file-utils.c:713 ../src/xfdesktop-file-utils.c:728
+#: ../src/xfdesktop-file-utils.c:711 ../src/xfdesktop-file-utils.c:726
 msgid "The folder could not be opened"
 msgstr "Aplankas negali būti atvertas"
 
-#: ../src/xfdesktop-file-utils.c:762 ../src/xfdesktop-file-utils.c:777
+#: ../src/xfdesktop-file-utils.c:760 ../src/xfdesktop-file-utils.c:775
 msgid "Rename Error"
 msgstr "Klaida pervadinant"
 
-#: ../src/xfdesktop-file-utils.c:763 ../src/xfdesktop-file-utils.c:778
+#: ../src/xfdesktop-file-utils.c:761 ../src/xfdesktop-file-utils.c:776
 msgid "The file could not be renamed"
 msgstr "Failas negali būti pervadintas"
 
-#: ../src/xfdesktop-file-utils.c:821 ../src/xfdesktop-file-utils.c:836
+#: ../src/xfdesktop-file-utils.c:819 ../src/xfdesktop-file-utils.c:834
 msgid "Delete Error"
 msgstr "Klaida šalinant"
 
-#: ../src/xfdesktop-file-utils.c:822 ../src/xfdesktop-file-utils.c:837
+#: ../src/xfdesktop-file-utils.c:820 ../src/xfdesktop-file-utils.c:835
 msgid "The selected files could not be deleted"
 msgstr "Pasirinkti failai negali būti pašalinti"
 
-#: ../src/xfdesktop-file-utils.c:881 ../src/xfdesktop-file-utils.c:896
+#: ../src/xfdesktop-file-utils.c:879 ../src/xfdesktop-file-utils.c:894
 msgid "The selected files could not be moved to the trash"
 msgstr "Pasirinkti failai negali būti perkelti į šiukšlinę"
 
-#: ../src/xfdesktop-file-utils.c:897 ../src/xfdesktop-file-utils.c:943
+#: ../src/xfdesktop-file-utils.c:895 ../src/xfdesktop-file-utils.c:941
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
@@ -785,54 +853,54 @@ msgstr ""
 "Šiai funkcijai reikia, kad šiukšlinės paslauga būtų prieinama (kaip, "
 "pavyzdžiui, tokią tiekia „Thunar“)."
 
-#: ../src/xfdesktop-file-utils.c:928 ../src/xfdesktop-file-utils.c:942
+#: ../src/xfdesktop-file-utils.c:926 ../src/xfdesktop-file-utils.c:940
 msgid "Could not empty the trash"
 msgstr "Neįmanoma išvalyti šiukšlinės"
 
-#: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:994
+#: ../src/xfdesktop-file-utils.c:977 ../src/xfdesktop-file-utils.c:992
 msgid "Create File Error"
 msgstr "Failo kūrimo klaida"
 
-#: ../src/xfdesktop-file-utils.c:980 ../src/xfdesktop-file-utils.c:995
+#: ../src/xfdesktop-file-utils.c:978 ../src/xfdesktop-file-utils.c:993
 msgid "Could not create a new file"
 msgstr "Nepavyko sukurti naujo failo"
 
-#: ../src/xfdesktop-file-utils.c:1035 ../src/xfdesktop-file-utils.c:1050
+#: ../src/xfdesktop-file-utils.c:1033 ../src/xfdesktop-file-utils.c:1048
 msgid "Create Document Error"
 msgstr "Dokumento kūrimo klaida"
 
-#: ../src/xfdesktop-file-utils.c:1036 ../src/xfdesktop-file-utils.c:1051
+#: ../src/xfdesktop-file-utils.c:1034 ../src/xfdesktop-file-utils.c:1049
 msgid "Could not create a new document from the template"
 msgstr "Nepavyko sukurti naujo dokumento pagal šabloną"
 
-#: ../src/xfdesktop-file-utils.c:1085 ../src/xfdesktop-file-utils.c:1100
+#: ../src/xfdesktop-file-utils.c:1083 ../src/xfdesktop-file-utils.c:1098
 msgid "File Properties Error"
 msgstr "Failo savybių klaida"
 
-#: ../src/xfdesktop-file-utils.c:1086 ../src/xfdesktop-file-utils.c:1101
+#: ../src/xfdesktop-file-utils.c:1084 ../src/xfdesktop-file-utils.c:1099
 msgid "The file properties dialog could not be opened"
 msgstr "Neįmanoma atverti failo savybių dialogo"
 
-#: ../src/xfdesktop-file-utils.c:1136 ../src/xfdesktop-file-utils.c:1151
+#: ../src/xfdesktop-file-utils.c:1134 ../src/xfdesktop-file-utils.c:1149
 msgid "The file could not be opened"
 msgstr "Failas negali būti atvertas"
 
-#: ../src/xfdesktop-file-utils.c:1199 ../src/xfdesktop-file-utils.c:1224
+#: ../src/xfdesktop-file-utils.c:1197 ../src/xfdesktop-file-utils.c:1222
 #, c-format
 msgid "Failed to run \"%s\""
 msgstr "Nepavyko paleisti „%s“"
 
-#: ../src/xfdesktop-file-utils.c:1274 ../src/xfdesktop-file-utils.c:1289
+#: ../src/xfdesktop-file-utils.c:1272 ../src/xfdesktop-file-utils.c:1287
 msgid "The application chooser could not be opened"
 msgstr "Nepavyko atverti programų pasirinkėjo"
 
-#: ../src/xfdesktop-file-utils.c:1347 ../src/xfdesktop-file-utils.c:1361
-#: ../src/xfdesktop-file-utils.c:1423 ../src/xfdesktop-file-utils.c:1439
+#: ../src/xfdesktop-file-utils.c:1345 ../src/xfdesktop-file-utils.c:1359
+#: ../src/xfdesktop-file-utils.c:1421 ../src/xfdesktop-file-utils.c:1437
 msgid "Transfer Error"
 msgstr "Perdavimo klaida"
 
-#: ../src/xfdesktop-file-utils.c:1348 ../src/xfdesktop-file-utils.c:1362
-#: ../src/xfdesktop-file-utils.c:1424 ../src/xfdesktop-file-utils.c:1440
+#: ../src/xfdesktop-file-utils.c:1346 ../src/xfdesktop-file-utils.c:1360
+#: ../src/xfdesktop-file-utils.c:1422 ../src/xfdesktop-file-utils.c:1438
 msgid "The file transfer could not be performed"
 msgstr "Nepavyko atlikti failų perdavimo"
 
@@ -877,7 +945,7 @@ msgstr "Išstumiamas įrenginys"
 msgid "The device \"%s\" is being ejected. This may take some time"
 msgstr "Įrenginys „%s“ yra išstumiamas. Tai gali šiek tiek užtrukti"
 
-#: ../src/xfdesktop-regular-file-icon.c:472
+#: ../src/xfdesktop-regular-file-icon.c:567
 #, c-format
 msgid ""
 "Type: %s\n"
@@ -888,25 +956,25 @@ msgstr ""
 "Dydis: %s\n"
 "Paskutinis keitimas: %s"
 
-#: ../src/xfdesktop-special-file-icon.c:258
-#: ../src/xfdesktop-special-file-icon.c:417
+#: ../src/xfdesktop-special-file-icon.c:273
+#: ../src/xfdesktop-special-file-icon.c:432
 msgid "File System"
 msgstr "Failų sistema"
 
-#: ../src/xfdesktop-special-file-icon.c:402
+#: ../src/xfdesktop-special-file-icon.c:417
 msgid "Trash is empty"
 msgstr "Šiukšlinė tuščia"
 
-#: ../src/xfdesktop-special-file-icon.c:405
+#: ../src/xfdesktop-special-file-icon.c:420
 msgid "Trash contains one item"
 msgstr "Šiukšlinėje yra vienas elementas"
 
-#: ../src/xfdesktop-special-file-icon.c:406
+#: ../src/xfdesktop-special-file-icon.c:421
 #, c-format
 msgid "Trash contains %d items"
 msgstr "Šiukšlinėje yra %d elementas(-ai)"
 
-#: ../src/xfdesktop-special-file-icon.c:434
+#: ../src/xfdesktop-special-file-icon.c:449
 #, c-format
 msgid ""
 "%s\n"
@@ -917,11 +985,11 @@ msgstr ""
 "Dydis: %s\n"
 "Paskutinis keitimas: %s"
 
-#: ../src/xfdesktop-special-file-icon.c:507
+#: ../src/xfdesktop-special-file-icon.c:518
 msgid "_Empty Trash"
 msgstr "_Ištuštinti šiukšlinę"
 
-#: ../src/xfdesktop-volume-icon.c:423
+#: ../src/xfdesktop-volume-icon.c:443
 #, c-format
 msgid ""
 "Removable Volume\n"
@@ -932,7 +1000,7 @@ msgstr ""
 "prijungtas į „%s“\n"
 "%s liko (%s iš viso)"
 
-#: ../src/xfdesktop-volume-icon.c:430
+#: ../src/xfdesktop-volume-icon.c:450
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
@@ -940,28 +1008,28 @@ msgstr ""
 "Keičiamas tomas\n"
 "Dar neprijungtas"
 
-#: ../src/xfdesktop-volume-icon.c:456 ../src/xfdesktop-volume-icon.c:498
+#: ../src/xfdesktop-volume-icon.c:476 ../src/xfdesktop-volume-icon.c:518
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "Nepavyko išstumti „%s“"
 
-#: ../src/xfdesktop-volume-icon.c:461 ../src/xfdesktop-volume-icon.c:503
+#: ../src/xfdesktop-volume-icon.c:481 ../src/xfdesktop-volume-icon.c:523
 msgid "Eject Failed"
 msgstr "Išstumti nepavyko"
 
-#: ../src/xfdesktop-volume-icon.c:535
+#: ../src/xfdesktop-volume-icon.c:555
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "Nepavyko prijungti „%s“"
 
-#: ../src/xfdesktop-volume-icon.c:538
+#: ../src/xfdesktop-volume-icon.c:558
 msgid "Mount Failed"
 msgstr "Prijungti nepavyko"
 
-#: ../src/xfdesktop-volume-icon.c:679 ../src/xfdesktop-volume-icon.c:682
+#: ../src/xfdesktop-volume-icon.c:699 ../src/xfdesktop-volume-icon.c:702
 msgid "E_ject Volume"
 msgstr "Iš_stumti tomą"
 
-#: ../src/xfdesktop-volume-icon.c:689
+#: ../src/xfdesktop-volume-icon.c:709
 msgid "_Mount Volume"
 msgstr "_Prijungti tomą"
