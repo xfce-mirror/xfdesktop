@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-14 22:13+0000\n"
+"POT-Creation-Date: 2012-03-08 17:51+0000\n"
 "PO-Revision-Date: 2009-08-21 10:59+0200\n"
 "Last-Translator: Piarres Beobide <pi@beobide.net>\n"
 "Language-Team: Euskara\n"
@@ -25,7 +25,7 @@ msgid "Backdrop list file is not valid"
 msgstr "Idazpaper zerrenda fixtategia baliogabea da"
 
 #. no need to escape markup; it's already done for us
-#: ../settings/main.c:163
+#: ../settings/main.c:165
 #, c-format
 msgid ""
 "%s\n"
@@ -34,126 +34,129 @@ msgstr ""
 "%s\n"
 "<i>Tamaina: %dx%d</i>"
 
-#: ../settings/main.c:289 ../src/xfdesktop-special-file-icon.c:256
-#: ../src/xfdesktop-special-file-icon.c:419
+#: ../settings/main.c:292 ../src/xfdesktop-special-file-icon.c:271
+#: ../src/xfdesktop-special-file-icon.c:434
 msgid "Home"
 msgstr "Etxea"
 
-#: ../settings/main.c:291
+#: ../settings/main.c:294
 msgid "Filesystem"
 msgstr "Fitxategi-sistema"
 
-#: ../settings/main.c:293
+#: ../settings/main.c:296
 msgid "Trash"
 msgstr "Zakarrontzia"
 
-#: ../settings/main.c:295
+#: ../settings/main.c:298
 msgid "Removable Devices"
 msgstr "Gailu aldagarriak"
 
-#: ../settings/main.c:475
+#: ../settings/main.c:478
 #, c-format
 msgid "Cannot create backdrop list \"%s\""
 msgstr "Ezin da \"%s\" atzealde zerrenda sortu"
 
-#: ../settings/main.c:479 ../settings/main.c:802
+#: ../settings/main.c:482 ../settings/main.c:855
 msgid "Backdrop List Error"
 msgstr "Atzealde zerrenda errorea"
 
-#: ../settings/main.c:504
+#: ../settings/main.c:507
 msgid "Create/Load Backdrop List"
 msgstr "Sortu/Kargatu atzealde zerrenda"
 
-#: ../settings/main.c:528
+#: ../settings/main.c:531
 #, c-format
-msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr "\"%s\" fitxategia ez da baliozko atzealde zerrenda fitxategi bat. Gainidatzi nahi al duzu?"
+msgid ""
+"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr ""
+"\"%s\" fitxategia ez da baliozko atzealde zerrenda fitxategi bat. Gainidatzi "
+"nahi al duzu?"
 
-#: ../settings/main.c:533
+#: ../settings/main.c:536
 msgid "Invalid List File"
 msgstr "Zerrenda fitxategi baliogabea"
 
-#: ../settings/main.c:536
+#: ../settings/main.c:539
 msgid "Overwriting the file will cause its contents to be lost."
 msgstr "Fitxategia gainidazteak edukia galtzea eragin dezake."
 
-#: ../settings/main.c:538
+#: ../settings/main.c:541
 msgid "Replace"
 msgstr "Ordeztu"
 
-#: ../settings/main.c:798
+#: ../settings/main.c:851
 #, c-format
 msgid "Failed to write backdrop list to \"%s\""
 msgstr "Huts atzealde zerrenda \"%s\" idazterakoan"
 
-#: ../settings/main.c:825
+#: ../settings/main.c:878
 msgid "Add Image File(s)"
 msgstr "Gehitu irudi fitxategia(k)"
 
-#: ../settings/main.c:834
+#: ../settings/main.c:887
 msgid "Image files"
 msgstr "Irudi fitxategiak"
 
-#: ../settings/main.c:839
+#: ../settings/main.c:892
 msgid "All files"
 msgstr "Fitxategi guztiak"
 
-#: ../settings/main.c:1271
+#: ../settings/main.c:1349
 #, c-format
 msgid "Screen %d, Monitor %d (%s)"
 msgstr "%d pantaila, %d monitorea (%s)"
 
-#: ../settings/main.c:1275
+#: ../settings/main.c:1353
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "%d pantaila, %d monitorea"
 
-#: ../settings/main.c:1278
+#: ../settings/main.c:1356
 #, c-format
 msgid "Screen %d"
 msgstr "%d pantaila"
 
-#: ../settings/main.c:1283
+#: ../settings/main.c:1361
 #, c-format
 msgid "Monitor %d (%s)"
 msgstr "%d monitorea (%s)"
 
-#: ../settings/main.c:1287
+#: ../settings/main.c:1365
 #, c-format
 msgid "Monitor %d"
 msgstr "%d monitorea"
 
-#: ../settings/main.c:1500
+#: ../settings/main.c:1624
 msgid "Settings manager socket"
 msgstr "Ezarpen kudeatzaile socketa"
 
-#: ../settings/main.c:1500
+#: ../settings/main.c:1624
 msgid "SOCKET ID"
 msgstr "SOCKET IDa"
 
-#: ../settings/main.c:1501
+#: ../settings/main.c:1625
 msgid "Version information"
 msgstr "Bertsio argibideak"
 
-#: ../settings/main.c:1521
+#: ../settings/main.c:1642
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Idatzi '%s --help' erabilerarako."
 
-#: ../settings/main.c:1533
+#: ../settings/main.c:1654
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce garapen taldea. Eskubide guztiak erreserbaturik."
 
-#: ../settings/main.c:1534
+#: ../settings/main.c:1655
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Programa-erroreen berri <%s>-en eman."
 
-#: ../settings/main.c:1541
+#: ../settings/main.c:1662
 msgid "Desktop Settings"
 msgstr "Mahaigain ezarpenak"
 
-#: ../settings/main.c:1543
+#: ../settings/main.c:1664
 msgid "Unable to contact settings server"
 msgstr "Ezin da ezarpen zerbitzaria konektatu"
 
@@ -229,85 +232,114 @@ msgid "Increase or decrease the color saturation of the final image"
 msgstr "Igo edo jaitsi azken irudiaren kolore saturazioa"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
+msgid ""
+"Number of minutes before a different background is randomly selected from "
+"the list."
+msgstr "Zerrendaik ausaz beste atzealde irudi bar ipintzeko minutu kopurua."
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Remove the selected image(s) from the list"
 msgstr "Kendu hautatutako irudia zerrendatik"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 msgid "Sa_turation:"
 msgstr "Sa_turazioa:"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
 #: ../settings/xfdesktop-settings-ui.glade.h:23
 msgid "Scaled"
 msgstr "Eskalaturik"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
 msgid "Select First Color"
 msgstr "Hautatu lehen kolorea"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
 msgid "Select Second Color"
 msgstr "Hautatu bigarren kolorea"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
 msgid "Select a single image as the backdrop"
 msgstr "Hautatu irudi soil bat atzealderako"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
-#: ../settings/xfdesktop-settings-ui.glade.h:32
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
+#: ../settings/xfdesktop-settings-ui.glade.h:35
 msgid "Solid color"
 msgstr "Kolore solidoa"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr "Gradientearen \"eskuineko\" edo \"beheko\" kolorea ezartzen du"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
-msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr "Kolore solidoa ezartzen du, edo gradientearen \"ezkerreko\" edo \"goiko\" kolorea"
-
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
+msgid ""
+"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr ""
+"Kolore solidoa ezartzen du, edo gradientearen \"ezkerreko\" edo \"goiko\" "
+"kolorea"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "Specify how the image will be resized to fit the screen"
 msgstr "Zehaztu pantailara doitzeko irudia tamainaz nola aldatuko den."
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
 msgid "Specify the style of the color drawn behind the backdrop image"
 msgstr "Zehaztu idazpaper irudiaren atzean margotiko den kolorearen estiloa"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
+msgid "St_retch this background across all monitors."
+msgstr "Za_baldu atzealde irudi hay monitore guzietara"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
 msgid "St_yle:"
 msgstr "Est_iloa:"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
-#: ../settings/xfdesktop-settings-ui.glade.h:34
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
+#: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "Stretched"
 msgstr "Txikitua"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
-#: ../settings/xfdesktop-settings-ui.glade.h:35
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
+#: ../settings/xfdesktop-settings-ui.glade.h:38
 msgid "Tiled"
 msgstr "Mosaikoa"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
-#: ../settings/xfdesktop-settings-ui.glade.h:36
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
+#: ../settings/xfdesktop-settings-ui.glade.h:39
 msgid "Transparent"
 msgstr "Gardena"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
-#: ../settings/xfdesktop-settings-ui.glade.h:39
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
+#: ../settings/xfdesktop-settings-ui.glade.h:42
 msgid "Vertical gradient"
 msgstr "Gradiente bertikala"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
-#: ../settings/xfdesktop-settings-ui.glade.h:40
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
+msgid ""
+"When multiple monitors are present, select this option to stretch the "
+"current background over all of them."
+msgstr "Monitore anitz daudenean, hautatu aukera hau uneko atzealde irudia guztietara zabaltzeko."
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
+msgid ""
+"While in image list mode, select this option to automatically select a "
+"different background from the image list after a set number of minutes."
+msgstr "Irudi zerrenda moduan, hautatu aukera hau automatikoki ezarritako minutuen ondoren irudi zerrendatik be te irudi bar ezartzeko."
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:36
+#: ../settings/xfdesktop-settings-ui.glade.h:43
 msgid "Zoomed"
 msgstr "Gerturatua"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:37
+msgid "_Change the background (in minutes):"
+msgstr "_Aldatu atzealdea (minututan):"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:38
 msgid "_None"
 msgstr "_Bat ere ez"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:39
 msgid "_Single image"
 msgstr "_Irudia bakuna"
 
@@ -339,7 +371,7 @@ msgstr "B_otoia:"
 msgid "Control"
 msgstr "Kontrol"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:738
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:782
 msgid "Desktop"
 msgstr "Idazmahaia"
 
@@ -388,133 +420,153 @@ msgid "Right"
 msgstr "Eskuin"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:24
+msgid ""
+"Select this option to display preview-able files on the desktop as "
+"automatically generated thumbnail icons."
+msgstr "Hautatu aukera hau fitxategi aurreikusgarriak mahaigainean automatikoki sortutako ikonoak bezala ikusteko."
+
+#: ../settings/xfdesktop-settings-ui.glade.h:25
 msgid "Set desktop background and menu and icon behavior"
 msgstr "Ezarri idazmahaieko atzeko planoa eta menua eta ikono ingurunea"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:25
+#: ../settings/xfdesktop-settings-ui.glade.h:26
 msgid "Sh_ow application icons in menu"
 msgstr "Iku_si aplikazio ikonoak menuan"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:26
+#: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "Shift"
 msgstr "Shift"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:27
+#: ../settings/xfdesktop-settings-ui.glade.h:28
 msgid "Show _application icons in menu"
 msgstr "Ikusi _aplikazio ikonoak menuan"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:28
+#: ../settings/xfdesktop-settings-ui.glade.h:29
 msgid "Show _window list menu on desktop middle click"
 msgstr "Ikusi lei_ho zerrenda menua idazmahaia erdiko botoiaz klikatzerakoan"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:29
+#: ../settings/xfdesktop-settings-ui.glade.h:30
 msgid "Show applications menu on _desktop right click"
 msgstr "Ikusi i_dazmahai menu idazmahaia ekuineko botoiaz klikatzerakoan"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:30
+#: ../settings/xfdesktop-settings-ui.glade.h:31
 msgid "Show s_ticky windows only in active workspace"
 msgstr "Ikusi bakarrik idazmahai aktiboko _txikituriko leihoak"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:31
+#: ../settings/xfdesktop-settings-ui.glade.h:32
+msgid "Show t_humbnails"
+msgstr "Ikusi a_rgazkitxoak"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:33
 msgid "Show workspace _names in list"
 msgstr "Bistarazi idazmahai _izenen zerrendan"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:33
-msgid "Specify the transparency level for the rounded label drawn behind the icon text"
+#: ../settings/xfdesktop-settings-ui.glade.h:34
+msgid "Single _click to activate items"
+msgstr "_Klik sola elementuak aktibatzeko"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:36
+msgid ""
+"Specify the transparency level for the rounded label drawn behind the icon "
+"text"
 msgstr "Zehaztu ikonoaren testuaren etiketaren inguruko gardentasun maila"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:37
+#: ../settings/xfdesktop-settings-ui.glade.h:40
 msgid "Use _submenus for the windows in each workspace"
 msgstr "Erabili a_zpimenuak idazmahai bakoitzeko leihoentzako"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:38
+#: ../settings/xfdesktop-settings-ui.glade.h:41
 msgid "Use custom _font size:"
 msgstr "Erabili _letra-tipo tamaina pertsonalizatua:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:41
+#: ../settings/xfdesktop-settings-ui.glade.h:44
 msgid "_Background"
 msgstr "Atzeko _planoa:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:42
+#: ../settings/xfdesktop-settings-ui.glade.h:45
 msgid "_Button:"
 msgstr "_Botoia:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:43
+#: ../settings/xfdesktop-settings-ui.glade.h:46
 msgid "_Edit desktop menu"
 msgstr "_Editatu idazmahai menua"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:44
+#: ../settings/xfdesktop-settings-ui.glade.h:47
 msgid "_Icons"
 msgstr "_Ikonoak"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:45
+#: ../settings/xfdesktop-settings-ui.glade.h:48
 msgid "_Menus"
 msgstr "_Menuak"
 
-#: ../src/main.c:238
+#: ../src/main.c:243
 msgid "Display version information"
 msgstr "Bistarazi bertsio argibideak"
 
-#: ../src/main.c:239
+#: ../src/main.c:244
 msgid "Reload all settings, refresh image list"
 msgstr "Ezarpen guztiak birkargatu, irudi zerrenda freskatu"
 
-#: ../src/main.c:240
+#: ../src/main.c:245
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "Menua bistarazi (saguaren kokalekuan)"
 
-#: ../src/main.c:241
+#: ../src/main.c:246
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "Leiho zerrenda bistarazi (saguaren kokalekuan)"
 
-#: ../src/main.c:242
+#: ../src/main.c:248
+msgid "Automatically arrange all the icons on the desktop"
+msgstr "Automatikoki ordenatu mahagaineko ikono guztiak"
+
+#: ../src/main.c:250
 msgid "Cause xfdesktop to quit"
 msgstr "xfdesktop itxi egiten du"
 
-#: ../src/main.c:262
+#: ../src/main.c:270
 #, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "Huts argumentuak analizatzean: %s\n"
 
-#: ../src/main.c:270
+#: ../src/main.c:278
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Hau %s %s bertsioa da, Xfce %s -en abiarazia.\n"
 
-#: ../src/main.c:272
+#: ../src/main.c:280
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "GTK+ %d.%d.%d erabiliaz eraikia, GTK+ %d.%d.%d-rekin lotua."
 
-#: ../src/main.c:276
+#: ../src/main.c:284
 #, c-format
 msgid "Build options:\n"
 msgstr "Eraikitze aukerak:\n"
 
-#: ../src/main.c:277
+#: ../src/main.c:285
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Idazmahai menua:        %s\n"
 
-#: ../src/main.c:279 ../src/main.c:286 ../src/main.c:293
+#: ../src/main.c:287 ../src/main.c:294 ../src/main.c:301
 msgid "enabled"
 msgstr "gaiturik"
 
-#: ../src/main.c:281 ../src/main.c:288 ../src/main.c:295
+#: ../src/main.c:289 ../src/main.c:296 ../src/main.c:303
 msgid "disabled"
 msgstr "ezgaiturik"
 
-#: ../src/main.c:284
+#: ../src/main.c:292
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Idazmahai ikonoak:       %s\n"
 
-#: ../src/main.c:291
+#: ../src/main.c:299
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Idazmahai fitxategi ikonoak:  %s\n"
 
-#: ../src/main.c:322
+#: ../src/main.c:332
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s ez dago abiaraziriik.\n"
@@ -556,156 +608,183 @@ msgstr "_Ezabatu %d Idazmahai birtuala"
 msgid "_Remove Workspace '%s'"
 msgstr "_Ezabatu '%s' idazmahai birtuala"
 
-#: ../src/xfce-desktop.c:1022
+#: ../src/xfce-desktop.c:1068
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "Ezin da irudia kargatu \"%s\" atzealde zerrenda fitxategitik"
 
-#: ../src/xfce-desktop.c:1024
+#: ../src/xfce-desktop.c:1070
 msgid "Desktop Error"
 msgstr "Idazmahai errorea"
 
-#: ../src/xfdesktop-file-icon-manager.c:465
-#: ../src/xfdesktop-file-icon-manager.c:482
+#: ../src/xfdesktop-file-icon-manager.c:497
+#: ../src/xfdesktop-file-icon-manager.c:514
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
 msgstr "Ezin da \"%s\" mahaigain karpeta sortu"
 
-#: ../src/xfdesktop-file-icon-manager.c:470
-#: ../src/xfdesktop-file-icon-manager.c:487
+#: ../src/xfdesktop-file-icon-manager.c:502
+#: ../src/xfdesktop-file-icon-manager.c:519
 msgid "Desktop Folder Error"
 msgstr "Mahaigain karpeta errorea"
 
-#: ../src/xfdesktop-file-icon-manager.c:489
-msgid "A normal file with the same name already exists. Please delete or rename it."
-msgstr "Dagoeneko badago izen berdineko fitxategi arrunt bat. Mesedez ezabatu edo berrizendatu ezazu."
+#: ../src/xfdesktop-file-icon-manager.c:521
+msgid ""
+"A normal file with the same name already exists. Please delete or rename it."
+msgstr ""
+"Dagoeneko badago izen berdineko fitxategi arrunt bat. Mesedez ezabatu edo "
+"berrizendatu ezazu."
 
-#: ../src/xfdesktop-file-icon-manager.c:592
-#: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:880
-#: ../src/xfdesktop-file-utils.c:895 ../src/xfdesktop-file-utils.c:927
-#: ../src/xfdesktop-file-utils.c:941
+#: ../src/xfdesktop-file-icon-manager.c:624
+#: ../src/xfdesktop-file-icon-manager.c:668 ../src/xfdesktop-file-utils.c:878
+#: ../src/xfdesktop-file-utils.c:893 ../src/xfdesktop-file-utils.c:925
+#: ../src/xfdesktop-file-utils.c:939
 msgid "Trash Error"
 msgstr "Zakarrontzi errorea"
 
-#: ../src/xfdesktop-file-icon-manager.c:593
-#: ../src/xfdesktop-file-icon-manager.c:637
+#: ../src/xfdesktop-file-icon-manager.c:625
+#: ../src/xfdesktop-file-icon-manager.c:669
 msgid "The selected files could not be trashed"
 msgstr "Aplikazio hautatzailea ezin da ireki."
 
-#: ../src/xfdesktop-file-icon-manager.c:594
-#: ../src/xfdesktop-file-icon-manager.c:638 ../src/xfdesktop-file-utils.c:729
-#: ../src/xfdesktop-file-utils.c:779 ../src/xfdesktop-file-utils.c:838
-#: ../src/xfdesktop-file-utils.c:996 ../src/xfdesktop-file-utils.c:1052
-#: ../src/xfdesktop-file-utils.c:1102 ../src/xfdesktop-file-utils.c:1152
-#: ../src/xfdesktop-file-utils.c:1229 ../src/xfdesktop-file-utils.c:1290
-#: ../src/xfdesktop-file-utils.c:1363 ../src/xfdesktop-file-utils.c:1441
-msgid "This feature requires a file manager service to be present (such as the one supplied by Thunar)."
-msgstr "Ezaugarri honek fitxategi kudeaketa zerbitzu bat instalaturik egotea behar du (Thunar-ek duena bezalakoa)"
+#: ../src/xfdesktop-file-icon-manager.c:626
+#: ../src/xfdesktop-file-icon-manager.c:670 ../src/xfdesktop-file-utils.c:727
+#: ../src/xfdesktop-file-utils.c:777 ../src/xfdesktop-file-utils.c:836
+#: ../src/xfdesktop-file-utils.c:994 ../src/xfdesktop-file-utils.c:1050
+#: ../src/xfdesktop-file-utils.c:1100 ../src/xfdesktop-file-utils.c:1150
+#: ../src/xfdesktop-file-utils.c:1227 ../src/xfdesktop-file-utils.c:1288
+#: ../src/xfdesktop-file-utils.c:1361 ../src/xfdesktop-file-utils.c:1439
+msgid ""
+"This feature requires a file manager service to be present (such as the one "
+"supplied by Thunar)."
+msgstr ""
+"Ezaugarri honek fitxategi kudeaketa zerbitzu bat instalaturik egotea behar "
+"du (Thunar-ek duena bezalakoa)"
 
 #. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:738
-#: ../src/xfdesktop-file-icon-manager.c:1300
+#: ../src/xfdesktop-file-icon-manager.c:770
+#: ../src/xfdesktop-file-icon-manager.c:1349
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Ezin da \"%s\" abiarazi:"
 
-#: ../src/xfdesktop-file-icon-manager.c:740
-#: ../src/xfdesktop-file-icon-manager.c:984
-#: ../src/xfdesktop-file-icon-manager.c:1301 ../src/xfdesktop-file-utils.c:712
-#: ../src/xfdesktop-file-utils.c:727 ../src/xfdesktop-file-utils.c:1135
-#: ../src/xfdesktop-file-utils.c:1150 ../src/xfdesktop-file-utils.c:1202
-#: ../src/xfdesktop-file-utils.c:1227 ../src/xfdesktop-file-utils.c:1273
-#: ../src/xfdesktop-file-utils.c:1288
+#: ../src/xfdesktop-file-icon-manager.c:772
+#: ../src/xfdesktop-file-icon-manager.c:1033
+#: ../src/xfdesktop-file-icon-manager.c:1350 ../src/xfdesktop-file-utils.c:710
+#: ../src/xfdesktop-file-utils.c:725 ../src/xfdesktop-file-utils.c:1133
+#: ../src/xfdesktop-file-utils.c:1148 ../src/xfdesktop-file-utils.c:1200
+#: ../src/xfdesktop-file-utils.c:1225 ../src/xfdesktop-file-utils.c:1271
+#: ../src/xfdesktop-file-utils.c:1286
 msgid "Launch Error"
 msgstr "Errorea abiaraztean"
 
-#: ../src/xfdesktop-file-icon-manager.c:908
+#: ../src/xfdesktop-file-icon-manager.c:957
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "\"%s\"-(re)kin _Ireki"
 
-#: ../src/xfdesktop-file-icon-manager.c:911
+#: ../src/xfdesktop-file-icon-manager.c:960
 #, c-format
 msgid "Open With \"%s\""
 msgstr "\"%s\"-(re)kin Ireki"
 
-#: ../src/xfdesktop-file-icon-manager.c:986
-msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
-msgstr "Ezin da \"exo-desktop-item-edit\" abiarazi zein beharrezkoa da abiarazleak eta idazmahai loturak sortu eta editatzeko."
+#: ../src/xfdesktop-file-icon-manager.c:1035
+msgid ""
+"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
+"edit launchers and links on the desktop."
+msgstr ""
+"Ezin da \"exo-desktop-item-edit\" abiarazi zein beharrezkoa da abiarazleak "
+"eta idazmahai loturak sortu eta editatzeko."
 
-#: ../src/xfdesktop-file-icon-manager.c:1358
+#: ../src/xfdesktop-file-icon-manager.c:1407
 msgid "_Open all"
 msgstr "_Ireki dena"
 
-#: ../src/xfdesktop-file-icon-manager.c:1374
+#: ../src/xfdesktop-file-icon-manager.c:1423
 msgid "_Open in New Window"
 msgstr "_Ireki leiho berrian"
 
-#: ../src/xfdesktop-file-icon-manager.c:1376
-#: ../src/xfdesktop-special-file-icon.c:489 ../src/xfdesktop-volume-icon.c:663
+#: ../src/xfdesktop-file-icon-manager.c:1425
+#: ../src/xfdesktop-special-file-icon.c:501 ../src/xfdesktop-volume-icon.c:683
 msgid "_Open"
 msgstr "_Ireki"
 
 #. create launcher item
-#: ../src/xfdesktop-file-icon-manager.c:1395
+#: ../src/xfdesktop-file-icon-manager.c:1444
 msgid "Create _Launcher..."
 msgstr "Sortu _abiarazlea..."
 
 #. create link item
-#: ../src/xfdesktop-file-icon-manager.c:1411
+#: ../src/xfdesktop-file-icon-manager.c:1460
 msgid "Create _URL Link..."
 msgstr "Sortu _URL lotura..."
 
 #. create folder item
-#: ../src/xfdesktop-file-icon-manager.c:1427
+#: ../src/xfdesktop-file-icon-manager.c:1476
 msgid "Create _Folder..."
 msgstr "Sortu _karpeta"
 
 #. create from template submenu
-#: ../src/xfdesktop-file-icon-manager.c:1442
+#: ../src/xfdesktop-file-icon-manager.c:1491
 msgid "Create From _Template"
 msgstr "Sortu _txantiloitik"
 
-#: ../src/xfdesktop-file-icon-manager.c:1468
+#: ../src/xfdesktop-file-icon-manager.c:1517
 msgid "_Empty File"
 msgstr "Fitxategi _hutsa"
 
-#: ../src/xfdesktop-file-icon-manager.c:1484
+#: ../src/xfdesktop-file-icon-manager.c:1533
 msgid "_Execute"
 msgstr "_Abiarazi"
 
-#: ../src/xfdesktop-file-icon-manager.c:1504
+#: ../src/xfdesktop-file-icon-manager.c:1553
 msgid "_Edit Launcher"
 msgstr "_Editatu abiarazlea"
 
-#: ../src/xfdesktop-file-icon-manager.c:1539
+#: ../src/xfdesktop-file-icon-manager.c:1588
 msgid "Open With"
 msgstr "Honekin Ireki"
 
-#: ../src/xfdesktop-file-icon-manager.c:1565
+#: ../src/xfdesktop-file-icon-manager.c:1614
 msgid "Open With Other _Application..."
 msgstr "Beste _aplikazio batekin Ireki..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1653
+#: ../src/xfdesktop-file-icon-manager.c:1706
 msgid "_Rename..."
 msgstr "Be_rrizendatu..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1671
+#: ../src/xfdesktop-file-icon-manager.c:1724
+msgid "_Arrange Desktop Icons"
+msgstr "_Ordenatu mahaigain ikonoak"
+
+#: ../src/xfdesktop-file-icon-manager.c:1734
 msgid "Desktop _Settings..."
 msgstr "Mahaigain _ezarpenak"
 
-#: ../src/xfdesktop-file-icon-manager.c:1681
-#: ../src/xfdesktop-volume-icon.c:711
+#: ../src/xfdesktop-file-icon-manager.c:1744
+#: ../src/xfdesktop-volume-icon.c:731
 msgid "_Properties..."
 msgstr "_Propietateak."
 
-#: ../src/xfdesktop-file-icon-manager.c:2238
+#: ../src/xfdesktop-file-icon-manager.c:2362
 msgid "Load Error"
 msgstr "Karga errorea"
 
-#: ../src/xfdesktop-file-icon-manager.c:2240
+#: ../src/xfdesktop-file-icon-manager.c:2364
 msgid "Failed to load the desktop folder"
 msgstr "Huts mahaigain karpeta kargatzerakoan"
+
+#: ../src/xfdesktop-file-icon-manager.c:2938
+msgid "Copy _Here"
+msgstr "_Kopiatu hona"
+
+#: ../src/xfdesktop-file-icon-manager.c:2938
+msgid "_Move Here"
+msgstr "_Mugitu hona"
+
+#: ../src/xfdesktop-file-icon-manager.c:2938
+msgid "_Link Here"
+msgstr "_Lotu hona"
 
 #. TRANSLATORS: file was modified less than one day ago
 #: ../src/xfdesktop-file-utils.c:137
@@ -736,82 +815,86 @@ msgstr "%x-ean %X-etan"
 msgid "Unknown"
 msgstr "(ezezaguna)"
 
-#: ../src/xfdesktop-file-utils.c:713 ../src/xfdesktop-file-utils.c:728
+#: ../src/xfdesktop-file-utils.c:711 ../src/xfdesktop-file-utils.c:726
 msgid "The folder could not be opened"
 msgstr "Ezin da karpeta ireki"
 
-#: ../src/xfdesktop-file-utils.c:762 ../src/xfdesktop-file-utils.c:777
+#: ../src/xfdesktop-file-utils.c:760 ../src/xfdesktop-file-utils.c:775
 msgid "Rename Error"
 msgstr "Berrizendatze errorea"
 
-#: ../src/xfdesktop-file-utils.c:763 ../src/xfdesktop-file-utils.c:778
+#: ../src/xfdesktop-file-utils.c:761 ../src/xfdesktop-file-utils.c:776
 msgid "The file could not be renamed"
 msgstr "Ezin da fitxategia berrizendatu"
 
-#: ../src/xfdesktop-file-utils.c:821 ../src/xfdesktop-file-utils.c:836
+#: ../src/xfdesktop-file-utils.c:819 ../src/xfdesktop-file-utils.c:834
 msgid "Delete Error"
 msgstr "Ezabatze errorea"
 
-#: ../src/xfdesktop-file-utils.c:822 ../src/xfdesktop-file-utils.c:837
+#: ../src/xfdesktop-file-utils.c:820 ../src/xfdesktop-file-utils.c:835
 msgid "The selected files could not be deleted"
 msgstr "Ezin dira hautatutako fitxategiak ezabatu"
 
-#: ../src/xfdesktop-file-utils.c:881 ../src/xfdesktop-file-utils.c:896
+#: ../src/xfdesktop-file-utils.c:879 ../src/xfdesktop-file-utils.c:894
 msgid "The selected files could not be moved to the trash"
 msgstr "Ezin dira hautatutako fitxategiak zaborrontzira mugitu"
 
-#: ../src/xfdesktop-file-utils.c:897 ../src/xfdesktop-file-utils.c:943
-msgid "This feature requires a trash service to be present (such as the one supplied by Thunar)."
-msgstr "Ezaugarri honek zaborrontzi zerbitzu bat instalaturik egotea behar du (Thunar-ek duena bezalakoa)"
+#: ../src/xfdesktop-file-utils.c:895 ../src/xfdesktop-file-utils.c:941
+msgid ""
+"This feature requires a trash service to be present (such as the one "
+"supplied by Thunar)."
+msgstr ""
+"Ezaugarri honek zaborrontzi zerbitzu bat instalaturik egotea behar du "
+"(Thunar-ek duena bezalakoa)"
 
-#: ../src/xfdesktop-file-utils.c:928 ../src/xfdesktop-file-utils.c:942
+#: ../src/xfdesktop-file-utils.c:926 ../src/xfdesktop-file-utils.c:940
 msgid "Could not empty the trash"
 msgstr "Ezin da zakarrontzia hustu"
 
-#: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:994
+#: ../src/xfdesktop-file-utils.c:977 ../src/xfdesktop-file-utils.c:992
 msgid "Create File Error"
 msgstr "Fitxategi sortze errorea"
 
-#: ../src/xfdesktop-file-utils.c:980 ../src/xfdesktop-file-utils.c:995
+#: ../src/xfdesktop-file-utils.c:978 ../src/xfdesktop-file-utils.c:993
 msgid "Could not create a new file"
 msgstr "Ezin da fitxategi berria sortu"
 
-#: ../src/xfdesktop-file-utils.c:1035 ../src/xfdesktop-file-utils.c:1050
+#: ../src/xfdesktop-file-utils.c:1033 ../src/xfdesktop-file-utils.c:1048
 msgid "Create Document Error"
 msgstr "Dokumentu sortze errorea"
 
-#: ../src/xfdesktop-file-utils.c:1036 ../src/xfdesktop-file-utils.c:1051
+#: ../src/xfdesktop-file-utils.c:1034 ../src/xfdesktop-file-utils.c:1049
 msgid "Could not create a new document from the template"
 msgstr "Ezin da dokumentu beri b at sortu txantiloitik"
 
-#: ../src/xfdesktop-file-utils.c:1085 ../src/xfdesktop-file-utils.c:1100
+#: ../src/xfdesktop-file-utils.c:1083 ../src/xfdesktop-file-utils.c:1098
 msgid "File Properties Error"
 msgstr "Fitxategi propietate errorea"
 
-#: ../src/xfdesktop-file-utils.c:1086 ../src/xfdesktop-file-utils.c:1101
+#: ../src/xfdesktop-file-utils.c:1084 ../src/xfdesktop-file-utils.c:1099
 msgid "The file properties dialog could not be opened"
 msgstr "Ezin da fitxategi propietate leihoa  ezin da ireki."
 
-#: ../src/xfdesktop-file-utils.c:1136 ../src/xfdesktop-file-utils.c:1151
+#: ../src/xfdesktop-file-utils.c:1134 ../src/xfdesktop-file-utils.c:1149
 msgid "The file could not be opened"
 msgstr "Fitxategia ezin izan da ireki"
 
-#: ../src/xfdesktop-file-utils.c:1199 ../src/xfdesktop-file-utils.c:1224
+#: ../src/xfdesktop-file-utils.c:1197 ../src/xfdesktop-file-utils.c:1222
 #, c-format
 msgid "Failed to run \"%s\""
 msgstr "Huts \"%s\" abiaraztean:"
 
-#: ../src/xfdesktop-file-utils.c:1274 ../src/xfdesktop-file-utils.c:1289
+#: ../src/xfdesktop-file-utils.c:1272 ../src/xfdesktop-file-utils.c:1287
 msgid "The application chooser could not be opened"
 msgstr "Aplikazio hautatzailea ezin da ireki."
 
-#: ../src/xfdesktop-file-utils.c:1347 ../src/xfdesktop-file-utils.c:1361
-#: ../src/xfdesktop-file-utils.c:1423 ../src/xfdesktop-file-utils.c:1439
+#: ../src/xfdesktop-file-utils.c:1345 ../src/xfdesktop-file-utils.c:1359
+#: ../src/xfdesktop-file-utils.c:1421 ../src/xfdesktop-file-utils.c:1437
 msgid "Transfer Error"
 msgstr "Transferentzia errorea"
 
-#: ../src/xfdesktop-file-utils.c:1348 ../src/xfdesktop-file-utils.c:1362
-#: ../src/xfdesktop-file-utils.c:1424 ../src/xfdesktop-file-utils.c:1440
+#: ../src/xfdesktop-file-utils.c:1346 ../src/xfdesktop-file-utils.c:1360
+#: ../src/xfdesktop-file-utils.c:1422 ../src/xfdesktop-file-utils.c:1438
 msgid "The file transfer could not be performed"
 msgstr "Ezin izan da fitxategi transferentzia burutu"
 
@@ -823,8 +906,12 @@ msgstr "Gailua desmuntatzen"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:131
 #, c-format
-msgid "The device \"%s\" is being unmounted by the system. Please do not remove the media or disconnect the drive"
-msgstr "Sistema \"%s\" gailua desmuntatzen ari da. Mesedez ez gailua kendu edo deskonektatu"
+msgid ""
+"The device \"%s\" is being unmounted by the system. Please do not remove the "
+"media or disconnect the drive"
+msgstr ""
+"Sistema \"%s\" gailua desmuntatzen ari da. Mesedez ez gailua kendu edo "
+"deskonektatu"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
@@ -834,8 +921,12 @@ msgstr "Datuak gailuan idazten"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
 #, c-format
-msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
-msgstr "Kendu al aurretik \"%s\" gailuan idatzi behar diren datuak daude. Mesedez ez gailua kendu edo deskonektatu"
+msgid ""
+"There is data that needs to be written to the device \"%s\" before it can be "
+"removed. Please do not remove the media or disconnect the drive"
+msgstr ""
+"Kendu al aurretik \"%s\" gailuan idatzi behar diren datuak daude. Mesedez ez "
+"gailua kendu edo deskonektatu"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:253
@@ -848,7 +939,7 @@ msgstr "Gailua ebazten"
 msgid "The device \"%s\" is being ejected. This may take some time"
 msgstr "\"%s\" gailua ebatzia izango da. Honek denbora bat behar dezake"
 
-#: ../src/xfdesktop-regular-file-icon.c:472
+#: ../src/xfdesktop-regular-file-icon.c:567
 #, c-format
 msgid ""
 "Type: %s\n"
@@ -859,25 +950,25 @@ msgstr ""
 "Tamaina: %s\n"
 "Azkene raldaketa: %s"
 
-#: ../src/xfdesktop-special-file-icon.c:258
-#: ../src/xfdesktop-special-file-icon.c:417
+#: ../src/xfdesktop-special-file-icon.c:273
+#: ../src/xfdesktop-special-file-icon.c:432
 msgid "File System"
 msgstr "Fitxategi sistema"
 
-#: ../src/xfdesktop-special-file-icon.c:402
+#: ../src/xfdesktop-special-file-icon.c:417
 msgid "Trash is empty"
 msgstr "Zaborrontzia hutsik dago"
 
-#: ../src/xfdesktop-special-file-icon.c:405
+#: ../src/xfdesktop-special-file-icon.c:420
 msgid "Trash contains one item"
 msgstr "Zaborrontziak elementu bat du"
 
-#: ../src/xfdesktop-special-file-icon.c:406
+#: ../src/xfdesktop-special-file-icon.c:421
 #, c-format
 msgid "Trash contains %d items"
 msgstr "Zaborrontziak %d elementu ditu"
 
-#: ../src/xfdesktop-special-file-icon.c:434
+#: ../src/xfdesktop-special-file-icon.c:449
 #, c-format
 msgid ""
 "%s\n"
@@ -888,11 +979,11 @@ msgstr ""
 "Tamaina: %s\n"
 "Azken eraldaketa: %s"
 
-#: ../src/xfdesktop-special-file-icon.c:507
+#: ../src/xfdesktop-special-file-icon.c:518
 msgid "_Empty Trash"
 msgstr "_Hustu zakarrontzia"
 
-#: ../src/xfdesktop-volume-icon.c:423
+#: ../src/xfdesktop-volume-icon.c:443
 #, c-format
 msgid ""
 "Removable Volume\n"
@@ -903,7 +994,7 @@ msgstr ""
 "Muntatze puntua: \"%s\"\n"
 "Leku librea: %s (%s guztira)"
 
-#: ../src/xfdesktop-volume-icon.c:430
+#: ../src/xfdesktop-volume-icon.c:450
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
@@ -911,37 +1002,41 @@ msgstr ""
 "Bolumen aldagarria\n"
 "Muntatu gabea"
 
-#: ../src/xfdesktop-volume-icon.c:456 ../src/xfdesktop-volume-icon.c:498
+#: ../src/xfdesktop-volume-icon.c:476 ../src/xfdesktop-volume-icon.c:518
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "Ezin da \"%s\" ebatzi:"
 
-#: ../src/xfdesktop-volume-icon.c:461 ../src/xfdesktop-volume-icon.c:503
+#: ../src/xfdesktop-volume-icon.c:481 ../src/xfdesktop-volume-icon.c:523
 msgid "Eject Failed"
 msgstr "Huts ateratzerakoan"
 
-#: ../src/xfdesktop-volume-icon.c:535
+#: ../src/xfdesktop-volume-icon.c:555
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "Huts \"%s\" muntatzerakoan:"
 
-#: ../src/xfdesktop-volume-icon.c:538
+#: ../src/xfdesktop-volume-icon.c:558
 msgid "Mount Failed"
 msgstr "Huts muntatzerakoan"
 
-#: ../src/xfdesktop-volume-icon.c:679 ../src/xfdesktop-volume-icon.c:682
+#: ../src/xfdesktop-volume-icon.c:699 ../src/xfdesktop-volume-icon.c:702
 msgid "E_ject Volume"
 msgstr "Bolumena _atera"
 
-#: ../src/xfdesktop-volume-icon.c:689
+#: ../src/xfdesktop-volume-icon.c:709
 msgid "_Mount Volume"
 msgstr "Bolumena _muntatu"
 
 #~ msgid "Unable to contact the Xfce Trash service."
 #~ msgstr "Ezin da Xfce zakarrontzi zerbitzuarekin harremanetan ipini."
 
-#~ msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
-#~ msgstr "Ziurtatu Xfce zakarrontzi zerbitzuarekin bateragarri den fitxategi kudeatzaile bat erabili behar da, thunar bezalakoa."
+#~ msgid ""
+#~ "Make sure you have a file manager installed that supports the Xfce Trash "
+#~ "service, such as Thunar."
+#~ msgstr ""
+#~ "Ziurtatu Xfce zakarrontzi zerbitzuarekin bateragarri den fitxategi "
+#~ "kudeatzaile bat erabili behar da, thunar bezalakoa."
 
 #~ msgid "Needs terminal"
 #~ msgstr "Terminala behar du"
@@ -1043,25 +1138,34 @@ msgstr "Bolumena _muntatu"
 #~ msgstr "Aukerak:\n"
 
 #~ msgid "    --reload      Reload all settings, refresh image list\n"
-#~ msgstr "    -reload      Ezarpen guztiak birkargatu, irudi zerrenda freskatu\n"
+#~ msgstr ""
+#~ "    -reload      Ezarpen guztiak birkargatu, irudi zerrenda freskatu\n"
 
 #~ msgid "    --menu        Pop up the menu (at the current mouse position)\n"
 #~ msgstr "    -menu        Menua bistarazi (saguaren kokalekuan)\n"
 
-#~ msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
+#~ msgid ""
+#~ "    --windowlist  Pop up the window list (at the current mouse position)\n"
 #~ msgstr "    -windowlist  Leiho zerrenda bistarazi (saguaren kokalekuan)\n"
 
 #~ msgid "    --quit        Cause xfdesktop to quit\n"
 #~ msgstr "    -quit        xfdesktop itxi egiten du\n"
 
-#~ msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-#~ msgstr "Xfdesktop ez da idazmahai elementuak gordetzeko \"%s\" karpeta sortzeko gai."
+#~ msgid ""
+#~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+#~ msgstr ""
+#~ "Xfdesktop ez da idazmahai elementuak gordetzeko \"%s\" karpeta sortzeko "
+#~ "gai."
 
 #~ msgid "Create Folder Failed"
 #~ msgstr "Huts karpeta sortzean"
 
-#~ msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
-#~ msgstr "Xfdesktop ez da \"%s\" idazmahai elementuak gordetzeko erabiltzeko gai ez bait da karpeta bat."
+#~ msgid ""
+#~ "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not "
+#~ "a folder."
+#~ msgstr ""
+#~ "Xfdesktop ez da \"%s\" idazmahai elementuak gordetzeko erabiltzeko gai ez "
+#~ "bait da karpeta bat."
 
 #~ msgid "Please delete or rename the file."
 #~ msgstr "Mesedez fitxategia ezabatu edo berrizendatu."
@@ -1093,8 +1197,12 @@ msgstr "Bolumena _muntatu"
 #~ msgid "The application chooser could not be opened."
 #~ msgstr "Aplikazio hautatzailea ezin da ireki."
 
-#~ msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
-#~ msgstr "Ezaugarri honek fitxategi kudeaketa zerbitzu bat instalaturik egotea behar du (Thunar-ek duena bezalakoa)"
+#~ msgid ""
+#~ "This feature requires a file manager service present (such as that "
+#~ "supplied by Thunar)."
+#~ msgstr ""
+#~ "Ezaugarri honek fitxategi kudeaketa zerbitzu bat instalaturik egotea "
+#~ "behar du (Thunar-ek duena bezalakoa)"
 
 #~ msgid "Unable to create folder named \"%s\":"
 #~ msgstr "Ezin da \"%s\" izeneko karpeta bat sortu:"
@@ -1161,9 +1269,6 @@ msgstr "Bolumena _muntatu"
 
 #~ msgid "Kind:"
 #~ msgstr "Mota:"
-
-#~ msgid "Link Target:"
-#~ msgstr "Lotura helburua:"
 
 #~ msgid "(unknown)"
 #~ msgstr "(ezezaguna)"
@@ -1547,8 +1652,14 @@ msgstr "Bolumena _muntatu"
 #~ msgid "xfce4-menueditor is deprecated"
 #~ msgstr "xfce4-menueditor zaharkiturik dago"
 
-#~ msgid "Xfce's menu system has been replaced, and xfce4-menueditor is not able to edit the new menu file format.  You may continue and edit an old-style menu file, or quit."
-#~ msgstr "Xfce menu sistema aldatua izan da eta xfce4-menueditor ez da gai menu fitxategi formatua editatzeko gai.  Aurrera jarraitu eta sistema-zahar moduko fitxategia editatu edo itxi."
+#~ msgid ""
+#~ "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
+#~ "edit the new menu file format.  You may continue and edit an old-style "
+#~ "menu file, or quit."
+#~ msgstr ""
+#~ "Xfce menu sistema aldatua izan da eta xfce4-menueditor ez da gai menu "
+#~ "fitxategi formatua editatzeko gai.  Aurrera jarraitu eta sistema-zahar "
+#~ "moduko fitxategia editatu edo itxi."
 
 #~ msgid "Continue"
 #~ msgstr "Jarraitu"
@@ -1624,9 +1735,6 @@ msgstr "Bolumena _muntatu"
 
 #~ msgid "_Up"
 #~ msgstr "_Gora"
-
-#~ msgid "Move entry up"
-#~ msgstr "Sarrera gora mugitu"
 
 #~ msgid "_Down"
 #~ msgstr "_Behera"
