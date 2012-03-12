@@ -53,6 +53,7 @@
 #include "xfdesktop-settings-appearance-frame-ui.h"
 
 #define PREVIEW_HEIGHT  48
+#define MAX_ASPECT_RATIO 3.0f
 
 #define SHOW_DESKTOP_MENU_PROP               "/desktop-menu/show"
 #define DESKTOP_MENU_SHOW_ICONS_PROP         "/desktop-menu/show-icons"
@@ -166,6 +167,12 @@ xfdesktop_settings_do_single_preview(GtkTreeModel *model,
                                    name, width, height);
 
         aspect = (gdouble)width / height;
+
+        /* Keep the aspect ratio sensible otherwise the treeview looks bad */
+        if(aspect > MAX_ASPECT_RATIO) {
+            aspect = MAX_ASPECT_RATIO;
+        }
+
         width = PREVIEW_HEIGHT * aspect;
         height = PREVIEW_HEIGHT;
         pix_scaled = gdk_pixbuf_scale_simple(pix, width, height,
