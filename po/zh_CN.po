@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-10 06:51+0000\n"
+"POT-Creation-Date: 2012-03-15 06:30+0000\n"
 "PO-Revision-Date: 2010-11-27 22:17+0800\n"
 "Last-Translator: Chipong Luo <chipong.luo@yahoo.com>\n"
 "Language-Team: Chinese <xfce-i18n@xfce.org>\n"
@@ -20,6 +20,7 @@ msgstr ""
 "MIME-Version: 1.1\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
 #, c-format
@@ -56,7 +57,7 @@ msgstr "可移动设备"
 #: ../settings/main.c:475
 #, c-format
 msgid "Cannot create backdrop list \"%s\""
-msgstr "无法创建背景列表 “%s”"
+msgstr "未能创建背景列表 “%s”"
 
 #: ../settings/main.c:479 ../settings/main.c:802
 msgid "Backdrop List Error"
@@ -70,7 +71,7 @@ msgstr "创建/加载背景列表"
 #, c-format
 msgid ""
 "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr "“%s” 是无效的背景列表文件，您要覆盖吗？"
+msgstr "“%s” 是无效的背景列表文件，您要改写它吗？"
 
 #: ../settings/main.c:533
 msgid "Invalid List File"
@@ -78,7 +79,7 @@ msgstr "无效的列表文件"
 
 #: ../settings/main.c:536
 msgid "Overwriting the file will cause its contents to be lost."
-msgstr "覆盖后文件的以前内容将丢失。"
+msgstr "改写后文件的以前内容将丢失。"
 
 #: ../settings/main.c:538
 msgid "Replace"
@@ -91,11 +92,11 @@ msgstr "无法将背景列表写入 “%s”。"
 
 #: ../settings/main.c:825
 msgid "Add Image File(s)"
-msgstr "添加图像文件"
+msgstr "添加图片文件"
 
 #: ../settings/main.c:834
 msgid "Image files"
-msgstr "图像文件"
+msgstr "图片文件"
 
 #: ../settings/main.c:839
 msgid "All files"
@@ -104,7 +105,7 @@ msgstr "所有文件"
 #: ../settings/main.c:1271
 #, c-format
 msgid "Screen %d, Monitor %d (%s)"
-msgstr "屏幕 %d ，显示器 %d (%s)"
+msgstr "屏幕 %d，显示器 %d (%s)"
 
 #: ../settings/main.c:1275
 #, c-format
@@ -141,11 +142,11 @@ msgstr "版本信息"
 #: ../settings/main.c:1521
 #, c-format
 msgid "Type '%s --help' for usage."
-msgstr "键入 ‘%s --help’ 获取使用方法。"
+msgstr "键入 ‘%s --help’ 获取用法。"
 
 #: ../settings/main.c:1533
 msgid "The Xfce development team. All rights reserved."
-msgstr "Xfce 开发团队，版权所有。"
+msgstr "Xfce 开发团队。保留所有版权。"
 
 #: ../settings/main.c:1534
 #, c-format
@@ -158,7 +159,7 @@ msgstr "桌面设置"
 
 #: ../settings/main.c:1543
 msgid "Unable to contact settings server"
-msgstr "无法连到设置服务器"
+msgstr "未能连到设置服务器"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop "
@@ -195,7 +196,7 @@ msgstr "自动"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
 msgid "Automatically pick a random image from a list file"
-msgstr "从列表文件中随机选择图片"
+msgstr "从列表文件中自动挑选一个随机图片"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
 msgid "B_rightness:"
@@ -237,7 +238,7 @@ msgstr "从列表中移除选中的图片"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Sa_turation:"
-msgstr "饱和度(_T)"
+msgstr "饱和度(_T)："
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 #: ../settings/xfdesktop-settings-ui.glade.h:23
@@ -259,7 +260,7 @@ msgstr "选择单一图片做背景"
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
 #: ../settings/xfdesktop-settings-ui.glade.h:32
 msgid "Solid color"
-msgstr "单一颜色"
+msgstr "纯色"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
@@ -268,7 +269,7 @@ msgstr "指定渐变区 “右边” 或 “下边” 的颜色"
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
 msgid ""
 "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr "指定单一色，或者渐变区 “左边” 或 “上边” 的颜色"
+msgstr "指定纯色，或者渐变区 “左边” 或 “上边” 的颜色"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid "Specify how the image will be resized to fit the screen"
@@ -337,7 +338,7 @@ msgstr "Alt"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:7
 msgid "B_utton:"
-msgstr "按钮(_U)"
+msgstr "按钮(_U)："
 
 #: ../settings/xfdesktop-settings-ui.glade.h:9
 msgid "Control"
@@ -377,11 +378,11 @@ msgstr "最小化应用程序图标"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:19
 msgid "Mo_difier:"
-msgstr "修正键(_D)："
+msgstr "修饰键(_D)："
 
 #: ../settings/xfdesktop-settings-ui.glade.h:20
 msgid "Modi_fier:"
-msgstr "修正键(_F)："
+msgstr "修饰键(_F)："
 
 #: ../settings/xfdesktop-settings-ui.glade.h:21
 msgid "None"
@@ -463,7 +464,7 @@ msgstr "显示版本信息"
 
 #: ../src/main.c:239
 msgid "Reload all settings, refresh image list"
-msgstr "重新载入所有设置，刷新图像列表"
+msgstr "重载所有设置，刷新图片列表"
 
 #: ../src/main.c:240
 msgid "Pop up the menu (at the current mouse position)"
@@ -485,7 +486,7 @@ msgstr "无法解析参数：%s\n"
 #: ../src/main.c:270
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr "这是 %s 版本 %s ，运行于 Xfce %s。\n"
+msgstr "这是 %s 版 %s ，运行于 Xfce %s。\n"
 
 #: ../src/main.c:272
 #, c-format
@@ -504,11 +505,11 @@ msgstr "    桌面菜单：        %s\n"
 
 #: ../src/main.c:279 ../src/main.c:286 ../src/main.c:293
 msgid "enabled"
-msgstr "启用"
+msgstr "已启用"
 
 #: ../src/main.c:281 ../src/main.c:288 ../src/main.c:295
 msgid "disabled"
-msgstr "禁用"
+msgstr "已禁用"
 
 #: ../src/main.c:284
 #, c-format
@@ -523,7 +524,7 @@ msgstr "    桌面文件图标：  %s\n"
 #: ../src/main.c:322
 #, c-format
 msgid "%s is not running.\n"
-msgstr "%s 没有运行。\n"
+msgstr "%s 不在运行。\n"
 
 #: ../src/menu.c:106
 msgid "_Applications"
@@ -555,17 +556,17 @@ msgstr "添加工作区(_A)"
 #: ../src/windowlist.c:373
 #, c-format
 msgid "_Remove Workspace %d"
-msgstr "移除工作区(_R) %d"
+msgstr "移除工作区 %d(_R)"
 
 #: ../src/windowlist.c:376
 #, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "移除工作区(_R) ‘%s’"
+msgstr "移除工作区 ‘%s’(_R)"
 
 #: ../src/xfce-desktop.c:1022
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
-msgstr "无法从背景列表文件 “%s” 中加载图片"
+msgstr "未能从背景列表文件 “%s” 中加载图片"
 
 #: ../src/xfce-desktop.c:1024
 msgid "Desktop Error"
@@ -575,7 +576,7 @@ msgstr "桌面错误"
 #: ../src/xfdesktop-file-icon-manager.c:482
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
-msgstr "无法创建桌面文件夹 “%s”"
+msgstr "未能创建桌面文件夹 “%s”"
 
 #: ../src/xfdesktop-file-icon-manager.c:470
 #: ../src/xfdesktop-file-icon-manager.c:487
@@ -585,7 +586,7 @@ msgstr "桌面文件夹错误"
 #: ../src/xfdesktop-file-icon-manager.c:489
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
-msgstr "一个同名的正常文件已经存在。请删除或者重命名该文件。"
+msgstr "一个同名的正常文件已经存在。请删除或者重命名此文件。"
 
 #: ../src/xfdesktop-file-icon-manager.c:592
 #: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:880
@@ -597,7 +598,7 @@ msgstr "回收站错误"
 #: ../src/xfdesktop-file-icon-manager.c:593
 #: ../src/xfdesktop-file-icon-manager.c:637
 msgid "The selected files could not be trashed"
-msgstr "无法移除选中的文件"
+msgstr "未能移除选中的文件"
 
 #: ../src/xfdesktop-file-icon-manager.c:594
 #: ../src/xfdesktop-file-icon-manager.c:638 ../src/xfdesktop-file-utils.c:729
@@ -616,7 +617,7 @@ msgstr "这项功能需要文件管理器提供相关服务(比如 Thunar 所提
 #: ../src/xfdesktop-file-icon-manager.c:1300
 #, c-format
 msgid "Unable to launch \"%s\":"
-msgstr "无法启动 “%s”："
+msgstr "未能启动 “%s”："
 
 #: ../src/xfdesktop-file-icon-manager.c:740
 #: ../src/xfdesktop-file-icon-manager.c:984
@@ -642,7 +643,7 @@ msgstr "用 “%s” 打开"
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
-msgstr "无法启动创建和编辑启动器与链接所需的 “exo-desktop-item-edit”。"
+msgstr "未能启动创建和编辑启动器与链接所需的 “exo-desktop-item-edit”。"
 
 #: ../src/xfdesktop-file-icon-manager.c:1358
 msgid "_Open all"
@@ -749,7 +750,7 @@ msgstr "未知"
 
 #: ../src/xfdesktop-file-utils.c:713 ../src/xfdesktop-file-utils.c:728
 msgid "The folder could not be opened"
-msgstr "无法打开文件夹"
+msgstr "未能打开文件夹"
 
 #: ../src/xfdesktop-file-utils.c:762 ../src/xfdesktop-file-utils.c:777
 msgid "Rename Error"
@@ -757,7 +758,7 @@ msgstr "重命名错误"
 
 #: ../src/xfdesktop-file-utils.c:763 ../src/xfdesktop-file-utils.c:778
 msgid "The file could not be renamed"
-msgstr "无法重命名该文件"
+msgstr "未能重命名此文件"
 
 #: ../src/xfdesktop-file-utils.c:821 ../src/xfdesktop-file-utils.c:836
 msgid "Delete Error"
@@ -765,11 +766,11 @@ msgstr "删除错误"
 
 #: ../src/xfdesktop-file-utils.c:822 ../src/xfdesktop-file-utils.c:837
 msgid "The selected files could not be deleted"
-msgstr "无法删除选中的文件"
+msgstr "未能删除选中的文件"
 
 #: ../src/xfdesktop-file-utils.c:881 ../src/xfdesktop-file-utils.c:896
 msgid "The selected files could not be moved to the trash"
-msgstr "无法将选中的文件移除到回收站"
+msgstr "未能将选中的文件移除进回收站"
 
 #: ../src/xfdesktop-file-utils.c:897 ../src/xfdesktop-file-utils.c:943
 msgid ""
@@ -779,7 +780,7 @@ msgstr "这项功能需要回收站服务存在(比如 Thunar 所提供的)。"
 
 #: ../src/xfdesktop-file-utils.c:928 ../src/xfdesktop-file-utils.c:942
 msgid "Could not empty the trash"
-msgstr "无法清空回收站"
+msgstr "未能清空回收站"
 
 #: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:994
 msgid "Create File Error"
@@ -787,7 +788,7 @@ msgstr "创建文件错误"
 
 #: ../src/xfdesktop-file-utils.c:980 ../src/xfdesktop-file-utils.c:995
 msgid "Could not create a new file"
-msgstr "无法创建一个新文件"
+msgstr "未能创建一个新文件"
 
 #: ../src/xfdesktop-file-utils.c:1035 ../src/xfdesktop-file-utils.c:1050
 msgid "Create Document Error"
@@ -795,7 +796,7 @@ msgstr "创建文档错误"
 
 #: ../src/xfdesktop-file-utils.c:1036 ../src/xfdesktop-file-utils.c:1051
 msgid "Could not create a new document from the template"
-msgstr "无法从模板创建一个新文档"
+msgstr "未能从模板创建一个新文档"
 
 #: ../src/xfdesktop-file-utils.c:1085 ../src/xfdesktop-file-utils.c:1100
 msgid "File Properties Error"
@@ -803,11 +804,11 @@ msgstr "文件属性错误"
 
 #: ../src/xfdesktop-file-utils.c:1086 ../src/xfdesktop-file-utils.c:1101
 msgid "The file properties dialog could not be opened"
-msgstr "无法打开文件属性对话框"
+msgstr "未能打开文件属性对话框"
 
 #: ../src/xfdesktop-file-utils.c:1136 ../src/xfdesktop-file-utils.c:1151
 msgid "The file could not be opened"
-msgstr "无法打开该文件"
+msgstr "未能打开此文件"
 
 #: ../src/xfdesktop-file-utils.c:1199 ../src/xfdesktop-file-utils.c:1224
 #, c-format
@@ -816,7 +817,7 @@ msgstr "无法运行 “%s”"
 
 #: ../src/xfdesktop-file-utils.c:1274 ../src/xfdesktop-file-utils.c:1289
 msgid "The application chooser could not be opened"
-msgstr "无法打开应用程序选择器"
+msgstr "未能打开应用程序选择器"
 
 #: ../src/xfdesktop-file-utils.c:1347 ../src/xfdesktop-file-utils.c:1361
 #: ../src/xfdesktop-file-utils.c:1423 ../src/xfdesktop-file-utils.c:1439
@@ -826,7 +827,7 @@ msgstr "迁移错误"
 #: ../src/xfdesktop-file-utils.c:1348 ../src/xfdesktop-file-utils.c:1362
 #: ../src/xfdesktop-file-utils.c:1424 ../src/xfdesktop-file-utils.c:1440
 msgid "The file transfer could not be performed"
-msgstr "无法执行文件迁移"
+msgstr "未能执行文件迁移"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:128
@@ -864,7 +865,7 @@ msgstr "正在弹出设备"
 #: ../src/xfdesktop-notify.c:256
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
-msgstr "正在弹出设备 “%s” ，这可能需要一些时间"
+msgstr "正在弹出设备 “%s”，这可能需要一些时间"
 
 #: ../src/xfdesktop-regular-file-icon.c:472
 #, c-format
