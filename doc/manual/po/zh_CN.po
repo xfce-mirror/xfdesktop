@@ -1,832 +1,957 @@
 # Simplified Chinese translations for
-# the xfdesktop.docs package.
+# the xfdesktop package.
 # This file is distributed under the same license as
-# the xfdesktop.docs package.
+# the xfdesktop package.
+# Yongtao Yang <yongtao.yang@telia.com>, 2004.
+# wuli <wurisky@gmail.com>,2007
+# Chris K. Zhang <plutino@gmail.com>, 2009.
+# Aron Xu <aronmalache@163.com>, 2009.
 # Hunt Xu <huntxu@live.cn>, 2009, 2010.
 # Chipong Luo <chipong.luo@yahoo.com>, 2011, 2012.
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop.docs\n"
-"POT-Creation-Date: 2010-08-28 11:37+0200\n"
-"PO-Revision-Date: 2010-11-23 23:17+0800\n"
+"Project-Id-Version: xfdesktop\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-03-15 06:30+0000\n"
+"PO-Revision-Date: 2010-11-27 22:17+0800\n"
 "Last-Translator: Chipong Luo <chipong.luo@yahoo.com>\n"
-"Language-Team: Chinese (Simplified) <xfce-i18n@xfce.org>\n"
+"Language-Team: Chinese <xfce-i18n@xfce.org>\n"
 "Language: zh_CN\n"
-"MIME-Version: 1.0\n"
+"MIME-Version: 1.1\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
-#. When image changes, this message will be marked fuzzy or untranslated for you.
-#. It doesn't matter what you translate it to: it's not used at all.
-#: xfdesktop.xml:167(None)
-msgid "@@image: 'images/root_menu.png'; md5=989216cb94de22e9819179a10d4ead37"
-msgstr "@@image: 'images/root_menu.png'; md5=989216cb94de22e9819179a10d4ead37"
+#: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
+#, c-format
+msgid "Backdrop list file is not valid"
+msgstr "背景列表文件名无效"
 
-#. When image changes, this message will be marked fuzzy or untranslated for you.
-#. It doesn't matter what you translate it to: it's not used at all.
-#: xfdesktop.xml:220(None)
-msgid "@@image: 'images/root_menu2.png'; md5=1a442b4c1866c677cf2c023fa1be0b68"
-msgstr "@@image: 'images/root_menu2.png'; md5=1a442b4c1866c677cf2c023fa1be0b68"
-
-#. When image changes, this message will be marked fuzzy or untranslated for you.
-#. It doesn't matter what you translate it to: it's not used at all.
-#: xfdesktop.xml:255(None)
+#. no need to escape markup; it's already done for us
+#: ../settings/main.c:163
+#, c-format
 msgid ""
-"@@image: 'images/xfdesktop-background-tab.png'; "
-"md5=7f7fad4a6bcfcf286d4af399996d1acc"
+"%s\n"
+"<i>Size: %dx%d</i>"
 msgstr ""
-"@@image: 'images/xfdesktop-background-tab.png'; "
-"md5=7f7fad4a6bcfcf286d4af399996d1acc"
+"%s\n"
+"<i>大小：%dx%d</i>"
 
-#. When image changes, this message will be marked fuzzy or untranslated for you.
-#. It doesn't matter what you translate it to: it's not used at all.
-#: xfdesktop.xml:373(None)
+#: ../settings/main.c:289 ../src/xfdesktop-special-file-icon.c:256
+#: ../src/xfdesktop-special-file-icon.c:419
+msgid "Home"
+msgstr "主文件夹"
+
+#: ../settings/main.c:291
+msgid "Filesystem"
+msgstr "文件系统"
+
+#: ../settings/main.c:293
+msgid "Trash"
+msgstr "回收站"
+
+#: ../settings/main.c:295
+msgid "Removable Devices"
+msgstr "可移动设备"
+
+#: ../settings/main.c:475
+#, c-format
+msgid "Cannot create backdrop list \"%s\""
+msgstr "未能创建背景列表 “%s”"
+
+#: ../settings/main.c:479 ../settings/main.c:802
+msgid "Backdrop List Error"
+msgstr "背景列表错误"
+
+#: ../settings/main.c:504
+msgid "Create/Load Backdrop List"
+msgstr "创建/加载背景列表"
+
+#: ../settings/main.c:528
+#, c-format
 msgid ""
-"@@image: 'images/select_bg_color.png'; md5=1ce435cc800b84ed544d7b3b05797ec5"
-msgstr ""
-"@@image: 'images/select_bg_color.png'; md5=1ce435cc800b84ed544d7b3b05797ec5"
+"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr "“%s” 是无效的背景列表文件，您要改写它吗？"
 
-#. When image changes, this message will be marked fuzzy or untranslated for you.
-#. It doesn't matter what you translate it to: it's not used at all.
-#: xfdesktop.xml:442(None)
-msgid ""
-"@@image: 'images/xfdesktop-menus-tab.png'; "
-"md5=6819a88ce2e21787c4b16827322ff93d"
-msgstr ""
-"@@image: 'images/xfdesktop-menus-tab.png'; "
-"md5=6819a88ce2e21787c4b16827322ff93d"
+#: ../settings/main.c:533
+msgid "Invalid List File"
+msgstr "无效的列表文件"
 
-#. When image changes, this message will be marked fuzzy or untranslated for you.
-#. It doesn't matter what you translate it to: it's not used at all.
-#: xfdesktop.xml:536(None)
-msgid ""
-"@@image: 'images/xfdesktop-icons-tab.png'; "
-"md5=e9f1097a85892b5f7952ec04bcc43481"
-msgstr ""
-"@@image: 'images/xfdesktop-icons-tab.png'; "
-"md5=e9f1097a85892b5f7952ec04bcc43481"
+#: ../settings/main.c:536
+msgid "Overwriting the file will cause its contents to be lost."
+msgstr "改写后文件的以前内容将丢失。"
 
-#: xfdesktop.xml:12(title)
-msgid "Xfce 4 Desktop Manager"
-msgstr "Xfce 4 桌面管理器"
+#: ../settings/main.c:538
+msgid "Replace"
+msgstr "替换"
 
-#: xfdesktop.xml:15(year)
-msgid "2008"
-msgstr "2008"
+#: ../settings/main.c:798
+#, c-format
+msgid "Failed to write backdrop list to \"%s\""
+msgstr "无法将背景列表写入 “%s”。"
 
-#: xfdesktop.xml:15(holder)
-msgid "Jérôme Guelfucci"
-msgstr "Jérôme Guelfucci"
+#: ../settings/main.c:825
+msgid "Add Image File(s)"
+msgstr "添加图片文件"
 
-#: xfdesktop.xml:19(year)
-msgid "2004-2007"
-msgstr "2004-2007"
+#: ../settings/main.c:834
+msgid "Image files"
+msgstr "图片文件"
 
-#: xfdesktop.xml:19(holder)
-msgid "Brian Tarricone"
-msgstr "Brian Tarricone"
+#: ../settings/main.c:839
+msgid "All files"
+msgstr "所有文件"
 
-#: xfdesktop.xml:23(year) xfdesktop.xml:27(year)
-msgid "2004"
-msgstr "2004"
+#: ../settings/main.c:1271
+#, c-format
+msgid "Screen %d, Monitor %d (%s)"
+msgstr "屏幕 %d，显示器 %d (%s)"
 
-#: xfdesktop.xml:23(holder)
-msgid "Jasper Huijsmans"
-msgstr "Jasper Huijsmans"
+#: ../settings/main.c:1275
+#, c-format
+msgid "Screen %d, Monitor %d"
+msgstr "屏幕 %d ，显示器 %d"
 
-#: xfdesktop.xml:27(holder)
-msgid "François Le Clainche"
-msgstr "François Le Clainche"
+#: ../settings/main.c:1278
+#, c-format
+msgid "Screen %d"
+msgstr "屏幕 %d"
 
-#: xfdesktop.xml:47(firstname)
-msgid "Brian"
-msgstr "Brian"
+#: ../settings/main.c:1283
+#, c-format
+msgid "Monitor %d (%s)"
+msgstr "显示器 %d (%s)"
 
-#: xfdesktop.xml:47(surname)
-msgid "Tarricone"
-msgstr "Tarricone"
+#: ../settings/main.c:1287
+#, c-format
+msgid "Monitor %d"
+msgstr "显示器 %d"
 
-#: xfdesktop.xml:49(email)
-msgid "kelnos@xfce.org"
-msgstr "kelnos@xfce.org"
+#: ../settings/main.c:1500
+msgid "Settings manager socket"
+msgstr "设置管理器套接字"
 
-#: xfdesktop.xml:53(firstname)
-msgid "Jasper"
-msgstr "Jasper"
+#: ../settings/main.c:1500
+msgid "SOCKET ID"
+msgstr "套接字 ID"
 
-#: xfdesktop.xml:53(surname)
-msgid "Huijsmans"
-msgstr "Huijsmans"
+#: ../settings/main.c:1501
+msgid "Version information"
+msgstr "版本信息"
 
-#: xfdesktop.xml:55(email)
-msgid "jasper@xfce.org"
-msgstr "jasper@xfce.org"
+#: ../settings/main.c:1521
+#, c-format
+msgid "Type '%s --help' for usage."
+msgstr "键入 ‘%s --help’ 获取用法。"
 
-#: xfdesktop.xml:60(firstname)
-msgid "François"
-msgstr "François"
+#: ../settings/main.c:1533
+msgid "The Xfce development team. All rights reserved."
+msgstr "Xfce 开发团队。保留所有版权。"
 
-#: xfdesktop.xml:60(surname)
-msgid "Le Clainche"
-msgstr "Le Clainche"
+#: ../settings/main.c:1534
+#, c-format
+msgid "Please report bugs to <%s>."
+msgstr "请向 <%s> 报告缺陷。"
 
-#: xfdesktop.xml:62(email)
-msgid "fleclainche@wanadoo.fr"
-msgstr "fleclainche@wanadoo.fr"
-
-#: xfdesktop.xml:67(firstname)
-msgid "Jérôme"
-msgstr "Jérôme"
-
-#: xfdesktop.xml:67(surname)
-msgid "Guelfucci"
-msgstr "Guelfucci"
-
-#: xfdesktop.xml:69(email)
-msgid "jerome.guelfucci@gmail.com"
-msgstr "jerome.guelfucci@gmail.com"
-
-#: xfdesktop.xml:74(releaseinfo)
-msgid "This manual describes @PACKAGE_NAME@ version @PACKAGE_VERSION@."
-msgstr "本手册介绍了 @PACKAGE_VERSION@ 版的 @PACKAGE_NAME@ 。"
-
-#: xfdesktop.xml:80(title)
-msgid "Introduction"
-msgstr "简介"
-
-#: xfdesktop.xml:82(para)
-msgid ""
-"The <application>@PACKAGE_NAME@</application> application manages the "
-"desktop backdrop. It sets a backdrop image and/or color and it can pop up an "
-"applications menu and a list of all running applications when you click on "
-"the desktop with the right or middle mouse button respectively. As of Xfce "
-"4.4, <application>@PACKAGE_NAME@</application> also draws icons on the "
-"desktop."
-msgstr ""
-"<application>@PACKAGE_NAME@</application> 应用程序管理桌面背景。它设置桌面"
-"背景图片和/或背景色，当您在桌面上用鼠标右键或中键点击时，会分别"
-"弹出应用程序菜单或正在运行的应用程序列表。Xfce 4.4 中的 "
-"<application>@PACKAGE_NAME@</application> 还在桌面上绘出图标。"
-
-#: xfdesktop.xml:90(para)
-msgid ""
-"The <application>@PACKAGE_NAME@</application> package installs a settings "
-"dialog for use with the <emphasis>Xfce 4 Settings Manager</emphasis>. From "
-"this dialog you can change the backdrop image and color and change settings "
-"for the menu and the window list."
-msgstr ""
-"<application>@PACKAGE_NAME@</application> 软件包在系统的 <emphasis>Xfce 4 "
-"设置管理器 </emphasis> 中安装了一个设置对话框。通过这个设置对话框，"
-"您可以改变桌面背景图片或颜色，也可以更改菜单和窗口列表的设置。"
-
-#: xfdesktop.xml:99(title)
-msgid "Backdrop"
-msgstr "背景"
-
-#: xfdesktop.xml:101(para)
-msgid ""
-"<application>@PACKAGE_NAME@</application> is responsible for drawing the "
-"desktop's backdrop (sometimes called \"wallpaper\") image. There are various "
-"options for setting a backdrop image. The final picture seen on the monitor "
-"is composed of a solid color or gradient, with an image or photo (with "
-"optional transparency) composited on top of the color or gradient. This "
-"allows for some interesting effects using semi-transparent images on top of "
-"various color arrangements."
-msgstr ""
-"<application>@PACKAGE_NAME@</application> 负责绘出桌面背景(常称作 “壁纸”)图片。"
-"设置背景图片可以有多项选择。在屏幕上显示的最终图片是在一个固定"
-"颜色或者渐变颜色上方叠加的图像或照片(透明度可选)。在各种底色布置上"
-"使用半透明的图像可得到一些有趣的效果。"
-
-#: xfdesktop.xml:113(title)
-msgid "Icons"
-msgstr "图标"
-
-#: xfdesktop.xml:115(para)
-msgid ""
-"In addition to drawing the backdrop image, <application>@PACKAGE_NAME@</"
-"application> can draw icons on the desktop."
-msgstr ""
-"除了绘出背景图片，<application>@PACKAGE_NAME@</application> 还能够在桌面上"
-"绘出图标。"
-
-#: xfdesktop.xml:121(title)
-msgid "Minimized Window Icons"
-msgstr "最小化窗口图标"
-
-#: xfdesktop.xml:123(para)
-msgid ""
-"One mode of operation displays minimized applications as icons on the "
-"desktop, which can be rearranged, and will remember their positions when the "
-"window is unhidden and then later minimized again. The icons also provide a "
-"right-click menu similar to the window's control menu accessed by clicking "
-"the button in the top-left corner of the window."
-msgstr ""
-"操作模式之一是在桌面上将应用程序最小化为图标来显示，此操作可以重新安排，"
-"而且还会记住窗口的显示位置，以后可以在此处重新最小化。右键单击这些图标会"
-"出现一个类似单击窗口左上角按钮时出现的窗口控制菜单的菜单。"
-
-#: xfdesktop.xml:133(title)
-msgid "File/Launcher Icons"
-msgstr "文件/启动器图标"
-
-#: xfdesktop.xml:135(para)
-msgid ""
-"<application>@PACKAGE_NAME@</application> can also display on the desktop "
-"the contents of the <filename>$XDG_DESKTOP_DIR</filename> folder, which can "
-"be set in the <filename>$XDG_CONFIG_HOME/user-dirs.dirs</filename> file (if "
-"you do not have this file, it will use <filename>$HOME/Desktop</filename>). "
-"Files can be arranged, copied, moved, and linked to and from a file manager, "
-"and opened using preferred applications. Application and URL launchers can "
-"also be created on the desktop. The file icon view is modeled to have a "
-"similar look and feel as the <ulink url=\"http://thunar.xfce.org/\" type="
-"\"http\">Thunar</ulink> file manager."
-msgstr ""
-"<application>@PACKAGE_NAME@</application> 同样能够在桌面上显示 <filename>"
-"$XDG_DESKTOP_DIR</filename> 文件夹的内容，该文件夹可以在 <filename>"
-"$XDG_CONFIG_HOME/user-dirs.dirs</filename> 文件中设置"
-"(如果您没有这个文件，将会使用 <filename>$HOME/Desktop</filename>)。"
-"可以管理、复制、移动文件，可以与文件管理器相互创建"
-"链接，可以使用首选的应用程序打开文件。还可以在桌面"
-"上创建应用程序和 URL 启动器。模块化的文件图标视图"
-"具有相似外观，就像 <ulink url=\"http://thunar.xfce.org/\" "
-"type=\"http\">Thunar</ulink> 文件管理器。"
-
-#: xfdesktop.xml:152(title)
-msgid "The Desktop Menu"
-msgstr "桌面菜单"
-
-#: xfdesktop.xml:154(para)
-msgid ""
-"A right-click on the desktop backdrop opens a menu that allows you to open a "
-"Thunar window in the Desktop directory, to create launchers, URL links, "
-"folders and files from templates. It is also possible to open the Desktop "
-"Settings and the Properties window of the Desktop directory and to start "
-"many of the applications found on your system."
-msgstr ""
-"右击桌面背景会打开一个菜单，此菜单让您在桌面目录中打开 Thunar 窗口，"
-"以便创建启动器、URL 链接，从模板新建文件夹或文件。还可能打开桌面目录"
-"的桌面设置和属性窗口，并启动在您的系统中发现的很多应用程序。"
-
-#: xfdesktop.xml:163(title) xfdesktop.xml:455(term)
-msgid "Desktop Menu"
-msgstr "桌面菜单"
-
-#: xfdesktop.xml:170(phrase)
-msgid "Shows <application>@PACKAGE_NAME@</application> right-click mouse menu."
-msgstr "显示 <application>@PACKAGE_NAME@</application> 鼠标右击菜单。"
-
-#: xfdesktop.xml:176(para)
-msgid ""
-"The menu's configuration file, <filename>xfce-applications.menu</filename>, "
-"can be found under the path <filename>$sysconfdir/xdg/menus/xfce-"
-"applications.menu</filename>. For binary packages, <filename>$sysconfdir</"
-"filename> is often <filename>/etc</filename> and for source compiles, it "
-"defaults to <filename>/usr/local/etc</filename>."
-msgstr ""
-"菜单的配置文件 <filename>xfce-application.menu</filename> 可在 <filename>"
-"$sysconfdir/xdg/menus/xfce-application.menu</filename> 路径下找到。"
-"对于二进制文件包，<filename>$sysconfdir</filename> 通常为 <filename>/etc</"
-"filename>，而若从源码编译，则默认为 <filename>/usr/local/etc</filename>。"
-
-#: xfdesktop.xml:185(para)
-msgid ""
-"The previous menu editor is not available anymore. However you can customize "
-"your menu by copying <filename>xfce-applications.menu</filename> to "
-"<filename>$XDG_CONFIG_HOME/menus</filename> and by modifying it with a text "
-"editor such as <application>mousepad</application> or <application>gedit</"
-"application>. Please remember that the file should be UTF-8 encoded. For "
-"more information on menu editing, please see <ulink url=\"http://wiki.xfce."
-"org/howto/customize-menu\" type=\"http\">the Xfce Wiki</ulink>."
-msgstr ""
-"之前的菜单编辑器已经不再有效。但是您同样可以自定义您的菜单，复制 "
-"<filename>xfce-applications.menu</filename> 到 <filename>$XDG_CONFIG_HOME/"
-"menus</filename>，然后使用文本编辑器诸如 <application>mousepad</application> "
-"或 <application>gedit</application> 修改该文件。请记住该文件必须为 UTF-8 编码。"
-"菜单编辑的更多信息，请查看 <ulink url=\"http://wiki.xfce.org/"
-"howto/customize-menu\" type=\"http\">Xfce Wiki</ulink>。"
-
-#: xfdesktop.xml:197(para)
-msgid ""
-"Further customisation can be achived by creating <ulink url=\"http://"
-"standards.freedesktop.org/desktop-entry-spec/latest/\" type=\"http\">desktop "
-"entries</ulink> in <filename>$XDG_DATA_HOME/applications</filename> to hide, "
-"modify or add entries in the menu."
-msgstr ""
-"在 <filename>$XDG_DATA_HOME/applications</filename> 中创建 <ulink url="
-"\"http://standards.freedesktop.org/desktop-entry-spec/latest/\" type=\"http"
-"\">desktop entries</ulink> 可以建档更多定制，比如在菜单中隐藏、修改或添加条目。"
-
-#: xfdesktop.xml:207(title)
-msgid "The Window List Menu"
-msgstr "窗口列表菜单"
-
-#: xfdesktop.xml:209(para)
-msgid ""
-"A middle-click on the desktop backdrop shows a list of all opened windows "
-"ordered by workspace. It also allows you to add or remove a workspace."
-msgstr ""
-"中击桌面背景会显示一个所有已打开的按工作区排列的窗口的列表。它还可以"
-"让您添加或移除工作区。"
-
-#: xfdesktop.xml:216(title) xfdesktop.xml:473(term)
-msgid "Window List Menu"
-msgstr "窗口列表菜单"
-
-#: xfdesktop.xml:223(phrase)
-msgid ""
-"Shows <application>@PACKAGE_NAME@</application> middle-click mouse menu."
-msgstr "显示 <application>@PACKAGE_NAME@</application> 鼠标中击菜单。"
-
-#: xfdesktop.xml:231(title)
+#: ../settings/main.c:1541
 msgid "Desktop Settings"
 msgstr "桌面设置"
 
-#. Needs to be changed once xfce4-settings is documented
-#: xfdesktop.xml:234(para)
+#: ../settings/main.c:1543
+msgid "Unable to contact settings server"
+msgstr "未能连到设置服务器"
+
+#: ../settings/xfce-backdrop-settings.desktop.in.h:1
+msgid "Desktop "
+msgstr "桌面"
+
+#: ../settings/xfce-backdrop-settings.desktop.in.h:2
+msgid "Set desktop background and menu and icon behaviour"
+msgstr "设置桌面背景、菜单及图标属性"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
+msgid "<b>Adjustments</b>"
+msgstr "<b>调整</b>"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
+msgid "<b>Colors</b>"
+msgstr "<b>颜色</b>"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
+msgid "<b>Image</b>"
+msgstr "<b>图片</b>"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
+msgid "<b>Images</b>"
+msgstr "<b>图片</b>"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
+msgid "Add an image to the list"
+msgstr "给列表添加图片"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
+#: ../settings/xfdesktop-settings-ui.glade.h:6
+msgid "Auto"
+msgstr "自动"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
+msgid "Automatically pick a random image from a list file"
+msgstr "从列表文件中自动挑选一个随机图片"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
+msgid "B_rightness:"
+msgstr "亮度(_R)："
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
+#: ../settings/xfdesktop-settings-ui.glade.h:8
+msgid "Centered"
+msgstr "居中"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
+msgid "Create a new list, or load an existing one"
+msgstr "创建新列表，或载入已有列表"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
+msgid "Don't display an image at all"
+msgstr "不显示任何图片"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
+#: ../settings/xfdesktop-settings-ui.glade.h:12
+msgid "Horizontal gradient"
+msgstr "水平渐变"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
+msgid "Image _list"
+msgstr "图片列表(_L)"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
+msgid "Increase or decrease the brightness of the final image"
+msgstr "增加或减小最终图片的亮度"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
+msgid "Increase or decrease the color saturation of the final image"
+msgstr "增加或减小最终图片的颜色饱和度"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
+msgid "Remove the selected image(s) from the list"
+msgstr "从列表中移除选中的图片"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
+msgid "Sa_turation:"
+msgstr "饱和度(_T)："
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
+#: ../settings/xfdesktop-settings-ui.glade.h:23
+msgid "Scaled"
+msgstr "伸缩"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
+msgid "Select First Color"
+msgstr "选择第一种颜色"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
+msgid "Select Second Color"
+msgstr "选择第二种颜色"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
+msgid "Select a single image as the backdrop"
+msgstr "选择单一图片做背景"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
+#: ../settings/xfdesktop-settings-ui.glade.h:32
+msgid "Solid color"
+msgstr "纯色"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
+msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
+msgstr "指定渐变区 “右边” 或 “下边” 的颜色"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
 msgid ""
-"You can start the Desktop settings dialog by clicking on the \"Desktop\" "
-"button in the <ulink url=\"xfce-mcs-manager.html#manager-dialog\" type=\"http"
-"\">Xfce Settings Manager</ulink>."
+"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr "指定纯色，或者渐变区 “左边” 或 “上边” 的颜色"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
+msgid "Specify how the image will be resized to fit the screen"
+msgstr "指定如何调整图片大小以便适应屏幕"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
+msgid "Specify the style of the color drawn behind the backdrop image"
+msgstr "指定背景图片后颜色的绘制样式"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
+msgid "St_yle:"
+msgstr "样式(_Y)："
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
+#: ../settings/xfdesktop-settings-ui.glade.h:34
+msgid "Stretched"
+msgstr "拉伸"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
+#: ../settings/xfdesktop-settings-ui.glade.h:35
+msgid "Tiled"
+msgstr "平铺"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
+#: ../settings/xfdesktop-settings-ui.glade.h:36
+msgid "Transparent"
+msgstr "透明"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
+#: ../settings/xfdesktop-settings-ui.glade.h:39
+msgid "Vertical gradient"
+msgstr "竖直渐变"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
+#: ../settings/xfdesktop-settings-ui.glade.h:40
+msgid "Zoomed"
+msgstr "缩放"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
+msgid "_None"
+msgstr "无(_N)"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
+msgid "_Single image"
+msgstr "单个图片(_S)"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:1
+msgid "<b>Appearance</b>"
+msgstr "<b>外观</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:2
+msgid "<b>Default Icons</b>"
+msgstr "<b>默认图标</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:3
+msgid "<b>Desktop Menu</b>"
+msgstr "<b>桌面菜单</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:4
+msgid "<b>Window List Menu</b>"
+msgstr "<b>窗口列表菜单</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:5
+msgid "Alt"
+msgstr "Alt"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:7
+msgid "B_utton:"
+msgstr "按钮(_U)："
+
+#: ../settings/xfdesktop-settings-ui.glade.h:9
+msgid "Control"
+msgstr "Ctrl"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:738
+msgid "Desktop"
+msgstr "桌面"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:11
+msgid "File/launcher icons"
+msgstr "文件/启动器图标"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:13
+msgid "Icon _size:"
+msgstr "图标大小(_S)："
+
+#: ../settings/xfdesktop-settings-ui.glade.h:14
+msgid "Icon _type:"
+msgstr "图标类型(_T)："
+
+#: ../settings/xfdesktop-settings-ui.glade.h:15
+msgid "Label trans_parency:"
+msgstr "标签透明度(_P)："
+
+#: ../settings/xfdesktop-settings-ui.glade.h:16
+msgid "Left"
+msgstr "左边"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:17
+msgid "Middle"
+msgstr "中间"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:18
+msgid "Minimized application icons"
+msgstr "最小化应用程序图标"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:19
+msgid "Mo_difier:"
+msgstr "修饰键(_D)："
+
+#: ../settings/xfdesktop-settings-ui.glade.h:20
+msgid "Modi_fier:"
+msgstr "修饰键(_F)："
+
+#: ../settings/xfdesktop-settings-ui.glade.h:21
+msgid "None"
+msgstr "无"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:22
+msgid "Right"
+msgstr "右边"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:24
+msgid "Set desktop background and menu and icon behavior"
+msgstr "设置桌面背景、菜单和图标属性"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:25
+msgid "Sh_ow application icons in menu"
+msgstr "在菜单中显示应用程序图标(_O)"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:26
+msgid "Shift"
+msgstr "Shift"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:27
+msgid "Show _application icons in menu"
+msgstr "在菜单中显示应用程序图标(_A)"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:28
+msgid "Show _window list menu on desktop middle click"
+msgstr "在桌面上中键点击时显示窗口列表菜单(_W)"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:29
+msgid "Show applications menu on _desktop right click"
+msgstr "在桌面上右键点击时显示应用程序菜单(_D)"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:30
+msgid "Show s_ticky windows only in active workspace"
+msgstr "只在活动工作区中显示粘附窗口(_T)"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:31
+msgid "Show workspace _names in list"
+msgstr "在列表中显示工作区名称(_N)"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:33
+msgid ""
+"Specify the transparency level for the rounded label drawn behind the icon "
+"text"
+msgstr "指定图标文本后的圆角标签的透明度等级"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:37
+msgid "Use _submenus for the windows in each workspace"
+msgstr "在每个工作区中使用窗口的子菜单(_S)"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:38
+msgid "Use custom _font size:"
+msgstr "使用自定义字体大小(_F)："
+
+#: ../settings/xfdesktop-settings-ui.glade.h:41
+msgid "_Background"
+msgstr "背景(_B)"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:42
+msgid "_Button:"
+msgstr "按钮(_B)："
+
+#: ../settings/xfdesktop-settings-ui.glade.h:43
+msgid "_Edit desktop menu"
+msgstr "编辑桌面菜单(_E)"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:44
+msgid "_Icons"
+msgstr "图标(_I)"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:45
+msgid "_Menus"
+msgstr "菜单(_M)"
+
+#: ../src/main.c:238
+msgid "Display version information"
+msgstr "显示版本信息"
+
+#: ../src/main.c:239
+msgid "Reload all settings, refresh image list"
+msgstr "重载所有设置，刷新图片列表"
+
+#: ../src/main.c:240
+msgid "Pop up the menu (at the current mouse position)"
+msgstr "弹出菜单(在鼠标当前位置)"
+
+#: ../src/main.c:241
+msgid "Pop up the window list (at the current mouse position)"
+msgstr "弹出窗口列表(在鼠标当前位置)"
+
+#: ../src/main.c:242
+msgid "Cause xfdesktop to quit"
+msgstr "导致 xfdesktop 退出"
+
+#: ../src/main.c:262
+#, c-format
+msgid "Failed to parse arguments: %s\n"
+msgstr "无法解析参数：%s\n"
+
+#: ../src/main.c:270
+#, c-format
+msgid "This is %s version %s, running on Xfce %s.\n"
+msgstr "这是 %s 版 %s ，运行于 Xfce %s。\n"
+
+#: ../src/main.c:272
+#, c-format
+msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
+msgstr "依 GTK+ %d.%d.%d 编译，链接到 GTK+ %d.%d.%d。"
+
+#: ../src/main.c:276
+#, c-format
+msgid "Build options:\n"
+msgstr "编译选项：\n"
+
+#: ../src/main.c:277
+#, c-format
+msgid "    Desktop Menu:        %s\n"
+msgstr "    桌面菜单：        %s\n"
+
+#: ../src/main.c:279 ../src/main.c:286 ../src/main.c:293
+msgid "enabled"
+msgstr "已启用"
+
+#: ../src/main.c:281 ../src/main.c:288 ../src/main.c:295
+msgid "disabled"
+msgstr "已禁用"
+
+#: ../src/main.c:284
+#, c-format
+msgid "    Desktop Icons:       %s\n"
+msgstr "    桌面图标：       %s\n"
+
+#: ../src/main.c:291
+#, c-format
+msgid "    Desktop File Icons:  %s\n"
+msgstr "    桌面文件图标：  %s\n"
+
+#: ../src/main.c:322
+#, c-format
+msgid "%s is not running.\n"
+msgstr "%s 不在运行。\n"
+
+#: ../src/menu.c:106
+msgid "_Applications"
+msgstr "应用程序(_A)"
+
+#: ../src/windowlist.c:229
+msgid "Window List"
+msgstr "窗口列表"
+
+#: ../src/windowlist.c:255
+#, c-format
+msgid "<b>Workspace %d</b>"
+msgstr "<b>工作区 %d</b>"
+
+#: ../src/windowlist.c:264
+#, c-format
+msgid "Workspace %d"
+msgstr "工作区 %d"
+
+#: ../src/windowlist.c:266
+#, c-format
+msgid "<i>Workspace %d</i>"
+msgstr "<i>工作区 %d</i>"
+
+#: ../src/windowlist.c:362 ../src/windowlist.c:365
+msgid "_Add Workspace"
+msgstr "添加工作区(_A)"
+
+#: ../src/windowlist.c:373
+#, c-format
+msgid "_Remove Workspace %d"
+msgstr "移除工作区 %d(_R)"
+
+#: ../src/windowlist.c:376
+#, c-format
+msgid "_Remove Workspace '%s'"
+msgstr "移除工作区 ‘%s’(_R)"
+
+#: ../src/xfce-desktop.c:1022
+#, c-format
+msgid "Unable to load image from backdrop list file \"%s\""
+msgstr "未能从背景列表文件 “%s” 中加载图片"
+
+#: ../src/xfce-desktop.c:1024
+msgid "Desktop Error"
+msgstr "桌面错误"
+
+#: ../src/xfdesktop-file-icon-manager.c:465
+#: ../src/xfdesktop-file-icon-manager.c:482
+#, c-format
+msgid "Could not create the desktop folder \"%s\""
+msgstr "未能创建桌面文件夹 “%s”"
+
+#: ../src/xfdesktop-file-icon-manager.c:470
+#: ../src/xfdesktop-file-icon-manager.c:487
+msgid "Desktop Folder Error"
+msgstr "桌面文件夹错误"
+
+#: ../src/xfdesktop-file-icon-manager.c:489
+msgid ""
+"A normal file with the same name already exists. Please delete or rename it."
+msgstr "一个同名的正常文件已经存在。请删除或者重命名此文件。"
+
+#: ../src/xfdesktop-file-icon-manager.c:592
+#: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:880
+#: ../src/xfdesktop-file-utils.c:895 ../src/xfdesktop-file-utils.c:927
+#: ../src/xfdesktop-file-utils.c:941
+msgid "Trash Error"
+msgstr "回收站错误"
+
+#: ../src/xfdesktop-file-icon-manager.c:593
+#: ../src/xfdesktop-file-icon-manager.c:637
+msgid "The selected files could not be trashed"
+msgstr "未能移除选中的文件"
+
+#: ../src/xfdesktop-file-icon-manager.c:594
+#: ../src/xfdesktop-file-icon-manager.c:638 ../src/xfdesktop-file-utils.c:729
+#: ../src/xfdesktop-file-utils.c:779 ../src/xfdesktop-file-utils.c:838
+#: ../src/xfdesktop-file-utils.c:996 ../src/xfdesktop-file-utils.c:1052
+#: ../src/xfdesktop-file-utils.c:1102 ../src/xfdesktop-file-utils.c:1152
+#: ../src/xfdesktop-file-utils.c:1229 ../src/xfdesktop-file-utils.c:1290
+#: ../src/xfdesktop-file-utils.c:1363 ../src/xfdesktop-file-utils.c:1441
+msgid ""
+"This feature requires a file manager service to be present (such as the one "
+"supplied by Thunar)."
+msgstr "这项功能需要文件管理器提供相关服务(比如 Thunar 所提供的)。"
+
+#. printf is to be translator-friendly
+#: ../src/xfdesktop-file-icon-manager.c:738
+#: ../src/xfdesktop-file-icon-manager.c:1300
+#, c-format
+msgid "Unable to launch \"%s\":"
+msgstr "未能启动 “%s”："
+
+#: ../src/xfdesktop-file-icon-manager.c:740
+#: ../src/xfdesktop-file-icon-manager.c:984
+#: ../src/xfdesktop-file-icon-manager.c:1301 ../src/xfdesktop-file-utils.c:712
+#: ../src/xfdesktop-file-utils.c:727 ../src/xfdesktop-file-utils.c:1135
+#: ../src/xfdesktop-file-utils.c:1150 ../src/xfdesktop-file-utils.c:1202
+#: ../src/xfdesktop-file-utils.c:1227 ../src/xfdesktop-file-utils.c:1273
+#: ../src/xfdesktop-file-utils.c:1288
+msgid "Launch Error"
+msgstr "启动错误"
+
+#: ../src/xfdesktop-file-icon-manager.c:908
+#, c-format
+msgid "_Open With \"%s\""
+msgstr "用 “%s” 打开(_O)"
+
+#: ../src/xfdesktop-file-icon-manager.c:911
+#, c-format
+msgid "Open With \"%s\""
+msgstr "用 “%s” 打开"
+
+#: ../src/xfdesktop-file-icon-manager.c:986
+msgid ""
+"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
+"edit launchers and links on the desktop."
+msgstr "未能启动创建和编辑启动器与链接所需的 “exo-desktop-item-edit”。"
+
+#: ../src/xfdesktop-file-icon-manager.c:1358
+msgid "_Open all"
+msgstr "全部打开(_O)"
+
+#: ../src/xfdesktop-file-icon-manager.c:1374
+msgid "_Open in New Window"
+msgstr "在新窗口中打开(_O)"
+
+#: ../src/xfdesktop-file-icon-manager.c:1376
+#: ../src/xfdesktop-special-file-icon.c:489 ../src/xfdesktop-volume-icon.c:663
+msgid "_Open"
+msgstr "打开(_O)"
+
+#. create launcher item
+#: ../src/xfdesktop-file-icon-manager.c:1395
+msgid "Create _Launcher..."
+msgstr "创建启动器(_L)..."
+
+#. create link item
+#: ../src/xfdesktop-file-icon-manager.c:1411
+msgid "Create _URL Link..."
+msgstr "创建 URL 链接(_U)..."
+
+#. create folder item
+#: ../src/xfdesktop-file-icon-manager.c:1427
+msgid "Create _Folder..."
+msgstr "创建文件夹(_F)..."
+
+#. create from template submenu
+#: ../src/xfdesktop-file-icon-manager.c:1442
+msgid "Create From _Template"
+msgstr "从模板创建(_T)"
+
+#: ../src/xfdesktop-file-icon-manager.c:1468
+msgid "_Empty File"
+msgstr "空文件(_E)"
+
+#: ../src/xfdesktop-file-icon-manager.c:1484
+msgid "_Execute"
+msgstr "执行(_E)"
+
+#: ../src/xfdesktop-file-icon-manager.c:1504
+msgid "_Edit Launcher"
+msgstr "编辑启动器(_E)"
+
+#: ../src/xfdesktop-file-icon-manager.c:1539
+msgid "Open With"
+msgstr "打开方式"
+
+#: ../src/xfdesktop-file-icon-manager.c:1565
+msgid "Open With Other _Application..."
+msgstr "用其它应用程序打开(_A)..."
+
+#: ../src/xfdesktop-file-icon-manager.c:1653
+msgid "_Rename..."
+msgstr "重命名(_R)..."
+
+#: ../src/xfdesktop-file-icon-manager.c:1671
+msgid "Desktop _Settings..."
+msgstr "桌面设置(_S)..."
+
+#: ../src/xfdesktop-file-icon-manager.c:1681
+#: ../src/xfdesktop-volume-icon.c:711
+msgid "_Properties..."
+msgstr "属性(_P)..."
+
+#: ../src/xfdesktop-file-icon-manager.c:2238
+msgid "Load Error"
+msgstr "载入错误"
+
+#: ../src/xfdesktop-file-icon-manager.c:2240
+msgid "Failed to load the desktop folder"
+msgstr "无法载入桌面文件夹"
+
+#. TRANSLATORS: file was modified less than one day ago
+#: ../src/xfdesktop-file-utils.c:137
+#, c-format
+msgid "Today at %X"
+msgstr "今天 %X"
+
+#. TRANSLATORS: file was modified less than two days ago
+#: ../src/xfdesktop-file-utils.c:141
+#, c-format
+msgid "Yesterday at %X"
+msgstr "昨天 %X"
+
+#. Days from last week
+#: ../src/xfdesktop-file-utils.c:146
+#, c-format
+msgid "%A at %X"
+msgstr "%A %X"
+
+#. Any other date
+#: ../src/xfdesktop-file-utils.c:149
+#, c-format
+msgid "%x at %X"
+msgstr "%x %X"
+
+#. the file_time is invalid
+#: ../src/xfdesktop-file-utils.c:159
+msgid "Unknown"
+msgstr "未知"
+
+#: ../src/xfdesktop-file-utils.c:713 ../src/xfdesktop-file-utils.c:728
+msgid "The folder could not be opened"
+msgstr "未能打开文件夹"
+
+#: ../src/xfdesktop-file-utils.c:762 ../src/xfdesktop-file-utils.c:777
+msgid "Rename Error"
+msgstr "重命名错误"
+
+#: ../src/xfdesktop-file-utils.c:763 ../src/xfdesktop-file-utils.c:778
+msgid "The file could not be renamed"
+msgstr "未能重命名此文件"
+
+#: ../src/xfdesktop-file-utils.c:821 ../src/xfdesktop-file-utils.c:836
+msgid "Delete Error"
+msgstr "删除错误"
+
+#: ../src/xfdesktop-file-utils.c:822 ../src/xfdesktop-file-utils.c:837
+msgid "The selected files could not be deleted"
+msgstr "未能删除选中的文件"
+
+#: ../src/xfdesktop-file-utils.c:881 ../src/xfdesktop-file-utils.c:896
+msgid "The selected files could not be moved to the trash"
+msgstr "未能将选中的文件移除进回收站"
+
+#: ../src/xfdesktop-file-utils.c:897 ../src/xfdesktop-file-utils.c:943
+msgid ""
+"This feature requires a trash service to be present (such as the one "
+"supplied by Thunar)."
+msgstr "这项功能需要回收站服务存在(比如 Thunar 所提供的)。"
+
+#: ../src/xfdesktop-file-utils.c:928 ../src/xfdesktop-file-utils.c:942
+msgid "Could not empty the trash"
+msgstr "未能清空回收站"
+
+#: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:994
+msgid "Create File Error"
+msgstr "创建文件错误"
+
+#: ../src/xfdesktop-file-utils.c:980 ../src/xfdesktop-file-utils.c:995
+msgid "Could not create a new file"
+msgstr "未能创建一个新文件"
+
+#: ../src/xfdesktop-file-utils.c:1035 ../src/xfdesktop-file-utils.c:1050
+msgid "Create Document Error"
+msgstr "创建文档错误"
+
+#: ../src/xfdesktop-file-utils.c:1036 ../src/xfdesktop-file-utils.c:1051
+msgid "Could not create a new document from the template"
+msgstr "未能从模板创建一个新文档"
+
+#: ../src/xfdesktop-file-utils.c:1085 ../src/xfdesktop-file-utils.c:1100
+msgid "File Properties Error"
+msgstr "文件属性错误"
+
+#: ../src/xfdesktop-file-utils.c:1086 ../src/xfdesktop-file-utils.c:1101
+msgid "The file properties dialog could not be opened"
+msgstr "未能打开文件属性对话框"
+
+#: ../src/xfdesktop-file-utils.c:1136 ../src/xfdesktop-file-utils.c:1151
+msgid "The file could not be opened"
+msgstr "未能打开此文件"
+
+#: ../src/xfdesktop-file-utils.c:1199 ../src/xfdesktop-file-utils.c:1224
+#, c-format
+msgid "Failed to run \"%s\""
+msgstr "无法运行 “%s”"
+
+#: ../src/xfdesktop-file-utils.c:1274 ../src/xfdesktop-file-utils.c:1289
+msgid "The application chooser could not be opened"
+msgstr "未能打开应用程序选择器"
+
+#: ../src/xfdesktop-file-utils.c:1347 ../src/xfdesktop-file-utils.c:1361
+#: ../src/xfdesktop-file-utils.c:1423 ../src/xfdesktop-file-utils.c:1439
+msgid "Transfer Error"
+msgstr "迁移错误"
+
+#: ../src/xfdesktop-file-utils.c:1348 ../src/xfdesktop-file-utils.c:1362
+#: ../src/xfdesktop-file-utils.c:1424 ../src/xfdesktop-file-utils.c:1440
+msgid "The file transfer could not be performed"
+msgstr "未能执行文件迁移"
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:128
+msgid "Unmounting device"
+msgstr "正在卸载设备"
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:131
+#, c-format
+msgid ""
+"The device \"%s\" is being unmounted by the system. Please do not remove the "
+"media or disconnect the drive"
+msgstr "正在从系统中卸载设备 “%s”。请不要移除介质或者断开与驱动器的连接。"
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
+msgid "Writing data to device"
+msgstr "正在向设备写入数据"
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
+#, c-format
+msgid ""
+"There is data that needs to be written to the device \"%s\" before it can be "
+"removed. Please do not remove the media or disconnect the drive"
 msgstr ""
-"您可以点击 <ulink url=\"xfce-mcs-manager.html#manager-dialog\" type=\"http"
-"\">Xfce 设置管理器</ulink> 中的 “桌面” 按钮来启动桌面设置对话框。"
+"在移除设备 “%s” 之前仍有数据需要写入。请不要移除介质或者断开与驱动器的连接。"
 
-#: xfdesktop.xml:242(title)
-msgid "Background Tab"
-msgstr "背景标签"
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:253
+msgid "Ejecting device"
+msgstr "正在弹出设备"
 
-#: xfdesktop.xml:244(para)
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:256
+#, c-format
+msgid "The device \"%s\" is being ejected. This may take some time"
+msgstr "正在弹出设备 “%s”，这可能需要一些时间"
+
+#: ../src/xfdesktop-regular-file-icon.c:472
+#, c-format
 msgid ""
-"The Background tab allows you to set various options related to drawing the "
-"desktop backdrop picture."
-msgstr "背景标签让您设置与桌面背景图像绘制有关的多个选项。"
-
-#: xfdesktop.xml:250(title)
-msgid "Desktop Settings, Background Tab"
-msgstr "桌面设置，背景标签"
-
-#: xfdesktop.xml:258(phrase)
-msgid "Shows the Background tab of the Desktop Settings dialog"
-msgstr "显示桌面设置对话框的背景标签"
-
-#: xfdesktop.xml:268(term)
-msgid "Image"
-msgstr "图片"
-
-#: xfdesktop.xml:271(para)
-msgid ""
-"Select the <emphasis>\"None\"</emphasis> option if you want "
-"<application>@PACKAGE_NAME@</application> to ignore the backdrop image and "
-"only use the selected colors."
+"Type: %s\n"
+"Size: %s\n"
+"Last modified: %s"
 msgstr ""
-"如果您要 <application>@PACKAGE_NAME</application> 忽略桌面背景图片而只"
-"使用所选的颜色，选择 <emphasis>“无”</emphasis> 选项。"
+"类型： %s\n"
+"大小： %s\n"
+"最近修改：%s"
 
-#: xfdesktop.xml:277(para)
+#: ../src/xfdesktop-special-file-icon.c:258
+#: ../src/xfdesktop-special-file-icon.c:417
+msgid "File System"
+msgstr "文件系统"
+
+#: ../src/xfdesktop-special-file-icon.c:402
+msgid "Trash is empty"
+msgstr "回收站是空的"
+
+#: ../src/xfdesktop-special-file-icon.c:405
+msgid "Trash contains one item"
+msgstr "回收站中有一个项目"
+
+#: ../src/xfdesktop-special-file-icon.c:406
+#, c-format
+msgid "Trash contains %d items"
+msgstr "回收站中有 %d 个项目"
+
+#: ../src/xfdesktop-special-file-icon.c:434
+#, c-format
 msgid ""
-"Select the <emphasis>\"Single image\"</emphasis> option if you want "
-"<application>@PACKAGE_NAME@</application> to draw a backdrop image."
+"%s\n"
+"Size: %s\n"
+"Last modified: %s"
 msgstr ""
-"如果您要 <application>@PACKAGE_NAME@</application> 绘出背景图片，选择 "
-"<emphasis>“单一图片”</emphasis> 选项。"
+"%s\n"
+"大小： %s\n"
+"最近修改：%s"
 
-#: xfdesktop.xml:282(para)
+#: ../src/xfdesktop-special-file-icon.c:507
+msgid "_Empty Trash"
+msgstr "清空回收站(_E)"
+
+#: ../src/xfdesktop-volume-icon.c:423
+#, c-format
 msgid ""
-"Select the <emphasis>\"Image List\"</emphasis> option if you want "
-"<application>@PACKAGE_NAME@</application> to randomly choose the backdrop "
-"image among a list."
+"Removable Volume\n"
+"Mounted in \"%s\"\n"
+"%s left (%s total)"
 msgstr ""
-"如果您要 <application>@PACKAGE_NAME@</application> 从背景图片列表中"
-"随机选择，选择 <emphasis>“图片列表”</emphasis> 选项。"
+"可移动卷\n"
+"挂载在 “%s”\n"
+"可用容量 %s(总容量 %s)"
 
-#: xfdesktop.xml:294(term)
-msgid "Images"
-msgstr "图片"
-
-#. Single image stuff
-#: xfdesktop.xml:297(para)
+#: ../src/xfdesktop-volume-icon.c:430
 msgid ""
-"If you selected the <emphasis>\"Single image\"</emphasis> option, you can "
-"choose an image from the treeview. Click on an image to set it as the "
-"current backdrop. <application>@PACKAGE_NAME@</application> will update the "
-"background of your desktop automatically."
+"Removable Volume\n"
+"Not mounted yet"
 msgstr ""
-"如果您选中了 <emphasis>“单一图片”</emphasis> 选项，您可以从树形列表"
-"中选择一图片。点击图片可将其设置为当前桌面背景。<application>@PACKAGE_NAME@</"
-"application> 会自动更新您的桌面背景。"
+"可移动卷\n"
+"还未挂载"
 
-#: xfdesktop.xml:304(para)
-msgid ""
-"You can add images to the treeview by clicking on the \"plus\" button, which "
-"will pop a file chooser dialog up. Images can be removed using the \"minus\" "
-"button."
-msgstr ""
-"您可以通过点击 “加上” 按钮，从弹出的文件选择器对话框中添加图片至树形"
-"列表中。点击 “减去” 按钮可以移除一幅图片。"
+#: ../src/xfdesktop-volume-icon.c:456 ../src/xfdesktop-volume-icon.c:498
+#, c-format
+msgid "Failed to eject \"%s\""
+msgstr "无法弹出 “%s”"
 
-#. Image list stuff
-#: xfdesktop.xml:311(para)
-msgid ""
-"If you selected the <emphasis>\"Image list\"</emphasis> option, you can use "
-"the \"New\" button displaying a blank sheet to select an existing list or "
-"create a new one, using a file chooser. You can still use the \"plus\" and "
-"\"minus\" buttons to add and remove images. <application>@PACKAGE_NAME@</"
-"application> will then randomly choose a backdrop among this list every time "
-"it starts."
-msgstr ""
-"如果您选中了 <emphasis>“图片列表”</emphasis> 选项，您可以点击"
-"显示为纸张的 “新建” 按钮来通过文件选择器选择一已经存在的列表或创建"
-"一新的列表。您仍可以使用 “加上” 和 “减去” 按钮来添加或者移除图片。"
-"<application>@PACKAGE_NAME@</application> 会在其每次启动时自动从列表中选择"
-"一幅图片作为桌面背景。"
+#: ../src/xfdesktop-volume-icon.c:461 ../src/xfdesktop-volume-icon.c:503
+msgid "Eject Failed"
+msgstr "无法弹出"
 
-#. Images layout options
-#: xfdesktop.xml:321(para)
-msgid ""
-"Five Style options (<emphasis>\"Centered\"</emphasis>, <emphasis>\"Tiled\"</"
-"emphasis>, <emphasis>\"Stretched\"</emphasis>, <emphasis>\"Scaled\"</"
-"emphasis> and <emphasis>\"Zoomed\"</emphasis>) are available to specify the "
-"fitting of the backdrop image on the screen, depending on its size. You can "
-"also select the <emphasis>\"Auto\"</emphasis> item if you want to let "
-"<application>@PACKAGE_NAME@</application> take care of this setting."
-msgstr ""
-"依据其大小，有五种样式选项(<emphasis>“居中”</emphasis>、<emphasis>“平铺”</"
-"emphasis>、<emphasis>“拉伸”</emphasis>、<emphasis>“伸缩”</emphasis> 和 "
-"<emphasis>“缩放”</emphasis>)用来指定背景图片在屏幕上的放置"
-"方式。您也可以选择 <emphasis>“自动”</emphasis> 让 "
-"<application>@PACKAGE_NAME@</application> 去管此设置。"
+#: ../src/xfdesktop-volume-icon.c:535
+#, c-format
+msgid "Failed to mount \"%s\""
+msgstr "无法挂载 “%s”"
 
-#. To be confirmed as I don't have multiscreen
-#: xfdesktop.xml:334(para)
-msgid ""
-"<application>@PACKAGE_NAME@</application> supports xinerama and multiscreen "
-"modes. In multiscreen mode, the Background tab shows one tab per screen."
-msgstr ""
-"<application>@PACKAGE_NAME@</application> 支持 xinerama 和多屏模式。在多屏模"
-"式中，背景标签在每个屏幕中都显示一个标签。"
+#: ../src/xfdesktop-volume-icon.c:538
+msgid "Mount Failed"
+msgstr "无法挂载"
 
-#: xfdesktop.xml:342(term)
-msgid "Colors"
-msgstr "颜色"
+#: ../src/xfdesktop-volume-icon.c:679 ../src/xfdesktop-volume-icon.c:682
+msgid "E_ject Volume"
+msgstr "弹出卷(_J)"
 
-#: xfdesktop.xml:344(para)
-msgid ""
-"The color style is one of four options in dropping list: a solid color, "
-"horizontal gradient, vertical gradient, or transparent."
-msgstr ""
-"颜色样式是下拉菜单四种选项中的一个：单一颜色、水平渐变、竖直渐变或透明。"
-
-#: xfdesktop.xml:350(para)
-msgid ""
-"The <emphasis>\"Transparent\"</emphasis> option, when you use a colored "
-"background without backdrop image, allows you to see the windows that are "
-"under the transparent desktop window. This requires an activated compositor."
-msgstr ""
-"当您使用单一的颜色背景而没有背景图片时，<emphasis>“透明”</emphasis> 选项让"
-"您看到在透明桌面窗口之下的窗口。这需要有一已激活的合成器。"
-
-#: xfdesktop.xml:357(para)
-msgid ""
-"Two colored buttons allow you to choose the colors for your desktop. When "
-"the solid color option is selected, only the first color is available. When "
-"either of the gradient options are selected, both the first and second "
-"colors are available. Both of the color buttons open a color chooser dialog:"
-msgstr ""
-"两个颜色按钮让您选择桌面的颜色。当选中单一颜色选项时，只使用第一种颜色。"
-"当选中两种渐变选项之一时，第一和第二种颜色都起作用。两个颜色按钮都会打开"
-"颜色选择器对话框："
-
-#: xfdesktop.xml:368(title)
-msgid "Select Background Color"
-msgstr "选择背景颜色"
-
-#: xfdesktop.xml:376(phrase)
-msgid "Shows the color selection dialog"
-msgstr "显示颜色选择对话框"
-
-#: xfdesktop.xml:385(para)
-msgid ""
-"You can use the colored ring with a triangle inside to select the color you "
-"want from the outer ring, then select the darkness or lightness of that "
-"color using the inner triangle. Corresponding values of brightness, "
-"deepness, and amount of red, green and blue light in the color appear "
-"through the entries on the right side of the window."
-msgstr ""
-"您可以使用内部有一三角形的颜色环选择您想要的颜色，然后使用环内的三角形"
-"选择颜色的暗度或亮度。相应亮度、色深和红、绿、蓝三基色量的值在窗口右部"
-"的各个条目中显示。"
-
-#: xfdesktop.xml:396(para)
-msgid ""
-"You can click the eyedropper, then click anywhere on your screen to select "
-"the color."
-msgstr "您可以点击拾色器，然后在您屏幕的任意位置点击以选择该颜色。"
-
-#: xfdesktop.xml:403(para)
-msgid ""
-"You can enter an HTML-style hexadecimal color value, or simply a color name, "
-"in the <emphasis>\"Color Name\"</emphasis> entry."
-msgstr ""
-"在 <emphasis>\"颜色名称\"</emphasis> 条目中，您可以输入一个 HTML 样式的十六进制"
-"颜色值，或者简单地输入颜色名称。"
-
-#: xfdesktop.xml:411(para)
-msgid ""
-"The selected colors will fill the entire root window, and will remain "
-"visible through a transparent backdrop image."
-msgstr ""
-"选中的颜色会填充整个根窗，而且透过透明背景图片仍然可见。"
-
-#: xfdesktop.xml:419(term)
-msgid "Adjustments"
-msgstr "调整"
-
-#: xfdesktop.xml:422(para)
-msgid ""
-"The two sliders allow you to adjust the brightness and the saturation of the "
-"backdrop image and or color."
-msgstr "两个滑动快让您调整背景图片或颜色的亮度和饱和度。"
-
-#: xfdesktop.xml:433(title)
-msgid "Menus Tab"
-msgstr "菜单标签"
-
-#: xfdesktop.xml:436(title)
-msgid "Desktop Settings, Menus Tab"
-msgstr "桌面设置，菜单标签"
-
-#: xfdesktop.xml:445(phrase)
-msgid "Shows the Menus tab of the Desktop Settings dialog"
-msgstr "显示桌面设置对话框的菜单标签"
-
-#: xfdesktop.xml:458(para)
-msgid ""
-"If you check the <emphasis>\"Show applications menu on desktop right click"
-"\"</emphasis>, the <link linkend=\"xfdesktop-menu\">applications menu</link> "
-"will be shown when right clicking on the desktop."
-msgstr ""
-"如果您选中 <emphasis>“右击桌面时显示应用程序菜单” </emphasis> ，<link "
-"linkend=\"xfdesktop-menu\">应用程序菜单</link> 将在您右击桌面时显示。"
-
-#: xfdesktop.xml:465(para)
-msgid ""
-"The <emphasis>\"Show application icons in menu\"</emphasis> allows you to "
-"show or hide icons in the menu."
-msgstr ""
-"<emphasis>“在菜单中显示应用程序图标”</emphasis> 让您在菜单中显示或隐藏图标。"
-
-#: xfdesktop.xml:476(para)
-msgid ""
-"If you check the <emphasis>\"Show window list menu on desktop middle click"
-"\"</emphasis> option, the <link linkend=\"xfdesktop-window-list\">window "
-"list menu</link> will be shown when middle clicking on the desktop."
-msgstr ""
-"如果您选中 <emphasis>“中击桌面时显示窗口列表菜单” </emphasis> ，<link "
-"linkend=\"xfdesktop-window-list\">窗口列表菜单</link> 会在您中击桌面时显示。"
-
-#: xfdesktop.xml:484(para)
-msgid ""
-"The <emphasis>\"Show application icons in menu\"</emphasis> option allows "
-"you to show or hide icons in the menu. This option is only available when "
-"<emphasis>\"Show window list menu on desktop middle click\"</emphasis> is "
-"checked."
-msgstr ""
-"<emphasis>“在菜单中显示应用程序图标”</emphasis> 选项让您在菜单中显示或隐藏图标。"
-"该选项仅在选中 <emphasis>“中击桌面时显示窗口列表菜单”</emphasis> 时有效。"
-
-#. Add link to xfwm4 documentation to change workspaces names
-#: xfdesktop.xml:493(para)
-msgid ""
-"The <emphasis>\"Show workspace names in list\"</emphasis> option allows you "
-"to show or hide workspace names in the list. If checked, windows are shown "
-"under the name of their workspace. Else, they are all shown in the same "
-"portion of the menu. This option is only available when <emphasis>\"Show "
-"window list menu on desktop middle click\"</emphasis> is checked."
-msgstr ""
-"<emphasis>“在列表中显示工作区名称”</emphasis> 选项让您在列表中显示或隐藏"
-"工作区名称。选中该项，窗口会在其工作区名字下方显示。否则所有"
-"窗口都将在菜单的同一地方显示。该选项仅在选中 <emphasis>“中击桌面时"
-"显示窗口列表菜单”</emphasis> 时有效。"
-
-#: xfdesktop.xml:504(para)
-msgid ""
-"The <emphasis>\"Show submenus for the windows in each workspace\"</emphasis> "
-"option allows you to have the windows displayed in a submenu titled with the "
-"workspace name. This option is only available when <emphasis>\"Show "
-"workspace names in list\"</emphasis> is checked."
-msgstr ""
-"<emphasis>“在每个工作区中显示窗口子菜单”</emphasis> 选项让您将窗口显示"
-"在其所在工作区名称下的子菜单中。该选项仅在选中 <emphasis>“在列表"
-"中显示工作区名称”</emphasis> 时有效。"
-
-#: xfdesktop.xml:513(para)
-msgid ""
-"The <emphasis>\"Show sticky windows only in active workspace\"</emphasis> "
-"option allows you to have sticky windows displayed only in the active "
-"workspace, instead of displaying their item in all workspaces."
-msgstr ""
-"<emphasis>“仅在活动工作区显示粘滞窗口”</emphasis> 让您将粘滞窗口仅显示"
-"在活动工作区中，而非在所有工作区中显示它们的项目。"
-
-#: xfdesktop.xml:527(title)
-msgid "Icons Tab"
-msgstr "图标标签"
-
-#: xfdesktop.xml:530(title)
-msgid "Desktop Settings, Icons Tab"
-msgstr "桌面设置，图标标签"
-
-#: xfdesktop.xml:539(phrase)
-msgid "Shows the Icons tab of the Desktop Settings dialog"
-msgstr "显示桌面设置对话框的图标标签"
-
-#: xfdesktop.xml:549(term)
-msgid "Appearance"
-msgstr "外观"
-
-#: xfdesktop.xml:552(para)
-msgid ""
-"The <emphasis>\"Icon type\"</emphasis> dropping list allows you to set the "
-"behavior of the desktop icons. There are three options: \"None\", to disable "
-"desktop icons entirely; \"Minimized\" application icons, to show icons for "
-"minimized or hidden applications on the desktop; and \"File/launcher\" "
-"icons, to show the contents of your <filename>$XDG_DESKTOP_DIR</filename> "
-"directory on the desktop."
-msgstr ""
-"<emphasis>“图标类型”</emphasis> 下拉菜单让您设置桌面图标的行为方式。有三个"
-"可用选项：“无”，完全禁用桌面图标；“最小化” 应用程序图标，显示"
-"桌面上已最小化的或已隐藏的应用程序的图标；“文件/启动器” 图标，>"
-"用来在桌面上显示您 <filename$XDG_DESKTOP_DIR</filename> 目录的内容。"
-
-#: xfdesktop.xml:563(para)
-msgid ""
-"If desktop icons are enabled, you can control the size of the icon itself "
-"(in pixels) with the <emphasis>\"Icon size\"</emphasis> option, and the font "
-"size used to display the icon text (in points) with the <emphasis>\"Use "
-"custom font size\"</emphasis> option. If you do not check this last option, "
-"the system defaults will be used."
-msgstr ""
-"当启用桌面图标时，您可以通过 <emphasis>“图标大小”</emphasis> 选项来控制图标本身的"
-"大小(像素)，通过 <emphasis>“使用自定义字体大小”</emphasis> 选项来控制显示图标文字"
-"(点数)的字体大小。如果您未选中最后这个选项，将会使用系统默认的大小。"
-
-#: xfdesktop.xml:576(term)
-msgid "Default Icons"
-msgstr "默认图标"
-
-#: xfdesktop.xml:579(para)
-msgid ""
-"The checkboxes allow you to show or hide special icons on the desktop, when "
-"<application>@PACKAGE_NAME@</application> is set to draw icons. Double "
-"clicking those icons will open a Thunar window displaying the contents of a "
-"particular path."
-msgstr ""
-"当 <application>@PACKAGE_NAME@</application> 设为绘制图标时，此复选框让您"
-"在桌面上显示或隐藏特殊图标。双击这些图标会打开一个显示特定路径"
-"内容的 Thunar 窗口。"
-
-#: xfdesktop.xml:586(para)
-msgid ""
-"<emphasis>Home</emphasis> stands for your home folder, that is to say, "
-"<filename>$HOME</filename>. <emphasis>Filesystem</emphasis> stands for the "
-"root of your file system, also known as <filename>/</filename>. "
-"<emphasis>Trash</emphasis> stands for your trash folder, and "
-"<emphasis>Removable devices</emphasis> represents floppy drives, USB drives "
-"and keys, external hard drives, optical discs, etc."
-msgstr ""
-"<emphasis>主文件夹</emphasis> 代表您的用户文件夹，即 <filename>$HOME</filename>。"
-"<emphasis>文件系统</emphasis> 代表您的文件系统的根目录，即 <filename>/</filename>。"
-"<emphasis>回收站</emphasis> 代表您的回收站的文件夹，还有"
-"<emphasis>可移动设备</emphasis> 代表软盘驱动器，USB 驱动器"
-"和键盘，外部硬盘驱动器，光盘等。"
-
-#: xfdesktop.xml:603(title)
-msgid "Hidden Options"
-msgstr "隐藏选项"
-
-#: xfdesktop.xml:605(para)
-msgid ""
-"There are a number of hidden options that cannot be set by the Xfce Settings "
-"Manager. These require use of a text editor."
-msgstr ""
-"有很多不能使用 Xfce 设置管理器设置的隐藏选项。这些需要使用文本编辑器。"
-
-#: xfdesktop.xml:612(term)
-msgid "Icon View Text Appearance"
-msgstr "图标视图文本外观"
-
-#: xfdesktop.xml:614(para)
-msgid ""
-"The colors of the icon text and the icon text background, as well as the "
-"opacity of the icon text background, can be customized by putting directives "
-"simiar to the following in your <filename>~/.gtkrc-2.0</filename> file:"
-msgstr ""
-"图标文本的颜色和图标文本背景以及图标文本背景的阻光度，可以通过添加"
-"类似您的 <filename>~/.gtkrc-2.0</filename> 文件中的规则来自定义。"
-
-#: xfdesktop.xml:636(para)
-msgid ""
-"The first entry sets the opacity of the rounded text background. The three "
-"\"base\" entries set the text background color, and the three \"fg\" entries "
-"set the text color."
-msgstr ""
-"第一个条目设置文本背景的阻光度。三个 “base” 条目设置文本背景颜色。"
-"三个 “fg” 条目则设置文本颜色。"
-
-#: xfdesktop.xml:642(para)
-msgid ""
-"The \"NORMAL\" entries set the color for the regular, unselected state. The "
-"\"SELECTED\" entries set the color for when the icon is selected, and the "
-"desktop has keyboard focus. The \"ACTIVE\" entries set the color for when "
-"the icon is selected, but the desktop does not have keyboard focus."
-msgstr ""
-"“NORMAL” 条目设置正常的、未选中状态下的颜色。“SELECTED” 条目设置"
-"当图标处于选中且桌面获得键盘焦点状态下的颜色，“ACTIVE” 条目设置当图标"
-"处于选中但桌面未获得键盘焦点状态下的颜色。"
-
-#: xfdesktop.xml:655(title)
-msgid "Miscellaneous"
-msgstr "杂项"
-
-#: xfdesktop.xml:657(para)
-msgid ""
-"You can open the menu or window list from the commandline as well. This can "
-"be useful for keyboard shortcuts. To open the menu run the command "
-"<application>@PACKAGE_NAME@</application><application>--menu</application>, "
-"and for the windowlist use <application>@PACKAGE_NAME@</"
-"application><application>--windowlist</application>. To cause the current "
-"running instance to quit, run <application>@PACKAGE_NAME@</"
-"application><application>--quit</application>."
-msgstr ""
-"您同样可以通过命令行打开菜单或者窗口列表。对于键盘快捷键来说会有用。"
-"要打开菜单，运行 <application>@PACKAGE_NAME@</application><application>--menu"
-"</application>，要打开窗口列表，运行 <application>@PACKAGE_NAME@</application>"
-"<application>--windowlist</application>。要退出当前正在运行的实例，"
-"运行 <application>@PACKAGE_NAME@</application><application>--quit</"
-"application>。"
-
-#: xfdesktop.xml:668(title)
-msgid "About <application>@PACKAGE_NAME@</application>"
-msgstr "关于 <application>@PACKAGE_NAME@</application>"
-
-#: xfdesktop.xml:670(para)
-msgid ""
-"<application>@PACKAGE_NAME@</application> was written by Brian Tarricone "
-"(<email>kelnos@xfce.org</email>), Jasper Huijsmans (<email>jasper@xfce.org</"
-"email>), and Benedikt Meurer (<email>benny@xfce.org</email>). For more "
-"information, please visit the <ulink url=\"http://www.xfce.org\" type=\"http"
-"\">Xfce website</ulink>."
-msgstr ""
-"<application>@PACKAGE_NAME@</application> 由 Brian Tarricone "
-"(<email>kelnos@xfce.org</email>)、Jasper Huijsmans (<email>jasper@xfce.org</"
-"email>) 和 Benedikt Meurer (<email>benny@xfce.org</email>) 编写。更多信息，"
-"请访问 <ulink url=\"http://www.xfce.org\" type=\"http\">Xfce website</ulink>。"
-
-#: xfdesktop.xml:679(para)
-msgid ""
-"To report a bug or make a suggestion regarding this application or this "
-"manual, use the bug tracking system at <ulink url=\"http://bugzilla.xfce.org/"
-"\" type=\"http\">http://bugzilla.xfce.org/</ulink>."
-msgstr ""
-"要汇报缺陷或就此文档或手册提出建议，使用缺陷追踪系统 <ulink url=\""
-"http://bugzilla.xfce.org/\" type=\"http\">http://bugzilla.xfce.org/</ulink>。"
-
-#: xfdesktop.xml:686(para)
-msgid ""
-"If you have questions about the use or installation of this package, please "
-"ask on the <ulink url=\"http://foo-projects.org/mailman/listinfo/xfce\" type="
-"\"http\">xfce</ulink> mailing list. Development discussion takes place on "
-"the <ulink url=\"http://foo-projects.org/mailman/listinfo/xfce4-dev\" type="
-"\"http\">xfce4-dev</ulink> mailing list."
-msgstr ""
-"如果您在使用或安装本软件包时有问题，请在 <ulink url=\"http://foo-projects.org"
-"/mailman/listinfo/xfce\" type= \"http\">xfce</ulink> 邮件列表中提问。"
-"软件开发方面的讨论在 <ulink url=\"http://foo-projects.org/mailman/listinfo/"
-"xfce4-dev\" type=\"http\">xfce4-dev</ulink> 邮件列表中进行。"
-
-#: xfdesktop.xml:696(para)
-msgid ""
-"This program is distributed under the terms of the GNU General Public "
-"License as published by the Free Software Foundation; either version 2 of "
-"the License, or (at your option) any later version."
-msgstr ""
-"本程序以自由软件基金会发布的 GNU 通用公共许可协议的第二版或(您可以选择)"
-"更高版本的方式发布。"
-
-#: xfdesktop.xml:702(para)
-msgid ""
-"You should have received a copy of the GNU General Public License along with "
-"this program; if not, write to the Free Software Foundation, Inc., 51 "
-"Franklin St, Fifth Floor, Boston, MA 02110-1301, USA."
-msgstr ""
-"您应该与此程序一道获得了一份 GNU 通用公共许可协议的副本；如没有，致信"
-"the Free Software Foundation, Inc., "
-"51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA。"
-
-#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: xfdesktop.xml:0(None)
-msgid "translator-credits"
-msgstr ""
-"Hunt Xu <huntxu@live.cn>, 2009.\n"
-"Chipong Luo <chipong.luo@yahoo.com>, 2011, 2012."
+#: ../src/xfdesktop-volume-icon.c:689
+msgid "_Mount Volume"
+msgstr "挂载卷(_M)"
