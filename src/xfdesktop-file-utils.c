@@ -685,7 +685,8 @@ xfdesktop_file_utils_open_folder(GFile *file,
                                  GdkScreen *screen,
                                  GtkWindow *parent)
 {
-    DBusGProxy *fileman_proxy;
+    gchar *uri = NULL;
+    GError *error = NULL;
 
     g_return_if_fail(G_IS_FILE(file));
     g_return_if_fail(GDK_IS_SCREEN(screen) || GTK_IS_WINDOW(parent));
@@ -693,41 +694,25 @@ xfdesktop_file_utils_open_folder(GFile *file,
     if(!screen)
         screen = gtk_widget_get_screen(GTK_WIDGET(parent));
 
-    fileman_proxy = xfdesktop_file_utils_peek_filemanager_proxy();
-    if(fileman_proxy) {
-        GError *error = NULL;
-        gchar *uri = g_file_get_uri(file);
-        gchar *display_name = gdk_screen_make_display_name(screen);
-        gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
+    uri = g_file_get_uri(file);
 
-        xfdesktop_file_utils_set_window_cursor(parent, GDK_WATCH);
-
-        if(!xfdesktop_file_manager_proxy_display_folder(fileman_proxy,
-                                                        uri, display_name, startup_id,
-                                                        &error))
-        {
-            xfce_message_dialog(parent,
-                                _("Launch Error"), GTK_STOCK_DIALOG_ERROR,
-                                _("The folder could not be opened"),
-                                error->message, GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
-                                NULL);
-
-            g_error_free(error);
-        }
-
-        xfdesktop_file_utils_set_window_cursor(parent, GDK_LEFT_PTR);
-
-        g_free(startup_id);
-        g_free(uri);
-        g_free(display_name);
-    } else {
+    if(!exo_execute_preferred_application_on_screen("FileManager",
+                                                    uri,
+                                                    NULL,
+                                                    NULL,
+                                                    screen,
+                                                    &error))
+    {
         xfce_message_dialog(parent,
                             _("Launch Error"), GTK_STOCK_DIALOG_ERROR,
                             _("The folder could not be opened"),
-                            _("This feature requires a file manager service to "
-                              "be present (such as the one supplied by Thunar)."),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                            error->message, GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
+                            NULL);
+
+        g_error_free(error);
     }
+
+    g_free(uri);
 }
 
 void
