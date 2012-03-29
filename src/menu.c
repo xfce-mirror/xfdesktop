@@ -97,8 +97,8 @@ menu_populate(XfceDesktop *desktop,
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             
-            if(gtk_icon_theme_has_icon(itheme, "applications-accessories")) {
-                img = gtk_image_new_from_icon_name("applications-accessories",
+            if(gtk_icon_theme_has_icon(itheme, "applications-other")) {
+                img = gtk_image_new_from_icon_name("applications-other",
                                                    GTK_ICON_SIZE_MENU);
                 gtk_widget_show(img);
             }
