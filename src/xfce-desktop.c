@@ -528,6 +528,13 @@ screen_set_selection(XfceDesktop *desktop)
     selection_atom = XInternAtom(GDK_DISPLAY(), selection_name, False);
     manager_atom = XInternAtom(GDK_DISPLAY(), "MANAGER", False);
 
+    /* the previous check in src/main.c occurs too early, so workaround by
+     * adding this one. */
+   if(XGetSelectionOwner(GDK_DISPLAY(), selection_atom) != None) {
+       g_warning("%s: already running, quitting.", PACKAGE);
+       exit(0);
+   }
+
     XSelectInput(GDK_DISPLAY(), xwin, PropertyChangeMask | ButtonPressMask);
     XSetSelectionOwner(GDK_DISPLAY(), selection_atom, xwin, GDK_CURRENT_TIME);
 
