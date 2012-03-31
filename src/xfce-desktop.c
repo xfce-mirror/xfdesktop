@@ -82,6 +82,9 @@
 #include "xfce-desktop.h"
 #include "xfce-desktop-enum-types.h"
 
+/* disable setting the x background for bug 7442 */
+//#define DISABLE_FOR_BUG7442
+
 struct _XfceDesktopPriv
 {
     GdkScreen *gscreen;
@@ -275,7 +278,7 @@ static void
 set_real_root_window_pixmap(GdkScreen *gscreen,
                             GdkPixmap *pmap)
 {
-#if 0 /* see bug #7442 */
+#ifndef DISABLE_FOR_BUG7442
     Window xid;
     GdkWindow *groot;
     
@@ -865,7 +868,7 @@ xfce_desktop_unrealize(GtkWidget *widget)
     gdk_property_delete(groot, gdk_atom_intern("XFCE_DESKTOP_WINDOW", FALSE));
     gdk_property_delete(groot, gdk_atom_intern("NAUTILUS_DESKTOP_WINDOW_ID", FALSE));
 
-#if 0 /* see bug #7442 */
+#ifndef DISABLE_FOR_BUG7442
     gdk_property_delete(groot, gdk_atom_intern("_XROOTPMAP_ID", FALSE));
     gdk_property_delete(groot, gdk_atom_intern("ESETROOT_PMAP_ID", FALSE));
     gdk_window_set_back_pixmap(groot, NULL, FALSE);
