@@ -907,15 +907,15 @@ xfce_desktop_button_press_event(GtkWidget *w,
     g_return_val_if_fail(XFCE_IS_DESKTOP(w), FALSE);
 
     if(evt->type == GDK_BUTTON_PRESS) {
+        if(button == 3 || (button == 1 && (state & GDK_SHIFT_MASK))) {
 #ifdef ENABLE_DESKTOP_ICONS
-        if(XFCE_DESKTOP(w)->priv->icons_style == XFCE_DESKTOP_ICON_STYLE_NONE
-           && (button == 3 || (button == 1 && (state & GDK_SHIFT_MASK)))) {
+            if(XFCE_DESKTOP(w)->priv->icons_style != XFCE_DESKTOP_ICON_STYLE_NONE)
+                return FALSE;
+#endif
             xfce_desktop_popup_root_menu(XFCE_DESKTOP(w),
                                          button,
                                          evt->time);
-        } else
-#endif
-        if(button == 2 || (button == 1 && (state & GDK_SHIFT_MASK)
+        } else if(button == 2 || (button == 1 && (state & GDK_SHIFT_MASK)
                                   && (state & GDK_CONTROL_MASK)))
         {
             xfce_desktop_popup_secondary_root_menu(XFCE_DESKTOP(w),
