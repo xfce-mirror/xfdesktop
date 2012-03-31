@@ -2,21 +2,21 @@
 # xfdesktop for XFce desktop environment.
 # Copyright (C) 2003-2006 The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
-# 
-# Carles Muñoz Gorriz <carlesmu@internautas.org>, 2003-2004, 2006, 2008-2009.
+#
+# Carles Muñoz Gorriz <carlesmu@internautas.org>, 2003-2004, 2006, 2008-2010, 2012.
 # Pau Ruŀlan Ferragut <paurullan@bulma.net>, 2005-2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-06 13:39+0000\n"
-"PO-Revision-Date: 2010-08-31 17:29+0100\n"
+"POT-Creation-Date: 2012-03-31 11:03+0000\n"
+"PO-Revision-Date: 2012-03-31 17:46+0100\n"
 "Last-Translator: Carles Muñoz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: Catalan <xfce-i18n@xfce.org>\n"
+"Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ca\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Language: Catalan\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -28,7 +28,7 @@ msgid "Backdrop list file is not valid"
 msgstr "El fitxer amb la llista d'imatges no és vàlid"
 
 #. no need to escape markup; it's already done for us
-#: ../settings/main.c:165
+#: ../settings/main.c:166
 #, c-format
 msgid ""
 "%s\n"
@@ -37,128 +37,128 @@ msgstr ""
 "%s\n"
 "<i>Mida: %dx%d</i>"
 
-#: ../settings/main.c:292 ../src/xfdesktop-special-file-icon.c:271
+#: ../settings/main.c:299 ../src/xfdesktop-special-file-icon.c:271
 #: ../src/xfdesktop-special-file-icon.c:434
 msgid "Home"
 msgstr "Inici"
 
-#: ../settings/main.c:294
+#: ../settings/main.c:301
 msgid "Filesystem"
 msgstr "Sistema de fitxers"
 
-#: ../settings/main.c:296
+#: ../settings/main.c:303
 msgid "Trash"
 msgstr "Paperera"
 
-#: ../settings/main.c:298
+#: ../settings/main.c:305
 msgid "Removable Devices"
 msgstr "Dispositius extractables"
 
-#: ../settings/main.c:478
+#: ../settings/main.c:485
 #, c-format
 msgid "Cannot create backdrop list \"%s\""
 msgstr "No es por crear la llista d'imatges de fons «%s»"
 
-#: ../settings/main.c:482 ../settings/main.c:855
+#: ../settings/main.c:489 ../settings/main.c:862
 msgid "Backdrop List Error"
 msgstr "Error en la llista d'imatges de fons"
 
-#: ../settings/main.c:507
+#: ../settings/main.c:514
 msgid "Create/Load Backdrop List"
 msgstr "Crea/carrega un llistat d'imatges de fons"
 
-#: ../settings/main.c:531
+#: ../settings/main.c:538
 #, c-format
 msgid ""
 "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
 msgstr ""
 "El fitxer «%s» no és una llista d'imatges vàlida. Voleu sobreescriure'l?"
 
-#: ../settings/main.c:536
+#: ../settings/main.c:543
 msgid "Invalid List File"
 msgstr "Llista de fitxers invàlida"
 
-#: ../settings/main.c:539
+#: ../settings/main.c:546
 msgid "Overwriting the file will cause its contents to be lost."
 msgstr "Sobreescriure el fitxer farà que es perdi el seu contingut."
 
-#: ../settings/main.c:541
+#: ../settings/main.c:548
 msgid "Replace"
 msgstr "Substitueix"
 
-#: ../settings/main.c:851
+#: ../settings/main.c:858
 #, c-format
 msgid "Failed to write backdrop list to \"%s\""
 msgstr "No s'ha pogut escriure la llista d'imatges de fons a «%s»"
 
-#: ../settings/main.c:878
+#: ../settings/main.c:885
 msgid "Add Image File(s)"
 msgstr "Afegiu fitxers d'imatges"
 
-#: ../settings/main.c:887
+#: ../settings/main.c:894
 msgid "Image files"
 msgstr "Fitxers d'imatge"
 
-#: ../settings/main.c:892
+#: ../settings/main.c:899
 msgid "All files"
 msgstr "Tots els fitxers"
 
-#: ../settings/main.c:1349
+#: ../settings/main.c:1356
 #, c-format
 msgid "Screen %d, Monitor %d (%s)"
 msgstr "Pantalla %d, Monitor %d (%s)"
 
-#: ../settings/main.c:1353
+#: ../settings/main.c:1360
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "Pantalla %d, Monitor %d"
 
-#: ../settings/main.c:1356
+#: ../settings/main.c:1363
 #, c-format
 msgid "Screen %d"
 msgstr "Pantalla %d"
 
-#: ../settings/main.c:1361
+#: ../settings/main.c:1368
 #, c-format
 msgid "Monitor %d (%s)"
 msgstr "Monitor %d (%s)"
 
-#: ../settings/main.c:1365
+#: ../settings/main.c:1372
 #, c-format
 msgid "Monitor %d"
 msgstr "Monitor %d"
 
-#: ../settings/main.c:1624
+#: ../settings/main.c:1631
 msgid "Settings manager socket"
 msgstr "Sòcol del gestor d'akustaments"
 
-#: ../settings/main.c:1624
+#: ../settings/main.c:1631
 msgid "SOCKET ID"
 msgstr "SÒCOL ID"
 
-#: ../settings/main.c:1625
+#: ../settings/main.c:1632
 msgid "Version information"
 msgstr "Informació de la versió"
 
-#: ../settings/main.c:1642
+#: ../settings/main.c:1649
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Feu «%s --help» per veure l'ús."
 
-#: ../settings/main.c:1654
+#: ../settings/main.c:1661
 msgid "The Xfce development team. All rights reserved."
 msgstr "L'equip de desenvolupament de Xfce. Tots els drets reservats."
 
-#: ../settings/main.c:1655
+#: ../settings/main.c:1662
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Envieu els errors a <%s>."
 
-#: ../settings/main.c:1662
+#: ../settings/main.c:1669
 msgid "Desktop Settings"
 msgstr "Ajustaments de l'escriptori"
 
-#: ../settings/main.c:1664
+#: ../settings/main.c:1671
 msgid "Unable to contact settings server"
 msgstr "No s’ha pogut contactar amb el servidor d'ajustaments"
 
@@ -237,7 +237,9 @@ msgstr "Augmenta o disminueix la saturació del color de la imatge final"
 msgid ""
 "Number of minutes before a different background is randomly selected from "
 "the list."
-msgstr "Nombre de minuts abans que se seleccioni aleatòriament un nou fons de pantalla de la llista."
+msgstr ""
+"Nombre de minuts abans que se seleccioni aleatòriament un nou fons de "
+"pantalla de la llista."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Remove the selected image(s) from the list"
@@ -318,13 +320,18 @@ msgstr "Degradat vertical"
 msgid ""
 "When multiple monitors are present, select this option to stretch the "
 "current background over all of them."
-msgstr "Quan empreu múltiples monitors, seleccioneu aquesta opció per ajustar el fons de pantalla actual al llarg de tots ells."
+msgstr ""
+"Quan empreu múltiples monitors, seleccioneu aquesta opció per ajustar el "
+"fons de pantalla actual al llarg de tots ells."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
 msgid ""
 "While in image list mode, select this option to automatically select a "
 "different background from the image list after a set number of minutes."
 msgstr ""
+"Seleccioneu aquesta opció, quan esteu en el mode de llista, per seleccionar "
+"automàticament una fons diferent de la llista d'imatges després d'un número "
+"de minuts donats."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:36
 #: ../settings/xfdesktop-settings-ui.glade.h:43
@@ -371,7 +378,7 @@ msgstr "B_otó:"
 msgid "Control"
 msgstr "Control"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:782
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:789
 msgid "Desktop"
 msgstr "Escriptori"
 
@@ -423,7 +430,9 @@ msgstr "Dreta"
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
-msgstr "Seleccioneu aquesta opció per mostrar les miniatures dels fitxers previsualitzables de l'escriptori generades automàticament."
+msgstr ""
+"Seleccioneu aquesta opció per mostrar les miniatures dels fitxers "
+"previsualitzables de l'escriptori generades automàticament."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:25
 msgid "Set desktop background and menu and icon behavior"
@@ -611,13 +620,13 @@ msgstr "Sup_rimeix l'espai de treball %d"
 msgid "_Remove Workspace '%s'"
 msgstr "Sup_rimeix l'espai de treball «%s»"
 
-#: ../src/xfce-desktop.c:1068
+#: ../src/xfce-desktop.c:1078
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr ""
 "No s'han pogut carregar les imatges de la llista d'imatges de fons «%s»"
 
-#: ../src/xfce-desktop.c:1070
+#: ../src/xfce-desktop.c:1080
 msgid "Desktop Error"
 msgstr "Error de l'escriptori"
 
@@ -639,9 +648,9 @@ msgstr ""
 "Ja existeix un fitxer amb el nom indicat. Elimineu-lo o canvieu-li el nom,"
 
 #: ../src/xfdesktop-file-icon-manager.c:624
-#: ../src/xfdesktop-file-icon-manager.c:668 ../src/xfdesktop-file-utils.c:878
-#: ../src/xfdesktop-file-utils.c:893 ../src/xfdesktop-file-utils.c:925
-#: ../src/xfdesktop-file-utils.c:939
+#: ../src/xfdesktop-file-icon-manager.c:668 ../src/xfdesktop-file-utils.c:863
+#: ../src/xfdesktop-file-utils.c:878 ../src/xfdesktop-file-utils.c:910
+#: ../src/xfdesktop-file-utils.c:924
 msgid "Trash Error"
 msgstr "Error a la paperera"
 
@@ -651,12 +660,12 @@ msgid "The selected files could not be trashed"
 msgstr "No s'ha pogut esborrar els fitxers seleccionats"
 
 #: ../src/xfdesktop-file-icon-manager.c:626
-#: ../src/xfdesktop-file-icon-manager.c:670 ../src/xfdesktop-file-utils.c:727
-#: ../src/xfdesktop-file-utils.c:777 ../src/xfdesktop-file-utils.c:836
-#: ../src/xfdesktop-file-utils.c:994 ../src/xfdesktop-file-utils.c:1050
-#: ../src/xfdesktop-file-utils.c:1100 ../src/xfdesktop-file-utils.c:1150
-#: ../src/xfdesktop-file-utils.c:1227 ../src/xfdesktop-file-utils.c:1288
-#: ../src/xfdesktop-file-utils.c:1361 ../src/xfdesktop-file-utils.c:1439
+#: ../src/xfdesktop-file-icon-manager.c:670 ../src/xfdesktop-file-utils.c:762
+#: ../src/xfdesktop-file-utils.c:821 ../src/xfdesktop-file-utils.c:979
+#: ../src/xfdesktop-file-utils.c:1035 ../src/xfdesktop-file-utils.c:1085
+#: ../src/xfdesktop-file-utils.c:1135 ../src/xfdesktop-file-utils.c:1212
+#: ../src/xfdesktop-file-utils.c:1273 ../src/xfdesktop-file-utils.c:1346
+#: ../src/xfdesktop-file-utils.c:1424
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
@@ -673,11 +682,10 @@ msgstr "No s'ha pogut executar «%s»:"
 
 #: ../src/xfdesktop-file-icon-manager.c:772
 #: ../src/xfdesktop-file-icon-manager.c:1033
-#: ../src/xfdesktop-file-icon-manager.c:1350 ../src/xfdesktop-file-utils.c:710
-#: ../src/xfdesktop-file-utils.c:725 ../src/xfdesktop-file-utils.c:1133
-#: ../src/xfdesktop-file-utils.c:1148 ../src/xfdesktop-file-utils.c:1200
-#: ../src/xfdesktop-file-utils.c:1225 ../src/xfdesktop-file-utils.c:1271
-#: ../src/xfdesktop-file-utils.c:1286
+#: ../src/xfdesktop-file-icon-manager.c:1350 ../src/xfdesktop-file-utils.c:707
+#: ../src/xfdesktop-file-utils.c:1118 ../src/xfdesktop-file-utils.c:1133
+#: ../src/xfdesktop-file-utils.c:1185 ../src/xfdesktop-file-utils.c:1210
+#: ../src/xfdesktop-file-utils.c:1256 ../src/xfdesktop-file-utils.c:1271
 msgid "Launch Error"
 msgstr "Error durant el llançament"
 
@@ -818,31 +826,31 @@ msgstr "%x a les %X"
 msgid "Unknown"
 msgstr "Desconegut"
 
-#: ../src/xfdesktop-file-utils.c:711 ../src/xfdesktop-file-utils.c:726
+#: ../src/xfdesktop-file-utils.c:708
 msgid "The folder could not be opened"
 msgstr "No s'ha pogut obrir la carpeta"
 
-#: ../src/xfdesktop-file-utils.c:760 ../src/xfdesktop-file-utils.c:775
+#: ../src/xfdesktop-file-utils.c:745 ../src/xfdesktop-file-utils.c:760
 msgid "Rename Error"
 msgstr "Error en canviar el nom"
 
-#: ../src/xfdesktop-file-utils.c:761 ../src/xfdesktop-file-utils.c:776
+#: ../src/xfdesktop-file-utils.c:746 ../src/xfdesktop-file-utils.c:761
 msgid "The file could not be renamed"
 msgstr "No s'ha pogut canviar el nom del fitxer"
 
-#: ../src/xfdesktop-file-utils.c:819 ../src/xfdesktop-file-utils.c:834
+#: ../src/xfdesktop-file-utils.c:804 ../src/xfdesktop-file-utils.c:819
 msgid "Delete Error"
 msgstr "Error durant la supressió"
 
-#: ../src/xfdesktop-file-utils.c:820 ../src/xfdesktop-file-utils.c:835
+#: ../src/xfdesktop-file-utils.c:805 ../src/xfdesktop-file-utils.c:820
 msgid "The selected files could not be deleted"
 msgstr "No s'ha pogut suprimir els fitxers seleccionats"
 
-#: ../src/xfdesktop-file-utils.c:879 ../src/xfdesktop-file-utils.c:894
+#: ../src/xfdesktop-file-utils.c:864 ../src/xfdesktop-file-utils.c:879
 msgid "The selected files could not be moved to the trash"
 msgstr "No s'ha pogut moure a la paperera els fitxers seleccionats"
 
-#: ../src/xfdesktop-file-utils.c:895 ../src/xfdesktop-file-utils.c:941
+#: ../src/xfdesktop-file-utils.c:880 ../src/xfdesktop-file-utils.c:926
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
@@ -850,54 +858,54 @@ msgstr ""
 "Aquesta característica demana l'ajut del gestor de la paperera (com per "
 "exemple, el que proveeix el Thunar)."
 
-#: ../src/xfdesktop-file-utils.c:926 ../src/xfdesktop-file-utils.c:940
+#: ../src/xfdesktop-file-utils.c:911 ../src/xfdesktop-file-utils.c:925
 msgid "Could not empty the trash"
 msgstr "No s'ha pogut buidar la paperera"
 
-#: ../src/xfdesktop-file-utils.c:977 ../src/xfdesktop-file-utils.c:992
+#: ../src/xfdesktop-file-utils.c:962 ../src/xfdesktop-file-utils.c:977
 msgid "Create File Error"
 msgstr "Error a la creació del fitxer"
 
-#: ../src/xfdesktop-file-utils.c:978 ../src/xfdesktop-file-utils.c:993
+#: ../src/xfdesktop-file-utils.c:963 ../src/xfdesktop-file-utils.c:978
 msgid "Could not create a new file"
 msgstr "No s'ha pogut crear un fitxer nou"
 
-#: ../src/xfdesktop-file-utils.c:1033 ../src/xfdesktop-file-utils.c:1048
+#: ../src/xfdesktop-file-utils.c:1018 ../src/xfdesktop-file-utils.c:1033
 msgid "Create Document Error"
 msgstr "Error a la creació del document"
 
-#: ../src/xfdesktop-file-utils.c:1034 ../src/xfdesktop-file-utils.c:1049
+#: ../src/xfdesktop-file-utils.c:1019 ../src/xfdesktop-file-utils.c:1034
 msgid "Could not create a new document from the template"
 msgstr "No s'ha pogut crear un nou document a partir de la plantilla"
 
-#: ../src/xfdesktop-file-utils.c:1083 ../src/xfdesktop-file-utils.c:1098
+#: ../src/xfdesktop-file-utils.c:1068 ../src/xfdesktop-file-utils.c:1083
 msgid "File Properties Error"
 msgstr "Error a les propietats del fitxer"
 
-#: ../src/xfdesktop-file-utils.c:1084 ../src/xfdesktop-file-utils.c:1099
+#: ../src/xfdesktop-file-utils.c:1069 ../src/xfdesktop-file-utils.c:1084
 msgid "The file properties dialog could not be opened"
 msgstr "No s'ha pogut obrir el diàleg de propietats del fitxer"
 
-#: ../src/xfdesktop-file-utils.c:1134 ../src/xfdesktop-file-utils.c:1149
+#: ../src/xfdesktop-file-utils.c:1119 ../src/xfdesktop-file-utils.c:1134
 msgid "The file could not be opened"
 msgstr "No s'ha pogut obrir el fitxer"
 
-#: ../src/xfdesktop-file-utils.c:1197 ../src/xfdesktop-file-utils.c:1222
+#: ../src/xfdesktop-file-utils.c:1182 ../src/xfdesktop-file-utils.c:1207
 #, c-format
 msgid "Failed to run \"%s\""
 msgstr "No s'ha pogut executar \"%s\""
 
-#: ../src/xfdesktop-file-utils.c:1272 ../src/xfdesktop-file-utils.c:1287
+#: ../src/xfdesktop-file-utils.c:1257 ../src/xfdesktop-file-utils.c:1272
 msgid "The application chooser could not be opened"
 msgstr "No es pot obrir el seleccionador d'aplicacions"
 
-#: ../src/xfdesktop-file-utils.c:1345 ../src/xfdesktop-file-utils.c:1359
-#: ../src/xfdesktop-file-utils.c:1421 ../src/xfdesktop-file-utils.c:1437
+#: ../src/xfdesktop-file-utils.c:1330 ../src/xfdesktop-file-utils.c:1344
+#: ../src/xfdesktop-file-utils.c:1406 ../src/xfdesktop-file-utils.c:1422
 msgid "Transfer Error"
 msgstr "Error en la transferència"
 
-#: ../src/xfdesktop-file-utils.c:1346 ../src/xfdesktop-file-utils.c:1360
-#: ../src/xfdesktop-file-utils.c:1422 ../src/xfdesktop-file-utils.c:1438
+#: ../src/xfdesktop-file-utils.c:1331 ../src/xfdesktop-file-utils.c:1345
+#: ../src/xfdesktop-file-utils.c:1407 ../src/xfdesktop-file-utils.c:1423
 msgid "The file transfer could not be performed"
 msgstr "La transferència de fitxers no s'ha pogut realitzar"
 
