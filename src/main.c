@@ -335,8 +335,8 @@ main(int argc, char **argv)
 
         return (already_running ? 0 : 1);
     }
-    
-    g_print("%s[%d]: starting up\n", PACKAGE, getpid());
+
+    DBG ("starting up");
 
     sm_client = xfce_sm_client_get();
     xfce_sm_client_set_restart_style(sm_client, XFCE_SM_CLIENT_RESTART_IMMEDIATELY);
