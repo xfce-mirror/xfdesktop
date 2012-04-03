@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-19 14:51+0000\n"
+"POT-Creation-Date: 2012-04-03 08:39+0000\n"
 "PO-Revision-Date: 2009-10-14 15:09+0200\n"
 "Last-Translator: Ertuğrul HAZAR <ertugrulhazar@gmail.com>\n"
 "Language-Team: Turkish <turkce@pardus.org.tr>\n"
@@ -32,7 +32,7 @@ msgid "Backdrop list file is not valid"
 msgstr "Arkaplan listesi dosyası geçersiz"
 
 #. no need to escape markup; it's already done for us
-#: ../settings/main.c:165
+#: ../settings/main.c:166
 #, c-format
 msgid ""
 "%s\n"
@@ -41,37 +41,37 @@ msgstr ""
 "%s\n"
 "<i>Boyut: %dx%d</i>"
 
-#: ../settings/main.c:292 ../src/xfdesktop-special-file-icon.c:271
+#: ../settings/main.c:299 ../src/xfdesktop-special-file-icon.c:271
 #: ../src/xfdesktop-special-file-icon.c:434
 msgid "Home"
 msgstr "Ev"
 
-#: ../settings/main.c:294
+#: ../settings/main.c:301
 msgid "Filesystem"
 msgstr "Dosya sistemi"
 
-#: ../settings/main.c:296
+#: ../settings/main.c:303
 msgid "Trash"
 msgstr "Çöp"
 
-#: ../settings/main.c:298
+#: ../settings/main.c:305
 msgid "Removable Devices"
 msgstr "Çıkartılabilir Aygıt"
 
-#: ../settings/main.c:478
+#: ../settings/main.c:485
 #, c-format
 msgid "Cannot create backdrop list \"%s\""
 msgstr "Arka plan listesi oluşturulamadı: \"%s\""
 
-#: ../settings/main.c:482 ../settings/main.c:855
+#: ../settings/main.c:489 ../settings/main.c:862
 msgid "Backdrop List Error"
 msgstr "Zemin Listesi Hatası"
 
-#: ../settings/main.c:507
+#: ../settings/main.c:514
 msgid "Create/Load Backdrop List"
 msgstr "Arka plan listesi oluştur"
 
-#: ../settings/main.c:531
+#: ../settings/main.c:538
 #, c-format
 msgid ""
 "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
@@ -79,91 +79,91 @@ msgstr ""
 "\"%s\" dosyası geçerli zemin dosyası değil. Üzerine yazmak istediğinize emin "
 "misiniz?"
 
-#: ../settings/main.c:536
+#: ../settings/main.c:543
 msgid "Invalid List File"
 msgstr "Geçersiz Liste Dosyaları"
 
-#: ../settings/main.c:539
+#: ../settings/main.c:546
 msgid "Overwriting the file will cause its contents to be lost."
 msgstr "Dosyanın üstüne yazmak veri kayıplarına sebep olabilir"
 
-#: ../settings/main.c:541
+#: ../settings/main.c:548
 msgid "Replace"
 msgstr "Değiştir"
 
-#: ../settings/main.c:851
+#: ../settings/main.c:858
 #, c-format
 msgid "Failed to write backdrop list to \"%s\""
 msgstr "\"%s\" alanına zemin listesi yazılamadı"
 
-#: ../settings/main.c:878
+#: ../settings/main.c:885
 msgid "Add Image File(s)"
 msgstr "Resim Dosyaları Ekle"
 
-#: ../settings/main.c:887
+#: ../settings/main.c:894
 msgid "Image files"
 msgstr "Resim dosyaları"
 
-#: ../settings/main.c:892
+#: ../settings/main.c:899
 msgid "All files"
 msgstr "Tüm dosyalar"
 
-#: ../settings/main.c:1349
+#: ../settings/main.c:1356
 #, c-format
 msgid "Screen %d, Monitor %d (%s)"
 msgstr "Ekran %d, Monitör %d (%s)"
 
-#: ../settings/main.c:1353
+#: ../settings/main.c:1360
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "Ekran %d, Monitör %d"
 
-#: ../settings/main.c:1356
+#: ../settings/main.c:1363
 #, c-format
 msgid "Screen %d"
 msgstr "Ekran %d"
 
-#: ../settings/main.c:1361
+#: ../settings/main.c:1368
 #, c-format
 msgid "Monitor %d (%s)"
 msgstr "Ekran %d (%s)"
 
-#: ../settings/main.c:1365
+#: ../settings/main.c:1372
 #, c-format
 msgid "Monitor %d"
 msgstr "Monitör %d"
 
-#: ../settings/main.c:1624
+#: ../settings/main.c:1631
 msgid "Settings manager socket"
 msgstr "Ayarlar yöneticisi yuvası"
 
-#: ../settings/main.c:1624
+#: ../settings/main.c:1631
 msgid "SOCKET ID"
 msgstr "YUVA ID'Sİ"
 
-#: ../settings/main.c:1625
+#: ../settings/main.c:1632
 msgid "Version information"
 msgstr "Sürüm bilgisi"
 
-#: ../settings/main.c:1642
+#: ../settings/main.c:1649
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Kullanım için '%s --help' yazın."
 
-#: ../settings/main.c:1654
+#: ../settings/main.c:1661
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce geliştirici takımı. Tüm hakları saklıdır."
 
-#: ../settings/main.c:1655
+#: ../settings/main.c:1662
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Lütfen hataları bize bildirin: <%s>."
 
-#: ../settings/main.c:1662
+#: ../settings/main.c:1669
 msgid "Desktop Settings"
 msgstr "Masaüstü Ayarları"
 
-#: ../settings/main.c:1664
+#: ../settings/main.c:1671
 msgid "Unable to contact settings server"
 msgstr "Xfce ayar sunucusu ile bağlantı kurulamıyor"
 
@@ -239,10 +239,11 @@ msgid "Increase or decrease the color saturation of the final image"
 msgstr "Son resmin doygunluğunu yükselt veya azalt"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
+#, fuzzy
 msgid ""
 "Number of minutes before a different background is randomly selected from "
 "the list."
-msgstr ""
+msgstr "Farklı bir arkaplandan önceki dakikalar listeden rastgele seçilir."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Remove the selected image(s) from the list"
@@ -321,16 +322,18 @@ msgid "Vertical gradient"
 msgstr "Dikey eğim"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
+#, fuzzy
 msgid ""
 "When multiple monitors are present, select this option to stretch the "
 "current background over all of them."
-msgstr ""
+msgstr "Birden fazla monitör olduğunda, kullanılan arkaplanı tüm monitörlerde germek için bu seçeneği seçin"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
+#, fuzzy
 msgid ""
 "While in image list mode, select this option to automatically select a "
 "different background from the image list after a set number of minutes."
-msgstr ""
+msgstr "Resim liste modunda iken, resim listesinden otomatik olarak farklı bir arkaplan seçmek için bu seçeneği işaretleyin."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:36
 #: ../settings/xfdesktop-settings-ui.glade.h:43
@@ -338,8 +341,9 @@ msgid "Zoomed"
 msgstr "Yakınlaştırılmış"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:37
+#, fuzzy
 msgid "_Change the background (in minutes):"
-msgstr ""
+msgstr "Arkaplanı _değiştir(dakikalar içinde):"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:38
 msgid "_None"
@@ -377,7 +381,7 @@ msgstr "_Düğme"
 msgid "Control"
 msgstr "Control"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:782
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:792
 msgid "Desktop"
 msgstr "Masaüstü"
 
@@ -426,10 +430,11 @@ msgid "Right"
 msgstr "Sağ"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:24
+#, fuzzy
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
-msgstr ""
+msgstr "Masaüstünde önizlenebilir dosyaları görüntülemek için bu seçeneği seçin."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:25
 msgid "Set desktop background and menu and icon behavior"
@@ -527,8 +532,9 @@ msgid "Pop up the window list (at the current mouse position)"
 msgstr "    --windowlist  Pencere listesini aç (fare imleci konumunda)\n"
 
 #: ../src/main.c:248
+#, fuzzy
 msgid "Automatically arrange all the icons on the desktop"
-msgstr ""
+msgstr "Masaüstü simgerlerini otomatik olarak sırala"
 
 #: ../src/main.c:250
 #, fuzzy
@@ -620,12 +626,12 @@ msgstr "Çalışma alanı %d'yi _Kaldır"
 msgid "_Remove Workspace '%s'"
 msgstr "Çalışma alanı '%s'i _Kaldır"
 
-#: ../src/xfce-desktop.c:1068
+#: ../src/xfce-desktop.c:1081
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "\"%s\" dosyasının listeden yüklenmesi olanaksız:"
 
-#: ../src/xfce-desktop.c:1070
+#: ../src/xfce-desktop.c:1083
 msgid "Desktop Error"
 msgstr "Masaüstü Hatası"
 
@@ -646,9 +652,9 @@ msgid ""
 msgstr "Aynı isimde bir dosya zaten var. Lütfen silin veya yeniden adlandırın."
 
 #: ../src/xfdesktop-file-icon-manager.c:624
-#: ../src/xfdesktop-file-icon-manager.c:668 ../src/xfdesktop-file-utils.c:878
-#: ../src/xfdesktop-file-utils.c:893 ../src/xfdesktop-file-utils.c:925
-#: ../src/xfdesktop-file-utils.c:939
+#: ../src/xfdesktop-file-icon-manager.c:668 ../src/xfdesktop-file-utils.c:863
+#: ../src/xfdesktop-file-utils.c:878 ../src/xfdesktop-file-utils.c:910
+#: ../src/xfdesktop-file-utils.c:924
 msgid "Trash Error"
 msgstr "Çöp Hatası"
 
@@ -658,12 +664,12 @@ msgid "The selected files could not be trashed"
 msgstr "Seçilen dosyalar silinemedi"
 
 #: ../src/xfdesktop-file-icon-manager.c:626
-#: ../src/xfdesktop-file-icon-manager.c:670 ../src/xfdesktop-file-utils.c:727
-#: ../src/xfdesktop-file-utils.c:777 ../src/xfdesktop-file-utils.c:836
-#: ../src/xfdesktop-file-utils.c:994 ../src/xfdesktop-file-utils.c:1050
-#: ../src/xfdesktop-file-utils.c:1100 ../src/xfdesktop-file-utils.c:1150
-#: ../src/xfdesktop-file-utils.c:1227 ../src/xfdesktop-file-utils.c:1288
-#: ../src/xfdesktop-file-utils.c:1361 ../src/xfdesktop-file-utils.c:1439
+#: ../src/xfdesktop-file-icon-manager.c:670 ../src/xfdesktop-file-utils.c:762
+#: ../src/xfdesktop-file-utils.c:821 ../src/xfdesktop-file-utils.c:979
+#: ../src/xfdesktop-file-utils.c:1035 ../src/xfdesktop-file-utils.c:1085
+#: ../src/xfdesktop-file-utils.c:1135 ../src/xfdesktop-file-utils.c:1212
+#: ../src/xfdesktop-file-utils.c:1273 ../src/xfdesktop-file-utils.c:1346
+#: ../src/xfdesktop-file-utils.c:1424
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
@@ -678,11 +684,10 @@ msgstr "\"%s\" çalıştırılamıyor:"
 
 #: ../src/xfdesktop-file-icon-manager.c:772
 #: ../src/xfdesktop-file-icon-manager.c:1033
-#: ../src/xfdesktop-file-icon-manager.c:1350 ../src/xfdesktop-file-utils.c:710
-#: ../src/xfdesktop-file-utils.c:725 ../src/xfdesktop-file-utils.c:1133
-#: ../src/xfdesktop-file-utils.c:1148 ../src/xfdesktop-file-utils.c:1200
-#: ../src/xfdesktop-file-utils.c:1225 ../src/xfdesktop-file-utils.c:1271
-#: ../src/xfdesktop-file-utils.c:1286
+#: ../src/xfdesktop-file-icon-manager.c:1350 ../src/xfdesktop-file-utils.c:707
+#: ../src/xfdesktop-file-utils.c:1118 ../src/xfdesktop-file-utils.c:1133
+#: ../src/xfdesktop-file-utils.c:1185 ../src/xfdesktop-file-utils.c:1210
+#: ../src/xfdesktop-file-utils.c:1256 ../src/xfdesktop-file-utils.c:1271
 msgid "Launch Error"
 msgstr "Çalıştırma Hatası"
 
@@ -762,8 +767,9 @@ msgid "_Rename..."
 msgstr "_Yeniden Adlandır..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1724
+#, fuzzy
 msgid "_Arrange Desktop Icons"
-msgstr ""
+msgstr "Masaüstü Simgelerini _Sırala"
 
 #: ../src/xfdesktop-file-icon-manager.c:1734
 msgid "Desktop _Settings..."
@@ -826,31 +832,31 @@ msgstr "%x %X'de"
 msgid "Unknown"
 msgstr "Bilinmeyen"
 
-#: ../src/xfdesktop-file-utils.c:711 ../src/xfdesktop-file-utils.c:726
+#: ../src/xfdesktop-file-utils.c:708
 msgid "The folder could not be opened"
 msgstr "Dizin açılamadı."
 
-#: ../src/xfdesktop-file-utils.c:760 ../src/xfdesktop-file-utils.c:775
+#: ../src/xfdesktop-file-utils.c:745 ../src/xfdesktop-file-utils.c:760
 msgid "Rename Error"
 msgstr "Yeniden Adlandırma Hatası"
 
-#: ../src/xfdesktop-file-utils.c:761 ../src/xfdesktop-file-utils.c:776
+#: ../src/xfdesktop-file-utils.c:746 ../src/xfdesktop-file-utils.c:761
 msgid "The file could not be renamed"
 msgstr "Dosya yeniden adlandırılamadı"
 
-#: ../src/xfdesktop-file-utils.c:819 ../src/xfdesktop-file-utils.c:834
+#: ../src/xfdesktop-file-utils.c:804 ../src/xfdesktop-file-utils.c:819
 msgid "Delete Error"
 msgstr "Silme Hatası"
 
-#: ../src/xfdesktop-file-utils.c:820 ../src/xfdesktop-file-utils.c:835
+#: ../src/xfdesktop-file-utils.c:805 ../src/xfdesktop-file-utils.c:820
 msgid "The selected files could not be deleted"
 msgstr "Seçili dosyalar silinemedi"
 
-#: ../src/xfdesktop-file-utils.c:879 ../src/xfdesktop-file-utils.c:894
+#: ../src/xfdesktop-file-utils.c:864 ../src/xfdesktop-file-utils.c:879
 msgid "The selected files could not be moved to the trash"
 msgstr "Seçili dosyalar çöpe taşınamadı"
 
-#: ../src/xfdesktop-file-utils.c:895 ../src/xfdesktop-file-utils.c:941
+#: ../src/xfdesktop-file-utils.c:880 ../src/xfdesktop-file-utils.c:926
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
@@ -858,54 +864,54 @@ msgstr ""
 "Bu özellik (Thunar'ın sağladığına benzer) bir geri dönüşüm servisine ihtiyaç "
 "duyar."
 
-#: ../src/xfdesktop-file-utils.c:926 ../src/xfdesktop-file-utils.c:940
+#: ../src/xfdesktop-file-utils.c:911 ../src/xfdesktop-file-utils.c:925
 msgid "Could not empty the trash"
 msgstr "Çöp Kutusu boşaltılamadı"
 
-#: ../src/xfdesktop-file-utils.c:977 ../src/xfdesktop-file-utils.c:992
+#: ../src/xfdesktop-file-utils.c:962 ../src/xfdesktop-file-utils.c:977
 msgid "Create File Error"
 msgstr "Dosya Oluşturma Hatası"
 
-#: ../src/xfdesktop-file-utils.c:978 ../src/xfdesktop-file-utils.c:993
+#: ../src/xfdesktop-file-utils.c:963 ../src/xfdesktop-file-utils.c:978
 msgid "Could not create a new file"
 msgstr "Yeni dosya oluşturulamadı"
 
-#: ../src/xfdesktop-file-utils.c:1033 ../src/xfdesktop-file-utils.c:1048
+#: ../src/xfdesktop-file-utils.c:1018 ../src/xfdesktop-file-utils.c:1033
 msgid "Create Document Error"
 msgstr "Dökuman Oluşturma Hatası"
 
-#: ../src/xfdesktop-file-utils.c:1034 ../src/xfdesktop-file-utils.c:1049
+#: ../src/xfdesktop-file-utils.c:1019 ../src/xfdesktop-file-utils.c:1034
 msgid "Could not create a new document from the template"
 msgstr "Şablondan, yeni bir dosya oluşturulamadı"
 
-#: ../src/xfdesktop-file-utils.c:1083 ../src/xfdesktop-file-utils.c:1098
+#: ../src/xfdesktop-file-utils.c:1068 ../src/xfdesktop-file-utils.c:1083
 msgid "File Properties Error"
 msgstr "Dosya Seçenekleri Hatası"
 
-#: ../src/xfdesktop-file-utils.c:1084 ../src/xfdesktop-file-utils.c:1099
+#: ../src/xfdesktop-file-utils.c:1069 ../src/xfdesktop-file-utils.c:1084
 msgid "The file properties dialog could not be opened"
 msgstr "Dosya özellikleri penceresi açılamadı"
 
-#: ../src/xfdesktop-file-utils.c:1134 ../src/xfdesktop-file-utils.c:1149
+#: ../src/xfdesktop-file-utils.c:1119 ../src/xfdesktop-file-utils.c:1134
 msgid "The file could not be opened"
 msgstr "Dosya açılamadı"
 
-#: ../src/xfdesktop-file-utils.c:1197 ../src/xfdesktop-file-utils.c:1222
+#: ../src/xfdesktop-file-utils.c:1182 ../src/xfdesktop-file-utils.c:1207
 #, c-format
 msgid "Failed to run \"%s\""
 msgstr "\"%s\" başlatılamadı:"
 
-#: ../src/xfdesktop-file-utils.c:1272 ../src/xfdesktop-file-utils.c:1287
+#: ../src/xfdesktop-file-utils.c:1257 ../src/xfdesktop-file-utils.c:1272
 msgid "The application chooser could not be opened"
 msgstr "Uygulama seçicisi açılamadı."
 
-#: ../src/xfdesktop-file-utils.c:1345 ../src/xfdesktop-file-utils.c:1359
-#: ../src/xfdesktop-file-utils.c:1421 ../src/xfdesktop-file-utils.c:1437
+#: ../src/xfdesktop-file-utils.c:1330 ../src/xfdesktop-file-utils.c:1344
+#: ../src/xfdesktop-file-utils.c:1406 ../src/xfdesktop-file-utils.c:1422
 msgid "Transfer Error"
 msgstr "Taşıma Hatası"
 
-#: ../src/xfdesktop-file-utils.c:1346 ../src/xfdesktop-file-utils.c:1360
-#: ../src/xfdesktop-file-utils.c:1422 ../src/xfdesktop-file-utils.c:1438
+#: ../src/xfdesktop-file-utils.c:1331 ../src/xfdesktop-file-utils.c:1345
+#: ../src/xfdesktop-file-utils.c:1407 ../src/xfdesktop-file-utils.c:1423
 msgid "The file transfer could not be performed"
 msgstr "Dosya taşıma işlemi gerçekleştirilemedi"
 
