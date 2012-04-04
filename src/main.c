@@ -357,7 +357,7 @@ main(int argc, char **argv)
         g_error_free(error);
         error = NULL;
     } else
-        channel = xfconf_channel_new(XFDESKTOP_CHANNEL);
+        channel = xfconf_channel_get(XFDESKTOP_CHANNEL);
 
     nscreens = gdk_display_get_n_screens(gdpy);
     desktops = g_new0(GtkWidget *, nscreens);

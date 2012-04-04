@@ -672,14 +672,6 @@ xfdesktop_icon_view_init(XfdesktopIconView *icon_view)
     g_object_set(G_OBJECT(icon_view), "has-tooltip", TRUE, NULL);
     g_signal_connect(G_OBJECT(icon_view), "query-tooltip",
                      G_CALLBACK(xfdesktop_icon_view_show_tooltip), NULL);
-
-    icon_view->priv->channel = xfconf_channel_new (XFDESKTOP_CHANNEL);
-
-    xfconf_g_property_bind(icon_view->priv->channel,
-                           "/desktop-icons/single-click",
-                           G_TYPE_BOOLEAN,
-                           G_OBJECT(icon_view),
-                           "single_click");
     
     GTK_WIDGET_SET_FLAGS(GTK_WIDGET(icon_view), GTK_NO_WINDOW);
 }
@@ -702,11 +694,9 @@ xfdesktop_icon_view_finalize(GObject *obj)
     g_list_free(icon_view->priv->pending_icons);
     /* icon_view->priv->icons should be cleared in _unrealize() */
 
-    if (icon_view->priv->channel) {
-        g_object_unref (icon_view->priv->channel);
+    if (icon_view->priv->channel)
         icon_view->priv->channel = NULL;
-    }
-    
+
     G_OBJECT_CLASS(xfdesktop_icon_view_parent_class)->finalize(obj);
 }
 
@@ -3387,6 +3377,14 @@ xfdesktop_icon_view_new(XfdesktopIconViewManager *manager)
     
     icon_view = g_object_new(XFDESKTOP_TYPE_ICON_VIEW, NULL);
     icon_view->priv->manager = manager;
+
+    icon_view->priv->channel = xfconf_channel_get(XFDESKTOP_CHANNEL);
+
+    xfconf_g_property_bind(icon_view->priv->channel,
+                           "/desktop-icons/single-click",
+                           G_TYPE_BOOLEAN,
+                           G_OBJECT(icon_view),
+                           "single_click");
     
     return GTK_WIDGET(icon_view);
 }
