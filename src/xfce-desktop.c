@@ -671,6 +671,7 @@ xfce_desktop_init(XfceDesktop *desktop)
     
     gtk_window_set_type_hint(GTK_WINDOW(desktop), GDK_WINDOW_TYPE_HINT_DESKTOP);
     gtk_window_set_accept_focus(GTK_WINDOW(desktop), FALSE);
+    gtk_window_set_resizable(GTK_WINDOW(desktop), FALSE);
 }
 
 static void
