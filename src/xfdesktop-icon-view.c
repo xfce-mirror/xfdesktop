@@ -878,6 +878,7 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
                 g_signal_emit(G_OBJECT(icon_view), __signals[SIG_ICON_ACTIVATED],
                               0, NULL);
                 xfdesktop_icon_activated(icon);
+                xfdesktop_icon_view_unselect_item(icon_view, icon);
             }
         }
         
@@ -919,6 +920,7 @@ xfdesktop_icon_view_button_release(GtkWidget *widget,
             g_signal_emit(G_OBJECT(icon_view), __signals[SIG_ICON_ACTIVATED],
                           0, NULL);
             xfdesktop_icon_activated(icon);
+            xfdesktop_icon_view_unselect_item(icon_view, icon);
         }
     }
 
@@ -2153,6 +2155,8 @@ xfdesktop_icon_view_real_activate_cursor_item(XfdesktopIconView *icon_view)
 
     g_signal_emit(G_OBJECT(icon_view), __signals[SIG_ICON_ACTIVATED], 0, NULL);
     xfdesktop_icon_activated(icon_view->priv->cursor);
+    xfdesktop_icon_view_unselect_item(icon_view, icon_view->priv->cursor);
+    icon_view->priv->cursor = NULL;
 
     return TRUE;
 }
