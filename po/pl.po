@@ -4,21 +4,22 @@
 # Robert Kurowski <koorek@o2.pl>, 2005.
 # Piotr Maliński <riklaunim@gmail.com>, 2006.
 # Szymon Kałasz <szymon_maestro@gazeta.pl>, 2006.
-# Piotr Sokół <psokol@jabster.pl>, 2009, 2011.
-# 
+# Piotr Sokół <psokol@jabster.pl>, 2009, 2011, 2012.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.8.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-07 10:51+0000\n"
-"PO-Revision-Date: 2011-02-20 11:34+0100\n"
+"POT-Creation-Date: 2012-04-08 09:51+0000\n"
+"PO-Revision-Date: 2012-04-09 13:56+0200\n"
 "Last-Translator: Piotr Sokół <psokol@jabster.pl>\n"
-"Language-Team: Polish <>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Language-Team: polski <>\n"
 "Language: \n"
-"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : ((n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20)) ? 1 : 2));\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bits\n"
+"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : ((n%10>=2 && n%10<=4 && (n"
+"%100<10 || n%100>=20)) ? 1 : 2));\n"
 
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
 #, c-format
@@ -235,7 +236,9 @@ msgstr "Reguluje nasycenie tła pulpitu"
 msgid ""
 "Number of minutes before a different background is randomly selected from "
 "the list."
-msgstr "Określa czas wyrażony w minutach, po którym kolejny obraz wybrany w sposób losowy, zostanie umieszczony w tle pulpitu"
+msgstr ""
+"Określa czas wyrażony w minutach, po którym kolejny obraz wybrany w sposób "
+"losowy, zostanie umieszczony w tle pulpitu"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Remove the selected image(s) from the list"
@@ -287,9 +290,8 @@ msgstr ""
 "kolorem"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
-#, fuzzy
 msgid "St_retch this background across all monitors."
-msgstr "Rozciągnij jedno tło na _wszystkie monitory"
+msgstr "Rozciągnięcie tła na _wszystkie ekrany"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
 msgid "St_yle:"
@@ -319,13 +321,15 @@ msgstr "Gradient pionowy"
 msgid ""
 "When multiple monitors are present, select this option to stretch the "
 "current background over all of them."
-msgstr ""
+msgstr "Wyświetla bieżące tło pulpitu na wszystkich ekranach"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
 msgid ""
 "While in image list mode, select this option to automatically select a "
 "different background from the image list after a set number of minutes."
-msgstr "Zmienia obraz tła ekranu na inny pochodzący z listy obrazów, po określonym czasie"
+msgstr ""
+"Zmienia obraz tła ekranu na inny pochodzący z listy obrazów, po określonym "
+"czasie"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:36
 #: ../settings/xfdesktop-settings-ui.glade.h:43
@@ -369,9 +373,8 @@ msgid "B_utton:"
 msgstr "_Przycisk:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:9
-#, fuzzy
 msgid "Control"
-msgstr "Współpraca"
+msgstr "Sterowanie"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:793
 msgid "Desktop"
@@ -425,7 +428,7 @@ msgstr "Prawy"
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
-msgstr ""
+msgstr "Wyświetla na pulpicie pliki jako miniatury"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:25
 msgid "Set desktop background and menu and icon behavior"
@@ -457,7 +460,7 @@ msgstr "_Przypięte okna tylko w bieżącym obszarze roboczym"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:32
 msgid "Show t_humbnails"
-msgstr ""
+msgstr "Wyświetlanie m_iniatur"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
 msgid "Show workspace _names in list"
@@ -465,7 +468,7 @@ msgstr "_Nazwy obszarów roboczych"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:34
 msgid "Single _click to activate items"
-msgstr ""
+msgstr "Uruchamianie elementów pojedynczym _kliknięciem"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid ""
