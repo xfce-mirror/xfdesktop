@@ -1,7 +1,7 @@
 @SET_MAKE@
 
 SUBDIRS = \
-	backdrops \
+	backgrounds \
 	common \
 	doc \
 	po \

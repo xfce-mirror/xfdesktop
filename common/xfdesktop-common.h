@@ -32,7 +32,7 @@
 #include <X11/Xlib.h>
 
 #define XFDESKTOP_CHANNEL        "xfce4-desktop"
-#define DEFAULT_BACKDROP         DATADIR "/xfce4/backdrops/xfce-stripes.png"
+#define DEFAULT_BACKDROP         DATADIR "/backgrounds/xfce/xfce-blue.jpg"
 #define DEFAULT_BACKDROP_LIST    "xfce4/desktop/backdrop.list"
 #define DEFAULT_ICON_FONT_SIZE   12
 #define DEFAULT_ICON_SIZE        32
