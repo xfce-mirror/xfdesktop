@@ -75,11 +75,10 @@ struct _XfceDesktopMenu
 
     gboolean use_menu_icons;  /* show menu icons? */
 
-    gint idle_id;  /* source id for idled generation */
+    guint idle_id;  /* source id for idled generation */
 };
 
 
-static void _xfce_desktop_menu_free_menudata(XfceDesktopMenu *desktop_menu);
 static GtkIconTheme *_deskmenu_icon_theme = NULL;
 
 static gboolean _generate_menu_idled(gpointer data);
@@ -184,38 +183,19 @@ desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
 static gboolean
 _generate_menu(XfceDesktopMenu *desktop_menu)
 {
-    gboolean ret = TRUE;
     GError *error = NULL;
 
-    _xfce_desktop_menu_free_menudata(desktop_menu);
-
-    /* allocate a menu for the ${XDG_MENU_PREFIX}applications.menu file */
-    desktop_menu->garcon_menu = garcon_menu_new_applications();
-
-    /* make sure the member variable is set to NULL when the object is destroyed */
-    g_object_add_weak_pointer (G_OBJECT (desktop_menu->garcon_menu), 
-                               (gpointer) &desktop_menu->garcon_menu);
+    DBG("Load menu");
 
     if(!garcon_menu_load (desktop_menu->garcon_menu, NULL, &error)) {
         g_warning("Unable to load menu: %s", error->message);
         g_error_free(error);
-        _xfce_desktop_menu_free_menudata(desktop_menu);
         return FALSE;
     }
 
-    g_signal_connect_swapped(desktop_menu->garcon_menu, "reload-required",
-                             G_CALLBACK(xfce_desktop_menu_reload), desktop_menu);
-
-    return ret;
+    return TRUE;
 }
 
-static void
-_xfce_desktop_menu_free_menudata(XfceDesktopMenu *desktop_menu)
-{
-    if(desktop_menu->garcon_menu) {
-        g_object_unref(G_OBJECT(desktop_menu->garcon_menu));
-    }
-}
 
 static gboolean
 _generate_menu_idled(gpointer data)
@@ -235,9 +215,12 @@ xfce_desktop_menu_new(gboolean deferred)
 {
     XfceDesktopMenu *desktop_menu = g_new0(XfceDesktopMenu, 1);
 
-    desktop_menu->use_menu_icons = TRUE;
-
     garcon_set_environment("XFCE");
+
+    desktop_menu->use_menu_icons = TRUE;
+    desktop_menu->garcon_menu = garcon_menu_new_applications();
+    g_signal_connect_swapped(desktop_menu->garcon_menu, "reload-required",
+                             G_CALLBACK(xfce_desktop_menu_reload), desktop_menu);
 
     if(deferred)
         desktop_menu->idle_id = g_idle_add(_generate_menu_idled, desktop_menu);
@@ -339,8 +322,6 @@ xfce_desktop_menu_destroy(XfceDesktopMenu *desktop_menu)
     g_signal_handlers_disconnect_by_func(_deskmenu_icon_theme,
                                          G_CALLBACK(xfce_desktop_menu_reload),
                                          desktop_menu);
-
-    _xfce_desktop_menu_free_menudata(desktop_menu);
 
     if(desktop_menu->garcon_menu) {
         g_signal_handlers_disconnect_by_func(desktop_menu->garcon_menu,
