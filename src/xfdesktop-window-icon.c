@@ -205,7 +205,7 @@ xfdesktop_window_icon_populate_context_menu(XfdesktopIcon *icon,
     GtkWidget *amenu = wnck_create_window_action_menu(window_icon->priv->window);
     GtkWidget *mi;
 
-    mi = gtk_menu_item_new_with_mnemonic("_Window Actions");
+    mi = gtk_menu_item_new_with_mnemonic(_("_Window Actions"));
     gtk_menu_item_set_submenu (GTK_MENU_ITEM(mi), amenu);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
     gtk_widget_show_all(mi);
