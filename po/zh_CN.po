@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-06 02:03+0000\n"
+"POT-Creation-Date: 2012-04-13 22:06+0000\n"
 "PO-Revision-Date: 2010-11-27 22:17+0800\n"
 "Last-Translator: Chipong Luo <chipong.luo@yahoo.com>\n"
 "Language-Team: Chinese (Simplified) <xfce-i18n@xfce.org>\n"
@@ -29,7 +29,7 @@ msgid "Backdrop list file is not valid"
 msgstr "背景列表文件无效"
 
 #. no need to escape markup; it's already done for us
-#: ../settings/main.c:165
+#: ../settings/main.c:166
 #, c-format
 msgid ""
 "%s\n"
@@ -38,127 +38,127 @@ msgstr ""
 "%s\n"
 "<i>大小：%dx%d</i>"
 
-#: ../settings/main.c:292 ../src/xfdesktop-special-file-icon.c:271
+#: ../settings/main.c:299 ../src/xfdesktop-special-file-icon.c:271
 #: ../src/xfdesktop-special-file-icon.c:434
 msgid "Home"
 msgstr "主文件夹"
 
-#: ../settings/main.c:294
+#: ../settings/main.c:301
 msgid "Filesystem"
 msgstr "文件系统"
 
-#: ../settings/main.c:296
+#: ../settings/main.c:303
 msgid "Trash"
 msgstr "回收站"
 
-#: ../settings/main.c:298
+#: ../settings/main.c:305
 msgid "Removable Devices"
 msgstr "可移动设备"
 
-#: ../settings/main.c:478
+#: ../settings/main.c:485
 #, c-format
 msgid "Cannot create backdrop list \"%s\""
 msgstr "未能创建背景列表 “%s”"
 
-#: ../settings/main.c:482 ../settings/main.c:855
+#: ../settings/main.c:489 ../settings/main.c:862
 msgid "Backdrop List Error"
 msgstr "背景列表错误"
 
-#: ../settings/main.c:507
+#: ../settings/main.c:514
 msgid "Create/Load Backdrop List"
 msgstr "创建/载入背景列表"
 
-#: ../settings/main.c:531
+#: ../settings/main.c:538
 #, c-format
 msgid ""
 "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
 msgstr "“%s” 不是有效的背景列表文件。您想要改写它吗？"
 
-#: ../settings/main.c:536
+#: ../settings/main.c:543
 msgid "Invalid List File"
 msgstr "无效的列表文件"
 
-#: ../settings/main.c:539
+#: ../settings/main.c:546
 msgid "Overwriting the file will cause its contents to be lost."
 msgstr "改写文件会导致其内容丢失。"
 
-#: ../settings/main.c:541
+#: ../settings/main.c:548
 msgid "Replace"
 msgstr "替换"
 
-#: ../settings/main.c:851
+#: ../settings/main.c:858
 #, c-format
 msgid "Failed to write backdrop list to \"%s\""
 msgstr "无法将背景列表写入 “%s”。"
 
-#: ../settings/main.c:878
+#: ../settings/main.c:885
 msgid "Add Image File(s)"
 msgstr "添加图片文件"
 
-#: ../settings/main.c:887
+#: ../settings/main.c:894
 msgid "Image files"
 msgstr "图片文件"
 
-#: ../settings/main.c:892
+#: ../settings/main.c:899
 msgid "All files"
 msgstr "所有文件"
 
-#: ../settings/main.c:1349
+#: ../settings/main.c:1356
 #, c-format
 msgid "Screen %d, Monitor %d (%s)"
 msgstr "屏幕 %d，显示器 %d(%s)"
 
-#: ../settings/main.c:1353
+#: ../settings/main.c:1360
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "屏幕 %d，显示器 %d"
 
-#: ../settings/main.c:1356
+#: ../settings/main.c:1363
 #, c-format
 msgid "Screen %d"
 msgstr "屏幕 %d"
 
-#: ../settings/main.c:1361
+#: ../settings/main.c:1368
 #, c-format
 msgid "Monitor %d (%s)"
 msgstr "显示器 %d(%s)"
 
-#: ../settings/main.c:1365
+#: ../settings/main.c:1372
 #, c-format
 msgid "Monitor %d"
 msgstr "显示器 %d"
 
-#: ../settings/main.c:1624
+#: ../settings/main.c:1631
 msgid "Settings manager socket"
 msgstr "设置管理器套接字"
 
-#: ../settings/main.c:1624
+#: ../settings/main.c:1631
 msgid "SOCKET ID"
 msgstr "套接字 ID"
 
-#: ../settings/main.c:1625
+#: ../settings/main.c:1632
 msgid "Version information"
 msgstr "版本信息"
 
-#: ../settings/main.c:1642
+#: ../settings/main.c:1649
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "输入 ‘%s --help’ 获取用法。"
 
-#: ../settings/main.c:1654
+#: ../settings/main.c:1661
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce 开发团队。保留所有权利。"
 
-#: ../settings/main.c:1655
+#: ../settings/main.c:1662
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "请向 <%s> 报告缺陷。"
 
-#: ../settings/main.c:1662
+#: ../settings/main.c:1669
 msgid "Desktop Settings"
 msgstr "桌面设置"
 
-#: ../settings/main.c:1664
+#: ../settings/main.c:1671
 msgid "Unable to contact settings server"
 msgstr "未能与设置服务器联系"
 
@@ -325,8 +325,8 @@ msgid ""
 "While in image list mode, select this option to automatically select a "
 "different background from the image list after a set number of minutes."
 msgstr ""
-"在图片列表模式时，选中此项在设置的分钟数之后从图片列表中"
-"自动选择一个不同的背景。"
+"在图片列表模式时，选中此项在设置的分钟数之后从图片列表中自动选择一个不同的背"
+"景。"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:36
 #: ../settings/xfdesktop-settings-ui.glade.h:43
@@ -373,7 +373,7 @@ msgstr "按钮(_U)："
 msgid "Control"
 msgstr "Ctrl"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:782
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:793
 msgid "Desktop"
 msgstr "桌面"
 
@@ -610,12 +610,12 @@ msgstr "移除工作区 %d(_R)"
 msgid "_Remove Workspace '%s'"
 msgstr "移除工作区 ‘%s’(_R)"
 
-#: ../src/xfce-desktop.c:1068
+#: ../src/xfce-desktop.c:1082
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "未能从背景列表文件 “%s” 中载入图片"
 
-#: ../src/xfce-desktop.c:1070
+#: ../src/xfce-desktop.c:1084
 msgid "Desktop Error"
 msgstr "桌面错误"
 
@@ -636,9 +636,9 @@ msgid ""
 msgstr "一个正常的同名文件已经存在。请删除或重命名它。"
 
 #: ../src/xfdesktop-file-icon-manager.c:624
-#: ../src/xfdesktop-file-icon-manager.c:668 ../src/xfdesktop-file-utils.c:878
-#: ../src/xfdesktop-file-utils.c:893 ../src/xfdesktop-file-utils.c:925
-#: ../src/xfdesktop-file-utils.c:939
+#: ../src/xfdesktop-file-icon-manager.c:668 ../src/xfdesktop-file-utils.c:863
+#: ../src/xfdesktop-file-utils.c:878 ../src/xfdesktop-file-utils.c:910
+#: ../src/xfdesktop-file-utils.c:924
 msgid "Trash Error"
 msgstr "回收站错误"
 
@@ -648,12 +648,12 @@ msgid "The selected files could not be trashed"
 msgstr "未能废弃选中的文件"
 
 #: ../src/xfdesktop-file-icon-manager.c:626
-#: ../src/xfdesktop-file-icon-manager.c:670 ../src/xfdesktop-file-utils.c:727
-#: ../src/xfdesktop-file-utils.c:777 ../src/xfdesktop-file-utils.c:836
-#: ../src/xfdesktop-file-utils.c:994 ../src/xfdesktop-file-utils.c:1050
-#: ../src/xfdesktop-file-utils.c:1100 ../src/xfdesktop-file-utils.c:1150
-#: ../src/xfdesktop-file-utils.c:1227 ../src/xfdesktop-file-utils.c:1288
-#: ../src/xfdesktop-file-utils.c:1361 ../src/xfdesktop-file-utils.c:1439
+#: ../src/xfdesktop-file-icon-manager.c:670 ../src/xfdesktop-file-utils.c:762
+#: ../src/xfdesktop-file-utils.c:821 ../src/xfdesktop-file-utils.c:979
+#: ../src/xfdesktop-file-utils.c:1035 ../src/xfdesktop-file-utils.c:1085
+#: ../src/xfdesktop-file-utils.c:1135 ../src/xfdesktop-file-utils.c:1212
+#: ../src/xfdesktop-file-utils.c:1273 ../src/xfdesktop-file-utils.c:1346
+#: ../src/xfdesktop-file-utils.c:1424
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
@@ -668,11 +668,10 @@ msgstr "未能启动 “%s”："
 
 #: ../src/xfdesktop-file-icon-manager.c:772
 #: ../src/xfdesktop-file-icon-manager.c:1033
-#: ../src/xfdesktop-file-icon-manager.c:1350 ../src/xfdesktop-file-utils.c:710
-#: ../src/xfdesktop-file-utils.c:725 ../src/xfdesktop-file-utils.c:1133
-#: ../src/xfdesktop-file-utils.c:1148 ../src/xfdesktop-file-utils.c:1200
-#: ../src/xfdesktop-file-utils.c:1225 ../src/xfdesktop-file-utils.c:1271
-#: ../src/xfdesktop-file-utils.c:1286
+#: ../src/xfdesktop-file-icon-manager.c:1350 ../src/xfdesktop-file-utils.c:707
+#: ../src/xfdesktop-file-utils.c:1118 ../src/xfdesktop-file-utils.c:1133
+#: ../src/xfdesktop-file-utils.c:1185 ../src/xfdesktop-file-utils.c:1210
+#: ../src/xfdesktop-file-utils.c:1256 ../src/xfdesktop-file-utils.c:1271
 msgid "Launch Error"
 msgstr "启动错误"
 
@@ -812,84 +811,84 @@ msgstr "%x %X"
 msgid "Unknown"
 msgstr "未知"
 
-#: ../src/xfdesktop-file-utils.c:711 ../src/xfdesktop-file-utils.c:726
+#: ../src/xfdesktop-file-utils.c:708
 msgid "The folder could not be opened"
 msgstr "未能打开此文件夹"
 
-#: ../src/xfdesktop-file-utils.c:760 ../src/xfdesktop-file-utils.c:775
+#: ../src/xfdesktop-file-utils.c:745 ../src/xfdesktop-file-utils.c:760
 msgid "Rename Error"
 msgstr "重命名错误"
 
-#: ../src/xfdesktop-file-utils.c:761 ../src/xfdesktop-file-utils.c:776
+#: ../src/xfdesktop-file-utils.c:746 ../src/xfdesktop-file-utils.c:761
 msgid "The file could not be renamed"
 msgstr "未能重命名此文件"
 
-#: ../src/xfdesktop-file-utils.c:819 ../src/xfdesktop-file-utils.c:834
+#: ../src/xfdesktop-file-utils.c:804 ../src/xfdesktop-file-utils.c:819
 msgid "Delete Error"
 msgstr "删除错误"
 
-#: ../src/xfdesktop-file-utils.c:820 ../src/xfdesktop-file-utils.c:835
+#: ../src/xfdesktop-file-utils.c:805 ../src/xfdesktop-file-utils.c:820
 msgid "The selected files could not be deleted"
 msgstr "未能删除选中的文件"
 
-#: ../src/xfdesktop-file-utils.c:879 ../src/xfdesktop-file-utils.c:894
+#: ../src/xfdesktop-file-utils.c:864 ../src/xfdesktop-file-utils.c:879
 msgid "The selected files could not be moved to the trash"
 msgstr "未能将选中的文件移至回收站"
 
-#: ../src/xfdesktop-file-utils.c:895 ../src/xfdesktop-file-utils.c:941
+#: ../src/xfdesktop-file-utils.c:880 ../src/xfdesktop-file-utils.c:926
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
 msgstr "此功能需要有回收站服务存在(比如 Thunar 所提供的功能)。"
 
-#: ../src/xfdesktop-file-utils.c:926 ../src/xfdesktop-file-utils.c:940
+#: ../src/xfdesktop-file-utils.c:911 ../src/xfdesktop-file-utils.c:925
 msgid "Could not empty the trash"
 msgstr "未能清空回收站"
 
-#: ../src/xfdesktop-file-utils.c:977 ../src/xfdesktop-file-utils.c:992
+#: ../src/xfdesktop-file-utils.c:962 ../src/xfdesktop-file-utils.c:977
 msgid "Create File Error"
 msgstr "创建文件错误"
 
-#: ../src/xfdesktop-file-utils.c:978 ../src/xfdesktop-file-utils.c:993
+#: ../src/xfdesktop-file-utils.c:963 ../src/xfdesktop-file-utils.c:978
 msgid "Could not create a new file"
 msgstr "未能创建新文件"
 
-#: ../src/xfdesktop-file-utils.c:1033 ../src/xfdesktop-file-utils.c:1048
+#: ../src/xfdesktop-file-utils.c:1018 ../src/xfdesktop-file-utils.c:1033
 msgid "Create Document Error"
 msgstr "创建文档错误"
 
-#: ../src/xfdesktop-file-utils.c:1034 ../src/xfdesktop-file-utils.c:1049
+#: ../src/xfdesktop-file-utils.c:1019 ../src/xfdesktop-file-utils.c:1034
 msgid "Could not create a new document from the template"
 msgstr "未能从模板创建新文档"
 
-#: ../src/xfdesktop-file-utils.c:1083 ../src/xfdesktop-file-utils.c:1098
+#: ../src/xfdesktop-file-utils.c:1068 ../src/xfdesktop-file-utils.c:1083
 msgid "File Properties Error"
 msgstr "文件属性错误"
 
-#: ../src/xfdesktop-file-utils.c:1084 ../src/xfdesktop-file-utils.c:1099
+#: ../src/xfdesktop-file-utils.c:1069 ../src/xfdesktop-file-utils.c:1084
 msgid "The file properties dialog could not be opened"
 msgstr "未能打开文件属性对话框"
 
-#: ../src/xfdesktop-file-utils.c:1134 ../src/xfdesktop-file-utils.c:1149
+#: ../src/xfdesktop-file-utils.c:1119 ../src/xfdesktop-file-utils.c:1134
 msgid "The file could not be opened"
 msgstr "未能打开此文件"
 
-#: ../src/xfdesktop-file-utils.c:1197 ../src/xfdesktop-file-utils.c:1222
+#: ../src/xfdesktop-file-utils.c:1182 ../src/xfdesktop-file-utils.c:1207
 #, c-format
 msgid "Failed to run \"%s\""
 msgstr "无法运行 “%s”"
 
-#: ../src/xfdesktop-file-utils.c:1272 ../src/xfdesktop-file-utils.c:1287
+#: ../src/xfdesktop-file-utils.c:1257 ../src/xfdesktop-file-utils.c:1272
 msgid "The application chooser could not be opened"
 msgstr "未能打开应用程序选择器"
 
-#: ../src/xfdesktop-file-utils.c:1345 ../src/xfdesktop-file-utils.c:1359
-#: ../src/xfdesktop-file-utils.c:1421 ../src/xfdesktop-file-utils.c:1437
+#: ../src/xfdesktop-file-utils.c:1330 ../src/xfdesktop-file-utils.c:1344
+#: ../src/xfdesktop-file-utils.c:1406 ../src/xfdesktop-file-utils.c:1422
 msgid "Transfer Error"
 msgstr "传输错误"
 
-#: ../src/xfdesktop-file-utils.c:1346 ../src/xfdesktop-file-utils.c:1360
-#: ../src/xfdesktop-file-utils.c:1422 ../src/xfdesktop-file-utils.c:1438
+#: ../src/xfdesktop-file-utils.c:1331 ../src/xfdesktop-file-utils.c:1345
+#: ../src/xfdesktop-file-utils.c:1407 ../src/xfdesktop-file-utils.c:1423
 msgid "The file transfer could not be performed"
 msgstr "未能执行文件传输"
 
@@ -1018,3 +1017,7 @@ msgstr "弹出卷(_J)"
 #: ../src/xfdesktop-volume-icon.c:709
 msgid "_Mount Volume"
 msgstr "挂载卷(_M)"
+
+#: ../src/xfdesktop-window-icon.c:208
+msgid "_Window Actions"
+msgstr "窗口动作(_W)"
