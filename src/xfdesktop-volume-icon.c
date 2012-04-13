@@ -728,7 +728,7 @@ xfdesktop_volume_icon_populate_context_menu(XfdesktopIcon *icon,
 
     img = gtk_image_new_from_stock(GTK_STOCK_PROPERTIES, GTK_ICON_SIZE_MENU);
     gtk_widget_show(img);
-    mi = gtk_image_menu_item_new_with_mnemonic(_("_Properties..."));
+    mi = gtk_image_menu_item_new_with_mnemonic(_("P_roperties..."));
     gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
     gtk_widget_show(mi);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
