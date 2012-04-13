@@ -48,7 +48,7 @@ BUILT_SOURCES = \
 SUFFIXES: .ui
 
 %-ui.h: $(srcdir)/%-ui.glade Makefile
-	$(AM_V_GEN) exo-csource --static --name=`basename $< .glade | sed -e 's/-/_/g'`  $< >$@
+	$(AM_V_GEN) exo-csource --static --name=`basename $< .glade | $(SED) -e 's/-/_/g'`  $< >$@
 
 endif
 

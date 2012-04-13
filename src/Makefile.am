@@ -189,7 +189,7 @@ xfdesktop-file-manager-proxy.h: $(srcdir)/xfdesktop-file-manager-dbus.xml Makefi
 	$(AM_V_GEN) ( \
 		dbus-binding-tool --mode=glib-client \
 			$(srcdir)/xfdesktop-file-manager-dbus.xml > xfdesktop-file-manager-proxy.h \
-		&& sed -i -e 's/org_xfce_FileManager/xfdesktop_file_manager_proxy/g' \
+		&& $(SED) -i -e 's/org_xfce_FileManager/xfdesktop_file_manager_proxy/g' \
 			xfdesktop-file-manager-proxy.h \
 	)
 			
@@ -197,7 +197,7 @@ xfdesktop-thunar-proxy.h: $(srcdir)/xfdesktop-thunar-dbus.xml Makefile
 	$(AM_V_GEN) ( \
 		dbus-binding-tool --mode=glib-client \
 			$(srcdir)/xfdesktop-thunar-dbus.xml > xfdesktop-thunar-proxy.h \
-		&& sed -i -e 's/org_xfce_Thunar/xfdesktop_thunar_proxy/g' \
+		&& $(SED) -i -e 's/org_xfce_Thunar/xfdesktop_thunar_proxy/g' \
 			xfdesktop-thunar-proxy.h \
 	)
 
@@ -205,7 +205,7 @@ xfdesktop-trash-proxy.h: $(srcdir)/xfdesktop-trash-dbus.xml Makefile
 	$(AM_V_GEN) ( \
 		dbus-binding-tool --mode=glib-client \
 			$(srcdir)/xfdesktop-trash-dbus.xml > xfdesktop-trash-proxy.h \
-		&& sed -i -e 's/org_xfce_Trash/xfdesktop_trash_proxy/g' \
+		&& $(SED) -i -e 's/org_xfce_Trash/xfdesktop_trash_proxy/g' \
 			xfdesktop-trash-proxy.h \
 	)
 
