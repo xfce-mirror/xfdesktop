@@ -1323,6 +1323,13 @@ xfdesktop_settings_dialog_add_screens(GtkBuilder *main_gxml,
 
     chk_show_thumbnails = GTK_WIDGET(gtk_builder_get_object(main_gxml,
                                                             "chk_show_thumbnails"));
+    /* The default value when this property is not set, is 'TRUE'.
+     * the bind operation defaults to 'FALSE' for unset boolean properties. 
+     *
+     * Make the checkbox correspond to the default behaviour.
+     */
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(chk_show_thumbnails),
+                                  TRUE);
 
     nscreens = gdk_display_get_n_screens(gdk_display_get_default());
 
