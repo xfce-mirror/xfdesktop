@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-02 09:27+0000\n"
+"POT-Creation-Date: 2012-04-14 03:51+0000\n"
 "PO-Revision-Date: 2011-09-09 17:45+0100\n"
 "Last-Translator: Pjotr\n"
 "Language-Team: Dutch (Flemish)\n"
@@ -385,7 +385,7 @@ msgstr "K_nop:"
 msgid "Control"
 msgstr "Control"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:792
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:793
 msgid "Desktop"
 msgstr "Bureaublad"
 
@@ -627,12 +627,12 @@ msgstr "Werkblad %d _verwijderen"
 msgid "_Remove Workspace '%s'"
 msgstr "Werkblad '%s' _verwijderen"
 
-#: ../src/xfce-desktop.c:1081
+#: ../src/xfce-desktop.c:1082
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "Kan afbeelding niet laden vanuit achtergrondenlijstbestand '%s'"
 
-#: ../src/xfce-desktop.c:1083
+#: ../src/xfce-desktop.c:1084
 msgid "Desktop Error"
 msgstr "Bureaubladfout"
 
@@ -1046,6 +1046,10 @@ msgstr "_Werp medium uit"
 #: ../src/xfdesktop-volume-icon.c:709
 msgid "_Mount Volume"
 msgstr "Medium aan_koppelen"
+
+#: ../src/xfdesktop-window-icon.c:208
+msgid "_Window Actions"
+msgstr "Vensteracties"
 
 #~ msgid "Unable to contact the Xfce Trash service."
 #~ msgstr "Kan geen contact leggen met Xfce Prullenbakdienst."
