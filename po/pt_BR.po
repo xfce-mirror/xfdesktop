@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.8.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-01 21:51+0000\n"
+"POT-Creation-Date: 2012-04-13 22:06+0000\n"
 "PO-Revision-Date: 2011-04-25 06:59-0300\n"
 "Last-Translator: Sérgio Cipolla <secipolla@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <ldp-br@bazar2.conectiva.com.br>\n"
@@ -238,7 +238,9 @@ msgstr "Aumentar ou diminuir a saturação de cor da imagem final"
 msgid ""
 "Number of minutes before a different background is randomly selected from "
 "the list."
-msgstr "Número de minutos antes que um plano de fundo diferente seja selecionado aleatóriamente da lista."
+msgstr ""
+"Número de minutos antes que um plano de fundo diferente seja selecionado "
+"aleatóriamente da lista."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Remove the selected image(s) from the list"
@@ -320,13 +322,18 @@ msgstr "Degradê vertical"
 msgid ""
 "When multiple monitors are present, select this option to stretch the "
 "current background over all of them."
-msgstr "Quando múltiplos monitores estão presentes, selecione esta opção para alongar o plano de fundo através de todos eles."
+msgstr ""
+"Quando múltiplos monitores estão presentes, selecione esta opção para "
+"alongar o plano de fundo através de todos eles."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
 msgid ""
 "While in image list mode, select this option to automatically select a "
 "different background from the image list after a set number of minutes."
-msgstr "Quando em modo de lista de imagem, selecione esta opção para automaticamente selecionar um plano de fundo diferente a partir da lista de imagens depois de um número de minutos definido."
+msgstr ""
+"Quando em modo de lista de imagem, selecione esta opção para automaticamente "
+"selecionar um plano de fundo diferente a partir da lista de imagens depois "
+"de um número de minutos definido."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:36
 #: ../settings/xfdesktop-settings-ui.glade.h:43
@@ -373,7 +380,7 @@ msgstr "B_otão:"
 msgid "Control"
 msgstr "Controle"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:792
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:793
 msgid "Desktop"
 msgstr "Área de trabalho"
 
@@ -425,7 +432,9 @@ msgstr "Direito"
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
-msgstr "Selecione esta opção para exibir automaticamente arquivos previsualizáveis na área de trabalho como ícones de miniatura."
+msgstr ""
+"Selecione esta opção para exibir automaticamente arquivos previsualizáveis "
+"na área de trabalho como ícones de miniatura."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:25
 msgid "Set desktop background and menu and icon behavior"
@@ -620,14 +629,14 @@ msgstr "_Remover espaço de trabalho %d"
 msgid "_Remove Workspace '%s'"
 msgstr "_Remover espaço de trabalho '%s'"
 
-#: ../src/xfce-desktop.c:1081
+#: ../src/xfce-desktop.c:1082
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr ""
 "Não foi possível carregar a imagem do arquivo de lista de imagens de fundo "
 "\"%s\""
 
-#: ../src/xfce-desktop.c:1083
+#: ../src/xfce-desktop.c:1084
 msgid "Desktop Error"
 msgstr "Erro da área de trabalho"
 
@@ -1040,6 +1049,10 @@ msgstr "E_jetar volume"
 #: ../src/xfdesktop-volume-icon.c:709
 msgid "_Mount Volume"
 msgstr "_Montar volume"
+
+#: ../src/xfdesktop-window-icon.c:208
+msgid "_Window Actions"
+msgstr "_Ações de janelas"
 
 #~ msgid "Unable to contact the Xfce Trash service."
 #~ msgstr "Não foi possível comunicar-se com o serviço de Lixeira do Xfce."
