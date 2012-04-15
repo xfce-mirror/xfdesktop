@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-31 05:15+0000\n"
+"POT-Creation-Date: 2012-04-15 14:21+0000\n"
 "PO-Revision-Date: 2009-12-18 18:46+0100\n"
 "Last-Translator: Per Kongstad <p_kongstad@op.pl>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -318,13 +318,18 @@ msgstr "Lodret aftagende"
 msgid ""
 "When multiple monitors are present, select this option to stretch the "
 "current background over all of them."
-msgstr "Når flere skærme er aktive, vælges dette tilvalg for at strække den nuværende baggrund over alle skærme."
+msgstr ""
+"Når flere skærme er aktive, vælges dette tilvalg for at strække den "
+"nuværende baggrund over alle skærme."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
 msgid ""
 "While in image list mode, select this option to automatically select a "
 "different background from the image list after a set number of minutes."
-msgstr "Når billedlisttilstanden er aktiv, vælges dette tilvalg for automatisk udskiftning af forskellige baggrunde fra billedlisten med et vist antal minutters mellemrum."
+msgstr ""
+"Når billedlisttilstanden er aktiv, vælges dette tilvalg for automatisk "
+"udskiftning af forskellige baggrunde fra billedlisten med et vist antal "
+"minutters mellemrum."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:36
 #: ../settings/xfdesktop-settings-ui.glade.h:43
@@ -371,7 +376,7 @@ msgstr "_Knap:"
 msgid "Control"
 msgstr "Kontrol"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:789
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:793
 msgid "Desktop"
 msgstr "Skrivebord"
 
@@ -423,7 +428,9 @@ msgstr "Højre"
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
-msgstr "Tilvælg dette for at vise filer som kan forhåndsvises på skrivebordet som automatisk generede miniatureikoner."
+msgstr ""
+"Tilvælg dette for at vise filer som kan forhåndsvises på skrivebordet som "
+"automatisk generede miniatureikoner."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:25
 msgid "Set desktop background and menu and icon behavior"
@@ -609,12 +616,12 @@ msgstr "_Fjern arbejdsområde %d"
 msgid "_Remove Workspace '%s'"
 msgstr "F_jern arbejdsområde '%s'"
 
-#: ../src/xfce-desktop.c:1078
+#: ../src/xfce-desktop.c:1082
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "Kunne ikke indlæse billede fra baggrundsfilliste \"%s\""
 
-#: ../src/xfce-desktop.c:1080
+#: ../src/xfce-desktop.c:1084
 msgid "Desktop Error"
 msgstr "Skrivebordsfejl"
 
@@ -705,7 +712,7 @@ msgid "_Open in New Window"
 msgstr "_Åben i nyt vindue"
 
 #: ../src/xfdesktop-file-icon-manager.c:1425
-#: ../src/xfdesktop-special-file-icon.c:501 ../src/xfdesktop-volume-icon.c:683
+#: ../src/xfdesktop-special-file-icon.c:505 ../src/xfdesktop-volume-icon.c:687
 msgid "_Open"
 msgstr "_Åben"
 
@@ -762,7 +769,7 @@ msgid "Desktop _Settings..."
 msgstr "Skrivebords_indstillinger..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1744
-#: ../src/xfdesktop-volume-icon.c:731
+#: ../src/xfdesktop-volume-icon.c:735
 msgid "P_roperties..."
 msgstr "_Egenskaber..."
 
@@ -939,7 +946,7 @@ msgstr "Udskubber enhed"
 msgid "The device \"%s\" is being ejected. This may take some time"
 msgstr "Enheden \"%s\" bliver skubbet ud. Dette kan tage lidt tid"
 
-#: ../src/xfdesktop-regular-file-icon.c:567
+#: ../src/xfdesktop-regular-file-icon.c:571
 #, c-format
 msgid ""
 "Type: %s\n"
@@ -968,7 +975,7 @@ msgstr "Papirkurven indeholder et objekt"
 msgid "Trash contains %d items"
 msgstr "Papirkurven indeholder %d objekter"
 
-#: ../src/xfdesktop-special-file-icon.c:449
+#: ../src/xfdesktop-special-file-icon.c:453
 #, c-format
 msgid ""
 "%s\n"
@@ -979,11 +986,11 @@ msgstr ""
 "Størrelse: %s\n"
 "Sidst modificeret: %s"
 
-#: ../src/xfdesktop-special-file-icon.c:518
+#: ../src/xfdesktop-special-file-icon.c:522
 msgid "_Empty Trash"
 msgstr "_Tøm papirskurven"
 
-#: ../src/xfdesktop-volume-icon.c:443
+#: ../src/xfdesktop-volume-icon.c:447
 #, c-format
 msgid ""
 "Removable Volume\n"
@@ -994,7 +1001,7 @@ msgstr ""
 "Monteret i \"%s\"\n"
 "%s tilbage (%s total)"
 
-#: ../src/xfdesktop-volume-icon.c:450
+#: ../src/xfdesktop-volume-icon.c:454
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
@@ -1002,31 +1009,35 @@ msgstr ""
 "Fjernbart arkiv\n"
 "Ikke monteret endnu"
 
-#: ../src/xfdesktop-volume-icon.c:476 ../src/xfdesktop-volume-icon.c:518
+#: ../src/xfdesktop-volume-icon.c:480 ../src/xfdesktop-volume-icon.c:522
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "Kunne ikke skubbe \"%s\" ud"
 
-#: ../src/xfdesktop-volume-icon.c:481 ../src/xfdesktop-volume-icon.c:523
+#: ../src/xfdesktop-volume-icon.c:485 ../src/xfdesktop-volume-icon.c:527
 msgid "Eject Failed"
 msgstr "Udskubning fejlede"
 
-#: ../src/xfdesktop-volume-icon.c:555
+#: ../src/xfdesktop-volume-icon.c:559
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "Kunne ikke montere \"%s\""
 
-#: ../src/xfdesktop-volume-icon.c:558
+#: ../src/xfdesktop-volume-icon.c:562
 msgid "Mount Failed"
 msgstr "Monteringsfejl"
 
-#: ../src/xfdesktop-volume-icon.c:699 ../src/xfdesktop-volume-icon.c:702
+#: ../src/xfdesktop-volume-icon.c:703 ../src/xfdesktop-volume-icon.c:706
 msgid "E_ject Volume"
 msgstr "_Udskub arkiv"
 
-#: ../src/xfdesktop-volume-icon.c:709
+#: ../src/xfdesktop-volume-icon.c:713
 msgid "_Mount Volume"
 msgstr "_Montér arkiv"
+
+#: ../src/xfdesktop-window-icon.c:208
+msgid "_Window Actions"
+msgstr "_Vinduehandlinger"
 
 #~ msgid "Unable to contact the Xfce Trash service."
 #~ msgstr "Kunne ikke forbinde til Xfce-papirkurvservicen."
