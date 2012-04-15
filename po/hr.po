@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-02 21:03+0000\n"
+"POT-Creation-Date: 2012-04-15 14:21+0000\n"
 "PO-Revision-Date: 2010-05-27 22:41+0200\n"
 "Last-Translator: Ivica Kolić<ikoli@yahoo.com> <>\n"
 "Language-Team: Croatian hr<>\n"
@@ -231,7 +231,7 @@ msgstr "Povećanje ili smanjenje zasićenosti boje na konačnoj slici"
 msgid ""
 "Number of minutes before a different background is randomly selected from "
 "the list."
-msgstr ""
+msgstr "Broj minuta prije nego druga pozadina bude nasumično odabrana sa liste."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Remove the selected image(s) from the list"
@@ -312,7 +312,7 @@ msgstr "Okomiti gradijent"
 msgid ""
 "When multiple monitors are present, select this option to stretch the "
 "current background over all of them."
-msgstr ""
+msgstr "Kada je prisutno više monitora,odaberite ovu opciju da biste rastegli trenutnu pozadinu na sve njih."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
 msgid ""
@@ -327,7 +327,7 @@ msgstr "Zumirano"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:37
 msgid "_Change the background (in minutes):"
-msgstr ""
+msgstr "_Promijeni pozadinu (u minutama)"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:38
 msgid "_None"
@@ -365,7 +365,7 @@ msgstr "D_ugme:"
 msgid "Control"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:792
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:793
 msgid "Desktop"
 msgstr "Radna površina"
 
@@ -457,7 +457,7 @@ msgstr "Pokaži imena _radnih prostora na listi"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:34
 msgid "Single _click to activate items"
-msgstr ""
+msgstr "Jedan _klik za aktiviranje stavki"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid ""
@@ -511,7 +511,7 @@ msgstr "Skočni prozor liste prozora (na trenutnoj poziciji miša)"
 
 #: ../src/main.c:248
 msgid "Automatically arrange all the icons on the desktop"
-msgstr ""
+msgstr "Automatski uredite sve ikone na radnoj površini"
 
 #: ../src/main.c:250
 msgid "Cause xfdesktop to quit"
@@ -602,12 +602,12 @@ msgstr "_Ukloni Radni Prostor %d"
 msgid "_Remove Workspace '%s'"
 msgstr "_Ukloni Radni Prostor '%s'"
 
-#: ../src/xfce-desktop.c:1081
+#: ../src/xfce-desktop.c:1082
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "Ne mogu učitati sliku iz datoteke pozadinske liste \"%s\""
 
-#: ../src/xfce-desktop.c:1083
+#: ../src/xfce-desktop.c:1084
 msgid "Desktop Error"
 msgstr "Greška radne površine"
 
@@ -698,7 +698,7 @@ msgid "_Open in New Window"
 msgstr "_Otvori u novom prozoru"
 
 #: ../src/xfdesktop-file-icon-manager.c:1425
-#: ../src/xfdesktop-special-file-icon.c:501 ../src/xfdesktop-volume-icon.c:683
+#: ../src/xfdesktop-special-file-icon.c:505 ../src/xfdesktop-volume-icon.c:687
 msgid "_Open"
 msgstr "_Otvori"
 
@@ -748,14 +748,14 @@ msgstr "_Preimenuj"
 
 #: ../src/xfdesktop-file-icon-manager.c:1724
 msgid "Arrange Desktop _Icons"
-msgstr ""
+msgstr "Uredite ikone _radne površine"
 
 #: ../src/xfdesktop-file-icon-manager.c:1734
 msgid "Desktop _Settings..."
 msgstr "Postavke _radne površine"
 
 #: ../src/xfdesktop-file-icon-manager.c:1744
-#: ../src/xfdesktop-volume-icon.c:731
+#: ../src/xfdesktop-volume-icon.c:735
 msgid "P_roperties..."
 msgstr "_Svojstva"
 
@@ -769,11 +769,11 @@ msgstr "Neuspjelo učitavanje mape radne površine"
 
 #: ../src/xfdesktop-file-icon-manager.c:2938
 msgid "Copy _Here"
-msgstr ""
+msgstr "Kopiraj _ovdje"
 
 #: ../src/xfdesktop-file-icon-manager.c:2938
 msgid "_Move Here"
-msgstr ""
+msgstr "Premjesti _ovdje"
 
 #: ../src/xfdesktop-file-icon-manager.c:2938
 msgid "_Link Here"
@@ -932,7 +932,7 @@ msgstr "Izbacujem uređaj"
 msgid "The device \"%s\" is being ejected. This may take some time"
 msgstr "Uređaj \"%s\" je izbačen.Ovo može potrajati"
 
-#: ../src/xfdesktop-regular-file-icon.c:567
+#: ../src/xfdesktop-regular-file-icon.c:571
 #, c-format
 msgid ""
 "Type: %s\n"
@@ -961,7 +961,7 @@ msgstr "Smeće sadrži jednu stavku"
 msgid "Trash contains %d items"
 msgstr "Smeće sadrži %d stavki"
 
-#: ../src/xfdesktop-special-file-icon.c:449
+#: ../src/xfdesktop-special-file-icon.c:453
 #, c-format
 msgid ""
 "%s\n"
@@ -972,11 +972,11 @@ msgstr ""
 "Veličina: %s\n"
 "Zadnja izmjena: %s"
 
-#: ../src/xfdesktop-special-file-icon.c:518
+#: ../src/xfdesktop-special-file-icon.c:522
 msgid "_Empty Trash"
 msgstr "_Isprazni smeće"
 
-#: ../src/xfdesktop-volume-icon.c:443
+#: ../src/xfdesktop-volume-icon.c:447
 #, c-format
 msgid ""
 "Removable Volume\n"
@@ -987,37 +987,41 @@ msgstr ""
 "Montiran na \"%s\"\n"
 "%s preostalo (%s ukupno)"
 
-#: ../src/xfdesktop-volume-icon.c:450
+#: ../src/xfdesktop-volume-icon.c:454
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:476 ../src/xfdesktop-volume-icon.c:518
+#: ../src/xfdesktop-volume-icon.c:480 ../src/xfdesktop-volume-icon.c:522
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "Ne mogu izbaciti \"%s\""
 
-#: ../src/xfdesktop-volume-icon.c:481 ../src/xfdesktop-volume-icon.c:523
+#: ../src/xfdesktop-volume-icon.c:485 ../src/xfdesktop-volume-icon.c:527
 msgid "Eject Failed"
 msgstr "Neuspješno izbacivanje"
 
-#: ../src/xfdesktop-volume-icon.c:555
+#: ../src/xfdesktop-volume-icon.c:559
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "Nije uspjelo montirati \\ \"% s \""
 
-#: ../src/xfdesktop-volume-icon.c:558
+#: ../src/xfdesktop-volume-icon.c:562
 msgid "Mount Failed"
 msgstr "Neuspješno montiranje"
 
-#: ../src/xfdesktop-volume-icon.c:699 ../src/xfdesktop-volume-icon.c:702
+#: ../src/xfdesktop-volume-icon.c:703 ../src/xfdesktop-volume-icon.c:706
 msgid "E_ject Volume"
 msgstr "I_zbaci uređaj"
 
-#: ../src/xfdesktop-volume-icon.c:709
+#: ../src/xfdesktop-volume-icon.c:713
 msgid "_Mount Volume"
 msgstr "_Montiraj uređaj"
+
+#: ../src/xfdesktop-window-icon.c:208
+msgid "_Window Actions"
+msgstr ""
 
 #~ msgid "Unable to contact the Xfce Trash service."
 #~ msgstr "Nije moguće kontaktirati  Xfce servis smeća"
