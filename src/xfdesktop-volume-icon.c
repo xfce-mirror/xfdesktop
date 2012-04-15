@@ -433,11 +433,15 @@ xfdesktop_volume_icon_peek_tooltip(XfdesktopIcon *icon)
 
             size = g_file_info_get_attribute_uint64(fs_info,
                                                     G_FILE_ATTRIBUTE_FILESYSTEM_SIZE);
-            size_string = g_format_size_for_display(size);
-
             free_space = g_file_info_get_attribute_uint64(fs_info,
                                                           G_FILE_ATTRIBUTE_FILESYSTEM_FREE);
+#if GLIB_CHECK_VERSION (2, 30, 0)
+            size_string = g_format_size(size);
+            free_space_string = g_format_size(free_space);
+#else
+            size_string = g_format_size_for_display(size);
             free_space_string = g_format_size_for_display(free_space);
+#endif
 
             volume_icon->priv->tooltip =
                 g_strdup_printf(_("Removable Volume\nMounted in \"%s\"\n%s left (%s total)"),
