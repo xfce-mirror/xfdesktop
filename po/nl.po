@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-14 03:51+0000\n"
+"POT-Creation-Date: 2012-04-16 19:06+0000\n"
 "PO-Revision-Date: 2011-09-09 17:45+0100\n"
 "Last-Translator: Pjotr\n"
 "Language-Team: Dutch (Flemish)\n"
@@ -528,11 +528,11 @@ msgstr "Laad alle instellingen opnieuw, ververs de afbeeldingenlijst"
 
 #: ../src/main.c:245
 msgid "Pop up the menu (at the current mouse position)"
-msgstr "Laat het menu omhoogspringen (op de huidige muispositie)"
+msgstr "Laat het menu opduiken (op de huidige muispositie)"
 
 #: ../src/main.c:246
 msgid "Pop up the window list (at the current mouse position)"
-msgstr "Laat de vensterlijst omhoogspringen (op de huidige muispositie)"
+msgstr "Laat de vensterlijst opduiken (op de huidige muispositie)"
 
 #: ../src/main.c:248
 msgid "Automatically arrange all the icons on the desktop"
@@ -565,7 +565,7 @@ msgstr "Bouw-opties:\n"
 #: ../src/main.c:285
 #, c-format
 msgid "    Desktop Menu:        %s\n"
-msgstr "    Bureaubladmenu:        %s\n"
+msgstr "Bureaubladmenu: %s\n"
 
 #: ../src/main.c:287 ../src/main.c:294 ../src/main.c:301
 msgid "enabled"
@@ -578,12 +578,12 @@ msgstr "uitgeschakeld"
 #: ../src/main.c:292
 #, c-format
 msgid "    Desktop Icons:       %s\n"
-msgstr "    Bureaubladpictogrammen: %s\n"
+msgstr "Bureaubladpictogrammen: %s\n"
 
 #: ../src/main.c:299
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr "    Pictogrammen van bureaubladbestanden: %s\n"
+msgstr "Pictogrammen van bureaubladbestanden: %s\n"
 
 #: ../src/main.c:332
 #, c-format
@@ -723,7 +723,7 @@ msgid "_Open in New Window"
 msgstr "_Openen in nieuw venster"
 
 #: ../src/xfdesktop-file-icon-manager.c:1425
-#: ../src/xfdesktop-special-file-icon.c:501 ../src/xfdesktop-volume-icon.c:683
+#: ../src/xfdesktop-special-file-icon.c:505 ../src/xfdesktop-volume-icon.c:687
 msgid "_Open"
 msgstr "_Openen"
 
@@ -780,7 +780,7 @@ msgid "Desktop _Settings..."
 msgstr "Bureaublad-in_stellingen..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1744
-#: ../src/xfdesktop-volume-icon.c:731
+#: ../src/xfdesktop-volume-icon.c:735
 msgid "P_roperties..."
 msgstr "_Eigenschappen..."
 
@@ -958,7 +958,7 @@ msgstr "Apparaat aan het uitwerpen"
 msgid "The device \"%s\" is being ejected. This may take some time"
 msgstr "Het apparaat '%s' wordt uitgeworpen. Dit kan even duren"
 
-#: ../src/xfdesktop-regular-file-icon.c:567
+#: ../src/xfdesktop-regular-file-icon.c:571
 #, c-format
 msgid ""
 "Type: %s\n"
@@ -987,7 +987,7 @@ msgstr "Prullenbak bevat één bestand"
 msgid "Trash contains %d items"
 msgstr "Prullenbak bevat %d bestanden"
 
-#: ../src/xfdesktop-special-file-icon.c:449
+#: ../src/xfdesktop-special-file-icon.c:453
 #, c-format
 msgid ""
 "%s\n"
@@ -998,11 +998,11 @@ msgstr ""
 "Grootte: %s\n"
 "Laatst gewijzigd: %s"
 
-#: ../src/xfdesktop-special-file-icon.c:518
+#: ../src/xfdesktop-special-file-icon.c:522
 msgid "_Empty Trash"
 msgstr "Prullenbak l_egen"
 
-#: ../src/xfdesktop-volume-icon.c:443
+#: ../src/xfdesktop-volume-icon.c:447
 #, c-format
 msgid ""
 "Removable Volume\n"
@@ -1013,7 +1013,7 @@ msgstr ""
 "Aangekoppeld in \"%s\"\n"
 "%s over (%s totaal)"
 
-#: ../src/xfdesktop-volume-icon.c:450
+#: ../src/xfdesktop-volume-icon.c:454
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
@@ -1021,29 +1021,29 @@ msgstr ""
 "Verwijderbaar medium\n"
 "Nog niet aangekoppeld"
 
-#: ../src/xfdesktop-volume-icon.c:476 ../src/xfdesktop-volume-icon.c:518
+#: ../src/xfdesktop-volume-icon.c:480 ../src/xfdesktop-volume-icon.c:522
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "Kon '%s' niet uitwerpen"
 
-#: ../src/xfdesktop-volume-icon.c:481 ../src/xfdesktop-volume-icon.c:523
+#: ../src/xfdesktop-volume-icon.c:485 ../src/xfdesktop-volume-icon.c:527
 msgid "Eject Failed"
 msgstr "Uitwerpen is mislukt"
 
-#: ../src/xfdesktop-volume-icon.c:555
+#: ../src/xfdesktop-volume-icon.c:559
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "Kon '%s' niet aankoppelen"
 
-#: ../src/xfdesktop-volume-icon.c:558
+#: ../src/xfdesktop-volume-icon.c:562
 msgid "Mount Failed"
 msgstr "Aankoppelen is mislukt"
 
-#: ../src/xfdesktop-volume-icon.c:699 ../src/xfdesktop-volume-icon.c:702
+#: ../src/xfdesktop-volume-icon.c:703 ../src/xfdesktop-volume-icon.c:706
 msgid "E_ject Volume"
 msgstr "_Werp medium uit"
 
-#: ../src/xfdesktop-volume-icon.c:709
+#: ../src/xfdesktop-volume-icon.c:713
 msgid "_Mount Volume"
 msgstr "Medium aan_koppelen"
 
