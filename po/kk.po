@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: trunk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-30 00:15+0000\n"
+"POT-Creation-Date: 2012-04-16 01:51+0000\n"
 "PO-Revision-Date: 2010-08-03 10:24+0600\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <kk_KZ@googlegroups.com>\n"
@@ -232,7 +232,9 @@ msgstr "Нәтиже суреттің түс қанықтылығын өсіру
 msgid ""
 "Number of minutes before a different background is randomly selected from "
 "the list."
-msgstr "Тізімнен келесі фон суреті кездейсоқ ретпен тандалғанға дейін өту керек минуттар саны."
+msgstr ""
+"Тізімнен келесі фон суреті кездейсоқ ретпен тандалғанға дейін өту керек "
+"минуттар саны."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Remove the selected image(s) from the list"
@@ -313,13 +315,18 @@ msgstr "Вертикалды градиент"
 msgid ""
 "When multiple monitors are present, select this option to stretch the "
 "current background over all of them."
-msgstr "Бірнеше мониторлар бар кезде, ағымдағы фон суретін олардың барлығына созу үшін бұл опцияны таңдаңыз."
+msgstr ""
+"Бірнеше мониторлар бар кезде, ағымдағы фон суретін олардың барлығына созу "
+"үшін бұл опцияны таңдаңыз."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
 msgid ""
 "While in image list mode, select this option to automatically select a "
 "different background from the image list after a set number of minutes."
-msgstr "Суреттер тізімі режимі кезінде, көрсетілген минуттар саны өткен кезде суреттер тізімінен жаңа суретті фон суреті ретінде автоматты түрде орнатып отыру үшін бұл опцияны таңдаңыз."
+msgstr ""
+"Суреттер тізімі режимі кезінде, көрсетілген минуттар саны өткен кезде "
+"суреттер тізімінен жаңа суретті фон суреті ретінде автоматты түрде орнатып "
+"отыру үшін бұл опцияны таңдаңыз."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:36
 #: ../settings/xfdesktop-settings-ui.glade.h:43
@@ -366,7 +373,7 @@ msgstr "Бат_ырма:"
 msgid "Control"
 msgstr "Control"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:789
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:793
 msgid "Desktop"
 msgstr "Жұмыс үстелі"
 
@@ -418,7 +425,9 @@ msgstr "Оң жақ"
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
-msgstr "Алдын-ала көрінісі мүмкін болатын файлдарды олардың аатоматты түрде жасалған кіші көріністері ретінде көрсету үшін бұл опцияны таңдаңыз."
+msgstr ""
+"Алдын-ала көрінісі мүмкін болатын файлдарды олардың аатоматты түрде жасалған "
+"кіші көріністері ретінде көрсету үшін бұл опцияны таңдаңыз."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:25
 msgid "Set desktop background and menu and icon behavior"
@@ -604,12 +613,12 @@ msgstr "%d _жұмыс орнын өшіру"
 msgid "_Remove Workspace '%s'"
 msgstr "'%s' жұ_мыс орнын өшіру"
 
-#: ../src/xfce-desktop.c:1078
+#: ../src/xfce-desktop.c:1082
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "\"%s\" фон суреттер тізімі бар файлдан суретті жүктеу мүмкін емес"
 
-#: ../src/xfce-desktop.c:1080
+#: ../src/xfce-desktop.c:1084
 msgid "Desktop Error"
 msgstr "Жұмыс үстел қатесі"
 
@@ -699,7 +708,7 @@ msgid "_Open in New Window"
 msgstr "_Жаңа терезеде ашу"
 
 #: ../src/xfdesktop-file-icon-manager.c:1425
-#: ../src/xfdesktop-special-file-icon.c:501 ../src/xfdesktop-volume-icon.c:683
+#: ../src/xfdesktop-special-file-icon.c:505 ../src/xfdesktop-volume-icon.c:687
 msgid "_Open"
 msgstr "А_шу"
 
@@ -756,7 +765,7 @@ msgid "Desktop _Settings..."
 msgstr "Жұмыс ү_стелінің баптаулары..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1744
-#: ../src/xfdesktop-volume-icon.c:731
+#: ../src/xfdesktop-volume-icon.c:735
 msgid "P_roperties..."
 msgstr "Қас_иеттері..."
 
@@ -933,7 +942,7 @@ msgstr "Құрылғы шығарылуда"
 msgid "The device \"%s\" is being ejected. This may take some time"
 msgstr "\"%s\" құрылғысы шығарылуда. Бұл біраз уақытты алуы мүмкін"
 
-#: ../src/xfdesktop-regular-file-icon.c:567
+#: ../src/xfdesktop-regular-file-icon.c:571
 #, c-format
 msgid ""
 "Type: %s\n"
@@ -962,7 +971,7 @@ msgstr "Қоқыс шелегінде бір нәрсе бар"
 msgid "Trash contains %d items"
 msgstr "Қоқыс шелегінде %d нәрсе бар"
 
-#: ../src/xfdesktop-special-file-icon.c:449
+#: ../src/xfdesktop-special-file-icon.c:453
 #, c-format
 msgid ""
 "%s\n"
@@ -973,11 +982,11 @@ msgstr ""
 "Өлшемі: %s\n"
 "Соңғы өзгертілген: %s"
 
-#: ../src/xfdesktop-special-file-icon.c:518
+#: ../src/xfdesktop-special-file-icon.c:522
 msgid "_Empty Trash"
 msgstr "Қоқыс шел_егін тазарту"
 
-#: ../src/xfdesktop-volume-icon.c:443
+#: ../src/xfdesktop-volume-icon.c:447
 #, c-format
 msgid ""
 "Removable Volume\n"
@@ -988,7 +997,7 @@ msgstr ""
 "Тіркеу нүктесі: \"%s\"\n"
 "Бос орны: %s (барлығы %s)"
 
-#: ../src/xfdesktop-volume-icon.c:450
+#: ../src/xfdesktop-volume-icon.c:454
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
@@ -996,31 +1005,35 @@ msgstr ""
 "Ауыстырмалы құрылғы\n"
 "Тіркелмеген"
 
-#: ../src/xfdesktop-volume-icon.c:476 ../src/xfdesktop-volume-icon.c:518
+#: ../src/xfdesktop-volume-icon.c:480 ../src/xfdesktop-volume-icon.c:522
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "\"%s\" шығару мүмкін емес"
 
-#: ../src/xfdesktop-volume-icon.c:481 ../src/xfdesktop-volume-icon.c:523
+#: ../src/xfdesktop-volume-icon.c:485 ../src/xfdesktop-volume-icon.c:527
 msgid "Eject Failed"
 msgstr "Шығару сәтсіз аяқталды"
 
-#: ../src/xfdesktop-volume-icon.c:555
+#: ../src/xfdesktop-volume-icon.c:559
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "\"%s\" тіркеу сәтсіз"
 
-#: ../src/xfdesktop-volume-icon.c:558
+#: ../src/xfdesktop-volume-icon.c:562
 msgid "Mount Failed"
 msgstr "Тіркеу сәтсіз аяқталды"
 
-#: ../src/xfdesktop-volume-icon.c:699 ../src/xfdesktop-volume-icon.c:702
+#: ../src/xfdesktop-volume-icon.c:703 ../src/xfdesktop-volume-icon.c:706
 msgid "E_ject Volume"
 msgstr "Бөлімді _шығару"
 
-#: ../src/xfdesktop-volume-icon.c:709
+#: ../src/xfdesktop-volume-icon.c:713
 msgid "_Mount Volume"
 msgstr "Бө_лімді тіркеу"
+
+#: ../src/xfdesktop-window-icon.c:208
+msgid "_Window Actions"
+msgstr "Терезелер әре_кеттері"
 
 #~ msgid "Unable to contact the Xfce Trash service."
 #~ msgstr "Xfce қоқыс шелегі қызметімен байланыс орнату мүмкін емес."
