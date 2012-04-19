@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-12 05:51+0000\n"
+"POT-Creation-Date: 2012-04-19 16:06+0000\n"
 "PO-Revision-Date: 2012-03-31 17:46+0100\n"
 "Last-Translator: Carles Muñoz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: Catalan <xfce-i18n@xfce.org>\n"
@@ -716,7 +716,7 @@ msgid "_Open in New Window"
 msgstr "_Obre en una nova finestra"
 
 #: ../src/xfdesktop-file-icon-manager.c:1425
-#: ../src/xfdesktop-special-file-icon.c:501 ../src/xfdesktop-volume-icon.c:683
+#: ../src/xfdesktop-special-file-icon.c:505 ../src/xfdesktop-volume-icon.c:687
 msgid "_Open"
 msgstr "_Obre"
 
@@ -773,7 +773,7 @@ msgid "Desktop _Settings..."
 msgstr "Ajustaments de l'e_scriptori…"
 
 #: ../src/xfdesktop-file-icon-manager.c:1744
-#: ../src/xfdesktop-volume-icon.c:731
+#: ../src/xfdesktop-volume-icon.c:735
 msgid "P_roperties..."
 msgstr "_Propietats…"
 
@@ -950,7 +950,7 @@ msgstr "Expulsant el dispositiu"
 msgid "The device \"%s\" is being ejected. This may take some time"
 msgstr "S'està expulsant el dispositiu \"%s\". Això pot trigar una estona."
 
-#: ../src/xfdesktop-regular-file-icon.c:567
+#: ../src/xfdesktop-regular-file-icon.c:571
 #, c-format
 msgid ""
 "Type: %s\n"
@@ -979,7 +979,7 @@ msgstr "La paperera conté un element"
 msgid "Trash contains %d items"
 msgstr "La paperera conté %d elements"
 
-#: ../src/xfdesktop-special-file-icon.c:449
+#: ../src/xfdesktop-special-file-icon.c:453
 #, c-format
 msgid ""
 "%s\n"
@@ -990,11 +990,11 @@ msgstr ""
 "Tamany: %s\n"
 "Darrera modificació: %s"
 
-#: ../src/xfdesktop-special-file-icon.c:518
+#: ../src/xfdesktop-special-file-icon.c:522
 msgid "_Empty Trash"
 msgstr "Buida la pap_erera"
 
-#: ../src/xfdesktop-volume-icon.c:443
+#: ../src/xfdesktop-volume-icon.c:447
 #, c-format
 msgid ""
 "Removable Volume\n"
@@ -1005,7 +1005,7 @@ msgstr ""
 "Muntat a \"%s\"\n"
 "%s lliure (%s en total)"
 
-#: ../src/xfdesktop-volume-icon.c:450
+#: ../src/xfdesktop-volume-icon.c:454
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
@@ -1013,31 +1013,35 @@ msgstr ""
 "Volum extraïble\n"
 "No muntat encara"
 
-#: ../src/xfdesktop-volume-icon.c:476 ../src/xfdesktop-volume-icon.c:518
+#: ../src/xfdesktop-volume-icon.c:480 ../src/xfdesktop-volume-icon.c:522
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "No s'ha pogut expulsar \"%s\""
 
-#: ../src/xfdesktop-volume-icon.c:481 ../src/xfdesktop-volume-icon.c:523
+#: ../src/xfdesktop-volume-icon.c:485 ../src/xfdesktop-volume-icon.c:527
 msgid "Eject Failed"
 msgstr "No s'ha pogut expulsar"
 
-#: ../src/xfdesktop-volume-icon.c:555
+#: ../src/xfdesktop-volume-icon.c:559
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "No s'ha pogut muntar \"%s\""
 
-#: ../src/xfdesktop-volume-icon.c:558
+#: ../src/xfdesktop-volume-icon.c:562
 msgid "Mount Failed"
 msgstr "No s'ha pogut muntar"
 
-#: ../src/xfdesktop-volume-icon.c:699 ../src/xfdesktop-volume-icon.c:702
+#: ../src/xfdesktop-volume-icon.c:703 ../src/xfdesktop-volume-icon.c:706
 msgid "E_ject Volume"
 msgstr "_Expulsa el volum"
 
-#: ../src/xfdesktop-volume-icon.c:709
+#: ../src/xfdesktop-volume-icon.c:713
 msgid "_Mount Volume"
 msgstr "_Munta el volum"
+
+#: ../src/xfdesktop-window-icon.c:208
+msgid "_Window Actions"
+msgstr "Accions de _finestres"
 
 #~ msgid "Unable to contact the Xfce Trash service."
 #~ msgstr "No s’ha pogut contactar amb el servei de paperera Xfce"
