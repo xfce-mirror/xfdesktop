@@ -473,7 +473,7 @@ xfdesktop_volume_icon_eject_finish(GObject *object,
     g_return_if_fail(G_IS_ASYNC_RESULT(result));
     g_return_if_fail(XFDESKTOP_IS_VOLUME_ICON(icon));
 
-    if(!g_volume_eject_finish(volume, result, &error)) {
+    if(!g_volume_eject_with_operation_finish(volume, result, &error)) {
         /* ignore GIO errors handled internally */
         if(error->domain != G_IO_ERROR || error->code != G_IO_ERROR_FAILED_HANDLED) {
             gchar *volume_name = g_volume_get_name(volume);
@@ -515,7 +515,7 @@ xfdesktop_volume_icon_unmount_finish(GObject *object,
     g_return_if_fail(G_IS_ASYNC_RESULT(result));
     g_return_if_fail(XFDESKTOP_IS_VOLUME_ICON(icon));
 
-    if(!g_mount_unmount_finish(mount, result, &error)) {
+    if(!g_mount_unmount_with_operation_finish(mount, result, &error)) {
         /* ignore GIO errors handled internally */
         if(error->domain != G_IO_ERROR || error->code != G_IO_ERROR_FAILED_HANDLED) {
             gchar *mount_name = g_mount_get_name(mount);
@@ -631,18 +631,22 @@ xfdesktop_volume_icon_menu_toggle_mount(GtkWidget *widget,
 #ifdef HAVE_LIBNOTIFY
             xfdesktop_notify_eject(volume);
 #endif
-
-            g_volume_eject(volume, G_MOUNT_UNMOUNT_NONE, NULL,
-                           xfdesktop_volume_icon_eject_finish,
-                           g_object_ref(icon));
+            /* TODO: GMountOperation could be used to show what processes
+             *       are preventing an eject. */
+            g_volume_eject_with_operation(volume, G_MOUNT_UNMOUNT_NONE,
+                                          NULL, NULL,
+                                          xfdesktop_volume_icon_eject_finish,
+                                          g_object_ref(icon));
         } else {
 #ifdef HAVE_LIBNOTIFY
             xfdesktop_notify_unmount(mount);
 #endif
-
-            g_mount_unmount(mount, G_MOUNT_UNMOUNT_NONE, NULL,
-                            xfdesktop_volume_icon_unmount_finish, 
-                            g_object_ref(icon));
+            /* TODO: GMountOperation could be used to show what processes
+             *       are preventing an unmount. */
+            g_mount_unmount_with_operation(mount, G_MOUNT_UNMOUNT_NONE,
+                                           NULL, NULL,
+                                           xfdesktop_volume_icon_unmount_finish,
+                                           g_object_ref(icon));
         }
     } else {
         GMountOperation *operation;
