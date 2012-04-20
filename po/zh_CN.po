@@ -12,11 +12,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-13 22:06+0000\n"
+"Report-Msgid-Bugs-To: <xfce-i18n@xfce.org>\n"
+"POT-Creation-Date: 2012-04-20 09:21+0000\n"
 "PO-Revision-Date: 2010-11-27 22:17+0800\n"
 "Last-Translator: Chipong Luo <chipong.luo@yahoo.com>\n"
-"Language-Team: Chinese (Simplified) <xfce-i18n@xfce.org>\n"
+"Language-Team: Chinese (Simplified) <xfce-i18n-cn@xfce.org>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.1\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -103,62 +103,62 @@ msgstr "图片文件"
 msgid "All files"
 msgstr "所有文件"
 
-#: ../settings/main.c:1356
+#: ../settings/main.c:1363
 #, c-format
 msgid "Screen %d, Monitor %d (%s)"
 msgstr "屏幕 %d，显示器 %d(%s)"
 
-#: ../settings/main.c:1360
+#: ../settings/main.c:1367
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "屏幕 %d，显示器 %d"
 
-#: ../settings/main.c:1363
+#: ../settings/main.c:1370
 #, c-format
 msgid "Screen %d"
 msgstr "屏幕 %d"
 
-#: ../settings/main.c:1368
+#: ../settings/main.c:1375
 #, c-format
 msgid "Monitor %d (%s)"
 msgstr "显示器 %d(%s)"
 
-#: ../settings/main.c:1372
+#: ../settings/main.c:1379
 #, c-format
 msgid "Monitor %d"
 msgstr "显示器 %d"
 
-#: ../settings/main.c:1631
+#: ../settings/main.c:1638
 msgid "Settings manager socket"
 msgstr "设置管理器套接字"
 
-#: ../settings/main.c:1631
+#: ../settings/main.c:1638
 msgid "SOCKET ID"
 msgstr "套接字 ID"
 
-#: ../settings/main.c:1632
+#: ../settings/main.c:1639
 msgid "Version information"
 msgstr "版本信息"
 
-#: ../settings/main.c:1649
+#: ../settings/main.c:1656
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "输入 ‘%s --help’ 获取用法。"
 
-#: ../settings/main.c:1661
+#: ../settings/main.c:1668
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce 开发团队。保留所有权利。"
 
-#: ../settings/main.c:1662
+#: ../settings/main.c:1669
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "请向 <%s> 报告缺陷。"
 
-#: ../settings/main.c:1669
+#: ../settings/main.c:1676
 msgid "Desktop Settings"
 msgstr "桌面设置"
 
-#: ../settings/main.c:1671
+#: ../settings/main.c:1678
 msgid "Unable to contact settings server"
 msgstr "未能与设置服务器联系"
 
@@ -701,7 +701,7 @@ msgid "_Open in New Window"
 msgstr "在新窗口中打开(_O)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1425
-#: ../src/xfdesktop-special-file-icon.c:501 ../src/xfdesktop-volume-icon.c:683
+#: ../src/xfdesktop-special-file-icon.c:505 ../src/xfdesktop-volume-icon.c:691
 msgid "_Open"
 msgstr "打开(_O)"
 
@@ -758,7 +758,7 @@ msgid "Desktop _Settings..."
 msgstr "桌面设置(_S)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1744
-#: ../src/xfdesktop-volume-icon.c:731
+#: ../src/xfdesktop-volume-icon.c:739
 msgid "P_roperties..."
 msgstr "属性(_P)..."
 
@@ -929,7 +929,7 @@ msgstr "正在弹出设备"
 msgid "The device \"%s\" is being ejected. This may take some time"
 msgstr "正在弹出设备 “%s”。这可能需要一些时间"
 
-#: ../src/xfdesktop-regular-file-icon.c:567
+#: ../src/xfdesktop-regular-file-icon.c:571
 #, c-format
 msgid ""
 "Type: %s\n"
@@ -958,7 +958,7 @@ msgstr "回收站包含一个项目"
 msgid "Trash contains %d items"
 msgstr "回收站包含 %d 个项目"
 
-#: ../src/xfdesktop-special-file-icon.c:449
+#: ../src/xfdesktop-special-file-icon.c:453
 #, c-format
 msgid ""
 "%s\n"
@@ -969,11 +969,11 @@ msgstr ""
 "大小：%s\n"
 "上次修改：%s"
 
-#: ../src/xfdesktop-special-file-icon.c:518
+#: ../src/xfdesktop-special-file-icon.c:522
 msgid "_Empty Trash"
 msgstr "清空回收站(_E)"
 
-#: ../src/xfdesktop-volume-icon.c:443
+#: ../src/xfdesktop-volume-icon.c:447
 #, c-format
 msgid ""
 "Removable Volume\n"
@@ -984,7 +984,7 @@ msgstr ""
 "在 “%s” 挂载\n"
 "剩余 %s(共计 %s)"
 
-#: ../src/xfdesktop-volume-icon.c:450
+#: ../src/xfdesktop-volume-icon.c:454
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
@@ -992,29 +992,29 @@ msgstr ""
 "可移动卷\n"
 "还未挂载"
 
-#: ../src/xfdesktop-volume-icon.c:476 ../src/xfdesktop-volume-icon.c:518
+#: ../src/xfdesktop-volume-icon.c:480 ../src/xfdesktop-volume-icon.c:522
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "无法弹出 “%s”"
 
-#: ../src/xfdesktop-volume-icon.c:481 ../src/xfdesktop-volume-icon.c:523
+#: ../src/xfdesktop-volume-icon.c:485 ../src/xfdesktop-volume-icon.c:527
 msgid "Eject Failed"
 msgstr "无法弹出"
 
-#: ../src/xfdesktop-volume-icon.c:555
+#: ../src/xfdesktop-volume-icon.c:559
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "无法挂载 “%s”"
 
-#: ../src/xfdesktop-volume-icon.c:558
+#: ../src/xfdesktop-volume-icon.c:562
 msgid "Mount Failed"
 msgstr "无法挂载"
 
-#: ../src/xfdesktop-volume-icon.c:699 ../src/xfdesktop-volume-icon.c:702
+#: ../src/xfdesktop-volume-icon.c:707 ../src/xfdesktop-volume-icon.c:710
 msgid "E_ject Volume"
 msgstr "弹出卷(_J)"
 
-#: ../src/xfdesktop-volume-icon.c:709
+#: ../src/xfdesktop-volume-icon.c:717
 msgid "_Mount Volume"
 msgstr "挂载卷(_M)"
 
