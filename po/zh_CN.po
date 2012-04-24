@@ -12,8 +12,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
-"Report-Msgid-Bugs-To: <xfce-i18n@xfce.org>\n"
-"POT-Creation-Date: 2012-04-20 09:21+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-04-23 00:36+0000\n"
 "PO-Revision-Date: 2010-11-27 22:17+0800\n"
 "Last-Translator: Chipong Luo <chipong.luo@yahoo.com>\n"
 "Language-Team: Chinese (Simplified) <xfce-i18n-cn@xfce.org>\n"
@@ -168,7 +168,7 @@ msgstr "桌面 "
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Set desktop background and menu and icon behaviour"
-msgstr "设置桌面背景和菜单以及图标行为"
+msgstr "设置桌面背景、菜单和图标行为"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
 msgid "<b>Adjustments</b>"
@@ -188,7 +188,7 @@ msgstr "<b>图片</b>"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
 msgid "Add an image to the list"
-msgstr "给列表添加图片"
+msgstr "将图片添加入列表"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
 #: ../settings/xfdesktop-settings-ui.glade.h:6
@@ -227,17 +227,17 @@ msgstr "图片列表(_L)"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
 msgid "Increase or decrease the brightness of the final image"
-msgstr "增加或减弱最终图片的亮度"
+msgstr "增加或减弱图片的最终亮度"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
 msgid "Increase or decrease the color saturation of the final image"
-msgstr "增加或减弱最终图片的颜色饱和度"
+msgstr "增加或减弱图片的最终颜色饱和度"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
 msgid ""
 "Number of minutes before a different background is randomly selected from "
 "the list."
-msgstr "从此列表中随机选择一个不同的背景前的分钟数。"
+msgstr "从此列表中随机选择一个不同背景前的分钟数。"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Remove the selected image(s) from the list"
@@ -288,7 +288,7 @@ msgstr "指定背景图片后的颜色绘制样式"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
 msgid "St_retch this background across all monitors."
-msgstr "在整个屏幕上拉伸此背景(_S)"
+msgstr "在所有显示器上拉伸此背景(_S)"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
 msgid "St_yle:"
@@ -325,8 +325,8 @@ msgid ""
 "While in image list mode, select this option to automatically select a "
 "different background from the image list after a set number of minutes."
 msgstr ""
-"在图片列表模式时，选中此项在设置的分钟数之后从图片列表中自动选择一个不同的背"
-"景。"
+"在图片列表模式中，选中此项，在设置的分钟数后会从图片列表中自动选择"
+"一个不同的背景。"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:36
 #: ../settings/xfdesktop-settings-ui.glade.h:43
@@ -403,15 +403,15 @@ msgstr "中"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:18
 msgid "Minimized application icons"
-msgstr "最小化应用程序图标"
+msgstr "已最小化应用程序的图标"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:19
 msgid "Mo_difier:"
-msgstr "修饰键(_D)："
+msgstr "转义键(_D)："
 
 #: ../settings/xfdesktop-settings-ui.glade.h:20
 msgid "Modi_fier:"
-msgstr "修饰键(_F)："
+msgstr "转义键(_F)："
 
 #: ../settings/xfdesktop-settings-ui.glade.h:21
 msgid "None"
@@ -429,7 +429,7 @@ msgstr "选中此项在桌面上以自动生成的缩略图图标显示可预览
 
 #: ../settings/xfdesktop-settings-ui.glade.h:25
 msgid "Set desktop background and menu and icon behavior"
-msgstr "设置桌面背景和菜单以及图标行为"
+msgstr "设置桌面背景、菜单和图标行为"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:26
 msgid "Sh_ow application icons in menu"
@@ -453,7 +453,7 @@ msgstr "在桌面上右击时显示应用程序菜单(_D)"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:31
 msgid "Show s_ticky windows only in active workspace"
-msgstr "仅在活动工作区中显示已粘滞窗口(_T)"
+msgstr "仅在当前工作区中显示已粘滞窗口(_T)"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:32
 msgid "Show t_humbnails"
@@ -633,7 +633,7 @@ msgstr "桌面文件夹错误"
 #: ../src/xfdesktop-file-icon-manager.c:521
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
-msgstr "一个正常的同名文件已经存在。请删除或重命名它。"
+msgstr "一个正常的同名文件已经存在。请将其删除或重命名。"
 
 #: ../src/xfdesktop-file-icon-manager.c:624
 #: ../src/xfdesktop-file-icon-manager.c:668 ../src/xfdesktop-file-utils.c:863
@@ -645,7 +645,7 @@ msgstr "回收站错误"
 #: ../src/xfdesktop-file-icon-manager.c:625
 #: ../src/xfdesktop-file-icon-manager.c:669
 msgid "The selected files could not be trashed"
-msgstr "未能废弃选中的文件"
+msgstr "未能删除选中的文件"
 
 #: ../src/xfdesktop-file-icon-manager.c:626
 #: ../src/xfdesktop-file-icon-manager.c:670 ../src/xfdesktop-file-utils.c:762
@@ -751,7 +751,7 @@ msgstr "重命名(_R)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1724
 msgid "Arrange Desktop _Icons"
-msgstr "安排桌面图标(_A)"
+msgstr "安排桌面图标(_I)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1734
 msgid "Desktop _Settings..."
@@ -760,7 +760,7 @@ msgstr "桌面设置(_S)..."
 #: ../src/xfdesktop-file-icon-manager.c:1744
 #: ../src/xfdesktop-volume-icon.c:739
 msgid "P_roperties..."
-msgstr "属性(_P)..."
+msgstr "属性(_R)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2362
 msgid "Load Error"
