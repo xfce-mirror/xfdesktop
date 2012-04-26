@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-04-14 09:36+0000\n"
-"PO-Revision-Date: 2012-04-26 16:22+0100\n"
+"PO-Revision-Date: 2012-04-26 22:22+0100\n"
 "Last-Translator: Nuno Miguel <nunomgue@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -87,7 +87,7 @@ msgstr "Substituir"
 #: ../settings/main.c:858
 #, c-format
 msgid "Failed to write backdrop list to \"%s\""
-msgstr "Falha ao escrever a lista de fundos em \"%s\""
+msgstr "Falha ao escrever a lista de fundos para \"%s\""
 
 #: ../settings/main.c:885
 msgid "Add Image File(s)"
@@ -132,7 +132,7 @@ msgstr "Gestor de definições"
 
 #: ../settings/main.c:1631
 msgid "SOCKET ID"
-msgstr "ID de \"SOCKET\""
+msgstr "ID do SOCKET"
 
 #: ../settings/main.c:1632
 msgid "Version information"
@@ -195,7 +195,7 @@ msgstr "Automático"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
 msgid "Automatically pick a random image from a list file"
-msgstr "Escolher imagem aleatoriamente"
+msgstr "Escolher uma imagem aleatória automaticamente de um ficheiro de lista"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
 msgid "B_rightness:"
@@ -233,7 +233,7 @@ msgstr "Aumentar ou diminuir a saturação da imagem final"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
 msgid "Number of minutes before a different background is randomly selected from the list."
-msgstr "Número de minutos até que o fundo do ambiente de trabalho seja alterado automaticamente."
+msgstr "Número de minutos até que o fundo do ambiente de trabalho seja alterado aleatoriamente."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Remove the selected image(s) from the list"
@@ -623,7 +623,7 @@ msgstr "Erro na pasta do ambiente de trabalho"
 
 #: ../src/xfdesktop-file-icon-manager.c:521
 msgid "A normal file with the same name already exists. Please delete or rename it."
-msgstr "Já existe um ficheiro com o mesmo nome. Por favor, dê-lhe outro nome ou apague-o."
+msgstr "Já existe um ficheiro com o mesmo nome. Por favor, apague-o ou dê-lhe outro nome."
 
 #: ../src/xfdesktop-file-icon-manager.c:624
 #: ../src/xfdesktop-file-icon-manager.c:668
