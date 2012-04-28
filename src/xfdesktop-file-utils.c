@@ -1171,6 +1171,31 @@ xfdesktop_file_utils_execute(GFile *working_directory,
             uris[n] = g_file_get_uri(lp->data);
         uris[n] = NULL;
 
+        /* If the working_dir wasn't set check if this is a .desktop file
+         * we can parse a working dir from */
+        if(working_dir == NULL) {
+            GFileInfo *info = g_file_query_info(file,
+                                                XFDESKTOP_FILE_INFO_NAMESPACE,
+                                                G_FILE_QUERY_INFO_NONE,
+                                                NULL, NULL);
+
+            if(xfdesktop_file_utils_is_desktop_file(info)) {
+                XfceRc *rc;
+                gchar *path = g_file_get_path(file);
+                if(path != NULL) {
+                    rc = xfce_rc_simple_open(path, TRUE);
+                    if(rc != NULL) {
+                        working_dir = g_strdup(xfce_rc_read_entry(rc, "Path", NULL));
+                        xfce_rc_close(rc);
+                    }
+                    g_free(path);
+                }
+            }
+
+            if(info)
+                g_object_unref(info);
+        }
+
         if(!xfdesktop_file_manager_proxy_execute(fileman_proxy,
                                                  working_dir, uri,
                                                  (const gchar **)uris,
