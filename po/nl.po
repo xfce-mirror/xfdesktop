@@ -68,7 +68,7 @@ msgstr "Maak of laad achtergrondenlijst"
 msgid ""
 "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
 msgstr ""
-"Bestand \"%s\" is geen geldig achtergrondenlijstbestand. Wilt u het "
+"Bestand '%s' is geen geldig achtergrondenlijstbestand. Wilt u het "
 "overschrijven?"
 
 #: ../settings/main.c:543
@@ -711,7 +711,7 @@ msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr ""
-"Kon \"exo-desktop-item-edit\" niet uitvoeren, welke vereist is voor het "
+"Kon 'exo-desktop-item-edit' niet uitvoeren, hetgeen vereist is voor het "
 "maken en bewerken van starters en snelkoppelingen op het bureaublad."
 
 #: ../src/xfdesktop-file-icon-manager.c:1407
@@ -929,7 +929,7 @@ msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the "
 "media or disconnect the drive"
 msgstr ""
-"Het apparaat \"%s\" wordt door het systeem ontkoppeld. Gelieve het niet te "
+"Het apparaat '%s' wordt door het systeem ontkoppeld. Gelieve het niet te "
 "verwijderen."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
@@ -944,7 +944,7 @@ msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be "
 "removed. Please do not remove the media or disconnect the drive"
 msgstr ""
-"Er zijn gegevens die naar het apparaat \"%s\" geschreven moeten worden, "
+"Er zijn gegevens die naar het apparaat '%s' geschreven moeten worden, "
 "voordat het kan worden verwijderd. Gelieve het dus niet te verwijderen."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
@@ -1010,7 +1010,7 @@ msgid ""
 "%s left (%s total)"
 msgstr ""
 "Verwijderbaar medium\n"
-"Aangekoppeld in \"%s\"\n"
+"Aangekoppeld in '%s'\n"
 "%s over (%s totaal)"
 
 #: ../src/xfdesktop-volume-icon.c:454
@@ -1159,7 +1159,7 @@ msgstr "Vensteracties"
 
 #~ msgid ""
 #~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-#~ msgstr "Kon geen map \"%s\" aanmaken om bureaubladbestanden in op te slaan:"
+#~ msgstr "Kon geen map '%s' aanmaken om bureaubladbestanden in op te slaan:"
 
 #~ msgid "Create Folder Failed"
 #~ msgstr "Kon geen Map maken"
@@ -1174,7 +1174,7 @@ msgstr "Vensteracties"
 #~ msgstr "Gelieve het bestand te hernoemen of te verwijderen."
 
 #~ msgid "Rename \"%s\""
-#~ msgstr "Hernoem \"%s\""
+#~ msgstr "Hernoem '%s'"
 
 #~ msgid "Enter the new name:"
 #~ msgstr "Voer de nieuwe naam in:"
@@ -1183,7 +1183,7 @@ msgstr "Vensteracties"
 #~ msgstr "Hernoem"
 
 #~ msgid "Are you sure that you want to delete \"%s\"?"
-#~ msgstr "Weet u zeker dat u \"%s\" wilt verwijderen?"
+#~ msgstr "Weet u zeker dat u '%s' wilt verwijderen?"
 
 #~ msgid "Question"
 #~ msgstr "Vraag"
@@ -1208,7 +1208,7 @@ msgstr "Vensteracties"
 #~ "(zoals die van Thunar)."
 
 #~ msgid "Unable to create folder named \"%s\":"
-#~ msgstr "Kon geen map maken met de naam \"%s\":"
+#~ msgstr "Kon geen map maken met de naam '%s':"
 
 #~ msgid "Create New Folder"
 #~ msgstr "Maak nieuwe map"
@@ -1220,13 +1220,13 @@ msgstr "Vensteracties"
 #~ msgstr "Maak"
 
 #~ msgid "Unable to create file named \"%s\":"
-#~ msgstr "Kon geen bestand maken met de naam \"%s\":"
+#~ msgstr "Kon geen bestand maken met de naam '%s':"
 
 #~ msgid "Create File Failed"
 #~ msgstr "Kan geen bestand maken"
 
 #~ msgid "Create Document from template \"%s\""
-#~ msgstr "Maak document vanuit sjabloon \"%s\""
+#~ msgstr "Maak document vanuit sjabloon '%s'"
 
 #~ msgid "Create Empty File"
 #~ msgstr "Leeg bestand maken"
@@ -1235,13 +1235,13 @@ msgstr "Vensteracties"
 #~ msgstr "Nieuw leeg bestand"
 
 #~ msgid "Unable to create file \"%s\":"
-#~ msgstr "Kan bestand \"%s\" niet maken:"
+#~ msgstr "Kan bestand '%s' niet maken:"
 
 #~ msgid "Create Error"
 #~ msgstr "Maakfout"
 
 #~ msgid "Failed to run \"%s\":"
-#~ msgstr "Kan \"%s\" niet uitvoeren:"
+#~ msgstr "Kan '%s' niet uitvoeren:"
 
 #~ msgid "Run Error"
 #~ msgstr "Uitvoerfout"
@@ -1250,7 +1250,7 @@ msgstr "Vensteracties"
 #~ msgstr "De bijbehorende toepassing kon niet gevonden of uitgevoerd worden."
 
 #~ msgid "Unable to set default application for \"%s\" to \"%s\":"
-#~ msgstr "Kan standaardtoepassing voor \"%s\" niet instellen op \"%s\":"
+#~ msgstr "Kan standaardtoepassing voor '%s' niet instellen op '%s':"
 
 #~ msgid "Properties Error"
 #~ msgstr "Eigenschappenfout"
@@ -1313,13 +1313,13 @@ msgstr "Vensteracties"
 #~ msgstr "Ja op _alles"
 
 #~ msgid "There was an error moving \"%s\" to \"%s\":"
-#~ msgstr "Fout bij het verplaatsen van \"%s\" naar \"%s\":"
+#~ msgstr "Fout bij het verplaatsen van '%s' naar '%s':"
 
 #~ msgid "There was an error copying \"%s\" to \"%s\":"
-#~ msgstr "Fout bij het kopiëren van \"%s\" naar \"%s\":"
+#~ msgstr "Fout bij het kopiëren van '%s' naar '%s':"
 
 #~ msgid "There was an error linking \"%s\" to \"%s\":"
-#~ msgstr "Fout bij het koppelen van \"%s\" aan \"%s\":"
+#~ msgstr "Fout bij het koppelen van '%s' aan '%s':"
 
 #~ msgid "File Error"
 #~ msgstr "Bestandfout"
