@@ -1,0 +1,2043 @@
+# salepetronije <salepetronije@gmail.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: xfdesktop 4.6.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-04-19 04:36+0000\n"
+"PO-Revision-Date: 2012-06-12 08:32+0200\n"
+"Last-Translator: salepetronije <salepetronije@gmail.com>\n"
+"Language-Team: српски <xfce-i18n@xfce.org>\n"
+"Language: sr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: ../common/xfdesktop-common.c:96
+#: ../common/xfdesktop-common.c:200
+#, c-format
+msgid "Backdrop list file is not valid"
+msgstr "Датотека позадинске листе није исправна"
+
+#. no need to escape markup; it's already done for us
+#: ../settings/main.c:166
+#, c-format
+msgid ""
+"%s\n"
+"<i>Size: %dx%d</i>"
+msgstr ""
+"%s\n"
+"<i>Величина: %dx%d</i>"
+
+#: ../settings/main.c:299
+#: ../src/xfdesktop-special-file-icon.c:271
+#: ../src/xfdesktop-special-file-icon.c:434
+msgid "Home"
+msgstr "Лична фасцикла"
+
+#: ../settings/main.c:301
+msgid "Filesystem"
+msgstr "Систем датотека"
+
+#: ../settings/main.c:303
+msgid "Trash"
+msgstr "Корпа"
+
+#: ../settings/main.c:305
+msgid "Removable Devices"
+msgstr "Уклоњиви уређаји"
+
+#: ../settings/main.c:485
+#, c-format
+msgid "Cannot create backdrop list \"%s\""
+msgstr "Не успевам да направим позадинску листу „%s“"
+
+#: ../settings/main.c:489
+#: ../settings/main.c:862
+msgid "Backdrop List Error"
+msgstr "Уредник позадинске листе"
+
+#: ../settings/main.c:514
+msgid "Create/Load Backdrop List"
+msgstr "Направи/Учитај позадинску листу"
+
+#: ../settings/main.c:538
+#, c-format
+msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr ""
+"Датотека „%s“ није ваљана позадинска листа.  Да ли желите да је препишете?"
+
+#: ../settings/main.c:543
+msgid "Invalid List File"
+msgstr "Датотека листе није исправна"
+
+#: ../settings/main.c:546
+msgid "Overwriting the file will cause its contents to be lost."
+msgstr "Преписивање датотеке може узроковати да њен садржај буде изгубљен."
+
+#: ../settings/main.c:548
+msgid "Replace"
+msgstr "Замени"
+
+#: ../settings/main.c:858
+#, c-format
+msgid "Failed to write backdrop list to \"%s\""
+msgstr "Не успевам да упишем позадинску листу у „%s“"
+
+#: ../settings/main.c:885
+msgid "Add Image File(s)"
+msgstr "Додај датотеку слике или више њих"
+
+#: ../settings/main.c:894
+msgid "Image files"
+msgstr "Датотеке слика"
+
+#: ../settings/main.c:899
+msgid "All files"
+msgstr "Све датотеке"
+
+#: ../settings/main.c:1356
+#, c-format
+msgid "Screen %d, Monitor %d (%s)"
+msgstr "Екран %d, Монитор %d (%s)"
+
+#: ../settings/main.c:1360
+#, c-format
+msgid "Screen %d, Monitor %d"
+msgstr "Екран %d, Монитор %d"
+
+#: ../settings/main.c:1363
+#, c-format
+msgid "Screen %d"
+msgstr "Екран %d"
+
+#: ../settings/main.c:1368
+#, c-format
+msgid "Monitor %d (%s)"
+msgstr "Монитор %d (%s)"
+
+#: ../settings/main.c:1372
+#, c-format
+msgid "Monitor %d"
+msgstr "Монитор %d"
+
+#: ../settings/main.c:1631
+msgid "Settings manager socket"
+msgstr "Управник подешавања утичнице"
+
+#: ../settings/main.c:1631
+msgid "SOCKET ID"
+msgstr "ИБ УТИЧНИЦЕ"
+
+#: ../settings/main.c:1632
+msgid "Version information"
+msgstr "Подаци о издању"
+
+#: ../settings/main.c:1649
+#, c-format
+msgid "Type '%s --help' for usage."
+msgstr "Упишите „%s --help“ за коришћење."
+
+#: ../settings/main.c:1661
+msgid "The Xfce development team. All rights reserved."
+msgstr "ИксФЦЕ развојна дружина. Сва права су задржана."
+
+#: ../settings/main.c:1662
+#, c-format
+msgid "Please report bugs to <%s>."
+msgstr "Молим пријавите грешку на <%s>."
+
+#: ../settings/main.c:1669
+msgid "Desktop Settings"
+msgstr "Подешавања радне површи"
+
+#: ../settings/main.c:1671
+msgid "Unable to contact settings server"
+msgstr "Не успевам да покренем сервер подешавања"
+
+#: ../settings/xfce-backdrop-settings.desktop.in.h:1
+msgid "Desktop "
+msgstr "Радна површ "
+
+#: ../settings/xfce-backdrop-settings.desktop.in.h:2
+msgid "Set desktop background and menu and icon behaviour"
+msgstr "Подеси позадину површи и понашање изборника и икона"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
+msgid "<b>Adjustments</b>"
+msgstr "<b>Подешавања</b>"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
+msgid "<b>Colors</b>"
+msgstr "<b>Боје</b>"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
+msgid "<b>Image</b>"
+msgstr "<b>Слика</b>"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
+msgid "<b>Images</b>"
+msgstr "<b>Слике</b>"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
+msgid "Add an image to the list"
+msgstr "Додајте слику на листу"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
+#: ../settings/xfdesktop-settings-ui.glade.h:6
+msgid "Auto"
+msgstr "Аутоматски"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
+msgid "Automatically pick a random image from a list file"
+msgstr "Сам изабери насумичну слику из листе"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
+msgid "B_rightness:"
+msgstr "О_светљење:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
+#: ../settings/xfdesktop-settings-ui.glade.h:8
+msgid "Centered"
+msgstr "Центрирано"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
+msgid "Create a new list, or load an existing one"
+msgstr "Направи нову листу, или учитај постојећу"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
+msgid "Don't display an image at all"
+msgstr "Не приказуј слику"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
+#: ../settings/xfdesktop-settings-ui.glade.h:12
+msgid "Horizontal gradient"
+msgstr "Водоравни прелив"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
+msgid "Image _list"
+msgstr "_Листа слика"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
+msgid "Increase or decrease the brightness of the final image"
+msgstr "Повећај или смањи осветљење крајње слике"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
+msgid "Increase or decrease the color saturation of the final image"
+msgstr "Повећај или смањи засићење боја крајње слике"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
+msgid "Number of minutes before a different background is randomly selected from the list."
+msgstr "Број минута пре насумичног избора друге позадине са листе."
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
+msgid "Remove the selected image(s) from the list"
+msgstr "Уклони слику или више њих са листе"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
+msgid "Sa_turation:"
+msgstr "_Засићеност:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
+#: ../settings/xfdesktop-settings-ui.glade.h:23
+msgid "Scaled"
+msgstr "Раширено"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
+msgid "Select First Color"
+msgstr "Одабери прву боју"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
+msgid "Select Second Color"
+msgstr "одабери другу боју"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
+msgid "Select a single image as the backdrop"
+msgstr "Изабери једну слику као позадину"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
+#: ../settings/xfdesktop-settings-ui.glade.h:35
+msgid "Solid color"
+msgstr "Пуна боја"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
+msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
+msgstr "Одреди „десну“ или „доњу“ боју прелива"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
+msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr "Одабери пуну боју, или „леву“ или „горњу“ боју прелива"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
+msgid "Specify how the image will be resized to fit the screen"
+msgstr ""
+"Одреди како ће слици бити промењена величина да би се уклопила на радну "
+"површ"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
+msgid "Specify the style of the color drawn behind the backdrop image"
+msgstr "Одреди начин цртања боје иза позадинске слике"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
+msgid "St_retch this background across all monitors."
+msgstr "Ра_звуци ову позадину преко свих монитора."
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
+msgid "St_yle:"
+msgstr "На_чин:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
+#: ../settings/xfdesktop-settings-ui.glade.h:37
+msgid "Stretched"
+msgstr "Развучена"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
+#: ../settings/xfdesktop-settings-ui.glade.h:38
+msgid "Tiled"
+msgstr "Поплочана"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
+#: ../settings/xfdesktop-settings-ui.glade.h:39
+msgid "Transparent"
+msgstr "Провидна"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
+#: ../settings/xfdesktop-settings-ui.glade.h:42
+msgid "Vertical gradient"
+msgstr "Усправни прелив"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
+msgid "When multiple monitors are present, select this option to stretch the current background over all of them."
+msgstr ""
+"Када је присутно више монитора, одреди ову могућност да би развукао позадину "
+"по свима."
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
+msgid "While in image list mode, select this option to automatically select a different background from the image list after a set number of minutes."
+msgstr ""
+"При приказу позадинске листе, одабери ову могућност да би се позадине мењале "
+"после задатог броја минута."
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:36
+#: ../settings/xfdesktop-settings-ui.glade.h:43
+msgid "Zoomed"
+msgstr "Увећана"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:37
+msgid "_Change the background (in minutes):"
+msgstr "_Промени позадину (у минутима):"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:38
+msgid "_None"
+msgstr "_Ништа"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:39
+msgid "_Single image"
+msgstr "_Једна слика"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:1
+msgid "<b>Appearance</b>"
+msgstr "<b>Изглед</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:2
+msgid "<b>Default Icons</b>"
+msgstr "<b>Задате иконе</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:3
+msgid "<b>Desktop Menu</b>"
+msgstr "<b>Изборник радне површи</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:4
+msgid "<b>Window List Menu</b>"
+msgstr "<b>Изборник листе прозора </b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:5
+msgid "Alt"
+msgstr "Алт"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:7
+msgid "B_utton:"
+msgstr "Д_угме:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:9
+msgid "Control"
+msgstr "Контрол"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:10
+#: ../src/xfce-desktop.c:793
+msgid "Desktop"
+msgstr "Радна површ"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:11
+msgid "File/launcher icons"
+msgstr "Датотека/покретач икона"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:13
+msgid "Icon _size:"
+msgstr "_Величина иконе:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:14
+msgid "Icon _type:"
+msgstr "_Врста иконе:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:15
+msgid "Label trans_parency:"
+msgstr "Ознака прови_дности:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:16
+msgid "Left"
+msgstr "Лево"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:17
+msgid "Middle"
+msgstr "Средње"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:18
+msgid "Minimized application icons"
+msgstr "Умањене иконе програма"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:19
+msgid "Mo_difier:"
+msgstr "Из_мењивач:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:20
+msgid "Modi_fier:"
+msgstr "Изме_њивач:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:21
+msgid "None"
+msgstr "Ништа"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:22
+msgid "Right"
+msgstr "Десно"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:24
+msgid "Select this option to display preview-able files on the desktop as automatically generated thumbnail icons."
+msgstr ""
+"Одаберите ову могућност да би се приказивале датотеке с прегледом на радној "
+"површини као аутоматски створене умањене сличице."
+
+#: ../settings/xfdesktop-settings-ui.glade.h:25
+msgid "Set desktop background and menu and icon behavior"
+msgstr "Подеси позадину површи и понашање изборника и икона"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:26
+msgid "Sh_ow application icons in menu"
+msgstr "При_кажи иконе програма у изборнику"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:27
+msgid "Shift"
+msgstr "Шифт"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:28
+msgid "Show _application icons in menu"
+msgstr "Прикажи иконе _програма у изборнику"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:29
+msgid "Show _window list menu on desktop middle click"
+msgstr "Прикажи изборник листе _прозора на средњи клик по радној површи"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:30
+msgid "Show applications menu on _desktop right click"
+msgstr "Прикажи изборник програма на десни клик по _радној површи"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:31
+msgid "Show s_ticky windows only in active workspace"
+msgstr "Прикажи _лепљиве прозоре само на тренутној радној површи"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:32
+msgid "Show t_humbnails"
+msgstr "Прикажи у_мањене сличице"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:33
+msgid "Show workspace _names in list"
+msgstr "Прикажи _имена радних површи у листи"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:34
+msgid "Single _click to activate items"
+msgstr "Један _клик покреће ставке"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:36
+msgid "Specify the transparency level for the rounded label drawn behind the icon text"
+msgstr "Одреди ниво провидности за обла обележја исцртана иза икона текста"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:40
+msgid "Use _submenus for the windows in each workspace"
+msgstr "Користи _падајући избор за прозоре на свакој радној површи"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:41
+msgid "Use custom _font size:"
+msgstr "Користи прилагођен _словни лик величине:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:44
+msgid "_Background"
+msgstr "_Позадина"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:45
+msgid "_Button:"
+msgstr "_Дугме:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:46
+msgid "_Edit desktop menu"
+msgstr "_Уреди изборник радне површи"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:47
+msgid "_Icons"
+msgstr "_Иконе"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:48
+msgid "_Menus"
+msgstr "_Изборници"
+
+#: ../src/main.c:243
+msgid "Display version information"
+msgstr "Прикажи податке о издању"
+
+#: ../src/main.c:244
+msgid "Reload all settings, refresh image list"
+msgstr "Поново учитај сва подешавања, освежи листу слика"
+
+#: ../src/main.c:245
+msgid "Pop up the menu (at the current mouse position)"
+msgstr "Искачући изборник (на тренутном положају показивача миша)"
+
+#: ../src/main.c:246
+msgid "Pop up the window list (at the current mouse position)"
+msgstr "Искачући изборник прозора (на тренутном положају приказивача миша)"
+
+#: ../src/main.c:248
+msgid "Automatically arrange all the icons on the desktop"
+msgstr "Аутоматски уреди положај свих икона на радној површи"
+
+#: ../src/main.c:250
+msgid "Cause xfdesktop to quit"
+msgstr "Узрокује искључење иксф радне површи"
+
+#: ../src/main.c:270
+#, c-format
+msgid "Failed to parse arguments: %s\n"
+msgstr "Нисам успео да обрадим аргументе: %s\n"
+
+#: ../src/main.c:278
+#, c-format
+msgid "This is %s version %s, running on Xfce %s.\n"
+msgstr "Ово је %s издање %s, на ИксФЦЕу %s.\n"
+
+#: ../src/main.c:280
+#, c-format
+msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
+msgstr "Изграђено наГТК+ %d.%d.%d, с везама ка ГТК+ %d.%d.%d."
+
+#: ../src/main.c:284
+#, c-format
+msgid "Build options:\n"
+msgstr "Опције израде:\n"
+
+#: ../src/main.c:285
+#, c-format
+msgid "    Desktop Menu:        %s\n"
+msgstr "    Изборник радне површи:        %s\n"
+
+#: ../src/main.c:287
+#: ../src/main.c:294
+#: ../src/main.c:301
+msgid "enabled"
+msgstr "омогућен"
+
+#: ../src/main.c:289
+#: ../src/main.c:296
+#: ../src/main.c:303
+msgid "disabled"
+msgstr "онемогућен"
+
+#: ../src/main.c:292
+#, c-format
+msgid "    Desktop Icons:       %s\n"
+msgstr "    Иконе површи:       %s\n"
+
+#: ../src/main.c:299
+#, c-format
+msgid "    Desktop File Icons:  %s\n"
+msgstr "    Иконе датотека површи:  %s\n"
+
+#: ../src/main.c:332
+#, c-format
+msgid "%s is not running.\n"
+msgstr "%s није покренут.\n"
+
+#: ../src/menu.c:106
+msgid "_Applications"
+msgstr "_Програми"
+
+#: ../src/windowlist.c:229
+msgid "Window List"
+msgstr "Листа прозора"
+
+#: ../src/windowlist.c:255
+#, c-format
+msgid "<b>Workspace %d</b>"
+msgstr "<b>Радна површ %d</b>"
+
+#: ../src/windowlist.c:264
+#, c-format
+msgid "Workspace %d"
+msgstr "Радни површ %d"
+
+#: ../src/windowlist.c:266
+#, c-format
+msgid "<i>Workspace %d</i>"
+msgstr "<i>Радна површ %d</i>"
+
+#: ../src/windowlist.c:362
+#: ../src/windowlist.c:365
+msgid "_Add Workspace"
+msgstr "_Додај радну површ"
+
+#: ../src/windowlist.c:373
+#, c-format
+msgid "_Remove Workspace %d"
+msgstr "_Уклони радну површ %d"
+
+#: ../src/windowlist.c:376
+#, c-format
+msgid "_Remove Workspace '%s'"
+msgstr "_Уклони радну површ „%s“"
+
+#: ../src/xfce-desktop.c:1082
+#, c-format
+msgid "Unable to load image from backdrop list file \"%s\""
+msgstr "Не успевам да учитам слику из датотеке позадинске листе „%s“"
+
+#: ../src/xfce-desktop.c:1084
+msgid "Desktop Error"
+msgstr "Грешка окружења"
+
+#: ../src/xfdesktop-file-icon-manager.c:497
+#: ../src/xfdesktop-file-icon-manager.c:514
+#, c-format
+msgid "Could not create the desktop folder \"%s\""
+msgstr "Не могу да направим фасциклу радне површи „%s“"
+
+#: ../src/xfdesktop-file-icon-manager.c:502
+#: ../src/xfdesktop-file-icon-manager.c:519
+msgid "Desktop Folder Error"
+msgstr "Грешка фасцикле радне површи"
+
+#: ../src/xfdesktop-file-icon-manager.c:521
+msgid "A normal file with the same name already exists. Please delete or rename it."
+msgstr ""
+"Нормална датотека са истим именом већ постоји. Молим, преименујте је или "
+"избришите."
+
+#: ../src/xfdesktop-file-icon-manager.c:624
+#: ../src/xfdesktop-file-icon-manager.c:668
+#: ../src/xfdesktop-file-utils.c:863
+#: ../src/xfdesktop-file-utils.c:878
+#: ../src/xfdesktop-file-utils.c:910
+#: ../src/xfdesktop-file-utils.c:924
+msgid "Trash Error"
+msgstr "Грешка смећа"
+
+#: ../src/xfdesktop-file-icon-manager.c:625
+#: ../src/xfdesktop-file-icon-manager.c:669
+msgid "The selected files could not be trashed"
+msgstr "Одабрана датотека не може у смеће"
+
+#: ../src/xfdesktop-file-icon-manager.c:626
+#: ../src/xfdesktop-file-icon-manager.c:670
+#: ../src/xfdesktop-file-utils.c:762
+#: ../src/xfdesktop-file-utils.c:821
+#: ../src/xfdesktop-file-utils.c:979
+#: ../src/xfdesktop-file-utils.c:1035
+#: ../src/xfdesktop-file-utils.c:1085
+#: ../src/xfdesktop-file-utils.c:1135
+#: ../src/xfdesktop-file-utils.c:1212
+#: ../src/xfdesktop-file-utils.c:1273
+#: ../src/xfdesktop-file-utils.c:1346
+#: ../src/xfdesktop-file-utils.c:1424
+msgid "This feature requires a file manager service to be present (such as the one supplied by Thunar)."
+msgstr ""
+"Ова могућност захтева присутност сервиса управника датотека (као што је она "
+"што долази с Тунаром)."
+
+#. printf is to be translator-friendly
+#: ../src/xfdesktop-file-icon-manager.c:770
+#: ../src/xfdesktop-file-icon-manager.c:1349
+#, c-format
+msgid "Unable to launch \"%s\":"
+msgstr "Не успевам да покренем „%s“:"
+
+#: ../src/xfdesktop-file-icon-manager.c:772
+#: ../src/xfdesktop-file-icon-manager.c:1033
+#: ../src/xfdesktop-file-icon-manager.c:1350
+#: ../src/xfdesktop-file-utils.c:707
+#: ../src/xfdesktop-file-utils.c:1118
+#: ../src/xfdesktop-file-utils.c:1133
+#: ../src/xfdesktop-file-utils.c:1185
+#: ../src/xfdesktop-file-utils.c:1210
+#: ../src/xfdesktop-file-utils.c:1256
+#: ../src/xfdesktop-file-utils.c:1271
+msgid "Launch Error"
+msgstr "Грешка покретања програма"
+
+#: ../src/xfdesktop-file-icon-manager.c:957
+#, c-format
+msgid "_Open With \"%s\""
+msgstr "_Отвори програмом „%s“"
+
+#: ../src/xfdesktop-file-icon-manager.c:960
+#, c-format
+msgid "Open With \"%s\""
+msgstr "Отвори програмом „%s“"
+
+#: ../src/xfdesktop-file-icon-manager.c:1035
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgstr ""
+"Не успевам да покренем \"exo-desktop-item-edit\", који је неопходан за "
+"прављење и уређивање покретача и веза на радном простору."
+
+#: ../src/xfdesktop-file-icon-manager.c:1407
+msgid "_Open all"
+msgstr "_Отвори све"
+
+#: ../src/xfdesktop-file-icon-manager.c:1423
+msgid "_Open in New Window"
+msgstr "_Отвори у новом прозору"
+
+#: ../src/xfdesktop-file-icon-manager.c:1425
+#: ../src/xfdesktop-special-file-icon.c:505
+#: ../src/xfdesktop-volume-icon.c:687
+msgid "_Open"
+msgstr "_Отвори"
+
+#. create launcher item
+#: ../src/xfdesktop-file-icon-manager.c:1444
+msgid "Create _Launcher..."
+msgstr "Направи _покретач..."
+
+#. create link item
+#: ../src/xfdesktop-file-icon-manager.c:1460
+msgid "Create _URL Link..."
+msgstr "Направи везу _адресе..."
+
+#. create folder item
+#: ../src/xfdesktop-file-icon-manager.c:1476
+msgid "Create _Folder..."
+msgstr "Направи _фасциклу..."
+
+#. create from template submenu
+#: ../src/xfdesktop-file-icon-manager.c:1491
+msgid "Create From _Template"
+msgstr "Направи из _шаблона"
+
+#: ../src/xfdesktop-file-icon-manager.c:1517
+msgid "_Empty File"
+msgstr "_Празан документ"
+
+#: ../src/xfdesktop-file-icon-manager.c:1533
+msgid "_Execute"
+msgstr "_Изврши"
+
+#: ../src/xfdesktop-file-icon-manager.c:1553
+msgid "_Edit Launcher"
+msgstr "_Уреди покретач"
+
+#: ../src/xfdesktop-file-icon-manager.c:1588
+msgid "Open With"
+msgstr "Отвори програмом"
+
+#: ../src/xfdesktop-file-icon-manager.c:1614
+msgid "Open With Other _Application..."
+msgstr "Отвори другим _програмом..."
+
+#: ../src/xfdesktop-file-icon-manager.c:1706
+msgid "_Rename..."
+msgstr "_Преименуј..."
+
+#: ../src/xfdesktop-file-icon-manager.c:1724
+msgid "Arrange Desktop _Icons"
+msgstr "Распореди _иконе радне површи"
+
+#: ../src/xfdesktop-file-icon-manager.c:1734
+msgid "Desktop _Settings..."
+msgstr "_Подешавања радне површи..."
+
+#: ../src/xfdesktop-file-icon-manager.c:1744
+#: ../src/xfdesktop-volume-icon.c:735
+msgid "P_roperties..."
+msgstr "О_собине..."
+
+#: ../src/xfdesktop-file-icon-manager.c:2362
+msgid "Load Error"
+msgstr "Грешка учитавања"
+
+#: ../src/xfdesktop-file-icon-manager.c:2364
+msgid "Failed to load the desktop folder"
+msgstr "Не успевам да учитам фасциклу радне површи"
+
+#: ../src/xfdesktop-file-icon-manager.c:2938
+msgid "Copy _Here"
+msgstr "Умножи _овде"
+
+#: ../src/xfdesktop-file-icon-manager.c:2938
+msgid "_Move Here"
+msgstr "_Премести овде"
+
+#: ../src/xfdesktop-file-icon-manager.c:2938
+msgid "_Link Here"
+msgstr "_Повежи овде"
+
+#. TRANSLATORS: file was modified less than one day ago
+#: ../src/xfdesktop-file-utils.c:137
+#, c-format
+msgid "Today at %X"
+msgstr "Данас у %X"
+
+#. TRANSLATORS: file was modified less than two days ago
+#: ../src/xfdesktop-file-utils.c:141
+#, c-format
+msgid "Yesterday at %X"
+msgstr "Јуче у %X"
+
+#. Days from last week
+#: ../src/xfdesktop-file-utils.c:146
+#, c-format
+msgid "%A at %X"
+msgstr "%A у %X"
+
+#. Any other date
+#: ../src/xfdesktop-file-utils.c:149
+#, c-format
+msgid "%x at %X"
+msgstr "%x у %X"
+
+#. the file_time is invalid
+#: ../src/xfdesktop-file-utils.c:159
+msgid "Unknown"
+msgstr "Непознато"
+
+#: ../src/xfdesktop-file-utils.c:708
+msgid "The folder could not be opened"
+msgstr "Не успевам да отворим фасциклу"
+
+#: ../src/xfdesktop-file-utils.c:745
+#: ../src/xfdesktop-file-utils.c:760
+msgid "Rename Error"
+msgstr "Грешка преименовања"
+
+#: ../src/xfdesktop-file-utils.c:746
+#: ../src/xfdesktop-file-utils.c:761
+msgid "The file could not be renamed"
+msgstr "Нисам успео преименовати датотеку"
+
+#: ../src/xfdesktop-file-utils.c:804
+#: ../src/xfdesktop-file-utils.c:819
+msgid "Delete Error"
+msgstr "Грешка брисања"
+
+#: ../src/xfdesktop-file-utils.c:805
+#: ../src/xfdesktop-file-utils.c:820
+msgid "The selected files could not be deleted"
+msgstr "Обележена датотека се не може обрисати"
+
+#: ../src/xfdesktop-file-utils.c:864
+#: ../src/xfdesktop-file-utils.c:879
+msgid "The selected files could not be moved to the trash"
+msgstr "Обележена датотека се не може преместити у смеће"
+
+#: ../src/xfdesktop-file-utils.c:880
+#: ../src/xfdesktop-file-utils.c:926
+msgid "This feature requires a trash service to be present (such as the one supplied by Thunar)."
+msgstr ""
+"Ова могућност захтева присутност сервиса смећа (као што је она коју пружа "
+"Тунар)."
+
+#: ../src/xfdesktop-file-utils.c:911
+#: ../src/xfdesktop-file-utils.c:925
+msgid "Could not empty the trash"
+msgstr "Не успевам испразнити корпу"
+
+#: ../src/xfdesktop-file-utils.c:962
+#: ../src/xfdesktop-file-utils.c:977
+msgid "Create File Error"
+msgstr "Грешка стварања датотеке"
+
+#: ../src/xfdesktop-file-utils.c:963
+#: ../src/xfdesktop-file-utils.c:978
+msgid "Could not create a new file"
+msgstr "Нисам успео да направим нову датотеку"
+
+#: ../src/xfdesktop-file-utils.c:1018
+#: ../src/xfdesktop-file-utils.c:1033
+msgid "Create Document Error"
+msgstr "Грешка стварања документа"
+
+#: ../src/xfdesktop-file-utils.c:1019
+#: ../src/xfdesktop-file-utils.c:1034
+msgid "Could not create a new document from the template"
+msgstr "Нисам успео да направим нови документ из шаблона"
+
+#: ../src/xfdesktop-file-utils.c:1068
+#: ../src/xfdesktop-file-utils.c:1083
+msgid "File Properties Error"
+msgstr "Грешка својстава датотеке"
+
+#: ../src/xfdesktop-file-utils.c:1069
+#: ../src/xfdesktop-file-utils.c:1084
+msgid "The file properties dialog could not be opened"
+msgstr "Нисам успео да отворим дијалог својства датотеке"
+
+#: ../src/xfdesktop-file-utils.c:1119
+#: ../src/xfdesktop-file-utils.c:1134
+msgid "The file could not be opened"
+msgstr "Датотека се не може отворити"
+
+#: ../src/xfdesktop-file-utils.c:1182
+#: ../src/xfdesktop-file-utils.c:1207
+#, c-format
+msgid "Failed to run \"%s\""
+msgstr "Нисам успео да покренем „%s“"
+
+#: ../src/xfdesktop-file-utils.c:1257
+#: ../src/xfdesktop-file-utils.c:1272
+msgid "The application chooser could not be opened"
+msgstr "Изабирач програма се није отворио"
+
+#: ../src/xfdesktop-file-utils.c:1330
+#: ../src/xfdesktop-file-utils.c:1344
+#: ../src/xfdesktop-file-utils.c:1406
+#: ../src/xfdesktop-file-utils.c:1422
+msgid "Transfer Error"
+msgstr "Грешка преноса"
+
+#: ../src/xfdesktop-file-utils.c:1331
+#: ../src/xfdesktop-file-utils.c:1345
+#: ../src/xfdesktop-file-utils.c:1407
+#: ../src/xfdesktop-file-utils.c:1423
+msgid "The file transfer could not be performed"
+msgstr "Не може се извршити пренос датотека"
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:128
+msgid "Unmounting device"
+msgstr "Демонтирам уређај"
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:131
+#, c-format
+msgid "The device \"%s\" is being unmounted by the system. Please do not remove the media or disconnect the drive"
+msgstr ""
+"Уређај „%s“ је демонтиран. Молим, не уклањајте уређај и не прекидајте везу"
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:138
+#: ../src/xfdesktop-notify.c:262
+msgid "Writing data to device"
+msgstr "Пишем податке на уређај"
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:141
+#: ../src/xfdesktop-notify.c:265
+#, c-format
+msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
+msgstr ""
+"Одређени подаци требају бити уписани на уређај „%s“, да би уређај био "
+"уклоњен. Молим, не извлачите и не уклањајте уређај"
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:253
+msgid "Ejecting device"
+msgstr "Избацујем уређај"
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:256
+#, c-format
+msgid "The device \"%s\" is being ejected. This may take some time"
+msgstr "Избацујем уређај „%s“. То може потрајати"
+
+#: ../src/xfdesktop-regular-file-icon.c:571
+#, c-format
+msgid ""
+"Type: %s\n"
+"Size: %s\n"
+"Last modified: %s"
+msgstr ""
+"Врста: %s\n"
+"Величина: %s\n"
+"Задња измена: %s"
+
+#: ../src/xfdesktop-special-file-icon.c:273
+#: ../src/xfdesktop-special-file-icon.c:432
+msgid "File System"
+msgstr "Систем датотека"
+
+#: ../src/xfdesktop-special-file-icon.c:417
+msgid "Trash is empty"
+msgstr "Корпа је празна"
+
+#: ../src/xfdesktop-special-file-icon.c:420
+msgid "Trash contains one item"
+msgstr "Корпа садржи једну ставку"
+
+#: ../src/xfdesktop-special-file-icon.c:421
+#, c-format
+msgid "Trash contains %d items"
+msgstr "Корпа садржи %d ставке"
+
+#: ../src/xfdesktop-special-file-icon.c:453
+#, c-format
+msgid ""
+"%s\n"
+"Size: %s\n"
+"Last modified: %s"
+msgstr ""
+"%s\n"
+"Величина: %s\n"
+"Задња измена: %s"
+
+#: ../src/xfdesktop-special-file-icon.c:522
+msgid "_Empty Trash"
+msgstr "_Избаци Смеће"
+
+#: ../src/xfdesktop-volume-icon.c:447
+#, c-format
+msgid ""
+"Removable Volume\n"
+"Mounted in \"%s\"\n"
+"%s left (%s total)"
+msgstr ""
+"Уклоњиви уређај\n"
+"Прикачен на „%s“\n"
+"%s преостало (%s укупно)"
+
+#: ../src/xfdesktop-volume-icon.c:454
+msgid ""
+"Removable Volume\n"
+"Not mounted yet"
+msgstr ""
+"Уклоњиви уређај\n"
+"Није прикачен"
+
+#: ../src/xfdesktop-volume-icon.c:480
+#: ../src/xfdesktop-volume-icon.c:522
+#, c-format
+msgid "Failed to eject \"%s\""
+msgstr "Не успевам да откачим „%s“"
+
+#: ../src/xfdesktop-volume-icon.c:485
+#: ../src/xfdesktop-volume-icon.c:527
+msgid "Eject Failed"
+msgstr "Избацивање није успело"
+
+#: ../src/xfdesktop-volume-icon.c:559
+#, c-format
+msgid "Failed to mount \"%s\""
+msgstr "Не успевам да прикачим „%s“"
+
+#: ../src/xfdesktop-volume-icon.c:562
+msgid "Mount Failed"
+msgstr "Неуспешно монтирање"
+
+#: ../src/xfdesktop-volume-icon.c:703
+#: ../src/xfdesktop-volume-icon.c:706
+msgid "E_ject Volume"
+msgstr "И_збаци уређај"
+
+#: ../src/xfdesktop-volume-icon.c:713
+msgid "_Mount Volume"
+msgstr "_Монтирај уређај"
+
+#: ../src/xfdesktop-window-icon.c:208
+msgid "_Window Actions"
+msgstr "_Радње прозора"
+
+#~ msgid "Unable to contact the Xfce Trash service."
+#~ msgstr "Unable to contact the Xfce Wastebasket service."
+
+#~ msgid ""
+#~ "Make sure you have a file manager installed that supports the Xfce Trash "
+#~ "service, such as Thunar."
+#~ msgstr ""
+#~ "Make sure you have a file manager installed that supports the Xfce "
+#~ "Watebasket service, such as Thunar."
+
+#~ msgid "Needs terminal"
+#~ msgstr "Terminal"
+
+#~ msgid "Command"
+#~ msgstr "Command"
+
+#~ msgid "The command to run when the item is clicked"
+#~ msgstr "The command doesn't exist!"
+
+#~ msgid "Icon name"
+#~ msgstr "Icon designer"
+
+#~ msgid "Startup notification"
+#~ msgstr "Use startup _notification"
+
+#~ msgid "Unable to launch xfce4-menueditor: %s"
+#~ msgstr "Unable to launch xfce4-menueditor: %s"
+
+#~ msgid "Select Icon"
+#~ msgstr "Select Icon"
+
+#~ msgid "Select Menu File"
+#~ msgstr "Select Menu File"
+
+#~ msgid "All Files"
+#~ msgstr "All Files"
+
+#~ msgid "Image Files"
+#~ msgstr "Image Files"
+
+#~ msgid "Menu Files"
+#~ msgstr "Menu Files"
+
+#~ msgid "Xfce Menu"
+#~ msgstr "Xfce Menu"
+
+#~ msgid "Button"
+#~ msgstr "Button"
+
+#~ msgid "Button _title:"
+#~ msgstr "Button _title:"
+
+#~ msgid "_Show title in button"
+#~ msgstr "_Show title in button"
+
+#~ msgid "Menu File"
+#~ msgstr "Menu File"
+
+#~ msgid "Use default _desktop menu file"
+#~ msgstr "Use default _desktop menu file"
+
+#~ msgid "Use _custom menu file:"
+#~ msgstr "Use _custom menu file:"
+
+#~ msgid "_Edit Menu"
+#~ msgstr "_Edit Menu"
+
+#~ msgid "Icons"
+#~ msgstr "Icons"
+
+#~ msgid "_Button icon:"
+#~ msgstr "_Button icon:"
+
+#~ msgid "Show _icons in menu"
+#~ msgstr "Show _icons in menu"
+
+#~ msgid "There is already a panel menu registered for this screen"
+#~ msgstr "There is already a panel menu registered for this screen"
+
+#~ msgid "Edit Menu"
+#~ msgstr "Edit Menu"
+
+#~ msgid "Shows a menu containing categories of installed applications"
+#~ msgstr "Shows a menu containing categories of installed applications"
+
+#~ msgid "%s: Unknown option: %s\n"
+#~ msgstr "%s: Unknown option: %s\n"
+
+#~ msgid "Options are:\n"
+#~ msgstr "Options are:\n"
+
+#~ msgid "    --reload      Reload all settings, refresh image list\n"
+#~ msgstr "    --reload      Reload all settings, refresh image list\n"
+
+#~ msgid "    --menu        Pop up the menu (at the current mouse position)\n"
+#~ msgstr "    --menu        Pop up the menu (at the current mouse position)\n"
+
+#~ msgid ""
+#~ "    --windowlist  Pop up the window list (at the current mouse position)\n"
+#~ msgstr ""
+#~ "    --windowlist  Pop up the window list (at the current mouse position)\n"
+
+#~ msgid "    --quit        Cause xfdesktop to quit\n"
+#~ msgstr "    --quit        Cause xfdesktop to quit\n"
+
+#~ msgid ""
+#~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+#~ msgstr ""
+#~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
+
+#~ msgid "Create Folder Failed"
+#~ msgstr "Create Folder Failed"
+
+#~ msgid ""
+#~ "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not "
+#~ "a folder."
+#~ msgstr ""
+#~ "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not "
+#~ "a folder."
+
+#~ msgid "Please delete or rename the file."
+#~ msgstr "Please delete or rename the file."
+
+#~ msgid "Rename \"%s\""
+#~ msgstr "Rename \"%s\""
+
+#~ msgid "Enter the new name:"
+#~ msgstr "Enter the new name:"
+
+#~ msgid "Rename"
+#~ msgstr "Rename"
+
+#~ msgid "Are you sure that you want to delete \"%s\"?"
+#~ msgstr "Are you sure that you want to delete \"%s\"?"
+
+#~ msgid "Question"
+#~ msgstr "Question"
+
+#~ msgid "If you delete a file, it is permanently lost."
+#~ msgstr "If you delete a file, it is permanently lost."
+
+#~ msgid "Are you sure you want to delete the following %d files?"
+#~ msgstr "Are you sure you want to delete the following %d files?"
+
+#~ msgid "Delete Multiple Files"
+#~ msgstr "Delete Multiple Files"
+
+#~ msgid "The application chooser could not be opened."
+#~ msgstr "The application chooser could not be opened."
+
+#~ msgid ""
+#~ "This feature requires a file manager service present (such as that "
+#~ "supplied by Thunar)."
+#~ msgstr ""
+#~ "This feature requires a file manager service present (such as that "
+#~ "supplied by Thunar)."
+
+#~ msgid "Unable to create folder named \"%s\":"
+#~ msgstr "Unable to create folder named \"%s\":"
+
+#~ msgid "Create New Folder"
+#~ msgstr "Create New Folder"
+
+#~ msgid "New Folder"
+#~ msgstr "New Folder"
+
+#~ msgid "Create"
+#~ msgstr "Create"
+
+#~ msgid "Unable to create file named \"%s\":"
+#~ msgstr "Unable to create file named \"%s\":"
+
+#~ msgid "Create File Failed"
+#~ msgstr "Create File Failed"
+
+#~ msgid "Create Document from template \"%s\""
+#~ msgstr "Create Document from template \"%s\""
+
+#~ msgid "Create Empty File"
+#~ msgstr "Create Empty File"
+
+#~ msgid "New Empty File"
+#~ msgstr "New Empty File"
+
+#~ msgid "Unable to create file \"%s\":"
+#~ msgstr "Unable to create file \"%s\":"
+
+#~ msgid "Create Error"
+#~ msgstr "Create Error"
+
+#~ msgid "Failed to run \"%s\":"
+#~ msgstr "Failed to run \"%s\":"
+
+#~ msgid "Run Error"
+#~ msgstr "Run Error"
+
+#~ msgid "The associated application could not be found or executed."
+#~ msgstr "The associated application could not be found or executed."
+
+#~ msgid "Unable to set default application for \"%s\" to \"%s\":"
+#~ msgstr "Unable to set default application for \"%s\" to \"%s\":"
+
+#~ msgid "Properties Error"
+#~ msgstr "Properties Error"
+
+#~ msgid "Write only"
+#~ msgstr "Write only"
+
+#~ msgid "Read only"
+#~ msgstr "Read only"
+
+#~ msgid "Read & Write"
+#~ msgstr "Read & Write"
+
+#~ msgid "General"
+#~ msgstr "General"
+
+#~ msgid "Name:"
+#~ msgstr "Name:"
+
+#~ msgid "Kind:"
+#~ msgstr "Kind:"
+
+#~ msgid "(unknown)"
+#~ msgstr "(unknown)"
+
+#~ msgid "Open With:"
+#~ msgstr "Open With:"
+
+#~ msgid "Modified:"
+#~ msgstr "Modified:"
+
+#~ msgid "Accessed:"
+#~ msgstr "Accessed:"
+
+#~ msgid "Free Space:"
+#~ msgstr "Free Space:"
+
+#~ msgid "Size:"
+#~ msgstr "Size:"
+
+#~ msgid "%s (%"
+#~ msgstr "%s (%"
+
+#~ msgid "Permissions"
+#~ msgstr "Permissions"
+
+#~ msgid "Owner:"
+#~ msgstr "Owner:"
+
+#~ msgid "Access:"
+#~ msgstr "Access:"
+
+#~ msgid "Group:"
+#~ msgstr "Group:"
+
+#~ msgid "Others:"
+#~ msgstr "Others:"
+
+#~ msgid "Yes to _all"
+#~ msgstr "Yes to _all"
+
+#~ msgid "There was an error moving \"%s\" to \"%s\":"
+#~ msgstr "There was an error moving \"%s\" to \"%s\":"
+
+#~ msgid "There was an error copying \"%s\" to \"%s\":"
+#~ msgstr "There was an error copying \"%s\" to \"%s\":"
+
+#~ msgid "There was an error linking \"%s\" to \"%s\":"
+#~ msgstr "There was an error linking \"%s\" to \"%s\":"
+
+#~ msgid "File Error"
+#~ msgstr "File Error"
+
+#~ msgid "broken link"
+#~ msgstr "broken link"
+
+#~ msgid "link to %s"
+#~ msgstr "link to %s"
+
+#~ msgid ""
+#~ "Kind: %s\n"
+#~ "Modified:%s\n"
+#~ "Size: %s"
+#~ msgstr ""
+#~ "Kind: %s\n"
+#~ "Modified:%s\n"
+#~ "Size: %s"
+
+#~ msgid "Error"
+#~ msgstr "Error"
+
+#~ msgid "Failed to rename \"%s\" to \"%s\":"
+#~ msgstr "Failed to rename \"%s\" to \"%s\":"
+
+#~ msgid "Kind: Trash"
+#~ msgstr "Kind: Wastebasket"
+
+#~ msgid "%s (%s total)"
+#~ msgstr "%s (%s total)"
+
+#~ msgid ""
+#~ "Kind: Removable Volume\n"
+#~ "Mount Point: %s\n"
+#~ "Free Space: %s"
+#~ msgstr ""
+#~ "Kind: Removable Volume\n"
+#~ "Mount Point: %s\n"
+#~ "Free Space: %s"
+
+#~ msgid "Unable to mount \"%s\":"
+#~ msgstr "Unable to mount \"%s\":"
+
+#~ msgid "Unable to unmount \"%s\":"
+#~ msgstr "Unable to unmount \"%s\":"
+
+#~ msgid "Unmount Failed"
+#~ msgstr "Unmount Failed"
+
+#~ msgid "Unable to eject \"%s\":"
+#~ msgstr "Unable to eject \"%s\":"
+
+#~ msgid "_Unmount Volume"
+#~ msgstr "_Unmount Volume"
+
+#~ msgid "Accessories"
+#~ msgstr "Accessories"
+
+#~ msgid "Common desktop tools and applications"
+#~ msgstr "Common desktop tools and applications"
+
+#~ msgid "Development"
+#~ msgstr "Development"
+
+#~ msgid "Software development tools"
+#~ msgstr "Software development tools"
+
+#~ msgid "Education"
+#~ msgstr "Education"
+
+#~ msgid "Educational software"
+#~ msgstr "Educational software"
+
+#~ msgid "Games"
+#~ msgstr "Games"
+
+#~ msgid "Games, puzzles, and other fun software"
+#~ msgstr "Games, puzzles, and other fun software"
+
+#~ msgid "Graphics"
+#~ msgstr "Graphics"
+
+#~ msgid "Graphics creation and manipulation applications"
+#~ msgstr "Graphics creation and manipulation applications"
+
+#~ msgid "Audio and video players and editors"
+#~ msgstr "Audio and video players and editors"
+
+#~ msgid "Multimedia"
+#~ msgstr "Multimedia"
+
+#~ msgid "Network"
+#~ msgstr "Network"
+
+#~ msgid "Network applications and utilities"
+#~ msgstr "Network applications and utilities"
+
+#~ msgid "Office"
+#~ msgstr "Office"
+
+#~ msgid "Office and productivity applications"
+#~ msgstr "Office and productivity applications"
+
+#~ msgid "Applications that don't fit into other categories"
+#~ msgstr "Applications that don't fit into other categories"
+
+#~ msgid "Other"
+#~ msgstr "Other"
+
+#~ msgid "Screensaver applets"
+#~ msgstr "Screensaver applets"
+
+#~ msgid "Screensavers"
+#~ msgstr "Screensavers"
+
+#~ msgid "Desktop and system settings applications"
+#~ msgstr "Desktop and system settings applications"
+
+#~ msgid "Settings"
+#~ msgstr "Settings"
+
+#~ msgid "System"
+#~ msgstr "System"
+
+#~ msgid "System tools and utilities"
+#~ msgstr "System tools and utilities"
+
+#~ msgid "About Xfce"
+#~ msgstr "About Xfce"
+
+#~ msgid "Information about the Xfce Desktop Environment"
+#~ msgstr "Information about the Xfce Desktop Environment"
+
+#~ msgid "File Manager"
+#~ msgstr "File Manager"
+
+#~ msgid "Thunar file manager"
+#~ msgstr "Thunar file manager"
+
+#~ msgid "Help"
+#~ msgstr "Help"
+
+#~ msgid "Help using Xfce"
+#~ msgstr "Help using Xfce"
+
+#~ msgid "Log Out"
+#~ msgstr "Log Out"
+
+#~ msgid "Log out of the Xfce Desktop"
+#~ msgstr "Log out of the Xfce Desktop"
+
+#~ msgid "Run Program..."
+#~ msgstr "Run Program..."
+
+#~ msgid "Run a program"
+#~ msgstr "Run a program"
+
+#~ msgid "Terminal"
+#~ msgstr "Terminal"
+
+#~ msgid "Terminal emulator"
+#~ msgstr "Terminal emulator"
+
+#~ msgid "Browse the web"
+#~ msgstr "Browse the Web"
+
+#~ msgid "Web Browser"
+#~ msgstr "Web Browser"
+
+#~ msgid ""
+#~ "Auto\n"
+#~ "Centered\n"
+#~ "Tiled\n"
+#~ "Stretched\n"
+#~ "Scaled\n"
+#~ "Zoomed"
+#~ msgstr ""
+#~ "Auto\n"
+#~ "Centred\n"
+#~ "Tiled\n"
+#~ "Stretched\n"
+#~ "Scaled\n"
+#~ "Zoomed"
+
+#~ msgid ""
+#~ "Left\n"
+#~ "Middle\n"
+#~ "Right"
+#~ msgstr ""
+#~ "Left\n"
+#~ "Middle\n"
+#~ "Right"
+
+#~ msgid ""
+#~ "None\n"
+#~ "Minimized application icons\n"
+#~ "File/launcher icons"
+#~ msgstr ""
+#~ "None\n"
+#~ "Minimised application icons\n"
+#~ "File/launcher icons"
+
+#~ msgid ""
+#~ "None\n"
+#~ "Shift\n"
+#~ "Alt\n"
+#~ "Control"
+#~ msgstr ""
+#~ "None\n"
+#~ "Shift\n"
+#~ "Alt\n"
+#~ "Control"
+
+#~ msgid ""
+#~ "Solid color\n"
+#~ "Horizontal gradient\n"
+#~ "Vertical gradient\n"
+#~ "Transparent"
+#~ msgstr ""
+#~ "Solid colour\n"
+#~ "Horizontal gradient\n"
+#~ "Vertical gradient\n"
+#~ "Transparent"
+
+#~ msgid "Use startup _notification"
+#~ msgstr "Use startup _notification"
+
+#~ msgid "Contributor"
+#~ msgstr "Contributor"
+
+#~ msgid "Icon designer"
+#~ msgstr "Icon designer"
+
+#~ msgid "Solid Color"
+#~ msgstr "Solid Colour"
+
+#~ msgid "Horizontal Gradient"
+#~ msgstr "Horizontal Gradient"
+
+#~ msgid "Vertical Gradient"
+#~ msgstr "Vertical Gradient"
+
+#~ msgid "The command doesn't exist !"
+#~ msgstr "The command doesn't exist!"
+
+#~ msgid "Add menu entry"
+#~ msgstr "Add menu entry"
+
+#~ msgid "Type:"
+#~ msgstr "Type:"
+
+#~ msgid "Title"
+#~ msgstr "Title"
+
+#~ msgid "Submenu"
+#~ msgstr "Submenu"
+
+#~ msgid "Launcher"
+#~ msgstr "Launcher"
+
+#~ msgid "Separator"
+#~ msgstr "Separator"
+
+#~ msgid "Quit"
+#~ msgstr "Quit"
+
+#~ msgid "Command:"
+#~ msgstr "Command:"
+
+#~ msgid "Icon:"
+#~ msgstr "Icon:"
+
+#~ msgid "No icon"
+#~ msgstr "No icon"
+
+#~ msgid "Themed icon:"
+#~ msgstr "Themed icon:"
+
+#~ msgid "Select icon"
+#~ msgstr "Select icon"
+
+#~ msgid "Run in _terminal"
+#~ msgstr "Run in _terminal"
+
+#~ msgid "Select command"
+#~ msgstr "Select command"
+
+#~ msgid "Executable Files"
+#~ msgstr "Executable Files"
+
+#~ msgid "Perl Scripts"
+#~ msgstr "Perl Scripts"
+
+#~ msgid "Python Scripts"
+#~ msgstr "Python Scripts"
+
+#~ msgid "Ruby Scripts"
+#~ msgstr "Ruby Scripts"
+
+#~ msgid "Shell Scripts"
+#~ msgstr "Shell Scripts"
+
+#~ msgid "Add external menu entry"
+#~ msgstr "Add external menu entry"
+
+#~ msgid "File"
+#~ msgstr "File"
+
+#~ msgid "Source:"
+#~ msgstr "Source:"
+
+#~ msgid "Select external menu"
+#~ msgstr "Select external menu"
+
+#~ msgid "Style:"
+#~ msgstr "Style:"
+
+#~ msgid "Simple"
+#~ msgstr "Simple"
+
+#~ msgid "Multilevel"
+#~ msgstr "Multilevel"
+
+#~ msgid "_Unique entries only"
+#~ msgstr "_Unique entries only"
+
+#~ msgid "Edit menu entry"
+#~ msgstr "Edit menu entry"
+
+#~ msgid "Edit external menu entry"
+#~ msgstr "Edit external menu entry"
+
+#~ msgid "Xfce4-MenuEditor"
+#~ msgstr "Xfce4-MenuEditor"
+
+#~ msgid "Menueditor Warning"
+#~ msgstr "Menueditor Warning"
+
+#~ msgid "xfce4-menueditor is deprecated"
+#~ msgstr "xfce4-menueditor is deprecated"
+
+#~ msgid ""
+#~ "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
+#~ "edit the new menu file format.  You may continue and edit an old-style "
+#~ "menu file, or quit."
+#~ msgstr ""
+#~ "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
+#~ "edit the new menu file format.  You may continue and edit an old-style "
+#~ "menu file, or quit."
+
+#~ msgid "Continue"
+#~ msgstr "Continue"
+
+#~ msgid "_File"
+#~ msgstr "_File"
+
+#~ msgid "_New"
+#~ msgstr "_New"
+
+#~ msgid "Create a new empty menu"
+#~ msgstr "Create a new empty menu"
+
+#~ msgid "Open existing menu"
+#~ msgstr "Open existing menu"
+
+#~ msgid "Open _default menu"
+#~ msgstr "Open _default menu"
+
+#~ msgid "Open default menu"
+#~ msgstr "Open default menu"
+
+#~ msgid "_Save"
+#~ msgstr "_Save"
+
+#~ msgid "Save modifications"
+#~ msgstr "Save modifications"
+
+#~ msgid "Save _as..."
+#~ msgstr "Save _as..."
+
+#~ msgid "Save menu under a given name"
+#~ msgstr "Save menu under a given name"
+
+#~ msgid "_Close"
+#~ msgstr "_Close"
+
+#~ msgid "Close menu"
+#~ msgstr "Close menu"
+
+#~ msgid "_Quit"
+#~ msgstr "_Quit"
+
+#~ msgid "Quit Xfce4-Menueditor"
+#~ msgstr "Quit Xfce4-Menueditor"
+
+#~ msgid "_Edit"
+#~ msgstr "_Edit"
+
+#~ msgid "_Edit entry"
+#~ msgstr "_Edit entry"
+
+#~ msgid "Edit selected entry"
+#~ msgstr "Edit selected entry"
+
+#~ msgid "_Add entry"
+#~ msgstr "_Add entry"
+
+#~ msgid "Add a new entry in the menu"
+#~ msgstr "Add a new entry in the menu"
+
+#~ msgid "Add _external"
+#~ msgstr "Add _external"
+
+#~ msgid "Add an external entry"
+#~ msgstr "Add an external entry"
+
+#~ msgid "_Remove entry"
+#~ msgstr "_Remove entry"
+
+#~ msgid "Remove entry"
+#~ msgstr "Remove entry"
+
+#~ msgid "_Up"
+#~ msgstr "_Up"
+
+#~ msgid "_Down"
+#~ msgstr "_Down"
+
+#~ msgid "Move entry down"
+#~ msgstr "Move entry down"
+
+#~ msgid "_Help"
+#~ msgstr "_Help"
+
+#~ msgid "_About..."
+#~ msgstr "_About..."
+
+#~ msgid "Show informations about xfce4-menueditor"
+#~ msgstr "Show information about xfce4-menueditor"
+
+#~ msgid "Collapse all"
+#~ msgstr "Collapse all"
+
+#~ msgid "Collapse all menu entries"
+#~ msgstr "Collapse all menu entries"
+
+#~ msgid "Expand all"
+#~ msgstr "Expand all"
+
+#~ msgid "Expand all menu entries"
+#~ msgstr "Expand all menu entries"
+
+#~ msgid "Name"
+#~ msgstr "Name"
+
+#~ msgid "Hidden"
+#~ msgstr "Hidden"
+
+#~ msgid "Are you sure you want to close the current menu?"
+#~ msgstr "Are you sure you want to close the current menu?"
+
+#~ msgid "Do you want to save before closing the file?"
+#~ msgstr "Do you want to save before closing the file?"
+
+#~ msgid "Do you want to save before opening an other menu ?"
+#~ msgstr "Do you want to save before opening an other menu?"
+
+#~ msgid "Ignore modifications"
+#~ msgstr "Ignore modifications"
+
+#~ msgid "Open menu file"
+#~ msgstr "Open menu file"
+
+#~ msgid "Do you want to save before opening the default menu ?"
+#~ msgstr "Do you want to save before opening the default menu?"
+
+#~ msgid "Save menu file as"
+#~ msgstr "Save menu file as"
+
+#~ msgid "Do you want to save before closing the menu ?"
+#~ msgstr "Do you want to save before closing the menu?"
+
+#~ msgid "quit"
+#~ msgstr "quit"
+
+#~ msgid "--- separator ---"
+#~ msgstr "--- separator ---"
+
+#~ msgid "--- include ---"
+#~ msgstr "--- include ---"
+
+#~ msgid "system"
+#~ msgstr "system"
+
+#~ msgid "Do you want to move the item into the submenu?"
+#~ msgstr "Do you want to move the item into the submenu?"
+
+#~ msgid "A menu editor for Xfce4"
+#~ msgstr "A menu editor for Xfce4"
+
+#~ msgid "Author/Maintainer"
+#~ msgstr "Author/Maintainer"
+
+#~ msgid "You have modified the menu, do you want to save it before quitting ?"
+#~ msgstr "You have modified the menu, do you want to save it before quitting?"
+
+#~ msgid "Forget modifications"
+#~ msgstr "Forget modifications"
+
+#~ msgid "Unable to open the menu file %s in write mode"
+#~ msgstr "Unable to open the menu file %s in write mode"
+
+#~ msgid "Graphical tool for editing the Xfce 4 menu"
+#~ msgstr "Graphical tool for editing the Xfce 4 menu"
+
+#~ msgid "Menu Editor"
+#~ msgstr "Menu Editor"
+
+#~ msgid "Xfce 4 Menu Editor"
+#~ msgstr "Xfce 4 Menu Editor"
+
+#~ msgid "Settings for the Xfce 4 Desktop Manager"
+#~ msgstr "Settings for the Xfce 4 Desktop Manager"
+
+#~ msgid "Xfce 4 Desktop Settings"
+#~ msgstr "Xfce 4 Desktop Settings"
+
+#~ msgid "Show windows on each workspace in _submenus"
+#~ msgstr "Show windows on each workspace in sub_menus"
+
+#~ msgid "Use _Xfce to manage the desktop"
+#~ msgstr "Allow _Xfce to manage the desktop"
+
+#~ msgid ""
+#~ "Could not save file %s: %s\n"
+#~ "\n"
+#~ "Please choose another location or press cancel in the dialog to discard "
+#~ "your changes"
+#~ msgstr ""
+#~ "Could not save file %s: %s\n"
+#~ "\n"
+#~ "Please choose another location or press cancel in the dialogue to discard "
+#~ "your changes"
+
+#~ msgid "Button Label|Desktop"
+#~ msgstr "Desktop"
+
+#~ msgid "backdrops.list"
+#~ msgstr "backdrops.list"
+
+#~ msgid "Select backdrop image or list file"
+#~ msgstr "Select backdrop image or list file"
+
+#~ msgid "List Files (*.list)"
+#~ msgstr "List Files (*.list)"
+
+#~ msgid "_Edit list..."
+#~ msgstr "_Edit list..."
+
+#~ msgid "_New list..."
+#~ msgstr "_New list..."
+
+#~ msgid "S_tyle:"
+#~ msgstr "S_tyle:"
+
+#~ msgid "Xfce will be unable to manage your desktop (%s)."
+#~ msgstr "Xfce will be unable to manage your desktop (%s)."
+
+#~ msgid "Unknown Error"
+#~ msgstr "Unknown Error"
+
+#~ msgid "Unable to start xfdesktop"
+#~ msgstr "Unable to start xfdesktop"
+
+#~ msgid ""
+#~ "To ensure that this setting takes effect the next time you start Xfce, "
+#~ "please be sure to save your session when logging out.  If you are not "
+#~ "using the Xfce Session Manager (xfce4-session), you will need to manually "
+#~ "edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
+#~ "documentation provided on http://xfce.org/."
+#~ msgstr ""
+#~ "To ensure that this setting takes effect the next time you start Xfce, "
+#~ "please be sure to save your session when logging out.  If you are not "
+#~ "using the Xfce Session Manager (xfce4-session), you will need to manually "
+#~ "edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
+#~ "documentation provided on http://xfce.org/."
+
+#~ msgid ""
+#~ "To ensure that Xfce does not manage your desktop the next time you start "
+#~ "Xfce, please be sure to save your session when logging out.  If you are "
+#~ "not using the Xfce Session Manager (xfce4-session), you will need to "
+#~ "manually edit your ~/.config/xfce4/xinitrc file.  Details are available "
+#~ "in the documentation provided on http://xfce.org/."
+#~ msgstr ""
+#~ "To ensure that Xfce does not manage your desktop the next time you start "
+#~ "Xfce, please be sure to save your session when logging out.  If you are "
+#~ "not using the Xfce Session Manager (xfce4-session), you will need to "
+#~ "manually edit your ~/.config/xfce4/xinitrc file.  Details are available "
+#~ "in the documentation provided on http://xfce.org/."
+
+#~ msgid "_Do not show this again"
+#~ msgstr "_Do not show this again"
+
+#~ msgid "Desktop Preferences"
+#~ msgstr "Desktop Preferences"
+
+#~ msgid "Color"
+#~ msgstr "Colour"
+
+#~ msgid "_Color Style:"
+#~ msgstr "_Colour Style:"
+
+#~ msgid "Image"
+#~ msgstr "Image"
+
+#~ msgid "Show _Image"
+#~ msgstr "Show _Image"
+
+#~ msgid "_File:"
+#~ msgstr "_File:"
+
+#~ msgid "_Behavior"
+#~ msgstr "_Behaviour"
+
+#~ msgid "Select backdrop image file"
+#~ msgstr "Select backdrop image file"
+
+#~ msgid "List file"
+#~ msgstr "List file"
+
+#~ msgid "Edit backdrop list"
+#~ msgstr "Edit backdrop list"
+
+#~ msgid "Use _system font size"
+#~ msgstr "Use _system font size"
+
+#~ msgid "Des_ktop"
+#~ msgstr "Des_ktop"
+
+#~ msgid "_Desktop Properties..."
+#~ msgstr "_Desktop Properties..."
+
+#~ msgid "Unable to quit session."
+#~ msgstr "Unable to quit session."
+
+#~ msgid ""
+#~ "Quitting the session requires that Xfce's session manager (xfce4-session) "
+#~ "is running, but it was not detected.  Please quit Xfce via another means."
+#~ msgstr ""
+#~ "Quitting the session requires that Xfce's session manager (xfce4-session) "
+#~ "is running, but it was not detected.  Please quit Xfce via another means."
+
+#~ msgid ""
+#~ "Quitting the session requires the 'xfce4-session-logout' command, but it "
+#~ "could not be found: %s"
+#~ msgstr ""
+#~ "Quitting the session requires the 'xfce4-session-logout' command, but it "
+#~ "could not be found: %s"
+
+#~ msgid "Edit Properties"
+#~ msgstr "Edit Properties"
+
+#~ msgid "_Copy Files"
+#~ msgstr "_File"
+
+#~ msgid "Cu_t Files"
+#~ msgstr "_File"
+
+#~ msgid "Cu_t File"
+#~ msgstr "_File"
+
+#~ msgid "_Delete Files"
+#~ msgstr "Select Menu File"
+
+#~ msgid "_Delete File"
+#~ msgstr "Select Menu File"
+
+#~ msgid "_Paste Files"
+#~ msgstr "List Files"
+
+#~ msgid "Are sure you want to quit?"
+#~ msgstr "Are you sure you want to close the current menu?"
+
+#~ msgid "All fields must be filled to add an item."
+#~ msgstr "All fields must be filled to add an item."
+
+#~ msgid "The 'Name' field is required."
+#~ msgstr "The 'Name' field is required."
+
+#~ msgid "The 'Source' field is required."
+#~ msgstr "The 'Source' field is required."
+
+#~ msgid "Separators cannot be edited"
+#~ msgstr "Separators cannot be edited"
+
+#~ msgid "File %s doesn't exist !"
+#~ msgstr "File %s doesn't exist!"
+
+#~ msgid "Do you want to move the item into the parent menu?"
+#~ msgstr "Do you want to move the item into the parent menu?"
+
+#~ msgid "Edit"
+#~ msgstr "Edit"
+
+#~ msgid "Add an external menu..."
+#~ msgstr "Add an external menu..."
+
+#~ msgid "Open an Xfce4 menu file"
+#~ msgstr "Open an Xfce4 menu file"
+
+#~ msgid "Save current menu"
+#~ msgstr "Save current menu"
+
+#~ msgid "Delete the current entry"
+#~ msgstr "Delete the current entry"
+
+#~ msgid "Scientific software"
+#~ msgstr "Educational software"
