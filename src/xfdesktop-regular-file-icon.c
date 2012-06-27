@@ -552,6 +552,10 @@ xfdesktop_regular_file_icon_peek_tooltip(XfdesktopIcon *icon)
                                                  G_FILE_ATTRIBUTE_TIME_MODIFIED);
         time_string = xfdesktop_file_utils_format_time_for_display(mtime);
 
+        regular_file_icon->priv->tooltip =
+            g_strdup_printf(_("Type: %s\nSize: %s\nLast modified: %s"),
+                            description, size_string, time_string);
+
         /* Extract the Comment entry from the .desktop file */
         if(is_desktop_file)
         {
@@ -563,21 +567,16 @@ xfdesktop_regular_file_icon_peek_tooltip(XfdesktopIcon *icon)
                 xfce_rc_set_group(rcfile, "Desktop Entry");
                 comment = xfce_rc_read_entry(rcfile, "Comment", NULL);
             }
+            /* Prepend the comment to the tooltip */
+            if(comment != NULL) {
+                gchar *tooltip = regular_file_icon->priv->tooltip;
+                regular_file_icon->priv->tooltip = g_strdup_printf("%s\n%s",
+                                                                   comment,
+                                                                   tooltip);
+                g_free(tooltip);
+            }
 
             xfce_rc_close(rcfile);
-        }
-
-        regular_file_icon->priv->tooltip =
-            g_strdup_printf(_("Type: %s\nSize: %s\nLast modified: %s"),
-                            description, size_string, time_string);
-
-        /* Prepend the comment to the tooltip */
-        if(is_desktop_file && comment != NULL) {
-            gchar *tooltip = regular_file_icon->priv->tooltip;
-            regular_file_icon->priv->tooltip = g_strdup_printf("%s\n%s",
-                                                               comment,
-                                                               tooltip);
-            g_free(tooltip);
         }
 
         g_free(time_string);
