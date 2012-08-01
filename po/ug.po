@@ -19,7 +19,7 @@ msgstr ""
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
 #, c-format
 msgid "Backdrop list file is not valid"
-msgstr "Backdrop تىزىملىك  ھۆججىتى توغرا ئەمەس"
+msgstr "سۈرەت تىزىم ھۆججىتى ھۆججىتى توغرا ئەمەس"
 
 #. no need to escape markup; it's already done for us
 #: ../settings/main.c:166
@@ -50,25 +50,25 @@ msgstr "ھەرىكەتچان ئۈسكۈنىلەر"
 #: ../settings/main.c:485
 #, c-format
 msgid "Cannot create backdrop list \"%s\""
-msgstr "backdrop تىزىملىكى «%s» نى ياسىغىلى بولمىدى"
+msgstr "سۈرەت تىزىم ھۆججىتى «%s» نى ياسىغىلى بولمىدى"
 
 #: ../settings/main.c:489 ../settings/main.c:862
 msgid "Backdrop List Error"
-msgstr "backdrop تىزىملىك خاتالىقى"
+msgstr "سۈرەت تىزىم ھۆججىتى خاتالىقى"
 
 #: ../settings/main.c:514
 msgid "Create/Load Backdrop List"
-msgstr "backdrop تىزىملىكى نى قۇرۇش/ئوقۇش"
+msgstr "سۈرەت تىزىم ھۆججىتىنى قۇرۇش/ئوقۇش"
 
 #: ../settings/main.c:538
 #, c-format
 msgid ""
 "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr "ھۆججەت «%s» نورمال backdrop تىزىملىكى ھۆججىتى ئەمەس. قاپلىۋەتسۇنمۇ؟"
+msgstr "ھۆججەت «%s» نورمال سۈرەت تىزىم ھۆججىتى ئەمەس. قاپلىۋەتسۇنمۇ؟"
 
 #: ../settings/main.c:543
 msgid "Invalid List File"
-msgstr "ئىناۋەتسىز تىزىملىك ھۆججىتى"
+msgstr "ئىناۋەتسىز تىزىم ھۆججىتى"
 
 #: ../settings/main.c:546
 msgid "Overwriting the file will cause its contents to be lost."
@@ -81,7 +81,7 @@ msgstr "ئالماشتۇرۇش"
 #: ../settings/main.c:858
 #, c-format
 msgid "Failed to write backdrop list to \"%s\""
-msgstr "backdrop تىزىملىكى «%s» غا يېزىش مەغلۇپ بولدى"
+msgstr "سۈرەت تىزىم ھۆججىتى «%s» غا يېزىش مەغلۇپ بولدى"
 
 #: ../settings/main.c:885
 msgid "Add Image File(s)"
@@ -98,12 +98,12 @@ msgstr "ھەممە ھۆججەتلەر"
 #: ../settings/main.c:1363
 #, c-format
 msgid "Screen %d, Monitor %d (%s)"
-msgstr "ئېكران %d, Monitor %d (%s)"
+msgstr "ئېكران %d, كۆزەتكۈچ %d (%s)"
 
 #: ../settings/main.c:1367
 #, c-format
 msgid "Screen %d, Monitor %d"
-msgstr "ئېكران %d, Monitor %d"
+msgstr "ئېكران %d, كۆزەتكۈچ %d"
 
 #: ../settings/main.c:1370
 #, c-format
@@ -113,7 +113,7 @@ msgstr "ئېكران %d"
 #: ../settings/main.c:1375
 #, c-format
 msgid "Monitor %d (%s)"
-msgstr "Monitor %d (%s)"
+msgstr "كۆزەتكۈچ %d (%s)"
 
 #: ../settings/main.c:1379
 #, c-format
@@ -211,7 +211,7 @@ msgstr "سۈرەتنى شۇ ھامان كۆرسەتمىسۇن"
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
 #: ../settings/xfdesktop-settings-ui.glade.h:12
 msgid "Horizontal gradient"
-msgstr "توغرىسىغا يانتۇلۇق دەرىجىسى"
+msgstr "توغرىسىغا ھەشەم رەڭ"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
 msgid "Image _list"
@@ -254,7 +254,7 @@ msgstr "ئىككىنچى رەڭنى تاللاش"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
 msgid "Select a single image as the backdrop"
-msgstr "يەككە سۈرەتنى backdrop سۈپىتىدە تاللاش"
+msgstr "يەككە سۈرەتنى سۈرەت تىزىم ھۆججىتى سۈپىتىدە تاللاش"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 #: ../settings/xfdesktop-settings-ui.glade.h:35
@@ -276,11 +276,11 @@ msgstr "ئېكراندا سۈرەت قانداق كۆرسىتىلىدۇ بەلگ
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
 msgid "Specify the style of the color drawn behind the backdrop image"
-msgstr ""
+msgstr "سۈرەت تىزىم ھۆججىتىنىڭ تەگلىكىگە سىزىلىدىغان رەڭنىڭ ئۇسلۇبىنى بەلگىلەيدۇ"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
 msgid "St_retch this background across all monitors."
-msgstr ""
+msgstr "مەزكۇر تەگلىكنى بارلىق كۆرسەتكۈچتە كۆرسەتسۇن(_R)"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
 msgid "St_yle:"
@@ -310,13 +310,13 @@ msgstr "بويىغا ھەشەم"
 msgid ""
 "When multiple monitors are present, select this option to stretch the "
 "current background over all of them."
-msgstr ""
+msgstr "بىر قانچە كۆرسەتكۈچ ئۇلانغان بولۇپ، بۇ تاللانما تاللانسا، تەگلىك سۈرىتى بارلىق كۆرسەتكۈچلەردە كۆرسىتىلىدۇ."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
 msgid ""
 "While in image list mode, select this option to automatically select a "
 "different background from the image list after a set number of minutes."
-msgstr ""
+msgstr "سۈرەت تىزىم ھالىتىدە بۇ تاللانما تاللانسا، كۆرسىتىلگەن ۋاقىتتا تەگلىك سۈرىتىنى تىزىمدىن ئاپتوماتىك تاللاپ كۆرسىتىدۇ."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:36
 #: ../settings/xfdesktop-settings-ui.glade.h:43
@@ -461,7 +461,7 @@ msgstr "تۈرلەرنى تەككە چېكىپلا ئاكتىپلىسۇن(_C)"
 msgid ""
 "Specify the transparency level for the rounded label drawn behind the icon "
 "text"
-msgstr ""
+msgstr "سىنبەلگە تېكىستنىڭ تەگلىكىنىڭ سۈزۈكلۈكىنى كۆرسىتىپ بېرىڭ"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:40
 msgid "Use _submenus for the windows in each workspace"
@@ -497,7 +497,7 @@ msgstr "نەشر ئۇچۇرىنى كۆرسەت"
 
 #: ../src/main.c:244
 msgid "Reload all settings, refresh image list"
-msgstr "بارلىق تەڭشەكنى قايتا ئوقۇپ، سۈرەت تىزىملىكىنى يېڭىلاش"
+msgstr "بارلىق تەڭشەكنى قايتا ئوقۇپ، سۈرەت تىزىمىنى يېڭىلاش"
 
 #: ../src/main.c:245
 msgid "Pop up the menu (at the current mouse position)"
@@ -505,7 +505,7 @@ msgstr "تىزىملىكنى كۆرسەت(چاشقىنەكنىڭ ھازىرقى 
 
 #: ../src/main.c:246
 msgid "Pop up the window list (at the current mouse position)"
-msgstr "كۆزنەك تىزىملىكىنى كۆرسەت(چاشقىنەكنىڭ ھازىرقى ئورنىدا)"
+msgstr "كۆزنەك تىزىمىنى كۆرسەت(چاشقىنەكنىڭ ھازىرقى ئورنىدا)"
 
 #: ../src/main.c:248
 msgid "Automatically arrange all the icons on the desktop"
@@ -603,7 +603,7 @@ msgstr "خىزمەت رايونى ‹%s› نى ئۆچۈر(_R)"
 #: ../src/xfce-desktop.c:1082
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
-msgstr "backdrop تىزىم ھۆججىتىدىن سۈرەت «%s» نى ئوقۇغىلى بولمىدى"
+msgstr "سۈرەت تىزىم ھۆججىتىدىن سۈرەت «%s» نى ئوقۇغىلى بولمىدى"
 
 #: ../src/xfce-desktop.c:1084
 msgid "Desktop Error"
@@ -707,7 +707,7 @@ msgstr "URL ئۇلانمىسى ياسا(_U)..."
 #. create folder item
 #: ../src/xfdesktop-file-icon-manager.c:1476
 msgid "Create _Folder..."
-msgstr "مۇندەرىجە ياسا(_F)..."
+msgstr "قىسقۇچ ياسا(_F)…"
 
 #. create from template submenu
 #: ../src/xfdesktop-file-icon-manager.c:1491
@@ -775,7 +775,7 @@ msgstr "بۇ يەرگە ئۇلا(_L)"
 #: ../src/xfdesktop-file-utils.c:137
 #, c-format
 msgid "Today at %X"
-msgstr "بۈگۈن سائەت%X"
+msgstr "بۈگۈن سائەت %X"
 
 #. TRANSLATORS: file was modified less than two days ago
 #: ../src/xfdesktop-file-utils.c:141
