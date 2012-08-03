@@ -1,3 +1,15 @@
+4.10.1
+======
+- Add a tabs width of padding for tooltip text (Bug #9162).
+- Fix theming of removable devices'  icons (Bug #8977).
+- SVG images are no longer pixilated when scaled up.
+- Improve menu icon loading (Bug #8795).
+- Fix background cycling (Bug #8962).
+- Fix a crash when minimized window icons are resized (Bug #8963).
+- Fix use-after-free in xfdesktop_regular_file_icon_peek_tooltip (Bug #9059).
+- Translation updates: Arabic, Bulgarian, Croatian, Dutch, Greek, Korean,
+  Polish, Russian, Serbian, Turkish and Uyghur.
+
 4.10.0
 ======
 - Use the correct default value for the 'show thumbnails' checkbox
