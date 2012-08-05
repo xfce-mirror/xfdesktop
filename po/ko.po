@@ -2,12 +2,12 @@
 # Copyright (C) 2003-2006 The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
 # ByungHyun Choi <byunghyun.choi@gmail.com>, 2005.
-# Seong-ho, Cho <darkcircle.0426@gmail.com>, 2011, 2012.
+# Seong-ho Cho <darkcircle.0426@gmail.com>, 2011, 2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: xfce-i18n <xfce-i18n@xfce.org>\n"
 "POT-Creation-Date: 2012-04-13 22:06+0000\n"
 "PO-Revision-Date: 2012-04-14 18:12+0900\n"
 "Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>\n"
@@ -165,7 +165,7 @@ msgstr "데스크톱"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Set desktop background and menu and icon behaviour"
-msgstr "데스크톱 바탕 화면과 메뉴 그리고 아이콘 동작을 설정합니다"
+msgstr "데스크톱 배경, 메뉴, 아이콘 동작을 설정합니다"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
 msgid "<b>Adjustments</b>"
@@ -323,7 +323,7 @@ msgstr "확대"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:37
 msgid "_Change the background (in minutes):"
-msgstr "배경 바꾸기 (분 단위)(_C):"
+msgstr "배경 바꾸기(분 단위)(_C):"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:38
 msgid "_None"
@@ -416,7 +416,7 @@ msgstr "자동으로 만들어지는 섬네일 아이콘으로 데스크톱에�
 
 #: ../settings/xfdesktop-settings-ui.glade.h:25
 msgid "Set desktop background and menu and icon behavior"
-msgstr "데스크톱 바탕 화면과 메뉴 그리고 아이콘 동작을 설정합니다"
+msgstr "데스크톱 배경, 메뉴, 아이콘 동작을 설정합니다"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:26
 msgid "Sh_ow application icons in menu"
@@ -782,25 +782,25 @@ msgstr "여기에 연결 만들기(_L)"
 #: ../src/xfdesktop-file-utils.c:137
 #, c-format
 msgid "Today at %X"
-msgstr "Today at %X"
+msgstr "오늘, %X"
 
 #. TRANSLATORS: file was modified less than two days ago
 #: ../src/xfdesktop-file-utils.c:141
 #, c-format
 msgid "Yesterday at %X"
-msgstr "Yesterday at %X"
+msgstr "어제, %X"
 
 #. Days from last week
 #: ../src/xfdesktop-file-utils.c:146
 #, c-format
 msgid "%A at %X"
-msgstr "%A at %X"
+msgstr "%A, %X"
 
 #. Any other date
 #: ../src/xfdesktop-file-utils.c:149
 #, c-format
 msgid "%x at %X"
-msgstr "%x at %X"
+msgstr "%x, %X"
 
 #. the file_time is invalid
 #: ../src/xfdesktop-file-utils.c:159
@@ -890,7 +890,7 @@ msgstr "\"%s\"을(를) 실행하는데 실패하였습니다."
 #: ../src/xfdesktop-file-utils.c:1257
 #: ../src/xfdesktop-file-utils.c:1272
 msgid "The application chooser could not be opened"
-msgstr "프로그램 선택기를 열지 못했습니다."
+msgstr "프로그램 선택 메뉴를 열지 못했습니다."
 
 #: ../src/xfdesktop-file-utils.c:1330
 #: ../src/xfdesktop-file-utils.c:1344
@@ -993,7 +993,7 @@ msgid ""
 "%s left (%s total)"
 msgstr ""
 "이동식 볼륨\n"
-" \"%s\"에 마운트함\"%s\" 남음 (총 %s)"
+" \"%s\"에 마운트함\"%s\" 남음(총 %s)"
 
 #: ../src/xfdesktop-volume-icon.c:450
 msgid ""
