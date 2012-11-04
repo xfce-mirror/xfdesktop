@@ -12,20 +12,21 @@
 # Claque <cpt-alatriste@ya.ru>, 2011.
 # Alexandr Boltris <alex@altlinux.org>, 2011.
 # Artem Zolochevskiy <artem.zolochevskiy@gmail.com>, 2011.
-# 
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop\n"
+"Project-Id-Version: xfdesktop_4.10.0_ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-22 18:51+0000\n"
-"PO-Revision-Date: 2011-08-05 13:22+0300\n"
-"Last-Translator: Artem Zolochevskiy <artem.zolochevskiy@gmail.com>\n"
+"POT-Creation-Date: 2012-11-04 13:56+0400\n"
+"PO-Revision-Date: 2012-11-04 13:18+0400\n"
+"Last-Translator: Sergey Alyoshin <alyoshin.s@gmail.com>\n"
 "Language-Team: Russian\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
 #, c-format
@@ -64,7 +65,7 @@ msgstr "Съёмные Устройства"
 msgid "Cannot create backdrop list \"%s\""
 msgstr "Невозможно создать список фоновых изображений «%s»"
 
-#: ../settings/main.c:489 ../settings/main.c:862
+#: ../settings/main.c:489 ../settings/main.c:875
 msgid "Backdrop List Error"
 msgstr "Ошибка списка фоновых изображений"
 
@@ -92,79 +93,79 @@ msgstr "Перезапись файла приведёт к утрате его 
 msgid "Replace"
 msgstr "Заменить"
 
-#: ../settings/main.c:858
+#: ../settings/main.c:871
 #, c-format
 msgid "Failed to write backdrop list to \"%s\""
 msgstr "Не удалось записать список фоновых изображений в «%s»:"
 
-#: ../settings/main.c:885
+#: ../settings/main.c:898
 msgid "Add Image File(s)"
 msgstr "Добавить файл(ы) изображений"
 
-#: ../settings/main.c:894
+#: ../settings/main.c:907
 msgid "Image files"
 msgstr "Файлы изображений"
 
-#: ../settings/main.c:899
+#: ../settings/main.c:912
 msgid "All files"
 msgstr "Все файлы"
 
-#: ../settings/main.c:1363
+#: ../settings/main.c:1376
 #, c-format
 msgid "Screen %d, Monitor %d (%s)"
 msgstr "Экран %d, Монитор %d (%s)"
 
-#: ../settings/main.c:1367
+#: ../settings/main.c:1380
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "Экран %d, Монитор %d"
 
-#: ../settings/main.c:1370
+#: ../settings/main.c:1383
 #, c-format
 msgid "Screen %d"
 msgstr "Экран %d"
 
-#: ../settings/main.c:1375
+#: ../settings/main.c:1388
 #, c-format
 msgid "Monitor %d (%s)"
 msgstr "Монитор %d (%s)"
 
-#: ../settings/main.c:1379
+#: ../settings/main.c:1392
 #, c-format
 msgid "Monitor %d"
 msgstr "Монитор %d"
 
-#: ../settings/main.c:1638
+#: ../settings/main.c:1651
 msgid "Settings manager socket"
 msgstr "Сокет диспетчера настроек"
 
-#: ../settings/main.c:1638
+#: ../settings/main.c:1651
 msgid "SOCKET ID"
 msgstr "ID сокета"
 
-#: ../settings/main.c:1639
+#: ../settings/main.c:1652
 msgid "Version information"
 msgstr "Информация о версии"
 
-#: ../settings/main.c:1656
+#: ../settings/main.c:1669
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Наберите «%s --help» для информации об использовании."
 
-#: ../settings/main.c:1668
+#: ../settings/main.c:1681
 msgid "The Xfce development team. All rights reserved."
 msgstr "Команда разработчиков Xfce. Все права защищены."
 
-#: ../settings/main.c:1669
+#: ../settings/main.c:1682
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Об ошибках сообщайте на <%s>."
 
-#: ../settings/main.c:1676
+#: ../settings/main.c:1689
 msgid "Desktop Settings"
 msgstr "Настройки рабочего стола"
 
-#: ../settings/main.c:1678
+#: ../settings/main.c:1691
 msgid "Unable to contact settings server"
 msgstr "Не удаётся подключиться к серверу настроек"
 
@@ -177,159 +178,157 @@ msgid "Set desktop background and menu and icon behaviour"
 msgstr "Задание фона рабочего стола и изменение настроек меню и значков"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
-msgid "<b>Adjustments</b>"
-msgstr "<b>Настройки</b>"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
-msgid "<b>Colors</b>"
-msgstr "<b>Цвета</b>"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
-msgid "<b>Image</b>"
-msgstr "<b>Изображение</b>"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
-msgid "<b>Images</b>"
-msgstr "<b>Изображения</b>"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
-msgid "Add an image to the list"
-msgstr "Добавить изображение в список"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
-#: ../settings/xfdesktop-settings-ui.glade.h:6
+#: ../settings/xfdesktop-settings-ui.glade.h:1
 msgid "Auto"
 msgstr "Автоматически"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
-msgid "Automatically pick a random image from a list file"
-msgstr "Автоматически выбирать случайное изображение из списка файлов"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
-msgid "B_rightness:"
-msgstr "_Яркость:"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
-#: ../settings/xfdesktop-settings-ui.glade.h:8
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
+#: ../settings/xfdesktop-settings-ui.glade.h:2
 msgid "Centered"
 msgstr "По центру"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
-msgid "Create a new list, or load an existing one"
-msgstr "Создать новый список или загрузить существующий"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
+#: ../settings/xfdesktop-settings-ui.glade.h:3
+msgid "Tiled"
+msgstr "Черепицей"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
-msgid "Don't display an image at all"
-msgstr "Не показывать изображение"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
+#: ../settings/xfdesktop-settings-ui.glade.h:4
+msgid "Stretched"
+msgstr "Растянуть"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
-#: ../settings/xfdesktop-settings-ui.glade.h:12
-msgid "Horizontal gradient"
-msgstr "Горизонтальный градиент"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
-msgid "Image _list"
-msgstr "_Список изображений"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
-msgid "Increase or decrease the brightness of the final image"
-msgstr "Увеличить или уменьшить яркость конечного изображения"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
-msgid "Increase or decrease the color saturation of the final image"
-msgstr "Увеличить или уменьшить насыщенность конечного изображения"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
-msgid ""
-"Number of minutes before a different background is randomly selected from "
-"the list."
-msgstr ""
-"Количество минут перед случайным выбором следующего фонового изображения."
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
-msgid "Remove the selected image(s) from the list"
-msgstr "Убрать из списка выделенное(-ые) изображение(-ия)"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
-msgid "Sa_turation:"
-msgstr "На_сыщенность:"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
-#: ../settings/xfdesktop-settings-ui.glade.h:23
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
+#: ../settings/xfdesktop-settings-ui.glade.h:5
 msgid "Scaled"
 msgstr "Масштабировать"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
-msgid "Select First Color"
-msgstr "Выбор первого цвета"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
+#: ../settings/xfdesktop-settings-ui.glade.h:6
+msgid "Zoomed"
+msgstr "Увеличить"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
-msgid "Select Second Color"
-msgstr "Выбор второго цвета"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
-msgid "Select a single image as the backdrop"
-msgstr "Выбрать одно изображение для фона"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
-#: ../settings/xfdesktop-settings-ui.glade.h:35
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
+#: ../settings/xfdesktop-settings-ui.glade.h:7
 msgid "Solid color"
 msgstr "Сплошной цвет"
 
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
+#: ../settings/xfdesktop-settings-ui.glade.h:8
+msgid "Horizontal gradient"
+msgstr "Горизонтальный градиент"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
+#: ../settings/xfdesktop-settings-ui.glade.h:9
+msgid "Vertical gradient"
+msgstr "Вертикальный градиент"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
+#: ../settings/xfdesktop-settings-ui.glade.h:10
+msgid "Transparent"
+msgstr "Прозрачный"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
+msgid "Add an image to the list"
+msgstr "Добавить изображение в список"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
+msgid "Remove the selected image(s) from the list"
+msgstr "Убрать из списка выделенное(-ые) изображение(-ия)"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
+msgid "Create a new list, or load an existing one"
+msgstr "Создать новый список или загрузить существующий"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
+msgid "St_yle:"
+msgstr "Ст_иль:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
+msgid "Specify how the image will be resized to fit the screen"
+msgstr "Задать способ изменения размера изображения к размеру экрана"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
+msgid "<b>Images</b>"
+msgstr "<b>Изображения</b>"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
+msgid "Select a single image as the backdrop"
+msgstr "Выбрать одно изображение для фона"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
+msgid "_Single image"
+msgstr "О_дно изображение"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
+msgid "Automatically pick a random image from a list file"
+msgstr "Автоматически выбирать случайное изображение из списка файлов"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
+msgid "Image _list"
+msgstr "С_писок изображений"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
+msgid "Don't display an image at all"
+msgstr "Не показывать изображение"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
+msgid "_None"
+msgstr "Н_ет"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
+msgid "<b>Image</b>"
+msgstr "<b>Изображение</b>"
+
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
-msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-msgstr "Задать «правый» или «нижний» цвет градиента"
+msgid "Specify the style of the color drawn behind the backdrop image"
+msgstr "Задать стиль цвета отображаемого под фоновым изображением"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid ""
 "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr "Задать сплошной цвет или «левый» или «верхний» цвет градиента"
+msgstr "Задать сплошной цвет, «левый» или «верхний» цвет градиента"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
-msgid "Specify how the image will be resized to fit the screen"
-msgstr "Задать способ изменения размера изображения к размеру экрана"
+msgid "Select First Color"
+msgstr "Выбор первого цвета"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
-msgid "Specify the style of the color drawn behind the backdrop image"
-msgstr "Задать стиль цвета отображаемого под фоновым изображением"
+msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
+msgstr "Задать «правый» или «нижний» цвет градиента"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
-msgid "St_retch this background across all monitors."
-msgstr "Запо_лнить все мониторы"
+msgid "Select Second Color"
+msgstr "Выбор второго цвета"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
-msgid "St_yle:"
-msgstr "Ст_иль:"
+msgid "<b>Colors</b>"
+msgstr "<b>Цвета</b>"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
-#: ../settings/xfdesktop-settings-ui.glade.h:37
-msgid "Stretched"
-msgstr "Растянуть"
+msgid "B_rightness:"
+msgstr "_Яркость:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
-#: ../settings/xfdesktop-settings-ui.glade.h:38
-msgid "Tiled"
-msgstr "Черепицей"
+msgid "Increase or decrease the brightness of the final image"
+msgstr "Увеличить или уменьшить яркость конечного изображения"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
-#: ../settings/xfdesktop-settings-ui.glade.h:39
-msgid "Transparent"
-msgstr "Прозрачный"
+msgid "Sa_turation:"
+msgstr "Н_асыщенность:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
-#: ../settings/xfdesktop-settings-ui.glade.h:42
-msgid "Vertical gradient"
-msgstr "Вертикальный градиент"
+msgid "Increase or decrease the color saturation of the final image"
+msgstr "Увеличить или уменьшить насыщенность конечного изображения"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
-msgid ""
-"When multiple monitors are present, select this option to stretch the "
-"current background over all of them."
-msgstr ""
-"При наличии нескольких мониторов позволяет сделать фоновое изображение общим "
-"для них всех."
+msgid "<b>Adjustments</b>"
+msgstr "<b>Настройки</b>"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
+msgid "_Change the background (in minutes):"
+msgstr "Смена _фона через (мин.):"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:36
 msgid ""
 "While in image list mode, select this option to automatically select a "
 "different background from the image list after a set number of minutes."
@@ -337,178 +336,180 @@ msgstr ""
 "Если выбран список изображений, позволяет автоматически выбирать другое "
 "фоновое изображение через указанное количество минут."
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:36
-#: ../settings/xfdesktop-settings-ui.glade.h:43
-msgid "Zoomed"
-msgstr "Увеличить"
-
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:37
-msgid "_Change the background (in minutes):"
-msgstr "Смена _фона через (мин.):"
+msgid ""
+"Number of minutes before a different background is randomly selected from "
+"the list."
+msgstr ""
+"Количество минут перед случайным выбором следующего фонового изображения."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:38
-msgid "_None"
-msgstr "_Нет"
+msgid "St_retch this background across all monitors."
+msgstr "Запо_лнить все мониторы"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:39
-msgid "_Single image"
-msgstr "_Одно изображение"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:1
-msgid "<b>Appearance</b>"
-msgstr "<b>Внешний вид</b>"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:2
-msgid "<b>Default Icons</b>"
-msgstr "<b>Стандартные значки</b>"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:3
-msgid "<b>Desktop Menu</b>"
-msgstr "<b>Меню рабочего стола</b>"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:4
-msgid "<b>Window List Menu</b>"
-msgstr "<b>Списка окон</b>"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:5
-msgid "Alt"
-msgstr "Alt"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:7
-msgid "B_utton:"
-msgstr "К_нопка:"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:9
-msgid "Control"
-msgstr "Ctrl"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:793
-msgid "Desktop"
-msgstr "Рабочий стол"
+msgid ""
+"When multiple monitors are present, select this option to stretch the "
+"current background over all of them."
+msgstr ""
+"При наличии нескольких мониторов позволяет сделать фоновое изображение общим "
+"для них всех."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:11
-msgid "File/launcher icons"
-msgstr "Значки файлов и запуска"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:13
-msgid "Icon _size:"
-msgstr "Раз_мер значков:"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:14
-msgid "Icon _type:"
-msgstr "Тип _значков:"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:15
-msgid "Label trans_parency:"
-msgstr "Про_зрачность ярлыков:"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:16
 msgid "Left"
 msgstr "Слева"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:17
+#: ../settings/xfdesktop-settings-ui.glade.h:12
 msgid "Middle"
 msgstr "Посередине"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:13
+msgid "Right"
+msgstr "Справа"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:14
+msgid "None"
+msgstr "Нет значков"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:15
+msgid "Shift"
+msgstr "Shift"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:16
+msgid "Alt"
+msgstr "Alt"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:17
+msgid "Control"
+msgstr "Ctrl"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:18
 msgid "Minimized application icons"
 msgstr "Значки свёрнутых приложений"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:19
+msgid "File/launcher icons"
+msgstr "Значки файлов и запуска"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:20 ../src/xfce-desktop.c:793
+msgid "Desktop"
+msgstr "Рабочий стол"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:21
+msgid "Set desktop background and menu and icon behavior"
+msgstr "Задание фона рабочего стола и изменение настроек меню и значков"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:22
+msgid "_Background"
+msgstr "_Фон"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:23
+msgid "Show applications menu on _desktop right click"
+msgstr "Показать м_еню приложений по щелчку правой кнопкой мыши"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:24
+msgid "_Button:"
+msgstr "_Кнопка:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:25
 msgid "Mo_difier:"
 msgstr "Мо_дификатор:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:20
+#: ../settings/xfdesktop-settings-ui.glade.h:26
+msgid "Show _application icons in menu"
+msgstr "Показывать значки _приложений в меню рабочего стола"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:27
+msgid "_Edit desktop menu"
+msgstr "_Редактировать меню рабочего стола"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:28
+msgid "<b>Desktop Menu</b>"
+msgstr "<b>Меню рабочего стола</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:29
+msgid "Show _window list menu on desktop middle click"
+msgstr "Показывать с_писок окон по щелчку средней кнопкой мыши"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:30
+msgid "B_utton:"
+msgstr "К_нопка:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:31
 msgid "Modi_fier:"
 msgstr "Моди_фикатор:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:21
-msgid "None"
-msgstr "Нет значков"
+#: ../settings/xfdesktop-settings-ui.glade.h:32
+msgid "Sh_ow application icons in menu"
+msgstr "Показывать зн_ачки приложений в списке окон"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:22
-msgid "Right"
-msgstr "Справа"
+#: ../settings/xfdesktop-settings-ui.glade.h:33
+msgid "Show workspace _names in list"
+msgstr "Показывать наз_вания рабочих мест в списке"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:24
+#: ../settings/xfdesktop-settings-ui.glade.h:34
+msgid "Use _submenus for the windows in each workspace"
+msgstr "Использовать по_дменю для окон на каждом рабочем месте"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:35
+msgid "Show s_ticky windows only in active workspace"
+msgstr "Показывать за_креплённые окна только на активном рабочем месте"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:36
+msgid "<b>Window List Menu</b>"
+msgstr "<b>Список окон</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:37
+msgid "_Menus"
+msgstr "_Меню"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:38
+msgid "Icon _type:"
+msgstr "_Тип значков:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:39
+msgid "Icon _size:"
+msgstr "_Размер значков:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:40
+msgid "Show t_humbnails"
+msgstr "Показывать _эскизы"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:41
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
 msgstr "Показывать эскизы для файлов соответствующего типа на Рабочем столе."
 
-#: ../settings/xfdesktop-settings-ui.glade.h:25
-msgid "Set desktop background and menu and icon behavior"
-msgstr "Задание фона рабочего стола и изменение настроек меню и значков"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:26
-msgid "Sh_ow application icons in menu"
-msgstr "П_оказывать значки приложений в списке окон"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:27
-msgid "Shift"
-msgstr "Shift"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:28
-msgid "Show _application icons in menu"
-msgstr "Показывать значки _приложения в меню рабочего стола"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:29
-msgid "Show _window list menu on desktop middle click"
-msgstr "Показывать _списка окон по щелчку средней кнопкой мыши"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:30
-msgid "Show applications menu on _desktop right click"
-msgstr "Показать _меню приложений по щелчку правой кнопкой мыши"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:31
-msgid "Show s_ticky windows only in active workspace"
-msgstr "Показывать за_креплённые окна только на активном рабочем месте"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:32
-msgid "Show t_humbnails"
-msgstr "Показывать _эскизы"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:33
-msgid "Show workspace _names in list"
-msgstr "Показывать _названия рабочих мест в списке"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:34
+#: ../settings/xfdesktop-settings-ui.glade.h:42
 msgid "Single _click to activate items"
 msgstr "Открывать одним щел_чком"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:36
+#: ../settings/xfdesktop-settings-ui.glade.h:43
+msgid "Use custom _font size:"
+msgstr "Задать размер _шрифта:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:44
+msgid "Label trans_parency:"
+msgstr "Про_зрачность ярлыков:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:45
 msgid ""
 "Specify the transparency level for the rounded label drawn behind the icon "
 "text"
 msgstr "Задать уровень прозрачности фона надписи под значком"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:40
-msgid "Use _submenus for the windows in each workspace"
-msgstr "Использовать _подменю для окон на каждом рабочем месте"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:41
-msgid "Use custom _font size:"
-msgstr "Задать размер _шрифта:"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:44
-msgid "_Background"
-msgstr "_Фон"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:45
-msgid "_Button:"
-msgstr "_Кнопка:"
-
 #: ../settings/xfdesktop-settings-ui.glade.h:46
-msgid "_Edit desktop menu"
-msgstr "_Редактировать меню рабочего стола"
+msgid "<b>Appearance</b>"
+msgstr "<b>Внешний вид</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:47
-msgid "_Icons"
-msgstr "_Значки"
+msgid "<b>Default Icons</b>"
+msgstr "<b>Стандартные значки</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:48
-msgid "_Menus"
-msgstr "_Меню"
+msgid "_Icons"
+msgstr "З_начки"
 
 #: ../src/main.c:243
 msgid "Display version information"
@@ -949,7 +950,7 @@ msgstr "Извлечение устройства"
 msgid "The device \"%s\" is being ejected. This may take some time"
 msgstr "Идет извлечение устройства «%s». Это может занять некоторое время"
 
-#: ../src/xfdesktop-regular-file-icon.c:571
+#: ../src/xfdesktop-regular-file-icon.c:556
 #, c-format
 msgid ""
 "Type: %s\n"
