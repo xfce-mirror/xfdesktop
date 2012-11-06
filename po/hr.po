@@ -7,16 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-09 14:09+0000\n"
+"POT-Creation-Date: 2012-11-06 19:42+0000\n"
 "PO-Revision-Date: 2012-05-09 19:23+0100\n"
 "Last-Translator: Ivica Kolić <ikoli@yahoo.com>\n"
 "Language-Team: Croatian hr<>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: \n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
 #, c-format
@@ -55,7 +54,7 @@ msgstr "Uklonjivi uređaji"
 msgid "Cannot create backdrop list \"%s\""
 msgstr "Ne mogu kreirati pozadinsku listu \"%s\""
 
-#: ../settings/main.c:489 ../settings/main.c:862
+#: ../settings/main.c:489 ../settings/main.c:875
 msgid "Backdrop List Error"
 msgstr "Greška Pozadinske Liste"
 
@@ -81,79 +80,79 @@ msgstr "Zamjena datoteke će izbrisati sav sadržaj."
 msgid "Replace"
 msgstr "Zamjeni"
 
-#: ../settings/main.c:858
+#: ../settings/main.c:871
 #, c-format
 msgid "Failed to write backdrop list to \"%s\""
 msgstr "Neuspješno kreiranje pozadinske liste \"%s\""
 
-#: ../settings/main.c:885
+#: ../settings/main.c:898
 msgid "Add Image File(s)"
 msgstr "Dodaj datoteke slike(a)"
 
-#: ../settings/main.c:894
+#: ../settings/main.c:907
 msgid "Image files"
 msgstr "Datoteke slika"
 
-#: ../settings/main.c:899
+#: ../settings/main.c:912
 msgid "All files"
 msgstr "Sve datoteke"
 
-#: ../settings/main.c:1363
+#: ../settings/main.c:1376
 #, c-format
 msgid "Screen %d, Monitor %d (%s)"
 msgstr "Zaslon %d, Monitor %d (%s)"
 
-#: ../settings/main.c:1367
+#: ../settings/main.c:1380
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "Zaslon %d, Monitor %d"
 
-#: ../settings/main.c:1370
+#: ../settings/main.c:1383
 #, c-format
 msgid "Screen %d"
 msgstr "Zaslon %d"
 
-#: ../settings/main.c:1375
+#: ../settings/main.c:1388
 #, c-format
 msgid "Monitor %d (%s)"
 msgstr "Monitor %d (%s)"
 
-#: ../settings/main.c:1379
+#: ../settings/main.c:1392
 #, c-format
 msgid "Monitor %d"
 msgstr "Monitor %d"
 
-#: ../settings/main.c:1638
+#: ../settings/main.c:1651
 msgid "Settings manager socket"
 msgstr "Socket upravitelja postavkama"
 
-#: ../settings/main.c:1638
+#: ../settings/main.c:1651
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: ../settings/main.c:1639
+#: ../settings/main.c:1652
 msgid "Version information"
 msgstr "Informacija o verziji"
 
-#: ../settings/main.c:1656
+#: ../settings/main.c:1669
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Upiši '%s -help' za upotrebu."
 
-#: ../settings/main.c:1668
+#: ../settings/main.c:1681
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce razvojni tim.Sva prava pridržana."
 
-#: ../settings/main.c:1669
+#: ../settings/main.c:1682
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Prijavite probleme <%s>."
 
-#: ../settings/main.c:1676
+#: ../settings/main.c:1689
 msgid "Desktop Settings"
 msgstr "Postavke radne površine"
 
-#: ../settings/main.c:1678
+#: ../settings/main.c:1691
 msgid "Unable to contact settings server"
 msgstr "Ne mogu se spojiti na server za postavke"
 
@@ -322,7 +321,7 @@ msgstr ""
 msgid ""
 "While in image list mode, select this option to automatically select a "
 "different background from the image list after a set number of minutes."
-msgstr ""
+msgstr "U načinu rada liste slika, odaberite ovu opciju za automatski odabir različitih pozadika sa liste slika nakon postavljenog broja minuta."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:36
 #: ../settings/xfdesktop-settings-ui.glade.h:43
@@ -643,7 +642,7 @@ msgstr "Greška smeća"
 #: ../src/xfdesktop-file-icon-manager.c:625
 #: ../src/xfdesktop-file-icon-manager.c:669
 msgid "The selected files could not be trashed"
-msgstr ""
+msgstr "Odabrane datoteke ne mogu biti bačene u smeće"
 
 #: ../src/xfdesktop-file-icon-manager.c:626
 #: ../src/xfdesktop-file-icon-manager.c:670 ../src/xfdesktop-file-utils.c:762
@@ -936,7 +935,7 @@ msgstr "Izbacujem uređaj"
 msgid "The device \"%s\" is being ejected. This may take some time"
 msgstr "Uređaj \"%s\" je izbačen.Ovo može potrajati"
 
-#: ../src/xfdesktop-regular-file-icon.c:571
+#: ../src/xfdesktop-regular-file-icon.c:556
 #, c-format
 msgid ""
 "Type: %s\n"
