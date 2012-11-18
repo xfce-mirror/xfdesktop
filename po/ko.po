@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
-"Report-Msgid-Bugs-To: xfce-i18n <xfce-i18n@xfce.org>\n"
+"Report-Msgid-Bugs-To: https://bugzilla.xfce.org/enter_bug.cgi?product=Xfdesktop\n"
 "POT-Creation-Date: 2012-04-13 22:06+0000\n"
 "PO-Revision-Date: 2012-04-14 18:12+0900\n"
 "Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>\n"
@@ -77,7 +77,7 @@ msgstr "잘못된 목록 파일"
 
 #: ../settings/main.c:546
 msgid "Overwriting the file will cause its contents to be lost."
-msgstr "파일을 덮어쓰면 내용을 잃을 것입니다."
+msgstr "파일을 덮어쓰면 내용을 잃게됩니다."
 
 #: ../settings/main.c:548
 msgid "Replace"
@@ -149,7 +149,7 @@ msgstr "Xfce 개발 팀. All rights reserved."
 #: ../settings/main.c:1662
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr "<%s>(으)로 버그를 알려주시기 바랍니다."
+msgstr "<%s>(으)로 버그를 알려주십시오."
 
 #: ../settings/main.c:1669
 msgid "Desktop Settings"
@@ -622,7 +622,7 @@ msgstr "데스크톱 폴더 오류"
 
 #: ../src/xfdesktop-file-icon-manager.c:521
 msgid "A normal file with the same name already exists. Please delete or rename it."
-msgstr "같은 이름을 가진 일반 파일이 이미 존재합니다. 삭제하거나 이름을 바꿔 주시기 바랍니다."
+msgstr "같은 이름을 가진 일반 파일이 이미 존재합니다. 삭제하거나 이름을 바꿔 주십시오."
 
 #: ../src/xfdesktop-file-icon-manager.c:624
 #: ../src/xfdesktop-file-icon-manager.c:668
@@ -651,7 +651,7 @@ msgstr "선택한 파일을 휴지통에 버릴 수 없었습니다"
 #: ../src/xfdesktop-file-utils.c:1346
 #: ../src/xfdesktop-file-utils.c:1424
 msgid "This feature requires a file manager service to be present (such as the one supplied by Thunar)."
-msgstr "이 기능을 사용하시려면 (Thunar에서 제공하는 것과 같은) 파일 관리자 같은 서비스가 필요합니다."
+msgstr "이 기능을 사용하시려면(Thunar에서 제공하는 것과 같은) 파일 관리자 같은 서비스가 필요합니다."
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:770
@@ -839,7 +839,7 @@ msgstr "선택한 파일을 휴지통으로 옮길 수 없습니다"
 #: ../src/xfdesktop-file-utils.c:880
 #: ../src/xfdesktop-file-utils.c:926
 msgid "This feature requires a trash service to be present (such as the one supplied by Thunar)."
-msgstr "이 기능을 사용하시려면 (Thunar에서 제공하는 것과 같은) 파일 관리자 같은 서비스가 필요합니다."
+msgstr "이 기능을 사용하시려면(Thunar에서 제공하는 것과 같은) 파일 관리자 같은 서비스가 필요합니다."
 
 #: ../src/xfdesktop-file-utils.c:911
 #: ../src/xfdesktop-file-utils.c:925
@@ -915,7 +915,7 @@ msgstr "장치 마운트 해제중"
 #: ../src/xfdesktop-notify.c:131
 #, c-format
 msgid "The device \"%s\" is being unmounted by the system. Please do not remove the media or disconnect the drive"
-msgstr "장치 \"%s\"을(를) 시스템이 마운트 해제하고 있습니다. 미디어를 제거하거나 드라이브의 연결을 끊지 말아주시기 바랍니다"
+msgstr "장치 \"%s\"을(를) 시스템이 마운트 해제하고 있습니다. 미디어를 제거하거나 드라이브의 연결을 끊지 말아주십시오"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:138
@@ -928,7 +928,7 @@ msgstr "데이터를 장치에 쓰는 중"
 #: ../src/xfdesktop-notify.c:265
 #, c-format
 msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
-msgstr "장치를 제거하기 전 장치 \"%s\"(으)로 기록할 필요가 있는 데이터가 있습니다. 미디어를 제거하거나 드라이브의 연결을 끊지 말아주시기 바랍니다"
+msgstr "장치를 제거하기 전 장치 \"%s\"(으)로 기록할 필요가 있는 데이터가 있습니다. 미디어를 제거하거나 드라이브의 연결을 끊지 말아주십시오"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:253
@@ -948,7 +948,7 @@ msgid ""
 "Size: %s\n"
 "Last modified: %s"
 msgstr ""
-"유형: %s\n"
+"형식: %s\n"
 "크기: %s\n"
 "최종 수정: %s"
 
