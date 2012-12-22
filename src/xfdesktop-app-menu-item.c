@@ -171,30 +171,31 @@ xfdesktop_app_menu_item_set_icon(XfdesktopAppMenuItem *app_menu_item)
     const gchar *icon_name;
     gint w, h, size;
     GdkPixbuf *pixbuf = NULL;
-    GtkWidget *image;
+    GtkWidget *image = NULL;
     GtkIconTheme *icon_theme;
     gchar *p, *name = NULL;
     gchar *filename;
 
     icon_name = garcon_menu_item_get_icon_name(app_menu_item->item);
+    icon_theme = gtk_icon_theme_get_default();
 
     if(G_LIKELY(icon_name)) {
         gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &w, &h);
         size = MIN(w, h);
 
-        if (g_path_is_absolute (icon_name)) {
-            pixbuf = gdk_pixbuf_new_from_file_at_scale(icon_name, w, h, TRUE, NULL);
-        } else {
-            icon_theme = gtk_icon_theme_get_default();
-            pixbuf = gtk_icon_theme_load_icon(icon_theme, icon_name, size, 0, NULL);
-
-            if (G_UNLIKELY(pixbuf == NULL)) {
+        if(gtk_icon_theme_has_icon(icon_theme, icon_name))
+            image = gtk_image_new_from_icon_name(icon_name, GTK_ICON_SIZE_MENU);
+        else {
+            if (g_path_is_absolute(icon_name)) {
+                pixbuf = gdk_pixbuf_new_from_file_at_scale(icon_name, w, h, TRUE, NULL);
+            } else {
                 /* try to lookup names like application.png in the theme */
                 p = strrchr(icon_name, '.');
                 if (p) {
                     name = g_strndup(icon_name, p - icon_name);
                     pixbuf = gtk_icon_theme_load_icon(icon_theme, name, size, 0, NULL);
                     g_free (name);
+                    name = NULL;
                 }
 
                 /* maybe they point to a file in the pixbufs folder */
@@ -202,21 +203,24 @@ xfdesktop_app_menu_item_set_icon(XfdesktopAppMenuItem *app_menu_item)
                     filename = g_build_filename("pixmaps", icon_name, NULL);
                     name = xfce_resource_lookup(XFCE_RESOURCE_DATA, filename);
                     g_free(filename);
+                }
 
-                    if(name)
-                        pixbuf = gdk_pixbuf_new_from_file(name, NULL);
+                if(name) {
+                    pixbuf = gdk_pixbuf_new_from_file_at_scale(name, w, h, TRUE, NULL);
                     g_free(name);
                 }
+            }
+
+            /* Turn the pixbuf into a gtk_image */
+            if(G_LIKELY(pixbuf)) {
+                image = gtk_image_new_from_pixbuf(pixbuf);
+                g_object_unref(G_OBJECT(pixbuf));
             }
         }
     }
 
-    if(G_LIKELY(pixbuf)) {
-        image = gtk_image_new_from_pixbuf(pixbuf);
-        g_object_unref(G_OBJECT(pixbuf));
-    } else {
+    if(!GTK_IS_IMAGE(image))
         image = gtk_image_new();
-    }
 
     gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(app_menu_item), image);
 }
