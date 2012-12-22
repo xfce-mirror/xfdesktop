@@ -3040,10 +3040,10 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
 static void
 xfdesktop_grid_do_resize(XfdesktopIconView *icon_view)
 {
-    XfdesktopFileIconManager *fmanager;
+    XfdesktopFileIconManager *fmanager = NULL;
     GList *l, *leftovers = NULL;
     
-    //* move all icons into the pending_icons list and remove from the desktop */
+    /* move all icons into the pending_icons list and remove from the desktop */
     for(l = icon_view->priv->icons; l; l = l->next) {
         guint16 old_row, old_col;
 
@@ -3068,8 +3068,9 @@ xfdesktop_grid_do_resize(XfdesktopIconView *icon_view)
     
     DUMP_GRID_LAYOUT(icon_view);
 
-#ifdef ENABLE_FILE_ICONS    
-    fmanager = XFDESKTOP_FILE_ICON_MANAGER(icon_view->priv->manager);
+#ifdef ENABLE_FILE_ICONS
+    if(XFDESKTOP_IS_FILE_ICON_MANAGER(icon_view->priv->manager))
+        fmanager = XFDESKTOP_FILE_ICON_MANAGER(icon_view->priv->manager);
 #endif
 
     /* add all icons back */
@@ -3079,7 +3080,8 @@ xfdesktop_grid_do_resize(XfdesktopIconView *icon_view)
 
 #ifdef ENABLE_FILE_ICONS
         /* Try to get the cached position for the new resolution */
-        if(xfdesktop_file_icon_manager_get_cached_icon_position(
+        if(fmanager != NULL &&
+           xfdesktop_file_icon_manager_get_cached_icon_position(
                                                             fmanager,
                                                             xfdesktop_icon_peek_label(icon),
                                                             &row,
