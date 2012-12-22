@@ -35,6 +35,8 @@
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <gdk-pixbuf/gdk-pixdata.h>
 
+#include <libxfce4util/libxfce4util.h> /* for DBG/TRACE */
+
 #include "xfce-backdrop.h"
 #include "xfce-desktop-enum-types.h"
 #include "xfdesktop-common.h"  /* for DEFAULT_BACKDROP */
@@ -52,7 +54,7 @@ static void xfce_backdrop_get_property(GObject *object,
                                        guint property_id,
                                        GValue *value,
                                        GParamSpec *pspec);
-static void xfce_backdrop_timer(XfceBackdrop *backdrop);
+static gboolean xfce_backdrop_timer(XfceBackdrop *backdrop);
 
 struct _XfceBackdropPriv
 {
@@ -831,12 +833,16 @@ xfce_backdrop_get_saturation(XfceBackdrop *backdrop)
     return backdrop->priv->saturation;
 }
 
-static void
+static gboolean
 xfce_backdrop_timer(XfceBackdrop *backdrop)
 {
-    g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
+    TRACE("entering");
+
+    g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), FALSE);
 
     g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_CYCLE], 0);
+
+    return TRUE;
 }
 
 /**
@@ -853,6 +859,8 @@ void
 xfce_backdrop_set_cycle_timer(XfceBackdrop *backdrop, guint cycle_timer)
 {
     g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
+
+    TRACE("entering, cycle_timer = %d", cycle_timer);
 
     if(cycle_timer > G_MAXUSHORT)
         cycle_timer = G_MAXUSHORT;
@@ -884,6 +892,8 @@ xfce_backdrop_set_cycle_backdrop(XfceBackdrop *backdrop,
                                  gboolean cycle_backdrop)
 {
     g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
+
+    TRACE("entering, cycle_backdrop ? %s", cycle_backdrop == TRUE ? "TRUE" : "FALSE");
 
     if(backdrop->priv->cycle_backdrop != cycle_backdrop) {
         backdrop->priv->cycle_backdrop = cycle_backdrop;

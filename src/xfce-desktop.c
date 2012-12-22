@@ -385,6 +385,8 @@ backdrop_cycle_cb(XfceBackdrop *backdrop, gpointer user_data)
 {
     const gchar* backdrop_list;
 
+    TRACE("entering");
+
     g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
 
     backdrop_list = xfce_backdrop_get_list(backdrop);
