@@ -316,9 +316,9 @@ xfdesktop_check_is_running(Window *xid)
         xscreen = 0;
 
     g_snprintf(selection_name, 100, XFDESKTOP_SELECTION_FMT, xscreen);
-    selection_atom = XInternAtom(GDK_DISPLAY(), selection_name, False);
+    selection_atom = XInternAtom(gdk_x11_get_default_xdisplay(), selection_name, False);
 
-    if((*xid = XGetSelectionOwner(GDK_DISPLAY(), selection_atom)))
+    if((*xid = XGetSelectionOwner(gdk_x11_get_default_xdisplay(), selection_atom)))
         return TRUE;
 
     return FALSE;
@@ -334,7 +334,7 @@ xfdesktop_send_client_message(Window xid, const gchar *msg)
     gtk_widget_realize(win);
 
     gev.type = GDK_CLIENT_EVENT;
-    gev.window = win->window;
+    gev.window = gtk_widget_get_window(win);
     gev.send_event = TRUE;
     gev.message_type = gdk_atom_intern("STRING", FALSE);
     gev.data_format = 8;

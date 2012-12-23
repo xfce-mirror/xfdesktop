@@ -516,7 +516,7 @@ xfce_backdrop_new(GdkVisual *visual)
     g_return_val_if_fail(GDK_IS_VISUAL(visual), NULL);
     
     backdrop = g_object_new(XFCE_TYPE_BACKDROP, NULL);
-    backdrop->priv->bpp = visual->depth;
+    backdrop->priv->bpp = gdk_visual_get_depth(visual);
     
     return backdrop;
 }
@@ -541,7 +541,7 @@ xfce_backdrop_new_with_size(GdkVisual *visual,
     
     backdrop = g_object_new(XFCE_TYPE_BACKDROP, NULL);
     
-    backdrop->priv->bpp = visual->depth;
+    backdrop->priv->bpp = gdk_visual_get_depth(visual);
     backdrop->priv->width = width;
     backdrop->priv->height = height;
 

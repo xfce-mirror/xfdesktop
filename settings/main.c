@@ -42,6 +42,7 @@
 
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <gtk/gtk.h>
+#include <gdk/gdkx.h>
 
 #include <libxfce4util/libxfce4util.h>
 #include <xfconf/xfconf.h>
@@ -743,7 +744,8 @@ xfdesktop_settings_dialog_populate_image_list(AppearancePanel *panel)
 
     /* generate previews of each image -- the new thread will own
      * the reference on the list store, so let's not unref it here */
-    if(!g_thread_create(xfdesktop_settings_create_all_previews, ls, FALSE, NULL)) {
+    if(!g_thread_try_new("xfdesktop_settings_create_all_previews",
+                         xfdesktop_settings_create_all_previews, ls, NULL)) {
         g_critical("Failed to spawn thread; backdrop previews will be unavailable.");
         g_object_unref(G_OBJECT(ls));
     }
@@ -938,8 +940,9 @@ add_file_button_clicked(GtkWidget *button,
         g_slist_free(filenames);
 
         if(!pdata->iters
-           || !g_thread_create(xfdesktop_settings_create_some_previews,
-                               pdata, FALSE, NULL))
+           || !g_thread_try_new("xfdesktop_settings_create_some_previews",
+                                xfdesktop_settings_create_some_previews,
+                                pdata, NULL))
         {
             if(pdata->iters)
                 g_critical("Unable to create thread for single image preview.");
@@ -1172,14 +1175,15 @@ image_treeview_drag_data_received(GtkWidget *widget,
     pdata->model = g_object_ref(G_OBJECT(model));
 
     if(TARGET_TEXT_URI_LIST != info
-        || selection_data->format != 8
-        || selection_data->length <= 0)
+        || gtk_selection_data_get_format(selection_data) != 8
+        || gtk_selection_data_get_length(selection_data) <= 0)
     {
         gtk_drag_finish(context, FALSE, FALSE, time_);
+        g_free(pdata);
         return;
     }
 
-    p = (gchar *)selection_data->data;
+    p = (gchar *)gtk_selection_data_get_data(selection_data);
     while(*p) {
         if(*p != '#') {
             gchar *q;
@@ -1251,8 +1255,9 @@ image_treeview_drag_data_received(GtkWidget *widget,
     file_added = !!pdata->iters;
 
     if(!pdata->iters
-       || !g_thread_create(xfdesktop_settings_create_some_previews,
-                           pdata, FALSE, NULL))
+       || !g_thread_try_new("xfdesktop_settings_create_some_previews",
+                            xfdesktop_settings_create_some_previews,
+                            pdata, NULL))
     {
         if(pdata->iters)
             g_critical("Unable to create thread for single image preview.");
@@ -1718,7 +1723,7 @@ main(int argc, char **argv)
         gtk_window_present(GTK_WINDOW (dialog));
 
         /* To prevent the settings dialog to be saved in the session */
-        gdk_set_sm_client_id("FAKE ID");
+        gdk_x11_set_sm_client_id("FAKE ID");
 
         gtk_main();
     } else {

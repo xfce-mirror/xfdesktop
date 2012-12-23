@@ -253,10 +253,7 @@ main(int argc, char **argv)
     
     /* bind gettext textdomain */
     xfce_textdomain(GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
-    
-#if defined(ENABLE_FILE_ICONS) || defined(USE_DESKTOP_MENU)
-    g_thread_init(NULL);
-#endif
+
 #ifdef ENABLE_FILE_ICONS
     dbus_g_thread_init();
 #endif
@@ -374,7 +371,7 @@ main(int argc, char **argv)
         menu_attach(XFCE_DESKTOP(desktops[i]));
         windowlist_attach(XFCE_DESKTOP(desktops[i]));
         gtk_widget_show(desktops[i]);
-        gdk_window_lower(desktops[i]->window);
+        gdk_window_lower(gtk_widget_get_window(desktops[i]));
     }
     
     for(i = 0; i < nscreens; ++i) {

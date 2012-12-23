@@ -237,8 +237,12 @@ xfdesktop_clipboard_manager_finalize (GObject *object)
   g_list_free (manager->files);
 
   /* disconnect from the clipboard */
-  g_signal_handlers_disconnect_by_func (G_OBJECT (manager->clipboard), xfdesktop_clipboard_manager_owner_changed, manager);
-  g_object_set_qdata (G_OBJECT (manager->clipboard), xfdesktop_clipboard_manager_quark, NULL);
+  g_signal_handlers_disconnect_by_func (G_OBJECT (manager->clipboard),
+                                        xfdesktop_clipboard_manager_owner_changed,
+                                        manager);
+  g_object_set_qdata (G_OBJECT (manager->clipboard),
+                      xfdesktop_clipboard_manager_quark,
+                      NULL);
   g_object_unref (G_OBJECT (manager->clipboard));
 
   (*G_OBJECT_CLASS (xfdesktop_clipboard_manager_parent_class)->finalize) (object);
@@ -322,11 +326,11 @@ xfdesktop_clipboard_manager_contents_received (GtkClipboard     *clipboard,
   gchar                          *data;
 
   /* check whether the retrieval worked */
-  if (G_LIKELY (selection_data->length > 0))
+  if (G_LIKELY (gtk_selection_data_get_length(selection_data) > 0))
     {
       /* be sure the selection data is zero-terminated */
-      data = (gchar *) selection_data->data;
-      data[selection_data->length] = '\0';
+      data = (gchar *) gtk_selection_data_get_data(selection_data);
+      data[gtk_selection_data_get_length(selection_data)] = '\0';
 
       /* check whether to copy or move */
       if (g_ascii_strncasecmp (data, "copy\n", 5) == 0)
@@ -473,12 +477,20 @@ xfdesktop_clipboard_manager_get_callback (GtkClipboard     *clipboard,
     {
     case TARGET_GNOME_COPIED_FILES:
       data = g_strconcat (manager->files_cutted ? "cut\n" : "copy\n", string_list, NULL);
-      gtk_selection_data_set (selection_data, selection_data->target, 8, (guchar *) data, strlen (data));
+      gtk_selection_data_set (selection_data,
+                              gtk_selection_data_get_target(selection_data),
+                              8,
+                              (guchar *) data,
+                              strlen (data));
       g_free (data);
       break;
 
     case TARGET_UTF8_STRING:
-      gtk_selection_data_set (selection_data, selection_data->target, 8, (guchar *) string_list, strlen (string_list));
+      gtk_selection_data_set (selection_data,
+                              gtk_selection_data_get_target(selection_data),
+                              8,
+                              (guchar *) string_list,
+                              strlen (string_list));
       break;
 
     default:

@@ -311,6 +311,7 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     XfceDesktop *desktop = XFCE_DESKTOP(user_data);
     GdkPixmap *pmap = desktop->priv->bg_pixmap;
     GdkScreen *gscreen = desktop->priv->gscreen;
+    cairo_t *cr;
     GdkPixbuf *pix;
     GdkRectangle rect;
     guint i;
@@ -320,7 +321,7 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
     
-    if(desktop->priv->updates_frozen || !GTK_WIDGET_REALIZED(GTK_WIDGET(desktop)))
+    if(desktop->priv->updates_frozen || !gtk_widget_get_realized(GTK_WIDGET(desktop)))
         return;
     
     TRACE("really entering");
@@ -362,11 +363,11 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
         gdk_screen_get_monitor_geometry(gscreen, monitor, &rect);
     }
 
-    gdk_draw_pixbuf(GDK_DRAWABLE(pmap), GTK_WIDGET(desktop)->style->black_gc,
-                    pix, 0, 0, rect.x, rect.y,
-                    gdk_pixbuf_get_width(pix), gdk_pixbuf_get_height(pix),
-                    GDK_RGB_DITHER_MAX, 0, 0);
+    cr = gdk_cairo_create(GDK_DRAWABLE(pmap));
+    gdk_cairo_set_source_pixbuf(cr, pix, rect.x, rect.y);
+    cairo_paint(cr);
     g_object_unref(G_OBJECT(pix));
+    cairo_destroy(cr);
     
     /* tell gtk to redraw the repainted area */
     gtk_widget_queue_draw_area(GTK_WIDGET(desktop), rect.x, rect.y,
@@ -419,11 +420,11 @@ screen_size_changed_cb(GdkScreen *gscreen, gpointer user_data)
     
     if(desktop->priv->bg_pixmap)
         g_object_unref(G_OBJECT(desktop->priv->bg_pixmap));
-    desktop->priv->bg_pixmap = gdk_pixmap_new(GDK_DRAWABLE(GTK_WIDGET(desktop)->window),
+    desktop->priv->bg_pixmap = gdk_pixmap_new(GDK_DRAWABLE(gtk_widget_get_window(GTK_WIDGET(desktop))),
                                               w, h, -1);
     set_real_root_window_pixmap(desktop->priv->gscreen,
                                 desktop->priv->bg_pixmap);
-    gdk_window_set_back_pixmap(GTK_WIDGET(desktop)->window,
+    gdk_window_set_back_pixmap(gtk_widget_get_window(GTK_WIDGET(desktop)),
                                desktop->priv->bg_pixmap, FALSE);
     
     /* special case for 1 backdrop to handle xinerama stretching */
@@ -526,26 +527,26 @@ screen_set_selection(XfceDesktop *desktop)
     gchar selection_name[100];
     Atom selection_atom, manager_atom;
     
-    xwin = GDK_WINDOW_XID(GTK_WIDGET(desktop)->window);
+    xwin = GDK_WINDOW_XID(gtk_widget_get_window(GTK_WIDGET(desktop)));
     xscreen = gdk_screen_get_number(desktop->priv->gscreen);
     
     g_snprintf(selection_name, 100, XFDESKTOP_SELECTION_FMT, xscreen);
-    selection_atom = XInternAtom(GDK_DISPLAY(), selection_name, False);
-    manager_atom = XInternAtom(GDK_DISPLAY(), "MANAGER", False);
+    selection_atom = XInternAtom(gdk_x11_get_default_xdisplay(), selection_name, False);
+    manager_atom = XInternAtom(gdk_x11_get_default_xdisplay(), "MANAGER", False);
 
     /* the previous check in src/main.c occurs too early, so workaround by
      * adding this one. */
-   if(XGetSelectionOwner(GDK_DISPLAY(), selection_atom) != None) {
+   if(XGetSelectionOwner(gdk_x11_get_default_xdisplay(), selection_atom) != None) {
        g_warning("%s: already running, quitting.", PACKAGE);
        exit(0);
    }
 
-    XSelectInput(GDK_DISPLAY(), xwin, PropertyChangeMask | ButtonPressMask);
-    XSetSelectionOwner(GDK_DISPLAY(), selection_atom, xwin, GDK_CURRENT_TIME);
+    XSelectInput(gdk_x11_get_default_xdisplay(), xwin, PropertyChangeMask | ButtonPressMask);
+    XSetSelectionOwner(gdk_x11_get_default_xdisplay(), selection_atom, xwin, GDK_CURRENT_TIME);
 
     /* Check to see if we managed to claim the selection. If not,
      * we treat it as if we got it then immediately lost it */
-    if(XGetSelectionOwner(GDK_DISPLAY(), selection_atom) == xwin) {
+    if(XGetSelectionOwner(gdk_x11_get_default_xdisplay(), selection_atom) == xwin) {
         XClientMessageEvent xev;
         Window xroot = GDK_WINDOW_XID(gdk_screen_get_root_window(desktop->priv->gscreen));
         
@@ -559,7 +560,7 @@ screen_set_selection(XfceDesktop *desktop)
         xev.data.l[3] = 0;    /* manager specific data */
         xev.data.l[4] = 0;    /* manager specific data */
 
-        XSendEvent(GDK_DISPLAY(), xroot, False, StructureNotifyMask, (XEvent *)&xev);
+        XSendEvent(gdk_x11_get_default_xdisplay(), xroot, False, StructureNotifyMask, (XEvent *)&xev);
     } else {
         g_error("%s: could not set selection ownership", PACKAGE);
         exit(1);
@@ -669,7 +670,6 @@ xfce_desktop_init(XfceDesktop *desktop)
 {
     desktop->priv = G_TYPE_INSTANCE_GET_PRIVATE(desktop, XFCE_TYPE_DESKTOP,
                                                 XfceDesktopPriv);
-    GTK_WINDOW(desktop)->type = GTK_WINDOW_TOPLEVEL;
     
     gtk_window_set_type_hint(GTK_WINDOW(desktop), GDK_WINDOW_TYPE_HINT_DESKTOP);
     gtk_window_set_accept_focus(GTK_WINDOW(desktop), FALSE);
@@ -798,12 +798,12 @@ xfce_desktop_realize(GtkWidget *widget)
     gtk_window_move(GTK_WINDOW(desktop), 0, 0);
     
     atom = gdk_atom_intern("_NET_WM_WINDOW_TYPE_DESKTOP", FALSE);
-    gdk_property_change(GTK_WIDGET(desktop)->window,
+    gdk_property_change(gtk_widget_get_window(GTK_WIDGET(desktop)),
             gdk_atom_intern("_NET_WM_WINDOW_TYPE", FALSE),
             gdk_atom_intern("ATOM", FALSE), 32,
             GDK_PROP_MODE_REPLACE, (guchar *)&atom, 1);
 
-    xid = GDK_WINDOW_XID(GTK_WIDGET(desktop)->window);
+    xid = GDK_WINDOW_XID(gtk_widget_get_window(GTK_WIDGET(desktop)));
     groot = gdk_screen_get_root_window(desktop->priv->gscreen);
     
     gdk_property_change(groot,
@@ -852,9 +852,9 @@ xfce_desktop_unrealize(GtkWidget *widget)
                                              desktop);
     }
     
-    if(GTK_WIDGET_MAPPED(widget))
+    if(gtk_widget_get_mapped(widget))
         gtk_widget_unmap(widget);
-    GTK_WIDGET_UNSET_FLAGS(widget, GTK_MAPPED);
+    gtk_widget_set_mapped(widget, FALSE);
     
     gtk_container_forall(GTK_CONTAINER(widget),
                          (GtkCallback)gtk_widget_unrealize,
@@ -895,13 +895,13 @@ xfce_desktop_unrealize(GtkWidget *widget)
     
     gtk_window_set_icon(GTK_WINDOW(widget), NULL);
     
-    gtk_style_detach(widget->style);
-    g_object_unref(G_OBJECT(widget->window));
-    widget->window = NULL;
+    gtk_style_detach(gtk_widget_get_style(widget));
+    g_object_unref(G_OBJECT(gtk_widget_get_window(widget)));
+    gtk_widget_set_window(widget, NULL);
     
     gtk_selection_remove_all(widget);
     
-    GTK_WIDGET_UNSET_FLAGS(widget, GTK_REALIZED);
+    gtk_widget_set_realized(widget, FALSE);
 }
 
 static gboolean
@@ -964,7 +964,7 @@ xfce_desktop_expose(GtkWidget *w,
     if(evt->count != 0)
         return FALSE;
     
-    gdk_window_clear_area(w->window, evt->area.x, evt->area.y,
+    gdk_window_clear_area(gtk_widget_get_window(w), evt->area.x, evt->area.y,
                           evt->area.width, evt->area.height);
     
     children = gtk_container_get_children(GTK_CONTAINER(w));
@@ -998,7 +998,7 @@ xfce_desktop_style_set(GtkWidget *w,
 #endif
     
     if(GDK_IS_WINDOW(desktop->priv->bg_pixmap))
-        gdk_window_set_back_pixmap(w->window, desktop->priv->bg_pixmap, FALSE);
+        gdk_window_set_back_pixmap(gtk_widget_get_window(w), desktop->priv->bg_pixmap, FALSE);
     gtk_widget_queue_draw(w);
 
 #ifdef ENABLE_DESKTOP_ICONS
@@ -1279,7 +1279,7 @@ xfce_desktop_set_icon_style(XfceDesktop *desktop,
     }
     
     desktop->priv->icons_style = style;
-    if(GTK_WIDGET_REALIZED(desktop))
+    if(gtk_widget_get_realized(GTK_WIDGET(desktop)))
         xfce_desktop_setup_icon_view(desktop);
 #endif
 }
@@ -1380,7 +1380,7 @@ xfce_desktop_thaw_updates(XfceDesktop *desktop)
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
     
     desktop->priv->updates_frozen = FALSE;
-    if(GTK_WIDGET_REALIZED(desktop))
+    if(gtk_widget_get_realized(GTK_WIDGET(desktop)))
         xfce_desktop_monitors_changed(desktop->priv->gscreen, desktop);
 }
 
@@ -1389,7 +1389,7 @@ xfce_desktop_peek_backdrop(XfceDesktop *desktop,
                            guint monitor)
 {
     g_return_val_if_fail(XFCE_IS_DESKTOP(desktop)
-                         && GTK_WIDGET_REALIZED(GTK_WIDGET(desktop))
+                         && gtk_widget_get_realized(GTK_WIDGET(desktop))
                          && monitor < desktop->priv->nbackdrops, NULL);
     return desktop->priv->backdrops[monitor];
 }
@@ -1474,7 +1474,7 @@ xfce_desktop_refresh(XfceDesktop *desktop)
 
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
 
-    if(!GTK_WIDGET_REALIZED(desktop))
+    if(!gtk_widget_get_realized(GTK_WIDGET(desktop)))
         return;
 
     /* reload image */
