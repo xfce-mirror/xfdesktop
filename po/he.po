@@ -260,7 +260,7 @@ msgstr "צבע _שני:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
 msgid "Select a single image as the backdrop"
-msgstr ""
+msgstr "בחירת תמונה בודדת בתור תמונת הרקע"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 #: ../settings/xfdesktop-settings-ui.glade.h:35
@@ -387,7 +387,7 @@ msgstr "_גודל סמל:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:15
 msgid "Label trans_parency:"
-msgstr ""
+msgstr "_שקיפות התווית:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:16
 msgid "Left"
@@ -432,7 +432,6 @@ msgid "Sh_ow application icons in menu"
 msgstr "הראה _סמלים בתפריט"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:27
-#, fuzzy
 msgid "Shift"
 msgstr "Shift"
 
@@ -449,12 +448,13 @@ msgid "Show applications menu on _desktop right click"
 msgstr "הצג _תפריט שולחן עבודה בלחיצה ימנית"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:31
+#, fuzzy
 msgid "Show s_ticky windows only in active workspace"
-msgstr ""
+msgstr "הצגת חלונות _דביקים רק ב"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:32
 msgid "Show t_humbnails"
-msgstr ""
+msgstr "הצגת תמונות ממו_זערות"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
 msgid "Show workspace _names in list"
@@ -462,7 +462,7 @@ msgstr ""
 
 #: ../settings/xfdesktop-settings-ui.glade.h:34
 msgid "Single _click to activate items"
-msgstr ""
+msgstr "לחיצה _בודדת להפעלת פריטים"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid ""
@@ -777,49 +777,45 @@ msgid "Copy _Here"
 msgstr "להעתיק ל_כאן"
 
 #: ../src/xfdesktop-file-icon-manager.c:2938
-#, fuzzy
 msgid "_Move Here"
-msgstr "הזז רשומה למעלה"
+msgstr "ה_עברה לכאן"
 
 #: ../src/xfdesktop-file-icon-manager.c:2938
-#, fuzzy
 msgid "_Link Here"
-msgstr "יעד הקישור:"
+msgstr "_קישור לכאן"
 
 #. TRANSLATORS: file was modified less than one day ago
 #: ../src/xfdesktop-file-utils.c:137
 #, c-format
 msgid "Today at %X"
-msgstr ""
+msgstr "היום בשעה %X"
 
 #. TRANSLATORS: file was modified less than two days ago
 #: ../src/xfdesktop-file-utils.c:141
 #, c-format
 msgid "Yesterday at %X"
-msgstr ""
+msgstr "אתמול בשעה %X"
 
 #. Days from last week
 #: ../src/xfdesktop-file-utils.c:146
 #, c-format
 msgid "%A at %X"
-msgstr ""
+msgstr "%A בשעה %X"
 
 #. Any other date
 #: ../src/xfdesktop-file-utils.c:149
 #, c-format
 msgid "%x at %X"
-msgstr ""
+msgstr "%x בשעה %X"
 
 #. the file_time is invalid
 #: ../src/xfdesktop-file-utils.c:159
-#, fuzzy
 msgid "Unknown"
-msgstr "(לא ידוע)"
+msgstr "לא ידוע"
 
 #: ../src/xfdesktop-file-utils.c:708
-#, fuzzy
 msgid "The folder could not be opened"
-msgstr "לא ניתן לפתוח את בוחר היישומים."
+msgstr "לא ניתן לפתוח את התיקייה"
 
 #: ../src/xfdesktop-file-utils.c:745 ../src/xfdesktop-file-utils.c:760
 #, fuzzy
