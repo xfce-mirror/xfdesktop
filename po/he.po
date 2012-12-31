@@ -269,12 +269,12 @@ msgstr "צבע אחיד"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-msgstr ""
+msgstr "הגדרת הצבע הימני או התחתון של המדרג"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid ""
 "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr ""
+msgstr "הגדרת צבע אחיד או את הצבע השמאלי או העליון של המדרג"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "Specify how the image will be resized to fit the screen"
@@ -818,29 +818,24 @@ msgid "The folder could not be opened"
 msgstr "לא ניתן לפתוח את התיקייה"
 
 #: ../src/xfdesktop-file-utils.c:745 ../src/xfdesktop-file-utils.c:760
-#, fuzzy
 msgid "Rename Error"
-msgstr "שגיאת הרצה"
+msgstr "שגיאת שינוי שם"
 
 #: ../src/xfdesktop-file-utils.c:746 ../src/xfdesktop-file-utils.c:761
-#, fuzzy
 msgid "The file could not be renamed"
-msgstr "לא ניתן לפתוח את בוחר היישומים."
+msgstr "לא ניתן לשנות את שם הקובץ"
 
 #: ../src/xfdesktop-file-utils.c:804 ../src/xfdesktop-file-utils.c:819
-#, fuzzy
 msgid "Delete Error"
-msgstr "שגיאת יצירה"
+msgstr "שגיאת מחיקה"
 
 #: ../src/xfdesktop-file-utils.c:805 ../src/xfdesktop-file-utils.c:820
-#, fuzzy
 msgid "The selected files could not be deleted"
-msgstr "לא הייתה אפשרות למצוא או להפעיל את היישום המקושר."
+msgstr "לא ניתן למחוק את הקבצים הנבחרים"
 
 #: ../src/xfdesktop-file-utils.c:864 ../src/xfdesktop-file-utils.c:879
-#, fuzzy
 msgid "The selected files could not be moved to the trash"
-msgstr "לא ניתן לפתוח את בוחר היישומים."
+msgstr "לא ניתן להעביר את הקבצים הנבחרים לאשפה"
 
 #: ../src/xfdesktop-file-utils.c:880 ../src/xfdesktop-file-utils.c:926
 #, fuzzy
@@ -896,21 +891,18 @@ msgstr "לא ניתן לפתוח את בוחר היישומים."
 
 #: ../src/xfdesktop-file-utils.c:1330 ../src/xfdesktop-file-utils.c:1344
 #: ../src/xfdesktop-file-utils.c:1406 ../src/xfdesktop-file-utils.c:1422
-#, fuzzy
 msgid "Transfer Error"
-msgstr "שגיאת בסל מחזור"
+msgstr "שגיאת העברה"
 
 #: ../src/xfdesktop-file-utils.c:1331 ../src/xfdesktop-file-utils.c:1345
 #: ../src/xfdesktop-file-utils.c:1407 ../src/xfdesktop-file-utils.c:1423
-#, fuzzy
 msgid "The file transfer could not be performed"
-msgstr "לא ניתן לפתוח את בוחר היישומים."
+msgstr "לא ניתן לבצע את העברת הקבצים"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:128
-#, fuzzy
 msgid "Unmounting device"
-msgstr "ניתוק העיגון כשל"
+msgstr "ניתוק התקן"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:131
