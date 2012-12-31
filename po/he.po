@@ -923,7 +923,7 @@ msgstr ""
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
 msgid "Writing data to device"
-msgstr ""
+msgstr "כתיבת נתונים להתקן"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
@@ -935,9 +935,8 @@ msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:253
-#, fuzzy
 msgid "Ejecting device"
-msgstr "ניתוק העיגון כשל"
+msgstr "שליפת התקן"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:256
@@ -952,16 +951,18 @@ msgid ""
 "Size: %s\n"
 "Last modified: %s"
 msgstr ""
+"סוג: %s\n"
+"גודל: %s\n"
+"מועד שינוי אחרון: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:273
 #: ../src/xfdesktop-special-file-icon.c:432
-#, fuzzy
 msgid "File System"
 msgstr "מערכת קבצים"
 
 #: ../src/xfdesktop-special-file-icon.c:417
 msgid "Trash is empty"
-msgstr ""
+msgstr "האשפה ריקה"
 
 #: ../src/xfdesktop-special-file-icon.c:420
 msgid "Trash contains one item"
@@ -979,6 +980,9 @@ msgid ""
 "Size: %s\n"
 "Last modified: %s"
 msgstr ""
+"%s\n"
+"גודל: %s\n"
+"מועד שינוי אחרון: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:522
 msgid "_Empty Trash"
@@ -1032,9 +1036,8 @@ msgid "_Mount Volume"
 msgstr "_חבר כרך"
 
 #: ../src/xfdesktop-window-icon.c:208
-#, fuzzy
 msgid "_Window Actions"
-msgstr "רשימת חלונות"
+msgstr "_פעולות חלון"
 
 #~ msgid "Unable to contact the Xfce Trash service."
 #~ msgstr "אין אפשרות ליצור קשר עם שירות סל המחזור של Xfce."
