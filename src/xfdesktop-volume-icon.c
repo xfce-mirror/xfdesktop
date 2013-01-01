@@ -992,6 +992,11 @@ xfdesktop_volume_icon_new(GVolume *volume,
         g_object_unref(mount);
     }
 
+    g_signal_connect_swapped(G_OBJECT(gtk_icon_theme_get_for_screen(screen)),
+                             "changed",
+                             G_CALLBACK(xfdesktop_volume_icon_invalidate_pixbuf),
+                             volume_icon);
+
     g_signal_connect(volume, "changed", 
                      G_CALLBACK(xfdesktop_volume_icon_changed), 
                      volume_icon);
