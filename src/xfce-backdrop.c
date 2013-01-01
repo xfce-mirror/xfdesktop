@@ -933,17 +933,10 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
     
     g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), NULL);
     
-    if(backdrop->priv->show_image && backdrop->priv->image_path) {
-        image = gdk_pixbuf_new_from_file(backdrop->priv->image_path, NULL);
-        if(image) {
-            iw = gdk_pixbuf_get_width(image);
-            ih = gdk_pixbuf_get_height(image);
-        }
-    }
-    
+    if(backdrop->priv->show_image && backdrop->priv->image_path)
+        gdk_pixbuf_get_file_info(backdrop->priv->image_path, &iw, &ih);
+
     if(backdrop->priv->width == 0 || backdrop->priv->height == 0) {
-        if(!image)
-            return NULL;
         w = iw;
         h = ih;
     } else {
@@ -963,7 +956,9 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
             final_image = create_solid(&backdrop->priv->color1, w, h, FALSE, 0xff);
     }
     
-    if(!image) {
+    /*check if the file exists,
+     *and if it doesn't then make the background the single colour*/
+    if(!g_file_test(backdrop->priv->image_path, G_FILE_TEST_EXISTS)) {
         if(backdrop->priv->brightness != 0)
             final_image = adjust_brightness(final_image, backdrop->priv->brightness);
         
@@ -1001,6 +996,7 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
     
     switch(istyle) {
         case XFCE_BACKDROP_IMAGE_CENTERED:
+            image = gdk_pixbuf_new_from_file(backdrop->priv->image_path, NULL);
             dx = MAX((w - iw) / 2, 0);
             dy = MAX((h - ih) / 2, 0);
             xo = MIN((w - iw) / 2, dx);
@@ -1011,6 +1007,7 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
             break;
         
         case XFCE_BACKDROP_IMAGE_TILED:
+            image = gdk_pixbuf_new_from_file(backdrop->priv->image_path, NULL);
             tmp = gdk_pixbuf_new(GDK_COLORSPACE_RGB, TRUE, 8, w, h);
             for(i = 0; (i * iw) < w; i++) {
                 for(j = 0; (j * ih) < h; j++) {
@@ -1033,10 +1030,10 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
             break;
         
         case XFCE_BACKDROP_IMAGE_STRETCHED:
-            xscale = (gdouble)w / iw;
-            yscale = (gdouble)h / ih;
+            image = gdk_pixbuf_new_from_file_at_scale(
+                            backdrop->priv->image_path, w, h, FALSE, NULL);
             gdk_pixbuf_composite(image, final_image, 0, 0, w, h,
-                    0, 0, xscale, yscale, interp, 255);
+                    0, 0, 1, 1, interp, 255);
             break;
         
         case XFCE_BACKDROP_IMAGE_SCALED:
@@ -1053,9 +1050,12 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
             }
             dx = xo;
             dy = yo;
-            
+
+            image = gdk_pixbuf_new_from_file_at_scale(
+                        backdrop->priv->image_path, iw * xscale,
+                        ih * yscale, TRUE, NULL);
             gdk_pixbuf_composite(image, final_image, dx, dy,
-                    iw * xscale, ih * yscale, xo, yo, xscale, yscale,
+                    iw * xscale, ih * yscale, xo, yo, 1, 1,
                     interp, 255);
             break;
         
@@ -1071,8 +1071,12 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
                 xo = 0;
                 yo = (h - (ih * yscale)) * 0.5;
             }
+
+            image = gdk_pixbuf_new_from_file_at_scale(
+                                backdrop->priv->image_path, iw * xscale,
+                                ih * yscale, TRUE, NULL);
             gdk_pixbuf_composite(image, final_image, 0, 0,
-                    w, h, xo, yo, xscale, yscale, interp, 255);
+                    w, h, xo, yo, 1, 1, interp, 255);
             break;
         
         default:
