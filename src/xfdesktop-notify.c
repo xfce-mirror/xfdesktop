@@ -170,16 +170,67 @@ xfdesktop_notify_unmount (GMount *mount)
 void
 xfdesktop_notify_unmount_finish (GMount *mount)
 {
-  NotifyNotification *notification;
+  const gchar * const *icon_names;
+  NotifyNotification  *notification = NULL;
+  const gchar         *summary;
+  GFile               *icon_file;
+  GIcon               *icon;
+  gchar               *icon_name = NULL;
+  gchar               *message;
+  gchar               *name;
 
   g_return_if_fail (G_IS_MOUNT (mount));
 
+  if (!xfdesktop_notify_init ())
+    return;
+
+  name = g_mount_get_name (mount);
+
+  icon = g_mount_get_icon (mount);
+  if (G_IS_THEMED_ICON (icon))
+    {
+      icon_names = g_themed_icon_get_names (G_THEMED_ICON (icon));
+      if (icon_names != NULL)
+        icon_name = g_strdup (icon_names[0]);
+    }
+  else if (G_IS_FILE_ICON (icon))
+    {
+      icon_file = g_file_icon_get_file (G_FILE_ICON (icon));
+      if (icon_file != NULL)
+        {
+          icon_name = g_file_get_path (icon_file);
+          g_object_unref (icon_file);
+        }
+    }
+  g_object_unref (icon);
+
+  if (icon_name == NULL)
+    icon_name = g_strdup ("drive-removable-media");
+
+  /* close any open notifications since the operation finished */
   notification = g_object_get_data (G_OBJECT (mount), "xfdesktop-notification");
   if (notification != NULL)
     {
       notify_notification_close (notification, NULL);
       g_object_set_data (G_OBJECT (mount), "xfdesktop-notification", NULL);
     }
+
+  summary = _("Unmount Finished");
+
+  message = g_strdup_printf (_("The device \"%s\" has been safely removed from the system. "), name);
+
+#ifdef NOTIFY_CHECK_VERSION
+#if NOTIFY_CHECK_VERSION (0, 7, 0)
+  notification = notify_notification_new (summary, message, icon_name);
+#else
+  notification = notify_notification_new (summary, message, icon_name, NULL);
+#endif
+#else
+  notification = notify_notification_new (summary, message, icon_name, NULL);
+#endif
+  notify_notification_set_urgency (notification, NOTIFY_URGENCY_NORMAL);
+  notify_notification_set_timeout (notification, NOTIFY_EXPIRES_DEFAULT);
+  notify_notification_show (notification, NULL);
 }
 
 
@@ -294,16 +345,67 @@ xfdesktop_notify_eject (GVolume *volume)
 void
 xfdesktop_notify_eject_finish (GVolume *volume)
 {
-  NotifyNotification *notification;
+  const gchar * const *icon_names;
+  NotifyNotification  *notification = NULL;
+  const gchar         *summary;
+  GFile               *icon_file;
+  GIcon               *icon;
+  gchar               *icon_name = NULL;
+  gchar               *message;
+  gchar               *name;
 
   g_return_if_fail (G_IS_VOLUME (volume));
 
+  if (!xfdesktop_notify_init ())
+    return;
+
+  name = g_volume_get_name (volume);
+
+  icon = g_volume_get_icon (volume);
+  if (G_IS_THEMED_ICON (icon))
+    {
+      icon_names = g_themed_icon_get_names (G_THEMED_ICON (icon));
+      if (icon_names != NULL)
+        icon_name = g_strdup (icon_names[0]);
+    }
+  else if (G_IS_FILE_ICON (icon))
+    {
+      icon_file = g_file_icon_get_file (G_FILE_ICON (icon));
+      if (icon_file != NULL)
+        {
+          icon_name = g_file_get_path (icon_file);
+          g_object_unref (icon_file);
+        }
+    }
+  g_object_unref (icon);
+
+  if (icon_name == NULL)
+    icon_name = g_strdup ("drive-removable-media");
+
+  /* close any open notifications since the operation finished */
   notification = g_object_get_data (G_OBJECT (volume), "xfdesktop-notification");
   if (notification != NULL)
     {
       notify_notification_close (notification, NULL);
       g_object_set_data (G_OBJECT (volume), "xfdesktop-notification", NULL);
     }
+
+  summary = _("Eject Finished");
+
+  message = g_strdup_printf (_("The device \"%s\" has been safely removed from the system. "), name);
+
+#ifdef NOTIFY_CHECK_VERSION
+#if NOTIFY_CHECK_VERSION (0, 7, 0)
+  notification = notify_notification_new (summary, message, icon_name);
+#else
+  notification = notify_notification_new (summary, message, icon_name, NULL);
+#endif
+#else
+  notification = notify_notification_new (summary, message, icon_name, NULL);
+#endif
+  notify_notification_set_urgency (notification, NOTIFY_URGENCY_NORMAL);
+  notify_notification_set_timeout (notification, NOTIFY_EXPIRES_DEFAULT);
+  notify_notification_show (notification, NULL);
 }
 
 
