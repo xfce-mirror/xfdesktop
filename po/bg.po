@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-25 10:03+0000\n"
-"PO-Revision-Date: 2012-12-25 16:39+0200\n"
+"POT-Creation-Date: 2013-01-04 10:48+0000\n"
+"PO-Revision-Date: 2013-01-04 13:51+0200\n"
 "Last-Translator: cybercop <cybercop_montana@abv.bg>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
 "Language: bg\n"
@@ -311,11 +311,11 @@ msgstr "Вертикален градиент"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
 msgid "When multiple monitors are present, select this option to stretch the current background over all of them."
-msgstr ""
+msgstr "Когато са налице няколко монитора, изберете тази опция, за да се разтегне сегашния фон над всички тях."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
 msgid "While in image list mode, select this option to automatically select a different background from the image list after a set number of minutes."
-msgstr ""
+msgstr "Докато сте в режим на списък с изображения, изберете тази опция, за да се избира автоматично различен фон от списъка с изображения след определен брой минути."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:36
 #: ../settings/xfdesktop-settings-ui.glade.h:43
@@ -413,7 +413,7 @@ msgstr "Дясно"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:24
 msgid "Select this option to display preview-able files on the desktop as automatically generated thumbnail icons."
-msgstr ""
+msgstr "Изберете тази опция за да се покажат изображенията на десктопа, като автоматично генерирани миниатюри."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:25
 msgid "Set desktop background and menu and icon behavior"
@@ -840,7 +840,7 @@ msgstr "Избраните файлове не могат да бъдат пре
 #: ../src/xfdesktop-file-utils.c:880
 #: ../src/xfdesktop-file-utils.c:926
 msgid "This feature requires a trash service to be present (such as the one supplied by Thunar)."
-msgstr "Тази функция изисква да присъства trash service (като този, предоставен от Thunar)."
+msgstr "Тази функция изисква да присъства услугата Кошче (като този, предоставен от Thunar)."
 
 #: ../src/xfdesktop-file-utils.c:911
 #: ../src/xfdesktop-file-utils.c:925
@@ -916,7 +916,7 @@ msgstr "Демонтиране на устройството"
 #: ../src/xfdesktop-notify.c:131
 #, c-format
 msgid "The device \"%s\" is being unmounted by the system. Please do not remove the media or disconnect the drive"
-msgstr "Устройството \"%s\" се демонтира от системата. Моля, не махайте или изключите устройството"
+msgstr "Устройството \"%s\" се демонтира от системата. Моля, не го премахвайте или изключите устройството"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:138
@@ -929,7 +929,7 @@ msgstr "Записване на данните в устройството"
 #: ../src/xfdesktop-notify.c:265
 #, c-format
 msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
-msgstr "Има данни,  които е необходимо да бъдат записани в устройство\\ \"%s\", преди да бъде отстранен. Моля, не махайте медиите или изключите устройството"
+msgstr "Има данни,  които е необходимо да бъдат записани в устройство \"%s\", преди да бъде отстранено. Моля, не махайте медиите или изключите устройството"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:253
