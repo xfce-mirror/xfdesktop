@@ -25,10 +25,6 @@ DISTCLEANFILES = \
 	intltool-merge \
 	intltool-update
 
-AUTOMAKE_OPTIONS = \
-	1.8 \
-	dist-bzip2
-
 distuninstallcheck_listfiles = \
 	find . -type f -print | grep -v ./share/icons/hicolor/icon-theme.cache
 
