@@ -1040,6 +1040,7 @@ xfdesktop_icon_view_show_tooltip(GtkWidget *widget,
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
     const gchar *tip_text;
+    gchar *padded_tip_text = NULL;
     
     if(!icon_view->priv->item_under_pointer
        || icon_view->priv->definitely_dragging)
@@ -1051,13 +1052,17 @@ xfdesktop_icon_view_show_tooltip(GtkWidget *widget,
     if(!tip_text)
         return FALSE;
 
+    padded_tip_text = g_strdup_printf("%s\t", tip_text);
+
     if(icon_view->priv->tooltip_size > 0) {
         gtk_tooltip_set_icon(tooltip,
                 xfdesktop_icon_peek_pixbuf(icon_view->priv->item_under_pointer,
                                            icon_view->priv->tooltip_size));
     }
 
-    gtk_tooltip_set_text(tooltip, tip_text);
+    gtk_tooltip_set_text(tooltip, padded_tip_text);
+
+    g_free(padded_tip_text);
 
     return TRUE;
 }
