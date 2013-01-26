@@ -873,6 +873,7 @@ xfdesktop_settings_setup_image_iconview(AppearancePanel *panel)
     g_object_set(G_OBJECT(iconview),
                 "pixbuf-column", COL_PIX,
                 "item-width", PREVIEW_WIDTH,
+                "tooltip-column", COL_NAME,
                 NULL);
 
     g_signal_connect(G_OBJECT(iconview), "selection-changed",
