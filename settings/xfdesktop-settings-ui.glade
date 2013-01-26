@@ -1,22 +1,6 @@
 <?xml version="1.0"?>
 <!--Generated with glade3 3.4.5 on Sun Nov 16 16:39:43 2008 -->
 <interface>
-  <object class="GtkAdjustment" id="adjustment1">
-    <property name="upper">127</property>
-    <property name="lower">-128</property>
-    <property name="page_increment">10</property>
-    <property name="step_increment">1</property>
-    <property name="page_size">0</property>
-    <property name="value">0</property>
-  </object>
-  <object class="GtkAdjustment" id="adjustment2">
-    <property name="upper">10</property>
-    <property name="lower">-10</property>
-    <property name="page_increment">10</property>
-    <property name="step_increment">0.10000000000000001</property>
-    <property name="page_size">0</property>
-    <property name="value">1</property>
-  </object>
   <object class="GtkAdjustment" id="adjustment3">
     <property name="upper">192</property>
     <property name="lower">8</property>
@@ -32,58 +16,6 @@
     <property name="step_increment">1</property>
     <property name="page_size">0</property>
     <property name="value">12</property>
-  </object>
-  <object class="GtkAdjustment" id="adjustment5">
-    <property name="upper">100</property>
-    <property name="lower">0</property>
-    <property name="page_increment">10</property>
-    <property name="step_increment">1</property>
-    <property name="page_size">0</property>
-    <property name="value">40</property>
-  </object>
-  <object class="GtkListStore" id="model1">
-    <columns>
-      <column type="gchararray"/>
-    </columns>
-    <data>
-      <row>
-        <col id="0" translatable="yes">Auto</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">Centered</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">Tiled</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">Stretched</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">Scaled</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">Zoomed</col>
-      </row>
-    </data>
-  </object>
-  <object class="GtkListStore" id="model2">
-    <columns>
-      <column type="gchararray"/>
-    </columns>
-    <data>
-      <row>
-        <col id="0" translatable="yes">Solid color</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">Horizontal gradient</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">Vertical gradient</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">Transparent</col>
-      </row>
-    </data>
   </object>
   <object class="GtkListStore" id="model3">
     <columns>
@@ -179,6 +111,8 @@
     <property name="type_hint">GDK_WINDOW_TYPE_HINT_DIALOG</property>
     <property name="has_separator">False</property>
     <property name="subtitle" translatable="yes">Set desktop background and menu and icon behavior</property>
+    <property name="default-width">640</property>
+    <property name="default-height">480</property>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox1">
         <property name="visible">True</property>
@@ -194,14 +128,9 @@
                 <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
                 <property name="border_width">6</property>
                 <child>
-                  <object class="GtkNotebook" id="notebook_screens">
+                  <object class="GtkTable" id="notebook_screens">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="show_tabs">False</property>
-                    <property name="show_border">False</property>
-                    <child type="tab">
-                      <placeholder/>
-                    </child>
                   </object>
                 </child>
                 <child type="tab">
@@ -740,40 +669,6 @@
                                   <packing>
                                     <property name="expand">False</property>
                                     <property name="position">2</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkHBox" id="hbox10">
-                                    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                                    <property name="spacing">12</property>
-                                    <child>
-                                      <object class="GtkLabel" id="label16">
-                                        <property name="visible">True</property>
-                                        <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                                        <property name="label" translatable="yes">Label trans_parency:</property>
-                                        <property name="use_underline">True</property>
-                                      </object>
-                                      <packing>
-                                        <property name="expand">False</property>
-                                      </packing>
-                                    </child>
-                                    <child>
-                                      <object class="GtkHScale" id="hscale3">
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">True</property>
-                                        <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                                        <property name="tooltip-text" translatable="yes">Specify the transparency level for the rounded label drawn behind the icon text</property>
-                                        <property name="adjustment">adjustment5</property>
-                                        <property name="digits">0</property>
-                                        <property name="value_pos">GTK_POS_RIGHT</property>
-                                      </object>
-                                      <packing>
-                                        <property name="position">1</property>
-                                      </packing>
-                                    </child>
-                                  </object>
-                                  <packing>
-                                    <property name="position">3</property>
                                   </packing>
                                 </child>
                               </object>

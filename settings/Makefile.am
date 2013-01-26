@@ -14,8 +14,10 @@ xfdesktop_settings_CFLAGS =						\
 	$(XFCONF_CFLAGS)							\
 	$(GTHREAD_CFLAGS)							\
 	$(LIBX11_CFLAGS)							\
+	$(LIBWNCK_CFLAGS) 							\
 	-DG_LOG_DOMAIN=\"xfdesktop-settings\"		\
 	-DEXO_API_SUBJECT_TO_CHANGE					\
+	-DWNCK_I_KNOW_THIS_IS_UNSTABLE 				\
 	-DLOCALEDIR=\"$(localedir)\"				\
 	-DDATADIR=\"$(datadir)\"					\
 	-DBINDIR=\"$(bindir)\"
@@ -26,6 +28,7 @@ xfdesktop_settings_LDADD =						\
 	$(LIBXFCE4UI_LIBS)							\
 	$(LIBEXO_LIBS)								\
 	$(GTHREAD_LIBS)								\
+	$(LIBWNCK_LIBS) 							\
 	$(LIBX11_LIBS)
 
 if HAVE_CYGWIN

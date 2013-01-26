@@ -22,6 +22,8 @@ xfdesktop_SOURCES = \
 	windowlist.h \
 	xfce-backdrop.c \
 	xfce-backdrop.h \
+	xfce-workspace.c \
+	xfce-workspace.h \
 	xfce-desktop.c \
 	xfce-desktop.h
 

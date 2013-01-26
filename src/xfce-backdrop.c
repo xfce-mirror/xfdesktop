@@ -64,18 +64,16 @@ struct _XfceBackdropPriv
     XfceBackdropColorStyle color_style;
     GdkColor color1;
     GdkColor color2;
-    
-    gboolean show_image;
+
     XfceBackdropImageStyle image_style;
     gchar *image_path;
-    gchar *backdrop_list;
-    
+
     gint brightness;
-    gdouble saturation;
 
     gboolean cycle_backdrop;
     guint cycle_timer;
     guint cycle_timer_id;
+    gboolean random_backdrop_order;
 };
 
 enum
@@ -91,13 +89,12 @@ enum
     PROP_COLOR_STYLE,
     PROP_COLOR1,
     PROP_COLOR2,
-    PROP_SHOW_IMAGE,
     PROP_IMAGE_STYLE,
     PROP_IMAGE_FILENAME,
     PROP_BRIGHTNESS,
-    PROP_SATURATION,
     PROP_BACKDROP_CYCLE_ENABLE,
     PROP_BACKDROP_CYCLE_TIMER,
+    PROP_BACKDROP_RANDOM_ORDER
 };
 
 static guint backdrop_signals[LAST_SIGNAL] = { 0, };
@@ -284,19 +281,12 @@ xfce_backdrop_class_init(XfceBackdropClass *klass)
                                                        GDK_TYPE_COLOR,
                                                        XFDESKTOP_PARAM_FLAGS));
 
-    g_object_class_install_property(gobject_class, PROP_SHOW_IMAGE,
-                                    g_param_spec_boolean("show-image",
-                                                         "show image",
-                                                         "show image",
-                                                         TRUE,
-                                                         XFDESKTOP_PARAM_FLAGS));
-
     g_object_class_install_property(gobject_class, PROP_IMAGE_STYLE,
                                     g_param_spec_enum("image-style",
                                                       "image style",
                                                       "image style",
                                                       XFCE_TYPE_BACKDROP_IMAGE_STYLE,
-                                                      XFCE_BACKDROP_IMAGE_AUTO,
+                                                      XFCE_BACKDROP_IMAGE_SCALED,
                                                       XFDESKTOP_PARAM_FLAGS));
 
     g_object_class_install_property(gobject_class, PROP_IMAGE_FILENAME,
@@ -313,13 +303,6 @@ xfce_backdrop_class_init(XfceBackdropClass *klass)
                                                      -128, 127, 0,
                                                      XFDESKTOP_PARAM_FLAGS));
 
-    g_object_class_install_property(gobject_class, PROP_SATURATION,
-                                    g_param_spec_double("saturation",
-                                                        "saturation",
-                                                        "saturation",
-                                                        -10.0, 10.0, 1.0,
-                                                        XFDESKTOP_PARAM_FLAGS));
-
     g_object_class_install_property(gobject_class, PROP_BACKDROP_CYCLE_ENABLE,
                                     g_param_spec_boolean("backdrop-cycle-enable",
                                                          "backdrop-cycle-enable",
@@ -334,6 +317,13 @@ xfce_backdrop_class_init(XfceBackdropClass *klass)
                                                      0, G_MAXUSHORT, 10,
                                                      XFDESKTOP_PARAM_FLAGS));
 
+    g_object_class_install_property(gobject_class, PROP_BACKDROP_RANDOM_ORDER,
+                                    g_param_spec_boolean("backdrop-cycle-random-order",
+                                                         "backdrop-cycle-random-order",
+                                                         "backdrop-cycle-random-order",
+                                                         FALSE,
+                                                         XFDESKTOP_PARAM_FLAGS));
+
 #undef XFDESKTOP_PARAM_FLAGS
 }
 
@@ -342,9 +332,7 @@ xfce_backdrop_init(XfceBackdrop *backdrop)
 {
     backdrop->priv = G_TYPE_INSTANCE_GET_PRIVATE(backdrop, XFCE_TYPE_BACKDROP,
                                                  XfceBackdropPriv);
-    backdrop->priv->show_image = TRUE;
     backdrop->priv->cycle_timer_id = 0;
-    backdrop->priv->backdrop_list = NULL;
 
     /* color defaults */
     backdrop->priv->color1.red = 0x1515;
@@ -368,11 +356,6 @@ xfce_backdrop_finalize(GObject *object)
     if(backdrop->priv->cycle_timer_id != 0) {
         g_source_remove(backdrop->priv->cycle_timer_id);
         backdrop->priv->cycle_timer_id = 0;
-    }
-
-    if(backdrop->priv->backdrop_list != NULL) {
-        g_free(backdrop->priv->backdrop_list);
-        backdrop->priv->backdrop_list = NULL;
     }
 
     G_OBJECT_CLASS(xfce_backdrop_parent_class)->finalize(object);
@@ -404,10 +387,6 @@ xfce_backdrop_set_property(GObject *object,
                 xfce_backdrop_set_second_color(backdrop, color);
             break;
 
-        case PROP_SHOW_IMAGE:
-            xfce_backdrop_set_show_image(backdrop, g_value_get_boolean(value));
-            break;
-
         case PROP_IMAGE_STYLE:
             xfce_backdrop_set_image_style(backdrop, g_value_get_enum(value));
             break;
@@ -421,16 +400,16 @@ xfce_backdrop_set_property(GObject *object,
             xfce_backdrop_set_brightness(backdrop, g_value_get_int(value));
             break;
 
-        case PROP_SATURATION:
-            xfce_backdrop_set_saturation(backdrop, g_value_get_double(value));
-            break;
-
         case PROP_BACKDROP_CYCLE_ENABLE:
             xfce_backdrop_set_cycle_backdrop(backdrop, g_value_get_boolean(value));
             break;
 
         case PROP_BACKDROP_CYCLE_TIMER:
             xfce_backdrop_set_cycle_timer(backdrop, g_value_get_uint(value));
+            break;
+
+        case PROP_BACKDROP_RANDOM_ORDER:
+            xfce_backdrop_set_random_order(backdrop, g_value_get_boolean(value));
             break;
 
         default:
@@ -460,10 +439,6 @@ xfce_backdrop_get_property(GObject *object,
             g_value_set_boxed(value, &backdrop->priv->color2);
             break;
 
-        case PROP_SHOW_IMAGE:
-            g_value_set_boolean(value, xfce_backdrop_get_show_image(backdrop));
-            break;
-
         case PROP_IMAGE_STYLE:
             g_value_set_enum(value, xfce_backdrop_get_image_style(backdrop));
             break;
@@ -477,16 +452,16 @@ xfce_backdrop_get_property(GObject *object,
             g_value_set_int(value, xfce_backdrop_get_brightness(backdrop));
             break;
 
-        case PROP_SATURATION:
-            g_value_set_double(value, xfce_backdrop_get_saturation(backdrop));
-            break;
-
         case PROP_BACKDROP_CYCLE_ENABLE:
             g_value_set_boolean(value, xfce_backdrop_get_cycle_backdrop(backdrop));
             break;
 
         case PROP_BACKDROP_CYCLE_TIMER:
             g_value_set_uint(value, xfce_backdrop_get_cycle_timer(backdrop));
+            break;
+
+        case PROP_BACKDROP_RANDOM_ORDER:
+            g_value_set_boolean(value, xfce_backdrop_get_random_order(backdrop));
             break;
 
         default:
@@ -670,32 +645,6 @@ xfce_backdrop_get_second_color(XfceBackdrop *backdrop,
 }
 
 /**
- * xfce_backdrop_set_show_image:
- * @backdrop: An #XfceBackdrop.
- * @show_image: Whether or not to composite the image on top of the color.
- *
- * Sets whether or not the #XfceBackdrop should consist of an image composited
- * on top of a color (or color gradient), or just a color (or color gradient).
- **/
-void
-xfce_backdrop_set_show_image(XfceBackdrop *backdrop, gboolean show_image)
-{
-    g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
-    
-    if(backdrop->priv->show_image != show_image) {
-        backdrop->priv->show_image = show_image;
-        g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_CHANGED], 0);
-    }
-}
-
-gboolean
-xfce_backdrop_get_show_image(XfceBackdrop *backdrop)
-{
-    g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), FALSE);
-    return backdrop->priv->show_image;
-}
-
-/**
  * xfce_backdrop_set_image_style:
  * @backdrop: An #XfceBackdrop.
  * @style: An XfceBackdropImageStyle.
@@ -739,7 +688,9 @@ void
 xfce_backdrop_set_image_filename(XfceBackdrop *backdrop, const gchar *filename)
 {
     g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
-    
+
+    TRACE("entering");
+
     g_free(backdrop->priv->image_path);
     
     if(filename)
@@ -755,37 +706,6 @@ xfce_backdrop_get_image_filename(XfceBackdrop *backdrop)
 {
     g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), NULL);
     return backdrop->priv->image_path;
-}
-
-/**
- * xfce_backdrop_set_list:
- * @backdrop: An #XfceBackdrop.
- * @backdrop_list: A list of backdrop images.
- *
- * Sets the internal list of wallpaper images assigned to this backdrop.
- * Frees any previous backdrop list before setting the new one.
- * [Transfer full]
- **/
-void
-xfce_backdrop_set_list(XfceBackdrop *backdrop,
-                       gchar *backdrop_list)
-{
-    g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
-
-    if(backdrop->priv->backdrop_list != NULL) {
-        g_free(backdrop->priv->backdrop_list);
-        backdrop->priv->backdrop_list = NULL;
-    }
-
-    backdrop->priv->backdrop_list = backdrop_list;
-}
-
-G_CONST_RETURN gchar*
-xfce_backdrop_get_list(XfceBackdrop *backdrop)
-{
-    g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), NULL);
-
-    return backdrop->priv->backdrop_list;
 }
 
 /**
@@ -813,24 +733,6 @@ xfce_backdrop_get_brightness(XfceBackdrop *backdrop)
 {
     g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), 0);
     return backdrop->priv->brightness;
-}
-
-void
-xfce_backdrop_set_saturation(XfceBackdrop *backdrop,
-                             gdouble saturation)
-{
-    g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
-    if(abs(saturation - backdrop->priv->saturation) > 0.05) {
-        backdrop->priv->saturation = saturation;
-        g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_CHANGED], 0);
-    }
-}
-
-gdouble
-xfce_backdrop_get_saturation(XfceBackdrop *backdrop)
-{
-    g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), 1.0);
-    return backdrop->priv->saturation;
 }
 
 static gboolean
@@ -911,6 +813,25 @@ xfce_backdrop_get_cycle_backdrop(XfceBackdrop *backdrop)
     return backdrop->priv->cycle_backdrop;
 }
 
+void
+xfce_backdrop_set_random_order(XfceBackdrop *backdrop,
+                               gboolean random_order)
+{
+    g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
+
+    TRACE("entering");
+
+    backdrop->priv->random_backdrop_order = random_order;
+}
+
+gboolean
+xfce_backdrop_get_random_order(XfceBackdrop *backdrop)
+{
+    g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), FALSE);
+
+    return backdrop->priv->random_backdrop_order;
+}
+
 /**
  * xfce_backdrop_get_pixbuf:
  * @backdrop: An #XfceBackdrop.
@@ -933,8 +854,10 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
     
     g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), NULL);
     
-    if(backdrop->priv->show_image && backdrop->priv->image_path)
+    if(backdrop->priv->image_style != XFCE_BACKDROP_IMAGE_NONE &&
+       backdrop->priv->image_path) {
         gdk_pixbuf_get_file_info(backdrop->priv->image_path, &iw, &ih);
+    }
 
     if(backdrop->priv->width == 0 || backdrop->priv->height == 0) {
         w = iw;
@@ -965,13 +888,7 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
         return final_image;
     }
     
-    if(backdrop->priv->image_style == XFCE_BACKDROP_IMAGE_AUTO) {
-        if(ih <= h / 2 && iw <= w / 2)
-            istyle = XFCE_BACKDROP_IMAGE_TILED;
-        else
-            istyle = XFCE_BACKDROP_IMAGE_ZOOMED;
-    } else
-        istyle = backdrop->priv->image_style;
+    istyle = backdrop->priv->image_style;
     
     /* if the image is the same as the screen size, there's no reason to do
      * any scaling at all */
@@ -1030,6 +947,7 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
             break;
         
         case XFCE_BACKDROP_IMAGE_STRETCHED:
+        case XFCE_BACKDROP_IMAGE_SPANNING_SCREENS:
             image = gdk_pixbuf_new_from_file_at_scale(
                             backdrop->priv->image_path, w, h, FALSE, NULL);
             gdk_pixbuf_composite(image, final_image, 0, 0, w, h,
@@ -1088,12 +1006,6 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
     
     if(backdrop->priv->brightness != 0)
         final_image = adjust_brightness(final_image, backdrop->priv->brightness);
-
-    if(backdrop->priv->saturation > 1.01 || backdrop->priv->saturation < 0.99) {
-        gdk_pixbuf_saturate_and_pixelate(final_image, final_image,
-                                         (gfloat)backdrop->priv->saturation,
-                                         FALSE);
-    }
     
     return final_image;
 }

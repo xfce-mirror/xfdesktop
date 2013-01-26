@@ -33,7 +33,6 @@
 
 #define XFDESKTOP_CHANNEL        "xfce4-desktop"
 #define DEFAULT_BACKDROP         DATADIR "/backgrounds/xfce/xfce-blue.jpg"
-#define DEFAULT_BACKDROP_LIST    "xfce4/desktop/backdrop.list"
 #define DEFAULT_ICON_FONT_SIZE   12
 #define DEFAULT_ICON_SIZE        32
 #define ITHEME_FLAGS             (GTK_ICON_LOOKUP_USE_BUILTIN \
@@ -72,15 +71,8 @@
 
 G_BEGIN_DECLS
 
-gchar **xfdesktop_backdrop_list_load(const gchar *filename,
-                                     gint *n_items,
-                                     GError **error);
-gboolean xfdesktop_backdrop_list_save(const gchar *filename,
-                                      gchar * const *files,
-                                      GError **error);
-gchar *xfdesktop_backdrop_list_choose_random(const gchar *filename,
-                                             GError **error);
-gboolean xfdesktop_backdrop_list_is_valid(const gchar *filename);
+gchar *xfdesktop_backdrop_choose_next(const gchar *filename);
+gchar *xfdesktop_backdrop_choose_random(const gchar *filename);
 
 gboolean xfdesktop_image_file_is_valid(const gchar *filename);
 

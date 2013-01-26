@@ -40,12 +40,13 @@ typedef struct _XfceBackdropPriv XfceBackdropPriv;
 
 typedef enum
 {
-    XFCE_BACKDROP_IMAGE_AUTO = 0,
+    XFCE_BACKDROP_IMAGE_NONE = 0,
     XFCE_BACKDROP_IMAGE_CENTERED,
     XFCE_BACKDROP_IMAGE_TILED,
     XFCE_BACKDROP_IMAGE_STRETCHED,
     XFCE_BACKDROP_IMAGE_SCALED,
     XFCE_BACKDROP_IMAGE_ZOOMED,
+    XFCE_BACKDROP_IMAGE_SPANNING_SCREENS,
 } XfceBackdropImageStyle;
 
 typedef enum
@@ -100,10 +101,6 @@ void xfce_backdrop_set_second_color      (XfceBackdrop *backdrop,
 void xfce_backdrop_get_second_color      (XfceBackdrop *backdrop,
                                           GdkColor *color);
 
-void xfce_backdrop_set_show_image        (XfceBackdrop *backdrop,
-                                          gboolean show_image);
-gboolean xfce_backdrop_get_show_image    (XfceBackdrop *backdrop);
-
 void xfce_backdrop_set_image_style       (XfceBackdrop *backdrop,
                                           XfceBackdropImageStyle style);
 XfceBackdropImageStyle xfce_backdrop_get_image_style
@@ -114,18 +111,10 @@ void xfce_backdrop_set_image_filename    (XfceBackdrop *backdrop,
 G_CONST_RETURN gchar *xfce_backdrop_get_image_filename
                                          (XfceBackdrop *backdrop);
 
-void xfce_backdrop_set_list              (XfceBackdrop *backdrop,
-                                          gchar *backdrop_list);
-G_CONST_RETURN gchar *xfce_backdrop_get_list
-                                         (XfceBackdrop *backdrop);
 
 void xfce_backdrop_set_brightness        (XfceBackdrop *backdrop,
                                           gint brightness);
 gint xfce_backdrop_get_brightness        (XfceBackdrop *backdrop);
-
-void xfce_backdrop_set_saturation        (XfceBackdrop *backdrop,
-                                          gdouble saturation);
-gdouble xfce_backdrop_get_saturation     (XfceBackdrop *backdrop);
 
 void xfce_backdrop_set_cycle_backdrop    (XfceBackdrop *backdrop,
                                           gboolean cycle_backdrop);
@@ -134,6 +123,10 @@ gboolean xfce_backdrop_get_cycle_backdrop(XfceBackdrop *backdrop);
 void xfce_backdrop_set_cycle_timer       (XfceBackdrop *backdrop,
                                           guint cycle_timer);
 guint xfce_backdrop_get_cycle_timer      (XfceBackdrop *backdrop);
+
+void xfce_backdrop_set_random_order      (XfceBackdrop *backdrop,
+                                          gboolean random_order);
+gboolean xfce_backdrop_get_random_order  (XfceBackdrop *backdrop);
 
 GdkPixbuf *xfce_backdrop_get_pixbuf      (XfceBackdrop *backdrop);
 

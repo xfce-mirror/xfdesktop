@@ -56,156 +56,96 @@
 #define O_BINARY  0
 #endif
 
-gboolean
-xfdesktop_backdrop_list_is_valid(const gchar *path)
+static GList *
+list_files_in_dir(const gchar *path)
 {
-    FILE *fp;
-    gchar buf[512];
-    gint size;
-    gboolean is_list = FALSE;
+    GDir *dir;
+    gboolean needs_slash = TRUE;
+    const gchar *file;
+    GList *files = NULL;
 
-    size = sizeof(LIST_TEXT);
-
-    if(!(fp = fopen (path, "r")))
-        return FALSE;
-
-    if(fgets(buf, size, fp) && !strncmp(LIST_TEXT, buf, size - 1))
-        is_list = TRUE;
-    fclose(fp);
-
-    return is_list;
-}
-
-gchar **
-xfdesktop_backdrop_list_load(const gchar *filename,
-                             gint *n_items,
-                             GError **error)
-{
-    gchar *contents = NULL, **files = NULL, *p, *q;
-    gsize length = 0;
-    gint arr_size = 10, count = 0;
-
-    g_return_val_if_fail(filename && (!error || !*error), NULL);
-
-    if(!g_file_get_contents(filename, &contents, &length, error))
+    dir = g_dir_open(path, 0, 0);
+    if(!dir)
         return NULL;
 
-    if(strncmp(LIST_TEXT, contents, sizeof(LIST_TEXT) - 1)) {
-        if(error) {
-            g_set_error(error, G_FILE_ERROR, G_FILE_ERROR_FAILED,
-                        _("Backdrop list file is not valid"));
-        }
-        g_free(contents);
-        return NULL;
+    if(path[strlen(path)-1] == '/')
+        needs_slash = FALSE;
+
+    while((file = g_dir_read_name(dir))) {
+        gchar *current_file = g_strdup_printf(needs_slash ? "%s/%s" : "%s%s",
+                                              path, file);
+
+        files = g_list_insert_sorted(files, current_file, (GCompareFunc)g_strcmp0);
     }
 
-    /* i'd use g_strsplit() here, but then counting is slower.  we can
-     * also filter out blank lines */
-    files = g_malloc(sizeof(gchar *) * (arr_size+1));
-    p = contents + sizeof(LIST_TEXT);
-    while(p && *p) {
-        q = strstr(p, "\n");
-        if(q) {
-            if(p == q)  /* blank line */
-                continue;
-            *q = 0;
-        } else
-            q = contents + length;  /* assume no trailing '\n' at EOF */
-
-        if(count == arr_size) {
-            arr_size += 10;
-            files = g_realloc(files, sizeof(gchar *) * (arr_size+1));
-        }
-
-        files[count++] = g_strdup(p);
-        if(q != contents + length)
-            p = q + 1;
-    }
-    files[count] = NULL;
-    files = g_realloc(files, sizeof(gchar *) * (count+1));
-
-    if(n_items)
-        *n_items = count;
-
-    g_free(contents);
+    g_dir_close(dir);
 
     return files;
 }
 
-gboolean
-xfdesktop_backdrop_list_save(const gchar *filename,
-                             gchar * const *files,
-                             GError **error)
+
+gchar *
+xfdesktop_backdrop_choose_next(const gchar *filename)
 {
-    gboolean ret = FALSE;
-    gchar *filename_new;
-    FILE *fp;
-    gint i;
+    GList *files, *current_file, *start_file;
+    gchar *file = NULL;
 
-    g_return_val_if_fail(filename && (!error || !*error), FALSE);
+    g_return_val_if_fail(filename, NULL);
 
-    filename_new = g_strconcat(filename, ".new", NULL);
-    fp = fopen(filename_new, "w");
-    if(fp) {
-        fprintf(fp, "%s\n", LIST_TEXT);
-        if(files) {
-            for(i = 0; files[i]; ++i)
-                fprintf(fp, "%s\n", files[i]);
-        }
-        if(!fclose(fp)) {
-            if(!rename(filename_new, filename))
-                ret = TRUE;
-            else  {
-                if(error) {
-                    g_set_error(error, G_FILE_ERROR,
-                                g_file_error_from_errno(errno),
-                                "%s", g_strerror(errno));
-                }
-                unlink(filename_new);
-            }
-        } else {
-            if(error) {
-                g_set_error(error, G_FILE_ERROR, g_file_error_from_errno(errno),
-                            "%s", g_strerror(errno));
-            }
-            unlink(filename_new);
-        }
-    } else if(error) {
-        g_set_error(error, G_FILE_ERROR, g_file_error_from_errno(errno),
-                    "%s", g_strerror(errno));
-    }
+    files = list_files_in_dir(g_path_get_dirname(filename));
+    if(!files)
+        return NULL;
 
-    g_free(filename_new);
+    /* Get the our current background in the list */
+    current_file = g_list_find_custom(files, filename, (GCompareFunc)g_strcmp0);
 
-    return ret;
+    /* if somehow we don't have a valid file, grab the first one available */
+    if(current_file == NULL)
+        current_file = g_list_first(files);
+
+    start_file = current_file;
+
+    /* We want the next valid image file in the dir while making sure
+     * we don't loop on ourselves */
+    do {
+        current_file = g_list_next(current_file);
+
+        /* we hit the end of the list */
+        if(current_file == NULL)
+            current_file = g_list_first(files);
+
+        /* We went through every item in the list */
+        if(g_strcmp0(start_file->data, current_file->data) == 0)
+            break;
+
+    } while(!xfdesktop_image_file_is_valid(current_file->data));
+
+    file = g_strdup(current_file->data);
+    g_list_free_full(files, g_free);
+
+    return file;
 }
 
 gchar *
-xfdesktop_backdrop_list_choose_random(const gchar *filename,
-                                      GError **error)
+xfdesktop_backdrop_choose_random(const gchar *filename)
 {
     static gboolean __initialized = FALSE;
     static gint previndex = -1;
-    gchar **files, *file = NULL;
-    gint n_items = 0, cur_file, i, tries = 0;
+    GList *files;
+    gchar *file = NULL;
+    gint n_items = 0, cur_file, tries = 0;
 
-    g_return_val_if_fail(filename && (!error || !*error), NULL);
+    g_return_val_if_fail(filename, NULL);
 
-    files = xfdesktop_backdrop_list_load(filename, &n_items, error);
+    files = list_files_in_dir(g_path_get_dirname(filename));
     if(!files)
         return NULL;
-    if(!n_items) {
-        if(error) {
-            g_set_error(error, G_FILE_ERROR, G_FILE_ERROR_FAILED,
-                        _("Backdrop list file is not valid"));
-        }
-        g_strfreev(files);
-        return NULL;
-    }
+
+    n_items = g_list_length(files);
 
     if(1 == n_items) {
-        file = g_strdup(files[0]);
-        g_strfreev(files);
+        file = g_strdup(g_list_first(files)->data);
+        g_list_free_full(files, g_free);
         return file;
     }
 
@@ -226,7 +166,7 @@ xfdesktop_backdrop_list_choose_random(const gchar *filename,
             /* this isn't precise, but if we've failed to get a good
              * image after all this time, let's just give up */
             g_warning("Unable to find good image from list; giving up");
-            g_strfreev(files);
+            g_list_free_full(files, g_free);
             return NULL;
         }
 
@@ -238,65 +178,23 @@ xfdesktop_backdrop_list_choose_random(const gchar *filename,
 #endif
         } while(cur_file == previndex && G_LIKELY(previndex != -1));
 
-    } while(!xfdesktop_image_file_is_valid(files[cur_file]));
+    } while(!xfdesktop_image_file_is_valid(g_list_nth(files, cur_file)->data));
 
     previndex = cur_file;
-    file = files[cur_file];
 
-    /* don't use strfreev() and avoid an extra alloc */
-    for(i = 0; files[i]; ++i) {
-        if(i != cur_file)
-            g_free(files[i]);
-    }
-    g_free(files);
+    file = g_strdup(g_list_nth(files, cur_file)->data);
+    g_list_free_full(files, g_free);
 
     return file;
-}
-
-static void
-pixbuf_loader_size_cb(GdkPixbufLoader *loader, gint width, gint height,
-        gpointer user_data)
-{
-    gboolean *size_read = user_data;
-
-    if(width > 0 && height > 0)
-        *size_read = TRUE;
 }
 
 gboolean
 xfdesktop_image_file_is_valid(const gchar *filename)
 {
-    GdkPixbufLoader *loader;
-    int fd;
-    gboolean size_read = FALSE;
-    guchar buf[4096];
-    gssize len;
-
     g_return_val_if_fail(filename, FALSE);
 
-    fd = open(filename, O_RDONLY|O_BINARY);
-    if(fd < 0)
-        return FALSE;
-
-    loader = gdk_pixbuf_loader_new();
-    g_signal_connect(G_OBJECT(loader), "size-prepared",
-            G_CALLBACK(pixbuf_loader_size_cb), &size_read);
-
-    do {
-        len = read(fd, buf, sizeof(buf));
-        if(len > 0) {
-            if(!gdk_pixbuf_loader_write(loader, buf, len, NULL))
-                break;
-            if(size_read)
-                break;
-        }
-    } while(len > 0);
-
-    close(fd);
-    gdk_pixbuf_loader_close(loader, NULL);
-    g_object_unref(G_OBJECT(loader));
-
-    return size_read;
+    /* if gdk can get pixbuf info from the file then it's an image file */
+    return (gdk_pixbuf_get_file_info(filename, NULL, NULL) == NULL ? FALSE : TRUE);
 }
 
 gboolean

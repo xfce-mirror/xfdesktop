@@ -47,7 +47,7 @@
 #include <libxfce4util/libxfce4util.h>
 #include <xfconf/xfconf.h>
 #include <libxfce4ui/libxfce4ui.h>
-#include <exo/exo.h>
+#include <libwnck/libwnck.h>
 
 #include "xfdesktop-common.h"
 #include "xfdesktop-settings-ui.h"
@@ -55,6 +55,7 @@
 
 #define PREVIEW_HEIGHT  48
 #define MAX_ASPECT_RATIO 3.0f
+#define PREVIEW_WIDTH 128
 
 #define SHOW_DESKTOP_MENU_PROP               "/desktop-menu/show"
 #define DESKTOP_MENU_SHOW_ICONS_PROP         "/desktop-menu/show-icons"
@@ -76,46 +77,34 @@
 #define DESKTOP_ICONS_SHOW_FILESYSTEM        "/desktop-icons/file-icons/show-filesystem"
 #define DESKTOP_ICONS_SHOW_REMOVABLE         "/desktop-icons/file-icons/show-removable"
 
-#define PER_SCREEN_PROP_FORMAT               "/backdrop/screen%d/monitor%d"
 
 typedef struct
 {
     XfconfChannel *channel;
     gint screen;
     gint monitor;
-    gulong show_image:1,
-           image_selector_loaded:1,
-           image_list_loaded:1;
+    gint workspace;
+    gchar *monitor_name;
+    gulong image_list_loaded:1;
 
     GtkWidget *frame_image_list;
-    GtkWidget *image_treeview;
-    GtkWidget *btn_plus;
-    GtkWidget *btn_minus;
-    GtkWidget *btn_newlist;
+    GtkWidget *image_iconview;
+    GtkWidget *btn_folder;
     GtkWidget *image_style_combo;
-
-    GtkWidget *radio_singleimage;
-    GtkWidget *radio_imagelist;
-    GtkWidget *radio_none;
-
     GtkWidget *color_style_combo;
     GtkWidget *color1_btn;
     GtkWidget *color2_btn;
 
-    GtkWidget *brightness_slider;
-    GtkWidget *saturation_slider;
+    gulong color1_btn_id;
+    gulong color2_btn_id;
 
     GtkWidget *backdrop_cycle_spinbox;
     GtkWidget *backdrop_cycle_chkbox;
+    GtkWidget *random_backdrop_order_chkbox;
 
-    GtkWidget *chk_xinerama_stretch;
+    GThread *preview_thread;
+
 } AppearancePanel;
-
-typedef struct
-{
-    GtkTreeModel *model;
-    GSList *iters;
-} PreviewData;
 
 enum
 {
@@ -133,11 +122,6 @@ enum
     COL_ICON_ENABLED,
     COL_ICON_PROPERTY,
     N_ICON_COLS,
-};
-
-enum
-{
-    TARGET_TEXT_URI_LIST = 0,
 };
 
 
@@ -196,27 +180,6 @@ xfdesktop_settings_do_single_preview(GtkTreeModel *model,
                            -1);
         g_object_unref(G_OBJECT(pix_scaled));
     }
-}
-
-static gpointer
-xfdesktop_settings_create_some_previews(gpointer data)
-{
-    PreviewData *pdata = data;
-    GSList *l;
-
-    GDK_THREADS_ENTER ();
-
-    for(l = pdata->iters; l; l = l->next)
-        xfdesktop_settings_do_single_preview(pdata->model, l->data);
-
-    GDK_THREADS_LEAVE ();
-
-    g_object_unref(G_OBJECT(pdata->model));
-    g_slist_foreach(pdata->iters, (GFunc)gtk_tree_iter_free, NULL);
-    g_slist_free(pdata->iters);
-    g_free(pdata);
-
-    return NULL;
 }
 
 static gpointer
@@ -360,41 +323,32 @@ setup_special_icon_list(GtkBuilder *gxml,
     g_object_unref(G_OBJECT(ls));
 }
 
+
 static gint
-image_list_sort(GtkTreeModel *model,
-                GtkTreeIter *a,
-                GtkTreeIter *b,
-                gpointer user_data)
+image_list_compare(GtkTreeModel *model,
+                   const gchar *a,
+                   GtkTreeIter *b)
 {
-    gchar *key_a = NULL, *key_b = NULL;
+    gchar *key_b = NULL;
     gint ret;
 
-    gtk_tree_model_get(model, a, COL_COLLATE_KEY, &key_a, -1);
-    gtk_tree_model_get(model, b, COL_COLLATE_KEY, &key_b, -1);
+    gtk_tree_model_get(model, b, COL_NAME, &key_b, -1);
 
-    if(G_UNLIKELY(!key_a && !key_b))
-        ret = 0;
-    else if(G_UNLIKELY(!key_a))
-        ret = -1;
-    else if(G_UNLIKELY(!key_b))
-        ret = 1;
-    else
-        ret = strcmp(key_a, key_b);
+    ret = g_strcmp0(a, key_b);
 
-    g_free(key_a);
     g_free(key_b);
 
     return ret;
 }
 
 static GtkTreeIter *
-xfdesktop_settings_image_treeview_add(GtkTreeModel *model,
+xfdesktop_settings_image_iconview_add(GtkTreeModel *model,
                                       const char *path)
 {
-    gboolean added = FALSE;
-    GtkTreeIter iter;
+    gboolean added = FALSE, found = FALSE, valid = FALSE;
+    GtkTreeIter iter, search_iter;
     gchar *name = NULL, *name_utf8 = NULL, *name_markup = NULL;
-    gchar *lower = NULL, *key = NULL;
+    gchar *lower = NULL;
 
     if(!xfdesktop_image_file_is_valid(path))
         return NULL;
@@ -408,13 +362,28 @@ xfdesktop_settings_image_treeview_add(GtkTreeModel *model,
                                                   name_utf8);
 
             lower = g_utf8_strdown(name_utf8, -1);
-            key = g_utf8_collate_key(lower, -1);
 
-            gtk_list_store_append(GTK_LIST_STORE(model), &iter);
+            /* Insert sorted */
+            valid = gtk_tree_model_get_iter_first(model, &search_iter);
+            while(valid && !found) {
+                if(image_list_compare(model, name_markup, &search_iter) <= 0) {
+                    found = TRUE;
+                } else {
+                    valid = gtk_tree_model_iter_next(model, &search_iter);
+                }
+            }
+
+            if(!found) {
+                gtk_list_store_append(GTK_LIST_STORE(model), &iter);
+            } else {
+                gtk_list_store_insert_before(GTK_LIST_STORE(model), &iter, &search_iter);
+            }
+
+
             gtk_list_store_set(GTK_LIST_STORE(model), &iter,
                                COL_NAME, name_markup,
                                COL_FILENAME, path,
-                               COL_COLLATE_KEY, key,
+                               COL_COLLATE_KEY, lower,
                                -1);
 
             added = TRUE;
@@ -425,7 +394,6 @@ xfdesktop_settings_image_treeview_add(GtkTreeModel *model,
     g_free(name_utf8);
     g_free(name_markup);
     g_free(lower);
-    g_free(key);
 
     if(added)
         return gtk_tree_iter_copy(&iter);
@@ -455,7 +423,7 @@ xfdesktop_image_list_add_dir(GtkListStore *ls,
         g_snprintf(buf, sizeof(buf), needs_slash ? "%s/%s" : "%s%s",
                    path, file);
 
-        iter = xfdesktop_settings_image_treeview_add(GTK_TREE_MODEL(ls), buf);
+        iter = xfdesktop_settings_image_iconview_add(GTK_TREE_MODEL(ls), buf);
         if(iter) {
             if(cur_image_file && !iter_ret && !strcmp(buf, cur_image_file))
                 iter_ret = iter;
@@ -469,309 +437,100 @@ xfdesktop_image_list_add_dir(GtkListStore *ls,
     return iter_ret;
 }
 
-static gboolean
-xfdesktop_settings_ensure_backdrop_list(gchar *filename,
-                                        GtkWindow *parent)
+static void
+xfdesktop_settings_update_iconview_frame_name(AppearancePanel *panel,
+                                              WnckWorkspace *wnck_workspace)
 {
-    FILE *fp;
+    gchar buf[1024];
+    gchar *workspace_name;
 
-    g_return_val_if_fail(filename && *filename, FALSE);
+    if(panel->monitor < 0 && panel->workspace < 0)
+        return;
 
-    if(xfdesktop_backdrop_list_is_valid(filename))
-        return TRUE;
+    workspace_name = g_strdup(wnck_workspace_get_name(wnck_workspace));
 
-    fp = fopen(filename, "w");
-    if(!fp) {
-        gchar *shortfile = g_path_get_basename(filename);
-        gchar *primary = g_strdup_printf(_("Cannot create backdrop list \"%s\""),
-                                         shortfile);
+    if(panel->monitor_name) {
+        g_snprintf(buf, sizeof(buf),
+                   _("Wallpaper for %s on Monitor %d (%s)"),
+                   workspace_name, panel->monitor, panel->monitor_name);
+    } else
+        g_snprintf(buf, sizeof(buf),
+                   _("Wallpaper for %s on Monitor %d"),
+                   workspace_name, panel->monitor);
 
-        xfce_message_dialog(parent,
-                            _("Backdrop List Error"),
-                            GTK_STOCK_DIALOG_ERROR,
-                            primary, strerror(errno),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
-                            NULL);
-        g_free(primary);
-        g_free(shortfile);
+    gtk_frame_set_label(GTK_FRAME(panel->frame_image_list), buf);
 
-        return FALSE;
-    }
-
-    fprintf(fp, "%s\n", LIST_TEXT);
-    fclose(fp);
-
-    return TRUE;
+    g_free(workspace_name);
 }
 
-static gchar *
-xfdesktop_settings_dialog_create_load_list(AppearancePanel *panel)
+/* Free the returned string when done using it */
+static gchar*
+xfdesktop_settings_generate_per_workspace_binding_string(AppearancePanel *panel,
+                                                         const gchar* property)
 {
-    gchar *list_file = NULL;
-    GtkWindow *parent = GTK_WINDOW(gtk_widget_get_toplevel(panel->image_treeview));
-    GtkWidget *chooser;
-    gchar *path;
+    gchar *buf = NULL;
 
-    chooser = gtk_file_chooser_dialog_new(_("Create/Load Backdrop List"),
-                                          parent, GTK_FILE_CHOOSER_ACTION_SAVE,
-                                          GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-                                          GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT,
-                                          NULL);
-    path = xfce_resource_save_location(XFCE_RESOURCE_CONFIG,
-                                       "xfce4/desktop/", TRUE);
-    if(path) {
-        gtk_file_chooser_add_shortcut_folder(GTK_FILE_CHOOSER(chooser),
-                                             path, NULL);
-        g_free(path);
+    if(panel->monitor_name == NULL) {
+        buf = g_strdup_printf("/backdrop/screen%d/monitor%d/workspace%d/%s",
+                              panel->screen, panel->monitor, panel->workspace,
+                              property);
+    } else {
+        buf = g_strdup_printf("/backdrop/screen%d/monitor%s/workspace%d/%s",
+                              panel->screen, panel->monitor_name, panel->workspace,
+                              property);
     }
 
-    for(;;) {
-        if(GTK_RESPONSE_ACCEPT != gtk_dialog_run(GTK_DIALOG(chooser))) {
-            gtk_widget_destroy(chooser);
-            return NULL;
-        }
-
-        list_file = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(chooser));
-        if(g_file_test(list_file, G_FILE_TEST_EXISTS)
-           && !xfdesktop_backdrop_list_is_valid(list_file))
-        {
-            gchar *shortfile = g_path_get_basename(list_file);
-            gchar *primary = g_strdup_printf(_("File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"),
-                                             shortfile);
-            gint resp;
-
-            resp = xfce_message_dialog(GTK_WINDOW(chooser),
-                                       _("Invalid List File"),
-                                       GTK_STOCK_DIALOG_ERROR,
-                                       primary,
-                                       _("Overwriting the file will cause its contents to be lost."),
-                                       GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-                                       XFCE_BUTTON_TYPE_MIXED, GTK_STOCK_SAVE, _("Replace"), GTK_RESPONSE_ACCEPT,
-                                       NULL);
-            g_free(primary);
-            g_free(shortfile);
-
-            if(GTK_RESPONSE_ACCEPT == resp)
-                break;
-            else {
-                g_free(list_file);
-                list_file = NULL;
-            }
-        } else
-            break;
-    }
-
-    gtk_widget_destroy(chooser);
-    while(gtk_events_pending())
-        gtk_main_iteration();
-
-    if(!xfdesktop_settings_ensure_backdrop_list(list_file, parent)) {
-        g_free(list_file);
-        return NULL;
-    }
-
-    return list_file;
+    return buf;
 }
 
 static void
-cb_image_selection_changed(GtkTreeSelection *sel,
+cb_image_selection_changed(GtkIconView *icon_view,
                            gpointer user_data)
 {
     AppearancePanel *panel = user_data;
-    GtkTreeModel *model = NULL;
+    GtkTreeModel *model = gtk_icon_view_get_model(icon_view);
     GtkTreeIter iter;
-    gchar *filename = NULL;
-    gchar buf[1024];
+    GList *selected_items = NULL;
+    gchar *filename = NULL, *current_filename = NULL;
+    gchar *buf;
 
     TRACE("entering");
 
-    if(panel->image_list_loaded)
+    if(panel->image_list_loaded && GTK_IS_TREE_MODEL(model))
         return;
 
-    if(!gtk_tree_selection_get_selected(sel, &model, &iter))
+    selected_items = gtk_icon_view_get_selected_items(icon_view);
+
+    /* We only care about the first selected item because the iconview
+     * should be set to single selection mode */
+    if(!selected_items || g_list_first(selected_items) == NULL)
+        return;
+
+    if(!gtk_tree_model_get_iter(model, &iter, g_list_first(selected_items)->data))
         return;
 
     gtk_tree_model_get(model, &iter, COL_FILENAME, &filename, -1);
 
-    DBG("got %s, applying to screen %d monitor %d", filename, panel->screen, panel->monitor);
+    buf = xfdesktop_settings_generate_per_workspace_binding_string(panel, "last-image");
 
-    g_snprintf(buf, sizeof(buf), PER_SCREEN_PROP_FORMAT "/image-path",
-               panel->screen, panel->monitor);
-    xfconf_channel_set_string(panel->channel, buf, filename);
-    g_snprintf(buf, sizeof(buf), PER_SCREEN_PROP_FORMAT "/last-single-image",
-               panel->screen, panel->monitor);
-    xfconf_channel_set_string(panel->channel, buf, filename);
-}
+    current_filename = xfconf_channel_get_string(panel->channel, buf, "");
 
-static gboolean
-xfdesktop_settings_dialog_populate_image_list(AppearancePanel *panel)
-{
-    gchar prop_image[1024], prop_last[1024], *image_file;
-    GtkListStore *ls;
-    GtkTreeIter *image_file_iter = NULL;
-    gboolean do_sort = TRUE;
-    GtkTreeSelection *sel;
-
-    sel = gtk_tree_view_get_selection(GTK_TREE_VIEW(panel->image_treeview));
-    ls = gtk_list_store_new(N_COLS, GDK_TYPE_PIXBUF, G_TYPE_STRING,
-                            G_TYPE_STRING, G_TYPE_STRING);
-
-    g_snprintf(prop_image, sizeof(prop_image),
-               PER_SCREEN_PROP_FORMAT "/image-path",
-               panel->screen, panel->monitor);
-    image_file = xfconf_channel_get_string(panel->channel, prop_image, NULL);
-
-    if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(panel->radio_imagelist))) {
-        gchar **images;
-
-        g_snprintf(prop_last, sizeof(prop_last),
-                   PER_SCREEN_PROP_FORMAT "/last-image-list",
-                   panel->screen, panel->monitor);
-
-        if(!image_file || !xfdesktop_backdrop_list_is_valid(image_file)) {
-            g_free(image_file);
-            image_file = xfconf_channel_get_string(panel->channel, prop_last,
-                                                   NULL);
-            if(!image_file || !xfdesktop_backdrop_list_is_valid(image_file)) {
-                g_free(image_file);
-                image_file = xfce_resource_save_location(XFCE_RESOURCE_CONFIG,
-                                                         DEFAULT_BACKDROP_LIST,
-                                                         TRUE);
-                if(!xfdesktop_settings_ensure_backdrop_list(image_file,
-                                                            GTK_WINDOW(gtk_widget_get_toplevel(panel->image_treeview))))
-                {
-                    /* FIXME: go back to single image mode or something */
-                    g_free(image_file);
-                    return FALSE;
-                }
-            }
+    /* check to see if the selection actually did change */
+    if(g_strcmp0(current_filename, filename) != 0) {
+        if(panel->monitor_name == NULL) {
+            DBG("got %s, applying to screen %d monitor %d workspace %d", filename,
+                panel->screen, panel->monitor, panel->workspace);
+        } else {
+            DBG("got %s, applying to screen %d monitor %s workspace %d", filename,
+                panel->screen, panel->monitor_name, panel->workspace);
         }
 
-        do_sort = FALSE;
-
-        images = xfdesktop_backdrop_list_load(image_file, NULL, NULL);
-        if(images) {
-            gint i;
-
-            xfconf_channel_set_string(panel->channel, prop_image, image_file);
-            xfconf_channel_set_string(panel->channel, prop_last, image_file);
-
-            for(i = 0; images[i]; ++i) {
-                GtkTreeIter *iter = xfdesktop_settings_image_treeview_add(GTK_TREE_MODEL(ls), images[i]);
-                if(iter)
-                    gtk_tree_iter_free(iter);
-            }
-
-            g_strfreev(images);
-            panel->image_list_loaded = TRUE;
-            panel->image_selector_loaded = FALSE;
-            gtk_tree_selection_set_mode(sel, GTK_SELECTION_MULTIPLE);
-        }
-    } else if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(panel->radio_singleimage))) {
-        GtkTreeIter *tmp;
-        gchar **backdrop_dirs;
-        gint i;
-
-        g_snprintf(prop_last, sizeof(prop_last),
-                   PER_SCREEN_PROP_FORMAT "/last-image",
-                   panel->screen, panel->monitor);
-
-        if(!image_file || !xfdesktop_image_file_is_valid(image_file)) {
-            g_free(image_file);
-            image_file = xfconf_channel_get_string(panel->channel, prop_last,
-                                                   NULL);
-            if(!image_file || !xfdesktop_image_file_is_valid(image_file)) {
-                g_free(image_file);
-                image_file = g_strdup(DEFAULT_BACKDROP);
-            }
-        }
-
-        xfconf_channel_set_string(panel->channel, prop_image, image_file);
-        xfconf_channel_set_string(panel->channel, prop_last, image_file);
-
-        /* Add all backdrops in xfce4/backdrops/ for backwards compatibility with 4.8 */
-        backdrop_dirs = xfce_resource_lookup_all(XFCE_RESOURCE_DATA,
-                                                 "xfce4/backdrops/");
-        for(i = 0; backdrop_dirs[i]; ++i) {
-            tmp = xfdesktop_image_list_add_dir(ls, backdrop_dirs[i],
-                                               image_file);
-            if(tmp)
-                image_file_iter = tmp;
-        }
-        g_strfreev(backdrop_dirs);
-
-        /* Add all backdrops in backgrounds/xfce/ */
-        backdrop_dirs = xfce_resource_lookup_all(XFCE_RESOURCE_DATA,
-                                                 "backgrounds/xfce/");
-        for(i = 0; backdrop_dirs[i]; ++i) {
-            tmp = xfdesktop_image_list_add_dir(ls, backdrop_dirs[i],
-                                               image_file);
-            if(tmp)
-                image_file_iter = tmp;
-        }
-        g_strfreev(backdrop_dirs);
-
-        if(!image_file_iter)
-            image_file_iter = xfdesktop_settings_image_treeview_add(GTK_TREE_MODEL(ls), image_file);
-
-        panel->image_list_loaded = FALSE;
-        panel->image_selector_loaded = TRUE;
-        gtk_tree_selection_set_mode(sel, GTK_SELECTION_SINGLE);
-    } else {
-        g_warning("xfdesktop_settings_populate_image_list() called when image style set to 'none'");
-        return FALSE;
+        xfconf_channel_set_string(panel->channel, buf, filename);
     }
 
-    if(do_sort) {
-        gtk_tree_sortable_set_sort_func(GTK_TREE_SORTABLE(ls), COL_NAME,
-                                        image_list_sort, NULL, NULL);
-        gtk_tree_sortable_set_sort_column_id(GTK_TREE_SORTABLE(ls), COL_NAME,
-                                             GTK_SORT_ASCENDING);
-    }
-
-    gtk_tree_view_set_model(GTK_TREE_VIEW(panel->image_treeview),
-                            GTK_TREE_MODEL(ls));
-    if(image_file_iter) {
-        gtk_tree_selection_select_iter(sel, image_file_iter);
-        gtk_tree_iter_free(image_file_iter);
-
-        /* remember the tree view to scroll to the selected image in the
-         * thread that creates all the previews */
-        g_object_set_data_full(G_OBJECT(ls), "xfdesktop-tree-view",
-                               g_object_ref(panel->image_treeview),
-                               g_object_unref);
-    }
-
-    /* generate previews of each image -- the new thread will own
-     * the reference on the list store, so let's not unref it here */
-    if(!g_thread_try_new("xfdesktop_settings_create_all_previews",
-                         xfdesktop_settings_create_all_previews, ls, NULL)) {
-        g_critical("Failed to spawn thread; backdrop previews will be unavailable.");
-        g_object_unref(G_OBJECT(ls));
-    }
-
-    g_free(image_file);
-
-    return TRUE;
-}
-
-static void
-newlist_button_clicked(GtkWidget *button,
-                       gpointer user_data)
-{
-    AppearancePanel *panel = user_data;
-    gchar *list_file, propname[1024];
-
-    list_file = xfdesktop_settings_dialog_create_load_list(panel);
-    if(!list_file)
-        return;
-
-    g_snprintf(propname, sizeof(propname), PER_SCREEN_PROP_FORMAT "/image-path",
-               panel->screen, panel->monitor);
-    xfconf_channel_set_string(panel->channel, propname, list_file);
-    g_free(list_file);
-
-    xfdesktop_settings_dialog_populate_image_list(panel);
+    g_list_free(selected_items);
+    g_free(current_filename);
+    g_free(buf);
 }
 
 static void
@@ -779,6 +538,9 @@ cb_xfdesktop_chk_custom_font_size_toggled(GtkCheckButton *button,
                                           gpointer user_data)
 {
     GtkWidget *spin_button = GTK_WIDGET(user_data);
+
+    TRACE("entering");
+
     gtk_widget_set_sensitive(spin_button,
                              gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(button)));
 }
@@ -788,20 +550,24 @@ cb_xfdesktop_chk_cycle_backdrop_toggled(GtkCheckButton *button,
                                         gpointer user_data)
 {
     gboolean sensitive = FALSE;
-    GtkWidget *spin_button = GTK_WIDGET(user_data);
+    AppearancePanel *panel = user_data;
 
-    if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(button)) &&
-       gtk_widget_get_sensitive(GTK_WIDGET(button))) {
+    TRACE("entering");
+
+    if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(panel->backdrop_cycle_chkbox))) {
            sensitive = TRUE;
     }
 
-    gtk_widget_set_sensitive(spin_button, sensitive);
+    gtk_widget_set_sensitive(panel->backdrop_cycle_spinbox, sensitive);
+    gtk_widget_set_sensitive(panel->random_backdrop_order_chkbox, sensitive);
 }
 
 static gboolean
 xfdesktop_spin_icon_size_timer(GtkSpinButton *button)
 {
     XfconfChannel *channel = g_object_get_data(G_OBJECT(button), "xfconf-chanel");
+
+    TRACE("entering");
 
     g_return_val_if_fail(XFCONF_IS_CHANNEL(channel), FALSE);
 
@@ -818,6 +584,8 @@ cb_xfdesktop_spin_icon_size_changed(GtkSpinButton *button,
 {
     guint timer_id = 0;
 
+    TRACE("entering");
+
     g_object_set_data(G_OBJECT(button), "xfconf-chanel", user_data);
 
     timer_id = GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(button), "timer-id"));
@@ -833,173 +601,62 @@ cb_xfdesktop_spin_icon_size_changed(GtkSpinButton *button,
     g_object_set_data(G_OBJECT(button), "timer-id", GUINT_TO_POINTER(timer_id));
 }
 
-static gboolean
-xfdesktop_settings_save_backdrop_list(AppearancePanel *panel,
-                                      GtkTreeModel *model)
-{
-    gboolean ret = TRUE;
-    gint n_images;
-    gchar **images = NULL, *list_file;
-    GtkTreeIter iter;
-    gchar propname[1024];
-    GError *error = NULL;
-
-    n_images = gtk_tree_model_iter_n_children(model, NULL);
-    images = g_new(gchar *, n_images + 1);
-    images[n_images] = NULL;
-
-    if(gtk_tree_model_get_iter_first(model, &iter)) {
-        gint i = 0;
-
-        do {
-            gtk_tree_model_get(model, &iter,
-                               COL_FILENAME, &(images[i++]),
-                               -1);
-        } while(gtk_tree_model_iter_next(model, &iter));
-    }
-
-    g_snprintf(propname, sizeof(propname),
-               PER_SCREEN_PROP_FORMAT "/last-image-list",
-               panel->screen, panel->monitor);
-    list_file = xfconf_channel_get_string(panel->channel, propname, NULL);
-    if(!list_file) {
-        list_file = xfce_resource_save_location(XFCE_RESOURCE_CONFIG,
-                                                DEFAULT_BACKDROP_LIST, TRUE);
-        g_warning("Didn't find prop %s when saving backdrop list; using default %s",
-                  propname, list_file);
-    }
-
-    if(!xfdesktop_backdrop_list_save(list_file, images, &error)) {
-        gchar *primary = g_strdup_printf(_("Failed to write backdrop list to \"%s\""),
-                                         list_file);
-
-        xfce_message_dialog(GTK_WINDOW(gtk_widget_get_toplevel(panel->frame_image_list)),
-                            _("Backdrop List Error"), GTK_STOCK_DIALOG_ERROR,
-                            primary, error->message,
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
-
-        g_free(primary);
-        g_error_free(error);
-        ret = FALSE;
-    }
-
-    g_free(list_file);
-    g_strfreev(images);
-
-    return ret;
-}
-
 static void
-add_file_button_clicked(GtkWidget *button,
-                        gpointer user_data)
+cb_folder_selection_changed(GtkWidget *button,
+                            gpointer user_data)
 {
     AppearancePanel *panel = user_data;
-    GtkWidget *chooser;
-    GtkFileFilter *filter;
+    gchar *filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(button));
+    GtkListStore *ls;
+    GtkTreeIter *iter;
+    GtkTreePath *path;
+    gchar *last_image, *property;
 
-    chooser = gtk_file_chooser_dialog_new(_("Add Image File(s)"),
-                                          GTK_WINDOW(gtk_widget_get_toplevel(button)),
-                                          GTK_FILE_CHOOSER_ACTION_OPEN,
-                                          GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-                                          GTK_STOCK_ADD, GTK_RESPONSE_ACCEPT,
-                                          NULL);
-    gtk_file_chooser_set_select_multiple(GTK_FILE_CHOOSER(chooser), TRUE);
+    TRACE("entering");
 
-    filter = gtk_file_filter_new();
-    gtk_file_filter_set_name(filter, _("Image files"));
-    gtk_file_filter_add_pixbuf_formats(filter);
-    gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(chooser), filter);
+    ls = gtk_list_store_new(N_COLS, GDK_TYPE_PIXBUF, G_TYPE_STRING,
+                            G_TYPE_STRING, G_TYPE_STRING);
 
-    filter = gtk_file_filter_new();
-    gtk_file_filter_set_name(filter, _("All files"));
-    gtk_file_filter_add_custom(filter, GTK_FILE_FILTER_FILENAME,
-                               (GtkFileFilterFunc)gtk_true, NULL, NULL);
-    gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(chooser), filter);
+    property = xfdesktop_settings_generate_per_workspace_binding_string(panel, "last-image");
 
-    exo_gtk_file_chooser_add_thumbnail_preview(GTK_FILE_CHOOSER(chooser));
+    last_image = xfconf_channel_get_string(panel->channel, property, NULL);
 
-    if(gtk_dialog_run(GTK_DIALOG(chooser)) == GTK_RESPONSE_ACCEPT) {
-        GSList *filenames = gtk_file_chooser_get_filenames(GTK_FILE_CHOOSER(chooser));
-        GtkTreeModel *model = gtk_tree_view_get_model(GTK_TREE_VIEW(panel->image_treeview));
-        GSList *l;
-        PreviewData *pdata = g_new0(PreviewData, 1);
-        pdata->model = g_object_ref(G_OBJECT(model));
+    if(last_image == NULL)
+        last_image = DEFAULT_BACKDROP;
 
-        for(l = filenames; l; l = l->next) {
-            GtkTreeIter *iter = xfdesktop_settings_image_treeview_add(model, l->data);
-            if(iter) {
-                pdata->iters = g_slist_prepend(pdata->iters, iter);
+    iter = xfdesktop_image_list_add_dir(ls, filename, last_image);
 
-                /* auto-select the first one added */
-                if(l == filenames) {
-                    GtkTreeSelection *sel = gtk_tree_view_get_selection(GTK_TREE_VIEW(panel->image_treeview));
-                    gtk_tree_selection_select_iter(sel, iter);
-                }
-            }
+    gtk_icon_view_set_model(GTK_ICON_VIEW(panel->image_iconview),
+                            GTK_TREE_MODEL(ls));
+ 
+    /* last_image is in the directory added then it should be selected */
+    if(iter) {
+        path = gtk_tree_model_get_path(GTK_TREE_MODEL(ls), iter);
+        if(path) {
+            gtk_icon_view_select_path(GTK_ICON_VIEW(panel->image_iconview), path);
+            gtk_tree_iter_free(iter);
         }
-        g_slist_free(filenames);
+     }
 
-        if(!pdata->iters
-           || !g_thread_try_new("xfdesktop_settings_create_some_previews",
-                                xfdesktop_settings_create_some_previews,
-                                pdata, NULL))
-        {
-            if(pdata->iters)
-                g_critical("Unable to create thread for single image preview.");
-            g_object_unref(G_OBJECT(pdata->model));
-            g_slist_foreach(pdata->iters, (GFunc)gtk_tree_iter_free, NULL);
-            g_slist_free(pdata->iters);
-            g_free(pdata);
-        }
-
-        if(panel->image_list_loaded) {
-            xfdesktop_settings_save_backdrop_list(panel, model);
-
-            /* if we just added the first image, instruct xfdesktop
-             * to load it */
-            if(gtk_tree_model_iter_n_children(model, NULL) == 1)
-                g_spawn_command_line_async("xfdesktop --reload", NULL);
-        }
+    /* remove any preview threads that may still be running since we've probably
+     * changed to a new monitor/workspace */
+    if(panel->preview_thread != NULL) {
+        g_thread_unref(panel->preview_thread);
+        panel->preview_thread = NULL;
     }
 
-    gtk_widget_destroy(chooser);
-}
+    /* generate previews of each image -- the new thread will own
+     * the reference on the list store, so let's not unref it here */
+    panel->preview_thread = g_thread_try_new("xfdesktop_settings_create_all_previews",
+                                             xfdesktop_settings_create_all_previews,
+                                             ls, NULL);
 
-static void
-remove_file_button_clicked(GtkWidget *button,
-                           gpointer user_data)
-{
-    AppearancePanel *panel = user_data;
-    GtkTreeSelection *sel;
-    GtkTreeModel *model = NULL;
-    GList *rows, *l;
-
-    sel = gtk_tree_view_get_selection(GTK_TREE_VIEW(panel->image_treeview));
-    rows = gtk_tree_selection_get_selected_rows(sel, &model);
-    if(rows) {
-        GSList *rrefs = NULL, *m;
-        GtkTreeIter iter;
-
-        for(l = rows; l; l = l->next) {
-            rrefs = g_slist_prepend(rrefs, gtk_tree_row_reference_new(model,
-                                                                      l->data));
-            gtk_tree_path_free(l->data);
-        }
-        g_list_free(rows);
-
-        for(m = rrefs; m; m = m->next) {
-            GtkTreePath *path = gtk_tree_row_reference_get_path(m->data);
-
-            if(gtk_tree_model_get_iter(model, &iter, path))
-                gtk_list_store_remove(GTK_LIST_STORE(model), &iter);
-
-            gtk_tree_path_free(path);
-            gtk_tree_row_reference_free(m->data);
-        }
-        g_slist_free(rrefs);
-
-        xfdesktop_settings_save_backdrop_list(panel, model);
+    if(panel->preview_thread == NULL) {
+        g_critical("Failed to spawn thread; backdrop previews will be unavailable.");
+        g_object_unref(G_OBJECT(ls));
     }
+
+    g_free(property);
 }
 
 static void
@@ -1014,6 +671,8 @@ cb_xfdesktop_combo_color_changed(GtkComboBox *combo,
     };
     AppearancePanel *panel = user_data;
 
+    TRACE("entering");
+
     if(gtk_combo_box_get_active(combo) == COLORS_SOLID) {
         gtk_widget_set_sensitive(panel->color1_btn, TRUE);
         gtk_widget_set_sensitive(panel->color2_btn, FALSE);
@@ -1027,125 +686,114 @@ cb_xfdesktop_combo_color_changed(GtkComboBox *combo,
 }
 
 static void
-cb_image_type_radio_clicked(GtkWidget *w,
-                            gpointer user_data)
+xfdesktop_settings_update_iconview_folder(AppearancePanel *panel)
 {
-    AppearancePanel *panel = user_data;
-    gchar prop_image_show[1024], prop_image_path[1024];
+    gchar *current_folder, *prop_last;
 
-    if(!gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(w)))
-        return;
+    TRACE("entering");
 
-    g_snprintf(prop_image_show, sizeof(prop_image_show),
-               PER_SCREEN_PROP_FORMAT "/image-show", panel->screen,
-               panel->monitor);
-    g_snprintf(prop_image_path, sizeof(prop_image_path),
-               PER_SCREEN_PROP_FORMAT "/image-path", panel->screen,
-               panel->monitor);
+    prop_last = xfdesktop_settings_generate_per_workspace_binding_string(panel, "last-image");
 
-    if(w == panel->radio_singleimage) {
-        DBG("widget is singleimage");
-        if(!panel->image_selector_loaded) {
-            DBG("about to populate image list with avail backdrops");
-            if(!xfdesktop_settings_dialog_populate_image_list(panel)) {
-                DBG("show_image=%s", panel->show_image?"true":"false");
-                if(panel->show_image) {
-                    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(panel->radio_imagelist),
-                                                 TRUE);
-                } else {
-                    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(panel->radio_none),
-                                                 TRUE);
-                }
-                return;
-            }
-        }
+    current_folder = xfconf_channel_get_string(panel->channel, prop_last, NULL);
 
-        gtk_widget_set_sensitive(panel->btn_minus, FALSE);
-        gtk_widget_set_sensitive(panel->btn_newlist, FALSE);
-        gtk_widget_set_sensitive(panel->frame_image_list, TRUE);
-        gtk_widget_set_sensitive(panel->backdrop_cycle_chkbox, FALSE);
-        gtk_widget_set_sensitive(panel->backdrop_cycle_spinbox, FALSE);
-        DBG("show_image=%s", panel->show_image?"true":"false");
-        if(!panel->show_image) {
-            panel->show_image = TRUE;
-            xfconf_channel_set_bool(panel->channel, prop_image_show, TRUE);
-        }
-    } else if(w == panel->radio_imagelist) {
-        DBG("widget is imagelist");
-        if(!panel->image_list_loaded) {
-            DBG("about to populate image list with backdrop list file");
-            if(!xfdesktop_settings_dialog_populate_image_list(panel)) {
-                DBG("show_image=%s", panel->show_image?"true":"false");
-                if(panel->show_image) {
-                    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(panel->radio_singleimage),
-                                                 TRUE);
-                } else {
-                    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(panel->radio_none),
-                                                 TRUE);
-                }
-                return;
-            }
-        }
+    if(current_folder == NULL)
+        current_folder = g_strdup(DEFAULT_BACKDROP);
 
-        gtk_widget_set_sensitive(panel->btn_minus, TRUE);
-        gtk_widget_set_sensitive(panel->btn_newlist, TRUE);
-        gtk_widget_set_sensitive(panel->frame_image_list, TRUE);
-        gtk_widget_set_sensitive(panel->backdrop_cycle_chkbox, TRUE);
-        if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(panel->backdrop_cycle_chkbox)))
-            gtk_widget_set_sensitive(panel->backdrop_cycle_spinbox, TRUE);
-        else
-            gtk_widget_set_sensitive(panel->backdrop_cycle_spinbox, FALSE);
-        DBG("show_image=%s", panel->show_image?"true":"false");
-        if(!panel->show_image) {
-            panel->show_image = TRUE;
-            xfconf_channel_set_bool(panel->channel, prop_image_show, TRUE);
-        }
-    } else if(w == panel->radio_none) {
-        DBG("widget is none");
-        gtk_widget_set_sensitive(panel->frame_image_list, FALSE);
-        gtk_widget_set_sensitive(panel->backdrop_cycle_chkbox, FALSE);
-        gtk_widget_set_sensitive(panel->backdrop_cycle_spinbox, FALSE);
-        DBG("show_image=%s", panel->show_image?"true":"false");
-        if(panel->show_image) {
-            panel->show_image = FALSE;
-            xfconf_channel_set_bool(panel->channel, prop_image_show, FALSE);
-        }
-    }
+    gtk_file_chooser_set_current_folder((GtkFileChooser*)panel->btn_folder,
+                                  g_path_get_dirname(current_folder));
+
+    g_free(current_folder);
+    g_free(prop_last);
 }
 
+/* This function is to add or remove all the bindings for the background
+ * tab. It's intended to be used when the app changes monitors or workspaces */
 static void
-cb_show_image_changed(XfconfChannel *channel,
-                      const gchar *property,
-                      const GValue *value,
-                      gpointer user_data)
+xfdesktop_settings_background_tab_change_bindings(AppearancePanel *panel,
+                                                  gboolean remove_binding)
 {
-    AppearancePanel *panel = user_data;
+    gchar *buf;
+    XfconfChannel *channel = panel->channel;
 
-    TRACE("entering, value=%s, panel->show_image=%s",
-          g_value_get_boolean(value)?"true":"false",
-          panel->show_image?"true":"false");
-    if(g_value_get_boolean(value) == panel->show_image)
-        return;
-
-    if(g_value_get_boolean(value)) {
-        gchar propname[1024], *filename;
-
-        g_snprintf(propname, sizeof(propname),
-                   PER_SCREEN_PROP_FORMAT "/image-path",
-                   panel->screen, panel->monitor);
-        filename = xfconf_channel_get_string(channel, propname, NULL);
-        if(filename && xfdesktop_backdrop_list_is_valid(filename)) {
-            gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(panel->radio_imagelist),
-                                         TRUE);
-        } else {
-            gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(panel->radio_singleimage),
-                                         TRUE);
-        }
-        g_free(filename);
+    /* Style combobox */
+    buf = xfdesktop_settings_generate_per_workspace_binding_string(panel, "image-style");
+    if(remove_binding) {
+        xfconf_g_property_unbind_by_property(channel, buf,
+                               G_OBJECT(panel->image_style_combo), "active");
     } else {
-        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(panel->radio_none),
-                                     TRUE);
+        xfconf_g_property_bind(channel, buf, G_TYPE_INT,
+                               G_OBJECT(panel->image_style_combo), "active");
     }
+    g_free(buf);
+
+    /* Color options*/
+    buf = xfdesktop_settings_generate_per_workspace_binding_string(panel, "color-style");
+    if(remove_binding) {
+        xfconf_g_property_unbind_by_property(channel, buf,
+                           G_OBJECT(panel->color_style_combo), "active");
+    } else {
+        xfconf_g_property_bind(channel, buf, G_TYPE_INT,
+                               G_OBJECT(panel->color_style_combo), "active");
+    }
+    g_free(buf);
+
+    buf = xfdesktop_settings_generate_per_workspace_binding_string(panel, "color1");
+    if(remove_binding) {
+        xfconf_g_property_unbind(panel->color1_btn_id);
+        panel->color1_btn_id = xfconf_g_property_bind_gdkcolor(channel, buf,
+                                                               G_OBJECT(panel->color1_btn),
+                                                               "color");
+    }
+    g_free(buf);
+
+    buf = xfdesktop_settings_generate_per_workspace_binding_string(panel, "color2");
+    if(remove_binding) {
+        xfconf_g_property_unbind(panel->color2_btn_id);
+    } else {
+        panel->color2_btn_id = xfconf_g_property_bind_gdkcolor(channel, buf,
+                                                               G_OBJECT(panel->color2_btn),
+                                                               "color");
+    }
+    g_free(buf);
+
+    cb_xfdesktop_combo_color_changed(GTK_COMBO_BOX(panel->color_style_combo),
+                                     panel);
+
+    /* Cycle timer options */
+    buf = xfdesktop_settings_generate_per_workspace_binding_string(panel, "backdrop-cycle-enable");
+    if(remove_binding) {
+        xfconf_g_property_unbind_by_property(channel, buf,
+                           G_OBJECT(panel->backdrop_cycle_chkbox), "active");
+    } else {
+        xfconf_g_property_bind(channel, buf, G_TYPE_BOOLEAN,
+                               G_OBJECT(panel->backdrop_cycle_chkbox), "active");
+    }
+    g_free(buf);
+
+    buf = xfdesktop_settings_generate_per_workspace_binding_string(panel, "backdrop-cycle-timer");
+    if(remove_binding) {
+        xfconf_g_property_unbind_by_property(channel, buf,
+                   G_OBJECT(gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(panel->backdrop_cycle_spinbox))),
+                   "value");
+    } else {
+        xfconf_g_property_bind(channel, buf, G_TYPE_UINT,
+                       G_OBJECT(gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(panel->backdrop_cycle_spinbox))),
+                       "value");
+    }
+    g_free(buf);
+
+    buf = xfdesktop_settings_generate_per_workspace_binding_string(panel, "backdrop-cycle-random-order");
+    if(remove_binding) {
+        xfconf_g_property_unbind_by_property(channel, buf,
+                           G_OBJECT(panel->random_backdrop_order_chkbox), "active");
+    } else {
+        xfconf_g_property_bind(channel, buf, G_TYPE_BOOLEAN,
+                               G_OBJECT(panel->random_backdrop_order_chkbox), "active");
+    }
+    g_free(buf);
+
+    cb_xfdesktop_chk_cycle_backdrop_toggled(GTK_CHECK_BUTTON(panel->backdrop_cycle_chkbox),
+                                            panel);
 }
 
 static void
@@ -1157,166 +805,102 @@ suboptions_set_sensitive(GtkToggleButton *btn,
 }
 
 static void
-image_treeview_drag_data_received(GtkWidget *widget,
-                                  GdkDragContext *context,
-                                  gint x,
-                                  gint y,
-                                  GtkSelectionData *selection_data,
-                                  guint info,
-                                  guint time_,
-                                  gpointer user_data)
+cb_update_background_tab(WnckWindow *wnck_window,
+                         gpointer user_data)
 {
     AppearancePanel *panel = user_data;
-    gboolean file_added;
-    gchar *p;
-    GtkTreeModel *model = gtk_tree_view_get_model(GTK_TREE_VIEW(widget));
-    PreviewData *pdata = g_new0(PreviewData, 1);
+    gint screen_num, monitor_num, workspace_num;
+    WnckWorkspace *wnck_workspace = NULL;
+    GdkScreen *screen;
 
-    pdata->model = g_object_ref(G_OBJECT(model));
+    screen = gtk_widget_get_screen(panel->image_iconview);
+    wnck_workspace = wnck_window_get_workspace(wnck_window);
 
-    if(TARGET_TEXT_URI_LIST != info
-        || gtk_selection_data_get_format(selection_data) != 8
-        || gtk_selection_data_get_length(selection_data) <= 0)
-    {
-        gtk_drag_finish(context, FALSE, FALSE, time_);
-        g_free(pdata);
-        return;
+    workspace_num = wnck_workspace_get_number(wnck_workspace);
+    screen_num = gdk_screen_get_number(screen);
+    monitor_num = gdk_screen_get_monitor_at_window(screen,
+                                                   gtk_widget_get_window(panel->image_iconview));
+
+    /* Check to see if something changed */
+    if(panel->workspace == workspace_num &&
+       panel->screen == screen_num &&
+       panel->monitor == monitor_num) {
+           return;
     }
 
-    p = (gchar *)gtk_selection_data_get_data(selection_data);
-    while(*p) {
-        if(*p != '#') {
-            gchar *q;
+    TRACE("screen, monitor, or workspace changed");
 
-            while(g_ascii_isspace(*p))
-                p++;
-
-            q = p;
-            while(*q && *q != '\n' && *q != '\r')
-                q++;
-
-            if(q > p) {
-                q--;
-                while(g_ascii_isspace(*q))
-                    q--;
-
-                if(!strncmp(p, "file://", 7)) {
-                    /* we only handle file uris */
-                    gchar oldq, *filename;
-
-                    q++;
-                    oldq = *q;
-                    *q = 0;
-
-                    filename = g_filename_from_uri(p, NULL, NULL);
-                    if(filename) {
-                        GtkTreeIter *iter = NULL;
-
-                        if(g_file_test(filename, G_FILE_TEST_IS_DIR)) {
-                            GDir *dir = g_dir_open(filename, 0, 0);
-
-                            if(dir) {
-                                const gchar *name;
-                                gchar buf[PATH_MAX];
-                                gboolean needs_slash = TRUE;
-
-                                if(filename[strlen(filename)-1] == '/')
-                                    needs_slash = FALSE;
-
-                                while((name = g_dir_read_name(dir))) {
-                                    g_snprintf(buf, sizeof(buf),
-                                               needs_slash ? "%s/%s" : "%s%s",
-                                               filename, name);
-                                    iter = xfdesktop_settings_image_treeview_add(model, buf);
-                                    if(iter)
-                                        pdata->iters = g_slist_prepend(pdata->iters, iter);
-                                }
-                                g_dir_close(dir);
-                            }
-                        } else if(g_file_test(filename, G_FILE_TEST_EXISTS)) {
-                            iter = xfdesktop_settings_image_treeview_add(model, filename);
-                            if(iter)
-                                pdata->iters = g_slist_prepend(pdata->iters, iter);
-                        }
-
-                        g_free(filename);
-                    }
-
-                    *q = oldq;
-                }
-            }
-        }
-
-        p = strchr(p, '\n');
-        if(p)
-            p++;
+    /* remove the old bindings */
+    if(panel->monitor != -1 && panel->workspace != -1) {
+        xfdesktop_settings_background_tab_change_bindings(panel,
+                                                          TRUE);
     }
 
-    file_added = !!pdata->iters;
+    if(panel->monitor_name != NULL)
+        g_free(panel->monitor_name);
 
-    if(!pdata->iters
-       || !g_thread_try_new("xfdesktop_settings_create_some_previews",
-                            xfdesktop_settings_create_some_previews,
-                            pdata, NULL))
-    {
-        if(pdata->iters)
-            g_critical("Unable to create thread for single image preview.");
-        g_object_unref(G_OBJECT(pdata->model));
-        g_slist_foreach(pdata->iters, (GFunc)gtk_tree_iter_free, NULL);
-        g_slist_free(pdata->iters);
-        g_free(pdata);
+    panel->workspace = workspace_num;
+    panel->screen = screen_num;
+    panel->monitor = monitor_num;
+    panel->monitor_name = gdk_screen_get_monitor_plug_name(screen, panel->monitor);
+
+    /* connect the new bindings */
+    xfdesktop_settings_background_tab_change_bindings(panel,
+                                                      FALSE);
+
+    xfdesktop_settings_update_iconview_frame_name(panel, wnck_workspace);
+    xfdesktop_settings_update_iconview_folder(panel);
+
+    /* The first monitor has the option of doing the "spanning screens" style,
+     * but only if there's multiple monitors attached. Make it invisible
+     * in all other cases.
+     * Remove the spanning screens option before we potentially add it again
+     */
+    gtk_combo_box_text_remove(GTK_COMBO_BOX_TEXT(panel->image_style_combo), 6);
+    if(panel->monitor == 0 && gdk_screen_get_n_monitors(screen) > 1) {
+        gtk_combo_box_text_insert_text(GTK_COMBO_BOX_TEXT(panel->image_style_combo),
+                                       6, _("Spanning screens"));
     }
-
-    gtk_drag_finish(context, file_added, FALSE, time_);
-
-    if(file_added && panel->image_list_loaded)
-        xfdesktop_settings_save_backdrop_list(panel, model);
 }
 
 static void
-xfdesktop_settings_setup_image_treeview(AppearancePanel *panel)
+xfdesktop_settings_setup_image_iconview(AppearancePanel *panel)
 {
-    static GtkTargetEntry drag_targets[] = {
-        { "text/uri-list", 0, TARGET_TEXT_URI_LIST },
-    };
-    GtkCellRenderer *render;
-    GtkTreeViewColumn *col;
+    GtkIconView *iconview = GTK_ICON_VIEW(panel->image_iconview);
 
-    render = gtk_cell_renderer_pixbuf_new();
-    col = gtk_tree_view_column_new_with_attributes("thumbnail", render,
-                                                   "pixbuf", COL_PIX, NULL);
-    gtk_tree_view_append_column(GTK_TREE_VIEW(panel->image_treeview),
-                                col);
-    render = gtk_cell_renderer_text_new();
-    col = gtk_tree_view_column_new_with_attributes("name", render,
-                                                   "markup", COL_NAME, NULL);
-    gtk_tree_view_append_column(GTK_TREE_VIEW(panel->image_treeview),
-                                col);
+    TRACE("entering");
 
-    g_signal_connect(G_OBJECT(gtk_tree_view_get_selection(GTK_TREE_VIEW(panel->image_treeview))),
-                     "changed",
+    g_object_set(G_OBJECT(iconview),
+                "pixbuf-column", COL_PIX,
+                "item-width", PREVIEW_WIDTH,
+                NULL);
+
+    g_signal_connect(G_OBJECT(iconview), "selection-changed",
                      G_CALLBACK(cb_image_selection_changed), panel);
-
-    gtk_tree_view_enable_model_drag_dest(GTK_TREE_VIEW(panel->image_treeview),
-                                         drag_targets, 1,
-                                         GDK_ACTION_DEFAULT | GDK_ACTION_COPY);
-
-    g_signal_connect(G_OBJECT(panel->image_treeview), "drag-data-received",
-                     G_CALLBACK(image_treeview_drag_data_received), panel);
 }
 
 static void
-xfdesktop_settings_dialog_add_screens(GtkBuilder *main_gxml,
-                                      XfconfChannel *channel)
+xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
+                                     XfconfChannel *channel,
+                                     GdkScreen *screen)
 {
-    gint i, j, nmonitors, nscreens;
     GtkWidget *appearance_container, *chk_custom_font_size,
-              *spin_font_size, *color_style_widget, *w, *box,
-              *spin_icon_size, *chk_show_thumbnails, *chk_single_click;
+              *spin_font_size, *w, *box, *spin_icon_size,
+              *chk_show_thumbnails, *chk_single_click, *appearance_settings;
+    GtkBuilder *appearance_gxml;
+    AppearancePanel *panel = g_new0(AppearancePanel, 1);
+    GError *error = NULL;
+    GtkFileFilter *filter;
+    WnckScreen *wnck_screen;
+    WnckWindow *wnck_window = NULL;
+
+    TRACE("entering");
 
     appearance_container = GTK_WIDGET(gtk_builder_get_object(main_gxml,
                                                              "notebook_screens"));
 
+    /* Icons tab */
+    /* icon size */
     spin_icon_size = GTK_WIDGET(gtk_builder_get_object(main_gxml, "spin_icon_size"));
 
     g_signal_connect(G_OBJECT(spin_icon_size), "value-changed",
@@ -1328,10 +912,12 @@ xfdesktop_settings_dialog_add_screens(GtkBuilder *main_gxml,
                                                       DESKTOP_ICONS_ICON_SIZE_PROP,
                                                       DEFAULT_ICON_SIZE));
 
+    /* font size */
     chk_custom_font_size = GTK_WIDGET(gtk_builder_get_object(main_gxml,
                                                              "chk_custom_font_size"));
     spin_font_size = GTK_WIDGET(gtk_builder_get_object(main_gxml, "spin_font_size"));
 
+    /* single click */
     chk_single_click = GTK_WIDGET(gtk_builder_get_object(main_gxml,
                                                          "chk_single_click"));
 
@@ -1339,6 +925,7 @@ xfdesktop_settings_dialog_add_screens(GtkBuilder *main_gxml,
                      G_CALLBACK(cb_xfdesktop_chk_custom_font_size_toggled),
                      spin_font_size);
 
+    /* thumbnails */
     chk_show_thumbnails = GTK_WIDGET(gtk_builder_get_object(main_gxml,
                                                             "chk_show_thumbnails"));
     /* The default value when this property is not set, is 'TRUE'.
@@ -1349,230 +936,97 @@ xfdesktop_settings_dialog_add_screens(GtkBuilder *main_gxml,
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(chk_show_thumbnails),
                                   TRUE);
 
-    nscreens = gdk_display_get_n_screens(gdk_display_get_default());
+    /* Background tab */
+    panel->channel = channel;
+    panel->screen = gdk_screen_get_number(screen);
 
-    for(i = 0; i < nscreens; ++i) {
-        GdkDisplay *gdpy = gdk_display_get_default();
-        GdkScreen *screen = gdk_display_get_screen(gdpy, i);
-        nmonitors = gdk_screen_get_n_monitors(screen);
+    /* We have to force wnck to initialize */
+    wnck_screen = wnck_screen_get(panel->screen);
+    wnck_screen_force_update(wnck_screen);
+    wnck_window = wnck_window_get(GDK_WINDOW_XID(gtk_widget_get_window(appearance_container)));
 
-        if(nscreens > 1 || nmonitors > 1) {
-            gtk_notebook_set_show_tabs(GTK_NOTEBOOK(appearance_container), TRUE);
-            gtk_container_set_border_width(GTK_CONTAINER(appearance_container), 12);
-        }
+    g_signal_connect(wnck_window, "geometry-changed",
+                     G_CALLBACK(cb_update_background_tab), panel);
 
-        for(j = 0; j < nmonitors; ++j) {
+    /* send invalid numbers so that the update_background_tab will update everything */
+    panel->monitor = -1;
+    panel->workspace = -1;
+    panel->monitor_name = NULL;
 
-            gchar buf[1024];
-            GtkBuilder *appearance_gxml;
-            AppearancePanel *panel = g_new0(AppearancePanel, 1);
-            GtkWidget *appearance_settings, *appearance_label;
-            GError *error = NULL;
-
-            panel->channel = channel;
-            panel->screen = i;
-            panel->monitor = j;
-
-            if(nscreens > 1 && nmonitors > 1) {
-                gchar *monitor_name = gdk_screen_get_monitor_plug_name(screen,
-                                                                       j);
-                if(monitor_name) {
-                    g_snprintf(buf, sizeof(buf),
-                               _("Screen %d, Monitor %d (%s)"), i+1, j+1,
-                               monitor_name);
-                    g_free(monitor_name);
-                } else
-                    g_snprintf(buf, sizeof(buf), _("Screen %d, Monitor %d"),
-                               i+1, j+1);
-            } else if(nscreens > 1)
-                g_snprintf(buf, sizeof(buf), _("Screen %d"), i+1);
-            else {
-                gchar *monitor_name = gdk_screen_get_monitor_plug_name(screen,
-                                                                       j);
-                if(monitor_name) {
-                    g_snprintf(buf, sizeof(buf), _("Monitor %d (%s)"),
-                               j+1, monitor_name);
-                    g_free(monitor_name);
-                } else
-                    g_snprintf(buf, sizeof(buf), _("Monitor %d"), j+1);
-            }
-
-            appearance_gxml = gtk_builder_new();
-            if(!gtk_builder_add_from_string(appearance_gxml,
-                                            xfdesktop_settings_appearance_frame_ui,
-                                            xfdesktop_settings_appearance_frame_ui_length,
-                                            &error))
-            {
-                g_printerr("Failed to parse appearance settings UI description: %s\n",
-                           error->message);
-                g_error_free(error);
-                exit(1);
-            }
-
-            appearance_settings = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
-                                                                    "alignment_settings"));
-
-            appearance_label = gtk_label_new_with_mnemonic(buf);
-            gtk_widget_show(appearance_label);
-
-            gtk_notebook_append_page(GTK_NOTEBOOK(appearance_container),
-                                     appearance_settings, appearance_label);
-
-            /* Connect xfconf bindings */
-            g_snprintf(buf, sizeof(buf), PER_SCREEN_PROP_FORMAT "/brightness",
-                       i, j);
-            panel->brightness_slider = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
-                                                                         "slider_brightness"));
-            xfconf_g_property_bind(channel, buf, G_TYPE_INT,
-                                   G_OBJECT(gtk_range_get_adjustment(GTK_RANGE(panel->brightness_slider))),
-                                   "value");
-
-            g_snprintf(buf, sizeof(buf), PER_SCREEN_PROP_FORMAT "/saturation",
-                       i, j);
-            panel->saturation_slider = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
-                                                                         "slider_saturation"));
-            xfconf_g_property_bind(channel, buf, G_TYPE_DOUBLE,
-                                   G_OBJECT(gtk_range_get_adjustment(GTK_RANGE(panel->saturation_slider))),
-                                   "value");
-
-            w = GTK_WIDGET(gtk_builder_get_object(appearance_gxml, "combo_style"));
-            gtk_combo_box_set_active(GTK_COMBO_BOX(w), 0);
-            g_snprintf(buf, sizeof(buf), PER_SCREEN_PROP_FORMAT "/image-style",
-                       i, j);
-            xfconf_g_property_bind(channel, buf, G_TYPE_INT,
-                                   G_OBJECT(w), "active");
-
-            color_style_widget = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
-                                                                   "combo_colors"));
-            gtk_combo_box_set_active(GTK_COMBO_BOX(color_style_widget), 0);
-            g_snprintf(buf, sizeof(buf), PER_SCREEN_PROP_FORMAT "/color-style",
-                       i, j);
-            xfconf_g_property_bind(channel, buf, G_TYPE_INT,
-                                   G_OBJECT(color_style_widget), "active");
-            g_signal_connect(G_OBJECT(color_style_widget), "changed",
-                             G_CALLBACK(cb_xfdesktop_combo_color_changed),
-                             panel);
-
-            panel->color1_btn = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
-                                                                  "color1_btn"));
-            g_snprintf(buf, sizeof(buf), PER_SCREEN_PROP_FORMAT "/color1",
-                       i, j);
-            xfconf_g_property_bind_gdkcolor(channel, buf,
-                                            G_OBJECT(panel->color1_btn),
-                                            "color");
-
-            panel->color2_btn = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
-                                                                  "color2_btn"));
-            g_snprintf(buf, sizeof(buf), PER_SCREEN_PROP_FORMAT "/color2",
-                       i, j);
-            xfconf_g_property_bind_gdkcolor(channel, buf,
-                                            G_OBJECT(panel->color2_btn),
-                                            "color");
-
-            cb_xfdesktop_combo_color_changed(GTK_COMBO_BOX(color_style_widget),
-                                             panel);
-
-            panel->frame_image_list = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
-                                                                        "frame_image_list"));
-
-            panel->image_treeview = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
-                                                                      "treeview_imagelist"));
-            xfdesktop_settings_setup_image_treeview(panel);
-
-            panel->btn_plus = GTK_WIDGET(gtk_builder_get_object(appearance_gxml, "btn_plus"));
-            g_signal_connect(G_OBJECT(panel->btn_plus), "clicked",
-                             G_CALLBACK(add_file_button_clicked), panel);
-
-            panel->btn_minus = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
-                                                                 "btn_minus"));
-            g_signal_connect(G_OBJECT(panel->btn_minus), "clicked",
-                             G_CALLBACK(remove_file_button_clicked), panel);
-
-            panel->btn_newlist = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
-                                                                   "btn_newlist"));
-            g_signal_connect(G_OBJECT(panel->btn_newlist), "clicked",
-                             G_CALLBACK(newlist_button_clicked), panel);
-
-            panel->chk_xinerama_stretch = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
-                                                                            "chk_xinerama_stretch"));
-
-            /* The first monitor has the option of doing the xinerama-stretch,
-             * but only if there's multiple monitors attached. Make it invisible
-             * in all other cases.
-             */
-            if(j == 0 && nmonitors > 1) {
-                g_snprintf(buf, sizeof(buf), "/backdrop/screen%d/xinerama-stretch",
-                           i);
-                xfconf_g_property_bind(channel, buf, G_TYPE_BOOLEAN,
-                                        G_OBJECT(panel->chk_xinerama_stretch), "active");
-                gtk_widget_set_sensitive(panel->chk_xinerama_stretch, TRUE);
-            } else {
-                gtk_widget_hide(panel->chk_xinerama_stretch);
-            }
-
-            panel->backdrop_cycle_chkbox = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
-                                                                             "chk_cycle_backdrop"));
-            panel->backdrop_cycle_spinbox = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
-                                                                             "spin_backdrop_time_minutes"));
-
-            g_signal_connect(G_OBJECT(panel->backdrop_cycle_chkbox), "toggled",
-                            G_CALLBACK(cb_xfdesktop_chk_cycle_backdrop_toggled),
-                            panel->backdrop_cycle_spinbox);
-
-            g_snprintf(buf, sizeof(buf), PER_SCREEN_PROP_FORMAT "/backdrop-cycle-enable",
-                       i, j);
-            xfconf_g_property_bind(channel, buf, G_TYPE_BOOLEAN,
-                                   G_OBJECT(panel->backdrop_cycle_chkbox), "active");
-
-            g_snprintf(buf, sizeof(buf), PER_SCREEN_PROP_FORMAT "/backdrop-cycle-timer",
-                       i, j);
-            xfconf_g_property_bind(channel, buf, G_TYPE_UINT,
-                           G_OBJECT(gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(panel->backdrop_cycle_spinbox))),
-                           "value");
-
-            panel->radio_singleimage = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
-                                                                         "radio_singleimage"));
-            g_signal_connect(G_OBJECT(panel->radio_singleimage), "toggled",
-                             G_CALLBACK(cb_image_type_radio_clicked), panel);
-            panel->radio_imagelist = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
-                                                                       "radio_imagelist"));
-            g_signal_connect(G_OBJECT(panel->radio_imagelist), "toggled",
-                             G_CALLBACK(cb_image_type_radio_clicked), panel);
-            panel->radio_none = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
-                                                                  "radio_none"));
-            g_signal_connect(G_OBJECT(panel->radio_none), "toggled",
-                             G_CALLBACK(cb_image_type_radio_clicked), panel);
-            g_snprintf(buf, sizeof(buf),
-                       "property-changed::" PER_SCREEN_PROP_FORMAT "/image-show",
-                       i, j);
-            g_signal_connect(G_OBJECT(channel), buf,
-                             G_CALLBACK(cb_show_image_changed), panel);
-
-            if(!xfconf_channel_get_bool(channel, buf+18, TRUE)) {
-                panel->show_image = FALSE;
-                gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(panel->radio_none),
-                                             TRUE);
-            } else {
-                gchar *image_path = NULL;
-
-                panel->show_image = TRUE;
-
-                g_snprintf(buf, sizeof(buf),
-                           PER_SCREEN_PROP_FORMAT "/image-path", i, j);
-                image_path = xfconf_channel_get_string(channel, buf, NULL);
-                if(image_path && xfdesktop_backdrop_list_is_valid(image_path)) {
-                    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(panel->radio_imagelist),
-                                                 TRUE);
-                } else
-                    xfdesktop_settings_dialog_populate_image_list(panel);
-                g_free(image_path);
-
-            }
-
-            g_object_unref(G_OBJECT(appearance_gxml));
-        }
+    appearance_gxml = gtk_builder_new();
+    if(!gtk_builder_add_from_string(appearance_gxml,
+                                    xfdesktop_settings_appearance_frame_ui,
+                                    xfdesktop_settings_appearance_frame_ui_length,
+                                    &error))
+    {
+        g_printerr("Failed to parse appearance settings UI description: %s\n",
+                   error->message);
+        g_error_free(error);
+        exit(1);
     }
 
+    appearance_settings = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
+                                                            "alignment_settings"));
+
+    panel->frame_image_list = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
+                                                                "frame_image_list"));
+
+    gtk_table_attach_defaults(GTK_TABLE(appearance_container),
+                             appearance_settings, 0,1,0,1);
+
+    panel->image_style_combo = GTK_WIDGET(gtk_builder_get_object(appearance_gxml, "combo_style"));
+
+    panel->color_style_combo = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
+                                                                 "combo_colors"));
+
+    /* Pick the first entries so something shows up */
+    gtk_combo_box_set_active(GTK_COMBO_BOX(panel->image_style_combo), 0);
+    gtk_combo_box_set_active(GTK_COMBO_BOX(panel->color_style_combo), 0);
+
+    g_signal_connect(G_OBJECT(panel->color_style_combo), "changed",
+                     G_CALLBACK(cb_xfdesktop_combo_color_changed),
+                     panel);
+
+    panel->color1_btn = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
+                                                          "color1_btn"));
+
+    panel->color2_btn = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
+                                                          "color2_btn"));
+
+    /* icon view area */
+    panel->frame_image_list = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
+                                                                "frame_image_list"));
+
+    panel->image_iconview = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
+                                                              "iconview_imagelist"));
+    xfdesktop_settings_setup_image_iconview(panel);
+
+    /* folder: file chooser button */
+    panel->btn_folder = GTK_WIDGET(gtk_builder_get_object(appearance_gxml, "btn_folder"));
+    g_signal_connect(G_OBJECT(panel->btn_folder), "selection-changed",
+                     G_CALLBACK(cb_folder_selection_changed), panel);
+
+    filter = gtk_file_filter_new();
+    gtk_file_filter_set_name(filter, _("Image files"));
+    gtk_file_filter_add_pixbuf_formats(filter);
+    gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(panel->btn_folder), filter);
+
+    /* background cycle timer */
+    panel->backdrop_cycle_chkbox = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
+                                                                     "chk_cycle_backdrop"));
+    panel->backdrop_cycle_spinbox = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
+                                                                     "spin_backdrop_time_minutes"));
+    panel->random_backdrop_order_chkbox = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
+                                                                     "chk_random_backdrop_order"));
+
+    g_signal_connect(G_OBJECT(panel->backdrop_cycle_chkbox), "toggled",
+                    G_CALLBACK(cb_xfdesktop_chk_cycle_backdrop_toggled),
+                    panel);
+
+    g_object_unref(G_OBJECT(appearance_gxml));
+
+
+    /* Menus Tab */
     w = GTK_WIDGET(gtk_builder_get_object(main_gxml, "chk_show_desktop_menu"));
     xfconf_g_property_bind(channel, SHOW_DESKTOP_MENU_PROP, G_TYPE_BOOLEAN,
                            G_OBJECT(w), "active");
@@ -1714,13 +1168,13 @@ main(int argc, char **argv)
 
     channel = xfconf_channel_new(XFDESKTOP_CHANNEL);
 
-    xfdesktop_settings_dialog_add_screens(gxml, channel);
-
     if(opt_socket_id == 0) {
         dialog = GTK_WIDGET(gtk_builder_get_object(gxml, "prefs_dialog"));
         g_signal_connect(dialog, "response",
                          G_CALLBACK(xfdesktop_settings_response), NULL);
         gtk_window_present(GTK_WINDOW (dialog));
+        xfdesktop_settings_dialog_setup_tabs(gxml, channel,
+                                             gtk_widget_get_screen(dialog));
 
         /* To prevent the settings dialog to be saved in the session */
         gdk_x11_set_sm_client_id("FAKE ID");
@@ -1733,6 +1187,8 @@ main(int argc, char **argv)
         gtk_widget_show(plug);
         g_signal_connect(G_OBJECT(plug), "delete-event",
                          G_CALLBACK(gtk_main_quit), NULL);
+        xfdesktop_settings_dialog_setup_tabs(gxml, channel,
+                                             gtk_widget_get_screen(plug));
 
         gdk_notify_startup_complete();
 

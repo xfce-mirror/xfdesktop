@@ -77,14 +77,10 @@ GtkWidget *xfce_desktop_new(GdkScreen *gscreen,
                             XfconfChannel *channel,
                             const gchar *property_prefix);
 
-guint xfce_desktop_get_n_monitors(XfceDesktop *desktop);
+gint xfce_desktop_get_n_monitors(XfceDesktop *desktop);
 
 gint xfce_desktop_get_width(XfceDesktop *desktop);
 gint xfce_desktop_get_height(XfceDesktop *desktop);
-
-void xfce_desktop_set_xinerama_stretch(XfceDesktop *desktop,
-                                       gboolean stretch);
-gboolean xfce_desktop_get_xinerama_stretch(XfceDesktop *desktop);
 
 void xfce_desktop_set_icon_style(XfceDesktop *desktop,
                                  XfceDesktopIconStyle style);
@@ -104,8 +100,6 @@ void xfce_desktop_set_session_logout_func(XfceDesktop *desktop,
 void xfce_desktop_freeze_updates(XfceDesktop *desktop);
 void xfce_desktop_thaw_updates(XfceDesktop *desktop);
 
-XfceBackdrop *xfce_desktop_peek_backdrop(XfceDesktop *desktop,
-                                         guint monitor);
 
 void xfce_desktop_popup_root_menu(XfceDesktop *desktop,
                                   guint button,
