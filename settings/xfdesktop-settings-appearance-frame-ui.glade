@@ -88,30 +88,21 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkFileChooserButton" id="btn_folder">
+                              <object class="GtkAlignment" id="alignment_btn_folder">
                                 <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
-                                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                                <property name="tooltip-text" translatable="yes">Add an image to the list</property>
-                                <property name="action">GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER</property>
-                                <property name="width-chars">30</property>
+                                <property name="xalign">0.0</property>
+                                <property name="xscale">0.5</property>
+                                <child>
+                                  <object class="GtkFileChooserButton" id="btn_folder">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="receives_default">True</property>
+                                    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                                    <property name="tooltip-text" translatable="yes">Add an image to the list</property>
+                                    <property name="action">GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER</property>
+                                  </object>
+                                </child>
                               </object>
-                              <packing>
-                                <property name="expand">False</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel" id="label_style">
-                                <property name="visible">True</property>
-                                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                                <property name="label" translatable="yes">St_yle:</property>
-                                <property name="use_underline">True</property>
-                                <property name="mnemonic_widget">combo_style</property>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                              </packing>
                             </child>
                             <child>
                               <object class="GtkComboBoxText" id="combo_style">
@@ -130,65 +121,20 @@
                               </object>
                               <packing>
                                 <property name="expand">False</property>
+                                <property name="pack-type">GTK_PACK_END</property>
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkLabel" id="label_color">
+                              <object class="GtkLabel" id="label_style">
                                 <property name="visible">True</property>
                                 <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                                <property name="label" translatable="yes">Color:</property>
+                                <property name="label" translatable="yes">St_yle:</property>
                                 <property name="use_underline">True</property>
+                                <property name="mnemonic_widget">combo_style</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkComboBox" id="combo_colors">
-                                <property name="visible">True</property>
-                                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                                <property name="tooltip-text" translatable="yes">Specify the style of the color drawn behind the backdrop image</property>
-                                <signal handler="color_style_changed" name="changed"/>
-                                <property name="model">model2</property>
-                                <child>
-                                  <object class="GtkCellRendererText" id="renderer2"/>
-                                  <attributes>
-                                    <attribute name="text">0</attribute>
-                                  </attributes>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkColorButton" id="color1_btn">
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
-                                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_MOTION_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                                <property name="tooltip-text" translatable="yes">Specifies the solid color, or the "left" or "top" color of the gradient</property>
-                                <property name="title" translatable="yes">Select First Color</property>
-                                <property name="color">#151522223333</property>
-                                <signal handler="color1_changed" name="color_set"/>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkColorButton" id="color2_btn">
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
-                                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_MOTION_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                                <property name="tooltip-text" translatable="yes">Specifies the "right" or "bottom" color of the gradient</property>
-                                <property name="title" translatable="yes">Select Second Color</property>
-                                <property name="color">#151522223333</property>
-                                <signal handler="color2_changed" name="color_set"/>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
+                                <property name="pack-type">GTK_PACK_END</property>
                               </packing>
                             </child>
                           </object>
@@ -204,6 +150,74 @@
               </object>
             </child>
           </object>
+        </child>
+        <child>
+          <object class="GtkHBox" id="hbox_colors">
+            <property name="visible">True</property>
+            <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+            <child>
+              <object class="GtkLabel" id="label_color">
+                <property name="visible">True</property>
+                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                <property name="label" translatable="yes">Color:</property>
+                <property name="use_underline">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkComboBox" id="combo_colors">
+                <property name="visible">True</property>
+                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                <property name="tooltip-text" translatable="yes">Specify the style of the color drawn behind the backdrop image</property>
+                <signal handler="color_style_changed" name="changed"/>
+                <property name="model">model2</property>
+                <child>
+                  <object class="GtkCellRendererText" id="renderer2"/>
+                  <attributes>
+                    <attribute name="text">0</attribute>
+                  </attributes>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkColorButton" id="color1_btn">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_MOTION_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                <property name="tooltip-text" translatable="yes">Specifies the solid color, or the "left" or "top" color of the gradient</property>
+                <property name="title" translatable="yes">Select First Color</property>
+                <property name="color">#151522223333</property>
+                <signal handler="color1_changed" name="color_set"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkColorButton" id="color2_btn">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_MOTION_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                <property name="tooltip-text" translatable="yes">Specifies the "right" or "bottom" color of the gradient</property>
+                <property name="title" translatable="yes">Select Second Color</property>
+                <property name="color">#151522223333</property>
+                <signal handler="color2_changed" name="color_set"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+          </packing>
         </child>
         <child>
           <object class="GtkHBox" id="hbox9">
