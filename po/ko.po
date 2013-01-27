@@ -2,14 +2,14 @@
 # Copyright (C) 2003-2006 The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
 # ByungHyun Choi <byunghyun.choi@gmail.com>, 2005.
-# Seong-ho Cho <darkcircle.0426@gmail.com>, 2011-2013.
+# Seong-ho Cho <darkcircle.0426@gmail.com>, 2011, 2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-01-27 09:48+0000\n"
-"PO-Revision-Date: 2013-01-27 20:51+0900\n"
+"PO-Revision-Date: 2013-01-27 20:55+0900\n"
 "Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>\n"
 "Language-Team: xfce-i18n <xfce-i18n@xfce.org>\n"
 "Language: ko\n"
@@ -744,7 +744,7 @@ msgstr "장치 마운트 해제중"
 #: ../src/xfdesktop-notify.c:131
 #, c-format
 msgid "The device \"%s\" is being unmounted by the system. Please do not remove the media or disconnect the drive"
-msgstr "장치 \"%s\"을(를) 시스템이 마운트 해제하고 있습니다. 미디어를 제거하거나 드라이브의 연결을 끊지 말아주십시오"
+msgstr "\"%s\" 장치를 시스템이 마운트 해제하고 있습니다. 미디어를 제거하거나 드라이브의 연결을 끊지 말아주십시오"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:138
@@ -757,7 +757,7 @@ msgstr "데이터를 장치에 쓰는 중"
 #: ../src/xfdesktop-notify.c:316
 #, c-format
 msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
-msgstr "장치를 제거하기 전 장치 \"%s\"(으)로 기록할 필요가 있는 데이터가 있습니다. 미디어를 제거하거나 드라이브의 연결을 끊지 말아주십시오"
+msgstr "장치를 제거하기 전 \"%s\" 장치로 기록해야 하는 데이터가 있습니다. 미디어를 제거하거나 드라이브의 연결을 끊지 말아주십시오"
 
 #: ../src/xfdesktop-notify.c:218
 msgid "Unmount Finished"
@@ -778,7 +778,7 @@ msgstr "장치 추출 중"
 #: ../src/xfdesktop-notify.c:307
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
-msgstr "장치 \"%s\"을(를) 추출하는 중입니다. 시간이 약간 걸릴 수도 있습니다"
+msgstr "\"%s\" 장치를 추출하는 중입니다. 시간이 약간 걸릴 수도 있습니다"
 
 #: ../src/xfdesktop-notify.c:393
 msgid "Eject Finished"
@@ -836,7 +836,8 @@ msgid ""
 "%s left (%s total)"
 msgstr ""
 "이동식 볼륨\n"
-" \"%s\"에 마운트함\"%s\" 남음(총 %s)"
+"\"%s\"에 마운트함\n"
+"\"%s\" 남음(총 %s)"
 
 #: ../src/xfdesktop-volume-icon.c:454
 msgid ""
