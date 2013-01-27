@@ -2,14 +2,14 @@
 # Copyright (C) 2003-2006 The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
 # ByungHyun Choi <byunghyun.choi@gmail.com>, 2005.
-# Seong-ho Cho <darkcircle.0426@gmail.com>, 2011, 2012.
+# Seong-ho Cho <darkcircle.0426@gmail.com>, 2011-2013.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
-"Report-Msgid-Bugs-To: https://bugzilla.xfce.org/enter_bug.cgi?product=Xfdesktop\n"
-"POT-Creation-Date: 2012-04-13 22:06+0000\n"
-"PO-Revision-Date: 2012-04-14 18:12+0900\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-01-27 09:48+0000\n"
+"PO-Revision-Date: 2013-01-27 20:51+0900\n"
 "Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>\n"
 "Language-Team: xfce-i18n <xfce-i18n@xfce.org>\n"
 "Language: ko\n"
@@ -18,14 +18,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../common/xfdesktop-common.c:96
-#: ../common/xfdesktop-common.c:200
-#, c-format
-msgid "Backdrop list file is not valid"
-msgstr "배경 목록 파일이 유효하지 않습니다"
-
 #. no need to escape markup; it's already done for us
-#: ../settings/main.c:166
+#: ../settings/main.c:151
 #, c-format
 msgid ""
 "%s\n"
@@ -34,128 +28,73 @@ msgstr ""
 "%s\n"
 "<i>크기: %dx%d</i>"
 
-#: ../settings/main.c:299
+#: ../settings/main.c:263
 #: ../src/xfdesktop-special-file-icon.c:271
 #: ../src/xfdesktop-special-file-icon.c:434
 msgid "Home"
 msgstr "홈"
 
-#: ../settings/main.c:301
+#: ../settings/main.c:265
 msgid "Filesystem"
 msgstr "파일 시스템"
 
-#: ../settings/main.c:303
+#: ../settings/main.c:267
 msgid "Trash"
 msgstr "휴지통"
 
-#: ../settings/main.c:305
+#: ../settings/main.c:269
 msgid "Removable Devices"
 msgstr "이동식 장치"
 
-#: ../settings/main.c:485
+#: ../settings/main.c:454
 #, c-format
-msgid "Cannot create backdrop list \"%s\""
-msgstr "배경 목록 \"%s\"을(를) 만들 수 없습니다"
+msgid "Wallpaper for %s on Monitor %d (%s)"
+msgstr "화면 %2$d의 %1$s에 대한 배경 화면 (%3$s)"
 
-#: ../settings/main.c:489
+#: ../settings/main.c:458
+#, c-format
+msgid "Wallpaper for %s on Monitor %d"
+msgstr "모니터 %2$d의 %1$s에 대한 배경 화면"
+
 #: ../settings/main.c:862
-msgid "Backdrop List Error"
-msgstr "배경 목록 오류"
+msgid "Spanning screens"
+msgstr "모니터 확장"
 
-#: ../settings/main.c:514
-msgid "Create/Load Backdrop List"
-msgstr "배경 목록을 만들거나 불러오기"
-
-#: ../settings/main.c:538
-#, c-format
-msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr "파일 \"%s\"은(는) 유효한 배경 목록 파일이 아닙니다. 덮어 쓰시렵니까?"
-
-#: ../settings/main.c:543
-msgid "Invalid List File"
-msgstr "잘못된 목록 파일"
-
-#: ../settings/main.c:546
-msgid "Overwriting the file will cause its contents to be lost."
-msgstr "파일을 덮어쓰면 내용을 잃게됩니다."
-
-#: ../settings/main.c:548
-msgid "Replace"
-msgstr "바꾸기"
-
-#: ../settings/main.c:858
-#, c-format
-msgid "Failed to write backdrop list to \"%s\""
-msgstr "배경 목록을 \"%s\"에 쓸 수 없습니다"
-
-#: ../settings/main.c:885
-msgid "Add Image File(s)"
-msgstr "그림 파일 더하기"
-
-#: ../settings/main.c:894
+#: ../settings/main.c:1011
 msgid "Image files"
 msgstr "그림 파일"
 
-#: ../settings/main.c:899
-msgid "All files"
-msgstr "모든 파일"
-
-#: ../settings/main.c:1356
-#, c-format
-msgid "Screen %d, Monitor %d (%s)"
-msgstr "화면 %d, 모니터 %d (%s)"
-
-#: ../settings/main.c:1360
-#, c-format
-msgid "Screen %d, Monitor %d"
-msgstr "화면 %d, 모니터 %d"
-
-#: ../settings/main.c:1363
-#, c-format
-msgid "Screen %d"
-msgstr "화면 %d"
-
-#: ../settings/main.c:1368
-#, c-format
-msgid "Monitor %d (%s)"
-msgstr "모니터 %d (%s)"
-
-#: ../settings/main.c:1372
-#, c-format
-msgid "Monitor %d"
-msgstr "모니터 %d"
-
-#: ../settings/main.c:1631
+#: ../settings/main.c:1111
 msgid "Settings manager socket"
 msgstr "관리자 소켓 설정"
 
-#: ../settings/main.c:1631
+#: ../settings/main.c:1111
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: ../settings/main.c:1632
+#: ../settings/main.c:1112
 msgid "Version information"
 msgstr "버전 정보"
 
-#: ../settings/main.c:1649
+#: ../settings/main.c:1129
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "사용법을 보려면 '%s --help'를 입력합니다."
 
-#: ../settings/main.c:1661
+#: ../settings/main.c:1141
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce 개발 팀. All rights reserved."
 
-#: ../settings/main.c:1662
+#: ../settings/main.c:1142
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "<%s>(으)로 버그를 알려주십시오."
 
-#: ../settings/main.c:1669
+#: ../settings/main.c:1149
 msgid "Desktop Settings"
 msgstr "작업공간 설정"
 
-#: ../settings/main.c:1671
+#: ../settings/main.c:1151
 msgid "Unable to contact settings server"
 msgstr "설정 서버에 연결할 수 없습니다."
 
@@ -168,170 +107,76 @@ msgid "Set desktop background and menu and icon behaviour"
 msgstr "데스크톱 배경, 메뉴, 아이콘 동작을 설정합니다"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
-msgid "<b>Adjustments</b>"
-msgstr "<b>조정</b>"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
-msgid "<b>Colors</b>"
-msgstr "<b>색</b>"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
-msgid "<b>Image</b>"
-msgstr "<b>그림</b>"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
-msgid "<b>Images</b>"
-msgstr "<b>그림</b>"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
 msgid "Add an image to the list"
 msgstr "목록에 그림 더하기"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
-#: ../settings/xfdesktop-settings-ui.glade.h:6
-msgid "Auto"
-msgstr "자동"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
+msgid "Automatically select a different background from the current directory after a set number of minutes."
+msgstr "몇 분 후에 현재 디렉터리의 다른 배경 화면을 자동으로 선택합니다."
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
-msgid "Automatically pick a random image from a list file"
-msgstr "목록에서 임의의 그림을 자동으로 고르기"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
+msgid "Color:"
+msgstr "색상:"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
-msgid "B_rightness:"
-msgstr "밝기(_R):"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
+msgid "Folder:"
+msgstr "폴더:"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
-#: ../settings/xfdesktop-settings-ui.glade.h:8
-msgid "Centered"
-msgstr "가운데"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
-msgid "Create a new list, or load an existing one"
-msgstr "새 목록을 만들거나, 이미 존재하는것을 불러옵니다"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
-msgid "Don't display an image at all"
-msgstr "이 그림을 절대로 표시하지 않습니다"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
-#: ../settings/xfdesktop-settings-ui.glade.h:12
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
 msgid "Horizontal gradient"
 msgstr "수평 그레디언트"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
-msgid "Image _list"
-msgstr "그림 목록(_L)"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
+msgid "Number of minutes before a different background is selected."
+msgstr "다른 배경 화면을 선택하기 전의 분 단위 시간입니다."
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
-msgid "Increase or decrease the brightness of the final image"
-msgstr "최종 그림의 밝기를 늘리거나 줄입니다"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
-msgid "Increase or decrease the color saturation of the final image"
-msgstr "최종 그림의 색 채도를 늘리거나 줄입니다"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
-msgid "Number of minutes before a different background is randomly selected from the list."
-msgstr "목록에서 제각기 다른 배경을 무작위로 선택하기 전의 분 단위 시간입니다."
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
-msgid "Remove the selected image(s) from the list"
-msgstr "목록에서 선택한 그림을 제거합니다"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
-msgid "Sa_turation:"
-msgstr "채도(_T):"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
-#: ../settings/xfdesktop-settings-ui.glade.h:23
-msgid "Scaled"
-msgstr "크기 맞춤"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
 msgid "Select First Color"
 msgstr "첫번째 색 선택"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
 msgid "Select Second Color"
 msgstr "두번째 색 선택"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
-msgid "Select a single image as the backdrop"
-msgstr "단일 그림을 배경으로 선택"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
-#: ../settings/xfdesktop-settings-ui.glade.h:35
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
 msgid "Solid color"
 msgstr "단색"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr "그래디언트의 \"오른쪽\" 또는 \"아래\" 방향의 색을 정합니다"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
 msgstr "그래디언트의 \"왼쪽\" 또는 \"위\" 방향의 색을 정합니다"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
 msgid "Specify how the image will be resized to fit the screen"
 msgstr "그림을 어떻게 화면에 맞게 크기 조정할 것인지 정합니다"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
 msgid "Specify the style of the color drawn behind the backdrop image"
 msgstr "배경 그림 뒤에 채워질 색의 방식을 정합니다"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
-msgid "St_retch this background across all monitors."
-msgstr "이 배경을 모든 모니터로 늘이기(_R)."
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
 msgid "St_yle:"
 msgstr "표현 방식(_Y):"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
-#: ../settings/xfdesktop-settings-ui.glade.h:37
-msgid "Stretched"
-msgstr "늘이기"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
-#: ../settings/xfdesktop-settings-ui.glade.h:38
-msgid "Tiled"
-msgstr "바둑판"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
-#: ../settings/xfdesktop-settings-ui.glade.h:39
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
 msgid "Transparent"
 msgstr "투명"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
-#: ../settings/xfdesktop-settings-ui.glade.h:42
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
 msgid "Vertical gradient"
 msgstr "수직 그레디언트"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
-msgid "When multiple monitors are present, select this option to stretch the current background over all of them."
-msgstr "다중 모니터가 나타날 때, 모든 모니터에 현재 배경을 늘이려면 이 옵션을 선택합니다."
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
-msgid "While in image list mode, select this option to automatically select a different background from the image list after a set number of minutes."
-msgstr "그림 목록 모드에서, 설정한 분 단위 시간 이후에 그림 목록에서 제각기 다른 배경을 자동으로 선택하려면 이 옵션을 선택합니다."
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:36
-#: ../settings/xfdesktop-settings-ui.glade.h:43
-msgid "Zoomed"
-msgstr "확대"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:37
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "_Change the background (in minutes):"
 msgstr "배경 바꾸기(분 단위)(_C):"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:38
-msgid "_None"
-msgstr "없음(_N)"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:39
-msgid "_Single image"
-msgstr "단일 그림(_S)"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
+msgid "_Random Order"
+msgstr "임의 순서(_R)"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:1
 msgid "<b>Appearance</b>"
@@ -353,136 +198,128 @@ msgstr "<b>창 목록 메뉴</b>"
 msgid "Alt"
 msgstr "Alt"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:7
+#: ../settings/xfdesktop-settings-ui.glade.h:6
 msgid "B_utton:"
 msgstr "단추(_U):"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:9
+#: ../settings/xfdesktop-settings-ui.glade.h:7
 msgid "Control"
 msgstr "Control"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10
-#: ../src/xfce-desktop.c:793
+#: ../settings/xfdesktop-settings-ui.glade.h:8
+#: ../src/xfce-desktop.c:813
 msgid "Desktop"
 msgstr "데스크톱"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:11
+#: ../settings/xfdesktop-settings-ui.glade.h:9
 msgid "File/launcher icons"
 msgstr "파일/실행 아이콘"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:13
+#: ../settings/xfdesktop-settings-ui.glade.h:10
 msgid "Icon _size:"
 msgstr "아이콘 크기(_S):"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:14
+#: ../settings/xfdesktop-settings-ui.glade.h:11
 msgid "Icon _type:"
 msgstr "아이콘 형태(_T):"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:15
-msgid "Label trans_parency:"
-msgstr "레이블 투명도(_P):"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:16
+#: ../settings/xfdesktop-settings-ui.glade.h:12
 msgid "Left"
 msgstr "왼쪽"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:17
+#: ../settings/xfdesktop-settings-ui.glade.h:13
 msgid "Middle"
 msgstr "가운데"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:18
+#: ../settings/xfdesktop-settings-ui.glade.h:14
 msgid "Minimized application icons"
 msgstr "프로그램 아이콘 최소화"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:19
+#: ../settings/xfdesktop-settings-ui.glade.h:15
 msgid "Mo_difier:"
 msgstr "수정자(_D):"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:20
+#: ../settings/xfdesktop-settings-ui.glade.h:16
 msgid "Modi_fier:"
 msgstr "수정자(_F):"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:21
+#: ../settings/xfdesktop-settings-ui.glade.h:17
 msgid "None"
 msgstr "없음"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:22
+#: ../settings/xfdesktop-settings-ui.glade.h:18
 msgid "Right"
 msgstr "오른쪽"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:24
+#: ../settings/xfdesktop-settings-ui.glade.h:19
 msgid "Select this option to display preview-able files on the desktop as automatically generated thumbnail icons."
 msgstr "자동으로 만들어지는 섬네일 아이콘으로 데스크톱에서 미리 볼 수 있는 파일을 표시하려면 이 옵션을 선택합니다."
 
-#: ../settings/xfdesktop-settings-ui.glade.h:25
+#: ../settings/xfdesktop-settings-ui.glade.h:20
 msgid "Set desktop background and menu and icon behavior"
 msgstr "데스크톱 배경, 메뉴, 아이콘 동작을 설정합니다"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:26
+#: ../settings/xfdesktop-settings-ui.glade.h:21
 msgid "Sh_ow application icons in menu"
 msgstr "메뉴에 프로그램 아이콘 표시(_O)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:27
+#: ../settings/xfdesktop-settings-ui.glade.h:22
 msgid "Shift"
 msgstr "Shift"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:28
+#: ../settings/xfdesktop-settings-ui.glade.h:23
 msgid "Show _application icons in menu"
 msgstr "메뉴에 프로그램 아이콘 표시(_A)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:29
+#: ../settings/xfdesktop-settings-ui.glade.h:24
 msgid "Show _window list menu on desktop middle click"
 msgstr "데스크톱에서 가운데 단추를 눌러 창 목록 메뉴 표시(_W)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:30
+#: ../settings/xfdesktop-settings-ui.glade.h:25
 msgid "Show applications menu on _desktop right click"
 msgstr "데스크톱에서 오른쪽 단추를 눌러 프로그램 메뉴 표시(_D)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:31
+#: ../settings/xfdesktop-settings-ui.glade.h:26
 msgid "Show s_ticky windows only in active workspace"
 msgstr "작업공간에 끈적이 창만 표시(_T)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:32
+#: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "Show t_humbnails"
 msgstr "섬네일 표시(_H)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:33
+#: ../settings/xfdesktop-settings-ui.glade.h:28
 msgid "Show workspace _names in list"
 msgstr "목록에 작업공간 이름 표시(_N)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:34
+#: ../settings/xfdesktop-settings-ui.glade.h:29
 msgid "Single _click to activate items"
 msgstr "한 번 눌러서 항목 활성화(_C)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:36
-msgid "Specify the transparency level for the rounded label drawn behind the icon text"
-msgstr "아이콘 본문 뒤에 그려진 모서리가 둥글게 그려진 레이블의 투명도를 정합니다"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:40
+#: ../settings/xfdesktop-settings-ui.glade.h:30
 msgid "Use _submenus for the windows in each workspace"
 msgstr "각각의 작업공간에서 창을 위한 하위메뉴를 사용(_S)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:41
+#: ../settings/xfdesktop-settings-ui.glade.h:31
 msgid "Use custom _font size:"
 msgstr "사용자정의 글꼴 크기 사용(_F):"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:44
+#: ../settings/xfdesktop-settings-ui.glade.h:32
 msgid "_Background"
 msgstr "배경(_B)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:45
+#: ../settings/xfdesktop-settings-ui.glade.h:33
 msgid "_Button:"
 msgstr "단추(_B):"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:46
+#: ../settings/xfdesktop-settings-ui.glade.h:34
 msgid "_Edit desktop menu"
 msgstr "데스크톱 메뉴 편집(_E)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:47
+#: ../settings/xfdesktop-settings-ui.glade.h:35
 msgid "_Icons"
 msgstr "아이콘(_I)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:48
+#: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid "_Menus"
 msgstr "메뉴(_M)"
 
@@ -510,54 +347,54 @@ msgstr "데스크톱의 모든 아이콘을 자동으로 정렬"
 msgid "Cause xfdesktop to quit"
 msgstr "xfdesktop을 종료하도록 합니다"
 
-#: ../src/main.c:270
+#: ../src/main.c:267
 #, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "인자 해석 실패: %s\n"
 
-#: ../src/main.c:278
+#: ../src/main.c:275
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "%s 버전 %s입니다. Xfce %s에서 동작 중입니다.\n"
 
-#: ../src/main.c:280
+#: ../src/main.c:277
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "GTK+ %d.%d.%d(으)로 만들고, GTK+ %d.%d.%d(으)로 링크했습니다."
 
-#: ../src/main.c:284
+#: ../src/main.c:281
 #, c-format
 msgid "Build options:\n"
 msgstr "빌드 옵션:\n"
 
-#: ../src/main.c:285
+#: ../src/main.c:282
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "데스크톱 메뉴: %s\n"
 
-#: ../src/main.c:287
-#: ../src/main.c:294
-#: ../src/main.c:301
+#: ../src/main.c:284
+#: ../src/main.c:291
+#: ../src/main.c:298
 msgid "enabled"
 msgstr "사용함"
 
-#: ../src/main.c:289
-#: ../src/main.c:296
-#: ../src/main.c:303
+#: ../src/main.c:286
+#: ../src/main.c:293
+#: ../src/main.c:300
 msgid "disabled"
 msgstr "사용안함"
 
-#: ../src/main.c:292
+#: ../src/main.c:289
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "데스크톱 아이콘: %s\n"
 
-#: ../src/main.c:299
+#: ../src/main.c:296
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "데스크톱 파일 아이콘:  %s\n"
 
-#: ../src/main.c:332
+#: ../src/main.c:329
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s은(는) 실행 중이지 않습니다.\n"
@@ -599,15 +436,6 @@ msgstr "작업공간 %d 제거(_R)"
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "작업공간 '%s' 제거(_R)"
-
-#: ../src/xfce-desktop.c:1082
-#, c-format
-msgid "Unable to load image from backdrop list file \"%s\""
-msgstr "배경 목록 파일 \"%s\"에서 그림을 불러올 수 없습니다"
-
-#: ../src/xfce-desktop.c:1084
-msgid "Desktop Error"
-msgstr "데스크톱 오류"
 
 #: ../src/xfdesktop-file-icon-manager.c:497
 #: ../src/xfdesktop-file-icon-manager.c:514
@@ -696,8 +524,9 @@ msgid "_Open in New Window"
 msgstr "새로운 창에서 열기(_O)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1425
-#: ../src/xfdesktop-special-file-icon.c:501
-#: ../src/xfdesktop-volume-icon.c:683
+#: ../src/xfdesktop-special-file-icon.c:505
+#: ../src/xfdesktop-volume-icon.c:751
+#: ../src/xfdesktop-volume-icon.c:755
 msgid "_Open"
 msgstr "열기(_O)"
 
@@ -754,7 +583,7 @@ msgid "Desktop _Settings..."
 msgstr "데스크톱 설정(_S)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1744
-#: ../src/xfdesktop-volume-icon.c:731
+#: ../src/xfdesktop-volume-icon.c:797
 msgid "P_roperties..."
 msgstr "속성(_R)..."
 
@@ -766,15 +595,15 @@ msgstr "불러오기 오류"
 msgid "Failed to load the desktop folder"
 msgstr "데스크톱 폴더를 불러오는데 실패하였습니다"
 
-#: ../src/xfdesktop-file-icon-manager.c:2938
+#: ../src/xfdesktop-file-icon-manager.c:2940
 msgid "Copy _Here"
 msgstr "여기로 복사(_H)"
 
-#: ../src/xfdesktop-file-icon-manager.c:2938
+#: ../src/xfdesktop-file-icon-manager.c:2940
 msgid "_Move Here"
 msgstr "여기로 이동(_M)"
 
-#: ../src/xfdesktop-file-icon-manager.c:2938
+#: ../src/xfdesktop-file-icon-manager.c:2940
 msgid "_Link Here"
 msgstr "여기에 연결 만들기(_L)"
 
@@ -919,29 +748,43 @@ msgstr "장치 \"%s\"을(를) 시스템이 마운트 해제하고 있습니다. 
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:138
-#: ../src/xfdesktop-notify.c:262
+#: ../src/xfdesktop-notify.c:313
 msgid "Writing data to device"
 msgstr "데이터를 장치에 쓰는 중"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:141
-#: ../src/xfdesktop-notify.c:265
+#: ../src/xfdesktop-notify.c:316
 #, c-format
 msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
 msgstr "장치를 제거하기 전 장치 \"%s\"(으)로 기록할 필요가 있는 데이터가 있습니다. 미디어를 제거하거나 드라이브의 연결을 끊지 말아주십시오"
 
+#: ../src/xfdesktop-notify.c:218
+msgid "Unmount Finished"
+msgstr "마운트 해제가 끝났습니다"
+
+#: ../src/xfdesktop-notify.c:220
+#: ../src/xfdesktop-notify.c:395
+#, c-format
+msgid "The device \"%s\" has been safely removed from the system. "
+msgstr "\"%s\" 장치를 시스템에서 안전하게 제거했습니다."
+
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:253
+#: ../src/xfdesktop-notify.c:304
 msgid "Ejecting device"
 msgstr "장치 추출 중"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:256
+#: ../src/xfdesktop-notify.c:307
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
 msgstr "장치 \"%s\"을(를) 추출하는 중입니다. 시간이 약간 걸릴 수도 있습니다"
 
-#: ../src/xfdesktop-regular-file-icon.c:567
+#: ../src/xfdesktop-notify.c:393
+msgid "Eject Finished"
+msgstr "추출이 끝났습니다"
+
+#: ../src/xfdesktop-regular-file-icon.c:556
 #, c-format
 msgid ""
 "Type: %s\n"
@@ -970,7 +813,7 @@ msgstr "휴지통에 한 개의 요소가 있습니다"
 msgid "Trash contains %d items"
 msgstr "휴지통에 %d개의 요소가 있습니다"
 
-#: ../src/xfdesktop-special-file-icon.c:449
+#: ../src/xfdesktop-special-file-icon.c:453
 #, c-format
 msgid ""
 "%s\n"
@@ -981,11 +824,11 @@ msgstr ""
 "크기: %s\n"
 "최종 수정: %s"
 
-#: ../src/xfdesktop-special-file-icon.c:518
+#: ../src/xfdesktop-special-file-icon.c:522
 msgid "_Empty Trash"
 msgstr "휴지통 비우기(_E)"
 
-#: ../src/xfdesktop-volume-icon.c:443
+#: ../src/xfdesktop-volume-icon.c:447
 #, c-format
 msgid ""
 "Removable Volume\n"
@@ -995,7 +838,7 @@ msgstr ""
 "이동식 볼륨\n"
 " \"%s\"에 마운트함\"%s\" 남음(총 %s)"
 
-#: ../src/xfdesktop-volume-icon.c:450
+#: ../src/xfdesktop-volume-icon.c:454
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
@@ -1003,32 +846,35 @@ msgstr ""
 "이동식 볼륨\n"
 "아직 마운트 안함"
 
-#: ../src/xfdesktop-volume-icon.c:476
-#: ../src/xfdesktop-volume-icon.c:518
+#: ../src/xfdesktop-volume-icon.c:480
+#: ../src/xfdesktop-volume-icon.c:522
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "\"%s\" 추출 실패"
 
-#: ../src/xfdesktop-volume-icon.c:481
-#: ../src/xfdesktop-volume-icon.c:523
+#: ../src/xfdesktop-volume-icon.c:485
+#: ../src/xfdesktop-volume-icon.c:527
 msgid "Eject Failed"
 msgstr "추출 실패"
 
-#: ../src/xfdesktop-volume-icon.c:555
+#: ../src/xfdesktop-volume-icon.c:559
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "\"%s\" 마운트 실패"
 
-#: ../src/xfdesktop-volume-icon.c:558
+#: ../src/xfdesktop-volume-icon.c:562
 msgid "Mount Failed"
 msgstr "마운트 실패"
 
-#: ../src/xfdesktop-volume-icon.c:699
-#: ../src/xfdesktop-volume-icon.c:702
+#: ../src/xfdesktop-volume-icon.c:770
 msgid "E_ject Volume"
 msgstr "볼륨 추출(_J)"
 
-#: ../src/xfdesktop-volume-icon.c:709
+#: ../src/xfdesktop-volume-icon.c:777
+msgid "_Unmount Volume"
+msgstr "볼륨 마운트 해제(_U)"
+
+#: ../src/xfdesktop-volume-icon.c:784
 msgid "_Mount Volume"
 msgstr "볼륨 마운트(_M)"
 
@@ -1036,3 +882,141 @@ msgstr "볼륨 마운트(_M)"
 msgid "_Window Actions"
 msgstr "창 동작(_W)"
 
+#~ msgid "Backdrop list file is not valid"
+#~ msgstr "배경 목록 파일이 유효하지 않습니다"
+
+#~ msgid "Cannot create backdrop list \"%s\""
+#~ msgstr "배경 목록 \"%s\"을(를) 만들 수 없습니다"
+
+#~ msgid "Backdrop List Error"
+#~ msgstr "배경 목록 오류"
+
+#~ msgid "Create/Load Backdrop List"
+#~ msgstr "배경 목록을 만들거나 불러오기"
+
+#~ msgid ""
+#~ "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite "
+#~ "it?"
+#~ msgstr ""
+#~ "파일 \"%s\"은(는) 유효한 배경 목록 파일이 아닙니다. 덮어 쓰시렵니까?"
+
+#~ msgid "Invalid List File"
+#~ msgstr "잘못된 목록 파일"
+
+#~ msgid "Overwriting the file will cause its contents to be lost."
+#~ msgstr "파일을 덮어쓰면 내용을 잃게됩니다."
+
+#~ msgid "Replace"
+#~ msgstr "바꾸기"
+
+#~ msgid "Failed to write backdrop list to \"%s\""
+#~ msgstr "배경 목록을 \"%s\"에 쓸 수 없습니다"
+
+#~ msgid "Add Image File(s)"
+#~ msgstr "그림 파일 더하기"
+
+#~ msgid "All files"
+#~ msgstr "모든 파일"
+
+#~ msgid "Screen %d, Monitor %d"
+#~ msgstr "화면 %d, 모니터 %d"
+
+#~ msgid "Screen %d"
+#~ msgstr "화면 %d"
+
+#~ msgid "Monitor %d (%s)"
+#~ msgstr "모니터 %d (%s)"
+
+#~ msgid "Monitor %d"
+#~ msgstr "모니터 %d"
+
+#~ msgid "<b>Adjustments</b>"
+#~ msgstr "<b>조정</b>"
+
+#~ msgid "<b>Colors</b>"
+#~ msgstr "<b>색</b>"
+
+#~ msgid "<b>Image</b>"
+#~ msgstr "<b>그림</b>"
+
+#~ msgid "<b>Images</b>"
+#~ msgstr "<b>그림</b>"
+
+#~ msgid "Auto"
+#~ msgstr "자동"
+
+#~ msgid "Automatically pick a random image from a list file"
+#~ msgstr "목록에서 임의의 그림을 자동으로 고르기"
+
+#~ msgid "B_rightness:"
+#~ msgstr "밝기(_R):"
+
+#~ msgid "Centered"
+#~ msgstr "가운데"
+
+#~ msgid "Create a new list, or load an existing one"
+#~ msgstr "새 목록을 만들거나, 이미 존재하는것을 불러옵니다"
+
+#~ msgid "Don't display an image at all"
+#~ msgstr "이 그림을 절대로 표시하지 않습니다"
+
+#~ msgid "Image _list"
+#~ msgstr "그림 목록(_L)"
+
+#~ msgid "Increase or decrease the brightness of the final image"
+#~ msgstr "최종 그림의 밝기를 늘리거나 줄입니다"
+
+#~ msgid "Increase or decrease the color saturation of the final image"
+#~ msgstr "최종 그림의 색 채도를 늘리거나 줄입니다"
+
+#~ msgid "Remove the selected image(s) from the list"
+#~ msgstr "목록에서 선택한 그림을 제거합니다"
+
+#~ msgid "Sa_turation:"
+#~ msgstr "채도(_T):"
+
+#~ msgid "Scaled"
+#~ msgstr "크기 맞춤"
+
+#~ msgid "Select a single image as the backdrop"
+#~ msgstr "단일 그림을 배경으로 선택"
+
+#~ msgid "St_retch this background across all monitors."
+#~ msgstr "이 배경을 모든 모니터로 늘이기(_R)."
+
+#~ msgid "Stretched"
+#~ msgstr "늘이기"
+
+#~ msgid "Tiled"
+#~ msgstr "바둑판"
+
+#~ msgid ""
+#~ "When multiple monitors are present, select this option to stretch the "
+#~ "current background over all of them."
+#~ msgstr ""
+#~ "다중 모니터가 나타날 때, 모든 모니터에 현재 배경을 늘이려면 이 옵션을 선택"
+#~ "합니다."
+
+#~ msgid "Zoomed"
+#~ msgstr "확대"
+
+#~ msgid "_None"
+#~ msgstr "없음(_N)"
+
+#~ msgid "_Single image"
+#~ msgstr "단일 그림(_S)"
+
+#~ msgid "Label trans_parency:"
+#~ msgstr "레이블 투명도(_P):"
+
+#~ msgid ""
+#~ "Specify the transparency level for the rounded label drawn behind the "
+#~ "icon text"
+#~ msgstr ""
+#~ "아이콘 본문 뒤에 그려진 모서리가 둥글게 그려진 레이블의 투명도를 정합니다"
+
+#~ msgid "Unable to load image from backdrop list file \"%s\""
+#~ msgstr "배경 목록 파일 \"%s\"에서 그림을 불러올 수 없습니다"
+
+#~ msgid "Desktop Error"
+#~ msgstr "데스크톱 오류"
