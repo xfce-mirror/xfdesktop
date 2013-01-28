@@ -6,19 +6,22 @@
 # Maximilian Schleiss <maximilian@xfce.org>, 2006-2008.
 # Mike Massonnet <mmassonnet@xfce.org>, 2008.
 # Jérôme Guelfucci <jeromeg@xfce.org>, 2009.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-01-28 17:54+0000\n"
-"PO-Revision-Date: 2012-04-15 15:03+0200\n"
-"Last-Translator: Iliyas Jorio <inv.jorio@gmail.com>\n"
+"PO-Revision-Date: 2013-01-28 20:44+0100\n"
+"Last-Translator: \n"
 "Language-Team: French <xfce-i18n@xfce.org>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
+"X-Poedit-Language: French\n"
+"X-Poedit-Country: FRANCE\n"
+"X-Poedit-SourceCharset: utf-8\n"
 
 #. no need to escape markup; it's already done for us
 #: ../settings/main.c:151
@@ -30,7 +33,8 @@ msgstr ""
 "%s\n"
 "<i>Taille : %dx%d</i>"
 
-#: ../settings/main.c:263 ../src/xfdesktop-special-file-icon.c:271
+#: ../settings/main.c:263
+#: ../src/xfdesktop-special-file-icon.c:271
 #: ../src/xfdesktop-special-file-icon.c:434
 msgid "Home"
 msgstr "Répertoire personnel"
@@ -112,12 +116,8 @@ msgid "Add an image to the list"
 msgstr "Ajouter une image à la liste"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
-msgid ""
-"Automatically select a different background from the current directory after "
-"a set number of minutes."
-msgstr ""
-"Si le mode « Liste d'images » est activé, choisissez cette option pour que "
-"l'image du fond d'écran change à un intervalle de temps donné."
+msgid "Automatically select a different background from the current directory after a set number of minutes."
+msgstr "Sélectionner automatiquement un fond d'écran différent du répertoire courant après un certain nombre de minutes."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
 msgid "Color:"
@@ -133,9 +133,7 @@ msgstr "Dégradé horizontal"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
 msgid "Number of minutes before a different background is selected."
-msgstr ""
-"Nombre de minutes avant la sélection aléatoire d'une nouvelle image dans la "
-"liste."
+msgstr "Nombre de minutes avant qu'un fond d'écran différent soit sélectionné."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
 msgid "Select First Color"
@@ -151,29 +149,19 @@ msgstr "Couleur pleine"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-msgstr ""
-"Définit la deuxième couleur du dégradé\n"
-"(couleur de droite dans un dégradé horizontal,\n"
-"ou couleur du bas dans un dégradé vertical)"
+msgstr "Spécifie la couleur de « droite » ou du « bas » du dégradé"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
-msgid ""
-"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr ""
-"Définit la couleur pleine, ou la première couleur du dégradé\n"
-"(couleur de gauche dans un dégradé horizontal,\n"
-"ou couleur du haut dans un dégradé vertical)"
+msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr "Spécifie la couleur de « gauche » ou du « haut » du dégradé"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
 msgid "Specify how the image will be resized to fit the screen"
-msgstr ""
-"Méthode de redimensionnement de l'image\n"
-"pour l'adapter à la taille de l'écran"
+msgstr "Spécifier la manière dont l'image sera redimensionnée pour s'adapter à l'écran"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
 msgid "Specify the style of the color drawn behind the backdrop image"
-msgstr ""
-"Spécifier le style de la couleur dessinée derrière l'image du fond d'écran"
+msgstr "Spécifier le style de la couleur dessinée derrière l'image du fond d'écran"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
 msgid "St_yle:"
@@ -223,7 +211,8 @@ msgstr "Bo_uton :"
 msgid "Control"
 msgstr "Ctrl"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:8 ../src/xfce-desktop.c:813
+#: ../settings/xfdesktop-settings-ui.glade.h:8
+#: ../src/xfce-desktop.c:813
 msgid "Desktop"
 msgstr "Bureau"
 
@@ -268,12 +257,8 @@ msgid "Right"
 msgstr "Droite"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:19
-msgid ""
-"Select this option to display preview-able files on the desktop as "
-"automatically generated thumbnail icons."
-msgstr ""
-"Choisissez cette option pour représenter les fichiers images ou vidéos sur "
-"le bureau sous forme d'aperçu."
+msgid "Select this option to display preview-able files on the desktop as automatically generated thumbnail icons."
+msgstr "Choisissez cette option pour représenter les fichiers images ou vidéos sur le bureau sous forme d'aperçu."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:20
 msgid "Set desktop background and menu and icon behavior"
@@ -293,8 +278,7 @@ msgstr "Afficher _les icônes des applications dans le menu"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:24
 msgid "Show _window list menu on desktop middle click"
-msgstr ""
-"Afficher le menu listant les fenê_tres lors d'un clic milieu sur le bureau"
+msgstr "Afficher le menu listant les fenê_tres lors d'un clic milieu sur le bureau"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:25
 msgid "Show applications menu on _desktop right click"
@@ -302,8 +286,7 @@ msgstr "_Afficher le menu des applications lors d'un clic droit sur le bureau"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:26
 msgid "Show s_ticky windows only in active workspace"
-msgstr ""
-"Lister les fenêtres _collantes uniquement dans l'espace de travail actif"
+msgstr "Lister les fenêtres _collantes uniquement dans l'espace de travail actif"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "Show t_humbnails"
@@ -367,7 +350,7 @@ msgstr "Ranger automatiquement les icônes du bureau "
 
 #: ../src/main.c:250
 msgid "Cause xfdesktop to quit"
-msgstr "Quitter xfdesktop"
+msgstr "Cause xfdesktop pour quitter"
 
 #: ../src/main.c:267
 #, c-format
@@ -392,25 +375,29 @@ msgstr "Options de compilation :\n"
 #: ../src/main.c:282
 #, c-format
 msgid "    Desktop Menu:        %s\n"
-msgstr "Menu du bureau : %s\n"
+msgstr "    Menu du bureau :        %s\n"
 
-#: ../src/main.c:284 ../src/main.c:291 ../src/main.c:298
+#: ../src/main.c:284
+#: ../src/main.c:291
+#: ../src/main.c:298
 msgid "enabled"
 msgstr "activé"
 
-#: ../src/main.c:286 ../src/main.c:293 ../src/main.c:300
+#: ../src/main.c:286
+#: ../src/main.c:293
+#: ../src/main.c:300
 msgid "disabled"
 msgstr "désactivé"
 
 #: ../src/main.c:289
 #, c-format
 msgid "    Desktop Icons:       %s\n"
-msgstr "Icônes du bureau : %s\n"
+msgstr "    Icônes du bureau :       %s\n"
 
 #: ../src/main.c:296
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr "Icônes de fichiers du bureau : %s\n"
+msgstr "    Icônes de fichiers du bureau :  %s\n"
 
 #: ../src/main.c:329
 #, c-format
@@ -440,7 +427,8 @@ msgstr "Espace de travail %d"
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Espace de travail %d</i>"
 
-#: ../src/windowlist.c:362 ../src/windowlist.c:365
+#: ../src/windowlist.c:362
+#: ../src/windowlist.c:365
 msgid "_Add Workspace"
 msgstr "_Ajouter un espace de travail"
 
@@ -466,15 +454,14 @@ msgid "Desktop Folder Error"
 msgstr "Erreur dans le répertoire du bureau"
 
 #: ../src/xfdesktop-file-icon-manager.c:521
-msgid ""
-"A normal file with the same name already exists. Please delete or rename it."
-msgstr ""
-"Un fichier normal ayant le même nom existe déjà. Veuillez le supprimer ou le "
-"renommer."
+msgid "A normal file with the same name already exists. Please delete or rename it."
+msgstr "Un fichier normal ayant le même nom existe déjà. Veuillez le supprimer ou le renommer."
 
 #: ../src/xfdesktop-file-icon-manager.c:624
-#: ../src/xfdesktop-file-icon-manager.c:668 ../src/xfdesktop-file-utils.c:863
-#: ../src/xfdesktop-file-utils.c:878 ../src/xfdesktop-file-utils.c:910
+#: ../src/xfdesktop-file-icon-manager.c:668
+#: ../src/xfdesktop-file-utils.c:863
+#: ../src/xfdesktop-file-utils.c:878
+#: ../src/xfdesktop-file-utils.c:910
 #: ../src/xfdesktop-file-utils.c:924
 msgid "Trash Error"
 msgstr "Erreur de la corbeille"
@@ -485,18 +472,19 @@ msgid "The selected files could not be trashed"
 msgstr "Les fichiers sélectionnés n'on pas pu être supprimés."
 
 #: ../src/xfdesktop-file-icon-manager.c:626
-#: ../src/xfdesktop-file-icon-manager.c:670 ../src/xfdesktop-file-utils.c:762
-#: ../src/xfdesktop-file-utils.c:821 ../src/xfdesktop-file-utils.c:979
-#: ../src/xfdesktop-file-utils.c:1035 ../src/xfdesktop-file-utils.c:1085
-#: ../src/xfdesktop-file-utils.c:1135 ../src/xfdesktop-file-utils.c:1212
-#: ../src/xfdesktop-file-utils.c:1273 ../src/xfdesktop-file-utils.c:1346
+#: ../src/xfdesktop-file-icon-manager.c:670
+#: ../src/xfdesktop-file-utils.c:762
+#: ../src/xfdesktop-file-utils.c:821
+#: ../src/xfdesktop-file-utils.c:979
+#: ../src/xfdesktop-file-utils.c:1035
+#: ../src/xfdesktop-file-utils.c:1085
+#: ../src/xfdesktop-file-utils.c:1135
+#: ../src/xfdesktop-file-utils.c:1212
+#: ../src/xfdesktop-file-utils.c:1273
+#: ../src/xfdesktop-file-utils.c:1346
 #: ../src/xfdesktop-file-utils.c:1424
-msgid ""
-"This feature requires a file manager service to be present (such as the one "
-"supplied by Thunar)."
-msgstr ""
-"Cette fonctionnalité requiert la présence d'un gestionnaire de fichiers "
-"(comme Thunar)."
+msgid "This feature requires a file manager service to be present (such as the one supplied by Thunar)."
+msgstr "Cette fonctionnalité requiert la présence d'un gestionnaire de fichiers (comme Thunar)."
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:770
@@ -507,10 +495,14 @@ msgstr "Impossible de lancer « %s » :"
 
 #: ../src/xfdesktop-file-icon-manager.c:772
 #: ../src/xfdesktop-file-icon-manager.c:1033
-#: ../src/xfdesktop-file-icon-manager.c:1350 ../src/xfdesktop-file-utils.c:707
-#: ../src/xfdesktop-file-utils.c:1118 ../src/xfdesktop-file-utils.c:1133
-#: ../src/xfdesktop-file-utils.c:1185 ../src/xfdesktop-file-utils.c:1210
-#: ../src/xfdesktop-file-utils.c:1256 ../src/xfdesktop-file-utils.c:1271
+#: ../src/xfdesktop-file-icon-manager.c:1350
+#: ../src/xfdesktop-file-utils.c:707
+#: ../src/xfdesktop-file-utils.c:1118
+#: ../src/xfdesktop-file-utils.c:1133
+#: ../src/xfdesktop-file-utils.c:1185
+#: ../src/xfdesktop-file-utils.c:1210
+#: ../src/xfdesktop-file-utils.c:1256
+#: ../src/xfdesktop-file-utils.c:1271
 msgid "Launch Error"
 msgstr "Erreur lors du lancement"
 
@@ -525,12 +517,8 @@ msgid "Open With \"%s\""
 msgstr "Ouvrir avec « %s »"
 
 #: ../src/xfdesktop-file-icon-manager.c:1035
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
-msgstr ""
-"Impossible de lancer « exo-desktop-item-edit », qui est nécessaire à la "
-"création et l'édition de lanceurs et de liens sur le bureau."
+msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgstr "Impossible de lancer « exo-desktop-item-edit », qui est nécessaire à la création et l'édition de lanceurs et de liens sur le bureau."
 
 #: ../src/xfdesktop-file-icon-manager.c:1407
 msgid "_Open all"
@@ -541,7 +529,8 @@ msgid "_Open in New Window"
 msgstr "_Ouvrir dans une nouvelle fenêtre"
 
 #: ../src/xfdesktop-file-icon-manager.c:1425
-#: ../src/xfdesktop-special-file-icon.c:505 ../src/xfdesktop-volume-icon.c:751
+#: ../src/xfdesktop-special-file-icon.c:505
+#: ../src/xfdesktop-volume-icon.c:751
 #: ../src/xfdesktop-volume-icon.c:755
 msgid "_Open"
 msgstr "_Ouvrir"
@@ -656,82 +645,98 @@ msgstr "Inconnu"
 msgid "The folder could not be opened"
 msgstr "Le répertoire n'a pas pu être ouvert"
 
-#: ../src/xfdesktop-file-utils.c:745 ../src/xfdesktop-file-utils.c:760
+#: ../src/xfdesktop-file-utils.c:745
+#: ../src/xfdesktop-file-utils.c:760
 msgid "Rename Error"
 msgstr "Erreur de renommage"
 
-#: ../src/xfdesktop-file-utils.c:746 ../src/xfdesktop-file-utils.c:761
+#: ../src/xfdesktop-file-utils.c:746
+#: ../src/xfdesktop-file-utils.c:761
 msgid "The file could not be renamed"
 msgstr "Le fichier n'a pas pu être renommé"
 
-#: ../src/xfdesktop-file-utils.c:804 ../src/xfdesktop-file-utils.c:819
+#: ../src/xfdesktop-file-utils.c:804
+#: ../src/xfdesktop-file-utils.c:819
 msgid "Delete Error"
 msgstr "Erreur de suppression"
 
-#: ../src/xfdesktop-file-utils.c:805 ../src/xfdesktop-file-utils.c:820
+#: ../src/xfdesktop-file-utils.c:805
+#: ../src/xfdesktop-file-utils.c:820
 msgid "The selected files could not be deleted"
 msgstr "Les fichiers sélectionnés n'ont pas pu être supprimés"
 
-#: ../src/xfdesktop-file-utils.c:864 ../src/xfdesktop-file-utils.c:879
+#: ../src/xfdesktop-file-utils.c:864
+#: ../src/xfdesktop-file-utils.c:879
 msgid "The selected files could not be moved to the trash"
 msgstr "Les fichiers sélectionnés n'ont pas pu être déplacés dans la corbeille"
 
-#: ../src/xfdesktop-file-utils.c:880 ../src/xfdesktop-file-utils.c:926
-msgid ""
-"This feature requires a trash service to be present (such as the one "
-"supplied by Thunar)."
-msgstr ""
-"Cette fonctionnalité requiert la présence d'un service de corbeille (tel que "
-"celui fourni par Thunar)."
+#: ../src/xfdesktop-file-utils.c:880
+#: ../src/xfdesktop-file-utils.c:926
+msgid "This feature requires a trash service to be present (such as the one supplied by Thunar)."
+msgstr "Cette fonctionnalité requiert la présence d'un service de corbeille (tel que celui fourni par Thunar)."
 
-#: ../src/xfdesktop-file-utils.c:911 ../src/xfdesktop-file-utils.c:925
+#: ../src/xfdesktop-file-utils.c:911
+#: ../src/xfdesktop-file-utils.c:925
 msgid "Could not empty the trash"
 msgstr "Impossible de vider la corbeille"
 
-#: ../src/xfdesktop-file-utils.c:962 ../src/xfdesktop-file-utils.c:977
+#: ../src/xfdesktop-file-utils.c:962
+#: ../src/xfdesktop-file-utils.c:977
 msgid "Create File Error"
 msgstr "Erreur de création d'un fichier"
 
-#: ../src/xfdesktop-file-utils.c:963 ../src/xfdesktop-file-utils.c:978
+#: ../src/xfdesktop-file-utils.c:963
+#: ../src/xfdesktop-file-utils.c:978
 msgid "Could not create a new file"
 msgstr "Impossible de créer un nouveau fichier"
 
-#: ../src/xfdesktop-file-utils.c:1018 ../src/xfdesktop-file-utils.c:1033
+#: ../src/xfdesktop-file-utils.c:1018
+#: ../src/xfdesktop-file-utils.c:1033
 msgid "Create Document Error"
 msgstr "Erreur de création d'un document"
 
-#: ../src/xfdesktop-file-utils.c:1019 ../src/xfdesktop-file-utils.c:1034
+#: ../src/xfdesktop-file-utils.c:1019
+#: ../src/xfdesktop-file-utils.c:1034
 msgid "Could not create a new document from the template"
 msgstr "Impossible de créer un nouveau document depuis le modèle"
 
-#: ../src/xfdesktop-file-utils.c:1068 ../src/xfdesktop-file-utils.c:1083
+#: ../src/xfdesktop-file-utils.c:1068
+#: ../src/xfdesktop-file-utils.c:1083
 msgid "File Properties Error"
 msgstr "Erreur de propriétés de fichier"
 
-#: ../src/xfdesktop-file-utils.c:1069 ../src/xfdesktop-file-utils.c:1084
+#: ../src/xfdesktop-file-utils.c:1069
+#: ../src/xfdesktop-file-utils.c:1084
 msgid "The file properties dialog could not be opened"
 msgstr "Le dialogue des propriétés du fichier n'a pas pu être ouvert"
 
-#: ../src/xfdesktop-file-utils.c:1119 ../src/xfdesktop-file-utils.c:1134
+#: ../src/xfdesktop-file-utils.c:1119
+#: ../src/xfdesktop-file-utils.c:1134
 msgid "The file could not be opened"
 msgstr "Le fichier n'a pas pu être ouvert"
 
-#: ../src/xfdesktop-file-utils.c:1182 ../src/xfdesktop-file-utils.c:1207
+#: ../src/xfdesktop-file-utils.c:1182
+#: ../src/xfdesktop-file-utils.c:1207
 #, c-format
 msgid "Failed to run \"%s\""
 msgstr "Impossible de lancer « %s »"
 
-#: ../src/xfdesktop-file-utils.c:1257 ../src/xfdesktop-file-utils.c:1272
+#: ../src/xfdesktop-file-utils.c:1257
+#: ../src/xfdesktop-file-utils.c:1272
 msgid "The application chooser could not be opened"
 msgstr "Le sélecteur d'applications n'a pas pu être ouvert"
 
-#: ../src/xfdesktop-file-utils.c:1330 ../src/xfdesktop-file-utils.c:1344
-#: ../src/xfdesktop-file-utils.c:1406 ../src/xfdesktop-file-utils.c:1422
+#: ../src/xfdesktop-file-utils.c:1330
+#: ../src/xfdesktop-file-utils.c:1344
+#: ../src/xfdesktop-file-utils.c:1406
+#: ../src/xfdesktop-file-utils.c:1422
 msgid "Transfer Error"
 msgstr "Erreur de transfert"
 
-#: ../src/xfdesktop-file-utils.c:1331 ../src/xfdesktop-file-utils.c:1345
-#: ../src/xfdesktop-file-utils.c:1407 ../src/xfdesktop-file-utils.c:1423
+#: ../src/xfdesktop-file-utils.c:1331
+#: ../src/xfdesktop-file-utils.c:1345
+#: ../src/xfdesktop-file-utils.c:1407
+#: ../src/xfdesktop-file-utils.c:1423
 msgid "The file transfer could not be performed"
 msgstr "Le transfert de fichier n'a pas pu être effectué"
 
@@ -743,37 +748,31 @@ msgstr "Démontage du périphérique"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:131
 #, c-format
-msgid ""
-"The device \"%s\" is being unmounted by the system. Please do not remove the "
-"media or disconnect the drive"
-msgstr ""
-"Le périphérique « %s » est en train d'être retiré du système. Veuillez ne "
-"pas déconnecter le média."
+msgid "The device \"%s\" is being unmounted by the system. Please do not remove the media or disconnect the drive"
+msgstr "Le périphérique « %s » est en train d'être retiré du système. Veuillez ne pas déconnecter le média."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:313
+#: ../src/xfdesktop-notify.c:138
+#: ../src/xfdesktop-notify.c:313
 msgid "Writing data to device"
 msgstr "Écriture des données sur le périphérique"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:316
+#: ../src/xfdesktop-notify.c:141
+#: ../src/xfdesktop-notify.c:316
 #, c-format
-msgid ""
-"There is data that needs to be written to the device \"%s\" before it can be "
-"removed. Please do not remove the media or disconnect the drive"
-msgstr ""
-"Des données doivent être écrites sur « %s » avant que ce périphérique puisse "
-"être retiré. Veuillez ne pas déconnecter le média."
+msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
+msgstr "Des données doivent être écrites sur « %s » avant que ce périphérique puisse être retiré. Veuillez ne pas déconnecter le média."
 
 #: ../src/xfdesktop-notify.c:218
 msgid "Unmount Finished"
 msgstr "Le démontage est fini"
 
-#: ../src/xfdesktop-notify.c:220 ../src/xfdesktop-notify.c:395
+#: ../src/xfdesktop-notify.c:220
+#: ../src/xfdesktop-notify.c:395
 #, c-format
 msgid "The device \"%s\" has been safely removed from the system. "
-msgstr ""
-"Le périphérique « %s » est en cours d'éjection. Cela va prendre un instant."
+msgstr "Le périphérique « %s » est en cours d'éjection. Cela va prendre un instant."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:304
@@ -784,8 +783,7 @@ msgstr "Éjection du périphérique"
 #: ../src/xfdesktop-notify.c:307
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
-msgstr ""
-"Le périphérique « %s » est en cours d'éjection. Cela va prendre un instant."
+msgstr "Le périphérique « %s » est en cours d'éjection. Cela va prendre un instant."
 
 #: ../src/xfdesktop-notify.c:393
 msgid "Eject Finished"
@@ -800,7 +798,7 @@ msgid ""
 msgstr ""
 "Type : %s\n"
 "Taille : %s\n"
-"Modification : %s"
+"Dernière modification : %s"
 
 #: ../src/xfdesktop-special-file-icon.c:273
 #: ../src/xfdesktop-special-file-icon.c:432
@@ -829,7 +827,7 @@ msgid ""
 msgstr ""
 "%s\n"
 "Taille : %s\n"
-"Modification : %s"
+"Dernière modification : %s"
 
 #: ../src/xfdesktop-special-file-icon.c:522
 msgid "_Empty Trash"
@@ -854,12 +852,14 @@ msgstr ""
 "Volume amovible\n"
 "Pas encore monté"
 
-#: ../src/xfdesktop-volume-icon.c:480 ../src/xfdesktop-volume-icon.c:522
+#: ../src/xfdesktop-volume-icon.c:480
+#: ../src/xfdesktop-volume-icon.c:522
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "Impossible d'éjecter « %s »"
 
-#: ../src/xfdesktop-volume-icon.c:485 ../src/xfdesktop-volume-icon.c:527
+#: ../src/xfdesktop-volume-icon.c:485
+#: ../src/xfdesktop-volume-icon.c:527
 msgid "Eject Failed"
 msgstr "L'éjection a échoué"
 
