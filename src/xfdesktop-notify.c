@@ -168,7 +168,7 @@ xfdesktop_notify_unmount (GMount *mount)
 
 
 void
-xfdesktop_notify_unmount_finish (GMount *mount)
+xfdesktop_notify_unmount_finish (GMount *mount, gboolean unmount_successful)
 {
   const gchar * const *icon_names;
   NotifyNotification  *notification = NULL;
@@ -214,6 +214,11 @@ xfdesktop_notify_unmount_finish (GMount *mount)
       notify_notification_close (notification, NULL);
       g_object_set_data (G_OBJECT (mount), "xfdesktop-notification", NULL);
     }
+
+  /* if the unmount operation wasn't successful then stop here, otherwise
+   * display a message letting the user know it has been removed */
+  if(!unmount_successful)
+    return;
 
   summary = _("Unmount Finished");
 
@@ -343,7 +348,7 @@ xfdesktop_notify_eject (GVolume *volume)
 
 
 void
-xfdesktop_notify_eject_finish (GVolume *volume)
+xfdesktop_notify_eject_finish (GVolume *volume, gboolean eject_successful)
 {
   const gchar * const *icon_names;
   NotifyNotification  *notification = NULL;
@@ -389,6 +394,11 @@ xfdesktop_notify_eject_finish (GVolume *volume)
       notify_notification_close (notification, NULL);
       g_object_set_data (G_OBJECT (volume), "xfdesktop-notification", NULL);
     }
+
+  /* if the eject operation wasn't successful then stop here, otherwise
+   * display a message letting the user know it has been removed */
+  if(!eject_successful)
+    return;
 
   summary = _("Eject Finished");
 

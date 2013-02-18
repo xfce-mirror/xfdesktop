@@ -468,12 +468,15 @@ xfdesktop_volume_icon_eject_finish(GObject *object,
     GtkWidget *toplevel = icon_view ? gtk_widget_get_toplevel(icon_view) : NULL;
     GVolume *volume = G_VOLUME(object);
     GError *error = NULL;
+    gboolean eject_successful;
       
     g_return_if_fail(G_IS_VOLUME(object));
     g_return_if_fail(G_IS_ASYNC_RESULT(result));
     g_return_if_fail(XFDESKTOP_IS_VOLUME_ICON(icon));
 
-    if(!g_volume_eject_with_operation_finish(volume, result, &error)) {
+    eject_successful = g_volume_eject_with_operation_finish(volume, result, &error);
+
+    if(!eject_successful) {
         /* ignore GIO errors handled internally */
         if(error->domain != G_IO_ERROR || error->code != G_IO_ERROR_FAILED_HANDLED) {
             gchar *volume_name = g_volume_get_name(volume);
@@ -494,7 +497,7 @@ xfdesktop_volume_icon_eject_finish(GObject *object,
     }
 
 #ifdef HAVE_LIBNOTIFY
-    xfdesktop_notify_eject_finish(volume);
+    xfdesktop_notify_eject_finish(volume, eject_successful);
 #endif
 
     g_object_unref(icon);
@@ -510,12 +513,15 @@ xfdesktop_volume_icon_unmount_finish(GObject *object,
     GtkWidget *toplevel = gtk_widget_get_toplevel(icon_view);
     GMount *mount = G_MOUNT(object);
     GError *error = NULL;
+    gboolean unmount_successful;
       
     g_return_if_fail(G_IS_MOUNT(object));
     g_return_if_fail(G_IS_ASYNC_RESULT(result));
     g_return_if_fail(XFDESKTOP_IS_VOLUME_ICON(icon));
 
-    if(!g_mount_unmount_with_operation_finish(mount, result, &error)) {
+    unmount_successful = g_mount_unmount_with_operation_finish(mount, result, &error);
+
+    if(!unmount_successful) {
         /* ignore GIO errors handled internally */
         if(error->domain != G_IO_ERROR || error->code != G_IO_ERROR_FAILED_HANDLED) {
             gchar *mount_name = g_mount_get_name(mount);
@@ -536,7 +542,7 @@ xfdesktop_volume_icon_unmount_finish(GObject *object,
     }
 
 #ifdef HAVE_LIBNOTIFY
-    xfdesktop_notify_unmount_finish(mount);
+    xfdesktop_notify_unmount_finish(mount, unmount_successful);
 #endif
 
     g_object_unref(icon);
@@ -646,8 +652,11 @@ static void
 xfdesktop_volume_icon_menu_unmount(GtkWidget *widget, gpointer user_data)
 {
     XfdesktopVolumeIcon *icon = XFDESKTOP_VOLUME_ICON(user_data);
+    GtkWidget *icon_view = xfdesktop_icon_peek_icon_view(XFDESKTOP_ICON(icon));
+    GtkWidget *toplevel = gtk_widget_get_toplevel(icon_view);
     GVolume *volume;
     GMount *mount;
+    GMountOperation *operation;
 
     volume = xfdesktop_volume_icon_peek_volume(icon);
     mount = g_volume_get_mount(volume);
@@ -658,14 +667,20 @@ xfdesktop_volume_icon_menu_unmount(GtkWidget *widget, gpointer user_data)
 #ifdef HAVE_LIBNOTIFY
     xfdesktop_notify_unmount(mount);
 #endif
-    /* TODO: GMountOperation could be used to show what processes
-     *       are preventing an unmount. */
-    g_mount_unmount_with_operation(mount, G_MOUNT_UNMOUNT_NONE,
-                                   NULL, NULL,
+
+    operation = gtk_mount_operation_new(toplevel ? GTK_WINDOW(toplevel) : NULL);
+    gtk_mount_operation_set_screen(GTK_MOUNT_OPERATION(operation),
+                                   icon->priv->gscreen);
+
+    g_mount_unmount_with_operation(mount,
+                                   G_MOUNT_UNMOUNT_NONE,
+                                   operation,
+                                   NULL,
                                    xfdesktop_volume_icon_unmount_finish,
                                    g_object_ref(icon));
 
     g_object_unref(mount);
+    g_object_unref(operation);
 }
 
 static void
@@ -673,8 +688,11 @@ xfdesktop_volume_icon_menu_eject(GtkWidget *widget,
                                  gpointer user_data)
 {
     XfdesktopVolumeIcon *icon = XFDESKTOP_VOLUME_ICON(user_data);
+    GtkWidget *icon_view = xfdesktop_icon_peek_icon_view(XFDESKTOP_ICON(icon));
+    GtkWidget *toplevel = gtk_widget_get_toplevel(icon_view);
     GVolume *volume;
     GMount *mount;
+    GMountOperation *operation;
 
     volume = xfdesktop_volume_icon_peek_volume(icon);
     mount = g_volume_get_mount(volume);
@@ -686,10 +704,14 @@ xfdesktop_volume_icon_menu_eject(GtkWidget *widget,
 #ifdef HAVE_LIBNOTIFY
         xfdesktop_notify_eject(volume);
 #endif
-        /* TODO: GMountOperation could be used to show what processes
-         *       are preventing an eject. */
-        g_volume_eject_with_operation(volume, G_MOUNT_UNMOUNT_NONE,
-                                      NULL, NULL,
+        operation = gtk_mount_operation_new(toplevel ? GTK_WINDOW(toplevel) : NULL);
+        gtk_mount_operation_set_screen(GTK_MOUNT_OPERATION(operation),
+                                       icon->priv->gscreen);
+
+        g_volume_eject_with_operation(volume,
+                                      G_MOUNT_UNMOUNT_NONE,
+                                      operation,
+                                      NULL,
                                       xfdesktop_volume_icon_eject_finish,
                                       g_object_ref(icon));
     } else {
@@ -698,6 +720,7 @@ xfdesktop_volume_icon_menu_eject(GtkWidget *widget,
     }
 
     g_object_unref(mount);
+    g_object_unref(operation);
 }
 
 static void
