@@ -188,13 +188,70 @@ xfdesktop_backdrop_choose_random(const gchar *filename)
     return file;
 }
 
+gchar *
+xfdesktop_get_file_mimetype(const gchar *file)
+{
+    GFile *temp_file;
+    GFileInfo *file_info;
+    gchar *mime_type = NULL;
+
+    g_return_val_if_fail(file != NULL, NULL);
+
+    temp_file = g_file_new_for_path(file);
+
+    g_return_val_if_fail(temp_file != NULL, NULL);
+
+    file_info = g_file_query_info(temp_file,
+                                  "standard::content-type",
+                                  0,
+                                  NULL,
+                                  NULL);
+
+    if(file_info != NULL) {
+        mime_type = g_strdup(g_file_info_get_content_type(file_info));
+
+        g_object_unref(file_info);
+    }
+
+    g_object_unref(temp_file);
+
+    return mime_type;
+}
+
 gboolean
 xfdesktop_image_file_is_valid(const gchar *filename)
 {
+    static GSList *pixbuf_formats = NULL;
+    GSList *l;
+    gboolean image_valid = FALSE;
+    gchar *file_mimetype;
+
     g_return_val_if_fail(filename, FALSE);
 
-    /* if gdk can get pixbuf info from the file then it's an image file */
-    return (gdk_pixbuf_get_file_info(filename, NULL, NULL) == NULL ? FALSE : TRUE);
+    if(pixbuf_formats == NULL) {
+        pixbuf_formats = gdk_pixbuf_get_formats();
+    }
+
+    file_mimetype = xfdesktop_get_file_mimetype(filename);
+
+    if(file_mimetype == NULL)
+        return FALSE;
+
+    /* Every pixbuf format has a list of mime types we can compare against */
+    for(l = pixbuf_formats; l != NULL && image_valid == FALSE; l = g_slist_next(l)) {
+        gint i;
+        gchar ** mimetypes = gdk_pixbuf_format_get_mime_types(l->data);
+
+        for(i = 0; mimetypes[i] != NULL && image_valid == FALSE; i++) {
+            if(g_strcmp0(file_mimetype, mimetypes[i]) == 0)
+                image_valid = TRUE;
+        }
+         g_strfreev(mimetypes);
+    }
+
+    g_free(file_mimetype);
+
+    return image_valid;
 }
 
 gboolean

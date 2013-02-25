@@ -41,6 +41,7 @@
 #include <libxfce4util/libxfce4util.h>
 #include "xfdesktop-thumbnailer.h"
 #include "xfdesktop-marshal.h"
+#include "xfdesktop-common.h"
 
 static void xfdesktop_thumbnailer_init(GObject *);
 static void xfdesktop_thumbnailer_class_init(GObjectClass *);
@@ -257,34 +258,14 @@ xfdesktop_thumbnailer_new(void)
     return thumbnailer_object;
 }
 
-static gchar *
-xfdesktop_get_file_mimetype(gchar *file)
+gboolean xfdesktop_thumbnailer_service_available(XfdesktopThumbnailer *thumbnailer)
 {
-    GFile *temp_file;
-    GFileInfo *file_info;
-    gchar *mime_type = NULL;
+    g_return_val_if_fail(XFDESKTOP_IS_THUMBNAILER(thumbnailer), FALSE);
 
-    g_return_val_if_fail(file != NULL, NULL);
+    if(thumbnailer->priv->proxy == NULL)
+        return FALSE;
 
-    temp_file = g_file_new_for_path(file);
-
-    g_return_val_if_fail(temp_file != NULL, NULL);
-
-    file_info = g_file_query_info(temp_file,
-                                  "standard::content-type",
-                                  0,
-                                  NULL,
-                                  NULL);
-
-    if(file_info != NULL) {
-        mime_type = g_strdup(g_file_info_get_content_type(file_info));
-
-        g_object_unref(file_info);
-    }
-
-    g_object_unref(temp_file);
-    
-    return mime_type;
+    return TRUE;
 }
 
 gboolean
@@ -370,6 +351,12 @@ xfdesktop_thumbnailer_queue_thumbnail(XfdesktopThumbnailer *thumbnailer,
     return TRUE;
 }
 
+static void
+xfdesktop_thumbnailer_dequeue_foreach(gpointer data, gpointer user_data)
+{
+    xfdesktop_thumbnailer_dequeue_thumbnail(user_data, data);
+}
+
 /**
  * xfdesktop_thumbnailer_dequeue_thumbnail:
  * 
@@ -402,9 +389,8 @@ xfdesktop_thumbnailer_dequeue_thumbnail(XfdesktopThumbnailer *thumbnailer,
     }
 
     if(g_slist_find(thumbnailer->priv->queue, file) != NULL) {
-            thumbnailer->priv->queue = g_slist_remove_all(
-                                                    thumbnailer->priv->queue,
-                                                    file);
+        thumbnailer->priv->queue = g_slist_remove_all(thumbnailer->priv->queue,
+                                                      file);
     }
 
     thumbnailer->priv->request_timer_id = g_timeout_add_full(
@@ -413,6 +399,13 @@ xfdesktop_thumbnailer_dequeue_thumbnail(XfdesktopThumbnailer *thumbnailer,
                         (GSourceFunc)xfdesktop_thumbnailer_queue_request_timer,
                         thumbnailer,
                         NULL);
+}
+
+void xfdesktop_thumbnailer_dequeue_all_thumbnails(XfdesktopThumbnailer *thumbnailer)
+{
+    g_return_if_fail(XFDESKTOP_IS_THUMBNAILER(thumbnailer));
+
+    g_slist_foreach(thumbnailer->priv->queue, (GFunc)xfdesktop_thumbnailer_dequeue_foreach, thumbnailer);
 }
 
 static gboolean

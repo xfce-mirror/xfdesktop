@@ -769,7 +769,7 @@
               </object>
             </child>
             <child>
-              <object class="GtkButton" id="button1">
+              <object class="GtkButton" id="bnt_exit">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -791,7 +791,7 @@
     </child>
     <action-widgets>
       <action-widget response="-11">button2</action-widget>
-      <action-widget response="-3">button1</action-widget>
+      <action-widget response="-3">bnt_exit</action-widget>
     </action-widgets>
   </object>
 </interface>

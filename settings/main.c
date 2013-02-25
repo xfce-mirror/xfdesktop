@@ -50,6 +50,7 @@
 #include <libwnck/libwnck.h>
 
 #include "xfdesktop-common.h"
+#include "xfdesktop-thumbnailer.h"
 #include "xfdesktop-settings-ui.h"
 #include "xfdesktop-settings-appearance-frame-ui.h"
 
@@ -82,6 +83,12 @@
 
 typedef struct
 {
+    GtkTreeModel *model;
+    GSList *iters;
+} PreviewData;
+
+typedef struct
+{
     XfconfChannel *channel;
     gint screen;
     gint monitor;
@@ -105,6 +112,11 @@ typedef struct
     GtkWidget *random_backdrop_order_chkbox;
 
     GThread *preview_thread;
+    PreviewData *pdata;
+
+    XfdesktopThumbnailer *thumbnailer;
+
+    gint request_timer_id;
 
 } AppearancePanel;
 
@@ -113,6 +125,7 @@ enum
     COL_PIX = 0,
     COL_NAME,
     COL_FILENAME,
+    COL_THUMBNAIL,
     COL_COLLATE_KEY,
     N_COLS,
 };
@@ -133,15 +146,22 @@ static void
 xfdesktop_settings_do_single_preview(GtkTreeModel *model,
                                      GtkTreeIter *iter)
 {
-    gchar *name = NULL, *new_name = NULL, *filename = NULL;
+    gchar *name = NULL, *new_name = NULL, *filename = NULL, *thumbnail = NULL;
     GdkPixbuf *pix, *pix_scaled = NULL;
 
     gtk_tree_model_get(model, iter,
                        COL_NAME, &name,
                        COL_FILENAME, &filename,
+                       COL_THUMBNAIL, &thumbnail,
                        -1);
 
-    pix = gdk_pixbuf_new_from_file(filename, NULL);
+    if(thumbnail == NULL) {
+        pix = gdk_pixbuf_new_from_file(filename, NULL);
+    } else {
+        pix = gdk_pixbuf_new_from_file(thumbnail, NULL);
+        g_free(thumbnail);
+    }
+
     g_free(filename);
     if(pix) {
         gint width, height;
@@ -185,6 +205,27 @@ xfdesktop_settings_do_single_preview(GtkTreeModel *model,
 }
 
 static gpointer
+xfdesktop_settings_create_some_previews(gpointer data)
+{
+    PreviewData *pdata = data;
+    GSList *l;
+
+    GDK_THREADS_ENTER ();
+
+    for(l = pdata->iters; l && l->data != NULL; l = l->next)
+        xfdesktop_settings_do_single_preview(pdata->model, l->data);
+
+    g_object_unref(G_OBJECT(pdata->model));
+    g_slist_foreach(pdata->iters, (GFunc)gtk_tree_iter_free, NULL);
+    g_slist_free(pdata->iters);
+    g_free(pdata);
+
+    GDK_THREADS_LEAVE ();
+
+    return NULL;
+}
+
+static gpointer
 xfdesktop_settings_create_all_previews(gpointer data)
 {
     GtkTreeModel *model = data;
@@ -218,6 +259,90 @@ xfdesktop_settings_create_all_previews(gpointer data)
     g_object_unref(G_OBJECT(model));
 
     return NULL;
+}
+
+static void
+cb_request_timer(gpointer data)
+{
+    AppearancePanel *panel = data;
+    PreviewData *pdata = panel->pdata;
+
+    TRACE("entering");
+
+    if(pdata == NULL)
+        return;
+
+    panel->pdata = NULL;
+    g_source_remove(panel->request_timer_id);
+    panel->request_timer_id = 0;
+
+    if(!g_thread_try_new("xfdesktop_settings_create_some_previews",
+                     xfdesktop_settings_create_some_previews,
+                     pdata, NULL))
+    {
+            g_critical("Unable to create thread for image previews.");
+            g_object_unref(G_OBJECT(pdata->model));
+            g_slist_foreach(pdata->iters, (GFunc)gtk_tree_iter_free, NULL);
+            g_slist_free(pdata->iters);
+            g_free(pdata);
+    }
+}
+
+static void
+cb_thumbnail_ready(XfdesktopThumbnailer *thumbnailer,
+                   gchar *src_file, gchar *thumb_file,
+                   gpointer user_data)
+{
+    AppearancePanel *panel = user_data;
+    GtkTreeModel *model = gtk_icon_view_get_model(GTK_ICON_VIEW(panel->image_iconview));
+    GtkTreeIter iter;
+
+    if(gtk_tree_model_get_iter_first(model, &iter)) {
+        do {
+            gchar *filename = NULL;
+            gtk_tree_model_get(model, &iter, COL_FILENAME, &filename, -1);
+
+            if(g_strcmp0(filename, src_file) == 0) {
+                gtk_list_store_set(GTK_LIST_STORE(model), &iter,
+                                   COL_THUMBNAIL, thumb_file, -1);
+
+                if(panel->request_timer_id != 0) {
+                    g_source_remove(panel->request_timer_id);
+                }
+
+                if(panel->pdata == NULL) {
+                    panel->pdata = g_new0(PreviewData, 1);
+                    panel->pdata->model = g_object_ref(G_OBJECT(model));
+                }
+
+                panel->pdata->iters = g_slist_prepend(panel->pdata->iters, gtk_tree_iter_copy(&iter));
+
+                panel->request_timer_id = g_timeout_add_full(
+                                G_PRIORITY_LOW,
+                                100,
+                                (GSourceFunc)cb_request_timer,
+                                panel,
+                                NULL);
+
+                g_free(filename);
+                return;
+            }
+
+            g_free(filename);
+        } while(gtk_tree_model_iter_next(model, &iter));
+    }
+}
+
+/* Attempts to queue a thumbnail preview */
+static void
+xfdesktop_settings_create_thumbnail_preview(GtkTreeModel *model,
+                                            GtkTreeIter *iter,
+                                            AppearancePanel *panel)
+{
+    gchar *filename;
+
+    gtk_tree_model_get(model, iter, COL_FILENAME, &filename, -1);
+    xfdesktop_thumbnailer_queue_thumbnail(panel->thumbnailer, filename);
 }
 
 static void
@@ -345,7 +470,8 @@ image_list_compare(GtkTreeModel *model,
 
 static GtkTreeIter *
 xfdesktop_settings_image_iconview_add(GtkTreeModel *model,
-                                      const char *path)
+                                      const char *path,
+                                      AppearancePanel *panel)
 {
     gboolean added = FALSE, found = FALSE, valid = FALSE;
     GtkTreeIter iter, search_iter;
@@ -388,6 +514,8 @@ xfdesktop_settings_image_iconview_add(GtkTreeModel *model,
                                COL_COLLATE_KEY, lower,
                                -1);
 
+            xfdesktop_settings_create_thumbnail_preview(model, &iter, panel);
+
             added = TRUE;
         }
     }
@@ -406,13 +534,17 @@ xfdesktop_settings_image_iconview_add(GtkTreeModel *model,
 static GtkTreeIter *
 xfdesktop_image_list_add_dir(GtkListStore *ls,
                              const char *path,
-                             const char *cur_image_file)
+                             const char *cur_image_file,
+                             AppearancePanel *panel)
 {
     GDir *dir;
     gboolean needs_slash = TRUE;
     const gchar *file;
     GtkTreeIter *iter, *iter_ret = NULL;
     gchar buf[PATH_MAX];
+#ifdef G_ENABLE_DEBUG
+    GTimer *timer = g_timer_new();
+#endif
 
     dir = g_dir_open(path, 0, 0);
     if(!dir)
@@ -425,7 +557,7 @@ xfdesktop_image_list_add_dir(GtkListStore *ls,
         g_snprintf(buf, sizeof(buf), needs_slash ? "%s/%s" : "%s%s",
                    path, file);
 
-        iter = xfdesktop_settings_image_iconview_add(GTK_TREE_MODEL(ls), buf);
+        iter = xfdesktop_settings_image_iconview_add(GTK_TREE_MODEL(ls), buf, panel);
         if(iter) {
             if(cur_image_file && !iter_ret && !strcmp(buf, cur_image_file))
                 iter_ret = iter;
@@ -435,6 +567,11 @@ xfdesktop_image_list_add_dir(GtkListStore *ls,
     }
 
     g_dir_close(dir);
+
+#ifdef G_ENABLE_DEBUG
+    DBG("time %f", g_timer_elapsed(timer, NULL));
+    g_timer_destroy(timer);
+#endif
 
     return iter_ret;
 }
@@ -606,11 +743,44 @@ cb_xfdesktop_spin_icon_size_changed(GtkSpinButton *button,
 }
 
 static void
+xfdesktop_settings_stop_image_loading(AppearancePanel *panel)
+{
+    /* stop any thumbnailing in progress */
+    xfdesktop_thumbnailer_dequeue_all_thumbnails(panel->thumbnailer);
+
+    /* Remove any pending thumbnail updates */
+    if(panel->request_timer_id != 0) {
+        PreviewData *pdata = panel->pdata;
+        g_source_remove(panel->request_timer_id);
+        panel->request_timer_id = 0;
+        g_object_unref(G_OBJECT(pdata->model));
+        g_slist_foreach(pdata->iters, (GFunc)gtk_tree_iter_free, NULL);
+        g_slist_free(pdata->iters);
+        g_free(pdata);
+    }
+
+    /* Remove any preview threads that may still be running */
+    if(panel->preview_thread != NULL) {
+        g_thread_unref(panel->preview_thread);
+        panel->preview_thread = NULL;
+    }
+}
+
+static void
+cb_xfdesktop_bnt_exit_clicked(GtkButton *button, gpointer user_data)
+{
+    AppearancePanel *panel = user_data;
+
+    xfdesktop_settings_stop_image_loading(panel);
+}
+
+static void
 cb_folder_selection_changed(GtkWidget *button,
                             gpointer user_data)
 {
     AppearancePanel *panel = user_data;
     gchar *filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(button));
+    static gchar *previous_filename = NULL;
     GtkListStore *ls;
     GtkTreeIter *iter;
     GtkTreePath *path;
@@ -618,8 +788,17 @@ cb_folder_selection_changed(GtkWidget *button,
 
     TRACE("entering");
 
+    /* Check to see if the folder actually did change */
+    if(g_strcmp0(filename, previous_filename) == 0)
+        return;
+
+    TRACE("folder changed to: %s", filename);
+    previous_filename = filename;
+
+    xfdesktop_settings_stop_image_loading(panel);
+
     ls = gtk_list_store_new(N_COLS, GDK_TYPE_PIXBUF, G_TYPE_STRING,
-                            G_TYPE_STRING, G_TYPE_STRING);
+                            G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
 
     property = xfdesktop_settings_generate_per_workspace_binding_string(panel, "last-image");
 
@@ -628,7 +807,7 @@ cb_folder_selection_changed(GtkWidget *button,
     if(last_image == NULL)
         last_image = DEFAULT_BACKDROP;
 
-    iter = xfdesktop_image_list_add_dir(ls, filename, last_image);
+    iter = xfdesktop_image_list_add_dir(ls, filename, last_image, panel);
 
     gtk_icon_view_set_model(GTK_ICON_VIEW(panel->image_iconview),
                             GTK_TREE_MODEL(ls));
@@ -642,22 +821,18 @@ cb_folder_selection_changed(GtkWidget *button,
         }
      }
 
-    /* remove any preview threads that may still be running since we've probably
-     * changed to a new monitor/workspace */
-    if(panel->preview_thread != NULL) {
-        g_thread_unref(panel->preview_thread);
-        panel->preview_thread = NULL;
-    }
+    /* Thumbnailer not available, fallback to loading the images in a thread */
+    if(!xfdesktop_thumbnailer_service_available(panel->thumbnailer)) {
+        /* generate previews of each image -- the new thread will own
+         * the reference on the list store, so let's not unref it here */
+        panel->preview_thread = g_thread_try_new("xfdesktop_settings_create_all_previews",
+                                                 xfdesktop_settings_create_all_previews,
+                                                 ls, NULL);
 
-    /* generate previews of each image -- the new thread will own
-     * the reference on the list store, so let's not unref it here */
-    panel->preview_thread = g_thread_try_new("xfdesktop_settings_create_all_previews",
-                                             xfdesktop_settings_create_all_previews,
-                                             ls, NULL);
-
-    if(panel->preview_thread == NULL) {
-        g_critical("Failed to spawn thread; backdrop previews will be unavailable.");
-        g_object_unref(G_OBJECT(ls));
+        if(panel->preview_thread == NULL) {
+            g_critical("Failed to spawn thread; backdrop previews will be unavailable.");
+            g_object_unref(G_OBJECT(ls));
+        }
     }
 
     g_free(property);
@@ -890,6 +1065,8 @@ xfdesktop_settings_setup_image_iconview(AppearancePanel *panel)
 
     TRACE("entering");
 
+    panel->thumbnailer = xfdesktop_thumbnailer_new();
+
     g_object_set(G_OBJECT(iconview),
                 "pixbuf-column", COL_PIX,
                 "item-width", PREVIEW_WIDTH,
@@ -899,6 +1076,9 @@ xfdesktop_settings_setup_image_iconview(AppearancePanel *panel)
 
     g_signal_connect(G_OBJECT(iconview), "selection-changed",
                      G_CALLBACK(cb_image_selection_changed), panel);
+
+    g_signal_connect(panel->thumbnailer, "thumbnail-ready",
+                     G_CALLBACK(cb_thumbnail_ready), panel);
 }
 
 static void
@@ -909,7 +1089,8 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
 {
     GtkWidget *appearance_container, *chk_custom_font_size,
               *spin_font_size, *w, *box, *spin_icon_size,
-              *chk_show_thumbnails, *chk_single_click, *appearance_settings;
+              *chk_show_thumbnails, *chk_single_click, *appearance_settings,
+              *bnt_exit;
     GtkBuilder *appearance_gxml;
     AppearancePanel *panel = g_new0(AppearancePanel, 1);
     GError *error = NULL;
@@ -921,6 +1102,12 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
 
     appearance_container = GTK_WIDGET(gtk_builder_get_object(main_gxml,
                                                              "notebook_screens"));
+
+    bnt_exit = GTK_WIDGET(gtk_builder_get_object(main_gxml, "bnt_exit"));
+
+    g_signal_connect(G_OBJECT(bnt_exit), "clicked",
+                     G_CALLBACK(cb_xfdesktop_bnt_exit_clicked),
+                     panel);
 
     /* Icons tab */
     /* icon size */
