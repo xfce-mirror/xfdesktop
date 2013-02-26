@@ -77,6 +77,8 @@
 #define DESKTOP_ICONS_SHOW_FILESYSTEM        "/desktop-icons/file-icons/show-filesystem"
 #define DESKTOP_ICONS_SHOW_REMOVABLE         "/desktop-icons/file-icons/show-removable"
 
+#define IMAGE_STLYE_SPANNING_SCREENS         6
+#define XFCE_BACKDROP_IMAGE_NONE             0
 
 typedef struct
 {
@@ -480,6 +482,8 @@ xfdesktop_settings_generate_per_workspace_binding_string(AppearancePanel *panel,
                               property);
     }
 
+    DBG("name %s", buf);
+
     return buf;
 }
 
@@ -660,6 +664,21 @@ cb_folder_selection_changed(GtkWidget *button,
 }
 
 static void
+cb_xfdesktop_combo_image_style_changed(GtkComboBox *combo,
+                                 gpointer user_data)
+{
+    AppearancePanel *panel = user_data;
+
+    TRACE("entering");
+
+    if(gtk_combo_box_get_active(combo) == XFCE_BACKDROP_IMAGE_NONE) {
+        gtk_widget_set_sensitive(panel->image_iconview, FALSE);
+    } else {
+        gtk_widget_set_sensitive(panel->image_iconview, TRUE);
+    }
+}
+
+static void
 cb_xfdesktop_combo_color_changed(GtkComboBox *combo,
                                  gpointer user_data)
 {
@@ -723,6 +742,8 @@ xfdesktop_settings_background_tab_change_bindings(AppearancePanel *panel,
     } else {
         xfconf_g_property_bind(channel, buf, G_TYPE_INT,
                                G_OBJECT(panel->image_style_combo), "active");
+        /* determine if the iconview is sensitive */
+        cb_xfdesktop_combo_image_style_changed(GTK_COMBO_BOX(panel->image_style_combo), panel);
     }
     g_free(buf);
 
@@ -734,12 +755,15 @@ xfdesktop_settings_background_tab_change_bindings(AppearancePanel *panel,
     } else {
         xfconf_g_property_bind(channel, buf, G_TYPE_INT,
                                G_OBJECT(panel->color_style_combo), "active");
+        /* update the color button sensitivity */
+        cb_xfdesktop_combo_color_changed(GTK_COMBO_BOX(panel->color_style_combo), panel);
     }
     g_free(buf);
 
     buf = xfdesktop_settings_generate_per_workspace_binding_string(panel, "color1");
     if(remove_binding) {
         xfconf_g_property_unbind(panel->color1_btn_id);
+    } else {
         panel->color1_btn_id = xfconf_g_property_bind_gdkcolor(channel, buf,
                                                                G_OBJECT(panel->color1_btn),
                                                                "color");
@@ -755,9 +779,6 @@ xfdesktop_settings_background_tab_change_bindings(AppearancePanel *panel,
                                                                "color");
     }
     g_free(buf);
-
-    cb_xfdesktop_combo_color_changed(GTK_COMBO_BOX(panel->color_style_combo),
-                                     panel);
 
     /* Cycle timer options */
     buf = xfdesktop_settings_generate_per_workspace_binding_string(panel, "backdrop-cycle-enable");
@@ -792,8 +813,6 @@ xfdesktop_settings_background_tab_change_bindings(AppearancePanel *panel,
     }
     g_free(buf);
 
-    cb_xfdesktop_chk_cycle_backdrop_toggled(GTK_CHECK_BUTTON(panel->backdrop_cycle_chkbox),
-                                            panel);
 }
 
 static void
@@ -844,23 +863,24 @@ cb_update_background_tab(WnckWindow *wnck_window,
     panel->monitor = monitor_num;
     panel->monitor_name = gdk_screen_get_monitor_plug_name(screen, panel->monitor);
 
+    /* The first monitor has the option of doing the "spanning screens" style,
+     * but only if there's multiple monitors attached. Remove it in all other cases.
+     *
+     * Remove the spanning screens option before we potentially add it again
+     */
+    gtk_combo_box_text_remove(GTK_COMBO_BOX_TEXT(panel->image_style_combo),
+                              IMAGE_STLYE_SPANNING_SCREENS);
+    if(panel->monitor == 0 && gdk_screen_get_n_monitors(screen) > 1) {
+        gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(panel->image_style_combo),
+                                       _("Spanning screens"));
+    }
+
     /* connect the new bindings */
     xfdesktop_settings_background_tab_change_bindings(panel,
                                                       FALSE);
 
     xfdesktop_settings_update_iconview_frame_name(panel, wnck_workspace);
     xfdesktop_settings_update_iconview_folder(panel);
-
-    /* The first monitor has the option of doing the "spanning screens" style,
-     * but only if there's multiple monitors attached. Make it invisible
-     * in all other cases.
-     * Remove the spanning screens option before we potentially add it again
-     */
-    gtk_combo_box_text_remove(GTK_COMBO_BOX_TEXT(panel->image_style_combo), 6);
-    if(panel->monitor == 0 && gdk_screen_get_n_monitors(screen) > 1) {
-        gtk_combo_box_text_insert_text(GTK_COMBO_BOX_TEXT(panel->image_style_combo),
-                                       6, _("Spanning screens"));
-    }
 }
 
 static void
@@ -874,6 +894,7 @@ xfdesktop_settings_setup_image_iconview(AppearancePanel *panel)
                 "pixbuf-column", COL_PIX,
                 "item-width", PREVIEW_WIDTH,
                 "tooltip-column", COL_NAME,
+                "selection-mode", GTK_SELECTION_BROWSE,
                 NULL);
 
     g_signal_connect(G_OBJECT(iconview), "selection-changed",
@@ -883,7 +904,8 @@ xfdesktop_settings_setup_image_iconview(AppearancePanel *panel)
 static void
 xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
                                      XfconfChannel *channel,
-                                     GdkScreen *screen)
+                                     GdkScreen *screen,
+                                     gulong window_xid)
 {
     GtkWidget *appearance_container, *chk_custom_font_size,
               *spin_font_size, *w, *box, *spin_icon_size,
@@ -944,7 +966,10 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     /* We have to force wnck to initialize */
     wnck_screen = wnck_screen_get(panel->screen);
     wnck_screen_force_update(wnck_screen);
-    wnck_window = wnck_window_get(GDK_WINDOW_XID(gtk_widget_get_window(appearance_container)));
+    wnck_window = wnck_window_get(window_xid);
+
+    if(wnck_window == NULL)
+        wnck_window = wnck_screen_get_active_window(wnck_screen);
 
     g_signal_connect(wnck_window, "geometry-changed",
                      G_CALLBACK(cb_update_background_tab), panel);
@@ -975,25 +1000,6 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     gtk_table_attach_defaults(GTK_TABLE(appearance_container),
                              appearance_settings, 0,1,0,1);
 
-    panel->image_style_combo = GTK_WIDGET(gtk_builder_get_object(appearance_gxml, "combo_style"));
-
-    panel->color_style_combo = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
-                                                                 "combo_colors"));
-
-    /* Pick the first entries so something shows up */
-    gtk_combo_box_set_active(GTK_COMBO_BOX(panel->image_style_combo), 0);
-    gtk_combo_box_set_active(GTK_COMBO_BOX(panel->color_style_combo), 0);
-
-    g_signal_connect(G_OBJECT(panel->color_style_combo), "changed",
-                     G_CALLBACK(cb_xfdesktop_combo_color_changed),
-                     panel);
-
-    panel->color1_btn = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
-                                                          "color1_btn"));
-
-    panel->color2_btn = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
-                                                          "color2_btn"));
-
     /* icon view area */
     panel->frame_image_list = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
                                                                 "frame_image_list"));
@@ -1011,6 +1017,30 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     gtk_file_filter_set_name(filter, _("Image files"));
     gtk_file_filter_add_pixbuf_formats(filter);
     gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(panel->btn_folder), filter);
+
+    /* Image and color style options */
+    panel->image_style_combo = GTK_WIDGET(gtk_builder_get_object(appearance_gxml, "combo_style"));
+
+    panel->color_style_combo = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
+                                                                 "combo_colors"));
+
+    panel->color1_btn = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
+                                                          "color1_btn"));
+
+    panel->color2_btn = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
+                                                          "color2_btn"));
+
+    g_signal_connect(G_OBJECT(panel->image_style_combo), "changed",
+                     G_CALLBACK(cb_xfdesktop_combo_image_style_changed),
+                     panel);
+
+    g_signal_connect(G_OBJECT(panel->color_style_combo), "changed",
+                     G_CALLBACK(cb_xfdesktop_combo_color_changed),
+                     panel);
+
+    /* Pick the first entries so something shows up */
+    gtk_combo_box_set_active(GTK_COMBO_BOX(panel->image_style_combo), 0);
+    gtk_combo_box_set_active(GTK_COMBO_BOX(panel->color_style_combo), 0);
 
     /* background cycle timer */
     panel->backdrop_cycle_chkbox = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
@@ -1094,6 +1124,7 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
                            "active");
 
     setup_special_icon_list(main_gxml, channel);
+    cb_update_background_tab(wnck_window, panel);
 }
 
 static void
@@ -1175,7 +1206,8 @@ main(int argc, char **argv)
                          G_CALLBACK(xfdesktop_settings_response), NULL);
         gtk_window_present(GTK_WINDOW (dialog));
         xfdesktop_settings_dialog_setup_tabs(gxml, channel,
-                                             gtk_widget_get_screen(dialog));
+                                             gtk_widget_get_screen(dialog),
+                                             GDK_WINDOW_XID(gtk_widget_get_window(dialog)));
 
         /* To prevent the settings dialog to be saved in the session */
         gdk_x11_set_sm_client_id("FAKE ID");
@@ -1188,14 +1220,15 @@ main(int argc, char **argv)
         gtk_widget_show(plug);
         g_signal_connect(G_OBJECT(plug), "delete-event",
                          G_CALLBACK(gtk_main_quit), NULL);
-        xfdesktop_settings_dialog_setup_tabs(gxml, channel,
-                                             gtk_widget_get_screen(plug));
 
         gdk_notify_startup_complete();
 
         plug_child = GTK_WIDGET(gtk_builder_get_object(gxml, "alignment1"));
         gtk_widget_reparent(plug_child, plug);
         gtk_widget_show(plug_child);
+        xfdesktop_settings_dialog_setup_tabs(gxml, channel,
+                                             gtk_widget_get_screen(plug),
+                                             GDK_WINDOW_XID(gtk_widget_get_window(plug_child)));
 
         gtk_main();
     }

@@ -296,13 +296,6 @@ xfce_backdrop_class_init(XfceBackdropClass *klass)
                                                         DEFAULT_BACKDROP,
                                                         XFDESKTOP_PARAM_FLAGS));
 
-    g_object_class_install_property(gobject_class, PROP_BRIGHTNESS,
-                                    g_param_spec_int("brightness",
-                                                     "brightness",
-                                                     "brightness",
-                                                     -128, 127, 0,
-                                                     XFDESKTOP_PARAM_FLAGS));
-
     g_object_class_install_property(gobject_class, PROP_BACKDROP_CYCLE_ENABLE,
                                     g_param_spec_boolean("backdrop-cycle-enable",
                                                          "backdrop-cycle-enable",
@@ -742,7 +735,9 @@ xfce_backdrop_timer(XfceBackdrop *backdrop)
 
     g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), FALSE);
 
-    g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_CYCLE], 0);
+    /* Don't bother with trying to cycle a backdrop if we're not using images */
+    if(backdrop->priv->image_style != XFCE_BACKDROP_IMAGE_NONE)
+        g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_CYCLE], 0);
 
     return TRUE;
 }
@@ -881,7 +876,8 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
     
     /*check if the file exists,
      *and if it doesn't then make the background the single colour*/
-    if(!g_file_test(backdrop->priv->image_path, G_FILE_TEST_EXISTS)) {
+    if(!g_file_test(backdrop->priv->image_path, G_FILE_TEST_EXISTS) ||
+       backdrop->priv->image_style == XFCE_BACKDROP_IMAGE_NONE) {
         if(backdrop->priv->brightness != 0)
             final_image = adjust_brightness(final_image, backdrop->priv->brightness);
         
@@ -926,6 +922,12 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
         case XFCE_BACKDROP_IMAGE_TILED:
             image = gdk_pixbuf_new_from_file(backdrop->priv->image_path, NULL);
             tmp = gdk_pixbuf_new(GDK_COLORSPACE_RGB, TRUE, 8, w, h);
+            /* Now that the image has been loaded, recalculate the image
+             * size because gdk_pixbuf_get_file_info doesn't always return
+             * the correct size */
+            iw = gdk_pixbuf_get_width(image);
+            ih = gdk_pixbuf_get_height(image);
+
             for(i = 0; (i * iw) < w; i++) {
                 for(j = 0; (j * ih) < h; j++) {
                     gint newx = iw * i, newy = ih * j;
@@ -935,7 +937,7 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
                         neww = w - newx;
                     if((newy + newh) > h)
                         newh = h - newy;
-                    
+
                     gdk_pixbuf_copy_area(image, 0, 0,
                             neww, newh, tmp, newx, newy);
                 }
@@ -947,7 +949,6 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
             break;
         
         case XFCE_BACKDROP_IMAGE_STRETCHED:
-        case XFCE_BACKDROP_IMAGE_SPANNING_SCREENS:
             image = gdk_pixbuf_new_from_file_at_scale(
                             backdrop->priv->image_path, w, h, FALSE, NULL);
             gdk_pixbuf_composite(image, final_image, 0, 0, w, h,
@@ -978,6 +979,7 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
             break;
         
         case XFCE_BACKDROP_IMAGE_ZOOMED:
+        case XFCE_BACKDROP_IMAGE_SPANNING_SCREENS:
             xscale = (gdouble)w / iw;
             yscale = (gdouble)h / ih;
             if(xscale < yscale) {
@@ -1008,4 +1010,38 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
         final_image = adjust_brightness(final_image, backdrop->priv->brightness);
     
     return final_image;
+}
+
+/* returns TRUE if they have identical settings. */
+gboolean xfce_backdrop_compare_backdrops(XfceBackdrop *backdrop_a,
+                                         XfceBackdrop *backdrop_b)
+{
+    if(g_strcmp0(backdrop_a->priv->image_path, backdrop_b->priv->image_path) != 0) {
+        DBG("filename different");
+        return FALSE;
+    }
+
+    if(backdrop_a->priv->image_style != backdrop_b->priv->image_style) {
+        DBG("image_style different");
+        return FALSE;
+    }
+
+    if(backdrop_a->priv->color_style != backdrop_b->priv->color_style) {
+        DBG("color_style different");
+        return FALSE;
+    }
+
+    if(!gdk_color_equal(&backdrop_a->priv->color1, &backdrop_b->priv->color1) ||
+       !gdk_color_equal(&backdrop_a->priv->color2, &backdrop_b->priv->color2)) {
+        DBG("colors different");
+        return FALSE;
+    }
+
+    if(backdrop_a->priv->cycle_backdrop != backdrop_b->priv->cycle_backdrop ||
+       backdrop_a->priv->cycle_backdrop == TRUE) {
+        DBG("backdrop cycle different");
+        return FALSE;
+    }
+
+    return TRUE;
 }

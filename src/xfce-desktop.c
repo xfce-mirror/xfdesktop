@@ -336,11 +336,6 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     DBG("backdrop changed for workspace %d, monitor %d (%s)",
         current_workspace, monitor, gdk_screen_get_monitor_plug_name(gscreen, monitor));
 
-    /* create/get the composited backdrop pixmap */
-    pix = xfce_backdrop_get_pixbuf(backdrop);
-    if(!pix)
-        return;
-
     if(xfce_desktop_get_n_monitors(desktop) > 1
        && xfce_workspace_get_xinerama_stretch(desktop->priv->workspaces[current_workspace])) {
         GdkRectangle monitor_rect;
@@ -360,9 +355,20 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
 
         rect.width = gdk_screen_get_width(gscreen);
         rect.height = gdk_screen_get_height(gscreen);
+        DBG("xinerama_stretch x %d, y %d, width %d, height %d",
+            rect.x, rect.y, rect.width, rect.height);
     } else {
         gdk_screen_get_monitor_geometry(gscreen, monitor, &rect);
+        DBG("monitor x %d, y %d, width %d, height %d",
+            rect.x, rect.y, rect.width, rect.height);
     }
+
+    xfce_backdrop_set_size(backdrop, rect.width, rect.height);
+
+    /* create/get the composited backdrop pixmap */
+    pix = xfce_backdrop_get_pixbuf(backdrop);
+    if(!pix)
+        return;
 
     cr = gdk_cairo_create(GDK_DRAWABLE(pmap));
     gdk_cairo_set_source_pixbuf(cr, pix, rect.x, rect.y);
@@ -415,17 +421,12 @@ screen_size_changed_cb(GdkScreen *gscreen, gpointer user_data)
 
     /* special case for 1 backdrop to handle xinerama stretching */
     if(xfce_workspace_get_xinerama_stretch(desktop->priv->workspaces[current_workspace])) {
-       xfce_backdrop_set_size(xfce_workspace_get_backdrop(desktop->priv->workspaces[current_workspace], 0), w, h);
        backdrop_changed_cb(xfce_workspace_get_backdrop(desktop->priv->workspaces[current_workspace], 0), desktop);
     } else {
-        GdkRectangle rect;
         gint i;
 
         for(i = 0; i < xfce_desktop_get_n_monitors(desktop); i++) {
-            gdk_screen_get_monitor_geometry(gscreen, i, &rect);
             current_backdrop = xfce_workspace_get_backdrop(desktop->priv->workspaces[current_workspace], i);
-
-            xfce_backdrop_set_size(current_backdrop, rect.width, rect.height);
             backdrop_changed_cb(current_backdrop, desktop);
         }
     }
@@ -481,13 +482,37 @@ workspace_changed_cb(WnckScreen *wnck_screen,
 {
     XfceDesktop *desktop = XFCE_DESKTOP(user_data);
     WnckWorkspace *wnck_workspace = wnck_screen_get_active_workspace(wnck_screen);
+    gint current_workspace, new_workspace, i;
+    XfceBackdrop *current_backdrop, *new_backdrop;
 
     TRACE("entering");
 
-    desktop->priv->current_workspace = wnck_workspace_get_number(wnck_workspace);
+    current_workspace = desktop->priv->current_workspace;
+    new_workspace = wnck_workspace_get_number(wnck_workspace);
+    desktop->priv->current_workspace = new_workspace;
 
-    /* fake a screen size changed, so the background is properly set */
-    screen_size_changed_cb(desktop->priv->gscreen, user_data);
+    /* special case for the spanning screen option */
+    if(xfce_workspace_get_xinerama_stretch(desktop->priv->workspaces[new_workspace])) {
+        current_backdrop = xfce_workspace_get_backdrop(desktop->priv->workspaces[current_workspace], 0);
+        new_backdrop = xfce_workspace_get_backdrop(desktop->priv->workspaces[new_workspace], 0);
+
+        if(!xfce_backdrop_compare_backdrops(current_backdrop, new_backdrop)) {
+            backdrop_changed_cb(new_backdrop, user_data);
+            return;
+        }
+    }
+
+    /* We want to compare the current workspace backdrops with the new one
+     * and see if we can avoid changing them if they are the same image/style */
+    for(i = 0; i < xfce_desktop_get_n_monitors(desktop); i++) {
+        current_backdrop = xfce_workspace_get_backdrop(desktop->priv->workspaces[current_workspace], i);
+        new_backdrop = xfce_workspace_get_backdrop(desktop->priv->workspaces[new_workspace], i);
+
+        if(!xfce_backdrop_compare_backdrops(current_backdrop, new_backdrop)) {
+            /* only update monitors that require it */
+            backdrop_changed_cb(new_backdrop, user_data);
+        }
+    }
 }
 
 static void
@@ -1088,46 +1113,6 @@ xfce_desktop_connect_settings(XfceDesktop *desktop)
     xfce_desktop_thaw_updates(desktop);
 }
 
-static void
-xfce_desktop_image_filename_changed(XfconfChannel *channel,
-                                    const gchar *property,
-                                    const GValue *value,
-                                    gpointer user_data)
-{
-    XfceDesktop *desktop = user_data;
-    gchar *p;
-    const gchar *filename;
-    gint monitor, current_workspace;
-    XfceBackdrop *backdrop;
-
-    TRACE("entering");
-
-    p = strstr(property, "/monitor");
-    if(!p)
-        return;
-
-    monitor = atoi(p + 8);
-    if(monitor < 0 || monitor >= xfce_desktop_get_n_monitors(desktop))
-        return;
-
-    current_workspace = desktop->priv->current_workspace;
-
-    if(xfce_workspace_get_xinerama_stretch(desktop->priv->workspaces[current_workspace])
-       && monitor != 0)
-        return;
-
-    backdrop = xfce_workspace_get_backdrop(desktop->priv->workspaces[current_workspace],
-                                           monitor);
-
-    if(!G_VALUE_HOLDS_STRING(value))
-        filename = DEFAULT_BACKDROP;
-    else
-        filename = g_value_get_string(value);
-
-    if(G_LIKELY(filename && *filename))
-        xfce_backdrop_set_image_filename(backdrop, filename);
-}
-
 static gint
 xfce_desktop_get_current_workspace(XfceDesktop *desktop)
 {
@@ -1394,8 +1379,7 @@ xfce_desktop_popup_secondary_root_menu(XfceDesktop *desktop,
 void
 xfce_desktop_refresh(XfceDesktop *desktop)
 {
-    gchar buf[256];
-    gint i, max, current_workspace;
+    gint i, current_workspace;
 
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
 
@@ -1404,23 +1388,13 @@ xfce_desktop_refresh(XfceDesktop *desktop)
 
     current_workspace = desktop->priv->current_workspace;
 
-    /* reload image */
-    if(xfce_workspace_get_xinerama_stretch(desktop->priv->workspaces[current_workspace]))
-        max = 1;
-    else
-        max = xfce_desktop_get_n_monitors(desktop);
-    for(i = 0; i < max; ++i) {
-        GValue val = { 0, };
+    /* reload backgrounds */
+    for(i = 0; i < xfce_desktop_get_n_monitors(desktop); i++) {
+        XfceBackdrop *backdrop;
 
-        g_snprintf(buf, sizeof(buf), "%smonitor%d/workspace%d/last-image",
-                   desktop->priv->property_prefix, i, current_workspace);
-        xfconf_channel_get_property(desktop->priv->channel, buf, &val);
+        backdrop = xfce_workspace_get_backdrop(desktop->priv->workspaces[current_workspace], i);
 
-        xfce_desktop_image_filename_changed(desktop->priv->channel, buf,
-                                            &val, desktop);
-
-        if(G_VALUE_TYPE(&val))
-            g_value_unset(&val);
+        backdrop_changed_cb(backdrop, desktop);
     }
 
 #ifdef ENABLE_DESKTOP_ICONS

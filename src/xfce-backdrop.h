@@ -130,6 +130,9 @@ gboolean xfce_backdrop_get_random_order  (XfceBackdrop *backdrop);
 
 GdkPixbuf *xfce_backdrop_get_pixbuf      (XfceBackdrop *backdrop);
 
+gboolean xfce_backdrop_compare_backdrops (XfceBackdrop *backdrop_a,
+                                          XfceBackdrop *backdrop_b);
+
 G_END_DECLS
 
 #endif
