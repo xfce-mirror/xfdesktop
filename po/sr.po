@@ -3,24 +3,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-20 06:36+0000\n"
+"POT-Creation-Date: 2013-03-02 23:03+0000\n"
 "PO-Revision-Date: 2012-06-20 08:32+0200\n"
 "Last-Translator: salepetronije <salepetronije@gmail.com>\n"
 "Language-Team: српски <xfce-i18n@xfce.org>\n"
-"Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-
-#: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
-#, c-format
-msgid "Backdrop list file is not valid"
-msgstr "Датотека позадинске листе није исправна"
+"Language: sr\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #. no need to escape markup; it's already done for us
-#: ../settings/main.c:166
+#: ../settings/main.c:151
 #, c-format
 msgid ""
 "%s\n"
@@ -29,128 +23,72 @@ msgstr ""
 "%s\n"
 "<i>Величина: %dx%d</i>"
 
-#: ../settings/main.c:299 ../src/xfdesktop-special-file-icon.c:271
+#: ../settings/main.c:263 ../src/xfdesktop-special-file-icon.c:271
 #: ../src/xfdesktop-special-file-icon.c:434
 msgid "Home"
 msgstr "Лична фасцикла"
 
-#: ../settings/main.c:301
+#: ../settings/main.c:265
 msgid "Filesystem"
 msgstr "Систем датотека"
 
-#: ../settings/main.c:303
+#: ../settings/main.c:267
 msgid "Trash"
 msgstr "Корпа"
 
-#: ../settings/main.c:305
+#: ../settings/main.c:269
 msgid "Removable Devices"
 msgstr "Уклоњиви уређаји"
 
-#: ../settings/main.c:485
+#: ../settings/main.c:454
 #, c-format
-msgid "Cannot create backdrop list \"%s\""
-msgstr "Не успевам да направим позадинску листу „%s“"
+msgid "Wallpaper for %s on Monitor %d (%s)"
+msgstr "Позадинска слика %s за екран %d"
 
-#: ../settings/main.c:489 ../settings/main.c:862
-msgid "Backdrop List Error"
-msgstr "Уредник позадинске листе"
-
-#: ../settings/main.c:514
-msgid "Create/Load Backdrop List"
-msgstr "Направи/Учитај позадинску листу"
-
-#: ../settings/main.c:538
+#: ../settings/main.c:458
 #, c-format
-msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
-"Датотека „%s“ није ваљана позадинска листа.  Да ли желите да је препишете?"
+msgid "Wallpaper for %s on Monitor %d"
+msgstr "Позадинска слика за %s на екрану %d"
 
-#: ../settings/main.c:543
-msgid "Invalid List File"
-msgstr "Датотека листе није исправна"
+#: ../settings/main.c:862
+msgid "Spanning screens"
+msgstr "Обухватање екрана"
 
-#: ../settings/main.c:546
-msgid "Overwriting the file will cause its contents to be lost."
-msgstr "Преписивање датотеке може узроковати да њен садржај буде изгубљен."
-
-#: ../settings/main.c:548
-msgid "Replace"
-msgstr "Замени"
-
-#: ../settings/main.c:858
-#, c-format
-msgid "Failed to write backdrop list to \"%s\""
-msgstr "Не успевам да упишем позадинску листу у „%s“"
-
-#: ../settings/main.c:885
-msgid "Add Image File(s)"
-msgstr "Додај датотеку слике или више њих"
-
-#: ../settings/main.c:894
+#: ../settings/main.c:1011
 msgid "Image files"
 msgstr "Датотеке слика"
 
-#: ../settings/main.c:899
-msgid "All files"
-msgstr "Све датотеке"
-
-#: ../settings/main.c:1363
-#, c-format
-msgid "Screen %d, Monitor %d (%s)"
-msgstr "Екран %d, Монитор %d (%s)"
-
-#: ../settings/main.c:1367
-#, c-format
-msgid "Screen %d, Monitor %d"
-msgstr "Екран %d, Монитор %d"
-
-#: ../settings/main.c:1370
-#, c-format
-msgid "Screen %d"
-msgstr "Екран %d"
-
-#: ../settings/main.c:1375
-#, c-format
-msgid "Monitor %d (%s)"
-msgstr "Монитор %d (%s)"
-
-#: ../settings/main.c:1379
-#, c-format
-msgid "Monitor %d"
-msgstr "Монитор %d"
-
-#: ../settings/main.c:1638
+#: ../settings/main.c:1111
 msgid "Settings manager socket"
 msgstr "Управник подешавања утичнице"
 
-#: ../settings/main.c:1638
+#: ../settings/main.c:1111
 msgid "SOCKET ID"
 msgstr "ИБ УТИЧНИЦЕ"
 
-#: ../settings/main.c:1639
+#: ../settings/main.c:1112
 msgid "Version information"
 msgstr "Подаци о издању"
 
-#: ../settings/main.c:1656
+#: ../settings/main.c:1129
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Упишите „%s --help“ за коришћење."
 
-#: ../settings/main.c:1668
+#: ../settings/main.c:1141
 msgid "The Xfce development team. All rights reserved."
 msgstr "ИксФЦЕ развојна дружина. Сва права су задржана."
 
-#: ../settings/main.c:1669
+#: ../settings/main.c:1142
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Молим пријавите грешку на <%s>."
 
-#: ../settings/main.c:1676
+#: ../settings/main.c:1149
 msgid "Desktop Settings"
 msgstr "Подешавања радне површи"
 
-#: ../settings/main.c:1678
+#: ../settings/main.c:1151
 msgid "Unable to contact settings server"
 msgstr "Не успевам да покренем сервер подешавања"
 
@@ -163,183 +101,82 @@ msgid "Set desktop background and menu and icon behaviour"
 msgstr "Подеси позадину површи и понашање изборника и икона"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
-msgid "<b>Adjustments</b>"
-msgstr "<b>Подешавања</b>"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
-msgid "<b>Colors</b>"
-msgstr "<b>Боје</b>"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
-msgid "<b>Image</b>"
-msgstr "<b>Слика</b>"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
-msgid "<b>Images</b>"
-msgstr "<b>Слике</b>"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
 msgid "Add an image to the list"
 msgstr "Додајте слику на листу"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
-#: ../settings/xfdesktop-settings-ui.glade.h:6
-msgid "Auto"
-msgstr "Аутоматски"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
-msgid "Automatically pick a random image from a list file"
-msgstr "Сам изабери насумичну слику из листе"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
-msgid "B_rightness:"
-msgstr "О_светљење:"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
-#: ../settings/xfdesktop-settings-ui.glade.h:8
-msgid "Centered"
-msgstr "Центрирано"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
-msgid "Create a new list, or load an existing one"
-msgstr "Направи нову листу, или учитај постојећу"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
-msgid "Don't display an image at all"
-msgstr "Не приказуј слику"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
-#: ../settings/xfdesktop-settings-ui.glade.h:12
-msgid "Horizontal gradient"
-msgstr "Водоравни прелив"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
-msgid "Image _list"
-msgstr "_Листа слика"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
-msgid "Increase or decrease the brightness of the final image"
-msgstr "Повећај или смањи осветљење крајње слике"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
-msgid "Increase or decrease the color saturation of the final image"
-msgstr "Повећај или смањи засићење боја крајње слике"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
 msgid ""
-"Number of minutes before a different background is randomly selected from "
-"the list."
-msgstr "Број минута пре насумичног избора друге позадине са листе."
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
-msgid "Remove the selected image(s) from the list"
-msgstr "Уклони слику или више њих са листе"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
-msgid "Sa_turation:"
-msgstr "_Засићеност:"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
-#: ../settings/xfdesktop-settings-ui.glade.h:23
-msgid "Scaled"
-msgstr "Раширено"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
-msgid "Select First Color"
-msgstr "Одабери прву боју"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
-msgid "Select Second Color"
-msgstr "одабери другу боју"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
-msgid "Select a single image as the backdrop"
-msgstr "Изабери једну слику као позадину"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
-#: ../settings/xfdesktop-settings-ui.glade.h:35
-msgid "Solid color"
-msgstr "Пуна боја"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
-msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-msgstr "Одреди „десну“ или „доњу“ боју прелива"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
-msgid ""
-"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr "Одабери пуну боју, или „леву“ или „горњу“ боју прелива"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
-msgid "Specify how the image will be resized to fit the screen"
-msgstr ""
-"Одреди како ће слици бити промењена величина да би се уклопила на радну "
-"површ"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
-msgid "Specify the style of the color drawn behind the backdrop image"
-msgstr "Одреди начин цртања боје иза позадинске слике"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
-msgid "St_retch this background across all monitors."
-msgstr "Ра_звуци ову позадину преко свих монитора."
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
-msgid "St_yle:"
-msgstr "На_чин:"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
-#: ../settings/xfdesktop-settings-ui.glade.h:37
-msgid "Stretched"
-msgstr "Развучена"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
-#: ../settings/xfdesktop-settings-ui.glade.h:38
-msgid "Tiled"
-msgstr "Поплочана"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
-#: ../settings/xfdesktop-settings-ui.glade.h:39
-msgid "Transparent"
-msgstr "Провидна"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
-#: ../settings/xfdesktop-settings-ui.glade.h:42
-msgid "Vertical gradient"
-msgstr "Усправни прелив"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
-msgid ""
-"When multiple monitors are present, select this option to stretch the "
-"current background over all of them."
-msgstr ""
-"Када је присутно више монитора, одреди ову могућност да би развукао позадину "
-"по свима."
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
-msgid ""
-"While in image list mode, select this option to automatically select a "
-"different background from the image list after a set number of minutes."
+"Automatically select a different background from the current directory after "
+"a set number of minutes."
 msgstr ""
 "При приказу позадинске листе, одабери ову могућност да би се позадине мењале "
 "после задатог броја минута."
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:36
-#: ../settings/xfdesktop-settings-ui.glade.h:43
-msgid "Zoomed"
-msgstr "Увећана"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
+msgid "Color:"
+msgstr "Боја:"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:37
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
+msgid "Folder:"
+msgstr "Фасцикла:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
+msgid "Horizontal gradient"
+msgstr "Водоравни прелив"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
+msgid "Number of minutes before a different background is selected."
+msgstr "Број минута пре избора друге позадине."
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
+msgid "Select First Color"
+msgstr "Одабери прву боју"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
+msgid "Select Second Color"
+msgstr "одабери другу боју"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
+msgid "Solid color"
+msgstr "Пуна боја"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
+msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
+msgstr "Одреди „десну“ или „доњу“ боју прелива"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
+msgid ""
+"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr "Одабери пуну боју, или „леву“ или „горњу“ боју прелива"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
+msgid "Specify how the image will be resized to fit the screen"
+msgstr ""
+"Одреди како ће слици бити промењена величина да би се уклопила на радну површ"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
+msgid "Specify the style of the color drawn behind the backdrop image"
+msgstr "Одреди начин цртања боје иза позадинске слике"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
+msgid "St_yle:"
+msgstr "На_чин:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
+msgid "Transparent"
+msgstr "Провидна"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
+msgid "Vertical gradient"
+msgstr "Усправни прелив"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "_Change the background (in minutes):"
 msgstr "_Промени позадину (у минутима):"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:38
-msgid "_None"
-msgstr "_Ништа"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:39
-msgid "_Single image"
-msgstr "_Једна слика"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
+msgid "_Random Order"
+msgstr "_Насумичан редослед"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:1
 msgid "<b>Appearance</b>"
@@ -361,63 +198,59 @@ msgstr "<b>Изборник листе прозора </b>"
 msgid "Alt"
 msgstr "Алт"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:7
+#: ../settings/xfdesktop-settings-ui.glade.h:6
 msgid "B_utton:"
 msgstr "Д_угме:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:9
+#: ../settings/xfdesktop-settings-ui.glade.h:7
 msgid "Control"
 msgstr "Контрол"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:793
+#: ../settings/xfdesktop-settings-ui.glade.h:8 ../src/xfce-desktop.c:813
 msgid "Desktop"
 msgstr "Радна површ"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:11
+#: ../settings/xfdesktop-settings-ui.glade.h:9
 msgid "File/launcher icons"
 msgstr "Датотека/покретач икона"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:13
+#: ../settings/xfdesktop-settings-ui.glade.h:10
 msgid "Icon _size:"
 msgstr "_Величина иконе:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:14
+#: ../settings/xfdesktop-settings-ui.glade.h:11
 msgid "Icon _type:"
 msgstr "_Врста иконе:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:15
-msgid "Label trans_parency:"
-msgstr "Ознака прови_дности:"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:16
+#: ../settings/xfdesktop-settings-ui.glade.h:12
 msgid "Left"
 msgstr "Лево"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:17
+#: ../settings/xfdesktop-settings-ui.glade.h:13
 msgid "Middle"
 msgstr "Средње"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:18
+#: ../settings/xfdesktop-settings-ui.glade.h:14
 msgid "Minimized application icons"
 msgstr "Умањене иконе програма"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:19
+#: ../settings/xfdesktop-settings-ui.glade.h:15
 msgid "Mo_difier:"
 msgstr "Из_мењивач:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:20
+#: ../settings/xfdesktop-settings-ui.glade.h:16
 msgid "Modi_fier:"
 msgstr "Изме_њивач:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:21
+#: ../settings/xfdesktop-settings-ui.glade.h:17
 msgid "None"
 msgstr "Ништа"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:22
+#: ../settings/xfdesktop-settings-ui.glade.h:18
 msgid "Right"
 msgstr "Десно"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:24
+#: ../settings/xfdesktop-settings-ui.glade.h:19
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
@@ -425,77 +258,71 @@ msgstr ""
 "Одаберите ову могућност да би се приказивале датотеке с прегледом на радној "
 "површини као аутоматски створене умањене сличице."
 
-#: ../settings/xfdesktop-settings-ui.glade.h:25
+#: ../settings/xfdesktop-settings-ui.glade.h:20
 msgid "Set desktop background and menu and icon behavior"
 msgstr "Подеси позадину површи и понашање изборника и икона"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:26
+#: ../settings/xfdesktop-settings-ui.glade.h:21
 msgid "Sh_ow application icons in menu"
 msgstr "При_кажи иконе програма у изборнику"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:27
+#: ../settings/xfdesktop-settings-ui.glade.h:22
 msgid "Shift"
 msgstr "Шифт"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:28
+#: ../settings/xfdesktop-settings-ui.glade.h:23
 msgid "Show _application icons in menu"
 msgstr "Прикажи иконе _програма у изборнику"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:29
+#: ../settings/xfdesktop-settings-ui.glade.h:24
 msgid "Show _window list menu on desktop middle click"
 msgstr "Прикажи изборник листе _прозора на средњи клик по радној површи"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:30
+#: ../settings/xfdesktop-settings-ui.glade.h:25
 msgid "Show applications menu on _desktop right click"
 msgstr "Прикажи изборник програма на десни клик по _радној површи"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:31
+#: ../settings/xfdesktop-settings-ui.glade.h:26
 msgid "Show s_ticky windows only in active workspace"
 msgstr "Прикажи _лепљиве прозоре само на тренутној радној површи"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:32
+#: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "Show t_humbnails"
 msgstr "Прикажи у_мањене сличице"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:33
+#: ../settings/xfdesktop-settings-ui.glade.h:28
 msgid "Show workspace _names in list"
 msgstr "Прикажи _имена радних површи у листи"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:34
+#: ../settings/xfdesktop-settings-ui.glade.h:29
 msgid "Single _click to activate items"
 msgstr "Један _клик покреће ставке"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:36
-msgid ""
-"Specify the transparency level for the rounded label drawn behind the icon "
-"text"
-msgstr "Одреди ниво провидности за обла обележја исцртана иза икона текста"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:40
+#: ../settings/xfdesktop-settings-ui.glade.h:30
 msgid "Use _submenus for the windows in each workspace"
 msgstr "Користи _падајући избор за прозоре на свакој радној површи"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:41
+#: ../settings/xfdesktop-settings-ui.glade.h:31
 msgid "Use custom _font size:"
 msgstr "Користи прилагођен _словни лик величине:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:44
+#: ../settings/xfdesktop-settings-ui.glade.h:32
 msgid "_Background"
 msgstr "_Позадина"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:45
+#: ../settings/xfdesktop-settings-ui.glade.h:33
 msgid "_Button:"
 msgstr "_Дугме:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:46
+#: ../settings/xfdesktop-settings-ui.glade.h:34
 msgid "_Edit desktop menu"
 msgstr "_Уреди изборник радне површи"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:47
+#: ../settings/xfdesktop-settings-ui.glade.h:35
 msgid "_Icons"
 msgstr "_Иконе"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:48
+#: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid "_Menus"
 msgstr "_Изборници"
 
@@ -523,50 +350,50 @@ msgstr "Аутоматски уреди положај свих икона на 
 msgid "Cause xfdesktop to quit"
 msgstr "Узрокује искључење иксф радне површи"
 
-#: ../src/main.c:270
+#: ../src/main.c:267
 #, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "Нисам успео да обрадим аргументе: %s\n"
 
-#: ../src/main.c:278
+#: ../src/main.c:275
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Ово је %s издање %s, на ИксФЦЕу %s.\n"
 
-#: ../src/main.c:280
+#: ../src/main.c:277
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Изграђено наГТК+ %d.%d.%d, с везама ка ГТК+ %d.%d.%d."
 
-#: ../src/main.c:284
+#: ../src/main.c:281
 #, c-format
 msgid "Build options:\n"
 msgstr "Опције израде:\n"
 
-#: ../src/main.c:285
+#: ../src/main.c:282
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Изборник радне површи:        %s\n"
 
-#: ../src/main.c:287 ../src/main.c:294 ../src/main.c:301
+#: ../src/main.c:284 ../src/main.c:291 ../src/main.c:298
 msgid "enabled"
 msgstr "омогућен"
 
-#: ../src/main.c:289 ../src/main.c:296 ../src/main.c:303
+#: ../src/main.c:286 ../src/main.c:293 ../src/main.c:300
 msgid "disabled"
 msgstr "онемогућен"
 
-#: ../src/main.c:292
+#: ../src/main.c:289
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Иконе површи:       %s\n"
 
-#: ../src/main.c:299
+#: ../src/main.c:296
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Иконе датотека површи:  %s\n"
 
-#: ../src/main.c:332
+#: ../src/main.c:329
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s није покренут.\n"
@@ -607,15 +434,6 @@ msgstr "_Уклони радну површ %d"
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "_Уклони радну површ „%s“"
-
-#: ../src/xfce-desktop.c:1082
-#, c-format
-msgid "Unable to load image from backdrop list file \"%s\""
-msgstr "Не успевам да учитам слику из датотеке позадинске листе „%s“"
-
-#: ../src/xfce-desktop.c:1084
-msgid "Desktop Error"
-msgstr "Грешка окружења"
 
 #: ../src/xfdesktop-file-icon-manager.c:497
 #: ../src/xfdesktop-file-icon-manager.c:514
@@ -704,7 +522,8 @@ msgid "_Open in New Window"
 msgstr "_Отвори у новом прозору"
 
 #: ../src/xfdesktop-file-icon-manager.c:1425
-#: ../src/xfdesktop-special-file-icon.c:505 ../src/xfdesktop-volume-icon.c:691
+#: ../src/xfdesktop-special-file-icon.c:505 ../src/xfdesktop-volume-icon.c:751
+#: ../src/xfdesktop-volume-icon.c:755
 msgid "_Open"
 msgstr "_Отвори"
 
@@ -761,7 +580,7 @@ msgid "Desktop _Settings..."
 msgstr "_Подешавања радне површи..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1744
-#: ../src/xfdesktop-volume-icon.c:739
+#: ../src/xfdesktop-volume-icon.c:797
 msgid "P_roperties..."
 msgstr "О_собине..."
 
@@ -773,15 +592,15 @@ msgstr "Грешка учитавања"
 msgid "Failed to load the desktop folder"
 msgstr "Не успевам да учитам фасциклу радне површи"
 
-#: ../src/xfdesktop-file-icon-manager.c:2938
+#: ../src/xfdesktop-file-icon-manager.c:2940
 msgid "Copy _Here"
 msgstr "Умножи _овде"
 
-#: ../src/xfdesktop-file-icon-manager.c:2938
+#: ../src/xfdesktop-file-icon-manager.c:2940
 msgid "_Move Here"
 msgstr "_Премести овде"
 
-#: ../src/xfdesktop-file-icon-manager.c:2938
+#: ../src/xfdesktop-file-icon-manager.c:2940
 msgid "_Link Here"
 msgstr "_Повежи овде"
 
@@ -912,12 +731,12 @@ msgstr ""
 "Уређај „%s“ је демонтиран. Молим, не уклањајте уређај и не прекидајте везу"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
+#: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:313
 msgid "Writing data to device"
 msgstr "Пишем податке на уређај"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
+#: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:316
 #, c-format
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be "
@@ -926,18 +745,31 @@ msgstr ""
 "Одређени подаци требају бити уписани на уређај „%s“, да би уређај био "
 "уклоњен. Молим, не извлачите и не уклањајте уређај"
 
+#: ../src/xfdesktop-notify.c:218
+msgid "Unmount Finished"
+msgstr "Откачињање је извршено"
+
+#: ../src/xfdesktop-notify.c:220 ../src/xfdesktop-notify.c:395
+#, c-format
+msgid "The device \"%s\" has been safely removed from the system. "
+msgstr "Уређај „%s“ је безбедно уклоњен са система."
+
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:253
+#: ../src/xfdesktop-notify.c:304
 msgid "Ejecting device"
 msgstr "Избацујем уређај"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:256
+#: ../src/xfdesktop-notify.c:307
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
 msgstr "Избацујем уређај „%s“. То може потрајати"
 
-#: ../src/xfdesktop-regular-file-icon.c:571
+#: ../src/xfdesktop-notify.c:393
+msgid "Eject Finished"
+msgstr "Избацивање је извршено"
+
+#: ../src/xfdesktop-regular-file-icon.c:556
 #, c-format
 msgid ""
 "Type: %s\n"
@@ -1018,14 +850,156 @@ msgstr "Не успевам да прикачим „%s“"
 msgid "Mount Failed"
 msgstr "Неуспешно монтирање"
 
-#: ../src/xfdesktop-volume-icon.c:707 ../src/xfdesktop-volume-icon.c:710
+#: ../src/xfdesktop-volume-icon.c:770
 msgid "E_ject Volume"
 msgstr "И_збаци уређај"
 
-#: ../src/xfdesktop-volume-icon.c:717
+#: ../src/xfdesktop-volume-icon.c:777
+msgid "_Unmount Volume"
+msgstr "_Откачи уређај"
+
+#: ../src/xfdesktop-volume-icon.c:784
 msgid "_Mount Volume"
 msgstr "_Монтирај уређај"
 
 #: ../src/xfdesktop-window-icon.c:208
 msgid "_Window Actions"
 msgstr "_Радње прозора"
+
+#~ msgid "Backdrop list file is not valid"
+#~ msgstr "Датотека позадинске листе није исправна"
+
+#~ msgid "Cannot create backdrop list \"%s\""
+#~ msgstr "Не успевам да направим позадинску листу „%s“"
+
+#~ msgid "Backdrop List Error"
+#~ msgstr "Уредник позадинске листе"
+
+#~ msgid "Create/Load Backdrop List"
+#~ msgstr "Направи/Учитај позадинску листу"
+
+#~ msgid ""
+#~ "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite "
+#~ "it?"
+#~ msgstr ""
+#~ "Датотека „%s“ није ваљана позадинска листа.  Да ли желите да је препишете?"
+
+#~ msgid "Invalid List File"
+#~ msgstr "Датотека листе није исправна"
+
+#~ msgid "Overwriting the file will cause its contents to be lost."
+#~ msgstr "Преписивање датотеке може узроковати да њен садржај буде изгубљен."
+
+#~ msgid "Replace"
+#~ msgstr "Замени"
+
+#~ msgid "Failed to write backdrop list to \"%s\""
+#~ msgstr "Не успевам да упишем позадинску листу у „%s“"
+
+#~ msgid "Add Image File(s)"
+#~ msgstr "Додај датотеку слике или више њих"
+
+#~ msgid "All files"
+#~ msgstr "Све датотеке"
+
+#~ msgid "Screen %d, Monitor %d"
+#~ msgstr "Екран %d, Монитор %d"
+
+#~ msgid "Screen %d"
+#~ msgstr "Екран %d"
+
+#~ msgid "Monitor %d (%s)"
+#~ msgstr "Монитор %d (%s)"
+
+#~ msgid "Monitor %d"
+#~ msgstr "Монитор %d"
+
+#~ msgid "<b>Adjustments</b>"
+#~ msgstr "<b>Подешавања</b>"
+
+#~ msgid "<b>Colors</b>"
+#~ msgstr "<b>Боје</b>"
+
+#~ msgid "<b>Image</b>"
+#~ msgstr "<b>Слика</b>"
+
+#~ msgid "<b>Images</b>"
+#~ msgstr "<b>Слике</b>"
+
+#~ msgid "Auto"
+#~ msgstr "Аутоматски"
+
+#~ msgid "Automatically pick a random image from a list file"
+#~ msgstr "Сам изабери насумичну слику из листе"
+
+#~ msgid "B_rightness:"
+#~ msgstr "О_светљење:"
+
+#~ msgid "Centered"
+#~ msgstr "Центрирано"
+
+#~ msgid "Create a new list, or load an existing one"
+#~ msgstr "Направи нову листу, или учитај постојећу"
+
+#~ msgid "Don't display an image at all"
+#~ msgstr "Не приказуј слику"
+
+#~ msgid "Image _list"
+#~ msgstr "_Листа слика"
+
+#~ msgid "Increase or decrease the brightness of the final image"
+#~ msgstr "Повећај или смањи осветљење крајње слике"
+
+#~ msgid "Increase or decrease the color saturation of the final image"
+#~ msgstr "Повећај или смањи засићење боја крајње слике"
+
+#~ msgid "Remove the selected image(s) from the list"
+#~ msgstr "Уклони слику или више њих са листе"
+
+#~ msgid "Sa_turation:"
+#~ msgstr "_Засићеност:"
+
+#~ msgid "Scaled"
+#~ msgstr "Раширено"
+
+#~ msgid "Select a single image as the backdrop"
+#~ msgstr "Изабери једну слику као позадину"
+
+#~ msgid "St_retch this background across all monitors."
+#~ msgstr "Ра_звуци ову позадину преко свих монитора."
+
+#~ msgid "Stretched"
+#~ msgstr "Развучена"
+
+#~ msgid "Tiled"
+#~ msgstr "Поплочана"
+
+#~ msgid ""
+#~ "When multiple monitors are present, select this option to stretch the "
+#~ "current background over all of them."
+#~ msgstr ""
+#~ "Када је присутно више монитора, одреди ову могућност да би развукао "
+#~ "позадину по свима."
+
+#~ msgid "Zoomed"
+#~ msgstr "Увећана"
+
+#~ msgid "_None"
+#~ msgstr "_Ништа"
+
+#~ msgid "_Single image"
+#~ msgstr "_Једна слика"
+
+#~ msgid "Label trans_parency:"
+#~ msgstr "Ознака прови_дности:"
+
+#~ msgid ""
+#~ "Specify the transparency level for the rounded label drawn behind the "
+#~ "icon text"
+#~ msgstr "Одреди ниво провидности за обла обележја исцртана иза икона текста"
+
+#~ msgid "Unable to load image from backdrop list file \"%s\""
+#~ msgstr "Не успевам да учитам слику из датотеке позадинске листе „%s“"
+
+#~ msgid "Desktop Error"
+#~ msgstr "Грешка окружења"
