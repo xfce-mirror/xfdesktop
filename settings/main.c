@@ -1158,7 +1158,11 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     if(wnck_window == NULL)
         wnck_window = wnck_screen_get_active_window(wnck_screen);
 
+    /* These callbacks are for updating the image_iconview when the window
+     * moves to another monitor or workspace */
     g_signal_connect(wnck_window, "geometry-changed",
+                     G_CALLBACK(cb_update_background_tab), panel);
+    g_signal_connect(wnck_window, "workspace-changed",
                      G_CALLBACK(cb_update_background_tab), panel);
 
     /* send invalid numbers so that the update_background_tab will update everything */

@@ -364,11 +364,6 @@ xfce_workspace_connect_backdrop_settings(XfceWorkspace *workspace,
                            G_OBJECT(backdrop), "image-style");
 
     buf[pp_len] = 0;
-    g_strlcat(buf, "brightness", sizeof(buf));
-    xfconf_g_property_bind(channel, buf, G_TYPE_INT,
-                           G_OBJECT(backdrop), "brightness");
-
-    buf[pp_len] = 0;
     g_strlcat(buf, "backdrop-cycle-enable", sizeof(buf));
     xfconf_g_property_bind(channel, buf, G_TYPE_BOOLEAN,
                            G_OBJECT(backdrop), "backdrop-cycle-enable");
