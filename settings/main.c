@@ -848,8 +848,11 @@ cb_xfdesktop_combo_image_style_changed(GtkComboBox *combo,
 
     if(gtk_combo_box_get_active(combo) == XFCE_BACKDROP_IMAGE_NONE) {
         gtk_widget_set_sensitive(panel->image_iconview, FALSE);
+        gtk_widget_set_tooltip_text(panel->image_iconview,
+                                    _("Image selection is unavailable while the image style is set to None."));
     } else {
         gtk_widget_set_sensitive(panel->image_iconview, TRUE);
+        gtk_widget_set_tooltip_text(panel->image_iconview, _("Select a background image for this display."));
     }
 }
 
