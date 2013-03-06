@@ -1013,6 +1013,11 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
         case XFCE_BACKDROP_IMAGE_TILED:
             image = gdk_pixbuf_new_from_file(backdrop->priv->image_path, NULL);
             tmp = gdk_pixbuf_new(GDK_COLORSPACE_RGB, TRUE, 8, w, h);
+            /* Now that the image has been loaded, recalculate the image
+             * size because gdk_pixbuf_get_file_info doesn't always return
+             * the correct size */
+            iw = gdk_pixbuf_get_width(image);
+            ih = gdk_pixbuf_get_height(image);
             for(i = 0; (i * iw) < w; i++) {
                 for(j = 0; (j * ih) < h; j++) {
                     gint newx = iw * i, newy = ih * j;
