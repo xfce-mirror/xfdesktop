@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-27 15:09+0000\n"
+"POT-Creation-Date: 2013-03-09 10:12+0000\n"
 "PO-Revision-Date: 2012-04-15 13:50+0100\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
@@ -47,18 +47,19 @@ msgid "Removable Devices"
 msgstr "Vyměnitelné jednotky"
 
 #: ../settings/main.c:454
-#, fuzzy, c-format
+#, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
-msgstr "Obrazovka %d, monitor %d (%s)"
+msgstr "Tapeta pro %s na monitoru %d (%s)"
 
 #: ../settings/main.c:458
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
-msgstr ""
+msgstr "Tapeta pro %s na monitoru %d"
 
 #: ../settings/main.c:862
+#, fuzzy
 msgid "Spanning screens"
-msgstr ""
+msgstr "Rozložené obrazovky"
 
 #: ../settings/main.c:1011
 msgid "Image files"
@@ -528,8 +529,8 @@ msgid "_Open in New Window"
 msgstr "_Otevřít v novém okně"
 
 #: ../src/xfdesktop-file-icon-manager.c:1425
-#: ../src/xfdesktop-special-file-icon.c:505 ../src/xfdesktop-volume-icon.c:751
-#: ../src/xfdesktop-volume-icon.c:755
+#: ../src/xfdesktop-special-file-icon.c:505 ../src/xfdesktop-volume-icon.c:774
+#: ../src/xfdesktop-volume-icon.c:778
 msgid "_Open"
 msgstr "_Otevřít"
 
@@ -586,7 +587,7 @@ msgid "Desktop _Settings..."
 msgstr "_Nastavení plochy..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1744
-#: ../src/xfdesktop-volume-icon.c:797
+#: ../src/xfdesktop-volume-icon.c:820
 msgid "P_roperties..."
 msgstr "_Vlastnosti..."
 
@@ -737,12 +738,12 @@ msgstr ""
 "Systém odpojuje zařízení \"%s\". Nevyjímejte médium ani neodpojujte jednotku"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:313
+#: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:318
 msgid "Writing data to device"
 msgstr "Zápis dat na zařízení"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:316
+#: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:321
 #, c-format
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be "
@@ -751,27 +752,27 @@ msgstr ""
 "Je nutné zapsat data na zařízení \"%s\" před jeho odebráním. Nevyjímejte "
 "médium ani neodpojujte jednotku"
 
-#: ../src/xfdesktop-notify.c:218
+#: ../src/xfdesktop-notify.c:223
 msgid "Unmount Finished"
 msgstr "Odpojení dokončeno"
 
-#: ../src/xfdesktop-notify.c:220 ../src/xfdesktop-notify.c:395
+#: ../src/xfdesktop-notify.c:225 ../src/xfdesktop-notify.c:405
 #, c-format
 msgid "The device \"%s\" has been safely removed from the system. "
 msgstr "Zařízení %s bylo úspěšně odebráno ze systému."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:304
+#: ../src/xfdesktop-notify.c:309
 msgid "Ejecting device"
 msgstr "Vysouvání zařízení"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:307
+#: ../src/xfdesktop-notify.c:312
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
 msgstr "Zařízení \"%s\" se vysouvá. Tato akce může chvíli trvat"
 
-#: ../src/xfdesktop-notify.c:393
+#: ../src/xfdesktop-notify.c:403
 msgid "Eject Finished"
 msgstr "Vysunout dokončené"
 
@@ -838,33 +839,33 @@ msgstr ""
 "Vyměnitelný svazek\n"
 "Dosud nepřipojeno"
 
-#: ../src/xfdesktop-volume-icon.c:480 ../src/xfdesktop-volume-icon.c:522
+#: ../src/xfdesktop-volume-icon.c:483 ../src/xfdesktop-volume-icon.c:528
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "Vysunutí \"%s\" se nezdařilo"
 
-#: ../src/xfdesktop-volume-icon.c:485 ../src/xfdesktop-volume-icon.c:527
+#: ../src/xfdesktop-volume-icon.c:488 ../src/xfdesktop-volume-icon.c:533
 msgid "Eject Failed"
 msgstr "Vysunutí se nezdařilo"
 
-#: ../src/xfdesktop-volume-icon.c:559
+#: ../src/xfdesktop-volume-icon.c:565
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "Připojení \"%s\" se nezdařilo"
 
-#: ../src/xfdesktop-volume-icon.c:562
+#: ../src/xfdesktop-volume-icon.c:568
 msgid "Mount Failed"
 msgstr "Připojení se nezdařilo"
 
-#: ../src/xfdesktop-volume-icon.c:770
+#: ../src/xfdesktop-volume-icon.c:793
 msgid "E_ject Volume"
 msgstr "_Vysunout svazek"
 
-#: ../src/xfdesktop-volume-icon.c:777
+#: ../src/xfdesktop-volume-icon.c:800
 msgid "_Unmount Volume"
 msgstr "_Odpojit svazek"
 
-#: ../src/xfdesktop-volume-icon.c:784
+#: ../src/xfdesktop-volume-icon.c:807
 msgid "_Mount Volume"
 msgstr "_Připojit svazek"
 
