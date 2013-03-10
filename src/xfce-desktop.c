@@ -101,7 +101,10 @@ struct _XfceDesktopPriv
     gint nworkspaces;
     XfceWorkspace **workspaces;
     gint current_workspace;
-    
+
+    gboolean single_workspace_mode;
+    gint single_workspace_num;
+
     SessionLogoutFunc session_logout_func;
     
 #ifdef ENABLE_DESKTOP_ICONS
@@ -130,6 +133,8 @@ enum
     PROP_ICON_FONT_SIZE,
     PROP_ICON_FONT_SIZE_SET,
 #endif
+    PROP_SINGLE_WORKSPACE_MODE,
+    PROP_SINGLE_WORKSPACE_NUMBER,
 };
 
 
@@ -156,6 +161,12 @@ static gboolean xfce_desktop_delete_event(GtkWidget *w,
 static void xfce_desktop_style_set(GtkWidget *w,
                                    GtkStyle *old_style);
 
+static void xfce_desktop_set_single_workspace_mode(XfceDesktop *desktop,
+                                                   gboolean single_workspace);
+static void xfce_desktop_set_single_workspace_number(XfceDesktop *desktop,
+                                                     gint workspace_num);
+
+static gboolean xfce_desktop_get_single_workspace_mode(XfceDesktop *desktop);
 static gint xfce_desktop_get_current_workspace(XfceDesktop *desktop);
 
 static guint signals[N_SIGNALS] = { 0, };
@@ -471,7 +482,7 @@ workspace_backdrop_changed_cb(XfceWorkspace *workspace,
 
     g_return_if_fail(XFCE_IS_WORKSPACE(workspace) && XFCE_IS_BACKDROP(backdrop));
 
-    if(desktop->priv->current_workspace == xfce_workspace_get_workspace_num(workspace))
+    if(xfce_desktop_get_current_workspace(desktop) == xfce_workspace_get_workspace_num(workspace))
         backdrop_changed_cb(backdrop, user_data);
 }
 
@@ -481,15 +492,17 @@ workspace_changed_cb(WnckScreen *wnck_screen,
                      gpointer user_data)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(user_data);
-    WnckWorkspace *wnck_workspace = wnck_screen_get_active_workspace(wnck_screen);
     gint current_workspace, new_workspace, i;
     XfceBackdrop *current_backdrop, *new_backdrop;
 
     TRACE("entering");
 
     current_workspace = desktop->priv->current_workspace;
-    new_workspace = wnck_workspace_get_number(wnck_workspace);
-    desktop->priv->current_workspace = new_workspace;
+    desktop->priv->current_workspace = xfce_desktop_get_current_workspace(desktop);
+    new_workspace = desktop->priv->current_workspace;
+
+    DBG("current_workspace %d, new_workspace %d",
+        current_workspace, new_workspace);
 
     /* special case for the spanning screen option */
     if(xfce_workspace_get_xinerama_stretch(desktop->priv->workspaces[new_workspace])) {
@@ -711,6 +724,20 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
                                                          "icon font size set",
                                                          FALSE,
                                                          XFDESKTOP_PARAM_FLAGS));
+
+    g_object_class_install_property(gobject_class, PROP_SINGLE_WORKSPACE_MODE,
+                                    g_param_spec_boolean("single-workspace-mode",
+                                                         "single-workspace-mode",
+                                                         "single-workspace-mode",
+                                                         TRUE,
+                                                         XFDESKTOP_PARAM_FLAGS));
+
+    g_object_class_install_property(gobject_class, PROP_SINGLE_WORKSPACE_NUMBER,
+                                    g_param_spec_int("single-workspace-number",
+                                                     "single-workspace-number",
+                                                     "single-workspace-number",
+                                                     0, 31, 0,
+                                                     XFDESKTOP_PARAM_FLAGS));
 #endif
 #undef XFDESKTOP_PARAM_FLAGS
 }
@@ -768,6 +795,16 @@ xfce_desktop_set_property(GObject *object,
             break;
 
 #endif
+        case PROP_SINGLE_WORKSPACE_MODE:
+            xfce_desktop_set_single_workspace_mode(desktop,
+                                                   g_value_get_boolean(value));
+            break;
+
+        case PROP_SINGLE_WORKSPACE_NUMBER:
+            xfce_desktop_set_single_workspace_number(desktop,
+                                                     g_value_get_int(value));
+            break;
+
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
             break;
@@ -801,6 +838,14 @@ xfce_desktop_get_property(GObject *object,
             break;
 
 #endif
+        case PROP_SINGLE_WORKSPACE_MODE:
+            g_value_set_boolean(value, desktop->priv->single_workspace_mode);
+            break;
+
+        case PROP_SINGLE_WORKSPACE_NUMBER:
+            g_value_set_int(value, desktop->priv->single_workspace_num);
+            break;
+
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
             break;
@@ -816,7 +861,6 @@ xfce_desktop_realize(GtkWidget *widget)
     Window xid;
     GdkWindow *groot;
     WnckScreen *wnck_screen;
-    WnckWorkspace *wnck_workspace;
     
     TRACE("entering");
 
@@ -866,9 +910,16 @@ xfce_desktop_realize(GtkWidget *widget)
     wnck_screen_force_update(wnck_screen);
     desktop->priv->wnck_screen = wnck_screen;
 
+    xfconf_g_property_bind(desktop->priv->channel,
+                           SINGLE_WORKSPACE_MODE, G_TYPE_BOOLEAN,
+                           G_OBJECT(desktop), "single-workspace-mode");
+
+    xfconf_g_property_bind(desktop->priv->channel,
+                           SINGLE_WORKSPACE_NUMBER, G_TYPE_INT,
+                           G_OBJECT(desktop), "single-workspace-number");
+
     /* Get the current workspace number */
-    wnck_workspace = wnck_screen_get_active_workspace(wnck_screen);
-    desktop->priv->current_workspace = wnck_workspace_get_number(wnck_workspace);
+    desktop->priv->current_workspace = xfce_desktop_get_current_workspace(desktop);
     desktop->priv->nworkspaces = wnck_screen_get_workspace_count(wnck_screen);
 
     desktop->priv->workspaces = g_realloc(desktop->priv->workspaces,
@@ -1113,12 +1164,37 @@ xfce_desktop_connect_settings(XfceDesktop *desktop)
     xfce_desktop_thaw_updates(desktop);
 }
 
+static gboolean
+xfce_desktop_get_single_workspace_mode(XfceDesktop *desktop)
+{
+    g_return_val_if_fail(XFCE_IS_DESKTOP(desktop), TRUE);
+
+    return desktop->priv->single_workspace_mode;
+}
+
 static gint
 xfce_desktop_get_current_workspace(XfceDesktop *desktop)
 {
+    WnckWorkspace *wnck_workspace;
+    gint workspace_num, current_workspace;
+
     g_return_val_if_fail(XFCE_IS_DESKTOP(desktop), -1);
 
-    return desktop->priv->current_workspace;
+    wnck_workspace = wnck_screen_get_active_workspace(desktop->priv->wnck_screen);
+    workspace_num = wnck_workspace_get_number(wnck_workspace);
+
+    /* If we're in single_workspace mode we need to return the workspace that
+     * it was set to, otherwise return the current workspace */
+    if(xfce_desktop_get_single_workspace_mode(desktop)) {
+        current_workspace = desktop->priv->single_workspace_num;
+    } else {
+        current_workspace = workspace_num;
+    }
+
+    DBG("workspace_num %d, single_workspace_num %d, current_workspace %d",
+        workspace_num, desktop->priv->single_workspace_num, current_workspace);
+
+    return current_workspace;
 }
 
 /* public api */
@@ -1279,6 +1355,42 @@ xfce_desktop_set_use_icon_font_size(XfceDesktop *desktop,
 #endif
 }
 
+static void
+xfce_desktop_set_single_workspace_mode(XfceDesktop *desktop,
+                                       gboolean single_workspace)
+{
+    g_return_if_fail(XFCE_IS_DESKTOP(desktop));
+
+    if(single_workspace == desktop->priv->single_workspace_mode)
+        return;
+
+    desktop->priv->single_workspace_mode = single_workspace;
+
+    DBG("single_workspace_mode now %s", single_workspace ? "TRUE" : "FALSE");
+
+    /* Fake a screen size changed to update the backdrop */
+    screen_size_changed_cb(desktop->priv->gscreen, desktop);
+}
+
+static void
+xfce_desktop_set_single_workspace_number(XfceDesktop *desktop,
+                                         gint workspace_num)
+{
+    g_return_if_fail(XFCE_IS_DESKTOP(desktop));
+
+    if(workspace_num == desktop->priv->single_workspace_num)
+        return;
+
+    DBG("single_workspace_num now %d", workspace_num);
+
+    desktop->priv->single_workspace_num = workspace_num;
+
+    if(xfce_desktop_get_single_workspace_mode(desktop)) {
+        /* Fake a screen size changed to update the backdrop */
+        screen_size_changed_cb(desktop->priv->gscreen, desktop);
+    }
+}
+
 void
 xfce_desktop_set_session_logout_func(XfceDesktop *desktop,
                                      SessionLogoutFunc logout_func)
@@ -1386,7 +1498,7 @@ xfce_desktop_refresh(XfceDesktop *desktop)
     if(!gtk_widget_get_realized(GTK_WIDGET(desktop)))
         return;
 
-    current_workspace = desktop->priv->current_workspace;
+    current_workspace = xfce_desktop_get_current_workspace(desktop);
 
     /* reload backgrounds */
     for(i = 0; i < xfce_desktop_get_n_monitors(desktop); i++) {

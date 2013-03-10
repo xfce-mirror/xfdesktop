@@ -49,6 +49,9 @@
 #define ARRANGE_MESSAGE    "arrange"
 #define QUIT_MESSAGE       "quit"
 
+#define SINGLE_WORKSPACE_MODE     "/backdrop/single-workspace-mode"
+#define SINGLE_WORKSPACE_NUMBER   "/backdrop/single-workspace-number"
+
 /**
  * File information namespaces queried for #GFileInfo objects.
  */

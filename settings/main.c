@@ -96,6 +96,8 @@ typedef struct
     gchar *monitor_name;
     gulong image_list_loaded:1;
 
+    WnckWindow *wnck_window;
+
     GtkWidget *frame_image_list;
     GtkWidget *image_iconview;
     GtkWidget *btn_folder;
@@ -674,6 +676,35 @@ cb_image_selection_changed(GtkIconView *icon_view,
     g_free(buf);
 }
 
+static gint
+xfdesktop_settings_get_active_workspace(AppearancePanel *panel,
+                                        WnckWindow *wnck_window)
+{
+    WnckWorkspace *wnck_workspace;
+    gboolean single_workspace;
+    gint workspace_num, active_workspace;
+
+    wnck_workspace = wnck_window_get_workspace(wnck_window);
+
+    workspace_num = wnck_workspace_get_number(wnck_workspace);
+
+    single_workspace = xfconf_channel_get_bool(panel->channel,
+                                               SINGLE_WORKSPACE_MODE,
+                                               TRUE);
+
+    /* If we're in single_workspace mode we need to return the workspace that
+     * it was set to, otherwise return the current workspace */
+    if(single_workspace) {
+        active_workspace = xfconf_channel_get_int(panel->channel,
+                                                  SINGLE_WORKSPACE_NUMBER,
+                                                  0);
+    } else {
+        active_workspace = workspace_num;
+    }
+
+    return active_workspace;
+}
+
 static void
 cb_xfdesktop_chk_custom_font_size_toggled(GtkCheckButton *button,
                                           gpointer user_data)
@@ -1013,7 +1044,7 @@ cb_update_background_tab(WnckWindow *wnck_window,
     screen = gtk_widget_get_screen(panel->image_iconview);
     wnck_workspace = wnck_window_get_workspace(wnck_window);
 
-    workspace_num = wnck_workspace_get_number(wnck_workspace);
+    workspace_num = xfdesktop_settings_get_active_workspace(panel, wnck_window);
     screen_num = gdk_screen_get_number(screen);
     monitor_num = gdk_screen_get_monitor_at_window(screen,
                                                    gtk_widget_get_window(panel->image_iconview));
@@ -1062,6 +1093,29 @@ cb_update_background_tab(WnckWindow *wnck_window,
 }
 
 static void
+cb_xfdesktop_chk_apply_to_all(GtkCheckButton *button,
+                              gpointer user_data)
+{
+    AppearancePanel *panel = user_data;
+    gboolean active;
+    active = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(button));
+
+    TRACE("entering");
+
+    xfconf_channel_set_bool(panel->channel,
+                            SINGLE_WORKSPACE_MODE,
+                            active);
+
+    if(active) {
+        xfconf_channel_set_int(panel->channel,
+                               SINGLE_WORKSPACE_NUMBER,
+                               panel->workspace);
+    } else {
+        cb_update_background_tab(panel->wnck_window, panel);
+    }
+}
+
+static void
 xfdesktop_settings_setup_image_iconview(AppearancePanel *panel)
 {
     GtkIconView *iconview = GTK_ICON_VIEW(panel->image_iconview);
@@ -1093,13 +1147,12 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     GtkWidget *appearance_container, *chk_custom_font_size,
               *spin_font_size, *w, *box, *spin_icon_size,
               *chk_show_thumbnails, *chk_single_click, *appearance_settings,
-              *bnt_exit;
+              *bnt_exit, *chk_apply_to_all;
     GtkBuilder *appearance_gxml;
     AppearancePanel *panel = g_new0(AppearancePanel, 1);
     GError *error = NULL;
     GtkFileFilter *filter;
     WnckScreen *wnck_screen;
-    WnckWindow *wnck_window = NULL;
 
     TRACE("entering");
 
@@ -1156,16 +1209,16 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     /* We have to force wnck to initialize */
     wnck_screen = wnck_screen_get(panel->screen);
     wnck_screen_force_update(wnck_screen);
-    wnck_window = wnck_window_get(window_xid);
+    panel->wnck_window = wnck_window_get(window_xid);
 
-    if(wnck_window == NULL)
-        wnck_window = wnck_screen_get_active_window(wnck_screen);
+    if(panel->wnck_window == NULL)
+        panel->wnck_window = wnck_screen_get_active_window(wnck_screen);
 
     /* These callbacks are for updating the image_iconview when the window
      * moves to another monitor or workspace */
-    g_signal_connect(wnck_window, "geometry-changed",
+    g_signal_connect(panel->wnck_window, "geometry-changed",
                      G_CALLBACK(cb_update_background_tab), panel);
-    g_signal_connect(wnck_window, "workspace-changed",
+    g_signal_connect(panel->wnck_window, "workspace-changed",
                      G_CALLBACK(cb_update_background_tab), panel);
 
     /* send invalid numbers so that the update_background_tab will update everything */
@@ -1235,6 +1288,18 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     /* Pick the first entries so something shows up */
     gtk_combo_box_set_active(GTK_COMBO_BOX(panel->image_style_combo), 0);
     gtk_combo_box_set_active(GTK_COMBO_BOX(panel->color_style_combo), 0);
+
+    /* Use these settings for all workspaces checkbox */
+    chk_apply_to_all =  GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
+                                                          "chk_apply_to_all"));
+
+    if(xfconf_channel_get_bool(channel, SINGLE_WORKSPACE_MODE, TRUE)) {
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(chk_apply_to_all), TRUE);
+    }
+
+    g_signal_connect(G_OBJECT(chk_apply_to_all), "toggled",
+                    G_CALLBACK(cb_xfdesktop_chk_apply_to_all),
+                    panel);
 
     /* background cycle timer */
     panel->backdrop_cycle_chkbox = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
@@ -1318,7 +1383,7 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
                            "active");
 
     setup_special_icon_list(main_gxml, channel);
-    cb_update_background_tab(wnck_window, panel);
+    cb_update_background_tab(panel->wnck_window, panel);
 }
 
 static void
