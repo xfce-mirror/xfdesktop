@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-02 04:54+0000\n"
+"POT-Creation-Date: 2013-03-10 07:36+0000\n"
 "PO-Revision-Date: 2012-03-08 20:41+0100\n"
 "Last-Translator: Cristian Marchi <cri.penta@gmail.com>\n"
 "Language-Team: Italian <xfce-it-translators@googlegroups.com>\n"
@@ -126,7 +126,7 @@ msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
 msgid "Color:"
-msgstr "Colore:"
+msgstr "Colore: "
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
 msgid "Folder:"
@@ -235,7 +235,7 @@ msgstr "Dimen_sione delle icone:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:11
 msgid "Icon _type:"
-msgstr "_Tipo delle icone:"
+msgstr "_Tipo di icone:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:12
 msgid "Left"
@@ -540,8 +540,8 @@ msgid "_Open in New Window"
 msgstr "Apri in una nuova _finestra"
 
 #: ../src/xfdesktop-file-icon-manager.c:1425
-#: ../src/xfdesktop-special-file-icon.c:505 ../src/xfdesktop-volume-icon.c:751
-#: ../src/xfdesktop-volume-icon.c:755
+#: ../src/xfdesktop-special-file-icon.c:505 ../src/xfdesktop-volume-icon.c:774
+#: ../src/xfdesktop-volume-icon.c:778
 msgid "_Open"
 msgstr "_Apri"
 
@@ -598,7 +598,7 @@ msgid "Desktop _Settings..."
 msgstr "Impostazioni della sc_rivania..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1744
-#: ../src/xfdesktop-volume-icon.c:797
+#: ../src/xfdesktop-volume-icon.c:820
 msgid "P_roperties..."
 msgstr "_Proprietà..."
 
@@ -750,12 +750,12 @@ msgstr ""
 "supporto o disconnettere il dispositivo"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:313
+#: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:318
 msgid "Writing data to device"
 msgstr "Scrittura dei dati sul dispositivo"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:316
+#: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:321
 #, c-format
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be "
@@ -764,29 +764,29 @@ msgstr ""
 "Devono essere scritti dei dati sul dispositivo \"%s\" prima che possa essere "
 "rimosso. Non rimuovere il supporto o disconnettere il dispositivo"
 
-#: ../src/xfdesktop-notify.c:218
+#: ../src/xfdesktop-notify.c:223
 msgid "Unmount Finished"
 msgstr "Smontaggio concluso"
 
-#: ../src/xfdesktop-notify.c:220 ../src/xfdesktop-notify.c:395
+#: ../src/xfdesktop-notify.c:225 ../src/xfdesktop-notify.c:405
 #, c-format
 msgid "The device \"%s\" has been safely removed from the system. "
 msgstr ""
 "Il dispositivo \"%s\" sta per essere espulso. Potrebbe volerci del tempo"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:304
+#: ../src/xfdesktop-notify.c:309
 msgid "Ejecting device"
 msgstr "Espulsione del dispositivo in corso..."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:307
+#: ../src/xfdesktop-notify.c:312
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
 msgstr ""
 "Il dispositivo \"%s\" sta per essere espulso. Potrebbe volerci del tempo"
 
-#: ../src/xfdesktop-notify.c:393
+#: ../src/xfdesktop-notify.c:403
 msgid "Eject Finished"
 msgstr "Espulsione conclusa"
 
@@ -853,33 +853,33 @@ msgstr ""
 "Dispositivo rimovibile\n"
 "Non ancora montato"
 
-#: ../src/xfdesktop-volume-icon.c:480 ../src/xfdesktop-volume-icon.c:522
+#: ../src/xfdesktop-volume-icon.c:483 ../src/xfdesktop-volume-icon.c:528
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "Impossibile espellere \"%s\""
 
-#: ../src/xfdesktop-volume-icon.c:485 ../src/xfdesktop-volume-icon.c:527
+#: ../src/xfdesktop-volume-icon.c:488 ../src/xfdesktop-volume-icon.c:533
 msgid "Eject Failed"
 msgstr "Espulsione fallita"
 
-#: ../src/xfdesktop-volume-icon.c:559
+#: ../src/xfdesktop-volume-icon.c:565
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "Impossibile montare \"%s\""
 
-#: ../src/xfdesktop-volume-icon.c:562
+#: ../src/xfdesktop-volume-icon.c:568
 msgid "Mount Failed"
 msgstr "Montaggio fallito"
 
-#: ../src/xfdesktop-volume-icon.c:770
+#: ../src/xfdesktop-volume-icon.c:793
 msgid "E_ject Volume"
 msgstr "_Espelli volume"
 
-#: ../src/xfdesktop-volume-icon.c:777
+#: ../src/xfdesktop-volume-icon.c:800
 msgid "_Unmount Volume"
 msgstr "Smo_nta volume"
 
-#: ../src/xfdesktop-volume-icon.c:784
+#: ../src/xfdesktop-volume-icon.c:807
 msgid "_Mount Volume"
 msgstr "_Monta volume"
 
