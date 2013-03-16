@@ -54,9 +54,8 @@
 #include "xfdesktop-settings-ui.h"
 #include "xfdesktop-settings-appearance-frame-ui.h"
 
-#define PREVIEW_HEIGHT  48
-#define MAX_ASPECT_RATIO 3.0f
-#define PREVIEW_WIDTH 128
+#define PREVIEW_HEIGHT  96
+#define MAX_ASPECT_RATIO 2.0f
 
 #define SHOW_DESKTOP_MENU_PROP               "/desktop-menu/show"
 #define DESKTOP_MENU_SHOW_ICONS_PROP         "/desktop-menu/show-icons"
@@ -1126,9 +1125,11 @@ xfdesktop_settings_setup_image_iconview(AppearancePanel *panel)
 
     g_object_set(G_OBJECT(iconview),
                 "pixbuf-column", COL_PIX,
-                "item-width", PREVIEW_WIDTH,
                 "tooltip-column", COL_NAME,
                 "selection-mode", GTK_SELECTION_BROWSE,
+                "column-spacing", 2,
+                "item-padding", 2,
+                "margin", 2,
                 NULL);
 
     g_signal_connect(G_OBJECT(iconview), "selection-changed",
