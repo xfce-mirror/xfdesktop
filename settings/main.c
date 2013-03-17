@@ -670,6 +670,7 @@ cb_image_selection_changed(GtkIconView *icon_view,
         xfconf_channel_set_string(panel->channel, buf, filename);
     }
 
+    g_list_foreach (selected_items, (GFunc)gtk_tree_path_free, NULL);
     g_list_free(selected_items);
     g_free(current_filename);
     g_free(buf);
@@ -819,10 +820,13 @@ cb_folder_selection_changed(GtkWidget *button,
     TRACE("entering");
 
     /* Check to see if the folder actually did change */
-    if(g_strcmp0(filename, previous_filename) == 0)
+    if(g_strcmp0(filename, previous_filename) == 0) {
+        g_free(filename);
         return;
+    }
 
     TRACE("folder changed to: %s", filename);
+    g_free(previous_filename);
     previous_filename = filename;
 
     xfdesktop_settings_stop_image_loading(panel);
