@@ -409,7 +409,9 @@ screen_size_changed_cb(GdkScreen *gscreen, gpointer user_data)
     TRACE("entering");
 
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
-    g_return_if_fail(desktop->priv->workspaces);
+
+    if(desktop->priv->workspaces == NULL)
+        return;
     
     w = gdk_screen_get_width(gscreen);
     h = gdk_screen_get_height(gscreen);
