@@ -149,7 +149,6 @@ backdrop_cycle_cb(XfceBackdrop *backdrop, gpointer user_data)
     if(g_strcmp0(backdrop_file, new_backdrop) != 0) {
         xfce_backdrop_set_image_filename(backdrop, new_backdrop);
         g_free(new_backdrop);
-        g_signal_emit(G_OBJECT(user_data), signals[WORKSPACE_BACKDROP_CHANGED], 0, backdrop);
     }
 }
 

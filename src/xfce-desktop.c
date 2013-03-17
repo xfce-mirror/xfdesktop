@@ -321,6 +321,7 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     cairo_t *cr;
     GdkPixbuf *pix;
     GdkRectangle rect;
+    GdkRegion *clip_region = NULL;
     gint i, monitor = -1, current_workspace;
     
     TRACE("entering");
@@ -376,27 +377,75 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
 
     xfce_backdrop_set_size(backdrop, rect.width, rect.height);
 
-    /* create/get the composited backdrop pixmap */
-    pix = xfce_backdrop_get_pixbuf(backdrop);
-    if(!pix)
-        return;
+    if(monitor > 0
+       && !xfce_workspace_get_xinerama_stretch(desktop->priv->workspaces[current_workspace])) {
+        clip_region = gdk_region_rectangle(&rect);
 
-    cr = gdk_cairo_create(GDK_DRAWABLE(pmap));
-    gdk_cairo_set_source_pixbuf(cr, pix, rect.x, rect.y);
-    cairo_paint(cr);
-    g_object_unref(G_OBJECT(pix));
-    cairo_destroy(cr);
-    
-    /* tell gtk to redraw the repainted area */
-    gtk_widget_queue_draw_area(GTK_WIDGET(desktop), rect.x, rect.y,
-                               rect.width, rect.height);
-    
-    set_imgfile_root_property(desktop,
-                              xfce_backdrop_get_image_filename(backdrop),
-                              monitor);
-    
-    /* do this again so apps watching the root win notice the update */
-    set_real_root_window_pixmap(gscreen, pmap);
+        DBG("clip_region: x: %d, y: %d, w: %d, h: %d",
+            rect.x, rect.y, rect.width, rect.height);
+
+        /* If we are not monitor 0 on a multi-monitor setup we need to subtract
+         * all the previous monitor regions so we don't draw over them. This
+         * should prevent the overlap and double backdrop drawing bugs.
+         */
+        for(i = 0; i < monitor; i++) {
+            GdkRectangle previous_monitor;
+            GdkRegion *previous_region;
+            gdk_screen_get_monitor_geometry(gscreen, i, &previous_monitor);
+
+            DBG("previous_monitor: x: %d, y: %d, w: %d, h: %d",
+                previous_monitor.x, previous_monitor.y,
+                previous_monitor.width, previous_monitor.height);
+
+            previous_region = gdk_region_rectangle(&previous_monitor);
+
+            gdk_region_subtract(clip_region, previous_region);
+
+            gdk_region_destroy(previous_region);
+        }
+    }
+
+    if(clip_region != NULL) {
+        /* Update the area to redraw to limit the icons/area painted */
+        gdk_region_get_clipbox(clip_region, &rect);
+        DBG("area to update: x: %d, y: %d, w: %d, h: %d",
+            rect.x, rect.y, rect.width, rect.height);
+    }
+
+    if(rect.width != 0 && rect.height != 0) {
+        /* create/get the composited backdrop pixmap */
+        pix = xfce_backdrop_get_pixbuf(backdrop);
+        if(!pix)
+            return;
+
+        cr = gdk_cairo_create(GDK_DRAWABLE(pmap));
+        gdk_cairo_set_source_pixbuf(cr, pix, rect.x, rect.y);
+
+        /* clip the area so we don't draw over a previous wallpaper */
+        if(clip_region != NULL) {
+            gdk_cairo_region(cr, clip_region);
+            cairo_clip(cr);
+        }
+
+        cairo_paint(cr);
+        g_object_unref(G_OBJECT(pix));
+
+        cairo_destroy(cr);
+
+        /* tell gtk to redraw the repainted area */
+        gtk_widget_queue_draw_area(GTK_WIDGET(desktop), rect.x, rect.y,
+                                   rect.width, rect.height);
+
+        set_imgfile_root_property(desktop,
+                                  xfce_backdrop_get_image_filename(backdrop),
+                                  monitor);
+
+        /* do this again so apps watching the root win notice the update */
+        set_real_root_window_pixmap(gscreen, pmap);
+    }
+
+    if(clip_region != NULL)
+        gdk_region_destroy(clip_region);
 }
 
 static void
