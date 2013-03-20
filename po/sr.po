@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfdesktop 4.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-02 23:03+0000\n"
+"POT-Creation-Date: 2013-03-20 08:21+0000\n"
 "PO-Revision-Date: 2012-06-20 08:32+0200\n"
 "Last-Translator: salepetronije <salepetronije@gmail.com>\n"
 "Language-Team: српски <xfce-i18n@xfce.org>\n"
@@ -43,7 +43,7 @@ msgstr "Уклоњиви уређаји"
 #: ../settings/main.c:454
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
-msgstr "Позадинска слика %s за екран %d"
+msgstr "Позадинска слика %s за екран %d (%s)"
 
 #: ../settings/main.c:458
 #, c-format
@@ -64,7 +64,7 @@ msgstr "Управник подешавања утичнице"
 
 #: ../settings/main.c:1111
 msgid "SOCKET ID"
-msgstr "ИБ УТИЧНИЦЕ"
+msgstr "ЛБ УТИЧНИЦЕ"
 
 #: ../settings/main.c:1112
 msgid "Version information"
@@ -522,8 +522,8 @@ msgid "_Open in New Window"
 msgstr "_Отвори у новом прозору"
 
 #: ../src/xfdesktop-file-icon-manager.c:1425
-#: ../src/xfdesktop-special-file-icon.c:505 ../src/xfdesktop-volume-icon.c:751
-#: ../src/xfdesktop-volume-icon.c:755
+#: ../src/xfdesktop-special-file-icon.c:505 ../src/xfdesktop-volume-icon.c:774
+#: ../src/xfdesktop-volume-icon.c:778
 msgid "_Open"
 msgstr "_Отвори"
 
@@ -580,7 +580,7 @@ msgid "Desktop _Settings..."
 msgstr "_Подешавања радне површи..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1744
-#: ../src/xfdesktop-volume-icon.c:797
+#: ../src/xfdesktop-volume-icon.c:820
 msgid "P_roperties..."
 msgstr "О_собине..."
 
@@ -731,12 +731,12 @@ msgstr ""
 "Уређај „%s“ је демонтиран. Молим, не уклањајте уређај и не прекидајте везу"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:313
+#: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:318
 msgid "Writing data to device"
 msgstr "Пишем податке на уређај"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:316
+#: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:321
 #, c-format
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be "
@@ -745,27 +745,27 @@ msgstr ""
 "Одређени подаци требају бити уписани на уређај „%s“, да би уређај био "
 "уклоњен. Молим, не извлачите и не уклањајте уређај"
 
-#: ../src/xfdesktop-notify.c:218
+#: ../src/xfdesktop-notify.c:223
 msgid "Unmount Finished"
 msgstr "Откачињање је извршено"
 
-#: ../src/xfdesktop-notify.c:220 ../src/xfdesktop-notify.c:395
+#: ../src/xfdesktop-notify.c:225 ../src/xfdesktop-notify.c:405
 #, c-format
 msgid "The device \"%s\" has been safely removed from the system. "
 msgstr "Уређај „%s“ је безбедно уклоњен са система."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:304
+#: ../src/xfdesktop-notify.c:309
 msgid "Ejecting device"
 msgstr "Избацујем уређај"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:307
+#: ../src/xfdesktop-notify.c:312
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
 msgstr "Избацујем уређај „%s“. То може потрајати"
 
-#: ../src/xfdesktop-notify.c:393
+#: ../src/xfdesktop-notify.c:403
 msgid "Eject Finished"
 msgstr "Избацивање је извршено"
 
@@ -832,33 +832,33 @@ msgstr ""
 "Уклоњиви уређај\n"
 "Није прикачен"
 
-#: ../src/xfdesktop-volume-icon.c:480 ../src/xfdesktop-volume-icon.c:522
+#: ../src/xfdesktop-volume-icon.c:483 ../src/xfdesktop-volume-icon.c:528
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "Не успевам да откачим „%s“"
 
-#: ../src/xfdesktop-volume-icon.c:485 ../src/xfdesktop-volume-icon.c:527
+#: ../src/xfdesktop-volume-icon.c:488 ../src/xfdesktop-volume-icon.c:533
 msgid "Eject Failed"
 msgstr "Избацивање није успело"
 
-#: ../src/xfdesktop-volume-icon.c:559
+#: ../src/xfdesktop-volume-icon.c:565
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "Не успевам да прикачим „%s“"
 
-#: ../src/xfdesktop-volume-icon.c:562
+#: ../src/xfdesktop-volume-icon.c:568
 msgid "Mount Failed"
 msgstr "Неуспешно монтирање"
 
-#: ../src/xfdesktop-volume-icon.c:770
+#: ../src/xfdesktop-volume-icon.c:793
 msgid "E_ject Volume"
 msgstr "И_збаци уређај"
 
-#: ../src/xfdesktop-volume-icon.c:777
+#: ../src/xfdesktop-volume-icon.c:800
 msgid "_Unmount Volume"
 msgstr "_Откачи уређај"
 
-#: ../src/xfdesktop-volume-icon.c:784
+#: ../src/xfdesktop-volume-icon.c:807
 msgid "_Mount Volume"
 msgstr "_Монтирај уређај"
 
