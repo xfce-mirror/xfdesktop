@@ -77,8 +77,9 @@
 #define DESKTOP_ICONS_SHOW_FILESYSTEM        "/desktop-icons/file-icons/show-filesystem"
 #define DESKTOP_ICONS_SHOW_REMOVABLE         "/desktop-icons/file-icons/show-removable"
 
-#define IMAGE_STLYE_SPANNING_SCREENS         6
 #define XFCE_BACKDROP_IMAGE_NONE             0
+#define XFCE_BACKDROP_IMAGE_SCALED           4
+#define XFCE_BACKDROP_IMAGE_SPANNING_SCREENS 6
 
 typedef struct
 {
@@ -1081,7 +1082,7 @@ cb_update_background_tab(WnckWindow *wnck_window,
      * Remove the spanning screens option before we potentially add it again
      */
     gtk_combo_box_text_remove(GTK_COMBO_BOX_TEXT(panel->image_style_combo),
-                              IMAGE_STLYE_SPANNING_SCREENS);
+                              XFCE_BACKDROP_IMAGE_SPANNING_SCREENS);
     if(panel->monitor == 0 && gdk_screen_get_n_monitors(screen) > 1) {
         gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(panel->image_style_combo),
                                        _("Spanning screens"));
@@ -1291,7 +1292,7 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
                      panel);
 
     /* Pick the first entries so something shows up */
-    gtk_combo_box_set_active(GTK_COMBO_BOX(panel->image_style_combo), 0);
+    gtk_combo_box_set_active(GTK_COMBO_BOX(panel->image_style_combo), XFCE_BACKDROP_IMAGE_SCALED);
     gtk_combo_box_set_active(GTK_COMBO_BOX(panel->color_style_combo), 0);
 
     /* Use these settings for all workspaces checkbox */
