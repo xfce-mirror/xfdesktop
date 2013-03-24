@@ -68,8 +68,6 @@ struct _XfceBackdropPriv
     XfceBackdropImageStyle image_style;
     gchar *image_path;
 
-    gint brightness;
-
     gboolean cycle_backdrop;
     guint cycle_timer;
     guint cycle_timer_id;
@@ -100,52 +98,6 @@ enum
 static guint backdrop_signals[LAST_SIGNAL] = { 0, };
 
 /* helper functions */
-
-static GdkPixbuf *
-adjust_brightness(GdkPixbuf *src, gint amount)
-{
-    GdkPixbuf *newpix;
-    GdkPixdata pdata;
-    gboolean has_alpha = FALSE;
-    gint i, len;
-    GError *err = NULL;
-    
-    g_return_val_if_fail(src != NULL, NULL);
-    if(amount == 0)
-        return src;
-    
-    gdk_pixdata_from_pixbuf(&pdata, src, FALSE);
-    has_alpha = (pdata.pixdata_type & GDK_PIXDATA_COLOR_TYPE_RGBA);
-    if(pdata.length < 1)
-        len = pdata.width * pdata.height * (has_alpha?4:3);
-    else
-        len = pdata.length - GDK_PIXDATA_HEADER_LENGTH;
-    
-    for(i = 0; i < len; i++) {
-        gshort scaled;
-        
-        if(has_alpha && (i+1)%4)
-            continue;
-        
-        scaled = pdata.pixel_data[i] + amount;
-        if(scaled > 255)
-            scaled = 255;
-        if(scaled < 0)
-            scaled = 0;
-        pdata.pixel_data[i] = scaled;
-    }
-    
-    newpix = gdk_pixbuf_from_pixdata(&pdata, TRUE, &err);
-    if(!newpix) {
-        g_warning("%s: Unable to modify image brightness: %s", PACKAGE,
-                err->message);
-        g_error_free(err);
-        return src;
-    }
-    g_object_unref(G_OBJECT(src));
-    
-    return newpix;
-}
 
 static GdkPixbuf *
 create_solid(GdkColor *color,
@@ -389,10 +341,6 @@ xfce_backdrop_set_property(GObject *object,
                                              g_value_get_string(value));
             break;
 
-        case PROP_BRIGHTNESS:
-            xfce_backdrop_set_brightness(backdrop, g_value_get_int(value));
-            break;
-
         case PROP_BACKDROP_CYCLE_ENABLE:
             xfce_backdrop_set_cycle_backdrop(backdrop, g_value_get_boolean(value));
             break;
@@ -439,10 +387,6 @@ xfce_backdrop_get_property(GObject *object,
         case PROP_IMAGE_FILENAME:
             g_value_set_string(value,
                                xfce_backdrop_get_image_filename(backdrop));
-            break;
-
-        case PROP_BRIGHTNESS:
-            g_value_set_int(value, xfce_backdrop_get_brightness(backdrop));
             break;
 
         case PROP_BACKDROP_CYCLE_ENABLE:
@@ -701,33 +645,6 @@ xfce_backdrop_get_image_filename(XfceBackdrop *backdrop)
     return backdrop->priv->image_path;
 }
 
-/**
- * xfce_backdrop_set_brightness:
- * @backdrop: An #XfceBackdrop.
- * @brightness: A brightness value.
- *
- * Modifies the brightness of the backdrop using a value between -128 and 127.
- * A value of 0 indicates that the brightness should not be changed.  This value
- * is applied to the entire image, after compositing.
- **/
-void
-xfce_backdrop_set_brightness(XfceBackdrop *backdrop, gint brightness)
-{
-    g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
-    
-    if(brightness != backdrop->priv->brightness) {
-        backdrop->priv->brightness = brightness;
-        g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_CHANGED], 0);
-    }
-}
-
-gint
-xfce_backdrop_get_brightness(XfceBackdrop *backdrop)
-{
-    g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), 0);
-    return backdrop->priv->brightness;
-}
-
 static gboolean
 xfce_backdrop_timer(XfceBackdrop *backdrop)
 {
@@ -878,9 +795,6 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
      *and if it doesn't then make the background the single colour*/
     if(!g_file_test(backdrop->priv->image_path, G_FILE_TEST_EXISTS) ||
        backdrop->priv->image_style == XFCE_BACKDROP_IMAGE_NONE) {
-        if(backdrop->priv->brightness != 0)
-            final_image = adjust_brightness(final_image, backdrop->priv->brightness);
-        
         return final_image;
     }
     
@@ -1005,9 +919,6 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
     
     if(image)
         g_object_unref(G_OBJECT(image));
-    
-    if(backdrop->priv->brightness != 0)
-        final_image = adjust_brightness(final_image, backdrop->priv->brightness);
     
     return final_image;
 }
