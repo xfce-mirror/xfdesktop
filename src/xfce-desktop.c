@@ -481,6 +481,9 @@ screen_size_changed_cb(GdkScreen *gscreen, gpointer user_data)
     if(desktop->priv->nworkspaces <= current_workspace)
         return;
 
+    if(current_workspace < 0)
+        return;
+
     /* special case for 1 backdrop to handle xinerama stretching */
     if(xfce_workspace_get_xinerama_stretch(desktop->priv->workspaces[current_workspace])) {
        backdrop_changed_cb(xfce_workspace_get_backdrop(desktop->priv->workspaces[current_workspace], 0), desktop);
@@ -549,33 +552,36 @@ workspace_changed_cb(WnckScreen *wnck_screen,
     TRACE("entering");
 
     current_workspace = desktop->priv->current_workspace;
-    desktop->priv->current_workspace = xfce_desktop_get_current_workspace(desktop);
-    new_workspace = desktop->priv->current_workspace;
+    new_workspace = xfce_desktop_get_current_workspace(desktop);
+
+    if(new_workspace < 0 || new_workspace >= desktop->priv->nworkspaces)
+        return;
+
+    desktop->priv->current_workspace = new_workspace;
 
     DBG("current_workspace %d, new_workspace %d",
         current_workspace, new_workspace);
 
-    /* special case for the spanning screen option */
-    if(xfce_workspace_get_xinerama_stretch(desktop->priv->workspaces[new_workspace])) {
-        current_backdrop = xfce_workspace_get_backdrop(desktop->priv->workspaces[current_workspace], 0);
-        new_backdrop = xfce_workspace_get_backdrop(desktop->priv->workspaces[new_workspace], 0);
-
-        if(!xfce_backdrop_compare_backdrops(current_backdrop, new_backdrop)) {
-            backdrop_changed_cb(new_backdrop, user_data);
-            return;
-        }
-    }
-
-    /* We want to compare the current workspace backdrops with the new one
-     * and see if we can avoid changing them if they are the same image/style */
     for(i = 0; i < xfce_desktop_get_n_monitors(desktop); i++) {
-        current_backdrop = xfce_workspace_get_backdrop(desktop->priv->workspaces[current_workspace], i);
-        new_backdrop = xfce_workspace_get_backdrop(desktop->priv->workspaces[new_workspace], i);
+        /* We want to compare the current workspace backdrop with the new one
+         * and see if we can avoid changing them if they are the same image/style */
+        if(current_workspace < desktop->priv->nworkspaces) {
+            current_backdrop = xfce_workspace_get_backdrop(desktop->priv->workspaces[current_workspace], i);
+            new_backdrop = xfce_workspace_get_backdrop(desktop->priv->workspaces[new_workspace], i);
 
-        if(!xfce_backdrop_compare_backdrops(current_backdrop, new_backdrop)) {
-            /* only update monitors that require it */
+            if(!xfce_backdrop_compare_backdrops(current_backdrop, new_backdrop)) {
+                /* only update monitors that require it */
+                backdrop_changed_cb(new_backdrop, user_data);
+            }
+        } else {
+            /* If current_workspace was removed, get the new backdrop and apply it */
+            new_backdrop = xfce_workspace_get_backdrop(desktop->priv->workspaces[new_workspace], i);
             backdrop_changed_cb(new_backdrop, user_data);
         }
+
+        /* When we're spanning screens we only care about the first monitor */
+        if(xfce_workspace_get_xinerama_stretch(desktop->priv->workspaces[new_workspace]))
+            break;
     }
 }
 
@@ -638,6 +644,10 @@ workspace_destroyed_cb(WnckScreen *wnck_screen,
     /* deallocate it */
     desktop->priv->workspaces = g_realloc(desktop->priv->workspaces,
                                           desktop->priv->nworkspaces * sizeof(XfceWorkspace *));
+
+    /* Make sure we stay within bounds now that we removed a workspace */
+    if(desktop->priv->current_workspace > desktop->priv->nworkspaces)
+        desktop->priv->current_workspace = desktop->priv->nworkspaces;
 }
 
 static void
@@ -787,7 +797,7 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
                                     g_param_spec_int("single-workspace-number",
                                                      "single-workspace-number",
                                                      "single-workspace-number",
-                                                     0, 31, 0,
+                                                     0, G_MAXINT16, 0,
                                                      XFDESKTOP_PARAM_FLAGS));
 #endif
 #undef XFDESKTOP_PARAM_FLAGS
@@ -1232,18 +1242,25 @@ xfce_desktop_get_current_workspace(XfceDesktop *desktop)
     g_return_val_if_fail(XFCE_IS_DESKTOP(desktop), -1);
 
     wnck_workspace = wnck_screen_get_active_workspace(desktop->priv->wnck_screen);
-    workspace_num = wnck_workspace_get_number(wnck_workspace);
+
+    if(wnck_workspace != NULL) {
+        workspace_num = wnck_workspace_get_number(wnck_workspace);
+    } else {
+        workspace_num = desktop->priv->nworkspaces;
+    }
 
     /* If we're in single_workspace mode we need to return the workspace that
-     * it was set to, otherwise return the current workspace */
-    if(xfce_desktop_get_single_workspace_mode(desktop)) {
+     * it was set to, if possible, otherwise return the current workspace */
+    if(xfce_desktop_get_single_workspace_mode(desktop) &&
+       desktop->priv->single_workspace_num < desktop->priv->nworkspaces) {
         current_workspace = desktop->priv->single_workspace_num;
     } else {
         current_workspace = workspace_num;
     }
 
-    DBG("workspace_num %d, single_workspace_num %d, current_workspace %d",
-        workspace_num, desktop->priv->single_workspace_num, current_workspace);
+    DBG("workspace_num %d, single_workspace_num %d, current_workspace %d, max workspaces %d",
+        workspace_num, desktop->priv->single_workspace_num, current_workspace,
+        desktop->priv->nworkspaces);
 
     return current_workspace;
 }
