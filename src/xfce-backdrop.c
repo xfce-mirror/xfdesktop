@@ -60,7 +60,9 @@ struct _XfceBackdropPriv
 {
     gint width, height;
     gint bpp;
-    
+
+    GdkPixbuf *pix;
+
     XfceBackdropColorStyle color_style;
     GdkColor color1;
     GdkColor color2;
@@ -178,6 +180,19 @@ create_gradient(GdkColor *color1, GdkColor *color2, gint width, gint height,
     
     return pix;
 }
+
+static void
+xfce_backdrop_clear_cached_image(XfceBackdrop *backdrop)
+{
+    g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
+
+    if(backdrop->priv->pix == NULL)
+        return;
+
+    g_object_unref(backdrop->priv->pix);
+    backdrop->priv->pix = NULL;
+}
+
 
 /* gobject-related functions */
 
@@ -302,6 +317,8 @@ xfce_backdrop_finalize(GObject *object)
         g_source_remove(backdrop->priv->cycle_timer_id);
         backdrop->priv->cycle_timer_id = 0;
     }
+
+    xfce_backdrop_clear_cached_image(backdrop);
 
     G_OBJECT_CLASS(xfce_backdrop_parent_class)->finalize(object);
 }
@@ -474,9 +491,13 @@ void
 xfce_backdrop_set_size(XfceBackdrop *backdrop, gint width, gint height)
 {
     g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
-    
-    backdrop->priv->width = width;
-    backdrop->priv->height = height;
+
+    if(backdrop->priv->width != width ||
+       backdrop->priv->height != height) {
+        xfce_backdrop_clear_cached_image(backdrop);
+        backdrop->priv->width = width;
+        backdrop->priv->height = height;
+    }
 }
 
 /**
@@ -494,6 +515,7 @@ xfce_backdrop_set_color_style(XfceBackdrop *backdrop,
     g_return_if_fail((int)style >= 0 && style <= XFCE_BACKDROP_COLOR_TRANSPARENT);
     
     if(style != backdrop->priv->color_style) {
+        xfce_backdrop_clear_cached_image(backdrop);
         backdrop->priv->color_style = style;
         g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_CHANGED], 0);
     }
@@ -528,6 +550,7 @@ xfce_backdrop_set_first_color(XfceBackdrop *backdrop,
             || color->green != backdrop->priv->color1.green
             || color->blue != backdrop->priv->color1.blue)
     {
+        xfce_backdrop_clear_cached_image(backdrop);
         backdrop->priv->color1.red = color->red;
         backdrop->priv->color1.green = color->green;
         backdrop->priv->color1.blue = color->blue;
@@ -564,6 +587,7 @@ xfce_backdrop_set_second_color(XfceBackdrop *backdrop,
             || color->green != backdrop->priv->color2.green
             || color->blue != backdrop->priv->color2.blue)
     {
+        xfce_backdrop_clear_cached_image(backdrop);
         backdrop->priv->color2.red = color->red;
         backdrop->priv->color2.green = color->green;
         backdrop->priv->color2.blue = color->blue;
@@ -599,6 +623,7 @@ xfce_backdrop_set_image_style(XfceBackdrop *backdrop,
     g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
     
     if(style != backdrop->priv->image_style) {
+        xfce_backdrop_clear_cached_image(backdrop);
         backdrop->priv->image_style = style;
         g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_CHANGED], 0);
     }
@@ -634,7 +659,9 @@ xfce_backdrop_set_image_filename(XfceBackdrop *backdrop, const gchar *filename)
         backdrop->priv->image_path = g_strdup(filename);
     else
         backdrop->priv->image_path = NULL;
-    
+
+    xfce_backdrop_clear_cached_image(backdrop);
+
     g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_CHANGED], 0);
 }
 
@@ -763,9 +790,16 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
     gint dx, dy, xo, yo;
     gdouble xscale, yscale;
     GdkInterpType interp;
-    
+
+    TRACE("entering");
+
     g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), NULL);
-    
+
+    if(backdrop->priv->pix != NULL) {
+        DBG("pixbuf cached");
+        return g_object_ref(backdrop->priv->pix);
+    }
+
     if(backdrop->priv->image_style != XFCE_BACKDROP_IMAGE_NONE &&
        backdrop->priv->image_path) {
         gdk_pixbuf_get_file_info(backdrop->priv->image_path, &iw, &ih);
@@ -919,7 +953,10 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
     
     if(image)
         g_object_unref(G_OBJECT(image));
-    
+
+    /* cache it */
+    backdrop->priv->pix = g_object_ref(final_image);
+
     return final_image;
 }
 
@@ -942,7 +979,17 @@ gboolean xfce_backdrop_compare_backdrops(XfceBackdrop *backdrop_a,
         return FALSE;
     }
 
-    if(!gdk_color_equal(&backdrop_a->priv->color1, &backdrop_b->priv->color1) ||
+    /* Every color style uses color1 except for transparent which does not need
+     * a color check */
+    if(backdrop_a->priv->color_style != XFCE_BACKDROP_COLOR_TRANSPARENT &&
+       !gdk_color_equal(&backdrop_a->priv->color1, &backdrop_b->priv->color1)) {
+        DBG("colors different");
+        return FALSE;
+    }
+
+    /* When the style is set to gradient then we should check color2 as well */
+    if((backdrop_a->priv->color_style == XFCE_BACKDROP_COLOR_HORIZ_GRADIENT ||
+        backdrop_a->priv->color_style == XFCE_BACKDROP_COLOR_VERT_GRADIENT) &&
        !gdk_color_equal(&backdrop_a->priv->color2, &backdrop_b->priv->color2)) {
         DBG("colors different");
         return FALSE;

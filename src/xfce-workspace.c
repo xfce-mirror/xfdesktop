@@ -383,59 +383,11 @@ xfce_workspace_disconnect_backdrop_settings(XfceWorkspace *workspace,
                                             XfceBackdrop *backdrop,
                                             guint monitor)
 {
-    XfconfChannel *channel = workspace->priv->channel;
-    char buf[1024];
-    gint pp_len;
-    gchar *monitor_name = NULL;
-
     TRACE("entering");
 
-    monitor_name = gdk_screen_get_monitor_plug_name(workspace->priv->gscreen, monitor);
+    g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
 
-    if(monitor_name == NULL) {
-        g_snprintf(buf, sizeof(buf), "%smonitor%d/workspace%d/",
-                   workspace->priv->property_prefix, monitor, workspace->priv->workspace_num);
-    } else {
-        g_snprintf(buf, sizeof(buf), "%smonitor%s/workspace%d/",
-                   workspace->priv->property_prefix, monitor_name, workspace->priv->workspace_num);
-    }
-    pp_len = strlen(buf);
-
-    DBG("prefix string: %s", buf);
-
-    g_strlcat(buf, "color-style", sizeof(buf));
-    xfconf_g_property_unbind_by_property(channel, buf,
-                               G_OBJECT(backdrop), "color-style");
-
-    xfconf_g_property_unbind(workspace->priv->first_color_id[monitor]);
-    xfconf_g_property_unbind(workspace->priv->second_color_id[monitor]);
-
-    buf[pp_len] = 0;
-    g_strlcat(buf, "image-style", sizeof(buf));
-    xfconf_g_property_unbind_by_property(channel, buf,
-                               G_OBJECT(backdrop), "image-style");
-
-    buf[pp_len] = 0;
-    g_strlcat(buf, "backdrop-cycle-enable", sizeof(buf));
-    xfconf_g_property_unbind_by_property(channel, buf,
-                               G_OBJECT(backdrop), "backdrop-cycle-enable");
-
-    buf[pp_len] = 0;
-    g_strlcat(buf, "backdrop-cycle-timer", sizeof(buf));
-    xfconf_g_property_unbind_by_property(channel, buf,
-                               G_OBJECT(backdrop), "backdrop-cycle-timer");
-
-    buf[pp_len] = 0;
-    g_strlcat(buf, "backdrop-cycle-random-order", sizeof(buf));
-    xfconf_g_property_unbind_by_property(channel, buf,
-                               G_OBJECT(backdrop), "backdrop-cycle-random-order");
-
-    buf[pp_len] = 0;
-    g_strlcat(buf, "last-image", sizeof(buf));
-    xfconf_g_property_unbind_by_property(channel, buf,
-                               G_OBJECT(backdrop), "image-filename");
-
-    g_free(monitor_name);
+    xfconf_g_property_unbind_all(G_OBJECT(backdrop));
 }
 
 static void
