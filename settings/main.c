@@ -1052,6 +1052,7 @@ cb_update_background_tab(WnckWindow *wnck_window,
 {
     AppearancePanel *panel = user_data;
     gint screen_num, monitor_num, workspace_num;
+    gchar *monitor_name = NULL;
     WnckWorkspace *wnck_workspace = NULL;
     GdkScreen *screen;
 
@@ -1062,11 +1063,13 @@ cb_update_background_tab(WnckWindow *wnck_window,
     screen_num = gdk_screen_get_number(screen);
     monitor_num = gdk_screen_get_monitor_at_window(screen,
                                                    gtk_widget_get_window(panel->image_iconview));
+    monitor_name = gdk_screen_get_monitor_plug_name(screen, monitor_num);
 
     /* Check to see if something changed */
     if(panel->workspace == workspace_num &&
        panel->screen == screen_num &&
-       panel->monitor == monitor_num) {
+       panel->monitor_name != NULL &&
+       g_strcmp0(panel->monitor_name, monitor_name) == 0) {
            return;
     }
 
@@ -1108,13 +1111,23 @@ cb_update_background_tab(WnckWindow *wnck_window,
 
 static void
 cb_workspace_changed(WnckScreen *screen,
-                               WnckWorkspace *workspace,
-                               gpointer user_data)
+                     WnckWorkspace *workspace,
+                     gpointer user_data)
 {
     AppearancePanel *panel = user_data;
 
-    /* Call update background because the single workspace mode may have
+    /* Update background because the single workspace mode may have
      * changed due to the addition/removal of a workspace */
+    cb_update_background_tab(panel->wnck_window, user_data);
+}
+
+static void
+cb_monitor_changed(GdkScreen *gscreen,
+                   gpointer user_data)
+{
+    AppearancePanel *panel = user_data;
+
+    /* Update background because the monitor we're on may have changed */
     cb_update_background_tab(panel->wnck_window, user_data);
 }
 
@@ -1252,6 +1265,8 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
                      G_CALLBACK(cb_workspace_changed), panel);
     g_signal_connect(wnck_screen, "workspace-destroyed",
                      G_CALLBACK(cb_workspace_changed), panel);
+    g_signal_connect(G_OBJECT(screen), "monitors-changed",
+                     G_CALLBACK(cb_monitor_changed), panel);
 
     /* send invalid numbers so that the update_background_tab will update everything */
     panel->monitor = -1;
