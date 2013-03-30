@@ -84,7 +84,7 @@
 typedef struct
 {
     GtkTreeModel *model;
-    GSList *iters;
+    GtkTreeIter *iter;
 } PreviewData;
 
 typedef struct
@@ -115,11 +115,9 @@ typedef struct
     GtkWidget *random_backdrop_order_chkbox;
 
     GThread *preview_thread;
-    PreviewData *pdata;
+    GAsyncQueue *preview_queue;
 
     XfdesktopThumbnailer *thumbnailer;
-
-    gint request_timer_id;
 
 } AppearancePanel;
 
@@ -210,87 +208,62 @@ xfdesktop_settings_do_single_preview(GtkTreeModel *model,
     }
 }
 
-static gpointer
-xfdesktop_settings_create_some_previews(gpointer data)
+static void
+xfdesktop_settings_free_pdata(gpointer data)
 {
     PreviewData *pdata = data;
-    GSList *l;
-
-    GDK_THREADS_ENTER ();
-
-    for(l = pdata->iters; l && l->data != NULL; l = l->next)
-        xfdesktop_settings_do_single_preview(pdata->model, l->data);
-
     g_object_unref(G_OBJECT(pdata->model));
-    g_slist_foreach(pdata->iters, (GFunc)gtk_tree_iter_free, NULL);
-    g_slist_free(pdata->iters);
+    gtk_tree_iter_free(pdata->iter);
     g_free(pdata);
-
-    GDK_THREADS_LEAVE ();
-
-    return NULL;
 }
 
 static gpointer
-xfdesktop_settings_create_all_previews(gpointer data)
+xfdesktop_settings_create_previews(gpointer data)
 {
-    GtkTreeModel *model = data;
-    GtkTreeView *tree_view;
-    GtkTreeIter iter;
+    AppearancePanel *panel = data;
+    PreviewData *pdata = NULL;
 
-    GDK_THREADS_ENTER ();
+    while(panel->preview_queue != NULL) {
+        pdata = g_async_queue_pop(panel->preview_queue);
 
-    if(gtk_tree_model_get_iter_first(model, &iter)) {
-        do {
-            xfdesktop_settings_do_single_preview(model, &iter);
-        } while(gtk_tree_model_iter_next(model, &iter));
+        GDK_THREADS_ENTER ();
+
+        xfdesktop_settings_do_single_preview(pdata->model, pdata->iter);
+
+        xfdesktop_settings_free_pdata(pdata);
+
+        GDK_THREADS_LEAVE ();
     }
-
-    /* if possible, scroll to the selected image */
-    tree_view = g_object_get_data(G_OBJECT(model), "xfdesktop-tree-view");
-    if(tree_view) {
-        GtkTreeSelection *selection = gtk_tree_view_get_selection(tree_view);
-
-        if(gtk_tree_selection_get_mode(selection) != GTK_SELECTION_MULTIPLE
-           && gtk_tree_selection_get_selected(selection, NULL, &iter))
-        {
-            GtkTreePath *path = gtk_tree_model_get_path(model, &iter);
-            gtk_tree_view_scroll_to_cell(tree_view, path, NULL, TRUE, 0.0, 0.0);
-        }
-    }
-    g_object_set_data(G_OBJECT(model), "xfdesktop-tree-view", NULL);
-
-    GDK_THREADS_LEAVE ();
-
-    g_object_unref(G_OBJECT(model));
 
     return NULL;
 }
 
 static void
-cb_request_timer(gpointer data)
+xfdesktop_settings_add_file_to_queue(AppearancePanel *panel, PreviewData *pdata)
 {
-    AppearancePanel *panel = data;
-    PreviewData *pdata = panel->pdata;
-
     TRACE("entering");
 
-    if(pdata == NULL)
-        return;
+    g_return_if_fail(panel != NULL);
+    g_return_if_fail(pdata != NULL);
 
-    panel->pdata = NULL;
-    g_source_remove(panel->request_timer_id);
-    panel->request_timer_id = 0;
+    if(panel->preview_queue == NULL) {
+        panel->preview_queue = g_async_queue_new_full(xfdesktop_settings_free_pdata);
+    }
 
-    if(!g_thread_try_new("xfdesktop_settings_create_some_previews",
-                     xfdesktop_settings_create_some_previews,
-                     pdata, NULL))
-    {
-            g_critical("Unable to create thread for image previews.");
-            g_object_unref(G_OBJECT(pdata->model));
-            g_slist_foreach(pdata->iters, (GFunc)gtk_tree_iter_free, NULL);
-            g_slist_free(pdata->iters);
-            g_free(pdata);
+    g_async_queue_push(panel->preview_queue, pdata);
+
+    if(panel->preview_thread == NULL) {
+        panel->preview_thread = g_thread_try_new("xfdesktop_settings_create_previews",
+                                                 xfdesktop_settings_create_previews,
+                                                 panel, NULL);
+        if(panel->preview_thread == NULL)
+        {
+                g_critical("Unable to create thread for image previews.");
+                if(g_async_queue_try_pop(panel->preview_queue))
+                    xfdesktop_settings_free_pdata(pdata);
+
+                return;
+        }
     }
 }
 
@@ -302,6 +275,7 @@ cb_thumbnail_ready(XfdesktopThumbnailer *thumbnailer,
     AppearancePanel *panel = user_data;
     GtkTreeModel *model = gtk_icon_view_get_model(GTK_ICON_VIEW(panel->image_iconview));
     GtkTreeIter iter;
+    PreviewData *pdata = NULL;
 
     if(gtk_tree_model_get_iter_first(model, &iter)) {
         do {
@@ -312,23 +286,12 @@ cb_thumbnail_ready(XfdesktopThumbnailer *thumbnailer,
                 gtk_list_store_set(GTK_LIST_STORE(model), &iter,
                                    COL_THUMBNAIL, thumb_file, -1);
 
-                if(panel->request_timer_id != 0) {
-                    g_source_remove(panel->request_timer_id);
-                }
+                pdata = g_new0(PreviewData, 1);
+                pdata->model = g_object_ref(G_OBJECT(model));
 
-                if(panel->pdata == NULL) {
-                    panel->pdata = g_new0(PreviewData, 1);
-                    panel->pdata->model = g_object_ref(G_OBJECT(model));
-                }
+                pdata->iter = gtk_tree_iter_copy(&iter);
 
-                panel->pdata->iters = g_slist_prepend(panel->pdata->iters, gtk_tree_iter_copy(&iter));
-
-                panel->request_timer_id = g_timeout_add_full(
-                                G_PRIORITY_LOW,
-                                100,
-                                (GSourceFunc)cb_request_timer,
-                                panel,
-                                NULL);
+                xfdesktop_settings_add_file_to_queue(panel, pdata);
 
                 g_free(filename);
                 return;
@@ -339,16 +302,22 @@ cb_thumbnail_ready(XfdesktopThumbnailer *thumbnailer,
     }
 }
 
-/* Attempts to queue a thumbnail preview */
+/* Attempts to queue a thumbnail preview, otherwise manually loads the file */
 static void
-xfdesktop_settings_create_thumbnail_preview(GtkTreeModel *model,
-                                            GtkTreeIter *iter,
-                                            AppearancePanel *panel)
+xfdesktop_settings_create_preview(GtkTreeModel *model,
+                                  GtkTreeIter *iter,
+                                  AppearancePanel *panel)
 {
     gchar *filename;
 
     gtk_tree_model_get(model, iter, COL_FILENAME, &filename, -1);
-    xfdesktop_thumbnailer_queue_thumbnail(panel->thumbnailer, filename);
+    if(!xfdesktop_thumbnailer_queue_thumbnail(panel->thumbnailer, filename)) {
+        PreviewData *pdata;
+        pdata = g_new0(PreviewData, 1);
+        pdata->model = g_object_ref(G_OBJECT(model));
+        pdata->iter = gtk_tree_iter_copy(iter);
+        xfdesktop_settings_add_file_to_queue(panel, pdata);
+    }
 }
 
 static void
@@ -520,7 +489,7 @@ xfdesktop_settings_image_iconview_add(GtkTreeModel *model,
                                COL_COLLATE_KEY, lower,
                                -1);
 
-            xfdesktop_settings_create_thumbnail_preview(model, &iter, panel);
+            xfdesktop_settings_create_preview(model, &iter, panel);
 
             added = TRUE;
         }
@@ -790,21 +759,13 @@ xfdesktop_settings_stop_image_loading(AppearancePanel *panel)
     /* stop any thumbnailing in progress */
     xfdesktop_thumbnailer_dequeue_all_thumbnails(panel->thumbnailer);
 
-    /* Remove any pending thumbnail updates */
-    if(panel->request_timer_id != 0) {
-        PreviewData *pdata = panel->pdata;
-        g_source_remove(panel->request_timer_id);
-        panel->request_timer_id = 0;
-        g_object_unref(G_OBJECT(pdata->model));
-        g_slist_foreach(pdata->iters, (GFunc)gtk_tree_iter_free, NULL);
-        g_slist_free(pdata->iters);
-        g_free(pdata);
-    }
-
-    /* Remove any preview threads that may still be running */
-    if(panel->preview_thread != NULL) {
-        g_thread_unref(panel->preview_thread);
-        panel->preview_thread = NULL;
+    /* Remove the previews in the message queue */
+    if(panel->preview_queue != NULL) {
+        while(g_async_queue_length(panel->preview_queue) > 0) {
+            gpointer data = g_async_queue_try_pop(panel->preview_queue);
+            if(data)
+                xfdesktop_settings_free_pdata(data);
+        }
     }
 }
 
@@ -865,20 +826,6 @@ cb_folder_selection_changed(GtkWidget *button,
             gtk_tree_iter_free(iter);
         }
      }
-
-    /* Thumbnailer not available, fallback to loading the images in a thread */
-    if(!xfdesktop_thumbnailer_service_available(panel->thumbnailer)) {
-        /* generate previews of each image -- the new thread will own
-         * the reference on the list store, so let's not unref it here */
-        panel->preview_thread = g_thread_try_new("xfdesktop_settings_create_all_previews",
-                                                 xfdesktop_settings_create_all_previews,
-                                                 ls, NULL);
-
-        if(panel->preview_thread == NULL) {
-            g_critical("Failed to spawn thread; backdrop previews will be unavailable.");
-            g_object_unref(G_OBJECT(ls));
-        }
-    }
 
     g_free(property);
 }
