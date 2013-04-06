@@ -119,7 +119,22 @@ typedef struct
 
     XfdesktopThumbnailer *thumbnailer;
 
+    GFile *selected_file;
+    GCancellable *cancel_enumeration;
+    guint add_dir_idle_id;
+
 } AppearancePanel;
+
+typedef struct
+{
+    GFileEnumerator *file_enumerator;
+    GtkListStore *ls;
+    GtkTreeIter *selected_iter;
+    gchar *last_image;
+    gchar *file_path;
+    gchar *cur_image_file;
+    AppearancePanel *panel;
+} AddDirData;
 
 enum
 {
@@ -127,7 +142,6 @@ enum
     COL_NAME,
     COL_FILENAME,
     COL_THUMBNAIL,
-    COL_COLLATE_KEY,
     N_COLS,
 };
 
@@ -142,10 +156,10 @@ enum
 
 static void cb_xfdesktop_chk_apply_to_all(GtkCheckButton *button,
                                           gpointer user_data);
+static gchar *xfdesktop_settings_generate_per_workspace_binding_string(AppearancePanel *panel,
+                                                                       const gchar* property);
 
 
-/* assumes gdk lock is held on function enter, and should be held
- * on function exit */
 static void
 xfdesktop_settings_do_single_preview(GtkTreeModel *model,
                                      GtkTreeIter *iter)
@@ -153,11 +167,13 @@ xfdesktop_settings_do_single_preview(GtkTreeModel *model,
     gchar *name = NULL, *new_name = NULL, *filename = NULL, *thumbnail = NULL;
     GdkPixbuf *pix, *pix_scaled = NULL;
 
+    GDK_THREADS_ENTER ();
     gtk_tree_model_get(model, iter,
                        COL_NAME, &name,
                        COL_FILENAME, &filename,
                        COL_THUMBNAIL, &thumbnail,
                        -1);
+    GDK_THREADS_LEAVE ();
 
     if(thumbnail == NULL) {
         pix = gdk_pixbuf_new_from_file(filename, NULL);
@@ -194,16 +210,20 @@ xfdesktop_settings_do_single_preview(GtkTreeModel *model,
     g_free(name);
 
     if(new_name) {
+        GDK_THREADS_ENTER ();
         gtk_list_store_set(GTK_LIST_STORE(model), iter,
                            COL_NAME, new_name,
                            -1);
+        GDK_THREADS_LEAVE ();
         g_free(new_name);
     }
 
     if(pix_scaled) {
+        GDK_THREADS_ENTER ();
         gtk_list_store_set(GTK_LIST_STORE(model), iter,
                            COL_PIX, pix_scaled,
                            -1);
+        GDK_THREADS_LEAVE ();
         g_object_unref(G_OBJECT(pix_scaled));
     }
 }
@@ -224,15 +244,12 @@ xfdesktop_settings_create_previews(gpointer data)
     PreviewData *pdata = NULL;
 
     while(panel->preview_queue != NULL) {
+        /* Block and wait for another preview to create */
         pdata = g_async_queue_pop(panel->preview_queue);
-
-        GDK_THREADS_ENTER ();
 
         xfdesktop_settings_do_single_preview(pdata->model, pdata->iter);
 
         xfdesktop_settings_free_pdata(pdata);
-
-        GDK_THREADS_LEAVE ();
     }
 
     return NULL;
@@ -246,12 +263,14 @@ xfdesktop_settings_add_file_to_queue(AppearancePanel *panel, PreviewData *pdata)
     g_return_if_fail(panel != NULL);
     g_return_if_fail(pdata != NULL);
 
+    /* Create the queue if it doesn't exist */
     if(panel->preview_queue == NULL) {
         panel->preview_queue = g_async_queue_new_full(xfdesktop_settings_free_pdata);
     }
 
     g_async_queue_push(panel->preview_queue, pdata);
 
+    /* Create the thread if it doesn't exist */
     if(panel->preview_thread == NULL) {
         panel->preview_thread = g_thread_try_new("xfdesktop_settings_create_previews",
                                                  xfdesktop_settings_create_previews,
@@ -259,10 +278,10 @@ xfdesktop_settings_add_file_to_queue(AppearancePanel *panel, PreviewData *pdata)
         if(panel->preview_thread == NULL)
         {
                 g_critical("Unable to create thread for image previews.");
+                /* Don't block but try to remove the data from the queue
+                 * since we won't be creating previews */
                 if(g_async_queue_try_pop(panel->preview_queue))
                     xfdesktop_settings_free_pdata(pdata);
-
-                return;
         }
     }
 }
@@ -282,15 +301,17 @@ cb_thumbnail_ready(XfdesktopThumbnailer *thumbnailer,
             gchar *filename = NULL;
             gtk_tree_model_get(model, &iter, COL_FILENAME, &filename, -1);
 
+            /* We're looking for the src_file */
             if(g_strcmp0(filename, src_file) == 0) {
+                /* Add the thumb_file to it */
                 gtk_list_store_set(GTK_LIST_STORE(model), &iter,
                                    COL_THUMBNAIL, thumb_file, -1);
 
                 pdata = g_new0(PreviewData, 1);
                 pdata->model = g_object_ref(G_OBJECT(model));
-
                 pdata->iter = gtk_tree_iter_copy(&iter);
 
+                /* Create the preview image */
                 xfdesktop_settings_add_file_to_queue(panel, pdata);
 
                 g_free(filename);
@@ -302,20 +323,23 @@ cb_thumbnail_ready(XfdesktopThumbnailer *thumbnailer,
     }
 }
 
-/* Attempts to queue a thumbnail preview, otherwise manually loads the file */
 static void
-xfdesktop_settings_create_preview(GtkTreeModel *model,
-                                  GtkTreeIter *iter,
-                                  AppearancePanel *panel)
+xfdesktop_settings_queue_preview(GtkTreeModel *model,
+                                 GtkTreeIter *iter,
+                                 AppearancePanel *panel)
 {
     gchar *filename;
 
     gtk_tree_model_get(model, iter, COL_FILENAME, &filename, -1);
+
+    /* Attempt to use the thumbnailer if possible */
     if(!xfdesktop_thumbnailer_queue_thumbnail(panel->thumbnailer, filename)) {
+        /* Thumbnailing not possible, add it to the queue to be loaded manually */
         PreviewData *pdata;
         pdata = g_new0(PreviewData, 1);
         pdata->model = g_object_ref(G_OBJECT(model));
         pdata->iter = gtk_tree_iter_copy(iter);
+
         xfdesktop_settings_add_file_to_queue(panel, pdata);
     }
 }
@@ -451,7 +475,7 @@ xfdesktop_settings_image_iconview_add(GtkTreeModel *model,
     gboolean added = FALSE, found = FALSE, valid = FALSE;
     GtkTreeIter iter, search_iter;
     gchar *name = NULL, *name_utf8 = NULL, *name_markup = NULL;
-    gchar *lower = NULL;
+    gint position = 0;
 
     if(!xfdesktop_image_file_is_valid(path))
         return NULL;
@@ -464,8 +488,6 @@ xfdesktop_settings_image_iconview_add(GtkTreeModel *model,
             name_markup = g_markup_printf_escaped("<b>%s</b>",
                                                   name_utf8);
 
-            lower = g_utf8_strdown(name_utf8, -1);
-
             /* Insert sorted */
             valid = gtk_tree_model_get_iter_first(model, &search_iter);
             while(valid && !found) {
@@ -473,23 +495,17 @@ xfdesktop_settings_image_iconview_add(GtkTreeModel *model,
                     found = TRUE;
                 } else {
                     valid = gtk_tree_model_iter_next(model, &search_iter);
+                    position++;
                 }
             }
 
-            if(!found) {
-                gtk_list_store_append(GTK_LIST_STORE(model), &iter);
-            } else {
-                gtk_list_store_insert_before(GTK_LIST_STORE(model), &iter, &search_iter);
-            }
-
-
-            gtk_list_store_set(GTK_LIST_STORE(model), &iter,
-                               COL_NAME, name_markup,
-                               COL_FILENAME, path,
-                               COL_COLLATE_KEY, lower,
-                               -1);
-
-            xfdesktop_settings_create_preview(model, &iter, panel);
+            gtk_list_store_insert_with_values(GTK_LIST_STORE(model),
+                                              &iter,
+                                              position,
+                                              COL_NAME, name_markup,
+                                              COL_FILENAME, path,
+                                              -1);
+            xfdesktop_settings_queue_preview(model, &iter, panel);
 
             added = TRUE;
         }
@@ -498,7 +514,6 @@ xfdesktop_settings_image_iconview_add(GtkTreeModel *model,
     g_free(name);
     g_free(name_utf8);
     g_free(name_markup);
-    g_free(lower);
 
     if(added)
         return gtk_tree_iter_copy(&iter);
@@ -506,49 +521,113 @@ xfdesktop_settings_image_iconview_add(GtkTreeModel *model,
         return NULL;
 }
 
-static GtkTreeIter *
-xfdesktop_image_list_add_dir(GtkListStore *ls,
-                             const char *path,
-                             const char *cur_image_file,
-                             AppearancePanel *panel)
+static gboolean
+xfdesktop_image_list_add_item(gpointer user_data)
 {
-    GDir *dir;
-    gboolean needs_slash = TRUE;
-    const gchar *file;
-    GtkTreeIter *iter, *iter_ret = NULL;
-    gchar buf[PATH_MAX];
-#ifdef G_ENABLE_DEBUG
-    GTimer *timer = g_timer_new();
-#endif
+    AddDirData *dir_data = user_data;
+    AppearancePanel *panel = dir_data->panel;
+    GFileInfo *info;
+    GtkTreeIter *iter, *selected_iter = NULL;
+    GtkTreePath *path;
 
-    dir = g_dir_open(path, 0, 0);
-    if(!dir)
-        return NULL;
+    /* If the enumeration gets canceled/destroyed we need to clean up */
+    if(!G_IS_FILE_ENUMERATOR(dir_data->file_enumerator)) {
+        g_free(dir_data->file_path);
+        g_free(dir_data->cur_image_file);
+        g_free(dir_data->last_image);
+        g_free(dir_data);
 
-    if(path[strlen(path)-1] == '/')
-        needs_slash = FALSE;
-
-    while((file = g_dir_read_name(dir))) {
-        g_snprintf(buf, sizeof(buf), needs_slash ? "%s/%s" : "%s%s",
-                   path, file);
-
-        iter = xfdesktop_settings_image_iconview_add(GTK_TREE_MODEL(ls), buf, panel);
-        if(iter) {
-            if(cur_image_file && !iter_ret && !strcmp(buf, cur_image_file))
-                iter_ret = iter;
-            else
-                gtk_tree_iter_free(iter);
+        if(panel->cancel_enumeration) {
+            g_object_unref(panel->cancel_enumeration);
+            panel->cancel_enumeration = NULL;
         }
     }
 
-    g_dir_close(dir);
+    if((info = g_file_enumerator_next_file(dir_data->file_enumerator, NULL, NULL))) {
+        const gchar *file_name = g_file_info_get_name(info);
+        gchar *buf = g_strconcat(dir_data->file_path, "/", file_name, NULL);
 
-#ifdef G_ENABLE_DEBUG
-    DBG("time %f", g_timer_elapsed(timer, NULL));
-    g_timer_destroy(timer);
-#endif
+        iter = xfdesktop_settings_image_iconview_add(GTK_TREE_MODEL(dir_data->ls), buf, panel);
+        if(iter) {
+            if(dir_data->cur_image_file &&
+               !dir_data->selected_iter &&
+               !strcmp(buf, dir_data->last_image))
+            {
+                dir_data->selected_iter = iter;
+            } else {
+                gtk_tree_iter_free(iter);
+            }
+        }
 
-    return iter_ret;
+        g_free(buf);
+        g_object_unref(info);
+
+        /* continue on the next idle callback so the user's events get priority */
+        return TRUE;
+    }
+
+    /* If we get here we're done enumerating files in the directory */
+
+    gtk_icon_view_set_model(GTK_ICON_VIEW(panel->image_iconview),
+                            GTK_TREE_MODEL(dir_data->ls));
+
+    /* last_image is in the directory added then it should be selected */
+    if(selected_iter) {
+        path = gtk_tree_model_get_path(GTK_TREE_MODEL(dir_data->ls), selected_iter);
+        if(path) {
+            gtk_icon_view_select_path(GTK_ICON_VIEW(panel->image_iconview), path);
+            gtk_tree_iter_free(dir_data->selected_iter);
+        }
+     }
+
+    g_free(dir_data->file_path);
+    g_free(dir_data->cur_image_file);
+    g_free(dir_data->last_image);
+    g_object_unref(dir_data->file_enumerator);
+    g_free(dir_data);
+
+    if(panel->cancel_enumeration) {
+        g_object_unref(panel->cancel_enumeration);
+        panel->cancel_enumeration = NULL;
+    }
+
+    return FALSE;
+}
+
+static void
+xfdesktop_image_list_add_dir(GObject *source_object,
+                             GAsyncResult *res,
+                             gpointer user_data)
+{
+    AppearancePanel *panel = user_data;
+    gchar *property;
+    AddDirData *dir_data = g_new0(AddDirData, 1);
+
+    TRACE("entering");
+
+    dir_data->panel = panel;
+
+    dir_data->ls = gtk_list_store_new(N_COLS, GDK_TYPE_PIXBUF, G_TYPE_STRING,
+                                      G_TYPE_STRING, G_TYPE_STRING);
+
+    /* Get the last image/current image displayed so we can select it in the
+     * icon view */
+    property = xfdesktop_settings_generate_per_workspace_binding_string(panel, "last-image");
+
+    dir_data->last_image = xfconf_channel_get_string(panel->channel, property, DEFAULT_BACKDROP);
+
+    dir_data->file_path = g_file_get_path(panel->selected_file);
+    dir_data->cur_image_file = g_file_get_parse_name(panel->selected_file);
+
+    dir_data->file_enumerator = g_file_enumerate_children_finish(panel->selected_file,
+                                                                 res,
+                                                                 NULL);
+
+    /* Individual items are added in an idle callback so everything is more
+     * responsive */
+    panel->add_dir_idle_id = g_idle_add(xfdesktop_image_list_add_item, dir_data);
+
+    g_free(property);
 }
 
 static void
@@ -767,6 +846,19 @@ xfdesktop_settings_stop_image_loading(AppearancePanel *panel)
                 xfdesktop_settings_free_pdata(data);
         }
     }
+
+    /* Cancel any file enumeration that's running */
+    if(panel->cancel_enumeration != NULL) {
+        g_cancellable_cancel(panel->cancel_enumeration);
+        g_object_unref(panel->cancel_enumeration);
+        panel->cancel_enumeration = NULL;
+    }
+
+    /* Cancel the file enumeration for populating the icon view */
+    if(panel->add_dir_idle_id != 0) {
+        g_source_remove(panel->add_dir_idle_id);
+        panel->add_dir_idle_id = 0;
+    }
 }
 
 static void
@@ -783,51 +875,41 @@ cb_folder_selection_changed(GtkWidget *button,
 {
     AppearancePanel *panel = user_data;
     gchar *filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(button));
-    static gchar *previous_filename = NULL;
-    GtkListStore *ls;
-    GtkTreeIter *iter;
-    GtkTreePath *path;
-    gchar *last_image, *property;
+    gchar *previous_filename = NULL;
 
     TRACE("entering");
+
+    if(panel->selected_file != NULL)
+        previous_filename = g_file_get_path(panel->selected_file);
 
     /* Check to see if the folder actually did change */
     if(g_strcmp0(filename, previous_filename) == 0) {
         g_free(filename);
+        g_free(previous_filename);
         return;
     }
 
     TRACE("folder changed to: %s", filename);
-    g_free(previous_filename);
-    previous_filename = filename;
 
+    if(panel->selected_file != NULL)
+        g_object_unref(panel->selected_file);
+
+    panel->selected_file = g_file_new_for_path(filename);
+
+    /* Stop any previous loading since something changed */
     xfdesktop_settings_stop_image_loading(panel);
 
-    ls = gtk_list_store_new(N_COLS, GDK_TYPE_PIXBUF, G_TYPE_STRING,
-                            G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
+    panel->cancel_enumeration = g_cancellable_new();
 
-    property = xfdesktop_settings_generate_per_workspace_binding_string(panel, "last-image");
+    g_file_enumerate_children_async(panel->selected_file,
+                                    G_FILE_ATTRIBUTE_STANDARD_NAME,
+                                    G_FILE_QUERY_INFO_NONE,
+                                    G_PRIORITY_DEFAULT,
+                                    panel->cancel_enumeration,
+                                    xfdesktop_image_list_add_dir,
+                                    panel);
 
-    last_image = xfconf_channel_get_string(panel->channel, property, NULL);
-
-    if(last_image == NULL)
-        last_image = DEFAULT_BACKDROP;
-
-    iter = xfdesktop_image_list_add_dir(ls, filename, last_image, panel);
-
-    gtk_icon_view_set_model(GTK_ICON_VIEW(panel->image_iconview),
-                            GTK_TREE_MODEL(ls));
- 
-    /* last_image is in the directory added then it should be selected */
-    if(iter) {
-        path = gtk_tree_model_get_path(GTK_TREE_MODEL(ls), iter);
-        if(path) {
-            gtk_icon_view_select_path(GTK_ICON_VIEW(panel->image_iconview), path);
-            gtk_tree_iter_free(iter);
-        }
-     }
-
-    g_free(property);
+    g_free(previous_filename);
 }
 
 static void
@@ -1406,6 +1488,8 @@ main(int argc, char **argv)
     GError *error = NULL;
 
     xfce_textdomain(GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
+
+    gdk_threads_init();
 
     if(!gtk_init_with_args(&argc, &argv, "", option_entries, PACKAGE, &error)) {
         if(G_LIKELY(error)) {
