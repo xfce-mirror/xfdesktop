@@ -132,7 +132,6 @@ typedef struct
     GtkTreeIter *selected_iter;
     gchar *last_image;
     gchar *file_path;
-    gchar *cur_image_file;
     AppearancePanel *panel;
 } AddDirData;
 
@@ -527,13 +526,12 @@ xfdesktop_image_list_add_item(gpointer user_data)
     AddDirData *dir_data = user_data;
     AppearancePanel *panel = dir_data->panel;
     GFileInfo *info;
-    GtkTreeIter *iter, *selected_iter = NULL;
+    GtkTreeIter *iter;
     GtkTreePath *path;
 
     /* If the enumeration gets canceled/destroyed we need to clean up */
     if(!G_IS_FILE_ENUMERATOR(dir_data->file_enumerator)) {
         g_free(dir_data->file_path);
-        g_free(dir_data->cur_image_file);
         g_free(dir_data->last_image);
         g_free(dir_data);
 
@@ -549,8 +547,7 @@ xfdesktop_image_list_add_item(gpointer user_data)
 
         iter = xfdesktop_settings_image_iconview_add(GTK_TREE_MODEL(dir_data->ls), buf, panel);
         if(iter) {
-            if(dir_data->cur_image_file &&
-               !dir_data->selected_iter &&
+            if(!dir_data->selected_iter &&
                !strcmp(buf, dir_data->last_image))
             {
                 dir_data->selected_iter = iter;
@@ -572,8 +569,8 @@ xfdesktop_image_list_add_item(gpointer user_data)
                             GTK_TREE_MODEL(dir_data->ls));
 
     /* last_image is in the directory added then it should be selected */
-    if(selected_iter) {
-        path = gtk_tree_model_get_path(GTK_TREE_MODEL(dir_data->ls), selected_iter);
+    if(dir_data->selected_iter) {
+        path = gtk_tree_model_get_path(GTK_TREE_MODEL(dir_data->ls), dir_data->selected_iter);
         if(path) {
             gtk_icon_view_select_path(GTK_ICON_VIEW(panel->image_iconview), path);
             gtk_tree_iter_free(dir_data->selected_iter);
@@ -581,7 +578,6 @@ xfdesktop_image_list_add_item(gpointer user_data)
      }
 
     g_free(dir_data->file_path);
-    g_free(dir_data->cur_image_file);
     g_free(dir_data->last_image);
     g_object_unref(dir_data->file_enumerator);
     g_free(dir_data);
@@ -617,7 +613,6 @@ xfdesktop_image_list_add_dir(GObject *source_object,
     dir_data->last_image = xfconf_channel_get_string(panel->channel, property, DEFAULT_BACKDROP);
 
     dir_data->file_path = g_file_get_path(panel->selected_file);
-    dir_data->cur_image_file = g_file_get_parse_name(panel->selected_file);
 
     dir_data->file_enumerator = g_file_enumerate_children_finish(panel->selected_file,
                                                                  res,
@@ -965,13 +960,13 @@ xfdesktop_settings_update_iconview_folder(AppearancePanel *panel)
 
     prop_last = xfdesktop_settings_generate_per_workspace_binding_string(panel, "last-image");
 
-    current_folder = xfconf_channel_get_string(panel->channel, prop_last, NULL);
-
-    if(current_folder == NULL)
-        current_folder = g_strdup(DEFAULT_BACKDROP);
+    current_folder = xfconf_channel_get_string(panel->channel, prop_last, DEFAULT_BACKDROP);
 
     gtk_file_chooser_set_current_folder((GtkFileChooser*)panel->btn_folder,
                                   g_path_get_dirname(current_folder));
+
+    /* Workaround for a bug in GTK */
+    cb_folder_selection_changed(panel->btn_folder, panel);
 
     g_free(current_folder);
     g_free(prop_last);
@@ -1197,7 +1192,6 @@ xfdesktop_settings_setup_image_iconview(AppearancePanel *panel)
                 "tooltip-column", COL_NAME,
                 "selection-mode", GTK_SELECTION_BROWSE,
                 "column-spacing", 2,
-                "item-padding", 2,
                 "margin", 2,
                 NULL);
 
