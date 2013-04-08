@@ -637,14 +637,37 @@ xfdesktop_settings_update_iconview_frame_name(AppearancePanel *panel,
 
     workspace_name = g_strdup(wnck_workspace_get_name(wnck_workspace));
 
-    if(panel->monitor_name) {
-        g_snprintf(buf, sizeof(buf),
-                   _("Wallpaper for %s on Monitor %d (%s)"),
-                   workspace_name, panel->monitor, panel->monitor_name);
-    } else
-        g_snprintf(buf, sizeof(buf),
-                   _("Wallpaper for %s on Monitor %d"),
-                   workspace_name, panel->monitor);
+    if(gdk_screen_get_n_monitors(gtk_widget_get_screen(panel->chk_apply_to_all)) > 1) {
+        if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(panel->chk_apply_to_all))) {
+            /* Multi-monitor single workspace */
+            if(panel->monitor_name) {
+                g_snprintf(buf, sizeof(buf),
+                           _("Wallpaper for Monitor %d (%s)"),
+                           panel->monitor, panel->monitor_name);
+            } else {
+                g_snprintf(buf, sizeof(buf), _("Wallpaper for Monitor %d"), panel->monitor);
+            }
+        } else {
+            /* Multi-monitor per workspace wallpaper */
+            if(panel->monitor_name) {
+                g_snprintf(buf, sizeof(buf),
+                           _("Wallpaper for %s on Monitor %d (%s)"),
+                           workspace_name, panel->monitor, panel->monitor_name);
+            } else {
+                g_snprintf(buf, sizeof(buf),
+                           _("Wallpaper for %s on Monitor %d"),
+                           workspace_name, panel->monitor);
+            }
+        }
+    } else {
+        if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(panel->chk_apply_to_all))) {
+            /* Single monitor and single workspace */
+            g_snprintf(buf, sizeof(buf), _("Wallpaper for my desktop"));
+        } else {
+            /* Single monitor and per workspace wallpaper */
+            g_snprintf(buf, sizeof(buf), _("Wallpaper for %s"), workspace_name);
+        }
+    }
 
     gtk_frame_set_label(GTK_FRAME(panel->frame_image_list), buf);
 
@@ -1153,6 +1176,9 @@ cb_monitor_changed(GdkScreen *gscreen,
 
     /* Update background because the monitor we're on may have changed */
     cb_update_background_tab(panel->wnck_window, user_data);
+
+    /* Update the frame name because we may change from/to a single monitor */
+    xfdesktop_settings_update_iconview_frame_name(panel, wnck_window_get_workspace(panel->wnck_window));
 }
 
 static void
@@ -1176,6 +1202,9 @@ cb_xfdesktop_chk_apply_to_all(GtkCheckButton *button,
     } else {
         cb_update_background_tab(panel->wnck_window, panel);
     }
+
+    /* update the frame name to since we changed to/from single workspace mode */
+    xfdesktop_settings_update_iconview_frame_name(panel, wnck_window_get_workspace(panel->wnck_window));
 }
 
 static void
