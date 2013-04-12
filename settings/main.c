@@ -535,6 +535,8 @@ xfdesktop_image_list_add_item(gpointer user_data)
             g_object_unref(panel->cancel_enumeration);
             panel->cancel_enumeration = NULL;
         }
+
+        return FALSE;
     }
 
     if((info = g_file_enumerator_next_file(dir_data->file_enumerator, NULL, NULL))) {
@@ -630,6 +632,11 @@ xfdesktop_settings_update_iconview_frame_name(AppearancePanel *panel,
 
     if(panel->monitor < 0 && panel->workspace < 0)
         return;
+
+    if(wnck_workspace == NULL) {
+        WnckScreen *wnck_screen = wnck_window_get_screen(panel->wnck_window);
+        wnck_workspace = wnck_screen_get_active_workspace(wnck_screen);
+    }
 
     workspace_name = g_strdup(wnck_workspace_get_name(wnck_workspace));
 
@@ -750,10 +757,16 @@ xfdesktop_settings_get_active_workspace(AppearancePanel *panel,
     WnckWorkspace *wnck_workspace;
     gboolean single_workspace;
     gint workspace_num, single_workspace_num;
+    WnckScreen *wnck_screen = wnck_window_get_screen(wnck_window);
 
     wnck_workspace = wnck_window_get_workspace(wnck_window);
 
-    workspace_num = wnck_workspace_get_number(wnck_workspace);
+    if(wnck_workspace != NULL) {
+        workspace_num = wnck_workspace_get_number(wnck_workspace);
+    } else {
+        workspace_num = wnck_workspace_get_number(wnck_screen_get_active_workspace(wnck_screen));
+    }
+
 
     single_workspace = xfconf_channel_get_bool(panel->channel,
                                                SINGLE_WORKSPACE_MODE,
@@ -763,7 +776,6 @@ xfdesktop_settings_get_active_workspace(AppearancePanel *panel,
      * it was set to, if that workspace exists, otherwise return the current
      * workspace and turn off the single workspace mode */
     if(single_workspace) {
-        WnckScreen *wnck_screen = wnck_window_get_screen(wnck_window);
         single_workspace_num = xfconf_channel_get_int(panel->channel,
                                                       SINGLE_WORKSPACE_NUMBER,
                                                       0);
@@ -1335,6 +1347,8 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
                      G_CALLBACK(cb_workspace_changed), panel);
     g_signal_connect(wnck_screen, "workspace-destroyed",
                      G_CALLBACK(cb_workspace_changed), panel);
+    g_signal_connect(wnck_screen, "active-workspace-changed",
+                    G_CALLBACK(cb_workspace_changed), panel);
     g_signal_connect(G_OBJECT(screen), "monitors-changed",
                      G_CALLBACK(cb_monitor_changed), panel);
 
