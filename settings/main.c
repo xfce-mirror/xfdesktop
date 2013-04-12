@@ -163,12 +163,11 @@ static void
 xfdesktop_settings_do_single_preview(GtkTreeModel *model,
                                      GtkTreeIter *iter)
 {
-    gchar *name = NULL, *new_name = NULL, *filename = NULL, *thumbnail = NULL;
+    gchar *filename = NULL, *thumbnail = NULL;
     GdkPixbuf *pix, *pix_scaled = NULL;
 
     GDK_THREADS_ENTER ();
     gtk_tree_model_get(model, iter,
-                       COL_NAME, &name,
                        COL_FILENAME, &filename,
                        COL_THUMBNAIL, &thumbnail,
                        -1);
@@ -188,10 +187,6 @@ xfdesktop_settings_do_single_preview(GtkTreeModel *model,
 
         width = gdk_pixbuf_get_width(pix);
         height = gdk_pixbuf_get_height(pix);
-        /* no need to escape markup; it's already done for us */
-        new_name = g_strdup_printf(_("%s\n<i>Size: %dx%d</i>"),
-                                   name, width, height);
-
         aspect = (gdouble)width / height;
 
         /* Keep the aspect ratio sensible otherwise the treeview looks bad */
@@ -205,16 +200,6 @@ xfdesktop_settings_do_single_preview(GtkTreeModel *model,
                                              GDK_INTERP_BILINEAR);
 
         g_object_unref(G_OBJECT(pix));
-    }
-    g_free(name);
-
-    if(new_name) {
-        GDK_THREADS_ENTER ();
-        gtk_list_store_set(GTK_LIST_STORE(model), iter,
-                           COL_NAME, new_name,
-                           -1);
-        GDK_THREADS_LEAVE ();
-        g_free(new_name);
     }
 
     if(pix_scaled) {
@@ -469,12 +454,15 @@ image_list_compare(GtkTreeModel *model,
 static GtkTreeIter *
 xfdesktop_settings_image_iconview_add(GtkTreeModel *model,
                                       const char *path,
+                                      GFileInfo *info,
                                       AppearancePanel *panel)
 {
     gboolean added = FALSE, found = FALSE, valid = FALSE;
     GtkTreeIter iter, search_iter;
-    gchar *name = NULL, *name_utf8 = NULL, *name_markup = NULL;
+    gchar *name = NULL, *name_utf8 = NULL, *name_markup = NULL, *size_string = NULL;
     gint position = 0;
+    const gchar *content_type = g_file_info_get_content_type(info);
+    goffset file_size = g_file_info_get_size(info);
 
     if(!xfdesktop_image_file_is_valid(path))
         return NULL;
@@ -484,8 +472,15 @@ xfdesktop_settings_image_iconview_add(GtkTreeModel *model,
         name_utf8 = g_filename_to_utf8(name, strlen(name),
                                        NULL, NULL, NULL);
         if(name_utf8) {
-            name_markup = g_markup_printf_escaped("<b>%s</b>",
-                                                  name_utf8);
+#if GLIB_CHECK_VERSION (2, 30, 0)
+            size_string = g_format_size(file_size);
+#else
+            size_string = g_format_size_for_display(file_size);
+#endif
+
+            /* Display the file name, file type, and file size in the tooltip. */
+            name_markup = g_markup_printf_escaped(_("<b>%s</b>\nType: %s\nSize: %s"),
+                                                  name_utf8, content_type, size_string);
 
             /* Insert sorted */
             valid = gtk_tree_model_get_iter_first(model, &search_iter);
@@ -513,6 +508,7 @@ xfdesktop_settings_image_iconview_add(GtkTreeModel *model,
     g_free(name);
     g_free(name_utf8);
     g_free(name_markup);
+    g_free(size_string);
 
     if(added)
         return gtk_tree_iter_copy(&iter);
@@ -545,7 +541,7 @@ xfdesktop_image_list_add_item(gpointer user_data)
         const gchar *file_name = g_file_info_get_name(info);
         gchar *buf = g_strconcat(dir_data->file_path, "/", file_name, NULL);
 
-        iter = xfdesktop_settings_image_iconview_add(GTK_TREE_MODEL(dir_data->ls), buf, panel);
+        iter = xfdesktop_settings_image_iconview_add(GTK_TREE_MODEL(dir_data->ls), buf, info, panel);
         if(iter) {
             if(!dir_data->selected_iter &&
                !strcmp(buf, dir_data->last_image))
@@ -920,7 +916,7 @@ cb_folder_selection_changed(GtkWidget *button,
     panel->cancel_enumeration = g_cancellable_new();
 
     g_file_enumerate_children_async(panel->selected_file,
-                                    G_FILE_ATTRIBUTE_STANDARD_NAME,
+                                    XFDESKTOP_FILE_INFO_NAMESPACE,
                                     G_FILE_QUERY_INFO_NONE,
                                     G_PRIORITY_DEFAULT,
                                     panel->cancel_enumeration,
@@ -932,19 +928,39 @@ cb_folder_selection_changed(GtkWidget *button,
 
 static void
 cb_xfdesktop_combo_image_style_changed(GtkComboBox *combo,
-                                 gpointer user_data)
+                                       gpointer user_data)
 {
     AppearancePanel *panel = user_data;
 
     TRACE("entering");
 
     if(gtk_combo_box_get_active(combo) == XFCE_BACKDROP_IMAGE_NONE) {
+        /* No wallpaper so set the iconview to insensitive so the user doesn't
+         * pick wallpapers that have no effect. Stop popping up tooltips for
+         * the now insensitive iconview and provide a tooltip explaining why
+         * the iconview is insensitive. */
         gtk_widget_set_sensitive(panel->image_iconview, FALSE);
+        g_object_set(G_OBJECT(panel->image_iconview),
+                     "tooltip-column", -1,
+                     NULL);
         gtk_widget_set_tooltip_text(panel->image_iconview,
                                     _("Image selection is unavailable while the image style is set to None."));
     } else {
+        gint tooltip_column;
+
+        /* We are expected to provide a wallpaper so make the iconview active.
+         * Additionally, if we were insensitive then we need to remove the
+         * global iconview tooltip and enable the individual tooltips again. */
         gtk_widget_set_sensitive(panel->image_iconview, TRUE);
-        gtk_widget_set_tooltip_text(panel->image_iconview, _("Select a background image for this display."));
+        g_object_get(G_OBJECT(panel->image_iconview),
+                     "tooltip-column", &tooltip_column,
+                     NULL);
+        if(tooltip_column == -1) {
+            gtk_widget_set_tooltip_text(panel->image_iconview, NULL);
+            g_object_set(G_OBJECT(panel->image_iconview),
+                         "tooltip-column", COL_NAME,
+                         NULL);
+        }
     }
 }
 
