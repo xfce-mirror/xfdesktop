@@ -3195,7 +3195,6 @@ xfdesktop_file_icon_manager_drag_data_get(XfdesktopIconViewManager *manager,
     TRACE("entering");
     
     g_return_if_fail(drag_icons);
-    g_return_if_fail(info == TARGET_TEXT_URI_LIST);
     
     file_list = xfdesktop_file_utils_file_icon_list_to_file_list(drag_icons);
     str = xfdesktop_file_utils_file_list_to_string(file_list);

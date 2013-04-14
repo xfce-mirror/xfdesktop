@@ -1587,8 +1587,11 @@ xfdesktop_icon_view_drag_data_get(GtkWidget *widget,
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
     
     TRACE("entering");
-    
-    g_return_if_fail(icon_view->priv->selected_icons);
+
+    /* Sometimes during a ctrl+drag this is NULL
+     * but works when the file(s) are dropped */
+    if(icon_view->priv->selected_icons == NULL)
+        return;
     
     xfdesktop_icon_view_manager_drag_data_get(icon_view->priv->manager,
                                               icon_view->priv->selected_icons,
