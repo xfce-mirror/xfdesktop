@@ -154,6 +154,10 @@ struct _XfdesktopIconViewPrivate
     
     gboolean drag_dest_set;
     GdkDragAction foreign_dest_actions;
+
+    gboolean dropped;
+    GdkDragAction proposed_drop_action;
+    guint16 hover_row, hover_col;
     
     guchar    label_alpha;
     guchar    selected_label_alpha;
@@ -1396,12 +1400,11 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
         if(is_local_drag)  /* # 1 */
             our_action = GDK_ACTION_MOVE;
         else  /* #3 */
-            our_action = context->suggested_action;
+            our_action = gdk_drag_context_get_suggested_action(context);
     } else {
-        /* start with everything */
-        GdkDragAction allowed_actions = (GDK_ACTION_MOVE | GDK_ACTION_COPY
-                                         | GDK_ACTION_LINK);
-        
+        /* start with all available actions */
+        GdkDragAction allowed_actions = context->actions;
+
         if(is_local_drag) {  /* #2 */
             /* check to make sure we aren't just hovering over ourself */
             GList *l;
@@ -1422,32 +1425,26 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
         
         /* #2 or #4 */
         allowed_actions &= xfdesktop_icon_get_allowed_drop_actions(icon_on_dest);
-        
-        if(allowed_actions & context->suggested_action)
-            our_action = context->suggested_action;
-        else {
-            /* priority: move, copy, link */
-            if(allowed_actions & GDK_ACTION_MOVE)
-                our_action = GDK_ACTION_MOVE;
-            else if(allowed_actions & GDK_ACTION_COPY)
-                our_action = GDK_ACTION_COPY;
-            else if(allowed_actions & GDK_ACTION_LINK)
-                our_action = GDK_ACTION_LINK;
-        }
+
+        /* priority: move, copy, link */
+        if(allowed_actions & GDK_ACTION_MOVE)
+            our_action = GDK_ACTION_MOVE;
+        else if(allowed_actions & GDK_ACTION_COPY)
+            our_action = GDK_ACTION_COPY;
+        else if(allowed_actions & GDK_ACTION_LINK)
+            our_action = GDK_ACTION_LINK;
     }
-    
-    if(!our_action) {
-        xfdesktop_icon_view_clear_drag_highlight(icon_view, context);
-        return FALSE;
-    }
-    
-    /* at this point we can be reasonably sure that a drop is possible */
-    
-    gdk_drag_status(context, our_action, time_);
-    
-    xfdesktop_icon_view_draw_drag_highlight(icon_view, context,
-                                            hover_row, hover_col);
-        
+
+    /* allow the drag dest to override the selected action based on the drag data */
+    icon_view->priv->hover_row = hover_row;
+    icon_view->priv->hover_col = hover_col;
+    icon_view->priv->proposed_drop_action = our_action;
+    icon_view->priv->dropped = FALSE;
+    gtk_drag_get_data(widget, context, target, time_);
+
+    /* the actual call to gdk_drag_status() is deferred to
+     * xfdesktop_icon_view_drag_data_received() */
+
     return TRUE;
 }
 
@@ -1476,6 +1473,8 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
     XfdesktopIcon *icon_on_dest = NULL;
     
     TRACE("entering: (%d,%d)", x, y);
+
+    icon_view->priv->dropped = TRUE;
     
     target = gtk_drag_dest_find_target(widget, context, 
                                        icon_view->priv->native_targets);
@@ -1606,17 +1605,37 @@ xfdesktop_icon_view_drag_data_received(GtkWidget *widget,
     
     TRACE("entering");
     
-    xfdesktop_xy_to_rowcol(icon_view, x, y, &row, &col);
-    if(row >= icon_view->priv->nrows || col >= icon_view->priv->ncols)
-        return;
-    
     icon_on_dest = g_object_get_data(G_OBJECT(context),
                                      "--xfdesktop-icon-view-drop-icon");
     
-    xfdesktop_icon_view_manager_drag_data_received(icon_view->priv->manager,
-                                                   icon_on_dest,
-                                                   context, row, col, data,
-                                                   info, time_);
+    if(icon_view->priv->dropped) {
+        xfdesktop_xy_to_rowcol(icon_view, x, y, &row, &col);
+        if(row >= icon_view->priv->nrows || col >= icon_view->priv->ncols)
+            return;
+
+        xfdesktop_icon_view_manager_drag_data_received(icon_view->priv->manager,
+                                                       icon_on_dest,
+                                                       context, row, col, data,
+                                                       info, time_);
+    } else {
+        /* FIXME: cannot use x and y here, for they doen't seem to have any
+         * meaningful value */
+
+        GdkDragAction action = icon_view->priv->proposed_drop_action;
+        action = xfdesktop_icon_view_manager_propose_drop_action(icon_view->priv->manager,
+                                                                 icon_on_dest,
+                                                                 action,
+                                                                 context, data,
+                                                                 info);
+
+        if(action == 0)
+            xfdesktop_icon_view_clear_drag_highlight(icon_view, context);
+        else
+            xfdesktop_icon_view_draw_drag_highlight(icon_view, context,
+                                                    icon_view->priv->hover_row,
+                                                    icon_view->priv->hover_col);
+        gdk_drag_status(context, action, time_);
+    }
 }
 
 static gint
