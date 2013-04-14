@@ -172,6 +172,12 @@ static void xfdesktop_file_icon_manager_drag_data_get(XfdesktopIconViewManager *
                                                       GtkSelectionData *data,
                                                       guint info,
                                                       guint time_);
+static GdkDragAction xfdesktop_file_icon_manager_propose_drop_action(XfdesktopIconViewManager *manager,
+                                                                     XfdesktopIcon *drop_icon,
+                                                                     GdkDragAction action,
+                                                                     GdkDragContext *context,
+                                                                     GtkSelectionData *data,
+                                                                     guint info);
 
 static gboolean xfdesktop_file_icon_manager_check_create_desktop_folder(GFile *file);
 static void xfdesktop_file_icon_manager_load_desktop_folder(XfdesktopFileIconManager *fmanager);
@@ -419,6 +425,7 @@ xfdesktop_file_icon_manager_icon_view_manager_init(XfdesktopIconViewManagerIface
     iface->drag_drop = xfdesktop_file_icon_manager_drag_drop;
     iface->drag_data_received = xfdesktop_file_icon_manager_drag_data_received;
     iface->drag_data_get = xfdesktop_file_icon_manager_drag_data_get;
+    iface->propose_drop_action = xfdesktop_file_icon_manager_propose_drop_action;
 }
 
 
@@ -3007,7 +3014,6 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
     gboolean copy_only = TRUE, drop_ok = FALSE;
     GList *file_list;
     GdkDragAction action;
-    gboolean user_selected_action = FALSE;
 
     TRACE("entering");
 
@@ -3020,8 +3026,6 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
             gtk_drag_finish(context, FALSE, FALSE, time_);
             return;
         }
-        /* The user picked whether to move or copy the files */
-        user_selected_action = TRUE;
     }
 
     if(info == TARGET_XDND_DIRECT_SAVE0) {
@@ -3133,47 +3137,6 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
                     base_dest_file = g_object_ref(fmanager->priv->folder);
                 }
 
-                /* If the user didn't pick whether to copy or move via
-                 * a GDK_ACTION_ASK then determine if we should move/copy
-                 * by checking if the files are on the same filesystem
-                 * and are writable by the user.
-                 */
-                if(user_selected_action == FALSE) {
-                    GFileInfo *src_info, *dest_info;
-                    const gchar *src_name, *dest_name;
-
-                    dest_info = g_file_query_info(base_dest_file,
-                                                  XFDESKTOP_FILE_INFO_NAMESPACE,
-                                                  G_FILE_QUERY_INFO_NONE,
-                                                  NULL,
-                                                  NULL);
-                    src_info = g_file_query_info(file_list->data,
-                                                 XFDESKTOP_FILE_INFO_NAMESPACE,
-                                                 G_FILE_QUERY_INFO_NONE,
-                                                 NULL,
-                                                 NULL);
-
-                    if(dest_info != NULL && src_info != NULL) {
-                        dest_name = g_file_info_get_attribute_string(dest_info,
-                                                G_FILE_ATTRIBUTE_ID_FILESYSTEM);
-                        src_name = g_file_info_get_attribute_string(src_info,
-                                                G_FILE_ATTRIBUTE_ID_FILESYSTEM);
-
-                        if((g_strcmp0(src_name, dest_name) == 0)
-                           && g_file_info_get_attribute_boolean(src_info,
-                                            G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
-                        {
-                            copy_only = FALSE;
-                            action = GDK_ACTION_MOVE;
-                        }
-                    }
-
-                    if(dest_info != NULL)
-                        g_object_unref(dest_info);
-                    if(src_info != NULL)
-                        g_object_unref(src_info);
-                }
-
                 for (l = file_list; l; l = l->next) {
                     gchar *dest_basename = g_file_get_basename(l->data);
 
@@ -3241,6 +3204,97 @@ xfdesktop_file_icon_manager_drag_data_get(XfdesktopIconViewManager *manager,
     
     g_free(str);
     xfdesktop_file_utils_file_list_free(file_list);
+}
+
+static GdkDragAction
+xfdesktop_file_icon_manager_propose_drop_action(XfdesktopIconViewManager *manager,
+                                                XfdesktopIcon *drop_icon,
+                                                GdkDragAction action,
+                                                GdkDragContext *context,
+                                                GtkSelectionData *data,
+                                                guint info)
+{
+    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(manager);
+    XfdesktopFileIcon *file_icon = NULL;
+    GFileInfo *tinfo = NULL;
+    GFile *tfile = NULL;
+    GList *file_list;
+    GFileInfo *src_info, *dest_info;
+    const gchar *src_name, *dest_name;
+
+    if(info == TARGET_TEXT_URI_LIST && action == GDK_ACTION_COPY
+            && (context->actions & GDK_ACTION_MOVE) != 0) {
+
+        if(drop_icon) {
+            file_icon = XFDESKTOP_FILE_ICON(drop_icon);
+            tfile = xfdesktop_file_icon_peek_file(file_icon);
+            tinfo = xfdesktop_file_icon_peek_file_info(file_icon);
+        }
+
+        if(tfile && !g_file_has_uri_scheme(tfile, "file")) {
+            return action;
+        }
+
+        file_list = xfdesktop_file_utils_file_list_from_string((const gchar *)gtk_selection_data_get_data(data));
+        if(file_list) {
+            GFile *base_dest_file = NULL;
+            gboolean dest_is_volume = (drop_icon
+                                       && XFDESKTOP_IS_VOLUME_ICON(drop_icon));
+
+            /* if it's a volume, but we don't have |tinfo|, this just isn't
+             * going to work */
+            if(!tinfo && dest_is_volume) {
+                xfdesktop_file_utils_file_list_free(file_list);
+                return action;
+            }
+
+            if(tinfo && g_file_info_get_file_type(tinfo) == G_FILE_TYPE_DIRECTORY) {
+                base_dest_file = g_object_ref(tfile);
+            } else {
+                base_dest_file = g_object_ref(fmanager->priv->folder);
+            }
+
+            /* Determine if we should move/copy by checking if the files
+             * are on the same filesystem and are writable by the user.
+             */
+
+            dest_info = g_file_query_info(base_dest_file,
+                                          XFDESKTOP_FILE_INFO_NAMESPACE,
+                                          G_FILE_QUERY_INFO_NONE,
+                                          NULL,
+                                          NULL);
+            src_info = g_file_query_info(file_list->data,
+                                         XFDESKTOP_FILE_INFO_NAMESPACE,
+                                         G_FILE_QUERY_INFO_NONE,
+                                         NULL,
+                                         NULL);
+
+            if(dest_info != NULL && src_info != NULL) {
+                dest_name = g_file_info_get_attribute_string(dest_info,
+                                        G_FILE_ATTRIBUTE_ID_FILESYSTEM);
+                src_name = g_file_info_get_attribute_string(src_info,
+                                        G_FILE_ATTRIBUTE_ID_FILESYSTEM);
+
+                if((g_strcmp0(src_name, dest_name) == 0)
+                   && g_file_info_get_attribute_boolean(src_info,
+                                    G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
+                {
+                    action = GDK_ACTION_MOVE;
+                }
+            }
+
+            if(dest_info != NULL)
+                g_object_unref(dest_info);
+            if(src_info != NULL)
+                g_object_unref(src_info);
+
+            g_object_unref(base_dest_file);
+            xfdesktop_file_utils_file_list_free(file_list);
+
+        }
+    }
+
+    return action;
 }
 
 

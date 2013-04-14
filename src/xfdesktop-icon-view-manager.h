@@ -68,6 +68,12 @@ struct _XfdesktopIconViewManagerIface
                           GtkSelectionData *data,
                           guint info,
                           guint time_);
+    GdkDragAction (*propose_drop_action)(XfdesktopIconViewManager *manager,
+                                         XfdesktopIcon *drop_icon,
+                                         GdkDragAction action,
+                                         GdkDragContext *context,
+                                         GtkSelectionData *data,
+                                         guint info);
 };
 
 GType xfdesktop_icon_view_manager_get_type(void) G_GNUC_CONST;
@@ -98,6 +104,12 @@ void xfdesktop_icon_view_manager_drag_data_get(XfdesktopIconViewManager *manager
                                                GtkSelectionData *data,
                                                guint info,
                                                guint time_);
+GdkDragAction xfdesktop_icon_view_manager_propose_drop_action(XfdesktopIconViewManager *manager,
+                                                              XfdesktopIcon *drop_icon,
+                                                              GdkDragAction action,
+                                                              GdkDragContext *context,
+                                                              GtkSelectionData *data,
+                                                              guint info);
 
 
 
