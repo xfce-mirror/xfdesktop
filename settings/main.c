@@ -141,6 +141,7 @@ enum
     COL_NAME,
     COL_FILENAME,
     COL_THUMBNAIL,
+    COL_COLLATE_KEY,
     N_COLS,
 };
 
@@ -442,7 +443,7 @@ image_list_compare(GtkTreeModel *model,
     gchar *key_b = NULL;
     gint ret;
 
-    gtk_tree_model_get(model, b, COL_NAME, &key_b, -1);
+    gtk_tree_model_get(model, b, COL_COLLATE_KEY, &key_b, -1);
 
     ret = g_strcmp0(a, key_b);
 
@@ -460,6 +461,7 @@ xfdesktop_settings_image_iconview_add(GtkTreeModel *model,
     gboolean added = FALSE, found = FALSE, valid = FALSE;
     GtkTreeIter iter, search_iter;
     gchar *name = NULL, *name_utf8 = NULL, *name_markup = NULL, *size_string = NULL;
+    gchar *collate_key = NULL;
     gint position = 0;
     const gchar *content_type = g_file_info_get_content_type(info);
     goffset file_size = g_file_info_get_size(info);
@@ -469,7 +471,8 @@ xfdesktop_settings_image_iconview_add(GtkTreeModel *model,
 
     name = g_path_get_basename(path);
     if(name) {
-        name_utf8 = g_filename_to_utf8(name, strlen(name),
+        guint name_length = strlen(name);
+        name_utf8 = g_filename_to_utf8(name, name_length,
                                        NULL, NULL, NULL);
         if(name_utf8) {
 #if GLIB_CHECK_VERSION (2, 30, 0)
@@ -482,10 +485,14 @@ xfdesktop_settings_image_iconview_add(GtkTreeModel *model,
             name_markup = g_markup_printf_escaped(_("<b>%s</b>\nType: %s\nSize: %s"),
                                                   name_utf8, content_type, size_string);
 
+            /* create a case sensitive collation key for sorting filenames like
+             * Thunar does */
+            collate_key = g_utf8_collate_key_for_filename(name, name_length);
+
             /* Insert sorted */
             valid = gtk_tree_model_get_iter_first(model, &search_iter);
             while(valid && !found) {
-                if(image_list_compare(model, name_markup, &search_iter) <= 0) {
+                if(image_list_compare(model, collate_key, &search_iter) <= 0) {
                     found = TRUE;
                 } else {
                     valid = gtk_tree_model_iter_next(model, &search_iter);
@@ -498,6 +505,7 @@ xfdesktop_settings_image_iconview_add(GtkTreeModel *model,
                                               position,
                                               COL_NAME, name_markup,
                                               COL_FILENAME, path,
+                                              COL_COLLATE_KEY, collate_key,
                                               -1);
             xfdesktop_settings_queue_preview(model, &iter, panel);
 
@@ -509,6 +517,7 @@ xfdesktop_settings_image_iconview_add(GtkTreeModel *model,
     g_free(name_utf8);
     g_free(name_markup);
     g_free(size_string);
+    g_free(collate_key);
 
     if(added)
         return gtk_tree_iter_copy(&iter);
@@ -602,7 +611,7 @@ xfdesktop_image_list_add_dir(GObject *source_object,
     dir_data->panel = panel;
 
     dir_data->ls = gtk_list_store_new(N_COLS, GDK_TYPE_PIXBUF, G_TYPE_STRING,
-                                      G_TYPE_STRING, G_TYPE_STRING);
+                                      G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
 
     /* Get the last image/current image displayed so we can select it in the
      * icon view */
