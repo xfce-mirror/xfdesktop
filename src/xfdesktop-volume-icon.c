@@ -81,7 +81,8 @@ static GdkPixbuf *xfdesktop_volume_icon_peek_pixbuf(XfdesktopIcon *icon,
 static G_CONST_RETURN gchar *xfdesktop_volume_icon_peek_label(XfdesktopIcon *icon);
 static G_CONST_RETURN gchar *xfdesktop_volume_icon_peek_tooltip(XfdesktopIcon *icon);
 static GdkDragAction xfdesktop_volume_icon_get_allowed_drag_actions(XfdesktopIcon *icon);
-static GdkDragAction xfdesktop_volume_icon_get_allowed_drop_actions(XfdesktopIcon *icon);
+static GdkDragAction xfdesktop_volume_icon_get_allowed_drop_actions(XfdesktopIcon *icon,
+                                                                    GdkDragAction *suggested_action);
 static gboolean xfdesktop_volume_icon_do_drop_dest(XfdesktopIcon *icon,
                                                    XfdesktopIcon *src_icon,
                                                    GdkDragAction action);
@@ -328,7 +329,8 @@ xfdesktop_volume_icon_get_allowed_drag_actions(XfdesktopIcon *icon)
 }
 
 static GdkDragAction
-xfdesktop_volume_icon_get_allowed_drop_actions(XfdesktopIcon *icon)
+xfdesktop_volume_icon_get_allowed_drop_actions(XfdesktopIcon *icon,
+                                               GdkDragAction *suggested_action)
 {
     /* if not mounted, it doesn't really make sense to allow any operations
      * here.  if mounted, we should allow everything if it's writable. */
@@ -339,10 +341,16 @@ xfdesktop_volume_icon_get_allowed_drop_actions(XfdesktopIcon *icon)
     if(xfdesktop_volume_icon_is_mounted(icon)) {
         GFileInfo *info = xfdesktop_file_icon_peek_file_info(XFDESKTOP_FILE_ICON(icon));
         if(info) {
-            if(g_file_info_get_attribute_boolean(info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
+            if(g_file_info_get_attribute_boolean(info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE)) {
+                if(suggested_action)
+                    *suggested_action = GDK_ACTION_COPY;
                 return GDK_ACTION_MOVE | GDK_ACTION_COPY | GDK_ACTION_LINK;
+            }
         }
     }
+
+    if(suggested_action)
+        *suggested_action = 0;
     
     return 0;
 }
@@ -362,7 +370,7 @@ xfdesktop_volume_icon_do_drop_dest(XfdesktopIcon *icon,
     DBG("entering");
     
     g_return_val_if_fail(volume_icon && src_file_icon, FALSE);
-    g_return_val_if_fail(xfdesktop_volume_icon_get_allowed_drop_actions(icon),
+    g_return_val_if_fail(xfdesktop_volume_icon_get_allowed_drop_actions(icon, NULL),
                          FALSE);
     
     src_file = xfdesktop_file_icon_peek_file(src_file_icon);

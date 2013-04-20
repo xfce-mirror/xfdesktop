@@ -221,7 +221,8 @@ xfdesktop_icon_get_allowed_drag_actions(XfdesktopIcon *icon)
 
 /*< optional; drops aren't allowed if not provided >*/
 GdkDragAction
-xfdesktop_icon_get_allowed_drop_actions(XfdesktopIcon *icon)
+xfdesktop_icon_get_allowed_drop_actions(XfdesktopIcon *icon,
+                                        GdkDragAction *suggested_action)
 {
     XfdesktopIconClass *klass;
     
@@ -229,10 +230,13 @@ xfdesktop_icon_get_allowed_drop_actions(XfdesktopIcon *icon)
     
     klass = XFDESKTOP_ICON_GET_CLASS(icon);
     
-    if(!klass->get_allowed_drop_actions)
+    if(!klass->get_allowed_drop_actions) {
+        if(suggested_action)
+            *suggested_action = 0;
         return 0;
-    
-    return klass->get_allowed_drop_actions(icon);
+    }
+
+    return klass->get_allowed_drop_actions(icon, suggested_action);
 }
 
 /*< optional; required if get_allowed_drop_actions() can return nonzero >*/

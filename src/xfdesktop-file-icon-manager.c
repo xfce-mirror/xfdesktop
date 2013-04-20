@@ -3227,29 +3227,43 @@ xfdesktop_file_icon_manager_propose_drop_action(XfdesktopIconViewManager *manage
             file_icon = XFDESKTOP_FILE_ICON(drop_icon);
             tfile = xfdesktop_file_icon_peek_file(file_icon);
             tinfo = xfdesktop_file_icon_peek_file_info(file_icon);
-        }
 
-        if(tfile && !g_file_has_uri_scheme(tfile, "file")) {
-            return action;
+            /* if it's a volume, but we don't have |tinfo|, this just isn't
+             * going to work */
+            if(!tinfo && XFDESKTOP_IS_VOLUME_ICON(drop_icon)) {
+                return 0;
+            }
+
+            if(tfile && !g_file_has_uri_scheme(tfile, "file")) {
+                return action;
+            }
+
+            if(tinfo && g_file_info_get_file_type(tinfo) != G_FILE_TYPE_DIRECTORY) {
+                return action;
+            }
         }
 
         file_list = xfdesktop_file_utils_file_list_from_string((const gchar *)gtk_selection_data_get_data(data));
         if(file_list) {
             GFile *base_dest_file = NULL;
-            gboolean dest_is_volume = (drop_icon
-                                       && XFDESKTOP_IS_VOLUME_ICON(drop_icon));
 
-            /* if it's a volume, but we don't have |tinfo|, this just isn't
-             * going to work */
-            if(!tinfo && dest_is_volume) {
+            /* source must be local file */
+            if(!g_file_has_uri_scheme(file_list->data, "file")) {
                 xfdesktop_file_utils_file_list_free(file_list);
                 return action;
             }
 
-            if(tinfo && g_file_info_get_file_type(tinfo) == G_FILE_TYPE_DIRECTORY) {
+            if(tinfo) {
                 base_dest_file = g_object_ref(tfile);
             } else {
                 base_dest_file = g_object_ref(fmanager->priv->folder);
+            }
+
+            /* dropping on ourselves? */
+            if(g_strcmp0(g_file_get_uri(file_list->data), g_file_get_uri(base_dest_file)) == 0) {
+                g_object_unref(base_dest_file);
+                xfdesktop_file_utils_file_list_free(file_list);
+                return 0;
             }
 
             /* Determine if we should move/copy by checking if the files
