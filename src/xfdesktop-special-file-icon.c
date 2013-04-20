@@ -75,7 +75,8 @@ static GdkPixbuf *xfdesktop_special_file_icon_peek_pixbuf(XfdesktopIcon *icon,
 static G_CONST_RETURN gchar *xfdesktop_special_file_icon_peek_label(XfdesktopIcon *icon);
 static G_CONST_RETURN gchar *xfdesktop_special_file_icon_peek_tooltip(XfdesktopIcon *icon);
 static GdkDragAction xfdesktop_special_file_icon_get_allowed_drag_actions(XfdesktopIcon *icon);
-static GdkDragAction xfdesktop_special_file_icon_get_allowed_drop_actions(XfdesktopIcon *icon);
+static GdkDragAction xfdesktop_special_file_icon_get_allowed_drop_actions(XfdesktopIcon *icon,
+                                                                          GdkDragAction *suggested_action);
 static gboolean xfdesktop_special_file_icon_do_drop_dest(XfdesktopIcon *icon,
                                                          XfdesktopIcon *src_icon,
                                                          GdkDragAction action);
@@ -305,7 +306,8 @@ xfdesktop_special_file_icon_get_allowed_drag_actions(XfdesktopIcon *icon)
 }
 
 static GdkDragAction
-xfdesktop_special_file_icon_get_allowed_drop_actions(XfdesktopIcon *icon)
+xfdesktop_special_file_icon_get_allowed_drop_actions(XfdesktopIcon *icon,
+                                                     GdkDragAction *suggested_action)
 {
     XfdesktopSpecialFileIcon *special_file_icon = XFDESKTOP_SPECIAL_FILE_ICON(icon);
     GFileInfo *info;
@@ -319,13 +321,20 @@ xfdesktop_special_file_icon_get_allowed_drop_actions(XfdesktopIcon *icon)
             {
                 DBG("can move, copy and link");
                 actions = GDK_ACTION_MOVE | GDK_ACTION_COPY | GDK_ACTION_LINK;
+                if(suggested_action)
+                    *suggested_action = GDK_ACTION_MOVE;
             }
         }
     } else {
         DBG("can move");
         actions = GDK_ACTION_MOVE; /* everything else is just silly */
+        if(suggested_action)
+            *suggested_action = GDK_ACTION_MOVE;
     }
     
+    if(suggested_action)
+        *suggested_action = 0;
+
     return actions;
 }
 
@@ -344,7 +353,7 @@ xfdesktop_special_file_icon_do_drop_dest(XfdesktopIcon *icon,
     DBG("entering");
     
     g_return_val_if_fail(special_file_icon && src_file_icon, FALSE);
-    g_return_val_if_fail(xfdesktop_special_file_icon_get_allowed_drop_actions(icon),
+    g_return_val_if_fail(xfdesktop_special_file_icon_get_allowed_drop_actions(icon, NULL),
                          FALSE);
     
     src_file = xfdesktop_file_icon_peek_file(src_file_icon);

@@ -80,7 +80,8 @@ static GdkPixbuf *xfdesktop_regular_file_icon_peek_pixbuf(XfdesktopIcon *icon,
 static G_CONST_RETURN gchar *xfdesktop_regular_file_icon_peek_label(XfdesktopIcon *icon);
 static G_CONST_RETURN gchar *xfdesktop_regular_file_icon_peek_tooltip(XfdesktopIcon *icon);
 static GdkDragAction xfdesktop_regular_file_icon_get_allowed_drag_actions(XfdesktopIcon *icon);
-static GdkDragAction xfdesktop_regular_file_icon_get_allowed_drop_actions(XfdesktopIcon *icon);
+static GdkDragAction xfdesktop_regular_file_icon_get_allowed_drop_actions(XfdesktopIcon *icon,
+                                                                          GdkDragAction *suggested_action);
 static gboolean xfdesktop_regular_file_icon_do_drop_dest(XfdesktopIcon *icon,
                                                          XfdesktopIcon *src_icon,
                                                          GdkDragAction action);
@@ -411,23 +412,35 @@ xfdesktop_regular_file_icon_get_allowed_drag_actions(XfdesktopIcon *icon)
 }
 
 static GdkDragAction
-xfdesktop_regular_file_icon_get_allowed_drop_actions(XfdesktopIcon *icon)
+xfdesktop_regular_file_icon_get_allowed_drop_actions(XfdesktopIcon *icon,
+                                                     GdkDragAction *suggested_action)
 {
     GFileInfo *info = xfdesktop_file_icon_peek_file_info(XFDESKTOP_FILE_ICON(icon));
     
-    if(!info)
+    if(!info) {
+        if(suggested_action)
+            *suggested_action = 0;
         return 0;
+    }
     
     /* if it's executable we can 'copy'.  if it's a folder we can do anything
      * if it's writable. */
     if(g_file_info_get_file_type(info) == G_FILE_TYPE_DIRECTORY) {
-        if(g_file_info_get_attribute_boolean(info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
+        if(g_file_info_get_attribute_boolean(info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE)) {
+            if(suggested_action)
+                *suggested_action = GDK_ACTION_MOVE;
             return GDK_ACTION_MOVE | GDK_ACTION_COPY | GDK_ACTION_LINK;
+        }
     } else {
         if(xfdesktop_file_utils_file_is_executable(info)) {
+            if(suggested_action)
+                *suggested_action = GDK_ACTION_COPY;
             return GDK_ACTION_COPY;
         }
     }
+
+    if(suggested_action)
+        *suggested_action = 0;
 
     return 0;
 }
@@ -446,7 +459,7 @@ xfdesktop_regular_file_icon_do_drop_dest(XfdesktopIcon *icon,
     DBG("entering");
     
     g_return_val_if_fail(regular_file_icon && src_file_icon, FALSE);
-    g_return_val_if_fail(xfdesktop_regular_file_icon_get_allowed_drop_actions(icon) != 0,
+    g_return_val_if_fail(xfdesktop_regular_file_icon_get_allowed_drop_actions(icon, NULL) != 0,
                          FALSE);
     
     src_file = xfdesktop_file_icon_peek_file(src_file_icon);

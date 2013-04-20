@@ -1387,7 +1387,7 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
     icon_on_dest = xfdesktop_icon_view_icon_in_cell(icon_view, hover_row,
                                                     hover_col);
     if(icon_on_dest) {
-        if(!xfdesktop_icon_get_allowed_drop_actions(icon_on_dest))
+        if(!xfdesktop_icon_get_allowed_drop_actions(icon_on_dest, NULL))
             return FALSE;
     } else if(!xfdesktop_grid_is_free_position(icon_view, hover_row, hover_col))
         return FALSE;
@@ -1407,7 +1407,7 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
         else  /* #3 */
             our_action = gdk_drag_context_get_suggested_action(context);
     } else {
-        /* start with all available actions */
+        /* start with all available actions (may be filtered by modifier keys) */
         GdkDragAction allowed_actions = context->actions;
 
         if(is_local_drag) {  /* #2 */
@@ -1426,18 +1426,30 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
             }
             
             allowed_actions &= xfdesktop_icon_get_allowed_drag_actions(icon_view->priv->cursor);
+
+            /* for local drags, let the dest icon decide */
+            allowed_actions &= xfdesktop_icon_get_allowed_drop_actions(icon_on_dest, &our_action);
+        } else {  /* #4 */
+            allowed_actions &= xfdesktop_icon_get_allowed_drop_actions(icon_on_dest, NULL);
+
+            /* for foreign drags, take the action suggested by the source */
+            our_action = gdk_drag_context_get_suggested_action(context);
         }
-        
+
         /* #2 or #4 */
-        allowed_actions &= xfdesktop_icon_get_allowed_drop_actions(icon_on_dest);
-        
-        /* priority: move, copy, link */
-        if(allowed_actions & GDK_ACTION_MOVE)
-            our_action = GDK_ACTION_MOVE;
-        else if(allowed_actions & GDK_ACTION_COPY)
-            our_action = GDK_ACTION_COPY;
-        else if(allowed_actions & GDK_ACTION_LINK)
-            our_action = GDK_ACTION_LINK;
+
+        /* fallback actions if the suggested action is not allowed,
+         * priority: move, copy, link */
+        if(!(our_action & allowed_actions)) {
+            if(allowed_actions & GDK_ACTION_MOVE)
+                our_action = GDK_ACTION_MOVE;
+            else if(allowed_actions & GDK_ACTION_COPY)
+                our_action = GDK_ACTION_COPY;
+            else if(allowed_actions & GDK_ACTION_LINK)
+                our_action = GDK_ACTION_LINK;
+            else
+                our_action = 0;
+        }
     }
 
     /* allow the drag dest to override the selected action based on the drag data */
@@ -1445,6 +1457,8 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
     icon_view->priv->hover_col = hover_col;
     icon_view->priv->proposed_drop_action = our_action;
     icon_view->priv->dropped = FALSE;
+    g_object_set_data(G_OBJECT(context), "--xfdesktop-icon-view-drop-icon",
+                      icon_on_dest);
     gtk_drag_get_data(widget, context, target, time_);
 
     /* the actual call to gdk_drag_status() is deferred to
@@ -1626,7 +1640,7 @@ xfdesktop_icon_view_drag_data_received(GtkWidget *widget,
                                                        context, row, col, data,
                                                        info, time_);
     } else {
-        /* FIXME: cannot use x and y here, for they doen't seem to have any
+        /* FIXME: cannot use x and y here, for they don't seem to have any
          * meaningful value */
 
         GdkDragAction action = icon_view->priv->proposed_drop_action;
