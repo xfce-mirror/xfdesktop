@@ -1682,20 +1682,6 @@ xfdesktop_icon_view_compare_icons(gconstpointer *a,
 }
 
 static void
-xfdesktop_move_icon_from_pending_list_to_icons_list(XfdesktopIconView *icon_view,
-                                                    XfdesktopIcon *icon)
-{
-    GList *pending_icons = icon_view->priv->pending_icons;
-    GList *icon_list = icon_view->priv->icons;
-
-    if(g_list_find(pending_icons, icon)) {
-        /* Add the icon to the icon list and remove from the pending list */
-        icon_list = g_list_append(icon_list, icon);
-        pending_icons = g_list_remove(pending_icons, icon);
-    }
-}
-
-static void
 xfdesktop_icon_view_append_icons(XfdesktopIconView *icon_view,
                                  GList *icon_list,
                                  guint16 *row,
@@ -1717,38 +1703,6 @@ xfdesktop_icon_view_append_icons(XfdesktopIconView *icon_view,
         /* set new position */
         xfdesktop_icon_set_position(l->data, *row, *col);
         xfdesktop_grid_unset_position_free(icon_view, l->data);
-
-        xfdesktop_icon_view_invalidate_icon(icon_view, l->data, TRUE);
-    }
-}
-
-static void
-xfdesktop_icon_view_append_pending_icons(XfdesktopIconView *icon_view)
-{
-    GList *l = NULL;
-    guint16 row = 0, col = 0;
-
-    for(l = icon_view->priv->pending_icons; l != NULL; l = g_list_next(l)) {
-
-        /* Find the next available spot for an icon */
-        do {
-            if(row + 1 >= icon_view->priv->nrows) {
-                ++col;
-                row = 0;
-            } else {
-                ++row;
-            }
-
-            /* Check that we haven't ran out of space */
-            if(col > icon_view->priv->ncols)
-                return;
-        } while(!xfdesktop_grid_is_free_position(icon_view, row, col));
-
-        /* set new position */
-        xfdesktop_icon_set_position(l->data, row, col);
-        xfdesktop_grid_unset_position_free(icon_view, l->data);
-
-        xfdesktop_move_icon_from_pending_list_to_icons_list(icon_view, l->data);
 
         xfdesktop_icon_view_invalidate_icon(icon_view, l->data, TRUE);
     }
@@ -3136,56 +3090,130 @@ xfdesktop_move_all_icons_to_pending_icons_list(XfdesktopIconView *icon_view)
     icon_view->priv->pending_icons = g_list_concat(icon_view->priv->icons,
                                                    icon_view->priv->pending_icons);
     icon_view->priv->icons = NULL;
-    
-    DUMP_GRID_LAYOUT(icon_view);
-    
+
     memset(icon_view->priv->grid_layout, 0,
            icon_view->priv->nrows * icon_view->priv->ncols
            * sizeof(XfdesktopIcon *));
     
     xfdesktop_setup_grids(icon_view);
-    
-    DUMP_GRID_LAYOUT(icon_view);
 }
 
+/* When changing resolutions this moves all the icons that are in the rc file
+ * for the new resolution to the desktop and removes them from the pending
+ * icons list */
 static void
-xfdesktop_move_all_pending_icons_to_desktop(XfdesktopIconView* icon_view)
+xfdesktop_move_all_cached_icons_to_desktop(XfdesktopIconView *icon_view)
 {
-    XfdesktopFileIconManager *fmanager;
-    GList *l, *leftovers = NULL;
-
 #ifdef ENABLE_FILE_ICONS
+    GList *l, *leftovers = NULL;
+    XfdesktopFileIconManager *fmanager;
+
+    TRACE("entering");
+
     if(XFDESKTOP_IS_FILE_ICON_MANAGER(icon_view->priv->manager))
         fmanager = XFDESKTOP_FILE_ICON_MANAGER(icon_view->priv->manager);
-#endif
 
-    /* add all icons back */
+    if(fmanager == NULL)
+        return;
+
+    /* add all cached icons back */
     for(l = icon_view->priv->pending_icons; l; l = l->next) {
         gint16 row, col;
         XfdesktopIcon *icon = XFDESKTOP_ICON(l->data);
 
-#ifdef ENABLE_FILE_ICONS
         /* Try to get the cached position for the new resolution */
-        if(fmanager != NULL &&
-           xfdesktop_file_icon_manager_get_cached_icon_position(
+        if(xfdesktop_file_icon_manager_get_cached_icon_position(
                                                             fmanager,
                                                             xfdesktop_icon_peek_label(icon),
                                                             &row,
                                                             &col))
         {
-            xfdesktop_icon_set_position(icon, row, col);
-        }
-#endif
+            DBG("icon %s setting position row%dxcol%d",
+                xfdesktop_icon_peek_label(icon), row, col);
 
-        if(xfdesktop_icon_view_icon_find_position(icon_view, icon))
-            xfdesktop_icon_view_add_item_internal(icon_view, icon);
-        else
+            /* Make sure the spot is available */
+            if(xfdesktop_grid_is_free_position(icon_view, row, col)) {
+                xfdesktop_icon_set_position(icon, row, col);
+                xfdesktop_icon_view_add_item_internal(icon_view, icon);
+            } else {
+                leftovers = g_list_prepend(leftovers, icon);
+            }
+        } else {
             leftovers = g_list_prepend(leftovers, icon);
+        }
     }
+
     g_list_free(icon_view->priv->pending_icons);
     icon_view->priv->pending_icons = g_list_reverse(leftovers);
+#endif
+}
 
-    xfdesktop_icon_view_append_pending_icons(icon_view);
+/* Takes any icons in the pending icons list that has their original spot open.
+ * This way icons stay somewhat stable during minor resolution changes */
+static void
+xfdesktop_move_all_previous_icons_to_desktop(XfdesktopIconView *icon_view)
+{
+    GList *l, *leftovers = NULL;
+
+    TRACE("entering");
+
+    /* add all pending icons back if their space is still available */
+    for(l = icon_view->priv->pending_icons; l; l = l->next) {
+        guint16 row, col;
+        XfdesktopIcon *icon = XFDESKTOP_ICON(l->data);
+
+        xfdesktop_icon_get_position(icon, &row, &col);
+
+        if(xfdesktop_grid_is_free_position(icon_view, row, col)) {
+            DBG("adding icon %s position row %d x col %d",
+                xfdesktop_icon_peek_label(icon), row, col);
+            xfdesktop_icon_view_add_item_internal(icon_view, icon);
+        } else {
+            leftovers = g_list_prepend(leftovers, icon);
+        }
+    }
+
+    g_list_free(icon_view->priv->pending_icons);
+    icon_view->priv->pending_icons = g_list_reverse(leftovers);
+}
+
+/* Takes any icons in the pending icons list and adds them where there is space */
+static void
+xfdesktop_append_all_pending_icons(XfdesktopIconView *icon_view)
+{
+    GList *l, *leftovers = NULL;
+
+    TRACE("entering");
+
+    /* add all pending icons back if space is available */
+    for(l = icon_view->priv->pending_icons; l; l = l->next) {
+        guint16 row, col;
+        XfdesktopIcon *icon = XFDESKTOP_ICON(l->data);
+
+        if(xfdesktop_grid_get_next_free_position(icon_view, &row, &col)) {
+            xfdesktop_icon_set_position(icon, row, col);
+            xfdesktop_icon_view_add_item_internal(icon_view, icon);
+        } else {
+            leftovers = g_list_prepend(leftovers, icon);
+        }
+    }
+
+    g_list_free(icon_view->priv->pending_icons);
+    icon_view->priv->pending_icons = g_list_reverse(leftovers);
+}
+
+static void
+xfdesktop_move_all_pending_icons_to_desktop(XfdesktopIconView *icon_view)
+{
+    if(!XFDESKTOP_IS_ICON_VIEW(icon_view))
+        return;
+
+    if(icon_view->priv->grid_layout == NULL)
+        return;
+
+    xfdesktop_move_all_cached_icons_to_desktop(icon_view);
+    xfdesktop_move_all_previous_icons_to_desktop(icon_view);
+    xfdesktop_append_all_pending_icons(icon_view);
 }
 
 static void
@@ -3299,6 +3327,8 @@ xfdesktop_grid_is_free_position(XfdesktopIconView *icon_view,
                                 guint16 row,
                                 guint16 col)
 {
+    g_return_val_if_fail(icon_view->priv->grid_layout != NULL, FALSE);
+
     if(row >= icon_view->priv->nrows
        || col >= icon_view->priv->ncols)
     {
@@ -3358,11 +3388,17 @@ xfdesktop_grid_unset_position_free_raw(XfdesktopIconView *icon_view,
     idx = col * icon_view->priv->nrows + row;
     if(icon_view->priv->grid_layout[idx])
         return FALSE;
-    
+
+#if 0 /*def DEBUG*/
     DUMP_GRID_LAYOUT(icon_view);
+#endif
+
     icon_view->priv->grid_layout[idx] = data;
+
+#if 0 /*def DEBUG*/
     DUMP_GRID_LAYOUT(icon_view);
-    
+#endif
+
     return TRUE;
 }
 
@@ -3632,6 +3668,11 @@ xfdesktop_icon_view_remove_item(XfdesktopIconView *icon_view,
     
     g_object_set_data(G_OBJECT(icon), "--xfdesktop-icon-view", NULL);
     g_object_unref(G_OBJECT(icon));
+
+    if(icon_view->priv->pending_icons != NULL) {
+        /* Move in any pending icons to the space available */
+        xfdesktop_move_all_pending_icons_to_desktop(icon_view);
+    }
 }
 
 void

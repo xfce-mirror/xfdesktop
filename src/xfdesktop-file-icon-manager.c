@@ -1691,7 +1691,9 @@ xfdesktop_file_icon_manager_save_icons(gpointer user_data)
     path = xfce_resource_save_location(XFCE_RESOURCE_CONFIG, relpath, TRUE);
     if(!path)
         return FALSE;
-    
+
+    DBG("saving to: %s", path);
+
     tmppath = g_strconcat(path, ".new", NULL);
     
     rcfile = xfce_rc_simple_open(tmppath, FALSE);
@@ -1714,11 +1716,15 @@ xfdesktop_file_icon_manager_save_icons(gpointer user_data)
     
     xfce_rc_flush(rcfile);
     xfce_rc_close(rcfile);
-    
-    if(rename(tmppath, path)) {
-        g_warning("Unable to rename temp file to %s: %s", path,
-                  strerror(errno));
-        unlink(tmppath);
+
+    if(g_file_test(tmppath, G_FILE_TEST_EXISTS)) {
+        if(rename(tmppath, path)) {
+            g_warning("Unable to rename temp file to %s: %s", path,
+                      strerror(errno));
+            unlink(tmppath);
+        }
+    } else {
+        DBG("didn't write anything in the RC file, desktop is probably empty");
     }
     
     g_free(path);
