@@ -2,7 +2,7 @@
 # Copyright (C) The Xfce development team.
 # This file is distributed under the same license as the xfdesktop package.
 # Jasper Huijsmans <jasper@xfce.org>, 2004.
-# Pjotr, 2011.
+# Pjotr pjotrvertaalt@gmail.com , 2011, 2013.
 # 
 msgid ""
 msgstr ""
@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-01-26 07:03+0000\n"
 "PO-Revision-Date: 2011-09-09 17:45+0100\n"
-"Last-Translator: Pjotr\n"
+"Last-Translator: Pjotr pjotrvertaalt@gmail.com\n"
 "Language-Team: Dutch (Flemish)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -292,15 +292,15 @@ msgstr "Toon toe_passingspictogrammen in menu"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:24
 msgid "Show _window list menu on desktop middle click"
-msgstr "Vensterlijstmenu _tonen bij middelklik op bureaublad"
+msgstr "Toon vensterlijstmenu bij middelklik op bureaublad"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:25
 msgid "Show applications menu on _desktop right click"
-msgstr "_Toepassingenmenu tonen bij rechtsklik op bureaublad"
+msgstr "Toon toepassingenmenu bij rechtsklik op bureaublad"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:26
 msgid "Show s_ticky windows only in active workspace"
-msgstr "Vas_tgezette vensters alleen in actieve werkblad weergeven"
+msgstr "Toon vastgezette vensters alleen in actieve werkblad"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "Show t_humbnails"
@@ -308,7 +308,7 @@ msgstr "Toon miniaturen"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:28
 msgid "Show workspace _names in list"
-msgstr "Toon werkblad_namen in lijst"
+msgstr "Toon werkbladnamen in lijst"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:29
 msgid "Single _click to activate items"
@@ -316,7 +316,7 @@ msgstr "Onderdelen activeren met enkele klik"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:30
 msgid "Use _submenus for the windows in each workspace"
-msgstr "Gebruik _submenu's voor de vensters in elk werkblad"
+msgstr "Gebruik submenu's voor de vensters in elk werkblad"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:31
 msgid "Use custom _font size:"
@@ -581,7 +581,7 @@ msgstr "Openen met"
 
 #: ../src/xfdesktop-file-icon-manager.c:1614
 msgid "Open With Other _Application..."
-msgstr "Openen met andere _toepassing..."
+msgstr "Open met andere _toepassing..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1706
 msgid "_Rename..."
@@ -745,7 +745,7 @@ msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the "
 "media or disconnect the drive"
 msgstr ""
-"Het apparaat \"%s\" wordt door het systeem ontkoppeld. Gelieve het niet te "
+"Het apparaat '%s' wordt door het systeem ontkoppeld. Gelieve het niet te "
 "verwijderen."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
@@ -760,7 +760,7 @@ msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be "
 "removed. Please do not remove the media or disconnect the drive"
 msgstr ""
-"Er zijn gegevens die naar het apparaat \"%s\" geschreven moeten worden, "
+"Er zijn gegevens die naar het apparaat '%s' geschreven moeten worden, "
 "voordat het kan worden verwijderd. Gelieve het dus niet te verwijderen."
 
 #: ../src/xfdesktop-notify.c:218
@@ -839,7 +839,7 @@ msgid ""
 "%s left (%s total)"
 msgstr ""
 "Verwijderbaar medium\n"
-"Aangekoppeld in \"%s\"\n"
+"Aangekoppeld in '%s'\n"
 "%s over (%s totaal)"
 
 #: ../src/xfdesktop-volume-icon.c:454
