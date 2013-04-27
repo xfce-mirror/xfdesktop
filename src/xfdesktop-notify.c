@@ -215,27 +215,31 @@ xfdesktop_notify_unmount_finish (GMount *mount, gboolean unmount_successful)
       g_object_set_data (G_OBJECT (mount), "xfdesktop-notification", NULL);
     }
 
-  /* if the unmount operation wasn't successful then stop here, otherwise
-   * display a message letting the user know it has been removed */
-  if(!unmount_successful)
-    return;
+  /* if the unmount operation was successful then display a message letting
+   * the user know it has been removed */
+  if (unmount_successful)
+    {
+      summary = _("Unmount Finished");
 
-  summary = _("Unmount Finished");
-
-  message = g_strdup_printf (_("The device \"%s\" has been safely removed from the system. "), name);
+      message = g_strdup_printf (_("The device \"%s\" has been safely removed from the system. "), name);
 
 #ifdef NOTIFY_CHECK_VERSION
 #if NOTIFY_CHECK_VERSION (0, 7, 0)
-  notification = notify_notification_new (summary, message, icon_name);
+      notification = notify_notification_new (summary, message, icon_name);
 #else
-  notification = notify_notification_new (summary, message, icon_name, NULL);
+      notification = notify_notification_new (summary, message, icon_name, NULL);
 #endif
 #else
-  notification = notify_notification_new (summary, message, icon_name, NULL);
+      notification = notify_notification_new (summary, message, icon_name, NULL);
 #endif
-  notify_notification_set_urgency (notification, NOTIFY_URGENCY_NORMAL);
-  notify_notification_set_timeout (notification, NOTIFY_EXPIRES_DEFAULT);
-  notify_notification_show (notification, NULL);
+      notify_notification_set_urgency (notification, NOTIFY_URGENCY_NORMAL);
+      notify_notification_set_timeout (notification, NOTIFY_EXPIRES_DEFAULT);
+      notify_notification_show (notification, NULL);
+    }
+
+  g_free (message);
+  g_free (icon_name);
+  g_free (name);
 }
 
 
@@ -395,27 +399,31 @@ xfdesktop_notify_eject_finish (GVolume *volume, gboolean eject_successful)
       g_object_set_data (G_OBJECT (volume), "xfdesktop-notification", NULL);
     }
 
-  /* if the eject operation wasn't successful then stop here, otherwise
-   * display a message letting the user know it has been removed */
-  if(!eject_successful)
-    return;
+  /* if the eject operation was successful then display a message letting the
+   * user know it has been removed */
+  if(eject_successful)
+    {
+      summary = _("Eject Finished");
 
-  summary = _("Eject Finished");
-
-  message = g_strdup_printf (_("The device \"%s\" has been safely removed from the system. "), name);
+      message = g_strdup_printf (_("The device \"%s\" has been safely removed from the system. "), name);
 
 #ifdef NOTIFY_CHECK_VERSION
 #if NOTIFY_CHECK_VERSION (0, 7, 0)
-  notification = notify_notification_new (summary, message, icon_name);
+      notification = notify_notification_new (summary, message, icon_name);
 #else
-  notification = notify_notification_new (summary, message, icon_name, NULL);
+      notification = notify_notification_new (summary, message, icon_name, NULL);
 #endif
 #else
-  notification = notify_notification_new (summary, message, icon_name, NULL);
+      notification = notify_notification_new (summary, message, icon_name, NULL);
 #endif
-  notify_notification_set_urgency (notification, NOTIFY_URGENCY_NORMAL);
-  notify_notification_set_timeout (notification, NOTIFY_EXPIRES_DEFAULT);
-  notify_notification_show (notification, NULL);
+      notify_notification_set_urgency (notification, NOTIFY_URGENCY_NORMAL);
+      notify_notification_set_timeout (notification, NOTIFY_EXPIRES_DEFAULT);
+      notify_notification_show (notification, NULL);
+    }
+
+  g_free (message);
+  g_free (icon_name);
+  g_free (name);
 }
 
 
