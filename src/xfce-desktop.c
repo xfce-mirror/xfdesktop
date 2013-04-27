@@ -318,8 +318,6 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     XfceDesktop *desktop = XFCE_DESKTOP(user_data);
     GdkPixmap *pmap = desktop->priv->bg_pixmap;
     GdkScreen *gscreen = desktop->priv->gscreen;
-    cairo_t *cr;
-    GdkPixbuf *pix;
     GdkRectangle rect;
     GdkRegion *clip_region = NULL;
     gint i, monitor = -1, current_workspace;
@@ -335,6 +333,7 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
 
     current_workspace = xfce_desktop_get_current_workspace(desktop);
 
+    /* Find out which monitor the backdrop is on */
     for(i = 0; i < xfce_desktop_get_n_monitors(desktop); i++) {
         if(backdrop == xfce_workspace_get_backdrop(desktop->priv->workspaces[current_workspace], i)) {
             monitor = i;
@@ -350,6 +349,7 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
 
     if(xfce_desktop_get_n_monitors(desktop) > 1
        && xfce_workspace_get_xinerama_stretch(desktop->priv->workspaces[current_workspace])) {
+        /* Spanning screens */
         GdkRectangle monitor_rect;
 
         gdk_screen_get_monitor_geometry(gscreen, 0, &rect);
@@ -414,7 +414,9 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
 
     if(rect.width != 0 && rect.height != 0) {
         /* create/get the composited backdrop pixmap */
-        pix = xfce_backdrop_get_pixbuf(backdrop);
+        GdkPixbuf *pix = xfce_backdrop_get_pixbuf(backdrop);
+        cairo_t *cr;
+
         if(!pix)
             return;
 
@@ -428,9 +430,6 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
         }
 
         cairo_paint(cr);
-        g_object_unref(G_OBJECT(pix));
-
-        cairo_destroy(cr);
 
         /* tell gtk to redraw the repainted area */
         gtk_widget_queue_draw_area(GTK_WIDGET(desktop), rect.x, rect.y,
@@ -442,6 +441,9 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
 
         /* do this again so apps watching the root win notice the update */
         set_real_root_window_pixmap(gscreen, pmap);
+
+        g_object_unref(G_OBJECT(pix));
+        cairo_destroy(cr);
     }
 
     if(clip_region != NULL)
@@ -453,7 +455,6 @@ screen_size_changed_cb(GdkScreen *gscreen, gpointer user_data)
 {
     XfceDesktop *desktop = user_data;
     gint w, h, current_workspace;
-    XfceBackdrop *current_backdrop;
 
     TRACE("entering");
 
@@ -491,6 +492,7 @@ screen_size_changed_cb(GdkScreen *gscreen, gpointer user_data)
         gint i;
 
         for(i = 0; i < xfce_desktop_get_n_monitors(desktop); i++) {
+            XfceBackdrop *current_backdrop;
             current_backdrop = xfce_workspace_get_backdrop(desktop->priv->workspaces[current_workspace], i);
             backdrop_changed_cb(current_backdrop, desktop);
         }

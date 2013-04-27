@@ -119,7 +119,7 @@ typedef struct
 
     XfdesktopThumbnailer *thumbnailer;
 
-    GFile *selected_file;
+    GFile *selected_folder;
     GCancellable *cancel_enumeration;
     guint add_dir_idle_id;
 
@@ -226,9 +226,10 @@ static gpointer
 xfdesktop_settings_create_previews(gpointer data)
 {
     AppearancePanel *panel = data;
-    PreviewData *pdata = NULL;
 
     while(panel->preview_queue != NULL) {
+        PreviewData *pdata = NULL;
+
         /* Block and wait for another preview to create */
         pdata = g_async_queue_pop(panel->preview_queue);
 
@@ -525,6 +526,28 @@ xfdesktop_settings_image_iconview_add(GtkTreeModel *model,
         return NULL;
 }
 
+static void
+cb_destroy_add_dir_enumeration(gpointer user_data)
+{
+    AddDirData *dir_data = user_data;
+    AppearancePanel *panel = dir_data->panel;
+
+    TRACE("entering");
+
+    g_free(dir_data->file_path);
+    g_free(dir_data->last_image);
+
+    if(G_IS_FILE_ENUMERATOR(dir_data->file_enumerator))
+        g_object_unref(dir_data->file_enumerator);
+
+    g_free(dir_data);
+
+    if(panel->cancel_enumeration) {
+        g_object_unref(panel->cancel_enumeration);
+        panel->cancel_enumeration = NULL;
+    }
+}
+
 static gboolean
 xfdesktop_image_list_add_item(gpointer user_data)
 {
@@ -532,22 +555,13 @@ xfdesktop_image_list_add_item(gpointer user_data)
     AppearancePanel *panel = dir_data->panel;
     GFileInfo *info;
     GtkTreeIter *iter;
-    GtkTreePath *path;
 
-    /* If the enumeration gets canceled/destroyed we need to clean up */
-    if(!G_IS_FILE_ENUMERATOR(dir_data->file_enumerator)) {
-        g_free(dir_data->file_path);
-        g_free(dir_data->last_image);
-        g_free(dir_data);
-
-        if(panel->cancel_enumeration) {
-            g_object_unref(panel->cancel_enumeration);
-            panel->cancel_enumeration = NULL;
-        }
-
+    /* If the enumeration gets canceled/destroyed return and
+     * cb_destroy_add_dir_enumeration will get called to clean up */
+    if(!G_IS_FILE_ENUMERATOR(dir_data->file_enumerator))
         return FALSE;
-    }
 
+    /* Add one item to the icon view at a time so we don't block the UI */
     if((info = g_file_enumerator_next_file(dir_data->file_enumerator, NULL, NULL))) {
         const gchar *file_name = g_file_info_get_name(info);
         gchar *buf = g_strconcat(dir_data->file_path, "/", file_name, NULL);
@@ -577,23 +591,16 @@ xfdesktop_image_list_add_item(gpointer user_data)
 
     /* last_image is in the directory added then it should be selected */
     if(dir_data->selected_iter) {
+        GtkTreePath *path;
         path = gtk_tree_model_get_path(GTK_TREE_MODEL(dir_data->ls), dir_data->selected_iter);
         if(path) {
             gtk_icon_view_select_path(GTK_ICON_VIEW(panel->image_iconview), path);
             gtk_tree_iter_free(dir_data->selected_iter);
+            gtk_tree_path_free(path);
         }
      }
 
-    g_free(dir_data->file_path);
-    g_free(dir_data->last_image);
-    g_object_unref(dir_data->file_enumerator);
-    g_free(dir_data);
-
-    if(panel->cancel_enumeration) {
-        g_object_unref(panel->cancel_enumeration);
-        panel->cancel_enumeration = NULL;
-    }
-
+    /* cb_destroy_add_dir_enumeration will get called to clean up */
     return FALSE;
 }
 
@@ -619,15 +626,18 @@ xfdesktop_image_list_add_dir(GObject *source_object,
 
     dir_data->last_image = xfconf_channel_get_string(panel->channel, property, DEFAULT_BACKDROP);
 
-    dir_data->file_path = g_file_get_path(panel->selected_file);
+    dir_data->file_path = g_file_get_path(panel->selected_folder);
 
-    dir_data->file_enumerator = g_file_enumerate_children_finish(panel->selected_file,
+    dir_data->file_enumerator = g_file_enumerate_children_finish(panel->selected_folder,
                                                                  res,
                                                                  NULL);
 
     /* Individual items are added in an idle callback so everything is more
      * responsive */
-    panel->add_dir_idle_id = g_idle_add(xfdesktop_image_list_add_item, dir_data);
+    panel->add_dir_idle_id = g_idle_add_full(G_PRIORITY_DEFAULT_IDLE,
+                                             xfdesktop_image_list_add_item,
+                                             dir_data,
+                                             cb_destroy_add_dir_enumeration);
 
     g_free(property);
 }
@@ -914,11 +924,14 @@ cb_folder_selection_changed(GtkWidget *button,
 
     TRACE("entering");
 
-    if(panel->selected_file != NULL)
-        previous_filename = g_file_get_path(panel->selected_file);
+    if(panel->selected_folder != NULL)
+        previous_filename = g_file_get_path(panel->selected_folder);
 
     /* Check to see if the folder actually did change */
     if(g_strcmp0(filename, previous_filename) == 0) {
+        DBG("filename %s, previous_filename %s. Nothing changed",
+            filename == NULL ? "NULL" : filename,
+            previous_filename == NULL ? "NULL" : previous_filename);
         g_free(filename);
         g_free(previous_filename);
         return;
@@ -926,17 +939,17 @@ cb_folder_selection_changed(GtkWidget *button,
 
     TRACE("folder changed to: %s", filename);
 
-    if(panel->selected_file != NULL)
-        g_object_unref(panel->selected_file);
+    if(panel->selected_folder != NULL)
+        g_object_unref(panel->selected_folder);
 
-    panel->selected_file = g_file_new_for_path(filename);
+    panel->selected_folder = g_file_new_for_path(filename);
 
     /* Stop any previous loading since something changed */
     xfdesktop_settings_stop_image_loading(panel);
 
     panel->cancel_enumeration = g_cancellable_new();
 
-    g_file_enumerate_children_async(panel->selected_file,
+    g_file_enumerate_children_async(panel->selected_folder,
                                     XFDESKTOP_FILE_INFO_NAMESPACE,
                                     G_FILE_QUERY_INFO_NONE,
                                     G_PRIORITY_DEFAULT,
@@ -944,6 +957,7 @@ cb_folder_selection_changed(GtkWidget *button,
                                     xfdesktop_image_list_add_dir,
                                     panel);
 
+    g_free(filename);
     g_free(previous_filename);
 }
 
@@ -1014,22 +1028,22 @@ cb_xfdesktop_combo_color_changed(GtkComboBox *combo,
 static void
 xfdesktop_settings_update_iconview_folder(AppearancePanel *panel)
 {
-    gchar *current_folder, *prop_last;
+    gchar *current_folder, *prop_last, *dirname;
 
     TRACE("entering");
 
     prop_last = xfdesktop_settings_generate_per_workspace_binding_string(panel, "last-image");
-
     current_folder = xfconf_channel_get_string(panel->channel, prop_last, DEFAULT_BACKDROP);
+    dirname = g_path_get_dirname(current_folder);
 
-    gtk_file_chooser_set_current_folder((GtkFileChooser*)panel->btn_folder,
-                                  g_path_get_dirname(current_folder));
+    gtk_file_chooser_set_current_folder((GtkFileChooser*)panel->btn_folder, dirname);
 
     /* Workaround for a bug in GTK */
     cb_folder_selection_changed(panel->btn_folder, panel);
 
     g_free(current_folder);
     g_free(prop_last);
+    g_free(dirname);
 }
 
 /* This function is to add or remove all the bindings for the background
@@ -1548,7 +1562,6 @@ main(int argc, char **argv)
 {
     XfconfChannel *channel;
     GtkBuilder *gxml;
-    GtkWidget *dialog;
     GError *error = NULL;
 
     xfce_textdomain(GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
@@ -1569,7 +1582,7 @@ main(int argc, char **argv)
 
     if(G_UNLIKELY(opt_version)) {
         g_print("%s %s (Xfce %s)\n\n", G_LOG_DOMAIN, VERSION, xfce_version_string());
-        g_print("%s\n", "Copyright (c) 2004-2008");
+        g_print("%s\n", "Copyright (c) 2004-2013");
         g_print("\t%s\n\n", _("The Xfce development team. All rights reserved."));
         g_print(_("Please report bugs to <%s>."), PACKAGE_BUGREPORT);
         g_print("\n");
@@ -1602,6 +1615,7 @@ main(int argc, char **argv)
     channel = xfconf_channel_new(XFDESKTOP_CHANNEL);
 
     if(opt_socket_id == 0) {
+        GtkWidget *dialog;
         dialog = GTK_WIDGET(gtk_builder_get_object(gxml, "prefs_dialog"));
         g_signal_connect(dialog, "response",
                          G_CALLBACK(xfdesktop_settings_response), NULL);
