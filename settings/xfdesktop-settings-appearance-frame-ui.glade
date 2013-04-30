@@ -73,6 +73,7 @@
                     <property name="n-columns">8</property>
                     <property name="n-rows">2</property>
                     <property name="row-spacing">6</property>
+                    <property name="column-spacing">12</property>
                     <child>
                       <object class="GtkLabel" id="label_folder">
                         <property name="visible">True</property>
@@ -270,7 +271,7 @@
                   <object class="GtkHBox" id="cycle_options_hbox">
                     <property name="visible">True</property>
                     <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                    <property name="spacing">4</property>
+                    <property name="spacing">12</property>
                     <child>
                       <object class="GtkCheckButton" id="chk_cycle_backdrop">
                         <property name="visible">True</property>
