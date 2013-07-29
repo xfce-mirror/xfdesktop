@@ -1,0 +1,863 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# k3lt01 <keltoiboy@gmail.com>, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: Xfdesktop\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-07-02 22:50+0200\n"
+"PO-Revision-Date: 2013-07-29 06:06+0000\n"
+"Last-Translator: k3lt01 <keltoiboy@gmail.com>\n"
+"Language-Team: English (Australia) (http://www.transifex.com/projects/p/xfce/language/en_AU/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_AU\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. no need to escape markup; it's already done for us
+#: ../settings/main.c:151
+#, c-format
+msgid ""
+"%s\n"
+"<i>Size: %dx%d</i>"
+msgstr "%s\n<i>Size: %dx%d</i>"
+
+#: ../settings/main.c:263 ../src/xfdesktop-special-file-icon.c:272
+#: ../src/xfdesktop-special-file-icon.c:443
+msgid "Home"
+msgstr "Home"
+
+#: ../settings/main.c:265
+msgid "Filesystem"
+msgstr "Filesystem"
+
+#: ../settings/main.c:267
+msgid "Trash"
+msgstr "Rubbish"
+
+#: ../settings/main.c:269
+msgid "Removable Devices"
+msgstr "Removable Devices"
+
+#: ../settings/main.c:454
+#, c-format
+msgid "Wallpaper for %s on Monitor %d (%s)"
+msgstr "Wallpaper for %s on Monitor %d (%s)"
+
+#: ../settings/main.c:458
+#, c-format
+msgid "Wallpaper for %s on Monitor %d"
+msgstr "Wallpaper for %s on Monitor %d"
+
+#: ../settings/main.c:862
+msgid "Spanning screens"
+msgstr "Spanning screens"
+
+#: ../settings/main.c:1011
+msgid "Image files"
+msgstr "Image files"
+
+#: ../settings/main.c:1111
+msgid "Settings manager socket"
+msgstr "Settings manager socket"
+
+#: ../settings/main.c:1111
+msgid "SOCKET ID"
+msgstr "SOCKET ID"
+
+#: ../settings/main.c:1112
+msgid "Version information"
+msgstr "Version information"
+
+#: ../settings/main.c:1129
+#, c-format
+msgid "Type '%s --help' for usage."
+msgstr "Type '%s --help' for usage."
+
+#: ../settings/main.c:1141
+msgid "The Xfce development team. All rights reserved."
+msgstr "The Xfce development team. All rights reserved."
+
+#: ../settings/main.c:1142
+#, c-format
+msgid "Please report bugs to <%s>."
+msgstr "Please report bugs to <%s>."
+
+#: ../settings/main.c:1149
+msgid "Desktop Settings"
+msgstr "Desktop Settings"
+
+#: ../settings/main.c:1151
+msgid "Unable to contact settings server"
+msgstr "Unable to contact settings server"
+
+#: ../settings/xfce-backdrop-settings.desktop.in.h:1
+msgid "Desktop "
+msgstr "Desktop "
+
+#: ../settings/xfce-backdrop-settings.desktop.in.h:2
+msgid "Set desktop background and menu and icon behaviour"
+msgstr "Set desktop background and menu and icon behaviour"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
+msgid "Solid color"
+msgstr "Solid colour"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
+msgid "Horizontal gradient"
+msgstr "Horizontal gradient"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
+msgid "Vertical gradient"
+msgstr "Vertical gradient"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
+msgid "Transparent"
+msgstr "Transparent"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
+msgid "Folder:"
+msgstr "Folder:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
+msgid "Add an image to the list"
+msgstr "Add an image to the list"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
+msgid "Specify how the image will be resized to fit the screen"
+msgstr "Specify how the image will be resized to fit the screen"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
+#: ../settings/xfdesktop-settings-ui.glade.h:4
+msgid "None"
+msgstr "None"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
+msgid "Centered"
+msgstr "Centred"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
+msgid "Tiled"
+msgstr "Tiled"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
+msgid "Stretched"
+msgstr "Stretched"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
+msgid "Scaled"
+msgstr "Scaled"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
+msgid "Zoomed"
+msgstr "Zoomed"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
+msgid "St_yle:"
+msgstr "St_yle:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
+msgid "Color:"
+msgstr "Colour:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
+msgid "Specify the style of the color drawn behind the backdrop image"
+msgstr "Specify the style of the colour drawn behind the backdrop image"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
+msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr "Specifies the solid colour, or the \"left\" or \"top\" colour of the gradient"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
+msgid "Select First Color"
+msgstr "Select First Colour"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
+msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
+msgstr "Specifies the \"right\" or \"bottom\" colour of the gradient"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
+msgid "Select Second Color"
+msgstr "Select Second Colour"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
+msgid "_Change the background (in minutes):"
+msgstr "_Change the background (in minutes):"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
+msgid ""
+"Automatically select a different background from the current directory after"
+" a set number of minutes."
+msgstr "Automatically select a different background from the current directory after a set number of minutes."
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
+msgid "Number of minutes before a different background is selected."
+msgstr "Number of minutes before a different background is selected."
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
+msgid "_Random Order"
+msgstr "_Random Order"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:1
+msgid "Left"
+msgstr "Left"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:2
+msgid "Middle"
+msgstr "Middle"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:3
+msgid "Right"
+msgstr "Right"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:5
+msgid "Shift"
+msgstr "Shift"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:6
+msgid "Alt"
+msgstr "Alt"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:7
+msgid "Control"
+msgstr "Control"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:8
+msgid "Minimized application icons"
+msgstr "Minimised application icons"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:9
+msgid "File/launcher icons"
+msgstr "File/launcher icons"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:813
+msgid "Desktop"
+msgstr "Desktop"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:11
+msgid "Set desktop background and menu and icon behavior"
+msgstr "Set desktop background and menu and icon behaviour"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:12
+msgid "_Background"
+msgstr "_Background"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:13
+msgid "Show applications menu on _desktop right click"
+msgstr "Show applications menu on _desktop right click"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:14
+msgid "_Button:"
+msgstr "_Button:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:15
+msgid "Mo_difier:"
+msgstr "Mo_difier:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:16
+msgid "Show _application icons in menu"
+msgstr "Show _application icons in menu"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:17
+msgid "_Edit desktop menu"
+msgstr "_Edit desktop menu"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:18
+msgid "<b>Desktop Menu</b>"
+msgstr "<b>Desktop Menu</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:19
+msgid "Show _window list menu on desktop middle click"
+msgstr "Show _window list menu on desktop middle click"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:20
+msgid "B_utton:"
+msgstr "B_utton:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:21
+msgid "Modi_fier:"
+msgstr "Modi_fier:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:22
+msgid "Sh_ow application icons in menu"
+msgstr "Sh_ow application icons in menu"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:23
+msgid "Show workspace _names in list"
+msgstr "Show workspace _names in list"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:24
+msgid "Use _submenus for the windows in each workspace"
+msgstr "Use _submenus for the windows in each workspace"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:25
+msgid "Show s_ticky windows only in active workspace"
+msgstr "Show s_ticky windows only in active workspace"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:26
+msgid "<b>Window List Menu</b>"
+msgstr "<b>Window List Menu</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:27
+msgid "_Menus"
+msgstr "_Menus"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:28
+msgid "Icon _type:"
+msgstr "Icon _type:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:29
+msgid "Icon _size:"
+msgstr "Icon _size:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:30
+msgid "Show t_humbnails"
+msgstr "Show t_humbnails"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:31
+msgid ""
+"Select this option to display preview-able files on the desktop as "
+"automatically generated thumbnail icons."
+msgstr "Select this option to display preview-able files on the desktop as automatically generated thumbnail icons."
+
+#: ../settings/xfdesktop-settings-ui.glade.h:32
+msgid "Single _click to activate items"
+msgstr "Single _click to activate items"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:33
+msgid "Use custom _font size:"
+msgstr "Use custom _font size:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:34
+msgid "<b>Appearance</b>"
+msgstr "<b>Appearance</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:35
+msgid "<b>Default Icons</b>"
+msgstr "<b>Default Icons</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:36
+msgid "_Icons"
+msgstr "_Icons"
+
+#: ../src/main.c:243
+msgid "Display version information"
+msgstr "Display version information"
+
+#: ../src/main.c:244
+msgid "Reload all settings, refresh image list"
+msgstr "Reload all settings, refresh image list"
+
+#: ../src/main.c:245
+msgid "Pop up the menu (at the current mouse position)"
+msgstr "Pop up the menu (at the current mouse position)"
+
+#: ../src/main.c:246
+msgid "Pop up the window list (at the current mouse position)"
+msgstr "Pop up the window list (at the current mouse position)"
+
+#: ../src/main.c:248
+msgid "Automatically arrange all the icons on the desktop"
+msgstr "Automatically arrange all the icons on the desktop"
+
+#: ../src/main.c:250
+msgid "Cause xfdesktop to quit"
+msgstr "Cause xfdesktop to quit"
+
+#: ../src/main.c:267
+#, c-format
+msgid "Failed to parse arguments: %s\n"
+msgstr "Failed to parse arguments: %s\n"
+
+#: ../src/main.c:275
+#, c-format
+msgid "This is %s version %s, running on Xfce %s.\n"
+msgstr "This is %s version %s, running on Xfce %s.\n"
+
+#: ../src/main.c:277
+#, c-format
+msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
+msgstr "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
+
+#: ../src/main.c:281
+#, c-format
+msgid "Build options:\n"
+msgstr "Build options:\n"
+
+#: ../src/main.c:282
+#, c-format
+msgid "    Desktop Menu:        %s\n"
+msgstr "    Desktop Menu:        %s\n"
+
+#: ../src/main.c:284 ../src/main.c:291 ../src/main.c:298
+msgid "enabled"
+msgstr "enabled"
+
+#: ../src/main.c:286 ../src/main.c:293 ../src/main.c:300
+msgid "disabled"
+msgstr "disabled"
+
+#: ../src/main.c:289
+#, c-format
+msgid "    Desktop Icons:       %s\n"
+msgstr "    Desktop Icons:       %s\n"
+
+#: ../src/main.c:296
+#, c-format
+msgid "    Desktop File Icons:  %s\n"
+msgstr "    Desktop File Icons:  %s\n"
+
+#: ../src/main.c:329
+#, c-format
+msgid "%s is not running.\n"
+msgstr "%s is not running.\n"
+
+#: ../src/menu.c:106
+msgid "_Applications"
+msgstr "_Applications"
+
+#: ../src/windowlist.c:229
+msgid "Window List"
+msgstr "Window List"
+
+#: ../src/windowlist.c:255
+#, c-format
+msgid "<b>Workspace %d</b>"
+msgstr "<b>Workspace %d</b>"
+
+#: ../src/windowlist.c:264
+#, c-format
+msgid "Workspace %d"
+msgstr "Workspace %d"
+
+#: ../src/windowlist.c:266
+#, c-format
+msgid "<i>Workspace %d</i>"
+msgstr "<i>Workspace %d</i>"
+
+#: ../src/windowlist.c:362 ../src/windowlist.c:365
+msgid "_Add Workspace"
+msgstr "_Add Workspace"
+
+#: ../src/windowlist.c:373
+#, c-format
+msgid "_Remove Workspace %d"
+msgstr "_Remove Workspace %d"
+
+#: ../src/windowlist.c:376
+#, c-format
+msgid "_Remove Workspace '%s'"
+msgstr "_Remove Workspace '%s'"
+
+#: ../src/xfdesktop-file-icon-manager.c:504
+#: ../src/xfdesktop-file-icon-manager.c:521
+#, c-format
+msgid "Could not create the desktop folder \"%s\""
+msgstr "Could not create the desktop folder \"%s\""
+
+#: ../src/xfdesktop-file-icon-manager.c:509
+#: ../src/xfdesktop-file-icon-manager.c:526
+msgid "Desktop Folder Error"
+msgstr "Desktop Folder Error"
+
+#: ../src/xfdesktop-file-icon-manager.c:528
+msgid ""
+"A normal file with the same name already exists. Please delete or rename it."
+msgstr "A normal file with the same name already exists. Please delete or rename it."
+
+#: ../src/xfdesktop-file-icon-manager.c:631
+#: ../src/xfdesktop-file-icon-manager.c:675 ../src/xfdesktop-file-utils.c:863
+#: ../src/xfdesktop-file-utils.c:878 ../src/xfdesktop-file-utils.c:910
+#: ../src/xfdesktop-file-utils.c:924
+msgid "Trash Error"
+msgstr "Rubbish Error"
+
+#: ../src/xfdesktop-file-icon-manager.c:632
+#: ../src/xfdesktop-file-icon-manager.c:676
+msgid "The selected files could not be trashed"
+msgstr "The selected files could not be rubbished"
+
+#: ../src/xfdesktop-file-icon-manager.c:633
+#: ../src/xfdesktop-file-icon-manager.c:677 ../src/xfdesktop-file-utils.c:762
+#: ../src/xfdesktop-file-utils.c:821 ../src/xfdesktop-file-utils.c:979
+#: ../src/xfdesktop-file-utils.c:1035 ../src/xfdesktop-file-utils.c:1085
+#: ../src/xfdesktop-file-utils.c:1135 ../src/xfdesktop-file-utils.c:1212
+#: ../src/xfdesktop-file-utils.c:1273 ../src/xfdesktop-file-utils.c:1346
+#: ../src/xfdesktop-file-utils.c:1424
+msgid ""
+"This feature requires a file manager service to be present (such as the one "
+"supplied by Thunar)."
+msgstr "This feature requires a file manager service to be present (such as the one supplied by Thunar)."
+
+#. printf is to be translator-friendly
+#: ../src/xfdesktop-file-icon-manager.c:777
+#: ../src/xfdesktop-file-icon-manager.c:1356
+#, c-format
+msgid "Unable to launch \"%s\":"
+msgstr "Unable to launch \"%s\":"
+
+#: ../src/xfdesktop-file-icon-manager.c:779
+#: ../src/xfdesktop-file-icon-manager.c:1040
+#: ../src/xfdesktop-file-icon-manager.c:1357 ../src/xfdesktop-file-utils.c:707
+#: ../src/xfdesktop-file-utils.c:1118 ../src/xfdesktop-file-utils.c:1133
+#: ../src/xfdesktop-file-utils.c:1185 ../src/xfdesktop-file-utils.c:1210
+#: ../src/xfdesktop-file-utils.c:1256 ../src/xfdesktop-file-utils.c:1271
+msgid "Launch Error"
+msgstr "Launch Error"
+
+#: ../src/xfdesktop-file-icon-manager.c:964
+#, c-format
+msgid "_Open With \"%s\""
+msgstr "_Open With \"%s\""
+
+#: ../src/xfdesktop-file-icon-manager.c:967
+#, c-format
+msgid "Open With \"%s\""
+msgstr "Open With \"%s\""
+
+#: ../src/xfdesktop-file-icon-manager.c:1042
+msgid ""
+"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
+"edit launchers and links on the desktop."
+msgstr "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+
+#: ../src/xfdesktop-file-icon-manager.c:1414
+msgid "_Open all"
+msgstr "_Open all"
+
+#: ../src/xfdesktop-file-icon-manager.c:1430
+msgid "_Open in New Window"
+msgstr "_Open in New Window"
+
+#: ../src/xfdesktop-file-icon-manager.c:1432
+#: ../src/xfdesktop-special-file-icon.c:514 ../src/xfdesktop-volume-icon.c:782
+#: ../src/xfdesktop-volume-icon.c:786
+msgid "_Open"
+msgstr "_Open"
+
+#. create launcher item
+#: ../src/xfdesktop-file-icon-manager.c:1451
+msgid "Create _Launcher..."
+msgstr "Create _Launcher..."
+
+#. create link item
+#: ../src/xfdesktop-file-icon-manager.c:1467
+msgid "Create _URL Link..."
+msgstr "Create _URL Link..."
+
+#. create folder item
+#: ../src/xfdesktop-file-icon-manager.c:1483
+msgid "Create _Folder..."
+msgstr "Create _Folder..."
+
+#. create from template submenu
+#: ../src/xfdesktop-file-icon-manager.c:1498
+msgid "Create From _Template"
+msgstr "Create From _Template"
+
+#: ../src/xfdesktop-file-icon-manager.c:1524
+msgid "_Empty File"
+msgstr "_Empty File"
+
+#: ../src/xfdesktop-file-icon-manager.c:1540
+msgid "_Execute"
+msgstr "_Execute"
+
+#: ../src/xfdesktop-file-icon-manager.c:1560
+msgid "_Edit Launcher"
+msgstr "_Edit Launcher"
+
+#: ../src/xfdesktop-file-icon-manager.c:1595
+msgid "Open With"
+msgstr "Open With"
+
+#: ../src/xfdesktop-file-icon-manager.c:1621
+msgid "Open With Other _Application..."
+msgstr "Open With Other _Application..."
+
+#: ../src/xfdesktop-file-icon-manager.c:1713
+msgid "_Rename..."
+msgstr "_Rename..."
+
+#: ../src/xfdesktop-file-icon-manager.c:1731
+msgid "Arrange Desktop _Icons"
+msgstr "Arrange Desktop _Icons"
+
+#: ../src/xfdesktop-file-icon-manager.c:1741
+msgid "Desktop _Settings..."
+msgstr "Desktop _Settings..."
+
+#: ../src/xfdesktop-file-icon-manager.c:1751
+#: ../src/xfdesktop-volume-icon.c:828
+msgid "P_roperties..."
+msgstr "P_roperties..."
+
+#: ../src/xfdesktop-file-icon-manager.c:2369
+msgid "Load Error"
+msgstr "Load Error"
+
+#: ../src/xfdesktop-file-icon-manager.c:2371
+msgid "Failed to load the desktop folder"
+msgstr "Failed to load the desktop folder"
+
+#: ../src/xfdesktop-file-icon-manager.c:2947
+msgid "Copy _Here"
+msgstr "Copy _Here"
+
+#: ../src/xfdesktop-file-icon-manager.c:2947
+msgid "_Move Here"
+msgstr "_Move Here"
+
+#: ../src/xfdesktop-file-icon-manager.c:2947
+msgid "_Link Here"
+msgstr "_Link Here"
+
+#. TRANSLATORS: file was modified less than one day ago
+#: ../src/xfdesktop-file-utils.c:137
+#, c-format
+msgid "Today at %X"
+msgstr "Today at %X"
+
+#. TRANSLATORS: file was modified less than two days ago
+#: ../src/xfdesktop-file-utils.c:141
+#, c-format
+msgid "Yesterday at %X"
+msgstr "Yesterday at %X"
+
+#. Days from last week
+#: ../src/xfdesktop-file-utils.c:146
+#, c-format
+msgid "%A at %X"
+msgstr "%A at %X"
+
+#. Any other date
+#: ../src/xfdesktop-file-utils.c:149
+#, c-format
+msgid "%x at %X"
+msgstr "%x at %X"
+
+#. the file_time is invalid
+#: ../src/xfdesktop-file-utils.c:159
+msgid "Unknown"
+msgstr "Unknown"
+
+#: ../src/xfdesktop-file-utils.c:708
+msgid "The folder could not be opened"
+msgstr "The folder could not be opened"
+
+#: ../src/xfdesktop-file-utils.c:745 ../src/xfdesktop-file-utils.c:760
+msgid "Rename Error"
+msgstr "Rename Error"
+
+#: ../src/xfdesktop-file-utils.c:746 ../src/xfdesktop-file-utils.c:761
+msgid "The file could not be renamed"
+msgstr "The file could not be renamed"
+
+#: ../src/xfdesktop-file-utils.c:804 ../src/xfdesktop-file-utils.c:819
+msgid "Delete Error"
+msgstr "Delete Error"
+
+#: ../src/xfdesktop-file-utils.c:805 ../src/xfdesktop-file-utils.c:820
+msgid "The selected files could not be deleted"
+msgstr "The selected files could not be deleted"
+
+#: ../src/xfdesktop-file-utils.c:864 ../src/xfdesktop-file-utils.c:879
+msgid "The selected files could not be moved to the trash"
+msgstr "The selected files could not be moved to the rubbish"
+
+#: ../src/xfdesktop-file-utils.c:880 ../src/xfdesktop-file-utils.c:926
+msgid ""
+"This feature requires a trash service to be present (such as the one "
+"supplied by Thunar)."
+msgstr "This feature requires a rubbish service to be present (such as the one supplied by Thunar)."
+
+#: ../src/xfdesktop-file-utils.c:911 ../src/xfdesktop-file-utils.c:925
+msgid "Could not empty the trash"
+msgstr "Could not empty the rubbish"
+
+#: ../src/xfdesktop-file-utils.c:962 ../src/xfdesktop-file-utils.c:977
+msgid "Create File Error"
+msgstr "Create File Error"
+
+#: ../src/xfdesktop-file-utils.c:963 ../src/xfdesktop-file-utils.c:978
+msgid "Could not create a new file"
+msgstr "Could not create a new file"
+
+#: ../src/xfdesktop-file-utils.c:1018 ../src/xfdesktop-file-utils.c:1033
+msgid "Create Document Error"
+msgstr "Create Document Error"
+
+#: ../src/xfdesktop-file-utils.c:1019 ../src/xfdesktop-file-utils.c:1034
+msgid "Could not create a new document from the template"
+msgstr "Could not create a new document from the template"
+
+#: ../src/xfdesktop-file-utils.c:1068 ../src/xfdesktop-file-utils.c:1083
+msgid "File Properties Error"
+msgstr "File Properties Error"
+
+#: ../src/xfdesktop-file-utils.c:1069 ../src/xfdesktop-file-utils.c:1084
+msgid "The file properties dialog could not be opened"
+msgstr "The file properties dialogue could not be opened"
+
+#: ../src/xfdesktop-file-utils.c:1119 ../src/xfdesktop-file-utils.c:1134
+msgid "The file could not be opened"
+msgstr "The file could not be opened"
+
+#: ../src/xfdesktop-file-utils.c:1182 ../src/xfdesktop-file-utils.c:1207
+#, c-format
+msgid "Failed to run \"%s\""
+msgstr "Failed to run \"%s\""
+
+#: ../src/xfdesktop-file-utils.c:1257 ../src/xfdesktop-file-utils.c:1272
+msgid "The application chooser could not be opened"
+msgstr "The application chooser could not be opened"
+
+#: ../src/xfdesktop-file-utils.c:1330 ../src/xfdesktop-file-utils.c:1344
+#: ../src/xfdesktop-file-utils.c:1406 ../src/xfdesktop-file-utils.c:1422
+msgid "Transfer Error"
+msgstr "Transfer Error"
+
+#: ../src/xfdesktop-file-utils.c:1331 ../src/xfdesktop-file-utils.c:1345
+#: ../src/xfdesktop-file-utils.c:1407 ../src/xfdesktop-file-utils.c:1423
+msgid "The file transfer could not be performed"
+msgstr "The file transfer could not be performed"
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:128
+msgid "Unmounting device"
+msgstr "Unmounting device"
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:131
+#, c-format
+msgid ""
+"The device \"%s\" is being unmounted by the system. Please do not remove the"
+" media or disconnect the drive"
+msgstr "The device \"%s\" is being unmounted by the system. Please do not remove the media or disconnect the drive"
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:322
+msgid "Writing data to device"
+msgstr "Writing data to device"
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:325
+#, c-format
+msgid ""
+"There is data that needs to be written to the device \"%s\" before it can be"
+" removed. Please do not remove the media or disconnect the drive"
+msgstr "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
+
+#: ../src/xfdesktop-notify.c:222
+msgid "Unmount Finished"
+msgstr "Unmount Finished"
+
+#: ../src/xfdesktop-notify.c:224 ../src/xfdesktop-notify.c:408
+#, c-format
+msgid "The device \"%s\" has been safely removed from the system. "
+msgstr "The device \"%s\" has been safely removed from the system. "
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:313
+msgid "Ejecting device"
+msgstr "Ejecting device"
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:316
+#, c-format
+msgid "The device \"%s\" is being ejected. This may take some time"
+msgstr "The device \"%s\" is being ejected. This may take some time"
+
+#: ../src/xfdesktop-notify.c:406
+msgid "Eject Finished"
+msgstr "Eject Finished"
+
+#: ../src/xfdesktop-regular-file-icon.c:569
+#, c-format
+msgid ""
+"Type: %s\n"
+"Size: %s\n"
+"Last modified: %s"
+msgstr "Type: %s\nSize: %s\nLast modified: %s"
+
+#: ../src/xfdesktop-special-file-icon.c:274
+#: ../src/xfdesktop-special-file-icon.c:441
+msgid "File System"
+msgstr "File System"
+
+#: ../src/xfdesktop-special-file-icon.c:426
+msgid "Trash is empty"
+msgstr "Rubbish is empty"
+
+#: ../src/xfdesktop-special-file-icon.c:429
+msgid "Trash contains one item"
+msgstr "Rubbish contains one item"
+
+#: ../src/xfdesktop-special-file-icon.c:430
+#, c-format
+msgid "Trash contains %d items"
+msgstr "Rubbish contains %d items"
+
+#: ../src/xfdesktop-special-file-icon.c:462
+#, c-format
+msgid ""
+"%s\n"
+"Size: %s\n"
+"Last modified: %s"
+msgstr "%s\nSize: %s\nLast modified: %s"
+
+#: ../src/xfdesktop-special-file-icon.c:531
+msgid "_Empty Trash"
+msgstr "_Empty Rubbish"
+
+#: ../src/xfdesktop-volume-icon.c:455
+#, c-format
+msgid ""
+"Removable Volume\n"
+"Mounted in \"%s\"\n"
+"%s left (%s total)"
+msgstr "Removable Volume\nMounted in \"%s\"\n%s left (%s total)"
+
+#: ../src/xfdesktop-volume-icon.c:462
+msgid ""
+"Removable Volume\n"
+"Not mounted yet"
+msgstr "Removable Volume\nNot mounted yet"
+
+#: ../src/xfdesktop-volume-icon.c:491 ../src/xfdesktop-volume-icon.c:536
+#, c-format
+msgid "Failed to eject \"%s\""
+msgstr "Failed to eject \"%s\""
+
+#: ../src/xfdesktop-volume-icon.c:496 ../src/xfdesktop-volume-icon.c:541
+msgid "Eject Failed"
+msgstr "Eject Failed"
+
+#: ../src/xfdesktop-volume-icon.c:573
+#, c-format
+msgid "Failed to mount \"%s\""
+msgstr "Failed to mount \"%s\""
+
+#: ../src/xfdesktop-volume-icon.c:576
+msgid "Mount Failed"
+msgstr "Mount Failed"
+
+#: ../src/xfdesktop-volume-icon.c:801
+msgid "E_ject Volume"
+msgstr "E_ject Volume"
+
+#: ../src/xfdesktop-volume-icon.c:808
+msgid "_Unmount Volume"
+msgstr "_Unmount Volume"
+
+#: ../src/xfdesktop-volume-icon.c:815
+msgid "_Mount Volume"
+msgstr "_Mount Volume"
+
+#: ../src/xfdesktop-window-icon.c:208
+msgid "_Window Actions"
+msgstr "_Window Actions"
