@@ -4,13 +4,14 @@
 # 
 # Translators:
 # MC <correomc2000-ing@yahoo.es>, 2013
+# Pablo Lezaeta <prflr88@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 22:50+0200\n"
-"PO-Revision-Date: 2013-07-29 12:33+0000\n"
-"Last-Translator: MC <correomc2000-ing@yahoo.es>\n"
+"PO-Revision-Date: 2013-07-30 10:13+0000\n"
+"Last-Translator: Pablo Lezaeta <prflr88@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/xfce/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -55,7 +56,7 @@ msgstr "Fondo de pantalla para %s en el Monitor %d"
 
 #: ../settings/main.c:862
 msgid "Spanning screens"
-msgstr ""
+msgstr "Extención de pantallas"
 
 #: ../settings/main.c:1011
 msgid "Image files"
@@ -63,7 +64,7 @@ msgstr "Archivos de imagen"
 
 #: ../settings/main.c:1111
 msgid "Settings manager socket"
-msgstr ""
+msgstr "Entrada de administración de configuración"
 
 #: ../settings/main.c:1111
 msgid "SOCKET ID"
@@ -101,7 +102,7 @@ msgstr "Escritorio"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Set desktop background and menu and icon behaviour"
-msgstr ""
+msgstr "Configurar el fondo de pantalla, menús y comportamiento de los íconos"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
 msgid "Solid color"
@@ -192,7 +193,7 @@ msgstr "_Cambiar el fondo de escritorio (en minutos):"
 msgid ""
 "Automatically select a different background from the current directory after"
 " a set number of minutes."
-msgstr ""
+msgstr "Automáticamente se seleccionará un fondo de pantalla diferente desde el directorio seleccionado tras haber seleccionado el tiempo entre cambios"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 msgid "Number of minutes before a different background is selected."
@@ -200,7 +201,7 @@ msgstr "Número de minutos antes que un fondo diferente sea selecionado"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
 msgid "_Random Order"
-msgstr ""
+msgstr "Orden _Aleatorio"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:1
 msgid "Left"
@@ -754,12 +755,12 @@ msgstr "Hay datos que deben ser escritos en el dispositivo \"%s\" antes de que p
 
 #: ../src/xfdesktop-notify.c:222
 msgid "Unmount Finished"
-msgstr ""
+msgstr "Desmontaje sin terminar"
 
 #: ../src/xfdesktop-notify.c:224 ../src/xfdesktop-notify.c:408
 #, c-format
 msgid "The device \"%s\" has been safely removed from the system. "
-msgstr ""
+msgstr "El volumen \"%s\" ha sido exitosamente desmontado del sistema."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:313
@@ -774,7 +775,7 @@ msgstr "El dispositivo \"%s\" esta siendo expulsado. Esto puede llevar algo de t
 
 #: ../src/xfdesktop-notify.c:406
 msgid "Eject Finished"
-msgstr ""
+msgstr "Expulsión finalizada"
 
 #: ../src/xfdesktop-regular-file-icon.c:569
 #, c-format
@@ -852,7 +853,7 @@ msgstr "E_xpulsar volumen"
 
 #: ../src/xfdesktop-volume-icon.c:808
 msgid "_Unmount Volume"
-msgstr ""
+msgstr "_Desmontar el volumen"
 
 #: ../src/xfdesktop-volume-icon.c:815
 msgid "_Mount Volume"
