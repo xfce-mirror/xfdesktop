@@ -111,11 +111,6 @@ void xfce_backdrop_set_image_filename    (XfceBackdrop *backdrop,
 G_CONST_RETURN gchar *xfce_backdrop_get_image_filename
                                          (XfceBackdrop *backdrop);
 
-
-void xfce_backdrop_set_brightness        (XfceBackdrop *backdrop,
-                                          gint brightness);
-gint xfce_backdrop_get_brightness        (XfceBackdrop *backdrop);
-
 void xfce_backdrop_set_cycle_backdrop    (XfceBackdrop *backdrop,
                                           gboolean cycle_backdrop);
 gboolean xfce_backdrop_get_cycle_backdrop(XfceBackdrop *backdrop);
@@ -129,6 +124,9 @@ void xfce_backdrop_set_random_order      (XfceBackdrop *backdrop,
 gboolean xfce_backdrop_get_random_order  (XfceBackdrop *backdrop);
 
 GdkPixbuf *xfce_backdrop_get_pixbuf      (XfceBackdrop *backdrop);
+
+gboolean xfce_backdrop_compare_backdrops (XfceBackdrop *backdrop_a,
+                                          XfceBackdrop *backdrop_b);
 
 G_END_DECLS
 

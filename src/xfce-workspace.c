@@ -82,7 +82,11 @@ struct _XfceWorkspacePriv
 
     guint workspace_num;
     guint nbackdrops;
+    gboolean xinerama_stretch;
     XfceBackdrop **backdrops;
+
+    gulong *first_color_id;
+    gulong *second_color_id;
 };
 
 enum
@@ -106,6 +110,11 @@ static void xfce_workspace_get_property(GObject *object,
 static void xfce_workspace_connect_backdrop_settings(XfceWorkspace *workspace,
                                                    XfceBackdrop *backdrop,
                                                    guint monitor);
+static void xfce_workspace_disconnect_backdrop_settings(XfceWorkspace *workspace,
+                                                        XfceBackdrop *backdrop,
+                                                        guint monitor);
+
+static void xfce_workspace_remove_backdrops(XfceWorkspace *workspace);
 
 G_DEFINE_TYPE(XfceWorkspace, xfce_workspace, G_TYPE_OBJECT)
 
@@ -148,14 +157,34 @@ backdrop_cycle_cb(XfceBackdrop *backdrop, gpointer user_data)
     if(g_strcmp0(backdrop_file, new_backdrop) != 0) {
         xfce_backdrop_set_image_filename(backdrop, new_backdrop);
         g_free(new_backdrop);
-        g_signal_emit(G_OBJECT(user_data), signals[WORKSPACE_BACKDROP_CHANGED], 0, backdrop);
     }
 }
 
 static void
 backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
 {
+    XfceWorkspace *workspace = XFCE_WORKSPACE(user_data);
     TRACE("entering");
+
+    /* if we were spanning all the screens and we're not doing it anymore
+     * we need to update all the backdrops for this workspace */
+    if(workspace->priv->xinerama_stretch == TRUE &&
+       xfce_workspace_get_xinerama_stretch(workspace) == FALSE) {
+        guint i;
+
+        for(i = 0; i < workspace->priv->nbackdrops; ++i) {
+            /* skip the current backdrop, we'll get it last */
+            if(workspace->priv->backdrops[i] != backdrop) {
+                g_signal_emit(G_OBJECT(user_data),
+                              signals[WORKSPACE_BACKDROP_CHANGED],
+                              0,
+                              workspace->priv->backdrops[i]);
+            }
+        }
+    }
+
+    workspace->priv->xinerama_stretch = xfce_workspace_get_xinerama_stretch(workspace);
+
     /* Propagate it up */
     g_signal_emit(G_OBJECT(user_data), signals[WORKSPACE_BACKDROP_CHANGED], 0, backdrop);
 }
@@ -165,72 +194,52 @@ xfce_workspace_monitors_changed(XfceWorkspace *workspace,
                                 GdkScreen *gscreen)
 {
     guint i;
+    guint n_monitors;
+    GdkVisual *vis = NULL;
 
     TRACE("entering");
 
-    if(workspace->priv->nbackdrops > 1
-       && xfce_workspace_get_xinerama_stretch(workspace)) {
-        /* for xinerama stretch we only need one backdrop */
-        if(workspace->priv->nbackdrops > 1) {
-            for(i = 1; i < workspace->priv->nbackdrops; ++i)
-                g_object_unref(G_OBJECT(workspace->priv->backdrops[i]));
-        }
+    vis = gdk_screen_get_rgba_visual(gscreen);
+    if(vis == NULL)
+        vis = gdk_screen_get_system_visual(gscreen);
 
-        if(workspace->priv->nbackdrops != 1) {
-            workspace->priv->backdrops = g_realloc(workspace->priv->backdrops,
-                                                 sizeof(XfceBackdrop *));
-            if(!workspace->priv->nbackdrops) {
-                GdkVisual *vis = gdk_screen_get_rgba_visual(gscreen);
-                if(vis == NULL)
-                    vis = gdk_screen_get_system_visual(gscreen);
-
-                workspace->priv->backdrops[0] = xfce_backdrop_new(vis);
-                xfce_workspace_connect_backdrop_settings(workspace,
-                                                       workspace->priv->backdrops[0],
-                                                       0);
-                g_signal_connect(G_OBJECT(workspace->priv->backdrops[0]),
-                                 "changed",
-                                 G_CALLBACK(backdrop_changed_cb), workspace);
-                g_signal_connect(G_OBJECT(workspace->priv->backdrops[0]),
-                                 "cycle",
-                                 G_CALLBACK(backdrop_cycle_cb), workspace);
-            }
-            workspace->priv->nbackdrops = 1;
-        }
+    if(workspace->priv->nbackdrops > 0 &&
+       xfce_workspace_get_xinerama_stretch(workspace)) {
+        /* When spanning screens we only need one backdrop */
+        n_monitors = 1;
     } else {
-        /* We need one backdrop per monitor */
-        guint n_monitors = gdk_screen_get_n_monitors(gscreen);
-
-        if(n_monitors < workspace->priv->nbackdrops) {
-            for(i = n_monitors; i < workspace->priv->nbackdrops; ++i)
-                g_object_unref(G_OBJECT(workspace->priv->backdrops[i]));
-        }
-
-        if(n_monitors != workspace->priv->nbackdrops) {
-            workspace->priv->backdrops = g_realloc(workspace->priv->backdrops,
-                                                 sizeof(XfceBackdrop *) * n_monitors);
-            if(n_monitors > workspace->priv->nbackdrops) {
-                GdkVisual *vis = gdk_screen_get_rgba_visual(gscreen);
-                if(vis == NULL)
-                    vis = gdk_screen_get_system_visual(gscreen);
-
-                for(i = workspace->priv->nbackdrops; i < n_monitors; ++i) {
-                    workspace->priv->backdrops[i] = xfce_backdrop_new(vis);
-                    xfce_workspace_connect_backdrop_settings(workspace,
-                                                           workspace->priv->backdrops[i],
-                                                           i);
-                    g_signal_connect(G_OBJECT(workspace->priv->backdrops[0]),
-                                     "changed",
-                                     G_CALLBACK(backdrop_changed_cb), workspace);
-                    g_signal_connect(G_OBJECT(workspace->priv->backdrops[i]),
-                                     "cycle",
-                                     G_CALLBACK(backdrop_cycle_cb),
-                                     workspace);
-                }
-            }
-            workspace->priv->nbackdrops = n_monitors;
-        }
+        n_monitors = gdk_screen_get_n_monitors(gscreen);
     }
+
+    /* Remove all backdrops so that the correct monitor is added/removed and
+     * things stay in the correct order */
+    xfce_workspace_remove_backdrops(workspace);
+
+    /* Allocate space for the backdrops and their color properties so they
+     * can correctly be removed */
+    workspace->priv->backdrops = g_realloc(workspace->priv->backdrops,
+                                           sizeof(XfceBackdrop *) * n_monitors);
+    workspace->priv->first_color_id = g_realloc(workspace->priv->first_color_id,
+                                                sizeof(gulong) * n_monitors);
+    workspace->priv->second_color_id = g_realloc(workspace->priv->second_color_id,
+                                                 sizeof(gulong) * n_monitors);
+
+    for(i = 0; i < n_monitors; ++i) {
+        DBG("Adding workspace %d backdrop %d", workspace->priv->workspace_num, i);
+
+        workspace->priv->backdrops[i] = xfce_backdrop_new(vis);
+        xfce_workspace_connect_backdrop_settings(workspace,
+                                               workspace->priv->backdrops[i],
+                                               i);
+        g_signal_connect(G_OBJECT(workspace->priv->backdrops[i]),
+                         "changed",
+                         G_CALLBACK(backdrop_changed_cb), workspace);
+        g_signal_connect(G_OBJECT(workspace->priv->backdrops[i]),
+                         "cycle",
+                         G_CALLBACK(backdrop_cycle_cb),
+                         workspace);
+    }
+    workspace->priv->nbackdrops = n_monitors;
 }
 
 static void
@@ -267,9 +276,13 @@ xfce_workspace_finalize(GObject *object)
 {
     XfceWorkspace *workspace = XFCE_WORKSPACE(object);
 
+    xfce_workspace_remove_backdrops(workspace);
+
     g_object_unref(G_OBJECT(workspace->priv->channel));
     g_free(workspace->priv->property_prefix);
-
+    g_free(workspace->priv->backdrops);
+    g_free(workspace->priv->first_color_id);
+    g_free(workspace->priv->second_color_id);
 }
 
 static void
@@ -321,29 +334,26 @@ xfce_workspace_connect_backdrop_settings(XfceWorkspace *workspace,
     }
     pp_len = strlen(buf);
 
+    DBG("prefix string: %s", buf);
+
     g_strlcat(buf, "color-style", sizeof(buf));
     xfconf_g_property_bind(channel, buf, XFCE_TYPE_BACKDROP_COLOR_STYLE,
                            G_OBJECT(backdrop), "color-style");
 
     buf[pp_len] = 0;
     g_strlcat(buf, "color1", sizeof(buf));
-    xfconf_g_property_bind_gdkcolor(channel, buf,
-                                    G_OBJECT(backdrop), "first-color");
+    workspace->priv->first_color_id[monitor] = xfconf_g_property_bind_gdkcolor(channel, buf,
+                                                            G_OBJECT(backdrop), "first-color");
 
     buf[pp_len] = 0;
     g_strlcat(buf, "color2", sizeof(buf));
-    xfconf_g_property_bind_gdkcolor(channel, buf,
-                                    G_OBJECT(backdrop), "second-color");
+    workspace->priv->second_color_id[monitor] = xfconf_g_property_bind_gdkcolor(channel, buf,
+                                                            G_OBJECT(backdrop), "second-color");
 
     buf[pp_len] = 0;
     g_strlcat(buf, "image-style", sizeof(buf));
     xfconf_g_property_bind(channel, buf, XFCE_TYPE_BACKDROP_IMAGE_STYLE,
                            G_OBJECT(backdrop), "image-style");
-
-    buf[pp_len] = 0;
-    g_strlcat(buf, "brightness", sizeof(buf));
-    xfconf_g_property_bind(channel, buf, G_TYPE_INT,
-                           G_OBJECT(backdrop), "brightness");
 
     buf[pp_len] = 0;
     g_strlcat(buf, "backdrop-cycle-enable", sizeof(buf));
@@ -368,7 +378,37 @@ xfce_workspace_connect_backdrop_settings(XfceWorkspace *workspace,
     g_free(monitor_name);
 }
 
+static void
+xfce_workspace_disconnect_backdrop_settings(XfceWorkspace *workspace,
+                                            XfceBackdrop *backdrop,
+                                            guint monitor)
+{
+    TRACE("entering");
 
+    g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
+
+    xfconf_g_property_unbind_all(G_OBJECT(backdrop));
+}
+
+static void
+xfce_workspace_remove_backdrops(XfceWorkspace *workspace)
+{
+    guint i;
+    guint n_monitors;
+
+    g_return_if_fail(XFCE_IS_WORKSPACE(workspace));
+
+    n_monitors = gdk_screen_get_n_monitors(workspace->priv->gscreen);
+
+    for(i = 0; i < n_monitors && i < workspace->priv->nbackdrops; ++i) {
+        xfce_workspace_disconnect_backdrop_settings(workspace,
+                                                    workspace->priv->backdrops[i],
+                                                    i);
+        g_object_unref(G_OBJECT(workspace->priv->backdrops[i]));
+        workspace->priv->backdrops[i] = NULL;
+    }
+    workspace->priv->nbackdrops = 0;
+}
 
 /* public api */
 

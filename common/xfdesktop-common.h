@@ -49,6 +49,9 @@
 #define ARRANGE_MESSAGE    "arrange"
 #define QUIT_MESSAGE       "quit"
 
+#define SINGLE_WORKSPACE_MODE     "/backdrop/single-workspace-mode"
+#define SINGLE_WORKSPACE_NUMBER   "/backdrop/single-workspace-number"
+
 /**
  * File information namespaces queried for #GFileInfo objects.
  */
@@ -75,6 +78,8 @@ gchar *xfdesktop_backdrop_choose_next(const gchar *filename);
 gchar *xfdesktop_backdrop_choose_random(const gchar *filename);
 
 gboolean xfdesktop_image_file_is_valid(const gchar *filename);
+
+gchar *xfdesktop_get_file_mimetype(const gchar *file);
 
 gboolean xfdesktop_check_is_running(Window *xid);
 void xfdesktop_send_client_message(Window xid, const gchar *msg);

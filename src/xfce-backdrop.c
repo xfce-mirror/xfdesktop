@@ -60,15 +60,15 @@ struct _XfceBackdropPriv
 {
     gint width, height;
     gint bpp;
-    
+
+    GdkPixbuf *pix;
+
     XfceBackdropColorStyle color_style;
     GdkColor color1;
     GdkColor color2;
 
     XfceBackdropImageStyle image_style;
     gchar *image_path;
-
-    gint brightness;
 
     gboolean cycle_backdrop;
     guint cycle_timer;
@@ -100,52 +100,6 @@ enum
 static guint backdrop_signals[LAST_SIGNAL] = { 0, };
 
 /* helper functions */
-
-static GdkPixbuf *
-adjust_brightness(GdkPixbuf *src, gint amount)
-{
-    GdkPixbuf *newpix;
-    GdkPixdata pdata;
-    gboolean has_alpha = FALSE;
-    gint i, len;
-    GError *err = NULL;
-    
-    g_return_val_if_fail(src != NULL, NULL);
-    if(amount == 0)
-        return src;
-    
-    gdk_pixdata_from_pixbuf(&pdata, src, FALSE);
-    has_alpha = (pdata.pixdata_type & GDK_PIXDATA_COLOR_TYPE_RGBA);
-    if(pdata.length < 1)
-        len = pdata.width * pdata.height * (has_alpha?4:3);
-    else
-        len = pdata.length - GDK_PIXDATA_HEADER_LENGTH;
-    
-    for(i = 0; i < len; i++) {
-        gshort scaled;
-        
-        if(has_alpha && (i+1)%4)
-            continue;
-        
-        scaled = pdata.pixel_data[i] + amount;
-        if(scaled > 255)
-            scaled = 255;
-        if(scaled < 0)
-            scaled = 0;
-        pdata.pixel_data[i] = scaled;
-    }
-    
-    newpix = gdk_pixbuf_from_pixdata(&pdata, TRUE, &err);
-    if(!newpix) {
-        g_warning("%s: Unable to modify image brightness: %s", PACKAGE,
-                err->message);
-        g_error_free(err);
-        return src;
-    }
-    g_object_unref(G_OBJECT(src));
-    
-    return newpix;
-}
 
 static GdkPixbuf *
 create_solid(GdkColor *color,
@@ -227,6 +181,19 @@ create_gradient(GdkColor *color1, GdkColor *color2, gint width, gint height,
     return pix;
 }
 
+static void
+xfce_backdrop_clear_cached_image(XfceBackdrop *backdrop)
+{
+    g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
+
+    if(backdrop->priv->pix == NULL)
+        return;
+
+    g_object_unref(backdrop->priv->pix);
+    backdrop->priv->pix = NULL;
+}
+
+
 /* gobject-related functions */
 
 
@@ -296,13 +263,6 @@ xfce_backdrop_class_init(XfceBackdropClass *klass)
                                                         DEFAULT_BACKDROP,
                                                         XFDESKTOP_PARAM_FLAGS));
 
-    g_object_class_install_property(gobject_class, PROP_BRIGHTNESS,
-                                    g_param_spec_int("brightness",
-                                                     "brightness",
-                                                     "brightness",
-                                                     -128, 127, 0,
-                                                     XFDESKTOP_PARAM_FLAGS));
-
     g_object_class_install_property(gobject_class, PROP_BACKDROP_CYCLE_ENABLE,
                                     g_param_spec_boolean("backdrop-cycle-enable",
                                                          "backdrop-cycle-enable",
@@ -358,6 +318,8 @@ xfce_backdrop_finalize(GObject *object)
         backdrop->priv->cycle_timer_id = 0;
     }
 
+    xfce_backdrop_clear_cached_image(backdrop);
+
     G_OBJECT_CLASS(xfce_backdrop_parent_class)->finalize(object);
 }
 
@@ -394,10 +356,6 @@ xfce_backdrop_set_property(GObject *object,
         case PROP_IMAGE_FILENAME:
             xfce_backdrop_set_image_filename(backdrop,
                                              g_value_get_string(value));
-            break;
-
-        case PROP_BRIGHTNESS:
-            xfce_backdrop_set_brightness(backdrop, g_value_get_int(value));
             break;
 
         case PROP_BACKDROP_CYCLE_ENABLE:
@@ -446,10 +404,6 @@ xfce_backdrop_get_property(GObject *object,
         case PROP_IMAGE_FILENAME:
             g_value_set_string(value,
                                xfce_backdrop_get_image_filename(backdrop));
-            break;
-
-        case PROP_BRIGHTNESS:
-            g_value_set_int(value, xfce_backdrop_get_brightness(backdrop));
             break;
 
         case PROP_BACKDROP_CYCLE_ENABLE:
@@ -537,9 +491,13 @@ void
 xfce_backdrop_set_size(XfceBackdrop *backdrop, gint width, gint height)
 {
     g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
-    
-    backdrop->priv->width = width;
-    backdrop->priv->height = height;
+
+    if(backdrop->priv->width != width ||
+       backdrop->priv->height != height) {
+        xfce_backdrop_clear_cached_image(backdrop);
+        backdrop->priv->width = width;
+        backdrop->priv->height = height;
+    }
 }
 
 /**
@@ -557,6 +515,7 @@ xfce_backdrop_set_color_style(XfceBackdrop *backdrop,
     g_return_if_fail((int)style >= 0 && style <= XFCE_BACKDROP_COLOR_TRANSPARENT);
     
     if(style != backdrop->priv->color_style) {
+        xfce_backdrop_clear_cached_image(backdrop);
         backdrop->priv->color_style = style;
         g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_CHANGED], 0);
     }
@@ -591,6 +550,7 @@ xfce_backdrop_set_first_color(XfceBackdrop *backdrop,
             || color->green != backdrop->priv->color1.green
             || color->blue != backdrop->priv->color1.blue)
     {
+        xfce_backdrop_clear_cached_image(backdrop);
         backdrop->priv->color1.red = color->red;
         backdrop->priv->color1.green = color->green;
         backdrop->priv->color1.blue = color->blue;
@@ -627,6 +587,7 @@ xfce_backdrop_set_second_color(XfceBackdrop *backdrop,
             || color->green != backdrop->priv->color2.green
             || color->blue != backdrop->priv->color2.blue)
     {
+        xfce_backdrop_clear_cached_image(backdrop);
         backdrop->priv->color2.red = color->red;
         backdrop->priv->color2.green = color->green;
         backdrop->priv->color2.blue = color->blue;
@@ -662,6 +623,7 @@ xfce_backdrop_set_image_style(XfceBackdrop *backdrop,
     g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
     
     if(style != backdrop->priv->image_style) {
+        xfce_backdrop_clear_cached_image(backdrop);
         backdrop->priv->image_style = style;
         g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_CHANGED], 0);
     }
@@ -697,7 +659,9 @@ xfce_backdrop_set_image_filename(XfceBackdrop *backdrop, const gchar *filename)
         backdrop->priv->image_path = g_strdup(filename);
     else
         backdrop->priv->image_path = NULL;
-    
+
+    xfce_backdrop_clear_cached_image(backdrop);
+
     g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_CHANGED], 0);
 }
 
@@ -708,33 +672,6 @@ xfce_backdrop_get_image_filename(XfceBackdrop *backdrop)
     return backdrop->priv->image_path;
 }
 
-/**
- * xfce_backdrop_set_brightness:
- * @backdrop: An #XfceBackdrop.
- * @brightness: A brightness value.
- *
- * Modifies the brightness of the backdrop using a value between -128 and 127.
- * A value of 0 indicates that the brightness should not be changed.  This value
- * is applied to the entire image, after compositing.
- **/
-void
-xfce_backdrop_set_brightness(XfceBackdrop *backdrop, gint brightness)
-{
-    g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
-    
-    if(brightness != backdrop->priv->brightness) {
-        backdrop->priv->brightness = brightness;
-        g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_CHANGED], 0);
-    }
-}
-
-gint
-xfce_backdrop_get_brightness(XfceBackdrop *backdrop)
-{
-    g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), 0);
-    return backdrop->priv->brightness;
-}
-
 static gboolean
 xfce_backdrop_timer(XfceBackdrop *backdrop)
 {
@@ -742,7 +679,9 @@ xfce_backdrop_timer(XfceBackdrop *backdrop)
 
     g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), FALSE);
 
-    g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_CYCLE], 0);
+    /* Don't bother with trying to cycle a backdrop if we're not using images */
+    if(backdrop->priv->image_style != XFCE_BACKDROP_IMAGE_NONE)
+        g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_CYCLE], 0);
 
     return TRUE;
 }
@@ -853,9 +792,16 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
     gint dx, dy, xo, yo;
     gdouble xscale, yscale;
     GdkInterpType interp;
-    
+
+    TRACE("entering");
+
     g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), NULL);
-    
+
+    if(backdrop->priv->pix != NULL) {
+        DBG("pixbuf cached");
+        return g_object_ref(backdrop->priv->pix);
+    }
+
     if(backdrop->priv->image_style != XFCE_BACKDROP_IMAGE_NONE &&
        backdrop->priv->image_path) {
         format = gdk_pixbuf_get_file_info(backdrop->priv->image_path, &iw, &ih);
@@ -884,12 +830,8 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
             final_image = create_solid(&backdrop->priv->color1, w, h, FALSE, 0xff);
     }
     
-    if(!apply_backdrop_image) {
-        if(backdrop->priv->brightness != 0)
-            final_image = adjust_brightness(final_image, backdrop->priv->brightness);
-        
+    if(!apply_backdrop_image)
         return final_image;
-    }
     
     istyle = backdrop->priv->image_style;
     
@@ -929,6 +871,12 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
         case XFCE_BACKDROP_IMAGE_TILED:
             image = gdk_pixbuf_new_from_file(backdrop->priv->image_path, NULL);
             tmp = gdk_pixbuf_new(GDK_COLORSPACE_RGB, TRUE, 8, w, h);
+            /* Now that the image has been loaded, recalculate the image
+             * size because gdk_pixbuf_get_file_info doesn't always return
+             * the correct size */
+            iw = gdk_pixbuf_get_width(image);
+            ih = gdk_pixbuf_get_height(image);
+
             for(i = 0; (i * iw) < w; i++) {
                 for(j = 0; (j * ih) < h; j++) {
                     gint newx = iw * i, newy = ih * j;
@@ -938,7 +886,7 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
                         neww = w - newx;
                     if((newy + newh) > h)
                         newh = h - newy;
-                    
+
                     gdk_pixbuf_copy_area(image, 0, 0,
                             neww, newh, tmp, newx, newy);
                 }
@@ -950,7 +898,6 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
             break;
         
         case XFCE_BACKDROP_IMAGE_STRETCHED:
-        case XFCE_BACKDROP_IMAGE_SPANNING_SCREENS:
             image = gdk_pixbuf_new_from_file_at_scale(
                             backdrop->priv->image_path, w, h, FALSE, NULL);
             gdk_pixbuf_composite(image, final_image, 0, 0, w, h,
@@ -981,6 +928,7 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
             break;
         
         case XFCE_BACKDROP_IMAGE_ZOOMED:
+        case XFCE_BACKDROP_IMAGE_SPANNING_SCREENS:
             xscale = (gdouble)w / iw;
             yscale = (gdouble)h / ih;
             if(xscale < yscale) {
@@ -1006,9 +954,53 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
     
     if(image)
         g_object_unref(G_OBJECT(image));
-    
-    if(backdrop->priv->brightness != 0)
-        final_image = adjust_brightness(final_image, backdrop->priv->brightness);
-    
+
+    /* cache it */
+    backdrop->priv->pix = g_object_ref(final_image);
+
     return final_image;
+}
+
+/* returns TRUE if they have identical settings. */
+gboolean xfce_backdrop_compare_backdrops(XfceBackdrop *backdrop_a,
+                                         XfceBackdrop *backdrop_b)
+{
+    if(g_strcmp0(backdrop_a->priv->image_path, backdrop_b->priv->image_path) != 0) {
+        DBG("filename different");
+        return FALSE;
+    }
+
+    if(backdrop_a->priv->image_style != backdrop_b->priv->image_style) {
+        DBG("image_style different");
+        return FALSE;
+    }
+
+    if(backdrop_a->priv->color_style != backdrop_b->priv->color_style) {
+        DBG("color_style different");
+        return FALSE;
+    }
+
+    /* Every color style uses color1 except for transparent which does not need
+     * a color check */
+    if(backdrop_a->priv->color_style != XFCE_BACKDROP_COLOR_TRANSPARENT &&
+       !gdk_color_equal(&backdrop_a->priv->color1, &backdrop_b->priv->color1)) {
+        DBG("colors different");
+        return FALSE;
+    }
+
+    /* When the style is set to gradient then we should check color2 as well */
+    if((backdrop_a->priv->color_style == XFCE_BACKDROP_COLOR_HORIZ_GRADIENT ||
+        backdrop_a->priv->color_style == XFCE_BACKDROP_COLOR_VERT_GRADIENT) &&
+       !gdk_color_equal(&backdrop_a->priv->color2, &backdrop_b->priv->color2)) {
+        DBG("colors different");
+        return FALSE;
+    }
+
+    if(backdrop_a->priv->cycle_backdrop != backdrop_b->priv->cycle_backdrop ||
+       backdrop_a->priv->cycle_backdrop == TRUE) {
+        DBG("backdrop cycle different");
+        return FALSE;
+    }
+
+    return TRUE;
 }

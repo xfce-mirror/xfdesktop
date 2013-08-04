@@ -60,6 +60,8 @@ XfdesktopThumbnailer * xfdesktop_thumbnailer_new(void);
 
 GType xfdesktop_thumbnailer_get_type(void);
 
+gboolean xfdesktop_thumbnailer_service_available(XfdesktopThumbnailer *thumbnailer);
+
 gboolean xfdesktop_thumbnailer_is_supported(XfdesktopThumbnailer *thumbnailer,
                                             gchar *file);
 
@@ -67,6 +69,7 @@ gboolean xfdesktop_thumbnailer_queue_thumbnail(XfdesktopThumbnailer *thumbnailer
                                                gchar *file);
 void xfdesktop_thumbnailer_dequeue_thumbnail(XfdesktopThumbnailer *thumbnailer,
                                              gchar *file);
+void xfdesktop_thumbnailer_dequeue_all_thumbnails(XfdesktopThumbnailer *thumbnailer);
 
 void xfdesktop_thumbnailer_delete_thumbnail(XfdesktopThumbnailer *thumbnailer,
                                             gchar *src_file);
