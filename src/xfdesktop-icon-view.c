@@ -1151,7 +1151,11 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget,
                 GdkRectangle extents, dummy;
                 XfdesktopIcon *icon = l->data;
 
+                /* To be removed, it must intersect the old rectangle and
+                 * not intersect the new one. This way CTRL + rubber band
+                 * works properly (Bug 10275) */
                 if(xfdesktop_icon_get_extents(icon, NULL, NULL, &extents)
+                   && gdk_rectangle_intersect(&extents, &old_rect, NULL)
                    && !gdk_rectangle_intersect(&extents, new_rect, &dummy))
                 {
                     /* remove the icon from the selected list */
