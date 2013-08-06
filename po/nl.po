@@ -1,99 +1,126 @@
-# Dutch translation of the xfdesktop package.
-# Copyright (C) The Xfce development team.
-# This file is distributed under the same license as the xfdesktop package.
-# Jasper Huijsmans <jasper@xfce.org>, 2004.
-# Pjotr pjotrvertaalt@gmail.com , 2011, 2013.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 # 
+# Translators:
+# Jasper Huijsmans <jasper@xfce.org>, 2004
+# Pjotr123 <pjotrvertaalt@gmail.com>, 2013
+# Pjotr pjotrvertaalt@gmail.com , 2011,2013
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop\n"
+"Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-26 07:03+0000\n"
-"PO-Revision-Date: 2011-09-09 17:45+0100\n"
-"Last-Translator: Pjotr pjotrvertaalt@gmail.com\n"
-"Language-Team: Dutch (Flemish)\n"
+"POT-Creation-Date: 2013-08-04 12:32+0200\n"
+"PO-Revision-Date: 2013-08-06 09:33+0000\n"
+"Last-Translator: Pjotr123 <pjotrvertaalt@gmail.com>\n"
+"Language-Team: Dutch (http://www.transifex.com/projects/p/xfce/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl (Dutch)\n"
+"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. no need to escape markup; it's already done for us
-#: ../settings/main.c:151
-#, c-format
-msgid ""
-"%s\n"
-"<i>Size: %dx%d</i>"
-msgstr ""
-"%s\n"
-"<i>Grootte: %dx%d</i>"
-
-#: ../settings/main.c:263 ../src/xfdesktop-special-file-icon.c:271
-#: ../src/xfdesktop-special-file-icon.c:434
+#: ../settings/main.c:375 ../src/xfdesktop-special-file-icon.c:272
+#: ../src/xfdesktop-special-file-icon.c:443
 msgid "Home"
 msgstr "Persoonlijke map"
 
-#: ../settings/main.c:265
+#: ../settings/main.c:377
 msgid "Filesystem"
 msgstr "Bestandssysteem"
 
-#: ../settings/main.c:267
+#: ../settings/main.c:379
 msgid "Trash"
 msgstr "Prullenbak"
 
-#: ../settings/main.c:269
+#: ../settings/main.c:381
 msgid "Removable Devices"
 msgstr "Verwijderbare apparaten"
 
-#: ../settings/main.c:454
+#. Display the file name, file type, and file size in the tooltip.
+#: ../settings/main.c:486
+#, c-format
+msgid ""
+"<b>%s</b>\n"
+"Type: %s\n"
+"Size: %s"
+msgstr "<b>%s</b>\nType: %s\nGrootte: %s"
+
+#: ../settings/main.c:667
+#, c-format
+msgid "Wallpaper for Monitor %d (%s)"
+msgstr "Bureaubladachtergrond voor beeldscherm %d (%s)"
+
+#: ../settings/main.c:670
+#, c-format
+msgid "Wallpaper for Monitor %d"
+msgstr "Bureaubladachtergrond voor beeldscherm %d"
+
+#: ../settings/main.c:676
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "Bureaubladachtergrond voor %s op beeldscherm %d (%s)"
 
-#: ../settings/main.c:458
+#: ../settings/main.c:680
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "Bureaubladachtergrond voor %s op beeldscherm %d"
 
-#: ../settings/main.c:862
+#. Single monitor and single workspace
+#: ../settings/main.c:687
+#, c-format
+msgid "Wallpaper for my desktop"
+msgstr "Achtergrond voor mijn bureaublad"
+
+#. Single monitor and per workspace wallpaper
+#: ../settings/main.c:690
+#, c-format
+msgid "Wallpaper for %s"
+msgstr "Bureaubladachtergrond voor %s"
+
+#: ../settings/main.c:982
+msgid "Image selection is unavailable while the image style is set to None."
+msgstr "Afbeeldingkeuze is niet beschikbaar wanneer de afbeeldingstijl op Geen is ingesteld."
+
+#: ../settings/main.c:1199
 msgid "Spanning screens"
 msgstr "Schermen overbruggen"
 
-#: ../settings/main.c:1011
+#: ../settings/main.c:1418
 msgid "Image files"
 msgstr "Afbeeldingbestanden"
 
-#: ../settings/main.c:1111
+#: ../settings/main.c:1555
 msgid "Settings manager socket"
 msgstr "Contactpunt voor instellingenbeheerder"
 
-#: ../settings/main.c:1111
+#: ../settings/main.c:1555
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: ../settings/main.c:1112
+#: ../settings/main.c:1556
 msgid "Version information"
 msgstr "Versie-informatie"
 
-#: ../settings/main.c:1129
+#: ../settings/main.c:1574
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Tik '%s --help' voor gebruiksinformatie."
 
-#: ../settings/main.c:1141
+#: ../settings/main.c:1586
 msgid "The Xfce development team. All rights reserved."
 msgstr "De Xfce-ontwikkelploeg. Alle rechten voorbehouden."
 
-#: ../settings/main.c:1142
+#: ../settings/main.c:1587
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Gelieve fouten te melden aan <%s>"
 
-#: ../settings/main.c:1149
+#: ../settings/main.c:1594
 msgid "Desktop Settings"
 msgstr "Bureaublad-instellingen"
 
-#: ../settings/main.c:1151
+#: ../settings/main.c:1596
 msgid "Unable to contact settings server"
 msgstr "Kan geen contact maken met de instellingendienst"
 
@@ -103,244 +130,256 @@ msgstr "Bureaublad"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Set desktop background and menu and icon behaviour"
-msgstr ""
-"Stel de bureaubladachtergrond in en het gedrag van het menu en de "
-"pictogrammen"
+msgstr "Stel de bureaubladachtergrond in en het gedrag van het menu en de pictogrammen"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
-msgid "Add an image to the list"
-msgstr "Voeg een afbeelding toe aan de lijst"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
-msgid ""
-"Automatically select a different background from the current directory after "
-"a set number of minutes."
-msgstr ""
-"Wanneer in afbeeldinglijstmodus, kies deze optie om automatisch een andere "
-"achtergrond te kiezen uit de afbeeldingenlijst, na een bepaald aantal "
-"minuten."
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
-msgid "Color:"
-msgstr "Kleur:"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
-msgid "Folder:"
-msgstr "Map:"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
-msgid "Horizontal gradient"
-msgstr "Horizontale gradiënt"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
-msgid "Number of minutes before a different background is selected."
-msgstr ""
-"Aantal minuten voordat een willekeurige andere achtergrond wordt gekozen uit "
-"de lijst."
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
-msgid "Select First Color"
-msgstr "Kies eerste kleur:"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
-msgid "Select Second Color"
-msgstr "Kies tweede kleur:"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
 msgid "Solid color"
 msgstr "Effen kleur"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
-msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-msgstr "Specificeert de rechter- of onderste kleur van het kleurverloop"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
+msgid "Horizontal gradient"
+msgstr "Horizontale gradiënt"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
-msgid ""
-"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr ""
-"Specificeert de effen kleur, of de linker- of bovenste kleur van het "
-"kleurverloop"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
-msgid "Specify how the image will be resized to fit the screen"
-msgstr ""
-"Specificeer hoe het formaat van de afbeelding zal worden aangepast om te "
-"passen op het scherm"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
-msgid "Specify the style of the color drawn behind the backdrop image"
-msgstr ""
-"Specificeer de stijl van de kleur die getekend zal worden achter de "
-"achtergrondafbeelding"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
-msgid "St_yle:"
-msgstr "St_ijl:"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
-msgid "Transparent"
-msgstr "Doorschijnend"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
 msgid "Vertical gradient"
 msgstr "Verticale gradiënt"
 
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
+msgid "Transparent"
+msgstr "Doorschijnend"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
+msgid "Folder:"
+msgstr "Map:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
+msgid "Add an image to the list"
+msgstr "Voeg een afbeelding toe aan de lijst"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
+msgid "St_yle:"
+msgstr "St_ijl:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
+msgid "Specify how the image will be resized to fit the screen"
+msgstr "Specificeer hoe het formaat van de afbeelding zal worden aangepast om te passen op het scherm"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
+#: ../settings/xfdesktop-settings-ui.glade.h:4
+msgid "None"
+msgstr "Geen"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
+msgid "Centered"
+msgstr "Gecentreerd"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
+msgid "Tiled"
+msgstr "Getegeld"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
+msgid "Stretched"
+msgstr "Uitgerekt"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
+msgid "Scaled"
+msgstr "Geschaald"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
+msgid "Zoomed"
+msgstr "Ingezoomed"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
+msgid "Spanning Screens"
+msgstr "Schermen overbruggen"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
+msgid "Color:"
+msgstr "Kleur:"
+
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
+msgid "Specify the style of the color drawn behind the backdrop image"
+msgstr "Specificeer de stijl van de kleur die getekend zal worden achter de achtergrondafbeelding"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
+msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr "Specificeert de effen kleur, of de linker- of bovenste kleur van het kleurverloop"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
+msgid "Select First Color"
+msgstr "Kies eerste kleur:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
+msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
+msgstr "Specificeert de rechter- of onderste kleur van het kleurverloop"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
+msgid "Select Second Color"
+msgstr "Kies tweede kleur:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
+msgid "Apply to all _workspaces"
+msgstr "Toepassen op alle werkbladen"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 msgid "_Change the background (in minutes):"
 msgstr "Verander de achtergrond (in minuten):"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
+msgid ""
+"Automatically select a different background from the current directory after"
+" a set number of minutes."
+msgstr "Wanneer in afbeeldinglijstmodus, kies deze optie om automatisch een andere achtergrond te kiezen uit de afbeeldingenlijst, na een bepaald aantal minuten."
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
+msgid "Number of minutes before a different background is selected."
+msgstr "Aantal minuten voordat een willekeurige andere achtergrond wordt gekozen uit de lijst."
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "_Random Order"
 msgstr "Willekeurige volgorde"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:1
-msgid "<b>Appearance</b>"
-msgstr "<b>Uiterlijk</b>"
+msgid "Left"
+msgstr "Links"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:2
-msgid "<b>Default Icons</b>"
-msgstr "<b>Standaardpictogrammen</b>"
+msgid "Middle"
+msgstr "Midden"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:3
-msgid "<b>Desktop Menu</b>"
-msgstr "<b>Bureaubladmenu</b>"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:4
-msgid "<b>Window List Menu</b>"
-msgstr "<b>Vensterlijstmenu</b>"
+msgid "Right"
+msgstr "Rechts"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:5
-msgid "Alt"
-msgstr "Alt"
+msgid "Shift"
+msgstr "Shift"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:6
-msgid "B_utton:"
-msgstr "K_nop:"
+msgid "Alt"
+msgstr "Alt"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:7
 msgid "Control"
 msgstr "Control"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:8 ../src/xfce-desktop.c:813
-msgid "Desktop"
-msgstr "Bureaublad"
+#: ../settings/xfdesktop-settings-ui.glade.h:8
+msgid "Minimized application icons"
+msgstr "Geminimaliseerde toepassingspictogrammen"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:9
 msgid "File/launcher icons"
 msgstr "Bestand/starterpictogrammen"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10
-msgid "Icon _size:"
-msgstr "Pictogram_grootte:"
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:945
+msgid "Desktop"
+msgstr "Bureaublad"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:11
-msgid "Icon _type:"
-msgstr "Pictogram_type:"
+msgid "Set desktop background and menu and icon behavior"
+msgstr "Stel het gedrag in van de bureaubladachtergrond, het menu en de pictogrammen"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:12
-msgid "Left"
-msgstr "Links"
+msgid "_Background"
+msgstr "_Achtergrond"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:13
-msgid "Middle"
-msgstr "Midden"
+msgid "Show applications menu on _desktop right click"
+msgstr "Toon toepassingenmenu bij rechtsklik op bureaublad"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:14
-msgid "Minimized application icons"
-msgstr "Geminimaliseerde toepassingspictogrammen"
+msgid "_Button:"
+msgstr "_Knop"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:15
 msgid "Mo_difier:"
 msgstr "Aa_npasser:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:16
-msgid "Modi_fier:"
-msgstr "Aanpa_sser:"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:17
-msgid "None"
-msgstr "Geen"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:18
-msgid "Right"
-msgstr "Rechts"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:19
-msgid ""
-"Select this option to display preview-able files on the desktop as "
-"automatically generated thumbnail icons."
-msgstr ""
-"Kies deze optie om bestanden waarvoor voorbeeldweergave mogelijk is, te "
-"tonen op het bureaublad als automatisch gegenereerde miniaturen."
-
-#: ../settings/xfdesktop-settings-ui.glade.h:20
-msgid "Set desktop background and menu and icon behavior"
-msgstr ""
-"Stel het gedrag in van de bureaubladachtergrond, het menu en de pictogrammen"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:21
-msgid "Sh_ow application icons in menu"
-msgstr "Toon toepassingspict_ogrammen in menu"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:22
-msgid "Shift"
-msgstr "Shift"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:23
 msgid "Show _application icons in menu"
 msgstr "Toon toe_passingspictogrammen in menu"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:24
-msgid "Show _window list menu on desktop middle click"
-msgstr "Toon vensterlijstmenu bij middelklik op bureaublad"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:25
-msgid "Show applications menu on _desktop right click"
-msgstr "Toon toepassingenmenu bij rechtsklik op bureaublad"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:26
-msgid "Show s_ticky windows only in active workspace"
-msgstr "Toon vastgezette vensters alleen in actieve werkblad"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:27
-msgid "Show t_humbnails"
-msgstr "Toon miniaturen"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:28
-msgid "Show workspace _names in list"
-msgstr "Toon werkbladnamen in lijst"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:29
-msgid "Single _click to activate items"
-msgstr "Onderdelen activeren met enkele klik"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:30
-msgid "Use _submenus for the windows in each workspace"
-msgstr "Gebruik submenu's voor de vensters in elk werkblad"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:31
-msgid "Use custom _font size:"
-msgstr "Gebruik aangepaste _lettertypegrootte:"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:32
-msgid "_Background"
-msgstr "_Achtergrond"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:33
-msgid "_Button:"
-msgstr "_Knop"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:34
+#: ../settings/xfdesktop-settings-ui.glade.h:17
 msgid "_Edit desktop menu"
 msgstr "Bureaubladmenu be_werken"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:35
-msgid "_Icons"
-msgstr "_Pictogrammen"
+#: ../settings/xfdesktop-settings-ui.glade.h:18
+msgid "<b>Desktop Menu</b>"
+msgstr "<b>Bureaubladmenu</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:36
+#: ../settings/xfdesktop-settings-ui.glade.h:19
+msgid "Show _window list menu on desktop middle click"
+msgstr "Toon vensterlijstmenu bij middelklik op bureaublad"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:20
+msgid "B_utton:"
+msgstr "K_nop:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:21
+msgid "Modi_fier:"
+msgstr "Aanpa_sser:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:22
+msgid "Sh_ow application icons in menu"
+msgstr "Toon toepassingspict_ogrammen in menu"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:23
+msgid "Show workspace _names in list"
+msgstr "Toon werkbladnamen in lijst"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:24
+msgid "Use _submenus for the windows in each workspace"
+msgstr "Gebruik submenu's voor de vensters in elk werkblad"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:25
+msgid "Show s_ticky windows only in active workspace"
+msgstr "Toon vastgezette vensters alleen in actieve werkblad"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:26
+msgid "<b>Window List Menu</b>"
+msgstr "<b>Vensterlijstmenu</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "_Menus"
 msgstr "_Menu's"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:28
+msgid "Icon _type:"
+msgstr "Pictogram_type:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:29
+msgid "Icon _size:"
+msgstr "Pictogram_grootte:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:30
+msgid "Show t_humbnails"
+msgstr "Toon miniaturen"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:31
+msgid ""
+"Select this option to display preview-able files on the desktop as "
+"automatically generated thumbnail icons."
+msgstr "Kies deze optie om bestanden waarvoor voorbeeldweergave mogelijk is, te tonen op het bureaublad als automatisch gegenereerde miniaturen."
+
+#: ../settings/xfdesktop-settings-ui.glade.h:32
+msgid "Single _click to activate items"
+msgstr "Onderdelen activeren met enkele klik"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:33
+msgid "Use custom _font size:"
+msgstr "Gebruik aangepaste _lettertypegrootte:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:34
+msgid "<b>Appearance</b>"
+msgstr "<b>Uiterlijk</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:35
+msgid "<b>Default Icons</b>"
+msgstr "<b>Standaardpictogrammen</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:36
+msgid "_Icons"
+msgstr "_Pictogrammen"
 
 #: ../src/main.c:243
 msgid "Display version information"
@@ -451,38 +490,36 @@ msgstr "Werkblad %d _verwijderen"
 msgid "_Remove Workspace '%s'"
 msgstr "Werkblad '%s' _verwijderen"
 
-#: ../src/xfdesktop-file-icon-manager.c:497
-#: ../src/xfdesktop-file-icon-manager.c:514
+#: ../src/xfdesktop-file-icon-manager.c:504
+#: ../src/xfdesktop-file-icon-manager.c:521
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
 msgstr "Kon de bureaubladmap '%s' niet maken"
 
-#: ../src/xfdesktop-file-icon-manager.c:502
-#: ../src/xfdesktop-file-icon-manager.c:519
+#: ../src/xfdesktop-file-icon-manager.c:509
+#: ../src/xfdesktop-file-icon-manager.c:526
 msgid "Desktop Folder Error"
 msgstr "Fout van bureaubladmap"
 
-#: ../src/xfdesktop-file-icon-manager.c:521
+#: ../src/xfdesktop-file-icon-manager.c:528
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
-msgstr ""
-"Een normaal bestand met dezelfde naam bestaat al. Gelieve dit te verwijderen "
-"of te hernoemen."
+msgstr "Een normaal bestand met dezelfde naam bestaat al. Gelieve dit te verwijderen of te hernoemen."
 
-#: ../src/xfdesktop-file-icon-manager.c:624
-#: ../src/xfdesktop-file-icon-manager.c:668 ../src/xfdesktop-file-utils.c:863
+#: ../src/xfdesktop-file-icon-manager.c:631
+#: ../src/xfdesktop-file-icon-manager.c:675 ../src/xfdesktop-file-utils.c:863
 #: ../src/xfdesktop-file-utils.c:878 ../src/xfdesktop-file-utils.c:910
 #: ../src/xfdesktop-file-utils.c:924
 msgid "Trash Error"
 msgstr "Prullenbakfout"
 
-#: ../src/xfdesktop-file-icon-manager.c:625
-#: ../src/xfdesktop-file-icon-manager.c:669
+#: ../src/xfdesktop-file-icon-manager.c:632
+#: ../src/xfdesktop-file-icon-manager.c:676
 msgid "The selected files could not be trashed"
 msgstr "De gekozen bestanden konden niet naar de prullenbak worden verplaatst"
 
-#: ../src/xfdesktop-file-icon-manager.c:626
-#: ../src/xfdesktop-file-icon-manager.c:670 ../src/xfdesktop-file-utils.c:762
+#: ../src/xfdesktop-file-icon-manager.c:633
+#: ../src/xfdesktop-file-icon-manager.c:677 ../src/xfdesktop-file-utils.c:762
 #: ../src/xfdesktop-file-utils.c:821 ../src/xfdesktop-file-utils.c:979
 #: ../src/xfdesktop-file-utils.c:1035 ../src/xfdesktop-file-utils.c:1085
 #: ../src/xfdesktop-file-utils.c:1135 ../src/xfdesktop-file-utils.c:1212
@@ -491,132 +528,128 @@ msgstr "De gekozen bestanden konden niet naar de prullenbak worden verplaatst"
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
-msgstr ""
-"Voor deze mogelijkheid moet er een bestandbeheerdienst actief zijn (zoals "
-"die van Thunar)."
+msgstr "Voor deze mogelijkheid moet er een bestandbeheerdienst actief zijn (zoals die van Thunar)."
 
 #. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:770
-#: ../src/xfdesktop-file-icon-manager.c:1349
+#: ../src/xfdesktop-file-icon-manager.c:777
+#: ../src/xfdesktop-file-icon-manager.c:1240
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Kan '%s' niet starten:"
 
-#: ../src/xfdesktop-file-icon-manager.c:772
-#: ../src/xfdesktop-file-icon-manager.c:1033
-#: ../src/xfdesktop-file-icon-manager.c:1350 ../src/xfdesktop-file-utils.c:707
+#: ../src/xfdesktop-file-icon-manager.c:779
+#: ../src/xfdesktop-file-icon-manager.c:1040
+#: ../src/xfdesktop-file-icon-manager.c:1241 ../src/xfdesktop-file-utils.c:707
 #: ../src/xfdesktop-file-utils.c:1118 ../src/xfdesktop-file-utils.c:1133
 #: ../src/xfdesktop-file-utils.c:1185 ../src/xfdesktop-file-utils.c:1210
 #: ../src/xfdesktop-file-utils.c:1256 ../src/xfdesktop-file-utils.c:1271
 msgid "Launch Error"
 msgstr "Startfout"
 
-#: ../src/xfdesktop-file-icon-manager.c:957
+#: ../src/xfdesktop-file-icon-manager.c:964
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "_Openen met '%s'"
 
-#: ../src/xfdesktop-file-icon-manager.c:960
+#: ../src/xfdesktop-file-icon-manager.c:967
 #, c-format
 msgid "Open With \"%s\""
 msgstr "Openen met '%s'"
 
-#: ../src/xfdesktop-file-icon-manager.c:1035
+#: ../src/xfdesktop-file-icon-manager.c:1042
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
-msgstr ""
-"Kon \"exo-desktop-item-edit\" niet uitvoeren, welke vereist is voor het "
-"maken en bewerken van starters en snelkoppelingen op het bureaublad."
+msgstr "Kon \"exo-desktop-item-edit\" niet uitvoeren, welke vereist is voor het maken en bewerken van starters en snelkoppelingen op het bureaublad."
 
-#: ../src/xfdesktop-file-icon-manager.c:1407
+#: ../src/xfdesktop-file-icon-manager.c:1298
 msgid "_Open all"
 msgstr "Alles _openen"
 
-#: ../src/xfdesktop-file-icon-manager.c:1423
+#: ../src/xfdesktop-file-icon-manager.c:1314
 msgid "_Open in New Window"
 msgstr "_Openen in nieuw venster"
 
-#: ../src/xfdesktop-file-icon-manager.c:1425
-#: ../src/xfdesktop-special-file-icon.c:505 ../src/xfdesktop-volume-icon.c:751
-#: ../src/xfdesktop-volume-icon.c:755
+#: ../src/xfdesktop-file-icon-manager.c:1316
+#: ../src/xfdesktop-special-file-icon.c:514 ../src/xfdesktop-volume-icon.c:782
+#: ../src/xfdesktop-volume-icon.c:786
 msgid "_Open"
 msgstr "_Openen"
 
 #. create launcher item
-#: ../src/xfdesktop-file-icon-manager.c:1444
+#: ../src/xfdesktop-file-icon-manager.c:1335
 msgid "Create _Launcher..."
 msgstr "_Starter maken..."
 
 #. create link item
-#: ../src/xfdesktop-file-icon-manager.c:1460
+#: ../src/xfdesktop-file-icon-manager.c:1351
 msgid "Create _URL Link..."
 msgstr "_URL-koppeling maken..."
 
 #. create folder item
-#: ../src/xfdesktop-file-icon-manager.c:1476
+#: ../src/xfdesktop-file-icon-manager.c:1367
 msgid "Create _Folder..."
 msgstr "_Map maken..."
 
 #. create from template submenu
-#: ../src/xfdesktop-file-icon-manager.c:1491
+#: ../src/xfdesktop-file-icon-manager.c:1382
 msgid "Create From _Template"
 msgstr "Maak vanuit _sjabloon"
 
-#: ../src/xfdesktop-file-icon-manager.c:1517
+#: ../src/xfdesktop-file-icon-manager.c:1408
 msgid "_Empty File"
 msgstr "_Leeg bestand"
 
-#: ../src/xfdesktop-file-icon-manager.c:1533
+#: ../src/xfdesktop-file-icon-manager.c:1424
 msgid "_Execute"
 msgstr "_Uitvoeren"
 
-#: ../src/xfdesktop-file-icon-manager.c:1553
+#: ../src/xfdesktop-file-icon-manager.c:1444
 msgid "_Edit Launcher"
 msgstr "Starter _bewerken"
 
-#: ../src/xfdesktop-file-icon-manager.c:1588
+#: ../src/xfdesktop-file-icon-manager.c:1479
 msgid "Open With"
 msgstr "Openen met"
 
-#: ../src/xfdesktop-file-icon-manager.c:1614
+#: ../src/xfdesktop-file-icon-manager.c:1505
 msgid "Open With Other _Application..."
 msgstr "Open met andere _toepassing..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1706
+#: ../src/xfdesktop-file-icon-manager.c:1597
 msgid "_Rename..."
 msgstr "He_rnoemen..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1724
+#: ../src/xfdesktop-file-icon-manager.c:1615
 msgid "Arrange Desktop _Icons"
 msgstr "Bureaubladpictogrammen schikken"
 
-#: ../src/xfdesktop-file-icon-manager.c:1734
+#: ../src/xfdesktop-file-icon-manager.c:1625
 msgid "Desktop _Settings..."
 msgstr "Bureaublad-in_stellingen..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1744
-#: ../src/xfdesktop-volume-icon.c:797
+#: ../src/xfdesktop-file-icon-manager.c:1635
+#: ../src/xfdesktop-volume-icon.c:828
 msgid "P_roperties..."
 msgstr "_Eigenschappen..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2362
+#: ../src/xfdesktop-file-icon-manager.c:2253
 msgid "Load Error"
 msgstr "Laadfout"
 
-#: ../src/xfdesktop-file-icon-manager.c:2364
+#: ../src/xfdesktop-file-icon-manager.c:2255
 msgid "Failed to load the desktop folder"
 msgstr "Kon de bureaubladmap niet laden"
 
-#: ../src/xfdesktop-file-icon-manager.c:2940
+#: ../src/xfdesktop-file-icon-manager.c:2831
 msgid "Copy _Here"
 msgstr "Hierheen kopiëren"
 
-#: ../src/xfdesktop-file-icon-manager.c:2940
+#: ../src/xfdesktop-file-icon-manager.c:2831
 msgid "_Move Here"
 msgstr "Hierheen verplaatsen"
 
-#: ../src/xfdesktop-file-icon-manager.c:2940
+#: ../src/xfdesktop-file-icon-manager.c:2831
 msgid "_Link Here"
 msgstr "Hier koppelen"
 
@@ -671,16 +704,13 @@ msgstr "De geselecteerde bestanden konden niet worden gewist"
 
 #: ../src/xfdesktop-file-utils.c:864 ../src/xfdesktop-file-utils.c:879
 msgid "The selected files could not be moved to the trash"
-msgstr ""
-"De geselecteerde bestanden konden niet worden verplaatst naar de prullenbak"
+msgstr "De geselecteerde bestanden konden niet worden verplaatst naar de prullenbak"
 
 #: ../src/xfdesktop-file-utils.c:880 ../src/xfdesktop-file-utils.c:926
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
-msgstr ""
-"Voor deze mogelijkheid moet er een prullenbakdienst actief zijn (zoals die "
-"van Thunar)."
+msgstr "Voor deze mogelijkheid moet er een prullenbakdienst actief zijn (zoals die van Thunar)."
 
 #: ../src/xfdesktop-file-utils.c:911 ../src/xfdesktop-file-utils.c:925
 msgid "Could not empty the trash"
@@ -742,1177 +772,129 @@ msgstr "Apparaat aan het ontkoppelen"
 #: ../src/xfdesktop-notify.c:131
 #, c-format
 msgid ""
-"The device \"%s\" is being unmounted by the system. Please do not remove the "
-"media or disconnect the drive"
-msgstr ""
-"Het apparaat '%s' wordt door het systeem ontkoppeld. Gelieve het niet te "
-"verwijderen."
+"The device \"%s\" is being unmounted by the system. Please do not remove the"
+" media or disconnect the drive"
+msgstr "Het apparaat '%s' wordt door het systeem ontkoppeld. Gelieve het niet te verwijderen."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:313
+#: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:322
 msgid "Writing data to device"
 msgstr "Gegevens aan het schrijven naar apparaat"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:316
+#: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:325
 #, c-format
 msgid ""
-"There is data that needs to be written to the device \"%s\" before it can be "
-"removed. Please do not remove the media or disconnect the drive"
-msgstr ""
-"Er zijn gegevens die naar het apparaat '%s' geschreven moeten worden, "
-"voordat het kan worden verwijderd. Gelieve het dus niet te verwijderen."
+"There is data that needs to be written to the device \"%s\" before it can be"
+" removed. Please do not remove the media or disconnect the drive"
+msgstr "Er zijn gegevens die naar het apparaat '%s' geschreven moeten worden, voordat het kan worden verwijderd. Gelieve het dus niet te verwijderen."
 
-#: ../src/xfdesktop-notify.c:218
+#: ../src/xfdesktop-notify.c:222
 msgid "Unmount Finished"
 msgstr "Ontkoppelen voltooid"
 
-#: ../src/xfdesktop-notify.c:220 ../src/xfdesktop-notify.c:395
+#: ../src/xfdesktop-notify.c:224 ../src/xfdesktop-notify.c:408
 #, c-format
 msgid "The device \"%s\" has been safely removed from the system. "
 msgstr "Het apparaat '%s' is veilig verwijderd uit het systeem."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:304
+#: ../src/xfdesktop-notify.c:313
 msgid "Ejecting device"
 msgstr "Apparaat aan het uitwerpen"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:307
+#: ../src/xfdesktop-notify.c:316
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
 msgstr "Het apparaat '%s' wordt uitgeworpen. Dit kan even duren"
 
-#: ../src/xfdesktop-notify.c:393
+#: ../src/xfdesktop-notify.c:406
 msgid "Eject Finished"
 msgstr "Uitwerpen voltooid"
 
-#: ../src/xfdesktop-regular-file-icon.c:556
+#: ../src/xfdesktop-regular-file-icon.c:569
 #, c-format
 msgid ""
 "Type: %s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr ""
-"Type: %s\n"
-"Grootte: %s\n"
-"Laatst gewijzigd: %s"
+msgstr "Type: %s\nGrootte: %s\nLaatst gewijzigd: %s"
 
-#: ../src/xfdesktop-special-file-icon.c:273
-#: ../src/xfdesktop-special-file-icon.c:432
+#: ../src/xfdesktop-special-file-icon.c:274
+#: ../src/xfdesktop-special-file-icon.c:441
 msgid "File System"
 msgstr "Bestandssysteem"
 
-#: ../src/xfdesktop-special-file-icon.c:417
+#: ../src/xfdesktop-special-file-icon.c:426
 msgid "Trash is empty"
 msgstr "Prullenbak is leeg"
 
-#: ../src/xfdesktop-special-file-icon.c:420
+#: ../src/xfdesktop-special-file-icon.c:429
 msgid "Trash contains one item"
 msgstr "Prullenbak bevat één bestand"
 
-#: ../src/xfdesktop-special-file-icon.c:421
+#: ../src/xfdesktop-special-file-icon.c:430
 #, c-format
 msgid "Trash contains %d items"
 msgstr "Prullenbak bevat %d bestanden"
 
-#: ../src/xfdesktop-special-file-icon.c:453
+#: ../src/xfdesktop-special-file-icon.c:462
 #, c-format
 msgid ""
 "%s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr ""
-"%s\n"
-"Grootte: %s\n"
-"Laatst gewijzigd: %s"
+msgstr "%s\nGrootte: %s\nLaatst gewijzigd: %s"
 
-#: ../src/xfdesktop-special-file-icon.c:522
+#: ../src/xfdesktop-special-file-icon.c:531
 msgid "_Empty Trash"
 msgstr "Prullenbak l_egen"
 
-#: ../src/xfdesktop-volume-icon.c:447
+#: ../src/xfdesktop-volume-icon.c:455
 #, c-format
 msgid ""
 "Removable Volume\n"
 "Mounted in \"%s\"\n"
 "%s left (%s total)"
-msgstr ""
-"Verwijderbaar medium\n"
-"Aangekoppeld in '%s'\n"
-"%s over (%s totaal)"
+msgstr "Verwijderbaar medium\nAangekoppeld in '%s'\n%s over (%s totaal)"
 
-#: ../src/xfdesktop-volume-icon.c:454
+#: ../src/xfdesktop-volume-icon.c:462
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
-msgstr ""
-"Verwijderbaar medium\n"
-"Nog niet aangekoppeld"
+msgstr "Verwijderbaar medium\nNog niet aangekoppeld"
 
-#: ../src/xfdesktop-volume-icon.c:480 ../src/xfdesktop-volume-icon.c:522
+#: ../src/xfdesktop-volume-icon.c:491 ../src/xfdesktop-volume-icon.c:536
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "Kon '%s' niet uitwerpen"
 
-#: ../src/xfdesktop-volume-icon.c:485 ../src/xfdesktop-volume-icon.c:527
+#: ../src/xfdesktop-volume-icon.c:496 ../src/xfdesktop-volume-icon.c:541
 msgid "Eject Failed"
 msgstr "Uitwerpen is mislukt"
 
-#: ../src/xfdesktop-volume-icon.c:559
+#: ../src/xfdesktop-volume-icon.c:573
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "Kon '%s' niet aankoppelen"
 
-#: ../src/xfdesktop-volume-icon.c:562
+#: ../src/xfdesktop-volume-icon.c:576
 msgid "Mount Failed"
 msgstr "Aankoppelen is mislukt"
 
-#: ../src/xfdesktop-volume-icon.c:770
+#: ../src/xfdesktop-volume-icon.c:801
 msgid "E_ject Volume"
 msgstr "_Werp medium uit"
 
-#: ../src/xfdesktop-volume-icon.c:777
+#: ../src/xfdesktop-volume-icon.c:808
 msgid "_Unmount Volume"
 msgstr "Medium _ontkoppelen"
 
-#: ../src/xfdesktop-volume-icon.c:784
+#: ../src/xfdesktop-volume-icon.c:815
 msgid "_Mount Volume"
 msgstr "Medium aan_koppelen"
 
 #: ../src/xfdesktop-window-icon.c:208
 msgid "_Window Actions"
 msgstr "Vensteracties"
-
-#~ msgid "Backdrop list file is not valid"
-#~ msgstr "Bestand voor achtergrondenlijst is niet geldig"
-
-#~ msgid "Cannot create backdrop list \"%s\""
-#~ msgstr "Kan lijst van achtergronden '%s' niet maken"
-
-#~ msgid "Backdrop List Error"
-#~ msgstr "Fout in achtergrondenlijst"
-
-#~ msgid "Create/Load Backdrop List"
-#~ msgstr "Maak of laad achtergrondenlijst"
-
-#~ msgid ""
-#~ "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite "
-#~ "it?"
-#~ msgstr ""
-#~ "Bestand \"%s\" is geen geldig achtergrondenlijstbestand. Wilt u het "
-#~ "overschrijven?"
-
-#~ msgid "Invalid List File"
-#~ msgstr "Ongeldig lijstbestand"
-
-#~ msgid "Overwriting the file will cause its contents to be lost."
-#~ msgstr ""
-#~ "Het overschrijven van dit bestand heeft als gevolg dat de inhoud verloren "
-#~ "gaat."
-
-#~ msgid "Replace"
-#~ msgstr "Vervang"
-
-#~ msgid "Failed to write backdrop list to \"%s\""
-#~ msgstr "Kon achtergrondenlijst niet schrijven naar '%s'"
-
-#~ msgid "Add Image File(s)"
-#~ msgstr "Voeg afbeeldingbestand(en) toe"
-
-#~ msgid "All files"
-#~ msgstr "Alle bestanden"
-
-#~ msgid "Screen %d, Monitor %d"
-#~ msgstr "Scherm %d, Monitor %d"
-
-#~ msgid "Screen %d"
-#~ msgstr "Scherm %d"
-
-#~ msgid "Monitor %d (%s)"
-#~ msgstr "Monitor %d (%s)"
-
-#~ msgid "Monitor %d"
-#~ msgstr "Monitor %d"
-
-#~ msgid "<b>Adjustments</b>"
-#~ msgstr "<b>Aanpassingen</b>"
-
-#~ msgid "<b>Colors</b>"
-#~ msgstr "<b>Kleuren</b>"
-
-#~ msgid "<b>Image</b>"
-#~ msgstr "<b>Afbeelding</b>"
-
-#~ msgid "<b>Images</b>"
-#~ msgstr "<b>Afbeeldingen</b>"
-
-#~ msgid "Auto"
-#~ msgstr "Automatisch"
-
-#~ msgid "Automatically pick a random image from a list file"
-#~ msgstr "Kies automatisch een willekeurige afbeelding uit een lijstbestand"
-
-#~ msgid "B_rightness:"
-#~ msgstr "H_elderheid:"
-
-#~ msgid "Centered"
-#~ msgstr "Gecentreerd"
-
-#~ msgid "Create a new list, or load an existing one"
-#~ msgstr "Maak een nieuwe lijst, of laad een bestaande lijst"
-
-#~ msgid "Don't display an image at all"
-#~ msgstr "Geen afbeelding weergeven"
-
-#~ msgid "Image _list"
-#~ msgstr "Afbeeldingen_lijst"
-
-#~ msgid "Increase or decrease the brightness of the final image"
-#~ msgstr "Verhoog of verlaag de helderheid van de uiteindelijke afbeelding"
-
-#~ msgid "Increase or decrease the color saturation of the final image"
-#~ msgstr ""
-#~ "Verhoog of verlaag de kleurverzadiging van de uiteindelijke afbeelding"
-
-#~ msgid "Remove the selected image(s) from the list"
-#~ msgstr "Verwijder de geselecteerde afbeelding(en) uit de lijst"
-
-#~ msgid "Sa_turation:"
-#~ msgstr "Ver_zadiging:"
-
-#~ msgid "Scaled"
-#~ msgstr "Geschaald"
-
-#~ msgid "Select a single image as the backdrop"
-#~ msgstr "Kies één enkele afbeelding als achtergrond"
-
-#~ msgid "St_retch this background across all monitors."
-#~ msgstr "Rek deze achtergrond uit over alle beeldschermen."
-
-#~ msgid "Stretched"
-#~ msgstr "Uitgerekt"
-
-#~ msgid "Tiled"
-#~ msgstr "Getegeld"
-
-#~ msgid ""
-#~ "When multiple monitors are present, select this option to stretch the "
-#~ "current background over all of them."
-#~ msgstr ""
-#~ "Bij meerdere monitors: kies deze optie om de huidige achtergrond over hen "
-#~ "alle uit te rekken."
-
-#~ msgid "Zoomed"
-#~ msgstr "Ingezoomd"
-
-#~ msgid "_None"
-#~ msgstr "_Geen"
-
-#~ msgid "_Single image"
-#~ msgstr "_Enkele afbeelding"
-
-#~ msgid "Label trans_parency:"
-#~ msgstr "Trans_parantie van etiketten:"
-
-#~ msgid ""
-#~ "Specify the transparency level for the rounded label drawn behind the "
-#~ "icon text"
-#~ msgstr ""
-#~ "Specificeer het transparantieniveau voor het afgeronde etiket dat achter "
-#~ "de tekst van het pictogram wordt getekend"
-
-#~ msgid "Unable to load image from backdrop list file \"%s\""
-#~ msgstr "Kan afbeelding niet laden vanuit achtergrondenlijstbestand '%s'"
-
-#~ msgid "Desktop Error"
-#~ msgstr "Bureaubladfout"
-
-#~ msgid "Unable to contact the Xfce Trash service."
-#~ msgstr "Kan geen contact leggen met Xfce Prullenbakdienst."
-
-#~ msgid ""
-#~ "Make sure you have a file manager installed that supports the Xfce Trash "
-#~ "service, such as Thunar."
-#~ msgstr ""
-#~ "Zorg dat er een bestandbeheerder (bijvoorbeeld Thunar) is geïnstalleerd, "
-#~ "met ondersteuning voor de prullenbakdienst van Xfce."
-
-#~ msgid "Needs terminal"
-#~ msgstr "Heeft terminal nodig"
-
-#~ msgid "Command"
-#~ msgstr "Opdracht"
-
-#~ msgid "Icon name"
-#~ msgstr "Pictogramnaam"
-
-#~ msgid "Startup notification"
-#~ msgstr "Opstartmelding"
-
-#~ msgid "Unable to launch xfce4-menueditor: %s"
-#~ msgstr "Kon xfce4-menubewerker niet starten: %s"
-
-#~ msgid "Select Icon"
-#~ msgstr "Pictogram selecteren"
-
-#~ msgid "Select Menu File"
-#~ msgstr "Menubestand selecteren"
-
-#~ msgid "All Files"
-#~ msgstr "Alle bestanden"
-
-#~ msgid "Image Files"
-#~ msgstr "Afbeeldingbestanden"
-
-#~ msgid "Menu Files"
-#~ msgstr "Menubestanden"
-
-#~ msgid "Xfce Menu"
-#~ msgstr "Xfce Menu"
-
-#~ msgid "Button"
-#~ msgstr "Knop"
-
-#~ msgid "Button _title:"
-#~ msgstr "Knop_titel:"
-
-#~ msgid "_Show title in button"
-#~ msgstr "_Toon titel in knop"
-
-#~ msgid "Menu File"
-#~ msgstr "Menubestand"
-
-#~ msgid "Use default _desktop menu file"
-#~ msgstr "Gebruik standaard _bureaubladmenu-bestand"
-
-#~ msgid "Use _custom menu file:"
-#~ msgstr "Gebruik _aangepast menubestand"
-
-#~ msgid "_Edit Menu"
-#~ msgstr "Menu be_werken"
-
-#~ msgid "Icons"
-#~ msgstr "Pictogrammen"
-
-#~ msgid "_Button icon:"
-#~ msgstr "_Knop-pictogram:"
-
-#~ msgid "Show _icons in menu"
-#~ msgstr "Toon p_ictogrammen in menu"
-
-#~ msgid "There is already a panel menu registered for this screen"
-#~ msgstr "Er is al een werkbalkmenu geregistreerd voor dit scherm"
-
-#~ msgid "Edit Menu"
-#~ msgstr "Menu aanpassen"
-
-#~ msgid "Shows a menu containing categories of installed applications"
-#~ msgstr "Toont een menu met categorieën van geinstalleerde toepassingen"
-
-#~ msgid "%s: Unknown option: %s\n"
-#~ msgstr "%s: Onbekende optie: %s\n"
-
-#~ msgid "Options are:\n"
-#~ msgstr "Opties zijn:\n"
-
-#~ msgid "    --reload      Reload all settings, refresh image list\n"
-#~ msgstr ""
-#~ "   --reload      Laad alle instellingen opnieuw, ververs "
-#~ "afbeeldingenlijst\n"
-
-#~ msgid "    --menu        Pop up the menu (at the current mouse position)\n"
-#~ msgstr ""
-#~ "    -menu        Bureaubladmenu laten opspringen (op huidige "
-#~ "muispositie)\n"
-
-#~ msgid ""
-#~ "    --windowlist  Pop up the window list (at the current mouse position)\n"
-#~ msgstr ""
-#~ "    --windowlist  Vensterlijst laten opspringen (op huidige muispositie)\n"
-
-#~ msgid "    --quit        Cause xfdesktop to quit\n"
-#~ msgstr "    --quit       Xf-werkomgeving afsluiten\n"
-
-#~ msgid ""
-#~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-#~ msgstr "Kon geen map \"%s\" aanmaken om bureaubladbestanden in op te slaan:"
-
-#~ msgid "Create Folder Failed"
-#~ msgstr "Kon geen Map maken"
-
-#~ msgid ""
-#~ "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not "
-#~ "a folder."
-#~ msgstr ""
-#~ "\"%s\" moet een map zijn om bureaubladbestanden in op te kunnen slaan."
-
-#~ msgid "Please delete or rename the file."
-#~ msgstr "Gelieve het bestand te hernoemen of te verwijderen."
-
-#~ msgid "Rename \"%s\""
-#~ msgstr "Hernoem \"%s\""
-
-#~ msgid "Enter the new name:"
-#~ msgstr "Voer de nieuwe naam in:"
-
-#~ msgid "Rename"
-#~ msgstr "Hernoem"
-
-#~ msgid "Are you sure that you want to delete \"%s\"?"
-#~ msgstr "Weet u zeker dat u \"%s\" wilt verwijderen?"
-
-#~ msgid "Question"
-#~ msgstr "Vraag"
-
-#~ msgid "If you delete a file, it is permanently lost."
-#~ msgstr "Als u een bestand verwijdert, dan is het permanent verloren."
-
-#~ msgid "Are you sure you want to delete the following %d files?"
-#~ msgstr "Weet u zeker dat u de volgende %d bestanden wil verwijderen?"
-
-#~ msgid "Delete Multiple Files"
-#~ msgstr "Meerdere bestanden verwijderen"
-
-#~ msgid "The application chooser could not be opened."
-#~ msgstr "De toepassingskiezer kon niet worden geopend."
-
-#~ msgid ""
-#~ "This feature requires a file manager service present (such as that "
-#~ "supplied by Thunar)."
-#~ msgstr ""
-#~ "Voor deze mogelijkheid moet er een bestandsbeheer-dienst actief zijn "
-#~ "(zoals die van Thunar)."
-
-#~ msgid "Unable to create folder named \"%s\":"
-#~ msgstr "Kon geen map maken met de naam \"%s\":"
-
-#~ msgid "Create New Folder"
-#~ msgstr "Maak nieuwe map"
-
-#~ msgid "Create"
-#~ msgstr "Maak"
-
-#~ msgid "Unable to create file named \"%s\":"
-#~ msgstr "Kon geen bestand maken met de naam \"%s\":"
-
-#~ msgid "Create File Failed"
-#~ msgstr "Kan geen bestand maken"
-
-#~ msgid "Create Document from template \"%s\""
-#~ msgstr "Maak document vanuit sjabloon \"%s\""
-
-#~ msgid "Create Empty File"
-#~ msgstr "Leeg bestand maken"
-
-#~ msgid "New Empty File"
-#~ msgstr "Nieuw leeg bestand"
-
-#~ msgid "Unable to create file \"%s\":"
-#~ msgstr "Kan bestand \"%s\" niet maken:"
-
-#~ msgid "Create Error"
-#~ msgstr "Maakfout"
-
-#~ msgid "Failed to run \"%s\":"
-#~ msgstr "Kan \"%s\" niet uitvoeren:"
-
-#~ msgid "Run Error"
-#~ msgstr "Uitvoerfout"
-
-#~ msgid "The associated application could not be found or executed."
-#~ msgstr "De bijbehorende toepassing kon niet gevonden of uitgevoerd worden."
-
-#~ msgid "Unable to set default application for \"%s\" to \"%s\":"
-#~ msgstr "Kan standaardtoepassing voor \"%s\" niet instellen op \"%s\":"
-
-#~ msgid "Properties Error"
-#~ msgstr "Eigenschappenfout"
-
-#~ msgid "Write only"
-#~ msgstr "Alleen-schrijven"
-
-#~ msgid "Read only"
-#~ msgstr "Alleen-lezen"
-
-#~ msgid "Read & Write"
-#~ msgstr "Lezen en schrijven"
-
-#~ msgid "General"
-#~ msgstr "Algemeen"
-
-#~ msgid "Name:"
-#~ msgstr "Naam:"
-
-#~ msgid "Kind:"
-#~ msgstr "Soort:"
-
-#~ msgid "(unknown)"
-#~ msgstr "(onbekend)"
-
-#~ msgid "Open With:"
-#~ msgstr "Openen met:"
-
-#~ msgid "Modified:"
-#~ msgstr "Aangepast:"
-
-#~ msgid "Accessed:"
-#~ msgstr "Geopend:"
-
-#~ msgid "Free Space:"
-#~ msgstr "Vrije ruimte:"
-
-#~ msgid "Size:"
-#~ msgstr "Grootte:"
-
-#~ msgid "%s (%"
-#~ msgstr "%s (%"
-
-#~ msgid "Permissions"
-#~ msgstr "Rechten"
-
-#~ msgid "Owner:"
-#~ msgstr "Eigenaar:"
-
-#~ msgid "Access:"
-#~ msgstr "Toegang:"
-
-#~ msgid "Group:"
-#~ msgstr "Groep:"
-
-#~ msgid "Others:"
-#~ msgstr "Anderen:"
-
-#~ msgid "Yes to _all"
-#~ msgstr "Ja op _alles"
-
-#~ msgid "There was an error moving \"%s\" to \"%s\":"
-#~ msgstr "Fout bij het verplaatsen van \"%s\" naar \"%s\":"
-
-#~ msgid "There was an error copying \"%s\" to \"%s\":"
-#~ msgstr "Fout bij het kopiëren van \"%s\" naar \"%s\":"
-
-#~ msgid "There was an error linking \"%s\" to \"%s\":"
-#~ msgstr "Fout bij het koppelen van \"%s\" aan \"%s\":"
-
-#~ msgid "File Error"
-#~ msgstr "Bestandfout"
-
-#~ msgid "broken link"
-#~ msgstr "kapotte koppeling"
-
-#~ msgid "link to %s"
-#~ msgstr "koppeling naar %s"
-
-#~ msgid ""
-#~ "Kind: %s\n"
-#~ "Modified:%s\n"
-#~ "Size: %s"
-#~ msgstr ""
-#~ "Soort: %s\n"
-#~ "Aangepast:%s\n"
-#~ "Grootte: %s"
-
-#~ msgid "Error"
-#~ msgstr "Fout"
-
-#~ msgid "Failed to rename \"%s\" to \"%s\":"
-#~ msgstr "Kan \"%s\" niet hernoemen naar \"%s\":"
-
-#~ msgid "Kind: Trash"
-#~ msgstr "Soort: prullenbak"
-
-#~ msgid "%s (%s total)"
-#~ msgstr "%s (%s in totaal)"
-
-#~ msgid ""
-#~ "Kind: Removable Volume\n"
-#~ "Mount Point: %s\n"
-#~ "Free Space: %s"
-#~ msgstr ""
-#~ "Type: Verwijderbaar medium\n"
-#~ "Koppelpunt: %s\n"
-#~ "Vrije ruimte: %s"
-
-#~ msgid "Unable to mount \"%s\":"
-#~ msgstr "Kan \"%s\" niet aankoppelen:"
-
-#~ msgid "Unable to unmount \"%s\":"
-#~ msgstr "Kan \"%s\" niet ontkoppelen:"
-
-#~ msgid "Unable to eject \"%s\":"
-#~ msgstr "Kan \"%s\" niet uitwerpen:"
-
-#~ msgid "Accessories"
-#~ msgstr "Hulpmiddelen"
-
-#~ msgid "Common desktop tools and applications"
-#~ msgstr "Veelgebruikte hulpmiddelen en toepassingen"
-
-#~ msgid "Development"
-#~ msgstr "Ontwikkeling"
-
-#~ msgid "Software development tools"
-#~ msgstr "Gereedschap voor ontwikkelaars"
-
-#~ msgid "Education"
-#~ msgstr "Onderwijs"
-
-#~ msgid "Educational software"
-#~ msgstr "Educatieve programma's"
-
-#~ msgid "Games"
-#~ msgstr "Spelletjes"
-
-#~ msgid "Games, puzzles, and other fun software"
-#~ msgstr "Spelletjes, puzzels en ander tijdverdrijf"
-
-#~ msgid "Graphics"
-#~ msgstr "Grafisch"
-
-#~ msgid "Graphics creation and manipulation applications"
-#~ msgstr "Toepassingen voor grafische creatie en bewerking"
-
-#~ msgid "Audio and video players and editors"
-#~ msgstr "Audio- en videospelers en -bewerkers"
-
-#~ msgid "Multimedia"
-#~ msgstr "Multimedia"
-
-#~ msgid "Network"
-#~ msgstr "Netwerk"
-
-#~ msgid "Network applications and utilities"
-#~ msgstr "Netwerktoepassingen en -hulpmiddelen"
-
-#~ msgid "Office"
-#~ msgstr "Kantoor"
-
-#~ msgid "Office and productivity applications"
-#~ msgstr "Kantoor- en productiviteitstoepassingen"
-
-#~ msgid "Applications that don't fit into other categories"
-#~ msgstr "Toepassingen die niet in andere categorieën passen"
-
-#~ msgid "Other"
-#~ msgstr "Overig"
-
-#~ msgid "Screensaver applets"
-#~ msgstr "Schermbeveiligingstoepassingen"
-
-#~ msgid "Screensavers"
-#~ msgstr "Schermbeveiligingen"
-
-#~ msgid "Desktop and system settings applications"
-#~ msgstr "Toepassingen voor bureaubladgebruik en systeeminstellingen"
-
-#~ msgid "Settings"
-#~ msgstr "Instellingen"
-
-#~ msgid "System"
-#~ msgstr "Systeem"
-
-#~ msgid "System tools and utilities"
-#~ msgstr "Systeemgereedschappen en -hulpmiddelen"
-
-#~ msgid "About Xfce"
-#~ msgstr "Over Xfce"
-
-#~ msgid "Information about the Xfce Desktop Environment"
-#~ msgstr "Informatie over de Xfce-werkomgeving"
-
-#~ msgid "File Manager"
-#~ msgstr "Bestandbeheerder"
-
-#~ msgid "Thunar file manager"
-#~ msgstr "Thunar bestandbeheerder"
-
-#~ msgid "Help"
-#~ msgstr "_Hulp"
-
-#~ msgid "Help using Xfce"
-#~ msgstr "Hulp bij het gebruik van Xfce"
-
-#~ msgid "Log Out"
-#~ msgstr "Afmelden"
-
-#~ msgid "Log out of the Xfce Desktop"
-#~ msgstr "Meld u af van de Xfce-werkomgeving"
-
-#~ msgid "Run Program..."
-#~ msgstr "Voer programma uit..."
-
-#~ msgid "Run a program"
-#~ msgstr "Voer een programma uit"
-
-#~ msgid "Terminal"
-#~ msgstr "Terminal"
-
-#~ msgid "Terminal emulator"
-#~ msgstr "Terminalvenster"
-
-#~ msgid "Browse the web"
-#~ msgstr "Verken het web"
-
-#~ msgid "Web Browser"
-#~ msgstr "Webbrowser"
-
-#~ msgid ""
-#~ "Auto\n"
-#~ "Centered\n"
-#~ "Tiled\n"
-#~ "Stretched\n"
-#~ "Scaled\n"
-#~ "Zoomed"
-#~ msgstr ""
-#~ "Automatisch\n"
-#~ "Gecentreerd\n"
-#~ "Naast elkaar\n"
-#~ "Uitgerekt\n"
-#~ "Geschaald\n"
-#~ "Ingezoomed"
-
-#~ msgid ""
-#~ "Left\n"
-#~ "Middle\n"
-#~ "Right"
-#~ msgstr ""
-#~ "Links\n"
-#~ "Midden\n"
-#~ "Rechts"
-
-#~ msgid ""
-#~ "None\n"
-#~ "Minimized application icons\n"
-#~ "File/launcher icons"
-#~ msgstr ""
-#~ "Geen\n"
-#~ "Geminimaliseerde toepassingspictogrammen\n"
-#~ "Bestand/starterpictogrammen"
-
-#~ msgid ""
-#~ "None\n"
-#~ "Shift\n"
-#~ "Alt\n"
-#~ "Control"
-#~ msgstr ""
-#~ "Geen\n"
-#~ "Shift\n"
-#~ "Alt\n"
-#~ "Control"
-
-#~ msgid ""
-#~ "Solid color\n"
-#~ "Horizontal gradient\n"
-#~ "Vertical gradient\n"
-#~ "Transparent"
-#~ msgstr ""
-#~ "Eén kleur\n"
-#~ "Horizontaal kleurverloop\n"
-#~ "Verticaal kleurverloop\n"
-#~ "Transparant"
-
-#~ msgid "Use startup _notification"
-#~ msgstr "Opstart_notificatie gebruiken"
-
-#~ msgid "Contributor"
-#~ msgstr "Medewerker"
-
-#~ msgid "Icon designer"
-#~ msgstr "Pictogramontwerper"
-
-#~ msgid "Solid Color"
-#~ msgstr "Effen kleur"
-
-#~ msgid "Horizontal Gradient"
-#~ msgstr "Horizontale gradiënt"
-
-#~ msgid "Vertical Gradient"
-#~ msgstr "Verticale gradiënt"
-
-#~ msgid "gtk-close"
-#~ msgstr "gtk-close"
-
-#~ msgid "gtk-help"
-#~ msgstr "gtk-help"
-
-#~ msgid "Add menu entry"
-#~ msgstr "Menu-element toevoegen"
-
-#~ msgid "Type:"
-#~ msgstr "Type:"
-
-#~ msgid "Title"
-#~ msgstr "Titel"
-
-#~ msgid "Submenu"
-#~ msgstr "Submenu"
-
-#~ msgid "Launcher"
-#~ msgstr "Starter"
-
-#~ msgid "Separator"
-#~ msgstr "Scheidingslijn"
-
-#~ msgid "Quit"
-#~ msgstr "Afsluiten"
-
-#~ msgid "Command:"
-#~ msgstr "Opdracht:"
-
-#~ msgid "Icon:"
-#~ msgstr "Pictogram:"
-
-#~ msgid "No icon"
-#~ msgstr "Geen pictogram"
-
-#~ msgid "Themed icon:"
-#~ msgstr "Pictogram met thema:"
-
-#~ msgid "Select icon"
-#~ msgstr "Pictogram selecteren"
-
-#~ msgid "Run in _terminal"
-#~ msgstr "Uitvoeren in _terminal"
-
-#~ msgid "Select command"
-#~ msgstr "Opdracht selecteren"
-
-#~ msgid "Executable Files"
-#~ msgstr "Uitvoerbare bestanden"
-
-#~ msgid "Perl Scripts"
-#~ msgstr "Perl scripts"
-
-#~ msgid "Python Scripts"
-#~ msgstr "Python Scripts"
-
-#~ msgid "Ruby Scripts"
-#~ msgstr "Ruby scripts"
-
-#~ msgid "Shell Scripts"
-#~ msgstr "Shell scripts"
-
-#~ msgid "Add external menu entry"
-#~ msgstr "Extern menu-element toevoegen"
-
-#~ msgid "File"
-#~ msgstr "Bestand"
-
-#~ msgid "Source:"
-#~ msgstr "Bron:"
-
-#~ msgid "Select external menu"
-#~ msgstr "Een extern menu selecteren"
-
-#~ msgid "Style:"
-#~ msgstr "Stijl:"
-
-#~ msgid "Simple"
-#~ msgstr "Simpel"
-
-#~ msgid "Multilevel"
-#~ msgstr "Multiniveau"
-
-#~ msgid "_Unique entries only"
-#~ msgstr "Uitsluitend _unieke velden"
-
-#~ msgid "Edit menu entry"
-#~ msgstr "Bewerk menu-onderdeel"
-
-#~ msgid "Edit external menu entry"
-#~ msgstr "Bewerk een extern menu-onderdeel"
-
-#~ msgid "Xfce4-MenuEditor"
-#~ msgstr "Xfce4-Menubewerker"
-
-#~ msgid "Menueditor Warning"
-#~ msgstr "Waarschuwing van menubewerker"
-
-#~ msgid "xfce4-menueditor is deprecated"
-#~ msgstr "xfce4-menubewerker is verouderd"
-
-#~ msgid ""
-#~ "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
-#~ "edit the new menu file format.  You may continue and edit an old-style "
-#~ "menu file, or quit."
-#~ msgstr ""
-#~ "Xfce's menubeheer is vernieuwd en kan dientengevolge niet meer bewerkt "
-#~ "worden met xfce4-menubewerker. U kunt alsnog een menu in de oude stijl "
-#~ "bewerken, of sluiten."
-
-#~ msgid "Continue"
-#~ msgstr "Ga door"
-
-#~ msgid "_File"
-#~ msgstr "_Bestand"
-
-#~ msgid "_New"
-#~ msgstr "_Nieuw"
-
-#~ msgid "Create a new empty menu"
-#~ msgstr "Maak een nieuw leeg menu"
-
-#~ msgid "Open existing menu"
-#~ msgstr "Open een bestaand menu"
-
-#~ msgid "Open _default menu"
-#~ msgstr "Open stan_daardmenu"
-
-#~ msgid "Open default menu"
-#~ msgstr "Open standaardmenu"
-
-#~ msgid "_Save"
-#~ msgstr "_Sla op"
-
-#~ msgid "Save modifications"
-#~ msgstr "Sla wijzigingen op"
-
-#~ msgid "Save _as..."
-#~ msgstr "Sla op _als..."
-
-#~ msgid "Save menu under a given name"
-#~ msgstr "Sla menu op met een andere naam"
-
-#~ msgid "_Close"
-#~ msgstr "Sl_uit"
-
-#~ msgid "Close menu"
-#~ msgstr "Sluit menu"
-
-#~ msgid "_Quit"
-#~ msgstr "_Sluit af"
-
-#~ msgid "Quit Xfce4-Menueditor"
-#~ msgstr "Verlaat Xfce4-menubewerker"
-
-#~ msgid "_Edit"
-#~ msgstr "Be_werk"
-
-#~ msgid "_Edit entry"
-#~ msgstr "Bewerk onderdeel"
-
-#~ msgid "Edit selected entry"
-#~ msgstr "Bewerk geselecteerd onderdeel"
-
-#~ msgid "_Add entry"
-#~ msgstr "Voeg onderdeel toe"
-
-#~ msgid "Add a new entry in the menu"
-#~ msgstr "Voeg een nieuw onderdeel toe aan het menu"
-
-#~ msgid "Add _external"
-#~ msgstr "Voeg _extern toe"
-
-#~ msgid "Add an external entry"
-#~ msgstr "Voeg een extern onderdeel toe"
-
-#~ msgid "_Remove entry"
-#~ msgstr "Onderdeel _weghalen"
-
-#~ msgid "Remove entry"
-#~ msgstr "Verwijder onderdeel"
-
-#~ msgid "_Up"
-#~ msgstr "Om_hoog"
-
-#~ msgid "_Down"
-#~ msgstr "Om_laag"
-
-#~ msgid "Move entry down"
-#~ msgstr "Onderdeel naar omlaag verplaatsen"
-
-#~ msgid "_Help"
-#~ msgstr "_Hulp"
-
-#~ msgid "_About..."
-#~ msgstr "_Over..."
-
-#~ msgid "Show informations about xfce4-menueditor"
-#~ msgstr "Toon informatie over xfce4-menubewerker"
-
-#~ msgid "Collapse all"
-#~ msgstr "Klap boomstructuur in"
-
-#~ msgid "Collapse all menu entries"
-#~ msgstr "Klap alle menu-onderdelen in"
-
-#~ msgid "Expand all"
-#~ msgstr "Klap alles uit"
-
-#~ msgid "Expand all menu entries"
-#~ msgstr "Klap alle menu-onderdelen uit"
-
-#~ msgid "Name"
-#~ msgstr "Naam"
-
-#~ msgid "Hidden"
-#~ msgstr "Verborgen"
-
-#~ msgid "Are you sure you want to close the current menu?"
-#~ msgstr "Weet u zeker dat u het huidige menu wil sluiten?"
-
-#~ msgid "Do you want to save before closing the file?"
-#~ msgstr "Wijzigingen opslaan?"
-
-#~ msgid "Do you want to save before opening an other menu ?"
-#~ msgstr "Wilt u de wijzigingen opslaan voordat u een ander menu opent?"
-
-#~ msgid "Ignore modifications"
-#~ msgstr "Negeer wijzigingen"
-
-#~ msgid "Open menu file"
-#~ msgstr "Open menubestand"
-
-#~ msgid "Do you want to save before opening the default menu ?"
-#~ msgstr ""
-#~ "Wilt u de wijzigingen opslaan voor het openen van het standaardmenu?"
-
-#~ msgid "Save menu file as"
-#~ msgstr "Sla menubestand op als"
-
-#~ msgid "Do you want to save before closing the menu ?"
-#~ msgstr "Wilt u de wijzigingen opslaan voordat u het menu sluit?"
-
-#~ msgid "quit"
-#~ msgstr "sluit af"
-
-#~ msgid "--- separator ---"
-#~ msgstr "--- scheidingslijn ---"
-
-#~ msgid "--- include ---"
-#~ msgstr "--- inclusief ---"
-
-#~ msgid "system"
-#~ msgstr "systeem"
-
-#~ msgid "Do you want to move the item into the submenu?"
-#~ msgstr "Wilt u het element naar het submenu verplaatsen?"
-
-#~ msgid "A menu editor for Xfce4"
-#~ msgstr "Een menubewerker voor Xfce4"
-
-#~ msgid "Author/Maintainer"
-#~ msgstr "Auteur/Onderhouder"
-
-#~ msgid "You have modified the menu, do you want to save it before quitting ?"
-#~ msgstr "U hebt het menu gewijzigd, wilt u de wijzigingen opslaan?"
-
-#~ msgid "Forget modifications"
-#~ msgstr "Negeer wijzigingen"
-
-#~ msgid "Unable to open the menu file %s in write mode"
-#~ msgstr "Kan menubestand %s niet openen met schrijfrechten"
-
-#~ msgid "Graphical tool for editing the Xfce 4 menu"
-#~ msgstr "Grafisch gereedschap voor het bewerken van het Xfce-menu"
-
-#~ msgid "Menu Editor"
-#~ msgstr "Menubewerker"
-
-#~ msgid "Xfce 4 Menu Editor"
-#~ msgstr "Xfce-menubewerker"
-
-#~ msgid "Settings for the Xfce 4 Desktop Manager"
-#~ msgstr "Instellingen van de Xfce-bureaubladbeheerder"
-
-#~ msgid "Xfce 4 Desktop Settings"
-#~ msgstr "Instellingen Xfce-Bureaublad"
-
-#~ msgid "Show windows on each workspace in _submenus"
-#~ msgstr "Vensters in elk werkblad in _submenus weergeven"
-
-#~ msgid "Use _Xfce to manage the desktop"
-#~ msgstr "Laat _Xfce het bureaublad beheren"
-
-#~ msgid ""
-#~ "Could not save file %s: %s\n"
-#~ "\n"
-#~ "Please choose another location or press cancel in the dialog to discard "
-#~ "your changes"
-#~ msgstr ""
-#~ "Kon bestand %s niet opslaan: %s\n"
-#~ "\n"
-#~ "Gelieve een andere locatie te kiezen, of druk op annuleren in het "
-#~ "dialoogvenster om uw wijzigingen weg te gooien"
-
-#~ msgid "Button Label|Desktop"
-#~ msgstr "Knopetiket|Bureaublad"
-
-#~ msgid "backdrops.list"
-#~ msgstr "achtergronden.list"
-
-#~ msgid "Select backdrop image or list file"
-#~ msgstr "Selecteer achtergrondplaatje of lijstbestand"
-
-#~ msgid "List Files (*.list)"
-#~ msgstr "Lijstbestanden (*.list)"
-
-#~ msgid "_Edit list..."
-#~ msgstr "_Bewerk lijst..."
-
-#~ msgid "_New list..."
-#~ msgstr "_Nieuwe lijst..."
-
-#~ msgid "S_tyle:"
-#~ msgstr "S_tijl:"
-
-#~ msgid "Xfce will be unable to manage your desktop (%s)."
-#~ msgstr "Xfce zal het bureaublad niet kunnen beheren (%s)."
-
-#~ msgid "Unknown Error"
-#~ msgstr "Onbekende fout"
-
-#~ msgid "Unable to start xfdesktop"
-#~ msgstr "Kan xfdesktop niet starten"
-
-#~ msgid "Desktop Preferences"
-#~ msgstr "Bureaubladvoorkeuren"
-
-#~ msgid "_Color Style:"
-#~ msgstr "_Kleurstijl:"
-
-#~ msgid "Image"
-#~ msgstr "Afbeelding"
-
-#~ msgid "Show _Image"
-#~ msgstr "Afbeelding _tonen"
-
-#~ msgid "_File:"
-#~ msgstr "_Bestand:"
-
-#~ msgid "_Behavior"
-#~ msgstr "Ge_drag"
-
-#~ msgid "Select backdrop image file"
-#~ msgstr "Afbeelding selecteren voor achtergrond"
-
-#~ msgid "List file"
-#~ msgstr "Lijstbestand"
-
-#~ msgid "Edit backdrop list"
-#~ msgstr "Bewerk lijst van achtergronden"
-
-#~ msgid "Use _system font size"
-#~ msgstr "Gebruik grootte van _systeemlettertype"
-
-#~ msgid "Des_ktop"
-#~ msgstr "Bureau_blad"
-
-#~ msgid "_Desktop Properties..."
-#~ msgstr "Bureaublad _eigenschappen..."
-
-#~ msgid "Science"
-#~ msgstr "Wetenschap"
-
-#~ msgid "Scientific applications and tools"
-#~ msgstr "Wetenschappelijke toepassingen en gereedschappen"
-
-#~ msgid "Unable to quit session."
-#~ msgstr "Kan sessie niet afsluiten."
-
-#~ msgid "Edit Properties"
-#~ msgstr "Bewerk eigenschappen"
-
-#~ msgid "Scientific software"
-#~ msgstr "Wetenschappelijke programma's"
