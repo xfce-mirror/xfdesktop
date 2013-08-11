@@ -1761,6 +1761,9 @@ xfdesktop_file_icon_manager_get_cached_icon_position(XfdesktopFileIconManager *f
     gboolean ret = FALSE;
     gint x = 0, y = 0, width = 0, height = 0;
 
+    if(!fmanager || !fmanager->priv)
+        return FALSE;
+
     xfdesktop_get_workarea_single(fmanager->priv->icon_view,
                                   0,
                                   &x,
