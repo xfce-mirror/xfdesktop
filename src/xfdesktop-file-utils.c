@@ -491,12 +491,16 @@ xfdesktop_file_utils_get_fallback_icon(gint size)
 
 GdkPixbuf *
 xfdesktop_file_utils_get_icon(GIcon *icon,
-                              gint size,
+                              gint width,
+                              gint height,
                               guint opacity)
 {
     GtkIconTheme *itheme = gtk_icon_theme_get_default();
     GdkPixbuf *pix_theme = NULL, *pix = NULL;
     GIcon *base_icon = NULL;
+    gint size = MIN(width, height);
+
+    g_return_val_if_fail(width > 0 && height > 0 && icon != NULL, NULL);
 
     /* Extract the base icon if available */
     if(G_IS_EMBLEMED_ICON(icon))
@@ -504,26 +508,36 @@ xfdesktop_file_utils_get_icon(GIcon *icon,
     else
         base_icon = icon;
 
-    if(!pix_theme && base_icon) {
-        if(G_IS_THEMED_ICON(base_icon) || G_IS_FILE_ICON(base_icon)) {
-          GtkIconInfo *icon_info = gtk_icon_theme_lookup_by_gicon(itheme,
-                                                                  base_icon, size,
-                                                                  ITHEME_FLAGS);
-          if(icon_info) {
-              pix_theme = gtk_icon_info_load_icon(icon_info, NULL);
-              gtk_icon_info_free(icon_info);
-          }
-        } else if(G_IS_LOADABLE_ICON(base_icon)) {
-            GInputStream *stream = g_loadable_icon_load(G_LOADABLE_ICON(base_icon),
-                                                        size, NULL, NULL, NULL);
-            if(stream) {
-                pix = gdk_pixbuf_new_from_stream(stream, NULL, NULL);
-                g_object_unref(stream);
-            }
+    if(!base_icon)
+        return NULL;
+
+    if(G_IS_THEMED_ICON(base_icon)) {
+      GtkIconInfo *icon_info = gtk_icon_theme_lookup_by_gicon(itheme,
+                                                              base_icon, size,
+                                                              ITHEME_FLAGS);
+      if(icon_info) {
+          pix_theme = gtk_icon_info_load_icon(icon_info, NULL);
+          gtk_icon_info_free(icon_info);
+      }
+    } else if(G_IS_LOADABLE_ICON(base_icon)) {
+        GInputStream *stream = g_loadable_icon_load(G_LOADABLE_ICON(base_icon),
+                                                    size, NULL, NULL, NULL);
+        if(stream) {
+            pix = gdk_pixbuf_new_from_stream_at_scale(stream, width, height, TRUE, NULL, NULL);
+            g_object_unref(stream);
         }
+    } else if(G_IS_FILE_ICON(base_icon)) {
+        GFile *file = g_file_icon_get_file(G_FILE_ICON(icon));
+        gchar *path = g_file_get_path(file);
+
+        pix = gdk_pixbuf_new_from_file_at_size(path, width, height, NULL);
+
+        g_free(path);
+        g_object_unref(file);
     }
 
-    if(G_LIKELY(pix_theme)) {
+
+    if(pix_theme) {
         /* we can't edit thsese icons */
         pix = gdk_pixbuf_copy(pix_theme);
         g_object_unref(G_OBJECT(pix_theme));

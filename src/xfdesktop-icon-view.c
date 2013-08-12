@@ -57,6 +57,7 @@
 
 #define ICON_SIZE         (icon_view->priv->icon_size)
 #define TEXT_WIDTH        ((icon_view->priv->cell_text_width_proportion) * ICON_SIZE)
+#define ICON_WIDTH        (TEXT_WIDTH)
 #define CELL_PADDING      (icon_view->priv->cell_padding)
 #define CELL_SIZE         (TEXT_WIDTH + CELL_PADDING * 2)
 #define SPACING           (icon_view->priv->cell_spacing)
@@ -1064,6 +1065,7 @@ xfdesktop_icon_view_show_tooltip(GtkWidget *widget,
     if(icon_view->priv->tooltip_size > 0) {
         gtk_tooltip_set_icon(tooltip,
                 xfdesktop_icon_peek_pixbuf(icon_view->priv->item_under_pointer,
+                                           icon_view->priv->tooltip_size * 1.5f,
                                            icon_view->priv->tooltip_size));
     }
 
@@ -1268,7 +1270,7 @@ xfdesktop_icon_view_drag_begin(GtkWidget *widget,
     if(xfdesktop_icon_get_extents(icon, NULL, NULL, &extents)) {
         GdkPixbuf *pix;
         
-        pix = xfdesktop_icon_peek_pixbuf(icon, ICON_SIZE);
+        pix = xfdesktop_icon_peek_pixbuf(icon, ICON_WIDTH, ICON_SIZE);
         if(pix)
             gtk_drag_set_icon_pixbuf(context, pix, 0, 0);
     }
@@ -2677,7 +2679,7 @@ xfdesktop_icon_view_invalidate_icon_pixbuf(XfdesktopIconView *icon_view,
 {
     GdkPixbuf *pix;
     
-    pix = xfdesktop_icon_peek_pixbuf(icon, ICON_SIZE);
+    pix = xfdesktop_icon_peek_pixbuf(icon, ICON_WIDTH, ICON_SIZE);
     if(pix) {
         GdkRectangle rect = { 0, };
         
@@ -2782,7 +2784,7 @@ xfdesktop_icon_view_calculate_icon_pixbuf_area(XfdesktopIconView *icon_view,
     pixbuf_area->x = 0;
     pixbuf_area->y = 0;
 
-    pix = xfdesktop_icon_peek_pixbuf(icon, ICON_SIZE);
+    pix = xfdesktop_icon_peek_pixbuf(icon, ICON_WIDTH, ICON_SIZE);
     if(G_LIKELY(pix)) {
         pixbuf_area->width = gdk_pixbuf_get_width(pix);
         pixbuf_area->height = gdk_pixbuf_get_height(pix);
@@ -2984,7 +2986,7 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
         state = GTK_STATE_NORMAL;
     
     if(gdk_rectangle_intersect(area, &pixbuf_extents, &intersection)) {
-        GdkPixbuf *pix = xfdesktop_icon_peek_pixbuf(icon, ICON_SIZE);
+        GdkPixbuf *pix = xfdesktop_icon_peek_pixbuf(icon, ICON_WIDTH, ICON_SIZE);
         GdkPixbuf *pix_free = NULL;
 
         if(state != GTK_STATE_NORMAL) {

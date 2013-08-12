@@ -62,7 +62,7 @@ struct _XfdesktopVolumeIconPrivate
 {
     GdkPixbuf *pix;
     gchar *tooltip;
-    gint cur_pix_size;
+    gint cur_pix_height;
     gchar *label;
     GVolume *volume;
     GFileInfo *file_info;
@@ -77,7 +77,7 @@ struct _XfdesktopVolumeIconPrivate
 static void xfdesktop_volume_icon_finalize(GObject *obj);
 
 static GdkPixbuf *xfdesktop_volume_icon_peek_pixbuf(XfdesktopIcon *icon,
-                                                    gint size);
+                                                    gint width, gint height);
 static G_CONST_RETURN gchar *xfdesktop_volume_icon_peek_label(XfdesktopIcon *icon);
 static G_CONST_RETURN gchar *xfdesktop_volume_icon_peek_tooltip(XfdesktopIcon *icon);
 static GdkDragAction xfdesktop_volume_icon_get_allowed_drag_actions(XfdesktopIcon *icon);
@@ -254,7 +254,7 @@ xfdesktop_volume_icon_is_mounted(XfdesktopIcon *icon)
 
 static GdkPixbuf *
 xfdesktop_volume_icon_peek_pixbuf(XfdesktopIcon *icon,
-                                  gint size)
+                                  gint width, gint height)
 {
     XfdesktopVolumeIcon *volume_icon = XFDESKTOP_VOLUME_ICON(icon);
     XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
@@ -262,7 +262,7 @@ xfdesktop_volume_icon_peek_pixbuf(XfdesktopIcon *icon,
     
     g_return_val_if_fail(XFDESKTOP_IS_VOLUME_ICON(icon), NULL);
     
-    if(size != volume_icon->priv->cur_pix_size)
+    if(height != volume_icon->priv->cur_pix_height)
         xfdesktop_volume_icon_invalidate_pixbuf(volume_icon);
 
     /* Still valid */
@@ -287,10 +287,10 @@ xfdesktop_volume_icon_peek_pixbuf(XfdesktopIcon *icon,
         opacity = 50;
 
     volume_icon->priv->pix = xfdesktop_file_utils_get_icon(file_icon->gicon,
-                                                           size,
+                                                           height, height, 
                                                            opacity);
 
-    volume_icon->priv->cur_pix_size = size;
+    volume_icon->priv->cur_pix_height = height;
 
     return volume_icon->priv->pix;
 }

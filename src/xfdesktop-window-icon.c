@@ -36,7 +36,7 @@ struct _XfdesktopWindowIconPrivate
 {
     gint workspace;
     GdkPixbuf *pix;
-    gint cur_pix_size;
+    gint cur_pix_height;
     gchar *label;
     WnckWindow *window;
 };
@@ -44,7 +44,7 @@ struct _XfdesktopWindowIconPrivate
 static void xfdesktop_window_icon_finalize(GObject *obj);
 
 static GdkPixbuf *xfdesktop_window_icon_peek_pixbuf(XfdesktopIcon *icon,
-                                                   gint size);
+                                                   gint width, gint height);
 static G_CONST_RETURN gchar *xfdesktop_window_icon_peek_label(XfdesktopIcon *icon);
 
 static gboolean xfdesktop_window_icon_activated(XfdesktopIcon *icon);
@@ -151,27 +151,28 @@ xfdesktop_window_icon_changed_cb(WnckWindow *window,
 
 static GdkPixbuf *
 xfdesktop_window_icon_peek_pixbuf(XfdesktopIcon *icon,
-                                 gint size)
+                                 gint width, gint height)
 {
     XfdesktopWindowIcon *window_icon = XFDESKTOP_WINDOW_ICON(icon);
-    
-    if(!window_icon->priv->pix || window_icon->priv->cur_pix_size != size) {
+
+    if(!window_icon->priv->pix || window_icon->priv->cur_pix_height != height) {
         if(window_icon->priv->pix)
             g_object_unref(G_OBJECT(window_icon->priv->pix));
-        
+
         window_icon->priv->pix = wnck_window_get_icon(window_icon->priv->window);
         if(window_icon->priv->pix) {
-            if(gdk_pixbuf_get_width(window_icon->priv->pix) != size) {
+            if(gdk_pixbuf_get_height(window_icon->priv->pix) != height) {
                 window_icon->priv->pix = gdk_pixbuf_scale_simple(window_icon->priv->pix,
-                                                                 size,
-                                                                 size,
+                                                                 height,
+                                                                 height,
                                                                  GDK_INTERP_BILINEAR);
             } else
                 g_object_ref(G_OBJECT(window_icon->priv->pix));
-            window_icon->priv->cur_pix_size = size;
+
+            window_icon->priv->cur_pix_height = height;
         }
     }
-    
+
     return window_icon->priv->pix;
 }
 

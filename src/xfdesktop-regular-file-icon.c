@@ -63,7 +63,7 @@ struct _XfdesktopRegularFileIconPrivate
     gchar *display_name;
     gchar *tooltip;
     guint pix_opacity;
-    gint cur_pix_size;
+    gint cur_pix_width, cur_pix_height;
     GFileInfo *file_info;
     GFileInfo *filesystem_info;
     GFile *file;
@@ -77,7 +77,7 @@ static void xfdesktop_regular_file_icon_set_thumbnail_file(XfdesktopIcon *icon, 
 static void xfdesktop_regular_file_icon_delete_thumbnail_file(XfdesktopIcon *icon);
 
 static GdkPixbuf *xfdesktop_regular_file_icon_peek_pixbuf(XfdesktopIcon *icon,
-                                                          gint size);
+                                                          gint width, gint height);
 static G_CONST_RETURN gchar *xfdesktop_regular_file_icon_peek_label(XfdesktopIcon *icon);
 static G_CONST_RETURN gchar *xfdesktop_regular_file_icon_peek_tooltip(XfdesktopIcon *icon);
 static GdkDragAction xfdesktop_regular_file_icon_get_allowed_drag_actions(XfdesktopIcon *icon);
@@ -292,15 +292,16 @@ xfdesktop_load_icon_from_desktop_file(XfdesktopRegularFileIcon *regular_icon)
 
 static GdkPixbuf *
 xfdesktop_regular_file_icon_peek_pixbuf(XfdesktopIcon *icon,
-                                        gint size)
+                                        gint width, gint height)
 {
     XfdesktopRegularFileIcon *regular_icon = XFDESKTOP_REGULAR_FILE_ICON(icon);
     XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
 
-    if(size != regular_icon->priv->cur_pix_size)
+    if(width != regular_icon->priv->cur_pix_width
+       || height != regular_icon->priv->cur_pix_height)
         xfdesktop_regular_file_icon_invalidate_pixbuf(regular_icon);
 
-        /* Still valid */
+    /* Still valid */
     if(regular_icon->priv->pix != NULL)
         return regular_icon->priv->pix;
 
@@ -310,8 +311,19 @@ xfdesktop_regular_file_icon_peek_pixbuf(XfdesktopIcon *icon,
             file_icon->gicon = xfdesktop_load_icon_from_desktop_file(regular_icon);
         } else {
             /* If we have a thumbnail then they are enabled, use it. */
-            if(regular_icon->priv->thumbnail_file)
-                file_icon->gicon = g_file_icon_new(regular_icon->priv->thumbnail_file);
+            if(regular_icon->priv->thumbnail_file) {
+                gchar *file = g_file_get_path(regular_icon->priv->file);
+                gchar *mimetype = xfdesktop_get_file_mimetype(file);
+
+                /* Don't use thumbnails for svg, use the file itself */
+                if(g_strcmp0(mimetype, "image/svg+xml") == 0)
+                    file_icon->gicon = g_file_icon_new(regular_icon->priv->file);
+                else
+                    file_icon->gicon = g_file_icon_new(regular_icon->priv->thumbnail_file);
+
+                g_free(mimetype);
+                g_free(file);
+            }
         }
 
         /* If we still don't have an icon, use the default */
@@ -352,10 +364,11 @@ xfdesktop_regular_file_icon_peek_pixbuf(XfdesktopIcon *icon,
     }
 
     regular_icon->priv->pix = xfdesktop_file_utils_get_icon(file_icon->gicon,
-                                                            size,
+                                                            width, height,
                                                             regular_icon->priv->pix_opacity);
 
-    regular_icon->priv->cur_pix_size = size;
+    regular_icon->priv->cur_pix_width = width;
+    regular_icon->priv->cur_pix_height = height;
 
     return regular_icon->priv->pix;
 }

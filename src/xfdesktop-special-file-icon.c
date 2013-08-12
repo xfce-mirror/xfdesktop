@@ -57,7 +57,7 @@ struct _XfdesktopSpecialFileIconPrivate
     XfdesktopSpecialFileIconType type;
     GdkPixbuf *pix;
     gchar *tooltip;
-    gint cur_pix_size;
+    gint cur_pix_height;
     GFileMonitor *monitor;
     GFileInfo *file_info;
     GFileInfo *filesystem_info;
@@ -71,7 +71,7 @@ struct _XfdesktopSpecialFileIconPrivate
 static void xfdesktop_special_file_icon_finalize(GObject *obj);
 
 static GdkPixbuf *xfdesktop_special_file_icon_peek_pixbuf(XfdesktopIcon *icon,
-                                                          gint size);
+                                                          gint width, gint height);
 static G_CONST_RETURN gchar *xfdesktop_special_file_icon_peek_label(XfdesktopIcon *icon);
 static G_CONST_RETURN gchar *xfdesktop_special_file_icon_peek_tooltip(XfdesktopIcon *icon);
 static GdkDragAction xfdesktop_special_file_icon_get_allowed_drag_actions(XfdesktopIcon *icon);
@@ -218,13 +218,13 @@ xfdesktop_special_file_icon_invalidate_pixbuf(XfdesktopSpecialFileIcon *icon)
 
 static GdkPixbuf *
 xfdesktop_special_file_icon_peek_pixbuf(XfdesktopIcon *icon,
-                                        gint size)
+                                        gint width, gint height)
 {
     XfdesktopSpecialFileIcon *special_icon = XFDESKTOP_SPECIAL_FILE_ICON(icon);
     XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
     GFile *parent = NULL;
 
-    if(size != special_icon->priv->cur_pix_size)
+    if(height != special_icon->priv->cur_pix_height)
         xfdesktop_special_file_icon_invalidate_pixbuf(special_icon);
 
     /* Still valid */
@@ -269,10 +269,11 @@ xfdesktop_special_file_icon_peek_pixbuf(XfdesktopIcon *icon,
     }
 
     special_icon->priv->pix = xfdesktop_file_utils_get_icon(file_icon->gicon,
-                                                            size,
+                                                            height,
+                                                            height,
                                                             100);
 
-    special_icon->priv->cur_pix_size = size;
+    special_icon->priv->cur_pix_height = height;
 
     return special_icon->priv->pix;
 }

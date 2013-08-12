@@ -179,7 +179,7 @@ xfdesktop_icon_get_extents(XfdesktopIcon *icon,
 /*< required >*/
 GdkPixbuf *
 xfdesktop_icon_peek_pixbuf(XfdesktopIcon *icon,
-                           gint size)
+                           gint width, gint height)
 {
     XfdesktopIconClass *klass;
     
@@ -187,7 +187,7 @@ xfdesktop_icon_peek_pixbuf(XfdesktopIcon *icon,
     klass = XFDESKTOP_ICON_GET_CLASS(icon);
     g_return_val_if_fail(klass->peek_pixbuf, NULL);
     
-    return klass->peek_pixbuf(icon, size);
+    return klass->peek_pixbuf(icon, width, height);
 }
 
 /*< required >*/
