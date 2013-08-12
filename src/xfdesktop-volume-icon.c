@@ -256,37 +256,43 @@ static GdkPixbuf *
 xfdesktop_volume_icon_peek_pixbuf(XfdesktopIcon *icon,
                                   gint size)
 {
-    XfdesktopVolumeIcon *file_icon = XFDESKTOP_VOLUME_ICON(icon);
+    XfdesktopVolumeIcon *volume_icon = XFDESKTOP_VOLUME_ICON(icon);
+    XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
+    gint opacity = 100;
     
     g_return_val_if_fail(XFDESKTOP_IS_VOLUME_ICON(icon), NULL);
     
-    if(size != file_icon->priv->cur_pix_size)
-        xfdesktop_volume_icon_invalidate_pixbuf(file_icon);
+    if(size != volume_icon->priv->cur_pix_size)
+        xfdesktop_volume_icon_invalidate_pixbuf(volume_icon);
 
-    if(!file_icon->priv->pix) {
-        GIcon *gicon = NULL;
+    /* Still valid */
+    if(volume_icon->priv->pix != NULL)
+        return volume_icon->priv->pix;
 
-        if(file_icon->priv->volume)
-            gicon = g_volume_get_icon(file_icon->priv->volume);
+    if(!G_IS_ICON(file_icon->gicon)) {
+        /* icon changed, get a new one and keep a ref to it */
+        if(volume_icon->priv->volume) {
+            file_icon->gicon = g_volume_get_icon(volume_icon->priv->volume);
 
-        file_icon->priv->pix = xfdesktop_file_utils_get_icon(NULL, gicon, size, 
-                                                             NULL, 100);
+            if(G_IS_ICON(file_icon->gicon))
+                g_object_ref(file_icon->gicon);
 
-        /* If the volume isn't mounted show it as semi-transparent */
-        if(!xfdesktop_volume_icon_is_mounted(icon)) {
-            GdkPixbuf *temp;
-            temp = exo_gdk_pixbuf_lucent(file_icon->priv->pix, 50);
-
-            if(temp != NULL) {
-                g_object_unref(G_OBJECT(file_icon->priv->pix));
-                file_icon->priv->pix = temp;
-            }
-        }
-        
-        file_icon->priv->cur_pix_size = size;
+            /* Add any user set emblems */
+            xfdesktop_file_icon_add_emblems(file_icon);
+         }
     }
-    
-    return file_icon->priv->pix;
+
+    /* If the volume isn't mounted show it as semi-transparent */
+    if(!xfdesktop_volume_icon_is_mounted(icon))
+        opacity = 50;
+
+    volume_icon->priv->pix = xfdesktop_file_utils_get_icon(file_icon->gicon,
+                                                           size,
+                                                           opacity);
+
+    volume_icon->priv->cur_pix_size = size;
+
+    return volume_icon->priv->pix;
 }
 
 G_CONST_RETURN gchar *
@@ -891,6 +897,7 @@ xfdesktop_volume_icon_update_file_info(XfdesktopFileIcon *icon,
     }
 
     /* not really easy to check if this changed or not, so just invalidate it */
+    xfdesktop_file_icon_invalidate_icon(XFDESKTOP_FILE_ICON(icon));
     xfdesktop_volume_icon_invalidate_pixbuf(volume_icon);
     xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(icon));
 }

@@ -53,11 +53,16 @@ xfdesktop_file_icon_class_init(XfdesktopFileIconClass *klass)
 static void
 xfdesktop_file_icon_init(XfdesktopFileIcon *icon)
 {
+    icon->gicon = NULL;
 }
 
 static void
 xfdesktop_file_icon_finalize(GObject *obj)
 {
+    XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(obj);
+
+    xfdesktop_file_icon_invalidate_icon(icon);
+
     G_OBJECT_CLASS(xfdesktop_file_icon_parent_class)->finalize(obj);
 }
 
@@ -177,4 +182,53 @@ xfdesktop_file_icon_can_delete_file(XfdesktopFileIcon *icon)
        return klass->can_delete_file(icon);
     else
         return FALSE;
+}
+
+void
+xfdesktop_file_icon_add_emblems(XfdesktopFileIcon *icon)
+{
+    GIcon *emblemed_icon = NULL;
+    gchar **emblem_names;
+
+    TRACE("entering");
+
+    g_return_if_fail(XFDESKTOP_IS_FILE_ICON(icon));
+
+    if(G_IS_ICON(icon->gicon))
+        emblemed_icon = g_emblemed_icon_new(icon->gicon, NULL);
+    else
+        return;
+
+    /* Get the list of emblems */
+    emblem_names = g_file_info_get_attribute_stringv(xfdesktop_file_icon_peek_file_info(icon),
+                                                     "metadata::emblems");
+
+    if(emblem_names != NULL) {
+        /* for each item in the list create an icon, pack it into an emblem,
+         * and attach it to our icon. */
+        for (; *emblem_names != NULL; ++emblem_names) {
+            GIcon *themed_icon = g_themed_icon_new(*emblem_names);
+            GEmblem *emblem = g_emblem_new(themed_icon);
+
+            g_emblemed_icon_add_emblem(G_EMBLEMED_ICON(emblemed_icon), emblem);
+
+            g_object_unref(emblem);
+            g_object_unref(themed_icon);
+        }
+    } else
+
+    /* Clear out the old icon and set the new one */
+    xfdesktop_file_icon_invalidate_icon(icon);
+    icon->gicon = emblemed_icon;
+}
+
+void
+xfdesktop_file_icon_invalidate_icon(XfdesktopFileIcon *icon)
+{
+    g_return_if_fail(XFDESKTOP_IS_FILE_ICON(icon));
+
+    if(G_IS_ICON(icon->gicon)) {
+        g_object_unref(icon->gicon);
+        icon->gicon = NULL;
+    }
 }

@@ -50,10 +50,8 @@ void xfdesktop_file_utils_file_list_free(GList *file_list);
 
 GdkPixbuf *xfdesktop_file_utils_get_fallback_icon(gint size);
 
-GdkPixbuf *xfdesktop_file_utils_get_icon(const gchar *custom_icon_name,
-                                         GIcon *icon,
+GdkPixbuf *xfdesktop_file_utils_get_icon(GIcon *icon,
                                          gint size,
-                                         const GdkPixbuf *emblem,
                                          guint opacity);
 
 void xfdesktop_file_utils_set_window_cursor(GtkWindow *window,

@@ -40,6 +40,7 @@ typedef struct _XfdesktopFileIconClass   XfdesktopFileIconClass;
 struct _XfdesktopFileIcon
 {
     XfdesktopIcon parent;
+    GIcon *gicon;
 };
 
 struct _XfdesktopFileIconClass
@@ -67,6 +68,10 @@ void xfdesktop_file_icon_update_file_info(XfdesktopFileIcon *icon,
 gboolean xfdesktop_file_icon_can_rename_file(XfdesktopFileIcon *icon);
 
 gboolean xfdesktop_file_icon_can_delete_file(XfdesktopFileIcon *icon);
+
+void xfdesktop_file_icon_add_emblems(XfdesktopFileIcon *icon);
+
+void xfdesktop_file_icon_invalidate_icon(XfdesktopFileIcon *icon);
 
 G_END_DECLS
 

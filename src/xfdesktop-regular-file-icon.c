@@ -55,6 +55,7 @@
 #include "xfdesktop-regular-file-icon.h"
 
 #define EMBLEM_SYMLINK  "emblem-symbolic-link"
+#define EMBLEM_READONLY "emblem-readonly"
 
 struct _XfdesktopRegularFileIconPrivate
 {
@@ -224,6 +225,8 @@ xfdesktop_regular_file_icon_delete_thumbnail_file(XfdesktopIcon *icon)
         file_icon->priv->thumbnail_file = NULL;
     }
 
+    xfdesktop_file_icon_invalidate_icon(XFDESKTOP_FILE_ICON(icon));
+
     xfdesktop_regular_file_icon_invalidate_pixbuf(file_icon);
     xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(icon));
 }
@@ -243,124 +246,118 @@ xfdesktop_regular_file_icon_set_thumbnail_file(XfdesktopIcon *icon, GFile *file)
 
     file_icon->priv->thumbnail_file = file;
 
+    xfdesktop_file_icon_invalidate_icon(XFDESKTOP_FILE_ICON(icon));
+
     xfdesktop_regular_file_icon_invalidate_pixbuf(file_icon);
     xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(icon));
+}
+
+static GIcon *
+xfdesktop_load_icon_from_desktop_file(XfdesktopRegularFileIcon *regular_icon)
+{
+    gchar *contents;
+    gsize length;
+    GIcon *gicon = NULL;
+
+    /* try to load the file into memory */
+    if(g_file_load_contents(regular_icon->priv->file, NULL, &contents, &length,
+                            NULL, NULL))
+    {
+        /* allocate a new key file */
+        GKeyFile *key_file = g_key_file_new();
+
+        /* try to parse the key file from the contents of the file */
+        if (g_key_file_load_from_data(key_file, contents, length, 0, NULL)) {
+            gchar *icon_name;
+            /* try to determine the custom icon name */
+            icon_name = g_key_file_get_string(key_file,
+                                              G_KEY_FILE_DESKTOP_GROUP,
+                                              G_KEY_FILE_DESKTOP_KEY_ICON,
+                                              NULL);
+
+            /* Create the themed icon for it */
+            if(icon_name) {
+                gicon = g_themed_icon_new(icon_name);
+                g_free(icon_name);
+            }
+        }
+
+        /* free key file and in-memory data */
+        g_key_file_free(key_file);
+        g_free(contents);
+    }
+
+    return gicon;
 }
 
 static GdkPixbuf *
 xfdesktop_regular_file_icon_peek_pixbuf(XfdesktopIcon *icon,
                                         gint size)
 {
-    XfdesktopRegularFileIcon *file_icon = XFDESKTOP_REGULAR_FILE_ICON(icon);
-    gchar *icon_name = NULL;
-    GdkPixbuf *emblem_pix = NULL;
+    XfdesktopRegularFileIcon *regular_icon = XFDESKTOP_REGULAR_FILE_ICON(icon);
+    XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
 
-    if(size != file_icon->priv->cur_pix_size)
-        xfdesktop_regular_file_icon_invalidate_pixbuf(file_icon);
+    if(size != regular_icon->priv->cur_pix_size)
+        xfdesktop_regular_file_icon_invalidate_pixbuf(regular_icon);
 
-    if(!file_icon->priv->pix) {
-        GIcon *gicon = NULL;
+        /* Still valid */
+    if(regular_icon->priv->pix != NULL)
+        return regular_icon->priv->pix;
 
-        /* create a GFile for the $HOME/.thumbnails/ directory */
-        gchar *thumbnail_dir_path = g_build_filename(xfce_get_homedir(), 
-                                                     ".thumbnails", NULL);
-        GFile *thumbnail_dir = g_file_new_for_path(thumbnail_dir_path);
-
-        if(g_file_has_prefix(file_icon->priv->file, thumbnail_dir)) {
-            /* use the filename as custom icon name for thumbnails */
-            icon_name = g_file_get_path(file_icon->priv->file);
-
-            /* release thumbnail path */
-            g_object_unref(thumbnail_dir);
-            g_free(thumbnail_dir_path);
-        } else if(xfdesktop_file_utils_is_desktop_file(file_icon->priv->file_info)) {
-            gchar *contents;
-            gsize length;
-
-            /* try to load the file into memory */
-            if(g_file_load_contents(file_icon->priv->file, NULL, &contents, &length, 
-                                    NULL, NULL)) 
-            {
-                /* allocate a new key file */
-                GKeyFile *key_file = g_key_file_new();
-
-                /* try to parse the key file from the contents of the file */
-                if (g_key_file_load_from_data(key_file, contents, length, 0, NULL)) {
-                    /* try to determine the custom icon name */
-                    icon_name = g_key_file_get_string(key_file,
-                                                      G_KEY_FILE_DESKTOP_GROUP,
-                                                      G_KEY_FILE_DESKTOP_KEY_ICON,
-                                                      NULL);
-                }
-
-                /* free key file and in-memory data */
-                g_key_file_free(key_file);
-                g_free(contents);
-            }
+    if(!G_IS_ICON(file_icon->gicon)) {
+        /* Try to load the icon referenced in the .desktop file */
+        if(xfdesktop_file_utils_is_desktop_file(regular_icon->priv->file_info)) {
+            file_icon->gicon = xfdesktop_load_icon_from_desktop_file(regular_icon);
         } else {
             /* If we have a thumbnail then they are enabled, use it. */
-            if(file_icon->priv->thumbnail_file)
-            {
-                file_icon->priv->pix = gdk_pixbuf_new_from_file_at_size(g_file_get_path(file_icon->priv->thumbnail_file),
-                                                                        size, size,
-                                                                        NULL);
-            }
+            if(regular_icon->priv->thumbnail_file)
+                file_icon->gicon = g_file_icon_new(regular_icon->priv->thumbnail_file);
+        }
+
+        /* If we still don't have an icon, use the default */
+        if(!G_IS_ICON(file_icon->gicon)) {
+            file_icon->gicon = g_file_info_get_icon(regular_icon->priv->file_info);
+            if(G_IS_ICON(file_icon->gicon))
+                g_object_ref(file_icon->gicon);
+        }
+
+        /* Add any user set emblems */
+        xfdesktop_file_icon_add_emblems(file_icon);
+
+        /* load the read only emblem if necessary */
+        if(!g_file_info_get_attribute_boolean(regular_icon->priv->file_info,
+                                              G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
+        {
+            GIcon *themed_icon = g_themed_icon_new(EMBLEM_READONLY);
+            GEmblem *emblem = g_emblem_new(themed_icon);
+
+            g_emblemed_icon_add_emblem(G_EMBLEMED_ICON(file_icon->gicon), emblem);
+
+            g_object_unref(emblem);
+            g_object_unref(themed_icon);
         }
 
         /* load the symlink emblem if necessary */
-        if(g_file_info_get_attribute_boolean(file_icon->priv->file_info, 
-                                             G_FILE_ATTRIBUTE_STANDARD_IS_SYMLINK)) 
+        if(g_file_info_get_attribute_boolean(regular_icon->priv->file_info,
+                                             G_FILE_ATTRIBUTE_STANDARD_IS_SYMLINK))
         {
-            GtkIconTheme *itheme = gtk_icon_theme_get_default();
-            gint sym_pix_size = size * 2 / 3;
-            
-            emblem_pix = gtk_icon_theme_load_icon(itheme, EMBLEM_SYMLINK,
-                                                  sym_pix_size, ITHEME_FLAGS,
-                                                  NULL);
-            if(emblem_pix) {
-                if(gdk_pixbuf_get_width(emblem_pix) != sym_pix_size
-                   || gdk_pixbuf_get_height(emblem_pix) != sym_pix_size)
-                {
-                    GdkPixbuf *tmp = gdk_pixbuf_scale_simple(emblem_pix,
-                                                             sym_pix_size,
-                                                             sym_pix_size,
-                                                             GDK_INTERP_BILINEAR);
-                    g_object_unref(emblem_pix);
-                    emblem_pix = tmp;
-                }
-            }
+            GIcon *themed_icon = g_themed_icon_new(EMBLEM_SYMLINK);
+            GEmblem *emblem = g_emblem_new(themed_icon);
+
+            g_emblemed_icon_add_emblem(G_EMBLEMED_ICON(file_icon->gicon), emblem);
+
+            g_object_unref(emblem);
+            g_object_unref(themed_icon);
         }
-
-        if(file_icon->priv->file_info)
-            gicon = g_file_info_get_icon(file_icon->priv->file_info);
-
-        if(file_icon->priv->pix) {
-            if(emblem_pix) {
-                gint emblem_pix_size = gdk_pixbuf_get_width(emblem_pix);
-                gint dest_size = size - emblem_pix_size;
-
-                /* We have to add the emblem */
-                gdk_pixbuf_composite(emblem_pix, file_icon->priv->pix,
-                                     dest_size, dest_size,
-                                     emblem_pix_size, emblem_pix_size,
-                                     dest_size, dest_size,
-                                     1.0, 1.0, GDK_INTERP_BILINEAR, 255);
-            }
-        } else {
-            file_icon->priv->pix = xfdesktop_file_utils_get_icon(icon_name, gicon,
-                                                                 size, emblem_pix,
-                                                                 file_icon->priv->pix_opacity);
-        }
-        
-        file_icon->priv->cur_pix_size = size;
-
-        if(emblem_pix)
-             g_object_unref(emblem_pix);
-        
-        g_free(icon_name);
     }
-    
-    return file_icon->priv->pix;
+
+    regular_icon->priv->pix = xfdesktop_file_utils_get_icon(file_icon->gicon,
+                                                            size,
+                                                            regular_icon->priv->pix_opacity);
+
+    regular_icon->priv->cur_pix_size = size;
+
+    return regular_icon->priv->pix;
 }
 
 static G_CONST_RETURN gchar *
@@ -702,6 +699,7 @@ xfdesktop_regular_file_icon_update_file_info(XfdesktopFileIcon *icon,
     regular_file_icon->priv->tooltip = NULL;
     
     /* not really easy to check if this changed or not, so just invalidate it */
+    xfdesktop_file_icon_invalidate_icon(XFDESKTOP_FILE_ICON(icon));
     xfdesktop_regular_file_icon_invalidate_pixbuf(regular_file_icon);
     xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(icon));
 }

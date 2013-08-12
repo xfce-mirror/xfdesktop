@@ -1827,12 +1827,16 @@ xfdesktop_file_icon_manager_add_icon(XfdesktopFileIconManager *fmanager,
     gboolean do_add = FALSE;
     const gchar *name;
     GFile *file;
+    gchar *path = NULL;
 
     file = xfdesktop_file_icon_peek_file(icon);
 
-    if(fmanager->priv->show_thumbnails && g_file_get_path(file) != NULL) {
+    if(file != NULL)
+        path = g_file_get_path(file);
+
+    if(fmanager->priv->show_thumbnails && path != NULL) {
         xfdesktop_thumbnailer_queue_thumbnail(fmanager->priv->thumbnailer,
-                                              g_file_get_path(file));
+                                              path);
     }
 
     

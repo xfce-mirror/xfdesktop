@@ -64,7 +64,8 @@
   "time::*," \
   "thumbnail::*," \
   "trash::*," \
-  "unix::*"
+  "unix::*," \
+  "metadata::*"
 
 /**
  * Filesystem information namespaces queried for #GFileInfo * objects.

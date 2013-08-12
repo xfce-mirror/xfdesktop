@@ -220,46 +220,61 @@ static GdkPixbuf *
 xfdesktop_special_file_icon_peek_pixbuf(XfdesktopIcon *icon,
                                         gint size)
 {
-    XfdesktopSpecialFileIcon *file_icon = XFDESKTOP_SPECIAL_FILE_ICON(icon);
-    GIcon *gicon = NULL;
-    const gchar *custom_icon_name = NULL;
+    XfdesktopSpecialFileIcon *special_icon = XFDESKTOP_SPECIAL_FILE_ICON(icon);
+    XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
     GFile *parent = NULL;
 
-    if(size != file_icon->priv->cur_pix_size)
-        xfdesktop_special_file_icon_invalidate_pixbuf(file_icon);
+    if(size != special_icon->priv->cur_pix_size)
+        xfdesktop_special_file_icon_invalidate_pixbuf(special_icon);
 
-    /* Already have a good icon */
-    if(file_icon->priv->pix != NULL)
-        return file_icon->priv->pix;
+    /* Still valid */
+    if(special_icon->priv->pix != NULL)
+        return special_icon->priv->pix;
 
-    /* use a custom icon name for the local filesystem root */
-    parent = g_file_get_parent(file_icon->priv->file);
-    if(!parent && g_file_has_uri_scheme(file_icon->priv->file, "file"))
-        custom_icon_name = "drive-harddisk";
-    if(parent)
-        g_object_unref(parent);
+    if(!G_IS_ICON(file_icon->gicon)) {
+        gchar *icon_name = NULL;
 
-    /* use a custom icon for the trash, based on it having files
-     * the user can delete */
-    if(file_icon->priv->type == XFDESKTOP_SPECIAL_FILE_ICON_TRASH) {
-        if(file_icon->priv->trash_item_count == 0)
-            custom_icon_name = "user-trash";
-        else
-            custom_icon_name = "user-trash-full";
+        /* use a custom icon name for the local filesystem root */
+        parent = g_file_get_parent(special_icon->priv->file);
+        if(!parent && g_file_has_uri_scheme(special_icon->priv->file, "file"))
+            icon_name = g_strdup("drive-harddisk");
+
+        if(parent)
+            g_object_unref(parent);
+
+        /* use a custom icon for the trash, based on it having files
+         * the user can delete */
+        if(special_icon->priv->type == XFDESKTOP_SPECIAL_FILE_ICON_TRASH) {
+            if(special_icon->priv->trash_item_count == 0)
+                icon_name = g_strdup("user-trash");
+            else
+                icon_name = g_strdup("user-trash-full");
+        }
+
+        /* Create the themed icon for it */
+        if(icon_name) {
+            file_icon->gicon = g_themed_icon_new(icon_name);
+            g_free(icon_name);
+        }
+
+        /* If we still don't have an icon, use the default */
+        if(!G_IS_ICON(file_icon->gicon)) {
+            file_icon->gicon = g_file_info_get_icon(special_icon->priv->file_info);
+            if(G_IS_ICON(file_icon->gicon))
+                g_object_ref(file_icon->gicon);
+        }
+
+        /* Add any user set emblems */
+        xfdesktop_file_icon_add_emblems(file_icon);
     }
 
-    if(file_icon->priv->file_info)
-        gicon = g_file_info_get_icon(file_icon->priv->file_info);
+    special_icon->priv->pix = xfdesktop_file_utils_get_icon(file_icon->gicon,
+                                                            size,
+                                                            100);
 
-    file_icon->priv->pix = xfdesktop_file_utils_get_icon(custom_icon_name,
-                                                         gicon,
-                                                         size,
-                                                         NULL,
-                                                         100);
+    special_icon->priv->cur_pix_size = size;
 
-    file_icon->priv->cur_pix_size = size;
-    
-    return file_icon->priv->pix;
+    return special_icon->priv->pix;
 }
 
 static G_CONST_RETURN gchar *
@@ -607,6 +622,7 @@ xfdesktop_special_file_icon_changed(GFileMonitor *monitor,
     special_file_icon->priv->tooltip = NULL;
 
     /* update the icon */
+    xfdesktop_file_icon_invalidate_icon(XFDESKTOP_FILE_ICON(special_file_icon));
     xfdesktop_special_file_icon_invalidate_pixbuf(special_file_icon);
     xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(special_file_icon));
 }
