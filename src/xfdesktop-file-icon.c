@@ -30,30 +30,61 @@
 #include "xfdesktop-file-utils.h"
 #include "xfdesktop-file-icon.h"
 
+struct _XfdesktopFileIconPrivate
+{
+    GIcon *gicon;
+};
+
 static void xfdesktop_file_icon_finalize(GObject *obj);
 
 static gboolean xfdesktop_file_icon_activated(XfdesktopIcon *icon);
 
+static void xfdesktop_file_icon_set_property(GObject *object,
+                                             guint property_id,
+                                             const GValue *value,
+                                             GParamSpec *pspec);
+static void xfdesktop_file_icon_get_property(GObject *object,
+                                             guint property_id,
+                                             GValue *value,
+                                             GParamSpec *pspec);
 
 G_DEFINE_ABSTRACT_TYPE(XfdesktopFileIcon, xfdesktop_file_icon,
                        XFDESKTOP_TYPE_ICON)
 
+enum
+{
+    PROP_0,
+    PROP_GICON,
+};
 
 static void
 xfdesktop_file_icon_class_init(XfdesktopFileIconClass *klass)
 {
     GObjectClass *gobject_class = (GObjectClass *)klass;
     XfdesktopIconClass *icon_class = (XfdesktopIconClass *)klass;
-    
+
+    g_type_class_add_private(klass, sizeof(XfdesktopFileIconPrivate));
+
     gobject_class->finalize = xfdesktop_file_icon_finalize;
+    gobject_class->set_property = xfdesktop_file_icon_set_property;
+    gobject_class->get_property = xfdesktop_file_icon_get_property;
     
     icon_class->activated = xfdesktop_file_icon_activated;
+
+    g_object_class_install_property(gobject_class,
+                                    PROP_GICON,
+                                    g_param_spec_pointer("gicon",
+                                                         "gicon",
+                                                         "gicon",
+                                                         G_PARAM_READWRITE));
 }
 
 static void
 xfdesktop_file_icon_init(XfdesktopFileIcon *icon)
 {
-    icon->gicon = NULL;
+    icon->priv = G_TYPE_INSTANCE_GET_PRIVATE(icon,
+                                             XFDESKTOP_TYPE_FILE_ICON,
+                                             XfdesktopFileIconPrivate);
 }
 
 static void
@@ -64,6 +95,45 @@ xfdesktop_file_icon_finalize(GObject *obj)
     xfdesktop_file_icon_invalidate_icon(icon);
 
     G_OBJECT_CLASS(xfdesktop_file_icon_parent_class)->finalize(obj);
+}
+
+static void
+xfdesktop_file_icon_set_property(GObject *object,
+                                 guint property_id,
+                                 const GValue *value,
+                                 GParamSpec *pspec)
+{
+    XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(object);
+
+    switch(property_id) {
+        case PROP_GICON:
+            xfdesktop_file_icon_invalidate_icon(file_icon);
+            file_icon->priv->gicon = g_value_get_pointer(value);
+            break;
+
+        default:
+            G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
+            break;
+    }
+}
+
+static void
+xfdesktop_file_icon_get_property(GObject *object,
+                                 guint property_id,
+                                 GValue *value,
+                                 GParamSpec *pspec)
+{
+    XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(object);
+
+    switch(property_id) {
+        case PROP_GICON:
+            g_value_set_pointer(value, file_icon->priv->gicon);
+            break;
+
+        default:
+            G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
+            break;
+    }
 }
 
 static gboolean
@@ -184,7 +254,7 @@ xfdesktop_file_icon_can_delete_file(XfdesktopFileIcon *icon)
         return FALSE;
 }
 
-void
+GIcon *
 xfdesktop_file_icon_add_emblems(XfdesktopFileIcon *icon)
 {
     GIcon *emblemed_icon = NULL;
@@ -192,12 +262,12 @@ xfdesktop_file_icon_add_emblems(XfdesktopFileIcon *icon)
 
     TRACE("entering");
 
-    g_return_if_fail(XFDESKTOP_IS_FILE_ICON(icon));
+    g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON(icon), NULL);
 
-    if(G_IS_ICON(icon->gicon))
-        emblemed_icon = g_emblemed_icon_new(icon->gicon, NULL);
+    if(G_IS_ICON(icon->priv->gicon))
+        emblemed_icon = g_emblemed_icon_new(icon->priv->gicon, NULL);
     else
-        return;
+        return NULL;
 
     /* Get the list of emblems */
     emblem_names = g_file_info_get_attribute_stringv(xfdesktop_file_icon_peek_file_info(icon),
@@ -219,7 +289,7 @@ xfdesktop_file_icon_add_emblems(XfdesktopFileIcon *icon)
 
     /* Clear out the old icon and set the new one */
     xfdesktop_file_icon_invalidate_icon(icon);
-    icon->gicon = emblemed_icon;
+    return icon->priv->gicon = emblemed_icon;
 }
 
 void
@@ -227,8 +297,16 @@ xfdesktop_file_icon_invalidate_icon(XfdesktopFileIcon *icon)
 {
     g_return_if_fail(XFDESKTOP_IS_FILE_ICON(icon));
 
-    if(G_IS_ICON(icon->gicon)) {
-        g_object_unref(icon->gicon);
-        icon->gicon = NULL;
+    if(G_IS_ICON(icon->priv->gicon)) {
+        g_object_unref(icon->priv->gicon);
+        icon->priv->gicon = NULL;
     }
+}
+
+gboolean
+xfdesktop_file_icon_has_gicon(XfdesktopFileIcon *icon)
+{
+    g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON(icon), FALSE);
+
+    return icon->priv->gicon != NULL ? TRUE : FALSE;
 }

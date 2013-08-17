@@ -252,13 +252,38 @@ xfdesktop_volume_icon_is_mounted(XfdesktopIcon *icon)
     return ret;
 }
 
+static GIcon *
+xfdesktop_volume_icon_load_icon(XfdesktopIcon *icon)
+{
+    XfdesktopVolumeIcon *volume_icon = XFDESKTOP_VOLUME_ICON(icon);
+    XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
+    GIcon *gicon = NULL;
+
+    TRACE("entering");
+
+    /* load icon and keep a ref to it */
+    if(volume_icon->priv->volume) {
+        gicon = g_volume_get_icon(volume_icon->priv->volume);
+
+        if(G_IS_ICON(gicon))
+            g_object_ref(gicon);
+
+        g_object_set(file_icon, "gicon", gicon, NULL);
+
+        /* Add any user set emblems */
+        gicon = xfdesktop_file_icon_add_emblems(file_icon);
+    }
+
+    return gicon;
+}
+
 static GdkPixbuf *
 xfdesktop_volume_icon_peek_pixbuf(XfdesktopIcon *icon,
                                   gint width, gint height)
 {
     XfdesktopVolumeIcon *volume_icon = XFDESKTOP_VOLUME_ICON(icon);
-    XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
     gint opacity = 100;
+    GIcon *gicon = NULL;
     
     g_return_val_if_fail(XFDESKTOP_IS_VOLUME_ICON(icon), NULL);
     
@@ -269,24 +294,16 @@ xfdesktop_volume_icon_peek_pixbuf(XfdesktopIcon *icon,
     if(volume_icon->priv->pix != NULL)
         return volume_icon->priv->pix;
 
-    if(!G_IS_ICON(file_icon->gicon)) {
-        /* icon changed, get a new one and keep a ref to it */
-        if(volume_icon->priv->volume) {
-            file_icon->gicon = g_volume_get_icon(volume_icon->priv->volume);
-
-            if(G_IS_ICON(file_icon->gicon))
-                g_object_ref(file_icon->gicon);
-
-            /* Add any user set emblems */
-            xfdesktop_file_icon_add_emblems(file_icon);
-         }
-    }
+    if(!xfdesktop_file_icon_has_gicon(XFDESKTOP_FILE_ICON(icon)))
+        gicon = xfdesktop_volume_icon_load_icon(icon);
+    else
+        g_object_get(XFDESKTOP_FILE_ICON(icon), "gicon", &gicon, NULL);
 
     /* If the volume isn't mounted show it as semi-transparent */
     if(!xfdesktop_volume_icon_is_mounted(icon))
         opacity = 50;
 
-    volume_icon->priv->pix = xfdesktop_file_utils_get_icon(file_icon->gicon,
+    volume_icon->priv->pix = xfdesktop_file_utils_get_icon(gicon,
                                                            height, height, 
                                                            opacity);
 

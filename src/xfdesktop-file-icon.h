@@ -36,11 +36,14 @@ G_BEGIN_DECLS
 
 typedef struct _XfdesktopFileIcon        XfdesktopFileIcon;
 typedef struct _XfdesktopFileIconClass   XfdesktopFileIconClass;
+typedef struct _XfdesktopFileIconPrivate XfdesktopFileIconPrivate;
 
 struct _XfdesktopFileIcon
 {
     XfdesktopIcon parent;
-    GIcon *gicon;
+
+    /*< private >*/
+    XfdesktopFileIconPrivate *priv;
 };
 
 struct _XfdesktopFileIconClass
@@ -69,9 +72,11 @@ gboolean xfdesktop_file_icon_can_rename_file(XfdesktopFileIcon *icon);
 
 gboolean xfdesktop_file_icon_can_delete_file(XfdesktopFileIcon *icon);
 
-void xfdesktop_file_icon_add_emblems(XfdesktopFileIcon *icon);
+GIcon *xfdesktop_file_icon_add_emblems(XfdesktopFileIcon *icon);
 
 void xfdesktop_file_icon_invalidate_icon(XfdesktopFileIcon *icon);
+
+gboolean xfdesktop_file_icon_has_gicon(XfdesktopFileIcon *icon);
 
 G_END_DECLS
 

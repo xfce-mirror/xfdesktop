@@ -216,13 +216,61 @@ xfdesktop_special_file_icon_invalidate_pixbuf(XfdesktopSpecialFileIcon *icon)
     }
 }
 
+static GIcon *
+xfdesktop_special_file_icon_load_icon(XfdesktopIcon *icon)
+{
+    XfdesktopSpecialFileIcon *special_icon = XFDESKTOP_SPECIAL_FILE_ICON(icon);
+    XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
+    gchar *icon_name = NULL;
+    GFile *parent = NULL;
+    GIcon *gicon;
+
+    TRACE("entering");
+
+    /* use a custom icon name for the local filesystem root */
+    parent = g_file_get_parent(special_icon->priv->file);
+    if(!parent && g_file_has_uri_scheme(special_icon->priv->file, "file"))
+        icon_name = g_strdup("drive-harddisk");
+
+    if(parent)
+        g_object_unref(parent);
+
+    /* use a custom icon for the trash, based on it having files
+     * the user can delete */
+    if(special_icon->priv->type == XFDESKTOP_SPECIAL_FILE_ICON_TRASH) {
+        if(special_icon->priv->trash_item_count == 0)
+            icon_name = g_strdup("user-trash");
+        else
+            icon_name = g_strdup("user-trash-full");
+    }
+
+    /* Create the themed icon for it */
+    if(icon_name) {
+        gicon = g_themed_icon_new(icon_name);
+        g_free(icon_name);
+    }
+
+    /* If we still don't have an icon, use the default */
+    if(!G_IS_ICON(gicon)) {
+        gicon = g_file_info_get_icon(special_icon->priv->file_info);
+        if(G_IS_ICON(gicon))
+            g_object_ref(gicon);
+    }
+
+    g_object_set(file_icon, "gicon", gicon, NULL);
+
+    /* Add any user set emblems */
+    gicon = xfdesktop_file_icon_add_emblems(file_icon);
+
+    return gicon;
+}
+
 static GdkPixbuf *
 xfdesktop_special_file_icon_peek_pixbuf(XfdesktopIcon *icon,
                                         gint width, gint height)
 {
     XfdesktopSpecialFileIcon *special_icon = XFDESKTOP_SPECIAL_FILE_ICON(icon);
-    XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
-    GFile *parent = NULL;
+    GIcon *gicon = NULL;
 
     if(height != special_icon->priv->cur_pix_height)
         xfdesktop_special_file_icon_invalidate_pixbuf(special_icon);
@@ -231,44 +279,12 @@ xfdesktop_special_file_icon_peek_pixbuf(XfdesktopIcon *icon,
     if(special_icon->priv->pix != NULL)
         return special_icon->priv->pix;
 
-    if(!G_IS_ICON(file_icon->gicon)) {
-        gchar *icon_name = NULL;
+    if(!xfdesktop_file_icon_has_gicon(XFDESKTOP_FILE_ICON(icon)))
+        gicon = xfdesktop_special_file_icon_load_icon(icon);
+    else
+        g_object_get(XFDESKTOP_FILE_ICON(icon), "gicon", &gicon, NULL);
 
-        /* use a custom icon name for the local filesystem root */
-        parent = g_file_get_parent(special_icon->priv->file);
-        if(!parent && g_file_has_uri_scheme(special_icon->priv->file, "file"))
-            icon_name = g_strdup("drive-harddisk");
-
-        if(parent)
-            g_object_unref(parent);
-
-        /* use a custom icon for the trash, based on it having files
-         * the user can delete */
-        if(special_icon->priv->type == XFDESKTOP_SPECIAL_FILE_ICON_TRASH) {
-            if(special_icon->priv->trash_item_count == 0)
-                icon_name = g_strdup("user-trash");
-            else
-                icon_name = g_strdup("user-trash-full");
-        }
-
-        /* Create the themed icon for it */
-        if(icon_name) {
-            file_icon->gicon = g_themed_icon_new(icon_name);
-            g_free(icon_name);
-        }
-
-        /* If we still don't have an icon, use the default */
-        if(!G_IS_ICON(file_icon->gicon)) {
-            file_icon->gicon = g_file_info_get_icon(special_icon->priv->file_info);
-            if(G_IS_ICON(file_icon->gicon))
-                g_object_ref(file_icon->gicon);
-        }
-
-        /* Add any user set emblems */
-        xfdesktop_file_icon_add_emblems(file_icon);
-    }
-
-    special_icon->priv->pix = xfdesktop_file_utils_get_icon(file_icon->gicon,
+    special_icon->priv->pix = xfdesktop_file_utils_get_icon(gicon,
                                                             height,
                                                             height,
                                                             100);

@@ -290,12 +290,82 @@ xfdesktop_load_icon_from_desktop_file(XfdesktopRegularFileIcon *regular_icon)
     return gicon;
 }
 
+static GIcon *
+xfdesktop_regular_file_icon_load_icon(XfdesktopIcon *icon)
+{
+    XfdesktopRegularFileIcon *regular_icon = XFDESKTOP_REGULAR_FILE_ICON(icon);
+    XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
+    GIcon *gicon;
+
+    TRACE("entering");
+
+    /* Try to load the icon referenced in the .desktop file */
+    if(xfdesktop_file_utils_is_desktop_file(regular_icon->priv->file_info)) {
+        gicon = xfdesktop_load_icon_from_desktop_file(regular_icon);
+    } else {
+        /* If we have a thumbnail then they are enabled, use it. */
+        if(regular_icon->priv->thumbnail_file) {
+            gchar *file = g_file_get_path(regular_icon->priv->file);
+            gchar *mimetype = xfdesktop_get_file_mimetype(file);
+
+            /* Don't use thumbnails for svg, use the file itself */
+            if(g_strcmp0(mimetype, "image/svg+xml") == 0)
+                gicon = g_file_icon_new(regular_icon->priv->file);
+            else
+                gicon = g_file_icon_new(regular_icon->priv->thumbnail_file);
+
+            g_free(mimetype);
+            g_free(file);
+        }
+    }
+
+    /* If we still don't have an icon, use the default */
+    if(!G_IS_ICON(gicon)) {
+        gicon = g_file_info_get_icon(regular_icon->priv->file_info);
+        if(G_IS_ICON(gicon))
+            g_object_ref(gicon);
+    }
+
+    g_object_set(file_icon, "gicon", gicon, NULL);
+
+    /* Add any user set emblems */
+    gicon = xfdesktop_file_icon_add_emblems(file_icon);
+
+    /* load the read only emblem if necessary */
+    if(!g_file_info_get_attribute_boolean(regular_icon->priv->file_info,
+                                          G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
+    {
+        GIcon *themed_icon = g_themed_icon_new(EMBLEM_READONLY);
+        GEmblem *emblem = g_emblem_new(themed_icon);
+
+        g_emblemed_icon_add_emblem(G_EMBLEMED_ICON(gicon), emblem);
+
+        g_object_unref(emblem);
+        g_object_unref(themed_icon);
+    }
+
+    /* load the symlink emblem if necessary */
+    if(g_file_info_get_attribute_boolean(regular_icon->priv->file_info,
+                                         G_FILE_ATTRIBUTE_STANDARD_IS_SYMLINK))
+    {
+        GIcon *themed_icon = g_themed_icon_new(EMBLEM_SYMLINK);
+        GEmblem *emblem = g_emblem_new(themed_icon);
+
+        g_emblemed_icon_add_emblem(G_EMBLEMED_ICON(gicon), emblem);
+
+        g_object_unref(emblem);
+        g_object_unref(themed_icon);
+    }
+
+    return gicon;
+}
+
 static GdkPixbuf *
 xfdesktop_regular_file_icon_peek_pixbuf(XfdesktopIcon *icon,
                                         gint width, gint height)
 {
     XfdesktopRegularFileIcon *regular_icon = XFDESKTOP_REGULAR_FILE_ICON(icon);
-    XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
+    GIcon *gicon = NULL;
 
     if(width != regular_icon->priv->cur_pix_width
        || height != regular_icon->priv->cur_pix_height)
@@ -305,65 +375,12 @@ xfdesktop_regular_file_icon_peek_pixbuf(XfdesktopIcon *icon,
     if(regular_icon->priv->pix != NULL)
         return regular_icon->priv->pix;
 
-    if(!G_IS_ICON(file_icon->gicon)) {
-        /* Try to load the icon referenced in the .desktop file */
-        if(xfdesktop_file_utils_is_desktop_file(regular_icon->priv->file_info)) {
-            file_icon->gicon = xfdesktop_load_icon_from_desktop_file(regular_icon);
-        } else {
-            /* If we have a thumbnail then they are enabled, use it. */
-            if(regular_icon->priv->thumbnail_file) {
-                gchar *file = g_file_get_path(regular_icon->priv->file);
-                gchar *mimetype = xfdesktop_get_file_mimetype(file);
+    if(!xfdesktop_file_icon_has_gicon(XFDESKTOP_FILE_ICON(icon)))
+        gicon = xfdesktop_regular_file_icon_load_icon(icon);
+    else
+        g_object_get(XFDESKTOP_FILE_ICON(icon), "gicon", &gicon, NULL);
 
-                /* Don't use thumbnails for svg, use the file itself */
-                if(g_strcmp0(mimetype, "image/svg+xml") == 0)
-                    file_icon->gicon = g_file_icon_new(regular_icon->priv->file);
-                else
-                    file_icon->gicon = g_file_icon_new(regular_icon->priv->thumbnail_file);
-
-                g_free(mimetype);
-                g_free(file);
-            }
-        }
-
-        /* If we still don't have an icon, use the default */
-        if(!G_IS_ICON(file_icon->gicon)) {
-            file_icon->gicon = g_file_info_get_icon(regular_icon->priv->file_info);
-            if(G_IS_ICON(file_icon->gicon))
-                g_object_ref(file_icon->gicon);
-        }
-
-        /* Add any user set emblems */
-        xfdesktop_file_icon_add_emblems(file_icon);
-
-        /* load the read only emblem if necessary */
-        if(!g_file_info_get_attribute_boolean(regular_icon->priv->file_info,
-                                              G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
-        {
-            GIcon *themed_icon = g_themed_icon_new(EMBLEM_READONLY);
-            GEmblem *emblem = g_emblem_new(themed_icon);
-
-            g_emblemed_icon_add_emblem(G_EMBLEMED_ICON(file_icon->gicon), emblem);
-
-            g_object_unref(emblem);
-            g_object_unref(themed_icon);
-        }
-
-        /* load the symlink emblem if necessary */
-        if(g_file_info_get_attribute_boolean(regular_icon->priv->file_info,
-                                             G_FILE_ATTRIBUTE_STANDARD_IS_SYMLINK))
-        {
-            GIcon *themed_icon = g_themed_icon_new(EMBLEM_SYMLINK);
-            GEmblem *emblem = g_emblem_new(themed_icon);
-
-            g_emblemed_icon_add_emblem(G_EMBLEMED_ICON(file_icon->gicon), emblem);
-
-            g_object_unref(emblem);
-            g_object_unref(themed_icon);
-        }
-    }
-
-    regular_icon->priv->pix = xfdesktop_file_utils_get_icon(file_icon->gicon,
+    regular_icon->priv->pix = xfdesktop_file_utils_get_icon(gicon,
                                                             width, height,
                                                             regular_icon->priv->pix_opacity);
 
