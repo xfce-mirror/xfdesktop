@@ -52,36 +52,46 @@ static gboolean wl_submenus = FALSE;
 static gboolean wl_sticky_once = FALSE;
 
 static void
-set_num_workspaces(GtkWidget *w, gpointer num)
+set_num_workspaces(GtkWidget *w, gpointer data)
 {
-    static Atom xa_NET_NUMBER_OF_DESKTOPS = 0;
-    XClientMessageEvent sev;
-    gint n;
-    GdkScreen *gscreen = gtk_widget_get_screen(w);
-    GdkWindow *groot = gdk_screen_get_root_window(gscreen);
+    WnckScreen *wnck_screen = wnck_screen_get(gdk_screen_get_number(gtk_widget_get_screen(w)));
+    WnckWorkspace *wnck_workspace = wnck_screen_get_active_workspace(wnck_screen);
+    gint nworkspaces = wnck_screen_get_workspace_count(wnck_screen);
+    const gchar *ws_name = wnck_workspace_get_name(wnck_screen_get_workspace(wnck_screen, nworkspaces -1));
+    gint num = GPOINTER_TO_INT(data);
+    gchar *rm_label_short, *rm_label_long;
+    gint current_workspace = wnck_workspace_get_number(wnck_workspace);
+    const gchar *current_workspace_name = wnck_workspace_get_name(wnck_workspace);
 
-    if(!xa_NET_NUMBER_OF_DESKTOPS) {
-        xa_NET_NUMBER_OF_DESKTOPS = XInternAtom(gdk_x11_get_default_xdisplay(),
-                "_NET_NUMBER_OF_DESKTOPS", False);
+    g_return_if_fail(nworkspaces != num);
+
+    if(num < nworkspaces) {
+        if(!ws_name || atoi(ws_name) == nworkspaces) {
+            rm_label_short = g_strdup_printf(_("Remove Workspace %d"), nworkspaces);
+            rm_label_long = g_strdup_printf(_("Do you really want to remove workspace %d?\nNote: You are currently on workspace %d."),
+                                            nworkspaces, current_workspace);
+        } else {
+            gchar *ws_name_esc = g_markup_escape_text(ws_name, strlen(ws_name));
+            rm_label_short = g_strdup_printf(_("Remove Workspace '%s'"), ws_name_esc);
+            rm_label_long = g_strdup_printf(_("Do you really want to remove workspace '%s'?\nNote: You are currently on workspace '%s'."),
+                                            ws_name_esc, current_workspace_name);
+            g_free(ws_name_esc);
+        }
+
+        /* Popup a dialog box confirming that the user wants to remove a
+         * workspace */
+        if(!xfce_dialog_confirm(NULL, NULL, _("Remove"), rm_label_long,
+                                "%s", rm_label_short))
+        {
+            g_free(rm_label_short);
+            g_free(rm_label_long);
+            return;
+        }
     }
 
-    n = GPOINTER_TO_INT(num);
-
-    sev.type = ClientMessage;
-    sev.display = gdk_x11_get_default_xdisplay();
-    sev.format = 32;
-    sev.window = GDK_WINDOW_XID(groot);
-    sev.message_type = xa_NET_NUMBER_OF_DESKTOPS;
-    sev.data.l[0] = n;
-
-    gdk_error_trap_push();
-
-    XSendEvent(gdk_x11_get_default_xdisplay(), GDK_WINDOW_XID(groot), False,
-            SubstructureNotifyMask | SubstructureRedirectMask,
-            (XEvent *)&sev);
-
-    gdk_flush();
-    gdk_error_trap_pop();
+    g_free(rm_label_short);
+    g_free(rm_label_long);
+    wnck_screen_change_workspace_count(wnck_screen, num);
 }
 
 static void
@@ -153,11 +163,7 @@ menu_item_from_wnck_window(WnckWindow *wnck_window, gint icon_width,
         g_string_prepend(label, "<i>");
         g_string_append(label, "</i>");
     }
-    if(wnck_window_is_minimized(wnck_window)) {
-        g_string_prepend(label, "[");
-        g_string_append(label, "]");
-    }
-    
+
     if(wl_show_icons) {
         icon = wnck_window_get_icon(wnck_window);
         w = gdk_pixbuf_get_width(icon);
@@ -165,12 +171,18 @@ menu_item_from_wnck_window(WnckWindow *wnck_window, gint icon_width,
         if(w != icon_width || h != icon_height) {
             tmp = gdk_pixbuf_scale_simple(icon, icon_width, icon_height,
                     GDK_INTERP_BILINEAR);
+
+            if(wnck_window_is_minimized(wnck_window)) {
+                /* minimized window, fade out app icon */
+                gdk_pixbuf_saturate_and_pixelate(tmp, tmp, 0.55, TRUE);
+            }
+
             img = gtk_image_new_from_pixbuf(tmp);
             g_object_unref(G_OBJECT(tmp));
         } else
             img = gtk_image_new_from_pixbuf(icon);
     }
-    
+
     if(img) {
         mi = gtk_image_menu_item_new_with_label(label->str);
         gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
@@ -249,36 +261,21 @@ windowlist_populate(XfceDesktop *desktop,
         
         if(wl_show_ws_names || wl_submenus) {
             ws_name = wnck_workspace_get_name(wnck_workspace);
-            
-            if(wnck_workspace == active_workspace) {
-                if(ws_name == NULL || *ws_name == '\0')
-                    ws_label = g_strdup_printf(_("<b>Workspace %d</b>"), i+1);
-                else {
-                    gchar *ws_name_esc = g_markup_escape_text(ws_name, strlen(ws_name));
-                    ws_label = g_strdup_printf("<b>%s</b>", ws_name_esc);
-                    g_free(ws_name_esc);
-                }
-            } else {  /* don't italicise if we're showing stuff in submenus */
-                if(ws_name == NULL || *ws_name == '\0') {
-                    if(wl_submenus)
-                        ws_label = g_strdup_printf(_("Workspace %d"), i+1);
-                    else
-                        ws_label = g_strdup_printf(_("<i>Workspace %d</i>"), i+1);
-                } else {
-                    gchar *ws_name_esc = g_markup_escape_text(ws_name, strlen(ws_name));
-                    if(wl_submenus)
-                        ws_label = ws_name_esc;
-                    else {
-                        ws_label = g_strdup_printf("<i>%s</i>", ws_name_esc);
-                        g_free(ws_name_esc);
-                    }
-                }
+
+            /* Workspace header */
+            if(ws_name == NULL || *ws_name == '\0')
+                ws_label = g_strdup_printf(_("<b>Workspace %d</b>"), i+1);
+            else {
+                gchar *ws_name_esc = g_markup_escape_text(ws_name, strlen(ws_name));
+                ws_label = g_strdup_printf("<b>%s</b>", ws_name_esc);
+                g_free(ws_name_esc);
             }
             
             mi = gtk_menu_item_new_with_label(ws_label);
             g_free(ws_label);
             label = gtk_bin_get_child(GTK_BIN(mi));
             gtk_label_set_use_markup(GTK_LABEL(label), TRUE);
+            gtk_misc_set_alignment(GTK_MISC(label), 0.4f, 0);
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             if(!wl_submenus) {
@@ -290,10 +287,6 @@ windowlist_populate(XfceDesktop *desktop,
             if(wl_submenus) {
                 submenu = gtk_menu_new();
                 gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi), submenu);
-            } else {
-                mi = gtk_separator_menu_item_new();
-                gtk_widget_show(mi);
-                gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             }
         }
         
@@ -323,14 +316,13 @@ windowlist_populate(XfceDesktop *desktop,
                 continue;
             is_empty_workspace = FALSE;
             if(wnck_workspace != active_workspace
-                    && (!wnck_window_is_sticky(wnck_window)
-                        || wnck_workspace != active_workspace))
+               && (!wnck_window_is_sticky(wnck_window) || wnck_workspace != active_workspace))
             {
                 GtkWidget *lbl = gtk_bin_get_child(GTK_BIN(mi));
                 gtk_widget_modify_fg(lbl, GTK_STATE_NORMAL,
                         &(style->fg[GTK_STATE_INSENSITIVE]));
-                gtk_widget_modify_font(lbl, italic_font_desc);
             }
+
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(submenu), mi);
             g_object_weak_ref(G_OBJECT(wnck_window),
@@ -350,11 +342,10 @@ windowlist_populate(XfceDesktop *desktop,
     
     pango_font_description_free(italic_font_desc);
     
-    if(wl_submenus) {
-        mi = gtk_separator_menu_item_new();
-        gtk_widget_show(mi);
-        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-    }
+
+    mi = gtk_separator_menu_item_new();
+    gtk_widget_show(mi);
+    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
     
     /* 'add workspace' item */
     if(wl_show_icons) {
