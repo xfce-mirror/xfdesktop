@@ -2160,6 +2160,7 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
     GFileInfo *file_info;
 
     switch(event) {
+        case G_FILE_MONITOR_EVENT_ATTRIBUTE_CHANGED:
         case G_FILE_MONITOR_EVENT_CHANGED:
             DBG("got changed event: %s", g_file_get_path(file));
             

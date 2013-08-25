@@ -1064,9 +1064,9 @@ xfdesktop_icon_view_show_tooltip(GtkWidget *widget,
 
     if(icon_view->priv->tooltip_size > 0) {
         gtk_tooltip_set_icon(tooltip,
-                xfdesktop_icon_peek_pixbuf(icon_view->priv->item_under_pointer,
-                                           icon_view->priv->tooltip_size * 1.5f,
-                                           icon_view->priv->tooltip_size));
+                xfdesktop_icon_peek_tooltip_pixbuf(icon_view->priv->item_under_pointer,
+                                                   icon_view->priv->tooltip_size * 1.5f,
+                                                   icon_view->priv->tooltip_size));
     }
 
     gtk_tooltip_set_text(tooltip, padded_tip_text);

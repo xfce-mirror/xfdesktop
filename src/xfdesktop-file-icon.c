@@ -269,10 +269,8 @@ xfdesktop_file_icon_add_emblems(XfdesktopFileIcon *icon)
     else
         return NULL;
 
-    icon->priv->gicon = emblemed_icon;
-
     if(!G_IS_FILE_INFO(xfdesktop_file_icon_peek_file_info(icon)))
-        return emblemed_icon;
+        return icon->priv->gicon = emblemed_icon;
 
     /* Get the list of emblems */
     emblem_names = g_file_info_get_attribute_stringv(xfdesktop_file_icon_peek_file_info(icon),
@@ -294,7 +292,7 @@ xfdesktop_file_icon_add_emblems(XfdesktopFileIcon *icon)
 
     /* Clear out the old icon and set the new one */
     xfdesktop_file_icon_invalidate_icon(icon);
-    return emblemed_icon;
+    return icon->priv->gicon = emblemed_icon;
 }
 
 void
@@ -313,5 +311,5 @@ xfdesktop_file_icon_has_gicon(XfdesktopFileIcon *icon)
 {
     g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON(icon), FALSE);
 
-    return icon->priv->gicon != NULL ? TRUE : FALSE;
+    return G_IS_ICON(icon->priv->gicon);
 }

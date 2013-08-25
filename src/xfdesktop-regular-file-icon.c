@@ -59,11 +59,9 @@
 
 struct _XfdesktopRegularFileIconPrivate
 {
-    GdkPixbuf *pix;
     gchar *display_name;
     gchar *tooltip;
     guint pix_opacity;
-    gint cur_pix_width, cur_pix_height;
     GFileInfo *file_info;
     GFileInfo *filesystem_info;
     GFile *file;
@@ -79,6 +77,8 @@ static void xfdesktop_regular_file_icon_delete_thumbnail_file(XfdesktopIcon *ico
 static GdkPixbuf *xfdesktop_regular_file_icon_peek_pixbuf(XfdesktopIcon *icon,
                                                           gint width, gint height);
 static G_CONST_RETURN gchar *xfdesktop_regular_file_icon_peek_label(XfdesktopIcon *icon);
+static GdkPixbuf *xfdesktop_regular_file_icon_peek_tooltip_pixbuf(XfdesktopIcon *icon,
+                                                                  gint width, gint height);
 static G_CONST_RETURN gchar *xfdesktop_regular_file_icon_peek_tooltip(XfdesktopIcon *icon);
 static GdkDragAction xfdesktop_regular_file_icon_get_allowed_drag_actions(XfdesktopIcon *icon);
 static GdkDragAction xfdesktop_regular_file_icon_get_allowed_drop_actions(XfdesktopIcon *icon,
@@ -96,12 +96,7 @@ static gboolean xfdesktop_regular_file_can_write_parent(XfdesktopFileIcon *icon)
 
 #ifdef HAVE_THUNARX
 static void xfdesktop_regular_file_icon_tfi_init(ThunarxFileInfoIface *iface);
-#endif
 
-static inline void xfdesktop_regular_file_icon_invalidate_pixbuf(XfdesktopRegularFileIcon *icon);
-
-
-#ifdef HAVE_THUNARX
 G_DEFINE_TYPE_EXTENDED(XfdesktopRegularFileIcon, xfdesktop_regular_file_icon,
                        XFDESKTOP_TYPE_FILE_ICON, 0,
                        G_IMPLEMENT_INTERFACE(THUNARX_TYPE_FILE_INFO,
@@ -127,6 +122,7 @@ xfdesktop_regular_file_icon_class_init(XfdesktopRegularFileIconClass *klass)
     
     icon_class->peek_pixbuf = xfdesktop_regular_file_icon_peek_pixbuf;
     icon_class->peek_label = xfdesktop_regular_file_icon_peek_label;
+    icon_class->peek_tooltip_pixbuf = xfdesktop_regular_file_icon_peek_tooltip_pixbuf;
     icon_class->peek_tooltip = xfdesktop_regular_file_icon_peek_tooltip;
     icon_class->get_allowed_drag_actions = xfdesktop_regular_file_icon_get_allowed_drag_actions;
     icon_class->get_allowed_drop_actions = xfdesktop_regular_file_icon_get_allowed_drop_actions;
@@ -159,11 +155,8 @@ xfdesktop_regular_file_icon_finalize(GObject *obj)
     GtkIconTheme *itheme = gtk_icon_theme_get_for_screen(icon->priv->gscreen);
     
     g_signal_handlers_disconnect_by_func(G_OBJECT(itheme),
-                                         G_CALLBACK(xfdesktop_regular_file_icon_invalidate_pixbuf),
+                                         G_CALLBACK(xfdesktop_icon_invalidate_pixbuf),
                                          icon);
-
-    if(icon->priv->pix)
-        g_object_unref(G_OBJECT(icon->priv->pix));
     
     if(icon->priv->file_info)
         g_object_unref(icon->priv->file_info);
@@ -174,7 +167,7 @@ xfdesktop_regular_file_icon_finalize(GObject *obj)
     g_object_unref(icon->priv->file);
     
     g_free(icon->priv->display_name);
-    
+
     if(icon->priv->tooltip)
         g_free(icon->priv->tooltip);
 
@@ -201,15 +194,6 @@ xfdesktop_regular_file_icon_tfi_init(ThunarxFileInfoIface *iface)
 }
 #endif
 
-static inline void
-xfdesktop_regular_file_icon_invalidate_pixbuf(XfdesktopRegularFileIcon *icon)
-{
-    if(icon->priv->pix) {
-        g_object_unref(G_OBJECT(icon->priv->pix));
-        icon->priv->pix = NULL;
-    }
-}
-
 static void
 xfdesktop_regular_file_icon_delete_thumbnail_file(XfdesktopIcon *icon)
 {
@@ -227,8 +211,8 @@ xfdesktop_regular_file_icon_delete_thumbnail_file(XfdesktopIcon *icon)
 
     xfdesktop_file_icon_invalidate_icon(XFDESKTOP_FILE_ICON(icon));
 
-    xfdesktop_regular_file_icon_invalidate_pixbuf(file_icon);
-    xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(icon));
+    xfdesktop_icon_invalidate_pixbuf(icon);
+    xfdesktop_icon_pixbuf_changed(icon);
 }
 
 static void
@@ -248,8 +232,8 @@ xfdesktop_regular_file_icon_set_thumbnail_file(XfdesktopIcon *icon, GFile *file)
 
     xfdesktop_file_icon_invalidate_icon(XFDESKTOP_FILE_ICON(icon));
 
-    xfdesktop_regular_file_icon_invalidate_pixbuf(file_icon);
-    xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(icon));
+    xfdesktop_icon_invalidate_pixbuf(icon);
+    xfdesktop_icon_pixbuf_changed(icon);
 }
 
 static GIcon *
@@ -295,7 +279,7 @@ xfdesktop_regular_file_icon_load_icon(XfdesktopIcon *icon)
 {
     XfdesktopRegularFileIcon *regular_icon = XFDESKTOP_REGULAR_FILE_ICON(icon);
     XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
-    GIcon *gicon;
+    GIcon *gicon = NULL;
 
     TRACE("entering");
 
@@ -366,28 +350,34 @@ xfdesktop_regular_file_icon_peek_pixbuf(XfdesktopIcon *icon,
 {
     XfdesktopRegularFileIcon *regular_icon = XFDESKTOP_REGULAR_FILE_ICON(icon);
     GIcon *gicon = NULL;
-
-    if(width != regular_icon->priv->cur_pix_width
-       || height != regular_icon->priv->cur_pix_height)
-        xfdesktop_regular_file_icon_invalidate_pixbuf(regular_icon);
-
-    /* Still valid */
-    if(regular_icon->priv->pix != NULL)
-        return regular_icon->priv->pix;
+    GdkPixbuf *pix = NULL;
 
     if(!xfdesktop_file_icon_has_gicon(XFDESKTOP_FILE_ICON(icon)))
         gicon = xfdesktop_regular_file_icon_load_icon(icon);
     else
         g_object_get(XFDESKTOP_FILE_ICON(icon), "gicon", &gicon, NULL);
 
-    regular_icon->priv->pix = xfdesktop_file_utils_get_icon(gicon,
-                                                            width, height,
-                                                            regular_icon->priv->pix_opacity);
+    pix = xfdesktop_file_utils_get_icon(gicon, width, height,
+                                        regular_icon->priv->pix_opacity);
 
-    regular_icon->priv->cur_pix_width = width;
-    regular_icon->priv->cur_pix_height = height;
+    return pix;
+}
 
-    return regular_icon->priv->pix;
+static GdkPixbuf *
+xfdesktop_regular_file_icon_peek_tooltip_pixbuf(XfdesktopIcon *icon,
+                                                gint width, gint height)
+{
+    GIcon *gicon = NULL;
+    GdkPixbuf *tooltip_pix = NULL;
+
+    if(!xfdesktop_file_icon_has_gicon(XFDESKTOP_FILE_ICON(icon)))
+        gicon = xfdesktop_regular_file_icon_load_icon(icon);
+    else
+        g_object_get(XFDESKTOP_FILE_ICON(icon), "gicon", &gicon, NULL);
+
+    tooltip_pix = xfdesktop_file_utils_get_icon(gicon, width, height, 100);
+
+    return tooltip_pix;
 }
 
 static G_CONST_RETURN gchar *
@@ -730,7 +720,7 @@ xfdesktop_regular_file_icon_update_file_info(XfdesktopFileIcon *icon,
     
     /* not really easy to check if this changed or not, so just invalidate it */
     xfdesktop_file_icon_invalidate_icon(XFDESKTOP_FILE_ICON(icon));
-    xfdesktop_regular_file_icon_invalidate_pixbuf(regular_file_icon);
+    xfdesktop_icon_invalidate_pixbuf(XFDESKTOP_ICON(icon));
     xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(icon));
 }
 
@@ -772,7 +762,7 @@ xfdesktop_regular_file_icon_new(GFile *file,
 
     g_signal_connect_swapped(G_OBJECT(gtk_icon_theme_get_for_screen(screen)),
                              "changed",
-                             G_CALLBACK(xfdesktop_regular_file_icon_invalidate_pixbuf),
+                             G_CALLBACK(xfdesktop_icon_invalidate_pixbuf),
                              regular_file_icon);
     
     return regular_file_icon;
@@ -789,6 +779,6 @@ xfdesktop_regular_file_icon_set_pixbuf_opacity(XfdesktopRegularFileIcon *icon,
     
     icon->priv->pix_opacity = opacity;
     
-    xfdesktop_regular_file_icon_invalidate_pixbuf(icon);
+    xfdesktop_icon_invalidate_pixbuf(XFDESKTOP_ICON(icon));
     xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(icon));
 }

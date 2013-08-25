@@ -584,7 +584,7 @@ xfdesktop_file_utils_add_emblems(GdkPixbuf *pix, GList *emblems)
     pix_width = gdk_pixbuf_get_width(pix);
     pix_height = gdk_pixbuf_get_height(pix);
 
-    emblem_size = MIN(pix_width, pix_height) / 3;
+    emblem_size = MIN(pix_width, pix_height) / 2;
 
     /* render up to four emblems for sizes from 48 onwards, else up to 2 emblems */
     max_emblems = (pix_height < 48 && pix_width < 48) ? 2 : 4;
