@@ -59,11 +59,13 @@ set_num_workspaces(GtkWidget *w, gpointer data)
     gint nworkspaces = wnck_screen_get_workspace_count(wnck_screen);
     const gchar *ws_name = wnck_workspace_get_name(wnck_screen_get_workspace(wnck_screen, nworkspaces -1));
     gint num = GPOINTER_TO_INT(data);
-    gchar *rm_label_short, *rm_label_long;
+    gchar *rm_label_short = NULL, *rm_label_long = NULL;
     gint current_workspace = wnck_workspace_get_number(wnck_workspace);
     const gchar *current_workspace_name = wnck_workspace_get_name(wnck_workspace);
 
     g_return_if_fail(nworkspaces != num);
+
+    TRACE("entering");
 
     if(num < nworkspaces) {
         if(!ws_name || atoi(ws_name) == nworkspaces) {
@@ -89,8 +91,11 @@ set_num_workspaces(GtkWidget *w, gpointer data)
         }
     }
 
-    g_free(rm_label_short);
-    g_free(rm_label_long);
+    if(rm_label_short != NULL)
+        g_free(rm_label_short);
+    if(rm_label_long != NULL)
+        g_free(rm_label_long);
+
     wnck_screen_change_workspace_count(wnck_screen, num);
 }
 
