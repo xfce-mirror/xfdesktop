@@ -1821,9 +1821,9 @@ _icon_notify_destroy(gpointer data,
 static gboolean
 xfdesktop_file_icon_manager_add_icon(XfdesktopFileIconManager *fmanager,
                                      XfdesktopFileIcon *icon,
+                                     gint16 row, gint16 col,
                                      gboolean defer_if_missing)
 {
-    gint16 row = -1, col = -1;
     gboolean do_add = FALSE;
     const gchar *name;
     GFile *file;
@@ -1841,8 +1841,12 @@ xfdesktop_file_icon_manager_add_icon(XfdesktopFileIconManager *fmanager,
 
     
     name = xfdesktop_icon_peek_label(XFDESKTOP_ICON(icon));
-    if(xfdesktop_file_icon_manager_get_cached_icon_position(fmanager, name,
-                                                            &row, &col))
+    if(row >= 0 && col >= 0) {
+        DBG("attempting to set icon '%s' to position (%d,%d)", name, row, col);
+        xfdesktop_icon_set_position(XFDESKTOP_ICON(icon), row, col);
+        do_add = TRUE;
+    } else if(xfdesktop_file_icon_manager_get_cached_icon_position(fmanager, name,
+                                                                   &row, &col))
     {
         DBG("attempting to set icon '%s' to position (%d,%d)", name, row, col);
         xfdesktop_icon_set_position(XFDESKTOP_ICON(icon), row, col);
@@ -1873,10 +1877,13 @@ xfdesktop_file_icon_manager_add_icon(XfdesktopFileIconManager *fmanager,
     return do_add;
 }
 
+/* If row and col are set then they will be used, otherwise set them to -1
+ * and it will lookup the position in the rc file */
 static XfdesktopFileIcon *
 xfdesktop_file_icon_manager_add_regular_icon(XfdesktopFileIconManager *fmanager,
                                              GFile *file,
                                              GFileInfo *info,
+                                             guint16 row, guint16 col,
                                              gboolean defer_if_missing)
 {
     XfdesktopRegularFileIcon *icon = NULL;
@@ -1936,6 +1943,7 @@ xfdesktop_file_icon_manager_add_regular_icon(XfdesktopFileIconManager *fmanager,
     
     if(xfdesktop_file_icon_manager_add_icon(fmanager,
                                              XFDESKTOP_FILE_ICON(icon),
+                                             row, col,
                                              defer_if_missing))
     {
         g_hash_table_replace(fmanager->priv->icons, g_object_ref(file), icon);
@@ -1959,6 +1967,7 @@ xfdesktop_file_icon_manager_add_volume_icon(XfdesktopFileIconManager *fmanager,
     
     if(xfdesktop_file_icon_manager_add_icon(fmanager,
                                             XFDESKTOP_FILE_ICON(icon),
+                                            -1, -1,
                                             FALSE))
     {
         g_hash_table_replace(fmanager->priv->removable_icons,
@@ -1983,6 +1992,7 @@ xfdesktop_file_icon_manager_add_special_file_icon(XfdesktopFileIconManager *fman
     
     if(xfdesktop_file_icon_manager_add_icon(fmanager,
                                             XFDESKTOP_FILE_ICON(icon),
+                                            -1, -1,
                                             FALSE))
     {
         g_hash_table_replace(fmanager->priv->special_icons,
@@ -2158,8 +2168,50 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
     XfdesktopFileIcon *icon;
     GFileInfo *file_info;
+    guint16 row, col;
 
     switch(event) {
+        case G_FILE_MONITOR_EVENT_MOVED:
+            DBG("got a moved event, old filename: %s new filename: %s",
+                g_file_get_path(file), g_file_get_path(other_file));
+
+            icon = g_hash_table_lookup(fmanager->priv->icons, file);
+            if(!icon) {
+                g_critical("G_FILE_MONITOR_EVENT_MOVED for an icon that doesn't exist");
+                return;
+            }
+
+            file_info = g_file_query_info(other_file, XFDESKTOP_FILE_INFO_NAMESPACE,
+                                          G_FILE_QUERY_INFO_NONE, NULL, NULL);
+
+            if(file_info) {
+                gboolean is_hidden;
+
+                /* Get the old position so we can use it for the new icon */
+                xfdesktop_icon_get_position(XFDESKTOP_ICON(icon), &row, &col);
+
+                /* Remove the icon from the icon_view and this manager's
+                 * hash table */
+                xfdesktop_icon_view_remove_item(fmanager->priv->icon_view,
+                                            XFDESKTOP_ICON(icon));
+                g_hash_table_remove(fmanager->priv->icons, file);
+
+                is_hidden = g_file_info_get_attribute_boolean(file_info,
+                                                              G_FILE_ATTRIBUTE_STANDARD_IS_HIDDEN);
+                if(!is_hidden) {
+                    /* Add the icon adding the row/col info */
+                    xfdesktop_file_icon_manager_add_regular_icon(fmanager,
+                                                                 other_file,
+                                                                 file_info,
+                                                                 row,
+                                                                 col,
+                                                                 FALSE);
+                    xfdesktop_file_icon_position_changed(icon, fmanager);
+                }
+
+                g_object_unref(file_info);
+            }
+            break;
         case G_FILE_MONITOR_EVENT_ATTRIBUTE_CHANGED:
         case G_FILE_MONITOR_EVENT_CHANGED:
             DBG("got changed event: %s", g_file_get_path(file));
@@ -2204,7 +2256,8 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
                                                                        G_FILE_ATTRIBUTE_STANDARD_IS_HIDDEN);
                 if(!is_hidden) {
                     xfdesktop_file_icon_manager_add_regular_icon(fmanager,
-                                                                 file, file_info, 
+                                                                 file, file_info,
+                                                                 -1, -1,
                                                                  FALSE);
                 }
 
@@ -2282,7 +2335,8 @@ xfdesktop_file_icon_manager_files_ready(GFileEnumerator *enumerator,
                                                     NULL, NULL);
 
                 xfdesktop_file_icon_manager_add_regular_icon(fmanager, 
-                                                             file, info, 
+                                                             file, info,
+                                                             -1, -1,
                                                              FALSE);
                 g_object_unref(info);
                 g_object_unref(file);
@@ -2294,7 +2348,7 @@ xfdesktop_file_icon_manager_files_ready(GFileEnumerator *enumerator,
 
         if(!fmanager->priv->monitor) {
             fmanager->priv->monitor = g_file_monitor(fmanager->priv->folder,
-                                                     G_FILE_MONITOR_NONE,
+                                                     G_FILE_MONITOR_SEND_MOVED,
                                                      NULL, NULL);
             g_signal_connect(fmanager->priv->monitor, "changed",
                              G_CALLBACK(xfdesktop_file_icon_manager_file_changed),
@@ -2312,6 +2366,7 @@ xfdesktop_file_icon_manager_files_ready(GFileEnumerator *enumerator,
 
                 xfdesktop_file_icon_manager_add_regular_icon(fmanager, 
                                                              file, l->data,
+                                                             -1, -1,
                                                              TRUE);
 
                 g_object_unref(file);
