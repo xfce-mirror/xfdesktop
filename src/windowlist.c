@@ -275,7 +275,15 @@ windowlist_populate(XfceDesktop *desktop,
             g_free(ws_label);
             label = gtk_bin_get_child(GTK_BIN(mi));
             gtk_label_set_use_markup(GTK_LABEL(label), TRUE);
+            /* center the workspace header */
             gtk_misc_set_alignment(GTK_MISC(label), 0.4f, 0);
+            /* If it's not the active workspace, make the color insensitive */
+            if(wnck_workspace != active_workspace)
+            {
+                GtkWidget *lbl = gtk_bin_get_child(GTK_BIN(mi));
+                gtk_widget_modify_fg(lbl, GTK_STATE_NORMAL,
+                                     &(style->fg[GTK_STATE_INSENSITIVE]));
+            }
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             if(!wl_submenus) {
@@ -341,11 +349,6 @@ windowlist_populate(XfceDesktop *desktop,
     }
     
     pango_font_description_free(italic_font_desc);
-    
-
-    mi = gtk_separator_menu_item_new();
-    gtk_widget_show(mi);
-    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
     
     /* 'add workspace' item */
     if(wl_show_icons) {
