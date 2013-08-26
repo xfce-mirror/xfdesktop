@@ -824,7 +824,7 @@ cb_xfdesktop_spin_icon_size_changed(GtkSpinButton *button,
         timer_id = 0;
     }
 
-    timer_id = g_timeout_add(2000,
+    timer_id = g_timeout_add(500,
                              (GSourceFunc)xfdesktop_spin_icon_size_timer,
                              button);
 
