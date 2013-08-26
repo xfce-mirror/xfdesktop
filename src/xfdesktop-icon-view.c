@@ -61,7 +61,8 @@
 #define CELL_PADDING      (icon_view->priv->cell_padding)
 #define CELL_SIZE         (TEXT_WIDTH + CELL_PADDING * 2)
 #define SPACING           (icon_view->priv->cell_spacing)
-#define TEXT_HEIGHT       (CELL_SIZE - ICON_SIZE - SPACING - (CELL_PADDING * 2))
+#define LABEL_RADIUS      (icon_view->priv->label_radius)
+#define TEXT_HEIGHT       (CELL_SIZE - ICON_SIZE - SPACING - (CELL_PADDING * 2) - LABEL_RADIUS)
 #define SCREEN_MARGIN     8
 #define DEFAULT_RUBBERBAND_ALPHA  64
 
@@ -173,6 +174,7 @@ struct _XfdesktopIconViewPrivate
 
     gint cell_padding;
     gint cell_spacing;
+    gdouble label_radius;
     gdouble cell_text_width_proportion;
 
     gboolean ellipsize_icon_labels;
@@ -1846,6 +1848,7 @@ xfdesktop_icon_view_style_set(GtkWidget *widget,
                          "cell-text-width-proportion", &icon_view->priv->cell_text_width_proportion,
                          "ellipsize-icon-labels", &icon_view->priv->ellipsize_icon_labels,
                          "tooltip-size", &icon_view->priv->tooltip_size,
+                         "label-radius", &icon_view->priv->label_radius,
                          NULL);
 
     DBG("cell spacing is %d", icon_view->priv->cell_spacing);
@@ -1853,6 +1856,7 @@ xfdesktop_icon_view_style_set(GtkWidget *widget,
     DBG("cell text width proportion is %f", icon_view->priv->cell_text_width_proportion);
     DBG("ellipsize icon label is %s", icon_view->priv->ellipsize_icon_labels?"true":"false");
     DBG("tooltip size is %d", icon_view->priv->tooltip_size);
+    DBG("label radius is %f", icon_view->priv->label_radius);
 
     if(icon_view->priv->selection_box_color) {
         gdk_color_free(icon_view->priv->selection_box_color);
@@ -2694,7 +2698,7 @@ xfdesktop_icon_view_invalidate_icon_pixbuf(XfdesktopIconView *icon_view,
             return;
         
         rect.x += CELL_PADDING + ((CELL_SIZE - 2 * CELL_PADDING) - rect.width) / 2;
-        rect.y += CELL_PADDING + SPACING;
+        rect.y += CELL_PADDING;
     
         if(gtk_widget_get_realized(GTK_WIDGET(icon_view))) {
             gtk_widget_queue_draw_area(GTK_WIDGET(icon_view), rect.x, rect.y,
@@ -2710,17 +2714,12 @@ xfdesktop_paint_rounded_box(XfdesktopIconView *icon_view,
                             GdkRectangle *expose_area)
 {
     GdkRectangle box_area, intersection;
-    gdouble label_radius = 4.0;
-
-    gtk_widget_style_get(GTK_WIDGET(icon_view),
-                         "label-radius", &label_radius,
-                         NULL);
     
     box_area = *text_area;
-    box_area.x -= label_radius;
-    box_area.y -= label_radius;
-    box_area.width += label_radius * 2;
-    box_area.height += label_radius * 2;
+    box_area.x -= LABEL_RADIUS;
+    box_area.y -= LABEL_RADIUS;
+    box_area.width += LABEL_RADIUS * 2;
+    box_area.height += LABEL_RADIUS * 2;
     
     if(gdk_rectangle_intersect(&box_area, expose_area, &intersection)) {
         cairo_t *cr = gdk_cairo_create(gtk_widget_get_window(GTK_WIDGET(icon_view)));
@@ -2741,29 +2740,29 @@ xfdesktop_paint_rounded_box(XfdesktopIconView *icon_view,
         gdk_cairo_rectangle(cr, expose_area);
         cairo_clip(cr);
 
-        if(label_radius < 0.1)
+        if(LABEL_RADIUS < 0.1)
             gdk_cairo_rectangle(cr, &box_area);
         else {
-            cairo_move_to(cr, box_area.x, box_area.y + label_radius);
-            cairo_arc(cr, box_area.x + label_radius,
-                      box_area.y + label_radius, label_radius,
+            cairo_move_to(cr, box_area.x, box_area.y + LABEL_RADIUS);
+            cairo_arc(cr, box_area.x + LABEL_RADIUS,
+                      box_area.y + LABEL_RADIUS, LABEL_RADIUS,
                       M_PI, 3.0*M_PI/2.0);
-            cairo_line_to(cr, box_area.x + box_area.width - label_radius,
+            cairo_line_to(cr, box_area.x + box_area.width - LABEL_RADIUS,
                           box_area.y);
-            cairo_arc(cr, box_area.x + box_area.width - label_radius,
-                      box_area.y + label_radius, label_radius,
+            cairo_arc(cr, box_area.x + box_area.width - LABEL_RADIUS,
+                      box_area.y + LABEL_RADIUS, LABEL_RADIUS,
                       3.0+M_PI/2.0, 0.0);
             cairo_line_to(cr, box_area.x + box_area.width,
-                          box_area.y + box_area.height - label_radius);
-            cairo_arc(cr, box_area.x + box_area.width - label_radius,
-                      box_area.y + box_area.height - label_radius,
-                      label_radius,
+                          box_area.y + box_area.height - LABEL_RADIUS);
+            cairo_arc(cr, box_area.x + box_area.width - LABEL_RADIUS,
+                      box_area.y + box_area.height - LABEL_RADIUS,
+                      LABEL_RADIUS,
                       0.0, M_PI/2.0);
-            cairo_line_to(cr, box_area.x + label_radius,
+            cairo_line_to(cr, box_area.x + LABEL_RADIUS,
                           box_area.y + box_area.height);
-            cairo_arc(cr, box_area.x + label_radius,
-                      box_area.y + box_area.height - label_radius,
-                      label_radius,
+            cairo_arc(cr, box_area.x + LABEL_RADIUS,
+                      box_area.y + box_area.height - LABEL_RADIUS,
+                      LABEL_RADIUS,
                       M_PI/2.0, M_PI);
             cairo_close_path(cr);
         }
@@ -2877,16 +2876,11 @@ xfdesktop_icon_view_update_icon_extents(XfdesktopIconView *icon_view,
                                         GdkRectangle *total_extents)
 {
     GdkRectangle tmp_text;
-    gdouble label_radius = 4.0;
 
     g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view)
                          && XFDESKTOP_IS_ICON(icon)
                          && pixbuf_extents && text_extents
                          && total_extents, FALSE);
-
-    gtk_widget_style_get(GTK_WIDGET(icon_view),
-                         "label-radius", &label_radius,
-                         NULL);
 
     if(!xfdesktop_icon_view_calculate_icon_pixbuf_area(icon_view, icon,
                                                        pixbuf_extents)
@@ -2896,7 +2890,7 @@ xfdesktop_icon_view_update_icon_extents(XfdesktopIconView *icon_view,
         return FALSE;
     }
     pixbuf_extents->x += CELL_PADDING + ((CELL_SIZE - CELL_PADDING * 2) - pixbuf_extents->width) / 2;
-    pixbuf_extents->y += CELL_PADDING + SPACING;
+    pixbuf_extents->y += CELL_PADDING;
 
     if(!xfdesktop_icon_view_calculate_icon_text_area(icon_view, icon,
                                                      text_extents)
@@ -2906,13 +2900,13 @@ xfdesktop_icon_view_update_icon_extents(XfdesktopIconView *icon_view,
         return FALSE;
     }
     text_extents->x += (CELL_SIZE - text_extents->width) / 2;
-    text_extents->y += ICON_SIZE + SPACING + label_radius + CELL_PADDING;
+    text_extents->y += ICON_SIZE + SPACING + LABEL_RADIUS + CELL_PADDING;
 
     tmp_text = *text_extents;
-    tmp_text.x -= label_radius;
-    tmp_text.y -= label_radius;
-    tmp_text.width += label_radius * 2;
-    tmp_text.height += label_radius * 2;
+    tmp_text.x -= LABEL_RADIUS;
+    tmp_text.y -= LABEL_RADIUS;
+    tmp_text.width += LABEL_RADIUS * 2;
+    tmp_text.height += LABEL_RADIUS * 2;
     gdk_rectangle_union(pixbuf_extents, &tmp_text, total_extents);
 
     xfdesktop_icon_set_extents(icon, pixbuf_extents, text_extents, total_extents);
