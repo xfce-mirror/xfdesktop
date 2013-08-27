@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-04 12:32+0200\n"
-"PO-Revision-Date: 2013-08-05 14:25+0000\n"
-"Last-Translator: Mohamad Hasan Al Banna\n"
+"POT-Creation-Date: 2013-08-27 06:32+0200\n"
+"PO-Revision-Date: 2013-08-27 17:41+0000\n"
+"Last-Translator: Ardjuna <Asyura.x@gmail.com>\n"
 "Language-Team: Indonesian (http://www.transifex.com/projects/p/xfce/language/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -507,9 +507,8 @@ msgid ""
 msgstr "Sebuah berkas normal dengan nama yang sama telah ada. Silakan hapus atau ganti nama."
 
 #: ../src/xfdesktop-file-icon-manager.c:631
-#: ../src/xfdesktop-file-icon-manager.c:675 ../src/xfdesktop-file-utils.c:863
-#: ../src/xfdesktop-file-utils.c:878 ../src/xfdesktop-file-utils.c:910
-#: ../src/xfdesktop-file-utils.c:924
+#: ../src/xfdesktop-file-icon-manager.c:675 ../src/xfdesktop-file-utils.c:866
+#: ../src/xfdesktop-file-utils.c:903
 msgid "Trash Error"
 msgstr "Galat Tempat Sampah"
 
@@ -519,12 +518,12 @@ msgid "The selected files could not be trashed"
 msgstr "Berkas terpilih tak dapat dihapus"
 
 #: ../src/xfdesktop-file-icon-manager.c:633
-#: ../src/xfdesktop-file-icon-manager.c:677 ../src/xfdesktop-file-utils.c:762
-#: ../src/xfdesktop-file-utils.c:821 ../src/xfdesktop-file-utils.c:979
-#: ../src/xfdesktop-file-utils.c:1035 ../src/xfdesktop-file-utils.c:1085
-#: ../src/xfdesktop-file-utils.c:1135 ../src/xfdesktop-file-utils.c:1212
-#: ../src/xfdesktop-file-utils.c:1273 ../src/xfdesktop-file-utils.c:1346
-#: ../src/xfdesktop-file-utils.c:1424
+#: ../src/xfdesktop-file-icon-manager.c:677 ../src/xfdesktop-file-utils.c:768
+#: ../src/xfdesktop-file-utils.c:818 ../src/xfdesktop-file-utils.c:949
+#: ../src/xfdesktop-file-utils.c:996 ../src/xfdesktop-file-utils.c:1037
+#: ../src/xfdesktop-file-utils.c:1078 ../src/xfdesktop-file-utils.c:1155
+#: ../src/xfdesktop-file-utils.c:1207 ../src/xfdesktop-file-utils.c:1280
+#: ../src/xfdesktop-file-utils.c:1358
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
@@ -540,9 +539,8 @@ msgstr "Tak dapat menjalankan \"%s\":"
 #: ../src/xfdesktop-file-icon-manager.c:779
 #: ../src/xfdesktop-file-icon-manager.c:1040
 #: ../src/xfdesktop-file-icon-manager.c:1241 ../src/xfdesktop-file-utils.c:707
-#: ../src/xfdesktop-file-utils.c:1118 ../src/xfdesktop-file-utils.c:1133
-#: ../src/xfdesktop-file-utils.c:1185 ../src/xfdesktop-file-utils.c:1210
-#: ../src/xfdesktop-file-utils.c:1256 ../src/xfdesktop-file-utils.c:1271
+#: ../src/xfdesktop-file-utils.c:1076 ../src/xfdesktop-file-utils.c:1128
+#: ../src/xfdesktop-file-utils.c:1153 ../src/xfdesktop-file-utils.c:1205
 msgid "Launch Error"
 msgstr "Galat Peluncur"
 
@@ -633,23 +631,23 @@ msgstr "Pengaturan _Destop..."
 msgid "P_roperties..."
 msgstr "_Properti..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2253
+#: ../src/xfdesktop-file-icon-manager.c:2262
 msgid "Load Error"
 msgstr "Galat Memuat"
 
-#: ../src/xfdesktop-file-icon-manager.c:2255
+#: ../src/xfdesktop-file-icon-manager.c:2264
 msgid "Failed to load the desktop folder"
 msgstr "Gagal memuat folder desktop"
 
-#: ../src/xfdesktop-file-icon-manager.c:2831
+#: ../src/xfdesktop-file-icon-manager.c:2840
 msgid "Copy _Here"
 msgstr "Salin ke _Sini"
 
-#: ../src/xfdesktop-file-icon-manager.c:2831
+#: ../src/xfdesktop-file-icon-manager.c:2840
 msgid "_Move Here"
 msgstr "_Pindah ke Sini"
 
-#: ../src/xfdesktop-file-icon-manager.c:2831
+#: ../src/xfdesktop-file-icon-manager.c:2840
 msgid "_Link Here"
 msgstr "_Taut ke Sini"
 
@@ -686,80 +684,88 @@ msgstr "Tak diketahui"
 msgid "The folder could not be opened"
 msgstr "Folder tak dapat dibuka"
 
-#: ../src/xfdesktop-file-utils.c:745 ../src/xfdesktop-file-utils.c:760
+#: ../src/xfdesktop-file-utils.c:725
+msgid "Error"
+msgstr "Galat"
+
+#: ../src/xfdesktop-file-utils.c:726
+msgid "The requested operation could not be completed"
+msgstr "Perintah tersebut tidak dapat dilaksanakan"
+
+#: ../src/xfdesktop-file-utils.c:766
 msgid "Rename Error"
 msgstr "Galat Mengganti Nama"
 
-#: ../src/xfdesktop-file-utils.c:746 ../src/xfdesktop-file-utils.c:761
+#: ../src/xfdesktop-file-utils.c:767
 msgid "The file could not be renamed"
 msgstr "Berkas tak dapat diganti nama"
 
-#: ../src/xfdesktop-file-utils.c:804 ../src/xfdesktop-file-utils.c:819
+#: ../src/xfdesktop-file-utils.c:816
 msgid "Delete Error"
 msgstr "Galat Hapus"
 
-#: ../src/xfdesktop-file-utils.c:805 ../src/xfdesktop-file-utils.c:820
+#: ../src/xfdesktop-file-utils.c:817
 msgid "The selected files could not be deleted"
 msgstr "Berkas terpilih tak dapat dihapus"
 
-#: ../src/xfdesktop-file-utils.c:864 ../src/xfdesktop-file-utils.c:879
+#: ../src/xfdesktop-file-utils.c:867
 msgid "The selected files could not be moved to the trash"
 msgstr "Berkas terpilih tak dapat dipindahkan ke tempat sampah"
 
-#: ../src/xfdesktop-file-utils.c:880 ../src/xfdesktop-file-utils.c:926
+#: ../src/xfdesktop-file-utils.c:868 ../src/xfdesktop-file-utils.c:905
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
 msgstr "Fitur ini memerlukan adanya layanan tempat sampah (seperti yang disediakan oleh Thunar)."
 
-#: ../src/xfdesktop-file-utils.c:911 ../src/xfdesktop-file-utils.c:925
+#: ../src/xfdesktop-file-utils.c:904
 msgid "Could not empty the trash"
 msgstr "Tak dapat mengosongkan tempat sampah"
 
-#: ../src/xfdesktop-file-utils.c:962 ../src/xfdesktop-file-utils.c:977
+#: ../src/xfdesktop-file-utils.c:947
 msgid "Create File Error"
 msgstr "Galat Membuat Berkas"
 
-#: ../src/xfdesktop-file-utils.c:963 ../src/xfdesktop-file-utils.c:978
+#: ../src/xfdesktop-file-utils.c:948
 msgid "Could not create a new file"
 msgstr "Tak dapat membuat berkas baru"
 
-#: ../src/xfdesktop-file-utils.c:1018 ../src/xfdesktop-file-utils.c:1033
+#: ../src/xfdesktop-file-utils.c:994
 msgid "Create Document Error"
 msgstr "Galat Membuat Dokumen"
 
-#: ../src/xfdesktop-file-utils.c:1019 ../src/xfdesktop-file-utils.c:1034
+#: ../src/xfdesktop-file-utils.c:995
 msgid "Could not create a new document from the template"
 msgstr "Tak dapat membuat dokumen baru dari templat"
 
-#: ../src/xfdesktop-file-utils.c:1068 ../src/xfdesktop-file-utils.c:1083
+#: ../src/xfdesktop-file-utils.c:1035
 msgid "File Properties Error"
 msgstr "Galat Properti Berkas"
 
-#: ../src/xfdesktop-file-utils.c:1069 ../src/xfdesktop-file-utils.c:1084
+#: ../src/xfdesktop-file-utils.c:1036
 msgid "The file properties dialog could not be opened"
 msgstr "Dialog properti berkas tak dapat dibuka"
 
-#: ../src/xfdesktop-file-utils.c:1119 ../src/xfdesktop-file-utils.c:1134
+#: ../src/xfdesktop-file-utils.c:1077
 msgid "The file could not be opened"
 msgstr "Berkas tak dapat dibuka"
 
-#: ../src/xfdesktop-file-utils.c:1182 ../src/xfdesktop-file-utils.c:1207
+#: ../src/xfdesktop-file-utils.c:1125 ../src/xfdesktop-file-utils.c:1150
 #, c-format
 msgid "Failed to run \"%s\""
 msgstr "Gagal menjalankan \"%s\""
 
-#: ../src/xfdesktop-file-utils.c:1257 ../src/xfdesktop-file-utils.c:1272
+#: ../src/xfdesktop-file-utils.c:1206
 msgid "The application chooser could not be opened"
 msgstr "Pemilih aplikasi tak dapat dibuka"
 
-#: ../src/xfdesktop-file-utils.c:1330 ../src/xfdesktop-file-utils.c:1344
-#: ../src/xfdesktop-file-utils.c:1406 ../src/xfdesktop-file-utils.c:1422
+#: ../src/xfdesktop-file-utils.c:1264 ../src/xfdesktop-file-utils.c:1278
+#: ../src/xfdesktop-file-utils.c:1340 ../src/xfdesktop-file-utils.c:1356
 msgid "Transfer Error"
 msgstr "Galat Transfer"
 
-#: ../src/xfdesktop-file-utils.c:1331 ../src/xfdesktop-file-utils.c:1345
-#: ../src/xfdesktop-file-utils.c:1407 ../src/xfdesktop-file-utils.c:1423
+#: ../src/xfdesktop-file-utils.c:1265 ../src/xfdesktop-file-utils.c:1279
+#: ../src/xfdesktop-file-utils.c:1341 ../src/xfdesktop-file-utils.c:1357
 msgid "The file transfer could not be performed"
 msgstr "Transfer berkas tak dapat dilakukan"
 
