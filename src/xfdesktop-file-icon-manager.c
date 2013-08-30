@@ -1821,27 +1821,115 @@ _icon_notify_destroy(gpointer data,
 }
 #endif
 
+/* builds a folder/file path and then tests if that file is a valid image.
+ * returns the file location if it does, NULL if it doesn't */
+static gchar *
+xfdesktop_check_file_is_valid(const gchar *folder, const gchar *file)
+{
+    gchar *path = g_strconcat(folder, "/", file, NULL);
+
+    if(gdk_pixbuf_get_file_info(path, NULL, NULL) == NULL) {
+        g_free(path);
+        path = NULL;
+    }
+
+    return path;
+}
+
+static gchar *
+xfdesktop_load_icon_location_from_folder(XfdesktopFileIcon *icon)
+{
+    gchar *icon_file = g_file_get_path(xfdesktop_file_icon_peek_file(icon));
+    gchar *path;
+
+    g_return_val_if_fail(icon_file, NULL);
+
+    /* So much for standards */
+    path = xfdesktop_check_file_is_valid(icon_file, "Folder.jpg");
+    if(path == NULL) {
+        path = xfdesktop_check_file_is_valid(icon_file, "folder.jpg");
+    }
+    if(path == NULL) {
+        path = xfdesktop_check_file_is_valid(icon_file, "Folder.JPG");
+    }
+    if(path == NULL) {
+        path = xfdesktop_check_file_is_valid(icon_file, "folder.JPG");
+    }
+    if(path == NULL) {
+        path = xfdesktop_check_file_is_valid(icon_file, "Cover.jpg");
+    }
+    if(path == NULL) {
+        path = xfdesktop_check_file_is_valid(icon_file, "cover.jpg");
+    }
+    if(path == NULL) {
+        path = xfdesktop_check_file_is_valid(icon_file, "albumart.jpg");
+    }
+    if(path == NULL) {
+        path = xfdesktop_check_file_is_valid(icon_file, "fanart.jpg");
+    }
+    if(path == NULL) {
+        path = xfdesktop_check_file_is_valid(icon_file, "Fanart.jpg");
+    }
+    if(path == NULL) {
+        path = xfdesktop_check_file_is_valid(icon_file, "fanart.JPG");
+    }
+    if(path == NULL) {
+        path = xfdesktop_check_file_is_valid(icon_file, "Fanart.JPG");
+    }
+    if(path == NULL) {
+        path = xfdesktop_check_file_is_valid(icon_file, "FANART.JPG");
+    }
+    if(path == NULL) {
+        path = xfdesktop_check_file_is_valid(icon_file, "FANART.jpg");
+    }
+
+    g_free(icon_file);
+
+    /* the file *should* already be a thumbnail */
+    return path;
+}
+
+static void
+xfdesktop_file_icon_manager_queue_thumbnail(XfdesktopFileIconManager *fmanager,
+                                            XfdesktopFileIcon *icon)
+{
+    GFile *file;
+    GFileInfo *file_info;
+    gchar *path = NULL, *thumbnail_file = NULL;
+
+    file = xfdesktop_file_icon_peek_file(icon);
+    file_info = xfdesktop_file_icon_peek_file_info(icon);
+
+    if(file != NULL)
+        path = g_file_get_path(file);
+
+    if(fmanager->priv->show_thumbnails && path != NULL) {
+        if(g_file_info_get_file_type(file_info) == G_FILE_TYPE_DIRECTORY) {
+            /* Try to load a thumbnail from the standard folder image locations */
+            thumbnail_file = xfdesktop_load_icon_location_from_folder(icon);
+
+            if(thumbnail_file) {
+                GFile *temp = g_file_new_for_path(thumbnail_file);
+                xfdesktop_icon_set_thumbnail_file(XFDESKTOP_ICON(icon), temp);
+            }
+        } else {
+            xfdesktop_thumbnailer_queue_thumbnail(fmanager->priv->thumbnailer,
+                                                  path);
+        }
+    }
+}
+
 static gboolean
 xfdesktop_file_icon_manager_add_icon(XfdesktopFileIconManager *fmanager,
                                      XfdesktopFileIcon *icon,
                                      gint16 row, gint16 col,
                                      gboolean defer_if_missing)
 {
+    GFile *file = xfdesktop_file_icon_peek_file(icon);
     gboolean do_add = FALSE;
     const gchar *name;
-    GFile *file;
-    gchar *path = NULL;
 
-    file = xfdesktop_file_icon_peek_file(icon);
-
-    if(file != NULL)
-        path = g_file_get_path(file);
-
-    if(fmanager->priv->show_thumbnails && path != NULL) {
-        xfdesktop_thumbnailer_queue_thumbnail(fmanager->priv->thumbnailer,
-                                              path);
-    }
-
+    xfdesktop_file_icon_manager_queue_thumbnail(fmanager, icon);
     
     name = xfdesktop_icon_peek_label(XFDESKTOP_ICON(icon));
     if(row >= 0 && col >= 0) {
@@ -3408,11 +3496,10 @@ xfdesktop_file_icon_manager_requeue_thumbnails(gpointer key,
                                                gpointer value,
                                                gpointer data)
 {
-    GFile *file = key;
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(data);
+    XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(value);
 
-    xfdesktop_thumbnailer_queue_thumbnail(fmanager->priv->thumbnailer,
-                                          g_file_get_path(file));
+    xfdesktop_file_icon_manager_queue_thumbnail(fmanager, icon);
 }
 
 static void
