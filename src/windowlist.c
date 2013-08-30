@@ -220,7 +220,6 @@ windowlist_populate(XfceDesktop *desktop,
     WnckWindow *wnck_window;
     gint w, h;
     PangoFontDescription *italic_font_desc;
-    gboolean is_empty_workspace;
     
     if(!show_windowlist)
         return;
@@ -304,7 +303,7 @@ windowlist_populate(XfceDesktop *desktop,
         }
         
         windows = wnck_screen_get_windows_stacked(wnck_screen);
-        is_empty_workspace = TRUE;
+
         for(l = windows; l; l = l->next) {
             wnck_window = l->data;
             
@@ -327,7 +326,7 @@ windowlist_populate(XfceDesktop *desktop,
             mi = menu_item_from_wnck_window(wnck_window, w, h);
             if(!mi)
                 continue;
-            is_empty_workspace = FALSE;
+
             if(wnck_workspace != active_workspace
                && (!wnck_window_is_sticky(wnck_window) || wnck_workspace != active_workspace))
             {
@@ -346,7 +345,7 @@ windowlist_populate(XfceDesktop *desktop,
                     G_CALLBACK(mi_destroyed_cb), wnck_window);
         }
         
-        if(!wl_submenus && !is_empty_workspace) {
+        if(!wl_submenus) {
             mi = gtk_separator_menu_item_new();
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(submenu), mi);
