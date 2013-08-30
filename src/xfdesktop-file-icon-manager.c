@@ -113,7 +113,10 @@ struct _XfdesktopFileIconManagerPrivate
     GFileEnumerator *enumerator;
 
     GVolumeMonitor *volume_monitor;
-    
+
+    GFileMonitor *metadata_monitor;
+    guint metadata_timer;
+
     GHashTable *icons;
     GHashTable *removable_icons;
     GHashTable *special_icons;
@@ -2296,6 +2299,70 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
 }
 
 static void
+xfdesktop_file_icon_manager_update_file_info(gpointer key,
+                                             gpointer value,
+                                             gpointer user_data)
+{
+    XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(value);
+    GFileInfo *file_info;
+
+    if(icon) {
+        file_info = g_file_query_info(key, XFDESKTOP_FILE_INFO_NAMESPACE,
+                                      G_FILE_QUERY_INFO_NONE, NULL, NULL);
+
+        if(file_info) {
+            /* update the icon if the file still exists */
+            xfdesktop_file_icon_update_file_info(icon, file_info);
+            g_object_unref(file_info);
+        }
+    }
+}
+
+static gboolean
+xfdesktop_file_icon_manager_metadata_timer(gpointer user_data)
+{
+    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
+
+    g_hash_table_foreach(fmanager->priv->icons,
+                         (GHFunc)xfdesktop_file_icon_manager_update_file_info,
+                         fmanager);
+
+    fmanager->priv->metadata_timer = 0;
+
+    return FALSE;
+}
+
+static void
+xfdesktop_file_icon_manager_metadata_changed(GFileMonitor     *monitor,
+                                             GFile            *file,
+                                             GFile            *other_file,
+                                             GFileMonitorEvent event,
+                                             gpointer          user_data)
+{
+    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
+
+    switch(event) {
+        case G_FILE_MONITOR_EVENT_CHANGED:
+            DBG("metadata file changed event");
+
+            /* cool down timer so we don't call this due to multiple file
+             * changes at the same time. */
+            if(fmanager->priv->metadata_timer == 0) {
+                guint timer;
+
+                timer = g_timeout_add_seconds(5,
+                                              (GSourceFunc)xfdesktop_file_icon_manager_metadata_timer,
+                                              fmanager);
+
+                fmanager->priv->metadata_timer = timer;
+            }
+            break;
+        default:
+            break;
+    }
+}
+
+static void
 xfdesktop_file_icon_manager_files_ready(GFileEnumerator *enumerator,
                                         GAsyncResult *result,
                                         gpointer user_data)
@@ -2346,6 +2413,7 @@ xfdesktop_file_icon_manager_files_ready(GFileEnumerator *enumerator,
         }
 
 
+        /* initialize the file monitor */
         if(!fmanager->priv->monitor) {
             fmanager->priv->monitor = g_file_monitor(fmanager->priv->folder,
                                                      G_FILE_MONITOR_SEND_MOVED,
@@ -2353,6 +2421,21 @@ xfdesktop_file_icon_manager_files_ready(GFileEnumerator *enumerator,
             g_signal_connect(fmanager->priv->monitor, "changed",
                              G_CALLBACK(xfdesktop_file_icon_manager_file_changed),
                              fmanager);
+        }
+
+        /* initialize the metadata watching the gvfs files since it doesn't
+         * send notification messages when monitored files change */
+        if(!fmanager->priv->metadata_monitor) {
+            gchar *location = xfce_resource_lookup(XFCE_RESOURCE_DATA, "gvfs-metadata/");
+            GFile *metadata_location = g_file_new_for_path(location);
+
+            fmanager->priv->metadata_monitor = g_file_monitor(metadata_location,
+                                                              G_FILE_MONITOR_NONE,
+                                                              NULL, NULL);
+            g_signal_connect(fmanager->priv->metadata_monitor, "changed",
+                             G_CALLBACK(xfdesktop_file_icon_manager_metadata_changed),
+                             fmanager);
+            g_free(location);
         }
     } else {
         for(l = files; l; l = l->next) {
