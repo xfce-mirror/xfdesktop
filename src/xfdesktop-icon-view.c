@@ -922,9 +922,7 @@ xfdesktop_icon_view_button_release(GtkWidget *widget,
        icon_view->priv->definitely_dragging == FALSE &&
        icon_view->priv->definitely_rubber_banding == FALSE)
     {
-        xfce_desktop_popup_root_menu(XFCE_DESKTOP(widget),
-                                     evt->button,
-                                     evt->time);
+        xfce_desktop_popup_root_menu(XFCE_DESKTOP(widget), evt->button, evt->time);
     }
 
     if(evt->button == 1 || evt->button == 3) {

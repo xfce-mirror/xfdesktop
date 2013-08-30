@@ -182,12 +182,10 @@ client_message_received(GtkWidget *w, GdkEventClient *evt, gpointer user_data)
             g_idle_add((GSourceFunc)reload_idle_cb, user_data);
             return TRUE;
         } else if(!strcmp(MENU_MESSAGE, evt->data.b)) {
-            xfce_desktop_popup_root_menu(XFCE_DESKTOP(w), 0,
-                                         GDK_CURRENT_TIME);
+            xfce_desktop_popup_root_menu(XFCE_DESKTOP(w), 0, 0);
             return TRUE;
         } else if(!strcmp(WINDOWLIST_MESSAGE, evt->data.b)) {
-            xfce_desktop_popup_secondary_root_menu(XFCE_DESKTOP(w), 0,
-                                                   GDK_CURRENT_TIME);
+            xfce_desktop_popup_secondary_root_menu(XFCE_DESKTOP(w), 0, 0);
             return TRUE;
 #ifdef ENABLE_FILE_ICONS
         } else if(!strcmp(ARRANGE_MESSAGE, evt->data.b)) {

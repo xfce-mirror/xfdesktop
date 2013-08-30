@@ -106,7 +106,9 @@ struct _XfceDesktopPriv
     gint single_workspace_num;
 
     SessionLogoutFunc session_logout_func;
-    
+
+    guint32 grab_time;
+
 #ifdef ENABLE_DESKTOP_ICONS
     XfceDesktopIconStyle icons_style;
     gboolean icons_font_size_set;
@@ -152,6 +154,8 @@ static void xfce_desktop_realize(GtkWidget *widget);
 static void xfce_desktop_unrealize(GtkWidget *widget);
 static gboolean xfce_desktop_button_press_event(GtkWidget *widget,
                                                 GdkEventButton *evt);
+static gboolean xfce_desktop_button_release_event(GtkWidget *widget,
+                                                  GdkEventButton *evt);
 static gboolean xfce_desktop_popup_menu(GtkWidget *widget);
 
 static gboolean xfce_desktop_expose(GtkWidget *w,
@@ -723,6 +727,7 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
     widget_class->realize = xfce_desktop_realize;
     widget_class->unrealize = xfce_desktop_unrealize;
     widget_class->button_press_event = xfce_desktop_button_press_event;
+    widget_class->button_release_event = xfce_desktop_button_release_event;
     widget_class->expose_event = xfce_desktop_expose;
     widget_class->delete_event = xfce_desktop_delete_event;
     widget_class->popup_menu = xfce_desktop_popup_menu;
@@ -1093,33 +1098,73 @@ xfce_desktop_unrealize(GtkWidget *widget)
     gtk_widget_set_realized(widget, FALSE);
 }
 
+static void
+xfce_desktop_release_grab(GtkWidget *w)
+{
+    XfceDesktop *desktop = XFCE_DESKTOP(w);
+    GdkDisplay  *display;
+
+    g_return_if_fail(XFCE_IS_DESKTOP(w));
+
+    if(desktop->priv->grab_time != 0) {
+        display = gdk_screen_get_display(desktop->priv->gscreen);
+        gdk_display_pointer_ungrab(display, desktop->priv->grab_time);
+        desktop->priv->grab_time = 0;
+    }
+}
+
 static gboolean
 xfce_desktop_button_press_event(GtkWidget *w,
                                 GdkEventButton *evt)
 {
     guint button = evt->button;
     guint state = evt->state;
+    XfceDesktop *desktop = XFCE_DESKTOP(w);
+
     g_return_val_if_fail(XFCE_IS_DESKTOP(w), FALSE);
 
     if(evt->type == GDK_BUTTON_PRESS) {
         if(button == 3 || (button == 1 && (state & GDK_SHIFT_MASK))) {
 #ifdef ENABLE_DESKTOP_ICONS
-            if(XFCE_DESKTOP(w)->priv->icons_style != XFCE_DESKTOP_ICON_STYLE_NONE)
+            if(desktop->priv->icons_style != XFCE_DESKTOP_ICON_STYLE_NONE)
                 return FALSE;
 #endif
-            xfce_desktop_popup_root_menu(XFCE_DESKTOP(w),
-                                         button,
-                                         evt->time);
+            if(desktop->priv->grab_time == 0)
+                desktop->priv->grab_time = xfce_grab_cursor(w, evt);
+            else
+                return FALSE;
+
+            if(desktop->priv->grab_time != 0) {
+                xfce_desktop_popup_root_menu(desktop, button,
+                                             desktop->priv->grab_time);
+                return TRUE;
+            }
         } else if(button == 2 || (button == 1 && (state & GDK_SHIFT_MASK)
                                   && (state & GDK_CONTROL_MASK)))
         {
-            xfce_desktop_popup_secondary_root_menu(XFCE_DESKTOP(w),
-                                                   button, evt->time);
-            return TRUE;
+            if(desktop->priv->grab_time == 0)
+                desktop->priv->grab_time = xfce_grab_cursor(w, evt);
+            else
+                return FALSE;
+
+            if(desktop->priv->grab_time != 0) {
+                xfce_desktop_popup_secondary_root_menu(desktop, button,
+                                                       desktop->priv->grab_time);
+                return TRUE;
+            }
         }
     }
     
     return FALSE;
+}
+
+static gboolean
+xfce_desktop_button_release_event(GtkWidget *w,
+                                  GdkEventButton *evt)
+{
+    xfce_desktop_release_grab(w);
+
+    return TRUE;
 }
 
 static gboolean
@@ -1510,34 +1555,30 @@ xfce_desktop_do_menu_popup(XfceDesktop *desktop,
     else
         screen = gdk_display_get_default_screen(gdk_display_get_default());
 
-    if(xfdesktop_popup_grab_available(gdk_screen_get_root_window(screen),
-                                      activate_time))
-    {
-        menu = gtk_menu_new();
-        gtk_menu_set_screen(GTK_MENU(menu), screen);
-        g_signal_connect_swapped(G_OBJECT(menu), "deactivate",
-                                 G_CALLBACK(g_idle_add),
-                                 (gpointer)xfce_desktop_menu_destroy_idled);
+    menu = gtk_menu_new();
+    gtk_menu_set_screen(GTK_MENU(menu), screen);
+    g_signal_connect_swapped(G_OBJECT(menu), "deactivate",
+                             G_CALLBACK(g_idle_add),
+                             (gpointer)xfce_desktop_menu_destroy_idled);
 
-        g_signal_emit(G_OBJECT(desktop), populate_signal, 0, menu);
+    g_signal_emit(G_OBJECT(desktop), populate_signal, 0, menu);
 
-        /* if nobody populated the menu, don't do anything */
-        menu_children = gtk_container_get_children(GTK_CONTAINER(menu));
-        if(!menu_children) {
-            gtk_widget_destroy(menu);
-            return;
-        }
+    /* if nobody populated the menu, don't do anything */
+    menu_children = gtk_container_get_children(GTK_CONTAINER(menu));
+    if(!menu_children) {
+        gtk_widget_destroy(menu);
+        return;
+    }
 
-        g_list_free(menu_children);
+    g_list_free(menu_children);
 
-        gtk_menu_attach_to_widget(GTK_MENU(menu), GTK_WIDGET(desktop), NULL);
+    gtk_menu_attach_to_widget(GTK_MENU(menu), GTK_WIDGET(desktop), NULL);
 
-        /* bug #3652: for some reason passing the correct button here breaks
-         * on some systems but not others.  always pass 0 for now. */
-        gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL, 0,
-                       activate_time);
-    } else
-        g_critical("Unable to get keyboard/mouse grab. Unable to pop up menu");
+    /* bug #3652: for some reason passing the correct button here breaks
+     * on some systems but not others.  always pass 0 for now. */
+    gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL, 0, activate_time);
+
+    xfce_desktop_release_grab(GTK_WIDGET(desktop));
 }
 
 void
@@ -1545,6 +1586,22 @@ xfce_desktop_popup_root_menu(XfceDesktop *desktop,
                              guint button,
                              guint activate_time)
 {
+    GdkScreen *screen;
+
+    if(gtk_widget_has_screen(GTK_WIDGET(desktop)))
+        screen = gtk_widget_get_screen(GTK_WIDGET(desktop));
+    else
+        screen = gdk_display_get_default_screen(gdk_display_get_default());
+
+    if(activate_time == 0) {
+        activate_time = GDK_CURRENT_TIME;
+        if(!xfdesktop_popup_grab_available(gdk_screen_get_root_window(screen),
+                                           activate_time)) {
+            g_critical("keyboard or mouse grab failed.");
+            return;
+        }
+    }
+
     xfce_desktop_do_menu_popup(desktop, button, activate_time,
                                signals[SIG_POPULATE_ROOT_MENU]);
 }
@@ -1554,10 +1611,25 @@ xfce_desktop_popup_secondary_root_menu(XfceDesktop *desktop,
                                        guint button,
                                        guint activate_time)
 {
+    GdkScreen *screen;
+
+    if(gtk_widget_has_screen(GTK_WIDGET(desktop)))
+        screen = gtk_widget_get_screen(GTK_WIDGET(desktop));
+    else
+        screen = gdk_display_get_default_screen(gdk_display_get_default());
+
+    if(activate_time == 0) {
+        activate_time = GDK_CURRENT_TIME;
+        if(!xfdesktop_popup_grab_available(gdk_screen_get_root_window(screen),
+                                           activate_time)) {
+            g_critical("keyboard or mouse grab failed.");
+            return;
+        }
+    }
+
     xfce_desktop_do_menu_popup(desktop, button, activate_time,
                                signals[SIG_POPULATE_SECONDARY_ROOT_MENU]);
 }
-
 void
 xfce_desktop_refresh(XfceDesktop *desktop)
 {

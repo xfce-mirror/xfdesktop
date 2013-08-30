@@ -301,6 +301,36 @@ xfdesktop_send_client_message(Window xid, const gchar *msg)
     gtk_widget_destroy(win);
 }
 
+guint
+xfce_grab_cursor(GtkWidget *w,
+                 GdkEventButton *evt)
+{
+    GdkCursor     *cursor;
+    GdkGrabStatus  status;
+    GdkDisplay    *display;
+
+    TRACE("entering");
+
+    /* create a cursor */
+    display = gdk_screen_get_display(gtk_widget_get_screen(w));
+    cursor = gdk_cursor_new_for_display(display, GDK_FLEUR);
+
+    /* grab the pointer for the desktop */
+    status = gdk_pointer_grab(evt->window, FALSE,
+                              GDK_BUTTON_MOTION_MASK
+                              | GDK_BUTTON_RELEASE_MASK,
+                              NULL, cursor, evt->time);
+
+    gdk_cursor_unref(cursor);
+
+    if(status != GDK_GRAB_SUCCESS) {
+        g_warning("mouse grab failed.");
+        return 0;
+    }
+
+    return evt->time;
+}
+
 /* Code taken from xfwm4/src/menu.c:grab_available().  This should fix the case
  * where binding 'xfdesktop -menu' to a keyboard shortcut sometimes works and
  * sometimes doesn't.  Credit for this one goes to Olivier.
