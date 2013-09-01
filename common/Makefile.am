@@ -7,26 +7,17 @@ libxfdesktop_built_sources = \
 libxfdesktop_la_SOURCES = \
 	$(libxfdesktop_built_sources) \
 	xfdesktop-common.c \
-	xfdesktop-common.h
+	xfdesktop-common.h \
+	xfdesktop-thumbnailer.c \
+	xfdesktop-thumbnailer.h
 
 libxfdesktop_la_CFLAGS = \
 	-I$(top_srcdir)/src \
 	$(LIBXFCE4UTIL_CFLAGS) \
-	$(GTK_CFLAGS)
-
-if ENABLE_DESKTOP_ICONS
-if ENABLE_FILE_ICONS
-
-libxfdesktop_la_SOURCES += \
-	xfdesktop-thumbnailer.c \
-	xfdesktop-thumbnailer.h
-
-libxfdesktop_la_CFLAGS += \
+	$(GTK_CFLAGS) \
 	-DDBUS_API_SUBJECT_TO_CHANGE \
 	$(DBUS_CFLAGS)
 
-endif
-endif
 
 if MAINTAINER_MODE
 

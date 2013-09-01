@@ -795,7 +795,7 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
                                                       XFCE_DESKTOP_ICON_STYLE_FILES,
 #else
                                                       XFCE_DESKTOP_ICON_STYLE_WINDOWS,
-#endif
+#endif /* ENABLE_FILE_ICONS */
                                                       XFDESKTOP_PARAM_FLAGS));
 
     g_object_class_install_property(gobject_class, PROP_ICON_SIZE,
@@ -819,6 +819,8 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
                                                          FALSE,
                                                          XFDESKTOP_PARAM_FLAGS));
 
+#endif /* ENABLE_DESKTOP_ICONS */
+
     g_object_class_install_property(gobject_class, PROP_SINGLE_WORKSPACE_MODE,
                                     g_param_spec_boolean("single-workspace-mode",
                                                          "single-workspace-mode",
@@ -832,7 +834,7 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
                                                      "single-workspace-number",
                                                      0, G_MAXINT16, 0,
                                                      XFDESKTOP_PARAM_FLAGS));
-#endif
+
 #undef XFDESKTOP_PARAM_FLAGS
 }
 
@@ -999,7 +1001,6 @@ xfce_desktop_realize(GtkWidget *widget)
     
     screen_set_selection(desktop);
 
-    /* We have to force wnck to initialize */
     wnck_screen = wnck_screen_get(gdk_screen_get_number(desktop->priv->gscreen));
     desktop->priv->wnck_screen = wnck_screen;
 
@@ -1258,12 +1259,11 @@ xfce_desktop_style_set(GtkWidget *w,
 static void
 xfce_desktop_connect_settings(XfceDesktop *desktop)
 {
+#ifdef ENABLE_DESKTOP_ICONS
+#define ICONS_PREFIX "/desktop-icons/"
     XfconfChannel *channel = desktop->priv->channel;
 
     xfce_desktop_freeze_updates(desktop);
-
-#ifdef ENABLE_DESKTOP_ICONS
-#define ICONS_PREFIX "/desktop-icons/"
 
     xfconf_g_property_bind(channel, ICONS_PREFIX "style",
                            XFCE_TYPE_DESKTOP_ICON_STYLE,
@@ -1275,10 +1275,10 @@ xfce_desktop_connect_settings(XfceDesktop *desktop)
     xfconf_g_property_bind(channel, ICONS_PREFIX "use-custom-font-size",
                            G_TYPE_BOOLEAN,
                            G_OBJECT(desktop), "icon-font-size-set");
-#undef ICONS_PREFIX
-#endif
 
     xfce_desktop_thaw_updates(desktop);
+#undef ICONS_PREFIX
+#endif
 }
 
 static gboolean
