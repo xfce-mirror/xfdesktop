@@ -63,14 +63,15 @@ struct _XfdesktopIconClass
     gboolean (*activated)(XfdesktopIcon *icon);
     
     /*< virtual functions >*/
-    GdkPixbuf *(*peek_pixbuf)(XfdesktopIcon *icon, gint size);
+    GdkPixbuf *(*peek_pixbuf)(XfdesktopIcon *icon, gint width, gint height);
     G_CONST_RETURN gchar *(*peek_label)(XfdesktopIcon *icon);
     
     GdkDragAction (*get_allowed_drag_actions)(XfdesktopIcon *icon);
     
     GdkDragAction (*get_allowed_drop_actions)(XfdesktopIcon *icon, GdkDragAction *suggested_action);
     gboolean (*do_drop_dest)(XfdesktopIcon *icon, XfdesktopIcon *src_icon, GdkDragAction action);
-    
+
+    GdkPixbuf *(*peek_tooltip_pixbuf)(XfdesktopIcon *icon, gint width, gint height);
     G_CONST_RETURN gchar *(*peek_tooltip)(XfdesktopIcon *icon);
     
     void (*set_thumbnail_file)(XfdesktopIcon *icon, GFile *file);
@@ -85,8 +86,12 @@ GType xfdesktop_icon_get_type(void) G_GNUC_CONST;
 /* xfdesktop virtual function accessors */
 
 GdkPixbuf *xfdesktop_icon_peek_pixbuf(XfdesktopIcon *icon,
-                                     gint size);
+                                     gint width,
+                                     gint height);
 G_CONST_RETURN gchar *xfdesktop_icon_peek_label(XfdesktopIcon *icon);
+GdkPixbuf *xfdesktop_icon_peek_tooltip_pixbuf(XfdesktopIcon *icon,
+                                              gint width,
+                                              gint height);
 G_CONST_RETURN gchar *xfdesktop_icon_peek_tooltip(XfdesktopIcon *icon);
 
 void xfdesktop_icon_set_position(XfdesktopIcon *icon,
@@ -111,6 +116,10 @@ GtkWidget *xfdesktop_icon_peek_icon_view(XfdesktopIcon *icon);
 
 void xfdesktop_icon_set_thumbnail_file(XfdesktopIcon *icon, GFile *file);
 void xfdesktop_icon_delete_thumbnail(XfdesktopIcon *icon);
+
+void xfdesktop_icon_invalidate_regular_pixbuf(XfdesktopIcon *icon);
+void xfdesktop_icon_invalidate_tooltip_pixbuf(XfdesktopIcon *icon);
+void xfdesktop_icon_invalidate_pixbuf(XfdesktopIcon *icon);
 
 /*< signal triggers >*/
 

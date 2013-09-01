@@ -40,6 +40,10 @@ struct _XfdesktopIconPrivate
     GdkRectangle pixbuf_extents;
     GdkRectangle text_extents;
     GdkRectangle total_extents;
+
+    GdkPixbuf *pix, *tooltip_pix;
+    gint cur_pix_width, cur_pix_height;
+    gint cur_tooltip_pix_width, cur_tooltip_pix_height;
 };
 
 enum {
@@ -54,6 +58,7 @@ enum {
 
 static guint __signals[SIG_N_SIGNALS] = { 0, };
 
+static void xfdesktop_icon_finalize(GObject *obj);
 
 G_DEFINE_ABSTRACT_TYPE(XfdesktopIcon, xfdesktop_icon, G_TYPE_OBJECT)
 
@@ -61,8 +66,12 @@ G_DEFINE_ABSTRACT_TYPE(XfdesktopIcon, xfdesktop_icon, G_TYPE_OBJECT)
 static void
 xfdesktop_icon_class_init(XfdesktopIconClass *klass)
 {
+    GObjectClass *gobject_class = (GObjectClass *)klass;
+
     g_type_class_add_private(klass, sizeof(XfdesktopIconPrivate));
-    
+
+    gobject_class->finalize = xfdesktop_icon_finalize;
+
     __signals[SIG_PIXBUF_CHANGED] = g_signal_new("pixbuf-changed",
                                                  XFDESKTOP_TYPE_ICON,
                                                  G_SIGNAL_RUN_LAST,
@@ -117,6 +126,13 @@ xfdesktop_icon_init(XfdesktopIcon *icon)
                                              XfdesktopIconPrivate);
 }
 
+static void
+xfdesktop_icon_finalize(GObject *obj)
+{
+    XfdesktopIcon *icon = XFDESKTOP_ICON(obj);
+
+    xfdesktop_icon_invalidate_pixbuf(icon);
+}
 
 void
 xfdesktop_icon_set_position(XfdesktopIcon *icon,
@@ -179,15 +195,26 @@ xfdesktop_icon_get_extents(XfdesktopIcon *icon,
 /*< required >*/
 GdkPixbuf *
 xfdesktop_icon_peek_pixbuf(XfdesktopIcon *icon,
-                           gint size)
+                           gint width, gint height)
 {
     XfdesktopIconClass *klass;
     
     g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), NULL);
     klass = XFDESKTOP_ICON_GET_CLASS(icon);
     g_return_val_if_fail(klass->peek_pixbuf, NULL);
-    
-    return klass->peek_pixbuf(icon, size);
+
+    if(width != icon->priv->cur_pix_width || height != icon->priv->cur_pix_height)
+        xfdesktop_icon_invalidate_regular_pixbuf(icon);
+
+    if(icon->priv->pix == NULL) {
+        icon->priv->cur_pix_width = width;
+        icon->priv->cur_pix_height = height;
+
+        /* Generate a new pixbuf */
+        icon->priv->pix = klass->peek_pixbuf(icon, width, height);
+    }
+
+    return icon->priv->pix;
 }
 
 /*< required >*/
@@ -252,6 +279,31 @@ xfdesktop_icon_do_drop_dest(XfdesktopIcon *icon,
     g_return_val_if_fail(klass->do_drop_dest, FALSE);
     
     return klass->do_drop_dest(icon, src_icon, action);
+}
+
+/*< optional >*/
+GdkPixbuf *
+xfdesktop_icon_peek_tooltip_pixbuf(XfdesktopIcon *icon,
+                                   gint width, gint height)
+{
+    XfdesktopIconClass *klass;
+
+    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), NULL);
+    klass = XFDESKTOP_ICON_GET_CLASS(icon);
+    g_return_val_if_fail(klass->peek_tooltip_pixbuf, NULL);
+
+    if(width != icon->priv->cur_tooltip_pix_width || height != icon->priv->cur_tooltip_pix_height)
+        xfdesktop_icon_invalidate_tooltip_pixbuf(icon);
+
+    if(icon->priv->tooltip_pix == NULL) {
+        icon->priv->cur_tooltip_pix_width = width;
+        icon->priv->cur_tooltip_pix_height = height;
+
+        /* Generate a new pixbuf */
+        icon->priv->tooltip_pix = klass->peek_tooltip_pixbuf(icon, width, height);
+    }
+
+    return icon->priv->tooltip_pix;
 }
 
 /*< optional >*/
@@ -323,6 +375,31 @@ xfdesktop_icon_peek_icon_view(XfdesktopIcon *icon)
 {
     g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), NULL);
     return g_object_get_data(G_OBJECT(icon), "--xfdesktop-icon-view");
+}
+
+void
+xfdesktop_icon_invalidate_regular_pixbuf(XfdesktopIcon *icon)
+{
+    if(icon->priv->pix) {
+        g_object_unref(G_OBJECT(icon->priv->pix));
+        icon->priv->pix = NULL;
+    }
+}
+
+void
+xfdesktop_icon_invalidate_tooltip_pixbuf(XfdesktopIcon *icon)
+{
+    if(icon->priv->tooltip_pix) {
+        g_object_unref(G_OBJECT(icon->priv->tooltip_pix));
+        icon->priv->tooltip_pix = NULL;
+    }
+}
+
+void
+xfdesktop_icon_invalidate_pixbuf(XfdesktopIcon *icon)
+{
+    xfdesktop_icon_invalidate_regular_pixbuf(icon);
+    xfdesktop_icon_invalidate_tooltip_pixbuf(icon);
 }
 
 /*< signal triggers >*/

@@ -37,8 +37,7 @@
 #define DEFAULT_ICON_FONT_SIZE   12
 #define DEFAULT_ICON_SIZE        32
 #define ITHEME_FLAGS             (GTK_ICON_LOOKUP_USE_BUILTIN \
-                                  | GTK_ICON_LOOKUP_GENERIC_FALLBACK \
-                                  | GTK_ICON_LOOKUP_FORCE_SIZE)
+                                  | GTK_ICON_LOOKUP_GENERIC_FALLBACK)
 
 #define LIST_TEXT                "# xfce backdrop list"
 #define XFDESKTOP_SELECTION_FMT  "XFDESKTOP_SELECTION_%d"
@@ -65,7 +64,8 @@
   "time::*," \
   "thumbnail::*," \
   "trash::*," \
-  "unix::*"
+  "unix::*," \
+  "metadata::*"
 
 /**
  * Filesystem information namespaces queried for #GFileInfo * objects.

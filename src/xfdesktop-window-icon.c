@@ -35,8 +35,6 @@
 struct _XfdesktopWindowIconPrivate
 {
     gint workspace;
-    GdkPixbuf *pix;
-    gint cur_pix_size;
     gchar *label;
     WnckWindow *window;
 };
@@ -44,7 +42,7 @@ struct _XfdesktopWindowIconPrivate
 static void xfdesktop_window_icon_finalize(GObject *obj);
 
 static GdkPixbuf *xfdesktop_window_icon_peek_pixbuf(XfdesktopIcon *icon,
-                                                   gint size);
+                                                   gint width, gint height);
 static G_CONST_RETURN gchar *xfdesktop_window_icon_peek_label(XfdesktopIcon *icon);
 
 static gboolean xfdesktop_window_icon_activated(XfdesktopIcon *icon);
@@ -90,9 +88,6 @@ xfdesktop_window_icon_finalize(GObject *obj)
     gchar data_name[256];
     guint16 row, col;
     
-    if(icon->priv->pix)
-        g_object_unref(G_OBJECT(icon->priv->pix));
-    
     g_free(icon->priv->label);
     
     /* save previous position */
@@ -136,43 +131,27 @@ xfdesktop_window_icon_changed_cb(WnckWindow *window,
                                  gpointer user_data)
 {
     XfdesktopWindowIcon *icon = user_data;
-    
-    if(icon->priv->pix) {
-        g_object_unref(G_OBJECT(icon->priv->pix));
-        icon->priv->pix = NULL;
-    }
-    
+
+    xfdesktop_icon_invalidate_pixbuf(XFDESKTOP_ICON(icon));
     xfdesktop_icon_label_changed(XFDESKTOP_ICON(icon));
 }
 
-
-
-
-
 static GdkPixbuf *
 xfdesktop_window_icon_peek_pixbuf(XfdesktopIcon *icon,
-                                 gint size)
+                                 gint width, gint height)
 {
     XfdesktopWindowIcon *window_icon = XFDESKTOP_WINDOW_ICON(icon);
-    
-    if(!window_icon->priv->pix || window_icon->priv->cur_pix_size != size) {
-        if(window_icon->priv->pix)
-            g_object_unref(G_OBJECT(window_icon->priv->pix));
-        
-        window_icon->priv->pix = wnck_window_get_icon(window_icon->priv->window);
-        if(window_icon->priv->pix) {
-            if(gdk_pixbuf_get_width(window_icon->priv->pix) != size) {
-                window_icon->priv->pix = gdk_pixbuf_scale_simple(window_icon->priv->pix,
-                                                                 size,
-                                                                 size,
-                                                                 GDK_INTERP_BILINEAR);
-            } else
-                g_object_ref(G_OBJECT(window_icon->priv->pix));
-            window_icon->priv->cur_pix_size = size;
-        }
+    GdkPixbuf *pix = NULL;
+
+    pix = wnck_window_get_icon(window_icon->priv->window);
+    if(pix) {
+        if(gdk_pixbuf_get_height(pix) != height) {
+            pix = gdk_pixbuf_scale_simple(pix, height, height, GDK_INTERP_BILINEAR);
+        } else
+            g_object_ref(G_OBJECT(pix));
     }
-    
-    return window_icon->priv->pix;
+
+    return pix;
 }
 
 static G_CONST_RETURN gchar *

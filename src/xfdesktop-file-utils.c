@@ -63,6 +63,8 @@
 #include "xfdesktop-file-utils.h"
 #include "xfdesktop-trash-proxy.h"
 
+static void xfdesktop_file_utils_add_emblems(GdkPixbuf *pix, GList *emblems);
+
 gboolean
 xfdesktop_file_utils_is_desktop_file(GFileInfo *info)
 {
@@ -488,42 +490,54 @@ xfdesktop_file_utils_get_fallback_icon(gint size)
 }
 
 GdkPixbuf *
-xfdesktop_file_utils_get_icon(const gchar *custom_icon_name,
-                              GIcon *icon,
-                              gint size,
-                              const GdkPixbuf *emblem,
+xfdesktop_file_utils_get_icon(GIcon *icon,
+                              gint width,
+                              gint height,
                               guint opacity)
 {
     GtkIconTheme *itheme = gtk_icon_theme_get_default();
     GdkPixbuf *pix_theme = NULL, *pix = NULL;
+    GIcon *base_icon = NULL;
+    gint size = MIN(width, height);
 
-    if(custom_icon_name) {
-        pix_theme = gtk_icon_theme_load_icon(itheme, custom_icon_name, size,
-                                             ITHEME_FLAGS, NULL);
-        if(!pix_theme && *custom_icon_name == '/' && g_file_test(custom_icon_name, G_FILE_TEST_IS_REGULAR))
-            pix_theme = gdk_pixbuf_new_from_file_at_size(custom_icon_name, size, size, NULL);
-    }
+    g_return_val_if_fail(width > 0 && height > 0 && icon != NULL, NULL);
 
-    if(!pix_theme && icon) {
-        if(G_IS_THEMED_ICON(icon)) {
-          GtkIconInfo *icon_info = gtk_icon_theme_lookup_by_gicon(itheme,
-                                                                  icon, size,
-                                                                  ITHEME_FLAGS);
-          if(icon_info) {
-              pix_theme = gtk_icon_info_load_icon(icon_info, NULL);
-              gtk_icon_info_free(icon_info);
-          }
-        } else if(G_IS_LOADABLE_ICON(icon)) {
-            GInputStream *stream = g_loadable_icon_load(G_LOADABLE_ICON(icon),
-                                                        size, NULL, NULL, NULL);
-            if(stream) {
-                pix = gdk_pixbuf_new_from_stream(stream, NULL, NULL);
-                g_object_unref(stream);
-            }
+    /* Extract the base icon if available */
+    if(G_IS_EMBLEMED_ICON(icon))
+        base_icon = g_emblemed_icon_get_icon(G_EMBLEMED_ICON(icon));
+    else
+        base_icon = icon;
+
+    if(!base_icon)
+        return NULL;
+
+    if(G_IS_THEMED_ICON(base_icon)) {
+      GtkIconInfo *icon_info = gtk_icon_theme_lookup_by_gicon(itheme,
+                                                              base_icon, size,
+                                                              ITHEME_FLAGS);
+      if(icon_info) {
+          pix_theme = gtk_icon_info_load_icon(icon_info, NULL);
+          gtk_icon_info_free(icon_info);
+      }
+    } else if(G_IS_LOADABLE_ICON(base_icon)) {
+        GInputStream *stream = g_loadable_icon_load(G_LOADABLE_ICON(base_icon),
+                                                    size, NULL, NULL, NULL);
+        if(stream) {
+            pix = gdk_pixbuf_new_from_stream_at_scale(stream, width, height, TRUE, NULL, NULL);
+            g_object_unref(stream);
         }
+    } else if(G_IS_FILE_ICON(base_icon)) {
+        GFile *file = g_file_icon_get_file(G_FILE_ICON(icon));
+        gchar *path = g_file_get_path(file);
+
+        pix = gdk_pixbuf_new_from_file_at_size(path, width, height, NULL);
+
+        g_free(path);
+        g_object_unref(file);
     }
 
-    if(G_LIKELY(pix_theme)) {
+
+    if(pix_theme) {
         /* we can't edit thsese icons */
         pix = gdk_pixbuf_copy(pix_theme);
         g_object_unref(G_OBJECT(pix_theme));
@@ -540,35 +554,9 @@ xfdesktop_file_utils_get_icon(const gchar *custom_icon_name,
         return NULL;
     }
 
-    if(emblem) {
-        gint emblem_pix_size = gdk_pixbuf_get_width(emblem);
-        gint dest_size = size - emblem_pix_size;
-
-        /* if we're using the fallback icon, we don't want to draw an emblem on
-         * it, since other icons might use it without the emblem */
-        if(G_UNLIKELY(pix == xfdesktop_fallback_icon)) {
-            GdkPixbuf *tmp = gdk_pixbuf_copy(pix);
-            g_object_unref(G_OBJECT(pix));
-            pix = tmp;
-        }
-
-        if(dest_size < 0)
-            g_critical("xfdesktop_file_utils_get_file_icon(): (dest_size > 0) failed");
-        else {
-            DBG("calling gdk_pixbuf_composite(%p, %p, %d, %d, %d, %d, %.1f, %.1f, %.1f, %.1f, %d, %d)",
-                emblem, pix,
-                dest_size, dest_size,
-                emblem_pix_size, emblem_pix_size,
-                (gdouble)dest_size, (gdouble)dest_size,
-                1.0, 1.0, GDK_INTERP_BILINEAR, 255);
-
-            gdk_pixbuf_composite(emblem, pix,
-                                 dest_size, dest_size,
-                                 emblem_pix_size, emblem_pix_size,
-                                 dest_size, dest_size,
-                                 1.0, 1.0, GDK_INTERP_BILINEAR, 255);
-        }
-    }
+    /* Add the emblems */
+    if(G_IS_EMBLEMED_ICON(icon))
+        xfdesktop_file_utils_add_emblems(pix, g_emblemed_icon_get_emblems(G_EMBLEMED_ICON(icon)));
 
     if(opacity != 100) {
         GdkPixbuf *tmp = exo_gdk_pixbuf_lucent(pix, opacity);
@@ -577,6 +565,97 @@ xfdesktop_file_utils_get_icon(const gchar *custom_icon_name,
     }
 
     return pix;
+}
+
+static void
+xfdesktop_file_utils_add_emblems(GdkPixbuf *pix, GList *emblems)
+{
+    GdkPixbuf *emblem_pix;
+    gint max_emblems;
+    gint pix_width, pix_height;
+    gint emblem_size;
+    gint dest_x, dest_y, dest_width, dest_height;
+    gint position;
+    GList *iter;
+    GtkIconTheme *itheme = gtk_icon_theme_get_default();
+
+    g_return_if_fail(pix != NULL);
+
+    pix_width = gdk_pixbuf_get_width(pix);
+    pix_height = gdk_pixbuf_get_height(pix);
+
+    emblem_size = MIN(pix_width, pix_height) / 2;
+
+    /* render up to four emblems for sizes from 48 onwards, else up to 2 emblems */
+    max_emblems = (pix_height < 48 && pix_width < 48) ? 2 : 4;
+
+    for(iter = emblems, position = 0; iter != NULL && position < max_emblems; iter = iter->next) {
+        /* extract the icon from the emblem and load it */
+        GIcon *emblem = g_emblem_get_icon(iter->data);
+        GtkIconInfo *icon_info = gtk_icon_theme_lookup_by_gicon(itheme,
+                                                                emblem,
+                                                                emblem_size,
+                                                                ITHEME_FLAGS);
+        if(icon_info) {
+            emblem_pix = gtk_icon_info_load_icon(icon_info, NULL);
+            gtk_icon_info_free(icon_info);
+        }
+
+        if(emblem_pix) {
+            if(gdk_pixbuf_get_width(emblem_pix) != emblem_size
+               || gdk_pixbuf_get_height(emblem_pix) != emblem_size)
+            {
+                GdkPixbuf *tmp = gdk_pixbuf_scale_simple(emblem_pix,
+                                                         emblem_size,
+                                                         emblem_size,
+                                                         GDK_INTERP_BILINEAR);
+                g_object_unref(emblem_pix);
+                emblem_pix = tmp;
+            }
+
+            dest_width = pix_width - emblem_size;
+            dest_height = pix_height - emblem_size;
+
+            switch(position) {
+                case 0: /* bottom right */
+                    dest_x = dest_width;
+                    dest_y = dest_height;
+                    break;
+                case 1: /* bottom left */
+                    dest_x = 0;
+                    dest_y = dest_height;
+                    break;
+                case 2: /* upper right */
+                    dest_x = dest_width;
+                    dest_y = 0;
+                    break;
+                case 3: /* upper left */
+                    dest_x = dest_y = 0;
+                    break;
+                default:
+                    g_warning("Invalid emblem position in xfdesktop_file_utils_add_emblems");
+            }
+
+            DBG("calling gdk_pixbuf_composite(%p, %p, %d, %d, %d, %d, %d, %d, %.1f, %.1f, %d, %d) pixbuf w: %d h: %d",
+                emblem_pix, pix,
+                dest_x, dest_y,
+                emblem_size, emblem_size,
+                dest_x, dest_y,
+                1.0, 1.0, GDK_INTERP_BILINEAR, 255, pix_width, pix_height);
+
+            /* Add the emblem */
+            gdk_pixbuf_composite(emblem_pix, pix,
+                                 dest_x, dest_y,
+                                 emblem_size, emblem_size,
+                                 dest_x, dest_y,
+                                 1.0, 1.0, GDK_INTERP_BILINEAR, 255);
+
+            g_object_unref(emblem_pix);
+            emblem_pix = NULL;
+
+            position++;
+        }
+    }
 }
 
 void

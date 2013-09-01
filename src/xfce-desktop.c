@@ -316,6 +316,40 @@ set_real_root_window_pixmap(GdkScreen *gscreen,
 #endif
 }
 
+static GdkPixmap *
+create_bg_pixmap(GdkScreen *gscreen, gpointer user_data)
+{
+    XfceDesktop *desktop = user_data;
+    gint w, h;
+
+    TRACE("entering");
+
+    g_return_val_if_fail(XFCE_IS_DESKTOP(desktop), NULL);
+
+    if(desktop->priv->workspaces == NULL)
+        return NULL;
+
+    w = gdk_screen_get_width(gscreen);
+    h = gdk_screen_get_height(gscreen);
+    gtk_widget_set_size_request(GTK_WIDGET(desktop), w, h);
+    gtk_window_resize(GTK_WINDOW(desktop), w, h);
+
+    if(desktop->priv->bg_pixmap)
+        g_object_unref(G_OBJECT(desktop->priv->bg_pixmap));
+    desktop->priv->bg_pixmap = gdk_pixmap_new(GDK_DRAWABLE(gtk_widget_get_window(GTK_WIDGET(desktop))),
+                                              w, h, -1);
+
+    if(!GDK_IS_PIXMAP(desktop->priv->bg_pixmap))
+        return NULL;
+
+    set_real_root_window_pixmap(desktop->priv->gscreen,
+                                desktop->priv->bg_pixmap);
+    gdk_window_set_back_pixmap(gtk_widget_get_window(GTK_WIDGET(desktop)),
+                               desktop->priv->bg_pixmap, FALSE);
+
+    return desktop->priv->bg_pixmap;
+}
+
 static void
 backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
 {
@@ -332,7 +366,14 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     
     if(desktop->priv->updates_frozen || !gtk_widget_get_realized(GTK_WIDGET(desktop)))
         return;
-    
+
+    if(!GDK_IS_PIXMAP(pmap)) {
+        pmap = create_bg_pixmap(gscreen, desktop);
+
+        if(!GDK_IS_PIXMAP(pmap))
+            return;
+    }
+
     TRACE("really entering");
 
     current_workspace = xfce_desktop_get_current_workspace(desktop);
@@ -458,28 +499,12 @@ static void
 screen_size_changed_cb(GdkScreen *gscreen, gpointer user_data)
 {
     XfceDesktop *desktop = user_data;
-    gint w, h, current_workspace;
+    gint current_workspace;
 
     TRACE("entering");
 
-    g_return_if_fail(XFCE_IS_DESKTOP(desktop));
-
-    if(desktop->priv->workspaces == NULL)
+    if(!create_bg_pixmap(gscreen, desktop))
         return;
-    
-    w = gdk_screen_get_width(gscreen);
-    h = gdk_screen_get_height(gscreen);
-    gtk_widget_set_size_request(GTK_WIDGET(desktop), w, h);
-    gtk_window_resize(GTK_WINDOW(desktop), w, h);
-    
-    if(desktop->priv->bg_pixmap)
-        g_object_unref(G_OBJECT(desktop->priv->bg_pixmap));
-    desktop->priv->bg_pixmap = gdk_pixmap_new(GDK_DRAWABLE(gtk_widget_get_window(GTK_WIDGET(desktop))),
-                                              w, h, -1);
-    set_real_root_window_pixmap(desktop->priv->gscreen,
-                                desktop->priv->bg_pixmap);
-    gdk_window_set_back_pixmap(gtk_widget_get_window(GTK_WIDGET(desktop)),
-                               desktop->priv->bg_pixmap, FALSE);
 
     current_workspace = xfce_desktop_get_current_workspace(desktop);
 
@@ -571,7 +596,7 @@ workspace_changed_cb(WnckScreen *wnck_screen,
     for(i = 0; i < xfce_desktop_get_n_monitors(desktop); i++) {
         /* We want to compare the current workspace backdrop with the new one
          * and see if we can avoid changing them if they are the same image/style */
-        if(current_workspace < desktop->priv->nworkspaces) {
+        if(current_workspace < desktop->priv->nworkspaces && current_workspace >= 0) {
             current_backdrop = xfce_workspace_get_backdrop(desktop->priv->workspaces[current_workspace], i);
             new_backdrop = xfce_workspace_get_backdrop(desktop->priv->workspaces[new_workspace], i);
 
@@ -580,7 +605,8 @@ workspace_changed_cb(WnckScreen *wnck_screen,
                 backdrop_changed_cb(new_backdrop, user_data);
             }
         } else {
-            /* If current_workspace was removed, get the new backdrop and apply it */
+            /* If current_workspace was removed or never existed, get the new
+             * backdrop and apply it */
             new_backdrop = xfce_workspace_get_backdrop(desktop->priv->workspaces[new_workspace], i);
             backdrop_changed_cb(new_backdrop, user_data);
         }
@@ -925,7 +951,7 @@ xfce_desktop_realize(GtkWidget *widget)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(widget);
     GdkAtom atom;
-    gint sw, sh, i;
+    gint sw, sh;
     Window xid;
     GdkWindow *groot;
     WnckScreen *wnck_screen;
@@ -975,7 +1001,6 @@ xfce_desktop_realize(GtkWidget *widget)
 
     /* We have to force wnck to initialize */
     wnck_screen = wnck_screen_get(gdk_screen_get_number(desktop->priv->gscreen));
-    wnck_screen_force_update(wnck_screen);
     desktop->priv->wnck_screen = wnck_screen;
 
     xfconf_g_property_bind(desktop->priv->channel,
@@ -986,24 +1011,8 @@ xfce_desktop_realize(GtkWidget *widget)
                            SINGLE_WORKSPACE_NUMBER, G_TYPE_INT,
                            G_OBJECT(desktop), "single-workspace-number");
 
-    /* Get the current workspace number */
-    desktop->priv->current_workspace = xfce_desktop_get_current_workspace(desktop);
-    desktop->priv->nworkspaces = wnck_screen_get_workspace_count(wnck_screen);
-
-    desktop->priv->workspaces = g_realloc(desktop->priv->workspaces,
-                                          desktop->priv->nworkspaces * sizeof(XfceWorkspace *));
-
-    for(i = 0; i < desktop->priv->nworkspaces; i++) {
-        desktop->priv->workspaces[i] = xfce_workspace_new(desktop->priv->gscreen,
-                                                          desktop->priv->channel,
-                                                          desktop->priv->property_prefix,
-                                                          i);
-        xfce_workspace_monitors_changed(desktop->priv->workspaces[i],
-                                        desktop->priv->gscreen);
-
-        g_signal_connect(desktop->priv->workspaces[i], "workspace-backdrop-changed",
-                         G_CALLBACK(workspace_backdrop_changed_cb), desktop);
-    }
+    /* Start with an invalid workspace so it updates */
+    desktop->priv->current_workspace = -1;
 
     g_signal_connect(desktop->priv->wnck_screen, "active-workspace-changed",
                      G_CALLBACK(workspace_changed_cb), desktop);
