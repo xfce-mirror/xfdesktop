@@ -93,9 +93,6 @@ XDT_CHECK_PACKAGE([XFCONF], [libxfconf-0], [xfconf_minimum_version])
 XDT_CHECK_OPTIONAL_PACKAGE([GIO_UNIX], [gio-unix-2.0], [glib_minimum_version], [gio-unix],
     [gio-unix, for special treatment of mount points on UNIX])
 
-XDT_CHECK_OPTIONAL_PACKAGE([DBUS], [dbus-glib-1], [dbus_minimum_version], [dbus-glib],
-    [dbus-glib, for dbus calls to the thumbnail and file manager services])
-
 dnl do we want desktop icons at all?
 AC_ARG_ENABLE([desktop-icons],
     [AC_HELP_STRING([--disable-desktop-icons],
@@ -120,6 +117,23 @@ if test "x$ac_cv_enable_file_icons" = "xno" -o "x$enable_desktop_icons" != "xyes
     enable_file_icons="no"
 else
     enable_file_icons="yes"
+fi
+
+if test "x$enable_desktop_icons" = "xyes" -a "x$enable_file_icons" = "xyes"; then
+    dnl here i shall abuse the XDT_CHECK_PACKAGE macro
+    XDT_CHECK_PACKAGE([DBUS], [dbus-glib-1], [dbus_minimum_version], [], [
+echo "*** Optional package dbus-glib-1 was either not found on your system"
+echo "*** or is too old.  Please install or upgrade to at least version"
+echo "*** dbus_minimum_version, or adjust the PKG_CONFIG_PATH environment variable"
+echo "*** if you installed the new version of the package in a nonstandard"
+echo "*** prefix.  File/launcher icons will be disabled."
+])
+    enable_file_icons="no"
+    if test "x$DBUS_VERSION" != "x"; then
+        enable_file_icons="yes"
+        AC_DEFINE([ENABLE_FILE_ICONS], [1],
+                  [Define if file icons should be enabled])
+    fi
 fi
 
 AM_CONDITIONAL([ENABLE_FILE_ICONS], [test "x$enable_file_icons" = "xyes"])
