@@ -1913,7 +1913,8 @@ xfdesktop_icon_view_realize(GtkWidget *widget)
     
     pctx = gtk_widget_get_pango_context(GTK_WIDGET(icon_view));
     icon_view->priv->playout = pango_layout_new(pctx);
-    
+    g_object_unref(pctx);
+
     if(icon_view->priv->font_size > 0) {
         xfdesktop_icon_view_modify_font_size(icon_view,
                                              icon_view->priv->font_size);
@@ -2806,7 +2807,6 @@ xfdesktop_icon_view_setup_pango_layout(XfdesktopIconView *icon_view,
                                        PangoLayout *playout)
 {
     const gchar *label = xfdesktop_icon_peek_label(icon);
-    PangoRectangle prect;
 
     g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view)
                      && XFDESKTOP_IS_ICON(icon));
@@ -2816,7 +2816,6 @@ xfdesktop_icon_view_setup_pango_layout(XfdesktopIconView *icon_view,
     pango_layout_set_width(playout, TEXT_WIDTH * PANGO_SCALE);
     pango_layout_set_text(playout, label, -1);
 
-    pango_layout_get_pixel_extents(playout, NULL, &prect);
     if(!xfdesktop_icon_view_is_icon_selected(icon_view, icon)
        && icon_view->priv->ellipsize_icon_labels) {
         /* constrain the text area */

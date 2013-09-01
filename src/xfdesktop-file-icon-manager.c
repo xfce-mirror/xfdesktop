@@ -416,7 +416,10 @@ xfdesktop_file_icon_manager_finalize(GObject *obj)
     
     g_object_unref(fmanager->priv->folder);
     g_object_unref(fmanager->priv->thumbnailer);
-    
+
+    if(fmanager->priv->volume_monitor != NULL)
+        g_object_unref(fmanager->priv->volume_monitor);
+
     G_OBJECT_CLASS(xfdesktop_file_icon_manager_parent_class)->finalize(obj);
 }
 
@@ -536,6 +539,8 @@ xfdesktop_file_icon_manager_check_create_desktop_folder(GFile *folder)
             result = FALSE;
         }
     }
+
+    g_object_unref(info);
 
     return result;
 }
@@ -2263,8 +2268,7 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
 
     switch(event) {
         case G_FILE_MONITOR_EVENT_MOVED:
-            DBG("got a moved event, old filename: %s new filename: %s",
-                g_file_get_path(file), g_file_get_path(other_file));
+            DBG("got a moved event");
 
             icon = g_hash_table_lookup(fmanager->priv->icons, file);
             if(!icon) {
@@ -2305,7 +2309,7 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
             break;
         case G_FILE_MONITOR_EVENT_ATTRIBUTE_CHANGED:
         case G_FILE_MONITOR_EVENT_CHANGED:
-            DBG("got changed event: %s", g_file_get_path(file));
+            DBG("got changed event");
             
             icon = g_hash_table_lookup(fmanager->priv->icons, file);
             if(icon) {
@@ -2679,12 +2683,8 @@ xfdesktop_file_icon_manager_load_removable_media(XfdesktopFileIconManager *fmana
     if(fmanager->priv->removable_icons)
         return;
     
-    if(!fmanager->priv->volume_monitor) {
+    if(!fmanager->priv->volume_monitor)
         fmanager->priv->volume_monitor = g_volume_monitor_get();
-        g_object_add_weak_pointer(G_OBJECT(fmanager->priv->volume_monitor),
-                                  (gpointer)&fmanager->priv->volume_monitor);
-    } else
-       g_object_ref(G_OBJECT(fmanager->priv->volume_monitor));
     
     fmanager->priv->removable_icons = g_hash_table_new_full(g_direct_hash,
                                                             g_direct_equal,
@@ -2745,6 +2745,7 @@ xfdesktop_file_icon_manager_remove_removable_media(XfdesktopFileIconManager *fma
                                              fmanager);
     
         g_object_unref(fmanager->priv->volume_monitor);
+        fmanager->priv->volume_monitor = NULL;
     }
 }
 
