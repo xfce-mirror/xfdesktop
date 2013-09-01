@@ -1911,7 +1911,6 @@ xfdesktop_icon_view_realize(GtkWidget *widget)
     
     pctx = gtk_widget_get_pango_context(GTK_WIDGET(icon_view));
     icon_view->priv->playout = pango_layout_new(pctx);
-    g_object_unref(pctx);
 
     if(icon_view->priv->font_size > 0) {
         xfdesktop_icon_view_modify_font_size(icon_view,
