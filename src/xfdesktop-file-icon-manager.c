@@ -2271,10 +2271,8 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
             DBG("got a moved event");
 
             icon = g_hash_table_lookup(fmanager->priv->icons, file);
-            if(!icon) {
-                g_critical("G_FILE_MONITOR_EVENT_MOVED for an icon that doesn't exist");
+            if(!icon)
                 return;
-            }
 
             file_info = g_file_query_info(other_file, XFDESKTOP_FILE_INFO_NAMESPACE,
                                           G_FILE_QUERY_INFO_NONE, NULL, NULL);
