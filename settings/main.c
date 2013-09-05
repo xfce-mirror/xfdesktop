@@ -258,9 +258,14 @@ xfdesktop_settings_add_file_to_queue(AppearancePanel *panel, PreviewData *pdata)
 
     /* Create the thread if it doesn't exist */
     if(panel->preview_thread == NULL) {
+#if GLIB_CHECK_VERSION(2, 32, 0)
         panel->preview_thread = g_thread_try_new("xfdesktop_settings_create_previews",
                                                  xfdesktop_settings_create_previews,
                                                  panel, NULL);
+#else
+        panel->preview_thread = g_thread_create(xfdesktop_settings_create_previews,
+                                                panel, FALSE, NULL);
+#endif
         if(panel->preview_thread == NULL)
         {
                 g_critical("Unable to create thread for image previews.");
@@ -1566,6 +1571,9 @@ main(int argc, char **argv)
 
     xfce_textdomain(GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
 
+#if !GLIB_CHECK_VERSION(2, 32, 0)
+    g_thread_init(NULL);
+#endif
     gdk_threads_init();
 
     if(!gtk_init_with_args(&argc, &argv, "", option_entries, PACKAGE, &error)) {
