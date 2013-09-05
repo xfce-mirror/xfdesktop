@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Cyryl Sochacki <cyrylsochacki@gmail.com>, 2013
 # Piotr Maliński <riklaunim@gmail.com>, 2006
 # Piotr Sokół <psokol@jabster.pl>, 2009,2011-2013
 # Piotr Strębski <strebski@o2.pl>, 2013
@@ -12,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-27 06:32+0200\n"
-"PO-Revision-Date: 2013-08-28 09:23+0000\n"
-"Last-Translator: Piotr Strębski <strebski@o2.pl>\n"
+"POT-Creation-Date: 2013-08-31 06:32+0200\n"
+"PO-Revision-Date: 2013-09-05 10:16+0000\n"
+"Last-Translator: Cyryl Sochacki <cyrylsochacki@gmail.com>\n"
 "Language-Team: Polish <xfce-i18n-pl@xfce.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -273,7 +274,7 @@ msgstr "Zminimalizowane okna"
 msgid "File/launcher icons"
 msgstr "Pliki i aktywatory"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:945
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:950
 msgid "Desktop"
 msgstr "Pulpit"
 
@@ -383,74 +384,74 @@ msgstr "<b>Domyślne</b>"
 msgid "_Icons"
 msgstr "_Ikony"
 
-#: ../src/main.c:243
+#: ../src/main.c:241
 msgid "Display version information"
 msgstr "Wypisuje informacje o wersji i kończy"
 
-#: ../src/main.c:244
+#: ../src/main.c:242
 msgid "Reload all settings, refresh image list"
 msgstr "Wczytuje ponownie ustawienia, odświeża listę obrazów"
 
-#: ../src/main.c:245
+#: ../src/main.c:243
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "Wyświetla menu programów w bieżącym położeniu kursora myszy"
 
-#: ../src/main.c:246
+#: ../src/main.c:244
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "Wyświetla menu okien w bieżącym położeniu kursora myszy"
 
-#: ../src/main.c:248
+#: ../src/main.c:246
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "Porządkuje i rozmieszcza ikony na pulpicie"
 
-#: ../src/main.c:250
+#: ../src/main.c:248
 msgid "Cause xfdesktop to quit"
 msgstr "Kończy działanie programu"
 
-#: ../src/main.c:267
+#: ../src/main.c:265
 #, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "Nie udało się przetworzyć argumentów: %s\n"
 
-#: ../src/main.c:275
+#: ../src/main.c:273
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Program %s wersja %s, uruchomiony w środowisku Xfce %s.\n"
 
-#: ../src/main.c:277
+#: ../src/main.c:275
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Skompilowano przy użyciu Gtk+-%d.%d.%d, zlinkowano przy użyciu Gtk+-%d.%d.%d."
 
-#: ../src/main.c:281
+#: ../src/main.c:279
 #, c-format
 msgid "Build options:\n"
 msgstr "Opcje kompilacji:\n"
 
-#: ../src/main.c:282
+#: ../src/main.c:280
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "   Menu programów:\t\t%s\n"
 
-#: ../src/main.c:284 ../src/main.c:291 ../src/main.c:298
+#: ../src/main.c:282 ../src/main.c:289 ../src/main.c:296
 msgid "enabled"
 msgstr "włączone"
 
-#: ../src/main.c:286 ../src/main.c:293 ../src/main.c:300
+#: ../src/main.c:284 ../src/main.c:291 ../src/main.c:298
 msgid "disabled"
 msgstr "wyłączone"
 
-#: ../src/main.c:289
+#: ../src/main.c:287
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "   Ikony pulpitu:\t\t%s\n"
 
-#: ../src/main.c:296
+#: ../src/main.c:294
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "   Ikony plików pulpitu:\t%s\n"
 
-#: ../src/main.c:329
+#: ../src/main.c:327
 #, c-format
 msgid "%s is not running.\n"
 msgstr "Program %s nie jest uruchomiony.\n"
@@ -459,35 +460,55 @@ msgstr "Program %s nie jest uruchomiony.\n"
 msgid "_Applications"
 msgstr "_Programy"
 
-#: ../src/windowlist.c:229
+#: ../src/windowlist.c:72
+#, c-format
+msgid "Remove Workspace %d"
+msgstr "Usuń obszar roboczy %d"
+
+#: ../src/windowlist.c:73
+#, c-format
+msgid ""
+"Do you really want to remove workspace %d?\n"
+"Note: You are currently on workspace %d."
+msgstr "Czy na pewno chcesz usunąć obszar roboczy %d?\nUwaga: Jesteś obecnie w  grupie roboczej %d."
+
+#: ../src/windowlist.c:77
+#, c-format
+msgid "Remove Workspace '%s'"
+msgstr "Usuń obszar roboczy '%s'"
+
+#: ../src/windowlist.c:78
+#, c-format
+msgid ""
+"Do you really want to remove workspace '%s'?\n"
+"Note: You are currently on workspace '%s'."
+msgstr "Czy na pewno chcesz usunąć obszar roboczy '%s'?\nUwaga: Jesteś obecnie w  grupie roboczej '%s'."
+
+#. Popup a dialog box confirming that the user wants to remove a
+#. * workspace
+#: ../src/windowlist.c:85
+msgid "Remove"
+msgstr "Usuń"
+
+#: ../src/windowlist.c:245
 msgid "Window List"
 msgstr "Lista okien"
 
-#: ../src/windowlist.c:255
+#: ../src/windowlist.c:271
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>Obszar roboczy %d</b>"
 
-#: ../src/windowlist.c:264
-#, c-format
-msgid "Workspace %d"
-msgstr "Obszar roboczy %d"
-
-#: ../src/windowlist.c:266
-#, c-format
-msgid "<i>Workspace %d</i>"
-msgstr "<i>Obszar roboczy %d</i>"
-
-#: ../src/windowlist.c:362 ../src/windowlist.c:365
+#: ../src/windowlist.c:360 ../src/windowlist.c:363
 msgid "_Add Workspace"
 msgstr "_Dodaj obszar roboczy"
 
-#: ../src/windowlist.c:373
+#: ../src/windowlist.c:371
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "_Usuń obszar roboczy %d"
 
-#: ../src/windowlist.c:376
+#: ../src/windowlist.c:374
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "_Usuń obszar roboczy „%s”"
