@@ -1376,7 +1376,7 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
                                 guint time_)
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
-    GdkAtom target = GDK_NONE;
+    GdkAtom target;
     guint16 hover_row = 0, hover_col = 0;
     XfdesktopIcon *icon_on_dest = NULL;
     GdkDragAction our_action = 0;
@@ -1496,7 +1496,7 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
                               guint time_)
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
-    GdkAtom target = GDK_NONE;
+    GdkAtom target;
     XfdesktopIcon *icon;
     guint16 old_row, old_col, row, col;
     GList *l;
@@ -3117,7 +3117,7 @@ xfdesktop_move_all_cached_icons_to_desktop(XfdesktopIconView *icon_view)
 {
 #ifdef ENABLE_FILE_ICONS
     GList *l, *leftovers = NULL;
-    XfdesktopFileIconManager *fmanager;
+    XfdesktopFileIconManager *fmanager = NULL;
 
     TRACE("entering");
 

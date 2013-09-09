@@ -715,7 +715,7 @@ xfdesktop_volume_icon_menu_eject(GtkWidget *widget,
     GtkWidget *toplevel = gtk_widget_get_toplevel(icon_view);
     GVolume *volume;
     GMount *mount;
-    GMountOperation *operation;
+    GMountOperation *operation = NULL;
 
     volume = xfdesktop_volume_icon_peek_volume(icon);
     mount = g_volume_get_mount(volume);
@@ -743,7 +743,8 @@ xfdesktop_volume_icon_menu_eject(GtkWidget *widget,
     }
 
     g_object_unref(mount);
-    g_object_unref(operation);
+    if(operation != NULL)
+        g_object_unref(operation);
 }
 
 static void

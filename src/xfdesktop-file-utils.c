@@ -324,7 +324,7 @@ xfdesktop_file_utils_mount_is_internal (GMount *mount)
 gboolean
 xfdesktop_file_utils_volume_is_removable(GVolume *volume)
 {
-  gboolean can_eject = FALSE;
+  gboolean can_eject;
   gboolean can_mount = FALSE;
   gboolean can_unmount = FALSE;
   gboolean is_removable = FALSE;

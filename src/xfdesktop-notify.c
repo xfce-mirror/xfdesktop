@@ -235,9 +235,10 @@ xfdesktop_notify_unmount_finish (GMount *mount, gboolean unmount_successful)
       notify_notification_set_urgency (notification, NOTIFY_URGENCY_NORMAL);
       notify_notification_set_timeout (notification, NOTIFY_EXPIRES_DEFAULT);
       notify_notification_show (notification, NULL);
+
+      g_free (message);
     }
 
-  g_free (message);
   g_free (icon_name);
   g_free (name);
 }
@@ -419,9 +420,10 @@ xfdesktop_notify_eject_finish (GVolume *volume, gboolean eject_successful)
       notify_notification_set_urgency (notification, NOTIFY_URGENCY_NORMAL);
       notify_notification_set_timeout (notification, NOTIFY_EXPIRES_DEFAULT);
       notify_notification_show (notification, NULL);
+
+      g_free (message);
     }
 
-  g_free (message);
   g_free (icon_name);
   g_free (name);
 }
