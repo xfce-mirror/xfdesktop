@@ -648,13 +648,6 @@ xfdesktop_special_file_icon_update_trash_count(XfdesktopSpecialFileIcon *special
         return;
     }
 
-    special_file_icon->priv->trash_item_count = g_file_info_get_attribute_uint32(
-                                                    special_file_icon->priv->file_info,
-                                                    G_FILE_ATTRIBUTE_TRASH_ITEM_COUNT);
-
-    if(special_file_icon->priv->trash_item_count == 0)
-        return;
-
     /* The trash count may return a number of files the user can't
      * currently delete, for example if the file is in a removable
      * drive that isn't mounted.
@@ -679,6 +672,7 @@ xfdesktop_special_file_icon_update_trash_count(XfdesktopSpecialFileIcon *special
     g_object_unref(enumerator);
 
     special_file_icon->priv->trash_item_count = n;
+    TRACE("exiting, trash count %d", n);
 }
 
 /* public API */
