@@ -377,7 +377,8 @@ xfdesktop_file_utils_file_icon_list_to_file_list(GList *icon_list)
     for(l = icon_list; l; l = l->next) {
         icon = XFDESKTOP_FILE_ICON(l->data);
         file = xfdesktop_file_icon_peek_file(icon);
-        file_list = g_list_prepend(file_list, g_object_ref(file));
+        if(file)
+            file_list = g_list_prepend(file_list, g_object_ref(file));
     }
 
     return g_list_reverse(file_list);
