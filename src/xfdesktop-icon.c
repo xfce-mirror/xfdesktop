@@ -230,6 +230,22 @@ xfdesktop_icon_peek_label(XfdesktopIcon *icon)
     return klass->peek_label(icon);
 }
 
+/*< required >*/
+gchar *
+xfdesktop_icon_get_identifier(XfdesktopIcon *icon)
+{
+    XfdesktopIconClass *klass;
+
+    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), NULL);
+
+    klass = XFDESKTOP_ICON_GET_CLASS(icon);
+
+    if(!klass->get_identifier)
+        return NULL;
+
+    return klass->get_identifier(icon);
+}
+
 /*< optional; drags aren't allowed if not provided >*/
 GdkDragAction
 xfdesktop_icon_get_allowed_drag_actions(XfdesktopIcon *icon)
@@ -321,6 +337,7 @@ xfdesktop_icon_peek_tooltip(XfdesktopIcon *icon)
     
     return klass->peek_tooltip(icon);
 }
+
 
 /*< optional >*/
 void xfdesktop_icon_delete_thumbnail(XfdesktopIcon *icon)

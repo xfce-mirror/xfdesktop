@@ -71,6 +71,7 @@ static void xfdesktop_special_file_icon_finalize(GObject *obj);
 static GdkPixbuf *xfdesktop_special_file_icon_peek_pixbuf(XfdesktopIcon *icon,
                                                           gint width, gint height);
 static G_CONST_RETURN gchar *xfdesktop_special_file_icon_peek_label(XfdesktopIcon *icon);
+static gchar *xfdesktop_special_file_icon_get_identifier(XfdesktopIcon *icon);
 static GdkPixbuf *xfdesktop_special_file_icon_peek_tooltip_pixbuf(XfdesktopIcon *icon,
                                                                   gint width, gint height);
 static G_CONST_RETURN gchar *xfdesktop_special_file_icon_peek_tooltip(XfdesktopIcon *icon);
@@ -121,6 +122,7 @@ xfdesktop_special_file_icon_class_init(XfdesktopSpecialFileIconClass *klass)
     
     icon_class->peek_pixbuf = xfdesktop_special_file_icon_peek_pixbuf;
     icon_class->peek_label = xfdesktop_special_file_icon_peek_label;
+    icon_class->get_identifier = xfdesktop_special_file_icon_get_identifier;
     icon_class->peek_tooltip_pixbuf = xfdesktop_special_file_icon_peek_tooltip_pixbuf;
     icon_class->peek_tooltip = xfdesktop_special_file_icon_peek_tooltip;
     icon_class->get_allowed_drag_actions = xfdesktop_special_file_icon_get_allowed_drag_actions;
@@ -295,6 +297,19 @@ xfdesktop_special_file_icon_peek_label(XfdesktopIcon *icon)
         return _("File System");
     else
         return info ? g_file_info_get_display_name(info) : NULL;
+}
+
+static gchar *
+xfdesktop_special_file_icon_get_identifier(XfdesktopIcon *icon)
+{
+    XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
+
+    g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON(icon), NULL);
+
+    if(xfdesktop_file_icon_peek_file(file_icon) == NULL)
+        return NULL;
+
+    return g_file_get_path(xfdesktop_file_icon_peek_file(file_icon));
 }
 
 static GdkDragAction

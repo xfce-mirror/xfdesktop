@@ -77,6 +77,7 @@ static void xfdesktop_regular_file_icon_delete_thumbnail_file(XfdesktopIcon *ico
 static GdkPixbuf *xfdesktop_regular_file_icon_peek_pixbuf(XfdesktopIcon *icon,
                                                           gint width, gint height);
 static G_CONST_RETURN gchar *xfdesktop_regular_file_icon_peek_label(XfdesktopIcon *icon);
+static gchar *xfdesktop_regular_file_icon_get_identifier(XfdesktopIcon *icon);
 static GdkPixbuf *xfdesktop_regular_file_icon_peek_tooltip_pixbuf(XfdesktopIcon *icon,
                                                                   gint width, gint height);
 static G_CONST_RETURN gchar *xfdesktop_regular_file_icon_peek_tooltip(XfdesktopIcon *icon);
@@ -122,6 +123,7 @@ xfdesktop_regular_file_icon_class_init(XfdesktopRegularFileIconClass *klass)
     
     icon_class->peek_pixbuf = xfdesktop_regular_file_icon_peek_pixbuf;
     icon_class->peek_label = xfdesktop_regular_file_icon_peek_label;
+    icon_class->get_identifier = xfdesktop_regular_file_icon_get_identifier;
     icon_class->peek_tooltip_pixbuf = xfdesktop_regular_file_icon_peek_tooltip_pixbuf;
     icon_class->peek_tooltip = xfdesktop_regular_file_icon_peek_tooltip;
     icon_class->get_allowed_drag_actions = xfdesktop_regular_file_icon_get_allowed_drag_actions;
@@ -388,6 +390,19 @@ xfdesktop_regular_file_icon_peek_label(XfdesktopIcon *icon)
     g_return_val_if_fail(XFDESKTOP_IS_REGULAR_FILE_ICON(icon), NULL);
 
     return regular_file_icon->priv->display_name;
+}
+
+static gchar *
+xfdesktop_regular_file_icon_get_identifier(XfdesktopIcon *icon)
+{
+    XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
+
+    g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON(icon), NULL);
+
+    if(xfdesktop_file_icon_peek_file(file_icon) == NULL)
+        return NULL;
+
+    return g_file_get_path(xfdesktop_file_icon_peek_file(file_icon));
 }
 
 static GdkDragAction

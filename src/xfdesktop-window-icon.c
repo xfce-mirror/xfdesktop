@@ -44,6 +44,7 @@ static void xfdesktop_window_icon_finalize(GObject *obj);
 static GdkPixbuf *xfdesktop_window_icon_peek_pixbuf(XfdesktopIcon *icon,
                                                    gint width, gint height);
 static G_CONST_RETURN gchar *xfdesktop_window_icon_peek_label(XfdesktopIcon *icon);
+static gchar *xfdesktop_window_icon_get_identifier(XfdesktopIcon *icon);
 
 static gboolean xfdesktop_window_icon_activated(XfdesktopIcon *icon);
 static gboolean xfdesktop_window_icon_populate_context_menu(XfdesktopIcon *icon,
@@ -70,6 +71,7 @@ xfdesktop_window_icon_class_init(XfdesktopWindowIconClass *klass)
     
     icon_class->peek_pixbuf = xfdesktop_window_icon_peek_pixbuf;
     icon_class->peek_label = xfdesktop_window_icon_peek_label;
+    icon_class->get_identifier = xfdesktop_window_icon_get_identifier;
     icon_class->activated = xfdesktop_window_icon_activated;
     icon_class->populate_context_menu = xfdesktop_window_icon_populate_context_menu;
 }
@@ -163,6 +165,12 @@ xfdesktop_window_icon_peek_label(XfdesktopIcon *icon)
         window_icon->priv->label = g_strdup(wnck_window_get_name(window_icon->priv->window));
     
     return window_icon->priv->label;
+}
+
+static gchar *
+xfdesktop_window_icon_get_identifier(XfdesktopIcon *icon)
+{
+    return g_strdup(xfdesktop_window_icon_peek_label(icon));
 }
 
 static gboolean

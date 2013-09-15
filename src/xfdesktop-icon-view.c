@@ -3131,11 +3131,16 @@ xfdesktop_move_all_cached_icons_to_desktop(XfdesktopIconView *icon_view)
     for(l = icon_view->priv->pending_icons; l; l = l->next) {
         gint16 row, col;
         XfdesktopIcon *icon = XFDESKTOP_ICON(l->data);
+        gchar *identifier = xfdesktop_icon_get_identifier(icon);
+
+        if(!XFDESKTOP_IS_FILE_ICON(icon))
+            continue;
 
         /* Try to get the cached position for the new resolution */
         if(xfdesktop_file_icon_manager_get_cached_icon_position(
                                                             fmanager,
                                                             xfdesktop_icon_peek_label(icon),
+                                                            identifier,
                                                             &row,
                                                             &col))
         {
@@ -3152,6 +3157,9 @@ xfdesktop_move_all_cached_icons_to_desktop(XfdesktopIconView *icon_view)
         } else {
             leftovers = g_list_prepend(leftovers, icon);
         }
+
+        if(identifier)
+            g_free(identifier);
     }
 
     g_list_free(icon_view->priv->pending_icons);

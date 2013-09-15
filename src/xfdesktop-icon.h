@@ -73,6 +73,8 @@ struct _XfdesktopIconClass
 
     GdkPixbuf *(*peek_tooltip_pixbuf)(XfdesktopIcon *icon, gint width, gint height);
     G_CONST_RETURN gchar *(*peek_tooltip)(XfdesktopIcon *icon);
+
+    gchar *(*get_identifier)(XfdesktopIcon *icon);
     
     void (*set_thumbnail_file)(XfdesktopIcon *icon, GFile *file);
     void (*delete_thumbnail_file)(XfdesktopIcon *icon);
@@ -93,6 +95,9 @@ GdkPixbuf *xfdesktop_icon_peek_tooltip_pixbuf(XfdesktopIcon *icon,
                                               gint width,
                                               gint height);
 G_CONST_RETURN gchar *xfdesktop_icon_peek_tooltip(XfdesktopIcon *icon);
+
+/* returns a unique identifier for the icon, free when done using it */
+gchar *xfdesktop_icon_get_identifier(XfdesktopIcon *icon);
 
 void xfdesktop_icon_set_position(XfdesktopIcon *icon,
                                  gint16 row,

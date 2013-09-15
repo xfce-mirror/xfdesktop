@@ -77,6 +77,7 @@ static void xfdesktop_volume_icon_finalize(GObject *obj);
 static GdkPixbuf *xfdesktop_volume_icon_peek_pixbuf(XfdesktopIcon *icon,
                                                     gint width, gint height);
 static G_CONST_RETURN gchar *xfdesktop_volume_icon_peek_label(XfdesktopIcon *icon);
+static gchar *xfdesktop_volume_icon_get_identifier(XfdesktopIcon *icon);
 static GdkPixbuf *xfdesktop_volume_icon_peek_tooltip_pixbuf(XfdesktopIcon *icon,
                                                             gint width, gint height);
 static G_CONST_RETURN gchar *xfdesktop_volume_icon_peek_tooltip(XfdesktopIcon *icon);
@@ -133,6 +134,7 @@ xfdesktop_volume_icon_class_init(XfdesktopVolumeIconClass *klass)
     
     icon_class->peek_pixbuf = xfdesktop_volume_icon_peek_pixbuf;
     icon_class->peek_label = xfdesktop_volume_icon_peek_label;
+    icon_class->get_identifier = xfdesktop_volume_icon_get_identifier;
     icon_class->peek_tooltip_pixbuf = xfdesktop_volume_icon_peek_tooltip_pixbuf;
     icon_class->peek_tooltip = xfdesktop_volume_icon_peek_tooltip;
     icon_class->get_allowed_drag_actions = xfdesktop_volume_icon_get_allowed_drag_actions;
@@ -316,6 +318,20 @@ xfdesktop_volume_icon_peek_label(XfdesktopIcon *icon)
     }
 
     return volume_icon->priv->label;
+}
+
+static gchar *
+xfdesktop_volume_icon_get_identifier(XfdesktopIcon *icon)
+{
+    XfdesktopVolumeIcon *volume_icon = XFDESKTOP_VOLUME_ICON(icon);
+    gchar *uuid;
+
+    uuid = g_volume_get_identifier(volume_icon->priv->volume, G_VOLUME_IDENTIFIER_KIND_UUID);
+
+    if(uuid == NULL)
+        return g_strdup(xfdesktop_volume_icon_peek_label(icon));
+
+    return uuid;
 }
 
 static GdkDragAction

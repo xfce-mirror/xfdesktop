@@ -71,6 +71,7 @@ gboolean xfdesktop_file_icon_manager_get_show_thumbnails(XfdesktopFileIconManage
 gboolean xfdesktop_file_icon_manager_get_cached_icon_position(
                                                     XfdesktopFileIconManager *fmanager,
                                                     const gchar *name,
+                                                    const gchar *identifier,
                                                     gint16 *row,
                                                     gint16 *col);
 

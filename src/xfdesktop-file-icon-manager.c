@@ -1666,12 +1666,21 @@ file_icon_hash_write_icons(gpointer key,
     XfceRc *rcfile = data;
     XfdesktopIcon *icon = value;
     guint16 row, col;
-    
+    gchar *identifier = xfdesktop_icon_get_identifier(icon);
+
     if(xfdesktop_icon_get_position(icon, &row, &col)) {
-        xfce_rc_set_group(rcfile, xfdesktop_icon_peek_label(icon));
+        /* Attempt to use the identifier, fall back to using the labels. */
+        if(identifier)
+            xfce_rc_set_group(rcfile, identifier);
+        else
+            xfce_rc_set_group(rcfile, xfdesktop_icon_peek_label(icon));
+
         xfce_rc_write_int_entry(rcfile, "row", row);
         xfce_rc_write_int_entry(rcfile, "col", col);
     }
+
+    if(identifier)
+        g_free(identifier);
 }
 
 static gboolean
@@ -1712,7 +1721,10 @@ xfdesktop_file_icon_manager_save_icons(gpointer user_data)
         g_free(tmppath);
         return FALSE;
     }
-    
+
+    xfce_rc_set_group(rcfile, XFDESKTOP_RC_VERSION_STAMP);
+    xfce_rc_write_bool_entry(rcfile, "4.10.3+", TRUE);
+
     g_hash_table_foreach(fmanager->priv->icons,
                          file_icon_hash_write_icons, rcfile);
     if(fmanager->priv->show_removable_media) {
@@ -1761,6 +1773,7 @@ xfdesktop_file_icon_position_changed(XfdesktopFileIcon *icon,
 gboolean
 xfdesktop_file_icon_manager_get_cached_icon_position(XfdesktopFileIconManager *fmanager,
                                                      const gchar *name,
+                                                     const gchar *identifier,
                                                      gint16 *row,
                                                      gint16 *col)
 {
@@ -1795,10 +1808,18 @@ xfdesktop_file_icon_manager_get_cached_icon_position(XfdesktopFileIconManager *f
 
     if(filename != NULL) {
         XfceRc *rcfile;
+        const gchar *icon_name;
         rcfile = xfce_rc_simple_open(filename, TRUE);
 
-        if(xfce_rc_has_group(rcfile, name)) {
-            xfce_rc_set_group(rcfile, name);
+        /* Newer versions use the identifier rather than the icon label when
+         * possible */
+        if(xfce_rc_has_group(rcfile, XFDESKTOP_RC_VERSION_STAMP) && identifier)
+            icon_name = identifier;
+        else
+            icon_name = name;
+
+        if(xfce_rc_has_group(rcfile, icon_name)) {
+            xfce_rc_set_group(rcfile, icon_name);
             *row = xfce_rc_read_int_entry(rcfile, "row", -1);
             *col = xfce_rc_read_int_entry(rcfile, "col", -1);
             if(*row >= 0 && *col >= 0)
@@ -1933,15 +1954,19 @@ xfdesktop_file_icon_manager_add_icon(XfdesktopFileIconManager *fmanager,
     GFile *file = xfdesktop_file_icon_peek_file(icon);
     gboolean do_add = FALSE;
     const gchar *name;
+    gchar *identifier;
 
     xfdesktop_file_icon_manager_queue_thumbnail(fmanager, icon);
     
     name = xfdesktop_icon_peek_label(XFDESKTOP_ICON(icon));
+    identifier = xfdesktop_icon_get_identifier(XFDESKTOP_ICON(icon));
+
     if(row >= 0 && col >= 0) {
         DBG("attempting to set icon '%s' to position (%d,%d)", name, row, col);
         xfdesktop_icon_set_position(XFDESKTOP_ICON(icon), row, col);
         do_add = TRUE;
-    } else if(xfdesktop_file_icon_manager_get_cached_icon_position(fmanager, name,
+    } else if(xfdesktop_file_icon_manager_get_cached_icon_position(fmanager,
+                                                                   name, identifier,
                                                                    &row, &col))
     {
         DBG("attempting to set icon '%s' to position (%d,%d)", name, row, col);
@@ -1969,7 +1994,10 @@ xfdesktop_file_icon_manager_add_icon(XfdesktopFileIconManager *fmanager,
         g_object_weak_ref(G_OBJECT(icon), _icon_notify_destroy, NULL);
     }
 #endif
-    
+
+    if(identifier)
+        g_free(identifier);
+
     return do_add;
 }
 
