@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-08-31 06:32+0200\n"
-"PO-Revision-Date: 2013-09-13 16:21+0000\n"
+"PO-Revision-Date: 2013-09-16 13:50+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic (http://www.transifex.com/projects/p/xfce/language/is/)\n"
 "MIME-Version: 1.0\n"
@@ -47,34 +47,34 @@ msgstr "<b>%s</b>\nTegund: %s\nStærð: %s"
 #: ../settings/main.c:667
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
-msgstr ""
+msgstr "Bakgrunnsmynd fyrir skjá %d (%s)"
 
 #: ../settings/main.c:670
 #, c-format
 msgid "Wallpaper for Monitor %d"
-msgstr ""
+msgstr "Bakgrunnsmynd fyrir skjá %d"
 
 #: ../settings/main.c:676
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
-msgstr ""
+msgstr "Bakgrunnsmynd fyrir %s á skjá %d (%s)"
 
 #: ../settings/main.c:680
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
-msgstr ""
+msgstr "Bakgrunnsmynd fyrir %s á skjá %d"
 
 #. Single monitor and single workspace
 #: ../settings/main.c:687
 #, c-format
 msgid "Wallpaper for my desktop"
-msgstr ""
+msgstr "Bakgrunnsmynd fyrir skjáborðið mitt"
 
 #. Single monitor and per workspace wallpaper
 #: ../settings/main.c:690
 #, c-format
 msgid "Wallpaper for %s"
-msgstr ""
+msgstr "Bakgrunnsmynd fyrir %s"
 
 #: ../settings/main.c:982
 msgid "Image selection is unavailable while the image style is set to None."
@@ -221,7 +221,7 @@ msgstr "Beita á öll _vinnusvæði"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 msgid "_Change the background (in minutes):"
-msgstr ""
+msgstr "S_kipta um bakgrunn (bið í mínútum)"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
 msgid ""
@@ -397,7 +397,7 @@ msgstr "Láta gluggalista spretta upp (við músarbendil)"
 
 #: ../src/main.c:246
 msgid "Automatically arrange all the icons on the desktop"
-msgstr ""
+msgstr "Raða táknmyndum sjálfvirkt á skjáborðinu"
 
 #: ../src/main.c:248
 msgid "Cause xfdesktop to quit"
@@ -465,19 +465,19 @@ msgstr "Fjarlægja vinnusvæði %d"
 msgid ""
 "Do you really want to remove workspace %d?\n"
 "Note: You are currently on workspace %d."
-msgstr ""
+msgstr "Viltu í alvörunni fjarlægja vinnusvæði %d?\nATH: Þú ert núna á vinnusvæði %d."
 
 #: ../src/windowlist.c:77
 #, c-format
 msgid "Remove Workspace '%s'"
-msgstr ""
+msgstr "Fjarlægja vinnusvæði '%s'"
 
 #: ../src/windowlist.c:78
 #, c-format
 msgid ""
 "Do you really want to remove workspace '%s'?\n"
 "Note: You are currently on workspace '%s'."
-msgstr ""
+msgstr "Viltu í alvörunni fjarlægja vinnusvæði '%s'?\nATH: Þú ert núna á vinnusvæði '%s'."
 
 #. Popup a dialog box confirming that the user wants to remove a
 #. * workspace
@@ -775,7 +775,7 @@ msgstr "Mistókst að keyra \"%s\""
 
 #: ../src/xfdesktop-file-utils.c:1206
 msgid "The application chooser could not be opened"
-msgstr ""
+msgstr "Ekki var hægt að opna forritaveljarann"
 
 #: ../src/xfdesktop-file-utils.c:1264 ../src/xfdesktop-file-utils.c:1278
 #: ../src/xfdesktop-file-utils.c:1340 ../src/xfdesktop-file-utils.c:1356
@@ -820,7 +820,7 @@ msgstr "Aftengingu lokið"
 #: ../src/xfdesktop-notify.c:224 ../src/xfdesktop-notify.c:408
 #, c-format
 msgid "The device \"%s\" has been safely removed from the system. "
-msgstr ""
+msgstr "Tækið \"%s\" hefur verið fjarlægt úr kerfinu á öruggan hátt. "
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:313
@@ -835,7 +835,7 @@ msgstr "Verið er að spýta út tækinu \"%s\". Þetta getur tekið smátíma"
 
 #: ../src/xfdesktop-notify.c:406
 msgid "Eject Finished"
-msgstr ""
+msgstr "Útspýtingu lokið"
 
 #: ../src/xfdesktop-regular-file-icon.c:569
 #, c-format
