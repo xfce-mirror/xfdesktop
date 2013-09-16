@@ -2176,15 +2176,15 @@ xfdesktop_file_icon_manager_key_press(GtkWidget *widget,
     gboolean force_delete = FALSE;
     
     switch(evt->keyval) {
-        case GDK_Delete:
-        case GDK_KP_Delete:
+        case GDK_KEY_Delete:
+        case GDK_KEY_KP_Delete:
             if(evt->state & GDK_SHIFT_MASK)
                 force_delete = TRUE;
             xfdesktop_file_icon_manager_delete_selected(fmanager, force_delete);
             break;
         
-        case GDK_c:
-        case GDK_C:
+        case GDK_KEY_c:
+        case GDK_KEY_C:
             if(!(evt->state & GDK_CONTROL_MASK)
                || (evt->state & (GDK_SHIFT_MASK|GDK_MOD1_MASK|GDK_MOD4_MASK)))
             {
@@ -2198,8 +2198,8 @@ xfdesktop_file_icon_manager_key_press(GtkWidget *widget,
             }
             break;
         
-        case GDK_x:
-        case GDK_X:
+        case GDK_KEY_x:
+        case GDK_KEY_X:
             if(!(evt->state & GDK_CONTROL_MASK)
                || (evt->state & (GDK_SHIFT_MASK|GDK_MOD1_MASK|GDK_MOD4_MASK)))
             {
@@ -2213,8 +2213,8 @@ xfdesktop_file_icon_manager_key_press(GtkWidget *widget,
             }
             return TRUE;
         
-        case GDK_v:
-        case GDK_V:
+        case GDK_KEY_v:
+        case GDK_KEY_V:
             if(!(evt->state & GDK_CONTROL_MASK)
                || (evt->state & (GDK_SHIFT_MASK|GDK_MOD1_MASK|GDK_MOD4_MASK)))
             {
@@ -2225,19 +2225,19 @@ xfdesktop_file_icon_manager_key_press(GtkWidget *widget,
             }
             return TRUE;
 
-        case GDK_r:
-        case GDK_R:
+        case GDK_KEY_r:
+        case GDK_KEY_R:
             if(!(evt->state & GDK_CONTROL_MASK)
                || (evt->state & (GDK_SHIFT_MASK|GDK_MOD1_MASK|GDK_MOD4_MASK)))
             {
                 return FALSE;
             }
             /* fall through */
-        case GDK_F5:
+        case GDK_KEY_F5:
             xfdesktop_file_icon_manager_refresh_icons(fmanager);
             return TRUE;
         
-        case GDK_F2:
+        case GDK_KEY_F2:
             selected = xfdesktop_icon_view_get_selected_items(fmanager->priv->icon_view);
             if(g_list_length(selected) == 1) {
                 XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(selected->data);
@@ -3345,7 +3345,7 @@ xfdesktop_file_icon_manager_propose_drop_action(XfdesktopIconViewManager *manage
     const gchar *src_name, *dest_name;
 
     if(info == TARGET_TEXT_URI_LIST && action == GDK_ACTION_COPY
-            && (context->actions & GDK_ACTION_MOVE) != 0) {
+            && (gdk_drag_context_get_actions(context) & GDK_ACTION_MOVE) != 0) {
 
         if(drop_icon) {
             file_icon = XFDESKTOP_FILE_ICON(drop_icon);

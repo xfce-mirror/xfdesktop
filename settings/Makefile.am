@@ -29,7 +29,8 @@ xfdesktop_settings_LDADD =						\
 	$(LIBEXO_LIBS)								\
 	$(GTHREAD_LIBS)								\
 	$(LIBWNCK_LIBS) 							\
-	$(LIBX11_LIBS)
+	$(LIBX11_LIBS)								\
+	$(GTK_LIBS)
 
 if HAVE_CYGWIN
   xfdesktop_settings_LDADD += \
