@@ -23,6 +23,9 @@
  *     Copyright (C) 2003 Benedikt Meurer <benedikt.meurer@unix-ag.uni-siegen.de>
  *  X event forwarding code:
  *     Copyright (c) 2004 Nils Rennebarth
+ * Additional portions taken from https://bugzilla.xfce.org/attachment.cgi?id=3751
+ * which is in xfce4-panel git commit id 2a8de2b1b019eaef543e34764c999a409fe2bef9
+ * and adapted for xfdesktop.
  */
 
 #ifdef HAVE_CONFIG_H
@@ -85,6 +88,9 @@ static void cb_xfdesktop_application_arrange(GAction  *action,
                                              GVariant *parameter,
                                              gpointer  data);
 
+static gboolean cb_wait_for_window_manager(gpointer data);
+static void     cb_wait_for_window_manager_destroyed(gpointer data);
+
 static void xfdesktop_application_startup(GApplication *g_application);
 static void xfdesktop_application_start(XfdesktopApplication *app);
 static void xfdesktop_application_shutdown(GApplication *g_application);
@@ -94,6 +100,18 @@ static gboolean xfdesktop_application_local_command_line(GApplication *g_applica
                                                          int *exit_status);
 static gint xfdesktop_application_command_line(GApplication *g_application,
                                                GApplicationCommandLine *command_line);
+
+typedef struct
+{
+    XfdesktopApplication *app;
+
+    Display *dpy;
+    Atom *atoms;
+    guint atom_count;
+    guint have_wm : 1;
+    guint counter;
+    guint wait_for_wm_timeout_id;
+} WaitForWM;
 
 struct _XfdesktopApplication
 {
@@ -106,7 +124,10 @@ struct _XfdesktopApplication
     GtkWidget **desktops;
     XfconfChannel *channel;
     gint nscreens;
+    guint wait_for_wm_timeout_id;
     XfceSMClient *sm_client;
+
+    gboolean opt_disable_wm_check;
 };
 
 struct _XfdesktopApplicationClass
@@ -405,16 +426,95 @@ cb_xfdesktop_application_arrange(GAction  *action,
     xfce_desktop_arrange_icons(XFCE_DESKTOP(app->desktops[screen_num]));
 }
 
+static gboolean
+cb_wait_for_window_manager(gpointer data)
+{
+    WaitForWM *wfwm = data;
+    guint i;
+    gboolean have_wm = TRUE;
+
+    for(i = 0; i < wfwm->atom_count; i++) {
+        if(XGetSelectionOwner(wfwm->dpy, wfwm->atoms[i]) == None) {
+            DBG("window manager not ready on screen %d", i);
+            have_wm = FALSE;
+            break;
+        }
+    }
+
+    wfwm->have_wm = have_wm;
+
+    /* abort if a window manager is found or 5 seconds expired */
+    return wfwm->counter++ < 20 * 5 && !wfwm->have_wm;
+}
+
+static void
+cb_wait_for_window_manager_destroyed(gpointer data)
+{
+    WaitForWM *wfwm = data;
+
+    g_return_if_fail(wfwm->app != NULL);
+
+    wfwm->app->wait_for_wm_timeout_id = 0;
+
+    if(!wfwm->have_wm) {
+        g_printerr("No window manager registered on screen 0. "
+                   "To start the xfdesktop without this check, run with --disable-wm-check.\n");
+    } else {
+        DBG("found window manager after %d tries", wfwm->counter);
+    }
+
+    /* start loading the desktop, hopefully a window manager is found, but it
+     * also works without it */
+    xfdesktop_application_start(wfwm->app);
+
+    g_free(wfwm->atoms);
+    XCloseDisplay(wfwm->dpy);
+    g_slice_free(WaitForWM, wfwm);
+}
+
 static void
 xfdesktop_application_startup(GApplication *g_application)
 {
     XfdesktopApplication *app = XFDESKTOP_APPLICATION(g_application);
+    WaitForWM *wfwm;
+    guint i;
+    gchar **atom_names;
 
     TRACE("entering");
 
     g_application_hold(g_application);
 
-    xfdesktop_application_start(app);
+    if(!app->opt_disable_wm_check) {
+        /* setup data for wm checking */
+        wfwm = g_slice_new0(WaitForWM);
+        wfwm->dpy = XOpenDisplay(NULL);
+        wfwm->have_wm = FALSE;
+        wfwm->counter = 0;
+        wfwm->app = app;
+
+        /* preload wm atoms for all screens */
+        wfwm->atom_count = XScreenCount(wfwm->dpy);
+        wfwm->atoms = g_new(Atom, wfwm->atom_count);
+        atom_names = g_new0(gchar *, wfwm->atom_count + 1);
+
+        for(i = 0; i < wfwm->atom_count; i++)
+            atom_names[i] = g_strdup_printf ("WM_S%d", i);
+
+        if(!XInternAtoms(wfwm->dpy, atom_names, wfwm->atom_count, False, wfwm->atoms))
+            wfwm->atom_count = 0;
+
+        g_strfreev(atom_names);
+
+        /* setup timeout to check for a window manager */
+        app->wait_for_wm_timeout_id = g_timeout_add_full(G_PRIORITY_DEFAULT_IDLE,
+                                                         50,
+                                                         cb_wait_for_window_manager,
+                                                         wfwm,
+                                                         cb_wait_for_window_manager_destroyed);
+    } else {
+        /* directly launch */
+        xfdesktop_application_start(app);
+    }
 
     G_APPLICATION_CLASS(xfdesktop_application_parent_class)->startup(g_application);
 }
@@ -430,6 +530,10 @@ xfdesktop_application_start(XfdesktopApplication *app)
     TRACE("entering");
 
     g_return_if_fail(app != NULL);
+
+    /* stop autostart timeout */
+    if(app->wait_for_wm_timeout_id != 0)
+        g_source_remove(app->wait_for_wm_timeout_id);
 
     gdpy = gdk_display_get_default();
 
@@ -532,6 +636,7 @@ xfdesktop_application_local_command_line(GApplication *g_application,
                                          gchar ***arguments,
                                          int *exit_status)
 {
+    XfdesktopApplication *app = XFDESKTOP_APPLICATION(g_application);
     GOptionContext *octx;
     gint argc;
     GError *error = NULL;
@@ -550,6 +655,7 @@ xfdesktop_application_local_command_line(GApplication *g_application,
 #ifdef ENABLE_FILE_ICONS
         { "arrange", 'A', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_arrange, N_("Automatically arrange all the icons on the desktop"), NULL },
 #endif
+        { "disable-wm-check", 'D', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &app->opt_disable_wm_check, N_("Do not wait for a window manager on startup"), NULL },
         { "quit", 'Q', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_quit, N_("Cause xfdesktop to quit"), NULL },
         { NULL, 0, 0, 0, NULL, NULL, NULL }
     };
