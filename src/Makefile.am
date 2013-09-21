@@ -25,7 +25,9 @@ xfdesktop_SOURCES = \
 	xfce-workspace.c \
 	xfce-workspace.h \
 	xfce-desktop.c \
-	xfce-desktop.h
+	xfce-desktop.h \
+	xfdesktop-application.c \
+	xfdesktop-application.h
 
 desktop_icon_sources = \
 	xfdesktop-icon.c \

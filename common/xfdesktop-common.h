@@ -83,9 +83,6 @@ gboolean xfdesktop_image_file_is_valid(const gchar *filename);
 
 gchar *xfdesktop_get_file_mimetype(const gchar *file);
 
-gboolean xfdesktop_check_is_running(Window *xid);
-void xfdesktop_send_client_message(Window xid, const gchar *msg);
-
 guint xfce_grab_cursor(GtkWidget *w, GdkEventButton *evt);
 gboolean xfdesktop_popup_grab_available(GdkWindow *win, guint32 timestamp);
 
