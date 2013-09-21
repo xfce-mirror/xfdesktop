@@ -99,6 +99,10 @@ struct _XfdesktopApplication
 {
     GApplication parent;
 
+#if !GLIB_CHECK_VERSION (2, 32, 0)
+    GSimpleActionGroup *actions;
+#endif
+
     GtkWidget **desktops;
     XfconfChannel *channel;
     gint nscreens;
@@ -130,33 +134,51 @@ xfdesktop_application_class_init(XfdesktopApplicationClass *klass)
 }
 
 static void
+xfdesktop_application_add_action(XfdesktopApplication *app, GAction *action)
+{
+#if GLIB_CHECK_VERSION (2, 32, 0)
+    g_action_map_add_action(G_ACTION_MAP(app), action);
+#else
+    g_simple_action_group_insert(app->actions, action);
+#endif
+}
+
+static void
 xfdesktop_application_init(XfdesktopApplication *app)
 {
     GSimpleAction *action;
 
+#if !GLIB_CHECK_VERSION (2, 32, 0)
+    app->actions = g_simple_action_group_new();
+#endif
+
     /* reload action */
     action = g_simple_action_new("reload", NULL);
     g_signal_connect(action, "activate", G_CALLBACK(cb_xfdesktop_application_reload), app);
-    g_action_map_add_action(G_ACTION_MAP(app), G_ACTION(action));
+    xfdesktop_application_add_action(app, G_ACTION(action));
     g_object_unref(action);
 
     /* quit action */
     action = g_simple_action_new("quit", NULL);
     g_signal_connect(action, "activate", G_CALLBACK(cb_xfdesktop_application_quit), app);
-    g_action_map_add_action(G_ACTION_MAP(app), G_ACTION(action));
+    xfdesktop_application_add_action(app, G_ACTION(action));
     g_object_unref(action);
 
     /* menu action, parameter pops up primary (TRUE) or windowlist menu */
     action = g_simple_action_new("menu", G_VARIANT_TYPE_BOOLEAN);
     g_signal_connect(action, "activate", G_CALLBACK(cb_xfdesktop_application_menu), app);
-    g_action_map_add_action(G_ACTION_MAP(app), G_ACTION(action));
+    xfdesktop_application_add_action(app, G_ACTION(action));
     g_object_unref(action);
 
     /* arrange action */
     action = g_simple_action_new("arrange", NULL);
     g_signal_connect(action, "activate", G_CALLBACK(cb_xfdesktop_application_arrange), app);
-    g_action_map_add_action(G_ACTION_MAP(app), G_ACTION(action));
+    xfdesktop_application_add_action(app, G_ACTION(action));
     g_object_unref(action);
+
+#if !GLIB_CHECK_VERSION (2, 32, 0)
+    g_application_set_action_group(G_APPLICATION(app), (GActionGroup*)app->actions);
+#endif
 }
 
 static void
