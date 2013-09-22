@@ -238,6 +238,9 @@ xfce_workspace_monitors_changed(XfceWorkspace *workspace,
                          "cycle",
                          G_CALLBACK(backdrop_cycle_cb),
                          workspace);
+        g_signal_connect(G_OBJECT(workspace->priv->backdrops[i]),
+                         "ready",
+                         G_CALLBACK(backdrop_changed_cb), workspace);
     }
     workspace->priv->nbackdrops = n_monitors;
 }

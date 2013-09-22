@@ -458,12 +458,15 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     }
 
     if(rect.width != 0 && rect.height != 0) {
-        /* create/get the composited backdrop pixmap */
+        /* get the composited backdrop pixmap */
         GdkPixbuf *pix = xfce_backdrop_get_pixbuf(backdrop);
         cairo_t *cr;
 
-        if(!pix)
+        /* create the backdrop if needed */
+        if(!pix) {
+            xfce_backdrop_generate_async(backdrop);
             return;
+        }
 
         cr = gdk_cairo_create(GDK_DRAWABLE(pmap));
         gdk_cairo_set_source_pixbuf(cr, pix, rect.x, rect.y);

@@ -72,6 +72,7 @@ struct _XfceBackdropClass
     /*< signals >*/
     void (*changed)(XfceBackdrop *backdrop);
     void (*cycle)(XfceBackdrop *backdrop);
+    void (*ready)(XfceBackdrop *backdrop);
 };
 
 GType xfce_backdrop_get_type             (void) G_GNUC_CONST;
@@ -124,6 +125,8 @@ void xfce_backdrop_set_random_order      (XfceBackdrop *backdrop,
 gboolean xfce_backdrop_get_random_order  (XfceBackdrop *backdrop);
 
 GdkPixbuf *xfce_backdrop_get_pixbuf      (XfceBackdrop *backdrop);
+
+void xfce_backdrop_generate_async        (XfceBackdrop *backdrop);
 
 gboolean xfce_backdrop_compare_backdrops (XfceBackdrop *backdrop_a,
                                           XfceBackdrop *backdrop_b);

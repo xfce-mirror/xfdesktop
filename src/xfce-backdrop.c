@@ -45,6 +45,10 @@
 #define abs(x)  ( (x) < 0 ? -(x) : (x) )
 #endif
 
+#define XFCE_BACKDROP_BUFFER_SIZE 4096
+
+typedef struct _XfceBackdropImageData XfceBackdropImageData;
+
 static void xfce_backdrop_finalize(GObject *object);
 static void xfce_backdrop_set_property(GObject *object,
                                        guint property_id,
@@ -56,12 +60,33 @@ static void xfce_backdrop_get_property(GObject *object,
                                        GParamSpec *pspec);
 static gboolean xfce_backdrop_timer(XfceBackdrop *backdrop);
 
+static GdkPixbuf *xfce_backdrop_generate_canvas(XfceBackdrop *backdrop);
+
+static void xfce_backdrop_loader_size_prepared_cb(GdkPixbufLoader *loader,
+                                                  gint width,
+                                                  gint height,
+                                                  gpointer user_data);
+
+static void xfce_backdrop_loader_closed_cb(GdkPixbufLoader *loader,
+                                           XfceBackdropImageData *image_data);
+
+static void xfce_backdrop_file_ready_cb(GObject *source_object,
+                                        GAsyncResult *res,
+                                        gpointer user_data);
+
+static void xfce_backdrop_file_input_stream_ready_cb(GObject *source_object,
+                                                     GAsyncResult *res,
+                                                     gpointer user_data);
+
+static void xfce_backdrop_image_data_release(XfceBackdropImageData *image_data);
+
 struct _XfceBackdropPriv
 {
     gint width, height;
     gint bpp;
 
     GdkPixbuf *pix;
+    XfceBackdropImageData *image_data;
 
     XfceBackdropColorStyle color_style;
     GdkColor color1;
@@ -76,10 +101,22 @@ struct _XfceBackdropPriv
     gboolean random_backdrop_order;
 };
 
+struct _XfceBackdropImageData
+{
+    XfceBackdrop *backdrop;
+
+    GdkPixbufLoader *loader;
+
+    GCancellable *cancellable;
+
+    guchar *image_buffer;
+};
+
 enum
 {
     BACKDROP_CHANGED,
     BACKDROP_CYCLE,
+    BACKDROP_READY,
     LAST_SIGNAL,
 };
 
@@ -218,6 +255,10 @@ xfce_backdrop_class_init(XfceBackdropClass *klass)
     backdrop_signals[BACKDROP_CYCLE] = g_signal_new("cycle",
             G_OBJECT_CLASS_TYPE(gobject_class), G_SIGNAL_RUN_FIRST,
             G_STRUCT_OFFSET(XfceBackdropClass, cycle), NULL, NULL,
+            g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
+    backdrop_signals[BACKDROP_READY] = g_signal_new("ready",
+            G_OBJECT_CLASS_TYPE(gobject_class), G_SIGNAL_RUN_FIRST,
+            G_STRUCT_OFFSET(XfceBackdropClass, ready), NULL, NULL,
             g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
 
 #define XFDESKTOP_PARAM_FLAGS  (G_PARAM_READWRITE \
@@ -771,53 +812,15 @@ xfce_backdrop_get_random_order(XfceBackdrop *backdrop)
     return backdrop->priv->random_backdrop_order;
 }
 
-/**
- * xfce_backdrop_get_pixbuf:
- * @backdrop: An #XfceBackdrop.
- *
- * Generates the final composited, resized image from the #XfceBackdrop.  Free
- * it with g_object_unref() when you are finished.
- *
- * Return value: A #GdkPixbuf.
- **/
-GdkPixbuf *
-xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
+static GdkPixbuf *
+xfce_backdrop_generate_canvas(XfceBackdrop *backdrop)
 {
-    GdkPixbuf *final_image, *image = NULL, *tmp;
-    GdkPixbufFormat *format = NULL;
-    gboolean apply_backdrop_image = FALSE;
-    gint i, j;
-    gint w, h, iw = 0, ih = 0;
-    XfceBackdropImageStyle istyle;
-    gint dx, dy, xo, yo;
-    gdouble xscale, yscale;
-    GdkInterpType interp;
+    gint w, h;
+    GdkPixbuf *final_image;
 
-    TRACE("entering");
+    w = backdrop->priv->width;
+    h = backdrop->priv->height;
 
-    g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), NULL);
-
-    if(backdrop->priv->pix != NULL) {
-        DBG("pixbuf cached");
-        return g_object_ref(backdrop->priv->pix);
-    }
-
-    if(backdrop->priv->image_style != XFCE_BACKDROP_IMAGE_NONE &&
-       backdrop->priv->image_path) {
-        format = gdk_pixbuf_get_file_info(backdrop->priv->image_path, &iw, &ih);
-        /* make sure we have a usable backdrop image */
-        if(format != NULL)
-            apply_backdrop_image = TRUE;
-    }
-
-    if(backdrop->priv->width == 0 || backdrop->priv->height == 0) {
-        w = iw;
-        h = ih;
-    } else {
-        w = backdrop->priv->width;
-        h = backdrop->priv->height;
-    }
-    
     if(backdrop->priv->color_style == XFCE_BACKDROP_COLOR_SOLID)
         final_image = create_solid(&backdrop->priv->color1, w, h, FALSE, 0xff);
     else if(backdrop->priv->color_style == XFCE_BACKDROP_COLOR_TRANSPARENT) {
@@ -829,9 +832,193 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
         if(!final_image)
             final_image = create_solid(&backdrop->priv->color1, w, h, FALSE, 0xff);
     }
-    
-    if(!apply_backdrop_image)
-        return final_image;
+
+    return final_image;
+}
+
+static void
+xfce_backdrop_image_data_release(XfceBackdropImageData *image_data)
+{
+    TRACE("entering");
+
+    if(!image_data)
+        return;
+
+    /* Only set the backdrop's image_data to NULL if it's current */
+    if(image_data->backdrop->priv->image_data == image_data)
+        image_data->backdrop->priv->image_data = NULL;
+
+    if(image_data->cancellable)
+        g_object_unref(image_data->cancellable);
+
+    if(image_data->image_buffer)
+        g_free(image_data->image_buffer);
+
+    if(image_data->loader)
+        g_object_unref(image_data->loader);
+
+    g_free(image_data);
+    image_data = NULL;
+
+}
+
+/* Returns the composited backdrop image if one has been generated. If it
+ * returns NULL, call xfce_backdrop_generate_async to create the pixbuf.
+ * Free with g_object_unref() when you are finished. */
+GdkPixbuf *
+xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
+{
+    TRACE("entering");
+
+    if(backdrop->priv->pix)
+        return g_object_ref(backdrop->priv->pix);
+
+    return NULL;
+}
+
+/* Generates the final composited, resized image from the #XfceBackdrop.
+ * Emits the "ready" signal when the image has been created */
+void
+xfce_backdrop_generate_async(XfceBackdrop *backdrop)
+{
+    GFile *file;
+    XfceBackdropImageData *image_data = NULL;
+
+    TRACE("entering");
+
+    if(backdrop->priv->width == 0 || backdrop->priv->height == 0) {
+        g_critical("attempting to create a backdrop without setting the width/height");
+        return;
+    }
+
+    if(backdrop->priv->image_data && backdrop->priv->image_data->cancellable) {
+        g_cancellable_cancel(backdrop->priv->image_data->cancellable);
+        backdrop->priv->image_data = NULL;
+    }
+
+    /* If we aren't going to display an image then just create the canvas */
+    if(backdrop->priv->image_style == XFCE_BACKDROP_IMAGE_NONE
+       || !backdrop->priv->image_path) {
+        backdrop->priv->pix = xfce_backdrop_generate_canvas(backdrop);
+        g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_READY], 0);
+        return;
+    }
+
+    file = g_file_new_for_path(backdrop->priv->image_path);
+    image_data = g_new0(XfceBackdropImageData, 1);
+
+    backdrop->priv->image_data = image_data;
+
+    image_data->backdrop = backdrop;
+    image_data->loader = gdk_pixbuf_loader_new();
+    image_data->cancellable = g_cancellable_new();
+    image_data->image_buffer = g_new0(guchar, XFCE_BACKDROP_BUFFER_SIZE);
+
+    g_signal_connect(image_data->loader, "size-prepared", G_CALLBACK(xfce_backdrop_loader_size_prepared_cb), image_data);
+    g_signal_connect(image_data->loader, "closed", G_CALLBACK(xfce_backdrop_loader_closed_cb), image_data);
+
+    g_file_read_async(file,
+                      G_PRIORITY_LOW,
+                      image_data->cancellable,
+                      xfce_backdrop_file_ready_cb,
+                      image_data);
+}
+
+
+static void
+xfce_backdrop_loader_size_prepared_cb(GdkPixbufLoader *loader,
+                                      gint width,
+                                      gint height,
+                                      gpointer user_data)
+{
+    XfceBackdropImageData *image_data = user_data;
+    XfceBackdrop *backdrop = image_data->backdrop;
+    gdouble xscale, yscale;
+
+    TRACE("entering");
+
+    switch(backdrop->priv->image_style) {
+        case XFCE_BACKDROP_IMAGE_CENTERED:
+        case XFCE_BACKDROP_IMAGE_TILED:
+            /* do nothing */
+            break;
+
+        case XFCE_BACKDROP_IMAGE_STRETCHED:
+            gdk_pixbuf_loader_set_size(loader,
+                                       backdrop->priv->width,
+                                       backdrop->priv->height);
+            break;
+
+        case XFCE_BACKDROP_IMAGE_SCALED:
+            xscale = (gdouble)backdrop->priv->width / width;
+            yscale = (gdouble)backdrop->priv->height / height;
+            if(xscale < yscale) {
+                yscale = xscale;
+            } else {
+                xscale = yscale;
+            }
+
+            gdk_pixbuf_loader_set_size(loader,
+                                       width * xscale,
+                                       height * yscale);
+            break;
+
+        case XFCE_BACKDROP_IMAGE_ZOOMED:
+        case XFCE_BACKDROP_IMAGE_SPANNING_SCREENS:
+            xscale = (gdouble)backdrop->priv->width / width;
+            yscale = (gdouble)backdrop->priv->height / height;
+            if(xscale < yscale) {
+                xscale = yscale;
+            } else {
+                yscale = xscale;
+            }
+
+            gdk_pixbuf_loader_set_size(loader,
+                                       width * xscale,
+                                       height * yscale);
+            break;
+
+        default:
+            g_critical("Invalid image style: %d\n", (gint)backdrop->priv->image_style);
+    }
+}
+
+static void
+xfce_backdrop_loader_closed_cb(GdkPixbufLoader *loader,
+                               XfceBackdropImageData *image_data)
+{
+    XfceBackdrop *backdrop = image_data->backdrop;
+    GdkPixbuf *final_image, *image, *tmp;
+    gint i, j;
+    gint w, h, iw = 0, ih = 0;
+    XfceBackdropImageStyle istyle;
+    gint dx, dy, xo, yo;
+    gdouble xscale, yscale;
+    GdkInterpType interp;
+
+    TRACE("entering");
+
+    g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), NULL);
+
+    /* canceled? quit now */
+    if(g_cancellable_is_cancelled(image_data->cancellable)) {
+        xfce_backdrop_image_data_release(image_data);
+        return;
+    }
+
+    image = gdk_pixbuf_loader_get_pixbuf(loader);
+    if(image) {
+        iw = gdk_pixbuf_get_width(image);
+        ih = gdk_pixbuf_get_height(image);
+    }
+
+    if(backdrop->priv->width == 0 || backdrop->priv->height == 0) {
+        w = iw;
+        h = ih;
+    } else {
+        w = backdrop->priv->width;
+        h = backdrop->priv->height;
+    }
     
     istyle = backdrop->priv->image_style;
     
@@ -855,10 +1042,23 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
         else
             interp = GDK_INTERP_BILINEAR;
     }
-    
+
+    final_image = xfce_backdrop_generate_canvas(backdrop);
+
+    /* no image and not canceled? return just the canvas */
+    if(!image && !g_cancellable_is_cancelled(image_data->cancellable)) {
+        DBG("image failed to load, displaying canvas only");
+        backdrop->priv->pix = final_image;
+
+        g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_READY], 0);
+
+        backdrop->priv->image_data = NULL;
+        xfce_backdrop_image_data_release(image_data);
+        return;
+    }
+
     switch(istyle) {
         case XFCE_BACKDROP_IMAGE_CENTERED:
-            image = gdk_pixbuf_new_from_file(backdrop->priv->image_path, NULL);
             dx = MAX((w - iw) / 2, 0);
             dy = MAX((h - ih) / 2, 0);
             xo = MIN((w - iw) / 2, dx);
@@ -869,7 +1069,6 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
             break;
         
         case XFCE_BACKDROP_IMAGE_TILED:
-            image = gdk_pixbuf_new_from_file(backdrop->priv->image_path, NULL);
             tmp = gdk_pixbuf_new(GDK_COLORSPACE_RGB, TRUE, 8, w, h);
             /* Now that the image has been loaded, recalculate the image
              * size because gdk_pixbuf_get_file_info doesn't always return
@@ -898,8 +1097,6 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
             break;
         
         case XFCE_BACKDROP_IMAGE_STRETCHED:
-            image = gdk_pixbuf_new_from_file_at_scale(
-                            backdrop->priv->image_path, w, h, FALSE, NULL);
             gdk_pixbuf_composite(image, final_image, 0, 0, w, h,
                     0, 0, 1, 1, interp, 255);
             break;
@@ -919,9 +1116,6 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
             dx = xo;
             dy = yo;
 
-            image = gdk_pixbuf_new_from_file_at_scale(
-                        backdrop->priv->image_path, iw * xscale,
-                        ih * yscale, TRUE, NULL);
             gdk_pixbuf_composite(image, final_image, dx, dy,
                     iw * xscale, ih * yscale, xo, yo, 1, 1,
                     interp, 255);
@@ -941,9 +1135,6 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
                 yo = (h - (ih * yscale)) * 0.5;
             }
 
-            image = gdk_pixbuf_new_from_file_at_scale(
-                                backdrop->priv->image_path, iw * xscale,
-                                ih * yscale, TRUE, NULL);
             gdk_pixbuf_composite(image, final_image, 0, 0,
                     w, h, xo, yo, 1, 1, interp, 255);
             break;
@@ -951,19 +1142,83 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
         default:
             g_critical("Invalid image style: %d\n", (gint)istyle);
     }
-    
-    if(image)
-        g_object_unref(G_OBJECT(image));
 
-    /* cache it */
-    backdrop->priv->pix = g_object_ref(final_image);
+    /* keep the backdrop and emit the signal if it hasn't been canceled */
+    if(!g_cancellable_is_cancelled(image_data->cancellable)) {
+        backdrop->priv->pix = final_image;
+        g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_READY], 0);
+    }
 
-    return final_image;
+    backdrop->priv->image_data = NULL;
+    xfce_backdrop_image_data_release(image_data);
+}
+
+static void
+xfce_backdrop_file_ready_cb(GObject *source_object,
+                            GAsyncResult *res,
+                            gpointer user_data)
+{
+    GFile *file = G_FILE(source_object);
+    XfceBackdropImageData *image_data = user_data;
+    GFileInputStream *input_stream = g_file_read_finish(file, res, NULL);
+
+    TRACE("entering");
+
+    /* If this fails then close the loader, it will only display the selected
+     * backdrop color */
+    if(input_stream == NULL) {
+        gdk_pixbuf_loader_close(image_data->loader, NULL);
+        return;
+    }
+
+    g_input_stream_read_async(G_INPUT_STREAM(input_stream),
+                              image_data->image_buffer,
+                              XFCE_BACKDROP_BUFFER_SIZE,
+                              G_PRIORITY_LOW,
+                              image_data->cancellable,
+                              xfce_backdrop_file_input_stream_ready_cb,
+                              image_data);
+}
+
+static void
+xfce_backdrop_file_input_stream_ready_cb(GObject *source_object,
+                                         GAsyncResult *res,
+                                         gpointer user_data)
+{
+    GInputStream *stream = G_INPUT_STREAM(source_object);
+    XfceBackdropImageData *image_data = user_data;
+    gssize bytes = g_input_stream_read_finish(stream, res, NULL);
+
+    if(bytes == -1 || bytes == 0) {
+        /* If there was an error reading the stream or it completed, clean
+         * up and close the pixbuf loader (which will handle both conditions) */
+        g_input_stream_close(stream, image_data->cancellable, NULL);
+        g_object_unref(source_object);
+
+        gdk_pixbuf_loader_close(image_data->loader, NULL);
+        return;
+    }
+
+    if(gdk_pixbuf_loader_write(image_data->loader, image_data->image_buffer, bytes, NULL)) {
+        g_input_stream_read_async(stream,
+                                  image_data->image_buffer,
+                                  XFCE_BACKDROP_BUFFER_SIZE,
+                                  G_PRIORITY_LOW,
+                                  image_data->cancellable,
+                                  xfce_backdrop_file_input_stream_ready_cb,
+                                  image_data);
+    } else {
+        /* If we got here, the loader will be closed, and will not accept
+         * further writes. */
+        g_input_stream_close(stream, image_data->cancellable, NULL);
+        g_object_unref(source_object);
+    }
 }
 
 /* returns TRUE if they have identical settings. */
-gboolean xfce_backdrop_compare_backdrops(XfceBackdrop *backdrop_a,
-                                         XfceBackdrop *backdrop_b)
+gboolean
+xfce_backdrop_compare_backdrops(XfceBackdrop *backdrop_a,
+                                XfceBackdrop *backdrop_b)
 {
     if(g_strcmp0(backdrop_a->priv->image_path, backdrop_b->priv->image_path) != 0) {
         DBG("filename different");
