@@ -2407,8 +2407,7 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
                  * space on the user's disk.
                  */
                 xfdesktop_thumbnailer_delete_thumbnail(fmanager->priv->thumbnailer,
-                                                       g_file_get_path(file));
-                xfdesktop_icon_delete_thumbnail(XFDESKTOP_ICON(icon));
+                                                       filename);
 
                 xfdesktop_icon_view_remove_item(fmanager->priv->icon_view,
                                                 XFDESKTOP_ICON(icon));
