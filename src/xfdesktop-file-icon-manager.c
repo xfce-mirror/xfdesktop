@@ -2293,6 +2293,7 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
     XfdesktopFileIcon *icon;
     GFileInfo *file_info;
     guint16 row, col;
+    gchar *filename;
 
     switch(event) {
         case G_FILE_MONITOR_EVENT_MOVED:
@@ -2389,6 +2390,17 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
         case G_FILE_MONITOR_EVENT_DELETED:
             DBG("got deleted event");
 
+            filename = g_file_get_path(file);
+
+            /* If the file still exists, then keep it. Firefox does this when
+             * downloading files (deletes the main fail and moves the .part
+             * file to the main file). */
+            if(g_file_test(filename, G_FILE_TEST_EXISTS)) {
+                DBG("file still exists, not deleting");
+                g_free(filename);
+                return;
+            }
+
             icon = g_hash_table_lookup(fmanager->priv->icons, file);
             if(icon) {
                 /* Always try to remove thumbnail so it doesn't take up
@@ -2410,6 +2422,9 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
                     xfdesktop_file_icon_manager_refresh_icons(fmanager);
                 }
             }
+
+            if(filename)
+                g_free(filename);
             break;
         default:
             break;
