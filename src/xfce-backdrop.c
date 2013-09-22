@@ -998,7 +998,7 @@ xfce_backdrop_loader_closed_cb(GdkPixbufLoader *loader,
 
     TRACE("entering");
 
-    g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), NULL);
+    g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
 
     /* canceled? quit now */
     if(g_cancellable_is_cancelled(image_data->cancellable)) {
