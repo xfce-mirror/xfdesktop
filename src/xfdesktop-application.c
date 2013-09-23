@@ -349,6 +349,12 @@ xfdesktop_handle_quit_signals(gint sig,
                               gpointer user_data)
 {
     gint main_level;
+    XfdesktopApplication *app = XFDESKTOP_APPLICATION(user_data);
+
+    if(app->sm_client && XFCE_IS_SM_CLIENT(app->sm_client)) {
+        xfce_sm_client_set_restart_style(app->sm_client,
+                                         XFCE_SM_CLIENT_RESTART_NORMAL);
+    }
 
     for(main_level = gtk_main_level(); main_level > 0; --main_level)
         gtk_main_quit();
