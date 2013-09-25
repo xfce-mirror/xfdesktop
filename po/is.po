@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-08-31 06:32+0200\n"
-"PO-Revision-Date: 2013-09-16 13:50+0000\n"
+"PO-Revision-Date: 2013-09-25 09:37+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic (http://www.transifex.com/projects/p/xfce/language/is/)\n"
 "MIME-Version: 1.0\n"
@@ -78,7 +78,7 @@ msgstr "Bakgrunnsmynd fyrir %s"
 
 #: ../settings/main.c:982
 msgid "Image selection is unavailable while the image style is set to None."
-msgstr ""
+msgstr "Ekki er hægt að velja myndir á meðan myndastíll er ekki virkur."
 
 #: ../settings/main.c:1199
 msgid "Spanning screens"
@@ -197,11 +197,11 @@ msgstr "Litur:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Specify the style of the color drawn behind the backdrop image"
-msgstr ""
+msgstr "Tilgreindu hvernig litur er teiknaður aftan við bakgrunnsmynd"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr ""
+msgstr "Tiltekur heillit eða \"vinstri\" eða \"efri\" lit í litstigli"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
 msgid "Select First Color"
@@ -209,7 +209,7 @@ msgstr "Velja fyrsta lit"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-msgstr ""
+msgstr "Tiltekur \"hægri\" eða \"neðri\" lit í litstigli"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
 msgid "Select Second Color"
@@ -227,11 +227,11 @@ msgstr "S_kipta um bakgrunn (bið í mínútum)"
 msgid ""
 "Automatically select a different background from the current directory after"
 " a set number of minutes."
-msgstr ""
+msgstr "Skipta sjálfvirkt yfir í annan bakgrunn eftir tiltekinn mínútufjölda."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid "Number of minutes before a different background is selected."
-msgstr ""
+msgstr "Fjöldi mínútna áður en annar bakgrunnur er valinn."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "_Random Order"
@@ -357,7 +357,7 @@ msgstr "Sýna smám_yndir:"
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
-msgstr ""
+msgstr "Veldu þetta til að birta á skjáborðinu sjálfvirkt gerðar smámyndir af forskoðanlegum skrám."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:32
 msgid "Single _click to activate items"
@@ -576,7 +576,7 @@ msgstr "Opna með \"%s\""
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
-msgstr ""
+msgstr "Tókst ekki að keyra \"exo-desktop-item-edit\", sem er forsenda þess að hægt sé að búa til og breyta ræsum og tenglum á skjáborði."
 
 #: ../src/xfdesktop-file-icon-manager.c:1298
 msgid "_Open all"
