@@ -584,20 +584,44 @@ xfdesktop_file_icon_menu_rename(GtkWidget *widget,
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
     XfdesktopFileIcon *icon;
-    GList *selected;
-    GFile *file;
+    GList *selected, *iter, *files = NULL;
     GtkWidget *toplevel;
     
     selected = xfdesktop_icon_view_get_selected_items(fmanager->priv->icon_view);
-    g_return_if_fail(g_list_length(selected) == 1);
-    icon = XFDESKTOP_FILE_ICON(selected->data);
-    g_list_free(selected);
-    
-    file = xfdesktop_file_icon_peek_file(icon);
+
+    for(iter = selected; iter != NULL; iter = iter->next) {
+        icon = XFDESKTOP_FILE_ICON(iter->data);
+
+        /* create a list of GFiles from selected icons that can be renamed */
+        if(xfdesktop_file_icon_can_rename_file(icon))
+            files = g_list_append(files, xfdesktop_file_icon_peek_file(icon));
+    }
+
     toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
     
-    xfdesktop_file_utils_rename_file(file, fmanager->priv->gscreen, 
-                                     GTK_WINDOW(toplevel));
+    if(g_list_length(files) == 1) {
+        /* rename dialog for a single icon */
+        xfdesktop_file_utils_rename_file(g_list_first(files)->data,
+                                         fmanager->priv->gscreen,
+                                         GTK_WINDOW(toplevel));
+    } else if(g_list_length(files) > 1) {
+        /* Bulk rename for multiple icons selected */
+        GFile *desktop = xfdesktop_file_icon_peek_file(fmanager->priv->desktop_icon);
+
+        xfdesktop_file_utils_bulk_rename(desktop, files,
+                                         fmanager->priv->gscreen,
+                                         GTK_WINDOW(toplevel));
+    } else {
+        /* Nothing valid to rename */
+        xfce_message_dialog(GTK_WINDOW(toplevel),
+                            _("Rename Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("The files could not be renamed"),
+                            _("None of the icons selected support being renamed."),
+                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+    }
+
+    g_list_free(files);
+    g_list_free(selected);
 }
 
 enum
@@ -1561,6 +1585,8 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
 #endif
         
         if(file_icon == fmanager->priv->desktop_icon) {
+            /* Menu on the root desktop window */
+            /* Paste */
             mi = gtk_image_menu_item_new_from_stock(GTK_STOCK_PASTE, NULL);
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
@@ -1571,13 +1597,16 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
             } else
             gtk_widget_set_sensitive(mi, FALSE);
         } else {
+            /* Menu popup on an icon */
+            /* Copy */
             mi = gtk_image_menu_item_new_from_stock(GTK_STOCK_COPY, NULL);
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             g_signal_connect(G_OBJECT(mi), "activate",
                              G_CALLBACK(xfdesktop_file_icon_menu_copy),
                              fmanager);
-            
+
+            /* Cut */
             mi = gtk_image_menu_item_new_from_stock(GTK_STOCK_CUT, NULL);
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
@@ -1587,7 +1616,8 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                                  fmanager);
             } else
                 gtk_widget_set_sensitive(mi, FALSE);
-            
+
+            /* Delete */
             mi = gtk_image_menu_item_new_from_stock(GTK_STOCK_DELETE, NULL);
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
@@ -1597,27 +1627,39 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                                  fmanager);
             } else
                 gtk_widget_set_sensitive(mi, FALSE);
-            
+
+            /* Separator */
             mi = gtk_separator_menu_item_new();
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-            
+
+            /* Rename */
             mi = gtk_image_menu_item_new_with_mnemonic(_("_Rename..."));
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             if(!multi_sel && xfdesktop_file_icon_can_rename_file(file_icon)) {
+                /* Rename a single icon */
                 g_signal_connect(G_OBJECT(mi), "activate",
                                  G_CALLBACK(xfdesktop_file_icon_menu_rename),
                                  fmanager);
-            } else
-                gtk_widget_set_sensitive(mi, FALSE);
+            } else {
+                /* Bulk rename for multiple icons, the callback will
+                 * handle the situation where some icons selected can't
+                 * be renamed */
+                g_signal_connect(G_OBJECT(mi), "activate",
+                                 G_CALLBACK(xfdesktop_file_icon_menu_rename),
+                                 fmanager);
+            }
         }
-        
+
+        /* Separator */
         mi = gtk_separator_menu_item_new();
         gtk_widget_show(mi);
         gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
         
         if(file_icon == fmanager->priv->desktop_icon) {
+            /* Menu on the root desktop window */
+            /* show arrange desktop icons option */
             img = gtk_image_new_from_stock(GTK_STOCK_SORT_ASCENDING, GTK_ICON_SIZE_MENU);
             gtk_widget_show(img);
             mi = gtk_image_menu_item_new_with_mnemonic(_("Arrange Desktop _Icons"));
@@ -1628,6 +1670,7 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                              G_CALLBACK(xfdesktop_file_icon_menu_arrange_icons),
                              fmanager);
 
+            /* Desktop settings window */
             img = gtk_image_new_from_stock(GTK_STOCK_PREFERENCES, GTK_ICON_SIZE_MENU);
             gtk_widget_show(img);
             mi = gtk_image_menu_item_new_with_mnemonic(_("Desktop _Settings..."));
@@ -1637,7 +1680,8 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
             g_signal_connect(G_OBJECT(mi), "activate",
                              G_CALLBACK(xfdesktop_settings_launch), fmanager);
         }
-        
+
+        /* Properties - applies to desktop window or an icon on the desktop */
         img = gtk_image_new_from_stock(GTK_STOCK_PROPERTIES, GTK_ICON_SIZE_MENU);
         gtk_widget_show(img);
         mi = gtk_image_menu_item_new_with_mnemonic(_("P_roperties..."));

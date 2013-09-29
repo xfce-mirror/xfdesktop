@@ -70,6 +70,10 @@ void xfdesktop_file_utils_open_folder(GFile *file,
 void xfdesktop_file_utils_rename_file(GFile *file,
                                       GdkScreen *screen,
                                       GtkWindow *parent);
+void xfdesktop_file_utils_bulk_rename(GFile *working_directory,
+                                      GList *files,
+                                      GdkScreen *screen,
+                                      GtkWindow *parent);
 void xfdesktop_file_utils_trash_files(GList *files,
                                        GdkScreen *screen,
                                        GtkWindow *parent);
@@ -114,6 +118,7 @@ gboolean xfdesktop_file_utils_transfer_files(GdkDragAction action,
 gboolean xfdesktop_file_utils_dbus_init(void);
 DBusGProxy *xfdesktop_file_utils_peek_trash_proxy(void);
 DBusGProxy *xfdesktop_file_utils_peek_filemanager_proxy(void);
+DBusGProxy *xfdesktop_file_utils_peek_thunar_proxy(void);
 void xfdesktop_file_utils_dbus_cleanup(void);
 
 

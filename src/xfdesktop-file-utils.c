@@ -62,6 +62,7 @@
 #include "xfdesktop-file-manager-proxy.h"
 #include "xfdesktop-file-utils.h"
 #include "xfdesktop-trash-proxy.h"
+#include "xfdesktop-thunar-proxy.h"
 
 static void xfdesktop_file_utils_add_emblems(GdkPixbuf *pix, GList *emblems);
 
@@ -852,6 +853,59 @@ xfdesktop_file_utils_rename_file(GFile *file,
 }
 
 void
+xfdesktop_file_utils_bulk_rename(GFile *working_directory,
+                                 GList *files,
+                                 GdkScreen *screen,
+                                 GtkWindow *parent)
+{
+    DBusGProxy *thunar_proxy;
+
+    g_return_if_fail(G_IS_FILE(working_directory));
+    g_return_if_fail(GDK_IS_SCREEN(screen) || GTK_IS_WINDOW(parent));
+
+    if(!screen)
+        screen = gtk_widget_get_screen(GTK_WIDGET(parent));
+
+    thunar_proxy = xfdesktop_file_utils_peek_thunar_proxy();
+    if(thunar_proxy) {
+        gchar *directory = g_file_get_path(working_directory);
+        guint nfiles = g_list_length(files);
+        gchar **filenames = g_new0(gchar *, nfiles+1);
+        gchar *display_name = gdk_screen_make_display_name(screen);
+        gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
+        GList *lp;
+        gint n;
+
+        /* convert GFile list into an array of filenames */
+        for(n = 0, lp = files; lp != NULL; ++n, lp = lp->next)
+            filenames[n] = g_file_get_basename(lp->data);
+        filenames[n] = NULL;
+
+        xfdesktop_file_utils_set_window_cursor(parent, GDK_WATCH);
+
+        xfdesktop_thunar_proxy_bulk_rename_async(thunar_proxy,
+                                                 directory, (const gchar **)filenames,
+                                                 FALSE, display_name, startup_id,
+                                                 (xfdesktop_thunar_proxy_bulk_rename_reply)xfdesktop_file_utils_async_cb,
+                                                 parent);
+
+        xfdesktop_file_utils_set_window_cursor(parent, GDK_LEFT_PTR);
+
+        g_free(directory);
+        g_free(startup_id);
+        g_strfreev(filenames);
+        g_free(display_name);
+    } else {
+        xfce_message_dialog(parent,
+                            _("Rename Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("The files could not be renamed"),
+                            _("This feature requires a file manager service to "
+                              "be present (such as the one supplied by Thunar)."),
+                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+    }
+}
+
+void
 xfdesktop_file_utils_unlink_files(GList *files,
                                   GdkScreen *screen,
                                   GtkWindow *parent)
@@ -1449,6 +1503,7 @@ static gint dbus_ref_cnt = 0;
 static DBusGConnection *dbus_gconn = NULL;
 static DBusGProxy *dbus_trash_proxy = NULL;
 static DBusGProxy *dbus_filemanager_proxy = NULL;
+static DBusGProxy *dbus_thunar_proxy = NULL;
 
 gboolean
 xfdesktop_file_utils_dbus_init(void)
@@ -1479,6 +1534,11 @@ xfdesktop_file_utils_dbus_init(void)
                                                            "org.xfce.FileManager",
                                                            "/org/xfce/FileManager",
                                                            "org.xfce.FileManager");
+
+        dbus_thunar_proxy = dbus_g_proxy_new_for_name(dbus_gconn,
+                                                      "org.xfce.FileManager",
+                                                      "/org/xfce/FileManager",
+                                                      "org.xfce.Thunar");
     } else {
         ret = FALSE;
         dbus_ref_cnt = 0;
@@ -1499,6 +1559,12 @@ xfdesktop_file_utils_peek_filemanager_proxy(void)
     return dbus_filemanager_proxy;
 }
 
+DBusGProxy *
+xfdesktop_file_utils_peek_thunar_proxy(void)
+{
+    return dbus_thunar_proxy;
+}
+
 void
 xfdesktop_file_utils_dbus_cleanup(void)
 {
@@ -1509,6 +1575,8 @@ xfdesktop_file_utils_dbus_cleanup(void)
         g_object_unref(G_OBJECT(dbus_trash_proxy));
     if(dbus_filemanager_proxy)
         g_object_unref(G_OBJECT(dbus_filemanager_proxy));
+    if(dbus_thunar_proxy)
+        g_object_unref(G_OBJECT(dbus_thunar_proxy));
 
     /* we aren't going to unref dbus_gconn because dbus appears to have a
      * memleak in dbus_connection_setup_with_g_main().  really; the comments
