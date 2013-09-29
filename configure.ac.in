@@ -5,26 +5,26 @@ dnl
 
 dnl version info
 m4_define([xfdesktop_version_major], [4])
-m4_define([xfdesktop_version_minor], [10])
+m4_define([xfdesktop_version_minor], [11])
 m4_define([xfdesktop_version_micro], [0])
 m4_define([xfdesktop_version_nano], [])
 m4_define([xfdesktop_version_build], [@REVISION@])
-m4_define([xfdesktop_version_tag],[git])
+m4_define([xfdesktop_version_tag],[])
 m4_define([xfdesktop_version], [xfdesktop_version_major().xfdesktop_version_minor().xfdesktop_version_micro()ifelse(xfdesktop_version_nano(), [], [], [.xfdesktop_version_nano()])ifelse(xfdesktop_version_tag(), [git], [xfdesktop_version_tag()-xfdesktop_version_build()], [xfdesktop_version_tag()])])
 
 dnl minimum required versions
 m4_define([glib_minimum_version], [2.30.0])
 m4_define([gtk_minimum_version], [2.24.0])
-m4_define([libxfce4util_minimum_version], [4.9.0])
-m4_define([libxfce4ui_minimum_version], [4.9.0])
-m4_define([xfce_minimum_version], [4.9.0])
+m4_define([libxfce4util_minimum_version], [4.10.0])
+m4_define([libxfce4ui_minimum_version], [4.10.0])
+m4_define([xfce_minimum_version], [4.10.0])
 m4_define([garcon_minimum_version], [0.1.2])
 m4_define([exo_minimum_version], [0.7.0])
 m4_define([thunar_minimum_version], [1.2.0])
 m4_define([dbus_minimum_version], [0.84])
 m4_define([wnck_minimum_version], [2.30])
 m4_define([intltool_minimum_version], [0.31])
-m4_define([xfconf_minimum_version], [4.8.0])
+m4_define([xfconf_minimum_version], [4.10.0])
 
 dnl init autoconf
 AC_INIT([xfdesktop], [xfdesktop_version], [http://bugzilla.xfce.org/])
@@ -72,7 +72,7 @@ AC_ARG_VAR([DBUS_BINDING_TOOL], [Tool to generate C bindings from XML D-Bus inte
 AC_PATH_PROG([DBUS_BINDING_TOOL], [dbus-binding-tool], [no])
 if test x"$DBUS_BINDING_TOOL" = x"no"; then
   AC_MSG_ERROR([could not find dbus-binding-tool in \$PATH. You can run
-  ./configure DBUS_BINDING_TOOL=/path/to/dbus-binding-tool to define 
+  ./configure DBUS_BINDING_TOOL=/path/to/dbus-binding-tool to define
   a custom location for it.])
 fi
 

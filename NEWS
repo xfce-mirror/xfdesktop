@@ -1,3 +1,81 @@
+4.11.0
+======
+- No need to remove the thumbnail if we're removing the icon
+- Fix for renames removing icons
+- Use GdkPixbufLoader for backdrops
+- Change how icon positions are saved (Bug 9192)
+- Avoid calling g_object_ref on NULL
+- Fix for trash always showing empty on system startup (Bug 9006)
+- Fix warnings and obsolete macros
+- Fix a critical error message on exit
+- Fix compiling with --disable-desktop-icons
+- Custom folder icons (Bug 8326)
+- Hold the cursor grab when presenting the menu (Bug 9323)
+- Use async functions when working with the dbus filemanager (9105)
+- Lower update delay of icon size spinbutton (Bug 9882)
+   Fixed by Jérôme Guelfucci
+- Unselect the desktop icon after activating it. (Bug #8640)
+- Icon stays in place when renamed (Bug 1678)
+- Better icon pixbuf caching
+- Make inactive workspace headers insensitive in color
+- Clean up middle-click menu appearance
+- Fill in the icon area better
+- Use GIcons and add support for emblems on icons
+- Align icon labels and allow them to be multi-line (Bug 8646)
+- Fix a crash when changing icon types
+- Fix for CTRL + drag selections (Bug 10275)
+- More consistent icon placement (Bug #8814)
+- Remove old migration code.
+   Committed by Nick Schermer
+- Fix HTTP URL performance issue / wrong action proposed
+   Reported and fixed by Dennis Tomas
+- Decide on move/copy action before items have been dropped
+   Reported and fixed by Dennis Tomas
+- Clip overlapping backdrops (Bug #9052)
+- Fix memory leaks
+- Apply wallpaper to all workspaces option
+- Port fix for bug #9892 from the xfce-4.10 branch
+   Fixed by Evangelos Foutras
+- Thumbnail service support to xfdesktop-settings (Bug #6536)
+- Improve the eject/unmount notifications (Bug #9845)
+- xfdesktop supports per-workspace wallpapers (Bug #369)
+- Add a tabs width of padding for tooltip text (Bug #9162)
+- Add a signal handler for removable devices to update the icon when the theme
+  is changed (Bug #8977)
+   Fixed by Brad Hermanson
+- Add an unmount option and notifications when a device is removed (Bug #7610)
+- Made changes so that DISABLE_DEPRECATED and GSEAL flags can be enabled.
+- Autotools updates.
+   Committed by Nick Schermer
+- Remove unmaintained translations.
+   Committed by Nick Schermer
+- Translation updates: Arabic (ar), Basque (eu), Bulgarian (bg),
+  Chinese (China) (zh_CN), Chinese (Taiwan) (zh_TW), Croatian (hr), Czech (cs),
+  Dutch (Flemish) (nl), English (Australia) (en_AU),
+  English (United Kingdom) (en_GB), Finnish (fi), French (fr), Greek (el),
+  Hebrew (he), Hungarian (hu), Icelandic (is), Indonesian (id), Italian (it),
+  Kazakh (kk), Korean (ko), Polish (pl), Portuguese (pt),
+  Portuguese (Brazilian) (pt_BR), Russian (ru), Serbian (sr),
+  Spanish (Castilian) (es), Thai (th), Turkish (tr), Ukrainian (uk),
+  Uyghur (ug), and Uzbek (uz)
+
+4.10.2
+======
+- Fix hang when no backdrop image is selected (Bug #9892).
+- Fix tiling for some images.
+
+4.10.1
+======
+- Add a tabs width of padding for tooltip text (Bug #9162).
+- Fix theming of removable devices'  icons (Bug #8977).
+- SVG images are no longer pixilated when scaled up.
+- Improve menu icon loading (Bug #8795).
+- Fix background cycling (Bug #8962).
+- Fix a crash when minimized window icons are resized (Bug #8963).
+- Fix use-after-free in xfdesktop_regular_file_icon_peek_tooltip (Bug #9059).
+- Translation updates: Arabic, Bulgarian, Croatian, Dutch, Greek, Korean,
+  Polish, Russian, Serbian, Turkish and Uyghur.
+
 4.10.0
 ======
 - Use the correct default value for the 'show thumbnails' checkbox
