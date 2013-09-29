@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-02 22:50+0200\n"
-"PO-Revision-Date: 2013-07-09 17:03+0000\n"
+"POT-Creation-Date: 2013-08-31 06:32+0200\n"
+"PO-Revision-Date: 2013-09-29 13:46+0000\n"
 "Last-Translator: cybercop <cybercop_montana@abv.bg>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/xfce/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -20,80 +20,107 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. no need to escape markup; it's already done for us
-#: ../settings/main.c:151
-#, c-format
-msgid ""
-"%s\n"
-"<i>Size: %dx%d</i>"
-msgstr "%s\n<i>Размер: %dx%d</i>"
-
-#: ../settings/main.c:263 ../src/xfdesktop-special-file-icon.c:272
+#: ../settings/main.c:375 ../src/xfdesktop-special-file-icon.c:272
 #: ../src/xfdesktop-special-file-icon.c:443
 msgid "Home"
 msgstr "Домашна папка"
 
-#: ../settings/main.c:265
+#: ../settings/main.c:377
 msgid "Filesystem"
 msgstr "Файлова система"
 
-#: ../settings/main.c:267
+#: ../settings/main.c:379
 msgid "Trash"
 msgstr "Кошче"
 
-#: ../settings/main.c:269
+#: ../settings/main.c:381
 msgid "Removable Devices"
 msgstr "Преносими устройства"
 
-#: ../settings/main.c:454
+#. Display the file name, file type, and file size in the tooltip.
+#: ../settings/main.c:486
+#, c-format
+msgid ""
+"<b>%s</b>\n"
+"Type: %s\n"
+"Size: %s"
+msgstr "<b>%s</b>\nТип: %s\nРазмер: %s"
+
+#: ../settings/main.c:667
+#, c-format
+msgid "Wallpaper for Monitor %d (%s)"
+msgstr "Изображение за Екран %d (%s)"
+
+#: ../settings/main.c:670
+#, c-format
+msgid "Wallpaper for Monitor %d"
+msgstr "Изображение за Екран %d"
+
+#: ../settings/main.c:676
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
-msgstr "Изображениеза фон %s на Монитор %d (%s)"
+msgstr "Изображение за фон %s на Монитор %d (%s)"
 
-#: ../settings/main.c:458
+#: ../settings/main.c:680
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "Изображение за фон %s на Монитор %d"
 
-#: ../settings/main.c:862
+#. Single monitor and single workspace
+#: ../settings/main.c:687
+#, c-format
+msgid "Wallpaper for my desktop"
+msgstr "Изображение за моят работен плот"
+
+#. Single monitor and per workspace wallpaper
+#: ../settings/main.c:690
+#, c-format
+msgid "Wallpaper for %s"
+msgstr "Изображение за %s"
+
+#: ../settings/main.c:982
+msgid "Image selection is unavailable while the image style is set to None."
+msgstr "Избраното изображение не е достъпно, докато е зададен стил на показване Нищо"
+
+#: ../settings/main.c:1199
 msgid "Spanning screens"
 msgstr "Разпростиращи се екрани"
 
-#: ../settings/main.c:1011
+#: ../settings/main.c:1418
 msgid "Image files"
 msgstr "Файлове с изображения"
 
-#: ../settings/main.c:1111
+#: ../settings/main.c:1555
 msgid "Settings manager socket"
 msgstr "Гнездо за управление на настройките"
 
-#: ../settings/main.c:1111
+#: ../settings/main.c:1555
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: ../settings/main.c:1112
+#: ../settings/main.c:1556
 msgid "Version information"
 msgstr "Информация за версията"
 
-#: ../settings/main.c:1129
+#: ../settings/main.c:1574
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Напишете '%s --help' за показване на потребителско ръководство."
 
-#: ../settings/main.c:1141
+#: ../settings/main.c:1586
 msgid "The Xfce development team. All rights reserved."
 msgstr "Екипът за разработка на Xfce. Всички права запазени."
 
-#: ../settings/main.c:1142
+#: ../settings/main.c:1587
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Докладвайте за грешки на <%s>."
 
-#: ../settings/main.c:1149
+#: ../settings/main.c:1594
 msgid "Desktop Settings"
 msgstr "Настройки на Работният плот"
 
-#: ../settings/main.c:1151
+#: ../settings/main.c:1596
 msgid "Unable to contact settings server"
 msgstr "Не може да се свърже със сървъра за настройки"
 
@@ -111,7 +138,7 @@ msgstr "Плътен цвят"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
 msgid "Horizontal gradient"
-msgstr "Хоризонтален наклон"
+msgstr "Хоризонтален градиент"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
 msgid "Vertical gradient"
@@ -130,77 +157,85 @@ msgid "Add an image to the list"
 msgstr "Добавяне на изображение към списъка"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
+msgid "St_yle:"
+msgstr "Стил:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
 msgid "Specify how the image will be resized to fit the screen"
 msgstr "Посочете как изображението ще бъде оразмерено за да се побере в екрана"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
 #: ../settings/xfdesktop-settings-ui.glade.h:4
 msgid "None"
 msgstr "Няма"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
 msgid "Centered"
 msgstr "Центрирано"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
 msgid "Tiled"
 msgstr "На плочки"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
 msgid "Stretched"
 msgstr "Разтегнато"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
 msgid "Scaled"
 msgstr "Мащабирано"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
 msgid "Zoomed"
 msgstr "Увеличено"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
-msgid "St_yle:"
-msgstr "Стил:"
-
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
+msgid "Spanning Screens"
+msgstr "Обхващащи екрани"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
 msgid "Color:"
 msgstr "Цвят:"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Specify the style of the color drawn behind the backdrop image"
 msgstr "Показва стила на цвета зад фона на изображението"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
 msgstr "Задава плътния цвят, или  \"левия\" или \"горен\" цвят на градиента"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
 msgid "Select First Color"
 msgstr "Избери първи цвят"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr "Задава  \"десния\" или \"долния\" цвят на градиент"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
 msgid "Select Second Color"
 msgstr "Избери втори цвят"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
+msgid "Apply to all _workspaces"
+msgstr "Приложи за всички работни места"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 msgid "_Change the background (in minutes):"
 msgstr "Смяна на изображението за фон (в минути):"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
 msgid ""
 "Automatically select a different background from the current directory after"
 " a set number of minutes."
 msgstr "Автоматична смяна на изображенията за фон от текущата директория след определен брой минути."
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid "Number of minutes before a different background is selected."
 msgstr "Брой минути, преди да се сменят изображенията за фон."
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "_Random Order"
 msgstr "Произволен ред"
 
@@ -234,9 +269,9 @@ msgstr "Икони на минимизирани програми"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:9
 msgid "File/launcher icons"
-msgstr "Файл/икони на стартери"
+msgstr "Икони на файл/стартери"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:813
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:950
 msgid "Desktop"
 msgstr "Работен плот"
 
@@ -346,74 +381,74 @@ msgstr "<b>Икони по подразбиране</b>"
 msgid "_Icons"
 msgstr "Икони"
 
-#: ../src/main.c:243
+#: ../src/main.c:241
 msgid "Display version information"
 msgstr "Показване на информация за версията"
 
-#: ../src/main.c:244
+#: ../src/main.c:242
 msgid "Reload all settings, refresh image list"
 msgstr "Презареждане на всички настройки, обновяване на списъка с изображения"
 
-#: ../src/main.c:245
+#: ../src/main.c:243
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "Показване на менюто (в текущата позиция на мишката)"
 
-#: ../src/main.c:246
+#: ../src/main.c:244
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "Показване на списъка с прозорци (в текущата позиция на мишката)"
 
-#: ../src/main.c:248
+#: ../src/main.c:246
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "Автоматично подреждане на иконите върху Работният плот"
 
-#: ../src/main.c:250
+#: ../src/main.c:248
 msgid "Cause xfdesktop to quit"
 msgstr "Причина за изключване на xfdesktop"
 
-#: ../src/main.c:267
+#: ../src/main.c:265
 #, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "Грешка при анализ на аргументите: %s\n"
 
-#: ../src/main.c:275
+#: ../src/main.c:273
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Това е %s, версия %s, работеща с Xfce %s.\n"
 
-#: ../src/main.c:277
+#: ../src/main.c:275
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Изграден с GTK+ %d.%d.%d, свързан с GTK+ %d.%d.%d."
 
-#: ../src/main.c:281
+#: ../src/main.c:279
 #, c-format
 msgid "Build options:\n"
 msgstr "Опции за изграждане:\n"
 
-#: ../src/main.c:282
+#: ../src/main.c:280
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Меню на Работният плот:        %s\n"
 
-#: ../src/main.c:284 ../src/main.c:291 ../src/main.c:298
+#: ../src/main.c:282 ../src/main.c:289 ../src/main.c:296
 msgid "enabled"
 msgstr "включено"
 
-#: ../src/main.c:286 ../src/main.c:293 ../src/main.c:300
+#: ../src/main.c:284 ../src/main.c:291 ../src/main.c:298
 msgid "disabled"
 msgstr "изключено"
 
-#: ../src/main.c:289
+#: ../src/main.c:287
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Икони на работният плот:       %s\n"
 
-#: ../src/main.c:296
+#: ../src/main.c:294
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr "    Файлове на работният плот:  %s\n"
+msgstr "    Икони на десктоп файлове:  %s\n"
 
-#: ../src/main.c:329
+#: ../src/main.c:327
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s не е стартиран.\n"
@@ -422,35 +457,55 @@ msgstr "%s не е стартиран.\n"
 msgid "_Applications"
 msgstr "_Програми"
 
-#: ../src/windowlist.c:229
+#: ../src/windowlist.c:72
+#, c-format
+msgid "Remove Workspace %d"
+msgstr "Премахване на Работно място %d"
+
+#: ../src/windowlist.c:73
+#, c-format
+msgid ""
+"Do you really want to remove workspace %d?\n"
+"Note: You are currently on workspace %d."
+msgstr "Наистина ли искате да премахнете работно място %d?\nЗабележка: В момента Вие сте на работно място %d."
+
+#: ../src/windowlist.c:77
+#, c-format
+msgid "Remove Workspace '%s'"
+msgstr "Премахване на Работно място '%s'"
+
+#: ../src/windowlist.c:78
+#, c-format
+msgid ""
+"Do you really want to remove workspace '%s'?\n"
+"Note: You are currently on workspace '%s'."
+msgstr "Наистина ли искате да премахнете работно място '%s'?\nЗабележка: В момента Вие сте на работно място '%s'."
+
+#. Popup a dialog box confirming that the user wants to remove a
+#. * workspace
+#: ../src/windowlist.c:85
+msgid "Remove"
+msgstr "Премахване"
+
+#: ../src/windowlist.c:245
 msgid "Window List"
 msgstr "Списък с прозорци"
 
-#: ../src/windowlist.c:255
+#: ../src/windowlist.c:271
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>Работно място %d</b>"
 
-#: ../src/windowlist.c:264
-#, c-format
-msgid "Workspace %d"
-msgstr "Работно място %d"
-
-#: ../src/windowlist.c:266
-#, c-format
-msgid "<i>Workspace %d</i>"
-msgstr "<i>Работно място %d</i>"
-
-#: ../src/windowlist.c:362 ../src/windowlist.c:365
+#: ../src/windowlist.c:360 ../src/windowlist.c:363
 msgid "_Add Workspace"
 msgstr "_Добавяне на работно място"
 
-#: ../src/windowlist.c:373
+#: ../src/windowlist.c:371
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "_Премахване на работно място %d"
 
-#: ../src/windowlist.c:376
+#: ../src/windowlist.c:374
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "_Премахване на работно място '%s'"
@@ -459,12 +514,12 @@ msgstr "_Премахване на работно място '%s'"
 #: ../src/xfdesktop-file-icon-manager.c:521
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
-msgstr "Не може да се създаде десктоп папка \"%s\""
+msgstr "Не може да се създаде десктоп директорията \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:509
 #: ../src/xfdesktop-file-icon-manager.c:526
 msgid "Desktop Folder Error"
-msgstr "Грешка в десктоп папката"
+msgstr "Грешка в десктоп директория"
 
 #: ../src/xfdesktop-file-icon-manager.c:528
 msgid ""
@@ -472,9 +527,8 @@ msgid ""
 msgstr "Нормален файл със същото име вече съществува. Моля, изтрийте или го преименувате."
 
 #: ../src/xfdesktop-file-icon-manager.c:631
-#: ../src/xfdesktop-file-icon-manager.c:675 ../src/xfdesktop-file-utils.c:863
-#: ../src/xfdesktop-file-utils.c:878 ../src/xfdesktop-file-utils.c:910
-#: ../src/xfdesktop-file-utils.c:924
+#: ../src/xfdesktop-file-icon-manager.c:675 ../src/xfdesktop-file-utils.c:866
+#: ../src/xfdesktop-file-utils.c:903
 msgid "Trash Error"
 msgstr "Грешка в Кошчето"
 
@@ -484,12 +538,12 @@ msgid "The selected files could not be trashed"
 msgstr "Избраните файлове не могат да бъдат преместени в кошчето"
 
 #: ../src/xfdesktop-file-icon-manager.c:633
-#: ../src/xfdesktop-file-icon-manager.c:677 ../src/xfdesktop-file-utils.c:762
-#: ../src/xfdesktop-file-utils.c:821 ../src/xfdesktop-file-utils.c:979
-#: ../src/xfdesktop-file-utils.c:1035 ../src/xfdesktop-file-utils.c:1085
-#: ../src/xfdesktop-file-utils.c:1135 ../src/xfdesktop-file-utils.c:1212
-#: ../src/xfdesktop-file-utils.c:1273 ../src/xfdesktop-file-utils.c:1346
-#: ../src/xfdesktop-file-utils.c:1424
+#: ../src/xfdesktop-file-icon-manager.c:677 ../src/xfdesktop-file-utils.c:768
+#: ../src/xfdesktop-file-utils.c:818 ../src/xfdesktop-file-utils.c:949
+#: ../src/xfdesktop-file-utils.c:996 ../src/xfdesktop-file-utils.c:1037
+#: ../src/xfdesktop-file-utils.c:1078 ../src/xfdesktop-file-utils.c:1155
+#: ../src/xfdesktop-file-utils.c:1207 ../src/xfdesktop-file-utils.c:1280
+#: ../src/xfdesktop-file-utils.c:1358
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
@@ -497,17 +551,16 @@ msgstr "Тази функция изисква присъствието на ф�
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:777
-#: ../src/xfdesktop-file-icon-manager.c:1356
+#: ../src/xfdesktop-file-icon-manager.c:1240
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Не може да стартира \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:779
 #: ../src/xfdesktop-file-icon-manager.c:1040
-#: ../src/xfdesktop-file-icon-manager.c:1357 ../src/xfdesktop-file-utils.c:707
-#: ../src/xfdesktop-file-utils.c:1118 ../src/xfdesktop-file-utils.c:1133
-#: ../src/xfdesktop-file-utils.c:1185 ../src/xfdesktop-file-utils.c:1210
-#: ../src/xfdesktop-file-utils.c:1256 ../src/xfdesktop-file-utils.c:1271
+#: ../src/xfdesktop-file-icon-manager.c:1241 ../src/xfdesktop-file-utils.c:707
+#: ../src/xfdesktop-file-utils.c:1076 ../src/xfdesktop-file-utils.c:1128
+#: ../src/xfdesktop-file-utils.c:1153 ../src/xfdesktop-file-utils.c:1205
 msgid "Launch Error"
 msgstr "Грешка при стартиране"
 
@@ -527,94 +580,94 @@ msgid ""
 "edit launchers and links on the desktop."
 msgstr "Не може да се стартира \"exo-desktop-item-edit\", който е необходим за създаване и редактиране на стартери и връзките на работния плот."
 
-#: ../src/xfdesktop-file-icon-manager.c:1414
+#: ../src/xfdesktop-file-icon-manager.c:1298
 msgid "_Open all"
 msgstr "_Отваряне на всички"
 
-#: ../src/xfdesktop-file-icon-manager.c:1430
+#: ../src/xfdesktop-file-icon-manager.c:1314
 msgid "_Open in New Window"
 msgstr "_Отваряне в нов прозорец"
 
-#: ../src/xfdesktop-file-icon-manager.c:1432
+#: ../src/xfdesktop-file-icon-manager.c:1316
 #: ../src/xfdesktop-special-file-icon.c:514 ../src/xfdesktop-volume-icon.c:782
 #: ../src/xfdesktop-volume-icon.c:786
 msgid "_Open"
 msgstr "_Отваряне"
 
 #. create launcher item
-#: ../src/xfdesktop-file-icon-manager.c:1451
+#: ../src/xfdesktop-file-icon-manager.c:1335
 msgid "Create _Launcher..."
 msgstr "Създаване на _стартер..."
 
 #. create link item
-#: ../src/xfdesktop-file-icon-manager.c:1467
+#: ../src/xfdesktop-file-icon-manager.c:1351
 msgid "Create _URL Link..."
 msgstr "Създаване на _интернет връзка..."
 
 #. create folder item
-#: ../src/xfdesktop-file-icon-manager.c:1483
+#: ../src/xfdesktop-file-icon-manager.c:1367
 msgid "Create _Folder..."
 msgstr "Създаване на _папка..."
 
 #. create from template submenu
-#: ../src/xfdesktop-file-icon-manager.c:1498
+#: ../src/xfdesktop-file-icon-manager.c:1382
 msgid "Create From _Template"
 msgstr "Създаване от _шаблон"
 
-#: ../src/xfdesktop-file-icon-manager.c:1524
+#: ../src/xfdesktop-file-icon-manager.c:1408
 msgid "_Empty File"
 msgstr "_Празен файл"
 
-#: ../src/xfdesktop-file-icon-manager.c:1540
+#: ../src/xfdesktop-file-icon-manager.c:1424
 msgid "_Execute"
 msgstr "_Изпълнение"
 
-#: ../src/xfdesktop-file-icon-manager.c:1560
+#: ../src/xfdesktop-file-icon-manager.c:1444
 msgid "_Edit Launcher"
 msgstr "_Редактиране на стартер"
 
-#: ../src/xfdesktop-file-icon-manager.c:1595
+#: ../src/xfdesktop-file-icon-manager.c:1479
 msgid "Open With"
 msgstr "Отваряне с"
 
-#: ../src/xfdesktop-file-icon-manager.c:1621
+#: ../src/xfdesktop-file-icon-manager.c:1505
 msgid "Open With Other _Application..."
 msgstr "Отваряне с друга _програма..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1713
+#: ../src/xfdesktop-file-icon-manager.c:1597
 msgid "_Rename..."
 msgstr "_Преименуване..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1731
+#: ../src/xfdesktop-file-icon-manager.c:1615
 msgid "Arrange Desktop _Icons"
 msgstr "Подреждане на иконите върху Работният плот"
 
-#: ../src/xfdesktop-file-icon-manager.c:1741
+#: ../src/xfdesktop-file-icon-manager.c:1625
 msgid "Desktop _Settings..."
 msgstr "Настройки на Работният плот..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1751
+#: ../src/xfdesktop-file-icon-manager.c:1635
 #: ../src/xfdesktop-volume-icon.c:828
 msgid "P_roperties..."
 msgstr "_Свойства..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2369
+#: ../src/xfdesktop-file-icon-manager.c:2262
 msgid "Load Error"
 msgstr "Грешка при зареждане"
 
-#: ../src/xfdesktop-file-icon-manager.c:2371
+#: ../src/xfdesktop-file-icon-manager.c:2264
 msgid "Failed to load the desktop folder"
 msgstr "Проблем при зареждането на десктоп папка"
 
-#: ../src/xfdesktop-file-icon-manager.c:2947
+#: ../src/xfdesktop-file-icon-manager.c:2840
 msgid "Copy _Here"
 msgstr "Копиране тук"
 
-#: ../src/xfdesktop-file-icon-manager.c:2947
+#: ../src/xfdesktop-file-icon-manager.c:2840
 msgid "_Move Here"
 msgstr "Преместване тук"
 
-#: ../src/xfdesktop-file-icon-manager.c:2947
+#: ../src/xfdesktop-file-icon-manager.c:2840
 msgid "_Link Here"
 msgstr "Връзка тук"
 
@@ -651,82 +704,90 @@ msgstr "Неизвестен"
 msgid "The folder could not be opened"
 msgstr "Папката не може да бъде отворена"
 
-#: ../src/xfdesktop-file-utils.c:745 ../src/xfdesktop-file-utils.c:760
+#: ../src/xfdesktop-file-utils.c:725
+msgid "Error"
+msgstr "Грешка"
+
+#: ../src/xfdesktop-file-utils.c:726
+msgid "The requested operation could not be completed"
+msgstr "Заявената операция не може да бъде завършена"
+
+#: ../src/xfdesktop-file-utils.c:766
 msgid "Rename Error"
 msgstr "Грешка при преименуване"
 
-#: ../src/xfdesktop-file-utils.c:746 ../src/xfdesktop-file-utils.c:761
+#: ../src/xfdesktop-file-utils.c:767
 msgid "The file could not be renamed"
 msgstr "Файлът не може да бъде преименуван"
 
-#: ../src/xfdesktop-file-utils.c:804 ../src/xfdesktop-file-utils.c:819
+#: ../src/xfdesktop-file-utils.c:816
 msgid "Delete Error"
 msgstr "Грешка при изтриване"
 
-#: ../src/xfdesktop-file-utils.c:805 ../src/xfdesktop-file-utils.c:820
+#: ../src/xfdesktop-file-utils.c:817
 msgid "The selected files could not be deleted"
 msgstr "Избраните файлове не могат да бъдат изтрити"
 
-#: ../src/xfdesktop-file-utils.c:864 ../src/xfdesktop-file-utils.c:879
+#: ../src/xfdesktop-file-utils.c:867
 msgid "The selected files could not be moved to the trash"
 msgstr "Избраните файлове не могат да бъдат преместени в кошчето"
 
-#: ../src/xfdesktop-file-utils.c:880 ../src/xfdesktop-file-utils.c:926
+#: ../src/xfdesktop-file-utils.c:868 ../src/xfdesktop-file-utils.c:905
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
 msgstr "Тази функция изисква да присъства trash service (като тази, предоставена от Thunar)."
 
-#: ../src/xfdesktop-file-utils.c:911 ../src/xfdesktop-file-utils.c:925
+#: ../src/xfdesktop-file-utils.c:904
 msgid "Could not empty the trash"
 msgstr "Не може да бъде изпразнено кошчето"
 
-#: ../src/xfdesktop-file-utils.c:962 ../src/xfdesktop-file-utils.c:977
+#: ../src/xfdesktop-file-utils.c:947
 msgid "Create File Error"
 msgstr "Грешка при създаване на файл"
 
-#: ../src/xfdesktop-file-utils.c:963 ../src/xfdesktop-file-utils.c:978
+#: ../src/xfdesktop-file-utils.c:948
 msgid "Could not create a new file"
 msgstr "Не може да се създаде нов файл"
 
-#: ../src/xfdesktop-file-utils.c:1018 ../src/xfdesktop-file-utils.c:1033
+#: ../src/xfdesktop-file-utils.c:994
 msgid "Create Document Error"
 msgstr "Грешка при създаване на документ"
 
-#: ../src/xfdesktop-file-utils.c:1019 ../src/xfdesktop-file-utils.c:1034
+#: ../src/xfdesktop-file-utils.c:995
 msgid "Could not create a new document from the template"
 msgstr "Не може да се създаде нов документ от шаблон"
 
-#: ../src/xfdesktop-file-utils.c:1068 ../src/xfdesktop-file-utils.c:1083
+#: ../src/xfdesktop-file-utils.c:1035
 msgid "File Properties Error"
 msgstr "Грешка в свойствата на файл"
 
-#: ../src/xfdesktop-file-utils.c:1069 ../src/xfdesktop-file-utils.c:1084
+#: ../src/xfdesktop-file-utils.c:1036
 msgid "The file properties dialog could not be opened"
 msgstr "Не може да се отвори диалога за свойствата на файла"
 
-#: ../src/xfdesktop-file-utils.c:1119 ../src/xfdesktop-file-utils.c:1134
+#: ../src/xfdesktop-file-utils.c:1077
 msgid "The file could not be opened"
 msgstr "Файлът не може да бъде отворен"
 
-#: ../src/xfdesktop-file-utils.c:1182 ../src/xfdesktop-file-utils.c:1207
+#: ../src/xfdesktop-file-utils.c:1125 ../src/xfdesktop-file-utils.c:1150
 #, c-format
 msgid "Failed to run \"%s\""
 msgstr "Неуспех при стартиране на \"%s\""
 
-#: ../src/xfdesktop-file-utils.c:1257 ../src/xfdesktop-file-utils.c:1272
+#: ../src/xfdesktop-file-utils.c:1206
 msgid "The application chooser could not be opened"
 msgstr "Изборът на програми не може да стартира"
 
-#: ../src/xfdesktop-file-utils.c:1330 ../src/xfdesktop-file-utils.c:1344
-#: ../src/xfdesktop-file-utils.c:1406 ../src/xfdesktop-file-utils.c:1422
+#: ../src/xfdesktop-file-utils.c:1264 ../src/xfdesktop-file-utils.c:1278
+#: ../src/xfdesktop-file-utils.c:1340 ../src/xfdesktop-file-utils.c:1356
 msgid "Transfer Error"
 msgstr "Грешка при пренасяне"
 
-#: ../src/xfdesktop-file-utils.c:1331 ../src/xfdesktop-file-utils.c:1345
-#: ../src/xfdesktop-file-utils.c:1407 ../src/xfdesktop-file-utils.c:1423
+#: ../src/xfdesktop-file-utils.c:1265 ../src/xfdesktop-file-utils.c:1279
+#: ../src/xfdesktop-file-utils.c:1341 ../src/xfdesktop-file-utils.c:1357
 msgid "The file transfer could not be performed"
-msgstr "пренасянето на файлове не може да бъде изпълнено"
+msgstr "Пренасянето на файлове не може да бъде изпълнено"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:128
@@ -862,4 +923,4 @@ msgstr "_Монтиране на устройството"
 
 #: ../src/xfdesktop-window-icon.c:208
 msgid "_Window Actions"
-msgstr "Действия с прозорци"
+msgstr "Действия с прозорец"
