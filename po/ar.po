@@ -6,17 +6,19 @@
 # linostar <linux.anas@gmail.com>, 2007
 # Karim Oulad Chalha <herr.linux88@gmail.com>, 2013
 # Khaled Hosny <khaledhosny@eglug.org>, 2007
+# linostar <linux.anas@gmail.com>, 2007
+# mohammad alhargan <malham1@hotmail.com>, 2012
 # mohammad alhargan <malham1@hotmail.com>, 2012
 # محمد الحرقان <malham1@gmail.com>, 2012
 # Saleh Alhathal <hathalsal@hotmail.com>, 2004
-# محمد الحرقان <malham1@gmail.com>, 2012
+# محمد الحرقان <malham1@gmail.com>, 2012-2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-31 06:32+0200\n"
-"PO-Revision-Date: 2013-09-08 13:47+0000\n"
-"Last-Translator: Karim Oulad Chalha <herr.linux88@gmail.com>\n"
+"POT-Creation-Date: 2013-09-29 18:31+0200\n"
+"PO-Revision-Date: 2013-09-30 10:07+0000\n"
+"Last-Translator: mohammad alhargan <malham1@hotmail.com>\n"
 "Language-Team: Arabic (http://www.transifex.com/projects/p/xfce/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,25 +26,25 @@ msgstr ""
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: ../settings/main.c:375 ../src/xfdesktop-special-file-icon.c:272
-#: ../src/xfdesktop-special-file-icon.c:443
+#: ../settings/main.c:380 ../src/xfdesktop-special-file-icon.c:295
+#: ../src/xfdesktop-special-file-icon.c:479
 msgid "Home"
 msgstr "المنزل"
 
-#: ../settings/main.c:377
+#: ../settings/main.c:382
 msgid "Filesystem"
 msgstr "ملفات النظام"
 
-#: ../settings/main.c:379
+#: ../settings/main.c:384
 msgid "Trash"
 msgstr "المهملات"
 
-#: ../settings/main.c:381
+#: ../settings/main.c:386
 msgid "Removable Devices"
 msgstr "أجهزة قابلة للإزالة"
 
 #. Display the file name, file type, and file size in the tooltip.
-#: ../settings/main.c:486
+#: ../settings/main.c:491
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -50,81 +52,81 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nنوع: %s\nحجم: %s"
 
-#: ../settings/main.c:667
+#: ../settings/main.c:672
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "صورة الخلفية للمراقب %d (%s)"
 
-#: ../settings/main.c:670
+#: ../settings/main.c:675
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "صورة الخلفية للمراقب %d"
 
-#: ../settings/main.c:676
+#: ../settings/main.c:681
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "الخلفية ل %s في المراقب %d (%s)"
 
-#: ../settings/main.c:680
+#: ../settings/main.c:685
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "الخلفية ل %s في المراقب %d"
 
 #. Single monitor and single workspace
-#: ../settings/main.c:687
+#: ../settings/main.c:692
 #, c-format
 msgid "Wallpaper for my desktop"
 msgstr "صورة الخلفية لسطح المكتب"
 
 #. Single monitor and per workspace wallpaper
-#: ../settings/main.c:690
+#: ../settings/main.c:695
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "خلفية لـ %s"
 
-#: ../settings/main.c:982
+#: ../settings/main.c:987
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "الصورة المحددة غير متوفرة عندما يتم تحديد بدون لنمط الصور."
 
-#: ../settings/main.c:1199
+#: ../settings/main.c:1204
 msgid "Spanning screens"
 msgstr "تمديد الشاشة"
 
-#: ../settings/main.c:1418
+#: ../settings/main.c:1423
 msgid "Image files"
 msgstr "ملفات صور"
 
-#: ../settings/main.c:1555
+#: ../settings/main.c:1560
 msgid "Settings manager socket"
 msgstr "مقبس مدير الإعدادات"
 
-#: ../settings/main.c:1555
+#: ../settings/main.c:1560
 msgid "SOCKET ID"
 msgstr "مُعرف المقبس"
 
-#: ../settings/main.c:1556
+#: ../settings/main.c:1561
 msgid "Version information"
 msgstr "معلومات الإصدار"
 
-#: ../settings/main.c:1574
+#: ../settings/main.c:1582
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "اكتب '%s --help' للمساعدة على الاستخدام."
 
-#: ../settings/main.c:1586
+#: ../settings/main.c:1594
 msgid "The Xfce development team. All rights reserved."
 msgstr "فريق تطوير إكسفس. جميع الحقوق محفوظة."
 
-#: ../settings/main.c:1587
+#: ../settings/main.c:1595
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "الرجاء الإبلاغ عن علة في <%s>."
 
-#: ../settings/main.c:1594
+#: ../settings/main.c:1602
 msgid "Desktop Settings"
 msgstr "إعدادات سطح المكتب"
 
-#: ../settings/main.c:1596
+#: ../settings/main.c:1604
 msgid "Unable to contact settings server"
 msgstr "فشل الوصول إلى إعدادات الخادم"
 
@@ -241,7 +243,7 @@ msgstr "عدد الدقاءق قبل تحديد الخلفيات الأخرى."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "_Random Order"
-msgstr "تر_تيب عشوائي"
+msgstr "_ترتيب عشوائي"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:1
 msgid "Left"
@@ -275,7 +277,7 @@ msgstr "تصغير أيقونة التطبيق"
 msgid "File/launcher icons"
 msgstr "ملف/مٌطلق أيقونات"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:950
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:981
 msgid "Desktop"
 msgstr "سطح المكتب"
 
@@ -514,292 +516,302 @@ msgstr "_حذف مساحة العمل %d"
 msgid "_Remove Workspace '%s'"
 msgstr "_حذف ساحة العمل '%s'"
 
-#: ../src/xfdesktop-file-icon-manager.c:504
-#: ../src/xfdesktop-file-icon-manager.c:521
+#: ../src/xfdesktop-file-icon-manager.c:510
+#: ../src/xfdesktop-file-icon-manager.c:527
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
 msgstr "لا يمكن إنشاء مجلد سطح المكتب \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:509
-#: ../src/xfdesktop-file-icon-manager.c:526
+#: ../src/xfdesktop-file-icon-manager.c:515
+#: ../src/xfdesktop-file-icon-manager.c:532
 msgid "Desktop Folder Error"
 msgstr "خطأ في مجلد سطح المكتب"
 
-#: ../src/xfdesktop-file-icon-manager.c:528
+#: ../src/xfdesktop-file-icon-manager.c:534
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr "ملف عادي موجود أصلا بنفس الاسم. الرجاء حذفه أو إعادة تسميته."
 
-#: ../src/xfdesktop-file-icon-manager.c:631
-#: ../src/xfdesktop-file-icon-manager.c:675 ../src/xfdesktop-file-utils.c:866
-#: ../src/xfdesktop-file-utils.c:903
+#: ../src/xfdesktop-file-icon-manager.c:617 ../src/xfdesktop-file-utils.c:847
+#: ../src/xfdesktop-file-utils.c:900
+msgid "Rename Error"
+msgstr "خطأ أثناء إعادة التسمية"
+
+#: ../src/xfdesktop-file-icon-manager.c:618 ../src/xfdesktop-file-utils.c:901
+msgid "The files could not be renamed"
+msgstr "لا يمكن إعادة تسمية الملفات"
+
+#: ../src/xfdesktop-file-icon-manager.c:619
+msgid "None of the icons selected support being renamed."
+msgstr "لا تدعم أي من الرموز المحددة إعادة تسميته."
+
+#: ../src/xfdesktop-file-icon-manager.c:663
+#: ../src/xfdesktop-file-icon-manager.c:707 ../src/xfdesktop-file-utils.c:1000
+#: ../src/xfdesktop-file-utils.c:1037
 msgid "Trash Error"
 msgstr "خطأ في سلة المهملات"
 
-#: ../src/xfdesktop-file-icon-manager.c:632
-#: ../src/xfdesktop-file-icon-manager.c:676
+#: ../src/xfdesktop-file-icon-manager.c:664
+#: ../src/xfdesktop-file-icon-manager.c:708
 msgid "The selected files could not be trashed"
 msgstr "لا يمكن حذف الملفات المحددة"
 
-#: ../src/xfdesktop-file-icon-manager.c:633
-#: ../src/xfdesktop-file-icon-manager.c:677 ../src/xfdesktop-file-utils.c:768
-#: ../src/xfdesktop-file-utils.c:818 ../src/xfdesktop-file-utils.c:949
-#: ../src/xfdesktop-file-utils.c:996 ../src/xfdesktop-file-utils.c:1037
-#: ../src/xfdesktop-file-utils.c:1078 ../src/xfdesktop-file-utils.c:1155
-#: ../src/xfdesktop-file-utils.c:1207 ../src/xfdesktop-file-utils.c:1280
-#: ../src/xfdesktop-file-utils.c:1358
+#: ../src/xfdesktop-file-icon-manager.c:665
+#: ../src/xfdesktop-file-icon-manager.c:709 ../src/xfdesktop-file-utils.c:849
+#: ../src/xfdesktop-file-utils.c:902 ../src/xfdesktop-file-utils.c:952
+#: ../src/xfdesktop-file-utils.c:1083 ../src/xfdesktop-file-utils.c:1130
+#: ../src/xfdesktop-file-utils.c:1171 ../src/xfdesktop-file-utils.c:1212
+#: ../src/xfdesktop-file-utils.c:1289 ../src/xfdesktop-file-utils.c:1341
+#: ../src/xfdesktop-file-utils.c:1414 ../src/xfdesktop-file-utils.c:1492
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
 msgstr "هذه الميزة بحاجة إلى خدمة مدير الملفات(مثل تلك التي يوفرها تونار)."
 
 #. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:777
-#: ../src/xfdesktop-file-icon-manager.c:1240
+#: ../src/xfdesktop-file-icon-manager.c:809
+#: ../src/xfdesktop-file-icon-manager.c:1272
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "فشل في إطلاق \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:779
-#: ../src/xfdesktop-file-icon-manager.c:1040
-#: ../src/xfdesktop-file-icon-manager.c:1241 ../src/xfdesktop-file-utils.c:707
-#: ../src/xfdesktop-file-utils.c:1076 ../src/xfdesktop-file-utils.c:1128
-#: ../src/xfdesktop-file-utils.c:1153 ../src/xfdesktop-file-utils.c:1205
+#: ../src/xfdesktop-file-icon-manager.c:811
+#: ../src/xfdesktop-file-icon-manager.c:1072
+#: ../src/xfdesktop-file-icon-manager.c:1273 ../src/xfdesktop-file-utils.c:788
+#: ../src/xfdesktop-file-utils.c:1210 ../src/xfdesktop-file-utils.c:1262
+#: ../src/xfdesktop-file-utils.c:1287 ../src/xfdesktop-file-utils.c:1339
 msgid "Launch Error"
 msgstr "خطأ في الإقلاع"
 
-#: ../src/xfdesktop-file-icon-manager.c:964
+#: ../src/xfdesktop-file-icon-manager.c:996
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "_افتح باستخدام\"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:967
+#: ../src/xfdesktop-file-icon-manager.c:999
 #, c-format
 msgid "Open With \"%s\""
 msgstr "افتح باستخدام\"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1042
+#: ../src/xfdesktop-file-icon-manager.c:1074
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr "فشل في تنفيذ \"exo-desktop-item-edit\", الضروري لإنشاء و تحرير المطلق و روابط على سطح المكتب."
 
-#: ../src/xfdesktop-file-icon-manager.c:1298
+#: ../src/xfdesktop-file-icon-manager.c:1330
 msgid "_Open all"
 msgstr "_افتح الكل"
 
-#: ../src/xfdesktop-file-icon-manager.c:1314
+#: ../src/xfdesktop-file-icon-manager.c:1346
 msgid "_Open in New Window"
 msgstr "_افتح في نافذة جديدة"
 
-#: ../src/xfdesktop-file-icon-manager.c:1316
-#: ../src/xfdesktop-special-file-icon.c:514 ../src/xfdesktop-volume-icon.c:782
-#: ../src/xfdesktop-volume-icon.c:786
+#: ../src/xfdesktop-file-icon-manager.c:1348
+#: ../src/xfdesktop-special-file-icon.c:550 ../src/xfdesktop-volume-icon.c:814
+#: ../src/xfdesktop-volume-icon.c:818
 msgid "_Open"
 msgstr "_افتح"
 
 #. create launcher item
-#: ../src/xfdesktop-file-icon-manager.c:1335
+#: ../src/xfdesktop-file-icon-manager.c:1367
 msgid "Create _Launcher..."
 msgstr "أنشئ م_طلقة..."
 
 #. create link item
-#: ../src/xfdesktop-file-icon-manager.c:1351
+#: ../src/xfdesktop-file-icon-manager.c:1383
 msgid "Create _URL Link..."
 msgstr "أنشئ و_صلة..."
 
 #. create folder item
-#: ../src/xfdesktop-file-icon-manager.c:1367
+#: ../src/xfdesktop-file-icon-manager.c:1399
 msgid "Create _Folder..."
 msgstr "أنشئ مجلد..."
 
 #. create from template submenu
-#: ../src/xfdesktop-file-icon-manager.c:1382
+#: ../src/xfdesktop-file-icon-manager.c:1414
 msgid "Create From _Template"
 msgstr "أنشئ من القالب"
 
-#: ../src/xfdesktop-file-icon-manager.c:1408
+#: ../src/xfdesktop-file-icon-manager.c:1440
 msgid "_Empty File"
 msgstr "_ملف فارغ"
 
-#: ../src/xfdesktop-file-icon-manager.c:1424
+#: ../src/xfdesktop-file-icon-manager.c:1456
 msgid "_Execute"
 msgstr "_تنفيذ"
 
-#: ../src/xfdesktop-file-icon-manager.c:1444
+#: ../src/xfdesktop-file-icon-manager.c:1476
 msgid "_Edit Launcher"
 msgstr "_تحرير مطلق"
 
-#: ../src/xfdesktop-file-icon-manager.c:1479
+#: ../src/xfdesktop-file-icon-manager.c:1511
 msgid "Open With"
 msgstr "إفتح بـ"
 
-#: ../src/xfdesktop-file-icon-manager.c:1505
+#: ../src/xfdesktop-file-icon-manager.c:1537
 msgid "Open With Other _Application..."
 msgstr "أفتح بتطبيق أخر..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1597
+#. Rename
+#: ../src/xfdesktop-file-icon-manager.c:1637
 msgid "_Rename..."
 msgstr "_أعد تسمية..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1615
+#: ../src/xfdesktop-file-icon-manager.c:1665
 msgid "Arrange Desktop _Icons"
 msgstr "ترتيب _أيقونات سطح المكتب"
 
-#: ../src/xfdesktop-file-icon-manager.c:1625
+#: ../src/xfdesktop-file-icon-manager.c:1676
 msgid "Desktop _Settings..."
 msgstr "إعدادات _سطح المكتب..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1635
-#: ../src/xfdesktop-volume-icon.c:828
+#: ../src/xfdesktop-file-icon-manager.c:1687
+#: ../src/xfdesktop-volume-icon.c:860
 msgid "P_roperties..."
 msgstr "خصائص..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2262
+#: ../src/xfdesktop-file-icon-manager.c:2563
 msgid "Load Error"
 msgstr "خطأ أثناء التحميل"
 
-#: ../src/xfdesktop-file-icon-manager.c:2264
+#: ../src/xfdesktop-file-icon-manager.c:2565
 msgid "Failed to load the desktop folder"
 msgstr "فشل تحميل مجلد سطح المكتب"
 
-#: ../src/xfdesktop-file-icon-manager.c:2840
+#: ../src/xfdesktop-file-icon-manager.c:3156
 msgid "Copy _Here"
 msgstr "أنسخ _هنا"
 
-#: ../src/xfdesktop-file-icon-manager.c:2840
+#: ../src/xfdesktop-file-icon-manager.c:3156
 msgid "_Move Here"
 msgstr "_أنقل هنا"
 
-#: ../src/xfdesktop-file-icon-manager.c:2840
+#: ../src/xfdesktop-file-icon-manager.c:3156
 msgid "_Link Here"
 msgstr "_وصلة هنا"
 
 #. TRANSLATORS: file was modified less than one day ago
-#: ../src/xfdesktop-file-utils.c:137
+#: ../src/xfdesktop-file-utils.c:140
 #, c-format
 msgid "Today at %X"
 msgstr "اليوم في %X"
 
 #. TRANSLATORS: file was modified less than two days ago
-#: ../src/xfdesktop-file-utils.c:141
+#: ../src/xfdesktop-file-utils.c:144
 #, c-format
 msgid "Yesterday at %X"
 msgstr "الأمس في %X"
 
 #. Days from last week
-#: ../src/xfdesktop-file-utils.c:146
+#: ../src/xfdesktop-file-utils.c:149
 #, c-format
 msgid "%A at %X"
 msgstr "%A في %X"
 
 #. Any other date
-#: ../src/xfdesktop-file-utils.c:149
+#: ../src/xfdesktop-file-utils.c:152
 #, c-format
 msgid "%x at %X"
 msgstr "%x في %X"
 
 #. the file_time is invalid
-#: ../src/xfdesktop-file-utils.c:159
+#: ../src/xfdesktop-file-utils.c:162
 msgid "Unknown"
 msgstr "مجهول"
 
-#: ../src/xfdesktop-file-utils.c:708
+#: ../src/xfdesktop-file-utils.c:789
 msgid "The folder could not be opened"
 msgstr "لايمكن فتح المجلد"
 
-#: ../src/xfdesktop-file-utils.c:725
+#: ../src/xfdesktop-file-utils.c:806
 msgid "Error"
 msgstr "خطأ"
 
-#: ../src/xfdesktop-file-utils.c:726
+#: ../src/xfdesktop-file-utils.c:807
 msgid "The requested operation could not be completed"
 msgstr "العملية الملتمسة لا يمكن أن تكتمل"
 
-#: ../src/xfdesktop-file-utils.c:766
-msgid "Rename Error"
-msgstr "خطأ أثناء إعادة التسمية"
-
-#: ../src/xfdesktop-file-utils.c:767
+#: ../src/xfdesktop-file-utils.c:848
 msgid "The file could not be renamed"
 msgstr "لا يمكن إعادة تسمية الملف"
 
-#: ../src/xfdesktop-file-utils.c:816
+#: ../src/xfdesktop-file-utils.c:950
 msgid "Delete Error"
 msgstr "خطأ أثناء الحذف"
 
-#: ../src/xfdesktop-file-utils.c:817
+#: ../src/xfdesktop-file-utils.c:951
 msgid "The selected files could not be deleted"
 msgstr "الملفات المحددة لا يمكن حذفها"
 
-#: ../src/xfdesktop-file-utils.c:867
+#: ../src/xfdesktop-file-utils.c:1001
 msgid "The selected files could not be moved to the trash"
 msgstr "لا يمكن نقل الملفات المحددة إلى المهملات"
 
-#: ../src/xfdesktop-file-utils.c:868 ../src/xfdesktop-file-utils.c:905
+#: ../src/xfdesktop-file-utils.c:1002 ../src/xfdesktop-file-utils.c:1039
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
 msgstr "هذه الميزة تحتاج إلى خدمة مهملات(مثل التي يقدمها تونار)."
 
-#: ../src/xfdesktop-file-utils.c:904
+#: ../src/xfdesktop-file-utils.c:1038
 msgid "Could not empty the trash"
 msgstr "لا يمكن إفراغ المهملات"
 
-#: ../src/xfdesktop-file-utils.c:947
+#: ../src/xfdesktop-file-utils.c:1081
 msgid "Create File Error"
 msgstr "خطأ أثناء إنشاء الملف"
 
-#: ../src/xfdesktop-file-utils.c:948
+#: ../src/xfdesktop-file-utils.c:1082
 msgid "Could not create a new file"
 msgstr "لا يمكن إنشاء ملف جديد"
 
-#: ../src/xfdesktop-file-utils.c:994
+#: ../src/xfdesktop-file-utils.c:1128
 msgid "Create Document Error"
 msgstr "خطأ أثناء إنشاء الوثيقة"
 
-#: ../src/xfdesktop-file-utils.c:995
+#: ../src/xfdesktop-file-utils.c:1129
 msgid "Could not create a new document from the template"
 msgstr "لا يمكن إنشاء الوثيقة من القالب"
 
-#: ../src/xfdesktop-file-utils.c:1035
+#: ../src/xfdesktop-file-utils.c:1169
 msgid "File Properties Error"
 msgstr "خطأ في ملف الخصائص"
 
-#: ../src/xfdesktop-file-utils.c:1036
+#: ../src/xfdesktop-file-utils.c:1170
 msgid "The file properties dialog could not be opened"
 msgstr "لا يمكن فتح حوار ملف الخصائص"
 
-#: ../src/xfdesktop-file-utils.c:1077
+#: ../src/xfdesktop-file-utils.c:1211
 msgid "The file could not be opened"
 msgstr "لا يمكن فتح الملف"
 
-#: ../src/xfdesktop-file-utils.c:1125 ../src/xfdesktop-file-utils.c:1150
+#: ../src/xfdesktop-file-utils.c:1259 ../src/xfdesktop-file-utils.c:1284
 #, c-format
 msgid "Failed to run \"%s\""
 msgstr "فشل تنفيذ \"%s\""
 
-#: ../src/xfdesktop-file-utils.c:1206
+#: ../src/xfdesktop-file-utils.c:1340
 msgid "The application chooser could not be opened"
 msgstr "لايمكن فتح التطبيق المحدد"
 
-#: ../src/xfdesktop-file-utils.c:1264 ../src/xfdesktop-file-utils.c:1278
-#: ../src/xfdesktop-file-utils.c:1340 ../src/xfdesktop-file-utils.c:1356
+#: ../src/xfdesktop-file-utils.c:1398 ../src/xfdesktop-file-utils.c:1412
+#: ../src/xfdesktop-file-utils.c:1474 ../src/xfdesktop-file-utils.c:1490
 msgid "Transfer Error"
 msgstr "خطأ أثناء النقل"
 
-#: ../src/xfdesktop-file-utils.c:1265 ../src/xfdesktop-file-utils.c:1279
-#: ../src/xfdesktop-file-utils.c:1341 ../src/xfdesktop-file-utils.c:1357
+#: ../src/xfdesktop-file-utils.c:1399 ../src/xfdesktop-file-utils.c:1413
+#: ../src/xfdesktop-file-utils.c:1475 ../src/xfdesktop-file-utils.c:1491
 msgid "The file transfer could not be performed"
 msgstr "لا يمكن تنفيذ نقل الملف"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:128
+#: ../src/xfdesktop-notify.c:127
 msgid "Unmounting device"
 msgstr "إلغاء وصل الجهاز"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:131
+#: ../src/xfdesktop-notify.c:130
 #, c-format
 msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the"
@@ -807,26 +819,26 @@ msgid ""
 msgstr "يتم إلغاء وصل الجهاز \"%s\" من طرف النظام. الرجاء عدم إزالة الجهاز أو قطع إتصاله"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:322
+#: ../src/xfdesktop-notify.c:137 ../src/xfdesktop-notify.c:322
 msgid "Writing data to device"
 msgstr "كتابة البيانات إلى الجهاز"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:325
+#: ../src/xfdesktop-notify.c:140 ../src/xfdesktop-notify.c:325
 #, c-format
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be"
 " removed. Please do not remove the media or disconnect the drive"
 msgstr "هنالك بيانات يجب كتابتها إلى الحهاز \"%s\" قبل إزالته. الرجاء عدم إزالة الجهاز أو قطع إتصاله"
 
-#: ../src/xfdesktop-notify.c:222
+#: ../src/xfdesktop-notify.c:221
 msgid "Unmount Finished"
 msgstr "تم إنهاء فصل القرص"
 
-#: ../src/xfdesktop-notify.c:224 ../src/xfdesktop-notify.c:408
+#: ../src/xfdesktop-notify.c:223 ../src/xfdesktop-notify.c:408
 #, c-format
 msgid "The device \"%s\" has been safely removed from the system. "
-msgstr "تم إخراج الجهاز \"%s\" بنجاح من النظام."
+msgstr "تمت إزالة الجهاز \"%s\" بنجاح من النظام. "
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:313
@@ -843,7 +855,7 @@ msgstr "الجهاز \"%s\" يتم إخراجه. هذا يمكن أن يستغر
 msgid "Eject Finished"
 msgstr "إنهاء الإخراج"
 
-#: ../src/xfdesktop-regular-file-icon.c:569
+#: ../src/xfdesktop-regular-file-icon.c:601
 #, c-format
 msgid ""
 "Type: %s\n"
@@ -851,25 +863,25 @@ msgid ""
 "Last modified: %s"
 msgstr "نوع: %s\nحجم: %s\nأخر تعديل: %s"
 
-#: ../src/xfdesktop-special-file-icon.c:274
-#: ../src/xfdesktop-special-file-icon.c:441
+#: ../src/xfdesktop-special-file-icon.c:297
+#: ../src/xfdesktop-special-file-icon.c:477
 msgid "File System"
 msgstr "ملفات النظام"
 
-#: ../src/xfdesktop-special-file-icon.c:426
+#: ../src/xfdesktop-special-file-icon.c:462
 msgid "Trash is empty"
 msgstr "المهملات فارغة"
 
-#: ../src/xfdesktop-special-file-icon.c:429
+#: ../src/xfdesktop-special-file-icon.c:465
 msgid "Trash contains one item"
 msgstr "تحتوي المهملات على عنصر واحد"
 
-#: ../src/xfdesktop-special-file-icon.c:430
+#: ../src/xfdesktop-special-file-icon.c:466
 #, c-format
 msgid "Trash contains %d items"
 msgstr "تحتوي المهملات على %d عناصر"
 
-#: ../src/xfdesktop-special-file-icon.c:462
+#: ../src/xfdesktop-special-file-icon.c:498
 #, c-format
 msgid ""
 "%s\n"
@@ -877,11 +889,11 @@ msgid ""
 "Last modified: %s"
 msgstr "%s\nحجم: %s\nأخر تعديل: %s"
 
-#: ../src/xfdesktop-special-file-icon.c:531
+#: ../src/xfdesktop-special-file-icon.c:567
 msgid "_Empty Trash"
 msgstr "_أفرغ سلة المهملات"
 
-#: ../src/xfdesktop-volume-icon.c:455
+#: ../src/xfdesktop-volume-icon.c:486
 #, c-format
 msgid ""
 "Removable Volume\n"
@@ -889,42 +901,42 @@ msgid ""
 "%s left (%s total)"
 msgstr "حهاز قابل للإزالة\nتم وصله في \"%s\"\n%s خالي (%s مجموع)"
 
-#: ../src/xfdesktop-volume-icon.c:462
+#: ../src/xfdesktop-volume-icon.c:493
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
 msgstr "حهاز قابل للإزالة\nلم يتم وصله بعد"
 
-#: ../src/xfdesktop-volume-icon.c:491 ../src/xfdesktop-volume-icon.c:536
+#: ../src/xfdesktop-volume-icon.c:522 ../src/xfdesktop-volume-icon.c:567
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "فشل إخراج \"%s\""
 
-#: ../src/xfdesktop-volume-icon.c:496 ../src/xfdesktop-volume-icon.c:541
+#: ../src/xfdesktop-volume-icon.c:527 ../src/xfdesktop-volume-icon.c:572
 msgid "Eject Failed"
 msgstr "فشل في الإخراج"
 
-#: ../src/xfdesktop-volume-icon.c:573
+#: ../src/xfdesktop-volume-icon.c:604
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "فشل وصل \"%s\""
 
-#: ../src/xfdesktop-volume-icon.c:576
+#: ../src/xfdesktop-volume-icon.c:607
 msgid "Mount Failed"
 msgstr "فشل الوصل"
 
-#: ../src/xfdesktop-volume-icon.c:801
+#: ../src/xfdesktop-volume-icon.c:833
 msgid "E_ject Volume"
 msgstr "أخ_رج الجزء"
 
-#: ../src/xfdesktop-volume-icon.c:808
+#: ../src/xfdesktop-volume-icon.c:840
 msgid "_Unmount Volume"
-msgstr "إلغاء ضم الجز_ء"
+msgstr "_إلغاء ضم الجزء"
 
-#: ../src/xfdesktop-volume-icon.c:815
+#: ../src/xfdesktop-volume-icon.c:847
 msgid "_Mount Volume"
 msgstr "_وصل الجزء"
 
-#: ../src/xfdesktop-window-icon.c:208
+#: ../src/xfdesktop-window-icon.c:195
 msgid "_Window Actions"
 msgstr "_أحداث النوافذ"
