@@ -88,9 +88,6 @@ void xfdesktop_send_client_message(Window xid, const gchar *msg);
 
 gint xfce_translate_image_styles(gint input);
 
-guint xfce_grab_cursor(GtkWidget *w, GdkEventButton *evt);
-gboolean xfdesktop_popup_grab_available(GdkWindow *win, guint32 timestamp);
-
 G_END_DECLS
 
 #endif

@@ -686,6 +686,7 @@ xfdesktop_icon_view_init(XfdesktopIconView *icon_view)
                      G_CALLBACK(xfdesktop_icon_view_show_tooltip), NULL);
     
     gtk_widget_set_has_window(GTK_WIDGET(icon_view), FALSE);
+    gtk_widget_set_can_focus(GTK_WIDGET(icon_view), TRUE);
 }
 
 static void
@@ -789,10 +790,25 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(user_data);
     XfdesktopIcon *icon;
-    
+
+    TRACE("entering");
+
     if(evt->type == GDK_BUTTON_PRESS) {
         GList *icon_l;
-        
+
+        /* Let xfce-desktop handle button 2 */
+        if(evt->button == 2) {
+            /* If we had the grab release it so the desktop gets the event */
+            if(gtk_widget_has_grab(widget))
+                gtk_grab_remove(widget);
+
+            return FALSE;
+        }
+
+        /* Grab the focus, release on button release */
+        if(!gtk_widget_has_grab(widget))
+            gtk_grab_add(widget);
+
         icon_l = g_list_find_custom(icon_view->priv->icons, evt,
                                     (GCompareFunc)xfdesktop_check_icon_clicked);
         if(icon_l && (icon = icon_l->data)) {
@@ -848,6 +864,7 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
             
             return TRUE;
         } else {
+            /* Button press wasn't over any icons */
             /* unselect previously selected icons if we didn't click one */
             if(icon_view->priv->sel_mode != GTK_SELECTION_MULTIPLE
                || !(evt->state & GDK_CONTROL_MASK))
@@ -863,6 +880,13 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
                 icon_view->priv->definitely_dragging = FALSE;
                 icon_view->priv->press_start_x = evt->x;
                 icon_view->priv->press_start_y = evt->y;
+            }
+
+            /* Since we're not over any icons this won't be the start of a
+             * drag so we can pop up menu */
+            if(evt->button == 3 || (evt->button == 1 && (evt->state & GDK_SHIFT_MASK))) {
+                xfce_desktop_popup_root_menu(XFCE_DESKTOP(widget), evt->button, evt->time);
+                return TRUE;
             }
         }
     } else if(evt->type == GDK_2BUTTON_PRESS) {
@@ -904,7 +928,9 @@ xfdesktop_icon_view_button_release(GtkWidget *widget,
                                    gpointer user_data)
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(user_data);
-    
+    XfdesktopIcon *icon;
+    GList *icon_l = NULL;
+
     TRACE("entering btn=%d", evt->button);
 
     /* single-click */
@@ -914,10 +940,11 @@ xfdesktop_icon_view_button_release(GtkWidget *widget,
        && !(evt->state & GDK_CONTROL_MASK)
        && !icon_view->priv->definitely_dragging
        && !icon_view->priv->definitely_rubber_banding) {
-        XfdesktopIcon *icon;
-        GList *icon_l = g_list_find_custom(icon_view->priv->icons, evt,
-                                           (GCompareFunc)xfdesktop_check_icon_clicked);
+        /* Find out if we clicked on an icon */
+        icon_l = g_list_find_custom(icon_view->priv->icons, evt,
+                                    (GCompareFunc)xfdesktop_check_icon_clicked);
         if(icon_l && (icon = icon_l->data)) {
+            /* We did, activate it */
             icon_view->priv->cursor = icon;
             g_signal_emit(G_OBJECT(icon_view), __signals[SIG_ICON_ACTIVATED],
                           0, NULL);
@@ -930,7 +957,18 @@ xfdesktop_icon_view_button_release(GtkWidget *widget,
        icon_view->priv->definitely_dragging == FALSE &&
        icon_view->priv->definitely_rubber_banding == FALSE)
     {
-        xfce_desktop_popup_root_menu(XFCE_DESKTOP(widget), evt->button, evt->time);
+        /* If we're in single click mode we may already have the icon, don't
+         * find it again. */
+        if(icon_l == NULL) {
+            icon_l = g_list_find_custom(icon_view->priv->icons, evt,
+                                        (GCompareFunc)xfdesktop_check_icon_clicked);
+        }
+
+        /* If we clicked an icon then we didn't pop up the menu during the
+         * button press in order to support right click DND, pop up the menu
+         * now */
+        if(icon_l && (icon = icon_l->data))
+            xfce_desktop_popup_root_menu(XFCE_DESKTOP(widget), evt->button, evt->time);
     }
 
     if(evt->button == 1 || evt->button == 3) {
@@ -938,15 +976,17 @@ xfdesktop_icon_view_button_release(GtkWidget *widget,
         icon_view->priv->definitely_dragging = FALSE;
         icon_view->priv->maybe_begin_drag = FALSE;
         if(icon_view->priv->definitely_rubber_banding) {
+            /* Remove the rubber band selection box */
             icon_view->priv->definitely_rubber_banding = FALSE;
-            gtk_grab_remove(widget);
             gtk_widget_queue_draw_area(widget, icon_view->priv->band_rect.x,
                                        icon_view->priv->band_rect.y,
                                        icon_view->priv->band_rect.width,
                                        icon_view->priv->band_rect.height);
         }
     }
-    
+
+    gtk_grab_remove(widget);
+
     return FALSE;
 }
 
@@ -1114,7 +1154,6 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget,
             old_rect.x = icon_view->priv->press_start_x;
             old_rect.y = icon_view->priv->press_start_y;
             old_rect.width = old_rect.height = 1;
-            gtk_grab_add(widget);
         } else
             memcpy(&old_rect, new_rect, sizeof(old_rect));
 
