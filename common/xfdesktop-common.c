@@ -51,6 +51,7 @@
 #include <libxfce4util/libxfce4util.h>
 
 #include "xfdesktop-common.h"
+#include "xfce-backdrop.h" /* for XfceBackdropImageStyle */
 
 #ifndef O_BINARY
 #define O_BINARY  0
@@ -299,6 +300,20 @@ xfdesktop_send_client_message(Window xid, const gchar *msg)
     gdk_flush();
 
     gtk_widget_destroy(win);
+}
+
+/* The image styles changed from versions prior to 4.11.
+ * Auto isn't an option anymore, additionally we should handle invalid
+ * values. Set them to the default of stretched. */
+gint
+xfce_translate_image_styles(gint input)
+{
+    gint style = input;
+
+    if(style <= 0 || style > XFCE_BACKDROP_IMAGE_SPANNING_SCREENS)
+        style = XFCE_BACKDROP_IMAGE_STRETCHED;
+
+    return style;
 }
 
 guint

@@ -326,8 +326,12 @@ create_bg_pixmap(GdkScreen *gscreen, gpointer user_data)
 
     g_return_val_if_fail(XFCE_IS_DESKTOP(desktop), NULL);
 
-    if(desktop->priv->workspaces == NULL)
+    /* If the workspaces haven't been created yet there's no need to do the
+     * background pixmap */
+    if(desktop->priv->workspaces == NULL) {
+        DBG("exiting, desktop->priv->workspaces == NULL");
         return NULL;
+    }
 
     w = gdk_screen_get_width(gscreen);
     h = gdk_screen_get_height(gscreen);
@@ -603,7 +607,7 @@ workspace_changed_cb(WnckScreen *wnck_screen,
             current_backdrop = xfce_workspace_get_backdrop(desktop->priv->workspaces[current_workspace], i);
             new_backdrop = xfce_workspace_get_backdrop(desktop->priv->workspaces[new_workspace], i);
 
-            if(!xfce_backdrop_compare_backdrops(current_backdrop, new_backdrop)) {
+            if(!xfce_backdrop_compare_backdrops(current_backdrop, new_backdrop) || !desktop->priv->bg_pixmap) {
                 /* only update monitors that require it */
                 backdrop_changed_cb(new_backdrop, user_data);
             }
@@ -1007,17 +1011,15 @@ xfce_desktop_realize(GtkWidget *widget)
     wnck_screen = wnck_screen_get(gdk_screen_get_number(desktop->priv->gscreen));
     desktop->priv->wnck_screen = wnck_screen;
 
+    /* Watch for single workspace setting changes */
     xfconf_g_property_bind(desktop->priv->channel,
                            SINGLE_WORKSPACE_MODE, G_TYPE_BOOLEAN,
                            G_OBJECT(desktop), "single-workspace-mode");
-
     xfconf_g_property_bind(desktop->priv->channel,
                            SINGLE_WORKSPACE_NUMBER, G_TYPE_INT,
                            G_OBJECT(desktop), "single-workspace-number");
 
-    /* Start with an invalid workspace so it updates */
-    desktop->priv->current_workspace = -1;
-
+    /* watch for workspace changes */
     g_signal_connect(desktop->priv->wnck_screen, "active-workspace-changed",
                      G_CALLBACK(workspace_changed_cb), desktop);
     g_signal_connect(desktop->priv->wnck_screen, "workspace-created",
@@ -1025,8 +1027,7 @@ xfce_desktop_realize(GtkWidget *widget)
     g_signal_connect(desktop->priv->wnck_screen, "workspace-destroyed",
                      G_CALLBACK(workspace_destroyed_cb), desktop);
 
-    xfce_desktop_monitors_changed(desktop->priv->gscreen, desktop);
-    
+    /* watch for screen changes */
     g_signal_connect(G_OBJECT(desktop->priv->gscreen), "size-changed",
             G_CALLBACK(screen_size_changed_cb), desktop);
     g_signal_connect(G_OBJECT(desktop->priv->gscreen), "composited-changed",
@@ -1495,8 +1496,10 @@ xfce_desktop_set_single_workspace_mode(XfceDesktop *desktop,
 
     DBG("single_workspace_mode now %s", single_workspace ? "TRUE" : "FALSE");
 
-    /* Fake a screen size changed to update the backdrop */
-    screen_size_changed_cb(desktop->priv->gscreen, desktop);
+    /* If the desktop has been realized then fake a screen size change to
+     * update the backdrop. There's no reason to if there's no desktop yet */
+    if(gtk_widget_get_realized(GTK_WIDGET(desktop)))
+        screen_size_changed_cb(desktop->priv->gscreen, desktop);
 }
 
 static void

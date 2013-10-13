@@ -48,14 +48,19 @@
 #include <xfconf/xfconf.h>
 #include <libxfce4ui/libxfce4ui.h>
 #include <libwnck/libwnck.h>
+#include <exo/exo.h>
 
 #include "xfdesktop-common.h"
 #include "xfdesktop-thumbnailer.h"
 #include "xfdesktop-settings-ui.h"
 #include "xfdesktop-settings-appearance-frame-ui.h"
+/* for XfceBackdropImageStyle && XfceBackdropColorStyle */
+#include "xfce-backdrop.h"
 
-#define PREVIEW_HEIGHT  96
 #define MAX_ASPECT_RATIO 1.5f
+#define PREVIEW_HEIGHT   96
+#define PREVIEW_WIDTH    (PREVIEW_HEIGHT * MAX_ASPECT_RATIO)
+
 
 #define SHOW_DESKTOP_MENU_PROP               "/desktop-menu/show"
 #define DESKTOP_MENU_SHOW_ICONS_PROP         "/desktop-menu/show-icons"
@@ -77,9 +82,6 @@
 #define DESKTOP_ICONS_SHOW_FILESYSTEM        "/desktop-icons/file-icons/show-filesystem"
 #define DESKTOP_ICONS_SHOW_REMOVABLE         "/desktop-icons/file-icons/show-removable"
 
-#define XFCE_BACKDROP_IMAGE_NONE             0
-#define XFCE_BACKDROP_IMAGE_SCALED           4
-#define XFCE_BACKDROP_IMAGE_SPANNING_SCREENS 6
 
 typedef struct
 {
@@ -97,6 +99,9 @@ typedef struct
     gulong image_list_loaded:1;
 
     WnckWindow *wnck_window;
+    /* We keep track of the current workspace number because
+     * wnck_screen_get_active_workspace sometimes has to return NULL. */
+    gint active_workspace;
 
     GtkWidget *frame_image_list;
     GtkWidget *image_iconview;
@@ -158,58 +163,41 @@ static void cb_xfdesktop_chk_apply_to_all(GtkCheckButton *button,
                                           gpointer user_data);
 static gchar *xfdesktop_settings_generate_per_workspace_binding_string(AppearancePanel *panel,
                                                                        const gchar* property);
-
+static gchar *xfdesktop_settings_get_backdrop_image(AppearancePanel *panel);
 
 static void
 xfdesktop_settings_do_single_preview(GtkTreeModel *model,
                                      GtkTreeIter *iter)
 {
     gchar *filename = NULL, *thumbnail = NULL;
-    GdkPixbuf *pix, *pix_scaled = NULL;
+    GdkPixbuf *pix;
 
-    GDK_THREADS_ENTER ();
     gtk_tree_model_get(model, iter,
                        COL_FILENAME, &filename,
                        COL_THUMBNAIL, &thumbnail,
                        -1);
-    GDK_THREADS_LEAVE ();
 
+    /* If we didn't create a thumbnail there might not be a thumbnailer service
+     * or it may not support that format */
     if(thumbnail == NULL) {
-        pix = gdk_pixbuf_new_from_file(filename, NULL);
+        pix = exo_gdk_pixbuf_new_from_file_at_max_size(filename,
+                                                       PREVIEW_WIDTH, PREVIEW_HEIGHT,
+                                                       TRUE, NULL);
     } else {
-        pix = gdk_pixbuf_new_from_file(thumbnail, NULL);
+        pix = exo_gdk_pixbuf_new_from_file_at_max_size(thumbnail,
+                                                       PREVIEW_WIDTH, PREVIEW_HEIGHT,
+                                                       TRUE, NULL);
         g_free(thumbnail);
     }
 
     g_free(filename);
+
     if(pix) {
-        gint width, height;
-        gdouble aspect;
-
-        width = gdk_pixbuf_get_width(pix);
-        height = gdk_pixbuf_get_height(pix);
-        aspect = (gdouble)width / height;
-
-        /* Keep the aspect ratio sensible otherwise the treeview looks bad */
-        if(aspect > MAX_ASPECT_RATIO) {
-            aspect = MAX_ASPECT_RATIO;
-        }
-
-        width = PREVIEW_HEIGHT * aspect;
-        height = PREVIEW_HEIGHT;
-        pix_scaled = gdk_pixbuf_scale_simple(pix, width, height,
-                                             GDK_INTERP_BILINEAR);
+        gtk_list_store_set(GTK_LIST_STORE(model), iter,
+                           COL_PIX, pix,
+                           -1);
 
         g_object_unref(G_OBJECT(pix));
-    }
-
-    if(pix_scaled) {
-        GDK_THREADS_ENTER ();
-        gtk_list_store_set(GTK_LIST_STORE(model), iter,
-                           COL_PIX, pix_scaled,
-                           -1);
-        GDK_THREADS_LEAVE ();
-        g_object_unref(G_OBJECT(pix_scaled));
     }
 }
 
@@ -259,7 +247,7 @@ xfdesktop_settings_add_file_to_queue(AppearancePanel *panel, PreviewData *pdata)
     /* Create the thread if it doesn't exist */
     if(panel->preview_thread == NULL) {
 #if GLIB_CHECK_VERSION(2, 32, 0)
-        panel->preview_thread = g_thread_try_new("xfdesktop_settings_create_previews",
+        panel->preview_thread = g_thread_try_new("create_previews",
                                                  xfdesktop_settings_create_previews,
                                                  panel, NULL);
 #else
@@ -615,7 +603,6 @@ xfdesktop_image_list_add_dir(GObject *source_object,
                              gpointer user_data)
 {
     AppearancePanel *panel = user_data;
-    gchar *property;
     AddDirData *dir_data = g_new0(AddDirData, 1);
 
     TRACE("entering");
@@ -627,9 +614,7 @@ xfdesktop_image_list_add_dir(GObject *source_object,
 
     /* Get the last image/current image displayed so we can select it in the
      * icon view */
-    property = xfdesktop_settings_generate_per_workspace_binding_string(panel, "last-image");
-
-    dir_data->last_image = xfconf_channel_get_string(panel->channel, property, DEFAULT_BACKDROP);
+    dir_data->last_image = xfdesktop_settings_get_backdrop_image(panel);
 
     dir_data->file_path = g_file_get_path(panel->selected_folder);
 
@@ -643,8 +628,6 @@ xfdesktop_image_list_add_dir(GObject *source_object,
                                              xfdesktop_image_list_add_item,
                                              dir_data,
                                              cb_destroy_add_dir_enumeration);
-
-    g_free(property);
 }
 
 static void
@@ -653,16 +636,24 @@ xfdesktop_settings_update_iconview_frame_name(AppearancePanel *panel,
 {
     gchar buf[1024];
     gchar *workspace_name;
+    WnckScreen *screen;
+    WnckWorkspace *workspace;
 
-    if(panel->monitor < 0 && panel->workspace < 0)
+    /* Don't update the name until we find our window */
+    if(panel->wnck_window == NULL)
         return;
 
+    g_return_if_fail(panel->monitor >= 0 && panel->workspace >= 0);
+
+    /* If it's a pinned window get the active workspace */
     if(wnck_workspace == NULL) {
-        WnckScreen *wnck_screen = wnck_window_get_screen(panel->wnck_window);
-        wnck_workspace = wnck_screen_get_active_workspace(wnck_screen);
+        screen = wnck_window_get_screen(panel->wnck_window);
+        workspace = wnck_screen_get_workspace(screen, panel->active_workspace);
+    } else {
+        workspace = wnck_workspace;
     }
 
-    workspace_name = g_strdup(wnck_workspace_get_name(wnck_workspace));
+    workspace_name = g_strdup(wnck_workspace_get_name(workspace));
 
     if(gdk_screen_get_n_monitors(gtk_widget_get_screen(panel->chk_apply_to_all)) > 1) {
         if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(panel->chk_apply_to_all))) {
@@ -723,6 +714,51 @@ xfdesktop_settings_generate_per_workspace_binding_string(AppearancePanel *panel,
     return buf;
 }
 
+static gchar*
+xfdesktop_settings_generate_old_binding_string(AppearancePanel *panel,
+                                               const gchar* property)
+{
+    gchar *buf = NULL;
+
+    buf = g_strdup_printf("/backdrop/screen%d/monitor%d/%s",
+                          panel->screen, panel->monitor, property);
+
+    DBG("name %s", buf);
+
+    return buf;
+}
+
+/* Attempts to load the backdrop from the current location followed by using
+ * how previous versions of xfdesktop (before 4.11) did. This matches how
+ * xfdesktop searches for backdrops.
+ * Free the returned string when done using it. */
+static gchar *
+xfdesktop_settings_get_backdrop_image(AppearancePanel *panel)
+{
+    gchar *last_image;
+    gchar *property, *old_property = NULL;
+
+    /* Get the last image/current image displayed, if available */
+    property = xfdesktop_settings_generate_per_workspace_binding_string(panel, "last-image");
+
+    last_image = xfconf_channel_get_string(panel->channel, property, NULL);
+
+    /* Try the previous version or fall back to our provided default */
+    if(last_image == NULL) {
+        old_property = xfdesktop_settings_generate_old_binding_string(panel,
+                                                                      "image-path");
+        last_image = xfconf_channel_get_string(panel->channel,
+                                               old_property,
+                                               DEFAULT_BACKDROP);
+    }
+
+    g_free(property);
+    if(old_property)
+        g_free(old_property);
+
+    return last_image;
+}
+
 static void
 cb_image_selection_changed(GtkIconView *icon_view,
                            gpointer user_data)
@@ -732,7 +768,7 @@ cb_image_selection_changed(GtkIconView *icon_view,
     GtkTreeIter iter;
     GList *selected_items = NULL;
     gchar *filename = NULL, *current_filename = NULL;
-    gchar *buf;
+    gchar *buf = NULL;
 
     TRACE("entering");
 
@@ -751,9 +787,8 @@ cb_image_selection_changed(GtkIconView *icon_view,
 
     gtk_tree_model_get(model, &iter, COL_FILENAME, &filename, -1);
 
-    buf = xfdesktop_settings_generate_per_workspace_binding_string(panel, "last-image");
-
-    current_filename = xfconf_channel_get_string(panel->channel, buf, "");
+    /* Get the current/last image, handles migrating from old versions */
+    current_filename = xfdesktop_settings_get_backdrop_image(panel);
 
     /* check to see if the selection actually did change */
     if(g_strcmp0(current_filename, filename) != 0) {
@@ -765,13 +800,19 @@ cb_image_selection_changed(GtkIconView *icon_view,
                 panel->screen, panel->monitor_name, panel->workspace);
         }
 
+        /* Get the property location to save our changes, always save to new
+         * location */
+        buf = xfdesktop_settings_generate_per_workspace_binding_string(panel,
+                                                                       "last-image");
+        DBG("Saving to %s/%s", buf, filename);
         xfconf_channel_set_string(panel->channel, buf, filename);
     }
 
     g_list_foreach (selected_items, (GFunc)gtk_tree_path_free, NULL);
     g_list_free(selected_items);
     g_free(current_filename);
-    g_free(buf);
+    if(buf)
+        g_free(buf);
 }
 
 static gint
@@ -785,12 +826,13 @@ xfdesktop_settings_get_active_workspace(AppearancePanel *panel,
 
     wnck_workspace = wnck_window_get_workspace(wnck_window);
 
+    /* If wnck_workspace is NULL that means it's pinned and we just need to
+     * use the active/current workspace */
     if(wnck_workspace != NULL) {
         workspace_num = wnck_workspace_get_number(wnck_workspace);
     } else {
-        workspace_num = wnck_workspace_get_number(wnck_screen_get_active_workspace(wnck_screen));
+        workspace_num = panel->active_workspace;
     }
-
 
     single_workspace = xfconf_channel_get_bool(panel->channel,
                                                SINGLE_WORKSPACE_MODE,
@@ -1033,12 +1075,15 @@ cb_xfdesktop_combo_color_changed(GtkComboBox *combo,
 static void
 xfdesktop_settings_update_iconview_folder(AppearancePanel *panel)
 {
-    gchar *current_folder, *prop_last, *dirname;
+    gchar *current_folder, *dirname;
+
+    /* If we haven't found our window return now and wait for that */
+    if(panel->wnck_window == NULL)
+        return;
 
     TRACE("entering");
 
-    prop_last = xfdesktop_settings_generate_per_workspace_binding_string(panel, "last-image");
-    current_folder = xfconf_channel_get_string(panel->channel, prop_last, DEFAULT_BACKDROP);
+    current_folder = xfdesktop_settings_get_backdrop_image(panel);
     dirname = g_path_get_dirname(current_folder);
 
     gtk_file_chooser_set_current_folder((GtkFileChooser*)panel->btn_folder, dirname);
@@ -1047,7 +1092,6 @@ xfdesktop_settings_update_iconview_folder(AppearancePanel *panel)
     cb_folder_selection_changed(panel->btn_folder, panel);
 
     g_free(current_folder);
-    g_free(prop_last);
     g_free(dirname);
 }
 
@@ -1057,15 +1101,30 @@ static void
 xfdesktop_settings_background_tab_change_bindings(AppearancePanel *panel,
                                                   gboolean remove_binding)
 {
-    gchar *buf;
+    gchar *buf, *old_property = NULL;
     XfconfChannel *channel = panel->channel;
 
-    /* Style combobox */
+    /* Image style combo box */
     buf = xfdesktop_settings_generate_per_workspace_binding_string(panel, "image-style");
     if(remove_binding) {
         xfconf_g_property_unbind_by_property(channel, buf,
                                G_OBJECT(panel->image_style_combo), "active");
     } else {
+        /* If the current image style doesn't exist, try to load the old one */
+        if(!xfconf_channel_has_property(channel, buf)) {
+            gint image_style;
+            old_property = xfdesktop_settings_generate_old_binding_string(panel, "image-style");
+
+            /* default to stretched when trying to migrate */
+            image_style = xfconf_channel_get_int(channel, old_property, XFCE_BACKDROP_IMAGE_STRETCHED);
+
+            /* xfce_translate_image_styles will do sanity checking */
+            gtk_combo_box_set_active(GTK_COMBO_BOX(panel->image_style_combo),
+                                     xfce_translate_image_styles(image_style));
+
+            g_free(old_property);
+        }
+
         xfconf_g_property_bind(channel, buf, G_TYPE_INT,
                                G_OBJECT(panel->image_style_combo), "active");
         /* determine if the iconview is sensitive */
@@ -1073,12 +1132,31 @@ xfdesktop_settings_background_tab_change_bindings(AppearancePanel *panel,
     }
     g_free(buf);
 
-    /* Color options*/
+    /* Color style combo box */
     buf = xfdesktop_settings_generate_per_workspace_binding_string(panel, "color-style");
     if(remove_binding) {
         xfconf_g_property_unbind_by_property(channel, buf,
                            G_OBJECT(panel->color_style_combo), "active");
     } else {
+        /* If the current color style doesn't exist, try to load the old one */
+        if(!xfconf_channel_has_property(channel, buf)) {
+            gint color_style;
+            old_property = xfdesktop_settings_generate_old_binding_string(panel, "color-style");
+
+            /* default to solid when trying to migrate */
+            color_style = xfconf_channel_get_int(channel, old_property, XFCE_BACKDROP_COLOR_SOLID);
+
+            /* sanity check */
+            if(color_style < 0 || color_style > XFCE_BACKDROP_COLOR_TRANSPARENT) {
+                g_warning("invalid color style, setting to solid");
+                color_style = XFCE_BACKDROP_COLOR_SOLID;
+            }
+
+            gtk_combo_box_set_active(GTK_COMBO_BOX(panel->color_style_combo),
+                                     color_style);
+            g_free(old_property);
+        }
+
         xfconf_g_property_bind(channel, buf, G_TYPE_INT,
                                G_OBJECT(panel->color_style_combo), "active");
         /* update the color button sensitivity */
@@ -1086,27 +1164,63 @@ xfdesktop_settings_background_tab_change_bindings(AppearancePanel *panel,
     }
     g_free(buf);
 
+    /* color 1 button */
     buf = xfdesktop_settings_generate_per_workspace_binding_string(panel, "color1");
     if(remove_binding) {
         xfconf_g_property_unbind(panel->color1_btn_id);
     } else {
+        /* If the first color doesn't exist, try to load the old one */
+        if(!xfconf_channel_has_property(channel, buf)) {
+            GValue value = { 0, };
+            old_property = xfdesktop_settings_generate_old_binding_string(panel, "color1");
+
+            xfconf_channel_get_property(channel, old_property, &value);
+
+            if(G_VALUE_HOLDS_BOXED(&value)) {
+                gtk_color_button_set_color(GTK_COLOR_BUTTON(panel->color1_btn),
+                                           g_value_get_boxed(&value));
+                g_value_unset(&value);
+            }
+
+            g_free(old_property);
+        }
+
+        /* Now bind to the new value */
         panel->color1_btn_id = xfconf_g_property_bind_gdkcolor(channel, buf,
                                                                G_OBJECT(panel->color1_btn),
                                                                "color");
     }
     g_free(buf);
 
+    /* color 2 button */
     buf = xfdesktop_settings_generate_per_workspace_binding_string(panel, "color2");
     if(remove_binding) {
         xfconf_g_property_unbind(panel->color2_btn_id);
     } else {
+        /* If the 2nd color doesn't exist, try to load the old one */
+        if(!xfconf_channel_has_property(channel, buf)) {
+            GValue value = { 0, };
+            old_property = xfdesktop_settings_generate_old_binding_string(panel, "color1");
+
+            xfconf_channel_get_property(channel, old_property, &value);
+
+            if(G_VALUE_HOLDS_BOXED(&value)) {
+                gtk_color_button_set_color(GTK_COLOR_BUTTON(panel->color1_btn),
+                                           g_value_get_boxed(&value));
+                g_value_unset(&value);
+            }
+
+            g_free(old_property);
+        }
+
+        /* Now bind to the new value */
         panel->color2_btn_id = xfconf_g_property_bind_gdkcolor(channel, buf,
                                                                G_OBJECT(panel->color2_btn),
                                                                "color");
     }
     g_free(buf);
 
-    /* Cycle timer options */
+    /* enable cycle timer check box */
     buf = xfdesktop_settings_generate_per_workspace_binding_string(panel, "backdrop-cycle-enable");
     if(remove_binding) {
         xfconf_g_property_unbind_by_property(channel, buf,
@@ -1117,6 +1231,7 @@ xfdesktop_settings_background_tab_change_bindings(AppearancePanel *panel,
     }
     g_free(buf);
 
+    /* cycle timer spin box */
     buf = xfdesktop_settings_generate_per_workspace_binding_string(panel, "backdrop-cycle-timer");
     if(remove_binding) {
         xfconf_g_property_unbind_by_property(channel, buf,
@@ -1129,6 +1244,7 @@ xfdesktop_settings_background_tab_change_bindings(AppearancePanel *panel,
     }
     g_free(buf);
 
+    /* cycle random order check box */
     buf = xfdesktop_settings_generate_per_workspace_binding_string(panel, "backdrop-cycle-random-order");
     if(remove_binding) {
         xfconf_g_property_unbind_by_property(channel, buf,
@@ -1159,6 +1275,11 @@ cb_update_background_tab(WnckWindow *wnck_window,
     WnckWorkspace *wnck_workspace = NULL;
     GdkScreen *screen;
 
+    /* If we haven't found our window return now and wait for that */
+    if(panel->wnck_window == NULL)
+        return;
+
+    /* Get all the new settings for comparison */
     screen = gtk_widget_get_screen(panel->image_iconview);
     wnck_workspace = wnck_window_get_workspace(wnck_window);
 
@@ -1168,18 +1289,31 @@ cb_update_background_tab(WnckWindow *wnck_window,
                                                    gtk_widget_get_window(panel->image_iconview));
     monitor_name = gdk_screen_get_monitor_plug_name(screen, monitor_num);
 
-    /* Check to see if something changed */
-    if(panel->workspace == workspace_num &&
-       panel->screen == screen_num &&
-       panel->monitor_name != NULL &&
-       g_strcmp0(panel->monitor_name, monitor_name) == 0) {
-           return;
+    /* Most of the time we won't change monitor, screen, or workspace so try
+     * to bail out now if we can */
+    /* Check to see if we haven't changed workspace or screen */
+    if(panel->workspace == workspace_num && panel->screen == screen_num)
+    {
+        /* do we support monitor names? */
+        if(panel->monitor_name != NULL || monitor_name != NULL) {
+            /* Check if we haven't changed monitors (by name) */
+            if(g_strcmp0(panel->monitor_name, monitor_name) == 0) {
+                g_free(monitor_name);
+                return;
+            }
+        } else {
+            /* Check if we haven't changed monitors (by number) */
+            if(panel->monitor == monitor_num) {
+                return;
+            }
+        }
     }
 
     TRACE("screen, monitor, or workspace changed");
 
-    /* remove the old bindings */
-    if(panel->monitor != -1 && panel->workspace != -1) {
+    /* remove the old bindings if there are any */
+    if(panel->color1_btn_id || panel->color2_btn_id) {
+        DBG("removing old bindings");
         xfdesktop_settings_background_tab_change_bindings(panel,
                                                           TRUE);
     }
@@ -1218,10 +1352,83 @@ cb_workspace_changed(WnckScreen *screen,
                      gpointer user_data)
 {
     AppearancePanel *panel = user_data;
+    WnckWorkspace *active_workspace;
+    gint new_num = -1;
+
+    g_return_if_fail(WNCK_IS_SCREEN(screen));
+
+    /* Update the current workspace number */
+    active_workspace = wnck_screen_get_active_workspace(screen);
+    if(WNCK_IS_WORKSPACE(active_workspace))
+        new_num = wnck_workspace_get_number(active_workspace);
+
+    /* This will sometimes fail to update */
+    if(new_num != -1)
+        panel->active_workspace = new_num;
+
+    DBG("active_workspace now %d", panel->active_workspace);
+
+    /* Call cb_update_background_tab in case this is a pinned window */
+    if(panel->wnck_window != NULL)
+        cb_update_background_tab(panel->wnck_window, panel);
+}
+
+static void
+cb_workspace_count_changed(WnckScreen *screen,
+                           WnckWorkspace *workspace,
+                           gpointer user_data)
+{
+    AppearancePanel *panel = user_data;
 
     /* Update background because the single workspace mode may have
      * changed due to the addition/removal of a workspace */
-    cb_update_background_tab(panel->wnck_window, user_data);
+    if(panel->wnck_window != NULL)
+        cb_update_background_tab(panel->wnck_window, user_data);
+}
+
+static void
+cb_window_opened(WnckScreen *screen,
+                 WnckWindow *window,
+                 gpointer user_data)
+{
+    AppearancePanel *panel = user_data;
+    GtkWidget *toplevel;
+    WnckWorkspace *workspace;
+
+    /* If we already found our window, exit */
+    if(panel->wnck_window != NULL)
+        return;
+
+    toplevel = gtk_widget_get_toplevel(panel->image_iconview);
+
+    /* If they don't match then it's not our window, exit */
+    if(wnck_window_get_xid(window) != GDK_WINDOW_XID(gtk_widget_get_window(toplevel)))
+        return;
+
+    DBG("Found our window");
+    panel->wnck_window = window;
+
+    /* These callbacks are for updating the image_iconview when the window
+     * moves to another monitor or workspace */
+    g_signal_connect(panel->wnck_window, "geometry-changed",
+                     G_CALLBACK(cb_update_background_tab), panel);
+    g_signal_connect(panel->wnck_window, "workspace-changed",
+                     G_CALLBACK(cb_update_background_tab), panel);
+
+    workspace = wnck_window_get_workspace(window);
+
+    /* Update the active workspace number */
+    cb_workspace_changed(screen, workspace, panel);
+
+    /* Update the background settings */
+    cb_update_background_tab(window, panel);
+
+    /* If it's a pinned window get the active workspace */
+    if(workspace == NULL)
+        workspace = wnck_screen_get_workspace(screen, panel->active_workspace);
+
+    /* Update the frame name */
+    xfdesktop_settings_update_iconview_frame_name(panel, workspace);
 }
 
 static void
@@ -1292,8 +1499,7 @@ xfdesktop_settings_setup_image_iconview(AppearancePanel *panel)
 static void
 xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
                                      XfconfChannel *channel,
-                                     GdkScreen *screen,
-                                     gulong window_xid)
+                                     GdkScreen *screen)
 {
     GtkWidget *appearance_container, *chk_custom_font_size,
               *spin_font_size, *w, *box, *spin_icon_size,
@@ -1357,33 +1563,23 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     panel->channel = channel;
     panel->screen = gdk_screen_get_number(screen);
 
-    /* We have to force wnck to initialize */
     wnck_screen = wnck_screen_get(panel->screen);
-    wnck_screen_force_update(wnck_screen);
-    panel->wnck_window = wnck_window_get(window_xid);
 
-    if(panel->wnck_window == NULL)
-        panel->wnck_window = wnck_screen_get_active_window(wnck_screen);
-
-    /* These callbacks are for updating the image_iconview when the window
-     * moves to another monitor or workspace */
-    g_signal_connect(panel->wnck_window, "geometry-changed",
-                     G_CALLBACK(cb_update_background_tab), panel);
-    g_signal_connect(panel->wnck_window, "workspace-changed",
-                     G_CALLBACK(cb_update_background_tab), panel);
+    /* watch for workspace changes */
     g_signal_connect(wnck_screen, "workspace-created",
-                     G_CALLBACK(cb_workspace_changed), panel);
+                     G_CALLBACK(cb_workspace_count_changed), panel);
     g_signal_connect(wnck_screen, "workspace-destroyed",
-                     G_CALLBACK(cb_workspace_changed), panel);
+                     G_CALLBACK(cb_workspace_count_changed), panel);
     g_signal_connect(wnck_screen, "active-workspace-changed",
-                    G_CALLBACK(cb_workspace_changed), panel);
+                     G_CALLBACK(cb_workspace_changed), panel);
+
+    /* watch for window-opened so we can find our window and track it's changes */
+    g_signal_connect(wnck_screen, "window-opened",
+                     G_CALLBACK(cb_window_opened), panel);
+
+    /* watch for monitor changes */
     g_signal_connect(G_OBJECT(screen), "monitors-changed",
                      G_CALLBACK(cb_monitor_changed), panel);
-
-    /* send invalid numbers so that the update_background_tab will update everything */
-    panel->monitor = -1;
-    panel->workspace = -1;
-    panel->monitor_name = NULL;
 
     appearance_gxml = gtk_builder_new();
     if(!gtk_builder_add_from_string(appearance_gxml,
@@ -1445,8 +1641,8 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
                      panel);
 
     /* Pick the first entries so something shows up */
-    gtk_combo_box_set_active(GTK_COMBO_BOX(panel->image_style_combo), XFCE_BACKDROP_IMAGE_SCALED);
-    gtk_combo_box_set_active(GTK_COMBO_BOX(panel->color_style_combo), 0);
+    gtk_combo_box_set_active(GTK_COMBO_BOX(panel->image_style_combo), XFCE_BACKDROP_IMAGE_STRETCHED);
+    gtk_combo_box_set_active(GTK_COMBO_BOX(panel->color_style_combo), XFCE_BACKDROP_COLOR_SOLID);
 
     /* Use these settings for all workspaces checkbox */
     panel->chk_apply_to_all =  GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
@@ -1567,6 +1763,7 @@ main(int argc, char **argv)
 {
     XfconfChannel *channel;
     GtkBuilder *gxml;
+    GdkScreen *screen;
     GError *error = NULL;
 
 #ifdef G_ENABLE_DEBUG
@@ -1580,7 +1777,6 @@ main(int argc, char **argv)
 #if !GLIB_CHECK_VERSION(2, 32, 0)
     g_thread_init(NULL);
 #endif
-    gdk_threads_init();
 
     if(!gtk_init_with_args(&argc, &argv, "", option_entries, PACKAGE, &error)) {
         if(G_LIKELY(error)) {
@@ -1634,14 +1830,12 @@ main(int argc, char **argv)
         g_signal_connect(dialog, "response",
                          G_CALLBACK(xfdesktop_settings_response), NULL);
         gtk_window_present(GTK_WINDOW (dialog));
-        xfdesktop_settings_dialog_setup_tabs(gxml, channel,
-                                             gtk_widget_get_screen(dialog),
-                                             GDK_WINDOW_XID(gtk_widget_get_window(dialog)));
+
+        screen = gtk_widget_get_screen(dialog);
 
         /* To prevent the settings dialog to be saved in the session */
         gdk_x11_set_sm_client_id("FAKE ID");
 
-        gtk_main();
     } else {
         GtkWidget *plug, *plug_child;
 
@@ -1655,12 +1849,13 @@ main(int argc, char **argv)
         plug_child = GTK_WIDGET(gtk_builder_get_object(gxml, "alignment1"));
         gtk_widget_reparent(plug_child, plug);
         gtk_widget_show(plug_child);
-        xfdesktop_settings_dialog_setup_tabs(gxml, channel,
-                                             gtk_widget_get_screen(plug),
-                                             GDK_WINDOW_XID(gtk_widget_get_window(plug_child)));
 
-        gtk_main();
+        screen = gtk_widget_get_screen(plug);
     }
+
+    xfdesktop_settings_dialog_setup_tabs(gxml, channel, screen);
+
+    gtk_main();
 
     g_object_unref(G_OBJECT(gxml));
 

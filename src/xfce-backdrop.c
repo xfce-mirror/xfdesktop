@@ -267,12 +267,14 @@ xfce_backdrop_class_init(XfceBackdropClass *klass)
                                 | G_PARAM_STATIC_NICK \
                                 | G_PARAM_STATIC_BLURB)
 
+    /* Defaults to an invalid color style so that
+     * xfce_workspace_migrate_backdrop_color_style can handle it properly */
     g_object_class_install_property(gobject_class, PROP_COLOR_STYLE,
                                     g_param_spec_enum("color-style",
                                                       "color style",
                                                       "color style",
                                                       XFCE_TYPE_BACKDROP_COLOR_STYLE,
-                                                      XFCE_BACKDROP_COLOR_SOLID,
+                                                      XFCE_BACKDROP_COLOR_INVALID,
                                                       XFDESKTOP_PARAM_FLAGS));
 
     g_object_class_install_property(gobject_class, PROP_COLOR1,
@@ -289,19 +291,23 @@ xfce_backdrop_class_init(XfceBackdropClass *klass)
                                                        GDK_TYPE_COLOR,
                                                        XFDESKTOP_PARAM_FLAGS));
 
+    /* Defaults to an invalid image style so that
+     * xfce_workspace_migrate_backdrop_image_style can handle it properly */
     g_object_class_install_property(gobject_class, PROP_IMAGE_STYLE,
                                     g_param_spec_enum("image-style",
                                                       "image style",
                                                       "image style",
                                                       XFCE_TYPE_BACKDROP_IMAGE_STYLE,
-                                                      XFCE_BACKDROP_IMAGE_SCALED,
+                                                      XFCE_BACKDROP_IMAGE_INVALID,
                                                       XFDESKTOP_PARAM_FLAGS));
 
+    /* The DEFAULT_BACKDROP is provided in the function
+     * xfce_workspace_migrate_backdrop_image instead of here */
     g_object_class_install_property(gobject_class, PROP_IMAGE_FILENAME,
                                     g_param_spec_string("image-filename",
                                                         "image filename",
                                                         "image filename",
-                                                        DEFAULT_BACKDROP,
+                                                        NULL,
                                                         XFDESKTOP_PARAM_FLAGS));
 
     g_object_class_install_property(gobject_class, PROP_BACKDROP_CYCLE_ENABLE,
@@ -553,8 +559,8 @@ xfce_backdrop_set_color_style(XfceBackdrop *backdrop,
         XfceBackdropColorStyle style)
 {
     g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
-    g_return_if_fail((int)style >= 0 && style <= XFCE_BACKDROP_COLOR_TRANSPARENT);
-    
+    g_return_if_fail((int)style >= -1 && style <= XFCE_BACKDROP_COLOR_TRANSPARENT);
+
     if(style != backdrop->priv->color_style) {
         xfce_backdrop_clear_cached_image(backdrop);
         backdrop->priv->color_style = style;
@@ -651,8 +657,7 @@ xfce_backdrop_get_second_color(XfceBackdrop *backdrop,
  * @backdrop: An #XfceBackdrop.
  * @style: An XfceBackdropImageStyle.
  *
- * Sets the image style to be used for the #XfceBackdrop.  "AUTO" attempts to
- * pick the best of "TILED" or "STRETCHED" based on the image size.
+ * Sets the image style to be used for the #XfceBackdrop.
  * "STRETCHED" will stretch the image to the full width and height of the
  * #XfceBackdrop, while "SCALED" will resize the image to fit the desktop
  * while maintaining the image's aspect ratio.
@@ -692,7 +697,7 @@ xfce_backdrop_set_image_filename(XfceBackdrop *backdrop, const gchar *filename)
 {
     g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
 
-    TRACE("entering");
+    TRACE("entering, filename %s", filename);
 
     g_free(backdrop->priv->image_path);
     
@@ -769,6 +774,14 @@ xfce_backdrop_get_cycle_timer(XfceBackdrop *backdrop)
     return backdrop->priv->cycle_timer;
 }
 
+/**
+ * xfce_backdrop_set_cycle_backdrop:
+ * @backdrop: An #XfceBackdrop.
+ * @cycle_backdrop: True to cycle backdrops every cycle_timer minutes
+ *
+ * Setting cycle_backdrop to TRUE will begin cycling this backdrop based on
+ * the cycle_timer value set in xfce_backdrop_set_cycle_timer.
+ **/
 void
 xfce_backdrop_set_cycle_backdrop(XfceBackdrop *backdrop,
                                  gboolean cycle_backdrop)
@@ -793,6 +806,16 @@ xfce_backdrop_get_cycle_backdrop(XfceBackdrop *backdrop)
     return backdrop->priv->cycle_backdrop;
 }
 
+/**
+ * xfce_backdrop_set_random_order:
+ * @backdrop: An #XfceBackdrop.
+ * @random_order: When TRUE and the backdrops are set to cycle, a random image
+ *                image will be choosen when it cycles.
+ *
+ * When cycling backdrops, they will either be show sequentially (and this value
+ * will be FALSE) or they will be selected at random. The images are choosen from
+ * the same folder the current backdrop image file is in.
+ **/
 void
 xfce_backdrop_set_random_order(XfceBackdrop *backdrop,
                                gboolean random_order)
@@ -820,6 +843,12 @@ xfce_backdrop_generate_canvas(XfceBackdrop *backdrop)
 
     w = backdrop->priv->width;
     h = backdrop->priv->height;
+
+    /* In case we somehow end up here, give a warning and apply a temp fix */
+    if(backdrop->priv->color_style == XFCE_BACKDROP_COLOR_INVALID) {
+        g_warning("xfce_backdrop_generate_canvas: Invalid color style");
+        backdrop->priv->color_style = XFCE_BACKDROP_COLOR_SOLID;
+    }
 
     if(backdrop->priv->color_style == XFCE_BACKDROP_COLOR_SOLID)
         final_image = create_solid(&backdrop->priv->color1, w, h, FALSE, 0xff);
@@ -862,9 +891,14 @@ xfce_backdrop_image_data_release(XfceBackdropImageData *image_data)
 
 }
 
-/* Returns the composited backdrop image if one has been generated. If it
+/**
+ * xfce_backdrop_get_pixbuf:
+ * @backdrop: An #XfceBackdrop.
+ *
+ * Returns the composited backdrop image if one has been generated. If it
  * returns NULL, call xfce_backdrop_generate_async to create the pixbuf.
- * Free with g_object_unref() when you are finished. */
+ * Free with g_object_unref() when you are finished.
+ **/
 GdkPixbuf *
 xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
 {
@@ -876,13 +910,19 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
     return NULL;
 }
 
-/* Generates the final composited, resized image from the #XfceBackdrop.
- * Emits the "ready" signal when the image has been created */
+/**
+ * xfce_backdrop_generate_async:
+ * @backdrop: An #XfceBackdrop.
+ *
+ * Generates the final composited, resized image from the #XfceBackdrop.
+ * Emits the "ready" signal when the image has been created.
+ **/
 void
 xfce_backdrop_generate_async(XfceBackdrop *backdrop)
 {
     GFile *file;
     XfceBackdropImageData *image_data = NULL;
+    const gchar *image_path;
 
     TRACE("entering");
 
@@ -897,16 +937,22 @@ xfce_backdrop_generate_async(XfceBackdrop *backdrop)
     }
 
     /* If we aren't going to display an image then just create the canvas */
-    if(backdrop->priv->image_style == XFCE_BACKDROP_IMAGE_NONE
-       || !backdrop->priv->image_path) {
+    if(backdrop->priv->image_style == XFCE_BACKDROP_IMAGE_NONE) {
         backdrop->priv->pix = xfce_backdrop_generate_canvas(backdrop);
         g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_READY], 0);
         return;
     }
 
-    file = g_file_new_for_path(backdrop->priv->image_path);
-    image_data = g_new0(XfceBackdropImageData, 1);
+    /* If we're trying to display an image, attempt to use the one the user
+     * set. If there's none set at all, fall back to our default */
+    if(backdrop->priv->image_path != NULL)
+        image_path = backdrop->priv->image_path;
+    else
+        image_path = DEFAULT_BACKDROP;
 
+    file = g_file_new_for_path(image_path);
+
+    image_data = g_new0(XfceBackdropImageData, 1);
     backdrop->priv->image_data = image_data;
 
     image_data->backdrop = backdrop;
@@ -936,6 +982,11 @@ xfce_backdrop_loader_size_prepared_cb(GdkPixbufLoader *loader,
     gdouble xscale, yscale;
 
     TRACE("entering");
+
+    if(backdrop->priv->image_style == XFCE_BACKDROP_IMAGE_INVALID) {
+        g_warning("Invalid image style, setting to XFCE_BACKDROP_IMAGE_STRETCHED");
+        backdrop->priv->image_style = XFCE_BACKDROP_IMAGE_STRETCHED;
+    }
 
     switch(backdrop->priv->image_style) {
         case XFCE_BACKDROP_IMAGE_CENTERED:
