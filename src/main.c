@@ -248,7 +248,13 @@ main(int argc, char **argv)
         { "quit", 0, G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_quit, N_("Cause xfdesktop to quit"), NULL },
         { NULL, 0, 0, 0, NULL, NULL, NULL }
     };
-    
+
+#ifdef G_ENABLE_DEBUG
+    /* do NOT remove this line. If something doesn't work,
+     * fix your code instead! */
+    g_log_set_always_fatal(G_LOG_LEVEL_CRITICAL | G_LOG_LEVEL_WARNING);
+#endif
+
     /* bind gettext textdomain */
     xfce_textdomain(GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
 

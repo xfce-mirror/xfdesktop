@@ -328,8 +328,10 @@ xfdesktop_thumbnailer_queue_thumbnail(XfdesktopThumbnailer *thumbnailer,
                                  G_TYPE_UINT, thumbnailer->priv->handle,
                                  G_TYPE_INVALID) == FALSE)
             {
-                g_warning("Dequeue of thumbnailer->priv->handle: %d failed",
-                          thumbnailer->priv->handle);
+                /* If this fails it usually means there's a thumbnail already
+                 * being processed, no big deal */
+                DBG("Dequeue of thumbnailer->priv->handle: %d failed",
+                    thumbnailer->priv->handle);
             }
 
             thumbnailer->priv->handle = 0;
@@ -381,8 +383,10 @@ xfdesktop_thumbnailer_dequeue_thumbnail(XfdesktopThumbnailer *thumbnailer,
                                  G_TYPE_UINT, thumbnailer->priv->handle,
                                  G_TYPE_INVALID) == FALSE)
             {
-                g_warning("Dequeue of thumbnailer->priv->handle: %d failed",
-                          thumbnailer->priv->handle);
+                /* If this fails it usually means there's a thumbnail already
+                 * being processed, no big deal */
+                DBG("Dequeue of thumbnailer->priv->handle: %d failed",
+                    thumbnailer->priv->handle);
             }
         }
         thumbnailer->priv->handle = 0;

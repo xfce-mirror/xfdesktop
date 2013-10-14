@@ -2515,7 +2515,13 @@ xfdesktop_file_icon_manager_metadata_changed(GFileMonitor     *monitor,
                                              GFileMonitorEvent event,
                                              gpointer          user_data)
 {
-    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
+    XfdesktopFileIconManager *fmanager;
+
+    /* Sanity check */
+    if(user_data == NULL || !XFDESKTOP_IS_FILE_ICON_MANAGER(user_data))
+        return;
+
+    fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
 
     switch(event) {
         case G_FILE_MONITOR_EVENT_CHANGED:
