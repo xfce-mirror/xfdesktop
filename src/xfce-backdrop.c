@@ -964,7 +964,7 @@ xfce_backdrop_generate_async(XfceBackdrop *backdrop)
     g_signal_connect(image_data->loader, "closed", G_CALLBACK(xfce_backdrop_loader_closed_cb), image_data);
 
     g_file_read_async(file,
-                      G_PRIORITY_LOW,
+                      G_PRIORITY_DEFAULT,
                       image_data->cancellable,
                       xfce_backdrop_file_ready_cb,
                       image_data);

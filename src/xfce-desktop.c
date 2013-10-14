@@ -333,6 +333,8 @@ create_bg_pixmap(GdkScreen *gscreen, gpointer user_data)
         return NULL;
     }
 
+    TRACE("really entering");
+
     w = gdk_screen_get_width(gscreen);
     h = gdk_screen_get_height(gscreen);
     gtk_widget_set_size_request(GTK_WIDGET(desktop), w, h);
