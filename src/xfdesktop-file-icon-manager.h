@@ -55,19 +55,6 @@ GType xfdesktop_file_icon_manager_get_type(void) G_GNUC_CONST;
 XfdesktopIconViewManager *xfdesktop_file_icon_manager_new(GFile *folder,
                                                           XfconfChannel *channel);
 
-void xfdesktop_file_icon_manager_set_show_removable_media(XfdesktopFileIconManager *manager,
-                                                          gboolean show_removable_media);
-gboolean xfdesktop_file_icon_manager_get_show_removable_media(XfdesktopFileIconManager *manager);
-
-void xfdesktop_file_icon_manager_set_show_special_file(XfdesktopFileIconManager *manager,
-                                                       XfdesktopSpecialFileIconType type,
-                                                       gboolean show_special_file);
-gboolean xfdesktop_file_icon_manager_get_show_special_file(XfdesktopFileIconManager *manager,
-                                                           XfdesktopSpecialFileIconType type);
-void xfdesktop_file_icon_manager_set_show_thumbnails(XfdesktopFileIconManager *manager,
-                                                     gboolean show_thumbnails);
-gboolean xfdesktop_file_icon_manager_get_show_thumbnails(XfdesktopFileIconManager *manager);
-
 gboolean xfdesktop_file_icon_manager_get_cached_icon_position(
                                                     XfdesktopFileIconManager *fmanager,
                                                     const gchar *name,

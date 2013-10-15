@@ -76,12 +76,6 @@
 #define DESKTOP_ICONS_FONT_SIZE_PROP         "/desktop-icons/font-size"
 #define DESKTOP_ICONS_CUSTOM_FONT_SIZE_PROP  "/desktop-icons/use-custom-font-size"
 #define DESKTOP_ICONS_SINGLE_CLICK_PROP      "/desktop-icons/single-click"
-#define DESKTOP_ICONS_SHOW_THUMBNAILS_PROP   "/desktop-icons/show-thumbnails"
-#define DESKTOP_ICONS_SHOW_HOME              "/desktop-icons/file-icons/show-home"
-#define DESKTOP_ICONS_SHOW_TRASH             "/desktop-icons/file-icons/show-trash"
-#define DESKTOP_ICONS_SHOW_FILESYSTEM        "/desktop-icons/file-icons/show-filesystem"
-#define DESKTOP_ICONS_SHOW_REMOVABLE         "/desktop-icons/file-icons/show-removable"
-
 
 typedef struct
 {
@@ -342,7 +336,7 @@ cb_special_icon_toggled(GtkCellRendererToggle *render, gchar *path, gpointer use
 
     xfconf_channel_set_bool(channel, icon_property, show_icon);
 
-    gtk_list_store_set(GTK_LIST_STORE(model), &iter,
+    gtk_tree_store_set(GTK_TREE_STORE(model), &iter,
                        COL_ICON_ENABLED, show_icon, -1);
 
     gtk_tree_path_free(tree_path);
@@ -354,10 +348,10 @@ setup_special_icon_list(GtkBuilder *gxml,
                         XfconfChannel *channel)
 {
     GtkWidget *treeview;
-    GtkListStore *ls;
+    GtkTreeStore *ts;
     GtkTreeViewColumn *col;
     GtkCellRenderer *render;
-    GtkTreeIter iter;
+    GtkTreeIter iter, parent_iter, child_iter;
     const struct {
         const gchar *name;
         const gchar *icon;
@@ -373,14 +367,21 @@ setup_special_icon_list(GtkBuilder *gxml,
           DESKTOP_ICONS_SHOW_TRASH, TRUE },
         { N_("Removable Devices"), "drive-removable-media", "gnome-dev-removable",
           DESKTOP_ICONS_SHOW_REMOVABLE, TRUE },
+        { N_("Network Shares"), "network_fs", "gnome-dev-network",
+          DESKTOP_ICONS_SHOW_NETWORK_REMOVABLE, TRUE },
+        { N_("Disks and Drives"), "drive-harddisk-usb", "gnome-dev-removable-usb",
+          DESKTOP_ICONS_SHOW_DEVICE_REMOVABLE, TRUE },
+        { N_("Other Items"), "phone-symbolic", "phone",
+          DESKTOP_ICONS_SHOW_UNKNWON_REMOVABLE, TRUE },
         { NULL, NULL, NULL, NULL, FALSE },
     };
+    const int REMOVABLE_DEVICES = 4;
     int i, w;
     GtkIconTheme *itheme = gtk_icon_theme_get_default();
 
     gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &w, NULL);
 
-    ls = gtk_list_store_new(N_ICON_COLS, GDK_TYPE_PIXBUF, G_TYPE_STRING,
+    ts = gtk_tree_store_new(N_ICON_COLS, GDK_TYPE_PIXBUF, G_TYPE_STRING,
                             G_TYPE_BOOLEAN, G_TYPE_STRING);
     for(i = 0; icons[i].name; ++i) {
         GdkPixbuf *pix = NULL;
@@ -390,8 +391,15 @@ setup_special_icon_list(GtkBuilder *gxml,
         else
             pix = gtk_icon_theme_load_icon(itheme, icons[i].icon_fallback, w, 0, NULL);
 
-        gtk_list_store_append(ls, &iter);
-        gtk_list_store_set(ls, &iter,
+        if(i < REMOVABLE_DEVICES) {
+            gtk_tree_store_append(ts, &parent_iter, NULL);
+            iter = parent_iter;
+        } else {
+            gtk_tree_store_append(ts, &child_iter, &parent_iter);
+            iter = child_iter;
+        }
+
+        gtk_tree_store_set(ts, &iter,
                            COL_ICON_NAME, _(icons[i].name),
                            COL_ICON_PIX, pix,
                            COL_ICON_PROPERTY, icons[i].xfconf_property,
@@ -424,8 +432,8 @@ setup_special_icon_list(GtkBuilder *gxml,
     gtk_tree_view_column_pack_start(col, render, TRUE);
     gtk_tree_view_column_add_attribute(col, render, "text", COL_ICON_NAME);
 
-    gtk_tree_view_set_model(GTK_TREE_VIEW(treeview), GTK_TREE_MODEL(ls));
-    g_object_unref(G_OBJECT(ls));
+    gtk_tree_view_set_model(GTK_TREE_VIEW(treeview), GTK_TREE_MODEL(ts));
+    g_object_unref(G_OBJECT(ts));
 }
 
 
@@ -1730,7 +1738,7 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     xfconf_g_property_bind(channel, DESKTOP_ICONS_CUSTOM_FONT_SIZE_PROP,
                            G_TYPE_BOOLEAN, G_OBJECT(chk_custom_font_size),
                            "active");
-    xfconf_g_property_bind(channel, DESKTOP_ICONS_SHOW_THUMBNAILS_PROP,
+    xfconf_g_property_bind(channel, DESKTOP_ICONS_SHOW_THUMBNAILS,
                            G_TYPE_BOOLEAN, G_OBJECT(chk_show_thumbnails),
                            "active");
     xfconf_g_property_bind(channel, DESKTOP_ICONS_SINGLE_CLICK_PROP,
