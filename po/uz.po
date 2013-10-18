@@ -4,12 +4,13 @@
 # 
 # Translators:
 # Umidjon Almasov <u.almasov@gmail.com>, 2013
+# Umidjon Almasov <u.almasov@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-02 22:50+0200\n"
-"PO-Revision-Date: 2013-07-27 09:58+0000\n"
+"POT-Creation-Date: 2013-09-29 18:31+0200\n"
+"PO-Revision-Date: 2013-10-18 10:16+0000\n"
 "Last-Translator: Umidjon Almasov <u.almasov@gmail.com>\n"
 "Language-Team: Uzbek (http://www.transifex.com/projects/p/xfce/language/uz/)\n"
 "MIME-Version: 1.0\n"
@@ -18,80 +19,107 @@ msgstr ""
 "Language: uz\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. no need to escape markup; it's already done for us
-#: ../settings/main.c:151
-#, c-format
-msgid ""
-"%s\n"
-"<i>Size: %dx%d</i>"
-msgstr "%s\n<i>Hajmi: %dx%d</i>"
-
-#: ../settings/main.c:263 ../src/xfdesktop-special-file-icon.c:272
-#: ../src/xfdesktop-special-file-icon.c:443
+#: ../settings/main.c:380 ../src/xfdesktop-special-file-icon.c:295
+#: ../src/xfdesktop-special-file-icon.c:479
 msgid "Home"
 msgstr "Uy"
 
-#: ../settings/main.c:265
+#: ../settings/main.c:382
 msgid "Filesystem"
 msgstr "Fayl tizimi"
 
-#: ../settings/main.c:267
+#: ../settings/main.c:384
 msgid "Trash"
 msgstr "Chiqindilar qutisi"
 
-#: ../settings/main.c:269
+#: ../settings/main.c:386
 msgid "Removable Devices"
-msgstr ""
+msgstr "Olinadigan qurilmalar"
 
-#: ../settings/main.c:454
+#. Display the file name, file type, and file size in the tooltip.
+#: ../settings/main.c:491
+#, c-format
+msgid ""
+"<b>%s</b>\n"
+"Type: %s\n"
+"Size: %s"
+msgstr "<b>%s</b>\nTuri: %s\nHajmi: %s"
+
+#: ../settings/main.c:672
+#, c-format
+msgid "Wallpaper for Monitor %d (%s)"
+msgstr "%d (%s) monitori uchun fon rasmi"
+
+#: ../settings/main.c:675
+#, c-format
+msgid "Wallpaper for Monitor %d"
+msgstr "%d monitori uchun fon rasmi"
+
+#: ../settings/main.c:681
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
-msgstr ""
+msgstr "%s uchun %d (%s) monitorida fon rasmi"
 
-#: ../settings/main.c:458
+#: ../settings/main.c:685
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
+msgstr "%s uchun %d monitorida fon rasmi"
+
+#. Single monitor and single workspace
+#: ../settings/main.c:692
+#, c-format
+msgid "Wallpaper for my desktop"
+msgstr "Ishchi stolim uchun fon rasmi"
+
+#. Single monitor and per workspace wallpaper
+#: ../settings/main.c:695
+#, c-format
+msgid "Wallpaper for %s"
+msgstr "%s uchun fon rasmi"
+
+#: ../settings/main.c:987
+msgid "Image selection is unavailable while the image style is set to None."
 msgstr ""
 
-#: ../settings/main.c:862
+#: ../settings/main.c:1204
 msgid "Spanning screens"
 msgstr ""
 
-#: ../settings/main.c:1011
+#: ../settings/main.c:1423
 msgid "Image files"
 msgstr "Rasm fayllari"
 
-#: ../settings/main.c:1111
+#: ../settings/main.c:1560
 msgid "Settings manager socket"
 msgstr ""
 
-#: ../settings/main.c:1111
+#: ../settings/main.c:1560
 msgid "SOCKET ID"
-msgstr ""
+msgstr "SOKET ID"
 
-#: ../settings/main.c:1112
+#: ../settings/main.c:1561
 msgid "Version information"
 msgstr "Versiya haqida ma'lumot"
 
-#: ../settings/main.c:1129
+#: ../settings/main.c:1582
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Foydalanish uchun '%s --help' kiriting."
 
-#: ../settings/main.c:1141
+#: ../settings/main.c:1594
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce tuzuvchilar guruhi. Hamma huquqlar himoyalangan."
 
-#: ../settings/main.c:1142
+#: ../settings/main.c:1595
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Xatolar haqida <%s>'ga xabar bering."
 
-#: ../settings/main.c:1149
+#: ../settings/main.c:1602
 msgid "Desktop Settings"
 msgstr "Ish stolining moslamalari"
 
-#: ../settings/main.c:1151
+#: ../settings/main.c:1604
 msgid "Unable to contact settings server"
 msgstr "Moslamalar serveriga ulanib bo'lmadi"
 
@@ -101,23 +129,23 @@ msgstr "Ish stoli"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Set desktop background and menu and icon behaviour"
-msgstr ""
+msgstr "Ishchi stolning orqa fonini, menyu va nishonchalar xulqini o'rnatish"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
 msgid "Solid color"
-msgstr ""
+msgstr "Bir tekis rang"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
 msgid "Horizontal gradient"
-msgstr ""
+msgstr "Gorizontal gradiyent"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
 msgid "Vertical gradient"
-msgstr ""
+msgstr "Vertikal gradiyent"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
 msgid "Transparent"
-msgstr ""
+msgstr "Shaffof"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
 msgid "Folder:"
@@ -128,79 +156,87 @@ msgid "Add an image to the list"
 msgstr "Ro'yxatga rasm qo'shish"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
-msgid "Specify how the image will be resized to fit the screen"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
-#: ../settings/xfdesktop-settings-ui.glade.h:4
-msgid "None"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
-msgid "Centered"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
-msgid "Tiled"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
-msgid "Stretched"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
-msgid "Scaled"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
-msgid "Zoomed"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
 msgid "St_yle:"
 msgstr "_Uslubi:"
 
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
+msgid "Specify how the image will be resized to fit the screen"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
+#: ../settings/xfdesktop-settings-ui.glade.h:4
+msgid "None"
+msgstr "Mavjud emas"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
+msgid "Centered"
+msgstr "Markaz bo‘yicha"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
+msgid "Tiled"
+msgstr "Bir qatorda"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
+msgid "Stretched"
+msgstr "Cho'zilgan"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
+msgid "Scaled"
+msgstr "Masshablangan"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
+msgid "Zoomed"
+msgstr "Kengaytirilgan"
+
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
+msgid "Spanning Screens"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
 msgid "Color:"
 msgstr "Rangi:"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Specify the style of the color drawn behind the backdrop image"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
 msgid "Select First Color"
 msgstr "Birinchi rangni tanlash"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
 msgid "Select Second Color"
 msgstr "Ikkinchi rangni tanlash"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
+msgid "Apply to all _workspaces"
+msgstr "Hamma ishchi sohalariga qo'llash"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 msgid "_Change the background (in minutes):"
 msgstr "_Orqa fonni o'zgartirish (daqiqada):"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
 msgid ""
 "Automatically select a different background from the current directory after"
 " a set number of minutes."
 msgstr ""
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid "Number of minutes before a different background is selected."
 msgstr ""
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "_Random Order"
-msgstr ""
+msgstr "_Tasodifiy tartib"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:1
 msgid "Left"
@@ -228,13 +264,13 @@ msgstr "Control"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:8
 msgid "Minimized application icons"
-msgstr ""
+msgstr "Kichraytirilgan dastur nishonchalari"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:9
 msgid "File/launcher icons"
-msgstr ""
+msgstr "Fayl/ishga tushiruvchi nishonchalari"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:813
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:981
 msgid "Desktop"
 msgstr "Ish stoli"
 
@@ -300,7 +336,7 @@ msgstr ""
 
 #: ../settings/xfdesktop-settings-ui.glade.h:26
 msgid "<b>Window List Menu</b>"
-msgstr ""
+msgstr "<b>Oyna ro'yxati menyusi</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "_Menus"
@@ -326,11 +362,11 @@ msgstr ""
 
 #: ../settings/xfdesktop-settings-ui.glade.h:32
 msgid "Single _click to activate items"
-msgstr ""
+msgstr "Elementlarni faollashtirish uchun bir marta _chertish"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
 msgid "Use custom _font size:"
-msgstr ""
+msgstr "Ixtiyoriy _shrift o‘lchamini qo'llash:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:34
 msgid "<b>Appearance</b>"
@@ -344,74 +380,74 @@ msgstr "<b>Andoza nishonchalar</b>"
 msgid "_Icons"
 msgstr "_Nishonchalar"
 
-#: ../src/main.c:243
+#: ../src/main.c:241
 msgid "Display version information"
 msgstr "Versiya haqida ma'lumotini ko'rsatish"
 
-#: ../src/main.c:244
+#: ../src/main.c:242
 msgid "Reload all settings, refresh image list"
 msgstr ""
 
-#: ../src/main.c:245
+#: ../src/main.c:243
 msgid "Pop up the menu (at the current mouse position)"
 msgstr ""
 
-#: ../src/main.c:246
+#: ../src/main.c:244
 msgid "Pop up the window list (at the current mouse position)"
 msgstr ""
 
-#: ../src/main.c:248
+#: ../src/main.c:246
 msgid "Automatically arrange all the icons on the desktop"
-msgstr ""
+msgstr "Ishchi stolda hamma nishonchalarni avtomatik ravishda tartiblash"
 
-#: ../src/main.c:250
+#: ../src/main.c:248
 msgid "Cause xfdesktop to quit"
 msgstr ""
 
-#: ../src/main.c:267
+#: ../src/main.c:265
 #, c-format
 msgid "Failed to parse arguments: %s\n"
-msgstr ""
+msgstr "Argumentlarni tahlil qilish muvaffaqiyatsiz tugadi: %s\n"
+
+#: ../src/main.c:273
+#, c-format
+msgid "This is %s version %s, running on Xfce %s.\n"
+msgstr "Bu %s versiya %s, Xfce %s'da bajarilmoqda.\n"
 
 #: ../src/main.c:275
 #, c-format
-msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr ""
-
-#: ../src/main.c:277
-#, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr ""
+msgstr "GTK+ %d.%d.%d bilan yig'ilgan, GTK+ %d.%d.%d bilan bog'langan."
 
-#: ../src/main.c:281
+#: ../src/main.c:279
 #, c-format
 msgid "Build options:\n"
-msgstr ""
+msgstr "Yig'ish parametrlari:\n"
 
-#: ../src/main.c:282
+#: ../src/main.c:280
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Ish stolining menyusi:        %s\n"
 
-#: ../src/main.c:284 ../src/main.c:291 ../src/main.c:298
+#: ../src/main.c:282 ../src/main.c:289 ../src/main.c:296
 msgid "enabled"
-msgstr ""
+msgstr "yoqilgan"
 
-#: ../src/main.c:286 ../src/main.c:293 ../src/main.c:300
+#: ../src/main.c:284 ../src/main.c:291 ../src/main.c:298
 msgid "disabled"
-msgstr ""
+msgstr "o'chirilgan"
 
-#: ../src/main.c:289
+#: ../src/main.c:287
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Ish stolining nishonchalari:       %s\n"
 
-#: ../src/main.c:296
+#: ../src/main.c:294
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Ish stolining fayl nishinchalari:  %s\n"
 
-#: ../src/main.c:329
+#: ../src/main.c:327
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s ishga tushirilmagan.\n"
@@ -420,319 +456,355 @@ msgstr "%s ishga tushirilmagan.\n"
 msgid "_Applications"
 msgstr "_Dasturlar"
 
-#: ../src/windowlist.c:229
-msgid "Window List"
-msgstr ""
+#: ../src/windowlist.c:72
+#, c-format
+msgid "Remove Workspace %d"
+msgstr "%d ishchi sohasini olib tashlash"
 
-#: ../src/windowlist.c:255
+#: ../src/windowlist.c:73
+#, c-format
+msgid ""
+"Do you really want to remove workspace %d?\n"
+"Note: You are currently on workspace %d."
+msgstr "Siz rostdan %d ishchi sohasini olib tashlamoqchimisiz?\nEslatma: Siz hozirda %d ishchi sohasida."
+
+#: ../src/windowlist.c:77
+#, c-format
+msgid "Remove Workspace '%s'"
+msgstr "'%s' ishchi sohasini olib tashlash"
+
+#: ../src/windowlist.c:78
+#, c-format
+msgid ""
+"Do you really want to remove workspace '%s'?\n"
+"Note: You are currently on workspace '%s'."
+msgstr "Siz rostdan '%s' ishchi sohasini olib tashlamoqchimisiz?\nEslatma: Siz hozirda '%s' ishchi sohasida."
+
+#. Popup a dialog box confirming that the user wants to remove a
+#. * workspace
+#: ../src/windowlist.c:85
+msgid "Remove"
+msgstr "Olib tashlash"
+
+#: ../src/windowlist.c:245
+msgid "Window List"
+msgstr "Oyna ro'yxati"
+
+#: ../src/windowlist.c:271
 #, c-format
 msgid "<b>Workspace %d</b>"
-msgstr ""
+msgstr "<b>%d ishchi sohasi</b>"
 
-#: ../src/windowlist.c:264
-#, c-format
-msgid "Workspace %d"
-msgstr ""
-
-#: ../src/windowlist.c:266
-#, c-format
-msgid "<i>Workspace %d</i>"
-msgstr ""
-
-#: ../src/windowlist.c:362 ../src/windowlist.c:365
+#: ../src/windowlist.c:360 ../src/windowlist.c:363
 msgid "_Add Workspace"
-msgstr ""
+msgstr "Ishchi sohani _qo'shish"
 
-#: ../src/windowlist.c:373
+#: ../src/windowlist.c:371
 #, c-format
 msgid "_Remove Workspace %d"
-msgstr ""
+msgstr "%d ishchi sohasini _olib tashlash"
 
-#: ../src/windowlist.c:376
+#: ../src/windowlist.c:374
 #, c-format
 msgid "_Remove Workspace '%s'"
-msgstr ""
+msgstr "'%s' ishchi sohasini _olib tashlash"
 
-#: ../src/xfdesktop-file-icon-manager.c:504
-#: ../src/xfdesktop-file-icon-manager.c:521
+#: ../src/xfdesktop-file-icon-manager.c:510
+#: ../src/xfdesktop-file-icon-manager.c:527
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
 msgstr "Ish stolining \"%s\" jildini yaratib bo'lmadi"
 
-#: ../src/xfdesktop-file-icon-manager.c:509
-#: ../src/xfdesktop-file-icon-manager.c:526
+#: ../src/xfdesktop-file-icon-manager.c:515
+#: ../src/xfdesktop-file-icon-manager.c:532
 msgid "Desktop Folder Error"
 msgstr "Ish stolining jildi xatosi"
 
-#: ../src/xfdesktop-file-icon-manager.c:528
+#: ../src/xfdesktop-file-icon-manager.c:534
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr "Shu nom bilan oddiy fayl mavjud. Uni o'chiring yoki qayta nomlang."
 
-#: ../src/xfdesktop-file-icon-manager.c:631
-#: ../src/xfdesktop-file-icon-manager.c:675 ../src/xfdesktop-file-utils.c:863
-#: ../src/xfdesktop-file-utils.c:878 ../src/xfdesktop-file-utils.c:910
-#: ../src/xfdesktop-file-utils.c:924
+#: ../src/xfdesktop-file-icon-manager.c:617 ../src/xfdesktop-file-utils.c:847
+#: ../src/xfdesktop-file-utils.c:900
+msgid "Rename Error"
+msgstr "Qayta nomlash xatosi"
+
+#: ../src/xfdesktop-file-icon-manager.c:618 ../src/xfdesktop-file-utils.c:901
+msgid "The files could not be renamed"
+msgstr "Fayllarni qayta nomlab bo'lmadi"
+
+#: ../src/xfdesktop-file-icon-manager.c:619
+msgid "None of the icons selected support being renamed."
+msgstr "Tanlangan nishonchalar qayta nomlashni qo'llab-quvvatlamaydilar"
+
+#: ../src/xfdesktop-file-icon-manager.c:663
+#: ../src/xfdesktop-file-icon-manager.c:707 ../src/xfdesktop-file-utils.c:1000
+#: ../src/xfdesktop-file-utils.c:1037
 msgid "Trash Error"
 msgstr "Chiqindilar qutisining xatosi"
 
-#: ../src/xfdesktop-file-icon-manager.c:632
-#: ../src/xfdesktop-file-icon-manager.c:676
+#: ../src/xfdesktop-file-icon-manager.c:664
+#: ../src/xfdesktop-file-icon-manager.c:708
 msgid "The selected files could not be trashed"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:633
-#: ../src/xfdesktop-file-icon-manager.c:677 ../src/xfdesktop-file-utils.c:762
-#: ../src/xfdesktop-file-utils.c:821 ../src/xfdesktop-file-utils.c:979
-#: ../src/xfdesktop-file-utils.c:1035 ../src/xfdesktop-file-utils.c:1085
-#: ../src/xfdesktop-file-utils.c:1135 ../src/xfdesktop-file-utils.c:1212
-#: ../src/xfdesktop-file-utils.c:1273 ../src/xfdesktop-file-utils.c:1346
-#: ../src/xfdesktop-file-utils.c:1424
+#: ../src/xfdesktop-file-icon-manager.c:665
+#: ../src/xfdesktop-file-icon-manager.c:709 ../src/xfdesktop-file-utils.c:849
+#: ../src/xfdesktop-file-utils.c:902 ../src/xfdesktop-file-utils.c:952
+#: ../src/xfdesktop-file-utils.c:1083 ../src/xfdesktop-file-utils.c:1130
+#: ../src/xfdesktop-file-utils.c:1171 ../src/xfdesktop-file-utils.c:1212
+#: ../src/xfdesktop-file-utils.c:1289 ../src/xfdesktop-file-utils.c:1341
+#: ../src/xfdesktop-file-utils.c:1414 ../src/xfdesktop-file-utils.c:1492
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
 msgstr ""
 
 #. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:777
-#: ../src/xfdesktop-file-icon-manager.c:1356
+#: ../src/xfdesktop-file-icon-manager.c:809
+#: ../src/xfdesktop-file-icon-manager.c:1272
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "\"%s\"ni ishga tushirib bo'lmadi:"
 
-#: ../src/xfdesktop-file-icon-manager.c:779
-#: ../src/xfdesktop-file-icon-manager.c:1040
-#: ../src/xfdesktop-file-icon-manager.c:1357 ../src/xfdesktop-file-utils.c:707
-#: ../src/xfdesktop-file-utils.c:1118 ../src/xfdesktop-file-utils.c:1133
-#: ../src/xfdesktop-file-utils.c:1185 ../src/xfdesktop-file-utils.c:1210
-#: ../src/xfdesktop-file-utils.c:1256 ../src/xfdesktop-file-utils.c:1271
+#: ../src/xfdesktop-file-icon-manager.c:811
+#: ../src/xfdesktop-file-icon-manager.c:1072
+#: ../src/xfdesktop-file-icon-manager.c:1273 ../src/xfdesktop-file-utils.c:788
+#: ../src/xfdesktop-file-utils.c:1210 ../src/xfdesktop-file-utils.c:1262
+#: ../src/xfdesktop-file-utils.c:1287 ../src/xfdesktop-file-utils.c:1339
 msgid "Launch Error"
 msgstr "Ishga tushirish xatosi"
 
-#: ../src/xfdesktop-file-icon-manager.c:964
+#: ../src/xfdesktop-file-icon-manager.c:996
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "\"%s\" _bilan ochish"
 
-#: ../src/xfdesktop-file-icon-manager.c:967
+#: ../src/xfdesktop-file-icon-manager.c:999
 #, c-format
 msgid "Open With \"%s\""
 msgstr "\"%s\" bilan ochish"
 
-#: ../src/xfdesktop-file-icon-manager.c:1042
+#: ../src/xfdesktop-file-icon-manager.c:1074
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1414
+#: ../src/xfdesktop-file-icon-manager.c:1330
 msgid "_Open all"
 msgstr "Hammasini _ochish"
 
-#: ../src/xfdesktop-file-icon-manager.c:1430
+#: ../src/xfdesktop-file-icon-manager.c:1346
 msgid "_Open in New Window"
 msgstr "Yangi oynada _ochish"
 
-#: ../src/xfdesktop-file-icon-manager.c:1432
-#: ../src/xfdesktop-special-file-icon.c:514 ../src/xfdesktop-volume-icon.c:782
-#: ../src/xfdesktop-volume-icon.c:786
+#: ../src/xfdesktop-file-icon-manager.c:1348
+#: ../src/xfdesktop-special-file-icon.c:550 ../src/xfdesktop-volume-icon.c:814
+#: ../src/xfdesktop-volume-icon.c:818
 msgid "_Open"
 msgstr "_Ochish"
 
 #. create launcher item
-#: ../src/xfdesktop-file-icon-manager.c:1451
+#: ../src/xfdesktop-file-icon-manager.c:1367
 msgid "Create _Launcher..."
-msgstr ""
+msgstr "_Ishga tushiruvchini yaratish..."
 
 #. create link item
-#: ../src/xfdesktop-file-icon-manager.c:1467
+#: ../src/xfdesktop-file-icon-manager.c:1383
 msgid "Create _URL Link..."
-msgstr ""
+msgstr "_URL havolasini yaratish..."
 
 #. create folder item
-#: ../src/xfdesktop-file-icon-manager.c:1483
+#: ../src/xfdesktop-file-icon-manager.c:1399
 msgid "Create _Folder..."
 msgstr "_Jild yaratish..."
 
 #. create from template submenu
-#: ../src/xfdesktop-file-icon-manager.c:1498
+#: ../src/xfdesktop-file-icon-manager.c:1414
 msgid "Create From _Template"
-msgstr ""
+msgstr "_Qolipdan yaratish"
 
-#: ../src/xfdesktop-file-icon-manager.c:1524
+#: ../src/xfdesktop-file-icon-manager.c:1440
 msgid "_Empty File"
 msgstr "_Bo'sh fayl"
 
-#: ../src/xfdesktop-file-icon-manager.c:1540
+#: ../src/xfdesktop-file-icon-manager.c:1456
 msgid "_Execute"
-msgstr ""
+msgstr "_Bajarish"
 
-#: ../src/xfdesktop-file-icon-manager.c:1560
+#: ../src/xfdesktop-file-icon-manager.c:1476
 msgid "_Edit Launcher"
-msgstr ""
+msgstr "Ishga tushiruvchini _tahrirlash"
 
-#: ../src/xfdesktop-file-icon-manager.c:1595
+#: ../src/xfdesktop-file-icon-manager.c:1511
 msgid "Open With"
 msgstr "Quyidagida ochish"
 
-#: ../src/xfdesktop-file-icon-manager.c:1621
+#: ../src/xfdesktop-file-icon-manager.c:1537
 msgid "Open With Other _Application..."
 msgstr "Boshqa _dastur bilan ochish..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1713
+#. Rename
+#: ../src/xfdesktop-file-icon-manager.c:1637
 msgid "_Rename..."
 msgstr "_Qayta nomlash..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1731
+#: ../src/xfdesktop-file-icon-manager.c:1665
 msgid "Arrange Desktop _Icons"
-msgstr ""
+msgstr "Ishchi stol nishonchalarini tartiblash"
 
-#: ../src/xfdesktop-file-icon-manager.c:1741
+#: ../src/xfdesktop-file-icon-manager.c:1676
 msgid "Desktop _Settings..."
 msgstr "Ish stolining _moslamalari..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1751
-#: ../src/xfdesktop-volume-icon.c:828
+#: ../src/xfdesktop-file-icon-manager.c:1687
+#: ../src/xfdesktop-volume-icon.c:860
 msgid "P_roperties..."
 msgstr "_Xossalari..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2369
+#: ../src/xfdesktop-file-icon-manager.c:2563
 msgid "Load Error"
 msgstr "Yuklash xatosi"
 
-#: ../src/xfdesktop-file-icon-manager.c:2371
+#: ../src/xfdesktop-file-icon-manager.c:2565
 msgid "Failed to load the desktop folder"
 msgstr "Ish stoli jildini yuklash muvaffaqiyarsiz tugadi"
 
-#: ../src/xfdesktop-file-icon-manager.c:2947
+#: ../src/xfdesktop-file-icon-manager.c:3156
 msgid "Copy _Here"
 msgstr "Shu joyga _nusxa olish"
 
-#: ../src/xfdesktop-file-icon-manager.c:2947
+#: ../src/xfdesktop-file-icon-manager.c:3156
 msgid "_Move Here"
 msgstr "Shu joyga _ko'chirish"
 
-#: ../src/xfdesktop-file-icon-manager.c:2947
+#: ../src/xfdesktop-file-icon-manager.c:3156
 msgid "_Link Here"
-msgstr ""
+msgstr "Shu joyga _havola"
 
 #. TRANSLATORS: file was modified less than one day ago
-#: ../src/xfdesktop-file-utils.c:137
+#: ../src/xfdesktop-file-utils.c:140
 #, c-format
 msgid "Today at %X"
 msgstr "Bugun %X da"
 
 #. TRANSLATORS: file was modified less than two days ago
-#: ../src/xfdesktop-file-utils.c:141
+#: ../src/xfdesktop-file-utils.c:144
 #, c-format
 msgid "Yesterday at %X"
 msgstr "Kecha %X da"
 
 #. Days from last week
-#: ../src/xfdesktop-file-utils.c:146
+#: ../src/xfdesktop-file-utils.c:149
 #, c-format
 msgid "%A at %X"
 msgstr "%A %X da"
 
 #. Any other date
-#: ../src/xfdesktop-file-utils.c:149
+#: ../src/xfdesktop-file-utils.c:152
 #, c-format
 msgid "%x at %X"
 msgstr "%x %X da"
 
 #. the file_time is invalid
-#: ../src/xfdesktop-file-utils.c:159
+#: ../src/xfdesktop-file-utils.c:162
 msgid "Unknown"
 msgstr "Noma'lum"
 
-#: ../src/xfdesktop-file-utils.c:708
+#: ../src/xfdesktop-file-utils.c:789
 msgid "The folder could not be opened"
 msgstr "Jildni ochib bo'lmadi"
 
-#: ../src/xfdesktop-file-utils.c:745 ../src/xfdesktop-file-utils.c:760
-msgid "Rename Error"
-msgstr "Qayta nomlash xatosi"
+#: ../src/xfdesktop-file-utils.c:806
+msgid "Error"
+msgstr "Xato"
 
-#: ../src/xfdesktop-file-utils.c:746 ../src/xfdesktop-file-utils.c:761
+#: ../src/xfdesktop-file-utils.c:807
+msgid "The requested operation could not be completed"
+msgstr "Talab qilingan operatsiyani tugatib bo'lmaydi"
+
+#: ../src/xfdesktop-file-utils.c:848
 msgid "The file could not be renamed"
 msgstr "Faylni qayta nomlab bo'lmadi"
 
-#: ../src/xfdesktop-file-utils.c:804 ../src/xfdesktop-file-utils.c:819
+#: ../src/xfdesktop-file-utils.c:950
 msgid "Delete Error"
 msgstr "O'chirish xatosi"
 
-#: ../src/xfdesktop-file-utils.c:805 ../src/xfdesktop-file-utils.c:820
+#: ../src/xfdesktop-file-utils.c:951
 msgid "The selected files could not be deleted"
 msgstr "Tanlangan fayllarni o'chirib bo'lmadi"
 
-#: ../src/xfdesktop-file-utils.c:864 ../src/xfdesktop-file-utils.c:879
+#: ../src/xfdesktop-file-utils.c:1001
 msgid "The selected files could not be moved to the trash"
-msgstr ""
+msgstr "Tanlangan fayllarni savatga ko'chirib bo'lmadi"
 
-#: ../src/xfdesktop-file-utils.c:880 ../src/xfdesktop-file-utils.c:926
+#: ../src/xfdesktop-file-utils.c:1002 ../src/xfdesktop-file-utils.c:1039
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:911 ../src/xfdesktop-file-utils.c:925
+#: ../src/xfdesktop-file-utils.c:1038
 msgid "Could not empty the trash"
 msgstr "Chiqindilar qutisini bo'shatib bo'lmadi"
 
-#: ../src/xfdesktop-file-utils.c:962 ../src/xfdesktop-file-utils.c:977
+#: ../src/xfdesktop-file-utils.c:1081
 msgid "Create File Error"
 msgstr "Fayl yaratish xatosi"
 
-#: ../src/xfdesktop-file-utils.c:963 ../src/xfdesktop-file-utils.c:978
+#: ../src/xfdesktop-file-utils.c:1082
 msgid "Could not create a new file"
 msgstr "Yangi faylni yaratib bo'lmadi"
 
-#: ../src/xfdesktop-file-utils.c:1018 ../src/xfdesktop-file-utils.c:1033
+#: ../src/xfdesktop-file-utils.c:1128
 msgid "Create Document Error"
 msgstr "Hujjat yaratish xatosi"
 
-#: ../src/xfdesktop-file-utils.c:1019 ../src/xfdesktop-file-utils.c:1034
+#: ../src/xfdesktop-file-utils.c:1129
 msgid "Could not create a new document from the template"
-msgstr ""
+msgstr "Yangi hujjatni qolipdan yaratib bo'lmadi"
 
-#: ../src/xfdesktop-file-utils.c:1068 ../src/xfdesktop-file-utils.c:1083
+#: ../src/xfdesktop-file-utils.c:1169
 msgid "File Properties Error"
 msgstr "Fayl xossalari xatosi"
 
-#: ../src/xfdesktop-file-utils.c:1069 ../src/xfdesktop-file-utils.c:1084
+#: ../src/xfdesktop-file-utils.c:1170
 msgid "The file properties dialog could not be opened"
-msgstr ""
+msgstr "Fayl xususiyatlari dialogini ochib bo'lmadi"
 
-#: ../src/xfdesktop-file-utils.c:1119 ../src/xfdesktop-file-utils.c:1134
+#: ../src/xfdesktop-file-utils.c:1211
 msgid "The file could not be opened"
 msgstr "Faylni ochib bo'lmadi"
 
-#: ../src/xfdesktop-file-utils.c:1182 ../src/xfdesktop-file-utils.c:1207
+#: ../src/xfdesktop-file-utils.c:1259 ../src/xfdesktop-file-utils.c:1284
 #, c-format
 msgid "Failed to run \"%s\""
 msgstr "\"%s\"'ni ishga tushirish muvaffaqiyatsiz tugadi"
 
-#: ../src/xfdesktop-file-utils.c:1257 ../src/xfdesktop-file-utils.c:1272
+#: ../src/xfdesktop-file-utils.c:1340
 msgid "The application chooser could not be opened"
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:1330 ../src/xfdesktop-file-utils.c:1344
-#: ../src/xfdesktop-file-utils.c:1406 ../src/xfdesktop-file-utils.c:1422
+#: ../src/xfdesktop-file-utils.c:1398 ../src/xfdesktop-file-utils.c:1412
+#: ../src/xfdesktop-file-utils.c:1474 ../src/xfdesktop-file-utils.c:1490
 msgid "Transfer Error"
 msgstr "Ko'chirish xatosi"
 
-#: ../src/xfdesktop-file-utils.c:1331 ../src/xfdesktop-file-utils.c:1345
-#: ../src/xfdesktop-file-utils.c:1407 ../src/xfdesktop-file-utils.c:1423
+#: ../src/xfdesktop-file-utils.c:1399 ../src/xfdesktop-file-utils.c:1413
+#: ../src/xfdesktop-file-utils.c:1475 ../src/xfdesktop-file-utils.c:1491
 msgid "The file transfer could not be performed"
-msgstr ""
+msgstr "Fayl uzatishni bajarib bo'lmadi"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:128
+#: ../src/xfdesktop-notify.c:127
 msgid "Unmounting device"
-msgstr ""
+msgstr "Qurilma ajratilmoqda"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:131
+#: ../src/xfdesktop-notify.c:130
 #, c-format
 msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the"
@@ -740,23 +812,23 @@ msgid ""
 msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:322
+#: ../src/xfdesktop-notify.c:137 ../src/xfdesktop-notify.c:322
 msgid "Writing data to device"
 msgstr "Uskunaga ma'lumot yozilmoqda"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:325
+#: ../src/xfdesktop-notify.c:140 ../src/xfdesktop-notify.c:325
 #, c-format
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be"
 " removed. Please do not remove the media or disconnect the drive"
 msgstr ""
 
-#: ../src/xfdesktop-notify.c:222
+#: ../src/xfdesktop-notify.c:221
 msgid "Unmount Finished"
-msgstr ""
+msgstr "Ajratish tugatildi"
 
-#: ../src/xfdesktop-notify.c:224 ../src/xfdesktop-notify.c:408
+#: ../src/xfdesktop-notify.c:223 ../src/xfdesktop-notify.c:408
 #, c-format
 msgid "The device \"%s\" has been safely removed from the system. "
 msgstr "\"%s\" uskunasi tizimdan xavfsiz o'chirilgan. "
@@ -770,13 +842,13 @@ msgstr "Uskuna chiqarilmoqda"
 #: ../src/xfdesktop-notify.c:316
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
-msgstr ""
+msgstr "\"%s\" qurilmasi chiqarib olinadi. Bu ozgina vaqt olishi mumkin"
 
 #: ../src/xfdesktop-notify.c:406
 msgid "Eject Finished"
 msgstr "Chiqarildi"
 
-#: ../src/xfdesktop-regular-file-icon.c:569
+#: ../src/xfdesktop-regular-file-icon.c:601
 #, c-format
 msgid ""
 "Type: %s\n"
@@ -784,25 +856,25 @@ msgid ""
 "Last modified: %s"
 msgstr "Turi: %s\nHajmi: %s\nO'zgartirilgan: %s"
 
-#: ../src/xfdesktop-special-file-icon.c:274
-#: ../src/xfdesktop-special-file-icon.c:441
+#: ../src/xfdesktop-special-file-icon.c:297
+#: ../src/xfdesktop-special-file-icon.c:477
 msgid "File System"
 msgstr "Fayl tizimi"
 
-#: ../src/xfdesktop-special-file-icon.c:426
+#: ../src/xfdesktop-special-file-icon.c:462
 msgid "Trash is empty"
 msgstr "Ciqindilar qutisi bo'sh"
 
-#: ../src/xfdesktop-special-file-icon.c:429
+#: ../src/xfdesktop-special-file-icon.c:465
 msgid "Trash contains one item"
 msgstr "Chiqindilar qutisida bitta band mavjud"
 
-#: ../src/xfdesktop-special-file-icon.c:430
+#: ../src/xfdesktop-special-file-icon.c:466
 #, c-format
 msgid "Trash contains %d items"
 msgstr "Chiqindilar qutisida %d band mavjud"
 
-#: ../src/xfdesktop-special-file-icon.c:462
+#: ../src/xfdesktop-special-file-icon.c:498
 #, c-format
 msgid ""
 "%s\n"
@@ -810,54 +882,54 @@ msgid ""
 "Last modified: %s"
 msgstr "%s\nHajmi: %s\nO'zgartirilgan: %s"
 
-#: ../src/xfdesktop-special-file-icon.c:531
+#: ../src/xfdesktop-special-file-icon.c:567
 msgid "_Empty Trash"
 msgstr "Chiqindilar qutisini _bo'shatish"
 
-#: ../src/xfdesktop-volume-icon.c:455
+#: ../src/xfdesktop-volume-icon.c:486
 #, c-format
 msgid ""
 "Removable Volume\n"
 "Mounted in \"%s\"\n"
 "%s left (%s total)"
-msgstr ""
+msgstr "Olinadigan disk\n\"%s\"'ga ulangan\n%s qoldi (jami %s)"
 
-#: ../src/xfdesktop-volume-icon.c:462
+#: ../src/xfdesktop-volume-icon.c:493
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
-msgstr ""
+msgstr "Olinadigan disk\nHali ulanmagan"
 
-#: ../src/xfdesktop-volume-icon.c:491 ../src/xfdesktop-volume-icon.c:536
+#: ../src/xfdesktop-volume-icon.c:522 ../src/xfdesktop-volume-icon.c:567
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "\"%s\"'ni chiqarish muvaffaqiyatsiz tugadi"
 
-#: ../src/xfdesktop-volume-icon.c:496 ../src/xfdesktop-volume-icon.c:541
+#: ../src/xfdesktop-volume-icon.c:527 ../src/xfdesktop-volume-icon.c:572
 msgid "Eject Failed"
 msgstr "Chiqarish muvaffaqiyatsiz tugadi"
 
-#: ../src/xfdesktop-volume-icon.c:573
+#: ../src/xfdesktop-volume-icon.c:604
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "\"%s\"'ni ulash muvaffaqiyatsiz tugadi"
 
-#: ../src/xfdesktop-volume-icon.c:576
+#: ../src/xfdesktop-volume-icon.c:607
 msgid "Mount Failed"
 msgstr "Ulash muvaffaqiyatsiz tugadi"
 
-#: ../src/xfdesktop-volume-icon.c:801
+#: ../src/xfdesktop-volume-icon.c:833
 msgid "E_ject Volume"
-msgstr ""
+msgstr "Diskni _chiqarib olish"
 
-#: ../src/xfdesktop-volume-icon.c:808
+#: ../src/xfdesktop-volume-icon.c:840
 msgid "_Unmount Volume"
-msgstr ""
+msgstr "Diskni _ajratish"
 
-#: ../src/xfdesktop-volume-icon.c:815
+#: ../src/xfdesktop-volume-icon.c:847
 msgid "_Mount Volume"
-msgstr ""
+msgstr "Diskni _ulash"
 
-#: ../src/xfdesktop-window-icon.c:208
+#: ../src/xfdesktop-window-icon.c:195
 msgid "_Window Actions"
 msgstr "_Oyna amallari"
