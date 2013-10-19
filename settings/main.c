@@ -109,8 +109,10 @@ typedef struct
     gulong color1_btn_id;
     gulong color2_btn_id;
 
-    GtkWidget *backdrop_cycle_spinbox;
+    /* backdrop cycling options */
     GtkWidget *backdrop_cycle_chkbox;
+    GtkWidget *combo_backdrop_cycle_period;
+    GtkWidget *backdrop_cycle_spinbox;
     GtkWidget *random_backdrop_order_chkbox;
 
     GThread *preview_thread;
@@ -877,11 +879,42 @@ cb_xfdesktop_chk_custom_font_size_toggled(GtkCheckButton *button,
 }
 
 static void
+update_backdrop_cycle_spinbox(AppearancePanel *panel)
+{
+    gboolean sensitive = FALSE;
+    gint period;
+
+    /* For the spinbox to be active the combo_backdrop_cycle_period needs to be
+     * active and needs to be set to something where the spinbox would apply */
+    if(gtk_widget_get_sensitive(panel->combo_backdrop_cycle_period)) {
+        period = gtk_combo_box_get_active(GTK_COMBO_BOX(panel->combo_backdrop_cycle_period));
+        if(period == XFCE_BACKDROP_PERIOD_SECONDS ||
+           period == XFCE_BACKDROP_PERIOD_MINUES  ||
+           period == XFCE_BACKDROP_PERIOD_HOURS)
+        {
+            sensitive = TRUE;
+        }
+    }
+
+    gtk_widget_set_sensitive(panel->backdrop_cycle_spinbox, sensitive);
+}
+
+static void
+cb_combo_backdrop_cycle_period_change(GtkComboBox *combo,
+                                      gpointer user_data)
+{
+    AppearancePanel *panel = user_data;
+
+    /* determine if the spin box should be sensitive */
+    update_backdrop_cycle_spinbox(panel);
+}
+
+static void
 cb_xfdesktop_chk_cycle_backdrop_toggled(GtkCheckButton *button,
                                         gpointer user_data)
 {
-    gboolean sensitive = FALSE;
     AppearancePanel *panel = user_data;
+    gboolean sensitive = FALSE;
 
     TRACE("entering");
 
@@ -889,8 +922,11 @@ cb_xfdesktop_chk_cycle_backdrop_toggled(GtkCheckButton *button,
            sensitive = TRUE;
     }
 
-    gtk_widget_set_sensitive(panel->backdrop_cycle_spinbox, sensitive);
+    /* The cycle backdrop toggles the period and random widgets */
+    gtk_widget_set_sensitive(panel->combo_backdrop_cycle_period, sensitive);
     gtk_widget_set_sensitive(panel->random_backdrop_order_chkbox, sensitive);
+    /* determine if the spin box should be sensitive */
+    update_backdrop_cycle_spinbox(panel);
 }
 
 static gboolean
@@ -1239,6 +1275,19 @@ xfdesktop_settings_background_tab_change_bindings(AppearancePanel *panel,
     }
     g_free(buf);
 
+    /* backdrop cycle period combo box */
+    buf = xfdesktop_settings_generate_per_workspace_binding_string(panel, "backdrop-cycle-period");
+    if(remove_binding) {
+        xfconf_g_property_unbind_by_property(channel, buf,
+                               G_OBJECT(panel->combo_backdrop_cycle_period), "active");
+    } else {
+        xfconf_g_property_bind(channel, buf, G_TYPE_INT,
+                               G_OBJECT(panel->combo_backdrop_cycle_period), "active");
+        /* determine if the cycle timer spin box is sensitive */
+        cb_combo_backdrop_cycle_period_change(GTK_COMBO_BOX(panel->combo_backdrop_cycle_period), panel);
+    }
+    g_free(buf);
+
     /* cycle timer spin box */
     buf = xfdesktop_settings_generate_per_workspace_binding_string(panel, "backdrop-cycle-timer");
     if(remove_binding) {
@@ -1246,6 +1295,10 @@ xfdesktop_settings_background_tab_change_bindings(AppearancePanel *panel,
                    G_OBJECT(gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(panel->backdrop_cycle_spinbox))),
                    "value");
     } else {
+        guint current_timer = xfconf_channel_get_uint(channel, buf, 10);
+        /* Update the spin box before we bind to it */
+        gtk_spin_button_set_value(GTK_SPIN_BUTTON(panel->backdrop_cycle_spinbox), current_timer);
+
         xfconf_g_property_bind(channel, buf, G_TYPE_UINT,
                        G_OBJECT(gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(panel->backdrop_cycle_spinbox))),
                        "value");
@@ -1667,14 +1720,23 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     /* background cycle timer */
     panel->backdrop_cycle_chkbox = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
                                                                      "chk_cycle_backdrop"));
+    panel->combo_backdrop_cycle_period = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
+                                                                           "combo_cycle_backdrop_period"));
     panel->backdrop_cycle_spinbox = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
-                                                                     "spin_backdrop_time_minutes"));
+                                                                     "spin_backdrop_time"));
     panel->random_backdrop_order_chkbox = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
                                                                      "chk_random_backdrop_order"));
+
+    /* Pick the first entry so something shows up */
+    gtk_combo_box_set_active(GTK_COMBO_BOX(panel->combo_backdrop_cycle_period), XFCE_BACKDROP_PERIOD_MINUES);
 
     g_signal_connect(G_OBJECT(panel->backdrop_cycle_chkbox), "toggled",
                     G_CALLBACK(cb_xfdesktop_chk_cycle_backdrop_toggled),
                     panel);
+
+    g_signal_connect(G_OBJECT(panel->combo_backdrop_cycle_period), "changed",
+                     G_CALLBACK(cb_combo_backdrop_cycle_period_change),
+                     panel);
 
     g_object_unref(G_OBJECT(appearance_gxml));
 

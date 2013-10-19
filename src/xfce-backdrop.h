@@ -59,6 +59,17 @@ typedef enum
     XFCE_BACKDROP_COLOR_TRANSPARENT,
 } XfceBackdropColorStyle;
 
+typedef enum
+{
+    XFCE_BACKDROP_PERIOD_INVALID = -1,
+    XFCE_BACKDROP_PERIOD_SECONDS = 0,
+    XFCE_BACKDROP_PERIOD_MINUES,
+    XFCE_BACKDROP_PERIOD_HOURS,
+    XFCE_BACKDROP_PERIOD_STARTUP,
+    XFCE_BACKDROP_PERIOD_HOURLY,
+    XFCE_BACKDROP_PERIOD_DAILY,
+} XfceBackdropCyclePeriod;
+
 struct _XfceBackdrop
 {
     GObject gobject;
@@ -117,6 +128,11 @@ G_CONST_RETURN gchar *xfce_backdrop_get_image_filename
 void xfce_backdrop_set_cycle_backdrop    (XfceBackdrop *backdrop,
                                           gboolean cycle_backdrop);
 gboolean xfce_backdrop_get_cycle_backdrop(XfceBackdrop *backdrop);
+
+void xfce_backdrop_set_cycle_period      (XfceBackdrop *backdrop,
+                                          XfceBackdropCyclePeriod period);
+XfceBackdropCyclePeriod xfce_backdrop_get_cycle_period
+                                         (XfceBackdrop *backdrop);
 
 void xfce_backdrop_set_cycle_timer       (XfceBackdrop *backdrop,
                                           guint cycle_timer);

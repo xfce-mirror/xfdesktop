@@ -129,6 +129,45 @@ xfce_workspace_get_xinerama_stretch(XfceWorkspace *workspace)
 }
 
 static void
+xfce_workspace_change_backdrop(XfceWorkspace *workspace,
+                               XfceBackdrop *backdrop,
+                               const gchar *backdrop_file)
+{
+    XfconfChannel *channel = workspace->priv->channel;
+    char buf[1024];
+    gchar *monitor_name = NULL;
+    guint i, monitor_num;
+
+    g_return_if_fail(workspace->priv->nbackdrops > 0);
+
+    TRACE("entering");
+
+    /* Find out which monitor we're on */
+    for(i = 0; i < workspace->priv->nbackdrops; ++i) {
+        if(backdrop == workspace->priv->backdrops[i]) {
+            monitor_num = i;
+            break;
+        }
+    }
+
+    monitor_name = gdk_screen_get_monitor_plug_name(workspace->priv->gscreen,
+                                                    monitor_num);
+
+    /* Get the backdrop's image property */
+    if(monitor_name == NULL) {
+        g_snprintf(buf, sizeof(buf), "%smonitor%d/workspace%d/last-image",
+                   workspace->priv->property_prefix, monitor_num, workspace->priv->workspace_num);
+    } else {
+        g_snprintf(buf, sizeof(buf), "%smonitor%s/workspace%d/last-image",
+                   workspace->priv->property_prefix, monitor_name, workspace->priv->workspace_num);
+    }
+
+    /* Update the property so that xfdesktop won't show the same image every
+     * time it starts up when the user wants it to cycle different images */
+    xfconf_channel_set_string(channel, buf, backdrop_file);
+}
+
+static void
 backdrop_cycle_cb(XfceBackdrop *backdrop, gpointer user_data)
 {
     const gchar* backdrop_file;
@@ -155,7 +194,7 @@ backdrop_cycle_cb(XfceBackdrop *backdrop, gpointer user_data)
         xfce_workspace_get_workspace_num(workspace));
 
     if(g_strcmp0(backdrop_file, new_backdrop) != 0) {
-        xfce_backdrop_set_image_filename(backdrop, new_backdrop);
+        xfce_workspace_change_backdrop(workspace, backdrop, new_backdrop);
         g_free(new_backdrop);
     }
 }
@@ -505,6 +544,11 @@ xfce_workspace_connect_backdrop_settings(XfceWorkspace *workspace,
     g_strlcat(buf, "backdrop-cycle-enable", sizeof(buf));
     xfconf_g_property_bind(channel, buf, G_TYPE_BOOLEAN,
                            G_OBJECT(backdrop), "backdrop-cycle-enable");
+
+    buf[pp_len] = 0;
+    g_strlcat(buf, "backdrop-cycle-period", sizeof(buf));
+    xfconf_g_property_bind(channel, buf, XFCE_TYPE_BACKDROP_CYCLE_PERIOD,
+                           G_OBJECT(backdrop), "backdrop-cycle-period");
 
     buf[pp_len] = 0;
     g_strlcat(buf, "backdrop-cycle-timer", sizeof(buf));

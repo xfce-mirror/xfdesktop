@@ -45,7 +45,7 @@
 #define abs(x)  ( (x) < 0 ? -(x) : (x) )
 #endif
 
-#define XFCE_BACKDROP_BUFFER_SIZE 4096
+#define XFCE_BACKDROP_BUFFER_SIZE 32768
 
 typedef struct _XfceBackdropImageData XfceBackdropImageData;
 
@@ -98,6 +98,7 @@ struct _XfceBackdropPriv
     gboolean cycle_backdrop;
     guint cycle_timer;
     guint cycle_timer_id;
+    XfceBackdropCyclePeriod cycle_period;
     gboolean random_backdrop_order;
 };
 
@@ -130,6 +131,7 @@ enum
     PROP_IMAGE_FILENAME,
     PROP_BRIGHTNESS,
     PROP_BACKDROP_CYCLE_ENABLE,
+    PROP_BACKDROP_CYCLE_PERIOD,
     PROP_BACKDROP_CYCLE_TIMER,
     PROP_BACKDROP_RANDOM_ORDER
 };
@@ -317,12 +319,20 @@ xfce_backdrop_class_init(XfceBackdropClass *klass)
                                                          FALSE,
                                                          XFDESKTOP_PARAM_FLAGS));
 
+    g_object_class_install_property(gobject_class, PROP_BACKDROP_CYCLE_PERIOD,
+                                    g_param_spec_enum("backdrop-cycle-period",
+                                                      "backdrop-cycle-period",
+                                                      "backdrop-cycle-period",
+                                                      XFCE_TYPE_BACKDROP_CYCLE_PERIOD,
+                                                      XFCE_BACKDROP_PERIOD_MINUES,
+                                                      XFDESKTOP_PARAM_FLAGS));
+
     g_object_class_install_property(gobject_class, PROP_BACKDROP_CYCLE_TIMER,
                                     g_param_spec_uint("backdrop-cycle-timer",
-                                                     "backdrop-cycle-timer",
-                                                     "backdrop-cycle-timer",
-                                                     0, G_MAXUSHORT, 10,
-                                                     XFDESKTOP_PARAM_FLAGS));
+                                                      "backdrop-cycle-timer",
+                                                      "backdrop-cycle-timer",
+                                                      0, G_MAXUSHORT, 10,
+                                                      XFDESKTOP_PARAM_FLAGS));
 
     g_object_class_install_property(gobject_class, PROP_BACKDROP_RANDOM_ORDER,
                                     g_param_spec_boolean("backdrop-cycle-random-order",
@@ -409,6 +419,10 @@ xfce_backdrop_set_property(GObject *object,
             xfce_backdrop_set_cycle_backdrop(backdrop, g_value_get_boolean(value));
             break;
 
+        case PROP_BACKDROP_CYCLE_PERIOD:
+            xfce_backdrop_set_cycle_period(backdrop, g_value_get_enum(value));
+            break;
+
         case PROP_BACKDROP_CYCLE_TIMER:
             xfce_backdrop_set_cycle_timer(backdrop, g_value_get_uint(value));
             break;
@@ -455,6 +469,10 @@ xfce_backdrop_get_property(GObject *object,
 
         case PROP_BACKDROP_CYCLE_ENABLE:
             g_value_set_boolean(value, xfce_backdrop_get_cycle_backdrop(backdrop));
+            break;
+
+        case PROP_BACKDROP_CYCLE_PERIOD:
+            g_value_set_enum(value, xfce_backdrop_get_cycle_period(backdrop));
             break;
 
         case PROP_BACKDROP_CYCLE_TIMER:
@@ -664,7 +682,7 @@ xfce_backdrop_get_second_color(XfceBackdrop *backdrop,
  **/
 void
 xfce_backdrop_set_image_style(XfceBackdrop *backdrop,
-        XfceBackdropImageStyle style)
+                              XfceBackdropImageStyle style)
 {
     g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
     
@@ -721,6 +739,11 @@ xfce_backdrop_get_image_filename(XfceBackdrop *backdrop)
 static gboolean
 xfce_backdrop_timer(XfceBackdrop *backdrop)
 {
+    GDateTime *local_time = NULL;
+    gint hour, minute, second;
+    guint cycle_interval = 0;
+    gboolean continue_cycling = TRUE;
+
     TRACE("entering");
 
     g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), FALSE);
@@ -729,42 +752,149 @@ xfce_backdrop_timer(XfceBackdrop *backdrop)
     if(backdrop->priv->image_style != XFCE_BACKDROP_IMAGE_NONE)
         g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_CYCLE], 0);
 
-    return TRUE;
+    /* Now to complicate things; we have to handle some special cases */
+    switch(backdrop->priv->cycle_period) {
+        case XFCE_BACKDROP_PERIOD_STARTUP:
+            /* no more cycling */
+            continue_cycling = FALSE;
+            break;
+
+        case XFCE_BACKDROP_PERIOD_HOURLY:
+            TRACE("XFCE_BACKDROP_PERIOD_HOURLY");
+            local_time = g_date_time_new_now_local();
+            minute = g_date_time_get_minute(local_time);
+            second = g_date_time_get_second(local_time);
+
+            /* find out how long until the next hour so we cycle on the hour */
+            DBG("minute %d, second %d", minute, second);
+            cycle_interval = ((59 - minute) * 60) + (60 - second);
+
+            /* We created a new instance, kill this one */
+            continue_cycling = FALSE;
+            break;
+
+        case XFCE_BACKDROP_PERIOD_DAILY:
+            TRACE("XFCE_BACKDROP_PERIOD_DAILY");
+            local_time = g_date_time_new_now_local();
+            hour   = g_date_time_get_hour  (local_time);
+            minute = g_date_time_get_minute(local_time);
+            second = g_date_time_get_second(local_time);
+
+            /* find out how long until the next day so we cycle on the day */
+            DBG("hour %d minute %d, second %d", hour, minute, second);
+            cycle_interval = ((23 - hour) * 60 * 60) + ((59 - minute) * 60) + (60 - second);
+
+            /* We created a new instance, kill this one */
+            continue_cycling = FALSE;
+            break;
+
+        default:
+            /* no changes required */
+            break;
+    }
+
+    /* Update the timer if we're trying to keep things on the hour/day */
+    if(cycle_interval != 0) {
+        DBG("calling g_timeout_add_seconds, interval is %d", cycle_interval);
+        backdrop->priv->cycle_timer_id = g_timeout_add_seconds(cycle_interval,
+                                                               (GSourceFunc)xfce_backdrop_timer,
+                                                               backdrop);
+    }
+
+    if(local_time != NULL)
+        g_date_time_unref(local_time);
+
+    return continue_cycling;
 }
 
 /**
  * xfce_backdrop_set_cycle_timer:
  * @backdrop: An #XfceBackdrop.
- * @cycle_timer: The amount of time, in minutes, to wait before changing the
- *               background image.
+ * @cycle_timer: The amount of time, based on the cycle_period, to wait before
+ *               changing the background image.
  *
  * If cycle_backdrop is enabled then this function will change the backdrop
- * image based on the cycle_timer, a value between 0 and G_MAXUSHORT.
- * A value of 0 indicates that the backdrop should not be changed.
+ * image based on the cycle_timer and cycle_period. The cycle_timer is a value
+ * between 0 and G_MAXUSHORT where a value of 0 indicates that the backdrop
+ * should not be changed.
  **/
 void
 xfce_backdrop_set_cycle_timer(XfceBackdrop *backdrop, guint cycle_timer)
 {
+    GDateTime *local_time = NULL;
+    guint cycle_interval;
+    gint hour, minute, second;
+
     g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
 
     TRACE("entering, cycle_timer = %d", cycle_timer);
 
+    /* Sanity check to help prevent overflows */
     if(cycle_timer > G_MAXUSHORT)
         cycle_timer = G_MAXUSHORT;
 
     backdrop->priv->cycle_timer = cycle_timer;
 
+    /* always remove the old timer */
     if(backdrop->priv->cycle_timer_id != 0) {
         g_source_remove(backdrop->priv->cycle_timer_id);
         backdrop->priv->cycle_timer_id = 0;
     }
 
-    if(backdrop->priv->cycle_timer != 0 &&
-       backdrop->priv->cycle_backdrop == TRUE) {
-        backdrop->priv->cycle_timer_id = g_timeout_add_seconds(backdrop->priv->cycle_timer * 60,
+    if(backdrop->priv->cycle_timer != 0 && backdrop->priv->cycle_backdrop == TRUE) {
+        switch(backdrop->priv->cycle_period) {
+            case XFCE_BACKDROP_PERIOD_SECONDS:
+                cycle_interval = backdrop->priv->cycle_timer;
+                break;
+
+            case XFCE_BACKDROP_PERIOD_MINUES:
+                cycle_interval = backdrop->priv->cycle_timer * 60;
+                break;
+
+            case XFCE_BACKDROP_PERIOD_HOURS:
+                cycle_interval = backdrop->priv->cycle_timer * 60 * 60;
+                break;
+
+            case XFCE_BACKDROP_PERIOD_STARTUP:
+                cycle_interval = 1;
+                break;
+
+            case XFCE_BACKDROP_PERIOD_HOURLY:
+                TRACE("XFCE_BACKDROP_PERIOD_HOURLY");
+                local_time = g_date_time_new_now_local();
+                minute = g_date_time_get_minute(local_time);
+                second = g_date_time_get_second(local_time);
+
+                /* find out how long until the next hour so we cycle on the hour */
+                DBG("minute %d, second %d", minute, second);
+                cycle_interval = ((59 - minute) * 60) + (60 - second);
+                break;
+
+            case XFCE_BACKDROP_PERIOD_DAILY:
+                TRACE("XFCE_BACKDROP_PERIOD_DAILY");
+                local_time = g_date_time_new_now_local();
+                hour   = g_date_time_get_hour  (local_time);
+                minute = g_date_time_get_minute(local_time);
+                second = g_date_time_get_second(local_time);
+
+                /* find out how long until the next day so we cycle on the day */
+                DBG("hour %d minute %d, second %d", hour, minute, second);
+                cycle_interval = ((23 - hour) * 60 * 60) + ((59 - minute) * 60) + (60 - second);
+                break;
+
+            default:
+                g_critical("Unknown backdrop-cycle-period set");
+                break;
+            }
+
+        DBG("calling g_timeout_add_seconds, interval is %d", cycle_interval);
+        backdrop->priv->cycle_timer_id = g_timeout_add_seconds(cycle_interval,
                                                                (GSourceFunc)xfce_backdrop_timer,
                                                                backdrop);
     }
+
+    if(local_time != NULL)
+        g_date_time_unref(local_time);
 }
 
 guint
@@ -804,6 +934,40 @@ xfce_backdrop_get_cycle_backdrop(XfceBackdrop *backdrop)
     g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), 0);
 
     return backdrop->priv->cycle_backdrop;
+}
+
+/**
+ * xfce_backdrop_set_cycle_period:
+ * @backdrop: An #XfceBackdrop.
+ * @period: Determines how often the backdrop will cycle.
+ *
+ * When cycling backdrops, the period setting will determine how fast the timer
+ * will fire (seconds vs minutes) or if the periodic backdrop will be based on
+ * actual wall clock values or just at xfdesktop's start up.
+ **/
+void
+xfce_backdrop_set_cycle_period(XfceBackdrop *backdrop,
+                               XfceBackdropCyclePeriod period)
+{
+    g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
+    g_return_if_fail(period != XFCE_BACKDROP_PERIOD_INVALID);
+
+    TRACE("entering");
+
+    if(backdrop->priv->cycle_period != period) {
+        backdrop->priv->cycle_period = period;
+        /* Start or stop the backdrop changing */
+        xfce_backdrop_set_cycle_timer(backdrop,
+                                      xfce_backdrop_get_cycle_timer(backdrop));
+    }
+}
+
+XfceBackdropCyclePeriod
+xfce_backdrop_get_cycle_period(XfceBackdrop *backdrop)
+{
+    g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), XFCE_BACKDROP_PERIOD_INVALID);
+
+    return backdrop->priv->cycle_period;
 }
 
 /**

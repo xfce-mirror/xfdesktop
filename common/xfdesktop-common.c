@@ -84,7 +84,8 @@ list_files_in_dir(const gchar *path)
     return files;
 }
 
-
+/* Gets the next valid image file in the folder. Free when done using it
+ * returns NULL on fail. */
 gchar *
 xfdesktop_backdrop_choose_next(const gchar *filename)
 {
@@ -93,6 +94,8 @@ xfdesktop_backdrop_choose_next(const gchar *filename)
 
     g_return_val_if_fail(filename, NULL);
 
+    /* We don't cache the list at all. This way the user can add/remove items
+     * whenever they like without xfdesktop having to do anything */
     files = list_files_in_dir(g_path_get_dirname(filename));
     if(!files)
         return NULL;
@@ -127,10 +130,11 @@ xfdesktop_backdrop_choose_next(const gchar *filename)
     return file;
 }
 
+/* Gets a random valid image file in the folder. Free when done using it.
+ * returns NULL on fail. */
 gchar *
 xfdesktop_backdrop_choose_random(const gchar *filename)
 {
-    static gboolean __initialized = FALSE;
     static gint previndex = -1;
     GList *files;
     gchar *file = NULL;
@@ -138,28 +142,19 @@ xfdesktop_backdrop_choose_random(const gchar *filename)
 
     g_return_val_if_fail(filename, NULL);
 
+    /* We don't cache the list at all. This way the user can add/remove items
+     * whenever they like without xfdesktop having to do anything */
     files = list_files_in_dir(g_path_get_dirname(filename));
     if(!files)
         return NULL;
 
     n_items = g_list_length(files);
 
+    /* If there's only 1 item, just return it, easy */
     if(1 == n_items) {
         file = g_strdup(g_list_first(files)->data);
         g_list_free_full(files, g_free);
         return file;
-    }
-
-    /* NOTE: 4.3BSD random()/srandom() are a) stronger and b) faster than
-    * ANSI-C rand()/srand(). So we use random() if available */
-    if(G_UNLIKELY(!__initialized))    {
-        guint seed = time(NULL) ^ (getpid() + (getpid() << 15));
-#ifdef HAVE_SRANDOM
-        srandom(seed);
-#else
-        srand(seed);
-#endif
-        __initialized = TRUE;
     }
 
     do {
@@ -172,17 +167,15 @@ xfdesktop_backdrop_choose_random(const gchar *filename)
         }
 
         do {
-#ifdef HAVE_SRANDOM
-            cur_file = random() % n_items;
-#else
-            cur_file = rand() % n_items;
-#endif
+            /* g_random_int_range bounds to n_items-1 */
+            cur_file = g_random_int_range(0, n_items);
         } while(cur_file == previndex && G_LIKELY(previndex != -1));
 
     } while(!xfdesktop_image_file_is_valid(g_list_nth(files, cur_file)->data));
 
     previndex = cur_file;
 
+    /* Keep a copy of our new random item, free everything else */
     file = g_strdup(g_list_nth(files, cur_file)->data);
     g_list_free_full(files, g_free);
 
