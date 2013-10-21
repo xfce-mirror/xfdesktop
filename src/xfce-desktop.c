@@ -245,9 +245,10 @@ xfce_desktop_setup_icon_view(XfceDesktop *desktop)
         xfce_desktop_ensure_system_font_size(desktop);
         
         desktop->priv->icon_view = xfdesktop_icon_view_new(manager);
+        /* If the user set a custom font size, use it. Otherwise use the system
+         * font size */
         xfdesktop_icon_view_set_font_size(XFDESKTOP_ICON_VIEW(desktop->priv->icon_view),
-                                          (!desktop->priv->icons_font_size_set
-                                           || !desktop->priv->icons_font_size)
+                                          (!desktop->priv->icons_font_size_set)
                                           ? desktop->priv->system_font_size
                                           : desktop->priv->icons_font_size);
         if(desktop->priv->icons_size > 0) {
@@ -818,7 +819,7 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
                                     g_param_spec_uint("icon-font-size",
                                                       "icon font size",
                                                       "icon font size",
-                                                      4, 144, 12,
+                                                      0, 144, 12,
                                                       XFDESKTOP_PARAM_FLAGS));
 
     g_object_class_install_property(gobject_class, PROP_ICON_FONT_SIZE_SET,

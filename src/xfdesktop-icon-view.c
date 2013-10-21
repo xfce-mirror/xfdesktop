@@ -1166,7 +1166,6 @@ xfdesktop_icon_view_show_tooltip(GtkWidget *widget,
         return FALSE;
 
     tooltip_size = xfdesktop_icon_view_get_tooltip_size(icon_view);
-    DBG("tooltip size %d", tooltip_size);
 
     tip_text = xfdesktop_icon_peek_tooltip(icon_view->priv->item_under_pointer);
     if(!tip_text)
@@ -3116,7 +3115,9 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
     }
 
     /* Only redraw the text if the text area requires it.  */
-    if(gdk_rectangle_intersect(area, &text_extents, &intersection)) {
+    if(gdk_rectangle_intersect(area, &text_extents, &intersection)
+       && icon_view->priv->font_size > 0)
+    {
         xfdesktop_paint_rounded_box(icon_view, state, &text_extents, area);
 
         if (state == GTK_STATE_NORMAL) {
