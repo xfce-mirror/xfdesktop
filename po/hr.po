@@ -1,21 +1,23 @@
-# Croatian translations for PACKAGE package.
-# Copyright (C) 2010 The Xfce Development Team
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#  Ivica Kolić<ikoli@yahoo.com>, 2010.
-#  Petar Koretić< petar.koretic@gmail.com>
+# 
+# Translators:
+# Ivica  Kolić <ikoli@yahoo.com>, 2010
+# Ivica  Kolić <ikoli@yahoo.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop\n"
+"Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-27 04:24+0000\n"
-"PO-Revision-Date: 2010-05-27 22:41+0200\n"
-"Last-Translator: Ivica Kolić<ikoli@yahoo.com> <>\n"
-"Language-Team: Croatian hr<>\n"
+"POT-Creation-Date: 2013-07-02 23:19+0200\n"
+"PO-Revision-Date: 2013-10-21 17:33+0000\n"
+"Last-Translator: Ivica  Kolić <ikoli@yahoo.com>\n"
+"Language-Team: Croatian (http://www.transifex.com/projects/p/xfce/language/hr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: hr\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
 #, c-format
@@ -28,9 +30,7 @@ msgstr "Pozadinska lista nije valjana"
 msgid ""
 "%s\n"
 "<i>Size: %dx%d</i>"
-msgstr ""
-"%s\n"
-"<i>Veličina: %dx%d</i>"
+msgstr "%s\n<i>Veličina: %dx%d</i>"
 
 #: ../settings/main.c:299 ../src/xfdesktop-special-file-icon.c:271
 #: ../src/xfdesktop-special-file-icon.c:434
@@ -165,336 +165,332 @@ msgid "Set desktop background and menu and icon behaviour"
 msgstr "Postavi ponašanje pozadine i izbornika i ikona radne poveršine"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
-msgid "<b>Adjustments</b>"
-msgstr "<b>Podešavanja</b>"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
-msgid "<b>Colors</b>"
-msgstr "<b>Boje</b>"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
-msgid "<b>Image</b>"
-msgstr "<b>Slika</b>"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
-msgid "<b>Images</b>"
-msgstr "<b>Slike</b>"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
-msgid "Add an image to the list"
-msgstr "Dodaj sliku na listu"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
-#: ../settings/xfdesktop-settings-ui.glade.h:6
+#: ../settings/xfdesktop-settings-ui.glade.h:1
 msgid "Auto"
 msgstr "Automatski"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
-msgid "Automatically pick a random image from a list file"
-msgstr "Automatski odabrati slučajnu sliku s popisa datoteka"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
-msgid "B_rightness:"
-msgstr "S_vjetlina:"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
-#: ../settings/xfdesktop-settings-ui.glade.h:8
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
+#: ../settings/xfdesktop-settings-ui.glade.h:2
 msgid "Centered"
 msgstr "Centrirano"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
-msgid "Create a new list, or load an existing one"
-msgstr "Napravi novu listu,ili učitaj postojeću"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
-msgid "Don't display an image at all"
-msgstr "Nemoj uopće prikazati sliku"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
-#: ../settings/xfdesktop-settings-ui.glade.h:12
-msgid "Horizontal gradient"
-msgstr "Vodoravni gradijent"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
-msgid "Image _list"
-msgstr "Lista _slika"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
-msgid "Increase or decrease the brightness of the final image"
-msgstr "Povećanje ili smanjenje svjetline konačne slike"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
-msgid "Increase or decrease the color saturation of the final image"
-msgstr "Povećanje ili smanjenje zasićenosti boje na konačnoj slici"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
-msgid ""
-"Number of minutes before a different background is randomly selected from "
-"the list."
-msgstr ""
-"Broj minuta prije nego druga pozadina bude nasumično odabrana sa liste."
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
-msgid "Remove the selected image(s) from the list"
-msgstr "Ukloni odabrane sliku(e) sa popisa"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
-msgid "Sa_turation:"
-msgstr "Za_sićenost:"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
-#: ../settings/xfdesktop-settings-ui.glade.h:23
-msgid "Scaled"
-msgstr "Skalirano"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
-msgid "Select First Color"
-msgstr "Odaberi prvu boju"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
-msgid "Select Second Color"
-msgstr "Odaberi drugu boju"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
-msgid "Select a single image as the backdrop"
-msgstr "Odaberite jednu sliku kao pozadinu"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
-#: ../settings/xfdesktop-settings-ui.glade.h:35
-msgid "Solid color"
-msgstr "Puna boja"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
-msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-msgstr "Određuje \\ \"desno \" ili \\ \"dolje\" boje gradijenta"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
-msgid ""
-"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr "Određuje  boju, ili \\ \"lijevo \" ili \\ \"vrh \" boje gradijenta"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
-msgid "Specify how the image will be resized to fit the screen"
-msgstr "Odredite kako će  se promjeniti veličina salike da pristaje na zaslon"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
-msgid "Specify the style of the color drawn behind the backdrop image"
-msgstr "Stil boje pozadinske slike"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
-msgid "St_retch this background across all monitors."
-msgstr "_Rastegni pozadinu preko svih zaslona"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
-msgid "St_yle:"
-msgstr "St_il"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
-#: ../settings/xfdesktop-settings-ui.glade.h:37
-msgid "Stretched"
-msgstr "Rašireno"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
-#: ../settings/xfdesktop-settings-ui.glade.h:38
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
+#: ../settings/xfdesktop-settings-ui.glade.h:3
 msgid "Tiled"
 msgstr "Popločeno"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
-#: ../settings/xfdesktop-settings-ui.glade.h:39
-msgid "Transparent"
-msgstr "Prozirno"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
+#: ../settings/xfdesktop-settings-ui.glade.h:4
+msgid "Stretched"
+msgstr "Rašireno"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
-#: ../settings/xfdesktop-settings-ui.glade.h:42
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
+#: ../settings/xfdesktop-settings-ui.glade.h:5
+msgid "Scaled"
+msgstr "Skalirano"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
+#: ../settings/xfdesktop-settings-ui.glade.h:6
+msgid "Zoomed"
+msgstr "Zumirano"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
+#: ../settings/xfdesktop-settings-ui.glade.h:7
+msgid "Solid color"
+msgstr "Puna boja"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
+#: ../settings/xfdesktop-settings-ui.glade.h:8
+msgid "Horizontal gradient"
+msgstr "Vodoravni gradijent"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
+#: ../settings/xfdesktop-settings-ui.glade.h:9
 msgid "Vertical gradient"
 msgstr "Okomiti gradijent"
 
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
+#: ../settings/xfdesktop-settings-ui.glade.h:10
+msgid "Transparent"
+msgstr "Prozirno"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
+msgid "Add an image to the list"
+msgstr "Dodaj sliku na listu"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
+msgid "Remove the selected image(s) from the list"
+msgstr "Ukloni odabrane sliku(e) sa popisa"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
+msgid "Create a new list, or load an existing one"
+msgstr "Napravi novu listu,ili učitaj postojeću"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
+msgid "St_yle:"
+msgstr "St_il"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
+msgid "Specify how the image will be resized to fit the screen"
+msgstr "Odredite kako će  se promjeniti veličina salike da pristaje na zaslon"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
+msgid "<b>Images</b>"
+msgstr "<b>Slike</b>"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
+msgid "Select a single image as the backdrop"
+msgstr "Odaberite jednu sliku kao pozadinu"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
+msgid "_Single image"
+msgstr "_Jedna slika"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
+msgid "Automatically pick a random image from a list file"
+msgstr "Automatski odabrati slučajnu sliku s popisa datoteka"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
+msgid "Image _list"
+msgstr "Lista _slika"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
+msgid "Don't display an image at all"
+msgstr "Nemoj uopće prikazati sliku"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
+msgid "_None"
+msgstr "_Nijedan"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
+msgid "<b>Image</b>"
+msgstr "<b>Slika</b>"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
+msgid "Specify the style of the color drawn behind the backdrop image"
+msgstr "Stil boje pozadinske slike"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
+msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr "Određuje  boju, ili \\ \"lijevo \" ili \\ \"vrh \" boje gradijenta"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
+msgid "Select First Color"
+msgstr "Odaberi prvu boju"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
+msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
+msgstr "Određuje \\ \"desno \" ili \\ \"dolje\" boje gradijenta"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
+msgid "Select Second Color"
+msgstr "Odaberi drugu boju"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
+msgid "<b>Colors</b>"
+msgstr "<b>Boje</b>"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
+msgid "B_rightness:"
+msgstr "S_vjetlina:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
+msgid "Increase or decrease the brightness of the final image"
+msgstr "Povećanje ili smanjenje svjetline konačne slike"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
+msgid "Sa_turation:"
+msgstr "Za_sićenost:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
+msgid "Increase or decrease the color saturation of the final image"
+msgstr "Povećanje ili smanjenje zasićenosti boje na konačnoj slici"
+
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
-msgid ""
-"When multiple monitors are present, select this option to stretch the "
-"current background over all of them."
-msgstr ""
-"Kada je prisutno više monitora,odaberite ovu opciju da biste rastegli "
-"trenutnu pozadinu na sve njih."
+msgid "<b>Adjustments</b>"
+msgstr "<b>Podešavanja</b>"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
+msgid "_Change the background (in minutes):"
+msgstr "_Promijeni pozadinu (u minutama)"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:36
 msgid ""
 "While in image list mode, select this option to automatically select a "
 "different background from the image list after a set number of minutes."
 msgstr "Kada ste u u 'Lista slika\" načinu odaberite ovu opciju za automatski odabir druge pozadine s liste nakon postavljenog broja minuta."
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:36
-#: ../settings/xfdesktop-settings-ui.glade.h:43
-msgid "Zoomed"
-msgstr "Zumirano"
-
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:37
-msgid "_Change the background (in minutes):"
-msgstr "_Promijeni pozadinu (u minutama)"
+msgid ""
+"Number of minutes before a different background is randomly selected from "
+"the list."
+msgstr "Broj minuta prije nego druga pozadina bude nasumično odabrana sa liste."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:38
-msgid "_None"
-msgstr "_Nijedan"
+msgid "St_retch this background across all monitors."
+msgstr "_Rastegni pozadinu preko svih zaslona"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:39
-msgid "_Single image"
-msgstr "_Jedna slika"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:1
-msgid "<b>Appearance</b>"
-msgstr "<b>Izgled</b>"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:2
-msgid "<b>Default Icons</b>"
-msgstr "<bZadane ikone</b>"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:3
-msgid "<b>Desktop Menu</b>"
-msgstr "<b>Izbornik radne površine</b>"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:4
-msgid "<b>Window List Menu</b>"
-msgstr "<b>Lista izbornika prozora</b>"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:5
-msgid "Alt"
-msgstr "Alt"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:7
-msgid "B_utton:"
-msgstr "D_ugme:"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:9
-msgid "Control"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:795
-msgid "Desktop"
-msgstr "Radna površina"
+msgid ""
+"When multiple monitors are present, select this option to stretch the "
+"current background over all of them."
+msgstr "Kada je prisutno više monitora,odaberite ovu opciju da biste rastegli trenutnu pozadinu na sve njih."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:11
-msgid "File/launcher icons"
-msgstr "Ikone datoteke/pokretača"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:13
-msgid "Icon _size:"
-msgstr "Veličina _ikone:"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:14
-msgid "Icon _type:"
-msgstr "Tip _ikone"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:15
-msgid "Label trans_parency:"
-msgstr "Prozi_rnost natpisa:"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:16
 msgid "Left"
 msgstr "Lijevo"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:17
+#: ../settings/xfdesktop-settings-ui.glade.h:12
 msgid "Middle"
 msgstr "Sredina"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:13
+msgid "Right"
+msgstr "Desno"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:14
+msgid "None"
+msgstr "Nijedan"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:15
+msgid "Shift"
+msgstr "Shift"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:16
+msgid "Alt"
+msgstr "Alt"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:17
+msgid "Control"
+msgstr "Control"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:18
 msgid "Minimized application icons"
 msgstr "Smanjene ikone programa"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:19
-msgid "Mo_difier:"
-msgstr "Iz_mjenjivač:"
+msgid "File/launcher icons"
+msgstr "Ikone datoteke/pokretača"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:20
-msgid "Modi_fier:"
-msgstr "Izmje_njivač:"
+#: ../settings/xfdesktop-settings-ui.glade.h:20 ../src/xfce-desktop.c:795
+msgid "Desktop"
+msgstr "Radna površina"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:21
-msgid "None"
-msgstr "Nijedan"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:22
-msgid "Right"
-msgstr "Desno"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:24
-msgid ""
-"Select this option to display preview-able files on the desktop as "
-"automatically generated thumbnail icons."
-msgstr ""
-
-#: ../settings/xfdesktop-settings-ui.glade.h:25
 msgid "Set desktop background and menu and icon behavior"
 msgstr "Postavi ponašanje pozadine radne površine i izbornika i ikona "
 
+#: ../settings/xfdesktop-settings-ui.glade.h:22
+msgid "_Background"
+msgstr "_Pozadina"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:23
+msgid "Show applications menu on _desktop right click"
+msgstr "Pokaži izbornik programa _na radnoj površini desnim klikom"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:24
+msgid "_Button:"
+msgstr "_Dugme:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:25
+msgid "Mo_difier:"
+msgstr "Iz_mjenjivač:"
+
 #: ../settings/xfdesktop-settings-ui.glade.h:26
-msgid "Sh_ow application icons in menu"
-msgstr "Po_kaži ikone programa u izborniku"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:27
-msgid "Shift"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-ui.glade.h:28
 msgid "Show _application icons in menu"
 msgstr "Pokaži _ikone programa u izborniku"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:27
+msgid "_Edit desktop menu"
+msgstr "_Uredi izbornik radne površine"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:28
+msgid "<b>Desktop Menu</b>"
+msgstr "<b>Izbornik radne površine</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:29
 msgid "Show _window list menu on desktop middle click"
 msgstr "Prikaži _desnim klikom listu izbornika prozora na radnoj površini "
 
 #: ../settings/xfdesktop-settings-ui.glade.h:30
-msgid "Show applications menu on _desktop right click"
-msgstr "Pokaži izbornik programa _na radnoj površini desnim klikom"
+msgid "B_utton:"
+msgstr "D_ugme:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:31
-msgid "Show s_ticky windows only in active workspace"
-msgstr ""
+msgid "Modi_fier:"
+msgstr "Izmje_njivač:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:32
-msgid "Show t_humbnails"
-msgstr ""
+msgid "Sh_ow application icons in menu"
+msgstr "Po_kaži ikone programa u izborniku"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
 msgid "Show workspace _names in list"
 msgstr "Pokaži imena _radnih prostora na listi"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:34
+msgid "Use _submenus for the windows in each workspace"
+msgstr "Koristi _podizbornike za prozore u svakom radnom prostoru"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:35
+msgid "Show s_ticky windows only in active workspace"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:36
+msgid "<b>Window List Menu</b>"
+msgstr "<b>Lista izbornika prozora</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:37
+msgid "_Menus"
+msgstr "_Izbornici"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:38
+msgid "Icon _type:"
+msgstr "Tip _ikone"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:39
+msgid "Icon _size:"
+msgstr "Veličina _ikone:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:40
+msgid "Show t_humbnails"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:41
+msgid ""
+"Select this option to display preview-able files on the desktop as "
+"automatically generated thumbnail icons."
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:42
 msgid "Single _click to activate items"
 msgstr "Jedan _klik za aktiviranje stavki"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:36
+#: ../settings/xfdesktop-settings-ui.glade.h:43
+msgid "Use custom _font size:"
+msgstr "Koristi prilagođenu _veličinu fonta:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:44
+msgid "Label trans_parency:"
+msgstr "Prozi_rnost natpisa:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:45
 msgid ""
 "Specify the transparency level for the rounded label drawn behind the icon "
 "text"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-ui.glade.h:40
-msgid "Use _submenus for the windows in each workspace"
-msgstr "Koristi _podizbornike za prozore u svakom radnom prostoru"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:41
-msgid "Use custom _font size:"
-msgstr "Koristi prilagođenu _veličinu fonta:"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:44
-msgid "_Background"
-msgstr "_Pozadina"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:45
-msgid "_Button:"
-msgstr "_Dugme:"
-
 #: ../settings/xfdesktop-settings-ui.glade.h:46
-msgid "_Edit desktop menu"
-msgstr "_Uredi izbornik radne površine"
+msgid "<b>Appearance</b>"
+msgstr "<b>Izgled</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:47
-msgid "_Icons"
-msgstr "_Ikone"
+msgid "<b>Default Icons</b>"
+msgstr "<bZadane ikone</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:48
-msgid "_Menus"
-msgstr "_Izbornici"
+msgid "_Icons"
+msgstr "_Ikone"
 
 #: ../src/main.c:243
 msgid "Display version information"
@@ -628,9 +624,7 @@ msgstr "Greška radne površine"
 #: ../src/xfdesktop-file-icon-manager.c:521
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
-msgstr ""
-"Normalna datoteka s istim imenom već postoji.Molim izbrišite je ili "
-"preimenujte."
+msgstr "Normalna datoteka s istim imenom već postoji.Molim izbrišite je ili preimenujte."
 
 #: ../src/xfdesktop-file-icon-manager.c:624
 #: ../src/xfdesktop-file-icon-manager.c:668 ../src/xfdesktop-file-utils.c:863
@@ -654,9 +648,7 @@ msgstr ""
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
-msgstr ""
-"Ova značajka zahtijeva prisutnost servisa upravitelja datotekama (kao što je "
-"dobivate od Thunar)."
+msgstr "Ova značajka zahtijeva prisutnost servisa upravitelja datotekama (kao što je dobivate od Thunar)."
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:770
@@ -688,9 +680,7 @@ msgstr "Otvori pomoću \"%s\""
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
-msgstr ""
-"Ne mogu pokrenuti \"exo-desktop-item-edit\" što je potrebno za kreiranje i "
-"uređivanje kratica na radnoj površini."
+msgstr "Ne mogu pokrenuti \"exo-desktop-item-edit\" što je potrebno za kreiranje i uređivanje kratica na radnoj površini."
 
 #: ../src/xfdesktop-file-icon-manager.c:1407
 msgid "_Open all"
@@ -839,9 +829,7 @@ msgstr "Izabrane datoteke se ne mogu premjestiti u smeće"
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
-msgstr ""
-"Ova značajka zahtijeva prisutnost servisa smeća (kao što je dobivate od "
-"Thunar)."
+msgstr "Ova značajka zahtijeva prisutnost servisa smeća (kao što je dobivate od Thunar)."
 
 #: ../src/xfdesktop-file-utils.c:911 ../src/xfdesktop-file-utils.c:925
 msgid "Could not empty the trash"
@@ -903,11 +891,9 @@ msgstr "Demontiram uređaj"
 #: ../src/xfdesktop-notify.c:131
 #, c-format
 msgid ""
-"The device \"%s\" is being unmounted by the system. Please do not remove the "
-"media or disconnect the drive"
-msgstr ""
-"Uređaj  \"%s\"  je odmontiran od strane sustava. Molimo vas da ne uklonite "
-"medij ili odspojite pogon"
+"The device \"%s\" is being unmounted by the system. Please do not remove the"
+" media or disconnect the drive"
+msgstr "Uređaj  \"%s\"  je odmontiran od strane sustava. Molimo vas da ne uklonite medij ili odspojite pogon"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
@@ -918,11 +904,9 @@ msgstr "Zapisujem podatke na uređaj"
 #: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
 #, c-format
 msgid ""
-"There is data that needs to be written to the device \"%s\" before it can be "
-"removed. Please do not remove the media or disconnect the drive"
-msgstr ""
-"Tusu podci koji bi trebali biti zapisan na uređaj \"%s\" prije nego što ga "
-"se može ukloniti. Molimo vas da ne uklonite medij ili odspojite pogon"
+"There is data that needs to be written to the device \"%s\" before it can be"
+" removed. Please do not remove the media or disconnect the drive"
+msgstr "Tusu podci koji bi trebali biti zapisan na uređaj \"%s\" prije nego što ga se može ukloniti. Molimo vas da ne uklonite medij ili odspojite pogon"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:253
@@ -941,10 +925,7 @@ msgid ""
 "Type: %s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr ""
-"Tip: %s\n"
-"Veličina: %s\n"
-"Zadanja izmjena: %s"
+msgstr "Tip: %s\nVeličina: %s\nZadanja izmjena: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:273
 #: ../src/xfdesktop-special-file-icon.c:432
@@ -970,10 +951,7 @@ msgid ""
 "%s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr ""
-"%s\n"
-"Veličina: %s\n"
-"Zadnja izmjena: %s"
+msgstr "%s\nVeličina: %s\nZadnja izmjena: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:522
 msgid "_Empty Trash"
@@ -985,10 +963,7 @@ msgid ""
 "Removable Volume\n"
 "Mounted in \"%s\"\n"
 "%s left (%s total)"
-msgstr ""
-"Uklonjivi disk\n"
-"Montiran na \"%s\"\n"
-"%s preostalo (%s ukupno)"
+msgstr "Uklonjivi disk\nMontiran na \"%s\"\n%s preostalo (%s ukupno)"
 
 #: ../src/xfdesktop-volume-icon.c:454
 msgid ""
@@ -1024,186 +999,4 @@ msgstr "_Montiraj uređaj"
 
 #: ../src/xfdesktop-window-icon.c:208
 msgid "_Window Actions"
-msgstr ""
-
-#~ msgid "Unable to contact the Xfce Trash service."
-#~ msgstr "Nije moguće kontaktirati  Xfce servis smeća"
-
-#~ msgid ""
-#~ "Make sure you have a file manager installed that supports the Xfce Trash "
-#~ "service, such as Thunar."
-#~ msgstr ""
-#~ "Provjerite da li imate instaliran upravitelj datotekama koji podržava "
-#~ "uslugu Xfce smeće, kao što je Thunar."
-
-#~ msgid ""
-#~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-#~ msgstr ""
-#~ "Xfdesktop nije bio u mogućnosti to stvoriti mapu \"%s\" za pohranu stavki "
-#~ "na radnoj površini:"
-
-#~ msgid "Create Folder Failed"
-#~ msgstr "Nisam uspio napraviti mapu"
-
-#~ msgid ""
-#~ "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not "
-#~ "a folder."
-#~ msgstr ""
-#~ "Xfdesktop se ne može koristiti \"%s\" za održavanje stavki na radnoj "
-#~ "površini, jer nije mapa."
-
-#~ msgid "Please delete or rename the file."
-#~ msgstr "Izbrišite ili preimenujte datoteku"
-
-#~ msgid "Rename \"%s\""
-#~ msgstr "Preimenuj \"%s\""
-
-#~ msgid "Enter the new name:"
-#~ msgstr "Unesi novo ime:"
-
-#~ msgid "Rename"
-#~ msgstr "Preimenuj"
-
-#~ msgid "Are you sure that you want to delete \"%s\"?"
-#~ msgstr "Jeste li sigurni da želite izbrisati \"%s\"?"
-
-#~ msgid "Question"
-#~ msgstr "Pitanje"
-
-#~ msgid "If you delete a file, it is permanently lost."
-#~ msgstr "Ako izbrišete datoteku,biti će zauvijek izgubljena"
-
-#~ msgid "Are you sure you want to delete the following %d files?"
-#~ msgstr "Jeste li sigurni da želite izbrisati slijedeće %d datoteke"
-
-#~ msgid "Delete Multiple Files"
-#~ msgstr "Obriši više datoteka"
-
-#~ msgid "Unable to create folder named \"%s\":"
-#~ msgstr "Nije moguće izraditi mapu naziva \"%s\":"
-
-#~ msgid "Create New Folder"
-#~ msgstr "Napravi novu mapu"
-
-#~ msgid "New Folder"
-#~ msgstr "Nova mapa"
-
-#~ msgid "Create"
-#~ msgstr "Napravi"
-
-#~ msgid "Unable to create file named \"%s\":"
-#~ msgstr "Ne mogu stvoriti datoteku naziva \"%s\":"
-
-#~ msgid "Create File Failed"
-#~ msgstr "Stvaranje datoteke nije uspjelo"
-
-#~ msgid "Create Empty File"
-#~ msgstr "Napravi praznu datoteku"
-
-#~ msgid "New Empty File"
-#~ msgstr "Nova prazna datoteka"
-
-#~ msgid "Unable to create file \"%s\":"
-#~ msgstr "Ne mogu stvoriti datoteku \"%s\":"
-
-#~ msgid "Unable to set default application for \"%s\" to \"%s\":"
-#~ msgstr "Nije moguće postaviti zadani program za \"%s\" za \"%s\":"
-
-#~ msgid "Write only"
-#~ msgstr "Samo piši"
-
-#~ msgid "Read only"
-#~ msgstr "Samo čitaj"
-
-#~ msgid "Read & Write"
-#~ msgstr "Čitaj i piši"
-
-#~ msgid "General"
-#~ msgstr "Osnovno"
-
-#~ msgid "Name:"
-#~ msgstr "Ime:"
-
-#~ msgid "Kind:"
-#~ msgstr "Vrsta:"
-
-#~ msgid "Open With:"
-#~ msgstr "Otvori pomoću"
-
-#~ msgid "Accessed:"
-#~ msgstr "Pristupljeno:"
-
-#~ msgid "Free Space:"
-#~ msgstr "Slobodni prostor:"
-
-#~ msgid "Size:"
-#~ msgstr "Veličina:"
-
-#~ msgid "%s (%"
-#~ msgstr "% s (%"
-
-#~ msgid "Permissions"
-#~ msgstr "Dozvole"
-
-#~ msgid "Owner:"
-#~ msgstr "Vlasnik:"
-
-#~ msgid "Access:"
-#~ msgstr "Pristup:"
-
-#~ msgid "Group:"
-#~ msgstr "Grupa:"
-
-#~ msgid "Others:"
-#~ msgstr "Ostali:"
-
-#~ msgid "Yes to _all"
-#~ msgstr "Da _svemu"
-
-#~ msgid "There was an error moving \"%s\" to \"%s\":"
-#~ msgstr "Došlo je do greške prilikom premještanja \"%s\" na \"%s\":"
-
-#~ msgid "There was an error copying \"%s\" to \"%s\":"
-#~ msgstr "Došlo je do greške prilikom kopiranja \"%s\" na \"%s\":"
-
-#~ msgid "There was an error linking \"%s\" to \"%s\":"
-#~ msgstr "Došlo je do greške prilikom kreiranja kratice \"%s\" na \"%s\":"
-
-#~ msgid "File Error"
-#~ msgstr "Greška datoteke"
-
-#~ msgid "broken link"
-#~ msgstr "neispravna poveznica"
-
-#~ msgid "link to %s"
-#~ msgstr "poveznica na %s"
-
-#~ msgid ""
-#~ "Kind: %s\n"
-#~ "Modified:%s\n"
-#~ "Size: %s"
-#~ msgstr ""
-#~ "Vrsta: %s\n"
-#~ "Promjenjeno:%s\n"
-#~ "Veličina: %s"
-
-#~ msgid "Error"
-#~ msgstr "Greška"
-
-#~ msgid "Failed to rename \"%s\" to \"%s\":"
-#~ msgstr "Nisam uspio preimenovati \"%s\" za \"%s\":"
-
-#~ msgid "Kind: Trash"
-#~ msgstr "Vrsta: Smeće"
-
-#~ msgid "%s (%s total)"
-#~ msgstr "%s (%s ukupno)"
-
-#~ msgid "Unable to mount \"%s\":"
-#~ msgstr "Ne mogu montirati \"%s\":"
-
-#~ msgid "Unable to unmount \"%s\":"
-#~ msgstr "Ne mogu odmontirati \"%s\":"
-
-#~ msgid "_Unmount Volume"
-#~ msgstr "_Odmontiraj uređaj"
+msgstr "_Radnje prozora"
