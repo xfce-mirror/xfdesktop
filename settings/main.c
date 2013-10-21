@@ -75,6 +75,8 @@
 #define DESKTOP_ICONS_ICON_SIZE_PROP         "/desktop-icons/icon-size"
 #define DESKTOP_ICONS_FONT_SIZE_PROP         "/desktop-icons/font-size"
 #define DESKTOP_ICONS_CUSTOM_FONT_SIZE_PROP  "/desktop-icons/use-custom-font-size"
+#define DESKTOP_ICONS_SHOW_TOOLTIP_PROP      "/desktop-icons/show-tooltips"
+#define DESKTOP_ICONS_TOOLTIP_SIZE_PROP      "/desktop-icons/tooltip-size"
 #define DESKTOP_ICONS_SINGLE_CLICK_PROP      "/desktop-icons/single-click"
 
 typedef struct
@@ -867,9 +869,11 @@ xfdesktop_settings_get_active_workspace(AppearancePanel *panel,
     return workspace_num;
 }
 
+/* This works for both the custom font size and show tooltips check buttons,
+ * it just enables the associated spin button */
 static void
-cb_xfdesktop_chk_custom_font_size_toggled(GtkCheckButton *button,
-                                          gpointer user_data)
+cb_xfdesktop_chk_button_toggled(GtkCheckButton *button,
+                                gpointer user_data)
 {
     GtkWidget *spin_button = GTK_WIDGET(user_data);
 
@@ -1599,7 +1603,7 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     GtkWidget *appearance_container, *chk_custom_font_size,
               *spin_font_size, *w, *box, *spin_icon_size,
               *chk_show_thumbnails, *chk_single_click, *appearance_settings,
-              *bnt_exit;
+              *chk_show_tooltips, *spin_tooltip_size, *bnt_exit;
     GtkBuilder *appearance_gxml;
     AppearancePanel *panel = g_new0(AppearancePanel, 1);
     GError *error = NULL;
@@ -1639,9 +1643,19 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     chk_single_click = GTK_WIDGET(gtk_builder_get_object(main_gxml,
                                                          "chk_single_click"));
 
+    /* tooltip options */
+    chk_show_tooltips = GTK_WIDGET(gtk_builder_get_object(main_gxml, "chk_show_tooltips"));
+    spin_tooltip_size = GTK_WIDGET(gtk_builder_get_object(main_gxml, "spin_tooltip_size"));
+    gtk_spin_button_set_value(GTK_SPIN_BUTTON(spin_tooltip_size), 128);
+
+    /* connect up the signals */
     g_signal_connect(G_OBJECT(chk_custom_font_size), "toggled",
-                     G_CALLBACK(cb_xfdesktop_chk_custom_font_size_toggled),
+                     G_CALLBACK(cb_xfdesktop_chk_button_toggled),
                      spin_font_size);
+
+    g_signal_connect(G_OBJECT(chk_show_tooltips), "toggled",
+                     G_CALLBACK(cb_xfdesktop_chk_button_toggled),
+                     spin_tooltip_size);
 
     /* thumbnails */
     chk_show_thumbnails = GTK_WIDGET(gtk_builder_get_object(main_gxml,
@@ -1836,6 +1850,12 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     xfconf_g_property_bind(channel, DESKTOP_ICONS_CUSTOM_FONT_SIZE_PROP,
                            G_TYPE_BOOLEAN, G_OBJECT(chk_custom_font_size),
                            "active");
+    xfconf_g_property_bind(channel, DESKTOP_ICONS_SHOW_TOOLTIP_PROP,
+                           G_TYPE_BOOLEAN, G_OBJECT(chk_show_tooltips),
+                           "active");
+    xfconf_g_property_bind(channel, DESKTOP_ICONS_TOOLTIP_SIZE_PROP, G_TYPE_DOUBLE,
+                           G_OBJECT(gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(spin_tooltip_size))),
+                           "value");
     xfconf_g_property_bind(channel, DESKTOP_ICONS_SHOW_THUMBNAILS,
                            G_TYPE_BOOLEAN, G_OBJECT(chk_show_thumbnails),
                            "active");

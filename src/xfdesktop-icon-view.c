@@ -52,8 +52,10 @@
 #include <libxfce4ui/libxfce4ui.h>
 #include <xfconf/xfconf.h>
 
-#define DEFAULT_FONT_SIZE  12
-#define DEFAULT_ICON_SIZE  32
+#define DEFAULT_FONT_SIZE     12
+#define DEFAULT_ICON_SIZE     32
+#define DEFAULT_TOOLTIP_SIZE 128
+#define MAX_TOOLTIP_SIZE     512
 
 #define ICON_SIZE         (icon_view->priv->icon_size)
 #define TEXT_WIDTH        ((icon_view->priv->cell_text_width_proportion) * ICON_SIZE)
@@ -178,7 +180,13 @@ struct _XfdesktopIconViewPrivate
     gdouble cell_text_width_proportion;
 
     gboolean ellipsize_icon_labels;
-    guint    tooltip_size;
+
+    /* tooltip options - There's a style and an xfconf property.
+     * The order is xfconf, style, with a fall back of DEFAULT_TOOLTIP_SIZE.
+     * xfdesktop_icon_view_get_tooltip_size will return the correct size. */
+    gboolean show_tooltips;
+    gint   tooltip_size_from_style;
+    double tooltip_szie_from_xfconf;
 
     gboolean single_click;
 };
@@ -327,6 +335,7 @@ static gboolean xfdesktop_icon_view_icon_find_position(XfdesktopIconView *icon_v
 static gboolean xfdesktop_icon_view_shift_area_to_cell(XfdesktopIconView *icon_view,
                                                        XfdesktopIcon *icon,
                                                        GdkRectangle *text_area);
+static gint xfdesktop_icon_view_get_tooltip_size(XfdesktopIconView *icon_view);
 static gboolean xfdesktop_icon_view_show_tooltip(GtkWidget *widget,
                                                  gint x,
                                                  gint y,
@@ -361,6 +370,8 @@ enum
 {
     PROP_0 = 0,
     PROP_SINGLE_CLICK,
+    PROP_SHOW_TOOLTIPS,
+    PROP_TOOLTIP_SIZE,
 };
 
 
@@ -575,11 +586,11 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
                                                                 G_PARAM_READABLE));
 
     gtk_widget_class_install_style_property(widget_class,
-                                            g_param_spec_uint("tooltip-size",
-                                                              "Tooltip Image Size",
-                                                              "The size of the tooltip image preview",
-                                                              0, 512, 128,
-                                                              G_PARAM_READABLE));
+                                            g_param_spec_int("tooltip-size",
+                                                             "Tooltip Image Size",
+                                                             "The size of the tooltip image preview",
+                                                             -1, MAX_TOOLTIP_SIZE, -1,
+                                                             G_PARAM_READABLE));
 
 #define XFDESKTOP_PARAM_FLAGS  (G_PARAM_READWRITE \
                                 | G_PARAM_CONSTRUCT \
@@ -593,6 +604,20 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
                                                          "single-click",
                                                          FALSE,
                                                          XFDESKTOP_PARAM_FLAGS));
+
+    g_object_class_install_property(gobject_class, PROP_SHOW_TOOLTIPS,
+                                    g_param_spec_boolean("show-tooltips",
+                                                         "show tooltips",
+                                                         "show tooltips for icons on the desktop",
+                                                         TRUE,
+                                                         XFDESKTOP_PARAM_FLAGS));
+
+    g_object_class_install_property(gobject_class, PROP_TOOLTIP_SIZE,
+                                    g_param_spec_double("tooltip-size",
+                                                        "tooltip size",
+                                                        "size of the tooltip image preview",
+                                                        -1, MAX_TOOLTIP_SIZE, -1,
+                                                        XFDESKTOP_PARAM_FLAGS));
 
 #undef XFDESKTOP_PARAM_FLAGS
 
@@ -726,6 +751,14 @@ xfce_icon_view_set_property(GObject *object,
             icon_view->priv->single_click = g_value_get_boolean (value);
             break;
 
+        case PROP_SHOW_TOOLTIPS:
+            icon_view->priv->show_tooltips = g_value_get_boolean(value);
+            break;
+
+        case PROP_TOOLTIP_SIZE:
+            icon_view->priv->tooltip_szie_from_xfconf = g_value_get_double(value);
+            break;
+
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
             break;
@@ -743,6 +776,14 @@ xfce_icon_view_get_property(GObject *object,
     switch(property_id) {
         case PROP_SINGLE_CLICK:
             g_value_set_boolean(value, icon_view->priv->single_click);
+            break;
+
+        case PROP_SHOW_TOOLTIPS:
+            g_value_set_boolean(value, icon_view->priv->show_tooltips);
+            break;
+
+        case PROP_TOOLTIP_SIZE:
+            g_value_set_double(value, icon_view->priv->tooltip_szie_from_xfconf);
             break;
 
         default:
@@ -922,6 +963,27 @@ xfdesktop_icon_view_get_single_click(XfdesktopIconView *icon_view)
     return icon_view->priv->single_click;
 }
 
+static gint
+xfdesktop_icon_view_get_tooltip_size(XfdesktopIconView *icon_view)
+{
+    g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view), DEFAULT_TOOLTIP_SIZE);
+
+    /* Check if we're showing tooltips at all */
+    if(!icon_view->priv->show_tooltips)
+        return 0;
+
+    /* If the xfconf size is set and sane, use it */
+    if(icon_view->priv->tooltip_szie_from_xfconf >= 0)
+        return icon_view->priv->tooltip_szie_from_xfconf;
+
+    /* if the style size is set and sane, use it */
+    if(icon_view->priv->tooltip_size_from_style >= 0)
+        return icon_view->priv->tooltip_size_from_style;
+
+    /* Fall back */
+    return DEFAULT_TOOLTIP_SIZE;
+}
+
 static gboolean
 xfdesktop_icon_view_button_release(GtkWidget *widget,
                                    GdkEventButton *evt,
@@ -1091,24 +1153,32 @@ xfdesktop_icon_view_show_tooltip(GtkWidget *widget,
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
     const gchar *tip_text;
     gchar *padded_tip_text = NULL;
+    gint tooltip_size;
     
     if(!icon_view->priv->item_under_pointer
        || icon_view->priv->definitely_dragging)
     {
         return FALSE;
     }
-    
+
+    /* not showing tooltips */
+    if(!icon_view->priv->show_tooltips)
+        return FALSE;
+
+    tooltip_size = xfdesktop_icon_view_get_tooltip_size(icon_view);
+    DBG("tooltip size %d", tooltip_size);
+
     tip_text = xfdesktop_icon_peek_tooltip(icon_view->priv->item_under_pointer);
     if(!tip_text)
         return FALSE;
 
     padded_tip_text = g_strdup_printf("%s\t", tip_text);
 
-    if(icon_view->priv->tooltip_size > 0) {
+    if(tooltip_size > 0) {
         gtk_tooltip_set_icon(tooltip,
                 xfdesktop_icon_peek_tooltip_pixbuf(icon_view->priv->item_under_pointer,
-                                                   icon_view->priv->tooltip_size * 1.5f,
-                                                   icon_view->priv->tooltip_size));
+                                                   tooltip_size * 1.5f,
+                                                   tooltip_size));
     }
 
     gtk_tooltip_set_text(tooltip, padded_tip_text);
@@ -1884,7 +1954,7 @@ xfdesktop_icon_view_style_set(GtkWidget *widget,
                          "cell-padding", &icon_view->priv->cell_padding,
                          "cell-text-width-proportion", &icon_view->priv->cell_text_width_proportion,
                          "ellipsize-icon-labels", &icon_view->priv->ellipsize_icon_labels,
-                         "tooltip-size", &icon_view->priv->tooltip_size,
+                         "tooltip-size", &icon_view->priv->tooltip_size_from_style,
                          "label-radius", &icon_view->priv->label_radius,
                          NULL);
 
@@ -1892,7 +1962,7 @@ xfdesktop_icon_view_style_set(GtkWidget *widget,
     DBG("cell padding is %d", icon_view->priv->cell_padding);
     DBG("cell text width proportion is %f", icon_view->priv->cell_text_width_proportion);
     DBG("ellipsize icon label is %s", icon_view->priv->ellipsize_icon_labels?"true":"false");
-    DBG("tooltip size is %d", icon_view->priv->tooltip_size);
+    DBG("tooltip size is %d", icon_view->priv->tooltip_size_from_style);
     DBG("label radius is %f", icon_view->priv->label_radius);
 
     if(icon_view->priv->selection_box_color) {
@@ -3596,6 +3666,18 @@ xfdesktop_icon_view_new(XfdesktopIconViewManager *manager)
                            G_TYPE_BOOLEAN,
                            G_OBJECT(icon_view),
                            "single_click");
+
+    xfconf_g_property_bind(icon_view->priv->channel,
+                           "/desktop-icons/show-tooltips",
+                           G_TYPE_BOOLEAN,
+                           G_OBJECT(icon_view),
+                           "show_tooltips");
+
+    xfconf_g_property_bind(icon_view->priv->channel,
+                           "/desktop-icons/tooltip-size",
+                           G_TYPE_DOUBLE,
+                           G_OBJECT(icon_view),
+                           "tooltip_size");
     
     return GTK_WIDGET(icon_view);
 }
