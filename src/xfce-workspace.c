@@ -170,33 +170,18 @@ xfce_workspace_change_backdrop(XfceWorkspace *workspace,
 static void
 backdrop_cycle_cb(XfceBackdrop *backdrop, gpointer user_data)
 {
-    const gchar* backdrop_file;
-    gchar *new_backdrop = NULL;
     XfceWorkspace *workspace = XFCE_WORKSPACE(user_data);
+    const gchar *new_backdrop;
 
     TRACE("entering");
 
     g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
 
-    backdrop_file = xfce_backdrop_get_image_filename(backdrop);
+    new_backdrop = xfce_backdrop_get_image_filename(backdrop);
 
-    if(backdrop_file == NULL)
-        return;
-
-    if(xfce_backdrop_get_random_order(backdrop)) {
-        DBG("Random! current file: %s", backdrop_file);
-        new_backdrop = xfdesktop_backdrop_choose_random(backdrop_file);
-    } else {
-        DBG("Next! current file: %s", backdrop_file);
-        new_backdrop = xfdesktop_backdrop_choose_next(backdrop_file);
-    }
-    DBG("new file: %s for Workspace %d", new_backdrop,
-        xfce_workspace_get_workspace_num(workspace));
-
-    if(g_strcmp0(backdrop_file, new_backdrop) != 0) {
+    /* update the xfconf property */
+    if(new_backdrop != NULL)
         xfce_workspace_change_backdrop(workspace, backdrop, new_backdrop);
-        g_free(new_backdrop);
-    }
 }
 
 static void
@@ -491,8 +476,8 @@ xfce_workspace_migrate_backdrop_image_style(XfceWorkspace *workspace,
         xfce_backdrop_set_image_style(backdrop, style);
         g_value_unset(&value);
     } else {
-    /* If no value was ever set default to stretched */
-    xfce_backdrop_set_image_style(backdrop, XFCE_BACKDROP_IMAGE_STRETCHED);
+        /* If no value was ever set default to stretched */
+        xfce_backdrop_set_image_style(backdrop, XFCE_BACKDROP_IMAGE_STRETCHED);
     }
 }
 
@@ -559,6 +544,11 @@ xfce_workspace_connect_backdrop_settings(XfceWorkspace *workspace,
     g_strlcat(buf, "backdrop-cycle-random-order", sizeof(buf));
     xfconf_g_property_bind(channel, buf, G_TYPE_BOOLEAN,
                            G_OBJECT(backdrop), "backdrop-cycle-random-order");
+
+    buf[pp_len] = 0;
+    g_strlcat(buf, "backdrop-cycle-chronological-order", sizeof(buf));
+    xfconf_g_property_bind(channel, buf, G_TYPE_BOOLEAN,
+                           G_OBJECT(backdrop), "backdrop-cycle-chronological-order");
 
     buf[pp_len] = 0;
     g_strlcat(buf, "last-image", sizeof(buf));
