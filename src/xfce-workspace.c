@@ -546,11 +546,6 @@ xfce_workspace_connect_backdrop_settings(XfceWorkspace *workspace,
                            G_OBJECT(backdrop), "backdrop-cycle-random-order");
 
     buf[pp_len] = 0;
-    g_strlcat(buf, "backdrop-cycle-chronological-order", sizeof(buf));
-    xfconf_g_property_bind(channel, buf, G_TYPE_BOOLEAN,
-                           G_OBJECT(backdrop), "backdrop-cycle-chronological-order");
-
-    buf[pp_len] = 0;
     g_strlcat(buf, "last-image", sizeof(buf));
     xfconf_g_property_bind(channel, buf, G_TYPE_STRING,
                            G_OBJECT(backdrop), "image-filename");

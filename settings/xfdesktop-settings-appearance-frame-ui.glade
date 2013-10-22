@@ -96,7 +96,7 @@
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
                         <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                        <property name="tooltip-text" translatable="yes">Add an image to the list</property>
+                        <property name="tooltip-text" translatable="yes">Choose the folder to select wallpapers from</property>
                         <property name="action">GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER</property>
                       </object>
                       <packing>
@@ -296,6 +296,7 @@
                           <item translatable="yes">at start up</item>
                           <item translatable="yes">every hour</item>
                           <item translatable="yes">every day</item>
+                          <item translatable="yes">chronologically</item>
                         </items>
                       </object>
                       <packing>
@@ -326,21 +327,6 @@
                         <property name="use_underline">True</property>
                         <property name="draw_indicator">True</property>
                         <property name="tooltip-text" translatable="yes">Randomly selects another image from the same directory when the wallpaper is to cycle. Overrides the Chronological option.</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkCheckButton" id="chk_chrono_backdrop_order">
-                        <property name="visible">True</property>
-                        <property name="sensitive">False</property>
-                        <property name="can_focus">True</property>
-                        <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                        <property name="label" translatable="yes">C_hronological</property>
-                        <property name="use_underline">True</property>
-                        <property name="draw_indicator">True</property>
-                        <property name="tooltip-text" translatable="yes">Chronologically maps images in the folder to specific hours of the day. When every hour is selected the first image in the folder will be displayed from midnight to one in the morning, the second image will show at two in the morning, etc. If there are fewer items in the folder than hours in the day, the images will be spaced out accordingly. I.e. a folder with 4 items will display the first image from midnight to six in the morning, the second image will then be displayed until noon, etc. If there are more images than hours in the day then they won't be displayed with this option selected.</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>

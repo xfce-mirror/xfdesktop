@@ -68,6 +68,7 @@ typedef enum
     XFCE_BACKDROP_PERIOD_STARTUP,
     XFCE_BACKDROP_PERIOD_HOURLY,
     XFCE_BACKDROP_PERIOD_DAILY,
+    XFCE_BACKDROP_PERIOD_CHRONOLOGICAL,
 } XfceBackdropCyclePeriod;
 
 struct _XfceBackdrop
@@ -141,12 +142,6 @@ guint xfce_backdrop_get_cycle_timer      (XfceBackdrop *backdrop);
 void xfce_backdrop_set_random_order      (XfceBackdrop *backdrop,
                                           gboolean random_order);
 gboolean xfce_backdrop_get_random_order  (XfceBackdrop *backdrop);
-
-void xfce_backdrop_set_chronological_order
-                                         (XfceBackdrop *backdrop,
-                                          gboolean random_order);
-gboolean xfce_backdrop_get_chronological_order
-                                         (XfceBackdrop *backdrop);
 
 GdkPixbuf *xfce_backdrop_get_pixbuf      (XfceBackdrop *backdrop);
 

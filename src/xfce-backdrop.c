@@ -108,7 +108,6 @@ struct _XfceBackdropPriv
     guint cycle_timer_id;
     XfceBackdropCyclePeriod cycle_period;
     gboolean random_backdrop_order;
-    gboolean chrono_backdrop_order;
 };
 
 struct _XfceBackdropImageData
@@ -143,7 +142,6 @@ enum
     PROP_BACKDROP_CYCLE_PERIOD,
     PROP_BACKDROP_CYCLE_TIMER,
     PROP_BACKDROP_RANDOM_ORDER,
-    PROP_BACKDROP_CHRONO_ORDER,
 };
 
 static guint backdrop_signals[LAST_SIGNAL] = { 0, };
@@ -543,13 +541,6 @@ xfce_backdrop_class_init(XfceBackdropClass *klass)
                                                          FALSE,
                                                          XFDESKTOP_PARAM_FLAGS));
 
-    g_object_class_install_property(gobject_class, PROP_BACKDROP_CHRONO_ORDER,
-                                    g_param_spec_boolean("backdrop-cycle-chronological-order",
-                                                         "backdrop-cycle-chronological-order",
-                                                         "backdrop-cycle-chronological-order",
-                                                         FALSE,
-                                                         XFDESKTOP_PARAM_FLAGS));
-
 #undef XFDESKTOP_PARAM_FLAGS
 }
 
@@ -640,10 +631,6 @@ xfce_backdrop_set_property(GObject *object,
             xfce_backdrop_set_random_order(backdrop, g_value_get_boolean(value));
             break;
 
-        case PROP_BACKDROP_CHRONO_ORDER:
-            xfce_backdrop_set_chronological_order(backdrop, g_value_get_boolean(value));
-            break;
-
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
             break;
@@ -694,10 +681,6 @@ xfce_backdrop_get_property(GObject *object,
 
         case PROP_BACKDROP_RANDOM_ORDER:
             g_value_set_boolean(value, xfce_backdrop_get_random_order(backdrop));
-            break;
-
-        case PROP_BACKDROP_CHRONO_ORDER:
-            g_value_set_boolean(value, xfce_backdrop_get_chronological_order(backdrop));
             break;
 
         default:
@@ -974,17 +957,13 @@ xfce_backdrop_cycle_backdrop(XfceBackdrop *backdrop)
     if(current_backdrop == NULL || !backdrop->priv->cycle_backdrop)
         return;
 
-    if(backdrop->priv->random_backdrop_order) {
-        /* Random always takes priority */
-        new_backdrop = xfce_backdrop_choose_random(current_backdrop);
-    }
-    else if(backdrop->priv->chrono_backdrop_order && period == XFCE_BACKDROP_PERIOD_HOURLY)
-    {
-        /* chronological */
+    if(period == XFCE_BACKDROP_PERIOD_CHRONOLOGICAL) {
+        /* chronological first */
         new_backdrop = xfce_backdrop_choose_chronological(current_backdrop);
-    }
-    else
-    {
+    } else if(backdrop->priv->random_backdrop_order) {
+        /* then random */
+        new_backdrop = xfce_backdrop_choose_random(current_backdrop);
+    } else {
         /* sequential, the default */
         new_backdrop = xfce_backdrop_choose_next(current_backdrop);
     }
@@ -1019,8 +998,8 @@ xfce_backdrop_timer(XfceBackdrop *backdrop)
             continue_cycling = FALSE;
             break;
 
+        case XFCE_BACKDROP_PERIOD_CHRONOLOGICAL:
         case XFCE_BACKDROP_PERIOD_HOURLY:
-            TRACE("XFCE_BACKDROP_PERIOD_HOURLY");
             local_time = g_date_time_new_now_local();
             minute = g_date_time_get_minute(local_time);
             second = g_date_time_get_second(local_time);
@@ -1033,7 +1012,6 @@ xfce_backdrop_timer(XfceBackdrop *backdrop)
             break;
 
         case XFCE_BACKDROP_PERIOD_DAILY:
-            TRACE("XFCE_BACKDROP_PERIOD_DAILY");
             local_time = g_date_time_new_now_local();
             hour   = g_date_time_get_hour  (local_time);
             minute = g_date_time_get_minute(local_time);
@@ -1117,8 +1095,8 @@ xfce_backdrop_set_cycle_timer(XfceBackdrop *backdrop, guint cycle_timer)
                 cycle_interval = 1;
                 break;
 
+            case XFCE_BACKDROP_PERIOD_CHRONOLOGICAL:
             case XFCE_BACKDROP_PERIOD_HOURLY:
-                TRACE("XFCE_BACKDROP_PERIOD_HOURLY");
                 local_time = g_date_time_new_now_local();
                 minute = g_date_time_get_minute(local_time);
                 second = g_date_time_get_second(local_time);
@@ -1128,7 +1106,6 @@ xfce_backdrop_set_cycle_timer(XfceBackdrop *backdrop, guint cycle_timer)
                 break;
 
             case XFCE_BACKDROP_PERIOD_DAILY:
-                TRACE("XFCE_BACKDROP_PERIOD_DAILY");
                 local_time = g_date_time_new_now_local();
                 hour   = g_date_time_get_hour  (local_time);
                 minute = g_date_time_get_minute(local_time);
@@ -1234,8 +1211,7 @@ xfce_backdrop_get_cycle_period(XfceBackdrop *backdrop)
  *
  * When cycling backdrops, they will either be show sequentially (and this value
  * will be FALSE) or they will be selected at random. The images are choosen from
- * the same folder the current backdrop image file is in. This option overrides
- * the chronological order if it is also set.
+ * the same folder the current backdrop image file is in.
  **/
 void
 xfce_backdrop_set_random_order(XfceBackdrop *backdrop,
@@ -1254,43 +1230,6 @@ xfce_backdrop_get_random_order(XfceBackdrop *backdrop)
     g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), FALSE);
 
     return backdrop->priv->random_backdrop_order;
-}
-
-/**
- * xfce_backdrop_set_chronological_order:
- * @backdrop: An #XfceBackdrop.
- * @chronological_order: When TRUE and the backdrops are set to cycle and
- *                       the period is set to XFCE_BACKDROP_PERIOD_HOURLY
- *                       then the backdrops in the folder will be mapped at
- *                       the next hour.
- *
- * When cycling backdrops sequentially with a period of XFCE_BACKDROP_PERIOD_HOURLY,
- * setting this option causes xfdesktop to map files in the selected directory
- * to hours of the day. Fewer images in the directory than hours in the day are
- * handled by repeating images to scale them over the time range. That means
- * there will be at most 24 images displayed showing the first image from
- * midnight to one, the second from one until two o'clock, etc. If there were 6
- * images in the directory then every image would be displayed for 4 hour time
- * intervals before advancing. If there's more images in the folder than hours
- * then they won't be shown.
- **/
-void
-xfce_backdrop_set_chronological_order(XfceBackdrop *backdrop,
-                                      gboolean chronological_order)
-{
-    g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
-
-    TRACE("entering");
-
-    backdrop->priv->chrono_backdrop_order = chronological_order;
-}
-
-gboolean
-xfce_backdrop_get_chronological_order(XfceBackdrop *backdrop)
-{
-    g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), FALSE);
-
-    return backdrop->priv->chrono_backdrop_order;
 }
 
 /* Generates the background that will either be displayed or will have the

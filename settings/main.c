@@ -116,7 +116,6 @@ typedef struct
     GtkWidget *combo_backdrop_cycle_period;
     GtkWidget *backdrop_cycle_spinbox;
     GtkWidget *random_backdrop_order_chkbox;
-    GtkWidget *chrono_backdrop_order_chkbox;
 
     GThread *preview_thread;
     GAsyncQueue *preview_queue;
@@ -884,6 +883,23 @@ cb_xfdesktop_chk_button_toggled(GtkCheckButton *button,
 }
 
 static void
+update_backdrop_random_order_chkbox(AppearancePanel *panel)
+{
+    gboolean sensitive = FALSE;
+    gint period;
+
+    /* For the random check box to be active the combo_backdrop_cycle_period
+     * needs to be active and needs to not be set to chronological */
+    if(gtk_widget_get_sensitive(panel->combo_backdrop_cycle_period)) {
+        period = gtk_combo_box_get_active(GTK_COMBO_BOX(panel->combo_backdrop_cycle_period));
+        if(period != XFCE_BACKDROP_PERIOD_CHRONOLOGICAL)
+            sensitive = TRUE;
+    }
+
+    gtk_widget_set_sensitive(panel->random_backdrop_order_chkbox, sensitive);
+}
+
+static void
 update_backdrop_cycle_spinbox(AppearancePanel *panel)
 {
     gboolean sensitive = FALSE;
@@ -905,25 +921,6 @@ update_backdrop_cycle_spinbox(AppearancePanel *panel)
 }
 
 static void
-update_backdrop_chrono_order_chkbox(AppearancePanel *panel)
-{
-    gboolean sensitive = FALSE;
-    gint period;
-
-    /* For this check box to be active the combo_backdrop_cycle_period needs
-     * to be active and needs to be set to hourly so it would apply */
-    if(gtk_widget_get_sensitive(panel->combo_backdrop_cycle_period)) {
-        period = gtk_combo_box_get_active(GTK_COMBO_BOX(panel->combo_backdrop_cycle_period));
-        if(period == XFCE_BACKDROP_PERIOD_HOURLY)
-        {
-            sensitive = TRUE;
-        }
-    }
-
-    gtk_widget_set_sensitive(panel->chrono_backdrop_order_chkbox, sensitive);
-}
-
-static void
 cb_combo_backdrop_cycle_period_change(GtkComboBox *combo,
                                       gpointer user_data)
 {
@@ -931,8 +928,8 @@ cb_combo_backdrop_cycle_period_change(GtkComboBox *combo,
 
     /* determine if the spin box should be sensitive */
     update_backdrop_cycle_spinbox(panel);
-    /* same with the chronological backdrop order */
-    update_backdrop_chrono_order_chkbox(panel);
+    /* determine if the random check box should be sensitive */
+    update_backdrop_random_order_chkbox(panel);
 }
 
 static void
@@ -950,11 +947,10 @@ cb_xfdesktop_chk_cycle_backdrop_toggled(GtkCheckButton *button,
 
     /* The cycle backdrop toggles the period and random widgets */
     gtk_widget_set_sensitive(panel->combo_backdrop_cycle_period, sensitive);
-    gtk_widget_set_sensitive(panel->random_backdrop_order_chkbox, sensitive);
     /* determine if the spin box should be sensitive */
     update_backdrop_cycle_spinbox(panel);
-    /* same with the chronological backdrop order */
-    update_backdrop_chrono_order_chkbox(panel);
+    /* determine if the random check box should be sensitive */
+    update_backdrop_random_order_chkbox(panel);
 }
 
 static gboolean
@@ -1341,17 +1337,6 @@ xfdesktop_settings_background_tab_change_bindings(AppearancePanel *panel,
     } else {
         xfconf_g_property_bind(channel, buf, G_TYPE_BOOLEAN,
                                G_OBJECT(panel->random_backdrop_order_chkbox), "active");
-    }
-    g_free(buf);
-
-    /* chronological order check box */
-    buf = xfdesktop_settings_generate_per_workspace_binding_string(panel, "backdrop-cycle-chronological-order");
-    if(remove_binding) {
-        xfconf_g_property_unbind_by_property(channel, buf,
-                           G_OBJECT(panel->chrono_backdrop_order_chkbox), "active");
-    } else {
-        xfconf_g_property_bind(channel, buf, G_TYPE_BOOLEAN,
-                               G_OBJECT(panel->chrono_backdrop_order_chkbox), "active");
     }
     g_free(buf);
 }
@@ -1774,8 +1759,6 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
                                                                      "spin_backdrop_time"));
     panel->random_backdrop_order_chkbox = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
                                                                      "chk_random_backdrop_order"));
-    panel->chrono_backdrop_order_chkbox = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
-                                                                     "chk_chrono_backdrop_order"));
 
     /* Pick the first entry so something shows up */
     gtk_combo_box_set_active(GTK_COMBO_BOX(panel->combo_backdrop_cycle_period), XFCE_BACKDROP_PERIOD_MINUES);
