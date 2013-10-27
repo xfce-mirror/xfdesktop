@@ -2027,10 +2027,17 @@ xfdesktop_file_icon_manager_queue_thumbnail(XfdesktopFileIconManager *fmanager,
                 GFile *temp = g_file_new_for_path(thumbnail_file);
                 xfdesktop_icon_set_thumbnail_file(XFDESKTOP_ICON(icon), temp);
             }
+
+            g_free(thumbnail_file);
         } else {
             xfdesktop_thumbnailer_queue_thumbnail(fmanager->priv->thumbnailer,
                                                   path);
         }
+    }
+
+    if(path) {
+        g_free(path);
+        path = NULL;
     }
 }
 
@@ -2688,6 +2695,8 @@ xfdesktop_file_icon_manager_files_ready(GFileEnumerator *enumerator,
             g_signal_connect(fmanager->priv->metadata_monitor, "changed",
                              G_CALLBACK(xfdesktop_file_icon_manager_metadata_changed),
                              fmanager);
+
+            g_object_unref(metadata_location);
             g_free(location);
         }
     } else {
@@ -2807,11 +2816,11 @@ static void
 xfdesktop_file_icon_manager_load_removable_media(XfdesktopFileIconManager *fmanager)
 {
     GList *volumes, *l;
-    
+
     /* ensure we don't re-enter if we're already set up */
     if(fmanager->priv->removable_icons)
         return;
-    
+
     if(!fmanager->priv->volume_monitor)
         fmanager->priv->volume_monitor = g_volume_monitor_get();
     
@@ -3747,6 +3756,8 @@ xfdesktop_file_icon_manager_update_image(GtkWidget *widget,
     {
         g_object_unref(file);
         file = g_file_new_for_path(thumbfile);
-        xfdesktop_icon_set_thumbnail_file(icon, file);
+        xfdesktop_icon_set_thumbnail_file(icon, g_object_ref(file));
     }
+
+    g_object_unref(file);
 }

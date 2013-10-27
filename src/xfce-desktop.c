@@ -366,7 +366,10 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     GdkRectangle rect;
     GdkRegion *clip_region = NULL;
     gint i, monitor = -1, current_workspace;
-    
+#ifdef G_ENABLE_DEBUG
+    gchar *monitor_name = NULL;
+#endif
+
     TRACE("entering");
     
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
@@ -395,9 +398,13 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     if(monitor == -1)
         return;
 
+#ifdef G_ENABLE_DEBUG
+    monitor_name = gdk_screen_get_monitor_plug_name(gscreen, monitor);
 
-    DBG("backdrop changed for workspace %d, monitor %d (%s)",
-        current_workspace, monitor, gdk_screen_get_monitor_plug_name(gscreen, monitor));
+    DBG("backdrop changed for workspace %d, monitor %d (%s)", current_workspace, monitor, monitor_name);
+
+    g_free(monitor_name);
+#endif
 
     if(xfce_desktop_get_n_monitors(desktop) > 1
        && xfce_workspace_get_xinerama_stretch(desktop->priv->workspaces[current_workspace])) {
@@ -864,7 +871,7 @@ static void
 xfce_desktop_finalize(GObject *object)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(object);
-    
+
     g_object_unref(G_OBJECT(desktop->priv->channel));
     g_free(desktop->priv->property_prefix);
 
@@ -1055,14 +1062,13 @@ xfce_desktop_unrealize(GtkWidget *widget)
     gchar property_name[128];
     
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
-    
-    if(gtk_major_version > 2
-       || (gtk_major_version == 2 && gtk_minor_version >= 13))
-    {
-        g_signal_handlers_disconnect_by_func(G_OBJECT(desktop->priv->gscreen),
-                                             G_CALLBACK(xfce_desktop_monitors_changed),
-                                             desktop);
-    }
+
+    /* disconnect all the xfconf settings to this desktop */
+    xfconf_g_property_unbind_all(G_OBJECT(desktop));
+
+    g_signal_handlers_disconnect_by_func(G_OBJECT(desktop->priv->gscreen),
+                                         G_CALLBACK(xfce_desktop_monitors_changed),
+                                         desktop);
     
     if(gtk_widget_get_mapped(widget))
         gtk_widget_unmap(widget);

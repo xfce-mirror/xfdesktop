@@ -160,6 +160,8 @@ xfce_workspace_change_backdrop(XfceWorkspace *workspace,
     } else {
         g_snprintf(buf, sizeof(buf), "%smonitor%s/workspace%d/last-image",
                    workspace->priv->property_prefix, monitor_name, workspace->priv->workspace_num);
+
+        g_free(monitor_name);
     }
 
     /* Update the property so that xfdesktop won't show the same image every

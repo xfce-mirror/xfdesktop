@@ -240,29 +240,36 @@ xfce_backdrop_clear_cached_image(XfceBackdrop *backdrop)
     backdrop->priv->pix = NULL;
 }
 
+/* Returns a GList of all the files in the parent directory of filename */
 static GList *
-list_files_in_dir(const gchar *path)
+list_files_in_dir(const gchar *filename)
 {
     GDir *dir;
     gboolean needs_slash = TRUE;
     const gchar *file;
     GList *files = NULL;
+    gchar *dir_name;
 
-    dir = g_dir_open(path, 0, 0);
-    if(!dir)
+    dir_name = g_path_get_dirname(filename);
+
+    dir = g_dir_open(dir_name, 0, 0);
+    if(!dir) {
+        g_free(dir_name);
         return NULL;
+    }
 
-    if(path[strlen(path)-1] == '/')
+    if(dir_name[strlen(dir_name)-1] == '/')
         needs_slash = FALSE;
 
     while((file = g_dir_read_name(dir))) {
         gchar *current_file = g_strdup_printf(needs_slash ? "%s/%s" : "%s%s",
-                                              path, file);
+                                              dir_name, file);
 
         files = g_list_insert_sorted(files, current_file, (GCompareFunc)g_strcmp0);
     }
 
     g_dir_close(dir);
+    g_free(dir_name);
 
     return files;
 }
@@ -280,8 +287,10 @@ xfce_backdrop_choose_next(const gchar *filename)
     g_return_val_if_fail(filename, NULL);
 
     /* We don't cache the list at all. This way the user can add/remove items
-     * whenever they like without xfdesktop having to do anything */
-    files = list_files_in_dir(g_path_get_dirname(filename));
+     * whenever they like without xfdesktop having to do anything. If we start
+     * supporting sub-directories we may want to re-think that assumption */
+    files = list_files_in_dir(filename);
+
     if(!files)
         return NULL;
 
@@ -331,8 +340,10 @@ xfce_backdrop_choose_random(const gchar *filename)
     g_return_val_if_fail(filename, NULL);
 
     /* We don't cache the list at all. This way the user can add/remove items
-     * whenever they like without xfdesktop having to do anything */
-    files = list_files_in_dir(g_path_get_dirname(filename));
+     * whenever they like without xfdesktop having to do anything. If we start
+     * supporting sub-directories we may want to re-think that assumption */
+    files = list_files_in_dir(filename);
+
     if(!files)
         return NULL;
 
@@ -389,7 +400,8 @@ xfce_backdrop_choose_chronological(const gchar *filename)
     /* We don't cache the list at all. This way the user can add/remove items
      * whenever they like without xfdesktop having to do anything. If we start
      * supporting sub-directories we may want to re-think that assumption */
-    files = list_files_in_dir(g_path_get_dirname(filename));
+    files = list_files_in_dir(filename);
+
     if(!files)
         return NULL;
 
@@ -908,7 +920,7 @@ xfce_backdrop_get_image_style(XfceBackdrop *backdrop)
  *
  * Sets the image that should be used with the #XfceBackdrop.  The image will
  * be composited on top of the color (or color gradient).  To clear the image,
- * use this call with a @filename argument of %NULL.
+ * use this call with a @filename argument of %NULL. Makes a copy of @filename.
  **/
 void
 xfce_backdrop_set_image_filename(XfceBackdrop *backdrop, const gchar *filename)
@@ -973,6 +985,8 @@ xfce_backdrop_cycle_backdrop(XfceBackdrop *backdrop)
         xfce_backdrop_set_image_filename(backdrop, new_backdrop);
         g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_CYCLE], 0);
     }
+
+    g_free(new_backdrop);
 }
 
 static gboolean
@@ -1613,6 +1627,9 @@ xfce_backdrop_file_ready_cb(GObject *source_object,
     GFileInputStream *input_stream = g_file_read_finish(file, res, NULL);
 
     TRACE("entering");
+
+    /* Finished with the file, clean it up */
+    g_object_unref(file);
 
     /* If this fails then close the loader, it will only display the selected
      * backdrop color */
