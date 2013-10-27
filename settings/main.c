@@ -305,7 +305,7 @@ xfdesktop_settings_queue_preview(GtkTreeModel *model,
                                  GtkTreeIter *iter,
                                  AppearancePanel *panel)
 {
-    gchar *filename;
+    gchar *filename = NULL;
 
     gtk_tree_model_get(model, iter, COL_FILENAME, &filename, -1);
 
@@ -319,6 +319,9 @@ xfdesktop_settings_queue_preview(GtkTreeModel *model,
 
         xfdesktop_settings_add_file_to_queue(panel, pdata);
     }
+
+    if(filename)
+        g_free(filename);
 }
 
 static void
@@ -1430,6 +1433,8 @@ cb_update_background_tab(WnckWindow *wnck_window,
 
     if(panel->monitor_name != NULL)
         g_free(panel->monitor_name);
+    if(monitor_name != NULL)
+        g_free(monitor_name);
 
     panel->workspace = workspace_num;
     panel->screen = screen_num;
