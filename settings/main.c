@@ -1047,6 +1047,7 @@ cb_folder_selection_changed(GtkWidget *button,
         DBG("filename %s, previous_filename %s. Nothing changed",
             filename == NULL ? "NULL" : filename,
             previous_filename == NULL ? "NULL" : previous_filename);
+
         g_free(filename);
         g_free(previous_filename);
         return;
@@ -1164,7 +1165,9 @@ xfdesktop_settings_update_iconview_folder(AppearancePanel *panel)
 }
 
 /* This function is to add or remove all the bindings for the background
- * tab. It's intended to be used when the app changes monitors or workspaces */
+ * tab. It's intended to be used when the app changes monitors or workspaces.
+ * It reverts the items back to their defaults before binding any new settings
+ * that way if the setting isn't present, the default correctly displays. */
 static void
 xfdesktop_settings_background_tab_change_bindings(AppearancePanel *panel,
                                                   gboolean remove_binding)
@@ -1248,6 +1251,13 @@ xfdesktop_settings_background_tab_change_bindings(AppearancePanel *panel,
                 gtk_color_button_set_color(GTK_COLOR_BUTTON(panel->color1_btn),
                                            g_value_get_boxed(&value));
                 g_value_unset(&value);
+            } else {
+                /* revert to showing our default color */
+                GdkColor color1;
+                color1.red = 0x1515;
+                color1.green = 0x2222;
+                color1.blue = 0x3333;
+                gtk_color_button_set_color(GTK_COLOR_BUTTON(panel->color1_btn), &color1);
             }
 
             g_free(old_property);
@@ -1276,6 +1286,13 @@ xfdesktop_settings_background_tab_change_bindings(AppearancePanel *panel,
                 gtk_color_button_set_color(GTK_COLOR_BUTTON(panel->color1_btn),
                                            g_value_get_boxed(&value));
                 g_value_unset(&value);
+            } else {
+                /* revert to showing our default color */
+                GdkColor color2;
+                color2.red = 0x1515;
+                color2.green = 0x2222;
+                color2.blue = 0x3333;
+                gtk_color_button_set_color(GTK_COLOR_BUTTON(panel->color2_btn), &color2);
             }
 
             g_free(old_property);
@@ -1294,6 +1311,9 @@ xfdesktop_settings_background_tab_change_bindings(AppearancePanel *panel,
         xfconf_g_property_unbind_by_property(channel, buf,
                            G_OBJECT(panel->backdrop_cycle_chkbox), "active");
     } else {
+        /* The default is disable cycling, set that before we bind to anything */
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(panel->backdrop_cycle_chkbox), FALSE);
+
         xfconf_g_property_bind(channel, buf, G_TYPE_BOOLEAN,
                                G_OBJECT(panel->backdrop_cycle_chkbox), "active");
     }
@@ -1305,6 +1325,9 @@ xfdesktop_settings_background_tab_change_bindings(AppearancePanel *panel,
         xfconf_g_property_unbind_by_property(channel, buf,
                                G_OBJECT(panel->combo_backdrop_cycle_period), "active");
     } else {
+        /* default is minutes, set that before we bind to it */
+        gtk_combo_box_set_active(GTK_COMBO_BOX(panel->combo_backdrop_cycle_period), XFCE_BACKDROP_PERIOD_MINUES);
+
         xfconf_g_property_bind(channel, buf, G_TYPE_INT,
                                G_OBJECT(panel->combo_backdrop_cycle_period), "active");
         /* determine if the cycle timer spin box is sensitive */
@@ -1335,6 +1358,9 @@ xfdesktop_settings_background_tab_change_bindings(AppearancePanel *panel,
         xfconf_g_property_unbind_by_property(channel, buf,
                            G_OBJECT(panel->random_backdrop_order_chkbox), "active");
     } else {
+        /* The default is sequential, set that before we bind to anything */
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(panel->random_backdrop_order_chkbox), FALSE);
+
         xfconf_g_property_bind(channel, buf, G_TYPE_BOOLEAN,
                                G_OBJECT(panel->random_backdrop_order_chkbox), "active");
     }
