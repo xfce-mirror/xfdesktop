@@ -862,7 +862,10 @@ xfce_desktop_init(XfceDesktop *desktop)
                                                 XfceDesktopPriv);
     
     gtk_window_set_type_hint(GTK_WINDOW(desktop), GDK_WINDOW_TYPE_HINT_DESKTOP);
-    gtk_window_set_accept_focus(GTK_WINDOW(desktop), FALSE);
+    /* Accept focus is needed for the menu pop up either by the menu key on
+     * the keyboard or Shift+F10. */
+    gtk_window_set_accept_focus(GTK_WINDOW(desktop), TRUE);
+    /* Can focus is needed for the gtk_grab_add/remove commands */
     gtk_widget_set_can_focus(GTK_WIDGET(desktop), TRUE);
     gtk_window_set_resizable(GTK_WINDOW(desktop), FALSE);
 }
@@ -1590,9 +1593,7 @@ xfce_desktop_do_menu_popup(XfceDesktop *desktop,
     if(activate_time == 0)
         activate_time = gtk_get_current_event_time();
 
-    /* bug #3652: for some reason passing the correct button here breaks
-     * on some systems but not others.  always pass 0 for now. */
-    gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL, 0, activate_time);
+    gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL, button, activate_time);
 }
 
 void
@@ -1600,16 +1601,16 @@ xfce_desktop_popup_root_menu(XfceDesktop *desktop,
                              guint button,
                              guint activate_time)
 {
+    TRACE("entering");
+
     /* If it's launched by xfdesktop --menu we won't have an event time.
-     * Just grab the focus so the menu can pop up */
+     * Grab the keyboard focus */
     if(activate_time == 0)
-        gtk_grab_add(GTK_WIDGET(desktop));
+        activate_time = xfdesktop_popup_keyboard_grab_available(gtk_widget_get_window(GTK_WIDGET(desktop)));
 
     xfce_desktop_do_menu_popup(desktop, button, activate_time,
                                signals[SIG_POPULATE_ROOT_MENU]);
 
-    if(activate_time == 0)
-        gtk_grab_remove(GTK_WIDGET(desktop));
 }
 
 void
@@ -1618,15 +1619,12 @@ xfce_desktop_popup_secondary_root_menu(XfceDesktop *desktop,
                                        guint activate_time)
 {
     /* If it's launched by xfdesktop --windowlist we won't have an event time.
-     * Just grab the focus so the menu can pop up */
+     * Grab the keyboard focus */
     if(activate_time == 0)
-        gtk_grab_add(GTK_WIDGET(desktop));
+        activate_time = xfdesktop_popup_keyboard_grab_available(gtk_widget_get_window(GTK_WIDGET(desktop)));
 
     xfce_desktop_do_menu_popup(desktop, button, activate_time,
                                signals[SIG_POPULATE_SECONDARY_ROOT_MENU]);
-
-    if(activate_time == 0)
-        gtk_grab_remove(GTK_WIDGET(desktop));
 }
 void
 xfce_desktop_refresh(XfceDesktop *desktop)

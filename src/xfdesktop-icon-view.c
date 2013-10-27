@@ -1028,9 +1028,11 @@ xfdesktop_icon_view_button_release(GtkWidget *widget,
 
         /* If we clicked an icon then we didn't pop up the menu during the
          * button press in order to support right click DND, pop up the menu
-         * now */
+         * now.
+         * We pass 0 as the button because the docs say that you must use 0
+         * for pop ups other than button press events. */
         if(icon_l && (icon = icon_l->data))
-            xfce_desktop_popup_root_menu(XFCE_DESKTOP(widget), evt->button, evt->time);
+            xfce_desktop_popup_root_menu(XFCE_DESKTOP(widget), 0, evt->time);
     }
 
     if(evt->button == 1 || evt->button == 3) {

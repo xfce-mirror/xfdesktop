@@ -94,6 +94,8 @@ void xfdesktop_send_client_message(Window xid, const gchar *msg);
 
 gint xfce_translate_image_styles(gint input);
 
+guint32 xfdesktop_popup_keyboard_grab_available(GdkWindow *win);
+
 G_END_DECLS
 
 #endif

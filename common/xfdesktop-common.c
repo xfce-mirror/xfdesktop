@@ -180,3 +180,43 @@ xfce_translate_image_styles(gint input)
 
     return style;
 }
+
+/* Code taken from xfwm4/src/menu.c:grab_available().  This should fix the case
+ * where binding 'xfdesktop -menu' to a keyboard shortcut sometimes works and
+ * sometimes doesn't.  Credit for this one goes to Olivier.
+ * Returns the grab time if successful, 0 on failure.
+ */
+guint32
+xfdesktop_popup_keyboard_grab_available(GdkWindow *win)
+{
+    GdkGrabStatus grab;
+    gboolean grab_failed = FALSE;
+    guint32 timestamp;
+    gint i = 0;
+
+    TRACE("entering");
+
+    timestamp = gtk_get_current_event_time();
+
+    grab = gdk_keyboard_grab(win, TRUE, timestamp);
+
+    while((i++ < 2500) && (grab_failed = ((grab != GDK_GRAB_SUCCESS))))
+    {
+        TRACE ("keyboard grab not available yet, reason: %d, waiting... (%i)", grab, i);
+        if(grab == GDK_GRAB_INVALID_TIME)
+            break;
+
+        g_usleep (100);
+        if(grab != GDK_GRAB_SUCCESS) {
+            grab = gdk_keyboard_grab(win, TRUE, timestamp);
+        }
+    }
+
+    if (grab == GDK_GRAB_SUCCESS) {
+        gdk_keyboard_ungrab(timestamp);
+    } else {
+        timestamp = 0;
+    }
+
+    return timestamp;
+}
