@@ -96,7 +96,7 @@
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
                         <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                        <property name="tooltip-text" translatable="yes">Add an image to the list</property>
+                        <property name="tooltip-text" translatable="yes">Choose the folder to select wallpapers from</property>
                         <property name="action">GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER</property>
                       </object>
                       <packing>
@@ -143,7 +143,6 @@
                         <property name="visible">True</property>
                         <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
                         <property name="tooltip-text" translatable="yes">Specify how the image will be resized to fit the screen</property>
-                        <signal handler="image_style_changed" name="changed"/>
                         <items>
                           <item translatable="yes">None</item>
                           <item translatable="yes">Centered</item>
@@ -184,7 +183,6 @@
                         <property name="visible">True</property>
                         <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
                         <property name="tooltip-text" translatable="yes">Specify the style of the color drawn behind the backdrop image</property>
-                        <signal handler="color_style_changed" name="changed"/>
                         <property name="model">model2</property>
                         <child>
                           <object class="GtkCellRendererText" id="renderer2"/>
@@ -211,7 +209,6 @@
                         <property name="tooltip-text" translatable="yes">Specifies the solid color, or the "left" or "top" color of the gradient</property>
                         <property name="title" translatable="yes">Select First Color</property>
                         <property name="color">#151522223333</property>
-                        <signal handler="color1_changed" name="color_set"/>
                       </object>
                       <packing>
                         <property name="left-attach">2</property>
@@ -231,7 +228,6 @@
                         <property name="tooltip-text" translatable="yes">Specifies the "right" or "bottom" color of the gradient</property>
                         <property name="title" translatable="yes">Select Second Color</property>
                         <property name="color">#151522223333</property>
-                        <signal handler="color2_changed" name="color_set"/>
                       </object>
                       <packing>
                         <property name="left-attach">3</property>
@@ -278,8 +274,8 @@
                         <property name="sensitive">True</property>
                         <property name="can_focus">True</property>
                         <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                        <property name="label" translatable="yes">_Change the background (in minutes):</property>
-                        <property name="tooltip-text" translatable="yes">Automatically select a different background from the current directory after a set number of minutes.</property>
+                        <property name="label" translatable="yes">_Change the background </property>
+                        <property name="tooltip-text" translatable="yes">Automatically select a different background from the current directory.</property>
                         <property name="use_underline">True</property>
                         <property name="draw_indicator">True</property>
                       </object>
@@ -288,13 +284,33 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkSpinButton" id="spin_backdrop_time_minutes">
+                      <object class="GtkComboBoxText" id="combo_cycle_backdrop_period">
+                        <property name="visible">True</property>
+                        <property name="sensitive">False</property>
+                        <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                        <property name="tooltip-text" translatable="yes">Specify how often the background will change</property>
+                        <items>
+                          <item translatable="yes">in seconds:</item>
+                          <item translatable="yes">in minutes:</item>
+                          <item translatable="yes">in hours:</item>
+                          <item translatable="yes">at start up</item>
+                          <item translatable="yes">every hour</item>
+                          <item translatable="yes">every day</item>
+                          <item translatable="yes">chronologically</item>
+                        </items>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSpinButton" id="spin_backdrop_time">
                         <property name="visible">True</property>
                         <property name="sensitive">False</property>
                         <property name="can_focus">True</property>
                         <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
                         <property name="adjustment">adjustment3</property>
-                        <property name="tooltip-text" translatable="yes">Number of minutes before a different background is selected.</property>
+                        <property name="tooltip-text" translatable="yes">Amount of time before a different background is selected.</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -310,6 +326,7 @@
                         <property name="label" translatable="yes">_Random Order</property>
                         <property name="use_underline">True</property>
                         <property name="draw_indicator">True</property>
+                        <property name="tooltip-text" translatable="yes">Randomly selects another image from the same directory when the wallpaper is to cycle. Overrides the Chronological option.</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>

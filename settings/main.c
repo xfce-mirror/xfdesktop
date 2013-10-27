@@ -75,13 +75,9 @@
 #define DESKTOP_ICONS_ICON_SIZE_PROP         "/desktop-icons/icon-size"
 #define DESKTOP_ICONS_FONT_SIZE_PROP         "/desktop-icons/font-size"
 #define DESKTOP_ICONS_CUSTOM_FONT_SIZE_PROP  "/desktop-icons/use-custom-font-size"
+#define DESKTOP_ICONS_SHOW_TOOLTIP_PROP      "/desktop-icons/show-tooltips"
+#define DESKTOP_ICONS_TOOLTIP_SIZE_PROP      "/desktop-icons/tooltip-size"
 #define DESKTOP_ICONS_SINGLE_CLICK_PROP      "/desktop-icons/single-click"
-#define DESKTOP_ICONS_SHOW_THUMBNAILS_PROP   "/desktop-icons/show-thumbnails"
-#define DESKTOP_ICONS_SHOW_HOME              "/desktop-icons/file-icons/show-home"
-#define DESKTOP_ICONS_SHOW_TRASH             "/desktop-icons/file-icons/show-trash"
-#define DESKTOP_ICONS_SHOW_FILESYSTEM        "/desktop-icons/file-icons/show-filesystem"
-#define DESKTOP_ICONS_SHOW_REMOVABLE         "/desktop-icons/file-icons/show-removable"
-
 
 typedef struct
 {
@@ -115,8 +111,10 @@ typedef struct
     gulong color1_btn_id;
     gulong color2_btn_id;
 
-    GtkWidget *backdrop_cycle_spinbox;
+    /* backdrop cycling options */
     GtkWidget *backdrop_cycle_chkbox;
+    GtkWidget *combo_backdrop_cycle_period;
+    GtkWidget *backdrop_cycle_spinbox;
     GtkWidget *random_backdrop_order_chkbox;
 
     GThread *preview_thread;
@@ -307,7 +305,7 @@ xfdesktop_settings_queue_preview(GtkTreeModel *model,
                                  GtkTreeIter *iter,
                                  AppearancePanel *panel)
 {
-    gchar *filename;
+    gchar *filename = NULL;
 
     gtk_tree_model_get(model, iter, COL_FILENAME, &filename, -1);
 
@@ -321,6 +319,9 @@ xfdesktop_settings_queue_preview(GtkTreeModel *model,
 
         xfdesktop_settings_add_file_to_queue(panel, pdata);
     }
+
+    if(filename)
+        g_free(filename);
 }
 
 static void
@@ -342,7 +343,7 @@ cb_special_icon_toggled(GtkCellRendererToggle *render, gchar *path, gpointer use
 
     xfconf_channel_set_bool(channel, icon_property, show_icon);
 
-    gtk_list_store_set(GTK_LIST_STORE(model), &iter,
+    gtk_tree_store_set(GTK_TREE_STORE(model), &iter,
                        COL_ICON_ENABLED, show_icon, -1);
 
     gtk_tree_path_free(tree_path);
@@ -354,10 +355,10 @@ setup_special_icon_list(GtkBuilder *gxml,
                         XfconfChannel *channel)
 {
     GtkWidget *treeview;
-    GtkListStore *ls;
+    GtkTreeStore *ts;
     GtkTreeViewColumn *col;
     GtkCellRenderer *render;
-    GtkTreeIter iter;
+    GtkTreeIter iter, parent_iter, child_iter;
     const struct {
         const gchar *name;
         const gchar *icon;
@@ -373,14 +374,21 @@ setup_special_icon_list(GtkBuilder *gxml,
           DESKTOP_ICONS_SHOW_TRASH, TRUE },
         { N_("Removable Devices"), "drive-removable-media", "gnome-dev-removable",
           DESKTOP_ICONS_SHOW_REMOVABLE, TRUE },
+        { N_("Network Shares"), "network_fs", "gnome-dev-network",
+          DESKTOP_ICONS_SHOW_NETWORK_REMOVABLE, TRUE },
+        { N_("Disks and Drives"), "drive-harddisk-usb", "gnome-dev-removable-usb",
+          DESKTOP_ICONS_SHOW_DEVICE_REMOVABLE, TRUE },
+        { N_("Other Items"), "phone-symbolic", "phone",
+          DESKTOP_ICONS_SHOW_UNKNWON_REMOVABLE, TRUE },
         { NULL, NULL, NULL, NULL, FALSE },
     };
+    const int REMOVABLE_DEVICES = 4;
     int i, w;
     GtkIconTheme *itheme = gtk_icon_theme_get_default();
 
     gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &w, NULL);
 
-    ls = gtk_list_store_new(N_ICON_COLS, GDK_TYPE_PIXBUF, G_TYPE_STRING,
+    ts = gtk_tree_store_new(N_ICON_COLS, GDK_TYPE_PIXBUF, G_TYPE_STRING,
                             G_TYPE_BOOLEAN, G_TYPE_STRING);
     for(i = 0; icons[i].name; ++i) {
         GdkPixbuf *pix = NULL;
@@ -390,8 +398,15 @@ setup_special_icon_list(GtkBuilder *gxml,
         else
             pix = gtk_icon_theme_load_icon(itheme, icons[i].icon_fallback, w, 0, NULL);
 
-        gtk_list_store_append(ls, &iter);
-        gtk_list_store_set(ls, &iter,
+        if(i < REMOVABLE_DEVICES) {
+            gtk_tree_store_append(ts, &parent_iter, NULL);
+            iter = parent_iter;
+        } else {
+            gtk_tree_store_append(ts, &child_iter, &parent_iter);
+            iter = child_iter;
+        }
+
+        gtk_tree_store_set(ts, &iter,
                            COL_ICON_NAME, _(icons[i].name),
                            COL_ICON_PIX, pix,
                            COL_ICON_PROPERTY, icons[i].xfconf_property,
@@ -424,8 +439,8 @@ setup_special_icon_list(GtkBuilder *gxml,
     gtk_tree_view_column_pack_start(col, render, TRUE);
     gtk_tree_view_column_add_attribute(col, render, "text", COL_ICON_NAME);
 
-    gtk_tree_view_set_model(GTK_TREE_VIEW(treeview), GTK_TREE_MODEL(ls));
-    g_object_unref(G_OBJECT(ls));
+    gtk_tree_view_set_model(GTK_TREE_VIEW(treeview), GTK_TREE_MODEL(ts));
+    g_object_unref(G_OBJECT(ts));
 }
 
 
@@ -856,9 +871,11 @@ xfdesktop_settings_get_active_workspace(AppearancePanel *panel,
     return workspace_num;
 }
 
+/* This works for both the custom font size and show tooltips check buttons,
+ * it just enables the associated spin button */
 static void
-cb_xfdesktop_chk_custom_font_size_toggled(GtkCheckButton *button,
-                                          gpointer user_data)
+cb_xfdesktop_chk_button_toggled(GtkCheckButton *button,
+                                gpointer user_data)
 {
     GtkWidget *spin_button = GTK_WIDGET(user_data);
 
@@ -869,11 +886,61 @@ cb_xfdesktop_chk_custom_font_size_toggled(GtkCheckButton *button,
 }
 
 static void
+update_backdrop_random_order_chkbox(AppearancePanel *panel)
+{
+    gboolean sensitive = FALSE;
+    gint period;
+
+    /* For the random check box to be active the combo_backdrop_cycle_period
+     * needs to be active and needs to not be set to chronological */
+    if(gtk_widget_get_sensitive(panel->combo_backdrop_cycle_period)) {
+        period = gtk_combo_box_get_active(GTK_COMBO_BOX(panel->combo_backdrop_cycle_period));
+        if(period != XFCE_BACKDROP_PERIOD_CHRONOLOGICAL)
+            sensitive = TRUE;
+    }
+
+    gtk_widget_set_sensitive(panel->random_backdrop_order_chkbox, sensitive);
+}
+
+static void
+update_backdrop_cycle_spinbox(AppearancePanel *panel)
+{
+    gboolean sensitive = FALSE;
+    gint period;
+
+    /* For the spinbox to be active the combo_backdrop_cycle_period needs to be
+     * active and needs to be set to something where the spinbox would apply */
+    if(gtk_widget_get_sensitive(panel->combo_backdrop_cycle_period)) {
+        period = gtk_combo_box_get_active(GTK_COMBO_BOX(panel->combo_backdrop_cycle_period));
+        if(period == XFCE_BACKDROP_PERIOD_SECONDS ||
+           period == XFCE_BACKDROP_PERIOD_MINUES  ||
+           period == XFCE_BACKDROP_PERIOD_HOURS)
+        {
+            sensitive = TRUE;
+        }
+    }
+
+    gtk_widget_set_sensitive(panel->backdrop_cycle_spinbox, sensitive);
+}
+
+static void
+cb_combo_backdrop_cycle_period_change(GtkComboBox *combo,
+                                      gpointer user_data)
+{
+    AppearancePanel *panel = user_data;
+
+    /* determine if the spin box should be sensitive */
+    update_backdrop_cycle_spinbox(panel);
+    /* determine if the random check box should be sensitive */
+    update_backdrop_random_order_chkbox(panel);
+}
+
+static void
 cb_xfdesktop_chk_cycle_backdrop_toggled(GtkCheckButton *button,
                                         gpointer user_data)
 {
-    gboolean sensitive = FALSE;
     AppearancePanel *panel = user_data;
+    gboolean sensitive = FALSE;
 
     TRACE("entering");
 
@@ -881,8 +948,12 @@ cb_xfdesktop_chk_cycle_backdrop_toggled(GtkCheckButton *button,
            sensitive = TRUE;
     }
 
-    gtk_widget_set_sensitive(panel->backdrop_cycle_spinbox, sensitive);
-    gtk_widget_set_sensitive(panel->random_backdrop_order_chkbox, sensitive);
+    /* The cycle backdrop toggles the period and random widgets */
+    gtk_widget_set_sensitive(panel->combo_backdrop_cycle_period, sensitive);
+    /* determine if the spin box should be sensitive */
+    update_backdrop_cycle_spinbox(panel);
+    /* determine if the random check box should be sensitive */
+    update_backdrop_random_order_chkbox(panel);
 }
 
 static gboolean
@@ -979,6 +1050,7 @@ cb_folder_selection_changed(GtkWidget *button,
         DBG("filename %s, previous_filename %s. Nothing changed",
             filename == NULL ? "NULL" : filename,
             previous_filename == NULL ? "NULL" : previous_filename);
+
         g_free(filename);
         g_free(previous_filename);
         return;
@@ -1096,7 +1168,9 @@ xfdesktop_settings_update_iconview_folder(AppearancePanel *panel)
 }
 
 /* This function is to add or remove all the bindings for the background
- * tab. It's intended to be used when the app changes monitors or workspaces */
+ * tab. It's intended to be used when the app changes monitors or workspaces.
+ * It reverts the items back to their defaults before binding any new settings
+ * that way if the setting isn't present, the default correctly displays. */
 static void
 xfdesktop_settings_background_tab_change_bindings(AppearancePanel *panel,
                                                   gboolean remove_binding)
@@ -1180,6 +1254,13 @@ xfdesktop_settings_background_tab_change_bindings(AppearancePanel *panel,
                 gtk_color_button_set_color(GTK_COLOR_BUTTON(panel->color1_btn),
                                            g_value_get_boxed(&value));
                 g_value_unset(&value);
+            } else {
+                /* revert to showing our default color */
+                GdkColor color1;
+                color1.red = 0x1515;
+                color1.green = 0x2222;
+                color1.blue = 0x3333;
+                gtk_color_button_set_color(GTK_COLOR_BUTTON(panel->color1_btn), &color1);
             }
 
             g_free(old_property);
@@ -1208,6 +1289,13 @@ xfdesktop_settings_background_tab_change_bindings(AppearancePanel *panel,
                 gtk_color_button_set_color(GTK_COLOR_BUTTON(panel->color1_btn),
                                            g_value_get_boxed(&value));
                 g_value_unset(&value);
+            } else {
+                /* revert to showing our default color */
+                GdkColor color2;
+                color2.red = 0x1515;
+                color2.green = 0x2222;
+                color2.blue = 0x3333;
+                gtk_color_button_set_color(GTK_COLOR_BUTTON(panel->color2_btn), &color2);
             }
 
             g_free(old_property);
@@ -1226,8 +1314,27 @@ xfdesktop_settings_background_tab_change_bindings(AppearancePanel *panel,
         xfconf_g_property_unbind_by_property(channel, buf,
                            G_OBJECT(panel->backdrop_cycle_chkbox), "active");
     } else {
+        /* The default is disable cycling, set that before we bind to anything */
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(panel->backdrop_cycle_chkbox), FALSE);
+
         xfconf_g_property_bind(channel, buf, G_TYPE_BOOLEAN,
                                G_OBJECT(panel->backdrop_cycle_chkbox), "active");
+    }
+    g_free(buf);
+
+    /* backdrop cycle period combo box */
+    buf = xfdesktop_settings_generate_per_workspace_binding_string(panel, "backdrop-cycle-period");
+    if(remove_binding) {
+        xfconf_g_property_unbind_by_property(channel, buf,
+                               G_OBJECT(panel->combo_backdrop_cycle_period), "active");
+    } else {
+        /* default is minutes, set that before we bind to it */
+        gtk_combo_box_set_active(GTK_COMBO_BOX(panel->combo_backdrop_cycle_period), XFCE_BACKDROP_PERIOD_MINUES);
+
+        xfconf_g_property_bind(channel, buf, G_TYPE_INT,
+                               G_OBJECT(panel->combo_backdrop_cycle_period), "active");
+        /* determine if the cycle timer spin box is sensitive */
+        cb_combo_backdrop_cycle_period_change(GTK_COMBO_BOX(panel->combo_backdrop_cycle_period), panel);
     }
     g_free(buf);
 
@@ -1238,6 +1345,10 @@ xfdesktop_settings_background_tab_change_bindings(AppearancePanel *panel,
                    G_OBJECT(gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(panel->backdrop_cycle_spinbox))),
                    "value");
     } else {
+        guint current_timer = xfconf_channel_get_uint(channel, buf, 10);
+        /* Update the spin box before we bind to it */
+        gtk_spin_button_set_value(GTK_SPIN_BUTTON(panel->backdrop_cycle_spinbox), current_timer);
+
         xfconf_g_property_bind(channel, buf, G_TYPE_UINT,
                        G_OBJECT(gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(panel->backdrop_cycle_spinbox))),
                        "value");
@@ -1250,11 +1361,13 @@ xfdesktop_settings_background_tab_change_bindings(AppearancePanel *panel,
         xfconf_g_property_unbind_by_property(channel, buf,
                            G_OBJECT(panel->random_backdrop_order_chkbox), "active");
     } else {
+        /* The default is sequential, set that before we bind to anything */
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(panel->random_backdrop_order_chkbox), FALSE);
+
         xfconf_g_property_bind(channel, buf, G_TYPE_BOOLEAN,
                                G_OBJECT(panel->random_backdrop_order_chkbox), "active");
     }
     g_free(buf);
-
 }
 
 static void
@@ -1320,6 +1433,8 @@ cb_update_background_tab(WnckWindow *wnck_window,
 
     if(panel->monitor_name != NULL)
         g_free(panel->monitor_name);
+    if(monitor_name != NULL)
+        g_free(monitor_name);
 
     panel->workspace = workspace_num;
     panel->screen = screen_num;
@@ -1504,7 +1619,7 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     GtkWidget *appearance_container, *chk_custom_font_size,
               *spin_font_size, *w, *box, *spin_icon_size,
               *chk_show_thumbnails, *chk_single_click, *appearance_settings,
-              *bnt_exit;
+              *chk_show_tooltips, *spin_tooltip_size, *bnt_exit;
     GtkBuilder *appearance_gxml;
     AppearancePanel *panel = g_new0(AppearancePanel, 1);
     GError *error = NULL;
@@ -1544,9 +1659,19 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     chk_single_click = GTK_WIDGET(gtk_builder_get_object(main_gxml,
                                                          "chk_single_click"));
 
+    /* tooltip options */
+    chk_show_tooltips = GTK_WIDGET(gtk_builder_get_object(main_gxml, "chk_show_tooltips"));
+    spin_tooltip_size = GTK_WIDGET(gtk_builder_get_object(main_gxml, "spin_tooltip_size"));
+    gtk_spin_button_set_value(GTK_SPIN_BUTTON(spin_tooltip_size), 128);
+
+    /* connect up the signals */
     g_signal_connect(G_OBJECT(chk_custom_font_size), "toggled",
-                     G_CALLBACK(cb_xfdesktop_chk_custom_font_size_toggled),
+                     G_CALLBACK(cb_xfdesktop_chk_button_toggled),
                      spin_font_size);
+
+    g_signal_connect(G_OBJECT(chk_show_tooltips), "toggled",
+                     G_CALLBACK(cb_xfdesktop_chk_button_toggled),
+                     spin_tooltip_size);
 
     /* thumbnails */
     chk_show_thumbnails = GTK_WIDGET(gtk_builder_get_object(main_gxml,
@@ -1659,14 +1784,23 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     /* background cycle timer */
     panel->backdrop_cycle_chkbox = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
                                                                      "chk_cycle_backdrop"));
+    panel->combo_backdrop_cycle_period = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
+                                                                           "combo_cycle_backdrop_period"));
     panel->backdrop_cycle_spinbox = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
-                                                                     "spin_backdrop_time_minutes"));
+                                                                     "spin_backdrop_time"));
     panel->random_backdrop_order_chkbox = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
                                                                      "chk_random_backdrop_order"));
+
+    /* Pick the first entry so something shows up */
+    gtk_combo_box_set_active(GTK_COMBO_BOX(panel->combo_backdrop_cycle_period), XFCE_BACKDROP_PERIOD_MINUES);
 
     g_signal_connect(G_OBJECT(panel->backdrop_cycle_chkbox), "toggled",
                     G_CALLBACK(cb_xfdesktop_chk_cycle_backdrop_toggled),
                     panel);
+
+    g_signal_connect(G_OBJECT(panel->combo_backdrop_cycle_period), "changed",
+                     G_CALLBACK(cb_combo_backdrop_cycle_period_change),
+                     panel);
 
     g_object_unref(G_OBJECT(appearance_gxml));
 
@@ -1730,7 +1864,13 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     xfconf_g_property_bind(channel, DESKTOP_ICONS_CUSTOM_FONT_SIZE_PROP,
                            G_TYPE_BOOLEAN, G_OBJECT(chk_custom_font_size),
                            "active");
-    xfconf_g_property_bind(channel, DESKTOP_ICONS_SHOW_THUMBNAILS_PROP,
+    xfconf_g_property_bind(channel, DESKTOP_ICONS_SHOW_TOOLTIP_PROP,
+                           G_TYPE_BOOLEAN, G_OBJECT(chk_show_tooltips),
+                           "active");
+    xfconf_g_property_bind(channel, DESKTOP_ICONS_TOOLTIP_SIZE_PROP, G_TYPE_DOUBLE,
+                           G_OBJECT(gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(spin_tooltip_size))),
+                           "value");
+    xfconf_g_property_bind(channel, DESKTOP_ICONS_SHOW_THUMBNAILS,
                            G_TYPE_BOOLEAN, G_OBJECT(chk_show_thumbnails),
                            "active");
     xfconf_g_property_bind(channel, DESKTOP_ICONS_SINGLE_CLICK_PROP,

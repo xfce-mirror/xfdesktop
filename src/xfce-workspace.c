@@ -129,35 +129,61 @@ xfce_workspace_get_xinerama_stretch(XfceWorkspace *workspace)
 }
 
 static void
+xfce_workspace_change_backdrop(XfceWorkspace *workspace,
+                               XfceBackdrop *backdrop,
+                               const gchar *backdrop_file)
+{
+    XfconfChannel *channel = workspace->priv->channel;
+    char buf[1024];
+    gchar *monitor_name = NULL;
+    guint i, monitor_num;
+
+    g_return_if_fail(workspace->priv->nbackdrops > 0);
+
+    TRACE("entering");
+
+    /* Find out which monitor we're on */
+    for(i = 0; i < workspace->priv->nbackdrops; ++i) {
+        if(backdrop == workspace->priv->backdrops[i]) {
+            monitor_num = i;
+            break;
+        }
+    }
+
+    monitor_name = gdk_screen_get_monitor_plug_name(workspace->priv->gscreen,
+                                                    monitor_num);
+
+    /* Get the backdrop's image property */
+    if(monitor_name == NULL) {
+        g_snprintf(buf, sizeof(buf), "%smonitor%d/workspace%d/last-image",
+                   workspace->priv->property_prefix, monitor_num, workspace->priv->workspace_num);
+    } else {
+        g_snprintf(buf, sizeof(buf), "%smonitor%s/workspace%d/last-image",
+                   workspace->priv->property_prefix, monitor_name, workspace->priv->workspace_num);
+
+        g_free(monitor_name);
+    }
+
+    /* Update the property so that xfdesktop won't show the same image every
+     * time it starts up when the user wants it to cycle different images */
+    xfconf_channel_set_string(channel, buf, backdrop_file);
+}
+
+static void
 backdrop_cycle_cb(XfceBackdrop *backdrop, gpointer user_data)
 {
-    const gchar* backdrop_file;
-    gchar *new_backdrop = NULL;
     XfceWorkspace *workspace = XFCE_WORKSPACE(user_data);
+    const gchar *new_backdrop;
 
     TRACE("entering");
 
     g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
 
-    backdrop_file = xfce_backdrop_get_image_filename(backdrop);
+    new_backdrop = xfce_backdrop_get_image_filename(backdrop);
 
-    if(backdrop_file == NULL)
-        return;
-
-    if(xfce_backdrop_get_random_order(backdrop)) {
-        DBG("Random! current file: %s", backdrop_file);
-        new_backdrop = xfdesktop_backdrop_choose_random(backdrop_file);
-    } else {
-        DBG("Next! current file: %s", backdrop_file);
-        new_backdrop = xfdesktop_backdrop_choose_next(backdrop_file);
-    }
-    DBG("new file: %s for Workspace %d", new_backdrop,
-        xfce_workspace_get_workspace_num(workspace));
-
-    if(g_strcmp0(backdrop_file, new_backdrop) != 0) {
-        xfce_backdrop_set_image_filename(backdrop, new_backdrop);
-        g_free(new_backdrop);
-    }
+    /* update the xfconf property */
+    if(new_backdrop != NULL)
+        xfce_workspace_change_backdrop(workspace, backdrop, new_backdrop);
 }
 
 static void
@@ -452,8 +478,8 @@ xfce_workspace_migrate_backdrop_image_style(XfceWorkspace *workspace,
         xfce_backdrop_set_image_style(backdrop, style);
         g_value_unset(&value);
     } else {
-    /* If no value was ever set default to stretched */
-    xfce_backdrop_set_image_style(backdrop, XFCE_BACKDROP_IMAGE_STRETCHED);
+        /* If no value was ever set default to stretched */
+        xfce_backdrop_set_image_style(backdrop, XFCE_BACKDROP_IMAGE_STRETCHED);
     }
 }
 
@@ -505,6 +531,11 @@ xfce_workspace_connect_backdrop_settings(XfceWorkspace *workspace,
     g_strlcat(buf, "backdrop-cycle-enable", sizeof(buf));
     xfconf_g_property_bind(channel, buf, G_TYPE_BOOLEAN,
                            G_OBJECT(backdrop), "backdrop-cycle-enable");
+
+    buf[pp_len] = 0;
+    g_strlcat(buf, "backdrop-cycle-period", sizeof(buf));
+    xfconf_g_property_bind(channel, buf, XFCE_TYPE_BACKDROP_CYCLE_PERIOD,
+                           G_OBJECT(backdrop), "backdrop-cycle-period");
 
     buf[pp_len] = 0;
     g_strlcat(buf, "backdrop-cycle-timer", sizeof(buf));

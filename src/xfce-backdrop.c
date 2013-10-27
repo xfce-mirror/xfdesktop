@@ -45,7 +45,11 @@
 #define abs(x)  ( (x) < 0 ? -(x) : (x) )
 #endif
 
-#define XFCE_BACKDROP_BUFFER_SIZE 4096
+#define XFCE_BACKDROP_BUFFER_SIZE 32768
+
+#ifndef O_BINARY
+#define O_BINARY  0
+#endif
 
 typedef struct _XfceBackdropImageData XfceBackdropImageData;
 
@@ -80,6 +84,10 @@ static void xfce_backdrop_file_input_stream_ready_cb(GObject *source_object,
 
 static void xfce_backdrop_image_data_release(XfceBackdropImageData *image_data);
 
+gchar *xfce_backdrop_choose_next         (const gchar *filename);
+gchar *xfce_backdrop_choose_random       (const gchar *filename);
+gchar *xfce_backdrop_choose_chronological(const gchar *filename);
+
 struct _XfceBackdropPriv
 {
     gint width, height;
@@ -98,6 +106,7 @@ struct _XfceBackdropPriv
     gboolean cycle_backdrop;
     guint cycle_timer;
     guint cycle_timer_id;
+    XfceBackdropCyclePeriod cycle_period;
     gboolean random_backdrop_order;
 };
 
@@ -130,8 +139,9 @@ enum
     PROP_IMAGE_FILENAME,
     PROP_BRIGHTNESS,
     PROP_BACKDROP_CYCLE_ENABLE,
+    PROP_BACKDROP_CYCLE_PERIOD,
     PROP_BACKDROP_CYCLE_TIMER,
-    PROP_BACKDROP_RANDOM_ORDER
+    PROP_BACKDROP_RANDOM_ORDER,
 };
 
 static guint backdrop_signals[LAST_SIGNAL] = { 0, };
@@ -230,6 +240,210 @@ xfce_backdrop_clear_cached_image(XfceBackdrop *backdrop)
     backdrop->priv->pix = NULL;
 }
 
+/* Returns a GList of all the files in the parent directory of filename */
+static GList *
+list_files_in_dir(const gchar *filename)
+{
+    GDir *dir;
+    gboolean needs_slash = TRUE;
+    const gchar *file;
+    GList *files = NULL;
+    gchar *dir_name;
+
+    dir_name = g_path_get_dirname(filename);
+
+    dir = g_dir_open(dir_name, 0, 0);
+    if(!dir) {
+        g_free(dir_name);
+        return NULL;
+    }
+
+    if(dir_name[strlen(dir_name)-1] == '/')
+        needs_slash = FALSE;
+
+    while((file = g_dir_read_name(dir))) {
+        gchar *current_file = g_strdup_printf(needs_slash ? "%s/%s" : "%s%s",
+                                              dir_name, file);
+
+        files = g_list_insert_sorted(files, current_file, (GCompareFunc)g_strcmp0);
+    }
+
+    g_dir_close(dir);
+    g_free(dir_name);
+
+    return files;
+}
+
+/* Gets the next valid image file in the folder. Free when done using it
+ * returns NULL on fail. */
+gchar *
+xfce_backdrop_choose_next(const gchar *filename)
+{
+    GList *files, *current_file, *start_file;
+    gchar *file = NULL;
+
+    TRACE("entering");
+
+    g_return_val_if_fail(filename, NULL);
+
+    /* We don't cache the list at all. This way the user can add/remove items
+     * whenever they like without xfdesktop having to do anything. If we start
+     * supporting sub-directories we may want to re-think that assumption */
+    files = list_files_in_dir(filename);
+
+    if(!files)
+        return NULL;
+
+    /* Get the our current background in the list */
+    current_file = g_list_find_custom(files, filename, (GCompareFunc)g_strcmp0);
+
+    /* if somehow we don't have a valid file, grab the first one available */
+    if(current_file == NULL)
+        current_file = g_list_first(files);
+
+    start_file = current_file;
+
+    /* We want the next valid image file in the dir while making sure
+     * we don't loop on ourselves */
+    do {
+        current_file = g_list_next(current_file);
+
+        /* we hit the end of the list */
+        if(current_file == NULL)
+            current_file = g_list_first(files);
+
+        /* We went through every item in the list */
+        if(g_strcmp0(start_file->data, current_file->data) == 0)
+            break;
+
+    } while(!xfdesktop_image_file_is_valid(current_file->data));
+
+    /* Keep a copy of our new item, free everything else */
+    file = g_strdup(current_file->data);
+    g_list_free_full(files, g_free);
+
+    return file;
+}
+
+/* Gets a random valid image file in the folder. Free when done using it.
+ * returns NULL on fail. */
+gchar *
+xfce_backdrop_choose_random(const gchar *filename)
+{
+    static gint previndex = -1;
+    GList *files;
+    gchar *file = NULL;
+    gint n_items = 0, cur_file, tries = 0;
+
+    TRACE("entering");
+
+    g_return_val_if_fail(filename, NULL);
+
+    /* We don't cache the list at all. This way the user can add/remove items
+     * whenever they like without xfdesktop having to do anything. If we start
+     * supporting sub-directories we may want to re-think that assumption */
+    files = list_files_in_dir(filename);
+
+    if(!files)
+        return NULL;
+
+    n_items = g_list_length(files);
+
+    /* If there's only 1 item, just return it, easy */
+    if(1 == n_items) {
+        file = g_strdup(g_list_first(files)->data);
+        g_list_free_full(files, g_free);
+        return file;
+    }
+
+    do {
+        if(tries++ == n_items) {
+            /* this isn't precise, but if we've failed to get a good
+             * image after all this time, let's just give up */
+            g_warning("Unable to find good image from list; giving up");
+            g_list_free_full(files, g_free);
+            return NULL;
+        }
+
+        do {
+            /* g_random_int_range bounds to n_items-1 */
+            cur_file = g_random_int_range(0, n_items);
+        } while(cur_file == previndex && G_LIKELY(previndex != -1));
+
+    } while(!xfdesktop_image_file_is_valid(g_list_nth(files, cur_file)->data));
+
+    previndex = cur_file;
+
+    /* Keep a copy of our new random item, free everything else */
+    file = g_strdup(g_list_nth(files, cur_file)->data);
+    g_list_free_full(files, g_free);
+
+    return file;
+}
+
+/* Provides a mapping of image files in the parent folder of file. It selects
+ * the image based on the hour of the day scaled for how many images are in
+ * the directory, using the first 24 if there are more.
+ * Returns a new image path or NULL on failure. Free when done using it. */
+gchar *
+xfce_backdrop_choose_chronological(const gchar *filename)
+{
+    GDateTime *datetime;
+    GList *files, *current_file, *start_file;
+    gchar *file = NULL;
+    gint n_items = 0, epoch;
+
+    TRACE("entering");
+
+    g_return_val_if_fail(filename, NULL);
+
+    /* We don't cache the list at all. This way the user can add/remove items
+     * whenever they like without xfdesktop having to do anything. If we start
+     * supporting sub-directories we may want to re-think that assumption */
+    files = list_files_in_dir(filename);
+
+    if(!files)
+        return NULL;
+
+    n_items = g_list_length(files);
+
+    /* If there's only 1 item, just return it, easy */
+    if(1 == n_items) {
+        file = g_strdup(g_list_first(files)->data);
+        g_list_free_full(files, g_free);
+        return file;
+    }
+
+    datetime = g_date_time_new_now_local();
+
+    /* Figure out which image to display based on what time of day it is
+     * and how many images we have to work with */
+    epoch = (gdouble)g_date_time_get_hour(datetime) / (24.0f / MIN(n_items, 24.0f));
+    DBG("epoch %d, hour %d, items %d", epoch, g_date_time_get_minute(datetime), n_items);
+
+    start_file = current_file = g_list_nth(files, epoch);
+
+    /* We want the next valid image file in the dir while making sure
+     * we don't loop on ourselves */
+    while(!xfdesktop_image_file_is_valid(current_file->data)) {
+        current_file = g_list_next(current_file);
+
+        /* we hit the end of the list */
+        if(current_file == NULL)
+            current_file = g_list_first(files);
+
+        /* We went through every item in the list */
+        if(g_strcmp0(start_file->data, current_file->data) == 0)
+            break;
+    }
+
+    /* Keep a copy of our new item, free everything else */
+    file = g_strdup(current_file->data);
+    g_list_free_full(files, g_free);
+    g_date_time_unref(datetime);
+
+    return file;
+}
 
 /* gobject-related functions */
 
@@ -317,12 +531,20 @@ xfce_backdrop_class_init(XfceBackdropClass *klass)
                                                          FALSE,
                                                          XFDESKTOP_PARAM_FLAGS));
 
+    g_object_class_install_property(gobject_class, PROP_BACKDROP_CYCLE_PERIOD,
+                                    g_param_spec_enum("backdrop-cycle-period",
+                                                      "backdrop-cycle-period",
+                                                      "backdrop-cycle-period",
+                                                      XFCE_TYPE_BACKDROP_CYCLE_PERIOD,
+                                                      XFCE_BACKDROP_PERIOD_MINUES,
+                                                      XFDESKTOP_PARAM_FLAGS));
+
     g_object_class_install_property(gobject_class, PROP_BACKDROP_CYCLE_TIMER,
                                     g_param_spec_uint("backdrop-cycle-timer",
-                                                     "backdrop-cycle-timer",
-                                                     "backdrop-cycle-timer",
-                                                     0, G_MAXUSHORT, 10,
-                                                     XFDESKTOP_PARAM_FLAGS));
+                                                      "backdrop-cycle-timer",
+                                                      "backdrop-cycle-timer",
+                                                      0, G_MAXUSHORT, 10,
+                                                      XFDESKTOP_PARAM_FLAGS));
 
     g_object_class_install_property(gobject_class, PROP_BACKDROP_RANDOM_ORDER,
                                     g_param_spec_boolean("backdrop-cycle-random-order",
@@ -409,6 +631,10 @@ xfce_backdrop_set_property(GObject *object,
             xfce_backdrop_set_cycle_backdrop(backdrop, g_value_get_boolean(value));
             break;
 
+        case PROP_BACKDROP_CYCLE_PERIOD:
+            xfce_backdrop_set_cycle_period(backdrop, g_value_get_enum(value));
+            break;
+
         case PROP_BACKDROP_CYCLE_TIMER:
             xfce_backdrop_set_cycle_timer(backdrop, g_value_get_uint(value));
             break;
@@ -455,6 +681,10 @@ xfce_backdrop_get_property(GObject *object,
 
         case PROP_BACKDROP_CYCLE_ENABLE:
             g_value_set_boolean(value, xfce_backdrop_get_cycle_backdrop(backdrop));
+            break;
+
+        case PROP_BACKDROP_CYCLE_PERIOD:
+            g_value_set_enum(value, xfce_backdrop_get_cycle_period(backdrop));
             break;
 
         case PROP_BACKDROP_CYCLE_TIMER:
@@ -664,7 +894,7 @@ xfce_backdrop_get_second_color(XfceBackdrop *backdrop,
  **/
 void
 xfce_backdrop_set_image_style(XfceBackdrop *backdrop,
-        XfceBackdropImageStyle style)
+                              XfceBackdropImageStyle style)
 {
     g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
     
@@ -690,7 +920,7 @@ xfce_backdrop_get_image_style(XfceBackdrop *backdrop)
  *
  * Sets the image that should be used with the #XfceBackdrop.  The image will
  * be composited on top of the color (or color gradient).  To clear the image,
- * use this call with a @filename argument of %NULL.
+ * use this call with a @filename argument of %NULL. Makes a copy of @filename.
  **/
 void
 xfce_backdrop_set_image_filename(XfceBackdrop *backdrop, const gchar *filename)
@@ -698,6 +928,10 @@ xfce_backdrop_set_image_filename(XfceBackdrop *backdrop, const gchar *filename)
     g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
 
     TRACE("entering, filename %s", filename);
+
+    /* Don't do anything if the filename doesn't change */
+    if(g_strcmp0(backdrop->priv->image_path, filename) == 0)
+        return;
 
     g_free(backdrop->priv->image_path);
     
@@ -718,53 +952,196 @@ xfce_backdrop_get_image_filename(XfceBackdrop *backdrop)
     return backdrop->priv->image_path;
 }
 
+static void
+xfce_backdrop_cycle_backdrop(XfceBackdrop *backdrop)
+{
+    XfceBackdropCyclePeriod period;
+    gchar *current_backdrop, *new_backdrop;
+
+    TRACE("entering");
+
+    g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
+
+    current_backdrop = backdrop->priv->image_path;
+    period = backdrop->priv->cycle_period;
+
+    /* sanity checks */
+    if(current_backdrop == NULL || !backdrop->priv->cycle_backdrop)
+        return;
+
+    if(period == XFCE_BACKDROP_PERIOD_CHRONOLOGICAL) {
+        /* chronological first */
+        new_backdrop = xfce_backdrop_choose_chronological(current_backdrop);
+    } else if(backdrop->priv->random_backdrop_order) {
+        /* then random */
+        new_backdrop = xfce_backdrop_choose_random(current_backdrop);
+    } else {
+        /* sequential, the default */
+        new_backdrop = xfce_backdrop_choose_next(current_backdrop);
+    }
+
+    /* Only emit the cycle signal if something changed */
+    if(g_strcmp0(backdrop->priv->image_path, new_backdrop) != 0) {
+        xfce_backdrop_set_image_filename(backdrop, new_backdrop);
+        g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_CYCLE], 0);
+    }
+
+    g_free(new_backdrop);
+}
+
 static gboolean
 xfce_backdrop_timer(XfceBackdrop *backdrop)
 {
+    GDateTime *local_time = NULL;
+    gint hour, minute, second;
+    guint cycle_interval = 0;
+    gboolean continue_cycling = TRUE;
+
     TRACE("entering");
 
     g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), FALSE);
 
     /* Don't bother with trying to cycle a backdrop if we're not using images */
     if(backdrop->priv->image_style != XFCE_BACKDROP_IMAGE_NONE)
-        g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_CYCLE], 0);
+        xfce_backdrop_cycle_backdrop(backdrop);
 
-    return TRUE;
+    /* Now to complicate things; we have to handle some special cases */
+    switch(backdrop->priv->cycle_period) {
+        case XFCE_BACKDROP_PERIOD_STARTUP:
+            /* no more cycling */
+            continue_cycling = FALSE;
+            break;
+
+        case XFCE_BACKDROP_PERIOD_CHRONOLOGICAL:
+        case XFCE_BACKDROP_PERIOD_HOURLY:
+            local_time = g_date_time_new_now_local();
+            minute = g_date_time_get_minute(local_time);
+            second = g_date_time_get_second(local_time);
+
+            /* find out how long until the next hour so we cycle on the hour */
+            cycle_interval = ((59 - minute) * 60) + (60 - second);
+
+            /* We created a new instance, kill this one */
+            continue_cycling = FALSE;
+            break;
+
+        case XFCE_BACKDROP_PERIOD_DAILY:
+            local_time = g_date_time_new_now_local();
+            hour   = g_date_time_get_hour  (local_time);
+            minute = g_date_time_get_minute(local_time);
+            second = g_date_time_get_second(local_time);
+
+            /* find out how long until the next day so we cycle on the day */
+            cycle_interval = ((23 - hour) * 60 * 60) + ((59 - minute) * 60) + (60 - second);
+
+            /* We created a new instance, kill this one */
+            continue_cycling = FALSE;
+            break;
+
+        default:
+            /* no changes required */
+            break;
+    }
+
+    /* Update the timer if we're trying to keep things on the hour/day */
+    if(cycle_interval != 0) {
+        DBG("calling g_timeout_add_seconds, interval is %d", cycle_interval);
+        backdrop->priv->cycle_timer_id = g_timeout_add_seconds(cycle_interval,
+                                                               (GSourceFunc)xfce_backdrop_timer,
+                                                               backdrop);
+    }
+
+    if(local_time != NULL)
+        g_date_time_unref(local_time);
+
+    return continue_cycling;
 }
 
 /**
  * xfce_backdrop_set_cycle_timer:
  * @backdrop: An #XfceBackdrop.
- * @cycle_timer: The amount of time, in minutes, to wait before changing the
- *               background image.
+ * @cycle_timer: The amount of time, based on the cycle_period, to wait before
+ *               changing the background image.
  *
  * If cycle_backdrop is enabled then this function will change the backdrop
- * image based on the cycle_timer, a value between 0 and G_MAXUSHORT.
- * A value of 0 indicates that the backdrop should not be changed.
+ * image based on the cycle_timer and cycle_period. The cycle_timer is a value
+ * between 0 and G_MAXUSHORT where a value of 0 indicates that the backdrop
+ * should not be changed.
  **/
 void
 xfce_backdrop_set_cycle_timer(XfceBackdrop *backdrop, guint cycle_timer)
 {
+    GDateTime *local_time = NULL;
+    guint cycle_interval;
+    gint hour, minute, second;
+
     g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
 
     TRACE("entering, cycle_timer = %d", cycle_timer);
 
+    /* Sanity check to help prevent overflows */
     if(cycle_timer > G_MAXUSHORT)
         cycle_timer = G_MAXUSHORT;
 
     backdrop->priv->cycle_timer = cycle_timer;
 
+    /* always remove the old timer */
     if(backdrop->priv->cycle_timer_id != 0) {
         g_source_remove(backdrop->priv->cycle_timer_id);
         backdrop->priv->cycle_timer_id = 0;
     }
 
-    if(backdrop->priv->cycle_timer != 0 &&
-       backdrop->priv->cycle_backdrop == TRUE) {
-        backdrop->priv->cycle_timer_id = g_timeout_add_seconds(backdrop->priv->cycle_timer * 60,
+    if(backdrop->priv->cycle_timer != 0 && backdrop->priv->cycle_backdrop == TRUE) {
+        switch(backdrop->priv->cycle_period) {
+            case XFCE_BACKDROP_PERIOD_SECONDS:
+                cycle_interval = backdrop->priv->cycle_timer;
+                break;
+
+            case XFCE_BACKDROP_PERIOD_MINUES:
+                cycle_interval = backdrop->priv->cycle_timer * 60;
+                break;
+
+            case XFCE_BACKDROP_PERIOD_HOURS:
+                cycle_interval = backdrop->priv->cycle_timer * 60 * 60;
+                break;
+
+            case XFCE_BACKDROP_PERIOD_STARTUP:
+                cycle_interval = 1;
+                break;
+
+            case XFCE_BACKDROP_PERIOD_CHRONOLOGICAL:
+            case XFCE_BACKDROP_PERIOD_HOURLY:
+                local_time = g_date_time_new_now_local();
+                minute = g_date_time_get_minute(local_time);
+                second = g_date_time_get_second(local_time);
+
+                /* find out how long until the next hour so we cycle on the hour */
+                cycle_interval = ((59 - minute) * 60) + (60 - second);
+                break;
+
+            case XFCE_BACKDROP_PERIOD_DAILY:
+                local_time = g_date_time_new_now_local();
+                hour   = g_date_time_get_hour  (local_time);
+                minute = g_date_time_get_minute(local_time);
+                second = g_date_time_get_second(local_time);
+
+                /* find out how long until the next day so we cycle on the day */
+                cycle_interval = ((23 - hour) * 60 * 60) + ((59 - minute) * 60) + (60 - second);
+                break;
+
+            default:
+                g_critical("Unknown backdrop-cycle-period set");
+                break;
+            }
+
+        DBG("calling g_timeout_add_seconds, interval is %d", cycle_interval);
+        backdrop->priv->cycle_timer_id = g_timeout_add_seconds(cycle_interval,
                                                                (GSourceFunc)xfce_backdrop_timer,
                                                                backdrop);
     }
+
+    if(local_time != NULL)
+        g_date_time_unref(local_time);
 }
 
 guint
@@ -807,6 +1184,40 @@ xfce_backdrop_get_cycle_backdrop(XfceBackdrop *backdrop)
 }
 
 /**
+ * xfce_backdrop_set_cycle_period:
+ * @backdrop: An #XfceBackdrop.
+ * @period: Determines how often the backdrop will cycle.
+ *
+ * When cycling backdrops, the period setting will determine how fast the timer
+ * will fire (seconds vs minutes) or if the periodic backdrop will be based on
+ * actual wall clock values or just at xfdesktop's start up.
+ **/
+void
+xfce_backdrop_set_cycle_period(XfceBackdrop *backdrop,
+                               XfceBackdropCyclePeriod period)
+{
+    g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
+    g_return_if_fail(period != XFCE_BACKDROP_PERIOD_INVALID);
+
+    TRACE("entering");
+
+    if(backdrop->priv->cycle_period != period) {
+        backdrop->priv->cycle_period = period;
+        /* Start or stop the backdrop changing */
+        xfce_backdrop_set_cycle_timer(backdrop,
+                                      xfce_backdrop_get_cycle_timer(backdrop));
+    }
+}
+
+XfceBackdropCyclePeriod
+xfce_backdrop_get_cycle_period(XfceBackdrop *backdrop)
+{
+    g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), XFCE_BACKDROP_PERIOD_INVALID);
+
+    return backdrop->priv->cycle_period;
+}
+
+/**
  * xfce_backdrop_set_random_order:
  * @backdrop: An #XfceBackdrop.
  * @random_order: When TRUE and the backdrops are set to cycle, a random image
@@ -835,6 +1246,8 @@ xfce_backdrop_get_random_order(XfceBackdrop *backdrop)
     return backdrop->priv->random_backdrop_order;
 }
 
+/* Generates the background that will either be displayed or will have the
+ * image drawn on top of */
 static GdkPixbuf *
 xfce_backdrop_generate_canvas(XfceBackdrop *backdrop)
 {
@@ -1214,6 +1627,9 @@ xfce_backdrop_file_ready_cb(GObject *source_object,
     GFileInputStream *input_stream = g_file_read_finish(file, res, NULL);
 
     TRACE("entering");
+
+    /* Finished with the file, clean it up */
+    g_object_unref(file);
 
     /* If this fails then close the loader, it will only display the selected
      * backdrop color */

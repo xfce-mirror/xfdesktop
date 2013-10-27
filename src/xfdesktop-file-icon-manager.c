@@ -79,13 +79,7 @@
 #define SAVE_DELAY 7000
 #define BORDER     8
 
-#define SETTING_SHOW_FILESYSTEM  "/desktop-icons/file-icons/show-filesystem"
-#define SETTING_SHOW_HOME        "/desktop-icons/file-icons/show-home"
-#define SETTING_SHOW_TRASH       "/desktop-icons/file-icons/show-trash"
-#define SETTING_SHOW_REMOVABLE   "/desktop-icons/file-icons/show-removable"
-#define SETTING_SHOW_THUMBNAILS  "/desktop-icons/show-thumbnails"
-
-enum
+typedef enum
 {
     PROP0 = 0,
     PROP_FOLDER,
@@ -93,8 +87,11 @@ enum
     PROP_SHOW_HOME,
     PROP_SHOW_TRASH,
     PROP_SHOW_REMOVABLE,
+    PROP_SHOW_NETWORK_VOLUME,
+    PROP_SHOW_DEVICE_VOLUME,
+    PROP_SHOW_UNKNOWN_VOLUME,
     PROP_SHOW_THUMBNAILS
-};
+} XfdesktopFileIconManagerProp;
 
 struct _XfdesktopFileIconManagerPrivate
 {
@@ -122,6 +119,9 @@ struct _XfdesktopFileIconManagerPrivate
     GHashTable *special_icons;
     
     gboolean show_removable_media;
+    gboolean show_network_volumes;
+    gboolean show_device_volumes;
+    gboolean show_unknown_volumes;
     gboolean show_special[XFDESKTOP_SPECIAL_FILE_ICON_TRASH+1];
     gboolean show_thumbnails;
     
@@ -187,6 +187,16 @@ static gboolean xfdesktop_file_icon_manager_check_create_desktop_folder(GFile *f
 static void xfdesktop_file_icon_manager_load_desktop_folder(XfdesktopFileIconManager *fmanager);
 static void xfdesktop_file_icon_manager_load_removable_media(XfdesktopFileIconManager *fmanager);
 static void xfdesktop_file_icon_manager_remove_removable_media(XfdesktopFileIconManager *fmanager);
+
+
+static void xfdesktop_file_icon_manager_set_show_special_file(XfdesktopFileIconManager *manager,
+                                                              XfdesktopSpecialFileIconType type,
+                                                              gboolean show_special_file);
+static void xfdesktop_file_icon_manager_set_show_thumbnails(XfdesktopFileIconManager *manager,
+                                                            gboolean show_thumbnails);
+static void xfdesktop_file_icon_manager_set_show_removable_media(XfdesktopFileIconManager *manager,
+                                                                 XfdesktopFileIconManagerProp prop,
+                                                                 gboolean show);
 
 static void xfdesktop_file_icon_position_changed(XfdesktopFileIcon *icon,
                                                  gpointer user_data);
@@ -284,6 +294,24 @@ xfdesktop_file_icon_manager_class_init(XfdesktopFileIconManagerClass *klass)
                                                          "show removable",
                                                          TRUE,
                                                          XFDESKTOP_PARAM_FLAGS));
+    g_object_class_install_property(gobject_class, PROP_SHOW_NETWORK_VOLUME,
+                                    g_param_spec_boolean("show-network-volume",
+                                                         "show network volume",
+                                                         "show network volume",
+                                                         TRUE,
+                                                         XFDESKTOP_PARAM_FLAGS));
+    g_object_class_install_property(gobject_class, PROP_SHOW_DEVICE_VOLUME,
+                                    g_param_spec_boolean("show-device-volume",
+                                                         "show device volume",
+                                                         "show device volume",
+                                                         TRUE,
+                                                         XFDESKTOP_PARAM_FLAGS));
+    g_object_class_install_property(gobject_class, PROP_SHOW_UNKNOWN_VOLUME,
+                                    g_param_spec_boolean("show-unknown-volume",
+                                                         "show unknown volume",
+                                                         "show unknown volume",
+                                                         TRUE,
+                                                         XFDESKTOP_PARAM_FLAGS));
     g_object_class_install_property(gobject_class, PROP_SHOW_THUMBNAILS,
                                     g_param_spec_boolean("show-thumbnails",
                                                          "show-thumbnails",
@@ -347,7 +375,11 @@ xfdesktop_file_icon_manager_set_property(GObject *object,
             break;
 
         case PROP_SHOW_REMOVABLE:
+        case PROP_SHOW_NETWORK_VOLUME:
+        case PROP_SHOW_DEVICE_VOLUME:
+        case PROP_SHOW_UNKNOWN_VOLUME:
             xfdesktop_file_icon_manager_set_show_removable_media(fmanager,
+                                                                 property_id,
                                                                  g_value_get_boolean(value));
             break;
 
@@ -391,6 +423,18 @@ xfdesktop_file_icon_manager_get_property(GObject *object,
 
         case PROP_SHOW_REMOVABLE:
             g_value_set_boolean(value, fmanager->priv->show_removable_media);
+            break;
+
+        case PROP_SHOW_NETWORK_VOLUME:
+            g_value_set_boolean(value, fmanager->priv->show_network_volumes);
+            break;
+
+        case PROP_SHOW_DEVICE_VOLUME:
+            g_value_set_boolean(value, fmanager->priv->show_device_volumes);
+            break;
+
+        case PROP_SHOW_UNKNOWN_VOLUME:
+            g_value_set_boolean(value, fmanager->priv->show_unknown_volumes);
             break;
 
         case PROP_SHOW_THUMBNAILS:
@@ -1983,10 +2027,17 @@ xfdesktop_file_icon_manager_queue_thumbnail(XfdesktopFileIconManager *fmanager,
                 GFile *temp = g_file_new_for_path(thumbnail_file);
                 xfdesktop_icon_set_thumbnail_file(XFDESKTOP_ICON(icon), temp);
             }
+
+            g_free(thumbnail_file);
         } else {
             xfdesktop_thumbnailer_queue_thumbnail(fmanager->priv->thumbnailer,
                                                   path);
         }
+    }
+
+    if(path) {
+        g_free(path);
+        path = NULL;
     }
 }
 
@@ -2160,9 +2211,33 @@ xfdesktop_file_icon_manager_add_volume_icon(XfdesktopFileIconManager *fmanager,
                                             GVolume *volume)
 {
     XfdesktopVolumeIcon *icon;
+    gchar *volume_type;
     
     g_return_val_if_fail(fmanager && G_IS_VOLUME(volume), NULL);
-    
+
+    /* If we aren't showing any media exit now */
+    if(!fmanager->priv->show_removable_media)
+        return NULL;
+
+    volume_type = g_volume_get_identifier(volume, G_VOLUME_IDENTIFIER_KIND_CLASS);
+
+    /* Check if we should filter out the volume icon based on what kind it is */
+    if(g_strcmp0(volume_type, "network") == 0 && !fmanager->priv->show_network_volumes) {
+        g_free(volume_type);
+        return NULL;
+    }
+    if(g_strcmp0(volume_type, "device") == 0 && !fmanager->priv->show_device_volumes) {
+        g_free(volume_type);
+        return NULL;
+    }
+    if(volume_type == NULL && !fmanager->priv->show_unknown_volumes) {
+        g_free(volume_type);
+        return NULL;
+    }
+
+    if(volume_type)
+        g_free(volume_type);
+
     /* should never return NULL */
     icon = xfdesktop_volume_icon_new(volume, fmanager->priv->gscreen);
 
@@ -2620,6 +2695,8 @@ xfdesktop_file_icon_manager_files_ready(GFileEnumerator *enumerator,
             g_signal_connect(fmanager->priv->metadata_monitor, "changed",
                              G_CALLBACK(xfdesktop_file_icon_manager_metadata_changed),
                              fmanager);
+
+            g_object_unref(metadata_location);
             g_free(location);
         }
     } else {
@@ -2703,38 +2780,11 @@ xfdesktop_file_icon_manager_clipboard_changed(XfdesktopClipboardManager *cmanage
                          cmanager);
 }
 
-
-static void
-xfdesktop_file_icon_manager_volume_changed(GVolume *volume,
-                                           gpointer user_data)
-{
-    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
-    XfdesktopIcon *icon;
-    gboolean is_present = xfdesktop_file_utils_volume_is_present(volume);
-    
-    icon = g_hash_table_lookup(fmanager->priv->removable_icons, volume);
-
-    if(is_present && !icon)
-        xfdesktop_file_icon_manager_add_volume_icon(fmanager, volume);
-    else if(!is_present && icon) {
-        xfdesktop_icon_view_remove_item(fmanager->priv->icon_view, icon);
-        g_hash_table_remove(fmanager->priv->removable_icons, volume);
-    }
-}
-
 static void
 xfdesktop_file_icon_manager_add_removable_volume(XfdesktopFileIconManager *fmanager,
                                                  GVolume *volume)
 {
-    if(!xfdesktop_file_utils_volume_is_removable(volume))
-        return;
-    
-    if(xfdesktop_file_utils_volume_is_present(volume))
-        xfdesktop_file_icon_manager_add_volume_icon(fmanager, volume);
-    
-    g_signal_connect(G_OBJECT(volume), "changed",
-                     G_CALLBACK(xfdesktop_file_icon_manager_volume_changed),
-                     fmanager);
+    xfdesktop_file_icon_manager_add_volume_icon(fmanager, volume);
 }
 
 static void
@@ -2766,11 +2816,11 @@ static void
 xfdesktop_file_icon_manager_load_removable_media(XfdesktopFileIconManager *fmanager)
 {
     GList *volumes, *l;
-    
+
     /* ensure we don't re-enter if we're already set up */
     if(fmanager->priv->removable_icons)
         return;
-    
+
     if(!fmanager->priv->volume_monitor)
         fmanager->priv->volume_monitor = g_volume_monitor_get();
     
@@ -2801,14 +2851,6 @@ xfdesktop_file_icon_manager_ht_remove_removable_media(gpointer key,
 {
     XfdesktopIcon *icon = XFDESKTOP_ICON(value);
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
-    GVolume *volume;
-
-    volume = xfdesktop_volume_icon_peek_volume(XFDESKTOP_VOLUME_ICON(icon));
-    if(volume) {
-        g_signal_handlers_disconnect_by_func(volume,
-                                             G_CALLBACK(xfdesktop_file_icon_manager_volume_changed),
-                                             fmanager);
-    }
     
     xfdesktop_icon_view_remove_item(fmanager->priv->icon_view, icon);
 }
@@ -3546,46 +3588,73 @@ xfdesktop_file_icon_manager_new(GFile *folder,
                             NULL);
     fmanager->priv->channel = g_object_ref(G_OBJECT(channel));
 
-    xfconf_g_property_bind(channel, SETTING_SHOW_FILESYSTEM, G_TYPE_BOOLEAN,
+    xfconf_g_property_bind(channel, DESKTOP_ICONS_SHOW_FILESYSTEM, G_TYPE_BOOLEAN,
                            G_OBJECT(fmanager), "show-filesystem");
-    xfconf_g_property_bind(channel, SETTING_SHOW_HOME, G_TYPE_BOOLEAN,
+    xfconf_g_property_bind(channel, DESKTOP_ICONS_SHOW_HOME, G_TYPE_BOOLEAN,
                            G_OBJECT(fmanager), "show-home");
-    xfconf_g_property_bind(channel, SETTING_SHOW_TRASH, G_TYPE_BOOLEAN,
+    xfconf_g_property_bind(channel, DESKTOP_ICONS_SHOW_TRASH, G_TYPE_BOOLEAN,
                            G_OBJECT(fmanager), "show-trash");
-    xfconf_g_property_bind(channel, SETTING_SHOW_REMOVABLE, G_TYPE_BOOLEAN,
+    xfconf_g_property_bind(channel, DESKTOP_ICONS_SHOW_REMOVABLE, G_TYPE_BOOLEAN,
                            G_OBJECT(fmanager), "show-removable");
-    xfconf_g_property_bind(channel, SETTING_SHOW_THUMBNAILS, G_TYPE_BOOLEAN,
+    xfconf_g_property_bind(channel, DESKTOP_ICONS_SHOW_NETWORK_REMOVABLE, G_TYPE_BOOLEAN,
+                           G_OBJECT(fmanager), "show-network-volume");
+    xfconf_g_property_bind(channel, DESKTOP_ICONS_SHOW_DEVICE_REMOVABLE, G_TYPE_BOOLEAN,
+                           G_OBJECT(fmanager), "show-device-volume");
+    xfconf_g_property_bind(channel, DESKTOP_ICONS_SHOW_UNKNWON_REMOVABLE, G_TYPE_BOOLEAN,
+                           G_OBJECT(fmanager), "show-unknown-volume");
+    xfconf_g_property_bind(channel, DESKTOP_ICONS_SHOW_THUMBNAILS, G_TYPE_BOOLEAN,
                            G_OBJECT(fmanager), "show-thumbnails");
 
     return XFDESKTOP_ICON_VIEW_MANAGER(fmanager);
 }
 
-void
+static void
 xfdesktop_file_icon_manager_set_show_removable_media(XfdesktopFileIconManager *manager,
-                                                     gboolean show_removable_media)
+                                                     XfdesktopFileIconManagerProp prop,
+                                                     gboolean show)
 {
     g_return_if_fail(XFDESKTOP_IS_FILE_ICON_MANAGER(manager));
-    
-    if(show_removable_media == manager->priv->show_removable_media)
-        return;
-    
-    manager->priv->show_removable_media = show_removable_media;
-    
+
+    switch(prop) {
+        case PROP_SHOW_REMOVABLE:
+            if(show == manager->priv->show_removable_media)
+                return;
+
+            manager->priv->show_removable_media = show;
+            break;
+        case PROP_SHOW_NETWORK_VOLUME:
+            if(show == manager->priv->show_network_volumes)
+                return;
+
+            manager->priv->show_network_volumes = show;
+            break;
+        case PROP_SHOW_DEVICE_VOLUME:
+            if(show == manager->priv->show_device_volumes)
+                return;
+
+            manager->priv->show_device_volumes = show;
+            break;
+        case PROP_SHOW_UNKNOWN_VOLUME:
+            if(show == manager->priv->show_unknown_volumes)
+                return;
+
+            manager->priv->show_unknown_volumes = show;
+            break;
+        default:
+            break;
+    }
+
     if(!manager->priv->inited)
         return;
-    
-    if(show_removable_media)
+
+    /* Always remove all the icons when a setting changes */
+    xfdesktop_file_icon_manager_remove_removable_media(manager);
+
+    /* Then re-add the icons the user wants */
+    if(manager->priv->show_removable_media)
         xfdesktop_file_icon_manager_load_removable_media(manager);
-    else
-        xfdesktop_file_icon_manager_remove_removable_media(manager);
 }
 
-gboolean
-xfdesktop_file_icon_manager_get_show_removable_media(XfdesktopFileIconManager *manager)
-{
-    g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON_MANAGER(manager), FALSE);
-    return manager->priv->show_removable_media;
-}
 
 static void
 xfdesktop_file_icon_manager_requeue_thumbnails(gpointer key,
@@ -3608,7 +3677,7 @@ xfdesktop_file_icon_manager_remove_thumbnails(gpointer key,
     xfdesktop_icon_delete_thumbnail(XFDESKTOP_ICON(icon));
 }
 
-void
+static void
 xfdesktop_file_icon_manager_set_show_thumbnails(XfdesktopFileIconManager *manager,
                                                 gboolean show_thumbnails)
 {
@@ -3637,14 +3706,7 @@ xfdesktop_file_icon_manager_set_show_thumbnails(XfdesktopFileIconManager *manage
     }
 }
 
-gboolean
-xfdesktop_file_icon_manager_get_show_thumbnails(XfdesktopFileIconManager *manager)
-{
-    g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON_MANAGER(manager), FALSE);
-    return manager->priv->show_thumbnails;
-}
-
-void
+static void
 xfdesktop_file_icon_manager_set_show_special_file(XfdesktopFileIconManager *manager,
                                                   XfdesktopSpecialFileIconType type,
                                                   gboolean show_special_file)
@@ -3675,17 +3737,6 @@ xfdesktop_file_icon_manager_set_show_special_file(XfdesktopFileIconManager *mana
     }
 }
 
-gboolean
-xfdesktop_file_icon_manager_get_show_special_file(XfdesktopFileIconManager *manager,
-                                                  XfdesktopSpecialFileIconType type)
-{
-    g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON_MANAGER(manager), FALSE);
-    g_return_val_if_fail((int)type >= 0 && type <= XFDESKTOP_SPECIAL_FILE_ICON_TRASH,
-                         FALSE);
-    
-    return manager->priv->show_special[type];
-}
-
 static void
 xfdesktop_file_icon_manager_update_image(GtkWidget *widget,
                                          gchar *srcfile,
@@ -3705,6 +3756,8 @@ xfdesktop_file_icon_manager_update_image(GtkWidget *widget,
     {
         g_object_unref(file);
         file = g_file_new_for_path(thumbfile);
-        xfdesktop_icon_set_thumbnail_file(icon, file);
+        xfdesktop_icon_set_thumbnail_file(icon, g_object_ref(file));
     }
+
+    g_object_unref(file);
 }

@@ -1044,21 +1044,10 @@ static void
 xfdesktop_volume_icon_changed(GVolume *volume,
                               XfdesktopVolumeIcon *volume_icon)
 {
-    gboolean is_present;
-
     g_return_if_fail(G_IS_VOLUME(volume));
     g_return_if_fail(XFDESKTOP_IS_VOLUME_ICON(volume_icon));
 
     DBG("VOLUME CHANGED");
-
-    is_present = xfdesktop_file_utils_volume_is_present(volume);
-    if(!is_present) {
-        /* don't do anything because the icon will be removed from 
-         * the file icon manager anyway */
-        return;
-    }
-
-    DBG("VOLUME STILL PRESENT");
 
     /**
      * NOTE: We use a timeout here to check if the volume is 

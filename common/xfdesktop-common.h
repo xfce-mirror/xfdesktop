@@ -53,6 +53,15 @@
 #define SINGLE_WORKSPACE_MODE     "/backdrop/single-workspace-mode"
 #define SINGLE_WORKSPACE_NUMBER   "/backdrop/single-workspace-number"
 
+#define DESKTOP_ICONS_SHOW_THUMBNAILS        "/desktop-icons/show-thumbnails"
+#define DESKTOP_ICONS_SHOW_NETWORK_REMOVABLE "/desktop-icons/file-icons/show-network-removable"
+#define DESKTOP_ICONS_SHOW_DEVICE_REMOVABLE  "/desktop-icons/file-icons/show-device-removable"
+#define DESKTOP_ICONS_SHOW_UNKNWON_REMOVABLE "/desktop-icons/file-icons/show-unknown-removable"
+#define DESKTOP_ICONS_SHOW_HOME              "/desktop-icons/file-icons/show-home"
+#define DESKTOP_ICONS_SHOW_TRASH             "/desktop-icons/file-icons/show-trash"
+#define DESKTOP_ICONS_SHOW_FILESYSTEM        "/desktop-icons/file-icons/show-filesystem"
+#define DESKTOP_ICONS_SHOW_REMOVABLE         "/desktop-icons/file-icons/show-removable"
+
 /**
  * File information namespaces queried for #GFileInfo objects.
  */
@@ -75,9 +84,6 @@
   "filesystem::*"
 
 G_BEGIN_DECLS
-
-gchar *xfdesktop_backdrop_choose_next(const gchar *filename);
-gchar *xfdesktop_backdrop_choose_random(const gchar *filename);
 
 gboolean xfdesktop_image_file_is_valid(const gchar *filename);
 

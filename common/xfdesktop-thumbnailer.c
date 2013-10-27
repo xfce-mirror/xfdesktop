@@ -340,7 +340,7 @@ xfdesktop_thumbnailer_queue_thumbnail(XfdesktopThumbnailer *thumbnailer,
 
     if(g_slist_find(thumbnailer->priv->queue, file) == NULL) {
         thumbnailer->priv->queue = g_slist_prepend(thumbnailer->priv->queue,
-                                                   file);
+                                                   g_strdup(file));
     }
 
     thumbnailer->priv->request_timer_id = g_timeout_add_full(
@@ -370,6 +370,8 @@ void
 xfdesktop_thumbnailer_dequeue_thumbnail(XfdesktopThumbnailer *thumbnailer,
                                         gchar *file)
 {
+    GSList *item;
+
     g_return_if_fail(XFDESKTOP_IS_THUMBNAILER(thumbnailer));
     g_return_if_fail(file != NULL);
 
@@ -392,9 +394,11 @@ xfdesktop_thumbnailer_dequeue_thumbnail(XfdesktopThumbnailer *thumbnailer,
         thumbnailer->priv->handle = 0;
     }
 
-    if(g_slist_find(thumbnailer->priv->queue, file) != NULL) {
-        thumbnailer->priv->queue = g_slist_remove_all(thumbnailer->priv->queue,
-                                                      file);
+    item = g_slist_find(thumbnailer->priv->queue, file);
+    if(item != NULL) {
+        g_free(item->data);
+        thumbnailer->priv->queue = g_slist_remove(thumbnailer->priv->queue,
+                                                  file);
     }
 
     thumbnailer->priv->request_timer_id = g_timeout_add_full(
@@ -436,6 +440,7 @@ xfdesktop_thumbnailer_queue_request_timer(XfdesktopThumbnailer *thumbnailer)
             file = g_file_new_for_path(iter->data);
             uris[i] = g_file_get_uri(file);
             mimetypes[i] = xfdesktop_get_file_mimetype(iter->data);
+
             g_object_unref(file);
         }
         iter = g_slist_next(iter);
@@ -463,6 +468,18 @@ xfdesktop_thumbnailer_queue_request_timer(XfdesktopThumbnailer *thumbnailer)
             if(error != NULL)
                 g_warning("DBUS-call failed: %s", error->message);
         }
+    }
+
+    /* Free the memory */
+    i = 0;
+    iter = thumbnailer->priv->queue;
+    while(iter) {
+        if(iter->data) {
+            g_free(uris[i]);
+            g_free(mimetypes[i]);
+        }
+        iter = g_slist_next(iter);
+        i++;
     }
 
     g_free(uris);
@@ -498,7 +515,7 @@ xfdesktop_thumbnailer_thumbnail_ready_dbus(DBusGProxy *proxy,
     gchar *thumbnail_location;
     GFile *file;
     GSList *iter = thumbnailer->priv->queue;
-    gchar *f_uri, *f_uri_checksum, *filename;
+    gchar *f_uri, *f_uri_checksum, *filename, *temp;
     gchar *thumbnail_flavor;
     gint x = 0;
 
@@ -531,8 +548,8 @@ xfdesktop_thumbnailer_thumbnail_ready_dbus(DBusGProxy *proxy,
                                               filename, NULL);
 
             DBG("thumbnail-ready src: %s thumbnail: %s",
-                    (char*)iter->data,
-                    thumbnail_location);
+                (char*)iter->data,
+                thumbnail_location);
 
             g_signal_emit(G_OBJECT(thumbnailer),
                           thumbnailer_signals[THUMBNAIL_READY],
@@ -540,14 +557,17 @@ xfdesktop_thumbnailer_thumbnail_ready_dbus(DBusGProxy *proxy,
                           iter->data,
                           thumbnail_location);
 
+            temp = iter->data;
             thumbnailer->priv->queue = g_slist_remove(thumbnailer->priv->queue,
-                                                      iter->data);
+                                                      temp);
 
             iter = thumbnailer->priv->queue;
             x++;
-            
+
             g_free(filename);
             g_free(f_uri_checksum);
+            g_free(thumbnail_location);
+            g_free(temp);
         } else {
             iter = g_slist_next(iter);
         }
