@@ -3247,6 +3247,12 @@ xfdesktop_file_icon_manager_propose_drop_action(XfdesktopIconViewManager *manage
         if(file_list) {
             GFile *base_dest_file = NULL;
 
+            /* always move files from the trash */
+            if(g_file_has_uri_scheme(file_list->data, "trash")) {
+                xfdesktop_file_utils_file_list_free(file_list);
+                return GDK_ACTION_MOVE;
+            }
+
             /* source must be local file */
             if(!g_file_has_uri_scheme(file_list->data, "file")) {
                 xfdesktop_file_utils_file_list_free(file_list);
