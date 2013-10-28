@@ -93,7 +93,8 @@ enum
     PROP_SHOW_HOME,
     PROP_SHOW_TRASH,
     PROP_SHOW_REMOVABLE,
-    PROP_SHOW_THUMBNAILS
+    PROP_SHOW_THUMBNAILS,
+    PROP_MAX_TEMPLATES,
 };
 
 struct _XfdesktopFileIconManagerPrivate
@@ -135,6 +136,8 @@ struct _XfdesktopFileIconManagerPrivate
 #endif
 
     XfdesktopThumbnailer *thumbnailer;
+
+    guint max_templates;
 };
 
 static void xfdesktop_file_icon_manager_set_property(GObject *object,
@@ -191,6 +194,11 @@ static void xfdesktop_file_icon_manager_update_image(GtkWidget *widget,
                                                      gchar *srcfile,
                                                      gchar *thumbfile,
                                                      XfdesktopFileIconManager *fmanager);
+
+static void
+xfdesktop_file_icon_manager_set_max_templates(XfdesktopFileIconManager *manager,
+                                              gint max_templates);
+
 
 G_DEFINE_TYPE_EXTENDED(XfdesktopFileIconManager,
                        xfdesktop_file_icon_manager,
@@ -286,6 +294,12 @@ xfdesktop_file_icon_manager_class_init(XfdesktopFileIconManagerClass *klass)
                                                          "show-thumbnails",
                                                          TRUE,
                                                          XFDESKTOP_PARAM_FLAGS));
+    g_object_class_install_property(gobject_class, PROP_MAX_TEMPLATES,
+                                    g_param_spec_uint("max-templates",
+                                                      "max-templates",
+                                                      "max-templates",
+                                                      0, G_MAXUSHORT, 16,
+                                                      XFDESKTOP_PARAM_FLAGS));
 #undef XFDESKTOP_PARAM_FLAGS
 
     xfdesktop_app_info_quark = g_quark_from_static_string("xfdesktop-app-info-quark");
@@ -352,6 +366,11 @@ xfdesktop_file_icon_manager_set_property(GObject *object,
                                                             g_value_get_boolean(value));
             break;
 
+        case PROP_MAX_TEMPLATES:
+            xfdesktop_file_icon_manager_set_max_templates(fmanager,
+                                                          g_value_get_uint(value));
+            break;
+
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
     }
@@ -392,7 +411,11 @@ xfdesktop_file_icon_manager_get_property(GObject *object,
         case PROP_SHOW_THUMBNAILS:
             g_value_set_boolean(value, fmanager->priv->show_thumbnails);
             break;
-        
+
+        case PROP_MAX_TEMPLATES:
+            g_value_set_int(value, fmanager->priv->max_templates);
+            break;
+
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
     }
@@ -1089,24 +1112,24 @@ static gint
 compare_template_files(gconstpointer a,
                        gconstpointer b)
 {
-  GFileInfo *info_a = g_object_get_data(G_OBJECT(a), "info");
-  GFileInfo *info_b = g_object_get_data(G_OBJECT(b), "info");
-  GFileType type_a = g_file_info_get_file_type(info_a);
-  GFileType type_b = g_file_info_get_file_type(info_b);
-  const gchar* name_a = g_file_info_get_display_name(info_a);
-  const gchar* name_b = g_file_info_get_display_name(info_b);
+    GFileInfo *info_a = g_object_get_data(G_OBJECT(a), "info");
+    GFileInfo *info_b = g_object_get_data(G_OBJECT(b), "info");
+    GFileType type_a = g_file_info_get_file_type(info_a);
+    GFileType type_b = g_file_info_get_file_type(info_b);
+    const gchar* name_a = g_file_info_get_display_name(info_a);
+    const gchar* name_b = g_file_info_get_display_name(info_b);
 
-  if(!info_a || !info_b)
-    return 0;
+    if(!info_a || !info_b)
+        return 0;
 
-  if(type_a == type_b) {
-      return g_strcmp0(name_a, name_b);
-  } else {
-      if(type_a == G_FILE_TYPE_DIRECTORY)
-          return -1;
-      else
-          return 1;
-  }
+    if(type_a == type_b) {
+        return g_strcmp0(name_a, name_b);
+    } else {
+        if(type_a == G_FILE_TYPE_DIRECTORY)
+            return -1;
+        else
+            return 1;
+    }
 }
 
 static gboolean
@@ -1114,210 +1137,82 @@ xfdesktop_file_icon_menu_fill_template_menu(GtkWidget *menu,
                                             GFile *template_dir,
                                             XfdesktopFileIconManager *fmanager)
 {
-  GFileEnumerator *enumerator;
-  GtkWidget *item, *image, *submenu;
-  GFileInfo *info;
-  GFile *file;
-  GIcon *icon;
-  GList *files = NULL, *lp;
-  gchar *label, *dot;
-  gboolean have_templates = FALSE;
-  
-  g_return_val_if_fail(G_IS_FILE(template_dir), FALSE);
+    GFileEnumerator *enumerator;
+    GtkWidget *item, *image;
+    GFileInfo *info;
+    GFile *file;
+    GIcon *icon;
+    GList *files = NULL, *lp;
+    gchar *label, *dot;
+    gboolean have_templates = FALSE;
+    guint items = 0;
 
-  enumerator = g_file_enumerate_children(template_dir,
-                                         XFDESKTOP_FILE_INFO_NAMESPACE,
-                                         G_FILE_QUERY_INFO_NONE,
-                                         NULL, NULL);
+    g_return_val_if_fail(G_IS_FILE(template_dir), FALSE);
 
-  if(enumerator) {
-      while((info = g_file_enumerator_next_file(enumerator, NULL, NULL))) {
-          file = g_file_get_child(template_dir, g_file_info_get_name(info));
-          g_object_set_data_full(G_OBJECT(file), "info", info, g_object_unref);
-          files = g_list_prepend(files, file);
-      }
+    enumerator = g_file_enumerate_children(template_dir,
+                                           XFDESKTOP_FILE_INFO_NAMESPACE,
+                                           G_FILE_QUERY_INFO_NONE,
+                                           NULL, NULL);
 
-      g_object_unref(enumerator);
-  }
-
-  files = g_list_sort(files, compare_template_files);
-
-  for(lp = files; lp != NULL; lp = lp->next) {
-      file = lp->data;
-      info = g_object_get_data(G_OBJECT(file), "info");
-
-      if(g_file_info_get_file_type(info) == G_FILE_TYPE_DIRECTORY) {
-          /* allocate a new submenu for the directory */
-          submenu = gtk_menu_new();
-          g_object_ref_sink(submenu);
-          gtk_menu_set_screen(GTK_MENU(submenu), gtk_widget_get_screen(menu));
-
-          /* fill the submenu from the folder contents */
-          have_templates = xfdesktop_file_icon_menu_fill_template_menu(submenu, file, fmanager)
-                           || have_templates;
-
-          /* check if any items were added to the submenu */
-          if (GTK_MENU_SHELL(submenu)->children)
-            {
-              /* create a new menu item for the submenu */
-              item = gtk_image_menu_item_new_with_label (g_file_info_get_display_name(info));
-              icon = g_file_info_get_icon(info);
-              image = gtk_image_new_from_gicon(icon, GTK_ICON_SIZE_MENU);
-              gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (item), image);
-              gtk_menu_item_set_submenu (GTK_MENU_ITEM (item), submenu);
-              gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
-              gtk_widget_show (item);
-            }
-
-          /* cleanup */
-          g_object_unref (submenu);
-      } else {
-          /* generate a label by stripping off the extension */
-          label = g_strdup(g_file_info_get_display_name(info));
-          dot = g_utf8_strrchr(label, -1, '.');
-          if(dot)
-              *dot = '\0';
-
-          /* allocate a new menu item */
-          item = gtk_image_menu_item_new_with_label(label);
-          icon = g_file_info_get_icon(info);
-          image = gtk_image_new_from_gicon(icon, GTK_ICON_SIZE_MENU);
-          gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(item), image);
-          gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
-          gtk_widget_show(item);
-
-          g_object_set_data_full(G_OBJECT(item), "file", 
-                                 g_object_ref(file), g_object_unref);
-
-          g_signal_connect (G_OBJECT(item), "activate",
-                            G_CALLBACK(xfdesktop_file_icon_template_item_activated),
-                            fmanager);
-
-          have_templates = TRUE;
-      }
-
-      g_object_unref(file);
-  }
-
-  g_list_free(files);
-
-  return have_templates;
-#if 0
-  dp = g_dir_open (absolute_path, 0, NULL);
-  g_free (absolute_path);
-
-  /* read the directory contents (if opened successfully) */
-  if (G_LIKELY (dp != NULL))
-    {
-      /* process all files within the directory */
-      for (;;)
-        {
-          /* read the name of the next file */
-          name = g_dir_read_name (dp);
-          if (G_UNLIKELY (name == NULL))
-            break;
-          else if (name[0] == '.')
-            continue;
-
-          /* determine the info for that file */
-          path = thunar_vfs_path_relative (templates_path, name);
-          info = thunar_vfs_info_new_for_path (path, NULL);
-          thunar_vfs_path_unref (path);
-
-          /* add the info (if any) to our list */
-          if (G_LIKELY (info != NULL))
-            info_list = g_list_insert_sorted (info_list, info, info_compare);
+    if(enumerator) {
+        while((info = g_file_enumerator_next_file(enumerator, NULL, NULL))) {
+            file = g_file_get_child(template_dir, g_file_info_get_name(info));
+            g_object_set_data_full(G_OBJECT(file), "info", info, g_object_unref);
+            files = g_list_prepend(files, file);
         }
 
-      /* close the directory handle */
-      g_dir_close (dp);
+        g_object_unref(enumerator);
     }
 
-  /* check if we have any infos */
-  if (G_UNLIKELY (info_list == NULL))
-    return FALSE;
+    files = g_list_sort(files, compare_template_files);
 
-  /* determine the icon theme for the menu */
-  icon_theme = gtk_icon_theme_get_for_screen (gtk_widget_get_screen (menu));
+    for(lp = files; lp != NULL && items < fmanager->priv->max_templates; lp = lp->next) {
+        file = lp->data;
+        info = g_object_get_data(G_OBJECT(file), "info");
 
-  /* add menu items for all infos */
-  for (lp = info_list; lp != NULL; lp = lp->next)
-    {
-      /* determine the info */
-      info = lp->data;
-
-      /* check if we have a regular file or a directory here */
-      if (G_LIKELY (info->type == THUNAR_VFS_FILE_TYPE_REGULAR))
-        {
-          /* generate a label by stripping off the extension */
-          label = g_strdup (info->display_name);
-          dot = g_utf8_strrchr (label, -1, '.');
-          if (G_LIKELY (dot != NULL))
-            *dot = '\0';
-
-          /* allocate a new menu item */
-          item = gtk_image_menu_item_new_with_label (label);
-          g_object_set_data_full (G_OBJECT (item), I_("thunar-vfs-info"), thunar_vfs_info_ref (info), (GDestroyNotify) thunar_vfs_info_unref);
-          g_signal_connect (G_OBJECT (item), "activate",
-                            G_CALLBACK (xfdesktop_file_icon_template_item_activated),
-                            fmanager);
-          gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
-          gtk_widget_show (item);
-
-          /* lookup the icon for the mime type of that file */
-          icon_name = thunar_vfs_mime_info_lookup_icon_name (info->mime_info, icon_theme);
-
-          /* generate an image based on the named icon */
-          image = gtk_image_new_from_icon_name (icon_name, GTK_ICON_SIZE_MENU);
-          gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (item), image);
-          gtk_widget_show (image);
-
-          /* cleanup */
-          g_free (label);
-          
-          have_templates = TRUE;
-        }
-      else if (info->type == THUNAR_VFS_FILE_TYPE_DIRECTORY)
-        {
-          /* allocate a new submenu for the directory */
-          submenu = gtk_menu_new ();
-          g_object_ref_sink (G_OBJECT (submenu));
-          gtk_menu_set_screen (GTK_MENU (submenu), gtk_widget_get_screen (menu));
-
-          /* fill the submenu from the folder contents */
-          have_templates = xfdesktop_file_icon_menu_fill_template_menu(submenu,
-                                                                       info->path,
-                                                                       fmanager)
-                           || have_templates;
-
-          /* check if any items were added to the submenu */
-          if (G_LIKELY (GTK_MENU_SHELL (submenu)->children != NULL))
-            {
-              /* hook up the submenu */
-              item = gtk_image_menu_item_new_with_label (info->display_name);
-              gtk_menu_item_set_submenu (GTK_MENU_ITEM (item), submenu);
-              gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
-              gtk_widget_show (item);
-
-              /* lookup the icon for the mime type of that file */
-              icon_name = thunar_vfs_mime_info_lookup_icon_name (info->mime_info, icon_theme);
-
-              /* generate an image based on the named icon */
-              image = gtk_image_new_from_icon_name (icon_name, GTK_ICON_SIZE_MENU);
-              gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (item), image);
-              gtk_widget_show (image);
+        /* Skip directories */
+        if(g_file_info_get_file_type(info) != G_FILE_TYPE_DIRECTORY) {
+            /* skip hidden & backup files */
+            if(g_file_info_get_is_hidden(info) || g_file_info_get_is_backup(info)) {
+                g_object_unref(file);
+                continue;
             }
 
-          /* cleanup */
-          g_object_unref (G_OBJECT (submenu));
+            /* generate a label by stripping off the extension */
+            label = g_strdup(g_file_info_get_display_name(info));
+            dot = g_utf8_strrchr(label, -1, '.');
+            if(dot)
+                *dot = '\0';
+
+            /* allocate a new menu item */
+            item = gtk_image_menu_item_new_with_label(label);
+
+            /* determine the icon to display */
+            icon = g_file_info_get_icon(info);
+            image = gtk_image_new_from_gicon(icon, GTK_ICON_SIZE_MENU);
+            gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(item), image);
+
+            /* add the item to the menu */
+            gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
+            gtk_widget_show(item);
+
+            g_object_set_data_full(G_OBJECT(item), "file",
+                                   g_object_ref(file), g_object_unref);
+
+            g_signal_connect(G_OBJECT(item), "activate",
+                             G_CALLBACK(xfdesktop_file_icon_template_item_activated),
+                             fmanager);
+
+            have_templates = TRUE;
+            /* keep it under fmanager->priv->max_templates otherwise the menu
+             * could have tons of items and be unusable */
+            items++;
         }
+        g_object_unref(file);
     }
 
-  /* release the info list */
-  thunar_vfs_info_list_free (info_list);
-#endif
-  
-  return have_templates;
+    g_list_free(files);
+    return have_templates;
 }
 
 #ifdef HAVE_THUNARX
@@ -1493,45 +1388,49 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                     gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
                     gtk_widget_show(img);
                     
-                    /* create from template submenu */
+                    /* create from template submenu, 0 disables the sub-menu */
+                    if(fmanager->priv->max_templates > 0) {
+                        mi = gtk_menu_item_new_with_mnemonic(_("Create From _Template"));
+                        gtk_widget_show(mi);
+                        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
 
-                    mi = gtk_menu_item_new_with_mnemonic(_("Create From _Template"));
-                    gtk_widget_show(mi);
-                    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-                    
-                    tmpl_menu = gtk_menu_new();
-                    gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi), tmpl_menu);
-                    
-                    home_dir = g_file_new_for_path(xfce_get_homedir());
-                    templates_dir_path = g_get_user_special_dir(G_USER_DIRECTORY_TEMPLATES);
-                    if(templates_dir_path) {
-                        templates_dir = g_file_new_for_path(templates_dir_path);
+                        tmpl_menu = gtk_menu_new();
+                        gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi), tmpl_menu);
+
+                        /* check if XDG_TEMPLATES_DIR="$HOME" and don't show
+                         * templates if so. */
+                        home_dir = g_file_new_for_path(xfce_get_homedir());
+                        templates_dir_path = g_get_user_special_dir(G_USER_DIRECTORY_TEMPLATES);
+                        if(templates_dir_path) {
+                            templates_dir = g_file_new_for_path(templates_dir_path);
+                        }
+
+                        if(templates_dir && !g_file_equal(home_dir, templates_dir))
+                        {
+                            xfdesktop_file_icon_menu_fill_template_menu(tmpl_menu,
+                                                                        templates_dir,
+                                                                        fmanager);
+                        }
+
+                        if(templates_dir)
+                            g_object_unref(templates_dir);
+                        g_object_unref(home_dir);
+
+                        /* add the "Empty File" template option */
+                        img = gtk_image_new_from_stock(GTK_STOCK_NEW, GTK_ICON_SIZE_MENU);
+                        gtk_widget_show(img);
+                        mi = gtk_image_menu_item_new_with_mnemonic(_("_Empty File"));
+                        gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+                        gtk_widget_show(mi);
+                        gtk_menu_shell_append(GTK_MENU_SHELL(tmpl_menu), mi);
+                        g_signal_connect(G_OBJECT(mi), "activate",
+                                         G_CALLBACK(xfdesktop_file_icon_template_item_activated),
+                                         fmanager);
+
+                        mi = gtk_separator_menu_item_new();
+                        gtk_widget_show(mi);
+                        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
                     }
-
-                    if(templates_dir && !g_file_equal(home_dir, templates_dir))
-                    {
-                        xfdesktop_file_icon_menu_fill_template_menu(tmpl_menu,
-                                                                    templates_dir,
-                                                                    fmanager);
-                    }
-
-                    if(templates_dir)
-                        g_object_unref(templates_dir);
-                    g_object_unref(home_dir);
-
-                    img = gtk_image_new_from_stock(GTK_STOCK_NEW, GTK_ICON_SIZE_MENU);
-                    gtk_widget_show(img);
-                    mi = gtk_image_menu_item_new_with_mnemonic(_("_Empty File"));
-                    gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
-                    gtk_widget_show(mi);
-                    gtk_menu_shell_append(GTK_MENU_SHELL(tmpl_menu), mi);
-                    g_signal_connect(G_OBJECT(mi), "activate",
-                                     G_CALLBACK(xfdesktop_file_icon_template_item_activated),
-                                     fmanager);
-                    
-                    mi = gtk_separator_menu_item_new();
-                    gtk_widget_show(mi);
-                    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
                 }
             } else {
                 if(xfdesktop_file_utils_file_is_executable(info)) {
@@ -3341,6 +3240,8 @@ xfdesktop_file_icon_manager_new(GFile *folder,
                            G_OBJECT(fmanager), "show-removable");
     xfconf_g_property_bind(channel, SETTING_SHOW_THUMBNAILS, G_TYPE_BOOLEAN,
                            G_OBJECT(fmanager), "show-thumbnails");
+    xfconf_g_property_bind(channel, DESKTOP_ICONS_MAX_TEMPLATE_FILES, G_TYPE_INT,
+                           G_OBJECT(fmanager), "max-templates");
 
     return XFDESKTOP_ICON_VIEW_MANAGER(fmanager);
 }
@@ -3428,6 +3329,18 @@ xfdesktop_file_icon_manager_get_show_thumbnails(XfdesktopFileIconManager *manage
 {
     g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON_MANAGER(manager), FALSE);
     return manager->priv->show_thumbnails;
+}
+
+static void
+xfdesktop_file_icon_manager_set_max_templates(XfdesktopFileIconManager *manager,
+                                              gint max_templates)
+{
+    g_return_if_fail(XFDESKTOP_IS_FILE_ICON_MANAGER(manager));
+
+    if(max_templates < 0 || max_templates > G_MAXUSHORT)
+        return;
+
+    manager->priv->max_templates = max_templates;
 }
 
 void

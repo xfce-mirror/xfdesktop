@@ -50,6 +50,8 @@
 #define ARRANGE_MESSAGE    "arrange"
 #define QUIT_MESSAGE       "quit"
 
+#define DESKTOP_ICONS_MAX_TEMPLATE_FILES     "/desktop-icons/file-icons/max-template-files"
+
 /**
  * File information namespaces queried for #GFileInfo objects.
  */
