@@ -1132,7 +1132,7 @@ compare_template_files(gconstpointer a,
     }
 }
 
-static gboolean
+static void
 xfdesktop_file_icon_menu_fill_template_menu(GtkWidget *menu,
                                             GFile *template_dir,
                                             XfdesktopFileIconManager *fmanager)
@@ -1144,7 +1144,6 @@ xfdesktop_file_icon_menu_fill_template_menu(GtkWidget *menu,
     GIcon *icon;
     GList *files = NULL, *lp;
     gchar *label, *dot;
-    gboolean have_templates = FALSE;
     guint items = 0;
 
     g_return_val_if_fail(G_IS_FILE(template_dir), FALSE);
@@ -1154,65 +1153,71 @@ xfdesktop_file_icon_menu_fill_template_menu(GtkWidget *menu,
                                            G_FILE_QUERY_INFO_NONE,
                                            NULL, NULL);
 
-    if(enumerator) {
-        while((info = g_file_enumerator_next_file(enumerator, NULL, NULL))) {
-            file = g_file_get_child(template_dir, g_file_info_get_name(info));
-            g_object_set_data_full(G_OBJECT(file), "info", info, g_object_unref);
-            files = g_list_prepend(files, file);
+    if(enumerator == NULL)
+        return;
+
+    /* keep it under fmanager->priv->max_templates otherwise the menu
+     * could have tons of items and be unusable. Additionally this should
+     * help in instances where the XDG_TEMPLATES_DIR has a large number of
+     * files in it. */
+    while((info = g_file_enumerator_next_file(enumerator, NULL, NULL)) && items < fmanager->priv->max_templates) {
+        /* Skip directories */
+        if(g_file_info_get_file_type(info) == G_FILE_TYPE_DIRECTORY) {
+           g_object_unref(info);
+           continue;
         }
 
-        g_object_unref(enumerator);
+        /* skip hidden & backup files */
+        if(g_file_info_get_is_hidden(info) || g_file_info_get_is_backup(info)) {
+            g_object_unref(info);
+            continue;
+        }
+
+        file = g_file_get_child(template_dir, g_file_info_get_name(info));
+        g_object_set_data_full(G_OBJECT(file), "info", info, g_object_unref);
+        files = g_list_prepend(files, file);
+
+        items++;
     }
+
+    g_object_unref(enumerator);
 
     files = g_list_sort(files, compare_template_files);
 
-    for(lp = files; lp != NULL && items < fmanager->priv->max_templates; lp = lp->next) {
+    for(lp = files; lp != NULL; lp = lp->next) {
         file = lp->data;
         info = g_object_get_data(G_OBJECT(file), "info");
 
-        /* Skip directories */
-        if(g_file_info_get_file_type(info) != G_FILE_TYPE_DIRECTORY) {
-            /* skip hidden & backup files */
-            if(g_file_info_get_is_hidden(info) || g_file_info_get_is_backup(info)) {
-                g_object_unref(file);
-                continue;
-            }
+        /* generate a label by stripping off the extension */
+        label = g_strdup(g_file_info_get_display_name(info));
+        dot = g_utf8_strrchr(label, -1, '.');
+        if(dot)
+            *dot = '\0';
 
-            /* generate a label by stripping off the extension */
-            label = g_strdup(g_file_info_get_display_name(info));
-            dot = g_utf8_strrchr(label, -1, '.');
-            if(dot)
-                *dot = '\0';
+        /* allocate a new menu item */
+        item = gtk_image_menu_item_new_with_label(label);
+        g_free(label);
 
-            /* allocate a new menu item */
-            item = gtk_image_menu_item_new_with_label(label);
+        /* determine the icon to display */
+        icon = g_file_info_get_icon(info);
+        image = gtk_image_new_from_gicon(icon, GTK_ICON_SIZE_MENU);
+        gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(item), image);
 
-            /* determine the icon to display */
-            icon = g_file_info_get_icon(info);
-            image = gtk_image_new_from_gicon(icon, GTK_ICON_SIZE_MENU);
-            gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(item), image);
+        /* add the item to the menu */
+        gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
+        gtk_widget_show(item);
 
-            /* add the item to the menu */
-            gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
-            gtk_widget_show(item);
+        g_object_set_data_full(G_OBJECT(item), "file",
+                               g_object_ref(file), g_object_unref);
 
-            g_object_set_data_full(G_OBJECT(item), "file",
-                                   g_object_ref(file), g_object_unref);
+        g_signal_connect(G_OBJECT(item), "activate",
+                         G_CALLBACK(xfdesktop_file_icon_template_item_activated),
+                         fmanager);
 
-            g_signal_connect(G_OBJECT(item), "activate",
-                             G_CALLBACK(xfdesktop_file_icon_template_item_activated),
-                             fmanager);
-
-            have_templates = TRUE;
-            /* keep it under fmanager->priv->max_templates otherwise the menu
-             * could have tons of items and be unusable */
-            items++;
-        }
         g_object_unref(file);
     }
 
     g_list_free(files);
-    return have_templates;
 }
 
 #ifdef HAVE_THUNARX
