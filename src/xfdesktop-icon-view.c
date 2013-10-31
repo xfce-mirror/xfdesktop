@@ -1415,25 +1415,32 @@ xfdesktop_icon_view_clear_drag_highlight(XfdesktopIconView *icon_view,
     if(0 == cell_highlight->width || 0 == cell_highlight->height)
         return;
 
+    /* When dragging an icon a box is drawn to indicate the cell where the
+     * icon could be moved to if dropped. We need to clear that box but make
+     * the length of the lines slightly longer to clear all the pixels */
+    /* Left vertical line */
     gtk_widget_queue_draw_area(GTK_WIDGET(icon_view),
                                cell_highlight->x - 1,
-                               cell_highlight->y,
+                               cell_highlight->y - 1,
                                2,
-                               cell_highlight->height);
+                               cell_highlight->height + 2);
+    /* Right vertical line */
     gtk_widget_queue_draw_area(GTK_WIDGET(icon_view),
                                cell_highlight->x + cell_highlight->width - 1,
                                cell_highlight->y,
                                2,
-                               cell_highlight->height);
+                               cell_highlight->height + 2);
+    /* Top horizontal line */
     gtk_widget_queue_draw_area(GTK_WIDGET(icon_view),
                                cell_highlight->x,
                                cell_highlight->y - 1,
-                               cell_highlight->width,
+                               cell_highlight->width + 2,
                                2);
+    /* Bottom horizontal line */
     gtk_widget_queue_draw_area(GTK_WIDGET(icon_view),
                                cell_highlight->x,
                                cell_highlight->y + cell_highlight->height - 1,
-                               cell_highlight->width,
+                               cell_highlight->width + 2,
                                2);
     
     cell_highlight->width = cell_highlight->height = 0;
