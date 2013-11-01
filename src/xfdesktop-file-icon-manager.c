@@ -1223,7 +1223,7 @@ xfdesktop_file_icon_menu_fill_template_menu(GtkWidget *menu,
     gchar *label, *dot;
     guint items = 0;
 
-    g_return_val_if_fail(G_IS_FILE(template_dir), FALSE);
+    g_return_if_fail(G_IS_FILE(template_dir));
 
     enumerator = g_file_enumerate_children(template_dir,
                                            XFDESKTOP_FILE_INFO_NAMESPACE,
