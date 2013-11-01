@@ -377,13 +377,6 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     if(desktop->priv->updates_frozen || !gtk_widget_get_realized(GTK_WIDGET(desktop)))
         return;
 
-    if(!GDK_IS_PIXMAP(pmap)) {
-        pmap = create_bg_pixmap(gscreen, desktop);
-
-        if(!GDK_IS_PIXMAP(pmap))
-            return;
-    }
-
     TRACE("really entering");
 
     current_workspace = xfce_desktop_get_current_workspace(desktop);
@@ -479,7 +472,25 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
         /* create the backdrop if needed */
         if(!pix) {
             xfce_backdrop_generate_async(backdrop);
+
+            if(clip_region != NULL)
+                gdk_region_destroy(clip_region);
+
             return;
+        }
+
+        /* Create the background pixmap if it isn't already */
+        if(!GDK_IS_PIXMAP(pmap)) {
+            pmap = create_bg_pixmap(gscreen, desktop);
+
+            if(!GDK_IS_PIXMAP(pmap)) {
+                g_object_unref(pix);
+
+                if(clip_region != NULL)
+                    gdk_region_destroy(clip_region);
+
+                return;
+            }
         }
 
         cr = gdk_cairo_create(GDK_DRAWABLE(pmap));
@@ -519,9 +530,6 @@ screen_size_changed_cb(GdkScreen *gscreen, gpointer user_data)
     gint current_workspace;
 
     TRACE("entering");
-
-    if(!create_bg_pixmap(gscreen, desktop))
-        return;
 
     current_workspace = xfce_desktop_get_current_workspace(desktop);
 
@@ -599,6 +607,11 @@ workspace_changed_cb(WnckScreen *wnck_screen,
 
     TRACE("entering");
 
+    /* Ignore workspace changes in single workspace mode so long as we
+     * already have the bg_pixmap loaded */
+    if(xfce_desktop_get_single_workspace_mode(desktop) && desktop->priv->bg_pixmap)
+        return;
+
     current_workspace = desktop->priv->current_workspace;
     new_workspace = xfce_desktop_get_current_workspace(desktop);
 
@@ -657,6 +670,10 @@ workspace_created_cb(WnckScreen *wnck_screen,
                                                                     desktop->priv->channel,
                                                                     desktop->priv->property_prefix,
                                                                     nlast_workspace);
+
+    /* Tell workspace whether to cache pixbufs */
+    xfce_workspace_set_cache_pixbufs(desktop->priv->workspaces[nlast_workspace],
+                                     !desktop->priv->single_workspace_mode);
 
     xfce_workspace_monitors_changed(desktop->priv->workspaces[nlast_workspace],
                                     desktop->priv->gscreen);
@@ -1486,6 +1503,8 @@ static void
 xfce_desktop_set_single_workspace_mode(XfceDesktop *desktop,
                                        gboolean single_workspace)
 {
+    gint i;
+
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
 
     if(single_workspace == desktop->priv->single_workspace_mode)
@@ -1494,6 +1513,14 @@ xfce_desktop_set_single_workspace_mode(XfceDesktop *desktop,
     desktop->priv->single_workspace_mode = single_workspace;
 
     DBG("single_workspace_mode now %s", single_workspace ? "TRUE" : "FALSE");
+
+    /* update the workspaces & backdrops if they should cache their pixbuf */
+    if(desktop->priv->workspaces) {
+        for(i = 0; i < desktop->priv->nworkspaces; i++) {
+            /* set cache to TRUE when single_workspace is FALSE */
+            xfce_workspace_set_cache_pixbufs(desktop->priv->workspaces[i], !single_workspace);
+        }
+    }
 
     /* If the desktop has been realized then fake a screen size change to
      * update the backdrop. There's no reason to if there's no desktop yet */

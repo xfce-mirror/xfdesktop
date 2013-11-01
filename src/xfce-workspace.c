@@ -84,6 +84,7 @@ struct _XfceWorkspacePriv
     guint nbackdrops;
     gboolean xinerama_stretch;
     XfceBackdrop **backdrops;
+    gboolean cache_pixbufs;
 
     gulong *first_color_id;
     gulong *second_color_id;
@@ -118,6 +119,14 @@ static void xfce_workspace_remove_backdrops(XfceWorkspace *workspace);
 
 G_DEFINE_TYPE(XfceWorkspace, xfce_workspace, G_TYPE_OBJECT)
 
+
+/**
+ * xfce_workspace_get_xinerama_stretch:
+ * @workspace: An #XfceWorkspace.
+ *
+ * returns whether the first backdrop is set to spanning screens since it's
+ * the only backdrop where that setting is applicable.
+ **/
 gboolean
 xfce_workspace_get_xinerama_stretch(XfceWorkspace *workspace)
 {
@@ -215,6 +224,14 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     g_signal_emit(G_OBJECT(user_data), signals[WORKSPACE_BACKDROP_CHANGED], 0, backdrop);
 }
 
+/**
+ * xfce_workspace_set_workspace_num:
+ * @workspace: An #XfceWorkspace.
+ * @GdkScreen: screen the workspace is on.
+ *
+ * Updates the backdrops to correctly display the right settings since GTK/GDK
+ * uses monitor numbers rather than names.
+ **/
 void
 xfce_workspace_monitors_changed(XfceWorkspace *workspace,
                                 GdkScreen *gscreen)
@@ -564,6 +581,10 @@ xfce_workspace_connect_backdrop_settings(XfceWorkspace *workspace,
     if(xfce_backdrop_get_image_style(backdrop) == XFCE_BACKDROP_IMAGE_INVALID)
         xfce_workspace_migrate_backdrop_image_style(workspace, backdrop, monitor);
 
+    /* determine if the backdrop will be required to keep a ref of it's pixbuf
+     * when it generates one */
+    xfce_backdrop_set_cache_pixbuf(backdrop, workspace->priv->cache_pixbufs);
+
     g_free(monitor_name);
 }
 
@@ -644,6 +665,14 @@ xfce_workspace_get_workspace_num(XfceWorkspace *workspace)
     return workspace->priv->workspace_num;
 }
 
+/**
+ * xfce_workspace_set_workspace_num:
+ * @workspace: An #XfceWorkspace.
+ * @number: workspace number
+ *
+ * Identifies which workspace this is. Required for XfceWorkspace to get
+ * the correct xfconf settings for its backdrops.
+ **/
 void
 xfce_workspace_set_workspace_num(XfceWorkspace *workspace, gint number)
 {
@@ -652,10 +681,64 @@ xfce_workspace_set_workspace_num(XfceWorkspace *workspace, gint number)
     workspace->priv->workspace_num = number;
 }
 
+/**
+ * xfce_workspace_set_cache_pixbufs:
+ * @workspace: An #XfceWorkspace.
+ * @cache_pixbuf: When TRUE XfceWorkspace will have all it's backdrops keep
+ *                a reference to the current pixbuf.
+ *
+ * This function will control whether XfceWorkspace's backdrops keep a reference
+ * to their respective pixbufs or not. Setting it to TRUE is useful for the
+ * per-workspace-wallpapers, FALSE will save memory for single workspace mode.
+ **/
+void
+xfce_workspace_set_cache_pixbufs(XfceWorkspace *workspace,
+                                 gboolean cache_pixbuf)
+{
+    guint i;
+    guint n_monitors;
+
+    g_return_if_fail(XFCE_IS_WORKSPACE(workspace));
+
+    /* If nothing changed then avoid doing any work */
+    if(workspace->priv->cache_pixbufs == cache_pixbuf)
+        return;
+
+    workspace->priv->cache_pixbufs = cache_pixbuf;
+
+    DBG("cache_pixbuf now %s", cache_pixbuf ? "TRUE" : "FALSE");
+
+    n_monitors = gdk_screen_get_n_monitors(workspace->priv->gscreen);
+
+    /* update all the backdrops */
+    for(i = 0; i < n_monitors && i < workspace->priv->nbackdrops; ++i) {
+        xfce_backdrop_set_cache_pixbuf(workspace->priv->backdrops[i], cache_pixbuf);
+    }
+}
+
+gboolean
+xfce_workspace_get_cache_pixbufs(XfceWorkspace *workspace)
+{
+    g_return_val_if_fail(XFCE_IS_WORKSPACE(workspace), FALSE);
+
+    return workspace->priv->cache_pixbufs;
+}
+
+/**
+ * xfce_workspace_get_backdrop:
+ * @workspace: An #XfceWorkspace.
+ * @monitor: monitor number
+ *
+ * Returns the XfceBackdrop on the specified monitor. Returns NULL on an
+ * invalid monitor number.
+ **/
 XfceBackdrop *xfce_workspace_get_backdrop(XfceWorkspace *workspace,
                                           guint monitor)
 {
-    g_return_val_if_fail(XFCE_IS_WORKSPACE(workspace)
-                         && monitor < workspace->priv->nbackdrops, NULL);
+    g_return_val_if_fail(XFCE_IS_WORKSPACE(workspace), NULL);
+
+    if(monitor >= workspace->priv->nbackdrops)
+        return NULL;
+
     return workspace->priv->backdrops[monitor];
 }

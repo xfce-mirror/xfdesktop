@@ -95,6 +95,7 @@ struct _XfceBackdropPriv
 
     GdkPixbuf *pix;
     XfceBackdropImageData *image_data;
+    gboolean cache_pixbuf;
 
     XfceBackdropColorStyle color_style;
     GdkColor color1;
@@ -1246,6 +1247,47 @@ xfce_backdrop_get_random_order(XfceBackdrop *backdrop)
     return backdrop->priv->random_backdrop_order;
 }
 
+/**
+ * xfce_backdrop_set_cache_pixbuf:
+ * @backdrop: An #XfceBackdrop.
+ * @cache_pixbuf: When TRUE XfceBackdrop will keep a reference to the current
+ *                pixbuf until another one is set.
+ *
+ * XfceBackdrop can be set to keep a reference to the current backdrop and
+ * increment the reference count when xfce_backdrop_get_pixbuf is called.
+ * Setting cache_pixbuf to FALSE will cause xfce_backdrop_get_pixbuf to
+ * return XfceBackdrop's only reference and free any memory allocated. This
+ * will use less memory, especially when the backdrop isn't expected to change
+ * as in single workspace mode.
+ **/
+void
+xfce_backdrop_set_cache_pixbuf(XfceBackdrop *backdrop,
+                               gboolean cache_pixbuf)
+{
+    g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
+
+    TRACE("entering");
+
+    if(backdrop->priv->cache_pixbuf == cache_pixbuf)
+        return;
+
+    backdrop->priv->cache_pixbuf = cache_pixbuf;
+
+    DBG("cache_pixbuf now %s", cache_pixbuf ? "TRUE" : "FALSE");
+
+    /* release any cached pixbuf now to save memory */
+    if(!cache_pixbuf)
+        xfce_backdrop_clear_cached_image(backdrop);
+}
+
+gboolean
+xfce_backdrop_get_cache_pixbuf(XfceBackdrop *backdrop)
+{
+    g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), FALSE);
+
+    return backdrop->priv->cache_pixbuf;
+}
+
 /* Generates the background that will either be displayed or will have the
  * image drawn on top of */
 static GdkPixbuf *
@@ -1317,9 +1359,19 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
 {
     TRACE("entering");
 
-    if(backdrop->priv->pix)
+    if(backdrop->priv->pix && backdrop->priv->cache_pixbuf) {
+        /* return a reference so we can cache it */
         return g_object_ref(backdrop->priv->pix);
+    } else if(backdrop->priv->pix) {
+        /* We're not going to cache it so return our reference and set our
+         * pointer to NULL */
+        GdkPixbuf *pix = backdrop->priv->pix;
+        backdrop->priv->pix = NULL;
 
+        return pix;
+    }
+
+    /* !backdrop->priv->pix, call xfce_backdrop_generate_async */
     return NULL;
 }
 

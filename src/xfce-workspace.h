@@ -70,6 +70,10 @@ void xfce_workspace_monitors_changed(XfceWorkspace *workspace,
 
 gboolean xfce_workspace_get_xinerama_stretch(XfceWorkspace *workspace);
 
+void xfce_workspace_set_cache_pixbufs    (XfceWorkspace *workspace,
+                                          gboolean cache_pixbuf);
+gboolean xfce_workspace_get_cache_pixbufs(XfceWorkspace *workspace);
+
 XfceBackdrop *xfce_workspace_get_backdrop(XfceWorkspace *workspace,
                                           guint monitor);
 
