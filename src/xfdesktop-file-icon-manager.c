@@ -2464,8 +2464,6 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
             DBG("got a moved event");
 
             icon = g_hash_table_lookup(fmanager->priv->icons, file);
-            if(!icon)
-                return;
 
             file_info = g_file_query_info(other_file, XFDESKTOP_FILE_INFO_NAMESPACE,
                                           G_FILE_QUERY_INFO_NONE, NULL, NULL);
@@ -2473,14 +2471,16 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
             if(file_info) {
                 gboolean is_hidden;
 
-                /* Get the old position so we can use it for the new icon */
-                xfdesktop_icon_get_position(XFDESKTOP_ICON(icon), &row, &col);
+                if(icon) {
+                    /* Get the old position so we can use it for the new icon */
+                    xfdesktop_icon_get_position(XFDESKTOP_ICON(icon), &row, &col);
 
-                /* Remove the icon from the icon_view and this manager's
-                 * hash table */
-                xfdesktop_icon_view_remove_item(fmanager->priv->icon_view,
-                                            XFDESKTOP_ICON(icon));
-                g_hash_table_remove(fmanager->priv->icons, file);
+                    /* Remove the icon from the icon_view and this manager's
+                     * hash table */
+                    xfdesktop_icon_view_remove_item(fmanager->priv->icon_view,
+                                                XFDESKTOP_ICON(icon));
+                    g_hash_table_remove(fmanager->priv->icons, file);
+                }
 
                 is_hidden = g_file_info_get_attribute_boolean(file_info,
                                                               G_FILE_ATTRIBUTE_STANDARD_IS_HIDDEN);
@@ -2492,21 +2492,22 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
                                                                  row,
                                                                  col,
                                                                  FALSE);
-                    xfdesktop_file_icon_position_changed(icon, fmanager);
+                    if(icon)
+                        xfdesktop_file_icon_position_changed(icon, fmanager);
                 }
 
                 g_object_unref(file_info);
             }
             break;
         case G_FILE_MONITOR_EVENT_ATTRIBUTE_CHANGED:
-        case G_FILE_MONITOR_EVENT_CHANGED:
+        case G_FILE_MONITOR_EVENT_CHANGES_DONE_HINT:
             DBG("got changed event");
-            
+
             icon = g_hash_table_lookup(fmanager->priv->icons, file);
             if(icon) {
                 file_info = g_file_query_info(file, XFDESKTOP_FILE_INFO_NAMESPACE,
                                               G_FILE_QUERY_INFO_NONE, NULL, NULL);
-                
+
                 if(file_info) {
                     /* update the icon if the file still exists */
                     xfdesktop_file_icon_update_file_info(icon, file_info);
@@ -2549,32 +2550,39 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
 
                 g_object_unref(file_info);
             }
-
             break;
         case G_FILE_MONITOR_EVENT_DELETED:
             DBG("got deleted event");
 
             filename = g_file_get_path(file);
 
-            /* If the file still exists, then keep it. Firefox does this when
-             * downloading files (deletes the main fail and moves the .part
-             * file to the main file). */
-            if(g_file_test(filename, G_FILE_TEST_EXISTS)) {
-                DBG("file still exists, not deleting");
-                g_free(filename);
-                return;
-            }
-
             icon = g_hash_table_lookup(fmanager->priv->icons, file);
             if(icon) {
-                /* Always try to remove thumbnail so it doesn't take up
-                 * space on the user's disk.
-                 */
-                xfdesktop_thumbnailer_delete_thumbnail(fmanager->priv->thumbnailer,
-                                                       filename);
+                GList *item = NULL;
 
-                xfdesktop_icon_view_remove_item(fmanager->priv->icon_view,
-                                                XFDESKTOP_ICON(icon));
+                /* find out if the icon was pending creation */
+                if(fmanager->priv->pending_icons)
+                    item = g_queue_find(fmanager->priv->pending_icons, icon);
+
+                if(item) {
+                    /* Icon was pending creation, dequeue the thumbnail and
+                     * remove it from the pending icons queue */
+                    xfdesktop_thumbnailer_dequeue_thumbnail(fmanager->priv->thumbnailer,
+                                                            filename);
+
+                    g_queue_remove(fmanager->priv->pending_icons, icon);
+                } else {
+                    /* Always try to remove thumbnail so it doesn't take up
+                     * space on the user's disk. */
+                    xfdesktop_thumbnailer_delete_thumbnail(fmanager->priv->thumbnailer,
+                                                           filename);
+
+                    /* Remove icon from the icon view */
+                    xfdesktop_icon_view_remove_item(fmanager->priv->icon_view,
+                                                    XFDESKTOP_ICON(icon));
+                }
+
+                /* always remove from the hash table */
                 g_hash_table_remove(fmanager->priv->icons, file);
             } else {
                 if(g_file_equal(file, fmanager->priv->folder)) {
