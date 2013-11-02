@@ -1,3 +1,35 @@
+4.11.1
+======
+- Wrong g_return_if_fail macro used
+- Fix icon moves and deletions
+- Don't cache the pixbufs in single workspace mode
+- Clear all pixels from drag highlight box (Bug 10450)
+- Speed up template sub-menu loading code (Bug 7834)
+- Always move files from the trash (Bug 3983)
+- Fix template sub-menu loading code (Bug 10138)
+- Fix menu popups via the command line
+- Use the Path key of desktop files if a path is not set (Bug #8741)
+- Correctly display settings defaults
+- Fix some memory leaks
+- Include the chronological option in the combobox
+- Allow the font size to go to 0.
+- Tooltip options in xfdesktop-settings
+- Add a chronological backdrop cycle option
+- Additonal backdrop cycle options
+- More removable device icon types (Bug 4056)
+- Add icons in an idle callback
+- Right click issues persist (Bug 9323)
+- Migrate backdrop settings from previous versions (Bug 10380)
+- Set warnings as fatal
+- Update manpage (Bug 7576)
+- Allow renaming of multiple icons
+- Translation updates: Arabic (ar), Bulgarian (bg), Chinese (China) (zh_CN),
+  Chinese (Taiwan) (zh_TW), Dutch (Flemish) (nl), English (Australia) (en_AU),
+  French (fr), Hungarian (hu), Icelandic (is), Italian (it), Kazakh (kk),
+  Korean (ko), Polish (pl), Portuguese (pt), Portuguese (Brazilian) (pt_BR),
+  Russian (ru), Serbian (sr), Spanish (Castilian) (es), Thai (th),
+  Turkish (tr), Ukrainian (uk), and Uzbek (uz)
+
 4.11.0
 ======
 - No need to remove the thumbnail if we're removing the icon
