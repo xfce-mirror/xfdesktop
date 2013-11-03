@@ -1724,8 +1724,11 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     panel->frame_image_list = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
                                                                 "frame_image_list"));
 
-    gtk_table_attach_defaults(GTK_TABLE(appearance_container),
-                             appearance_settings, 0,1,0,1);
+    /* Add the background tab widgets to the main window and don't display the
+     * notebook label/tab */
+    gtk_notebook_append_page(GTK_NOTEBOOK(appearance_container),
+                             appearance_settings, NULL);
+    gtk_notebook_set_show_tabs(GTK_NOTEBOOK(appearance_container), FALSE);
 
     /* icon view area */
     panel->frame_image_list = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
