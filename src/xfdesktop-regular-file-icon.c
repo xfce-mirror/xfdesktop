@@ -261,11 +261,16 @@ xfdesktop_load_icon_from_desktop_file(XfdesktopRegularFileIcon *regular_icon)
                                               G_KEY_FILE_DESKTOP_KEY_ICON,
                                               NULL);
 
-            /* Create the themed icon for it */
-            if(icon_name) {
+            if(icon_name && g_file_test(icon_name, G_FILE_TEST_IS_REGULAR)) {
+                /* icon_name is an absolute path, create it as a file icon */
+                gicon = g_file_icon_new(g_file_new_for_path(icon_name));
+            } else if(icon_name) {
+                /* otherwise create a themed icon for it */
                 gicon = g_themed_icon_new(icon_name);
-                g_free(icon_name);
             }
+
+            if(icon_name)
+                g_free(icon_name);
         }
 
         /* free key file and in-memory data */
