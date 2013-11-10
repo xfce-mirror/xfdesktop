@@ -2216,7 +2216,11 @@ xfdesktop_file_icon_manager_add_regular_icon(XfdesktopFileIconManager *fmanager,
             xfce_rc_close(rcfile);
         }
     }
-    
+
+    /* If it's a hidden or backup file don't show it on the desktop */
+    if(g_file_info_get_is_hidden(info) || g_file_info_get_is_backup(info))
+        return NULL;
+
     /* should never return NULL */
     icon = xfdesktop_regular_file_icon_new(file, info, fmanager->priv->gscreen);
     
