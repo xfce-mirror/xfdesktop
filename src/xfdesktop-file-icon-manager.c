@@ -2156,6 +2156,43 @@ xfdesktop_file_icon_manager_add_icon(XfdesktopFileIconManager *fmanager,
 
 }
 
+static void
+xfdesktop_file_icon_manager_remove_icon(XfdesktopFileIconManager *fmanager,
+                                        XfdesktopFileIcon *icon)
+{
+    GList *item = NULL;
+
+    g_return_if_fail(XFDESKTOP_IS_FILE_ICON_MANAGER(fmanager));
+    g_return_if_fail(XFDESKTOP_IS_FILE_ICON(icon));
+
+    /* find out if the icon was pending creation */
+    if(fmanager->priv->pending_icons)
+        item = g_queue_find(fmanager->priv->pending_icons, icon);
+
+    if(item && item->data && XFDESKTOP_IS_FILE_ICON(item->data)) {
+        gchar *filename = g_file_get_path(xfdesktop_file_icon_peek_file(item->data));
+
+        DBG("removing %s from pending queue", filename);
+
+        /* Icon was pending creation, dequeue the thumbnail and
+         * remove it from the pending icons queue */
+        xfdesktop_thumbnailer_dequeue_thumbnail(fmanager->priv->thumbnailer,
+                                                filename);
+
+        g_queue_remove(fmanager->priv->pending_icons, icon);
+
+        g_free(filename);
+    } else {
+        DBG("removing icon %s from icon view", xfdesktop_icon_peek_label(XFDESKTOP_ICON(icon)));
+        /* Remove the icon from the icon_view */
+        xfdesktop_icon_view_remove_item(fmanager->priv->icon_view,
+                                        XFDESKTOP_ICON(icon));
+    }
+
+    /* Remove the icon from the hash table */
+    g_hash_table_remove(fmanager->priv->icons, xfdesktop_file_icon_peek_file(icon));
+}
+
 /* If row and col are set then they will be used, otherwise set them to -1
  * and it will lookup the position in the rc file */
 static XfdesktopFileIcon *
@@ -2458,7 +2495,7 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
                                          gpointer          user_data)
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
-    XfdesktopFileIcon *icon;
+    XfdesktopFileIcon *icon, *moved_icon;
     GFileInfo *file_info;
     guint16 row, col;
     gchar *filename;
@@ -2472,30 +2509,42 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
             file_info = g_file_query_info(other_file, XFDESKTOP_FILE_INFO_NAMESPACE,
                                           G_FILE_QUERY_INFO_NONE, NULL, NULL);
 
+            if(icon) {
+                /* Get the old position so we can use it for the new icon */
+                xfdesktop_icon_get_position(XFDESKTOP_ICON(icon), &row, &col);
+                DBG("row %d, col %d", row, col);
+
+                /* Remove the old icon */
+                xfdesktop_file_icon_manager_remove_icon(fmanager, icon);
+            }
+
+            /* Check to see if there's already an other_file represented on
+             * the desktop and remove it so there aren't duplicated icons
+             * present. */
+            moved_icon = g_hash_table_lookup(fmanager->priv->icons, other_file);
+            if(moved_icon) {
+                /* Since we're replacing an existing icon, get that location
+                 * to use instead */
+                xfdesktop_icon_get_position(XFDESKTOP_ICON(moved_icon), &row, &col);
+                DBG("row %d, col %d", row, col);
+
+                xfdesktop_file_icon_manager_remove_icon(fmanager, moved_icon);
+            }
+
             if(file_info) {
                 gboolean is_hidden;
 
-                if(icon) {
-                    /* Get the old position so we can use it for the new icon */
-                    xfdesktop_icon_get_position(XFDESKTOP_ICON(icon), &row, &col);
-
-                    /* Remove the icon from the icon_view and this manager's
-                     * hash table */
-                    xfdesktop_icon_view_remove_item(fmanager->priv->icon_view,
-                                                XFDESKTOP_ICON(icon));
-                    g_hash_table_remove(fmanager->priv->icons, file);
-                }
 
                 is_hidden = g_file_info_get_attribute_boolean(file_info,
                                                               G_FILE_ATTRIBUTE_STANDARD_IS_HIDDEN);
                 if(!is_hidden) {
                     /* Add the icon adding the row/col info */
-                    xfdesktop_file_icon_manager_add_regular_icon(fmanager,
-                                                                 other_file,
-                                                                 file_info,
-                                                                 row,
-                                                                 col,
-                                                                 FALSE);
+                    icon = xfdesktop_file_icon_manager_add_regular_icon(fmanager,
+                                                                        other_file,
+                                                                        file_info,
+                                                                        row,
+                                                                        col,
+                                                                        FALSE);
                     if(icon)
                         xfdesktop_file_icon_position_changed(icon, fmanager);
                 }
@@ -2517,10 +2566,8 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
                     xfdesktop_file_icon_update_file_info(icon, file_info);
                     g_object_unref(file_info);
                 } else {
-                    /* remove the icon as the file no longer seems to be existing */
-                    xfdesktop_icon_view_remove_item(fmanager->priv->icon_view,
-                                                    XFDESKTOP_ICON(icon));
-                    g_hash_table_remove(fmanager->priv->icons, file);
+                    /* Remove the icon as it doesn't seem to exist */
+                    xfdesktop_file_icon_manager_remove_icon(fmanager, icon);
                 }
             }
             break;
@@ -2535,9 +2582,8 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
              * this seems to be necessary to avoid inconsistencies */
             icon = g_hash_table_lookup(fmanager->priv->icons, file);
             if(icon) {
-                xfdesktop_icon_view_remove_item(fmanager->priv->icon_view,
-                                                XFDESKTOP_ICON(icon));
-                g_hash_table_remove(fmanager->priv->icons, file);
+                /* Remove the old icon */
+                xfdesktop_file_icon_manager_remove_icon(fmanager, icon);
             }
             
             file_info = g_file_query_info(file, XFDESKTOP_FILE_INFO_NAMESPACE,
