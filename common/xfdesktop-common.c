@@ -120,53 +120,6 @@ xfdesktop_image_file_is_valid(const gchar *filename)
     return image_valid;
 }
 
-gboolean
-xfdesktop_check_is_running(Window *xid)
-{
-    const gchar *display = g_getenv("DISPLAY");
-    gchar *p;
-    gint xscreen = -1;
-    gchar selection_name[100];
-    Atom selection_atom;
-
-    if(display) {
-        if((p=g_strrstr(display, ".")))
-            xscreen = atoi(p);
-    }
-    if(xscreen == -1)
-        xscreen = 0;
-
-    g_snprintf(selection_name, 100, XFDESKTOP_SELECTION_FMT, xscreen);
-    selection_atom = XInternAtom(gdk_x11_get_default_xdisplay(), selection_name, False);
-
-    if((*xid = XGetSelectionOwner(gdk_x11_get_default_xdisplay(), selection_atom)))
-        return TRUE;
-
-    return FALSE;
-}
-
-void
-xfdesktop_send_client_message(Window xid, const gchar *msg)
-{
-    GdkEventClient gev;
-    GtkWidget *win;
-
-    win = gtk_invisible_new();
-    gtk_widget_realize(win);
-
-    gev.type = GDK_CLIENT_EVENT;
-    gev.window = gtk_widget_get_window(win);
-    gev.send_event = TRUE;
-    gev.message_type = gdk_atom_intern("STRING", FALSE);
-    gev.data_format = 8;
-    strcpy(gev.data.b, msg);
-
-    gdk_event_send_client_message((GdkEvent *)&gev, (GdkNativeWindow)xid);
-    gdk_flush();
-
-    gtk_widget_destroy(win);
-}
-
 /* The image styles changed from versions prior to 4.11.
  * Auto isn't an option anymore, additionally we should handle invalid
  * values. Set them to the default of stretched. */
