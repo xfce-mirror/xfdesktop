@@ -1,159 +1,138 @@
-# Swedish translations for xfdesktop package.
-# Copyright (C) 2003-2008 The Xfce development team.
-# This file is distributed under the same license as the xfdesktop package.
-# Joakim Andreasson <joakim.andreasson@gmx.net>, 2003-2004.
-# Alexander Toresson <alexander.toresson@gmail.com>, 2006
-# Daniel Nylander <po@danielnylander.se>, 2008.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 # 
+# Translators:
+# Alexander Toresson <alexander.toresson@gmail.com>, 2006
+# Daniel Nylander <po@danielnylander.se>, 2008
+# FredN <fredrik@nyqvist.biz>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop\n"
+"Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-01 11:12+0000\n"
-"PO-Revision-Date: 2010-10-17 17:18+0100\n"
-"Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
-"Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
+"POT-Creation-Date: 2013-11-03 12:31+0100\n"
+"PO-Revision-Date: 2013-11-13 21:21+0000\n"
+"Last-Translator: FredN <fredrik@nyqvist.biz>\n"
+"Language-Team: Swedish (http://www.transifex.com/projects/p/xfce/language/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: sv\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
-#, c-format
-msgid "Backdrop list file is not valid"
-msgstr "Bakgrundslistfilen är inte giltig"
-
-#. no need to escape markup; it's already done for us
-#: ../settings/main.c:163
-#, c-format
-msgid ""
-"%s\n"
-"<i>Size: %dx%d</i>"
-msgstr ""
-"%s\n"
-"<i>Storlek: %dx%d</i>"
-
-#: ../settings/main.c:289 ../src/xfdesktop-special-file-icon.c:256
-#: ../src/xfdesktop-special-file-icon.c:419
+#: ../settings/main.c:369 ../src/xfdesktop-special-file-icon.c:295
+#: ../src/xfdesktop-special-file-icon.c:479
 msgid "Home"
 msgstr "Hem"
 
-#: ../settings/main.c:291
+#: ../settings/main.c:371
 msgid "Filesystem"
 msgstr "Filsystem"
 
-#: ../settings/main.c:293
+#: ../settings/main.c:373
 msgid "Trash"
 msgstr "Papperskorg"
 
-#: ../settings/main.c:295
+#: ../settings/main.c:375
 msgid "Removable Devices"
 msgstr "Flyttbara enheter"
 
-#: ../settings/main.c:475
+#: ../settings/main.c:377
+msgid "Network Shares"
+msgstr "Nätverksdelning"
+
+#: ../settings/main.c:379
+msgid "Disks and Drives"
+msgstr ""
+
+#: ../settings/main.c:381
+msgid "Other Items"
+msgstr "Övrigt"
+
+#. Display the file name, file type, and file size in the tooltip.
+#: ../settings/main.c:494
 #, c-format
-msgid "Cannot create backdrop list \"%s\""
-msgstr "Kan inte skapa bakgrundslistan \"%s\""
+msgid ""
+"<b>%s</b>\n"
+"Type: %s\n"
+"Size: %s"
+msgstr "<b>%s</b>\nTyp: %s\nStorlek: %s"
 
-#: ../settings/main.c:479 ../settings/main.c:802
-msgid "Backdrop List Error"
-msgstr "Fel i bakgrundslista"
-
-#: ../settings/main.c:504
-msgid "Create/Load Backdrop List"
-msgstr "Skapa/läs in bakgrundslista"
-
-#: ../settings/main.c:528
+#: ../settings/main.c:678
 #, c-format
-msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr "Filen \"%s\" är inte en giltig bakgrundslistfil.  Vill du skriva över den?"
+msgid "Wallpaper for Monitor %d (%s)"
+msgstr "Bakgrundsbild för monitor %d (%s)"
 
-#: ../settings/main.c:533
-msgid "Invalid List File"
-msgstr "Ogiltig listfil"
-
-#: ../settings/main.c:536
-msgid "Overwriting the file will cause its contents to be lost."
-msgstr "Skriva över filen innebär att dess innehåll går förlorat."
-
-#: ../settings/main.c:538
-msgid "Replace"
-msgstr "Ersätt"
-
-#: ../settings/main.c:798
+#: ../settings/main.c:681
 #, c-format
-msgid "Failed to write backdrop list to \"%s\""
-msgstr "Misslyckades med att skriva bakgrundslista till \"%s\""
+msgid "Wallpaper for Monitor %d"
+msgstr "Bakgrundsbild för monitor %d"
 
-#: ../settings/main.c:825
-msgid "Add Image File(s)"
-msgstr "Lägg till bildfil(er)"
+#: ../settings/main.c:687
+#, c-format
+msgid "Wallpaper for %s on Monitor %d (%s)"
+msgstr "Bakgrundsbild för %s på monitor %d (%s)"
 
-#: ../settings/main.c:834
+#: ../settings/main.c:691
+#, c-format
+msgid "Wallpaper for %s on Monitor %d"
+msgstr "Bakgrundsbild för %s på monitor %d"
+
+#. Single monitor and single workspace
+#: ../settings/main.c:698
+#, c-format
+msgid "Wallpaper for my desktop"
+msgstr "Bakgrundsbild för mitt skrivbord"
+
+#. Single monitor and per workspace wallpaper
+#: ../settings/main.c:701
+#, c-format
+msgid "Wallpaper for %s"
+msgstr "Bakgrundsbild för %s"
+
+#: ../settings/main.c:1101
+msgid "Image selection is unavailable while the image style is set to None."
+msgstr ""
+
+#: ../settings/main.c:1453
+msgid "Spanning screens"
+msgstr ""
+
+#: ../settings/main.c:1747
 msgid "Image files"
 msgstr "Bildfiler"
 
-#: ../settings/main.c:839
-msgid "All files"
-msgstr "Alla filer"
-
-#: ../settings/main.c:1271
-#, c-format
-msgid "Screen %d, Monitor %d (%s)"
-msgstr "Skärm %d, Monitor %d (%s)"
-
-#: ../settings/main.c:1275
-#, c-format
-msgid "Screen %d, Monitor %d"
-msgstr "Skärm %d, Monitor %d"
-
-#: ../settings/main.c:1278
-#, c-format
-msgid "Screen %d"
-msgstr "Skärm %d"
-
-#: ../settings/main.c:1283
-#, c-format
-msgid "Monitor %d (%s)"
-msgstr "Monitor %d (%s)"
-
-#: ../settings/main.c:1287
-#, c-format
-msgid "Monitor %d"
-msgstr "Monitor %d"
-
-#: ../settings/main.c:1500
+#: ../settings/main.c:1899
 msgid "Settings manager socket"
 msgstr "Uttag för inställningshanterare"
 
-#: ../settings/main.c:1500
+#: ../settings/main.c:1899
 msgid "SOCKET ID"
 msgstr "UTTAGS-ID"
 
-#: ../settings/main.c:1501
+#: ../settings/main.c:1900
 msgid "Version information"
 msgstr "Versionsinformation"
 
-#: ../settings/main.c:1521
+#: ../settings/main.c:1927
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Ange \"%s --help\" för användningsinformation."
 
-#: ../settings/main.c:1533
+#: ../settings/main.c:1939
 msgid "The Xfce development team. All rights reserved."
 msgstr "The Xfce development team. Alla rättigheter reserverade."
 
-#: ../settings/main.c:1534
+#: ../settings/main.c:1940
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Rapportera fel till <%s>."
 
-#: ../settings/main.c:1541
+#: ../settings/main.c:1947
 msgid "Desktop Settings"
 msgstr "Skrivbordsinställningar"
 
-#: ../settings/main.c:1543
+#: ../settings/main.c:1949
 msgid "Unable to contact settings server"
 msgstr "Kunde inte kontakta inställningsservern"
 
@@ -166,355 +145,367 @@ msgid "Set desktop background and menu and icon behaviour"
 msgstr "Ange skrivbordsbakgrund samt meny- och ikonbeteende"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
-msgid "<b>Adjustments</b>"
-msgstr "<b>Justeringar</b>"
+msgid "Solid color"
+msgstr "Enfärgad"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
-msgid "<b>Colors</b>"
-msgstr "<b>Färger</b>"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
-msgid "<b>Image</b>"
-msgstr "<b>Bild</b>"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
-msgid "<b>Images</b>"
-msgstr "<b>Bilder</b>"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
-msgid "Add an image to the list"
-msgstr "Lägg till en bild till listan"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
-#: ../settings/xfdesktop-settings-ui.glade.h:6
-msgid "Auto"
-msgstr "Automatisk"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
-msgid "Automatically pick a random image from a list file"
-msgstr "Välj automatiskt en slumpmässigt vald bild från en listfil"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
-msgid "B_rightness:"
-msgstr "L_jusstyrka:"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
-#: ../settings/xfdesktop-settings-ui.glade.h:8
-msgid "Centered"
-msgstr "Centrerad"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
-msgid "Create a new list, or load an existing one"
-msgstr "Skapa en ny lista eller läs in en befintlig"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
-msgid "Don't display an image at all"
-msgstr "Visa inte någon bild alls"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
-#: ../settings/xfdesktop-settings-ui.glade.h:12
 msgid "Horizontal gradient"
 msgstr "Horizontell gradient"
 
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
+msgid "Vertical gradient"
+msgstr "Vertikal gradient"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
+msgid "Transparent"
+msgstr "Genomskinlig"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
+msgid "_Folder:"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
+msgid "Choose the folder to select wallpapers from"
+msgstr "Välj en mapp att hämta bakgrundsbilder från"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
+msgid "St_yle:"
+msgstr "S_til:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
+msgid "Specify how the image will be resized to fit the screen"
+msgstr "Ange hur bilden ska storleksändras för att passa skärmen"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
+#: ../settings/xfdesktop-settings-ui.glade.h:4
+msgid "None"
+msgstr "Inga"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
+msgid "Centered"
+msgstr "Centrerad"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
+msgid "Tiled"
+msgstr "Uppradad"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
+msgid "Stretched"
+msgstr "Utsträckt"
+
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
-msgid "Image _list"
-msgstr "Bild_lista"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
-msgid "Increase or decrease the brightness of the final image"
-msgstr "Öka eller minska ljusstyrkan för den slutgiltiga bilden"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
-msgid "Increase or decrease the color saturation of the final image"
-msgstr "Öka eller minska färgmättnaden för den slutgiltiga bilden"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
-msgid "Remove the selected image(s) from the list"
-msgstr "Ta bort markerade bild(er) från listan"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
-msgid "Sa_turation:"
-msgstr "Färg_mättnad:"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
-#: ../settings/xfdesktop-settings-ui.glade.h:23
 msgid "Scaled"
 msgstr "Skalad"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
+msgid "Zoomed"
+msgstr "Zoomad"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
+msgid "Spanning Screens"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
+msgid "C_olor:"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
+msgid "Specify the style of the color drawn behind the backdrop image"
+msgstr "Ange stilen för färgen som ritas ut bakom bakgrundsbilden"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
+msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr "Anger färg för enfärgad eller \"vänster\" eller \"övre\" färg av gradienten"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
 msgid "Select First Color"
 msgstr "Välj första färgen"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
-msgid "Select Second Color"
-msgstr "Välj andra färgen"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
-msgid "Select a single image as the backdrop"
-msgstr "Välj en enda bild som bakgrund"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
-#: ../settings/xfdesktop-settings-ui.glade.h:32
-msgid "Solid color"
-msgstr "Enfärgad"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
 msgstr "Anger \"höger\" eller \"nedre\" färg av gradienten"
 
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
+msgid "Select Second Color"
+msgstr "Välj andra färgen"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
+msgid "Apply to all _workspaces"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
+msgid "Change the _background "
+msgstr ""
+
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
-msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr "Anger färg för enfärgad eller \"vänster\" eller \"övre\" färg av gradienten"
+msgid ""
+"Automatically select a different background from the current directory."
+msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
-msgid "Specify how the image will be resized to fit the screen"
-msgstr "Ange hur bilden ska storleksändras för att passa skärmen"
+msgid "Specify how often the background will change"
+msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
-msgid "Specify the style of the color drawn behind the backdrop image"
-msgstr "Ange stilen för färgen som ritas ut bakom bakgrundsbilden"
+msgid "in seconds:"
+msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
-msgid "St_yle:"
-msgstr "S_til:"
+msgid "in minutes:"
+msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
-#: ../settings/xfdesktop-settings-ui.glade.h:34
-msgid "Stretched"
-msgstr "Utsträckt"
+msgid "in hours:"
+msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
-#: ../settings/xfdesktop-settings-ui.glade.h:35
-msgid "Tiled"
-msgstr "Uppradad"
+msgid "at start up"
+msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
-#: ../settings/xfdesktop-settings-ui.glade.h:36
-msgid "Transparent"
-msgstr "Genomskinlig"
+msgid "every hour"
+msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
-#: ../settings/xfdesktop-settings-ui.glade.h:39
-msgid "Vertical gradient"
-msgstr "Vertikal gradient"
+msgid "every day"
+msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
-#: ../settings/xfdesktop-settings-ui.glade.h:40
-msgid "Zoomed"
-msgstr "Zoomad"
+msgid "chronologically"
+msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
-msgid "_None"
-msgstr "In_ga"
+msgid "Amount of time before a different background is selected."
+msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
-msgid "_Single image"
-msgstr "_En bild"
+msgid "_Random Order"
+msgstr "Slumpvis vald ordning"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
+msgid ""
+"Randomly selects another image from the same directory when the wallpaper is"
+" to cycle."
+msgstr ""
 
 #: ../settings/xfdesktop-settings-ui.glade.h:1
-msgid "<b>Appearance</b>"
-msgstr "<b>Utseende</b>"
+msgid "Left"
+msgstr "Vänster"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:2
-msgid "<b>Default Icons</b>"
-msgstr "<b>Standardikoner</b>"
+msgid "Middle"
+msgstr "Mitten"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:3
-msgid "<b>Desktop Menu</b>"
-msgstr "<b>Skrivbordsmeny</b>"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:4
-msgid "<b>Window List Menu</b>"
-msgstr "<b>Fönsterlistmeny</b>"
+msgid "Right"
+msgstr "Höger"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:5
+msgid "Shift"
+msgstr "Skift"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:6
 msgid "Alt"
 msgstr "Alt"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:7
-msgid "B_utton:"
-msgstr "K_napp:"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:9
 msgid "Control"
 msgstr "Control"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:737
+#: ../settings/xfdesktop-settings-ui.glade.h:8
+msgid "Minimized application icons"
+msgstr "Minimerade programikoner"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:9
+msgid "File/launcher icons"
+msgstr "Ikoner för filer och programstartare"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:1016
 msgid "Desktop"
 msgstr "Skrivbord"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:11
-msgid "File/launcher icons"
-msgstr "Ikoner för filer och programstartare"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:13
-msgid "Icon _size:"
-msgstr "Ikon_storlek:"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:14
-msgid "Icon _type:"
-msgstr "Ikon_typ:"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:15
-msgid "Label trans_parency:"
-msgstr "Genomskinlighet för eti_kett:"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:16
-msgid "Left"
-msgstr "Vänster"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:17
-msgid "Middle"
-msgstr "Mitten"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:18
-msgid "Minimized application icons"
-msgstr "Minimerade programikoner"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:19
-msgid "Mo_difier:"
-msgstr "Mo_difierare:"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:20
-msgid "Modi_fier:"
-msgstr "Modi_fierare:"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:21
-msgid "None"
-msgstr "Inga"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:22
-msgid "Right"
-msgstr "Höger"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:24
 msgid "Set desktop background and menu and icon behavior"
 msgstr "Ange skrivbordsbakgrund samt meny- och ikonbeteende"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:25
-msgid "Sh_ow application icons in menu"
-msgstr "Visa prog_ramikoner i menyn"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:26
-msgid "Shift"
-msgstr "Skift"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:27
-msgid "Show _application icons in menu"
-msgstr "Visa program_ikoner i menyn"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:28
-msgid "Show _window list menu on desktop middle click"
-msgstr "Visa _fönsterlistmeny på skrivbord vid mittenklick"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:29
-msgid "Show applications menu on _desktop right click"
-msgstr "Visa programmeny på s_krivbord vid högerklick"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:30
-msgid "Show s_ticky windows only in active workspace"
-msgstr "Visa endast kl_istriga fönster i aktiv arbetsyta"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:31
-msgid "Show workspace _names in list"
-msgstr "Visa _namn på arbetsytor i lista"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:33
-msgid "Specify the transparency level for the rounded label drawn behind the icon text"
-msgstr "Ange nivå av genomskinlighet för rundade etiketter som ritas ut bakom ikontexten"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:37
-msgid "Use _submenus for the windows in each workspace"
-msgstr "Använd _undermenyer för fönstren på varje arbetsyta"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:38
-msgid "Use custom _font size:"
-msgstr "Använd anpassad t_ypsnittsstorlek:"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:41
+#: ../settings/xfdesktop-settings-ui.glade.h:12
 msgid "_Background"
 msgstr "_Bakgrund"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:42
+#: ../settings/xfdesktop-settings-ui.glade.h:13
+msgid "Show applications menu on _desktop right click"
+msgstr "Visa programmeny på s_krivbord vid högerklick"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:14
 msgid "_Button:"
 msgstr "_Knapp:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:43
+#: ../settings/xfdesktop-settings-ui.glade.h:15
+msgid "Mo_difier:"
+msgstr "Mo_difierare:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:16
+msgid "Show _application icons in menu"
+msgstr "Visa program_ikoner i menyn"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:17
 msgid "_Edit desktop menu"
 msgstr "R_edigera skrivbordsmeny"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:44
-msgid "_Icons"
-msgstr "_Ikoner"
+#: ../settings/xfdesktop-settings-ui.glade.h:18
+msgid "<b>Desktop Menu</b>"
+msgstr "<b>Skrivbordsmeny</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:45
+#: ../settings/xfdesktop-settings-ui.glade.h:19
+msgid "Show _window list menu on desktop middle click"
+msgstr "Visa _fönsterlistmeny på skrivbord vid mittenklick"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:20
+msgid "B_utton:"
+msgstr "K_napp:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:21
+msgid "Modi_fier:"
+msgstr "Modi_fierare:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:22
+msgid "Sh_ow application icons in menu"
+msgstr "Visa prog_ramikoner i menyn"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:23
+msgid "Show workspace _names in list"
+msgstr "Visa _namn på arbetsytor i lista"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:24
+msgid "Use _submenus for the windows in each workspace"
+msgstr "Använd _undermenyer för fönstren på varje arbetsyta"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:25
+msgid "Show s_ticky windows only in active workspace"
+msgstr "Visa endast kl_istriga fönster i aktiv arbetsyta"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:26
+msgid "<b>Window List Menu</b>"
+msgstr "<b>Fönsterlistmeny</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "_Menus"
 msgstr "_Menyer"
 
-#: ../src/main.c:238
+#: ../settings/xfdesktop-settings-ui.glade.h:28
+msgid "Icon _type:"
+msgstr "Ikon_typ:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:29
+msgid "Icon _size:"
+msgstr "Ikon_storlek:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:30
+msgid "Show t_humbnails"
+msgstr "Visa ikoner"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:31
+msgid ""
+"Select this option to display preview-able files on the desktop as "
+"automatically generated thumbnail icons."
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:32
+msgid "Single _click to activate items"
+msgstr "Klicka en gång för att aktivera ett objekt"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:33
+msgid "Show icon tooltips. Size:"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:34
+msgid "Size of the tooltip preview image."
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:35
+msgid "Use custom _font size:"
+msgstr "Använd anpassad t_ypsnittsstorlek:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:36
+msgid "<b>Appearance</b>"
+msgstr "<b>Utseende</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:37
+msgid "<b>Default Icons</b>"
+msgstr "<b>Standardikoner</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:38
+msgid "_Icons"
+msgstr "_Ikoner"
+
+#: ../src/main.c:241
 msgid "Display version information"
 msgstr "Visa versionsinformation"
 
-#: ../src/main.c:239
+#: ../src/main.c:242
 msgid "Reload all settings, refresh image list"
 msgstr "Läs om alla inställningar, uppdatera bildlistan"
 
-#: ../src/main.c:240
+#: ../src/main.c:243
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "Öppna menyn (vid muspekarens position)"
 
-#: ../src/main.c:241
+#: ../src/main.c:244
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "Öppna fönsterlistan (vid muspekarens position)"
 
-#: ../src/main.c:242
+#: ../src/main.c:246
+msgid "Automatically arrange all the icons on the desktop"
+msgstr "Ordna alla skrivbordsikoner automatiskt"
+
+#: ../src/main.c:248
 msgid "Cause xfdesktop to quit"
 msgstr "Gör så att xfdesktop avslutas"
 
-#: ../src/main.c:262
+#: ../src/main.c:271
 #, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "Misslyckades med att tolka argument: %s\n"
 
-#: ../src/main.c:270
+#: ../src/main.c:279
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Detta är %s version %s, som körs i Xfce %s.\n"
 
-#: ../src/main.c:272
+#: ../src/main.c:281
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Byggt med GTK+ %d.%d.%d, länkat med GTK+ %d.%d,%d"
 
-#: ../src/main.c:276
+#: ../src/main.c:285
 #, c-format
 msgid "Build options:\n"
 msgstr "Kompileringsflaggor:\n"
 
-#: ../src/main.c:277
+#: ../src/main.c:286
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Skrivbordsmeny:        %s\n"
 
-#: ../src/main.c:279 ../src/main.c:286 ../src/main.c:293
+#: ../src/main.c:288 ../src/main.c:295 ../src/main.c:302
 msgid "enabled"
 msgstr "aktiverad"
 
-#: ../src/main.c:281 ../src/main.c:288 ../src/main.c:295
+#: ../src/main.c:290 ../src/main.c:297 ../src/main.c:304
 msgid "disabled"
 msgstr "inaktiverad"
 
-#: ../src/main.c:284
+#: ../src/main.c:293
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Skrivbordsikoner:       %s\n"
 
-#: ../src/main.c:291
+#: ../src/main.c:300
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Filikoner:       %s\n"
 
-#: ../src/main.c:322
+#: ../src/main.c:333
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s körs inte.\n"
@@ -523,1335 +514,479 @@ msgstr "%s körs inte.\n"
 msgid "_Applications"
 msgstr "_Program"
 
-#: ../src/windowlist.c:235
+#: ../src/windowlist.c:72
+#, c-format
+msgid "Remove Workspace %d"
+msgstr "Ta bort arbetsyta %d"
+
+#: ../src/windowlist.c:73
+#, c-format
+msgid ""
+"Do you really want to remove workspace %d?\n"
+"Note: You are currently on workspace %d."
+msgstr ""
+
+#: ../src/windowlist.c:77
+#, c-format
+msgid "Remove Workspace '%s'"
+msgstr "Ta bort arbetsyta '%s'"
+
+#: ../src/windowlist.c:78
+#, c-format
+msgid ""
+"Do you really want to remove workspace '%s'?\n"
+"Note: You are currently on workspace '%s'."
+msgstr ""
+
+#. Popup a dialog box confirming that the user wants to remove a
+#. * workspace
+#: ../src/windowlist.c:85
+msgid "Remove"
+msgstr "Ta bort"
+
+#: ../src/windowlist.c:245
 msgid "Window List"
 msgstr "Fönsterlista"
 
-#: ../src/windowlist.c:261
+#: ../src/windowlist.c:271
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>Arbetsyta %d</b>"
 
-#: ../src/windowlist.c:270
-#, c-format
-msgid "Workspace %d"
-msgstr "Arbetsyta %d"
-
-#: ../src/windowlist.c:272
-#, c-format
-msgid "<i>Workspace %d</i>"
-msgstr "<i>Arbetsyta %d</i>"
-
-#: ../src/windowlist.c:368 ../src/windowlist.c:371
+#: ../src/windowlist.c:360 ../src/windowlist.c:363
 msgid "_Add Workspace"
 msgstr "_Lägg till arbetsyta"
 
-#: ../src/windowlist.c:379
+#: ../src/windowlist.c:371
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "_Ta bort arbetsyta %d"
 
-#: ../src/windowlist.c:382
+#: ../src/windowlist.c:374
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "_Ta bort arbetsytan \"%s\""
 
-#: ../src/xfce-desktop.c:1018
-#, c-format
-msgid "Unable to load image from backdrop list file \"%s\""
-msgstr "Kunde inte läsa in bild från bakgrundslistfilen \"%s\""
-
-#: ../src/xfce-desktop.c:1020
-msgid "Desktop Error"
-msgstr "Skrivbordsfel"
-
-#: ../src/xfdesktop-file-icon-manager.c:465
-#: ../src/xfdesktop-file-icon-manager.c:482
+#: ../src/xfdesktop-file-icon-manager.c:578
+#: ../src/xfdesktop-file-icon-manager.c:595
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
 msgstr "Kunde inte skapa skrivbordsmappen \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:470
-#: ../src/xfdesktop-file-icon-manager.c:487
+#: ../src/xfdesktop-file-icon-manager.c:583
+#: ../src/xfdesktop-file-icon-manager.c:600
 msgid "Desktop Folder Error"
 msgstr "Skrivbordsfel"
 
-#: ../src/xfdesktop-file-icon-manager.c:489
-msgid "A normal file with the same name already exists. Please delete or rename it."
+#: ../src/xfdesktop-file-icon-manager.c:602
+msgid ""
+"A normal file with the same name already exists. Please delete or rename it."
 msgstr "En vanlig fil med samma namn finns redan. Ta bort eller byt namn på den."
 
-#: ../src/xfdesktop-file-icon-manager.c:592
-#: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:879
-#: ../src/xfdesktop-file-utils.c:894 ../src/xfdesktop-file-utils.c:926
-#: ../src/xfdesktop-file-utils.c:940
+#: ../src/xfdesktop-file-icon-manager.c:685 ../src/xfdesktop-file-utils.c:716
+#: ../src/xfdesktop-file-utils.c:769
+msgid "Rename Error"
+msgstr "Namnbytesfel"
+
+#: ../src/xfdesktop-file-icon-manager.c:686 ../src/xfdesktop-file-utils.c:770
+msgid "The files could not be renamed"
+msgstr "Filerna kunde inte döpas om"
+
+#: ../src/xfdesktop-file-icon-manager.c:687
+msgid "None of the icons selected support being renamed."
+msgstr "Ingen av de markerade ikonerna stödjer namnbyte"
+
+#: ../src/xfdesktop-file-icon-manager.c:731
+#: ../src/xfdesktop-file-icon-manager.c:775 ../src/xfdesktop-file-utils.c:869
+#: ../src/xfdesktop-file-utils.c:906
 msgid "Trash Error"
 msgstr "Papperskorgsfel"
 
-#: ../src/xfdesktop-file-icon-manager.c:593
-#: ../src/xfdesktop-file-icon-manager.c:637
+#: ../src/xfdesktop-file-icon-manager.c:732
+#: ../src/xfdesktop-file-icon-manager.c:776
 msgid "The selected files could not be trashed"
 msgstr "Programväljaren kunde inte öppnas."
 
-#: ../src/xfdesktop-file-icon-manager.c:594
-#: ../src/xfdesktop-file-icon-manager.c:638 ../src/xfdesktop-file-utils.c:728
-#: ../src/xfdesktop-file-utils.c:778 ../src/xfdesktop-file-utils.c:837
-#: ../src/xfdesktop-file-utils.c:995 ../src/xfdesktop-file-utils.c:1051
-#: ../src/xfdesktop-file-utils.c:1101 ../src/xfdesktop-file-utils.c:1151
-#: ../src/xfdesktop-file-utils.c:1228 ../src/xfdesktop-file-utils.c:1289
-#: ../src/xfdesktop-file-utils.c:1362 ../src/xfdesktop-file-utils.c:1440
-msgid "This feature requires a file manager service to be present (such as the one supplied by Thunar)."
+#: ../src/xfdesktop-file-icon-manager.c:733
+#: ../src/xfdesktop-file-icon-manager.c:777 ../src/xfdesktop-file-utils.c:718
+#: ../src/xfdesktop-file-utils.c:771 ../src/xfdesktop-file-utils.c:821
+#: ../src/xfdesktop-file-utils.c:952 ../src/xfdesktop-file-utils.c:999
+#: ../src/xfdesktop-file-utils.c:1040 ../src/xfdesktop-file-utils.c:1081
+#: ../src/xfdesktop-file-utils.c:1183 ../src/xfdesktop-file-utils.c:1235
+#: ../src/xfdesktop-file-utils.c:1308 ../src/xfdesktop-file-utils.c:1386
+msgid ""
+"This feature requires a file manager service to be present (such as the one "
+"supplied by Thunar)."
 msgstr "Den här funktionen kräver att att en filhanterartjänst körs (som till exempel den som tillhandahålls av Thunar)."
 
 #. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:738
-#: ../src/xfdesktop-file-icon-manager.c:1296
+#: ../src/xfdesktop-file-icon-manager.c:877
+#: ../src/xfdesktop-file-icon-manager.c:1335
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Kunde inte starta \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:740
-#: ../src/xfdesktop-file-icon-manager.c:984
-#: ../src/xfdesktop-file-icon-manager.c:1297 ../src/xfdesktop-file-utils.c:711
-#: ../src/xfdesktop-file-utils.c:726 ../src/xfdesktop-file-utils.c:1134
-#: ../src/xfdesktop-file-utils.c:1149 ../src/xfdesktop-file-utils.c:1201
-#: ../src/xfdesktop-file-utils.c:1226 ../src/xfdesktop-file-utils.c:1272
-#: ../src/xfdesktop-file-utils.c:1287
+#: ../src/xfdesktop-file-icon-manager.c:879
+#: ../src/xfdesktop-file-icon-manager.c:1140
+#: ../src/xfdesktop-file-icon-manager.c:1336 ../src/xfdesktop-file-utils.c:657
+#: ../src/xfdesktop-file-utils.c:1079 ../src/xfdesktop-file-utils.c:1156
+#: ../src/xfdesktop-file-utils.c:1181 ../src/xfdesktop-file-utils.c:1233
 msgid "Launch Error"
 msgstr "Startfel"
 
-#: ../src/xfdesktop-file-icon-manager.c:908
+#: ../src/xfdesktop-file-icon-manager.c:1064
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "_Öppna med \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:911
+#: ../src/xfdesktop-file-icon-manager.c:1067
 #, c-format
 msgid "Open With \"%s\""
 msgstr "Öppna med \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:986
-msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+#: ../src/xfdesktop-file-icon-manager.c:1142
+msgid ""
+"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
+"edit launchers and links on the desktop."
 msgstr "Kunde inte starta \"exo-desktop-item-edit\", som krävs för att skapa och redigera programstartare och länkar på skrivbordet."
 
-#: ../src/xfdesktop-file-icon-manager.c:1354
+#: ../src/xfdesktop-file-icon-manager.c:1393
 msgid "_Open all"
 msgstr "_Öppna alla"
 
-#: ../src/xfdesktop-file-icon-manager.c:1370
+#: ../src/xfdesktop-file-icon-manager.c:1409
 msgid "_Open in New Window"
 msgstr "_Öppna i nytt fönster"
 
-#: ../src/xfdesktop-file-icon-manager.c:1372
-#: ../src/xfdesktop-special-file-icon.c:489 ../src/xfdesktop-volume-icon.c:663
+#: ../src/xfdesktop-file-icon-manager.c:1411
+#: ../src/xfdesktop-special-file-icon.c:550 ../src/xfdesktop-volume-icon.c:814
+#: ../src/xfdesktop-volume-icon.c:818
 msgid "_Open"
 msgstr "_Öppna"
 
 #. create launcher item
-#: ../src/xfdesktop-file-icon-manager.c:1391
+#: ../src/xfdesktop-file-icon-manager.c:1430
 msgid "Create _Launcher..."
 msgstr "Skapa _programstartare..."
 
 #. create link item
-#: ../src/xfdesktop-file-icon-manager.c:1407
+#: ../src/xfdesktop-file-icon-manager.c:1446
 msgid "Create _URL Link..."
 msgstr "Skapa _URL-länk..."
 
 #. create folder item
-#: ../src/xfdesktop-file-icon-manager.c:1423
+#: ../src/xfdesktop-file-icon-manager.c:1462
 msgid "Create _Folder..."
 msgstr "Skapa _katalog..."
 
-#. create from template submenu
-#: ../src/xfdesktop-file-icon-manager.c:1438
+#: ../src/xfdesktop-file-icon-manager.c:1477
 msgid "Create From _Template"
 msgstr "Skapa från _mall"
 
-#: ../src/xfdesktop-file-icon-manager.c:1464
+#: ../src/xfdesktop-file-icon-manager.c:1506
 msgid "_Empty File"
 msgstr "_Tom fil"
 
-#: ../src/xfdesktop-file-icon-manager.c:1480
+#: ../src/xfdesktop-file-icon-manager.c:1523
 msgid "_Execute"
 msgstr "_Kör"
 
-#: ../src/xfdesktop-file-icon-manager.c:1500
+#: ../src/xfdesktop-file-icon-manager.c:1543
 msgid "_Edit Launcher"
 msgstr "_Redigera programstartare"
 
-#: ../src/xfdesktop-file-icon-manager.c:1535
+#: ../src/xfdesktop-file-icon-manager.c:1578
 msgid "Open With"
 msgstr "Öppna med"
 
-#: ../src/xfdesktop-file-icon-manager.c:1561
+#: ../src/xfdesktop-file-icon-manager.c:1604
 msgid "Open With Other _Application..."
 msgstr "Öppna med ett annat _program..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1649
+#. Rename
+#: ../src/xfdesktop-file-icon-manager.c:1704
 msgid "_Rename..."
 msgstr "_Byt namn..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1667
+#: ../src/xfdesktop-file-icon-manager.c:1732
+msgid "Arrange Desktop _Icons"
+msgstr "Ordna skrivbordsikoner"
+
+#: ../src/xfdesktop-file-icon-manager.c:1743
 msgid "Desktop _Settings..."
 msgstr "S_krivbordsinställningar..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1677
-#: ../src/xfdesktop-volume-icon.c:711
+#: ../src/xfdesktop-file-icon-manager.c:1754
+#: ../src/xfdesktop-volume-icon.c:860
 msgid "P_roperties..."
 msgstr "_Egenskaper..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2234
+#: ../src/xfdesktop-file-icon-manager.c:2697
 msgid "Load Error"
 msgstr "Inläsningsfel"
 
-#: ../src/xfdesktop-file-icon-manager.c:2236
+#: ../src/xfdesktop-file-icon-manager.c:2699
 msgid "Failed to load the desktop folder"
 msgstr "En vanlig fil med samma namn finns redan. Ta bort eller byt namn på den."
 
+#: ../src/xfdesktop-file-icon-manager.c:3239
+msgid "Copy _Here"
+msgstr "Kopiera hit"
+
+#: ../src/xfdesktop-file-icon-manager.c:3239
+msgid "_Move Here"
+msgstr "_Flytta hit"
+
+#: ../src/xfdesktop-file-icon-manager.c:3239
+msgid "_Link Here"
+msgstr "_Länka hit"
+
 #. TRANSLATORS: file was modified less than one day ago
-#: ../src/xfdesktop-file-utils.c:137
+#: ../src/xfdesktop-file-utils.c:140
 #, c-format
 msgid "Today at %X"
 msgstr "Idag kl %X"
 
 #. TRANSLATORS: file was modified less than two days ago
-#: ../src/xfdesktop-file-utils.c:141
+#: ../src/xfdesktop-file-utils.c:144
 #, c-format
 msgid "Yesterday at %X"
 msgstr "Igår kl %X"
 
 #. Days from last week
-#: ../src/xfdesktop-file-utils.c:146
+#: ../src/xfdesktop-file-utils.c:149
 #, c-format
 msgid "%A at %X"
 msgstr "%A kl %X"
 
 #. Any other date
-#: ../src/xfdesktop-file-utils.c:149
+#: ../src/xfdesktop-file-utils.c:152
 #, c-format
 msgid "%x at %X"
 msgstr "%x kl %X"
 
 #. the file_time is invalid
-#: ../src/xfdesktop-file-utils.c:159
+#: ../src/xfdesktop-file-utils.c:162
 msgid "Unknown"
 msgstr "Okänt"
 
-#: ../src/xfdesktop-file-utils.c:712 ../src/xfdesktop-file-utils.c:727
+#: ../src/xfdesktop-file-utils.c:658
 msgid "The folder could not be opened"
 msgstr "Mappen kunde inte öppnas"
 
-#: ../src/xfdesktop-file-utils.c:761 ../src/xfdesktop-file-utils.c:776
-msgid "Rename Error"
-msgstr "Namnbytesfel"
+#: ../src/xfdesktop-file-utils.c:675
+msgid "Error"
+msgstr "Fel"
 
-#: ../src/xfdesktop-file-utils.c:762 ../src/xfdesktop-file-utils.c:777
+#: ../src/xfdesktop-file-utils.c:676
+msgid "The requested operation could not be completed"
+msgstr "Den valda åtgärden kunde inte genomföras"
+
+#: ../src/xfdesktop-file-utils.c:717
 msgid "The file could not be renamed"
 msgstr "Filen kunde inte byta namn"
 
-#: ../src/xfdesktop-file-utils.c:820 ../src/xfdesktop-file-utils.c:835
+#: ../src/xfdesktop-file-utils.c:819
 msgid "Delete Error"
 msgstr "Fel vid borttagning"
 
-#: ../src/xfdesktop-file-utils.c:821 ../src/xfdesktop-file-utils.c:836
+#: ../src/xfdesktop-file-utils.c:820
 msgid "The selected files could not be deleted"
 msgstr "De markerade filerna kunde inte tas bort"
 
-#: ../src/xfdesktop-file-utils.c:880 ../src/xfdesktop-file-utils.c:895
+#: ../src/xfdesktop-file-utils.c:870
 msgid "The selected files could not be moved to the trash"
 msgstr "De markerade filerna kunde inte flyttas till papperskorgen"
 
-#: ../src/xfdesktop-file-utils.c:896 ../src/xfdesktop-file-utils.c:942
-msgid "This feature requires a trash service to be present (such as the one supplied by Thunar)."
+#: ../src/xfdesktop-file-utils.c:871 ../src/xfdesktop-file-utils.c:908
+msgid ""
+"This feature requires a trash service to be present (such as the one "
+"supplied by Thunar)."
 msgstr "Den här funktionen kräver att att en papperskorgstjänst körs (som till exempel den som tillhandahålls av Thunar)."
 
-#: ../src/xfdesktop-file-utils.c:927 ../src/xfdesktop-file-utils.c:941
+#: ../src/xfdesktop-file-utils.c:907
 msgid "Could not empty the trash"
 msgstr "Kunde inte tömma papperskorgen"
 
-#: ../src/xfdesktop-file-utils.c:978 ../src/xfdesktop-file-utils.c:993
+#: ../src/xfdesktop-file-utils.c:950
 msgid "Create File Error"
 msgstr "Fel vid borttagning"
 
-#: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:994
+#: ../src/xfdesktop-file-utils.c:951
 msgid "Could not create a new file"
 msgstr "Kunde inte skapa en ny fil"
 
-#: ../src/xfdesktop-file-utils.c:1034 ../src/xfdesktop-file-utils.c:1049
+#: ../src/xfdesktop-file-utils.c:997
 msgid "Create Document Error"
 msgstr "Fel vid skapande av dokument"
 
-#: ../src/xfdesktop-file-utils.c:1035 ../src/xfdesktop-file-utils.c:1050
+#: ../src/xfdesktop-file-utils.c:998
 msgid "Could not create a new document from the template"
 msgstr "Kunde inte skapa ett nytt dokument från mallen"
 
-#: ../src/xfdesktop-file-utils.c:1084 ../src/xfdesktop-file-utils.c:1099
+#: ../src/xfdesktop-file-utils.c:1038
 msgid "File Properties Error"
 msgstr "Fel i filegenskaper"
 
-#: ../src/xfdesktop-file-utils.c:1085 ../src/xfdesktop-file-utils.c:1100
+#: ../src/xfdesktop-file-utils.c:1039
 msgid "The file properties dialog could not be opened"
 msgstr "Dialogrutan för filegenskaper kunde inte öppnas"
 
-#: ../src/xfdesktop-file-utils.c:1135 ../src/xfdesktop-file-utils.c:1150
+#: ../src/xfdesktop-file-utils.c:1080
 msgid "The file could not be opened"
 msgstr "Filen kunde inte öppnas"
 
-#: ../src/xfdesktop-file-utils.c:1198 ../src/xfdesktop-file-utils.c:1223
+#: ../src/xfdesktop-file-utils.c:1153 ../src/xfdesktop-file-utils.c:1178
 #, c-format
 msgid "Failed to run \"%s\""
 msgstr "Misslyckades med att köra \"%s\""
 
-#: ../src/xfdesktop-file-utils.c:1273 ../src/xfdesktop-file-utils.c:1288
+#: ../src/xfdesktop-file-utils.c:1234
 msgid "The application chooser could not be opened"
 msgstr "Programväljaren kunde inte öppnas"
 
-#: ../src/xfdesktop-file-utils.c:1346 ../src/xfdesktop-file-utils.c:1360
-#: ../src/xfdesktop-file-utils.c:1422 ../src/xfdesktop-file-utils.c:1438
+#: ../src/xfdesktop-file-utils.c:1292 ../src/xfdesktop-file-utils.c:1306
+#: ../src/xfdesktop-file-utils.c:1368 ../src/xfdesktop-file-utils.c:1384
 msgid "Transfer Error"
 msgstr "Överföringsfel"
 
-#: ../src/xfdesktop-file-utils.c:1347 ../src/xfdesktop-file-utils.c:1361
-#: ../src/xfdesktop-file-utils.c:1423 ../src/xfdesktop-file-utils.c:1439
+#: ../src/xfdesktop-file-utils.c:1293 ../src/xfdesktop-file-utils.c:1307
+#: ../src/xfdesktop-file-utils.c:1369 ../src/xfdesktop-file-utils.c:1385
 msgid "The file transfer could not be performed"
 msgstr "Filöverföringen kunde inte genomföras"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:128
+#: ../src/xfdesktop-notify.c:127
 msgid "Unmounting device"
 msgstr "Avmonterar enheten"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:131
+#: ../src/xfdesktop-notify.c:130
 #, c-format
-msgid "The device \"%s\" is being unmounted by the system. Please do not remove the media or disconnect the drive"
+msgid ""
+"The device \"%s\" is being unmounted by the system. Please do not remove the"
+" media or disconnect the drive"
 msgstr "Enheten \"%s\" håller på att avmonteras av systemet. Ta inte bort mediumet eller koppla inte från enheten"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
+#: ../src/xfdesktop-notify.c:137 ../src/xfdesktop-notify.c:322
 msgid "Writing data to device"
 msgstr "Skriver data till enheten"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
+#: ../src/xfdesktop-notify.c:140 ../src/xfdesktop-notify.c:325
 #, c-format
-msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
+msgid ""
+"There is data that needs to be written to the device \"%s\" before it can be"
+" removed. Please do not remove the media or disconnect the drive"
 msgstr "Misslyckades med att köra \"%s\""
 
+#: ../src/xfdesktop-notify.c:221
+msgid "Unmount Finished"
+msgstr "Avmontering klar"
+
+#: ../src/xfdesktop-notify.c:223 ../src/xfdesktop-notify.c:408
+#, c-format
+msgid "The device \"%s\" has been safely removed from the system. "
+msgstr ""
+
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:253
+#: ../src/xfdesktop-notify.c:313
 msgid "Ejecting device"
 msgstr "Matar ut enheten"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:256
+#: ../src/xfdesktop-notify.c:316
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
 msgstr "Enheten \"%s\" håller på att matas ut. Detta kan ta lite tid"
 
-#: ../src/xfdesktop-regular-file-icon.c:472
+#: ../src/xfdesktop-notify.c:406
+msgid "Eject Finished"
+msgstr ""
+
+#: ../src/xfdesktop-regular-file-icon.c:601
 #, c-format
 msgid ""
 "Type: %s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr ""
-"Typ: %s\n"
-"Storlek: %s\n"
-"Senast ändrad: %s"
+msgstr "Typ: %s\nStorlek: %s\nSenast ändrad: %s"
 
-#: ../src/xfdesktop-special-file-icon.c:258
-#: ../src/xfdesktop-special-file-icon.c:417
+#: ../src/xfdesktop-special-file-icon.c:297
+#: ../src/xfdesktop-special-file-icon.c:477
 msgid "File System"
 msgstr "Filsystem"
 
-#: ../src/xfdesktop-special-file-icon.c:402
+#: ../src/xfdesktop-special-file-icon.c:462
 msgid "Trash is empty"
 msgstr "Papperskorgen är tom"
 
-#: ../src/xfdesktop-special-file-icon.c:405
+#: ../src/xfdesktop-special-file-icon.c:465
 msgid "Trash contains one item"
 msgstr "Papperskorgen innehåller ett objekt"
 
-#: ../src/xfdesktop-special-file-icon.c:406
+#: ../src/xfdesktop-special-file-icon.c:466
 #, c-format
 msgid "Trash contains %d items"
 msgstr "Papperskorgen innehåller %d objekt"
 
-#: ../src/xfdesktop-special-file-icon.c:434
+#: ../src/xfdesktop-special-file-icon.c:498
 #, c-format
 msgid ""
 "%s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr ""
-"%s\n"
-"Storlek: %s\n"
-"Senast ändrad: %s"
+msgstr "%s\nStorlek: %s\nSenast ändrad: %s"
 
-#: ../src/xfdesktop-special-file-icon.c:507
+#: ../src/xfdesktop-special-file-icon.c:567
 msgid "_Empty Trash"
 msgstr "_Töm papperskorgen"
 
-#: ../src/xfdesktop-volume-icon.c:423
+#: ../src/xfdesktop-volume-icon.c:486
 #, c-format
 msgid ""
 "Removable Volume\n"
 "Mounted in \"%s\"\n"
 "%s left (%s total)"
-msgstr ""
-"Flyttbar volym\n"
-"Monterad på \"%s\"\n"
-"%s ledigt (%s totalt)"
+msgstr "Flyttbar volym\nMonterad på \"%s\"\n%s ledigt (%s totalt)"
 
-#: ../src/xfdesktop-volume-icon.c:430
+#: ../src/xfdesktop-volume-icon.c:493
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
-msgstr ""
-"Flyttbar volym\n"
-"Inte monterad ännu"
+msgstr "Flyttbar volym\nInte monterad ännu"
 
-#: ../src/xfdesktop-volume-icon.c:456 ../src/xfdesktop-volume-icon.c:498
+#: ../src/xfdesktop-volume-icon.c:522 ../src/xfdesktop-volume-icon.c:567
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "Misslyckades med att mata ut \"%s\""
 
-#: ../src/xfdesktop-volume-icon.c:461 ../src/xfdesktop-volume-icon.c:503
+#: ../src/xfdesktop-volume-icon.c:527 ../src/xfdesktop-volume-icon.c:572
 msgid "Eject Failed"
 msgstr "Utmatning misslyckades"
 
-#: ../src/xfdesktop-volume-icon.c:535
+#: ../src/xfdesktop-volume-icon.c:604
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "Misslyckades med att montera \"%s\""
 
-#: ../src/xfdesktop-volume-icon.c:538
+#: ../src/xfdesktop-volume-icon.c:607
 msgid "Mount Failed"
 msgstr "Montering misslyckades"
 
-#: ../src/xfdesktop-volume-icon.c:679 ../src/xfdesktop-volume-icon.c:682
+#: ../src/xfdesktop-volume-icon.c:833
 msgid "E_ject Volume"
 msgstr "Mata _ut volym"
 
-#: ../src/xfdesktop-volume-icon.c:689
+#: ../src/xfdesktop-volume-icon.c:840
+msgid "_Unmount Volume"
+msgstr "Avmontera volym"
+
+#: ../src/xfdesktop-volume-icon.c:847
 msgid "_Mount Volume"
 msgstr "_Montera volym"
 
-#~ msgid "Unable to contact the Xfce Trash service."
-#~ msgstr "Kunde inte kontakta papperskorgstjänsten i Xfce."
-
-#~ msgid "Make sure you have a file manager installed that supports the Xfce Trash service, such as Thunar."
-#~ msgstr "Kontrollera att du har en filhanterare installerad som stödjer papperskorgstjänsten i Xfce, som till exempel Thunar."
-
-#~ msgid "Needs terminal"
-#~ msgstr "Kräver terminal"
-
-#~ msgid "Whether or not the command needs a terminal to execute"
-#~ msgstr "Huruvida kommandot kräver en terminal för att köras eller inte"
-
-#~ msgid "Command"
-#~ msgstr "Kommando"
-
-#~ msgid "The command to run when the item is clicked"
-#~ msgstr "Kommandot att köra när objektet klickas på"
-
-#~ msgid "Icon name"
-#~ msgstr "Ikonnamn"
-
-#~ msgid "The name of the themed icon to display next to the item"
-#~ msgstr "Namnet på temaikonen att visa bredvid objektet"
-
-#~ msgid "Label"
-#~ msgstr "Etikett"
-
-#~ msgid "The label displayed in the item"
-#~ msgstr "Etiketten som visas i objektet"
-
-#~ msgid "Startup notification"
-#~ msgstr "Uppstartsnotifiering"
-
-#~ msgid "Whether or not the app supports startup notification"
-#~ msgstr "Huruvida programmet har stöd för uppstartsnotifiering eller inte"
-
-#~ msgid "Use underline"
-#~ msgstr "Använd understreck"
-
-#~ msgid "Whether or not to use an underscore in the label as a keyboard mnemonic"
-#~ msgstr "Huruvida ett understreck i etiketten ska användas som snabbtangent eller inte"
-
-#~ msgid "Unable to launch xfce4-menueditor: %s"
-#~ msgstr "Kunde inte starta xfce4-menueditor: %s"
-
-#~ msgid "Select Icon"
-#~ msgstr "Välj ikon"
-
-#~ msgid "Select Menu File"
-#~ msgstr "Välj menyfil"
-
-#~ msgid "All Files"
-#~ msgstr "Alla filer"
-
-#~ msgid "Image Files"
-#~ msgstr "Bildfiler"
-
-#~ msgid "Menu Files"
-#~ msgstr "Menyfiler"
-
-#~ msgid "Xfce Menu"
-#~ msgstr "Xfce-menyn"
-
-#~ msgid "Button"
-#~ msgstr "Knapp"
-
-#~ msgid "Button _title:"
-#~ msgstr "Knapp_titel:"
-
-#~ msgid "_Show title in button"
-#~ msgstr "_Visa titel i knapp"
-
-#~ msgid "Menu File"
-#~ msgstr "Menyfil"
-
-#~ msgid "Use default _desktop menu file"
-#~ msgstr "Använd _standardmenyfil"
-
-#~ msgid "Use _custom menu file:"
-#~ msgstr "Använd _annan menyfil:"
-
-#~ msgid "_Edit Menu"
-#~ msgstr "_Redigera meny"
-
-#~ msgid "Icons"
-#~ msgstr "Ikoner"
-
-#~ msgid "_Button icon:"
-#~ msgstr "_Knappikon:"
-
-#~ msgid "Show _icons in menu"
-#~ msgstr "Visa _ikoner i menyn"
-
-#~ msgid "There is already a panel menu registered for this screen"
-#~ msgstr "Det finns redan en panelmeny registrerad för denna skärm"
-
-#~ msgid "Edit Menu"
-#~ msgstr "Redigera meny"
-
-#~ msgid "Shows a menu containing categories of installed applications"
-#~ msgstr "Visar en meny som innehåller kategorier av installerade program"
-
-#~ msgid "%s: Unknown option: %s\n"
-#~ msgstr "%s: Okänd flagga: %s\n"
-
-#~ msgid "Options are:\n"
-#~ msgstr "Flaggor:\n"
-
-#~ msgid "    --reload      Reload all settings, refresh image list\n"
-#~ msgstr "    --reload      Läs om alla inställningar, uppdatera bildlistan\n"
-
-#~ msgid "    --menu        Pop up the menu (at the current mouse position)\n"
-#~ msgstr "    --menu        Öppna menyn (vid muspekarens position)\n"
-
-#~ msgid "    --windowlist  Pop up the window list (at the current mouse position)\n"
-#~ msgstr "    --windowlist  Öppna fönsterlistan (vid muspekarens position)\n"
-
-#~ msgid "    --quit        Cause xfdesktop to quit\n"
-#~ msgstr "    --quit        Stäng ned xfdesktop\n"
-
-#~ msgid "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-#~ msgstr "Xfdesktop misslyckades att skapa mappen \"%s\", som skulle användas till att spara innehållet på skrivbordet i:"
-
-#~ msgid "Create Folder Failed"
-#~ msgstr "Misslyckades med att skapa en mapp"
-
-#~ msgid "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not a folder."
-#~ msgstr "Xfdesktop kan inte spara innehållet på skrivbordet i \"%s\" eftersom det inte är en katalog."
-
-#~ msgid "Please delete or rename the file."
-#~ msgstr "Var god ta bort eller byt namn på filen."
-
-#~ msgid "Rename \"%s\""
-#~ msgstr "Byt namn på \"%s\""
-
-#~ msgid "Enter the new name:"
-#~ msgstr "Skriv in det nya namnet:"
-
-#~ msgid "Rename"
-#~ msgstr "Byt namn"
-
-#~ msgid "Are you sure that you want to delete \"%s\"?"
-#~ msgstr "Är du säker på att du vill ta \"%s\"?"
-
-#~ msgid "Question"
-#~ msgstr "Fråga"
-
-#~ msgid "If you delete a file, it is permanently lost."
-#~ msgstr "Om du tar bort den här filen, är den bort för alltid."
-
-#~ msgid "Are you sure you want to delete the following %d files?"
-#~ msgstr "Är du säker på att du vill ta bort de följande %d filerna?"
-
-#~ msgid "Delete Multiple Files"
-#~ msgstr "Ta bort flera filer"
-
-#~ msgid "The application chooser could not be opened."
-#~ msgstr "Programväljaren kunde inte öppnas."
-
-#~ msgid "This feature requires a file manager service present (such as that supplied by Thunar)."
-#~ msgstr "Den här funktionen kräver att att en filhanterartjänst körs (som till exempel den som tillhandahålls av Thunar)"
-
-#~ msgid "Unable to create folder named \"%s\":"
-#~ msgstr "Kunde inte skapa katalogen \"%s\":"
-
-#~ msgid "Create New Folder"
-#~ msgstr "Skapa en ny mapp"
-
-#~ msgid "New Folder"
-#~ msgstr "Ny mapp"
-
-#~ msgid "Create"
-#~ msgstr "Skapa"
-
-#~ msgid "Unable to create file named \"%s\":"
-#~ msgstr "Kunde inte skapa filen \"%s\":"
-
-#~ msgid "Create File Failed"
-#~ msgstr "Kunde inte skapa en fil"
-
-#~ msgid "Create Document from template \"%s\""
-#~ msgstr "Skapa ett dokument från mallen \"%s\""
-
-#~ msgid "Create Empty File"
-#~ msgstr "Skapa en tom fil"
-
-#~ msgid "New Empty File"
-#~ msgstr "Ny tom fil"
-
-#~ msgid "Unable to create file \"%s\":"
-#~ msgstr "Kunde inte skapa filen \"%s\":"
-
-#~ msgid "Create Error"
-#~ msgstr "Misslyckades med att skapa"
-
-#~ msgid "Failed to run \"%s\":"
-#~ msgstr "Misslyckades med att köra \"%s\":"
-
-#~ msgid "Run Error"
-#~ msgstr "Körfel"
-
-#~ msgid "The associated application could not be found or executed."
-#~ msgstr "Det associerade programmet kunde inte hittas eller köras."
-
-#~ msgid "Unable to set default application for \"%s\" to \"%s\":"
-#~ msgstr "Kunde inte ange standardprogram för \"%s\" till \"%s\":"
-
-#~ msgid "Properties Error"
-#~ msgstr "Egenskapsfel"
-
-#~ msgid "Write only"
-#~ msgstr "Enbart skrivbar"
-
-#~ msgid "Read only"
-#~ msgstr "Enbart läsbar"
-
-#~ msgid "Read & Write"
-#~ msgstr "Läs- och skrivbar"
-
-#~ msgid "General"
-#~ msgstr "Allmänt"
-
-#~ msgid "Name:"
-#~ msgstr "Namn:"
-
-#~ msgid "Kind:"
-#~ msgstr "Typ:"
-
-#~ msgid "Link Target:"
-#~ msgstr "Länkmål:"
-
-#~ msgid "(unknown)"
-#~ msgstr "(okänt)"
-
-#~ msgid "Open With:"
-#~ msgstr "Öppna med:"
-
-#~ msgid "Modified:"
-#~ msgstr "Ändrad:"
-
-#~ msgid "Accessed:"
-#~ msgstr "Åtkommen:"
-
-#~ msgid "Free Space:"
-#~ msgstr "Ledigt utrymme:"
-
-#~ msgid "Size:"
-#~ msgstr "Storlek:"
-
-#~ msgid "%s (%"
-#~ msgstr "%s (%"
-
-#~ msgid "Permissions"
-#~ msgstr "Rättigheter"
-
-#~ msgid "Owner:"
-#~ msgstr "Ägare:"
-
-#~ msgid "Access:"
-#~ msgstr "Åtkomst:"
-
-#~ msgid "Group:"
-#~ msgstr "Grupp:"
-
-#~ msgid "Others:"
-#~ msgstr "Andra:"
-
-#~ msgid "Yes to _all"
-#~ msgstr "Ja till _alla"
-
-#~ msgid "There was an error moving \"%s\" to \"%s\":"
-#~ msgstr "Det uppstod ett fel när \"%s\" flyttades till \"%s\":"
-
-#~ msgid "There was an error copying \"%s\" to \"%s\":"
-#~ msgstr "Det uppstod ett fel när \"%s\" kopierades till \"%s\":"
-
-#~ msgid "There was an error linking \"%s\" to \"%s\":"
-#~ msgstr "Det uppstod ett fel när \"%s\" länkades till \"%s\":"
-
-#~ msgid "File Error"
-#~ msgstr "Filfel"
-
-#~ msgid "broken link"
-#~ msgstr "trasig länk"
-
-#~ msgid "link to %s"
-#~ msgstr "länk till %s"
-
-#~ msgid ""
-#~ "Kind: %s\n"
-#~ "Modified:%s\n"
-#~ "Size: %s"
-#~ msgstr ""
-#~ "Typ: %s\n"
-#~ "Ändrad: %s\n"
-#~ "Storlek: %s"
-
-#~ msgid "Error"
-#~ msgstr "Fel"
-
-#~ msgid "Failed to rename \"%s\" to \"%s\":"
-#~ msgstr "Kunde inte byta namn på \"%s\" till \"%s\""
-
-#~ msgid "Kind: Trash"
-#~ msgstr "Typ: Papperskorg"
-
-#~ msgid "%s (%s total)"
-#~ msgstr "%s (%s totalt)"
-
-#~ msgid ""
-#~ "Kind: Removable Volume\n"
-#~ "Mount Point: %s\n"
-#~ "Free Space: %s"
-#~ msgstr ""
-#~ "Typ: Flyttbar volym\n"
-#~ "Monteringspunkt: %s\n"
-#~ "Ledigt utrymme: %s"
-
-#~ msgid "Unable to mount \"%s\":"
-#~ msgstr "Kunde inte montera \"%s\":"
-
-#~ msgid "Unable to unmount \"%s\":"
-#~ msgstr "Kunde inte avmontera \"%s\":"
-
-#~ msgid "Unmount Failed"
-#~ msgstr "Avmontering misslyckades"
-
-#~ msgid "Unable to eject \"%s\":"
-#~ msgstr "Kunde inte mata ut \"%s\":"
-
-#~ msgid "_Unmount Volume"
-#~ msgstr "_Avmontera volym"
-
-#~ msgid "Accessories"
-#~ msgstr "Tillbehör"
-
-#~ msgid "Common desktop tools and applications"
-#~ msgstr "Allmänna skrivbordsverktyg och -program"
-
-#~ msgid "Development"
-#~ msgstr "Utveckling"
-
-#~ msgid "Software development tools"
-#~ msgstr "Programutvecklingsverktyg"
-
-#~ msgid "Education"
-#~ msgstr "Utbildning"
-
-#~ msgid "Educational software"
-#~ msgstr "Pedagogisk programvara"
-
-#~ msgid "Games"
-#~ msgstr "Spel"
-
-#~ msgid "Games, puzzles, and other fun software"
-#~ msgstr "Spel, pussel och andra nöjesprogram"
-
-#~ msgid "Graphics"
-#~ msgstr "Grafik"
-
-#~ msgid "Graphics creation and manipulation applications"
-#~ msgstr "Program för att skapa och redigera grafik"
-
-#~ msgid "Audio and video players and editors"
-#~ msgstr "Ljud- och videospelare samt redigerare"
-
-#~ msgid "Multimedia"
-#~ msgstr "Multimedia"
-
-#~ msgid "Network"
-#~ msgstr "Nätverk"
-
-#~ msgid "Network applications and utilities"
-#~ msgstr "Nätverksprogram och -verktyg"
-
-#~ msgid "Office"
-#~ msgstr "Kontor"
-
-#~ msgid "Office and productivity applications"
-#~ msgstr "Kontors- och produktivitetsprogram"
-
-#~ msgid "Applications that don't fit into other categories"
-#~ msgstr "Program som inte passar in i andra kategorier"
-
-#~ msgid "Other"
-#~ msgstr "Övriga"
-
-#~ msgid "Screensaver applets"
-#~ msgstr "Skärmsläckare"
-
-#~ msgid "Screensavers"
-#~ msgstr "Skärmsläckare"
-
-#~ msgid "Desktop and system settings applications"
-#~ msgstr "Program för skrivbords- och systeminställningar"
-
-#~ msgid "Settings"
-#~ msgstr "Inställningar"
-
-#~ msgid "System"
-#~ msgstr "System"
-
-#~ msgid "System tools and utilities"
-#~ msgstr "Systemverktyg"
-
-#~ msgid "About Xfce"
-#~ msgstr "Om Xfce"
-
-#~ msgid "Information about the Xfce Desktop Environment"
-#~ msgstr "Information om skrivbordsmiljön Xfce"
-
-#~ msgid "File Manager"
-#~ msgstr "Filhanterare"
-
-#~ msgid "Thunar file manager"
-#~ msgstr "Filhanteraren Thunar"
-
-#~ msgid "Help"
-#~ msgstr "Hjälp"
-
-#~ msgid "Help using Xfce"
-#~ msgstr "Hjälp med Xfce"
-
-#~ msgid "Log Out"
-#~ msgstr "Logga ut"
-
-#~ msgid "Log out of the Xfce Desktop"
-#~ msgstr "Logga ut från Xfce-skrivbordet"
-
-#~ msgid "Run Program..."
-#~ msgstr "Kör program..."
-
-#~ msgid "Run a program"
-#~ msgstr "Kör ett program"
-
-#~ msgid "Terminal"
-#~ msgstr "Terminal"
-
-#~ msgid "Terminal emulator"
-#~ msgstr "Terminalemulator"
-
-#~ msgid "Browse the web"
-#~ msgstr "Surfa på webben"
-
-#~ msgid "Web Browser"
-#~ msgstr "Webbläsare"
-
-#~ msgid ""
-#~ "Auto\n"
-#~ "Centered\n"
-#~ "Tiled\n"
-#~ "Stretched\n"
-#~ "Scaled\n"
-#~ "Zoomed"
-#~ msgstr ""
-#~ "Automatiskt\n"
-#~ "Centrerad\n"
-#~ "Sida vid sida\n"
-#~ "Utsträckt\n"
-#~ "Skalad\n"
-#~ "Zoomad"
-
-#~ msgid ""
-#~ "Left\n"
-#~ "Middle\n"
-#~ "Right"
-#~ msgstr ""
-#~ "Vänster\n"
-#~ "Mitten\n"
-#~ "Höger"
-
-#~ msgid ""
-#~ "None\n"
-#~ "Minimized application icons\n"
-#~ "File/launcher icons"
-#~ msgstr ""
-#~ "Inga\n"
-#~ "Minimerade programikoner\n"
-#~ "Fil-/programstartarikoner"
-
-#~ msgid ""
-#~ "None\n"
-#~ "Shift\n"
-#~ "Alt\n"
-#~ "Control"
-#~ msgstr ""
-#~ "Ingen\n"
-#~ "Skift\n"
-#~ "Alt\n"
-#~ "Control"
-
-#~ msgid ""
-#~ "Solid color\n"
-#~ "Horizontal gradient\n"
-#~ "Vertical gradient\n"
-#~ "Transparent"
-#~ msgstr ""
-#~ "Enfärgad\n"
-#~ "Horisontell gradient\n"
-#~ "Vertikal gradient\n"
-#~ "Genomskinlig"
-
-#~ msgid "gtk-close"
-#~ msgstr "Stäng"
-
-#~ msgid "gtk-help"
-#~ msgstr "Hjälp"
-
-#~ msgid "Use startup _notification"
-#~ msgstr "Använd _uppstartsnotifiering"
-
-#~ msgid "Contributor"
-#~ msgstr "Bidragsgivare"
-
-#~ msgid "Icon designer"
-#~ msgstr "Ikondesigner"
-
-#~ msgid "Solid Color"
-#~ msgstr "Solid färg"
-
-#~ msgid "Horizontal Gradient"
-#~ msgstr "Horizontell övergång"
-
-#~ msgid "Vertical Gradient"
-#~ msgstr "Vertical övergång"
-
-#~ msgid "Add menu entry"
-#~ msgstr "Lägg till menyobjekt"
-
-#~ msgid "Type:"
-#~ msgstr "Typ:"
-
-#~ msgid "Title"
-#~ msgstr "Titel"
-
-#~ msgid "Submenu"
-#~ msgstr "Undermeny"
-
-#~ msgid "Launcher"
-#~ msgstr "Programstartare"
-
-#~ msgid "Separator"
-#~ msgstr "Avgränsare"
-
-#~ msgid "Quit"
-#~ msgstr "Avsluta"
-
-#~ msgid "Command:"
-#~ msgstr "Kommando:"
-
-#~ msgid "Icon:"
-#~ msgstr "Ikon:"
-
-#~ msgid "No icon"
-#~ msgstr "Ingen ikon"
-
-#~ msgid "Themed icon:"
-#~ msgstr "Ikon från tema:"
-
-#~ msgid "Select icon"
-#~ msgstr "Välj ikon"
-
-#~ msgid "Run in _terminal"
-#~ msgstr "Kör i _terminal"
-
-#~ msgid "Select command"
-#~ msgstr "Välj kommando"
-
-#~ msgid "Executable Files"
-#~ msgstr "Körbara filer"
-
-#~ msgid "Perl Scripts"
-#~ msgstr "Perl-skript"
-
-#~ msgid "Python Scripts"
-#~ msgstr "Python-skript"
-
-#~ msgid "Ruby Scripts"
-#~ msgstr "Ruby-skript"
-
-#~ msgid "Shell Scripts"
-#~ msgstr "Skalskript"
-
-#~ msgid "Add external menu entry"
-#~ msgstr "Lägg till en extern meny"
-
-#~ msgid "File"
-#~ msgstr "Fil"
-
-#~ msgid "Source:"
-#~ msgstr "Källa:"
-
-#~ msgid "Select external menu"
-#~ msgstr "Välj extern meny"
-
-#~ msgid "Style:"
-#~ msgstr "Stil:"
-
-#~ msgid "Simple"
-#~ msgstr "Enkel"
-
-#~ msgid "Multilevel"
-#~ msgstr "Flernivås"
-
-#~ msgid "_Unique entries only"
-#~ msgstr "Endast _unika objekt"
-
-#~ msgid "Edit menu entry"
-#~ msgstr "Redigera menyobjekt"
-
-#~ msgid "Edit external menu entry"
-#~ msgstr "Redigera till en extern meny"
-
-#~ msgid "Xfce4-MenuEditor"
-#~ msgstr "Xfce 4 Menyredigerare"
-
-#~ msgid "Menueditor Warning"
-#~ msgstr "Varning i menyredigerare"
-
-#~ msgid "xfce4-menueditor is deprecated"
-#~ msgstr "xfce4-menueditor är utfasad"
-
-#~ msgid "Xfce's menu system has been replaced, and xfce4-menueditor is not able to edit the new menu file format.  You may continue and edit an old-style menu file, or quit."
-#~ msgstr "Xfce:s menysystem har ersatts och xfce4-menueditor kan inte redigera det nya menyfilsformatet.  Du kan avsluta eller fortsätta och redigera en menyfil med det gamla formatet."
-
-#~ msgid "Continue"
-#~ msgstr "Fortsätt"
-
-#~ msgid "_File"
-#~ msgstr "_Arkiv"
-
-#~ msgid "_New"
-#~ msgstr "_Ny"
-
-#~ msgid "Create a new empty menu"
-#~ msgstr "Skapa en ny tom meny"
-
-#~ msgid "Open existing menu"
-#~ msgstr "Öppna befintlig meny"
-
-#~ msgid "Open _default menu"
-#~ msgstr "Öppna s_tandardmeny"
-
-#~ msgid "Open default menu"
-#~ msgstr "Öppna standardmeny"
-
-#~ msgid "_Save"
-#~ msgstr "_Spara"
-
-#~ msgid "Save modifications"
-#~ msgstr "Spara ändringar"
-
-#~ msgid "Save _as..."
-#~ msgstr "Spara s_om..."
-
-#~ msgid "Save menu under a given name"
-#~ msgstr "Spara menyn under ett angivet namn"
-
-#~ msgid "_Close"
-#~ msgstr "S_täng"
-
-#~ msgid "Close menu"
-#~ msgstr "Stäng meny"
-
-#~ msgid "_Quit"
-#~ msgstr "A_vsluta"
-
-#~ msgid "Quit Xfce4-Menueditor"
-#~ msgstr "Avsluta Xfce 4 Menyredigerare"
-
-#~ msgid "_Edit"
-#~ msgstr "_Redigera"
-
-#~ msgid "_Edit entry"
-#~ msgstr "_Redigera objekt"
-
-#~ msgid "Edit selected entry"
-#~ msgstr "Redigera markerat objekt"
-
-#~ msgid "_Add entry"
-#~ msgstr "_Lägg till objekt"
-
-#~ msgid "Add a new entry in the menu"
-#~ msgstr "Lägg till nytt objekt i menyn"
-
-#~ msgid "Add _external"
-#~ msgstr "Lägg till _externt"
-
-#~ msgid "Add an external entry"
-#~ msgstr "Lägg till externt objekt"
-
-#~ msgid "_Remove entry"
-#~ msgstr "_Ta bort objekt"
-
-#~ msgid "Remove entry"
-#~ msgstr "Ta bort objekt"
-
-#~ msgid "_Up"
-#~ msgstr "_Uppåt"
-
-#~ msgid "Move entry up"
-#~ msgstr "Flytta objekt uppåt"
-
-#~ msgid "_Down"
-#~ msgstr "_Nedåt"
-
-#~ msgid "Move entry down"
-#~ msgstr "Flytta objekt nedåt"
-
-#~ msgid "_Help"
-#~ msgstr "_Hjälp"
-
-#~ msgid "_About..."
-#~ msgstr "_Om..."
-
-#~ msgid "Show informations about xfce4-menueditor"
-#~ msgstr "Visa information om Menyredigeraren för Xfce 4"
-
-#~ msgid "Collapse all"
-#~ msgstr "Fäll in alla"
-
-#~ msgid "Collapse all menu entries"
-#~ msgstr "Fäll in alla menyobjekt"
-
-#~ msgid "Expand all"
-#~ msgstr "Fäll ut alla"
-
-#~ msgid "Expand all menu entries"
-#~ msgstr "Fäll ut alla menyobjekt"
-
-#~ msgid "Name"
-#~ msgstr "Namn"
-
-#~ msgid "Hidden"
-#~ msgstr "Dold"
-
-#~ msgid "Are you sure you want to close the current menu?"
-#~ msgstr "Är du säker på att du vill stänga den här menyn?"
-
-#~ msgid "Do you want to save before closing the file?"
-#~ msgstr "Vill du spara dina ändringar innan du stänger filen?"
-
-#~ msgid "Do you want to save before opening an other menu ?"
-#~ msgstr "Vill du spara dina ändringar innan du öppnar en annan meny?"
-
-#~ msgid "Ignore modifications"
-#~ msgstr "Ignorera ändringar"
-
-#~ msgid "Open menu file"
-#~ msgstr "Öppna menyfil"
-
-#~ msgid "Do you want to save before opening the default menu ?"
-#~ msgstr "Vill du spara dina ändringar innan du öppnar standardmenyn"
-
-#~ msgid "Save menu file as"
-#~ msgstr "Spara menyfil som"
-
-#~ msgid "Do you want to save before closing the menu ?"
-#~ msgstr "Vill du spara dina ändringar innan du stänger menyn?"
-
-#~ msgid "quit"
-#~ msgstr "avsluta"
-
-#~ msgid "--- separator ---"
-#~ msgstr "--- avgränsare ---"
-
-#~ msgid "--- include ---"
-#~ msgstr "--- inkludera ---"
-
-#~ msgid "system"
-#~ msgstr "system"
-
-#~ msgid "Do you want to move the item into the submenu?"
-#~ msgstr "Vill du flytta objektet in i undermenyn?"
-
-#~ msgid "A menu editor for Xfce4"
-#~ msgstr "En menyredigerare för Xfce4"
-
-#~ msgid "Author/Maintainer"
-#~ msgstr "Upphovsman/Ansvarig"
-
-#~ msgid "You have modified the menu, do you want to save it before quitting ?"
-#~ msgstr "Du har gjort ändringar i menyn, vill du spara den innan du avslutar?"
-
-#~ msgid "Forget modifications"
-#~ msgstr "Förkasta ändringar"
-
-#~ msgid "Unable to open the menu file %s in write mode"
-#~ msgstr "Kunda inte öppna menyfilen %s för skrivning"
-
-#~ msgid "Graphical tool for editing the Xfce 4 menu"
-#~ msgstr "Grafiskt verktyg för redigering av Xfce4-menyn"
-
-#~ msgid "Menu Editor"
-#~ msgstr "Menyredigeraren"
-
-#~ msgid "Xfce 4 Menu Editor"
-#~ msgstr "Xfce 4 Menyredigerare"
-
-#~ msgid "Settings for the Xfce 4 Desktop Manager"
-#~ msgstr "Inställningar för Xfce's skrivbordshanterare"
-
-#~ msgid "Xfce 4 Desktop Settings"
-#~ msgstr "Xfce 4 Inställningar för Skrivbordet"
-
-#~ msgid "Use _Xfce to manage the desktop"
-#~ msgstr "Tillåt _Xfce att hantera ditt skrivbord"
-
-#~ msgid ""
-#~ "Could not save file %s: %s\n"
-#~ "\n"
-#~ "Please choose another location or press cancel in the dialog to discard your changes"
-#~ msgstr ""
-#~ "Kunde inte spara fil %s: %s\n"
-#~ "\n"
-#~ "Vänligen välj en annan plats eller tryck Avbryt i dialogen för att kassera dina ändringar"
-
-#~ msgid "Button Label|Desktop"
-#~ msgstr "Skrivbord"
-
-#~ msgid "Select backdrop image or list file"
-#~ msgstr "Välj bakgrundsbild eller listfil"
-
-#~ msgid "List Files (*.list)"
-#~ msgstr "Listfiler (*.list)"
-
-#~ msgid "_Edit list..."
-#~ msgstr "_Redigera lista..."
-
-#~ msgid "_New list..."
-#~ msgstr "_Ny lista..."
-
-#~ msgid "S_tyle:"
-#~ msgstr "S_til:"
-
-#~ msgid "Xfce will be unable to manage your desktop (%s)."
-#~ msgstr "Xfce kommer inte kunna hantera ditt skrivbort (%s)."
-
-#~ msgid "Unknown Error"
-#~ msgstr "Okänt fel"
-
-#~ msgid "Unable to start xfdesktop"
-#~ msgstr "Kunde inte starta xfdesktop"
-
-#~ msgid "To ensure that this setting takes effect the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
-#~ msgstr "För att försäkra dig om att Xfce kommer att hantera ditt skrivbord näste gång du startar Xfce, var säker på att du sparar din session när du loggar ut. Om du inte använder Xfce's sessionshanterare (xfce4-session) kommer du behöva att redigera din ~/.config/xfce4/xinitrc fil manuellt. Detaljer finns i dokumentationen på http://xfce.org/."
-
-#~ msgid "To ensure that Xfce does not manage your desktop the next time you start Xfce, please be sure to save your session when logging out.  If you are not using the Xfce Session Manager (xfce4-session), you will need to manually edit your ~/.config/xfce4/xinitrc file.  Details are available in the documentation provided on http://xfce.org/."
-#~ msgstr "För att försäkra dig om att Xfce inte kommer att hantera ditt skrivbord näste gång du startar Xfce, var säker på att du sparar din session när du loggar ut. Om du inte använder Xfce's sessionshanterare (xfce4-session) kommer du behöva att redigera din ~/.config/xfce4/xinitrc fil manuellt. Detaljer finns i dokumentationen på http://xfce.org/."
-
-#~ msgid "_Do not show this again"
-#~ msgstr "_Visa inte detta igen"
-
-#~ msgid "Desktop Preferences"
-#~ msgstr "Skrivbordsinställningar"
-
-#~ msgid "Stretch single backdrop onto _all monitors"
-#~ msgstr "Sträck ut en enda bakgrund över _alla monitorer"
-
-#~ msgid "Color"
-#~ msgstr "Färg"
-
-#~ msgid "_Color Style:"
-#~ msgstr "_Färgstil:"
-
-#~ msgid "Image"
-#~ msgstr "Bild"
-
-#~ msgid "Show _Image"
-#~ msgstr "Visa _bild"
-
-#~ msgid "_File:"
-#~ msgstr "_Fil:"
-
-#~ msgid "_Behavior"
-#~ msgstr "_Beteende"
-
-#~ msgid "Select backdrop image file"
-#~ msgstr "Välj bildfil att använda som bakgrund"
-
-#~ msgid "List file"
-#~ msgstr "Listfil"
-
-#~ msgid "Edit backdrop list"
-#~ msgstr "Redigera bakgrundslista"
-
-#~ msgid "Desktop Icons"
-#~ msgstr "Skrivbordsikoner"
-
-#~ msgid "Use _system font size"
-#~ msgstr "Använd _systemets standardstorlek för typsnitt"
-
-#~ msgid "Des_ktop"
-#~ msgstr "S_krivbord"
-
-#~ msgid "_Desktop Properties..."
-#~ msgstr "_Egenskaper för skrivbordet"
-
-#~ msgid "Science"
-#~ msgstr "Vetenskap"
-
-#~ msgid "Scientific applications and tools"
-#~ msgstr "Ikoner för minimerade program"
-
-#~ msgid "Unable to quit session."
-#~ msgstr "Kunde inte avsluta sessionen."
-
-#~ msgid "Quitting the session requires that Xfce's session manager (xfce4-session) is running, but it was not detected.  Please quit Xfce via another means."
-#~ msgstr "För att avsluta sessionen krävs att du kör Xfce's sessionshanterare (xfce4-session), men den hittades inte. Var god avsluta Xfce på något annat sätt."
-
-#~ msgid "Quitting the session requires the 'xfce4-session-logout' command, but it could not be found: %s"
-#~ msgstr "För att avsluta sessionen krävs kommandot xfce4-session-logout, men det hittades inte: %s"
-
-#~ msgid "Edit Properties"
-#~ msgstr "Redigera egenskaper"
-
-#~ msgid "Scientific software"
-#~ msgstr "Vetenskaplig programvara"
+#: ../src/xfdesktop-window-icon.c:195
+msgid "_Window Actions"
+msgstr ""
