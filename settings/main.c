@@ -99,7 +99,7 @@ typedef struct
      * wnck_screen_get_active_workspace sometimes has to return NULL. */
     gint active_workspace;
 
-    GtkWidget *frame_image_list;
+    GtkWidget *label_header;
     GtkWidget *image_iconview;
     GtkWidget *btn_folder;
     GtkWidget *chk_apply_to_all;
@@ -702,7 +702,7 @@ xfdesktop_settings_update_iconview_frame_name(AppearancePanel *panel,
         }
     }
 
-    gtk_frame_set_label(GTK_FRAME(panel->frame_image_list), buf);
+    gtk_label_set_text(GTK_LABEL(panel->label_header), buf);
 
     g_free(workspace_name);
 }
@@ -1721,9 +1721,6 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     appearance_settings = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
                                                             "alignment_settings"));
 
-    panel->frame_image_list = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
-                                                                "frame_image_list"));
-
     /* Add the background tab widgets to the main window and don't display the
      * notebook label/tab */
     gtk_notebook_append_page(GTK_NOTEBOOK(appearance_container),
@@ -1731,8 +1728,8 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     gtk_notebook_set_show_tabs(GTK_NOTEBOOK(appearance_container), FALSE);
 
     /* icon view area */
-    panel->frame_image_list = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
-                                                                "frame_image_list"));
+    panel->label_header = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
+                                                            "label_header"));
 
     panel->image_iconview = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
                                                               "iconview_imagelist"));

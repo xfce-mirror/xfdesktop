@@ -34,312 +34,324 @@
     <property name="border_width">12</property>
     <property name="left_padding">6</property>
     <child>
-      <object class="GtkFrame" id="frame_image_list">
+      <object class="GtkAlignment" id="top_padding_alignment">
         <property name="visible">True</property>
-        <property name="label_xalign">0</property>
-        <property name="shadow_type">GTK_SHADOW_NONE</property>
+        <property name="top_padding">6</property>
         <child>
-          <object class="GtkAlignment" id="top_padding_alignment">
+          <object class="GtkVBox" id="background_tab_vbox">
             <property name="visible">True</property>
-            <property name="top_padding">6</property>
+            <property name="spacing">6</property>
             <child>
-              <object class="GtkVBox" id="background_tab_vbox">
+              <object class="GtkHBox" id="background_tab_hbox">
                 <property name="visible">True</property>
-                <property name="spacing">6</property>
                 <child>
-                  <object class="GtkScrolledWindow" id="iconview_imagelist_scrolled_window">
+                  <object class="GtkLabel" id="label_header">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
                     <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                    <property name="hscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
-                    <property name="vscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
-                    <property name="shadow_type">GTK_SHADOW_ETCHED_IN</property>
-                    <child>
-                      <object class="GtkIconView" id="iconview_imagelist">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                      </object>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="expand">True</property>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkTable" id="folder_color_and_image_style_table">
-                    <property name="visible">True</property>
-                    <property name="n-columns">8</property>
-                    <property name="n-rows">2</property>
-                    <property name="row-spacing">6</property>
-                    <property name="column-spacing">12</property>
-                    <child>
-                      <object class="GtkLabel" id="label_folder">
-                        <property name="visible">True</property>
-                        <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                        <property name="label" translatable="yes">_Folder:</property>
-                        <property name="use_underline">True</property>
-                        <property name="mnemonic_widget">btn_folder</property>
-                      </object>
-                      <packing>
-                        <property name="left-attach">0</property>
-                        <property name="right-attach">1</property>
-                        <property name="top-attach">0</property>
-                        <property name="bottom-attach">1</property>
-                        <property name="x-options">GTK_SHRINK</property>
-                        <property name="y-options">GTK_SHRINK</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkFileChooserButton" id="btn_folder">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                        <property name="tooltip-text" translatable="yes">Choose the folder to select wallpapers from</property>
-                        <property name="action">GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER</property>
-                      </object>
-                      <packing>
-                        <property name="left-attach">1</property>
-                        <property name="right-attach">2</property>
-                        <property name="top-attach">0</property>
-                        <property name="bottom-attach">1</property>
-                        <property name="x-options">GTK_FILL|GTK_EXPAND</property>
-                        <property name="y-options">GTK_SHRINK</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkAlignment" id="alignment_spacer">
-                        <property name="visible">True</property>
-                      </object>
-                      <packing>
-                        <property name="left-attach">4</property>
-                        <property name="right-attach">5</property>
-                        <property name="top-attach">0</property>
-                        <property name="bottom-attach">1</property>
-                        <property name="x-options">GTK_FILL|GTK_EXPAND</property>
-                        <property name="y-options">GTK_SHRINK</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel" id="label_style">
-                        <property name="visible">True</property>
-                        <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                        <property name="label" translatable="yes">St_yle:</property>
-                        <property name="use_underline">True</property>
-                        <property name="mnemonic_widget">combo_style</property>
-                      </object>
-                      <packing>
-                        <property name="left-attach">5</property>
-                        <property name="right-attach">6</property>
-                        <property name="top-attach">0</property>
-                        <property name="bottom-attach">1</property>
-                        <property name="x-options">GTK_SHRINK</property>
-                        <property name="y-options">GTK_SHRINK</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkComboBoxText" id="combo_style">
-                        <property name="visible">True</property>
-                        <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                        <property name="tooltip-text" translatable="yes">Specify how the image will be resized to fit the screen</property>
-                        <items>
-                          <item translatable="yes">None</item>
-                          <item translatable="yes">Centered</item>
-                          <item translatable="yes">Tiled</item>
-                          <item translatable="yes">Stretched</item>
-                          <item translatable="yes">Scaled</item>
-                          <item translatable="yes">Zoomed</item>
-                          <item translatable="yes">Spanning Screens</item>
-                        </items>
-                      </object>
-                      <packing>
-                        <property name="left-attach">6</property>
-                        <property name="right-attach">7</property>
-                        <property name="top-attach">0</property>
-                        <property name="bottom-attach">1</property>
-                        <property name="x-options">GTK_FILL</property>
-                        <property name="y-options">GTK_SHRINK</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel" id="label_color">
-                        <property name="visible">True</property>
-                        <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                        <property name="label" translatable="yes">C_olor:</property>
-                        <property name="use_underline">True</property>
-                        <property name="mnemonic_widget">combo_colors</property>
-                      </object>
-                      <packing>
-                        <property name="left-attach">0</property>
-                        <property name="right-attach">1</property>
-                        <property name="top-attach">1</property>
-                        <property name="bottom-attach">2</property>
-                        <property name="x-options">GTK_SHRINK</property>
-                        <property name="y-options">GTK_SHRINK</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkComboBox" id="combo_colors">
-                        <property name="visible">True</property>
-                        <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                        <property name="tooltip-text" translatable="yes">Specify the style of the color drawn behind the backdrop image</property>
-                        <property name="model">model2</property>
-                        <child>
-                          <object class="GtkCellRendererText" id="renderer2"/>
-                          <attributes>
-                            <attribute name="text">0</attribute>
-                          </attributes>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="left-attach">1</property>
-                        <property name="right-attach">2</property>
-                        <property name="top-attach">1</property>
-                        <property name="bottom-attach">2</property>
-                        <property name="x-options">GTK_FILL|GTK_EXPAND</property>
-                        <property name="y-options">GTK_SHRINK</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkColorButton" id="color1_btn">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">True</property>
-                        <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_MOTION_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                        <property name="tooltip-text" translatable="yes">Specifies the solid color, or the "left" or "top" color of the gradient</property>
-                        <property name="title" translatable="yes">Select First Color</property>
-                        <property name="color">#151522223333</property>
-                      </object>
-                      <packing>
-                        <property name="left-attach">2</property>
-                        <property name="right-attach">3</property>
-                        <property name="top-attach">1</property>
-                        <property name="bottom-attach">2</property>
-                        <property name="x-options">GTK_SHRINK</property>
-                        <property name="y-options">GTK_SHRINK</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkColorButton" id="color2_btn">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">True</property>
-                        <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_MOTION_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                        <property name="tooltip-text" translatable="yes">Specifies the "right" or "bottom" color of the gradient</property>
-                        <property name="title" translatable="yes">Select Second Color</property>
-                        <property name="color">#151522223333</property>
-                      </object>
-                      <packing>
-                        <property name="left-attach">3</property>
-                        <property name="right-attach">4</property>
-                        <property name="top-attach">1</property>
-                        <property name="bottom-attach">2</property>
-                        <property name="x-options">GTK_SHRINK</property>
-                        <property name="y-options">GTK_SHRINK</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkCheckButton" id="chk_apply_to_all">
-                        <property name="visible">True</property>
-                        <property name="sensitive">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                        <property name="label" translatable="yes">Apply to all _workspaces</property>
-                        <property name="use_underline">True</property>
-                        <property name="draw_indicator">True</property>
-                      </object>
-                      <packing>
-                        <property name="left-attach">6</property>
-                        <property name="right-attach">7</property>
-                        <property name="top-attach">1</property>
-                        <property name="bottom-attach">2</property>
-                        <property name="x-options">GTK_SHRINK</property>
-                        <property name="y-options">GTK_SHRINK</property>
-                      </packing>
-                    </child>
                   </object>
                   <packing>
                     <property name="expand">False</property>
-                    <property name="position">1</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow" id="iconview_imagelist_scrolled_window">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                <property name="hscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
+                <property name="vscrollbar_policy">GTK_POLICY_AUTOMATIC</property>
+                <property name="shadow_type">GTK_SHADOW_ETCHED_IN</property>
+                <child>
+                  <object class="GtkIconView" id="iconview_imagelist">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkTable" id="folder_color_and_image_style_table">
+                <property name="visible">True</property>
+                <property name="n-columns">8</property>
+                <property name="n-rows">2</property>
+                <property name="row-spacing">6</property>
+                <property name="column-spacing">12</property>
+                <child>
+                  <object class="GtkLabel" id="label_folder">
+                    <property name="visible">True</property>
+                    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                    <property name="label" translatable="yes">_Folder:</property>
+                    <property name="use_underline">True</property>
+                    <property name="mnemonic_widget">btn_folder</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="right-attach">1</property>
+                    <property name="top-attach">0</property>
+                    <property name="bottom-attach">1</property>
+                    <property name="x-options">GTK_SHRINK</property>
+                    <property name="y-options">GTK_SHRINK</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkHBox" id="cycle_options_hbox">
+                  <object class="GtkFileChooserButton" id="btn_folder">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                    <property name="tooltip-text" translatable="yes">Choose the folder to select wallpapers from</property>
+                    <property name="action">GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">1</property>
+                    <property name="right-attach">2</property>
+                    <property name="top-attach">0</property>
+                    <property name="bottom-attach">1</property>
+                    <property name="x-options">GTK_FILL|GTK_EXPAND</property>
+                    <property name="y-options">GTK_SHRINK</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkAlignment" id="alignment_spacer">
+                    <property name="visible">True</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">4</property>
+                    <property name="right-attach">5</property>
+                    <property name="top-attach">0</property>
+                    <property name="bottom-attach">1</property>
+                    <property name="x-options">GTK_FILL|GTK_EXPAND</property>
+                    <property name="y-options">GTK_SHRINK</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="label_style">
                     <property name="visible">True</property>
                     <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                    <property name="spacing">12</property>
+                    <property name="label" translatable="yes">St_yle:</property>
+                    <property name="use_underline">True</property>
+                    <property name="mnemonic_widget">combo_style</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">5</property>
+                    <property name="right-attach">6</property>
+                    <property name="top-attach">0</property>
+                    <property name="bottom-attach">1</property>
+                    <property name="x-options">GTK_SHRINK</property>
+                    <property name="y-options">GTK_SHRINK</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkComboBoxText" id="combo_style">
+                    <property name="visible">True</property>
+                    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                    <property name="tooltip-text" translatable="yes">Specify how the image will be resized to fit the screen</property>
+                    <items>
+                      <item translatable="yes">None</item>
+                      <item translatable="yes">Centered</item>
+                      <item translatable="yes">Tiled</item>
+                      <item translatable="yes">Stretched</item>
+                      <item translatable="yes">Scaled</item>
+                      <item translatable="yes">Zoomed</item>
+                      <item translatable="yes">Spanning Screens</item>
+                    </items>
+                  </object>
+                  <packing>
+                    <property name="left-attach">6</property>
+                    <property name="right-attach">7</property>
+                    <property name="top-attach">0</property>
+                    <property name="bottom-attach">1</property>
+                    <property name="x-options">GTK_FILL</property>
+                    <property name="y-options">GTK_SHRINK</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="label_color">
+                    <property name="visible">True</property>
+                    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                    <property name="label" translatable="yes">C_olor:</property>
+                    <property name="use_underline">True</property>
+                    <property name="mnemonic_widget">combo_colors</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="right-attach">1</property>
+                    <property name="top-attach">1</property>
+                    <property name="bottom-attach">2</property>
+                    <property name="x-options">GTK_SHRINK</property>
+                    <property name="y-options">GTK_SHRINK</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkComboBox" id="combo_colors">
+                    <property name="visible">True</property>
+                    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                    <property name="tooltip-text" translatable="yes">Specify the style of the color drawn behind the backdrop image</property>
+                    <property name="model">model2</property>
                     <child>
-                      <object class="GtkCheckButton" id="chk_cycle_backdrop">
-                        <property name="visible">True</property>
-                        <property name="sensitive">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                        <property name="label" translatable="yes">Change the _background </property>
-                        <property name="tooltip-text" translatable="yes">Automatically select a different background from the current directory.</property>
-                        <property name="use_underline">True</property>
-                        <property name="draw_indicator">True</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                      </packing>
+                      <object class="GtkCellRendererText" id="renderer2"/>
+                      <attributes>
+                        <attribute name="text">0</attribute>
+                      </attributes>
                     </child>
-                    <child>
-                      <object class="GtkComboBoxText" id="combo_cycle_backdrop_period">
-                        <property name="visible">True</property>
-                        <property name="sensitive">False</property>
-                        <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                        <property name="tooltip-text" translatable="yes">Specify how often the background will change</property>
-                        <items>
-                          <item translatable="yes">in seconds:</item>
-                          <item translatable="yes">in minutes:</item>
-                          <item translatable="yes">in hours:</item>
-                          <item translatable="yes">at start up</item>
-                          <item translatable="yes">every hour</item>
-                          <item translatable="yes">every day</item>
-                          <item translatable="yes">chronologically</item>
-                        </items>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkSpinButton" id="spin_backdrop_time">
-                        <property name="visible">True</property>
-                        <property name="sensitive">False</property>
-                        <property name="can_focus">True</property>
-                        <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                        <property name="adjustment">adjustment3</property>
-                        <property name="tooltip-text" translatable="yes">Amount of time before a different background is selected.</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="position">2</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkCheckButton" id="chk_random_backdrop_order">
-                        <property name="visible">True</property>
-                        <property name="sensitive">False</property>
-                        <property name="can_focus">True</property>
-                        <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                        <property name="label" translatable="yes">_Random Order</property>
-                        <property name="use_underline">True</property>
-                        <property name="draw_indicator">True</property>
-                        <property name="tooltip-text" translatable="yes">Randomly selects another image from the same directory when the wallpaper is to cycle.</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                      </packing>
-                    </child>
+                  </object>
+                  <packing>
+                    <property name="left-attach">1</property>
+                    <property name="right-attach">2</property>
+                    <property name="top-attach">1</property>
+                    <property name="bottom-attach">2</property>
+                    <property name="x-options">GTK_FILL|GTK_EXPAND</property>
+                    <property name="y-options">GTK_SHRINK</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkColorButton" id="color1_btn">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_MOTION_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                    <property name="tooltip-text" translatable="yes">Specifies the solid color, or the "left" or "top" color of the gradient</property>
+                    <property name="title" translatable="yes">Select First Color</property>
+                    <property name="color">#151522223333</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">2</property>
+                    <property name="right-attach">3</property>
+                    <property name="top-attach">1</property>
+                    <property name="bottom-attach">2</property>
+                    <property name="x-options">GTK_SHRINK</property>
+                    <property name="y-options">GTK_SHRINK</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkColorButton" id="color2_btn">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_MOTION_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                    <property name="tooltip-text" translatable="yes">Specifies the "right" or "bottom" color of the gradient</property>
+                    <property name="title" translatable="yes">Select Second Color</property>
+                    <property name="color">#151522223333</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">3</property>
+                    <property name="right-attach">4</property>
+                    <property name="top-attach">1</property>
+                    <property name="bottom-attach">2</property>
+                    <property name="x-options">GTK_SHRINK</property>
+                    <property name="y-options">GTK_SHRINK</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="chk_apply_to_all">
+                    <property name="visible">True</property>
+                    <property name="sensitive">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                    <property name="label" translatable="yes">Apply to all _workspaces</property>
+                    <property name="use_underline">True</property>
+                    <property name="draw_indicator">True</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">6</property>
+                    <property name="right-attach">7</property>
+                    <property name="top-attach">1</property>
+                    <property name="bottom-attach">2</property>
+                    <property name="x-options">GTK_SHRINK</property>
+                    <property name="y-options">GTK_SHRINK</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkHBox" id="cycle_options_hbox">
+                <property name="visible">True</property>
+                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                <property name="spacing">12</property>
+                <child>
+                  <object class="GtkCheckButton" id="chk_cycle_backdrop">
+                    <property name="visible">True</property>
+                    <property name="sensitive">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                    <property name="label" translatable="yes">Change the _background </property>
+                    <property name="tooltip-text" translatable="yes">Automatically select a different background from the current directory.</property>
+                    <property name="use_underline">True</property>
+                    <property name="draw_indicator">True</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkComboBoxText" id="combo_cycle_backdrop_period">
+                    <property name="visible">True</property>
+                    <property name="sensitive">False</property>
+                    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                    <property name="tooltip-text" translatable="yes">Specify how often the background will change</property>
+                    <items>
+                      <item translatable="yes">in seconds:</item>
+                      <item translatable="yes">in minutes:</item>
+                      <item translatable="yes">in hours:</item>
+                      <item translatable="yes">at start up</item>
+                      <item translatable="yes">every hour</item>
+                      <item translatable="yes">every day</item>
+                      <item translatable="yes">chronologically</item>
+                    </items>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkSpinButton" id="spin_backdrop_time">
+                    <property name="visible">True</property>
+                    <property name="sensitive">False</property>
+                    <property name="can_focus">True</property>
+                    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                    <property name="adjustment">adjustment3</property>
+                    <property name="tooltip-text" translatable="yes">Amount of time before a different background is selected.</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
                     <property name="position">2</property>
                   </packing>
                 </child>
+                <child>
+                  <object class="GtkCheckButton" id="chk_random_backdrop_order">
+                    <property name="visible">True</property>
+                    <property name="sensitive">False</property>
+                    <property name="can_focus">True</property>
+                    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                    <property name="label" translatable="yes">_Random Order</property>
+                    <property name="use_underline">True</property>
+                    <property name="draw_indicator">True</property>
+                    <property name="tooltip-text" translatable="yes">Randomly selects another image from the same directory when the wallpaper is to cycle.</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                  </packing>
+                </child>
               </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="position">5</property>
+              </packing>
             </child>
           </object>
         </child>
