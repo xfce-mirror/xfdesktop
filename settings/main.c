@@ -99,6 +99,8 @@ typedef struct
      * wnck_screen_get_active_workspace sometimes has to return NULL. */
     gint active_workspace;
 
+    GtkWidget *infobar;
+    GtkWidget *infobar_label;
     GtkWidget *label_header;
     GtkWidget *image_iconview;
     GtkWidget *btn_folder;
@@ -680,6 +682,14 @@ xfdesktop_settings_update_iconview_frame_name(AppearancePanel *panel,
             } else {
                 g_snprintf(buf, sizeof(buf), _("Wallpaper for Monitor %d"), panel->monitor);
             }
+
+            /* This is for the infobar letting the user know how to configure
+             * multiple monitor setups */
+            gtk_label_set_text(GTK_LABEL(panel->infobar_label),
+                               _("You are using more than one display, "
+                                 "move this dialog to the display you "
+                                 "want to edit the settings for."));
+            gtk_widget_set_visible(panel->infobar, TRUE);
         } else {
             /* Multi-monitor per workspace wallpaper */
             if(panel->monitor_name) {
@@ -691,17 +701,36 @@ xfdesktop_settings_update_iconview_frame_name(AppearancePanel *panel,
                            _("Wallpaper for %s on Monitor %d"),
                            workspace_name, panel->monitor);
             }
+
+            /* This is for the infobar letting the user know how to configure
+             * multiple monitor/workspace setups */
+            gtk_label_set_text(GTK_LABEL(panel->infobar_label),
+                               _("You are using more than one display, "
+                                 "move this dialog to the display and "
+                                 "workspace you want to edit the settings for."));
+            gtk_widget_set_visible(panel->infobar, TRUE);
         }
     } else {
         if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(panel->chk_apply_to_all))) {
             /* Single monitor and single workspace */
             g_snprintf(buf, sizeof(buf), _("Wallpaper for my desktop"));
+
+            /* No need for the infobar */
+            gtk_widget_set_visible(panel->infobar, FALSE);
         } else {
             /* Single monitor and per workspace wallpaper */
             g_snprintf(buf, sizeof(buf), _("Wallpaper for %s"), workspace_name);
+
+            /* This is for the infobar letting the user know how to configure
+             * multiple workspace setups */
+            gtk_label_set_text(GTK_LABEL(panel->infobar_label),
+                               _("Move this dialog to the workspace you "
+                                 "want to edit the settings for."));
+            gtk_widget_set_visible(panel->infobar, TRUE);
         }
     }
 
+    /* This label is for which workspace/monitor we're on */
     gtk_label_set_text(GTK_LABEL(panel->label_header), buf);
 
     g_free(workspace_name);
@@ -1619,7 +1648,7 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     GtkWidget *appearance_container, *chk_custom_font_size,
               *spin_font_size, *w, *box, *spin_icon_size,
               *chk_show_thumbnails, *chk_single_click, *appearance_settings,
-              *chk_show_tooltips, *spin_tooltip_size, *bnt_exit;
+              *chk_show_tooltips, *spin_tooltip_size, *bnt_exit, *content_area;
     GtkBuilder *appearance_gxml;
     AppearancePanel *panel = g_new0(AppearancePanel, 1);
     GError *error = NULL;
@@ -1728,6 +1757,20 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     gtk_notebook_set_show_tabs(GTK_NOTEBOOK(appearance_container), FALSE);
 
     /* icon view area */
+    panel->infobar = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
+                                                       "infobar_header"));
+
+    panel->infobar_label = gtk_label_new("This is some text");
+    gtk_widget_set_no_show_all(panel->infobar, TRUE);
+    gtk_widget_show(panel->infobar_label);
+    gtk_widget_show(panel->infobar);
+    gtk_widget_set_visible(panel->infobar, FALSE);
+
+    /* Add the panel's infobar label to the infobar, with this setup
+     * it's easy to update the text for the infobar. */
+    content_area = gtk_info_bar_get_content_area(GTK_INFO_BAR(panel->infobar));
+    gtk_container_add(GTK_CONTAINER(content_area), panel->infobar_label);
+
     panel->label_header = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
                                                             "label_header"));
 
