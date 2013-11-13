@@ -126,6 +126,7 @@ struct _XfdesktopApplication
     gint nscreens;
     guint wait_for_wm_timeout_id;
     XfceSMClient *sm_client;
+    GCancellable *cancel;
 
     gboolean opt_disable_wm_check;
 };
@@ -169,6 +170,8 @@ xfdesktop_application_init(XfdesktopApplication *app)
 {
     GSimpleAction *action;
 
+    app->cancel = g_cancellable_new();
+
 #if !GLIB_CHECK_VERSION (2, 32, 0)
     app->actions = g_simple_action_group_new();
 #endif
@@ -208,18 +211,25 @@ xfdesktop_application_finalize(GObject *object)
     G_OBJECT_CLASS(xfdesktop_application_parent_class)->finalize(object);
 }
 
+/**
+ * xfdesktop_application_get:
+ *
+ * Singleton. Additional calls increase the reference count.
+ *
+ * Return value: #XfdesktopApplication, free with g_object_unref.
+ **/
 XfdesktopApplication *
 xfdesktop_application_get(void)
 {
     static XfdesktopApplication *app = NULL;
 
-    if(app) {
-        g_object_ref(G_OBJECT(app));
+    if(app == NULL) {
+       app = g_object_new(XFDESKTOP_TYPE_APPLICATION,
+                          "application-id", "org.xfce.xfdesktop",
+                          "flags", G_APPLICATION_HANDLES_COMMAND_LINE,
+                          NULL);
     } else {
-      app = g_object_new(XFDESKTOP_TYPE_APPLICATION,
-                         "application-id", "org.xfce.xfdesktop",
-                         "flags", G_APPLICATION_HANDLES_COMMAND_LINE,
-                         NULL);
+        g_object_ref(app);
     }
 
     return app;
@@ -237,8 +247,32 @@ session_logout(void)
 static void
 session_die(gpointer user_data)
 {
-    gtk_main_quit();
-    g_application_quit(G_APPLICATION(user_data));
+    gint main_level;
+    XfdesktopApplication *app;
+
+    TRACE("entering");
+
+    /* If we somehow got here after the app has been released we don't need
+     * to do anything */
+    if(user_data == NULL || !XFDESKTOP_IS_APPLICATION(user_data))
+        return;
+
+    app = XFDESKTOP_APPLICATION(user_data);
+
+    /* Cancel the wait for wm check if it's still running */
+    g_cancellable_cancel(app->cancel);
+
+    /* unhook our session quit function */
+    g_signal_handlers_disconnect_by_func(app->sm_client, session_die, app);
+
+    for(main_level = gtk_main_level(); main_level > 0; --main_level)
+        gtk_main_quit();
+
+#if GLIB_CHECK_VERSION(2, 32, 0)
+    g_application_quit(G_APPLICATION(app));
+#else
+    xfdesktop_application_shutdown(G_APPLICATION(app));
+#endif
 }
 
 static void
@@ -322,6 +356,9 @@ reload_idle_cb(gpointer data)
 
     TRACE("entering");
 
+    g_return_if_fail(app->desktops);
+
+    /* reload all the desktops */
     for(i = 0; i < app->nscreens; ++i) {
         if(app->desktops[i])
             xfce_desktop_refresh(XFCE_DESKTOP(app->desktops[i]));
@@ -339,7 +376,14 @@ cb_xfdesktop_application_reload(GAction  *action,
                                 GVariant *parameter,
                                 gpointer  data)
 {
-    GApplication *g_application = G_APPLICATION(data);
+    GApplication *g_application;
+
+    if(!data || !G_IS_APPLICATION(data))
+        return;
+
+    g_application = G_APPLICATION(data);
+
+    /* hold the app so it doesn't quit while a queue up a refresh */
     g_application_hold(g_application);
     g_idle_add((GSourceFunc)reload_idle_cb, g_application);
 }
@@ -348,18 +392,11 @@ static void
 xfdesktop_handle_quit_signals(gint sig,
                               gpointer user_data)
 {
-    gint main_level;
-    XfdesktopApplication *app = XFDESKTOP_APPLICATION(user_data);
+    TRACE("entering");
 
-    if(app->sm_client && XFCE_IS_SM_CLIENT(app->sm_client)) {
-        xfce_sm_client_set_restart_style(app->sm_client,
-                                         XFCE_SM_CLIENT_RESTART_NORMAL);
-    }
+    g_return_if_fail(XFDESKTOP_IS_APPLICATION(user_data));
 
-    for(main_level = gtk_main_level(); main_level > 0; --main_level)
-        gtk_main_quit();
-
-    g_application_quit(G_APPLICATION(user_data));
+    session_die(user_data);
 }
 
 static void
@@ -367,7 +404,22 @@ cb_xfdesktop_application_quit(GAction  *action,
                               GVariant *parameter,
                               gpointer  data)
 {
-    xfdesktop_handle_quit_signals(0, data);
+    XfdesktopApplication *app;
+
+    TRACE("entering");
+
+    g_return_if_fail(XFDESKTOP_IS_APPLICATION(data));
+
+    app = XFDESKTOP_APPLICATION(data);
+
+    /* If the user told xfdesktop to quit, set the restart style to something
+     * where it won't restart itself */
+    if(app->sm_client && XFCE_IS_SM_CLIENT(app->sm_client)) {
+        xfce_sm_client_set_restart_style(app->sm_client,
+                                         XFCE_SM_CLIENT_RESTART_NORMAL);
+    }
+
+    session_die(app);
 }
 
 static gint
@@ -396,13 +448,24 @@ cb_xfdesktop_application_menu(GAction  *action,
                               GVariant *parameter,
                               gpointer  data)
 {
-    XfdesktopApplication *app = XFDESKTOP_APPLICATION(data);
-    gboolean popup_root_menu = g_variant_get_boolean(parameter);
+    XfdesktopApplication *app;
+    gboolean popup_root_menu;
     gint screen_num;
 
     TRACE("entering");
 
+    /* sanity checks */
+    if(!data || !XFDESKTOP_IS_APPLICATION(data))
+        return;
+
+    if(!g_variant_is_of_type(parameter, G_VARIANT_TYPE_BOOLEAN))
+        return;
+
+    popup_root_menu = g_variant_get_boolean(parameter);
+    app = XFDESKTOP_APPLICATION(data);
+
     screen_num = xfdesktop_application_get_current_screen_number(app);
+    /* not initialized */
     if(screen_num < 0)
         return;
 
@@ -420,16 +483,32 @@ cb_xfdesktop_application_arrange(GAction  *action,
                                  GVariant *parameter,
                                  gpointer  data)
 {
-    XfdesktopApplication *app = XFDESKTOP_APPLICATION(data);
+    XfdesktopApplication *app;
     gint screen_num;
 
     TRACE("entering");
 
+    /* sanity check */
+    if(!data || !XFDESKTOP_IS_APPLICATION(data))
+        return;
+
+    app = XFDESKTOP_APPLICATION(data);
+
     screen_num = xfdesktop_application_get_current_screen_number(app);
+    /* not initialized */
     if(screen_num < 0)
         return;
 
     xfce_desktop_arrange_icons(XFCE_DESKTOP(app->desktops[screen_num]));
+}
+
+/* Cleans up the associated wait for wm resources */
+static void
+wait_for_window_manager_cleanup(WaitForWM *wfwm)
+{
+    g_free(wfwm->atoms);
+    XCloseDisplay(wfwm->dpy);
+    g_slice_free(WaitForWM, wfwm);
 }
 
 static gboolean
@@ -438,6 +517,14 @@ cb_wait_for_window_manager(gpointer data)
     WaitForWM *wfwm = data;
     guint i;
     gboolean have_wm = TRUE;
+
+    /* Check if it was canceled. This way xfdesktop doesn't start up if
+     * we're quitting */
+    if(g_cancellable_is_cancelled(wfwm->app->cancel)) {
+        g_application_release(G_APPLICATION(wfwm->app));
+        wait_for_window_manager_cleanup(wfwm);
+        return FALSE;
+    }
 
     for(i = 0; i < wfwm->atom_count; i++) {
         if(XGetSelectionOwner(wfwm->dpy, wfwm->atoms[i]) == None) {
@@ -460,6 +547,15 @@ cb_wait_for_window_manager_destroyed(gpointer data)
 
     g_return_if_fail(wfwm->app != NULL);
 
+    /* Check if it was canceled. This way xfdesktop doesn't start up if
+     * we're quitting */
+    if(g_cancellable_is_cancelled(wfwm->app->cancel)) {
+        g_application_release(G_APPLICATION(wfwm->app));
+        wait_for_window_manager_cleanup(wfwm);
+        return;
+    }
+
+
     wfwm->app->wait_for_wm_timeout_id = 0;
 
     if(!wfwm->have_wm) {
@@ -473,9 +569,7 @@ cb_wait_for_window_manager_destroyed(gpointer data)
      * also works without it */
     xfdesktop_application_start(wfwm->app);
 
-    g_free(wfwm->atoms);
-    XCloseDisplay(wfwm->dpy);
-    g_slice_free(WaitForWM, wfwm);
+    wait_for_window_manager_cleanup(wfwm);
 }
 
 static void
@@ -488,6 +582,7 @@ xfdesktop_application_startup(GApplication *g_application)
 
     TRACE("entering");
 
+    /* hold so it does not exit on us before the main loop gets going */
     g_application_hold(g_application);
 
     if(!app->opt_disable_wm_check) {
@@ -522,6 +617,7 @@ xfdesktop_application_startup(GApplication *g_application)
         xfdesktop_application_start(app);
     }
 
+    /* let the parent class do it's startup as well */
     G_APPLICATION_CLASS(xfdesktop_application_parent_class)->startup(g_application);
 }
 
@@ -543,11 +639,11 @@ xfdesktop_application_start(XfdesktopApplication *app)
 
     gdpy = gdk_display_get_default();
 
+    /* setup the session management options */
     app->sm_client = xfce_sm_client_get();
     xfce_sm_client_set_restart_style(app->sm_client, XFCE_SM_CLIENT_RESTART_IMMEDIATELY);
     xfce_sm_client_set_priority(app->sm_client, XFCE_SM_CLIENT_PRIORITY_DESKTOP);
-    g_signal_connect(app->sm_client, "quit",
-                     G_CALLBACK(session_die), app);
+    g_signal_connect(app->sm_client, "quit", G_CALLBACK(session_die), app);
 
     if(!xfce_sm_client_connect(app->sm_client, &error) && error) {
         g_printerr("Failed to connect to session manager: %s\n", error->message);
@@ -563,23 +659,29 @@ xfdesktop_application_start(XfdesktopApplication *app)
     } else
         app->channel = xfconf_channel_get(XFDESKTOP_CHANNEL);
 
+    /* create an XfceDesktop for every screen */
     app->nscreens = gdk_display_get_n_screens(gdpy);
     app->desktops = g_new0(GtkWidget *, app->nscreens);
+
     for(i = 0; i < app->nscreens; i++) {
         g_snprintf(buf, sizeof(buf), "/backdrop/screen%d/", i);
         app->desktops[i] = xfce_desktop_new(gdk_display_get_screen(gdpy, i),
-                                                  app->channel, buf);
+                                            app->channel, buf);
+
+        /* hook into the scroll event so we can forward it to the window
+         * manager */
         gtk_widget_add_events(app->desktops[i], GDK_BUTTON_PRESS_MASK
                               | GDK_BUTTON_RELEASE_MASK | GDK_SCROLL_MASK);
         g_signal_connect(G_OBJECT(app->desktops[i]), "scroll-event",
                          G_CALLBACK(scroll_cb), app);
+
         menu_attach(XFCE_DESKTOP(app->desktops[i]));
         windowlist_attach(XFCE_DESKTOP(app->desktops[i]));
+
+        /* display the desktop and try to put it at the bottom */
         gtk_widget_show(app->desktops[i]);
         gdk_window_lower(gtk_widget_get_window(app->desktops[i]));
-    }
 
-    for(i = 0; i < app->nscreens; ++i) {
         xfce_desktop_set_session_logout_func(XFCE_DESKTOP(app->desktops[i]),
                                              session_logout);
     }
@@ -587,6 +689,7 @@ xfdesktop_application_start(XfdesktopApplication *app)
     menu_init(app->channel);
     windowlist_init(app->channel);
 
+    /* hook up to the different quit signals */
     if(xfce_posix_signal_handler_init(&error)) {
         xfce_posix_signal_handler_set_handler(SIGHUP,
                                               xfdesktop_handle_quit_signals,
@@ -604,6 +707,7 @@ xfdesktop_application_start(XfdesktopApplication *app)
 
     gtk_main();
 
+    /* now that main has started we can release our hold */
     g_application_release(G_APPLICATION(app));
 }
 
@@ -621,12 +725,24 @@ xfdesktop_application_shutdown(GApplication *g_application)
 
     TRACE("entering");
 
+    if(app->wait_for_wm_timeout_id != 0) {
+        g_source_remove(app->wait_for_wm_timeout_id);
+        app->wait_for_wm_timeout_id = 0;
+    }
+
     menu_cleanup();
     windowlist_cleanup();
 
-    for(i = 0; i < app->nscreens; i++)
-        gtk_widget_destroy(app->desktops[i]);
-    g_free(app->desktops);
+    if(app->desktops) {
+        for(i = 0; i < app->nscreens; i++) {
+            /* ensure the desktops get freed if they haven't been */
+            if(app->desktops[i] && GTK_IS_WIDGET(app->desktops[i]))
+                gtk_widget_destroy(app->desktops[i]);
+        }
+
+        g_free(app->desktops);
+        app->desktops = NULL;
+    }
 
     xfconf_shutdown();
 
@@ -686,6 +802,7 @@ xfdesktop_application_local_command_line(GApplication *g_application,
 
     g_option_context_free(octx);
 
+    /* Print the version info and exit */
     if(opt_version) {
         g_print(_("This is %s version %s, running on Xfce %s.\n"), PACKAGE,
                 VERSION, xfce_version_string());
@@ -716,20 +833,23 @@ xfdesktop_application_local_command_line(GApplication *g_application,
 #endif
                 );
 
+        /* free our memory and exit */
+        g_object_unref(g_application);
         *exit_status = 0;
         return TRUE;
     }
 
+    /* This will call xfdesktop_application_startup if it needs to */
     g_application_register(g_application, NULL, NULL);
 
+    /* handle our defined options */
     if(opt_quit) {
         g_action_group_activate_action(G_ACTION_GROUP(g_application), "quit", NULL);
         option_set = TRUE;
     } else if(opt_reload) {
         g_action_group_activate_action(G_ACTION_GROUP(g_application), "reload", NULL);
         option_set = TRUE;
-    }
-    if(opt_menu) {
+    } else if(opt_menu) {
         g_action_group_activate_action(G_ACTION_GROUP(g_application), "menu",
                                        g_variant_new_boolean(TRUE));
         option_set = TRUE;
@@ -742,11 +862,13 @@ xfdesktop_application_local_command_line(GApplication *g_application,
         option_set = TRUE;
     }
 
+    /* We handled the command line option */
     if(option_set) {
         *exit_status = 0;
         return TRUE;
     }
 
+    /* propagate it up */
     return G_APPLICATION_CLASS(xfdesktop_application_parent_class)->local_command_line(g_application, arguments, exit_status);
 }
 
@@ -755,8 +877,7 @@ xfdesktop_application_command_line(GApplication *g_application,
                                    GApplicationCommandLine *command_line)
 {
     /* If we don't process everything in the local command line then the options
-     * won't show up when during xfdesktop --help */
-    TRACE("Do nothing");
+     * won't show up during xfdesktop --help */
 
     return 0;
 }

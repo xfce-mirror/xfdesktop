@@ -1094,15 +1094,17 @@ xfce_desktop_unrealize(GtkWidget *widget)
     gdk_flush();
     gdk_error_trap_pop();
 
-    g_object_unref(G_OBJECT(desktop->priv->bg_pixmap));
-    desktop->priv->bg_pixmap = NULL;
+    if(desktop->priv->bg_pixmap) {
+        g_object_unref(G_OBJECT(desktop->priv->bg_pixmap));
+        desktop->priv->bg_pixmap = NULL;
+    }
     
     gtk_window_set_icon(GTK_WINDOW(widget), NULL);
-    
+
     gtk_style_detach(gtk_widget_get_style(widget));
     g_object_unref(G_OBJECT(gtk_widget_get_window(widget)));
     gtk_widget_set_window(widget, NULL);
-    
+
     gtk_selection_remove_all(widget);
     
     gtk_widget_set_realized(widget, FALSE);
