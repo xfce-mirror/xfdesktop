@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-11-14 06:31+0100\n"
-"PO-Revision-Date: 2013-11-14 17:31+0000\n"
+"PO-Revision-Date: 2013-11-14 22:26+0000\n"
 "Last-Translator: FredN <fredrik@nyqvist.biz>\n"
 "Language-Team: Swedish (http://www.transifex.com/projects/p/xfce/language/sv/)\n"
 "MIME-Version: 1.0\n"
@@ -43,11 +43,11 @@ msgstr "Nätverksdelning"
 
 #: ../settings/main.c:381
 msgid "Disks and Drives"
-msgstr ""
+msgstr "Diskar och enheter"
 
 #: ../settings/main.c:383
 msgid "Other Items"
-msgstr "Övrigt"
+msgstr "Andra objekt"
 
 #. Display the file name, file type, and file size in the tooltip.
 #: ../settings/main.c:496
@@ -72,7 +72,7 @@ msgstr "Bakgrundsbild för monitor %d"
 msgid ""
 "You are using more than one display, move this dialog to the display you "
 "want to edit the settings for."
-msgstr ""
+msgstr "Du använder mer än skärm, flytta den här dialogrutan till den skärm du vill ändra inställningarna för."
 
 #: ../settings/main.c:697
 #, c-format
@@ -88,7 +88,7 @@ msgstr "Bakgrundsbild för %s på monitor %d"
 msgid ""
 "You are using more than one display, move this dialog to the display and "
 "workspace you want to edit the settings for."
-msgstr ""
+msgstr "Du använder mer än skärm, flytta den här dialogrutan till den skärm och arbetsyta du vill ändra inställningarna för."
 
 #. Single monitor and single workspace
 #: ../settings/main.c:716
@@ -104,15 +104,15 @@ msgstr "Bakgrundsbild för %s"
 
 #: ../settings/main.c:727
 msgid "Move this dialog to the workspace you want to edit the settings for."
-msgstr ""
+msgstr "Flytta den här dialogrutan till den arbetsyta du vill ändra inställningarna för."
 
 #: ../settings/main.c:1130
 msgid "Image selection is unavailable while the image style is set to None."
-msgstr ""
+msgstr "Bildval är inte tillgängligt när bildstil är satt till Ingen."
 
 #: ../settings/main.c:1482
 msgid "Spanning screens"
-msgstr ""
+msgstr "Över flera skärmar"
 
 #: ../settings/main.c:1787
 msgid "Image files"
@@ -178,7 +178,7 @@ msgstr "Genomskinlig"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
 msgid "_Folder:"
-msgstr ""
+msgstr "_Mapp:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
 msgid "Choose the folder to select wallpapers from"
@@ -219,11 +219,11 @@ msgstr "Zoomad"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
 msgid "Spanning Screens"
-msgstr ""
+msgstr "Över flera skärmar"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
 msgid "C_olor:"
-msgstr ""
+msgstr "F_ärg"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Specify the style of the color drawn behind the backdrop image"
@@ -247,52 +247,52 @@ msgstr "Välj andra färgen"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
 msgid "Apply to all _workspaces"
-msgstr ""
+msgstr "Verkställ för all _arbetsytor"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 msgid "Change the _background "
-msgstr ""
+msgstr "Byt bakgrundsbilden"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
 msgid ""
 "Automatically select a different background from the current directory."
-msgstr ""
+msgstr "Välj automatiskt en annan skrivbordsbakgrund från den nuvarande katalogen."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid "Specify how often the background will change"
-msgstr ""
+msgstr "Ange hur ofta skrivbordsbakgrunden ska ändras"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "in seconds:"
-msgstr ""
+msgstr "i sekunder:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
 msgid "in minutes:"
-msgstr ""
+msgstr "i minuter"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
 msgid "in hours:"
-msgstr ""
+msgstr "i timmar:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
 msgid "at start up"
-msgstr ""
+msgstr "Vid uppstart"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
 msgid "every hour"
-msgstr ""
+msgstr "varje timme"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
 msgid "every day"
-msgstr ""
+msgstr "varje dag"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
 msgid "chronologically"
-msgstr ""
+msgstr "kronologiskt"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
 msgid "Amount of time before a different background is selected."
-msgstr ""
+msgstr "Tid innan en annan bakgrund är vald."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
 msgid "_Random Order"
@@ -302,7 +302,7 @@ msgstr "Slumpvis vald ordning"
 msgid ""
 "Randomly selects another image from the same directory when the wallpaper is"
 " to cycle."
-msgstr ""
+msgstr "Välj en annan bild slumpvis från samma katalog när skrivbordsbakgrunden är satt att cykla."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:1
 msgid "Left"
@@ -424,7 +424,7 @@ msgstr "Visa ikoner"
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
-msgstr ""
+msgstr "Välj det här alternativet för att visa förhandsgranskningsbara filer på skrivbordet som automatiskt genererade miniatyrbildsikoner. "
 
 #: ../settings/xfdesktop-settings-ui.glade.h:32
 msgid "Single _click to activate items"
@@ -432,11 +432,11 @@ msgstr "Klicka en gång för att aktivera ett objekt"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
 msgid "Show icon tooltips. Size:"
-msgstr ""
+msgstr "Visa ikoner för verktygstips. Storlek:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:34
 msgid "Size of the tooltip preview image."
-msgstr ""
+msgstr "Storlek för verktygstipsets förhandsgranskningsbild."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:35
 msgid "Use custom _font size:"
@@ -468,7 +468,7 @@ msgstr "Ta bort arbetsyta %d"
 msgid ""
 "Do you really want to remove workspace %d?\n"
 "Note: You are currently on workspace %d."
-msgstr ""
+msgstr "Vill du verkligen ta bort arbetsyta %d?\nNot: Du är för närvarande på arbetsyta %d."
 
 #: ../src/windowlist.c:77
 #, c-format
@@ -480,7 +480,7 @@ msgstr "Ta bort arbetsyta '%s'"
 msgid ""
 "Do you really want to remove workspace '%s'?\n"
 "Note: You are currently on workspace '%s'."
-msgstr ""
+msgstr "Vill du verkligen ta bort arbetsyta '%s'?\nNot: Du är för närvarande på arbetsyta '%s'."
 
 #. Popup a dialog box confirming that the user wants to remove a
 #. * workspace
@@ -530,7 +530,7 @@ msgstr "En vanlig fil med samma namn finns redan. Ta bort eller byt namn på den
 #: ../src/xfdesktop-file-icon-manager.c:685 ../src/xfdesktop-file-utils.c:716
 #: ../src/xfdesktop-file-utils.c:769
 msgid "Rename Error"
-msgstr "Namnbytesfel"
+msgstr "Fel vid namnbyte"
 
 #: ../src/xfdesktop-file-icon-manager.c:686 ../src/xfdesktop-file-utils.c:770
 msgid "The files could not be renamed"
@@ -549,7 +549,7 @@ msgstr "Papperskorgsfel"
 #: ../src/xfdesktop-file-icon-manager.c:732
 #: ../src/xfdesktop-file-icon-manager.c:776
 msgid "The selected files could not be trashed"
-msgstr "Programväljaren kunde inte öppnas."
+msgstr "De markerade filerna kunde inte tas bort"
 
 #: ../src/xfdesktop-file-icon-manager.c:733
 #: ../src/xfdesktop-file-icon-manager.c:777 ../src/xfdesktop-file-utils.c:718
@@ -561,7 +561,7 @@ msgstr "Programväljaren kunde inte öppnas."
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
-msgstr "Den här funktionen kräver att att en filhanterartjänst körs (som till exempel den som tillhandahålls av Thunar)."
+msgstr "Den här funktionen kräver att en filhanterartjänst körs (som till exempel den som tillhandahålls av Thunar)."
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:877
@@ -621,7 +621,7 @@ msgstr "Skapa _URL-länk..."
 #. create folder item
 #: ../src/xfdesktop-file-icon-manager.c:1462
 msgid "Create _Folder..."
-msgstr "Skapa _katalog..."
+msgstr "Skapa _mapp..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1477
 msgid "Create From _Template"
@@ -671,11 +671,11 @@ msgstr "Inläsningsfel"
 
 #: ../src/xfdesktop-file-icon-manager.c:2749
 msgid "Failed to load the desktop folder"
-msgstr "En vanlig fil med samma namn finns redan. Ta bort eller byt namn på den."
+msgstr "Misslyckades med att läsa in skrivbordskatalogen"
 
 #: ../src/xfdesktop-file-icon-manager.c:3289
 msgid "Copy _Here"
-msgstr "Kopiera hit"
+msgstr "Kopiera _hit"
 
 #: ../src/xfdesktop-file-icon-manager.c:3289
 msgid "_Move Here"
@@ -728,7 +728,7 @@ msgstr "Den valda åtgärden kunde inte genomföras"
 
 #: ../src/xfdesktop-file-utils.c:717
 msgid "The file could not be renamed"
-msgstr "Filen kunde inte byta namn"
+msgstr "Kunde inte byta namn på filen"
 
 #: ../src/xfdesktop-file-utils.c:819
 msgid "Delete Error"
@@ -754,7 +754,7 @@ msgstr "Kunde inte tömma papperskorgen"
 
 #: ../src/xfdesktop-file-utils.c:950
 msgid "Create File Error"
-msgstr "Fel vid borttagning"
+msgstr "Fel vid borttagning av fil"
 
 #: ../src/xfdesktop-file-utils.c:951
 msgid "Could not create a new file"
@@ -832,7 +832,7 @@ msgstr "Avmontering klar"
 #: ../src/xfdesktop-notify.c:223 ../src/xfdesktop-notify.c:408
 #, c-format
 msgid "The device \"%s\" has been safely removed from the system. "
-msgstr ""
+msgstr "Enheten \"%s\" har tagits bort från systemet."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:313
@@ -847,7 +847,7 @@ msgstr "Enheten \"%s\" håller på att matas ut. Detta kan ta lite tid"
 
 #: ../src/xfdesktop-notify.c:406
 msgid "Eject Finished"
-msgstr ""
+msgstr "Utmatning klar"
 
 #: ../src/xfdesktop-regular-file-icon.c:606
 #, c-format
@@ -933,4 +933,4 @@ msgstr "_Montera volym"
 
 #: ../src/xfdesktop-window-icon.c:195
 msgid "_Window Actions"
-msgstr ""
+msgstr "_Fönsteråtgärder"
