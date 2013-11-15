@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-03 12:31+0100\n"
-"PO-Revision-Date: 2013-11-04 12:30+0000\n"
+"POT-Creation-Date: 2013-11-15 00:31+0100\n"
+"PO-Revision-Date: 2013-11-15 10:35+0000\n"
 "Last-Translator: Pjotr123 <pjotrvertaalt@gmail.com>\n"
 "Language-Team: Dutch (http://www.transifex.com/projects/p/xfce/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -20,37 +20,37 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../settings/main.c:369 ../src/xfdesktop-special-file-icon.c:295
+#: ../settings/main.c:371 ../src/xfdesktop-special-file-icon.c:295
 #: ../src/xfdesktop-special-file-icon.c:479
 msgid "Home"
 msgstr "Persoonlijke map"
 
-#: ../settings/main.c:371
+#: ../settings/main.c:373
 msgid "Filesystem"
 msgstr "Bestandssysteem"
 
-#: ../settings/main.c:373
+#: ../settings/main.c:375
 msgid "Trash"
 msgstr "Prullenbak"
 
-#: ../settings/main.c:375
+#: ../settings/main.c:377
 msgid "Removable Devices"
 msgstr "Verwijderbare apparaten"
 
-#: ../settings/main.c:377
+#: ../settings/main.c:379
 msgid "Network Shares"
 msgstr "Netwerk-Delen"
 
-#: ../settings/main.c:379
+#: ../settings/main.c:381
 msgid "Disks and Drives"
 msgstr "Schijven en stations"
 
-#: ../settings/main.c:381
+#: ../settings/main.c:383
 msgid "Other Items"
 msgstr "Andere elementen"
 
 #. Display the file name, file type, and file size in the tooltip.
-#: ../settings/main.c:494
+#: ../settings/main.c:496
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -58,81 +58,97 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nType: %s\nGrootte: %s"
 
-#: ../settings/main.c:678
+#: ../settings/main.c:680
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "Bureaubladachtergrond voor beeldscherm %d (%s)"
 
-#: ../settings/main.c:681
+#: ../settings/main.c:683
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "Bureaubladachtergrond voor beeldscherm %d"
 
-#: ../settings/main.c:687
+#: ../settings/main.c:689
+msgid ""
+"You are using more than one display, move this dialog to the display you "
+"want to edit the settings for."
+msgstr "U gebruikt meer dan één scherm; verplaats dit dialoogvenster naar het scherm waarvan u de instellingen wil bewerken."
+
+#: ../settings/main.c:697
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "Bureaubladachtergrond voor %s op beeldscherm %d (%s)"
 
-#: ../settings/main.c:691
+#: ../settings/main.c:701
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "Bureaubladachtergrond voor %s op beeldscherm %d"
 
+#: ../settings/main.c:708
+msgid ""
+"You are using more than one display, move this dialog to the display and "
+"workspace you want to edit the settings for."
+msgstr "U gebruikt meer dan één scherm; verplaats dit dialoogvenster naar het scherm en het werkblad waarvan u de instellingen wil bewerken."
+
 #. Single monitor and single workspace
-#: ../settings/main.c:698
+#: ../settings/main.c:716
 #, c-format
 msgid "Wallpaper for my desktop"
 msgstr "Achtergrond voor mijn bureaublad"
 
 #. Single monitor and per workspace wallpaper
-#: ../settings/main.c:701
+#: ../settings/main.c:722
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "Bureaubladachtergrond voor %s"
 
-#: ../settings/main.c:1101
+#: ../settings/main.c:727
+msgid "Move this dialog to the workspace you want to edit the settings for."
+msgstr "Verplaats dit dialoogvenster naar het werkblad waarvan u de instellingen wil bewerken."
+
+#: ../settings/main.c:1130
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "Afbeeldingkeuze is niet beschikbaar wanneer de afbeeldingstijl op Geen is ingesteld."
 
-#: ../settings/main.c:1453
+#: ../settings/main.c:1482
 msgid "Spanning screens"
 msgstr "Schermen overbruggen"
 
-#: ../settings/main.c:1747
+#: ../settings/main.c:1787
 msgid "Image files"
 msgstr "Afbeeldingbestanden"
 
-#: ../settings/main.c:1899
+#: ../settings/main.c:1939
 msgid "Settings manager socket"
 msgstr "Contactpunt voor instellingenbeheerder"
 
-#: ../settings/main.c:1899
+#: ../settings/main.c:1939
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: ../settings/main.c:1900
+#: ../settings/main.c:1940
 msgid "Version information"
 msgstr "Versie-informatie"
 
-#: ../settings/main.c:1927
+#: ../settings/main.c:1967
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Tik '%s --help' voor gebruiksinformatie."
 
-#: ../settings/main.c:1939
+#: ../settings/main.c:1979
 msgid "The Xfce development team. All rights reserved."
 msgstr "De Xfce-ontwikkelploeg. Alle rechten voorbehouden."
 
-#: ../settings/main.c:1940
+#: ../settings/main.c:1980
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Gelieve fouten te melden aan <%s>"
 
-#: ../settings/main.c:1947
+#: ../settings/main.c:1987
 msgid "Desktop Settings"
 msgstr "Bureaublad-instellingen"
 
-#: ../settings/main.c:1949
+#: ../settings/main.c:1989
 msgid "Unable to contact settings server"
 msgstr "Kan geen contact maken met de instellingendienst"
 
@@ -438,78 +454,6 @@ msgstr "<b>Standaardpictogrammen</b>"
 msgid "_Icons"
 msgstr "_Pictogrammen"
 
-#: ../src/main.c:241
-msgid "Display version information"
-msgstr "Geef versie-informatie weer"
-
-#: ../src/main.c:242
-msgid "Reload all settings, refresh image list"
-msgstr "Laad alle instellingen opnieuw, ververs de afbeeldingenlijst"
-
-#: ../src/main.c:243
-msgid "Pop up the menu (at the current mouse position)"
-msgstr "Laat het menu opduiken (op de huidige muispositie)"
-
-#: ../src/main.c:244
-msgid "Pop up the window list (at the current mouse position)"
-msgstr "Laat de vensterlijst opduiken (op de huidige muispositie)"
-
-#: ../src/main.c:246
-msgid "Automatically arrange all the icons on the desktop"
-msgstr "Automatisch alle pictogrammen op het bureaublad schikken"
-
-#: ../src/main.c:248
-msgid "Cause xfdesktop to quit"
-msgstr "Sluit xfdesktop af"
-
-#: ../src/main.c:271
-#, c-format
-msgid "Failed to parse arguments: %s\n"
-msgstr "Kon argumenten niet lezen: %s\n"
-
-#: ../src/main.c:279
-#, c-format
-msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr "Dit is %s versie %s, draaiend op Xfce %s.\n"
-
-#: ../src/main.c:281
-#, c-format
-msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr "Gemaakt met GTK+ %d.%d.%d, gekoppeld aan GTK+ %d.%d.%d."
-
-#: ../src/main.c:285
-#, c-format
-msgid "Build options:\n"
-msgstr "Bouw-opties:\n"
-
-#: ../src/main.c:286
-#, c-format
-msgid "    Desktop Menu:        %s\n"
-msgstr "Bureaubladmenu: %s\n"
-
-#: ../src/main.c:288 ../src/main.c:295 ../src/main.c:302
-msgid "enabled"
-msgstr "ingeschakeld"
-
-#: ../src/main.c:290 ../src/main.c:297 ../src/main.c:304
-msgid "disabled"
-msgstr "uitgeschakeld"
-
-#: ../src/main.c:293
-#, c-format
-msgid "    Desktop Icons:       %s\n"
-msgstr "Bureaubladpictogrammen: %s\n"
-
-#: ../src/main.c:300
-#, c-format
-msgid "    Desktop File Icons:  %s\n"
-msgstr "Pictogrammen van bureaubladbestanden: %s\n"
-
-#: ../src/main.c:333
-#, c-format
-msgid "%s is not running.\n"
-msgstr "%s draait niet.\n"
-
 #: ../src/menu.c:106
 msgid "_Applications"
 msgstr "_Toepassingen"
@@ -566,6 +510,79 @@ msgstr "Werkblad %d _verwijderen"
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "Werkblad '%s' _verwijderen"
+
+#: ../src/xfdesktop-application.c:773
+msgid "Display version information"
+msgstr "Toon versie-informatie"
+
+#: ../src/xfdesktop-application.c:774
+msgid "Reload all settings"
+msgstr "Herlaad alle instellingen"
+
+#: ../src/xfdesktop-application.c:775
+msgid "Pop up the menu (at the current mouse position)"
+msgstr "Laat het menu opduiken (op de huidige muispositie)"
+
+#: ../src/xfdesktop-application.c:776
+msgid "Pop up the window list (at the current mouse position)"
+msgstr "Laat de vensterlijst opduiken (op de huidige muispositie)"
+
+#: ../src/xfdesktop-application.c:778
+msgid "Automatically arrange all the icons on the desktop"
+msgstr "Alle pictogrammen op het bureaublad automatisch rangschikken"
+
+#: ../src/xfdesktop-application.c:780
+msgid "Do not wait for a window manager on startup"
+msgstr "Wacht niet op een vensterbeheerder bij opstart"
+
+#: ../src/xfdesktop-application.c:781
+msgid "Cause xfdesktop to quit"
+msgstr "Maak dat xfdesktop volledig sluit"
+
+#: ../src/xfdesktop-application.c:796
+#, c-format
+msgid "Failed to parse arguments: %s\n"
+msgstr "Kon argumenten niet lezen: %s\n"
+
+#: ../src/xfdesktop-application.c:807
+#, c-format
+msgid "This is %s version %s, running on Xfce %s.\n"
+msgstr "Dit is %s versie %s, draaiend op Xfce %s.\n"
+
+#: ../src/xfdesktop-application.c:809
+#, c-format
+msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
+msgstr "Gemaakt met GTK+ %d.%d.%d, gekoppeld aan GTK+ %d.%d.%d."
+
+#: ../src/xfdesktop-application.c:813
+#, c-format
+msgid "Build options:\n"
+msgstr "Bouw-opties:\n"
+
+#: ../src/xfdesktop-application.c:814
+#, c-format
+msgid "    Desktop Menu:        %s\n"
+msgstr "Bureaubladmenu: %s\n"
+
+#: ../src/xfdesktop-application.c:816 ../src/xfdesktop-application.c:823
+#: ../src/xfdesktop-application.c:830
+msgid "enabled"
+msgstr "ingeschakeld"
+
+#: ../src/xfdesktop-application.c:818 ../src/xfdesktop-application.c:825
+#: ../src/xfdesktop-application.c:832
+msgid "disabled"
+msgstr "uitgeschakeld"
+
+#: ../src/xfdesktop-application.c:821
+#, c-format
+msgid "    Desktop Icons:       %s\n"
+msgstr "Bureaubladpictogrammen: %s\n"
+
+#: ../src/xfdesktop-application.c:828
+#, c-format
+msgid "    Desktop File Icons:  %s\n"
+msgstr "Pictogrammen van bureaubladbestanden: %s\n"
 
 #: ../src/xfdesktop-file-icon-manager.c:578
 #: ../src/xfdesktop-file-icon-manager.c:595
@@ -721,23 +738,23 @@ msgstr "Bureaublad-in_stellingen..."
 msgid "P_roperties..."
 msgstr "_Eigenschappen..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2697
+#: ../src/xfdesktop-file-icon-manager.c:2747
 msgid "Load Error"
 msgstr "Laadfout"
 
-#: ../src/xfdesktop-file-icon-manager.c:2699
+#: ../src/xfdesktop-file-icon-manager.c:2749
 msgid "Failed to load the desktop folder"
 msgstr "Kon de bureaubladmap niet laden"
 
-#: ../src/xfdesktop-file-icon-manager.c:3239
+#: ../src/xfdesktop-file-icon-manager.c:3289
 msgid "Copy _Here"
 msgstr "Hierheen kopiëren"
 
-#: ../src/xfdesktop-file-icon-manager.c:3239
+#: ../src/xfdesktop-file-icon-manager.c:3289
 msgid "_Move Here"
 msgstr "Hierheen verplaatsen"
 
-#: ../src/xfdesktop-file-icon-manager.c:3239
+#: ../src/xfdesktop-file-icon-manager.c:3289
 msgid "_Link Here"
 msgstr "Hier koppelen"
 
@@ -905,7 +922,7 @@ msgstr "Het apparaat '%s' wordt uitgeworpen. Dit kan even duren"
 msgid "Eject Finished"
 msgstr "Uitwerpen voltooid"
 
-#: ../src/xfdesktop-regular-file-icon.c:601
+#: ../src/xfdesktop-regular-file-icon.c:606
 #, c-format
 msgid ""
 "Type: %s\n"
