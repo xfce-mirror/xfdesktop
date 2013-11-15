@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-14 06:31+0100\n"
-"PO-Revision-Date: 2013-11-14 13:47+0000\n"
+"POT-Creation-Date: 2013-11-15 00:31+0100\n"
+"PO-Revision-Date: 2013-11-15 09:33+0000\n"
 "Last-Translator: Necdet Yücel <necdetyucel@gmail.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/xfce/language/tr/)\n"
 "MIME-Version: 1.0\n"
@@ -514,6 +514,79 @@ msgstr "%d Çalışma Alanını  _Kaldır"
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "'%s' Çalışma Alanını _Kaldır"
+
+#: ../src/xfdesktop-application.c:773
+msgid "Display version information"
+msgstr "Sürüm bilgisini görüntüle"
+
+#: ../src/xfdesktop-application.c:774
+msgid "Reload all settings"
+msgstr "Tüm ayarları yeniden yükle"
+
+#: ../src/xfdesktop-application.c:775
+msgid "Pop up the menu (at the current mouse position)"
+msgstr "Menüyü aç (güncel fare konumunda)"
+
+#: ../src/xfdesktop-application.c:776
+msgid "Pop up the window list (at the current mouse position)"
+msgstr "Pencere listesini aç (farenin güncel konumunda)"
+
+#: ../src/xfdesktop-application.c:778
+msgid "Automatically arrange all the icons on the desktop"
+msgstr "Masaüstündeki simgeleri otomatik düzenle"
+
+#: ../src/xfdesktop-application.c:780
+msgid "Do not wait for a window manager on startup"
+msgstr "Başlangıçta bir pencere yöneticisini bekleme"
+
+#: ../src/xfdesktop-application.c:781
+msgid "Cause xfdesktop to quit"
+msgstr "Xfdesktop kapatılacaktır"
+
+#: ../src/xfdesktop-application.c:796
+#, c-format
+msgid "Failed to parse arguments: %s\n"
+msgstr "Ayrıştırılamayan argümanlar: %s\n"
+
+#: ../src/xfdesktop-application.c:807
+#, c-format
+msgid "This is %s version %s, running on Xfce %s.\n"
+msgstr "Xfce %s üzerinde koşan bu %s sürüm %s.\n"
+
+#: ../src/xfdesktop-application.c:809
+#, c-format
+msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
+msgstr "GTK+ %d.%d.%d lie derlenmiş, GTK+ %d.%d.%d ile bağlantılıdır."
+
+#: ../src/xfdesktop-application.c:813
+#, c-format
+msgid "Build options:\n"
+msgstr "Oluşturma seçenekleri:\n"
+
+#: ../src/xfdesktop-application.c:814
+#, c-format
+msgid "    Desktop Menu:        %s\n"
+msgstr "    Masaüstü Menüsü:        %s\n"
+
+#: ../src/xfdesktop-application.c:816 ../src/xfdesktop-application.c:823
+#: ../src/xfdesktop-application.c:830
+msgid "enabled"
+msgstr "etkin"
+
+#: ../src/xfdesktop-application.c:818 ../src/xfdesktop-application.c:825
+#: ../src/xfdesktop-application.c:832
+msgid "disabled"
+msgstr "kapalı"
+
+#: ../src/xfdesktop-application.c:821
+#, c-format
+msgid "    Desktop Icons:       %s\n"
+msgstr "    Masaüstü Simgeleri:       %s\n"
+
+#: ../src/xfdesktop-application.c:828
+#, c-format
+msgid "    Desktop File Icons:  %s\n"
+msgstr "    Masaüstü Dosya Simgeleri:  %s\n"
 
 #: ../src/xfdesktop-file-icon-manager.c:578
 #: ../src/xfdesktop-file-icon-manager.c:595
