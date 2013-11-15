@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-14 06:31+0100\n"
-"PO-Revision-Date: 2013-11-14 22:26+0000\n"
+"POT-Creation-Date: 2013-11-15 00:31+0100\n"
+"PO-Revision-Date: 2013-11-15 22:42+0000\n"
 "Last-Translator: FredN <fredrik@nyqvist.biz>\n"
 "Language-Team: Swedish (http://www.transifex.com/projects/p/xfce/language/sv/)\n"
 "MIME-Version: 1.0\n"
@@ -182,7 +182,7 @@ msgstr "_Mapp:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
 msgid "Choose the folder to select wallpapers from"
-msgstr "Välj en mapp att hämta bakgrundsbilder från"
+msgstr "Välj en katalog att hämta bakgrundsbilder från"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
 msgid "St_yle:"
@@ -247,7 +247,7 @@ msgstr "Välj andra färgen"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
 msgid "Apply to all _workspaces"
-msgstr "Verkställ för all _arbetsytor"
+msgstr "Verkställ för alla _arbetsytor"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 msgid "Change the _background "
@@ -256,11 +256,11 @@ msgstr "Byt bakgrundsbilden"
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
 msgid ""
 "Automatically select a different background from the current directory."
-msgstr "Välj automatiskt en annan skrivbordsbakgrund från den nuvarande katalogen."
+msgstr "Välj automatiskt en annan bakgrundsbild från den nuvarande katalogen."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid "Specify how often the background will change"
-msgstr "Ange hur ofta skrivbordsbakgrunden ska ändras"
+msgstr "Ange hur ofta bakgrundsbilden ska ändras"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "in seconds:"
@@ -292,7 +292,7 @@ msgstr "kronologiskt"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
 msgid "Amount of time before a different background is selected."
-msgstr "Tid innan en annan bakgrund är vald."
+msgstr "Tid innan en annan bakgrundsbild är vald."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
 msgid "_Random Order"
@@ -511,6 +511,79 @@ msgstr "_Ta bort arbetsyta %d"
 msgid "_Remove Workspace '%s'"
 msgstr "_Ta bort arbetsytan \"%s\""
 
+#: ../src/xfdesktop-application.c:773
+msgid "Display version information"
+msgstr "Visa versionsinformation"
+
+#: ../src/xfdesktop-application.c:774
+msgid "Reload all settings"
+msgstr "Läs om alla inställningar"
+
+#: ../src/xfdesktop-application.c:775
+msgid "Pop up the menu (at the current mouse position)"
+msgstr "Öppna menyn (vid muspekarens position)"
+
+#: ../src/xfdesktop-application.c:776
+msgid "Pop up the window list (at the current mouse position)"
+msgstr "Öppna fönsterlistan (vid muspekarens position)"
+
+#: ../src/xfdesktop-application.c:778
+msgid "Automatically arrange all the icons on the desktop"
+msgstr "Ordna alla skrivbordsikoner automatiskt"
+
+#: ../src/xfdesktop-application.c:780
+msgid "Do not wait for a window manager on startup"
+msgstr "Vänta inte på att en fönsterhanterare skall starta"
+
+#: ../src/xfdesktop-application.c:781
+msgid "Cause xfdesktop to quit"
+msgstr "Gör så att xfdesktop avslutas"
+
+#: ../src/xfdesktop-application.c:796
+#, c-format
+msgid "Failed to parse arguments: %s\n"
+msgstr "Misslyckades med att tolka argument: %s\n"
+
+#: ../src/xfdesktop-application.c:807
+#, c-format
+msgid "This is %s version %s, running on Xfce %s.\n"
+msgstr "Detta är %s version %s, som körs i Xfce %s.\n"
+
+#: ../src/xfdesktop-application.c:809
+#, c-format
+msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
+msgstr "Byggt med GTK+ %d.%d.%d, länkat med GTK+ %d.%d,%d"
+
+#: ../src/xfdesktop-application.c:813
+#, c-format
+msgid "Build options:\n"
+msgstr "Kompileringsflaggor:\n"
+
+#: ../src/xfdesktop-application.c:814
+#, c-format
+msgid "    Desktop Menu:        %s\n"
+msgstr "Skrivbordsmeny: %s\n"
+
+#: ../src/xfdesktop-application.c:816 ../src/xfdesktop-application.c:823
+#: ../src/xfdesktop-application.c:830
+msgid "enabled"
+msgstr "aktiverad"
+
+#: ../src/xfdesktop-application.c:818 ../src/xfdesktop-application.c:825
+#: ../src/xfdesktop-application.c:832
+msgid "disabled"
+msgstr "inaktiverad"
+
+#: ../src/xfdesktop-application.c:821
+#, c-format
+msgid "    Desktop Icons:       %s\n"
+msgstr "Skrivbordsikoner: %s\n"
+
+#: ../src/xfdesktop-application.c:828
+#, c-format
+msgid "    Desktop File Icons:  %s\n"
+msgstr "Skrivbordsikoner för filer: %s\n"
+
 #: ../src/xfdesktop-file-icon-manager.c:578
 #: ../src/xfdesktop-file-icon-manager.c:595
 #, c-format
@@ -621,7 +694,7 @@ msgstr "Skapa _URL-länk..."
 #. create folder item
 #: ../src/xfdesktop-file-icon-manager.c:1462
 msgid "Create _Folder..."
-msgstr "Skapa _mapp..."
+msgstr "Skapa _katalog..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1477
 msgid "Create From _Template"
@@ -712,7 +785,7 @@ msgstr "%x kl %X"
 #. the file_time is invalid
 #: ../src/xfdesktop-file-utils.c:162
 msgid "Unknown"
-msgstr "Okänt"
+msgstr "Okänd"
 
 #: ../src/xfdesktop-file-utils.c:658
 msgid "The folder could not be opened"
@@ -823,7 +896,7 @@ msgstr "Skriver data till enheten"
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be"
 " removed. Please do not remove the media or disconnect the drive"
-msgstr "Misslyckades med att köra \"%s\""
+msgstr "Det finns data som behöver skrivas till enheten \"%s\" innan den kan kopplas från. Koppla inte loss detta media eller enhet från systemet än"
 
 #: ../src/xfdesktop-notify.c:221
 msgid "Unmount Finished"
