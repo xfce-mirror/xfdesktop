@@ -262,9 +262,6 @@ session_die(gpointer user_data)
     /* Cancel the wait for wm check if it's still running */
     g_cancellable_cancel(app->cancel);
 
-    /* unhook our session quit function */
-    g_signal_handlers_disconnect_by_func(app->sm_client, session_die, app);
-
     for(main_level = gtk_main_level(); main_level > 0; --main_level)
         gtk_main_quit();
 
@@ -356,7 +353,10 @@ reload_idle_cb(gpointer data)
 
     TRACE("entering");
 
-    g_return_if_fail(app->desktops);
+    /* If xfdesktop never started there's nothing to reload, xfdesktop will
+     * now startup */
+    if(!app->desktops)
+        return FALSE;
 
     /* reload all the desktops */
     for(i = 0; i < app->nscreens; ++i) {
@@ -434,7 +434,6 @@ xfdesktop_application_get_current_screen_number(XfdesktopApplication *app)
     screen_num = gdk_screen_get_number(screen);
 
     if(screen_num >= app->nscreens) {
-        g_printerr("screen_num >= app->nscreens");
         return -1;
     }
 
@@ -833,8 +832,6 @@ xfdesktop_application_local_command_line(GApplication *g_application,
 #endif
                 );
 
-        /* free our memory and exit */
-        g_object_unref(g_application);
         *exit_status = 0;
         return TRUE;
     }
