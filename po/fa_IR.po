@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-14 06:31+0100\n"
-"PO-Revision-Date: 2013-11-14 11:33+0000\n"
+"POT-Creation-Date: 2013-11-15 00:31+0100\n"
+"PO-Revision-Date: 2013-11-15 13:58+0000\n"
 "Last-Translator: VAHID216 <vahidnameni@yahoo.com>\n"
 "Language-Team: Persian (Iran) (http://www.transifex.com/projects/p/xfce/language/fa_IR/)\n"
 "MIME-Version: 1.0\n"
@@ -508,6 +508,79 @@ msgstr "حذف فضا کاری %d"
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "حذف فضا کاری  '%s'"
+
+#: ../src/xfdesktop-application.c:773
+msgid "Display version information"
+msgstr "مایش اطلاعات نسخه"
+
+#: ../src/xfdesktop-application.c:774
+msgid "Reload all settings"
+msgstr "بارگذاری مجدد"
+
+#: ../src/xfdesktop-application.c:775
+msgid "Pop up the menu (at the current mouse position)"
+msgstr "فهرست پنجره بازشونده (در موقعیت کنونی موس)"
+
+#: ../src/xfdesktop-application.c:776
+msgid "Pop up the window list (at the current mouse position)"
+msgstr "نمایش لیست پنجره در پنجره بازشونده(در موقعیت کنونی موس)"
+
+#: ../src/xfdesktop-application.c:778
+msgid "Automatically arrange all the icons on the desktop"
+msgstr "مرتب سازی تمامی نماد ها در میزکار به صورت خودکار"
+
+#: ../src/xfdesktop-application.c:780
+msgid "Do not wait for a window manager on startup"
+msgstr "در زمان راه اندازی منتظر مدیر پنجره نمان"
+
+#: ../src/xfdesktop-application.c:781
+msgid "Cause xfdesktop to quit"
+msgstr "علت خروج از xfdesktop"
+
+#: ../src/xfdesktop-application.c:796
+#, c-format
+msgid "Failed to parse arguments: %s\n"
+msgstr "تجزیه نشانوند با شکست روبرو شد: %s\n"
+
+#: ../src/xfdesktop-application.c:807
+#, c-format
+msgid "This is %s version %s, running on Xfce %s.\n"
+msgstr "%s نسخه %s است که در Xfce %s در حال اجرا است.\n"
+
+#: ../src/xfdesktop-application.c:809
+#, c-format
+msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
+msgstr "ساخته شده با GTK+ %d.%d.%d متصل شده است با  GTK+ %d.%d.%d."
+
+#: ../src/xfdesktop-application.c:813
+#, c-format
+msgid "Build options:\n"
+msgstr "تنظیمات ساخت: \n"
+
+#: ../src/xfdesktop-application.c:814
+#, c-format
+msgid "    Desktop Menu:        %s\n"
+msgstr "فهرست میزکار:  %s\n"
+
+#: ../src/xfdesktop-application.c:816 ../src/xfdesktop-application.c:823
+#: ../src/xfdesktop-application.c:830
+msgid "enabled"
+msgstr "فعال شده"
+
+#: ../src/xfdesktop-application.c:818 ../src/xfdesktop-application.c:825
+#: ../src/xfdesktop-application.c:832
+msgid "disabled"
+msgstr "غیرفعال شده"
+
+#: ../src/xfdesktop-application.c:821
+#, c-format
+msgid "    Desktop Icons:       %s\n"
+msgstr "    نماد های میزکار: %s\n"
+
+#: ../src/xfdesktop-application.c:828
+#, c-format
+msgid "    Desktop File Icons:  %s\n"
+msgstr "    نماد فایل های میزکار:  %s\n"
 
 #: ../src/xfdesktop-file-icon-manager.c:578
 #: ../src/xfdesktop-file-icon-manager.c:595
