@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-03 12:31+0100\n"
-"PO-Revision-Date: 2013-11-10 11:40+0000\n"
+"POT-Creation-Date: 2013-11-15 00:31+0100\n"
+"PO-Revision-Date: 2013-11-15 09:20+0000\n"
 "Last-Translator: salepetronije <salepetronije@gmail.com>\n"
 "Language-Team: Serbian (http://www.transifex.com/projects/p/xfce/language/sr/)\n"
 "MIME-Version: 1.0\n"
@@ -19,37 +19,37 @@ msgstr ""
 "Language: sr\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: ../settings/main.c:369 ../src/xfdesktop-special-file-icon.c:295
+#: ../settings/main.c:371 ../src/xfdesktop-special-file-icon.c:295
 #: ../src/xfdesktop-special-file-icon.c:479
 msgid "Home"
 msgstr "Лична фасцикла"
 
-#: ../settings/main.c:371
+#: ../settings/main.c:373
 msgid "Filesystem"
 msgstr "Систем датотека"
 
-#: ../settings/main.c:373
+#: ../settings/main.c:375
 msgid "Trash"
 msgstr "Корпа"
 
-#: ../settings/main.c:375
+#: ../settings/main.c:377
 msgid "Removable Devices"
 msgstr "Уклоњиви уређаји"
 
-#: ../settings/main.c:377
+#: ../settings/main.c:379
 msgid "Network Shares"
 msgstr "Мрежна дељења"
 
-#: ../settings/main.c:379
+#: ../settings/main.c:381
 msgid "Disks and Drives"
 msgstr "Преносиви уређаји и спољни дискови"
 
-#: ../settings/main.c:381
+#: ../settings/main.c:383
 msgid "Other Items"
 msgstr "Остале ставке"
 
 #. Display the file name, file type, and file size in the tooltip.
-#: ../settings/main.c:494
+#: ../settings/main.c:496
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -57,81 +57,97 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nВрста: %s\nВеличина: %s"
 
-#: ../settings/main.c:678
+#: ../settings/main.c:680
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "Позадинска слика за екран %d (%s)"
 
-#: ../settings/main.c:681
+#: ../settings/main.c:683
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "Позадинска слика за екран %d"
 
-#: ../settings/main.c:687
+#: ../settings/main.c:689
+msgid ""
+"You are using more than one display, move this dialog to the display you "
+"want to edit the settings for."
+msgstr "Користите више екрана, зато преместите ово прозорче на екран којем желите уредити поставке."
+
+#: ../settings/main.c:697
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "Позадинска слика %s за екран %d (%s)"
 
-#: ../settings/main.c:691
+#: ../settings/main.c:701
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "Позадинска слика за %s на екрану %d"
 
+#: ../settings/main.c:708
+msgid ""
+"You are using more than one display, move this dialog to the display and "
+"workspace you want to edit the settings for."
+msgstr "Користите више екрана, зато преместите ово прозорче на екран и радни простор којем желите уредити поставке."
+
 #. Single monitor and single workspace
-#: ../settings/main.c:698
+#: ../settings/main.c:716
 #, c-format
 msgid "Wallpaper for my desktop"
 msgstr "Позадинска слика за моју радну површ"
 
 #. Single monitor and per workspace wallpaper
-#: ../settings/main.c:701
+#: ../settings/main.c:722
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "Позадинска слика за %s"
 
-#: ../settings/main.c:1101
+#: ../settings/main.c:727
+msgid "Move this dialog to the workspace you want to edit the settings for."
+msgstr "Преместите ово прозорче на радни простор којем желите да уредите поставке."
+
+#: ../settings/main.c:1130
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "Одабир слика није доступан ако је начин приказа подешен на „Ништа“."
 
-#: ../settings/main.c:1453
+#: ../settings/main.c:1482
 msgid "Spanning screens"
 msgstr "Обухватање екрана"
 
-#: ../settings/main.c:1747
+#: ../settings/main.c:1787
 msgid "Image files"
 msgstr "Датотеке слика"
 
-#: ../settings/main.c:1899
+#: ../settings/main.c:1939
 msgid "Settings manager socket"
 msgstr "Управник подешавања утичнице"
 
-#: ../settings/main.c:1899
+#: ../settings/main.c:1939
 msgid "SOCKET ID"
 msgstr "ЛБ УТИЧНИЦЕ"
 
-#: ../settings/main.c:1900
+#: ../settings/main.c:1940
 msgid "Version information"
 msgstr "Подаци о издању"
 
-#: ../settings/main.c:1927
+#: ../settings/main.c:1967
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Упишите „%s --help“ за коришћење."
 
-#: ../settings/main.c:1939
+#: ../settings/main.c:1979
 msgid "The Xfce development team. All rights reserved."
 msgstr "ИксФЦЕ развојна дружина. Сва права су задржана."
 
-#: ../settings/main.c:1940
+#: ../settings/main.c:1980
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Молим пријавите грешку на <%s>."
 
-#: ../settings/main.c:1947
+#: ../settings/main.c:1987
 msgid "Desktop Settings"
 msgstr "Поставке радне површи"
 
-#: ../settings/main.c:1949
+#: ../settings/main.c:1989
 msgid "Unable to contact settings server"
 msgstr "Нисам успео да покренем служитеља поставки"
 
@@ -437,78 +453,6 @@ msgstr "<b>Задате иконице</b>"
 msgid "_Icons"
 msgstr "_Иконице"
 
-#: ../src/main.c:241
-msgid "Display version information"
-msgstr "Прикажи податке о издању"
-
-#: ../src/main.c:242
-msgid "Reload all settings, refresh image list"
-msgstr "Поново учитај све поставке, освежи списак слика"
-
-#: ../src/main.c:243
-msgid "Pop up the menu (at the current mouse position)"
-msgstr "Искачући изборник (на тренутном положају показивача миша)"
-
-#: ../src/main.c:244
-msgid "Pop up the window list (at the current mouse position)"
-msgstr "Искачући изборник списка прозора (на тренутном положају показивача миша)"
-
-#: ../src/main.c:246
-msgid "Automatically arrange all the icons on the desktop"
-msgstr "Самостално уреди положај свих икона на радној површи"
-
-#: ../src/main.c:248
-msgid "Cause xfdesktop to quit"
-msgstr "Узрокује искључење иксф радне површи"
-
-#: ../src/main.c:271
-#, c-format
-msgid "Failed to parse arguments: %s\n"
-msgstr "Нисам успео да обрадим аргументе: %s\n"
-
-#: ../src/main.c:279
-#, c-format
-msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr "Ово је %s издање %s, на ИксФЦЕ-у %s.\n"
-
-#: ../src/main.c:281
-#, c-format
-msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr "Изграђено наГТК+ %d.%d.%d, с везама ка ГТК+ %d.%d.%d."
-
-#: ../src/main.c:285
-#, c-format
-msgid "Build options:\n"
-msgstr "Могућности изградње:\n"
-
-#: ../src/main.c:286
-#, c-format
-msgid "    Desktop Menu:        %s\n"
-msgstr "    Изборник радне површи:        %s\n"
-
-#: ../src/main.c:288 ../src/main.c:295 ../src/main.c:302
-msgid "enabled"
-msgstr "омогућен"
-
-#: ../src/main.c:290 ../src/main.c:297 ../src/main.c:304
-msgid "disabled"
-msgstr "онемогућен"
-
-#: ../src/main.c:293
-#, c-format
-msgid "    Desktop Icons:       %s\n"
-msgstr "    Иконице површи:       %s\n"
-
-#: ../src/main.c:300
-#, c-format
-msgid "    Desktop File Icons:  %s\n"
-msgstr "    Иконице датотека површи:  %s\n"
-
-#: ../src/main.c:333
-#, c-format
-msgid "%s is not running.\n"
-msgstr "%s није покренут.\n"
-
 #: ../src/menu.c:106
 msgid "_Applications"
 msgstr "_Програми"
@@ -565,6 +509,79 @@ msgstr "_Уклони радну површ %d"
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "_Уклони радну површ „%s“"
+
+#: ../src/xfdesktop-application.c:773
+msgid "Display version information"
+msgstr "Прикажи податке о издању"
+
+#: ../src/xfdesktop-application.c:774
+msgid "Reload all settings"
+msgstr "Поново учитај поставке"
+
+#: ../src/xfdesktop-application.c:775
+msgid "Pop up the menu (at the current mouse position)"
+msgstr "Прикажи изборник (на положају миша)"
+
+#: ../src/xfdesktop-application.c:776
+msgid "Pop up the window list (at the current mouse position)"
+msgstr "Прикажи списак прозора (на положају миша)"
+
+#: ../src/xfdesktop-application.c:778
+msgid "Automatically arrange all the icons on the desktop"
+msgstr "Самостално среди све иконице на радној површи"
+
+#: ../src/xfdesktop-application.c:780
+msgid "Do not wait for a window manager on startup"
+msgstr "Не чекај управника прозора при пријави"
+
+#: ../src/xfdesktop-application.c:781
+msgid "Cause xfdesktop to quit"
+msgstr "Узрокује напуштање програма „xfdesktop“"
+
+#: ../src/xfdesktop-application.c:796
+#, c-format
+msgid "Failed to parse arguments: %s\n"
+msgstr "Нисам успео да расчланим аргумент:%s\n"
+
+#: ../src/xfdesktop-application.c:807
+#, c-format
+msgid "This is %s version %s, running on Xfce %s.\n"
+msgstr "Ово је %s издања %s , у погону на ИксФЦЕ-у %s.\n"
+
+#: ../src/xfdesktop-application.c:809
+#, c-format
+msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
+msgstr "Изграђено је уз помоћ ГТК+ %d.%d.%d, са везом на ГТК+ %d.%d.%d."
+
+#: ../src/xfdesktop-application.c:813
+#, c-format
+msgid "Build options:\n"
+msgstr "Могућности градње:\n"
+
+#: ../src/xfdesktop-application.c:814
+#, c-format
+msgid "    Desktop Menu:        %s\n"
+msgstr "    Изборник радне површи:        %s\n"
+
+#: ../src/xfdesktop-application.c:816 ../src/xfdesktop-application.c:823
+#: ../src/xfdesktop-application.c:830
+msgid "enabled"
+msgstr "омогућен"
+
+#: ../src/xfdesktop-application.c:818 ../src/xfdesktop-application.c:825
+#: ../src/xfdesktop-application.c:832
+msgid "disabled"
+msgstr "онемогућен"
+
+#: ../src/xfdesktop-application.c:821
+#, c-format
+msgid "    Desktop Icons:       %s\n"
+msgstr "Иконице радне површи:       %s\n"
+
+#: ../src/xfdesktop-application.c:828
+#, c-format
+msgid "    Desktop File Icons:  %s\n"
+msgstr "Иконице датотека радне површи:  %s\n"
 
 #: ../src/xfdesktop-file-icon-manager.c:578
 #: ../src/xfdesktop-file-icon-manager.c:595
@@ -720,23 +737,23 @@ msgstr "_Поставке радне површи..."
 msgid "P_roperties..."
 msgstr "О_собине..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2697
+#: ../src/xfdesktop-file-icon-manager.c:2747
 msgid "Load Error"
 msgstr "Грешка учитавања"
 
-#: ../src/xfdesktop-file-icon-manager.c:2699
+#: ../src/xfdesktop-file-icon-manager.c:2749
 msgid "Failed to load the desktop folder"
 msgstr "Нисам успео да учитам фасциклу радне површи"
 
-#: ../src/xfdesktop-file-icon-manager.c:3239
+#: ../src/xfdesktop-file-icon-manager.c:3289
 msgid "Copy _Here"
 msgstr "Умножи _овде"
 
-#: ../src/xfdesktop-file-icon-manager.c:3239
+#: ../src/xfdesktop-file-icon-manager.c:3289
 msgid "_Move Here"
 msgstr "_Премести овде"
 
-#: ../src/xfdesktop-file-icon-manager.c:3239
+#: ../src/xfdesktop-file-icon-manager.c:3289
 msgid "_Link Here"
 msgstr "_Повежи овде"
 
@@ -904,7 +921,7 @@ msgstr "Избацујем уређај „%s“. То може потрајат
 msgid "Eject Finished"
 msgstr "Избацивање је извршено"
 
-#: ../src/xfdesktop-regular-file-icon.c:601
+#: ../src/xfdesktop-regular-file-icon.c:606
 #, c-format
 msgid ""
 "Type: %s\n"
