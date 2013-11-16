@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-14 06:31+0100\n"
-"PO-Revision-Date: 2013-11-14 22:19+0000\n"
+"POT-Creation-Date: 2013-11-15 00:31+0100\n"
+"PO-Revision-Date: 2013-11-16 09:19+0000\n"
 "Last-Translator: Yarema aka Knedlyk <yupadmin@gmail.com>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/projects/p/xfce/language/uk/)\n"
 "MIME-Version: 1.0\n"
@@ -510,6 +510,79 @@ msgstr "В_идалити робочу область %d"
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "В_идалити робочу область \"%s\""
+
+#: ../src/xfdesktop-application.c:773
+msgid "Display version information"
+msgstr "Відобразити інформація про версію"
+
+#: ../src/xfdesktop-application.c:774
+msgid "Reload all settings"
+msgstr "Перезавантажити усі параметри"
+
+#: ../src/xfdesktop-application.c:775
+msgid "Pop up the menu (at the current mouse position)"
+msgstr "Показати меню (у місці, де знаходиться курсор миші)"
+
+#: ../src/xfdesktop-application.c:776
+msgid "Pop up the window list (at the current mouse position)"
+msgstr "Показати перелік вікон (у місці, де знаходиться курсор миші)"
+
+#: ../src/xfdesktop-application.c:778
+msgid "Automatically arrange all the icons on the desktop"
+msgstr "Автоматично розмістити всі значки на робочому столі"
+
+#: ../src/xfdesktop-application.c:780
+msgid "Do not wait for a window manager on startup"
+msgstr "Не очікувати на запуск менеджера вікон"
+
+#: ../src/xfdesktop-application.c:781
+msgid "Cause xfdesktop to quit"
+msgstr "Вийти з xfdesktop"
+
+#: ../src/xfdesktop-application.c:796
+#, c-format
+msgid "Failed to parse arguments: %s\n"
+msgstr "Не вдається опрацювати аргументи: %s\n"
+
+#: ../src/xfdesktop-application.c:807
+#, c-format
+msgid "This is %s version %s, running on Xfce %s.\n"
+msgstr "Це %s версії %s, що виконується у Xfce %s.\n"
+
+#: ../src/xfdesktop-application.c:809
+#, c-format
+msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
+msgstr "Зібрано з GTK+ %d.%d.%d, зв'язано з GTK+ %d.%d.%d."
+
+#: ../src/xfdesktop-application.c:813
+#, c-format
+msgid "Build options:\n"
+msgstr "Параметри збирання:\n"
+
+#: ../src/xfdesktop-application.c:814
+#, c-format
+msgid "    Desktop Menu:        %s\n"
+msgstr "    Меню робочого столу:        %s\n"
+
+#: ../src/xfdesktop-application.c:816 ../src/xfdesktop-application.c:823
+#: ../src/xfdesktop-application.c:830
+msgid "enabled"
+msgstr "увімкнено"
+
+#: ../src/xfdesktop-application.c:818 ../src/xfdesktop-application.c:825
+#: ../src/xfdesktop-application.c:832
+msgid "disabled"
+msgstr "вимкнено"
+
+#: ../src/xfdesktop-application.c:821
+#, c-format
+msgid "    Desktop Icons:       %s\n"
+msgstr "    Значки на робочому столі:       %s\n"
+
+#: ../src/xfdesktop-application.c:828
+#, c-format
+msgid "    Desktop File Icons:  %s\n"
+msgstr "    Значки файлів на робочому столі: %s\n"
 
 #: ../src/xfdesktop-file-icon-manager.c:578
 #: ../src/xfdesktop-file-icon-manager.c:595
