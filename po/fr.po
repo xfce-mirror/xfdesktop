@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-03 12:31+0100\n"
-"PO-Revision-Date: 2013-11-05 07:08+0000\n"
+"POT-Creation-Date: 2013-11-15 00:31+0100\n"
+"PO-Revision-Date: 2013-11-16 18:27+0000\n"
 "Last-Translator: jc1 <jc1.quebecos@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/xfce/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -22,37 +22,37 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: ../settings/main.c:369 ../src/xfdesktop-special-file-icon.c:295
+#: ../settings/main.c:371 ../src/xfdesktop-special-file-icon.c:295
 #: ../src/xfdesktop-special-file-icon.c:479
 msgid "Home"
 msgstr "Répertoire personnel"
 
-#: ../settings/main.c:371
+#: ../settings/main.c:373
 msgid "Filesystem"
 msgstr "Système de fichiers"
 
-#: ../settings/main.c:373
+#: ../settings/main.c:375
 msgid "Trash"
 msgstr "Corbeille"
 
-#: ../settings/main.c:375
+#: ../settings/main.c:377
 msgid "Removable Devices"
 msgstr "Périphériques amovibles"
 
-#: ../settings/main.c:377
+#: ../settings/main.c:379
 msgid "Network Shares"
 msgstr "Partages réseau"
 
-#: ../settings/main.c:379
+#: ../settings/main.c:381
 msgid "Disks and Drives"
 msgstr "Disques durs et lecteurs"
 
-#: ../settings/main.c:381
+#: ../settings/main.c:383
 msgid "Other Items"
 msgstr "Autres éléments"
 
 #. Display the file name, file type, and file size in the tooltip.
-#: ../settings/main.c:494
+#: ../settings/main.c:496
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -60,81 +60,97 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nType : %s\nTaille : %s"
 
-#: ../settings/main.c:678
+#: ../settings/main.c:680
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "Fond d'écran pour le moniteur %d (% s)"
 
-#: ../settings/main.c:681
+#: ../settings/main.c:683
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "Fond d'écran pour le moniteur %d "
 
-#: ../settings/main.c:687
+#: ../settings/main.c:689
+msgid ""
+"You are using more than one display, move this dialog to the display you "
+"want to edit the settings for."
+msgstr "Vous utilisez plusieurs écrans, déplacer cette boite de dialogue pour l'affichage que vous souhaitez modifier les paramètres."
+
+#: ../settings/main.c:697
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "Fond d'écran pour %s sur le moniteur %d (%s)"
 
-#: ../settings/main.c:691
+#: ../settings/main.c:701
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "Fond d'écran pour %s sur le moniteur %d"
 
+#: ../settings/main.c:708
+msgid ""
+"You are using more than one display, move this dialog to the display and "
+"workspace you want to edit the settings for."
+msgstr "Vous utilisez plusieurs écrans, déplacer cette boite de dialogue vers l'écran et l'espace de travail que vous souhaitez modifier les paramètres."
+
 #. Single monitor and single workspace
-#: ../settings/main.c:698
+#: ../settings/main.c:716
 #, c-format
 msgid "Wallpaper for my desktop"
 msgstr "Fond d'écran pour mon bureau"
 
 #. Single monitor and per workspace wallpaper
-#: ../settings/main.c:701
+#: ../settings/main.c:722
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "Fond d'écran pour %s"
 
-#: ../settings/main.c:1101
+#: ../settings/main.c:727
+msgid "Move this dialog to the workspace you want to edit the settings for."
+msgstr "Déplacer cette boite de dialogue vers l'espace de travail que vous souhaitez modifier les paramètres."
+
+#: ../settings/main.c:1130
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "La sélection d'image est indisponible tant que le style d'image est réglé sur Aucune."
 
-#: ../settings/main.c:1453
+#: ../settings/main.c:1482
 msgid "Spanning screens"
 msgstr "Écrans couvrant"
 
-#: ../settings/main.c:1747
+#: ../settings/main.c:1787
 msgid "Image files"
 msgstr "Fichiers images"
 
-#: ../settings/main.c:1899
+#: ../settings/main.c:1939
 msgid "Settings manager socket"
 msgstr "Paramètres du gestionnaire de socket"
 
-#: ../settings/main.c:1899
+#: ../settings/main.c:1939
 msgid "SOCKET ID"
 msgstr "ID SOCKET"
 
-#: ../settings/main.c:1900
+#: ../settings/main.c:1940
 msgid "Version information"
 msgstr "Informations sur la version"
 
-#: ../settings/main.c:1927
+#: ../settings/main.c:1967
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Saisissez '%s --help' pour afficher les options."
 
-#: ../settings/main.c:1939
+#: ../settings/main.c:1979
 msgid "The Xfce development team. All rights reserved."
 msgstr "L'équipe de développement de Xfce. Tous droits réservés."
 
-#: ../settings/main.c:1940
+#: ../settings/main.c:1980
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "S'il vous plait rapporter les bogues à <%s>."
 
-#: ../settings/main.c:1947
+#: ../settings/main.c:1987
 msgid "Desktop Settings"
 msgstr "Paramètres du bureau"
 
-#: ../settings/main.c:1949
+#: ../settings/main.c:1989
 msgid "Unable to contact settings server"
 msgstr "Impossible de contacter le serveur de paramètres"
 
@@ -440,78 +456,6 @@ msgstr "<b>Icônes par défaut</b>"
 msgid "_Icons"
 msgstr "_Icônes"
 
-#: ../src/main.c:241
-msgid "Display version information"
-msgstr "Afficher les informations de version"
-
-#: ../src/main.c:242
-msgid "Reload all settings, refresh image list"
-msgstr "Recharger tous le paramètres, rafraîchir la liste d'images"
-
-#: ../src/main.c:243
-msgid "Pop up the menu (at the current mouse position)"
-msgstr "Afficher le menu (à la position actuelle de la souris)"
-
-#: ../src/main.c:244
-msgid "Pop up the window list (at the current mouse position)"
-msgstr "Afficher la liste des fenêtres (à la position actuelle de la souris)"
-
-#: ../src/main.c:246
-msgid "Automatically arrange all the icons on the desktop"
-msgstr "Ranger automatiquement les icônes sur le bureau "
-
-#: ../src/main.c:248
-msgid "Cause xfdesktop to quit"
-msgstr "Cause xfdesktop pour quitter"
-
-#: ../src/main.c:271
-#, c-format
-msgid "Failed to parse arguments: %s\n"
-msgstr "Impossible d'analyser les arguments : %s\n"
-
-#: ../src/main.c:279
-#, c-format
-msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr "Ceci est %s version %s, sur Xfce %s.\n"
-
-#: ../src/main.c:281
-#, c-format
-msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr "Compilé avec GTK+ %d.%d.%d, lié à GTK+ %d.%d.%d."
-
-#: ../src/main.c:285
-#, c-format
-msgid "Build options:\n"
-msgstr "Options de compilation :\n"
-
-#: ../src/main.c:286
-#, c-format
-msgid "    Desktop Menu:        %s\n"
-msgstr "    Menu du bureau :        %s\n"
-
-#: ../src/main.c:288 ../src/main.c:295 ../src/main.c:302
-msgid "enabled"
-msgstr "activé"
-
-#: ../src/main.c:290 ../src/main.c:297 ../src/main.c:304
-msgid "disabled"
-msgstr "désactivé"
-
-#: ../src/main.c:293
-#, c-format
-msgid "    Desktop Icons:       %s\n"
-msgstr "    Icônes du bureau :       %s\n"
-
-#: ../src/main.c:300
-#, c-format
-msgid "    Desktop File Icons:  %s\n"
-msgstr "    Icônes de fichiers du bureau :  %s\n"
-
-#: ../src/main.c:333
-#, c-format
-msgid "%s is not running.\n"
-msgstr "%s n'est pas lancé.\n"
-
 #: ../src/menu.c:106
 msgid "_Applications"
 msgstr "_Applications"
@@ -568,6 +512,79 @@ msgstr "_Supprimer l'espace de travail %d"
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "_Supprimer l'espace de travail « %s »"
+
+#: ../src/xfdesktop-application.c:773
+msgid "Display version information"
+msgstr "Afficher les informations de version"
+
+#: ../src/xfdesktop-application.c:774
+msgid "Reload all settings"
+msgstr "Recharger tous les paramètres"
+
+#: ../src/xfdesktop-application.c:775
+msgid "Pop up the menu (at the current mouse position)"
+msgstr "Faire apparaitre le menu (à la position actuelle de la souris)"
+
+#: ../src/xfdesktop-application.c:776
+msgid "Pop up the window list (at the current mouse position)"
+msgstr "Faire apparaitre la liste des fenêtres (à la position courante de la souris)"
+
+#: ../src/xfdesktop-application.c:778
+msgid "Automatically arrange all the icons on the desktop"
+msgstr "Organiser automatiquement toutes les icônes sur le bureau"
+
+#: ../src/xfdesktop-application.c:780
+msgid "Do not wait for a window manager on startup"
+msgstr "Ne pas attendre un gestionnaire de fenêtres au démarrage"
+
+#: ../src/xfdesktop-application.c:781
+msgid "Cause xfdesktop to quit"
+msgstr "Cause xfdesktop de quitter"
+
+#: ../src/xfdesktop-application.c:796
+#, c-format
+msgid "Failed to parse arguments: %s\n"
+msgstr "Échec de l'analyse des arguments : %s\n"
+
+#: ../src/xfdesktop-application.c:807
+#, c-format
+msgid "This is %s version %s, running on Xfce %s.\n"
+msgstr "Ceci est la version%s %s, fonctionnant sur Xfce %s.\n"
+
+#: ../src/xfdesktop-application.c:809
+#, c-format
+msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
+msgstr "Construit avec GTK+ %d.%d.%d, lié avec GTK+ %d.%d.%d."
+
+#: ../src/xfdesktop-application.c:813
+#, c-format
+msgid "Build options:\n"
+msgstr "Options de construction :\n"
+
+#: ../src/xfdesktop-application.c:814
+#, c-format
+msgid "    Desktop Menu:        %s\n"
+msgstr "    Menu du bureau :        %s\n"
+
+#: ../src/xfdesktop-application.c:816 ../src/xfdesktop-application.c:823
+#: ../src/xfdesktop-application.c:830
+msgid "enabled"
+msgstr "activé"
+
+#: ../src/xfdesktop-application.c:818 ../src/xfdesktop-application.c:825
+#: ../src/xfdesktop-application.c:832
+msgid "disabled"
+msgstr "désactivé"
+
+#: ../src/xfdesktop-application.c:821
+#, c-format
+msgid "    Desktop Icons:       %s\n"
+msgstr "    Icônes du bureau :       %s\n"
+
+#: ../src/xfdesktop-application.c:828
+#, c-format
+msgid "    Desktop File Icons:  %s\n"
+msgstr "   Icônes des fichiers du bureau :  %s\n"
 
 #: ../src/xfdesktop-file-icon-manager.c:578
 #: ../src/xfdesktop-file-icon-manager.c:595
@@ -723,23 +740,23 @@ msgstr "Paramètres du _bureau..."
 msgid "P_roperties..."
 msgstr "_Propriétés..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2697
+#: ../src/xfdesktop-file-icon-manager.c:2747
 msgid "Load Error"
 msgstr "Erreur de chargement"
 
-#: ../src/xfdesktop-file-icon-manager.c:2699
+#: ../src/xfdesktop-file-icon-manager.c:2749
 msgid "Failed to load the desktop folder"
 msgstr "Impossible de charger le répertoire du bureau"
 
-#: ../src/xfdesktop-file-icon-manager.c:3239
+#: ../src/xfdesktop-file-icon-manager.c:3289
 msgid "Copy _Here"
 msgstr "_Copier ici"
 
-#: ../src/xfdesktop-file-icon-manager.c:3239
+#: ../src/xfdesktop-file-icon-manager.c:3289
 msgid "_Move Here"
 msgstr "_Déplacer ici"
 
-#: ../src/xfdesktop-file-icon-manager.c:3239
+#: ../src/xfdesktop-file-icon-manager.c:3289
 msgid "_Link Here"
 msgstr "_Lier ici"
 
@@ -907,7 +924,7 @@ msgstr "Le périphérique « %s » est en cours d'éjection. Cela peut prendre u
 msgid "Eject Finished"
 msgstr "L'éjection est finie"
 
-#: ../src/xfdesktop-regular-file-icon.c:601
+#: ../src/xfdesktop-regular-file-icon.c:606
 #, c-format
 msgid ""
 "Type: %s\n"
