@@ -1,24 +1,24 @@
-# translation of he.po to Hebrew
-# Hebrew translations for xfdesktop package.
-# Copyright (C) 2003-2006 The Xfce development team.
-# This file is distributed under the same license as the xfdesktop package.
-#
-# Dotan Kamber <kamberd@yahoo.com>, 2004, 2006.
-# Jonatan Perry <Jonatan443@walla.co.il>, 2004.
-# Yuval Tanny <tanai@int.gov.il>, 2004, 2006.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Dotan Kamber <kamberd@yahoo.com>, 2004,2006
+# Jonatan Perry <Jonatan443@walla.co.il>, 2004
+# Yuval Tanny <tanai@int.gov.il>, 2004,2006
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop 4.4.0\n"
+"Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-16 17:44+0100\n"
-"PO-Revision-Date: 2006-11-11 21:39+0200\n"
-"Last-Translator: Yuval Tanny <tanai@int.gov.il>\n"
-"Language-Team: Hebrew\n"
-"Language: \n"
+"POT-Creation-Date: 2013-07-02 23:19+0200\n"
+"PO-Revision-Date: 2013-11-19 14:49+0000\n"
+"Last-Translator: Nick <nick@xfce.org>\n"
+"Language-Team: Hebrew (http://www.transifex.com/projects/p/xfce/language/he/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"Language: he\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
 #, c-format
@@ -26,137 +26,134 @@ msgid "Backdrop list file is not valid"
 msgstr "קובץ רשימת הטפטים אינו תקני"
 
 #. no need to escape markup; it's already done for us
-#: ../settings/main.c:162
+#: ../settings/main.c:166
 #, c-format
 msgid ""
 "%s\n"
 "<i>Size: %dx%d</i>"
-msgstr ""
-"%s\n"
-"<i>ממדים: %dx%d</i>"
+msgstr "%s\n<i>ממדים: %dx%d</i>"
 
-#: ../settings/main.c:272 ../src/xfdesktop-special-file-icon.c:247
-#: ../src/xfdesktop-special-file-icon.c:413
+#: ../settings/main.c:299 ../src/xfdesktop-special-file-icon.c:271
+#: ../src/xfdesktop-special-file-icon.c:434
 msgid "Home"
 msgstr "בית"
 
-#: ../settings/main.c:274
+#: ../settings/main.c:301
 msgid "Filesystem"
 msgstr "מערכת קבצים"
 
-#: ../settings/main.c:276
+#: ../settings/main.c:303
 msgid "Trash"
 msgstr "סל מחזור"
 
-#: ../settings/main.c:278
+#: ../settings/main.c:305
 msgid "Removable Devices"
 msgstr "התקנים נשלפים"
 
-#: ../settings/main.c:458
+#: ../settings/main.c:485
 #, c-format
 msgid "Cannot create backdrop list \"%s\""
 msgstr "Cannot create backdrop list \"%s\""
 
-#: ../settings/main.c:462 ../settings/main.c:779
+#: ../settings/main.c:489 ../settings/main.c:875
 msgid "Backdrop List Error"
 msgstr "Backdrop List Error"
 
-#: ../settings/main.c:487
+#: ../settings/main.c:514
 msgid "Create/Load Backdrop List"
 msgstr "Create/Load Backdrop List"
 
-#: ../settings/main.c:511
+#: ../settings/main.c:538
 #, c-format
 msgid ""
 "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
 
-#: ../settings/main.c:516
+#: ../settings/main.c:543
 msgid "Invalid List File"
 msgstr "קובץ רשימה שגוי"
 
-#: ../settings/main.c:519
+#: ../settings/main.c:546
 msgid "Overwriting the file will cause its contents to be lost."
 msgstr "Overwriting the file will cause its contents to be lost."
 
-#: ../settings/main.c:521
+#: ../settings/main.c:548
 msgid "Replace"
 msgstr "החלפה"
 
-#: ../settings/main.c:775
+#: ../settings/main.c:871
 #, c-format
 msgid "Failed to write backdrop list to \"%s\""
 msgstr "Failed to write backdrop list to \"%s\""
 
-#: ../settings/main.c:802
+#: ../settings/main.c:898
 msgid "Add Image File(s)"
 msgstr "הוספת קובץ/י תמונה"
 
-#: ../settings/main.c:811
+#: ../settings/main.c:907
 msgid "Image files"
 msgstr "קבצי תמונה"
 
-#: ../settings/main.c:816
+#: ../settings/main.c:912
 msgid "All files"
 msgstr "כל הקבצים"
 
-#: ../settings/main.c:1248
+#: ../settings/main.c:1376
 #, c-format
 msgid "Screen %d, Monitor %d (%s)"
 msgstr "מסך %d, צג %d (%s)"
 
-#: ../settings/main.c:1252
+#: ../settings/main.c:1380
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "מסך %d, צג %d"
 
-#: ../settings/main.c:1255
+#: ../settings/main.c:1383
 #, c-format
 msgid "Screen %d"
 msgstr "מסך %d"
 
-#: ../settings/main.c:1260
+#: ../settings/main.c:1388
 #, c-format
 msgid "Monitor %d (%s)"
 msgstr "צג %d (%s)"
 
-#: ../settings/main.c:1264
+#: ../settings/main.c:1392
 #, c-format
 msgid "Monitor %d"
 msgstr "צג %d"
 
-#: ../settings/main.c:1477
+#: ../settings/main.c:1651
 msgid "Settings manager socket"
 msgstr "Settings manager socket"
 
-#: ../settings/main.c:1477
+#: ../settings/main.c:1651
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: ../settings/main.c:1478
+#: ../settings/main.c:1652
 msgid "Version information"
 msgstr "פרטי הגרסה"
 
-#: ../settings/main.c:1498
+#: ../settings/main.c:1669
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Type '%s --help' for usage."
 
-#: ../settings/main.c:1510
+#: ../settings/main.c:1681
 msgid "The Xfce development team. All rights reserved."
 msgstr "צוות הפיתוח של Xfce. כל הזכויות שמורות"
 
-#: ../settings/main.c:1511
+#: ../settings/main.c:1682
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "נא לדווח על באגים אל <%s>."
 
-#: ../settings/main.c:1518
+#: ../settings/main.c:1689
 msgid "Desktop Settings"
 msgstr "הגדרות שולחן עבודה"
 
-#: ../settings/main.c:1520
+#: ../settings/main.c:1691
 msgid "Unable to contact settings server"
 msgstr "לא ניתן ליצור קשר עם שרת ההגדרות"
 
@@ -169,368 +166,401 @@ msgid "Set desktop background and menu and icon behaviour"
 msgstr "הגדרת התנהגות הרקע, התפריט והסמלים"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
-msgid "<b>Adjustments</b>"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
-msgid "<b>Colors</b>"
-msgstr "<b>סביבת עבודה %d</b>"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
-#, fuzzy
-msgid "<b>Image</b>"
-msgstr "_מראה"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
-#, fuzzy
-msgid "<b>Images</b>"
-msgstr "<b>סביבת עבודה %d</b>"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
-msgid "Add an image to the list"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
-#: ../settings/xfdesktop-settings-ui.glade.h:6
+#: ../settings/xfdesktop-settings-ui.glade.h:1
 msgid "Auto"
 msgstr "אוטומטי"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
-msgid "Automatically pick a random image from a list file"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
-msgid "B_rightness:"
-msgstr "התאם _בהירות:"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
-#: ../settings/xfdesktop-settings-ui.glade.h:8
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
+#: ../settings/xfdesktop-settings-ui.glade.h:2
 msgid "Centered"
 msgstr "ממורכזת"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
-msgid "Create a new list, or load an existing one"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
-msgid "Don't display an image at all"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
-#: ../settings/xfdesktop-settings-ui.glade.h:12
-#, fuzzy
-msgid "Horizontal gradient"
-msgstr "הדרגתי אופקי"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
-msgid "Image _list"
-msgstr "קבצי תמונה"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
-msgid "Increase or decrease the brightness of the final image"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
-msgid "Increase or decrease the color saturation of the final image"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
-msgid "Remove the selected image(s) from the list"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
-msgid "Sa_turation:"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
-#: ../settings/xfdesktop-settings-ui.glade.h:23
-msgid "Scaled"
-msgstr "מותאמת"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
-msgid "Select First Color"
-msgstr "צבע _ראשון:"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
-msgid "Select Second Color"
-msgstr "צבע _שני:"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
-msgid "Select a single image as the backdrop"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
-#: ../settings/xfdesktop-settings-ui.glade.h:32
-#, fuzzy
-msgid "Solid color"
-msgstr "צבע אחיד"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
-msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
-msgid ""
-"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
-msgid "Specify how the image will be resized to fit the screen"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
-msgid "Specify the style of the color drawn behind the backdrop image"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
-msgid "St_yle:"
-msgstr "סגנון:"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
-#: ../settings/xfdesktop-settings-ui.glade.h:34
-msgid "Stretched"
-msgstr "מתוחה"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
-#: ../settings/xfdesktop-settings-ui.glade.h:35
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
+#: ../settings/xfdesktop-settings-ui.glade.h:3
 msgid "Tiled"
 msgstr "פרושה"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
-#: ../settings/xfdesktop-settings-ui.glade.h:36
-msgid "Transparent"
-msgstr ""
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
+#: ../settings/xfdesktop-settings-ui.glade.h:4
+msgid "Stretched"
+msgstr "מתוחה"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
-#: ../settings/xfdesktop-settings-ui.glade.h:39
-#, fuzzy
-msgid "Vertical gradient"
-msgstr "הדרגתי אנכי"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
+#: ../settings/xfdesktop-settings-ui.glade.h:5
+msgid "Scaled"
+msgstr "מותאמת"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
-#: ../settings/xfdesktop-settings-ui.glade.h:40
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
+#: ../settings/xfdesktop-settings-ui.glade.h:6
 msgid "Zoomed"
 msgstr "בית"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
-msgid "_None"
-msgstr "ללא"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
+#: ../settings/xfdesktop-settings-ui.glade.h:7
+msgid "Solid color"
+msgstr ""
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
+#: ../settings/xfdesktop-settings-ui.glade.h:8
+msgid "Horizontal gradient"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
+#: ../settings/xfdesktop-settings-ui.glade.h:9
+msgid "Vertical gradient"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
+#: ../settings/xfdesktop-settings-ui.glade.h:10
+msgid "Transparent"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
+msgid "Add an image to the list"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
+msgid "Remove the selected image(s) from the list"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
+msgid "Create a new list, or load an existing one"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
+msgid "St_yle:"
+msgstr "סגנון:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
+msgid "Specify how the image will be resized to fit the screen"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
+msgid "<b>Images</b>"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
+msgid "Select a single image as the backdrop"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 msgid "_Single image"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-ui.glade.h:1
-msgid "<b>Appearance</b>"
-msgstr "_מראה"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
+msgid "Automatically pick a random image from a list file"
+msgstr ""
 
-#: ../settings/xfdesktop-settings-ui.glade.h:2
-#, fuzzy
-msgid "<b>Default Icons</b>"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
+msgid "Image _list"
+msgstr "קבצי תמונה"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
+msgid "Don't display an image at all"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
+msgid "_None"
+msgstr "ללא"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
+msgid "<b>Image</b>"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
+msgid "Specify the style of the color drawn behind the backdrop image"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
+msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
+msgid "Select First Color"
+msgstr "צבע _ראשון:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
+msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
+msgid "Select Second Color"
+msgstr "צבע _שני:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
+msgid "<b>Colors</b>"
 msgstr "<b>סביבת עבודה %d</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:3
-msgid "<b>Desktop Menu</b>"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
+msgid "B_rightness:"
+msgstr "התאם _בהירות:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
+msgid "Increase or decrease the brightness of the final image"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-ui.glade.h:4
-#, fuzzy
-msgid "<b>Window List Menu</b>"
-msgstr "רשימת חלונות"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:5
-msgid "Alt"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
+msgid "Sa_turation:"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-ui.glade.h:7
-msgid "B_utton:"
-msgstr "לחצן"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
+msgid "Increase or decrease the color saturation of the final image"
+msgstr ""
 
-#: ../settings/xfdesktop-settings-ui.glade.h:9
-#, fuzzy
-msgid "Control"
-msgstr "תורמים"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
+msgid "<b>Adjustments</b>"
+msgstr ""
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:729
-msgid "Desktop"
-msgstr "שולחן עבודה"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
+msgid "_Change the background (in minutes):"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:36
+msgid ""
+"While in image list mode, select this option to automatically select a "
+"different background from the image list after a set number of minutes."
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:37
+msgid ""
+"Number of minutes before a different background is randomly selected from "
+"the list."
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:38
+msgid "St_retch this background across all monitors."
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:39
+msgid ""
+"When multiple monitors are present, select this option to stretch the "
+"current background over all of them."
+msgstr ""
 
 #: ../settings/xfdesktop-settings-ui.glade.h:11
-msgid "File/launcher icons"
-msgstr "סמלי קובץ/משגר"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:13
-msgid "Icon _size:"
-msgstr "_גודל סמל:"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:14
-msgid "Icon _type:"
-msgstr "_גודל סמל:"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:15
-msgid "Label trans_parency:"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-ui.glade.h:16
 msgid "Left"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-ui.glade.h:17
+#: ../settings/xfdesktop-settings-ui.glade.h:12
 msgid "Middle"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-ui.glade.h:18
-#, fuzzy
-msgid "Minimized application icons"
-msgstr "סמלי יישומים ממוזערים"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:19
-msgid "Mo_difier:"
-msgstr "שונה:"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:20
-msgid "Modi_fier:"
-msgstr "שונה:"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:21
-msgid "None"
-msgstr "ללא"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:22
+#: ../settings/xfdesktop-settings-ui.glade.h:13
 msgid "Right"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-ui.glade.h:24
-#, fuzzy
-msgid "Set desktop background and menu and icon behavior"
-msgstr "הגדרת התנהגות הרקע, התפריט והסמלים"
+#: ../settings/xfdesktop-settings-ui.glade.h:14
+msgid "None"
+msgstr "ללא"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:25
-msgid "Sh_ow application icons in menu"
-msgstr "הראה _סמלים בתפריט"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:26
+#: ../settings/xfdesktop-settings-ui.glade.h:15
 msgid "Shift"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-ui.glade.h:27
-msgid "Show _application icons in menu"
-msgstr "הראה _סמלים בתפריט"
+#: ../settings/xfdesktop-settings-ui.glade.h:16
+msgid "Alt"
+msgstr ""
 
-#: ../settings/xfdesktop-settings-ui.glade.h:28
-msgid "Show _window list menu on desktop middle click"
-msgstr "הצג רשימת _חלונות בלחיצה אמצעית"
+#: ../settings/xfdesktop-settings-ui.glade.h:17
+msgid "Control"
+msgstr ""
 
-#: ../settings/xfdesktop-settings-ui.glade.h:29
+#: ../settings/xfdesktop-settings-ui.glade.h:18
+msgid "Minimized application icons"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:19
+msgid "File/launcher icons"
+msgstr "סמלי קובץ/משגר"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:20 ../src/xfce-desktop.c:795
+msgid "Desktop"
+msgstr "שולחן עבודה"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:21
+msgid "Set desktop background and menu and icon behavior"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:22
+msgid "_Background"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:23
 msgid "Show applications menu on _desktop right click"
 msgstr "הצג _תפריט שולחן עבודה בלחיצה ימנית"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:30
-msgid "Show s_ticky windows only in active workspace"
+#: ../settings/xfdesktop-settings-ui.glade.h:24
+msgid "_Button:"
+msgstr "לחצן"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:25
+msgid "Mo_difier:"
+msgstr "שונה:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:26
+msgid "Show _application icons in menu"
+msgstr "הראה _סמלים בתפריט"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:27
+msgid "_Edit desktop menu"
+msgstr "_ערוך תפריט"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:28
+msgid "<b>Desktop Menu</b>"
 msgstr ""
 
+#: ../settings/xfdesktop-settings-ui.glade.h:29
+msgid "Show _window list menu on desktop middle click"
+msgstr "הצג רשימת _חלונות בלחיצה אמצעית"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:30
+msgid "B_utton:"
+msgstr "לחצן"
+
 #: ../settings/xfdesktop-settings-ui.glade.h:31
+msgid "Modi_fier:"
+msgstr "שונה:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:32
+msgid "Sh_ow application icons in menu"
+msgstr "הראה _סמלים בתפריט"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:33
 msgid "Show workspace _names in list"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-ui.glade.h:33
+#: ../settings/xfdesktop-settings-ui.glade.h:34
+msgid "Use _submenus for the windows in each workspace"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:35
+msgid "Show s_ticky windows only in active workspace"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:36
+msgid "<b>Window List Menu</b>"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:37
+msgid "_Menus"
+msgstr "תפריטים"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:38
+msgid "Icon _type:"
+msgstr "_גודל סמל:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:39
+msgid "Icon _size:"
+msgstr "_גודל סמל:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:40
+msgid "Show t_humbnails"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:41
+msgid ""
+"Select this option to display preview-able files on the desktop as "
+"automatically generated thumbnail icons."
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:42
+msgid "Single _click to activate items"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:43
+msgid "Use custom _font size:"
+msgstr "גודל גופן מותאם _אישית:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:44
+msgid "Label trans_parency:"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:45
 msgid ""
 "Specify the transparency level for the rounded label drawn behind the icon "
 "text"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-ui.glade.h:37
-msgid "Use _submenus for the windows in each workspace"
+#: ../settings/xfdesktop-settings-ui.glade.h:46
+msgid "<b>Appearance</b>"
+msgstr "_מראה"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:47
+msgid "<b>Default Icons</b>"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-ui.glade.h:38
-msgid "Use custom _font size:"
-msgstr "גודל גופן מותאם _אישית:"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:41
-msgid "_Background"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-ui.glade.h:42
-msgid "_Button:"
-msgstr "לחצן"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:43
-msgid "_Edit desktop menu"
-msgstr "_ערוך תפריט"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:44
+#: ../settings/xfdesktop-settings-ui.glade.h:48
 msgid "_Icons"
 msgstr "סמלים"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:45
-msgid "_Menus"
-msgstr "תפריטים"
-
-#: ../src/main.c:238
+#: ../src/main.c:243
 msgid "Display version information"
 msgstr "Display version information"
 
-#: ../src/main.c:239
+#: ../src/main.c:244
 msgid "Reload all settings, refresh image list"
 msgstr "Reload all settings, refresh image list"
 
-#: ../src/main.c:240
+#: ../src/main.c:245
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "Pop up the menu (at the current mouse position)"
 
-#: ../src/main.c:241
+#: ../src/main.c:246
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "Pop up the window list (at the current mouse position)"
 
-#: ../src/main.c:242
+#: ../src/main.c:248
+msgid "Automatically arrange all the icons on the desktop"
+msgstr ""
+
+#: ../src/main.c:250
 msgid "Cause xfdesktop to quit"
 msgstr "Cause xfdesktop to quit"
 
-#: ../src/main.c:262
+#: ../src/main.c:270
 #, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "Failed to parse arguments: %s\n"
 
-#: ../src/main.c:270
+#: ../src/main.c:278
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "זהו %s מגרסה %s, מופעל על Xfce %s.\n"
 
-#: ../src/main.c:272
+#: ../src/main.c:280
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "נבנה עם GTK+ %d.%d/%d, מקושר עם GTK+ %d.%d.%d."
 
-#: ../src/main.c:276
+#: ../src/main.c:284
 #, c-format
 msgid "Build options:\n"
 msgstr "אפשרויות בניה:\n"
 
-#: ../src/main.c:277
+#: ../src/main.c:285
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    תפריט שולחן העבודה:        %s\n"
 
-#: ../src/main.c:279 ../src/main.c:286 ../src/main.c:293
+#: ../src/main.c:287 ../src/main.c:294 ../src/main.c:301
 msgid "enabled"
 msgstr "מופעל"
 
-#: ../src/main.c:281 ../src/main.c:288 ../src/main.c:295
+#: ../src/main.c:289 ../src/main.c:296 ../src/main.c:303
 msgid "disabled"
 msgstr "מבוטל"
 
-#: ../src/main.c:284
+#: ../src/main.c:292
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    סמלי שולחן העבודה:       %s\n"
 
-#: ../src/main.c:291
+#: ../src/main.c:299
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    סמלי קבצי שולחן העבודה:       %s\n"
 
-#: ../src/main.c:322
+#: ../src/main.c:332
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s לא פועל.\n"
@@ -539,202 +569,209 @@ msgstr "%s לא פועל.\n"
 msgid "_Applications"
 msgstr "_יישומים"
 
-#: ../src/windowlist.c:235
+#: ../src/windowlist.c:229
 msgid "Window List"
 msgstr "רשימת חלונות"
 
-#: ../src/windowlist.c:261
+#: ../src/windowlist.c:255
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>סביבת עבודה %d</b>"
 
-#: ../src/windowlist.c:270
+#: ../src/windowlist.c:264
 #, c-format
 msgid "Workspace %d"
 msgstr "משטח העבודה %d"
 
-#: ../src/windowlist.c:272
+#: ../src/windowlist.c:266
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<b>סביבת עבודה %d</b>"
 
-#: ../src/windowlist.c:368 ../src/windowlist.c:371
+#: ../src/windowlist.c:362 ../src/windowlist.c:365
 msgid "_Add Workspace"
 msgstr "_הוסף סביבת עבודה"
 
-#: ../src/windowlist.c:379
+#: ../src/windowlist.c:373
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "_הסר סביבת עבודה %d"
 
-#: ../src/windowlist.c:382
+#: ../src/windowlist.c:376
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "_הסר סביבת עבודה %s"
 
-#: ../src/xfce-desktop.c:1006
+#: ../src/xfce-desktop.c:1084
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "לא ניתן לטעון את התמונה מקובץ רשימת הטפטים \"%s\""
 
-#: ../src/xfce-desktop.c:1008
+#: ../src/xfce-desktop.c:1086
 msgid "Desktop Error"
 msgstr "שגיאה בשולחן העבודה"
 
-#: ../src/xfdesktop-file-icon-manager.c:465
-#: ../src/xfdesktop-file-icon-manager.c:482
-#, fuzzy, c-format
+#: ../src/xfdesktop-file-icon-manager.c:497
+#: ../src/xfdesktop-file-icon-manager.c:514
+#, c-format
 msgid "Could not create the desktop folder \"%s\""
-msgstr "Cannot create backdrop list \"%s\""
+msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:470
-#: ../src/xfdesktop-file-icon-manager.c:487
-#, fuzzy
+#: ../src/xfdesktop-file-icon-manager.c:502
+#: ../src/xfdesktop-file-icon-manager.c:519
 msgid "Desktop Folder Error"
-msgstr "שגיאה בשולחן העבודה"
+msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:489
+#: ../src/xfdesktop-file-icon-manager.c:521
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:592
-#: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:803
-#: ../src/xfdesktop-file-utils.c:818 ../src/xfdesktop-special-file-icon.c:447
+#: ../src/xfdesktop-file-icon-manager.c:624
+#: ../src/xfdesktop-file-icon-manager.c:668 ../src/xfdesktop-file-utils.c:863
+#: ../src/xfdesktop-file-utils.c:878 ../src/xfdesktop-file-utils.c:910
+#: ../src/xfdesktop-file-utils.c:924
 msgid "Trash Error"
 msgstr "שגיאת בסל מחזור"
 
-#: ../src/xfdesktop-file-icon-manager.c:593
-#: ../src/xfdesktop-file-icon-manager.c:637
-#, fuzzy
+#: ../src/xfdesktop-file-icon-manager.c:625
+#: ../src/xfdesktop-file-icon-manager.c:669
 msgid "The selected files could not be trashed"
-msgstr "לא ניתן לפתוח את בוחר היישומים."
+msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:594
-#: ../src/xfdesktop-file-icon-manager.c:638 ../src/xfdesktop-file-utils.c:652
-#: ../src/xfdesktop-file-utils.c:702 ../src/xfdesktop-file-utils.c:761
-#: ../src/xfdesktop-file-utils.c:873 ../src/xfdesktop-file-utils.c:929
-#: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:1029
-#: ../src/xfdesktop-file-utils.c:1106 ../src/xfdesktop-file-utils.c:1167
-#: ../src/xfdesktop-file-utils.c:1240 ../src/xfdesktop-file-utils.c:1318
-#, fuzzy
+#: ../src/xfdesktop-file-icon-manager.c:626
+#: ../src/xfdesktop-file-icon-manager.c:670 ../src/xfdesktop-file-utils.c:762
+#: ../src/xfdesktop-file-utils.c:821 ../src/xfdesktop-file-utils.c:979
+#: ../src/xfdesktop-file-utils.c:1035 ../src/xfdesktop-file-utils.c:1085
+#: ../src/xfdesktop-file-utils.c:1135 ../src/xfdesktop-file-utils.c:1212
+#: ../src/xfdesktop-file-utils.c:1273 ../src/xfdesktop-file-utils.c:1346
+#: ../src/xfdesktop-file-utils.c:1424
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
 msgstr ""
-"אפשרות זו דורשת נוכחות של שירות מנהל קבצים (כמו לדוגמה זה המסופק על ידי "
-"Thunar)."
 
 #. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:738
-#: ../src/xfdesktop-file-icon-manager.c:1296
+#: ../src/xfdesktop-file-icon-manager.c:770
+#: ../src/xfdesktop-file-icon-manager.c:1349
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "אין אפשרות לשגר \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:740
-#: ../src/xfdesktop-file-icon-manager.c:984
-#: ../src/xfdesktop-file-icon-manager.c:1297 ../src/xfdesktop-file-utils.c:635
-#: ../src/xfdesktop-file-utils.c:650 ../src/xfdesktop-file-utils.c:1012
-#: ../src/xfdesktop-file-utils.c:1027 ../src/xfdesktop-file-utils.c:1079
-#: ../src/xfdesktop-file-utils.c:1104 ../src/xfdesktop-file-utils.c:1150
-#: ../src/xfdesktop-file-utils.c:1165
+#: ../src/xfdesktop-file-icon-manager.c:772
+#: ../src/xfdesktop-file-icon-manager.c:1033
+#: ../src/xfdesktop-file-icon-manager.c:1350 ../src/xfdesktop-file-utils.c:707
+#: ../src/xfdesktop-file-utils.c:1118 ../src/xfdesktop-file-utils.c:1133
+#: ../src/xfdesktop-file-utils.c:1185 ../src/xfdesktop-file-utils.c:1210
+#: ../src/xfdesktop-file-utils.c:1256 ../src/xfdesktop-file-utils.c:1271
 msgid "Launch Error"
 msgstr "שגיאת הפעלה"
 
-#: ../src/xfdesktop-file-icon-manager.c:908
+#: ../src/xfdesktop-file-icon-manager.c:957
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "פתח באמצעות \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:911
+#: ../src/xfdesktop-file-icon-manager.c:960
 #, c-format
 msgid "Open With \"%s\""
 msgstr "פתח באמצעות \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:986
+#: ../src/xfdesktop-file-icon-manager.c:1035
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
-msgstr ""
-"איו אפשרות להפעיל את \"exo-desktop-item-edit\", אשר נחוץ כדי ליצור ולערוך "
-"משגרים וקיצורי דרך על שולחן העבודה."
+msgstr "איו אפשרות להפעיל את \"exo-desktop-item-edit\", אשר נחוץ כדי ליצור ולערוך משגרים וקיצורי דרך על שולחן העבודה."
 
-#: ../src/xfdesktop-file-icon-manager.c:1354
+#: ../src/xfdesktop-file-icon-manager.c:1407
 msgid "_Open all"
 msgstr "_פתח הכל"
 
-#: ../src/xfdesktop-file-icon-manager.c:1370
+#: ../src/xfdesktop-file-icon-manager.c:1423
 msgid "_Open in New Window"
 msgstr "_פתיחה בחלון חדש"
 
-#: ../src/xfdesktop-file-icon-manager.c:1372
-#: ../src/xfdesktop-special-file-icon.c:570 ../src/xfdesktop-volume-icon.c:653
+#: ../src/xfdesktop-file-icon-manager.c:1425
+#: ../src/xfdesktop-special-file-icon.c:505 ../src/xfdesktop-volume-icon.c:691
 msgid "_Open"
 msgstr "_פתיחה"
 
 #. create launcher item
-#: ../src/xfdesktop-file-icon-manager.c:1391
+#: ../src/xfdesktop-file-icon-manager.c:1444
 msgid "Create _Launcher..."
 msgstr "יצירת _משגר..."
 
 #. create link item
-#: ../src/xfdesktop-file-icon-manager.c:1407
+#: ../src/xfdesktop-file-icon-manager.c:1460
 msgid "Create _URL Link..."
 msgstr "יצירת _קישור URL..."
 
 #. create folder item
-#: ../src/xfdesktop-file-icon-manager.c:1423
+#: ../src/xfdesktop-file-icon-manager.c:1476
 msgid "Create _Folder..."
 msgstr "יצירת _תיקיה..."
 
 #. create from template submenu
-#: ../src/xfdesktop-file-icon-manager.c:1438
+#: ../src/xfdesktop-file-icon-manager.c:1491
 msgid "Create From _Template"
 msgstr "יצירה מ_תבנית"
 
-#: ../src/xfdesktop-file-icon-manager.c:1464
+#: ../src/xfdesktop-file-icon-manager.c:1517
 msgid "_Empty File"
 msgstr "קובץ _ריק"
 
-#: ../src/xfdesktop-file-icon-manager.c:1480
+#: ../src/xfdesktop-file-icon-manager.c:1533
 msgid "_Execute"
 msgstr "_הפעלה"
 
-#: ../src/xfdesktop-file-icon-manager.c:1500
+#: ../src/xfdesktop-file-icon-manager.c:1553
 msgid "_Edit Launcher"
 msgstr "_ערוך משגר"
 
-#: ../src/xfdesktop-file-icon-manager.c:1535
+#: ../src/xfdesktop-file-icon-manager.c:1588
 msgid "Open With"
 msgstr "פתיחה באמצעות"
 
-#: ../src/xfdesktop-file-icon-manager.c:1561
+#: ../src/xfdesktop-file-icon-manager.c:1614
 msgid "Open With Other _Application..."
 msgstr "פתיחה באמצעות יישום _אחר..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1649
+#: ../src/xfdesktop-file-icon-manager.c:1706
 msgid "_Rename..."
 msgstr "_שנה שם..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1667
+#: ../src/xfdesktop-file-icon-manager.c:1724
+msgid "Arrange Desktop _Icons"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1734
 msgid "Desktop _Settings..."
 msgstr "הגדרות שולחן עבודה..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1677
-#: ../src/xfdesktop-volume-icon.c:701
+#: ../src/xfdesktop-file-icon-manager.c:1744
+#: ../src/xfdesktop-volume-icon.c:739
 msgid "P_roperties..."
 msgstr "_מאפיינים..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2231
-#, fuzzy
+#: ../src/xfdesktop-file-icon-manager.c:2362
 msgid "Load Error"
-msgstr "שגיאת הפעלה"
+msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2233
-#, fuzzy
+#: ../src/xfdesktop-file-icon-manager.c:2364
 msgid "Failed to load the desktop folder"
-msgstr "Cannot create backdrop list \"%s\""
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:2938
+msgid "Copy _Here"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:2938
+msgid "_Move Here"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:2938
+msgid "_Link Here"
+msgstr ""
 
 #. TRANSLATORS: file was modified less than one day ago
 #: ../src/xfdesktop-file-utils.c:137
@@ -762,118 +799,101 @@ msgstr ""
 
 #. the file_time is invalid
 #: ../src/xfdesktop-file-utils.c:159
-#, fuzzy
 msgid "Unknown"
-msgstr "(לא ידוע)"
+msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:636 ../src/xfdesktop-file-utils.c:651
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:708
 msgid "The folder could not be opened"
-msgstr "לא ניתן לפתוח את בוחר היישומים."
-
-#: ../src/xfdesktop-file-utils.c:685 ../src/xfdesktop-file-utils.c:700
-#, fuzzy
-msgid "Rename Error"
-msgstr "שגיאת הרצה"
-
-#: ../src/xfdesktop-file-utils.c:686 ../src/xfdesktop-file-utils.c:701
-#, fuzzy
-msgid "The file could not be renamed"
-msgstr "לא ניתן לפתוח את בוחר היישומים."
-
-#: ../src/xfdesktop-file-utils.c:744 ../src/xfdesktop-file-utils.c:759
-#, fuzzy
-msgid "Delete Error"
-msgstr "שגיאת יצירה"
+msgstr ""
 
 #: ../src/xfdesktop-file-utils.c:745 ../src/xfdesktop-file-utils.c:760
-#, fuzzy
-msgid "The selected files could not be deleted"
-msgstr "לא הייתה אפשרות למצוא או להפעיל את היישום המקושר."
+msgid "Rename Error"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:746 ../src/xfdesktop-file-utils.c:761
+msgid "The file could not be renamed"
+msgstr ""
 
 #: ../src/xfdesktop-file-utils.c:804 ../src/xfdesktop-file-utils.c:819
-#, fuzzy
-msgid "The selected files could not be moved to the trash"
-msgstr "לא ניתן לפתוח את בוחר היישומים."
+msgid "Delete Error"
+msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:820
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:805 ../src/xfdesktop-file-utils.c:820
+msgid "The selected files could not be deleted"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:864 ../src/xfdesktop-file-utils.c:879
+msgid "The selected files could not be moved to the trash"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:880 ../src/xfdesktop-file-utils.c:926
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
 msgstr ""
-"אפשרות זו דורשת נוכחות של שירות מנהל קבצים (כמו לדוגמה זה המסופק על ידי "
-"Thunar)."
 
-#: ../src/xfdesktop-file-utils.c:856 ../src/xfdesktop-file-utils.c:871
-#, fuzzy
-msgid "Create File Error"
-msgstr "שגיאת יצירה"
-
-#: ../src/xfdesktop-file-utils.c:857 ../src/xfdesktop-file-utils.c:872
-#, fuzzy
-msgid "Could not create a new file"
-msgstr "Cannot create backdrop list \"%s\""
-
-#: ../src/xfdesktop-file-utils.c:912 ../src/xfdesktop-file-utils.c:927
-#, fuzzy
-msgid "Create Document Error"
-msgstr "שגיאת יצירה"
-
-#: ../src/xfdesktop-file-utils.c:913 ../src/xfdesktop-file-utils.c:928
-#, fuzzy
-msgid "Could not create a new document from the template"
-msgstr "יצירת מסמך מתבנית \"%s\""
+#: ../src/xfdesktop-file-utils.c:911 ../src/xfdesktop-file-utils.c:925
+msgid "Could not empty the trash"
+msgstr ""
 
 #: ../src/xfdesktop-file-utils.c:962 ../src/xfdesktop-file-utils.c:977
-#, fuzzy
-msgid "File Properties Error"
-msgstr "שגיאת מאפיינים"
+msgid "Create File Error"
+msgstr ""
 
 #: ../src/xfdesktop-file-utils.c:963 ../src/xfdesktop-file-utils.c:978
-#, fuzzy
+msgid "Could not create a new file"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:1018 ../src/xfdesktop-file-utils.c:1033
+msgid "Create Document Error"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:1019 ../src/xfdesktop-file-utils.c:1034
+msgid "Could not create a new document from the template"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:1068 ../src/xfdesktop-file-utils.c:1083
+msgid "File Properties Error"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:1069 ../src/xfdesktop-file-utils.c:1084
 msgid "The file properties dialog could not be opened"
-msgstr "לא ניתן לפתוח את בוחר היישומים."
+msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:1013 ../src/xfdesktop-file-utils.c:1028
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:1119 ../src/xfdesktop-file-utils.c:1134
 msgid "The file could not be opened"
-msgstr "לא ניתן לפתוח את בוחר היישומים."
+msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:1076 ../src/xfdesktop-file-utils.c:1101
-#, fuzzy, c-format
+#: ../src/xfdesktop-file-utils.c:1182 ../src/xfdesktop-file-utils.c:1207
+#, c-format
 msgid "Failed to run \"%s\""
-msgstr "אין אפשרות להריץ את \"%s\":"
+msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:1151 ../src/xfdesktop-file-utils.c:1166
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:1257 ../src/xfdesktop-file-utils.c:1272
 msgid "The application chooser could not be opened"
-msgstr "לא ניתן לפתוח את בוחר היישומים."
+msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:1224 ../src/xfdesktop-file-utils.c:1238
-#: ../src/xfdesktop-file-utils.c:1300 ../src/xfdesktop-file-utils.c:1316
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:1330 ../src/xfdesktop-file-utils.c:1344
+#: ../src/xfdesktop-file-utils.c:1406 ../src/xfdesktop-file-utils.c:1422
 msgid "Transfer Error"
-msgstr "שגיאת בסל מחזור"
+msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:1225 ../src/xfdesktop-file-utils.c:1239
-#: ../src/xfdesktop-file-utils.c:1301 ../src/xfdesktop-file-utils.c:1317
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:1331 ../src/xfdesktop-file-utils.c:1345
+#: ../src/xfdesktop-file-utils.c:1407 ../src/xfdesktop-file-utils.c:1423
 msgid "The file transfer could not be performed"
-msgstr "לא ניתן לפתוח את בוחר היישומים."
+msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:128
-#, fuzzy
 msgid "Unmounting device"
-msgstr "ניתוק העיגון כשל"
+msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:131
 #, c-format
 msgid ""
-"The device \"%s\" is being unmounted by the system. Please do not remove the "
-"media or disconnect the drive"
+"The device \"%s\" is being unmounted by the system. Please do not remove the"
+" media or disconnect the drive"
 msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
@@ -885,15 +905,14 @@ msgstr ""
 #: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
 #, c-format
 msgid ""
-"There is data that needs to be written to the device \"%s\" before it can be "
-"removed. Please do not remove the media or disconnect the drive"
+"There is data that needs to be written to the device \"%s\" before it can be"
+" removed. Please do not remove the media or disconnect the drive"
 msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:253
-#, fuzzy
 msgid "Ejecting device"
-msgstr "ניתוק העיגון כשל"
+msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:256
@@ -901,7 +920,7 @@ msgstr "ניתוק העיגון כשל"
 msgid "The device \"%s\" is being ejected. This may take some time"
 msgstr ""
 
-#: ../src/xfdesktop-regular-file-icon.c:468
+#: ../src/xfdesktop-regular-file-icon.c:556
 #, c-format
 msgid ""
 "Type: %s\n"
@@ -909,26 +928,25 @@ msgid ""
 "Last modified: %s"
 msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:249
-#: ../src/xfdesktop-special-file-icon.c:411
-#, fuzzy
+#: ../src/xfdesktop-special-file-icon.c:273
+#: ../src/xfdesktop-special-file-icon.c:432
 msgid "File System"
-msgstr "מערכת קבצים"
+msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:396
+#: ../src/xfdesktop-special-file-icon.c:417
 msgid "Trash is empty"
 msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:399
+#: ../src/xfdesktop-special-file-icon.c:420
 msgid "Trash contains one item"
 msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:400
+#: ../src/xfdesktop-special-file-icon.c:421
 #, c-format
 msgid "Trash contains %d items"
 msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:428
+#: ../src/xfdesktop-special-file-icon.c:453
 #, c-format
 msgid ""
 "%s\n"
@@ -936,869 +954,50 @@ msgid ""
 "Last modified: %s"
 msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:449
-msgid "Unable to contact the Xfce Trash service."
-msgstr "אין אפשרות ליצור קשר עם שירות סל המחזור של Xfce."
-
-#: ../src/xfdesktop-special-file-icon.c:450
-msgid ""
-"Make sure you have a file manager installed that supports the Xfce Trash "
-"service, such as Thunar."
-msgstr ""
-"יש לוודא שמותקן סייר קבצים אשר תומך בשרותי סל המחזור של Xfce, כמו Thunar."
-
-#: ../src/xfdesktop-special-file-icon.c:588
+#: ../src/xfdesktop-special-file-icon.c:522
 msgid "_Empty Trash"
 msgstr "סל מחזור _ריק"
 
-#: ../src/xfdesktop-volume-icon.c:413
-#, fuzzy, c-format
+#: ../src/xfdesktop-volume-icon.c:447
+#, c-format
 msgid ""
 "Removable Volume\n"
 "Mounted in \"%s\"\n"
 "%s left (%s total)"
 msgstr ""
-"סוג: כרך נשלף\n"
-"נקודת עגינה: %s\n"
-"שטח פנוי: %s"
 
-#: ../src/xfdesktop-volume-icon.c:420
-#, fuzzy
+#: ../src/xfdesktop-volume-icon.c:454
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
 msgstr ""
-"סוג: כרך נשלף\n"
-"נקודת עגינה: %s\n"
-"שטח פנוי: %s"
 
-#: ../src/xfdesktop-volume-icon.c:446 ../src/xfdesktop-volume-icon.c:488
-#, fuzzy, c-format
+#: ../src/xfdesktop-volume-icon.c:480 ../src/xfdesktop-volume-icon.c:522
+#, c-format
 msgid "Failed to eject \"%s\""
-msgstr "אין אפשרות להוציא את \"%s\":"
+msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:451 ../src/xfdesktop-volume-icon.c:493
+#: ../src/xfdesktop-volume-icon.c:485 ../src/xfdesktop-volume-icon.c:527
 msgid "Eject Failed"
 msgstr "הוצאה כשלה"
 
-#: ../src/xfdesktop-volume-icon.c:525
-#, fuzzy, c-format
+#: ../src/xfdesktop-volume-icon.c:559
+#, c-format
 msgid "Failed to mount \"%s\""
-msgstr "אין אפשרות להריץ את \"%s\":"
+msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:528
+#: ../src/xfdesktop-volume-icon.c:562
 msgid "Mount Failed"
 msgstr "העיגון כשל"
 
-#: ../src/xfdesktop-volume-icon.c:669 ../src/xfdesktop-volume-icon.c:672
+#: ../src/xfdesktop-volume-icon.c:707 ../src/xfdesktop-volume-icon.c:710
 msgid "E_ject Volume"
 msgstr "_הוצא כרך"
 
-#: ../src/xfdesktop-volume-icon.c:679
+#: ../src/xfdesktop-volume-icon.c:717
 msgid "_Mount Volume"
 msgstr "_חבר כרך"
 
-#, fuzzy
-#~ msgid "Needs terminal"
-#~ msgstr "מסוף"
-
-#~ msgid "Command"
-#~ msgstr "פקודה"
-
-#, fuzzy
-#~ msgid "Icon name"
-#~ msgstr "מעצבי סמלים"
-
-#, fuzzy
-#~ msgid "Startup notification"
-#~ msgstr "השתמש בהתראת _פתיחה"
-
-#~ msgid "Unable to launch xfce4-menueditor: %s"
-#~ msgstr "אין אפשרות להפעיל את עורך התפריטים של Xfce4: %s"
-
-#~ msgid "Select Icon"
-#~ msgstr "בחר סמל"
-
-#~ msgid "Select Menu File"
-#~ msgstr "בחר קובץ תפריט"
-
-#~ msgid "All Files"
-#~ msgstr "כל הקבצים"
-
-#~ msgid "Image Files"
-#~ msgstr "קבצי תמונה"
-
-#~ msgid "Menu Files"
-#~ msgstr "קבצי תפריט"
-
-#~ msgid "Xfce Menu"
-#~ msgstr "תפריט Xfce"
-
-#~ msgid "Button"
-#~ msgstr "לחצן"
-
-#~ msgid "Button _title:"
-#~ msgstr "כותרת ה_לחצן:"
-
-#~ msgid "_Show title in button"
-#~ msgstr "_הצג כותרת בלחצן"
-
-#~ msgid "Menu File"
-#~ msgstr "קובץ תפריט"
-
-#~ msgid "Use default _desktop menu file"
-#~ msgstr "השתמש בקובץ ברירת המחדל ל_תפריט שולחן העבודה"
-
-#~ msgid "Use _custom menu file:"
-#~ msgstr "השתמש בקובץ תפריט _מותאם אישית:"
-
-#~ msgid "_Edit Menu"
-#~ msgstr "_ערוך תפריט"
-
-#~ msgid "Icons"
-#~ msgstr "סמלים"
-
-#~ msgid "_Button icon:"
-#~ msgstr "סמל ה_לחצן:"
-
-#~ msgid "Show _icons in menu"
-#~ msgstr "הראה _סמלים בתפריט"
-
-#~ msgid "There is already a panel menu registered for this screen"
-#~ msgstr "כבר קיים לוח תפריט רשום במסך זה"
-
-#~ msgid "Edit Menu"
-#~ msgstr "ערוך תפריט"
-
-#~ msgid "Shows a menu containing categories of installed applications"
-#~ msgstr "מציג תפריט המכיל את כל קטגוריות היישומים המותקנים"
-
-#~ msgid "%s: Unknown option: %s\n"
-#~ msgstr "%s: Unknown option: %s\n"
-
-#~ msgid "Options are:\n"
-#~ msgstr "Options are:\n"
-
-#~ msgid "    --reload      Reload all settings, refresh image list\n"
-#~ msgstr "    --reload      Reload all settings, refresh image list\n"
-
-#~ msgid "    --menu        Pop up the menu (at the current mouse position)\n"
-#~ msgstr "    --menu        Pop up the menu (at the current mouse position)\n"
-
-#~ msgid ""
-#~ "    --windowlist  Pop up the window list (at the current mouse position)\n"
-#~ msgstr ""
-#~ "    --windowlist  Pop up the window list (at the current mouse position)\n"
-
-#~ msgid "    --quit        Cause xfdesktop to quit\n"
-#~ msgstr "    --quit        Cause xfdesktop to quit\n"
-
-#~ msgid ""
-#~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-#~ msgstr ""
-#~ "לא ניתן ליצור את התיקייה \"%s\" בשביל לשמור שם את פריטי שולחן העבודה:"
-
-#~ msgid "Create Folder Failed"
-#~ msgstr "יצירת תיקיה נכשלה"
-
-#~ msgid ""
-#~ "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not "
-#~ "a folder."
-#~ msgstr ""
-#~ "לא ניתן להשתמש ב\"%s\" בשביל לשמור שם את פריטי שולחן העבודה משום זה לא "
-#~ "תיקייה."
-
-#~ msgid "Please delete or rename the file."
-#~ msgstr "אנא מחק או שנה את שם הקובץ."
-
-#~ msgid "Rename \"%s\""
-#~ msgstr "שנה שם \"%s\""
-
-#~ msgid "Enter the new name:"
-#~ msgstr "הכנס את השם החדש:"
-
-#~ msgid "Rename"
-#~ msgstr "שנה שם"
-
-#~ msgid "Are you sure that you want to delete \"%s\"?"
-#~ msgstr "האם אתה בטוח שברצונך למחוק את \"%s\"?"
-
-#~ msgid "Question"
-#~ msgstr "שאלה"
-
-#~ msgid "If you delete a file, it is permanently lost."
-#~ msgstr "אם תמחק את הקובץ הוא ימחק לצמיתות."
-
-#~ msgid "Are you sure you want to delete the following %d files?"
-#~ msgstr "האם אתה בטוח שברצונך למחוק את %d הקבצים הבאים?"
-
-#~ msgid "Delete Multiple Files"
-#~ msgstr "מחיקת מספר קבצים"
-
-#~ msgid "The application chooser could not be opened."
-#~ msgstr "לא ניתן לפתוח את בוחר היישומים."
-
-#~ msgid ""
-#~ "This feature requires a file manager service present (such as that "
-#~ "supplied by Thunar)."
-#~ msgstr ""
-#~ "אפשרות זו דורשת נוכחות של שירות מנהל קבצים (כמו לדוגמה זה המסופק על ידי "
-#~ "Thunar)."
-
-#~ msgid "Unable to create folder named \"%s\":"
-#~ msgstr "אין אפשרות ליצור תיקיה בשם \"%s\":"
-
-#~ msgid "Create New Folder"
-#~ msgstr "יצירת תיקיה חדשה"
-
-#~ msgid "New Folder"
-#~ msgstr "תיקייה חדשה"
-
-#~ msgid "Create"
-#~ msgstr "צור"
-
-#~ msgid "Unable to create file named \"%s\":"
-#~ msgstr "אין אפשרות ליצור קובץ בשם \"%s\":"
-
-#~ msgid "Create File Failed"
-#~ msgstr "יצירת קובץ נכשלה"
-
-#~ msgid "Create Document from template \"%s\""
-#~ msgstr "יצירת מסמך מתבנית \"%s\""
-
-#~ msgid "Create Empty File"
-#~ msgstr "יצירת קובץ ריק"
-
-#~ msgid "New Empty File"
-#~ msgstr "קובץ ריק חדש"
-
-#~ msgid "Unable to create file \"%s\":"
-#~ msgstr "אין אפשרות ליצור קובץ \"%s\":"
-
-#~ msgid "Create Error"
-#~ msgstr "שגיאת יצירה"
-
-#~ msgid "Failed to run \"%s\":"
-#~ msgstr "אין אפשרות להריץ את \"%s\":"
-
-#~ msgid "Run Error"
-#~ msgstr "שגיאת הרצה"
-
-#~ msgid "The associated application could not be found or executed."
-#~ msgstr "לא הייתה אפשרות למצוא או להפעיל את היישום המקושר."
-
-#~ msgid "Unable to set default application for \"%s\" to \"%s\":"
-#~ msgstr "אין אפשרות להגדיר את יישום ברירת המחדל ל-\"%s\" אל \"%s\":"
-
-#~ msgid "Properties Error"
-#~ msgstr "שגיאת מאפיינים"
-
-#~ msgid "Write only"
-#~ msgstr "כתיבה בלבד"
-
-#~ msgid "Read only"
-#~ msgstr "קריאה בלבד"
-
-#~ msgid "Read & Write"
-#~ msgstr "קריאה וכתיבה"
-
-#~ msgid "General"
-#~ msgstr "כללי"
-
-#~ msgid "Name:"
-#~ msgstr "שם:"
-
-#~ msgid "Kind:"
-#~ msgstr "סוג:"
-
-#~ msgid "Link Target:"
-#~ msgstr "יעד הקישור:"
-
-#~ msgid "(unknown)"
-#~ msgstr "(לא ידוע)"
-
-#~ msgid "Open With:"
-#~ msgstr "פתח באמצעות:"
-
-#~ msgid "Modified:"
-#~ msgstr "שונה:"
-
-#~ msgid "Accessed:"
-#~ msgstr "ניגש:"
-
-#~ msgid "Free Space:"
-#~ msgstr "מקום פנוי:"
-
-#~ msgid "Size:"
-#~ msgstr "גודל:"
-
-#~ msgid "%s (%"
-#~ msgstr "%s (%"
-
-#~ msgid "Permissions"
-#~ msgstr "הרשאות"
-
-#~ msgid "Owner:"
-#~ msgstr "בעלים:"
-
-#~ msgid "Access:"
-#~ msgstr "גישה:"
-
-#~ msgid "Group:"
-#~ msgstr "קבוצה:"
-
-#~ msgid "Others:"
-#~ msgstr "אחרים:"
-
-#~ msgid "Yes to _all"
-#~ msgstr "כן _לכל"
-
-#~ msgid "There was an error moving \"%s\" to \"%s\":"
-#~ msgstr "ארעה שגיאה בהעברת \"%s\" אל \"%s\":"
-
-#~ msgid "There was an error copying \"%s\" to \"%s\":"
-#~ msgstr "ארעה שגיאה בהעתקת \"%s\" אל \"%s\":"
-
-#~ msgid "There was an error linking \"%s\" to \"%s\":"
-#~ msgstr "ארעה שגיאה בקישור \"%s\" אל \"%s\":"
-
-#~ msgid "File Error"
-#~ msgstr "שגיאה בקובץ"
-
-#~ msgid "broken link"
-#~ msgstr "קישור שבור"
-
-#~ msgid "link to %s"
-#~ msgstr "קיצור דרך אל %s"
-
-#~ msgid ""
-#~ "Kind: %s\n"
-#~ "Modified:%s\n"
-#~ "Size: %s"
-#~ msgstr ""
-#~ "סוג: %s\n"
-#~ "שונה:%s\n"
-#~ "גודל: %s"
-
-#~ msgid "Error"
-#~ msgstr "שגיאה"
-
-#~ msgid "Failed to rename \"%s\" to \"%s\":"
-#~ msgstr "כשל בשינוי שם \"%s\" ל-\"%s\":"
-
-#~ msgid "Kind: Trash"
-#~ msgstr "סוג: אשפה"
-
-#~ msgid "%s (%s total)"
-#~ msgstr "%s (%s סך הכול)"
-
-#~ msgid "Unable to mount \"%s\":"
-#~ msgstr "אין אפשרות לעגן את \"%s\":"
-
-#~ msgid "Unable to unmount \"%s\":"
-#~ msgstr "אין אפשרות לנתק את עיגון \"%s\":"
-
-#~ msgid "Unmount Failed"
-#~ msgstr "ניתוק העיגון כשל"
-
-#~ msgid "Unable to eject \"%s\":"
-#~ msgstr "אין אפשרות להוציא את \"%s\":"
-
-#~ msgid "_Unmount Volume"
-#~ msgstr "_נתק כרך"
-
-#~ msgid "Accessories"
-#~ msgstr "ניגש:"
-
-#~ msgid "Development"
-#~ msgstr "פיתוח"
-
-#~ msgid "Education"
-#~ msgstr "לומדות"
-
-#~ msgid "Games"
-#~ msgstr "שם"
-
-#~ msgid "Graphics"
-#~ msgstr "גרפיקה"
-
-#~ msgid "Multimedia"
-#~ msgstr "רב-שכבתי"
-
-#~ msgid "Network"
-#~ msgstr "אינטרנט"
-
-#~ msgid "Office"
-#~ msgstr "יישומים משרדיים"
-
-#~ msgid "Other"
-#~ msgstr "/אחר"
-
-#~ msgid "Settings"
-#~ msgstr "הגדרות שולחן עבודה"
-
-#~ msgid "System"
-#~ msgstr "מערכת"
-
-#~ msgid "About Xfce"
-#~ msgstr "אודות Xfce"
-
-#~ msgid "File Manager"
-#~ msgstr "סייר קבצים"
-
-#~ msgid "Help"
-#~ msgstr "ע_זרה"
-
-#~ msgid "Log out of the Xfce Desktop"
-#~ msgstr "הגדרות שולחן העבודה של Xfce 4"
-
-#~ msgid "Run Program..."
-#~ msgstr "שגיאת הרצה"
-
-#~ msgid "Run a program"
-#~ msgstr "שגיאת הרצה"
-
-#~ msgid "Terminal"
-#~ msgstr "מסוף"
-
-#~ msgid "Web Browser"
-#~ msgstr "דפדפן אינטרנט"
-
-#, fuzzy
-#~ msgid ""
-#~ "None\n"
-#~ "Minimized application icons\n"
-#~ "File/launcher icons"
-#~ msgstr "סמלי יישומים ממוזערים"
-
-#~ msgid "Use startup _notification"
-#~ msgstr "השתמש בהתראת _פתיחה"
-
-#~ msgid "Contributor"
-#~ msgstr "תורמים"
-
-#~ msgid "Icon designer"
-#~ msgstr "מעצבי סמלים"
-
-#~ msgid "Solid Color"
-#~ msgstr "צבע אחיד"
-
-#~ msgid "Horizontal Gradient"
-#~ msgstr "הדרגתי אופקי"
-
-#~ msgid "Vertical Gradient"
-#~ msgstr "הדרגתי אנכי"
-
-#~ msgid "Add menu entry"
-#~ msgstr "הוסף רשומת תפריט"
-
-#~ msgid "Type:"
-#~ msgstr "סוג:"
-
-#~ msgid "Title"
-#~ msgstr "כותרת"
-
-#~ msgid "Submenu"
-#~ msgstr "תפריט משנה"
-
-#~ msgid "Launcher"
-#~ msgstr "משגר"
-
-#~ msgid "Separator"
-#~ msgstr "מפריד"
-
-#~ msgid "Quit"
-#~ msgstr "יציאה"
-
-#~ msgid "Command:"
-#~ msgstr "פקודה:"
-
-#~ msgid "Icon:"
-#~ msgstr "סמל:"
-
-#~ msgid "No icon"
-#~ msgstr "ללא סמל"
-
-#~ msgid "Themed icon:"
-#~ msgstr "סמל עם נושא:"
-
-#~ msgid "Select icon"
-#~ msgstr "בחר סמל"
-
-#~ msgid "Run in _terminal"
-#~ msgstr "הפעל ב_מסוף"
-
-#~ msgid "Select command"
-#~ msgstr "בחירת פקודה"
-
-#~ msgid "Executable Files"
-#~ msgstr "קובץ בר-הרצה"
-
-#~ msgid "Perl Scripts"
-#~ msgstr "תסריט Perl"
-
-#~ msgid "Python Scripts"
-#~ msgstr "תסריט Python"
-
-#~ msgid "Ruby Scripts"
-#~ msgstr "תסריט Ruby"
-
-#~ msgid "Shell Scripts"
-#~ msgstr "תסריט Shell"
-
-#~ msgid "Add external menu entry"
-#~ msgstr "הוסף רשומת תפריט חיצוני"
-
-#~ msgid "File"
-#~ msgstr "קובץ"
-
-#~ msgid "Source:"
-#~ msgstr "מקור:"
-
-#~ msgid "Select external menu"
-#~ msgstr "בחר תפריט חיצוני"
-
-#~ msgid "Style:"
-#~ msgstr "סגנון:"
-
-#~ msgid "Simple"
-#~ msgstr "פשוט"
-
-#~ msgid "Multilevel"
-#~ msgstr "רב-שכבתי"
-
-#~ msgid "_Unique entries only"
-#~ msgstr "_רשומות ייחודיות בלבד"
-
-#~ msgid "Edit menu entry"
-#~ msgstr "ערוך רשומת תפריט"
-
-#~ msgid "Edit external menu entry"
-#~ msgstr "ערוך רשומת תפריט חיצוני"
-
-#~ msgid "Xfce4-MenuEditor"
-#~ msgstr "עורך התפריטים של Xfce4"
-
-#~ msgid "Menueditor Warning"
-#~ msgstr "עורך תפריט"
-
-#~ msgid "Continue"
-#~ msgstr "תורמים"
-
-#~ msgid "_File"
-#~ msgstr "_קובץ"
-
-#~ msgid "_New"
-#~ msgstr "_חדש"
-
-#~ msgid "Create a new empty menu"
-#~ msgstr "צור תפריט חדש וריק"
-
-#~ msgid "Open existing menu"
-#~ msgstr "פתח תפריט קיים"
-
-#~ msgid "Open _default menu"
-#~ msgstr "פתח תפריט ברירת מחדל"
-
-#~ msgid "Open default menu"
-#~ msgstr "פתח תפריט ברירת מחדל"
-
-#~ msgid "_Save"
-#~ msgstr "_שמירה"
-
-#~ msgid "Save modifications"
-#~ msgstr "שמור שינויים"
-
-#~ msgid "Save _as..."
-#~ msgstr "שמירה _בשם..."
-
-#~ msgid "Save menu under a given name"
-#~ msgstr "שמור תפריט בשם מסויים"
-
-#~ msgid "_Close"
-#~ msgstr "_סגירה"
-
-#~ msgid "Close menu"
-#~ msgstr "סגור תפריט"
-
-#~ msgid "_Quit"
-#~ msgstr "_יציאה"
-
-#~ msgid "Quit Xfce4-Menueditor"
-#~ msgstr "צא מעורך התפריטים של Xfce4"
-
-#~ msgid "_Edit"
-#~ msgstr "_עריכה"
-
-#~ msgid "_Edit entry"
-#~ msgstr "_ערוך רשומה"
-
-#~ msgid "Edit selected entry"
-#~ msgstr "ערוך רשומה נבחרת"
-
-#~ msgid "_Add entry"
-#~ msgstr "_הוסף רשומה"
-
-#~ msgid "Add a new entry in the menu"
-#~ msgstr "הוסף רשומה חדשה לתפריט"
-
-#~ msgid "Add _external"
-#~ msgstr "הוסף _חיצוני"
-
-#~ msgid "Add an external entry"
-#~ msgstr "הוסף רשומה חיצונית"
-
-#~ msgid "_Remove entry"
-#~ msgstr "ה_סר רשומה"
-
-#~ msgid "Remove entry"
-#~ msgstr "הסר רשומה"
-
-#~ msgid "_Up"
-#~ msgstr "_למעלה"
-
-#~ msgid "Move entry up"
-#~ msgstr "הזז רשומה למעלה"
-
-#~ msgid "_Down"
-#~ msgstr "_למטה"
-
-#~ msgid "Move entry down"
-#~ msgstr "הזז רשומה למטה"
-
-#~ msgid "_Help"
-#~ msgstr "ע_זרה"
-
-#~ msgid "_About..."
-#~ msgstr "_אודות..."
-
-#~ msgid "Show informations about xfce4-menueditor"
-#~ msgstr "הצג מידע אודות עורך התפריטים של Xfce4"
-
-#~ msgid "Collapse all"
-#~ msgstr "צמצם את הכל"
-
-#~ msgid "Collapse all menu entries"
-#~ msgstr "צמצם את כל רשומות התפריטים"
-
-#~ msgid "Expand all"
-#~ msgstr "הרחב הכל"
-
-#~ msgid "Expand all menu entries"
-#~ msgstr "הרחב את כל רשומות התפריטים"
-
-#~ msgid "Name"
-#~ msgstr "שם"
-
-#~ msgid "Hidden"
-#~ msgstr "מוסתר"
-
-#~ msgid "Are you sure you want to close the current menu?"
-#~ msgstr "האם אתה בטוח שברצונך לסגור את התפריט הנוכחי?"
-
-#~ msgid "Do you want to save before closing the file?"
-#~ msgstr "האם ברצונך לשמור לפני סגירת הקובץ?"
-
-#~ msgid "Do you want to save before opening an other menu ?"
-#~ msgstr "האם ברצונך לשמור לפני פתיחת תפריט אחר?"
-
-#~ msgid "Ignore modifications"
-#~ msgstr "התעלם משינויים"
-
-#~ msgid "Open menu file"
-#~ msgstr "פתח קובץ תפריט"
-
-#~ msgid "Do you want to save before opening the default menu ?"
-#~ msgstr "האם ברצונך לשמור לפני פתיחת תפריט ברירת המחדל?"
-
-#~ msgid "Save menu file as"
-#~ msgstr "שמור קובץ תפריט בשם"
-
-#~ msgid "Do you want to save before closing the menu ?"
-#~ msgstr "האם ברצונך לשמור לפני סגירת התפריט?"
-
-#~ msgid "quit"
-#~ msgstr "יציאה"
-
-#~ msgid "--- separator ---"
-#~ msgstr "- קו מפריד -"
-
-#~ msgid "--- include ---"
-#~ msgstr "- כלול -"
-
-#~ msgid "system"
-#~ msgstr "מערכת"
-
-#~ msgid "Do you want to move the item into the submenu?"
-#~ msgstr "האם ברצונך להזיז את הפריט לתפריט המשנה?"
-
-#~ msgid "A menu editor for Xfce4"
-#~ msgstr "עורך תפריטים עבור Xfce4"
-
-#~ msgid "Author/Maintainer"
-#~ msgstr "מחבר/מתחזק"
-
-#~ msgid "You have modified the menu, do you want to save it before quitting ?"
-#~ msgstr "שינית את התפריט, האם ברצונך לשמור לפני היציאה?"
-
-#~ msgid "Forget modifications"
-#~ msgstr "התעלם משינויים"
-
-#~ msgid "Unable to open the menu file %s in write mode"
-#~ msgstr "אין אפשרות פתוח את קובץ התפריט %s במצב כתיבה"
-
-#~ msgid "Graphical tool for editing the Xfce 4 menu"
-#~ msgstr "כלי גרפי בשביל לערוך את תפריט של Xfce 4"
-
-#~ msgid "Menu Editor"
-#~ msgstr "עורך תפריט"
-
-#~ msgid "Xfce 4 Menu Editor"
-#~ msgstr "עורך תפריט Xfce4"
-
-#~ msgid "Settings for the Xfce 4 Desktop Manager"
-#~ msgstr "הגדרות שולחן העבודה של Xfce 4"
-
-#~ msgid "Xfce 4 Desktop Settings"
-#~ msgstr "הגדרות שולחן העבודה Xfce 4"
-
-#~ msgid "Use _Xfce to manage the desktop"
-#~ msgstr "_אפשר ל- Xfce לנהל את שולחן העבודה"
-
-#~ msgid ""
-#~ "Could not save file %s: %s\n"
-#~ "\n"
-#~ "Please choose another location or press cancel in the dialog to discard "
-#~ "your changes"
-#~ msgstr ""
-#~ "אין אפשרות לשמור קובץ %s: %s\n"
-#~ "\n"
-#~ "יש לבחור מיקום אחר או ללחוץ על ביטול בתיבת הדו-שיח בשביל לא לשמור את "
-#~ "השינויים"
-
-#~ msgid "Button Label|Desktop"
-#~ msgstr "שולחן עבודה"
-
-#~ msgid "backdrops.list"
-#~ msgstr "רקע.רשימה"
-
-#~ msgid "Select backdrop image or list file"
-#~ msgstr "בחר בטפט או בקובץ רשימה"
-
-#~ msgid "List Files (*.list)"
-#~ msgstr "קבצי רשימה (*.list("
-
-#~ msgid "_Edit list..."
-#~ msgstr "_ערוך רשימה..."
-
-#~ msgid "_New list..."
-#~ msgstr "_רשימה חדשה..."
-
-#~ msgid "S_tyle:"
-#~ msgstr "_סגנון:"
-
-#~ msgid "Xfce will be unable to manage your desktop (%s)."
-#~ msgstr "Xfce לא יוכל לנהל את שולחן העבודה שלך (%s)."
-
-#~ msgid "Unknown Error"
-#~ msgstr "שגיאה לא מוכרת"
-
-#~ msgid "Unable to start xfdesktop"
-#~ msgstr "לא ניתן להתחיל את xfdesktop"
-
-#~ msgid ""
-#~ "To ensure that this setting takes effect the next time you start Xfce, "
-#~ "please be sure to save your session when logging out.  If you are not "
-#~ "using the Xfce Session Manager (xfce4-session), you will need to manually "
-#~ "edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
-#~ "documentation provided on http://xfce.org/."
-#~ msgstr ""
-#~ "כדי לוודא שהגדרות אלה יישומו בפעם הבאה שתפעיל את Xfce, אנא דאג לשמור את "
-#~ "ההפעלה ביציאה. אם אינך עושה שימוש במנהלך ההפעלה של Xfce (xfce4-session),"
-#~ "יהיה עליך לערוך ידנית את הקובץ ~/.config/xfce4/xinitrc. פרטים נוספים "
-#~ "זמינים בתיעוד הנמצא ב- http://xfce.org/."
-
-#~ msgid ""
-#~ "To ensure that Xfce does not manage your desktop the next time you start "
-#~ "Xfce, please be sure to save your session when logging out.  If you are "
-#~ "not using the Xfce Session Manager (xfce4-session), you will need to "
-#~ "manually edit your ~/.config/xfce4/xinitrc file.  Details are available "
-#~ "in the documentation provided on http://xfce.org/."
-#~ msgstr ""
-#~ "כדי לוודא ש- Xfce אינו מנהל את שולחן העבודה שלך בפעם הבאה שיותחל Xfce, נא "
-#~ "לוודא שמירת ההפעלה ביציאה. אם אינך עושה שימוש במנהלך ההפעלה של Xfce "
-#~ "(xfce4-session) יהיה עליך לערוך ידנית את הקובץ  ~/.config/xfce4/xinitrc. "
-#~ "פרטים זמינים בתיעוד הנמצא ב- http://xfce.org/."
-
-#~ msgid "_Do not show this again"
-#~ msgstr "_אל תציג זאת שוב"
-
-#~ msgid "Desktop Preferences"
-#~ msgstr "העדפות שולחן עבודה"
-
-#~ msgid "Stretch single backdrop onto _all monitors"
-#~ msgstr "מתח תמונת רקע יחידה על _כל הצגים"
-
-#~ msgid "Color"
-#~ msgstr "צבע"
-
-#~ msgid "_Color Style:"
-#~ msgstr "סגנון _צבע:"
-
-#~ msgid "Image"
-#~ msgstr "תמונה"
-
-#~ msgid "Show _Image"
-#~ msgstr "הראה _תמונה"
-
-#~ msgid "_File:"
-#~ msgstr "_קובץ:"
-
-#~ msgid "_Behavior"
-#~ msgstr "_התנהגות"
-
-#~ msgid "Select backdrop image file"
-#~ msgstr "בחר בקובץ של תמונת הטפט"
-
-#~ msgid "List file"
-#~ msgstr "רשימת קבצים"
-
-#~ msgid "Edit backdrop list"
-#~ msgstr "ערוך רשימת טפטים"
-
-#~ msgid "Desktop Icons"
-#~ msgstr "סמלי שולחן עבודה"
-
-#~ msgid "Use _system font size"
-#~ msgstr "השתמש בגודל גופן ה_מערכת"
-
-#~ msgid "Des_ktop"
-#~ msgstr "שולחן _עבודה"
-
-#~ msgid "_Desktop Properties..."
-#~ msgstr "מ_אפייני שולחן עבודה..."
-
-#~ msgid "Science"
-#~ msgstr "מדע"
-
-#~ msgid "Scientific applications and tools"
-#~ msgstr "סמלי יישומים ממוזערים"
-
-#~ msgid "Unable to quit session."
-#~ msgstr "אין אפשרות לצאת מההפעלה"
-
-#~ msgid ""
-#~ "Quitting the session requires that Xfce's session manager (xfce4-session) "
-#~ "is running, but it was not detected.  Please quit Xfce via another means."
-#~ msgstr ""
-#~ "יציאה מההפעלה מחייבת את פעולת מנהל ההפעלה של Xfce (xfce4-session) אך זה "
-#~ "לא אותר. נא לצאת מ-Xfce באמצעי אחר."
-
-#~ msgid ""
-#~ "Quitting the session requires the 'xfce4-session-logout' command, but it "
-#~ "could not be found: %s"
-#~ msgstr ""
-#~ "יציאה מההפעלה מצריכה את הפקודה xfce4-session-logout אך זו לא נמצאה: %s"
-
-#~ msgid "Edit Properties"
-#~ msgstr "עריכת מאפיינים"
+#: ../src/xfdesktop-window-icon.c:208
+msgid "_Window Actions"
+msgstr ""
