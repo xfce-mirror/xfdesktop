@@ -4,12 +4,13 @@
 # 
 # Translators:
 # Theppitak Karoonboonyanan <thep@linux.thai.net>, 2013
+# theppitak <theppitak@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-03 12:31+0100\n"
-"PO-Revision-Date: 2013-11-04 09:08+0000\n"
+"POT-Creation-Date: 2013-11-15 00:31+0100\n"
+"PO-Revision-Date: 2013-11-19 13:41+0000\n"
 "Last-Translator: theppitak <theppitak@gmail.com>\n"
 "Language-Team: Thai (http://www.transifex.com/projects/p/xfce/language/th/)\n"
 "MIME-Version: 1.0\n"
@@ -18,37 +19,37 @@ msgstr ""
 "Language: th\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../settings/main.c:369 ../src/xfdesktop-special-file-icon.c:295
+#: ../settings/main.c:371 ../src/xfdesktop-special-file-icon.c:295
 #: ../src/xfdesktop-special-file-icon.c:479
 msgid "Home"
 msgstr "บ้าน"
 
-#: ../settings/main.c:371
+#: ../settings/main.c:373
 msgid "Filesystem"
 msgstr "ระบบแฟ้ม"
 
-#: ../settings/main.c:373
+#: ../settings/main.c:375
 msgid "Trash"
 msgstr "ถังขยะ"
 
-#: ../settings/main.c:375
+#: ../settings/main.c:377
 msgid "Removable Devices"
 msgstr "อุปกรณ์ถอดเสียบ"
 
-#: ../settings/main.c:377
+#: ../settings/main.c:379
 msgid "Network Shares"
 msgstr "แหล่งใช้ร่วมในเครือข่าย"
 
-#: ../settings/main.c:379
+#: ../settings/main.c:381
 msgid "Disks and Drives"
 msgstr "ดิสก์และไดรว์"
 
-#: ../settings/main.c:381
+#: ../settings/main.c:383
 msgid "Other Items"
 msgstr "รายการอื่นๆ"
 
 #. Display the file name, file type, and file size in the tooltip.
-#: ../settings/main.c:494
+#: ../settings/main.c:496
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -56,81 +57,97 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nชนิด: %s\nขนาด: %s"
 
-#: ../settings/main.c:678
+#: ../settings/main.c:680
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "ภาพพื้นหลังสำหรับจอภาพ %d (%s)"
 
-#: ../settings/main.c:681
+#: ../settings/main.c:683
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "ภาพพื้นหลังสำหรับจอภาพ %d"
 
-#: ../settings/main.c:687
+#: ../settings/main.c:689
+msgid ""
+"You are using more than one display, move this dialog to the display you "
+"want to edit the settings for."
+msgstr ""
+
+#: ../settings/main.c:697
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "ภาพพื้นหลังสำหรับ %s บนจอภาพ %d (%s)"
 
-#: ../settings/main.c:691
+#: ../settings/main.c:701
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "ภาพพื้นหลังสำหรับ %s บนจอภาพ %d"
 
+#: ../settings/main.c:708
+msgid ""
+"You are using more than one display, move this dialog to the display and "
+"workspace you want to edit the settings for."
+msgstr ""
+
 #. Single monitor and single workspace
-#: ../settings/main.c:698
+#: ../settings/main.c:716
 #, c-format
 msgid "Wallpaper for my desktop"
 msgstr "ภาพพื้นหลังสำหรับพื้นโต๊ะ"
 
 #. Single monitor and per workspace wallpaper
-#: ../settings/main.c:701
+#: ../settings/main.c:722
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "ภาพพื้นหลังสำหรับ %s"
 
-#: ../settings/main.c:1101
+#: ../settings/main.c:727
+msgid "Move this dialog to the workspace you want to edit the settings for."
+msgstr ""
+
+#: ../settings/main.c:1130
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "ไม่สามารถเลือกรูปภาพได้ในระหว่างที่กำหนดสไตล์ของรูปภาพเป็น \"ไม่มี\""
 
-#: ../settings/main.c:1453
+#: ../settings/main.c:1482
 msgid "Spanning screens"
 msgstr "หน้าจอขยายข้ามจอภาพ"
 
-#: ../settings/main.c:1747
+#: ../settings/main.c:1787
 msgid "Image files"
 msgstr "แฟ้มรูปภาพ"
 
-#: ../settings/main.c:1899
+#: ../settings/main.c:1939
 msgid "Settings manager socket"
 msgstr "ซ็อกเก็ตโปรแกรมจัดการค่าตั้ง"
 
-#: ../settings/main.c:1899
+#: ../settings/main.c:1939
 msgid "SOCKET ID"
-msgstr "SOCKET ID"
+msgstr "หมายเลขซ็อกเก็ต"
 
-#: ../settings/main.c:1900
+#: ../settings/main.c:1940
 msgid "Version information"
 msgstr "ข้อมูลรุ่น"
 
-#: ../settings/main.c:1927
+#: ../settings/main.c:1967
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "สั่ง '%s --help' เพื่อดูวิธีใช้"
 
-#: ../settings/main.c:1939
+#: ../settings/main.c:1979
 msgid "The Xfce development team. All rights reserved."
 msgstr "The Xfce development team. All rights reserved."
 
-#: ../settings/main.c:1940
+#: ../settings/main.c:1980
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "หากพบปัญหา กรุณารายงานที่ <%s>"
 
-#: ../settings/main.c:1947
+#: ../settings/main.c:1987
 msgid "Desktop Settings"
 msgstr "การตั้งค่าพื้นโต๊ะ"
 
-#: ../settings/main.c:1949
+#: ../settings/main.c:1989
 msgid "Unable to contact settings server"
 msgstr "ไม่สามารถติดต่อกับเซิร์ฟเวอร์ค่าตั้ง"
 
@@ -436,78 +453,6 @@ msgstr "<b>ไอคอนปริยาย</b>"
 msgid "_Icons"
 msgstr "ไ_อคอน"
 
-#: ../src/main.c:241
-msgid "Display version information"
-msgstr "แสดงข้อมูลรุ่น"
-
-#: ../src/main.c:242
-msgid "Reload all settings, refresh image list"
-msgstr "อ่านค่าตั้งทั้งหมดใหม่, ปรับข้อมูลรายชื่อรูปภาพ"
-
-#: ../src/main.c:243
-msgid "Pop up the menu (at the current mouse position)"
-msgstr "ผุดเมนูขึ้น (ที่ตำแหน่งเมาส์ปัจจุบัน)"
-
-#: ../src/main.c:244
-msgid "Pop up the window list (at the current mouse position)"
-msgstr "ผุดเมนูรายชื่อหน้าต่าง (ที่ตำแหน่งเมาส์ปัจจุบัน)"
-
-#: ../src/main.c:246
-msgid "Automatically arrange all the icons on the desktop"
-msgstr "จัดเรียงไอคอนทั้งหมดบนพื้นโต๊ะโดยอัตโนมัติ"
-
-#: ../src/main.c:248
-msgid "Cause xfdesktop to quit"
-msgstr "สั่งให้ xfdesktop จบการทำงาน"
-
-#: ../src/main.c:271
-#, c-format
-msgid "Failed to parse arguments: %s\n"
-msgstr "แจงอาร์กิวเมนต์ไม่สำเร็จ: %s\n"
-
-#: ../src/main.c:279
-#, c-format
-msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr "นี่คือ %s รุ่น %s ทำงานบน Xfce %s\n"
-
-#: ../src/main.c:281
-#, c-format
-msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr "ประกอบสร้างด้วย GTK+ %d.%d.%d ลิงก์กับ GTK+ %d.%d.%d"
-
-#: ../src/main.c:285
-#, c-format
-msgid "Build options:\n"
-msgstr "ตัวเลือกที่ใช้ประกอบสร้าง:\n"
-
-#: ../src/main.c:286
-#, c-format
-msgid "    Desktop Menu:        %s\n"
-msgstr "    เมนูพื้นโต๊ะ:            %s\n"
-
-#: ../src/main.c:288 ../src/main.c:295 ../src/main.c:302
-msgid "enabled"
-msgstr "เปิดใช้งาน"
-
-#: ../src/main.c:290 ../src/main.c:297 ../src/main.c:304
-msgid "disabled"
-msgstr "ปิด"
-
-#: ../src/main.c:293
-#, c-format
-msgid "    Desktop Icons:       %s\n"
-msgstr "    ไอคอนพื้นโต๊ะ:          %s\n"
-
-#: ../src/main.c:300
-#, c-format
-msgid "    Desktop File Icons:  %s\n"
-msgstr "    ไอคอนแฟ้มบนพื้นโต๊ะ:     %s\n"
-
-#: ../src/main.c:333
-#, c-format
-msgid "%s is not running.\n"
-msgstr "%s ไม่ได้ทำงานอยู่\n"
-
 #: ../src/menu.c:106
 msgid "_Applications"
 msgstr "โ_ปรแกรม"
@@ -564,6 +509,79 @@ msgstr "_ลบพื้นที่ทำงาน %d"
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "_ลบพื้นที่ทำงาน '%s'"
+
+#: ../src/xfdesktop-application.c:773
+msgid "Display version information"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:774
+msgid "Reload all settings"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:775
+msgid "Pop up the menu (at the current mouse position)"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:776
+msgid "Pop up the window list (at the current mouse position)"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:778
+msgid "Automatically arrange all the icons on the desktop"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:780
+msgid "Do not wait for a window manager on startup"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:781
+msgid "Cause xfdesktop to quit"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:796
+#, c-format
+msgid "Failed to parse arguments: %s\n"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:807
+#, c-format
+msgid "This is %s version %s, running on Xfce %s.\n"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:809
+#, c-format
+msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
+msgstr ""
+
+#: ../src/xfdesktop-application.c:813
+#, c-format
+msgid "Build options:\n"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:814
+#, c-format
+msgid "    Desktop Menu:        %s\n"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:816 ../src/xfdesktop-application.c:823
+#: ../src/xfdesktop-application.c:830
+msgid "enabled"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:818 ../src/xfdesktop-application.c:825
+#: ../src/xfdesktop-application.c:832
+msgid "disabled"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:821
+#, c-format
+msgid "    Desktop Icons:       %s\n"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:828
+#, c-format
+msgid "    Desktop File Icons:  %s\n"
+msgstr ""
 
 #: ../src/xfdesktop-file-icon-manager.c:578
 #: ../src/xfdesktop-file-icon-manager.c:595
@@ -719,23 +737,23 @@ msgstr "_ตั้งค่าพื้นโต๊ะ..."
 msgid "P_roperties..."
 msgstr "คุณ_สมบัติ..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2697
+#: ../src/xfdesktop-file-icon-manager.c:2747
 msgid "Load Error"
 msgstr "โหลดผิดพลาด"
 
-#: ../src/xfdesktop-file-icon-manager.c:2699
+#: ../src/xfdesktop-file-icon-manager.c:2749
 msgid "Failed to load the desktop folder"
 msgstr "โหลดโฟลเดอร์พื้นโต๊ะไม่สำเร็จ"
 
-#: ../src/xfdesktop-file-icon-manager.c:3239
+#: ../src/xfdesktop-file-icon-manager.c:3289
 msgid "Copy _Here"
 msgstr "คัดลอกมาที่_นี่"
 
-#: ../src/xfdesktop-file-icon-manager.c:3239
+#: ../src/xfdesktop-file-icon-manager.c:3289
 msgid "_Move Here"
 msgstr "_ย้ายมาที่นี่"
 
-#: ../src/xfdesktop-file-icon-manager.c:3239
+#: ../src/xfdesktop-file-icon-manager.c:3289
 msgid "_Link Here"
 msgstr "เ_ชื่อมโยงมาที่นี่"
 
@@ -903,7 +921,7 @@ msgstr "กำลังดันสื่อในอุปกรณ์ \"%s\" �
 msgid "Eject Finished"
 msgstr "ดันสื่อออกเรียบร้อยแล้ว"
 
-#: ../src/xfdesktop-regular-file-icon.c:601
+#: ../src/xfdesktop-regular-file-icon.c:606
 #, c-format
 msgid ""
 "Type: %s\n"
