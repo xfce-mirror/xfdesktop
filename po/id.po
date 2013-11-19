@@ -1,20 +1,22 @@
-# Indonesian translation of the xfdesktop package.
-# Copyright (C) 2003-2006 The Xfce development team.
-# This file is distributed under the same license as the xfdesktop package.
-# Andhika Padmawan <andhika.padmawan@gmail.com>, 2008.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 # 
+# Translators:
+# Andhika Padmawan <andhika.padmawan@gmail.com>, 2008
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop 4.4.0\n"
+"Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-23 11:18+0000\n"
-"PO-Revision-Date: 2008-12-21 21:17+0700\n"
-"Last-Translator: Andhika Padmawan <andhika.padmawan@gmail.com>\n"
-"Language-Team: Indonesian <id@li.org>\n"
+"POT-Creation-Date: 2013-07-02 23:19+0200\n"
+"PO-Revision-Date: 2013-11-19 14:49+0000\n"
+"Last-Translator: Nick <nick@xfce.org>\n"
+"Language-Team: Indonesian (http://www.transifex.com/projects/p/xfce/language/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: id\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
 #, c-format
@@ -27,9 +29,7 @@ msgstr "Berkas senarai latar belakang tidak sah"
 msgid ""
 "%s\n"
 "<i>Size: %dx%d</i>"
-msgstr ""
-"%s\n"
-"<i>Ukuran: %dx%d</i>"
+msgstr "%s\n<i>Ukuran: %dx%d</i>"
 
 #: ../settings/main.c:299 ../src/xfdesktop-special-file-icon.c:271
 #: ../src/xfdesktop-special-file-icon.c:434
@@ -65,9 +65,7 @@ msgstr "Buat/Muat Senarai Latar Belakang"
 #, c-format
 msgid ""
 "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
-"Berkas \"%s\" bukan berkas senarai latar belakang yang sah. Anda ingin "
-"menimpanya?"
+msgstr "Berkas \"%s\" bukan berkas senarai latar belakang yang sah. Anda ingin menimpanya?"
 
 #: ../settings/main.c:543
 msgid "Invalid List File"
@@ -166,344 +164,332 @@ msgid "Set desktop background and menu and icon behaviour"
 msgstr "Atur latar belakang desktop dan menu serta perilaku ikon"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
-msgid "<b>Adjustments</b>"
-msgstr "<b>Penyesuaian</b>"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
-msgid "<b>Colors</b>"
-msgstr "<b>Warna</b>"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
-msgid "<b>Image</b>"
-msgstr "<b>Citra</b>"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
-msgid "<b>Images</b>"
-msgstr "<b>Citra</b>"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
-msgid "Add an image to the list"
-msgstr "Tambah citra ke senarai"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
-#: ../settings/xfdesktop-settings-ui.glade.h:6
+#: ../settings/xfdesktop-settings-ui.glade.h:1
 msgid "Auto"
 msgstr "Otomatis"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
-msgid "Automatically pick a random image from a list file"
-msgstr "Otomatis memilih citra secara acak dari senarai berkas"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
-msgid "B_rightness:"
-msgstr "K_ecerahan:"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
-#: ../settings/xfdesktop-settings-ui.glade.h:8
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
+#: ../settings/xfdesktop-settings-ui.glade.h:2
 msgid "Centered"
 msgstr "Tengah"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
-msgid "Create a new list, or load an existing one"
-msgstr "Buat senarai baru, atau muat yang telah ada"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
-msgid "Don't display an image at all"
-msgstr "Jangan tampilkan citra sama sekali"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
-#: ../settings/xfdesktop-settings-ui.glade.h:12
-msgid "Horizontal gradient"
-msgstr "Gradasi horisontal"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
-msgid "Image _list"
-msgstr "Senarai _citra"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
-msgid "Increase or decrease the brightness of the final image"
-msgstr "Naikkan atau turunkan kecerahan citra akhir"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
-msgid "Increase or decrease the color saturation of the final image"
-msgstr "Naikkan atau turunkan saturasi warna citra akhir"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
-msgid ""
-"Number of minutes before a different background is randomly selected from "
-"the list."
-msgstr ""
-"Jumlah menit sebelum latar belakang yang berbeda secara acak dipilih dari "
-"senarai."
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
-msgid "Remove the selected image(s) from the list"
-msgstr "Hapus citra terpilih dari senarai"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
-msgid "Sa_turation:"
-msgstr "Sa_turasi:"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
-#: ../settings/xfdesktop-settings-ui.glade.h:23
-msgid "Scaled"
-msgstr "Skala"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
-msgid "Select First Color"
-msgstr "Pilih Warna Pertama"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
-msgid "Select Second Color"
-msgstr "Pilih Warna Kedua"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
-msgid "Select a single image as the backdrop"
-msgstr "Pilih citra tunggal sebagai latar belakang"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
-#: ../settings/xfdesktop-settings-ui.glade.h:35
-msgid "Solid color"
-msgstr "Warna solid"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
-msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-msgstr "Tentukan warna \"kanan\" atau \"bawah\" dari gradasi"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
-msgid ""
-"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr "Tentukan warna solid, atau warna \"kiri\" atau \"atas\" dari gradasi"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
-msgid "Specify how the image will be resized to fit the screen"
-msgstr "Tentukan bagaimana citra akan diubah ukuran agar pas dengan layar"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
-msgid "Specify the style of the color drawn behind the backdrop image"
-msgstr "Tentukan gaya warna yang digambar di belakang citra latar belakang"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
-msgid "St_retch this background across all monitors."
-msgstr "Bentangkan lata_r belakang ini ke semua monitor."
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
-msgid "St_yle:"
-msgstr "Ga_ya:"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
-#: ../settings/xfdesktop-settings-ui.glade.h:37
-msgid "Stretched"
-msgstr "Rentang"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
-#: ../settings/xfdesktop-settings-ui.glade.h:38
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
+#: ../settings/xfdesktop-settings-ui.glade.h:3
 msgid "Tiled"
 msgstr "Ubin"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
-#: ../settings/xfdesktop-settings-ui.glade.h:39
-msgid "Transparent"
-msgstr "Transparan"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
+#: ../settings/xfdesktop-settings-ui.glade.h:4
+msgid "Stretched"
+msgstr "Rentang"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
-#: ../settings/xfdesktop-settings-ui.glade.h:42
-msgid "Vertical gradient"
-msgstr "Gradasi vertikal"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
+#: ../settings/xfdesktop-settings-ui.glade.h:5
+msgid "Scaled"
+msgstr "Skala"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
-msgid ""
-"When multiple monitors are present, select this option to stretch the "
-"current background over all of them."
-msgstr ""
-"Jika ada banyak monitor, pilih opsi ini untuk membentangkan latar belakang "
-"saat ini ke semua monitor tersebut."
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
-msgid ""
-"While in image list mode, select this option to automatically select a "
-"different background from the image list after a set number of minutes."
-msgstr ""
-"Ketika dalam mode senarai gambar, pilih opsi ini agar secara otomatis "
-"memilih latar belakang yang berbeda dari senarai gambar setelah jumlah menit "
-"tertentu."
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:36
-#: ../settings/xfdesktop-settings-ui.glade.h:43
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
+#: ../settings/xfdesktop-settings-ui.glade.h:6
 msgid "Zoomed"
 msgstr "Perbesar"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:37
-msgid "_Change the background (in minutes):"
-msgstr "_Ubah latar belakang (dalam menit):"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
+#: ../settings/xfdesktop-settings-ui.glade.h:7
+msgid "Solid color"
+msgstr "Warna solid"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:38
-msgid "_None"
-msgstr "Ta_k ada"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
+#: ../settings/xfdesktop-settings-ui.glade.h:8
+msgid "Horizontal gradient"
+msgstr "Gradasi horisontal"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:39
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
+#: ../settings/xfdesktop-settings-ui.glade.h:9
+msgid "Vertical gradient"
+msgstr "Gradasi vertikal"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
+#: ../settings/xfdesktop-settings-ui.glade.h:10
+msgid "Transparent"
+msgstr "Transparan"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
+msgid "Add an image to the list"
+msgstr "Tambah citra ke senarai"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
+msgid "Remove the selected image(s) from the list"
+msgstr "Hapus citra terpilih dari senarai"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
+msgid "Create a new list, or load an existing one"
+msgstr "Buat senarai baru, atau muat yang telah ada"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
+msgid "St_yle:"
+msgstr "Ga_ya:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
+msgid "Specify how the image will be resized to fit the screen"
+msgstr "Tentukan bagaimana citra akan diubah ukuran agar pas dengan layar"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
+msgid "<b>Images</b>"
+msgstr "<b>Citra</b>"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
+msgid "Select a single image as the backdrop"
+msgstr "Pilih citra tunggal sebagai latar belakang"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 msgid "_Single image"
 msgstr "_Citra tunggal"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:1
-msgid "<b>Appearance</b>"
-msgstr "<b>Tampilan</b>"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
+msgid "Automatically pick a random image from a list file"
+msgstr "Otomatis memilih citra secara acak dari senarai berkas"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:2
-msgid "<b>Default Icons</b>"
-msgstr "<b>Ikon Standar</b>"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
+msgid "Image _list"
+msgstr "Senarai _citra"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:3
-msgid "<b>Desktop Menu</b>"
-msgstr "<b>Menu Destop</b>"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
+msgid "Don't display an image at all"
+msgstr "Jangan tampilkan citra sama sekali"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:4
-msgid "<b>Window List Menu</b>"
-msgstr "<b>Menu Senarai Jendela</b>"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
+msgid "_None"
+msgstr "Ta_k ada"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:5
-msgid "Alt"
-msgstr "Alt"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
+msgid "<b>Image</b>"
+msgstr "<b>Citra</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:7
-msgid "B_utton:"
-msgstr "T_ombol:"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
+msgid "Specify the style of the color drawn behind the backdrop image"
+msgstr "Tentukan gaya warna yang digambar di belakang citra latar belakang"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:9
-msgid "Control"
-msgstr "Kontrol"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
+msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr "Tentukan warna solid, atau warna \"kiri\" atau \"atas\" dari gradasi"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:795
-msgid "Desktop"
-msgstr "Destop"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
+msgid "Select First Color"
+msgstr "Pilih Warna Pertama"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
+msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
+msgstr "Tentukan warna \"kanan\" atau \"bawah\" dari gradasi"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
+msgid "Select Second Color"
+msgstr "Pilih Warna Kedua"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
+msgid "<b>Colors</b>"
+msgstr "<b>Warna</b>"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
+msgid "B_rightness:"
+msgstr "K_ecerahan:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
+msgid "Increase or decrease the brightness of the final image"
+msgstr "Naikkan atau turunkan kecerahan citra akhir"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
+msgid "Sa_turation:"
+msgstr "Sa_turasi:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
+msgid "Increase or decrease the color saturation of the final image"
+msgstr "Naikkan atau turunkan saturasi warna citra akhir"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
+msgid "<b>Adjustments</b>"
+msgstr "<b>Penyesuaian</b>"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
+msgid "_Change the background (in minutes):"
+msgstr "_Ubah latar belakang (dalam menit):"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:36
+msgid ""
+"While in image list mode, select this option to automatically select a "
+"different background from the image list after a set number of minutes."
+msgstr "Ketika dalam mode senarai gambar, pilih opsi ini agar secara otomatis memilih latar belakang yang berbeda dari senarai gambar setelah jumlah menit tertentu."
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:37
+msgid ""
+"Number of minutes before a different background is randomly selected from "
+"the list."
+msgstr "Jumlah menit sebelum latar belakang yang berbeda secara acak dipilih dari senarai."
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:38
+msgid "St_retch this background across all monitors."
+msgstr "Bentangkan lata_r belakang ini ke semua monitor."
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:39
+msgid ""
+"When multiple monitors are present, select this option to stretch the "
+"current background over all of them."
+msgstr "Jika ada banyak monitor, pilih opsi ini untuk membentangkan latar belakang saat ini ke semua monitor tersebut."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:11
-msgid "File/launcher icons"
-msgstr "Ikon berkas/peluncur"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:13
-msgid "Icon _size:"
-msgstr "Ukuran _ikon:"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:14
-msgid "Icon _type:"
-msgstr "Tipe i_kon:"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:15
-msgid "Label trans_parency:"
-msgstr "Label trans_paransi:"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:16
 msgid "Left"
 msgstr "Kiri"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:17
+#: ../settings/xfdesktop-settings-ui.glade.h:12
 msgid "Middle"
 msgstr "Tengah"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:13
+msgid "Right"
+msgstr "Kanan"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:14
+msgid "None"
+msgstr "Tak ada"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:15
+msgid "Shift"
+msgstr "Shift"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:16
+msgid "Alt"
+msgstr "Alt"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:17
+msgid "Control"
+msgstr "Kontrol"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:18
 msgid "Minimized application icons"
 msgstr "Ikon aplikasi diminimalkan"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:19
-msgid "Mo_difier:"
-msgstr "Pemo_difikasi:"
+msgid "File/launcher icons"
+msgstr "Ikon berkas/peluncur"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:20
-msgid "Modi_fier:"
-msgstr "Pemodi_fikasi:"
+#: ../settings/xfdesktop-settings-ui.glade.h:20 ../src/xfce-desktop.c:795
+msgid "Desktop"
+msgstr "Destop"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:21
-msgid "None"
-msgstr "Tak ada"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:22
-msgid "Right"
-msgstr "Kanan"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:24
-msgid ""
-"Select this option to display preview-able files on the desktop as "
-"automatically generated thumbnail icons."
-msgstr ""
-"Pilih opsi ini untuk menampilkan berkas yang dapat ditampilkan di desktop "
-"sebagai ikon miniatur yang dapat dihasilkan secara otomatis."
-
-#: ../settings/xfdesktop-settings-ui.glade.h:25
 msgid "Set desktop background and menu and icon behavior"
 msgstr "Atur latar belakang destop dan menu dan perilaku ikon"
 
+#: ../settings/xfdesktop-settings-ui.glade.h:22
+msgid "_Background"
+msgstr "_Latar Belakang"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:23
+msgid "Show applications menu on _desktop right click"
+msgstr "Tampilkan menu aplikasi pada klik kanan _desktop"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:24
+msgid "_Button:"
+msgstr "_Tombol:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:25
+msgid "Mo_difier:"
+msgstr "Pemo_difikasi:"
+
 #: ../settings/xfdesktop-settings-ui.glade.h:26
-msgid "Sh_ow application icons in menu"
-msgstr "Tamp_ilkan ikon aplikasi di menu"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:27
-msgid "Shift"
-msgstr "Shift"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:28
 msgid "Show _application icons in menu"
 msgstr "Tampilkan _ikon aplikasi di menu"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:27
+msgid "_Edit desktop menu"
+msgstr "_Sunting menu destop"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:28
+msgid "<b>Desktop Menu</b>"
+msgstr "<b>Menu Destop</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:29
 msgid "Show _window list menu on desktop middle click"
 msgstr "Tampilkan menu _senarai jendela pada klik tengah desktop"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:30
-msgid "Show applications menu on _desktop right click"
-msgstr "Tampilkan menu aplikasi pada klik kanan _desktop"
+msgid "B_utton:"
+msgstr "T_ombol:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:31
-msgid "Show s_ticky windows only in active workspace"
-msgstr "Tampilkan ha_nya jendela melekat di ruang kerja aktif"
+msgid "Modi_fier:"
+msgstr "Pemodi_fikasi:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:32
-msgid "Show t_humbnails"
-msgstr "Tampilkan m_iniatur"
+msgid "Sh_ow application icons in menu"
+msgstr "Tamp_ilkan ikon aplikasi di menu"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
 msgid "Show workspace _names in list"
 msgstr "Tampilkan _nama ruang kerja dalam senarai"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:34
-msgid "Single _click to activate items"
-msgstr "Klik _tunggal untuk mengaktifkan item"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:36
-msgid ""
-"Specify the transparency level for the rounded label drawn behind the icon "
-"text"
-msgstr ""
-"Tentukan level transparansi untuk label bundar yang digambar di belakang "
-"teks ikon"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:40
 msgid "Use _submenus for the windows in each workspace"
 msgstr "Gunakan _submenu untuk jendela di tiap ruang kerja"
 
+#: ../settings/xfdesktop-settings-ui.glade.h:35
+msgid "Show s_ticky windows only in active workspace"
+msgstr "Tampilkan ha_nya jendela melekat di ruang kerja aktif"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:36
+msgid "<b>Window List Menu</b>"
+msgstr "<b>Menu Senarai Jendela</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:37
+msgid "_Menus"
+msgstr "_Menu"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:38
+msgid "Icon _type:"
+msgstr "Tipe i_kon:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:39
+msgid "Icon _size:"
+msgstr "Ukuran _ikon:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:40
+msgid "Show t_humbnails"
+msgstr "Tampilkan m_iniatur"
+
 #: ../settings/xfdesktop-settings-ui.glade.h:41
+msgid ""
+"Select this option to display preview-able files on the desktop as "
+"automatically generated thumbnail icons."
+msgstr "Pilih opsi ini untuk menampilkan berkas yang dapat ditampilkan di desktop sebagai ikon miniatur yang dapat dihasilkan secara otomatis."
+
+#: ../settings/xfdesktop-settings-ui.glade.h:42
+msgid "Single _click to activate items"
+msgstr "Klik _tunggal untuk mengaktifkan item"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:43
 msgid "Use custom _font size:"
 msgstr "Gunakan ukuran _fonta suai:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:44
-msgid "_Background"
-msgstr "_Latar Belakang"
+msgid "Label trans_parency:"
+msgstr "Label trans_paransi:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:45
-msgid "_Button:"
-msgstr "_Tombol:"
+msgid ""
+"Specify the transparency level for the rounded label drawn behind the icon "
+"text"
+msgstr "Tentukan level transparansi untuk label bundar yang digambar di belakang teks ikon"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:46
-msgid "_Edit desktop menu"
-msgstr "_Sunting menu destop"
+msgid "<b>Appearance</b>"
+msgstr "<b>Tampilan</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:47
-msgid "_Icons"
-msgstr "_Ikon"
+msgid "<b>Default Icons</b>"
+msgstr "<b>Ikon Standar</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:48
-msgid "_Menus"
-msgstr "_Menu"
+msgid "_Icons"
+msgstr "_Ikon"
 
 #: ../src/main.c:243
 msgid "Display version information"
@@ -637,9 +623,7 @@ msgstr "Galat Folder Desktop"
 #: ../src/xfdesktop-file-icon-manager.c:521
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
-msgstr ""
-"Sebuah berkas normal dengan nama yang sama telah ada. Silakan hapus atau "
-"ganti nama."
+msgstr "Sebuah berkas normal dengan nama yang sama telah ada. Silakan hapus atau ganti nama."
 
 #: ../src/xfdesktop-file-icon-manager.c:624
 #: ../src/xfdesktop-file-icon-manager.c:668 ../src/xfdesktop-file-utils.c:863
@@ -663,9 +647,7 @@ msgstr "Berkas terpilih tak dapat dihapus"
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
-msgstr ""
-"Fitur ini memerlukan adanya sebuah layanan manajer berkas yang tersedia "
-"(seperti yang disediakan oleh Thunar)."
+msgstr "Fitur ini memerlukan adanya sebuah layanan manajer berkas yang tersedia (seperti yang disediakan oleh Thunar)."
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:770
@@ -697,9 +679,7 @@ msgstr "Buka Dengan \"%s\""
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
-msgstr ""
-"Tak dapat menjalankan \"exo-desktop-item-edit\", yang diperlukan untuk "
-"membuat dan menyunting peluncur serta tautan di destop."
+msgstr "Tak dapat menjalankan \"exo-desktop-item-edit\", yang diperlukan untuk membuat dan menyunting peluncur serta tautan di destop."
 
 #: ../src/xfdesktop-file-icon-manager.c:1407
 msgid "_Open all"
@@ -848,9 +828,7 @@ msgstr "Berkas terpilih tak dapat dipindahkan ke tempat sampah"
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
-msgstr ""
-"Fitur ini memerlukan adanya layanan tempat sampah (seperti yang disediakan "
-"oleh Thunar)."
+msgstr "Fitur ini memerlukan adanya layanan tempat sampah (seperti yang disediakan oleh Thunar)."
 
 #: ../src/xfdesktop-file-utils.c:911 ../src/xfdesktop-file-utils.c:925
 msgid "Could not empty the trash"
@@ -912,11 +890,9 @@ msgstr "Melepas kaitan divais"
 #: ../src/xfdesktop-notify.c:131
 #, c-format
 msgid ""
-"The device \"%s\" is being unmounted by the system. Please do not remove the "
-"media or disconnect the drive"
-msgstr ""
-"Divais \"%s\" sedang dilepaskaitkan oleh sistem. Tolong jangan mengeluarkan "
-"atau melepas peranti"
+"The device \"%s\" is being unmounted by the system. Please do not remove the"
+" media or disconnect the drive"
+msgstr "Divais \"%s\" sedang dilepaskaitkan oleh sistem. Tolong jangan mengeluarkan atau melepas peranti"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
@@ -927,11 +903,9 @@ msgstr "Menulis data ke divais"
 #: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
 #, c-format
 msgid ""
-"There is data that needs to be written to the device \"%s\" before it can be "
-"removed. Please do not remove the media or disconnect the drive"
-msgstr ""
-"Ada data yang perlu ditulis ke divais \"%s\" sebelum divais dapat "
-"dilepaskan. Tolong jangan mengeluarkan media atau melepas peranti"
+"There is data that needs to be written to the device \"%s\" before it can be"
+" removed. Please do not remove the media or disconnect the drive"
+msgstr "Ada data yang perlu ditulis ke divais \"%s\" sebelum divais dapat dilepaskan. Tolong jangan mengeluarkan media atau melepas peranti"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:253
@@ -942,8 +916,7 @@ msgstr "Mengeluarkan divais"
 #: ../src/xfdesktop-notify.c:256
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
-msgstr ""
-"Divais \"%s\" sedang dikeluarkan. Hal ini dapat memakan waktu beberapa saat "
+msgstr "Divais \"%s\" sedang dikeluarkan. Hal ini dapat memakan waktu beberapa saat "
 
 #: ../src/xfdesktop-regular-file-icon.c:556
 #, c-format
@@ -951,10 +924,7 @@ msgid ""
 "Type: %s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr ""
-"Tipe: %s\n"
-"Ukuran: %s\n"
-"Terakhir dimodifikasi: %s"
+msgstr "Tipe: %s\nUkuran: %s\nTerakhir dimodifikasi: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:273
 #: ../src/xfdesktop-special-file-icon.c:432
@@ -980,10 +950,7 @@ msgid ""
 "%s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr ""
-"%s\n"
-"Ukuran: %s\n"
-"Terakhir dimodifikasi: %s"
+msgstr "%s\nUkuran: %s\nTerakhir dimodifikasi: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:522
 msgid "_Empty Trash"
@@ -995,18 +962,13 @@ msgid ""
 "Removable Volume\n"
 "Mounted in \"%s\"\n"
 "%s left (%s total)"
-msgstr ""
-"Volume Dapat Dilepas\n"
-"Dikaitkan di \"%s\"\n"
-"%s tersisa (%s total)"
+msgstr "Volume Dapat Dilepas\nDikaitkan di \"%s\"\n%s tersisa (%s total)"
 
 #: ../src/xfdesktop-volume-icon.c:454
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
-msgstr ""
-"Volume Dapat Dilepas\n"
-"Belum dikaitkan"
+msgstr "Volume Dapat Dilepas\nBelum dikaitkan"
 
 #: ../src/xfdesktop-volume-icon.c:480 ../src/xfdesktop-volume-icon.c:522
 #, c-format
@@ -1037,914 +999,3 @@ msgstr "_Mount Volume"
 #: ../src/xfdesktop-window-icon.c:208
 msgid "_Window Actions"
 msgstr "_Tindakan Jendela"
-
-#~ msgid "Unable to contact the Xfce Trash service."
-#~ msgstr "Tak dapat menghubungi layanan Tempat Sampah Xfce."
-
-#~ msgid ""
-#~ "Make sure you have a file manager installed that supports the Xfce Trash "
-#~ "service, such as Thunar."
-#~ msgstr ""
-#~ "Pastikan bahwa anda telah menginstal manajer berkas yang mendukung "
-#~ "layanan Tempat Sampah Xfce, seperti Thunar."
-
-#~ msgid "Needs terminal"
-#~ msgstr "Terminal"
-
-#~ msgid "Command"
-#~ msgstr "Perintah"
-
-#~ msgid "Icon name"
-#~ msgstr "Desainer ikon"
-
-#~ msgid "Startup notification"
-#~ msgstr "Gunakan pemberitahua_n hidupkan"
-
-#~ msgid "Unable to launch xfce4-menueditor: %s"
-#~ msgstr "Tak dapat menjalankan xfce4-menueditor: %s"
-
-#~ msgid "Select Icon"
-#~ msgstr "Pilih Ikon"
-
-#~ msgid "Select Menu File"
-#~ msgstr "Pilih Berkas Menu"
-
-#~ msgid "All Files"
-#~ msgstr "Semua Berkas"
-
-#~ msgid "Image Files"
-#~ msgstr "Berkas Citra"
-
-#~ msgid "Menu Files"
-#~ msgstr "Berkas Menu"
-
-#~ msgid "Xfce Menu"
-#~ msgstr "Menu Xfce"
-
-#~ msgid "Button"
-#~ msgstr "Tombol"
-
-#~ msgid "Button _title:"
-#~ msgstr "Judul _tombol:"
-
-#~ msgid "_Show title in button"
-#~ msgstr "_Tampilkan judul di tombol"
-
-#~ msgid "Menu File"
-#~ msgstr "Berkas Menu"
-
-#~ msgid "Use default _desktop menu file"
-#~ msgstr "Gunakan berkas menu _destop standar"
-
-#~ msgid "Use _custom menu file:"
-#~ msgstr "Gunakan _berkas menu suai:"
-
-#~ msgid "_Edit Menu"
-#~ msgstr "_Sunting Menu"
-
-#~ msgid "Icons"
-#~ msgstr "Ikon"
-
-#~ msgid "_Button icon:"
-#~ msgstr "_Ikon Tombol:"
-
-#~ msgid "Show _icons in menu"
-#~ msgstr "Tampilkan _ikon di menu"
-
-#~ msgid "There is already a panel menu registered for this screen"
-#~ msgstr "Telah ada menu panel yang terdaftar untuk layar ini"
-
-#~ msgid "Edit Menu"
-#~ msgstr "Sunting Menu"
-
-#~ msgid "Shows a menu containing categories of installed applications"
-#~ msgstr "Tampilkan menu yang berisi kategori aplikasi terinstal"
-
-#~ msgid "%s: Unknown option: %s\n"
-#~ msgstr "%s: Opsi tak diketahui: %s\n"
-
-#~ msgid "Options are:\n"
-#~ msgstr "Opsinya adalah:\n"
-
-#~ msgid "    --reload      Reload all settings, refresh image list\n"
-#~ msgstr ""
-#~ "    --reload      Muat ulang semua pengaturan, segarkan senarai citra\n"
-
-#~ msgid "    --menu        Pop up the menu (at the current mouse position)\n"
-#~ msgstr "    --menu        Munculkan menu (di posisi tetikus sekarang)\n"
-
-#~ msgid ""
-#~ "    --windowlist  Pop up the window list (at the current mouse position)\n"
-#~ msgstr ""
-#~ "    --windowlist  Munculkan senarai jendela (di posisi tetikus sekarang)\n"
-
-#~ msgid "    --quit        Cause xfdesktop to quit\n"
-#~ msgstr "    --quit        Menyebabkan xfdesktop untuk berhenti\n"
-
-#~ msgid ""
-#~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-#~ msgstr ""
-#~ "Xfdesktop tak dapat membuat folder \"%s\" tempat menyimpan item destop:"
-
-#~ msgid "Create Folder Failed"
-#~ msgstr "Gagal Membuat Folder"
-
-#~ msgid ""
-#~ "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not "
-#~ "a folder."
-#~ msgstr ""
-#~ "Xfdesktop tak dapat menggunakan \"%s\" untuk menahan item destop karena "
-#~ "itu bukan folder."
-
-#~ msgid "Please delete or rename the file."
-#~ msgstr "Silakan hapus atau namai ulang berkas."
-
-#~ msgid "Rename \"%s\""
-#~ msgstr "Namai ulang \"%s\""
-
-#~ msgid "Enter the new name:"
-#~ msgstr "Masukkan nama baru:"
-
-#~ msgid "Rename"
-#~ msgstr "Namai Ulang"
-
-#~ msgid "Are you sure that you want to delete \"%s\"?"
-#~ msgstr "Anda yakin ingin menghapus \"%s\"?"
-
-#~ msgid "Question"
-#~ msgstr "Pertanyaan"
-
-#~ msgid "If you delete a file, it is permanently lost."
-#~ msgstr "Jika anda menghapus berkas, maka selamanya akan hilang."
-
-#~ msgid "Are you sure you want to delete the following %d files?"
-#~ msgstr "Anda yakin ingin menghapus berkas %d berikut?"
-
-#~ msgid "Delete Multiple Files"
-#~ msgstr "Hapus Banyak Berkas"
-
-#~ msgid "The application chooser could not be opened."
-#~ msgstr "Pemilih aplikasi tak dapat dibuka."
-
-#~ msgid ""
-#~ "This feature requires a file manager service present (such as that "
-#~ "supplied by Thunar)."
-#~ msgstr ""
-#~ "Fitur ini memerlukan adanya layanan manajer berkas (seperti yang "
-#~ "disediakan oleh Thunar)."
-
-#~ msgid "Unable to create folder named \"%s\":"
-#~ msgstr "Tak dapat membuat folder yang bernama \"%s\":"
-
-#~ msgid "Create New Folder"
-#~ msgstr "Buat Folder Baru"
-
-#~ msgid "New Folder"
-#~ msgstr "Folder Baru"
-
-#~ msgid "Create"
-#~ msgstr "Buat"
-
-#~ msgid "Unable to create file named \"%s\":"
-#~ msgstr "Tak dapat membuat berkas baru yang bernama \"%s\":"
-
-#~ msgid "Create File Failed"
-#~ msgstr "Buat Berkas Gagal"
-
-#~ msgid "Create Document from template \"%s\""
-#~ msgstr "Buat Dokumen dari templat \"%s\""
-
-#~ msgid "Create Empty File"
-#~ msgstr "Buat Berkas Kosong"
-
-#~ msgid "New Empty File"
-#~ msgstr "Berkas Kosong Baru"
-
-#~ msgid "Unable to create file \"%s\":"
-#~ msgstr "Tak dapat membuat berkas \"%s\":"
-
-#~ msgid "Create Error"
-#~ msgstr "Galat Buat"
-
-#~ msgid "Failed to run \"%s\":"
-#~ msgstr "Gagal menjalankan \"%s\":"
-
-#~ msgid "Run Error"
-#~ msgstr "Galat Jalan"
-
-#~ msgid "The associated application could not be found or executed."
-#~ msgstr "Aplikasi yang diasosiasikan tak dapat ditemukan atau dieksekusi."
-
-#~ msgid "Unable to set default application for \"%s\" to \"%s\":"
-#~ msgstr "Tak dapat mengatur aplikasi standar untuk \"%s\" ke \"%s\":"
-
-#~ msgid "Properties Error"
-#~ msgstr "Galat Properti"
-
-#~ msgid "Write only"
-#~ msgstr "Hanya tulis"
-
-#~ msgid "Read only"
-#~ msgstr "Hanya baca"
-
-#~ msgid "Read & Write"
-#~ msgstr "Baca & Tulis"
-
-#~ msgid "General"
-#~ msgstr "Umum"
-
-#~ msgid "Name:"
-#~ msgstr "Nama:"
-
-#~ msgid "Kind:"
-#~ msgstr "Jenis:"
-
-#~ msgid "(unknown)"
-#~ msgstr "(tak diketahui)"
-
-#~ msgid "Open With:"
-#~ msgstr "Buka Dengan:"
-
-#~ msgid "Modified:"
-#~ msgstr "Dimodifikasi:"
-
-#~ msgid "Accessed:"
-#~ msgstr "Diakses:"
-
-#~ msgid "Free Space:"
-#~ msgstr "Ruang Kosong:"
-
-#~ msgid "Size:"
-#~ msgstr "Ukuran:"
-
-#~ msgid "%s (%"
-#~ msgstr "%s (%"
-
-#~ msgid "Permissions"
-#~ msgstr "Hak Akses"
-
-#~ msgid "Owner:"
-#~ msgstr "Pemilik:"
-
-#~ msgid "Access:"
-#~ msgstr "Akses:"
-
-#~ msgid "Group:"
-#~ msgstr "Grup:"
-
-#~ msgid "Others:"
-#~ msgstr "Lainnya:"
-
-#~ msgid "Yes to _all"
-#~ msgstr "Ya untuk semu_a"
-
-#~ msgid "There was an error moving \"%s\" to \"%s\":"
-#~ msgstr "Ada galat ketika memindahkan \"%s\" ke \"%s\":"
-
-#~ msgid "There was an error copying \"%s\" to \"%s\":"
-#~ msgstr "Ada galat ketika menyalin \"%s\" ke \"%s\":"
-
-#~ msgid "There was an error linking \"%s\" to \"%s\":"
-#~ msgstr "Ada galat ketika menautkan \"%s\" ke \"%s\":"
-
-#~ msgid "File Error"
-#~ msgstr "Galat Berkas"
-
-#~ msgid "broken link"
-#~ msgstr "tautan rusak"
-
-#~ msgid "link to %s"
-#~ msgstr "taut ke %s"
-
-#~ msgid ""
-#~ "Kind: %s\n"
-#~ "Modified:%s\n"
-#~ "Size: %s"
-#~ msgstr ""
-#~ "Jenis: %s\n"
-#~ "Dimodifikasi:%s\n"
-#~ "Ukuran: %s"
-
-#~ msgid "Error"
-#~ msgstr "Galat"
-
-#~ msgid "Failed to rename \"%s\" to \"%s\":"
-#~ msgstr "Gagal menamai ulang \"%s\" ke \"%s\":"
-
-#~ msgid "Kind: Trash"
-#~ msgstr "Jenis: Tempat Sampah"
-
-#~ msgid "%s (%s total)"
-#~ msgstr "%s (%s total)"
-
-#~ msgid ""
-#~ "Kind: Removable Volume\n"
-#~ "Mount Point: %s\n"
-#~ "Free Space: %s"
-#~ msgstr ""
-#~ "Jenis: Volume Bisa Pindah\n"
-#~ "Titik Kait: %s\n"
-#~ "Ruang Kosong: %s"
-
-#~ msgid "Unable to mount \"%s\":"
-#~ msgstr "Tak dapat mount \"%s\":"
-
-#~ msgid "Unable to unmount \"%s\":"
-#~ msgstr "Tak dapat melepas mount \"%s\":"
-
-#~ msgid "Unmount Failed"
-#~ msgstr "Lepas Mount Gagal"
-
-#~ msgid "Unable to eject \"%s\":"
-#~ msgstr "Tak dapat mengeluarkan \"%s\":"
-
-#~ msgid "_Unmount Volume"
-#~ msgstr "_Lepas Mount Volume"
-
-#~ msgid "Accessories"
-#~ msgstr "Aksesoris"
-
-#~ msgid "Common desktop tools and applications"
-#~ msgstr "Alat dan aplikasi umum destop"
-
-#~ msgid "Development"
-#~ msgstr "Pengembangan"
-
-#~ msgid "Software development tools"
-#~ msgstr "Alat pengembangan peranti lunak"
-
-#~ msgid "Education"
-#~ msgstr "Pendidikan"
-
-#~ msgid "Educational software"
-#~ msgstr "Peranti lunak pendidikan"
-
-#~ msgid "Games"
-#~ msgstr "Permainan"
-
-#~ msgid "Games, puzzles, and other fun software"
-#~ msgstr "Permainan, teka-teki, dan peranti lunak menyenangkan lainnya"
-
-#~ msgid "Graphics"
-#~ msgstr "Grafik"
-
-#~ msgid "Graphics creation and manipulation applications"
-#~ msgstr "Aplikasi pembuatan dan manipulasi grafik"
-
-#~ msgid "Audio and video players and editors"
-#~ msgstr "Pemutar dan penyunting audio dan video"
-
-#~ msgid "Multimedia"
-#~ msgstr "Multimedia"
-
-#~ msgid "Network"
-#~ msgstr "Jaringan"
-
-#~ msgid "Network applications and utilities"
-#~ msgstr "Aplikasi dan utilitas jaringan"
-
-#~ msgid "Office"
-#~ msgstr "Perkantoran"
-
-#~ msgid "Office and productivity applications"
-#~ msgstr "Aplikasi perkantoran dan produktivitas"
-
-#~ msgid "Applications that don't fit into other categories"
-#~ msgstr "Aplikasi yang tidak cocok masuk ke kategori lain"
-
-#~ msgid "Other"
-#~ msgstr "Lainnya"
-
-#~ msgid "Screensaver applets"
-#~ msgstr "Applet penyimpan layar"
-
-#~ msgid "Screensavers"
-#~ msgstr "Penyimpan layar"
-
-#~ msgid "Desktop and system settings applications"
-#~ msgstr "Aplikasi pengaturan sistem dan destop"
-
-#~ msgid "Settings"
-#~ msgstr "Pengaturan"
-
-#~ msgid "System"
-#~ msgstr "Sistem"
-
-#~ msgid "System tools and utilities"
-#~ msgstr "Utilitas dan alat sistem"
-
-#~ msgid "About Xfce"
-#~ msgstr "Tentang Xfce"
-
-#~ msgid "Information about the Xfce Desktop Environment"
-#~ msgstr "Informasi tentang Lingkungan Destop Xfce"
-
-#~ msgid "File Manager"
-#~ msgstr "Manajer Berkas"
-
-#~ msgid "Thunar file manager"
-#~ msgstr "Manajer berkas Thunar"
-
-#~ msgid "Help"
-#~ msgstr "Bantuan"
-
-#~ msgid "Help using Xfce"
-#~ msgstr "Bantuan menggunakan Xfce"
-
-#~ msgid "Log Out"
-#~ msgstr "Log Keluar"
-
-#~ msgid "Log out of the Xfce Desktop"
-#~ msgstr "Log keluar Destop Xfce"
-
-#~ msgid "Run Program..."
-#~ msgstr "Jalankan Program..."
-
-#~ msgid "Run a program"
-#~ msgstr "Jalankan program"
-
-#~ msgid "Terminal"
-#~ msgstr "Terminal"
-
-#~ msgid "Terminal emulator"
-#~ msgstr "Emulator terminal"
-
-#~ msgid "Browse the web"
-#~ msgstr "Ramban web"
-
-#~ msgid "Web Browser"
-#~ msgstr "Peramban Web"
-
-#~ msgid ""
-#~ "Auto\n"
-#~ "Centered\n"
-#~ "Tiled\n"
-#~ "Stretched\n"
-#~ "Scaled\n"
-#~ "Zoomed"
-#~ msgstr ""
-#~ "Otomatis\n"
-#~ "Terpusat\n"
-#~ "Ubin\n"
-#~ "Direntangkan\n"
-#~ "Diskalakan\n"
-#~ "Diperbesar"
-
-#~ msgid ""
-#~ "Left\n"
-#~ "Middle\n"
-#~ "Right"
-#~ msgstr ""
-#~ "Kiri\n"
-#~ "Tengah\n"
-#~ "Kanan"
-
-#~ msgid ""
-#~ "None\n"
-#~ "Minimized application icons\n"
-#~ "File/launcher icons"
-#~ msgstr ""
-#~ "Tak ada\n"
-#~ "Ikon aplikasi diminimalkan\n"
-#~ "Ikon berkas/peluncur"
-
-#~ msgid ""
-#~ "None\n"
-#~ "Shift\n"
-#~ "Alt\n"
-#~ "Control"
-#~ msgstr ""
-#~ "Tak ada\n"
-#~ "Shift\n"
-#~ "Alt\n"
-#~ "Control"
-
-#~ msgid ""
-#~ "Solid color\n"
-#~ "Horizontal gradient\n"
-#~ "Vertical gradient\n"
-#~ "Transparent"
-#~ msgstr ""
-#~ "Warna solid\n"
-#~ "Gradasi horizontal\n"
-#~ "Gradasi vertikal\n"
-#~ "Transparan"
-
-#~ msgid "gtk-close"
-#~ msgstr "gtk-close"
-
-#~ msgid "gtk-help"
-#~ msgstr "gtk-help"
-
-#~ msgid "Use startup _notification"
-#~ msgstr "Gunakan pemberitahua_n hidupkan"
-
-#~ msgid "Contributor"
-#~ msgstr "Kontributor"
-
-#~ msgid "Icon designer"
-#~ msgstr "Desainer ikon"
-
-#~ msgid "Solid Color"
-#~ msgstr "Warna Solid"
-
-#~ msgid "Horizontal Gradient"
-#~ msgstr "Gradasi Horisontal"
-
-#~ msgid "Vertical Gradient"
-#~ msgstr "Gradasi Vertikal"
-
-#~ msgid "Add menu entry"
-#~ msgstr "Tambah entri menu"
-
-#~ msgid "Type:"
-#~ msgstr "Tipe:"
-
-#~ msgid "Title"
-#~ msgstr "Judul"
-
-#~ msgid "Submenu"
-#~ msgstr "Submenu"
-
-#~ msgid "Launcher"
-#~ msgstr "Peluncur"
-
-#~ msgid "Separator"
-#~ msgstr "Pemisah"
-
-#~ msgid "Quit"
-#~ msgstr "Keluar"
-
-#~ msgid "Command:"
-#~ msgstr "Perintah:"
-
-#~ msgid "Icon:"
-#~ msgstr "Ikon:"
-
-#~ msgid "No icon"
-#~ msgstr "Tak ada ikon"
-
-#~ msgid "Themed icon:"
-#~ msgstr "Ikon bertema:"
-
-#~ msgid "Select icon"
-#~ msgstr "Pilih ikon"
-
-#~ msgid "Run in _terminal"
-#~ msgstr "Jalankan di _terminal"
-
-#~ msgid "Select command"
-#~ msgstr "Pilih perintah"
-
-#~ msgid "Executable Files"
-#~ msgstr "Berkas Dapat Dieksekusi"
-
-#~ msgid "Perl Scripts"
-#~ msgstr "Skrip Perl"
-
-#~ msgid "Python Scripts"
-#~ msgstr "Skrip Python"
-
-#~ msgid "Ruby Scripts"
-#~ msgstr "Skrip Ruby"
-
-#~ msgid "Shell Scripts"
-#~ msgstr "Skrip Shell"
-
-#~ msgid "Add external menu entry"
-#~ msgstr "Tambah entri menu eksternal"
-
-#~ msgid "File"
-#~ msgstr "Berkas"
-
-#~ msgid "Source:"
-#~ msgstr "Sumber:"
-
-#~ msgid "Select external menu"
-#~ msgstr "Pilih menu eksternal"
-
-#~ msgid "Style:"
-#~ msgstr "Gaya:"
-
-#~ msgid "Simple"
-#~ msgstr "Sederhana"
-
-#~ msgid "Multilevel"
-#~ msgstr "Multilevel"
-
-#~ msgid "_Unique entries only"
-#~ msgstr "_Hanya entri unik"
-
-#~ msgid "Edit menu entry"
-#~ msgstr "Sunting entri menu"
-
-#~ msgid "Edit external menu entry"
-#~ msgstr "Sunting entri menu eksternal"
-
-#~ msgid "Xfce4-MenuEditor"
-#~ msgstr "Xfce4-MenuEditor"
-
-#~ msgid "Menueditor Warning"
-#~ msgstr "Peringatan Penyunting menu"
-
-#~ msgid "xfce4-menueditor is deprecated"
-#~ msgstr "xfce4-menueditor telah kuno"
-
-#~ msgid ""
-#~ "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
-#~ "edit the new menu file format.  You may continue and edit an old-style "
-#~ "menu file, or quit."
-#~ msgstr ""
-#~ "Sistem menu Xfce telah diganti, dan xfce-menueditor tak lagi dapat "
-#~ "digunakan menyunting format berkas menu baru. Anda dapat melanjutkan dan "
-#~ "menyunting berkas menu gaya lama, atau keluar."
-
-#~ msgid "Continue"
-#~ msgstr "Lanjutkan"
-
-#~ msgid "_File"
-#~ msgstr "_Berkas"
-
-#~ msgid "_New"
-#~ msgstr "Ba_ru"
-
-#~ msgid "Create a new empty menu"
-#~ msgstr "Buat menu kosong baru"
-
-#~ msgid "Open existing menu"
-#~ msgstr "Buka menu yang telah ada"
-
-#~ msgid "Open _default menu"
-#~ msgstr "Buka menu stan_dar"
-
-#~ msgid "Open default menu"
-#~ msgstr "Buka menu standar"
-
-#~ msgid "_Save"
-#~ msgstr "_Simpan"
-
-#~ msgid "Save modifications"
-#~ msgstr "Simpan perubahan"
-
-#~ msgid "Save _as..."
-#~ msgstr "Simpan seb_agai..."
-
-#~ msgid "Save menu under a given name"
-#~ msgstr "Simpan menu sesuai nama yang diberikan"
-
-#~ msgid "_Close"
-#~ msgstr "_Tutup"
-
-#~ msgid "Close menu"
-#~ msgstr "Tutup menu"
-
-#~ msgid "_Quit"
-#~ msgstr "_Keluar"
-
-#~ msgid "Quit Xfce4-Menueditor"
-#~ msgstr "Keluar Xfce4-Menueditor"
-
-#~ msgid "_Edit"
-#~ msgstr "_Sunting"
-
-#~ msgid "_Edit entry"
-#~ msgstr "Sunting _entri"
-
-#~ msgid "Edit selected entry"
-#~ msgstr "Sunting entri terpilih"
-
-#~ msgid "_Add entry"
-#~ msgstr "Ta_mbah entri"
-
-#~ msgid "Add a new entry in the menu"
-#~ msgstr "Tambah entri baru di menu"
-
-#~ msgid "Add _external"
-#~ msgstr "Tambah _eksternal"
-
-#~ msgid "Add an external entry"
-#~ msgstr "Tambah entri eksternal"
-
-#~ msgid "_Remove entry"
-#~ msgstr "_Hapus entri"
-
-#~ msgid "Remove entry"
-#~ msgstr "Hapus entri"
-
-#~ msgid "_Up"
-#~ msgstr "_Atas"
-
-#~ msgid "_Down"
-#~ msgstr "_Bawah"
-
-#~ msgid "Move entry down"
-#~ msgstr "Pindah entri ke bawah"
-
-#~ msgid "_Help"
-#~ msgstr "Ba_ntuan"
-
-#~ msgid "_About..."
-#~ msgstr "_Tentang..."
-
-#~ msgid "Show informations about xfce4-menueditor"
-#~ msgstr "Tampilkan informasi tentang xfce4-menueditor"
-
-#~ msgid "Collapse all"
-#~ msgstr "Tutup semua"
-
-#~ msgid "Collapse all menu entries"
-#~ msgstr "Tutup semua entri menu"
-
-#~ msgid "Expand all"
-#~ msgstr "Rentang semua"
-
-#~ msgid "Expand all menu entries"
-#~ msgstr "Rentangkan semua entri menu"
-
-#~ msgid "Name"
-#~ msgstr "Nama"
-
-#~ msgid "Hidden"
-#~ msgstr "Tersembunyi"
-
-#~ msgid "Are you sure you want to close the current menu?"
-#~ msgstr "Anda yakin ingin menutup menu saat ini?"
-
-#~ msgid "Do you want to save before closing the file?"
-#~ msgstr "Anda ingin menyimpan sebelum menutup berkas?"
-
-#~ msgid "Do you want to save before opening an other menu ?"
-#~ msgstr "Anda ingin menyimpan sebelum membuka menu lain ?"
-
-#~ msgid "Ignore modifications"
-#~ msgstr "Abaikan perubahan"
-
-#~ msgid "Open menu file"
-#~ msgstr "Buka berkas menu"
-
-#~ msgid "Do you want to save before opening the default menu ?"
-#~ msgstr "Anda ingin menyimpan sebelum membuka menu standar ?"
-
-#~ msgid "Save menu file as"
-#~ msgstr "Simpan berkas menu sebagai"
-
-#~ msgid "Do you want to save before closing the menu ?"
-#~ msgstr "Anda ingin menyimpan sebelum menutup menu ?"
-
-#~ msgid "quit"
-#~ msgstr "keluar"
-
-#~ msgid "--- separator ---"
-#~ msgstr "--- pemisah ---"
-
-#~ msgid "--- include ---"
-#~ msgstr "--- termasuk ---"
-
-#~ msgid "system"
-#~ msgstr "sistem"
-
-#~ msgid "Do you want to move the item into the submenu?"
-#~ msgstr "Anda ingin memindah item ke dalam submenu?"
-
-#~ msgid "A menu editor for Xfce4"
-#~ msgstr "Penyunting menu untuk Xfce4"
-
-#~ msgid "Author/Maintainer"
-#~ msgstr "Penulis/Pengelola"
-
-#~ msgid "You have modified the menu, do you want to save it before quitting ?"
-#~ msgstr "Anda telah mengubah menu, anda ingin menyimpannya sebelum keluar ?"
-
-#~ msgid "Forget modifications"
-#~ msgstr "Lupakan perubahan"
-
-#~ msgid "Unable to open the menu file %s in write mode"
-#~ msgstr "Tak dapat membuka berkas menu %s dalam mode tulis"
-
-#~ msgid "Graphical tool for editing the Xfce 4 menu"
-#~ msgstr "Alat grafis untuk menyunting menu Xfce 4"
-
-#~ msgid "Menu Editor"
-#~ msgstr "Penyunting Menu"
-
-#~ msgid "Xfce 4 Menu Editor"
-#~ msgstr "Penyunting Menu Xfce 4"
-
-#~ msgid "Settings for the Xfce 4 Desktop Manager"
-#~ msgstr "Pengaturan untuk Manajer Destop Xfce 4"
-
-#~ msgid "Xfce 4 Desktop Settings"
-#~ msgstr "Pengaturan Destop Xfce 4"
-
-#~ msgid "Show windows on each workspace in _submenus"
-#~ msgstr "Tampilkan jendela pada tiap ruang kerja dalam _submenu"
-
-#~ msgid "Use _Xfce to manage the desktop"
-#~ msgstr "Gunakan _Xfce untuk mengatur destop"
-
-#~ msgid ""
-#~ "Could not save file %s: %s\n"
-#~ "\n"
-#~ "Please choose another location or press cancel in the dialog to discard "
-#~ "your changes"
-#~ msgstr ""
-#~ "Tak dapat menyimpan berkas %s: %s\n"
-#~ "\n"
-#~ "Silakan pilih lokasi lain atau tekan batal pada dialog untuk membatalkan "
-#~ "perubahan anda"
-
-#~ msgid "Button Label|Desktop"
-#~ msgstr "Destop"
-
-#~ msgid "backdrops.list"
-#~ msgstr "latarbelakang.list"
-
-#~ msgid "Select backdrop image or list file"
-#~ msgstr "Pilih citra latar belakang atau berkas senarai "
-
-#~ msgid "List Files (*.list)"
-#~ msgstr "Berkas Senarai (*.list)"
-
-#~ msgid "_Edit list..."
-#~ msgstr "Sunting senarai... (_E)"
-
-#~ msgid "_New list..."
-#~ msgstr "Senarai baru... (_N)"
-
-#~ msgid "S_tyle:"
-#~ msgstr "Gaya: (_t)"
-
-#~ msgid "Xfce will be unable to manage your desktop (%s)."
-#~ msgstr "Xfce tak akan dapat mengatur destop anda (%s)"
-
-#~ msgid "Unknown Error"
-#~ msgstr "Galat tak diketahui"
-
-#~ msgid "Unable to start xfdesktop"
-#~ msgstr "Tak dapat menjalankan xfdesktop"
-
-#~ msgid ""
-#~ "To ensure that this setting takes effect the next time you start Xfce, "
-#~ "please be sure to save your session when logging out.  If you are not "
-#~ "using the Xfce Session Manager (xfce4-session), you will need to manually "
-#~ "edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
-#~ "documentation provided on http://xfce.org/."
-#~ msgstr ""
-#~ "Untuk memastikan bahwa pengaturan ini akan berjalan ketika lain kali anda "
-#~ "menjalankan Xfce, pastikan untuk menyimpan sesi anda ketika log keluar.  "
-#~ "Jika anda tidak menggunakan Manajer Sesi Xfce (xfce4-session), anda perlu "
-#~ "menyunting secara manual berkas ~/.config/xfce4/xinitrc.  Keterangan "
-#~ "lebih lanjut tersedia pada dokumentasi yang ada di http://xfce.org/."
-
-#~ msgid ""
-#~ "To ensure that Xfce does not manage your desktop the next time you start "
-#~ "Xfce, please be sure to save your session when logging out.  If you are "
-#~ "not using the Xfce Session Manager (xfce4-session), you will need to "
-#~ "manually edit your ~/.config/xfce4/xinitrc file.  Details are available "
-#~ "in the documentation provided on http://xfce.org/."
-#~ msgstr ""
-#~ "Untuk memastikan bahwa Xfce tidak mengatur destop anda ketika lain kali "
-#~ "anda menjalankan Xfce, pastikan untuk menyimpan sesi anda ketika log "
-#~ "keluar.  Jika anda tidak menggunakan Manajer Sesi Xfce (xfce4-session), "
-#~ "anda perlu menyunting secara manual berkas ~/.config/xfce4/xinitrc.  "
-#~ "Keterangan lebih lanjut tersedia pada dokumentasi yang ada di http://xfce."
-#~ "org/."
-
-#~ msgid "_Do not show this again"
-#~ msgstr "Jangan tampilkan ini lagi (_D)"
-
-#~ msgid "Desktop Preferences"
-#~ msgstr "Pengaturan Destop"
-
-#~ msgid "Color"
-#~ msgstr "Warna"
-
-#~ msgid "_Color Style:"
-#~ msgstr "Gaya Warna: (_C)"
-
-#~ msgid "Image"
-#~ msgstr "Citra"
-
-#~ msgid "Show _Image"
-#~ msgstr "Tampilkan Citra (_I)"
-
-#~ msgid "_File:"
-#~ msgstr "Berkas: (_F)"
-
-#~ msgid "_Behavior"
-#~ msgstr "Perilaku (_B)"
-
-#~ msgid "Select backdrop image file"
-#~ msgstr "Pilih berkas citra latar belakang"
-
-#~ msgid "List file"
-#~ msgstr "Berkas senarai"
-
-#~ msgid "Edit backdrop list"
-#~ msgstr "Sunting senarai latar belakang"
-
-#~ msgid "Use _system font size"
-#~ msgstr "Gunakan ukuran fonta _sistem"
-
-#~ msgid "Scientific software"
-#~ msgstr "Peranti lunak pendidikan"
