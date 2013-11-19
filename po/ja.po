@@ -1,28 +1,25 @@
-# $Id$
-#
-# Japanese translations for xfdesktop package.
-# Copyright (C) 2003-2012 The Xfce development team.
-# This file is distributed under the same license as the xfdesktop package.
-# Zhao Ji <zhao-ji@awz.ne.jp>, 2003.
-# Daichi Kawahata <daichi@xfce.org>, 2005-2007.
-# Nobuhiro Iwamatsu <iwamatsu@nigauri.org>, 2008.
-# Masato Hashimoto <cabezon.hashimoto@gmail.com>, 2010-2012.
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Nobuhiro Iwamatsu <iwamatsu@nigauri.org>, 2008
+# Zhao Ji <zhao-ji@awz.ne.jp>, 2003
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop\n"
+"Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-14 21:55+0900\n"
-"PO-Revision-Date: 2012-04-14 21:59+0900\n"
-"Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
-"Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
-"Language: ja\n"
+"POT-Creation-Date: 2013-07-02 23:19+0200\n"
+"PO-Revision-Date: 2013-11-19 14:49+0000\n"
+"Last-Translator: Nick <nick@xfce.org>\n"
+"Language-Team: Japanese (http://www.transifex.com/projects/p/xfce/language/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../common/xfdesktop-common.c:96
-#: ../common/xfdesktop-common.c:200
+#: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
 #, c-format
 msgid "Backdrop list file is not valid"
 msgstr "画像リストファイルが正しくありません"
@@ -33,12 +30,9 @@ msgstr "画像リストファイルが正しくありません"
 msgid ""
 "%s\n"
 "<i>Size: %dx%d</i>"
-msgstr ""
-"%s\n"
-"<i>サイズ: %d x %d</i>"
+msgstr "%s\n<i>サイズ: %d x %d</i>"
 
-#: ../settings/main.c:299
-#: ../src/xfdesktop-special-file-icon.c:271
+#: ../settings/main.c:299 ../src/xfdesktop-special-file-icon.c:271
 #: ../src/xfdesktop-special-file-icon.c:434
 msgid "Home"
 msgstr "ホーム"
@@ -47,7 +41,6 @@ msgstr "ホーム"
 msgid "Filesystem"
 msgstr "ファイルシステム"
 
-# FIXME: wtf
 #: ../settings/main.c:303
 msgid "Trash"
 msgstr "ゴミ箱"
@@ -61,8 +54,7 @@ msgstr "リムーバブルデバイス"
 msgid "Cannot create backdrop list \"%s\""
 msgstr "画像リスト \"%s\" を作成できません"
 
-#: ../settings/main.c:489
-#: ../settings/main.c:862
+#: ../settings/main.c:489 ../settings/main.c:875
 msgid "Backdrop List Error"
 msgstr "画像リストエラー"
 
@@ -72,7 +64,8 @@ msgstr "画像リストの作成/読み込み"
 
 #: ../settings/main.c:538
 #, c-format
-msgid "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgid ""
+"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
 msgstr "ファイル \"%s\" は正常な画像リストファイルではありません。上書きしますか?"
 
 #: ../settings/main.c:543
@@ -87,80 +80,79 @@ msgstr "上書きするとその内容は失われます。"
 msgid "Replace"
 msgstr "置換"
 
-#: ../settings/main.c:858
+#: ../settings/main.c:871
 #, c-format
 msgid "Failed to write backdrop list to \"%s\""
 msgstr "画像リスト \"%s\" に書き込めませんでした"
 
-#: ../settings/main.c:885
+#: ../settings/main.c:898
 msgid "Add Image File(s)"
 msgstr "画像ファイルの追加"
 
-#: ../settings/main.c:894
+#: ../settings/main.c:907
 msgid "Image files"
 msgstr "画像ファイル"
 
-#: ../settings/main.c:899
+#: ../settings/main.c:912
 msgid "All files"
 msgstr "すべてのファイル"
 
-#: ../settings/main.c:1356
+#: ../settings/main.c:1376
 #, c-format
 msgid "Screen %d, Monitor %d (%s)"
 msgstr "画面 %d, モニター %d (%s)"
 
-#: ../settings/main.c:1360
+#: ../settings/main.c:1380
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "画面 %d, モニター %d"
 
-#: ../settings/main.c:1363
+#: ../settings/main.c:1383
 #, c-format
 msgid "Screen %d"
 msgstr "画面 %d"
 
-#: ../settings/main.c:1368
+#: ../settings/main.c:1388
 #, c-format
 msgid "Monitor %d (%s)"
 msgstr "モニター %d (%s)"
 
-#: ../settings/main.c:1372
+#: ../settings/main.c:1392
 #, c-format
 msgid "Monitor %d"
 msgstr "モニター %d"
 
-#: ../settings/main.c:1631
+#: ../settings/main.c:1651
 msgid "Settings manager socket"
 msgstr "設定マネージャーソケット"
 
-#: ../settings/main.c:1631
+#: ../settings/main.c:1651
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: ../settings/main.c:1632
+#: ../settings/main.c:1652
 msgid "Version information"
 msgstr "バージョン情報"
 
-#: ../settings/main.c:1649
+#: ../settings/main.c:1669
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "'%s --help' で使用方法が表示されます。"
 
-#: ../settings/main.c:1661
+#: ../settings/main.c:1681
 msgid "The Xfce development team. All rights reserved."
 msgstr "The Xfce development team. All rights reserved."
 
-#: ../settings/main.c:1662
+#: ../settings/main.c:1682
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "バグの報告は <%s> までおねがいします。"
 
-#: ../settings/main.c:1669
+#: ../settings/main.c:1689
 msgid "Desktop Settings"
 msgstr "デスクトップ設定"
 
-# FIXME: wtf
-#: ../settings/main.c:1671
+#: ../settings/main.c:1691
 msgid "Unable to contact settings server"
 msgstr "設定サーバーに接続できません"
 
@@ -246,7 +238,6 @@ msgstr "画像を画面に合わせるスタイルを指定します"
 msgid "<b>Images</b>"
 msgstr "<b>画像</b>"
 
-# Tip Help
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Select a single image as the backdrop"
 msgstr "選択した単一の画像を背景にします"
@@ -303,7 +294,6 @@ msgstr "<b>色</b>"
 msgid "B_rightness:"
 msgstr "明度(_R):"
 
-# Tip Help
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
 msgid "Increase or decrease the brightness of the final image"
 msgstr "画像の最終的な明度を調整します"
@@ -312,7 +302,6 @@ msgstr "画像の最終的な明度を調整します"
 msgid "Sa_turation:"
 msgstr "彩度(_T):"
 
-# Tip Help
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
 msgid "Increase or decrease the color saturation of the final image"
 msgstr "画像の最終的な彩度を調整します"
@@ -326,11 +315,15 @@ msgid "_Change the background (in minutes):"
 msgstr "背景を自動的に切り替える (分単位)(_C):"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:36
-msgid "While in image list mode, select this option to automatically select a different background from the image list after a set number of minutes."
+msgid ""
+"While in image list mode, select this option to automatically select a "
+"different background from the image list after a set number of minutes."
 msgstr "画像リストモードの時、このオプションでリストの画像を指定した間隔で自動的に切り替えます。"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:37
-msgid "Number of minutes before a different background is randomly selected from the list."
+msgid ""
+"Number of minutes before a different background is randomly selected from "
+"the list."
 msgstr "ここで指定した分数が経過すると、リストからランダムで選ばれた背景に切り替えます。"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:38
@@ -338,7 +331,9 @@ msgid "St_retch this background across all monitors."
 msgstr "この背景をすべてのモニターに渡り表示する(_R)"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:39
-msgid "When multiple monitors are present, select this option to stretch the current background over all of them."
+msgid ""
+"When multiple monitors are present, select this option to stretch the "
+"current background over all of them."
 msgstr "複数のモニターが接続されている時、このオプションを選ぶと現在の背景を全モニターに渡って表示します。"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:11
@@ -377,8 +372,7 @@ msgstr "最小化されたアプリケーションアイコン"
 msgid "File/launcher icons"
 msgstr "ファイル/ランチャーアイコン"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:20
-#: ../src/xfce-desktop.c:793
+#: ../settings/xfdesktop-settings-ui.glade.h:20 ../src/xfce-desktop.c:795
 msgid "Desktop"
 msgstr "デスクトップ"
 
@@ -463,7 +457,9 @@ msgid "Show t_humbnails"
 msgstr "サムネイルを表示する(_H)"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:41
-msgid "Select this option to display preview-able files on the desktop as automatically generated thumbnail icons."
+msgid ""
+"Select this option to display preview-able files on the desktop as "
+"automatically generated thumbnail icons."
 msgstr "このオプションを選択するとデスクトップにあるプレビュー表示可能なファイルにはサムネイルアイコンを自動生成します。"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:42
@@ -479,7 +475,9 @@ msgid "Label trans_parency:"
 msgstr "透明度(_P):"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:45
-msgid "Specify the transparency level for the rounded label drawn behind the icon text"
+msgid ""
+"Specify the transparency level for the rounded label drawn behind the icon "
+"text"
 msgstr "アイコンの文字の背景の透明度を指定してください"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:46
@@ -543,15 +541,11 @@ msgstr "ビルドオプション:\n"
 msgid "    Desktop Menu:        %s\n"
 msgstr "    メニュー:            %s\n"
 
-#: ../src/main.c:287
-#: ../src/main.c:294
-#: ../src/main.c:301
+#: ../src/main.c:287 ../src/main.c:294 ../src/main.c:301
 msgid "enabled"
 msgstr "有効"
 
-#: ../src/main.c:289
-#: ../src/main.c:296
-#: ../src/main.c:303
+#: ../src/main.c:289 ../src/main.c:296 ../src/main.c:303
 msgid "disabled"
 msgstr "無効"
 
@@ -593,8 +587,7 @@ msgstr "ワークスペース %d"
 msgid "<i>Workspace %d</i>"
 msgstr "<i>ワークスペース %d</i>"
 
-#: ../src/windowlist.c:362
-#: ../src/windowlist.c:365
+#: ../src/windowlist.c:362 ../src/windowlist.c:365
 msgid "_Add Workspace"
 msgstr "ワークスペースを追加(_A)"
 
@@ -608,12 +601,12 @@ msgstr "ワークスペース %d を削除(_R)"
 msgid "_Remove Workspace '%s'"
 msgstr "ワークスペース '%s' を削除(_R)"
 
-#: ../src/xfce-desktop.c:1082
+#: ../src/xfce-desktop.c:1084
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "画像リストファイルからファイル \"%s\" を読み込めません"
 
-#: ../src/xfce-desktop.c:1084
+#: ../src/xfce-desktop.c:1086
 msgid "Desktop Error"
 msgstr "デスクトップエラー"
 
@@ -629,15 +622,13 @@ msgid "Desktop Folder Error"
 msgstr "デスクトップフォルダーエラー"
 
 #: ../src/xfdesktop-file-icon-manager.c:521
-msgid "A normal file with the same name already exists. Please delete or rename it."
+msgid ""
+"A normal file with the same name already exists. Please delete or rename it."
 msgstr "同じ名前の通常ファイルがすでに存在します。そちらを削除または変名してください。"
 
-# FIXME: wtf
 #: ../src/xfdesktop-file-icon-manager.c:624
-#: ../src/xfdesktop-file-icon-manager.c:668
-#: ../src/xfdesktop-file-utils.c:863
-#: ../src/xfdesktop-file-utils.c:878
-#: ../src/xfdesktop-file-utils.c:910
+#: ../src/xfdesktop-file-icon-manager.c:668 ../src/xfdesktop-file-utils.c:863
+#: ../src/xfdesktop-file-utils.c:878 ../src/xfdesktop-file-utils.c:910
 #: ../src/xfdesktop-file-utils.c:924
 msgid "Trash Error"
 msgstr "ゴミ箱エラー"
@@ -648,18 +639,15 @@ msgid "The selected files could not be trashed"
 msgstr "選択したファイルをゴミ箱に捨てることができませんでした"
 
 #: ../src/xfdesktop-file-icon-manager.c:626
-#: ../src/xfdesktop-file-icon-manager.c:670
-#: ../src/xfdesktop-file-utils.c:762
-#: ../src/xfdesktop-file-utils.c:821
-#: ../src/xfdesktop-file-utils.c:979
-#: ../src/xfdesktop-file-utils.c:1035
-#: ../src/xfdesktop-file-utils.c:1085
-#: ../src/xfdesktop-file-utils.c:1135
-#: ../src/xfdesktop-file-utils.c:1212
-#: ../src/xfdesktop-file-utils.c:1273
-#: ../src/xfdesktop-file-utils.c:1346
+#: ../src/xfdesktop-file-icon-manager.c:670 ../src/xfdesktop-file-utils.c:762
+#: ../src/xfdesktop-file-utils.c:821 ../src/xfdesktop-file-utils.c:979
+#: ../src/xfdesktop-file-utils.c:1035 ../src/xfdesktop-file-utils.c:1085
+#: ../src/xfdesktop-file-utils.c:1135 ../src/xfdesktop-file-utils.c:1212
+#: ../src/xfdesktop-file-utils.c:1273 ../src/xfdesktop-file-utils.c:1346
 #: ../src/xfdesktop-file-utils.c:1424
-msgid "This feature requires a file manager service to be present (such as the one supplied by Thunar)."
+msgid ""
+"This feature requires a file manager service to be present (such as the one "
+"supplied by Thunar)."
 msgstr "この機能には (Thunar が提供するような) ファイルマネージャーサービスが必要です。"
 
 #. printf is to be translator-friendly
@@ -671,31 +659,27 @@ msgstr "\"%s\" を実行できません:"
 
 #: ../src/xfdesktop-file-icon-manager.c:772
 #: ../src/xfdesktop-file-icon-manager.c:1033
-#: ../src/xfdesktop-file-icon-manager.c:1350
-#: ../src/xfdesktop-file-utils.c:707
-#: ../src/xfdesktop-file-utils.c:1118
-#: ../src/xfdesktop-file-utils.c:1133
-#: ../src/xfdesktop-file-utils.c:1185
-#: ../src/xfdesktop-file-utils.c:1210
-#: ../src/xfdesktop-file-utils.c:1256
-#: ../src/xfdesktop-file-utils.c:1271
+#: ../src/xfdesktop-file-icon-manager.c:1350 ../src/xfdesktop-file-utils.c:707
+#: ../src/xfdesktop-file-utils.c:1118 ../src/xfdesktop-file-utils.c:1133
+#: ../src/xfdesktop-file-utils.c:1185 ../src/xfdesktop-file-utils.c:1210
+#: ../src/xfdesktop-file-utils.c:1256 ../src/xfdesktop-file-utils.c:1271
 msgid "Launch Error"
 msgstr "実行エラー"
 
-# In ja translation: follow the thunar's style (Do not bracket off)
 #: ../src/xfdesktop-file-icon-manager.c:957
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "%s で開く(_O)"
 
-# In ja translation: following the thunar's style (Do not bracket off)
 #: ../src/xfdesktop-file-icon-manager.c:960
 #, c-format
 msgid "Open With \"%s\""
 msgstr "%s で開く"
 
 #: ../src/xfdesktop-file-icon-manager.c:1035
-msgid "Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."
+msgid ""
+"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
+"edit launchers and links on the desktop."
 msgstr "\"exo-desktop-item-edit\" を実行できません。これはデスクトップにランチャーやリンクを作成したり編集したりするために必要です。"
 
 #: ../src/xfdesktop-file-icon-manager.c:1407
@@ -707,8 +691,7 @@ msgid "_Open in New Window"
 msgstr "新しいウィンドウで開く(_O)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1425
-#: ../src/xfdesktop-special-file-icon.c:501
-#: ../src/xfdesktop-volume-icon.c:683
+#: ../src/xfdesktop-special-file-icon.c:505 ../src/xfdesktop-volume-icon.c:691
 msgid "_Open"
 msgstr "開く(_O)"
 
@@ -744,7 +727,6 @@ msgstr "実行(_E)"
 msgid "_Edit Launcher"
 msgstr "ランチャーの編集(_E)"
 
-# FIXME: format string
 #: ../src/xfdesktop-file-icon-manager.c:1588
 msgid "Open With"
 msgstr "アプリケーションで開く"
@@ -766,7 +748,7 @@ msgid "Desktop _Settings..."
 msgstr "デスクトップの設定(_S)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1744
-#: ../src/xfdesktop-volume-icon.c:731
+#: ../src/xfdesktop-volume-icon.c:739
 msgid "P_roperties..."
 msgstr "プロパティ(_R)..."
 
@@ -823,98 +805,80 @@ msgstr "不明"
 msgid "The folder could not be opened"
 msgstr "フォルダーを開けませんでした"
 
-#: ../src/xfdesktop-file-utils.c:745
-#: ../src/xfdesktop-file-utils.c:760
+#: ../src/xfdesktop-file-utils.c:745 ../src/xfdesktop-file-utils.c:760
 msgid "Rename Error"
 msgstr "名前の変更エラー"
 
-#: ../src/xfdesktop-file-utils.c:746
-#: ../src/xfdesktop-file-utils.c:761
+#: ../src/xfdesktop-file-utils.c:746 ../src/xfdesktop-file-utils.c:761
 msgid "The file could not be renamed"
 msgstr "ファイルの名前を変更できませんでした"
 
-#: ../src/xfdesktop-file-utils.c:804
-#: ../src/xfdesktop-file-utils.c:819
+#: ../src/xfdesktop-file-utils.c:804 ../src/xfdesktop-file-utils.c:819
 msgid "Delete Error"
 msgstr "削除エラー"
 
-#: ../src/xfdesktop-file-utils.c:805
-#: ../src/xfdesktop-file-utils.c:820
+#: ../src/xfdesktop-file-utils.c:805 ../src/xfdesktop-file-utils.c:820
 msgid "The selected files could not be deleted"
 msgstr "選択したファイルを削除できませんでした"
 
-#: ../src/xfdesktop-file-utils.c:864
-#: ../src/xfdesktop-file-utils.c:879
+#: ../src/xfdesktop-file-utils.c:864 ../src/xfdesktop-file-utils.c:879
 msgid "The selected files could not be moved to the trash"
 msgstr "選択したファイルをゴミ箱へ移動できませんでした"
 
-#: ../src/xfdesktop-file-utils.c:880
-#: ../src/xfdesktop-file-utils.c:926
-msgid "This feature requires a trash service to be present (such as the one supplied by Thunar)."
+#: ../src/xfdesktop-file-utils.c:880 ../src/xfdesktop-file-utils.c:926
+msgid ""
+"This feature requires a trash service to be present (such as the one "
+"supplied by Thunar)."
 msgstr "この機能には (Thunar が提供するような) ゴミ箱サービスが必要です。"
 
-#: ../src/xfdesktop-file-utils.c:911
-#: ../src/xfdesktop-file-utils.c:925
+#: ../src/xfdesktop-file-utils.c:911 ../src/xfdesktop-file-utils.c:925
 msgid "Could not empty the trash"
 msgstr "ゴミ箱を空にできませんでした"
 
-#: ../src/xfdesktop-file-utils.c:962
-#: ../src/xfdesktop-file-utils.c:977
+#: ../src/xfdesktop-file-utils.c:962 ../src/xfdesktop-file-utils.c:977
 msgid "Create File Error"
 msgstr "ファイル作成エラー"
 
-#: ../src/xfdesktop-file-utils.c:963
-#: ../src/xfdesktop-file-utils.c:978
+#: ../src/xfdesktop-file-utils.c:963 ../src/xfdesktop-file-utils.c:978
 msgid "Could not create a new file"
 msgstr "新しいファイルを作成できませんでした"
 
-#: ../src/xfdesktop-file-utils.c:1018
-#: ../src/xfdesktop-file-utils.c:1033
+#: ../src/xfdesktop-file-utils.c:1018 ../src/xfdesktop-file-utils.c:1033
 msgid "Create Document Error"
 msgstr "ドキュメント作成エラー"
 
-#: ../src/xfdesktop-file-utils.c:1019
-#: ../src/xfdesktop-file-utils.c:1034
+#: ../src/xfdesktop-file-utils.c:1019 ../src/xfdesktop-file-utils.c:1034
 msgid "Could not create a new document from the template"
 msgstr "テンプレートから新しいドキュメントを作成できませんでした"
 
-#: ../src/xfdesktop-file-utils.c:1068
-#: ../src/xfdesktop-file-utils.c:1083
+#: ../src/xfdesktop-file-utils.c:1068 ../src/xfdesktop-file-utils.c:1083
 msgid "File Properties Error"
 msgstr "ファイルプロパティエラー"
 
-#: ../src/xfdesktop-file-utils.c:1069
-#: ../src/xfdesktop-file-utils.c:1084
+#: ../src/xfdesktop-file-utils.c:1069 ../src/xfdesktop-file-utils.c:1084
 msgid "The file properties dialog could not be opened"
 msgstr "ファイルのプロパティダイアログを開けませんでした。"
 
-#: ../src/xfdesktop-file-utils.c:1119
-#: ../src/xfdesktop-file-utils.c:1134
+#: ../src/xfdesktop-file-utils.c:1119 ../src/xfdesktop-file-utils.c:1134
 msgid "The file could not be opened"
 msgstr "ファイルを開けませんでした。"
 
-#: ../src/xfdesktop-file-utils.c:1182
-#: ../src/xfdesktop-file-utils.c:1207
+#: ../src/xfdesktop-file-utils.c:1182 ../src/xfdesktop-file-utils.c:1207
 #, c-format
 msgid "Failed to run \"%s\""
 msgstr "\"%s\" の実行に失敗しました"
 
-#: ../src/xfdesktop-file-utils.c:1257
-#: ../src/xfdesktop-file-utils.c:1272
+#: ../src/xfdesktop-file-utils.c:1257 ../src/xfdesktop-file-utils.c:1272
 msgid "The application chooser could not be opened"
 msgstr "アプリケーション選択ウィンドウを開けませんでした"
 
-#: ../src/xfdesktop-file-utils.c:1330
-#: ../src/xfdesktop-file-utils.c:1344
-#: ../src/xfdesktop-file-utils.c:1406
-#: ../src/xfdesktop-file-utils.c:1422
+#: ../src/xfdesktop-file-utils.c:1330 ../src/xfdesktop-file-utils.c:1344
+#: ../src/xfdesktop-file-utils.c:1406 ../src/xfdesktop-file-utils.c:1422
 msgid "Transfer Error"
 msgstr "転送エラー"
 
-#: ../src/xfdesktop-file-utils.c:1331
-#: ../src/xfdesktop-file-utils.c:1345
-#: ../src/xfdesktop-file-utils.c:1407
-#: ../src/xfdesktop-file-utils.c:1423
+#: ../src/xfdesktop-file-utils.c:1331 ../src/xfdesktop-file-utils.c:1345
+#: ../src/xfdesktop-file-utils.c:1407 ../src/xfdesktop-file-utils.c:1423
 msgid "The file transfer could not be performed"
 msgstr "ファイル転送を実行できませんでした"
 
@@ -926,20 +890,22 @@ msgstr "デバイスのマウントを解除しています"
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:131
 #, c-format
-msgid "The device \"%s\" is being unmounted by the system. Please do not remove the media or disconnect the drive"
+msgid ""
+"The device \"%s\" is being unmounted by the system. Please do not remove the"
+" media or disconnect the drive"
 msgstr "システムはデバイス \"%s\" はマウントを解除しています。メディアを取り出したりデバイスを切り離したりしないでください。"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:138
-#: ../src/xfdesktop-notify.c:262
+#: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
 msgid "Writing data to device"
 msgstr "デバイスへデータ書き込んでいます"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:141
-#: ../src/xfdesktop-notify.c:265
+#: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
 #, c-format
-msgid "There is data that needs to be written to the device \"%s\" before it can be removed. Please do not remove the media or disconnect the drive"
+msgid ""
+"There is data that needs to be written to the device \"%s\" before it can be"
+" removed. Please do not remove the media or disconnect the drive"
 msgstr "デバイス \"%s\" を取り外す前に書き込まなければならないデータが存在します。メディアを取り出したりドライブを切り離したりしないでください。"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
@@ -953,16 +919,13 @@ msgstr "デバイスを取り出しています"
 msgid "The device \"%s\" is being ejected. This may take some time"
 msgstr "デバイス \"%s\" を取り出しています。少々お待ちください。"
 
-#: ../src/xfdesktop-regular-file-icon.c:567
+#: ../src/xfdesktop-regular-file-icon.c:556
 #, c-format
 msgid ""
 "Type: %s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr ""
-"タイプ: %s\n"
-"サイズ: %s\n"
-"最終更新: %s"
+msgstr "タイプ: %s\nサイズ: %s\n最終更新: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:273
 #: ../src/xfdesktop-special-file-icon.c:432
@@ -982,148 +945,58 @@ msgstr "ゴミ箱に 1 つのアイテムがあります"
 msgid "Trash contains %d items"
 msgstr "ゴミ箱に %d 個のアイテムがあります"
 
-#: ../src/xfdesktop-special-file-icon.c:449
+#: ../src/xfdesktop-special-file-icon.c:453
 #, c-format
 msgid ""
 "%s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr ""
-"%s\n"
-"サイズ: %s\n"
-"最終更新: %s"
+msgstr "%s\nサイズ: %s\n最終更新: %s"
 
-#: ../src/xfdesktop-special-file-icon.c:518
+#: ../src/xfdesktop-special-file-icon.c:522
 msgid "_Empty Trash"
 msgstr "ゴミ箱を空にする(_E)"
 
-#: ../src/xfdesktop-volume-icon.c:443
+#: ../src/xfdesktop-volume-icon.c:447
 #, c-format
 msgid ""
 "Removable Volume\n"
 "Mounted in \"%s\"\n"
 "%s left (%s total)"
-msgstr ""
-"リムーバブルボリューム\n"
-"マウントポイント: %s\n"
-"空き容量: %s (総量 %s)"
+msgstr "リムーバブルボリューム\nマウントポイント: %s\n空き容量: %s (総量 %s)"
 
-#: ../src/xfdesktop-volume-icon.c:450
+#: ../src/xfdesktop-volume-icon.c:454
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
-msgstr ""
-"リムーバブルボリューム\n"
-"マウントしていません"
+msgstr "リムーバブルボリューム\nマウントしていません"
 
-#: ../src/xfdesktop-volume-icon.c:476
-#: ../src/xfdesktop-volume-icon.c:518
+#: ../src/xfdesktop-volume-icon.c:480 ../src/xfdesktop-volume-icon.c:522
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "\"%s\" の取り出しに失敗しました"
 
-#: ../src/xfdesktop-volume-icon.c:481
-#: ../src/xfdesktop-volume-icon.c:523
+#: ../src/xfdesktop-volume-icon.c:485 ../src/xfdesktop-volume-icon.c:527
 msgid "Eject Failed"
 msgstr "取り出しに失敗しました"
 
-#: ../src/xfdesktop-volume-icon.c:555
+#: ../src/xfdesktop-volume-icon.c:559
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "\"%s\" のマウントに失敗しました"
 
-#: ../src/xfdesktop-volume-icon.c:558
+#: ../src/xfdesktop-volume-icon.c:562
 msgid "Mount Failed"
 msgstr "マウントに失敗しました"
 
-#: ../src/xfdesktop-volume-icon.c:699
-#: ../src/xfdesktop-volume-icon.c:702
+#: ../src/xfdesktop-volume-icon.c:707 ../src/xfdesktop-volume-icon.c:710
 msgid "E_ject Volume"
 msgstr "取り出し(_J)"
 
-#: ../src/xfdesktop-volume-icon.c:709
+#: ../src/xfdesktop-volume-icon.c:717
 msgid "_Mount Volume"
 msgstr "マウント(_M)"
 
 #: ../src/xfdesktop-window-icon.c:208
 msgid "_Window Actions"
 msgstr "ウィンドウ操作(_W)"
-
-#~ msgid "Unable to contact the Xfce Trash service."
-#~ msgstr "Xfce ゴミ収集サービスにコンタクトできません。"
-
-#~ msgid ""
-#~ "Make sure you have a file manager installed that supports the Xfce Trash "
-#~ "service, such as Thunar."
-#~ msgstr ""
-#~ "Thunar のような Xfce ゴミ収集サービスをサポートしたファイルマネージャーが"
-#~ "インストールされているか確認してください。"
-
-#~ msgid "Needs terminal"
-#~ msgstr "ターミナルが必要"
-
-#~ msgid "Whether or not the command needs a terminal to execute"
-#~ msgstr "ターミナルウィンドウ上で実行する必要があるかどうか指定します"
-
-#~ msgid "Command"
-#~ msgstr "コマンド"
-
-#~ msgid "The command to run when the item is clicked"
-#~ msgstr "アイテムがクリックされたときに実行するコマンドを指定します"
-
-#~ msgid "Icon name"
-#~ msgstr "アイコン名"
-
-#~ msgid "The name of the themed icon to display next to the item"
-#~ msgstr "アイテムの横に表示するアイコンの名前を指定します"
-
-#~ msgid "Label"
-#~ msgstr "ラベル"
-
-#~ msgid "The label displayed in the item"
-#~ msgstr "アイテムに表示されるラベルを指定します"
-
-#~ msgid "Startup notification"
-#~ msgstr "起動通知"
-
-#~ msgid "Whether or not the app supports startup notification"
-#~ msgstr "アプリケーションが起動通知をサポートしているかどうか指定します"
-
-#~ msgid "Use underline"
-#~ msgstr "アンダーラインの使用"
-
-#~ msgid ""
-#~ "Whether or not to use an underscore in the label as a keyboard mnemonic"
-#~ msgstr ""
-#~ "ラベルにあるアンダースコアをキーボードニーモニクとして使用するかどうか指定"
-#~ "します"
-
-#~ msgid ""
-#~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-#~ msgstr ""
-#~ "デスクトップのアイテムを保存するフォルダー \"%s\" を作成できませんでした:"
-
-#~ msgid "Create Folder Failed"
-#~ msgstr "フォルダーの作成に失敗しました"
-
-#~ msgid ""
-#~ "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not "
-#~ "a folder."
-#~ msgstr ""
-#~ "\"%s\" はフォルダーではありませんので、デスクトップのアイテムを保存できま"
-#~ "せん。"
-
-#~ msgid "Please delete or rename the file."
-#~ msgstr "ファイルを削除するか名前を変えてください。"
-
-#~ msgid "Rename \"%s\""
-#~ msgstr "\"%s\" の名前の変更"
-
-#~ msgid "Enter the new name:"
-#~ msgstr "新しい名前を入力してください:"
-
-#~ msgid "Rename"
-#~ msgstr "名前の変更"
-
-#~ msgid "Are you sure that you want to delete \"%s\"?"
-#~ msgstr "\"%s\" を削除してもよろしいですか?"
