@@ -1,23 +1,24 @@
-# Grek translations for xfdesktop package.
-# Copyright (C) 2003-2006 The Xfce development team.
-# This file is distributed under the same license as the xfdesktop package.
-# Stavros Giannouris <stavrosg@hellug.gr>, 2005-2006, 2008.
-# Stathis Kamperis <ekamperi@auth.gr>, 2006.
-# Efstathios Iosifidis <iosifidis@opensuse.org>, 2012.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 # 
+# Translators:
+# Efstathios Iosifidis <iosifidis@opensuse.org>, 2012
+# Stathis Kamperis <ekamperi@auth.gr>, 2006
+# Stavros Giannouris <stavrosg@hellug.gr>, 2008
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop git\n"
+"Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-06 14:45+0000\n"
-"PO-Revision-Date: 2012-04-08 23:31+0300\n"
-"Last-Translator: Efstathios Iosifidis <iosifidis@opensuse.org>\n"
-"Language-Team: Ελληνικά, Σύγχρονα <opensuse-translation-el@opensuse.org>\n"
+"POT-Creation-Date: 2013-07-02 23:19+0200\n"
+"PO-Revision-Date: 2013-11-19 14:49+0000\n"
+"Last-Translator: Nick <nick@xfce.org>\n"
+"Language-Team: Greek (http://www.transifex.com/projects/p/xfce/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: el\n"
-"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
 #, c-format
@@ -30,9 +31,7 @@ msgstr "Το αρχείο δεν είναι έγκυρο"
 msgid ""
 "%s\n"
 "<i>Size: %dx%d</i>"
-msgstr ""
-"%s\n"
-"<i>Μέγεθος %dx%d</i>"
+msgstr "%s\n<i>Μέγεθος %dx%d</i>"
 
 #: ../settings/main.c:299 ../src/xfdesktop-special-file-icon.c:271
 #: ../src/xfdesktop-special-file-icon.c:434
@@ -68,9 +67,7 @@ msgstr "Δημιουργία/φόρτωση λίστας παρασκηνίων"
 #, c-format
 msgid ""
 "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
-"Το αρχείο \"%s\" δεν είναι έγκυρο αρχείο λίστας εικόνων φόντου. Θέλετε να το "
-"αντικαταστήσετε;"
+msgstr "Το αρχείο \"%s\" δεν είναι έγκυρο αρχείο λίστας εικόνων φόντου. Θέλετε να το αντικαταστήσετε;"
 
 #: ../settings/main.c:543
 msgid "Invalid List File"
@@ -169,342 +166,332 @@ msgid "Set desktop background and menu and icon behaviour"
 msgstr "Ρύθμιση φόντου και συμπεριφοράς μενού και εικονιδίων"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
-msgid "<b>Adjustments</b>"
-msgstr "<b>Προσαρμογές</b>"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
-msgid "<b>Colors</b>"
-msgstr "<b>Χρώματα</b>"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
-msgid "<b>Image</b>"
-msgstr "<b>Εικόνα</b>"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
-msgid "<b>Images</b>"
-msgstr "<b>Εικόνες</b>"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
-msgid "Add an image to the list"
-msgstr "Προσθήκη εικόνας στην λίστα"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
-#: ../settings/xfdesktop-settings-ui.glade.h:6
+#: ../settings/xfdesktop-settings-ui.glade.h:1
 msgid "Auto"
 msgstr "Αυτόματα"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
-msgid "Automatically pick a random image from a list file"
-msgstr "Αυτόματη επιλογή τυχαίας εικόνας από λίστα αρχείων"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
-msgid "B_rightness:"
-msgstr "_Φωτεινότητα:"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
-#: ../settings/xfdesktop-settings-ui.glade.h:8
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
+#: ../settings/xfdesktop-settings-ui.glade.h:2
 msgid "Centered"
 msgstr "Κεντραρισμένο"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
-msgid "Create a new list, or load an existing one"
-msgstr "Δημιουργία μιας νέας λίστας, ή άνοιγμα μιας ήδη υπάρχουσας"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
+#: ../settings/xfdesktop-settings-ui.glade.h:3
+msgid "Tiled"
+msgstr "Πλακίδια"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
-msgid "Don't display an image at all"
-msgstr "Να μην εμφανίζεται εικόνα"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
+#: ../settings/xfdesktop-settings-ui.glade.h:4
+msgid "Stretched"
+msgstr "Τεντωμένο"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
-#: ../settings/xfdesktop-settings-ui.glade.h:12
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
+#: ../settings/xfdesktop-settings-ui.glade.h:5
+msgid "Scaled"
+msgstr "Σε κλίμακα"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
+#: ../settings/xfdesktop-settings-ui.glade.h:6
+msgid "Zoomed"
+msgstr "Ζοομαρισμένο"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
+#: ../settings/xfdesktop-settings-ui.glade.h:7
+msgid "Solid color"
+msgstr "Συμπαγές χρώμα"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
+#: ../settings/xfdesktop-settings-ui.glade.h:8
 msgid "Horizontal gradient"
 msgstr "Οριζόντια διαβάθμιση"
 
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
+#: ../settings/xfdesktop-settings-ui.glade.h:9
+msgid "Vertical gradient"
+msgstr "Κάθετη διαβάθμιση"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
+#: ../settings/xfdesktop-settings-ui.glade.h:10
+msgid "Transparent"
+msgstr "Διαφανές"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
+msgid "Add an image to the list"
+msgstr "Προσθήκη εικόνας στην λίστα"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
+msgid "Remove the selected image(s) from the list"
+msgstr "Αφαίρεση των επιλεγμένων εικόνων από τη λίστα"
+
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
+msgid "Create a new list, or load an existing one"
+msgstr "Δημιουργία μιας νέας λίστας, ή άνοιγμα μιας ήδη υπάρχουσας"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
+msgid "St_yle:"
+msgstr "Στ_υλ:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
+msgid "Specify how the image will be resized to fit the screen"
+msgstr "Καθορίστε πώς θα αλλάξει το μέγεθός της εικόνας για να χωρέσει στην οθόνη"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
+msgid "<b>Images</b>"
+msgstr "<b>Εικόνες</b>"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
+msgid "Select a single image as the backdrop"
+msgstr "Επιλογή μιας εικόνας για το φόντο"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
+msgid "_Single image"
+msgstr "_Μια εικόνα"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
+msgid "Automatically pick a random image from a list file"
+msgstr "Αυτόματη επιλογή τυχαίας εικόνας από λίστα αρχείων"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
 msgid "Image _list"
 msgstr "_Λίστα εικόνων"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
+msgid "Don't display an image at all"
+msgstr "Να μην εμφανίζεται εικόνα"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
+msgid "_None"
+msgstr "_Κανένα"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
+msgid "<b>Image</b>"
+msgstr "<b>Εικόνα</b>"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
+msgid "Specify the style of the color drawn behind the backdrop image"
+msgstr "Καθορίστε το στυλ του χρώματος που πίσω από την εικόνα φόντου"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
+msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr "Ορίζει το συμπαγές χρώμα, ή το \"αριστερό\" ή \"πάνω\" χρώμα της διαβάθμισης"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
+msgid "Select First Color"
+msgstr "Επιλογή πρώτου χρώματος"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
+msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
+msgstr "Ορίζει το χρώμα \"δεξιά\" ή \"κάτω\" της διαβάθμισης"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
+msgid "Select Second Color"
+msgstr "Επιλογή δεύτερου χρώματος"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
+msgid "<b>Colors</b>"
+msgstr "<b>Χρώματα</b>"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
+msgid "B_rightness:"
+msgstr "_Φωτεινότητα:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
 msgid "Increase or decrease the brightness of the final image"
 msgstr "Αυξομείωση της φωτεινότητας της τελικής εικόνας"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
+msgid "Sa_turation:"
+msgstr "Κο_ρεσμός:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
 msgid "Increase or decrease the color saturation of the final image"
 msgstr "Αυξομείωση του χρωματικού κορεσμού της τελικής εικόνας"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
+msgid "<b>Adjustments</b>"
+msgstr "<b>Προσαρμογές</b>"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
+msgid "_Change the background (in minutes):"
+msgstr "_Αλλαγή φόντου (σε λεπτά):"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:36
+msgid ""
+"While in image list mode, select this option to automatically select a "
+"different background from the image list after a set number of minutes."
+msgstr "Κατά την προβολή κατάστασης λίστας, επιλέξτε αυτή τη ρύθμιση για αυτόματη επιλογή διαφορετικού φόντου από την λίστα εικόνων μετά από τα λεπτά που θα ορίσετε."
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:37
 msgid ""
 "Number of minutes before a different background is randomly selected from "
 "the list."
 msgstr "Λεπτά πριν την τυχαία επιλογή διαφορετικού φόντου από την λίστα."
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
-msgid "Remove the selected image(s) from the list"
-msgstr "Αφαίρεση των επιλεγμένων εικόνων από τη λίστα"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
-msgid "Sa_turation:"
-msgstr "Κο_ρεσμός:"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
-#: ../settings/xfdesktop-settings-ui.glade.h:23
-msgid "Scaled"
-msgstr "Σε κλίμακα"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
-msgid "Select First Color"
-msgstr "Επιλογή πρώτου χρώματος"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
-msgid "Select Second Color"
-msgstr "Επιλογή δεύτερου χρώματος"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
-msgid "Select a single image as the backdrop"
-msgstr "Επιλογή μιας εικόνας για το φόντο"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
-#: ../settings/xfdesktop-settings-ui.glade.h:35
-msgid "Solid color"
-msgstr "Συμπαγές χρώμα"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
-msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-msgstr "Ορίζει το χρώμα \"δεξιά\" ή \"κάτω\" της διαβάθμισης"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
-msgid ""
-"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr ""
-"Ορίζει το συμπαγές χρώμα, ή το \"αριστερό\" ή \"πάνω\" χρώμα της διαβάθμισης"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
-msgid "Specify how the image will be resized to fit the screen"
-msgstr ""
-"Καθορίστε πώς θα αλλάξει το μέγεθός της εικόνας για να χωρέσει στην οθόνη"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
-msgid "Specify the style of the color drawn behind the backdrop image"
-msgstr "Καθορίστε το στυλ του χρώματος που πίσω από την εικόνα φόντου"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:38
 msgid "St_retch this background across all monitors."
 msgstr "Τέ_ντωμα του φόντου σε όλες τις οθόνες."
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
-msgid "St_yle:"
-msgstr "Στ_υλ:"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
-#: ../settings/xfdesktop-settings-ui.glade.h:37
-msgid "Stretched"
-msgstr "Τεντωμένο"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
-#: ../settings/xfdesktop-settings-ui.glade.h:38
-msgid "Tiled"
-msgstr "Πλακίδια"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
-#: ../settings/xfdesktop-settings-ui.glade.h:39
-msgid "Transparent"
-msgstr "Διαφανές"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
-#: ../settings/xfdesktop-settings-ui.glade.h:42
-msgid "Vertical gradient"
-msgstr "Κάθετη διαβάθμιση"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:39
 msgid ""
 "When multiple monitors are present, select this option to stretch the "
 "current background over all of them."
-msgstr ""
-"Όταν υπάρχουν πολλαπλές οθόνες, επιλέξτε αυτή τη ρύθμιση για να τεντωθεί το "
-"τρέχον φόντο σε όλες τις οθόνες."
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
-msgid ""
-"While in image list mode, select this option to automatically select a "
-"different background from the image list after a set number of minutes."
-msgstr ""
-"Κατά την προβολή κατάστασης λίστας, επιλέξτε αυτή τη ρύθμιση για αυτόματη "
-"επιλογή διαφορετικού φόντου από την λίστα εικόνων μετά από τα λεπτά που θα "
-"ορίσετε."
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:36
-#: ../settings/xfdesktop-settings-ui.glade.h:43
-msgid "Zoomed"
-msgstr "Ζοομαρισμένο"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:37
-msgid "_Change the background (in minutes):"
-msgstr "_Αλλαγή φόντου (σε λεπτά):"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:38
-msgid "_None"
-msgstr "_Κανένα"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:39
-msgid "_Single image"
-msgstr "_Μια εικόνα"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:1
-msgid "<b>Appearance</b>"
-msgstr "<b>Εμφάνιση</b>"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:2
-msgid "<b>Default Icons</b>"
-msgstr "<b>Προεπιλεγμένα εικονίδια</b>"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:3
-msgid "<b>Desktop Menu</b>"
-msgstr "<b>Μενού επιφάνειας εργασίας</b>"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:4
-msgid "<b>Window List Menu</b>"
-msgstr "<b>Λίστα παραθύρων</b>"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:5
-msgid "Alt"
-msgstr "Alt"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:7
-msgid "B_utton:"
-msgstr "_Κουμπί:"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:9
-msgid "Control"
-msgstr "Control"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:793
-msgid "Desktop"
-msgstr "Επιφάνεια εργασίας"
+msgstr "Όταν υπάρχουν πολλαπλές οθόνες, επιλέξτε αυτή τη ρύθμιση για να τεντωθεί το τρέχον φόντο σε όλες τις οθόνες."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:11
-msgid "File/launcher icons"
-msgstr "Εικονίδια αρχείων/συντομεύσεων"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:13
-msgid "Icon _size:"
-msgstr "Μέγεθος ε_ικονιδίου:"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:14
-msgid "Icon _type:"
-msgstr "_Τύπος εικονιδίου:"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:15
-msgid "Label trans_parency:"
-msgstr "Δια_φάνεια ετικέττας:"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:16
 msgid "Left"
 msgstr "Αριστερά"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:17
+#: ../settings/xfdesktop-settings-ui.glade.h:12
 msgid "Middle"
 msgstr "Κέντρο"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:13
+msgid "Right"
+msgstr "Δεξιά"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:14
+msgid "None"
+msgstr "Καθόλου"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:15
+msgid "Shift"
+msgstr "Shift"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:16
+msgid "Alt"
+msgstr "Alt"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:17
+msgid "Control"
+msgstr "Control"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:18
 msgid "Minimized application icons"
 msgstr "Εικονίδια ελαχιστοποιημένων εφαρμογών"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:19
-msgid "Mo_difier:"
-msgstr "Πλήκτρο εναλλα_γής:"
+msgid "File/launcher icons"
+msgstr "Εικονίδια αρχείων/συντομεύσεων"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:20
-msgid "Modi_fier:"
-msgstr "Πλήκτρο εναλλα_γής:"
+#: ../settings/xfdesktop-settings-ui.glade.h:20 ../src/xfce-desktop.c:795
+msgid "Desktop"
+msgstr "Επιφάνεια εργασίας"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:21
-msgid "None"
-msgstr "Καθόλου"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:22
-msgid "Right"
-msgstr "Δεξιά"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:24
-msgid ""
-"Select this option to display preview-able files on the desktop as "
-"automatically generated thumbnail icons."
-msgstr ""
-"Επιλέξτε αυτή τη ρύθμιση για προβολή αρχείων στην επιφάνεια εργασίας ως "
-"αυτόματα δημιουργούμενα εικονίδια επισκόπησης."
-
-#: ../settings/xfdesktop-settings-ui.glade.h:25
 msgid "Set desktop background and menu and icon behavior"
 msgstr "Ρύθμιση φόντου και συμπεριφοράς μενού και εικονιδίων"
 
+#: ../settings/xfdesktop-settings-ui.glade.h:22
+msgid "_Background"
+msgstr "_Φόντο"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:23
+msgid "Show applications menu on _desktop right click"
+msgstr "Εμφάνιση μενού εφαρμογών στο _δεξί κλικ στην επιφάνεια εργασίας"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:24
+msgid "_Button:"
+msgstr "_Κουμπί:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:25
+msgid "Mo_difier:"
+msgstr "Πλήκτρο εναλλα_γής:"
+
 #: ../settings/xfdesktop-settings-ui.glade.h:26
-msgid "Sh_ow application icons in menu"
-msgstr "Εμφάνιση εικ_ονιδίων εφραρμογών στο μενού"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:27
-msgid "Shift"
-msgstr "Shift"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:28
 msgid "Show _application icons in menu"
 msgstr "Εμφάνιση εικονιδίων εφρ_αρμογών στο μενού"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:27
+msgid "_Edit desktop menu"
+msgstr "_Επεξεργασία μενού επιφάνειας εργασίας"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:28
+msgid "<b>Desktop Menu</b>"
+msgstr "<b>Μενού επιφάνειας εργασίας</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:29
 msgid "Show _window list menu on desktop middle click"
 msgstr "Εμφάνιση λίστας παρα_θύρων στο μεσαίο κλικ στην επιφάνεια εργασίας"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:30
-msgid "Show applications menu on _desktop right click"
-msgstr "Εμφάνιση μενού εφαρμογών στο _δεξί κλικ στην επιφάνεια εργασίας"
+msgid "B_utton:"
+msgstr "_Κουμπί:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:31
-msgid "Show s_ticky windows only in active workspace"
-msgstr "Εμφάνιση s_ticky παραθύρων μόνο στην ενεργή περιοχή εργασίας"
+msgid "Modi_fier:"
+msgstr "Πλήκτρο εναλλα_γής:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:32
-msgid "Show t_humbnails"
-msgstr "Εμφάνιση _εικόνας επισκόπησης"
+msgid "Sh_ow application icons in menu"
+msgstr "Εμφάνιση εικ_ονιδίων εφραρμογών στο μενού"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
 msgid "Show workspace _names in list"
 msgstr "Εμφάνιση ο_νομάτων περιοχών εργασίας στη λίστα"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:34
+msgid "Use _submenus for the windows in each workspace"
+msgstr "Χρή_ση υπομενού για τα παράθυρα σε κάθε περιοχή εργασίας"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:35
+msgid "Show s_ticky windows only in active workspace"
+msgstr "Εμφάνιση s_ticky παραθύρων μόνο στην ενεργή περιοχή εργασίας"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:36
+msgid "<b>Window List Menu</b>"
+msgstr "<b>Λίστα παραθύρων</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:37
+msgid "_Menus"
+msgstr "_Μενού"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:38
+msgid "Icon _type:"
+msgstr "_Τύπος εικονιδίου:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:39
+msgid "Icon _size:"
+msgstr "Μέγεθος ε_ικονιδίου:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:40
+msgid "Show t_humbnails"
+msgstr "Εμφάνιση _εικόνας επισκόπησης"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:41
+msgid ""
+"Select this option to display preview-able files on the desktop as "
+"automatically generated thumbnail icons."
+msgstr "Επιλέξτε αυτή τη ρύθμιση για προβολή αρχείων στην επιφάνεια εργασίας ως αυτόματα δημιουργούμενα εικονίδια επισκόπησης."
+
+#: ../settings/xfdesktop-settings-ui.glade.h:42
 msgid "Single _click to activate items"
 msgstr "Απλό _κλικ για ενεργοποίηση αντικειμένων"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:36
+#: ../settings/xfdesktop-settings-ui.glade.h:43
+msgid "Use custom _font size:"
+msgstr "Χρήση προσαρμοσμένου μεγέ_θους γραμματοσειράς:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:44
+msgid "Label trans_parency:"
+msgstr "Δια_φάνεια ετικέττας:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:45
 msgid ""
 "Specify the transparency level for the rounded label drawn behind the icon "
 "text"
 msgstr "Ορίστε τη διαφάνεια της ετικέττας εικονιδίου"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:40
-msgid "Use _submenus for the windows in each workspace"
-msgstr "Χρή_ση υπομενού για τα παράθυρα σε κάθε περιοχή εργασίας"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:41
-msgid "Use custom _font size:"
-msgstr "Χρήση προσαρμοσμένου μεγέ_θους γραμματοσειράς:"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:44
-msgid "_Background"
-msgstr "_Φόντο"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:45
-msgid "_Button:"
-msgstr "_Κουμπί:"
-
 #: ../settings/xfdesktop-settings-ui.glade.h:46
-msgid "_Edit desktop menu"
-msgstr "_Επεξεργασία μενού επιφάνειας εργασίας"
+msgid "<b>Appearance</b>"
+msgstr "<b>Εμφάνιση</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:47
-msgid "_Icons"
-msgstr "Ε_ικονίδια"
+msgid "<b>Default Icons</b>"
+msgstr "<b>Προεπιλεγμένα εικονίδια</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:48
-msgid "_Menus"
-msgstr "_Μενού"
+msgid "_Icons"
+msgstr "Ε_ικονίδια"
 
 #: ../src/main.c:243
 msgid "Display version information"
@@ -615,12 +602,12 @@ msgstr "_Αφαίρεση χώρου εργασίας %d"
 msgid "_Remove Workspace '%s'"
 msgstr "_Αφαίρεση χώρου εργασίας '%s'"
 
-#: ../src/xfce-desktop.c:1082
+#: ../src/xfce-desktop.c:1084
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr "Δεν ήταν δυνατό το άνοιγμα του αρχείου \"%s\""
 
-#: ../src/xfce-desktop.c:1084
+#: ../src/xfce-desktop.c:1086
 msgid "Desktop Error"
 msgstr "Σφάλμα επιφάνεια εργασίας"
 
@@ -638,9 +625,7 @@ msgstr "Σφάλμα φακέλου επιφάνεια εργασίας"
 #: ../src/xfdesktop-file-icon-manager.c:521
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
-msgstr ""
-"Ένα κανονικό αρχείο με το ίδιο όνομα υπάρχει ήδη. Παρακαλούμε να το "
-"διαγράψετε ή να το μετονομάσετε."
+msgstr "Ένα κανονικό αρχείο με το ίδιο όνομα υπάρχει ήδη. Παρακαλούμε να το διαγράψετε ή να το μετονομάσετε."
 
 #: ../src/xfdesktop-file-icon-manager.c:624
 #: ../src/xfdesktop-file-icon-manager.c:668 ../src/xfdesktop-file-utils.c:863
@@ -664,9 +649,7 @@ msgstr "Τα επιλεγμένα αρχεία δεν ήταν δυνατό να
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
-msgstr ""
-"Αυτό το χαρακτηριστικό απαιτεί μια υπηρεσία διαχειριστή απορριμμάτων (όπως "
-"αυτή που παρέχει ο Thunar)."
+msgstr "Αυτό το χαρακτηριστικό απαιτεί μια υπηρεσία διαχειριστή απορριμμάτων (όπως αυτή που παρέχει ο Thunar)."
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:770
@@ -698,10 +681,7 @@ msgstr "Άνοιγμα με \"%s\""
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
-msgstr ""
-"Δεν ήταν δυνατή η εκκίνηση του \"exo-desktop-item-edit\", που απαιτείται για "
-"τη δημιουργία και την επεξεργασία εκκινητών και συνδέσμων στην επιφάνεια "
-"εργασίας."
+msgstr "Δεν ήταν δυνατή η εκκίνηση του \"exo-desktop-item-edit\", που απαιτείται για τη δημιουργία και την επεξεργασία εκκινητών και συνδέσμων στην επιφάνεια εργασίας."
 
 #: ../src/xfdesktop-file-icon-manager.c:1407
 msgid "_Open all"
@@ -850,9 +830,7 @@ msgstr "Τα επιλεγμένα αρχεία δεν μπόρεσαν να με
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
-msgstr ""
-"Αυτό το χαρακτηριστικό απαιτεί μια υπηρεσία διαχείρισης απορριμμάτων (όπως "
-"αυτή που παρέχει ο Thunar)."
+msgstr "Αυτό το χαρακτηριστικό απαιτεί μια υπηρεσία διαχείρισης απορριμμάτων (όπως αυτή που παρέχει ο Thunar)."
 
 #: ../src/xfdesktop-file-utils.c:911 ../src/xfdesktop-file-utils.c:925
 msgid "Could not empty the trash"
@@ -914,11 +892,9 @@ msgstr "Αποπροσάρτηση συσκευής"
 #: ../src/xfdesktop-notify.c:131
 #, c-format
 msgid ""
-"The device \"%s\" is being unmounted by the system. Please do not remove the "
-"media or disconnect the drive"
-msgstr ""
-"Η συσκευή \\ \"% s \" αποπροσαρτείται από το σύστημα. Παρακαλώ μην "
-"αφαιρέσετε το μέσο ή αποσυνδέσετε τη συσκευή"
+"The device \"%s\" is being unmounted by the system. Please do not remove the"
+" media or disconnect the drive"
+msgstr "Η συσκευή \\ \"% s \" αποπροσαρτείται από το σύστημα. Παρακαλώ μην αφαιρέσετε το μέσο ή αποσυνδέσετε τη συσκευή"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
@@ -929,11 +905,9 @@ msgstr "Εγγραφή δεδομένων στη συσκευή"
 #: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
 #, c-format
 msgid ""
-"There is data that needs to be written to the device \"%s\" before it can be "
-"removed. Please do not remove the media or disconnect the drive"
-msgstr ""
-"Υπάρχουν δεδομένα που πρέπει να εγγραφούν στη συσκευή \"%s\" πριν να μπορεί "
-"να αφαιρεθεί. Παρακαλώ μην αφαιρέσετε το μέσο ή αποσυνδέσετε τη συσκευή"
+"There is data that needs to be written to the device \"%s\" before it can be"
+" removed. Please do not remove the media or disconnect the drive"
+msgstr "Υπάρχουν δεδομένα που πρέπει να εγγραφούν στη συσκευή \"%s\" πριν να μπορεί να αφαιρεθεί. Παρακαλώ μην αφαιρέσετε το μέσο ή αποσυνδέσετε τη συσκευή"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:253
@@ -952,10 +926,7 @@ msgid ""
 "Type: %s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr ""
-"Τύπος: %s\n"
-"Μέγεθος: %s\n"
-"Τελευταία τροποποίηση: %s"
+msgstr "Τύπος: %s\nΜέγεθος: %s\nΤελευταία τροποποίηση: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:273
 #: ../src/xfdesktop-special-file-icon.c:432
@@ -981,10 +952,7 @@ msgid ""
 "%s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr ""
-"%s\n"
-"Μέγεθος: %s\n"
-"Τελευταία τροποποίηση: %s"
+msgstr "%s\nΜέγεθος: %s\nΤελευταία τροποποίηση: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:522
 msgid "_Empty Trash"
@@ -996,18 +964,13 @@ msgid ""
 "Removable Volume\n"
 "Mounted in \"%s\"\n"
 "%s left (%s total)"
-msgstr ""
-"Αφαιρούμενος τόμος\n"
-"Προσαρτήθηκε στο \"%s\"\n"
-"Απομένουν %s (συνολικά %s)"
+msgstr "Αφαιρούμενος τόμος\nΠροσαρτήθηκε στο \"%s\"\nΑπομένουν %s (συνολικά %s)"
 
 #: ../src/xfdesktop-volume-icon.c:454
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
-msgstr ""
-"Αφαιρούμενος τόμος\n"
-"Δεν έχει προσαρτηθεί"
+msgstr "Αφαιρούμενος τόμος\nΔεν έχει προσαρτηθεί"
 
 #: ../src/xfdesktop-volume-icon.c:480 ../src/xfdesktop-volume-icon.c:522
 #, c-format
@@ -1038,41 +1001,3 @@ msgstr "Προ_σάρτηση τόμου"
 #: ../src/xfdesktop-window-icon.c:208
 msgid "_Window Actions"
 msgstr "Ενέργειες _Παραθύρων"
-
-#~ msgid "Unable to contact the Xfce Trash service."
-#~ msgstr ""
-#~ "Δεν ήταν δυνατή η επικοινωνία με την υπηρεσία απορριμμάτων του Xfce."
-
-#~ msgid ""
-#~ "Make sure you have a file manager installed that supports the Xfce Trash "
-#~ "service, such as Thunar."
-#~ msgstr ""
-#~ "Σιγουρευτείτε ότι υπάρχει εγκατεστημένος ένας διαχειριστής αρχείων που "
-#~ "υποστηρίζει την υπηρεσία απορριμμάτων του Xfce, όπως το Thunar."
-
-#~ msgid "Needs terminal"
-#~ msgstr "Χρειάζεται τερματικό"
-
-#~ msgid "Whether or not the command needs a terminal to execute"
-#~ msgstr "Αν η εντολή πρέπει να εκτελεστεί μέσα σε τερματικό ή όχι"
-
-#~ msgid "Command"
-#~ msgstr "Εντολή"
-
-#~ msgid "The command to run when the item is clicked"
-#~ msgstr "Η εντολή που θα εκτελεστεί όταν πατηθεί το κουμπί"
-
-#~ msgid "Icon name"
-#~ msgstr "Όνομα εικονιδίου"
-
-#~ msgid "The name of the themed icon to display next to the item"
-#~ msgstr "Το όνομα του εικονιδίου που θα εμφανίζεται για το αντικείμενο"
-
-#~ msgid "Label"
-#~ msgstr "Ετικέτα"
-
-#~ msgid "Startup notification"
-#~ msgstr "Ενημέρωση εκκίνησης"
-
-#~ msgid "Whether or not the app supports startup notification"
-#~ msgstr "Αν η εφαρμογή υποστηρίζει ενημέρωση εκκίνησης"
