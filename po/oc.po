@@ -1,0 +1,1001 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Cedric31 <cvalmary@yahoo.fr>, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: Xfdesktop\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-07-02 23:19+0200\n"
+"PO-Revision-Date: 2013-11-24 09:38+0000\n"
+"Last-Translator: Cedric31 <cvalmary@yahoo.fr>\n"
+"Language-Team: Occitan (post 1500) (http://www.transifex.com/projects/p/xfce/language/oc/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: oc\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
+#, c-format
+msgid "Backdrop list file is not valid"
+msgstr "La lista de fichièr de fonses d'ecran es invalida"
+
+#. no need to escape markup; it's already done for us
+#: ../settings/main.c:166
+#, c-format
+msgid ""
+"%s\n"
+"<i>Size: %dx%d</i>"
+msgstr "%s\n<i>Talha : %dx%d</i>"
+
+#: ../settings/main.c:299 ../src/xfdesktop-special-file-icon.c:271
+#: ../src/xfdesktop-special-file-icon.c:434
+msgid "Home"
+msgstr "Dorsièr personal"
+
+#: ../settings/main.c:301
+msgid "Filesystem"
+msgstr "Sistèma de fichièrs"
+
+#: ../settings/main.c:303
+msgid "Trash"
+msgstr "Escobilhièr"
+
+#: ../settings/main.c:305
+msgid "Removable Devices"
+msgstr "Periferics amovibles"
+
+#: ../settings/main.c:485
+#, c-format
+msgid "Cannot create backdrop list \"%s\""
+msgstr "Impossible de crear la lista de fonses d'ecran « %s »"
+
+#: ../settings/main.c:489 ../settings/main.c:875
+msgid "Backdrop List Error"
+msgstr "Error amb la lista de fonses d'ecran"
+
+#: ../settings/main.c:514
+msgid "Create/Load Backdrop List"
+msgstr "Crear/Cargar una lista de fonses d'ecran"
+
+#: ../settings/main.c:538
+#, c-format
+msgid ""
+"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+msgstr "Lo fichièr de lista de fonses d'ecran « %s » es invalid. Lo volètz espotir ?"
+
+#: ../settings/main.c:543
+msgid "Invalid List File"
+msgstr "Lista de fichièrs invalida"
+
+#: ../settings/main.c:546
+msgid "Overwriting the file will cause its contents to be lost."
+msgstr "Espotir lo fichièr provocarà la pèrda de son contengut."
+
+#: ../settings/main.c:548
+msgid "Replace"
+msgstr "Remplaçar"
+
+#: ../settings/main.c:871
+#, c-format
+msgid "Failed to write backdrop list to \"%s\""
+msgstr "Impossible d'escriure la lista de fonses d'ecran dins « %s »"
+
+#: ../settings/main.c:898
+msgid "Add Image File(s)"
+msgstr "Apondre un o mantun fichièr d'imatge"
+
+#: ../settings/main.c:907
+msgid "Image files"
+msgstr "Fichièrs d'imatges"
+
+#: ../settings/main.c:912
+msgid "All files"
+msgstr "Totes los fichièrs"
+
+#: ../settings/main.c:1376
+#, c-format
+msgid "Screen %d, Monitor %d (%s)"
+msgstr "Ecran %d, monitor %d (%s)"
+
+#: ../settings/main.c:1380
+#, c-format
+msgid "Screen %d, Monitor %d"
+msgstr "Ecran %d, monitor %d"
+
+#: ../settings/main.c:1383
+#, c-format
+msgid "Screen %d"
+msgstr "Ecran %d"
+
+#: ../settings/main.c:1388
+#, c-format
+msgid "Monitor %d (%s)"
+msgstr "Monitor %d (%s)"
+
+#: ../settings/main.c:1392
+#, c-format
+msgid "Monitor %d"
+msgstr "Monitor %d"
+
+#: ../settings/main.c:1651
+msgid "Settings manager socket"
+msgstr "Socket del gestionari de paramètres"
+
+#: ../settings/main.c:1651
+msgid "SOCKET ID"
+msgstr "ID SOCKET"
+
+#: ../settings/main.c:1652
+msgid "Version information"
+msgstr "Informacions sus la version"
+
+#: ../settings/main.c:1669
+#, c-format
+msgid "Type '%s --help' for usage."
+msgstr "Picatz '%s --help' per afichar las opcions."
+
+#: ../settings/main.c:1681
+msgid "The Xfce development team. All rights reserved."
+msgstr "L'equipa de desvolopament de Xfce. Totes los dreches reservats."
+
+#: ../settings/main.c:1682
+#, c-format
+msgid "Please report bugs to <%s>."
+msgstr "Se vos plai, raportatz los bugs a <%s>."
+
+#: ../settings/main.c:1689
+msgid "Desktop Settings"
+msgstr "Paramètres del burèu"
+
+#: ../settings/main.c:1691
+msgid "Unable to contact settings server"
+msgstr "Impossible de contactar lo servidor de paramètres"
+
+#: ../settings/xfce-backdrop-settings.desktop.in.h:1
+msgid "Desktop "
+msgstr "Burèu "
+
+#: ../settings/xfce-backdrop-settings.desktop.in.h:2
+msgid "Set desktop background and menu and icon behaviour"
+msgstr "Reglar lo fons d'ecran, lo menú e lo comportament de las icònas"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
+#: ../settings/xfdesktop-settings-ui.glade.h:1
+msgid "Auto"
+msgstr "Auto"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
+#: ../settings/xfdesktop-settings-ui.glade.h:2
+msgid "Centered"
+msgstr "Centrada"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
+#: ../settings/xfdesktop-settings-ui.glade.h:3
+msgid "Tiled"
+msgstr "Juxtapausada"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
+#: ../settings/xfdesktop-settings-ui.glade.h:4
+msgid "Stretched"
+msgstr "Estirada"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
+#: ../settings/xfdesktop-settings-ui.glade.h:5
+msgid "Scaled"
+msgstr "Adaptada"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
+#: ../settings/xfdesktop-settings-ui.glade.h:6
+msgid "Zoomed"
+msgstr "Zoomada"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
+#: ../settings/xfdesktop-settings-ui.glade.h:7
+msgid "Solid color"
+msgstr "Color unida"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
+#: ../settings/xfdesktop-settings-ui.glade.h:8
+msgid "Horizontal gradient"
+msgstr "Degradat orizontal"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
+#: ../settings/xfdesktop-settings-ui.glade.h:9
+msgid "Vertical gradient"
+msgstr "Degradat vertical"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
+#: ../settings/xfdesktop-settings-ui.glade.h:10
+msgid "Transparent"
+msgstr "Transparent"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
+msgid "Add an image to the list"
+msgstr "Apondre un imatge a la lista"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
+msgid "Remove the selected image(s) from the list"
+msgstr "Suprimir de la lista la o los imatges seleccionats"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
+msgid "Create a new list, or load an existing one"
+msgstr "Cargar una lista existenta o ne crear una novèla"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
+msgid "St_yle:"
+msgstr "E_stil :"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
+msgid "Specify how the image will be resized to fit the screen"
+msgstr "Metòde de redimensionament de l'imatge\nper l'adaptar a la talha de l'ecran"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
+msgid "<b>Images</b>"
+msgstr "<b>Imatges</b>"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
+msgid "Select a single image as the backdrop"
+msgstr "Seleccionar un imatge unic coma fons d'ecran"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
+msgid "_Single image"
+msgstr "Imatge _unic"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
+msgid "Automatically pick a random image from a list file"
+msgstr "Causir aleatòriament un imatge dins una lista"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
+msgid "Image _list"
+msgstr "_Lista d'imatges"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
+msgid "Don't display an image at all"
+msgstr "Afichar pas cap d'imatge"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
+msgid "_None"
+msgstr "_Pas cap"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
+msgid "<b>Image</b>"
+msgstr "<b>Imatge</b>"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
+msgid "Specify the style of the color drawn behind the backdrop image"
+msgstr "Estil de la color dessenhada darrièr l'imatge del fons d'ecran"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
+msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr "Definís la color unida, o la color d'esquèrra o d'amont dins lo degradat"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
+msgid "Select First Color"
+msgstr "Seleccionar la primièra color"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
+msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
+msgstr "Definís la color de drecha o la color d'aval dins lo degradat"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
+msgid "Select Second Color"
+msgstr "Seleccionar la segonda color"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
+msgid "<b>Colors</b>"
+msgstr "<b>Color de fons</b>"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
+msgid "B_rightness:"
+msgstr "Lumi_nositat :"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
+msgid "Increase or decrease the brightness of the final image"
+msgstr "Esclarzir o escurezir l'imatge final"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
+msgid "Sa_turation:"
+msgstr "Sa_turacion :"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
+msgid "Increase or decrease the color saturation of the final image"
+msgstr "Saturar o desaturar las colors de l'imatge final"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
+msgid "<b>Adjustments</b>"
+msgstr "<b>Ajustaments</b>"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
+msgid "_Change the background (in minutes):"
+msgstr "_Cambiament d'imatge (en minutas) :"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:36
+msgid ""
+"While in image list mode, select this option to automatically select a "
+"different background from the image list after a set number of minutes."
+msgstr "Se lo mòde « Lista d'imatges » es activat, causissètz aquesta opcion per que l'imatge del fons d'ecran càmbie a un interval de temps donat."
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:37
+msgid ""
+"Number of minutes before a different background is randomly selected from "
+"the list."
+msgstr "Nombre de minutas abans la seleccion aleatòria d'un novèl imatge dins la lista."
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:38
+msgid "St_retch this background across all monitors."
+msgstr "Esti_rar aqueste imatge sus totes los monitors."
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:39
+msgid ""
+"When multiple monitors are present, select this option to stretch the "
+"current background over all of them."
+msgstr "Se mantun monitor son presents, causissètz aquesta opcion per estirar lo fons d'ecran sus totes los monitors."
+
+#: ../settings/xfdesktop-settings-ui.glade.h:11
+msgid "Left"
+msgstr "Esquèrra"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:12
+msgid "Middle"
+msgstr "Mitan"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:13
+msgid "Right"
+msgstr "Drecha"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:14
+msgid "None"
+msgstr "Pas cap"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:15
+msgid "Shift"
+msgstr "Majuscula"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:16
+msgid "Alt"
+msgstr "Alt"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:17
+msgid "Control"
+msgstr "Ctrl"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:18
+msgid "Minimized application icons"
+msgstr "Icònas de las aplicacions redusidas"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:19
+msgid "File/launcher icons"
+msgstr "Icònas fichièr / aviador"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:20 ../src/xfce-desktop.c:795
+msgid "Desktop"
+msgstr "Burèu"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:21
+msgid "Set desktop background and menu and icon behavior"
+msgstr "Reglar lo fons d'ecran del burèu, lo menú e lo comportament de las icònas"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:22
+msgid "_Background"
+msgstr "_Fons d'ecran"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:23
+msgid "Show applications menu on _desktop right click"
+msgstr "_Afichar lo menú de las aplicacions al moment d'un clic drech sul burèu"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:24
+msgid "_Button:"
+msgstr "_Boton :"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:25
+msgid "Mo_difier:"
+msgstr "Mo_dificador :"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:26
+msgid "Show _application icons in menu"
+msgstr "Afichar _las icònas de las aplicacions dins lo menú"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:27
+msgid "_Edit desktop menu"
+msgstr "Editar lo _menú del burèu"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:28
+msgid "<b>Desktop Menu</b>"
+msgstr "<b>Menú del burèu</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:29
+msgid "Show _window list menu on desktop middle click"
+msgstr "Afichar lo menú que lista las fenès_tras al moment d'un clic mitan sul burèu"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:30
+msgid "B_utton:"
+msgstr "B_oton :"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:31
+msgid "Modi_fier:"
+msgstr "Modi_ficador :"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:32
+msgid "Sh_ow application icons in menu"
+msgstr "Afichar las icònas _de las aplicacions dins lo menú"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:33
+msgid "Show workspace _names in list"
+msgstr "Afichar los _noms dels espacis de trabalh dins la lista"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:34
+msgid "Use _submenus for the windows in each workspace"
+msgstr "Utilizar de _sosmenús per cada espaci de trabalh"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:35
+msgid "Show s_ticky windows only in active workspace"
+msgstr "Far la lista de las fenèstras _pegantas unicament dins l'espaci de trabalh actiu"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:36
+msgid "<b>Window List Menu</b>"
+msgstr "<b>Menú de la lista de la fenèstra</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:37
+msgid "_Menus"
+msgstr "_Menús"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:38
+msgid "Icon _type:"
+msgstr "_Tipe d'icòna :"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:39
+msgid "Icon _size:"
+msgstr "Talha de l'_icòna :"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:40
+msgid "Show t_humbnails"
+msgstr "_Afichar las vinhetas"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:41
+msgid ""
+"Select this option to display preview-able files on the desktop as "
+"automatically generated thumbnail icons."
+msgstr "Seleccionatz aquesta opcion per representar los fichièrs imatges o vidèos sul burèu jos la forma d'icònas vinhetas generadas automaticament."
+
+#: ../settings/xfdesktop-settings-ui.glade.h:42
+msgid "Single _click to activate items"
+msgstr "_Un sol clic per activar los elements"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:43
+msgid "Use custom _font size:"
+msgstr "Utilizar una talha de _poliça personalizada :"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:44
+msgid "Label trans_parency:"
+msgstr "Trans_paréncia de las etiquetas :"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:45
+msgid ""
+"Specify the transparency level for the rounded label drawn behind the icon "
+"text"
+msgstr "Especificar lo nivèl de transparéncia de l'etiqueta de la legenda d'una icòna"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:46
+msgid "<b>Appearance</b>"
+msgstr "<b>Aparéncia</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:47
+msgid "<b>Default Icons</b>"
+msgstr "<b>Icònas per defaut</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:48
+msgid "_Icons"
+msgstr "_Icònas"
+
+#: ../src/main.c:243
+msgid "Display version information"
+msgstr "Afichar la version"
+
+#: ../src/main.c:244
+msgid "Reload all settings, refresh image list"
+msgstr "Recargar totes los paramètres, refrescar la lista d'imatges"
+
+#: ../src/main.c:245
+msgid "Pop up the menu (at the current mouse position)"
+msgstr "Afichar lo menú (a la posicion actuala de la mirga)"
+
+#: ../src/main.c:246
+msgid "Pop up the window list (at the current mouse position)"
+msgstr "Afichar la lista de las fenèstras (a la posicion actuala de la mirga)"
+
+#: ../src/main.c:248
+msgid "Automatically arrange all the icons on the desktop"
+msgstr "Recaptar automaticament las icònas sul burèu "
+
+#: ../src/main.c:250
+msgid "Cause xfdesktop to quit"
+msgstr "Causa xfdesktop per quitar"
+
+#: ../src/main.c:270
+#, c-format
+msgid "Failed to parse arguments: %s\n"
+msgstr "Impossible d'analisar los arguments : %s\n"
+
+#: ../src/main.c:278
+#, c-format
+msgid "This is %s version %s, running on Xfce %s.\n"
+msgstr "Aquò es %s version %s, sus Xfce %s.\n"
+
+#: ../src/main.c:280
+#, c-format
+msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
+msgstr "Compilat amb GTK+ %d.%d.%d, ligat a GTK+ %d.%d.%d."
+
+#: ../src/main.c:284
+#, c-format
+msgid "Build options:\n"
+msgstr "Opcions de compilacion :\n"
+
+#: ../src/main.c:285
+#, c-format
+msgid "    Desktop Menu:        %s\n"
+msgstr "    Menú del burèu :        %s\n"
+
+#: ../src/main.c:287 ../src/main.c:294 ../src/main.c:301
+msgid "enabled"
+msgstr "activat"
+
+#: ../src/main.c:289 ../src/main.c:296 ../src/main.c:303
+msgid "disabled"
+msgstr "desactivat"
+
+#: ../src/main.c:292
+#, c-format
+msgid "    Desktop Icons:       %s\n"
+msgstr "    Icònas del burèu :       %s\n"
+
+#: ../src/main.c:299
+#, c-format
+msgid "    Desktop File Icons:  %s\n"
+msgstr "    Icònas de fichièrs del burèu :  %s\n"
+
+#: ../src/main.c:332
+#, c-format
+msgid "%s is not running.\n"
+msgstr "%s es pas aviat.\n"
+
+#: ../src/menu.c:106
+msgid "_Applications"
+msgstr "_Aplicacions"
+
+#: ../src/windowlist.c:229
+msgid "Window List"
+msgstr "Lista de las fenèstras"
+
+#: ../src/windowlist.c:255
+#, c-format
+msgid "<b>Workspace %d</b>"
+msgstr "<b>Espaci de trabalh %d</b>"
+
+#: ../src/windowlist.c:264
+#, c-format
+msgid "Workspace %d"
+msgstr "Espaci de trabalh %d"
+
+#: ../src/windowlist.c:266
+#, c-format
+msgid "<i>Workspace %d</i>"
+msgstr "<i>Espaci de trabalh %d</i>"
+
+#: ../src/windowlist.c:362 ../src/windowlist.c:365
+msgid "_Add Workspace"
+msgstr "_Apondre un espaci de trabalh"
+
+#: ../src/windowlist.c:373
+#, c-format
+msgid "_Remove Workspace %d"
+msgstr "_Suprimir l'espaci de trabalh %d"
+
+#: ../src/windowlist.c:376
+#, c-format
+msgid "_Remove Workspace '%s'"
+msgstr "_Suprimir l'espaci de trabalh « %s »"
+
+#: ../src/xfce-desktop.c:1084
+#, c-format
+msgid "Unable to load image from backdrop list file \"%s\""
+msgstr "Impossible de cargar lo fons d'ecran dempuèi la lista « %s »"
+
+#: ../src/xfce-desktop.c:1086
+msgid "Desktop Error"
+msgstr "Error del burèu"
+
+#: ../src/xfdesktop-file-icon-manager.c:497
+#: ../src/xfdesktop-file-icon-manager.c:514
+#, c-format
+msgid "Could not create the desktop folder \"%s\""
+msgstr "Impossible de crear lo dorsièr del burèu « %s »"
+
+#: ../src/xfdesktop-file-icon-manager.c:502
+#: ../src/xfdesktop-file-icon-manager.c:519
+msgid "Desktop Folder Error"
+msgstr "Error dins lo dorsièr del burèu"
+
+#: ../src/xfdesktop-file-icon-manager.c:521
+msgid ""
+"A normal file with the same name already exists. Please delete or rename it."
+msgstr "Un fichièr normal qu'a lo meteis nom existís ja. Suprimissètz-lo o renomenatz-lo."
+
+#: ../src/xfdesktop-file-icon-manager.c:624
+#: ../src/xfdesktop-file-icon-manager.c:668 ../src/xfdesktop-file-utils.c:863
+#: ../src/xfdesktop-file-utils.c:878 ../src/xfdesktop-file-utils.c:910
+#: ../src/xfdesktop-file-utils.c:924
+msgid "Trash Error"
+msgstr "Error de l'escobilhièr"
+
+#: ../src/xfdesktop-file-icon-manager.c:625
+#: ../src/xfdesktop-file-icon-manager.c:669
+msgid "The selected files could not be trashed"
+msgstr "Los fichièrs seleccionats an pas pogut èsser suprimits."
+
+#: ../src/xfdesktop-file-icon-manager.c:626
+#: ../src/xfdesktop-file-icon-manager.c:670 ../src/xfdesktop-file-utils.c:762
+#: ../src/xfdesktop-file-utils.c:821 ../src/xfdesktop-file-utils.c:979
+#: ../src/xfdesktop-file-utils.c:1035 ../src/xfdesktop-file-utils.c:1085
+#: ../src/xfdesktop-file-utils.c:1135 ../src/xfdesktop-file-utils.c:1212
+#: ../src/xfdesktop-file-utils.c:1273 ../src/xfdesktop-file-utils.c:1346
+#: ../src/xfdesktop-file-utils.c:1424
+msgid ""
+"This feature requires a file manager service to be present (such as the one "
+"supplied by Thunar)."
+msgstr "Aquesta foncionalitat requerís la preséncia d'un gestionari de fichièrs (coma Thunar)."
+
+#. printf is to be translator-friendly
+#: ../src/xfdesktop-file-icon-manager.c:770
+#: ../src/xfdesktop-file-icon-manager.c:1349
+#, c-format
+msgid "Unable to launch \"%s\":"
+msgstr "Impossible d'aviar « %s » :"
+
+#: ../src/xfdesktop-file-icon-manager.c:772
+#: ../src/xfdesktop-file-icon-manager.c:1033
+#: ../src/xfdesktop-file-icon-manager.c:1350 ../src/xfdesktop-file-utils.c:707
+#: ../src/xfdesktop-file-utils.c:1118 ../src/xfdesktop-file-utils.c:1133
+#: ../src/xfdesktop-file-utils.c:1185 ../src/xfdesktop-file-utils.c:1210
+#: ../src/xfdesktop-file-utils.c:1256 ../src/xfdesktop-file-utils.c:1271
+msgid "Launch Error"
+msgstr "Error al moment de l'aviada"
+
+#: ../src/xfdesktop-file-icon-manager.c:957
+#, c-format
+msgid "_Open With \"%s\""
+msgstr "_Dobrir amb « %s »"
+
+#: ../src/xfdesktop-file-icon-manager.c:960
+#, c-format
+msgid "Open With \"%s\""
+msgstr "Dobrir amb « %s »"
+
+#: ../src/xfdesktop-file-icon-manager.c:1035
+msgid ""
+"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
+"edit launchers and links on the desktop."
+msgstr "Impossible d'aviar « exo-desktop-item-edit », qu'es necessari a la creacion e l'edicion dels aviadors e dels ligams sul burèu."
+
+#: ../src/xfdesktop-file-icon-manager.c:1407
+msgid "_Open all"
+msgstr "_Dobrir tot"
+
+#: ../src/xfdesktop-file-icon-manager.c:1423
+msgid "_Open in New Window"
+msgstr "_Dobrir dins una fenèstra novèla"
+
+#: ../src/xfdesktop-file-icon-manager.c:1425
+#: ../src/xfdesktop-special-file-icon.c:505 ../src/xfdesktop-volume-icon.c:691
+msgid "_Open"
+msgstr "_Dobrir"
+
+#. create launcher item
+#: ../src/xfdesktop-file-icon-manager.c:1444
+msgid "Create _Launcher..."
+msgstr "Crear un _aviador..."
+
+#. create link item
+#: ../src/xfdesktop-file-icon-manager.c:1460
+msgid "Create _URL Link..."
+msgstr "Crear un ligam _URL..."
+
+#. create folder item
+#: ../src/xfdesktop-file-icon-manager.c:1476
+msgid "Create _Folder..."
+msgstr "Crear un _dorsièr..."
+
+#. create from template submenu
+#: ../src/xfdesktop-file-icon-manager.c:1491
+msgid "Create From _Template"
+msgstr "Crear a partir d'un _modèl"
+
+#: ../src/xfdesktop-file-icon-manager.c:1517
+msgid "_Empty File"
+msgstr "_Fichièr void"
+
+#: ../src/xfdesktop-file-icon-manager.c:1533
+msgid "_Execute"
+msgstr "_Executar"
+
+#: ../src/xfdesktop-file-icon-manager.c:1553
+msgid "_Edit Launcher"
+msgstr "_Editar l'aviador"
+
+#: ../src/xfdesktop-file-icon-manager.c:1588
+msgid "Open With"
+msgstr "Dobrir amb"
+
+#: ../src/xfdesktop-file-icon-manager.c:1614
+msgid "Open With Other _Application..."
+msgstr "Dobrir amb una autra _aplicacion..."
+
+#: ../src/xfdesktop-file-icon-manager.c:1706
+msgid "_Rename..."
+msgstr "_Renomenar..."
+
+#: ../src/xfdesktop-file-icon-manager.c:1724
+msgid "Arrange Desktop _Icons"
+msgstr "_Arrengar las icònas del burèu"
+
+#: ../src/xfdesktop-file-icon-manager.c:1734
+msgid "Desktop _Settings..."
+msgstr "Paramètres del _burèu..."
+
+#: ../src/xfdesktop-file-icon-manager.c:1744
+#: ../src/xfdesktop-volume-icon.c:739
+msgid "P_roperties..."
+msgstr "_Proprietats..."
+
+#: ../src/xfdesktop-file-icon-manager.c:2362
+msgid "Load Error"
+msgstr "Error de cargament"
+
+#: ../src/xfdesktop-file-icon-manager.c:2364
+msgid "Failed to load the desktop folder"
+msgstr "Impossible de cargar lo dorsièr del burèu"
+
+#: ../src/xfdesktop-file-icon-manager.c:2938
+msgid "Copy _Here"
+msgstr "_Copiar aicí"
+
+#: ../src/xfdesktop-file-icon-manager.c:2938
+msgid "_Move Here"
+msgstr "_Desplaçar aicí"
+
+#: ../src/xfdesktop-file-icon-manager.c:2938
+msgid "_Link Here"
+msgstr "_Ligar aicí"
+
+#. TRANSLATORS: file was modified less than one day ago
+#: ../src/xfdesktop-file-utils.c:137
+#, c-format
+msgid "Today at %X"
+msgstr "Uèi a %X"
+
+#. TRANSLATORS: file was modified less than two days ago
+#: ../src/xfdesktop-file-utils.c:141
+#, c-format
+msgid "Yesterday at %X"
+msgstr "Ièr a %X"
+
+#. Days from last week
+#: ../src/xfdesktop-file-utils.c:146
+#, c-format
+msgid "%A at %X"
+msgstr "%A a %X"
+
+#. Any other date
+#: ../src/xfdesktop-file-utils.c:149
+#, c-format
+msgid "%x at %X"
+msgstr "%x a %X"
+
+#. the file_time is invalid
+#: ../src/xfdesktop-file-utils.c:159
+msgid "Unknown"
+msgstr "Desconegut"
+
+#: ../src/xfdesktop-file-utils.c:708
+msgid "The folder could not be opened"
+msgstr "Lo dorsièr a pas pogut èsser dobèrt"
+
+#: ../src/xfdesktop-file-utils.c:745 ../src/xfdesktop-file-utils.c:760
+msgid "Rename Error"
+msgstr "Error de cambiament de nom"
+
+#: ../src/xfdesktop-file-utils.c:746 ../src/xfdesktop-file-utils.c:761
+msgid "The file could not be renamed"
+msgstr "Lo fichièr a pas pogut èsser renomenat"
+
+#: ../src/xfdesktop-file-utils.c:804 ../src/xfdesktop-file-utils.c:819
+msgid "Delete Error"
+msgstr "Error de supression"
+
+#: ../src/xfdesktop-file-utils.c:805 ../src/xfdesktop-file-utils.c:820
+msgid "The selected files could not be deleted"
+msgstr "Los fichièrs seleccionats an pas pogut èsser suprimits"
+
+#: ../src/xfdesktop-file-utils.c:864 ../src/xfdesktop-file-utils.c:879
+msgid "The selected files could not be moved to the trash"
+msgstr "Los fichièrs seleccionats an pas pogut èsser desplaçats dins l'escobilhièr"
+
+#: ../src/xfdesktop-file-utils.c:880 ../src/xfdesktop-file-utils.c:926
+msgid ""
+"This feature requires a trash service to be present (such as the one "
+"supplied by Thunar)."
+msgstr "Aquesta foncionalitat requerís la preséncia d'un servici d'escobilhièr (tal coma lo qu'es provesit per Thunar)."
+
+#: ../src/xfdesktop-file-utils.c:911 ../src/xfdesktop-file-utils.c:925
+msgid "Could not empty the trash"
+msgstr "Impossible de voidar l'escobilhièr"
+
+#: ../src/xfdesktop-file-utils.c:962 ../src/xfdesktop-file-utils.c:977
+msgid "Create File Error"
+msgstr "Error de creacion del fichièr"
+
+#: ../src/xfdesktop-file-utils.c:963 ../src/xfdesktop-file-utils.c:978
+msgid "Could not create a new file"
+msgstr "Impossible de crear un fichièr novèl"
+
+#: ../src/xfdesktop-file-utils.c:1018 ../src/xfdesktop-file-utils.c:1033
+msgid "Create Document Error"
+msgstr "Error de creacion del document"
+
+#: ../src/xfdesktop-file-utils.c:1019 ../src/xfdesktop-file-utils.c:1034
+msgid "Could not create a new document from the template"
+msgstr "Impossible de crear un novèl document dempuèi lo modèl"
+
+#: ../src/xfdesktop-file-utils.c:1068 ../src/xfdesktop-file-utils.c:1083
+msgid "File Properties Error"
+msgstr "Error de proprietats de fichièr"
+
+#: ../src/xfdesktop-file-utils.c:1069 ../src/xfdesktop-file-utils.c:1084
+msgid "The file properties dialog could not be opened"
+msgstr "La fenèstra de las proprietats del fichièr a pas pogut èsser dobèrta"
+
+#: ../src/xfdesktop-file-utils.c:1119 ../src/xfdesktop-file-utils.c:1134
+msgid "The file could not be opened"
+msgstr "Lo fichièr a pas pogut èsser dobèrt"
+
+#: ../src/xfdesktop-file-utils.c:1182 ../src/xfdesktop-file-utils.c:1207
+#, c-format
+msgid "Failed to run \"%s\""
+msgstr "Impossible d'aviar « %s »"
+
+#: ../src/xfdesktop-file-utils.c:1257 ../src/xfdesktop-file-utils.c:1272
+msgid "The application chooser could not be opened"
+msgstr "Lo selector d'aplicacions a pas pogut èsser dobèrt"
+
+#: ../src/xfdesktop-file-utils.c:1330 ../src/xfdesktop-file-utils.c:1344
+#: ../src/xfdesktop-file-utils.c:1406 ../src/xfdesktop-file-utils.c:1422
+msgid "Transfer Error"
+msgstr "Error de transferiment"
+
+#: ../src/xfdesktop-file-utils.c:1331 ../src/xfdesktop-file-utils.c:1345
+#: ../src/xfdesktop-file-utils.c:1407 ../src/xfdesktop-file-utils.c:1423
+msgid "The file transfer could not be performed"
+msgstr "Lo transferiment de fichièr a pas pogut èsser efectuat"
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:128
+msgid "Unmounting device"
+msgstr "Desmontatge del periferic"
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:131
+#, c-format
+msgid ""
+"The device \"%s\" is being unmounted by the system. Please do not remove the"
+" media or disconnect the drive"
+msgstr "Lo periferic « %s » es a èsser levat del sistèma. Levetz pas lo mèdia o desconnectetz pas lo lector"
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
+msgid "Writing data to device"
+msgstr "Escritura de las donadas sul periferic"
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
+#, c-format
+msgid ""
+"There is data that needs to be written to the device \"%s\" before it can be"
+" removed. Please do not remove the media or disconnect the drive"
+msgstr "De donadas devon èsser escrichas sus « %s » abans qu'aqueste periferic pòsca èsser levat. Desconnectetz pas lo mèdia."
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:253
+msgid "Ejecting device"
+msgstr "Ejeccion del periferic"
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:256
+#, c-format
+msgid "The device \"%s\" is being ejected. This may take some time"
+msgstr "Lo periferic « %s » es en cors d'ejeccion. Aquò pòt prene un momenton"
+
+#: ../src/xfdesktop-regular-file-icon.c:556
+#, c-format
+msgid ""
+"Type: %s\n"
+"Size: %s\n"
+"Last modified: %s"
+msgstr "Tipe : %s\nTalha : %s\nDarrièra modificacion : %s"
+
+#: ../src/xfdesktop-special-file-icon.c:273
+#: ../src/xfdesktop-special-file-icon.c:432
+msgid "File System"
+msgstr "Sistèma de fichièrs"
+
+#: ../src/xfdesktop-special-file-icon.c:417
+msgid "Trash is empty"
+msgstr "L'escobilhièr es void"
+
+#: ../src/xfdesktop-special-file-icon.c:420
+msgid "Trash contains one item"
+msgstr "L'escobilhièr conten un element"
+
+#: ../src/xfdesktop-special-file-icon.c:421
+#, c-format
+msgid "Trash contains %d items"
+msgstr "L'escobilhièr conten %d elements"
+
+#: ../src/xfdesktop-special-file-icon.c:453
+#, c-format
+msgid ""
+"%s\n"
+"Size: %s\n"
+"Last modified: %s"
+msgstr "%s\nTalha : %s\nDarrièra modificacion : %s"
+
+#: ../src/xfdesktop-special-file-icon.c:522
+msgid "_Empty Trash"
+msgstr "_Voidar l'escobilhièr"
+
+#: ../src/xfdesktop-volume-icon.c:447
+#, c-format
+msgid ""
+"Removable Volume\n"
+"Mounted in \"%s\"\n"
+"%s left (%s total)"
+msgstr "Volum amovible\nPunt de montatge : « %s »\n%s d'espaci liure (%s al total)"
+
+#: ../src/xfdesktop-volume-icon.c:454
+msgid ""
+"Removable Volume\n"
+"Not mounted yet"
+msgstr "Volum amovible\nPas encara montat"
+
+#: ../src/xfdesktop-volume-icon.c:480 ../src/xfdesktop-volume-icon.c:522
+#, c-format
+msgid "Failed to eject \"%s\""
+msgstr "Impossible d'ejectar « %s »"
+
+#: ../src/xfdesktop-volume-icon.c:485 ../src/xfdesktop-volume-icon.c:527
+msgid "Eject Failed"
+msgstr "L'ejeccion a fracassat"
+
+#: ../src/xfdesktop-volume-icon.c:559
+#, c-format
+msgid "Failed to mount \"%s\""
+msgstr "Impossible de montar « %s »"
+
+#: ../src/xfdesktop-volume-icon.c:562
+msgid "Mount Failed"
+msgstr "Lo montatge a fracassat"
+
+#: ../src/xfdesktop-volume-icon.c:707 ../src/xfdesktop-volume-icon.c:710
+msgid "E_ject Volume"
+msgstr "E_jectar lo volum"
+
+#: ../src/xfdesktop-volume-icon.c:717
+msgid "_Mount Volume"
+msgstr "_Montar lo periferic"
+
+#: ../src/xfdesktop-window-icon.c:208
+msgid "_Window Actions"
+msgstr "_Accions de la fenèstra"
