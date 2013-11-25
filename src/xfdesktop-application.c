@@ -678,7 +678,7 @@ xfdesktop_application_start(XfdesktopApplication *app)
         windowlist_attach(XFCE_DESKTOP(app->desktops[i]));
 
         /* display the desktop and try to put it at the bottom */
-        gtk_widget_show(app->desktops[i]);
+        gtk_widget_realize(app->desktops[i]);
         gdk_window_lower(gtk_widget_get_window(app->desktops[i]));
 
         xfce_desktop_set_session_logout_func(XFCE_DESKTOP(app->desktops[i]),

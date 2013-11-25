@@ -517,6 +517,7 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
 
         g_object_unref(G_OBJECT(pix));
         cairo_destroy(cr);
+        gtk_widget_show(GTK_WIDGET(desktop));
     }
 
     if(clip_region != NULL)
