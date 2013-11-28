@@ -304,11 +304,6 @@ set_real_root_window_pixmap(GdkScreen *gscreen,
             gdk_atom_intern("_XROOTPMAP_ID", FALSE),
             gdk_atom_intern("PIXMAP", FALSE), 32,
             GDK_PROP_MODE_REPLACE, (guchar *)&xid, 1);
-    /* set this other property because someone might need it sometime. */
-    gdk_property_change(groot,
-            gdk_atom_intern("ESETROOT_PMAP_ID", FALSE),
-            gdk_atom_intern("PIXMAP", FALSE), 32,
-            GDK_PROP_MODE_REPLACE, (guchar *)&xid, 1);
     /* and set the root window's BG pixmap, because aterm is somewhat lame. */
     gdk_window_set_back_pixmap(groot, pmap, FALSE);
     /* there really should be a standard for this crap... */
