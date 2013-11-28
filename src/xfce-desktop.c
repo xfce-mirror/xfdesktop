@@ -349,8 +349,6 @@ create_bg_pixmap(GdkScreen *gscreen, gpointer user_data)
     if(!GDK_IS_PIXMAP(desktop->priv->bg_pixmap))
         return NULL;
 
-    set_real_root_window_pixmap(desktop->priv->gscreen,
-                                desktop->priv->bg_pixmap);
     gdk_window_set_back_pixmap(gtk_widget_get_window(GTK_WIDGET(desktop)),
                                desktop->priv->bg_pixmap, FALSE);
 
