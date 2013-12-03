@@ -5,14 +5,15 @@
 # Translators:
 # Nuno Donato <nunodonato@gmail.com>, 2004
 # nunom <nunomgue@gmail.com>, 2013
+# nunom <nunomgue@gmail.com>, 2013
 # Sérgio Marques <smarquespt@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-11-15 00:31+0100\n"
-"PO-Revision-Date: 2013-11-19 13:41+0000\n"
-"Last-Translator: Xfce <transifex@xfce.org>\n"
+"PO-Revision-Date: 2013-12-03 14:18+0000\n"
+"Last-Translator: Sérgio Marques <smarquespt@gmail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/xfce/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -72,7 +73,7 @@ msgstr "Papel de parede do ecrã %d"
 msgid ""
 "You are using more than one display, move this dialog to the display you "
 "want to edit the settings for."
-msgstr ""
+msgstr "Está a utilizar mais do que um ecrã. Mova este diálogo para o ecrã que pretende editar as definições."
 
 #: ../settings/main.c:697
 #, c-format
@@ -88,7 +89,7 @@ msgstr "Papel de parede para %s no monitor %d"
 msgid ""
 "You are using more than one display, move this dialog to the display and "
 "workspace you want to edit the settings for."
-msgstr ""
+msgstr "Está a utilizar mais do que um ecrã. Mova este diálogo para o ecrã e área de trabalho que pretende editar as definições."
 
 #. Single monitor and single workspace
 #: ../settings/main.c:716
@@ -104,7 +105,7 @@ msgstr "Papel de parede para %s"
 
 #: ../settings/main.c:727
 msgid "Move this dialog to the workspace you want to edit the settings for."
-msgstr ""
+msgstr "Mova este diálogo para o ecrã e área de trabalho que pretende editar as definições."
 
 #: ../settings/main.c:1130
 msgid "Image selection is unavailable while the image style is set to None."
@@ -513,76 +514,76 @@ msgstr "_Remover área de trabalho \"%s\""
 
 #: ../src/xfdesktop-application.c:773
 msgid "Display version information"
-msgstr ""
+msgstr "Mostrar informações da versão"
 
 #: ../src/xfdesktop-application.c:774
 msgid "Reload all settings"
-msgstr ""
+msgstr "Recarregar todas as definições"
 
 #: ../src/xfdesktop-application.c:775
 msgid "Pop up the menu (at the current mouse position)"
-msgstr ""
+msgstr "Mostrar menu (na posição do rato)"
 
 #: ../src/xfdesktop-application.c:776
 msgid "Pop up the window list (at the current mouse position)"
-msgstr ""
+msgstr "Mostrar lista de janelas (na posição do rato)"
 
 #: ../src/xfdesktop-application.c:778
 msgid "Automatically arrange all the icons on the desktop"
-msgstr ""
+msgstr "Dispor automaticamente os ícones no ecrã"
 
 #: ../src/xfdesktop-application.c:780
 msgid "Do not wait for a window manager on startup"
-msgstr ""
+msgstr "Não esperar pelo gestor de janelas ao arrancar"
 
 #: ../src/xfdesktop-application.c:781
 msgid "Cause xfdesktop to quit"
-msgstr ""
+msgstr "Obrigar ao fecho do xfdesktop"
 
 #: ../src/xfdesktop-application.c:796
 #, c-format
 msgid "Failed to parse arguments: %s\n"
-msgstr ""
+msgstr "Falha ao processar argumentos: %s\n"
 
 #: ../src/xfdesktop-application.c:807
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr ""
+msgstr "Este é o %s versão %s, executado no Xfce %s.\n"
 
 #: ../src/xfdesktop-application.c:809
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr ""
+msgstr "Criado com GTK+ %d.%d.%d, vinculado ao GTK+ %d.%d.%d."
 
 #: ../src/xfdesktop-application.c:813
 #, c-format
 msgid "Build options:\n"
-msgstr ""
+msgstr "Opções da versão:\n"
 
 #: ../src/xfdesktop-application.c:814
 #, c-format
 msgid "    Desktop Menu:        %s\n"
-msgstr ""
+msgstr "    Menu do ambiente de trabalho:        %s\n"
 
 #: ../src/xfdesktop-application.c:816 ../src/xfdesktop-application.c:823
 #: ../src/xfdesktop-application.c:830
 msgid "enabled"
-msgstr ""
+msgstr "ativo"
 
 #: ../src/xfdesktop-application.c:818 ../src/xfdesktop-application.c:825
 #: ../src/xfdesktop-application.c:832
 msgid "disabled"
-msgstr ""
+msgstr "inativo"
 
 #: ../src/xfdesktop-application.c:821
 #, c-format
 msgid "    Desktop Icons:       %s\n"
-msgstr ""
+msgstr "    Ícones do ambiente de trabalho:       %s\n"
 
 #: ../src/xfdesktop-application.c:828
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr ""
+msgstr "    Ícones do ficheiro do ambiente de trabalho:  %s\n"
 
 #: ../src/xfdesktop-file-icon-manager.c:578
 #: ../src/xfdesktop-file-icon-manager.c:595
