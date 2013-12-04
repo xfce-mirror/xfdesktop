@@ -7,6 +7,7 @@
 # AndreLDM <andreldm1989@gmail.com>, 2013
 # Antonio S. de A. Terceiro <asaterceiro@inf.ufrgs.br>, 2004
 # Fábio Nogueira <deb-user-ba@ubuntu.com>, 2008
+# Henrique P. Machado <zehrique@gmail.com>, 2013
 # Og Maciel <ogmaciel@gnome.org>, 2008
 # Rafael Ferreira <rafael.f.f1@gmail.com>, 2013
 # secipolla <secipolla@gmail.com>, 2011
@@ -16,8 +17,8 @@ msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-11-15 00:31+0100\n"
-"PO-Revision-Date: 2013-12-03 13:19+0000\n"
-"Last-Translator: Rafael Ferreira <rafael.f.f1@gmail.com>\n"
+"PO-Revision-Date: 2013-12-04 14:31+0000\n"
+"Last-Translator: Henrique P. Machado <zehrique@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/xfce/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -113,11 +114,11 @@ msgstr "Mova este diálogo para o espaço de trabalho que você deseja editar as
 
 #: ../settings/main.c:1130
 msgid "Image selection is unavailable while the image style is set to None."
-msgstr "Seleção de imagem está indisponível enquanto o estilo da imagem está definido como None."
+msgstr "A seleção de imagem fica indisponível enquanto o estilo da imagem está definido como Nenhum."
 
 #: ../settings/main.c:1482
 msgid "Spanning screens"
-msgstr "Telas estentidas"
+msgstr "Telas estendidas"
 
 #: ../settings/main.c:1787
 msgid "Image files"
@@ -147,7 +148,7 @@ msgstr "A equipe de desenvolvimento do Xfce. Todos os direitos reservados."
 #: ../settings/main.c:1980
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr "Relate erros para <%s>, por favor."
+msgstr "Por favor, relate erros para <%s>."
 
 #: ../settings/main.c:1987
 msgid "Desktop Settings"
@@ -224,7 +225,7 @@ msgstr "Ampliado"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
 msgid "Spanning Screens"
-msgstr "Telas estentidas"
+msgstr "Telas estendidas"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
 msgid "C_olor:"
@@ -261,7 +262,7 @@ msgstr "Alterar o p_lano de fundo"
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
 msgid ""
 "Automatically select a different background from the current directory."
-msgstr "Seleciona automaticamente um plano de fundo diferente a partir da pasta atual"
+msgstr "Seleciona automaticamente um plano de fundo diferente a partir da pasta atual."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid "Specify how often the background will change"
@@ -311,7 +312,7 @@ msgstr "Seleciona aleatoriamente uma outra imagem da mesma pasta quando os plano
 
 #: ../settings/xfdesktop-settings-ui.glade.h:1
 msgid "Left"
-msgstr "Esquerdo"
+msgstr "Esquerda"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:2
 msgid "Middle"
@@ -319,7 +320,7 @@ msgstr "Meio"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:3
 msgid "Right"
-msgstr "Direito"
+msgstr "Direita"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:5
 msgid "Shift"
@@ -331,7 +332,7 @@ msgstr "Alt"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:7
 msgid "Control"
-msgstr "Controle"
+msgstr "Ctrl"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:8
 msgid "Minimized application icons"
@@ -441,11 +442,11 @@ msgstr "Mostrar ícones de dica. Tamanho:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:34
 msgid "Size of the tooltip preview image."
-msgstr "Tamanho do dica de ferramenta de imagem de visualização."
+msgstr "Tamanho da dica de ferramenta de imagem de visualização."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:35
 msgid "Use custom _font size:"
-msgstr "Usar um tamanho de _fonte personalizado:"
+msgstr "Usar tamanho de _fonte personalizado:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid "<b>Appearance</b>"
@@ -526,68 +527,68 @@ msgstr "Recarregar todas as configurações"
 
 #: ../src/xfdesktop-application.c:775
 msgid "Pop up the menu (at the current mouse position)"
-msgstr ""
+msgstr "Abre o menu (na posição atual do mouse)"
 
 #: ../src/xfdesktop-application.c:776
 msgid "Pop up the window list (at the current mouse position)"
-msgstr ""
+msgstr "Abre a lista de janelas (na posição atual do mouse)"
 
 #: ../src/xfdesktop-application.c:778
 msgid "Automatically arrange all the icons on the desktop"
-msgstr ""
+msgstr "Posiciona automaticamente todos os ícones na área de trabalho"
 
 #: ../src/xfdesktop-application.c:780
 msgid "Do not wait for a window manager on startup"
-msgstr ""
+msgstr "Não aguardar por um gerenciador de janelas ao iniciar"
 
 #: ../src/xfdesktop-application.c:781
 msgid "Cause xfdesktop to quit"
-msgstr ""
+msgstr "Interrompe o xfdesktop"
 
 #: ../src/xfdesktop-application.c:796
 #, c-format
 msgid "Failed to parse arguments: %s\n"
-msgstr ""
+msgstr "Falha ao analisar os argumentos: %s\n"
 
 #: ../src/xfdesktop-application.c:807
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr ""
+msgstr "Este é o %s versão %s, executando no Xfce %s.\n"
 
 #: ../src/xfdesktop-application.c:809
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr ""
+msgstr "Compilado com GTK+ %d.%d.%d, linkado com GTK+ %d.%d.%d."
 
 #: ../src/xfdesktop-application.c:813
 #, c-format
 msgid "Build options:\n"
-msgstr ""
+msgstr "Opções de compilação:\n"
 
 #: ../src/xfdesktop-application.c:814
 #, c-format
 msgid "    Desktop Menu:        %s\n"
-msgstr ""
+msgstr "Menu da área de trabalho: %s\n"
 
 #: ../src/xfdesktop-application.c:816 ../src/xfdesktop-application.c:823
 #: ../src/xfdesktop-application.c:830
 msgid "enabled"
-msgstr ""
+msgstr "habilitado"
 
 #: ../src/xfdesktop-application.c:818 ../src/xfdesktop-application.c:825
 #: ../src/xfdesktop-application.c:832
 msgid "disabled"
-msgstr ""
+msgstr "desabilitado"
 
 #: ../src/xfdesktop-application.c:821
 #, c-format
 msgid "    Desktop Icons:       %s\n"
-msgstr ""
+msgstr "Ícones da área de trabalho: %s\n"
 
 #: ../src/xfdesktop-application.c:828
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr ""
+msgstr "Ícones de arquivos da área de trabalho: %s\n"
 
 #: ../src/xfdesktop-file-icon-manager.c:578
 #: ../src/xfdesktop-file-icon-manager.c:595
@@ -616,7 +617,7 @@ msgstr "Os arquivos não puderam ser renomeados"
 
 #: ../src/xfdesktop-file-icon-manager.c:687
 msgid "None of the icons selected support being renamed."
-msgstr "Nenhum dos ícones selecionados tem suporte a ser renomeado."
+msgstr "Nenhum dos ícones selecionados podem ser renomeados."
 
 #: ../src/xfdesktop-file-icon-manager.c:731
 #: ../src/xfdesktop-file-icon-manager.c:775 ../src/xfdesktop-file-utils.c:869
@@ -646,7 +647,7 @@ msgstr "Este recurso requer um serviço de gerenciador de arquivos presente (com
 #: ../src/xfdesktop-file-icon-manager.c:1335
 #, c-format
 msgid "Unable to launch \"%s\":"
-msgstr "Não foi possível executar \"%s\":"
+msgstr "Não foi possível lançar \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:879
 #: ../src/xfdesktop-file-icon-manager.c:1140
@@ -910,7 +911,7 @@ msgstr "Desmotagem concluída"
 #: ../src/xfdesktop-notify.c:223 ../src/xfdesktop-notify.c:408
 #, c-format
 msgid "The device \"%s\" has been safely removed from the system. "
-msgstr "O dispositivo \"%s\" foi removido com segurança do sistema."
+msgstr "O dispositivo \"%s\" foi removido do sistema com segurança."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:313
