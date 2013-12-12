@@ -1,4 +1,4 @@
-.TH XFDESKTOP 1 "Version 4.11.0" "29 September 2013"
+.TH XFDESKTOP 1 "December 2013"
 
 .SH NAME
 xfdesktop \- The Xfce 4 Desktop Environment's desktop manager
@@ -18,24 +18,49 @@ icons on the desktop.  Only one instance of xfdesktop can be running at
 a time, and should be started by running \fBxfdesktop\fP without any arguments.
 
 .SH OPTIONS
+
+.SS HELP OPTIONS:
 .TP
-.B \--reload
+.B \-h, --help
+Show help options
+.TP
+.B \--help-all
+Show all help options
+.TP
+.B \--help-gtk
+Show GTK+ Options
+.TP
+.B \--help-sm-client
+Show session management options
+
+.SS APPLICATION OPTIONS:
+.TP
+.B \-V, --version
+Display version information
+.TP
+.B \-R, --reload
 Causes an already-running instance of \fBxfdesktop\fP to reload all its
 settings, including loading a new random backdrop if using a backdrop list.
 .TP
-.B \--menu
+.B \-M, --menu
 Causes an already-running instance of \fBxfdesktop\fP to pop up the
 applications menu at the current position of the mouse cursor.
 .TP
-.B \--windowlist
+.B \-W, --windowlist
 Causes an already-running instance of \fBxfdesktop\fP to pop up the window
 list menu at the current position of the mouse cursor.
 .TP
-.B \--arrange
+.B \-A, --arrange
 Automatically arrange all the icons on the desktop
 .TP
-.B \--quit
+.B \-D, --disable-wm-check
+Do not wait for a window manager on startup
+.TP
+.B \-Q, --quit
 Cause \fBxfdesktop\fP to quit
+.TP
+.B \--display=[DISPLAY]
+X display to use
 
 .SH ENVIRONMENT
 \fBxfdesktop\fP's behavior is affected by the following environment variables.
@@ -61,9 +86,12 @@ If this environment variable is not present, it defaults to
 .SH BUGS
 Please report any bugs to
 .IR http://bugzilla.xfce.org/ .
+.br
 Development discussion should be conducted on the
 .IR xfce4-dev@xfce.org
-mailing list.  Usage-related questions should be directed to the
+mailing list.
+.br
+Usage-related questions should be directed to the
 .IR xfce@xfce.org
 mailing list.
 
@@ -72,7 +100,8 @@ mailing list.
 
 .SH AUTHOR
 Jasper Huijsmans <huysmans@users.sourceforge.net>, Benedikt Meurer
-<benny@xfce.org>, and Brian Tarricone <bjt23@cornell.edu>.
+<benny@xfce.org>, Brian Tarricone <bjt23@cornell.edu>, and Eric
+Koegel <eric@xfce.org>.
 
 This manual page was originally written by Brian Tarricone
 .br
