@@ -50,6 +50,7 @@ static gboolean wl_show_icons = TRUE;
 static gboolean wl_show_ws_names = TRUE;
 static gboolean wl_submenus = FALSE;
 static gboolean wl_sticky_once = FALSE;
+static gboolean wl_add_remove_options = TRUE;
 
 static void
 set_num_workspaces(GtkWidget *w, gpointer data)
@@ -353,40 +354,42 @@ windowlist_populate(XfceDesktop *desktop,
     }
     
     pango_font_description_free(italic_font_desc);
+
+    if(wl_add_remove_options) {
+        /* 'add workspace' item */
+        if(wl_show_icons) {
+            img = gtk_image_new_from_stock(GTK_STOCK_ADD, GTK_ICON_SIZE_MENU);
+            mi = gtk_image_menu_item_new_with_mnemonic(_("_Add Workspace"));
+            gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+        } else
+            mi = gtk_menu_item_new_with_mnemonic(_("_Add Workspace"));
+        gtk_widget_show(mi);
+        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+        g_signal_connect(G_OBJECT(mi), "activate",
+                G_CALLBACK(set_num_workspaces), GINT_TO_POINTER(nworkspaces+1));
     
-    /* 'add workspace' item */
-    if(wl_show_icons) {
-        img = gtk_image_new_from_stock(GTK_STOCK_ADD, GTK_ICON_SIZE_MENU);
-        mi = gtk_image_menu_item_new_with_mnemonic(_("_Add Workspace"));
-        gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
-    } else
-        mi = gtk_menu_item_new_with_mnemonic(_("_Add Workspace"));
-    gtk_widget_show(mi);
-    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-    g_signal_connect(G_OBJECT(mi), "activate",
-            G_CALLBACK(set_num_workspaces), GINT_TO_POINTER(nworkspaces+1));
-    
-    /* 'remove workspace' item */
-    if(!ws_name || atoi(ws_name) == nworkspaces)
-        rm_label = g_strdup_printf(_("_Remove Workspace %d"), nworkspaces);
-    else {
-        gchar *ws_name_esc = g_markup_escape_text(ws_name, strlen(ws_name));
-        rm_label = g_strdup_printf(_("_Remove Workspace '%s'"), ws_name_esc);
-        g_free(ws_name_esc);
+        /* 'remove workspace' item */
+        if(!ws_name || atoi(ws_name) == nworkspaces)
+            rm_label = g_strdup_printf(_("_Remove Workspace %d"), nworkspaces);
+        else {
+            gchar *ws_name_esc = g_markup_escape_text(ws_name, strlen(ws_name));
+            rm_label = g_strdup_printf(_("_Remove Workspace '%s'"), ws_name_esc);
+            g_free(ws_name_esc);
+        }
+        if(wl_show_icons) {
+            img = gtk_image_new_from_stock(GTK_STOCK_REMOVE, GTK_ICON_SIZE_MENU);
+            mi = gtk_image_menu_item_new_with_mnemonic(rm_label);
+            gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+        } else
+            mi = gtk_menu_item_new_with_mnemonic(rm_label);
+        g_free(rm_label);
+        if(nworkspaces == 1)
+            gtk_widget_set_sensitive(mi, FALSE);
+        gtk_widget_show(mi);
+        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+        g_signal_connect(G_OBJECT(mi), "activate",
+                G_CALLBACK(set_num_workspaces), GINT_TO_POINTER(nworkspaces-1));
     }
-    if(wl_show_icons) {
-        img = gtk_image_new_from_stock(GTK_STOCK_REMOVE, GTK_ICON_SIZE_MENU);
-        mi = gtk_image_menu_item_new_with_mnemonic(rm_label);
-        gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
-    } else
-        mi = gtk_menu_item_new_with_mnemonic(rm_label);
-    g_free(rm_label);
-    if(nworkspaces == 1)
-        gtk_widget_set_sensitive(mi, FALSE);
-    gtk_widget_show(mi);
-    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-    g_signal_connect(G_OBJECT(mi), "activate",
-            G_CALLBACK(set_num_workspaces), GINT_TO_POINTER(nworkspaces-1));
 }
 
 static void
@@ -405,6 +408,8 @@ windowlist_settings_changed(XfconfChannel *channel,
         wl_submenus = G_VALUE_TYPE(value) ? g_value_get_boolean(value) : FALSE;
     else if(!strcmp(property, "/windowlist-menu/show-sticky-once"))
         wl_sticky_once = G_VALUE_TYPE(value) ? g_value_get_boolean(value) : FALSE;
+    else if(!strcmp(property, "/windowlist-menu/show-add-remove-workspaces"))
+        wl_add_remove_options = G_VALUE_TYPE(value) ? g_value_get_boolean(value) : TRUE;
 }
 
 void
@@ -430,6 +435,10 @@ windowlist_init(XfconfChannel *channel)
         wl_sticky_once = xfconf_channel_get_bool(channel,
                                                  "/windowlist-menu/show-sticky-once",
                                                  FALSE);
+
+        wl_add_remove_options = xfconf_channel_get_bool(channel,
+                                                        "/windowlist-menu/show-add-remove-workspaces",
+                                                        TRUE);
 
         g_signal_connect(G_OBJECT(channel), "property-changed",
                          G_CALLBACK(windowlist_settings_changed), NULL);

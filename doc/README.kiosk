@@ -1,52 +1,6 @@
-Xfdesktop supports a 'kiosk mode' in which you can restrict the actions users
-are allowed to take.  You can do this by creating a file called
-'xfdesktop.kioskrc' in $sysconfdir/xdg/xfce4/kiosk/ (usually
-/etc/xdg/xfce4/kiosk/). A sample file might look like this:
-
---- begin xfdesktop.kioskrc ---
-UserMenu=%wheel
-CustomizeBackdrop=ALL
-CustomizeDesktopMenu=%wheel
-CustomizeWindowlist=NONE
-CustomizeDesktopIcons=brian
----  end xfdesktop.kioskrc  ---
-
-Additionally, the above can be added to $sysconfdir/xdg/xfce4/kiosk/kioskrc
-if you put it in a section called '[xfdesktop]', like so:
-
---- begin kioskrc ---
-[xfdesktop]
-UserMenu=%wheel
-CustomizeBackdrop=ALL
-CustomizeDesktopMenu=%wheel
-CustomizeWindowlist=NONE
-CustomizeDesktopIcons=brian
----  end kioskrc  ---
-
-Entries in $sysconfdir/xdg/xfce4/kiosk/kioskrc will override any entries in
-$sysconfdir/xdg/xfce4/kiosk/xfdesktop.kioskrc.
-
-Each entry can have a user name, a group name (prefixed with '%'), or one of
-the two special values 'ALL' or 'NONE'.  Lists of names should be
-comma-separated.
-
-Here's an explanation of the keys:
-
-UserMenu:  Whether or not to allow user modifications to the desktop menu.  If
-           not, xfdesktop will ignore the menu.xml file in
-           ~/.config/xfce4/desktop/ and use the system menu in
-           $sysconfdir/xdg/xfce4/desktop/menu.xml.
-
-CustomizeBackdrop: Whether or not to allow user modifications to the desktop
-           backdrop.  If not, the Backdrop settings panel will be greyed out.
-
-CustomizeDesktopMenu: Whether or not to allow user modifications to the desktop
-           menu.  This includes showing or hiding application icons, as well
-           as showing or hiding the menu itself.
-
-CustomizeWindowlist: Whether or not to allow user modifications to the window
-           list.  This includes showing or hiding window icons, as well as
-           showing or hiding the menu itself.
-
-CustomizeDesktopIcons: Whether or not to allow the user to enable or disable
-           the display of desktop icons, or change their style.
+Any xfconf property or channel can be locked down to prevent
+specific users or groups from making changes. See the
+README.xfconf for the list of properties xfdesktop supports.
+Additional kiosk information is available at:
+http://docs.xfce.org/xfce/xfconf/start
+http://git.xfce.org/xfce/xfconf/tree/docs/spec/perchannel-xml.txt
