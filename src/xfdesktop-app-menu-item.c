@@ -45,7 +45,7 @@ struct _XfdesktopAppMenuItem
 
 typedef struct _XfdesktopAppMenuItemClass
 {
-	GtkImageMenuItemClass parent;
+    GtkImageMenuItemClass parent;
 } XfdesktopAppMenuItemClass;
 
 enum
@@ -228,9 +228,6 @@ static void
 xfdesktop_app_menu_item_changed(XfdesktopAppMenuItem *app_menu_item)
 {
     const gchar *label;
-#if !GTK_CHECK_VERSION (2, 16, 0)
-    GtkWidget   *child;
-#endif
 
     g_return_if_fail(XFCE_IS_APP_MENU_ITEM(app_menu_item));
     g_return_if_fail(GARCON_IS_MENU_ITEM(app_menu_item->item));
@@ -242,21 +239,7 @@ xfdesktop_app_menu_item_changed(XfdesktopAppMenuItem *app_menu_item)
     if (G_UNLIKELY (label == NULL))
       label = "";
 
-#if GTK_CHECK_VERSION(2, 16, 0)
     gtk_menu_item_set_label(GTK_MENU_ITEM(app_menu_item), label);
-#else
-    child = gtk_bin_get_child(GTK_BIN (app_menu_item));
-    if (child == NULL) {
-        child = gtk_accel_label_new(label);
-        gtk_container_add(GTK_CONTAINER(app_menu_item), child);
-        gtk_misc_set_alignment(GTK_MISC(child), 0.0, 0.5);
-        gtk_accel_label_set_accel_widget(GTK_ACCEL_LABEL(child), GTK_WIDGET(app_menu_item));
-        gtk_widget_show(child);
-    } else {
-        g_return_if_fail(GTK_IS_LABEL(child));
-        gtk_label_set_text(GTK_LABEL(child), label);
-    }
-#endif
 }
 
 static void

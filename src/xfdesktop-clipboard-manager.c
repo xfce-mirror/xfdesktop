@@ -78,11 +78,11 @@ static void xfdesktop_clipboard_manager_file_destroyed    (XfdesktopClipboardMan
 static void xfdesktop_clipboard_manager_owner_changed     (GtkClipboard                   *clipboard,
                                                            GdkEventOwnerChange            *event,
                                                            XfdesktopClipboardManager      *manager);
-#if 0
+
 static void xfdesktop_clipboard_manager_contents_received (GtkClipboard                   *clipboard,
                                                            GtkSelectionData               *selection_data,
                                                            gpointer                        user_data);
-#endif
+
 static void xfdesktop_clipboard_manager_targets_received  (GtkClipboard                   *clipboard,
                                                            GtkSelectionData               *selection_data,
                                                            gpointer                        user_data);

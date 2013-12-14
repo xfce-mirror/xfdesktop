@@ -484,11 +484,8 @@ xfdesktop_special_file_icon_peek_tooltip(XfdesktopIcon *icon)
 
             size = g_file_info_get_attribute_uint64(info,
                                                     G_FILE_ATTRIBUTE_STANDARD_SIZE);
-#if GLIB_CHECK_VERSION (2, 30, 0)
+
             size_string = g_format_size(size);
-#else
-            size_string = g_format_size_for_display(size);
-#endif
 
             mtime = g_file_info_get_attribute_uint64(info,
                                                      G_FILE_ATTRIBUTE_TIME_MODIFIED);

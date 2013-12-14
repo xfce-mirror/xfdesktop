@@ -1536,7 +1536,7 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
             our_action = gdk_drag_context_get_suggested_action(context);
     } else {
         /* start with all available actions (may be filtered by modifier keys) */
-        GdkDragAction allowed_actions = context->actions;
+        GdkDragAction allowed_actions = gdk_drag_context_get_actions(context);
 
         if(is_local_drag) {  /* #2 */
             /* check to make sure we aren't just hovering over ourself */

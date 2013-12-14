@@ -123,7 +123,7 @@ window_destroyed_cb(gpointer data, GObject *where_the_object_was)
 }
 
 static void
-mi_destroyed_cb(GtkObject *object, gpointer user_data)
+mi_destroyed_cb(GtkWidget *object, gpointer user_data)
 {
     g_object_weak_unref(G_OBJECT(user_data),
             (GWeakNotify)window_destroyed_cb, object);

@@ -2739,11 +2739,8 @@ xfdesktop_file_icon_manager_files_ready(GFileEnumerator *enumerator,
     if(!files) {
         if(error) {
             GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
-#if GTK_CHECK_VERSION (2, 18, 0)
+
             xfce_message_dialog(gtk_widget_is_toplevel(toplevel) ? GTK_WINDOW(toplevel) : NULL,
-#else
-            xfce_message_dialog(GTK_WIDGET_TOPLEVEL(toplevel) ? GTK_WINDOW(toplevel) : NULL,
-#endif
                                 _("Load Error"),
                                 GTK_STOCK_DIALOG_WARNING, 
                                 _("Failed to load the desktop folder"), error->message,
