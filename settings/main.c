@@ -70,6 +70,7 @@
 #define WINLIST_SHOW_STICKY_WIN_ONCE_PROP    "/windowlist-menu/show-sticky-once"
 #define WINLIST_SHOW_WS_NAMES_PROP           "/windowlist-menu/show-workspace-names"
 #define WINLIST_SHOW_WS_SUBMENUS_PROP        "/windowlist-menu/show-submenus"
+#define WINLIST_SHOW_ADD_REMOVE_WORKSPACES_PROP "/windowlist-menu/show-add-remove-workspaces"
 
 #define DESKTOP_ICONS_STYLE_PROP             "/desktop-icons/style"
 #define DESKTOP_ICONS_ICON_SIZE_PROP         "/desktop-icons/icon-size"
@@ -1878,6 +1879,11 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     xfconf_g_property_bind(channel, WINLIST_SHOW_STICKY_WIN_ONCE_PROP,
                            G_TYPE_BOOLEAN,
                            gtk_builder_get_object(main_gxml, "chk_show_winlist_sticky_once"),
+                           "active");
+
+    xfconf_g_property_bind(channel, WINLIST_SHOW_ADD_REMOVE_WORKSPACES_PROP,
+                           G_TYPE_BOOLEAN,
+                           gtk_builder_get_object(main_gxml, "chk_show_app_remove_workspaces"),
                            "active");
 
     w = GTK_WIDGET(gtk_builder_get_object(main_gxml, "chk_show_winlist_ws_names"));
