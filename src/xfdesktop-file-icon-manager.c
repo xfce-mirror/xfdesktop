@@ -3687,7 +3687,7 @@ xfdesktop_file_icon_manager_new(GFile *folder,
                            G_OBJECT(fmanager), "show-unknown-volume");
     xfconf_g_property_bind(channel, DESKTOP_ICONS_SHOW_THUMBNAILS, G_TYPE_BOOLEAN,
                            G_OBJECT(fmanager), "show-thumbnails");
-    xfconf_g_property_bind(channel, DESKTOP_ICONS_MAX_TEMPLATE_FILES, G_TYPE_INT,
+    xfconf_g_property_bind(channel, DESKTOP_MENU_MAX_TEMPLATE_FILES, G_TYPE_INT,
                            G_OBJECT(fmanager), "max-templates");
 
     return XFDESKTOP_ICON_VIEW_MANAGER(fmanager);

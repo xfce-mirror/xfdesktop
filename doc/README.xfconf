@@ -32,10 +32,11 @@ the same monitor is plugged in again those settings apply to it.
     <show-sticky-once bool>
     <show-submenus bool>
     <show-add-remove-workspaces bool>
-</windowlist>
+</windowlist-menu>
 <desktop-menu>
     <show bool>
     <show-icons bool>
+    <max-template-files int>
 </desktop-menu>
 <desktop-icons>
     <style int>
@@ -54,6 +55,5 @@ the same monitor is plugged in again those settings apply to it.
         <show-device-removable bool>
         <show-network-removable bool>
         <show-unknown-removable bool>
-        <max-template-files int>
     </file-icons>
 </desktop-icons>

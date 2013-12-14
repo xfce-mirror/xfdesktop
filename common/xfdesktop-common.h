@@ -61,7 +61,8 @@
 #define DESKTOP_ICONS_SHOW_TRASH             "/desktop-icons/file-icons/show-trash"
 #define DESKTOP_ICONS_SHOW_FILESYSTEM        "/desktop-icons/file-icons/show-filesystem"
 #define DESKTOP_ICONS_SHOW_REMOVABLE         "/desktop-icons/file-icons/show-removable"
-#define DESKTOP_ICONS_MAX_TEMPLATE_FILES     "/desktop-icons/file-icons/max-template-files"
+
+#define DESKTOP_MENU_MAX_TEMPLATE_FILES     "/desktop-menu/max-template-files"
 
 /**
  * File information namespaces queried for #GFileInfo objects.
