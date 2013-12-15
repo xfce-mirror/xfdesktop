@@ -31,6 +31,7 @@
 
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4ui/libxfce4ui.h>
+#include <exo/exo.h>
 
 #include "xfdesktop-app-menu-item.h"
 
@@ -212,6 +213,11 @@ xfdesktop_app_menu_item_set_icon(XfdesktopAppMenuItem *app_menu_item)
 
             /* Turn the pixbuf into a gtk_image */
             if(G_LIKELY(pixbuf)) {
+                /* scale the pixbuf down if it needs it */
+                GdkPixbuf *tmp = exo_gdk_pixbuf_scale_down(pixbuf, TRUE, w, h);
+                g_object_unref(pixbuf);
+                pixbuf = tmp;
+
                 image = gtk_image_new_from_pixbuf(pixbuf);
                 g_object_unref(G_OBJECT(pixbuf));
             }
