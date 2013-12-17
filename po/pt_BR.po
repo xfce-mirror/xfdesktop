@@ -16,9 +16,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-15 00:31+0100\n"
-"PO-Revision-Date: 2013-12-04 14:31+0000\n"
-"Last-Translator: Henrique P. Machado <zehrique@gmail.com>\n"
+"POT-Creation-Date: 2013-12-15 00:31+0100\n"
+"PO-Revision-Date: 2013-12-17 03:55+0000\n"
+"Last-Translator: Rafael Ferreira <rafael.f.f1@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/xfce/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,37 +26,37 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: ../settings/main.c:371 ../src/xfdesktop-special-file-icon.c:295
+#: ../settings/main.c:372 ../src/xfdesktop-special-file-icon.c:295
 #: ../src/xfdesktop-special-file-icon.c:479
 msgid "Home"
 msgstr "Início"
 
-#: ../settings/main.c:373
+#: ../settings/main.c:374
 msgid "Filesystem"
 msgstr "Sistema de arquivos"
 
-#: ../settings/main.c:375
+#: ../settings/main.c:376
 msgid "Trash"
 msgstr "Lixeira"
 
-#: ../settings/main.c:377
+#: ../settings/main.c:378
 msgid "Removable Devices"
 msgstr "Dispositivos removíveis"
 
-#: ../settings/main.c:379
+#: ../settings/main.c:380
 msgid "Network Shares"
 msgstr "Compartilhamentos de Rede"
 
-#: ../settings/main.c:381
+#: ../settings/main.c:382
 msgid "Disks and Drives"
 msgstr "Discos e Unidades"
 
-#: ../settings/main.c:383
+#: ../settings/main.c:384
 msgid "Other Items"
 msgstr "Outros Itens"
 
 #. Display the file name, file type, and file size in the tooltip.
-#: ../settings/main.c:496
+#: ../settings/main.c:497
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -64,97 +64,97 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nTipo: %s\nTamanho: %s"
 
-#: ../settings/main.c:680
+#: ../settings/main.c:681
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "Papel de parede do monitor %d (%s)"
 
-#: ../settings/main.c:683
+#: ../settings/main.c:684
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "Papel de parede do monitor %d"
 
-#: ../settings/main.c:689
+#: ../settings/main.c:690
 msgid ""
 "You are using more than one display, move this dialog to the display you "
 "want to edit the settings for."
 msgstr "Você está usando mais de uma tela, mova este diálogo para a tela a qual você deseja editar as configurações."
 
-#: ../settings/main.c:697
+#: ../settings/main.c:698
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "Papel de parede para %s no monitor %d (%s)"
 
-#: ../settings/main.c:701
+#: ../settings/main.c:702
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "Papel de parede para %s no monitor %d"
 
-#: ../settings/main.c:708
+#: ../settings/main.c:709
 msgid ""
 "You are using more than one display, move this dialog to the display and "
 "workspace you want to edit the settings for."
 msgstr "Você está usando mais de uma tela, mova este diálogo para a tela e espaço de trabalho que você deseja editar as configurações."
 
 #. Single monitor and single workspace
-#: ../settings/main.c:716
+#: ../settings/main.c:717
 #, c-format
 msgid "Wallpaper for my desktop"
 msgstr "Papel de parede da minha área de trabalho"
 
 #. Single monitor and per workspace wallpaper
-#: ../settings/main.c:722
+#: ../settings/main.c:723
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "Papel de parede de %s"
 
-#: ../settings/main.c:727
+#: ../settings/main.c:728
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "Mova este diálogo para o espaço de trabalho que você deseja editar as configurações."
 
-#: ../settings/main.c:1130
+#: ../settings/main.c:1131
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "A seleção de imagem fica indisponível enquanto o estilo da imagem está definido como Nenhum."
 
-#: ../settings/main.c:1482
+#: ../settings/main.c:1483
 msgid "Spanning screens"
 msgstr "Telas estendidas"
 
-#: ../settings/main.c:1787
+#: ../settings/main.c:1788
 msgid "Image files"
 msgstr "Arquivos de imagem"
 
-#: ../settings/main.c:1939
+#: ../settings/main.c:1945
 msgid "Settings manager socket"
 msgstr "Socket do gerenciador de configurações"
 
-#: ../settings/main.c:1939
+#: ../settings/main.c:1945
 msgid "SOCKET ID"
 msgstr "ID DO SOCKET"
 
-#: ../settings/main.c:1940
+#: ../settings/main.c:1946
 msgid "Version information"
 msgstr "Informação da versão"
 
-#: ../settings/main.c:1967
+#: ../settings/main.c:1973
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Digite \"%s --help\" para ver como usar."
 
-#: ../settings/main.c:1979
+#: ../settings/main.c:1985
 msgid "The Xfce development team. All rights reserved."
 msgstr "A equipe de desenvolvimento do Xfce. Todos os direitos reservados."
 
-#: ../settings/main.c:1980
+#: ../settings/main.c:1986
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Por favor, relate erros para <%s>."
 
-#: ../settings/main.c:1987
+#: ../settings/main.c:1993
 msgid "Desktop Settings"
 msgstr "Configurações da área de trabalho"
 
-#: ../settings/main.c:1989
+#: ../settings/main.c:1995
 msgid "Unable to contact settings server"
 msgstr "Não foi possível contatar o servidor de configurações"
 
@@ -342,7 +342,7 @@ msgstr "Ícones de aplicativos minimizados"
 msgid "File/launcher icons"
 msgstr "Ícones de arquivos/lançadores"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:1016
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:1010
 msgid "Desktop"
 msgstr "Área de trabalho"
 
@@ -407,56 +407,60 @@ msgid "Show s_ticky windows only in active workspace"
 msgstr "Mostrar janelas fixas somen_te no espaço de trabalho atual"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:26
+msgid "Show a_dd and remove workspace options in list"
+msgstr "Mostrar opções de a_dição e remoção de espaço de trabalho na lista"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "<b>Window List Menu</b>"
 msgstr "<b>Menu da lista de janelas</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:27
+#: ../settings/xfdesktop-settings-ui.glade.h:28
 msgid "_Menus"
 msgstr "_Menus"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:28
+#: ../settings/xfdesktop-settings-ui.glade.h:29
 msgid "Icon _type:"
 msgstr "Tipo de íc_one:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:29
+#: ../settings/xfdesktop-settings-ui.glade.h:30
 msgid "Icon _size:"
 msgstr "Tamanho do í_cone:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:30
+#: ../settings/xfdesktop-settings-ui.glade.h:31
 msgid "Show t_humbnails"
 msgstr "Mostrar _miniaturas"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:31
+#: ../settings/xfdesktop-settings-ui.glade.h:32
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
 msgstr "Selecione esta opção para exibir automaticamente arquivos previsualizáveis na área de trabalho como ícones de miniatura."
 
-#: ../settings/xfdesktop-settings-ui.glade.h:32
+#: ../settings/xfdesktop-settings-ui.glade.h:33
 msgid "Single _click to activate items"
 msgstr "Clique _simples para ativar itens"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:33
+#: ../settings/xfdesktop-settings-ui.glade.h:34
 msgid "Show icon tooltips. Size:"
 msgstr "Mostrar ícones de dica. Tamanho:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:34
+#: ../settings/xfdesktop-settings-ui.glade.h:35
 msgid "Size of the tooltip preview image."
 msgstr "Tamanho da dica de ferramenta de imagem de visualização."
 
-#: ../settings/xfdesktop-settings-ui.glade.h:35
+#: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid "Use custom _font size:"
 msgstr "Usar tamanho de _fonte personalizado:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:36
+#: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "<b>Appearance</b>"
 msgstr "<b>Aparência</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:37
+#: ../settings/xfdesktop-settings-ui.glade.h:38
 msgid "<b>Default Icons</b>"
 msgstr "<b>Ícones padrão</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:38
+#: ../settings/xfdesktop-settings-ui.glade.h:39
 msgid "_Icons"
 msgstr "_Ícones"
 
@@ -464,24 +468,24 @@ msgstr "_Ícones"
 msgid "_Applications"
 msgstr "_Aplicativos"
 
-#: ../src/windowlist.c:72
+#: ../src/windowlist.c:73
 #, c-format
 msgid "Remove Workspace %d"
 msgstr "Remover o espaço de trabalho %d"
 
-#: ../src/windowlist.c:73
+#: ../src/windowlist.c:74
 #, c-format
 msgid ""
 "Do you really want to remove workspace %d?\n"
 "Note: You are currently on workspace %d."
 msgstr "Tem certeza que deseja remover o espaço de trabalho %d?\nNota: Você está atualmente no espaço de trabalho %d."
 
-#: ../src/windowlist.c:77
+#: ../src/windowlist.c:78
 #, c-format
 msgid "Remove Workspace '%s'"
 msgstr "Remover o espaço de trabalho \"%s\""
 
-#: ../src/windowlist.c:78
+#: ../src/windowlist.c:79
 #, c-format
 msgid ""
 "Do you really want to remove workspace '%s'?\n"
@@ -490,102 +494,102 @@ msgstr "Tem certeza que deseja remover o espaço de trabalho \"%s\"?\nNota: Voc�
 
 #. Popup a dialog box confirming that the user wants to remove a
 #. * workspace
-#: ../src/windowlist.c:85
+#: ../src/windowlist.c:86
 msgid "Remove"
 msgstr "Remover"
 
-#: ../src/windowlist.c:245
+#: ../src/windowlist.c:246
 msgid "Window List"
 msgstr "Lista de janelas"
 
-#: ../src/windowlist.c:271
+#: ../src/windowlist.c:272
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>Espaço de trabalho %d</b>"
 
-#: ../src/windowlist.c:360 ../src/windowlist.c:363
+#: ../src/windowlist.c:362 ../src/windowlist.c:365
 msgid "_Add Workspace"
 msgstr "_Adicionar espaço de trabalho"
 
-#: ../src/windowlist.c:371
+#: ../src/windowlist.c:373
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "_Remover espaço de trabalho %d"
 
-#: ../src/windowlist.c:374
+#: ../src/windowlist.c:376
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "_Remover espaço de trabalho '%s'"
 
-#: ../src/xfdesktop-application.c:773
+#: ../src/xfdesktop-application.c:772
 msgid "Display version information"
 msgstr "Exibir informação da versão"
 
-#: ../src/xfdesktop-application.c:774
+#: ../src/xfdesktop-application.c:773
 msgid "Reload all settings"
 msgstr "Recarregar todas as configurações"
 
-#: ../src/xfdesktop-application.c:775
+#: ../src/xfdesktop-application.c:774
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "Abre o menu (na posição atual do mouse)"
 
-#: ../src/xfdesktop-application.c:776
+#: ../src/xfdesktop-application.c:775
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "Abre a lista de janelas (na posição atual do mouse)"
 
-#: ../src/xfdesktop-application.c:778
+#: ../src/xfdesktop-application.c:777
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "Posiciona automaticamente todos os ícones na área de trabalho"
 
-#: ../src/xfdesktop-application.c:780
+#: ../src/xfdesktop-application.c:779
 msgid "Do not wait for a window manager on startup"
 msgstr "Não aguardar por um gerenciador de janelas ao iniciar"
 
-#: ../src/xfdesktop-application.c:781
+#: ../src/xfdesktop-application.c:780
 msgid "Cause xfdesktop to quit"
 msgstr "Interrompe o xfdesktop"
 
-#: ../src/xfdesktop-application.c:796
+#: ../src/xfdesktop-application.c:795
 #, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "Falha ao analisar os argumentos: %s\n"
 
-#: ../src/xfdesktop-application.c:807
+#: ../src/xfdesktop-application.c:806
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Este é o %s versão %s, executando no Xfce %s.\n"
 
-#: ../src/xfdesktop-application.c:809
+#: ../src/xfdesktop-application.c:808
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Compilado com GTK+ %d.%d.%d, linkado com GTK+ %d.%d.%d."
 
-#: ../src/xfdesktop-application.c:813
+#: ../src/xfdesktop-application.c:812
 #, c-format
 msgid "Build options:\n"
 msgstr "Opções de compilação:\n"
 
-#: ../src/xfdesktop-application.c:814
+#: ../src/xfdesktop-application.c:813
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "Menu da área de trabalho: %s\n"
 
-#: ../src/xfdesktop-application.c:816 ../src/xfdesktop-application.c:823
-#: ../src/xfdesktop-application.c:830
+#: ../src/xfdesktop-application.c:815 ../src/xfdesktop-application.c:822
+#: ../src/xfdesktop-application.c:829
 msgid "enabled"
 msgstr "habilitado"
 
-#: ../src/xfdesktop-application.c:818 ../src/xfdesktop-application.c:825
-#: ../src/xfdesktop-application.c:832
+#: ../src/xfdesktop-application.c:817 ../src/xfdesktop-application.c:824
+#: ../src/xfdesktop-application.c:831
 msgid "disabled"
 msgstr "desabilitado"
 
-#: ../src/xfdesktop-application.c:821
+#: ../src/xfdesktop-application.c:820
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "Ícones da área de trabalho: %s\n"
 
-#: ../src/xfdesktop-application.c:828
+#: ../src/xfdesktop-application.c:827
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "Ícones de arquivos da área de trabalho: %s\n"
@@ -682,8 +686,8 @@ msgid "_Open in New Window"
 msgstr "Ab_rir em nova janela"
 
 #: ../src/xfdesktop-file-icon-manager.c:1411
-#: ../src/xfdesktop-special-file-icon.c:550 ../src/xfdesktop-volume-icon.c:814
-#: ../src/xfdesktop-volume-icon.c:818
+#: ../src/xfdesktop-special-file-icon.c:547 ../src/xfdesktop-volume-icon.c:810
+#: ../src/xfdesktop-volume-icon.c:814
 msgid "_Open"
 msgstr "A_brir"
 
@@ -740,27 +744,27 @@ msgid "Desktop _Settings..."
 msgstr "_Configurações da área de trabalho..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1754
-#: ../src/xfdesktop-volume-icon.c:860
+#: ../src/xfdesktop-volume-icon.c:856
 msgid "P_roperties..."
 msgstr "_Propriedades..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2747
+#: ../src/xfdesktop-file-icon-manager.c:2744
 msgid "Load Error"
 msgstr "Erro ao carregar"
 
-#: ../src/xfdesktop-file-icon-manager.c:2749
+#: ../src/xfdesktop-file-icon-manager.c:2746
 msgid "Failed to load the desktop folder"
 msgstr "Falha ao carregar a pasta da área de trabalho"
 
-#: ../src/xfdesktop-file-icon-manager.c:3289
+#: ../src/xfdesktop-file-icon-manager.c:3286
 msgid "Copy _Here"
 msgstr "_Copiar aqui"
 
-#: ../src/xfdesktop-file-icon-manager.c:3289
+#: ../src/xfdesktop-file-icon-manager.c:3286
 msgid "_Move Here"
 msgstr "_Mover aqui"
 
-#: ../src/xfdesktop-file-icon-manager.c:3289
+#: ../src/xfdesktop-file-icon-manager.c:3286
 msgid "_Link Here"
 msgstr "_Ligação aqui"
 
@@ -928,7 +932,7 @@ msgstr "O dispositivo \"%s\" está sendo ejetado. Isso pode demorar um pouco"
 msgid "Eject Finished"
 msgstr "Ejeção concluída"
 
-#: ../src/xfdesktop-regular-file-icon.c:606
+#: ../src/xfdesktop-regular-file-icon.c:603
 #, c-format
 msgid ""
 "Type: %s\n"
@@ -954,7 +958,7 @@ msgstr "A lixeira contém um item"
 msgid "Trash contains %d items"
 msgstr "A lixeira contém %d itens"
 
-#: ../src/xfdesktop-special-file-icon.c:498
+#: ../src/xfdesktop-special-file-icon.c:495
 #, c-format
 msgid ""
 "%s\n"
@@ -962,11 +966,11 @@ msgid ""
 "Last modified: %s"
 msgstr "%s\nTamanho: %s\nÚltima modificação: %s"
 
-#: ../src/xfdesktop-special-file-icon.c:567
+#: ../src/xfdesktop-special-file-icon.c:564
 msgid "_Empty Trash"
 msgstr "_Esvaziar a lixeira"
 
-#: ../src/xfdesktop-volume-icon.c:486
+#: ../src/xfdesktop-volume-icon.c:482
 #, c-format
 msgid ""
 "Removable Volume\n"
@@ -974,39 +978,39 @@ msgid ""
 "%s left (%s total)"
 msgstr "Volume removível\nMontado em \"%s\"\n%s livre (%s total)"
 
-#: ../src/xfdesktop-volume-icon.c:493
+#: ../src/xfdesktop-volume-icon.c:489
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
 msgstr "Volume removível\nNão montado ainda"
 
-#: ../src/xfdesktop-volume-icon.c:522 ../src/xfdesktop-volume-icon.c:567
+#: ../src/xfdesktop-volume-icon.c:518 ../src/xfdesktop-volume-icon.c:563
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "Falha ao ejetar \"%s\""
 
-#: ../src/xfdesktop-volume-icon.c:527 ../src/xfdesktop-volume-icon.c:572
+#: ../src/xfdesktop-volume-icon.c:523 ../src/xfdesktop-volume-icon.c:568
 msgid "Eject Failed"
 msgstr "Falha ao ejetar"
 
-#: ../src/xfdesktop-volume-icon.c:604
+#: ../src/xfdesktop-volume-icon.c:600
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "Falha ao montar \"%s\""
 
-#: ../src/xfdesktop-volume-icon.c:607
+#: ../src/xfdesktop-volume-icon.c:603
 msgid "Mount Failed"
 msgstr "Falha ao montar"
 
-#: ../src/xfdesktop-volume-icon.c:833
+#: ../src/xfdesktop-volume-icon.c:829
 msgid "E_ject Volume"
 msgstr "E_jetar volume"
 
-#: ../src/xfdesktop-volume-icon.c:840
+#: ../src/xfdesktop-volume-icon.c:836
 msgid "_Unmount Volume"
 msgstr "_Desmontar volume"
 
-#: ../src/xfdesktop-volume-icon.c:847
+#: ../src/xfdesktop-volume-icon.c:843
 msgid "_Mount Volume"
 msgstr "_Montar volume"
 
