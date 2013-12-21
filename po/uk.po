@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-15 00:31+0100\n"
-"PO-Revision-Date: 2013-11-16 09:19+0000\n"
+"POT-Creation-Date: 2013-12-15 00:31+0100\n"
+"PO-Revision-Date: 2013-12-21 22:22+0000\n"
 "Last-Translator: Yarema aka Knedlyk <yupadmin@gmail.com>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/projects/p/xfce/language/uk/)\n"
 "MIME-Version: 1.0\n"
@@ -20,37 +20,37 @@ msgstr ""
 "Language: uk\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: ../settings/main.c:371 ../src/xfdesktop-special-file-icon.c:295
+#: ../settings/main.c:372 ../src/xfdesktop-special-file-icon.c:295
 #: ../src/xfdesktop-special-file-icon.c:479
 msgid "Home"
 msgstr "Домашній каталог"
 
-#: ../settings/main.c:373
+#: ../settings/main.c:374
 msgid "Filesystem"
 msgstr "Файлова система"
 
-#: ../settings/main.c:375
+#: ../settings/main.c:376
 msgid "Trash"
 msgstr "Смітник"
 
-#: ../settings/main.c:377
+#: ../settings/main.c:378
 msgid "Removable Devices"
 msgstr "З'ємні пристрої"
 
-#: ../settings/main.c:379
+#: ../settings/main.c:380
 msgid "Network Shares"
 msgstr "Мережеві диски"
 
-#: ../settings/main.c:381
+#: ../settings/main.c:382
 msgid "Disks and Drives"
 msgstr "Диски"
 
-#: ../settings/main.c:383
+#: ../settings/main.c:384
 msgid "Other Items"
 msgstr "Інше"
 
 #. Display the file name, file type, and file size in the tooltip.
-#: ../settings/main.c:496
+#: ../settings/main.c:497
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -58,97 +58,97 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nТип: %s\nРозмір: %s"
 
-#: ../settings/main.c:680
+#: ../settings/main.c:681
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "Шпалери для монітору %d (%s)"
 
-#: ../settings/main.c:683
+#: ../settings/main.c:684
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "Шпалери для монітору %d"
 
-#: ../settings/main.c:689
+#: ../settings/main.c:690
 msgid ""
 "You are using more than one display, move this dialog to the display you "
 "want to edit the settings for."
 msgstr "Ви використовуєте більш ніж один дисплей, перемістіть цей діалог на дисплей, який Ви бажаєте налаштувати."
 
-#: ../settings/main.c:697
+#: ../settings/main.c:698
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "Шпалери для %s на монітор %d (%s)"
 
-#: ../settings/main.c:701
+#: ../settings/main.c:702
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "Шпалери для %s на монітор %d"
 
-#: ../settings/main.c:708
+#: ../settings/main.c:709
 msgid ""
 "You are using more than one display, move this dialog to the display and "
 "workspace you want to edit the settings for."
 msgstr "Ви використовуєте більш ніж один дисплей, перемістіть цей діалог на дисплей і робочу область, яку Ви бажаєте налаштувати."
 
 #. Single monitor and single workspace
-#: ../settings/main.c:716
+#: ../settings/main.c:717
 #, c-format
 msgid "Wallpaper for my desktop"
 msgstr "Шпалери для мого робочого столу"
 
 #. Single monitor and per workspace wallpaper
-#: ../settings/main.c:722
+#: ../settings/main.c:723
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "Шпалери для %s"
 
-#: ../settings/main.c:727
+#: ../settings/main.c:728
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "Перемістіть цей діалог на робочу область, яку Ви бажаєте налаштувати."
 
-#: ../settings/main.c:1130
+#: ../settings/main.c:1131
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "Вибір малюнка недоступний, поки не встановлено стиль малюнка."
 
-#: ../settings/main.c:1482
+#: ../settings/main.c:1483
 msgid "Spanning screens"
 msgstr "Покриваючі екрани"
 
-#: ../settings/main.c:1787
+#: ../settings/main.c:1788
 msgid "Image files"
 msgstr "Файли зображень"
 
-#: ../settings/main.c:1939
+#: ../settings/main.c:1945
 msgid "Settings manager socket"
 msgstr "Сокет менеджера властивостей"
 
-#: ../settings/main.c:1939
+#: ../settings/main.c:1945
 msgid "SOCKET ID"
 msgstr "ID сокета"
 
-#: ../settings/main.c:1940
+#: ../settings/main.c:1946
 msgid "Version information"
 msgstr "Інформація про версію"
 
-#: ../settings/main.c:1967
+#: ../settings/main.c:1973
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Наберіть '%s --help' для використання."
 
-#: ../settings/main.c:1979
+#: ../settings/main.c:1985
 msgid "The Xfce development team. All rights reserved."
 msgstr "Команда розробників Xfce. Всі права застережено."
 
-#: ../settings/main.c:1980
+#: ../settings/main.c:1986
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "По помилки повідомляйте для <%s>."
 
-#: ../settings/main.c:1987
+#: ../settings/main.c:1993
 msgid "Desktop Settings"
 msgstr "Параметри робочого столу"
 
-#: ../settings/main.c:1989
+#: ../settings/main.c:1995
 msgid "Unable to contact settings server"
 msgstr "Не вдається зв'язатися з сервером властивостей."
 
@@ -336,7 +336,7 @@ msgstr "Значки мінімізованих програм"
 msgid "File/launcher icons"
 msgstr "Файл/запускач значки"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:1016
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:1010
 msgid "Desktop"
 msgstr "Робочий стіл"
 
@@ -401,56 +401,60 @@ msgid "Show s_ticky windows only in active workspace"
 msgstr "Показувати приліпл_ені вікна тільки в активних робочих областях"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:26
+msgid "Show a_dd and remove workspace options in list"
+msgstr "Показати в списку _опцію додавання і вилучення робочої області"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "<b>Window List Menu</b>"
 msgstr "<b>Меню списку вікон</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:27
+#: ../settings/xfdesktop-settings-ui.glade.h:28
 msgid "_Menus"
 msgstr "_Меню"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:28
+#: ../settings/xfdesktop-settings-ui.glade.h:29
 msgid "Icon _type:"
 msgstr "Т_ип значка:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:29
+#: ../settings/xfdesktop-settings-ui.glade.h:30
 msgid "Icon _size:"
 msgstr "Розм_ір значка:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:30
+#: ../settings/xfdesktop-settings-ui.glade.h:31
 msgid "Show t_humbnails"
 msgstr "Показати _мініатюри"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:31
+#: ../settings/xfdesktop-settings-ui.glade.h:32
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
 msgstr "Виберіть цей параметр, щоб відобразити попередній перегляд файлів на робочому столі з автоматично створених іконок мініатюр."
 
-#: ../settings/xfdesktop-settings-ui.glade.h:32
+#: ../settings/xfdesktop-settings-ui.glade.h:33
 msgid "Single _click to activate items"
 msgstr "Одинарне _клацання для активування"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:33
+#: ../settings/xfdesktop-settings-ui.glade.h:34
 msgid "Show icon tooltips. Size:"
 msgstr "Показати підказки до значків. Розмір:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:34
+#: ../settings/xfdesktop-settings-ui.glade.h:35
 msgid "Size of the tooltip preview image."
 msgstr "Розмір малюнка підказки"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:35
+#: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid "Use custom _font size:"
 msgstr "Використовув_ати вибраний розмір шрифта:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:36
+#: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "<b>Appearance</b>"
 msgstr "<b>Зовнішній вигляд</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:37
+#: ../settings/xfdesktop-settings-ui.glade.h:38
 msgid "<b>Default Icons</b>"
 msgstr "<b>Типові значки</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:38
+#: ../settings/xfdesktop-settings-ui.glade.h:39
 msgid "_Icons"
 msgstr "_Значки"
 
@@ -458,24 +462,24 @@ msgstr "_Значки"
 msgid "_Applications"
 msgstr "_Програми"
 
-#: ../src/windowlist.c:72
+#: ../src/windowlist.c:73
 #, c-format
 msgid "Remove Workspace %d"
 msgstr "Видалити робочу область %d"
 
-#: ../src/windowlist.c:73
+#: ../src/windowlist.c:74
 #, c-format
 msgid ""
 "Do you really want to remove workspace %d?\n"
 "Note: You are currently on workspace %d."
 msgstr "Ви дійсно бажаєте вилучити робочу область %d?\nПримітка: Зараз Ви на робочій області %d."
 
-#: ../src/windowlist.c:77
+#: ../src/windowlist.c:78
 #, c-format
 msgid "Remove Workspace '%s'"
 msgstr "Вилучення робочої області '%s'"
 
-#: ../src/windowlist.c:78
+#: ../src/windowlist.c:79
 #, c-format
 msgid ""
 "Do you really want to remove workspace '%s'?\n"
@@ -484,102 +488,102 @@ msgstr "Ви дійсно бажаєте вилучити робочу обла�
 
 #. Popup a dialog box confirming that the user wants to remove a
 #. * workspace
-#: ../src/windowlist.c:85
+#: ../src/windowlist.c:86
 msgid "Remove"
 msgstr "Вилучення"
 
-#: ../src/windowlist.c:245
+#: ../src/windowlist.c:246
 msgid "Window List"
 msgstr "Список вікон"
 
-#: ../src/windowlist.c:271
+#: ../src/windowlist.c:272
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>Робоча область %d</b>"
 
-#: ../src/windowlist.c:360 ../src/windowlist.c:363
+#: ../src/windowlist.c:362 ../src/windowlist.c:365
 msgid "_Add Workspace"
 msgstr "_Додати робочу область"
 
-#: ../src/windowlist.c:371
+#: ../src/windowlist.c:373
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "В_идалити робочу область %d"
 
-#: ../src/windowlist.c:374
+#: ../src/windowlist.c:376
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "В_идалити робочу область \"%s\""
 
-#: ../src/xfdesktop-application.c:773
+#: ../src/xfdesktop-application.c:772
 msgid "Display version information"
 msgstr "Відобразити інформація про версію"
 
-#: ../src/xfdesktop-application.c:774
+#: ../src/xfdesktop-application.c:773
 msgid "Reload all settings"
 msgstr "Перезавантажити усі параметри"
 
-#: ../src/xfdesktop-application.c:775
+#: ../src/xfdesktop-application.c:774
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "Показати меню (у місці, де знаходиться курсор миші)"
 
-#: ../src/xfdesktop-application.c:776
+#: ../src/xfdesktop-application.c:775
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "Показати перелік вікон (у місці, де знаходиться курсор миші)"
 
-#: ../src/xfdesktop-application.c:778
+#: ../src/xfdesktop-application.c:777
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "Автоматично розмістити всі значки на робочому столі"
 
-#: ../src/xfdesktop-application.c:780
+#: ../src/xfdesktop-application.c:779
 msgid "Do not wait for a window manager on startup"
 msgstr "Не очікувати на запуск менеджера вікон"
 
-#: ../src/xfdesktop-application.c:781
+#: ../src/xfdesktop-application.c:780
 msgid "Cause xfdesktop to quit"
 msgstr "Вийти з xfdesktop"
 
-#: ../src/xfdesktop-application.c:796
+#: ../src/xfdesktop-application.c:795
 #, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "Не вдається опрацювати аргументи: %s\n"
 
-#: ../src/xfdesktop-application.c:807
+#: ../src/xfdesktop-application.c:806
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Це %s версії %s, що виконується у Xfce %s.\n"
 
-#: ../src/xfdesktop-application.c:809
+#: ../src/xfdesktop-application.c:808
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Зібрано з GTK+ %d.%d.%d, зв'язано з GTK+ %d.%d.%d."
 
-#: ../src/xfdesktop-application.c:813
+#: ../src/xfdesktop-application.c:812
 #, c-format
 msgid "Build options:\n"
 msgstr "Параметри збирання:\n"
 
-#: ../src/xfdesktop-application.c:814
+#: ../src/xfdesktop-application.c:813
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Меню робочого столу:        %s\n"
 
-#: ../src/xfdesktop-application.c:816 ../src/xfdesktop-application.c:823
-#: ../src/xfdesktop-application.c:830
+#: ../src/xfdesktop-application.c:815 ../src/xfdesktop-application.c:822
+#: ../src/xfdesktop-application.c:829
 msgid "enabled"
 msgstr "увімкнено"
 
-#: ../src/xfdesktop-application.c:818 ../src/xfdesktop-application.c:825
-#: ../src/xfdesktop-application.c:832
+#: ../src/xfdesktop-application.c:817 ../src/xfdesktop-application.c:824
+#: ../src/xfdesktop-application.c:831
 msgid "disabled"
 msgstr "вимкнено"
 
-#: ../src/xfdesktop-application.c:821
+#: ../src/xfdesktop-application.c:820
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Значки на робочому столі:       %s\n"
 
-#: ../src/xfdesktop-application.c:828
+#: ../src/xfdesktop-application.c:827
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Значки файлів на робочому столі: %s\n"
@@ -676,8 +680,8 @@ msgid "_Open in New Window"
 msgstr "Відкрити в _новому вікні"
 
 #: ../src/xfdesktop-file-icon-manager.c:1411
-#: ../src/xfdesktop-special-file-icon.c:550 ../src/xfdesktop-volume-icon.c:814
-#: ../src/xfdesktop-volume-icon.c:818
+#: ../src/xfdesktop-special-file-icon.c:547 ../src/xfdesktop-volume-icon.c:810
+#: ../src/xfdesktop-volume-icon.c:814
 msgid "_Open"
 msgstr "_Відкрити"
 
@@ -734,27 +738,27 @@ msgid "Desktop _Settings..."
 msgstr "П_араметри робочого столу..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1754
-#: ../src/xfdesktop-volume-icon.c:860
+#: ../src/xfdesktop-volume-icon.c:856
 msgid "P_roperties..."
 msgstr "В_ластивості..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2747
+#: ../src/xfdesktop-file-icon-manager.c:2744
 msgid "Load Error"
 msgstr "Помилка завантаження"
 
-#: ../src/xfdesktop-file-icon-manager.c:2749
+#: ../src/xfdesktop-file-icon-manager.c:2746
 msgid "Failed to load the desktop folder"
 msgstr "Неможливо завантажити теку стільниці"
 
-#: ../src/xfdesktop-file-icon-manager.c:3289
+#: ../src/xfdesktop-file-icon-manager.c:3286
 msgid "Copy _Here"
 msgstr "_Скопіювати сюди"
 
-#: ../src/xfdesktop-file-icon-manager.c:3289
+#: ../src/xfdesktop-file-icon-manager.c:3286
 msgid "_Move Here"
 msgstr "_Перемістити вгору"
 
-#: ../src/xfdesktop-file-icon-manager.c:3289
+#: ../src/xfdesktop-file-icon-manager.c:3286
 msgid "_Link Here"
 msgstr "_Тут посилання:"
 
@@ -922,7 +926,7 @@ msgstr "Пристрій \"%s\" в даний час витягується. Ц�
 msgid "Eject Finished"
 msgstr "Витягнення закінчено"
 
-#: ../src/xfdesktop-regular-file-icon.c:606
+#: ../src/xfdesktop-regular-file-icon.c:603
 #, c-format
 msgid ""
 "Type: %s\n"
@@ -948,7 +952,7 @@ msgstr "Смітник має один елемент"
 msgid "Trash contains %d items"
 msgstr "Смітник має %d елементів"
 
-#: ../src/xfdesktop-special-file-icon.c:498
+#: ../src/xfdesktop-special-file-icon.c:495
 #, c-format
 msgid ""
 "%s\n"
@@ -956,11 +960,11 @@ msgid ""
 "Last modified: %s"
 msgstr "%s\nРозмір: %s\nОстання зміна: %s"
 
-#: ../src/xfdesktop-special-file-icon.c:567
+#: ../src/xfdesktop-special-file-icon.c:564
 msgid "_Empty Trash"
 msgstr "О_чистити смітник"
 
-#: ../src/xfdesktop-volume-icon.c:486
+#: ../src/xfdesktop-volume-icon.c:482
 #, c-format
 msgid ""
 "Removable Volume\n"
@@ -968,39 +972,39 @@ msgid ""
 "%s left (%s total)"
 msgstr "З'ємний розділ\nЗмонтований в \"%s\"\n%s залишилось (%s всього)"
 
-#: ../src/xfdesktop-volume-icon.c:493
+#: ../src/xfdesktop-volume-icon.c:489
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
 msgstr "З'ємний розділ\nЗараз не змонтовано"
 
-#: ../src/xfdesktop-volume-icon.c:522 ../src/xfdesktop-volume-icon.c:567
+#: ../src/xfdesktop-volume-icon.c:518 ../src/xfdesktop-volume-icon.c:563
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "Не вдається витягнути \"%s\""
 
-#: ../src/xfdesktop-volume-icon.c:527 ../src/xfdesktop-volume-icon.c:572
+#: ../src/xfdesktop-volume-icon.c:523 ../src/xfdesktop-volume-icon.c:568
 msgid "Eject Failed"
 msgstr "Не вдається витягнути"
 
-#: ../src/xfdesktop-volume-icon.c:604
+#: ../src/xfdesktop-volume-icon.c:600
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "Не вдається змонтувати \"%s\""
 
-#: ../src/xfdesktop-volume-icon.c:607
+#: ../src/xfdesktop-volume-icon.c:603
 msgid "Mount Failed"
 msgstr "Помилка підключення"
 
-#: ../src/xfdesktop-volume-icon.c:833
+#: ../src/xfdesktop-volume-icon.c:829
 msgid "E_ject Volume"
 msgstr "Вит_ягнути том"
 
-#: ../src/xfdesktop-volume-icon.c:840
+#: ../src/xfdesktop-volume-icon.c:836
 msgid "_Unmount Volume"
 msgstr "В_ідключити том"
 
-#: ../src/xfdesktop-volume-icon.c:847
+#: ../src/xfdesktop-volume-icon.c:843
 msgid "_Mount Volume"
 msgstr "_Підключити том"
 
