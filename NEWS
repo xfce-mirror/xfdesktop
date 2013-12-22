@@ -1,3 +1,60 @@
+4.11.2
+======
+[Please note that this is a development release.]
+
+Third development release of xfdesktop targeting for Xfce 4.12.
+Please report all problems at bugzilla.xfce.org.
+
+* Xfdesktop-settings:
+  - Add xfconf property to toggle the display of the add/remove
+    workspace menu items in the middle click menu (Bug 4278, 7337)
+  - Add an info bar to xfdesktop-settings so it is clearer on how
+    to customize additional workspaces and monitors (Bug 10460)
+  - Keyboard navigation has been improved in xfdesktop-settings
+
+* Port Xfdesktop to the GApplication API:
+  - Xfdesktop now uses the GApplication API to handle process
+    uniqueness, message passing, and life cycle management.
+
+* Improve how Xfdesktop transitions from the login manager to
+  the initial wallpaper display; all bugs were reported and
+  resolved by Alistair Buxton:
+- Don't set the root pixmap until it's been drawn
+- Don't show the window until the background is ready.
+- Don't set ESETROOT.
+
+* Miscellaneous fixes:
+- Scale down over-sized icons in menus so they have a uniform
+  appearance (Bugs 10545, 10461)
+- Move max-template-files xfconf property
+- Remove old GLIB/GTK macro checks
+- Update man page
+- Wait for the window manager to prevent issues where the
+  wallpaper and icons won't show up on additional screens
+  during startup (Bug 7769)
+- Fix icon renames causing duplicate icons
+- Fix icons for .desktop files with absolute paths
+- Don't show hidden or backup files on the desktop (Bug 9001)
+- Fix a couple warning messages that happen when xfdesktop is
+  shutdown while it's still starting up
+- Improve how backdrops are chosen
+
+* Translation updates:
+  Arabic (ar), Basque (eu), Bulgarian (bg), Catalan (ca),
+  Chinese (China) (zh_CN), Chinese (Hong Kong) (zh_HK),
+  Chinese (Taiwan) (zh_TW), Croatian (hr), Czech (cs),
+  Danish (da), Dutch (Flemish) (nl), English (Australia) (en_AU),
+  English (United Kingdom) (en_GB), Estonian (et), French (fr),
+  Galician (gl), German (de), Greek (el), Hebrew (he),
+  Hungarian (hu), Icelandic (is), Indonesian (id), Italian (it),
+  Japanese (ja), Kazakh (kk), Korean (ko), Lithuanian (lt),
+  Malay (ms), Norwegian Bokmål (nb), Norwegian Nynorsk (nn),
+  Occitan (post 1500) (oc), Persian (Iran) (fa_IR), Polish (pl),
+  Portuguese (pt), Portuguese (Brazilian) (pt_BR), Romanian (ro),
+  Russian (ru), Serbian (sr), Slovak (sk), Slovenian (sl),
+  Spanish (Castilian) (es), Swedish (sv), Thai (th),
+  Turkish (tr), Ukrainian (uk), Uyghur (ug), and Uzbek (uz).
+
 4.11.1
 ======
 - Wrong g_return_if_fail macro used
