@@ -1620,24 +1620,16 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
             GList *menu_actions = NULL;
             ThunarxMenuProvider *provider;
 
-            if(g_file_info_get_file_type(info) == G_FILE_TYPE_DIRECTORY) {
-                for(l = fmanager->priv->thunarx_menu_providers; l; l = l->next) {
-                    provider = THUNARX_MENU_PROVIDER(l->data);
-                    menu_actions = g_list_concat(menu_actions,
-                                                 thunarx_menu_provider_get_folder_actions(provider,
-                                                                                          toplevel,
-                                                                                          THUNARX_FILE_INFO(file_icon)));
-                }
-            } else {
-                for(l = fmanager->priv->thunarx_menu_providers; l; l = l->next) {
-                    provider = THUNARX_MENU_PROVIDER(l->data);
-                    menu_actions = g_list_concat(menu_actions,
-                                                 thunarx_menu_provider_get_file_actions(provider,
-                                                                                        toplevel,
-                                                                                        selected));
-                }
+            /* thunar file specific actions (allows them to operate on folders
+             * as well) */
+            for(l = fmanager->priv->thunarx_menu_providers; l; l = l->next) {
+                provider = THUNARX_MENU_PROVIDER(l->data);
+                menu_actions = g_list_concat(menu_actions,
+                                             thunarx_menu_provider_get_file_actions(provider,
+                                                                                    toplevel,
+                                                                                    selected));
             }
-            
+
             if(menu_actions) {
                 xfdesktop_menu_shell_append_action_list(GTK_MENU_SHELL(menu),
                                                         menu_actions);
