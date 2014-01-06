@@ -267,7 +267,8 @@ static gboolean xfdesktop_icon_view_update_icon_extents(XfdesktopIconView *icon_
                                                         XfdesktopIcon *icon,
                                                         GdkRectangle *pixbuf_extents,
                                                         GdkRectangle *text_extents,
-                                                        GdkRectangle *total_extents);
+                                                        GdkRectangle *total_extents,
+                                                        gint *rtl_offset);
 static void xfdesktop_icon_view_invalidate_icon(XfdesktopIconView *icon_view,
                                                 XfdesktopIcon *icon,
                                                 gboolean recalc_extents);
@@ -2757,6 +2758,7 @@ xfdesktop_icon_view_invalidate_icon(XfdesktopIconView *icon_view,
 {
     GdkRectangle extents;
     gboolean invalidated_something = FALSE;
+    gint rtl_offset;
     
     g_return_if_fail(icon);
     
@@ -2779,7 +2781,8 @@ xfdesktop_icon_view_invalidate_icon(XfdesktopIconView *icon_view,
         if(!xfdesktop_icon_view_update_icon_extents(icon_view, icon,
                                                     &pixbuf_extents,
                                                     &text_extents,
-                                                    &total_extents))
+                                                    &total_extents,
+                                                    &rtl_offset))
         {
             g_warning("Trying to invalidate icon, but can't recalculate extents");
         } else if(gtk_widget_get_realized(GTK_WIDGET(icon_view))) {
@@ -2986,14 +2989,15 @@ xfdesktop_icon_view_update_icon_extents(XfdesktopIconView *icon_view,
                                         XfdesktopIcon *icon,
                                         GdkRectangle *pixbuf_extents,
                                         GdkRectangle *text_extents,
-                                        GdkRectangle *total_extents)
+                                        GdkRectangle *total_extents,
+                                        gint *rtl_offset)
 {
     GdkRectangle tmp_text;
 
     g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view)
                          && XFDESKTOP_IS_ICON(icon)
                          && pixbuf_extents && text_extents
-                         && total_extents, FALSE);
+                         && total_extents && rtl_offset, FALSE);
 
     if(!xfdesktop_icon_view_calculate_icon_pixbuf_area(icon_view, icon,
                                                        pixbuf_extents)
@@ -3005,14 +3009,17 @@ xfdesktop_icon_view_update_icon_extents(XfdesktopIconView *icon_view,
     pixbuf_extents->x += CELL_PADDING + ((CELL_SIZE - CELL_PADDING * 2) - pixbuf_extents->width) / 2;
     pixbuf_extents->y += CELL_PADDING;
 
-    if(!xfdesktop_icon_view_calculate_icon_text_area(icon_view, icon,
-                                                     text_extents)
-       || !xfdesktop_icon_view_shift_area_to_cell(icon_view, icon,
-                                                  text_extents))
-    {
+    if(!xfdesktop_icon_view_calculate_icon_text_area(icon_view, icon, text_extents))
         return FALSE;
-    }
-    text_extents->x += (CELL_SIZE - text_extents->width) / 2;
+
+    /* text_extents->x right now includes the padding needed for rtl languages
+     * to display properly if it's set */
+    *rtl_offset = text_extents->x;
+
+    if(!xfdesktop_icon_view_shift_area_to_cell(icon_view, icon, text_extents))
+        return FALSE;
+
+    text_extents->x += (CELL_SIZE - text_extents->width) / 2 - *rtl_offset;
     text_extents->y += ICON_SIZE + SPACING + LABEL_RADIUS + CELL_PADDING;
 
     tmp_text = *text_extents;
@@ -3043,11 +3050,11 @@ xfdesktop_icon_view_draw_image(cairo_t *cr, GdkPixbuf *pix, GdkRectangle *rect)
 
 static void
 xfdesktop_icon_view_draw_text(cairo_t *cr, PangoLayout *playout,
-                              gint x, gint y, GdkColor *color)
+                              gint x, gint y, gint rtl_offset, GdkColor *color)
 {
     cairo_save(cr);
 
-    cairo_move_to(cr, x, y);
+    cairo_move_to(cr, x - rtl_offset, y);
 
     gdk_cairo_set_source_color(cr, color);
     pango_cairo_show_layout(cr, playout);
@@ -3061,7 +3068,7 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
                                GdkRectangle *area)
 {
     GtkWidget *widget = GTK_WIDGET(icon_view);
-    gint state;
+    gint state, rtl_offset;
     PangoLayout *playout;
     GdkRectangle pixbuf_extents, text_extents, total_extents;
     GdkRectangle intersection;
@@ -3082,7 +3089,8 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
     if(!xfdesktop_icon_view_update_icon_extents(icon_view, icon,
                                                 &pixbuf_extents,
                                                 &text_extents,
-                                                &total_extents))
+                                                &total_extents,
+                                                &rtl_offset))
     {
         g_warning("Can't update extents for icon '%s'",
                   xfdesktop_icon_peek_label(icon));
@@ -3144,6 +3152,7 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
             xfdesktop_icon_view_draw_text(cr, playout,
                                           text_extents.x + x_offset,
                                           text_extents.y + y_offset,
+                                          rtl_offset,
                                           sh_text_col);
         }
 
@@ -3154,6 +3163,7 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
         xfdesktop_icon_view_draw_text(cr, playout,
                                       text_extents.x,
                                       text_extents.y,
+                                      rtl_offset,
                                       gtk_widget_get_style(widget)->fg);
     }
 
@@ -3191,10 +3201,10 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
         cairo_stroke(cr);
 
 
-        //DBG("cell extents:       %dx%d+%d+%d", cell.width, cell.height, cell.x, cell.y);
-        //DBG("new pixbuf extents: %dx%d+%d+%d", pixbuf_extents.width, pixbuf_extents.height, pixbuf_extents.x, pixbuf_extents.y);
-        //DBG("new text extents:   %dx%d+%d+%d", text_extents.width, text_extents.height, text_extents.x, text_extents.y);
-        //DBG("new total extents:  %dx%d+%d+%d", total_extents.width, total_extents.height, total_extents.x, total_extents.y);
+        DBG("cell extents:       %dx%d+%d+%d", cell.width, cell.height, cell.x, cell.y);
+        DBG("new pixbuf extents: %dx%d+%d+%d", pixbuf_extents.width, pixbuf_extents.height, pixbuf_extents.x, pixbuf_extents.y);
+        DBG("new text extents:   %dx%d+%d+%d", text_extents.width, text_extents.height, text_extents.x, text_extents.y);
+        DBG("new total extents:  %dx%d+%d+%d", total_extents.width, total_extents.height, total_extents.x, total_extents.y);
     }
 #endif
 
