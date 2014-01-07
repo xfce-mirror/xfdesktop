@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-12-15 00:31+0100\n"
-"PO-Revision-Date: 2014-01-02 19:53+0000\n"
+"PO-Revision-Date: 2014-01-07 20:04+0000\n"
 "Last-Translator: to_ba\n"
 "Language-Team: German (http://www.transifex.com/projects/p/xfce/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -97,7 +97,7 @@ msgstr ""
 #: ../settings/main.c:717
 #, c-format
 msgid "Wallpaper for my desktop"
-msgstr "Hintergrundbild für meine Arbeitsfläche"
+msgstr "Hintergrundbild für meinen Schreibtisch"
 
 #. Single monitor and per workspace wallpaper
 #: ../settings/main.c:723
@@ -149,7 +149,7 @@ msgstr "Bitte melden Sie Fehler an <%s>."
 
 #: ../settings/main.c:1993
 msgid "Desktop Settings"
-msgstr "Hintergrundeinstellungen"
+msgstr "Schreibtischeinstellungen"
 
 #: ../settings/main.c:1995
 msgid "Unable to contact settings server"
@@ -161,7 +161,7 @@ msgstr "Schreibtisch"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 msgid "Set desktop background and menu and icon behaviour"
-msgstr "Stellen Sie den Hintergrund des Schreibtischs sowie das Menü- und Symbolverhalten ein"
+msgstr "Den Hintergrund des Schreibtischs sowie das Menü- und Symbolverhalten einstellen"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
 msgid "Solid color"
@@ -345,7 +345,7 @@ msgstr "Schreibtisch"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:11
 msgid "Set desktop background and menu and icon behavior"
-msgstr "Stellen Sie den Hintergrund des Schreibtischs sowie das Menü- und Symbolverhalten ein"
+msgstr "Den Hintergrund des Schreibtischs sowie das Menü- und Symbolverhalten einstellen"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:12
 msgid "_Background"
@@ -353,7 +353,7 @@ msgstr "_Hintergrund"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:13
 msgid "Show applications menu on _desktop right click"
-msgstr "_Programm-Menü bei Rechtsklick anzeigen"
+msgstr "_Anwendungsmenü beim Rechtsklick auf dem Schreibtisch anzeigen"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:14
 msgid "_Button:"
@@ -369,15 +369,15 @@ msgstr "_Anwendungssymbole im Menü anzeigen"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:17
 msgid "_Edit desktop menu"
-msgstr "_Menü bearbeiten"
+msgstr "_Schreibtischmenü bearbeiten"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:18
 msgid "<b>Desktop Menu</b>"
-msgstr "<b>Desktopmenü</b>"
+msgstr "<b>Schreibtischmenü</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:19
 msgid "Show _window list menu on desktop middle click"
-msgstr "_Fensterliste bei Mittelklick anzeigen"
+msgstr "_Fensterliste beim Mittelklick auf dem Schreibtisch anzeigen"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:20
 msgid "B_utton:"
@@ -431,7 +431,7 @@ msgstr "Vorsc_haubilder anzeigen"
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
-msgstr "Wählen Sie diese Option, um vorschaufähige Dateien auf dem Schreibtisch als automatisch erzeugte Vorschaubilder anzuzeigen."
+msgstr "Diese Option wählen, um vorschaufähige Dateien auf dem Schreibtisch als automatisch erzeugte Vorschaubilder anzuzeigen."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
 msgid "Single _click to activate items"
@@ -536,7 +536,7 @@ msgstr ""
 
 #: ../src/xfdesktop-application.c:777
 msgid "Automatically arrange all the icons on the desktop"
-msgstr ""
+msgstr "Die Symbole auf dem Schreibtisch automatisch anordnen"
 
 #: ../src/xfdesktop-application.c:779
 msgid "Do not wait for a window manager on startup"
@@ -544,7 +544,7 @@ msgstr ""
 
 #: ../src/xfdesktop-application.c:780
 msgid "Cause xfdesktop to quit"
-msgstr ""
+msgstr "Xfdesktop beenden"
 
 #: ../src/xfdesktop-application.c:795
 #, c-format
@@ -595,12 +595,12 @@ msgstr "Schreibtischdateisymbole: %s\n"
 #: ../src/xfdesktop-file-icon-manager.c:595
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
-msgstr "Der Ordner mit Hintergrundbildern »%s« konnte nicht erstellt werden"
+msgstr "Der Schreibtischordner »%s« konnte nicht erstellt werden"
 
 #: ../src/xfdesktop-file-icon-manager.c:583
 #: ../src/xfdesktop-file-icon-manager.c:600
 msgid "Desktop Folder Error"
-msgstr "Fehler im Ordner »Desktop«"
+msgstr "Fehler im Schreibtischordner"
 
 #: ../src/xfdesktop-file-icon-manager.c:602
 msgid ""
@@ -751,7 +751,7 @@ msgstr "Fehler beim Laden"
 
 #: ../src/xfdesktop-file-icon-manager.c:2746
 msgid "Failed to load the desktop folder"
-msgstr "Desktop-Ordner konnte nicht geladen werden"
+msgstr "Schreibtischordner konnte nicht geladen werden"
 
 #: ../src/xfdesktop-file-icon-manager.c:3286
 msgid "Copy _Here"
