@@ -252,12 +252,8 @@ session_die(gpointer user_data)
 
     TRACE("entering");
 
-    /* If we somehow got here after the app has been released we don't need
-     * to do anything */
-    if(user_data == NULL || !XFDESKTOP_IS_APPLICATION(user_data))
-        return;
-
-    app = XFDESKTOP_APPLICATION(user_data);
+    /* Ensure we always have a valid reference so we can quit xfdesktop */
+    app = xfdesktop_application_get();
 
     /* Cancel the wait for wm check if it's still running */
     g_cancellable_cancel(app->cancel);
