@@ -502,62 +502,6 @@ xfdesktop_file_icon_manager_icon_view_manager_init(XfdesktopIconViewManagerIface
     iface->propose_drop_action = xfdesktop_file_icon_manager_propose_drop_action;
 }
 
-
-
-/* FIXME: remove this before 4.4.0; leave it for now to migrate older beta
-* installs from the old location */
-static void
-__migrate_old_icon_positions(XfdesktopFileIconManager *fmanager)
-{
-    gchar relpath[PATH_MAX], *old_file;
-    
-    g_snprintf(relpath, PATH_MAX, "xfce4/desktop/icons.screen%d-%dx%d.rc",
-               gdk_screen_get_number(fmanager->priv->gscreen),
-               gdk_screen_get_width(fmanager->priv->gscreen),
-               gdk_screen_get_height(fmanager->priv->gscreen));
-    
-    old_file = xfce_resource_save_location(XFCE_RESOURCE_CACHE, relpath, FALSE);
-    
-    if(G_UNLIKELY(old_file) && g_file_test(old_file, G_FILE_TEST_EXISTS)) {
-        gchar *new_file = xfce_resource_save_location(XFCE_RESOURCE_CONFIG,
-                                                      relpath, FALSE);
-        if(G_LIKELY(new_file)) {
-            if(rename(old_file, new_file)) {
-                /* grumble, have to do this the hard way */
-                gchar *contents = NULL;
-                gsize length = 0;
-                GError *error = NULL;
-                
-                if(g_file_get_contents(old_file, &contents, &length, &error)) {
-                    if(!g_file_set_contents(new_file, contents, length,
-                                            &error))
-                    {
-                        g_critical("Unable to write to %s: %s", new_file,
-                                   error->message);
-                        g_error_free(error);
-                    }
-
-                    g_free(contents);
-                } else {
-                    g_critical("Unable to read from %s: %s", old_file,
-                               error->message);
-                    g_error_free(error);
-                }
-            }
-        } else
-            g_critical("Unable to migrate icon position file to new location.");
-        
-        /* i debate removing the old file even if the migration failed,
-         * but i think this is the best way to avoid bug reports that
-         * aren't my problem. */
-        unlink(old_file);
-        
-        g_free(new_file);
-    }
-    
-    g_free(old_file);
-}
-
 static gboolean
 xfdesktop_file_icon_manager_check_create_desktop_folder(GFile *folder)
 {
@@ -2341,8 +2285,20 @@ xfdesktop_remove_icons_ht(gpointer key,
                           gpointer value,
                           gpointer user_data)
 {
-    xfdesktop_icon_view_remove_item(XFDESKTOP_ICON_VIEW(user_data),
-                                    XFDESKTOP_ICON(value));
+    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
+    XfdesktopIcon *icon = XFDESKTOP_ICON(value);
+    GList *item = NULL;
+
+    /* find out if the icon was pending creation */
+    if(fmanager->priv->pending_icons)
+        item = g_queue_find(fmanager->priv->pending_icons, icon);
+
+    /* Remove the icon if it was in the icon view */
+    if(item == NULL) {
+        xfdesktop_icon_view_remove_item(fmanager->priv->icon_view,
+                                        XFDESKTOP_ICON(value));
+    }
+
     return TRUE;
 }
 
@@ -2377,7 +2333,7 @@ xfdesktop_file_icon_manager_refresh_icons(XfdesktopFileIconManager *fmanager)
     if(fmanager->priv->icons) {
         g_hash_table_foreach_remove(fmanager->priv->icons,
                                     (GHRFunc)xfdesktop_remove_icons_ht,
-                                    fmanager->priv->icon_view);
+                                    fmanager);
     }
     
 #if defined(DEBUG) && DEBUG > 0
@@ -2730,12 +2686,19 @@ xfdesktop_file_icon_manager_files_ready(GFileEnumerator *enumerator,
                                         GAsyncResult *result,
                                         gpointer user_data)
 {
-    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
+    XfdesktopFileIconManager *fmanager;
     GError *error = NULL;
     GList *files, *l;
     gboolean is_hidden;
 
-    g_return_if_fail(enumerator == fmanager->priv->enumerator);
+    /* Sanity check */
+    if(user_data == NULL || !XFDESKTOP_IS_FILE_ICON_MANAGER(user_data))
+        return;
+
+    fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
+
+    if(enumerator != fmanager->priv->enumerator)
+        return;
 
     files = g_file_enumerator_next_files_finish(enumerator, result, &error);
 
@@ -2987,9 +2950,6 @@ xfdesktop_file_icon_manager_real_init(XfdesktopIconViewManager *manager,
     
     fmanager->priv->gscreen = gtk_widget_get_screen(GTK_WIDGET(icon_view));
     
-    /* FIXME: remove for 4.4.0 */
-    __migrate_old_icon_positions(fmanager);
-    
     if(!clipboard_manager) {
         GdkDisplay *gdpy = gdk_screen_get_display(fmanager->priv->gscreen);
         clipboard_manager = xfdesktop_clipboard_manager_get_for_display(gdpy);
@@ -3118,7 +3078,7 @@ xfdesktop_file_icon_manager_fini(XfdesktopIconViewManager *manager)
     if(fmanager->priv->icons) {
         g_hash_table_foreach_remove(fmanager->priv->icons,
                                     (GHRFunc)xfdesktop_remove_icons_ht,
-                                    fmanager->priv->icon_view);
+                                    fmanager);
     }
 
     /* Stop the idle callback adding pending icons */
@@ -3135,11 +3095,13 @@ xfdesktop_file_icon_manager_fini(XfdesktopIconViewManager *manager)
     }
     
     /* disconnect from the file monitor and release it */
-    g_signal_handlers_disconnect_by_func(fmanager->priv->monitor,
-                                         G_CALLBACK(xfdesktop_file_icon_manager_file_changed),
-                                         fmanager);
-    g_object_unref(fmanager->priv->monitor);
-    fmanager->priv->monitor = NULL;
+    if(fmanager->priv->monitor) {
+        g_signal_handlers_disconnect_by_func(fmanager->priv->monitor,
+                                             G_CALLBACK(xfdesktop_file_icon_manager_file_changed),
+                                             fmanager);
+        g_object_unref(fmanager->priv->monitor);
+        fmanager->priv->monitor = NULL;
+    }
     
     g_object_unref(G_OBJECT(fmanager->priv->desktop_icon));
     fmanager->priv->desktop_icon = NULL;
