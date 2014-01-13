@@ -2530,9 +2530,6 @@ xfdesktop_icon_view_real_move_cursor(XfdesktopIconView *icon_view,
     if(count == 0)
         return FALSE;
 
-    if(gtk_widget_has_focus(GTK_WIDGET(icon_view)))
-        return FALSE;
-
     gtk_widget_grab_focus(GTK_WIDGET(icon_view));
     gtk_get_current_event_state(&modmask);
 
