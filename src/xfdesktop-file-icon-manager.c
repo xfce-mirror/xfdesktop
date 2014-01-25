@@ -2487,7 +2487,7 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
             if(moved_icon) {
                 /* Since we're replacing an existing icon, get that location
                  * to use instead */
-                if(!xfdesktop_icon_get_position(XFDESKTOP_ICON(icon), &row, &col)) {
+                if(!xfdesktop_icon_get_position(XFDESKTOP_ICON(moved_icon), &row, &col)) {
                     /* Failed to get position... not supported? */
                     row = col = 0;
                 }

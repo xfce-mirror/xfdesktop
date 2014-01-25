@@ -2680,10 +2680,10 @@ static void
 xfdesktop_setup_grids(XfdesktopIconView *icon_view)
 {
     gint xorigin = 0, yorigin = 0, width = 0, height = 0;
+    guint total_cells = (guint)icon_view->priv->nrows * icon_view->priv->ncols;
     gsize old_size, new_size;
     
-    old_size = icon_view->priv->nrows * icon_view->priv->ncols
-               * sizeof(XfdesktopIcon *);
+    old_size = total_cells * sizeof(XfdesktopIcon *);
     
     if(!xfdesktop_get_workarea_single(icon_view, 0,
                                       &xorigin, &yorigin,
@@ -2705,10 +2705,12 @@ xfdesktop_setup_grids(XfdesktopIconView *icon_view)
         
     DBG("CELL_SIZE=%0.3f, TEXT_WIDTH=%0.3f, ICON_SIZE=%u", CELL_SIZE, TEXT_WIDTH, ICON_SIZE);
     DBG("grid size is %dx%d", icon_view->priv->nrows, icon_view->priv->ncols);
-    
-    new_size = icon_view->priv->nrows * icon_view->priv->ncols
-               * sizeof(XfdesktopIcon *);
-    
+
+    /* recalculate */
+    total_cells = (guint)icon_view->priv->nrows * icon_view->priv->ncols;
+
+    new_size = total_cells * sizeof(XfdesktopIcon *);
+
     if(icon_view->priv->grid_layout) {
         icon_view->priv->grid_layout = g_realloc(icon_view->priv->grid_layout,
                                                  new_size);
@@ -3217,6 +3219,7 @@ static void
 xfdesktop_move_all_icons_to_pending_icons_list(XfdesktopIconView *icon_view)
 {
     GList *l = NULL;
+    guint total_cells = (guint)icon_view->priv->nrows * icon_view->priv->ncols;
     
     /* move all icons into the pending_icons list and remove from the desktop */
     for(l = icon_view->priv->icons; l; l = l->next) {
@@ -3234,8 +3237,7 @@ xfdesktop_move_all_icons_to_pending_icons_list(XfdesktopIconView *icon_view)
     icon_view->priv->icons = NULL;
 
     memset(icon_view->priv->grid_layout, 0,
-           icon_view->priv->nrows * icon_view->priv->ncols
-           * sizeof(XfdesktopIcon *));
+           total_cells * sizeof(XfdesktopIcon *));
     
     xfdesktop_setup_grids(icon_view);
 }
@@ -3312,7 +3314,9 @@ xfdesktop_move_all_previous_icons_to_desktop(XfdesktopIconView *icon_view)
         guint16 row, col;
         XfdesktopIcon *icon = XFDESKTOP_ICON(l->data);
 
-        xfdesktop_icon_get_position(icon, &row, &col);
+        if(!xfdesktop_icon_get_position(icon, &row, &col)) {
+            g_warning("Trying to set previous position of an icon with no position");
+        }
 
         if(xfdesktop_grid_is_free_position(icon_view, row, col)) {
             DBG("adding icon %s position row %d x col %d",
@@ -3369,6 +3373,8 @@ xfdesktop_move_all_pending_icons_to_desktop(XfdesktopIconView *icon_view)
 static void
 xfdesktop_grid_do_resize(XfdesktopIconView *icon_view)
 {
+    guint total_cells = (guint)icon_view->priv->nrows * icon_view->priv->ncols;
+
     xfdesktop_move_all_icons_to_pending_icons_list(icon_view);
 
 #if 0 /*def DEBUG*/
@@ -3376,8 +3382,7 @@ xfdesktop_grid_do_resize(XfdesktopIconView *icon_view)
 #endif
 
     memset(icon_view->priv->grid_layout, 0,
-           icon_view->priv->nrows * icon_view->priv->ncols
-           * sizeof(XfdesktopIcon *));
+           total_cells * sizeof(XfdesktopIcon *));
     
     xfdesktop_setup_grids(icon_view);
 
