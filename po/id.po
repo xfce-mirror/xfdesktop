@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-12-15 00:31+0100\n"
-"PO-Revision-Date: 2014-01-25 17:32+0000\n"
+"PO-Revision-Date: 2014-01-25 18:12+0000\n"
 "Last-Translator: Ardjuna <Asyura.x@gmail.com>\n"
 "Language-Team: Indonesian (http://www.transifex.com/projects/p/xfce/language/id/)\n"
 "MIME-Version: 1.0\n"
@@ -39,15 +39,15 @@ msgstr "Divais Lepasan"
 
 #: ../settings/main.c:380
 msgid "Network Shares"
-msgstr ""
+msgstr "Berbagi Jaringan"
 
 #: ../settings/main.c:382
 msgid "Disks and Drives"
-msgstr ""
+msgstr "Media Simpan"
 
 #: ../settings/main.c:384
 msgid "Other Items"
-msgstr ""
+msgstr "Lain-Lain"
 
 #. Display the file name, file type, and file size in the tooltip.
 #: ../settings/main.c:497
@@ -72,7 +72,7 @@ msgstr "Latar Belakang untuk Monitor %d"
 msgid ""
 "You are using more than one display, move this dialog to the display you "
 "want to edit the settings for."
-msgstr ""
+msgstr "Silahkan pindahkan jendela dialog ini ke layar yang akan diatur."
 
 #: ../settings/main.c:698
 #, c-format
@@ -88,7 +88,7 @@ msgstr "Latar Belakang untuk %s pada Monitor %d"
 msgid ""
 "You are using more than one display, move this dialog to the display and "
 "workspace you want to edit the settings for."
-msgstr ""
+msgstr "Silahkan pindahkan jendela dialog ini ke layar dan ruang kerja yang akan diatur."
 
 #. Single monitor and single workspace
 #: ../settings/main.c:717
@@ -104,7 +104,7 @@ msgstr "Latar Belakang untuk %s"
 
 #: ../settings/main.c:728
 msgid "Move this dialog to the workspace you want to edit the settings for."
-msgstr ""
+msgstr "Silahkan pindahkan jendela dialog ini ke ruang kerja yang akan diatur."
 
 #: ../settings/main.c:1131
 msgid "Image selection is unavailable while the image style is set to None."
@@ -178,11 +178,11 @@ msgstr "Transparan"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
 msgid "_Folder:"
-msgstr ""
+msgstr "_Folder:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
 msgid "Choose the folder to select wallpapers from"
-msgstr ""
+msgstr "Pilih folder yang berisi berkas hiasan destop"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
 msgid "St_yle:"
@@ -223,7 +223,7 @@ msgstr "Cakupan Layar"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
 msgid "C_olor:"
-msgstr ""
+msgstr "_Warna:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Specify the style of the color drawn behind the backdrop image"
@@ -251,48 +251,48 @@ msgstr "Terapkan ke semua _wordspaces"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 msgid "Change the _background "
-msgstr ""
+msgstr "Ganti latar _belakang"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
 msgid ""
 "Automatically select a different background from the current directory."
-msgstr ""
+msgstr "Pilih acak gambar latar secara otomatis dari direktori ini."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid "Specify how often the background will change"
-msgstr ""
+msgstr "Tentukan seberapa sering latar belakang berganti"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "in seconds:"
-msgstr ""
+msgstr "dalam detik:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
 msgid "in minutes:"
-msgstr ""
+msgstr "dalam menit:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
 msgid "in hours:"
-msgstr ""
+msgstr "dalam jam:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
 msgid "at start up"
-msgstr ""
+msgstr "pada permulaan sistem berjalan"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
 msgid "every hour"
-msgstr ""
+msgstr "setiap jam"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
 msgid "every day"
-msgstr ""
+msgstr "setiap hari"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
 msgid "chronologically"
-msgstr ""
+msgstr "secara berurutan"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
 msgid "Amount of time before a different background is selected."
-msgstr ""
+msgstr "Jeda waktu pergantian latar belakang."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
 msgid "_Random Order"
@@ -302,7 +302,7 @@ msgstr "_Acak"
 msgid ""
 "Randomly selects another image from the same directory when the wallpaper is"
 " to cycle."
-msgstr ""
+msgstr "Pilih acak gambar lain pada folder yang sama saat pergantian latar belakang."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:1
 msgid "Left"
@@ -402,7 +402,7 @@ msgstr "Ha_nya tampilkan Jendela Melekat pada ruang kerja aktif"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:26
 msgid "Show a_dd and remove workspace options in list"
-msgstr ""
+msgstr "Tampilkan opsi tambah / hapus ruang kerja dalam daftar"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "<b>Window List Menu</b>"
@@ -436,11 +436,11 @@ msgstr "Klik _tunggal untuk mengaktifkan item"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:34
 msgid "Show icon tooltips. Size:"
-msgstr ""
+msgstr "Tampilkan tooltip ikon. Ukuran:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:35
 msgid "Size of the tooltip preview image."
-msgstr ""
+msgstr "Ukuran cuplikan pada tooltip."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid "Use custom _font size:"
@@ -490,7 +490,7 @@ msgstr "Apakah anda ingin menghapus ruang kerja '%s'?\nCatatan: Saat ini anda be
 #. * workspace
 #: ../src/windowlist.c:86
 msgid "Remove"
-msgstr ""
+msgstr "Hapus"
 
 #: ../src/windowlist.c:246
 msgid "Window List"
@@ -517,76 +517,76 @@ msgstr "Hapus _Ruang Kerja '%s'"
 
 #: ../src/xfdesktop-application.c:772
 msgid "Display version information"
-msgstr ""
+msgstr "Tampilkan informasi versi"
 
 #: ../src/xfdesktop-application.c:773
 msgid "Reload all settings"
-msgstr ""
+msgstr "Muat ulang semua pengaturan"
 
 #: ../src/xfdesktop-application.c:774
 msgid "Pop up the menu (at the current mouse position)"
-msgstr ""
+msgstr "Munculkan menu (di posisi tetikus sekarang)"
 
 #: ../src/xfdesktop-application.c:775
 msgid "Pop up the window list (at the current mouse position)"
-msgstr ""
+msgstr "Munculkan daftar jendela (di posisi tetikus sekarang)"
 
 #: ../src/xfdesktop-application.c:777
 msgid "Automatically arrange all the icons on the desktop"
-msgstr ""
+msgstr "Rapikan tata letak ikon di destop"
 
 #: ../src/xfdesktop-application.c:779
 msgid "Do not wait for a window manager on startup"
-msgstr ""
+msgstr "Jangan tunggu proses manajer jendela saat permulaan sistem berjalan"
 
 #: ../src/xfdesktop-application.c:780
 msgid "Cause xfdesktop to quit"
-msgstr ""
+msgstr "Menyebabkan xfdesktop berhenti"
 
 #: ../src/xfdesktop-application.c:795
 #, c-format
 msgid "Failed to parse arguments: %s\n"
-msgstr ""
+msgstr "Gagal mengurai argumen: %s\n"
 
 #: ../src/xfdesktop-application.c:806
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr ""
+msgstr "Ini adalah %s versi %s, yang berjalan pada Xfce %s.\n"
 
 #: ../src/xfdesktop-application.c:808
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr ""
+msgstr "Dibangun dengan GTK+ %d.%d.%d, ditautkan dengan GTK+ %d.%d.%d."
 
 #: ../src/xfdesktop-application.c:812
 #, c-format
 msgid "Build options:\n"
-msgstr ""
+msgstr "Opsi bangun:\n"
 
 #: ../src/xfdesktop-application.c:813
 #, c-format
 msgid "    Desktop Menu:        %s\n"
-msgstr ""
+msgstr "Menu Destop: %s\n"
 
 #: ../src/xfdesktop-application.c:815 ../src/xfdesktop-application.c:822
 #: ../src/xfdesktop-application.c:829
 msgid "enabled"
-msgstr ""
+msgstr "aktifkan"
 
 #: ../src/xfdesktop-application.c:817 ../src/xfdesktop-application.c:824
 #: ../src/xfdesktop-application.c:831
 msgid "disabled"
-msgstr ""
+msgstr "nonaktifkan"
 
 #: ../src/xfdesktop-application.c:820
 #, c-format
 msgid "    Desktop Icons:       %s\n"
-msgstr ""
+msgstr "Ikon Destop: %s\n"
 
 #: ../src/xfdesktop-application.c:827
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr ""
+msgstr "Ikon Berkas Destop: %s\n"
 
 #: ../src/xfdesktop-file-icon-manager.c:578
 #: ../src/xfdesktop-file-icon-manager.c:595
@@ -611,7 +611,7 @@ msgstr "Galat Mengganti Nama"
 
 #: ../src/xfdesktop-file-icon-manager.c:686 ../src/xfdesktop-file-utils.c:770
 msgid "The files could not be renamed"
-msgstr ""
+msgstr "Berkas tidak dapat diganti namanya"
 
 #: ../src/xfdesktop-file-icon-manager.c:687
 msgid "None of the icons selected support being renamed."
