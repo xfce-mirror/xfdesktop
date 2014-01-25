@@ -441,7 +441,7 @@ xfdesktop_file_utils_get_icon(GIcon *icon,
 static void
 xfdesktop_file_utils_add_emblems(GdkPixbuf *pix, GList *emblems)
 {
-    GdkPixbuf *emblem_pix;
+    GdkPixbuf *emblem_pix = NULL;
     gint max_emblems;
     gint pix_width, pix_height;
     gint emblem_size;

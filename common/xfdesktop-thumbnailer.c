@@ -216,13 +216,13 @@ xfdesktop_thumbnailer_dispose(GObject *object)
 {
     XfdesktopThumbnailer *thumbnailer = XFDESKTOP_THUMBNAILER(object);
 
-    if(thumbnailer->priv->proxy)
-        g_object_unref(thumbnailer->priv->proxy);
-
-    if(thumbnailer->priv->supported_mimetypes)
-        g_free(thumbnailer->priv->supported_mimetypes);
-
     if(thumbnailer->priv) {
+        if(thumbnailer->priv->proxy)
+            g_object_unref(thumbnailer->priv->proxy);
+
+        if(thumbnailer->priv->supported_mimetypes)
+            g_free(thumbnailer->priv->supported_mimetypes);
+
         g_free(thumbnailer->priv);
         thumbnailer->priv = NULL;
     }

@@ -807,7 +807,6 @@ xfdesktop_volume_icon_populate_context_menu(XfdesktopIcon *icon,
     const gchar *icon_name, *icon_label;
 
     icon_name = GTK_STOCK_OPEN;
-    icon_label = _("_Open");
 
     img = gtk_image_new_from_stock(GTK_STOCK_OPEN, GTK_ICON_SIZE_MENU);
     gtk_widget_show(img);

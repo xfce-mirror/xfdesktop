@@ -3080,8 +3080,11 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
 
     cr = gdk_cairo_create(GDK_DRAWABLE(gtk_widget_get_window(widget)));
     
-    xfdesktop_icon_get_extents(icon, &pixbuf_extents,
-                               &text_extents, &total_extents);
+    if(!xfdesktop_icon_get_extents(icon, &pixbuf_extents,
+                                   &text_extents, &total_extents))
+    {
+        g_warning("Can't get extents for icon '%s'", xfdesktop_icon_peek_label(icon));
+    }
 
     if(!xfdesktop_icon_view_update_icon_extents(icon_view, icon,
                                                 &pixbuf_extents,
@@ -3170,8 +3173,10 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
         GdkRectangle cell = { 0, };
         guint16 row, col;
 
-        xfdesktop_icon_get_position(icon, &row, &col);
-        DBG("for icon at (%hu,%hu) (%s)", row, col, xfdesktop_icon_peek_label(icon));
+        if(!xfdesktop_icon_get_position(icon, &row, &col))
+            DBG("can't get icon position for '%s'", xfdesktop_icon_peek_label(icon));
+        else
+            DBG("for icon at (%hu,%hu) (%s)", row, col, xfdesktop_icon_peek_label(icon));
 
         cairo_set_line_width(cr, 1.0);
 

@@ -145,7 +145,7 @@ xfce_workspace_change_backdrop(XfceWorkspace *workspace,
     XfconfChannel *channel = workspace->priv->channel;
     char buf[1024];
     gchar *monitor_name = NULL;
-    guint i, monitor_num;
+    guint i, monitor_num = 0;
 
     g_return_if_fail(workspace->priv->nbackdrops > 0);
 

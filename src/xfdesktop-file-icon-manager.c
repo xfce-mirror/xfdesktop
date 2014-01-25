@@ -2456,7 +2456,7 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
     XfdesktopFileIcon *icon, *moved_icon;
     GFileInfo *file_info;
-    guint16 row, col;
+    guint16 row = 0, col = 0;
     gchar *filename;
 
     switch(event) {
@@ -2470,7 +2470,10 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
 
             if(icon) {
                 /* Get the old position so we can use it for the new icon */
-                xfdesktop_icon_get_position(XFDESKTOP_ICON(icon), &row, &col);
+                if(!xfdesktop_icon_get_position(XFDESKTOP_ICON(icon), &row, &col)) {
+                    /* Failed to get position... not supported? */
+                    row = col = 0;
+                }
                 DBG("row %d, col %d", row, col);
 
                 /* Remove the old icon */
@@ -2484,7 +2487,10 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
             if(moved_icon) {
                 /* Since we're replacing an existing icon, get that location
                  * to use instead */
-                xfdesktop_icon_get_position(XFDESKTOP_ICON(moved_icon), &row, &col);
+                if(!xfdesktop_icon_get_position(XFDESKTOP_ICON(icon), &row, &col)) {
+                    /* Failed to get position... not supported? */
+                    row = col = 0;
+                }
                 DBG("row %d, col %d", row, col);
 
                 xfdesktop_file_icon_manager_remove_icon(fmanager, moved_icon);
