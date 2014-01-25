@@ -114,6 +114,7 @@ struct _XfceDesktopPriv
     gboolean icons_font_size_set;
     guint icons_font_size;
     guint icons_size;
+    gint  style_refresh_timer;
     GtkWidget *icon_view;
     gdouble system_font_size;
 #endif
@@ -889,6 +890,9 @@ xfce_desktop_finalize(GObject *object)
     g_object_unref(G_OBJECT(desktop->priv->channel));
     g_free(desktop->priv->property_prefix);
 
+    if(desktop->priv->style_refresh_timer != 0)
+        g_source_remove(desktop->priv->style_refresh_timer);
+
     G_OBJECT_CLASS(xfce_desktop_parent_class)->finalize(object);
 }
 
@@ -1248,28 +1252,26 @@ xfce_desktop_delete_event(GtkWidget *w,
     return TRUE;
 }
 
-static void
-xfce_desktop_style_set(GtkWidget *w,
-                       GtkStyle *old_style)
+static gboolean
+style_refresh_cb(gpointer *w)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(w);
-#ifdef ENABLE_DESKTOP_ICONS
-    gdouble old_font_size;
-#endif
-    
-    if(GDK_IS_WINDOW(desktop->priv->bg_pixmap))
-        gdk_window_set_back_pixmap(gtk_widget_get_window(w), desktop->priv->bg_pixmap, FALSE);
-    gtk_widget_queue_draw(w);
 
-#ifdef ENABLE_DESKTOP_ICONS
-    old_font_size = desktop->priv->system_font_size;
-    if(xfce_desktop_ensure_system_font_size(desktop) != old_font_size
-       && desktop->priv->icon_view && !desktop->priv->icons_font_size_set)
-    {
-        xfdesktop_icon_view_set_font_size(XFDESKTOP_ICON_VIEW(desktop->priv->icon_view),
-                                          desktop->priv->system_font_size);
-    }
-#endif
+    xfce_desktop_refresh(desktop);
+    desktop->priv->style_refresh_timer = 0;
+
+    return FALSE;
+}
+
+static void
+xfce_desktop_style_set(GtkWidget *w, GtkStyle *old_style)
+{
+    XfceDesktop *desktop = XFCE_DESKTOP(w);
+
+    if(desktop->priv->style_refresh_timer != 0)
+        g_source_remove(desktop->priv->style_refresh_timer);
+
+    desktop->priv->style_refresh_timer = g_timeout_add_seconds(1, (GSourceFunc)style_refresh_cb, w);
 }
 
 static void
