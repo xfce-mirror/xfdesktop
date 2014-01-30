@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Sveinn í Felli <sveinki@nett.is>, 2010,2012-2013
+# Sveinn í Felli <sv1@fellsnet.is>, 2014
+# Sveinn í Felli <sv1@fellsnet.is>, 2010,2012-2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-15 00:31+0100\n"
-"PO-Revision-Date: 2013-11-27 14:33+0000\n"
-"Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
+"POT-Creation-Date: 2013-12-15 00:31+0100\n"
+"PO-Revision-Date: 2014-01-30 06:11+0000\n"
+"Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic (http://www.transifex.com/projects/p/xfce/language/is/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,37 +19,37 @@ msgstr ""
 "Language: is\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../settings/main.c:371 ../src/xfdesktop-special-file-icon.c:295
+#: ../settings/main.c:372 ../src/xfdesktop-special-file-icon.c:295
 #: ../src/xfdesktop-special-file-icon.c:479
 msgid "Home"
 msgstr "Heimasvæði"
 
-#: ../settings/main.c:373
+#: ../settings/main.c:374
 msgid "Filesystem"
 msgstr "Skráakerfi"
 
-#: ../settings/main.c:375
+#: ../settings/main.c:376
 msgid "Trash"
 msgstr "Rusl"
 
-#: ../settings/main.c:377
+#: ../settings/main.c:378
 msgid "Removable Devices"
 msgstr "Útskiptanleg tæki"
 
-#: ../settings/main.c:379
+#: ../settings/main.c:380
 msgid "Network Shares"
 msgstr "Netsameignir"
 
-#: ../settings/main.c:381
+#: ../settings/main.c:382
 msgid "Disks and Drives"
 msgstr "Diskar og drif"
 
-#: ../settings/main.c:383
+#: ../settings/main.c:384
 msgid "Other Items"
 msgstr "Önnur atriði"
 
 #. Display the file name, file type, and file size in the tooltip.
-#: ../settings/main.c:496
+#: ../settings/main.c:497
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -56,97 +57,97 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nTegund: %s\nStærð: %s"
 
-#: ../settings/main.c:680
+#: ../settings/main.c:681
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "Bakgrunnsmynd fyrir skjá %d (%s)"
 
-#: ../settings/main.c:683
+#: ../settings/main.c:684
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "Bakgrunnsmynd fyrir skjá %d"
 
-#: ../settings/main.c:689
+#: ../settings/main.c:690
 msgid ""
 "You are using more than one display, move this dialog to the display you "
 "want to edit the settings for."
 msgstr "Þú ert að nota fleiri en einn skjá, færðu þennan glugga á skjáinn sem þú vilt breyta stillingum fyrir."
 
-#: ../settings/main.c:697
+#: ../settings/main.c:698
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "Bakgrunnsmynd fyrir %s á skjá %d (%s)"
 
-#: ../settings/main.c:701
+#: ../settings/main.c:702
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "Bakgrunnsmynd fyrir %s á skjá %d"
 
-#: ../settings/main.c:708
+#: ../settings/main.c:709
 msgid ""
 "You are using more than one display, move this dialog to the display and "
 "workspace you want to edit the settings for."
 msgstr "Þú ert að nota fleiri en einn skjá, færðu þennan glugga á skjáinn og vinnusvæðið sem þú vilt breyta stillingum fyrir."
 
 #. Single monitor and single workspace
-#: ../settings/main.c:716
+#: ../settings/main.c:717
 #, c-format
 msgid "Wallpaper for my desktop"
 msgstr "Bakgrunnsmynd fyrir skjáborðið mitt"
 
 #. Single monitor and per workspace wallpaper
-#: ../settings/main.c:722
+#: ../settings/main.c:723
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "Bakgrunnsmynd fyrir %s"
 
-#: ../settings/main.c:727
+#: ../settings/main.c:728
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "Færðu þennan glugga á vinnusvæðið sem þú vilt breyta stillingum fyrir."
 
-#: ../settings/main.c:1130
+#: ../settings/main.c:1131
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "Ekki er hægt að velja myndir á meðan myndastíll er ekki virkur."
 
-#: ../settings/main.c:1482
+#: ../settings/main.c:1483
 msgid "Spanning screens"
 msgstr "Samliggjandi skjáir"
 
-#: ../settings/main.c:1787
+#: ../settings/main.c:1788
 msgid "Image files"
 msgstr "Myndskrár"
 
-#: ../settings/main.c:1939
+#: ../settings/main.c:1945
 msgid "Settings manager socket"
 msgstr "Sökkull stillingastjórnunar"
 
-#: ../settings/main.c:1939
+#: ../settings/main.c:1945
 msgid "SOCKET ID"
 msgstr "AUÐKENNI SÖKKULS - ID"
 
-#: ../settings/main.c:1940
+#: ../settings/main.c:1946
 msgid "Version information"
 msgstr "Útgáfuupplýsingar"
 
-#: ../settings/main.c:1967
+#: ../settings/main.c:1973
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Skrifaðu '%s --help' til að sjá hvernig á að nota þetta."
 
-#: ../settings/main.c:1979
+#: ../settings/main.c:1985
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce þróunarteymið. Allur réttur áskilinn."
 
-#: ../settings/main.c:1980
+#: ../settings/main.c:1986
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Tilkynntu villur til <%s>."
 
-#: ../settings/main.c:1987
+#: ../settings/main.c:1993
 msgid "Desktop Settings"
 msgstr "Skjáborðsstillingar"
 
-#: ../settings/main.c:1989
+#: ../settings/main.c:1995
 msgid "Unable to contact settings server"
 msgstr "Gat ekki tengt við stillingaþjón"
 
@@ -334,7 +335,7 @@ msgstr "Táknmyndir minnkaðra glugga"
 msgid "File/launcher icons"
 msgstr "Skráa/ræsitáknmyndir"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:1016
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:1010
 msgid "Desktop"
 msgstr "Skjáborð"
 
@@ -399,56 +400,60 @@ msgid "Show s_ticky windows only in active workspace"
 msgstr "Sýna l_ímda glugga aðeins á virkum vinnusvæðum"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:26
+msgid "Show a_dd and remove workspace options in list"
+msgstr "Sýna möguleika til að _bæta við og fjarlægja eiginleika vinnusvæða á lista"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "<b>Window List Menu</b>"
 msgstr "<b>Valmynd gluggalista</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:27
+#: ../settings/xfdesktop-settings-ui.glade.h:28
 msgid "_Menus"
 msgstr "Val_myndir"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:28
+#: ../settings/xfdesktop-settings-ui.glade.h:29
 msgid "Icon _type:"
 msgstr "_Tegund táknmyndar:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:29
+#: ../settings/xfdesktop-settings-ui.glade.h:30
 msgid "Icon _size:"
 msgstr "_Stærð táknmynda:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:30
+#: ../settings/xfdesktop-settings-ui.glade.h:31
 msgid "Show t_humbnails"
 msgstr "Sýna smám_yndir:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:31
+#: ../settings/xfdesktop-settings-ui.glade.h:32
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
 msgstr "Veldu þetta til að birta á skjáborðinu sjálfvirkt gerðar smámyndir af forskoðanlegum skrám."
 
-#: ../settings/xfdesktop-settings-ui.glade.h:32
+#: ../settings/xfdesktop-settings-ui.glade.h:33
 msgid "Single _click to activate items"
 msgstr "_Einsmella til að virkja atriði"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:33
+#: ../settings/xfdesktop-settings-ui.glade.h:34
 msgid "Show icon tooltips. Size:"
 msgstr "Sýna vísbendingar táknmynda. Stærð:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:34
+#: ../settings/xfdesktop-settings-ui.glade.h:35
 msgid "Size of the tooltip preview image."
 msgstr "Stærð myndforskoðunar í vísbendingum."
 
-#: ../settings/xfdesktop-settings-ui.glade.h:35
+#: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid "Use custom _font size:"
 msgstr "Nota sérsniðna _letur stærð:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:36
+#: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "<b>Appearance</b>"
 msgstr "<b>Útlit</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:37
+#: ../settings/xfdesktop-settings-ui.glade.h:38
 msgid "<b>Default Icons</b>"
 msgstr "<b>Sjálfgefnar táknmyndir</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:38
+#: ../settings/xfdesktop-settings-ui.glade.h:39
 msgid "_Icons"
 msgstr "Táknmynd_ir"
 
@@ -456,24 +461,24 @@ msgstr "Táknmynd_ir"
 msgid "_Applications"
 msgstr "_Forrit"
 
-#: ../src/windowlist.c:72
+#: ../src/windowlist.c:73
 #, c-format
 msgid "Remove Workspace %d"
 msgstr "Fjarlægja vinnusvæði %d"
 
-#: ../src/windowlist.c:73
+#: ../src/windowlist.c:74
 #, c-format
 msgid ""
 "Do you really want to remove workspace %d?\n"
 "Note: You are currently on workspace %d."
 msgstr "Viltu í alvörunni fjarlægja vinnusvæði %d?\nATH: Þú ert núna á vinnusvæði %d."
 
-#: ../src/windowlist.c:77
+#: ../src/windowlist.c:78
 #, c-format
 msgid "Remove Workspace '%s'"
 msgstr "Fjarlægja vinnusvæði '%s'"
 
-#: ../src/windowlist.c:78
+#: ../src/windowlist.c:79
 #, c-format
 msgid ""
 "Do you really want to remove workspace '%s'?\n"
@@ -482,102 +487,102 @@ msgstr "Viltu í alvörunni fjarlægja vinnusvæði '%s'?\nATH: Þú ert núna �
 
 #. Popup a dialog box confirming that the user wants to remove a
 #. * workspace
-#: ../src/windowlist.c:85
+#: ../src/windowlist.c:86
 msgid "Remove"
 msgstr "Fjarlægja"
 
-#: ../src/windowlist.c:245
+#: ../src/windowlist.c:246
 msgid "Window List"
 msgstr "Gluggalisti"
 
-#: ../src/windowlist.c:271
+#: ../src/windowlist.c:272
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>Vinnusvæði %d</b>"
 
-#: ../src/windowlist.c:360 ../src/windowlist.c:363
+#: ../src/windowlist.c:362 ../src/windowlist.c:365
 msgid "_Add Workspace"
 msgstr "Bæt_a við vinnusvæði"
 
-#: ../src/windowlist.c:371
+#: ../src/windowlist.c:373
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "Fja_rlægja við vinnusvæði %d"
 
-#: ../src/windowlist.c:374
+#: ../src/windowlist.c:376
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "Fja_rlægja við vinnusvæði '%s'"
 
-#: ../src/xfdesktop-application.c:773
+#: ../src/xfdesktop-application.c:772
 msgid "Display version information"
 msgstr "Birta útgáfuupplýsingar"
 
-#: ../src/xfdesktop-application.c:774
+#: ../src/xfdesktop-application.c:773
 msgid "Reload all settings"
 msgstr "Endurlesa allar stillingar"
 
-#: ../src/xfdesktop-application.c:775
+#: ../src/xfdesktop-application.c:774
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "Láta valmynd spretta upp (við músarbendil)"
 
-#: ../src/xfdesktop-application.c:776
+#: ../src/xfdesktop-application.c:775
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "Láta gluggalista spretta upp (við músarbendil)"
 
-#: ../src/xfdesktop-application.c:778
+#: ../src/xfdesktop-application.c:777
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "Raða táknmyndum sjálfvirkt á skjáborðinu"
 
-#: ../src/xfdesktop-application.c:780
+#: ../src/xfdesktop-application.c:779
 msgid "Do not wait for a window manager on startup"
 msgstr "Ekki bíða eftir gluggastjóra við ræsingu"
 
-#: ../src/xfdesktop-application.c:781
+#: ../src/xfdesktop-application.c:780
 msgid "Cause xfdesktop to quit"
 msgstr "Láta xfdesktop hætta"
 
-#: ../src/xfdesktop-application.c:796
+#: ../src/xfdesktop-application.c:795
 #, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "Mistókst að þátta viðföng: %s\n"
 
-#: ../src/xfdesktop-application.c:807
+#: ../src/xfdesktop-application.c:806
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Þetta er %s útgáfa %s, keyrandi á Xfce %s.\n"
 
-#: ../src/xfdesktop-application.c:809
+#: ../src/xfdesktop-application.c:808
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Byggt með GTK+ %d.%d.%d, tengt með GTK+ %d.%d.%d."
 
-#: ../src/xfdesktop-application.c:813
+#: ../src/xfdesktop-application.c:812
 #, c-format
 msgid "Build options:\n"
 msgstr "Byggingamöguleikar:\n"
 
-#: ../src/xfdesktop-application.c:814
+#: ../src/xfdesktop-application.c:813
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Skjáborðsvalmynd:        %s\n"
 
-#: ../src/xfdesktop-application.c:816 ../src/xfdesktop-application.c:823
-#: ../src/xfdesktop-application.c:830
+#: ../src/xfdesktop-application.c:815 ../src/xfdesktop-application.c:822
+#: ../src/xfdesktop-application.c:829
 msgid "enabled"
 msgstr "virkt"
 
-#: ../src/xfdesktop-application.c:818 ../src/xfdesktop-application.c:825
-#: ../src/xfdesktop-application.c:832
+#: ../src/xfdesktop-application.c:817 ../src/xfdesktop-application.c:824
+#: ../src/xfdesktop-application.c:831
 msgid "disabled"
 msgstr "óvirkt"
 
-#: ../src/xfdesktop-application.c:821
+#: ../src/xfdesktop-application.c:820
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Skjáborðstáknmyndir:       %s\n"
 
-#: ../src/xfdesktop-application.c:828
+#: ../src/xfdesktop-application.c:827
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Táknmyndir skjáborðsskráa:  %s\n"
@@ -674,8 +679,8 @@ msgid "_Open in New Window"
 msgstr "_Opna í nýjum glugga"
 
 #: ../src/xfdesktop-file-icon-manager.c:1411
-#: ../src/xfdesktop-special-file-icon.c:550 ../src/xfdesktop-volume-icon.c:814
-#: ../src/xfdesktop-volume-icon.c:818
+#: ../src/xfdesktop-special-file-icon.c:547 ../src/xfdesktop-volume-icon.c:810
+#: ../src/xfdesktop-volume-icon.c:814
 msgid "_Open"
 msgstr "_Opna"
 
@@ -732,27 +737,27 @@ msgid "Desktop _Settings..."
 msgstr "_Skjáborðsstillingar..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1754
-#: ../src/xfdesktop-volume-icon.c:860
+#: ../src/xfdesktop-volume-icon.c:856
 msgid "P_roperties..."
 msgstr "E_iginlegikar..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2747
+#: ../src/xfdesktop-file-icon-manager.c:2744
 msgid "Load Error"
 msgstr "Hleðsluvilla"
 
-#: ../src/xfdesktop-file-icon-manager.c:2749
+#: ../src/xfdesktop-file-icon-manager.c:2746
 msgid "Failed to load the desktop folder"
 msgstr "Mistókst að hlaða inn skjáborðsmöppunni"
 
-#: ../src/xfdesktop-file-icon-manager.c:3289
+#: ../src/xfdesktop-file-icon-manager.c:3286
 msgid "Copy _Here"
 msgstr "Afrita _hingað"
 
-#: ../src/xfdesktop-file-icon-manager.c:3289
+#: ../src/xfdesktop-file-icon-manager.c:3286
 msgid "_Move Here"
 msgstr "_Færa hingað"
 
-#: ../src/xfdesktop-file-icon-manager.c:3289
+#: ../src/xfdesktop-file-icon-manager.c:3286
 msgid "_Link Here"
 msgstr "_Tengja hingað"
 
@@ -920,7 +925,7 @@ msgstr "Verið er að spýta út tækinu \"%s\". Þetta getur tekið smátíma"
 msgid "Eject Finished"
 msgstr "Útspýtingu lokið"
 
-#: ../src/xfdesktop-regular-file-icon.c:606
+#: ../src/xfdesktop-regular-file-icon.c:603
 #, c-format
 msgid ""
 "Type: %s\n"
@@ -946,7 +951,7 @@ msgstr "Ruslið inniheldur aðeins eitt atriði"
 msgid "Trash contains %d items"
 msgstr "Ruslið inniheldur %d atriði"
 
-#: ../src/xfdesktop-special-file-icon.c:498
+#: ../src/xfdesktop-special-file-icon.c:495
 #, c-format
 msgid ""
 "%s\n"
@@ -954,11 +959,11 @@ msgid ""
 "Last modified: %s"
 msgstr "%s\nStærð: %s\nSeinast breytt: %s"
 
-#: ../src/xfdesktop-special-file-icon.c:567
+#: ../src/xfdesktop-special-file-icon.c:564
 msgid "_Empty Trash"
 msgstr "_Tæma ruslið"
 
-#: ../src/xfdesktop-volume-icon.c:486
+#: ../src/xfdesktop-volume-icon.c:482
 #, c-format
 msgid ""
 "Removable Volume\n"
@@ -966,39 +971,39 @@ msgid ""
 "%s left (%s total)"
 msgstr "Útskiptanleg gagnahirsla\nTengd í \"%s\"\n%s eftir (%s alls)"
 
-#: ../src/xfdesktop-volume-icon.c:493
+#: ../src/xfdesktop-volume-icon.c:489
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
 msgstr "Útskiptanleg gagnahirsla\nEkki tengt"
 
-#: ../src/xfdesktop-volume-icon.c:522 ../src/xfdesktop-volume-icon.c:567
+#: ../src/xfdesktop-volume-icon.c:518 ../src/xfdesktop-volume-icon.c:563
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "Mistókst að spýta út \"%s\""
 
-#: ../src/xfdesktop-volume-icon.c:527 ../src/xfdesktop-volume-icon.c:572
+#: ../src/xfdesktop-volume-icon.c:523 ../src/xfdesktop-volume-icon.c:568
 msgid "Eject Failed"
 msgstr "Útspýting mistókst"
 
-#: ../src/xfdesktop-volume-icon.c:604
+#: ../src/xfdesktop-volume-icon.c:600
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "Mistókst að tengja \"%s\""
 
-#: ../src/xfdesktop-volume-icon.c:607
+#: ../src/xfdesktop-volume-icon.c:603
 msgid "Mount Failed"
 msgstr "Tenging mistókst"
 
-#: ../src/xfdesktop-volume-icon.c:833
+#: ../src/xfdesktop-volume-icon.c:829
 msgid "E_ject Volume"
 msgstr "S_pýta út gagnahirslu"
 
-#: ../src/xfdesktop-volume-icon.c:840
+#: ../src/xfdesktop-volume-icon.c:836
 msgid "_Unmount Volume"
 msgstr "_Aftengja gagnahirslu"
 
-#: ../src/xfdesktop-volume-icon.c:847
+#: ../src/xfdesktop-volume-icon.c:843
 msgid "_Mount Volume"
 msgstr "_Tengja gagnahirslu"
 
