@@ -409,10 +409,17 @@ xfdesktop_file_utils_get_icon(GIcon *icon,
 
 
     if(pix_theme) {
+        GdkPixbuf *tmp;
         /* we can't edit thsese icons */
-        pix = gdk_pixbuf_copy(pix_theme);
+        tmp = gdk_pixbuf_copy(pix_theme);
+
+        /* ensure icons are within our size requirements since
+         * gtk_icon_theme_lookup_by_gicon isn't exact */
+        pix = exo_gdk_pixbuf_scale_down(tmp, TRUE, width, height);
+
+        g_object_unref(G_OBJECT(tmp));
         g_object_unref(G_OBJECT(pix_theme));
-        pix_theme = NULL;
+        pix_theme = tmp = NULL;
     }
 
     /* fallback */
