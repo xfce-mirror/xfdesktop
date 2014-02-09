@@ -517,7 +517,11 @@ xfdesktop_thumbnailer_thumbnail_ready_dbus(DBusGProxy *proxy,
 
         if(strcmp (uri[x], f_uri) == 0) {
             /* The thumbnail is in the format/location
+             * $XDG_CACHE_HOME/thumbnails/(nromal|large)/MD5_Hash_Of_URI.png
+             * for version 0.8.0 if XDG_CACHE_HOME is defined, otherwise
              * /homedir/.thumbnails/(normal|large)/MD5_Hash_Of_URI.png
+             * will be used, which is also always used for versions prior
+             * to 0.7.0.
              */
             f_uri_checksum = g_compute_checksum_for_string(G_CHECKSUM_MD5,
                                                            f_uri, strlen (f_uri));
@@ -529,9 +533,19 @@ xfdesktop_thumbnailer_thumbnail_ready_dbus(DBusGProxy *proxy,
 
             filename = g_strconcat(f_uri_checksum, ".png", NULL);
 
-            thumbnail_location = g_build_path("/", g_get_home_dir(),
-                                              ".thumbnails", thumbnail_flavor,
+            /* build and check if the thumbnail is in the new location */
+            thumbnail_location = g_build_path("/", g_get_user_cache_dir(),
+                                              "thumbnails", thumbnail_flavor,
                                               filename, NULL);
+
+            if(!g_file_test(thumbnail_location, G_FILE_TEST_EXISTS)) {
+                /* Fallback to old version */
+                g_free(thumbnail_location);
+
+                thumbnail_location = g_build_path("/", g_get_home_dir(),
+                                                  ".thumbnails", thumbnail_flavor,
+                                                  filename, NULL);
+            }
 
             DBG("thumbnail-ready src: %s thumbnail: %s",
                     (char*)iter->data,
