@@ -35,7 +35,7 @@
 #define XFDESKTOP_CHANNEL        "xfce4-desktop"
 #define DEFAULT_BACKDROP         DATADIR "/backgrounds/xfce/xfce-blue.jpg"
 #define DEFAULT_ICON_FONT_SIZE   12
-#define DEFAULT_ICON_SIZE        32
+#define DEFAULT_ICON_SIZE        48
 #define ITHEME_FLAGS             (GTK_ICON_LOOKUP_USE_BUILTIN \
                                   | GTK_ICON_LOOKUP_GENERIC_FALLBACK)
 

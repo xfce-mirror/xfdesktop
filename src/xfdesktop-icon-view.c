@@ -53,7 +53,6 @@
 #include <xfconf/xfconf.h>
 
 #define DEFAULT_FONT_SIZE     12
-#define DEFAULT_ICON_SIZE     32
 #define DEFAULT_TOOLTIP_SIZE 128
 #define MAX_TOOLTIP_SIZE     512
 
@@ -556,7 +555,7 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
                                             g_param_spec_int("cell-spacing",
                                                              "Cell spacing",
                                                              "Spacing between desktop icon cells",
-                                                             0, 255, 6,
+                                                             0, 255, 2,
                                                              G_PARAM_READABLE));
     
     gtk_widget_class_install_style_property(widget_class,
@@ -571,7 +570,7 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
                                                                 "Cell text width proportion",
                                                                 "Width of text in desktop icon cell, "
                                                                 "calculated as multiplier of the icon size",
-                                                                1.0, 10.0, 2.5,
+                                                                1.0, 10.0, 1.9,
                                                                 G_PARAM_READABLE));
     gtk_widget_class_install_style_property(widget_class,
                                             g_param_spec_boolean("ellipsize-icon-labels",
