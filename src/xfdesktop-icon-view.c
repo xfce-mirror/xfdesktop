@@ -3405,7 +3405,7 @@ xfdesktop_get_workarea_single(XfdesktopIconView *icon_view,
     Window root;
     Atom property, actual_type = None;
     gint actual_format = 0, first_id;
-    gulong nitems = 0, bytes_after = 0, offset = 0;
+    gulong nitems = 0, bytes_after = 0, offset = 0, tmp_size = 0;
     unsigned char *data_p = NULL;
     
     g_return_val_if_fail(xorigin && yorigin
@@ -3427,12 +3427,20 @@ xfdesktop_get_workarea_single(XfdesktopIconView *icon_view,
                                          &bytes_after, &data_p))
         {
             gint i;
-            gulong *data = (gulong *)data_p;
-            
+            gulong *data;
+
             if(actual_format != 32 || actual_type != XA_CARDINAL) {
                 XFree(data_p);
                 break;
             }
+
+            tmp_size = (actual_format / 8) * nitems;
+            if(actual_format == 32) {
+                tmp_size *= sizeof(long)/4;
+            }
+
+            data = g_malloc(tmp_size);
+            memcpy(data, data_p, tmp_size);
             
             i = offset / 32;  /* first element id in this batch */
             
@@ -3447,11 +3455,13 @@ xfdesktop_get_workarea_single(XfdesktopIconView *icon_view,
                 *height = data[first_id - offset + 3] - 2 * SCREEN_MARGIN;
                 ret = TRUE;
                 XFree(data_p);
+                g_free(data);
                 break;
             }
             
             offset += actual_format * nitems;
             XFree(data_p);
+            g_free(data);
         } else
             break;
     } while(bytes_after > 0);
