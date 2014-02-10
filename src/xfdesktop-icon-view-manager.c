@@ -86,8 +86,8 @@ gboolean
 xfdesktop_icon_view_manager_drag_drop(XfdesktopIconViewManager *manager,
                                       XfdesktopIcon *drop_icon,
                                       GdkDragContext *context,
-                                      guint16 row,
-                                      guint16 col,
+                                      gint row,
+                                      gint col,
                                       guint time_)
 {
     XfdesktopIconViewManagerIface *iface;
@@ -104,8 +104,8 @@ void
 xfdesktop_icon_view_manager_drag_data_received(XfdesktopIconViewManager *manager,
                                                XfdesktopIcon *drop_icon,
                                                GdkDragContext *context,
-                                               guint16 row,
-                                               guint16 col,
+                                               gint row,
+                                               gint col,
                                                GtkSelectionData *data,
                                                guint info,
                                                guint time_)

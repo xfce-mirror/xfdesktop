@@ -34,8 +34,8 @@
 
 struct _XfdesktopIconPrivate
 {
-    gint16 row;
-    gint16 col;
+    gint row;
+    gint col;
 
     GdkRectangle pixbuf_extents;
     GdkRectangle text_extents;
@@ -136,8 +136,8 @@ xfdesktop_icon_finalize(GObject *obj)
 
 void
 xfdesktop_icon_set_position(XfdesktopIcon *icon,
-                            gint16 row,
-                            gint16 col)
+                            gint row,
+                            gint col)
 {
     g_return_if_fail(XFDESKTOP_IS_ICON(icon));
     
@@ -149,8 +149,8 @@ xfdesktop_icon_set_position(XfdesktopIcon *icon,
 
 gboolean
 xfdesktop_icon_get_position(XfdesktopIcon *icon,
-                            guint16 *row,
-                            guint16 *col)
+                            gint *row,
+                            gint *col)
 {
     g_return_val_if_fail(XFDESKTOP_IS_ICON(icon) && row && col, FALSE);
     

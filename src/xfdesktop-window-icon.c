@@ -88,7 +88,7 @@ xfdesktop_window_icon_finalize(GObject *obj)
 {
     XfdesktopWindowIcon *icon = XFDESKTOP_WINDOW_ICON(obj);
     gchar data_name[256];
-    guint16 row, col;
+    gint row, col;
     
     g_free(icon->priv->label);
     

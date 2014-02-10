@@ -100,11 +100,11 @@ G_CONST_RETURN gchar *xfdesktop_icon_peek_tooltip(XfdesktopIcon *icon);
 gchar *xfdesktop_icon_get_identifier(XfdesktopIcon *icon);
 
 void xfdesktop_icon_set_position(XfdesktopIcon *icon,
-                                 gint16 row,
-                                 gint16 col);
+                                 gint row,
+                                 gint col);
 gboolean xfdesktop_icon_get_position(XfdesktopIcon *icon,
-                                     guint16 *row,
-                                     guint16 *col);
+                                     gint *row,
+                                     gint *col);
 
 GdkDragAction xfdesktop_icon_get_allowed_drag_actions(XfdesktopIcon *icon);
 
