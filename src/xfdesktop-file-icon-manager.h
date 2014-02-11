@@ -59,8 +59,8 @@ gboolean xfdesktop_file_icon_manager_get_cached_icon_position(
                                                     XfdesktopFileIconManager *fmanager,
                                                     const gchar *name,
                                                     const gchar *identifier,
-                                                    gint *row,
-                                                    gint *col);
+                                                    gint16 *row,
+                                                    gint16 *col);
 
 G_END_DECLS
 

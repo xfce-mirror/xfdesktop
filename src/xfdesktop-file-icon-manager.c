@@ -162,14 +162,14 @@ static void xfdesktop_file_icon_manager_fini(XfdesktopIconViewManager *manager);
 static gboolean xfdesktop_file_icon_manager_drag_drop(XfdesktopIconViewManager *manager,
                                                       XfdesktopIcon *drop_icon,
                                                       GdkDragContext *context,
-                                                      gint row,
-                                                      gint col,
+                                                      guint16 row,
+                                                      guint16 col,
                                                       guint time_);
 static void xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager,
                                                            XfdesktopIcon *drop_icon,
                                                            GdkDragContext *context,
-                                                           gint row,
-                                                           gint col,
+                                                           guint16 row,
+                                                           guint16 col,
                                                            GtkSelectionData *data,
                                                            guint info,
                                                            guint time_);
@@ -1723,7 +1723,7 @@ file_icon_hash_write_icons(gpointer key,
 {
     XfceRc *rcfile = data;
     XfdesktopIcon *icon = value;
-    gint row, col;
+    guint16 row, col;
     gchar *identifier = xfdesktop_icon_get_identifier(icon);
 
     if(xfdesktop_icon_get_position(icon, &row, &col)) {
@@ -1832,8 +1832,8 @@ gboolean
 xfdesktop_file_icon_manager_get_cached_icon_position(XfdesktopFileIconManager *fmanager,
                                                      const gchar *name,
                                                      const gchar *identifier,
-                                                     gint *row,
-                                                     gint *col)
+                                                     gint16 *row,
+                                                     gint16 *col)
 {
     gchar relpath[PATH_MAX];
     gchar *filename = NULL;
@@ -2055,7 +2055,7 @@ process_icon_from_queue(gpointer user_data)
 static void
 xfdesktop_file_icon_manager_add_icon(XfdesktopFileIconManager *fmanager,
                                      XfdesktopFileIcon *icon,
-                                     gint row, gint col)
+                                     gint16 row, gint16 col)
 {
     const gchar *name;
     gchar *identifier;
@@ -2081,12 +2081,11 @@ xfdesktop_file_icon_manager_add_icon(XfdesktopFileIconManager *fmanager,
                                                                    name, identifier,
                                                                    &row, &col))
     {
-        DBG("attempting to set icon '%s' to cached position (%d,%d)", name, row, col);
+        DBG("attempting to set icon '%s' to position (%d,%d)", name, row, col);
         xfdesktop_icon_set_position(XFDESKTOP_ICON(icon), row, col);
         g_queue_push_head(fmanager->priv->pending_icons, icon);
     } else {
         /* Didn't have a spot, push it to the end of the stack */
-        xfdesktop_icon_set_position(XFDESKTOP_ICON(icon), row, col);
         g_queue_push_tail(fmanager->priv->pending_icons, icon);
     }
 
@@ -2147,7 +2146,7 @@ static XfdesktopFileIcon *
 xfdesktop_file_icon_manager_add_regular_icon(XfdesktopFileIconManager *fmanager,
                                              GFile *file,
                                              GFileInfo *info,
-                                             gint row, gint col,
+                                             guint16 row, guint16 col,
                                              gboolean defer_if_missing)
 {
     XfdesktopRegularFileIcon *icon = NULL;
@@ -2457,7 +2456,7 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
     XfdesktopFileIcon *icon, *moved_icon;
     GFileInfo *file_info;
-    gint row = 0, col = 0;
+    guint16 row = 0, col = 0;
     gchar *filename;
 
     switch(event) {
@@ -3143,8 +3142,8 @@ static gboolean
 xfdesktop_file_icon_manager_drag_drop(XfdesktopIconViewManager *manager,
                                       XfdesktopIcon *drop_icon,
                                       GdkDragContext *context,
-                                      gint row,
-                                      gint col,
+                                      guint16 row,
+                                      guint16 col,
                                       guint time_)
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(manager);
@@ -3250,8 +3249,8 @@ static void xfdesktop_dnd_menu (XfdesktopIconViewManager *manager,
                                 XfdesktopIcon *drop_icon,
                                 GdkDragContext *context,
                                 GdkDragAction *action,
-                                gint row,
-                                gint col,
+                                guint16 row,
+                                guint16 col,
                                 guint time_)
 {
     static GdkDragAction    actions[] = { GDK_ACTION_COPY, GDK_ACTION_MOVE, GDK_ACTION_LINK };
@@ -3312,8 +3311,8 @@ static void
 xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager,
                                                XfdesktopIcon *drop_icon,
                                                GdkDragContext *context,
-                                               gint row,
-                                               gint col,
+                                               guint16 row,
+                                               guint16 col,
                                                GtkSelectionData *data,
                                                guint info,
                                                guint time_)
