@@ -181,13 +181,13 @@ xfdesktop_settings_do_single_preview(GtkTreeModel *model,
     /* If we didn't create a thumbnail there might not be a thumbnailer service
      * or it may not support that format */
     if(thumbnail == NULL) {
-        pix = exo_gdk_pixbuf_new_from_file_at_max_size(filename,
-                                                       PREVIEW_WIDTH, PREVIEW_HEIGHT,
-                                                       TRUE, NULL);
+        pix = gdk_pixbuf_new_from_file_at_scale(filename,
+                                                PREVIEW_WIDTH, PREVIEW_HEIGHT,
+                                                TRUE, NULL);
     } else {
-        pix = exo_gdk_pixbuf_new_from_file_at_max_size(thumbnail,
-                                                       PREVIEW_WIDTH, PREVIEW_HEIGHT,
-                                                       TRUE, NULL);
+        pix = gdk_pixbuf_new_from_file_at_scale(thumbnail,
+                                                PREVIEW_WIDTH, PREVIEW_HEIGHT,
+                                                TRUE, NULL);
         g_free(thumbnail);
     }
 
