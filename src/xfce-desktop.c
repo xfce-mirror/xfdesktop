@@ -534,6 +534,12 @@ screen_size_changed_cb(GdkScreen *gscreen, gpointer user_data)
     if(current_workspace < 0)
         return;
 
+    /* release the bg_pixmap since the dimensions may have changed */
+    if(desktop->priv->bg_pixmap) {
+        g_object_unref(desktop->priv->bg_pixmap);
+        desktop->priv->bg_pixmap = NULL;
+    }
+
     /* special case for 1 backdrop to handle xinerama stretching */
     if(xfce_workspace_get_xinerama_stretch(desktop->priv->workspaces[current_workspace])) {
        backdrop_changed_cb(xfce_workspace_get_backdrop(desktop->priv->workspaces[current_workspace], 0), desktop);
