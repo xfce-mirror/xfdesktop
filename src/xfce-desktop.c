@@ -598,7 +598,7 @@ workspace_changed_cb(WnckScreen *wnck_screen,
 {
     XfceDesktop *desktop = XFCE_DESKTOP(user_data);
     gint current_workspace, new_workspace, i;
-    XfceBackdrop *current_backdrop, *new_backdrop;
+    XfceBackdrop *new_backdrop;
 
     TRACE("entering");
 
@@ -619,16 +619,11 @@ workspace_changed_cb(WnckScreen *wnck_screen,
         current_workspace, new_workspace);
 
     for(i = 0; i < xfce_desktop_get_n_monitors(desktop); i++) {
-        /* We want to compare the current workspace backdrop with the new one
-         * and see if we can avoid changing them if they are the same image/style */
+        /* Sanity check */
         if(current_workspace < desktop->priv->nworkspaces && current_workspace >= 0) {
-            current_backdrop = xfce_workspace_get_backdrop(desktop->priv->workspaces[current_workspace], i);
+            /* update! */
             new_backdrop = xfce_workspace_get_backdrop(desktop->priv->workspaces[new_workspace], i);
-
-            if(!xfce_backdrop_compare_backdrops(current_backdrop, new_backdrop) || !desktop->priv->bg_pixmap) {
-                /* only update monitors that require it */
-                backdrop_changed_cb(new_backdrop, user_data);
-            }
+            backdrop_changed_cb(new_backdrop, user_data);
         } else {
             /* If current_workspace was removed or never existed, get the new
              * backdrop and apply it */
