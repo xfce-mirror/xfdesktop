@@ -1,3 +1,37 @@
+4.11.3
+======
+[Please note that this is a development release.]
+
+Fourth development release of xfdesktop targeting for Xfce 4.12.
+Please report all problems at bugzilla.xfce.org.
+
+* Multi-monitor fixes:
+  - Release pixmap on screen changes
+  - Always redraw backdrop on display change.
+    Both patches were added so that transitions from one monitor
+    to another cause the backdrop to properly display.
+
+* Miscellaneous fixes:
+- Update default icon size, spacing, and text proportion.
+- Scale up small image previews in xfdesktop-settings (Bug 10690)
+- Fix strict aliasing issue
+- Check for thumbnails in the new location
+- Fix issues with icon resizing
+- Refresh desktop on style changes
+- Fix potential bugs found with static code analysis tools
+- Fix keyboard cursor movement in the icon view
+- Fix some runtime warnings
+- Ensure a quit signal causes xfdesktop to shutdown
+- Fix icon labels in RTL languages (Bug 10604)
+- Use get_folder_actions for clicks on the desktop itself
+- Only use thunarx_menu_provider_get_file_actions (Bug 10492)
+
+* Translation updates:
+  Czech (cs), English (Australia) (en_AU), German (de),
+  Icelandic (is), Indonesian (id), Kazakh (kk), Malay (ms),
+  Polish (pl), Portuguese (pt), Russian (ru), Slovenian (sl),
+  Spanish (Castilian) (es), Swedish (sv), Turkish (tr),
+
 4.11.2
 ======
 [Please note that this is a development release.]
