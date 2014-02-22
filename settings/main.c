@@ -55,6 +55,9 @@
 #define PREVIEW_HEIGHT  48
 #define MAX_ASPECT_RATIO 3.0f
 
+#define SETTINGS_WINDOW_LAST_WIDTH           "/last/window-width"
+#define SETTINGS_WINDOW_LAST_HEIGHT          "/last/window-height"
+
 #define SHOW_DESKTOP_MENU_PROP               "/desktop-menu/show"
 #define DESKTOP_MENU_SHOW_ICONS_PROP         "/desktop-menu/show-icons"
 
@@ -1671,12 +1674,27 @@ xfdesktop_settings_dialog_add_screens(GtkBuilder *main_gxml,
 }
 
 static void
-xfdesktop_settings_response(GtkWidget *dialog, gint response_id)
+xfdesktop_settings_response(GtkWidget *dialog, gint response_id, gpointer user_data)
 {
     if(response_id == GTK_RESPONSE_HELP)
         xfce_dialog_show_help(GTK_WINDOW(dialog), "xfdesktop", "preferences", NULL);
-    else
+    else {
+        XfconfChannel *channel = (XfconfChannel*) user_data;
+        GdkWindowState state;
+        gint width, height;
+
+        /* don't save the state for full-screen windows */
+        state = gdk_window_get_state(GTK_WIDGET(dialog)->window);
+
+        if ((state & (GDK_WINDOW_STATE_MAXIMIZED | GDK_WINDOW_STATE_FULLSCREEN)) == 0) {
+            /* save window size */
+            gtk_window_get_size(GTK_WINDOW(dialog), &width, &height);
+            xfconf_channel_set_int(channel, SETTINGS_WINDOW_LAST_WIDTH, width);
+            xfconf_channel_set_int(channel, SETTINGS_WINDOW_LAST_HEIGHT, height);
+        }
+
         gtk_main_quit();
+    }
 }
 
 static GdkNativeWindow opt_socket_id = 0;
@@ -1748,7 +1766,12 @@ main(int argc, char **argv)
     if(opt_socket_id == 0) {
         dialog = GTK_WIDGET(gtk_builder_get_object(gxml, "prefs_dialog"));
         g_signal_connect(dialog, "response",
-                         G_CALLBACK(xfdesktop_settings_response), NULL);
+                         G_CALLBACK(xfdesktop_settings_response),
+                         channel);
+        gtk_window_set_default_size
+            (GTK_WINDOW(dialog),
+             xfconf_channel_get_int(channel, SETTINGS_WINDOW_LAST_WIDTH, -1),
+             xfconf_channel_get_int(channel, SETTINGS_WINDOW_LAST_HEIGHT, -1));
         gtk_window_present(GTK_WINDOW (dialog));
 
         /* To prevent the settings dialog to be saved in the session */
