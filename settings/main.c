@@ -1449,11 +1449,6 @@ cb_update_background_tab(WnckWindow *wnck_window,
                 g_free(monitor_name);
                 return;
             }
-        } else {
-            /* Check if we haven't changed monitors (by number) */
-            if(panel->monitor == monitor_num) {
-                return;
-            }
         }
     }
 
