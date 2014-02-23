@@ -2736,7 +2736,12 @@ xfdesktop_file_icon_manager_files_ready(GFileEnumerator *enumerator,
          * send notification messages when monitored files change */
         if(!fmanager->priv->metadata_monitor) {
             gchar *location = xfce_resource_lookup(XFCE_RESOURCE_DATA, "gvfs-metadata/");
-            GFile *metadata_location = g_file_new_for_path(location);
+            GFile *metadata_location;
+
+            if(location == NULL)
+                return;
+
+            metadata_location = g_file_new_for_path(location);
 
             fmanager->priv->metadata_monitor = g_file_monitor(metadata_location,
                                                               G_FILE_MONITOR_NONE,

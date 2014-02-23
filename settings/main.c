@@ -560,6 +560,8 @@ cb_destroy_add_dir_enumeration(gpointer user_data)
         g_object_unref(panel->cancel_enumeration);
         panel->cancel_enumeration = NULL;
     }
+
+    panel->add_dir_idle_id = 0;
 }
 
 static gboolean
