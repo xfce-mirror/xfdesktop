@@ -1662,6 +1662,10 @@ xfce_desktop_refresh(XfceDesktop *desktop)
     if(!gtk_widget_get_realized(GTK_WIDGET(desktop)))
         return;
 
+    if(desktop->priv->workspaces == NULL) {
+        return;
+    }
+
     current_workspace = xfce_desktop_get_current_workspace(desktop);
 
     /* reload backgrounds */
