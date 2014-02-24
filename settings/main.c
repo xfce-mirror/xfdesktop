@@ -384,7 +384,7 @@ setup_special_icon_list(GtkBuilder *gxml,
           DESKTOP_ICONS_SHOW_NETWORK_REMOVABLE, TRUE },
         { N_("Disks and Drives"), "drive-harddisk-usb", "gnome-dev-removable-usb",
           DESKTOP_ICONS_SHOW_DEVICE_REMOVABLE, TRUE },
-        { N_("Other Items"), "phone-symbolic", "phone",
+        { N_("Other Devices"), "phone-symbolic", "phone",
           DESKTOP_ICONS_SHOW_UNKNWON_REMOVABLE, TRUE },
         { NULL, NULL, NULL, NULL, FALSE },
     };
@@ -692,8 +692,7 @@ xfdesktop_settings_update_iconview_frame_name(AppearancePanel *panel,
             /* This is for the infobar letting the user know how to configure
              * multiple monitor setups */
             gtk_label_set_text(GTK_LABEL(panel->infobar_label),
-                               _("You are using more than one display, "
-                                 "move this dialog to the display you "
+                               _("Move this dialog to the display you "
                                  "want to edit the settings for."));
             gtk_widget_set_visible(panel->infobar, TRUE);
         } else {
@@ -711,8 +710,7 @@ xfdesktop_settings_update_iconview_frame_name(AppearancePanel *panel,
             /* This is for the infobar letting the user know how to configure
              * multiple monitor/workspace setups */
             gtk_label_set_text(GTK_LABEL(panel->infobar_label),
-                               _("You are using more than one display, "
-                                 "move this dialog to the display and "
+                               _("Move this dialog to the display and "
                                  "workspace you want to edit the settings for."));
             gtk_widget_set_visible(panel->infobar, TRUE);
         }

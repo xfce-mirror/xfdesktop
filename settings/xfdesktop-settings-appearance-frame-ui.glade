@@ -117,7 +117,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                <property name="tooltip-text" translatable="yes">Choose the folder to select wallpapers from</property>
+                <property name="tooltip-text" translatable="yes">Choose the folder to select wallpapers from.</property>
                 <property name="action">GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER</property>
               </object>
               <packing>
@@ -163,7 +163,7 @@
               <object class="GtkComboBoxText" id="combo_style">
                 <property name="visible">True</property>
                 <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                <property name="tooltip-text" translatable="yes">Specify how the image will be resized to fit the screen</property>
+                <property name="tooltip-text" translatable="yes">Specify how the image will be resized to fit the screen.</property>
                 <items>
                   <item translatable="yes">None</item>
                   <item translatable="yes">Centered</item>
@@ -204,7 +204,7 @@
               <object class="GtkComboBox" id="combo_colors">
                 <property name="visible">True</property>
                 <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                <property name="tooltip-text" translatable="yes">Specify the style of the color drawn behind the backdrop image</property>
+                <property name="tooltip-text" translatable="yes">Specify the style of the color drawn behind the backdrop image.</property>
                 <property name="model">model2</property>
                 <child>
                   <object class="GtkCellRendererText" id="renderer2"/>
@@ -228,7 +228,7 @@
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_MOTION_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                <property name="tooltip-text" translatable="yes">Specifies the solid color, or the "left" or "top" color of the gradient</property>
+                <property name="tooltip-text" translatable="yes">Specifies the solid color, or the "left" or "top" color of the gradient.</property>
                 <property name="title" translatable="yes">Select First Color</property>
                 <property name="color">#151522223333</property>
               </object>
@@ -247,7 +247,7 @@
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_MOTION_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                <property name="tooltip-text" translatable="yes">Specifies the "right" or "bottom" color of the gradient</property>
+                <property name="tooltip-text" translatable="yes">Specifies the "right" or "bottom" color of the gradient.</property>
                 <property name="title" translatable="yes">Select Second Color</property>
                 <property name="color">#151522223333</property>
               </object>
@@ -310,7 +310,7 @@
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                <property name="tooltip-text" translatable="yes">Specify how often the background will change</property>
+                <property name="tooltip-text" translatable="yes">Specify how often the background will change.</property>
                 <items>
                   <item translatable="yes">in seconds:</item>
                   <item translatable="yes">in minutes:</item>
