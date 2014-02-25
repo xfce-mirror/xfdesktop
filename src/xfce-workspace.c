@@ -138,16 +138,82 @@ xfce_workspace_get_xinerama_stretch(XfceWorkspace *workspace)
 }
 
 static void
-xfce_workspace_change_backdrop(XfceWorkspace *workspace,
-                               XfceBackdrop *backdrop,
-                               const gchar *backdrop_file)
+xfce_workspace_set_xfconf_property_string(XfceWorkspace *workspace,
+                                          guint monitor_num,
+                                          const gchar *property,
+                                          const gchar *value)
 {
     XfconfChannel *channel = workspace->priv->channel;
     char buf[1024];
     gchar *monitor_name = NULL;
+
+    TRACE("entering");
+
+    monitor_name = gdk_screen_get_monitor_plug_name(workspace->priv->gscreen,
+                                                    monitor_num);
+
+    /* Get the backdrop's image property */
+    if(monitor_name == NULL) {
+        g_snprintf(buf, sizeof(buf), "%smonitor%d/workspace%d/%s",
+                   workspace->priv->property_prefix, monitor_num, workspace->priv->workspace_num, property);
+    } else {
+        g_snprintf(buf, sizeof(buf), "%smonitor%s/workspace%d/%s",
+                   workspace->priv->property_prefix, monitor_name, workspace->priv->workspace_num, property);
+
+        g_free(monitor_name);
+    }
+
+    DBG("setting %s to %s", buf, value);
+
+    xfconf_channel_set_string(channel, buf, value);
+}
+
+static void
+xfce_workspace_set_xfconf_property_value(XfceWorkspace *workspace,
+                                         guint monitor_num,
+                                         const gchar *property,
+                                         const GValue *value)
+{
+    XfconfChannel *channel = workspace->priv->channel;
+    char buf[1024];
+    gchar *monitor_name = NULL;
+#ifdef G_ENABLE_DEBUG
+    gchar *contents = NULL;
+#endif
+
+    TRACE("entering");
+
+    monitor_name = gdk_screen_get_monitor_plug_name(workspace->priv->gscreen,
+                                                    monitor_num);
+
+    /* Get the backdrop's image property */
+    if(monitor_name == NULL) {
+        g_snprintf(buf, sizeof(buf), "%smonitor%d/workspace%d/%s",
+                   workspace->priv->property_prefix, monitor_num, workspace->priv->workspace_num, property);
+    } else {
+        g_snprintf(buf, sizeof(buf), "%smonitor%s/workspace%d/%s",
+                   workspace->priv->property_prefix, monitor_name, workspace->priv->workspace_num, property);
+
+        g_free(monitor_name);
+    }
+
+#ifdef G_ENABLE_DEBUG
+    contents = g_strdup_value_contents(value);
+    DBG("setting %s to %s", buf, contents);
+    g_free(contents);
+#endif
+
+    xfconf_channel_set_property(channel, buf, value);
+}
+
+static void
+xfce_workspace_change_backdrop(XfceWorkspace *workspace,
+                               XfceBackdrop *backdrop,
+                               const gchar *backdrop_file)
+{
     guint i, monitor_num = 0;
 
-    g_return_if_fail(workspace->priv->nbackdrops > 0);
+    g_return_if_fail(workspace->priv->backdrops);
 
     TRACE("entering");
 
@@ -155,27 +221,15 @@ xfce_workspace_change_backdrop(XfceWorkspace *workspace,
     for(i = 0; i < workspace->priv->nbackdrops; ++i) {
         if(backdrop == workspace->priv->backdrops[i]) {
             monitor_num = i;
+            DBG("monitor_num %d", monitor_num);
             break;
         }
     }
 
-    monitor_name = gdk_screen_get_monitor_plug_name(workspace->priv->gscreen,
-                                                    monitor_num);
-
-    /* Get the backdrop's image property */
-    if(monitor_name == NULL) {
-        g_snprintf(buf, sizeof(buf), "%smonitor%d/workspace%d/last-image",
-                   workspace->priv->property_prefix, monitor_num, workspace->priv->workspace_num);
-    } else {
-        g_snprintf(buf, sizeof(buf), "%smonitor%s/workspace%d/last-image",
-                   workspace->priv->property_prefix, monitor_name, workspace->priv->workspace_num);
-
-        g_free(monitor_name);
-    }
 
     /* Update the property so that xfdesktop won't show the same image every
      * time it starts up when the user wants it to cycle different images */
-    xfconf_channel_set_string(channel, buf, backdrop_file);
+    xfce_workspace_set_xfconf_property_string(workspace, monitor_num, "last-image", backdrop_file);
 }
 
 static void
@@ -225,12 +279,11 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
 }
 
 /**
- * xfce_workspace_set_workspace_num:
+ * xfce_workspace_monitors_changed:
  * @workspace: An #XfceWorkspace.
  * @GdkScreen: screen the workspace is on.
  *
- * Updates the backdrops to correctly display the right settings since GTK/GDK
- * uses monitor numbers rather than names.
+ * Updates the backdrops to correctly display the right settings.
  **/
 void
 xfce_workspace_monitors_changed(XfceWorkspace *workspace,
@@ -241,6 +294,8 @@ xfce_workspace_monitors_changed(XfceWorkspace *workspace,
     GdkVisual *vis = NULL;
 
     TRACE("entering");
+
+    g_return_if_fail(gscreen);
 
     vis = gdk_screen_get_rgba_visual(gscreen);
     if(vis == NULL)
@@ -267,6 +322,8 @@ xfce_workspace_monitors_changed(XfceWorkspace *workspace,
     workspace->priv->second_color_id = g_realloc(workspace->priv->second_color_id,
                                                  sizeof(gulong) * n_monitors);
 
+    workspace->priv->nbackdrops = n_monitors;
+
     for(i = 0; i < n_monitors; ++i) {
         DBG("Adding workspace %d backdrop %d", workspace->priv->workspace_num, i);
 
@@ -285,7 +342,6 @@ xfce_workspace_monitors_changed(XfceWorkspace *workspace,
                          "ready",
                          G_CALLBACK(backdrop_changed_cb), workspace);
     }
-    workspace->priv->nbackdrops = n_monitors;
 }
 
 static void
@@ -357,7 +413,7 @@ xfce_workspace_get_property(GObject *object,
     }
 }
 
-/* Attempts to get the backdrop colors from the xfdesktop pre-4.11 format */
+/* Attempts to get the backdrop color style from the xfdesktop pre-4.11 format */
 static void
 xfce_workspace_migrate_backdrop_color_style(XfceWorkspace *workspace,
                                             XfceBackdrop *backdrop,
@@ -365,7 +421,6 @@ xfce_workspace_migrate_backdrop_color_style(XfceWorkspace *workspace,
 {
     XfconfChannel *channel = workspace->priv->channel;
     char buf[1024];
-    gint pp_len;
     GValue value = { 0, };
 
     TRACE("entering");
@@ -373,41 +428,72 @@ xfce_workspace_migrate_backdrop_color_style(XfceWorkspace *workspace,
     /* Use the old property format */
     g_snprintf(buf, sizeof(buf), "%smonitor%d/",
                workspace->priv->property_prefix, monitor);
-    pp_len = strlen(buf);
 
     /* Color style */
-    buf[pp_len] = 0;
     g_strlcat(buf, "color-style", sizeof(buf));
     xfconf_channel_get_property(channel, buf, &value);
 
     if(G_VALUE_HOLDS_INT(&value)) {
-        xfce_backdrop_set_color_style(backdrop, g_value_get_int(&value));
+        xfce_workspace_set_xfconf_property_value(workspace, monitor, "color-style", &value);
+        g_value_unset(&value);
+    } else {
+        g_value_init(&value, G_TYPE_INT);
+        g_value_set_int(&value, XFCE_BACKDROP_COLOR_SOLID);
+        xfce_workspace_set_xfconf_property_value(workspace, monitor, "color-style", &value);
         g_value_unset(&value);
     }
+}
+
+/* Attempts to get the backdrop color1 from the xfdesktop pre-4.11 format */
+static void
+xfce_workspace_migrate_backdrop_first_color(XfceWorkspace *workspace,
+                                            XfceBackdrop *backdrop,
+                                            guint monitor)
+{
+    XfconfChannel *channel = workspace->priv->channel;
+    char buf[1024];
+    GValue value = { 0, };
+
+    TRACE("entering");
+
+    /* Use the old property format */
+    g_snprintf(buf, sizeof(buf), "%smonitor%d/",
+               workspace->priv->property_prefix, monitor);
 
     /* first color */
-    buf[pp_len] = 0;
     g_strlcat(buf, "color1", sizeof(buf));
     xfconf_channel_get_property(channel, buf, &value);
 
     if(G_VALUE_HOLDS_BOXED(&value)) {
-        xfce_backdrop_set_first_color(backdrop, g_value_get_boxed(&value));
+        xfce_workspace_set_xfconf_property_value(workspace, monitor, "color1", &value);
         g_value_unset(&value);
     }
+}
+
+/* Attempts to get the backdrop color2 from the xfdesktop pre-4.11 format */
+static void
+xfce_workspace_migrate_backdrop_second_color(XfceWorkspace *workspace,
+                                             XfceBackdrop *backdrop,
+                                             guint monitor)
+{
+    XfconfChannel *channel = workspace->priv->channel;
+    char buf[1024];
+    GValue value = { 0, };
+
+    TRACE("entering");
+
+    /* Use the old property format */
+    g_snprintf(buf, sizeof(buf), "%smonitor%d/",
+               workspace->priv->property_prefix, monitor);
 
     /* second color */
-    buf[pp_len] = 0;
     g_strlcat(buf, "color2", sizeof(buf));
     xfconf_channel_get_property(channel, buf, &value);
 
     if(G_VALUE_HOLDS_BOXED(&value)) {
-        xfce_backdrop_set_second_color(backdrop, g_value_get_boxed(&value));
+        xfce_workspace_set_xfconf_property_value(workspace, monitor, "color2", &value);
         g_value_unset(&value);
     }
-
-    /* Fallback to solid if nothing was set anywhere */
-    if(xfce_backdrop_get_color_style(backdrop) == XFCE_BACKDROP_COLOR_INVALID)
-        xfce_backdrop_set_color_style(backdrop, XFCE_BACKDROP_COLOR_SOLID);
 }
 
 /* Attempts to get the backdrop image from the xfdesktop pre-4.11 format */
@@ -418,21 +504,19 @@ xfce_workspace_migrate_backdrop_image(XfceWorkspace *workspace,
 {
     XfconfChannel *channel = workspace->priv->channel;
     char buf[1024];
-    gint pp_len;
     GValue value = { 0, };
     const gchar *filename;
 
     TRACE("entering");
 
     /* Use the old property format */
-    g_snprintf(buf, sizeof(buf), "%smonitor%d/",
+    g_snprintf(buf, sizeof(buf), "%smonitor%d/image-path",
                workspace->priv->property_prefix, monitor);
-    pp_len = strlen(buf);
 
-    /* Try the old backdrop */
-    buf[pp_len] = 0;
-    g_strlcat(buf, "image-path", sizeof(buf));
+    /* Try to lookup the old backdrop */
     xfconf_channel_get_property(channel, buf, &value);
+
+    DBG("looking at %s", buf);
 
     /* Either there was a backdrop to migrate from or we use the backdrop
      * we provide as a default */
@@ -441,7 +525,8 @@ xfce_workspace_migrate_backdrop_image(XfceWorkspace *workspace,
     else
         filename = DEFAULT_BACKDROP;
 
-    xfce_backdrop_set_image_filename(backdrop, filename);
+    /* update the new xfconf property */
+    xfce_workspace_change_backdrop(workspace, backdrop, filename);
 
     if(G_VALUE_HOLDS_STRING(&value))
         g_value_unset(&value);
@@ -476,9 +561,12 @@ xfce_workspace_migrate_backdrop_image_style(XfceWorkspace *workspace,
         /* if we aren't showing the image, set the style and exit the function
          * so we don't set the style to something else */
         if(!show_image) {
-             xfce_backdrop_set_image_style(backdrop, XFCE_BACKDROP_IMAGE_NONE);
-             g_value_unset(&value);
-             return;
+            g_value_unset(&value);
+            g_value_init(&value, G_TYPE_INT);
+            g_value_set_int(&value, XFCE_BACKDROP_IMAGE_NONE);
+            xfce_workspace_set_xfconf_property_value(workspace, monitor, "image-style", &value);
+            g_value_unset(&value);
+            return;
         }
 
         g_value_unset(&value);
@@ -490,13 +578,16 @@ xfce_workspace_migrate_backdrop_image_style(XfceWorkspace *workspace,
     xfconf_channel_get_property(channel, buf, &value);
 
     if(G_VALUE_HOLDS_INT(&value)) {
-        XfceBackdropImageStyle style;
-        style = xfce_translate_image_styles(g_value_get_int(&value));
-        xfce_backdrop_set_image_style(backdrop, style);
+        gint image_style = xfce_translate_image_styles(g_value_get_int(&value));
+        g_value_set_int(&value, image_style);
+        xfce_workspace_set_xfconf_property_value(workspace, monitor, "image-style", &value);
         g_value_unset(&value);
     } else {
         /* If no value was ever set default to stretched */
-        xfce_backdrop_set_image_style(backdrop, XFCE_BACKDROP_IMAGE_STRETCHED);
+        g_value_init(&value, G_TYPE_INT);
+        g_value_set_int(&value, XFCE_BACKDROP_IMAGE_STRETCHED);
+        xfce_workspace_set_xfconf_property_value(workspace, monitor, "image-style", &value);
+        g_value_unset(&value);
     }
 }
 
@@ -526,21 +617,33 @@ xfce_workspace_connect_backdrop_settings(XfceWorkspace *workspace,
     DBG("prefix string: %s", buf);
 
     g_strlcat(buf, "color-style", sizeof(buf));
+    if(!xfconf_channel_has_property(channel, buf)) {
+        xfce_workspace_migrate_backdrop_color_style(workspace, backdrop, monitor);
+    }
     xfconf_g_property_bind(channel, buf, XFCE_TYPE_BACKDROP_COLOR_STYLE,
                            G_OBJECT(backdrop), "color-style");
 
     buf[pp_len] = 0;
     g_strlcat(buf, "color1", sizeof(buf));
+    if(!xfconf_channel_has_property(channel, buf)) {
+        xfce_workspace_migrate_backdrop_first_color(workspace, backdrop, monitor);
+    }
     workspace->priv->first_color_id[monitor] = xfconf_g_property_bind_gdkcolor(channel, buf,
                                                             G_OBJECT(backdrop), "first-color");
 
     buf[pp_len] = 0;
     g_strlcat(buf, "color2", sizeof(buf));
+    if(!xfconf_channel_has_property(channel, buf)) {
+        xfce_workspace_migrate_backdrop_second_color(workspace, backdrop, monitor);
+    }
     workspace->priv->second_color_id[monitor] = xfconf_g_property_bind_gdkcolor(channel, buf,
                                                             G_OBJECT(backdrop), "second-color");
 
     buf[pp_len] = 0;
     g_strlcat(buf, "image-style", sizeof(buf));
+    if(!xfconf_channel_has_property(channel, buf)) {
+        xfce_workspace_migrate_backdrop_image_style(workspace, backdrop, monitor);
+    }
     xfconf_g_property_bind(channel, buf, XFCE_TYPE_BACKDROP_IMAGE_STYLE,
                            G_OBJECT(backdrop), "image-style");
 
@@ -566,20 +669,11 @@ xfce_workspace_connect_backdrop_settings(XfceWorkspace *workspace,
 
     buf[pp_len] = 0;
     g_strlcat(buf, "last-image", sizeof(buf));
+    if(!xfconf_channel_has_property(channel, buf)) {
+        xfce_workspace_migrate_backdrop_image(workspace, backdrop, monitor);
+    }
     xfconf_g_property_bind(channel, buf, G_TYPE_STRING,
                            G_OBJECT(backdrop), "image-filename");
-
-    /* If we didn't get a filename try to load one from a previous version */
-    if(xfce_backdrop_get_image_filename(backdrop) == NULL)
-        xfce_workspace_migrate_backdrop_image(workspace, backdrop, monitor);
-
-    /* If we didn't get a proper color style, attempt to get the old one */
-    if(xfce_backdrop_get_color_style(backdrop) == XFCE_BACKDROP_COLOR_INVALID)
-        xfce_workspace_migrate_backdrop_color_style(workspace, backdrop, monitor);
-
-    /* Same for image style, this also deals with 'Auto' */
-    if(xfce_backdrop_get_image_style(backdrop) == XFCE_BACKDROP_IMAGE_INVALID)
-        xfce_workspace_migrate_backdrop_image_style(workspace, backdrop, monitor);
 
     /* determine if the backdrop will be required to keep a ref of it's pixbuf
      * when it generates one */

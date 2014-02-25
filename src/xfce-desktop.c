@@ -604,7 +604,7 @@ workspace_changed_cb(WnckScreen *wnck_screen,
 {
     XfceDesktop *desktop = XFCE_DESKTOP(user_data);
     gint current_workspace, new_workspace, i;
-    XfceBackdrop *new_backdrop;
+    XfceBackdrop *current_backdrop, *new_backdrop;
 
     TRACE("entering");
 
@@ -625,11 +625,16 @@ workspace_changed_cb(WnckScreen *wnck_screen,
         current_workspace, new_workspace);
 
     for(i = 0; i < xfce_desktop_get_n_monitors(desktop); i++) {
-        /* Sanity check */
+        /* We want to compare the current workspace backdrop with the new one
+         * and see if we can avoid changing them if they are the same image/style */
         if(current_workspace < desktop->priv->nworkspaces && current_workspace >= 0) {
-            /* update! */
+            current_backdrop = xfce_workspace_get_backdrop(desktop->priv->workspaces[current_workspace], i);
             new_backdrop = xfce_workspace_get_backdrop(desktop->priv->workspaces[new_workspace], i);
-            backdrop_changed_cb(new_backdrop, user_data);
+
+            if(!xfce_backdrop_compare_backdrops(current_backdrop, new_backdrop) || !desktop->priv->bg_pixmap) {
+                /* only update monitors that require it */
+                backdrop_changed_cb(new_backdrop, user_data);
+            }
         } else {
             /* If current_workspace was removed or never existed, get the new
              * backdrop and apply it */
@@ -1258,7 +1263,26 @@ style_refresh_cb(gpointer *w)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(w);
 
-    xfce_desktop_refresh(desktop);
+    TRACE("entering");
+
+    g_return_if_fail(XFCE_IS_DESKTOP(desktop));
+
+    if(!gtk_widget_get_realized(GTK_WIDGET(desktop)))
+        return FALSE;
+
+    if(desktop->priv->workspaces == NULL) {
+        return FALSE;
+    }
+
+#ifdef ENABLE_DESKTOP_ICONS
+    /* reload icon view */
+    if(desktop->priv->icon_view) {
+        gtk_widget_destroy(desktop->priv->icon_view);
+        desktop->priv->icon_view = NULL;
+    }
+    xfce_desktop_setup_icon_view(desktop);
+#endif
+
     desktop->priv->style_refresh_timer = 0;
 
     return FALSE;
@@ -1657,6 +1681,8 @@ xfce_desktop_refresh(XfceDesktop *desktop)
 {
     gint i, current_workspace;
 
+    TRACE("entering");
+
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
 
     if(!gtk_widget_get_realized(GTK_WIDGET(desktop)))
@@ -1676,15 +1702,6 @@ xfce_desktop_refresh(XfceDesktop *desktop)
 
         backdrop_changed_cb(backdrop, desktop);
     }
-
-#ifdef ENABLE_DESKTOP_ICONS
-    /* reload icon view */
-    if(desktop->priv->icon_view) {
-        gtk_widget_destroy(desktop->priv->icon_view);
-        desktop->priv->icon_view = NULL;
-    }
-    xfce_desktop_setup_icon_view(desktop);
-#endif
 }
 
 void xfce_desktop_arrange_icons(XfceDesktop *desktop)

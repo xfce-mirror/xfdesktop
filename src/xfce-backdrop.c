@@ -1356,8 +1356,10 @@ xfce_backdrop_set_cache_pixbuf(XfceBackdrop *backdrop,
 
     TRACE("entering");
 
-    if(backdrop->priv->cache_pixbuf == cache_pixbuf)
+    if(backdrop->priv->cache_pixbuf == cache_pixbuf) {
+        DBG("No change, cache_pixbuf %s", cache_pixbuf ? "TRUE" : "FALSE");
         return;
+    }
 
     backdrop->priv->cache_pixbuf = cache_pixbuf;
 
@@ -1502,6 +1504,8 @@ xfce_backdrop_generate_async(XfceBackdrop *backdrop)
         image_path = backdrop->priv->image_path;
     else
         image_path = DEFAULT_BACKDROP;
+
+    DBG("loading image %s", image_path);
 
     file = g_file_new_for_path(image_path);
 
