@@ -367,7 +367,10 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     TRACE("entering");
     
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
-    
+
+    if(!XFCE_IS_BACKDROP(backdrop))
+        return;
+
     if(desktop->priv->updates_frozen || !gtk_widget_get_realized(GTK_WIDGET(desktop)))
         return;
 
