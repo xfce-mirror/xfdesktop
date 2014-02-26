@@ -1702,6 +1702,16 @@ xfce_desktop_refresh(XfceDesktop *desktop)
 
         backdrop_changed_cb(backdrop, desktop);
     }
+
+#ifdef ENABLE_DESKTOP_ICONS
+    /* reload icon view */
+    if(desktop->priv->icon_view) {
+        gtk_widget_destroy(desktop->priv->icon_view);
+        desktop->priv->icon_view = NULL;
+    }
+    xfce_desktop_setup_icon_view(desktop);
+#endif
+
 }
 
 void xfce_desktop_arrange_icons(XfceDesktop *desktop)
