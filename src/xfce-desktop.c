@@ -1268,7 +1268,9 @@ style_refresh_cb(gpointer *w)
 
     TRACE("entering");
 
-    g_return_if_fail(XFCE_IS_DESKTOP(desktop));
+    desktop->priv->style_refresh_timer = 0;
+
+    g_return_val_if_fail(XFCE_IS_DESKTOP(desktop), FALSE);
 
     if(!gtk_widget_get_realized(GTK_WIDGET(desktop)))
         return FALSE;
@@ -1285,8 +1287,6 @@ style_refresh_cb(gpointer *w)
     }
     xfce_desktop_setup_icon_view(desktop);
 #endif
-
-    desktop->priv->style_refresh_timer = 0;
 
     return FALSE;
 }
