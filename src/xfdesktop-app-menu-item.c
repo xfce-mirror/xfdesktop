@@ -331,15 +331,66 @@ xfdesktop_app_menu_item_command(XfdesktopAppMenuItem *app_menu_item)
     return g_string_free(newstr, FALSE);
 }
 
+static gboolean
+xfdesktop_app_menu_item_edit_launcher(XfdesktopAppMenuItem *app_menu_item)
+{
+    GFile *file;
+    gchar *uri, *cmd;
+    GError *error = NULL;
+    gboolean ret = FALSE;
+
+    file = garcon_menu_item_get_file(app_menu_item->item);
+
+    if(file) {
+        uri = g_file_get_uri(file);
+        cmd = g_strdup_printf("exo-desktop-item-edit \"%s\"", uri);
+
+        if(!xfce_spawn_command_line_on_screen(NULL, cmd, FALSE, FALSE, &error)) {
+            xfce_message_dialog(NULL, _("Launch Error"),
+                                GTK_STOCK_DIALOG_ERROR,
+                                _("Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."),
+                                error->message, GTK_STOCK_CLOSE,
+                                GTK_RESPONSE_ACCEPT, NULL);
+            g_error_free(error);
+        } else {
+            ret = TRUE;
+        }
+
+        g_free(uri);
+        g_free(cmd);
+        g_object_unref(file);
+    }
+
+    return ret;
+}
+
 static void
 xfdesktop_app_menu_item_activate (XfdesktopAppMenuItem *app_menu_item)
 {
    gchar *command;
+   GdkEventButton *evt;
+   guint button;
    GError *error = NULL;
+
+   TRACE("entering");
 
    command = xfdesktop_app_menu_item_command(app_menu_item);
    if (command == NULL)
        return;
+
+   evt = (GdkEventButton *)gtk_get_current_event();
+
+   /* Right click edits the launchers */
+   if(evt && GDK_BUTTON_RELEASE == evt->type) {
+       button = evt->button;
+
+       if(button == 3 || (button == 1 && (evt->state & GDK_SHIFT_MASK))) {
+            if(xfdesktop_app_menu_item_edit_launcher(app_menu_item)) {
+                gdk_event_free((GdkEvent*)evt);
+                return;
+            }
+       }
+   }
 
    if(!xfce_spawn_command_line_on_screen(gtk_widget_get_screen(GTK_WIDGET(app_menu_item)),
                                          command,
@@ -350,6 +401,8 @@ xfdesktop_app_menu_item_activate (XfdesktopAppMenuItem *app_menu_item)
                  command, error->message);
         g_error_free(error);
     }
+
+    gdk_event_free((GdkEvent*)evt);
 }
 
 GtkWidget *

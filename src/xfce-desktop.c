@@ -1219,7 +1219,8 @@ xfce_desktop_popup_menu(GtkWidget *w)
     }
     
     xfce_desktop_popup_root_menu(XFCE_DESKTOP(w), button, etime);
-    
+
+    gdk_event_free((GdkEvent*)evt);
     return TRUE;
 }
 
