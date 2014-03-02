@@ -2701,12 +2701,17 @@ xfdesktop_setup_grids(XfdesktopIconView *icon_view)
         
     icon_view->priv->nrows = (height - SCREEN_MARGIN * 2) / CELL_SIZE;
     icon_view->priv->ncols = (width - SCREEN_MARGIN * 2) / CELL_SIZE;
-        
-    DBG("CELL_SIZE=%0.3f, TEXT_WIDTH=%0.3f, ICON_SIZE=%u", CELL_SIZE, TEXT_WIDTH, ICON_SIZE);
-    DBG("grid size is %dx%d", icon_view->priv->nrows, icon_view->priv->ncols);
 
     new_size = (guint)icon_view->priv->nrows * icon_view->priv->ncols
                * sizeof(XfdesktopIcon *);
+
+    if(old_size == new_size) {
+        DBG("old_size == new_size exiting");
+        return;
+    }
+
+    DBG("CELL_SIZE=%0.3f, TEXT_WIDTH=%0.3f, ICON_SIZE=%u", CELL_SIZE, TEXT_WIDTH, ICON_SIZE);
+    DBG("grid size is %dx%d", icon_view->priv->nrows, icon_view->priv->ncols);
 
     if(icon_view->priv->grid_layout) {
         icon_view->priv->grid_layout = g_realloc(icon_view->priv->grid_layout,
@@ -3370,6 +3375,36 @@ xfdesktop_move_all_pending_icons_to_desktop(XfdesktopIconView *icon_view)
 static void
 xfdesktop_grid_do_resize(XfdesktopIconView *icon_view)
 {
+    gint xorigin = 0, yorigin = 0, width = 0, height = 0;
+    guint16 new_rows, new_cols;
+    gsize old_size, new_size;
+    GdkScreen *gscreen;
+
+    /* First check to see if the grid actaully did change. This way
+     * we don't remove all the icons just to put them back again */
+    old_size = (guint)icon_view->priv->nrows * icon_view->priv->ncols
+               * sizeof(XfdesktopIcon *);
+
+    if(!xfdesktop_get_workarea_single(icon_view, 0,
+                                      &xorigin, &yorigin,
+                                      &width, &height))
+    {
+        gscreen = gtk_widget_get_screen(GTK_WIDGET(icon_view));
+        width = gdk_screen_get_width(gscreen);
+        height = gdk_screen_get_height(gscreen);
+    }
+
+    new_rows = (height - SCREEN_MARGIN * 2) / CELL_SIZE;
+    new_cols = (width - SCREEN_MARGIN * 2) / CELL_SIZE;
+
+    new_size = (guint)new_rows * new_cols * sizeof(XfdesktopIcon *);
+
+    if(old_size == new_size) {
+        DBG("old_size == new_size exiting");
+        return;
+    }
+
+    /* Grid size did change */
     xfdesktop_move_all_icons_to_pending_icons_list(icon_view);
 
 #if 0 /*def DEBUG*/
@@ -3530,9 +3565,15 @@ xfdesktop_grid_set_position_free(XfdesktopIconView *icon_view,
     g_return_if_fail(row < icon_view->priv->nrows
                      && col < icon_view->priv->ncols);
     
+#if 0 /*def DEBUG*/
     DUMP_GRID_LAYOUT(icon_view);
+#endif
+
     icon_view->priv->grid_layout[col * icon_view->priv->nrows + row] = NULL;
+
+#if 0 /*def DEBUG*/
     DUMP_GRID_LAYOUT(icon_view);
+#endif
 }
 
 static inline gboolean
