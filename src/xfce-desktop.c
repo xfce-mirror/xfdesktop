@@ -1008,14 +1008,11 @@ xfce_desktop_realize(GtkWidget *widget)
     gtk_window_set_screen(GTK_WINDOW(desktop), desktop->priv->gscreen);
     sw = gdk_screen_get_width(desktop->priv->gscreen);
     sh = gdk_screen_get_height(desktop->priv->gscreen);
-    if(gtk_major_version > 2
-       || (gtk_major_version == 2 && gtk_minor_version >= 13))
-    {
-        g_signal_connect(G_OBJECT(desktop->priv->gscreen),
-                         "monitors-changed",
-                         G_CALLBACK(xfce_desktop_monitors_changed),
-                         desktop);
-    }
+
+    g_signal_connect(G_OBJECT(desktop->priv->gscreen),
+                     "monitors-changed",
+                     G_CALLBACK(xfce_desktop_monitors_changed),
+                     desktop);
     
     /* chain up */
     GTK_WIDGET_CLASS(xfce_desktop_parent_class)->realize(widget);
