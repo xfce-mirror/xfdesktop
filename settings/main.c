@@ -1080,13 +1080,24 @@ cb_folder_selection_changed(GtkWidget *button,
 
     /* Check to see if the folder actually did change */
     if(g_strcmp0(filename, previous_filename) == 0) {
-        DBG("filename %s, previous_filename %s. Nothing changed",
-            filename == NULL ? "NULL" : filename,
-            previous_filename == NULL ? "NULL" : previous_filename);
+        const gchar *current_folder = xfdesktop_settings_get_backdrop_image(panel);
+        gchar *dirname;
 
-        g_free(filename);
-        g_free(previous_filename);
-        return;
+        dirname = g_path_get_dirname(current_folder);
+
+        /* workaround another gtk bug - if the user sets the file chooser
+         * button to something then it can't be changed with a set folder
+         * call anymore. */
+        if(g_strcmp0(filename, dirname) == 0) {
+            DBG("folder didn't change");
+            g_free(dirname);
+            g_free(filename);
+            g_free(previous_filename);
+            return;
+        } else {
+            g_free(filename);
+            filename = dirname;
+        }
     }
 
     TRACE("folder changed to: %s", filename);
@@ -1190,6 +1201,8 @@ xfdesktop_settings_update_iconview_folder(AppearancePanel *panel)
 
     current_folder = xfdesktop_settings_get_backdrop_image(panel);
     dirname = g_path_get_dirname(current_folder);
+
+    DBG("current_folder %s, dirname %s", current_folder, dirname);
 
     gtk_file_chooser_set_current_folder((GtkFileChooser*)panel->btn_folder, dirname);
 
