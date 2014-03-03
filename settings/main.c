@@ -1654,18 +1654,18 @@ xfdesktop_settings_setup_image_iconview(AppearancePanel *panel)
 
 static void
 xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
-                                     XfconfChannel *channel,
-                                     GdkScreen *screen)
+                                     AppearancePanel *panel)
 {
     GtkWidget *appearance_container, *chk_custom_font_size,
               *spin_font_size, *w, *box, *spin_icon_size,
               *chk_show_thumbnails, *chk_single_click, *appearance_settings,
               *chk_show_tooltips, *spin_tooltip_size, *bnt_exit, *content_area;
     GtkBuilder *appearance_gxml;
-    AppearancePanel *panel = g_new0(AppearancePanel, 1);
     GError *error = NULL;
     GtkFileFilter *filter;
+    GdkScreen *screen;
     WnckScreen *wnck_screen;
+    XfconfChannel *channel = panel->channel;
 
     TRACE("entering");
 
@@ -1725,10 +1725,7 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(chk_show_thumbnails),
                                   TRUE);
 
-    /* Background tab */
-    panel->channel = channel;
-    panel->screen = gdk_screen_get_number(screen);
-
+    screen = gtk_widget_get_screen(appearance_container);
     wnck_screen = wnck_screen_get(panel->screen);
 
     /* watch for workspace changes */
@@ -1982,8 +1979,9 @@ main(int argc, char **argv)
 {
     XfconfChannel *channel;
     GtkBuilder *gxml;
-    GdkScreen *screen;
+    gint screen;
     GError *error = NULL;
+    AppearancePanel *panel = g_new0(AppearancePanel, 1);
 
 #ifdef G_ENABLE_DEBUG
     /* do NOT remove this line. If something doesn't work,
@@ -2055,13 +2053,14 @@ main(int argc, char **argv)
              xfconf_channel_get_int(channel, SETTINGS_WINDOW_LAST_HEIGHT, -1));
         gtk_window_present(GTK_WINDOW (dialog));
 
-        screen = gtk_widget_get_screen(dialog);
+        screen = gdk_screen_get_number(gtk_widget_get_screen(dialog));
 
         /* To prevent the settings dialog to be saved in the session */
         gdk_x11_set_sm_client_id("FAKE ID");
 
     } else {
         GtkWidget *plug, *plug_child;
+        WnckScreen *wnck_screen;
 
         plug = gtk_plug_new(opt_socket_id);
         gtk_widget_show(plug);
@@ -2074,10 +2073,20 @@ main(int argc, char **argv)
         gtk_widget_reparent(plug_child, plug);
         gtk_widget_show(plug_child);
 
-        screen = gtk_widget_get_screen(plug);
+        screen = gdk_screen_get_number(gtk_widget_get_screen(plug));
+
+        /* In a GtkPlug setting there isn't an easy way to find our window
+         * in cb_window_opened so we'll just force wnck to init and get the
+         * active window */
+        wnck_screen = wnck_screen_get(screen);
+        wnck_screen_force_update(wnck_screen);
+        panel->wnck_window = wnck_screen_get_active_window(wnck_screen);
     }
 
-    xfdesktop_settings_dialog_setup_tabs(gxml, channel, screen);
+    panel->channel = channel;
+    panel->screen = screen;
+
+    xfdesktop_settings_dialog_setup_tabs(gxml, panel);
 
     gtk_main();
 
@@ -2085,6 +2094,8 @@ main(int argc, char **argv)
 
     g_object_unref(G_OBJECT(channel));
     xfconf_shutdown();
+
+    g_free(panel);
 
     return 0;
 }
