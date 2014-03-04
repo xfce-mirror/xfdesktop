@@ -1944,9 +1944,13 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
 static void
 xfdesktop_settings_response(GtkWidget *dialog, gint response_id, gpointer user_data)
 {
-    if(response_id == GTK_RESPONSE_HELP)
-        xfce_dialog_show_help(GTK_WINDOW(dialog), "xfdesktop", "preferences", NULL);
-    else {
+    if(response_id == GTK_RESPONSE_HELP) {
+        xfce_dialog_show_help_with_version(GTK_WINDOW(dialog),
+                                           "xfdesktop",
+                                           "preferences",
+                                           NULL,
+                                           XFDESKTOP_VERSION_SHORT);
+    } else {
         XfconfChannel *channel = (XfconfChannel*) user_data;
         GdkWindowState state;
         gint width, height;
