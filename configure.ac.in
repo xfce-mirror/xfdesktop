@@ -85,6 +85,8 @@ fi
 
 dnl define xfdesktop's short version (major.minor)
 AC_DEFINE([XFDESKTOP_VERSION_SHORT], [xfdesktop_version_short], [Short version string of xfdesktop])
+dnl replace the version in settings/xfce-backdrop-settings.desktop.in.in
+AC_SUBST([XFDESKTOP_VERSION_SHORT], [xfdesktop_version_short])
 
 dnl required
 XDT_CHECK_PACKAGE([GIO], [gio-2.0], [glib_minimum_version])
@@ -209,6 +211,7 @@ common/Makefile
 doc/Makefile
 pixmaps/Makefile
 po/Makefile.in
+settings/xfce-backdrop-settings.desktop.in
 settings/Makefile
 src/Makefile
 ])
