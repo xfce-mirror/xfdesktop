@@ -384,7 +384,7 @@ setup_special_icon_list(GtkBuilder *gxml,
           DESKTOP_ICONS_SHOW_NETWORK_REMOVABLE, TRUE },
         { N_("Disks and Drives"), "drive-harddisk-usb", "gnome-dev-removable-usb",
           DESKTOP_ICONS_SHOW_DEVICE_REMOVABLE, TRUE },
-        { N_("Other Devices"), "multimedia-player" "phone",
+        { N_("Other Devices"), "multimedia-player", "phone",
           DESKTOP_ICONS_SHOW_UNKNWON_REMOVABLE, TRUE },
         { NULL, NULL, NULL, NULL, FALSE },
     };
