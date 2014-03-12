@@ -24,6 +24,7 @@
 #include <glib-object.h>
 
 #include "xfdesktop-file-icon.h"
+#include "xfdesktop-file-icon-manager.h"
 
 G_BEGIN_DECLS
 
@@ -52,7 +53,8 @@ GType xfdesktop_regular_file_icon_get_type(void) G_GNUC_CONST;
 
 XfdesktopRegularFileIcon *xfdesktop_regular_file_icon_new(GFile *file,
                                                           GFileInfo *file_info,
-                                                          GdkScreen *screen);
+                                                          GdkScreen *screen,
+                                                          XfdesktopFileIconManager *fmanager);
 
 void xfdesktop_regular_file_icon_set_pixbuf_opacity(XfdesktopRegularFileIcon *icon,
                                                     guint opacity);

@@ -66,7 +66,10 @@ struct _XfdesktopRegularFileIconPrivate
     GFileInfo *filesystem_info;
     GFile *file;
     GFile *thumbnail_file;
+    GFileMonitor *monitor;
     GdkScreen *gscreen;
+    XfdesktopFileIconManager *fmanager;
+    gboolean show_thumbnails;
 };
 
 static void xfdesktop_regular_file_icon_finalize(GObject *obj);
@@ -238,6 +241,123 @@ xfdesktop_regular_file_icon_set_thumbnail_file(XfdesktopIcon *icon, GFile *file)
     xfdesktop_icon_pixbuf_changed(icon);
 }
 
+
+static void
+cb_show_thumbnails_notify(GObject *gobject,
+                          GParamSpec *pspec,
+                          gpointer user_data)
+{
+    XfdesktopRegularFileIcon *regular_file_icon;
+    gboolean show_thumbnails = FALSE;
+
+    TRACE("entering");
+
+    if(!user_data || !XFDESKTOP_IS_REGULAR_FILE_ICON(user_data))
+        return;
+
+    regular_file_icon = XFDESKTOP_REGULAR_FILE_ICON(user_data);
+
+    g_object_get(regular_file_icon->priv->fmanager, "show-thumbnails", &show_thumbnails, NULL);
+
+    if(regular_file_icon->priv->show_thumbnails != show_thumbnails) {
+        DBG("show-thumbnails changed! now: %s", show_thumbnails ? "TRUE" : "FALSE");
+        regular_file_icon->priv->show_thumbnails = show_thumbnails;
+        xfdesktop_file_icon_invalidate_icon(XFDESKTOP_FILE_ICON(regular_file_icon));
+        xfdesktop_icon_invalidate_pixbuf(XFDESKTOP_ICON(regular_file_icon));
+        xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(regular_file_icon));
+    }
+}
+
+
+/* builds a folder/file path and then tests if that file is a valid image.
+ * returns the file location if it does, NULL if it doesn't */
+static gchar *
+xfdesktop_check_file_is_valid(const gchar *folder, const gchar *file)
+{
+    gchar *path = g_strconcat(folder, "/", file, NULL);
+
+    if(gdk_pixbuf_get_file_info(path, NULL, NULL) == NULL) {
+        g_free(path);
+        path = NULL;
+    }
+
+    return path;
+}
+
+static gchar *
+xfdesktop_load_icon_location_from_folder(XfdesktopFileIcon *icon)
+{
+    gchar *icon_file = g_file_get_path(xfdesktop_file_icon_peek_file(icon));
+    gchar *path;
+
+    g_return_val_if_fail(icon_file, NULL);
+
+    /* So much for standards */
+    path = xfdesktop_check_file_is_valid(icon_file, "Folder.jpg");
+    if(path == NULL) {
+        path = xfdesktop_check_file_is_valid(icon_file, "folder.jpg");
+    }
+    if(path == NULL) {
+        path = xfdesktop_check_file_is_valid(icon_file, "Folder.JPG");
+    }
+    if(path == NULL) {
+        path = xfdesktop_check_file_is_valid(icon_file, "folder.JPG");
+    }
+    if(path == NULL) {
+        path = xfdesktop_check_file_is_valid(icon_file, "folder.jpeg");
+    }
+    if(path == NULL) {
+        path = xfdesktop_check_file_is_valid(icon_file, "folder.JPEG");
+    }
+    if(path == NULL) {
+        path = xfdesktop_check_file_is_valid(icon_file, "Folder.JPEG");
+    }
+    if(path == NULL) {
+        path = xfdesktop_check_file_is_valid(icon_file, "Folder.jpeg");
+    }
+    if(path == NULL) {
+        path = xfdesktop_check_file_is_valid(icon_file, "Cover.jpg");
+    }
+    if(path == NULL) {
+        path = xfdesktop_check_file_is_valid(icon_file, "cover.jpg");
+    }
+    if(path == NULL) {
+        path = xfdesktop_check_file_is_valid(icon_file, "Cover.jpeg");
+    }
+    if(path == NULL) {
+        path = xfdesktop_check_file_is_valid(icon_file, "cover.jpeg");
+    }
+    if(path == NULL) {
+        path = xfdesktop_check_file_is_valid(icon_file, "albumart.jpg");
+    }
+    if(path == NULL) {
+        path = xfdesktop_check_file_is_valid(icon_file, "albumart.jpeg");
+    }
+    if(path == NULL) {
+        path = xfdesktop_check_file_is_valid(icon_file, "fanart.jpg");
+    }
+    if(path == NULL) {
+        path = xfdesktop_check_file_is_valid(icon_file, "Fanart.jpg");
+    }
+    if(path == NULL) {
+        path = xfdesktop_check_file_is_valid(icon_file, "fanart.JPG");
+    }
+    if(path == NULL) {
+        path = xfdesktop_check_file_is_valid(icon_file, "Fanart.JPG");
+    }
+    if(path == NULL) {
+        path = xfdesktop_check_file_is_valid(icon_file, "FANART.JPG");
+    }
+    if(path == NULL) {
+        path = xfdesktop_check_file_is_valid(icon_file, "FANART.jpg");
+    }
+
+    g_free(icon_file);
+
+    /* the file *should* already be a thumbnail */
+    return path;
+}
+
 static GIcon *
 xfdesktop_load_icon_from_desktop_file(XfdesktopRegularFileIcon *regular_icon)
 {
@@ -293,6 +413,21 @@ xfdesktop_regular_file_icon_load_icon(XfdesktopIcon *icon)
     /* Try to load the icon referenced in the .desktop file */
     if(xfdesktop_file_utils_is_desktop_file(regular_icon->priv->file_info)) {
         gicon = xfdesktop_load_icon_from_desktop_file(regular_icon);
+
+    } else if(g_file_info_get_file_type(regular_icon->priv->file_info) == G_FILE_TYPE_DIRECTORY) {
+        /* Try to load a thumbnail from the standard folder image locations */
+        gchar *thumbnail_file = NULL;
+
+        if(regular_icon->priv->show_thumbnails)
+            thumbnail_file = xfdesktop_load_icon_location_from_folder(file_icon);
+
+        if(thumbnail_file) {
+            /* If there's a folder thumbnail, use it */
+            regular_icon->priv->thumbnail_file = g_file_new_for_path(thumbnail_file);
+            gicon = g_file_icon_new(regular_icon->priv->thumbnail_file);
+            g_free(thumbnail_file);
+        }
+
     } else {
         /* If we have a thumbnail then they are enabled, use it. */
         if(regular_icon->priv->thumbnail_file) {
@@ -741,13 +876,52 @@ xfdesktop_regular_file_icon_update_file_info(XfdesktopFileIcon *icon,
     xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(icon));
 }
 
+static void
+cb_folder_contents_changed(GFileMonitor     *monitor,
+                           GFile            *file,
+                           GFile            *other_file,
+                           GFileMonitorEvent event,
+                           gpointer          user_data)
+{
+    XfdesktopRegularFileIcon *regular_file_icon;
+    gchar *thumbnail_file = NULL;
+
+    if(!user_data || !XFDESKTOP_IS_REGULAR_FILE_ICON(user_data))
+        return;
+
+    regular_file_icon = XFDESKTOP_REGULAR_FILE_ICON(user_data);
+
+    /* not showing thumbnails */
+    if(!regular_file_icon->priv->show_thumbnails)
+        return;
+
+    /* Already has a thumbnail */
+    if(regular_file_icon->priv->thumbnail_file != NULL)
+        return;
+
+    switch(event) {
+        case G_FILE_MONITOR_EVENT_CREATED:
+                thumbnail_file = xfdesktop_load_icon_location_from_folder(XFDESKTOP_FILE_ICON(regular_file_icon));
+                if(thumbnail_file) {
+                    GFile *thumbnail = g_file_new_for_path(thumbnail_file);
+                    /* found a thumbnail file, apply it */
+                    xfdesktop_regular_file_icon_set_thumbnail_file(XFDESKTOP_ICON(regular_file_icon),
+                                                                   thumbnail);
+                    g_free(thumbnail_file);
+                }
+            break;
+        default:
+            break;
+    }
+}
 
 /* public API */
 
 XfdesktopRegularFileIcon *
 xfdesktop_regular_file_icon_new(GFile *file,
                                 GFileInfo *file_info,
-                                GdkScreen *screen)
+                                GdkScreen *screen,
+                                XfdesktopFileIconManager *fmanager)
 {
     XfdesktopRegularFileIcon *regular_file_icon;
 
@@ -777,11 +951,31 @@ xfdesktop_regular_file_icon_new(GFile *file,
 
     regular_file_icon->priv->gscreen = screen;
 
+    regular_file_icon->priv->fmanager = fmanager;
+
     g_signal_connect_swapped(G_OBJECT(gtk_icon_theme_get_for_screen(screen)),
                              "changed",
                              G_CALLBACK(xfdesktop_icon_invalidate_pixbuf),
                              regular_file_icon);
-    
+
+    if(g_file_info_get_file_type(regular_file_icon->priv->file_info) == G_FILE_TYPE_DIRECTORY) {
+        regular_file_icon->priv->monitor = g_file_monitor(regular_file_icon->priv->file,
+                                                          G_FILE_MONITOR_NONE,
+                                                          NULL,
+                                                          NULL);
+
+        g_signal_connect(regular_file_icon->priv->monitor, "changed",
+                         G_CALLBACK(cb_folder_contents_changed),
+                         regular_file_icon);
+
+        g_object_get(regular_file_icon->priv->fmanager,
+                     "show-thumbnails", &regular_file_icon->priv->show_thumbnails,
+                     NULL);
+
+        /* Keep an eye on the show-thumbnails property for folder thumbnails */
+        g_signal_connect(G_OBJECT(fmanager), "notify::show-thumbnails",
+                         G_CALLBACK(cb_show_thumbnails_notify), regular_file_icon);
+    }
     return regular_file_icon;
 }
 

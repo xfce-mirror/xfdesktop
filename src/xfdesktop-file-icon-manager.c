@@ -1905,103 +1905,20 @@ _icon_notify_destroy(gpointer data,
 }
 #endif
 
-/* builds a folder/file path and then tests if that file is a valid image.
- * returns the file location if it does, NULL if it doesn't */
-static gchar *
-xfdesktop_check_file_is_valid(const gchar *folder, const gchar *file)
-{
-    gchar *path = g_strconcat(folder, "/", file, NULL);
-
-    if(gdk_pixbuf_get_file_info(path, NULL, NULL) == NULL) {
-        g_free(path);
-        path = NULL;
-    }
-
-    return path;
-}
-
-static gchar *
-xfdesktop_load_icon_location_from_folder(XfdesktopFileIcon *icon)
-{
-    gchar *icon_file = g_file_get_path(xfdesktop_file_icon_peek_file(icon));
-    gchar *path;
-
-    g_return_val_if_fail(icon_file, NULL);
-
-    /* So much for standards */
-    path = xfdesktop_check_file_is_valid(icon_file, "Folder.jpg");
-    if(path == NULL) {
-        path = xfdesktop_check_file_is_valid(icon_file, "folder.jpg");
-    }
-    if(path == NULL) {
-        path = xfdesktop_check_file_is_valid(icon_file, "Folder.JPG");
-    }
-    if(path == NULL) {
-        path = xfdesktop_check_file_is_valid(icon_file, "folder.JPG");
-    }
-    if(path == NULL) {
-        path = xfdesktop_check_file_is_valid(icon_file, "Cover.jpg");
-    }
-    if(path == NULL) {
-        path = xfdesktop_check_file_is_valid(icon_file, "cover.jpg");
-    }
-    if(path == NULL) {
-        path = xfdesktop_check_file_is_valid(icon_file, "albumart.jpg");
-    }
-    if(path == NULL) {
-        path = xfdesktop_check_file_is_valid(icon_file, "fanart.jpg");
-    }
-    if(path == NULL) {
-        path = xfdesktop_check_file_is_valid(icon_file, "Fanart.jpg");
-    }
-    if(path == NULL) {
-        path = xfdesktop_check_file_is_valid(icon_file, "fanart.JPG");
-    }
-    if(path == NULL) {
-        path = xfdesktop_check_file_is_valid(icon_file, "Fanart.JPG");
-    }
-    if(path == NULL) {
-        path = xfdesktop_check_file_is_valid(icon_file, "FANART.JPG");
-    }
-    if(path == NULL) {
-        path = xfdesktop_check_file_is_valid(icon_file, "FANART.jpg");
-    }
-
-    g_free(icon_file);
-
-    /* the file *should* already be a thumbnail */
-    return path;
-}
-
 static void
 xfdesktop_file_icon_manager_queue_thumbnail(XfdesktopFileIconManager *fmanager,
                                             XfdesktopFileIcon *icon)
 {
     GFile *file;
-    GFileInfo *file_info;
-    gchar *path = NULL, *thumbnail_file = NULL;
+    gchar *path = NULL;
 
     file = xfdesktop_file_icon_peek_file(icon);
-    file_info = xfdesktop_file_icon_peek_file_info(icon);
 
     if(file != NULL)
         path = g_file_get_path(file);
 
     if(fmanager->priv->show_thumbnails && path != NULL) {
-        if(g_file_info_get_file_type(file_info) == G_FILE_TYPE_DIRECTORY) {
-            /* Try to load a thumbnail from the standard folder image locations */
-            thumbnail_file = xfdesktop_load_icon_location_from_folder(icon);
-
-            if(thumbnail_file) {
-                GFile *temp = g_file_new_for_path(thumbnail_file);
-                xfdesktop_icon_set_thumbnail_file(XFDESKTOP_ICON(icon), temp);
-            }
-
-            g_free(thumbnail_file);
-        } else {
-            xfdesktop_thumbnailer_queue_thumbnail(fmanager->priv->thumbnailer,
-                                                  path);
-        }
+        xfdesktop_thumbnailer_queue_thumbnail(fmanager->priv->thumbnailer, path);
     }
 
     if(path) {
@@ -2206,7 +2123,7 @@ xfdesktop_file_icon_manager_add_regular_icon(XfdesktopFileIconManager *fmanager,
         return NULL;
 
     /* should never return NULL */
-    icon = xfdesktop_regular_file_icon_new(file, info, fmanager->priv->gscreen);
+    icon = xfdesktop_regular_file_icon_new(file, info, fmanager->priv->gscreen, fmanager);
     
     xfdesktop_file_icon_manager_add_icon(fmanager,
                                          XFDESKTOP_FILE_ICON(icon),
@@ -3030,7 +2947,8 @@ xfdesktop_file_icon_manager_real_init(XfdesktopIconViewManager *manager,
 
     fmanager->priv->desktop_icon = XFDESKTOP_FILE_ICON(xfdesktop_regular_file_icon_new(fmanager->priv->folder,
                                                                                        desktop_info,
-                                                                                       fmanager->priv->gscreen));
+                                                                                       fmanager->priv->gscreen,
+                                                                                       fmanager));
     
     g_object_unref(desktop_info);
 
