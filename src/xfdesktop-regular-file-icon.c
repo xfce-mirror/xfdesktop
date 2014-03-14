@@ -178,7 +178,10 @@ xfdesktop_regular_file_icon_finalize(GObject *obj)
 
     if(icon->priv->thumbnail_file)
         g_object_unref(icon->priv->thumbnail_file);
-    
+
+    if(icon->priv->monitor)
+        g_object_unref(icon->priv->monitor);
+
     G_OBJECT_CLASS(xfdesktop_regular_file_icon_parent_class)->finalize(obj);
 }
 
