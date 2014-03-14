@@ -1944,7 +1944,7 @@ xfdesktop_settings_response(GtkWidget *dialog, gint response_id, gpointer user_d
     if(response_id == GTK_RESPONSE_HELP) {
         xfce_dialog_show_help_with_version(GTK_WINDOW(dialog),
                                            "xfdesktop",
-                                           "preferences",
+                                           "start",
                                            NULL,
                                            XFDESKTOP_VERSION_SHORT);
     } else {
