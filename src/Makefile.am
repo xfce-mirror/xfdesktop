@@ -83,7 +83,9 @@ xfdesktop_CFLAGS = \
 	$(LIBXFCE4UI_CFLAGS) \
 	$(LIBXFCE4SMCLIENT_PRIVATE_CFLAGS) \
 	$(LIBWNCK_CFLAGS) \
-	$(XFCONF_CFLAGS)
+	$(XFCONF_CFLAGS) \
+	-DEXO_API_SUBJECT_TO_CHANGE \
+	$(LIBEXO_CFLAGS)
 
 xfdesktop_LDFLAGS = \
 	-export-dynamic
@@ -103,7 +105,8 @@ xfdesktop_LDADD += \
 	$(LIBXFCE4UI_LIBS) \
 	$(LIBXFCE4SMCLIENT_PRIVATE_LIBS) \
 	$(LIBWNCK_LIBS) \
-	$(XFCONF_LIBS)
+	$(XFCONF_LIBS) \
+	$(LIBEXO_LIBS)
 
 if BUILD_DESKTOP_MENU
 
@@ -120,13 +123,6 @@ endif
 if ENABLE_DESKTOP_ICONS
 
 xfdesktop_SOURCES += $(desktop_icon_sources)
-
-xfdesktop_CFLAGS += \
-	-DEXO_API_SUBJECT_TO_CHANGE \
-	$(LIBEXO_CFLAGS)
-
-xfdesktop_LDADD += \
-	$(LIBEXO_LIBS)
 
 if ENABLE_FILE_ICONS
 
