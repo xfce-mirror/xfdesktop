@@ -221,7 +221,7 @@ xfdesktop_thumbnailer_dispose(GObject *object)
             g_object_unref(thumbnailer->priv->proxy);
 
         if(thumbnailer->priv->supported_mimetypes)
-            g_free(thumbnailer->priv->supported_mimetypes);
+            g_strfreev(thumbnailer->priv->supported_mimetypes);
 
         g_free(thumbnailer->priv);
         thumbnailer->priv = NULL;
