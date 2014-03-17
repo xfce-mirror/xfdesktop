@@ -3164,11 +3164,10 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
               text_extents.width, text_extents.height,
               text_extents.x, text_extents.y);
 
-        xfdesktop_icon_view_draw_text(cr, playout,
-                                      text_extents.x,
-                                      text_extents.y,
-                                      rtl_offset,
-                                      gtk_widget_get_style(widget)->fg);
+        gtk_paint_layout(gtk_widget_get_style(widget), gtk_widget_get_window(widget),
+                         state, FALSE, area, widget, "label",
+                         text_extents.x, text_extents.y, playout);
+
     }
 
 

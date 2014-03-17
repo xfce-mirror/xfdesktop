@@ -1284,6 +1284,7 @@ xfce_desktop_style_set(GtkWidget *w, GtkStyle *old_style)
 
     /* reset the icon view style */
     gtk_widget_set_style(desktop->priv->icon_view, NULL);
+    gtk_widget_reset_rc_styles(desktop->priv->icon_view);
 
     old_font_size = desktop->priv->system_font_size;
     if(xfce_desktop_ensure_system_font_size(desktop) != old_font_size
