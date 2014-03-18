@@ -1,3 +1,72 @@
+4.11.4
+======
+[Please note that this is a development release.]
+
+Fifth development release of xfdesktop targeting for Xfce 4.12.
+Please report all problems at bugzilla.xfce.org.
+
+* Versioned help:
+  - Point to the docs.xfce.org page for xfdesktop 4.11. (Bug 10736)
+
+* Build errors with some compiler flags:
+  - dbus-glib is now required. Since xfconf requires it and
+    xfconf is already required for xfdesktop, this shouldn't
+    change dependancies much for xfdesktop. This bug was reported
+    and fixed by Samuli Suominen. (Bug 10745)
+  - Another build failure when disabling the menu and requiring
+    exo was also resolved.
+
+* Icon changes in the settings app:
+  - Symbolic icons have issues with some gtk2 themes where they
+    don't get colored properly. Additionally some themes don't
+    have network-fs or gnome-dev-network so it has been changed
+    gtk-network.
+
+* Right click edits launchers:
+  - When performing a right click, or shift + left click, on an item
+    in the applications sub-menu of the desktop menu it will now pop
+    up the dialog to edit the launcher. Same as xfce4-appfinder.
+
+* Better migration from previous versions:
+  - Xfdesktop now does a better job of migrating any user settings
+    from 4.10 and before to the new xfconf properties.
+  - Fix an settings issue when plug names aren't available
+
+* Clean up some user strings:
+  - Some tooltips end with a period, some do not. This has been
+    unified.
+  - "You are using more than one display, move this dialog to the
+    display you want to edit the settings for." This takes a lot of
+    space and brings along a bit of redundancy. Changed to "Move this
+    dialog to the display you want to edit the settings for."
+  - "Other items" on the third tab, below removable devices: "devices"
+    replaces "items".
+    Thanks to Harald Judt for pointing these issues out.
+
+* Remember the window size of the settings dialog
+  - Patch written by Harald Judt.
+
+* Fix segfault on session start
+  - Patch written by Thaddäus Tintenfisch
+
+* Miscellaneous bug fixes:
+  - Iconview theme/gtkrc color/style issues resolved.
+  - Issues with folder cover art not loading have been fixed.
+  - Make xfdesktop-settings pluggable again (Bug 10714)
+  - Update the wallpapers after user sets folder in the settings
+    app.
+  - Minimize grid resizes, it now won't recalculate icon positions
+    if the grid size didn't actually change.
+  - Memory leaks fixed.
+  - Warnings that happened during runtime have been fixed.
+  - Fix a crash when removing displays
+  - Show add/remove workspace option is on by default
+
+* Translation updates: Bulgarian (bg), Chinese (Taiwan) (zh_TW),
+  Croatian (hr), Danish (da), German (de), English (Australia) (en_AU),
+  French (fr), Italian (it), Japanese (ja), Korean (ko), Malay (ms),
+  Russian (ru), Serbian (sr), Spanish (Castilian) (es), Thai (th)
+
 4.11.3
 ======
 [Please note that this is a development release.]
