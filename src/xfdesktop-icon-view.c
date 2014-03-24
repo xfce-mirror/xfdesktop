@@ -3040,9 +3040,6 @@ xfdesktop_icon_view_draw_image(cairo_t *cr, GdkPixbuf *pix, GdkRectangle *rect)
 {
     cairo_save(cr);
 
-    gdk_cairo_rectangle(cr, rect);
-    cairo_clip(cr);
-
     gdk_cairo_set_source_pixbuf(cr, pix, rect->x, rect->y);
     cairo_paint(cr);
 

@@ -363,8 +363,13 @@ xfce_backdrop_load_image_files(XfceBackdrop *backdrop)
 
         backdrop->priv->image_files = list_image_files_in_dir(backdrop->priv->image_path);
 
-        if(backdrop->priv->monitor)
+        if(backdrop->priv->monitor) {
+            g_signal_handlers_disconnect_by_func(G_OBJECT(backdrop->priv->monitor),
+                                                 G_CALLBACK(cb_xfce_backdrop__image_files_changed),
+                                                 backdrop);
+
             g_object_unref(backdrop->priv->monitor);
+        }
 
         /* monitor the new directory for changes */
         backdrop->priv->monitor = g_file_monitor(gfile, G_FILE_MONITOR_NONE, NULL, NULL);
@@ -636,6 +641,15 @@ xfce_backdrop_finalize(GObject *object)
     }
 
     xfce_backdrop_clear_cached_image(backdrop);
+
+    if(backdrop->priv->monitor) {
+        g_signal_handlers_disconnect_by_func(G_OBJECT(backdrop->priv->monitor),
+                                             G_CALLBACK(cb_xfce_backdrop__image_files_changed),
+                                             backdrop);
+
+        g_object_unref(backdrop->priv->monitor);
+        backdrop->priv->monitor = NULL;
+    }
 
     /* Free the image files list */
     if(backdrop->priv->image_files) {
@@ -999,6 +1013,16 @@ xfce_backdrop_set_image_filename(XfceBackdrop *backdrop, const gchar *filename)
         if(g_strcmp0(old_dir, new_dir) != 0) {
             g_list_free_full(backdrop->priv->image_files, g_free);
             backdrop->priv->image_files = NULL;
+
+            /* release the directory monitor */
+            if(backdrop->priv->monitor) {
+                g_signal_handlers_disconnect_by_func(G_OBJECT(backdrop->priv->monitor),
+                                                     G_CALLBACK(cb_xfce_backdrop__image_files_changed),
+                                                     backdrop);
+
+                g_object_unref(backdrop->priv->monitor);
+                backdrop->priv->monitor = NULL;
+            }
         }
 
         g_free(old_dir);
