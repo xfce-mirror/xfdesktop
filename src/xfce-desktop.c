@@ -839,7 +839,7 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
                                     g_param_spec_uint("icon-size",
                                                       "icon size",
                                                       "icon size",
-                                                      8, 192, 36,
+                                                      8, 192, DEFAULT_ICON_SIZE,
                                                       XFDESKTOP_PARAM_FLAGS));
 
     g_object_class_install_property(gobject_class, PROP_ICON_FONT_SIZE,
