@@ -87,6 +87,7 @@ typedef struct
 {
     GtkTreeModel *model;
     GtkTreeIter *iter;
+    GdkPixbuf *pix;
 } PreviewData;
 
 typedef struct
@@ -169,12 +170,49 @@ static gchar *xfdesktop_settings_generate_per_workspace_binding_string(Appearanc
                                                                        const gchar* property);
 static gchar *xfdesktop_settings_get_backdrop_image(AppearancePanel *panel);
 
+
+
 static void
-xfdesktop_settings_do_single_preview(GtkTreeModel *model,
-                                     GtkTreeIter *iter)
+xfdesktop_settings_free_pdata(gpointer data)
 {
+    PreviewData *pdata = data;
+
+    g_object_unref(pdata->model);
+
+    gtk_tree_iter_free(pdata->iter);
+
+    if(pdata->pix)
+        g_object_unref(pdata->pix);
+
+    g_free(pdata);
+}
+
+static gboolean
+list_store_set(PreviewData *pdata)
+{
+    g_return_val_if_fail(pdata, FALSE);
+
+    gtk_list_store_set(GTK_LIST_STORE(pdata->model), pdata->iter,
+                       COL_PIX, pdata->pix,
+                       -1);
+
+    xfdesktop_settings_free_pdata(pdata);
+
+    return FALSE;
+}
+
+static void
+xfdesktop_settings_do_single_preview(PreviewData *pdata)
+{
+    GtkTreeModel *model;
+    GtkTreeIter *iter;
     gchar *filename = NULL, *thumbnail = NULL;
     GdkPixbuf *pix;
+
+    g_return_if_fail(pdata);
+
+    model = pdata->model;
+    iter = pdata->iter;
 
     gtk_tree_model_get(model, iter,
                        COL_FILENAME, &filename,
@@ -197,21 +235,13 @@ xfdesktop_settings_do_single_preview(GtkTreeModel *model,
     g_free(filename);
 
     if(pix) {
-        gtk_list_store_set(GTK_LIST_STORE(model), iter,
-                           COL_PIX, pix,
-                           -1);
+        pdata->pix = pix;
 
-        g_object_unref(G_OBJECT(pix));
+        /* We must add the images to the list in the main thread */
+        g_main_context_invoke(NULL, (GSourceFunc)list_store_set, pdata);
+    } else {
+        xfdesktop_settings_free_pdata(pdata);
     }
-}
-
-static void
-xfdesktop_settings_free_pdata(gpointer data)
-{
-    PreviewData *pdata = data;
-    g_object_unref(G_OBJECT(pdata->model));
-    gtk_tree_iter_free(pdata->iter);
-    g_free(pdata);
 }
 
 static gpointer
@@ -225,9 +255,7 @@ xfdesktop_settings_create_previews(gpointer data)
         /* Block and wait for another preview to create */
         pdata = g_async_queue_pop(panel->preview_queue);
 
-        xfdesktop_settings_do_single_preview(pdata->model, pdata->iter);
-
-        xfdesktop_settings_free_pdata(pdata);
+        xfdesktop_settings_do_single_preview(pdata);
     }
 
     return NULL;
@@ -293,6 +321,7 @@ cb_thumbnail_ready(XfdesktopThumbnailer *thumbnailer,
                 pdata = g_new0(PreviewData, 1);
                 pdata->model = g_object_ref(G_OBJECT(model));
                 pdata->iter = gtk_tree_iter_copy(&iter);
+                pdata->pix = NULL;
 
                 /* Create the preview image */
                 xfdesktop_settings_add_file_to_queue(panel, pdata);
