@@ -114,6 +114,7 @@ struct _XfceDesktopPriv
     gboolean icons_font_size_set;
     guint icons_font_size;
     guint icons_size;
+    gint  style_refresh_timer;
     GtkWidget *icon_view;
     gdouble system_font_size;
 #endif
@@ -898,6 +899,9 @@ xfce_desktop_finalize(GObject *object)
     g_object_unref(G_OBJECT(desktop->priv->channel));
     g_free(desktop->priv->property_prefix);
 
+    if(desktop->priv->style_refresh_timer != 0)
+        g_source_remove(desktop->priv->style_refresh_timer);
+
     G_OBJECT_CLASS(xfce_desktop_parent_class)->finalize(object);
 }
 
@@ -1255,8 +1259,8 @@ xfce_desktop_delete_event(GtkWidget *w,
     return TRUE;
 }
 
-static void
-xfce_desktop_style_set(GtkWidget *w, GtkStyle *old_style)
+static gboolean
+style_refresh_cb(gpointer *w)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(w);
 #ifdef ENABLE_DESKTOP_ICONS
@@ -1265,13 +1269,15 @@ xfce_desktop_style_set(GtkWidget *w, GtkStyle *old_style)
 
     TRACE("entering");
 
-    g_return_if_fail(XFCE_IS_DESKTOP(desktop));
+    desktop->priv->style_refresh_timer = 0;
+
+    g_return_val_if_fail(XFCE_IS_DESKTOP(desktop), FALSE);
 
     if(!gtk_widget_get_realized(GTK_WIDGET(desktop)))
-        return;
+        return FALSE;
 
     if(desktop->priv->workspaces == NULL)
-        return;
+        return FALSE;
 
     if(GDK_IS_WINDOW(desktop->priv->bg_pixmap))
         gdk_window_set_back_pixmap(gtk_widget_get_window(GTK_WIDGET(desktop)), desktop->priv->bg_pixmap, FALSE);
@@ -1280,7 +1286,7 @@ xfce_desktop_style_set(GtkWidget *w, GtkStyle *old_style)
 
 #ifdef ENABLE_DESKTOP_ICONS
     if(!desktop->priv->icon_view || !XFDESKTOP_IS_ICON_VIEW(desktop->priv->icon_view))
-        return;
+        return FALSE;
 
     /* reset the icon view style */
     gtk_widget_set_style(desktop->priv->icon_view, NULL);
@@ -1294,6 +1300,26 @@ xfce_desktop_style_set(GtkWidget *w, GtkStyle *old_style)
                                           desktop->priv->system_font_size);
     }
 #endif
+
+    return FALSE;
+}
+
+static void
+xfce_desktop_style_set(GtkWidget *w, GtkStyle *old_style)
+{
+    XfceDesktop *desktop = XFCE_DESKTOP(w);
+
+    TRACE("entering");
+
+    if(desktop->priv->style_refresh_timer != 0)
+        g_source_remove(desktop->priv->style_refresh_timer);
+
+    desktop->priv->style_refresh_timer = g_idle_add_full(G_PRIORITY_LOW,
+                                                         (GSourceFunc)style_refresh_cb,
+                                                         w,
+                                                         NULL);
+
+    GTK_WIDGET_CLASS(xfce_desktop_parent_class)->style_set(w, old_style);
 }
 
 static void
