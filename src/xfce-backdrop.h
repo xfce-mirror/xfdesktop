@@ -123,7 +123,7 @@ XfceBackdropImageStyle xfce_backdrop_get_image_style
 
 void xfce_backdrop_set_image_filename    (XfceBackdrop *backdrop,
                                           const gchar *filename);
-G_CONST_RETURN gchar *xfce_backdrop_get_image_filename
+const gchar *xfce_backdrop_get_image_filename
                                          (XfceBackdrop *backdrop);
 
 void xfce_backdrop_set_cycle_backdrop    (XfceBackdrop *backdrop,

@@ -43,7 +43,7 @@ static void xfdesktop_window_icon_finalize(GObject *obj);
 
 static GdkPixbuf *xfdesktop_window_icon_peek_pixbuf(XfdesktopIcon *icon,
                                                    gint width, gint height);
-static G_CONST_RETURN gchar *xfdesktop_window_icon_peek_label(XfdesktopIcon *icon);
+static const gchar *xfdesktop_window_icon_peek_label(XfdesktopIcon *icon);
 static gchar *xfdesktop_window_icon_get_identifier(XfdesktopIcon *icon);
 
 static gboolean xfdesktop_window_icon_activated(XfdesktopIcon *icon);
@@ -156,7 +156,7 @@ xfdesktop_window_icon_peek_pixbuf(XfdesktopIcon *icon,
     return pix;
 }
 
-static G_CONST_RETURN gchar *
+static const gchar *
 xfdesktop_window_icon_peek_label(XfdesktopIcon *icon)
 {
     XfdesktopWindowIcon *window_icon = XFDESKTOP_WINDOW_ICON(icon);

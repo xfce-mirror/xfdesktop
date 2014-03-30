@@ -218,7 +218,7 @@ xfdesktop_icon_peek_pixbuf(XfdesktopIcon *icon,
 }
 
 /*< required >*/
-G_CONST_RETURN gchar *
+const gchar *
 xfdesktop_icon_peek_label(XfdesktopIcon *icon)
 {
     XfdesktopIconClass *klass;
@@ -323,7 +323,7 @@ xfdesktop_icon_peek_tooltip_pixbuf(XfdesktopIcon *icon,
 }
 
 /*< optional >*/
-G_CONST_RETURN gchar *
+const gchar *
 xfdesktop_icon_peek_tooltip(XfdesktopIcon *icon)
 {
     XfdesktopIconClass *klass;

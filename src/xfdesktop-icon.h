@@ -64,7 +64,7 @@ struct _XfdesktopIconClass
     
     /*< virtual functions >*/
     GdkPixbuf *(*peek_pixbuf)(XfdesktopIcon *icon, gint width, gint height);
-    G_CONST_RETURN gchar *(*peek_label)(XfdesktopIcon *icon);
+    const gchar *(*peek_label)(XfdesktopIcon *icon);
     
     GdkDragAction (*get_allowed_drag_actions)(XfdesktopIcon *icon);
     
@@ -72,7 +72,7 @@ struct _XfdesktopIconClass
     gboolean (*do_drop_dest)(XfdesktopIcon *icon, XfdesktopIcon *src_icon, GdkDragAction action);
 
     GdkPixbuf *(*peek_tooltip_pixbuf)(XfdesktopIcon *icon, gint width, gint height);
-    G_CONST_RETURN gchar *(*peek_tooltip)(XfdesktopIcon *icon);
+    const gchar *(*peek_tooltip)(XfdesktopIcon *icon);
 
     gchar *(*get_identifier)(XfdesktopIcon *icon);
     
@@ -90,11 +90,11 @@ GType xfdesktop_icon_get_type(void) G_GNUC_CONST;
 GdkPixbuf *xfdesktop_icon_peek_pixbuf(XfdesktopIcon *icon,
                                      gint width,
                                      gint height);
-G_CONST_RETURN gchar *xfdesktop_icon_peek_label(XfdesktopIcon *icon);
+const gchar *xfdesktop_icon_peek_label(XfdesktopIcon *icon);
 GdkPixbuf *xfdesktop_icon_peek_tooltip_pixbuf(XfdesktopIcon *icon,
                                               gint width,
                                               gint height);
-G_CONST_RETURN gchar *xfdesktop_icon_peek_tooltip(XfdesktopIcon *icon);
+const gchar *xfdesktop_icon_peek_tooltip(XfdesktopIcon *icon);
 
 /* returns a unique identifier for the icon, free when done using it */
 gchar *xfdesktop_icon_get_identifier(XfdesktopIcon *icon);

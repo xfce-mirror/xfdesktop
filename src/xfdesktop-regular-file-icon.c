@@ -79,11 +79,11 @@ static void xfdesktop_regular_file_icon_delete_thumbnail_file(XfdesktopIcon *ico
 
 static GdkPixbuf *xfdesktop_regular_file_icon_peek_pixbuf(XfdesktopIcon *icon,
                                                           gint width, gint height);
-static G_CONST_RETURN gchar *xfdesktop_regular_file_icon_peek_label(XfdesktopIcon *icon);
+static const gchar *xfdesktop_regular_file_icon_peek_label(XfdesktopIcon *icon);
 static gchar *xfdesktop_regular_file_icon_get_identifier(XfdesktopIcon *icon);
 static GdkPixbuf *xfdesktop_regular_file_icon_peek_tooltip_pixbuf(XfdesktopIcon *icon,
                                                                   gint width, gint height);
-static G_CONST_RETURN gchar *xfdesktop_regular_file_icon_peek_tooltip(XfdesktopIcon *icon);
+static const gchar *xfdesktop_regular_file_icon_peek_tooltip(XfdesktopIcon *icon);
 static GdkDragAction xfdesktop_regular_file_icon_get_allowed_drag_actions(XfdesktopIcon *icon);
 static GdkDragAction xfdesktop_regular_file_icon_get_allowed_drop_actions(XfdesktopIcon *icon,
                                                                           GdkDragAction *suggested_action);
@@ -525,7 +525,7 @@ xfdesktop_regular_file_icon_peek_tooltip_pixbuf(XfdesktopIcon *icon,
     return tooltip_pix;
 }
 
-static G_CONST_RETURN gchar *
+static const gchar *
 xfdesktop_regular_file_icon_peek_label(XfdesktopIcon *icon)
 {
     XfdesktopRegularFileIcon *regular_file_icon = XFDESKTOP_REGULAR_FILE_ICON(icon);
@@ -697,7 +697,7 @@ xfdesktop_regular_file_icon_do_drop_dest(XfdesktopIcon *icon,
     return result;
 }
 
-static G_CONST_RETURN gchar *
+static const gchar *
 xfdesktop_regular_file_icon_peek_tooltip(XfdesktopIcon *icon)
 {
     XfdesktopRegularFileIcon *regular_file_icon = XFDESKTOP_REGULAR_FILE_ICON(icon);

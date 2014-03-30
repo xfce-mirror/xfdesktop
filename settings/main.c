@@ -1982,7 +1982,7 @@ xfdesktop_settings_response(GtkWidget *dialog, gint response_id, gpointer user_d
         gint width, height;
 
         /* don't save the state for full-screen windows */
-        state = gdk_window_get_state(GTK_WIDGET(dialog)->window);
+        state = gdk_window_get_state(gtk_widget_get_window(dialog));
 
         if ((state & (GDK_WINDOW_STATE_MAXIMIZED | GDK_WINDOW_STATE_FULLSCREEN)) == 0) {
             /* save window size */

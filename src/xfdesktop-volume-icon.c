@@ -76,11 +76,11 @@ static void xfdesktop_volume_icon_finalize(GObject *obj);
 
 static GdkPixbuf *xfdesktop_volume_icon_peek_pixbuf(XfdesktopIcon *icon,
                                                     gint width, gint height);
-static G_CONST_RETURN gchar *xfdesktop_volume_icon_peek_label(XfdesktopIcon *icon);
+static const gchar *xfdesktop_volume_icon_peek_label(XfdesktopIcon *icon);
 static gchar *xfdesktop_volume_icon_get_identifier(XfdesktopIcon *icon);
 static GdkPixbuf *xfdesktop_volume_icon_peek_tooltip_pixbuf(XfdesktopIcon *icon,
                                                             gint width, gint height);
-static G_CONST_RETURN gchar *xfdesktop_volume_icon_peek_tooltip(XfdesktopIcon *icon);
+static const gchar *xfdesktop_volume_icon_peek_tooltip(XfdesktopIcon *icon);
 static GdkDragAction xfdesktop_volume_icon_get_allowed_drag_actions(XfdesktopIcon *icon);
 static GdkDragAction xfdesktop_volume_icon_get_allowed_drop_actions(XfdesktopIcon *icon,
                                                                     GdkDragAction *suggested_action);
@@ -306,7 +306,7 @@ xfdesktop_volume_icon_peek_tooltip_pixbuf(XfdesktopIcon *icon,
     return tooltip_pix;
 }
 
-G_CONST_RETURN gchar *
+const gchar *
 xfdesktop_volume_icon_peek_label(XfdesktopIcon *icon)
 {
     XfdesktopVolumeIcon *volume_icon = XFDESKTOP_VOLUME_ICON(icon);
@@ -456,7 +456,7 @@ xfdesktop_volume_icon_do_drop_dest(XfdesktopIcon *icon,
     return result;
 }
 
-static G_CONST_RETURN gchar *
+static const gchar *
 xfdesktop_volume_icon_peek_tooltip(XfdesktopIcon *icon)
 {
     XfdesktopVolumeIcon *volume_icon = XFDESKTOP_VOLUME_ICON(icon);

@@ -1042,7 +1042,7 @@ xfce_backdrop_set_image_filename(XfceBackdrop *backdrop, const gchar *filename)
     g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_CHANGED], 0);
 }
 
-G_CONST_RETURN gchar *
+const gchar *
 xfce_backdrop_get_image_filename(XfceBackdrop *backdrop)
 {
     g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), NULL);
