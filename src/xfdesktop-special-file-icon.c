@@ -608,6 +608,12 @@ xfdesktop_special_file_icon_changed(GFileMonitor *monitor,
     g_return_if_fail(G_IS_FILE(file));
     g_return_if_fail(XFDESKTOP_IS_SPECIAL_FILE_ICON(special_file_icon));
 
+    /* We don't care about change events only created/deleted */
+    if(event == G_FILE_MONITOR_EVENT_CHANGED ||
+       event == G_FILE_MONITOR_EVENT_ATTRIBUTE_CHANGED ||
+       event == G_FILE_MONITOR_EVENT_CHANGES_DONE_HINT)
+        return;
+
     /* release the old file information */
     if(special_file_icon->priv->file_info) {
         g_object_unref(special_file_icon->priv->file_info);
