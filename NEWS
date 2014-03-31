@@ -1,3 +1,22 @@
+4.11.5
+======
+[Please note that this is a development release.]
+
+Seventh development release of xfdesktop targeting for Xfce 4.12.
+Please report all problems at bugzilla.xfce.org.
+
+* Miscellaneous bug fixes:
+  - Disconnect the directory signal handler when changing folders.
+  - Correct an additional default icon size setting.
+  - Fix for images not appearing in settings app (Bug 10685)
+  - Reset the icon_view style on style change (Bug 10605)
+  - Filter out changed events for special icons (Bug 10755)
+  - Use GIO directly for delete/trash operations (Bug 10778)
+  - G_CONST_RETURN has been deprecated
+
+* Translation updates: Czech (cs),  Croatian (hr), Polish (pl),
+  Portuguese (Brazilian) (pt_BR), Swedish (sv)
+
 4.11.4
 ======
 [Please note that this is a development release.]
