@@ -1318,8 +1318,6 @@ xfce_desktop_style_set(GtkWidget *w, GtkStyle *old_style)
                                                          (GSourceFunc)style_refresh_cb,
                                                          w,
                                                          NULL);
-
-    GTK_WIDGET_CLASS(xfce_desktop_parent_class)->style_set(w, old_style);
 }
 
 static void
