@@ -54,6 +54,23 @@
 #include "xfce-backdrop.h" /* for XfceBackdropImageStyle */
 
 
+gint
+xfdesktop_compare_basenames(GFile *a, GFile *b)
+{
+    gchar *path_a, *path_b;
+    gboolean ret;
+
+    path_a = g_file_get_basename(a);
+    path_b = g_file_get_basename(b);
+
+    ret = g_strcmp0(path_a, path_b);
+
+    g_free(path_a);
+    g_free(path_b);
+
+    return ret;
+}
+
 gchar *
 xfdesktop_get_file_mimetype(const gchar *file)
 {

@@ -2413,6 +2413,15 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
                 xfdesktop_file_icon_manager_remove_icon(fmanager, moved_icon);
             }
 
+            if(xfdesktop_compare_basenames(other_file, fmanager->priv->folder) != 0) {
+                DBG("icon moved off the desktop");
+                /* Nothing moved, this is actually a delete */
+                if(file_info)
+                    g_object_unref(file_info);
+
+                return;
+            }
+
             if(file_info) {
                 gboolean is_hidden;
 
