@@ -583,9 +583,9 @@ xfce_workspace_migrate_backdrop_image_style(XfceWorkspace *workspace,
         xfce_workspace_set_xfconf_property_value(workspace, monitor, "image-style", &value);
         g_value_unset(&value);
     } else {
-        /* If no value was ever set default to stretched */
+        /* If no value was ever set default to zoomed */
         g_value_init(&value, G_TYPE_INT);
-        g_value_set_int(&value, XFCE_BACKDROP_IMAGE_STRETCHED);
+        g_value_set_int(&value, XFCE_BACKDROP_IMAGE_ZOOMED);
         xfce_workspace_set_xfconf_property_value(workspace, monitor, "image-style", &value);
         g_value_unset(&value);
     }

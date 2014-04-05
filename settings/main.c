@@ -1264,8 +1264,9 @@ xfdesktop_settings_background_tab_change_bindings(AppearancePanel *panel,
             gint image_style;
             old_property = xfdesktop_settings_generate_old_binding_string(panel, "image-style");
 
-            /* default to stretched when trying to migrate */
-            image_style = xfconf_channel_get_int(channel, old_property, XFCE_BACKDROP_IMAGE_STRETCHED);
+            /* default to zoomed when trying to migrate (zoomed was part of how
+             * auto worked in 4.10)*/
+            image_style = xfconf_channel_get_int(channel, old_property, XFCE_BACKDROP_IMAGE_ZOOMED);
 
             /* xfce_translate_image_styles will do sanity checking */
             gtk_combo_box_set_active(GTK_COMBO_BOX(panel->image_style_combo),
@@ -1847,7 +1848,7 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
                      panel);
 
     /* Pick the first entries so something shows up */
-    gtk_combo_box_set_active(GTK_COMBO_BOX(panel->image_style_combo), XFCE_BACKDROP_IMAGE_STRETCHED);
+    gtk_combo_box_set_active(GTK_COMBO_BOX(panel->image_style_combo), XFCE_BACKDROP_IMAGE_ZOOMED);
     gtk_combo_box_set_active(GTK_COMBO_BOX(panel->color_style_combo), XFCE_BACKDROP_COLOR_SOLID);
 
     /* Use these settings for all workspaces checkbox */

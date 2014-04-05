@@ -1565,8 +1565,8 @@ xfce_backdrop_loader_size_prepared_cb(GdkPixbufLoader *loader,
     TRACE("entering");
 
     if(backdrop->priv->image_style == XFCE_BACKDROP_IMAGE_INVALID) {
-        g_warning("Invalid image style, setting to XFCE_BACKDROP_IMAGE_STRETCHED");
-        backdrop->priv->image_style = XFCE_BACKDROP_IMAGE_STRETCHED;
+        g_warning("Invalid image style, setting to XFCE_BACKDROP_IMAGE_ZOOMED");
+        backdrop->priv->image_style = XFCE_BACKDROP_IMAGE_ZOOMED;
     }
 
     switch(backdrop->priv->image_style) {
