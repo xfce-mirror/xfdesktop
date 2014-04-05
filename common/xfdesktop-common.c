@@ -55,13 +55,15 @@
 
 
 gint
-xfdesktop_compare_basenames(GFile *a, GFile *b)
+xfdesktop_compare_paths(GFile *a, GFile *b)
 {
     gchar *path_a, *path_b;
     gboolean ret;
 
-    path_a = g_file_get_basename(a);
-    path_b = g_file_get_basename(b);
+    path_a = g_file_get_path(a);
+    path_b = g_file_get_path(b);
+
+    DBG("a %s, b %s", path_a, path_b);
 
     ret = g_strcmp0(path_a, path_b);
 

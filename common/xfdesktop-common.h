@@ -87,7 +87,7 @@
 
 G_BEGIN_DECLS
 
-gint xfdesktop_compare_basenames(GFile *a, GFile *b);
+gint xfdesktop_compare_paths(GFile *a, GFile *b);
 
 gboolean xfdesktop_image_file_is_valid(const gchar *filename);
 
