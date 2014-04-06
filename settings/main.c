@@ -2111,6 +2111,13 @@ main(int argc, char **argv)
         wnck_screen = wnck_screen_get(screen);
         wnck_screen_force_update(wnck_screen);
         panel->wnck_window = wnck_screen_get_active_window(wnck_screen);
+
+        /* These callbacks are for updating the image_iconview when the window
+         * moves to another monitor or workspace */
+        g_signal_connect(panel->wnck_window, "geometry-changed",
+                         G_CALLBACK(cb_update_background_tab), panel);
+        g_signal_connect(panel->wnck_window, "workspace-changed",
+                         G_CALLBACK(cb_update_background_tab), panel);
     }
 
     panel->channel = channel;
