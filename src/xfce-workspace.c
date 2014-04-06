@@ -84,7 +84,6 @@ struct _XfceWorkspacePriv
     guint nbackdrops;
     gboolean xinerama_stretch;
     XfceBackdrop **backdrops;
-    gboolean cache_pixbufs;
 
     gulong *first_color_id;
     gulong *second_color_id;
@@ -675,9 +674,6 @@ xfce_workspace_connect_backdrop_settings(XfceWorkspace *workspace,
     xfconf_g_property_bind(channel, buf, G_TYPE_STRING,
                            G_OBJECT(backdrop), "image-filename");
 
-    /* determine if the backdrop will be required to keep a ref of it's pixbuf
-     * when it generates one */
-    xfce_backdrop_set_cache_pixbuf(backdrop, workspace->priv->cache_pixbufs);
 
     g_free(monitor_name);
 }
@@ -773,49 +769,6 @@ xfce_workspace_set_workspace_num(XfceWorkspace *workspace, gint number)
     g_return_if_fail(XFCE_IS_WORKSPACE(workspace));
 
     workspace->priv->workspace_num = number;
-}
-
-/**
- * xfce_workspace_set_cache_pixbufs:
- * @workspace: An #XfceWorkspace.
- * @cache_pixbuf: When TRUE XfceWorkspace will have all it's backdrops keep
- *                a reference to the current pixbuf.
- *
- * This function will control whether XfceWorkspace's backdrops keep a reference
- * to their respective pixbufs or not. Setting it to TRUE is useful for the
- * per-workspace-wallpapers, FALSE will save memory for single workspace mode.
- **/
-void
-xfce_workspace_set_cache_pixbufs(XfceWorkspace *workspace,
-                                 gboolean cache_pixbuf)
-{
-    guint i;
-    guint n_monitors;
-
-    g_return_if_fail(XFCE_IS_WORKSPACE(workspace));
-
-    /* If nothing changed then avoid doing any work */
-    if(workspace->priv->cache_pixbufs == cache_pixbuf)
-        return;
-
-    workspace->priv->cache_pixbufs = cache_pixbuf;
-
-    DBG("cache_pixbuf now %s", cache_pixbuf ? "TRUE" : "FALSE");
-
-    n_monitors = gdk_screen_get_n_monitors(workspace->priv->gscreen);
-
-    /* update all the backdrops */
-    for(i = 0; i < n_monitors && i < workspace->priv->nbackdrops; ++i) {
-        xfce_backdrop_set_cache_pixbuf(workspace->priv->backdrops[i], cache_pixbuf);
-    }
-}
-
-gboolean
-xfce_workspace_get_cache_pixbufs(XfceWorkspace *workspace)
-{
-    g_return_val_if_fail(XFCE_IS_WORKSPACE(workspace), FALSE);
-
-    return workspace->priv->cache_pixbufs;
 }
 
 /**

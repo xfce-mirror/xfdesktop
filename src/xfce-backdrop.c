@@ -95,7 +95,6 @@ struct _XfceBackdropPriv
 
     GdkPixbuf *pix;
     XfceBackdropImageData *image_data;
-    gboolean cache_pixbuf;
 
     XfceBackdropColorStyle color_style;
     GdkColor color1;
@@ -1359,49 +1358,6 @@ xfce_backdrop_get_random_order(XfceBackdrop *backdrop)
     return backdrop->priv->random_backdrop_order;
 }
 
-/**
- * xfce_backdrop_set_cache_pixbuf:
- * @backdrop: An #XfceBackdrop.
- * @cache_pixbuf: When TRUE XfceBackdrop will keep a reference to the current
- *                pixbuf until another one is set.
- *
- * XfceBackdrop can be set to keep a reference to the current backdrop and
- * increment the reference count when xfce_backdrop_get_pixbuf is called.
- * Setting cache_pixbuf to FALSE will cause xfce_backdrop_get_pixbuf to
- * return XfceBackdrop's only reference and free any memory allocated. This
- * will use less memory, especially when the backdrop isn't expected to change
- * as in single workspace mode.
- **/
-void
-xfce_backdrop_set_cache_pixbuf(XfceBackdrop *backdrop,
-                               gboolean cache_pixbuf)
-{
-    g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
-
-    TRACE("entering");
-
-    if(backdrop->priv->cache_pixbuf == cache_pixbuf) {
-        DBG("No change, cache_pixbuf %s", cache_pixbuf ? "TRUE" : "FALSE");
-        return;
-    }
-
-    backdrop->priv->cache_pixbuf = cache_pixbuf;
-
-    DBG("cache_pixbuf now %s", cache_pixbuf ? "TRUE" : "FALSE");
-
-    /* release any cached pixbuf now to save memory */
-    if(!cache_pixbuf)
-        xfce_backdrop_clear_cached_image(backdrop);
-}
-
-gboolean
-xfce_backdrop_get_cache_pixbuf(XfceBackdrop *backdrop)
-{
-    g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), FALSE);
-
-    return backdrop->priv->cache_pixbuf;
-}
-
 /* Generates the background that will either be displayed or will have the
  * image drawn on top of */
 static GdkPixbuf *
@@ -1473,16 +1429,9 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
 {
     TRACE("entering");
 
-    if(backdrop->priv->pix && backdrop->priv->cache_pixbuf) {
+    if(backdrop->priv->pix) {
         /* return a reference so we can cache it */
         return g_object_ref(backdrop->priv->pix);
-    } else if(backdrop->priv->pix) {
-        /* We're not going to cache it so return our reference and set our
-         * pointer to NULL */
-        GdkPixbuf *pix = backdrop->priv->pix;
-        backdrop->priv->pix = NULL;
-
-        return pix;
     }
 
     /* !backdrop->priv->pix, call xfce_backdrop_generate_async */
@@ -1848,49 +1797,4 @@ xfce_backdrop_file_input_stream_ready_cb(GObject *source_object,
         g_input_stream_close(stream, image_data->cancellable, NULL);
         g_object_unref(source_object);
     }
-}
-
-/* returns TRUE if they have identical settings. */
-gboolean
-xfce_backdrop_compare_backdrops(XfceBackdrop *backdrop_a,
-                                XfceBackdrop *backdrop_b)
-{
-    if(g_strcmp0(backdrop_a->priv->image_path, backdrop_b->priv->image_path) != 0) {
-        DBG("filename different");
-        return FALSE;
-    }
-
-    if(backdrop_a->priv->image_style != backdrop_b->priv->image_style) {
-        DBG("image_style different");
-        return FALSE;
-    }
-
-    if(backdrop_a->priv->color_style != backdrop_b->priv->color_style) {
-        DBG("color_style different");
-        return FALSE;
-    }
-
-    /* Every color style uses color1 except for transparent which does not need
-     * a color check */
-    if(backdrop_a->priv->color_style != XFCE_BACKDROP_COLOR_TRANSPARENT &&
-       !gdk_color_equal(&backdrop_a->priv->color1, &backdrop_b->priv->color1)) {
-        DBG("colors different");
-        return FALSE;
-    }
-
-    /* When the style is set to gradient then we should check color2 as well */
-    if((backdrop_a->priv->color_style == XFCE_BACKDROP_COLOR_HORIZ_GRADIENT ||
-        backdrop_a->priv->color_style == XFCE_BACKDROP_COLOR_VERT_GRADIENT) &&
-       !gdk_color_equal(&backdrop_a->priv->color2, &backdrop_b->priv->color2)) {
-        DBG("colors different");
-        return FALSE;
-    }
-
-    if(backdrop_a->priv->cycle_backdrop != backdrop_b->priv->cycle_backdrop ||
-       backdrop_a->priv->cycle_backdrop == TRUE) {
-        DBG("backdrop cycle different");
-        return FALSE;
-    }
-
-    return TRUE;
 }

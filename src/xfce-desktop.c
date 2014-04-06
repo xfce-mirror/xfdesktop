@@ -607,14 +607,9 @@ workspace_changed_cb(WnckScreen *wnck_screen,
 {
     XfceDesktop *desktop = XFCE_DESKTOP(user_data);
     gint current_workspace, new_workspace, i;
-    XfceBackdrop *current_backdrop, *new_backdrop;
+    XfceBackdrop *backdrop;
 
     TRACE("entering");
-
-    /* Ignore workspace changes in single workspace mode so long as we
-     * already have the bg_pixmap loaded */
-    if(xfce_desktop_get_single_workspace_mode(desktop) && desktop->priv->bg_pixmap)
-        return;
 
     current_workspace = desktop->priv->current_workspace;
     new_workspace = xfce_desktop_get_current_workspace(desktop);
@@ -628,22 +623,9 @@ workspace_changed_cb(WnckScreen *wnck_screen,
         current_workspace, new_workspace);
 
     for(i = 0; i < xfce_desktop_get_n_monitors(desktop); i++) {
-        /* We want to compare the current workspace backdrop with the new one
-         * and see if we can avoid changing them if they are the same image/style */
-        if(current_workspace < desktop->priv->nworkspaces && current_workspace >= 0) {
-            current_backdrop = xfce_workspace_get_backdrop(desktop->priv->workspaces[current_workspace], i);
-            new_backdrop = xfce_workspace_get_backdrop(desktop->priv->workspaces[new_workspace], i);
-
-            if(!xfce_backdrop_compare_backdrops(current_backdrop, new_backdrop) || !desktop->priv->bg_pixmap) {
-                /* only update monitors that require it */
-                backdrop_changed_cb(new_backdrop, user_data);
-            }
-        } else {
-            /* If current_workspace was removed or never existed, get the new
-             * backdrop and apply it */
-            new_backdrop = xfce_workspace_get_backdrop(desktop->priv->workspaces[new_workspace], i);
-            backdrop_changed_cb(new_backdrop, user_data);
-        }
+        backdrop = xfce_workspace_get_backdrop(desktop->priv->workspaces[new_workspace], i);
+        /* update it */
+        backdrop_changed_cb(backdrop, user_data);
 
         /* When we're spanning screens we only care about the first monitor */
         if(xfce_workspace_get_xinerama_stretch(desktop->priv->workspaces[new_workspace]))
@@ -674,10 +656,6 @@ workspace_created_cb(WnckScreen *wnck_screen,
                                                                     desktop->priv->channel,
                                                                     desktop->priv->property_prefix,
                                                                     nlast_workspace);
-
-    /* Tell workspace whether to cache pixbufs */
-    xfce_workspace_set_cache_pixbufs(desktop->priv->workspaces[nlast_workspace],
-                                     !desktop->priv->single_workspace_mode);
 
     xfce_workspace_monitors_changed(desktop->priv->workspaces[nlast_workspace],
                                     desktop->priv->gscreen);
@@ -1547,8 +1525,6 @@ static void
 xfce_desktop_set_single_workspace_mode(XfceDesktop *desktop,
                                        gboolean single_workspace)
 {
-    gint i;
-
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
 
     if(single_workspace == desktop->priv->single_workspace_mode)
@@ -1558,13 +1534,6 @@ xfce_desktop_set_single_workspace_mode(XfceDesktop *desktop,
 
     DBG("single_workspace_mode now %s", single_workspace ? "TRUE" : "FALSE");
 
-    /* update the workspaces & backdrops if they should cache their pixbuf */
-    if(desktop->priv->workspaces) {
-        for(i = 0; i < desktop->priv->nworkspaces; i++) {
-            /* set cache to TRUE when single_workspace is FALSE */
-            xfce_workspace_set_cache_pixbufs(desktop->priv->workspaces[i], !single_workspace);
-        }
-    }
 
     /* If the desktop has been realized then fake a screen size change to
      * update the backdrop. There's no reason to if there's no desktop yet */
