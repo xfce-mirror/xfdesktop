@@ -1462,7 +1462,7 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                 }
             } else {
                 if(xfdesktop_file_utils_file_is_executable(info)) {
-                    img = gtk_image_new_from_stock(GTK_STOCK_OPEN, GTK_ICON_SIZE_MENU);
+                    img = gtk_image_new_from_stock(GTK_STOCK_EXECUTE, GTK_ICON_SIZE_MENU);
                     gtk_widget_show(img);
                     mi = gtk_image_menu_item_new_with_mnemonic(_("_Execute"));
                     gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
