@@ -1,8 +1,30 @@
-4.11.5
+4.11.6
 ======
 [Please note that this is a development release.]
 
 Seventh development release of xfdesktop targeting for Xfce 4.12.
+Please report all problems at bugzilla.xfce.org.
+
+* Miscellaneous bug fixes:
+  - g_file_trash_async is too new (Bug 10786)
+  - Don't chain up style_set (Bug 10788)
+  - Fix for moving icons into folders on the desktop (Bug 10785)
+  - Fix issues with file move events (Bug 10796)
+  - Use GTK_STOCK_EXECUTE for Execute menu entry (Bug 10800)
+  - Change default image style to zoomed
+  - Fix for monitors not getting updated
+  - Hook up the signal handlers in xfdesktop-settings
+
+* Translation updates: Czech (cs),  Dutch (Flemish) (nl),
+  English (Australia) (en_AU), Italian (it), Japanese (ja),
+  Kazakh (kk), Polish (pl), Serbian (sr), Spanish (Castilian) (es),
+  Swedish (sv), Thai (th),
+
+4.11.5
+======
+[Please note that this is a development release.]
+
+Sixth development release of xfdesktop targeting for Xfce 4.12.
 Please report all problems at bugzilla.xfce.org.
 
 * Miscellaneous bug fixes:
