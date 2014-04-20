@@ -76,7 +76,7 @@
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4ui/libxfce4ui.h>
 
-#define SAVE_DELAY  7000
+#define SAVE_DELAY  1000
 #define BORDER         8
 
 typedef enum
@@ -1827,6 +1827,12 @@ xfdesktop_file_icon_position_changed(XfdesktopFileIcon *icon,
 
 
 /*   *****   */
+
+void
+xfdesktop_file_icon_save(gpointer user_data)
+{
+	xfdesktop_file_icon_position_changed(NULL, user_data);
+}
 
 gboolean
 xfdesktop_file_icon_manager_get_cached_icon_position(XfdesktopFileIconManager *fmanager,

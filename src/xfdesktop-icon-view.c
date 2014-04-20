@@ -3258,6 +3258,8 @@ xfdesktop_move_all_cached_icons_to_desktop(XfdesktopIconView *icon_view)
     if(fmanager == NULL)
         return;
 
+    xfdesktop_file_icon_save(fmanager);
+
     /* add all cached icons back */
     for(l = icon_view->priv->pending_icons; l; l = l->next) {
         gint16 row, col;

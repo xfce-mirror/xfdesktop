@@ -55,6 +55,8 @@ GType xfdesktop_file_icon_manager_get_type(void) G_GNUC_CONST;
 XfdesktopIconViewManager *xfdesktop_file_icon_manager_new(GFile *folder,
                                                           XfconfChannel *channel);
 
+void xfdesktop_file_icon_save(gpointer user_data);
+
 gboolean xfdesktop_file_icon_manager_get_cached_icon_position(
                                                     XfdesktopFileIconManager *fmanager,
                                                     const gchar *name,
