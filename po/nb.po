@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-04-03 18:32+0200\n"
-"PO-Revision-Date: 2014-04-29 16:57+0000\n"
+"PO-Revision-Date: 2014-05-07 21:08+0000\n"
 "Last-Translator: haarek <haarektrans@gmail.com>\n"
 "Language-Team: Norwegian Bokmål (http://www.transifex.com/projects/p/xfdesktop/language/nb/)\n"
 "MIME-Version: 1.0\n"
@@ -63,12 +63,12 @@ msgstr "<b>%s</b>\nFiltype: %s\nStørrelse: %s"
 #: ../settings/main.c:715
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
-msgstr ""
+msgstr "Skrivebordsbakgrunn for skjerm %d (%s)"
 
 #: ../settings/main.c:718
 #, c-format
 msgid "Wallpaper for Monitor %d"
-msgstr ""
+msgstr "Skrivebordsbakgrunn for skjerm %d"
 
 #: ../settings/main.c:724
 msgid "Move this dialog to the display you want to edit the settings for."
@@ -77,12 +77,12 @@ msgstr ""
 #: ../settings/main.c:731
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
-msgstr ""
+msgstr "Skrivebordsbakgrunn for %s på skjerm %d (%s)"
 
 #: ../settings/main.c:735
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
-msgstr ""
+msgstr "Skrivebordsbakgrunn for %s på skjerm %d"
 
 #: ../settings/main.c:742
 msgid ""
@@ -94,13 +94,13 @@ msgstr ""
 #: ../settings/main.c:749
 #, c-format
 msgid "Wallpaper for my desktop"
-msgstr ""
+msgstr "Min skrivebordsbakgrunn"
 
 #. Single monitor and per workspace wallpaper
 #: ../settings/main.c:755
 #, c-format
 msgid "Wallpaper for %s"
-msgstr ""
+msgstr "Skrivebordsbakgrunn for %s"
 
 #: ../settings/main.c:760
 msgid "Move this dialog to the workspace you want to edit the settings for."
@@ -162,7 +162,7 @@ msgstr "Sett bakgrunnsbilde og tilpass innstillinger for meny og ikoner"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
 msgid "Solid color"
-msgstr "Enfarget"
+msgstr "Ensfarget"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
 msgid "Horizontal gradient"
@@ -231,7 +231,7 @@ msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
-msgstr ""
+msgstr "Angir ensfarget farge eller den «venstre» eller «øverste» fargen for fargeovergangen."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
 msgid "Select First Color"
@@ -239,7 +239,7 @@ msgstr "Velg første farge"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient."
-msgstr ""
+msgstr "Angir den «høyre» eller «nederste» fargen i fargeovergangen."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
 msgid "Select Second Color"
@@ -247,7 +247,7 @@ msgstr "Velg farge nummer to"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
 msgid "Apply to all _workspaces"
-msgstr ""
+msgstr "Bruk for alle arbeidsområder"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 msgid "Change the _background "
@@ -260,7 +260,7 @@ msgstr "Automatisk velg en annen bakgrunn fra den valgte mappen."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid "Specify how often the background will change."
-msgstr ""
+msgstr "Angi hvor ofte bakgrunnen vil endres."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "in seconds:"
@@ -562,7 +562,7 @@ msgstr ""
 #: ../src/xfdesktop-application.c:791
 #, c-format
 msgid "Failed to parse arguments: %s\n"
-msgstr ""
+msgstr "Klarte ikke å tolke argumentene: %s\n"
 
 #: ../src/xfdesktop-application.c:802
 #, c-format
@@ -810,15 +810,15 @@ msgstr "Filen kunne ikke gis nytt navn"
 
 #: ../src/xfdesktop-file-utils.c:862
 msgid "Delete Error"
-msgstr ""
+msgstr "Feil ved sletting"
 
 #: ../src/xfdesktop-file-utils.c:863
 msgid "The selected files could not be deleted"
-msgstr ""
+msgstr "De valgte filene kunne ikke slettes"
 
 #: ../src/xfdesktop-file-utils.c:922
 msgid "The selected files could not be moved to the trash"
-msgstr ""
+msgstr "De valgte filene kunne ikke flyttes til papirkurven"
 
 #: ../src/xfdesktop-file-utils.c:923 ../src/xfdesktop-file-utils.c:961
 msgid ""
