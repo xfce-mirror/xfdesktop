@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# kingu <comradekingu@gmail.com>, 2014
 # Christian Lomsdalen <christian@vindstille.net>, 2007
 # Eskild Hustvedt <eskild@goldenfiles.com>, 2004
 # Terje Uriansrud <terje@uriansrud.net>, 2010
@@ -12,9 +13,9 @@ msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 23:19+0200\n"
-"PO-Revision-Date: 2013-11-19 14:49+0000\n"
-"Last-Translator: Nick <nick@xfce.org>\n"
-"Language-Team: Norwegian Bokmål (http://www.transifex.com/projects/p/xfce/language/nb/)\n"
+"PO-Revision-Date: 2014-05-11 15:59+0000\n"
+"Last-Translator: kingu <comradekingu@gmail.com>\n"
+"Language-Team: Norwegian Bokmål (http://www.transifex.com/projects/p/xfdesktop/language/nb/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -314,29 +315,29 @@ msgstr "<b>Tilpasninger</b>"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
 msgid "_Change the background (in minutes):"
-msgstr ""
+msgstr "_Endre bakgrunnen (i minutter):"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:36
 msgid ""
 "While in image list mode, select this option to automatically select a "
 "different background from the image list after a set number of minutes."
-msgstr ""
+msgstr "Mens du er i modus for opplisting av bilder, vil dette valget automatisk velge en annen bakgrunn fra listen etter anngitt tid i minutter."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:37
 msgid ""
 "Number of minutes before a different background is randomly selected from "
 "the list."
-msgstr ""
+msgstr "Antall minutter før en annen bakgrunn blir tilfeldig valgt fra listen."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:38
 msgid "St_retch this background across all monitors."
-msgstr ""
+msgstr "St_rekk denne bagrunnen over alle skjermene."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:39
 msgid ""
 "When multiple monitors are present, select this option to stretch the "
 "current background over all of them."
-msgstr ""
+msgstr "Når flere skjermer er tilkoblet kan du velge å strekke gjeldende bakgrunn over samtlige."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:11
 msgid "Left"
@@ -456,17 +457,17 @@ msgstr "Ikon_størrelse:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:40
 msgid "Show t_humbnails"
-msgstr ""
+msgstr "Vis _miniatyrbilder"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:41
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
-msgstr ""
+msgstr "Velg dette alternativet for at filer på skrivebordet der innholdet kan forhåndsvises som automatisk genererte miniatyrikoner."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:42
 msgid "Single _click to activate items"
-msgstr ""
+msgstr "_Enkeltklikk for å aktivere elementer"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:43
 msgid "Use custom _font size:"
@@ -512,7 +513,7 @@ msgstr "Vis vinduslisten (ved gjeldende musposisjon)"
 
 #: ../src/main.c:248
 msgid "Automatically arrange all the icons on the desktop"
-msgstr ""
+msgstr "Sorter alle skrivebordsikoner automatisk"
 
 #: ../src/main.c:250
 msgid "Cause xfdesktop to quit"
@@ -743,7 +744,7 @@ msgstr "_Gi nytt navn..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1724
 msgid "Arrange Desktop _Icons"
-msgstr ""
+msgstr "Sorter skrivebords_ikoner"
 
 #: ../src/xfdesktop-file-icon-manager.c:1734
 msgid "Desktop _Settings..."
@@ -764,15 +765,15 @@ msgstr "Klarte ikke laste skrivebordsmappen"
 
 #: ../src/xfdesktop-file-icon-manager.c:2938
 msgid "Copy _Here"
-msgstr ""
+msgstr "_Kopier hit"
 
 #: ../src/xfdesktop-file-icon-manager.c:2938
 msgid "_Move Here"
-msgstr ""
+msgstr "_Flytt hit"
 
 #: ../src/xfdesktop-file-icon-manager.c:2938
 msgid "_Link Here"
-msgstr ""
+msgstr "_Lenk hit"
 
 #. TRANSLATORS: file was modified less than one day ago
 #: ../src/xfdesktop-file-utils.c:137
@@ -1001,4 +1002,4 @@ msgstr "_Monter dataområde"
 
 #: ../src/xfdesktop-window-icon.c:208
 msgid "_Window Actions"
-msgstr ""
+msgstr "_Vindushandlinger"
