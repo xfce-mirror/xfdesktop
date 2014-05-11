@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# kingu <comradekingu@gmail.com>, 2014
 # Christian Lomsdalen <christian@vindstille.net>, 2007
 # Eskild Hustvedt <eskild@goldenfiles.com>, 2004
 # haarek <haarektrans@gmail.com>, 2014
@@ -13,8 +14,8 @@ msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-04-03 18:32+0200\n"
-"PO-Revision-Date: 2014-05-07 21:08+0000\n"
-"Last-Translator: haarek <haarektrans@gmail.com>\n"
+"PO-Revision-Date: 2014-05-11 15:54+0000\n"
+"Last-Translator: kingu <comradekingu@gmail.com>\n"
 "Language-Team: Norwegian Bokmål (http://www.transifex.com/projects/p/xfdesktop/language/nb/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -72,7 +73,7 @@ msgstr "Skrivebordsbakgrunn for skjerm %d"
 
 #: ../settings/main.c:724
 msgid "Move this dialog to the display you want to edit the settings for."
-msgstr ""
+msgstr "Flytt denne dialogen til skjermen du vil endre innstillingene for"
 
 #: ../settings/main.c:731
 #, c-format
@@ -88,7 +89,7 @@ msgstr "Skrivebordsbakgrunn for %s på skjerm %d"
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
-msgstr ""
+msgstr "Flytt denne dialogen til skjermen og arbeidsområdet du vil endre innstillingene for."
 
 #. Single monitor and single workspace
 #: ../settings/main.c:749
@@ -104,15 +105,15 @@ msgstr "Skrivebordsbakgrunn for %s"
 
 #: ../settings/main.c:760
 msgid "Move this dialog to the workspace you want to edit the settings for."
-msgstr ""
+msgstr "Flytt denne dialogboksen til arbeidsområdet du vil endre innstillinger for."
 
 #: ../settings/main.c:1174
 msgid "Image selection is unavailable while the image style is set to None."
-msgstr ""
+msgstr "Bildevalg er ikke tilgjengelig når bildestil er satt til ingen."
 
 #: ../settings/main.c:1523
 msgid "Spanning screens"
-msgstr ""
+msgstr "Spenn over flere skjermer"
 
 #: ../settings/main.c:1825
 msgid "Image files"
@@ -219,7 +220,7 @@ msgstr "Skaler"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
 msgid "Spanning Screens"
-msgstr ""
+msgstr "Spenn over flere skjermer"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
 msgid "C_olor:"
@@ -227,7 +228,7 @@ msgstr "_Farge:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Specify the style of the color drawn behind the backdrop image."
-msgstr ""
+msgstr "Velger stil for bakgrunnsfargen til bakgrunnsbildet."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
@@ -302,7 +303,7 @@ msgstr "_Tilfeldig rekkefølge"
 msgid ""
 "Randomly selects another image from the same directory when the wallpaper is"
 " to cycle."
-msgstr ""
+msgstr "Velger et annet bilde fra samme mappe tilfeldig når bakgrunnsbilde er satt til syklus."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:1
 msgid "Left"
@@ -402,7 +403,7 @@ msgstr "Vis _faste vinduer kun i aktivt arbeidsområde"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:26
 msgid "Show a_dd and remove workspace options in list"
-msgstr ""
+msgstr "Vis valg for till_egg til og fjerning av arbeidsområde i listen"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "<b>Window List Menu</b>"
@@ -428,7 +429,7 @@ msgstr "Vis _miniatyrbilder"
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
-msgstr "Velg dette alternativet for at filer på skrivebordet der innholdet kan forhåndsvises vises som automatisk genererte miniatyrikoner."
+msgstr "Velg dette alternativet for at filer på skrivebordet der innholdet kan forhåndsvises som automatisk genererte miniatyrikoner."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
 msgid "Single _click to activate items"
@@ -436,11 +437,11 @@ msgstr "_Enkeltklikk for å aktivere elementer"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:34
 msgid "Show icon tooltips. Size:"
-msgstr ""
+msgstr "Visning av ikoner for verktøystips. Størrelse:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:35
 msgid "Size of the tooltip preview image."
-msgstr ""
+msgstr "Størrelsen på verktøytipsets forhåndsvisnings-bilde."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid "Use custom _font size:"
@@ -537,15 +538,15 @@ msgstr "Vis versjonsinformasjon"
 
 #: ../src/xfdesktop-application.c:769
 msgid "Reload all settings"
-msgstr ""
+msgstr "Last inn innstillinger på ny"
 
 #: ../src/xfdesktop-application.c:770
 msgid "Pop up the menu (at the current mouse position)"
-msgstr ""
+msgstr "Vis menyen (ved gjeldende pekerposisjon)"
 
 #: ../src/xfdesktop-application.c:771
 msgid "Pop up the window list (at the current mouse position)"
-msgstr ""
+msgstr "Vis vinduslisten (ved gjeldende pekerposisjon)"
 
 #: ../src/xfdesktop-application.c:773
 msgid "Automatically arrange all the icons on the desktop"
@@ -553,11 +554,11 @@ msgstr "Sorter automatisk alle skrivebordsikoner"
 
 #: ../src/xfdesktop-application.c:775
 msgid "Do not wait for a window manager on startup"
-msgstr ""
+msgstr "Ikke vent på vindusbehandler ved oppstart"
 
 #: ../src/xfdesktop-application.c:776
 msgid "Cause xfdesktop to quit"
-msgstr ""
+msgstr "Sørger for å avslutte xfdesktop"
 
 #: ../src/xfdesktop-application.c:791
 #, c-format
@@ -567,17 +568,17 @@ msgstr "Klarte ikke å tolke argumentene: %s\n"
 #: ../src/xfdesktop-application.c:802
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr ""
+msgstr "Dette er %s versjon %s, kjørende på Xfce %s.\n"
 
 #: ../src/xfdesktop-application.c:804
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr ""
+msgstr "Bygd med GTK+ %d.%d.%d, lenket sammen med GTK+ %d.%d.%d."
 
 #: ../src/xfdesktop-application.c:808
 #, c-format
 msgid "Build options:\n"
-msgstr ""
+msgstr "Kompileringsvalg:\n"
 
 #: ../src/xfdesktop-application.c:809
 #, c-format
@@ -602,7 +603,7 @@ msgstr "    Skrivebordsikoner:       %s\n"
 #: ../src/xfdesktop-application.c:823
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr ""
+msgstr "Skrivebordsikoner for filer: %s\n"
 
 #: ../src/xfdesktop-file-icon-manager.c:522
 #: ../src/xfdesktop-file-icon-manager.c:539
