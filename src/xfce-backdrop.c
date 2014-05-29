@@ -1410,10 +1410,6 @@ xfce_backdrop_image_data_release(XfceBackdropImageData *image_data)
 
     if(image_data->loader)
         g_object_unref(image_data->loader);
-
-    g_free(image_data);
-    image_data = NULL;
-
 }
 
 /**
@@ -1584,6 +1580,7 @@ xfce_backdrop_loader_closed_cb(GdkPixbufLoader *loader,
     /* canceled? quit now */
     if(g_cancellable_is_cancelled(image_data->cancellable)) {
         xfce_backdrop_image_data_release(image_data);
+        g_free(image_data);
         return;
     }
 
@@ -1635,6 +1632,7 @@ xfce_backdrop_loader_closed_cb(GdkPixbufLoader *loader,
 
         backdrop->priv->image_data = NULL;
         xfce_backdrop_image_data_release(image_data);
+        g_free(image_data);
         return;
     }
 
@@ -1732,6 +1730,7 @@ xfce_backdrop_loader_closed_cb(GdkPixbufLoader *loader,
 
     backdrop->priv->image_data = NULL;
     xfce_backdrop_image_data_release(image_data);
+    g_free(image_data);
 }
 
 static void
