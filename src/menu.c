@@ -68,7 +68,7 @@ _start_menu_module(void)
 }
 #endif
 
-#if USE_DESKTOP_MENU
+#ifdef USE_DESKTOP_MENU
 static void
 menu_populate(XfceDesktop *desktop,
               GtkMenuShell *menu,
@@ -116,7 +116,7 @@ menu_populate(XfceDesktop *desktop,
         xfce_desktop_menu_populate_menu(desktop_menu, GTK_WIDGET(menu));
     }
 }
-#endif
+#endif /* USE_DESKTOP_MENU */
 
 #ifdef USE_DESKTOP_MENU
 static void
@@ -174,11 +174,11 @@ menu_init(XfconfChannel *channel)
 void
 menu_attach(XfceDesktop *desktop)
 {
-#if USE_DESKTOP_MENU
+#ifdef USE_DESKTOP_MENU
     DBG("attached default menu");
     g_signal_connect_after(G_OBJECT(desktop), "populate-root-menu",
                            G_CALLBACK(menu_populate), NULL);
-#endif
+#endif /* USE_DESKTOP_MENU */
 }
 
 void
