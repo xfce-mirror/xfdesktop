@@ -877,8 +877,10 @@ xfce_desktop_finalize(GObject *object)
     g_object_unref(G_OBJECT(desktop->priv->channel));
     g_free(desktop->priv->property_prefix);
 
+#ifdef ENABLE_DESKTOP_ICONS
     if(desktop->priv->style_refresh_timer != 0)
         g_source_remove(desktop->priv->style_refresh_timer);
+#endif
 
     G_OBJECT_CLASS(xfce_desktop_parent_class)->finalize(object);
 }
@@ -1237,13 +1239,12 @@ xfce_desktop_delete_event(GtkWidget *w,
     return TRUE;
 }
 
+#ifdef ENABLE_DESKTOP_ICONS
 static gboolean
 style_refresh_cb(gpointer *w)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(w);
-#ifdef ENABLE_DESKTOP_ICONS
     gdouble old_font_size;
-#endif
 
     TRACE("entering");
 
@@ -1262,7 +1263,6 @@ style_refresh_cb(gpointer *w)
 
     gtk_widget_queue_draw(GTK_WIDGET(desktop));
 
-#ifdef ENABLE_DESKTOP_ICONS
     if(!desktop->priv->icon_view || !XFDESKTOP_IS_ICON_VIEW(desktop->priv->icon_view))
         return FALSE;
 
@@ -1277,14 +1277,15 @@ style_refresh_cb(gpointer *w)
         xfdesktop_icon_view_set_font_size(XFDESKTOP_ICON_VIEW(desktop->priv->icon_view),
                                           desktop->priv->system_font_size);
     }
-#endif
 
     return FALSE;
 }
+#endif
 
 static void
 xfce_desktop_style_set(GtkWidget *w, GtkStyle *old_style)
 {
+#ifdef ENABLE_DESKTOP_ICONS
     XfceDesktop *desktop = XFCE_DESKTOP(w);
 
     TRACE("entering");
@@ -1296,6 +1297,7 @@ xfce_desktop_style_set(GtkWidget *w, GtkStyle *old_style)
                                                          (GSourceFunc)style_refresh_cb,
                                                          w,
                                                          NULL);
+#endif
 }
 
 static void
