@@ -1788,6 +1788,7 @@ xfdesktop_icon_view_drag_data_received(GtkWidget *widget,
     }
 }
 
+#ifdef ENABLE_FILE_ICONS
 static gint
 xfdesktop_icon_view_compare_icons(gconstpointer *a,
                                   gconstpointer *b)
@@ -1808,7 +1809,9 @@ xfdesktop_icon_view_compare_icons(gconstpointer *a,
 
     return g_utf8_collate(a_str, b_str);
 }
+#endif /* ENABLE_FILE_ICONS */
 
+#ifdef ENABLE_FILE_ICONS
 static void
 xfdesktop_icon_view_append_icons(XfdesktopIconView *icon_view,
                                  GList *icon_list,
@@ -1835,6 +1838,7 @@ xfdesktop_icon_view_append_icons(XfdesktopIconView *icon_view,
         xfdesktop_icon_view_invalidate_icon(icon_view, l->data, TRUE);
     }
 }
+#endif /* ENABLE_FILE_ICONS */
 
 void
 xfdesktop_icon_view_sort_icons(XfdesktopIconView *icon_view)

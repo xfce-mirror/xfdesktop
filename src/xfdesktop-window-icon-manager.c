@@ -285,9 +285,9 @@ workspace_created_cb(WnckScreen *wnck_screen,
                                                 sizeof(gpointer) * n_ws);
     
     if(ws_num != n_ws - 1) {
-        g_memmove(wmanager->priv->icon_workspaces + ws_num + 1,
-                  wmanager->priv->icon_workspaces + ws_num,
-                  sizeof(gpointer) * (n_ws - ws_num - 1));
+        memmove(wmanager->priv->icon_workspaces + ws_num + 1,
+                wmanager->priv->icon_workspaces + ws_num,
+                sizeof(gpointer) * (n_ws - ws_num - 1));
     }
     
     wmanager->priv->icon_workspaces[ws_num] = g_new0(XfdesktopWindowIconWorkspace,
@@ -314,9 +314,9 @@ workspace_destroyed_cb(WnckScreen *wnck_screen,
     g_free(wmanager->priv->icon_workspaces[ws_num]);
     
     if(ws_num != n_ws) {
-        g_memmove(wmanager->priv->icon_workspaces + ws_num,
-                  wmanager->priv->icon_workspaces + ws_num + 1,
-                  sizeof(gpointer) * (n_ws - ws_num));
+        memmove(wmanager->priv->icon_workspaces + ws_num,
+                wmanager->priv->icon_workspaces + ws_num + 1,
+                sizeof(gpointer) * (n_ws - ws_num));
     }
     
     wmanager->priv->icon_workspaces = g_realloc(wmanager->priv->icon_workspaces,
