@@ -551,11 +551,13 @@ xfdesktop_thumbnailer_thumbnail_ready_dbus(DBusGProxy *proxy,
                     (char*)iter->data,
                     thumbnail_location);
 
-            g_signal_emit(G_OBJECT(thumbnailer),
-                          thumbnailer_signals[THUMBNAIL_READY],
-                          0,
-                          iter->data,
-                          thumbnail_location);
+            if(g_file_test(thumbnail_location, G_FILE_TEST_EXISTS)) {
+                g_signal_emit(G_OBJECT(thumbnailer),
+                              thumbnailer_signals[THUMBNAIL_READY],
+                              0,
+                              iter->data,
+                              thumbnail_location);
+            }
 
             thumbnailer->priv->queue = g_slist_remove(thumbnailer->priv->queue,
                                                       iter->data);
