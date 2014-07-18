@@ -367,6 +367,7 @@ xfdesktop_load_icon_from_desktop_file(XfdesktopRegularFileIcon *regular_icon)
     gchar *contents;
     gsize length;
     GIcon *gicon = NULL;
+    gchar *p;
 
     /* try to load the file into memory */
     if(g_file_load_contents(regular_icon->priv->file, NULL, &contents, &length,
@@ -388,6 +389,12 @@ xfdesktop_load_icon_from_desktop_file(XfdesktopRegularFileIcon *regular_icon)
                 /* icon_name is an absolute path, create it as a file icon */
                 gicon = g_file_icon_new(g_file_new_for_path(icon_name));
             } else if(icon_name) {
+                /* drop any suffix (e.g. '.png') from themed icons */
+                if (!g_path_is_absolute (icon_name)) {
+                    p = strrchr (icon_name, '.');
+                    if (p != NULL)
+                        *p = '\0';
+                }
                 /* otherwise create a themed icon for it */
                 gicon = g_themed_icon_new(icon_name);
             }
