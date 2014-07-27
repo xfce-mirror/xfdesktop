@@ -927,17 +927,21 @@ xfdesktop_file_icon_menu_copy(GtkWidget *widget,
 }
 
 static void
+xfdesktop_file_icon_menu_trash(GtkWidget *widget,
+                               gpointer user_data)
+{
+    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
+
+    xfdesktop_file_icon_manager_delete_selected(fmanager, FALSE);
+}
+
+static void
 xfdesktop_file_icon_menu_delete(GtkWidget *widget,
                                 gpointer user_data)
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
-    GdkModifierType state;
-    gboolean force_delete = FALSE;
-    
-    if(gtk_get_current_event_state(&state) && state & GDK_SHIFT_MASK)
-        force_delete = TRUE;
-    
-    xfdesktop_file_icon_manager_delete_selected(fmanager, force_delete);
+
+    xfdesktop_file_icon_manager_delete_selected(fmanager, TRUE);
 }
 
 static void
@@ -1627,6 +1631,21 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
             if(multi_sel || xfdesktop_file_icon_can_delete_file(file_icon)) {
                 g_signal_connect(G_OBJECT(mi), "activate",
                                  G_CALLBACK(xfdesktop_file_icon_menu_cut),
+                                 fmanager);
+            } else
+                gtk_widget_set_sensitive(mi, FALSE);
+
+            /* Trash */
+            mi = gtk_image_menu_item_new_with_mnemonic(_("Mo_ve to Trash"));
+            /* Add the trashcan image */
+            img = gtk_image_new_from_icon_name("user-trash", GTK_ICON_SIZE_MENU);
+            gtk_widget_show(img);
+            gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+            gtk_widget_show(mi);
+            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+            if(multi_sel || xfdesktop_file_icon_can_delete_file(file_icon)) {
+                g_signal_connect(G_OBJECT(mi), "activate",
+                                 G_CALLBACK(xfdesktop_file_icon_menu_trash),
                                  fmanager);
             } else
                 gtk_widget_set_sensitive(mi, FALSE);
