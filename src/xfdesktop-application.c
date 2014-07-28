@@ -88,6 +88,10 @@ static void cb_xfdesktop_application_arrange(GAction  *action,
                                              GVariant *parameter,
                                              gpointer  data);
 
+static void cb_xfdesktop_application_debug(GAction  *action,
+                                           GVariant *parameter,
+                                           gpointer  data);
+
 static gboolean cb_wait_for_window_manager(gpointer data);
 static void     cb_wait_for_window_manager_destroyed(gpointer data);
 
@@ -197,6 +201,12 @@ xfdesktop_application_init(XfdesktopApplication *app)
     /* arrange action */
     action = g_simple_action_new("arrange", NULL);
     g_signal_connect(action, "activate", G_CALLBACK(cb_xfdesktop_application_arrange), app);
+    xfdesktop_application_add_action(app, G_ACTION(action));
+    g_object_unref(action);
+
+    /* debug action, parameter toggles debug state */
+    action = g_simple_action_new("debug", G_VARIANT_TYPE_BOOLEAN);
+    g_signal_connect(action, "activate", G_CALLBACK(cb_xfdesktop_application_debug), app);
     xfdesktop_application_add_action(app, G_ACTION(action));
     g_object_unref(action);
 
@@ -497,6 +507,26 @@ cb_xfdesktop_application_arrange(GAction  *action,
     xfce_desktop_arrange_icons(XFCE_DESKTOP(app->desktops[screen_num]));
 }
 
+/* parameter is a boolean that determines whether to enable or disable the
+ * debug messages */
+static void
+cb_xfdesktop_application_debug(GAction  *action,
+                               GVariant *parameter,
+                               gpointer  data)
+{
+    TRACE("entering");
+
+    /* sanity checks */
+    if(!data || !XFDESKTOP_IS_APPLICATION(data))
+        return;
+
+    if(!g_variant_is_of_type(parameter, G_VARIANT_TYPE_BOOLEAN))
+        return;
+
+    /* Toggle the debug state */
+    xfdesktop_debug_set(g_variant_get_boolean(parameter));
+}
+
 /* Cleans up the associated wait for wm resources */
 static void
 wait_for_window_manager_cleanup(WaitForWM *wfwm)
@@ -523,7 +553,7 @@ cb_wait_for_window_manager(gpointer data)
 
     for(i = 0; i < wfwm->atom_count; i++) {
         if(XGetSelectionOwner(wfwm->dpy, wfwm->atoms[i]) == None) {
-            DBG("window manager not ready on screen %d", i);
+            XF_DEBUG("window manager not ready on screen %d", i);
             have_wm = FALSE;
             break;
         }
@@ -557,7 +587,7 @@ cb_wait_for_window_manager_destroyed(gpointer data)
         g_printerr("No window manager registered on screen 0. "
                    "To start the xfdesktop without this check, run with --disable-wm-check.\n");
     } else {
-        DBG("found window manager after %d tries", wfwm->counter);
+        XF_DEBUG("found window manager after %d tries", wfwm->counter);
     }
 
     /* start loading the desktop, hopefully a window manager is found, but it
@@ -763,6 +793,8 @@ xfdesktop_application_local_command_line(GApplication *g_application,
     gboolean opt_windowlist = FALSE;
     gboolean opt_arrange = FALSE;
     gboolean opt_quit = FALSE;
+    gboolean opt_enable_debug = FALSE;
+    gboolean opt_disable_debug = FALSE;
     gboolean option_set = FALSE;
     const GOptionEntry main_entries[] = {
         { "version", 'V', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_version, N_("Display version information"), NULL },
@@ -772,6 +804,8 @@ xfdesktop_application_local_command_line(GApplication *g_application,
 #ifdef ENABLE_FILE_ICONS
         { "arrange", 'A', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_arrange, N_("Automatically arrange all the icons on the desktop"), NULL },
 #endif
+        { "enable-debug", 'e', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_enable_debug, N_("Enable debug messages"), NULL },
+        { "disable-debug", 'd', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_disable_debug, N_("Disable debug messages"), NULL },
         { "disable-wm-check", 'D', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &app->opt_disable_wm_check, N_("Do not wait for a window manager on startup"), NULL },
         { "quit", 'Q', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_quit, N_("Cause xfdesktop to quit"), NULL },
         { NULL, 0, 0, 0, NULL, NULL, NULL }
@@ -852,6 +886,14 @@ xfdesktop_application_local_command_line(GApplication *g_application,
         option_set = TRUE;
     } else if(opt_arrange) {
         g_action_group_activate_action(G_ACTION_GROUP(g_application), "arrange", NULL);
+        option_set = TRUE;
+    } else if(opt_enable_debug) {
+        g_action_group_activate_action(G_ACTION_GROUP(g_application), "debug",
+                                       g_variant_new_boolean(TRUE));
+        option_set = TRUE;
+    } else if(opt_disable_debug) {
+        g_action_group_activate_action(G_ACTION_GROUP(g_application), "debug",
+                                       g_variant_new_boolean(FALSE));
         option_set = TRUE;
     }
 

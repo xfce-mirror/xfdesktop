@@ -199,7 +199,7 @@ xfce_desktop_ensure_system_font_size(XfceDesktop *desktop)
         DBG("dividing by PANGO_SCALE");
         desktop->priv->system_font_size /= PANGO_SCALE;
     }
-    DBG("system font size is %.05f", desktop->priv->system_font_size);
+    XF_DEBUG("system font size is %.05f", desktop->priv->system_font_size);
     
     g_free(font_name);
     pango_font_description_free(pfd);
@@ -391,7 +391,7 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
 #ifdef G_ENABLE_DEBUG
     monitor_name = gdk_screen_get_monitor_plug_name(gscreen, monitor);
 
-    DBG("backdrop changed for workspace %d, monitor %d (%s)", current_workspace, monitor, monitor_name);
+    XF_DEBUG("backdrop changed for workspace %d, monitor %d (%s)", current_workspace, monitor, monitor_name);
 
     g_free(monitor_name);
 #endif
@@ -416,12 +416,12 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
 
         rect.width = gdk_screen_get_width(gscreen);
         rect.height = gdk_screen_get_height(gscreen);
-        DBG("xinerama_stretch x %d, y %d, width %d, height %d",
-            rect.x, rect.y, rect.width, rect.height);
+        XF_DEBUG("xinerama_stretch x %d, y %d, width %d, height %d",
+                 rect.x, rect.y, rect.width, rect.height);
     } else {
         gdk_screen_get_monitor_geometry(gscreen, monitor, &rect);
-        DBG("monitor x %d, y %d, width %d, height %d",
-            rect.x, rect.y, rect.width, rect.height);
+        XF_DEBUG("monitor x %d, y %d, width %d, height %d",
+                 rect.x, rect.y, rect.width, rect.height);
     }
 
     xfce_backdrop_set_size(backdrop, rect.width, rect.height);
@@ -430,8 +430,8 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
        && !xfce_workspace_get_xinerama_stretch(desktop->priv->workspaces[current_workspace])) {
         clip_region = gdk_region_rectangle(&rect);
 
-        DBG("clip_region: x: %d, y: %d, w: %d, h: %d",
-            rect.x, rect.y, rect.width, rect.height);
+        XF_DEBUG("clip_region: x: %d, y: %d, w: %d, h: %d",
+                 rect.x, rect.y, rect.width, rect.height);
 
         /* If we are not monitor 0 on a multi-monitor setup we need to subtract
          * all the previous monitor regions so we don't draw over them. This
@@ -442,9 +442,9 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
             GdkRegion *previous_region;
             gdk_screen_get_monitor_geometry(gscreen, i, &previous_monitor);
 
-            DBG("previous_monitor: x: %d, y: %d, w: %d, h: %d",
-                previous_monitor.x, previous_monitor.y,
-                previous_monitor.width, previous_monitor.height);
+            XF_DEBUG("previous_monitor: x: %d, y: %d, w: %d, h: %d",
+                     previous_monitor.x, previous_monitor.y,
+                     previous_monitor.width, previous_monitor.height);
 
             previous_region = gdk_region_rectangle(&previous_monitor);
 
@@ -457,8 +457,8 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     if(clip_region != NULL) {
         /* Update the area to redraw to limit the icons/area painted */
         gdk_region_get_clipbox(clip_region, &rect);
-        DBG("area to update: x: %d, y: %d, w: %d, h: %d",
-            rect.x, rect.y, rect.width, rect.height);
+        XF_DEBUG("area to update: x: %d, y: %d, w: %d, h: %d",
+                 rect.x, rect.y, rect.width, rect.height);
     }
 
     if(rect.width != 0 && rect.height != 0) {
@@ -619,8 +619,8 @@ workspace_changed_cb(WnckScreen *wnck_screen,
 
     desktop->priv->current_workspace = new_workspace;
 
-    DBG("current_workspace %d, new_workspace %d",
-        current_workspace, new_workspace);
+    XF_DEBUG("current_workspace %d, new_workspace %d",
+             current_workspace, new_workspace);
 
     for(i = 0; i < xfce_desktop_get_n_monitors(desktop); i++) {
         backdrop = xfce_workspace_get_backdrop(desktop->priv->workspaces[new_workspace], i);
@@ -1358,9 +1358,9 @@ xfce_desktop_get_current_workspace(XfceDesktop *desktop)
         current_workspace = workspace_num;
     }
 
-    DBG("workspace_num %d, single_workspace_num %d, current_workspace %d, max workspaces %d",
-        workspace_num, desktop->priv->single_workspace_num, current_workspace,
-        desktop->priv->nworkspaces);
+    XF_DEBUG("workspace_num %d, single_workspace_num %d, current_workspace %d, max workspaces %d",
+             workspace_num, desktop->priv->single_workspace_num, current_workspace,
+             desktop->priv->nworkspaces);
 
     return current_workspace;
 }

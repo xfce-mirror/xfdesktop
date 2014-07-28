@@ -1631,7 +1631,7 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
         if(target == GDK_NONE)
             return FALSE;
     }
-    DBG("target=%ld (%s)", (glong)target, gdk_atom_name(target));
+    XF_DEBUG("target=%ld (%s)", (glong)target, gdk_atom_name(target));
     
     xfdesktop_xy_to_rowcol(icon_view, x, y, &row, &col);
     icon_on_dest = xfdesktop_icon_view_icon_in_cell(icon_view, row, col);
@@ -1704,7 +1704,7 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
             xfdesktop_icon_view_invalidate_icon(icon_view, l->data, TRUE);
         }
         
-        DBG("drag succeeded");
+        XF_DEBUG("drag succeeded");
         
         gtk_drag_finish(context, TRUE, FALSE, time_);
     } else {
@@ -1921,13 +1921,13 @@ xfdesktop_icon_view_style_set(GtkWidget *widget,
         icon_view->priv->shadow_color->blue  ^= 0xffff;
     }
 
-    DBG("label alpha is %d\n",   (gint)(icon_view->priv->label_alpha));
-    DBG("shadow x offset is %d\n", (gint)(icon_view->priv->shadow_x_offset));
-    DBG("shadow y offset is %d\n", (gint)(icon_view->priv->shadow_y_offset));
+    XF_DEBUG("label alpha is %d\n",   (gint)(icon_view->priv->label_alpha));
+    XF_DEBUG("shadow x offset is %d\n", (gint)(icon_view->priv->shadow_x_offset));
+    XF_DEBUG("shadow y offset is %d\n", (gint)(icon_view->priv->shadow_y_offset));
 #if defined(DEBUG) && (DEBUG > 0)
     {
         gchar *color = gdk_color_to_string(icon_view->priv->shadow_color);
-        DBG("shadow color is %s\n", color);
+        XF_DEBUG("shadow color is %s\n", color);
         g_free(color);
     }
 #endif
@@ -1947,16 +1947,16 @@ xfdesktop_icon_view_style_set(GtkWidget *widget,
         icon_view->priv->selected_shadow_color->blue  ^= 0xffff;
     }
 
-    DBG("selected label alpha is %d\n",
-        (gint)(icon_view->priv->selected_label_alpha));
-    DBG("selected shadow x offset is %d\n",
-        (gint)(icon_view->priv->selected_shadow_x_offset));
-    DBG("selected shadow y offset is %d\n",
-        (gint)(icon_view->priv->selected_shadow_y_offset));
+    XF_DEBUG("selected label alpha is %d\n",
+             (gint)(icon_view->priv->selected_label_alpha));
+    XF_DEBUG("selected shadow x offset is %d\n",
+             (gint)(icon_view->priv->selected_shadow_x_offset));
+    XF_DEBUG("selected shadow y offset is %d\n",
+             (gint)(icon_view->priv->selected_shadow_y_offset));
 #if defined(DEBUG) && (DEBUG > 0)
     {
         gchar *color = gdk_color_to_string(icon_view->priv->selected_shadow_color);
-        DBG("shadow color is %s\n", color);
+        XF_DEBUG("shadow color is %s\n", color);
         g_free(color);
     }
 #endif
@@ -1970,12 +1970,12 @@ xfdesktop_icon_view_style_set(GtkWidget *widget,
                          "label-radius", &icon_view->priv->label_radius,
                          NULL);
 
-    DBG("cell spacing is %d", icon_view->priv->cell_spacing);
-    DBG("cell padding is %d", icon_view->priv->cell_padding);
-    DBG("cell text width proportion is %f", icon_view->priv->cell_text_width_proportion);
-    DBG("ellipsize icon label is %s", icon_view->priv->ellipsize_icon_labels?"true":"false");
-    DBG("tooltip size is %d", icon_view->priv->tooltip_size_from_style);
-    DBG("label radius is %f", icon_view->priv->label_radius);
+    XF_DEBUG("cell spacing is %d", icon_view->priv->cell_spacing);
+    XF_DEBUG("cell padding is %d", icon_view->priv->cell_padding);
+    XF_DEBUG("cell text width proportion is %f", icon_view->priv->cell_text_width_proportion);
+    XF_DEBUG("ellipsize icon label is %s", icon_view->priv->ellipsize_icon_labels?"true":"false");
+    XF_DEBUG("tooltip size is %d", icon_view->priv->tooltip_size_from_style);
+    XF_DEBUG("label radius is %f", icon_view->priv->label_radius);
 
     if(icon_view->priv->selection_box_color) {
         gdk_color_free(icon_view->priv->selection_box_color);
@@ -2714,8 +2714,8 @@ xfdesktop_setup_grids(XfdesktopIconView *icon_view)
         return;
     }
 
-    DBG("CELL_SIZE=%0.3f, TEXT_WIDTH=%0.3f, ICON_SIZE=%u", CELL_SIZE, TEXT_WIDTH, ICON_SIZE);
-    DBG("grid size is %dx%d", icon_view->priv->nrows, icon_view->priv->ncols);
+    XF_DEBUG("CELL_SIZE=%0.3f, TEXT_WIDTH=%0.3f, ICON_SIZE=%u", CELL_SIZE, TEXT_WIDTH, ICON_SIZE);
+    XF_DEBUG("grid size is %dx%d", icon_view->priv->nrows, icon_view->priv->ncols);
 
     if(icon_view->priv->grid_layout) {
         icon_view->priv->grid_layout = g_realloc(icon_view->priv->grid_layout,
@@ -2728,7 +2728,7 @@ xfdesktop_setup_grids(XfdesktopIconView *icon_view)
     } else
         icon_view->priv->grid_layout = g_malloc0(new_size);
     
-    DBG("created grid_layout with %lu positions", (gulong)(new_size/sizeof(gpointer)));
+    XF_DEBUG("created grid_layout with %lu positions", (gulong)(new_size/sizeof(gpointer)));
     DUMP_GRID_LAYOUT(icon_view);
     
     xfdesktop_icon_view_setup_grids_xinerama(icon_view);
@@ -2745,7 +2745,7 @@ xfdesktop_rootwin_watch_workarea(GdkXEvent *gxevent,
     if(xevt->type == PropertyNotify
        && XInternAtom(xevt->display, "_NET_WORKAREA", False) == xevt->atom)
     {
-        DBG("got _NET_WORKAREA change on rootwin!");
+        XF_DEBUG("got _NET_WORKAREA change on rootwin!");
         if(icon_view->priv->grid_resize_timeout) {
             g_source_remove(icon_view->priv->grid_resize_timeout);
             icon_view->priv->grid_resize_timeout = 0;
@@ -3281,8 +3281,8 @@ xfdesktop_move_all_cached_icons_to_desktop(XfdesktopIconView *icon_view)
                                                             &row,
                                                             &col))
         {
-            DBG("icon %s setting position row%dxcol%d",
-                xfdesktop_icon_peek_label(icon), row, col);
+            XF_DEBUG("icon %s setting position row%dxcol%d",
+                     xfdesktop_icon_peek_label(icon), row, col);
 
             /* Make sure the spot is available */
             if(xfdesktop_grid_is_free_position(icon_view, row, col)) {
@@ -3323,8 +3323,8 @@ xfdesktop_move_all_previous_icons_to_desktop(XfdesktopIconView *icon_view)
         }
 
         if(xfdesktop_grid_is_free_position(icon_view, row, col)) {
-            DBG("adding icon %s position row %d x col %d",
-                xfdesktop_icon_peek_label(icon), row, col);
+            XF_DEBUG("adding icon %s position row %d x col %d",
+                     xfdesktop_icon_peek_label(icon), row, col);
             xfdesktop_icon_view_add_item_internal(icon_view, icon);
         } else {
             leftovers = g_list_prepend(leftovers, icon);
@@ -3798,11 +3798,11 @@ xfdesktop_icon_view_icon_find_position(XfdesktopIconView *icon_view,
        || !xfdesktop_grid_is_free_position(icon_view, row, col))
     {
         if(xfdesktop_grid_get_next_free_position(icon_view, &row, &col)) {
-            DBG("old position didn't exist or isn't free, got (%d,%d) instead",
-                row, col);
+            XF_DEBUG("old position didn't exist or isn't free, got (%d,%d) instead",
+                     row, col);
             xfdesktop_icon_set_position(icon, row, col);
         } else {
-            DBG("can't fit icon on screen");
+            XF_DEBUG("can't fit icon on screen");
             return FALSE;
         }
     }

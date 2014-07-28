@@ -192,3 +192,42 @@ xfdesktop_popup_keyboard_grab_available(GdkWindow *win)
 
     return timestamp;
 }
+
+
+#ifdef G_ENABLE_DEBUG
+/* With --enable-debug=full turn on debugging messages from the start */
+static gboolean enable_debug = TRUE;
+#else
+static gboolean enable_debug = FALSE;
+#endif /* G_ENABLE_DEBUG */
+
+#if defined(G_HAVE_ISO_VARARGS)
+void
+xfdesktop_debug(const char *func, const char *file, int line, const char *format, ...)
+{
+    va_list args;
+
+    if(!enable_debug)
+        return;
+
+    va_start(args, format);
+
+    fprintf(stdout, "DBG[%s:%d] %s(): ", file, line, func);
+    vfprintf(stdout, format, args);
+    fprintf(stdout, "\n");
+
+    va_end(args);
+}
+#endif /* defined(G_HAVE_ISO_VARARGS) */
+
+/**
+ * xfdesktop_debug_set:
+ * debug: TRUE to turn on the XF_DEBUG mesages.
+ */
+void
+xfdesktop_debug_set(gboolean debug)
+{
+    enable_debug = debug;
+    if(enable_debug)
+        XF_DEBUG("debugging enabled");
+}

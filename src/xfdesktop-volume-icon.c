@@ -962,7 +962,7 @@ volume_icon_changed_timeout(XfdesktopVolumeIcon *volume_icon)
 
     g_return_val_if_fail(XFDESKTOP_IS_VOLUME_ICON(volume_icon), FALSE);
 
-    DBG("TIMEOUT");
+    XF_DEBUG("TIMEOUT");
 
     /* reset the icon's mount point information */
     if(volume_icon->priv->file) {
@@ -1004,7 +1004,7 @@ volume_icon_changed_timeout(XfdesktopVolumeIcon *volume_icon)
         mounted_after = TRUE;
     }
 
-    DBG("MOUNTED BEFORE: %d, MOUNTED AFTER: %d", mounted_before, mounted_after);
+    XF_DEBUG("MOUNTED BEFORE: %d, MOUNTED AFTER: %d", mounted_before, mounted_after);
 
     if(mounted_before != mounted_after) {
         /* invalidate the tooltip */
@@ -1029,7 +1029,7 @@ volume_icon_changed_timeout(XfdesktopVolumeIcon *volume_icon)
             volume_icon->priv->changed_timeout_id = 0;
             return FALSE;
         } else {
-            DBG("TRY AGAIN");
+            XF_DEBUG("TRY AGAIN");
             return TRUE;
         }
     }
@@ -1042,7 +1042,7 @@ xfdesktop_volume_icon_changed(GVolume *volume,
     g_return_if_fail(G_IS_VOLUME(volume));
     g_return_if_fail(XFDESKTOP_IS_VOLUME_ICON(volume_icon));
 
-    DBG("VOLUME CHANGED");
+    XF_DEBUG("VOLUME CHANGED");
 
     /**
      * NOTE: We use a timeout here to check if the volume is 

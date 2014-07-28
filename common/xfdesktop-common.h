@@ -32,6 +32,8 @@
 
 #include <X11/Xlib.h>
 
+#include <stdarg.h>
+
 #define XFDESKTOP_CHANNEL        "xfce4-desktop"
 #define DEFAULT_BACKDROP         DATADIR "/backgrounds/xfce/xfce-blue.jpg"
 #define DEFAULT_ICON_FONT_SIZE   12
@@ -96,6 +98,21 @@ gchar *xfdesktop_get_file_mimetype(const gchar *file);
 gint xfce_translate_image_styles(gint input);
 
 guint32 xfdesktop_popup_keyboard_grab_available(GdkWindow *win);
+
+
+#if defined(G_HAVE_ISO_VARARGS)
+
+#define XF_DEBUG(...) xfdesktop_debug (__func__, __FILE__, __LINE__, __VA_ARGS__)
+
+void xfdesktop_debug(const char *func, const char *file, int line, const char *format, ...) __attribute__((format (printf,4,5)));
+
+#else /* defined(G_HAVE_ISO_VARARGS) */
+
+#define XF_DEBUG(...)
+
+#endif /* defined(G_HAVE_ISO_VARARGS) */
+
+void xfdesktop_debug_set(gboolean debug);
 
 G_END_DECLS
 

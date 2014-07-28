@@ -281,7 +281,7 @@ xfdesktop_thumbnailer_is_supported(XfdesktopThumbnailer *thumbnailer,
     mime_type = xfdesktop_get_file_mimetype(file);
 
     if(mime_type == NULL) {
-        DBG("File %s has no mime type", file);
+        XF_DEBUG("File %s has no mime type", file);
         return FALSE;
     }
 
@@ -315,7 +315,7 @@ xfdesktop_thumbnailer_queue_thumbnail(XfdesktopThumbnailer *thumbnailer,
     g_return_val_if_fail(file != NULL, FALSE);
 
     if(!xfdesktop_thumbnailer_is_supported(thumbnailer, file)) {
-        DBG("file: %s not supported", file);
+        XF_DEBUG("file: %s not supported", file);
         return FALSE;
     }
     if(thumbnailer->priv->request_timer_id) {

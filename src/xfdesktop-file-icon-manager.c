@@ -1786,7 +1786,7 @@ xfdesktop_file_icon_manager_save_icons(gpointer user_data)
     if(!path)
         return FALSE;
 
-    DBG("saving to: %s", path);
+    XF_DEBUG("saving to: %s", path);
 
     tmppath = g_strconcat(path, ".new", NULL);
     
@@ -1821,7 +1821,7 @@ xfdesktop_file_icon_manager_save_icons(gpointer user_data)
             unlink(tmppath);
         }
     } else {
-        DBG("didn't write anything in the RC file, desktop is probably empty");
+        XF_DEBUG("didn't write anything in the RC file, desktop is probably empty");
     }
     
     g_free(path);
@@ -2016,14 +2016,14 @@ xfdesktop_file_icon_manager_add_icon(XfdesktopFileIconManager *fmanager,
      * to the front of the pending icon queue, if it didn't then we place it
      * on the end */
     if(row >= 0 && col >= 0) {
-        DBG("attempting to set icon '%s' to position (%d,%d)", name, row, col);
+        XF_DEBUG("attempting to set icon '%s' to position (%d,%d)", name, row, col);
         xfdesktop_icon_set_position(XFDESKTOP_ICON(icon), row, col);
         g_queue_push_head(fmanager->priv->pending_icons, icon);
     } else if(xfdesktop_file_icon_manager_get_cached_icon_position(fmanager,
                                                                    name, identifier,
                                                                    &row, &col))
     {
-        DBG("attempting to set icon '%s' to position (%d,%d)", name, row, col);
+        XF_DEBUG("attempting to set icon '%s' to position (%d,%d)", name, row, col);
         xfdesktop_icon_set_position(XFDESKTOP_ICON(icon), row, col);
         g_queue_push_head(fmanager->priv->pending_icons, icon);
     } else {
@@ -2061,7 +2061,7 @@ xfdesktop_file_icon_manager_remove_icon(XfdesktopFileIconManager *fmanager,
     if(item && item->data && XFDESKTOP_IS_FILE_ICON(item->data)) {
         gchar *filename = g_file_get_path(xfdesktop_file_icon_peek_file(item->data));
 
-        DBG("removing %s from pending queue", filename);
+        XF_DEBUG("removing %s from pending queue", filename);
 
         /* Icon was pending creation, dequeue the thumbnail and
          * remove it from the pending icons queue */
@@ -2072,7 +2072,7 @@ xfdesktop_file_icon_manager_remove_icon(XfdesktopFileIconManager *fmanager,
 
         g_free(filename);
     } else {
-        DBG("removing icon %s from icon view", xfdesktop_icon_peek_label(XFDESKTOP_ICON(icon)));
+        XF_DEBUG("removing icon %s from icon view", xfdesktop_icon_peek_label(XFDESKTOP_ICON(icon)));
         /* Remove the icon from the icon_view */
         xfdesktop_icon_view_remove_item(fmanager->priv->icon_view,
                                         XFDESKTOP_ICON(icon));
@@ -2403,7 +2403,7 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
 
     switch(event) {
         case G_FILE_MONITOR_EVENT_MOVED:
-            DBG("got a moved event");
+            XF_DEBUG("got a moved event");
 
             icon = g_hash_table_lookup(fmanager->priv->icons, file);
 
@@ -2416,7 +2416,7 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
                     /* Failed to get position... not supported? */
                     row = col = 0;
                 }
-                DBG("row %d, col %d", row, col);
+                XF_DEBUG("row %d, col %d", row, col);
 
                 /* Remove the old icon */
                 xfdesktop_file_icon_manager_remove_icon(fmanager, icon);
@@ -2433,13 +2433,13 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
                     /* Failed to get position... not supported? */
                     row = col = 0;
                 }
-                DBG("row %d, col %d", row, col);
+                XF_DEBUG("row %d, col %d", row, col);
 
                 xfdesktop_file_icon_manager_remove_icon(fmanager, moved_icon);
             }
 
             if(xfdesktop_compare_paths(g_file_get_parent(other_file), fmanager->priv->folder)) {
-                DBG("icon moved off the desktop");
+                XF_DEBUG("icon moved off the desktop");
                 /* Nothing moved, this is actually a delete */
                 if(file_info)
                     g_object_unref(file_info);
@@ -2470,7 +2470,7 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
             break;
         case G_FILE_MONITOR_EVENT_ATTRIBUTE_CHANGED:
         case G_FILE_MONITOR_EVENT_CHANGES_DONE_HINT:
-            DBG("got changed event");
+            XF_DEBUG("got changed event");
 
             icon = g_hash_table_lookup(fmanager->priv->icons, file);
             if(icon) {
@@ -2488,7 +2488,7 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
             }
             break;
         case G_FILE_MONITOR_EVENT_CREATED:
-            DBG("got created event");
+            XF_DEBUG("got created event");
 
             /* make sure it's not the desktop folder itself */
             if(g_file_equal(fmanager->priv->folder, file))
@@ -2518,7 +2518,7 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
             }
             break;
         case G_FILE_MONITOR_EVENT_DELETED:
-            DBG("got deleted event");
+            XF_DEBUG("got deleted event");
 
             filename = g_file_get_path(file);
 
@@ -2552,7 +2552,7 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
                 g_hash_table_remove(fmanager->priv->icons, file);
             } else {
                 if(g_file_equal(file, fmanager->priv->folder)) {
-                    DBG("~/Desktop disappeared!");
+                    XF_DEBUG("~/Desktop disappeared!");
                     /* yes, refresh before and after is correct */
                     xfdesktop_file_icon_manager_refresh_icons(fmanager);
                     xfdesktop_file_icon_manager_check_create_desktop_folder(fmanager->priv->folder);
@@ -3442,8 +3442,8 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
         }
     }
     
-    DBG("finishing drop on desktop from external source: drop_ok=%s, copy_only=%s",
-        drop_ok?"TRUE":"FALSE", copy_only?"TRUE":"FALSE");
+    XF_DEBUG("finishing drop on desktop from external source: drop_ok=%s, copy_only=%s",
+             drop_ok?"TRUE":"FALSE", copy_only?"TRUE":"FALSE");
     
     gtk_drag_finish(context, drop_ok, !copy_only, time_);
 }

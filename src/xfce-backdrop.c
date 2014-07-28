@@ -487,7 +487,7 @@ xfce_backdrop_choose_chronological(XfceBackdrop *backdrop)
     /* Figure out which image to display based on what time of day it is
      * and how many images we have to work with */
     epoch = (gdouble)g_date_time_get_hour(datetime) / (24.0f / MIN(n_items, 24.0f));
-    DBG("epoch %d, hour %d, items %d", epoch, g_date_time_get_hour(datetime), n_items);
+    XF_DEBUG("epoch %d, hour %d, items %d", epoch, g_date_time_get_hour(datetime), n_items);
 
     new_file = g_list_nth(backdrop->priv->image_files, epoch);
 
@@ -1147,7 +1147,7 @@ xfce_backdrop_timer(XfceBackdrop *backdrop)
         /* remove old timer first */
         xfce_backdrop_remove_backdrop_timer(backdrop);
 
-        DBG("calling g_timeout_add_seconds, interval is %d", cycle_interval);
+        XF_DEBUG("calling g_timeout_add_seconds, interval is %d", cycle_interval);
         backdrop->priv->cycle_timer_id = g_timeout_add_seconds(cycle_interval,
                                                                (GSourceFunc)xfce_backdrop_timer,
                                                                backdrop);
@@ -1239,7 +1239,7 @@ xfce_backdrop_set_cycle_timer(XfceBackdrop *backdrop, guint cycle_timer)
             }
 
         if(cycle_interval != 0) {
-            DBG("calling g_timeout_add_seconds, interval is %d", cycle_interval);
+            XF_DEBUG("calling g_timeout_add_seconds, interval is %d", cycle_interval);
             backdrop->priv->cycle_timer_id = g_timeout_add_seconds(cycle_interval,
                                                                    (GSourceFunc)xfce_backdrop_timer,
                                                                    backdrop);
@@ -1474,7 +1474,7 @@ xfce_backdrop_generate_async(XfceBackdrop *backdrop)
     else
         image_path = DEFAULT_BACKDROP;
 
-    DBG("loading image %s", image_path);
+    XF_DEBUG("loading image %s", image_path);
 
     file = g_file_new_for_path(image_path);
 
@@ -1625,7 +1625,7 @@ xfce_backdrop_loader_closed_cb(GdkPixbufLoader *loader,
 
     /* no image and not canceled? return just the canvas */
     if(!image && !g_cancellable_is_cancelled(image_data->cancellable)) {
-        DBG("image failed to load, displaying canvas only");
+        XF_DEBUG("image failed to load, displaying canvas only");
         backdrop->priv->pix = final_image;
 
         g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_READY], 0);

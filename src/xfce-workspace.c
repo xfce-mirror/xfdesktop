@@ -162,7 +162,7 @@ xfce_workspace_set_xfconf_property_string(XfceWorkspace *workspace,
         g_free(monitor_name);
     }
 
-    DBG("setting %s to %s", buf, value);
+    XF_DEBUG("setting %s to %s", buf, value);
 
     xfconf_channel_set_string(channel, buf, value);
 }
@@ -220,7 +220,7 @@ xfce_workspace_change_backdrop(XfceWorkspace *workspace,
     for(i = 0; i < workspace->priv->nbackdrops; ++i) {
         if(backdrop == workspace->priv->backdrops[i]) {
             monitor_num = i;
-            DBG("monitor_num %d", monitor_num);
+            XF_DEBUG("monitor_num %d", monitor_num);
             break;
         }
     }
@@ -324,7 +324,7 @@ xfce_workspace_monitors_changed(XfceWorkspace *workspace,
     workspace->priv->nbackdrops = n_monitors;
 
     for(i = 0; i < n_monitors; ++i) {
-        DBG("Adding workspace %d backdrop %d", workspace->priv->workspace_num, i);
+        XF_DEBUG("Adding workspace %d backdrop %d", workspace->priv->workspace_num, i);
 
         workspace->priv->backdrops[i] = xfce_backdrop_new(vis);
         xfce_workspace_connect_backdrop_settings(workspace,
@@ -515,7 +515,7 @@ xfce_workspace_migrate_backdrop_image(XfceWorkspace *workspace,
     /* Try to lookup the old backdrop */
     xfconf_channel_get_property(channel, buf, &value);
 
-    DBG("looking at %s", buf);
+    XF_DEBUG("looking at %s", buf);
 
     /* Either there was a backdrop to migrate from or we use the backdrop
      * we provide as a default */
@@ -613,7 +613,7 @@ xfce_workspace_connect_backdrop_settings(XfceWorkspace *workspace,
     }
     pp_len = strlen(buf);
 
-    DBG("prefix string: %s", buf);
+    XF_DEBUG("prefix string: %s", buf);
 
     g_strlcat(buf, "color-style", sizeof(buf));
     if(!xfconf_channel_has_property(channel, buf)) {
