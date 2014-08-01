@@ -1358,6 +1358,20 @@ xfce_backdrop_get_random_order(XfceBackdrop *backdrop)
     return backdrop->priv->random_backdrop_order;
 }
 
+void
+xfce_backdrop_force_cycle(XfceBackdrop *backdrop)
+{
+    g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
+
+    TRACE("entering");
+
+    /* force it to update */
+    xfce_backdrop_cycle_backdrop(backdrop);
+
+    /* Update the timer, if running */
+    xfce_backdrop_timer(backdrop);
+}
+
 /* Generates the background that will either be displayed or will have the
  * image drawn on top of */
 static GdkPixbuf *

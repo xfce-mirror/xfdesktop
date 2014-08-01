@@ -1668,8 +1668,9 @@ xfce_desktop_popup_secondary_root_menu(XfceDesktop *desktop,
     xfce_desktop_do_menu_popup(desktop, button, activate_time,
                                signals[SIG_POPULATE_SECONDARY_ROOT_MENU]);
 }
+
 void
-xfce_desktop_refresh(XfceDesktop *desktop)
+xfce_desktop_refresh(XfceDesktop *desktop, gboolean advance_wallpaper)
 {
     gint i, current_workspace;
 
@@ -1692,8 +1693,18 @@ xfce_desktop_refresh(XfceDesktop *desktop)
 
         backdrop = xfce_workspace_get_backdrop(desktop->priv->workspaces[current_workspace], i);
 
-        backdrop_changed_cb(backdrop, desktop);
+        if(advance_wallpaper) {
+            /* We need to trigger a new wallpaper event */
+            xfce_backdrop_force_cycle(backdrop);
+        } else {
+            /* Fake a changed event so we redraw the wallpaper */
+            backdrop_changed_cb(backdrop, desktop);
+        }
     }
+
+    /* If we're only advancing the wallpaper we can exit here */
+    if(advance_wallpaper)
+        return;
 
 #ifdef ENABLE_DESKTOP_ICONS
     /* reload icon view */

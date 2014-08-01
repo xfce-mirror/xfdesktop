@@ -143,11 +143,12 @@ void xfce_backdrop_set_random_order      (XfceBackdrop *backdrop,
                                           gboolean random_order);
 gboolean xfce_backdrop_get_random_order  (XfceBackdrop *backdrop);
 
+void xfce_backdrop_force_cycle           (XfceBackdrop *backdrop);
+
 
 GdkPixbuf *xfce_backdrop_get_pixbuf      (XfceBackdrop *backdrop);
 
 void xfce_backdrop_generate_async        (XfceBackdrop *backdrop);
-
 
 G_END_DECLS
 

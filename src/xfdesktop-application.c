@@ -73,6 +73,10 @@ static void cb_xfdesktop_application_reload(GAction  *action,
                                             GVariant *parameter,
                                             gpointer  data);
 
+static void cb_xfdesktop_application_next(GAction  *action,
+                                          GVariant *parameter,
+                                          gpointer  data);
+
 static void xfdesktop_handle_quit_signals(gint sig, gpointer user_data);
 static void cb_xfdesktop_application_quit(GAction  *action,
                                           GVariant *parameter,
@@ -183,6 +187,12 @@ xfdesktop_application_init(XfdesktopApplication *app)
     /* reload action */
     action = g_simple_action_new("reload", NULL);
     g_signal_connect(action, "activate", G_CALLBACK(cb_xfdesktop_application_reload), app);
+    xfdesktop_application_add_action(app, G_ACTION(action));
+    g_object_unref(action);
+
+    /* next action */
+    action = g_simple_action_new("next", NULL);
+    g_signal_connect(action, "activate", G_CALLBACK(cb_xfdesktop_application_next), app);
     xfdesktop_application_add_action(app, G_ACTION(action));
     g_object_unref(action);
 
@@ -367,7 +377,7 @@ reload_idle_cb(gpointer data)
     /* reload all the desktops */
     for(i = 0; i < app->nscreens; ++i) {
         if(app->desktops[i])
-            xfce_desktop_refresh(XFCE_DESKTOP(app->desktops[i]));
+            xfce_desktop_refresh(XFCE_DESKTOP(app->desktops[i]), FALSE);
     }
 
     menu_reload();
@@ -392,6 +402,31 @@ cb_xfdesktop_application_reload(GAction  *action,
     /* hold the app so it doesn't quit while a queue up a refresh */
     g_application_hold(g_application);
     g_idle_add((GSourceFunc)reload_idle_cb, g_application);
+}
+
+static void
+cb_xfdesktop_application_next(GAction  *action,
+                              GVariant *parameter,
+                              gpointer  data)
+{
+    XfdesktopApplication *app;
+    gint i;
+
+    TRACE("entering");
+
+    g_return_if_fail(XFDESKTOP_IS_APPLICATION(data));
+
+    app = XFDESKTOP_APPLICATION(data);
+
+    /* If xfdesktop never started there's nothing to do here */
+    if(!app->desktops)
+        return;
+
+    /* reload all the desktops forcing the wallpaper to advance */
+    for(i = 0; i < app->nscreens; ++i) {
+        if(app->desktops[i])
+            xfce_desktop_refresh(XFCE_DESKTOP(app->desktops[i]), TRUE);
+    }
 }
 
 static void
@@ -789,6 +824,7 @@ xfdesktop_application_local_command_line(GApplication *g_application,
     GError *error = NULL;
     gboolean opt_version = FALSE;
     gboolean opt_reload = FALSE;
+    gboolean opt_next = FALSE;
     gboolean opt_menu = FALSE;
     gboolean opt_windowlist = FALSE;
     gboolean opt_arrange = FALSE;
@@ -799,6 +835,7 @@ xfdesktop_application_local_command_line(GApplication *g_application,
     const GOptionEntry main_entries[] = {
         { "version", 'V', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_version, N_("Display version information"), NULL },
         { "reload", 'R', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_reload, N_("Reload all settings"), NULL },
+        { "next", 'N', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_next, N_("Advance to the next wallpaper on the current workspace"), NULL },
         { "menu", 'M', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_menu, N_("Pop up the menu (at the current mouse position)"), NULL },
         { "windowlist", 'W', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_windowlist, N_("Pop up the window list (at the current mouse position)"), NULL },
 #ifdef ENABLE_FILE_ICONS
@@ -875,6 +912,9 @@ xfdesktop_application_local_command_line(GApplication *g_application,
         option_set = TRUE;
     } else if(opt_reload) {
         g_action_group_activate_action(G_ACTION_GROUP(g_application), "reload", NULL);
+        option_set = TRUE;
+    } else if(opt_next) {
+        g_action_group_activate_action(G_ACTION_GROUP(g_application), "next", NULL);
         option_set = TRUE;
     } else if(opt_menu) {
         g_action_group_activate_action(G_ACTION_GROUP(g_application), "menu",
