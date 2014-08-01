@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-28 00:31+0200\n"
-"PO-Revision-Date: 2014-07-28 06:40+0000\n"
+"POT-Creation-Date: 2014-07-28 12:31+0200\n"
+"PO-Revision-Date: 2014-08-01 18:23+0000\n"
 "Last-Translator: Yannick Le Guen <leguen.yannick@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/xfdesktop/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -159,8 +159,9 @@ msgid "Desktop "
 msgstr "Bureau "
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
-msgid "Set desktop background and menu and icon behaviour"
-msgstr "Régler le fond d'écran, le menu et le comportement des icônes"
+#: ../settings/xfdesktop-settings-ui.glade.h:11
+msgid "Set desktop background and menu and icon behavior"
+msgstr "Régler le fond d'écran du bureau, le menu et le comportement des icônes"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
 msgid "Solid color"
@@ -192,7 +193,7 @@ msgstr "_Style :"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
 msgid "Specify how the image will be resized to fit the screen."
-msgstr "Spécifie la manière dont l'image sera redimensionnée pour s'adapter à l'écran."
+msgstr "Spécifier la manière dont l'image sera redimensionnée pour s'adapter à l'écran."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
 #: ../settings/xfdesktop-settings-ui.glade.h:4
@@ -229,7 +230,7 @@ msgstr "C_ouleur :"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Specify the style of the color drawn behind the backdrop image."
-msgstr "Spécifie le style de la couleur dessinée derrière l'image du fond d'écran."
+msgstr "Spécifier le style de la couleur dessinée derrière l'image du fond d'écran."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
@@ -262,7 +263,7 @@ msgstr "Sélectionner automatiquement un arrière-plan différent depuis le rép
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid "Specify how often the background will change."
-msgstr "Spécifie tous les combien de temps le fond d'écran va changer."
+msgstr "Spécifier tous les combien de temps le fond d'écran va changer."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "in seconds:"
@@ -304,7 +305,7 @@ msgstr "Ordre _aléatoire"
 msgid ""
 "Randomly selects another image from the same directory when the wallpaper is"
 " to cycle."
-msgstr "Sélectionner aléatoirement une autre image du même répertoire lorsque le fond d'écran change au cours du temps."
+msgstr "Sélectionne aléatoirement une autre image du même répertoire lorsque le fond d'écran change au cours du temps."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:1
 msgid "Left"
@@ -342,10 +343,6 @@ msgstr "Icônes des fichiers / lanceurs"
 msgid "Desktop"
 msgstr "Bureau"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:11
-msgid "Set desktop background and menu and icon behavior"
-msgstr "Régler le fond d'écran du bureau, le menu et le comportement des icônes"
-
 #: ../settings/xfdesktop-settings-ui.glade.h:12
 msgid "_Background"
 msgstr "_Fond d'écran"
@@ -376,7 +373,7 @@ msgstr "<b>Menu du bureau</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:19
 msgid "Show _window list menu on desktop middle click"
-msgstr "Afficher le menu de la liste des fenêtres lors d'un clic milieu sur le bureau"
+msgstr "Afficher le menu de la liste des _fenêtres lors d'un clic milieu sur le bureau"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:20
 msgid "B_utton:"
@@ -442,7 +439,7 @@ msgstr "Afficher les infobulles des icônes. Taille :"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:35
 msgid "Size of the tooltip preview image."
-msgstr "Taille de l'aperçu d'image de l'infobulle."
+msgstr "Taille de l'aperçu d'image dans l'infobulle."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid "Use custom _font size:"
@@ -533,78 +530,86 @@ msgid ""
 "edit launchers and links on the desktop."
 msgstr "Impossible de lancer « exo-desktop-item-edit », qui est nécessaire à la création et l'édition des lanceurs et des liens sur le bureau."
 
-#: ../src/xfdesktop-application.c:768
+#: ../src/xfdesktop-application.c:800
 msgid "Display version information"
 msgstr "Afficher les informations sur la version"
 
-#: ../src/xfdesktop-application.c:769
+#: ../src/xfdesktop-application.c:801
 msgid "Reload all settings"
 msgstr "Recharger tous les paramètres"
 
-#: ../src/xfdesktop-application.c:770
+#: ../src/xfdesktop-application.c:802
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "Faire apparaitre le menu (à la position actuelle de la souris)"
 
-#: ../src/xfdesktop-application.c:771
+#: ../src/xfdesktop-application.c:803
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "Faire apparaitre la liste des fenêtres (à la position actuelle de la souris)"
 
-#: ../src/xfdesktop-application.c:773
+#: ../src/xfdesktop-application.c:805
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "Organiser automatiquement toutes les icônes sur le bureau"
 
-#: ../src/xfdesktop-application.c:775
+#: ../src/xfdesktop-application.c:807
+msgid "Enable debug messages"
+msgstr "Activer les messages de débogage"
+
+#: ../src/xfdesktop-application.c:808
+msgid "Disable debug messages"
+msgstr "Désactiver les messages de débogage"
+
+#: ../src/xfdesktop-application.c:809
 msgid "Do not wait for a window manager on startup"
 msgstr "Ne pas attendre un gestionnaire de fenêtres au démarrage"
 
-#: ../src/xfdesktop-application.c:776
+#: ../src/xfdesktop-application.c:810
 msgid "Cause xfdesktop to quit"
 msgstr "Provoque l'arrêt de xfdesktop"
 
-#: ../src/xfdesktop-application.c:791
+#: ../src/xfdesktop-application.c:825
 #, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "Échec de l'analyse des arguments : %s\n"
 
-#: ../src/xfdesktop-application.c:802
+#: ../src/xfdesktop-application.c:836
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Ceci est %s en version %s, en cours d'exécution sur Xfce %s.\n"
 
-#: ../src/xfdesktop-application.c:804
+#: ../src/xfdesktop-application.c:838
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Compilé avec GTK+ %d.%d.%d, lié avec GTK+ %d.%d.%d."
 
-#: ../src/xfdesktop-application.c:808
+#: ../src/xfdesktop-application.c:842
 #, c-format
 msgid "Build options:\n"
 msgstr "Options de compilation :\n"
 
-#: ../src/xfdesktop-application.c:809
+#: ../src/xfdesktop-application.c:843
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Menu du bureau :        %s\n"
 
-#: ../src/xfdesktop-application.c:811 ../src/xfdesktop-application.c:818
-#: ../src/xfdesktop-application.c:825
+#: ../src/xfdesktop-application.c:845 ../src/xfdesktop-application.c:852
+#: ../src/xfdesktop-application.c:859
 msgid "enabled"
 msgstr "activé"
 
-#: ../src/xfdesktop-application.c:813 ../src/xfdesktop-application.c:820
-#: ../src/xfdesktop-application.c:827
+#: ../src/xfdesktop-application.c:847 ../src/xfdesktop-application.c:854
+#: ../src/xfdesktop-application.c:861
 msgid "disabled"
 msgstr "désactivé"
 
-#: ../src/xfdesktop-application.c:816
+#: ../src/xfdesktop-application.c:850
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Icônes du bureau :       %s\n"
 
-#: ../src/xfdesktop-application.c:823
+#: ../src/xfdesktop-application.c:857
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr "   Icônes des fichiers du bureau :  %s\n"
+msgstr "    Icônes des fichiers du bureau :  %s\n"
 
 #: ../src/xfdesktop-file-icon-manager.c:522
 #: ../src/xfdesktop-file-icon-manager.c:539
