@@ -174,7 +174,10 @@ static void xfce_desktop_set_single_workspace_number(XfceDesktop *desktop,
 static gboolean xfce_desktop_get_single_workspace_mode(XfceDesktop *desktop);
 static gint xfce_desktop_get_current_workspace(XfceDesktop *desktop);
 
+#ifdef ENABLE_DESKTOP_ICONS
 static void hidden_state_changed_cb(GObject *object, XfceDesktop *desktop);
+#endif
+
 
 static guint signals[N_SIGNALS] = { 0, };
 
@@ -1452,6 +1455,7 @@ xfce_desktop_set_icon_style(XfceDesktop *desktop,
 #endif
 }
 
+#ifdef ENABLE_DESKTOP_ICONS
 static gboolean
 hidden_idle_cb(gpointer user_data)
 {
@@ -1480,7 +1484,6 @@ hidden_state_changed_cb(GObject *object,
 {
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
 
-#ifdef ENABLE_DESKTOP_ICONS
     if(desktop->priv->icon_view) {
         g_signal_handlers_disconnect_by_func(object,
                                              G_CALLBACK(hidden_state_changed_cb),
@@ -1489,8 +1492,8 @@ hidden_state_changed_cb(GObject *object,
 
     /* We have to do this in an idle callback */
     g_idle_add(hidden_idle_cb, desktop);
-#endif
 }
+#endif /* ENABLE_DESKTOP_ICONS */
 
 XfceDesktopIconStyle
 xfce_desktop_get_icon_style(XfceDesktop *desktop)
