@@ -1461,7 +1461,7 @@ hidden_idle_cb(gpointer user_data)
 {
     XfceDesktop *desktop;
 
-    g_return_if_fail(XFCE_IS_DESKTOP(user_data));
+    g_return_val_if_fail(XFCE_IS_DESKTOP(user_data), FALSE);
 
     desktop = XFCE_DESKTOP(user_data);
 
