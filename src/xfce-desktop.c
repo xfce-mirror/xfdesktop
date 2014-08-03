@@ -174,6 +174,8 @@ static void xfce_desktop_set_single_workspace_number(XfceDesktop *desktop,
 static gboolean xfce_desktop_get_single_workspace_mode(XfceDesktop *desktop);
 static gint xfce_desktop_get_current_workspace(XfceDesktop *desktop);
 
+static void hidden_state_changed_cb(GObject *object, XfceDesktop *desktop);
+
 static guint signals[N_SIGNALS] = { 0, };
 
 /* private functions */
@@ -258,6 +260,8 @@ xfce_desktop_setup_icon_view(XfceDesktop *desktop)
         }
         gtk_widget_show(desktop->priv->icon_view);
         gtk_container_add(GTK_CONTAINER(desktop), desktop->priv->icon_view);
+
+        g_signal_connect(G_OBJECT(manager), "hidden-state-changed", G_CALLBACK(hidden_state_changed_cb), desktop);
     }
     
     gtk_widget_queue_draw(GTK_WIDGET(desktop));
@@ -1445,6 +1449,46 @@ xfce_desktop_set_icon_style(XfceDesktop *desktop,
     desktop->priv->icons_style = style;
     if(gtk_widget_get_realized(GTK_WIDGET(desktop)))
         xfce_desktop_setup_icon_view(desktop);
+#endif
+}
+
+static gboolean
+hidden_idle_cb(gpointer user_data)
+{
+    XfceDesktop *desktop;
+
+    g_return_if_fail(XFCE_IS_DESKTOP(user_data));
+
+    desktop = XFCE_DESKTOP(user_data);
+
+    /* destroy and load the icon view so that it adds or removes
+     * the hidden icons from the desktop */
+    if(desktop->priv->icon_view) {
+        gtk_widget_destroy(desktop->priv->icon_view);
+        desktop->priv->icon_view = NULL;
+    }
+
+    if(gtk_widget_get_realized(GTK_WIDGET(desktop)))
+        xfce_desktop_setup_icon_view(desktop);
+
+    return FALSE;
+}
+
+static void
+hidden_state_changed_cb(GObject *object,
+                        XfceDesktop *desktop)
+{
+    g_return_if_fail(XFCE_IS_DESKTOP(desktop));
+
+#ifdef ENABLE_DESKTOP_ICONS
+    if(desktop->priv->icon_view) {
+        g_signal_handlers_disconnect_by_func(object,
+                                             G_CALLBACK(hidden_state_changed_cb),
+                                             desktop);
+    }
+
+    /* We have to do this in an idle callback */
+    g_idle_add(hidden_idle_cb, desktop);
 #endif
 }
 

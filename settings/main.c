@@ -1689,7 +1689,8 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     GtkWidget *appearance_container, *chk_custom_font_size,
               *spin_font_size, *w, *box, *spin_icon_size,
               *chk_show_thumbnails, *chk_single_click, *appearance_settings,
-              *chk_show_tooltips, *spin_tooltip_size, *bnt_exit, *content_area;
+              *chk_show_tooltips, *spin_tooltip_size, *bnt_exit, *content_area,
+              *chk_show_hidden_files;
     GtkBuilder *appearance_gxml;
     GError *error = NULL;
     GtkFileFilter *filter;
@@ -1729,6 +1730,10 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     /* single click */
     chk_single_click = GTK_WIDGET(gtk_builder_get_object(main_gxml,
                                                          "chk_single_click"));
+
+    /* show hidden files */
+    chk_show_hidden_files = GTK_WIDGET(gtk_builder_get_object(main_gxml,
+                                                              "chk_show_hidden_files"));
 
     /* tooltip options */
     chk_show_tooltips = GTK_WIDGET(gtk_builder_get_object(main_gxml, "chk_show_tooltips"));
@@ -1957,6 +1962,9 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     xfconf_g_property_bind(channel, DESKTOP_ICONS_TOOLTIP_SIZE_PROP, G_TYPE_DOUBLE,
                            G_OBJECT(gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(spin_tooltip_size))),
                            "value");
+    xfconf_g_property_bind(channel, DESKTOP_ICONS_SHOW_HIDDEN_FILES,
+                           G_TYPE_BOOLEAN, G_OBJECT(chk_show_hidden_files),
+                           "active");
     xfconf_g_property_bind(channel, DESKTOP_ICONS_SHOW_THUMBNAILS,
                            G_TYPE_BOOLEAN, G_OBJECT(chk_show_thumbnails),
                            "active");

@@ -48,6 +48,9 @@ struct _XfdesktopFileIconManager
 struct _XfdesktopFileIconManagerClass
 {
     GObjectClass parent;
+
+    /*< signals >*/
+    void (*hidden_state_changed)(XfdesktopFileIconManager *fmanager);
 };
 
 GType xfdesktop_file_icon_manager_get_type(void) G_GNUC_CONST;

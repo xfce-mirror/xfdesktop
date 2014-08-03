@@ -91,8 +91,16 @@ typedef enum
     PROP_SHOW_DEVICE_VOLUME,
     PROP_SHOW_UNKNOWN_VOLUME,
     PROP_SHOW_THUMBNAILS,
+    PROP_SHOW_HIDDEN_FILES,
     PROP_MAX_TEMPLATES,
 } XfdesktopFileIconManagerProp;
+
+typedef enum
+{
+    HIDDEN_STATE_CHANGED,
+    LAST_SIGNAL,
+} XfdesktopFileIconManagerSignals;
+
 
 struct _XfdesktopFileIconManagerPrivate
 {
@@ -125,6 +133,7 @@ struct _XfdesktopFileIconManagerPrivate
     gboolean show_unknown_volumes;
     gboolean show_special[XFDESKTOP_SPECIAL_FILE_ICON_TRASH+1];
     gboolean show_thumbnails;
+    gboolean show_hidden_files;
     
     guint save_icons_id;
     
@@ -197,6 +206,8 @@ static void xfdesktop_file_icon_manager_set_show_special_file(XfdesktopFileIconM
                                                               gboolean show_special_file);
 static void xfdesktop_file_icon_manager_set_show_thumbnails(XfdesktopFileIconManager *manager,
                                                             gboolean show_thumbnails);
+static void xfdesktop_file_icon_manager_set_show_hidden_files(XfdesktopFileIconManager *manager,
+                                                              gboolean show_hidden_files);
 static void xfdesktop_file_icon_manager_set_show_removable_media(XfdesktopFileIconManager *manager,
                                                                  XfdesktopFileIconManagerProp prop,
                                                                  gboolean show);
@@ -251,6 +262,8 @@ static XfdesktopClipboardManager *clipboard_manager = NULL;
 
 static GQuark xfdesktop_app_info_quark = 0;
 
+static guint fmanager_signals[LAST_SIGNAL] = { 0, };
+
 
 static void
 xfdesktop_file_icon_manager_class_init(XfdesktopFileIconManagerClass *klass)
@@ -262,7 +275,16 @@ xfdesktop_file_icon_manager_class_init(XfdesktopFileIconManagerClass *klass)
     gobject_class->set_property = xfdesktop_file_icon_manager_set_property;
     gobject_class->get_property = xfdesktop_file_icon_manager_get_property;
     gobject_class->finalize = xfdesktop_file_icon_manager_finalize;
-    
+
+    fmanager_signals[HIDDEN_STATE_CHANGED] = g_signal_new("hidden-state-changed",
+                                                          G_OBJECT_CLASS_TYPE(gobject_class),
+                                                          G_SIGNAL_RUN_FIRST,
+                                                          G_STRUCT_OFFSET(XfdesktopFileIconManagerClass, hidden_state_changed),
+                                                          NULL, NULL,
+                                                          g_cclosure_marshal_VOID__VOID,
+                                                          G_TYPE_NONE, 0);
+
+
     g_object_class_install_property(gobject_class, PROP_FOLDER,
                                     g_param_spec_object("folder", "Desktop Folder",
                                                        "Folder this icon manager manages",
@@ -325,6 +347,12 @@ xfdesktop_file_icon_manager_class_init(XfdesktopFileIconManagerClass *klass)
                                                          "show-thumbnails",
                                                          "show-thumbnails",
                                                          TRUE,
+                                                         XFDESKTOP_PARAM_FLAGS));
+    g_object_class_install_property(gobject_class, PROP_SHOW_HIDDEN_FILES,
+                                    g_param_spec_boolean("show-hidden-files",
+                                                         "show-hidden-files",
+                                                         "show-hidden-files",
+                                                         FALSE,
                                                          XFDESKTOP_PARAM_FLAGS));
     g_object_class_install_property(gobject_class, PROP_MAX_TEMPLATES,
                                     g_param_spec_uint("max-templates",
@@ -402,6 +430,11 @@ xfdesktop_file_icon_manager_set_property(GObject *object,
                                                             g_value_get_boolean(value));
             break;
 
+        case PROP_SHOW_HIDDEN_FILES:
+            xfdesktop_file_icon_manager_set_show_hidden_files(fmanager,
+                                                              g_value_get_boolean(value));
+            break;
+
         case PROP_MAX_TEMPLATES:
             xfdesktop_file_icon_manager_set_max_templates(fmanager,
                                                           g_value_get_uint(value));
@@ -458,6 +491,10 @@ xfdesktop_file_icon_manager_get_property(GObject *object,
 
         case PROP_SHOW_THUMBNAILS:
             g_value_set_boolean(value, fmanager->priv->show_thumbnails);
+            break;
+
+        case PROP_SHOW_HIDDEN_FILES:
+            g_value_set_boolean(value, fmanager->priv->show_hidden_files);
             break;
 
         case PROP_MAX_TEMPLATES:
@@ -2112,7 +2149,7 @@ xfdesktop_file_icon_manager_add_regular_icon(XfdesktopFileIconManager *fmanager,
     /* if it's a .desktop file, and it has Hidden=true, or an
      * OnlyShowIn Or NotShowIn that would hide it from Xfce, don't
      * show it on the desktop (bug #4022) */
-    if(is_desktop_file)
+    if(is_desktop_file && !fmanager->priv->show_hidden_files)
     {
         gchar *path = g_file_get_path(file);
         XfceRc *rcfile = xfce_rc_simple_open(path, TRUE);
@@ -2124,18 +2161,21 @@ xfdesktop_file_icon_manager_add_regular_icon(XfdesktopFileIconManager *fmanager,
             xfce_rc_set_group(rcfile, "Desktop Entry");
             if(xfce_rc_read_bool_entry(rcfile, "Hidden", FALSE)) {
                 xfce_rc_close(rcfile);
+                XF_DEBUG("Not adding icon because it has the Hidden Desktop Entry set");
                 return NULL;
             }
 
             value = xfce_rc_read_entry(rcfile, "OnlyShowIn", NULL);
             if(value && strncmp(value, "XFCE;", 5) && !strstr(value, ";XFCE;")) {
                 xfce_rc_close(rcfile);
+                XF_DEBUG("Not adding icon because it has the OnlyShowIn Desktop Entry set");
                 return NULL;
             }
 
             value = xfce_rc_read_entry(rcfile, "NotShowIn", NULL);
             if(value && (!strncmp(value, "XFCE;", 5) || strstr(value, ";XFCE;"))) {
                 xfce_rc_close(rcfile);
+                XF_DEBUG("Not adding icon because it has the NotShowIn Desktop Entry set");
                 return NULL;
             }
 
@@ -2144,8 +2184,12 @@ xfdesktop_file_icon_manager_add_regular_icon(XfdesktopFileIconManager *fmanager,
     }
 
     /* If it's a hidden or backup file don't show it on the desktop */
-    if(g_file_info_get_is_hidden(info) || g_file_info_get_is_backup(info))
-        return NULL;
+    if(g_file_info_get_is_hidden(info) || g_file_info_get_is_backup(info)) {
+        if(!fmanager->priv->show_hidden_files) {
+            XF_DEBUG("Not adding icon because it is either hidden or a backup file");
+            return NULL;
+        }
+    }
 
     /* should never return NULL */
     icon = xfdesktop_regular_file_icon_new(file, info, fmanager->priv->gscreen, fmanager);
@@ -2448,22 +2492,15 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
             }
 
             if(file_info) {
-                gboolean is_hidden;
-
-
-                is_hidden = g_file_info_get_attribute_boolean(file_info,
-                                                              G_FILE_ATTRIBUTE_STANDARD_IS_HIDDEN);
-                if(!is_hidden) {
-                    /* Add the icon adding the row/col info */
-                    icon = xfdesktop_file_icon_manager_add_regular_icon(fmanager,
-                                                                        other_file,
-                                                                        file_info,
-                                                                        row,
-                                                                        col,
-                                                                        FALSE);
-                    if(icon)
-                        xfdesktop_file_icon_position_changed(icon, fmanager);
-                }
+                /* Add the icon adding the row/col info */
+                icon = xfdesktop_file_icon_manager_add_regular_icon(fmanager,
+                                                                    other_file,
+                                                                    file_info,
+                                                                    row,
+                                                                    col,
+                                                                    FALSE);
+                if(icon)
+                    xfdesktop_file_icon_position_changed(icon, fmanager);
 
                 g_object_unref(file_info);
             }
@@ -2505,14 +2542,10 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
             file_info = g_file_query_info(file, XFDESKTOP_FILE_INFO_NAMESPACE,
                                           G_FILE_QUERY_INFO_NONE, NULL, NULL);
             if(file_info) {
-                gboolean is_hidden = g_file_info_get_attribute_boolean(file_info,
-                                                                       G_FILE_ATTRIBUTE_STANDARD_IS_HIDDEN);
-                if(!is_hidden) {
-                    xfdesktop_file_icon_manager_add_regular_icon(fmanager,
-                                                                 file, file_info,
-                                                                 -1, -1,
-                                                                 TRUE);
-                }
+                xfdesktop_file_icon_manager_add_regular_icon(fmanager,
+                                                             file, file_info,
+                                                             -1, -1,
+                                                             TRUE);
 
                 g_object_unref(file_info);
             }
@@ -2646,7 +2679,6 @@ xfdesktop_file_icon_manager_files_ready(GFileEnumerator *enumerator,
     XfdesktopFileIconManager *fmanager;
     GError *error = NULL;
     GList *files, *l;
-    gboolean is_hidden;
 
     /* Sanity check */
     if(user_data == NULL || !XFDESKTOP_IS_FILE_ICON_MANAGER(user_data))
@@ -2706,21 +2738,17 @@ xfdesktop_file_icon_manager_files_ready(GFileEnumerator *enumerator,
         }
     } else {
         for(l = files; l; l = l->next) {
+            const gchar *name = g_file_info_get_name(l->data);
+            GFile *file = g_file_get_child(fmanager->priv->folder, name);
+
             DBG("got a GFileInfo: %s", g_file_info_get_display_name(l->data));
-            
-            is_hidden = g_file_info_get_attribute_boolean(l->data,
-                                                          G_FILE_ATTRIBUTE_STANDARD_IS_HIDDEN);
-            if(!is_hidden) {
-                const gchar *name = g_file_info_get_name(l->data);
-                GFile *file = g_file_get_child(fmanager->priv->folder, name);
 
-                xfdesktop_file_icon_manager_add_regular_icon(fmanager, 
-                                                             file, l->data,
-                                                             -1, -1,
-                                                             TRUE);
+            xfdesktop_file_icon_manager_add_regular_icon(fmanager,
+                                                         file, l->data,
+                                                         -1, -1,
+                                                         TRUE);
 
-                g_object_unref(file);
-            }
+            g_object_unref(file);
 
             g_object_unref(l->data);
         }
@@ -3615,6 +3643,8 @@ xfdesktop_file_icon_manager_new(GFile *folder,
                            G_OBJECT(fmanager), "show-unknown-volume");
     xfconf_g_property_bind(channel, DESKTOP_ICONS_SHOW_THUMBNAILS, G_TYPE_BOOLEAN,
                            G_OBJECT(fmanager), "show-thumbnails");
+    xfconf_g_property_bind(channel, DESKTOP_ICONS_SHOW_HIDDEN_FILES, G_TYPE_BOOLEAN,
+                           G_OBJECT(fmanager), "show-hidden-files");
     xfconf_g_property_bind(channel, DESKTOP_MENU_MAX_TEMPLATE_FILES, G_TYPE_INT,
                            G_OBJECT(fmanager), "max-templates");
 
@@ -3717,6 +3747,26 @@ xfdesktop_file_icon_manager_set_show_thumbnails(XfdesktopFileIconManager *manage
                          xfdesktop_file_icon_manager_remove_thumbnails,
                          manager);
     }
+}
+
+static void
+xfdesktop_file_icon_manager_set_show_hidden_files(XfdesktopFileIconManager *manager,
+                                                  gboolean show_hidden_files)
+{
+    g_return_if_fail(XFDESKTOP_IS_FILE_ICON_MANAGER(manager));
+
+    TRACE("entering show_hidden_files %s", show_hidden_files ? "TRUE" : "FALSE");
+
+    if(show_hidden_files == manager->priv->show_hidden_files)
+        return;
+
+    manager->priv->show_hidden_files = show_hidden_files;
+
+    if(!manager->priv->inited)
+        return;
+
+    /* Emit a signal so the desktop knows to reload the icons */
+    g_signal_emit(G_OBJECT(manager), fmanager_signals[HIDDEN_STATE_CHANGED], 0);
 }
 
 static void
