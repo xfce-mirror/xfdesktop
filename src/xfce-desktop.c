@@ -598,13 +598,30 @@ workspace_backdrop_changed_cb(XfceWorkspace *workspace,
                               gpointer user_data)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(user_data);
+    gint current_workspace = 0, monitor = 0, i;
 
     TRACE("entering");
 
     g_return_if_fail(XFCE_IS_WORKSPACE(workspace) && XFCE_IS_BACKDROP(backdrop));
 
-    if(xfce_desktop_get_current_workspace(desktop) == xfce_workspace_get_workspace_num(workspace))
-        backdrop_changed_cb(backdrop, user_data);
+    current_workspace = xfce_desktop_get_current_workspace(desktop);
+
+    /* Find out which monitor the backdrop is on */
+    for(i = 0; i < xfce_desktop_get_n_monitors(desktop); i++) {
+        if(backdrop == xfce_workspace_get_backdrop(desktop->priv->workspaces[current_workspace], i)) {
+            monitor = i;
+            break;
+        }
+    }
+
+    if(xfce_desktop_get_current_workspace(desktop) == xfce_workspace_get_workspace_num(workspace)) {
+        /* Update the backdrop!
+         * In spanning mode, ignore updates to monitors other than the primary
+         */
+        if(!xfce_workspace_get_xinerama_stretch(workspace) || monitor == 0) {
+            backdrop_changed_cb(backdrop, user_data);
+        }
+    }
 }
 
 static void
