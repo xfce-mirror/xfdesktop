@@ -1322,12 +1322,12 @@ xfdesktop_settings_background_tab_change_bindings(AppearancePanel *panel,
         /* If the first color doesn't exist, try to load the old one */
         if(!xfconf_channel_has_property(channel, buf)) {
             GValue value = { 0, };
-            old_property = xfdesktop_settings_generate_old_binding_string(panel, "color2");
+            old_property = xfdesktop_settings_generate_old_binding_string(panel, "color1");
 
             xfconf_channel_get_property(channel, old_property, &value);
 
             if(G_VALUE_HOLDS_BOXED(&value)) {
-                gtk_color_button_set_color(GTK_COLOR_BUTTON(panel->color2_btn),
+                gtk_color_button_set_color(GTK_COLOR_BUTTON(panel->color1_btn),
                                            g_value_get_boxed(&value));
                 g_value_unset(&value);
             } else {
@@ -1357,12 +1357,12 @@ xfdesktop_settings_background_tab_change_bindings(AppearancePanel *panel,
         /* If the 2nd color doesn't exist, try to load the old one */
         if(!xfconf_channel_has_property(channel, buf)) {
             GValue value = { 0, };
-            old_property = xfdesktop_settings_generate_old_binding_string(panel, "color1");
+            old_property = xfdesktop_settings_generate_old_binding_string(panel, "color2");
 
             xfconf_channel_get_property(channel, old_property, &value);
 
             if(G_VALUE_HOLDS_BOXED(&value)) {
-                gtk_color_button_set_color(GTK_COLOR_BUTTON(panel->color1_btn),
+                gtk_color_button_set_color(GTK_COLOR_BUTTON(panel->color2_btn),
                                            g_value_get_boxed(&value));
                 g_value_unset(&value);
             } else {
