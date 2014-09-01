@@ -1697,6 +1697,7 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     GdkScreen *screen;
     WnckScreen *wnck_screen;
     XfconfChannel *channel = panel->channel;
+    GdkColor color;
 
     TRACE("entering");
 
@@ -1805,6 +1806,8 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
                                                        "infobar_header"));
 
     panel->infobar_label = gtk_label_new("This is some text");
+    gdk_color_parse ("black", &color);
+    gtk_widget_modify_fg (panel->infobar_label, GTK_STATE_NORMAL, &color);
     gtk_widget_set_no_show_all(panel->infobar, TRUE);
     gtk_widget_show(panel->infobar_label);
     gtk_widget_show(panel->infobar);
