@@ -263,7 +263,7 @@ cb_show_thumbnails_notify(GObject *gobject,
     g_object_get(regular_file_icon->priv->fmanager, "show-thumbnails", &show_thumbnails, NULL);
 
     if(regular_file_icon->priv->show_thumbnails != show_thumbnails) {
-        DBG("show-thumbnails changed! now: %s", show_thumbnails ? "TRUE" : "FALSE");
+        XF_DEBUG("show-thumbnails changed! now: %s", show_thumbnails ? "TRUE" : "FALSE");
         regular_file_icon->priv->show_thumbnails = show_thumbnails;
         xfdesktop_file_icon_invalidate_icon(XFDESKTOP_FILE_ICON(regular_file_icon));
         xfdesktop_icon_invalidate_pixbuf(XFDESKTOP_ICON(regular_file_icon));
@@ -638,7 +638,7 @@ xfdesktop_regular_file_icon_do_drop_dest(XfdesktopIcon *icon,
     GFile *src_file;
     gboolean result = FALSE;
     
-    DBG("entering");
+    TRACE("entering");
     
     g_return_val_if_fail(regular_file_icon && src_file_icon, FALSE);
     g_return_val_if_fail(xfdesktop_regular_file_icon_get_allowed_drop_actions(icon, NULL) != 0,

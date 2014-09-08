@@ -786,7 +786,7 @@ xfdesktop_settings_generate_per_workspace_binding_string(AppearancePanel *panel,
                               property);
     }
 
-    DBG("name %s", buf);
+    XF_DEBUG("name %s", buf);
 
     return buf;
 }
@@ -800,7 +800,7 @@ xfdesktop_settings_generate_old_binding_string(AppearancePanel *panel,
     buf = g_strdup_printf("/backdrop/screen%d/monitor%d/%s",
                           panel->screen, panel->monitor, property);
 
-    DBG("name %s", buf);
+    XF_DEBUG("name %s", buf);
 
     return buf;
 }
@@ -870,18 +870,18 @@ cb_image_selection_changed(GtkIconView *icon_view,
     /* check to see if the selection actually did change */
     if(g_strcmp0(current_filename, filename) != 0) {
         if(panel->monitor_name == NULL) {
-            DBG("got %s, applying to screen %d monitor %d workspace %d", filename,
-                panel->screen, panel->monitor, panel->workspace);
+            XF_DEBUG("got %s, applying to screen %d monitor %d workspace %d", filename,
+                     panel->screen, panel->monitor, panel->workspace);
         } else {
-            DBG("got %s, applying to screen %d monitor %s workspace %d", filename,
-                panel->screen, panel->monitor_name, panel->workspace);
+            XF_DEBUG("got %s, applying to screen %d monitor %s workspace %d", filename,
+                     panel->screen, panel->monitor_name, panel->workspace);
         }
 
         /* Get the property location to save our changes, always save to new
          * location */
         buf = xfdesktop_settings_generate_per_workspace_binding_string(panel,
                                                                        "last-image");
-        DBG("Saving to %s/%s", buf, filename);
+        XF_DEBUG("Saving to %s/%s", buf, filename);
         xfconf_channel_set_string(panel->channel, buf, filename);
     }
 
@@ -1118,7 +1118,7 @@ cb_folder_selection_changed(GtkWidget *button,
          * button to something then it can't be changed with a set folder
          * call anymore. */
         if(g_strcmp0(filename, dirname) == 0) {
-            DBG("folder didn't change");
+            XF_DEBUG("folder didn't change");
             g_free(dirname);
             g_free(filename);
             g_free(previous_filename);
@@ -1231,7 +1231,7 @@ xfdesktop_settings_update_iconview_folder(AppearancePanel *panel)
     current_folder = xfdesktop_settings_get_backdrop_image(panel);
     dirname = g_path_get_dirname(current_folder);
 
-    DBG("current_folder %s, dirname %s", current_folder, dirname);
+    XF_DEBUG("current_folder %s, dirname %s", current_folder, dirname);
 
     gtk_file_chooser_set_current_folder((GtkFileChooser*)panel->btn_folder, dirname);
 
@@ -1497,7 +1497,7 @@ cb_update_background_tab(WnckWindow *wnck_window,
 
     /* remove the old bindings if there are any */
     if(panel->color1_btn_id || panel->color2_btn_id) {
-        DBG("removing old bindings");
+        XF_DEBUG("removing old bindings");
         xfdesktop_settings_background_tab_change_bindings(panel,
                                                           TRUE);
     }
@@ -1552,7 +1552,7 @@ cb_workspace_changed(WnckScreen *screen,
     if(new_num != -1)
         panel->active_workspace = new_num;
 
-    DBG("active_workspace now %d", panel->active_workspace);
+    XF_DEBUG("active_workspace now %d", panel->active_workspace);
 
     /* Call cb_update_background_tab in case this is a pinned window */
     if(panel->wnck_window != NULL)
@@ -1591,7 +1591,7 @@ cb_window_opened(WnckScreen *screen,
     if(wnck_window_get_xid(window) != GDK_WINDOW_XID(gtk_widget_get_window(toplevel)))
         return;
 
-    DBG("Found our window");
+    XF_DEBUG("Found our window");
     panel->wnck_window = window;
 
     /* These callbacks are for updating the image_iconview when the window
@@ -2009,9 +2009,11 @@ xfdesktop_settings_response(GtkWidget *dialog, gint response_id, gpointer user_d
 
 static GdkNativeWindow opt_socket_id = 0;
 static gboolean opt_version = FALSE;
+static gboolean opt_enable_debug = FALSE;
 static GOptionEntry option_entries[] = {
     { "socket-id", 's', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_INT, &opt_socket_id, N_("Settings manager socket"), N_("SOCKET ID") },
     { "version", 'V', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_version, N_("Version information"), NULL },
+    { "enable-debug", 'e', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_enable_debug, N_("Enable debug messages"), NULL },
     { NULL, },
 };
 
@@ -2081,6 +2083,9 @@ main(int argc, char **argv)
     }
 
     channel = xfconf_channel_new(XFDESKTOP_CHANNEL);
+
+    if(opt_enable_debug)
+        xfdesktop_debug_set(TRUE);
 
     if(opt_socket_id == 0) {
         GtkWidget *dialog;

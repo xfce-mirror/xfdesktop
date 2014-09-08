@@ -63,7 +63,7 @@ xfdesktop_compare_paths(GFile *a, GFile *b)
     path_a = g_file_get_path(a);
     path_b = g_file_get_path(b);
 
-    DBG("a %s, b %s", path_a, path_b);
+    XF_DEBUG("a %s, b %s", path_a, path_b);
 
     ret = g_strcmp0(path_a, path_b);
 

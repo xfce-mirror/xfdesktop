@@ -330,8 +330,8 @@ xfdesktop_thumbnailer_queue_thumbnail(XfdesktopThumbnailer *thumbnailer,
             {
                 /* If this fails it usually means there's a thumbnail already
                  * being processed, no big deal */
-                DBG("Dequeue of thumbnailer->priv->handle: %d failed",
-                    thumbnailer->priv->handle);
+                XF_DEBUG("Dequeue of thumbnailer->priv->handle: %d failed",
+                         thumbnailer->priv->handle);
             }
 
             thumbnailer->priv->handle = 0;
@@ -387,8 +387,8 @@ xfdesktop_thumbnailer_dequeue_thumbnail(XfdesktopThumbnailer *thumbnailer,
             {
                 /* If this fails it usually means there's a thumbnail already
                  * being processed, no big deal */
-                DBG("Dequeue of thumbnailer->priv->handle: %d failed",
-                    thumbnailer->priv->handle);
+                XF_DEBUG("Dequeue of thumbnailer->priv->handle: %d failed",
+                         thumbnailer->priv->handle);
             }
         }
         thumbnailer->priv->handle = 0;
@@ -561,9 +561,9 @@ xfdesktop_thumbnailer_thumbnail_ready_dbus(DBusGProxy *proxy,
                                                   filename, NULL);
             }
 
-            DBG("thumbnail-ready src: %s thumbnail: %s",
-                (char*)iter->data,
-                thumbnail_location);
+            XF_DEBUG("thumbnail-ready src: %s thumbnail: %s",
+                     (char*)iter->data,
+                     thumbnail_location);
 
             if(g_file_test(thumbnail_location, G_FILE_TEST_EXISTS)) {
                 g_signal_emit(G_OBJECT(thumbnailer),

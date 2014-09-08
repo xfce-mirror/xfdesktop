@@ -1963,7 +1963,7 @@ _icon_notify_destroy(gpointer data,
     g_assert(g_list_find(_alive_icon_list, obj));
     _alive_icon_list = g_list_remove(_alive_icon_list, obj);
     
-    DBG("icon finalized: '%s'", xfdesktop_icon_peek_label(XFDESKTOP_ICON(obj)));
+    XF_DEBUG("icon finalized: '%s'", xfdesktop_icon_peek_label(XFDESKTOP_ICON(obj)));
 }
 #endif
 
@@ -2652,7 +2652,7 @@ xfdesktop_file_icon_manager_metadata_changed(GFileMonitor     *monitor,
 
     switch(event) {
         case G_FILE_MONITOR_EVENT_CHANGED:
-            DBG("metadata file changed event");
+            XF_DEBUG("metadata file changed event");
 
             /* cool down timer so we don't call this due to multiple file
              * changes at the same time. */
@@ -2741,7 +2741,7 @@ xfdesktop_file_icon_manager_files_ready(GFileEnumerator *enumerator,
             const gchar *name = g_file_info_get_name(l->data);
             GFile *file = g_file_get_child(fmanager->priv->folder, name);
 
-            DBG("got a GFileInfo: %s", g_file_info_get_display_name(l->data));
+            XF_DEBUG("got a GFileInfo: %s", g_file_info_get_display_name(l->data));
 
             xfdesktop_file_icon_manager_add_regular_icon(fmanager,
                                                          file, l->data,

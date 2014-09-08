@@ -39,6 +39,7 @@
 #include "xfdesktop-window-icon.h"
 #include "xfdesktop-window-icon-manager.h"
 #include "xfce-desktop.h"
+#include "xfdesktop-common.h"
 
 static void xfdesktop_window_icon_manager_set_property(GObject *object,
                                                        guint property_id,
@@ -229,7 +230,7 @@ workspace_changed_cb(WnckScreen *wnck_screen,
 
     ws = wnck_screen_get_active_workspace(wmanager->priv->wnck_screen);
     if(!WNCK_IS_WORKSPACE(ws)) {
-        DBG("got weird failure of wnck_screen_get_active_workspace(), bailing");
+        XF_DEBUG("got weird failure of wnck_screen_get_active_workspace(), bailing");
         return;
     }
     
@@ -343,7 +344,7 @@ window_state_changed_cb(WnckWindow *window,
         return;
     }
     
-    DBG("changed_mask indicates an action");
+    XF_DEBUG("changed_mask indicates an action");
     
     ws = wnck_window_get_workspace(window);
     if(ws)
@@ -357,7 +358,7 @@ window_state_changed_cb(WnckWindow *window,
         is_add = TRUE;
     }
     
-    DBG("is_add == %s", is_add?"TRUE":"FALSE");
+    XF_DEBUG("is_add == %s", is_add?"TRUE":"FALSE");
     
     /* this is a cute way of handling adding/removing from *all* workspaces
      * when we're dealing with a sticky windows, and just adding/removing
@@ -382,7 +383,7 @@ window_state_changed_cb(WnckWindow *window,
                 continue;
             }
             
-            DBG("adding to WS %d", i);
+            XF_DEBUG("adding to WS %d", i);
             xfdesktop_window_icon_manager_add_icon(wmanager, window, i);
         }
     } else {
@@ -397,7 +398,7 @@ window_state_changed_cb(WnckWindow *window,
                 if(wmanager->priv->icon_workspaces[i]->selected_icon == icon)
                     wmanager->priv->icon_workspaces[i]->selected_icon = NULL;
                 if(i == wmanager->priv->active_ws_num) {
-                    DBG("removing from WS %d", i);
+                    XF_DEBUG("removing from WS %d", i);
                     xfdesktop_icon_view_remove_item(wmanager->priv->icon_view,
                                                     XFDESKTOP_ICON(icon));
                     g_hash_table_remove(wmanager->priv->icon_workspaces[i]->icons,

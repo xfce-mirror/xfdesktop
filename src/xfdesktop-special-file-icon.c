@@ -355,14 +355,14 @@ xfdesktop_special_file_icon_get_allowed_drop_actions(XfdesktopIcon *icon,
             if(g_file_info_get_attribute_boolean(info,
                                                  G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
             {
-                DBG("can move, copy and link");
+                XF_DEBUG("can move, copy and link");
                 actions = GDK_ACTION_MOVE | GDK_ACTION_COPY | GDK_ACTION_LINK;
                 if(suggested_action)
                     *suggested_action = GDK_ACTION_MOVE;
             }
         }
     } else {
-        DBG("can move");
+        XF_DEBUG("can move");
         actions = GDK_ACTION_MOVE; /* everything else is just silly */
         if(suggested_action)
             *suggested_action = GDK_ACTION_MOVE;
@@ -386,7 +386,7 @@ xfdesktop_special_file_icon_do_drop_dest(XfdesktopIcon *icon,
     GFile *dest_file = NULL;
     gboolean result = FALSE;
     
-    DBG("entering");
+    TRACE("entering");
     
     g_return_val_if_fail(special_file_icon && src_file_icon, FALSE);
     g_return_val_if_fail(xfdesktop_special_file_icon_get_allowed_drop_actions(icon, NULL),
@@ -401,7 +401,7 @@ xfdesktop_special_file_icon_do_drop_dest(XfdesktopIcon *icon,
     if(special_file_icon->priv->type == XFDESKTOP_SPECIAL_FILE_ICON_TRASH) {
         GList files;
 
-        DBG("doing trash");
+        XF_DEBUG("doing trash");
 
         /* fake a file list */
         files.data = src_file;
@@ -416,15 +416,15 @@ xfdesktop_special_file_icon_do_drop_dest(XfdesktopIcon *icon,
     
         switch(action) {
             case GDK_ACTION_MOVE:
-                DBG("doing move");
+                XF_DEBUG("doing move");
                 dest_file = g_object_ref(special_file_icon->priv->file);
                 break;
             case GDK_ACTION_COPY:
-                DBG("doing copy");
+                XF_DEBUG("doing copy");
                 dest_file = g_file_get_child(special_file_icon->priv->file, name);
                 break;
             case GDK_ACTION_LINK:
-                DBG("doing link");
+                XF_DEBUG("doing link");
                 dest_file = g_object_ref(special_file_icon->priv->file);
                 break;
             default:

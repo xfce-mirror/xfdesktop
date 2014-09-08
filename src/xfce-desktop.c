@@ -201,7 +201,7 @@ xfce_desktop_ensure_system_font_size(XfceDesktop *desktop)
     desktop->priv->system_font_size = pango_font_description_get_size(pfd);
     /* FIXME: this seems backwards from the documentation */
     if(!pango_font_description_get_size_is_absolute(pfd)) {
-        DBG("dividing by PANGO_SCALE");
+        XF_DEBUG("dividing by PANGO_SCALE");
         desktop->priv->system_font_size /= PANGO_SCALE;
     }
     XF_DEBUG("system font size is %.05f", desktop->priv->system_font_size);
@@ -333,7 +333,7 @@ create_bg_pixmap(GdkScreen *gscreen, gpointer user_data)
     /* If the workspaces haven't been created yet there's no need to do the
      * background pixmap */
     if(desktop->priv->workspaces == NULL) {
-        DBG("exiting, desktop->priv->workspaces == NULL");
+        XF_DEBUG("exiting, desktop->priv->workspaces == NULL");
         return NULL;
     }
 
@@ -1598,7 +1598,7 @@ xfce_desktop_set_single_workspace_mode(XfceDesktop *desktop,
 
     desktop->priv->single_workspace_mode = single_workspace;
 
-    DBG("single_workspace_mode now %s", single_workspace ? "TRUE" : "FALSE");
+    XF_DEBUG("single_workspace_mode now %s", single_workspace ? "TRUE" : "FALSE");
 
 
     /* If the desktop has been realized then fake a screen size change to
@@ -1616,7 +1616,7 @@ xfce_desktop_set_single_workspace_number(XfceDesktop *desktop,
     if(workspace_num == desktop->priv->single_workspace_num)
         return;
 
-    DBG("single_workspace_num now %d", workspace_num);
+    XF_DEBUG("single_workspace_num now %d", workspace_num);
 
     desktop->priv->single_workspace_num = workspace_num;
 

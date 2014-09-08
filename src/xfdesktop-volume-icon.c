@@ -398,7 +398,7 @@ xfdesktop_volume_icon_do_drop_dest(XfdesktopIcon *icon,
     gboolean result = FALSE;
     gchar *name;
     
-    DBG("entering");
+    TRACE("entering");
     
     g_return_val_if_fail(volume_icon && src_file_icon, FALSE);
     g_return_val_if_fail(xfdesktop_volume_icon_get_allowed_drop_actions(icon, NULL),
@@ -424,17 +424,17 @@ xfdesktop_volume_icon_do_drop_dest(XfdesktopIcon *icon,
     
     switch(action) {
         case GDK_ACTION_MOVE:
-            DBG("doing move");
+            XF_DEBUG("doing move");
             dest_file = g_object_ref(volume_icon->priv->file);
             break;
         
         case GDK_ACTION_COPY:
-            DBG("doing copy");
+            XF_DEBUG("doing copy");
             dest_file = g_file_get_child(volume_icon->priv->file, name);
             break;
         
         case GDK_ACTION_LINK:
-            DBG("doing link");
+            XF_DEBUG("doing link");
             dest_file = g_object_ref(volume_icon->priv->file);
             break;
         
@@ -895,7 +895,7 @@ xfdesktop_volume_icon_update_file_info(XfdesktopFileIcon *icon,
 
     g_return_if_fail(XFDESKTOP_IS_VOLUME_ICON(icon));
 
-    DBG("entering");
+    TRACE("entering");
 
     /* just replace the file info here */
     if(volume_icon->priv->file_info)
