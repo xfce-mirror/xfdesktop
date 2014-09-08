@@ -697,9 +697,10 @@ xfdesktop_settings_update_iconview_frame_name(AppearancePanel *panel,
 
     g_return_if_fail(panel->monitor >= 0 && panel->workspace >= 0);
 
+    screen = wnck_window_get_screen(panel->wnck_window);
+
     /* If it's a pinned window get the active workspace */
     if(wnck_workspace == NULL) {
-        screen = wnck_window_get_screen(panel->wnck_window);
         workspace = wnck_screen_get_workspace(screen, panel->active_workspace);
     } else {
         workspace = wnck_workspace;
@@ -744,7 +745,8 @@ xfdesktop_settings_update_iconview_frame_name(AppearancePanel *panel,
             gtk_widget_set_visible(panel->infobar, TRUE);
         }
     } else {
-        if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(panel->chk_apply_to_all))) {
+        if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(panel->chk_apply_to_all)) ||
+           (wnck_screen_get_workspace_count(screen) == 1)) {
             /* Single monitor and single workspace */
             g_snprintf(buf, sizeof(buf), _("Wallpaper for my desktop"));
 
