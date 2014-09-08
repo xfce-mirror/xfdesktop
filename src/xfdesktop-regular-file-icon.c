@@ -364,49 +364,87 @@ xfdesktop_load_icon_location_from_folder(XfdesktopFileIcon *icon)
 static GIcon *
 xfdesktop_load_icon_from_desktop_file(XfdesktopRegularFileIcon *regular_icon)
 {
-    gchar *contents;
+    gchar *contents, *icon_name;
     gsize length;
     GIcon *gicon = NULL;
     gchar *p;
+    GKeyFile *key_file;
 
     /* try to load the file into memory */
-    if(g_file_load_contents(regular_icon->priv->file, NULL, &contents, &length,
-                            NULL, NULL))
-    {
-        /* allocate a new key file */
-        GKeyFile *key_file = g_key_file_new();
+    if(!g_file_load_contents(regular_icon->priv->file, NULL, &contents, &length, NULL, NULL))
+        return NULL;
 
-        /* try to parse the key file from the contents of the file */
-        if (g_key_file_load_from_data(key_file, contents, length, 0, NULL)) {
-            gchar *icon_name;
-            /* try to determine the custom icon name */
-            icon_name = g_key_file_get_string(key_file,
-                                              G_KEY_FILE_DESKTOP_GROUP,
-                                              G_KEY_FILE_DESKTOP_KEY_ICON,
-                                              NULL);
+    /* allocate a new key file */
+    key_file = g_key_file_new();
 
-            if(icon_name && g_file_test(icon_name, G_FILE_TEST_IS_REGULAR)) {
-                /* icon_name is an absolute path, create it as a file icon */
-                gicon = g_file_icon_new(g_file_new_for_path(icon_name));
-            } else if(icon_name) {
-                /* drop any suffix (e.g. '.png') from themed icons */
-                if (!g_path_is_absolute (icon_name)) {
-                    p = strrchr (icon_name, '.');
-                    if (p != NULL)
-                        *p = '\0';
-                }
-                /* otherwise create a themed icon for it */
-                gicon = g_themed_icon_new(icon_name);
-            }
+    /* try to parse the key file from the contents of the file */
+    if(!g_key_file_load_from_data(key_file, contents, length, 0, NULL)) {
+        g_free(contents);
+        return NULL;
+    }
 
-            if(icon_name)
-                g_free(icon_name);
-        }
+    /* try to determine the custom icon name */
+    icon_name = g_key_file_get_string(key_file,
+                                      G_KEY_FILE_DESKTOP_GROUP,
+                                      G_KEY_FILE_DESKTOP_KEY_ICON,
+                                      NULL);
 
+    /* No icon name in the desktop file */
+    if(icon_name == NULL) {
         /* free key file and in-memory data */
         g_key_file_free(key_file);
         g_free(contents);
+        return NULL;
     }
+
+    /* icon_name is an absolute path, create it as a file icon */
+    if(g_file_test(icon_name, G_FILE_TEST_IS_REGULAR)) {
+        gicon = g_file_icon_new(g_file_new_for_path(icon_name));
+    }
+
+    /* check if the icon theme includes the icon name as-is */
+    if(gicon == NULL) {
+        if(gtk_icon_theme_has_icon(gtk_icon_theme_get_default(), icon_name)) {
+            /* load it */
+            gicon = g_themed_icon_new(icon_name);
+        }
+    }
+
+    /* drop any suffix (e.g. '.png') from themed icons and try to laod that */
+    if(gicon == NULL) {
+        gchar *tmp_name = NULL;
+
+        p = strrchr(icon_name, '.');
+        if(p != NULL)
+            tmp_name = g_strndup(icon_name, p - icon_name);
+
+        /* check if the icon theme includes the icon name */
+        if(tmp_name && gtk_icon_theme_has_icon(gtk_icon_theme_get_default(), tmp_name)) {
+            /* load it */
+            gicon = g_themed_icon_new(tmp_name);
+        }
+        g_free(tmp_name);
+    }
+
+    /* maybe it points to a file in the pixmaps folder */
+    if(gicon == NULL) {
+        gchar *filename = g_build_filename("pixmaps", icon_name, NULL);
+        gchar *tmp_name = NULL;
+
+        if(filename)
+            tmp_name = xfce_resource_lookup(XFCE_RESOURCE_DATA, filename);
+
+        if(tmp_name)
+            gicon = g_file_icon_new(g_file_new_for_path(tmp_name));
+
+        g_free(filename);
+        g_free(tmp_name);
+    }
+
+    /* free key file and in-memory data */
+    g_key_file_free(key_file);
+    g_free(contents);
+    g_free(icon_name);
 
     return gicon;
 }
