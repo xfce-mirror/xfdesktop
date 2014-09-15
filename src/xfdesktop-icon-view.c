@@ -233,9 +233,6 @@ static gboolean xfdesktop_icon_view_drag_motion(GtkWidget *widget,
                                                 gint x,
                                                 gint y,
                                                 guint time_);
-static void xfdesktop_icon_view_drag_leave(GtkWidget *widget,
-                                           GdkDragContext *context,
-                                           guint time_);
 static gboolean xfdesktop_icon_view_drag_drop(GtkWidget *widget,
                                               GdkDragContext *context,
                                               gint x,
@@ -409,7 +406,6 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
     widget_class->expose_event = xfdesktop_icon_view_expose;
     widget_class->drag_begin = xfdesktop_icon_view_drag_begin;
     widget_class->drag_motion = xfdesktop_icon_view_drag_motion;
-    widget_class->drag_leave = xfdesktop_icon_view_drag_leave;
     widget_class->drag_drop = xfdesktop_icon_view_drag_drop;
     widget_class->drag_data_get = xfdesktop_icon_view_drag_data_get;
     widget_class->drag_data_received = xfdesktop_icon_view_drag_data_received;
@@ -1401,90 +1397,6 @@ xfdesktop_xy_to_rowcol(XfdesktopIconView *icon_view,
     *col = (x - icon_view->priv->xorigin - SCREEN_MARGIN) / CELL_SIZE;
 }
 
-static inline void
-xfdesktop_icon_view_clear_drag_highlight(XfdesktopIconView *icon_view,
-                                         GdkDragContext *context)
-{
-    GdkRectangle *cell_highlight;
-
-    cell_highlight = g_object_get_qdata(G_OBJECT(context),
-                                        xfdesktop_cell_highlight_quark);
-    if(!cell_highlight)
-        return;
-    
-    if(0 == cell_highlight->width || 0 == cell_highlight->height)
-        return;
-
-    /* When dragging an icon a box is drawn to indicate the cell where the
-     * icon could be moved to if dropped. We need to clear that box but make
-     * the length of the lines slightly longer to clear all the pixels */
-    /* Left vertical line */
-    gtk_widget_queue_draw_area(GTK_WIDGET(icon_view),
-                               cell_highlight->x - 1,
-                               cell_highlight->y - 1,
-                               2,
-                               cell_highlight->height + 2);
-    /* Right vertical line */
-    gtk_widget_queue_draw_area(GTK_WIDGET(icon_view),
-                               cell_highlight->x + cell_highlight->width - 1,
-                               cell_highlight->y,
-                               2,
-                               cell_highlight->height + 2);
-    /* Top horizontal line */
-    gtk_widget_queue_draw_area(GTK_WIDGET(icon_view),
-                               cell_highlight->x,
-                               cell_highlight->y - 1,
-                               cell_highlight->width + 2,
-                               2);
-    /* Bottom horizontal line */
-    gtk_widget_queue_draw_area(GTK_WIDGET(icon_view),
-                               cell_highlight->x,
-                               cell_highlight->y + cell_highlight->height - 1,
-                               cell_highlight->width + 2,
-                               2);
-    
-    cell_highlight->width = cell_highlight->height = 0;
-}
-
-static inline void
-xfdesktop_icon_view_draw_drag_highlight(XfdesktopIconView *icon_view,
-                                        GdkDragContext *context,
-                                        guint16 row,
-                                        guint16 col)
-{
-    GtkWidget *widget = GTK_WIDGET(icon_view);
-    cairo_t *cr;
-    GdkRectangle *cell_highlight;
-    gint newx, newy;
-    
-    newx = SCREEN_MARGIN + icon_view->priv->xorigin + col * CELL_SIZE;
-    newy = SCREEN_MARGIN + icon_view->priv->yorigin + row * CELL_SIZE;
-    
-    cell_highlight = g_object_get_qdata(G_OBJECT(context),
-                                        xfdesktop_cell_highlight_quark);
-    
-    if(cell_highlight) {
-        if(newx != cell_highlight->x || newy != cell_highlight->y)
-            xfdesktop_icon_view_clear_drag_highlight(icon_view, context);
-    } else {
-        cell_highlight = g_new0(GdkRectangle, 1);
-        g_object_set_qdata_full(G_OBJECT(context),
-                               xfdesktop_cell_highlight_quark,
-                               cell_highlight, (GDestroyNotify)g_free);
-    }
-    
-    cell_highlight->x = newx;
-    cell_highlight->y = newy;
-    cell_highlight->width = cell_highlight->height = CELL_SIZE;
-
-    cr = gdk_cairo_create(GDK_DRAWABLE(gtk_widget_get_window(widget)));
-    gdk_cairo_set_source_color(cr, &gtk_widget_get_style(widget)->bg[GTK_STATE_SELECTED]);
-    cairo_set_line_width(cr, 0.5);
-    cairo_rectangle(cr, newx, newy, CELL_SIZE, CELL_SIZE);
-    cairo_stroke(cr);
-    cairo_destroy(cr);
-}
-
 static gboolean
 xfdesktop_icon_view_drag_motion(GtkWidget *widget,
                                 GdkDragContext *context,
@@ -1548,7 +1460,6 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
                 if(xfdesktop_icon_get_position(sel_icon, &sel_row, &sel_col)
                    && sel_row == hover_row && sel_col == hover_col)
                 {
-                    xfdesktop_icon_view_clear_drag_highlight(icon_view, context);
                     return FALSE;
                 }
             }
@@ -1594,16 +1505,6 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
 
     return TRUE;
 }
-
-static void
-xfdesktop_icon_view_drag_leave(GtkWidget *widget,
-                               GdkDragContext *context,
-                               guint time_)
-{
-    xfdesktop_icon_view_clear_drag_highlight(XFDESKTOP_ICON_VIEW(widget),
-                                             context);
-}
-
 
 static gboolean
 xfdesktop_icon_view_drag_drop(GtkWidget *widget,
@@ -1778,12 +1679,6 @@ xfdesktop_icon_view_drag_data_received(GtkWidget *widget,
                                                                  context, data,
                                                                  info);
 
-        if(action == 0)
-            xfdesktop_icon_view_clear_drag_highlight(icon_view, context);
-        else
-            xfdesktop_icon_view_draw_drag_highlight(icon_view, context,
-                                                    icon_view->priv->hover_row,
-                                                    icon_view->priv->hover_col);
         gdk_drag_status(context, action, time_);
     }
 }
