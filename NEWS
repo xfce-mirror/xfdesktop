@@ -1,3 +1,22 @@
+4.11.8
+======
+[Please note that this is a development release.]
+
+Development release of xfdesktop targeting for Xfce 4.12.
+Please report all problems at bugzilla.xfce.org.
+
+* Miscellaneous bug fixes:
+ - Fix xfdesktop --reload in spanning mode (Bug 10853)
+ - settings: Fix background color loading
+ - Add an --enable-debug option added to xfdesktop-settings
+ - Fix icon loading for .desktop files (Bug 11078)
+ - Don't show infobar when there's only 1 workspace (Bug 11134)
+ - Remove the drag highlight code (Bug 10450)
+
+* Translation updates:
+  Czech (cs), Italian (it), Kazakh (kk), Korean (ko),
+  Polish (pl), Russian (ru), Thai (th)
+
 4.11.7
 ======
 [Please note that this is a development release.]

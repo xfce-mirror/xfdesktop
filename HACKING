@@ -84,29 +84,15 @@ example_foo_function(FooObject *cheese,
 
 * Code layout:
   - /common/
-    + Stuff that's used in multiple places (possibly the MCS plugin, panel
-      plugin, menu module, or xfdesktop itself).
-  - /menueditor/
-    + The menu editor app.  Jean-Francois Wauthy wrote and maintains this,
-      so everything I said above may or may not apply there.
-  - /modules/menu/
-    + The menu implementation.  Please don't touch this.  It should hopefully
-      be replaced in Xfce 4.6, and it's somewhat fragile and touchy at times.
-      I don't really remember how some parts of it work.
-  - /panel-plugin/
-    + This is just a simple panel plugin that loads the menu module and
-      displays the menu when you click on a button.  It's relatively
-      uncomplicated, though getting the icon sizing correct is a constant
-      chore.
+    + Stuff that's used in multiple places.
   - /settings/
-    + This implements the settings plugin for the MCS settings manager.  If
-      you add a pref to xfdesktop, you'll have to edit this.  It's a mess.
-      I'm sorry.  I tried to rewrite it once, but I found the process so
-      tedious, I gave up.
+    + This implements xfdesktop-settings a stand-alone program as well as a
+      plugin for the xfce4-settings-manager.
   - /src/main.c
-    + This basically just starts everything up and does a few tasks like
-      handle shunting button presses where they need to go, and handling
-      the simple remote control function.
+    + This basically just the main function, it then calls the xfdesktop-application.
+  - /src/xfdesktop-application.c Handles the startup and shutdown of xfdesktop.
+      It uses GApplication to handle message passing, process uniqueness,
+      parses the command line, and other related tasks.
   - /src/menu.c
     + This actually contains very little menu code.  It just accepts the mouse
       button press and pops up the menu, along with some other random stuff.
@@ -115,12 +101,17 @@ example_foo_function(FooObject *cheese,
       constructs a nifty menu to display them all.
   - /src/xfce-backdrop.c
     + This (XfceBackdrop) represents a backdrop image.  It handles scaling and
-      compositing as well.
+      compositing as well and has code to handle rotating the backdrop image.
   - /src/xfce-desktop.c
-    + This is a GtkWindow subclass which is the actuall desktop window.
+    + This is a GtkWindow subclass which is the actual desktop window.
       xfdesktop displays one XfceDesktop window for each X screen, and may
-      have several XfceBackdrop objects associated with it if the X screen
-      contains multiple Xinerama monitors.
+      have several XfceWorkspace objects associated with it based on the
+      number of workspaces configured.
+  - /src/xfce-workspace.c
+    + This represents a workspace on the system and contains a list of
+      XfceBackdrops used to represent that workspace, usually one per
+      monitor. It also sets the properties of the XfceBackdrop and handles
+      the migration from the pre4.11 xfconf settings to the modern ones.
   - /src/xfdesktop-icon-view.c
     + XfdesktopIconView is a relatively simple (at least it started out that
       way) icon view widget for the desktop.  It only supports a fixed grid

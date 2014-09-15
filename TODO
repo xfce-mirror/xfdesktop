@@ -1,16 +1,3 @@
-* move DnD handling to one place.  right now there are about four copies of
-  it and they're mostly the same (and some of them are buggy).  need to
-  preserve semantics where volume icon gets mounted before a file is dropped
-  on it.
-* need a way to determine if the *source* file can be dropped onto another
-  icon.  currently we only check to see if the destination icon can accept
-  a drop.  this is needed to determine if we can trash a particular file,
-  and also so we don't try to move things like removable volumes.
-* default move if file is on same volume, copy otherwise
-* "arrange items"/"auto arrange" menu option
-* rubber banding
 * free placement (no grid)
-* 'paste' action
 * better tooltips for volumes and special icons (partially done)
-* use thunar's file properties dialog
-* progress dialog for copying/moving files
+* implement other feature requests that are in bugzilla
