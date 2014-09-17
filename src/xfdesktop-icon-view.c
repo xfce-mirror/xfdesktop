@@ -64,7 +64,7 @@
 #define SPACING           (icon_view->priv->cell_spacing)
 #define LABEL_RADIUS      (icon_view->priv->label_radius)
 #define TEXT_HEIGHT       (CELL_SIZE - ICON_SIZE - SPACING - (CELL_PADDING * 2) - LABEL_RADIUS)
-#define SCREEN_MARGIN     8
+#define MIN_MARGIN        8
 #define DEFAULT_RUBBERBAND_ALPHA  64
 
 #if defined(DEBUG) && DEBUG > 0
@@ -123,6 +123,11 @@ struct _XfdesktopIconViewPrivate
     gint yorigin;
     gint width;
     gint height;
+
+    gint xmargin;
+    gint ymargin;
+    gint xspacing;
+    gint yspacing;
     
     guint16 nrows;
     guint16 ncols;
@@ -1393,8 +1398,8 @@ xfdesktop_xy_to_rowcol(XfdesktopIconView *icon_view,
 {
     g_return_if_fail(row && col);
     
-    *row = (y - icon_view->priv->yorigin - SCREEN_MARGIN) / CELL_SIZE;
-    *col = (x - icon_view->priv->xorigin - SCREEN_MARGIN) / CELL_SIZE;
+    *row = (y - icon_view->priv->yorigin - icon_view->priv->ymargin) / (CELL_SIZE + icon_view->priv->yspacing);
+    *col = (x - icon_view->priv->xorigin - icon_view->priv->xmargin) / (CELL_SIZE + icon_view->priv->xspacing);
 }
 
 static gboolean
@@ -2542,16 +2547,16 @@ xfdesktop_icon_view_setup_grids_xinerama(XfdesktopIconView *icon_view)
     monitor_geoms = g_new0(GdkRectangle, nmonitors);
     for(i = 0; i < nmonitors; ++i)
         gdk_screen_get_monitor_geometry(gscreen, i, &monitor_geoms[i]);
-    
+
     /* cubic time; w00t! */
     cell_rect.width = cell_rect.height = CELL_SIZE;
     for(row = 0; row < icon_view->priv->nrows; ++row) {
         for(col = 0; col < icon_view->priv->ncols; ++col) {
             gboolean bounded = FALSE;
-            
-            cell_rect.x = SCREEN_MARGIN + icon_view->priv->xorigin + col * CELL_SIZE;
-            cell_rect.y = SCREEN_MARGIN + icon_view->priv->yorigin + row * CELL_SIZE;
-            
+
+            cell_rect.x = icon_view->priv->xorigin + icon_view->priv->xmargin + col * CELL_SIZE + col * icon_view->priv->xspacing;
+            cell_rect.y = icon_view->priv->yorigin + icon_view->priv->ymargin + row * CELL_SIZE + row * icon_view->priv->yspacing;
+
             for(i = 0; i < nmonitors; ++i) {
                 if(xfdesktop_rectangle_is_bounded_by(&cell_rect,
                                                      &monitor_geoms[i]))
@@ -2577,7 +2582,7 @@ xfdesktop_icon_view_setup_grids_xinerama(XfdesktopIconView *icon_view)
 static void
 xfdesktop_setup_grids(XfdesktopIconView *icon_view)
 {
-    gint xorigin = 0, yorigin = 0, width = 0, height = 0;
+    gint xorigin = 0, yorigin = 0, xrest = 0, yrest = 0, width = 0, height = 0;
     gsize old_size, new_size;
     
     old_size = (guint)icon_view->priv->nrows * icon_view->priv->ncols
@@ -2597,9 +2602,17 @@ xfdesktop_setup_grids(XfdesktopIconView *icon_view)
     icon_view->priv->yorigin = yorigin;
     icon_view->priv->width = width;
     icon_view->priv->height = height;
-        
-    icon_view->priv->nrows = (height - SCREEN_MARGIN * 2) / CELL_SIZE;
-    icon_view->priv->ncols = (width - SCREEN_MARGIN * 2) / CELL_SIZE;
+
+    icon_view->priv->nrows = (height - MIN_MARGIN * 2) / CELL_SIZE;
+    icon_view->priv->ncols = (width - MIN_MARGIN * 2) / CELL_SIZE;
+
+    xrest = icon_view->priv->width - icon_view->priv->ncols * CELL_SIZE;
+    icon_view->priv->xspacing = (xrest - MIN_MARGIN * 2) / (icon_view->priv->ncols - 1);
+    icon_view->priv->xmargin = (xrest - (icon_view->priv->ncols - 1) * icon_view->priv->xspacing) / 2;
+
+    yrest = icon_view->priv->height - icon_view->priv->nrows * CELL_SIZE;
+    icon_view->priv->yspacing = (yrest - MIN_MARGIN * 2) / (icon_view->priv->nrows - 1);
+    icon_view->priv->ymargin = (yrest - (icon_view->priv->nrows - 1) * icon_view->priv->yspacing) / 2;
 
     new_size = (guint)icon_view->priv->nrows * icon_view->priv->ncols
                * sizeof(XfdesktopIcon *);
@@ -2878,8 +2891,8 @@ xfdesktop_icon_view_shift_area_to_cell(XfdesktopIconView *icon_view,
         return FALSE;
     }
 
-    area->x += SCREEN_MARGIN + icon_view->priv->xorigin + col * CELL_SIZE;
-    area->y += SCREEN_MARGIN + icon_view->priv->yorigin + row * CELL_SIZE;
+    area->x = icon_view->priv->xorigin + icon_view->priv->xmargin + col * CELL_SIZE + col * icon_view->priv->xspacing;
+    area->y = icon_view->priv->yorigin + icon_view->priv->ymargin + row * CELL_SIZE + row * icon_view->priv->yspacing;
 
     return TRUE;
 }
@@ -3291,34 +3304,29 @@ xfdesktop_grid_do_resize(XfdesktopIconView *icon_view)
         height = gdk_screen_get_height(gscreen);
     }
 
-    new_rows = (height - SCREEN_MARGIN * 2) / CELL_SIZE;
-    new_cols = (width - SCREEN_MARGIN * 2) / CELL_SIZE;
+    new_rows = (height - MIN_MARGIN * 2) / CELL_SIZE;
+    new_cols = (width - MIN_MARGIN * 2) / CELL_SIZE;
 
     new_size = (guint)new_rows * new_cols * sizeof(XfdesktopIcon *);
 
-    if(old_size == new_size) {
-        DBG("old_size == new_size exiting");
-        return;
+    if(old_size != new_size) {
+        DBG("old_size != new_size use cache icon list");
+        #if 0 /*def DEBUG*/
+            DUMP_GRID_LAYOUT(icon_view);
+        #endif
+
+        /* Grid size did chang/e */
+        xfdesktop_move_all_icons_to_pending_icons_list(icon_view);
+        xfdesktop_move_all_pending_icons_to_desktop(icon_view);
+
+        #if 0 /*def DEBUG*/
+            DUMP_GRID_LAYOUT(icon_view);
+        #endif
     }
-
-    /* Grid size did change */
-    xfdesktop_move_all_icons_to_pending_icons_list(icon_view);
-
-#if 0 /*def DEBUG*/
-    DUMP_GRID_LAYOUT(icon_view);
-#endif
-
-    memset(icon_view->priv->grid_layout, 0,
-           (guint)icon_view->priv->nrows * icon_view->priv->ncols
-           * sizeof(XfdesktopIcon *));
-    
-    xfdesktop_setup_grids(icon_view);
-
-#if 0 /*def DEBUG*/
-    DUMP_GRID_LAYOUT(icon_view);
-#endif
-
-    xfdesktop_move_all_pending_icons_to_desktop(icon_view);
+    else {
+        DBG("old_size == new_size updating grid");
+        xfdesktop_setup_grids (icon_view);
+    }
 
     gtk_widget_queue_draw(GTK_WIDGET(icon_view));
 }
@@ -3390,13 +3398,13 @@ xfdesktop_get_workarea_single(XfdesktopIconView *icon_view,
             
             /* there's probably a better way to do this. */
             if(i + (glong)nitems >= first_id && first_id - (glong)offset >= 0)
-                *xorigin = data[first_id - offset] + SCREEN_MARGIN;
+                *xorigin = data[first_id - offset] + MIN_MARGIN;
             if(i + (glong)nitems >= first_id + 1 && first_id - (glong)offset + 1 >= 0)
-                *yorigin = data[first_id - offset + 1] + SCREEN_MARGIN;
+                *yorigin = data[first_id - offset + 1] + MIN_MARGIN;
             if(i + (glong)nitems >= first_id + 2 && first_id - (glong)offset + 2 >= 0)
-                *width = data[first_id - offset + 2] - 2 * SCREEN_MARGIN;
+                *width = data[first_id - offset + 2] - 2 * MIN_MARGIN;
             if(i + (glong)nitems >= first_id + 3 && first_id - (glong)offset + 3 >= 0) {
-                *height = data[first_id - offset + 3] - 2 * SCREEN_MARGIN;
+                *height = data[first_id - offset + 3] - 2 * MIN_MARGIN;
                 ret = TRUE;
                 XFree(data_p);
                 g_free(data);
@@ -3676,9 +3684,9 @@ xfdesktop_icon_view_add_item_internal(XfdesktopIconView *icon_view,
     g_signal_connect(G_OBJECT(icon), "label-changed",
                      G_CALLBACK(xfdesktop_icon_view_icon_changed),
                      icon_view);
-    
-    fake_area.x = SCREEN_MARGIN + icon_view->priv->xorigin + col * CELL_SIZE;
-    fake_area.y = SCREEN_MARGIN + icon_view->priv->yorigin + row * CELL_SIZE;
+
+    fake_area.x = icon_view->priv->xorigin + icon_view->priv->xmargin + col * CELL_SIZE + col * icon_view->priv->xspacing;
+    fake_area.y = icon_view->priv->yorigin + icon_view->priv->ymargin + row * CELL_SIZE + row * icon_view->priv->yspacing;
     fake_area.width = fake_area.height = CELL_SIZE;
     xfdesktop_icon_view_paint_icon(icon_view, icon, &fake_area);
 }
