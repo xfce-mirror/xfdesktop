@@ -39,7 +39,9 @@ desktop_icon_sources = \
 	xfdesktop-window-icon.c \
 	xfdesktop-window-icon.h \
 	xfdesktop-window-icon-manager.c \
-	xfdesktop-window-icon-manager.h
+	xfdesktop-window-icon-manager.h \
+	gtkcairoblur.c \
+	gtkcairoblurprivate.h
 
 desktop_menu_sources = \
 	xfce-desktop-menu.c \
@@ -106,7 +108,8 @@ xfdesktop_LDADD += \
 	$(LIBXFCE4SMCLIENT_PRIVATE_LIBS) \
 	$(LIBWNCK_LIBS) \
 	$(XFCONF_LIBS) \
-	$(LIBEXO_LIBS)
+	$(LIBEXO_LIBS) \
+	-lm
 
 if BUILD_DESKTOP_MENU
 

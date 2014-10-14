@@ -47,6 +47,7 @@
 #include "xfce-desktop.h"
 #include "xfdesktop-volume-icon.h"
 #include "xfdesktop-common.h"
+#include "gtkcairoblurprivate.h"
 
 #include <libwnck/libwnck.h>
 #include <libxfce4ui/libxfce4ui.h>
@@ -177,6 +178,7 @@ struct _XfdesktopIconViewPrivate
     gchar     selected_shadow_x_offset;
     gchar     selected_shadow_y_offset;
     GdkColor *selected_shadow_color;
+    gchar     shadow_blur_radius;
 
     gint cell_padding;
     gint cell_spacing;
@@ -537,6 +539,13 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
                                                                "Shadow Y offset for selected label text",
                                                                G_MININT8, G_MAXINT8, 0,
                                                                G_PARAM_READABLE));
+
+    gtk_widget_class_install_style_property(widget_class,
+                                            g_param_spec_char("shadow-blur-radius",
+                                                              "shadow blur radius",
+                                                              "Blur radius for label text",
+                                                              G_MININT8, G_MAXINT8, 0,
+                                                              G_PARAM_READABLE));
 
     gtk_widget_class_install_style_property(widget_class,
                                             g_param_spec_boxed("shadow-color",
@@ -1810,6 +1819,7 @@ xfdesktop_icon_view_style_set(GtkWidget *widget,
                          "label-alpha",   &icon_view->priv->label_alpha,
                          "shadow-x-offset", &icon_view->priv->shadow_x_offset,
                          "shadow-y-offset", &icon_view->priv->shadow_y_offset,
+                         "shadow-blur-radius", &icon_view->priv->shadow_blur_radius,
                          "shadow-color",  &icon_view->priv->shadow_color,
                          NULL);
 
@@ -2959,15 +2969,39 @@ xfdesktop_icon_view_draw_image(cairo_t *cr, GdkPixbuf *pix, GdkRectangle *rect)
 }
 
 static void
-xfdesktop_icon_view_draw_text(cairo_t *cr, PangoLayout *playout,
-                              gint x, gint y, gint rtl_offset, GdkColor *color)
+xfdesktop_icon_view_draw_text(cairo_t *cr, PangoLayout *playout, GdkRectangle *text_area,
+                              gint x_offset, gint y_offset, gint rtl_offset,
+                              gint blur_radius, GdkColor *color)
 {
+    GdkRectangle box_area;
+
+    gint extents = _gtk_cairo_blur_compute_pixels(blur_radius);
+
+    /* Extend even more the rectangle to not cut the shadows. */
+    box_area = *text_area;
+    box_area.x -= extents;
+    box_area.y -= extents;
+    box_area.width += extents * 2;
+    box_area.height += extents * 2;
+
+    /*  Clip the cairo area to blur the minimum surface */
+    gdk_cairo_rectangle(cr, &box_area);
+    cairo_clip(cr);
+
+    cairo_move_to(cr,
+                  box_area.x + extents + x_offset - rtl_offset,
+                  box_area.y + extents + y_offset);
     cairo_save(cr);
 
-    cairo_move_to(cr, x - rtl_offset, y);
-
-    gdk_cairo_set_source_color(cr, color);
-    pango_cairo_show_layout(cr, playout);
+    if (blur_radius > 1) {
+        cr = gtk_css_shadow_value_start_drawing (cr, blur_radius);
+        pango_cairo_show_layout (cr, playout);
+        cr = gtk_css_shadow_value_finish_drawing (cr, blur_radius, color);
+    }
+    else {
+        gdk_cairo_set_source_color(cr, color);
+        pango_cairo_show_layout(cr, playout);
+    }
 
     cairo_restore(cr);
 }
@@ -3061,11 +3095,14 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
         }
 
         /* draw text shadow for the label text if an offset was defined */
-        if(x_offset || y_offset) {
+        if(x_offset || y_offset || icon_view->priv->shadow_blur_radius) {
+            /* Draw the shadow */
             xfdesktop_icon_view_draw_text(cr, playout,
-                                          text_extents.x + x_offset,
-                                          text_extents.y + y_offset,
+                                          &text_extents,
+                                          x_offset,
+                                          y_offset,
                                           rtl_offset,
+                                          icon_view->priv->shadow_blur_radius,
                                           sh_text_col);
         }
 
