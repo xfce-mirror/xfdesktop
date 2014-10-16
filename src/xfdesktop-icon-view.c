@@ -2975,6 +2975,8 @@ xfdesktop_icon_view_draw_text(cairo_t *cr, PangoLayout *playout, GdkRectangle *t
 {
     GdkRectangle box_area;
 
+    cairo_save(cr);
+
     gint extents = _gtk_cairo_blur_compute_pixels(blur_radius);
 
     /* Extend even more the rectangle to not cut the shadows. */
@@ -2991,7 +2993,7 @@ xfdesktop_icon_view_draw_text(cairo_t *cr, PangoLayout *playout, GdkRectangle *t
     cairo_move_to(cr,
                   box_area.x + extents + x_offset - rtl_offset,
                   box_area.y + extents + y_offset);
-    cairo_save(cr);
+
 
     if (blur_radius > 1) {
         cr = gtk_css_shadow_value_start_drawing (cr, blur_radius);
@@ -3095,7 +3097,7 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
         }
 
         /* draw text shadow for the label text if an offset was defined */
-        if(x_offset || y_offset || icon_view->priv->shadow_blur_radius) {
+        if(x_offset || y_offset || (icon_view->priv->shadow_blur_radius > 1)) {
             /* Draw the shadow */
             xfdesktop_icon_view_draw_text(cr, playout,
                                           &text_extents,

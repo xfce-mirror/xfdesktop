@@ -51,6 +51,7 @@ style "xfdesktop-icon-view" {
     XfdesktopIconView::selected-shadow-x-offset = 2
     XfdesktopIconView::selected-shadow-y-offset = 2
     XfdesktopIconView::selected-shadow-color = "#00ff00"
+    XfdesktopIconView::shadow-blur-radius = 2
 
     XfdesktopIconView::cell-spacing = 2
     XfdesktopIconView::cell-padding = 6
@@ -75,10 +76,13 @@ determines how large the image preview will be when the mouse is hovered
 over an icon (allowed values are from 0 (not shown) to 512, values larger
 than 256 may cause poor image quality however.)
 
-The second six entries can be used to enable a text shadow to be painted
-with the icon labels.  The offsets are in pixels.  Setting them to 0 (the
+The second seven entries can be used to enable a text shadow to be painted
+with the icon labels.  The offsets are in pixels. Setting them to 0 (the
 defaults) will disable the shadows entirely.  Again, the 'selected-'
-versions apply to icons that have been selected with the mouse.
+versions apply to icons that have been selected with the mouse. The
+shadow-blur-radius property optionally applies a blur to the shadows when
+it is greater than 1 improving the style, but needs a little more CPU
+processing, and therefore also is disabled by default.
 
 The third four entries set spacing and sizing for individual icons on
 the grid.  The 'cell-spacing' property specifies the spacing between each
