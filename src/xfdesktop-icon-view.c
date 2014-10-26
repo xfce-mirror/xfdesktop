@@ -2974,10 +2974,11 @@ xfdesktop_icon_view_draw_text(cairo_t *cr, PangoLayout *playout, GdkRectangle *t
                               gint blur_radius, GdkColor *color)
 {
     GdkRectangle box_area;
+    gint extents;
 
     cairo_save(cr);
 
-    gint extents = _gtk_cairo_blur_compute_pixels(blur_radius);
+    extents = _gtk_cairo_blur_compute_pixels(blur_radius);
 
     /* Extend even more the rectangle to not cut the shadows. */
     box_area = *text_area;
