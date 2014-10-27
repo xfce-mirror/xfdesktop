@@ -32,8 +32,10 @@
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4ui/libxfce4ui.h>
 #include <exo/exo.h>
+#include <xfconf/xfconf.h>
 
 #include "xfdesktop-app-menu-item.h"
+#include "xfdesktop-common.h"
 
 struct _XfdesktopAppMenuItem
 {
@@ -367,9 +369,11 @@ xfdesktop_app_menu_item_edit_launcher(XfdesktopAppMenuItem *app_menu_item)
 static void
 xfdesktop_app_menu_item_activate (XfdesktopAppMenuItem *app_menu_item)
 {
+   XfconfChannel *channel;
    gchar *command;
    GdkEventButton *evt;
    guint button;
+   gboolean right_click_edits;
    GError *error = NULL;
 
    TRACE("entering");
@@ -380,11 +384,17 @@ xfdesktop_app_menu_item_activate (XfdesktopAppMenuItem *app_menu_item)
 
    evt = (GdkEventButton *)gtk_get_current_event();
 
-   /* Right click edits the launchers */
+   channel = xfconf_channel_get (XFDESKTOP_CHANNEL);
+   right_click_edits = xfconf_channel_get_bool (channel,
+                                                "/desktop-icons/right-click-edits-menu",
+                                                TRUE);
+
+   /* See if we're trying to edit the launcher */
    if(evt && GDK_BUTTON_RELEASE == evt->type) {
        button = evt->button;
 
-       if(button == 3 || (button == 1 && (evt->state & GDK_SHIFT_MASK))) {
+       /* right click can optionally edit launchers. Shift + left always will */
+       if((button == 3 && right_click_edits) || (button == 1 && (evt->state & GDK_SHIFT_MASK))) {
             if(xfdesktop_app_menu_item_edit_launcher(app_menu_item)) {
                 gdk_event_free((GdkEvent*)evt);
                 return;
