@@ -192,7 +192,7 @@ struct _XfdesktopIconViewPrivate
      * xfdesktop_icon_view_get_tooltip_size will return the correct size. */
     gboolean show_tooltips;
     gint   tooltip_size_from_style;
-    double tooltip_szie_from_xfconf;
+    double tooltip_size_from_xfconf;
 
     gboolean single_click;
 };
@@ -766,7 +766,7 @@ xfce_icon_view_set_property(GObject *object,
             break;
 
         case PROP_TOOLTIP_SIZE:
-            icon_view->priv->tooltip_szie_from_xfconf = g_value_get_double(value);
+            icon_view->priv->tooltip_size_from_xfconf = g_value_get_double(value);
             break;
 
         default:
@@ -793,7 +793,7 @@ xfce_icon_view_get_property(GObject *object,
             break;
 
         case PROP_TOOLTIP_SIZE:
-            g_value_set_double(value, icon_view->priv->tooltip_szie_from_xfconf);
+            g_value_set_double(value, icon_view->priv->tooltip_size_from_xfconf);
             break;
 
         default:
@@ -983,8 +983,8 @@ xfdesktop_icon_view_get_tooltip_size(XfdesktopIconView *icon_view)
         return 0;
 
     /* If the xfconf size is set and sane, use it */
-    if(icon_view->priv->tooltip_szie_from_xfconf >= 0)
-        return icon_view->priv->tooltip_szie_from_xfconf;
+    if(icon_view->priv->tooltip_size_from_xfconf >= 0)
+        return icon_view->priv->tooltip_size_from_xfconf;
 
     /* if the style size is set and sane, use it */
     if(icon_view->priv->tooltip_size_from_style >= 0)
