@@ -81,9 +81,9 @@ xfdesktop_backdrop_list_load(const gchar *filename,
                              gint *n_items,
                              GError **error)
 {
-    gchar *contents = NULL, **files = NULL, *p, *q;
+    gchar *contents = NULL, **files = NULL;
     gsize length = 0;
-    gint arr_size = 10, count = 0;
+    gint i, items;
 
     g_return_val_if_fail(filename && (!error || !*error), NULL);
 
@@ -99,33 +99,26 @@ xfdesktop_backdrop_list_load(const gchar *filename,
         return NULL;
     }
 
-    /* i'd use g_strsplit() here, but then counting is slower.  we can
-     * also filter out blank lines */
-    files = g_malloc(sizeof(gchar *) * (arr_size+1));
-    p = contents + sizeof(LIST_TEXT);
-    while(p && *p) {
-        q = strstr(p, "\n");
-        if(q) {
-            if(p == q)  /* blank line */
-                continue;
-            *q = 0;
-        } else
-            q = contents + length;  /* assume no trailing '\n' at EOF */
+    items = 0;
+    files = g_strsplit(contents, "\n", -1);
 
-        if(count == arr_size) {
-            arr_size += 10;
-            files = g_realloc(files, sizeof(gchar *) * (arr_size+1));
+    /* Since the first line is the file identifier, we need to skip it.
+     * Additionally, we want to skip blank lines. */
+    for(i = 1; files[i] != NULL; i++) {
+        if(g_strcmp0(files[i], "") != 0) {
+            g_free(files[items]);
+            files[items] = g_strdup(files[i]);
+            DBG("files[items] %s", files[items]);
+            items++;
         }
-
-        files[count++] = g_strdup(p);
-        if(q != contents + length)
-            p = q + 1;
     }
-    files[count] = NULL;
-    files = g_realloc(files, sizeof(gchar *) * (count+1));
+    files[items+1] = NULL;
 
+    files = g_realloc(files, sizeof(gchar *) * (items+1));
+
+    DBG("items %d", items);
     if(n_items)
-        *n_items = count;
+        *n_items = items;
 
     g_free(contents);
 

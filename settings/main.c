@@ -568,6 +568,7 @@ xfdesktop_settings_dialog_create_load_list(AppearancePanel *panel)
         gtk_main_iteration();
 
     if(!xfdesktop_settings_ensure_backdrop_list(list_file, parent)) {
+        g_warning ("backdrop list is not valid");
         g_free(list_file);
         return NULL;
     }
@@ -660,6 +661,7 @@ xfdesktop_settings_dialog_populate_image_list(AppearancePanel *panel)
 
             for(i = 0; images[i]; ++i) {
                 GtkTreeIter *iter = xfdesktop_settings_image_treeview_add(GTK_TREE_MODEL(ls), images[i]);
+                DBG("adding images[i] %s", images[i]);
                 if(iter)
                     gtk_tree_iter_free(iter);
             }
