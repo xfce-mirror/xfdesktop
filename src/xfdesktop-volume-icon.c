@@ -363,7 +363,7 @@ xfdesktop_volume_icon_do_drop_dest(XfdesktopIcon *icon,
     XfdesktopVolumeIcon *volume_icon = XFDESKTOP_VOLUME_ICON(icon);
     XfdesktopFileIcon *src_file_icon = XFDESKTOP_FILE_ICON(src_icon);
     GFileInfo *src_info;
-    GFile *src_file, *parent, *dest_file;
+    GFile *src_file, *parent, *dest_file = NULL;
     gboolean result = FALSE;
     gchar *name;
     
@@ -692,7 +692,7 @@ xfdesktop_volume_icon_populate_context_menu(XfdesktopIcon *icon,
     GVolume *volume = volume_icon->priv->volume;
     GtkWidget *mi, *img;
     GMount *mount;
-    const gchar *icon_name, *icon_label;
+    const gchar *icon_name, *icon_label = NULL;
     
     img = gtk_image_new_from_stock(GTK_STOCK_OPEN, GTK_ICON_SIZE_MENU);
     gtk_widget_show(img);
