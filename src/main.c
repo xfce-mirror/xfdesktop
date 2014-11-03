@@ -255,7 +255,9 @@ main(int argc, char **argv)
     xfce_textdomain(GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
     
 #if defined(ENABLE_FILE_ICONS) || defined(USE_DESKTOP_MENU)
+#if !GLIB_CHECK_VERSION(2, 32, 0)
     g_thread_init(NULL);
+#endif /* GLIB_CHECK_VERSION */
 #endif
 #ifdef ENABLE_FILE_ICONS
     dbus_g_thread_init();
