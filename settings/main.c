@@ -743,10 +743,17 @@ xfdesktop_settings_dialog_populate_image_list(AppearancePanel *panel)
 
     /* generate previews of each image -- the new thread will own
      * the reference on the list store, so let's not unref it here */
+#if GLIB_CHECK_VERSION(2, 32, 0)
+    if(!g_thread_try_new("create_previews", xfdesktop_settings_create_all_previews, ls, NULL)) {
+        g_critical("Failed to spawn thread; backdrop previews will be unavailable.");
+        g_object_unref(G_OBJECT(ls));
+    }
+#else
     if(!g_thread_create(xfdesktop_settings_create_all_previews, ls, FALSE, NULL)) {
         g_critical("Failed to spawn thread; backdrop previews will be unavailable.");
         g_object_unref(G_OBJECT(ls));
     }
+#endif
 
     g_free(image_file);
 
@@ -937,6 +944,19 @@ add_file_button_clicked(GtkWidget *button,
         }
         g_slist_free(filenames);
 
+#if GLIB_CHECK_VERSION(2, 32, 0)
+        if(!pdata->iters
+           || !g_thread_try_new("some_previews", xfdesktop_settings_create_some_previews,
+                                pdata, NULL))
+        {
+            if(pdata->iters)
+                g_critical("Unable to create thread for single image preview.");
+            g_object_unref(G_OBJECT(pdata->model));
+            g_slist_foreach(pdata->iters, (GFunc)gtk_tree_iter_free, NULL);
+            g_slist_free(pdata->iters);
+            g_free(pdata);
+        }
+#else
         if(!pdata->iters
            || !g_thread_create(xfdesktop_settings_create_some_previews,
                                pdata, FALSE, NULL))
@@ -948,7 +968,7 @@ add_file_button_clicked(GtkWidget *button,
             g_slist_free(pdata->iters);
             g_free(pdata);
         }
-
+#endif
         if(panel->image_list_loaded) {
             xfdesktop_settings_save_backdrop_list(panel, model);
 
@@ -1250,6 +1270,19 @@ image_treeview_drag_data_received(GtkWidget *widget,
 
     file_added = !!pdata->iters;
 
+#if GLIB_CHECK_VERSION(2, 32, 0)
+    if(!pdata->iters
+       || !g_thread_try_new("some_previews", xfdesktop_settings_create_some_previews,
+                           pdata, NULL))
+    {
+        if(pdata->iters)
+            g_critical("Unable to create thread for single image preview.");
+        g_object_unref(G_OBJECT(pdata->model));
+        g_slist_foreach(pdata->iters, (GFunc)gtk_tree_iter_free, NULL);
+        g_slist_free(pdata->iters);
+        g_free(pdata);
+    }
+#else
     if(!pdata->iters
        || !g_thread_create(xfdesktop_settings_create_some_previews,
                            pdata, FALSE, NULL))
@@ -1261,6 +1294,7 @@ image_treeview_drag_data_received(GtkWidget *widget,
         g_slist_free(pdata->iters);
         g_free(pdata);
     }
+#endif
 
     gtk_drag_finish(context, file_added, FALSE, time_);
 
