@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-03 12:32+0200\n"
-"PO-Revision-Date: 2014-08-05 09:42+0000\n"
+"POT-Creation-Date: 2014-11-11 18:32+0100\n"
+"PO-Revision-Date: 2014-11-12 11:10+0000\n"
 "Last-Translator: Pjotr <pjotrvertaalt@gmail.com>\n"
 "Language-Team: Dutch (http://www.transifex.com/projects/p/xfdesktop/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -58,95 +58,99 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nType: %s\nGrootte: %s"
 
-#: ../settings/main.c:715
+#: ../settings/main.c:716
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "Bureaubladachtergrond voor beeldscherm %d (%s)"
 
-#: ../settings/main.c:718
+#: ../settings/main.c:719
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "Bureaubladachtergrond voor beeldscherm %d"
 
-#: ../settings/main.c:724
+#: ../settings/main.c:725
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "Verplaats dit dialoogvenster naar het scherm waarvan u de instellingen wil bewerken."
 
-#: ../settings/main.c:731
+#: ../settings/main.c:732
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "Bureaubladachtergrond voor %s op beeldscherm %d (%s)"
 
-#: ../settings/main.c:735
+#: ../settings/main.c:736
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "Bureaubladachtergrond voor %s op beeldscherm %d"
 
-#: ../settings/main.c:742
+#: ../settings/main.c:743
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr "Verplaats dit dialoogvenster naar het scherm en het werkblad waarvan u de instellingen wil bewerken."
 
 #. Single monitor and single workspace
-#: ../settings/main.c:749
+#: ../settings/main.c:751
 #, c-format
 msgid "Wallpaper for my desktop"
 msgstr "Achtergrond voor mijn bureaublad"
 
 #. Single monitor and per workspace wallpaper
-#: ../settings/main.c:755
+#: ../settings/main.c:757
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "Bureaubladachtergrond voor %s"
 
-#: ../settings/main.c:760
+#: ../settings/main.c:762
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "Verplaats dit dialoogvenster naar het werkblad waarvan u de instellingen wil bewerken."
 
-#: ../settings/main.c:1174
+#: ../settings/main.c:1176
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "Afbeeldingkeuze is niet beschikbaar wanneer de afbeeldingstijl op Geen is ingesteld."
 
-#: ../settings/main.c:1524
+#: ../settings/main.c:1526
 msgid "Spanning screens"
 msgstr "Schermen overbruggen"
 
-#: ../settings/main.c:1831
+#: ../settings/main.c:1836
 msgid "Image files"
 msgstr "Afbeeldingbestanden"
 
-#: ../settings/main.c:2010
+#: ../settings/main.c:2016
 msgid "Settings manager socket"
 msgstr "Contactpunt voor instellingenbeheerder"
 
-#: ../settings/main.c:2010
+#: ../settings/main.c:2016
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: ../settings/main.c:2011
+#: ../settings/main.c:2017
 msgid "Version information"
 msgstr "Versie-informatie"
 
-#: ../settings/main.c:2039
+#: ../settings/main.c:2018 ../src/xfdesktop-application.c:844
+msgid "Enable debug messages"
+msgstr "Foutopsporingsberichten inschakelen"
+
+#: ../settings/main.c:2046
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Tik '%s --help' voor gebruiksinformatie."
 
-#: ../settings/main.c:2051
+#: ../settings/main.c:2058
 msgid "The Xfce development team. All rights reserved."
 msgstr "De Xfce-ontwikkelploeg. Alle rechten voorbehouden."
 
-#: ../settings/main.c:2052
+#: ../settings/main.c:2059
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Gelieve fouten te melden aan <%s>"
 
-#: ../settings/main.c:2059
+#: ../settings/main.c:2066
 msgid "Desktop Settings"
 msgstr "Bureaublad-instellingen"
 
-#: ../settings/main.c:2061
+#: ../settings/main.c:2068
 msgid "Unable to contact settings server"
 msgstr "Kan geen contact maken met de instellingendienst"
 
@@ -335,7 +339,7 @@ msgstr "Geminimaliseerde toepassingspictogrammen"
 msgid "File/launcher icons"
 msgstr "Bestand/starterpictogrammen"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:1007
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:1024
 msgid "Desktop"
 msgstr "Bureaublad"
 
@@ -345,7 +349,7 @@ msgstr "_Achtergrond"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:13
 msgid "Include applications menu on _desktop right click"
-msgstr "Toon toepassingenmenu bij rechtsklik op bureaublad"
+msgstr "Ook toepassingenmenu tonen bij rechtsklik op bureaublad"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:14
 msgid "_Button:"
@@ -514,7 +518,7 @@ msgstr "Werkblad %d _verwijderen"
 msgid "_Remove Workspace '%s'"
 msgstr "Werkblad '%s' _verwijderen"
 
-#: ../src/xfdesktop-app-menu-item.c:349
+#: ../src/xfdesktop-app-menu-item.c:351
 #: ../src/xfdesktop-file-icon-manager.c:860
 #: ../src/xfdesktop-file-icon-manager.c:1125
 #: ../src/xfdesktop-file-icon-manager.c:1321 ../src/xfdesktop-file-utils.c:664
@@ -523,7 +527,7 @@ msgstr "Werkblad '%s' _verwijderen"
 msgid "Launch Error"
 msgstr "Startfout"
 
-#: ../src/xfdesktop-app-menu-item.c:351
+#: ../src/xfdesktop-app-menu-item.c:353
 #: ../src/xfdesktop-file-icon-manager.c:1127
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
@@ -553,10 +557,6 @@ msgstr "Laat de vensterlijst opduiken (op de huidige muispositie)"
 #: ../src/xfdesktop-application.c:842
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "Alle pictogrammen op het bureaublad automatisch rangschikken"
-
-#: ../src/xfdesktop-application.c:844
-msgid "Enable debug messages"
-msgstr "Foutopsporingsberichten inschakelen"
 
 #: ../src/xfdesktop-application.c:845
 msgid "Disable debug messages"
@@ -943,7 +943,7 @@ msgstr "Het apparaat '%s' wordt uitgeworpen. Dit kan even duren"
 msgid "Eject Finished"
 msgstr "Uitwerpen voltooid"
 
-#: ../src/xfdesktop-regular-file-icon.c:748
+#: ../src/xfdesktop-regular-file-icon.c:786
 #, c-format
 msgid ""
 "Type: %s\n"
