@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-03 12:32+0200\n"
-"PO-Revision-Date: 2014-08-13 10:19+0000\n"
+"POT-Creation-Date: 2014-11-11 18:32+0100\n"
+"PO-Revision-Date: 2014-11-13 20:56+0000\n"
 "Last-Translator: Cristian Marchi <cri.penta@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/xfdesktop/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -59,95 +59,99 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nTipo: %s\nDimensione: %s"
 
-#: ../settings/main.c:715
+#: ../settings/main.c:716
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "Sfondo per lo schermo %d (%s)"
 
-#: ../settings/main.c:718
+#: ../settings/main.c:719
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "Sfondo per lo schermo %d"
 
-#: ../settings/main.c:724
+#: ../settings/main.c:725
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "Spostare questo dialogo nello schermo di cui si vogliono modificare le impostazioni."
 
-#: ../settings/main.c:731
+#: ../settings/main.c:732
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "Sfondo %s per lo schermo %d (%s)"
 
-#: ../settings/main.c:735
+#: ../settings/main.c:736
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "Sfondo %s per lo schermo %d"
 
-#: ../settings/main.c:742
+#: ../settings/main.c:743
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr "Spostare questo dialogo nello schermo e nello spazio di lavoro di cui si vogliono modificare le impostazioni."
 
 #. Single monitor and single workspace
-#: ../settings/main.c:749
+#: ../settings/main.c:751
 #, c-format
 msgid "Wallpaper for my desktop"
 msgstr "Sfondo per la scrivania"
 
 #. Single monitor and per workspace wallpaper
-#: ../settings/main.c:755
+#: ../settings/main.c:757
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "Sfondo per %s"
 
-#: ../settings/main.c:760
+#: ../settings/main.c:762
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "Spostare questa finestra nello schermo e nello spazio di lavoro di cui si vogliono modificare le impostazioni."
 
-#: ../settings/main.c:1174
+#: ../settings/main.c:1176
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "La selezione dell'immagine è disabilitata quando lo stile dell'immagine è impostato a \"Nessuno\""
 
-#: ../settings/main.c:1524
+#: ../settings/main.c:1526
 msgid "Spanning screens"
 msgstr "Schermi estesi"
 
-#: ../settings/main.c:1831
+#: ../settings/main.c:1836
 msgid "Image files"
 msgstr "File immagine"
 
-#: ../settings/main.c:2010
+#: ../settings/main.c:2016
 msgid "Settings manager socket"
 msgstr "Socket del gestore delle impostazioni"
 
-#: ../settings/main.c:2010
+#: ../settings/main.c:2016
 msgid "SOCKET ID"
 msgstr "ID SOCKET"
 
-#: ../settings/main.c:2011
+#: ../settings/main.c:2017
 msgid "Version information"
 msgstr "Informazioni di versione"
 
-#: ../settings/main.c:2039
+#: ../settings/main.c:2018 ../src/xfdesktop-application.c:844
+msgid "Enable debug messages"
+msgstr "Abilita i messaggi di debug"
+
+#: ../settings/main.c:2046
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Digitare \"%s --help\" per le informazioni d'uso"
 
-#: ../settings/main.c:2051
+#: ../settings/main.c:2058
 msgid "The Xfce development team. All rights reserved."
 msgstr "Il gruppo di sviluppo di Xfce. Tutti i diritti riservati."
 
-#: ../settings/main.c:2052
+#: ../settings/main.c:2059
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Segnalare i problemi a <%s>."
 
-#: ../settings/main.c:2059
+#: ../settings/main.c:2066
 msgid "Desktop Settings"
 msgstr "Impostazioni della scrivania"
 
-#: ../settings/main.c:2061
+#: ../settings/main.c:2068
 msgid "Unable to contact settings server"
 msgstr "Impossibile contattare il server delle impostazioni"
 
@@ -336,7 +340,7 @@ msgstr "Icone delle applicazioni minimizzate"
 msgid "File/launcher icons"
 msgstr "Icone di file e avviatori"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:1007
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:1024
 msgid "Desktop"
 msgstr "Scrivania"
 
@@ -346,7 +350,7 @@ msgstr "S_fondo"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:13
 msgid "Include applications menu on _desktop right click"
-msgstr "Mostra il me_nu della scrivania con un clic del tasto destro"
+msgstr "Includi il menu delle applicazioni al clic con il tasto _destro sulla scrivania"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:14
 msgid "_Button:"
@@ -515,7 +519,7 @@ msgstr "_Rimuovi spazio di lavoro %d"
 msgid "_Remove Workspace '%s'"
 msgstr "_Rimuovi spazio di lavoro \"%s\""
 
-#: ../src/xfdesktop-app-menu-item.c:349
+#: ../src/xfdesktop-app-menu-item.c:351
 #: ../src/xfdesktop-file-icon-manager.c:860
 #: ../src/xfdesktop-file-icon-manager.c:1125
 #: ../src/xfdesktop-file-icon-manager.c:1321 ../src/xfdesktop-file-utils.c:664
@@ -524,7 +528,7 @@ msgstr "_Rimuovi spazio di lavoro \"%s\""
 msgid "Launch Error"
 msgstr "Errore di avvio"
 
-#: ../src/xfdesktop-app-menu-item.c:351
+#: ../src/xfdesktop-app-menu-item.c:353
 #: ../src/xfdesktop-file-icon-manager.c:1127
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
@@ -554,10 +558,6 @@ msgstr "Fa comparire la lista delle finestre (in corrispondenza della posizione 
 #: ../src/xfdesktop-application.c:842
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "Ordina automaticamente tutte le icone sulla scrivania"
-
-#: ../src/xfdesktop-application.c:844
-msgid "Enable debug messages"
-msgstr "Abilita i messaggi di debug"
 
 #: ../src/xfdesktop-application.c:845
 msgid "Disable debug messages"
@@ -944,7 +944,7 @@ msgstr "Il dispositivo \"%s\" sta per essere espulso. Potrebbe volerci del tempo
 msgid "Eject Finished"
 msgstr "Espulsione conclusa"
 
-#: ../src/xfdesktop-regular-file-icon.c:748
+#: ../src/xfdesktop-regular-file-icon.c:786
 #, c-format
 msgid ""
 "Type: %s\n"
