@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-03 12:32+0200\n"
-"PO-Revision-Date: 2014-08-22 02:34+0000\n"
+"POT-Creation-Date: 2014-11-11 18:32+0100\n"
+"PO-Revision-Date: 2014-11-13 04:25+0000\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh (http://www.transifex.com/projects/p/xfdesktop/language/kk/)\n"
 "MIME-Version: 1.0\n"
@@ -56,95 +56,99 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nТүрі: %s\nӨлшемі: %s"
 
-#: ../settings/main.c:715
+#: ../settings/main.c:716
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "Нөмірі %d мониторы үшін түсқағаз (%s)"
 
-#: ../settings/main.c:718
+#: ../settings/main.c:719
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "Нөмірі %d мониторы үшін түсқағаз"
 
-#: ../settings/main.c:724
+#: ../settings/main.c:725
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "Бұл сұхбат терезесін баптауларын өзгерту керек экранына тартып апарыңыз."
 
-#: ../settings/main.c:731
+#: ../settings/main.c:732
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "%s үшін фон суреті, монитор %d (%s)"
 
-#: ../settings/main.c:735
+#: ../settings/main.c:736
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "%s үшін фон суреті, монитор %d"
 
-#: ../settings/main.c:742
+#: ../settings/main.c:743
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr "Бұл сұхбат терезесін баптауларын өзгерту керек экраны және жұмыс орнына тартып апарыңыз."
 
 #. Single monitor and single workspace
-#: ../settings/main.c:749
+#: ../settings/main.c:751
 #, c-format
 msgid "Wallpaper for my desktop"
 msgstr "Менің жұмыс үстелім үшін түсқағаз"
 
 #. Single monitor and per workspace wallpaper
-#: ../settings/main.c:755
+#: ../settings/main.c:757
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "%s үшін түсқағаз"
 
-#: ../settings/main.c:760
+#: ../settings/main.c:762
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "Сіз бірден көп экран қолданып отырсыз, баптауларын өзгерту керек экраны және жұмыс орнына бұл сұхбат терезесін тартып апарыңыз."
 
-#: ../settings/main.c:1174
+#: ../settings/main.c:1176
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "Сурет стилі ешнәрсе болып тұрған кезінде суретті таңдау мүмкін емес."
 
-#: ../settings/main.c:1524
+#: ../settings/main.c:1526
 msgid "Spanning screens"
 msgstr "Біріккен экрандар"
 
-#: ../settings/main.c:1831
+#: ../settings/main.c:1836
 msgid "Image files"
 msgstr "Сурет файлдары"
 
-#: ../settings/main.c:2010
+#: ../settings/main.c:2016
 msgid "Settings manager socket"
 msgstr "Баптаулар басқарушысының сокеті"
 
-#: ../settings/main.c:2010
+#: ../settings/main.c:2016
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: ../settings/main.c:2011
+#: ../settings/main.c:2017
 msgid "Version information"
 msgstr "Нұсқа ақпараты"
 
-#: ../settings/main.c:2039
+#: ../settings/main.c:2018 ../src/xfdesktop-application.c:844
+msgid "Enable debug messages"
+msgstr "Жөндеуді хабарламаларын іске қосу"
+
+#: ../settings/main.c:2046
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Көмек үшін '%s --help' енгізіңіз."
 
-#: ../settings/main.c:2051
+#: ../settings/main.c:2058
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce өндіру тобы. Барлық құқықтары қорғалған."
 
-#: ../settings/main.c:2052
+#: ../settings/main.c:2059
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Ақаулықтар жөнінде хабарласыңыз: <%s>."
 
-#: ../settings/main.c:2059
+#: ../settings/main.c:2066
 msgid "Desktop Settings"
 msgstr "Жұмыс үстел баптаулары"
 
-#: ../settings/main.c:2061
+#: ../settings/main.c:2068
 msgid "Unable to contact settings server"
 msgstr "Баптаулар қызметімен байланыс орнату мүмкін емес"
 
@@ -333,7 +337,7 @@ msgstr "Қайырылған қолданбалар таңбашалары"
 msgid "File/launcher icons"
 msgstr "Файл/жөнелткіштер таңбашалары"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:1007
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:1024
 msgid "Desktop"
 msgstr "Жұмыс үстелі"
 
@@ -343,7 +347,7 @@ msgstr "_Фон"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:13
 msgid "Include applications menu on _desktop right click"
-msgstr "_Жұмыс үстелінде оң жақпен шерткенде қолданбалар мәзірін көрсету"
+msgstr "_Жұмыс үстелінде оң жақпен шерткенде қолданбалар мәзірін қоса көрсету"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:14
 msgid "_Button:"
@@ -512,7 +516,7 @@ msgstr "%d _жұмыс орнын өшіру"
 msgid "_Remove Workspace '%s'"
 msgstr "'%s' жұ_мыс орнын өшіру"
 
-#: ../src/xfdesktop-app-menu-item.c:349
+#: ../src/xfdesktop-app-menu-item.c:351
 #: ../src/xfdesktop-file-icon-manager.c:860
 #: ../src/xfdesktop-file-icon-manager.c:1125
 #: ../src/xfdesktop-file-icon-manager.c:1321 ../src/xfdesktop-file-utils.c:664
@@ -521,7 +525,7 @@ msgstr "'%s' жұ_мыс орнын өшіру"
 msgid "Launch Error"
 msgstr "Жөнелту қатесі"
 
-#: ../src/xfdesktop-app-menu-item.c:351
+#: ../src/xfdesktop-app-menu-item.c:353
 #: ../src/xfdesktop-file-icon-manager.c:1127
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
@@ -551,10 +555,6 @@ msgstr "Терезелер тізімін шығару (тышқанның ағ�
 #: ../src/xfdesktop-application.c:842
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "Жұмыс үстеліндегі барлық таңбашаларды автореттеу"
-
-#: ../src/xfdesktop-application.c:844
-msgid "Enable debug messages"
-msgstr "Жөндеуді хабарламаларын іске қосу"
 
 #: ../src/xfdesktop-application.c:845
 msgid "Disable debug messages"
@@ -941,7 +941,7 @@ msgstr "\"%s\" құрылғысы шығарылуда. Бұл біраз уақ
 msgid "Eject Finished"
 msgstr "Шығару аяқталды"
 
-#: ../src/xfdesktop-regular-file-icon.c:748
+#: ../src/xfdesktop-regular-file-icon.c:786
 #, c-format
 msgid ""
 "Type: %s\n"
