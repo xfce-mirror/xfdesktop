@@ -1475,7 +1475,26 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                 
                 app_infos = g_app_info_get_all_for_type(g_file_info_get_content_type(info));
                 if(app_infos) {
-                    GAppInfo *app_info = G_APP_INFO(app_infos->data);
+                    GAppInfo *app_info, *default_application;
+                    GList *ap;
+
+                    /* move any default application in front of the list */
+                    default_application = g_app_info_get_default_for_type (g_file_info_get_content_type(info), FALSE);
+                    if (G_LIKELY (default_application != NULL))
+                    {
+                        for (ap = app_infos; ap != NULL; ap = ap->next)
+                        {
+                            if (g_app_info_equal (ap->data, default_application))
+                            {
+                                g_object_unref (ap->data);
+                                app_infos = g_list_delete_link (app_infos, ap);
+                                break;
+                            }
+                        }
+                        app_infos = g_list_prepend (app_infos, default_application);
+                    }
+
+                    app_info = G_APP_INFO(app_infos->data);
                     
                     mi = xfdesktop_menu_item_from_app_info(fmanager, file_icon,
                                                            app_info, TRUE, TRUE);
