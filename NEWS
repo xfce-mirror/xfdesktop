@@ -1,3 +1,41 @@
+4.10.3
+======
+- Fix for extra blank lines in backdrop list (Bug #10763)
+- Remember the window size of the settings dialog
+  Patch by Harald Judt
+- Filter out changed events for special icons (Bug 10755)
+- Lower update delay of icon size spinbutton (Bug 9882)
+  Patch by Jérôme Guelfucci
+- Fix missing thumbnail on xfdesktop when thumbler fails to create it
+  Patch by Matias De lellis
+- Check for thumbnails in the new location
+- Don't set ESETROOT.
+  Patch by Alistair Buxton
+- Speed up template sub-menu loading code (Bug 7834)
+- Fix template sub-menu loading code for 4.10 (Bug 10138)
+- Always move files from the trash (Bug 3983)
+- Use the Path key of desktop files if a path is not set (Bug #8741)
+- Fix for trash always showing empty on system startup (Bug 9006)
+- Unselect the desktop icon after activating it. (Bug #8640)
+- Fix HTTP URL performance issue / wrong action proposed
+  Patch by Dennis Tomas
+- Decide on move/copy action before items have been dropped.
+  Patch by Dennis Tomas
+- Translation updates: Arabic (ar), Asturian (ast),
+  Bulgarian (bg), Catalan (ca), Czech (cs), Danish (da),
+  German (de), Greek (el), English (Australia) (en_AU),
+  English (United Kingdom) (en_GB), Spanish (Castilian) (es),
+  Estonian (et), Basque (eu), French (fr), Galician (gl),
+  Hebrew (he), Croatian (hr), Hungarian (hu), Indonesian (id),
+  Italian (it), Japanese (ja), Kazakh (kk), Latvian (lv),
+  Malay (ms), Norwegian Bokmål (nb), Dutch (Flemish) (nl),
+  Occitan (post 1500) (oc), Polish (pl),
+  Portuguese (Brazilian) (pt_BR), Romanian (ro), Slovak (sk),
+  Slovenian (sl), Serbian (sr), Swedish (sv), Telugu (te),
+  Thai (th), Turkish (tr), Ukrainian (uk), Urdu (ur),
+  Urdu (Pakistan) (ur_PK), Uzbek (uz),
+  Chinese (Hong Kong) (zh_HK), Chinese (Taiwan) (zh_TW).
+
 4.10.2
 ======
 - Fix hang when no backdrop image is selected (Bug #9892).
