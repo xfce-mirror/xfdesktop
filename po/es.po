@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-03 12:32+0200\n"
-"PO-Revision-Date: 2014-08-05 19:42+0000\n"
+"POT-Creation-Date: 2014-11-11 18:32+0100\n"
+"PO-Revision-Date: 2014-11-16 04:44+0000\n"
 "Last-Translator: Pablo Roberto Francisco Lezaeta Reyes <prflr88@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/xfdesktop/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -58,95 +58,99 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nTipo: %s\nTamaño: %s"
 
-#: ../settings/main.c:715
+#: ../settings/main.c:716
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "Fondo de pantalla para el Monitor %d (%s)"
 
-#: ../settings/main.c:718
+#: ../settings/main.c:719
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "Fondo de pantalla para el Monitor %d"
 
-#: ../settings/main.c:724
+#: ../settings/main.c:725
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "Mueva este diálogo a la pantalla que desea modificar su configuración."
 
-#: ../settings/main.c:731
+#: ../settings/main.c:732
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "Fondo de pantalla para %s en el monitor %d (%s)"
 
-#: ../settings/main.c:735
+#: ../settings/main.c:736
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "Fondo de pantalla para %s en el monitor %d"
 
-#: ../settings/main.c:742
+#: ../settings/main.c:743
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr "Mueva este diálogo a la pantalla y área de trabajo que desea modificar su configuración."
 
 #. Single monitor and single workspace
-#: ../settings/main.c:749
+#: ../settings/main.c:751
 #, c-format
 msgid "Wallpaper for my desktop"
 msgstr "Fondo de pantalla para mi Escritorio"
 
 #. Single monitor and per workspace wallpaper
-#: ../settings/main.c:755
+#: ../settings/main.c:757
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "Fondo de pantalla para %s"
 
-#: ../settings/main.c:760
+#: ../settings/main.c:762
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "Mueva este diálogo al área de trabajo que desea modificar su configuración."
 
-#: ../settings/main.c:1174
+#: ../settings/main.c:1176
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "La selección de imágenes estará desactivada mientras el estilo utilizado sea None (Ninguno)."
 
-#: ../settings/main.c:1524
+#: ../settings/main.c:1526
 msgid "Spanning screens"
 msgstr "Extensión de pantallas"
 
-#: ../settings/main.c:1831
+#: ../settings/main.c:1836
 msgid "Image files"
 msgstr "Archivos de imagen"
 
-#: ../settings/main.c:2010
+#: ../settings/main.c:2016
 msgid "Settings manager socket"
 msgstr "Entrada de administración de configuración"
 
-#: ../settings/main.c:2010
+#: ../settings/main.c:2016
 msgid "SOCKET ID"
 msgstr "ID de SOCKET"
 
-#: ../settings/main.c:2011
+#: ../settings/main.c:2017
 msgid "Version information"
 msgstr "Información de versión"
 
-#: ../settings/main.c:2039
+#: ../settings/main.c:2018 ../src/xfdesktop-application.c:844
+msgid "Enable debug messages"
+msgstr "Activar mensajes de depuración"
+
+#: ../settings/main.c:2046
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Escriba '%s --help' para opciones de uso."
 
-#: ../settings/main.c:2051
+#: ../settings/main.c:2058
 msgid "The Xfce development team. All rights reserved."
 msgstr "El equipo de desarrollo de Xfce. Todos los derechos reservados."
 
-#: ../settings/main.c:2052
+#: ../settings/main.c:2059
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Por favor, informe de errores a <%s>."
 
-#: ../settings/main.c:2059
+#: ../settings/main.c:2066
 msgid "Desktop Settings"
 msgstr "Configuración del escritorio"
 
-#: ../settings/main.c:2061
+#: ../settings/main.c:2068
 msgid "Unable to contact settings server"
 msgstr "No se puede contactar con el servidor de configuración"
 
@@ -335,7 +339,7 @@ msgstr "Iconos de aplicaciones minimizadas"
 msgid "File/launcher icons"
 msgstr "Iconos de archivo/lanzador"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:1007
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:1024
 msgid "Desktop"
 msgstr "Escritorio"
 
@@ -345,7 +349,7 @@ msgstr "_Fondo"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:13
 msgid "Include applications menu on _desktop right click"
-msgstr "Mostrar menú de aplicaciones al hacer clic con el botón derecho sobre el _escritorio"
+msgstr "Incluir menú _de aplicaciones al hacer clic derecho sobre el escritorio."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:14
 msgid "_Button:"
@@ -514,7 +518,7 @@ msgstr "Elimina_r área de trabajo %d"
 msgid "_Remove Workspace '%s'"
 msgstr "Elimina_r área de trabajo '%s'"
 
-#: ../src/xfdesktop-app-menu-item.c:349
+#: ../src/xfdesktop-app-menu-item.c:351
 #: ../src/xfdesktop-file-icon-manager.c:860
 #: ../src/xfdesktop-file-icon-manager.c:1125
 #: ../src/xfdesktop-file-icon-manager.c:1321 ../src/xfdesktop-file-utils.c:664
@@ -523,7 +527,7 @@ msgstr "Elimina_r área de trabajo '%s'"
 msgid "Launch Error"
 msgstr "Error de inicio"
 
-#: ../src/xfdesktop-app-menu-item.c:351
+#: ../src/xfdesktop-app-menu-item.c:353
 #: ../src/xfdesktop-file-icon-manager.c:1127
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
@@ -553,10 +557,6 @@ msgstr "Mostrar la lista de ventanas (en la posición actual del ratón)"
 #: ../src/xfdesktop-application.c:842
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "Organizar automáticamente los iconos del escritorio"
-
-#: ../src/xfdesktop-application.c:844
-msgid "Enable debug messages"
-msgstr "Activar mensajes de depuración"
 
 #: ../src/xfdesktop-application.c:845
 msgid "Disable debug messages"
@@ -943,7 +943,7 @@ msgstr "El dispositivo \"%s\" esta siendo expulsado. Esto puede llevar algo de t
 msgid "Eject Finished"
 msgstr "Expulsión finalizada"
 
-#: ../src/xfdesktop-regular-file-icon.c:748
+#: ../src/xfdesktop-regular-file-icon.c:786
 #, c-format
 msgid ""
 "Type: %s\n"
