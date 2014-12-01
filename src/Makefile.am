@@ -68,6 +68,7 @@ desktop_file_icon_sources = \
 xfdesktop_CFLAGS = \
 	-I$(top_srcdir) \
 	-I$(top_srcdir)/common	\
+	-I$(top_builddir)/common \
 	-DWNCK_I_KNOW_THIS_IS_UNSTABLE \
 	-DBINDIR=\"$(bindir)\" \
 	-DLOCALEDIR=\"$(localedir)\" \
