@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-11-11 18:32+0100\n"
-"PO-Revision-Date: 2014-12-06 23:45+0000\n"
+"PO-Revision-Date: 2014-12-13 01:50+0000\n"
 "Last-Translator: Ḷḷumex03 <tornes@opmbx.org>\n"
 "Language-Team: Asturian (http://www.transifex.com/projects/p/xfdesktop/language/ast/)\n"
 "MIME-Version: 1.0\n"
@@ -39,7 +39,7 @@ msgstr "Preseos estrayíbles"
 
 #: ../settings/main.c:412
 msgid "Network Shares"
-msgstr "Recursos compartíos de Windows"
+msgstr "Comparticiones de Windows"
 
 #: ../settings/main.c:414
 msgid "Disks and Drives"
@@ -185,7 +185,7 @@ msgstr "_Carpeta:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
 msgid "Choose the folder to select wallpapers from."
-msgstr "Escueyi'l direutoriu onde s'esbillarán los fondos de pantalla."
+msgstr "Escueyi'l direutoriu d'u s'esbillarán los fondos de pantalla."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
 msgid "St_yle:"
@@ -230,7 +230,7 @@ msgstr "C_olor:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Specify the style of the color drawn behind the backdrop image."
-msgstr "Especificar l'estilu de la color dibuxada darrera la imaxe de fondu."
+msgstr "Especifica l'estilu de la color dibuxada darrera la imaxe de fondu."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
@@ -254,12 +254,12 @@ msgstr "Aplicar a toles esta_yes de trabayu"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 msgid "Change the _background "
-msgstr "Camudar el fondu pantalla"
+msgstr "Camudar el fondu _pantalla"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
 msgid ""
 "Automatically select a different background from the current directory."
-msgstr "Esbillar automáticamente un fondu pantalla distintu del direutoriu d'anguaño."
+msgstr "Esbilla automáticamente un fondu pantalla distintu del direutoriu actual."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid "Specify how often the background will change."
@@ -283,15 +283,15 @@ msgstr "nel aniciu"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
 msgid "every hour"
-msgstr "Cada hora"
+msgstr "cada hora"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
 msgid "every day"
-msgstr "Caldía"
+msgstr "caldía"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
 msgid "chronologically"
-msgstr "Cronolóxicamente"
+msgstr "cronolóxicamente"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
 msgid "Amount of time before a different background is selected."
@@ -305,7 +305,7 @@ msgstr "O_rde al debalu"
 msgid ""
 "Randomly selects another image from the same directory when the wallpaper is"
 " to cycle."
-msgstr "Esbilla al debalu otra imaxe del mesmu direutoriu cuando'l fondu pantalla vaiga a camudar"
+msgstr "Esbilla al debalu otra imaxe del mesmu direutoriu cuando'l fondu pantalla vaiga camudar"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:1
 msgid "Left"
@@ -333,7 +333,7 @@ msgstr "Control"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:8
 msgid "Minimized application icons"
-msgstr "Iconos d'aplicaciones minimizadas"
+msgstr "Iconos d'aplicaciones minimizaes"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:9
 msgid "File/launcher icons"
@@ -417,7 +417,7 @@ msgstr "_Triba d'iconu:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:30
 msgid "Icon _size:"
-msgstr "Tamañu l'_iconu"
+msgstr "Tamañu d'_iconu"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:31
 msgid "Show t_humbnails"
@@ -431,7 +431,7 @@ msgstr "Esbilla esta opción p'amosar ficheros que puean tener vista previa nel 
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
 msgid "Single _click to activate items"
-msgstr "Namái un _clic pactivar los oxetos"
+msgstr "Namái un _clic p'activar los elementos"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:34
 msgid "Show hidden files on the desktop"
@@ -475,7 +475,7 @@ msgstr "Desaniciar estaya de trabayu %d"
 msgid ""
 "Do you really want to remove workspace %d?\n"
 "Note: You are currently on workspace %d."
-msgstr "¿De xuru quies desaniciar la estaya de trabayu %d?\nNota: Ta anguaño na estaya de trabayu %d."
+msgstr "¿De xuru que quies desaniciar la estaya de trabayu %d?\nNota: Tas anguaño na estaya de trabayu %d."
 
 #: ../src/windowlist.c:78
 #, c-format
@@ -532,7 +532,7 @@ msgstr "Fallu de llanzamientu"
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
-msgstr "Nun pue aniciase \"exo-desktop-item-edit\", que requierse pa crear y editar llanzadores y enllaces nel escritoriu."
+msgstr "Nun pue aniciase \"exo-desktop-item-edit\", que se rique pa crear y editar llanzadores y enllaces nel escritoriu."
 
 #: ../src/xfdesktop-application.c:836
 msgid "Display version information"
@@ -544,7 +544,7 @@ msgstr "Recargar tolos axustes"
 
 #: ../src/xfdesktop-application.c:838
 msgid "Advance to the next wallpaper on the current workspace"
-msgstr "Avanzar al siguiente fondu d'escritoriu nel espaciu de trabayu actual"
+msgstr "Avanzar al siguiente fondu de pantalla nel espaciu de trabayu actual"
 
 #: ../src/xfdesktop-application.c:839
 msgid "Pop up the menu (at the current mouse position)"
@@ -578,12 +578,12 @@ msgstr "Fallu al analizar los argumentos: %s\n"
 #: ../src/xfdesktop-application.c:873
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr "Esta ye la %s versión %s, executándose en Xfce %s.\n"
+msgstr "Esto ye %s versión %s, executándose en Xfce %s.\n"
 
 #: ../src/xfdesktop-application.c:875
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr "Contruyíu con GTK+ %d.%d.%d, enllazáu con GTK+ %d.%d.%d."
+msgstr "Construyíu con GTK+ %d.%d.%d, enllazáu con GTK+ %d.%d.%d."
 
 #: ../src/xfdesktop-application.c:879
 #, c-format
@@ -613,7 +613,7 @@ msgstr "Iconos d'escritoiu: %s\n"
 #: ../src/xfdesktop-application.c:894
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr "Iconos de ficheru del escritoiu: %s\n"
+msgstr "Iconos de ficheru d'escritoriu: %s\n"
 
 #: ../src/xfdesktop-file-icon-manager.c:559
 #: ../src/xfdesktop-file-icon-manager.c:576
@@ -634,15 +634,15 @@ msgstr "Yá esiste un ficheru normal col mesmu nome. Por favor, desanicialu o re
 #: ../src/xfdesktop-file-icon-manager.c:666 ../src/xfdesktop-file-utils.c:723
 #: ../src/xfdesktop-file-utils.c:776
 msgid "Rename Error"
-msgstr "Fallu al renomar"
+msgstr "Fallu del renomáu"
 
 #: ../src/xfdesktop-file-icon-manager.c:667 ../src/xfdesktop-file-utils.c:777
 msgid "The files could not be renamed"
-msgstr "Los ficheros nun puen renomase"
+msgstr "Los ficheros nun pudieron renomase"
 
 #: ../src/xfdesktop-file-icon-manager.c:668
 msgid "None of the icons selected support being renamed."
-msgstr "Dengún de los iconos esbillaos sofita'l ser renomáu."
+msgstr "Dengún de los iconos esbillaos sofita renomase."
 
 #: ../src/xfdesktop-file-icon-manager.c:712
 #: ../src/xfdesktop-file-icon-manager.c:756 ../src/xfdesktop-file-utils.c:876
@@ -653,7 +653,7 @@ msgstr "Fallu de la papelera"
 #: ../src/xfdesktop-file-icon-manager.c:713
 #: ../src/xfdesktop-file-icon-manager.c:757
 msgid "The selected files could not be trashed"
-msgstr "Nun puen dunviase a la papelera los ficheros esbillaos"
+msgstr "Los ficheros esbillaos nun pudieron unviase a la papaelera"
 
 #: ../src/xfdesktop-file-icon-manager.c:714
 #: ../src/xfdesktop-file-icon-manager.c:758 ../src/xfdesktop-file-utils.c:725
@@ -665,7 +665,7 @@ msgstr "Nun puen dunviase a la papelera los ficheros esbillaos"
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
-msgstr "Esta carauterística requier qu'un alministrador de ficheros tea presente (como'l dau por Thunar)"
+msgstr "Esta carauterística rique qu'un alministrador de ficheros tea presente (como l'apurríu per Thunar)"
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:858
@@ -752,7 +752,7 @@ msgstr "Ordenar _iconos d'escritoriu"
 
 #: ../src/xfdesktop-file-icon-manager.c:1746
 msgid "Desktop _Settings..."
-msgstr "_Configuración d'escritoriu..."
+msgstr "Axu_stes d'escritoriu..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1757
 #: ../src/xfdesktop-volume-icon.c:855
@@ -765,7 +765,7 @@ msgstr "Fallu de carga"
 
 #: ../src/xfdesktop-file-icon-manager.c:2701
 msgid "Failed to load the desktop folder"
-msgstr "Fallu al cargar el ficheru d'escritoriu"
+msgstr "Fallu al cargar la carpeta d'escritoriu"
 
 #: ../src/xfdesktop-file-icon-manager.c:3242
 msgid "Copy _Here"
@@ -810,7 +810,7 @@ msgstr "Desconocíu"
 
 #: ../src/xfdesktop-file-utils.c:665
 msgid "The folder could not be opened"
-msgstr "La carpeta nun pudo renomase"
+msgstr "La carpeta nun pudo reabrise"
 
 #: ../src/xfdesktop-file-utils.c:682
 msgid "Error"
@@ -818,7 +818,7 @@ msgstr "Fallu"
 
 #: ../src/xfdesktop-file-utils.c:683
 msgid "The requested operation could not be completed"
-msgstr "La operación requerida nun pue completase"
+msgstr "Nun pudo completase la operación riquida"
 
 #: ../src/xfdesktop-file-utils.c:724
 msgid "The file could not be renamed"
@@ -840,11 +840,11 @@ msgstr "Los ficheros esbillaos nun pudieron movese a la papelera"
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
-msgstr "Esta carauterística requier qu'un serviciu de papalera tea presente (como'l dau con Thunar)"
+msgstr "Esta carauterística rique qu'un serviciu de papalera tea presente (como l'apurríu per Thunar)"
 
 #: ../src/xfdesktop-file-utils.c:914
 msgid "Could not empty the trash"
-msgstr "Nun pudo vaciase la papelera"
+msgstr "Nun pudo balerase la papelera"
 
 #: ../src/xfdesktop-file-utils.c:957
 msgid "Create File Error"
@@ -868,7 +868,7 @@ msgstr "Fallu de propiedaes de ficheru"
 
 #: ../src/xfdesktop-file-utils.c:1046
 msgid "The file properties dialog could not be opened"
-msgstr "Nun puedo abrise'l diálogu de propiedaes de ficheru"
+msgstr "Nun pudo abrise'l diálogu de propiedaes de ficheru"
 
 #: ../src/xfdesktop-file-utils.c:1087
 msgid "The file could not be opened"
@@ -881,7 +881,7 @@ msgstr "Fallu al executar \"%s\""
 
 #: ../src/xfdesktop-file-utils.c:1241
 msgid "The application chooser could not be opened"
-msgstr "El seleutor d'aplicaciones nun puedo abrise"
+msgstr "El seleutor d'aplicaciones nun pudo abrise"
 
 #: ../src/xfdesktop-file-utils.c:1299 ../src/xfdesktop-file-utils.c:1313
 #: ../src/xfdesktop-file-utils.c:1375 ../src/xfdesktop-file-utils.c:1391
@@ -891,7 +891,7 @@ msgstr "Fallu de tresferencia"
 #: ../src/xfdesktop-file-utils.c:1300 ../src/xfdesktop-file-utils.c:1314
 #: ../src/xfdesktop-file-utils.c:1376 ../src/xfdesktop-file-utils.c:1392
 msgid "The file transfer could not be performed"
-msgstr "La tresferencia de ficheros nun pudo facese"
+msgstr "Nun pudo facese la tresferencia de ficheros"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:127
@@ -904,7 +904,7 @@ msgstr "Desmontando'l preséu"
 msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the"
 " media or disconnect the drive"
-msgstr "El preséu \"%s\" ta desmontándose pol sistema. Por favor, nun desanicies ficheros o desconeutes el discu"
+msgstr "El preséu \"%s\" ta desmontándose pel sistema. Por favor, nun desanicies ficheros o desconeutes el discu"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:137 ../src/xfdesktop-notify.c:322
@@ -926,7 +926,7 @@ msgstr "Desmontaxe fináu"
 #: ../src/xfdesktop-notify.c:223 ../src/xfdesktop-notify.c:408
 #, c-format
 msgid "The device \"%s\" has been safely removed from the system. "
-msgstr "El preséu \"%s\" estrayóse del sistema con seguridá"
+msgstr "El preséu \"%s\" estrayóse del sistema con seguridá."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:313
@@ -937,7 +937,7 @@ msgstr "Espulsando preséu"
 #: ../src/xfdesktop-notify.c:316
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
-msgstr " El preséu \"%s\" ta espulsándose. Pue tardar un pocoñín"
+msgstr " El preséu \"%s\" ta espulsándose. Esto pue tardar un pocoñín"
 
 #: ../src/xfdesktop-notify.c:406
 msgid "Eject Finished"
@@ -949,7 +949,7 @@ msgid ""
 "Type: %s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr "Triba: %s\nTamañu: %s\nCabera modificación: %s"
+msgstr "Triba: %s\nTamañu: %s\nModificación cabera: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:297
 #: ../src/xfdesktop-special-file-icon.c:477
@@ -962,12 +962,12 @@ msgstr "La papelera ta balera"
 
 #: ../src/xfdesktop-special-file-icon.c:465
 msgid "Trash contains one item"
-msgstr "La papelera contien un oxetu"
+msgstr "La papelera contien un elementu"
 
 #: ../src/xfdesktop-special-file-icon.c:466
 #, c-format
 msgid "Trash contains %d items"
-msgstr "La papelera contien %d oxetos"
+msgstr "La papelera contien %d elementos"
 
 #: ../src/xfdesktop-special-file-icon.c:495
 #, c-format
@@ -975,7 +975,7 @@ msgid ""
 "%s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr "%s\nTamañu: %s\nCabera modificación: %s"
+msgstr "%s\nTamañu: %s\nModificación cabera: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:564
 msgid "_Empty Trash"
@@ -987,7 +987,7 @@ msgid ""
 "Removable Volume\n"
 "Mounted in \"%s\"\n"
 "%s left (%s total)"
-msgstr "Volume estrayible\nMontáu en \"%s\"\nqueden%s (%s en total)"
+msgstr "Volume estrayible\nMontáu en \"%s\"\nqueden %s (%s en total)"
 
 #: ../src/xfdesktop-volume-icon.c:489
 msgid ""
@@ -1011,7 +1011,7 @@ msgstr "Fallu al montar \"%s\""
 
 #: ../src/xfdesktop-volume-icon.c:603
 msgid "Mount Failed"
-msgstr "Fallu al montar"
+msgstr "Fallu de montaxe"
 
 #: ../src/xfdesktop-volume-icon.c:828
 msgid "E_ject Volume"
