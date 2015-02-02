@@ -231,6 +231,7 @@ G_DEFINE_TYPE_EXTENDED(XfdesktopFileIconManager,
                        G_IMPLEMENT_INTERFACE(XFDESKTOP_TYPE_ICON_VIEW_MANAGER,
                                              xfdesktop_file_icon_manager_icon_view_manager_init))
 
+#define XFDESKTOP_FILE_ICON_MANAGER_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), XFDESKTOP_TYPE_ICON_VIEW_MANAGER, XfdesktopFileIconManagerPrivate))
 
 typedef struct
 {
@@ -2661,33 +2662,38 @@ xfdesktop_file_icon_manager_metadata_changed(GFileMonitor     *monitor,
                                              GFileMonitorEvent event,
                                              gpointer          user_data)
 {
-    XfdesktopFileIconManager *fmanager;
+    XfdesktopFileIconManager        *fmanager;
+    XfdesktopFileIconManagerPrivate *priv;
+    guint timer;
+
+    /* We only care about changed events */
+    if(event != G_FILE_MONITOR_EVENT_CHANGED)
+        return;
 
     /* Sanity check */
     if(user_data == NULL || !XFDESKTOP_IS_FILE_ICON_MANAGER(user_data))
         return;
 
     fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
+    priv = XFDESKTOP_FILE_ICON_MANAGER_GET_PRIVATE(fmanager);
 
-    switch(event) {
-        case G_FILE_MONITOR_EVENT_CHANGED:
-            XF_DEBUG("metadata file changed event");
+    if(!priv)
+        return;
 
-            /* cool down timer so we don't call this due to multiple file
-             * changes at the same time. */
-            if(fmanager->priv->metadata_timer == 0) {
-                guint timer;
+    XF_DEBUG("metadata file changed event");
 
-                timer = g_timeout_add_seconds(5,
-                                              (GSourceFunc)xfdesktop_file_icon_manager_metadata_timer,
-                                              fmanager);
-
-                fmanager->priv->metadata_timer = timer;
-            }
-            break;
-        default:
-            break;
+     /* remove any pending metadata changes */
+    if(priv->metadata_timer != 0) {
+        g_source_remove(priv->metadata_timer);
     }
+
+    /* cool down timer so we don't call this due to multiple file
+     * changes at the same time. */
+    timer = g_timeout_add_seconds(5,
+                                  (GSourceFunc)xfdesktop_file_icon_manager_metadata_timer,
+                                  fmanager);
+
+    priv->metadata_timer = timer;
 }
 
 static void
@@ -3112,7 +3118,22 @@ xfdesktop_file_icon_manager_fini(XfdesktopIconViewManager *manager)
         g_object_unref(fmanager->priv->monitor);
         fmanager->priv->monitor = NULL;
     }
-    
+
+    /* Same for the file metadata monitor */
+    if(fmanager->priv->metadata_monitor) {
+        g_signal_handlers_disconnect_by_func(fmanager->priv->metadata_monitor,
+                                             G_CALLBACK(xfdesktop_file_icon_manager_metadata_changed),
+                                             fmanager);
+        g_object_unref(fmanager->priv->metadata_monitor);
+        fmanager->priv->metadata_monitor = NULL;
+    }
+
+    /* remove any pending metadata changes */
+    if(fmanager->priv->metadata_timer != 0) {
+        g_source_remove(fmanager->priv->metadata_timer);
+        fmanager->priv->metadata_timer = 0;
+    }
+
     g_object_unref(G_OBJECT(fmanager->priv->desktop_icon));
     fmanager->priv->desktop_icon = NULL;
     
