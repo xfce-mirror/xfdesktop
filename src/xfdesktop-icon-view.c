@@ -2999,6 +2999,10 @@ xfdesktop_icon_view_draw_text(cairo_t *cr, PangoLayout *playout, GdkRectangle *t
     if (blur_radius > 1) {
         cr = gtk_css_shadow_value_start_drawing (cr, blur_radius);
         pango_cairo_show_layout (cr, playout);
+        cairo_set_line_width(cr, 1);
+        cairo_set_line_join(cr, CAIRO_LINE_JOIN_BEVEL);
+        pango_cairo_layout_path(cr, playout);
+        cairo_stroke(cr);
         cr = gtk_css_shadow_value_finish_drawing (cr, blur_radius, color);
     }
     else {
