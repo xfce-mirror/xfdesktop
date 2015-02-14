@@ -94,6 +94,9 @@ void xfce_desktop_set_use_icon_font_size(XfceDesktop *desktop,
 void xfce_desktop_set_icon_font_size(XfceDesktop *desktop,
                                      guint font_size_points);
 
+void xfce_desktop_set_center_text(XfceDesktop *desktop,
+                                  gboolean center_text);
+
 void xfce_desktop_set_session_logout_func(XfceDesktop *desktop,
                                           SessionLogoutFunc logout_func);
 
