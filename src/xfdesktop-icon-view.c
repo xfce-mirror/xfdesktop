@@ -2995,7 +2995,6 @@ xfdesktop_icon_view_draw_text(cairo_t *cr, PangoLayout *playout, GdkRectangle *t
                   box_area.x + extents + x_offset - rtl_offset,
                   box_area.y + extents + y_offset);
 
-
     if (blur_radius > 1) {
         cr = gtk_css_shadow_value_start_drawing (cr, blur_radius);
         pango_cairo_show_layout (cr, playout);
@@ -3089,6 +3088,7 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
     if(gdk_rectangle_intersect(area, &text_extents, &intersection)
        && icon_view->priv->font_size > 0)
     {
+        text_extents.x += rtl_offset;
         xfdesktop_paint_rounded_box(icon_view, state, &text_extents, area);
 
         if (state == GTK_STATE_NORMAL) {
@@ -3112,6 +3112,8 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
                                           icon_view->priv->shadow_blur_radius,
                                           sh_text_col);
         }
+
+        text_extents.x -= rtl_offset;
 
         TRACE("painting text at %dx%d+%d+%d",
               text_extents.width, text_extents.height,
