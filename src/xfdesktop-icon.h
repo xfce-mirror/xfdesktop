@@ -103,8 +103,8 @@ void xfdesktop_icon_set_position(XfdesktopIcon *icon,
                                  gint16 row,
                                  gint16 col);
 gboolean xfdesktop_icon_get_position(XfdesktopIcon *icon,
-                                     guint16 *row,
-                                     guint16 *col);
+                                     gint16 *row,
+                                     gint16 *col);
 
 GdkDragAction xfdesktop_icon_get_allowed_drag_actions(XfdesktopIcon *icon);
 

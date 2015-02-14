@@ -131,8 +131,8 @@ struct _XfdesktopIconViewPrivate
     gint xspacing;
     gint yspacing;
     
-    guint16 nrows;
-    guint16 ncols;
+    gint16 nrows;
+    gint16 ncols;
     XfdesktopIcon **grid_layout;
     
     guint grid_resize_timeout;
@@ -168,7 +168,7 @@ struct _XfdesktopIconViewPrivate
 
     gboolean dropped;
     GdkDragAction proposed_drop_action;
-    guint16 hover_row, hover_col;
+    gint16 hover_row, hover_col;
     
     guchar    label_alpha;
     guchar    selected_label_alpha;
@@ -290,25 +290,25 @@ static void xfdesktop_icon_view_repaint_icons(XfdesktopIconView *icon_view,
                                   
 static void xfdesktop_setup_grids(XfdesktopIconView *icon_view);
 static gboolean xfdesktop_grid_get_next_free_position(XfdesktopIconView *icon_view,
-                                                      guint16 *row,
-                                                      guint16 *col);
+                                                      gint16 *row,
+                                                      gint16 *col);
 static inline gboolean xfdesktop_grid_is_free_position(XfdesktopIconView *icon_view,
-                                                       guint16 row,
-                                                       guint16 col);
+                                                       gint16 row,
+                                                       gint16 col);
 static inline void xfdesktop_grid_set_position_free(XfdesktopIconView *icon_view,
-                                                    guint16 row,
-                                                    guint16 col);
+                                                    gint16 row,
+                                                    gint16 col);
 static inline gboolean xfdesktop_grid_unset_position_free_raw(XfdesktopIconView *icon_view,
-                                                              guint16 row,
-                                                              guint16 col,
+                                                              gint16 row,
+                                                              gint16 col,
                                                               gpointer data);
 static inline gboolean xfdesktop_grid_unset_position_free(XfdesktopIconView *icon_view,
                                                           XfdesktopIcon *icon);
 static inline XfdesktopIcon *xfdesktop_icon_view_icon_in_cell_raw(XfdesktopIconView *icon_view,
                                                                   gint idx);
 static inline XfdesktopIcon *xfdesktop_icon_view_icon_in_cell(XfdesktopIconView *icon_view,
-                                                              guint16 row,
-                                                              guint16 col);
+                                                              gint16 row,
+                                                              gint16 col);
 static gint xfdesktop_check_icon_clicked(gconstpointer data,
                                          gconstpointer user_data);
 static void xfdesktop_list_foreach_invalidate(gpointer data,
@@ -317,8 +317,8 @@ static void xfdesktop_list_foreach_invalidate(gpointer data,
 static inline void xfdesktop_xy_to_rowcol(XfdesktopIconView *icon_view,
                                           gint x,
                                           gint y,
-                                          guint16 *row,
-                                          guint16 *col);
+                                          gint16 *row,
+                                          gint16 *col);
 static gboolean xfdesktop_grid_resize_timeout(gpointer user_data);
 static void xfdesktop_screen_size_changed_cb(GdkScreen *gscreen,
                                              gpointer user_data);
@@ -1403,8 +1403,8 @@ static inline void
 xfdesktop_xy_to_rowcol(XfdesktopIconView *icon_view,
                        gint x,
                        gint y,
-                       guint16 *row,
-                       guint16 *col)
+                       gint16 *row,
+                       gint16 *col)
 {
     g_return_if_fail(row && col);
     
@@ -1421,7 +1421,7 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
     GdkAtom target;
-    guint16 hover_row = 0, hover_col = 0;
+    gint16 hover_row = 0, hover_col = 0;
     XfdesktopIcon *icon_on_dest = NULL;
     GdkDragAction our_action = 0;
     gboolean is_local_drag;
@@ -1468,7 +1468,7 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
         if(is_local_drag) {  /* #2 */
             /* check to make sure we aren't just hovering over ourself */
             GList *l;
-            guint16 sel_row, sel_col;
+            gint16 sel_row, sel_col;
             
             for(l = icon_view->priv->selected_icons; l; l = l->next) {
                 XfdesktopIcon *sel_icon = l->data;
@@ -1531,7 +1531,7 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
     GdkAtom target;
     XfdesktopIcon *icon;
-    guint16 old_row, old_col, row, col;
+    gint16 old_row, old_col, row, col;
     GList *l;
     XfdesktopIcon *icon_on_dest = NULL;
     
@@ -1666,7 +1666,7 @@ xfdesktop_icon_view_drag_data_received(GtkWidget *widget,
                                        guint time_)
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
-    guint16 row, col;
+    gint16 row, col;
     XfdesktopIcon *icon_on_dest;
     
     TRACE("entering");
@@ -1725,8 +1725,8 @@ xfdesktop_icon_view_compare_icons(gconstpointer *a,
 static void
 xfdesktop_icon_view_append_icons(XfdesktopIconView *icon_view,
                                  GList *icon_list,
-                                 guint16 *row,
-                                 guint16 *col)
+                                 gint16 *row,
+                                 gint16 *col)
 {
     GList *l = NULL;
     for(l = icon_list; l != NULL; l = g_list_next(l)) {
@@ -1758,11 +1758,11 @@ xfdesktop_icon_view_sort_icons(XfdesktopIconView *icon_view)
     GList *special_icons = NULL;
     GList *folder_icons = NULL;
     GList *regular_icons = NULL;
-    guint16 row = 0;
-    guint16 col = -1; /* start at -1 because we'll increment it */
+    gint16 row = 0;
+    gint16 col = -1; /* start at -1 because we'll increment it */
 
     for(l = icon_view->priv->icons; l; l = l->next) {
-        guint16 old_row, old_col;
+        gint16 old_row, old_col;
 
         /* clear out old position */
         xfdesktop_icon_view_invalidate_icon(icon_view, l->data, FALSE);
@@ -2200,7 +2200,7 @@ xfdesktop_icon_view_select_between(XfdesktopIconView *icon_view,
                                    XfdesktopIcon *start_icon,
                                    XfdesktopIcon *end_icon)
 {
-    guint16 start_row, start_col, end_row, end_col;
+    gint16 start_row, start_col, end_row, end_col;
     gint i, j;
     XfdesktopIcon *icon;
 
@@ -2209,7 +2209,7 @@ xfdesktop_icon_view_select_between(XfdesktopIconView *icon_view,
     {
         if(start_row > end_row || (start_row == end_row && start_col > end_col)) {
             /* flip start and end */
-            guint16 tmpr = start_row, tmpc = start_col;
+            gint16 tmpr = start_row, tmpc = start_col;
 
             start_row = end_row;
             start_col = end_col;
@@ -2276,7 +2276,7 @@ xfdesktop_icon_view_move_cursor_left_right(XfdesktopIconView *icon_view,
                                            gint count,
                                            GdkModifierType modmask)
 {
-    guint16 row, col;
+    gint16 row, col;
     gint i, j;
     guint left = (count < 0 ? -count : count);
     gint step = (count < 0 ? -1 : 1);
@@ -2339,7 +2339,7 @@ xfdesktop_icon_view_move_cursor_up_down(XfdesktopIconView *icon_view,
                                         gint count,
                                         GdkModifierType modmask)
 {
-    guint16 row, col;
+    gint16 row, col;
     gint i, j;
     guint left = (count < 0 ? -count : count);
     gint step = (count < 0 ? -1 : 1);
@@ -2898,7 +2898,7 @@ xfdesktop_icon_view_shift_area_to_cell(XfdesktopIconView *icon_view,
                                        XfdesktopIcon *icon,
                                        GdkRectangle *area)
 {
-    guint16 row, col;
+    gint16 row, col;
 
     if(!xfdesktop_icon_get_position(icon, &row, &col)) {
         g_warning("trying to calculate without a position for icon '%s'",
@@ -3030,6 +3030,9 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
     gchar x_offset = 0, y_offset = 0;
     GdkColor *sh_text_col = NULL;
     cairo_t *cr;
+#ifdef G_ENABLE_DEBUG
+    gint16 row, col;
+#endif
 
     TRACE("entering, (%s)(area=%dx%d+%d+%d)", xfdesktop_icon_peek_label(icon),
           area->width, area->height, area->x, area->y);
@@ -3079,9 +3082,14 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
             pix_free = tmp;
         }
 
-        TRACE("painting pixbuf at %dx%d+%d+%d",
+#ifdef G_ENABLE_DEBUG
+        xfdesktop_icon_get_position(icon, &row, &col);
+
+        TRACE("painting pixbuf at %dx%d+%d+%d (row %d ,col %d)",
               pixbuf_extents.width, pixbuf_extents.height,
-              pixbuf_extents.x, pixbuf_extents.y);
+              pixbuf_extents.x, pixbuf_extents.y,
+              row, col);
+#endif
 
         xfdesktop_icon_view_draw_image(cr, pix, &pixbuf_extents);
         
@@ -3134,7 +3142,7 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
 #if 0 /*def DEBUG*/
     {
         GdkRectangle cell = { 0, };
-        guint16 row, col;
+        gint16 row, col;
 
         if(!xfdesktop_icon_get_position(icon, &row, &col))
             DBG("can't get icon position for '%s'", xfdesktop_icon_peek_label(icon));
@@ -3183,7 +3191,7 @@ xfdesktop_move_all_icons_to_pending_icons_list(XfdesktopIconView *icon_view)
     
     /* move all icons into the pending_icons list and remove from the desktop */
     for(l = icon_view->priv->icons; l; l = l->next) {
-        guint16 old_row, old_col;
+        gint16 old_row, old_col;
 
         if(xfdesktop_icon_get_position(XFDESKTOP_ICON(l->data), &old_row, &old_col))
             xfdesktop_grid_set_position_free(icon_view, old_row, old_col);
@@ -3274,7 +3282,7 @@ xfdesktop_move_all_previous_icons_to_desktop(XfdesktopIconView *icon_view)
 
     /* add all pending icons back if their space is still available */
     for(l = icon_view->priv->pending_icons; l; l = l->next) {
-        guint16 row, col;
+        gint16 row, col;
         XfdesktopIcon *icon = XFDESKTOP_ICON(l->data);
 
         if(!xfdesktop_icon_get_position(icon, &row, &col)) {
@@ -3304,7 +3312,7 @@ xfdesktop_append_all_pending_icons(XfdesktopIconView *icon_view)
 
     /* add all pending icons back if space is available */
     for(l = icon_view->priv->pending_icons; l; l = l->next) {
-        guint16 row, col;
+        gint16 row, col;
         XfdesktopIcon *icon = XFDESKTOP_ICON(l->data);
 
         if(xfdesktop_grid_get_next_free_position(icon_view, &row, &col)) {
@@ -3337,7 +3345,7 @@ static void
 xfdesktop_grid_do_resize(XfdesktopIconView *icon_view)
 {
     gint xorigin = 0, yorigin = 0, width = 0, height = 0;
-    guint16 new_rows, new_cols;
+    gint16 new_rows, new_cols;
     gsize old_size, new_size;
     GdkScreen *gscreen;
 
@@ -3476,8 +3484,8 @@ xfdesktop_get_workarea_single(XfdesktopIconView *icon_view,
 
 static inline gboolean
 xfdesktop_grid_is_free_position(XfdesktopIconView *icon_view,
-                                guint16 row,
-                                guint16 col)
+                                gint16 row,
+                                gint16 col)
 {
     g_return_val_if_fail(icon_view->priv->grid_layout != NULL, FALSE);
 
@@ -3493,8 +3501,8 @@ xfdesktop_grid_is_free_position(XfdesktopIconView *icon_view,
 
 static gboolean
 xfdesktop_grid_get_next_free_position(XfdesktopIconView *icon_view,
-                                      guint16 *row,
-                                      guint16 *col)
+                                      gint16 *row,
+                                      gint16 *col)
 {
     gint i, maxi;
     
@@ -3515,8 +3523,8 @@ xfdesktop_grid_get_next_free_position(XfdesktopIconView *icon_view,
 
 static inline void
 xfdesktop_grid_set_position_free(XfdesktopIconView *icon_view,
-                                 guint16 row,
-                                 guint16 col)
+                                 gint16 row,
+                                 gint16 col)
 {
     g_return_if_fail(row < icon_view->priv->nrows
                      && col < icon_view->priv->ncols);
@@ -3534,8 +3542,8 @@ xfdesktop_grid_set_position_free(XfdesktopIconView *icon_view,
 
 static inline gboolean
 xfdesktop_grid_unset_position_free_raw(XfdesktopIconView *icon_view,
-                                       guint16 row,
-                                       guint16 col,
+                                       gint16 row,
+                                       gint16 col,
                                        gpointer data)
 {
     gint idx;
@@ -3564,7 +3572,7 @@ static inline gboolean
 xfdesktop_grid_unset_position_free(XfdesktopIconView *icon_view,
                                    XfdesktopIcon *icon)
 {
-    guint16 row, col;
+    gint16 row, col;
     
     if(!xfdesktop_icon_get_position(icon, &row, &col)) {
         g_warning("Trying to set free position of an icon with no position");
@@ -3588,8 +3596,8 @@ xfdesktop_icon_view_icon_in_cell_raw(XfdesktopIconView *icon_view,
 
 static inline XfdesktopIcon *
 xfdesktop_icon_view_icon_in_cell(XfdesktopIconView *icon_view,
-                                 guint16 row,
-                                 guint16 col)
+                                 gint16 row,
+                                 gint16 col)
 {
     gint idx;
     
@@ -3716,7 +3724,7 @@ static void
 xfdesktop_icon_view_add_item_internal(XfdesktopIconView *icon_view,
                                       XfdesktopIcon *icon)
 {
-    guint16 row, col;
+    gint16 row, col;
     GdkRectangle fake_area;
     
     /* sanity check: at this point this should be taken care of */
@@ -3746,7 +3754,7 @@ static gboolean
 xfdesktop_icon_view_icon_find_position(XfdesktopIconView *icon_view,
                                        XfdesktopIcon *icon)
 {
-    guint16 row, col;
+    gint16 row, col;
     
     if(!xfdesktop_icon_get_position(icon, &row, &col)
        || !xfdesktop_grid_is_free_position(icon_view, row, col))
@@ -3768,7 +3776,7 @@ void
 xfdesktop_icon_view_add_item(XfdesktopIconView *icon_view,
                              XfdesktopIcon *icon)
 {
-    guint16 row, col;
+    gint16 row, col;
     
     g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view)
                      && XFDESKTOP_IS_ICON(icon));
@@ -3804,7 +3812,7 @@ void
 xfdesktop_icon_view_remove_item(XfdesktopIconView *icon_view,
                                 XfdesktopIcon *icon)
 {
-    guint16 row, col;
+    gint16 row, col;
     GList *l;
     
     g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view)
@@ -3854,7 +3862,7 @@ void
 xfdesktop_icon_view_remove_all(XfdesktopIconView *icon_view)
 {
     GList *l;
-    guint16 row, col;
+    gint16 row, col;
     
     g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view));
     
@@ -4051,7 +4059,7 @@ xfdesktop_icon_view_widget_coords_to_item(XfdesktopIconView *icon_view,
                                           gint wx,
                                           gint wy)
 {
-    guint16 row, col;
+    gint16 row, col;
     
     xfdesktop_xy_to_rowcol(icon_view, wx, wy, &row, &col);
     if(row >= icon_view->priv->nrows
