@@ -1535,12 +1535,17 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                         g_signal_connect(G_OBJECT(mi), "activate",
                                          G_CALLBACK(xfdesktop_file_icon_menu_create_launcher),
                                          fmanager);
+
+                        mi = gtk_separator_menu_item_new();
+                        gtk_widget_show(mi);
+                        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
                     }
                 }
                 
                 app_infos = g_app_info_get_all_for_type(g_file_info_get_content_type(info));
                 if(app_infos) {
                     GAppInfo *app_info, *default_application;
+                    GtkWidget *app_infos_menu;
                     GList *ap;
 
                     /* move any default application in front of the list */
@@ -1568,7 +1573,6 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                     g_object_unref(app_info);
 
                     if(app_infos->next) {
-                        GtkWidget *app_infos_menu;
                         gint list_len = g_list_length(app_infos->next);
                         
                         if(!xfdesktop_file_utils_file_is_executable(info)
@@ -1598,66 +1602,40 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                             gtk_menu_shell_append(GTK_MENU_SHELL(app_infos_menu), mi);
                             g_object_unref(app_info);
                         }
+
+                        if(list_len > 3) {
+                            mi = gtk_separator_menu_item_new();
+                            gtk_widget_show(mi);
+                            gtk_menu_shell_append(GTK_MENU_SHELL(app_infos_menu), mi);
+                        }
                     }
+
+                    mi = gtk_image_menu_item_new_with_mnemonic(_("Open With Other _Application..."));
+                    gtk_widget_show(mi);
+                    gtk_menu_shell_append(GTK_MENU_SHELL(app_infos_menu), mi);
+                    g_signal_connect(G_OBJECT(mi), "activate",
+                                     G_CALLBACK(xfdesktop_file_icon_menu_other_app),
+                                     fmanager);
                     
                     /* free the app info list */
                     g_list_free(app_infos);
+                } else {
+                    img = gtk_image_new_from_stock(GTK_STOCK_OPEN, GTK_ICON_SIZE_MENU);
+                    gtk_widget_show(img);
+                    mi = gtk_image_menu_item_new_with_mnemonic(_("Open With Other _Application..."));
+                    gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+                    gtk_widget_show(mi);
+                    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+                    g_signal_connect(G_OBJECT(mi), "activate",
+                                     G_CALLBACK(xfdesktop_file_icon_menu_other_app),
+                                     fmanager);
                 }
-                
-                img = gtk_image_new_from_stock(GTK_STOCK_OPEN, GTK_ICON_SIZE_MENU);
-                gtk_widget_show(img);
-                mi = gtk_image_menu_item_new_with_mnemonic(_("Open With Other _Application..."));
-                gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
-                gtk_widget_show(mi);
-                gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-                g_signal_connect(G_OBJECT(mi), "activate",
-                                 G_CALLBACK(xfdesktop_file_icon_menu_other_app),
-                                 fmanager);
-                
+
                 mi = gtk_separator_menu_item_new();
                 gtk_widget_show(mi);
                 gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             }
         }
-        
-#ifdef HAVE_THUNARX
-        if(!multi_sel && fmanager->priv->thunarx_menu_providers) {
-            GList *menu_actions = NULL;
-            ThunarxMenuProvider *provider;
-
-            if(selected->data == fmanager->priv->desktop_icon) {
-                /* click on the desktop itself, only show folder actions */
-                for(l = fmanager->priv->thunarx_menu_providers; l; l = l->next) {
-                    provider = THUNARX_MENU_PROVIDER(l->data);
-                    menu_actions = g_list_concat(menu_actions,
-                                                 thunarx_menu_provider_get_folder_actions(provider,
-                                                                                          toplevel,
-                                                                                          THUNARX_FILE_INFO(file_icon)));
-                }
-            } else {
-                /* thunar file specific actions (allows them to operate on folders
-                 * that are on the desktop as well) */
-                for(l = fmanager->priv->thunarx_menu_providers; l; l = l->next) {
-                    provider = THUNARX_MENU_PROVIDER(l->data);
-                    menu_actions = g_list_concat(menu_actions,
-                                                 thunarx_menu_provider_get_file_actions(provider,
-                                                                                        toplevel,
-                                                                                        selected));
-                }
-            }
-
-            if(menu_actions) {
-                xfdesktop_menu_shell_append_action_list(GTK_MENU_SHELL(menu),
-                                                        menu_actions);
-                g_list_foreach(menu_actions, (GFunc)g_object_unref, NULL);
-                g_list_free(menu_actions);
-                
-                mi = gtk_separator_menu_item_new();
-                gtk_widget_show(mi);
-                gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-            }
-        }
-#endif
         
         if(file_icon == fmanager->priv->desktop_icon) {
             /* Menu on the root desktop window */
@@ -1673,14 +1651,6 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
             gtk_widget_set_sensitive(mi, FALSE);
         } else {
             /* Menu popup on an icon */
-            /* Copy */
-            mi = gtk_image_menu_item_new_from_stock(GTK_STOCK_COPY, NULL);
-            gtk_widget_show(mi);
-            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-            g_signal_connect(G_OBJECT(mi), "activate",
-                             G_CALLBACK(xfdesktop_file_icon_menu_copy),
-                             fmanager);
-
             /* Cut */
             mi = gtk_image_menu_item_new_from_stock(GTK_STOCK_CUT, NULL);
             gtk_widget_show(mi);
@@ -1692,10 +1662,23 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
             } else
                 gtk_widget_set_sensitive(mi, FALSE);
 
+            /* Copy */
+            mi = gtk_image_menu_item_new_from_stock(GTK_STOCK_COPY, NULL);
+            gtk_widget_show(mi);
+            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+            g_signal_connect(G_OBJECT(mi), "activate",
+                             G_CALLBACK(xfdesktop_file_icon_menu_copy),
+                             fmanager);
+
+            /* Separator */
+            mi = gtk_separator_menu_item_new();
+            gtk_widget_show(mi);
+            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+
             /* Trash */
             mi = gtk_image_menu_item_new_with_mnemonic(_("Mo_ve to Trash"));
             /* Add the trashcan image */
-            img = gtk_image_new_from_icon_name("user-trash", GTK_ICON_SIZE_MENU);
+            img = gtk_image_new_from_icon_name("user-trash-full", GTK_ICON_SIZE_MENU);
             gtk_widget_show(img);
             gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
             gtk_widget_show(mi);
@@ -1746,6 +1729,45 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
         mi = gtk_separator_menu_item_new();
         gtk_widget_show(mi);
         gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+
+#ifdef HAVE_THUNARX
+        if(!multi_sel && fmanager->priv->thunarx_menu_providers) {
+            GList *menu_actions = NULL;
+            ThunarxMenuProvider *provider;
+
+            if(selected->data == fmanager->priv->desktop_icon) {
+                /* click on the desktop itself, only show folder actions */
+                for(l = fmanager->priv->thunarx_menu_providers; l; l = l->next) {
+                    provider = THUNARX_MENU_PROVIDER(l->data);
+                    menu_actions = g_list_concat(menu_actions,
+                                                 thunarx_menu_provider_get_folder_actions(provider,
+                                                                                          toplevel,
+                                                                                          THUNARX_FILE_INFO(file_icon)));
+                }
+            } else {
+                /* thunar file specific actions (allows them to operate on folders
+                 * that are on the desktop as well) */
+                for(l = fmanager->priv->thunarx_menu_providers; l; l = l->next) {
+                    provider = THUNARX_MENU_PROVIDER(l->data);
+                    menu_actions = g_list_concat(menu_actions,
+                                                 thunarx_menu_provider_get_file_actions(provider,
+                                                                                        toplevel,
+                                                                                        selected));
+                }
+            }
+
+            if(menu_actions) {
+                xfdesktop_menu_shell_append_action_list(GTK_MENU_SHELL(menu),
+                                                        menu_actions);
+                g_list_foreach(menu_actions, (GFunc)g_object_unref, NULL);
+                g_list_free(menu_actions);
+
+                mi = gtk_separator_menu_item_new();
+                gtk_widget_show(mi);
+                gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+            }
+        }
+#endif
         
         if(file_icon == fmanager->priv->desktop_icon) {
             /* Menu on the root desktop window */
