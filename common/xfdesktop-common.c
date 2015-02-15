@@ -102,25 +102,34 @@ xfdesktop_backdrop_list_load(const gchar *filename,
     items = 0;
     files = g_strsplit(contents, "\n", -1);
 
+    g_free(contents); /* not needed anymore */
+
     /* Since the first line is the file identifier, we need to skip it.
      * Additionally, we want to skip blank lines. */
-    for(i = 1; files[i] != NULL; i++) {
-        if(g_strcmp0(files[i], "") != 0) {
-            g_free(files[items]);
-            files[items] = g_strdup(files[i]);
-            DBG("files[items] %s", files[items]);
-            items++;
-        }
-    }
-    files[items+1] = NULL;
 
-    files = g_realloc(files, sizeof(gchar *) * (items+1));
+    /* a file with just the header will have only one line */
+    if(files[0] != NULL)
+    {
+        g_free(files[0]);   /* that's the only non-empty line we need to remove */
+        files[0] = NULL;
+        for(i = 1; files[i] != NULL; i++) {
+            if(g_strcmp0(files[i], "") != 0) {
+                files[items]=files[i];  /* move the string to the current item slot */
+
+                items++;
+            } else {
+                g_free(files[i]);   /* free the irrelevant empty string */
+            }
+        }
+        files[items] = NULL; /* set the sentinel */
+
+        /* resize */
+        files = g_realloc(files, sizeof(gchar *) * (items+1));
+    }
 
     DBG("items %d", items);
     if(n_items)
         *n_items = items;
-
-    g_free(contents);
 
     return files;
 }
