@@ -1453,14 +1453,17 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                                      G_CALLBACK(xfdesktop_file_icon_menu_create_folder),
                                      fmanager);
 
-                    icon = g_content_type_get_icon("inode/directory");
+                    icon = g_themed_icon_new("folder-new");
                     img = gtk_image_new_from_gicon(icon, GTK_ICON_SIZE_MENU);
                     gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
                     gtk_widget_show(img);
                     
-                    /* create from template submenu, 0 disables the sub-menu */
+                    /* create document submenu, 0 disables the sub-menu */
                     if(fmanager->priv->max_templates > 0) {
-                        mi = gtk_menu_item_new_with_mnemonic(_("Create From _Template"));
+                        img = gtk_image_new_from_stock(GTK_STOCK_NEW, GTK_ICON_SIZE_MENU);
+                        gtk_widget_show(img);
+                        mi = gtk_image_menu_item_new_with_mnemonic(_("Create _Document"));
+                        gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
                         gtk_widget_show(mi);
                         gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
 
@@ -1480,14 +1483,23 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                             xfdesktop_file_icon_menu_fill_template_menu(tmpl_menu,
                                                                         templates_dir,
                                                                         fmanager);
+                        } else {
+                            mi = gtk_menu_item_new_with_label(_("No templates installed"));
+                            gtk_widget_set_sensitive(mi, FALSE);
+                            gtk_widget_show(mi);
+                            gtk_menu_shell_append(GTK_MENU_SHELL(tmpl_menu), mi);
                         }
 
                         if(templates_dir)
                             g_object_unref(templates_dir);
                         g_object_unref(home_dir);
 
+                        mi = gtk_separator_menu_item_new();
+                        gtk_widget_show(mi);
+                        gtk_menu_shell_append(GTK_MENU_SHELL(tmpl_menu), mi);
+
                         /* add the "Empty File" template option */
-                        img = gtk_image_new_from_stock(GTK_STOCK_NEW, GTK_ICON_SIZE_MENU);
+                        img = gtk_image_new_from_stock(GTK_STOCK_FILE, GTK_ICON_SIZE_MENU);
                         gtk_widget_show(img);
                         mi = gtk_image_menu_item_new_with_mnemonic(_("_Empty File"));
                         gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
