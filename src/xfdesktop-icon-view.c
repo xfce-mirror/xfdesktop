@@ -96,6 +96,7 @@ enum
     SIG_TOGGLE_CURSOR_ITEM,
     SIG_MOVE_CURSOR,
     SIG_ACTIVATE_CURSOR_ITEM,
+    SIG_RESIZE_EVENT,
     SIG_N_SIGNALS,
 };
 
@@ -502,6 +503,15 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
                                               G_TYPE_BOOLEAN, 2,
                                               GTK_TYPE_MOVEMENT_STEP,
                                               G_TYPE_INT);
+
+    __signals[SIG_RESIZE_EVENT] = g_signal_new(I_("resize-event"),
+                                               XFDESKTOP_TYPE_ICON_VIEW,
+                                               G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
+                                               G_STRUCT_OFFSET(XfdesktopIconViewClass,
+                                                               resize_event),
+                                               NULL, NULL,
+                                               g_cclosure_marshal_VOID__VOID,
+                                               G_TYPE_NONE, 0);
 
     gtk_widget_class_install_style_property(widget_class,
                                             g_param_spec_uchar("label-alpha",
@@ -3370,13 +3380,16 @@ xfdesktop_grid_do_resize(XfdesktopIconView *icon_view)
             DUMP_GRID_LAYOUT(icon_view);
         #endif
 
-        /* Grid size did chang/e */
+        /* Grid size did change */
         xfdesktop_move_all_icons_to_pending_icons_list(icon_view);
         xfdesktop_move_all_pending_icons_to_desktop(icon_view);
 
         #if 0 /*def DEBUG*/
             DUMP_GRID_LAYOUT(icon_view);
         #endif
+
+        /* Fire off an event to notify others of the change */
+        g_signal_emit(G_OBJECT(icon_view), __signals[SIG_RESIZE_EVENT], 0, NULL);
     }
     else {
         DBG("old_size == new_size updating grid");

@@ -66,6 +66,8 @@ struct _XfdesktopIconViewClass
     gboolean (*move_cursor)(XfdesktopIconView *icon_view,
                             GtkMovementStep step,
                             gint count);
+
+    void (*resize_event)(XfdesktopIconView *icon_view);
 };
 
 GType xfdesktop_icon_view_get_type(void) G_GNUC_CONST;

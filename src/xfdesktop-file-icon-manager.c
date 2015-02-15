@@ -2047,6 +2047,25 @@ xfdesktop_file_icon_manager_queue_thumbnail(XfdesktopFileIconManager *fmanager,
     }
 }
 
+static void
+add_icon_to_iconview(XfdesktopFileIconManager *fmanager,
+                     XfdesktopIcon *icon)
+{
+    /* Pay attention to position changes and add the icon to the icon view */
+    g_signal_connect(G_OBJECT(icon), "position-changed",
+                     G_CALLBACK(xfdesktop_file_icon_position_changed),
+                     fmanager);
+
+    /* Tell the icon view about the icon */
+    xfdesktop_icon_view_add_item(fmanager->priv->icon_view,
+                                 XFDESKTOP_ICON(icon));
+
+#if defined(DEBUG) && DEBUG > 0
+    _alive_icon_list = g_list_prepend(_alive_icon_list, icon);
+    g_object_weak_ref(G_OBJECT(icon), _icon_notify_destroy, NULL);
+#endif
+}
+
 /* Adds a single icon to the icon view, popping from the top of the stack.
  * Will continue to run until it runs out of icons to add at which point
  * it will free the queue and return FALSE */
@@ -2074,19 +2093,62 @@ process_icon_from_queue(gpointer user_data)
     if(icon == NULL || !XFDESKTOP_IS_FILE_ICON(icon))
         return TRUE;
 
-    /* Pay attention to position changes and add the icon to the icon view */
-    g_signal_connect(G_OBJECT(icon), "position-changed",
-                     G_CALLBACK(xfdesktop_file_icon_position_changed),
-                     fmanager);
-    xfdesktop_icon_view_add_item(fmanager->priv->icon_view,
-                                 XFDESKTOP_ICON(icon));
-
-#if defined(DEBUG) && DEBUG > 0
-    _alive_icon_list = g_list_prepend(_alive_icon_list, icon);
-    g_object_weak_ref(G_OBJECT(icon), _icon_notify_destroy, NULL);
-#endif
+    add_icon_to_iconview(fmanager, XFDESKTOP_ICON(icon));
 
     return TRUE;
+}
+
+/* When the icon view gets resized we need to sort all the icons so they
+ * are placed in the correct spot for the new resolution */
+static void
+icon_view_resized(XfdesktopIconView *icon_view,
+                  XfdesktopFileIconManager *fmanager)
+{
+    GQueue *new_queue;
+    XfdesktopIcon *icon;
+    XfdesktopFileIconManagerPrivate *priv = XFDESKTOP_FILE_ICON_MANAGER_GET_PRIVATE(fmanager);
+    const gchar *name;
+    gchar *identifier;
+    gint16 row, col;
+
+    XF_DEBUG("icon view - resize event!");
+
+    if(!XFDESKTOP_IS_FILE_ICON_MANAGER(fmanager) || !XFDESKTOP_IS_ICON_VIEW(icon_view))
+        return;
+
+    /* No pending icons, nothing to do */
+    if(priv == NULL || priv->pending_icons == NULL || g_queue_is_empty(priv->pending_icons))
+        return;
+
+    new_queue = g_queue_new();
+
+    while((icon = g_queue_pop_head(priv->pending_icons))) {
+        name = xfdesktop_icon_peek_label(XFDESKTOP_ICON(icon));
+        identifier = xfdesktop_icon_get_identifier(XFDESKTOP_ICON(icon));
+
+        if(xfdesktop_file_icon_manager_get_cached_icon_position(fmanager,
+                                                                name, identifier,
+                                                                &row, &col))
+        {
+            /* The icon has spot in the new resolution, add it to the front of
+             * the queue. */
+            XF_DEBUG("attempting to set icon '%s' to position (%d,%d) [location in cache]", name, row, col);
+            xfdesktop_icon_set_position(XFDESKTOP_ICON(icon), row, col);
+            g_queue_push_head(new_queue, icon);
+        } else {
+            /* Didn't have a spot, push it to the end of the stack. These will be
+             * added last. */
+            XF_DEBUG("icon '%s' didn't have a previous position", name);
+            g_queue_push_tail(new_queue, icon);
+        }
+
+        if(identifier)
+            g_free(identifier);
+    }
+
+    /* Free the old queue and replace it with the new one */
+    g_queue_free(priv->pending_icons);
+    priv->pending_icons = new_queue;
 }
 
 static void
@@ -2107,23 +2169,28 @@ xfdesktop_file_icon_manager_add_icon(XfdesktopFileIconManager *fmanager,
     if(fmanager->priv->pending_icons == NULL)
         fmanager->priv->pending_icons = g_queue_new();
 
-    /* See if our icon had a spot on in the icon view, if it did then it goes
-     * to the front of the pending icon queue, if it didn't then we place it
-     * on the end */
     if(row >= 0 && col >= 0) {
-        XF_DEBUG("attempting to set icon '%s' to position (%d,%d)", name, row, col);
+        /* The row and col have been hard-set when adding the icon to the
+         * icon view, probably by the user (like an icon rename). We assume
+         * this is a top priority so bypass the queue and add it now */
+        XF_DEBUG("attempting to set icon '%s' to position (%d,%d) [assigned location]", name, row, col);
         xfdesktop_icon_set_position(XFDESKTOP_ICON(icon), row, col);
-        g_queue_push_head(fmanager->priv->pending_icons, icon);
+        add_icon_to_iconview(fmanager, XFDESKTOP_ICON(icon));
     } else if(xfdesktop_file_icon_manager_get_cached_icon_position(fmanager,
                                                                    name, identifier,
                                                                    &row, &col))
     {
-        XF_DEBUG("attempting to set icon '%s' to position (%d,%d)", name, row, col);
+        /* The icon has been looked up in the cache add it to the front of
+         * the queue. The queue may get sorted if the icon view sends a
+         * resize-event */
+        XF_DEBUG("attempting to set icon '%s' to position (%d,%d) [location in cache]", name, row, col);
         xfdesktop_icon_set_position(XFDESKTOP_ICON(icon), row, col);
         g_queue_push_head(fmanager->priv->pending_icons, icon);
     } else {
-        /* Didn't have a spot, push it to the end of the stack */
+        /* Didn't have a spot, push it to the end of the stack. These will be
+         * added last. */
         g_queue_push_tail(fmanager->priv->pending_icons, icon);
+        XF_DEBUG("icon '%s' didn't have a previous position", name);
     }
 
     if(fmanager->priv->pending_icons_id != 0)
@@ -2995,7 +3062,11 @@ xfdesktop_file_icon_manager_real_init(XfdesktopIconViewManager *manager,
     }
 
     fmanager->priv->icon_view = icon_view;
-    
+
+    /* Hook up to the resize-event so we can sort the icon queue and place
+     * new icons where they belong */
+    g_signal_connect(G_OBJECT(fmanager->priv->icon_view), "resize-event", G_CALLBACK(icon_view_resized), fmanager);
+
     fmanager->priv->desktop = gtk_widget_get_toplevel(GTK_WIDGET(icon_view));
     g_signal_connect(G_OBJECT(fmanager->priv->desktop), "populate-root-menu",
                      G_CALLBACK(xfdesktop_file_icon_manager_populate_context_menu),
@@ -3099,7 +3170,11 @@ xfdesktop_file_icon_manager_fini(XfdesktopIconViewManager *manager)
         g_object_unref(fmanager->priv->enumerator);
         fmanager->priv->enumerator = NULL;
     }
-    
+
+    g_signal_handlers_disconnect_by_func(G_OBJECT(fmanager->priv->icon_view),
+                                         G_CALLBACK(icon_view_resized),
+                                         fmanager);
+
     g_signal_handlers_disconnect_by_func(G_OBJECT(fmanager->priv->desktop),
                                          G_CALLBACK(xfdesktop_file_icon_manager_populate_context_menu),
                                          fmanager);
