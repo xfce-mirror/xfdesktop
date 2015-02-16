@@ -220,12 +220,9 @@ windowlist_populate(XfceDesktop *desktop,
     GList *windows, *l;
     WnckWindow *wnck_window;
     gint w, h;
-    PangoFontDescription *italic_font_desc;
     
     if(!show_windowlist)
         return;
-    
-    italic_font_desc = pango_font_description_from_string("italic");
     
     if(gtk_widget_has_screen(GTK_WIDGET(menu)))
         gscreen = gtk_widget_get_screen(GTK_WIDGET(menu));
@@ -352,8 +349,6 @@ windowlist_populate(XfceDesktop *desktop,
             gtk_menu_shell_append(GTK_MENU_SHELL(submenu), mi);
         }
     }
-    
-    pango_font_description_free(italic_font_desc);
 
     if(wl_add_remove_options) {
         /* 'add workspace' item */
