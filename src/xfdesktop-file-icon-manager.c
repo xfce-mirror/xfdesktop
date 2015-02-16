@@ -1589,14 +1589,14 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                         list_len = g_list_length(app_infos->next);
 
                         if(!xfdesktop_file_utils_file_is_executable(info)
-                           && list_len <= 3)
+                           && list_len < 3)
                         {
                             mi = gtk_separator_menu_item_new();
                             gtk_widget_show(mi);
                             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
                         }
 
-                        if(list_len > 3) {
+                        if(list_len >= 3) {
                             mi = gtk_menu_item_new_with_label(_("Open With"));
                             gtk_widget_show(mi);
                             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
@@ -1616,7 +1616,7 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                             g_object_unref(app_info);
                         }
 
-                        if(list_len > 3) {
+                        if(list_len >= 3) {
                             mi = gtk_separator_menu_item_new();
                             gtk_widget_show(mi);
                             gtk_menu_shell_append(GTK_MENU_SHELL(app_infos_menu), mi);
@@ -1625,7 +1625,7 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
 
                     mi = gtk_image_menu_item_new_with_mnemonic(_("Open With Other _Application..."));
                     gtk_widget_show(mi);
-                    if(list_len > 3)
+                    if(list_len >= 3)
                         gtk_menu_shell_append(GTK_MENU_SHELL(app_infos_menu), mi);
                     else
                         gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
