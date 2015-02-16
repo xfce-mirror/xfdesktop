@@ -4,15 +4,15 @@
 # 
 # Translators:
 # Alessandro B, 2013
-# Cristian Marchi <cri.penta@gmail.com>, 2010,2013-2014
+# Cristian Marchi <cri.penta@gmail.com>, 2010,2013-2015
 # Fabio Riga <usul@aruba.it>, 2007,2009
 # Gianluca Foddis <gianluca.foddis@gmail.com>, 2009
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-11 18:32+0100\n"
-"PO-Revision-Date: 2014-11-13 20:56+0000\n"
+"POT-Creation-Date: 2015-02-16 12:32+0100\n"
+"PO-Revision-Date: 2015-02-16 20:29+0000\n"
 "Last-Translator: Cristian Marchi <cri.penta@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/xfdesktop/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -340,7 +340,7 @@ msgstr "Icone delle applicazioni minimizzate"
 msgid "File/launcher icons"
 msgstr "Icone di file e avviatori"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:1024
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:1045
 msgid "Desktop"
 msgstr "Scrivania"
 
@@ -520,16 +520,16 @@ msgid "_Remove Workspace '%s'"
 msgstr "_Rimuovi spazio di lavoro \"%s\""
 
 #: ../src/xfdesktop-app-menu-item.c:351
-#: ../src/xfdesktop-file-icon-manager.c:860
-#: ../src/xfdesktop-file-icon-manager.c:1125
-#: ../src/xfdesktop-file-icon-manager.c:1321 ../src/xfdesktop-file-utils.c:664
+#: ../src/xfdesktop-file-icon-manager.c:861
+#: ../src/xfdesktop-file-icon-manager.c:1126
+#: ../src/xfdesktop-file-icon-manager.c:1322 ../src/xfdesktop-file-utils.c:664
 #: ../src/xfdesktop-file-utils.c:1086 ../src/xfdesktop-file-utils.c:1163
 #: ../src/xfdesktop-file-utils.c:1188 ../src/xfdesktop-file-utils.c:1240
 msgid "Launch Error"
 msgstr "Errore di avvio"
 
 #: ../src/xfdesktop-app-menu-item.c:353
-#: ../src/xfdesktop-file-icon-manager.c:1127
+#: ../src/xfdesktop-file-icon-manager.c:1128
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
@@ -616,48 +616,48 @@ msgstr "Icone della scrivania: %s\n"
 msgid "    Desktop File Icons:  %s\n"
 msgstr "Icone dei file della scrivania: %s\n"
 
-#: ../src/xfdesktop-file-icon-manager.c:559
-#: ../src/xfdesktop-file-icon-manager.c:576
+#: ../src/xfdesktop-file-icon-manager.c:560
+#: ../src/xfdesktop-file-icon-manager.c:577
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
 msgstr "Impossibile creare la cartella Scrivania \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:564
-#: ../src/xfdesktop-file-icon-manager.c:581
+#: ../src/xfdesktop-file-icon-manager.c:565
+#: ../src/xfdesktop-file-icon-manager.c:582
 msgid "Desktop Folder Error"
 msgstr "Errore cartella Scrivania"
 
-#: ../src/xfdesktop-file-icon-manager.c:583
+#: ../src/xfdesktop-file-icon-manager.c:584
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr "Esiste già un file normale con lo stesso nome. Cancellarlo o rinominarlo."
 
-#: ../src/xfdesktop-file-icon-manager.c:666 ../src/xfdesktop-file-utils.c:723
+#: ../src/xfdesktop-file-icon-manager.c:667 ../src/xfdesktop-file-utils.c:723
 #: ../src/xfdesktop-file-utils.c:776
 msgid "Rename Error"
 msgstr "Errore di rinomina"
 
-#: ../src/xfdesktop-file-icon-manager.c:667 ../src/xfdesktop-file-utils.c:777
+#: ../src/xfdesktop-file-icon-manager.c:668 ../src/xfdesktop-file-utils.c:777
 msgid "The files could not be renamed"
 msgstr "Il file non può essere rinominato"
 
-#: ../src/xfdesktop-file-icon-manager.c:668
+#: ../src/xfdesktop-file-icon-manager.c:669
 msgid "None of the icons selected support being renamed."
 msgstr "Nessuna delle icone selezionate supporta la rinominazione"
 
-#: ../src/xfdesktop-file-icon-manager.c:712
-#: ../src/xfdesktop-file-icon-manager.c:756 ../src/xfdesktop-file-utils.c:876
+#: ../src/xfdesktop-file-icon-manager.c:713
+#: ../src/xfdesktop-file-icon-manager.c:757 ../src/xfdesktop-file-utils.c:876
 #: ../src/xfdesktop-file-utils.c:913
 msgid "Trash Error"
 msgstr "Errore nel cestino"
 
-#: ../src/xfdesktop-file-icon-manager.c:713
-#: ../src/xfdesktop-file-icon-manager.c:757
+#: ../src/xfdesktop-file-icon-manager.c:714
+#: ../src/xfdesktop-file-icon-manager.c:758
 msgid "The selected files could not be trashed"
 msgstr "I file selezionati non possono essere cestinati"
 
-#: ../src/xfdesktop-file-icon-manager.c:714
-#: ../src/xfdesktop-file-icon-manager.c:758 ../src/xfdesktop-file-utils.c:725
+#: ../src/xfdesktop-file-icon-manager.c:715
+#: ../src/xfdesktop-file-icon-manager.c:759 ../src/xfdesktop-file-utils.c:725
 #: ../src/xfdesktop-file-utils.c:778 ../src/xfdesktop-file-utils.c:828
 #: ../src/xfdesktop-file-utils.c:959 ../src/xfdesktop-file-utils.c:1006
 #: ../src/xfdesktop-file-utils.c:1047 ../src/xfdesktop-file-utils.c:1088
@@ -669,114 +669,119 @@ msgid ""
 msgstr "Questa funzionalità richiede la presenza di un servizio di gestione dei file (come ad esempio quello fornito da Thunar)."
 
 #. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:858
-#: ../src/xfdesktop-file-icon-manager.c:1320
+#: ../src/xfdesktop-file-icon-manager.c:859
+#: ../src/xfdesktop-file-icon-manager.c:1321
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Impossibile avviare \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:1049
+#: ../src/xfdesktop-file-icon-manager.c:1050
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "_Apri con \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1052
+#: ../src/xfdesktop-file-icon-manager.c:1053
 #, c-format
 msgid "Open With \"%s\""
 msgstr "Apri con \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1378
+#: ../src/xfdesktop-file-icon-manager.c:1379
 msgid "_Open all"
 msgstr "_Apri tutti"
 
-#: ../src/xfdesktop-file-icon-manager.c:1394
+#: ../src/xfdesktop-file-icon-manager.c:1395
 msgid "_Open in New Window"
 msgstr "Apri in una nuova _finestra"
 
-#: ../src/xfdesktop-file-icon-manager.c:1396
+#: ../src/xfdesktop-file-icon-manager.c:1397
 #: ../src/xfdesktop-special-file-icon.c:547 ../src/xfdesktop-volume-icon.c:813
 msgid "_Open"
 msgstr "_Apri"
 
 #. create launcher item
-#: ../src/xfdesktop-file-icon-manager.c:1415
+#: ../src/xfdesktop-file-icon-manager.c:1416
 msgid "Create _Launcher..."
 msgstr "Crea a_vviatore..."
 
 #. create link item
-#: ../src/xfdesktop-file-icon-manager.c:1431
+#: ../src/xfdesktop-file-icon-manager.c:1432
 msgid "Create _URL Link..."
 msgstr "Crea collegamento _URL..."
 
 #. create folder item
-#: ../src/xfdesktop-file-icon-manager.c:1447
+#: ../src/xfdesktop-file-icon-manager.c:1448
 msgid "Create _Folder..."
 msgstr "Crea carte_lla..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1462
-msgid "Create From _Template"
-msgstr "Crea da m_odello"
+#: ../src/xfdesktop-file-icon-manager.c:1465
+msgid "Create _Document"
+msgstr "Crea _documento"
 
-#: ../src/xfdesktop-file-icon-manager.c:1491
+#: ../src/xfdesktop-file-icon-manager.c:1487
+msgid "No templates installed"
+msgstr "Nessun modello installato"
+
+#: ../src/xfdesktop-file-icon-manager.c:1504
 msgid "_Empty File"
 msgstr "File _vuoto"
 
-#: ../src/xfdesktop-file-icon-manager.c:1508
+#: ../src/xfdesktop-file-icon-manager.c:1521
 msgid "_Execute"
 msgstr "_Esegui"
 
-#: ../src/xfdesktop-file-icon-manager.c:1528
+#: ../src/xfdesktop-file-icon-manager.c:1541
 msgid "_Edit Launcher"
 msgstr "_Modifica avviatore"
 
-#: ../src/xfdesktop-file-icon-manager.c:1563
+#: ../src/xfdesktop-file-icon-manager.c:1600
 msgid "Open With"
 msgstr "Apri con"
 
-#: ../src/xfdesktop-file-icon-manager.c:1589
+#: ../src/xfdesktop-file-icon-manager.c:1626
+#: ../src/xfdesktop-file-icon-manager.c:1641
 msgid "Open With Other _Application..."
 msgstr "Apri con un'altra app_licazione..."
 
 #. Trash
-#: ../src/xfdesktop-file-icon-manager.c:1676
+#: ../src/xfdesktop-file-icon-manager.c:1695
 msgid "Mo_ve to Trash"
 msgstr "Sposta nel _cestino"
 
 #. Rename
-#: ../src/xfdesktop-file-icon-manager.c:1707
+#: ../src/xfdesktop-file-icon-manager.c:1726
 msgid "_Rename..."
 msgstr "_Rinomina..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1735
+#: ../src/xfdesktop-file-icon-manager.c:1793
 msgid "Arrange Desktop _Icons"
 msgstr "_Ordina le icone della scrivania"
 
-#: ../src/xfdesktop-file-icon-manager.c:1746
+#: ../src/xfdesktop-file-icon-manager.c:1804
 msgid "Desktop _Settings..."
 msgstr "Impostazioni della sc_rivania..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1757
+#: ../src/xfdesktop-file-icon-manager.c:1815
 #: ../src/xfdesktop-volume-icon.c:855
 msgid "P_roperties..."
 msgstr "_Proprietà..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2699
+#: ../src/xfdesktop-file-icon-manager.c:2762
 msgid "Load Error"
 msgstr "Errore di caricamento"
 
-#: ../src/xfdesktop-file-icon-manager.c:2701
+#: ../src/xfdesktop-file-icon-manager.c:2764
 msgid "Failed to load the desktop folder"
 msgstr "Impossibile caricare la cartella della scrivania"
 
-#: ../src/xfdesktop-file-icon-manager.c:3242
+#: ../src/xfdesktop-file-icon-manager.c:3320
 msgid "Copy _Here"
 msgstr "Copia _qui"
 
-#: ../src/xfdesktop-file-icon-manager.c:3242
+#: ../src/xfdesktop-file-icon-manager.c:3320
 msgid "_Move Here"
 msgstr "_Sposta qui"
 
-#: ../src/xfdesktop-file-icon-manager.c:3242
+#: ../src/xfdesktop-file-icon-manager.c:3320
 msgid "_Link Here"
 msgstr "_Collega qui"
 
