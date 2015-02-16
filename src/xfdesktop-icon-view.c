@@ -64,6 +64,9 @@
 #define CELL_SIZE         (TEXT_WIDTH + CELL_PADDING * 2)
 #define SPACING           (icon_view->priv->cell_spacing)
 #define LABEL_RADIUS      (icon_view->priv->label_radius)
+#define SHADOW_EXTENTS    (icon_view->priv->shadow_extents)
+#define SHADOW_X_OFFSET   MAX(icon_view->priv->shadow_x_offset, icon_view->priv->selected_shadow_x_offset)
+#define SHADOW_Y_OFFSET   MAX(icon_view->priv->shadow_y_offset, icon_view->priv->selected_shadow_y_offset)
 #define TEXT_HEIGHT       (CELL_SIZE - ICON_SIZE - SPACING - (CELL_PADDING * 2) - LABEL_RADIUS)
 #define MIN_MARGIN        8
 #define DEFAULT_RUBBERBAND_ALPHA  64
@@ -185,6 +188,7 @@ struct _XfdesktopIconViewPrivate
     gint cell_spacing;
     gdouble label_radius;
     gdouble cell_text_width_proportion;
+    gint shadow_extents;
 
     gboolean ellipsize_icon_labels;
 
@@ -1824,6 +1828,10 @@ xfdesktop_icon_view_style_set(GtkWidget *widget,
                          "shadow-color",  &icon_view->priv->shadow_color,
                          NULL);
 
+    icon_view->priv->shadow_extents =
+      (icon_view->priv->shadow_blur_radius > 1) ?
+      _gtk_cairo_blur_compute_pixels(icon_view->priv->shadow_blur_radius) : 0;
+
     /* default the shadow color to the inverse of the text color */
     if (!icon_view->priv->shadow_color) {
         icon_view->priv->shadow_color = gdk_color_copy(&gtk_widget_get_style(widget)->fg[GTK_STATE_NORMAL]);
@@ -2885,10 +2893,10 @@ xfdesktop_icon_view_calculate_icon_text_area(XfdesktopIconView *icon_view,
     xfdesktop_icon_view_setup_pango_layout(icon_view, icon, playout);
     pango_layout_get_pixel_extents(playout, NULL, &prect);
 
-    text_area->x = prect.x;
-    text_area->y = prect.y;
-    text_area->width = prect.width;
-    text_area->height = prect.height;
+    text_area->x = prect.x - SHADOW_EXTENTS - SHADOW_X_OFFSET;
+    text_area->y = prect.y - SHADOW_EXTENTS - SHADOW_Y_OFFSET;
+    text_area->width = prect.width + 2 * (SHADOW_EXTENTS + SHADOW_X_OFFSET);
+    text_area->height = prect.height + 2 * (SHADOW_EXTENTS + SHADOW_Y_OFFSET);
 
     return TRUE;
 }
@@ -2978,27 +2986,15 @@ xfdesktop_icon_view_draw_text(cairo_t *cr, PangoLayout *playout, GdkRectangle *t
                               gint x_offset, gint y_offset, gint rtl_offset,
                               gint blur_radius, GdkColor *color)
 {
-    GdkRectangle box_area;
-    gint extents;
-
     cairo_save(cr);
 
-    extents = _gtk_cairo_blur_compute_pixels(blur_radius);
-
-    /* Extend even more the rectangle to not cut the shadows. */
-    box_area = *text_area;
-    box_area.x -= extents;
-    box_area.y -= extents;
-    box_area.width += extents * 2;
-    box_area.height += extents * 2;
-
     /*  Clip the cairo area to blur the minimum surface */
-    gdk_cairo_rectangle(cr, &box_area);
+    gdk_cairo_rectangle(cr, text_area);
     cairo_clip(cr);
 
     cairo_move_to(cr,
-                  box_area.x + extents + x_offset - rtl_offset,
-                  box_area.y + extents + y_offset);
+                  text_area->x + x_offset - rtl_offset,
+                  text_area->y + y_offset);
 
     if (blur_radius > 1) {
         cr = gtk_css_shadow_value_start_drawing (cr, blur_radius);
