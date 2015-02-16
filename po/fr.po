@@ -9,15 +9,15 @@
 # Jérôme Guelfucci <jeromeg@xfce.org>, 2009
 # Mike Massonnet <mmassonnet@xfce.org>, 2008
 # Olivier Fourdan <fourdan@xfce.org>, 2003
-# Urien Desterres <urien.desterres@gmail.com>, 2014
+# Urien Desterres <urien.desterres@gmail.com>, 2014-2015
 # Yannick Le Guen <leguen.yannick@gmail.com>, 2014-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-11 18:32+0100\n"
-"PO-Revision-Date: 2015-02-05 09:49+0000\n"
-"Last-Translator: Yannick Le Guen <leguen.yannick@gmail.com>\n"
+"POT-Creation-Date: 2015-02-16 12:32+0100\n"
+"PO-Revision-Date: 2015-02-16 18:50+0000\n"
+"Last-Translator: Urien Desterres <urien.desterres@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/xfdesktop/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -344,7 +344,7 @@ msgstr "Icônes des applications réduites"
 msgid "File/launcher icons"
 msgstr "Icônes des fichiers / lanceurs"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:1024
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:1045
 msgid "Desktop"
 msgstr "Bureau"
 
@@ -524,16 +524,16 @@ msgid "_Remove Workspace '%s'"
 msgstr "_Supprimer l'espace de travail « %s »"
 
 #: ../src/xfdesktop-app-menu-item.c:351
-#: ../src/xfdesktop-file-icon-manager.c:860
-#: ../src/xfdesktop-file-icon-manager.c:1125
-#: ../src/xfdesktop-file-icon-manager.c:1321 ../src/xfdesktop-file-utils.c:664
+#: ../src/xfdesktop-file-icon-manager.c:861
+#: ../src/xfdesktop-file-icon-manager.c:1126
+#: ../src/xfdesktop-file-icon-manager.c:1322 ../src/xfdesktop-file-utils.c:664
 #: ../src/xfdesktop-file-utils.c:1086 ../src/xfdesktop-file-utils.c:1163
 #: ../src/xfdesktop-file-utils.c:1188 ../src/xfdesktop-file-utils.c:1240
 msgid "Launch Error"
 msgstr "Erreur lors du lancement"
 
 #: ../src/xfdesktop-app-menu-item.c:353
-#: ../src/xfdesktop-file-icon-manager.c:1127
+#: ../src/xfdesktop-file-icon-manager.c:1128
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
@@ -620,48 +620,48 @@ msgstr "    Icônes du bureau :       %s\n"
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Icônes des fichiers du bureau :  %s\n"
 
-#: ../src/xfdesktop-file-icon-manager.c:559
-#: ../src/xfdesktop-file-icon-manager.c:576
+#: ../src/xfdesktop-file-icon-manager.c:560
+#: ../src/xfdesktop-file-icon-manager.c:577
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
 msgstr "Impossible de créer le dossier du bureau « %s »"
 
-#: ../src/xfdesktop-file-icon-manager.c:564
-#: ../src/xfdesktop-file-icon-manager.c:581
+#: ../src/xfdesktop-file-icon-manager.c:565
+#: ../src/xfdesktop-file-icon-manager.c:582
 msgid "Desktop Folder Error"
 msgstr "Erreur dans le dossier du bureau"
 
-#: ../src/xfdesktop-file-icon-manager.c:583
+#: ../src/xfdesktop-file-icon-manager.c:584
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr "Un fichier normal avec le même nom existe déjà. Veuillez le supprimer ou le renommer."
 
-#: ../src/xfdesktop-file-icon-manager.c:666 ../src/xfdesktop-file-utils.c:723
+#: ../src/xfdesktop-file-icon-manager.c:667 ../src/xfdesktop-file-utils.c:723
 #: ../src/xfdesktop-file-utils.c:776
 msgid "Rename Error"
 msgstr "Erreur de renommage"
 
-#: ../src/xfdesktop-file-icon-manager.c:667 ../src/xfdesktop-file-utils.c:777
+#: ../src/xfdesktop-file-icon-manager.c:668 ../src/xfdesktop-file-utils.c:777
 msgid "The files could not be renamed"
 msgstr "Les fichiers ne peuvent pas être renommés"
 
-#: ../src/xfdesktop-file-icon-manager.c:668
+#: ../src/xfdesktop-file-icon-manager.c:669
 msgid "None of the icons selected support being renamed."
 msgstr "Aucune des icônes sélectionnées ne peut être renommée."
 
-#: ../src/xfdesktop-file-icon-manager.c:712
-#: ../src/xfdesktop-file-icon-manager.c:756 ../src/xfdesktop-file-utils.c:876
+#: ../src/xfdesktop-file-icon-manager.c:713
+#: ../src/xfdesktop-file-icon-manager.c:757 ../src/xfdesktop-file-utils.c:876
 #: ../src/xfdesktop-file-utils.c:913
 msgid "Trash Error"
 msgstr "Erreur de la corbeille"
 
-#: ../src/xfdesktop-file-icon-manager.c:713
-#: ../src/xfdesktop-file-icon-manager.c:757
+#: ../src/xfdesktop-file-icon-manager.c:714
+#: ../src/xfdesktop-file-icon-manager.c:758
 msgid "The selected files could not be trashed"
 msgstr "Les fichiers sélectionnés n'ont pas pu être supprimés"
 
-#: ../src/xfdesktop-file-icon-manager.c:714
-#: ../src/xfdesktop-file-icon-manager.c:758 ../src/xfdesktop-file-utils.c:725
+#: ../src/xfdesktop-file-icon-manager.c:715
+#: ../src/xfdesktop-file-icon-manager.c:759 ../src/xfdesktop-file-utils.c:725
 #: ../src/xfdesktop-file-utils.c:778 ../src/xfdesktop-file-utils.c:828
 #: ../src/xfdesktop-file-utils.c:959 ../src/xfdesktop-file-utils.c:1006
 #: ../src/xfdesktop-file-utils.c:1047 ../src/xfdesktop-file-utils.c:1088
@@ -673,114 +673,119 @@ msgid ""
 msgstr "Cette fonctionnalité requiert la présence d'un gestionnaire de fichiers (comme Thunar)."
 
 #. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:858
-#: ../src/xfdesktop-file-icon-manager.c:1320
+#: ../src/xfdesktop-file-icon-manager.c:859
+#: ../src/xfdesktop-file-icon-manager.c:1321
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Impossible de lancer « %s » :"
 
-#: ../src/xfdesktop-file-icon-manager.c:1049
+#: ../src/xfdesktop-file-icon-manager.c:1050
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "_Ouvrir avec « %s »"
 
-#: ../src/xfdesktop-file-icon-manager.c:1052
+#: ../src/xfdesktop-file-icon-manager.c:1053
 #, c-format
 msgid "Open With \"%s\""
 msgstr "Ouvrir avec « %s »"
 
-#: ../src/xfdesktop-file-icon-manager.c:1378
+#: ../src/xfdesktop-file-icon-manager.c:1379
 msgid "_Open all"
 msgstr "_Ouvrir tous"
 
-#: ../src/xfdesktop-file-icon-manager.c:1394
+#: ../src/xfdesktop-file-icon-manager.c:1395
 msgid "_Open in New Window"
 msgstr "_Ouvrir dans une nouvelle fenêtre"
 
-#: ../src/xfdesktop-file-icon-manager.c:1396
+#: ../src/xfdesktop-file-icon-manager.c:1397
 #: ../src/xfdesktop-special-file-icon.c:547 ../src/xfdesktop-volume-icon.c:813
 msgid "_Open"
 msgstr "_Ouvrir"
 
 #. create launcher item
-#: ../src/xfdesktop-file-icon-manager.c:1415
+#: ../src/xfdesktop-file-icon-manager.c:1416
 msgid "Create _Launcher..."
 msgstr "Créer un _lanceur..."
 
 #. create link item
-#: ../src/xfdesktop-file-icon-manager.c:1431
+#: ../src/xfdesktop-file-icon-manager.c:1432
 msgid "Create _URL Link..."
 msgstr "Créer un lien _URL..."
 
 #. create folder item
-#: ../src/xfdesktop-file-icon-manager.c:1447
+#: ../src/xfdesktop-file-icon-manager.c:1448
 msgid "Create _Folder..."
-msgstr "Créer un _dossier..."
+msgstr "Créer un d_ossier..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1462
-msgid "Create From _Template"
-msgstr "Créer à partir d'un _modèle"
+#: ../src/xfdesktop-file-icon-manager.c:1465
+msgid "Create _Document"
+msgstr "Créer un _document"
 
-#: ../src/xfdesktop-file-icon-manager.c:1491
+#: ../src/xfdesktop-file-icon-manager.c:1487
+msgid "No templates installed"
+msgstr "Aucun modèle installé"
+
+#: ../src/xfdesktop-file-icon-manager.c:1504
 msgid "_Empty File"
 msgstr "_Fichier vide"
 
-#: ../src/xfdesktop-file-icon-manager.c:1508
+#: ../src/xfdesktop-file-icon-manager.c:1521
 msgid "_Execute"
 msgstr "_Exécuter"
 
-#: ../src/xfdesktop-file-icon-manager.c:1528
+#: ../src/xfdesktop-file-icon-manager.c:1541
 msgid "_Edit Launcher"
 msgstr "_Éditer le lanceur"
 
-#: ../src/xfdesktop-file-icon-manager.c:1563
+#: ../src/xfdesktop-file-icon-manager.c:1600
 msgid "Open With"
 msgstr "Ouvrir avec"
 
-#: ../src/xfdesktop-file-icon-manager.c:1589
+#: ../src/xfdesktop-file-icon-manager.c:1626
+#: ../src/xfdesktop-file-icon-manager.c:1641
 msgid "Open With Other _Application..."
 msgstr "Ouvrir avec une autre _application..."
 
 #. Trash
-#: ../src/xfdesktop-file-icon-manager.c:1676
+#: ../src/xfdesktop-file-icon-manager.c:1695
 msgid "Mo_ve to Trash"
 msgstr "Dé_placer dans la corbeille"
 
 #. Rename
-#: ../src/xfdesktop-file-icon-manager.c:1707
+#: ../src/xfdesktop-file-icon-manager.c:1726
 msgid "_Rename..."
 msgstr "_Renommer..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1735
+#: ../src/xfdesktop-file-icon-manager.c:1793
 msgid "Arrange Desktop _Icons"
 msgstr "_Arranger les icônes du bureau"
 
-#: ../src/xfdesktop-file-icon-manager.c:1746
+#: ../src/xfdesktop-file-icon-manager.c:1804
 msgid "Desktop _Settings..."
 msgstr "Paramètres du _bureau..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1757
+#: ../src/xfdesktop-file-icon-manager.c:1815
 #: ../src/xfdesktop-volume-icon.c:855
 msgid "P_roperties..."
 msgstr "_Propriétés..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2699
+#: ../src/xfdesktop-file-icon-manager.c:2762
 msgid "Load Error"
 msgstr "Erreur de chargement"
 
-#: ../src/xfdesktop-file-icon-manager.c:2701
+#: ../src/xfdesktop-file-icon-manager.c:2764
 msgid "Failed to load the desktop folder"
 msgstr "Impossible de charger le dossier du bureau"
 
-#: ../src/xfdesktop-file-icon-manager.c:3242
+#: ../src/xfdesktop-file-icon-manager.c:3320
 msgid "Copy _Here"
 msgstr "_Copier ici"
 
-#: ../src/xfdesktop-file-icon-manager.c:3242
+#: ../src/xfdesktop-file-icon-manager.c:3320
 msgid "_Move Here"
 msgstr "_Déplacer ici"
 
-#: ../src/xfdesktop-file-icon-manager.c:3242
+#: ../src/xfdesktop-file-icon-manager.c:3320
 msgid "_Link Here"
 msgstr "_Lier ici"
 
