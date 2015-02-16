@@ -346,7 +346,7 @@ windowlist_populate(XfceDesktop *desktop,
                     G_CALLBACK(mi_destroyed_cb), wnck_window);
         }
         
-        if(!wl_submenus) {
+        if(!wl_submenus && (i < nworkspaces-1 || wl_add_remove_options )) {
             mi = gtk_separator_menu_item_new();
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(submenu), mi);
