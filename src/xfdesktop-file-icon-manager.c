@@ -1747,7 +1747,7 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
         gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
 
 #ifdef HAVE_THUNARX
-        if(!multi_sel && fmanager->priv->thunarx_menu_providers) {
+        if(info && fmanager->priv->thunarx_menu_providers) {
             GList *menu_actions = NULL;
             ThunarxMenuProvider *provider;
 
