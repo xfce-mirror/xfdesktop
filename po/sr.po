@@ -5,13 +5,13 @@
 # Translators:
 # Саша Петровић <salepetronije@gmail.com>, 2012-2013
 # Саша Петровић <salepetronije@gmail.com>, 2013-2014
-# Саша Петровић <salepetronije@gmail.com>, 2014
+# Саша Петровић <salepetronije@gmail.com>, 2014-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-11 18:32+0100\n"
-"PO-Revision-Date: 2014-11-19 11:25+0000\n"
+"POT-Creation-Date: 2015-02-16 12:32+0100\n"
+"PO-Revision-Date: 2015-02-17 16:50+0000\n"
 "Last-Translator: Саша Петровић <salepetronije@gmail.com>\n"
 "Language-Team: Serbian (http://www.transifex.com/projects/p/xfdesktop/language/sr/)\n"
 "MIME-Version: 1.0\n"
@@ -139,7 +139,7 @@ msgstr "Упишите „%s --help“ за коришћење."
 
 #: ../settings/main.c:2058
 msgid "The Xfce development team. All rights reserved."
-msgstr "Иксфце развојна дружина. Сва права су задржана."
+msgstr "Развојна дружина Иксфце-а. Сва права су задржана."
 
 #: ../settings/main.c:2059
 #, c-format
@@ -339,7 +339,7 @@ msgstr "Умањене иконице програма"
 msgid "File/launcher icons"
 msgstr "Датотека/покретач иконица"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:1024
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:1045
 msgid "Desktop"
 msgstr "Радна површ"
 
@@ -519,16 +519,16 @@ msgid "_Remove Workspace '%s'"
 msgstr "_Уклони радну површ „%s“"
 
 #: ../src/xfdesktop-app-menu-item.c:351
-#: ../src/xfdesktop-file-icon-manager.c:860
-#: ../src/xfdesktop-file-icon-manager.c:1125
-#: ../src/xfdesktop-file-icon-manager.c:1321 ../src/xfdesktop-file-utils.c:664
+#: ../src/xfdesktop-file-icon-manager.c:861
+#: ../src/xfdesktop-file-icon-manager.c:1126
+#: ../src/xfdesktop-file-icon-manager.c:1322 ../src/xfdesktop-file-utils.c:664
 #: ../src/xfdesktop-file-utils.c:1086 ../src/xfdesktop-file-utils.c:1163
 #: ../src/xfdesktop-file-utils.c:1188 ../src/xfdesktop-file-utils.c:1240
 msgid "Launch Error"
 msgstr "Грешка покретања програма"
 
 #: ../src/xfdesktop-app-menu-item.c:353
-#: ../src/xfdesktop-file-icon-manager.c:1127
+#: ../src/xfdesktop-file-icon-manager.c:1128
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
@@ -573,7 +573,7 @@ msgstr "Узрокује напуштање програма „xfdesktop“"
 #: ../src/xfdesktop-application.c:862
 #, c-format
 msgid "Failed to parse arguments: %s\n"
-msgstr "Нисам успео да расчланим аргумент:%s\n"
+msgstr "Нисам успео да рашчланим аргумент:%s\n"
 
 #: ../src/xfdesktop-application.c:873
 #, c-format
@@ -615,48 +615,48 @@ msgstr "Иконице радне површи:       %s\n"
 msgid "    Desktop File Icons:  %s\n"
 msgstr "Иконице датотека радне површи:  %s\n"
 
-#: ../src/xfdesktop-file-icon-manager.c:559
-#: ../src/xfdesktop-file-icon-manager.c:576
+#: ../src/xfdesktop-file-icon-manager.c:560
+#: ../src/xfdesktop-file-icon-manager.c:577
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
 msgstr "Нисам успео да направим фасциклу радне површи „%s“"
 
-#: ../src/xfdesktop-file-icon-manager.c:564
-#: ../src/xfdesktop-file-icon-manager.c:581
+#: ../src/xfdesktop-file-icon-manager.c:565
+#: ../src/xfdesktop-file-icon-manager.c:582
 msgid "Desktop Folder Error"
 msgstr "Грешка фасцикле радне површи"
 
-#: ../src/xfdesktop-file-icon-manager.c:583
+#: ../src/xfdesktop-file-icon-manager.c:584
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr "Обична датотека са истим именом већ постоји. Преименујте је или је избришите."
 
-#: ../src/xfdesktop-file-icon-manager.c:666 ../src/xfdesktop-file-utils.c:723
+#: ../src/xfdesktop-file-icon-manager.c:667 ../src/xfdesktop-file-utils.c:723
 #: ../src/xfdesktop-file-utils.c:776
 msgid "Rename Error"
 msgstr "Грешка преименовања"
 
-#: ../src/xfdesktop-file-icon-manager.c:667 ../src/xfdesktop-file-utils.c:777
+#: ../src/xfdesktop-file-icon-manager.c:668 ../src/xfdesktop-file-utils.c:777
 msgid "The files could not be renamed"
 msgstr "Нисам успео да преименујем датотеке"
 
-#: ../src/xfdesktop-file-icon-manager.c:668
+#: ../src/xfdesktop-file-icon-manager.c:669
 msgid "None of the icons selected support being renamed."
 msgstr "Преименовање означених иконица није подржано."
 
-#: ../src/xfdesktop-file-icon-manager.c:712
-#: ../src/xfdesktop-file-icon-manager.c:756 ../src/xfdesktop-file-utils.c:876
+#: ../src/xfdesktop-file-icon-manager.c:713
+#: ../src/xfdesktop-file-icon-manager.c:757 ../src/xfdesktop-file-utils.c:876
 #: ../src/xfdesktop-file-utils.c:913
 msgid "Trash Error"
 msgstr "Грешка смећа"
 
-#: ../src/xfdesktop-file-icon-manager.c:713
-#: ../src/xfdesktop-file-icon-manager.c:757
+#: ../src/xfdesktop-file-icon-manager.c:714
+#: ../src/xfdesktop-file-icon-manager.c:758
 msgid "The selected files could not be trashed"
 msgstr "Одабрана датотека не може у смеће"
 
-#: ../src/xfdesktop-file-icon-manager.c:714
-#: ../src/xfdesktop-file-icon-manager.c:758 ../src/xfdesktop-file-utils.c:725
+#: ../src/xfdesktop-file-icon-manager.c:715
+#: ../src/xfdesktop-file-icon-manager.c:759 ../src/xfdesktop-file-utils.c:725
 #: ../src/xfdesktop-file-utils.c:778 ../src/xfdesktop-file-utils.c:828
 #: ../src/xfdesktop-file-utils.c:959 ../src/xfdesktop-file-utils.c:1006
 #: ../src/xfdesktop-file-utils.c:1047 ../src/xfdesktop-file-utils.c:1088
@@ -668,114 +668,119 @@ msgid ""
 msgstr "Ова могућност захтева присутност услуге управника датотека (као што је она што долази с Тунаром)."
 
 #. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:858
-#: ../src/xfdesktop-file-icon-manager.c:1320
+#: ../src/xfdesktop-file-icon-manager.c:859
+#: ../src/xfdesktop-file-icon-manager.c:1321
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Нисам успео да покренем „%s“:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1049
+#: ../src/xfdesktop-file-icon-manager.c:1050
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "_Отвори програмом „%s“"
 
-#: ../src/xfdesktop-file-icon-manager.c:1052
+#: ../src/xfdesktop-file-icon-manager.c:1053
 #, c-format
 msgid "Open With \"%s\""
 msgstr "Отвори програмом „%s“"
 
-#: ../src/xfdesktop-file-icon-manager.c:1378
+#: ../src/xfdesktop-file-icon-manager.c:1379
 msgid "_Open all"
 msgstr "_Отвори све"
 
-#: ../src/xfdesktop-file-icon-manager.c:1394
+#: ../src/xfdesktop-file-icon-manager.c:1395
 msgid "_Open in New Window"
 msgstr "_Отвори у новом прозору"
 
-#: ../src/xfdesktop-file-icon-manager.c:1396
+#: ../src/xfdesktop-file-icon-manager.c:1397
 #: ../src/xfdesktop-special-file-icon.c:547 ../src/xfdesktop-volume-icon.c:813
 msgid "_Open"
 msgstr "_Отвори"
 
 #. create launcher item
-#: ../src/xfdesktop-file-icon-manager.c:1415
+#: ../src/xfdesktop-file-icon-manager.c:1416
 msgid "Create _Launcher..."
 msgstr "Направи _покретач..."
 
 #. create link item
-#: ../src/xfdesktop-file-icon-manager.c:1431
+#: ../src/xfdesktop-file-icon-manager.c:1432
 msgid "Create _URL Link..."
 msgstr "Направи везу _адресе..."
 
 #. create folder item
-#: ../src/xfdesktop-file-icon-manager.c:1447
+#: ../src/xfdesktop-file-icon-manager.c:1448
 msgid "Create _Folder..."
 msgstr "Направи _фасциклу..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1462
-msgid "Create From _Template"
-msgstr "Направи из _обрасца"
+#: ../src/xfdesktop-file-icon-manager.c:1465
+msgid "Create _Document"
+msgstr "Направи _документ"
 
-#: ../src/xfdesktop-file-icon-manager.c:1491
+#: ../src/xfdesktop-file-icon-manager.c:1487
+msgid "No templates installed"
+msgstr "Нема уграђених образаца"
+
+#: ../src/xfdesktop-file-icon-manager.c:1504
 msgid "_Empty File"
 msgstr "_Празан документ"
 
-#: ../src/xfdesktop-file-icon-manager.c:1508
+#: ../src/xfdesktop-file-icon-manager.c:1521
 msgid "_Execute"
 msgstr "_Изврши"
 
-#: ../src/xfdesktop-file-icon-manager.c:1528
+#: ../src/xfdesktop-file-icon-manager.c:1541
 msgid "_Edit Launcher"
 msgstr "_Уреди покретач"
 
-#: ../src/xfdesktop-file-icon-manager.c:1563
+#: ../src/xfdesktop-file-icon-manager.c:1600
 msgid "Open With"
 msgstr "Отвори програмом"
 
-#: ../src/xfdesktop-file-icon-manager.c:1589
+#: ../src/xfdesktop-file-icon-manager.c:1626
+#: ../src/xfdesktop-file-icon-manager.c:1641
 msgid "Open With Other _Application..."
 msgstr "Отвори другим _програмом..."
 
 #. Trash
-#: ../src/xfdesktop-file-icon-manager.c:1676
+#: ../src/xfdesktop-file-icon-manager.c:1695
 msgid "Mo_ve to Trash"
 msgstr "_Премести у смеће"
 
 #. Rename
-#: ../src/xfdesktop-file-icon-manager.c:1707
+#: ../src/xfdesktop-file-icon-manager.c:1726
 msgid "_Rename..."
 msgstr "_Преименуј..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1735
+#: ../src/xfdesktop-file-icon-manager.c:1793
 msgid "Arrange Desktop _Icons"
 msgstr "Распореди _иконице радне површи"
 
-#: ../src/xfdesktop-file-icon-manager.c:1746
+#: ../src/xfdesktop-file-icon-manager.c:1804
 msgid "Desktop _Settings..."
 msgstr "_Поставке радне површи..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1757
+#: ../src/xfdesktop-file-icon-manager.c:1815
 #: ../src/xfdesktop-volume-icon.c:855
 msgid "P_roperties..."
 msgstr "О_собине..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2699
+#: ../src/xfdesktop-file-icon-manager.c:2762
 msgid "Load Error"
 msgstr "Грешка учитавања"
 
-#: ../src/xfdesktop-file-icon-manager.c:2701
+#: ../src/xfdesktop-file-icon-manager.c:2764
 msgid "Failed to load the desktop folder"
 msgstr "Нисам успео да учитам фасциклу радне површи"
 
-#: ../src/xfdesktop-file-icon-manager.c:3242
+#: ../src/xfdesktop-file-icon-manager.c:3320
 msgid "Copy _Here"
 msgstr "Умножи _овде"
 
-#: ../src/xfdesktop-file-icon-manager.c:3242
+#: ../src/xfdesktop-file-icon-manager.c:3320
 msgid "_Move Here"
 msgstr "_Премести овде"
 
-#: ../src/xfdesktop-file-icon-manager.c:3242
+#: ../src/xfdesktop-file-icon-manager.c:3320
 msgid "_Link Here"
 msgstr "_Повежи овде"
 
@@ -904,7 +909,7 @@ msgstr "Откачујем уређај"
 msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the"
 " media or disconnect the drive"
-msgstr "Систем је откчио уређај „%s“. Не уклањајте уређај и не прекидајте везу"
+msgstr "Систем је откачио уређај „%s“. Не уклањајте уређај и не прекидајте везу"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:137 ../src/xfdesktop-notify.c:322
