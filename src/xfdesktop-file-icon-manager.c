@@ -1478,12 +1478,13 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                             templates_dir = g_file_new_for_path(templates_dir_path);
                         }
 
-                        if(templates_dir && !g_file_equal(home_dir, templates_dir))
-                        {
+                        if(templates_dir && !g_file_equal(home_dir, templates_dir)) {
                             xfdesktop_file_icon_menu_fill_template_menu(tmpl_menu,
                                                                         templates_dir,
                                                                         fmanager);
-                        } else {
+                        }
+
+                        if(!gtk_container_get_children((GtkContainer*) tmpl_menu)) {
                             mi = gtk_menu_item_new_with_label(_("No templates installed"));
                             gtk_widget_set_sensitive(mi, FALSE);
                             gtk_widget_show(mi);
