@@ -166,8 +166,8 @@ menu_item_from_wnck_window(WnckWindow *wnck_window, gint icon_width,
     g_free(title);
 
     if(wnck_window_is_active(wnck_window)) {
-        g_string_prepend(label, "<i>");
-        g_string_append(label, "</i>");
+        g_string_prepend(label, "<b><i>");
+        g_string_append(label, "</i></b>");
     }
 
     if(wl_show_icons) {
@@ -278,7 +278,7 @@ windowlist_populate(XfceDesktop *desktop,
             label = gtk_bin_get_child(GTK_BIN(mi));
             gtk_label_set_use_markup(GTK_LABEL(label), TRUE);
             /* center the workspace header */
-            gtk_misc_set_alignment(GTK_MISC(label), 0.4f, 0);
+            gtk_misc_set_alignment(GTK_MISC(label), 0.44f, 0);
             /* If it's not the active workspace, make the color insensitive */
             if(wnck_workspace != active_workspace)
             {
@@ -343,7 +343,7 @@ windowlist_populate(XfceDesktop *desktop,
                     G_CALLBACK(mi_destroyed_cb), wnck_window);
         }
         
-        if(!wl_submenus && (i < nworkspaces-1 || wl_add_remove_options )) {
+        if(!wl_submenus && (i < nworkspaces-1 || wl_add_remove_options)) {
             mi = gtk_separator_menu_item_new();
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(submenu), mi);
