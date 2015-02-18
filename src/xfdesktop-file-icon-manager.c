@@ -1666,7 +1666,7 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                                  fmanager);
             } else
             gtk_widget_set_sensitive(mi, FALSE);
-        } else {
+        } else if(info) {
             /* Menu popup on an icon */
             /* Cut */
             mi = gtk_image_menu_item_new_from_stock(GTK_STOCK_CUT, NULL);
