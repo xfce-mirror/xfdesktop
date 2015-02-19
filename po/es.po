@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-02-16 12:32+0100\n"
-"PO-Revision-Date: 2015-02-17 01:38+0000\n"
+"PO-Revision-Date: 2015-02-19 16:28+0000\n"
 "Last-Translator: Pablo Roberto Francisco Lezaeta Reyes <prflr88@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/xfdesktop/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -49,7 +49,7 @@ msgstr "Discos y dispositivos"
 
 #: ../settings/main.c:416
 msgid "Other Devices"
-msgstr "OTROS DISPOSITIVOS"
+msgstr "Otros dispositivos"
 
 #. Display the file name, file type, and file size in the tooltip.
 #: ../settings/main.c:529
@@ -63,12 +63,12 @@ msgstr "<b>%s</b>\nTipo: %s\nTamaño: %s"
 #: ../settings/main.c:716
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
-msgstr "Fondo para el monitor %d (%s)"
+msgstr "Fondo de pantalla para el monitor %d (%s)"
 
 #: ../settings/main.c:719
 #, c-format
 msgid "Wallpaper for Monitor %d"
-msgstr "Fondo para el monitor %d"
+msgstr "Fondo de pantalla para el monitor %d"
 
 #: ../settings/main.c:725
 msgid "Move this dialog to the display you want to edit the settings for."
@@ -124,7 +124,7 @@ msgstr "Entrada de administración de configuración"
 
 #: ../settings/main.c:2016
 msgid "SOCKET ID"
-msgstr "ID de SOCKET"
+msgstr "Id. de SOCKET"
 
 #: ../settings/main.c:2017
 msgid "Version information"
@@ -137,7 +137,7 @@ msgstr "Activar mensajes de depuración"
 #: ../settings/main.c:2046
 #, c-format
 msgid "Type '%s --help' for usage."
-msgstr "Escriba '%s --help' para opciones de uso."
+msgstr "Escriba «%s --help» para opciones de uso."
 
 #: ../settings/main.c:2058
 msgid "The Xfce development team. All rights reserved."
@@ -236,7 +236,7 @@ msgstr "Especificar el estilo del color dibujado detrás de la imagen de fondo."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
-msgstr "Especifica el color sólido o el color de la parte \"izquierda\" o \"superior\" del degradado."
+msgstr "Especifica el color sólido o el color de la parte «izquierda» o «superior» del degradado."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
 msgid "Select First Color"
@@ -244,7 +244,7 @@ msgstr "Seleccionar primer color"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient."
-msgstr "Especifica el color de la parte \"derecha\" o \"inferior\" del degradado."
+msgstr "Especifica el color de la parte «derecha» o «inferior» del degradado."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
 msgid "Select Second Color"
@@ -534,7 +534,7 @@ msgstr "Error de inicio"
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
-msgstr "No se pudo iniciar \"exo-desktop-item-edit\", el cual se necesita para crear y editar lanzadores y enlaces en el escritorio."
+msgstr "No se pudo iniciar «exo-desktop-item-edit», el cual se necesita para crear y editar lanzadores y enlaces en el escritorio."
 
 #: ../src/xfdesktop-application.c:836
 msgid "Display version information"
@@ -636,15 +636,15 @@ msgstr "Ya existe un archivo con el mismo nombre. Por favor bórrelo o renómbre
 #: ../src/xfdesktop-file-icon-manager.c:667 ../src/xfdesktop-file-utils.c:723
 #: ../src/xfdesktop-file-utils.c:776
 msgid "Rename Error"
-msgstr "Error al renombrar"
+msgstr "Error al cambiar el nombrar"
 
 #: ../src/xfdesktop-file-icon-manager.c:668 ../src/xfdesktop-file-utils.c:777
 msgid "The files could not be renamed"
-msgstr "El archivo no puede ser renombrado"
+msgstr "El archivo no puede sera cambiado de nombre"
 
 #: ../src/xfdesktop-file-icon-manager.c:669
 msgid "None of the icons selected support being renamed."
-msgstr "Ninguno de los iconos seleccionados soporta ser renombrado."
+msgstr "Ninguno de los iconos seleccionados soporta ser cambiado de nombre."
 
 #: ../src/xfdesktop-file-icon-manager.c:713
 #: ../src/xfdesktop-file-icon-manager.c:757 ../src/xfdesktop-file-utils.c:876
@@ -969,12 +969,12 @@ msgstr "La papelera está vacía"
 
 #: ../src/xfdesktop-special-file-icon.c:465
 msgid "Trash contains one item"
-msgstr "La papelera contiene un solo ítem"
+msgstr "La papelera contiene un solo objeto"
 
 #: ../src/xfdesktop-special-file-icon.c:466
 #, c-format
 msgid "Trash contains %d items"
-msgstr "La papelera contiene %d ítems"
+msgstr "La papelera contiene %d objetos"
 
 #: ../src/xfdesktop-special-file-icon.c:495
 #, c-format
