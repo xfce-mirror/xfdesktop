@@ -1339,7 +1339,7 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
     GFileInfo *info = NULL;
     GList *selected, *app_infos, *l;
     GtkWidget *mi, *img, *tmpl_menu;
-    gboolean multi_sel, got_custom_menu = FALSE;
+    gboolean multi_sel, multi_sel_special = FALSE, got_custom_menu = FALSE;
     GFile *templates_dir = NULL, *home_dir;
     const gchar *templates_dir_path = NULL;
 #ifdef HAVE_THUNARX
@@ -1360,6 +1360,18 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
     
     multi_sel = (g_list_length(selected) > 1);
     
+    if(multi_sel) {
+        /* check if special icons are selected */
+        for(l = selected; l != NULL; l = l->next) {
+            if(XFDESKTOP_IS_SPECIAL_FILE_ICON(l->data)
+               || XFDESKTOP_IS_VOLUME_ICON(l->data))
+            {
+                multi_sel_special = TRUE;
+                break;
+            }
+        }
+    }
+
     if(!multi_sel) {
         got_custom_menu = xfdesktop_icon_populate_context_menu(XFDESKTOP_ICON(selected->data),
                                                                GTK_WIDGET(menu));
@@ -1665,8 +1677,13 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                                  G_CALLBACK(xfdesktop_file_icon_menu_paste),
                                  fmanager);
             } else
-            gtk_widget_set_sensitive(mi, FALSE);
-        } else if(info) {
+                gtk_widget_set_sensitive(mi, FALSE);
+
+            /* Separator */
+            mi = gtk_separator_menu_item_new();
+            gtk_widget_show(mi);
+            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+        } else if(!multi_sel_special) {
             /* Menu popup on an icon */
             /* Cut */
             mi = gtk_image_menu_item_new_from_stock(GTK_STOCK_CUT, NULL);
@@ -1740,15 +1757,15 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                                  G_CALLBACK(xfdesktop_file_icon_menu_rename),
                                  fmanager);
             }
+
+            /* Separator */
+            mi = gtk_separator_menu_item_new();
+            gtk_widget_show(mi);
+            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
         }
 
-        /* Separator */
-        mi = gtk_separator_menu_item_new();
-        gtk_widget_show(mi);
-        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-
 #ifdef HAVE_THUNARX
-        if(info && fmanager->priv->thunarx_menu_providers) {
+        if(!multi_sel_special && fmanager->priv->thunarx_menu_providers) {
             GList *menu_actions = NULL;
             ThunarxMenuProvider *provider;
 
