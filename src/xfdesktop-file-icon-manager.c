@@ -1749,14 +1749,15 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                 g_signal_connect(G_OBJECT(mi), "activate",
                                  G_CALLBACK(xfdesktop_file_icon_menu_rename),
                                  fmanager);
-            } else {
+            } else if(multi_sel) {
                 /* Bulk rename for multiple icons, the callback will
                  * handle the situation where some icons selected can't
                  * be renamed */
                 g_signal_connect(G_OBJECT(mi), "activate",
                                  G_CALLBACK(xfdesktop_file_icon_menu_rename),
                                  fmanager);
-            }
+            } else
+                gtk_widget_set_sensitive(mi, FALSE);
 
             /* Separator */
             mi = gtk_separator_menu_item_new();
