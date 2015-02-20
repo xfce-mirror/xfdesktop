@@ -171,18 +171,22 @@ menu_item_from_wnck_window(WnckWindow *wnck_window, gint icon_width,
     }
 
     if(wl_show_icons) {
-        icon = wnck_window_get_icon(wnck_window);
+        icon = wnck_window_get_mini_icon(wnck_window);
         w = gdk_pixbuf_get_width(icon);
         h = gdk_pixbuf_get_height(icon);
         if(w != icon_width || h != icon_height) {
             tmp = gdk_pixbuf_scale_simple(icon, icon_width, icon_height,
-                    GDK_INTERP_BILINEAR);
+                                          GDK_INTERP_BILINEAR);
+        }
 
-            if(wnck_window_is_minimized(wnck_window)) {
-                /* minimized window, fade out app icon */
-                gdk_pixbuf_saturate_and_pixelate(tmp, tmp, 0.55, TRUE);
-            }
+        if(wnck_window_is_minimized(wnck_window)) {
+            if(!tmp)
+                tmp = gdk_pixbuf_copy(icon);
+            /* minimized window, fade out app icon */
+            gdk_pixbuf_saturate_and_pixelate(tmp, tmp, 0.55, TRUE);
+		}
 
+        if(tmp) {
             img = gtk_image_new_from_pixbuf(tmp);
             g_object_unref(G_OBJECT(tmp));
         } else
