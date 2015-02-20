@@ -116,7 +116,6 @@ struct _XfdesktopIconViewPrivate
     
     guint icon_size;
     gdouble font_size;
-    gboolean center_text;
     
     WnckScreen *wnck_screen;
     PangoLayout *playout;
@@ -2873,10 +2872,6 @@ xfdesktop_icon_view_setup_pango_layout(XfdesktopIconView *icon_view,
     pango_layout_set_ellipsize(playout, PANGO_ELLIPSIZE_NONE);
     pango_layout_set_wrap(playout, PANGO_WRAP_WORD_CHAR);
     pango_layout_set_width(playout, TEXT_WIDTH * PANGO_SCALE);
-    if (icon_view->priv->center_text)
-        pango_layout_set_alignment(playout, PANGO_ALIGN_CENTER);
-    else
-        pango_layout_set_alignment(playout, PANGO_ALIGN_LEFT);
     pango_layout_set_text(playout, label, -1);
 
     if(!xfdesktop_icon_view_is_icon_selected(icon_view, icon)
@@ -4228,22 +4223,6 @@ xfdesktop_icon_view_get_font_size(XfdesktopIconView *icon_view)
 {
     g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view), 0.0);
     return icon_view->priv->font_size;
-}
-
-void
-xfdesktop_icon_view_set_center_text (XfdesktopIconView *icon_view,
-                                     gboolean center_text)
-{
-    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view));
-    
-    if (center_text == icon_view->priv->center_text)
-        return;
-    
-    icon_view->priv->center_text = center_text;
-    
-    if(gtk_widget_get_realized(GTK_WIDGET(icon_view))) {
-        gtk_widget_queue_draw(GTK_WIDGET(icon_view));
-    }
 }
 
 GtkWidget *
