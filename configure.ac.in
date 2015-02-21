@@ -25,6 +25,7 @@ m4_define([dbus_minimum_version], [0.84])
 m4_define([wnck_minimum_version], [2.30])
 m4_define([intltool_minimum_version], [0.31])
 m4_define([xfconf_minimum_version], [4.10.0])
+m4_define([cairo_minimum_version], [1.6])
 
 dnl define a short version string for xfdesktop
 m4_append([xfdesktop_version_short], ["])
@@ -102,6 +103,7 @@ XDT_CHECK_PACKAGE([LIBXFCE4UI], [libxfce4ui-1],
 XDT_CHECK_PACKAGE([LIBWNCK], [libwnck-1.0], [wnck_minimum_version])
 XDT_CHECK_PACKAGE([XFCONF], [libxfconf-0], [xfconf_minimum_version])
 XDT_CHECK_PACKAGE([LIBEXO], [exo-1], [exo_minimum_version])
+XDT_CHECK_PACKAGE([CAIRO], [cairo], [cairo_minimum_version])
 
 XDT_CHECK_OPTIONAL_PACKAGE([GIO_UNIX], [gio-unix-2.0], [glib_minimum_version], [gio-unix],
     [gio-unix, for special treatment of mount points on UNIX])

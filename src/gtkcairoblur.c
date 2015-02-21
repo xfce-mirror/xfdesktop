@@ -212,10 +212,9 @@ gtk_css_shadow_value_start_drawing (cairo_t *cr, gdouble radius)
   clip_radius = _gtk_cairo_blur_compute_pixels (radius);
 
   /* Create a larger surface to center the blur. */
-  surface = cairo_surface_create_similar_image (cairo_get_target (cr),
-                                                CAIRO_FORMAT_A8,
-                                                clip_rect.width + 2 * clip_radius,
-                                                clip_rect.height + 2 * clip_radius);
+  surface = cairo_image_surface_create (CAIRO_FORMAT_A8,
+                                        clip_rect.width + 2 * clip_radius,
+                                        clip_rect.height + 2 * clip_radius);
   cairo_surface_set_device_offset (surface, clip_radius - clip_rect.x, clip_radius - clip_rect.y);
   blur_cr = cairo_create (surface);
   cairo_set_user_data (blur_cr, &original_cr_key, cairo_reference (cr), (cairo_destroy_func_t) cairo_destroy);
