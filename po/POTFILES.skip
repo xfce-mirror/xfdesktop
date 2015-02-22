@@ -10,3 +10,7 @@ settings/xfdesktop-settings-ui.glade.h
 settings/xfce-backdrop-settings.desktop.in.h
 settings/xfdesktop-settings-appearance-frame-ui.glade.h
 settings/xfdesktop-settings-ui.glade.h
+
+# I don't know what sub/settings is, but we need to
+# ignore it now for make distcheck
+sub/settings/xfce-backdrop-settings.desktop.in
