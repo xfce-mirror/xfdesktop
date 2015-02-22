@@ -649,7 +649,7 @@ xfdesktop_regular_file_icon_get_allowed_drop_actions(XfdesktopIcon *icon,
         if(g_file_info_get_attribute_boolean(info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE)) {
             if(suggested_action)
                 *suggested_action = GDK_ACTION_MOVE;
-            return GDK_ACTION_MOVE | GDK_ACTION_COPY | GDK_ACTION_LINK;
+            return GDK_ACTION_MOVE | GDK_ACTION_COPY | GDK_ACTION_LINK | GDK_ACTION_ASK;
         }
     } else {
         if(xfdesktop_file_utils_file_is_executable(info)) {

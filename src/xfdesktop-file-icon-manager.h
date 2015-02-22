@@ -67,6 +67,14 @@ gboolean xfdesktop_file_icon_manager_get_cached_icon_position(
                                                     gint16 *row,
                                                     gint16 *col);
 
+void xfdesktop_dnd_menu (XfdesktopIconViewManager *manager,
+                         XfdesktopIcon *drop_icon,
+                         GdkDragContext *context,
+                         GdkDragAction *action,
+                         gint16 row,
+                         gint16 col,
+                         guint time_);
+
 G_END_DECLS
 
 #endif  /* __XFDESKTOP_FILE_ICON_MANAGER_H__ */

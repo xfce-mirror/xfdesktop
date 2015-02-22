@@ -3384,13 +3384,13 @@ static void xfdesktop_dnd_item_cancel(GtkWidget *item, GdkDragAction *action)
  * Copyright (c) 2005-2006 Benedikt Meurer <benny@xfce.org>
  * Copyright (c) 2009-2011 Jannis Pohlmann <jannis@xfce.org>
  **/
-static void xfdesktop_dnd_menu (XfdesktopIconViewManager *manager,
-                                XfdesktopIcon *drop_icon,
-                                GdkDragContext *context,
-                                GdkDragAction *action,
-                                gint16 row,
-                                gint16 col,
-                                guint time_)
+void xfdesktop_dnd_menu (XfdesktopIconViewManager *manager,
+                         XfdesktopIcon *drop_icon,
+                         GdkDragContext *context,
+                         GdkDragAction *action,
+                         gint16 row,
+                         gint16 col,
+                         guint time_)
 {
     static GdkDragAction    actions[] = { GDK_ACTION_COPY, GDK_ACTION_MOVE, GDK_ACTION_LINK };
     static const gchar      *action_names[] = { N_ ("Copy _Here") , N_ ("_Move Here") , N_ ("_Link Here") };

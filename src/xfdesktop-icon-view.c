@@ -1479,10 +1479,11 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
         GdkDragAction allowed_actions = gdk_drag_context_get_actions(context);
 
         if(is_local_drag) {  /* #2 */
-            /* check to make sure we aren't just hovering over ourself */
             GList *l;
             gint16 sel_row, sel_col;
+            gboolean action_ask = FALSE;
             
+            /* check to make sure we aren't just hovering over ourself */
             for(l = icon_view->priv->selected_icons; l; l = l->next) {
                 XfdesktopIcon *sel_icon = l->data;
                 if(xfdesktop_icon_get_position(sel_icon, &sel_row, &sel_col)
@@ -1492,10 +1493,21 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
                 }
             }
             
+            if(allowed_actions & GDK_ACTION_ASK)
+                action_ask = TRUE;
+
             allowed_actions &= xfdesktop_icon_get_allowed_drag_actions(icon_view->priv->cursor);
 
             /* for local drags, let the dest icon decide */
             allowed_actions &= xfdesktop_icon_get_allowed_drop_actions(icon_on_dest, &our_action);
+
+            /* check if drag&drop menu should be triggered */
+            if(action_ask) {
+                if(allowed_actions == (GDK_ACTION_MOVE | GDK_ACTION_COPY | GDK_ACTION_LINK)) {
+                    allowed_actions |= GDK_ACTION_ASK;
+                    our_action = GDK_ACTION_ASK;
+                }
+            }
         } else {  /* #4 */
             allowed_actions &= xfdesktop_icon_get_allowed_drop_actions(icon_on_dest, NULL);
 
@@ -1567,12 +1579,25 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
     
     if(target == gdk_atom_intern("XFDESKTOP_ICON", FALSE)) {
         if(icon_on_dest) {
+            GdkDragAction action;
             gboolean ret = FALSE;
             
+            action = gdk_drag_context_get_selected_action(context);
+
+            if(action == GDK_ACTION_ASK) {
+                xfdesktop_dnd_menu(icon_view->priv->manager, icon_on_dest,
+                                   context, &action, row, col, time_);
+
+                if(action == 0) {
+                    gtk_drag_finish(context, FALSE, FALSE, time_);
+                    return;
+                }
+            }
+
             for(l = icon_view->priv->selected_icons; l; l = l->next) {
                 if(xfdesktop_icon_do_drop_dest(icon_on_dest,
                                                XFDESKTOP_ICON(l->data),
-                                               gdk_drag_context_get_selected_action(context)))
+                                               action))
                 {
                     ret = TRUE;
                 }

@@ -355,8 +355,8 @@ xfdesktop_special_file_icon_get_allowed_drop_actions(XfdesktopIcon *icon,
             if(g_file_info_get_attribute_boolean(info,
                                                  G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
             {
-                XF_DEBUG("can move, copy and link");
-                actions = GDK_ACTION_MOVE | GDK_ACTION_COPY | GDK_ACTION_LINK;
+                XF_DEBUG("can move, copy, link and ask");
+                actions = GDK_ACTION_MOVE | GDK_ACTION_COPY | GDK_ACTION_LINK | GDK_ACTION_ASK;
                 if(suggested_action)
                     *suggested_action = GDK_ACTION_MOVE;
             }
