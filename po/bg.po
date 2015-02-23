@@ -3,15 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Lyubomir Vasilev, 2015
 # Miroslav Yordanov <miordanov@i-space.org>, 2004
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 23:19+0200\n"
-"PO-Revision-Date: 2013-11-19 14:49+0000\n"
-"Last-Translator: Nick <nick@xfce.org>\n"
-"Language-Team: Bulgarian (http://www.transifex.com/projects/p/xfce/language/bg/)\n"
+"PO-Revision-Date: 2015-02-23 14:54+0000\n"
+"Last-Translator: Lyubomir Vasilev\n"
+"Language-Team: Bulgarian (http://www.transifex.com/projects/p/xfdesktop/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -51,7 +52,7 @@ msgstr "Преносими устройства"
 #: ../settings/main.c:485
 #, c-format
 msgid "Cannot create backdrop list \"%s\""
-msgstr "Не може да бъде създаден списък с фонове \"%s\""
+msgstr "Не може да бъде създаден списък с фонове „%s“"
 
 #: ../settings/main.c:489 ../settings/main.c:875
 msgid "Backdrop List Error"
@@ -82,7 +83,7 @@ msgstr "Замяна"
 #: ../settings/main.c:871
 #, c-format
 msgid "Failed to write backdrop list to \"%s\""
-msgstr "Неуспех при записване на списъка с фонове в \"%s\""
+msgstr "Неуспешно записване на списъка с фонове в „%s“"
 
 #: ../settings/main.c:898
 msgid "Add Image File(s)"
@@ -136,7 +137,7 @@ msgstr "Информация за версията"
 #: ../settings/main.c:1669
 #, c-format
 msgid "Type '%s --help' for usage."
-msgstr "Напишете '%s --help' за начин на употреба."
+msgstr "Въведете „%s --help“ за показване на потребителското ръководство."
 
 #: ../settings/main.c:1681
 msgid "The Xfce development team. All rights reserved."
@@ -271,7 +272,7 @@ msgstr "Посочете стила на цвета зад фона на изо�
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr "Задава плътния цвят, или  \"левия\" или \"горен\" цвят на градиента"
+msgstr "Задава плътния цвят или „левия“ или „десния“ цвят на преливката"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "Select First Color"
@@ -279,7 +280,7 @@ msgstr "Избери първи цвят"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-msgstr "Задава  \"десния\" или \"долния\" цвят на градиент"
+msgstr "Задава „десния“ или „долния“ цвят на преливката"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
 msgid "Select Second Color"
@@ -598,12 +599,12 @@ msgstr "_Премахване на работно място %d"
 #: ../src/windowlist.c:376
 #, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "_Премахване на работно място '%s'"
+msgstr "_Премахване на работно място „%s“"
 
 #: ../src/xfce-desktop.c:1084
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
-msgstr "Невъзможно зареждане на изображение от файл с фонове \"%s\""
+msgstr "Неуспешно зареждане на изображение от файл с фонове „%s“"
 
 #: ../src/xfce-desktop.c:1086
 msgid "Desktop Error"
@@ -613,7 +614,7 @@ msgstr "Грешка в плота"
 #: ../src/xfdesktop-file-icon-manager.c:514
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
-msgstr "Не може да се създаде десктоп папка \"%s\""
+msgstr "Неуспешно създаване на директория „%s“ на работния плот"
 
 #: ../src/xfdesktop-file-icon-manager.c:502
 #: ../src/xfdesktop-file-icon-manager.c:519
@@ -654,7 +655,7 @@ msgstr "Тази функция изисква присъствието на ф�
 #: ../src/xfdesktop-file-icon-manager.c:1349
 #, c-format
 msgid "Unable to launch \"%s\":"
-msgstr "Не може да се изпълни \"%s\":"
+msgstr "Неуспешно изпълнение на „%s“:"
 
 #: ../src/xfdesktop-file-icon-manager.c:772
 #: ../src/xfdesktop-file-icon-manager.c:1033
@@ -668,18 +669,18 @@ msgstr "Грешка при стартиране"
 #: ../src/xfdesktop-file-icon-manager.c:957
 #, c-format
 msgid "_Open With \"%s\""
-msgstr "_Отваряне с \"%s\""
+msgstr "_Отваряне с „%s“"
 
 #: ../src/xfdesktop-file-icon-manager.c:960
 #, c-format
 msgid "Open With \"%s\""
-msgstr "Отваряне с \"%s\""
+msgstr "Отваряне с „%s“"
 
 #: ../src/xfdesktop-file-icon-manager.c:1035
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
-msgstr "Не може да се стартира \"exo-desktop-item-edit\", който е необходим за създаване и редактиране на стартери и връзките на работния плот."
+msgstr "Неуспешно изпълнение на „exo-desktop-item-edit“, който е необходим за създаване и редактиране на стартери и връзките на работния плот."
 
 #: ../src/xfdesktop-file-icon-manager.c:1407
 msgid "_Open all"
@@ -865,7 +866,7 @@ msgstr "Файлът не може да бъде отворен"
 #: ../src/xfdesktop-file-utils.c:1182 ../src/xfdesktop-file-utils.c:1207
 #, c-format
 msgid "Failed to run \"%s\""
-msgstr "Неуспешен опит за изпълнение на \"%s\""
+msgstr "Неуспешен опит за изпълнение на „%s“"
 
 #: ../src/xfdesktop-file-utils.c:1257 ../src/xfdesktop-file-utils.c:1272
 msgid "The application chooser could not be opened"
@@ -892,7 +893,7 @@ msgstr "Демонтиране на устройството"
 msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the"
 " media or disconnect the drive"
-msgstr "Устройството \"%s\" се демонтира от системата. Моля, не го премахвайте или изключете устройството"
+msgstr "Устройството „%s“ се демонтира от системата. Моля, не го премахвайте или изключвайте"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
@@ -905,7 +906,7 @@ msgstr "Записване на данните в устройството"
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be"
 " removed. Please do not remove the media or disconnect the drive"
-msgstr "Има данни,  които е необходимо да бъдат записани в устройство \"%s\", преди да бъде отстранено. Моля, не махайте медиите или изключете устройството"
+msgstr "Има данни,  които трябва да бъдат записани в устройство „%s“, преди да бъде отстранено. Моля, не го премахвайте или изключвайте"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:253
@@ -916,7 +917,7 @@ msgstr "Изваждане на устройството"
 #: ../src/xfdesktop-notify.c:256
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
-msgstr "Устройството \"%s\" се изважда. Това може да отнеме известно време"
+msgstr "Устройството „%s“ се изважда. Това може да отнеме известно време"
 
 #: ../src/xfdesktop-regular-file-icon.c:556
 #, c-format
@@ -962,7 +963,7 @@ msgid ""
 "Removable Volume\n"
 "Mounted in \"%s\"\n"
 "%s left (%s total)"
-msgstr "Преносима памет\nМонтирана в \"%s\"\n%s е останало (%s общо)"
+msgstr "Преносима памет\nМонтирана в „%s“\n%s оставащо (%s общо)"
 
 #: ../src/xfdesktop-volume-icon.c:454
 msgid ""
@@ -973,7 +974,7 @@ msgstr "Преносимо устройство\nНе е монтирано ощ
 #: ../src/xfdesktop-volume-icon.c:480 ../src/xfdesktop-volume-icon.c:522
 #, c-format
 msgid "Failed to eject \"%s\""
-msgstr "Не може да се извади \"%s\""
+msgstr "Неуспешно изваждане на „%s“"
 
 #: ../src/xfdesktop-volume-icon.c:485 ../src/xfdesktop-volume-icon.c:527
 msgid "Eject Failed"
@@ -982,7 +983,7 @@ msgstr "Изваждането е неуспешно:"
 #: ../src/xfdesktop-volume-icon.c:559
 #, c-format
 msgid "Failed to mount \"%s\""
-msgstr "Неуспешен опит за монтиране на \"%s\""
+msgstr "Неуспешно монтиране на „%s“"
 
 #: ../src/xfdesktop-volume-icon.c:562
 msgid "Mount Failed"
