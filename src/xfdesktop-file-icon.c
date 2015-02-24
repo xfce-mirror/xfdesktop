@@ -264,7 +264,9 @@ xfdesktop_file_icon_add_emblems(XfdesktopFileIcon *icon)
 
     g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON(icon), NULL);
 
-    if(G_IS_ICON(icon->priv->gicon))
+    if(G_IS_EMBLEMED_ICON(icon->priv->gicon))
+        emblemed_icon = icon->priv->gicon;
+    else if(G_IS_ICON(icon->priv->gicon))
         emblemed_icon = g_emblemed_icon_new(icon->priv->gicon, NULL);
     else
         return NULL;
@@ -288,7 +290,7 @@ xfdesktop_file_icon_add_emblems(XfdesktopFileIcon *icon)
             g_object_unref(emblem);
             g_object_unref(themed_icon);
         }
-    } else
+    }
 
     /* Clear out the old icon and set the new one */
     xfdesktop_file_icon_invalidate_icon(icon);
