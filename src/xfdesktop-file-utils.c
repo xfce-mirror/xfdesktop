@@ -467,7 +467,8 @@ xfdesktop_file_utils_add_emblems(GdkPixbuf *pix, GList *emblems)
     /* render up to four emblems for sizes from 48 onwards, else up to 2 emblems */
     max_emblems = (pix_height < 48 && pix_width < 48) ? 2 : 4;
 
-    for(iter = emblems, position = 0; iter != NULL && position < max_emblems; iter = iter->next) {
+    for(iter = g_list_last(emblems), position = 0;
+        iter != NULL && position < max_emblems; iter = iter->prev) {
         /* extract the icon from the emblem and load it */
         GIcon *emblem = g_emblem_get_icon(iter->data);
         GtkIconInfo *icon_info = gtk_icon_theme_lookup_by_gicon(itheme,
@@ -503,12 +504,12 @@ xfdesktop_file_utils_add_emblems(GdkPixbuf *pix, GList *emblems)
                     dest_x = 0;
                     dest_y = dest_height;
                     break;
-                case 2: /* upper right */
+                case 2: /* upper left */
+                    dest_x = dest_y = 0;
+                    break;
+                case 3: /* upper right */
                     dest_x = dest_width;
                     dest_y = 0;
-                    break;
-                case 3: /* upper left */
-                    dest_x = dest_y = 0;
                     break;
                 default:
                     g_warning("Invalid emblem position in xfdesktop_file_utils_add_emblems");
