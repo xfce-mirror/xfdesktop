@@ -2768,8 +2768,7 @@ xfdesktop_file_icon_manager_metadata_changed(GFileMonitor     *monitor,
                                              GFileMonitorEvent event,
                                              gpointer          user_data)
 {
-    XfdesktopFileIconManager        *fmanager;
-    XfdesktopFileIconManagerPrivate *priv;
+    XfdesktopFileIconManager *fmanager;
     guint timer;
 
     /* We only care about changed events */
@@ -2781,16 +2780,12 @@ xfdesktop_file_icon_manager_metadata_changed(GFileMonitor     *monitor,
         return;
 
     fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
-    priv = XFDESKTOP_FILE_ICON_MANAGER_GET_PRIVATE(fmanager);
-
-    if(!priv)
-        return;
 
     XF_DEBUG("metadata file changed event");
 
      /* remove any pending metadata changes */
-    if(priv->metadata_timer != 0) {
-        g_source_remove(priv->metadata_timer);
+    if(fmanager->priv->metadata_timer != 0) {
+        g_source_remove(fmanager->priv->metadata_timer);
     }
 
     /* cool down timer so we don't call this due to multiple file
@@ -2799,7 +2794,7 @@ xfdesktop_file_icon_manager_metadata_changed(GFileMonitor     *monitor,
                                   (GSourceFunc)xfdesktop_file_icon_manager_metadata_timer,
                                   fmanager);
 
-    priv->metadata_timer = timer;
+    fmanager->priv->metadata_timer = timer;
 }
 
 static void
