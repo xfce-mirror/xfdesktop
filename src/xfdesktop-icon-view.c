@@ -144,7 +144,8 @@ struct _XfdesktopIconViewPrivate
     guint maybe_begin_drag:1,
           definitely_dragging:1,
           allow_rubber_banding:1,
-          definitely_rubber_banding:1;
+          definitely_rubber_banding:1,
+          control_click:1;
     gint press_start_x;
     gint press_start_y;
     GdkRectangle band_rect;
@@ -880,10 +881,8 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
             if(xfdesktop_icon_view_is_icon_selected(icon_view, icon)) {
                 /* clicked an already-selected icon */
                 
-                if(evt->state & GDK_CONTROL_MASK) {
-                    /* unselect */
-                    xfdesktop_icon_view_unselect_item(icon_view, icon);
-                }
+                if(evt->state & GDK_CONTROL_MASK)
+                    icon_view->priv->control_click = TRUE;
 
                 icon_view->priv->cursor = icon;
             } else {
@@ -940,7 +939,9 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
             icon_view->priv->cursor = NULL;
             icon_view->priv->first_clicked_item = NULL;
 
-            if(icon_view->priv->allow_rubber_banding && evt->button == 1) {
+            if(icon_view->priv->allow_rubber_banding && evt->button == 1
+               && !(evt->state & GDK_SHIFT_MASK))
+            {
                 icon_view->priv->maybe_begin_drag = TRUE;
                 icon_view->priv->definitely_dragging = FALSE;
                 icon_view->priv->press_start_x = evt->x;
@@ -957,8 +958,8 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
     } else if(evt->type == GDK_2BUTTON_PRESS) {
         /* be sure to cancel any pending drags that might have snuck through.
          * this shouldn't happen, but it does sometimes (bug 3426).  */
-        icon_view->priv->definitely_dragging = FALSE;
         icon_view->priv->maybe_begin_drag = FALSE;
+        icon_view->priv->definitely_dragging = FALSE;
         icon_view->priv->definitely_rubber_banding = FALSE;
         
         if(evt->button == 1) {
@@ -969,7 +970,8 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
                 g_signal_emit(G_OBJECT(icon_view), __signals[SIG_ICON_ACTIVATED],
                               0, NULL);
                 xfdesktop_icon_activated(icon);
-                xfdesktop_icon_view_unselect_item(icon_view, icon);
+                //xfdesktop_icon_view_unselect_item(icon_view, icon);
+                xfdesktop_icon_view_unselect_all(icon_view);
             }
         }
         
@@ -1059,10 +1061,26 @@ xfdesktop_icon_view_button_release(GtkWidget *widget,
             xfce_desktop_popup_root_menu(XFCE_DESKTOP(widget), 0, evt->time);
     }
 
+    if(evt->button == 1 && evt->state & GDK_CONTROL_MASK
+       && icon_view->priv->control_click)
+    {
+        icon_l = g_list_find_custom(icon_view->priv->icons, evt,
+                                    (GCompareFunc)xfdesktop_check_icon_clicked);
+        if(icon_l && (icon = icon_l->data)) {
+            if(xfdesktop_icon_view_is_icon_selected(icon_view, icon)) {
+                /* clicked an already-selected icon */
+
+                /* unselect */
+                xfdesktop_icon_view_unselect_item(icon_view, icon);
+            }
+        }
+    }
+
     if(evt->button == 1 || evt->button == 3) {
         DBG("unsetting stuff");
-        icon_view->priv->definitely_dragging = FALSE;
+        icon_view->priv->control_click = FALSE;
         icon_view->priv->maybe_begin_drag = FALSE;
+        icon_view->priv->definitely_dragging = FALSE;
         if(icon_view->priv->definitely_rubber_banding) {
             /* Remove the rubber band selection box */
             icon_view->priv->definitely_rubber_banding = FALSE;
