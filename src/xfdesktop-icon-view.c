@@ -145,7 +145,8 @@ struct _XfdesktopIconViewPrivate
           definitely_dragging:1,
           allow_rubber_banding:1,
           definitely_rubber_banding:1,
-          control_click:1;
+          control_click:1,
+          double_click:1;
     gint press_start_x;
     gint press_start_y;
     GdkRectangle band_rect;
@@ -850,6 +851,14 @@ xfdesktop_icon_view_add_move_binding(GtkBindingSet *binding_set,
 }
 
 static gboolean
+xfdesktop_icon_view_get_single_click(XfdesktopIconView *icon_view)
+{
+    g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view), FALSE);
+
+    return icon_view->priv->single_click;
+}
+
+static gboolean
 xfdesktop_icon_view_button_press(GtkWidget *widget,
                                  GdkEventButton *evt,
                                  gpointer user_data)
@@ -956,6 +965,13 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
             }
         }
     } else if(evt->type == GDK_2BUTTON_PRESS) {
+        /* filter this event in single click mode */
+        if(xfdesktop_icon_view_get_single_click(icon_view)) {
+            icon_view->priv->double_click = TRUE;
+            xfdesktop_icon_view_unselect_all(icon_view);
+            return TRUE;
+        }
+
         /* be sure to cancel any pending drags that might have snuck through.
          * this shouldn't happen, but it does sometimes (bug 3426).  */
         icon_view->priv->maybe_begin_drag = FALSE;
@@ -979,14 +995,6 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
     }
     
     return FALSE;
-}
-
-static gboolean
-xfdesktop_icon_view_get_single_click(XfdesktopIconView *icon_view)
-{
-    g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view), FALSE);
-
-    return icon_view->priv->single_click;
 }
 
 static gint
@@ -1027,7 +1035,8 @@ xfdesktop_icon_view_button_release(GtkWidget *widget,
        && !(evt->state & GDK_SHIFT_MASK)
        && !(evt->state & GDK_CONTROL_MASK)
        && !icon_view->priv->definitely_dragging
-       && !icon_view->priv->definitely_rubber_banding) {
+       && !icon_view->priv->definitely_rubber_banding
+       && !icon_view->priv->double_click) {
         /* Find out if we clicked on an icon */
         icon_l = g_list_find_custom(icon_view->priv->icons, evt,
                                     (GCompareFunc)xfdesktop_check_icon_clicked);
@@ -1079,6 +1088,7 @@ xfdesktop_icon_view_button_release(GtkWidget *widget,
     if(evt->button == 1 || evt->button == 3) {
         DBG("unsetting stuff");
         icon_view->priv->control_click = FALSE;
+        icon_view->priv->double_click = FALSE;
         icon_view->priv->maybe_begin_drag = FALSE;
         icon_view->priv->definitely_dragging = FALSE;
         if(icon_view->priv->definitely_rubber_banding) {
