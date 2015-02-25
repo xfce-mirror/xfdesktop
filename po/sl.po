@@ -4,6 +4,7 @@
 # 
 # Translators:
 # Aljoša Žagar <anthon.manix@gmail.com>, 2013
+# Dražen M. <drazen@ubuntu.si>, 2015
 # kernc, 2015
 # Nenad Latinović <latinovic87@gmail.com>, 2014
 # Rok Kepa <rokkepa@gmail.com>, 2014
@@ -12,8 +13,8 @@ msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-02-16 12:32+0100\n"
-"PO-Revision-Date: 2015-02-22 03:58+0000\n"
-"Last-Translator: kernc\n"
+"PO-Revision-Date: 2015-02-25 20:31+0000\n"
+"Last-Translator: Dražen M. <drazen@ubuntu.si>\n"
 "Language-Team: Slovenian (http://www.transifex.com/projects/p/xfdesktop/language/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -71,7 +72,7 @@ msgstr "Slika ozadja za zaslon %d"
 
 #: ../settings/main.c:725
 msgid "Move this dialog to the display you want to edit the settings for."
-msgstr "Premaknite to pogovorno okno na zalson, za katero želite urejati nastavitve"
+msgstr "Premaknite to pogovorno okno na zaslon, za katerega želite urejati nastavitve."
 
 #: ../settings/main.c:732
 #, c-format
@@ -87,7 +88,7 @@ msgstr "Slika ozadja za %s na zaslonu %d"
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
-msgstr "Premaknite to okno na zaslon in delovno površino, katerih nastavitve želite spremeniti"
+msgstr "Premaknite to okno na zaslon in delovno površino, katerih nastavitve želite spremeniti."
 
 #. Single monitor and single workspace
 #: ../settings/main.c:751
@@ -107,7 +108,7 @@ msgstr "Premaknite to pogovorno okno na delovno površino, za katero želite ure
 
 #: ../settings/main.c:1176
 msgid "Image selection is unavailable while the image style is set to None."
-msgstr "Izbiranje slik je onemogočeno dokler je slog slik nastavljen na noben."
+msgstr "Izbiranje slik je onemogočeno dokler je slog slik nastavljen na Noben."
 
 #: ../settings/main.c:1526
 msgid "Spanning screens"
@@ -153,7 +154,7 @@ msgstr "Nastavitve namizja"
 
 #: ../settings/main.c:2068
 msgid "Unable to contact settings server"
-msgstr "S strežnikom nastavitev ni mogoče vzpostavi stika"
+msgstr "S strežnikom nastavitev ni mogoče vzpostaviti stika"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop "
@@ -186,7 +187,7 @@ msgstr "_Mapa:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
 msgid "Choose the folder to select wallpapers from."
-msgstr "Izberite mapo iz katere se izbirajo slike ozadja"
+msgstr "Izberite mapo iz katere se izbirajo slike ozadja."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
 msgid "St_yle:"
@@ -194,7 +195,7 @@ msgstr "Sl_og:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
 msgid "Specify how the image will be resized to fit the screen."
-msgstr "Določi način prilagajanja slike velikosti zaslona"
+msgstr "Določi način prilagajanja slike velikosti zaslona."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
 #: ../settings/xfdesktop-settings-ui.glade.h:4
@@ -296,7 +297,7 @@ msgstr "kronološko"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
 msgid "Amount of time before a different background is selected."
-msgstr "Čas preden se izbere drugo ozadje"
+msgstr "Čas preden se izbere drugo ozadje."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
 msgid "_Random Order"
@@ -306,7 +307,7 @@ msgstr "Naključna _razporeditev"
 msgid ""
 "Randomly selects another image from the same directory when the wallpaper is"
 " to cycle."
-msgstr "Naključno izbere drugo sliko iz iste mape ko se zamenja slika ozadja."
+msgstr "Naključno izbere drugo sliko iz iste mape, ko se zamenja slika ozadja."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:1
 msgid "Left"
@@ -338,7 +339,7 @@ msgstr "Ikone skrčenih programov"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:9
 msgid "File/launcher icons"
-msgstr "Ikone datotek/zaganjalnikov"
+msgstr "Ikone datotek/zaganjalnika"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:1045
 msgid "Desktop"
@@ -517,7 +518,7 @@ msgstr "Odst_rani delovno površino %d"
 #: ../src/windowlist.c:376
 #, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "Odst_rani delovne površine: '%s'"
+msgstr "Odst_rani delovno površino: '%s'"
 
 #: ../src/xfdesktop-app-menu-item.c:351
 #: ../src/xfdesktop-file-icon-manager.c:861
@@ -549,11 +550,11 @@ msgstr "Nadaljuj na naslednjo sliko ozadja na trenutni delovni površini"
 
 #: ../src/xfdesktop-application.c:839
 msgid "Pop up the menu (at the current mouse position)"
-msgstr "Odpri pojavni meni (na trenutnem mestu kazalca)"
+msgstr "Odpri pojavni meni (na trenutnem mestu kazalke)"
 
 #: ../src/xfdesktop-application.c:840
 msgid "Pop up the window list (at the current mouse position)"
-msgstr "Odpri seznam oken (na trenutnem mestu kazalca)"
+msgstr "Odpri seznam oken (na trenutnem mestu kazalke)"
 
 #: ../src/xfdesktop-application.c:842
 msgid "Automatically arrange all the icons on the desktop"
@@ -630,7 +631,7 @@ msgstr "Napaka namizne datoteke"
 #: ../src/xfdesktop-file-icon-manager.c:584
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
-msgstr "Običajna datoteka z istim imenom že obstaja. Izbrišete ali preimenujete jo."
+msgstr "Običajna datoteka z istim imenom že obstaja. Izbrišete ali pa jo preimenujete."
 
 #: ../src/xfdesktop-file-icon-manager.c:667 ../src/xfdesktop-file-utils.c:723
 #: ../src/xfdesktop-file-utils.c:776
@@ -666,7 +667,7 @@ msgstr "Izbranih datotek ni bilo mogoče premakniti v smeti"
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
-msgstr "Ta zmožnost zahteva storitev upravljalnika datotek (knp. tista, ki jo vključuje Thunar)."
+msgstr "Ta zmožnost zahteva storitev upravljalnika datotek (kot tista, ki jo vključuje Thunar)."
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:859
@@ -706,7 +707,7 @@ msgstr "Ustvari zaganja_lnik..."
 #. create link item
 #: ../src/xfdesktop-file-icon-manager.c:1432
 msgid "Create _URL Link..."
-msgstr "Ustvari _URL povezavo..."
+msgstr "Ustvari povezavo _URL ..."
 
 #. create folder item
 #: ../src/xfdesktop-file-icon-manager.c:1448
@@ -750,7 +751,7 @@ msgstr "Premakni v smeti"
 #. Rename
 #: ../src/xfdesktop-file-icon-manager.c:1726
 msgid "_Rename..."
-msgstr "P_reimenuj..."
+msgstr "P_reimenuj ..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1793
 msgid "Arrange Desktop _Icons"
@@ -758,12 +759,12 @@ msgstr "Razporedi _ikone na namizju"
 
 #: ../src/xfdesktop-file-icon-manager.c:1804
 msgid "Desktop _Settings..."
-msgstr "Na_stavitve namizja..."
+msgstr "Na_stavitve namizja ..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1815
 #: ../src/xfdesktop-volume-icon.c:855
 msgid "P_roperties..."
-msgstr "_Lastnosti..."
+msgstr "_Lastnosti ..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2762
 msgid "Load Error"
@@ -846,7 +847,7 @@ msgstr "Izbranih datotek ni mogoče prestaviti v koš"
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
-msgstr "Ta zmožnost zahteva storitev koša (knp. tista, ki jo vključuje Thunar)."
+msgstr "Ta zmožnost zahteva storitev koša (kot tista, ki jo vključuje Thunar)."
 
 #: ../src/xfdesktop-file-utils.c:914
 msgid "Could not empty the trash"
@@ -910,7 +911,7 @@ msgstr "Odklapljanje naprave"
 msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the"
 " media or disconnect the drive"
-msgstr "Sistem odklaplja napravo \"%s\". Prosim ne odstranjujte medija oz. ne izklapljajte diska"
+msgstr "Sistem odklaplja napravo \"%s\". Prosim ne odstranjujte nosilca oz. ne izklapljajte diska"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:137 ../src/xfdesktop-notify.c:322
@@ -923,7 +924,7 @@ msgstr "Pisanje podatkov na napravo"
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be"
 " removed. Please do not remove the media or disconnect the drive"
-msgstr "Nekaj podatkov mora biti zapisanih na napravo \"%s\", preden je lahko odstranjena. Prosim ne  odstranjujte medija oz. ne izklapljajte diska."
+msgstr "Nekaj podatkov mora biti zapisanih na napravo \"%s\", preden je lahko odstranjena. Prosim ne odstranjujte nosilca oz. ne izklapljajte diska."
 
 #: ../src/xfdesktop-notify.c:221
 msgid "Unmount Finished"
@@ -932,7 +933,7 @@ msgstr "Odklapljanje končano"
 #: ../src/xfdesktop-notify.c:223 ../src/xfdesktop-notify.c:408
 #, c-format
 msgid "The device \"%s\" has been safely removed from the system. "
-msgstr "Naprava \"%s\" je bila varno odstranjena iz sistema"
+msgstr "Naprava \"%s\" je bila varno odstranjena iz sistema."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:313
