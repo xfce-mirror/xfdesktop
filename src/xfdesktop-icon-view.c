@@ -2964,8 +2964,8 @@ xfdesktop_icon_view_update_icon_extents(XfdesktopIconView *icon_view,
     text_extents->y += ICON_SIZE + SPACING + LABEL_RADIUS + CELL_PADDING;
 
     tmp_text = *text_extents;
-    tmp_text.x -= LABEL_RADIUS;
-    tmp_text.y -= LABEL_RADIUS;
+    tmp_text.x -= LABEL_RADIUS + (SHADOW_EXTENTS + SHADOW_X_OFFSET);
+    tmp_text.y -= LABEL_RADIUS - (SHADOW_EXTENTS + SHADOW_Y_OFFSET);
     tmp_text.width += LABEL_RADIUS * 2;
     tmp_text.height += LABEL_RADIUS * 2;
     gdk_rectangle_union(pixbuf_extents, &tmp_text, total_extents);
