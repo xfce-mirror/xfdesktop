@@ -1,0 +1,1035 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Juhani Numminen <juhaninumminen0@gmail.com>, 2013
+# Lasse Liehu <larso@gmx.com>, 2014
+# Pasi Lallinaho <pasi@shimmerproject.org>, 2014-2015
+msgid ""
+msgstr ""
+"Project-Id-Version: Xfdesktop\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-02-16 12:32+0100\n"
+"PO-Revision-Date: 2015-02-26 00:19+0000\n"
+"Last-Translator: Pasi Lallinaho <pasi@shimmerproject.org>\n"
+"Language-Team: Finnish (http://www.transifex.com/projects/p/xfdesktop/language/fi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fi\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../settings/main.c:404 ../src/xfdesktop-special-file-icon.c:295
+#: ../src/xfdesktop-special-file-icon.c:479
+msgid "Home"
+msgstr "Kotihakemisto"
+
+#: ../settings/main.c:406
+msgid "Filesystem"
+msgstr "Tiedostojärjestelmä"
+
+#: ../settings/main.c:408
+msgid "Trash"
+msgstr "Roskakori"
+
+#: ../settings/main.c:410
+msgid "Removable Devices"
+msgstr "Irrotettavat taltiot"
+
+#: ../settings/main.c:412
+msgid "Network Shares"
+msgstr "Verkkojaot"
+
+#: ../settings/main.c:414
+msgid "Disks and Drives"
+msgstr "Levyt ja asemat"
+
+#: ../settings/main.c:416
+msgid "Other Devices"
+msgstr "Muut laitteet"
+
+#. Display the file name, file type, and file size in the tooltip.
+#: ../settings/main.c:529
+#, c-format
+msgid ""
+"<b>%s</b>\n"
+"Type: %s\n"
+"Size: %s"
+msgstr "<b>%s</b>\nTyyppi: %s\nKoko: %s"
+
+#: ../settings/main.c:716
+#, c-format
+msgid "Wallpaper for Monitor %d (%s)"
+msgstr "Taustakuva näytölle %d (%s)"
+
+#: ../settings/main.c:719
+#, c-format
+msgid "Wallpaper for Monitor %d"
+msgstr "Taustakuva näytölle %d"
+
+#: ../settings/main.c:725
+msgid "Move this dialog to the display you want to edit the settings for."
+msgstr "Siirrä tämä ikkuna näytölle, jonka asetuksia haluat muuttaa."
+
+#: ../settings/main.c:732
+#, c-format
+msgid "Wallpaper for %s on Monitor %d (%s)"
+msgstr "Taustakuva %s:lle näytöllä %d (%s)"
+
+#: ../settings/main.c:736
+#, c-format
+msgid "Wallpaper for %s on Monitor %d"
+msgstr "Taustakuva %s:lle näytöllä %d"
+
+#: ../settings/main.c:743
+msgid ""
+"Move this dialog to the display and workspace you want to edit the settings "
+"for."
+msgstr "Siirrä tämä ikkuna näytölle ja työtilalle, joiden asetuksia haluat muuttaa."
+
+#. Single monitor and single workspace
+#: ../settings/main.c:751
+#, c-format
+msgid "Wallpaper for my desktop"
+msgstr "Taustakuva työpöydälleni"
+
+#. Single monitor and per workspace wallpaper
+#: ../settings/main.c:757
+#, c-format
+msgid "Wallpaper for %s"
+msgstr "Taustakuva työtilalle %s"
+
+#: ../settings/main.c:762
+msgid "Move this dialog to the workspace you want to edit the settings for."
+msgstr "Siirrä tämä ikkuna työtilalle, jonka asetuksia haluat muuttaa."
+
+#: ../settings/main.c:1176
+msgid "Image selection is unavailable while the image style is set to None."
+msgstr "Kuvan valinta ei ole käytössä kun kuvan tyyliksi on valittu Ei mitään."
+
+#: ../settings/main.c:1526
+msgid "Spanning screens"
+msgstr "Useille näytöille ulottuva"
+
+#: ../settings/main.c:1836
+msgid "Image files"
+msgstr "Kuvatiedostot"
+
+#: ../settings/main.c:2016
+msgid "Settings manager socket"
+msgstr "Asetustenhallinnan pistoke"
+
+#: ../settings/main.c:2016
+msgid "SOCKET ID"
+msgstr "PISTOKE"
+
+#: ../settings/main.c:2017
+msgid "Version information"
+msgstr "Versiotiedot"
+
+#: ../settings/main.c:2018 ../src/xfdesktop-application.c:844
+msgid "Enable debug messages"
+msgstr "Salli vianetsintä"
+
+#: ../settings/main.c:2046
+#, c-format
+msgid "Type '%s --help' for usage."
+msgstr "Saat ohjeita komennolla ”%s --help”."
+
+#: ../settings/main.c:2058
+msgid "The Xfce development team. All rights reserved."
+msgstr "Xfce:n kehittäjät. Kaikki oikeudet pidätetään."
+
+#: ../settings/main.c:2059
+#, c-format
+msgid "Please report bugs to <%s>."
+msgstr "Ilmoita ohjelmistovirheistä osoitteeseen <%s>."
+
+#: ../settings/main.c:2066
+msgid "Desktop Settings"
+msgstr "Työpöydän asetukset"
+
+#: ../settings/main.c:2068
+msgid "Unable to contact settings server"
+msgstr "D-Bus-istuntoväylään ei saada yhteyttä"
+
+#: ../settings/xfce-backdrop-settings.desktop.in.h:1
+msgid "Desktop "
+msgstr "Työpöytä "
+
+#: ../settings/xfce-backdrop-settings.desktop.in.h:2
+#: ../settings/xfdesktop-settings-ui.glade.h:11
+msgid "Set desktop background and menu and icon behavior"
+msgstr "Säädä työpöydän taustakuvaa, valikkoa ja kuvakkeita"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
+msgid "Solid color"
+msgstr "Tasainen aväri"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
+msgid "Horizontal gradient"
+msgstr "Vaakasuuntainen väriliuku"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
+msgid "Vertical gradient"
+msgstr "Pystysuuntainen väriliuku"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
+msgid "Transparent"
+msgstr "Läpinäkyvä"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
+msgid "_Folder:"
+msgstr "_Hakemisto:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
+msgid "Choose the folder to select wallpapers from."
+msgstr "Valitse hakemisto josta taustakuvat valitaan."
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
+msgid "St_yle:"
+msgstr "T_yyli:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
+msgid "Specify how the image will be resized to fit the screen."
+msgstr "Määritä kuinka kuvan kokoa muutetaan jotta se mahtuu näytölle."
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
+#: ../settings/xfdesktop-settings-ui.glade.h:4
+msgid "None"
+msgstr "Ei mitään"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
+msgid "Centered"
+msgstr "Keskitetty"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
+msgid "Tiled"
+msgstr "Rinnakkain"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
+msgid "Stretched"
+msgstr "Venytetty"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
+msgid "Scaled"
+msgstr "Säädä kokoa"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
+msgid "Zoomed"
+msgstr "Suurenna"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
+msgid "Spanning Screens"
+msgstr "Useille näytöille ulottuva"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
+msgid "C_olor:"
+msgstr "_Väri:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
+msgid "Specify the style of the color drawn behind the backdrop image."
+msgstr "Määritä taustakuvan taakse toistettavan värin tyyli."
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
+msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
+msgstr "Määrittää yksittäisen värin tai liukuvärin vasemman tai yläosan värin."
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
+msgid "Select First Color"
+msgstr "Ensimmäinen väri"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
+msgid "Specifies the \"right\" or \"bottom\" color of the gradient."
+msgstr "Määrittää liukuvärin oikean tai alaosan värin."
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
+msgid "Select Second Color"
+msgstr "Toinen väri"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
+msgid "Apply to all _workspaces"
+msgstr "Käytä kaikilla _työtiloilla"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
+msgid "Change the _background "
+msgstr "Vaihda _tausta"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
+msgid ""
+"Automatically select a different background from the current directory."
+msgstr "Valitse toinen tausta nykyisestä hakemistosta automaattisesti."
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
+msgid "Specify how often the background will change."
+msgstr "Määritä kuinka usein taustaa vaihdetaan."
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
+msgid "in seconds:"
+msgstr "sekunneissa:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
+msgid "in minutes:"
+msgstr "minuuteissa:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
+msgid "in hours:"
+msgstr "tunneissa:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
+msgid "at start up"
+msgstr "käynnistettäessä"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
+msgid "every hour"
+msgstr "joka tunti"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
+msgid "every day"
+msgstr "joka päivä"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
+msgid "chronologically"
+msgstr "aikajärjestyksessä"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
+msgid "Amount of time before a different background is selected."
+msgstr "Aika jonka jälkeen uusi taustakuva valitaan."
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
+msgid "_Random Order"
+msgstr "_Satunnainen järjestys"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
+msgid ""
+"Randomly selects another image from the same directory when the wallpaper is"
+" to cycle."
+msgstr "Valitsee satunnaisesti toisen kuvan samasta hakemistosta taustakuvaa vaihdettaessa."
+
+#: ../settings/xfdesktop-settings-ui.glade.h:1
+msgid "Left"
+msgstr "Vasen"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:2
+msgid "Middle"
+msgstr "Keskelle"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:3
+msgid "Right"
+msgstr "Oikealle"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:5
+msgid "Shift"
+msgstr "Vaihto"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:6
+msgid "Alt"
+msgstr "Alt"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:7
+msgid "Control"
+msgstr "Ctrl"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:8
+msgid "Minimized application icons"
+msgstr "Pienennetyt sovellukset"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:9
+msgid "File/launcher icons"
+msgstr "Tiedosto-/käynnistinkuvakkeet"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:1045
+msgid "Desktop"
+msgstr "Työpöytä"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:12
+msgid "_Background"
+msgstr "_Tausta"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:13
+msgid "Include applications menu on _desktop right click"
+msgstr "Näytä sovellusvalikko, kun työpöytää napsautetaan _oikealla painikkeella"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:14
+msgid "_Button:"
+msgstr "_Painike:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:15
+msgid "Mo_difier:"
+msgstr "_Muuntonäppäin:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:16
+msgid "Show _application icons in menu"
+msgstr "_Näytä kuvakkeet valikossa"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:17
+msgid "_Edit desktop menu"
+msgstr "_Muokkaa työpöytävalikkoa"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:18
+msgid "<b>Desktop Menu</b>"
+msgstr "<b>Työpöytävalikko</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:19
+msgid "Show _window list menu on desktop middle click"
+msgstr "Näytä _ikkunalista keskipainikkeella"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:20
+msgid "B_utton:"
+msgstr "_Painike:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:21
+msgid "Modi_fier:"
+msgstr "_Muuntonäppäin:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:22
+msgid "Sh_ow application icons in menu"
+msgstr "Näytä kuv_akkeet valikossa"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:23
+msgid "Show workspace _names in list"
+msgstr "Näytä työtilojen _nimet listassa"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:24
+msgid "Use _submenus for the windows in each workspace"
+msgstr "Käytä _alavalikkoja työtilojen ikkunoille"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:25
+msgid "Show s_ticky windows only in active workspace"
+msgstr "Näytä kiinnit_etyt ikkunat vain aktiivisessa työtilassa"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:26
+msgid "Show a_dd and remove workspace options in list"
+msgstr "_Listaa työtilojen nimet"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:27
+msgid "<b>Window List Menu</b>"
+msgstr "<b>Ikkunalistavalikko</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:28
+msgid "_Menus"
+msgstr "_Valikot"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:29
+msgid "Icon _type:"
+msgstr "Kuvakkeen _tyyppi:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:30
+msgid "Icon _size:"
+msgstr "Kuvakkeen _koko:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:31
+msgid "Show t_humbnails"
+msgstr "Näytä _pienoiskuvat"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:32
+msgid ""
+"Select this option to display preview-able files on the desktop as "
+"automatically generated thumbnail icons."
+msgstr "Valitse tämä nähdäksesi työpöydän esikatselukelpoiset tiedostot automaattisesti luotuina pienoiskuvina."
+
+#: ../settings/xfdesktop-settings-ui.glade.h:33
+msgid "Single _click to activate items"
+msgstr "Aktivoi kerta_napsautuksella"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:34
+msgid "Show hidden files on the desktop"
+msgstr "Näytä piilotetut tiedostot työpöydällä"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:35
+msgid "Show icon tooltips. Size:"
+msgstr "Näytä kuvakkeiden työkaluvihjeet. Koko:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:36
+msgid "Size of the tooltip preview image."
+msgstr "Työkaluvihjeen esikatselukuvan koko."
+
+#: ../settings/xfdesktop-settings-ui.glade.h:37
+msgid "Use custom _font size:"
+msgstr "Käytä mukautettua _kirjasimen kokoa:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:38
+msgid "<b>Appearance</b>"
+msgstr "<b>Ulkoasu</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:39
+msgid "<b>Default Icons</b>"
+msgstr "<b>Oletuskuvakkeet</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:40
+msgid "_Icons"
+msgstr "_Kuvakkeet"
+
+#: ../src/menu.c:106
+msgid "_Applications"
+msgstr "_Sovellukset"
+
+#: ../src/windowlist.c:73
+#, c-format
+msgid "Remove Workspace %d"
+msgstr "Poista työtila %d"
+
+#: ../src/windowlist.c:74
+#, c-format
+msgid ""
+"Do you really want to remove workspace %d?\n"
+"Note: You are currently on workspace %d."
+msgstr "Haluatko todella poistaa työtilan %d?\nHuomaa: Olet tällä hetkellä työtilassa %d."
+
+#: ../src/windowlist.c:78
+#, c-format
+msgid "Remove Workspace '%s'"
+msgstr "Poista työtila '%s'"
+
+#: ../src/windowlist.c:79
+#, c-format
+msgid ""
+"Do you really want to remove workspace '%s'?\n"
+"Note: You are currently on workspace '%s'."
+msgstr "Haluatko todella poistaa työtilan '%s'?\nHuomaa: Olet tällä hetkellä työtilassa '%s'."
+
+#. Popup a dialog box confirming that the user wants to remove a
+#. * workspace
+#: ../src/windowlist.c:86
+msgid "Remove"
+msgstr "Poista"
+
+#: ../src/windowlist.c:246
+msgid "Window List"
+msgstr "Ikkunalista"
+
+#: ../src/windowlist.c:272
+#, c-format
+msgid "<b>Workspace %d</b>"
+msgstr "<b>Työtila %d</b>"
+
+#: ../src/windowlist.c:362 ../src/windowlist.c:365
+msgid "_Add Workspace"
+msgstr "_Lisää työtila"
+
+#: ../src/windowlist.c:373
+#, c-format
+msgid "_Remove Workspace %d"
+msgstr "_Poista työtila %d"
+
+#: ../src/windowlist.c:376
+#, c-format
+msgid "_Remove Workspace '%s'"
+msgstr "_Poista työtila '%s'"
+
+#: ../src/xfdesktop-app-menu-item.c:351
+#: ../src/xfdesktop-file-icon-manager.c:861
+#: ../src/xfdesktop-file-icon-manager.c:1126
+#: ../src/xfdesktop-file-icon-manager.c:1322 ../src/xfdesktop-file-utils.c:664
+#: ../src/xfdesktop-file-utils.c:1086 ../src/xfdesktop-file-utils.c:1163
+#: ../src/xfdesktop-file-utils.c:1188 ../src/xfdesktop-file-utils.c:1240
+msgid "Launch Error"
+msgstr "Käynnistysvirhe"
+
+#: ../src/xfdesktop-app-menu-item.c:353
+#: ../src/xfdesktop-file-icon-manager.c:1128
+msgid ""
+"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
+"edit launchers and links on the desktop."
+msgstr "Ei voi käynnistää \"exo-desktop-item-edit\" -toimintoa, jota tarvitaan käynnistimien ja linkkien luomiseen työpöydälle."
+
+#: ../src/xfdesktop-application.c:836
+msgid "Display version information"
+msgstr "Näytä versiotiedot"
+
+#: ../src/xfdesktop-application.c:837
+msgid "Reload all settings"
+msgstr "Lataa kaikki asetukset uudelleen"
+
+#: ../src/xfdesktop-application.c:838
+msgid "Advance to the next wallpaper on the current workspace"
+msgstr "Siirry seuraavaan taustakuvaan nykyisessä työtilassa"
+
+#: ../src/xfdesktop-application.c:839
+msgid "Pop up the menu (at the current mouse position)"
+msgstr "Näytä valikko (osoittimen nykyisessä sijainnissa)"
+
+#: ../src/xfdesktop-application.c:840
+msgid "Pop up the window list (at the current mouse position)"
+msgstr "Näytä ikkunalista (kursorin nykyisessä sijainnissa)"
+
+#: ../src/xfdesktop-application.c:842
+msgid "Automatically arrange all the icons on the desktop"
+msgstr "Järjestä työpöydän kuvakkeet automaattisesti"
+
+#: ../src/xfdesktop-application.c:845
+msgid "Disable debug messages"
+msgstr "Älä käytä virheenetsintää"
+
+#: ../src/xfdesktop-application.c:846
+msgid "Do not wait for a window manager on startup"
+msgstr "Älä odota ikkunanhallintaa käynnistyksessä"
+
+#: ../src/xfdesktop-application.c:847
+msgid "Cause xfdesktop to quit"
+msgstr "Sulje xfdesktop"
+
+#: ../src/xfdesktop-application.c:862
+#, c-format
+msgid "Failed to parse arguments: %s\n"
+msgstr "Argumenttien jäsennys epäonnistui: %s\n"
+
+#: ../src/xfdesktop-application.c:873
+#, c-format
+msgid "This is %s version %s, running on Xfce %s.\n"
+msgstr "Tämä on %s versio %s, suoritusympäristönä Xfce %s.\n"
+
+#: ../src/xfdesktop-application.c:875
+#, c-format
+msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
+msgstr "Kääntäessä käytössä GTK+ %d.%d.%d, nyt GTK+ %d.%d.%d."
+
+#: ../src/xfdesktop-application.c:879
+#, c-format
+msgid "Build options:\n"
+msgstr "Käännösvalitsimet:\n"
+
+#: ../src/xfdesktop-application.c:880
+#, c-format
+msgid "    Desktop Menu:        %s\n"
+msgstr "Työpöytävalikko: %s\n"
+
+#: ../src/xfdesktop-application.c:882 ../src/xfdesktop-application.c:889
+#: ../src/xfdesktop-application.c:896
+msgid "enabled"
+msgstr "käytössä"
+
+#: ../src/xfdesktop-application.c:884 ../src/xfdesktop-application.c:891
+#: ../src/xfdesktop-application.c:898
+msgid "disabled"
+msgstr "pois käytöstä"
+
+#: ../src/xfdesktop-application.c:887
+#, c-format
+msgid "    Desktop Icons:       %s\n"
+msgstr "Työpöytäkuvakkeet: %s\n"
+
+#: ../src/xfdesktop-application.c:894
+#, c-format
+msgid "    Desktop File Icons:  %s\n"
+msgstr "Työpöydän tiedostokuvakkeet: %s\n"
+
+#: ../src/xfdesktop-file-icon-manager.c:560
+#: ../src/xfdesktop-file-icon-manager.c:577
+#, c-format
+msgid "Could not create the desktop folder \"%s\""
+msgstr "Työpöydän hakemistoa \"%s\" ei voi luoda"
+
+#: ../src/xfdesktop-file-icon-manager.c:565
+#: ../src/xfdesktop-file-icon-manager.c:582
+msgid "Desktop Folder Error"
+msgstr "Työpöydän hakemiston virhe"
+
+#: ../src/xfdesktop-file-icon-manager.c:584
+msgid ""
+"A normal file with the same name already exists. Please delete or rename it."
+msgstr "Tiedostonimi on jo tavallisen tiedoston käytössä. Poista se tai nimeä se uudelleen."
+
+#: ../src/xfdesktop-file-icon-manager.c:667 ../src/xfdesktop-file-utils.c:723
+#: ../src/xfdesktop-file-utils.c:776
+msgid "Rename Error"
+msgstr "Nimeämisvirhe"
+
+#: ../src/xfdesktop-file-icon-manager.c:668 ../src/xfdesktop-file-utils.c:777
+msgid "The files could not be renamed"
+msgstr "Tiedostoja ei voitu uudelleennimetä"
+
+#: ../src/xfdesktop-file-icon-manager.c:669
+msgid "None of the icons selected support being renamed."
+msgstr "Yksikään valituista kuvakkeista ei tue uudelleennimeämistä."
+
+#: ../src/xfdesktop-file-icon-manager.c:713
+#: ../src/xfdesktop-file-icon-manager.c:757 ../src/xfdesktop-file-utils.c:876
+#: ../src/xfdesktop-file-utils.c:913
+msgid "Trash Error"
+msgstr "Roskakorivirhe"
+
+#: ../src/xfdesktop-file-icon-manager.c:714
+#: ../src/xfdesktop-file-icon-manager.c:758
+msgid "The selected files could not be trashed"
+msgstr "Valittuja tiedostoja ei voitu siirtää roskakoriin"
+
+#: ../src/xfdesktop-file-icon-manager.c:715
+#: ../src/xfdesktop-file-icon-manager.c:759 ../src/xfdesktop-file-utils.c:725
+#: ../src/xfdesktop-file-utils.c:778 ../src/xfdesktop-file-utils.c:828
+#: ../src/xfdesktop-file-utils.c:959 ../src/xfdesktop-file-utils.c:1006
+#: ../src/xfdesktop-file-utils.c:1047 ../src/xfdesktop-file-utils.c:1088
+#: ../src/xfdesktop-file-utils.c:1190 ../src/xfdesktop-file-utils.c:1242
+#: ../src/xfdesktop-file-utils.c:1315 ../src/xfdesktop-file-utils.c:1393
+msgid ""
+"This feature requires a file manager service to be present (such as the one "
+"supplied by Thunar)."
+msgstr "Toiminto vaatii tiedostonhallintapalvelun (jollaisen tarjoaa esimerkiksi Thunar)."
+
+#. printf is to be translator-friendly
+#: ../src/xfdesktop-file-icon-manager.c:859
+#: ../src/xfdesktop-file-icon-manager.c:1321
+#, c-format
+msgid "Unable to launch \"%s\":"
+msgstr "Ei voi käynnistää kohdetta \"%s\":"
+
+#: ../src/xfdesktop-file-icon-manager.c:1050
+#, c-format
+msgid "_Open With \"%s\""
+msgstr "_Avaa sovelluksessa \"%s\""
+
+#: ../src/xfdesktop-file-icon-manager.c:1053
+#, c-format
+msgid "Open With \"%s\""
+msgstr "Avaa sovelluksessa \"%s\""
+
+#: ../src/xfdesktop-file-icon-manager.c:1379
+msgid "_Open all"
+msgstr "_Avaa kaikki"
+
+#: ../src/xfdesktop-file-icon-manager.c:1395
+msgid "_Open in New Window"
+msgstr "_Avaa uudessa ikkunassa"
+
+#: ../src/xfdesktop-file-icon-manager.c:1397
+#: ../src/xfdesktop-special-file-icon.c:547 ../src/xfdesktop-volume-icon.c:813
+msgid "_Open"
+msgstr "_Avaa"
+
+#. create launcher item
+#: ../src/xfdesktop-file-icon-manager.c:1416
+msgid "Create _Launcher..."
+msgstr "Luo kä_ynnistin..."
+
+#. create link item
+#: ../src/xfdesktop-file-icon-manager.c:1432
+msgid "Create _URL Link..."
+msgstr "Luo _URL-linkki..."
+
+#. create folder item
+#: ../src/xfdesktop-file-icon-manager.c:1448
+msgid "Create _Folder..."
+msgstr "Luo _hakemisto..."
+
+#: ../src/xfdesktop-file-icon-manager.c:1465
+msgid "Create _Document"
+msgstr "Luo _asiakirja"
+
+#: ../src/xfdesktop-file-icon-manager.c:1487
+msgid "No templates installed"
+msgstr "Ei asiakirjamalleja asennettuna"
+
+#: ../src/xfdesktop-file-icon-manager.c:1504
+msgid "_Empty File"
+msgstr "T_yhjä tiedosto"
+
+#: ../src/xfdesktop-file-icon-manager.c:1521
+msgid "_Execute"
+msgstr "_Suorita"
+
+#: ../src/xfdesktop-file-icon-manager.c:1541
+msgid "_Edit Launcher"
+msgstr "_Muokkaa käynnistintä"
+
+#: ../src/xfdesktop-file-icon-manager.c:1600
+msgid "Open With"
+msgstr "Avaa sovelluksessa"
+
+#: ../src/xfdesktop-file-icon-manager.c:1626
+#: ../src/xfdesktop-file-icon-manager.c:1641
+msgid "Open With Other _Application..."
+msgstr "Avaa muussa _sovelluksessa..."
+
+#. Trash
+#: ../src/xfdesktop-file-icon-manager.c:1695
+msgid "Mo_ve to Trash"
+msgstr "Siirrä _roskakoriin"
+
+#. Rename
+#: ../src/xfdesktop-file-icon-manager.c:1726
+msgid "_Rename..."
+msgstr "_Nimeä uudelleen..."
+
+#: ../src/xfdesktop-file-icon-manager.c:1793
+msgid "Arrange Desktop _Icons"
+msgstr "_Järjestä työpöytäkuvakkeet"
+
+#: ../src/xfdesktop-file-icon-manager.c:1804
+msgid "Desktop _Settings..."
+msgstr "Työpöydän _asetukset..."
+
+#: ../src/xfdesktop-file-icon-manager.c:1815
+#: ../src/xfdesktop-volume-icon.c:855
+msgid "P_roperties..."
+msgstr "_Ominaisuudet..."
+
+#: ../src/xfdesktop-file-icon-manager.c:2762
+msgid "Load Error"
+msgstr "Latausvirhe"
+
+#: ../src/xfdesktop-file-icon-manager.c:2764
+msgid "Failed to load the desktop folder"
+msgstr "Työpöytähakemiston lataaminen epäonnistui"
+
+#: ../src/xfdesktop-file-icon-manager.c:3320
+msgid "Copy _Here"
+msgstr "_Kopioi tähän"
+
+#: ../src/xfdesktop-file-icon-manager.c:3320
+msgid "_Move Here"
+msgstr "_Siirrä tähän"
+
+#: ../src/xfdesktop-file-icon-manager.c:3320
+msgid "_Link Here"
+msgstr "_Linkitä tähän"
+
+#. TRANSLATORS: file was modified less than one day ago
+#: ../src/xfdesktop-file-utils.c:140
+#, c-format
+msgid "Today at %X"
+msgstr "Tänään klo %X"
+
+#. TRANSLATORS: file was modified less than two days ago
+#: ../src/xfdesktop-file-utils.c:144
+#, c-format
+msgid "Yesterday at %X"
+msgstr "Eilen klo %X"
+
+#. Days from last week
+#: ../src/xfdesktop-file-utils.c:149
+#, c-format
+msgid "%A at %X"
+msgstr "%Ana klo %X"
+
+#. Any other date
+#: ../src/xfdesktop-file-utils.c:152
+#, c-format
+msgid "%x at %X"
+msgstr "%x klo %X"
+
+#. the file_time is invalid
+#: ../src/xfdesktop-file-utils.c:162
+msgid "Unknown"
+msgstr "Tuntematon"
+
+#: ../src/xfdesktop-file-utils.c:665
+msgid "The folder could not be opened"
+msgstr "Hakemiston avaaminen epäonnistui"
+
+#: ../src/xfdesktop-file-utils.c:682
+msgid "Error"
+msgstr "Virhe"
+
+#: ../src/xfdesktop-file-utils.c:683
+msgid "The requested operation could not be completed"
+msgstr "Pyydetyn toiminnin suorittaminen epäonnistui"
+
+#: ../src/xfdesktop-file-utils.c:724
+msgid "The file could not be renamed"
+msgstr "Tiedoston nimeäminen epäonnistui"
+
+#: ../src/xfdesktop-file-utils.c:826
+msgid "Delete Error"
+msgstr "Poistovirhe"
+
+#: ../src/xfdesktop-file-utils.c:827
+msgid "The selected files could not be deleted"
+msgstr "Valittujen tiedostojen poistaminen epäonnistui"
+
+#: ../src/xfdesktop-file-utils.c:877
+msgid "The selected files could not be moved to the trash"
+msgstr "Valittujen tiedostojen roskakoriin siirtäminen epäonnistui"
+
+#: ../src/xfdesktop-file-utils.c:878 ../src/xfdesktop-file-utils.c:915
+msgid ""
+"This feature requires a trash service to be present (such as the one "
+"supplied by Thunar)."
+msgstr "Toiminto vaatii roskakoripalvelun (jollaisen tarjoaa esimerkiksi Thunar)."
+
+#: ../src/xfdesktop-file-utils.c:914
+msgid "Could not empty the trash"
+msgstr "Roskakorin tyhjennys epäonnistui"
+
+#: ../src/xfdesktop-file-utils.c:957
+msgid "Create File Error"
+msgstr "Tiedoston luomisvirhe"
+
+#: ../src/xfdesktop-file-utils.c:958
+msgid "Could not create a new file"
+msgstr "Uuden tiedoston luominen epäonnistui"
+
+#: ../src/xfdesktop-file-utils.c:1004
+msgid "Create Document Error"
+msgstr "Asiakirjan luomisvirhe"
+
+#: ../src/xfdesktop-file-utils.c:1005
+msgid "Could not create a new document from the template"
+msgstr "Asiakirjaa ei voitu luoda mallista"
+
+#: ../src/xfdesktop-file-utils.c:1045
+msgid "File Properties Error"
+msgstr "Ominaisuusvirhe"
+
+#: ../src/xfdesktop-file-utils.c:1046
+msgid "The file properties dialog could not be opened"
+msgstr "Tiedoston ominaisuusikkunan avaaminen epäonnistui"
+
+#: ../src/xfdesktop-file-utils.c:1087
+msgid "The file could not be opened"
+msgstr "Tiedoston avaaminen epäonnistui"
+
+#: ../src/xfdesktop-file-utils.c:1160 ../src/xfdesktop-file-utils.c:1185
+#, c-format
+msgid "Failed to run \"%s\""
+msgstr "Kohteen \"%s\" suorittaminen epäonnistui"
+
+#: ../src/xfdesktop-file-utils.c:1241
+msgid "The application chooser could not be opened"
+msgstr "Sovelluksen valitsinta ei voitu avata"
+
+#: ../src/xfdesktop-file-utils.c:1299 ../src/xfdesktop-file-utils.c:1313
+#: ../src/xfdesktop-file-utils.c:1375 ../src/xfdesktop-file-utils.c:1391
+msgid "Transfer Error"
+msgstr "Siirtovirhe"
+
+#: ../src/xfdesktop-file-utils.c:1300 ../src/xfdesktop-file-utils.c:1314
+#: ../src/xfdesktop-file-utils.c:1376 ../src/xfdesktop-file-utils.c:1392
+msgid "The file transfer could not be performed"
+msgstr "Tiedoston siirto epäonnistui"
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:127
+msgid "Unmounting device"
+msgstr "Irrotetaan taltio"
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:130
+#, c-format
+msgid ""
+"The device \"%s\" is being unmounted by the system. Please do not remove the"
+" media or disconnect the drive"
+msgstr "Taltiota \"%s\" irrotetaan tiedostojärjestelmästä. Älä poista taltiota asemasta tai laitetta tietokoneesta."
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:137 ../src/xfdesktop-notify.c:322
+msgid "Writing data to device"
+msgstr "Kirjoitetaan laitteelle"
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:140 ../src/xfdesktop-notify.c:325
+#, c-format
+msgid ""
+"There is data that needs to be written to the device \"%s\" before it can be"
+" removed. Please do not remove the media or disconnect the drive"
+msgstr "Laitteelle \"%s\" täytyy kirjoittaa tietoa ennen sen irrottamista. Älä poista taltiota tai irrota laitetta."
+
+#: ../src/xfdesktop-notify.c:221
+msgid "Unmount Finished"
+msgstr "Irrotetaan taltio"
+
+#: ../src/xfdesktop-notify.c:223 ../src/xfdesktop-notify.c:408
+#, c-format
+msgid "The device \"%s\" has been safely removed from the system. "
+msgstr "Laite \"%s\" on poistettu järjestelmästä turvallisesti."
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:313
+msgid "Ejecting device"
+msgstr "Poistetaan taltio"
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:316
+#, c-format
+msgid "The device \"%s\" is being ejected. This may take some time"
+msgstr "Laittetta \"%s\" irrotetaan. Tämä voi viedä hetken."
+
+#: ../src/xfdesktop-notify.c:406
+msgid "Eject Finished"
+msgstr "Poistaminen suoritettu"
+
+#: ../src/xfdesktop-regular-file-icon.c:786
+#, c-format
+msgid ""
+"Type: %s\n"
+"Size: %s\n"
+"Last modified: %s"
+msgstr "Tyyppi: %s\nKoko: %s\nMuokattu: %s"
+
+#: ../src/xfdesktop-special-file-icon.c:297
+#: ../src/xfdesktop-special-file-icon.c:477
+msgid "File System"
+msgstr "Tiedostojärjestelmä"
+
+#: ../src/xfdesktop-special-file-icon.c:462
+msgid "Trash is empty"
+msgstr "Roskakori on tyhjä"
+
+#: ../src/xfdesktop-special-file-icon.c:465
+msgid "Trash contains one item"
+msgstr "Roskakorissa on yksi kohde"
+
+#: ../src/xfdesktop-special-file-icon.c:466
+#, c-format
+msgid "Trash contains %d items"
+msgstr "Roskakorissa on %d kohdetta"
+
+#: ../src/xfdesktop-special-file-icon.c:495
+#, c-format
+msgid ""
+"%s\n"
+"Size: %s\n"
+"Last modified: %s"
+msgstr "%s\nKoko: %s\nMuokattu: %s"
+
+#: ../src/xfdesktop-special-file-icon.c:564
+msgid "_Empty Trash"
+msgstr "_Tyhjennä roskakori"
+
+#: ../src/xfdesktop-volume-icon.c:482
+#, c-format
+msgid ""
+"Removable Volume\n"
+"Mounted in \"%s\"\n"
+"%s left (%s total)"
+msgstr "Irrotettava taltio\nLiitospiste: %s\nVapaa tila: %s (%s)"
+
+#: ../src/xfdesktop-volume-icon.c:489
+msgid ""
+"Removable Volume\n"
+"Not mounted yet"
+msgstr "Irrotettava taltio\nEi liitetty"
+
+#: ../src/xfdesktop-volume-icon.c:518 ../src/xfdesktop-volume-icon.c:563
+#, c-format
+msgid "Failed to eject \"%s\""
+msgstr "Kohteen \"%s\" poistaminen epäonnistui"
+
+#: ../src/xfdesktop-volume-icon.c:523 ../src/xfdesktop-volume-icon.c:568
+msgid "Eject Failed"
+msgstr "Poistaminen epäonnistui"
+
+#: ../src/xfdesktop-volume-icon.c:600
+#, c-format
+msgid "Failed to mount \"%s\""
+msgstr "Kohteen \"%s\" liittäminen epäonnistui"
+
+#: ../src/xfdesktop-volume-icon.c:603
+msgid "Mount Failed"
+msgstr "Liittäminen epäonnistui"
+
+#: ../src/xfdesktop-volume-icon.c:828
+msgid "E_ject Volume"
+msgstr "I_rrota"
+
+#: ../src/xfdesktop-volume-icon.c:835
+msgid "_Unmount Volume"
+msgstr "_Liitä"
+
+#: ../src/xfdesktop-volume-icon.c:842
+msgid "_Mount Volume"
+msgstr "_Liitä"
+
+#: ../src/xfdesktop-window-icon.c:195
+msgid "_Window Actions"
+msgstr "_Ikkunatoiminnot"
