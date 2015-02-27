@@ -993,6 +993,32 @@ xfdesktop_file_icon_menu_paste(GtkWidget *widget,
 }
 
 static void
+xfdesktop_file_icon_menu_paste_into_folder(GtkWidget *widget,
+                                           gpointer user_data)
+{
+    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
+    XfdesktopFileIcon *icon;
+    GFileInfo *info;
+    GFile *file;
+    GList *selected;
+
+    selected = xfdesktop_icon_view_get_selected_items(fmanager->priv->icon_view);
+    g_return_if_fail(g_list_length(selected) == 1);
+    icon = XFDESKTOP_FILE_ICON(selected->data);
+    g_list_free(selected);
+
+    info = xfdesktop_file_icon_peek_file_info(icon);
+
+    if(g_file_info_get_file_type(info) != G_FILE_TYPE_DIRECTORY)
+        return;
+
+    file = xfdesktop_file_icon_peek_file(icon);
+
+    if(widget && fmanager)
+        xfdesktop_clipboard_manager_paste_files(clipboard_manager, file, widget, NULL);
+}
+
+static void
 xfdesktop_file_icon_menu_arrange_icons(GtkWidget *widget,
                                        gpointer user_data)
 {
@@ -1723,6 +1749,25 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
             g_signal_connect(G_OBJECT(mi), "activate",
                              G_CALLBACK(xfdesktop_file_icon_menu_copy),
                              fmanager);
+
+            /* Paste Into Folder */
+            if(!multi_sel && info) {
+                if(g_file_info_get_file_type(info) == G_FILE_TYPE_DIRECTORY
+                   && g_file_info_get_attribute_boolean(info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE)) {
+                    img = gtk_image_new_from_stock(GTK_STOCK_PASTE, GTK_ICON_SIZE_MENU);
+                    gtk_widget_show(img);
+                    mi = gtk_image_menu_item_new_with_mnemonic(_("Paste Into Folder"));
+                    gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+                    gtk_widget_show(mi);
+                    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+                    if(xfdesktop_clipboard_manager_get_can_paste(clipboard_manager)) {
+                        g_signal_connect(G_OBJECT(mi), "activate",
+                                         G_CALLBACK(xfdesktop_file_icon_menu_paste_into_folder),
+                                         fmanager);
+                    } else
+                        gtk_widget_set_sensitive(mi, FALSE);
+                }
+            }
 
             /* Separator */
             mi = gtk_separator_menu_item_new();
