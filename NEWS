@@ -1,3 +1,53 @@
+4.12.0
+======
+Stable release of xfdesktop for Xfce 4.12.
+
+Thank you to everyone who contributed patches,
+translation updates, and tested xfdesktop
+during its development.
+
+* Miscellaneous bug fixes:
+ - New background for 4.12!
+ - Add a space between icons to fill the entire screen
+ - Add optional blurring on shadow on text of icons.
+ - Editing menu items with right click optional
+   (Bug #11031)
+ - Clarify right click apps menu presence (Bug #10301)
+ - Default application not respected with glib >= 2.41
+   (Bug #11306)
+ - Include dir needed for building "out of tree"
+ - Fix crash in xfdesktop's metadata monitor
+ - Add 1px to widen the text shadow and improve contrast
+ - Fix calculation of shadows that are offset in RTL
+   text (Bug #5239)
+ - Adapt thunar's context menu structure (Bug #11542)
+ - Additional context menu changes
+ - Consider shadow offsets and blur extents when
+   calculating the text box
+ - Sort pending icons on resize (Bug #11266)
+ - Allow thunarx menu entries for multiple file selection
+ - Show 'No templates installed' when no templates
+   are found
+ - Hide file action menu entries when volume + other
+   icons are selected
+ - Don't use cairo_surface_create_similar_image
+   (Bug #11566)
+ - Consider shadow extents/offsets when updating icon
+   extents
+ 
+* Translation updates:
+  Arabic (ar), Asturian (ast), Bulgarian (bg),
+  Czech (cs), Danish (da), German (de),
+  English (Australia) (en_AU), Spanish (Castilian) (es),
+  Basque (eu), Finnish (fi), French (fr), Hebrew (he),
+  Croatian (hr), Icelandic (is), Italian (it),
+  Japanese (ja), Kazakh (kk), Korean (ko), Malay (ms),
+  Norwegian Bokmål (nb), Dutch (Flemish) (nl),
+  Polish (pl), Portuguese (pt), Portuguese (Brazilian) (pt_BR),
+  Russian (ru), Slovak (sk), Slovenian (sl), Serbian (sr),
+  Thai (th), Turkish (tr), Ukrainian (uk),
+  Chinese (China) (zh_CN), Chinese (Taiwan) (zh_TW).
+
 4.11.8
 ======
 [Please note that this is a development release.]
