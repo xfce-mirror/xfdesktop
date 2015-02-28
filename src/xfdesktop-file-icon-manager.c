@@ -151,6 +151,7 @@ struct _XfdesktopFileIconManagerPrivate
     XfdesktopThumbnailer *thumbnailer;
 
     guint max_templates;
+    guint templates_count;
 };
 
 static void xfdesktop_file_icon_manager_set_property(GObject *object,
@@ -1198,7 +1199,8 @@ compare_template_files(gconstpointer a,
 static void
 xfdesktop_file_icon_menu_fill_template_menu(GtkWidget *menu,
                                             GFile *template_dir,
-                                            XfdesktopFileIconManager *fmanager)
+                                            XfdesktopFileIconManager *fmanager,
+                                            gboolean recursive)
 {
     GFileEnumerator *enumerator;
     GtkWidget *item, *image, *submenu;
@@ -1219,11 +1221,16 @@ xfdesktop_file_icon_menu_fill_template_menu(GtkWidget *menu,
     if(enumerator == NULL)
         return;
 
+    if(recursive == FALSE)
+        fmanager->priv->templates_count = 0;
+
     /* keep it under fmanager->priv->max_templates otherwise the menu
      * could have tons of items and be unusable. Additionally this should
      * help in instances where the XDG_TEMPLATES_DIR has a large number of
      * files in it. */
-    while((info = g_file_enumerator_next_file(enumerator, NULL, NULL)) && items < fmanager->priv->max_templates) {
+    while((info = g_file_enumerator_next_file(enumerator, NULL, NULL))
+          && fmanager->priv->templates_count < fmanager->priv->max_templates)
+    {
         /* skip hidden & backup files */
         if(g_file_info_get_is_hidden(info) || g_file_info_get_is_backup(info)) {
             g_object_unref(info);
@@ -1234,7 +1241,8 @@ xfdesktop_file_icon_menu_fill_template_menu(GtkWidget *menu,
         g_object_set_data_full(G_OBJECT(file), "info", info, g_object_unref);
         files = g_list_prepend(files, file);
 
-        items++;
+        if(g_file_info_get_file_type(info) != G_FILE_TYPE_DIRECTORY)
+            fmanager->priv->templates_count++;
     }
 
     g_object_unref(enumerator);
@@ -1249,7 +1257,8 @@ xfdesktop_file_icon_menu_fill_template_menu(GtkWidget *menu,
         if(g_file_info_get_file_type(info) == G_FILE_TYPE_DIRECTORY) {
             submenu = gtk_menu_new();
 
-            xfdesktop_file_icon_menu_fill_template_menu(submenu, file, fmanager);
+            xfdesktop_file_icon_menu_fill_template_menu(submenu, file,
+                                                        fmanager, TRUE);
 
             if(!gtk_container_get_children((GtkContainer*) submenu)) {
                 g_object_unref(file);
@@ -1503,7 +1512,8 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                         if(templates_dir && !g_file_equal(home_dir, templates_dir)) {
                             xfdesktop_file_icon_menu_fill_template_menu(tmpl_menu,
                                                                         templates_dir,
-                                                                        fmanager);
+                                                                        fmanager,
+                                                                        FALSE);
                         }
 
                         if(!gtk_container_get_children((GtkContainer*) tmpl_menu)) {
