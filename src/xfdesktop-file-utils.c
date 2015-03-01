@@ -679,11 +679,14 @@ xfdesktop_file_utils_async_cb(DBusGProxy *proxy, GError *error, gpointer userdat
     GtkWindow *parent = GTK_WINDOW(userdata);
 
     if(error != NULL) {
-        xfce_message_dialog(parent,
-                            _("Error"), GTK_STOCK_DIALOG_ERROR,
-                            _("The requested operation could not be completed"),
-                            error->message, GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
-                            NULL);
+        /* ignore dbus timeout error (bug #11283) */
+        if(error->code != DBUS_GERROR_NO_REPLY) {
+            xfce_message_dialog(parent,
+                                _("Error"), GTK_STOCK_DIALOG_ERROR,
+                                _("The requested operation could not be completed"),
+                                error->message, GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
+                                NULL);
+        }
         g_error_free(error);
     }
 }
