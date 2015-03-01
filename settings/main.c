@@ -1729,6 +1729,7 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     chk_custom_font_size = GTK_WIDGET(gtk_builder_get_object(main_gxml,
                                                              "chk_custom_font_size"));
     spin_font_size = GTK_WIDGET(gtk_builder_get_object(main_gxml, "spin_font_size"));
+    gtk_spin_button_set_value(GTK_SPIN_BUTTON(spin_font_size), 12);
 
     /* single click */
     chk_single_click = GTK_WIDGET(gtk_builder_get_object(main_gxml,
