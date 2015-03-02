@@ -184,7 +184,7 @@ menu_item_from_wnck_window(WnckWindow *wnck_window, gint icon_width,
                 tmp = gdk_pixbuf_copy(icon);
             /* minimized window, fade out app icon */
             gdk_pixbuf_saturate_and_pixelate(tmp, tmp, 0.55, TRUE);
-		}
+        }
 
         if(tmp) {
             img = gtk_image_new_from_pixbuf(tmp);
