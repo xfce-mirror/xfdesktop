@@ -2810,7 +2810,7 @@ xfdesktop_icon_view_invalidate_icon_pixbuf(XfdesktopIconView *icon_view,
             return;
         
         rect.x += CELL_PADDING + ((CELL_SIZE - 2 * CELL_PADDING) - rect.width) / 2;
-        rect.y += CELL_PADDING;
+        rect.y += CELL_PADDING + (ICON_SIZE - rect.height) / 2;;
     
         if(gtk_widget_get_realized(GTK_WIDGET(icon_view))) {
             gtk_widget_queue_draw_area(GTK_WIDGET(icon_view), rect.x, rect.y,
@@ -3001,7 +3001,7 @@ xfdesktop_icon_view_update_icon_extents(XfdesktopIconView *icon_view,
         return FALSE;
     }
     pixbuf_extents->x += CELL_PADDING + ((CELL_SIZE - CELL_PADDING * 2) - pixbuf_extents->width) / 2;
-    pixbuf_extents->y += CELL_PADDING;
+    pixbuf_extents->y += CELL_PADDING + (ICON_SIZE - pixbuf_extents->height) / 2;
 
     if(!xfdesktop_icon_view_calculate_icon_text_area(icon_view, icon, text_extents))
         return FALSE;
