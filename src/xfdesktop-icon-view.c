@@ -1590,7 +1590,7 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
 
                 if(action == 0) {
                     gtk_drag_finish(context, FALSE, FALSE, time_);
-                    return;
+                    return ret;
                 }
             }
 
