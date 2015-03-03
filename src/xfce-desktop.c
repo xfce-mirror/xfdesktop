@@ -264,7 +264,9 @@ xfce_desktop_setup_icon_view(XfceDesktop *desktop)
         gtk_widget_show(desktop->priv->icon_view);
         gtk_container_add(GTK_CONTAINER(desktop), desktop->priv->icon_view);
 
-        g_signal_connect(G_OBJECT(manager), "hidden-state-changed", G_CALLBACK(hidden_state_changed_cb), desktop);
+        if(desktop->priv->icons_style == XFCE_DESKTOP_ICON_STYLE_FILES)
+            g_signal_connect(G_OBJECT(manager), "hidden-state-changed",
+                             G_CALLBACK(hidden_state_changed_cb), desktop);
     }
     
     gtk_widget_queue_draw(GTK_WIDGET(desktop));
