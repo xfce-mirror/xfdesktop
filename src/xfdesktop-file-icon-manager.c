@@ -2190,7 +2190,6 @@ icon_view_resized(XfdesktopIconView *icon_view,
 {
     GQueue *new_queue;
     XfdesktopIcon *icon;
-    XfdesktopFileIconManagerPrivate *priv = XFDESKTOP_FILE_ICON_MANAGER_GET_PRIVATE(fmanager);
     const gchar *name;
     gchar *identifier;
     gint16 row, col;
@@ -2201,12 +2200,12 @@ icon_view_resized(XfdesktopIconView *icon_view,
         return;
 
     /* No pending icons, nothing to do */
-    if(priv == NULL || priv->pending_icons == NULL || g_queue_is_empty(priv->pending_icons))
+    if(fmanager->priv->pending_icons == NULL || g_queue_is_empty(fmanager->priv->pending_icons))
         return;
 
     new_queue = g_queue_new();
 
-    while((icon = g_queue_pop_head(priv->pending_icons))) {
+    while((icon = g_queue_pop_head(fmanager->priv->pending_icons))) {
         name = xfdesktop_icon_peek_label(XFDESKTOP_ICON(icon));
         identifier = xfdesktop_icon_get_identifier(XFDESKTOP_ICON(icon));
 
@@ -2231,8 +2230,8 @@ icon_view_resized(XfdesktopIconView *icon_view,
     }
 
     /* Free the old queue and replace it with the new one */
-    g_queue_free(priv->pending_icons);
-    priv->pending_icons = new_queue;
+    g_queue_free(fmanager->priv->pending_icons);
+    fmanager->priv->pending_icons = new_queue;
 }
 
 static void
