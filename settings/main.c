@@ -1033,6 +1033,8 @@ xfdesktop_spin_icon_size_timer(GtkSpinButton *button)
                             DESKTOP_ICONS_ICON_SIZE_PROP,
                             gtk_spin_button_get_value(button));
 
+    g_object_set_data(G_OBJECT(button), "timer-id", NULL);
+
     return FALSE;
 }
 
@@ -2055,7 +2057,7 @@ main(int argc, char **argv)
 
     if(G_UNLIKELY(opt_version)) {
         g_print("%s %s (Xfce %s)\n\n", G_LOG_DOMAIN, VERSION, xfce_version_string());
-        g_print("%s\n", "Copyright (c) 2004-2013");
+        g_print("%s\n", "Copyright (c) 2004-2015");
         g_print("\t%s\n\n", _("The Xfce development team. All rights reserved."));
         g_print(_("Please report bugs to <%s>."), PACKAGE_BUGREPORT);
         g_print("\n");
