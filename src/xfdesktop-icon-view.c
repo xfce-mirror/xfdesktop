@@ -1670,7 +1670,10 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
             /* Find the next available spot for an icon */
             do {
                 if(row + 1 >= icon_view->priv->nrows) {
-                    ++col;
+                    if(col + 1 >= icon_view->priv->ncols)
+                        col = 0;
+                    else
+                        ++col;
                     row = 0;
                 } else {
                     ++row;
