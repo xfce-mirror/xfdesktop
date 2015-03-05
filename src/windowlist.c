@@ -172,9 +172,9 @@ menu_item_from_wnck_window(WnckWindow *wnck_window, gint icon_width,
 
     /* add some padding to the right */
     if(gtk_widget_get_default_direction() == GTK_TEXT_DIR_RTL)
-        g_string_prepend(label, "    ");
+        g_string_prepend(label, "  ");
     else
-        g_string_append(label, "    ");
+        g_string_append(label, "  ");
 
     if(wl_show_icons) {
         icon = wnck_window_get_mini_icon(wnck_window);
