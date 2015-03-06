@@ -2028,7 +2028,10 @@ xfdesktop_file_icon_position_changed(XfdesktopFileIcon *icon,
 void
 xfdesktop_file_icon_save(gpointer user_data)
 {
-	xfdesktop_file_icon_position_changed(NULL, user_data);
+    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
+
+    if(fmanager->priv->pending_icons == NULL)
+        xfdesktop_file_icon_position_changed(NULL, user_data);
 }
 
 gboolean
