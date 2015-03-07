@@ -2832,18 +2832,12 @@ xfdesktop_icon_view_invalidate_icon_pixbuf(XfdesktopIconView *icon_view,
 static void
 xfdesktop_paint_rounded_box(XfdesktopIconView *icon_view,
                             GtkStateType state,
-                            GdkRectangle *text_area,
+                            GdkRectangle *box_area,
                             GdkRectangle *expose_area)
 {
-    GdkRectangle box_area, intersection;
+    GdkRectangle intersection;
     
-    box_area = *text_area;
-    box_area.x -= LABEL_RADIUS;
-    box_area.y -= LABEL_RADIUS;
-    box_area.width += LABEL_RADIUS * 2;
-    box_area.height += LABEL_RADIUS * 2;
-    
-    if(gdk_rectangle_intersect(&box_area, expose_area, &intersection)) {
+    if(gdk_rectangle_intersect(box_area, expose_area, &intersection)) {
         cairo_t *cr = gdk_cairo_create(gtk_widget_get_window(GTK_WIDGET(icon_view)));
         GtkStyle *style = gtk_widget_get_style(GTK_WIDGET(icon_view));
         double alpha;
@@ -2863,27 +2857,27 @@ xfdesktop_paint_rounded_box(XfdesktopIconView *icon_view,
         cairo_clip(cr);
 
         if(LABEL_RADIUS < 0.1)
-            gdk_cairo_rectangle(cr, &box_area);
+            gdk_cairo_rectangle(cr, box_area);
         else {
-            cairo_move_to(cr, box_area.x, box_area.y + LABEL_RADIUS);
-            cairo_arc(cr, box_area.x + LABEL_RADIUS,
-                      box_area.y + LABEL_RADIUS, LABEL_RADIUS,
+            cairo_move_to(cr, box_area->x, box_area->y + LABEL_RADIUS);
+            cairo_arc(cr, box_area->x + LABEL_RADIUS,
+                      box_area->y + LABEL_RADIUS, LABEL_RADIUS,
                       M_PI, 3.0*M_PI/2.0);
-            cairo_line_to(cr, box_area.x + box_area.width - LABEL_RADIUS,
-                          box_area.y);
-            cairo_arc(cr, box_area.x + box_area.width - LABEL_RADIUS,
-                      box_area.y + LABEL_RADIUS, LABEL_RADIUS,
+            cairo_line_to(cr, box_area->x + box_area->width - LABEL_RADIUS,
+                          box_area->y);
+            cairo_arc(cr, box_area->x + box_area->width - LABEL_RADIUS,
+                      box_area->y + LABEL_RADIUS, LABEL_RADIUS,
                       3.0+M_PI/2.0, 0.0);
-            cairo_line_to(cr, box_area.x + box_area.width,
-                          box_area.y + box_area.height - LABEL_RADIUS);
-            cairo_arc(cr, box_area.x + box_area.width - LABEL_RADIUS,
-                      box_area.y + box_area.height - LABEL_RADIUS,
+            cairo_line_to(cr, box_area->x + box_area->width,
+                          box_area->y + box_area->height - LABEL_RADIUS);
+            cairo_arc(cr, box_area->x + box_area->width - LABEL_RADIUS,
+                      box_area->y + box_area->height - LABEL_RADIUS,
                       LABEL_RADIUS,
                       0.0, M_PI/2.0);
-            cairo_line_to(cr, box_area.x + LABEL_RADIUS,
-                          box_area.y + box_area.height);
-            cairo_arc(cr, box_area.x + LABEL_RADIUS,
-                      box_area.y + box_area.height - LABEL_RADIUS,
+            cairo_line_to(cr, box_area->x + LABEL_RADIUS,
+                          box_area->y + box_area->height);
+            cairo_arc(cr, box_area->x + LABEL_RADIUS,
+                      box_area->y + box_area->height - LABEL_RADIUS,
                       LABEL_RADIUS,
                       M_PI/2.0, M_PI);
             cairo_close_path(cr);
@@ -3031,8 +3025,8 @@ xfdesktop_icon_view_update_icon_extents(XfdesktopIconView *icon_view,
     text_extents->y += ICON_SIZE + SPACING + LABEL_RADIUS + CELL_PADDING;
 
     tmp_text = *text_extents;
-    tmp_text.x -= LABEL_RADIUS + (SHADOW_EXTENTS + SHADOW_X_OFFSET);
-    tmp_text.y -= LABEL_RADIUS - (SHADOW_EXTENTS + SHADOW_Y_OFFSET);
+    tmp_text.x -= LABEL_RADIUS - *rtl_offset;
+    tmp_text.y -= LABEL_RADIUS;
     tmp_text.width += LABEL_RADIUS * 2;
     tmp_text.height += LABEL_RADIUS * 2;
     gdk_rectangle_union(pixbuf_extents, &tmp_text, total_extents);
@@ -3095,6 +3089,7 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
     PangoLayout *playout;
     GdkRectangle pixbuf_extents, text_extents, total_extents;
     GdkRectangle intersection;
+    GdkRectangle box_area;
     gchar x_offset = 0, y_offset = 0;
     GdkColor *sh_text_col = NULL;
     cairo_t *cr;
@@ -3165,12 +3160,18 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
             g_object_unref(G_OBJECT(pix_free));
     }
 
-    /* Only redraw the text if the text area requires it.  */
-    if(gdk_rectangle_intersect(area, &text_extents, &intersection)
+    /* Calculate text box area */
+    box_area = text_extents;
+    box_area.x -= LABEL_RADIUS - rtl_offset;
+    box_area.y -= LABEL_RADIUS;
+    box_area.width += LABEL_RADIUS * 2;
+    box_area.height += LABEL_RADIUS * 2;
+
+    /* Only redraw the text if the text area requires it. */
+    if(gdk_rectangle_intersect(area, &box_area, &intersection)
        && icon_view->priv->font_size > 0)
     {
-        text_extents.x += rtl_offset;
-        xfdesktop_paint_rounded_box(icon_view, state, &text_extents, area);
+        xfdesktop_paint_rounded_box(icon_view, state, &box_area, area);
 
         if (state == GTK_STATE_NORMAL) {
             x_offset = icon_view->priv->shadow_x_offset;
@@ -3181,6 +3182,8 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
             y_offset = icon_view->priv->selected_shadow_y_offset;
             sh_text_col = icon_view->priv->selected_shadow_color;
         }
+
+        text_extents.x += rtl_offset;
 
         /* draw text shadow for the label text if an offset was defined */
         if(x_offset || y_offset || (icon_view->priv->shadow_blur_radius > 1)) {
@@ -3203,7 +3206,6 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
         gtk_paint_layout(gtk_widget_get_style(widget), gtk_widget_get_window(widget),
                          state, FALSE, area, widget, "label",
                          text_extents.x, text_extents.y, playout);
-
     }
 
 
