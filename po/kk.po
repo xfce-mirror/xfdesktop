@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-16 12:32+0100\n"
-"PO-Revision-Date: 2015-02-19 14:34+0000\n"
+"POT-Creation-Date: 2015-03-03 18:32+0100\n"
+"PO-Revision-Date: 2015-03-08 13:50+0000\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh (http://www.transifex.com/projects/p/xfdesktop/language/kk/)\n"
 "MIME-Version: 1.0\n"
@@ -102,53 +102,53 @@ msgstr "%s үшін түсқағаз"
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "Сіз бірден көп экран қолданып отырсыз, баптауларын өзгерту керек экраны және жұмыс орнына бұл сұхбат терезесін тартып апарыңыз."
 
-#: ../settings/main.c:1176
+#: ../settings/main.c:1178
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "Сурет стилі ешнәрсе болып тұрған кезінде суретті таңдау мүмкін емес."
 
-#: ../settings/main.c:1526
+#: ../settings/main.c:1528
 msgid "Spanning screens"
 msgstr "Біріккен экрандар"
 
-#: ../settings/main.c:1836
+#: ../settings/main.c:1839
 msgid "Image files"
 msgstr "Сурет файлдары"
 
-#: ../settings/main.c:2016
+#: ../settings/main.c:2019
 msgid "Settings manager socket"
 msgstr "Баптаулар басқарушысының сокеті"
 
-#: ../settings/main.c:2016
+#: ../settings/main.c:2019
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: ../settings/main.c:2017
+#: ../settings/main.c:2020
 msgid "Version information"
 msgstr "Нұсқа ақпараты"
 
-#: ../settings/main.c:2018 ../src/xfdesktop-application.c:844
+#: ../settings/main.c:2021 ../src/xfdesktop-application.c:844
 msgid "Enable debug messages"
 msgstr "Жөндеуді хабарламаларын іске қосу"
 
-#: ../settings/main.c:2046
+#: ../settings/main.c:2049
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Көмек үшін '%s --help' енгізіңіз."
 
-#: ../settings/main.c:2058
+#: ../settings/main.c:2061
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce өндіру тобы. Барлық құқықтары қорғалған."
 
-#: ../settings/main.c:2059
+#: ../settings/main.c:2062
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Ақаулықтар жөнінде хабарласыңыз: <%s>."
 
-#: ../settings/main.c:2066
+#: ../settings/main.c:2069
 msgid "Desktop Settings"
 msgstr "Жұмыс үстел баптаулары"
 
-#: ../settings/main.c:2068
+#: ../settings/main.c:2071
 msgid "Unable to contact settings server"
 msgstr "Баптаулар қызметімен байланыс орнату мүмкін емес"
 
@@ -337,7 +337,7 @@ msgstr "Қайырылған қолданбалар таңбашалары"
 msgid "File/launcher icons"
 msgstr "Файл/жөнелткіштер таңбашалары"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:1045
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:1024
 msgid "Desktop"
 msgstr "Жұмыс үстелі"
 
@@ -428,12 +428,12 @@ msgid ""
 msgstr "Алдын-ала көрінісі мүмкін болатын файлдарды олардың автоматты түрде жасалған кіші көріністері ретінде көрсету үшін бұл опцияны таңдаңыз."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
-msgid "Single _click to activate items"
-msgstr "Бірлік _шертумен белсендіру"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:34
 msgid "Show hidden files on the desktop"
 msgstr "Жұмыс үстелде жасырын файлдарды көрсету"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:34
+msgid "Single _click to activate items"
+msgstr "Бірлік _шертумен белсендіру"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:35
 msgid "Show icon tooltips. Size:"
@@ -493,40 +493,40 @@ msgstr "'%s' жұмыс орнын өшіруді шынымен қалайсы�
 msgid "Remove"
 msgstr "Өшіру"
 
-#: ../src/windowlist.c:246
+#: ../src/windowlist.c:247
 msgid "Window List"
 msgstr "Терезелер тізімі"
 
-#: ../src/windowlist.c:272
+#: ../src/windowlist.c:273
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>Жұмыс орны %d</b>"
 
-#: ../src/windowlist.c:362 ../src/windowlist.c:365
+#: ../src/windowlist.c:361 ../src/windowlist.c:364
 msgid "_Add Workspace"
 msgstr "_Жұмыс орнын қосу"
 
-#: ../src/windowlist.c:373
+#: ../src/windowlist.c:372
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "%d _жұмыс орнын өшіру"
 
-#: ../src/windowlist.c:376
+#: ../src/windowlist.c:375
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "'%s' жұ_мыс орнын өшіру"
 
 #: ../src/xfdesktop-app-menu-item.c:351
-#: ../src/xfdesktop-file-icon-manager.c:861
-#: ../src/xfdesktop-file-icon-manager.c:1126
-#: ../src/xfdesktop-file-icon-manager.c:1322 ../src/xfdesktop-file-utils.c:664
-#: ../src/xfdesktop-file-utils.c:1086 ../src/xfdesktop-file-utils.c:1163
-#: ../src/xfdesktop-file-utils.c:1188 ../src/xfdesktop-file-utils.c:1240
+#: ../src/xfdesktop-file-icon-manager.c:862
+#: ../src/xfdesktop-file-icon-manager.c:1153
+#: ../src/xfdesktop-file-icon-manager.c:1366 ../src/xfdesktop-file-utils.c:665
+#: ../src/xfdesktop-file-utils.c:1087 ../src/xfdesktop-file-utils.c:1164
+#: ../src/xfdesktop-file-utils.c:1189 ../src/xfdesktop-file-utils.c:1241
 msgid "Launch Error"
 msgstr "Жөнелту қатесі"
 
 #: ../src/xfdesktop-app-menu-item.c:353
-#: ../src/xfdesktop-file-icon-manager.c:1128
+#: ../src/xfdesktop-file-icon-manager.c:1155
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
@@ -613,172 +613,176 @@ msgstr "    Жұмыс үстел таңбашалары:       %s\n"
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Жұмыс үстел файл таңбашалары:  %s\n"
 
-#: ../src/xfdesktop-file-icon-manager.c:560
-#: ../src/xfdesktop-file-icon-manager.c:577
+#: ../src/xfdesktop-file-icon-manager.c:561
+#: ../src/xfdesktop-file-icon-manager.c:578
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
 msgstr "\"%s\" жұмыс үстел бумасын жасау мүмкін емес"
 
-#: ../src/xfdesktop-file-icon-manager.c:565
-#: ../src/xfdesktop-file-icon-manager.c:582
+#: ../src/xfdesktop-file-icon-manager.c:566
+#: ../src/xfdesktop-file-icon-manager.c:583
 msgid "Desktop Folder Error"
 msgstr "Жұмыс үстел бумасының қатесі"
 
-#: ../src/xfdesktop-file-icon-manager.c:584
+#: ../src/xfdesktop-file-icon-manager.c:585
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr "Ондай атауы бар файл бар болып тұр. Алдымен оны өшіріңіз не атын өзгертіңіз."
 
-#: ../src/xfdesktop-file-icon-manager.c:667 ../src/xfdesktop-file-utils.c:723
-#: ../src/xfdesktop-file-utils.c:776
+#: ../src/xfdesktop-file-icon-manager.c:668 ../src/xfdesktop-file-utils.c:724
+#: ../src/xfdesktop-file-utils.c:777
 msgid "Rename Error"
 msgstr "Атын ауыстыру қатесі"
 
-#: ../src/xfdesktop-file-icon-manager.c:668 ../src/xfdesktop-file-utils.c:777
+#: ../src/xfdesktop-file-icon-manager.c:669 ../src/xfdesktop-file-utils.c:778
 msgid "The files could not be renamed"
 msgstr "Файлдар аттарын ауыстыру мүмкін емес"
 
-#: ../src/xfdesktop-file-icon-manager.c:669
+#: ../src/xfdesktop-file-icon-manager.c:670
 msgid "None of the icons selected support being renamed."
 msgstr "Таңдалған таңбашалардың ешбірі де атын ауыстыруды қолдамайды."
 
-#: ../src/xfdesktop-file-icon-manager.c:713
-#: ../src/xfdesktop-file-icon-manager.c:757 ../src/xfdesktop-file-utils.c:876
-#: ../src/xfdesktop-file-utils.c:913
+#: ../src/xfdesktop-file-icon-manager.c:714
+#: ../src/xfdesktop-file-icon-manager.c:758 ../src/xfdesktop-file-utils.c:877
+#: ../src/xfdesktop-file-utils.c:914
 msgid "Trash Error"
 msgstr "Қоқыс шелек қатесі"
 
-#: ../src/xfdesktop-file-icon-manager.c:714
-#: ../src/xfdesktop-file-icon-manager.c:758
+#: ../src/xfdesktop-file-icon-manager.c:715
+#: ../src/xfdesktop-file-icon-manager.c:759
 msgid "The selected files could not be trashed"
 msgstr "Ерекшеленген файлдарды қоқыс шелегіне тастау мүмкін емес"
 
-#: ../src/xfdesktop-file-icon-manager.c:715
-#: ../src/xfdesktop-file-icon-manager.c:759 ../src/xfdesktop-file-utils.c:725
-#: ../src/xfdesktop-file-utils.c:778 ../src/xfdesktop-file-utils.c:828
-#: ../src/xfdesktop-file-utils.c:959 ../src/xfdesktop-file-utils.c:1006
-#: ../src/xfdesktop-file-utils.c:1047 ../src/xfdesktop-file-utils.c:1088
-#: ../src/xfdesktop-file-utils.c:1190 ../src/xfdesktop-file-utils.c:1242
-#: ../src/xfdesktop-file-utils.c:1315 ../src/xfdesktop-file-utils.c:1393
+#: ../src/xfdesktop-file-icon-manager.c:716
+#: ../src/xfdesktop-file-icon-manager.c:760 ../src/xfdesktop-file-utils.c:726
+#: ../src/xfdesktop-file-utils.c:779 ../src/xfdesktop-file-utils.c:829
+#: ../src/xfdesktop-file-utils.c:960 ../src/xfdesktop-file-utils.c:1007
+#: ../src/xfdesktop-file-utils.c:1048 ../src/xfdesktop-file-utils.c:1089
+#: ../src/xfdesktop-file-utils.c:1191 ../src/xfdesktop-file-utils.c:1243
+#: ../src/xfdesktop-file-utils.c:1316 ../src/xfdesktop-file-utils.c:1394
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
 msgstr "Бұл мүмкіндік бар болып тұрған файлдар басқарушы қызметін талап етеді (Thunar ұсынатын қызмет сияқты)."
 
 #. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:859
-#: ../src/xfdesktop-file-icon-manager.c:1321
+#: ../src/xfdesktop-file-icon-manager.c:860
+#: ../src/xfdesktop-file-icon-manager.c:1365
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "\"%s\" жөнелту қатесі:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1050
+#: ../src/xfdesktop-file-icon-manager.c:1077
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "\"%s\" _көмегімен ашу"
 
-#: ../src/xfdesktop-file-icon-manager.c:1053
+#: ../src/xfdesktop-file-icon-manager.c:1080
 #, c-format
 msgid "Open With \"%s\""
 msgstr "\"%s\" көмегімен ашу"
 
-#: ../src/xfdesktop-file-icon-manager.c:1379
+#: ../src/xfdesktop-file-icon-manager.c:1435
 msgid "_Open all"
 msgstr "Б_арлығын ашу"
 
-#: ../src/xfdesktop-file-icon-manager.c:1395
+#: ../src/xfdesktop-file-icon-manager.c:1451
 msgid "_Open in New Window"
 msgstr "_Жаңа терезеде ашу"
 
-#: ../src/xfdesktop-file-icon-manager.c:1397
+#: ../src/xfdesktop-file-icon-manager.c:1453
 #: ../src/xfdesktop-special-file-icon.c:547 ../src/xfdesktop-volume-icon.c:813
 msgid "_Open"
 msgstr "А_шу"
 
 #. create launcher item
-#: ../src/xfdesktop-file-icon-manager.c:1416
+#: ../src/xfdesktop-file-icon-manager.c:1472
 msgid "Create _Launcher..."
 msgstr "Жөне_лткішті жасау..."
 
 #. create link item
-#: ../src/xfdesktop-file-icon-manager.c:1432
+#: ../src/xfdesktop-file-icon-manager.c:1488
 msgid "Create _URL Link..."
 msgstr "URL сіл_темесін жасау..."
 
 #. create folder item
-#: ../src/xfdesktop-file-icon-manager.c:1448
+#: ../src/xfdesktop-file-icon-manager.c:1504
 msgid "Create _Folder..."
 msgstr "_Буманы жасау..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1465
+#: ../src/xfdesktop-file-icon-manager.c:1521
 msgid "Create _Document"
 msgstr "Құжат_ты жасау"
 
-#: ../src/xfdesktop-file-icon-manager.c:1487
+#: ../src/xfdesktop-file-icon-manager.c:1545
 msgid "No templates installed"
 msgstr "Үлгілер орнатылмаған"
 
-#: ../src/xfdesktop-file-icon-manager.c:1504
+#: ../src/xfdesktop-file-icon-manager.c:1562
 msgid "_Empty File"
 msgstr "Б_ос файл"
 
-#: ../src/xfdesktop-file-icon-manager.c:1521
+#: ../src/xfdesktop-file-icon-manager.c:1579
 msgid "_Execute"
 msgstr "О_рындау"
 
-#: ../src/xfdesktop-file-icon-manager.c:1541
+#: ../src/xfdesktop-file-icon-manager.c:1599
 msgid "_Edit Launcher"
 msgstr "Жөн_елткішті түзету"
 
-#: ../src/xfdesktop-file-icon-manager.c:1600
+#: ../src/xfdesktop-file-icon-manager.c:1658
 msgid "Open With"
 msgstr "Көмегімен ашу"
 
-#: ../src/xfdesktop-file-icon-manager.c:1626
-#: ../src/xfdesktop-file-icon-manager.c:1641
+#: ../src/xfdesktop-file-icon-manager.c:1684
+#: ../src/xfdesktop-file-icon-manager.c:1699
 msgid "Open With Other _Application..."
 msgstr "Б_асқа қолданба көмегімен ашу..."
 
+#: ../src/xfdesktop-file-icon-manager.c:1758
+msgid "Paste Into Folder"
+msgstr "Бума ішіне кірістіру"
+
 #. Trash
-#: ../src/xfdesktop-file-icon-manager.c:1695
+#: ../src/xfdesktop-file-icon-manager.c:1777
 msgid "Mo_ve to Trash"
 msgstr "Қ_оқыс шелегіне тастау"
 
 #. Rename
-#: ../src/xfdesktop-file-icon-manager.c:1726
+#: ../src/xfdesktop-file-icon-manager.c:1808
 msgid "_Rename..."
 msgstr "Атын ау_ыстыру..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1793
+#: ../src/xfdesktop-file-icon-manager.c:1876
 msgid "Arrange Desktop _Icons"
 msgstr "Жұ_мыс үстел таңбашаларын реттеу"
 
-#: ../src/xfdesktop-file-icon-manager.c:1804
+#: ../src/xfdesktop-file-icon-manager.c:1887
 msgid "Desktop _Settings..."
 msgstr "Жұмыс ү_стелінің баптаулары..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1815
+#: ../src/xfdesktop-file-icon-manager.c:1898
 #: ../src/xfdesktop-volume-icon.c:855
 msgid "P_roperties..."
 msgstr "Қас_иеттері..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2762
+#: ../src/xfdesktop-file-icon-manager.c:2906
 msgid "Load Error"
 msgstr "Жүктеу қатесі"
 
-#: ../src/xfdesktop-file-icon-manager.c:2764
+#: ../src/xfdesktop-file-icon-manager.c:2908
 msgid "Failed to load the desktop folder"
 msgstr "Жұмыс үстел бумасын жүктеу сәтсіз"
 
-#: ../src/xfdesktop-file-icon-manager.c:3320
+#: ../src/xfdesktop-file-icon-manager.c:3472
 msgid "Copy _Here"
 msgstr "Ос_ында көшіру"
 
-#: ../src/xfdesktop-file-icon-manager.c:3320
+#: ../src/xfdesktop-file-icon-manager.c:3472
 msgid "_Move Here"
 msgstr "Осында жы_лжыту"
 
-#: ../src/xfdesktop-file-icon-manager.c:3320
+#: ../src/xfdesktop-file-icon-manager.c:3472
 msgid "_Link Here"
 msgstr "Осында _сілтеме жасау"
 
@@ -811,88 +815,88 @@ msgstr "%x, уақыты %X"
 msgid "Unknown"
 msgstr "Белгісіз"
 
-#: ../src/xfdesktop-file-utils.c:665
+#: ../src/xfdesktop-file-utils.c:666
 msgid "The folder could not be opened"
 msgstr "Буманы ашу мүмкін емес"
 
-#: ../src/xfdesktop-file-utils.c:682
+#: ../src/xfdesktop-file-utils.c:683
 msgid "Error"
 msgstr "Қате"
 
-#: ../src/xfdesktop-file-utils.c:683
+#: ../src/xfdesktop-file-utils.c:684
 msgid "The requested operation could not be completed"
 msgstr "Сұралған әрекетті аяқтау мүмкін емес"
 
-#: ../src/xfdesktop-file-utils.c:724
+#: ../src/xfdesktop-file-utils.c:725
 msgid "The file could not be renamed"
 msgstr "Файл атын ауыстыру мүмкін емес"
 
-#: ../src/xfdesktop-file-utils.c:826
+#: ../src/xfdesktop-file-utils.c:827
 msgid "Delete Error"
 msgstr "Өшіру қатесі"
 
-#: ../src/xfdesktop-file-utils.c:827
+#: ../src/xfdesktop-file-utils.c:828
 msgid "The selected files could not be deleted"
 msgstr "Таңдалған файлдарды өшіру мүмкін емес"
 
-#: ../src/xfdesktop-file-utils.c:877
+#: ../src/xfdesktop-file-utils.c:878
 msgid "The selected files could not be moved to the trash"
 msgstr "Таңдалған файлдарды қоқыс шелегіне тастау мүмкін емес"
 
-#: ../src/xfdesktop-file-utils.c:878 ../src/xfdesktop-file-utils.c:915
+#: ../src/xfdesktop-file-utils.c:879 ../src/xfdesktop-file-utils.c:916
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
 msgstr "Бұл мүмкіндік бар болып тұрған қоқыс шелегі қызметін талап етеді (Thunar ұсынатын қызмет сияқты)."
 
-#: ../src/xfdesktop-file-utils.c:914
+#: ../src/xfdesktop-file-utils.c:915
 msgid "Could not empty the trash"
 msgstr "Қоқыс шелегін тазарту мүмкін емес"
 
-#: ../src/xfdesktop-file-utils.c:957
+#: ../src/xfdesktop-file-utils.c:958
 msgid "Create File Error"
 msgstr "Файлды жасау қатесі"
 
-#: ../src/xfdesktop-file-utils.c:958
+#: ../src/xfdesktop-file-utils.c:959
 msgid "Could not create a new file"
 msgstr "Жаңа файлды жасау мүмкін емес"
 
-#: ../src/xfdesktop-file-utils.c:1004
+#: ../src/xfdesktop-file-utils.c:1005
 msgid "Create Document Error"
 msgstr "Құжатты жасау қатесі"
 
-#: ../src/xfdesktop-file-utils.c:1005
+#: ../src/xfdesktop-file-utils.c:1006
 msgid "Could not create a new document from the template"
 msgstr "Үлгіден жаңа құжатты жасау мүмкін емес"
 
-#: ../src/xfdesktop-file-utils.c:1045
+#: ../src/xfdesktop-file-utils.c:1046
 msgid "File Properties Error"
 msgstr "Файл қасиеттер қатесі"
 
-#: ../src/xfdesktop-file-utils.c:1046
+#: ../src/xfdesktop-file-utils.c:1047
 msgid "The file properties dialog could not be opened"
 msgstr "Файл қасиеттері сұхбатын ашу мүмкін емес"
 
-#: ../src/xfdesktop-file-utils.c:1087
+#: ../src/xfdesktop-file-utils.c:1088
 msgid "The file could not be opened"
 msgstr "Файлды ашу мүмкін емес"
 
-#: ../src/xfdesktop-file-utils.c:1160 ../src/xfdesktop-file-utils.c:1185
+#: ../src/xfdesktop-file-utils.c:1161 ../src/xfdesktop-file-utils.c:1186
 #, c-format
 msgid "Failed to run \"%s\""
 msgstr "\"%s\" жөнелту сәтсіз"
 
-#: ../src/xfdesktop-file-utils.c:1241
+#: ../src/xfdesktop-file-utils.c:1242
 msgid "The application chooser could not be opened"
 msgstr "Қолданбаларды таңдаушысын ашу мүмкін емес"
 
-#: ../src/xfdesktop-file-utils.c:1299 ../src/xfdesktop-file-utils.c:1313
-#: ../src/xfdesktop-file-utils.c:1375 ../src/xfdesktop-file-utils.c:1391
+#: ../src/xfdesktop-file-utils.c:1300 ../src/xfdesktop-file-utils.c:1314
+#: ../src/xfdesktop-file-utils.c:1376 ../src/xfdesktop-file-utils.c:1392
 msgid "Transfer Error"
 msgstr "Алмасу қатесі"
 
-#: ../src/xfdesktop-file-utils.c:1300 ../src/xfdesktop-file-utils.c:1314
-#: ../src/xfdesktop-file-utils.c:1376 ../src/xfdesktop-file-utils.c:1392
+#: ../src/xfdesktop-file-utils.c:1301 ../src/xfdesktop-file-utils.c:1315
+#: ../src/xfdesktop-file-utils.c:1377 ../src/xfdesktop-file-utils.c:1393
 msgid "The file transfer could not be performed"
 msgstr "Файлдар алмасу үрдісін орындау мүмкін емес"
 
