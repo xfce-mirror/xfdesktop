@@ -278,8 +278,8 @@ static gboolean xfdesktop_icon_view_update_icon_extents(XfdesktopIconView *icon_
                                                         XfdesktopIcon *icon,
                                                         GdkRectangle *pixbuf_extents,
                                                         GdkRectangle *text_extents,
-                                                        GdkRectangle *total_extents,
-                                                        gint *rtl_offset);
+                                                        GdkRectangle *box_extents,
+                                                        GdkRectangle *total_extents);
 static void xfdesktop_icon_view_invalidate_icon(XfdesktopIconView *icon_view,
                                                 XfdesktopIcon *icon,
                                                 gboolean recalc_extents);
@@ -2760,9 +2760,8 @@ xfdesktop_icon_view_invalidate_icon(XfdesktopIconView *icon_view,
                                     XfdesktopIcon *icon,
                                     gboolean recalc_extents)
 {
-    GdkRectangle extents;
+    GdkRectangle extents, box_extents;
     gboolean invalidated_something = FALSE;
-    gint rtl_offset;
     
     g_return_if_fail(icon);
     
@@ -2785,8 +2784,8 @@ xfdesktop_icon_view_invalidate_icon(XfdesktopIconView *icon_view,
         if(!xfdesktop_icon_view_update_icon_extents(icon_view, icon,
                                                     &pixbuf_extents,
                                                     &text_extents,
-                                                    &total_extents,
-                                                    &rtl_offset))
+                                                    &box_extents,
+                                                    &total_extents))
         {
             g_warning("Trying to invalidate icon, but can't recalculate extents");
         } else if(gtk_widget_get_realized(GTK_WIDGET(icon_view))) {
@@ -2991,15 +2990,16 @@ xfdesktop_icon_view_update_icon_extents(XfdesktopIconView *icon_view,
                                         XfdesktopIcon *icon,
                                         GdkRectangle *pixbuf_extents,
                                         GdkRectangle *text_extents,
-                                        GdkRectangle *total_extents,
-                                        gint *rtl_offset)
+                                        GdkRectangle *box_extents,
+                                        GdkRectangle *total_extents)
 {
     GdkRectangle tmp_text;
+    gint rtl_offset;
 
     g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view)
                          && XFDESKTOP_IS_ICON(icon)
                          && pixbuf_extents && text_extents
-                         && total_extents && rtl_offset, FALSE);
+                         && box_extents && total_extents, FALSE);
 
     if(!xfdesktop_icon_view_calculate_icon_pixbuf_area(icon_view, icon,
                                                        pixbuf_extents)
@@ -3016,20 +3016,21 @@ xfdesktop_icon_view_update_icon_extents(XfdesktopIconView *icon_view,
 
     /* text_extents->x right now includes the padding needed for rtl languages
      * to display properly if it's set */
-    *rtl_offset = text_extents->x;
+    rtl_offset = text_extents->x;
 
     if(!xfdesktop_icon_view_shift_area_to_cell(icon_view, icon, text_extents))
         return FALSE;
 
-    text_extents->x += (CELL_SIZE - text_extents->width) / 2 - *rtl_offset;
+    text_extents->x += (CELL_SIZE - text_extents->width) / 2 - rtl_offset;
     text_extents->y += ICON_SIZE + SPACING + LABEL_RADIUS + CELL_PADDING;
 
-    tmp_text = *text_extents;
-    tmp_text.x -= LABEL_RADIUS - *rtl_offset;
-    tmp_text.y -= LABEL_RADIUS;
-    tmp_text.width += LABEL_RADIUS * 2;
-    tmp_text.height += LABEL_RADIUS * 2;
-    gdk_rectangle_union(pixbuf_extents, &tmp_text, total_extents);
+    *box_extents = *text_extents;
+    box_extents->x -= LABEL_RADIUS - rtl_offset;
+    box_extents->y -= LABEL_RADIUS;
+    box_extents->width += LABEL_RADIUS * 2;
+    box_extents->height += LABEL_RADIUS * 2;
+
+    gdk_rectangle_union(pixbuf_extents, box_extents, total_extents);
 
     xfdesktop_icon_set_extents(icon, pixbuf_extents, text_extents, total_extents);
 
@@ -3049,8 +3050,8 @@ xfdesktop_icon_view_draw_image(cairo_t *cr, GdkPixbuf *pix, GdkRectangle *rect)
 
 static void
 xfdesktop_icon_view_draw_text(cairo_t *cr, PangoLayout *playout, GdkRectangle *text_area,
-                              gint x_offset, gint y_offset, gint rtl_offset,
-                              gint blur_radius, GdkColor *color)
+                              gint x_offset, gint y_offset, gint blur_radius,
+                              GdkColor *color)
 {
     cairo_save(cr);
 
@@ -3059,7 +3060,7 @@ xfdesktop_icon_view_draw_text(cairo_t *cr, PangoLayout *playout, GdkRectangle *t
     cairo_clip(cr);
 
     cairo_move_to(cr,
-                  text_area->x + x_offset - rtl_offset,
+                  text_area->x + x_offset,
                   text_area->y + y_offset);
 
     if (blur_radius > 1) {
@@ -3085,11 +3086,10 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
                                GdkRectangle *area)
 {
     GtkWidget *widget = GTK_WIDGET(icon_view);
-    gint state, rtl_offset;
     PangoLayout *playout;
-    GdkRectangle pixbuf_extents, text_extents, total_extents;
+    GdkRectangle pixbuf_extents, text_extents, box_extents, total_extents;
     GdkRectangle intersection;
-    GdkRectangle box_area;
+    gint state;
     gchar x_offset = 0, y_offset = 0;
     GdkColor *sh_text_col = NULL;
     cairo_t *cr;
@@ -3113,8 +3113,8 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
     if(!xfdesktop_icon_view_update_icon_extents(icon_view, icon,
                                                 &pixbuf_extents,
                                                 &text_extents,
-                                                &total_extents,
-                                                &rtl_offset))
+                                                &box_extents,
+                                                &total_extents))
     {
         g_warning("Can't update extents for icon '%s'",
                   xfdesktop_icon_peek_label(icon));
@@ -3160,18 +3160,11 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
             g_object_unref(G_OBJECT(pix_free));
     }
 
-    /* Calculate text box area */
-    box_area = text_extents;
-    box_area.x -= LABEL_RADIUS - rtl_offset;
-    box_area.y -= LABEL_RADIUS;
-    box_area.width += LABEL_RADIUS * 2;
-    box_area.height += LABEL_RADIUS * 2;
-
     /* Only redraw the text if the text area requires it. */
-    if(gdk_rectangle_intersect(area, &box_area, &intersection)
+    if(gdk_rectangle_intersect(area, &box_extents, &intersection)
        && icon_view->priv->font_size > 0)
     {
-        xfdesktop_paint_rounded_box(icon_view, state, &box_area, area);
+        xfdesktop_paint_rounded_box(icon_view, state, &box_extents, area);
 
         if (state == GTK_STATE_NORMAL) {
             x_offset = icon_view->priv->shadow_x_offset;
@@ -3183,8 +3176,6 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
             sh_text_col = icon_view->priv->selected_shadow_color;
         }
 
-        text_extents.x += rtl_offset;
-
         /* draw text shadow for the label text if an offset was defined */
         if(x_offset || y_offset || (icon_view->priv->shadow_blur_radius > 1)) {
             /* Draw the shadow */
@@ -3192,12 +3183,9 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
                                           &text_extents,
                                           x_offset,
                                           y_offset,
-                                          rtl_offset,
                                           icon_view->priv->shadow_blur_radius,
                                           sh_text_col);
         }
-
-        text_extents.x -= rtl_offset;
 
         TRACE("painting text at %dx%d+%d+%d",
               text_extents.width, text_extents.height,
