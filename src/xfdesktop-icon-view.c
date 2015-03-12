@@ -1873,6 +1873,7 @@ xfdesktop_icon_view_sort_icons(XfdesktopIconView *icon_view)
 
 
     g_list_free(special_icons);
+    g_list_free(volume_icons);
     g_list_free(folder_icons);
     g_list_free(regular_icons);
 #endif
