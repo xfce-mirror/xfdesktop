@@ -816,8 +816,6 @@ xfdesktop_file_icon_manager_delete_selected(XfdesktopFileIconManager *fmanager,
       
     g_list_foreach(selected, (GFunc)g_object_unref, NULL);
     g_list_free(selected);
-    
-    xfdesktop_file_icon_position_changed(NULL, fmanager);
 }
 
 static void
@@ -2793,6 +2791,8 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
 
                 /* always remove from the hash table */
                 g_hash_table_remove(fmanager->priv->icons, file);
+
+                xfdesktop_file_icon_position_changed(NULL, fmanager);
             } else {
                 if(g_file_equal(file, fmanager->priv->folder)) {
                     XF_DEBUG("~/Desktop disappeared!");
