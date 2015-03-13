@@ -1576,6 +1576,32 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
     return TRUE;
 }
 
+static gint
+xfdesktop_icon_view_compare_icon_positions(gconstpointer *a,
+                                           gconstpointer *b)
+{
+    XfdesktopIcon *a_icon, *b_icon;
+    gint16 a_row, a_col, b_row, b_col;
+
+    a_icon = XFDESKTOP_ICON(a);
+    b_icon = XFDESKTOP_ICON(b);
+
+    if(!xfdesktop_icon_get_position(a_icon, &a_row, &a_col))
+        return 0;
+    if(!xfdesktop_icon_get_position(b_icon, &b_row, &b_col))
+        return 0;
+
+    if(a_col == b_col) {
+        if(a_row < b_row)
+            return -1;
+        else
+            return 1;
+    } else if(a_col < b_col)
+        return -1;
+    else
+        return 1;
+}
+
 static gboolean
 xfdesktop_icon_view_drag_drop(GtkWidget *widget,
                               GdkDragContext *context,
@@ -1655,22 +1681,15 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
                 xfdesktop_grid_set_position_free(icon_view, old_row, old_col);
         }
 
-        /* set new position */
-        xfdesktop_icon_set_position(icon, row, col);
-        xfdesktop_grid_unset_position_free(icon_view, icon);
-        
-        /* clear out old extents, if any */
-        /* FIXME: is this right? */
-        xfdesktop_icon_view_invalidate_icon(icon_view, icon, TRUE);
+        /* Preserve order when moving multiple icons */
+        icon_view->priv->selected_icons = g_list_sort(icon_view->priv->selected_icons,
+                                                      (GCompareFunc)xfdesktop_icon_view_compare_icon_positions);
 
         /* Now that we have moved the icon the user selected,
          * append all the other selected icons after it. */
         for(l = icon_view->priv->selected_icons; l; l = l->next) {
-            if(l->data == icon)
-                continue;
-
             /* Find the next available spot for an icon */
-            do {
+            while(!xfdesktop_grid_is_free_position(icon_view, row, col)) {
                 if(row + 1 >= icon_view->priv->nrows) {
                     if(col + 1 >= icon_view->priv->ncols)
                         col = 0;
@@ -1680,14 +1699,13 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
                 } else {
                     ++row;
                 }
-            } while(!xfdesktop_grid_is_free_position(icon_view, row, col));
+            }
 
             /* set new position */
             xfdesktop_icon_set_position(l->data, row, col);
             xfdesktop_grid_unset_position_free(icon_view, l->data);
 
             /* clear out old extents, if any */
-            /* FIXME: is this right? */
             xfdesktop_icon_view_invalidate_icon(icon_view, l->data, TRUE);
         }
         
