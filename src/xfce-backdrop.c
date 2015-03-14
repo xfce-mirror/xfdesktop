@@ -232,7 +232,7 @@ create_gradient(GdkColor *color1, GdkColor *color2, gint width, gint height,
     return pix;
 }
 
-static void
+void
 xfce_backdrop_clear_cached_image(XfceBackdrop *backdrop)
 {
     g_return_if_fail(XFCE_IS_BACKDROP(backdrop));

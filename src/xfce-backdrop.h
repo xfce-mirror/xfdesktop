@@ -150,6 +150,8 @@ GdkPixbuf *xfce_backdrop_get_pixbuf      (XfceBackdrop *backdrop);
 
 void xfce_backdrop_generate_async        (XfceBackdrop *backdrop);
 
+void xfce_backdrop_clear_cached_image    (XfceBackdrop *backdrop);
+
 G_END_DECLS
 
 #endif
