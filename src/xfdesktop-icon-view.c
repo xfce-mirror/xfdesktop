@@ -1716,6 +1716,9 @@ xfdesktop_icon_view_drag_data_get(GtkWidget *widget,
     
     TRACE("entering");
 
+    if(XFDESKTOP_IS_ICON_VIEW_MANAGER(icon_view) == FALSE)
+        return;
+
     /* Sometimes during a ctrl+drag this is NULL
      * but works when the file(s) are dropped */
     if(icon_view->priv->selected_icons == NULL)
@@ -1758,11 +1761,14 @@ xfdesktop_icon_view_drag_data_received(GtkWidget *widget,
          * meaningful value */
 
         GdkDragAction action = icon_view->priv->proposed_drop_action;
-        action = xfdesktop_icon_view_manager_propose_drop_action(icon_view->priv->manager,
-                                                                 icon_on_dest,
-                                                                 action,
-                                                                 context, data,
-                                                                 info);
+
+        if(XFDESKTOP_IS_ICON_VIEW_MANAGER(icon_view)) {
+            action = xfdesktop_icon_view_manager_propose_drop_action(icon_view->priv->manager,
+                                                                     icon_on_dest,
+                                                                     action,
+                                                                     context, data,
+                                                                     info);
+        }
 
         gdk_drag_status(context, action, time_);
     }
