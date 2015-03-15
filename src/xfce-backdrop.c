@@ -276,6 +276,8 @@ cb_xfce_backdrop__image_files_changed(GFileMonitor     *monitor,
         case G_FILE_MONITOR_EVENT_CREATED:
             changed_file = g_file_get_path(file);
 
+            XF_DEBUG("file added: %s", changed_file);
+
             /* Make sure we don't already have the new file in the list */
             if(g_list_find(backdrop->priv->image_files, changed_file)) {
                 g_free(changed_file);
@@ -299,6 +301,8 @@ cb_xfce_backdrop__image_files_changed(GFileMonitor     *monitor,
         case G_FILE_MONITOR_EVENT_DELETED:
             changed_file = g_file_get_path(file);
 
+            XF_DEBUG("file deleted: %s", changed_file);
+
             /* find the file in the list */
             item = g_list_find_custom(backdrop->priv->image_files,
                                       changed_file,
@@ -307,6 +311,23 @@ cb_xfce_backdrop__image_files_changed(GFileMonitor     *monitor,
             /* remove it */
             if(item)
                 backdrop->priv->image_files = g_list_delete_link(backdrop->priv->image_files, item);
+
+            g_free(changed_file);
+            break;
+        case G_FILE_MONITOR_EVENT_CHANGES_DONE_HINT:
+            changed_file = g_file_get_path(file);
+
+            XF_DEBUG("file changed: %s", changed_file);
+            XF_DEBUG("image_path: %s", backdrop->priv->image_path);
+
+            if(g_strcmp0(changed_file, backdrop->priv->image_path) == 0) {
+                DBG("match");
+                /* clear the outdated backdrop */
+                xfce_backdrop_clear_cached_image(backdrop);
+
+                /* backdrop changed! */
+                g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_CHANGED], 0);
+            }
 
             g_free(changed_file);
             break;
@@ -354,6 +375,8 @@ list_image_files_in_dir(const gchar *filename)
 static void
 xfce_backdrop_load_image_files(XfceBackdrop *backdrop)
 {
+    TRACE("entering");
+
     /* generate the image_files list if it doesn't exist and monitor that
      * directory so we can update the list */
     if(backdrop->priv->image_files == NULL && backdrop->priv->image_path) {
@@ -395,9 +418,6 @@ xfce_backdrop_choose_next(XfceBackdrop *backdrop)
 
     filename = backdrop->priv->image_path;
 
-    if(backdrop->priv->image_files == NULL)
-        xfce_backdrop_load_image_files(backdrop);
-
     if(!backdrop->priv->image_files)
         return NULL;
 
@@ -431,8 +451,6 @@ xfce_backdrop_choose_random(XfceBackdrop *backdrop)
     TRACE("entering");
 
     g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), NULL);
-
-    xfce_backdrop_load_image_files(backdrop);
 
     if(!backdrop->priv->image_files)
         return NULL;
@@ -469,8 +487,6 @@ xfce_backdrop_choose_chronological(XfceBackdrop *backdrop)
     TRACE("entering");
 
     g_return_val_if_fail(XFCE_IS_BACKDROP(backdrop), NULL);
-
-    xfce_backdrop_load_image_files(backdrop);
 
     if(!backdrop->priv->image_files)
         return NULL;
@@ -1037,6 +1053,8 @@ xfce_backdrop_set_image_filename(XfceBackdrop *backdrop, const gchar *filename)
         backdrop->priv->image_path = NULL;
 
     xfce_backdrop_clear_cached_image(backdrop);
+
+    xfce_backdrop_load_image_files(backdrop);
 
     g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_CHANGED], 0);
 }
