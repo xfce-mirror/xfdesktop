@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-03-03 18:32+0100\n"
-"PO-Revision-Date: 2015-03-14 16:41+0000\n"
+"PO-Revision-Date: 2015-03-16 19:20+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/projects/p/xfdesktop/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -62,12 +62,12 @@ msgstr "<b>%s</b>\nTipas: %s\nDydis: %s"
 #: ../settings/main.c:716
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
-msgstr ""
+msgstr "Darbalaukio fonas Vaizduokliui %d (%s)"
 
 #: ../settings/main.c:719
 #, c-format
 msgid "Wallpaper for Monitor %d"
-msgstr ""
+msgstr "Darbalaukio fonas Vaizduokliui %d"
 
 #: ../settings/main.c:725
 msgid "Move this dialog to the display you want to edit the settings for."
@@ -231,7 +231,7 @@ msgstr "S_palva:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Specify the style of the color drawn behind the backdrop image."
-msgstr ""
+msgstr "Nurodykite spalvos, užpildančios foną už atvaizdo, stilių."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
@@ -296,7 +296,7 @@ msgstr "chronologiškai"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
 msgid "Amount of time before a different background is selected."
-msgstr ""
+msgstr "Laiko kiekis, prieš pasirenkant kitą foną."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
 msgid "_Random Order"
@@ -350,7 +350,7 @@ msgstr "_Fonas"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:13
 msgid "Include applications menu on _desktop right click"
-msgstr ""
+msgstr "_Darbalaukyje, spustelėjus dešinįjį pelės mygtuką, įtraukti programų meniu"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:14
 msgid "_Button:"
@@ -549,11 +549,11 @@ msgstr ""
 
 #: ../src/xfdesktop-application.c:839
 msgid "Pop up the menu (at the current mouse position)"
-msgstr ""
+msgstr "Iššokantis meniu (esamoje pelės pozicijoje)"
 
 #: ../src/xfdesktop-application.c:840
 msgid "Pop up the window list (at the current mouse position)"
-msgstr ""
+msgstr "Iššokantis langų sąrašas (esamoje pelės pozicijoje)"
 
 #: ../src/xfdesktop-application.c:842
 msgid "Automatically arrange all the icons on the desktop"
@@ -565,7 +565,7 @@ msgstr "Išjungti derinimo pranešimus"
 
 #: ../src/xfdesktop-application.c:846
 msgid "Do not wait for a window manager on startup"
-msgstr ""
+msgstr "Paleidžiant nelaukti langų tvarkyklės"
 
 #: ../src/xfdesktop-application.c:847
 msgid "Cause xfdesktop to quit"
@@ -579,17 +579,17 @@ msgstr ""
 #: ../src/xfdesktop-application.c:873
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr ""
+msgstr "Tai yra %s versija %s, veikia Xfce %s dėka.\n"
 
 #: ../src/xfdesktop-application.c:875
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr ""
+msgstr "Sukurta su GTK+ %d.%d.%d, susieta su GTK+ %d.%d.%d."
 
 #: ../src/xfdesktop-application.c:879
 #, c-format
 msgid "Build options:\n"
-msgstr ""
+msgstr "Kompiliavimo parinktys:\n"
 
 #: ../src/xfdesktop-application.c:880
 #, c-format
@@ -599,12 +599,12 @@ msgstr "    Darbalaukio Meniu:        %s\n"
 #: ../src/xfdesktop-application.c:882 ../src/xfdesktop-application.c:889
 #: ../src/xfdesktop-application.c:896
 msgid "enabled"
-msgstr ""
+msgstr "įjungta"
 
 #: ../src/xfdesktop-application.c:884 ../src/xfdesktop-application.c:891
 #: ../src/xfdesktop-application.c:898
 msgid "disabled"
-msgstr ""
+msgstr "išjungta"
 
 #: ../src/xfdesktop-application.c:887
 #, c-format
@@ -639,7 +639,7 @@ msgstr "Klaida pervadinant"
 
 #: ../src/xfdesktop-file-icon-manager.c:669 ../src/xfdesktop-file-utils.c:778
 msgid "The files could not be renamed"
-msgstr ""
+msgstr "Failai negali būti pervadinti"
 
 #: ../src/xfdesktop-file-icon-manager.c:670
 msgid "None of the icons selected support being renamed."
@@ -828,7 +828,7 @@ msgstr "Klaida"
 
 #: ../src/xfdesktop-file-utils.c:684
 msgid "The requested operation could not be completed"
-msgstr ""
+msgstr "Nepavyko užbaigti užklaustos operacijos"
 
 #: ../src/xfdesktop-file-utils.c:725
 msgid "The file could not be renamed"
@@ -836,7 +836,7 @@ msgstr "Failas negali būti pervadintas"
 
 #: ../src/xfdesktop-file-utils.c:827
 msgid "Delete Error"
-msgstr ""
+msgstr "Ištrynimo Klaida"
 
 #: ../src/xfdesktop-file-utils.c:828
 msgid "The selected files could not be deleted"
