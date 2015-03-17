@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-03-03 18:32+0100\n"
-"PO-Revision-Date: 2015-03-16 19:20+0000\n"
+"PO-Revision-Date: 2015-03-17 16:43+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/projects/p/xfdesktop/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -40,7 +40,7 @@ msgstr "Išimami įrenginiai"
 
 #: ../settings/main.c:412
 msgid "Network Shares"
-msgstr ""
+msgstr "Tinklo Bendrinimai"
 
 #: ../settings/main.c:414
 msgid "Disks and Drives"
@@ -71,17 +71,17 @@ msgstr "Darbalaukio fonas Vaizduokliui %d"
 
 #: ../settings/main.c:725
 msgid "Move this dialog to the display you want to edit the settings for."
-msgstr ""
+msgstr "Perkelkite šį dialogo langą į ekraną, kurio nustatymus norite keisti."
 
 #: ../settings/main.c:732
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
-msgstr ""
+msgstr "Darbalaukio fonas, kurį naudos %s, Vaizduoklyje %d (%s)"
 
 #: ../settings/main.c:736
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
-msgstr ""
+msgstr "Darbalaukio fonas, kurį naudos %s, Vaizduoklyje %d"
 
 #: ../settings/main.c:743
 msgid ""
@@ -99,7 +99,7 @@ msgstr "Mano darbalaukio fonas"
 #: ../settings/main.c:757
 #, c-format
 msgid "Wallpaper for %s"
-msgstr ""
+msgstr "Darbalaukio fonas, kurį naudos %s"
 
 #: ../settings/main.c:762
 msgid "Move this dialog to the workspace you want to edit the settings for."
@@ -107,7 +107,7 @@ msgstr "Perkelkite šį dialogo langą į darbo sritį, kurios nustatymus norite
 
 #: ../settings/main.c:1178
 msgid "Image selection is unavailable while the image style is set to None."
-msgstr ""
+msgstr "Paveikslėlio pasirinkimas nėra prieinamas, kol paveikslėlio stilius yra nustatytas į Nėra."
 
 #: ../settings/main.c:1528
 msgid "Spanning screens"
@@ -194,7 +194,7 @@ msgstr "S_tilius:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
 msgid "Specify how the image will be resized to fit the screen."
-msgstr ""
+msgstr "Nurodykite kaip bus keičiamas paveikslėlio dydis, siekiant, kad jis tilptų į ekraną."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
 #: ../settings/xfdesktop-settings-ui.glade.h:4
@@ -280,7 +280,7 @@ msgstr "valandomis:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
 msgid "at start up"
-msgstr ""
+msgstr "paleidimo metu"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
 msgid "every hour"
@@ -288,7 +288,7 @@ msgstr "kas valandą"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
 msgid "every day"
-msgstr ""
+msgstr "kas dieną"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
 msgid "chronologically"
@@ -306,7 +306,7 @@ msgstr "Atsitiktine Tva_rka"
 msgid ""
 "Randomly selects another image from the same directory when the wallpaper is"
 " to cycle."
-msgstr ""
+msgstr "Atsitiktinai pasirenka kitą paveikslėlį iš to pačio katalogo, kai yra keičiamas darbalaukio fonas."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:1
 msgid "Left"
@@ -436,7 +436,7 @@ msgstr "Darbalaukyje rodyti paslėptus failus"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:34
 msgid "Single _click to activate items"
-msgstr "Aktyvuoti _vienu pelės mygtuko paspaudimu"
+msgstr "Aktyvuoti elementus, _vienu pelės mygtuko paspaudimu"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:35
 msgid "Show icon tooltips. Size:"
@@ -444,7 +444,7 @@ msgstr "Rodyti piktogramų paaiškinimus. Dydis:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid "Size of the tooltip preview image."
-msgstr ""
+msgstr "Paaiškinimo peržiūros paveikslėlio dydis."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "Use custom _font size:"
@@ -545,7 +545,7 @@ msgstr "Iš naujo įkelti visus nustatymus"
 
 #: ../src/xfdesktop-application.c:838
 msgid "Advance to the next wallpaper on the current workspace"
-msgstr ""
+msgstr "Pereiti esamoje darbo srityje prie kito darbastalio fono"
 
 #: ../src/xfdesktop-application.c:839
 msgid "Pop up the menu (at the current mouse position)"
@@ -569,12 +569,12 @@ msgstr "Paleidžiant nelaukti langų tvarkyklės"
 
 #: ../src/xfdesktop-application.c:847
 msgid "Cause xfdesktop to quit"
-msgstr ""
+msgstr "Priversti xfdesktop baigti darbą"
 
 #: ../src/xfdesktop-application.c:862
 #, c-format
 msgid "Failed to parse arguments: %s\n"
-msgstr ""
+msgstr "Nepavyko apdoroti argumentų: %s\n"
 
 #: ../src/xfdesktop-application.c:873
 #, c-format
@@ -614,7 +614,7 @@ msgstr "    Darbalaukio Piktogramos:       %s\n"
 #: ../src/xfdesktop-application.c:894
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr ""
+msgstr "Darbalaukio failų piktogramos: %s\n"
 
 #: ../src/xfdesktop-file-icon-manager.c:561
 #: ../src/xfdesktop-file-icon-manager.c:578
@@ -643,7 +643,7 @@ msgstr "Failai negali būti pervadinti"
 
 #: ../src/xfdesktop-file-icon-manager.c:670
 msgid "None of the icons selected support being renamed."
-msgstr ""
+msgstr "Nei vienos iš pasirinktų piktogramų nepalaiko galimybės būti pervadintos."
 
 #: ../src/xfdesktop-file-icon-manager.c:714
 #: ../src/xfdesktop-file-icon-manager.c:758 ../src/xfdesktop-file-utils.c:877
