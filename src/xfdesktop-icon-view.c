@@ -43,6 +43,7 @@
 
 #include "xfdesktop-icon-view.h"
 #include "xfdesktop-file-icon-manager.h"
+#include "xfdesktop-window-icon-manager.h"
 #include "xfdesktop-marshal.h"
 #include "xfce-desktop.h"
 #include "xfdesktop-volume-icon.h"
@@ -1716,7 +1717,7 @@ xfdesktop_icon_view_drag_data_get(GtkWidget *widget,
     
     TRACE("entering");
 
-    if(XFDESKTOP_IS_ICON_VIEW_MANAGER(icon_view) == FALSE)
+    if(XFDESKTOP_IS_WINDOW_ICON_MANAGER(icon_view->priv->manager))
         return;
 
     /* Sometimes during a ctrl+drag this is NULL
@@ -1762,7 +1763,7 @@ xfdesktop_icon_view_drag_data_received(GtkWidget *widget,
 
         GdkDragAction action = icon_view->priv->proposed_drop_action;
 
-        if(XFDESKTOP_IS_ICON_VIEW_MANAGER(icon_view)) {
+        if(!XFDESKTOP_IS_WINDOW_ICON_MANAGER(icon_view->priv->manager)) {
             action = xfdesktop_icon_view_manager_propose_drop_action(icon_view->priv->manager,
                                                                      icon_on_dest,
                                                                      action,
