@@ -1840,6 +1840,10 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     gtk_file_filter_add_pixbuf_formats(filter);
     gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(panel->btn_folder), filter);
 
+    gtk_file_chooser_add_shortcut_folder_uri(GTK_FILE_CHOOSER(panel->btn_folder),
+                                             "file:///usr/share/backgrounds",
+                                             NULL);
+
     /* Image and color style options */
     panel->image_style_combo = GTK_WIDGET(gtk_builder_get_object(appearance_gxml, "combo_style"));
 
