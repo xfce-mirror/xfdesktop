@@ -27,11 +27,11 @@
 
 G_BEGIN_DECLS
 
-#define XFDESKTOP_TYPE_APP_MENU_ITEM        (xfdesktop_app_menu_item_get_type())
+#define XFDESKTOP_TYPE_APP_MENU_ITEM             (xfdesktop_app_menu_item_get_type())
 #define XFDESKTOP_APP_MENU_ITEM(obj)             (G_TYPE_CHECK_INSTANCE_CAST((obj), XFDESKTOP_TYPE_APP_MENU_ITEM, XfdesktopAppMenuItem))
 #define XFDESKTOP_APP_MENU_ITEM_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST((klass), XFDESKTOP_TYPE_APP_MENU_ITEM, XfdesktopAppMenuItemClass))
-#define XFCE_IS_APP_MENU_ITEM(obj)          (G_TYPE_CHECK_INSTANCE_TYPE((obj), XFDESKTOP_TYPE_APP_MENU_ITEM))
-#define XFCE_IS_APP_MENU_ITEM_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE((klass), XFDESKTOP_TYPE_APP_MENU_ITEM))
+#define XFCE_IS_APP_MENU_ITEM(obj)               (G_TYPE_CHECK_INSTANCE_TYPE((obj), XFDESKTOP_TYPE_APP_MENU_ITEM))
+#define XFCE_IS_APP_MENU_ITEM_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE((klass), XFDESKTOP_TYPE_APP_MENU_ITEM))
 #define XFDESKTOP_APP_MENU_ITEM_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS((obj), XFDESKTOP_TYPE_APP_MENU_ITEM, XfdesktopAppMenuItemClass))
 
 typedef struct _XfdesktopAppMenuItem       XfdesktopAppMenuItem;

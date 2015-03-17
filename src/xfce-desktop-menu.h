@@ -28,11 +28,11 @@ typedef struct _XfceDesktopMenu XfceDesktopMenu;
 
 XfceDesktopMenu *xfce_desktop_menu_new(gboolean deferred);
 void xfce_desktop_menu_populate_menu(XfceDesktopMenu *desktop_menu,
-                                          GtkWidget *menu);
+                                     GtkWidget *menu);
 GtkWidget *xfce_desktop_menu_get_widget(XfceDesktopMenu *desktop_menu);
 void xfce_desktop_menu_force_regen(XfceDesktopMenu *desktop_menu);
 void xfce_desktop_menu_set_show_icons(XfceDesktopMenu *desktop_menu,
-                                           gboolean show_icons);
+                                      gboolean show_icons);
 void xfce_desktop_menu_destroy(XfceDesktopMenu *desktop_menu);
 
 

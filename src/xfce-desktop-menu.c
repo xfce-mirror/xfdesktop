@@ -171,7 +171,7 @@ desktop_menu_add_items(XfceDesktopMenu *desktop_menu,
         } else if(GARCON_IS_MENU_ITEM(l->data)) {
             garcon_item = l->data;
 
-            mi = xfdesktop_app_menu_item_new (GARCON_MENU_ITEM (garcon_item));
+            mi = xfdesktop_app_menu_item_new(GARCON_MENU_ITEM(garcon_item));
             gtk_widget_show(mi);
 
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
@@ -187,7 +187,7 @@ _generate_menu(XfceDesktopMenu *desktop_menu)
 
     DBG("Load menu");
 
-    if(!garcon_menu_load (desktop_menu->garcon_menu, NULL, &error)) {
+    if(!garcon_menu_load(desktop_menu->garcon_menu, NULL, &error)) {
         g_warning("Unable to load menu: %s", error->message);
         g_error_free(error);
         return FALSE;
@@ -240,7 +240,7 @@ xfce_desktop_menu_new(gboolean deferred)
 
 void
 xfce_desktop_menu_populate_menu(XfceDesktopMenu *desktop_menu,
-                                     GtkWidget *menu)
+                                GtkWidget *menu)
 {
     g_return_if_fail(desktop_menu && menu);
 
@@ -293,7 +293,7 @@ xfce_desktop_menu_force_regen(XfceDesktopMenu *desktop_menu)
 
 void
 xfce_desktop_menu_set_show_icons(XfceDesktopMenu *desktop_menu,
-                                      gboolean show_icons)
+                                 gboolean show_icons)
 {
     g_return_if_fail(desktop_menu != NULL);
 
