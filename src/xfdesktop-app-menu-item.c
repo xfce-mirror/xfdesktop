@@ -123,7 +123,7 @@ xfdesktop_app_menu_item_set_property(GObject *object,
             app_menu_item->item = g_value_dup_object(value);
             g_signal_connect_swapped(G_OBJECT(app_menu_item->item), "changed",
                                      G_CALLBACK(xfdesktop_app_menu_item_changed), app_menu_item);
-            xfdesktop_app_menu_item_changed (app_menu_item);
+            xfdesktop_app_menu_item_changed(app_menu_item);
             break;
 
         default:
@@ -188,20 +188,20 @@ xfdesktop_app_menu_item_set_icon(XfdesktopAppMenuItem *app_menu_item)
         if(gtk_icon_theme_has_icon(icon_theme, icon_name))
             image = gtk_image_new_from_icon_name(icon_name, GTK_ICON_SIZE_MENU);
         else {
-            if (g_path_is_absolute(icon_name)) {
+            if(g_path_is_absolute(icon_name)) {
                 pixbuf = gdk_pixbuf_new_from_file_at_scale(icon_name, w, h, TRUE, NULL);
             } else {
                 /* try to lookup names like application.png in the theme */
                 p = strrchr(icon_name, '.');
-                if (p) {
+                if(p) {
                     name = g_strndup(icon_name, p - icon_name);
                     pixbuf = gtk_icon_theme_load_icon(icon_theme, name, size, 0, NULL);
-                    g_free (name);
+                    g_free(name);
                     name = NULL;
                 }
 
                 /* maybe they point to a file in the pixbufs folder */
-                if (G_UNLIKELY(pixbuf == NULL)) {
+                if(G_UNLIKELY(pixbuf == NULL)) {
                     filename = g_build_filename("pixmaps", icon_name, NULL);
                     name = xfce_resource_lookup(XFCE_RESOURCE_DATA, filename);
                     g_free(filename);
@@ -244,15 +244,15 @@ xfdesktop_app_menu_item_changed(XfdesktopAppMenuItem *app_menu_item)
         xfdesktop_app_menu_item_set_icon(app_menu_item);
 
     label = garcon_menu_item_get_name(app_menu_item->item);
-    if (G_UNLIKELY (label == NULL))
-      label = "";
+    if(G_UNLIKELY(label == NULL))
+        label = "";
 
     gtk_menu_item_set_label(GTK_MENU_ITEM(app_menu_item), label);
 }
 
 static void
-xfdesktop_app_menu_item_append_quote (GString     *string,
-                                      const gchar *unquoted)
+xfdesktop_app_menu_item_append_quote(GString *string,
+                                     const gchar *unquoted)
 {
   gchar *quoted;
 
@@ -367,7 +367,7 @@ xfdesktop_app_menu_item_edit_launcher(XfdesktopAppMenuItem *app_menu_item)
 }
 
 static void
-xfdesktop_app_menu_item_activate (XfdesktopAppMenuItem *app_menu_item)
+xfdesktop_app_menu_item_activate(XfdesktopAppMenuItem *app_menu_item)
 {
    XfconfChannel *channel;
    gchar *command;
@@ -379,15 +379,15 @@ xfdesktop_app_menu_item_activate (XfdesktopAppMenuItem *app_menu_item)
    TRACE("entering");
 
    command = xfdesktop_app_menu_item_command(app_menu_item);
-   if (command == NULL)
+   if(command == NULL)
        return;
 
    evt = (GdkEventButton *)gtk_get_current_event();
 
-   channel = xfconf_channel_get (XFDESKTOP_CHANNEL);
-   right_click_edits = xfconf_channel_get_bool (channel,
-                                                "/desktop-icons/right-click-edits-menu",
-                                                TRUE);
+   channel = xfconf_channel_get(XFDESKTOP_CHANNEL);
+   right_click_edits = xfconf_channel_get_bool(channel,
+                                               "/desktop-icons/right-click-edits-menu",
+                                               TRUE);
 
    /* See if we're trying to edit the launcher */
    if(evt && GDK_BUTTON_RELEASE == evt->type) {
@@ -416,17 +416,17 @@ xfdesktop_app_menu_item_activate (XfdesktopAppMenuItem *app_menu_item)
 }
 
 GtkWidget *
-xfdesktop_app_menu_item_new (GarconMenuItem *item)
+xfdesktop_app_menu_item_new(GarconMenuItem *item)
 {
     g_return_val_if_fail(GARCON_IS_MENU_ITEM(item), NULL);
 
-    return g_object_new (XFDESKTOP_TYPE_APP_MENU_ITEM,
-                         "item", item, NULL);
+    return g_object_new(XFDESKTOP_TYPE_APP_MENU_ITEM,
+                        "item", item, NULL);
 }
 
 
 void
-xfdesktop_app_menu_item_set_show_icon (gboolean show_icon)
+xfdesktop_app_menu_item_set_show_icon(gboolean show_icon)
 {
     global_show_icons = show_icon;
 }
