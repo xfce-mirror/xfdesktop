@@ -254,9 +254,9 @@ static const GtkTargetEntry drag_targets[] = {
 };
 static const gint n_drag_targets = (sizeof(drag_targets)/sizeof(drag_targets[0]));
 static const GtkTargetEntry drop_targets[] = {
+    { "_NETSCAPE_URL", 0, TARGET_NETSCAPE_URL, },
     { "text/uri-list", 0, TARGET_TEXT_URI_LIST, },
     { "XdndDirectSave0", 0, TARGET_XDND_DIRECT_SAVE0, },
-    { "_NETSCAPE_URL", 0, TARGET_NETSCAPE_URL },
 };
 static const gint n_drop_targets = (sizeof(drop_targets)/sizeof(drop_targets[0]));
 
@@ -3557,12 +3557,13 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
     }
 
     if(info == TARGET_XDND_DIRECT_SAVE0) {
-        /* we don't suppose XdndDirectSave stage 3, result F, i.e., the app
-         * has to save the data itself given the filename we provided in
-         * stage 1 */
+        /* FIXME: we don't support XdndDirectSave stage 3, result F, i.e.,
+         * the app has to save the data itself given the filename we provided
+         * in stage 1 */
         if(8 == gtk_selection_data_get_format(data)
            && 1 == gtk_selection_data_get_length(data)
-           && 'F' == gtk_selection_data_get_data(data)[0]) {
+           && 'F' == gtk_selection_data_get_data(data)[0])
+        {
             gdk_property_change(gdk_drag_context_get_source_window(context),
                                 gdk_atom_intern("XdndDirectSave0", FALSE),
                                 gdk_atom_intern("text/plain", FALSE), 8,
