@@ -3000,7 +3000,6 @@ xfdesktop_icon_view_update_icon_extents(XfdesktopIconView *icon_view,
                                         GdkRectangle *box_extents,
                                         GdkRectangle *total_extents)
 {
-    GdkRectangle tmp_text;
     gint rtl_offset;
 
     g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view)
