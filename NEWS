@@ -1,3 +1,46 @@
+4.12.1
+======
+Stable release of xfdesktop for Xfce 4.12.
+
+* Bug fixes:
+ - Remove unused variable 'tmp_text'
+ - Monitor the wallpaper file for changes
+   (Bug #11620)
+ - Reinitialize background when reloading desktop
+   (Bug #11620)
+ - Update rc file after completing delete process
+   (Bug #11692)
+ - Add a xfconf settings to center the text on
+   xfdesktop icons. This fixes some issues with
+   RTL languages.
+ - Do not overwrite rc file while restoring icons
+   (bug #11266)
+ - Fix crash when moving 2+ icons to the bottom
+   right corner
+ - Fix icon placement when using "Arrange Desktop
+   Icons" (Bug #11639)
+ - Center icons vertically in the grid (Bug #11086)
+ - Set initial value of font size spin button
+ - Show sub directories in template menu again
+ - Prevent accidental double clicks in single
+   click mode (Bug #10720)
+ - Disable rename menu entry for special icons
+ - Add icon emblems in clockwise order
+ - Handle icons with preset emblems (Bug #7417)
+ - Enable drag&drop popup menu for local actions
+ - Use mini icon and allow dimming of non-scaled
+   icons
+
+* Translation updates:
+   Czech (cs), Greek (el), Spanish (Castilian) (es),
+   Croatian (hr), Italian (it), Japanese (ja),
+   Kazakh (kk), Korean (ko), Lithuanian (lt),
+   Malay (ms), Norwegian Bokmål (nb),
+   Polish (pl), Portuguese (pt),
+   Portuguese (Brazilian) (pt_BR), Russian (ru),
+   Slovak (sk), Thai (th), Turkish (tr),
+   Ukrainian (uk), Chinese (China) (zh_CN)
+
 4.12.0
 ======
 Stable release of xfdesktop for Xfce 4.12.
