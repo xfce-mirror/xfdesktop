@@ -9,7 +9,7 @@ m4_define([xfdesktop_version_minor], [12])
 m4_define([xfdesktop_version_micro], [1])
 m4_define([xfdesktop_version_nano], [])
 m4_define([xfdesktop_version_build], [@REVISION@])
-m4_define([xfdesktop_version_tag],[])
+m4_define([xfdesktop_version_tag],[git])
 m4_define([xfdesktop_version], [xfdesktop_version_major().xfdesktop_version_minor().xfdesktop_version_micro()ifelse(xfdesktop_version_nano(), [], [], [.xfdesktop_version_nano()])ifelse(xfdesktop_version_tag(), [git], [xfdesktop_version_tag()-xfdesktop_version_build()], [xfdesktop_version_tag()])])
 
 dnl minimum required versions
