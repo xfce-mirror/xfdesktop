@@ -3057,13 +3057,13 @@ xfdesktop_icon_view_draw_image(cairo_t *cr, GdkPixbuf *pix, GdkRectangle *rect)
 
 static void
 xfdesktop_icon_view_draw_text(cairo_t *cr, PangoLayout *playout, GdkRectangle *text_area,
-                              gint x_offset, gint y_offset, gint blur_radius,
-                              GdkColor *color)
+                              GdkRectangle *box_area, gint x_offset, gint y_offset,
+                              gint blur_radius, GdkColor *color)
 {
     cairo_save(cr);
 
     /*  Clip the cairo area to blur the minimum surface */
-    gdk_cairo_rectangle(cr, text_area);
+    gdk_cairo_rectangle(cr, box_area);
     cairo_clip(cr);
 
     cairo_move_to(cr,
@@ -3188,6 +3188,7 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
             /* Draw the shadow */
             xfdesktop_icon_view_draw_text(cr, playout,
                                           &text_extents,
+                                          &box_extents,
                                           x_offset,
                                           y_offset,
                                           icon_view->priv->shadow_blur_radius,
