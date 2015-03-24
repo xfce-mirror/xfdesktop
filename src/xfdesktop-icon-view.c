@@ -2984,10 +2984,10 @@ xfdesktop_icon_view_calculate_icon_text_area(XfdesktopIconView *icon_view,
     xfdesktop_icon_view_setup_pango_layout(icon_view, icon, playout);
     pango_layout_get_pixel_extents(playout, NULL, &prect);
 
-    text_area->x = prect.x - SHADOW_EXTENTS - SHADOW_X_OFFSET;
-    text_area->y = prect.y - SHADOW_EXTENTS - SHADOW_Y_OFFSET;
-    text_area->width = prect.width + 2 * (SHADOW_EXTENTS + SHADOW_X_OFFSET);
-    text_area->height = prect.height + 2 * (SHADOW_EXTENTS + SHADOW_Y_OFFSET);
+    text_area->x = prect.x - SHADOW_X_OFFSET;
+    text_area->y = prect.y - SHADOW_Y_OFFSET;
+    text_area->width = prect.width + 2 * SHADOW_X_OFFSET;
+    text_area->height = prect.height + 2 * SHADOW_Y_OFFSET;
 
     return TRUE;
 }
