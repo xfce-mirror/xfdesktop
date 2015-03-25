@@ -44,6 +44,10 @@
 #include <gtk/gtk.h>
 #include <gdk/gdkx.h>
 
+#include <glib.h>
+#include <glib/gstdio.h>
+#include <gio/gio.h>
+
 #include <libxfce4util/libxfce4util.h>
 #include <xfconf/xfconf.h>
 #include <libxfce4ui/libxfce4ui.h>
@@ -171,6 +175,26 @@ static gchar *xfdesktop_settings_generate_per_workspace_binding_string(Appearanc
 static gchar *xfdesktop_settings_get_backdrop_image(AppearancePanel *panel);
 
 
+
+const gchar *
+system_data_lookup (void)
+{
+    const gchar * const * dirs;
+    const gchar *path;
+    guint i;
+
+    dirs = g_get_system_data_dirs ();
+    for (i = 0; path == NULL && dirs[i] != NULL; ++i) {
+        path = g_build_path (G_DIR_SEPARATOR_S, dirs[i], "backdrops", NULL);
+        if (g_path_is_absolute (path) && g_file_test (path, G_FILE_TEST_IS_DIR))
+            return path;
+
+        g_free (path);
+        path = NULL;
+    }
+
+    return path;
+}
 
 static void
 xfdesktop_settings_free_pdata(gpointer data)
@@ -1702,6 +1726,9 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     WnckScreen *wnck_screen;
     XfconfChannel *channel = panel->channel;
     GdkColor color;
+    const gchar *path;
+    GFile *file;
+    gchar *uri_path;
 
     TRACE("entering");
 
@@ -1840,9 +1867,19 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     gtk_file_filter_add_pixbuf_formats(filter);
     gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(panel->btn_folder), filter);
 
-    gtk_file_chooser_add_shortcut_folder_uri(GTK_FILE_CHOOSER(panel->btn_folder),
-                                             "file:///usr/share/backgrounds",
-                                             NULL);
+    /* Get default wallpaper folder */
+    path = system_data_lookup ();
+
+    if (path != NULL) {
+        file = g_file_new_for_path (path);
+        uri_path = g_file_get_uri (file);
+
+        gtk_file_chooser_add_shortcut_folder_uri (GTK_FILE_CHOOSER(panel->btn_folder),
+                                                  uri_path, NULL); 
+
+        g_free (uri_path);
+        g_object_unref (file);
+    }
 
     /* Image and color style options */
     panel->image_style_combo = GTK_WIDGET(gtk_builder_get_object(appearance_gxml, "combo_style"));
