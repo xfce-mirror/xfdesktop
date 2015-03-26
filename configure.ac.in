@@ -73,7 +73,6 @@ XDT_I18N([@LINGUAS@])
 
 dnl Check for X11 installed
 XDT_CHECK_LIBX11_REQUIRE
-XDT_CHECK_LIBSM
 
 dnl Check for dbus-binding-tool
 AC_ARG_VAR([DBUS_BINDING_TOOL], [Tool to generate C bindings from XML D-Bus interface definitions])
