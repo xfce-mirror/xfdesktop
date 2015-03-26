@@ -176,11 +176,11 @@ static gchar *xfdesktop_settings_get_backdrop_image(AppearancePanel *panel);
 
 
 
-const gchar *
+static const gchar *
 system_data_lookup (void)
 {
     const gchar * const * dirs;
-    const gchar *path;
+    gchar *path;
     guint i;
 
     dirs = g_get_system_data_dirs ();
