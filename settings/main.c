@@ -185,7 +185,7 @@ system_data_lookup (void)
 
     dirs = g_get_system_data_dirs ();
     for (i = 0; path == NULL && dirs[i] != NULL; ++i) {
-        path = g_build_path (G_DIR_SEPARATOR_S, dirs[i], "backdrops", NULL);
+        path = g_build_path (G_DIR_SEPARATOR_S, dirs[i], "backgrounds", NULL);
         if (g_path_is_absolute (path) && g_file_test (path, G_FILE_TEST_IS_DIR))
             return path;
 
