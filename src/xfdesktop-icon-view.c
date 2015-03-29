@@ -1640,6 +1640,7 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
             
             action = gdk_drag_context_get_selected_action(context);
 
+#ifdef ENABLE_FILE_ICONS
             if(action == GDK_ACTION_ASK) {
                 xfdesktop_dnd_menu(icon_view->priv->manager, icon_on_dest,
                                    context, &action, row, col, time_);
@@ -1649,6 +1650,7 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
                     return ret;
                 }
             }
+#endif
 
             for(l = icon_view->priv->selected_icons; l; l = l->next) {
                 if(xfdesktop_icon_do_drop_dest(icon_on_dest,
