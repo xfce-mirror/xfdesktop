@@ -154,7 +154,7 @@ menu_item_from_wnck_window(WnckWindow *wnck_window, gint icon_width,
     GtkWidget *mi, *img = NULL;
     gchar *title;
     GString *label;
-    GdkPixbuf *icon, *tmp;
+    GdkPixbuf *icon, *tmp = NULL;
     gint w, h;
     gboolean truncated = FALSE;
 
