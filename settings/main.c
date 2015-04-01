@@ -180,7 +180,7 @@ static const gchar *
 system_data_lookup (void)
 {
     const gchar * const * dirs;
-    gchar *path;
+    gchar *path = NULL;
     guint i;
 
     dirs = g_get_system_data_dirs ();
