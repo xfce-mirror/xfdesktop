@@ -798,7 +798,7 @@ xfdesktop_regular_file_icon_peek_tooltip(XfdesktopIcon *icon)
                 comment = xfce_rc_read_entry(rcfile, "Comment", NULL);
             }
             /* Prepend the comment to the tooltip */
-            if(comment != NULL) {
+            if(comment != NULL && *comment != '\0') {
                 gchar *tooltip = regular_file_icon->priv->tooltip;
                 regular_file_icon->priv->tooltip = g_strdup_printf("%s\n%s",
                                                                    comment,
