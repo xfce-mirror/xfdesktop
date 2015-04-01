@@ -1230,7 +1230,7 @@ xfdesktop_file_icon_menu_fill_template_menu(GtkWidget *menu,
                                             gboolean recursive)
 {
     GFileEnumerator *enumerator;
-    GtkWidget *item, *image, *submenu;
+    GtkWidget *item, *image, *submenu = NULL;
     GFileInfo *info;
     GFile *file;
     GIcon *icon;
