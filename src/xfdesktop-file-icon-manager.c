@@ -1000,6 +1000,9 @@ xfdesktop_file_icon_menu_paste_into_folder(GtkWidget *widget,
     GFile *file;
     GList *selected;
 
+    if (!fmanager || !XFDESKTOP_IS_FILE_ICON_MANAGER(fmanager))
+        return;
+
     selected = xfdesktop_icon_view_get_selected_items(fmanager->priv->icon_view);
     g_return_if_fail(g_list_length(selected) == 1);
     icon = XFDESKTOP_FILE_ICON(selected->data);
@@ -1012,7 +1015,7 @@ xfdesktop_file_icon_menu_paste_into_folder(GtkWidget *widget,
 
     file = xfdesktop_file_icon_peek_file(icon);
 
-    if(widget && fmanager)
+    if(widget)
         xfdesktop_clipboard_manager_paste_files(clipboard_manager, file, widget, NULL);
 }
 
