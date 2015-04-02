@@ -4151,7 +4151,7 @@ xfdesktop_icon_view_widget_coords_to_item(XfdesktopIconView *icon_view,
     gint16 row, col;
     
     xfdesktop_xy_to_rowcol(icon_view, wx, wy, &row, &col);
-    if(row >= icon_view->priv->nrows
+    if(row < 0 || col < 0 || row >= icon_view->priv->nrows
        || col >= icon_view->priv->ncols)
     {
         return NULL;
