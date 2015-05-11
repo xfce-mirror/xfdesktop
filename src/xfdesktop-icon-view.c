@@ -1852,7 +1852,7 @@ xfdesktop_icon_view_sort_icons(XfdesktopIconView *icon_view)
 {
 #ifdef ENABLE_FILE_ICONS
     GList *l = NULL;
-    gint i;
+    guint i;
     GList *icons[4] = { NULL, NULL, NULL, NULL };
     gint16 row = -1; /* start at -1 because we'll increment it */
     gint16 col = 0;
