@@ -92,6 +92,12 @@ gchar *xfce_backdrop_choose_next         (XfceBackdrop *backdrop);
 gchar *xfce_backdrop_choose_random       (XfceBackdrop *backdrop);
 gchar *xfce_backdrop_choose_chronological(XfceBackdrop *backdrop);
 
+static void cb_xfce_backdrop_image_files_changed(GFileMonitor     *monitor,
+                                                 GFile            *file,
+                                                 GFile            *other_file,
+                                                 GFileMonitorEvent event,
+                                                 gpointer          user_data);
+
 struct _XfceBackdropPriv
 {
     gint width, height;
@@ -248,6 +254,21 @@ xfce_backdrop_clear_cached_image(XfceBackdrop *backdrop)
     backdrop->priv->pix = NULL;
 }
 
+static void
+xfdesktop_backdrop_clear_directory_monitor(XfceBackdrop *backdrop)
+{
+    g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
+
+    if(backdrop->priv->monitor) {
+            g_signal_handlers_disconnect_by_func(G_OBJECT(backdrop->priv->monitor),
+                                                 G_CALLBACK(cb_xfce_backdrop_image_files_changed),
+                                                 backdrop);
+
+            g_object_unref(backdrop->priv->monitor);
+            backdrop->priv->monitor = NULL;
+        }
+}
+
 /* we compare by the collate key so the image listing is the same as how
  * xfdesktop-settings displays the images */
 static gint
@@ -266,11 +287,11 @@ compare_by_collate_key(const gchar *a, const gchar *b)
 }
 
 static void
-cb_xfce_backdrop__image_files_changed(GFileMonitor     *monitor,
-                                      GFile            *file,
-                                      GFile            *other_file,
-                                      GFileMonitorEvent event,
-                                      gpointer          user_data)
+cb_xfce_backdrop_image_files_changed(GFileMonitor     *monitor,
+                                     GFile            *file,
+                                     GFile            *other_file,
+                                     GFileMonitorEvent event,
+                                     gpointer          user_data)
 {
     XfceBackdrop *backdrop = XFCE_BACKDROP(user_data);
     gchar *changed_file = NULL;
@@ -278,6 +299,11 @@ cb_xfce_backdrop__image_files_changed(GFileMonitor     *monitor,
 
     switch(event) {
         case G_FILE_MONITOR_EVENT_CREATED:
+            if(!xfce_backdrop_get_cycle_backdrop(backdrop)) {
+                /* If we're not cycling, do nothing, it's faster :) */
+                break;
+            }
+
             changed_file = g_file_get_path(file);
 
             XF_DEBUG("file added: %s", changed_file);
@@ -303,6 +329,11 @@ cb_xfce_backdrop__image_files_changed(GFileMonitor     *monitor,
                                                                (GCompareFunc)compare_by_collate_key);
             break;
         case G_FILE_MONITOR_EVENT_DELETED:
+            if(!xfce_backdrop_get_cycle_backdrop(backdrop)) {
+                /* If we're not cycling, do nothing, it's faster :) */
+                break;
+            }
+
             changed_file = g_file_get_path(file);
 
             XF_DEBUG("file deleted: %s", changed_file);
@@ -415,26 +446,26 @@ xfce_backdrop_load_image_files(XfceBackdrop *backdrop)
 {
     TRACE("entering");
 
-    /* generate the image_files list if it doesn't exist and monitor that
-     * directory so we can update the list */
-    if(backdrop->priv->image_files == NULL && backdrop->priv->image_path) {
+    /* generate the image_files list if it doesn't exist and we're cycling
+     * backdrops */
+    if(backdrop->priv->image_files == NULL &&
+       backdrop->priv->image_path &&
+       xfce_backdrop_get_cycle_backdrop(backdrop)) {
+        backdrop->priv->image_files = list_image_files_in_dir(backdrop->priv->image_path);
+
+        xfdesktop_backdrop_clear_directory_monitor(backdrop);
+    }
+
+    /* Always monitor the directory even if we aren't cycling so we know if
+     * our current wallpaper has changed by an external program/script */
+    if(backdrop->priv->image_path && !backdrop->priv->monitor) {
         gchar *dir_name = g_path_get_dirname(backdrop->priv->image_path);
         GFile *gfile = g_file_new_for_path(dir_name);
 
-        backdrop->priv->image_files = list_image_files_in_dir(backdrop->priv->image_path);
-
-        if(backdrop->priv->monitor) {
-            g_signal_handlers_disconnect_by_func(G_OBJECT(backdrop->priv->monitor),
-                                                 G_CALLBACK(cb_xfce_backdrop__image_files_changed),
-                                                 backdrop);
-
-            g_object_unref(backdrop->priv->monitor);
-        }
-
-        /* monitor the new directory for changes */
+        /* monitor the directory for changes */
         backdrop->priv->monitor = g_file_monitor(gfile, G_FILE_MONITOR_NONE, NULL, NULL);
         g_signal_connect(backdrop->priv->monitor, "changed",
-                         G_CALLBACK(cb_xfce_backdrop__image_files_changed),
+                         G_CALLBACK(cb_xfce_backdrop_image_files_changed),
                          backdrop);
 
         g_free(dir_name);
@@ -695,14 +726,7 @@ xfce_backdrop_finalize(GObject *object)
 
     xfce_backdrop_clear_cached_image(backdrop);
 
-    if(backdrop->priv->monitor) {
-        g_signal_handlers_disconnect_by_func(G_OBJECT(backdrop->priv->monitor),
-                                             G_CALLBACK(cb_xfce_backdrop__image_files_changed),
-                                             backdrop);
-
-        g_object_unref(backdrop->priv->monitor);
-        backdrop->priv->monitor = NULL;
-    }
+    xfdesktop_backdrop_clear_directory_monitor(backdrop);
 
     /* Free the image files list */
     if(backdrop->priv->image_files) {
@@ -1056,26 +1080,22 @@ xfce_backdrop_set_image_filename(XfceBackdrop *backdrop, const gchar *filename)
         return;
 
     /* We need to free the image_files if image_path changed directories */
-    if(backdrop->priv->image_files) {
+    if(backdrop->priv->image_files || backdrop->priv->monitor) {
         if(backdrop->priv->image_path)
             old_dir = g_path_get_dirname(backdrop->priv->image_path);
         if(filename)
             new_dir = g_path_get_dirname(filename);
 
-        /* Directories did change, free list */
+        /* Directories did change */
         if(g_strcmp0(old_dir, new_dir) != 0) {
-            g_list_free_full(backdrop->priv->image_files, g_free);
-            backdrop->priv->image_files = NULL;
+            /* Free the image list if we had one */
+            if(backdrop->priv->image_files) {
+                g_list_free_full(backdrop->priv->image_files, g_free);
+                backdrop->priv->image_files = NULL;
+            }
 
             /* release the directory monitor */
-            if(backdrop->priv->monitor) {
-                g_signal_handlers_disconnect_by_func(G_OBJECT(backdrop->priv->monitor),
-                                                     G_CALLBACK(cb_xfce_backdrop__image_files_changed),
-                                                     backdrop);
-
-                g_object_unref(backdrop->priv->monitor);
-                backdrop->priv->monitor = NULL;
-            }
+            xfdesktop_backdrop_clear_directory_monitor(backdrop);
         }
 
         g_free(old_dir);
@@ -1334,12 +1354,17 @@ xfce_backdrop_set_cycle_backdrop(XfceBackdrop *backdrop,
         /* Start or stop the backdrop changing */
         xfce_backdrop_set_cycle_timer(backdrop,
                                       xfce_backdrop_get_cycle_timer(backdrop));
-    }
 
-    /* If we're not cycling anymore, free the image files list */
-    if(!backdrop->priv->cycle_backdrop && backdrop->priv->image_files) {
-        g_list_free_full(backdrop->priv->image_files, g_free);
-        backdrop->priv->image_files = NULL;
+        if(cycle_backdrop) {
+            /* We're cycling now, so load up an image list */
+            xfce_backdrop_load_image_files(backdrop);
+        }
+        else if(backdrop->priv->image_files)
+        {
+            /* we're not cycling anymore, free the image files list */
+            g_list_free_full(backdrop->priv->image_files, g_free);
+            backdrop->priv->image_files = NULL;
+        }
     }
 }
 
