@@ -26,6 +26,10 @@
 #include <config.h>
 #endif
 
+#ifdef HAVE_STDLIB_H
+#include <stdlib.h>
+#endif
+
 #ifdef HAVE_STRING_H
 #include <string.h>
 #endif
@@ -336,6 +340,36 @@ cb_xfce_backdrop__image_files_changed(GFileMonitor     *monitor,
     }
 }
 
+/* Equivalent to, but faster than
+ * g_list_sort(list, (GCompareFunc)compare_by_collate_key) */
+static GList *
+sort_image_list(GList *list, guint list_size)
+{
+    gchar **array;
+    guint i;
+    GList *l;
+
+    g_assert(g_list_length(list) == list_size);
+    /* Create an array of the same size as list */
+    array = g_malloc(list_size * sizeof(array[0]));
+
+    /* Copy list contents to the array */
+    for(l = list, i = 0; l; l = l->next, ++i)
+        array[i] = l->data;
+
+    /* Sort the array */
+    qsort(array, list_size, sizeof(array[0]),
+          (GCompareFunc)compare_by_collate_key);
+
+    /* Copy sorted array back to the list */
+    for(l = list, i = 0; l; l = l->next, ++i)
+        l->data = array[i];
+
+    g_free(array);
+
+    return list;
+}
+
 /* Returns a GList of all the image files in the parent directory of filename */
 static GList *
 list_image_files_in_dir(const gchar *filename)
@@ -344,6 +378,7 @@ list_image_files_in_dir(const gchar *filename)
     gboolean needs_slash = TRUE;
     const gchar *file;
     GList *files = NULL;
+    guint file_count = 0;
     gchar *dir_name;
 
     dir_name = g_path_get_dirname(filename);
@@ -360,15 +395,18 @@ list_image_files_in_dir(const gchar *filename)
     while((file = g_dir_read_name(dir))) {
         gchar *current_file = g_strdup_printf(needs_slash ? "%s/%s" : "%s%s",
                                               dir_name, file);
-        if(xfdesktop_image_file_is_valid(current_file))
-            files = g_list_insert_sorted(files, current_file, (GCompareFunc)compare_by_collate_key);
-        else
+        if(xfdesktop_image_file_is_valid(current_file)) {
+            files = g_list_prepend(files, current_file);
+            ++file_count;
+        } else
             g_free(current_file);
     }
 
     g_dir_close(dir);
     g_free(dir_name);
 
+    if(file_count > 1)
+        files = sort_image_list(files, file_count);
     return files;
 }
 

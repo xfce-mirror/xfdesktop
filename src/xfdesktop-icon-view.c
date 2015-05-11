@@ -1852,10 +1852,8 @@ xfdesktop_icon_view_sort_icons(XfdesktopIconView *icon_view)
 {
 #ifdef ENABLE_FILE_ICONS
     GList *l = NULL;
-    GList *special_icons = NULL;
-    GList *volume_icons = NULL;
-    GList *folder_icons = NULL;
-    GList *regular_icons = NULL;
+    gint i;
+    GList *icons[4] = { NULL, NULL, NULL, NULL };
     gint16 row = -1; /* start at -1 because we'll increment it */
     gint16 col = 0;
 
@@ -1868,41 +1866,32 @@ xfdesktop_icon_view_sort_icons(XfdesktopIconView *icon_view)
         if(xfdesktop_icon_get_position(l->data, &old_row, &old_col))
             xfdesktop_grid_set_position_free(icon_view, old_row, old_col);
 
-        /* Add it to the correct list */
+        /* Choose the correct list index */
         if(XFDESKTOP_IS_SPECIAL_FILE_ICON(l->data)) {
-            special_icons = g_list_insert_sorted(special_icons,
-                                                 l->data,
-                                                 (GCompareFunc)xfdesktop_icon_view_compare_icons);
+            i = 0;
         } else if(XFDESKTOP_IS_VOLUME_ICON(l->data)) {
-            volume_icons = g_list_insert_sorted(volume_icons,
-                                                l->data,
-                                                (GCompareFunc)xfdesktop_icon_view_compare_icons);
+            i = 1;
         } else if(XFDESKTOP_IS_FILE_ICON(l->data) &&
                   g_file_query_file_type(xfdesktop_file_icon_peek_file(l->data),
                                          G_FILE_QUERY_INFO_NONE,
                                          NULL) == G_FILE_TYPE_DIRECTORY)
         {
-            folder_icons = g_list_insert_sorted(folder_icons,
-                                                l->data,
-                                                (GCompareFunc)xfdesktop_icon_view_compare_icons);
+            i = 2;
         } else {
-            regular_icons = g_list_insert_sorted(regular_icons,
-                                                 l->data,
-                                                 (GCompareFunc)xfdesktop_icon_view_compare_icons);
+            i = 3;
         }
+
+        /* Add the icon to the correct list */
+        icons[i] = g_list_prepend(icons[i], l->data);
     }
 
     /* Append the icons: special, folder, then regular */
-    xfdesktop_icon_view_append_icons(icon_view, special_icons, &row, &col);
-    xfdesktop_icon_view_append_icons(icon_view, volume_icons, &row, &col);
-    xfdesktop_icon_view_append_icons(icon_view, folder_icons, &row, &col);
-    xfdesktop_icon_view_append_icons(icon_view, regular_icons, &row, &col);
-
-
-    g_list_free(special_icons);
-    g_list_free(volume_icons);
-    g_list_free(folder_icons);
-    g_list_free(regular_icons);
+    for(i = 0; i < sizeof(icons) / sizeof(icons[0]); ++i) {
+        l = g_list_sort(icons[i],
+                        (GCompareFunc)xfdesktop_icon_view_compare_icons);
+        xfdesktop_icon_view_append_icons(icon_view, l, &row, &col);
+        g_list_free(l);
+    }
 #endif
 }
 
