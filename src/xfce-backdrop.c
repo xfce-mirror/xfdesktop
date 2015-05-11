@@ -270,13 +270,32 @@ xfdesktop_backdrop_clear_directory_monitor(XfceBackdrop *backdrop)
 }
 
 /* we compare by the collate key so the image listing is the same as how
- * xfdesktop-settings displays the images */
+ * xfdesktop-settings displays the images. The symantics between glist
+ * sorting and qsort require two functions */
 static gint
-compare_by_collate_key(const gchar *a, const gchar *b)
+glist_compare_by_collate_key(const gchar *a, const gchar *b)
 {
     gint ret;
     gchar *a_key = g_utf8_collate_key_for_filename(a, -1);
     gchar *b_key = g_utf8_collate_key_for_filename(b, -1);
+
+    ret = g_strcmp0(a_key, b_key);
+
+    g_free(a_key);
+    g_free(b_key);
+
+    return ret;
+}
+
+/* we compare by the collate key so the image listing is the same as how
+ * xfdesktop-settings displays the images. The symantics between glist
+ * sorting and qsort require two functions */
+static int
+qsort_compare_by_collate_key(const void *a, const void *b)
+{
+    gint ret;
+    gchar *a_key = g_utf8_collate_key_for_filename(* (char * const *)a, -1);
+    gchar *b_key = g_utf8_collate_key_for_filename(* (char * const *)b, -1);
 
     ret = g_strcmp0(a_key, b_key);
 
@@ -321,12 +340,18 @@ cb_xfce_backdrop_image_files_changed(GFileMonitor     *monitor,
                 return;
             }
 
-            /* It is an image file and we don't have it in our list, add it
-             * sorted to our list, don't free changed file, that will happen
-             * when it is removed */
-            backdrop->priv->image_files = g_list_insert_sorted(backdrop->priv->image_files,
-                                                               changed_file,
-                                                               (GCompareFunc)compare_by_collate_key);
+            if(!xfce_backdrop_get_random_order(backdrop)) {
+                /* It is an image file and we don't have it in our list, add
+                 * it sorted to our list, don't free changed file, that will
+                 * happen when it is removed */
+                backdrop->priv->image_files = g_list_insert_sorted(backdrop->priv->image_files,
+                                                                   changed_file,
+                                                                   (GCompareFunc)glist_compare_by_collate_key);
+            } else {
+                /* Same as above except we don't care about the list's order
+                 * so just add it */
+                backdrop->priv->image_files = g_list_prepend(backdrop->priv->image_files, changed_file);
+            }
             break;
         case G_FILE_MONITOR_EVENT_DELETED:
             if(!xfce_backdrop_get_cycle_backdrop(backdrop)) {
@@ -380,6 +405,8 @@ sort_image_list(GList *list, guint list_size)
     guint i;
     GList *l;
 
+    TRACE("entering");
+
     g_assert(g_list_length(list) == list_size);
     /* Create an array of the same size as list */
     array = g_malloc(list_size * sizeof(array[0]));
@@ -390,7 +417,8 @@ sort_image_list(GList *list, guint list_size)
 
     /* Sort the array */
     qsort(array, list_size, sizeof(array[0]),
-          (GCompareFunc)compare_by_collate_key);
+          qsort_compare_by_collate_key);
+
 
     /* Copy sorted array back to the list */
     for(l = list, i = 0; l; l = l->next, ++i)
@@ -403,7 +431,7 @@ sort_image_list(GList *list, guint list_size)
 
 /* Returns a GList of all the image files in the parent directory of filename */
 static GList *
-list_image_files_in_dir(const gchar *filename)
+list_image_files_in_dir(XfceBackdrop *backdrop, const gchar *filename)
 {
     GDir *dir;
     gboolean needs_slash = TRUE;
@@ -436,8 +464,12 @@ list_image_files_in_dir(const gchar *filename)
     g_dir_close(dir);
     g_free(dir_name);
 
-    if(file_count > 1)
+    /* Only sort if there's more than 1 item and we're not randomly picking
+     * images from the list */
+    if(file_count > 1 && !xfce_backdrop_get_random_order(backdrop)) {
         files = sort_image_list(files, file_count);
+    }
+
     return files;
 }
 
@@ -451,7 +483,7 @@ xfce_backdrop_load_image_files(XfceBackdrop *backdrop)
     if(backdrop->priv->image_files == NULL &&
        backdrop->priv->image_path &&
        xfce_backdrop_get_cycle_backdrop(backdrop)) {
-        backdrop->priv->image_files = list_image_files_in_dir(backdrop->priv->image_path);
+        backdrop->priv->image_files = list_image_files_in_dir(backdrop, backdrop->priv->image_path);
 
         xfdesktop_backdrop_clear_directory_monitor(backdrop);
     }
@@ -1428,7 +1460,17 @@ xfce_backdrop_set_random_order(XfceBackdrop *backdrop,
 
     TRACE("entering");
 
-    backdrop->priv->random_backdrop_order = random_order;
+    if(backdrop->priv->random_backdrop_order != random_order) {
+        backdrop->priv->random_backdrop_order = random_order;
+
+        /* If we have an image list and care about order now, sort the list */
+        if(!random_order && backdrop->priv->image_files) {
+            guint num_items = g_list_length(backdrop->priv->image_files);
+            if(num_items > 1) {
+                backdrop->priv->image_files = sort_image_list(backdrop->priv->image_files, num_items);
+            }
+        }
+    }
 }
 
 gboolean
