@@ -270,8 +270,7 @@ xfdesktop_backdrop_clear_directory_monitor(XfceBackdrop *backdrop)
 }
 
 /* we compare by the collate key so the image listing is the same as how
- * xfdesktop-settings displays the images. The symantics between glist
- * sorting and qsort require two functions */
+ * xfdesktop-settings displays the images */
 static gint
 glist_compare_by_collate_key(const gchar *a, const gchar *b)
 {
@@ -287,22 +286,18 @@ glist_compare_by_collate_key(const gchar *a, const gchar *b)
     return ret;
 }
 
-/* we compare by the collate key so the image listing is the same as how
- * xfdesktop-settings displays the images. The symantics between glist
- * sorting and qsort require two functions */
-static int
-qsort_compare_by_collate_key(const void *a, const void *b)
+typedef struct
 {
-    gint ret;
-    gchar *a_key = g_utf8_collate_key_for_filename(* (char * const *)a, -1);
-    gchar *b_key = g_utf8_collate_key_for_filename(* (char * const *)b, -1);
+    gchar *key;
+    gchar *string;
+} KeyStringPair;
 
-    ret = g_strcmp0(a_key, b_key);
-
-    g_free(a_key);
-    g_free(b_key);
-
-    return ret;
+static int
+qsort_compare_pair_by_key(const void *a, const void *b)
+{
+    const gchar *a_key = ((const KeyStringPair *)a)->key;
+    const gchar *b_key = ((const KeyStringPair *)b)->key;
+    return g_strcmp0(a_key, b_key);
 }
 
 static void
@@ -396,35 +391,80 @@ cb_xfce_backdrop_image_files_changed(GFileMonitor     *monitor,
     }
 }
 
-/* Equivalent to, but faster than
- * g_list_sort(list, (GCompareFunc)compare_by_collate_key) */
+/* Equivalent to (except for not being a stable sort), but faster than
+ * g_list_sort(list, (GCompareFunc)glist_compare_by_collate_key) */
 static GList *
 sort_image_list(GList *list, guint list_size)
 {
-    gchar **array;
+    KeyStringPair *array;
     guint i;
     GList *l;
 
     TRACE("entering");
 
     g_assert(g_list_length(list) == list_size);
-    /* Create an array of the same size as list */
+
+#define TEST_IMAGE_SORTING 0
+
+#if TEST_IMAGE_SORTING
+    GList *list2 = g_list_copy(list);
+#endif
+
+    /* Allocate an array of the same size as list */
     array = g_malloc(list_size * sizeof(array[0]));
 
-    /* Copy list contents to the array */
-    for(l = list, i = 0; l; l = l->next, ++i)
-        array[i] = l->data;
+    /* Copy list contents to the array and generate collation keys */
+    for(l = list, i = 0; l; l = l->next, ++i) {
+        array[i].string = l->data;
+        array[i].key = g_utf8_collate_key_for_filename(array[i].string, -1);
+    }
 
     /* Sort the array */
-    qsort(array, list_size, sizeof(array[0]),
-          qsort_compare_by_collate_key);
+    qsort(array, list_size, sizeof(array[0]), qsort_compare_pair_by_key);
 
-
-    /* Copy sorted array back to the list */
-    for(l = list, i = 0; l; l = l->next, ++i)
-        l->data = array[i];
+    /* Copy sorted array back to the list and deallocate the collation keys */
+    for(l = list, i = 0; l; l = l->next, ++i) {
+        l->data = array[i].string;
+        g_free(array[i].key);
+    }
 
     g_free(array);
+
+#if TEST_IMAGE_SORTING
+    list2 = g_list_sort(list2, (GCompareFunc)glist_compare_by_collate_key);
+    if(g_list_length(list) != g_list_length(list2)) {
+        printf("Image sorting test FAILED: list size is not correct.");
+    } else {
+        GList *l2;
+        gboolean data_matches = TRUE, pointers_match = TRUE;
+        for(l = list, l2 = list2; l; l = l->next, l2 = l2->next) {
+            if(g_strcmp0(l->data, l2->data) != 0)
+                data_matches = FALSE;
+            if(l->data != l2->data)
+                pointers_match = FALSE;
+        }
+        if(data_matches) {
+            printf("Image sorting test SUCCEEDED: ");
+            if(pointers_match) {
+                printf("both data and pointers are correct.");
+            } else {
+                printf("data matches but pointers do not match. "
+                        "This is caused by unstable sorting.");
+            }
+        }
+        else {
+            printf("Image sorting test FAILED: ");
+            if(pointers_match) {
+                printf("data does not match but pointers do match. "
+                        "Something went really wrong!");
+            }
+            else {
+                printf("neither data nor pointers match.");
+            }
+        }
+    }
+    putchar('\n');
+#endif
 
     return list;
 }
