@@ -1,3 +1,23 @@
+4.12.2
+======
+Stable release of xfdesktop for Xfce 4.12.
+
+* Bug fixes:
+ - Optimized sorting wallpapers (Bug #11817)
+ - Don't sort the image list when randomly cycling (Bug #11817)
+ - Don't load an image list unless we're cycling (Bug #11817)
+ - Allow dragging desktop launchers to the panel (Bug #2794)
+ - Load emblem-unreadable if necessary
+ - Bail out when a negative value was calculated for row/col. (Bug #11782)
+ - Hide empty comment line in icon tooltip
+ - Fix build error (Bug #11778)
+ - Ignore shadow blur radius when calculating icon text box
+ - Prefer "_NETSCAPE_URL" over "text/uri-list" (Bug #9632)
+ - Drop explicit LibSM check (Bug #11744)
+ - Preserve order when moving multiple icons (Bug #11195)
+ - Drop warning when D-Bus timeout error occurs (Bug #11283)
+ - Add default wallpaper folder to file chooser (Bug #11715)
+
 4.12.1
 ======
 Stable release of xfdesktop for Xfce 4.12.
