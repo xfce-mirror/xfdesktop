@@ -1763,6 +1763,11 @@ xfce_backdrop_loader_closed_cb(GdkPixbufLoader *loader,
 
     image = gdk_pixbuf_loader_get_pixbuf(loader);
     if(image) {
+        /* If the image is supposed to be rotated, do that now */
+        GdkPixbuf *temp = gdk_pixbuf_apply_embedded_orientation (image);
+        /* Do not unref image, gdk_pixbuf_loader_get_pixbuf is transfer none */
+        image = temp;
+
         iw = gdk_pixbuf_get_width(image);
         ih = gdk_pixbuf_get_height(image);
     }
@@ -1905,6 +1910,11 @@ xfce_backdrop_loader_closed_cb(GdkPixbufLoader *loader,
         g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_READY], 0);
     }
 
+    /* We either created image or took a ref with
+     * gdk_pixbuf_apply_embedded_orientation, free it here
+     */
+    if(image)
+        g_object_unref(image);
     backdrop->priv->image_data = NULL;
     xfce_backdrop_image_data_release(image_data);
     g_free(image_data);
