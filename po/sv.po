@@ -5,16 +5,17 @@
 # Translators:
 # Alexander Toresson <alexander.toresson@gmail.com>, 2006
 # Daniel Nylander <po@danielnylander.se>, 2008
-# FredN <fredrik@nyqvist.biz>, 2013
-# FredN <fredrik@nyqvist.biz>, 2013
+# Fredrik Nyqvist <fredrik@nyqvist.biz>, 2013
+# Fredrik Nyqvist <fredrik@nyqvist.biz>, 2013
+# Påvel Nicklasson<pavel@frimix.se>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 23:19+0200\n"
-"PO-Revision-Date: 2014-03-22 09:35+0000\n"
-"Last-Translator: PavelNicklasson <pavelnicklasson@bahnhof.se>\n"
-"Language-Team: Swedish (http://www.transifex.com/projects/p/xfce/language/sv/)\n"
+"PO-Revision-Date: 2015-06-03 16:07+0000\n"
+"Last-Translator: Påvel Nicklasson <pavelnicklasson@bahnhof.se>\n"
+"Language-Team: Swedish (http://www.transifex.com/projects/p/xfdesktop/language/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -428,15 +429,15 @@ msgstr "Visa prog_ramikoner i menyn"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
 msgid "Show workspace _names in list"
-msgstr "Visa _namn på arbetsytor i lista"
+msgstr "Visa _namn på skrivbord i listan"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:34
 msgid "Use _submenus for the windows in each workspace"
-msgstr "Använd _undermenyer för fönstren på varje arbetsyta"
+msgstr "Använd _undermenyer för fönstren på varje skrivbord"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:35
 msgid "Show s_ticky windows only in active workspace"
-msgstr "Visa endast kl_istriga fönster i aktiv arbetsyta"
+msgstr "Visa kl_istriga fönster endast på aktivt skrivbord"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid "<b>Window List Menu</b>"
@@ -462,7 +463,7 @@ msgstr "Visa i_koner"
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
-msgstr "Välj det här alternativet för att visa förhandsgranskningsbara filer på skrivbordet som automatiskt genererade miniatyrbildsikoner. "
+msgstr "Välj det här alternativet för att visa förhandsgranskningsbara filer på skrivbordet som automatiskt genererade miniatyrbildsikoner."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:42
 msgid "Single _click to activate items"
@@ -577,31 +578,31 @@ msgstr "Fönsterlista"
 #: ../src/windowlist.c:255
 #, c-format
 msgid "<b>Workspace %d</b>"
-msgstr "<b>Arbetsyta %d</b>"
+msgstr "<b>Skrivbord %d</b>"
 
 #: ../src/windowlist.c:264
 #, c-format
 msgid "Workspace %d"
-msgstr "Arbetsyta %d"
+msgstr "Skrivbord %d"
 
 #: ../src/windowlist.c:266
 #, c-format
 msgid "<i>Workspace %d</i>"
-msgstr "<i>Arbetsyta %d</i>"
+msgstr "<i>Skrivbord %d</i>"
 
 #: ../src/windowlist.c:362 ../src/windowlist.c:365
 msgid "_Add Workspace"
-msgstr "_Lägg till arbetsyta"
+msgstr "_Lägg till skrivbord"
 
 #: ../src/windowlist.c:373
 #, c-format
 msgid "_Remove Workspace %d"
-msgstr "_Ta bort arbetsyta %d"
+msgstr "_Ta bort skrivbord %d"
 
 #: ../src/windowlist.c:376
 #, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "_Ta bort arbetsytan \"%s\""
+msgstr "_Ta bort skrivbord \"%s\""
 
 #: ../src/xfce-desktop.c:1084
 #, c-format
