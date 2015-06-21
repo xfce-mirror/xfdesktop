@@ -128,7 +128,7 @@ typedef struct
     GtkWidget *backdrop_cycle_spinbox;
     GtkWidget *random_backdrop_order_chkbox;
 
-    GThread *preview_thread;
+    guint preview_id;
     GAsyncQueue *preview_queue;
 
     XfdesktopThumbnailer *thumbnailer;
@@ -211,20 +211,6 @@ xfdesktop_settings_free_pdata(gpointer data)
     g_free(pdata);
 }
 
-static gboolean
-list_store_set(PreviewData *pdata)
-{
-    g_return_val_if_fail(pdata, FALSE);
-
-    gtk_list_store_set(GTK_LIST_STORE(pdata->model), pdata->iter,
-                       COL_PIX, pdata->pix,
-                       -1);
-
-    xfdesktop_settings_free_pdata(pdata);
-
-    return FALSE;
-}
-
 static void
 xfdesktop_settings_do_single_preview(PreviewData *pdata)
 {
@@ -246,10 +232,12 @@ xfdesktop_settings_do_single_preview(PreviewData *pdata)
     /* If we didn't create a thumbnail there might not be a thumbnailer service
      * or it may not support that format */
     if(thumbnail == NULL) {
+        XF_DEBUG("generating thumbnail for filename %s", filename);
         pix = gdk_pixbuf_new_from_file_at_scale(filename,
                                                 PREVIEW_WIDTH, PREVIEW_HEIGHT,
                                                 TRUE, NULL);
     } else {
+        XF_DEBUG("loading thumbnail %s", thumbnail);
         pix = gdk_pixbuf_new_from_file_at_scale(thumbnail,
                                                 PREVIEW_WIDTH, PREVIEW_HEIGHT,
                                                 TRUE, NULL);
@@ -261,28 +249,41 @@ xfdesktop_settings_do_single_preview(PreviewData *pdata)
     if(pix) {
         pdata->pix = pix;
 
-        /* We must add the images to the list in the main thread */
-        g_main_context_invoke(NULL, (GSourceFunc)list_store_set, pdata);
-    } else {
-        xfdesktop_settings_free_pdata(pdata);
+        /* set the image */
+        gtk_list_store_set(GTK_LIST_STORE(pdata->model), pdata->iter,
+                       COL_PIX, pdata->pix,
+                       -1);
     }
+        xfdesktop_settings_free_pdata(pdata);
 }
 
-static gpointer
+static gboolean
 xfdesktop_settings_create_previews(gpointer data)
 {
     AppearancePanel *panel = data;
 
-    while(panel->preview_queue != NULL) {
+    if(panel->preview_queue != NULL) {
         PreviewData *pdata = NULL;
 
-        /* Block and wait for another preview to create */
-        pdata = g_async_queue_pop(panel->preview_queue);
+        /* try to pull another preview */
+        pdata = g_async_queue_try_pop(panel->preview_queue);
 
-        xfdesktop_settings_do_single_preview(pdata);
+        if(pdata != NULL) {
+            xfdesktop_settings_do_single_preview(pdata);
+            /* Continue on the next idle time */
+            return TRUE;
+        } else {
+            /* Nothing left, remove the queue, we're done with it */
+            g_async_queue_unref(panel->preview_queue);
+            panel->preview_queue = NULL;
+        }
     }
 
-    return NULL;
+    /* clear the idle source */
+    panel->preview_id = 0;
+
+    /* stop this idle source */
+    return FALSE;
 }
 
 static void
@@ -295,29 +296,15 @@ xfdesktop_settings_add_file_to_queue(AppearancePanel *panel, PreviewData *pdata)
 
     /* Create the queue if it doesn't exist */
     if(panel->preview_queue == NULL) {
+        XF_DEBUG("creating preview queue");
         panel->preview_queue = g_async_queue_new_full(xfdesktop_settings_free_pdata);
     }
 
     g_async_queue_push(panel->preview_queue, pdata);
 
-    /* Create the thread if it doesn't exist */
-    if(panel->preview_thread == NULL) {
-#if GLIB_CHECK_VERSION(2, 32, 0)
-        panel->preview_thread = g_thread_try_new("create_previews",
-                                                 xfdesktop_settings_create_previews,
-                                                 panel, NULL);
-#else
-        panel->preview_thread = g_thread_create(xfdesktop_settings_create_previews,
-                                                panel, FALSE, NULL);
-#endif
-        if(panel->preview_thread == NULL)
-        {
-                g_critical("Unable to create thread for image previews.");
-                /* Don't block but try to remove the data from the queue
-                 * since we won't be creating previews */
-                if(g_async_queue_try_pop(panel->preview_queue))
-                    xfdesktop_settings_free_pdata(pdata);
-        }
+    /* Create the previews in an idle callback */
+    if(panel->preview_id == 0) {
+        panel->preview_id = g_idle_add(xfdesktop_settings_create_previews, panel);
     }
 }
 
@@ -376,6 +363,7 @@ xfdesktop_settings_queue_preview(GtkTreeModel *model,
         pdata->model = g_object_ref(G_OBJECT(model));
         pdata->iter = gtk_tree_iter_copy(iter);
 
+        XF_DEBUG("Thumbnailing failed, adding %s manually.", filename);
         xfdesktop_settings_add_file_to_queue(panel, pdata);
     }
 
@@ -1088,16 +1076,20 @@ cb_xfdesktop_spin_icon_size_changed(GtkSpinButton *button,
 static void
 xfdesktop_settings_stop_image_loading(AppearancePanel *panel)
 {
+    XF_DEBUG("xfdesktop_settings_stop_image_loading");
     /* stop any thumbnailing in progress */
     xfdesktop_thumbnailer_dequeue_all_thumbnails(panel->thumbnailer);
 
+    /* stop the idle preview callback */
+    if(panel->preview_id != 0) {
+        g_source_remove(panel->preview_id);
+        panel->preview_id = 0;
+    }
+
     /* Remove the previews in the message queue */
     if(panel->preview_queue != NULL) {
-        while(g_async_queue_length(panel->preview_queue) > 0) {
-            gpointer data = g_async_queue_try_pop(panel->preview_queue);
-            if(data)
-                xfdesktop_settings_free_pdata(data);
-        }
+        g_async_queue_unref(panel->preview_queue);
+        panel->preview_queue = NULL;
     }
 
     /* Cancel any file enumeration that's running */
