@@ -795,9 +795,9 @@ xfdesktop_settings_generate_per_workspace_binding_string(AppearancePanel *panel,
                               panel->screen, panel->monitor, panel->workspace,
                               property);
     } else {
-        buf = g_strdup_printf("/backdrop/screen%d/monitor%s/workspace%d/%s",
+        buf = xfdesktop_remove_whitspaces(g_strdup_printf("/backdrop/screen%d/monitor%s/workspace%d/%s",
                               panel->screen, panel->monitor_name, panel->workspace,
-                              property);
+                              property));
     }
 
     XF_DEBUG("name %s", buf);

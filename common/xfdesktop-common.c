@@ -194,6 +194,32 @@ xfdesktop_popup_keyboard_grab_available(GdkWindow *win)
 }
 
 
+/*
+ * xfdesktop_remove_whitspaces:
+ * remove all whitespaces from string (not only trailing or leading)
+ */
+gchar*
+xfdesktop_remove_whitspaces(gchar* str)
+{
+    gchar* dest;
+    gint offs, curr;
+
+    g_return_val_if_fail(str, NULL);
+
+    offs = 0;
+    dest = str;
+    for(curr=0; curr<=strlen(str); curr++) {
+        if(*dest == ' ' || *dest == '\t')
+            offs++;
+        else if(0 != offs)
+            *(dest-offs) = *dest;
+        dest++;
+    }
+
+    return str;
+}
+
+
 #ifdef G_ENABLE_DEBUG
 /* With --enable-debug=full turn on debugging messages from the start */
 static gboolean enable_debug = TRUE;
