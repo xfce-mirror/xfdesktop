@@ -157,7 +157,7 @@ xfce_workspace_set_xfconf_property_string(XfceWorkspace *workspace,
                    workspace->priv->property_prefix, monitor_num, workspace->priv->workspace_num, property);
     } else {
         g_snprintf(buf, sizeof(buf), "%smonitor%s/workspace%d/%s",
-                   workspace->priv->property_prefix, monitor_name, workspace->priv->workspace_num, property);
+                   workspace->priv->property_prefix, xfdesktop_remove_whitspaces(monitor_name), workspace->priv->workspace_num, property);
 
         g_free(monitor_name);
     }
@@ -191,7 +191,7 @@ xfce_workspace_set_xfconf_property_value(XfceWorkspace *workspace,
                    workspace->priv->property_prefix, monitor_num, workspace->priv->workspace_num, property);
     } else {
         g_snprintf(buf, sizeof(buf), "%smonitor%s/workspace%d/%s",
-                   workspace->priv->property_prefix, monitor_name, workspace->priv->workspace_num, property);
+                   workspace->priv->property_prefix, xfdesktop_remove_whitspaces(monitor_name), workspace->priv->workspace_num, property);
 
         g_free(monitor_name);
     }
@@ -609,8 +609,9 @@ xfce_workspace_connect_backdrop_settings(XfceWorkspace *workspace,
                    workspace->priv->property_prefix, monitor, workspace->priv->workspace_num);
     } else {
         g_snprintf(buf, sizeof(buf), "%smonitor%s/workspace%d/",
-                   workspace->priv->property_prefix, monitor_name, workspace->priv->workspace_num);
-    }
+                   workspace->priv->property_prefix, xfdesktop_remove_whitspaces(monitor_name), workspace->priv->workspace_num);
+        g_free(monitor_name);
+   }
     pp_len = strlen(buf);
 
     XF_DEBUG("prefix string: %s", buf);
@@ -674,8 +675,6 @@ xfce_workspace_connect_backdrop_settings(XfceWorkspace *workspace,
     xfconf_g_property_bind(channel, buf, G_TYPE_STRING,
                            G_OBJECT(backdrop), "image-filename");
 
-
-    g_free(monitor_name);
 }
 
 static void
