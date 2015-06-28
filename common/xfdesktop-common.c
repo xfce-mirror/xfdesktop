@@ -202,7 +202,7 @@ gchar*
 xfdesktop_remove_whitspaces(gchar* str)
 {
     gchar* dest;
-    gint offs, curr;
+    guint offs, curr;
 
     g_return_val_if_fail(str, NULL);
 
