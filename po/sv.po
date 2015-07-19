@@ -13,9 +13,9 @@ msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 23:19+0200\n"
-"PO-Revision-Date: 2015-06-03 16:07+0000\n"
+"PO-Revision-Date: 2015-07-19 17:35+0000\n"
 "Last-Translator: Påvel Nicklasson <pavelnicklasson@bahnhof.se>\n"
-"Language-Team: Swedish (http://www.transifex.com/projects/p/xfdesktop/language/sv/)\n"
+"Language-Team: Swedish (http://www.transifex.com/p/xfdesktop/language/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -157,7 +157,7 @@ msgstr "Skrivbordsinställningar"
 
 #: ../settings/main.c:1691
 msgid "Unable to contact settings server"
-msgstr "Kunde inte kontakta inställningsservern"
+msgstr "Det gick inte att kontakta inställningsservern"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop "
@@ -467,7 +467,7 @@ msgstr "Välj det här alternativet för att visa förhandsgranskningsbara filer
 
 #: ../settings/xfdesktop-settings-ui.glade.h:42
 msgid "Single _click to activate items"
-msgstr "Klicka en gång för att aktivera ett objekt"
+msgstr "Enkelkli_ck för att aktivera objekt"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:43
 msgid "Use custom _font size:"
@@ -607,7 +607,7 @@ msgstr "_Ta bort skrivbord \"%s\""
 #: ../src/xfce-desktop.c:1084
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
-msgstr "Kunde inte läsa in bild från bakgrundslistfilen \"%s\""
+msgstr "Det gick inte att läsa in bild från bakgrundslistfilen \"%s\""
 
 #: ../src/xfce-desktop.c:1086
 msgid "Desktop Error"
@@ -617,7 +617,7 @@ msgstr "Skrivbordsfel"
 #: ../src/xfdesktop-file-icon-manager.c:514
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
-msgstr "Kunde inte skapa skrivbordsmappen \"%s\""
+msgstr "Det gick inte att skapa skrivbordsmappen \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:502
 #: ../src/xfdesktop-file-icon-manager.c:519
@@ -639,7 +639,7 @@ msgstr "Papperskorgsfel"
 #: ../src/xfdesktop-file-icon-manager.c:625
 #: ../src/xfdesktop-file-icon-manager.c:669
 msgid "The selected files could not be trashed"
-msgstr "Programväljaren kunde inte öppnas."
+msgstr "De markerade filerna kunde inte flyttas till papperskorgen"
 
 #: ../src/xfdesktop-file-icon-manager.c:626
 #: ../src/xfdesktop-file-icon-manager.c:670 ../src/xfdesktop-file-utils.c:762
@@ -658,7 +658,7 @@ msgstr "Den här funktionen kräver att att en filhanterartjänst körs (som til
 #: ../src/xfdesktop-file-icon-manager.c:1349
 #, c-format
 msgid "Unable to launch \"%s\":"
-msgstr "Kunde inte starta \"%s\":"
+msgstr "Det gick inte att starta \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:772
 #: ../src/xfdesktop-file-icon-manager.c:1033
@@ -683,7 +683,7 @@ msgstr "Öppna med \"%s\""
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
-msgstr "Kunde inte starta \"exo-desktop-item-edit\", som krävs för att skapa och redigera programstartare och länkar på skrivbordet."
+msgstr "Det gick inte att starta \"exo-desktop-item-edit\", som krävs för att skapa och redigera programstartare och länkar på skrivbordet."
 
 #: ../src/xfdesktop-file-icon-manager.c:1407
 msgid "_Open all"
@@ -814,7 +814,7 @@ msgstr "Namnbytesfel"
 
 #: ../src/xfdesktop-file-utils.c:746 ../src/xfdesktop-file-utils.c:761
 msgid "The file could not be renamed"
-msgstr "Filen kunde inte byta namn"
+msgstr "Filen kunde inte döpas om"
 
 #: ../src/xfdesktop-file-utils.c:804 ../src/xfdesktop-file-utils.c:819
 msgid "Delete Error"
@@ -836,7 +836,7 @@ msgstr "Den här funktionen kräver att att en papperskorgstjänst körs (som ti
 
 #: ../src/xfdesktop-file-utils.c:911 ../src/xfdesktop-file-utils.c:925
 msgid "Could not empty the trash"
-msgstr "Kunde inte tömma papperskorgen"
+msgstr "Det gick inte att tömma papperskorgen"
 
 #: ../src/xfdesktop-file-utils.c:962 ../src/xfdesktop-file-utils.c:977
 msgid "Create File Error"
@@ -844,7 +844,7 @@ msgstr "Fel vid borttagning"
 
 #: ../src/xfdesktop-file-utils.c:963 ../src/xfdesktop-file-utils.c:978
 msgid "Could not create a new file"
-msgstr "Kunde inte skapa en ny fil"
+msgstr "Det gick inte att skapa en ny fil"
 
 #: ../src/xfdesktop-file-utils.c:1018 ../src/xfdesktop-file-utils.c:1033
 msgid "Create Document Error"
@@ -852,7 +852,7 @@ msgstr "Fel vid skapande av dokument"
 
 #: ../src/xfdesktop-file-utils.c:1019 ../src/xfdesktop-file-utils.c:1034
 msgid "Could not create a new document from the template"
-msgstr "Kunde inte skapa ett nytt dokument från mallen"
+msgstr "Det gick inte att skapa ett nytt dokument från mallen"
 
 #: ../src/xfdesktop-file-utils.c:1068 ../src/xfdesktop-file-utils.c:1083
 msgid "File Properties Error"
