@@ -15,9 +15,9 @@ msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-03-03 18:32+0100\n"
-"PO-Revision-Date: 2015-06-03 16:07+0000\n"
+"PO-Revision-Date: 2015-07-19 17:35+0000\n"
 "Last-Translator: Påvel Nicklasson <pavelnicklasson@bahnhof.se>\n"
-"Language-Team: Swedish (http://www.transifex.com/projects/p/xfdesktop/language/sv/)\n"
+"Language-Team: Swedish (http://www.transifex.com/p/xfdesktop/language/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -156,7 +156,7 @@ msgstr "Skrivbordsinställningar"
 
 #: ../settings/main.c:2071
 msgid "Unable to contact settings server"
-msgstr "Kunde inte kontakta inställningsservern"
+msgstr "Det gick inte att kontakta inställningsservern"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop "
@@ -401,7 +401,7 @@ msgstr "Använd _undermenyer för fönstren på varje skrivbord"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:25
 msgid "Show s_ticky windows only in active workspace"
-msgstr "Visa endast kl_istriga fönster på aktivt skrivbord"
+msgstr "Visa endast fäs_tande fönster på aktivt skrivbord"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:26
 msgid "Show a_dd and remove workspace options in list"
@@ -439,7 +439,7 @@ msgstr "Visa dolda filer på skrivbordet"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:34
 msgid "Single _click to activate items"
-msgstr "Klicka en gång för att aktivera ett objekt"
+msgstr "Enkelkli_ck för att aktivera objekt"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:35
 msgid "Show icon tooltips. Size:"
@@ -536,7 +536,7 @@ msgstr "Startfel"
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
-msgstr "Kunde inte starta \"exo-desktop-item-edit\", som krävs för att skapa och redigera programstartare och länkar på skrivbordet."
+msgstr "Det gick inte att starta \"exo-desktop-item-edit\", som krävs för att skapa och redigera programstartare och länkar på skrivbordet."
 
 #: ../src/xfdesktop-application.c:836
 msgid "Display version information"
@@ -623,7 +623,7 @@ msgstr "Skrivbordsikoner för filer: %s\n"
 #: ../src/xfdesktop-file-icon-manager.c:578
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
-msgstr "Kunde inte skapa skrivbordsmappen \"%s\""
+msgstr "Det gick inte att skapa skrivbordsmappen \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:566
 #: ../src/xfdesktop-file-icon-manager.c:583
@@ -657,7 +657,7 @@ msgstr "Papperskorgsfel"
 #: ../src/xfdesktop-file-icon-manager.c:715
 #: ../src/xfdesktop-file-icon-manager.c:759
 msgid "The selected files could not be trashed"
-msgstr "De markerade filerna kunde inte tas bort"
+msgstr " De markerade filerna kunde inte tas bort"
 
 #: ../src/xfdesktop-file-icon-manager.c:716
 #: ../src/xfdesktop-file-icon-manager.c:760 ../src/xfdesktop-file-utils.c:726
@@ -676,7 +676,7 @@ msgstr "Den här funktionen kräver att en filhanterartjänst körs (som till ex
 #: ../src/xfdesktop-file-icon-manager.c:1365
 #, c-format
 msgid "Unable to launch \"%s\":"
-msgstr "Kunde inte starta \"%s\":"
+msgstr "Det gick inte att starta \"%s\":"
 
 #: ../src/xfdesktop-file-icon-manager.c:1077
 #, c-format
@@ -823,7 +823,7 @@ msgstr "Okänd"
 
 #: ../src/xfdesktop-file-utils.c:666
 msgid "The folder could not be opened"
-msgstr "Mappen kunde inte öppnas"
+msgstr "Mappen gick inte att öppna"
 
 #: ../src/xfdesktop-file-utils.c:683
 msgid "Error"
@@ -831,11 +831,11 @@ msgstr "Fel"
 
 #: ../src/xfdesktop-file-utils.c:684
 msgid "The requested operation could not be completed"
-msgstr "Den valda åtgärden kunde inte genomföras"
+msgstr "Den begärda operationen kunde inte slutföras"
 
 #: ../src/xfdesktop-file-utils.c:725
 msgid "The file could not be renamed"
-msgstr "Kunde inte byta namn på filen"
+msgstr "Filen kunde inte döpas om"
 
 #: ../src/xfdesktop-file-utils.c:827
 msgid "Delete Error"
@@ -857,7 +857,7 @@ msgstr "Den här funktionen kräver att att en papperskorgstjänst körs (som ti
 
 #: ../src/xfdesktop-file-utils.c:915
 msgid "Could not empty the trash"
-msgstr "Kunde inte tömma papperskorgen"
+msgstr "Det gick inte att tömma papperskorgen"
 
 #: ../src/xfdesktop-file-utils.c:958
 msgid "Create File Error"
@@ -865,7 +865,7 @@ msgstr "Fel vid borttagning av fil"
 
 #: ../src/xfdesktop-file-utils.c:959
 msgid "Could not create a new file"
-msgstr "Kunde inte skapa en ny fil"
+msgstr "Det gick inte att skapa en ny fil"
 
 #: ../src/xfdesktop-file-utils.c:1005
 msgid "Create Document Error"
@@ -873,7 +873,7 @@ msgstr "Fel vid skapande av dokument"
 
 #: ../src/xfdesktop-file-utils.c:1006
 msgid "Could not create a new document from the template"
-msgstr "Kunde inte skapa ett nytt dokument från mallen"
+msgstr "Det gick inte att skapa ett nytt dokument från mallen"
 
 #: ../src/xfdesktop-file-utils.c:1046
 msgid "File Properties Error"
@@ -904,7 +904,7 @@ msgstr "Överföringsfel"
 #: ../src/xfdesktop-file-utils.c:1301 ../src/xfdesktop-file-utils.c:1315
 #: ../src/xfdesktop-file-utils.c:1377 ../src/xfdesktop-file-utils.c:1393
 msgid "The file transfer could not be performed"
-msgstr "Filöverföringen kunde inte genomföras"
+msgstr "Filöverföringen kunde inte utföras"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:127
