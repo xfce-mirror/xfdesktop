@@ -2715,11 +2715,22 @@ xfdesktop_setup_grids(XfdesktopIconView *icon_view)
     icon_view->priv->ncols = (width - MIN_MARGIN * 2) / CELL_SIZE;
 
     xrest = icon_view->priv->width - icon_view->priv->ncols * CELL_SIZE;
-    icon_view->priv->xspacing = (xrest - MIN_MARGIN * 2) / (icon_view->priv->ncols - 1);
+    if (icon_view->priv->ncols > 1) {
+        icon_view->priv->xspacing = (xrest - MIN_MARGIN * 2) / (icon_view->priv->ncols - 1);
+    } else {
+        /* Let's not try to divide by 0 */
+        icon_view->priv->xspacing = 1;
+    }
+
     icon_view->priv->xmargin = (xrest - (icon_view->priv->ncols - 1) * icon_view->priv->xspacing) / 2;
 
     yrest = icon_view->priv->height - icon_view->priv->nrows * CELL_SIZE;
-    icon_view->priv->yspacing = (yrest - MIN_MARGIN * 2) / (icon_view->priv->nrows - 1);
+    if (icon_view->priv->nrows > 1) {
+        icon_view->priv->yspacing = (yrest - MIN_MARGIN * 2) / (icon_view->priv->nrows - 1);
+    } else {
+        /* Let's not try to divide by 0 */
+        icon_view->priv->yspacing = 1;
+    }
     icon_view->priv->ymargin = (yrest - (icon_view->priv->nrows - 1) * icon_view->priv->yspacing) / 2;
 
     new_size = (guint)icon_view->priv->nrows * icon_view->priv->ncols
