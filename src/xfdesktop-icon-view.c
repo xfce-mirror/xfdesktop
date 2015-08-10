@@ -739,7 +739,7 @@ xfdesktop_icon_view_init(XfdesktopIconView *icon_view)
                      G_CALLBACK(xfdesktop_icon_view_show_tooltip), NULL);
     
     gtk_widget_set_has_window(GTK_WIDGET(icon_view), FALSE);
-    gtk_widget_set_can_focus(GTK_WIDGET(icon_view), TRUE);
+    gtk_widget_set_can_focus(GTK_WIDGET(icon_view), FALSE);
 }
 
 static void
