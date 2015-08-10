@@ -229,8 +229,10 @@ create_gradient(GdkColor *color1, GdkColor *color2, gint width, gint height,
                 memcpy(pixdata.pixel_data+(i*pixdata.rowstride)+(j*3), rgb, 3);
         }
     }
-    
+
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     pix = gdk_pixbuf_from_pixdata(&pixdata, TRUE, &err);
+G_GNUC_END_IGNORE_DEPRECATIONS
     if(!pix) {
         g_warning("%s: Unable to create color gradient: %s\n", PACKAGE,
                 err->message);
