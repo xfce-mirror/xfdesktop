@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-03-03 18:32+0100\n"
-"PO-Revision-Date: 2015-12-09 17:21+0000\n"
+"PO-Revision-Date: 2015-12-09 18:05+0000\n"
 "Last-Translator: Davidmp <medipas@gmail.com>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfdesktop/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -572,47 +572,47 @@ msgstr "Causa la sortida de xfdesktop"
 #: ../src/xfdesktop-application.c:862
 #, c-format
 msgid "Failed to parse arguments: %s\n"
-msgstr ""
+msgstr "No s'han pogut analitzar els arguments: %s\n"
 
 #: ../src/xfdesktop-application.c:873
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr ""
+msgstr "Això és %s versió %s, executant-se en Xfce %s.\n"
 
 #: ../src/xfdesktop-application.c:875
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr ""
+msgstr "Construit amb GTK+ %d.%d.%d, enllaçat amb GTK+ %d.%d.%d."
 
 #: ../src/xfdesktop-application.c:879
 #, c-format
 msgid "Build options:\n"
-msgstr ""
+msgstr "Opcions de construcció:\n"
 
 #: ../src/xfdesktop-application.c:880
 #, c-format
 msgid "    Desktop Menu:        %s\n"
-msgstr ""
+msgstr "    Menú d'escriptori:   %s\n"
 
 #: ../src/xfdesktop-application.c:882 ../src/xfdesktop-application.c:889
 #: ../src/xfdesktop-application.c:896
 msgid "enabled"
-msgstr ""
+msgstr "habilitat"
 
 #: ../src/xfdesktop-application.c:884 ../src/xfdesktop-application.c:891
 #: ../src/xfdesktop-application.c:898
 msgid "disabled"
-msgstr ""
+msgstr "inhabilitat"
 
 #: ../src/xfdesktop-application.c:887
 #, c-format
 msgid "    Desktop Icons:       %s\n"
-msgstr ""
+msgstr "    Icones d'escriptori: %s\n"
 
 #: ../src/xfdesktop-application.c:894
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr ""
+msgstr "    Fitxer d'icones d'escriptori: %s\n"
 
 #: ../src/xfdesktop-file-icon-manager.c:561
 #: ../src/xfdesktop-file-icon-manager.c:578
@@ -637,11 +637,11 @@ msgstr "Error en canviar el nom"
 
 #: ../src/xfdesktop-file-icon-manager.c:669 ../src/xfdesktop-file-utils.c:778
 msgid "The files could not be renamed"
-msgstr ""
+msgstr "No s'ha pogut canviar el nom dels fitxers"
 
 #: ../src/xfdesktop-file-icon-manager.c:670
 msgid "None of the icons selected support being renamed."
-msgstr ""
+msgstr "Cap de les icones seleccionades tenen suport per canviar de nom."
 
 #: ../src/xfdesktop-file-icon-manager.c:714
 #: ../src/xfdesktop-file-icon-manager.c:758 ../src/xfdesktop-file-utils.c:877
@@ -713,11 +713,11 @@ msgstr "Crea un _directori…"
 
 #: ../src/xfdesktop-file-icon-manager.c:1521
 msgid "Create _Document"
-msgstr ""
+msgstr "Crea un _document"
 
 #: ../src/xfdesktop-file-icon-manager.c:1545
 msgid "No templates installed"
-msgstr ""
+msgstr "No hi ha plantilles instaŀlades"
 
 #: ../src/xfdesktop-file-icon-manager.c:1562
 msgid "_Empty File"
@@ -742,12 +742,12 @@ msgstr "Obre amb una altra _aplicació…"
 
 #: ../src/xfdesktop-file-icon-manager.c:1758
 msgid "Paste Into Folder"
-msgstr ""
+msgstr "Enganxa dins la carpeta"
 
 #. Trash
 #: ../src/xfdesktop-file-icon-manager.c:1777
 msgid "Mo_ve to Trash"
-msgstr ""
+msgstr "_Mou a la paperera"
 
 #. Rename
 #: ../src/xfdesktop-file-icon-manager.c:1808
@@ -822,11 +822,11 @@ msgstr "No s'ha pogut obrir la carpeta"
 
 #: ../src/xfdesktop-file-utils.c:683
 msgid "Error"
-msgstr ""
+msgstr "Error"
 
 #: ../src/xfdesktop-file-utils.c:684
 msgid "The requested operation could not be completed"
-msgstr ""
+msgstr "No s'ha pogut completar l'operació demanada"
 
 #: ../src/xfdesktop-file-utils.c:725
 msgid "The file could not be renamed"
@@ -834,15 +834,15 @@ msgstr "No s'ha pogut canviar el nom del fitxer"
 
 #: ../src/xfdesktop-file-utils.c:827
 msgid "Delete Error"
-msgstr ""
+msgstr "Error durant la supressió"
 
 #: ../src/xfdesktop-file-utils.c:828
 msgid "The selected files could not be deleted"
-msgstr ""
+msgstr "Els fitxers seleccionats no s'han pogut eliminar"
 
 #: ../src/xfdesktop-file-utils.c:878
 msgid "The selected files could not be moved to the trash"
-msgstr ""
+msgstr "Els fitxers seleccionats no s'han pogut moure a la paperera"
 
 #: ../src/xfdesktop-file-utils.c:879 ../src/xfdesktop-file-utils.c:916
 msgid ""
@@ -929,12 +929,12 @@ msgstr "S'ha d'escriure dades al dispositiu \"%s\" abans de ser expulsat. Si us 
 
 #: ../src/xfdesktop-notify.c:221
 msgid "Unmount Finished"
-msgstr ""
+msgstr "Ha acabat el desmuntatge"
 
 #: ../src/xfdesktop-notify.c:223 ../src/xfdesktop-notify.c:408
 #, c-format
 msgid "The device \"%s\" has been safely removed from the system. "
-msgstr ""
+msgstr "El dispositiu \"%s\" s'ha tret amb seguretat del sistema."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:313
@@ -949,7 +949,7 @@ msgstr "S'està expulsant el dispositiu \"%s\". Això pot trigar una estona."
 
 #: ../src/xfdesktop-notify.c:406
 msgid "Eject Finished"
-msgstr ""
+msgstr "Ha acabat l'expulsió"
 
 #: ../src/xfdesktop-regular-file-icon.c:786
 #, c-format
@@ -1027,7 +1027,7 @@ msgstr "_Expulsa el volum"
 
 #: ../src/xfdesktop-volume-icon.c:835
 msgid "_Unmount Volume"
-msgstr ""
+msgstr "Desmunta el vol_um"
 
 #: ../src/xfdesktop-volume-icon.c:842
 msgid "_Mount Volume"
