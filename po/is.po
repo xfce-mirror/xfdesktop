@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 23:19+0200\n"
-"PO-Revision-Date: 2015-12-11 14:10+0000\n"
+"PO-Revision-Date: 2015-12-13 09:47+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic (http://www.transifex.com/xfce/xfdesktop/language/is/)\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr ""
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
 #, c-format
 msgid "Backdrop list file is not valid"
-msgstr ""
+msgstr "Bakgrunnalistaskráin er ekki gild"
 
 #. no need to escape markup; it's already done for us
 #: ../settings/main.c:166
@@ -52,21 +52,21 @@ msgstr "Útskiptanleg tæki"
 #: ../settings/main.c:485
 #, c-format
 msgid "Cannot create backdrop list \"%s\""
-msgstr ""
+msgstr "Gat ekki búið til bakgrunnalistann \"%s\""
 
 #: ../settings/main.c:489 ../settings/main.c:875
 msgid "Backdrop List Error"
-msgstr ""
+msgstr "Villa í bakgrunnalista"
 
 #: ../settings/main.c:514
 msgid "Create/Load Backdrop List"
-msgstr ""
+msgstr "Búa til/Hlaða inn bakgrunnalista"
 
 #: ../settings/main.c:538
 #, c-format
 msgid ""
 "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
+msgstr "Skráin \"%s\" er ekki gild bakgrunnalistaskrá. Viltu skrifa yfir hana?"
 
 #: ../settings/main.c:543
 msgid "Invalid List File"
@@ -83,7 +83,7 @@ msgstr "Skipta út"
 #: ../settings/main.c:871
 #, c-format
 msgid "Failed to write backdrop list to \"%s\""
-msgstr ""
+msgstr "Gat ekki skrifað bakgrunnalistann í \"%s\""
 
 #: ../settings/main.c:898
 msgid "Add Image File(s)"
@@ -240,7 +240,7 @@ msgstr "<b>Myndir</b>"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Select a single image as the backdrop"
-msgstr ""
+msgstr "Veldu staka mynd sem bakgrunnsmynd"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 msgid "_Single image"
@@ -318,13 +318,13 @@ msgstr "_Skipta um bakgrunn (í mínútum):"
 msgid ""
 "While in image list mode, select this option to automatically select a "
 "different background from the image list after a set number of minutes."
-msgstr ""
+msgstr "Þegar er verið í myndalistaham; veldu þennan möguleika til þess að fá fram mismunandi bakgrunna úr myndalistanum eftir tiltekinn fjölda mínútna."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:37
 msgid ""
 "Number of minutes before a different background is randomly selected from "
 "the list."
-msgstr ""
+msgstr "Fjöldi mínútna sem líða áður en annar bakgrunnur er valinn slembið úr listanum."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:38
 msgid "St_retch this background across all monitors."
@@ -334,7 +334,7 @@ msgstr "Te_ygja þennan bakgrunn yfir alla skjái."
 msgid ""
 "When multiple monitors are present, select this option to stretch the "
 "current background over all of them."
-msgstr ""
+msgstr "Þegar verið er að nota marga skjái; veldu þennan möguleika til þess að teygja bakgrunninn yfir þá alla."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:11
 msgid "Left"
@@ -398,7 +398,7 @@ msgstr "_Breytilykill:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:26
 msgid "Show _application icons in menu"
-msgstr "Birta tákn _forrita í valmynd"
+msgstr "Birta táknmyndir _forrita í valmynd"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "_Edit desktop menu"
@@ -410,7 +410,7 @@ msgstr "<b>Skjáborðsvalmynd</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:29
 msgid "Show _window list menu on desktop middle click"
-msgstr "Birta _gluggalistavalmynd með miðju-músarsmell á skjáborð"
+msgstr "Birta _gluggalistavalmynd við miðju-músarsmell á skjáborð"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:30
 msgid "B_utton:"
@@ -422,7 +422,7 @@ msgstr "Bre_ytilykill:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:32
 msgid "Sh_ow application icons in menu"
-msgstr "Birta tákn _forrita í valmynd"
+msgstr "Birta táknmyndir _forrita í valmynd"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
 msgid "Show workspace _names in list"
@@ -434,7 +434,7 @@ msgstr "Nota _undirvalmyndir fyrir glugga í hverju vinnusvæði"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:35
 msgid "Show s_ticky windows only in active workspace"
-msgstr "Birta l_ímda glugga aðeins á virkum vinnusvæðum"
+msgstr "Bir_ta límda glugga aðeins á virkum vinnusvæðum"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid "<b>Window List Menu</b>"
@@ -454,7 +454,7 @@ msgstr "_Stærð táknmynda:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:40
 msgid "Show t_humbnails"
-msgstr "Birta smám_yndir:"
+msgstr "Birta smám_yndir"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:41
 msgid ""
@@ -478,7 +478,7 @@ msgstr "_Gegnsæi skýringatexta:"
 msgid ""
 "Specify the transparency level for the rounded label drawn behind the icon "
 "text"
-msgstr ""
+msgstr "Veldu gegnsæisstig fyrir rúnnaða reitinn sem teiknast á bak við texta táknmyndarinnar"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:46
 msgid "<b>Appearance</b>"
@@ -524,7 +524,7 @@ msgstr "Mistókst að þátta viðföng: %s\n"
 #: ../src/main.c:278
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr "Þetta er %s útgáfa %s, keyrir á Xfce %s.\n\n"
+msgstr "Þetta er %s útgáfa %s, keyrir á Xfce %s.\n"
 
 #: ../src/main.c:280
 #, c-format
@@ -604,7 +604,7 @@ msgstr "Fja_rlægja við vinnusvæði '%s'"
 #: ../src/xfce-desktop.c:1084
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
-msgstr ""
+msgstr "Get ekki lesið mynd úr bakgrunnalistaskránni \"%s\""
 
 #: ../src/xfce-desktop.c:1086
 msgid "Desktop Error"
