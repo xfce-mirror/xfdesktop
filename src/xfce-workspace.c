@@ -277,6 +277,13 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     g_signal_emit(G_OBJECT(user_data), signals[WORKSPACE_BACKDROP_CHANGED], 0, backdrop);
 }
 
+static void
+backdrop_ready_cb(XfceBackdrop *backdrop, gpointer user_data)
+{
+    TRACE("entering");
+    /* do nothing */
+}
+
 /**
  * xfce_workspace_monitors_changed:
  * @workspace: An #XfceWorkspace.
@@ -339,7 +346,7 @@ xfce_workspace_monitors_changed(XfceWorkspace *workspace,
                          workspace);
         g_signal_connect(G_OBJECT(workspace->priv->backdrops[i]),
                          "ready",
-                         G_CALLBACK(backdrop_changed_cb), workspace);
+                         G_CALLBACK(backdrop_ready_cb), workspace);
     }
 }
 
@@ -666,6 +673,11 @@ xfce_workspace_connect_backdrop_settings(XfceWorkspace *workspace,
     g_strlcat(buf, "backdrop-cycle-random-order", sizeof(buf));
     xfconf_g_property_bind(channel, buf, G_TYPE_BOOLEAN,
                            G_OBJECT(backdrop), "backdrop-cycle-random-order");
+
+    buf[pp_len] = 0;
+    g_strlcat(buf, "backdrop-do-animations", sizeof(buf));
+    xfconf_g_property_bind(channel, buf, G_TYPE_BOOLEAN,
+                           G_OBJECT(backdrop), "backdrop-do-animations");
 
     buf[pp_len] = 0;
     g_strlcat(buf, "last-image", sizeof(buf));
