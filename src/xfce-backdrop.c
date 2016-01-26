@@ -1658,9 +1658,12 @@ xfce_backdrop_image_data_release(XfceBackdropImageData *image_data)
     if(!image_data)
         return;
 
-    /* Only set the backdrop's image_data to NULL if it's current */
-    if(image_data->backdrop->priv->image_data == image_data)
-        image_data->backdrop->priv->image_data = NULL;
+    if(XFCE_IS_BACKDROP(image_data->backdrop)) {
+        /* Only set the backdrop's image_data to NULL if it's current */
+        if(image_data->backdrop->priv->image_data == image_data) {
+            image_data->backdrop->priv->image_data = NULL;
+        }
+    }
 
     if(image_data->cancellable)
         g_object_unref(image_data->cancellable);
@@ -1772,6 +1775,23 @@ xfce_backdrop_loader_size_prepared_cb(GdkPixbufLoader *loader,
     gdouble xscale, yscale;
 
     TRACE("entering");
+
+    if(image_data == NULL)
+        return;
+
+    /* canceled? quit now */
+    if(g_cancellable_is_cancelled(image_data->cancellable)) {
+        xfce_backdrop_image_data_release(image_data);
+        g_free(image_data);
+        return;
+    }
+
+    /* invalid backdrop? quit */
+    if(!XFCE_IS_BACKDROP(backdrop)) {
+        xfce_backdrop_image_data_release(image_data);
+        g_free(image_data);
+        return;
+    }
 
     if(backdrop->priv->image_style == XFCE_BACKDROP_IMAGE_INVALID) {
         g_warning("Invalid image style, setting to XFCE_BACKDROP_IMAGE_ZOOMED");
