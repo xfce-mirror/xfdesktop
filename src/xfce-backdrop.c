@@ -257,6 +257,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 void
 xfce_backdrop_clear_cached_image(XfceBackdrop *backdrop)
 {
+    TRACE("entering");
+
     g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
 
     if(backdrop->priv->pix == NULL)
@@ -1056,6 +1058,8 @@ void
 xfce_backdrop_set_color_style(XfceBackdrop *backdrop,
         XfceBackdropColorStyle style)
 {
+    TRACE("entering");
+
     g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
     g_return_if_fail((int)style >= -1 && style <= XFCE_BACKDROP_COLOR_TRANSPARENT);
 
@@ -1165,9 +1169,12 @@ xfce_backdrop_set_image_style(XfceBackdrop *backdrop,
                               XfceBackdropImageStyle style)
 {
     g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
-    
+
+    TRACE("entering");
+
     if(style != backdrop->priv->image_style) {
         xfce_backdrop_clear_cached_image(backdrop);
+        xfce_backdrop_clear_animation(backdrop);
         backdrop->priv->image_style = style;
         g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_CHANGED], 0);
     }
@@ -1573,6 +1580,19 @@ xfce_backdrop_get_random_order(XfceBackdrop *backdrop)
     return backdrop->priv->random_backdrop_order;
 }
 
+static gboolean
+xfce_backdrop_is_image_animated(XfceBackdrop *backdrop)
+{
+    if(backdrop->priv->animation != NULL &&
+       gdk_pixbuf_animation_is_static_image (backdrop->priv->animation) == FALSE &&
+       backdrop->priv->do_animations)
+    {
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
 /**
  * xfce_backdrop_set_do_animations:
  * @backdrop: An #XfceBackdrop.
@@ -1626,8 +1646,12 @@ xfce_backdrop_generate_canvas(XfceBackdrop *backdrop)
     gint w, h;
     GdkPixbuf *final_image;
 
+    TRACE("entering");
+
     w = backdrop->priv->width;
     h = backdrop->priv->height;
+
+    DBG("w %d h %d", w, h);
 
     /* In case we somehow end up here, give a warning and apply a temp fix */
     if(backdrop->priv->color_style == XFCE_BACKDROP_COLOR_INVALID) {
@@ -1688,12 +1712,13 @@ xfce_backdrop_get_pixbuf(XfceBackdrop *backdrop)
 {
     TRACE("entering");
 
-    if(backdrop->priv->animation) {
-        xfce_backdrop_create_final_image(backdrop);
-    }
-
     if(backdrop->priv->pix) {
         /* return a reference so we can cache it */
+        return g_object_ref(backdrop->priv->pix);
+    }
+
+    if(xfce_backdrop_is_image_animated(backdrop)) {
+        xfce_backdrop_create_final_image(backdrop);
         return g_object_ref(backdrop->priv->pix);
     }
 
@@ -1727,10 +1752,10 @@ xfce_backdrop_generate_async(XfceBackdrop *backdrop)
         backdrop->priv->image_data = NULL;
     }
 
-    /* If we aren't going to display an image then just create the canvas */
+    /* If we aren't going to display an image then just skip to creating the canvas */
     if(backdrop->priv->image_style == XFCE_BACKDROP_IMAGE_NONE) {
-        backdrop->priv->pix = xfce_backdrop_generate_canvas(backdrop);
-        g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_READY], 0);
+        XF_DEBUG("image style == NONE");
+        xfce_backdrop_create_final_image(backdrop);
         return;
     }
 
@@ -1801,6 +1826,7 @@ xfce_backdrop_loader_size_prepared_cb(GdkPixbufLoader *loader,
     switch(backdrop->priv->image_style) {
         case XFCE_BACKDROP_IMAGE_CENTERED:
         case XFCE_BACKDROP_IMAGE_TILED:
+        case XFCE_BACKDROP_IMAGE_NONE:
             /* do nothing */
             break;
 
@@ -1856,6 +1882,9 @@ xfce_backdrop_update_frame(XfceBackdrop *backdrop)
             backdrop->priv->animation_timer = 0;
     }
 
+    /* old image is invalid now, we'll generate a new one when needed */
+    xfce_backdrop_clear_cached_image(backdrop);
+
     /* backdrop changed! */
     g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_CHANGED], 0);
 
@@ -1865,7 +1894,7 @@ xfce_backdrop_update_frame(XfceBackdrop *backdrop)
 static void
 xfce_backdrop_create_final_image(XfceBackdrop *backdrop)
 {
-    GdkPixbuf *final_image, *image, *tmp;
+    GdkPixbuf *final_image = NULL, *image = NULL, *tmp = NULL;
     gint i, j;
     gint w, h, iw = 0, ih = 0;
     XfceBackdropImageStyle istyle;
@@ -1876,19 +1905,19 @@ xfce_backdrop_create_final_image(XfceBackdrop *backdrop)
     TRACE("entering");
 
     g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
-    g_return_if_fail(backdrop->priv->animation);
-    g_return_if_fail(backdrop->priv->animation_iter);
 
     xfce_backdrop_clear_cached_image(backdrop);
 
-    if(gdk_pixbuf_animation_is_static_image (backdrop->priv->animation) || !backdrop->priv->do_animations) {
-        /* Get a reasonable thing to display as a static unanimated image */
-        DBG("static image");
-        image = gdk_pixbuf_animation_get_static_image(backdrop->priv->animation);
-    } else {
-        DBG("animation");
-        gdk_pixbuf_animation_iter_advance(backdrop->priv->animation_iter, NULL);
-        image = gdk_pixbuf_animation_iter_get_pixbuf(backdrop->priv->animation_iter);
+    if(backdrop->priv->animation != NULL) {
+        if(!xfce_backdrop_is_image_animated(backdrop)) {
+            /* Get a reasonable thing to display as a static unanimated image */
+            DBG("static image");
+            image = gdk_pixbuf_animation_get_static_image(backdrop->priv->animation);
+        } else {
+            DBG("animation");
+            gdk_pixbuf_animation_iter_advance(backdrop->priv->animation_iter, NULL);
+            image = gdk_pixbuf_animation_iter_get_pixbuf(backdrop->priv->animation_iter);
+        }
     }
 
     if(image) {
@@ -1936,7 +1965,11 @@ xfce_backdrop_create_final_image(XfceBackdrop *backdrop)
 
     /* no image? return just the canvas */
     if(!image) {
-        XF_DEBUG("image failed to load, displaying canvas only");
+        if(istyle != XFCE_BACKDROP_IMAGE_NONE) {
+            XF_DEBUG("image failed to load, displaying canvas only");
+        } else {
+            XF_DEBUG("style == NONE, only displaying canvas");
+        }
         backdrop->priv->pix = final_image;
 
         g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_READY], 0);
@@ -1944,6 +1977,10 @@ xfce_backdrop_create_final_image(XfceBackdrop *backdrop)
     }
 
     switch(istyle) {
+        case XFCE_BACKDROP_IMAGE_NONE:
+            /* do nothing */
+            break;
+
         case XFCE_BACKDROP_IMAGE_CENTERED:
             dx = MAX((w - iw) / 2, 0);
             dy = MAX((h - ih) / 2, 0);
@@ -2031,7 +2068,11 @@ xfce_backdrop_create_final_image(XfceBackdrop *backdrop)
 
     /* keep the backdrop and emit the signal */
     backdrop->priv->pix = final_image;
-    g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_READY], 0);
+    if(!xfce_backdrop_is_image_animated(backdrop)) {
+        /* We're only sending the ready signal for static images, animations
+         * are updated with frame updates */
+        g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_READY], 0);
+    }
 
 
     /* We either created image or took a ref with
@@ -2041,7 +2082,7 @@ xfce_backdrop_create_final_image(XfceBackdrop *backdrop)
         g_object_unref(image);
 
     /* do we need to set a new timer for the next frame? */
-    if(gdk_pixbuf_animation_is_static_image (backdrop->priv->animation) == FALSE && backdrop->priv->do_animations) {
+    if(xfce_backdrop_is_image_animated(backdrop)) {
         gint timeout;
 
         timeout = gdk_pixbuf_animation_iter_get_delay_time(backdrop->priv->animation_iter);
@@ -2052,12 +2093,7 @@ xfce_backdrop_create_final_image(XfceBackdrop *backdrop)
                                                             (GSourceFunc)xfce_backdrop_update_frame,
                                                             backdrop);
         }
-    } else {
-        /* static image, no need to continue */
-        return;
     }
-
-    return;
 }
 
 static void
@@ -2081,7 +2117,7 @@ xfce_backdrop_loader_closed_cb(GdkPixbufLoader *loader,
     backdrop->priv->animation_iter = gdk_pixbuf_animation_get_iter(backdrop->priv->animation, NULL);
 
     /* manually load the first frame */
-    xfce_backdrop_update_frame (backdrop);
+    xfce_backdrop_create_final_image(backdrop);
 
     backdrop->priv->image_data = NULL;
     xfce_backdrop_image_data_release(image_data);
