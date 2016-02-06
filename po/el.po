@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-03-03 18:32+0100\n"
-"PO-Revision-Date: 2016-02-04 21:15+0000\n"
+"PO-Revision-Date: 2016-02-06 16:30+0000\n"
 "Last-Translator: Apostolos Papadimitriu <apostolos.papadimitriu@gmail.com>\n"
 "Language-Team: Greek (http://www.transifex.com/xfce/xfdesktop/language/el/)\n"
 "MIME-Version: 1.0\n"
@@ -72,23 +72,23 @@ msgstr "Φόντο για την οθόνη %d"
 
 #: ../settings/main.c:725
 msgid "Move this dialog to the display you want to edit the settings for."
-msgstr ""
+msgstr "Μετακινήστε αυτό το διάλογο στην οθόνη της οποίας επιθυμείτε να επεξεργαστείτε τις ρυθμίσεις."
 
 #: ../settings/main.c:732
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
-msgstr ""
+msgstr "Φόντο για %s στην Οθόνη %d (%s)"
 
 #: ../settings/main.c:736
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
-msgstr ""
+msgstr "Φόντο για %s στην Οθόνη %d"
 
 #: ../settings/main.c:743
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
-msgstr ""
+msgstr "Μετακινήστε αυτό το διάλογο στην οθόνη και το χώρο εργασίας του οποίου επιθυμείτε να επεξεργαστείτε τις ρυθμίσεις."
 
 #. Single monitor and single workspace
 #: ../settings/main.c:751
@@ -100,15 +100,15 @@ msgstr "Φόντο για την επιφάνεια εργασίας μου"
 #: ../settings/main.c:757
 #, c-format
 msgid "Wallpaper for %s"
-msgstr ""
+msgstr "Φόντο για %s"
 
 #: ../settings/main.c:762
 msgid "Move this dialog to the workspace you want to edit the settings for."
-msgstr ""
+msgstr "Μετακινήστε αυτό το διάλογο στο χώρο εργασίας του οποίου θέλετε να επεξεργαστείτε τις ρυθμίσεις."
 
 #: ../settings/main.c:1178
 msgid "Image selection is unavailable while the image style is set to None."
-msgstr ""
+msgstr "Η επιλογή εικόνας δεν είναι διαθέσιμη όταν το στυλ εικόνας έχει οριστεί σε «Καθόλου»"
 
 #: ../settings/main.c:1528
 msgid "Spanning screens"
@@ -187,7 +187,7 @@ msgstr "_Φάκελος:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
 msgid "Choose the folder to select wallpapers from."
-msgstr ""
+msgstr "Επιλέξτε το φάκελο για τις εικόνες φόντου."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
 msgid "St_yle:"
@@ -195,7 +195,7 @@ msgstr "Στ_υλ:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
 msgid "Specify how the image will be resized to fit the screen."
-msgstr ""
+msgstr "Επιλέξτε τον τρόπο αλλαγής μεγέθους της εικόνας ώστε να ταιριάζει στην οθόνη."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
 #: ../settings/xfdesktop-settings-ui.glade.h:4
@@ -232,11 +232,11 @@ msgstr "Χ_ρώμα:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Specify the style of the color drawn behind the backdrop image."
-msgstr ""
+msgstr "Επιλέξτε το στυλ του χρώματος πίσω από την εικόνα φόντου."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
-msgstr ""
+msgstr "Ορίζει το συμπαγές χρώμα, ή το \"αριστερό\" ή \"πάνω\" χρώμα της διαβάθμισης"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
 msgid "Select First Color"
@@ -244,7 +244,7 @@ msgstr "Επιλογή πρώτου χρώματος"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient."
-msgstr ""
+msgstr "Ορίζει το \"δεξιά\" ή \"κάτω\" χρώμα της διαβάθμισης"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
 msgid "Select Second Color"
@@ -261,7 +261,7 @@ msgstr "Αλλαγή του φόντου"
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
 msgid ""
 "Automatically select a different background from the current directory."
-msgstr ""
+msgstr "Αυτόματη επιλογή διαφορετικού φόντου από τον τρέχοντα κατάλογο."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid "Specify how often the background will change."
@@ -297,7 +297,7 @@ msgstr "χρονολογικώς"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
 msgid "Amount of time before a different background is selected."
-msgstr ""
+msgstr "Ο χρόνος που απαιτείται πριν την επιλογή νέου φόντου."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
 msgid "_Random Order"
@@ -307,7 +307,7 @@ msgstr "_Τυχαία Σειρά"
 msgid ""
 "Randomly selects another image from the same directory when the wallpaper is"
 " to cycle."
-msgstr ""
+msgstr "Επιλέγει τυχαία μια εικόνα από τον ίδιο κατάλογο όταν γίνεται εναλλαγή φόντου."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:1
 msgid "Left"
@@ -403,7 +403,7 @@ msgstr "Εμφάνιση s_ticky παραθύρων μόνο στην ενεργ
 
 #: ../settings/xfdesktop-settings-ui.glade.h:26
 msgid "Show a_dd and remove workspace options in list"
-msgstr ""
+msgstr "Εμφάνιση των επιλογών _προσθήκης και αφαίρεσης χώρων εργασίας στη λίστα"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "<b>Window List Menu</b>"
@@ -477,7 +477,7 @@ msgstr "Αφαίρεση Χώρου Εργασίας %d"
 msgid ""
 "Do you really want to remove workspace %d?\n"
 "Note: You are currently on workspace %d."
-msgstr ""
+msgstr "Είστε σίγουροι πως θέλετε να αφαιρέσετε το χώρο εργασίας %d;\nΣημείωση: Τώρα βρίσκεστε στο χώρο εργασίας %d."
 
 #: ../src/windowlist.c:78
 #, c-format
@@ -489,7 +489,7 @@ msgstr "Αφαίρεση Χώρου Εργασίας '%s'"
 msgid ""
 "Do you really want to remove workspace '%s'?\n"
 "Note: You are currently on workspace '%s'."
-msgstr ""
+msgstr "Είστε σίγουροι πως θέλετε να αφαιρέσετε το χώρο εργασίας %s;\nΣημείωση: Τώρα βρίσκεστε στο χώρο εργασίας %s."
 
 #. Popup a dialog box confirming that the user wants to remove a
 #. * workspace
@@ -546,19 +546,19 @@ msgstr "Επαναφόρτωση όλων των ρυθμίσεων"
 
 #: ../src/xfdesktop-application.c:838
 msgid "Advance to the next wallpaper on the current workspace"
-msgstr ""
+msgstr "Εμφάνιση επόμενου φόντου στον τρέχοντα χώρο εργασίας"
 
 #: ../src/xfdesktop-application.c:839
 msgid "Pop up the menu (at the current mouse position)"
-msgstr ""
+msgstr "Εμφάνιση του μενού (στην τρέχουσα θέση του ποντικιού)"
 
 #: ../src/xfdesktop-application.c:840
 msgid "Pop up the window list (at the current mouse position)"
-msgstr ""
+msgstr "Εμφάνιση της λίστας παραθύρων (στην τρέχουσα θέση του ποντικιού)"
 
 #: ../src/xfdesktop-application.c:842
 msgid "Automatically arrange all the icons on the desktop"
-msgstr ""
+msgstr "Αυτόματη τακτοποίηση όλων των εικονιδίων στην επιφάνεια εργασίας"
 
 #: ../src/xfdesktop-application.c:845
 msgid "Disable debug messages"
@@ -566,21 +566,21 @@ msgstr "Απενεργοποίηση μηνυμάτων αποσφαλμάτωσ
 
 #: ../src/xfdesktop-application.c:846
 msgid "Do not wait for a window manager on startup"
-msgstr ""
+msgstr "Να μην αναμένει για ένα διαχειριστή παραθύρων κατά την έναρξη"
 
 #: ../src/xfdesktop-application.c:847
 msgid "Cause xfdesktop to quit"
-msgstr ""
+msgstr "Προκαλεί τον τερματισμό του xfdesktop"
 
 #: ../src/xfdesktop-application.c:862
 #, c-format
 msgid "Failed to parse arguments: %s\n"
-msgstr ""
+msgstr "Αδυναμία ανάλυσης των παραμέτρων: %s\n\n"
 
 #: ../src/xfdesktop-application.c:873
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr ""
+msgstr "Αυτό είναι το %s έκδοση %s, που τρέχει στο Xfce %s.\n"
 
 #: ../src/xfdesktop-application.c:875
 #, c-format
@@ -595,27 +595,27 @@ msgstr ""
 #: ../src/xfdesktop-application.c:880
 #, c-format
 msgid "    Desktop Menu:        %s\n"
-msgstr ""
+msgstr "    Μενού Επιφάνειας Εργασίας:        %s\n"
 
 #: ../src/xfdesktop-application.c:882 ../src/xfdesktop-application.c:889
 #: ../src/xfdesktop-application.c:896
 msgid "enabled"
-msgstr ""
+msgstr "ενεργοποιημένο"
 
 #: ../src/xfdesktop-application.c:884 ../src/xfdesktop-application.c:891
 #: ../src/xfdesktop-application.c:898
 msgid "disabled"
-msgstr ""
+msgstr "απενεργοποιημένο"
 
 #: ../src/xfdesktop-application.c:887
 #, c-format
 msgid "    Desktop Icons:       %s\n"
-msgstr ""
+msgstr "    Εικονίδια Επιφάνειας Εργασίας:       %s\n"
 
 #: ../src/xfdesktop-application.c:894
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr ""
+msgstr "    Εικονίδια Αρχείων Επιφάνειας Εργασίας:  %s\n"
 
 #: ../src/xfdesktop-file-icon-manager.c:561
 #: ../src/xfdesktop-file-icon-manager.c:578
