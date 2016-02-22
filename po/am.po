@@ -1,935 +1,957 @@
-# Amharic translation to xfdesktop.
-# Copyright (C) 2002-2007 The Xfce development team.
-# This file is distributed under the same license as the xfdesktop package.
-# Tegegne Tefera <tefera@mekuria.com>, 2007.
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# samson <sambelet@yahoo.com>, 2016
+# Tegegne Tefera <tefera@mekuria.com>, 2007
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop 4.4.2\n"
+"Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-16 17:44+0100\n"
-"PO-Revision-Date: 2008-01-06 18:42+0100\n"
-"Last-Translator: Tegegne Tefera <tefera@mekuria.com>\n"
-"Language-Team: Amharic <l10n-am@googlegroups.com>\n"
-"Language: am\n"
+"POT-Creation-Date: 2015-03-03 18:32+0100\n"
+"PO-Revision-Date: 2016-02-22 22:26+0000\n"
+"Last-Translator: samson <sambelet@yahoo.com>\n"
+"Language-Team: Amharic (http://www.transifex.com/xfce/xfdesktop/language/am/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Bookmarks: -1,-1,192,-1,102,-1,-1,-1,-1,-1\n"
+"Language: am\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
-#, fuzzy, c-format
-msgid "Backdrop list file is not valid"
-msgstr "የኋላተዘርጊ ዝርዝር ፋይል ስምን ምረጥ "
-
-#. no need to escape markup; it's already done for us
-#: ../settings/main.c:162
-#, c-format
-msgid ""
-"%s\n"
-"<i>Size: %dx%d</i>"
-msgstr ""
-
-#: ../settings/main.c:272 ../src/xfdesktop-special-file-icon.c:247
-#: ../src/xfdesktop-special-file-icon.c:413
+#: ../settings/main.c:404 ../src/xfdesktop-special-file-icon.c:295
+#: ../src/xfdesktop-special-file-icon.c:479
 msgid "Home"
 msgstr "ቤት"
 
-#: ../settings/main.c:274
-#, fuzzy
+#: ../settings/main.c:406
 msgid "Filesystem"
-msgstr "ስርዓት"
+msgstr "የ ፋይል ስርአት"
 
-#: ../settings/main.c:276
-#, fuzzy
+#: ../settings/main.c:408
 msgid "Trash"
-msgstr "የትቢያ ስህተት"
+msgstr "ቆሻሻ"
 
-#: ../settings/main.c:278
+#: ../settings/main.c:410
 msgid "Removable Devices"
+msgstr "የሚወልቁ አካሎች"
+
+#: ../settings/main.c:412
+msgid "Network Shares"
 msgstr ""
 
-#: ../settings/main.c:458
-#, fuzzy, c-format
-msgid "Cannot create backdrop list \"%s\""
-msgstr "የጀርባ ዝርዝር ፍጠር"
+#: ../settings/main.c:414
+msgid "Disks and Drives"
+msgstr "ዲስኮች እና ድራይቭስ"
 
-#: ../settings/main.c:462 ../settings/main.c:779
-#, fuzzy
-msgid "Backdrop List Error"
-msgstr "የባህሪዎች ስህተት"
+#: ../settings/main.c:416
+msgid "Other Devices"
+msgstr "ሌሎች አካሎች"
 
-#: ../settings/main.c:487
-#, fuzzy
-msgid "Create/Load Backdrop List"
-msgstr "የጀርባ ዝርዝር ፍጠር"
-
-#: ../settings/main.c:511
+#. Display the file name, file type, and file size in the tooltip.
+#: ../settings/main.c:529
 #, c-format
 msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+"<b>%s</b>\n"
+"Type: %s\n"
+"Size: %s"
+msgstr "<b>%s</b>\nአይነት: %s\nመጠን: %s"
+
+#: ../settings/main.c:716
+#, c-format
+msgid "Wallpaper for Monitor %d (%s)"
+msgstr "የ ግድግዳ ወረቀት ለ ሞኒተር %d (%s)"
+
+#: ../settings/main.c:719
+#, c-format
+msgid "Wallpaper for Monitor %d"
+msgstr "የ ግድግዳ ወረቀት ለ ሞኒተር %d"
+
+#: ../settings/main.c:725
+msgid "Move this dialog to the display you want to edit the settings for."
 msgstr ""
 
-#: ../settings/main.c:516
-#, fuzzy
-msgid "Invalid List File"
-msgstr "ፋይሎችን ርዝር"
+#: ../settings/main.c:732
+#, c-format
+msgid "Wallpaper for %s on Monitor %d (%s)"
+msgstr "የ ግድግዳ ወረቀት ለ %s ሞኒተር %d (%s)"
 
-#: ../settings/main.c:519
-msgid "Overwriting the file will cause its contents to be lost."
+#: ../settings/main.c:736
+#, c-format
+msgid "Wallpaper for %s on Monitor %d"
+msgstr "የ ግድግዳ ወረቀት ለ %s ሞኒተር %d"
+
+#: ../settings/main.c:743
+msgid ""
+"Move this dialog to the display and workspace you want to edit the settings "
+"for."
 msgstr ""
 
-#: ../settings/main.c:521
-#, fuzzy
-msgid "Replace"
-msgstr "እንደገና ሰይም"
+#. Single monitor and single workspace
+#: ../settings/main.c:751
+#, c-format
+msgid "Wallpaper for my desktop"
+msgstr "የ ግድግዳ ወረቀት ለ እኔ ዴስክቶፕ"
 
-#: ../settings/main.c:775
-#, fuzzy, c-format
-msgid "Failed to write backdrop list to \"%s\""
-msgstr "\"%s\" ን ወደ \"%s\" መሰየም አልተሳካም፦"
+#. Single monitor and per workspace wallpaper
+#: ../settings/main.c:757
+#, c-format
+msgid "Wallpaper for %s"
+msgstr "የ ግድግዳ ወረቀት ለ %s"
 
-#: ../settings/main.c:802
-#, fuzzy
-msgid "Add Image File(s)"
-msgstr "ይምስል ፋይሎች"
+#: ../settings/main.c:762
+msgid "Move this dialog to the workspace you want to edit the settings for."
+msgstr ""
 
-#: ../settings/main.c:811
+#: ../settings/main.c:1178
+msgid "Image selection is unavailable while the image style is set to None."
+msgstr ""
+
+#: ../settings/main.c:1528
+msgid "Spanning screens"
+msgstr ""
+
+#: ../settings/main.c:1839
 msgid "Image files"
-msgstr "የምስል ፋይሎች"
+msgstr "የ ምስል ፋይሎች"
 
-#: ../settings/main.c:816
-#, fuzzy
-msgid "All files"
-msgstr "ሁሉ ፋይሎች"
-
-#: ../settings/main.c:1248
-#, fuzzy, c-format
-msgid "Screen %d, Monitor %d (%s)"
-msgstr "ስክሪን %d, ማያ %d"
-
-#: ../settings/main.c:1252
-#, c-format
-msgid "Screen %d, Monitor %d"
-msgstr "ስክሪን %d, ማያ %d"
-
-#: ../settings/main.c:1255
-#, c-format
-msgid "Screen %d"
-msgstr "ስክሪን  %d"
-
-#: ../settings/main.c:1260
-#, c-format
-msgid "Monitor %d (%s)"
-msgstr ""
-
-#: ../settings/main.c:1264
-#, fuzzy, c-format
-msgid "Monitor %d"
-msgstr "ስክሪን %d, ማያ %d"
-
-#: ../settings/main.c:1477
+#: ../settings/main.c:2019
 msgid "Settings manager socket"
-msgstr ""
+msgstr "የ ማሰናጃዎች አስተዳዳሪ ሶኬት"
 
-#: ../settings/main.c:1477
+#: ../settings/main.c:2019
 msgid "SOCKET ID"
+msgstr "ሶኬት ID"
+
+#: ../settings/main.c:2020
+msgid "Version information"
+msgstr "የ እትም መረጃ"
+
+#: ../settings/main.c:2021 ../src/xfdesktop-application.c:844
+msgid "Enable debug messages"
 msgstr ""
 
-#: ../settings/main.c:1478
-#, fuzzy
-msgid "Version information"
-msgstr "መረጃ"
-
-#: ../settings/main.c:1498
+#: ../settings/main.c:2049
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr ""
 
-#: ../settings/main.c:1510
+#: ../settings/main.c:2061
 msgid "The Xfce development team. All rights reserved."
 msgstr ""
 
-#: ../settings/main.c:1511
+#: ../settings/main.c:2062
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr ""
 
-#: ../settings/main.c:1518
+#: ../settings/main.c:2069
 msgid "Desktop Settings"
-msgstr "የገበታ ስየማዎች"
+msgstr "የ ዴስክቶፕ ማሰናጃዎች"
 
-#: ../settings/main.c:1520
-#, fuzzy
+#: ../settings/main.c:2071
 msgid "Unable to contact settings server"
-msgstr "የሽፍሲ ትብያ አገልግሎትን ማግኘት አልተቻለም።"
+msgstr "የ ማሰናጃ ሰርቨር መገናኘት አልተቻለም"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
-#, fuzzy
 msgid "Desktop "
-msgstr "ገበታ"
+msgstr "ዴስክቶፕ "
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
-msgid "Set desktop background and menu and icon behaviour"
+#: ../settings/xfdesktop-settings-ui.glade.h:11
+msgid "Set desktop background and menu and icon behavior"
 msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
-msgid "<b>Adjustments</b>"
-msgstr ""
+msgid "Solid color"
+msgstr "ሙሉ ቀለም"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
-#, fuzzy
-msgid "<b>Colors</b>"
-msgstr "<b>የስራ ቦታ %d</b>"
+msgid "Horizontal gradient"
+msgstr "የ አግድም ከፍታ"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
-#, fuzzy
-msgid "<b>Image</b>"
-msgstr "አቀራረብ_A"
+msgid "Vertical gradient"
+msgstr "የ ቁመት ከፍታ"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
-#, fuzzy
-msgid "<b>Images</b>"
-msgstr "<b>የስራ ቦታ %d</b>"
+msgid "Transparent"
+msgstr "ግልጽ"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
-msgid "Add an image to the list"
-msgstr ""
+msgid "_Folder:"
+msgstr "_ፎልደር:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
-#: ../settings/xfdesktop-settings-ui.glade.h:6
-msgid "Auto"
-msgstr "ራስገዝ"
+msgid "Choose the folder to select wallpapers from."
+msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
-msgid "Automatically pick a random image from a list file"
-msgstr ""
+msgid "St_yle:"
+msgstr "ዘ_ዴ:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
-#, fuzzy
-msgid "B_rightness:"
-msgstr "ብርሃንነት አስተካክል _d፦"
+msgid "Specify how the image will be resized to fit the screen."
+msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
-#: ../settings/xfdesktop-settings-ui.glade.h:8
-msgid "Centered"
-msgstr "የተማከለ"
+#: ../settings/xfdesktop-settings-ui.glade.h:4
+msgid "None"
+msgstr "ምንም"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
-msgid "Create a new list, or load an existing one"
-msgstr ""
+msgid "Centered"
+msgstr "መሀከል"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
-msgid "Don't display an image at all"
-msgstr ""
+msgid "Tiled"
+msgstr "የ ተደረበ"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
-#: ../settings/xfdesktop-settings-ui.glade.h:12
-#, fuzzy
-msgid "Horizontal gradient"
-msgstr "አግድም ንድፍ"
+msgid "Stretched"
+msgstr "የ ሰፋ"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
-#, fuzzy
-msgid "Image _list"
-msgstr "ይምስል ፋይሎች"
+msgid "Scaled"
+msgstr "የ ተመጠነ"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
-msgid "Increase or decrease the brightness of the final image"
-msgstr ""
+msgid "Zoomed"
+msgstr "ማሳያ"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
-msgid "Increase or decrease the color saturation of the final image"
+msgid "Spanning Screens"
 msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
-msgid "Remove the selected image(s) from the list"
-msgstr ""
+msgid "C_olor:"
+msgstr "ቀ_ለም:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
-msgid "Sa_turation:"
+msgid "Specify the style of the color drawn behind the backdrop image."
 msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
-#: ../settings/xfdesktop-settings-ui.glade.h:23
-msgid "Scaled"
-msgstr "የተመጠነ"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
-#, fuzzy
-msgid "Select First Color"
-msgstr "አንደኛ ቀለም_r፦"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
-#, fuzzy
-msgid "Select Second Color"
-msgstr "ሁለተኛ ቀለም_S፦"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
-msgid "Select a single image as the backdrop"
+msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
 msgstr ""
 
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
+msgid "Select First Color"
+msgstr "የ መጀመሪያ ቀለም ይምረጡ"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
+msgid "Specifies the \"right\" or \"bottom\" color of the gradient."
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
+msgid "Select Second Color"
+msgstr "ሁለተኛ ቀለም ይምረጡ"
+
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
-#: ../settings/xfdesktop-settings-ui.glade.h:32
-#, fuzzy
-msgid "Solid color"
-msgstr "አንድ ወጥ ቀለም"
+msgid "Apply to all _workspaces"
+msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
-msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
+msgid "Change the _background "
 msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
 msgid ""
-"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+"Automatically select a different background from the current directory."
 msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
-msgid "Specify how the image will be resized to fit the screen"
+msgid "Specify how often the background will change."
 msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
-msgid "Specify the style of the color drawn behind the backdrop image"
-msgstr ""
+msgid "in seconds:"
+msgstr "በ ሰከንዶች ውስጥ:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
-#, fuzzy
-msgid "St_yle:"
-msgstr "ሙና፦"
+msgid "in minutes:"
+msgstr "በ ደቂቃዎች ውስጥ:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
-#: ../settings/xfdesktop-settings-ui.glade.h:34
-msgid "Stretched"
-msgstr "የተወጠረ"
+msgid "in hours:"
+msgstr "በ ሰአቶች ውስጥ:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
-#: ../settings/xfdesktop-settings-ui.glade.h:35
-msgid "Tiled"
-msgstr "የተደራረበ"
+msgid "at start up"
+msgstr "በሚጀምር ጊዜ"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
-#: ../settings/xfdesktop-settings-ui.glade.h:36
-msgid "Transparent"
-msgstr ""
+msgid "every hour"
+msgstr "በየ ሰአቱ"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
-#: ../settings/xfdesktop-settings-ui.glade.h:39
-#, fuzzy
-msgid "Vertical gradient"
-msgstr "ሽቅብ ንድፍ"
+msgid "every day"
+msgstr "በየ ቀኑ"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
-#: ../settings/xfdesktop-settings-ui.glade.h:40
-msgid "Zoomed"
+msgid "chronologically"
 msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
-#, fuzzy
-msgid "_None"
-msgstr "ምንም"
+msgid "Amount of time before a different background is selected."
+msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
-msgid "_Single image"
+msgid "_Random Order"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
+msgid ""
+"Randomly selects another image from the same directory when the wallpaper is"
+" to cycle."
 msgstr ""
 
 #: ../settings/xfdesktop-settings-ui.glade.h:1
-#, fuzzy
-msgid "<b>Appearance</b>"
-msgstr "አቀራረብ_A"
+msgid "Left"
+msgstr "በ ግራ"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:2
-#, fuzzy
-msgid "<b>Default Icons</b>"
-msgstr "<b>የስራ ቦታ %d</b>"
+msgid "Middle"
+msgstr "መሀከል"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:3
-msgid "<b>Desktop Menu</b>"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-ui.glade.h:4
-msgid "<b>Window List Menu</b>"
-msgstr ""
+msgid "Right"
+msgstr "በ ቀኝ"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:5
+msgid "Shift"
+msgstr "Shift"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:6
 msgid "Alt"
-msgstr ""
+msgstr "Alt"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:7
-#, fuzzy
-msgid "B_utton:"
-msgstr "አዝራር"
+msgid "Control"
+msgstr "Control"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:8
+msgid "Minimized application icons"
+msgstr ""
 
 #: ../settings/xfdesktop-settings-ui.glade.h:9
-#, fuzzy
-msgid "Control"
-msgstr "አስተዋጺ"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:729
-msgid "Desktop"
-msgstr "ገበታ"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:11
 msgid "File/launcher icons"
 msgstr "ፋይል/ማስነሻ መለዮዎች"
 
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:1024
+msgid "Desktop"
+msgstr "ገበታ"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:12
+msgid "_Background"
+msgstr "_መደብ"
+
 #: ../settings/xfdesktop-settings-ui.glade.h:13
-#, fuzzy
-msgid "Icon _size:"
-msgstr "የመለዮ መጠን_I፦"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:14
-#, fuzzy
-msgid "Icon _type:"
-msgstr "የመለዮ መጠን_I፦"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:15
-msgid "Label trans_parency:"
+msgid "Include applications menu on _desktop right click"
 msgstr ""
 
+#: ../settings/xfdesktop-settings-ui.glade.h:14
+msgid "_Button:"
+msgstr "_ቁልፍ:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:15
+msgid "Mo_difier:"
+msgstr "ማሻ_ሻያ:"
+
 #: ../settings/xfdesktop-settings-ui.glade.h:16
-msgid "Left"
+msgid "Show _application icons in menu"
 msgstr ""
 
 #: ../settings/xfdesktop-settings-ui.glade.h:17
-msgid "Middle"
-msgstr ""
+msgid "_Edit desktop menu"
+msgstr "የ ዴስክቶፕ ዝርዝር _ማረሚያ"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:18
-#, fuzzy
-msgid "Minimized application icons"
-msgstr "የፕሮግራም መለዮዎችን አሳንስ"
+msgid "<b>Desktop Menu</b>"
+msgstr "<b>የ ዴስክቶፕ ዝርዝር</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:19
-#, fuzzy
-msgid "Mo_difier:"
-msgstr "የተሻሻለ፦"
+msgid "Show _window list menu on desktop middle click"
+msgstr ""
 
 #: ../settings/xfdesktop-settings-ui.glade.h:20
-#, fuzzy
-msgid "Modi_fier:"
-msgstr "የተሻሻለ፦"
+msgid "B_utton:"
+msgstr "ቁ_ልፍ:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:21
-msgid "None"
-msgstr "ምንም"
+msgid "Modi_fier:"
+msgstr "ማሻ_ሻያ:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:22
-msgid "Right"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-ui.glade.h:24
-msgid "Set desktop background and menu and icon behavior"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-ui.glade.h:25
-#, fuzzy
 msgid "Sh_ow application icons in menu"
-msgstr "የመለዮዎች ምናሌን አሳይ_i"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:26
-msgid "Shift"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-ui.glade.h:27
-#, fuzzy
-msgid "Show _application icons in menu"
-msgstr "የመለዮዎች ምናሌን አሳይ_i"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:28
-#, fuzzy
-msgid "Show _window list menu on desktop middle click"
-msgstr "በመሃል መጫን የመስኮት ምናሌን አሳይ _w"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:29
-#, fuzzy
-msgid "Include applications menu on _desktop right click"
-msgstr "በቀኝ ሲጫን የገበታ ምናሌ ይታይ _d"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:30
-msgid "Show s_ticky windows only in active workspace"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-ui.glade.h:31
+#: ../settings/xfdesktop-settings-ui.glade.h:23
 msgid "Show workspace _names in list"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-ui.glade.h:33
-msgid ""
-"Specify the transparency level for the rounded label drawn behind the icon "
-"text"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-ui.glade.h:37
+#: ../settings/xfdesktop-settings-ui.glade.h:24
 msgid "Use _submenus for the windows in each workspace"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-ui.glade.h:38
-#, fuzzy
-msgid "Use custom _font size:"
-msgstr "የፊደል ቅርጽ መጠን ግለምርጫ_f፦"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:41
-msgid "_Background"
+#: ../settings/xfdesktop-settings-ui.glade.h:25
+msgid "Show s_ticky windows only in active workspace"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-ui.glade.h:42
-#, fuzzy
-msgid "_Button:"
-msgstr "አዝራር"
+#: ../settings/xfdesktop-settings-ui.glade.h:26
+msgid "Show a_dd and remove workspace options in list"
+msgstr ""
 
-#: ../settings/xfdesktop-settings-ui.glade.h:43
-#, fuzzy
-msgid "_Edit desktop menu"
-msgstr "ምናሌን አርም_E"
+#: ../settings/xfdesktop-settings-ui.glade.h:27
+msgid "<b>Window List Menu</b>"
+msgstr ""
 
-#: ../settings/xfdesktop-settings-ui.glade.h:44
-#, fuzzy
-msgid "_Icons"
-msgstr "መለዮዎች"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:45
-#, fuzzy
+#: ../settings/xfdesktop-settings-ui.glade.h:28
 msgid "_Menus"
-msgstr "ምናሌዎች"
+msgstr "_ዝርዝር"
 
-#: ../src/main.c:238
-#, fuzzy
-msgid "Display version information"
-msgstr "መረጃ"
+#: ../settings/xfdesktop-settings-ui.glade.h:29
+msgid "Icon _type:"
+msgstr "የ ምልክት _አይነት:"
 
-#: ../src/main.c:239
-#, fuzzy
-msgid "Reload all settings, refresh image list"
-msgstr "    --reload    ሁሉንም ስየማዎች እንደገና ጫን፣ ምስሉንም እንደገና ጫን\n"
+#: ../settings/xfdesktop-settings-ui.glade.h:30
+msgid "Icon _size:"
+msgstr "የ ምልክት _መጠን:"
 
-#: ../src/main.c:240
-#, fuzzy
-msgid "Pop up the menu (at the current mouse position)"
-msgstr "ምናሌውን ፖፕአድርግ (ጠቋሚው ባለበት ቦታ)\n"
+#: ../settings/xfdesktop-settings-ui.glade.h:31
+msgid "Show t_humbnails"
+msgstr "በ _አውራ ጥፍር ልክ ማሳያ"
 
-#: ../src/main.c:241
-#, fuzzy
-msgid "Pop up the window list (at the current mouse position)"
-msgstr "    --windowlist  የመስኮት ምናሌን ፖፕአድርግ (ጠቋሚው ባለበት ቦታ)\n"
+#: ../settings/xfdesktop-settings-ui.glade.h:32
+msgid ""
+"Select this option to display preview-able files on the desktop as "
+"automatically generated thumbnail icons."
+msgstr ""
 
-#: ../src/main.c:242
-#, fuzzy
-msgid "Cause xfdesktop to quit"
-msgstr "    --quit       የሸፍሲገበታ እንዲዘጋ አድርግ\n"
+#: ../settings/xfdesktop-settings-ui.glade.h:33
+msgid "Show hidden files on the desktop"
+msgstr ""
 
-#: ../src/main.c:262
-#, fuzzy, c-format
-msgid "Failed to parse arguments: %s\n"
-msgstr "\"%s\" ማስኬድ አልተሳካም፦"
+#: ../settings/xfdesktop-settings-ui.glade.h:34
+msgid "Single _click to activate items"
+msgstr ""
 
-#: ../src/main.c:270
-#, c-format
-msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr "ይህ %s ዝርያ %s, የሚሄደው በሸፍሲ %s ላይ ነው።\n"
+#: ../settings/xfdesktop-settings-ui.glade.h:35
+msgid "Show icon tooltips. Size:"
+msgstr ""
 
-#: ../src/main.c:272
-#, c-format
-msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr "የተገነባው በ GTK+ %d.%d.%d, የተያያዘው ከ GTK+ %d.%d.%d."
+#: ../settings/xfdesktop-settings-ui.glade.h:36
+msgid "Size of the tooltip preview image."
+msgstr ""
 
-#: ../src/main.c:276
-#, c-format
-msgid "Build options:\n"
-msgstr "የግንባታ ምርጫ:\n"
+#: ../settings/xfdesktop-settings-ui.glade.h:37
+msgid "Use custom _font size:"
+msgstr ""
 
-#: ../src/main.c:277
-#, c-format
-msgid "    Desktop Menu:        %s\n"
-msgstr "     የገበታ ምና፦        %s\n"
+#: ../settings/xfdesktop-settings-ui.glade.h:38
+msgid "<b>Appearance</b>"
+msgstr "<b>አቀራረብ</b>"
 
-#: ../src/main.c:279 ../src/main.c:286 ../src/main.c:293
-msgid "enabled"
-msgstr "ተችሏል"
+#: ../settings/xfdesktop-settings-ui.glade.h:39
+msgid "<b>Default Icons</b>"
+msgstr "<b>ነባር ምልክቶች</b>"
 
-#: ../src/main.c:281 ../src/main.c:288 ../src/main.c:295
-msgid "disabled"
-msgstr "ከስራውጪ"
-
-#: ../src/main.c:284
-#, c-format
-msgid "    Desktop Icons:       %s\n"
-msgstr "    የገበታ መለዮዎች፦       %s\n"
-
-#: ../src/main.c:291
-#, c-format
-msgid "    Desktop File Icons:  %s\n"
-msgstr "    የገበታ ፋይል መለዮዎች፦  %s\n"
-
-#: ../src/main.c:322
-#, c-format
-msgid "%s is not running.\n"
-msgstr "%s እየሰራ አይደለም.\n"
+#: ../settings/xfdesktop-settings-ui.glade.h:40
+msgid "_Icons"
+msgstr "_ምልክቶች"
 
 #: ../src/menu.c:106
 msgid "_Applications"
+msgstr "_መተግበሪያዎች"
+
+#: ../src/windowlist.c:73
+#, c-format
+msgid "Remove Workspace %d"
+msgstr "የ ስራ ቦታ ማስወገጃ %d"
+
+#: ../src/windowlist.c:74
+#, c-format
+msgid ""
+"Do you really want to remove workspace %d?\n"
+"Note: You are currently on workspace %d."
 msgstr ""
 
-#: ../src/windowlist.c:235
+#: ../src/windowlist.c:78
+#, c-format
+msgid "Remove Workspace '%s'"
+msgstr ""
+
+#: ../src/windowlist.c:79
+#, c-format
+msgid ""
+"Do you really want to remove workspace '%s'?\n"
+"Note: You are currently on workspace '%s'."
+msgstr ""
+
+#. Popup a dialog box confirming that the user wants to remove a
+#. * workspace
+#: ../src/windowlist.c:86
+msgid "Remove"
+msgstr "ማስወገጃ"
+
+#: ../src/windowlist.c:247
 msgid "Window List"
-msgstr ""
+msgstr "የ መስኮት ዝርዝር"
 
-#: ../src/windowlist.c:261
+#: ../src/windowlist.c:273
 #, c-format
 msgid "<b>Workspace %d</b>"
-msgstr "<b>የስራ ቦታ %d</b>"
+msgstr "<b>የ ስራ ቦታ %d</b>"
 
-#: ../src/windowlist.c:270
-#, fuzzy, c-format
-msgid "Workspace %d"
-msgstr "<b>የስራ ቦታ %d</b>"
-
-#: ../src/windowlist.c:272
-#, c-format
-msgid "<i>Workspace %d</i>"
-msgstr "<i>የስራ ቦታ %d</i>"
-
-#: ../src/windowlist.c:368 ../src/windowlist.c:371
+#: ../src/windowlist.c:361 ../src/windowlist.c:364
 msgid "_Add Workspace"
-msgstr "የስራ ቦታን ጨምር_A"
+msgstr "የ ስራ ቦታ _መጨመሪያ"
 
-#: ../src/windowlist.c:379
+#: ../src/windowlist.c:372
 #, c-format
 msgid "_Remove Workspace %d"
-msgstr "የስራ ቦታ %dን ሰረዝ_R"
+msgstr "የ ስራ ቦታ _ማስወገጃ %d"
 
-#: ../src/windowlist.c:382
+#: ../src/windowlist.c:375
 #, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "የስራ ቦታ '%s'ን ሰረዝ_R"
+msgstr "የ ስራ ቦታ ማስወገጃ '%s'"
 
-#: ../src/xfce-desktop.c:1006
-#, fuzzy, c-format
-msgid "Unable to load image from backdrop list file \"%s\""
-msgstr "የይል  \"%s\"ን መፍጠር አልተቻለም፦"
+#: ../src/xfdesktop-app-menu-item.c:351
+#: ../src/xfdesktop-file-icon-manager.c:862
+#: ../src/xfdesktop-file-icon-manager.c:1153
+#: ../src/xfdesktop-file-icon-manager.c:1366 ../src/xfdesktop-file-utils.c:665
+#: ../src/xfdesktop-file-utils.c:1087 ../src/xfdesktop-file-utils.c:1164
+#: ../src/xfdesktop-file-utils.c:1189 ../src/xfdesktop-file-utils.c:1241
+msgid "Launch Error"
+msgstr "የማስነሻ ስህተት"
 
-#: ../src/xfce-desktop.c:1008
-#, fuzzy
-msgid "Desktop Error"
-msgstr "ገበታ"
+#: ../src/xfdesktop-app-menu-item.c:353
+#: ../src/xfdesktop-file-icon-manager.c:1155
+msgid ""
+"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
+"edit launchers and links on the desktop."
+msgstr "\"exo-desktop-item-edit\"ን ማስነሳት አልተቻለም: ይህ አካል አስነሺዎችን ለ መፍጠር እና ለማረም እና ከ ዴስክቶፕ ጋር ለማገናኘት ያስፈልጋል"
 
-#: ../src/xfdesktop-file-icon-manager.c:465
-#: ../src/xfdesktop-file-icon-manager.c:482
-#, fuzzy, c-format
+#: ../src/xfdesktop-application.c:836
+msgid "Display version information"
+msgstr "የ እትም መረጃ ማሳያ"
+
+#: ../src/xfdesktop-application.c:837
+msgid "Reload all settings"
+msgstr "ሁሉንም ማሰናጃዎች እንደገና መጫኛ"
+
+#: ../src/xfdesktop-application.c:838
+msgid "Advance to the next wallpaper on the current workspace"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:839
+msgid "Pop up the menu (at the current mouse position)"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:840
+msgid "Pop up the window list (at the current mouse position)"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:842
+msgid "Automatically arrange all the icons on the desktop"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:845
+msgid "Disable debug messages"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:846
+msgid "Do not wait for a window manager on startup"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:847
+msgid "Cause xfdesktop to quit"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:862
+#, c-format
+msgid "Failed to parse arguments: %s\n"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:873
+#, c-format
+msgid "This is %s version %s, running on Xfce %s.\n"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:875
+#, c-format
+msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
+msgstr ""
+
+#: ../src/xfdesktop-application.c:879
+#, c-format
+msgid "Build options:\n"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:880
+#, c-format
+msgid "    Desktop Menu:        %s\n"
+msgstr "    የ ዴስክቶፕ ዝርዝር:        %s\n"
+
+#: ../src/xfdesktop-application.c:882 ../src/xfdesktop-application.c:889
+#: ../src/xfdesktop-application.c:896
+msgid "enabled"
+msgstr "ተችሏል"
+
+#: ../src/xfdesktop-application.c:884 ../src/xfdesktop-application.c:891
+#: ../src/xfdesktop-application.c:898
+msgid "disabled"
+msgstr "ተሰናክሏል"
+
+#: ../src/xfdesktop-application.c:887
+#, c-format
+msgid "    Desktop Icons:       %s\n"
+msgstr "    የ ዴስክቶፕ ምልክቶች:       %s\n"
+
+#: ../src/xfdesktop-application.c:894
+#, c-format
+msgid "    Desktop File Icons:  %s\n"
+msgstr "    የ ዴስክቶፕ ፋይል ምልክቶች:       %s\n"
+
+#: ../src/xfdesktop-file-icon-manager.c:561
+#: ../src/xfdesktop-file-icon-manager.c:578
+#, c-format
 msgid "Could not create the desktop folder \"%s\""
-msgstr "የጀርባ ዝርዝር ፍጠር"
+msgstr "የ ዴስክቶፕ ፎልደር መፍጠር አልተቻለም \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:470
-#: ../src/xfdesktop-file-icon-manager.c:487
-#, fuzzy
+#: ../src/xfdesktop-file-icon-manager.c:566
+#: ../src/xfdesktop-file-icon-manager.c:583
 msgid "Desktop Folder Error"
-msgstr "ገበታ"
+msgstr "የ ዴስክቶፕ ፎልደር ስህተት "
 
-#: ../src/xfdesktop-file-icon-manager.c:489
+#: ../src/xfdesktop-file-icon-manager.c:585
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:592
-#: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:803
-#: ../src/xfdesktop-file-utils.c:818 ../src/xfdesktop-special-file-icon.c:447
+#: ../src/xfdesktop-file-icon-manager.c:668 ../src/xfdesktop-file-utils.c:724
+#: ../src/xfdesktop-file-utils.c:777
+msgid "Rename Error"
+msgstr "ስህተት እንደገና መሰየሚያ"
+
+#: ../src/xfdesktop-file-icon-manager.c:669 ../src/xfdesktop-file-utils.c:778
+msgid "The files could not be renamed"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:670
+msgid "None of the icons selected support being renamed."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:714
+#: ../src/xfdesktop-file-icon-manager.c:758 ../src/xfdesktop-file-utils.c:877
+#: ../src/xfdesktop-file-utils.c:914
 msgid "Trash Error"
-msgstr "የትቢያ ስህተት"
+msgstr "የ ቆሻሻ ስህተት"
 
-#: ../src/xfdesktop-file-icon-manager.c:593
-#: ../src/xfdesktop-file-icon-manager.c:637
-#, fuzzy
+#: ../src/xfdesktop-file-icon-manager.c:715
+#: ../src/xfdesktop-file-icon-manager.c:759
 msgid "The selected files could not be trashed"
-msgstr "የፕሮግራም መራጩ ለከፈት አልተቻለም።"
+msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:594
-#: ../src/xfdesktop-file-icon-manager.c:638 ../src/xfdesktop-file-utils.c:652
-#: ../src/xfdesktop-file-utils.c:702 ../src/xfdesktop-file-utils.c:761
-#: ../src/xfdesktop-file-utils.c:873 ../src/xfdesktop-file-utils.c:929
-#: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:1029
-#: ../src/xfdesktop-file-utils.c:1106 ../src/xfdesktop-file-utils.c:1167
-#: ../src/xfdesktop-file-utils.c:1240 ../src/xfdesktop-file-utils.c:1318
-#, fuzzy
+#: ../src/xfdesktop-file-icon-manager.c:716
+#: ../src/xfdesktop-file-icon-manager.c:760 ../src/xfdesktop-file-utils.c:726
+#: ../src/xfdesktop-file-utils.c:779 ../src/xfdesktop-file-utils.c:829
+#: ../src/xfdesktop-file-utils.c:960 ../src/xfdesktop-file-utils.c:1007
+#: ../src/xfdesktop-file-utils.c:1048 ../src/xfdesktop-file-utils.c:1089
+#: ../src/xfdesktop-file-utils.c:1191 ../src/xfdesktop-file-utils.c:1243
+#: ../src/xfdesktop-file-utils.c:1316 ../src/xfdesktop-file-utils.c:1394
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
-msgstr "ይህ አገልግሎት የፋይል አድተዳዳሪ እንዲኖር ይፈልጋል (ለምሳሌ እንደ ቱናር አይነቱ)"
+msgstr ""
 
 #. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:738
-#: ../src/xfdesktop-file-icon-manager.c:1296
+#: ../src/xfdesktop-file-icon-manager.c:860
+#: ../src/xfdesktop-file-icon-manager.c:1365
 #, c-format
 msgid "Unable to launch \"%s\":"
-msgstr "\"%s\"ን ማስነሳት አልተቻለም፦"
+msgstr "ማስነሳት አልተቻለም \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:740
-#: ../src/xfdesktop-file-icon-manager.c:984
-#: ../src/xfdesktop-file-icon-manager.c:1297 ../src/xfdesktop-file-utils.c:635
-#: ../src/xfdesktop-file-utils.c:650 ../src/xfdesktop-file-utils.c:1012
-#: ../src/xfdesktop-file-utils.c:1027 ../src/xfdesktop-file-utils.c:1079
-#: ../src/xfdesktop-file-utils.c:1104 ../src/xfdesktop-file-utils.c:1150
-#: ../src/xfdesktop-file-utils.c:1165
-msgid "Launch Error"
-msgstr "የማስነሳት ስህተት"
-
-#: ../src/xfdesktop-file-icon-manager.c:908
+#: ../src/xfdesktop-file-icon-manager.c:1077
 #, c-format
 msgid "_Open With \"%s\""
-msgstr "በ\"%s\" ክፈት_O"
+msgstr "_መክፈቻ በ \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:911
+#: ../src/xfdesktop-file-icon-manager.c:1080
 #, c-format
 msgid "Open With \"%s\""
-msgstr "በ\"%s\" ክፈት፦"
+msgstr "መክፈቻ በ \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:986
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
-msgstr ""
-"\"exo-desktop-item-edit\"ን ማስነሳት አልተቻለም. ይህ ፕሮግራም ፕሮግራም አስነሺዎችን በገበታ ላይ "
-"ለመፍጠርና ለማረም አስፈላጊ ነው።"
-
-#: ../src/xfdesktop-file-icon-manager.c:1354
+#: ../src/xfdesktop-file-icon-manager.c:1435
 msgid "_Open all"
-msgstr "ሁሉንም ክፈት_O"
+msgstr "ሁሉንም _መክፈቻ"
 
-#: ../src/xfdesktop-file-icon-manager.c:1370
+#: ../src/xfdesktop-file-icon-manager.c:1451
 msgid "_Open in New Window"
-msgstr ""
+msgstr "በ አዲስ መስኮት _መክፈቻ"
 
-#: ../src/xfdesktop-file-icon-manager.c:1372
-#: ../src/xfdesktop-special-file-icon.c:570 ../src/xfdesktop-volume-icon.c:653
+#: ../src/xfdesktop-file-icon-manager.c:1453
+#: ../src/xfdesktop-special-file-icon.c:547 ../src/xfdesktop-volume-icon.c:813
 msgid "_Open"
-msgstr "ክፈት _O"
+msgstr "_መክፈቻ"
 
 #. create launcher item
-#: ../src/xfdesktop-file-icon-manager.c:1391
+#: ../src/xfdesktop-file-icon-manager.c:1472
 msgid "Create _Launcher..."
-msgstr "አስነሽ ፍጠር..._L"
+msgstr "_ማስነሻ መፍጠሪያ..."
 
 #. create link item
-#: ../src/xfdesktop-file-icon-manager.c:1407
+#: ../src/xfdesktop-file-icon-manager.c:1488
 msgid "Create _URL Link..."
-msgstr "የURL አገናኝ ፍጠር..._U"
+msgstr "የ URL አገናኝ መፍጠሪያ..."
 
 #. create folder item
-#: ../src/xfdesktop-file-icon-manager.c:1423
+#: ../src/xfdesktop-file-icon-manager.c:1504
 msgid "Create _Folder..."
-msgstr "ዶሴ ፍጠር..._F"
+msgstr "_ፎልደር... መፍጠሪያ"
 
-#. create from template submenu
-#: ../src/xfdesktop-file-icon-manager.c:1438
-#, fuzzy
-msgid "Create From _Template"
-msgstr "ከናሙና\"%s\" ሰነድ ፍጠር "
+#: ../src/xfdesktop-file-icon-manager.c:1521
+msgid "Create _Document"
+msgstr "_ሰነድ መፍጠሪያ"
 
-#: ../src/xfdesktop-file-icon-manager.c:1464
+#: ../src/xfdesktop-file-icon-manager.c:1545
+msgid "No templates installed"
+msgstr "ምንም ቴምፕሌት አልተገጠመም"
+
+#: ../src/xfdesktop-file-icon-manager.c:1562
 msgid "_Empty File"
-msgstr "ባዶ ፋይል_E"
+msgstr "_ባዶ ፋይል"
 
-#: ../src/xfdesktop-file-icon-manager.c:1480
+#: ../src/xfdesktop-file-icon-manager.c:1579
 msgid "_Execute"
-msgstr "አስነሳ_E"
+msgstr "_መፈጸሚያ"
 
-#: ../src/xfdesktop-file-icon-manager.c:1500
+#: ../src/xfdesktop-file-icon-manager.c:1599
 msgid "_Edit Launcher"
-msgstr "አስነሺን አርም_E"
+msgstr "ማስነሺያ _ማረሚያ"
 
-#: ../src/xfdesktop-file-icon-manager.c:1535
+#: ../src/xfdesktop-file-icon-manager.c:1658
 msgid "Open With"
-msgstr "በ... ክፈት"
+msgstr "መክፈቻ በ"
 
-#: ../src/xfdesktop-file-icon-manager.c:1561
+#: ../src/xfdesktop-file-icon-manager.c:1684
+#: ../src/xfdesktop-file-icon-manager.c:1699
 msgid "Open With Other _Application..."
-msgstr "በሌላ ፕሮግራም ክፈት..._A"
+msgstr "በ ሌላ _መተግበሪያ መክፈቻ..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1649
+#: ../src/xfdesktop-file-icon-manager.c:1758
+msgid "Paste Into Folder"
+msgstr "ወደ ፎልደር መለጠፊያ"
+
+#. Trash
+#: ../src/xfdesktop-file-icon-manager.c:1777
+msgid "Mo_ve to Trash"
+msgstr "ወደ ቆሻሻ ማንቀ_ሳቀሻ"
+
+#. Rename
+#: ../src/xfdesktop-file-icon-manager.c:1808
 msgid "_Rename..."
-msgstr "እንደገና ሰይም..._R"
+msgstr "እንደገና መሰየሚያ..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1667
+#: ../src/xfdesktop-file-icon-manager.c:1876
+msgid "Arrange Desktop _Icons"
+msgstr "የ ዴስክቶፕ _ምልክቶች ማዘጋጃ"
+
+#: ../src/xfdesktop-file-icon-manager.c:1887
 msgid "Desktop _Settings..."
-msgstr "የገበታ ስየማዎች..._S"
+msgstr "የ ዴስክቶፕ _ማሰናጃዎች..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1677
-#: ../src/xfdesktop-volume-icon.c:701
+#: ../src/xfdesktop-file-icon-manager.c:1898
+#: ../src/xfdesktop-volume-icon.c:855
 msgid "P_roperties..."
-msgstr "ባህሪዎች_P..."
+msgstr "ባ_ህሪዎች..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2231
-#, fuzzy
+#: ../src/xfdesktop-file-icon-manager.c:2906
 msgid "Load Error"
-msgstr "የማስነሳት ስህተት"
+msgstr "ስህተት መጫኛ"
 
-#: ../src/xfdesktop-file-icon-manager.c:2233
-#, fuzzy
+#: ../src/xfdesktop-file-icon-manager.c:2908
 msgid "Failed to load the desktop folder"
-msgstr "የጀርባ ዝርዝር ፍጠር"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:3472
+msgid "Copy _Here"
+msgstr "_እዚህ ኮፒ ማድረጊያ"
+
+#: ../src/xfdesktop-file-icon-manager.c:3472
+msgid "_Move Here"
+msgstr "ወደ እዚህ _ማንቀሳቀሻ "
+
+#: ../src/xfdesktop-file-icon-manager.c:3472
+msgid "_Link Here"
+msgstr "ወደ እዚህ _አገናኝ"
 
 #. TRANSLATORS: file was modified less than one day ago
-#: ../src/xfdesktop-file-utils.c:137
+#: ../src/xfdesktop-file-utils.c:140
 #, c-format
 msgid "Today at %X"
-msgstr ""
+msgstr "ዛሬ በ %X"
 
 #. TRANSLATORS: file was modified less than two days ago
-#: ../src/xfdesktop-file-utils.c:141
+#: ../src/xfdesktop-file-utils.c:144
 #, c-format
 msgid "Yesterday at %X"
-msgstr ""
+msgstr "ትናንትና በ %X"
 
 #. Days from last week
-#: ../src/xfdesktop-file-utils.c:146
-#, c-format
-msgid "%A at %X"
-msgstr ""
-
-#. Any other date
 #: ../src/xfdesktop-file-utils.c:149
 #, c-format
+msgid "%A at %X"
+msgstr "%A በ %X"
+
+#. Any other date
+#: ../src/xfdesktop-file-utils.c:152
+#, c-format
 msgid "%x at %X"
-msgstr ""
+msgstr "%x በ %X"
 
 #. the file_time is invalid
-#: ../src/xfdesktop-file-utils.c:159
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:162
 msgid "Unknown"
-msgstr "(ያልታወቀ)"
+msgstr "ያልታወቀ"
 
-#: ../src/xfdesktop-file-utils.c:636 ../src/xfdesktop-file-utils.c:651
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:666
 msgid "The folder could not be opened"
-msgstr "የፕሮግራም መራጩ ለከፈት አልተቻለም።"
+msgstr "ፎልደሩን መክፈት አልተቻለም"
 
-#: ../src/xfdesktop-file-utils.c:685 ../src/xfdesktop-file-utils.c:700
-#, fuzzy
-msgid "Rename Error"
-msgstr "ስህተት አስኪድ"
+#: ../src/xfdesktop-file-utils.c:683
+msgid "Error"
+msgstr "ስህተት"
 
-#: ../src/xfdesktop-file-utils.c:686 ../src/xfdesktop-file-utils.c:701
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:684
+msgid "The requested operation could not be completed"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:725
 msgid "The file could not be renamed"
-msgstr "የፕሮግራም መራጩ ለከፈት አልተቻለም።"
+msgstr "ፋይሉን እንደገና መሰየም አልተቻለም"
 
-#: ../src/xfdesktop-file-utils.c:744 ../src/xfdesktop-file-utils.c:759
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:827
 msgid "Delete Error"
-msgstr "የመፍጠር ስህተት"
+msgstr "ስህተት ማጥፊያ"
 
-#: ../src/xfdesktop-file-utils.c:745 ../src/xfdesktop-file-utils.c:760
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:828
 msgid "The selected files could not be deleted"
-msgstr "የተያያዘው ፕሮግራም አልተገኘም ወይም ማስኬድ አልተቻለም።"
+msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:804 ../src/xfdesktop-file-utils.c:819
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:878
 msgid "The selected files could not be moved to the trash"
-msgstr "የፕሮግራም መራጩ ለከፈት አልተቻለም።"
+msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:820
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:879 ../src/xfdesktop-file-utils.c:916
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
-msgstr "ይህ አገልግሎት የፋይል አድተዳዳሪ እንዲኖር ይፈልጋል (ለምሳሌ እንደ ቱናር አይነቱ)"
+msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:856 ../src/xfdesktop-file-utils.c:871
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:915
+msgid "Could not empty the trash"
+msgstr "ቆሻሻውን ባዶ ማድረግ አልተቻለም"
+
+#: ../src/xfdesktop-file-utils.c:958
 msgid "Create File Error"
-msgstr "የመፍጠር ስህተት"
+msgstr "የ ፋይል ስህተት መፍጠሪያ"
 
-#: ../src/xfdesktop-file-utils.c:857 ../src/xfdesktop-file-utils.c:872
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:959
 msgid "Could not create a new file"
-msgstr "የጀርባ ዝርዝር ፍጠር"
+msgstr "አዲስ ፋይል መፍጠር አልተቻለም"
 
-#: ../src/xfdesktop-file-utils.c:912 ../src/xfdesktop-file-utils.c:927
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:1005
 msgid "Create Document Error"
-msgstr "የመፍጠር ስህተት"
+msgstr "የ ሰነድ ስህተት መፍጠሪያ"
 
-#: ../src/xfdesktop-file-utils.c:913 ../src/xfdesktop-file-utils.c:928
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:1006
 msgid "Could not create a new document from the template"
-msgstr "ከናሙና\"%s\" ሰነድ ፍጠር "
+msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:962 ../src/xfdesktop-file-utils.c:977
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:1046
 msgid "File Properties Error"
-msgstr "የባህሪዎች ስህተት"
+msgstr "የ ፋይል ባህሪዎች ስህተት"
 
-#: ../src/xfdesktop-file-utils.c:963 ../src/xfdesktop-file-utils.c:978
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:1047
 msgid "The file properties dialog could not be opened"
-msgstr "የፕሮግራም መራጩ ለከፈት አልተቻለም።"
+msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:1013 ../src/xfdesktop-file-utils.c:1028
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:1088
 msgid "The file could not be opened"
-msgstr "የፕሮግራም መራጩ ለከፈት አልተቻለም።"
+msgstr "ፋይሉን መክፈት አልተቻለም"
 
-#: ../src/xfdesktop-file-utils.c:1076 ../src/xfdesktop-file-utils.c:1101
-#, fuzzy, c-format
+#: ../src/xfdesktop-file-utils.c:1161 ../src/xfdesktop-file-utils.c:1186
+#, c-format
 msgid "Failed to run \"%s\""
-msgstr "\"%s\" ማስኬድ አልተሳካም፦"
+msgstr "ማስኬድ አልተቻለም \"%s\""
 
-#: ../src/xfdesktop-file-utils.c:1151 ../src/xfdesktop-file-utils.c:1166
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:1242
 msgid "The application chooser could not be opened"
-msgstr "የፕሮግራም መራጩ ለከፈት አልተቻለም።"
+msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:1224 ../src/xfdesktop-file-utils.c:1238
-#: ../src/xfdesktop-file-utils.c:1300 ../src/xfdesktop-file-utils.c:1316
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:1300 ../src/xfdesktop-file-utils.c:1314
+#: ../src/xfdesktop-file-utils.c:1376 ../src/xfdesktop-file-utils.c:1392
 msgid "Transfer Error"
-msgstr "የትቢያ ስህተት"
+msgstr "የ ማስተላለፍ ስህተት"
 
-#: ../src/xfdesktop-file-utils.c:1225 ../src/xfdesktop-file-utils.c:1239
-#: ../src/xfdesktop-file-utils.c:1301 ../src/xfdesktop-file-utils.c:1317
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:1301 ../src/xfdesktop-file-utils.c:1315
+#: ../src/xfdesktop-file-utils.c:1377 ../src/xfdesktop-file-utils.c:1393
 msgid "The file transfer could not be performed"
-msgstr "የፕሮግራም መራጩ ለከፈት አልተቻለም።"
+msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:128
-#, fuzzy
+#: ../src/xfdesktop-notify.c:127
 msgid "Unmounting device"
-msgstr "ማውረድ አልተሳካም"
+msgstr "አካሉን በ ማውረድ ላይ"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:131
+#: ../src/xfdesktop-notify.c:130
 #, c-format
 msgid ""
-"The device \"%s\" is being unmounted by the system. Please do not remove the "
-"media or disconnect the drive"
+"The device \"%s\" is being unmounted by the system. Please do not remove the"
+" media or disconnect the drive"
 msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
+#: ../src/xfdesktop-notify.c:137 ../src/xfdesktop-notify.c:322
 msgid "Writing data to device"
-msgstr ""
+msgstr "ወደ አካሉ ዳታ በ መጻፍ ላይ"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
+#: ../src/xfdesktop-notify.c:140 ../src/xfdesktop-notify.c:325
 #, c-format
 msgid ""
-"There is data that needs to be written to the device \"%s\" before it can be "
-"removed. Please do not remove the media or disconnect the drive"
+"There is data that needs to be written to the device \"%s\" before it can be"
+" removed. Please do not remove the media or disconnect the drive"
+msgstr ""
+
+#: ../src/xfdesktop-notify.c:221
+msgid "Unmount Finished"
+msgstr "አካሉን ማውረድ ጨርሷል"
+
+#: ../src/xfdesktop-notify.c:223 ../src/xfdesktop-notify.c:408
+#, c-format
+msgid "The device \"%s\" has been safely removed from the system. "
 msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:253
-#, fuzzy
+#: ../src/xfdesktop-notify.c:313
 msgid "Ejecting device"
-msgstr "ማውረድ አልተሳካም"
+msgstr "አካሉን ማውጫ"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:256
+#: ../src/xfdesktop-notify.c:316
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
 msgstr ""
 
-#: ../src/xfdesktop-regular-file-icon.c:468
+#: ../src/xfdesktop-notify.c:406
+msgid "Eject Finished"
+msgstr ""
+
+#: ../src/xfdesktop-regular-file-icon.c:786
 #, c-format
 msgid ""
 "Type: %s\n"
@@ -937,26 +959,25 @@ msgid ""
 "Last modified: %s"
 msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:249
-#: ../src/xfdesktop-special-file-icon.c:411
-#, fuzzy
+#: ../src/xfdesktop-special-file-icon.c:297
+#: ../src/xfdesktop-special-file-icon.c:477
 msgid "File System"
-msgstr "ስርዓት"
+msgstr "የ ፋይል ስርአት"
 
-#: ../src/xfdesktop-special-file-icon.c:396
+#: ../src/xfdesktop-special-file-icon.c:462
 msgid "Trash is empty"
 msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:399
+#: ../src/xfdesktop-special-file-icon.c:465
 msgid "Trash contains one item"
 msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:400
+#: ../src/xfdesktop-special-file-icon.c:466
 #, c-format
 msgid "Trash contains %d items"
 msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:428
+#: ../src/xfdesktop-special-file-icon.c:495
 #, c-format
 msgid ""
 "%s\n"
@@ -964,21 +985,11 @@ msgid ""
 "Last modified: %s"
 msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:449
-msgid "Unable to contact the Xfce Trash service."
-msgstr "የሽፍሲ ትብያ አገልግሎትን ማግኘት አልተቻለም።"
-
-#: ../src/xfdesktop-special-file-icon.c:450
-msgid ""
-"Make sure you have a file manager installed that supports the Xfce Trash "
-"service, such as Thunar."
-msgstr "የሸፍሲ ትቢያ አገልግሎትን የሚደግፍ እንደ ቱናር ያለ የፋይል አስተዳዳሪ መተከሉ ያረጋግጡ።"
-
-#: ../src/xfdesktop-special-file-icon.c:588
+#: ../src/xfdesktop-special-file-icon.c:564
 msgid "_Empty Trash"
-msgstr "ትቢያ ጣል_E"
+msgstr "ቆሻሻ _ባዶ ማድረጊያ"
 
-#: ../src/xfdesktop-volume-icon.c:413
+#: ../src/xfdesktop-volume-icon.c:482
 #, c-format
 msgid ""
 "Removable Volume\n"
@@ -986,809 +997,42 @@ msgid ""
 "%s left (%s total)"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:420
+#: ../src/xfdesktop-volume-icon.c:489
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:446 ../src/xfdesktop-volume-icon.c:488
-#, fuzzy, c-format
+#: ../src/xfdesktop-volume-icon.c:518 ../src/xfdesktop-volume-icon.c:563
+#, c-format
 msgid "Failed to eject \"%s\""
-msgstr "\"%s\"ን ማስወጣት አልተቻለም፦"
+msgstr "ማውጣት አልተቻለም \"%s\""
 
-#: ../src/xfdesktop-volume-icon.c:451 ../src/xfdesktop-volume-icon.c:493
+#: ../src/xfdesktop-volume-icon.c:523 ../src/xfdesktop-volume-icon.c:568
 msgid "Eject Failed"
 msgstr "ማስወጣት አልተሳካም"
 
-#: ../src/xfdesktop-volume-icon.c:525
-#, fuzzy, c-format
+#: ../src/xfdesktop-volume-icon.c:600
+#, c-format
 msgid "Failed to mount \"%s\""
-msgstr "\"%s\" ማስኬድ አልተሳካም፦"
+msgstr "መጫን አልተቻለም \"%s\""
 
-#: ../src/xfdesktop-volume-icon.c:528
+#: ../src/xfdesktop-volume-icon.c:603
 msgid "Mount Failed"
 msgstr "መጫን አልተሳካ"
 
-#: ../src/xfdesktop-volume-icon.c:669 ../src/xfdesktop-volume-icon.c:672
+#: ../src/xfdesktop-volume-icon.c:828
 msgid "E_ject Volume"
 msgstr "ይዘት አስወጣ_j"
 
-#: ../src/xfdesktop-volume-icon.c:679
+#: ../src/xfdesktop-volume-icon.c:835
+msgid "_Unmount Volume"
+msgstr "መጠን _አታውርድ"
+
+#: ../src/xfdesktop-volume-icon.c:842
 msgid "_Mount Volume"
-msgstr "ይዘትን ጫን_M"
-
-#, fuzzy
-#~ msgid "Needs terminal"
-#~ msgstr "በተርሚናል ላይ አስኪድ_t"
-
-#~ msgid "Command"
-#~ msgstr "ትዕዛዝ"
-
-#, fuzzy
-#~ msgid "Icon name"
-#~ msgstr "መለዮ ነዳፊ"
-
-#, fuzzy
-#~ msgid "Startup notification"
-#~ msgstr "የመነሻ ማስታወቂያን ተጠቀም _n"
-
-#~ msgid "Unable to launch xfce4-menueditor: %s"
-#~ msgstr "የሸፍሲ-ምናሌ-አራሚን ማስነሳት አልተቻለም፦ %s"
-
-#~ msgid "Select Icon"
-#~ msgstr "መለዮ ምረጥ"
-
-#~ msgid "Select Menu File"
-#~ msgstr "የምናሌ ፋይልን ምረጥ"
-
-#~ msgid "All Files"
-#~ msgstr "ሁሉ ፋይሎች"
-
-#~ msgid "Image Files"
-#~ msgstr "ይምስል ፋይሎች"
-
-#~ msgid "Menu Files"
-#~ msgstr "የሜኑ ፋይሎች"
-
-#~ msgid "Xfce Menu"
-#~ msgstr "የሸፍሲ ምናሌ"
-
-#~ msgid "Button"
-#~ msgstr "አዝራር"
-
-#~ msgid "Button _title:"
-#~ msgstr "አዝራር አርዕስት_t፦"
-
-#~ msgid "_Show title in button"
-#~ msgstr "አዝራር ውስጥ አርዕስት አሳይ_S"
-
-#~ msgid "Menu File"
-#~ msgstr "ምናሌ ፋይል"
-
-#~ msgid "Use default _desktop menu file"
-#~ msgstr "ቀዳሚ የገበታ ምናሌ ፋይልን ተጠቀም_d"
-
-#~ msgid "Use _custom menu file:"
-#~ msgstr "የግል ምናሌ ፋይል ተጠቀም_c፦"
-
-#~ msgid "_Edit Menu"
-#~ msgstr "ምናሌን አርም_E"
-
-#~ msgid "Icons"
-#~ msgstr "መለዮዎች"
-
-#~ msgid "_Button icon:"
-#~ msgstr "የአዝራር መለዮ_B፦"
-
-#~ msgid "Show _icons in menu"
-#~ msgstr "የመለዮዎች ምናሌን አሳይ_i"
-
-#~ msgid "There is already a panel menu registered for this screen"
-#~ msgstr "ለዚህ ስክሪን የተመዘገበ የፓነል ምናሌ አ"
-
-#~ msgid "Edit Menu"
-#~ msgstr "ምናሌ አርም"
-
-#~ msgid "Shows a menu containing categories of installed applications"
-#~ msgstr "የተተከሉትን ፕሮግራሞች ምድብ የያዘ ምናሌን አሳይ"
-
-#~ msgid "%s: Unknown option: %s\n"
-#~ msgstr "%s: ያልታወቀ ምርጫ: %s\n"
-
-#~ msgid "Options are:\n"
-#~ msgstr "ምርጫዎቹ:\n"
-
-#~ msgid "    --reload      Reload all settings, refresh image list\n"
-#~ msgstr "    --reload    ሁሉንም ስየማዎች እንደገና ጫን፣ ምስሉንም እንደገና ጫን\n"
-
-#~ msgid "    --menu        Pop up the menu (at the current mouse position)\n"
-#~ msgstr "ምናሌውን ፖፕአድርግ (ጠቋሚው ባለበት ቦታ)\n"
-
-#~ msgid ""
-#~ "    --windowlist  Pop up the window list (at the current mouse position)\n"
-#~ msgstr "    --windowlist  የመስኮት ምናሌን ፖፕአድርግ (ጠቋሚው ባለበት ቦታ)\n"
-
-#~ msgid "    --quit        Cause xfdesktop to quit\n"
-#~ msgstr "    --quit       የሸፍሲገበታ እንዲዘጋ አድርግ\n"
-
-#~ msgid ""
-#~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-#~ msgstr "የሸፍሲ-ገበታ የገበታ እቃዎችን ለማስቀመጥ ዶሴ  \"%s\" መፍጠር አልቻለም፦"
-
-#~ msgid "Create Folder Failed"
-#~ msgstr "ዶሴ መፍጠር አልተሳካም"
-
-#~ msgid ""
-#~ "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not "
-#~ "a folder."
-#~ msgstr "የሸፍሲገበታ \"%s\" የገበታ ዕቃን እንዲይዝ ለማድረግ አልቻለም።"
-
-#~ msgid "Please delete or rename the file."
-#~ msgstr "እባክዎ ፋይሉን ይሰርዙ ወይም ሌላ ስም ይስጡት።"
-
-#~ msgid "Rename \"%s\""
-#~ msgstr "\"%s\" እንደገና ሰይም"
-
-#~ msgid "Enter the new name:"
-#~ msgstr "አዲሱን ስም ጻፍ፦"
-
-#~ msgid "Rename"
-#~ msgstr "እንደገና ሰይም"
-
-#~ msgid "Are you sure that you want to delete \"%s\"?"
-#~ msgstr " \"%s\"ን ለመሰረዝ እንደሚፈልጉ ርግጠኛ ነዎት?"
-
-#~ msgid "Question"
-#~ msgstr "ጥያቄ"
-
-#~ msgid "If you delete a file, it is permanently lost."
-#~ msgstr "ፋይልን ከሰረዙት ለዘላለም ይጠፋል።"
-
-#~ msgid "Are you sure you want to delete the following %d files?"
-#~ msgstr "የሚቀጥሉትን %d ፍይሎች ለመሰረዝ እንደሚፈልጉ ርግጠኛ ነዎት?"
-
-#~ msgid "Delete Multiple Files"
-#~ msgstr "ብዙ ፋይሎችን ሰረዝ"
-
-#~ msgid "The application chooser could not be opened."
-#~ msgstr "የፕሮግራም መራጩ ለከፈት አልተቻለም።"
-
-#~ msgid ""
-#~ "This feature requires a file manager service present (such as that "
-#~ "supplied by Thunar)."
-#~ msgstr "ይህ አገልግሎት የፋይል አድተዳዳሪ እንዲኖር ይፈልጋል (ለምሳሌ እንደ ቱናር አይነቱ)"
-
-#~ msgid "Unable to create folder named \"%s\":"
-#~ msgstr "የዶሴ ስም \"%s\"ን መፍጠር አልተቻለም፦"
-
-#~ msgid "Create New Folder"
-#~ msgstr "አዲስ ዶሴ ፍጠር"
-
-#~ msgid "New Folder"
-#~ msgstr "አዲስ ዶሴ"
-
-#~ msgid "Create"
-#~ msgstr "ፍጠር"
-
-#~ msgid "Unable to create file named \"%s\":"
-#~ msgstr "የፋይል ስም \"%s\"ን መፍጠር አልተቻለም፦"
-
-#~ msgid "Create File Failed"
-#~ msgstr "ፋይልን መፍጠር አልተሳካም"
-
-#~ msgid "Create Document from template \"%s\""
-#~ msgstr "ከናሙና\"%s\" ሰነድ ፍጠር "
-
-#~ msgid "Create Empty File"
-#~ msgstr "ባዶ ፋይል ፍጠር"
-
-#~ msgid "New Empty File"
-#~ msgstr "አዲስ ባዶ ፋይል"
-
-#~ msgid "Unable to create file \"%s\":"
-#~ msgstr "የይል  \"%s\"ን መፍጠር አልተቻለም፦"
-
-#~ msgid "Create Error"
-#~ msgstr "የመፍጠር ስህተት"
-
-#~ msgid "Failed to run \"%s\":"
-#~ msgstr "\"%s\" ማስኬድ አልተሳካም፦"
-
-#~ msgid "Run Error"
-#~ msgstr "ስህተት አስኪድ"
-
-#~ msgid "The associated application could not be found or executed."
-#~ msgstr "የተያያዘው ፕሮግራም አልተገኘም ወይም ማስኬድ አልተቻለም።"
-
-#~ msgid "Unable to set default application for \"%s\" to \"%s\":"
-#~ msgstr "ቀዳሚ ፕሮግራምን ለ\"%s\" ወደ \"%s\" መለወጥ አልተቻለም:"
-
-#~ msgid "Properties Error"
-#~ msgstr "የባህሪዎች ስህተት"
-
-#~ msgid "Write only"
-#~ msgstr "ጻፍ ብቻ"
-
-#~ msgid "Read only"
-#~ msgstr "አንብብ ብቻ"
-
-#~ msgid "Read & Write"
-#~ msgstr "አንብብ ጻፍ"
-
-#~ msgid "General"
-#~ msgstr "አጠቃላይ"
-
-#~ msgid "Name:"
-#~ msgstr "ስም፦"
-
-#~ msgid "Kind:"
-#~ msgstr "አይነት፦"
-
-#~ msgid "Link Target:"
-#~ msgstr "የመድረሻው ማያይዣ፦"
-
-#~ msgid "(unknown)"
-#~ msgstr "(ያልታወቀ)"
-
-#~ msgid "Open With:"
-#~ msgstr "በ... ክፈት፦"
-
-#~ msgid "Modified:"
-#~ msgstr "የተሻሻለ፦"
-
-#~ msgid "Accessed:"
-#~ msgstr "የተከፈተው፦"
-
-#~ msgid "Free Space:"
-#~ msgstr "ባዶ ቦታ፦"
-
-#~ msgid "Size:"
-#~ msgstr "መጠን፦"
-
-#~ msgid "%s (%"
-#~ msgstr "%s (%"
-
-#~ msgid "Permissions"
-#~ msgstr "ፈቃድ"
-
-#~ msgid "Owner:"
-#~ msgstr "ባለቤት፦"
-
-#~ msgid "Access:"
-#~ msgstr "የመክፈት ፈቃድ፦"
-
-#~ msgid "Group:"
-#~ msgstr "ግሩፕ፦"
-
-#~ msgid "Others:"
-#~ msgstr "ለሎች፦"
-
-#~ msgid "Yes to _all"
-#~ msgstr "ሁሉንም አዎ_a"
-
-#~ msgid "There was an error moving \"%s\" to \"%s\":"
-#~ msgstr "\"%s\"ን ወደ \"%s\" በመውሰድ ላይ ስህተት ተፈጥሯል:"
-
-#~ msgid "There was an error copying \"%s\" to \"%s\":"
-#~ msgstr "\"%s\"ን ወደ \"%s\" በመቅዳት ላይ ስህተት ተፈጥሯል:"
-
-#~ msgid "There was an error linking \"%s\" to \"%s\":"
-#~ msgstr "\"%s\"ን ወደ \"%s\" በማገናኘት ላይ ስህተት ተፈጥሯል:"
-
-#~ msgid "File Error"
-#~ msgstr "የፋይል ስህተት"
-
-#~ msgid "broken link"
-#~ msgstr "የተሰበረ ማያያዣ"
-
-#~ msgid "link to %s"
-#~ msgstr "ከ%s አያይዝ"
-
-#~ msgid ""
-#~ "Kind: %s\n"
-#~ "Modified:%s\n"
-#~ "Size: %s"
-#~ msgstr ""
-#~ "አይነት: %s\n"
-#~ "የተሻሻለው:%s\n"
-#~ "መጠን: %s"
-
-#~ msgid "Error"
-#~ msgstr "ስህተት"
-
-#~ msgid "Failed to rename \"%s\" to \"%s\":"
-#~ msgstr "\"%s\" ን ወደ \"%s\" መሰየም አልተሳካም፦"
-
-#, fuzzy
-#~ msgid "Kind: Trash"
-#~ msgstr "አይነት፦"
-
-#~ msgid "Unable to mount \"%s\":"
-#~ msgstr "\"%s\"ን መጫን አልተቻለም፦"
-
-#~ msgid "Unable to unmount \"%s\":"
-#~ msgstr "\"%s\"ን ማውረድ አልተቻለም፦"
-
-#~ msgid "Unmount Failed"
-#~ msgstr "ማውረድ አልተሳካም"
-
-#~ msgid "Unable to eject \"%s\":"
-#~ msgstr "\"%s\"ን ማስወጣት አልተቻለም፦"
-
-#~ msgid "_Unmount Volume"
-#~ msgstr "ይዘትን አውርድ_U"
-
-#, fuzzy
-#~ msgid "Accessories"
-#~ msgstr "የተከፈተው፦"
-
-#, fuzzy
-#~ msgid "Games"
-#~ msgstr "ስም"
-
-#, fuzzy
-#~ msgid "Multimedia"
-#~ msgstr "ብዙ-ደረጃ"
-
-#, fuzzy
-#~ msgid "Other"
-#~ msgstr "/Other"
-
-#, fuzzy
-#~ msgid "Settings"
-#~ msgstr "የገበታ ስየማዎች"
-
-#~ msgid "System"
-#~ msgstr "ስርዓት"
-
-#, fuzzy
-#~ msgid "Help"
-#~ msgstr "መመሪያ _H"
-
-#, fuzzy
-#~ msgid "Log out of the Xfce Desktop"
-#~ msgstr "የሸፍሲ 4 ገበታ አስተዳዳሪ ስየማዎች"
-
-#, fuzzy
-#~ msgid "Run Program..."
-#~ msgstr "ስህተት አስኪድ"
-
-#, fuzzy
-#~ msgid "Run a program"
-#~ msgstr "ስህተት አስኪድ"
-
-#, fuzzy
-#~ msgid ""
-#~ "None\n"
-#~ "Minimized application icons\n"
-#~ "File/launcher icons"
-#~ msgstr "የፕሮግራም መለዮዎችን አሳንስ"
-
-#~ msgid "Use startup _notification"
-#~ msgstr "የመነሻ ማስታወቂያን ተጠቀም _n"
-
-#~ msgid "Run in _terminal"
-#~ msgstr "በተርሚናል ላይ አስኪድ_t"
-
-#~ msgid "Contributor"
-#~ msgstr "አስተዋጺ"
-
-#~ msgid "Icon designer"
-#~ msgstr "መለዮ ነዳፊ"
-
-#~ msgid "Solid Color"
-#~ msgstr "አንድ ወጥ ቀለም"
-
-#~ msgid "Horizontal Gradient"
-#~ msgstr "አግድም ንድፍ"
-
-#~ msgid "Vertical Gradient"
-#~ msgstr "ሽቅብ ንድፍ"
-
-#~ msgid "Add menu entry"
-#~ msgstr "የምናሌ ገቢን ጨምር"
-
-#~ msgid "Type:"
-#~ msgstr "አይነት፦"
-
-#~ msgid "Title"
-#~ msgstr "ርዕስ"
-
-#~ msgid "Submenu"
-#~ msgstr "ንዑስ_ምናሌ"
-
-#~ msgid "Launcher"
-#~ msgstr "አስነሽ"
-
-#~ msgid "Separator"
-#~ msgstr "አጥር"
-
-#~ msgid "Quit"
-#~ msgstr "ውጣ"
-
-#~ msgid "Command:"
-#~ msgstr "ትዕዛዝ፦"
-
-#~ msgid "Icon:"
-#~ msgstr "መለዮዎች፦"
-
-#~ msgid "No icon"
-#~ msgstr "መለዮ አይኑር"
-
-#~ msgid "Themed icon:"
-#~ msgstr "ባለ ጭብጥ መለዮ፦"
-
-#~ msgid "Select icon"
-#~ msgstr "መለዮ ምረጥ"
-
-#~ msgid "Select command"
-#~ msgstr "ትዕዛዝ ምረጥ"
-
-#~ msgid "Executable Files"
-#~ msgstr "አድራጊ ፋይሎች"
-
-#~ msgid "Perl Scripts"
-#~ msgstr "የፐርል ስክሪፕት"
-
-#~ msgid "Python Scripts"
-#~ msgstr "የፓይተን ስክሪፕት"
-
-#~ msgid "Ruby Scripts"
-#~ msgstr "የሩየረቢ ስክሪፕት"
-
-#~ msgid "Shell Scripts"
-#~ msgstr "የቀፎ ስክሪፕት"
-
-#~ msgid "Add external menu entry"
-#~ msgstr "የውጭያዊ ምናሌ ገቢን ጨምር"
-
-#~ msgid "File"
-#~ msgstr "ፋይል"
-
-#~ msgid "Source:"
-#~ msgstr "ምንጭ፦"
-
-#~ msgid "Select external menu"
-#~ msgstr "የውጪ ምናሌ ምረጥ"
-
-#~ msgid "Style:"
-#~ msgstr "ሙና፦"
-
-#~ msgid "Simple"
-#~ msgstr "ቀላል"
-
-#~ msgid "Multilevel"
-#~ msgstr "ብዙ-ደረጃ"
-
-#~ msgid "_Unique entries only"
-#~ msgstr "ልዩ ገቢዎች ብቻ_U"
-
-#~ msgid "Edit menu entry"
-#~ msgstr "የምናሌ ገቢን አርም"
-
-#~ msgid "Edit external menu entry"
-#~ msgstr "የውጭያዊ ምናሌ ገቢን አርም"
-
-#~ msgid "Xfce4-MenuEditor"
-#~ msgstr "የሸፍሲ ምናሌ አራሚ"
-
-#, fuzzy
-#~ msgid "Menueditor Warning"
-#~ msgstr "ምናሌ አራሚ"
-
-#, fuzzy
-#~ msgid "Continue"
-#~ msgstr "አስተዋጺ"
-
-#~ msgid "_File"
-#~ msgstr "ፋይል _F"
-
-#~ msgid "_New"
-#~ msgstr "አዲስ _F"
-
-#~ msgid "Create a new empty menu"
-#~ msgstr "አዲስ ባዶ ምናሌ ፍጠር"
-
-#~ msgid "Open existing menu"
-#~ msgstr "ያለ ምናሌ ክፈት"
-
-#~ msgid "Open _default menu"
-#~ msgstr "ቀዳሚ ምናሌ ክፈት_d"
-
-#~ msgid "Open default menu"
-#~ msgstr "ቀዳሚ ምናሌ ክፈት"
-
-#~ msgid "_Save"
-#~ msgstr "አስቀምጥ _S"
-
-#~ msgid "Save modifications"
-#~ msgstr "የተቀየሩትን አስቀምጥ"
-
-#~ msgid "Save _as..."
-#~ msgstr "እንደ...ያስቀምጡ_a"
-
-#~ msgid "Save menu under a given name"
-#~ msgstr "ስም ሰጥተው ምናሌውን ያስቀምጡት"
-
-#~ msgid "_Close"
-#~ msgstr "ዝጋ _C"
-
-#~ msgid "Close menu"
-#~ msgstr "ምናሌ ዝጋ"
-
-#~ msgid "_Quit"
-#~ msgstr "ውጣ_Q"
-
-#~ msgid "Quit Xfce4-Menueditor"
-#~ msgstr "ከሸፍሲ ምናሌ-አራሚ ውጣ"
-
-#~ msgid "_Edit"
-#~ msgstr "አርም _E"
-
-#~ msgid "_Edit entry"
-#~ msgstr "ገቢን አርም_E"
-
-#~ msgid "Edit selected entry"
-#~ msgstr "የተመረጠውን ገቢ አርም"
-
-#~ msgid "_Add entry"
-#~ msgstr "ገቢን ጨምር_A"
-
-#~ msgid "Add a new entry in the menu"
-#~ msgstr "ምናሌው ውስጥ አዲስ ገቢ ጨምር"
-
-#~ msgid "Add _external"
-#~ msgstr "የውጭን ጨምር_e"
-
-#~ msgid "Add an external entry"
-#~ msgstr "የውጭ ገቢን ጨምር"
-
-#~ msgid "_Remove entry"
-#~ msgstr "ገቢን ሰርዝ_R"
-
-#~ msgid "Remove entry"
-#~ msgstr "ገቢን ሰርዝ"
-
-#~ msgid "_Up"
-#~ msgstr "ላይ _U"
-
-#~ msgid "Move entry up"
-#~ msgstr "ገቢን ወደላይ ውሰድ"
-
-#~ msgid "_Down"
-#~ msgstr "ታች _D"
-
-#~ msgid "Move entry down"
-#~ msgstr "ገቢን ወደታች ውሰድ"
-
-#~ msgid "_Help"
-#~ msgstr "መመሪያ _H"
-
-#~ msgid "_About..."
-#~ msgstr "ስለ _A"
-
-#~ msgid "Show informations about xfce4-menueditor"
-#~ msgstr "ስለ ሸፍሲ ምናሌ-አራሚ መረጃ አሳይ"
-
-#~ msgid "Collapse all"
-#~ msgstr "ሁሉንም ዝጋ"
-
-#~ msgid "Collapse all menu entries"
-#~ msgstr "ሁሉንም የምናሌ ገቢዎች እጠፍ"
-
-#~ msgid "Expand all"
-#~ msgstr "ሁሉንም ክፈት"
-
-#~ msgid "Expand all menu entries"
-#~ msgstr "ሁሉንም ምናሌ አስፋፋ"
-
-#~ msgid "Name"
-#~ msgstr "ስም"
-
-#~ msgid "Hidden"
-#~ msgstr "የተደበቀ"
-
-#~ msgid "Are you sure you want to close the current menu?"
-#~ msgstr "ምናሌውን መዝጋት እንድሚፈልጉ ርግጠኝ ነዎት?"
-
-#~ msgid "Do you want to save before closing the file?"
-#~ msgstr "ከመዝጋትዎ በፊት ፋይሉን ያስቀምጣሉ?"
-
-#~ msgid "Do you want to save before opening an other menu ?"
-#~ msgstr "ሌላ ምናሌ ከምክፈትዎ በፊት ማስቀመጥ ይፈልጋሉ?"
-
-#~ msgid "Ignore modifications"
-#~ msgstr "የተቀየሩትን ተው? "
-
-#~ msgid "Open menu file"
-#~ msgstr "የምናሌ ፋይልን ክፈት"
-
-#~ msgid "Do you want to save before opening the default menu ?"
-#~ msgstr "ቀዳሚ ሜኑን ከመክፈትዎ በፊት ማስቀመጥ ይፈልጋሉ?"
-
-#~ msgid "Save menu file as"
-#~ msgstr "የምናሌ ፋይልን እንደ...አስቀምጥ"
-
-#~ msgid "Do you want to save before closing the menu ?"
-#~ msgstr "ምናሌውን ከመዝጋትዎ በፊት ማስቀመጥ ይፈልአሉ?"
-
-#~ msgid "quit"
-#~ msgstr "ውጣ"
-
-#~ msgid "--- separator ---"
-#~ msgstr "---አጥር--"
-
-#~ msgid "--- include ---"
-#~ msgstr "--- ጨምር ---"
-
-#~ msgid "system"
-#~ msgstr "ስርዓት"
-
-#~ msgid "Do you want to move the item into the submenu?"
-#~ msgstr "ዕቃውን ወደ ንዑስ ምናሌው ያዛውሩታል?"
-
-#~ msgid "A menu editor for Xfce4"
-#~ msgstr "የሸፍሲ4 ምናሌ አራሚ"
-
-#~ msgid "Author/Maintainer"
-#~ msgstr "ደራሲ/አስተዳዳሪ"
-
-#~ msgid "You have modified the menu, do you want to save it before quitting ?"
-#~ msgstr "ምናሌውን አሻሽለውታል። ከመውጣትዎ በፊ ማስቀመጥ ይፈልጋሉ?"
-
-#~ msgid "Forget modifications"
-#~ msgstr "ቅያሪዎቹን ርሳቸው"
-
-#~ msgid "Unable to open the menu file %s in write mode"
-#~ msgstr "የምናሌውን ፋይል %s ከጻፍ ፈቃድ ጋር መክፈት አልተቻለም። "
-
-#~ msgid "Graphical tool for editing the Xfce 4 menu"
-#~ msgstr "የሸፍሲ 4 ምናሌ ማረሚያ ንድፋዊ መሳሪያ"
-
-#~ msgid "Menu Editor"
-#~ msgstr "ምናሌ አራሚ"
-
-#~ msgid "Xfce 4 Menu Editor"
-#~ msgstr "የሸፍሲ 4 ምናሌ አራሚ"
-
-#~ msgid "Settings for the Xfce 4 Desktop Manager"
-#~ msgstr "የሸፍሲ 4 ገበታ አስተዳዳሪ ስየማዎች"
-
-#~ msgid "Xfce 4 Desktop Settings"
-#~ msgstr "የሸፍሲ 4 ገበታ ስየማዎች"
-
-#, fuzzy
-#~ msgid "Use _Xfce to manage the desktop"
-#~ msgstr "ሸፍሲ ገበታን እንዲያስተዳድር ፍቀድ_X"
-
-#~ msgid ""
-#~ "Could not save file %s: %s\n"
-#~ "\n"
-#~ "Please choose another location or press cancel in the dialog to discard "
-#~ "your changes"
-#~ msgstr ""
-#~ "ፋይል %sን ማስቀመጥ አልቻልኩም፦ %s\n"
-#~ "\n"
-#~ "እባክዎ ሌላ ቦታ ይምረጡ ወይም ሰርዝ በመጫን ለውጦቹን ያጥፏቸው።"
-
-#~ msgid "Unable to quit session."
-#~ msgstr "ስራውን መዝጋት አልተቻለም"
-
-#~ msgid ""
-#~ "Quitting the session requires that Xfce's session manager (xfce4-session) "
-#~ "is running, but it was not detected.  Please quit Xfce via another means."
-#~ msgstr ""
-#~ "Quitting the session requires that Xfce's session manager (xfce4-session) "
-#~ "is running, but it was not detected.  Please quit Xfce via another means."
-
-#~ msgid ""
-#~ "Quitting the session requires the 'xfce4-session-logout' command, but it "
-#~ "could not be found: %s"
-#~ msgstr ""
-#~ "Quitting the session requires the 'xfce4-session-logout' command, but it "
-#~ "could not be found: %s"
-
-#~ msgid "Button Label|Desktop"
-#~ msgstr "የአዝራር መለዮ|ገበታ"
-
-#~ msgid "backdrops.list"
-#~ msgstr "backdrops.list"
-
-#~ msgid "Select backdrop image or list file"
-#~ msgstr "የጀርባ ምስል ወይም የዝርዝር ፋይልን ምረጥ"
-
-#~ msgid "List Files (*.list)"
-#~ msgstr "ፋይሎችን ዘርዝር (*.list)"
-
-#~ msgid "_Edit list..."
-#~ msgstr "ዝርዝሩን አርም..._E"
-
-#~ msgid "_New list..."
-#~ msgstr "አዲስ ዝርዝር..._N"
-
-#~ msgid "S_tyle:"
-#~ msgstr "ሙና_t፦"
-
-#~ msgid "Xfce will be unable to manage your desktop (%s)."
-#~ msgstr "ሸፍሲ ገበታ (%s)ን ማስተዳደር አልቻለም።"
-
-#~ msgid "Unknown Error"
-#~ msgstr "ያልታወቀ ስህተት"
-
-#~ msgid "Unable to start xfdesktop"
-#~ msgstr "xfdesktopን ማስነሳት አልተቻለም"
-
-#~ msgid ""
-#~ "To ensure that this setting takes effect the next time you start Xfce, "
-#~ "please be sure to save your session when logging out.  If you are not "
-#~ "using the Xfce Session Manager (xfce4-session), you will need to manually "
-#~ "edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
-#~ "documentation provided on http://xfce.org/."
-#~ msgstr ""
-#~ "To ensure that this setting takes effect the next time you start Xfce, "
-#~ "please be sure to save your session when logging out.  If you are not "
-#~ "using the Xfce Session Manager (xfce4-session), you will need to manually "
-#~ "edit your ~/.config/xfce4/xinitrc file.  Details are available in the "
-#~ "documentation provided on http://xfce.org/."
-
-#~ msgid ""
-#~ "To ensure that Xfce does not manage your desktop the next time you start "
-#~ "Xfce, please be sure to save your session when logging out.  If you are "
-#~ "not using the Xfce Session Manager (xfce4-session), you will need to "
-#~ "manually edit your ~/.config/xfce4/xinitrc file.  Details are available "
-#~ "in the documentation provided on http://xfce.org/."
-#~ msgstr ""
-#~ "To ensure that Xfce does not manage your desktop the next time you start "
-#~ "Xfce, please be sure to save your session when logging out.  If you are "
-#~ "not using the Xfce Session Manager (xfce4-session), you will need to "
-#~ "manually edit your ~/.config/xfce4/xinitrc file.  Details are available "
-#~ "in the documentation provided on http://xfce.org/."
-
-#~ msgid "_Do not show this again"
-#~ msgstr "ሌላ ጊዜ ይህንን አታሳይ_D"
-
-#~ msgid "Desktop Preferences"
-#~ msgstr "የገበታ ምርጫዎች"
-
-#~ msgid "Stretch single backdrop onto _all monitors"
-#~ msgstr "Stretch single backdrop onto _all monitors"
-
-#~ msgid "Color"
-#~ msgstr "ቀለም"
-
-#~ msgid "_Color Style:"
-#~ msgstr "የቀለም ሙና_C፦"
-
-#~ msgid "Image"
-#~ msgstr "ምስል"
-
-#~ msgid "Show _Image"
-#~ msgstr "ምስል አሳይ_I"
-
-#~ msgid "_File:"
-#~ msgstr "ፋይል _F፦"
-
-#~ msgid "_Behavior"
-#~ msgstr "ጠባይ_B"
-
-#~ msgid "Select backdrop image file"
-#~ msgstr "የጀርባ ምስል ፋይልን ምረጥ"
-
-#~ msgid "List file"
-#~ msgstr "ፋይል ዘርዝር"
-
-#~ msgid "Edit backdrop list"
-#~ msgstr "የጀርባ ዝርዝር አርም"
-
-#~ msgid "Desktop Icons"
-#~ msgstr "የገበታ መለዮዎች"
-
-#~ msgid "Use _system font size"
-#~ msgstr "የስርዓቱን ፊደል-ቅርጽ መጠን ተጠቀም _s"
-
-#~ msgid "Des_ktop"
-#~ msgstr "ገበታ_k"
-
-#~ msgid "_Desktop Properties..."
-#~ msgstr "የገበታ ባህሪዎች_D..."
+msgstr "መጠን _መጫኛ"
+
+#: ../src/xfdesktop-window-icon.c:195
+msgid "_Window Actions"
+msgstr "የ _መስኮት ተግባር"
