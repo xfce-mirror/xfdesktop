@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-03-03 18:32+0100\n"
-"PO-Revision-Date: 2016-02-23 15:02+0000\n"
+"PO-Revision-Date: 2016-02-23 21:40+0000\n"
 "Last-Translator: samson <sambelet@yahoo.com>\n"
 "Language-Team: Amharic (http://www.transifex.com/xfce/xfdesktop/language/am/)\n"
 "MIME-Version: 1.0\n"
@@ -38,7 +38,7 @@ msgstr "የሚወልቁ አካሎች"
 
 #: ../settings/main.c:412
 msgid "Network Shares"
-msgstr ""
+msgstr "ኔትዎርክ የሚካፈሉት"
 
 #: ../settings/main.c:414
 msgid "Disks and Drives"
@@ -69,7 +69,7 @@ msgstr "የ ግድግዳ ወረቀት ለ ሞኒተር %d"
 
 #: ../settings/main.c:725
 msgid "Move this dialog to the display you want to edit the settings for."
-msgstr ""
+msgstr "ይህን ንግግር ማንቀሳቀሻ እርስዎ ማሳየት ወደሚፈልጉበት ማሰናጃውን ለ ማረም "
 
 #: ../settings/main.c:732
 #, c-format
@@ -85,7 +85,7 @@ msgstr "የ ግድግዳ ወረቀት ለ %s ሞኒተር %d"
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
-msgstr ""
+msgstr "ይህን ንግግር ማንቀሳቀሻ እርስዎ ማሳየት ወደሚፈልጉበት የ ስራ ቦታ ማሰናጃውን ለ ማረም "
 
 #. Single monitor and single workspace
 #: ../settings/main.c:751
@@ -101,7 +101,7 @@ msgstr "የ ግድግዳ ወረቀት ለ %s"
 
 #: ../settings/main.c:762
 msgid "Move this dialog to the workspace you want to edit the settings for."
-msgstr ""
+msgstr "ይህን ንግግር ማንቀሳቀሻ እርስዎ ማሳየት ወደሚፈልጉበት የ ስራ ቦታ ማሰናጃውን ለ ማረም"
 
 #: ../settings/main.c:1178
 msgid "Image selection is unavailable while the image style is set to None."
@@ -143,7 +143,7 @@ msgstr ""
 #: ../settings/main.c:2062
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr ""
+msgstr "እባክዎን ችግሩን ያሳውቁን ለ <%s>."
 
 #: ../settings/main.c:2069
 msgid "Desktop Settings"
@@ -298,7 +298,7 @@ msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
 msgid "_Random Order"
-msgstr ""
+msgstr "በ _ደፈናው ደንብ"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
 msgid ""
@@ -388,7 +388,7 @@ msgstr "የ መተግበሪያ ምልክቶች በ ዝርዝር ውስጥ ማሳ
 
 #: ../settings/xfdesktop-settings-ui.glade.h:23
 msgid "Show workspace _names in list"
-msgstr ""
+msgstr "የ ስራ ቦታ _ስሞች ዝርዝር ማሳያ"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:24
 msgid "Use _submenus for the windows in each workspace"
@@ -434,15 +434,15 @@ msgstr "የ ተደበቁ ፋይሎች በ ዴስክቶፕ ላይ ማሳያ"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:34
 msgid "Single _click to activate items"
-msgstr ""
+msgstr "አንዴ _ይጫኑ እቃዎችን ለማስጀመር"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:35
 msgid "Show icon tooltips. Size:"
-msgstr ""
+msgstr "ምልክት በ መጠቆሚያው ጫፍ ልክ ማሳያ:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid "Size of the tooltip preview image."
-msgstr ""
+msgstr " የ መጠቆሚያው ጫፍ ቅድመ እይታ ምስል መጠን"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "Use custom _font size:"
@@ -474,7 +474,7 @@ msgstr "የ ስራ ቦታ ማስወገጃ %d"
 msgid ""
 "Do you really want to remove workspace %d?\n"
 "Note: You are currently on workspace %d."
-msgstr ""
+msgstr "በ እርግጥ ይህን የ ስራ ቦታ ማጥፋት ይፈልጋሉ %d?\nማስታወሻ: አሁን በ ስራ ቦታ ላይ ነው ያሉት %d."
 
 #: ../src/windowlist.c:78
 #, c-format
@@ -486,7 +486,7 @@ msgstr "የ ስራ ቦታ ማስወገጃ '%s'"
 msgid ""
 "Do you really want to remove workspace '%s'?\n"
 "Note: You are currently on workspace '%s'."
-msgstr ""
+msgstr "በ እርግጥ ይህን የ ስራ ቦታ ማጥፋት ይፈልጋሉ '%s'?\nማስታወሻ: አሁን በ ስራ ቦታ ላይ ነው ያሉት '%s'."
 
 #. Popup a dialog box confirming that the user wants to remove a
 #. * workspace
@@ -543,19 +543,19 @@ msgstr "ሁሉንም ማሰናጃዎች እንደገና መጫኛ"
 
 #: ../src/xfdesktop-application.c:838
 msgid "Advance to the next wallpaper on the current workspace"
-msgstr ""
+msgstr "በ አሁኑ የ ስራ ቦታ ወደሚቀጥለው የ ግድግዳ ወረቀት ማለፊያ"
 
 #: ../src/xfdesktop-application.c:839
 msgid "Pop up the menu (at the current mouse position)"
-msgstr ""
+msgstr "ብቅ ባይ ዝርዝር (አይጡ አሁን ባለበት ቦታ)"
 
 #: ../src/xfdesktop-application.c:840
 msgid "Pop up the window list (at the current mouse position)"
-msgstr ""
+msgstr "ብቅ ባይ የ መስኮት ዝርዝር (አይጡ አሁን ባለበት ቦታ)"
 
 #: ../src/xfdesktop-application.c:842
 msgid "Automatically arrange all the icons on the desktop"
-msgstr ""
+msgstr "ራሱ በራሱ ሁሉንም በ ደስክቶፕ ላይ ያሉ ምልክቶች ማዘጋጃ"
 
 #: ../src/xfdesktop-application.c:845
 msgid "Disable debug messages"
@@ -563,7 +563,7 @@ msgstr ""
 
 #: ../src/xfdesktop-application.c:846
 msgid "Do not wait for a window manager on startup"
-msgstr ""
+msgstr "በሚጀምር ጊዜ የ መስኮት አስተዳዳሪን አትጠብቅ"
 
 #: ../src/xfdesktop-application.c:847
 msgid "Cause xfdesktop to quit"
@@ -572,7 +572,7 @@ msgstr ""
 #: ../src/xfdesktop-application.c:862
 #, c-format
 msgid "Failed to parse arguments: %s\n"
-msgstr ""
+msgstr "ክርክሩን መተንተን አልተቻለም: %s\n"
 
 #: ../src/xfdesktop-application.c:873
 #, c-format
@@ -587,7 +587,7 @@ msgstr ""
 #: ../src/xfdesktop-application.c:879
 #, c-format
 msgid "Build options:\n"
-msgstr ""
+msgstr "የ ግንባታ ምርጫ:\n"
 
 #: ../src/xfdesktop-application.c:880
 #, c-format
@@ -637,7 +637,7 @@ msgstr "ስህተት እንደገና መሰየሚያ"
 
 #: ../src/xfdesktop-file-icon-manager.c:669 ../src/xfdesktop-file-utils.c:778
 msgid "The files could not be renamed"
-msgstr ""
+msgstr "ፋይሎቹን እንደገና መሰየም አልተቻለም"
 
 #: ../src/xfdesktop-file-icon-manager.c:670
 msgid "None of the icons selected support being renamed."
@@ -773,7 +773,7 @@ msgstr "ስህተት መጫኛ"
 
 #: ../src/xfdesktop-file-icon-manager.c:2908
 msgid "Failed to load the desktop folder"
-msgstr ""
+msgstr "የ ዴስክቶፕ ፎልደር መጫን አልተቻለም"
 
 #: ../src/xfdesktop-file-icon-manager.c:3472
 msgid "Copy _Here"
@@ -966,7 +966,7 @@ msgstr "የ ፋይል ስርአት"
 
 #: ../src/xfdesktop-special-file-icon.c:462
 msgid "Trash is empty"
-msgstr ""
+msgstr "ቆሻሻው ባዶ ነው"
 
 #: ../src/xfdesktop-special-file-icon.c:465
 msgid "Trash contains one item"
@@ -995,7 +995,7 @@ msgid ""
 "Removable Volume\n"
 "Mounted in \"%s\"\n"
 "%s left (%s total)"
-msgstr ""
+msgstr "የሚወልቅ መጠን\nተጭኗል በ \"%s\"\n%s የቀረው (%s ጠቅላላ)"
 
 #: ../src/xfdesktop-volume-icon.c:489
 msgid ""
