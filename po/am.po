@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 23:19+0200\n"
-"PO-Revision-Date: 2016-02-25 03:35+0000\n"
+"PO-Revision-Date: 2016-02-26 17:02+0000\n"
 "Last-Translator: samson <sambelet@yahoo.com>\n"
 "Language-Team: Amharic (http://www.transifex.com/xfce/xfdesktop/language/am/)\n"
 "MIME-Version: 1.0\n"
@@ -312,7 +312,7 @@ msgstr "<b>ማስተካከያ</b>"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
 msgid "_Change the background (in minutes):"
-msgstr ""
+msgstr "_መደብ መቀየሪያ (በ ደቂቅ ውስጥ):"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:36
 msgid ""
@@ -362,7 +362,7 @@ msgstr "Alt"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:17
 msgid "Control"
-msgstr "Control"
+msgstr "መቆጣጠሪያ"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:18
 msgid "Minimized application icons"
@@ -472,7 +472,7 @@ msgstr "የ _ፊደል መጠን ማስተካከያ ይጠቀሙ"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:44
 msgid "Label trans_parency:"
-msgstr ""
+msgstr "የ ምልክት ግል_ጽነት:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:45
 msgid ""
@@ -498,7 +498,7 @@ msgstr "የ እትም መረጃ ማሳያ"
 
 #: ../src/main.c:244
 msgid "Reload all settings, refresh image list"
-msgstr ""
+msgstr "ሁሉንም ማሰናጃ እንደገና መጫኛ: የ ምስል ዝርዝር ማነቃቂያ"
 
 #: ../src/main.c:245
 msgid "Pop up the menu (at the current mouse position)"
@@ -524,17 +524,17 @@ msgstr "ክርክሩን መተንተን አልተቻለም: %s\n"
 #: ../src/main.c:278
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr "ይህ %s ዝርያ %s, የሚሄደው በሸፍሲ %s ላይ ነው።\n"
+msgstr "ይህ %s እትም %s, የሚሄደው በ Xfce %s.\n"
 
 #: ../src/main.c:280
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr "የተገነባው በ GTK+ %d.%d.%d, የተያያዘው ከ GTK+ %d.%d.%d."
+msgstr "የተገነባው በ GTK+ %d.%d.%d, አገናኝ ከ GTK+ %d.%d.%d."
 
 #: ../src/main.c:284
 #, c-format
 msgid "Build options:\n"
-msgstr "የግንባታ ምርጫ:\n"
+msgstr "የ ግንባታ ምርጫ:\n"
 
 #: ../src/main.c:285
 #, c-format
@@ -624,7 +624,7 @@ msgstr "የ ዴስክቶፕ ፎልደር ስህተት "
 #: ../src/xfdesktop-file-icon-manager.c:521
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
-msgstr ""
+msgstr "መደበኛ ፋይል በዚህ ስም ቀደም ሲል ነበር: እባክዎን ያጥፉት ወይንም እንደገና ይሰይሙት"
 
 #: ../src/xfdesktop-file-icon-manager.c:624
 #: ../src/xfdesktop-file-icon-manager.c:668 ../src/xfdesktop-file-utils.c:863
@@ -636,7 +636,7 @@ msgstr "የ ቆሻሻ ስህተት"
 #: ../src/xfdesktop-file-icon-manager.c:625
 #: ../src/xfdesktop-file-icon-manager.c:669
 msgid "The selected files could not be trashed"
-msgstr ""
+msgstr "የ ተመረጡትን ፋይሎች ወደ ቆሻሻ መላክ አልተቻለም"
 
 #: ../src/xfdesktop-file-icon-manager.c:626
 #: ../src/xfdesktop-file-icon-manager.c:670 ../src/xfdesktop-file-utils.c:762
@@ -698,17 +698,17 @@ msgstr "_መክፈቻ"
 #. create launcher item
 #: ../src/xfdesktop-file-icon-manager.c:1444
 msgid "Create _Launcher..."
-msgstr "አስነሽ ፍጠር..._L"
+msgstr "_ማስነሻ መፍጠሪያ..."
 
 #. create link item
 #: ../src/xfdesktop-file-icon-manager.c:1460
 msgid "Create _URL Link..."
-msgstr "የURL አገናኝ ፍጠር..._U"
+msgstr "_URL አገናኝ መፍጠሪያ..."
 
 #. create folder item
 #: ../src/xfdesktop-file-icon-manager.c:1476
 msgid "Create _Folder..."
-msgstr "ዶሴ ፍጠር..._F"
+msgstr "_ፎልደር መፍጠሪያ"
 
 #. create from template submenu
 #: ../src/xfdesktop-file-icon-manager.c:1491
@@ -725,7 +725,7 @@ msgstr "_መፈጸሚያ"
 
 #: ../src/xfdesktop-file-icon-manager.c:1553
 msgid "_Edit Launcher"
-msgstr "አስነሺ _ማረሚያ"
+msgstr "ማስነሻ _ማረሚያ"
 
 #: ../src/xfdesktop-file-icon-manager.c:1588
 msgid "Open With"
@@ -925,7 +925,7 @@ msgid ""
 "Type: %s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr ""
+msgstr "አይነት: %s\nመጠን: %s\nመጨረሻ የተሻሻለው: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:273
 #: ../src/xfdesktop-special-file-icon.c:432
@@ -969,7 +969,7 @@ msgstr "የሚወልቅ መጠን\nተጭኗል በ \"%s\"\n%s የቀረው (%s 
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
-msgstr ""
+msgstr "የሚወልቅ መጠን\nአልተጫነም"
 
 #: ../src/xfdesktop-volume-icon.c:480 ../src/xfdesktop-volume-icon.c:522
 #, c-format
