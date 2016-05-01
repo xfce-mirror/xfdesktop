@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-03-03 18:32+0100\n"
-"PO-Revision-Date: 2016-04-30 10:05+0000\n"
+"PO-Revision-Date: 2016-05-01 13:39+0000\n"
 "Last-Translator: Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfdesktop/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -152,7 +152,7 @@ msgstr "Ajustaments de l'escriptori"
 
 #: ../settings/main.c:2071
 msgid "Unable to contact settings server"
-msgstr "No s’ha pogut contactar amb el servidor d'ajustaments"
+msgstr "No s'ha pogut contactar amb el servidor d'ajustaments"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop "
@@ -321,7 +321,7 @@ msgstr "Dreta"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:5
 msgid "Shift"
-msgstr "Shift"
+msgstr "Maj"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:6
 msgid "Alt"
@@ -700,17 +700,17 @@ msgstr "_Obre"
 #. create launcher item
 #: ../src/xfdesktop-file-icon-manager.c:1472
 msgid "Create _Launcher..."
-msgstr "Crea un _llançador…"
+msgstr "Crea un _llançador..."
 
 #. create link item
 #: ../src/xfdesktop-file-icon-manager.c:1488
 msgid "Create _URL Link..."
-msgstr "Crea un enllaç _URL…"
+msgstr "Crea un enllaç _URL..."
 
 #. create folder item
 #: ../src/xfdesktop-file-icon-manager.c:1504
 msgid "Create _Folder..."
-msgstr "Crea un _directori…"
+msgstr "Crea un _directori..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1521
 msgid "Create _Document"
@@ -739,7 +739,7 @@ msgstr "Obre amb"
 #: ../src/xfdesktop-file-icon-manager.c:1684
 #: ../src/xfdesktop-file-icon-manager.c:1699
 msgid "Open With Other _Application..."
-msgstr "Obre amb una altra _aplicació…"
+msgstr "Obre amb una altra _aplicació..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1758
 msgid "Paste Into Folder"
@@ -753,7 +753,7 @@ msgstr "_Mou a la paperera"
 #. Rename
 #: ../src/xfdesktop-file-icon-manager.c:1808
 msgid "_Rename..."
-msgstr "Canv_ia el nom…"
+msgstr "Canv_ia el nom..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1876
 msgid "Arrange Desktop _Icons"
@@ -761,12 +761,12 @@ msgstr "_Organitza les Icones de l'Escriptori"
 
 #: ../src/xfdesktop-file-icon-manager.c:1887
 msgid "Desktop _Settings..."
-msgstr "Ajustaments de l'e_scriptori…"
+msgstr "Ajustaments de l'e_scriptori..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1898
 #: ../src/xfdesktop-volume-icon.c:855
 msgid "P_roperties..."
-msgstr "_Propietats…"
+msgstr "_Propietats..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2906
 msgid "Load Error"
@@ -913,7 +913,7 @@ msgstr "Desmuntatge del dispositiu"
 msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the"
 " media or disconnect the drive"
-msgstr "S'està desmuntant el dispositiu \"%s\" . Si us plau no extreieu ni desconnecteu el dispositiu."
+msgstr "El dispositiu «%s» està sent desmuntat pel sistema. Si us plau, no expulseu el mitjà ni desconnecteu la unitat."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:137 ../src/xfdesktop-notify.c:322
