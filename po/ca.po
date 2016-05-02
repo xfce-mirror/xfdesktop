@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-03-03 18:32+0100\n"
-"PO-Revision-Date: 2016-05-02 15:01+0000\n"
+"PO-Revision-Date: 2016-05-02 20:22+0000\n"
 "Last-Translator: Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfdesktop/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -365,7 +365,7 @@ msgstr "Mostra les icones d'_aplicació al menú"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:17
 msgid "_Edit desktop menu"
-msgstr "_Edita menú"
+msgstr "_Edita el menú de l'escriptori"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:18
 msgid "<b>Desktop Menu</b>"
@@ -373,7 +373,7 @@ msgstr "<b>Menú de l'escriptori</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:19
 msgid "Show _window list menu on desktop middle click"
-msgstr "Mostra la llista de _finestres amb el botó del mig del ratolí"
+msgstr "Mostra la llista de les _finestres amb el botó del mig del ratolí"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:20
 msgid "B_utton:"
@@ -405,7 +405,7 @@ msgstr "Mostra les opcions d'afegir i eliminar espais de treball en una llista"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "<b>Window List Menu</b>"
-msgstr "<b>Menu de llista de finestres</b>"
+msgstr "<b>Mení de la llista de les finestres</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:28
 msgid "_Menus"
@@ -435,7 +435,7 @@ msgstr "Mostra els fitxers amagats a l'escriptori"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:34
 msgid "Single _click to activate items"
-msgstr "Un sol _click per activar els elements"
+msgstr "Un sol _clic per activar els elements"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:35
 msgid "Show icon tooltips. Size:"
@@ -497,7 +497,7 @@ msgstr "Suprimeix"
 
 #: ../src/windowlist.c:247
 msgid "Window List"
-msgstr "Llista de finestres"
+msgstr "Llista de les finestres"
 
 #: ../src/windowlist.c:273
 #, c-format
@@ -532,7 +532,7 @@ msgstr "Error de llançament"
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
-msgstr "No s’ha pogut llançar «exo-desktop-item-edit», el qual s’ha de menester per crear i editar els llançadors i enllaços a l’escriptori."
+msgstr "No s'ha pogut llançar «exo-desktop-item-edit», el qual es requereix per crear i editar els llançadors i els enllaços a l'escriptori."
 
 #: ../src/xfdesktop-application.c:836
 msgid "Display version information"
@@ -544,7 +544,7 @@ msgstr "Torna a carregar tots els ajusts"
 
 #: ../src/xfdesktop-application.c:838
 msgid "Advance to the next wallpaper on the current workspace"
-msgstr "Avança al fons de pantalla següent a l'espai de treballa actual"
+msgstr "Avança al següent fons de pantalla en l'espai de treball actual"
 
 #: ../src/xfdesktop-application.c:839
 msgid "Pop up the menu (at the current mouse position)"
@@ -552,7 +552,7 @@ msgstr "Mostra el menú (a la posició actual del ratolí)"
 
 #: ../src/xfdesktop-application.c:840
 msgid "Pop up the window list (at the current mouse position)"
-msgstr "Mostra la llista de finestres (a la posició actual del ratolí)"
+msgstr "Mostra la llista de les finestres (a la posició actual del ratolí)"
 
 #: ../src/xfdesktop-application.c:842
 msgid "Automatically arrange all the icons on the desktop"
@@ -583,7 +583,7 @@ msgstr "Això és %s versió %s, executant-se en Xfce %s.\n"
 #: ../src/xfdesktop-application.c:875
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr "Construit amb GTK+ %d.%d.%d, enllaçat amb GTK+ %d.%d.%d."
+msgstr "Es va construir amb GTK+ %d.%d.%d, es va enllaçar amb GTK+ %d.%d.%d."
 
 #: ../src/xfdesktop-application.c:879
 #, c-format
@@ -718,7 +718,7 @@ msgstr "Crea un _document"
 
 #: ../src/xfdesktop-file-icon-manager.c:1545
 msgid "No templates installed"
-msgstr "No hi ha plantilles instaŀlades"
+msgstr "No hi ha plantilles instal·lades"
 
 #: ../src/xfdesktop-file-icon-manager.c:1562
 msgid "_Empty File"
