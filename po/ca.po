@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-03-03 18:32+0100\n"
-"PO-Revision-Date: 2016-05-01 19:32+0000\n"
+"PO-Revision-Date: 2016-05-02 15:01+0000\n"
 "Last-Translator: Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfdesktop/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,7 @@ msgstr ""
 #: ../settings/main.c:404 ../src/xfdesktop-special-file-icon.c:295
 #: ../src/xfdesktop-special-file-icon.c:479
 msgid "Home"
-msgstr "Inici"
+msgstr "Carpeta de l'usuari"
 
 #: ../settings/main.c:406
 msgid "Filesystem"
@@ -70,7 +70,7 @@ msgstr "Fons per al monitor %d"
 
 #: ../settings/main.c:725
 msgid "Move this dialog to the display you want to edit the settings for."
-msgstr "Desplaceu aquest diàleg a la pantalla els paràmetres de la qual vulgueu editar."
+msgstr "Moveu aquest diàleg a la pantalla on vulgueu editar els ajusts."
 
 #: ../settings/main.c:732
 #, c-format
@@ -102,7 +102,7 @@ msgstr "Fons per a %s"
 
 #: ../settings/main.c:762
 msgid "Move this dialog to the workspace you want to edit the settings for."
-msgstr "Desplaceu aquest diàleg a l'espai de treball els paràmetres del qual vulgueu editar."
+msgstr "Moveu aquest diàleg a l'espai de treball on vulgueu editar els ajusts."
 
 #: ../settings/main.c:1178
 msgid "Image selection is unavailable while the image style is set to None."
@@ -114,15 +114,15 @@ msgstr "Pantalles expansives"
 
 #: ../settings/main.c:1839
 msgid "Image files"
-msgstr "Fitxers d'imatge"
+msgstr "Fitxers d'imatges"
 
 #: ../settings/main.c:2019
 msgid "Settings manager socket"
-msgstr "Sòcol del gestor d'akustaments"
+msgstr "Sòcol del gestor d'ajusts"
 
 #: ../settings/main.c:2019
 msgid "SOCKET ID"
-msgstr "SÒCOL ID"
+msgstr "ID SÒCOL"
 
 #: ../settings/main.c:2020
 msgid "Version information"
@@ -135,7 +135,7 @@ msgstr "Habilita els missatges de depuració"
 #: ../settings/main.c:2049
 #, c-format
 msgid "Type '%s --help' for usage."
-msgstr "Feu «%s --help» per veure l'ús."
+msgstr "Teclegeu «%s --help» per veure l'ús."
 
 #: ../settings/main.c:2061
 msgid "The Xfce development team. All rights reserved."
@@ -148,11 +148,11 @@ msgstr "Envieu els errors a <%s>."
 
 #: ../settings/main.c:2069
 msgid "Desktop Settings"
-msgstr "Ajustaments de l'escriptori"
+msgstr "Ajusts de l'escriptori"
 
 #: ../settings/main.c:2071
 msgid "Unable to contact settings server"
-msgstr "No s'ha pogut contactar amb el servidor d'ajustaments"
+msgstr "No s'ha pogut contactar amb el servidor d'ajusts"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop "
@@ -161,7 +161,7 @@ msgstr "Escriptori "
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 #: ../settings/xfdesktop-settings-ui.glade.h:11
 msgid "Set desktop background and menu and icon behavior"
-msgstr "Ajusta el fons de l'escriptori i el comportament del menú i de les icones"
+msgstr "Establiu el fons de l'escriptori i el comportament del menú i de les icones"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
 msgid "Solid color"
@@ -525,7 +525,7 @@ msgstr "Sup_rimeix l'espai de treball «%s»"
 #: ../src/xfdesktop-file-utils.c:1087 ../src/xfdesktop-file-utils.c:1164
 #: ../src/xfdesktop-file-utils.c:1189 ../src/xfdesktop-file-utils.c:1241
 msgid "Launch Error"
-msgstr "Error durant el llançament"
+msgstr "Error de llançament"
 
 #: ../src/xfdesktop-app-menu-item.c:353
 #: ../src/xfdesktop-file-icon-manager.c:1155
@@ -540,7 +540,7 @@ msgstr "Mostra la informació de la versió"
 
 #: ../src/xfdesktop-application.c:837
 msgid "Reload all settings"
-msgstr "Torna a carregar tots els paràmetres"
+msgstr "Torna a carregar tots els ajusts"
 
 #: ../src/xfdesktop-application.c:838
 msgid "Advance to the next wallpaper on the current workspace"
@@ -761,7 +761,7 @@ msgstr "_Organitza les Icones de l'Escriptori"
 
 #: ../src/xfdesktop-file-icon-manager.c:1887
 msgid "Desktop _Settings..."
-msgstr "Ajustaments de l'e_scriptori..."
+msgstr "Ajusts de l'e_scriptori..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1898
 #: ../src/xfdesktop-volume-icon.c:855
