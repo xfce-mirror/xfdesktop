@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-03-03 18:32+0100\n"
-"PO-Revision-Date: 2016-05-03 10:10+0000\n"
+"PO-Revision-Date: 2016-05-03 22:25+0000\n"
 "Last-Translator: Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfdesktop/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -913,7 +913,7 @@ msgstr "Desmuntatge del dispositiu"
 msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the"
 " media or disconnect the drive"
-msgstr "El dispositiu «%s» està sent desmuntat pel sistema. Si us plau, no expulseu el mitjà ni desconnecteu la unitat."
+msgstr "El dispositiu «%s» està sent desmuntat pel sistema. Si us plau, no expulseu el mitjà o desconnecteu la unitat."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:137 ../src/xfdesktop-notify.c:322
@@ -926,16 +926,16 @@ msgstr "Escriptura de dades al dispositiu"
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be"
 " removed. Please do not remove the media or disconnect the drive"
-msgstr "S'ha d'escriure dades al dispositiu \"%s\" abans de ser expulsat. Si us plau, no expulseu ni desconnecteu el dispositiu."
+msgstr "Hi ha dades que s'han d'escriure a «%s» abans que es pugui expulsar. No expulseu el mitjà o desconnecteu la unitat."
 
 #: ../src/xfdesktop-notify.c:221
 msgid "Unmount Finished"
-msgstr "Ha acabat el desmuntatge"
+msgstr "Desmuntatge finalitzat"
 
 #: ../src/xfdesktop-notify.c:223 ../src/xfdesktop-notify.c:408
 #, c-format
 msgid "The device \"%s\" has been safely removed from the system. "
-msgstr "El dispositiu \"%s\" s'ha tret amb seguretat del sistema."
+msgstr "El dispositiu «%s» s'ha tret amb seguretat del sistema."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:313
@@ -950,7 +950,7 @@ msgstr "S'està expulsant el dispositiu \"%s\". Això pot trigar una estona."
 
 #: ../src/xfdesktop-notify.c:406
 msgid "Eject Finished"
-msgstr "Ha acabat l'expulsió"
+msgstr "Expulsió finalitzada"
 
 #: ../src/xfdesktop-regular-file-icon.c:786
 #, c-format
@@ -1020,7 +1020,7 @@ msgstr "No s'ha pogut muntar \"%s\""
 
 #: ../src/xfdesktop-volume-icon.c:603
 msgid "Mount Failed"
-msgstr "Error de desmuntatge"
+msgstr "Error de muntatge"
 
 #: ../src/xfdesktop-volume-icon.c:828
 msgid "E_ject Volume"
