@@ -43,12 +43,6 @@ desktop_icon_sources = \
 	gtkcairoblur.c \
 	gtkcairoblurprivate.h
 
-desktop_menu_sources = \
-	xfce-desktop-menu.c \
-	xfce-desktop-menu.h \
-	xfdesktop-app-menu-item.c \
-	xfdesktop-app-menu-item.h
-
 desktop_file_icon_sources = \
 	xfdesktop-clipboard-manager.c \
 	xfdesktop-clipboard-manager.h \
@@ -114,13 +108,13 @@ xfdesktop_LDADD += \
 
 if BUILD_DESKTOP_MENU
 
-xfdesktop_SOURCES += $(desktop_menu_sources)
-
 xfdesktop_CFLAGS += \
-	$(GARCON_CFLAGS)
+	$(GARCON_CFLAGS) \
+	$(GARCON_GTK3_CFLAGS)
 
 xfdesktop_LDADD += \
-	$(GARCON_LIBS)
+	$(GARCON_LIBS) \
+	$(GARCON_GTK3_LIBS)
 
 endif
 
@@ -218,6 +212,5 @@ endif
 endif
 
 EXTRA_DIST = \
-	$(desktop_menu_sources) \
 	$(desktop_icon_sources) \
 	$(desktop_file_icon_sources)

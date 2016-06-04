@@ -172,6 +172,16 @@ echo "*** if you installed the new version of the package in a nonstandard"
 echo "*** prefix.  Desktop menu will be disabled."
 build_desktop_menu="no"
 ])
+    XDT_CHECK_PACKAGE([GARCON_GTK3], [garcon-gtk3-1],
+                      [garcon_minimum_version], [build_desktop_menu="yes"],
+                      [
+echo "*** Optional package garcon-gtk3-1 was either not found on your system"
+echo "*** or is too old.  Please install or upgrade to at least version"
+echo "*** garcon_minimum_version, or adjust the PKG_CONFIG_PATH environment variable"
+echo "*** if you installed the new version of the package in a nonstandard"
+echo "*** prefix.  Desktop menu will be disabled."
+build_desktop_menu="no"
+])
     if test "x$build_desktop_menu" = "xyes"; then
         AC_DEFINE([USE_DESKTOP_MENU], [1],
                   [Define if we should build the desktop menu module])

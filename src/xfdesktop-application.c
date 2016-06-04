@@ -380,8 +380,6 @@ reload_idle_cb(gpointer data)
             xfce_desktop_refresh(XFCE_DESKTOP(app->desktops[i]), FALSE);
     }
 
-    menu_reload();
-
     g_application_release(G_APPLICATION(app));
 
     return FALSE;
