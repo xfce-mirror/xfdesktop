@@ -520,9 +520,10 @@ xfdesktop_volume_icon_eject_finish(GObject *object,
 
             /* display an error dialog to inform the user */
             xfce_message_dialog(toplevel ? GTK_WINDOW(toplevel) : NULL,
-                                _("Eject Failed"), GTK_STOCK_DIALOG_ERROR, 
+                                _("Eject Failed"), "dialog-error", 
                                 primary, error->message,
-                                GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                                XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                                NULL);
 
             g_free(primary);
             g_free(volume_name);
@@ -565,9 +566,10 @@ xfdesktop_volume_icon_unmount_finish(GObject *object,
 
             /* display an error dialog to inform the user */
             xfce_message_dialog(toplevel ? GTK_WINDOW(toplevel) : NULL,
-                                _("Eject Failed"), GTK_STOCK_DIALOG_ERROR, 
+                                _("Eject Failed"), "dialog-error", 
                                 primary, error->message,
-                                GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                                XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                                NULL);
 
             g_free(primary);
             g_free(mount_name);
@@ -600,9 +602,10 @@ xfdesktop_volume_icon_mount_finish(GObject *object,
             gchar *primary = g_markup_printf_escaped(_("Failed to mount \"%s\""),
                                                      volume_name);
             xfce_message_dialog(toplevel ? GTK_WINDOW(toplevel) : NULL,
-                                _("Mount Failed"), GTK_STOCK_DIALOG_ERROR, 
+                                _("Mount Failed"), "dialog-error", 
                                 primary, error->message,
-                                GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                                XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                                NULL);
             g_free(primary);
             g_free(volume_name);
         }
