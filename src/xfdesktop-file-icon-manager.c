@@ -564,9 +564,10 @@ xfdesktop_file_icon_manager_check_create_desktop_folder(GFile *folder)
             g_free(uri);
 
             xfce_message_dialog(NULL, _("Desktop Folder Error"),
-                                GTK_STOCK_DIALOG_WARNING, primary,
-                                error->message, GTK_STOCK_CLOSE,
-                                GTK_RESPONSE_ACCEPT, NULL);
+                                "dialog-warning", primary,
+                                error->message,
+                                XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                                NULL);
             g_free(primary);
 
             result = FALSE;
@@ -581,10 +582,11 @@ xfdesktop_file_icon_manager_check_create_desktop_folder(GFile *folder)
             g_free(uri);
 
             xfce_message_dialog(NULL, _("Desktop Folder Error"),
-                                GTK_STOCK_DIALOG_WARNING, primary,
+                                "dialog-warning", primary,
                                 _("A normal file with the same name already exists. "
-                                  "Please delete or rename it."), GTK_STOCK_CLOSE,
-                                GTK_RESPONSE_ACCEPT, NULL);
+                                  "Please delete or rename it."),
+                                XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                                NULL);
             g_free(primary);
 
             result = FALSE;
@@ -665,10 +667,11 @@ xfdesktop_file_icon_menu_rename(GtkWidget *widget,
     } else {
         /* Nothing valid to rename */
         xfce_message_dialog(GTK_WINDOW(toplevel),
-                            _("Rename Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("Rename Error"), "dialog-error",
                             _("The files could not be renamed"),
                             _("None of the icons selected support being renamed."),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            NULL);
     }
 
     g_list_free(files);
@@ -711,11 +714,12 @@ xfdesktop_file_icon_manager_trash_files_cb(DBusGProxy *proxy,
         GtkWidget *parent = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
 
         xfce_message_dialog(GTK_WINDOW(parent),
-                            _("Trash Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("Trash Error"), "dialog-error",
                             _("The selected files could not be trashed"),
                             _("This feature requires a file manager service to "
                               "be present (such as the one supplied by Thunar)."),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            NULL);
     }
 }
 
@@ -755,11 +759,12 @@ xfdesktop_file_icon_manager_trash_files(XfdesktopFileIconManager *fmanager,
         GtkWidget *parent = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
 
         xfce_message_dialog(GTK_WINDOW(parent),
-                            _("Trash Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("Trash Error"), "dialog-error",
                             _("The selected files could not be trashed"),
                             _("This feature requires a file manager service to "
                               "be present (such as the one supplied by Thunar)."),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            NULL);
 
         result = FALSE;
     }
@@ -858,8 +863,9 @@ xfdesktop_file_icon_menu_app_info_executed(GtkWidget *widget,
         gchar *primary = g_markup_printf_escaped(_("Unable to launch \"%s\":"),
                                                  g_app_info_get_name(app_info));
         xfce_message_dialog(GTK_WINDOW(toplevel), _("Launch Error"),
-                            GTK_STOCK_DIALOG_ERROR, primary, error->message,
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                            "dialog-error", primary, error->message,
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            NULL);
         g_free(primary);
         g_clear_error(&error);
     }
@@ -1152,16 +1158,18 @@ xfdesktop_file_icon_menu_create_launcher(GtkWidget *widget,
     if(!xfce_spawn_command_line_on_screen(NULL, cmd, FALSE, FALSE, &error)) {
         GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
         xfce_message_dialog(GTK_WINDOW(toplevel), _("Launch Error"),
-                            GTK_STOCK_DIALOG_ERROR, 
+                            "dialog-error", 
                             _("Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."),
-                            error->message, GTK_STOCK_CLOSE,
-                            GTK_RESPONSE_ACCEPT, NULL);
-        g_clear_error(&error);
+                            error->message,
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            NULL);
     }
     
     g_free(display_name);
     g_free(uri);
     g_free(cmd);
+    g_clear_error(&error);
+
 }
 
 static void
@@ -1365,8 +1373,9 @@ xfdesktop_settings_launch(GtkWidget *w,
         /* printf is to be translator-friendly */
         gchar *primary = g_strdup_printf(_("Unable to launch \"%s\":"), cmd);
         xfce_message_dialog(GTK_WINDOW(toplevel), _("Launch Error"),
-                            GTK_STOCK_DIALOG_ERROR, primary, error->message,
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                            "dialog-error", primary, error->message,
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            NULL);
         g_free(primary);
         g_clear_error(&error);
     }
@@ -2910,9 +2919,10 @@ xfdesktop_file_icon_manager_files_ready(GFileEnumerator *enumerator,
 
             xfce_message_dialog(gtk_widget_is_toplevel(toplevel) ? GTK_WINDOW(toplevel) : NULL,
                                 _("Load Error"),
-                                GTK_STOCK_DIALOG_WARNING, 
+                                "dialog-warning", 
                                 _("Failed to load the desktop folder"), error->message,
-                                GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                                XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                                NULL);
         }
 
         g_object_unref(fmanager->priv->enumerator);
