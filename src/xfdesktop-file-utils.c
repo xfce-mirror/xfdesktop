@@ -337,13 +337,12 @@ xfdesktop_file_utils_get_fallback_icon(gint size)
     }
 
     if(G_UNLIKELY(!xfdesktop_fallback_icon)) {
-        GtkWidget *dummy = gtk_invisible_new();
-        gtk_widget_realize(dummy);
-
         /* this is kinda crappy, but hopefully should never happen */
-        xfdesktop_fallback_icon = gtk_widget_render_icon(dummy,
-                                                         GTK_STOCK_MISSING_IMAGE,
-                                                         (GtkIconSize)-1, NULL);
+        xfdesktop_fallback_icon = gtk_icon_theme_load_icon(gtk_icon_theme_get_default(),
+                                                           "image-missing",
+                                                           size,
+                                                           GTK_ICON_LOOKUP_USE_BUILTIN,
+                                                           NULL);
         if(gdk_pixbuf_get_width(xfdesktop_fallback_icon) != size
            || gdk_pixbuf_get_height(xfdesktop_fallback_icon) != size)
         {
@@ -662,9 +661,10 @@ xfdesktop_file_utils_open_folder(GFile *file,
                                                     &error))
     {
         xfce_message_dialog(parent,
-                            _("Launch Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("Launch Error"), "dialog-error",
                             _("The folder could not be opened"),
-                            error->message, GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
+                            error->message,
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
                             NULL);
 
         g_clear_error(&error);
@@ -682,9 +682,10 @@ xfdesktop_file_utils_async_cb(DBusGProxy *proxy, GError *error, gpointer userdat
         /* ignore dbus timeout error (bug #11283) */
         if(error->code != DBUS_GERROR_NO_REPLY) {
             xfce_message_dialog(parent,
-                                _("Error"), GTK_STOCK_DIALOG_ERROR,
+                                _("Error"), "dialog-error",
                                 _("The requested operation could not be completed"),
-                                error->message, GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
+                                error->message,
+                                XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
                                 NULL);
         }
         g_clear_error(&error);
@@ -724,11 +725,12 @@ xfdesktop_file_utils_rename_file(GFile *file,
         g_free(display_name);
     } else {
         xfce_message_dialog(parent,
-                            _("Rename Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("Rename Error"), "dialog-error",
                             _("The file could not be renamed"),
                             _("This feature requires a file manager service to "
                               "be present (such as the one supplied by Thunar)."),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            NULL);
     }
 }
 
@@ -777,11 +779,12 @@ xfdesktop_file_utils_bulk_rename(GFile *working_directory,
         g_free(display_name);
     } else {
         xfce_message_dialog(parent,
-                            _("Rename Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("Rename Error"), "dialog-error",
                             _("The files could not be renamed"),
                             _("This feature requires a file manager service to "
                               "be present (such as the one supplied by Thunar)."),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            NULL);
     }
 }
 
@@ -827,11 +830,12 @@ xfdesktop_file_utils_unlink_files(GList *files,
         g_free(display_name);
     } else {
         xfce_message_dialog(parent,
-                            _("Delete Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("Delete Error"), "dialog-error",
                             _("The selected files could not be deleted"),
                             _("This feature requires a file manager service to "
                               "be present (such as the one supplied by Thunar)."),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            NULL);
     }
 }
 
@@ -877,11 +881,12 @@ xfdesktop_file_utils_trash_files(GList *files,
         g_free(display_name);
     } else {
         xfce_message_dialog(parent,
-                            _("Trash Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("Trash Error"), "dialog-error",
                             _("The selected files could not be moved to the trash"),
                             _("This feature requires a trash service to "
                               "be present (such as the one supplied by Thunar)."),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            NULL);
     }
 }
 
@@ -914,11 +919,12 @@ xfdesktop_file_utils_empty_trash(GdkScreen *screen,
         g_free(display_name);
     } else {
         xfce_message_dialog(parent,
-                            _("Trash Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("Trash Error"), "dialog-error",
                             _("Could not empty the trash"),
                             _("This feature requires a trash service to "
                               "be present (such as the one supplied by Thunar)."),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            NULL);
     }
 }
 
@@ -958,11 +964,12 @@ xfdesktop_file_utils_create_file(GFile *parent_folder,
         g_free(display_name);
     } else {
         xfce_message_dialog(parent,
-                            _("Create File Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("Create File Error"), "dialog-error",
                             _("Could not create a new file"),
                             _("This feature requires a file manager service to "
                               "be present (such as the one supplied by Thunar)."),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            NULL);
     }
 }
 
@@ -1005,11 +1012,12 @@ xfdesktop_file_utils_create_file_from_template(GFile *parent_folder,
         g_free(display_name);
     } else {
         xfce_message_dialog(parent,
-                            _("Create Document Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("Create Document Error"), "dialog-error",
                             _("Could not create a new document from the template"),
                             _("This feature requires a file manager service to "
                               "be present (such as the one supplied by Thunar)."),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            NULL);
     }
 }
 
@@ -1046,11 +1054,12 @@ xfdesktop_file_utils_show_properties_dialog(GFile *file,
         g_free(display_name);
     } else {
         xfce_message_dialog(parent,
-                            _("File Properties Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("File Properties Error"), "dialog-error",
                             _("The file properties dialog could not be opened"),
                             _("This feature requires a file manager service to "
                               "be present (such as the one supplied by Thunar)."),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            NULL);
     }
 }
 
@@ -1087,11 +1096,12 @@ xfdesktop_file_utils_launch(GFile *file,
         g_free(display_name);
     } else {
         xfce_message_dialog(parent,
-                            _("Launch Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("Launch Error"), "dialog-error",
                             _("The file could not be opened"),
                             _("This feature requires a file manager service to "
                               "be present (such as the one supplied by Thunar)."),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            NULL);
     }
 }
 
@@ -1164,9 +1174,9 @@ xfdesktop_file_utils_execute(GFile *working_directory,
             gchar *primary = g_markup_printf_escaped(_("Failed to run \"%s\""), name);
 
             xfce_message_dialog(parent,
-                                _("Launch Error"), GTK_STOCK_DIALOG_ERROR,
+                                _("Launch Error"), "dialog-error",
                                 primary, error->message,
-                                GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
+                                XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
                                 NULL);
 
             g_free(primary);
@@ -1188,11 +1198,12 @@ xfdesktop_file_utils_execute(GFile *working_directory,
         gchar *primary = g_markup_printf_escaped(_("Failed to run \"%s\""), name);
 
         xfce_message_dialog(parent,
-                            _("Launch Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("Launch Error"), "dialog-error",
                             primary,
                             _("This feature requires a file manager service to "
                               "be present (such as the one supplied by Thunar)."),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            NULL);
 
         g_free(primary);
         g_free(name);
@@ -1240,11 +1251,12 @@ xfdesktop_file_utils_display_chooser_dialog(GFile *file,
         g_free(display_name);
     } else {
         xfce_message_dialog(parent,
-                            _("Launch Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("Launch Error"), "dialog-error",
                             _("The application chooser could not be opened"),
                             _("This feature requires a file manager service to "
                               "be present (such as the one supplied by Thunar)."),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            NULL);
     }
 }
 
@@ -1299,9 +1311,10 @@ xfdesktop_file_utils_transfer_file(GdkDragAction action,
 
         if(error) {
             xfce_message_dialog(NULL,
-                                _("Transfer Error"), GTK_STOCK_DIALOG_ERROR,
+                                _("Transfer Error"), "dialog-error",
                                 _("The file transfer could not be performed"),
-                                error->message, GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
+                                error->message,
+                                XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
                                 NULL);
 
             g_clear_error(&error);
@@ -1313,11 +1326,12 @@ xfdesktop_file_utils_transfer_file(GdkDragAction action,
         g_free(source_uris[0]);
     } else {
         xfce_message_dialog(NULL,
-                            _("Transfer Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("Transfer Error"), "dialog-error",
                             _("The file transfer could not be performed"),
                             _("This feature requires a file manager service to "
                               "be present (such as the one supplied by Thunar)."),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            NULL);
     }
 }
 
@@ -1375,9 +1389,10 @@ xfdesktop_file_utils_transfer_files(GdkDragAction action,
 
         if(error) {
             xfce_message_dialog(NULL,
-                                _("Transfer Error"), GTK_STOCK_DIALOG_ERROR,
+                                _("Transfer Error"), "dialog-error",
                                 _("The file transfer could not be performed"),
-                                error->message, GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
+                                error->message,
+                                XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
                                 NULL);
 
             g_clear_error(&error);
@@ -1391,11 +1406,12 @@ xfdesktop_file_utils_transfer_files(GdkDragAction action,
         g_free(source_uris[0]);
     } else {
         xfce_message_dialog(NULL,
-                            _("Transfer Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("Transfer Error"), "dialog-error",
                             _("The file transfer could not be performed"),
                             _("This feature requires a file manager service to "
                               "be present (such as the one supplied by Thunar)."),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            NULL);
 
         success = FALSE;
     }
