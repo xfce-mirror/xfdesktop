@@ -65,11 +65,9 @@
 #include "xfdesktop-file-icon.h"
 #include "xfdesktop-file-icon-manager.h"
 #include "xfdesktop-file-utils.h"
-#include "xfdesktop-file-manager-proxy.h"
 #include "xfdesktop-icon-view.h"
 #include "xfdesktop-regular-file-icon.h"
 #include "xfdesktop-special-file-icon.h"
-#include "xfdesktop-trash-proxy.h"
 #include "xfdesktop-volume-icon.h"
 #include "xfdesktop-thumbnailer.h"
 
@@ -234,13 +232,6 @@ G_DEFINE_TYPE_EXTENDED(XfdesktopFileIconManager,
 
 #define XFDESKTOP_FILE_ICON_MANAGER_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), XFDESKTOP_TYPE_ICON_VIEW_MANAGER, XfdesktopFileIconManagerPrivate))
 
-typedef struct
-{
-    XfdesktopFileIconManager *fmanager;
-    DBusGProxy *proxy;
-    DBusGProxyCall *call;
-    GList *files;
-} XfdesktopTrashFilesData;
 
 enum
 {
@@ -701,79 +692,21 @@ xfdesktop_file_icon_manager_delete_files(XfdesktopFileIconManager *fmanager,
     g_list_free(gfiles);
 }
 
-static void
-xfdesktop_file_icon_manager_trash_files_cb(DBusGProxy *proxy,
-                                           GError *error,
-                                           gpointer user_data)
-{
-    XfdesktopFileIconManager *fmanager = user_data;
-
-    g_return_if_fail(fmanager);
-
-    if(error) {
-        GtkWidget *parent = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
-
-        xfce_message_dialog(GTK_WINDOW(parent),
-                            _("Trash Error"), "dialog-error",
-                            _("The selected files could not be trashed"),
-                            _("This feature requires a file manager service to "
-                              "be present (such as the one supplied by Thunar)."),
-                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
-                            NULL);
-    }
-}
-
 static gboolean
 xfdesktop_file_icon_manager_trash_files(XfdesktopFileIconManager *fmanager,
                                         GList *files)
 {
-    DBusGProxy *trash_proxy = xfdesktop_file_utils_peek_trash_proxy();
-    gboolean result = TRUE;
-    gchar **uris, *display_name, *startup_id;
-    GList *l;
-    gint i, nfiles;
-    GFile *file;
-    
-    g_return_val_if_fail(files, TRUE);
-    
-    if(!trash_proxy)
-        return FALSE;
-    
-    nfiles = g_list_length(files);
-    uris = g_new(gchar *, nfiles + 1);
-    
-    for(l = files, i = 0; l; l = l->next, ++i) {
-        file = xfdesktop_file_icon_peek_file(XFDESKTOP_FILE_ICON(l->data));
-        uris[i] = g_file_get_uri(file);
-    }
-    uris[nfiles] = NULL;
-    
-    display_name = gdk_screen_make_display_name(fmanager->priv->gscreen);
-    startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
-    
-    if (!xfdesktop_trash_proxy_move_to_trash_async(trash_proxy, (const char **)uris,
-                                                   display_name, startup_id,
-                                                   xfdesktop_file_icon_manager_trash_files_cb, 
-                                                   fmanager))
-    {
-        GtkWidget *parent = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
+    GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
+    GList *gfiles = NULL, *lp;
 
-        xfce_message_dialog(GTK_WINDOW(parent),
-                            _("Trash Error"), "dialog-error",
-                            _("The selected files could not be trashed"),
-                            _("This feature requires a file manager service to "
-                              "be present (such as the one supplied by Thunar)."),
-                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
-                            NULL);
+    for(lp = g_list_last(files); lp != NULL; lp = lp->prev)
+        gfiles = g_list_prepend(gfiles, xfdesktop_file_icon_peek_file(lp->data));
 
-        result = FALSE;
-    }
-    
-    g_free(startup_id);
-    g_strfreev(uris);
-    g_free(display_name);
-    
-    return result;
+    xfdesktop_file_utils_trash_files(gfiles, fmanager->priv->gscreen,
+                                     GTK_WINDOW(toplevel));
+
+    g_list_free(gfiles);
+    return TRUE;
 }
 
 static void

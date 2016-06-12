@@ -127,13 +127,10 @@ if ENABLE_FILE_ICONS
 xfdesktop_SOURCES += $(desktop_file_icon_sources)
 
 xfdesktop_CFLAGS += \
-	-DDBUS_API_SUBJECT_TO_CHANGE \
-	$(THUNARX_CFLAGS) \
-	$(DBUS_CFLAGS)
+	$(THUNARX_CFLAGS)
 
 xfdesktop_LDADD += \
-	$(THUNARX_LIBS) \
-	$(DBUS_LIBS)
+	$(THUNARX_LIBS)
 
 endif
 endif
@@ -179,33 +176,34 @@ xfce-desktop-enum-types.c: $(enum_headers) Makefile
 if ENABLE_FILE_ICONS
 
 xfdesktop_built_sources += \
+	xfdesktop-file-manager-proxy.c \
 	xfdesktop-file-manager-proxy.h \
+	xfdesktop-thunar-proxy.c \
 	xfdesktop-thunar-proxy.h \
+	xfdesktop-trash-proxy.c \
 	xfdesktop-trash-proxy.h
 
-xfdesktop-file-manager-proxy.h: $(srcdir)/xfdesktop-file-manager-dbus.xml Makefile
-	$(AM_V_GEN) ( \
-		dbus-binding-tool --mode=glib-client \
-			$(srcdir)/xfdesktop-file-manager-dbus.xml > xfdesktop-file-manager-proxy.h \
-		&& $(SED) -i -e 's/org_xfce_FileManager/xfdesktop_file_manager_proxy/g' \
-			xfdesktop-file-manager-proxy.h \
-	)
-			
-xfdesktop-thunar-proxy.h: $(srcdir)/xfdesktop-thunar-dbus.xml Makefile
-	$(AM_V_GEN) ( \
-		dbus-binding-tool --mode=glib-client \
-			$(srcdir)/xfdesktop-thunar-dbus.xml > xfdesktop-thunar-proxy.h \
-		&& $(SED) -i -e 's/org_xfce_Thunar/xfdesktop_thunar_proxy/g' \
-			xfdesktop-thunar-proxy.h \
-	)
 
-xfdesktop-trash-proxy.h: $(srcdir)/xfdesktop-trash-dbus.xml Makefile
-	$(AM_V_GEN) ( \
-		dbus-binding-tool --mode=glib-client \
-			$(srcdir)/xfdesktop-trash-dbus.xml > xfdesktop-trash-proxy.h \
-		&& $(SED) -i -e 's/org_xfce_Trash/xfdesktop_trash_proxy/g' \
-			xfdesktop-trash-proxy.h \
-	)
+xfdesktop-file-manager-proxy.c xfdesktop-file-manager-proxy.h : $(srcdir)/xfdesktop-file-manager-dbus.xml Makefile
+	gdbus-codegen \
+		--c-namespace=Xfdesktop \
+		--interface-prefix=org.xfce. \
+		--generate-c-code=xfdesktop-file-manager-proxy \
+		$(srcdir)/xfdesktop-file-manager-dbus.xml
+
+xfdesktop-thunar-proxy.c xfdesktop-thunar-proxy.h : $(srcdir)/xfdesktop-thunar-dbus.xml Makefile
+	gdbus-codegen \
+		--c-namespace=Xfdesktop \
+		--interface-prefix=org.xfce. \
+		--generate-c-code=xfdesktop-thunar-proxy \
+		$(srcdir)/xfdesktop-thunar-dbus.xml
+
+xfdesktop-trash-proxy.c xfdesktop-trash-proxy.h : $(srcdir)/xfdesktop-trash-dbus.xml Makefile
+	gdbus-codegen \
+		--c-namespace=Xfdesktop \
+		--interface-prefix=org.xfce. \
+		--generate-c-code=xfdesktop-trash-proxy \
+		$(srcdir)/xfdesktop-trash-dbus.xml
 
 endif
 
