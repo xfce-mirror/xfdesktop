@@ -1857,6 +1857,9 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     filter = gtk_file_filter_new();
     gtk_file_filter_set_name(filter, _("Image files"));
     gtk_file_filter_add_pixbuf_formats(filter);
+    gtk_file_filter_add_mime_type(filter, "inode/directory");
+    gtk_file_filter_add_mime_type(filter, "application/x-directory");
+    gtk_file_filter_add_mime_type(filter, "text/directory");
     gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(panel->btn_folder), filter);
 
     /* Change the title of the file chooser dialog */
