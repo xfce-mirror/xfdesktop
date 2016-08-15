@@ -1859,6 +1859,9 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     gtk_file_filter_add_pixbuf_formats(filter);
     gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(panel->btn_folder), filter);
 
+    /* Change the title of the file chooser dialog */
+    gtk_file_chooser_button_set_title(GTK_FILE_CHOOSER_BUTTON(panel->btn_folder), _("Select a Directory"));
+
     /* Get default wallpaper folder */
     path = system_data_lookup ();
 
