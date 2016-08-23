@@ -5,14 +5,15 @@
 # Translators:
 # Carles Muñoz Gorriz <carlesmu@internautas.org>, 2012
 # Davidmp <medipas@gmail.com>, 2015-2016
-# Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>, 2016
+# Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2016
+# Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-03 18:32+0100\n"
-"PO-Revision-Date: 2016-06-18 07:01+0000\n"
-"Last-Translator: Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>\n"
+"POT-Creation-Date: 2016-08-15 18:31+0200\n"
+"PO-Revision-Date: 2016-08-23 14:22+0000\n"
+"Last-Translator: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfdesktop/language/ca/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,37 +21,37 @@ msgstr ""
 "Language: ca\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../settings/main.c:404 ../src/xfdesktop-special-file-icon.c:295
+#: ../settings/main.c:416 ../src/xfdesktop-special-file-icon.c:295
 #: ../src/xfdesktop-special-file-icon.c:479
 msgid "Home"
 msgstr "Carpeta de l'usuari"
 
-#: ../settings/main.c:406
+#: ../settings/main.c:418
 msgid "Filesystem"
 msgstr "Sistema de fitxers"
 
-#: ../settings/main.c:408
+#: ../settings/main.c:420
 msgid "Trash"
 msgstr "Paperera"
 
-#: ../settings/main.c:410
+#: ../settings/main.c:422
 msgid "Removable Devices"
 msgstr "Dispositius extractables"
 
-#: ../settings/main.c:412
+#: ../settings/main.c:424
 msgid "Network Shares"
 msgstr "Comparticions de xarxa"
 
-#: ../settings/main.c:414
+#: ../settings/main.c:426
 msgid "Disks and Drives"
 msgstr "Discs i dispositius"
 
-#: ../settings/main.c:416
+#: ../settings/main.c:428
 msgid "Other Devices"
 msgstr "Altres dispositius"
 
 #. Display the file name, file type, and file size in the tooltip.
-#: ../settings/main.c:529
+#: ../settings/main.c:541
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -58,99 +59,104 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nTipus: %s\nMida: %s"
 
-#: ../settings/main.c:716
+#: ../settings/main.c:728
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "Fons per al monitor %d (%s)"
 
-#: ../settings/main.c:719
+#: ../settings/main.c:731
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "Fons per al monitor %d"
 
-#: ../settings/main.c:725
+#: ../settings/main.c:737
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "Moveu aquest diàleg a la pantalla on vulgueu editar els ajusts."
 
-#: ../settings/main.c:732
+#: ../settings/main.c:744
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "Fons per a %s al monitor %d (%s)"
 
-#: ../settings/main.c:736
+#: ../settings/main.c:748
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "Fons per a %s al monitor %d"
 
-#: ../settings/main.c:743
+#: ../settings/main.c:755
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr "Moveu aquest diàleg a la pantalla i espai de treball on vulgueu editar-ne els ajusts."
 
 #. Single monitor and single workspace
-#: ../settings/main.c:751
+#: ../settings/main.c:763
 #, c-format
 msgid "Wallpaper for my desktop"
 msgstr "Fons per al meu escriptori"
 
 #. Single monitor and per workspace wallpaper
-#: ../settings/main.c:757
+#: ../settings/main.c:769
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "Fons per a %s"
 
-#: ../settings/main.c:762
+#: ../settings/main.c:774
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "Moveu aquest diàleg a l'espai de treball on vulgueu editar els ajusts."
 
-#: ../settings/main.c:1178
+#: ../settings/main.c:1194
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "La selecció d'imatge no està disponible mentre l'estil d'imatge estigui establert a CAP."
 
-#: ../settings/main.c:1528
+#: ../settings/main.c:1544
 msgid "Spanning screens"
 msgstr "Pantalles expansives"
 
-#: ../settings/main.c:1839
+#: ../settings/main.c:1858
 msgid "Image files"
 msgstr "Fitxers d'imatges"
 
-#: ../settings/main.c:2019
+#. Change the title of the file chooser dialog
+#: ../settings/main.c:1863
+msgid "Select a Directory"
+msgstr "Seleccioneu un directori"
+
+#: ../settings/main.c:2055
 msgid "Settings manager socket"
 msgstr "Sòcol del gestor d'ajusts"
 
-#: ../settings/main.c:2019
+#: ../settings/main.c:2055
 msgid "SOCKET ID"
 msgstr "ID SÒCOL"
 
-#: ../settings/main.c:2020
+#: ../settings/main.c:2056
 msgid "Version information"
 msgstr "Informació de la versió"
 
-#: ../settings/main.c:2021 ../src/xfdesktop-application.c:844
+#: ../settings/main.c:2057 ../src/xfdesktop-application.c:844
 msgid "Enable debug messages"
 msgstr "Habilita els missatges de depuració"
 
-#: ../settings/main.c:2049
+#: ../settings/main.c:2085
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Teclegeu «%s --help» per veure l'ús."
 
-#: ../settings/main.c:2061
+#: ../settings/main.c:2097
 msgid "The Xfce development team. All rights reserved."
 msgstr "L'equip de desenvolupament de Xfce. Tots els drets reservats."
 
-#: ../settings/main.c:2062
+#: ../settings/main.c:2098
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Envieu els errors a <%s>."
 
-#: ../settings/main.c:2069
+#: ../settings/main.c:2105
 msgid "Desktop Settings"
 msgstr "Ajusts de l'escriptori"
 
-#: ../settings/main.c:2071
+#: ../settings/main.c:2107
 msgid "Unable to contact settings server"
 msgstr "No s'ha pogut contactar amb el servidor d'ajusts"
 
@@ -339,7 +345,7 @@ msgstr "Icones d'aplicacions minimitzades"
 msgid "File/launcher icons"
 msgstr "Icones de llançadors i fitxers"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:1024
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:1047
 msgid "Desktop"
 msgstr "Escriptori"
 
@@ -401,7 +407,7 @@ msgstr "Mostra les finestres _omnipresents només a l'espai de treball actiu"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:26
 msgid "Show a_dd and remove workspace options in list"
-msgstr "Mostra les opcions d'afegir i eliminar espais de treball en una llista"
+msgstr "Mostra les opcions _d'afegir i eliminar espais de treball en una llista"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "<b>Window List Menu</b>"
@@ -495,40 +501,40 @@ msgstr "Realment voleu eliminar l'espai de treball \"%s\"?\nNota: ara sou a l'es
 msgid "Remove"
 msgstr "Suprimeix"
 
-#: ../src/windowlist.c:247
+#: ../src/windowlist.c:253
 msgid "Window List"
 msgstr "Llista de les finestres"
 
-#: ../src/windowlist.c:273
+#: ../src/windowlist.c:279
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>Espai de treball %d</b>"
 
-#: ../src/windowlist.c:361 ../src/windowlist.c:364
+#: ../src/windowlist.c:366 ../src/windowlist.c:369
 msgid "_Add Workspace"
 msgstr "_Afegeix espai de treball"
 
-#: ../src/windowlist.c:372
+#: ../src/windowlist.c:377
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "Sup_rimeix l'espai de treball %d"
 
-#: ../src/windowlist.c:375
+#: ../src/windowlist.c:380
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "Sup_rimeix l'espai de treball «%s»"
 
 #: ../src/xfdesktop-app-menu-item.c:351
-#: ../src/xfdesktop-file-icon-manager.c:862
-#: ../src/xfdesktop-file-icon-manager.c:1153
-#: ../src/xfdesktop-file-icon-manager.c:1366 ../src/xfdesktop-file-utils.c:665
-#: ../src/xfdesktop-file-utils.c:1087 ../src/xfdesktop-file-utils.c:1164
-#: ../src/xfdesktop-file-utils.c:1189 ../src/xfdesktop-file-utils.c:1241
+#: ../src/xfdesktop-file-icon-manager.c:860
+#: ../src/xfdesktop-file-icon-manager.c:1154
+#: ../src/xfdesktop-file-icon-manager.c:1367 ../src/xfdesktop-file-utils.c:665
+#: ../src/xfdesktop-file-utils.c:1090 ../src/xfdesktop-file-utils.c:1167
+#: ../src/xfdesktop-file-utils.c:1192 ../src/xfdesktop-file-utils.c:1244
 msgid "Launch Error"
 msgstr "Error de llançament"
 
 #: ../src/xfdesktop-app-menu-item.c:353
-#: ../src/xfdesktop-file-icon-manager.c:1155
+#: ../src/xfdesktop-file-icon-manager.c:1156
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
@@ -631,12 +637,12 @@ msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr "Ja existeix un fitxer convencional amb el mateix nom que heu indicat. Elimineu-lo o canvieu-li el nom."
 
-#: ../src/xfdesktop-file-icon-manager.c:668 ../src/xfdesktop-file-utils.c:724
-#: ../src/xfdesktop-file-utils.c:777
+#: ../src/xfdesktop-file-icon-manager.c:668 ../src/xfdesktop-file-utils.c:727
+#: ../src/xfdesktop-file-utils.c:780
 msgid "Rename Error"
 msgstr "Error en canviar el nom"
 
-#: ../src/xfdesktop-file-icon-manager.c:669 ../src/xfdesktop-file-utils.c:778
+#: ../src/xfdesktop-file-icon-manager.c:669 ../src/xfdesktop-file-utils.c:781
 msgid "The files could not be renamed"
 msgstr "No s'ha pogut canviar el nom dels fitxers"
 
@@ -645,8 +651,8 @@ msgid "None of the icons selected support being renamed."
 msgstr "Cap de les icones seleccionades tenen suport per canviar de nom."
 
 #: ../src/xfdesktop-file-icon-manager.c:714
-#: ../src/xfdesktop-file-icon-manager.c:758 ../src/xfdesktop-file-utils.c:877
-#: ../src/xfdesktop-file-utils.c:914
+#: ../src/xfdesktop-file-icon-manager.c:758 ../src/xfdesktop-file-utils.c:880
+#: ../src/xfdesktop-file-utils.c:917
 msgid "Trash Error"
 msgstr "Error a la paperera"
 
@@ -656,135 +662,135 @@ msgid "The selected files could not be trashed"
 msgstr "No s'ha pogut esborrar els fitxers seleccionats"
 
 #: ../src/xfdesktop-file-icon-manager.c:716
-#: ../src/xfdesktop-file-icon-manager.c:760 ../src/xfdesktop-file-utils.c:726
-#: ../src/xfdesktop-file-utils.c:779 ../src/xfdesktop-file-utils.c:829
-#: ../src/xfdesktop-file-utils.c:960 ../src/xfdesktop-file-utils.c:1007
-#: ../src/xfdesktop-file-utils.c:1048 ../src/xfdesktop-file-utils.c:1089
-#: ../src/xfdesktop-file-utils.c:1191 ../src/xfdesktop-file-utils.c:1243
-#: ../src/xfdesktop-file-utils.c:1316 ../src/xfdesktop-file-utils.c:1394
+#: ../src/xfdesktop-file-icon-manager.c:760 ../src/xfdesktop-file-utils.c:729
+#: ../src/xfdesktop-file-utils.c:782 ../src/xfdesktop-file-utils.c:832
+#: ../src/xfdesktop-file-utils.c:963 ../src/xfdesktop-file-utils.c:1010
+#: ../src/xfdesktop-file-utils.c:1051 ../src/xfdesktop-file-utils.c:1092
+#: ../src/xfdesktop-file-utils.c:1194 ../src/xfdesktop-file-utils.c:1246
+#: ../src/xfdesktop-file-utils.c:1319 ../src/xfdesktop-file-utils.c:1397
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
 msgstr "Aquesta característica demana l'ajut d'un gestor de fitxers (com per exemple, el que proveeix el Thunar)."
 
 #. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:860
-#: ../src/xfdesktop-file-icon-manager.c:1365
+#: ../src/xfdesktop-file-icon-manager.c:858
+#: ../src/xfdesktop-file-icon-manager.c:1366
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "No s'ha pogut llançar «%s»:"
 
-#: ../src/xfdesktop-file-icon-manager.c:1077
+#: ../src/xfdesktop-file-icon-manager.c:1078
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "_Obre amb «%s»"
 
-#: ../src/xfdesktop-file-icon-manager.c:1080
+#: ../src/xfdesktop-file-icon-manager.c:1081
 #, c-format
 msgid "Open With \"%s\""
 msgstr "Obre amb «%s»"
 
-#: ../src/xfdesktop-file-icon-manager.c:1435
+#: ../src/xfdesktop-file-icon-manager.c:1436
 msgid "_Open all"
 msgstr "_Obre tot"
 
-#: ../src/xfdesktop-file-icon-manager.c:1451
+#: ../src/xfdesktop-file-icon-manager.c:1452
 msgid "_Open in New Window"
 msgstr "_Obre en una nova finestra"
 
-#: ../src/xfdesktop-file-icon-manager.c:1453
+#: ../src/xfdesktop-file-icon-manager.c:1454
 #: ../src/xfdesktop-special-file-icon.c:547 ../src/xfdesktop-volume-icon.c:813
 msgid "_Open"
 msgstr "_Obre"
 
 #. create launcher item
-#: ../src/xfdesktop-file-icon-manager.c:1472
+#: ../src/xfdesktop-file-icon-manager.c:1473
 msgid "Create _Launcher..."
 msgstr "Crea un _llançador..."
 
 #. create link item
-#: ../src/xfdesktop-file-icon-manager.c:1488
+#: ../src/xfdesktop-file-icon-manager.c:1489
 msgid "Create _URL Link..."
 msgstr "Crea un enllaç _URL..."
 
 #. create folder item
-#: ../src/xfdesktop-file-icon-manager.c:1504
+#: ../src/xfdesktop-file-icon-manager.c:1505
 msgid "Create _Folder..."
 msgstr "Crea un _directori..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1521
+#: ../src/xfdesktop-file-icon-manager.c:1522
 msgid "Create _Document"
 msgstr "Crea un _document"
 
-#: ../src/xfdesktop-file-icon-manager.c:1545
+#: ../src/xfdesktop-file-icon-manager.c:1546
 msgid "No templates installed"
 msgstr "No hi ha plantilles instal·lades"
 
-#: ../src/xfdesktop-file-icon-manager.c:1562
+#: ../src/xfdesktop-file-icon-manager.c:1563
 msgid "_Empty File"
 msgstr "Fitx_er buit"
 
-#: ../src/xfdesktop-file-icon-manager.c:1579
+#: ../src/xfdesktop-file-icon-manager.c:1580
 msgid "_Execute"
 msgstr "_Executa"
 
-#: ../src/xfdesktop-file-icon-manager.c:1599
+#: ../src/xfdesktop-file-icon-manager.c:1600
 msgid "_Edit Launcher"
 msgstr "_Edita el llançador"
 
-#: ../src/xfdesktop-file-icon-manager.c:1658
+#: ../src/xfdesktop-file-icon-manager.c:1659
 msgid "Open With"
 msgstr "Obre amb"
 
-#: ../src/xfdesktop-file-icon-manager.c:1684
-#: ../src/xfdesktop-file-icon-manager.c:1699
+#: ../src/xfdesktop-file-icon-manager.c:1685
+#: ../src/xfdesktop-file-icon-manager.c:1700
 msgid "Open With Other _Application..."
 msgstr "Obre amb una altra _aplicació..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1758
+#: ../src/xfdesktop-file-icon-manager.c:1759
 msgid "Paste Into Folder"
 msgstr "Enganxa dins la carpeta"
 
 #. Trash
-#: ../src/xfdesktop-file-icon-manager.c:1777
+#: ../src/xfdesktop-file-icon-manager.c:1778
 msgid "Mo_ve to Trash"
 msgstr "_Mou a la paperera"
 
 #. Rename
-#: ../src/xfdesktop-file-icon-manager.c:1808
+#: ../src/xfdesktop-file-icon-manager.c:1809
 msgid "_Rename..."
 msgstr "Canv_ia el nom..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1876
+#: ../src/xfdesktop-file-icon-manager.c:1877
 msgid "Arrange Desktop _Icons"
 msgstr "_Organitza les icones de l'escriptori"
 
-#: ../src/xfdesktop-file-icon-manager.c:1887
+#: ../src/xfdesktop-file-icon-manager.c:1888
 msgid "Desktop _Settings..."
 msgstr "Ajusts de l'e_scriptori..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1898
+#: ../src/xfdesktop-file-icon-manager.c:1899
 #: ../src/xfdesktop-volume-icon.c:855
 msgid "P_roperties..."
 msgstr "_Propietats..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2906
+#: ../src/xfdesktop-file-icon-manager.c:2912
 msgid "Load Error"
 msgstr "No s'ha pogut carregar"
 
-#: ../src/xfdesktop-file-icon-manager.c:2908
+#: ../src/xfdesktop-file-icon-manager.c:2914
 msgid "Failed to load the desktop folder"
 msgstr "No s'ha pogut carregar la carpeta de l'escriptori"
 
-#: ../src/xfdesktop-file-icon-manager.c:3472
+#: ../src/xfdesktop-file-icon-manager.c:3479
 msgid "Copy _Here"
 msgstr "Copia _aquí"
 
-#: ../src/xfdesktop-file-icon-manager.c:3472
+#: ../src/xfdesktop-file-icon-manager.c:3479
 msgid "_Move Here"
 msgstr "_Mou aquí"
 
-#: ../src/xfdesktop-file-icon-manager.c:3472
+#: ../src/xfdesktop-file-icon-manager.c:3479
 msgid "_Link Here"
 msgstr "_Enllaça aquí"
 
@@ -821,84 +827,84 @@ msgstr "Desconegut"
 msgid "The folder could not be opened"
 msgstr "No s'ha pogut obrir la carpeta"
 
-#: ../src/xfdesktop-file-utils.c:683
+#: ../src/xfdesktop-file-utils.c:685
 msgid "Error"
 msgstr "Error"
 
-#: ../src/xfdesktop-file-utils.c:684
+#: ../src/xfdesktop-file-utils.c:686
 msgid "The requested operation could not be completed"
 msgstr "No s'ha pogut completar l'operació demanada"
 
-#: ../src/xfdesktop-file-utils.c:725
+#: ../src/xfdesktop-file-utils.c:728
 msgid "The file could not be renamed"
 msgstr "No s'ha pogut canviar el nom del fitxer"
 
-#: ../src/xfdesktop-file-utils.c:827
+#: ../src/xfdesktop-file-utils.c:830
 msgid "Delete Error"
 msgstr "Error de supressió"
 
-#: ../src/xfdesktop-file-utils.c:828
+#: ../src/xfdesktop-file-utils.c:831
 msgid "The selected files could not be deleted"
 msgstr "Els fitxers seleccionats no s'han pogut eliminar"
 
-#: ../src/xfdesktop-file-utils.c:878
+#: ../src/xfdesktop-file-utils.c:881
 msgid "The selected files could not be moved to the trash"
 msgstr "Els fitxers seleccionats no s'han pogut moure a la paperera"
 
-#: ../src/xfdesktop-file-utils.c:879 ../src/xfdesktop-file-utils.c:916
+#: ../src/xfdesktop-file-utils.c:882 ../src/xfdesktop-file-utils.c:919
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
 msgstr "Aquesta característica demana l'ajut del gestor de la paperera (com per exemple, el que proveeix el Thunar)."
 
-#: ../src/xfdesktop-file-utils.c:915
+#: ../src/xfdesktop-file-utils.c:918
 msgid "Could not empty the trash"
 msgstr "No s'ha pogut buidar la paperera"
 
-#: ../src/xfdesktop-file-utils.c:958
+#: ../src/xfdesktop-file-utils.c:961
 msgid "Create File Error"
 msgstr "Error de creació de fitxer"
 
-#: ../src/xfdesktop-file-utils.c:959
+#: ../src/xfdesktop-file-utils.c:962
 msgid "Could not create a new file"
 msgstr "No s'ha pogut crear un fitxer nou"
 
-#: ../src/xfdesktop-file-utils.c:1005
+#: ../src/xfdesktop-file-utils.c:1008
 msgid "Create Document Error"
 msgstr "Error a la creació del document"
 
-#: ../src/xfdesktop-file-utils.c:1006
+#: ../src/xfdesktop-file-utils.c:1009
 msgid "Could not create a new document from the template"
 msgstr "No s'ha pogut crear un nou document a partir de la plantilla"
 
-#: ../src/xfdesktop-file-utils.c:1046
+#: ../src/xfdesktop-file-utils.c:1049
 msgid "File Properties Error"
 msgstr "Error de propietats de fitxer"
 
-#: ../src/xfdesktop-file-utils.c:1047
+#: ../src/xfdesktop-file-utils.c:1050
 msgid "The file properties dialog could not be opened"
 msgstr "No s'ha pogut obrir el diàleg de propietats del fitxer"
 
-#: ../src/xfdesktop-file-utils.c:1088
+#: ../src/xfdesktop-file-utils.c:1091
 msgid "The file could not be opened"
 msgstr "No s'ha pogut obrir el fitxer"
 
-#: ../src/xfdesktop-file-utils.c:1161 ../src/xfdesktop-file-utils.c:1186
+#: ../src/xfdesktop-file-utils.c:1164 ../src/xfdesktop-file-utils.c:1189
 #, c-format
 msgid "Failed to run \"%s\""
 msgstr "No s'ha pogut executar \"%s\""
 
-#: ../src/xfdesktop-file-utils.c:1242
+#: ../src/xfdesktop-file-utils.c:1245
 msgid "The application chooser could not be opened"
 msgstr "No es pot obrir el seleccionador d'aplicacions"
 
-#: ../src/xfdesktop-file-utils.c:1300 ../src/xfdesktop-file-utils.c:1314
-#: ../src/xfdesktop-file-utils.c:1376 ../src/xfdesktop-file-utils.c:1392
+#: ../src/xfdesktop-file-utils.c:1303 ../src/xfdesktop-file-utils.c:1317
+#: ../src/xfdesktop-file-utils.c:1379 ../src/xfdesktop-file-utils.c:1395
 msgid "Transfer Error"
 msgstr "Error de transferència"
 
-#: ../src/xfdesktop-file-utils.c:1301 ../src/xfdesktop-file-utils.c:1315
-#: ../src/xfdesktop-file-utils.c:1377 ../src/xfdesktop-file-utils.c:1393
+#: ../src/xfdesktop-file-utils.c:1304 ../src/xfdesktop-file-utils.c:1318
+#: ../src/xfdesktop-file-utils.c:1380 ../src/xfdesktop-file-utils.c:1396
 msgid "The file transfer could not be performed"
 msgstr "La transferència de fitxers no s'ha pogut realitzar"
 
@@ -952,7 +958,7 @@ msgstr "S'està expulsant el dispositiu \"%s\". Això pot trigar una estona."
 msgid "Eject Finished"
 msgstr "Expulsió finalitzada"
 
-#: ../src/xfdesktop-regular-file-icon.c:786
+#: ../src/xfdesktop-regular-file-icon.c:799
 #, c-format
 msgid ""
 "Type: %s\n"
