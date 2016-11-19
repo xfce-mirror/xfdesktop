@@ -5,6 +5,7 @@
 # Translators:
 # Alan Lee <bkrhlim@aol.com>, 2013
 # Allen Choi <byunghyun.choi@gmail.com>, 2005
+# Allen Choi <byunghyun.choi@gmail.com>, 2005
 # Seong-ho Cho <darkcircle.0426@gmail.com>, 2013
 # Seong-ho Cho <darkcircle.0426@gmail.com>, 2013-2016
 # Sungjin Kang <potopro@gmail.com>, 2013
@@ -14,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-08-15 18:31+0200\n"
-"PO-Revision-Date: 2016-08-22 10:38+0000\n"
+"PO-Revision-Date: 2016-11-19 01:54+0000\n"
 "Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>\n"
 "Language-Team: Korean (http://www.transifex.com/xfce/xfdesktop/language/ko/)\n"
 "MIME-Version: 1.0\n"
@@ -64,12 +65,12 @@ msgstr "<b>%s</b>\n형식: %s\n크기: %s"
 #: ../settings/main.c:728
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
-msgstr "%d번 모니터 배경(%s)"
+msgstr "%d번 화면(%s) 배경"
 
 #: ../settings/main.c:731
 #, c-format
 msgid "Wallpaper for Monitor %d"
-msgstr "%d번 모니터 배경"
+msgstr "%d번 화면 배경"
 
 #: ../settings/main.c:737
 msgid "Move this dialog to the display you want to edit the settings for."
@@ -78,12 +79,12 @@ msgstr "설정을 편집하려는 화면으로 이 대화 상자를 이동하십
 #: ../settings/main.c:744
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
-msgstr "화면 %2$d의 %1$s 배경(%3$s)"
+msgstr "%2$d번 화면(%3$s)의 %1$s 배경"
 
 #: ../settings/main.c:748
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
-msgstr "모니터 %2$d의 %1$s 배경"
+msgstr "%2$d번 화면의 %1$s 배경"
 
 #: ../settings/main.c:755
 msgid ""
@@ -113,7 +114,7 @@ msgstr "그림 표시 방식을 없음으로 선택하여 그림을 선택할 �
 
 #: ../settings/main.c:1544
 msgid "Spanning screens"
-msgstr "모니터 확장"
+msgstr "화면 확장"
 
 #: ../settings/main.c:1858
 msgid "Image files"
