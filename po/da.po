@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 23:19+0200\n"
-"PO-Revision-Date: 2017-01-14 15:15+0000\n"
+"PO-Revision-Date: 2017-01-16 11:29+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfdesktop/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -178,7 +178,7 @@ msgstr "Centreret"
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
 #: ../settings/xfdesktop-settings-ui.glade.h:3
 msgid "Tiled"
-msgstr "Flise"
+msgstr "Fliselagt"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
 #: ../settings/xfdesktop-settings-ui.glade.h:4
@@ -670,12 +670,12 @@ msgstr "Starterfejl"
 #: ../src/xfdesktop-file-icon-manager.c:957
 #, c-format
 msgid "_Open With \"%s\""
-msgstr "_Åben med \"%s\""
+msgstr "_Åbn med \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:960
 #, c-format
 msgid "Open With \"%s\""
-msgstr "Åben med \"%s\""
+msgstr "Åbn med \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:1035
 msgid ""
@@ -730,11 +730,11 @@ msgstr "_Redigér starter"
 
 #: ../src/xfdesktop-file-icon-manager.c:1588
 msgid "Open With"
-msgstr "Åben med"
+msgstr "Åbn med"
 
 #: ../src/xfdesktop-file-icon-manager.c:1614
 msgid "Open With Other _Application..."
-msgstr "Åben med et andet _program..."
+msgstr "Åbn med et andet _program..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1706
 msgid "_Rename..."
@@ -894,7 +894,7 @@ msgstr "Afmontering af enhed"
 msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the"
 " media or disconnect the drive"
-msgstr "Enheden \"%s\" bliver afmonteret af systemet. Vær venlig ikke at fjerne mediet eller afbryde drevet"
+msgstr "Enheden \"%s\" bliver afmonteret af systemet. Undlad venligst at fjerne mediet eller afbryde drevet"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
@@ -907,18 +907,18 @@ msgstr "Skriver data til enhed"
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be"
 " removed. Please do not remove the media or disconnect the drive"
-msgstr "Der findes data som skal skrives til enheden \"%s\" før den kan fjernes. Vær venlig ikke at fjerne mediet eller afbryde drevet"
+msgstr "Der findes data som skal skrives til enheden \"%s\" før den kan fjernes. Undlad venligst at fjerne mediet eller afbryde drevet"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:253
 msgid "Ejecting device"
-msgstr "Udskubber enhed"
+msgstr "Skubber enheden ud"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:256
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
-msgstr "Enheden \"%s\" bliver skubbet ud. Dette kan tage lidt tid"
+msgstr "Enheden \"%s\" bliver skubbet ud. Det kan tage lidt tid"
 
 #: ../src/xfdesktop-regular-file-icon.c:556
 #, c-format
@@ -979,7 +979,7 @@ msgstr "Kunne ikke skubbe \"%s\" ud"
 
 #: ../src/xfdesktop-volume-icon.c:485 ../src/xfdesktop-volume-icon.c:527
 msgid "Eject Failed"
-msgstr "Udskubning fejlede"
+msgstr "Kunne ikke skubbe ud"
 
 #: ../src/xfdesktop-volume-icon.c:559
 #, c-format
