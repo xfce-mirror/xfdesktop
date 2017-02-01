@@ -2114,7 +2114,8 @@ xfce_backdrop_loader_closed_cb(GdkPixbufLoader *loader,
     }
 
     backdrop->priv->animation = gdk_pixbuf_loader_get_animation(loader);
-    backdrop->priv->animation_iter = gdk_pixbuf_animation_get_iter(backdrop->priv->animation, NULL);
+    if(GDK_IS_PIXBUF_ANIMATION(backdrop->priv->animation))
+        backdrop->priv->animation_iter = gdk_pixbuf_animation_get_iter(backdrop->priv->animation, NULL);
 
     /* manually load the first frame */
     xfce_backdrop_create_final_image(backdrop);

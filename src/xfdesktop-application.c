@@ -327,7 +327,7 @@ event_forward_to_rootwin(GdkScreen *gscreen, GdkEvent *event)
         xev2.button = xev.button;
     } else
         return;
-    xev.window = GDK_WINDOW_XWINDOW(gdk_screen_get_root_window(gscreen));
+    xev.window = GDK_WINDOW_XID(gdk_screen_get_root_window(gscreen));
     xev.root =  xev.window;
     xev.subwindow = None;
     xev.time = event->button.time;
@@ -511,10 +511,10 @@ cb_xfdesktop_application_menu(GAction  *action,
 
     if(popup_root_menu) {
         xfce_desktop_popup_root_menu(XFCE_DESKTOP(app->desktops[screen_num]),
-                                     0, GDK_CURRENT_TIME);
+                                     NULL);
     } else {
         xfce_desktop_popup_secondary_root_menu(XFCE_DESKTOP(app->desktops[screen_num]),
-                                               0, GDK_CURRENT_TIME);
+                                               NULL);
     }
 }
 

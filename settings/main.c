@@ -42,6 +42,7 @@
 
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <gtk/gtk.h>
+#include <gtk/gtkx.h>
 #include <gdk/gdkx.h>
 
 #include <glib.h>
@@ -2051,7 +2052,7 @@ xfdesktop_settings_response(GtkWidget *dialog, gint response_id, gpointer user_d
     }
 }
 
-static GdkNativeWindow opt_socket_id = 0;
+static Window opt_socket_id = 0;
 static gboolean opt_version = FALSE;
 static gboolean opt_enable_debug = FALSE;
 static GOptionEntry option_entries[] = {

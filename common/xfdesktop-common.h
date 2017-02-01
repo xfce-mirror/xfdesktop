@@ -38,8 +38,7 @@
 #define DEFAULT_BACKDROP         DATADIR "/backgrounds/xfce/xfce-teal.jpg"
 #define DEFAULT_ICON_FONT_SIZE   12
 #define DEFAULT_ICON_SIZE        48
-#define ITHEME_FLAGS             (GTK_ICON_LOOKUP_USE_BUILTIN \
-                                  | GTK_ICON_LOOKUP_GENERIC_FALLBACK)
+#define ITHEME_FLAGS             (GTK_ICON_LOOKUP_USE_BUILTIN)
 
 #define LIST_TEXT                "# xfce backdrop list"
 #define XFDESKTOP_SELECTION_FMT  "XFDESKTOP_SELECTION_%d"
