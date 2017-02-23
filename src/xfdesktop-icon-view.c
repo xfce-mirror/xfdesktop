@@ -1612,7 +1612,7 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
     GdkAtom target;
     XfdesktopIcon *icon;
-    gint16 old_row, old_col, row, col;
+    gint16 old_row, old_col, row, col, offset_col, offset_row;
     GList *l;
     XfdesktopIcon *icon_on_dest = NULL;
     
@@ -1669,13 +1669,17 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
         icon = icon_view->priv->cursor;
         g_return_val_if_fail(icon, FALSE);
         
-        /* 1: Remove all the icons that are going to be moved from
+        /* 1: Get amount of offset between the old spot and new spot
+         *    of the icon that's being dragged.
+         * 2: Remove all the icons that are going to be moved from
          *    the desktop. That's in case the icons being moved
          *    want to rearrange themselves there.
-         * 2: We need to move the icon that's being dragged since the
-         *    user explicitly wants to drop it in that spot.
-         * 3: We just append all the other icons in any spot that's
-         *    open. */
+         * 3: We move all the icons using the offset. */
+        if(xfdesktop_icon_get_position(icon, &old_row, &old_col)) {
+            offset_col = old_col-col;
+            offset_row = old_row-row;
+        }
+
         for(l = icon_view->priv->selected_icons; l; l = l->next) {
             /* clear out old position */
             xfdesktop_icon_view_invalidate_icon(icon_view, l->data, FALSE);
@@ -1683,14 +1687,19 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
                 xfdesktop_grid_set_position_free(icon_view, old_row, old_col);
         }
 
-        /* Preserve order when moving multiple icons */
-        icon_view->priv->selected_icons = g_list_sort(icon_view->priv->selected_icons,
-                                                      (GCompareFunc)xfdesktop_icon_view_compare_icon_positions);
-
-        /* Now that we have moved the icon the user selected,
-         * append all the other selected icons after it. */
         for(l = icon_view->priv->selected_icons; l; l = l->next) {
-            /* Find the next available spot for an icon */
+            /* use offset to figure out where to put the icon*/
+            if(xfdesktop_icon_get_position(l->data, &old_row, &old_col)) {
+                col = (old_col-offset_col) % icon_view->priv->ncols;
+                row = (old_row-offset_row) % icon_view->priv->nrows;
+                /* wrap around the view */
+                while(col < 0)
+                    col += icon_view->priv->ncols;
+                while(row < 0)
+                    row += icon_view->priv->nrows;
+            }
+
+            /* Find the next available spot for an icon if offset spot is not available */
             while(!xfdesktop_grid_is_free_position(icon_view, row, col)) {
                 if(row + 1 >= icon_view->priv->nrows) {
                     if(col + 1 >= icon_view->priv->ncols)
