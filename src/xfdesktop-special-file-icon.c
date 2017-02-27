@@ -295,6 +295,8 @@ xfdesktop_special_file_icon_peek_label(XfdesktopIcon *icon)
         return _("Home");
     else if(XFDESKTOP_SPECIAL_FILE_ICON_FILESYSTEM == special_file_icon->priv->type)
         return _("File System");
+    else if(XFDESKTOP_SPECIAL_FILE_ICON_TRASH == special_file_icon->priv->type)
+        return _("Trash");
     else
         return info ? g_file_info_get_display_name(info) : NULL;
 }
