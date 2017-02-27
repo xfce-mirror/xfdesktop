@@ -455,6 +455,12 @@ xfce_workspace_migrate_backdrop_first_color(XfceWorkspace *workspace,
 
     TRACE("entering");
 
+    /* TODO: migrate from color1 (and older) to the new rgba1 */
+    if(TRUE) {
+        TRACE("warning: we aren't migrating from GdkColor to GdkRGBA yet");
+        return;
+    }
+
     /* Use the old property format */
     g_snprintf(buf, sizeof(buf), "%smonitor%d/",
                workspace->priv->property_prefix, monitor);
@@ -480,6 +486,12 @@ xfce_workspace_migrate_backdrop_second_color(XfceWorkspace *workspace,
     GValue value = { 0, };
 
     TRACE("entering");
+
+    /* TODO: migrate from color1 (and older) to the new rgba1 */
+    if(TRUE) {
+        TRACE("warning: we aren't migrating from GdkColor to GdkRGBA yet");
+        return;
+    }
 
     /* Use the old property format */
     g_snprintf(buf, sizeof(buf), "%smonitor%d/",
@@ -624,19 +636,19 @@ xfce_workspace_connect_backdrop_settings(XfceWorkspace *workspace,
                            G_OBJECT(backdrop), "color-style");
 
     buf[pp_len] = 0;
-    g_strlcat(buf, "color1", sizeof(buf));
+    g_strlcat(buf, "rgba1", sizeof(buf));
     if(!xfconf_channel_has_property(channel, buf)) {
         xfce_workspace_migrate_backdrop_first_color(workspace, backdrop, monitor);
     }
-    workspace->priv->first_color_id[monitor] = xfconf_g_property_bind_gdkcolor(channel, buf,
+    workspace->priv->first_color_id[monitor] = xfconf_g_property_bind_gdkrgba(channel, buf,
                                                             G_OBJECT(backdrop), "first-color");
 
     buf[pp_len] = 0;
-    g_strlcat(buf, "color2", sizeof(buf));
+    g_strlcat(buf, "rgba2", sizeof(buf));
     if(!xfconf_channel_has_property(channel, buf)) {
         xfce_workspace_migrate_backdrop_second_color(workspace, backdrop, monitor);
     }
-    workspace->priv->second_color_id[monitor] = xfconf_g_property_bind_gdkcolor(channel, buf,
+    workspace->priv->second_color_id[monitor] = xfconf_g_property_bind_gdkrgba(channel, buf,
                                                             G_OBJECT(backdrop), "second-color");
 
     buf[pp_len] = 0;
