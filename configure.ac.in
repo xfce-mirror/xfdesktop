@@ -148,7 +148,7 @@ AM_CONDITIONAL([ENABLE_FILE_ICONS], [test "x$enable_file_icons" = "xyes"])
 dnl i'd rather have these two only checked conditionally, but this macro also
 dnl calls AM_CONDITIONAL(), which cannot be in an 'if' block
 
-XDT_CHECK_OPTIONAL_PACKAGE([THUNARX], [thunarx-2], [thunar_minimum_version],
+XDT_CHECK_OPTIONAL_PACKAGE([THUNARX], [thunarx-3], [thunar_minimum_version],
     [thunarx],
     [Thunar's extension mechanism, to add external features to the desktop icon implementation])
 
