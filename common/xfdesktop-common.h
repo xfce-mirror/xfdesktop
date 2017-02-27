@@ -97,8 +97,6 @@ gchar *xfdesktop_get_file_mimetype(const gchar *file);
 
 gint xfce_translate_image_styles(gint input);
 
-guint32 xfdesktop_popup_keyboard_grab_available(GdkWindow *win);
-
 gchar* xfdesktop_remove_whitspaces(gchar* str);
 
 #if defined(G_HAVE_ISO_VARARGS)
