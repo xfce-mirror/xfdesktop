@@ -484,9 +484,7 @@ xfdesktop_thumbnailer_queue_request_timer(XfdesktopThumbnailer *thumbnailer)
 
     g_free(uris);
     g_free(mimetypes);
-
-    if(error)
-        g_error_free(error);
+    g_clear_error(&error);
 
     thumbnailer->priv->request_timer_id = 0;
 
@@ -634,6 +632,5 @@ xfdesktop_thumbnailer_delete_thumbnail(XfdesktopThumbnailer *thumbnailer, gchar 
     }
 
     g_object_unref(file);
-    if(error)
-        g_error_free(error);
+    g_clear_error(&error);
 }

@@ -667,7 +667,7 @@ xfdesktop_file_utils_open_folder(GFile *file,
                             error->message, GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
                             NULL);
 
-        g_error_free(error);
+        g_clear_error(&error);
     }
 
     g_free(uri);
@@ -687,7 +687,7 @@ xfdesktop_file_utils_async_cb(DBusGProxy *proxy, GError *error, gpointer userdat
                                 error->message, GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
                                 NULL);
         }
-        g_error_free(error);
+        g_clear_error(&error);
     }
 }
 
@@ -1172,8 +1172,7 @@ xfdesktop_file_utils_execute(GFile *working_directory,
             g_free(primary);
             g_free(name);
             g_free(filename);
-
-            g_error_free(error);
+            g_clear_error(&error);
 
             success = FALSE;
         }
@@ -1305,7 +1304,7 @@ xfdesktop_file_utils_transfer_file(GdkDragAction action,
                                 error->message, GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
                                 NULL);
 
-            g_error_free(error);
+            g_clear_error(&error);
         }
 
         g_free(startup_id);
@@ -1381,7 +1380,7 @@ xfdesktop_file_utils_transfer_files(GdkDragAction action,
                                 error->message, GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
                                 NULL);
 
-            g_error_free(error);
+            g_clear_error(&error);
 
             success = FALSE;
         }

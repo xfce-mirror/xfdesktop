@@ -189,7 +189,7 @@ _generate_menu(XfceDesktopMenu *desktop_menu)
 
     if(!garcon_menu_load(desktop_menu->garcon_menu, NULL, &error)) {
         g_warning("Unable to load menu: %s", error->message);
-        g_error_free(error);
+        g_clear_error(&error);
         return FALSE;
     }
 

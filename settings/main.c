@@ -1816,7 +1816,7 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     {
         g_printerr("Failed to parse appearance settings UI description: %s\n",
                    error->message);
-        g_error_free(error);
+        g_clear_error(&error);
         exit(1);
     }
 
@@ -2087,7 +2087,7 @@ main(int argc, char **argv)
             g_printerr("%s: %s.\n", G_LOG_DOMAIN, error->message);
             g_printerr(_("Type '%s --help' for usage."), G_LOG_DOMAIN);
             g_printerr("\n");
-            g_error_free(error);
+            g_clear_error(&error);
         } else
             g_error("Unable to open display.");
 
@@ -2122,7 +2122,7 @@ main(int argc, char **argv)
                                     &error))
     {
         g_printerr("Failed to parse UI description: %s\n", error->message);
-        g_error_free(error);
+        g_clear_error(&error);
         return 1;
     }
 

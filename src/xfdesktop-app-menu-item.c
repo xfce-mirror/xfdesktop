@@ -353,7 +353,7 @@ xfdesktop_app_menu_item_edit_launcher(XfdesktopAppMenuItem *app_menu_item)
                                 _("Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."),
                                 error->message, GTK_STOCK_CLOSE,
                                 GTK_RESPONSE_ACCEPT, NULL);
-            g_error_free(error);
+            g_clear_error(&error);
         } else {
             ret = TRUE;
         }
@@ -409,7 +409,7 @@ xfdesktop_app_menu_item_activate(XfdesktopAppMenuItem *app_menu_item)
                                          &error)) {
         g_warning("XfdesktopAppMenuItem: unable to spawn %s: %s",
                  command, error->message);
-        g_error_free(error);
+        g_clear_error(&error);
     }
 
     gdk_event_free((GdkEvent*)evt);

@@ -528,7 +528,7 @@ xfdesktop_volume_icon_eject_finish(GObject *object,
             g_free(volume_name);
         }
 
-        g_error_free(error);
+        g_clear_error(&error);
     }
 
 #ifdef HAVE_LIBNOTIFY
@@ -573,7 +573,7 @@ xfdesktop_volume_icon_unmount_finish(GObject *object,
             g_free(mount_name);
         }
 
-        g_error_free(error);
+        g_clear_error(&error);
     }
 
 #ifdef HAVE_LIBNOTIFY
@@ -607,7 +607,7 @@ xfdesktop_volume_icon_mount_finish(GObject *object,
             g_free(volume_name);
         }
         
-        g_error_free(error);
+        g_clear_error(&error);
     } else {
         GMount *mount = g_volume_get_mount(volume);
         GFile *file = NULL;

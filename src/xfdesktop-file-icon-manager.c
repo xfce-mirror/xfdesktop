@@ -861,7 +861,7 @@ xfdesktop_file_icon_menu_app_info_executed(GtkWidget *widget,
                             GTK_STOCK_DIALOG_ERROR, primary, error->message,
                             GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
         g_free(primary);
-        g_error_free(error);
+        g_clear_error(&error);
     }
 }
 
@@ -1156,7 +1156,7 @@ xfdesktop_file_icon_menu_create_launcher(GtkWidget *widget,
                             _("Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."),
                             error->message, GTK_STOCK_CLOSE,
                             GTK_RESPONSE_ACCEPT, NULL);
-        g_error_free(error);
+        g_clear_error(&error);
     }
     
     g_free(display_name);
@@ -1368,7 +1368,7 @@ xfdesktop_settings_launch(GtkWidget *w,
                             GTK_STOCK_DIALOG_ERROR, primary, error->message,
                             GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
         g_free(primary);
-        g_error_free(error);
+        g_clear_error(&error);
     }
 
     g_free(cmd);

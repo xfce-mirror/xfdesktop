@@ -714,7 +714,7 @@ xfdesktop_application_start(XfdesktopApplication *app)
     if(!xfconf_init(&error)) {
         g_warning("%s: unable to connect to settings daemon: %s.  Defaults will be used",
                   PACKAGE, error->message);
-        g_error_free(error);
+        g_clear_error(&error);
         error = NULL;
     } else
         app->channel = xfconf_channel_get(XFDESKTOP_CHANNEL);
@@ -762,7 +762,7 @@ xfdesktop_application_start(XfdesktopApplication *app)
                                               app, NULL);
     } else {
         g_warning("Unable to set up POSIX signal handlers: %s", error->message);
-        g_error_free(error);
+        g_clear_error(&error);
     }
 
     gtk_main();
@@ -861,7 +861,7 @@ xfdesktop_application_local_command_line(GApplication *g_application,
     if(!g_option_context_parse(octx, &argc, arguments, &error)) {
         g_printerr(_("Failed to parse arguments: %s\n"), error->message);
         g_option_context_free(octx);
-        g_error_free(error);
+        g_clear_error(&error);
         *exit_status = 1;
         return TRUE;
     }
