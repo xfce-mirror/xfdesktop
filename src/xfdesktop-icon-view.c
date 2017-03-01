@@ -1365,7 +1365,7 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget,
         
         if(icon_view->priv->item_under_pointer) {
             if(G_UNLIKELY(icon_view->priv->single_click)) {
-                GdkCursor *cursor = gdk_cursor_new(GDK_HAND2);
+                GdkCursor *cursor = gdk_cursor_new_for_display(gtk_widget_get_display(widget), GDK_HAND2);
                 gdk_window_set_cursor(evt->window, cursor);
                 gdk_cursor_unref(cursor);
             }
