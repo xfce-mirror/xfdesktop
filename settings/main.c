@@ -721,7 +721,7 @@ xfdesktop_settings_update_iconview_frame_name(AppearancePanel *panel,
 
     workspace_name = g_strdup(wnck_workspace_get_name(workspace));
 
-    if(gdk_screen_get_n_monitors(gtk_widget_get_screen(panel->chk_apply_to_all)) > 1) {
+    if(gdk_display_get_n_monitors(gtk_widget_get_display(panel->chk_apply_to_all)) > 1) {
         if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(panel->chk_apply_to_all))) {
             /* Multi-monitor single workspace */
             if(panel->monitor_name) {
@@ -1544,7 +1544,7 @@ cb_update_background_tab(WnckWindow *wnck_window,
      */
     gtk_combo_box_text_remove(GTK_COMBO_BOX_TEXT(panel->image_style_combo),
                               XFCE_BACKDROP_IMAGE_SPANNING_SCREENS);
-    if(panel->monitor == 0 && gdk_screen_get_n_monitors(screen) > 1) {
+    if(panel->monitor == 0 && gdk_display_get_n_monitors(gtk_widget_get_display(panel->image_style_combo)) > 1) {
         gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(panel->image_style_combo),
                                        _("Spanning screens"));
     }
@@ -1782,7 +1782,7 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     chk_show_thumbnails = GTK_WIDGET(gtk_builder_get_object(main_gxml,
                                                             "chk_show_thumbnails"));
     /* The default value when this property is not set, is 'TRUE'.
-     * the bind operation defaults to 'FALSE' for unset boolean properties. 
+     * the bind operation defaults to 'FALSE' for unset boolean properties.
      *
      * Make the checkbox correspond to the default behaviour.
      */
@@ -1873,7 +1873,7 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
         uri_path = g_file_get_uri (file);
 
         gtk_file_chooser_add_shortcut_folder_uri (GTK_FILE_CHOOSER(panel->btn_folder),
-                                                  uri_path, NULL); 
+                                                  uri_path, NULL);
 
         g_free (uri_path);
         g_object_unref (file);
@@ -2106,12 +2106,12 @@ main(int argc, char **argv)
 
     if(!xfconf_init(&error)) {
         xfce_message_dialog(NULL, _("Desktop Settings"),
-                            GTK_STOCK_DIALOG_ERROR,
+                            "dialog-error",
                             _("Unable to contact settings server"),
                             error->message,
-                            GTK_STOCK_QUIT, GTK_RESPONSE_ACCEPT,
+                            XFCE_BUTTON_TYPE_MIXED, "application-exit", _("Quit"), GTK_RESPONSE_ACCEPT,
                             NULL);
-        g_error_free(error);
+        g_clear_error(&error);
         return 1;
     }
 
@@ -2160,7 +2160,7 @@ main(int argc, char **argv)
         gdk_notify_startup_complete();
 
         plug_child = GTK_WIDGET(gtk_builder_get_object(gxml, "alignment1"));
-        gtk_widget_reparent(plug_child, plug);
+        xfce_widget_reparent(plug_child, plug);
         gtk_widget_show(plug_child);
 
         screen = gdk_screen_get_number(gtk_widget_get_screen(plug));
