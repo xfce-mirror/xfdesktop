@@ -1185,13 +1185,21 @@ xfdesktop_icon_view_maybe_begin_drag(XfdesktopIconView *icon_view,
                                  icon_view->priv->foreign_source_actions : 0);
     
     if(!(evt->state & GDK_BUTTON3_MASK)) {
-        gtk_drag_begin(GTK_WIDGET(icon_view),
-                       icon_view->priv->source_targets,
-                       actions, 1, (GdkEvent *)evt);
+        gtk_drag_begin_with_coordinates(GTK_WIDGET(icon_view),
+                                        icon_view->priv->source_targets,
+                                        actions,
+                                        1,
+                                        (GdkEvent *)evt,
+                                        -1,
+                                        -1);
     } else {
-        gtk_drag_begin(GTK_WIDGET(icon_view),
-                       icon_view->priv->source_targets,
-                       actions | GDK_ACTION_ASK, 3, (GdkEvent *)evt);
+        gtk_drag_begin_with_coordinates(GTK_WIDGET(icon_view),
+                                        icon_view->priv->source_targets,
+                                        actions | GDK_ACTION_ASK,
+                                        3,
+                                        (GdkEvent *)evt,
+                                        -1,
+                                        -1);
     }
     
     DBG("DRAG BEGIN!");
