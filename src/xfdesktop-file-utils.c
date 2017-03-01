@@ -388,7 +388,7 @@ xfdesktop_file_utils_get_icon(GIcon *icon,
                                                               ITHEME_FLAGS);
       if(icon_info) {
           pix_theme = gtk_icon_info_load_icon(icon_info, NULL);
-          gtk_icon_info_free(icon_info);
+          g_object_unref(icon_info);
       }
     } else if(G_IS_LOADABLE_ICON(base_icon)) {
         GInputStream *stream = g_loadable_icon_load(G_LOADABLE_ICON(base_icon),
@@ -477,7 +477,7 @@ xfdesktop_file_utils_add_emblems(GdkPixbuf *pix, GList *emblems)
                                                                 ITHEME_FLAGS);
         if(icon_info) {
             emblem_pix = gtk_icon_info_load_icon(icon_info, NULL);
-            gtk_icon_info_free(icon_info);
+            g_object_unref(icon_info);
         }
 
         if(emblem_pix) {
@@ -549,7 +549,7 @@ xfdesktop_file_utils_set_window_cursor(GtkWindow *window,
     cursor = gdk_cursor_new_for_display(gtk_widget_get_display(GTK_WIDGET(window)), cursor_type);
     if(G_LIKELY(cursor)) {
         gdk_window_set_cursor(gtk_widget_get_window(GTK_WIDGET(window)), cursor);
-        gdk_cursor_unref(cursor);
+        g_object_unref(cursor);
     }
 }
 
