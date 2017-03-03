@@ -1088,7 +1088,7 @@ xfdesktop_icon_view_button_release(GtkWidget *widget,
         }
     }
 
-    if(evt->button == 1 || evt->button == 3) {
+    if(evt->button == 1 || evt->button == 3 || evt->button == 0) {
         DBG("unsetting stuff");
         icon_view->priv->control_click = FALSE;
         icon_view->priv->double_click = FALSE;
