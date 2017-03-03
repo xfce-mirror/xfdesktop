@@ -1479,6 +1479,23 @@ suboptions_set_sensitive(GtkToggleButton *btn,
     gtk_widget_set_sensitive(box, gtk_toggle_button_get_active(btn));
 }
 
+static gint
+display_get_monitor_num(GdkDisplay *display, GdkMonitor *monitor)
+{
+    gint i;
+
+    g_return_val_if_fail(GDK_IS_DISPLAY(display), 0);
+    g_return_val_if_fail(GDK_IS_MONITOR(monitor), 0);
+
+    for(i=0; i<gdk_display_get_n_monitors(display); i++) {
+        if(monitor == gdk_display_get_monitor(display, i))
+            return i;
+    }
+
+    g_warning("unable to get the monitor number");
+    return 0;
+}
+
 static void
 cb_update_background_tab(WnckWindow *wnck_window,
                          gpointer user_data)
@@ -1487,21 +1504,26 @@ cb_update_background_tab(WnckWindow *wnck_window,
     gint screen_num, monitor_num, workspace_num;
     gchar *monitor_name = NULL;
     WnckWorkspace *wnck_workspace = NULL;
-    GdkScreen *screen;
+    WnckScreen    *wnck_screen = NULL;
+    GdkWindow     *window = NULL;
+    GdkDisplay    *display = NULL;
+    GdkMonitor    *monitor = NULL;
 
     /* If we haven't found our window return now and wait for that */
     if(panel->wnck_window == NULL)
         return;
 
     /* Get all the new settings for comparison */
-    screen = gtk_widget_get_screen(panel->image_iconview);
-    wnck_workspace = wnck_window_get_workspace(wnck_window);
+    wnck_screen = wnck_window_get_screen(panel->wnck_window);
+    wnck_workspace = wnck_window_get_workspace(panel->wnck_window);
 
     workspace_num = xfdesktop_settings_get_active_workspace(panel, wnck_window);
-    screen_num = gdk_screen_get_number(screen);
-    monitor_num = gdk_screen_get_monitor_at_window(screen,
-                                                   gtk_widget_get_window(panel->image_iconview));
-    monitor_name = gdk_screen_get_monitor_plug_name(screen, monitor_num);
+    screen_num = wnck_screen_get_number(wnck_screen);
+    window = gtk_widget_get_window(panel->image_iconview);
+    display = gdk_window_get_display(window);
+    monitor = gdk_display_get_monitor_at_window(display, window);
+    monitor_num = display_get_monitor_num(display, monitor);
+    monitor_name = g_strdup(gdk_monitor_get_model(monitor));
 
     /* Most of the time we won't change monitor, screen, or workspace so try
      * to bail out now if we can */
@@ -1535,7 +1557,7 @@ cb_update_background_tab(WnckWindow *wnck_window,
     panel->workspace = workspace_num;
     panel->screen = screen_num;
     panel->monitor = monitor_num;
-    panel->monitor_name = gdk_screen_get_monitor_plug_name(screen, panel->monitor);
+    panel->monitor_name = g_strdup(gdk_monitor_get_model(gdk_display_get_monitor_at_window(gdk_window_get_display(window), window)));
 
     /* The first monitor has the option of doing the "spanning screens" style,
      * but only if there's multiple monitors attached. Remove it in all other cases.
@@ -2143,7 +2165,7 @@ main(int argc, char **argv)
              xfconf_channel_get_int(channel, SETTINGS_WINDOW_LAST_HEIGHT, -1));
         gtk_window_present(GTK_WINDOW (dialog));
 
-        screen = gdk_screen_get_number(gtk_widget_get_screen(dialog));
+        screen = XScreenNumberOfScreen(gdk_x11_screen_get_xscreen(gtk_widget_get_screen(dialog)));
 
         /* To prevent the settings dialog to be saved in the session */
         gdk_x11_set_sm_client_id("FAKE ID");
@@ -2163,7 +2185,7 @@ main(int argc, char **argv)
         xfce_widget_reparent(plug_child, plug);
         gtk_widget_show(plug_child);
 
-        screen = gdk_screen_get_number(gtk_widget_get_screen(plug));
+        screen = XScreenNumberOfScreen(gdk_x11_screen_get_xscreen(gtk_widget_get_screen(plug)));
 
         /* In a GtkPlug setting there isn't an easy way to find our window
          * in cb_window_opened so we'll just force wnck to init and get the
