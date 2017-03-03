@@ -1585,32 +1585,6 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
     return TRUE;
 }
 
-static gint
-xfdesktop_icon_view_compare_icon_positions(gconstpointer *a,
-                                           gconstpointer *b)
-{
-    XfdesktopIcon *a_icon, *b_icon;
-    gint16 a_row, a_col, b_row, b_col;
-
-    a_icon = XFDESKTOP_ICON(a);
-    b_icon = XFDESKTOP_ICON(b);
-
-    if(!xfdesktop_icon_get_position(a_icon, &a_row, &a_col))
-        return 0;
-    if(!xfdesktop_icon_get_position(b_icon, &b_row, &b_col))
-        return 0;
-
-    if(a_col == b_col) {
-        if(a_row < b_row)
-            return -1;
-        else
-            return 1;
-    } else if(a_col < b_col)
-        return -1;
-    else
-        return 1;
-}
-
 static gboolean
 xfdesktop_icon_view_drag_drop(GtkWidget *widget,
                               GdkDragContext *context,
@@ -1692,6 +1666,9 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
         if(xfdesktop_icon_get_position(icon, &old_row, &old_col)) {
             offset_col = old_col-col;
             offset_row = old_row-row;
+        } else {
+            offset_col = 0;
+            offset_row = 0;
         }
 
         for(l = icon_view->priv->selected_icons; l; l = l->next) {
