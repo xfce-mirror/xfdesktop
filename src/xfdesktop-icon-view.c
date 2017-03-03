@@ -1627,6 +1627,11 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
     
     TRACE("entering: (%d,%d)", x, y);
 
+    DBG("unsetting stuff");
+    icon_view->priv->control_click = FALSE;
+    icon_view->priv->double_click = FALSE;
+    icon_view->priv->maybe_begin_drag = FALSE;
+    icon_view->priv->definitely_dragging = FALSE;
     icon_view->priv->dropped = TRUE;
     
     target = gtk_drag_dest_find_target(widget, context, 
