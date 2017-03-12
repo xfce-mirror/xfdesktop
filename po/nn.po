@@ -3,149 +3,157 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Kevin Brubeck Unhammer <unhammer+dill@mm.st>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-15 00:31+0100\n"
-"PO-Revision-Date: 2013-11-19 13:41+0000\n"
-"Last-Translator: Xfce <transifex@xfce.org>\n"
-"Language-Team: Norwegian Nynorsk (http://www.transifex.com/projects/p/xfce/language/nn/)\n"
+"POT-Creation-Date: 2016-08-15 18:31+0200\n"
+"PO-Revision-Date: 2017-03-12 07:47+0000\n"
+"Last-Translator: Kevin Brubeck Unhammer <unhammer+dill@mm.st>\n"
+"Language-Team: Norwegian Nynorsk (http://www.transifex.com/xfce/xfdesktop/language/nn/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: nn\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../settings/main.c:371 ../src/xfdesktop-special-file-icon.c:295
+#: ../settings/main.c:416 ../src/xfdesktop-special-file-icon.c:295
 #: ../src/xfdesktop-special-file-icon.c:479
 msgid "Home"
 msgstr "Heim"
 
-#: ../settings/main.c:373
+#: ../settings/main.c:418
 msgid "Filesystem"
 msgstr "Filsystem"
 
-#: ../settings/main.c:375
+#: ../settings/main.c:420
 msgid "Trash"
 msgstr "Papirkorg"
 
-#: ../settings/main.c:377
+#: ../settings/main.c:422
 msgid "Removable Devices"
 msgstr "Flyttbare einingar"
 
-#: ../settings/main.c:379
+#: ../settings/main.c:424
 msgid "Network Shares"
-msgstr ""
+msgstr "Delt på nettverket"
 
-#: ../settings/main.c:381
+#: ../settings/main.c:426
 msgid "Disks and Drives"
-msgstr ""
+msgstr "Diskar og stasjonar"
 
-#: ../settings/main.c:383
-msgid "Other Items"
-msgstr ""
+#: ../settings/main.c:428
+msgid "Other Devices"
+msgstr "Andre einingar"
 
 #. Display the file name, file type, and file size in the tooltip.
-#: ../settings/main.c:496
+#: ../settings/main.c:541
 #, c-format
 msgid ""
 "<b>%s</b>\n"
 "Type: %s\n"
 "Size: %s"
-msgstr ""
+msgstr "<b>%s</b>\nType: %s\nStorleik: %s"
 
-#: ../settings/main.c:680
+#: ../settings/main.c:728
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
-msgstr ""
+msgstr "Bakgrunnsbilete for skjerm %d (%s)"
 
-#: ../settings/main.c:683
+#: ../settings/main.c:731
 #, c-format
 msgid "Wallpaper for Monitor %d"
-msgstr ""
+msgstr "Bakgrunnsbilete for skjerm %d"
 
-#: ../settings/main.c:689
-msgid ""
-"You are using more than one display, move this dialog to the display you "
-"want to edit the settings for."
-msgstr ""
+#: ../settings/main.c:737
+msgid "Move this dialog to the display you want to edit the settings for."
+msgstr "Flytt denne dialogen til den skjermen du vil endra innstillingane for."
 
-#: ../settings/main.c:697
+#: ../settings/main.c:744
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
-msgstr ""
+msgstr "Bakgrunnsbilete for %s på skjerm %d (%s)"
 
-#: ../settings/main.c:701
+#: ../settings/main.c:748
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
-msgstr ""
+msgstr "Bakgrunnsbilete for %s på skjerm %d"
 
-#: ../settings/main.c:708
+#: ../settings/main.c:755
 msgid ""
-"You are using more than one display, move this dialog to the display and "
-"workspace you want to edit the settings for."
-msgstr ""
+"Move this dialog to the display and workspace you want to edit the settings "
+"for."
+msgstr "Flytt denne dialogen til den skjermen og det arbeidsområdet du vil endra innstillingane for."
 
 #. Single monitor and single workspace
-#: ../settings/main.c:716
+#: ../settings/main.c:763
 #, c-format
 msgid "Wallpaper for my desktop"
-msgstr ""
+msgstr "Bakgrunnsbilete for skrivebordet mitt"
 
 #. Single monitor and per workspace wallpaper
-#: ../settings/main.c:722
+#: ../settings/main.c:769
 #, c-format
 msgid "Wallpaper for %s"
-msgstr ""
+msgstr "Bakgrunnsbilete for %s"
 
-#: ../settings/main.c:727
+#: ../settings/main.c:774
 msgid "Move this dialog to the workspace you want to edit the settings for."
-msgstr ""
+msgstr "Flytt denne dialogen til det arbeidsområdet du vil endra innstillingane for."
 
-#: ../settings/main.c:1130
+#: ../settings/main.c:1194
 msgid "Image selection is unavailable while the image style is set to None."
-msgstr ""
+msgstr "Kan ikkje velja bilete når biletstilen er «Ingen»."
 
-#: ../settings/main.c:1482
+#: ../settings/main.c:1544
 msgid "Spanning screens"
-msgstr ""
+msgstr "På tvers av skjermar"
 
-#: ../settings/main.c:1787
+#: ../settings/main.c:1858
 msgid "Image files"
 msgstr "Biletfiler"
 
-#: ../settings/main.c:1939
+#. Change the title of the file chooser dialog
+#: ../settings/main.c:1863
+msgid "Select a Directory"
+msgstr "Vel ei mappe"
+
+#: ../settings/main.c:2055
 msgid "Settings manager socket"
 msgstr "Sokkel for innstillingshandterar"
 
-#: ../settings/main.c:1939
+#: ../settings/main.c:2055
 msgid "SOCKET ID"
 msgstr "SOKKEL-ID"
 
-#: ../settings/main.c:1940
+#: ../settings/main.c:2056
 msgid "Version information"
 msgstr "Informasjon om denne utgåva"
 
-#: ../settings/main.c:1967
+#: ../settings/main.c:2057 ../src/xfdesktop-application.c:844
+msgid "Enable debug messages"
+msgstr "Skru på feilsøkjingsmeldingar"
+
+#: ../settings/main.c:2085
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Skriv '%s --help' for bruksinstruksjonar"
 
-#: ../settings/main.c:1979
+#: ../settings/main.c:2097
 msgid "The Xfce development team. All rights reserved."
 msgstr "Utviklingslaget for Xfce. Alle rettar er reserverte."
 
-#: ../settings/main.c:1980
+#: ../settings/main.c:2098
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Rapporter feil til <%s>."
 
-#: ../settings/main.c:1987
+#: ../settings/main.c:2105
 msgid "Desktop Settings"
 msgstr "Skrivebordsoppsett"
 
-#: ../settings/main.c:1989
+#: ../settings/main.c:2107
 msgid "Unable to contact settings server"
 msgstr "Klarte ikkje å kontakta innstillingstenaren"
 
@@ -154,7 +162,8 @@ msgid "Desktop "
 msgstr "Skrivebord"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
-msgid "Set desktop background and menu and icon behaviour"
+#: ../settings/xfdesktop-settings-ui.glade.h:11
+msgid "Set desktop background and menu and icon behavior"
 msgstr "Set bakgrunnsbiletet og åtferda åt menyar og ikon"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
@@ -175,19 +184,19 @@ msgstr "Gjennomsiktig"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
 msgid "_Folder:"
-msgstr ""
+msgstr "_Mappe:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
-msgid "Choose the folder to select wallpapers from"
-msgstr ""
+msgid "Choose the folder to select wallpapers from."
+msgstr "Vel ei mappe å velja bakgrunnsbilete frå."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
 msgid "St_yle:"
 msgstr "St_il"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
-msgid "Specify how the image will be resized to fit the screen"
-msgstr "Vel om biletet vil bli skalert så det passar til skjermen"
+msgid "Specify how the image will be resized to fit the screen."
+msgstr "Vel korleis biletet skal skalerast for å passa skjermen."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
 #: ../settings/xfdesktop-settings-ui.glade.h:4
@@ -216,27 +225,27 @@ msgstr "Zooma"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
 msgid "Spanning Screens"
-msgstr ""
+msgstr "På tvers av skjermar"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
 msgid "C_olor:"
-msgstr ""
+msgstr "_Farge:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
-msgid "Specify the style of the color drawn behind the backdrop image"
-msgstr "Vel kva stil farga bak bakgrunnsbiletet skal ha"
+msgid "Specify the style of the color drawn behind the backdrop image."
+msgstr "Vel stilen på fargen som kjem bak bakgrunnsbiletet."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
-msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr "Vel den heildekkande farga, eller «venstre»- eller «topp»-farga på fargeovergangen"
+msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
+msgstr "Den reine fargen, eller «venstre» eller «øvste» fargen i ein overgang."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
 msgid "Select First Color"
 msgstr "Vel fyrste farga"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
-msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-msgstr "Vel «høgre»- eller «botn»-farga på fargeovergangen"
+msgid "Specifies the \"right\" or \"bottom\" color of the gradient."
+msgstr "«Høgre» eller «nedste» farge i ein overgang."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
 msgid "Select Second Color"
@@ -244,62 +253,62 @@ msgstr "Vel andre farga"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
 msgid "Apply to all _workspaces"
-msgstr ""
+msgstr "Bruk på alle arbeids_område"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 msgid "Change the _background "
-msgstr ""
+msgstr "Endra _bakgrunnen"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
 msgid ""
 "Automatically select a different background from the current directory."
-msgstr ""
+msgstr "Vel automatisk eit anna bakgrunnsbilete frå denne mappa."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
-msgid "Specify how often the background will change"
-msgstr ""
+msgid "Specify how often the background will change."
+msgstr "Vel kor ofte bakgrunnsbiletet skal endrast."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "in seconds:"
-msgstr ""
+msgstr "sekund:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
 msgid "in minutes:"
-msgstr ""
+msgstr "minutt:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
 msgid "in hours:"
-msgstr ""
+msgstr "timar:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
 msgid "at start up"
-msgstr ""
+msgstr "ved oppstart"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
 msgid "every hour"
-msgstr ""
+msgstr "kvar time"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
 msgid "every day"
-msgstr ""
+msgstr "kvar dag"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
 msgid "chronologically"
-msgstr ""
+msgstr "kronologisk"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
 msgid "Amount of time before a different background is selected."
-msgstr ""
+msgstr "Kor mykje tid før me byttar bakgrunnsbilete."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
 msgid "_Random Order"
-msgstr ""
+msgstr "_Tilfeldig følgje"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
 msgid ""
 "Randomly selects another image from the same directory when the wallpaper is"
 " to cycle."
-msgstr ""
+msgstr "Vel eit tilfeldig anna bilete frå same mappa når bakgrunnsbiletet skal endrast."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:1
 msgid "Left"
@@ -333,13 +342,9 @@ msgstr "Minimerte programikon"
 msgid "File/launcher icons"
 msgstr "Fil- og startarikon"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:1016
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:1047
 msgid "Desktop"
 msgstr "Skrivebord"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:11
-msgid "Set desktop background and menu and icon behavior"
-msgstr "Set bakgrunnsbiletet og åtferda åt menyar og ikon"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:12
 msgid "_Background"
@@ -347,7 +352,7 @@ msgstr "_Bakgrunn"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:13
 msgid "Include applications menu on _desktop right click"
-msgstr "Vis ein _programmeny på skrivebordet når du høgreklikkar"
+msgstr "Ta med programmenyen ved høgreklikk på _skrivebordet"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:14
 msgid "_Button:"
@@ -398,56 +403,64 @@ msgid "Show s_ticky windows only in active workspace"
 msgstr "Vis _limte vindaugo berre på det aktive arbeidsområdet"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:26
+msgid "Show a_dd and remove workspace options in list"
+msgstr "Ta med val for «_Legg til/fjern arbeidsområde» i lista"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "<b>Window List Menu</b>"
 msgstr "<b>Vindaugslistemeny</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:27
+#: ../settings/xfdesktop-settings-ui.glade.h:28
 msgid "_Menus"
 msgstr "_Menyar"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:28
+#: ../settings/xfdesktop-settings-ui.glade.h:29
 msgid "Icon _type:"
 msgstr "Ikon_type: "
 
-#: ../settings/xfdesktop-settings-ui.glade.h:29
+#: ../settings/xfdesktop-settings-ui.glade.h:30
 msgid "Icon _size:"
 msgstr "Ikon_storleik: "
 
-#: ../settings/xfdesktop-settings-ui.glade.h:30
+#: ../settings/xfdesktop-settings-ui.glade.h:31
 msgid "Show t_humbnails"
 msgstr "Vis _småbilete"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:31
+#: ../settings/xfdesktop-settings-ui.glade.h:32
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
 msgstr "Vel dette for å laga småbilete automatisk av filer som kan førehandsvisast."
 
-#: ../settings/xfdesktop-settings-ui.glade.h:32
+#: ../settings/xfdesktop-settings-ui.glade.h:33
+msgid "Show hidden files on the desktop"
+msgstr "Vi skjulte filer på skrivebordet"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:34
 msgid "Single _click to activate items"
 msgstr "Enkel_klikk for å ta i bruk element"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:33
-msgid "Show icon tooltips. Size:"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-ui.glade.h:34
-msgid "Size of the tooltip preview image."
-msgstr ""
-
 #: ../settings/xfdesktop-settings-ui.glade.h:35
+msgid "Show icon tooltips. Size:"
+msgstr "Vis ikonverktøytips. Storleik:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:36
+msgid "Size of the tooltip preview image."
+msgstr "Storleik på førehandsvisninga på verktøytipset."
+
+#: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "Use custom _font size:"
 msgstr "Bruk eigen skri_ftstorleik: "
 
-#: ../settings/xfdesktop-settings-ui.glade.h:36
+#: ../settings/xfdesktop-settings-ui.glade.h:38
 msgid "<b>Appearance</b>"
 msgstr "<b>Utsjånad</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:37
+#: ../settings/xfdesktop-settings-ui.glade.h:39
 msgid "<b>Default Icons</b>"
 msgstr "<b>Standardikon</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:38
+#: ../settings/xfdesktop-settings-ui.glade.h:40
 msgid "_Icons"
 msgstr "_Ikon"
 
@@ -455,303 +468,326 @@ msgstr "_Ikon"
 msgid "_Applications"
 msgstr "Progr_am"
 
-#: ../src/windowlist.c:72
+#: ../src/windowlist.c:73
 #, c-format
 msgid "Remove Workspace %d"
-msgstr ""
+msgstr "Fjern arbeidsområde %d"
 
-#: ../src/windowlist.c:73
+#: ../src/windowlist.c:74
 #, c-format
 msgid ""
 "Do you really want to remove workspace %d?\n"
 "Note: You are currently on workspace %d."
-msgstr ""
-
-#: ../src/windowlist.c:77
-#, c-format
-msgid "Remove Workspace '%s'"
-msgstr ""
+msgstr "Vil du verkeleg fjerna arbeidsområde %d?\nMerk: Du bruker arbeidsområde %d no."
 
 #: ../src/windowlist.c:78
+#, c-format
+msgid "Remove Workspace '%s'"
+msgstr "Fjern arbeidsområde «%s»"
+
+#: ../src/windowlist.c:79
 #, c-format
 msgid ""
 "Do you really want to remove workspace '%s'?\n"
 "Note: You are currently on workspace '%s'."
-msgstr ""
+msgstr "Vil du verkeleg fjerna arbeidsområde %s?\nMerk: Du bruker arbeidsområde «%s» no."
 
 #. Popup a dialog box confirming that the user wants to remove a
 #. * workspace
-#: ../src/windowlist.c:85
+#: ../src/windowlist.c:86
 msgid "Remove"
-msgstr ""
+msgstr "Fjern"
 
-#: ../src/windowlist.c:245
+#: ../src/windowlist.c:253
 msgid "Window List"
 msgstr "Vindaugsliste"
 
-#: ../src/windowlist.c:271
+#: ../src/windowlist.c:279
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>Arbeidsområde %d</b>"
 
-#: ../src/windowlist.c:360 ../src/windowlist.c:363
+#: ../src/windowlist.c:366 ../src/windowlist.c:369
 msgid "_Add Workspace"
 msgstr "Legg til eit _arbeidsområde"
 
-#: ../src/windowlist.c:371
+#: ../src/windowlist.c:377
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "Fje_rn arbeidsområdet %d"
 
-#: ../src/windowlist.c:374
+#: ../src/windowlist.c:380
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "Fje_rn arbeidsområdet «%s»"
 
-#: ../src/xfdesktop-application.c:773
+#: ../src/xfdesktop-app-menu-item.c:351
+#: ../src/xfdesktop-file-icon-manager.c:860
+#: ../src/xfdesktop-file-icon-manager.c:1154
+#: ../src/xfdesktop-file-icon-manager.c:1367 ../src/xfdesktop-file-utils.c:665
+#: ../src/xfdesktop-file-utils.c:1090 ../src/xfdesktop-file-utils.c:1167
+#: ../src/xfdesktop-file-utils.c:1192 ../src/xfdesktop-file-utils.c:1244
+msgid "Launch Error"
+msgstr "Startfeil"
+
+#: ../src/xfdesktop-app-menu-item.c:353
+#: ../src/xfdesktop-file-icon-manager.c:1156
+msgid ""
+"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
+"edit launchers and links on the desktop."
+msgstr "Klarte ikkje starta «exo-desktop-item-edit», som krevst for å laga og endra startarar og lenkjer på skrivebordet."
+
+#: ../src/xfdesktop-application.c:836
 msgid "Display version information"
-msgstr ""
+msgstr "Vis versjonsinformasjon"
 
-#: ../src/xfdesktop-application.c:774
+#: ../src/xfdesktop-application.c:837
 msgid "Reload all settings"
-msgstr ""
+msgstr "Last alle innstillingar på nytt"
 
-#: ../src/xfdesktop-application.c:775
+#: ../src/xfdesktop-application.c:838
+msgid "Advance to the next wallpaper on the current workspace"
+msgstr "Gå vidare til neste bakgrunnsbilete på dette arbeidsområdet"
+
+#: ../src/xfdesktop-application.c:839
 msgid "Pop up the menu (at the current mouse position)"
-msgstr ""
+msgstr "La menyen spretta opp (ved musepeikaren)"
 
-#: ../src/xfdesktop-application.c:776
+#: ../src/xfdesktop-application.c:840
 msgid "Pop up the window list (at the current mouse position)"
-msgstr ""
+msgstr "La vindaugslista spretta opp (ved musepeikaren)"
 
-#: ../src/xfdesktop-application.c:778
+#: ../src/xfdesktop-application.c:842
 msgid "Automatically arrange all the icons on the desktop"
-msgstr ""
+msgstr "Automatisk ordna alle ikona på skrivebordet"
 
-#: ../src/xfdesktop-application.c:780
+#: ../src/xfdesktop-application.c:845
+msgid "Disable debug messages"
+msgstr "Skru av feilsøkjingsmeldingar"
+
+#: ../src/xfdesktop-application.c:846
 msgid "Do not wait for a window manager on startup"
-msgstr ""
+msgstr "Ikkje vent på at vindaugshandteraren skal starta"
 
-#: ../src/xfdesktop-application.c:781
+#: ../src/xfdesktop-application.c:847
 msgid "Cause xfdesktop to quit"
-msgstr ""
+msgstr "Få xfdesktop til å avslutta"
 
-#: ../src/xfdesktop-application.c:796
+#: ../src/xfdesktop-application.c:862
 #, c-format
 msgid "Failed to parse arguments: %s\n"
-msgstr ""
+msgstr "Klarte ikkje tolka argumenta: %s\n"
 
-#: ../src/xfdesktop-application.c:807
+#: ../src/xfdesktop-application.c:873
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr ""
+msgstr "Dette er %s utgåve %s, som køyrer på Xfce %s.\n"
 
-#: ../src/xfdesktop-application.c:809
+#: ../src/xfdesktop-application.c:875
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr ""
+msgstr "Bygd med GTK+-%d.%d.%d, lenka med GTK+-%d.%d.%d"
 
-#: ../src/xfdesktop-application.c:813
+#: ../src/xfdesktop-application.c:879
 #, c-format
 msgid "Build options:\n"
-msgstr ""
+msgstr "Byggeinnstillingar:\n"
 
-#: ../src/xfdesktop-application.c:814
+#: ../src/xfdesktop-application.c:880
 #, c-format
 msgid "    Desktop Menu:        %s\n"
-msgstr ""
+msgstr "Skrivebordsmeny: %s\n"
 
-#: ../src/xfdesktop-application.c:816 ../src/xfdesktop-application.c:823
-#: ../src/xfdesktop-application.c:830
+#: ../src/xfdesktop-application.c:882 ../src/xfdesktop-application.c:889
+#: ../src/xfdesktop-application.c:896
 msgid "enabled"
-msgstr ""
+msgstr "på"
 
-#: ../src/xfdesktop-application.c:818 ../src/xfdesktop-application.c:825
-#: ../src/xfdesktop-application.c:832
+#: ../src/xfdesktop-application.c:884 ../src/xfdesktop-application.c:891
+#: ../src/xfdesktop-application.c:898
 msgid "disabled"
-msgstr ""
+msgstr "av"
 
-#: ../src/xfdesktop-application.c:821
+#: ../src/xfdesktop-application.c:887
 #, c-format
 msgid "    Desktop Icons:       %s\n"
-msgstr ""
+msgstr "Skrivebordsikon: %s\n"
 
-#: ../src/xfdesktop-application.c:828
+#: ../src/xfdesktop-application.c:894
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr ""
+msgstr "Skrivebordsfil-ikon: %s\n"
 
+#: ../src/xfdesktop-file-icon-manager.c:561
 #: ../src/xfdesktop-file-icon-manager.c:578
-#: ../src/xfdesktop-file-icon-manager.c:595
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
 msgstr "Klarte ikkje laga skrivebordsmappa «%s»"
 
+#: ../src/xfdesktop-file-icon-manager.c:566
 #: ../src/xfdesktop-file-icon-manager.c:583
-#: ../src/xfdesktop-file-icon-manager.c:600
 msgid "Desktop Folder Error"
 msgstr "Feil med skrivebordsmappa"
 
-#: ../src/xfdesktop-file-icon-manager.c:602
+#: ../src/xfdesktop-file-icon-manager.c:585
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr "Ei vanleg fil med det namnet finst. Slett henne, eller gje nytt namn."
 
-#: ../src/xfdesktop-file-icon-manager.c:685 ../src/xfdesktop-file-utils.c:716
-#: ../src/xfdesktop-file-utils.c:769
+#: ../src/xfdesktop-file-icon-manager.c:668 ../src/xfdesktop-file-utils.c:727
+#: ../src/xfdesktop-file-utils.c:780
 msgid "Rename Error"
 msgstr "Omdøypingsfeil"
 
-#: ../src/xfdesktop-file-icon-manager.c:686 ../src/xfdesktop-file-utils.c:770
+#: ../src/xfdesktop-file-icon-manager.c:669 ../src/xfdesktop-file-utils.c:781
 msgid "The files could not be renamed"
-msgstr ""
+msgstr "Klarte ikkje døypa om filene"
 
-#: ../src/xfdesktop-file-icon-manager.c:687
+#: ../src/xfdesktop-file-icon-manager.c:670
 msgid "None of the icons selected support being renamed."
-msgstr ""
+msgstr "Inga av dei valde ikona støttar omdøyping."
 
-#: ../src/xfdesktop-file-icon-manager.c:731
-#: ../src/xfdesktop-file-icon-manager.c:775 ../src/xfdesktop-file-utils.c:869
-#: ../src/xfdesktop-file-utils.c:906
+#: ../src/xfdesktop-file-icon-manager.c:714
+#: ../src/xfdesktop-file-icon-manager.c:758 ../src/xfdesktop-file-utils.c:880
+#: ../src/xfdesktop-file-utils.c:917
 msgid "Trash Error"
 msgstr "Feil med papirkorga"
 
-#: ../src/xfdesktop-file-icon-manager.c:732
-#: ../src/xfdesktop-file-icon-manager.c:776
+#: ../src/xfdesktop-file-icon-manager.c:715
+#: ../src/xfdesktop-file-icon-manager.c:759
 msgid "The selected files could not be trashed"
 msgstr "Klarte ikkje kasta desse filene i papirkorga"
 
-#: ../src/xfdesktop-file-icon-manager.c:733
-#: ../src/xfdesktop-file-icon-manager.c:777 ../src/xfdesktop-file-utils.c:718
-#: ../src/xfdesktop-file-utils.c:771 ../src/xfdesktop-file-utils.c:821
-#: ../src/xfdesktop-file-utils.c:952 ../src/xfdesktop-file-utils.c:999
-#: ../src/xfdesktop-file-utils.c:1040 ../src/xfdesktop-file-utils.c:1081
-#: ../src/xfdesktop-file-utils.c:1183 ../src/xfdesktop-file-utils.c:1235
-#: ../src/xfdesktop-file-utils.c:1308 ../src/xfdesktop-file-utils.c:1386
+#: ../src/xfdesktop-file-icon-manager.c:716
+#: ../src/xfdesktop-file-icon-manager.c:760 ../src/xfdesktop-file-utils.c:729
+#: ../src/xfdesktop-file-utils.c:782 ../src/xfdesktop-file-utils.c:832
+#: ../src/xfdesktop-file-utils.c:963 ../src/xfdesktop-file-utils.c:1010
+#: ../src/xfdesktop-file-utils.c:1051 ../src/xfdesktop-file-utils.c:1092
+#: ../src/xfdesktop-file-utils.c:1194 ../src/xfdesktop-file-utils.c:1246
+#: ../src/xfdesktop-file-utils.c:1319 ../src/xfdesktop-file-utils.c:1397
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
 msgstr "Denne funksjonen krev at det finst ein filhandsamar (slik som Thunar)."
 
 #. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:877
-#: ../src/xfdesktop-file-icon-manager.c:1335
+#: ../src/xfdesktop-file-icon-manager.c:858
+#: ../src/xfdesktop-file-icon-manager.c:1366
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Klarte ikkje køyra «%s»: "
 
-#: ../src/xfdesktop-file-icon-manager.c:879
-#: ../src/xfdesktop-file-icon-manager.c:1140
-#: ../src/xfdesktop-file-icon-manager.c:1336 ../src/xfdesktop-file-utils.c:657
-#: ../src/xfdesktop-file-utils.c:1079 ../src/xfdesktop-file-utils.c:1156
-#: ../src/xfdesktop-file-utils.c:1181 ../src/xfdesktop-file-utils.c:1233
-msgid "Launch Error"
-msgstr "Startfeil"
-
-#: ../src/xfdesktop-file-icon-manager.c:1064
+#: ../src/xfdesktop-file-icon-manager.c:1078
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "_Opna med «%s»"
 
-#: ../src/xfdesktop-file-icon-manager.c:1067
+#: ../src/xfdesktop-file-icon-manager.c:1081
 #, c-format
 msgid "Open With \"%s\""
 msgstr "Opna med «%s»"
 
-#: ../src/xfdesktop-file-icon-manager.c:1142
-msgid ""
-"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
-"edit launchers and links on the desktop."
-msgstr "Klarte ikkje starta «exo-desktop-item-edit», som krevst for å laga og endra startarar og lenkjer på skrivebordet."
-
-#: ../src/xfdesktop-file-icon-manager.c:1393
+#: ../src/xfdesktop-file-icon-manager.c:1436
 msgid "_Open all"
 msgstr "_Opna alle"
 
-#: ../src/xfdesktop-file-icon-manager.c:1409
+#: ../src/xfdesktop-file-icon-manager.c:1452
 msgid "_Open in New Window"
 msgstr "_Opna i nytt vindauge"
 
-#: ../src/xfdesktop-file-icon-manager.c:1411
-#: ../src/xfdesktop-special-file-icon.c:550 ../src/xfdesktop-volume-icon.c:814
-#: ../src/xfdesktop-volume-icon.c:818
+#: ../src/xfdesktop-file-icon-manager.c:1454
+#: ../src/xfdesktop-special-file-icon.c:547 ../src/xfdesktop-volume-icon.c:813
 msgid "_Open"
 msgstr "_Opna"
 
 #. create launcher item
-#: ../src/xfdesktop-file-icon-manager.c:1430
+#: ../src/xfdesktop-file-icon-manager.c:1473
 msgid "Create _Launcher..."
 msgstr "_Lag ny startar..."
 
 #. create link item
-#: ../src/xfdesktop-file-icon-manager.c:1446
+#: ../src/xfdesktop-file-icon-manager.c:1489
 msgid "Create _URL Link..."
 msgstr "Lag _URL-lenkje..."
 
 #. create folder item
-#: ../src/xfdesktop-file-icon-manager.c:1462
+#: ../src/xfdesktop-file-icon-manager.c:1505
 msgid "Create _Folder..."
 msgstr "Lag _mappe …"
 
-#: ../src/xfdesktop-file-icon-manager.c:1477
-msgid "Create From _Template"
-msgstr "Lag frå m_al"
+#: ../src/xfdesktop-file-icon-manager.c:1522
+msgid "Create _Document"
+msgstr "Opprett _dokument"
 
-#: ../src/xfdesktop-file-icon-manager.c:1506
+#: ../src/xfdesktop-file-icon-manager.c:1546
+msgid "No templates installed"
+msgstr "Ingen malar er installerte"
+
+#: ../src/xfdesktop-file-icon-manager.c:1563
 msgid "_Empty File"
 msgstr "_Tom fil"
 
-#: ../src/xfdesktop-file-icon-manager.c:1523
+#: ../src/xfdesktop-file-icon-manager.c:1580
 msgid "_Execute"
 msgstr "_Køyr"
 
-#: ../src/xfdesktop-file-icon-manager.c:1543
+#: ../src/xfdesktop-file-icon-manager.c:1600
 msgid "_Edit Launcher"
 msgstr "_Endra startar"
 
-#: ../src/xfdesktop-file-icon-manager.c:1578
+#: ../src/xfdesktop-file-icon-manager.c:1659
 msgid "Open With"
 msgstr "Opna med"
 
-#: ../src/xfdesktop-file-icon-manager.c:1604
+#: ../src/xfdesktop-file-icon-manager.c:1685
+#: ../src/xfdesktop-file-icon-manager.c:1700
 msgid "Open With Other _Application..."
 msgstr "Opna med eit anna _program"
 
+#: ../src/xfdesktop-file-icon-manager.c:1759
+msgid "Paste Into Folder"
+msgstr "Lim inn i mappe"
+
+#. Trash
+#: ../src/xfdesktop-file-icon-manager.c:1778
+msgid "Mo_ve to Trash"
+msgstr "Flytt til _papirkorga"
+
 #. Rename
-#: ../src/xfdesktop-file-icon-manager.c:1704
+#: ../src/xfdesktop-file-icon-manager.c:1809
 msgid "_Rename..."
 msgstr "End_ra namn …"
 
-#: ../src/xfdesktop-file-icon-manager.c:1732
+#: ../src/xfdesktop-file-icon-manager.c:1877
 msgid "Arrange Desktop _Icons"
 msgstr "_Still opp skrivebordsikona"
 
-#: ../src/xfdesktop-file-icon-manager.c:1743
+#: ../src/xfdesktop-file-icon-manager.c:1888
 msgid "Desktop _Settings..."
 msgstr "_Skrivebordsoppsett..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1754
-#: ../src/xfdesktop-volume-icon.c:860
+#: ../src/xfdesktop-file-icon-manager.c:1899
+#: ../src/xfdesktop-volume-icon.c:855
 msgid "P_roperties..."
 msgstr "Ei_genskapar …"
 
-#: ../src/xfdesktop-file-icon-manager.c:2747
+#: ../src/xfdesktop-file-icon-manager.c:2912
 msgid "Load Error"
 msgstr "Feil ved lasting"
 
-#: ../src/xfdesktop-file-icon-manager.c:2749
+#: ../src/xfdesktop-file-icon-manager.c:2914
 msgid "Failed to load the desktop folder"
 msgstr "Klarte ikkje opna skrivebordsmappa."
 
-#: ../src/xfdesktop-file-icon-manager.c:3289
+#: ../src/xfdesktop-file-icon-manager.c:3479
 msgid "Copy _Here"
 msgstr "Kopier _hit"
 
-#: ../src/xfdesktop-file-icon-manager.c:3289
+#: ../src/xfdesktop-file-icon-manager.c:3479
 msgid "_Move Here"
 msgstr "_Flytt hit"
 
-#: ../src/xfdesktop-file-icon-manager.c:3289
+#: ../src/xfdesktop-file-icon-manager.c:3479
 msgid "_Link Here"
 msgstr "_Lenk hit"
 
@@ -784,88 +820,88 @@ msgstr "%x kl. %X"
 msgid "Unknown"
 msgstr "Ukjend"
 
-#: ../src/xfdesktop-file-utils.c:658
+#: ../src/xfdesktop-file-utils.c:666
 msgid "The folder could not be opened"
 msgstr "Klarte ikkje opna mappa"
 
-#: ../src/xfdesktop-file-utils.c:675
+#: ../src/xfdesktop-file-utils.c:685
 msgid "Error"
-msgstr ""
+msgstr "Feil"
 
-#: ../src/xfdesktop-file-utils.c:676
+#: ../src/xfdesktop-file-utils.c:686
 msgid "The requested operation could not be completed"
-msgstr ""
+msgstr "Klarte ikkje utføra operasjonen"
 
-#: ../src/xfdesktop-file-utils.c:717
+#: ../src/xfdesktop-file-utils.c:728
 msgid "The file could not be renamed"
 msgstr "Klarte ikkje døypa om fila"
 
-#: ../src/xfdesktop-file-utils.c:819
+#: ../src/xfdesktop-file-utils.c:830
 msgid "Delete Error"
 msgstr "Slettefeil"
 
-#: ../src/xfdesktop-file-utils.c:820
+#: ../src/xfdesktop-file-utils.c:831
 msgid "The selected files could not be deleted"
 msgstr "Klarte ikkje sletta desse filene"
 
-#: ../src/xfdesktop-file-utils.c:870
+#: ../src/xfdesktop-file-utils.c:881
 msgid "The selected files could not be moved to the trash"
 msgstr "Klarte ikkje flytta desse filene til papirkorga"
 
-#: ../src/xfdesktop-file-utils.c:871 ../src/xfdesktop-file-utils.c:908
+#: ../src/xfdesktop-file-utils.c:882 ../src/xfdesktop-file-utils.c:919
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
 msgstr "Denne funksjonen krev eit program som kan kasta i papirkorga (slik som Thunar). "
 
-#: ../src/xfdesktop-file-utils.c:907
+#: ../src/xfdesktop-file-utils.c:918
 msgid "Could not empty the trash"
 msgstr "Klarte ikkje tøma papirkorga"
 
-#: ../src/xfdesktop-file-utils.c:950
+#: ../src/xfdesktop-file-utils.c:961
 msgid "Create File Error"
 msgstr "Feil ved fillaging"
 
-#: ../src/xfdesktop-file-utils.c:951
+#: ../src/xfdesktop-file-utils.c:962
 msgid "Could not create a new file"
 msgstr "Klarte ikkje laga ny fil"
 
-#: ../src/xfdesktop-file-utils.c:997
+#: ../src/xfdesktop-file-utils.c:1008
 msgid "Create Document Error"
 msgstr "Feil ved dokumentlaging"
 
-#: ../src/xfdesktop-file-utils.c:998
+#: ../src/xfdesktop-file-utils.c:1009
 msgid "Could not create a new document from the template"
 msgstr "Klarte ikkje laga nytt dokument frå malen"
 
-#: ../src/xfdesktop-file-utils.c:1038
+#: ../src/xfdesktop-file-utils.c:1049
 msgid "File Properties Error"
 msgstr "Feil med fileigenskapar"
 
-#: ../src/xfdesktop-file-utils.c:1039
+#: ../src/xfdesktop-file-utils.c:1050
 msgid "The file properties dialog could not be opened"
 msgstr "Klarte ikkje opna dialogen for fileigenskapar"
 
-#: ../src/xfdesktop-file-utils.c:1080
+#: ../src/xfdesktop-file-utils.c:1091
 msgid "The file could not be opened"
 msgstr "Kunne ikkje opna fila"
 
-#: ../src/xfdesktop-file-utils.c:1153 ../src/xfdesktop-file-utils.c:1178
+#: ../src/xfdesktop-file-utils.c:1164 ../src/xfdesktop-file-utils.c:1189
 #, c-format
 msgid "Failed to run \"%s\""
 msgstr "Klarte ikkje køyra «%s»"
 
-#: ../src/xfdesktop-file-utils.c:1234
+#: ../src/xfdesktop-file-utils.c:1245
 msgid "The application chooser could not be opened"
 msgstr "Klarte ikkje opna programveljaren"
 
-#: ../src/xfdesktop-file-utils.c:1292 ../src/xfdesktop-file-utils.c:1306
-#: ../src/xfdesktop-file-utils.c:1368 ../src/xfdesktop-file-utils.c:1384
+#: ../src/xfdesktop-file-utils.c:1303 ../src/xfdesktop-file-utils.c:1317
+#: ../src/xfdesktop-file-utils.c:1379 ../src/xfdesktop-file-utils.c:1395
 msgid "Transfer Error"
 msgstr "Overføringsfeil"
 
-#: ../src/xfdesktop-file-utils.c:1293 ../src/xfdesktop-file-utils.c:1307
-#: ../src/xfdesktop-file-utils.c:1369 ../src/xfdesktop-file-utils.c:1385
+#: ../src/xfdesktop-file-utils.c:1304 ../src/xfdesktop-file-utils.c:1318
+#: ../src/xfdesktop-file-utils.c:1380 ../src/xfdesktop-file-utils.c:1396
 msgid "The file transfer could not be performed"
 msgstr "Klarte ikkje overføra fila"
 
@@ -897,12 +933,12 @@ msgstr "Det er data som må skrivast til «%s» før du kan fjerna henne. Ikkje 
 
 #: ../src/xfdesktop-notify.c:221
 msgid "Unmount Finished"
-msgstr ""
+msgstr "Ferdig å avmontera"
 
 #: ../src/xfdesktop-notify.c:223 ../src/xfdesktop-notify.c:408
 #, c-format
 msgid "The device \"%s\" has been safely removed from the system. "
-msgstr ""
+msgstr "Eininga «%s» er trygt fjerna frå systemet."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:313
@@ -917,9 +953,9 @@ msgstr "Eininga «%s» blir kopla frå. Dette kan ta litt tid"
 
 #: ../src/xfdesktop-notify.c:406
 msgid "Eject Finished"
-msgstr ""
+msgstr "Ferdig å løysa ut"
 
-#: ../src/xfdesktop-regular-file-icon.c:606
+#: ../src/xfdesktop-regular-file-icon.c:799
 #, c-format
 msgid ""
 "Type: %s\n"
@@ -945,7 +981,7 @@ msgstr "Papirkorga inneheld ei fil"
 msgid "Trash contains %d items"
 msgstr "Papirkorga inneheld %d filer"
 
-#: ../src/xfdesktop-special-file-icon.c:498
+#: ../src/xfdesktop-special-file-icon.c:495
 #, c-format
 msgid ""
 "%s\n"
@@ -953,11 +989,11 @@ msgid ""
 "Last modified: %s"
 msgstr "%s\nStorleik: %s\nSist endra: %s"
 
-#: ../src/xfdesktop-special-file-icon.c:567
+#: ../src/xfdesktop-special-file-icon.c:564
 msgid "_Empty Trash"
 msgstr "_Tøm papirkorga"
 
-#: ../src/xfdesktop-volume-icon.c:486
+#: ../src/xfdesktop-volume-icon.c:482
 #, c-format
 msgid ""
 "Removable Volume\n"
@@ -965,39 +1001,39 @@ msgid ""
 "%s left (%s total)"
 msgstr "Flyttbar stasjon\nMontert i \"%s\"\n%s att (%s i alt)"
 
-#: ../src/xfdesktop-volume-icon.c:493
+#: ../src/xfdesktop-volume-icon.c:489
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
 msgstr "Flyttbar stasjon\nIkkje montert enno"
 
-#: ../src/xfdesktop-volume-icon.c:522 ../src/xfdesktop-volume-icon.c:567
+#: ../src/xfdesktop-volume-icon.c:518 ../src/xfdesktop-volume-icon.c:563
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "Klarte ikkje løysa ut «%s»"
 
-#: ../src/xfdesktop-volume-icon.c:527 ../src/xfdesktop-volume-icon.c:572
+#: ../src/xfdesktop-volume-icon.c:523 ../src/xfdesktop-volume-icon.c:568
 msgid "Eject Failed"
 msgstr "Klarte ikkje løysa ut"
 
-#: ../src/xfdesktop-volume-icon.c:604
+#: ../src/xfdesktop-volume-icon.c:600
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "Klarte ikkje montera «%s»"
 
-#: ../src/xfdesktop-volume-icon.c:607
+#: ../src/xfdesktop-volume-icon.c:603
 msgid "Mount Failed"
 msgstr "Klarte ikkje montera"
 
-#: ../src/xfdesktop-volume-icon.c:833
+#: ../src/xfdesktop-volume-icon.c:828
 msgid "E_ject Volume"
 msgstr "_Løys ut stasjon"
 
-#: ../src/xfdesktop-volume-icon.c:840
+#: ../src/xfdesktop-volume-icon.c:835
 msgid "_Unmount Volume"
-msgstr ""
+msgstr "_Avmonter stasjonen"
 
-#: ../src/xfdesktop-volume-icon.c:847
+#: ../src/xfdesktop-volume-icon.c:842
 msgid "_Mount Volume"
 msgstr "_Monter stasjon"
 
