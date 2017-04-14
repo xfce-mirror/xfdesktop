@@ -867,7 +867,7 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(user_data);
     XfdesktopIcon *icon;
 
-    TRACE("entering");
+    DBG("entering");
 
     if(evt->type == GDK_BUTTON_PRESS) {
         GList *icon_l;
@@ -1019,6 +1019,24 @@ xfdesktop_icon_view_get_tooltip_size(XfdesktopIconView *icon_view)
     return DEFAULT_TOOLTIP_SIZE;
 }
 
+static void
+xfdesktop_icon_view_clear_drag_event(XfdesktopIconView *icon_view, GtkWidget *widget)
+{
+    DBG("unsetting stuff");
+    icon_view->priv->control_click = FALSE;
+    icon_view->priv->double_click = FALSE;
+    icon_view->priv->maybe_begin_drag = FALSE;
+    icon_view->priv->definitely_dragging = FALSE;
+    if(icon_view->priv->definitely_rubber_banding) {
+        /* Remove the rubber band selection box */
+        icon_view->priv->definitely_rubber_banding = FALSE;
+        gtk_widget_queue_draw_area(widget, icon_view->priv->band_rect.x,
+                                   icon_view->priv->band_rect.y,
+                                   icon_view->priv->band_rect.width,
+                                   icon_view->priv->band_rect.height);
+    }
+}
+
 static gboolean
 xfdesktop_icon_view_button_release(GtkWidget *widget,
                                    GdkEventButton *evt,
@@ -1028,7 +1046,7 @@ xfdesktop_icon_view_button_release(GtkWidget *widget,
     XfdesktopIcon *icon;
     GList *icon_l = NULL;
 
-    TRACE("entering btn=%d", evt->button);
+    DBG("entering btn=%d", evt->button);
 
     /* single-click */
     if(xfdesktop_icon_view_get_single_click(icon_view)
@@ -1089,19 +1107,7 @@ xfdesktop_icon_view_button_release(GtkWidget *widget,
     }
 
     if(evt->button == 1 || evt->button == 3 || evt->button == 0) {
-        DBG("unsetting stuff");
-        icon_view->priv->control_click = FALSE;
-        icon_view->priv->double_click = FALSE;
-        icon_view->priv->maybe_begin_drag = FALSE;
-        icon_view->priv->definitely_dragging = FALSE;
-        if(icon_view->priv->definitely_rubber_banding) {
-            /* Remove the rubber band selection box */
-            icon_view->priv->definitely_rubber_banding = FALSE;
-            gtk_widget_queue_draw_area(widget, icon_view->priv->band_rect.x,
-                                       icon_view->priv->band_rect.y,
-                                       icon_view->priv->band_rect.width,
-                                       icon_view->priv->band_rect.height);
-        }
+        xfdesktop_icon_view_clear_drag_event(icon_view, widget);
     }
 
     gtk_grab_remove(widget);
@@ -1116,7 +1122,7 @@ xfdesktop_icon_view_key_press(GtkWidget *widget,
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(user_data);
 
-    TRACE("entering");
+    DBG("entering");
 
     /* since we're NO_WINDOW, events don't get delivered to us normally,
      * so we have to activate the bindings manually */
@@ -1599,7 +1605,7 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
     GList *l;
     XfdesktopIcon *icon_on_dest = NULL;
     
-    TRACE("entering: (%d,%d)", x, y);
+    DBG("entering: (%d,%d)", x, y);
 
     DBG("unsetting stuff");
     icon_view->priv->control_click = FALSE;
@@ -1735,7 +1741,7 @@ xfdesktop_icon_view_drag_data_get(GtkWidget *widget,
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
     
-    TRACE("entering");
+    DBG("entering");
 
     if(XFDESKTOP_IS_WINDOW_ICON_MANAGER(icon_view->priv->manager))
         return;
@@ -1748,6 +1754,8 @@ xfdesktop_icon_view_drag_data_get(GtkWidget *widget,
     xfdesktop_icon_view_manager_drag_data_get(icon_view->priv->manager,
                                               icon_view->priv->selected_icons,
                                               context, data, info, time_);
+
+    xfdesktop_icon_view_clear_drag_event(icon_view, widget);
 }
 
 static void
@@ -1763,7 +1771,7 @@ xfdesktop_icon_view_drag_data_received(GtkWidget *widget,
     gint16 row, col;
     XfdesktopIcon *icon_on_dest;
     
-    TRACE("entering");
+    DBG("entering");
     
     icon_on_dest = g_object_get_data(G_OBJECT(context),
                                      "--xfdesktop-icon-view-drop-icon");
@@ -2178,7 +2186,7 @@ xfdesktop_icon_view_draw(GtkWidget *widget,
     GdkRectangle clipbox;
     gint i;
 
-    /*TRACE("entering");*/
+    /*DBG("entering");*/
     
     rects = cairo_copy_clip_rectangle_list(cr);
 
@@ -2247,7 +2255,7 @@ xfdesktop_icon_view_draw(GtkWidget *widget,
 static void
 xfdesktop_icon_view_real_select_all(XfdesktopIconView *icon_view)
 {
-    TRACE("entering");
+    DBG("entering");
 
     xfdesktop_icon_view_select_all(icon_view);
 }
@@ -2255,7 +2263,7 @@ xfdesktop_icon_view_real_select_all(XfdesktopIconView *icon_view)
 static void
 xfdesktop_icon_view_real_unselect_all(XfdesktopIconView *icon_view)
 {
-    TRACE("entering");
+    DBG("entering");
 
     xfdesktop_icon_view_unselect_all(icon_view);
 }
@@ -2263,7 +2271,7 @@ xfdesktop_icon_view_real_unselect_all(XfdesktopIconView *icon_view)
 static void
 xfdesktop_icon_view_real_select_cursor_item(XfdesktopIconView *icon_view)
 {
-    TRACE("entering");
+    DBG("entering");
 
     if(icon_view->priv->cursor)
         xfdesktop_icon_view_select_item(icon_view, icon_view->priv->cursor);
@@ -2272,7 +2280,7 @@ xfdesktop_icon_view_real_select_cursor_item(XfdesktopIconView *icon_view)
 static void
 xfdesktop_icon_view_real_toggle_cursor_item(XfdesktopIconView *icon_view)
 {
-    TRACE("entering");
+    DBG("entering");
 
     if(!icon_view->priv->cursor)
         return;
@@ -2286,7 +2294,7 @@ xfdesktop_icon_view_real_toggle_cursor_item(XfdesktopIconView *icon_view)
 static gboolean
 xfdesktop_icon_view_real_activate_cursor_item(XfdesktopIconView *icon_view)
 {
-    TRACE("entering");
+    DBG("entering");
 
     if(!icon_view->priv->cursor)
         return FALSE;
@@ -2651,7 +2659,7 @@ xfdesktop_icon_view_setup_grids_xinerama(XfdesktopIconView *icon_view)
     GdkRectangle *monitor_geoms, cell_rect;
     gint nmonitors, i, row, col;
     
-    TRACE("entering");
+    DBG("entering");
     
     gscreen = gtk_widget_get_screen(GTK_WIDGET(icon_view));
     
@@ -2690,7 +2698,7 @@ xfdesktop_icon_view_setup_grids_xinerama(XfdesktopIconView *icon_view)
     
     g_free(monitor_geoms);
     
-    TRACE("exiting");
+    DBG("exiting");
 }
     
 
@@ -2800,7 +2808,7 @@ xfdesktop_icon_view_invalidate_icon(XfdesktopIconView *icon_view,
     
     g_return_if_fail(icon);
     
-    /*TRACE("entering (recalc=%s)", recalc_extents?"true":"false");*/
+    /*DBG("entering (recalc=%s)", recalc_extents?"true":"false");*/
 
     /* we always have to invalidate the old extents */
     if(xfdesktop_icon_get_extents(icon, NULL, NULL, &extents)) {
@@ -3131,7 +3139,7 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
     gint16 row, col;
 #endif
 
-    TRACE("entering, (%s)(area=%dx%d+%d+%d)", xfdesktop_icon_peek_label(icon),
+    DBG("entering, (%s)(area=%dx%d+%d+%d)", xfdesktop_icon_peek_label(icon),
           area->width, area->height, area->x, area->y);
 
     playout = icon_view->priv->playout;
@@ -3182,7 +3190,7 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
 #ifdef G_ENABLE_DEBUG
         xfdesktop_icon_get_position(icon, &row, &col);
 
-        TRACE("painting pixbuf at %dx%d+%d+%d (row %d ,col %d)",
+        DBG("painting pixbuf at %dx%d+%d+%d (row %d ,col %d)",
               pixbuf_extents.width, pixbuf_extents.height,
               pixbuf_extents.x, pixbuf_extents.y,
               row, col);
@@ -3222,7 +3230,7 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
                                           sh_text_col);
         }
 
-        TRACE("painting text at %dx%d+%d+%d",
+        DBG("painting text at %dx%d+%d+%d",
               text_extents.width, text_extents.height,
               text_extents.x, text_extents.y);
 
@@ -3313,7 +3321,7 @@ xfdesktop_move_all_cached_icons_to_desktop(XfdesktopIconView *icon_view)
     GList *l, *leftovers = NULL;
     XfdesktopFileIconManager *fmanager = NULL;
 
-    TRACE("entering");
+    DBG("entering");
 
     if(XFDESKTOP_IS_FILE_ICON_MANAGER(icon_view->priv->manager))
         fmanager = XFDESKTOP_FILE_ICON_MANAGER(icon_view->priv->manager);
@@ -3370,7 +3378,7 @@ xfdesktop_move_all_previous_icons_to_desktop(XfdesktopIconView *icon_view)
 {
     GList *l, *leftovers = NULL;
 
-    TRACE("entering");
+    DBG("entering");
 
     /* add all pending icons back if their space is still available */
     for(l = icon_view->priv->pending_icons; l; l = l->next) {
@@ -3400,7 +3408,7 @@ xfdesktop_append_all_pending_icons(XfdesktopIconView *icon_view)
 {
     GList *l, *leftovers = NULL;
 
-    TRACE("entering");
+    DBG("entering");
 
     /* add all pending icons back if space is available */
     for(l = icon_view->priv->pending_icons; l; l = l->next) {
