@@ -2878,12 +2878,13 @@ static void
 xfdesktop_paint_rounded_box(XfdesktopIconView *icon_view,
                             GtkStateType state,
                             GdkRectangle *box_area,
-                            GdkRectangle *expose_area)
+                            GdkRectangle *expose_area,
+                            cairo_t *cr)
 {
     GdkRectangle intersection;
     
     if(gdk_rectangle_intersect(box_area, expose_area, &intersection)) {
-        cairo_t *cr = gdk_cairo_create(gtk_widget_get_window(GTK_WIDGET(icon_view)));
+        cr = cairo_reference(cr);
         GtkStyle *style = gtk_widget_get_style(GTK_WIDGET(icon_view));
         double alpha;
 
@@ -3209,7 +3210,7 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
     if(gdk_rectangle_intersect(area, &box_extents, &intersection)
        && icon_view->priv->font_size > 0)
     {
-        xfdesktop_paint_rounded_box(icon_view, state, &box_extents, area);
+        xfdesktop_paint_rounded_box(icon_view, state, &box_extents, area, cr);
 
         if (state == GTK_STATE_NORMAL) {
             x_offset = icon_view->priv->shadow_x_offset;
