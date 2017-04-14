@@ -785,9 +785,7 @@ xfdesktop_volume_icon_add_context_menu_option(XfdesktopIcon *icon,
     GtkWidget *mi, *img;
 
     img = gtk_image_new_from_icon_name(icon_name, GTK_ICON_SIZE_MENU);
-    gtk_widget_show(img);
-    mi = gtk_image_menu_item_new_with_mnemonic(icon_label);
-    gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+    mi = xfdesktop_menu_create_menu_item_with_mnemonic(icon_label, img);
     gtk_widget_show(mi);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
     if(callback != NULL) {
@@ -809,12 +807,10 @@ xfdesktop_volume_icon_populate_context_menu(XfdesktopIcon *icon,
     GMount *mount;
     const gchar *icon_name, *icon_label;
 
-    icon_name = GTK_STOCK_OPEN;
+    icon_name = "document-open";
 
-    img = gtk_image_new_from_stock(GTK_STOCK_OPEN, GTK_ICON_SIZE_MENU);
-    gtk_widget_show(img);
-    mi = gtk_image_menu_item_new_with_mnemonic(_("_Open"));
-    gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+    img = gtk_image_new_from_icon_name("document-open", GTK_ICON_SIZE_MENU);
+    mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Open"), img);
     gtk_widget_show(mi);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
     g_signal_connect_swapped(G_OBJECT(mi), "activate",
@@ -834,14 +830,14 @@ xfdesktop_volume_icon_populate_context_menu(XfdesktopIcon *icon,
     }
 
     if(mount && g_mount_can_unmount(mount)) {
-        icon_name = NULL;
+        icon_name = "drive-removable-media";
         icon_label = _("_Unmount Volume");
         xfdesktop_volume_icon_add_context_menu_option(icon, icon_name, icon_label,
                         menu, G_CALLBACK(xfdesktop_volume_icon_menu_unmount));
     }
 
     if(!mount && g_volume_can_mount(volume)) {
-        icon_name = NULL;
+        icon_name = "drive-removable-media";
         icon_label = _("_Mount Volume");
         xfdesktop_volume_icon_add_context_menu_option(icon, icon_name, icon_label,
                         menu, G_CALLBACK(xfdesktop_volume_icon_menu_mount));
@@ -854,7 +850,7 @@ xfdesktop_volume_icon_populate_context_menu(XfdesktopIcon *icon,
     gtk_widget_show(mi);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
 
-    icon_name = GTK_STOCK_PROPERTIES;
+    icon_name = "document-properties";
     icon_label = _("P_roperties...");
 
     if(!volume_icon->priv->file_info)

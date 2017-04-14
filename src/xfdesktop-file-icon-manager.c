@@ -1437,8 +1437,7 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
 
     if(!got_custom_menu) {
         if(multi_sel) {
-            img = gtk_image_new_from_stock(GTK_STOCK_OPEN, GTK_ICON_SIZE_MENU);
-            gtk_widget_show(img);
+            img = gtk_image_new_from_icon_name("document-open", GTK_ICON_SIZE_MENU);
             mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Open all"), img);
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
@@ -1451,7 +1450,7 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
         } else if(info) {
             if(g_file_info_get_file_type(info) == G_FILE_TYPE_DIRECTORY) {
-                img = gtk_image_new_from_stock(GTK_STOCK_OPEN, GTK_ICON_SIZE_MENU);
+                img = gtk_image_new_from_icon_name("document-open", GTK_ICON_SIZE_MENU);
                 if(file_icon == fmanager->priv->desktop_icon)
                     mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Open in New Window"), img);
                 else
@@ -1514,7 +1513,7 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
 
                     /* create document submenu, 0 disables the sub-menu */
                     if(fmanager->priv->max_templates > 0) {
-                        img = gtk_image_new_from_stock(GTK_STOCK_NEW, GTK_ICON_SIZE_MENU);
+                        img = gtk_image_new_from_icon_name("document-new", GTK_ICON_SIZE_MENU);
                         mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Create _Document"), img);
                         gtk_widget_show(mi);
                         gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
@@ -1554,7 +1553,7 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                         gtk_menu_shell_append(GTK_MENU_SHELL(tmpl_menu), mi);
 
                         /* add the "Empty File" template option */
-                        img = gtk_image_new_from_stock(GTK_STOCK_FILE, GTK_ICON_SIZE_MENU);
+                        img = gtk_image_new_from_icon_name("text-x-generic", GTK_ICON_SIZE_MENU);
                         mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Empty File"), img);
                         gtk_widget_show(mi);
                         gtk_menu_shell_append(GTK_MENU_SHELL(tmpl_menu), mi);
@@ -1569,7 +1568,7 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                 }
             } else {
                 if(xfdesktop_file_utils_file_is_executable(info)) {
-                    img = gtk_image_new_from_stock(GTK_STOCK_EXECUTE, GTK_ICON_SIZE_MENU);
+                    img = gtk_image_new_from_icon_name("system-run", GTK_ICON_SIZE_MENU);
                     mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Execute"), img);
                     gtk_widget_show(mi);
                     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
@@ -1685,7 +1684,6 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                     /* free the app info list */
                     g_list_free(app_infos);
                 } else {
-                    img = gtk_image_new_from_stock(GTK_STOCK_OPEN, GTK_ICON_SIZE_MENU);
                     img = gtk_image_new_from_icon_name("document-open", GTK_ICON_SIZE_MENU);
                     mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Open With Other _Application..."), img);
                     gtk_widget_show(mi);
@@ -1860,7 +1858,7 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
         if(file_icon == fmanager->priv->desktop_icon) {
             /* Menu on the root desktop window */
             /* show arrange desktop icons option */
-            img = gtk_image_new_from_stock(GTK_STOCK_SORT_ASCENDING, GTK_ICON_SIZE_MENU);
+            img = gtk_image_new_from_icon_name("view-sort-ascending", GTK_ICON_SIZE_MENU);
             mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Arrange Desktop _Icons"), img);
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
@@ -1869,7 +1867,7 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                              fmanager);
 
             /* Desktop settings window */
-            img = gtk_image_new_from_stock(GTK_STOCK_PREFERENCES, GTK_ICON_SIZE_MENU);
+            img = gtk_image_new_from_icon_name("preferences-desktop-wallpaper", GTK_ICON_SIZE_MENU);
             mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Desktop _Settings..."), img);
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
@@ -1878,6 +1876,7 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
         }
 
         /* Properties - applies to desktop window or an icon on the desktop */
+        img = gtk_image_new_from_icon_name("document-properties", GTK_ICON_SIZE_MENU);
         mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("P_roperties..."), img);
         gtk_widget_show(mi);
         gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);

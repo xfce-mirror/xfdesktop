@@ -544,10 +544,8 @@ xfdesktop_special_file_icon_populate_context_menu(XfdesktopIcon *icon,
     if(XFDESKTOP_SPECIAL_FILE_ICON_TRASH != special_file_icon->priv->type)
         return FALSE;
     
-    img = gtk_image_new_from_stock(GTK_STOCK_OPEN, GTK_ICON_SIZE_MENU);
-    gtk_widget_show(img);
-    mi = gtk_image_menu_item_new_with_mnemonic(_("_Open"));
-    gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+    img = gtk_image_new_from_icon_name("document-open", GTK_ICON_SIZE_MENU);
+    mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Open"), img);
     gtk_widget_show(mi);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
     g_signal_connect(G_OBJECT(mi), "activate",
@@ -563,9 +561,7 @@ xfdesktop_special_file_icon_populate_context_menu(XfdesktopIcon *icon,
         img = gtk_image_new_from_icon_name("user-trash-full", GTK_ICON_SIZE_MENU);
     }
     
-    mi = gtk_image_menu_item_new_with_mnemonic(_("_Empty Trash"));
-    if(img)
-        gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+    mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Empty Trash"), img);
     gtk_widget_show(mi);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
     if(special_file_icon->priv->trash_item_count > 0) {
