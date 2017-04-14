@@ -99,6 +99,12 @@ gint xfce_translate_image_styles(gint input);
 
 gchar* xfdesktop_remove_whitspaces(gchar* str);
 
+GtkWidget* xfdesktop_menu_create_menu_item_with_markup(const gchar *name,
+                                                       GtkWidget   *image);
+
+GtkWidget* xfdesktop_menu_create_menu_item_with_mnemonic(const gchar *name,
+                                                         GtkWidget   *image);
+
 #if defined(G_HAVE_ISO_VARARGS)
 
 #define XF_DEBUG(...) xfdesktop_debug (__func__, __FILE__, __LINE__, __VA_ARGS__)

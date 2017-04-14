@@ -77,9 +77,8 @@ menu_populate(XfceDesktop *desktop,
                                            GTK_ICON_SIZE_MENU);
         gtk_widget_show(img);
     }
-    
-    mi = gtk_image_menu_item_new_with_mnemonic(_("_Applications"));
-    gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+
+    mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Applications"), img);
     gtk_widget_show(mi);
 
     XF_DEBUG("show desktop menu icons %s", show_desktop_menu_icons ? "TRUE" : "FALSE");

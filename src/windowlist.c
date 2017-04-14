@@ -147,6 +147,7 @@ menulist_set_label_flags(GtkWidget *widget, gpointer data)
     }
 }
 
+
 static GtkWidget *
 menu_item_from_wnck_window(WnckWindow *wnck_window, gint icon_width,
         gint icon_height)
@@ -199,11 +200,7 @@ menu_item_from_wnck_window(WnckWindow *wnck_window, gint icon_width,
             img = gtk_image_new_from_pixbuf(icon);
     }
 
-    if(img) {
-        mi = gtk_image_menu_item_new_with_label(label->str);
-        gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
-    } else
-        mi = gtk_menu_item_new_with_label(label->str);
+    mi = xfdesktop_menu_create_menu_item_with_markup(label->str, img);
 
     g_string_free(label, TRUE);
 
@@ -245,7 +242,8 @@ windowlist_populate(XfceDesktop *desktop,
     if(menu_children) {
         GtkWidget *tmpmenu = gtk_menu_new();
         gtk_menu_set_screen(GTK_MENU(tmpmenu), gscreen);
-        
+        gtk_menu_set_reserve_toggle_size (GTK_MENU (tmpmenu), FALSE);
+
         mi = gtk_separator_menu_item_new();
         gtk_widget_show(mi);
         gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
@@ -288,7 +286,7 @@ windowlist_populate(XfceDesktop *desktop,
             label = gtk_bin_get_child(GTK_BIN(mi));
             gtk_label_set_use_markup(GTK_LABEL(label), TRUE);
             /* center the workspace header */
-            gtk_misc_set_alignment(GTK_MISC(label), 0.44f, 0);
+            gtk_label_set_xalign (GTK_LABEL(label), 0.44f);
             /* If it's not the active workspace, make the color insensitive */
             if(wnck_workspace != active_workspace) {
                 GtkWidget *lbl = gtk_bin_get_child(GTK_BIN(mi));
@@ -305,6 +303,7 @@ windowlist_populate(XfceDesktop *desktop,
             
             if(wl_submenus) {
                 submenu = gtk_menu_new();
+                gtk_menu_set_reserve_toggle_size (GTK_MENU (submenu), FALSE);
                 gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi), submenu);
             }
         }
@@ -362,9 +361,8 @@ windowlist_populate(XfceDesktop *desktop,
     if(wl_add_remove_options) {
         /* 'add workspace' item */
         if(wl_show_icons) {
-            img = gtk_image_new_from_stock(GTK_STOCK_ADD, GTK_ICON_SIZE_MENU);
-            mi = gtk_image_menu_item_new_with_mnemonic(_("_Add Workspace"));
-            gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+            img = gtk_image_new_from_icon_name("list-add", GTK_ICON_SIZE_MENU);
+            mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Add Workspace"), img);
         } else
             mi = gtk_menu_item_new_with_mnemonic(_("_Add Workspace"));
         gtk_widget_show(mi);
@@ -381,9 +379,8 @@ windowlist_populate(XfceDesktop *desktop,
             g_free(ws_name_esc);
         }
         if(wl_show_icons) {
-            img = gtk_image_new_from_stock(GTK_STOCK_REMOVE, GTK_ICON_SIZE_MENU);
-            mi = gtk_image_menu_item_new_with_mnemonic(rm_label);
-            gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+            img = gtk_image_new_from_icon_name("list-remove", GTK_ICON_SIZE_MENU);
+            mi = xfdesktop_menu_create_menu_item_with_mnemonic(rm_label, img);
         } else
             mi = gtk_menu_item_new_with_mnemonic(rm_label);
         g_free(rm_label);

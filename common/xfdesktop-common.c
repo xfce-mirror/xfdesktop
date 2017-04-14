@@ -181,6 +181,71 @@ xfdesktop_remove_whitspaces(gchar* str)
 }
 
 
+
+/* Adapted from garcon_gtk_menu_create_menu_item because I don't want
+ * to write it over and over.
+ */
+GtkWidget*
+xfdesktop_menu_create_menu_item_with_markup(const gchar *name,
+                                            GtkWidget   *image)
+{
+    GtkWidget *mi;
+    GtkWidget *box;
+    GtkWidget *label;
+
+    /* create item */
+    mi = gtk_menu_item_new ();
+    label = gtk_label_new (NULL);
+    gtk_label_set_markup (GTK_LABEL (label), name);
+    gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
+    gtk_label_set_xalign (GTK_LABEL (label), 0.0);
+
+    box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+    gtk_widget_set_halign (label, GTK_ALIGN_START);
+
+    gtk_widget_show (image);
+
+    /* Add the image and label to the box, add the box to the menu item */
+    gtk_box_pack_start (GTK_BOX (box), image, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (box), label, TRUE, TRUE, 6);
+    gtk_widget_show_all (box);
+    gtk_container_add (GTK_CONTAINER (mi), box);
+
+    return mi;
+}
+
+
+
+GtkWidget*
+xfdesktop_menu_create_menu_item_with_mnemonic(const gchar *name,
+                                              GtkWidget   *image)
+{
+    GtkWidget *mi;
+    GtkWidget *box;
+    GtkWidget *label;
+
+    /* create item */
+    mi = gtk_menu_item_new ();
+    label = gtk_label_new_with_mnemonic (name);
+    gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
+    gtk_label_set_xalign (GTK_LABEL (label), 0.0);
+
+    box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+    gtk_widget_set_halign (label, GTK_ALIGN_START);
+
+    gtk_widget_show (image);
+
+    /* Add the image and label to the box, add the box to the menu item */
+    gtk_box_pack_start (GTK_BOX (box), image, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (box), label, TRUE, TRUE, 6);
+    gtk_widget_show_all (box);
+    gtk_container_add (GTK_CONTAINER (mi), box);
+
+    return mi;
+}
+
+
+
 #ifdef G_ENABLE_DEBUG
 /* With --enable-debug=full turn on debugging messages from the start */
 static gboolean enable_debug = TRUE;
