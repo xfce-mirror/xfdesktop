@@ -211,6 +211,28 @@ menu_item_from_wnck_window(WnckWindow *wnck_window, gint icon_width,
 }
 
 static void
+set_label_color_insensitive(GtkWidget *lbl)
+{
+    GdkRGBA         fg_color;
+    PangoAttrList  *attrs;
+    PangoAttribute *foreground;
+
+    g_return_if_fail(GTK_IS_LABEL(lbl));
+
+    gtk_style_context_get_color(gtk_widget_get_style_context (lbl),
+                                GTK_STATE_FLAG_INSENSITIVE,
+                                &fg_color);
+
+    attrs = pango_attr_list_new();
+    foreground = pango_attr_foreground_new((guint16)(fg_color.red * G_MAXUINT16),
+                                           (guint16)(fg_color.green * G_MAXUINT16),
+                                           (guint16)(fg_color.blue * G_MAXUINT16));
+    pango_attr_list_insert(attrs, foreground);
+    gtk_label_set_attributes (GTK_LABEL(lbl), attrs);
+    pango_attr_list_unref (attrs);
+}
+
+static void
 windowlist_populate(XfceDesktop *desktop,
                     GtkMenuShell *menu,
                     gpointer user_data)
@@ -218,7 +240,6 @@ windowlist_populate(XfceDesktop *desktop,
     GtkWidget *submenu, *mi, *label, *img;
     GdkScreen *gscreen;
     GList *menu_children;
-    GtkStyle *style;
     WnckScreen *wnck_screen;
     gint nworkspaces, i;
     WnckWorkspace *active_workspace, *wnck_workspace;
@@ -258,7 +279,6 @@ windowlist_populate(XfceDesktop *desktop,
     }
     
     gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &w, &h);
-    style = gtk_widget_get_style(GTK_WIDGET(menu));
     
     wnck_screen = wnck_screen_get(gdk_screen_get_number(gscreen));
     wnck_screen_force_update (wnck_screen);
@@ -289,9 +309,7 @@ windowlist_populate(XfceDesktop *desktop,
             gtk_label_set_xalign (GTK_LABEL(label), 0.44f);
             /* If it's not the active workspace, make the color insensitive */
             if(wnck_workspace != active_workspace) {
-                GtkWidget *lbl = gtk_bin_get_child(GTK_BIN(mi));
-                gtk_widget_modify_fg(lbl, GTK_STATE_NORMAL,
-                                     &(style->fg[GTK_STATE_INSENSITIVE]));
+                set_label_color_insensitive(label);
             }
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
@@ -336,9 +354,19 @@ windowlist_populate(XfceDesktop *desktop,
                && (!wnck_window_is_sticky(wnck_window)
                    || wnck_workspace != active_workspace))
             {
-                GtkWidget *lbl = gtk_bin_get_child(GTK_BIN(mi));
-                gtk_widget_modify_fg(lbl, GTK_STATE_NORMAL,
-                                     &(style->fg[GTK_STATE_INSENSITIVE]));
+                /* The menu item has a GtkBox of which one of the children
+                 * is the label we want to modify */
+                GList *items = gtk_container_get_children(GTK_CONTAINER(gtk_bin_get_child(GTK_BIN(mi))));
+                GList *li;
+
+                for(li = items; li != NULL; li = li->next)
+                {
+                    if(GTK_IS_LABEL(li->data))
+                    {
+                        set_label_color_insensitive(li->data);
+                        break;
+                    }
+                }
             }
 
             gtk_widget_show(mi);
