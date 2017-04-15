@@ -3434,7 +3434,7 @@ void xfdesktop_dnd_menu (XfdesktopIconViewManager *manager,
     /* Loop until we get a user response */
     loop = g_main_loop_new(NULL, FALSE);
     signal_id = g_signal_connect_swapped(G_OBJECT(menu), "deactivate", G_CALLBACK(g_main_loop_quit), loop);
-    gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL, 3, time_);
+    xfce_gtk_menu_popup_until_mapped(GTK_MENU(menu), NULL, NULL, NULL, NULL, 3, time_);
     g_main_loop_run(loop);
     g_signal_handler_disconnect(G_OBJECT(menu), signal_id);
     g_main_loop_unref(loop);
