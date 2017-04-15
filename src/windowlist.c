@@ -55,7 +55,7 @@ static gboolean wl_add_remove_options = TRUE;
 static void
 set_num_workspaces(GtkWidget *w, gpointer data)
 {
-    WnckScreen *wnck_screen = wnck_screen_get(gdk_screen_get_number(gtk_widget_get_screen(w)));
+    WnckScreen *wnck_screen = wnck_screen_get(XScreenNumberOfScreen(gdk_x11_screen_get_xscreen(gtk_widget_get_screen(w))));
     WnckWorkspace *wnck_workspace = wnck_screen_get_active_workspace(wnck_screen);
     gint nworkspaces = wnck_screen_get_workspace_count(wnck_screen);
     const gchar *ws_name = wnck_workspace_get_name(wnck_screen_get_workspace(wnck_screen, nworkspaces -1));
@@ -279,8 +279,8 @@ windowlist_populate(XfceDesktop *desktop,
     }
     
     gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &w, &h);
-    
-    wnck_screen = wnck_screen_get(gdk_screen_get_number(gscreen));
+
+    wnck_screen = wnck_screen_get(XScreenNumberOfScreen(gdk_x11_screen_get_xscreen(gtk_widget_get_screen(GTK_WIDGET(menu)))));
     wnck_screen_force_update (wnck_screen);
     nworkspaces = wnck_screen_get_workspace_count(wnck_screen);
     active_workspace = wnck_screen_get_active_workspace(wnck_screen);
