@@ -65,11 +65,9 @@
 #include "xfdesktop-file-icon.h"
 #include "xfdesktop-file-icon-manager.h"
 #include "xfdesktop-file-utils.h"
-#include "xfdesktop-file-manager-proxy.h"
 #include "xfdesktop-icon-view.h"
 #include "xfdesktop-regular-file-icon.h"
 #include "xfdesktop-special-file-icon.h"
-#include "xfdesktop-trash-proxy.h"
 #include "xfdesktop-volume-icon.h"
 #include "xfdesktop-thumbnailer.h"
 
@@ -234,13 +232,6 @@ G_DEFINE_TYPE_EXTENDED(XfdesktopFileIconManager,
 
 #define XFDESKTOP_FILE_ICON_MANAGER_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), XFDESKTOP_TYPE_ICON_VIEW_MANAGER, XfdesktopFileIconManagerPrivate))
 
-typedef struct
-{
-    XfdesktopFileIconManager *fmanager;
-    DBusGProxy *proxy;
-    DBusGProxyCall *call;
-    GList *files;
-} XfdesktopTrashFilesData;
 
 enum
 {
@@ -564,9 +555,10 @@ xfdesktop_file_icon_manager_check_create_desktop_folder(GFile *folder)
             g_free(uri);
 
             xfce_message_dialog(NULL, _("Desktop Folder Error"),
-                                GTK_STOCK_DIALOG_WARNING, primary,
-                                error->message, GTK_STOCK_CLOSE,
-                                GTK_RESPONSE_ACCEPT, NULL);
+                                "dialog-warning", primary,
+                                error->message,
+                                XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                                NULL);
             g_free(primary);
 
             result = FALSE;
@@ -581,10 +573,11 @@ xfdesktop_file_icon_manager_check_create_desktop_folder(GFile *folder)
             g_free(uri);
 
             xfce_message_dialog(NULL, _("Desktop Folder Error"),
-                                GTK_STOCK_DIALOG_WARNING, primary,
+                                "dialog-warning", primary,
                                 _("A normal file with the same name already exists. "
-                                  "Please delete or rename it."), GTK_STOCK_CLOSE,
-                                GTK_RESPONSE_ACCEPT, NULL);
+                                  "Please delete or rename it."),
+                                XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                                NULL);
             g_free(primary);
 
             result = FALSE;
@@ -665,10 +658,11 @@ xfdesktop_file_icon_menu_rename(GtkWidget *widget,
     } else {
         /* Nothing valid to rename */
         xfce_message_dialog(GTK_WINDOW(toplevel),
-                            _("Rename Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("Rename Error"), "dialog-error",
                             _("The files could not be renamed"),
                             _("None of the icons selected support being renamed."),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            NULL);
     }
 
     g_list_free(files);
@@ -698,77 +692,21 @@ xfdesktop_file_icon_manager_delete_files(XfdesktopFileIconManager *fmanager,
     g_list_free(gfiles);
 }
 
-static void
-xfdesktop_file_icon_manager_trash_files_cb(DBusGProxy *proxy,
-                                           GError *error,
-                                           gpointer user_data)
-{
-    XfdesktopFileIconManager *fmanager = user_data;
-
-    g_return_if_fail(fmanager);
-
-    if(error) {
-        GtkWidget *parent = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
-
-        xfce_message_dialog(GTK_WINDOW(parent),
-                            _("Trash Error"), GTK_STOCK_DIALOG_ERROR,
-                            _("The selected files could not be trashed"),
-                            _("This feature requires a file manager service to "
-                              "be present (such as the one supplied by Thunar)."),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
-    }
-}
-
 static gboolean
 xfdesktop_file_icon_manager_trash_files(XfdesktopFileIconManager *fmanager,
                                         GList *files)
 {
-    DBusGProxy *trash_proxy = xfdesktop_file_utils_peek_trash_proxy();
-    gboolean result = TRUE;
-    gchar **uris, *display_name, *startup_id;
-    GList *l;
-    gint i, nfiles;
-    GFile *file;
-    
-    g_return_val_if_fail(files, TRUE);
-    
-    if(!trash_proxy)
-        return FALSE;
-    
-    nfiles = g_list_length(files);
-    uris = g_new(gchar *, nfiles + 1);
-    
-    for(l = files, i = 0; l; l = l->next, ++i) {
-        file = xfdesktop_file_icon_peek_file(XFDESKTOP_FILE_ICON(l->data));
-        uris[i] = g_file_get_uri(file);
-    }
-    uris[nfiles] = NULL;
-    
-    display_name = gdk_screen_make_display_name(fmanager->priv->gscreen);
-    startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
-    
-    if (!xfdesktop_trash_proxy_move_to_trash_async(trash_proxy, (const char **)uris,
-                                                   display_name, startup_id,
-                                                   xfdesktop_file_icon_manager_trash_files_cb, 
-                                                   fmanager))
-    {
-        GtkWidget *parent = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
+    GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
+    GList *gfiles = NULL, *lp;
 
-        xfce_message_dialog(GTK_WINDOW(parent),
-                            _("Trash Error"), GTK_STOCK_DIALOG_ERROR,
-                            _("The selected files could not be trashed"),
-                            _("This feature requires a file manager service to "
-                              "be present (such as the one supplied by Thunar)."),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+    for(lp = g_list_last(files); lp != NULL; lp = lp->prev)
+        gfiles = g_list_prepend(gfiles, xfdesktop_file_icon_peek_file(lp->data));
 
-        result = FALSE;
-    }
-    
-    g_free(startup_id);
-    g_strfreev(uris);
-    g_free(display_name);
-    
-    return result;
+    xfdesktop_file_utils_trash_files(gfiles, fmanager->priv->gscreen,
+                                     GTK_WINDOW(toplevel));
+
+    g_list_free(gfiles);
+    return TRUE;
 }
 
 static void
@@ -858,10 +796,11 @@ xfdesktop_file_icon_menu_app_info_executed(GtkWidget *widget,
         gchar *primary = g_markup_printf_escaped(_("Unable to launch \"%s\":"),
                                                  g_app_info_get_name(app_info));
         xfce_message_dialog(GTK_WINDOW(toplevel), _("Launch Error"),
-                            GTK_STOCK_DIALOG_ERROR, primary, error->message,
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                            "dialog-error", primary, error->message,
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            NULL);
         g_free(primary);
-        g_error_free(error);
+        g_clear_error(&error);
     }
 }
 
@@ -1082,20 +1021,18 @@ xfdesktop_menu_item_from_app_info(XfdesktopFileIconManager *fmanager,
                                 g_app_info_get_name(app_info));
     }
 
+    gicon = g_app_info_get_icon(app_info);
+    img = gtk_image_new_from_gicon(gicon, GTK_ICON_SIZE_MENU);
+
     if(with_mnemonic)
-        mi = gtk_image_menu_item_new_with_mnemonic(title);
+        mi = xfdesktop_menu_create_menu_item_with_mnemonic(title, img);
     else
-        mi = gtk_image_menu_item_new_with_label(title);
+        mi = xfdesktop_menu_create_menu_item_with_markup(title, img);
     g_free(title);
     
     g_object_set_qdata_full(G_OBJECT(mi), xfdesktop_app_info_quark,
                             g_object_ref(app_info), g_object_unref);
-    
-    gicon = g_app_info_get_icon(app_info);
-    img = gtk_image_new_from_gicon(gicon, GTK_ICON_SIZE_MENU);
-    gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi),
-                                  img);
-    gtk_widget_show(img);
+
     gtk_widget_show(mi);
     
     g_signal_connect(G_OBJECT(mi), "activate",
@@ -1152,16 +1089,18 @@ xfdesktop_file_icon_menu_create_launcher(GtkWidget *widget,
     if(!xfce_spawn_command_line_on_screen(NULL, cmd, FALSE, FALSE, &error)) {
         GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
         xfce_message_dialog(GTK_WINDOW(toplevel), _("Launch Error"),
-                            GTK_STOCK_DIALOG_ERROR, 
+                            "dialog-error", 
                             _("Unable to launch \"exo-desktop-item-edit\", which is required to create and edit launchers and links on the desktop."),
-                            error->message, GTK_STOCK_CLOSE,
-                            GTK_RESPONSE_ACCEPT, NULL);
-        g_error_free(error);
+                            error->message,
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            NULL);
     }
     
     g_free(display_name);
     g_free(uri);
     g_free(cmd);
+    g_clear_error(&error);
+
 }
 
 static void
@@ -1298,14 +1237,13 @@ xfdesktop_file_icon_menu_fill_template_menu(GtkWidget *menu,
         if(dot)
             *dot = '\0';
 
-        /* allocate a new menu item */
-        item = gtk_image_menu_item_new_with_label(label);
-        g_free(label);
-
         /* determine the icon to display */
         icon = g_file_info_get_icon(info);
         image = gtk_image_new_from_gicon(icon, GTK_ICON_SIZE_MENU);
-        gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(item), image);
+
+        /* allocate a new menu item */
+        item = xfdesktop_menu_create_menu_item_with_markup(label, image);
+        g_free(label);
 
         /* add the item to the menu */
         gtk_widget_show(item);
@@ -1365,10 +1303,11 @@ xfdesktop_settings_launch(GtkWidget *w,
         /* printf is to be translator-friendly */
         gchar *primary = g_strdup_printf(_("Unable to launch \"%s\":"), cmd);
         xfce_message_dialog(GTK_WINDOW(toplevel), _("Launch Error"),
-                            GTK_STOCK_DIALOG_ERROR, primary, error->message,
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                            "dialog-error", primary, error->message,
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            NULL);
         g_free(primary);
-        g_error_free(error);
+        g_clear_error(&error);
     }
 
     g_free(cmd);
@@ -1431,10 +1370,8 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
 
     if(!got_custom_menu) {
         if(multi_sel) {
-            img = gtk_image_new_from_stock(GTK_STOCK_OPEN, GTK_ICON_SIZE_MENU);
-            gtk_widget_show(img);
-            mi = gtk_image_menu_item_new_with_mnemonic(_("_Open all"));
-            gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+            img = gtk_image_new_from_icon_name("document-open", GTK_ICON_SIZE_MENU);
+            mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Open all"), img);
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             g_signal_connect(G_OBJECT(mi), "activate",
@@ -1446,13 +1383,11 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
         } else if(info) {
             if(g_file_info_get_file_type(info) == G_FILE_TYPE_DIRECTORY) {
-                img = gtk_image_new_from_stock(GTK_STOCK_OPEN, GTK_ICON_SIZE_MENU);
-                gtk_widget_show(img);
+                img = gtk_image_new_from_icon_name("document-open", GTK_ICON_SIZE_MENU);
                 if(file_icon == fmanager->priv->desktop_icon)
-                    mi = gtk_image_menu_item_new_with_mnemonic(_("_Open in New Window"));
+                    mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Open in New Window"), img);
                 else
-                    mi = gtk_image_menu_item_new_with_mnemonic(_("_Open"));
-                gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+                    mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Open"), img);
                 gtk_widget_show(mi);
                 gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
                 g_signal_connect(G_OBJECT(mi), "activate",
@@ -1470,7 +1405,9 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
 
                     /* create launcher item */
 
-                    mi = gtk_image_menu_item_new_with_mnemonic(_("Create _Launcher..."));
+                    icon = g_content_type_get_icon("application/x-desktop");
+                    img = gtk_image_new_from_gicon(icon, GTK_ICON_SIZE_MENU);
+                    mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Create _Launcher..."), img);
                     g_object_set_data(G_OBJECT(mi), "xfdesktop-launcher-type", "Application");
                     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
                     gtk_widget_show(mi);
@@ -1479,14 +1416,12 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                                      G_CALLBACK(xfdesktop_file_icon_menu_create_launcher),
                                      fmanager);
 
-                    icon = g_content_type_get_icon("application/x-desktop");
-                    img = gtk_image_new_from_gicon(icon, GTK_ICON_SIZE_MENU);
-                    gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
-                    gtk_widget_show(img);
 
                     /* create link item */
-                    
-                    mi = gtk_image_menu_item_new_with_mnemonic(_("Create _URL Link..."));
+
+                    icon = g_themed_icon_new("insert-link");
+                    img = gtk_image_new_from_gicon(icon, GTK_ICON_SIZE_MENU);
+                    mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Create _URL Link..."), img);
                     g_object_set_data(G_OBJECT(mi), "xfdesktop-launcher-type", "Link");
                     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
                     gtk_widget_show(mi);
@@ -1495,14 +1430,12 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                                      G_CALLBACK(xfdesktop_file_icon_menu_create_launcher),
                                      fmanager);
                     
-                    icon = g_themed_icon_new("insert-link");
-                    img = gtk_image_new_from_gicon(icon, GTK_ICON_SIZE_MENU);
-                    gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
-                    gtk_widget_show(img);
 
                     /* create folder item */
 
-                    mi = gtk_image_menu_item_new_with_mnemonic(_("Create _Folder..."));
+                    icon = g_themed_icon_new("folder-new");
+                    img = gtk_image_new_from_gicon(icon, GTK_ICON_SIZE_MENU);
+                    mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Create _Folder..."), img);
                     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
                     gtk_widget_show(mi);
 
@@ -1510,22 +1443,17 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                                      G_CALLBACK(xfdesktop_file_icon_menu_create_folder),
                                      fmanager);
 
-                    icon = g_themed_icon_new("folder-new");
-                    img = gtk_image_new_from_gicon(icon, GTK_ICON_SIZE_MENU);
-                    gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
-                    gtk_widget_show(img);
 
                     /* create document submenu, 0 disables the sub-menu */
                     if(fmanager->priv->max_templates > 0) {
-                        img = gtk_image_new_from_stock(GTK_STOCK_NEW, GTK_ICON_SIZE_MENU);
-                        gtk_widget_show(img);
-                        mi = gtk_image_menu_item_new_with_mnemonic(_("Create _Document"));
-                        gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+                        img = gtk_image_new_from_icon_name("document-new", GTK_ICON_SIZE_MENU);
+                        mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Create _Document"), img);
                         gtk_widget_show(mi);
                         gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
 
                         tmpl_menu = gtk_menu_new();
                         gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi), tmpl_menu);
+                        gtk_menu_set_reserve_toggle_size (GTK_MENU (tmpl_menu), FALSE);
 
                         /* check if XDG_TEMPLATES_DIR="$HOME" and don't show
                          * templates if so. */
@@ -1558,10 +1486,8 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                         gtk_menu_shell_append(GTK_MENU_SHELL(tmpl_menu), mi);
 
                         /* add the "Empty File" template option */
-                        img = gtk_image_new_from_stock(GTK_STOCK_FILE, GTK_ICON_SIZE_MENU);
-                        gtk_widget_show(img);
-                        mi = gtk_image_menu_item_new_with_mnemonic(_("_Empty File"));
-                        gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+                        img = gtk_image_new_from_icon_name("text-x-generic", GTK_ICON_SIZE_MENU);
+                        mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Empty File"), img);
                         gtk_widget_show(mi);
                         gtk_menu_shell_append(GTK_MENU_SHELL(tmpl_menu), mi);
                         g_signal_connect(G_OBJECT(mi), "activate",
@@ -1575,10 +1501,8 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                 }
             } else {
                 if(xfdesktop_file_utils_file_is_executable(info)) {
-                    img = gtk_image_new_from_stock(GTK_STOCK_EXECUTE, GTK_ICON_SIZE_MENU);
-                    gtk_widget_show(img);
-                    mi = gtk_image_menu_item_new_with_mnemonic(_("_Execute"));
-                    gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+                    img = gtk_image_new_from_icon_name("system-run", GTK_ICON_SIZE_MENU);
+                    mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Execute"), img);
                     gtk_widget_show(mi);
                     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
 
@@ -1595,10 +1519,8 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                     {
                         GFile *file = xfdesktop_file_icon_peek_file(file_icon);
 
-                        img = gtk_image_new_from_stock(GTK_STOCK_EDIT, GTK_ICON_SIZE_MENU);
-                        gtk_widget_show(img);
-                        mi = gtk_image_menu_item_new_with_mnemonic(_("_Edit Launcher"));
-                        gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+                        img = gtk_image_new_from_icon_name("gtk-edit", GTK_ICON_SIZE_MENU);
+                        mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Edit Launcher"), img);
                         g_object_set_data_full(G_OBJECT(mi), "file", 
                                                g_object_ref(file), g_object_unref);
                         gtk_widget_show(mi);
@@ -1682,7 +1604,7 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                         }
                     }
 
-                    mi = gtk_image_menu_item_new_with_mnemonic(_("Open With Other _Application..."));
+                    mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Open With Other _Application..."), NULL);
                     gtk_widget_show(mi);
                     if(list_len >= 3)
                         gtk_menu_shell_append(GTK_MENU_SHELL(app_infos_menu), mi);
@@ -1695,10 +1617,8 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                     /* free the app info list */
                     g_list_free(app_infos);
                 } else {
-                    img = gtk_image_new_from_stock(GTK_STOCK_OPEN, GTK_ICON_SIZE_MENU);
-                    gtk_widget_show(img);
-                    mi = gtk_image_menu_item_new_with_mnemonic(_("Open With Other _Application..."));
-                    gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+                    img = gtk_image_new_from_icon_name("document-open", GTK_ICON_SIZE_MENU);
+                    mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Open With Other _Application..."), img);
                     gtk_widget_show(mi);
                     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
                     g_signal_connect(G_OBJECT(mi), "activate",
@@ -1715,7 +1635,8 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
         if(file_icon == fmanager->priv->desktop_icon) {
             /* Menu on the root desktop window */
             /* Paste */
-            mi = gtk_image_menu_item_new_from_stock(GTK_STOCK_PASTE, NULL);
+            img = gtk_image_new_from_icon_name("edit-paste", GTK_ICON_SIZE_MENU);
+            mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Paste"), img);
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             if(xfdesktop_clipboard_manager_get_can_paste(clipboard_manager)) {
@@ -1732,7 +1653,8 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
         } else if(!multi_sel_special) {
             /* Menu popup on an icon */
             /* Cut */
-            mi = gtk_image_menu_item_new_from_stock(GTK_STOCK_CUT, NULL);
+            img = gtk_image_new_from_icon_name("edit-cut", GTK_ICON_SIZE_MENU);
+            mi = xfdesktop_menu_create_menu_item_with_mnemonic("Cu_t", img);
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             if(multi_sel || xfdesktop_file_icon_can_delete_file(file_icon)) {
@@ -1743,7 +1665,8 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                 gtk_widget_set_sensitive(mi, FALSE);
 
             /* Copy */
-            mi = gtk_image_menu_item_new_from_stock(GTK_STOCK_COPY, NULL);
+            img = gtk_image_new_from_icon_name("edit-copy", GTK_ICON_SIZE_MENU);
+            mi = xfdesktop_menu_create_menu_item_with_mnemonic("_Copy", img);
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             g_signal_connect(G_OBJECT(mi), "activate",
@@ -1754,10 +1677,8 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
             if(!multi_sel && info) {
                 if(g_file_info_get_file_type(info) == G_FILE_TYPE_DIRECTORY
                    && g_file_info_get_attribute_boolean(info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE)) {
-                    img = gtk_image_new_from_stock(GTK_STOCK_PASTE, GTK_ICON_SIZE_MENU);
-                    gtk_widget_show(img);
-                    mi = gtk_image_menu_item_new_with_mnemonic(_("Paste Into Folder"));
-                    gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+                    img = gtk_image_new_from_icon_name("edit-paste", GTK_ICON_SIZE_MENU);
+                    mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Paste Into Folder"), img);
                     gtk_widget_show(mi);
                     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
                     if(xfdesktop_clipboard_manager_get_can_paste(clipboard_manager)) {
@@ -1775,11 +1696,8 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
 
             /* Trash */
-            mi = gtk_image_menu_item_new_with_mnemonic(_("Mo_ve to Trash"));
-            /* Add the trashcan image */
             img = gtk_image_new_from_icon_name("user-trash-full", GTK_ICON_SIZE_MENU);
-            gtk_widget_show(img);
-            gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+            mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Mo_ve to Trash"), img);
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             if(multi_sel || xfdesktop_file_icon_can_delete_file(file_icon)) {
@@ -1790,7 +1708,8 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                 gtk_widget_set_sensitive(mi, FALSE);
 
             /* Delete */
-            mi = gtk_image_menu_item_new_from_stock(GTK_STOCK_DELETE, NULL);
+            img = gtk_image_new_from_icon_name("edit-delete", GTK_ICON_SIZE_MENU);
+            mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Delete"), img);
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             if(multi_sel || xfdesktop_file_icon_can_delete_file(file_icon)) {
@@ -1806,7 +1725,7 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
 
             /* Rename */
-            mi = gtk_image_menu_item_new_with_mnemonic(_("_Rename..."));
+            mi = gtk_menu_item_new_with_mnemonic(_("_Rename..."));
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             if(!multi_sel && xfdesktop_file_icon_can_rename_file(file_icon)) {
@@ -1872,10 +1791,8 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
         if(file_icon == fmanager->priv->desktop_icon) {
             /* Menu on the root desktop window */
             /* show arrange desktop icons option */
-            img = gtk_image_new_from_stock(GTK_STOCK_SORT_ASCENDING, GTK_ICON_SIZE_MENU);
-            gtk_widget_show(img);
-            mi = gtk_image_menu_item_new_with_mnemonic(_("Arrange Desktop _Icons"));
-            gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+            img = gtk_image_new_from_icon_name("view-sort-ascending", GTK_ICON_SIZE_MENU);
+            mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Arrange Desktop _Icons"), img);
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             g_signal_connect(G_OBJECT(mi), "activate",
@@ -1883,10 +1800,8 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                              fmanager);
 
             /* Desktop settings window */
-            img = gtk_image_new_from_stock(GTK_STOCK_PREFERENCES, GTK_ICON_SIZE_MENU);
-            gtk_widget_show(img);
-            mi = gtk_image_menu_item_new_with_mnemonic(_("Desktop _Settings..."));
-            gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+            img = gtk_image_new_from_icon_name("preferences-desktop-wallpaper", GTK_ICON_SIZE_MENU);
+            mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Desktop _Settings..."), img);
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             g_signal_connect(G_OBJECT(mi), "activate",
@@ -1894,10 +1809,8 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
         }
 
         /* Properties - applies to desktop window or an icon on the desktop */
-        img = gtk_image_new_from_stock(GTK_STOCK_PROPERTIES, GTK_ICON_SIZE_MENU);
-        gtk_widget_show(img);
-        mi = gtk_image_menu_item_new_with_mnemonic(_("P_roperties..."));
-        gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+        img = gtk_image_new_from_icon_name("document-properties", GTK_ICON_SIZE_MENU);
+        mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("P_roperties..."), img);
         gtk_widget_show(mi);
         gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
         if(multi_sel || !info)
@@ -2910,9 +2823,10 @@ xfdesktop_file_icon_manager_files_ready(GFileEnumerator *enumerator,
 
             xfce_message_dialog(gtk_widget_is_toplevel(toplevel) ? GTK_WINDOW(toplevel) : NULL,
                                 _("Load Error"),
-                                GTK_STOCK_DIALOG_WARNING, 
+                                "dialog-warning", 
                                 _("Failed to load the desktop folder"), error->message,
-                                GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                                XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                                NULL);
         }
 
         g_object_unref(fmanager->priv->enumerator);
@@ -3488,16 +3402,16 @@ void xfdesktop_dnd_menu (XfdesktopIconViewManager *manager,
 
     /* This adds the Copy, Move, & Link options */
     for(menu_item = 0; menu_item < G_N_ELEMENTS(actions); menu_item++) {
-        item = gtk_image_menu_item_new_with_mnemonic(_(action_names[menu_item]));
+        if(G_LIKELY(action_icons[menu_item] != NULL)) {
+            image = gtk_image_new_from_icon_name(action_icons[menu_item], GTK_ICON_SIZE_MENU);
+        } else {
+            image = NULL;
+        }
+
+        item = xfdesktop_menu_create_menu_item_with_mnemonic(_(action_names[menu_item]), image);
         gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
         g_signal_connect(G_OBJECT(item), "activate", G_CALLBACK(xfdesktop_dnd_item), &response);
         g_object_set_data(G_OBJECT(item), "action", GUINT_TO_POINTER(actions[menu_item]));
-        /* add image to the menu item */
-        if(G_LIKELY(action_icons[menu_item] != NULL)) {
-            image = gtk_image_new_from_icon_name(action_icons[menu_item], GTK_ICON_SIZE_MENU);
-            gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(item), image);
-            gtk_widget_show(image);
-        }
 
         gtk_widget_show(item);
     }
@@ -3508,7 +3422,8 @@ void xfdesktop_dnd_menu (XfdesktopIconViewManager *manager,
     gtk_widget_show(item);
 
     /* Cancel option */
-    item = gtk_image_menu_item_new_from_stock(GTK_STOCK_CANCEL, NULL);
+    image = gtk_image_new_from_icon_name("gtk-cancel", GTK_ICON_SIZE_MENU);
+    item = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Cancel"), image);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
     g_signal_connect(G_OBJECT(item), "activate", G_CALLBACK(xfdesktop_dnd_item_cancel), &response);
     gtk_widget_show(item);
@@ -3519,7 +3434,7 @@ void xfdesktop_dnd_menu (XfdesktopIconViewManager *manager,
     /* Loop until we get a user response */
     loop = g_main_loop_new(NULL, FALSE);
     signal_id = g_signal_connect_swapped(G_OBJECT(menu), "deactivate", G_CALLBACK(g_main_loop_quit), loop);
-    gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL, 3, time_);
+    xfce_gtk_menu_popup_until_mapped(GTK_MENU(menu), NULL, NULL, NULL, NULL, 3, time_);
     g_main_loop_run(loop);
     g_signal_handler_disconnect(G_OBJECT(menu), signal_id);
     g_main_loop_unref(loop);

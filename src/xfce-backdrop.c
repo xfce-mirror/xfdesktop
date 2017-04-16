@@ -115,8 +115,8 @@ struct _XfceBackdropPriv
     XfceBackdropImageData *image_data;
 
     XfceBackdropColorStyle color_style;
-    GdkColor color1;
-    GdkColor color2;
+    GdkRGBA color1;
+    GdkRGBA color2;
 
     XfceBackdropImageStyle image_style;
     gchar *image_path;
@@ -173,84 +173,77 @@ static guint backdrop_signals[LAST_SIGNAL] = { 0, };
 /* helper functions */
 
 static GdkPixbuf *
-create_solid(GdkColor *color,
+create_solid(GdkRGBA *color,
              gint width,
-             gint height,
-             gboolean has_alpha,
-             gint alpha)
+             gint height)
 {
+    GdkWindow *root;
     GdkPixbuf *pix;
-    guint32 rgba;
-    
-    pix = gdk_pixbuf_new(GDK_COLORSPACE_RGB, has_alpha, 8, width, height);
-    
-    rgba = ((((color->red & 0xff00) << 8) | ((color->green & 0xff00))
-            | ((color->blue & 0xff00) >> 8)) << 8) | alpha;
-    
-    gdk_pixbuf_fill(pix, rgba);
+    cairo_surface_t *surface;
+    cairo_t *cr;
+
+    root = gdk_screen_get_root_window(gdk_screen_get_default ());
+    surface = gdk_window_create_similar_surface(root, CAIRO_CONTENT_COLOR_ALPHA, width, height);
+    cr = cairo_create(surface);
+
+    cairo_set_source_rgba(cr, color->red, color->green, color->blue, color->alpha);
+
+    cairo_rectangle(cr, 0, 0, width, height);
+    cairo_fill(cr);
+
+    cairo_surface_flush(surface);
+
+    pix = gdk_pixbuf_get_from_surface(surface, 0, 0, width, height);
+
+    cairo_destroy(cr);
+    cairo_surface_destroy(surface);
     
     return pix;
 }
 
 static GdkPixbuf *
-create_gradient(GdkColor *color1, GdkColor *color2, gint width, gint height,
+create_gradient(GdkRGBA *color1, GdkRGBA *color2, gint width, gint height,
         XfceBackdropColorStyle style)
 {
+    GdkWindow *root;
     GdkPixbuf *pix;
-    gint i, j;
-    GdkPixdata pixdata;
-    guint8 rgb[3];
-    GError *err = NULL;
-    
+    cairo_surface_t *surface;
+    cairo_pattern_t *pat;
+    cairo_t *cr;
+
     g_return_val_if_fail(color1 != NULL && color2 != NULL, NULL);
     g_return_val_if_fail(width > 0 && height > 0, NULL);
-    g_return_val_if_fail(style == XFCE_BACKDROP_COLOR_HORIZ_GRADIENT
-            || style == XFCE_BACKDROP_COLOR_VERT_GRADIENT, NULL);
-    
-    pixdata.magic = GDK_PIXBUF_MAGIC_NUMBER;
-    pixdata.length = GDK_PIXDATA_HEADER_LENGTH + (width * height * 3);
-    pixdata.pixdata_type = GDK_PIXDATA_COLOR_TYPE_RGB
-            | GDK_PIXDATA_SAMPLE_WIDTH_8 | GDK_PIXDATA_ENCODING_RAW;
-    pixdata.rowstride = width * 3;
-    pixdata.width = width;
-    pixdata.height = height;
-    pixdata.pixel_data = g_malloc(width * height * 3);
+    g_return_val_if_fail(style == XFCE_BACKDROP_COLOR_HORIZ_GRADIENT || style == XFCE_BACKDROP_COLOR_VERT_GRADIENT, NULL);
 
-    if(style == XFCE_BACKDROP_COLOR_HORIZ_GRADIENT) {
-        for(i = 0; i < width; i++) {
-            rgb[0] = (color1->red + (i * (color2->red - color1->red) / width)) >> 8;
-            rgb[1] = (color1->green + (i * (color2->green - color1->green) / width)) >> 8;
-            rgb[2] = (color1->blue + (i * (color2->blue - color1->blue) / width)) >> 8;
-            memcpy(pixdata.pixel_data+(i*3), rgb, 3);
-        }
-        
-        for(i = 1; i < height; i++) {
-            memcpy(pixdata.pixel_data+(i*pixdata.rowstride),
-                    pixdata.pixel_data, pixdata.rowstride);
-        }
-    } else if(XFCE_BACKDROP_COLOR_TRANSPARENT == style)
-        memset(pixdata.pixel_data, 0x0, width * height * 3);
-    else {
-        for(i = 0; i < height; i++) {
-            rgb[0] = (color1->red + (i * (color2->red - color1->red) / height)) >> 8;
-            rgb[1] = (color1->green + (i * (color2->green - color1->green) / height)) >> 8;
-            rgb[2] = (color1->blue + (i * (color2->blue - color1->blue) / height)) >> 8;
-            for(j = 0; j < width; j++)
-                memcpy(pixdata.pixel_data+(i*pixdata.rowstride)+(j*3), rgb, 3);
-        }
+    root = gdk_screen_get_root_window(gdk_screen_get_default ());
+    surface = gdk_window_create_similar_surface(root, CAIRO_CONTENT_COLOR_ALPHA, width, height);
+    cr = cairo_create(surface);
+
+    if(style == XFCE_BACKDROP_COLOR_VERT_GRADIENT) {
+        pat = cairo_pattern_create_linear (0.0, 0.0,  0.0, height);
+    } else if(style == XFCE_BACKDROP_COLOR_HORIZ_GRADIENT) {
+        pat = cairo_pattern_create_linear (0.0, 0.0,  width, 0.0);
+    } else {
+        cairo_destroy(cr);
+        cairo_surface_destroy(surface);
+        return NULL;
     }
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-    pix = gdk_pixbuf_from_pixdata(&pixdata, TRUE, &err);
-G_GNUC_END_IGNORE_DEPRECATIONS
-    if(!pix) {
-        g_warning("%s: Unable to create color gradient: %s\n", PACKAGE,
-                err->message);
-        g_error_free(err);
-    }
-    
-    g_free(pixdata.pixel_data);
-    
+    cairo_pattern_add_color_stop_rgba (pat, 1, color2->red, color2->green, color2->blue, color2->alpha);
+    cairo_pattern_add_color_stop_rgba (pat, 0, color1->red, color1->green, color1->blue, color1->alpha);
+
+    cairo_rectangle(cr, 0, 0, width, height);
+    cairo_set_source(cr, pat);
+    cairo_fill(cr);
+
+    cairo_surface_flush(surface);
+
+    pix = gdk_pixbuf_get_from_surface(surface, 0, 0, width, height);
+
+    cairo_destroy(cr);
+    cairo_pattern_destroy(pat);
+    cairo_surface_destroy(surface);
+
     return pix;
 }
 
@@ -741,14 +734,14 @@ xfce_backdrop_class_init(XfceBackdropClass *klass)
                                     g_param_spec_boxed("first-color",
                                                        "first color",
                                                        "first color",
-                                                       GDK_TYPE_COLOR,
+                                                       GDK_TYPE_RGBA,
                                                        XFDESKTOP_PARAM_FLAGS));
 
     g_object_class_install_property(gobject_class, PROP_COLOR2,
                                     g_param_spec_boxed("second-color",
                                                        "second color",
                                                        "second color",
-                                                       GDK_TYPE_COLOR,
+                                                       GDK_TYPE_RGBA,
                                                        XFDESKTOP_PARAM_FLAGS));
 
     /* Defaults to an invalid image style so that
@@ -817,12 +810,14 @@ xfce_backdrop_init(XfceBackdrop *backdrop)
     backdrop->priv->cycle_timer_id = 0;
 
     /* color defaults */
-    backdrop->priv->color1.red = 0x1515;
-    backdrop->priv->color1.green = 0x2222;
-    backdrop->priv->color1.blue = 0x3333;
-    backdrop->priv->color2.red = 0x1515;
-    backdrop->priv->color2.green = 0x2222;
-    backdrop->priv->color2.blue = 0x3333;
+    backdrop->priv->color1.red = 0.08235f;
+    backdrop->priv->color1.green = 0.13333f;
+    backdrop->priv->color1.blue = 0.2f;
+    backdrop->priv->color1.alpha = 1.0f;
+    backdrop->priv->color2.red = 0.08235f;
+    backdrop->priv->color2.green = 0.13333f;
+    backdrop->priv->color2.blue = 0.2f;
+    backdrop->priv->color2.alpha = 1.0f;
 }
 
 static void
@@ -861,7 +856,7 @@ xfce_backdrop_set_property(GObject *object,
                            GParamSpec *pspec)
 {
     XfceBackdrop *backdrop = XFCE_BACKDROP(object);
-    GdkColor *color;
+    GdkRGBA *color;
 
     switch(property_id) {
         case PROP_COLOR_STYLE:
@@ -1081,7 +1076,7 @@ xfce_backdrop_get_color_style(XfceBackdrop *backdrop)
 /**
  * xfce_backdrop_set_first_color:
  * @backdrop: An #XfceBackdrop.
- * @color: A #GdkColor.
+ * @color: A #GdkRGBA.
  *
  * Sets the "first" color for the #XfceBackdrop.  This is the color used if
  * the color style is set to XFCE_BACKDROP_COLOR_SOLID.  It is used as the
@@ -1091,35 +1086,38 @@ xfce_backdrop_get_color_style(XfceBackdrop *backdrop)
  **/
 void
 xfce_backdrop_set_first_color(XfceBackdrop *backdrop,
-                              const GdkColor *color)
+                              const GdkRGBA *color)
 {
     g_return_if_fail(XFCE_IS_BACKDROP(backdrop) && color != NULL);
     
     if(color->red != backdrop->priv->color1.red
             || color->green != backdrop->priv->color1.green
-            || color->blue != backdrop->priv->color1.blue)
+            || color->blue != backdrop->priv->color1.blue
+            || color->alpha != backdrop->priv->color1.alpha)
     {
         xfce_backdrop_clear_cached_image(backdrop);
         backdrop->priv->color1.red = color->red;
         backdrop->priv->color1.green = color->green;
         backdrop->priv->color1.blue = color->blue;
+        backdrop->priv->color1.alpha = color->alpha;
+
         g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_CHANGED], 0);
     }
 }
 
 void
 xfce_backdrop_get_first_color(XfceBackdrop *backdrop,
-                              GdkColor *color)
+                              GdkRGBA *color)
 {
     g_return_if_fail(XFCE_IS_BACKDROP(backdrop) && color);
     
-    memcpy(color, &backdrop->priv->color1, sizeof(GdkColor));
+    memcpy(color, &backdrop->priv->color1, sizeof(GdkRGBA));
 }
 
 /**
  * xfce_backdrop_set_second_color:
  * @backdrop: An #XfceBackdrop.
- * @color: A #GdkColor.
+ * @color: A #GdkRGBA.
  *
  * Sets the "second" color for the #XfceBackdrop.  This is the color used as the
  * right-side color or bottom color if the color style is set to
@@ -1128,18 +1126,21 @@ xfce_backdrop_get_first_color(XfceBackdrop *backdrop,
  **/
 void
 xfce_backdrop_set_second_color(XfceBackdrop *backdrop,
-                               const GdkColor *color)
+                               const GdkRGBA *color)
 {
     g_return_if_fail(XFCE_IS_BACKDROP(backdrop) && color != NULL);
     
     if(color->red != backdrop->priv->color2.red
             || color->green != backdrop->priv->color2.green
-            || color->blue != backdrop->priv->color2.blue)
+            || color->blue != backdrop->priv->color2.blue
+            || color->alpha != backdrop->priv->color2.alpha)
     {
         xfce_backdrop_clear_cached_image(backdrop);
         backdrop->priv->color2.red = color->red;
         backdrop->priv->color2.green = color->green;
         backdrop->priv->color2.blue = color->blue;
+        backdrop->priv->color2.alpha = color->alpha;
+
         if(backdrop->priv->color_style != XFCE_BACKDROP_COLOR_SOLID)
             g_signal_emit(G_OBJECT(backdrop), backdrop_signals[BACKDROP_CHANGED], 0);
     }
@@ -1147,11 +1148,11 @@ xfce_backdrop_set_second_color(XfceBackdrop *backdrop,
 
 void
 xfce_backdrop_get_second_color(XfceBackdrop *backdrop,
-                               GdkColor *color)
+                               GdkRGBA *color)
 {
     g_return_if_fail(XFCE_IS_BACKDROP(backdrop) && color);
     
-    memcpy(color, &backdrop->priv->color2, sizeof(GdkColor));
+    memcpy(color, &backdrop->priv->color2, sizeof(GdkRGBA));
 }
 
 /**
@@ -1660,15 +1661,15 @@ xfce_backdrop_generate_canvas(XfceBackdrop *backdrop)
     }
 
     if(backdrop->priv->color_style == XFCE_BACKDROP_COLOR_SOLID)
-        final_image = create_solid(&backdrop->priv->color1, w, h, FALSE, 0xff);
+        final_image = create_solid(&backdrop->priv->color1, w, h);
     else if(backdrop->priv->color_style == XFCE_BACKDROP_COLOR_TRANSPARENT) {
-        GdkColor c = { 0, 0xffff, 0xffff, 0xffff };
-        final_image = create_solid(&c, w, h, TRUE, 0x00);
+        GdkRGBA c = { 1.0f, 1.0f, 1.0f, 1.0f };
+        final_image = create_solid(&c, w, h);
     } else {
         final_image = create_gradient(&backdrop->priv->color1,
                 &backdrop->priv->color2, w, h, backdrop->priv->color_style);
         if(!final_image)
-            final_image = create_solid(&backdrop->priv->color1, w, h, FALSE, 0xff);
+            final_image = create_solid(&backdrop->priv->color1, w, h);
     }
 
     return final_image;
@@ -2114,7 +2115,8 @@ xfce_backdrop_loader_closed_cb(GdkPixbufLoader *loader,
     }
 
     backdrop->priv->animation = gdk_pixbuf_loader_get_animation(loader);
-    backdrop->priv->animation_iter = gdk_pixbuf_animation_get_iter(backdrop->priv->animation, NULL);
+    if(GDK_IS_PIXBUF_ANIMATION(backdrop->priv->animation))
+        backdrop->priv->animation_iter = gdk_pixbuf_animation_get_iter(backdrop->priv->animation, NULL);
 
     /* manually load the first frame */
     xfce_backdrop_create_final_image(backdrop);

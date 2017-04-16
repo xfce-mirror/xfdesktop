@@ -96,7 +96,7 @@ struct _XfceDesktopPriv
     XfconfChannel *channel;
     gchar *property_prefix;
     
-    GdkPixmap *bg_pixmap;
+    cairo_surface_t *bg_surface;
     
     gint nworkspaces;
     XfceWorkspace **workspaces;
@@ -161,12 +161,11 @@ static gboolean xfce_desktop_button_release_event(GtkWidget *widget,
                                                   GdkEventButton *evt);
 static gboolean xfce_desktop_popup_menu(GtkWidget *widget);
 
-static gboolean xfce_desktop_expose(GtkWidget *w,
-                                    GdkEventExpose *evt);
+static gboolean xfce_desktop_draw(GtkWidget *w,
+                                  cairo_t *cr);
 static gboolean xfce_desktop_delete_event(GtkWidget *w,
                                           GdkEventAny *evt);
-static void xfce_desktop_style_set(GtkWidget *w,
-                                   GtkStyle *old_style);
+static void xfce_desktop_style_updated(GtkWidget *w);
 
 static void xfce_desktop_set_single_workspace_mode(XfceDesktop *desktop,
                                                    gboolean single_workspace);
@@ -298,19 +297,20 @@ set_imgfile_root_property(XfceDesktop *desktop, const gchar *filename,
                             gdk_atom_intern(property_name, FALSE));
     }
     
-    gdk_error_trap_pop();
+    gdk_error_trap_pop_ignored();
 }
 
 static void
-set_real_root_window_pixmap(GdkScreen *gscreen,
-                            GdkPixmap *pmap)
+set_real_root_window_surface(GdkScreen *gscreen,
+                            cairo_surface_t *surface)
 {
 #ifndef DISABLE_FOR_BUG7442
     Window xid;
     GdkWindow *groot;
+    cairo_pattern_t *pattern;
     
-    xid = GDK_DRAWABLE_XID(pmap);
     groot = gdk_screen_get_root_window(gscreen);
+    xid = GDK_WINDOW_XID(groot);
     
     gdk_error_trap_push();
     
@@ -319,18 +319,21 @@ set_real_root_window_pixmap(GdkScreen *gscreen,
             gdk_atom_intern("_XROOTPMAP_ID", FALSE),
             gdk_atom_intern("PIXMAP", FALSE), 32,
             GDK_PROP_MODE_REPLACE, (guchar *)&xid, 1);
-    /* and set the root window's BG pixmap, because aterm is somewhat lame. */
-    gdk_window_set_back_pixmap(groot, pmap, FALSE);
+    /* and set the root window's BG surface, because aterm is somewhat lame. */
+    pattern = cairo_pattern_create_for_surface(surface);
+    gdk_window_set_background_pattern(groot, pattern);
+    cairo_pattern_destroy(pattern);
     /* there really should be a standard for this crap... */
 
-    gdk_error_trap_pop();
+    gdk_error_trap_pop_ignored();
 #endif
 }
 
-static GdkPixmap *
-create_bg_pixmap(GdkScreen *gscreen, gpointer user_data)
+static cairo_surface_t *
+create_bg_surface(GdkScreen *gscreen, gpointer user_data)
 {
     XfceDesktop *desktop = user_data;
+    cairo_pattern_t *pattern;
     gint w, h;
 
     TRACE("entering");
@@ -338,7 +341,7 @@ create_bg_pixmap(GdkScreen *gscreen, gpointer user_data)
     g_return_val_if_fail(XFCE_IS_DESKTOP(desktop), NULL);
 
     /* If the workspaces haven't been created yet there's no need to do the
-     * background pixmap */
+     * background surface */
     if(desktop->priv->workspaces == NULL) {
         XF_DEBUG("exiting, desktop->priv->workspaces == NULL");
         return NULL;
@@ -351,28 +354,27 @@ create_bg_pixmap(GdkScreen *gscreen, gpointer user_data)
     gtk_widget_set_size_request(GTK_WIDGET(desktop), w, h);
     gtk_window_resize(GTK_WINDOW(desktop), w, h);
 
-    if(desktop->priv->bg_pixmap)
-        g_object_unref(G_OBJECT(desktop->priv->bg_pixmap));
-    desktop->priv->bg_pixmap = gdk_pixmap_new(GDK_DRAWABLE(gtk_widget_get_window(GTK_WIDGET(desktop))),
-                                              w, h, -1);
+    if(desktop->priv->bg_surface)
+        cairo_surface_destroy(desktop->priv->bg_surface);
+    desktop->priv->bg_surface = gdk_window_create_similar_surface(
+                                    gtk_widget_get_window(GTK_WIDGET(desktop)),
+                                                          CAIRO_CONTENT_COLOR_ALPHA, w, h);
 
-    if(!GDK_IS_PIXMAP(desktop->priv->bg_pixmap))
-        return NULL;
+    pattern = cairo_pattern_create_for_surface(desktop->priv->bg_surface);
+    gdk_window_set_background_pattern(gtk_widget_get_window(GTK_WIDGET(desktop)), pattern);
+    cairo_pattern_destroy(pattern);
 
-    gdk_window_set_back_pixmap(gtk_widget_get_window(GTK_WIDGET(desktop)),
-                               desktop->priv->bg_pixmap, FALSE);
-
-    return desktop->priv->bg_pixmap;
+    return desktop->priv->bg_surface;
 }
 
 static void
 backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(user_data);
-    GdkPixmap *pmap = desktop->priv->bg_pixmap;
+    cairo_surface_t *surface = desktop->priv->bg_surface;
     GdkScreen *gscreen = desktop->priv->gscreen;
     GdkRectangle rect;
-    GdkRegion *clip_region = NULL;
+    cairo_region_t *clip_region = NULL;
     gint i, monitor = -1, current_workspace;
 #ifdef G_ENABLE_DEBUG
     gchar *monitor_name = NULL;
@@ -442,7 +444,7 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
 
     if(monitor > 0
        && !xfce_workspace_get_xinerama_stretch(desktop->priv->workspaces[current_workspace])) {
-        clip_region = gdk_region_rectangle(&rect);
+        clip_region = cairo_region_create_rectangle(&rect);
 
         XF_DEBUG("clip_region: x: %d, y: %d, w: %d, h: %d",
                  rect.x, rect.y, rect.width, rect.height);
@@ -453,30 +455,30 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
          */
         for(i = 0; i < monitor; i++) {
             GdkRectangle previous_monitor;
-            GdkRegion *previous_region;
+            cairo_region_t *previous_region;
             gdk_screen_get_monitor_geometry(gscreen, i, &previous_monitor);
 
             XF_DEBUG("previous_monitor: x: %d, y: %d, w: %d, h: %d",
                      previous_monitor.x, previous_monitor.y,
                      previous_monitor.width, previous_monitor.height);
 
-            previous_region = gdk_region_rectangle(&previous_monitor);
+            previous_region = cairo_region_create_rectangle(&previous_monitor);
 
-            gdk_region_subtract(clip_region, previous_region);
+            cairo_region_subtract(clip_region, previous_region);
 
-            gdk_region_destroy(previous_region);
+            cairo_region_destroy(previous_region);
         }
     }
 
     if(clip_region != NULL) {
         /* Update the area to redraw to limit the icons/area painted */
-        gdk_region_get_clipbox(clip_region, &rect);
+        cairo_region_get_extents(clip_region, &rect);
         XF_DEBUG("area to update: x: %d, y: %d, w: %d, h: %d",
                  rect.x, rect.y, rect.width, rect.height);
     }
 
     if(rect.width != 0 && rect.height != 0) {
-        /* get the composited backdrop pixmap */
+        /* get the composited backdrop pixbuf */
         GdkPixbuf *pix = xfce_backdrop_get_pixbuf(backdrop);
         cairo_t *cr;
 
@@ -485,26 +487,26 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
             xfce_backdrop_generate_async(backdrop);
 
             if(clip_region != NULL)
-                gdk_region_destroy(clip_region);
+                cairo_region_destroy(clip_region);
 
             return;
         }
 
-        /* Create the background pixmap if it isn't already */
-        if(!GDK_IS_PIXMAP(pmap)) {
-            pmap = create_bg_pixmap(gscreen, desktop);
+        /* Create the background surface if it isn't already */
+        if(!desktop->priv->bg_surface) {
+            surface = create_bg_surface(gscreen, desktop);
 
-            if(!GDK_IS_PIXMAP(pmap)) {
+            if(!surface) {
                 g_object_unref(pix);
 
                 if(clip_region != NULL)
-                    gdk_region_destroy(clip_region);
+                    cairo_region_destroy(clip_region);
 
                 return;
             }
         }
 
-        cr = gdk_cairo_create(GDK_DRAWABLE(pmap));
+        cr = cairo_create(surface);
         gdk_cairo_set_source_pixbuf(cr, pix, rect.x, rect.y);
 
         /* clip the area so we don't draw over a previous wallpaper */
@@ -524,7 +526,7 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
                                   monitor);
 
         /* do this again so apps watching the root win notice the update */
-        set_real_root_window_pixmap(gscreen, pmap);
+        set_real_root_window_surface(gscreen, surface);
 
         g_object_unref(G_OBJECT(pix));
         cairo_destroy(cr);
@@ -532,7 +534,7 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     }
 
     if(clip_region != NULL)
-        gdk_region_destroy(clip_region);
+        cairo_region_destroy(clip_region);
 }
 
 static void
@@ -551,10 +553,10 @@ screen_size_changed_cb(GdkScreen *gscreen, gpointer user_data)
     if(current_workspace < 0)
         return;
 
-    /* release the bg_pixmap since the dimensions may have changed */
-    if(desktop->priv->bg_pixmap) {
-        g_object_unref(desktop->priv->bg_pixmap);
-        desktop->priv->bg_pixmap = NULL;
+    /* release the bg_surface since the dimensions may have changed */
+    if(desktop->priv->bg_surface) {
+        cairo_surface_destroy(desktop->priv->bg_surface);
+        desktop->priv->bg_surface = NULL;
     }
 
     /* special case for 1 backdrop to handle xinerama stretching */
@@ -801,10 +803,10 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
     widget_class->unrealize = xfce_desktop_unrealize;
     widget_class->button_press_event = xfce_desktop_button_press_event;
     widget_class->button_release_event = xfce_desktop_button_release_event;
-    widget_class->expose_event = xfce_desktop_expose;
+    widget_class->draw = xfce_desktop_draw;
     widget_class->delete_event = xfce_desktop_delete_event;
     widget_class->popup_menu = xfce_desktop_popup_menu;
-    widget_class->style_set = xfce_desktop_style_set;
+    widget_class->style_updated = xfce_desktop_style_updated;
     
     signals[SIG_POPULATE_ROOT_MENU] = g_signal_new("populate-root-menu",
                                                    XFCE_TYPE_DESKTOP,
@@ -1143,7 +1145,7 @@ xfce_desktop_unrealize(GtkWidget *widget)
 #ifndef DISABLE_FOR_BUG7442
     gdk_property_delete(groot, gdk_atom_intern("_XROOTPMAP_ID", FALSE));
     gdk_property_delete(groot, gdk_atom_intern("ESETROOT_PMAP_ID", FALSE));
-    gdk_window_set_back_pixmap(groot, NULL, FALSE);
+    gdk_window_set_background_pattern(groot, NULL);
 #endif
 
     if(desktop->priv->workspaces) {
@@ -1157,11 +1159,11 @@ xfce_desktop_unrealize(GtkWidget *widget)
     }
 
     gdk_flush();
-    gdk_error_trap_pop();
+    gdk_error_trap_pop_ignored();
 
-    if(desktop->priv->bg_pixmap) {
-        g_object_unref(G_OBJECT(desktop->priv->bg_pixmap));
-        desktop->priv->bg_pixmap = NULL;
+    if(desktop->priv->bg_surface) {
+        cairo_surface_destroy(desktop->priv->bg_surface);
+        desktop->priv->bg_surface = NULL;
     }
     
     gtk_window_set_icon(GTK_WINDOW(widget), NULL);
@@ -1195,11 +1197,12 @@ xfce_desktop_button_press_event(GtkWidget *w,
                 return FALSE;
 #endif
             /* no icons on the desktop, grab the focus and pop up the menu */
-            if(!gtk_widget_has_grab(w))
+            if(!gtk_widget_has_grab(w)) {
                 gtk_grab_add(w);
 
-                xfce_desktop_popup_root_menu(desktop, button, evt->time);
+                xfce_desktop_popup_root_menu(desktop, evt);
                 return TRUE;
+            }
         } else if(button == 2 || (button == 1 && (state & GDK_SHIFT_MASK)
                                   && (state & GDK_CONTROL_MASK)))
         {
@@ -1207,7 +1210,7 @@ xfce_desktop_button_press_event(GtkWidget *w,
             if(!gtk_widget_has_grab(w))
                 gtk_grab_add(w);
 
-            xfce_desktop_popup_secondary_root_menu(desktop, button, evt->time);
+            xfce_desktop_popup_secondary_root_menu(desktop, evt);
             return TRUE;
         }
     }
@@ -1232,44 +1235,31 @@ static gboolean
 xfce_desktop_popup_menu(GtkWidget *w)
 {
     GdkEventButton *evt;
-    guint button, etime;
 
     TRACE("entering");
 
     evt = (GdkEventButton *)gtk_get_current_event();
-    if(evt && GDK_BUTTON_PRESS == evt->type) {
-        button = evt->button;
-        etime = evt->time;
-    } else {
-        button = 0;
-        etime = gtk_get_current_event_time();
-    }
     
-    xfce_desktop_popup_root_menu(XFCE_DESKTOP(w), button, etime);
+    xfce_desktop_popup_root_menu(XFCE_DESKTOP(w), evt);
 
-    gdk_event_free((GdkEvent*)evt);
+    if(evt)
+        gdk_event_free((GdkEvent*)evt);
     return TRUE;
 }
 
 static gboolean
-xfce_desktop_expose(GtkWidget *w,
-                    GdkEventExpose *evt)
+xfce_desktop_draw(GtkWidget *w,
+                  cairo_t *cr)
 {
     GList *children, *l;
     
     /*TRACE("entering");*/
     
-    if(evt->count != 0)
-        return FALSE;
-    
-    gdk_window_clear_area(gtk_widget_get_window(w), evt->area.x, evt->area.y,
-                          evt->area.width, evt->area.height);
-    
     children = gtk_container_get_children(GTK_CONTAINER(w));
     for(l = children; l; l = l->next) {
-        gtk_container_propagate_expose(GTK_CONTAINER(w),
-                                       GTK_WIDGET(l->data),
-                                       evt);
+        gtk_container_propagate_draw(GTK_CONTAINER(w),
+                                     GTK_WIDGET(l->data),
+                                     cr);
     }
     g_list_free(children);
     
@@ -1291,6 +1281,7 @@ static gboolean
 style_refresh_cb(gpointer *w)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(w);
+    cairo_pattern_t *pattern;
     gdouble old_font_size;
 
     TRACE("entering");
@@ -1305,8 +1296,12 @@ style_refresh_cb(gpointer *w)
     if(desktop->priv->workspaces == NULL)
         return FALSE;
 
-    if(GDK_IS_WINDOW(desktop->priv->bg_pixmap))
-        gdk_window_set_back_pixmap(gtk_widget_get_window(GTK_WIDGET(desktop)), desktop->priv->bg_pixmap, FALSE);
+    if(desktop->priv->bg_surface) {
+        pattern = cairo_pattern_create_for_surface(desktop->priv->bg_surface);
+        gdk_window_set_background_pattern(gtk_widget_get_window(GTK_WIDGET(desktop)),
+                                          pattern);
+        cairo_pattern_destroy(pattern);
+    }
 
     gtk_widget_queue_draw(GTK_WIDGET(desktop));
 
@@ -1330,7 +1325,7 @@ style_refresh_cb(gpointer *w)
 #endif
 
 static void
-xfce_desktop_style_set(GtkWidget *w, GtkStyle *old_style)
+xfce_desktop_style_updated(GtkWidget *w)
 {
 #ifdef ENABLE_DESKTOP_ICONS
     XfceDesktop *desktop = XFCE_DESKTOP(w);
@@ -1703,8 +1698,7 @@ xfce_desktop_menu_destroy_idled(gpointer data)
 
 static void
 xfce_desktop_do_menu_popup(XfceDesktop *desktop,
-                           guint button,
-                           guint activate_time,
+                           GdkEventButton *evt,
                            guint populate_signal)
 {
     GdkScreen *screen;
@@ -1720,6 +1714,7 @@ xfce_desktop_do_menu_popup(XfceDesktop *desktop,
 
     menu = gtk_menu_new();
     gtk_menu_set_screen(GTK_MENU(menu), screen);
+    gtk_menu_set_reserve_toggle_size (GTK_MENU (menu), FALSE);
     g_signal_connect_swapped(G_OBJECT(menu), "deactivate",
                              G_CALLBACK(g_idle_add),
                              (gpointer)xfce_desktop_menu_destroy_idled);
@@ -1737,42 +1732,25 @@ xfce_desktop_do_menu_popup(XfceDesktop *desktop,
 
     gtk_menu_attach_to_widget(GTK_MENU(menu), GTK_WIDGET(desktop), NULL);
 
-    /* Per gtk_menu_popup's documentation "for conflict-resolve initiation of
-     * concurrent requests for mouse/keyboard grab requests." */
-    if(activate_time == 0)
-        activate_time = gtk_get_current_event_time();
-
-    gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL, button, activate_time);
+    gtk_menu_popup_at_pointer(GTK_MENU (menu), (GdkEvent *)evt);
 }
 
 void
 xfce_desktop_popup_root_menu(XfceDesktop *desktop,
-                             guint button,
-                             guint activate_time)
+                             GdkEventButton *evt)
 {
     TRACE("entering");
 
-    /* If it's launched by xfdesktop --menu we won't have an event time.
-     * Grab the keyboard focus */
-    if(activate_time == 0)
-        activate_time = xfdesktop_popup_keyboard_grab_available(gtk_widget_get_window(GTK_WIDGET(desktop)));
-
-    xfce_desktop_do_menu_popup(desktop, button, activate_time,
+    xfce_desktop_do_menu_popup(desktop, evt,
                                signals[SIG_POPULATE_ROOT_MENU]);
 
 }
 
 void
 xfce_desktop_popup_secondary_root_menu(XfceDesktop *desktop,
-                                       guint button,
-                                       guint activate_time)
+                                       GdkEventButton *evt)
 {
-    /* If it's launched by xfdesktop --windowlist we won't have an event time.
-     * Grab the keyboard focus */
-    if(activate_time == 0)
-        activate_time = xfdesktop_popup_keyboard_grab_available(gtk_widget_get_window(GTK_WIDGET(desktop)));
-
-    xfce_desktop_do_menu_popup(desktop, button, activate_time,
+    xfce_desktop_do_menu_popup(desktop, evt,
                                signals[SIG_POPULATE_SECONDARY_ROOT_MENU]);
 }
 

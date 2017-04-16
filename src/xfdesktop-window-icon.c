@@ -27,7 +27,6 @@
 #endif
 
 #include <libwnck/libwnck.h>
-#include <libwnck/window-action-menu.h>
 #include <libxfce4ui/libxfce4ui.h>
 
 #include "xfdesktop-window-icon.h"
@@ -189,7 +188,7 @@ xfdesktop_window_icon_populate_context_menu(XfdesktopIcon *icon,
                                             GtkWidget *menu)
 {
     XfdesktopWindowIcon *window_icon = XFDESKTOP_WINDOW_ICON(icon);
-    GtkWidget *amenu = wnck_create_window_action_menu(window_icon->priv->window);
+    GtkWidget *amenu = wnck_action_menu_new(window_icon->priv->window);
     GtkWidget *mi;
 
     mi = gtk_menu_item_new_with_mnemonic(_("_Window Actions"));

@@ -51,8 +51,6 @@
 
 #include <exo/exo.h>
 
-#include <dbus/dbus-glib-lowlevel.h>
-
 #ifdef HAVE_THUNARX
 #include <thunarx/thunarx.h>
 #endif
@@ -65,6 +63,15 @@
 #include "xfdesktop-thunar-proxy.h"
 
 static void xfdesktop_file_utils_add_emblems(GdkPixbuf *pix, GList *emblems);
+
+static XfdesktopTrash       *xfdesktop_file_utils_peek_trash_proxy(void);
+static XfdesktopFileManager *xfdesktop_file_utils_peek_filemanager_proxy(void);
+
+#ifdef HAVE_THUNARX
+static XfdesktopThunar *xfdesktop_file_utils_peek_thunar_proxy(void);
+#else
+static gpointer xfdesktop_file_utils_peek_thunar_proxy(void);
+#endif
 
 gboolean
 xfdesktop_file_utils_is_desktop_file(GFileInfo *info)
@@ -337,13 +344,12 @@ xfdesktop_file_utils_get_fallback_icon(gint size)
     }
 
     if(G_UNLIKELY(!xfdesktop_fallback_icon)) {
-        GtkWidget *dummy = gtk_invisible_new();
-        gtk_widget_realize(dummy);
-
         /* this is kinda crappy, but hopefully should never happen */
-        xfdesktop_fallback_icon = gtk_widget_render_icon(dummy,
-                                                         GTK_STOCK_MISSING_IMAGE,
-                                                         (GtkIconSize)-1, NULL);
+        xfdesktop_fallback_icon = gtk_icon_theme_load_icon(gtk_icon_theme_get_default(),
+                                                           "image-missing",
+                                                           size,
+                                                           GTK_ICON_LOOKUP_USE_BUILTIN,
+                                                           NULL);
         if(gdk_pixbuf_get_width(xfdesktop_fallback_icon) != size
            || gdk_pixbuf_get_height(xfdesktop_fallback_icon) != size)
         {
@@ -388,7 +394,7 @@ xfdesktop_file_utils_get_icon(GIcon *icon,
                                                               ITHEME_FLAGS);
       if(icon_info) {
           pix_theme = gtk_icon_info_load_icon(icon_info, NULL);
-          gtk_icon_info_free(icon_info);
+          g_object_unref(icon_info);
       }
     } else if(G_IS_LOADABLE_ICON(base_icon)) {
         GInputStream *stream = g_loadable_icon_load(G_LOADABLE_ICON(base_icon),
@@ -477,7 +483,7 @@ xfdesktop_file_utils_add_emblems(GdkPixbuf *pix, GList *emblems)
                                                                 ITHEME_FLAGS);
         if(icon_info) {
             emblem_pix = gtk_icon_info_load_icon(icon_info, NULL);
-            gtk_icon_info_free(icon_info);
+            g_object_unref(icon_info);
         }
 
         if(emblem_pix) {
@@ -546,10 +552,10 @@ xfdesktop_file_utils_set_window_cursor(GtkWindow *window,
     if(!window || !gtk_widget_get_window(GTK_WIDGET(window)))
         return;
 
-    cursor = gdk_cursor_new(cursor_type);
+    cursor = gdk_cursor_new_for_display(gtk_widget_get_display(GTK_WIDGET(window)), cursor_type);
     if(G_LIKELY(cursor)) {
         gdk_window_set_cursor(gtk_widget_get_window(GTK_WIDGET(window)), cursor);
-        gdk_cursor_unref(cursor);
+        g_object_unref(cursor);
     }
 }
 
@@ -662,33 +668,41 @@ xfdesktop_file_utils_open_folder(GFile *file,
                                                     &error))
     {
         xfce_message_dialog(parent,
-                            _("Launch Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("Launch Error"), "dialog-error",
                             _("The folder could not be opened"),
-                            error->message, GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
+                            error->message,
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
                             NULL);
 
-        g_error_free(error);
+        g_clear_error(&error);
     }
 
     g_free(uri);
 }
 
 static void
-xfdesktop_file_utils_async_cb(DBusGProxy *proxy, GError *error, gpointer userdata)
+xfdesktop_file_utils_async_handle_error(GError *error, gpointer userdata)
 {
     GtkWindow *parent = GTK_WINDOW(userdata);
 
     if(error != NULL) {
-        /* ignore dbus timeout error (bug #11283) */
-        if(error->code != DBUS_GERROR_NO_REPLY) {
-            xfce_message_dialog(parent,
-                                _("Error"), GTK_STOCK_DIALOG_ERROR,
-                                _("The requested operation could not be completed"),
-                                error->message, GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
-                                NULL);
-        }
-        g_error_free(error);
+        xfce_message_dialog(parent,
+                            _("Error"), "dialog-error",
+                            _("The requested operation could not be completed"),
+                            error->message,
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            NULL);
+
+        g_clear_error(&error);
     }
+}
+
+static void
+rename_cb (GObject *source_object, GAsyncResult *res, gpointer user_data)
+{
+    GError *error = NULL;
+    if (!xfdesktop_file_manager_call_rename_file_finish(XFDESKTOP_FILE_MANAGER(source_object), res, &error))
+        xfdesktop_file_utils_async_handle_error(error, user_data);
 }
 
 void
@@ -696,7 +710,7 @@ xfdesktop_file_utils_rename_file(GFile *file,
                                  GdkScreen *screen,
                                  GtkWindow *parent)
 {
-    DBusGProxy *fileman_proxy;
+    XfdesktopFileManager *fileman_proxy;
 
     g_return_if_fail(G_IS_FILE(file));
     g_return_if_fail(GDK_IS_SCREEN(screen) || GTK_IS_WINDOW(parent));
@@ -707,29 +721,38 @@ xfdesktop_file_utils_rename_file(GFile *file,
     fileman_proxy = xfdesktop_file_utils_peek_filemanager_proxy();
     if(fileman_proxy) {
         gchar *uri = g_file_get_uri(file);
-        gchar *display_name = gdk_screen_make_display_name(screen);
         gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
 
         xfdesktop_file_utils_set_window_cursor(parent, GDK_WATCH);
 
-        xfdesktop_file_manager_proxy_rename_file_async(fileman_proxy,
-                                                       uri, display_name, startup_id,
-                                                       (xfdesktop_file_manager_proxy_rename_file_reply)xfdesktop_file_utils_async_cb,
-                                                       parent);
+
+        xfdesktop_file_manager_call_rename_file(fileman_proxy,
+                                                uri, "", startup_id,
+                                                NULL,
+                                                rename_cb,
+                                                parent);
 
         xfdesktop_file_utils_set_window_cursor(parent, GDK_LEFT_PTR);
 
         g_free(startup_id);
         g_free(uri);
-        g_free(display_name);
     } else {
         xfce_message_dialog(parent,
-                            _("Rename Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("Rename Error"), "dialog-error",
                             _("The file could not be renamed"),
                             _("This feature requires a file manager service to "
                               "be present (such as the one supplied by Thunar)."),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            NULL);
     }
+}
+
+static void
+bulk_rename_cb (GObject *source_object, GAsyncResult *res, gpointer user_data)
+{
+    GError *error = NULL;
+    if (!xfdesktop_thunar_call_bulk_rename_finish(XFDESKTOP_THUNAR(source_object), res, &error))
+        xfdesktop_file_utils_async_handle_error(error, user_data);
 }
 
 void
@@ -738,7 +761,7 @@ xfdesktop_file_utils_bulk_rename(GFile *working_directory,
                                  GdkScreen *screen,
                                  GtkWindow *parent)
 {
-    DBusGProxy *thunar_proxy;
+    XfdesktopThunar *thunar_proxy;
 
     g_return_if_fail(G_IS_FILE(working_directory));
     g_return_if_fail(GDK_IS_SCREEN(screen) || GTK_IS_WINDOW(parent));
@@ -751,7 +774,6 @@ xfdesktop_file_utils_bulk_rename(GFile *working_directory,
         gchar *directory = g_file_get_path(working_directory);
         guint nfiles = g_list_length(files);
         gchar **filenames = g_new0(gchar *, nfiles+1);
-        gchar *display_name = gdk_screen_make_display_name(screen);
         gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
         GList *lp;
         gint n;
@@ -763,26 +785,36 @@ xfdesktop_file_utils_bulk_rename(GFile *working_directory,
 
         xfdesktop_file_utils_set_window_cursor(parent, GDK_WATCH);
 
-        xfdesktop_thunar_proxy_bulk_rename_async(thunar_proxy,
-                                                 directory, (const gchar **)filenames,
-                                                 FALSE, display_name, startup_id,
-                                                 (xfdesktop_thunar_proxy_bulk_rename_reply)xfdesktop_file_utils_async_cb,
-                                                 parent);
+
+        xfdesktop_thunar_call_bulk_rename(thunar_proxy,
+                                          directory, (const gchar **)filenames,
+                                          FALSE, "", startup_id,
+                                          NULL,
+                                          bulk_rename_cb,
+                                          parent);
 
         xfdesktop_file_utils_set_window_cursor(parent, GDK_LEFT_PTR);
 
         g_free(directory);
         g_free(startup_id);
         g_strfreev(filenames);
-        g_free(display_name);
     } else {
         xfce_message_dialog(parent,
-                            _("Rename Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("Rename Error"), "dialog-error",
                             _("The files could not be renamed"),
                             _("This feature requires a file manager service to "
                               "be present (such as the one supplied by Thunar)."),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            NULL);
     }
+}
+
+static void
+unlink_files_cb (GObject *source_object, GAsyncResult *res, gpointer user_data)
+{
+    GError *error = NULL;
+    if (!xfdesktop_file_manager_call_unlink_files_finish(XFDESKTOP_FILE_MANAGER(source_object), res, &error))
+        xfdesktop_file_utils_async_handle_error(error, user_data);
 }
 
 void
@@ -790,7 +822,7 @@ xfdesktop_file_utils_unlink_files(GList *files,
                                   GdkScreen *screen,
                                   GtkWindow *parent)
 {
-    DBusGProxy *fileman_proxy;
+    XfdesktopFileManager *fileman_proxy;
 
     g_return_if_fail(files != NULL && G_IS_FILE(files->data));
     g_return_if_fail(GDK_IS_SCREEN(screen) || GTK_IS_WINDOW(parent));
@@ -802,7 +834,6 @@ xfdesktop_file_utils_unlink_files(GList *files,
     if(fileman_proxy) {
         guint nfiles = g_list_length(files);
         gchar **uris = g_new0(gchar *, nfiles+1);
-        gchar *display_name = gdk_screen_make_display_name(screen);
         gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
         GList *lp;
         gint n;
@@ -814,25 +845,35 @@ xfdesktop_file_utils_unlink_files(GList *files,
 
         xfdesktop_file_utils_set_window_cursor(parent, GDK_WATCH);
 
-        xfdesktop_file_manager_proxy_unlink_files_async(fileman_proxy,
-                                                        NULL, (const gchar **)uris,
-                                                        display_name, startup_id,
-                                                        (xfdesktop_file_manager_proxy_unlink_files_reply)xfdesktop_file_utils_async_cb,
-                                                        parent);
+
+        xfdesktop_file_manager_call_unlink_files(fileman_proxy,
+                                                 "", (const gchar **)uris,
+                                                 "", startup_id,
+                                                 NULL,
+                                                 unlink_files_cb,
+                                                 parent);
 
         xfdesktop_file_utils_set_window_cursor(parent, GDK_LEFT_PTR);
 
         g_free(startup_id);
         g_strfreev(uris);
-        g_free(display_name);
     } else {
         xfce_message_dialog(parent,
-                            _("Delete Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("Delete Error"), "dialog-error",
                             _("The selected files could not be deleted"),
                             _("This feature requires a file manager service to "
                               "be present (such as the one supplied by Thunar)."),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            NULL);
     }
+}
+
+static void
+trash_files_cb (GObject *source_object, GAsyncResult *res, gpointer user_data)
+{
+    GError *error = NULL;
+    if (!xfdesktop_trash_call_move_to_trash_finish(XFDESKTOP_TRASH(source_object), res, &error))
+        xfdesktop_file_utils_async_handle_error(error, user_data);
 }
 
 void
@@ -840,7 +881,7 @@ xfdesktop_file_utils_trash_files(GList *files,
                                  GdkScreen *screen,
                                  GtkWindow *parent)
 {
-    DBusGProxy *trash_proxy;
+    XfdesktopTrash *trash_proxy;
 
     g_return_if_fail(files != NULL && G_IS_FILE(files->data));
     g_return_if_fail(GDK_IS_SCREEN(screen) || GTK_IS_WINDOW(parent));
@@ -852,7 +893,6 @@ xfdesktop_file_utils_trash_files(GList *files,
     if(trash_proxy) {
         guint nfiles = g_list_length(files);
         gchar **uris = g_new0(gchar *, nfiles+1);
-        gchar *display_name = gdk_screen_make_display_name(screen);
         gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
         GList *lp;
         gint n;
@@ -864,32 +904,42 @@ xfdesktop_file_utils_trash_files(GList *files,
 
         xfdesktop_file_utils_set_window_cursor(parent, GDK_WATCH);
 
-        xfdesktop_trash_proxy_move_to_trash_async(trash_proxy,
-                                                  (const gchar **)uris,
-                                                  display_name, startup_id,
-                                                  (xfdesktop_trash_proxy_move_to_trash_reply)xfdesktop_file_utils_async_cb,
-                                                  parent);
+
+        xfdesktop_trash_call_move_to_trash(trash_proxy,
+                                           (const gchar **)uris,
+                                           "", startup_id,
+                                           NULL,
+                                           trash_files_cb,
+                                           parent);
 
         xfdesktop_file_utils_set_window_cursor(parent, GDK_LEFT_PTR);
 
         g_free(startup_id);
         g_strfreev(uris);
-        g_free(display_name);
     } else {
         xfce_message_dialog(parent,
-                            _("Trash Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("Trash Error"), "dialog-error",
                             _("The selected files could not be moved to the trash"),
                             _("This feature requires a trash service to "
                               "be present (such as the one supplied by Thunar)."),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            NULL);
     }
+}
+
+static void
+empty_trash_cb (GObject *source_object, GAsyncResult *res, gpointer user_data)
+{
+    GError *error = NULL;
+    if (!xfdesktop_trash_call_empty_trash_finish(XFDESKTOP_TRASH(source_object), res, &error))
+        xfdesktop_file_utils_async_handle_error(error, user_data);
 }
 
 void
 xfdesktop_file_utils_empty_trash(GdkScreen *screen,
                                  GtkWindow *parent)
 {
-    DBusGProxy *trash_proxy;
+    XfdesktopTrash *trash_proxy;
 
     g_return_if_fail(GDK_IS_SCREEN(screen) || GTK_IS_WINDOW(parent));
 
@@ -898,28 +948,37 @@ xfdesktop_file_utils_empty_trash(GdkScreen *screen,
 
     trash_proxy = xfdesktop_file_utils_peek_trash_proxy();
     if(trash_proxy) {
-        gchar *display_name = gdk_screen_make_display_name(screen);
         gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
 
         xfdesktop_file_utils_set_window_cursor(parent, GDK_WATCH);
 
-        xfdesktop_trash_proxy_empty_trash_async(trash_proxy,
-                                                display_name, startup_id,
-                                                (xfdesktop_trash_proxy_empty_trash_reply)xfdesktop_file_utils_async_cb,
-                                                parent);
+
+        xfdesktop_trash_call_empty_trash(trash_proxy,
+                                         "", startup_id,
+                                         NULL,
+                                         empty_trash_cb,
+                                         parent);
 
         xfdesktop_file_utils_set_window_cursor(parent, GDK_LEFT_PTR);
 
         g_free(startup_id);
-        g_free(display_name);
     } else {
         xfce_message_dialog(parent,
-                            _("Trash Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("Trash Error"), "dialog-error",
                             _("Could not empty the trash"),
                             _("This feature requires a trash service to "
                               "be present (such as the one supplied by Thunar)."),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            NULL);
     }
+}
+
+static void
+create_file_cb (GObject *source_object, GAsyncResult *res, gpointer user_data)
+{
+    GError *error = NULL;
+    if (!xfdesktop_file_manager_call_create_file_finish(XFDESKTOP_FILE_MANAGER(source_object), res, &error))
+        xfdesktop_file_utils_async_handle_error(error, user_data);
 }
 
 void
@@ -928,7 +987,7 @@ xfdesktop_file_utils_create_file(GFile *parent_folder,
                                  GdkScreen *screen,
                                  GtkWindow *parent)
 {
-    DBusGProxy *fileman_proxy;
+    XfdesktopFileManager *fileman_proxy;
 
     g_return_if_fail(G_IS_FILE(parent_folder));
     g_return_if_fail(GDK_IS_SCREEN(screen) || GTK_IS_WINDOW(parent));
@@ -939,31 +998,40 @@ xfdesktop_file_utils_create_file(GFile *parent_folder,
     fileman_proxy = xfdesktop_file_utils_peek_filemanager_proxy();
     if(fileman_proxy) {
         gchar *parent_directory = g_file_get_uri(parent_folder);
-        gchar *display_name = gdk_screen_make_display_name(screen);
         gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
 
         xfdesktop_file_utils_set_window_cursor(parent, GDK_WATCH);
 
-        xfdesktop_file_manager_proxy_create_file_async(fileman_proxy,
-                                                       parent_directory,
-                                                       content_type, display_name,
-                                                       startup_id,
-                                                       (xfdesktop_file_manager_proxy_create_file_reply)xfdesktop_file_utils_async_cb,
-                                                       parent);
+
+        xfdesktop_file_manager_call_create_file(fileman_proxy,
+                                                parent_directory,
+                                                content_type, "",
+                                                startup_id,
+                                                NULL,
+                                                create_file_cb,
+                                                parent);
 
         xfdesktop_file_utils_set_window_cursor(parent, GDK_LEFT_PTR);
 
         g_free(startup_id);
         g_free(parent_directory);
-        g_free(display_name);
     } else {
         xfce_message_dialog(parent,
-                            _("Create File Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("Create File Error"), "dialog-error",
                             _("Could not create a new file"),
                             _("This feature requires a file manager service to "
                               "be present (such as the one supplied by Thunar)."),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            NULL);
     }
+}
+
+static void
+create_file_from_template_cb (GObject *source_object, GAsyncResult *res, gpointer user_data)
+{
+    GError *error = NULL;
+    if (!xfdesktop_file_manager_call_create_file_from_template_finish(XFDESKTOP_FILE_MANAGER(source_object), res, &error))
+        xfdesktop_file_utils_async_handle_error(error, user_data);
 }
 
 void
@@ -972,7 +1040,7 @@ xfdesktop_file_utils_create_file_from_template(GFile *parent_folder,
                                                GdkScreen *screen,
                                                GtkWindow *parent)
 {
-    DBusGProxy *fileman_proxy;
+    XfdesktopFileManager *fileman_proxy;
 
     g_return_if_fail(G_IS_FILE(parent_folder));
     g_return_if_fail(G_IS_FILE(template_file));
@@ -985,32 +1053,41 @@ xfdesktop_file_utils_create_file_from_template(GFile *parent_folder,
     if(fileman_proxy) {
         gchar *parent_directory = g_file_get_uri(parent_folder);
         gchar *template_uri = g_file_get_uri(template_file);
-        gchar *display_name = gdk_screen_make_display_name(screen);
         gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
 
         xfdesktop_file_utils_set_window_cursor(parent, GDK_WATCH);
 
-        xfdesktop_file_manager_proxy_create_file_from_template_async(fileman_proxy,
-                                                                     parent_directory,
-                                                                     template_uri,
-                                                                     display_name,
-                                                                     startup_id,
-                                                                     (xfdesktop_file_manager_proxy_create_file_from_template_reply)xfdesktop_file_utils_async_cb,
-                                                                     parent);
+
+        xfdesktop_file_manager_call_create_file_from_template(fileman_proxy,
+                                                              parent_directory,
+                                                              template_uri,
+                                                              "",
+                                                              startup_id,
+                                                              NULL,
+                                                              create_file_from_template_cb,
+                                                              parent);
 
         xfdesktop_file_utils_set_window_cursor(parent, GDK_LEFT_PTR);
 
         g_free(startup_id);
         g_free(parent_directory);
-        g_free(display_name);
     } else {
         xfce_message_dialog(parent,
-                            _("Create Document Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("Create Document Error"), "dialog-error",
                             _("Could not create a new document from the template"),
                             _("This feature requires a file manager service to "
                               "be present (such as the one supplied by Thunar)."),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            NULL);
     }
+}
+
+static void
+show_properties_cb (GObject *source_object, GAsyncResult *res, gpointer user_data)
+{
+    GError *error = NULL;
+    if (!xfdesktop_file_manager_call_display_file_properties_finish(XFDESKTOP_FILE_MANAGER(source_object), res, &error))
+        xfdesktop_file_utils_async_handle_error(error, user_data);
 }
 
 void
@@ -1018,7 +1095,7 @@ xfdesktop_file_utils_show_properties_dialog(GFile *file,
                                             GdkScreen *screen,
                                             GtkWindow *parent)
 {
-    DBusGProxy *fileman_proxy;
+    XfdesktopFileManager *fileman_proxy;
 
     g_return_if_fail(G_IS_FILE(file));
     g_return_if_fail(GDK_IS_SCREEN(screen) || GTK_IS_WINDOW(parent));
@@ -1029,29 +1106,38 @@ xfdesktop_file_utils_show_properties_dialog(GFile *file,
     fileman_proxy = xfdesktop_file_utils_peek_filemanager_proxy();
     if(fileman_proxy) {
         gchar *uri = g_file_get_uri(file);
-        gchar *display_name = gdk_screen_make_display_name(screen);
         gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
 
         xfdesktop_file_utils_set_window_cursor(parent, GDK_WATCH);
 
-        xfdesktop_file_manager_proxy_display_file_properties_async(fileman_proxy,
-                                                                   uri, display_name, startup_id,
-                                                                   (xfdesktop_file_manager_proxy_display_file_properties_reply)xfdesktop_file_utils_async_cb,
-                                                                   parent);
+
+        xfdesktop_file_manager_call_display_file_properties(fileman_proxy,
+                                                            uri, "", startup_id,
+                                                            NULL,
+                                                            show_properties_cb,
+                                                            parent);
 
         xfdesktop_file_utils_set_window_cursor(parent, GDK_LEFT_PTR);
 
         g_free(startup_id);
         g_free(uri);
-        g_free(display_name);
     } else {
         xfce_message_dialog(parent,
-                            _("File Properties Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("File Properties Error"), "dialog-error",
                             _("The file properties dialog could not be opened"),
                             _("This feature requires a file manager service to "
                               "be present (such as the one supplied by Thunar)."),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            NULL);
     }
+}
+
+static void
+launch_cb (GObject *source_object, GAsyncResult *res, gpointer user_data)
+{
+    GError *error = NULL;
+    if (!xfdesktop_file_manager_call_launch_files_finish(XFDESKTOP_FILE_MANAGER(source_object), res, &error))
+        xfdesktop_file_utils_async_handle_error(error, user_data);
 }
 
 void
@@ -1059,7 +1145,7 @@ xfdesktop_file_utils_launch(GFile *file,
                             GdkScreen *screen,
                             GtkWindow *parent)
 {
-    DBusGProxy *fileman_proxy;
+    XfdesktopFileManager *fileman_proxy;
 
     g_return_if_fail(G_IS_FILE(file));
     g_return_if_fail(GDK_IS_SCREEN(screen) || GTK_IS_WINDOW(parent));
@@ -1069,29 +1155,39 @@ xfdesktop_file_utils_launch(GFile *file,
 
     fileman_proxy = xfdesktop_file_utils_peek_filemanager_proxy();
     if(fileman_proxy) {
-        gchar *uri = g_file_get_uri(file);
-        gchar *display_name = gdk_screen_make_display_name(screen);
-        gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
+        gchar **uris;
+        GFile  *parent_file = g_file_get_parent(file);
+        gchar  *parent_path = g_file_get_path(parent_file);
+        gchar  *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
 
         xfdesktop_file_utils_set_window_cursor(parent, GDK_WATCH);
 
-        xfdesktop_file_manager_proxy_launch_async(fileman_proxy,
-                                                  uri, display_name, startup_id,
-                                                  (xfdesktop_file_manager_proxy_launch_reply)xfdesktop_file_utils_async_cb,
-                                                  parent);
+        uris = g_new0(gchar *, 2);
+        uris[0] = g_file_get_uri(file);
+        uris[1] = NULL;
+
+        xfdesktop_file_manager_call_launch_files(fileman_proxy, parent_path,
+                                                 (const gchar * const*)uris,
+                                                 "", startup_id,
+                                                 NULL,
+                                                 launch_cb,
+                                                 parent);
 
         xfdesktop_file_utils_set_window_cursor(parent, GDK_LEFT_PTR);
 
         g_free(startup_id);
-        g_free(uri);
-        g_free(display_name);
+        g_free(uris[0]);
+        g_free(uris);
+        g_free(parent_path);
+        g_object_unref(parent_file);
     } else {
         xfce_message_dialog(parent,
-                            _("Launch Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("Launch Error"), "dialog-error",
                             _("The file could not be opened"),
                             _("This feature requires a file manager service to "
                               "be present (such as the one supplied by Thunar)."),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            NULL);
     }
 }
 
@@ -1102,7 +1198,7 @@ xfdesktop_file_utils_execute(GFile *working_directory,
                              GdkScreen *screen,
                              GtkWindow *parent)
 {
-    DBusGProxy *fileman_proxy;
+    XfdesktopFileManager *fileman_proxy;
     gboolean success = TRUE;
 
     g_return_val_if_fail(working_directory == NULL || G_IS_FILE(working_directory), FALSE);
@@ -1118,7 +1214,6 @@ xfdesktop_file_utils_execute(GFile *working_directory,
         GError *error = NULL;
         gchar *working_dir = working_directory != NULL ? g_file_get_uri(working_directory) : NULL;
         gchar *uri = g_file_get_uri(file);
-        gchar *display_name = gdk_screen_make_display_name(screen);
         gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
         GList *lp;
         guint n = g_list_length (files);
@@ -1153,33 +1248,31 @@ xfdesktop_file_utils_execute(GFile *working_directory,
                 g_object_unref(info);
         }
 
-        if(!xfdesktop_file_manager_proxy_execute(fileman_proxy,
-                                                 working_dir, uri,
-                                                 (const gchar **)uris,
-                                                 display_name, startup_id,
-                                                 &error))
+        if(!xfdesktop_file_manager_call_execute_sync(fileman_proxy,
+                                                     working_dir, uri,
+                                                     (const gchar **)uris,
+                                                     "", startup_id,
+                                                     NULL, &error))
         {
             gchar *filename = g_file_get_uri(file);
             gchar *name = g_filename_display_basename(filename);
             gchar *primary = g_markup_printf_escaped(_("Failed to run \"%s\""), name);
 
             xfce_message_dialog(parent,
-                                _("Launch Error"), GTK_STOCK_DIALOG_ERROR,
+                                _("Launch Error"), "dialog-error",
                                 primary, error->message,
-                                GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
+                                XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
                                 NULL);
 
             g_free(primary);
             g_free(name);
             g_free(filename);
-
-            g_error_free(error);
+            g_clear_error(&error);
 
             success = FALSE;
         }
 
         g_free(startup_id);
-        g_free(display_name);
         g_strfreev(uris);
         g_free(uri);
         g_free(working_dir);
@@ -1189,11 +1282,12 @@ xfdesktop_file_utils_execute(GFile *working_directory,
         gchar *primary = g_markup_printf_escaped(_("Failed to run \"%s\""), name);
 
         xfce_message_dialog(parent,
-                            _("Launch Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("Launch Error"), "dialog-error",
                             primary,
                             _("This feature requires a file manager service to "
                               "be present (such as the one supplied by Thunar)."),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            NULL);
 
         g_free(primary);
         g_free(name);
@@ -1205,13 +1299,21 @@ xfdesktop_file_utils_execute(GFile *working_directory,
     return success;
 }
 
+static void
+display_chooser_cb (GObject *source_object, GAsyncResult *res, gpointer user_data)
+{
+    GError *error = NULL;
+    if (!xfdesktop_file_manager_call_display_chooser_dialog_finish(XFDESKTOP_FILE_MANAGER(source_object), res, &error))
+        xfdesktop_file_utils_async_handle_error(error, user_data);
+}
+
 void
 xfdesktop_file_utils_display_chooser_dialog(GFile *file,
                                             gboolean open,
                                             GdkScreen *screen,
                                             GtkWindow *parent)
 {
-    DBusGProxy *fileman_proxy;
+    XfdesktopFileManager *fileman_proxy;
 
     g_return_if_fail(G_IS_FILE(file));
     g_return_if_fail(GDK_IS_SCREEN(screen) || GTK_IS_WINDOW(parent));
@@ -1222,30 +1324,30 @@ xfdesktop_file_utils_display_chooser_dialog(GFile *file,
     fileman_proxy = xfdesktop_file_utils_peek_filemanager_proxy();
     if(fileman_proxy) {
         gchar *uri = g_file_get_uri(file);
-        gchar *display_name = gdk_screen_make_display_name(screen);
         gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
 
         xfdesktop_file_utils_set_window_cursor(parent, GDK_WATCH);
 
-        xfdesktop_file_manager_proxy_display_chooser_dialog_async(fileman_proxy,
-                                                                  uri, open,
-                                                                  display_name,
-                                                                  startup_id,
-                                                                  (xfdesktop_file_manager_proxy_display_chooser_dialog_reply)xfdesktop_file_utils_async_cb,
-                                                                  parent);
+        xfdesktop_file_manager_call_display_chooser_dialog(fileman_proxy,
+                                                           uri, open,
+                                                           "",
+                                                           startup_id,
+                                                           NULL,
+                                                           display_chooser_cb,
+                                                           parent);
 
         xfdesktop_file_utils_set_window_cursor(parent, GDK_LEFT_PTR);
 
         g_free(startup_id);
         g_free(uri);
-        g_free(display_name);
     } else {
         xfce_message_dialog(parent,
-                            _("Launch Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("Launch Error"), "dialog-error",
                             _("The application chooser could not be opened"),
                             _("This feature requires a file manager service to "
                               "be present (such as the one supplied by Thunar)."),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            NULL);
     }
 }
 
@@ -1255,7 +1357,7 @@ xfdesktop_file_utils_transfer_file(GdkDragAction action,
                                    GFile *target_file,
                                    GdkScreen *screen)
 {
-    DBusGProxy *fileman_proxy;
+    XfdesktopFileManager *fileman_proxy;
 
     g_return_if_fail(G_IS_FILE(source_file));
     g_return_if_fail(G_IS_FILE(target_file));
@@ -1269,30 +1371,29 @@ xfdesktop_file_utils_transfer_file(GdkDragAction action,
         GError *error = NULL;
         gchar *source_uris[2] = { g_file_get_uri(source_file), NULL };
         gchar *target_uris[2] = { g_file_get_uri(target_file), NULL };
-        gchar *display_name = gdk_screen_make_display_name(screen);
         gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
 
         switch(action) {
             case GDK_ACTION_MOVE:
-                xfdesktop_file_manager_proxy_move_into(fileman_proxy, NULL,
-                                                       (const gchar **)source_uris,
-                                                       (const gchar *)target_uris[0],
-                                                       display_name, startup_id,
-                                                       &error);
+                xfdesktop_file_manager_call_move_into_sync(fileman_proxy, "",
+                                                           (const gchar **)source_uris,
+                                                           (const gchar *)target_uris[0],
+                                                           "", startup_id,
+                                                           NULL, &error);
                 break;
             case GDK_ACTION_COPY:
-                xfdesktop_file_manager_proxy_copy_to(fileman_proxy, NULL,
-                                                     (const gchar **)source_uris,
-                                                     (const gchar **)target_uris,
-                                                     display_name, startup_id,
-                                                     &error);
+                xfdesktop_file_manager_call_copy_to_sync(fileman_proxy, "",
+                                                         (const gchar **)source_uris,
+                                                         (const gchar **)target_uris,
+                                                         "", startup_id,
+                                                         NULL, &error);
                 break;
             case GDK_ACTION_LINK:
-                xfdesktop_file_manager_proxy_link_into(fileman_proxy, NULL,
-                                                       (const gchar **)source_uris,
-                                                       (const gchar *)target_uris[0],
-                                                       display_name, startup_id,
-                                                       &error);
+                xfdesktop_file_manager_call_link_into_sync(fileman_proxy, "",
+                                                           (const gchar **)source_uris,
+                                                           (const gchar *)target_uris[0],
+                                                           "", startup_id,
+                                                           NULL, &error);
                 break;
             default:
                 g_warning("Unsupported transfer action");
@@ -1300,25 +1401,26 @@ xfdesktop_file_utils_transfer_file(GdkDragAction action,
 
         if(error) {
             xfce_message_dialog(NULL,
-                                _("Transfer Error"), GTK_STOCK_DIALOG_ERROR,
+                                _("Transfer Error"), "dialog-error",
                                 _("The file transfer could not be performed"),
-                                error->message, GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
+                                error->message,
+                                XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
                                 NULL);
 
-            g_error_free(error);
+            g_clear_error(&error);
         }
 
         g_free(startup_id);
-        g_free(display_name);
         g_free(target_uris[0]);
         g_free(source_uris[0]);
     } else {
         xfce_message_dialog(NULL,
-                            _("Transfer Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("Transfer Error"), "dialog-error",
                             _("The file transfer could not be performed"),
                             _("This feature requires a file manager service to "
                               "be present (such as the one supplied by Thunar)."),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            NULL);
     }
 }
 
@@ -1328,7 +1430,7 @@ xfdesktop_file_utils_transfer_files(GdkDragAction action,
                                     GList *target_files,
                                     GdkScreen *screen)
 {
-    DBusGProxy *fileman_proxy;
+    XfdesktopFileManager *fileman_proxy;
     gboolean success = TRUE;
 
     g_return_val_if_fail(source_files != NULL && G_IS_FILE(source_files->data), FALSE);
@@ -1343,30 +1445,29 @@ xfdesktop_file_utils_transfer_files(GdkDragAction action,
         GError *error = NULL;
         gchar **source_uris = xfdesktop_file_utils_file_list_to_uri_array(source_files);
         gchar **target_uris = xfdesktop_file_utils_file_list_to_uri_array(target_files);
-        gchar *display_name = gdk_screen_make_display_name(screen);
         gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
 
         switch(action) {
             case GDK_ACTION_MOVE:
-                xfdesktop_file_manager_proxy_move_into(fileman_proxy, NULL,
-                                                       (const gchar **)source_uris,
-                                                       (const gchar *)target_uris[0],
-                                                       display_name, startup_id,
-                                                       &error);
+                xfdesktop_file_manager_call_move_into_sync(fileman_proxy, "",
+                                                           (const gchar **)source_uris,
+                                                           (const gchar *)target_uris[0],
+                                                           "", startup_id,
+                                                           NULL, &error);
                 break;
             case GDK_ACTION_COPY:
-                xfdesktop_file_manager_proxy_copy_to(fileman_proxy, NULL,
-                                                     (const gchar **)source_uris,
-                                                     (const gchar **)target_uris,
-                                                     display_name, startup_id,
-                                                     &error);
+                xfdesktop_file_manager_call_copy_to_sync(fileman_proxy, "",
+                                                         (const gchar **)source_uris,
+                                                         (const gchar **)target_uris,
+                                                         "", startup_id,
+                                                         NULL, &error);
                 break;
             case GDK_ACTION_LINK:
-                xfdesktop_file_manager_proxy_link_into(fileman_proxy, NULL,
-                                                       (const gchar **)source_uris,
-                                                       (const gchar *)target_uris[0],
-                                                       display_name, startup_id,
-                                                       &error);
+                xfdesktop_file_manager_call_link_into_sync(fileman_proxy, "",
+                                                          (const gchar **)source_uris,
+                                                          (const gchar *)target_uris[0],
+                                                          "", startup_id,
+                                                          NULL, &error);
                 break;
             default:
                 g_warning("Unsupported transfer action");
@@ -1376,27 +1477,28 @@ xfdesktop_file_utils_transfer_files(GdkDragAction action,
 
         if(error) {
             xfce_message_dialog(NULL,
-                                _("Transfer Error"), GTK_STOCK_DIALOG_ERROR,
+                                _("Transfer Error"), "dialog-error",
                                 _("The file transfer could not be performed"),
-                                error->message, GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT,
+                                error->message,
+                                XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
                                 NULL);
 
-            g_error_free(error);
+            g_clear_error(&error);
 
             success = FALSE;
         }
 
         g_free(startup_id);
-        g_free(display_name);
         g_free(target_uris[0]);
         g_free(source_uris[0]);
     } else {
         xfce_message_dialog(NULL,
-                            _("Transfer Error"), GTK_STOCK_DIALOG_ERROR,
+                            _("Transfer Error"), "dialog-error",
                             _("The file transfer could not be performed"),
                             _("This feature requires a file manager service to "
                               "be present (such as the one supplied by Thunar)."),
-                            GTK_STOCK_CLOSE, GTK_RESPONSE_ACCEPT, NULL);
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            NULL);
 
         success = FALSE;
     }
@@ -1405,11 +1507,14 @@ xfdesktop_file_utils_transfer_files(GdkDragAction action,
 }
 
 static gint dbus_ref_cnt = 0;
-static DBusGConnection *dbus_gconn = NULL;
-static DBusGProxy *dbus_trash_proxy = NULL;
-static DBusGProxy *dbus_filemanager_proxy = NULL;
-static DBusGProxy *dbus_thunar_proxy = NULL;
-
+static GDBusConnection *dbus_gconn = NULL;
+static XfdesktopTrash *dbus_trash_proxy = NULL;
+static XfdesktopFileManager *dbus_filemanager_proxy = NULL;
+#ifdef HAVE_THUNARX
+static XfdesktopThunar *dbus_thunar_proxy = NULL;
+#else
+static GDBusProxy *dbus_thunar_proxy = NULL;
+#endif
 gboolean
 xfdesktop_file_utils_dbus_init(void)
 {
@@ -1419,31 +1524,35 @@ xfdesktop_file_utils_dbus_init(void)
         return TRUE;
 
     if(!dbus_gconn) {
-        dbus_gconn = dbus_g_bus_get(DBUS_BUS_SESSION, NULL);
-        if(G_LIKELY(dbus_gconn)) {
-            /* dbus's default is brain-dead */
-            DBusConnection *dconn = dbus_g_connection_get_connection(dbus_gconn);
-            dbus_connection_set_exit_on_disconnect(dconn, FALSE);
-        }
+        dbus_gconn = g_bus_get_sync(G_BUS_TYPE_SESSION, NULL, NULL);
     }
 
-    if(G_LIKELY(dbus_gconn)) {
-        dbus_trash_proxy = dbus_g_proxy_new_for_name(dbus_gconn,
-                                                     "org.xfce.FileManager",
-                                                     "/org/xfce/FileManager",
-                                                     "org.xfce.Trash");
-        dbus_g_proxy_add_signal(dbus_trash_proxy, "TrashChanged",
-                                G_TYPE_BOOLEAN, G_TYPE_INVALID);
+    if(dbus_gconn) {
+        dbus_trash_proxy = xfdesktop_trash_proxy_new_sync(dbus_gconn,
+                                                          G_DBUS_PROXY_FLAGS_NONE,
+                                                          "org.xfce.FileManager",
+                                                          "/org/xfce/FileManager",
+                                                          NULL,
+                                                          NULL);
 
-        dbus_filemanager_proxy = dbus_g_proxy_new_for_name(dbus_gconn,
-                                                           "org.xfce.FileManager",
-                                                           "/org/xfce/FileManager",
-                                                           "org.xfce.FileManager");
+        dbus_filemanager_proxy = xfdesktop_file_manager_proxy_new_sync(dbus_gconn,
+                                                                       G_DBUS_PROXY_FLAGS_NONE,
+                                                                       "org.xfce.FileManager",
+                                                                       "/org/xfce/FileManager",
+                                                                       NULL,
+                                                                       NULL);
 
-        dbus_thunar_proxy = dbus_g_proxy_new_for_name(dbus_gconn,
-                                                      "org.xfce.FileManager",
-                                                      "/org/xfce/FileManager",
-                                                      "org.xfce.Thunar");
+#ifdef HAVE_THUNARX
+        dbus_thunar_proxy = xfdesktop_thunar_proxy_new_sync(dbus_gconn,
+                                                            G_DBUS_PROXY_FLAGS_NONE,
+                                                            "org.xfce.FileManager",
+                                                            "/org/xfce/FileManager",
+                                                            NULL,
+                                                            NULL);
+#else
+        dbus_thunar_proxy = NULL;
+#endif
+
     } else {
         ret = FALSE;
         dbus_ref_cnt = 0;
@@ -1452,23 +1561,31 @@ xfdesktop_file_utils_dbus_init(void)
     return ret;
 }
 
-DBusGProxy *
+static XfdesktopTrash *
 xfdesktop_file_utils_peek_trash_proxy(void)
 {
     return dbus_trash_proxy;
 }
 
-DBusGProxy *
+static XfdesktopFileManager *
 xfdesktop_file_utils_peek_filemanager_proxy(void)
 {
     return dbus_filemanager_proxy;
 }
 
-DBusGProxy *
+#ifdef HAVE_THUNARX
+static XfdesktopThunar *
 xfdesktop_file_utils_peek_thunar_proxy(void)
 {
     return dbus_thunar_proxy;
 }
+#else
+static gpointer
+xfdesktop_file_utils_peek_thunar_proxy(void)
+{
+    return NULL;
+}
+#endif
 
 void
 xfdesktop_file_utils_dbus_cleanup(void)
@@ -1482,10 +1599,8 @@ xfdesktop_file_utils_dbus_cleanup(void)
         g_object_unref(G_OBJECT(dbus_filemanager_proxy));
     if(dbus_thunar_proxy)
         g_object_unref(G_OBJECT(dbus_thunar_proxy));
-
-    /* we aren't going to unref dbus_gconn because dbus appears to have a
-     * memleak in dbus_connection_setup_with_g_main().  really; the comments
-     * in dbus-gmain.c admit this. */
+    if(dbus_gconn)
+        g_object_unref(G_OBJECT(dbus_gconn));
 }
 
 

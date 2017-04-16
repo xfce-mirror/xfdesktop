@@ -128,6 +128,7 @@
         <child>
           <object class="GtkAlignment" id="alignment1">
             <property name="visible">True</property>
+            <property name="vexpand">True</property>
             <child>
               <object class="GtkNotebook" id="notebook_settings">
                 <property name="visible">True</property>

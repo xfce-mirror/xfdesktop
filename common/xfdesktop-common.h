@@ -38,8 +38,7 @@
 #define DEFAULT_BACKDROP         DATADIR "/backgrounds/xfce/xfce-teal.jpg"
 #define DEFAULT_ICON_FONT_SIZE   12
 #define DEFAULT_ICON_SIZE        48
-#define ITHEME_FLAGS             (GTK_ICON_LOOKUP_USE_BUILTIN \
-                                  | GTK_ICON_LOOKUP_GENERIC_FALLBACK)
+#define ITHEME_FLAGS             (GTK_ICON_LOOKUP_USE_BUILTIN)
 
 #define LIST_TEXT                "# xfce backdrop list"
 #define XFDESKTOP_SELECTION_FMT  "XFDESKTOP_SELECTION_%d"
@@ -90,6 +89,8 @@
 
 G_BEGIN_DECLS
 
+gchar* xfdesktop_get_monitor_name_from_gtk_widget(GtkWidget *widget);
+
 gint xfdesktop_compare_paths(GFile *a, GFile *b);
 
 gboolean xfdesktop_image_file_is_valid(const gchar *filename);
@@ -98,9 +99,13 @@ gchar *xfdesktop_get_file_mimetype(const gchar *file);
 
 gint xfce_translate_image_styles(gint input);
 
-guint32 xfdesktop_popup_keyboard_grab_available(GdkWindow *win);
-
 gchar* xfdesktop_remove_whitspaces(gchar* str);
+
+GtkWidget* xfdesktop_menu_create_menu_item_with_markup(const gchar *name,
+                                                       GtkWidget   *image);
+
+GtkWidget* xfdesktop_menu_create_menu_item_with_mnemonic(const gchar *name,
+                                                         GtkWidget   *image);
 
 #if defined(G_HAVE_ISO_VARARGS)
 

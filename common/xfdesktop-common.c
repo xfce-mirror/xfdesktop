@@ -53,6 +53,20 @@
 #include "xfdesktop-common.h"
 #include "xfce-backdrop.h" /* for XfceBackdropImageStyle */
 
+/* Free the string whe done using it */
+gchar*
+xfdesktop_get_monitor_name_from_gtk_widget(GtkWidget *widget)
+{
+    GdkWindow     *window = NULL;
+    GdkDisplay    *display = NULL;
+    GdkMonitor    *monitor = NULL;
+
+    window = gtk_widget_get_window(widget);
+    display = gdk_window_get_display(window);
+    monitor = gdk_display_get_monitor_at_window(display, window);
+
+    return g_strdup(gdk_monitor_get_model(monitor));
+}
 
 gint
 xfdesktop_compare_paths(GFile *a, GFile *b)
@@ -153,45 +167,6 @@ xfce_translate_image_styles(gint input)
     return style;
 }
 
-/* Code taken from xfwm4/src/menu.c:grab_available().  This should fix the case
- * where binding 'xfdesktop -menu' to a keyboard shortcut sometimes works and
- * sometimes doesn't.  Credit for this one goes to Olivier.
- * Returns the grab time if successful, 0 on failure.
- */
-guint32
-xfdesktop_popup_keyboard_grab_available(GdkWindow *win)
-{
-    GdkGrabStatus grab;
-    gboolean grab_failed = FALSE;
-    guint32 timestamp;
-    gint i = 0;
-
-    TRACE("entering");
-
-    timestamp = gtk_get_current_event_time();
-
-    grab = gdk_keyboard_grab(win, TRUE, timestamp);
-
-    while((i++ < 2500) && (grab_failed = ((grab != GDK_GRAB_SUCCESS))))
-    {
-        TRACE ("keyboard grab not available yet, reason: %d, waiting... (%i)", grab, i);
-        if(grab == GDK_GRAB_INVALID_TIME)
-            break;
-
-        g_usleep (100);
-        if(grab != GDK_GRAB_SUCCESS) {
-            grab = gdk_keyboard_grab(win, TRUE, timestamp);
-        }
-    }
-
-    if (grab == GDK_GRAB_SUCCESS) {
-        gdk_keyboard_ungrab(timestamp);
-    } else {
-        timestamp = 0;
-    }
-
-    return timestamp;
-}
 
 
 /*
@@ -218,6 +193,71 @@ xfdesktop_remove_whitspaces(gchar* str)
 
     return str;
 }
+
+
+
+/* Adapted from garcon_gtk_menu_create_menu_item because I don't want
+ * to write it over and over.
+ */
+GtkWidget*
+xfdesktop_menu_create_menu_item_with_markup(const gchar *name,
+                                            GtkWidget   *image)
+{
+    GtkWidget *mi;
+    GtkWidget *box;
+    GtkWidget *label;
+
+    /* create item */
+    mi = gtk_menu_item_new ();
+    label = gtk_label_new (NULL);
+    gtk_label_set_markup (GTK_LABEL (label), name);
+    gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
+    gtk_label_set_xalign (GTK_LABEL (label), 0.0);
+
+    box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+    gtk_widget_set_halign (label, GTK_ALIGN_START);
+
+    gtk_widget_show (image);
+
+    /* Add the image and label to the box, add the box to the menu item */
+    gtk_box_pack_start (GTK_BOX (box), image, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (box), label, TRUE, TRUE, 6);
+    gtk_widget_show_all (box);
+    gtk_container_add (GTK_CONTAINER (mi), box);
+
+    return mi;
+}
+
+
+
+GtkWidget*
+xfdesktop_menu_create_menu_item_with_mnemonic(const gchar *name,
+                                              GtkWidget   *image)
+{
+    GtkWidget *mi;
+    GtkWidget *box;
+    GtkWidget *label;
+
+    /* create item */
+    mi = gtk_menu_item_new ();
+    label = gtk_label_new_with_mnemonic (name);
+    gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
+    gtk_label_set_xalign (GTK_LABEL (label), 0.0);
+
+    box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+    gtk_widget_set_halign (label, GTK_ALIGN_START);
+
+    gtk_widget_show (image);
+
+    /* Add the image and label to the box, add the box to the menu item */
+    gtk_box_pack_start (GTK_BOX (box), image, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (box), label, TRUE, TRUE, 6);
+    gtk_widget_show_all (box);
+    gtk_container_add (GTK_CONTAINER (mi), box);
+
+    return mi;
+}
+
 
 
 #ifdef G_ENABLE_DEBUG

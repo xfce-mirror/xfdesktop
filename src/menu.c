@@ -35,37 +35,17 @@
 
 #include <libxfce4util/libxfce4util.h>
 
+#include "xfdesktop-common.h"
 #include "menu.h"
 #ifdef USE_DESKTOP_MENU
-#include "xfce-desktop-menu.h"
+#include <garcon/garcon.h>
+#include <garcon-gtk/garcon-gtk.h>
 #endif
 
 #ifdef USE_DESKTOP_MENU
-static XfceDesktopMenu *desktop_menu = NULL;
+static gboolean show_desktop_menu = TRUE;
 static gboolean show_desktop_menu_icons = TRUE;
-#endif
-
-#ifdef USE_DESKTOP_MENU
-static void
-_stop_menu_module(void) {
-    if(desktop_menu) {
-        xfce_desktop_menu_destroy(desktop_menu);
-        desktop_menu = NULL;
-    }
-}
-
-static gboolean
-_start_menu_module(void)
-{
-    desktop_menu = xfce_desktop_menu_new(TRUE);
-    if(desktop_menu) {
-        xfce_desktop_menu_set_show_icons(desktop_menu, show_desktop_menu_icons);
-        return TRUE;
-    } else {
-        g_warning("%s: Unable to initialise menu module. Right-click menu will be unavailable.\n", PACKAGE);
-        return FALSE;
-    }
-}
+static GarconMenu *garcon_menu = NULL;
 #endif
 
 #ifdef USE_DESKTOP_MENU
@@ -74,47 +54,39 @@ menu_populate(XfceDesktop *desktop,
               GtkMenuShell *menu,
               gpointer user_data)
 {
-    GtkWidget *desktop_menu_widget;
-    GList *menu_children;
-    
+    GtkWidget *mi, *img = NULL;
+    GtkIconTheme *itheme = gtk_icon_theme_get_default();
+    GtkWidget *desktop_menu = NULL;
+
     TRACE("ENTERING");
-    
-    if(!desktop_menu)
+
+    if(!show_desktop_menu)
         return;
-    
-    /* check to see if the menu is empty.  if not, add the desktop menu
-     * to a submenu */
-    menu_children = gtk_container_get_children(GTK_CONTAINER(menu));
-    if(menu_children) {
-        g_list_free(menu_children);
-        
-        desktop_menu_widget = xfce_desktop_menu_get_widget(desktop_menu);
-        if(desktop_menu_widget) {
-            GtkWidget *mi, *img = NULL;
-            GtkIconTheme *itheme = gtk_icon_theme_get_default();
-            
-            mi = gtk_separator_menu_item_new();
-            gtk_widget_show(mi);
-            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-            
-            if(gtk_icon_theme_has_icon(itheme, "applications-other")) {
-                img = gtk_image_new_from_icon_name("applications-other",
-                                                   GTK_ICON_SIZE_MENU);
-                gtk_widget_show(img);
-            }
-            
-            mi = gtk_image_menu_item_new_with_mnemonic(_("_Applications"));
-            gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
-            gtk_widget_show(mi);
-            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-            
-            gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi), desktop_menu_widget);
-        }
-    } else {
-        /* just get the menu as a list of toplevel GtkMenuItems instead of
-         * a toplevel menu */
-        xfce_desktop_menu_populate_menu(desktop_menu, GTK_WIDGET(menu));
+
+    if(garcon_menu == NULL) {
+        garcon_menu = garcon_menu_new_applications();
     }
+    desktop_menu = garcon_gtk_menu_new (garcon_menu);
+
+    mi = gtk_separator_menu_item_new();
+    gtk_widget_show(mi);
+    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+    
+    if(gtk_icon_theme_has_icon(itheme, "applications-other")) {
+        img = gtk_image_new_from_icon_name("applications-other",
+                                           GTK_ICON_SIZE_MENU);
+        gtk_widget_show(img);
+    }
+
+    mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Applications"), img);
+    gtk_widget_show(mi);
+
+    XF_DEBUG("show desktop menu icons %s", show_desktop_menu_icons ? "TRUE" : "FALSE");
+    garcon_gtk_menu_set_show_menu_icons(GARCON_GTK_MENU(desktop_menu), show_desktop_menu_icons);
+
+    gtk_menu_item_set_submenu (GTK_MENU_ITEM(mi), desktop_menu);
+
+    gtk_menu_shell_append(menu, mi);
 }
 #endif /* USE_DESKTOP_MENU */
 
@@ -126,24 +98,13 @@ menu_settings_changed(XfconfChannel *channel,
                       gpointer user_data)
 {
     if(!strcmp(property, "/desktop-menu/show")) {
-        if(!G_VALUE_TYPE(value) || g_value_get_boolean(value)) {
-            if(!desktop_menu) {
-                _start_menu_module();
-                if(desktop_menu && !show_desktop_menu_icons)
-                    xfce_desktop_menu_set_show_icons(desktop_menu, FALSE);
-            }
-        } else {
-            if(desktop_menu)
-                _stop_menu_module();
-        }
+        show_desktop_menu = G_VALUE_TYPE(value)
+                            ? g_value_get_boolean(value)
+                            : TRUE;
     } else if(!strcmp(property, "/desktop-menu/show-icons")) {
         show_desktop_menu_icons = G_VALUE_TYPE(value)
                                   ? g_value_get_boolean(value)
                                   : TRUE;
-        if(desktop_menu) {
-            xfce_desktop_menu_set_show_icons(desktop_menu,
-                                             show_desktop_menu_icons);
-        }
     }
 }
 #endif
@@ -152,17 +113,17 @@ void
 menu_init(XfconfChannel *channel)
 {    
 #ifdef USE_DESKTOP_MENU
-    if(!channel
-       || xfconf_channel_get_bool(channel, "/desktop-menu/show", TRUE))
+    if(!channel || xfconf_channel_get_bool(channel, "/desktop-menu/show", TRUE))
     {
+        show_desktop_menu = TRUE;
         if(channel) {
             show_desktop_menu_icons = xfconf_channel_get_bool(channel,
                                                               "/desktop-menu/show-icons",
                                                               TRUE);
         }
-        _start_menu_module();
-    } else
-        _stop_menu_module();
+    } else {
+        show_desktop_menu = FALSE;
+    }
 
     if(channel) {
         g_signal_connect(G_OBJECT(channel), "property-changed",
@@ -182,18 +143,6 @@ menu_attach(XfceDesktop *desktop)
 }
 
 void
-menu_reload(void)
-{
-#ifdef USE_DESKTOP_MENU
-    if(desktop_menu)
-        xfce_desktop_menu_force_regen(desktop_menu);
-#endif
-}
-
-void
 menu_cleanup(void)
 {
-#ifdef USE_DESKTOP_MENU
-    _stop_menu_module();
-#endif
 }

@@ -172,33 +172,6 @@ _boxblur (guchar  *buffer,
 
 static const cairo_user_data_key_t original_cr_key;
 
-static gboolean
-gdk_cairo_get_clip_rectangle (cairo_t      *cr,
-                              cairo_rectangle_int_t *rect)
-{
-  double x1, y1, x2, y2;
-  gboolean clip_exists;
-
-  cairo_clip_extents (cr, &x1, &y1, &x2, &y2);
-
-  clip_exists = x1 < x2 && y1 < y2;
-
-  if (rect)
-  {
-    x1 = floor (x1);
-    y1 = floor (y1);
-    x2 = ceil (x2);
-    y2 = ceil (y2);
-
-    rect->x = CLAMP (x1, G_MININT, G_MAXINT);
-    rect->y = CLAMP (y1, G_MININT, G_MAXINT);
-    rect->width = CLAMP (x2 - x1, G_MININT, G_MAXINT);
-    rect->height = CLAMP (y2 - y1, G_MININT, G_MAXINT);
-  }
-
-  return clip_exists;
-}
-
 cairo_t *
 gtk_css_shadow_value_start_drawing (cairo_t *cr, gdouble radius)
 {

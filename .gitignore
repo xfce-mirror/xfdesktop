@@ -12,6 +12,7 @@ stamp*
 config.log
 config.h
 config.cache
+config.h.in~
 autom4te.cache
 config.status
 stamp-h1
@@ -49,6 +50,7 @@ settings/xfce-backdrop-settings.desktop
 settings/xfdesktop-settings
 settings/xfdesktop-settings-appearance-frame-ui.h
 settings/xfdesktop-settings-ui.h
+settings/xfce-backdrop-settings.desktop.in
 src/*-enum-types.*
 src/xfdesktop
 src/xfdesktop-dbus-bindings-filemanager.h
@@ -57,7 +59,17 @@ src/xfdesktop-marshal.c
 src/xfdesktop-marshal.h
 common/xfdesktop-marshal.c
 common/xfdesktop-marshal.h
+common/tumbler.c
+common/tumbler.h
+src/xfdesktop-file-manager-proxy.c
 src/xfdesktop-file-manager-proxy.h
+src/xfdesktop-thunar-proxy.c
 src/xfdesktop-thunar-proxy.h
+src/xfdesktop-trash-proxy.c
 src/xfdesktop-trash-proxy.h
+src/xfdesktop-file-manager-proxy.c
+src/xfdesktop-thunar-proxy.c
+src/xfdesktop-trash-proxy.c
 ChangeLog
+config.h.in~
+cov-int/

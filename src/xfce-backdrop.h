@@ -107,14 +107,14 @@ XfceBackdropColorStyle xfce_backdrop_get_color_style
                                          (XfceBackdrop *backdrop);
 
 void xfce_backdrop_set_first_color       (XfceBackdrop *backdrop,
-                                          const GdkColor *color);
+                                          const GdkRGBA *color);
 void xfce_backdrop_get_first_color       (XfceBackdrop *backdrop,
-                                          GdkColor *color);
+                                          GdkRGBA *color);
 
 void xfce_backdrop_set_second_color      (XfceBackdrop *backdrop,
-                                          const GdkColor *color);
+                                          const GdkRGBA *color);
 void xfce_backdrop_get_second_color      (XfceBackdrop *backdrop,
-                                          GdkColor *color);
+                                          GdkRGBA *color);
 
 void xfce_backdrop_set_image_style       (XfceBackdrop *backdrop,
                                           XfceBackdropImageStyle style);

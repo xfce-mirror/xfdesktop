@@ -36,12 +36,11 @@
 #include <gtk/gtk.h>
 #include <gio/gio.h>
 
-#include <dbus/dbus-glib.h>
-
 #include <libxfce4util/libxfce4util.h>
 #include "xfdesktop-thumbnailer.h"
 #include "xfdesktop-marshal.h"
 #include "xfdesktop-common.h"
+#include "tumbler.h"
 
 static void xfdesktop_thumbnailer_init(GObject *);
 static void xfdesktop_thumbnailer_class_init(GObjectClass *);
@@ -49,13 +48,13 @@ static void xfdesktop_thumbnailer_class_init(GObjectClass *);
 static void xfdesktop_thumbnailer_dispose(GObject *object);
 static void xfdesktop_thumbnailer_finalize(GObject *object);
 
-static void xfdesktop_thumbnailer_request_finished_dbus(DBusGProxy *proxy,
-                                                        gint handle,
+static void xfdesktop_thumbnailer_request_finished_dbus(TumblerThumbnailer1 *proxy,
+                                                        guint arg_handle,
                                                         gpointer data);
 
-static void xfdesktop_thumbnailer_thumbnail_ready_dbus(DBusGProxy *proxy,
-                                                       gint handle,
-                                                       const gchar **uri,
+static void xfdesktop_thumbnailer_thumbnail_ready_dbus(TumblerThumbnailer1 *proxy,
+                                                       guint handle,
+                                                       const gchar *const *uri,
                                                        gpointer data);
 
 static gboolean xfdesktop_thumbnailer_queue_request_timer(XfdesktopThumbnailer *thumbnailer);
@@ -102,12 +101,12 @@ xfdesktop_thumbnailer_get_type(void)
 
 struct _XfdesktopThumbnailerPriv
 {
-    DBusGProxy               *proxy;
+    TumblerThumbnailer1      *proxy;
 
     GSList                   *queue;
     gchar                   **supported_mimetypes;
     gboolean                  big_thumbnails;
-    gint                      handle;
+    guint                     handle;
 
     gint                      request_timer_id;
 };
@@ -116,54 +115,47 @@ static void
 xfdesktop_thumbnailer_init(GObject *object)
 {
     XfdesktopThumbnailer *thumbnailer;
-    DBusGConnection      *connection;
+    GDBusConnection      *connection;
 
     thumbnailer = XFDESKTOP_THUMBNAILER(object);
 
     thumbnailer->priv = g_new0(XfdesktopThumbnailerPriv, 1);
 
-    connection = dbus_g_bus_get(DBUS_BUS_SESSION, NULL);
+    connection = g_bus_get_sync(G_BUS_TYPE_SESSION, NULL, NULL);
 
     if(connection) {
-        thumbnailer->priv->proxy = dbus_g_proxy_new_for_name(
+        thumbnailer->priv->proxy = tumbler_thumbnailer1_proxy_new_sync(
                                     connection,
+                                    G_DBUS_PROXY_FLAGS_NONE,
                                     "org.freedesktop.thumbnails.Thumbnailer1",
                                     "/org/freedesktop/thumbnails/Thumbnailer1",
-                                    "org.freedesktop.thumbnails.Thumbnailer1");
+                                    NULL,
+                                    NULL);
 
         if(thumbnailer->priv->proxy) {
             gchar **supported_uris = NULL;
             gchar **supported_flavors = NULL;
 
-            dbus_g_object_register_marshaller(
-                    (GClosureMarshal) xfdesktop_marshal_VOID__UINT_BOXED,
-                    G_TYPE_NONE, G_TYPE_UINT,
-                    G_TYPE_STRV, G_TYPE_INVALID);
 
-            dbus_g_proxy_add_signal(
-                    thumbnailer->priv->proxy,
-                    "Finished", G_TYPE_UINT, G_TYPE_INVALID);
-            dbus_g_proxy_add_signal(
-                    thumbnailer->priv->proxy,
-                    "Ready", G_TYPE_UINT, G_TYPE_STRV, G_TYPE_INVALID);
+            g_signal_connect(thumbnailer->priv->proxy,
+                             "finished",
+                             G_CALLBACK (xfdesktop_thumbnailer_request_finished_dbus),
+                             thumbnailer);
+            g_signal_connect(thumbnailer->priv->proxy,
+                             "ready",
+                             G_CALLBACK(xfdesktop_thumbnailer_thumbnail_ready_dbus),
+                             thumbnailer);
 
-            dbus_g_proxy_connect_signal(
-                    thumbnailer->priv->proxy,
-                    "Finished", G_CALLBACK (xfdesktop_thumbnailer_request_finished_dbus),
-                    thumbnailer, NULL);
-            dbus_g_proxy_connect_signal(
-                    thumbnailer->priv->proxy,
-                    "Ready", G_CALLBACK(xfdesktop_thumbnailer_thumbnail_ready_dbus),
-                    thumbnailer, NULL);
+            tumbler_thumbnailer1_call_get_supported_sync(thumbnailer->priv->proxy,
+                                                         &supported_uris,
+                                                         &thumbnailer->priv->supported_mimetypes,
+                                                         NULL,
+                                                         NULL);
 
-            dbus_g_proxy_call(thumbnailer->priv->proxy, "GetSupported", NULL, G_TYPE_INVALID,
-                              G_TYPE_STRV, &supported_uris,
-                              G_TYPE_STRV, &thumbnailer->priv->supported_mimetypes,
-                              G_TYPE_INVALID);
-
-            dbus_g_proxy_call(thumbnailer->priv->proxy, "GetFlavors", NULL, G_TYPE_INVALID,
-                              G_TYPE_STRV, &supported_flavors,
-                              G_TYPE_INVALID);
+            tumbler_thumbnailer1_call_get_flavors_sync(thumbnailer->priv->proxy,
+                                                       &supported_flavors,
+                                                       NULL,
+                                                       NULL);
 
             if(supported_flavors != NULL) {
                 gint n;
@@ -181,7 +173,7 @@ xfdesktop_thumbnailer_init(GObject *object)
             g_strfreev(supported_uris);
         }
 
-        dbus_g_connection_unref(connection);
+        g_object_unref(connection);
     }
 }
 
@@ -322,11 +314,10 @@ xfdesktop_thumbnailer_queue_thumbnail(XfdesktopThumbnailer *thumbnailer,
         g_source_remove(thumbnailer->priv->request_timer_id);
 
         if(thumbnailer->priv->handle && thumbnailer->priv->proxy != NULL) {
-            if(dbus_g_proxy_call(thumbnailer->priv->proxy,
-                                 "Dequeue",
-                                 NULL,
-                                 G_TYPE_UINT, thumbnailer->priv->handle,
-                                 G_TYPE_INVALID) == FALSE)
+            if(tumbler_thumbnailer1_call_dequeue_sync(thumbnailer->priv->proxy,
+                                                      thumbnailer->priv->handle,
+                                                      NULL,
+                                                      NULL) == FALSE)
             {
                 /* If this fails it usually means there's a thumbnail already
                  * being processed, no big deal */
@@ -379,11 +370,10 @@ xfdesktop_thumbnailer_dequeue_thumbnail(XfdesktopThumbnailer *thumbnailer,
         g_source_remove(thumbnailer->priv->request_timer_id);
 
         if(thumbnailer->priv->handle && thumbnailer->priv->proxy) {
-            if(dbus_g_proxy_call(thumbnailer->priv->proxy,
-                                 "Dequeue",
-                                 NULL,
-                                 G_TYPE_UINT, thumbnailer->priv->handle,
-                                 G_TYPE_INVALID) == FALSE)
+            if(tumbler_thumbnailer1_call_dequeue_sync(thumbnailer->priv->proxy,
+                                                      thumbnailer->priv->handle,
+                                                      NULL,
+                                                      NULL) == FALSE)
             {
                 /* If this fails it usually means there's a thumbnail already
                  * being processed, no big deal */
@@ -453,17 +443,15 @@ xfdesktop_thumbnailer_queue_request_timer(XfdesktopThumbnailer *thumbnailer)
         thumbnail_flavor = "normal";
 
     if(thumbnailer->priv->proxy != NULL) {
-        if(dbus_g_proxy_call(thumbnailer->priv->proxy,
-                             "Queue",
-                             &error,
-                             G_TYPE_STRV, uris,
-                             G_TYPE_STRV, mimetypes,
-                             G_TYPE_STRING, thumbnail_flavor,
-                             G_TYPE_STRING, "default",
-                             G_TYPE_UINT, 0,
-                             G_TYPE_INVALID,
-                             G_TYPE_UINT, &thumbnailer->priv->handle,
-                             G_TYPE_INVALID) == FALSE)
+        if(tumbler_thumbnailer1_call_queue_sync(thumbnailer->priv->proxy,
+                                                (const gchar * const*)uris,
+                                                (const gchar * const*)mimetypes,
+                                                thumbnail_flavor,
+                                                "default",
+                                                0,
+                                                &thumbnailer->priv->handle,
+                                                NULL,
+                                                &error) == FALSE)
         {
             if(error != NULL)
                 g_warning("DBUS-call failed: %s", error->message);
@@ -484,9 +472,7 @@ xfdesktop_thumbnailer_queue_request_timer(XfdesktopThumbnailer *thumbnailer)
 
     g_free(uris);
     g_free(mimetypes);
-
-    if(error)
-        g_error_free(error);
+    g_clear_error(&error);
 
     thumbnailer->priv->request_timer_id = 0;
 
@@ -494,8 +480,8 @@ xfdesktop_thumbnailer_queue_request_timer(XfdesktopThumbnailer *thumbnailer)
 }
 
 static void
-xfdesktop_thumbnailer_request_finished_dbus(DBusGProxy *proxy,
-                                            gint handle,
+xfdesktop_thumbnailer_request_finished_dbus(TumblerThumbnailer1 *proxy,
+                                            guint arg_handle,
                                             gpointer data)
 {
     XfdesktopThumbnailer *thumbnailer = XFDESKTOP_THUMBNAILER(data);
@@ -506,9 +492,9 @@ xfdesktop_thumbnailer_request_finished_dbus(DBusGProxy *proxy,
 }
 
 static void
-xfdesktop_thumbnailer_thumbnail_ready_dbus(DBusGProxy *proxy,
-                                           gint handle,
-                                           const gchar **uri,
+xfdesktop_thumbnailer_thumbnail_ready_dbus(TumblerThumbnailer1 *proxy,
+                                           guint handle,
+                                           const gchar *const *uri,
                                            gpointer data)
 {
     XfdesktopThumbnailer *thumbnailer = XFDESKTOP_THUMBNAILER(data);
@@ -603,37 +589,45 @@ xfdesktop_thumbnailer_thumbnail_ready_dbus(DBusGProxy *proxy,
 void
 xfdesktop_thumbnailer_delete_thumbnail(XfdesktopThumbnailer *thumbnailer, gchar *src_file)
 {
-    DBusGConnection *connection;
-    gchar **uris;
+    GDBusConnection *connection;
+    GVariantBuilder builder;
     GFile *file;
     GError *error = NULL;
-    static DBusGProxy *cache = NULL;
+    static GDBusProxy *cache = NULL;
 
     if(!cache) {
-        connection = dbus_g_bus_get (DBUS_BUS_SESSION, NULL);
+        connection = g_bus_get_sync(G_BUS_TYPE_SESSION, NULL, NULL);
         if (connection != NULL) {
-            cache = dbus_g_proxy_new_for_name(connection,
-                                           "org.freedesktop.thumbnails.Cache1",
-                                           "/org/freedesktop/thumbnails/Cache1",
-                                           "org.freedesktop.thumbnails.Cache1");
+            cache = g_dbus_proxy_new_sync(connection,
+                                          G_DBUS_PROXY_FLAGS_NONE,
+                                          NULL,
+                                          "org.freedesktop.thumbnails.Cache1",
+                                          "/org/freedesktop/thumbnails/Cache1",
+                                          "org.freedesktop.thumbnails.Cache1",
+                                          NULL,
+                                          NULL);
 
-        dbus_g_connection_unref(connection);
+        g_object_unref(connection);
         }
     }
 
     file = g_file_new_for_path(src_file);
 
     if(cache) {
-        uris = g_new0 (gchar *, 2);
-        uris[0] = g_file_get_uri(file);
-        dbus_g_proxy_call(cache, "Delete", &error, G_TYPE_STRV, uris, G_TYPE_INVALID, G_TYPE_INVALID);
+        g_variant_builder_init(&builder, G_VARIANT_TYPE ("as"));
+        g_variant_builder_add(&builder, "s", g_file_get_uri(file));
+        g_dbus_proxy_call_sync(cache,
+                               "Delete",
+                               g_variant_new("(as)", &builder),
+                               G_DBUS_CALL_FLAGS_NONE,
+                               -1,
+                               NULL,
+                               &error);
         if(error != NULL) {
             g_warning("DBUS-call failed:%s", error->message);
         }
-        g_free(uris);
     }
 
     g_object_unref(file);
-    if(error)
-        g_error_free(error);
+    g_clear_error(&error);
 }
