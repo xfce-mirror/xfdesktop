@@ -89,6 +89,8 @@
 
 G_BEGIN_DECLS
 
+gchar* xfdesktop_get_monitor_name_from_gtk_widget(GtkWidget *widget);
+
 gint xfdesktop_compare_paths(GFile *a, GFile *b);
 
 gboolean xfdesktop_image_file_is_valid(const gchar *filename);

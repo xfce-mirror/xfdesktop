@@ -53,6 +53,20 @@
 #include "xfdesktop-common.h"
 #include "xfce-backdrop.h" /* for XfceBackdropImageStyle */
 
+/* Free the string whe done using it */
+gchar*
+xfdesktop_get_monitor_name_from_gtk_widget(GtkWidget *widget)
+{
+    GdkWindow     *window = NULL;
+    GdkDisplay    *display = NULL;
+    GdkMonitor    *monitor = NULL;
+
+    window = gtk_widget_get_window(widget);
+    display = gdk_window_get_display(window);
+    monitor = gdk_display_get_monitor_at_window(display, window);
+
+    return g_strdup(gdk_monitor_get_model(monitor));
+}
 
 gint
 xfdesktop_compare_paths(GFile *a, GFile *b)

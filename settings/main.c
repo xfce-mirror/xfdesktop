@@ -1523,7 +1523,7 @@ cb_update_background_tab(WnckWindow *wnck_window,
     display = gdk_window_get_display(window);
     monitor = gdk_display_get_monitor_at_window(display, window);
     monitor_num = display_get_monitor_num(display, monitor);
-    monitor_name = g_strdup(gdk_monitor_get_model(monitor));
+    monitor_name = xfdesktop_get_monitor_name_from_gtk_widget(panel->image_iconview);
 
     /* Most of the time we won't change monitor, screen, or workspace so try
      * to bail out now if we can */
@@ -1557,7 +1557,7 @@ cb_update_background_tab(WnckWindow *wnck_window,
     panel->workspace = workspace_num;
     panel->screen = screen_num;
     panel->monitor = monitor_num;
-    panel->monitor_name = g_strdup(gdk_monitor_get_model(gdk_display_get_monitor_at_window(gdk_window_get_display(window), window)));
+    panel->monitor_name = xfdesktop_get_monitor_name_from_gtk_widget(panel->image_iconview);
 
     /* The first monitor has the option of doing the "spanning screens" style,
      * but only if there's multiple monitors attached. Remove it in all other cases.
