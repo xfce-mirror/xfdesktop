@@ -4,7 +4,13 @@ bin_PROGRAMS = xfdesktop
 
 xfdesktop_built_sources = \
 	xfce-desktop-enum-types.c \
-	xfce-desktop-enum-types.h
+	xfce-desktop-enum-types.h \
+	xfdesktop-file-manager-proxy.c \
+	xfdesktop-file-manager-proxy.h \
+	xfdesktop-thunar-proxy.c \
+	xfdesktop-thunar-proxy.h \
+	xfdesktop-trash-proxy.c \
+	xfdesktop-trash-proxy.h
 
 if HAVE_LIBNOTIFY
 xfdesktop_notify_sources = \
@@ -173,17 +179,6 @@ xfce-desktop-enum-types.c: $(enum_headers) Makefile
 	      && rm -f xgen-xdetc
 
 
-if ENABLE_FILE_ICONS
-
-xfdesktop_built_sources += \
-	xfdesktop-file-manager-proxy.c \
-	xfdesktop-file-manager-proxy.h \
-	xfdesktop-thunar-proxy.c \
-	xfdesktop-thunar-proxy.h \
-	xfdesktop-trash-proxy.c \
-	xfdesktop-trash-proxy.h
-
-
 xfdesktop-file-manager-proxy.c xfdesktop-file-manager-proxy.h : $(srcdir)/xfdesktop-file-manager-dbus.xml Makefile
 	gdbus-codegen \
 		--c-namespace=Xfdesktop \
@@ -204,8 +199,6 @@ xfdesktop-trash-proxy.c xfdesktop-trash-proxy.h : $(srcdir)/xfdesktop-trash-dbus
 		--interface-prefix=org.xfce. \
 		--generate-c-code=xfdesktop-trash-proxy \
 		$(srcdir)/xfdesktop-trash-dbus.xml
-
-endif
 
 endif
 
