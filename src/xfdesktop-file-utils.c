@@ -721,13 +721,14 @@ xfdesktop_file_utils_rename_file(GFile *file,
     fileman_proxy = xfdesktop_file_utils_peek_filemanager_proxy();
     if(fileman_proxy) {
         gchar *uri = g_file_get_uri(file);
+        gchar *display_name = g_strdup(gdk_display_get_name(gdk_screen_get_display(screen)));
         gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
 
         xfdesktop_file_utils_set_window_cursor(parent, GDK_WATCH);
 
 
         xfdesktop_file_manager_call_rename_file(fileman_proxy,
-                                                uri, "", startup_id,
+                                                uri, display_name, startup_id,
                                                 NULL,
                                                 rename_cb,
                                                 parent);
@@ -736,6 +737,7 @@ xfdesktop_file_utils_rename_file(GFile *file,
 
         g_free(startup_id);
         g_free(uri);
+        g_free(display_name);
     } else {
         xfce_message_dialog(parent,
                             _("Rename Error"), "dialog-error",
@@ -774,6 +776,7 @@ xfdesktop_file_utils_bulk_rename(GFile *working_directory,
         gchar *directory = g_file_get_path(working_directory);
         guint nfiles = g_list_length(files);
         gchar **filenames = g_new0(gchar *, nfiles+1);
+        gchar *display_name = g_strdup(gdk_display_get_name(gdk_screen_get_display(screen)));
         gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
         GList *lp;
         gint n;
@@ -788,7 +791,7 @@ xfdesktop_file_utils_bulk_rename(GFile *working_directory,
 
         xfdesktop_thunar_call_bulk_rename(thunar_proxy,
                                           directory, (const gchar **)filenames,
-                                          FALSE, "", startup_id,
+                                          FALSE, display_name, startup_id,
                                           NULL,
                                           bulk_rename_cb,
                                           parent);
@@ -798,6 +801,7 @@ xfdesktop_file_utils_bulk_rename(GFile *working_directory,
         g_free(directory);
         g_free(startup_id);
         g_strfreev(filenames);
+        g_free(display_name);
     } else {
         xfce_message_dialog(parent,
                             _("Rename Error"), "dialog-error",
@@ -834,6 +838,7 @@ xfdesktop_file_utils_unlink_files(GList *files,
     if(fileman_proxy) {
         guint nfiles = g_list_length(files);
         gchar **uris = g_new0(gchar *, nfiles+1);
+        gchar *display_name = g_strdup(gdk_display_get_name(gdk_screen_get_display(screen)));
         gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
         GList *lp;
         gint n;
@@ -848,7 +853,7 @@ xfdesktop_file_utils_unlink_files(GList *files,
 
         xfdesktop_file_manager_call_unlink_files(fileman_proxy,
                                                  "", (const gchar **)uris,
-                                                 "", startup_id,
+                                                 display_name, startup_id,
                                                  NULL,
                                                  unlink_files_cb,
                                                  parent);
@@ -857,6 +862,7 @@ xfdesktop_file_utils_unlink_files(GList *files,
 
         g_free(startup_id);
         g_strfreev(uris);
+        g_free(display_name);
     } else {
         xfce_message_dialog(parent,
                             _("Delete Error"), "dialog-error",
@@ -893,6 +899,7 @@ xfdesktop_file_utils_trash_files(GList *files,
     if(trash_proxy) {
         guint nfiles = g_list_length(files);
         gchar **uris = g_new0(gchar *, nfiles+1);
+        gchar *display_name = g_strdup(gdk_display_get_name(gdk_screen_get_display(screen)));
         gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
         GList *lp;
         gint n;
@@ -907,7 +914,7 @@ xfdesktop_file_utils_trash_files(GList *files,
 
         xfdesktop_trash_call_move_to_trash(trash_proxy,
                                            (const gchar **)uris,
-                                           "", startup_id,
+                                           display_name, startup_id,
                                            NULL,
                                            trash_files_cb,
                                            parent);
@@ -916,6 +923,7 @@ xfdesktop_file_utils_trash_files(GList *files,
 
         g_free(startup_id);
         g_strfreev(uris);
+        g_free(display_name);
     } else {
         xfce_message_dialog(parent,
                             _("Trash Error"), "dialog-error",
@@ -948,13 +956,14 @@ xfdesktop_file_utils_empty_trash(GdkScreen *screen,
 
     trash_proxy = xfdesktop_file_utils_peek_trash_proxy();
     if(trash_proxy) {
+        gchar *display_name = g_strdup(gdk_display_get_name(gdk_screen_get_display(screen)));
         gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
 
         xfdesktop_file_utils_set_window_cursor(parent, GDK_WATCH);
 
 
         xfdesktop_trash_call_empty_trash(trash_proxy,
-                                         "", startup_id,
+                                         display_name, startup_id,
                                          NULL,
                                          empty_trash_cb,
                                          parent);
@@ -962,6 +971,7 @@ xfdesktop_file_utils_empty_trash(GdkScreen *screen,
         xfdesktop_file_utils_set_window_cursor(parent, GDK_LEFT_PTR);
 
         g_free(startup_id);
+        g_free(display_name);
     } else {
         xfce_message_dialog(parent,
                             _("Trash Error"), "dialog-error",
@@ -998,6 +1008,7 @@ xfdesktop_file_utils_create_file(GFile *parent_folder,
     fileman_proxy = xfdesktop_file_utils_peek_filemanager_proxy();
     if(fileman_proxy) {
         gchar *parent_directory = g_file_get_uri(parent_folder);
+        gchar *display_name = g_strdup(gdk_display_get_name(gdk_screen_get_display(screen)));
         gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
 
         xfdesktop_file_utils_set_window_cursor(parent, GDK_WATCH);
@@ -1005,7 +1016,7 @@ xfdesktop_file_utils_create_file(GFile *parent_folder,
 
         xfdesktop_file_manager_call_create_file(fileman_proxy,
                                                 parent_directory,
-                                                content_type, "",
+                                                content_type, display_name,
                                                 startup_id,
                                                 NULL,
                                                 create_file_cb,
@@ -1015,6 +1026,7 @@ xfdesktop_file_utils_create_file(GFile *parent_folder,
 
         g_free(startup_id);
         g_free(parent_directory);
+        g_free(display_name);
     } else {
         xfce_message_dialog(parent,
                             _("Create File Error"), "dialog-error",
@@ -1053,6 +1065,7 @@ xfdesktop_file_utils_create_file_from_template(GFile *parent_folder,
     if(fileman_proxy) {
         gchar *parent_directory = g_file_get_uri(parent_folder);
         gchar *template_uri = g_file_get_uri(template_file);
+        gchar *display_name = g_strdup(gdk_display_get_name(gdk_screen_get_display(screen)));
         gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
 
         xfdesktop_file_utils_set_window_cursor(parent, GDK_WATCH);
@@ -1061,7 +1074,7 @@ xfdesktop_file_utils_create_file_from_template(GFile *parent_folder,
         xfdesktop_file_manager_call_create_file_from_template(fileman_proxy,
                                                               parent_directory,
                                                               template_uri,
-                                                              "",
+                                                              display_name,
                                                               startup_id,
                                                               NULL,
                                                               create_file_from_template_cb,
@@ -1070,6 +1083,7 @@ xfdesktop_file_utils_create_file_from_template(GFile *parent_folder,
         xfdesktop_file_utils_set_window_cursor(parent, GDK_LEFT_PTR);
 
         g_free(startup_id);
+        g_free(display_name);
         g_free(parent_directory);
     } else {
         xfce_message_dialog(parent,
@@ -1106,13 +1120,14 @@ xfdesktop_file_utils_show_properties_dialog(GFile *file,
     fileman_proxy = xfdesktop_file_utils_peek_filemanager_proxy();
     if(fileman_proxy) {
         gchar *uri = g_file_get_uri(file);
+        gchar *display_name = g_strdup(gdk_display_get_name(gdk_screen_get_display(screen)));
         gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
 
         xfdesktop_file_utils_set_window_cursor(parent, GDK_WATCH);
 
 
         xfdesktop_file_manager_call_display_file_properties(fileman_proxy,
-                                                            uri, "", startup_id,
+                                                            uri, display_name, startup_id,
                                                             NULL,
                                                             show_properties_cb,
                                                             parent);
@@ -1121,6 +1136,7 @@ xfdesktop_file_utils_show_properties_dialog(GFile *file,
 
         g_free(startup_id);
         g_free(uri);
+        g_free(display_name);
     } else {
         xfce_message_dialog(parent,
                             _("File Properties Error"), "dialog-error",
@@ -1158,6 +1174,7 @@ xfdesktop_file_utils_launch(GFile *file,
         gchar **uris;
         GFile  *parent_file = g_file_get_parent(file);
         gchar  *parent_path = g_file_get_path(parent_file);
+        gchar *display_name = g_strdup(gdk_display_get_name(gdk_screen_get_display(screen)));
         gchar  *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
 
         xfdesktop_file_utils_set_window_cursor(parent, GDK_WATCH);
@@ -1168,7 +1185,7 @@ xfdesktop_file_utils_launch(GFile *file,
 
         xfdesktop_file_manager_call_launch_files(fileman_proxy, parent_path,
                                                  (const gchar * const*)uris,
-                                                 "", startup_id,
+                                                 display_name, startup_id,
                                                  NULL,
                                                  launch_cb,
                                                  parent);
@@ -1180,6 +1197,7 @@ xfdesktop_file_utils_launch(GFile *file,
         g_free(uris);
         g_free(parent_path);
         g_object_unref(parent_file);
+        g_free(display_name);
     } else {
         xfce_message_dialog(parent,
                             _("Launch Error"), "dialog-error",
@@ -1214,6 +1232,7 @@ xfdesktop_file_utils_execute(GFile *working_directory,
         GError *error = NULL;
         gchar *working_dir = working_directory != NULL ? g_file_get_uri(working_directory) : NULL;
         gchar *uri = g_file_get_uri(file);
+        gchar *display_name = g_strdup(gdk_display_get_name(gdk_screen_get_display(screen)));
         gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
         GList *lp;
         guint n = g_list_length (files);
@@ -1251,7 +1270,7 @@ xfdesktop_file_utils_execute(GFile *working_directory,
         if(!xfdesktop_file_manager_call_execute_sync(fileman_proxy,
                                                      working_dir, uri,
                                                      (const gchar **)uris,
-                                                     "", startup_id,
+                                                     display_name, startup_id,
                                                      NULL, &error))
         {
             gchar *filename = g_file_get_uri(file);
@@ -1276,6 +1295,7 @@ xfdesktop_file_utils_execute(GFile *working_directory,
         g_strfreev(uris);
         g_free(uri);
         g_free(working_dir);
+        g_free(display_name);
     } else {
         gchar *filename = g_file_get_uri(file);
         gchar *name = g_filename_display_basename(filename);
@@ -1324,13 +1344,14 @@ xfdesktop_file_utils_display_chooser_dialog(GFile *file,
     fileman_proxy = xfdesktop_file_utils_peek_filemanager_proxy();
     if(fileman_proxy) {
         gchar *uri = g_file_get_uri(file);
+        gchar *display_name = g_strdup(gdk_display_get_name(gdk_screen_get_display(screen)));
         gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
 
         xfdesktop_file_utils_set_window_cursor(parent, GDK_WATCH);
 
         xfdesktop_file_manager_call_display_chooser_dialog(fileman_proxy,
                                                            uri, open,
-                                                           "",
+                                                           display_name,
                                                            startup_id,
                                                            NULL,
                                                            display_chooser_cb,
@@ -1340,6 +1361,7 @@ xfdesktop_file_utils_display_chooser_dialog(GFile *file,
 
         g_free(startup_id);
         g_free(uri);
+        g_free(display_name);
     } else {
         xfce_message_dialog(parent,
                             _("Launch Error"), "dialog-error",
@@ -1371,6 +1393,7 @@ xfdesktop_file_utils_transfer_file(GdkDragAction action,
         GError *error = NULL;
         gchar *source_uris[2] = { g_file_get_uri(source_file), NULL };
         gchar *target_uris[2] = { g_file_get_uri(target_file), NULL };
+        gchar *display_name = g_strdup(gdk_display_get_name(gdk_screen_get_display(screen)));
         gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
 
         switch(action) {
@@ -1378,21 +1401,21 @@ xfdesktop_file_utils_transfer_file(GdkDragAction action,
                 xfdesktop_file_manager_call_move_into_sync(fileman_proxy, "",
                                                            (const gchar **)source_uris,
                                                            (const gchar *)target_uris[0],
-                                                           "", startup_id,
+                                                           display_name, startup_id,
                                                            NULL, &error);
                 break;
             case GDK_ACTION_COPY:
                 xfdesktop_file_manager_call_copy_to_sync(fileman_proxy, "",
                                                          (const gchar **)source_uris,
                                                          (const gchar **)target_uris,
-                                                         "", startup_id,
+                                                         display_name, startup_id,
                                                          NULL, &error);
                 break;
             case GDK_ACTION_LINK:
                 xfdesktop_file_manager_call_link_into_sync(fileman_proxy, "",
                                                            (const gchar **)source_uris,
                                                            (const gchar *)target_uris[0],
-                                                           "", startup_id,
+                                                           display_name, startup_id,
                                                            NULL, &error);
                 break;
             default:
@@ -1411,6 +1434,7 @@ xfdesktop_file_utils_transfer_file(GdkDragAction action,
         }
 
         g_free(startup_id);
+        g_free(display_name);
         g_free(target_uris[0]);
         g_free(source_uris[0]);
     } else {
@@ -1445,6 +1469,7 @@ xfdesktop_file_utils_transfer_files(GdkDragAction action,
         GError *error = NULL;
         gchar **source_uris = xfdesktop_file_utils_file_list_to_uri_array(source_files);
         gchar **target_uris = xfdesktop_file_utils_file_list_to_uri_array(target_files);
+        gchar *display_name = g_strdup(gdk_display_get_name(gdk_screen_get_display(screen)));
         gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
 
         switch(action) {
@@ -1452,21 +1477,21 @@ xfdesktop_file_utils_transfer_files(GdkDragAction action,
                 xfdesktop_file_manager_call_move_into_sync(fileman_proxy, "",
                                                            (const gchar **)source_uris,
                                                            (const gchar *)target_uris[0],
-                                                           "", startup_id,
+                                                           display_name, startup_id,
                                                            NULL, &error);
                 break;
             case GDK_ACTION_COPY:
                 xfdesktop_file_manager_call_copy_to_sync(fileman_proxy, "",
                                                          (const gchar **)source_uris,
                                                          (const gchar **)target_uris,
-                                                         "", startup_id,
+                                                         display_name, startup_id,
                                                          NULL, &error);
                 break;
             case GDK_ACTION_LINK:
                 xfdesktop_file_manager_call_link_into_sync(fileman_proxy, "",
                                                           (const gchar **)source_uris,
                                                           (const gchar *)target_uris[0],
-                                                          "", startup_id,
+                                                          display_name, startup_id,
                                                           NULL, &error);
                 break;
             default:
@@ -1489,6 +1514,7 @@ xfdesktop_file_utils_transfer_files(GdkDragAction action,
         }
 
         g_free(startup_id);
+        g_free(display_name);
         g_free(target_uris[0]);
         g_free(source_uris[0]);
     } else {
