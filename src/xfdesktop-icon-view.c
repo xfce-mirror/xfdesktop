@@ -709,11 +709,15 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
                                          GTK_MOVEMENT_VISUAL_POSITIONS, -1);
 
     xfdesktop_cell_highlight_quark = g_quark_from_static_string("xfdesktop-icon-view-cell-highlight");
+
+    gtk_widget_class_set_css_name (widget_class, "XfdesktopIconView");
 }
 
 static void
 xfdesktop_icon_view_init(XfdesktopIconView *icon_view)
 {
+    GtkStyleContext *context;
+
     icon_view->priv = G_TYPE_INSTANCE_GET_PRIVATE(icon_view,
                                                   XFDESKTOP_TYPE_ICON_VIEW,
                                                   XfdesktopIconViewPrivate);
@@ -741,6 +745,9 @@ xfdesktop_icon_view_init(XfdesktopIconView *icon_view)
     
     gtk_widget_set_has_window(GTK_WIDGET(icon_view), FALSE);
     gtk_widget_set_can_focus(GTK_WIDGET(icon_view), FALSE);
+
+    context = gtk_widget_get_style_context(GTK_WIDGET(icon_view));
+    gtk_style_context_add_class(context, GTK_STYLE_CLASS_VIEW);
 }
 
 static void
