@@ -1845,6 +1845,8 @@ xfdesktop_icon_view_style_updated(GtkWidget *widget)
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
 
+    DBG("entering");
+
     gtk_widget_style_get(widget,
                          "cell-spacing", &icon_view->priv->cell_spacing,
                          "cell-padding", &icon_view->priv->cell_padding,
@@ -2076,6 +2078,7 @@ xfdesktop_icon_view_draw(GtkWidget *widget,
             cairo_restore(cr);
         }
 
+        gtk_style_context_remove_class(context, GTK_STYLE_CLASS_RUBBERBAND);
         gtk_style_context_restore(context);
     }
 
@@ -2884,6 +2887,7 @@ xfdesktop_icon_view_draw_text(GtkWidget *icon_view, cairo_t *cr,
     gtk_render_background(context, cr, box_area->x, box_area->y, box_area->width, box_area->height);
     gtk_render_layout(context, cr, text_area->x, text_area->y, playout);
 
+    gtk_style_context_remove_class(context, GTK_STYLE_CLASS_LABEL);
     gtk_style_context_restore(context);
     cairo_restore(cr);
 }
