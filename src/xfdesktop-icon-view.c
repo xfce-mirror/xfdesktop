@@ -48,7 +48,6 @@
 #include "xfce-desktop.h"
 #include "xfdesktop-volume-icon.h"
 #include "xfdesktop-common.h"
-#include "gtkcairoblurprivate.h"
 
 #include <libwnck/libwnck.h>
 #include <libxfce4ui/libxfce4ui.h>
@@ -179,14 +178,6 @@ struct _XfdesktopIconViewPrivate
     
     guchar    label_alpha;
     guchar    selected_label_alpha;
-
-    gchar     shadow_x_offset;
-    gchar     shadow_y_offset;
-    GdkColor *shadow_color;
-    gchar     selected_shadow_x_offset;
-    gchar     selected_shadow_y_offset;
-    GdkColor *selected_shadow_color;
-    gchar     shadow_blur_radius;
 
     gint cell_padding;
     gint cell_spacing;
@@ -529,55 +520,6 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
                                                                "Selected label alpha",
                                                                "Alpha value for the selected text label's background",
                                                                0, 255, 155,
-                                                               G_PARAM_READABLE));
-
-    gtk_widget_class_install_style_property(widget_class,
-                                            g_param_spec_char("shadow-x-offset",
-                                                               "Shadow X offset",
-                                                               "Shadow X offset for label text",
-                                                               G_MININT8, G_MAXINT8, 0,
-                                                               G_PARAM_READABLE));
-
-    gtk_widget_class_install_style_property(widget_class,
-                                            g_param_spec_char("shadow-y-offset",
-                                                               "Shadow Y offset",
-                                                               "Shadow Y offset for label text",
-                                                               G_MININT8, G_MAXINT8, 0,
-                                                               G_PARAM_READABLE));
-
-    gtk_widget_class_install_style_property(widget_class,
-                                            g_param_spec_char("selected-shadow-x-offset",
-                                                               "Selected shadow X offset",
-                                                               "Shadow X offset for selected label text",
-                                                               G_MININT8, G_MAXINT8, 0,
-                                                               G_PARAM_READABLE));
-
-    gtk_widget_class_install_style_property(widget_class,
-                                            g_param_spec_char("selected-shadow-y-offset",
-                                                               "Selected shadow Y offset",
-                                                               "Shadow Y offset for selected label text",
-                                                               G_MININT8, G_MAXINT8, 0,
-                                                               G_PARAM_READABLE));
-
-    gtk_widget_class_install_style_property(widget_class,
-                                            g_param_spec_char("shadow-blur-radius",
-                                                              "shadow blur radius",
-                                                              "Blur radius for label text",
-                                                              G_MININT8, G_MAXINT8, 0,
-                                                              G_PARAM_READABLE));
-
-    gtk_widget_class_install_style_property(widget_class,
-                                            g_param_spec_boxed("shadow-color",
-                                                               "Shadow color",
-                                                               "Color for label text shadows",
-                                                               GDK_TYPE_COLOR,
-                                                               G_PARAM_READABLE));
-
-    gtk_widget_class_install_style_property(widget_class,
-                                            g_param_spec_boxed("selected-shadow-color",
-                                                               "Selected shadow color",
-                                                               "Color for selected label text shadows",
-                                                               GDK_TYPE_COLOR,
                                                                G_PARAM_READABLE));
 
     gtk_widget_class_install_style_property(widget_class,
@@ -1927,63 +1869,14 @@ xfdesktop_icon_view_style_updated(GtkWidget *widget)
 
     gtk_widget_style_get(GTK_WIDGET(icon_view),
                          "label-alpha",   &icon_view->priv->label_alpha,
-                         "shadow-x-offset", &icon_view->priv->shadow_x_offset,
-                         "shadow-y-offset", &icon_view->priv->shadow_y_offset,
-                         "shadow-blur-radius", &icon_view->priv->shadow_blur_radius,
-                         "shadow-color",  &icon_view->priv->shadow_color,
                          NULL);
 
-    icon_view->priv->shadow_extents =
-      (icon_view->priv->shadow_blur_radius > 1) ?
-      _gtk_cairo_blur_compute_pixels(icon_view->priv->shadow_blur_radius) : 0;
-
-    /* default the shadow color to the inverse of the text color */
-    if (!icon_view->priv->shadow_color) {
-        icon_view->priv->shadow_color = gdk_color_copy(&gtk_widget_get_style(widget)->fg[GTK_STATE_NORMAL]);
-        icon_view->priv->shadow_color->red   ^= 0xffff;
-        icon_view->priv->shadow_color->green ^= 0xffff;
-        icon_view->priv->shadow_color->blue  ^= 0xffff;
-    }
-
     XF_DEBUG("label alpha is %d\n",   (gint)(icon_view->priv->label_alpha));
-    XF_DEBUG("shadow x offset is %d\n", (gint)(icon_view->priv->shadow_x_offset));
-    XF_DEBUG("shadow y offset is %d\n", (gint)(icon_view->priv->shadow_y_offset));
-#if defined(DEBUG) && (DEBUG > 0)
-    {
-        gchar *color = gdk_color_to_string(icon_view->priv->shadow_color);
-        XF_DEBUG("shadow color is %s\n", color);
-        g_free(color);
-    }
-#endif
 
     gtk_widget_style_get(GTK_WIDGET(icon_view),
                          "selected-label-alpha", &icon_view->priv->selected_label_alpha,
-                         "selected-shadow-x-offset", &icon_view->priv->selected_shadow_x_offset,
-                         "selected-shadow-y-offset", &icon_view->priv->selected_shadow_y_offset,
-                         "selected-shadow-color", &icon_view->priv->selected_shadow_color,
                          NULL);
 
-    /* default the shadow color to the inverse of the text color */
-    if (!icon_view->priv->selected_shadow_color) {
-        icon_view->priv->selected_shadow_color = gdk_color_copy(&gtk_widget_get_style(widget)->fg[GTK_STATE_SELECTED]);
-        icon_view->priv->selected_shadow_color->red   ^= 0xffff;
-        icon_view->priv->selected_shadow_color->green ^= 0xffff;
-        icon_view->priv->selected_shadow_color->blue  ^= 0xffff;
-    }
-
-    XF_DEBUG("selected label alpha is %d\n",
-             (gint)(icon_view->priv->selected_label_alpha));
-    XF_DEBUG("selected shadow x offset is %d\n",
-             (gint)(icon_view->priv->selected_shadow_x_offset));
-    XF_DEBUG("selected shadow y offset is %d\n",
-             (gint)(icon_view->priv->selected_shadow_y_offset));
-#if defined(DEBUG) && (DEBUG > 0)
-    {
-        gchar *color = gdk_color_to_string(icon_view->priv->selected_shadow_color);
-        XF_DEBUG("shadow color is %s\n", color);
-        g_free(color);
-    }
-#endif
     
     gtk_widget_style_get(widget,
                          "cell-spacing", &icon_view->priv->cell_spacing,
@@ -2006,15 +1899,6 @@ xfdesktop_icon_view_style_updated(GtkWidget *widget)
         icon_view->priv->selection_box_color = NULL;
     }
     icon_view->priv->selection_box_alpha = DEFAULT_RUBBERBAND_ALPHA;
-
-    /* this is super lame */
-    dummy = gtk_icon_view_new();
-    gtk_widget_ensure_style(dummy);
-    gtk_widget_style_get(dummy,
-                         "selection-box-color", &icon_view->priv->selection_box_color,
-                         "selection-box-alpha", &icon_view->priv->selection_box_alpha,
-                         NULL);
-    gtk_widget_destroy(dummy);
 
     GTK_WIDGET_CLASS(xfdesktop_icon_view_parent_class)->style_updated(widget);
 
@@ -2169,16 +2053,6 @@ xfdesktop_icon_view_unrealize(GtkWidget *widget)
     if(icon_view->priv->selection_box_color) {
         gdk_color_free(icon_view->priv->selection_box_color);
         icon_view->priv->selection_box_color = NULL;
-    }
-
-    if(icon_view->priv->shadow_color) {
-        gdk_color_free(icon_view->priv->shadow_color);
-        icon_view->priv->shadow_color = NULL;
-    }
-
-    if(icon_view->priv->selected_shadow_color) {
-        gdk_color_free(icon_view->priv->selected_shadow_color);
-        icon_view->priv->selected_shadow_color = NULL;
     }
     
     gtk_widget_set_window(widget, NULL);
@@ -2881,67 +2755,6 @@ xfdesktop_icon_view_invalidate_icon_pixbuf(XfdesktopIconView *icon_view,
     }
 }
 
-static void
-xfdesktop_paint_rounded_box(XfdesktopIconView *icon_view,
-                            GtkStateType state,
-                            GdkRectangle *box_area,
-                            GdkRectangle *expose_area,
-                            cairo_t *cr)
-{
-    GdkRectangle intersection;
-    
-    if(gdk_rectangle_intersect(box_area, expose_area, &intersection)) {
-        cr = cairo_reference(cr);
-        GtkStyle *style = gtk_widget_get_style(GTK_WIDGET(icon_view));
-        double alpha;
-
-        if(state == GTK_STATE_NORMAL)
-            alpha = icon_view->priv->label_alpha / 255.;
-        else
-            alpha = icon_view->priv->selected_label_alpha / 255.;
-
-        cairo_set_source_rgba(cr, style->base[state].red / 65535.,
-                              style->base[state].green / 65535.,
-                              style->base[state].blue / 65535.,
-                              alpha);
-
-        /* restrict painting to expose area */
-        gdk_cairo_rectangle(cr, expose_area);
-        cairo_clip(cr);
-
-        if(LABEL_RADIUS < 0.1)
-            gdk_cairo_rectangle(cr, box_area);
-        else {
-            cairo_move_to(cr, box_area->x, box_area->y + LABEL_RADIUS);
-            cairo_arc(cr, box_area->x + LABEL_RADIUS,
-                      box_area->y + LABEL_RADIUS, LABEL_RADIUS,
-                      M_PI, 3.0*M_PI/2.0);
-            cairo_line_to(cr, box_area->x + box_area->width - LABEL_RADIUS,
-                          box_area->y);
-            cairo_arc(cr, box_area->x + box_area->width - LABEL_RADIUS,
-                      box_area->y + LABEL_RADIUS, LABEL_RADIUS,
-                      3.0+M_PI/2.0, 0.0);
-            cairo_line_to(cr, box_area->x + box_area->width,
-                          box_area->y + box_area->height - LABEL_RADIUS);
-            cairo_arc(cr, box_area->x + box_area->width - LABEL_RADIUS,
-                      box_area->y + box_area->height - LABEL_RADIUS,
-                      LABEL_RADIUS,
-                      0.0, M_PI/2.0);
-            cairo_line_to(cr, box_area->x + LABEL_RADIUS,
-                          box_area->y + box_area->height);
-            cairo_arc(cr, box_area->x + LABEL_RADIUS,
-                      box_area->y + box_area->height - LABEL_RADIUS,
-                      LABEL_RADIUS,
-                      M_PI/2.0, M_PI);
-            cairo_close_path(cr);
-        }
-
-        cairo_fill(cr);
-
-        cairo_destroy(cr);
-    }
-}
-
 static gboolean
 xfdesktop_icon_view_calculate_icon_pixbuf_area(XfdesktopIconView *icon_view,
                                                XfdesktopIcon *icon,
@@ -3012,10 +2825,10 @@ xfdesktop_icon_view_calculate_icon_text_area(XfdesktopIconView *icon_view,
     xfdesktop_icon_view_setup_pango_layout(icon_view, icon, playout);
     pango_layout_get_pixel_extents(playout, NULL, &prect);
 
-    text_area->x = prect.x - SHADOW_X_OFFSET;
-    text_area->y = prect.y - SHADOW_Y_OFFSET;
-    text_area->width = prect.width + 2 * SHADOW_X_OFFSET;
-    text_area->height = prect.height + 2 * SHADOW_Y_OFFSET;
+    text_area->x = prect.x;
+    text_area->y = prect.y;
+    text_area->width = prect.width + 2;
+    text_area->height = prect.height + 2;
 
     return TRUE;
 }
@@ -3102,34 +2915,27 @@ xfdesktop_icon_view_draw_image(cairo_t *cr, GdkPixbuf *pix, GdkRectangle *rect)
 }
 
 static void
-xfdesktop_icon_view_draw_text(cairo_t *cr, PangoLayout *playout, GdkRectangle *text_area,
-                              GdkRectangle *box_area, gint x_offset, gint y_offset,
-                              gint blur_radius, GdkColor *color)
+xfdesktop_icon_view_draw_text(GtkWidget *icon_view, cairo_t *cr,
+                              PangoLayout *playout, GdkRectangle *text_area,
+                              GdkRectangle *box_area, GtkStateFlags state)
 {
+    GtkStyleContext *context;
+
     cairo_save(cr);
 
-    /*  Clip the cairo area to blur the minimum surface */
+    /*  Clip the cairo area */
     gdk_cairo_rectangle(cr, box_area);
     cairo_clip(cr);
 
-    cairo_move_to(cr,
-                  text_area->x + x_offset,
-                  text_area->y + y_offset);
+    context = gtk_widget_get_style_context(icon_view);
+    gtk_style_context_save(context);
+    gtk_style_context_add_class(context, GTK_STYLE_CLASS_LABEL);
+    gtk_style_context_set_state (context, state);
 
-    if (blur_radius > 1) {
-        cr = gtk_css_shadow_value_start_drawing (cr, blur_radius);
-        pango_cairo_show_layout (cr, playout);
-        cairo_set_line_width(cr, 1);
-        cairo_set_line_join(cr, CAIRO_LINE_JOIN_BEVEL);
-        pango_cairo_layout_path(cr, playout);
-        cairo_stroke(cr);
-        cr = gtk_css_shadow_value_finish_drawing (cr, blur_radius, color);
-    }
-    else {
-        gdk_cairo_set_source_color(cr, color);
-        pango_cairo_show_layout(cr, playout);
-    }
+    gtk_render_background(context, cr, box_area->x, box_area->y, box_area->width, box_area->height);
+    gtk_render_layout(context, cr, text_area->x, text_area->y, playout);
 
+    gtk_style_context_restore(context);
     cairo_restore(cr);
 }
 
@@ -3143,9 +2949,7 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
     PangoLayout *playout;
     GdkRectangle pixbuf_extents, text_extents, box_extents, total_extents;
     GdkRectangle intersection;
-    gint state;
-    gchar x_offset = 0, y_offset = 0;
-    GdkColor *sh_text_col = NULL;
+    GtkStateFlags state;
 #ifdef G_ENABLE_DEBUG
     gint16 row, col;
 #endif
@@ -3175,17 +2979,17 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
 
     if(xfdesktop_icon_view_is_icon_selected(icon_view, icon)) {
         if(gtk_widget_has_focus(widget))
-            state = GTK_STATE_SELECTED;
+            state = GTK_STATE_FLAG_SELECTED;
         else
-            state = GTK_STATE_ACTIVE;
+            state = GTK_STATE_FLAG_ACTIVE;
     } else
-        state = GTK_STATE_NORMAL;
+        state = GTK_STATE_FLAG_NORMAL;
     
     if(gdk_rectangle_intersect(area, &pixbuf_extents, &intersection)) {
         GdkPixbuf *pix = xfdesktop_icon_peek_pixbuf(icon, ICON_WIDTH, ICON_SIZE);
         GdkPixbuf *pix_free = NULL;
 
-        if(state != GTK_STATE_NORMAL) {
+        if(state != GTK_STATE_FLAG_NORMAL) {
             pix_free = exo_gdk_pixbuf_colorize(pix, &gtk_widget_get_style(widget)->base[state]);
             pix = pix_free;
         }
@@ -3217,36 +3021,13 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
     if(gdk_rectangle_intersect(area, &box_extents, &intersection)
        && icon_view->priv->font_size > 0)
     {
-        xfdesktop_paint_rounded_box(icon_view, state, &box_extents, area, cr);
-
-        if (state == GTK_STATE_NORMAL) {
-            x_offset = icon_view->priv->shadow_x_offset;
-            y_offset = icon_view->priv->shadow_y_offset;
-            sh_text_col = icon_view->priv->shadow_color;
-        } else {
-            x_offset = icon_view->priv->selected_shadow_x_offset;
-            y_offset = icon_view->priv->selected_shadow_y_offset;
-            sh_text_col = icon_view->priv->selected_shadow_color;
-        }
-
-        /* draw text shadow for the label text if an offset was defined */
-        if(x_offset || y_offset || (icon_view->priv->shadow_blur_radius > 1)) {
-            /* Draw the shadow */
-            xfdesktop_icon_view_draw_text(cr, playout,
-                                          &text_extents,
-                                          &box_extents,
-                                          x_offset,
-                                          y_offset,
-                                          icon_view->priv->shadow_blur_radius,
-                                          sh_text_col);
-        }
-
         DBG("painting text at %dx%d+%d+%d",
               text_extents.width, text_extents.height,
               text_extents.x, text_extents.y);
 
-        gtk_render_layout(gtk_widget_get_style_context(widget), cr,
-                          text_extents.x, text_extents.y, playout);
+        xfdesktop_icon_view_draw_text(GTK_WIDGET(icon_view), cr, playout,
+                                      &text_extents, &box_extents,
+                                      state);
     }
 
 

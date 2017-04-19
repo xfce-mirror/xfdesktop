@@ -45,9 +45,7 @@ desktop_icon_sources = \
 	xfdesktop-window-icon.c \
 	xfdesktop-window-icon.h \
 	xfdesktop-window-icon-manager.c \
-	xfdesktop-window-icon-manager.h \
-	gtkcairoblur.c \
-	gtkcairoblurprivate.h
+	xfdesktop-window-icon-manager.h
 
 desktop_file_icon_sources = \
 	xfdesktop-clipboard-manager.c \
