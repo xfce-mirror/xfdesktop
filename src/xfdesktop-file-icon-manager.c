@@ -1069,7 +1069,7 @@ xfdesktop_file_icon_menu_create_launcher(GtkWidget *widget,
     gchar *cmd = NULL, *uri = NULL, *display_name;
     GError *error = NULL;
     
-    display_name = gdk_screen_make_display_name(fmanager->priv->gscreen);
+    display_name = g_strdup (gdk_display_get_name (gdk_screen_get_display (fmanager->priv->gscreen)));
     
     file = g_object_get_data(G_OBJECT(widget), "file");
 
