@@ -2990,7 +2990,18 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
         GdkPixbuf *pix_free = NULL;
 
         if(state != GTK_STATE_FLAG_NORMAL) {
-            pix_free = exo_gdk_pixbuf_colorize(pix, &gtk_widget_get_style(widget)->base[state]);
+            GtkStyleContext *context;
+            GdkRGBA rgba;
+            GdkColor color;
+
+            context = gtk_widget_get_style_context(widget);
+            gtk_style_context_get_color(context, state, &rgba);
+
+            color.red   = rgba.red   * G_MAXUINT16;
+            color.green = rgba.green * G_MAXUINT16;
+            color.blue  = rgba.blue  * G_MAXUINT16;
+
+            pix_free = exo_gdk_pixbuf_colorize(pix, &color);
             pix = pix_free;
         }
 
