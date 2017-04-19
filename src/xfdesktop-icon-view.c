@@ -69,7 +69,6 @@
 #define SHADOW_Y_OFFSET   MAX(icon_view->priv->shadow_y_offset, icon_view->priv->selected_shadow_y_offset)
 #define TEXT_HEIGHT       (CELL_SIZE - ICON_SIZE - SPACING - (CELL_PADDING * 2) - LABEL_RADIUS)
 #define MIN_MARGIN        8
-#define DEFAULT_RUBBERBAND_ALPHA  64
 
 #if defined(DEBUG) && DEBUG > 0
 #define DUMP_GRID_LAYOUT(icon_view) \
@@ -153,9 +152,6 @@ struct _XfdesktopIconViewPrivate
     GdkRectangle band_rect;
 
     XfconfChannel *channel;
-
-    GdkColor *selection_box_color;
-    guchar selection_box_alpha;
     
     XfdesktopIcon *cursor;
     XfdesktopIcon *first_clicked_item;
@@ -668,7 +664,6 @@ xfdesktop_icon_view_init(XfdesktopIconView *icon_view)
     icon_view->priv->font_size = DEFAULT_FONT_SIZE;
 
     icon_view->priv->allow_rubber_banding = TRUE;
-    icon_view->priv->selection_box_alpha = DEFAULT_RUBBERBAND_ALPHA;
     
     icon_view->priv->native_targets = gtk_target_list_new(icon_view_targets,
                                                           icon_view_n_targets);
@@ -1893,19 +1888,8 @@ xfdesktop_icon_view_style_updated(GtkWidget *widget)
     XF_DEBUG("tooltip size is %d", icon_view->priv->tooltip_size_from_style);
     XF_DEBUG("label radius is %f", icon_view->priv->label_radius);
 
-    if(icon_view->priv->selection_box_color) {
-        gdk_color_free(icon_view->priv->selection_box_color);
-        icon_view->priv->selection_box_color = NULL;
-    }
-    icon_view->priv->selection_box_alpha = DEFAULT_RUBBERBAND_ALPHA;
 
     GTK_WIDGET_CLASS(xfdesktop_icon_view_parent_class)->style_updated(widget);
-
-    /* do this after we're sure we have a style set */
-    if(!icon_view->priv->selection_box_color) {
-        GtkStyle *style = gtk_widget_get_style(widget);
-        icon_view->priv->selection_box_color = gdk_color_copy(&style->base[GTK_STATE_SELECTED]);
-    }
 }
 
 static void
@@ -2049,11 +2033,6 @@ xfdesktop_icon_view_unrealize(GtkWidget *widget)
     g_object_unref(G_OBJECT(icon_view->priv->playout));
     icon_view->priv->playout = NULL;
     
-    if(icon_view->priv->selection_box_color) {
-        gdk_color_free(icon_view->priv->selection_box_color);
-        icon_view->priv->selection_box_color = NULL;
-    }
-    
     gtk_widget_set_window(widget, NULL);
     gtk_widget_set_realized(widget, FALSE);
 }
@@ -2066,6 +2045,7 @@ xfdesktop_icon_view_draw(GtkWidget *widget,
     cairo_rectangle_list_t *rects;
     cairo_rectangle_int_t temp;
     GdkRectangle clipbox;
+    GtkStyleContext *context;
     gint i;
 
     /*DBG("entering");*/
@@ -2084,13 +2064,9 @@ xfdesktop_icon_view_draw(GtkWidget *widget,
     if(icon_view->priv->definitely_rubber_banding) {
         GdkRectangle intersect;
 
-        cairo_set_line_width(cr, 1);
-        cairo_set_operator(cr, CAIRO_OPERATOR_OVER);
-        cairo_set_source_rgba(cr,
-                              icon_view->priv->selection_box_color->red / 65535.,
-                              icon_view->priv->selection_box_color->green / 65535.,
-                              icon_view->priv->selection_box_color->blue / 65535.,
-                              icon_view->priv->selection_box_alpha / 255.);
+        context = gtk_widget_get_style_context(widget);
+        gtk_style_context_save(context);
+        gtk_style_context_add_class(context, GTK_STYLE_CLASS_RUBBERBAND);
 
         /* paint each rectangle in the expose region with the rubber
          * band color, semi-transparently */
@@ -2110,23 +2086,24 @@ xfdesktop_icon_view_draw(GtkWidget *widget,
 
             cairo_save(cr);
 
-            /* paint the inner rubber band area.  we clip to the
-             * rectangle in order to properly handle the border below */
+            /* paint the rubber band area */
             gdk_cairo_rectangle(cr, &intersect);
             cairo_clip_preserve(cr);
-            cairo_fill(cr);
-
-            /* paint whatever part of the rubber band border is inside
-             * this rectangle */
-            gdk_cairo_set_source_color(cr, icon_view->priv->selection_box_color);
-            cairo_rectangle(cr, icon_view->priv->band_rect.x + 0.5,
-                            icon_view->priv->band_rect.y + 0.5,
-                            icon_view->priv->band_rect.width - 1,
-                            icon_view->priv->band_rect.height - 1);
-            cairo_stroke(cr);
+            gtk_render_background(context, cr,
+                                  icon_view->priv->band_rect.x,
+                                  icon_view->priv->band_rect.y,
+                                  icon_view->priv->band_rect.width,
+                                  icon_view->priv->band_rect.height);
+            gtk_render_frame(context, cr,
+                             icon_view->priv->band_rect.x,
+                             icon_view->priv->band_rect.y,
+                             icon_view->priv->band_rect.width,
+                             icon_view->priv->band_rect.height);
 
             cairo_restore(cr);
         }
+
+        gtk_style_context_restore(context);
     }
 
     cairo_rectangle_list_destroy(rects);
