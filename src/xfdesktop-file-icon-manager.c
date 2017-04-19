@@ -785,7 +785,7 @@ xfdesktop_file_icon_menu_app_info_executed(GtkWidget *widget,
     files.data = file;
 
     /* prepare the launch context and configure its screen */
-    context = gdk_app_launch_context_new();
+    context = gdk_display_get_app_launch_context(gtk_widget_get_display(GTK_WIDGET(fmanager->priv->icon_view)));
     toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
     gdk_app_launch_context_set_screen(context, gtk_widget_get_screen(toplevel));
     
