@@ -1865,7 +1865,6 @@ static void
 xfdesktop_icon_view_style_updated(GtkWidget *widget)
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
-    GtkWidget *dummy;
 
     gtk_widget_style_get(GTK_WIDGET(icon_view),
                          "label-alpha",   &icon_view->priv->label_alpha,
