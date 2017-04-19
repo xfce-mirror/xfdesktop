@@ -457,10 +457,10 @@ cb_xfdesktop_application_menu(GAction  *action,
 
     if(popup_root_menu) {
         xfce_desktop_popup_root_menu(XFCE_DESKTOP(app->desktop),
-                                     NULL);
+                                     0, GDK_CURRENT_TIME);
     } else {
         xfce_desktop_popup_secondary_root_menu(XFCE_DESKTOP(app->desktop),
-                                               NULL);
+                                               0, GDK_CURRENT_TIME);
     }
 }
 

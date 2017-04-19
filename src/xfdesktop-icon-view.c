@@ -891,7 +891,7 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
             /* Since we're not over any icons this won't be the start of a
              * drag so we can pop up menu */
             if(evt->button == 3 || (evt->button == 1 && (evt->state & GDK_SHIFT_MASK))) {
-                xfce_desktop_popup_root_menu(XFCE_DESKTOP(widget), evt);
+                xfce_desktop_popup_root_menu(XFCE_DESKTOP(widget), evt->button, evt->time);
                 return TRUE;
             }
         }
@@ -1016,8 +1016,7 @@ xfdesktop_icon_view_button_release(GtkWidget *widget,
          * We pass 0 as the button because the docs say that you must use 0
          * for pop ups other than button press events. */
         if(icon_l && (icon = icon_l->data)) {
-            evt->button = 0;
-            xfce_desktop_popup_root_menu(XFCE_DESKTOP(widget), evt);
+            xfce_desktop_popup_root_menu(XFCE_DESKTOP(widget), 0, evt->time);
         }
     }
 

@@ -1196,12 +1196,11 @@ xfce_desktop_button_press_event(GtkWidget *w,
                 return FALSE;
 #endif
             /* no icons on the desktop, grab the focus and pop up the menu */
-            if(!gtk_widget_has_grab(w)) {
+            if(!gtk_widget_has_grab(w))
                 gtk_grab_add(w);
 
-                xfce_desktop_popup_root_menu(desktop, evt);
+                xfce_desktop_popup_root_menu(desktop, button, evt->time);
                 return TRUE;
-            }
         } else if(button == 2 || (button == 1 && (state & GDK_SHIFT_MASK)
                                   && (state & GDK_CONTROL_MASK)))
         {
@@ -1209,7 +1208,7 @@ xfce_desktop_button_press_event(GtkWidget *w,
             if(!gtk_widget_has_grab(w))
                 gtk_grab_add(w);
 
-            xfce_desktop_popup_secondary_root_menu(desktop, evt);
+            xfce_desktop_popup_secondary_root_menu(desktop, button, evt->time);
             return TRUE;
         }
     }
@@ -1234,15 +1233,22 @@ static gboolean
 xfce_desktop_popup_menu(GtkWidget *w)
 {
     GdkEventButton *evt;
+    guint button, etime;
 
     TRACE("entering");
 
     evt = (GdkEventButton *)gtk_get_current_event();
+    if(evt && GDK_BUTTON_PRESS == evt->type) {
+        button = evt->button;
+        etime = evt->time;
+    } else {
+        button = 0;
+        etime = gtk_get_current_event_time();
+    }
     
-    xfce_desktop_popup_root_menu(XFCE_DESKTOP(w), evt);
+    xfce_desktop_popup_root_menu(XFCE_DESKTOP(w), button, etime);
 
-    if(evt)
-        gdk_event_free((GdkEvent*)evt);
+    gdk_event_free((GdkEvent*)evt);
     return TRUE;
 }
 
@@ -1696,7 +1702,8 @@ xfce_desktop_menu_destroy_idled(gpointer data)
 
 static void
 xfce_desktop_do_menu_popup(XfceDesktop *desktop,
-                           GdkEventButton *evt,
+                           guint button,
+                           guint activate_time,
                            guint populate_signal)
 {
     GdkScreen *screen;
@@ -1730,25 +1737,35 @@ xfce_desktop_do_menu_popup(XfceDesktop *desktop,
 
     gtk_menu_attach_to_widget(GTK_MENU(menu), GTK_WIDGET(desktop), NULL);
 
-    gtk_menu_popup_at_pointer(GTK_MENU (menu), (GdkEvent *)evt);
+    /* Per gtk_menu_popup's documentation "for conflict-resolve initiation of
+     * concurrent requests for mouse/keyboard grab requests." */
+    if(activate_time == 0)
+        activate_time = gtk_get_current_event_time();
+
+    xfce_gtk_menu_popup_until_mapped(GTK_MENU(menu), NULL, NULL, NULL, NULL, button, activate_time);
 }
+
 
 void
 xfce_desktop_popup_root_menu(XfceDesktop *desktop,
-                             GdkEventButton *evt)
+                             guint button,
+                             guint activate_time)
 {
     TRACE("entering");
 
-    xfce_desktop_do_menu_popup(desktop, evt,
+    xfce_desktop_do_menu_popup(desktop, button, activate_time,
                                signals[SIG_POPULATE_ROOT_MENU]);
 
 }
 
 void
 xfce_desktop_popup_secondary_root_menu(XfceDesktop *desktop,
-                                       GdkEventButton *evt)
+                                       guint button,
+                                       guint activate_time)
 {
-    xfce_desktop_do_menu_popup(desktop, evt,
+    TRACE("entering");
+
+    xfce_desktop_do_menu_popup(desktop, button, activate_time,
                                signals[SIG_POPULATE_SECONDARY_ROOT_MENU]);
 }
 

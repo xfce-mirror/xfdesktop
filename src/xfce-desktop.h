@@ -105,9 +105,11 @@ void xfce_desktop_thaw_updates(XfceDesktop *desktop);
 
 
 void xfce_desktop_popup_root_menu(XfceDesktop *desktop,
-                                  GdkEventButton *evt);
+                                  guint button,
+                                  guint activate_time);
 void xfce_desktop_popup_secondary_root_menu(XfceDesktop *desktop,
-                                            GdkEventButton *evt);
+                                            guint button,
+                                            guint activate_time);
 
 void xfce_desktop_refresh(XfceDesktop *desktop, gboolean advance_wallpaper);
 
