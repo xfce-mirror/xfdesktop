@@ -1878,10 +1878,7 @@ xfdesktop_icon_view_realize(GtkWidget *widget)
     icon_view->priv->parent_window = gtk_widget_get_toplevel(widget);
     g_return_if_fail(icon_view->priv->parent_window);
     gtk_widget_set_window(widget, gtk_widget_get_window(icon_view->priv->parent_window));
-    
-    gtk_widget_set_style(widget,
-                         gtk_style_attach(gtk_widget_get_style(widget),
-                                          gtk_widget_get_window(widget)));
+
     /* we need this call here to initalize some members of icon_view->priv,
      * those depend on custom style properties */
     xfdesktop_icon_view_style_updated(widget);
@@ -2491,21 +2488,21 @@ xfdesktop_rectangle_is_bounded_by(GdkRectangle *rect,
 static void
 xfdesktop_icon_view_setup_grids_xinerama(XfdesktopIconView *icon_view)
 {
-    GdkScreen *gscreen;
+    GdkDisplay *display;
     GdkRectangle *monitor_geoms, cell_rect;
     gint nmonitors, i, row, col;
     
     DBG("entering");
-    
-    gscreen = gtk_widget_get_screen(GTK_WIDGET(icon_view));
-    
-    nmonitors = gdk_screen_get_n_monitors(gscreen);
+
+    display = gtk_widget_get_display(GTK_WIDGET(icon_view));
+
+    nmonitors = gdk_display_get_n_monitors(display);
     if(nmonitors == 1)  /* optimisation */
         return;
     
     monitor_geoms = g_new0(GdkRectangle, nmonitors);
     for(i = 0; i < nmonitors; ++i)
-        gdk_screen_get_monitor_geometry(gscreen, i, &monitor_geoms[i]);
+        gdk_monitor_get_geometry(gdk_display_get_monitor(display, i), &monitor_geoms[i]);
 
     /* cubic time; w00t! */
     cell_rect.width = cell_rect.height = CELL_SIZE;

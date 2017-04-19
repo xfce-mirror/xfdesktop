@@ -128,7 +128,7 @@ xfdesktop_window_icon_manager_set_property(GObject *object,
     switch(property_id) {
         case PROP_SCREEN:
             wmanager->priv->gscreen = g_value_peek_pointer(value);
-            wmanager->priv->wnck_screen = wnck_screen_get(gdk_screen_get_number(wmanager->priv->gscreen));
+            wmanager->priv->wnck_screen = wnck_screen_get(0);
             break;
         
         default:
