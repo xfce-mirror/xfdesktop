@@ -1168,7 +1168,6 @@ xfce_desktop_unrealize(GtkWidget *widget)
     
     gtk_window_set_icon(GTK_WINDOW(widget), NULL);
 
-    gtk_style_detach(gtk_widget_get_style(widget));
     g_object_unref(G_OBJECT(gtk_widget_get_window(widget)));
     gtk_widget_set_window(widget, NULL);
 
@@ -1309,8 +1308,7 @@ style_refresh_cb(gpointer *w)
         return FALSE;
 
     /* reset the icon view style */
-    gtk_widget_set_style(desktop->priv->icon_view, NULL);
-    gtk_widget_reset_rc_styles(desktop->priv->icon_view);
+    gtk_widget_reset_style(desktop->priv->icon_view);
 
     old_font_size = desktop->priv->system_font_size;
     if(xfce_desktop_ensure_system_font_size(desktop) != old_font_size
