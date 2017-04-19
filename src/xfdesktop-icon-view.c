@@ -917,7 +917,7 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
                 g_signal_emit(G_OBJECT(icon_view), __signals[SIG_ICON_ACTIVATED],
                               0, NULL);
                 xfdesktop_icon_activated(icon);
-                //xfdesktop_icon_view_unselect_item(icon_view, icon);
+
                 xfdesktop_icon_view_unselect_all(icon_view);
             }
         }
@@ -1001,7 +1001,8 @@ xfdesktop_icon_view_button_release(GtkWidget *widget,
 
     if((evt->button == 3 || (evt->button == 1 && (evt->state & GDK_SHIFT_MASK))) &&
        icon_view->priv->definitely_dragging == FALSE &&
-       icon_view->priv->definitely_rubber_banding == FALSE)
+       icon_view->priv->definitely_rubber_banding == FALSE &&
+       icon_view->priv->maybe_begin_drag == TRUE)
     {
         /* If we're in single click mode we may already have the icon, don't
          * find it again. */

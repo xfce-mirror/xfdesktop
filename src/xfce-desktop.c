@@ -1184,7 +1184,7 @@ xfce_desktop_button_press_event(GtkWidget *w,
     guint state = evt->state;
     XfceDesktop *desktop = XFCE_DESKTOP(w);
 
-    TRACE("entering");
+    DBG("entering");
 
     g_return_val_if_fail(XFCE_IS_DESKTOP(w), FALSE);
 
@@ -1196,11 +1196,12 @@ xfce_desktop_button_press_event(GtkWidget *w,
                 return FALSE;
 #endif
             /* no icons on the desktop, grab the focus and pop up the menu */
-            if(!gtk_widget_has_grab(w))
+            if(!gtk_widget_has_grab(w)) {
                 gtk_grab_add(w);
 
                 xfce_desktop_popup_root_menu(desktop, button, evt->time);
                 return TRUE;
+            }
         } else if(button == 2 || (button == 1 && (state & GDK_SHIFT_MASK)
                                   && (state & GDK_CONTROL_MASK)))
         {
@@ -1220,7 +1221,7 @@ static gboolean
 xfce_desktop_button_release_event(GtkWidget *w,
                                   GdkEventButton *evt)
 {
-    TRACE("entering");
+    DBG("entering");
 
     gtk_grab_remove(w);
 
@@ -1235,7 +1236,7 @@ xfce_desktop_popup_menu(GtkWidget *w)
     GdkEventButton *evt;
     guint button, etime;
 
-    TRACE("entering");
+    DBG("entering");
 
     evt = (GdkEventButton *)gtk_get_current_event();
     if(evt && GDK_BUTTON_PRESS == evt->type) {
@@ -1710,7 +1711,7 @@ xfce_desktop_do_menu_popup(XfceDesktop *desktop,
     GtkWidget *menu;
     GList *menu_children;
     
-    TRACE("entering");
+    DBG("entering");
     
     if(gtk_widget_has_screen(GTK_WIDGET(desktop)))
         screen = gtk_widget_get_screen(GTK_WIDGET(desktop));
@@ -1751,7 +1752,7 @@ xfce_desktop_popup_root_menu(XfceDesktop *desktop,
                              guint button,
                              guint activate_time)
 {
-    TRACE("entering");
+    DBG("entering");
 
     xfce_desktop_do_menu_popup(desktop, button, activate_time,
                                signals[SIG_POPULATE_ROOT_MENU]);
@@ -1763,7 +1764,7 @@ xfce_desktop_popup_secondary_root_menu(XfceDesktop *desktop,
                                        guint button,
                                        guint activate_time)
 {
-    TRACE("entering");
+    DBG("entering");
 
     xfce_desktop_do_menu_popup(desktop, button, activate_time,
                                signals[SIG_POPULATE_SECONDARY_ROOT_MENU]);
