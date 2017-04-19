@@ -171,9 +171,6 @@ struct _XfdesktopIconViewPrivate
     gboolean dropped;
     GdkDragAction proposed_drop_action;
     gint16 hover_row, hover_col;
-    
-    guchar    label_alpha;
-    guchar    selected_label_alpha;
 
     gint cell_padding;
     gint cell_spacing;
@@ -504,19 +501,6 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
                                                g_cclosure_marshal_VOID__VOID,
                                                G_TYPE_NONE, 0);
 
-    gtk_widget_class_install_style_property(widget_class,
-                                            g_param_spec_uchar("label-alpha",
-                                                               "Label alpha",
-                                                               "Alpha value for the text label's background",
-                                                               0, 255, 155,
-                                                               G_PARAM_READABLE));
-
-    gtk_widget_class_install_style_property(widget_class,
-                                            g_param_spec_uchar("selected-label-alpha",
-                                                               "Selected label alpha",
-                                                               "Alpha value for the selected text label's background",
-                                                               0, 255, 155,
-                                                               G_PARAM_READABLE));
 
     gtk_widget_class_install_style_property(widget_class,
                                             g_param_spec_int("cell-spacing",
@@ -1861,17 +1845,6 @@ xfdesktop_icon_view_style_updated(GtkWidget *widget)
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
 
-    gtk_widget_style_get(GTK_WIDGET(icon_view),
-                         "label-alpha",   &icon_view->priv->label_alpha,
-                         NULL);
-
-    XF_DEBUG("label alpha is %d\n",   (gint)(icon_view->priv->label_alpha));
-
-    gtk_widget_style_get(GTK_WIDGET(icon_view),
-                         "selected-label-alpha", &icon_view->priv->selected_label_alpha,
-                         NULL);
-
-    
     gtk_widget_style_get(widget,
                          "cell-spacing", &icon_view->priv->cell_spacing,
                          "cell-padding", &icon_view->priv->cell_padding,
