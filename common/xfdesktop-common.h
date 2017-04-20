@@ -89,7 +89,8 @@
 
 G_BEGIN_DECLS
 
-gchar* xfdesktop_get_monitor_name_from_gtk_widget(GtkWidget *widget);
+gchar* xfdesktop_get_monitor_name_from_gtk_widget(GtkWidget *widget,
+                                                  gint monitor_num);
 
 gint xfdesktop_compare_paths(GFile *a, GFile *b);
 

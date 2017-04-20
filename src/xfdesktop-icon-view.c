@@ -2488,21 +2488,37 @@ xfdesktop_rectangle_is_bounded_by(GdkRectangle *rect,
 static void
 xfdesktop_icon_view_setup_grids_xinerama(XfdesktopIconView *icon_view)
 {
+#if GTK_CHECK_VERSION (3, 22, 0)
     GdkDisplay *display;
+#else
+    GdkScreen *gscreen;
+#endif
     GdkRectangle *monitor_geoms, cell_rect;
     gint nmonitors, i, row, col;
     
     DBG("entering");
 
+#if GTK_CHECK_VERSION (3, 22, 0)
     display = gtk_widget_get_display(GTK_WIDGET(icon_view));
-
     nmonitors = gdk_display_get_n_monitors(display);
+#else
+    gscreen = gtk_widget_get_screen(GTK_WIDGET(icon_view));
+    nmonitors = gdk_screen_get_n_monitors(gscreen);
+#endif
     if(nmonitors == 1)  /* optimisation */
         return;
     
     monitor_geoms = g_new0(GdkRectangle, nmonitors);
-    for(i = 0; i < nmonitors; ++i)
+
+#if GTK_CHECK_VERSION (3, 22, 0)
+    for(i = 0; i < nmonitors; ++i) {
         gdk_monitor_get_geometry(gdk_display_get_monitor(display, i), &monitor_geoms[i]);
+    }
+#else
+    for(i = 0; i < nmonitors; ++i) {
+        gdk_screen_get_monitor_geometry(gscreen, i, &monitor_geoms[i]);
+    }
+#endif
 
     /* cubic time; w00t! */
     cell_rect.width = cell_rect.height = CELL_SIZE;
@@ -3582,7 +3598,9 @@ xfdesktop_icon_view_add_item_internal(XfdesktopIconView *icon_view,
 {
     gint16 row, col;
     cairo_rectangle_int_t fake_area;
+#if GTK_CHECK_VERSION (3, 22, 0)
     GdkDrawingContext *gdc;
+#endif
     cairo_region_t *region;
     cairo_t *cr;
     GdkWindow *gdkwindow;
@@ -3613,14 +3631,23 @@ xfdesktop_icon_view_add_item_internal(XfdesktopIconView *icon_view,
 
     /* Pack it into a cairo region to tell gdk that's where we will be painting */
     region = cairo_region_create_rectangle(&fake_area);
+#if GTK_CHECK_VERSION (3, 22, 0)
     gdc = gdk_window_begin_draw_frame(gdkwindow, region);
     cr = gdk_drawing_context_get_cairo_context(gdc);
+#else
+    cr = gdk_cairo_create(gdkwindow);
+#endif
 
     /* paint the icon */
     xfdesktop_icon_view_paint_icon(icon_view, icon, &fake_area, cr);
 
+#if GTK_CHECK_VERSION (3, 22, 0)
     /* we're done drawing */
     gdk_window_end_draw_frame(gdkwindow, gdc);
+#else
+    /* we're done drawing */
+    cairo_destroy(cr);
+#endif
 
     cairo_region_destroy(region);
 }

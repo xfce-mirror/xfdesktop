@@ -144,13 +144,19 @@ xfce_workspace_set_xfconf_property_string(XfceWorkspace *workspace,
 {
     XfconfChannel *channel = workspace->priv->channel;
     char buf[1024];
+#if GTK_CHECK_VERSION (3, 22, 0)
     GdkDisplay *display;
+#endif
     gchar *monitor_name = NULL;
 
     TRACE("entering");
 
+#if GTK_CHECK_VERSION (3, 22, 0)
     display = gdk_display_manager_get_default_display(gdk_display_manager_get());
     monitor_name = g_strdup(gdk_monitor_get_model(gdk_display_get_monitor(display, monitor_num)));
+#else
+    monitor_name = gdk_screen_get_monitor_plug_name(workspace->priv->gscreen, monitor_num);
+#endif
 
     /* Get the backdrop's image property */
     if(monitor_name == NULL) {
@@ -177,15 +183,21 @@ xfce_workspace_set_xfconf_property_value(XfceWorkspace *workspace,
     XfconfChannel *channel = workspace->priv->channel;
     char buf[1024];
     gchar *monitor_name = NULL;
+#if GTK_CHECK_VERSION (3, 22, 0)
     GdkDisplay *display;
+#endif
 #ifdef G_ENABLE_DEBUG
     gchar *contents = NULL;
 #endif
 
     TRACE("entering");
 
+#if GTK_CHECK_VERSION (3, 22, 0)
     display = gdk_display_manager_get_default_display(gdk_display_manager_get());
     monitor_name = g_strdup(gdk_monitor_get_model(gdk_display_get_monitor(display, monitor_num)));
+#else
+    monitor_name = gdk_screen_get_monitor_plug_name(workspace->priv->gscreen, monitor_num);
+#endif
 
     /* Get the backdrop's image property */
     if(monitor_name == NULL) {
@@ -307,7 +319,11 @@ xfce_workspace_monitors_changed(XfceWorkspace *workspace,
         /* When spanning screens we only need one backdrop */
         n_monitors = 1;
     } else {
+#if GTK_CHECK_VERSION (3, 22, 0)
         n_monitors = gdk_display_get_n_monitors(gdk_screen_get_display(workspace->priv->gscreen));
+#else
+        n_monitors = gdk_screen_get_n_monitors(workspace->priv->gscreen);
+#endif
     }
 
     /* Remove all backdrops so that the correct monitor is added/removed and
@@ -612,13 +628,19 @@ xfce_workspace_connect_backdrop_settings(XfceWorkspace *workspace,
     XfconfChannel *channel = workspace->priv->channel;
     char buf[1024];
     gint pp_len;
+#if GTK_CHECK_VERSION (3, 22, 0)
     GdkDisplay *display;
+#endif
     gchar *monitor_name = NULL;
 
     TRACE("entering");
 
+#if GTK_CHECK_VERSION (3, 22, 0)
     display = gdk_display_manager_get_default_display(gdk_display_manager_get());
     monitor_name = g_strdup(gdk_monitor_get_model(gdk_display_get_monitor(display, monitor)));
+#else
+    monitor_name = gdk_screen_get_monitor_plug_name(workspace->priv->gscreen, monitor);
+#endif
 
     if(monitor_name == NULL) {
         g_snprintf(buf, sizeof(buf), "%smonitor%d/workspace%d/",
@@ -718,7 +740,11 @@ xfce_workspace_remove_backdrops(XfceWorkspace *workspace)
 
     g_return_if_fail(XFCE_IS_WORKSPACE(workspace));
 
+#if GTK_CHECK_VERSION (3, 22, 0)
     n_monitors = gdk_display_get_n_monitors(gdk_screen_get_display(workspace->priv->gscreen));
+#else
+    n_monitors = gdk_screen_get_n_monitors(workspace->priv->gscreen);
+#endif
 
     for(i = 0; i < n_monitors && i < workspace->priv->nbackdrops; ++i) {
         xfce_workspace_disconnect_backdrop_settings(workspace,

@@ -721,7 +721,11 @@ xfdesktop_settings_update_iconview_frame_name(AppearancePanel *panel,
 
     workspace_name = g_strdup(wnck_workspace_get_name(workspace));
 
+#if GTK_CHECK_VERSION (3, 22, 0)
     if(gdk_display_get_n_monitors(gtk_widget_get_display(panel->chk_apply_to_all)) > 1) {
+#else
+    if(gdk_screen_get_n_monitors(gtk_widget_get_screen(panel->chk_apply_to_all)) > 1) {
+#endif
         if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(panel->chk_apply_to_all))) {
             /* Multi-monitor single workspace */
             if(panel->monitor_name) {
@@ -1479,6 +1483,7 @@ suboptions_set_sensitive(GtkToggleButton *btn,
     gtk_widget_set_sensitive(box, gtk_toggle_button_get_active(btn));
 }
 
+#if GTK_CHECK_VERSION (3, 22, 0)
 static gint
 display_get_monitor_num(GdkDisplay *display, GdkMonitor *monitor)
 {
@@ -1495,6 +1500,7 @@ display_get_monitor_num(GdkDisplay *display, GdkMonitor *monitor)
     g_warning("unable to get the monitor number");
     return 0;
 }
+#endif
 
 static void
 cb_update_background_tab(WnckWindow *wnck_window,
@@ -1506,8 +1512,10 @@ cb_update_background_tab(WnckWindow *wnck_window,
     WnckWorkspace *wnck_workspace = NULL;
     WnckScreen    *wnck_screen = NULL;
     GdkWindow     *window = NULL;
+#if GTK_CHECK_VERSION (3, 22, 0)
     GdkDisplay    *display = NULL;
     GdkMonitor    *monitor = NULL;
+#endif
 
     /* If we haven't found our window return now and wait for that */
     if(panel->wnck_window == NULL)
@@ -1520,10 +1528,14 @@ cb_update_background_tab(WnckWindow *wnck_window,
     workspace_num = xfdesktop_settings_get_active_workspace(panel, wnck_window);
     screen_num = wnck_screen_get_number(wnck_screen);
     window = gtk_widget_get_window(panel->image_iconview);
+#if GTK_CHECK_VERSION (3, 22, 0)
     display = gdk_window_get_display(window);
     monitor = gdk_display_get_monitor_at_window(display, window);
     monitor_num = display_get_monitor_num(display, monitor);
-    monitor_name = xfdesktop_get_monitor_name_from_gtk_widget(panel->image_iconview);
+#else
+    monitor_num = gdk_screen_get_monitor_at_window(gtk_widget_get_screen(panel->image_iconview), window);
+#endif
+    monitor_name = xfdesktop_get_monitor_name_from_gtk_widget(panel->image_iconview, monitor_num);
 
     /* Most of the time we won't change monitor, screen, or workspace so try
      * to bail out now if we can */
@@ -1557,7 +1569,7 @@ cb_update_background_tab(WnckWindow *wnck_window,
     panel->workspace = workspace_num;
     panel->screen = screen_num;
     panel->monitor = monitor_num;
-    panel->monitor_name = xfdesktop_get_monitor_name_from_gtk_widget(panel->image_iconview);
+    panel->monitor_name = xfdesktop_get_monitor_name_from_gtk_widget(panel->image_iconview, monitor_num);
 
     /* The first monitor has the option of doing the "spanning screens" style,
      * but only if there's multiple monitors attached. Remove it in all other cases.
@@ -1566,10 +1578,17 @@ cb_update_background_tab(WnckWindow *wnck_window,
      */
     gtk_combo_box_text_remove(GTK_COMBO_BOX_TEXT(panel->image_style_combo),
                               XFCE_BACKDROP_IMAGE_SPANNING_SCREENS);
+#if GTK_CHECK_VERSION (3, 22, 0)
     if(panel->monitor == 0 && gdk_display_get_n_monitors(gtk_widget_get_display(panel->image_style_combo)) > 1) {
         gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(panel->image_style_combo),
                                        _("Spanning screens"));
     }
+#else
+    if(panel->monitor == 0 && gdk_screen_get_n_monitors(gtk_widget_get_screen(panel->image_iconview)) > 1) {
+        gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(panel->image_style_combo),
+                                       _("Spanning screens"));
+    }
+#endif
 
     /* connect the new bindings */
     xfdesktop_settings_background_tab_change_bindings(panel,
