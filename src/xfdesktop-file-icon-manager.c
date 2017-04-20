@@ -3390,14 +3390,16 @@ void xfdesktop_dnd_menu (XfdesktopIconViewManager *manager,
 {
     static GdkDragAction    actions[] = { GDK_ACTION_COPY, GDK_ACTION_MOVE, GDK_ACTION_LINK };
     static const gchar      *action_names[] = { N_ ("Copy _Here") , N_ ("_Move Here") , N_ ("_Link Here") };
-    static const gchar      *action_icons[] = { "stock_folder-copy", "stock_folder-move", NULL };
+    static const gchar      *action_icons[] = { "stock_folder-copy", "stock_folder-move", "insert-link" };
     GtkWidget *menu;
     GtkWidget *item;
     GtkWidget  *image;
     guint menu_item, signal_id;
     GMainLoop *loop;
     gint response;
+
     menu = gtk_menu_new();
+    gtk_menu_set_reserve_toggle_size(GTK_MENU(menu), FALSE);
 
     /* This adds the Copy, Move, & Link options */
     for(menu_item = 0; menu_item < G_N_ELEMENTS(actions); menu_item++) {
