@@ -1,3 +1,108 @@
+4.13.0
+======
+[Please note that this is a development release.]
+
+Development release of xfdesktop targeting for Xfce 4.14.
+Please report all problems at bugzilla.xfce.org.
+
+* Major changes:
+ - Port to Gtk3.
+  - The iconview has a CSS name of "XfdesktopIconView" and
+    adds the GTK_STYLE_CLASS_VIEW to it's base. It then adds
+    GTK_STYLE_CLASS_LABEL when rendering the icon text with
+    the states: selected, active, or normal. Additionally it
+    uses the GTK_STYLE_CLASS_RUBBERBAND when for the rubberband
+    theming.
+ - Port to GDBus.
+
+* Miscellaneous bug fixes:
+ - Don't redraw the icons on focus change events (Bug #12071)
+ - Don't try to divide by 0 (Bug #12115)
+ - Settings: Fix loading of wallpaper previews (Bug #11892)
+ - Settings: Allow directories to be selected (Bug #12832)
+ - Fix Open dialog's title (Bug #12560)
+ - Prevent a crash in the backdrop loader (Bug #12339)
+ - Use gdk's get static image for animation files
+ - Add translation string for Trash desktop icon
+ - Retain icon relative position when moving a group
+
+4.12.3
+======
+Stable release of xfdesktop for Xfce 4.12.
+
+* Bug fixes:
+ - Remove whitespaces from monitor name when accessing settings
+   Patch by Andreas Müller
+ - Settings: Fix loading of wallpaper previews (Bug #11892)
+ - Rotate images for wallpaper based on embedded orientation
+
+* Translation updates:
+  English (Australia) (en_AU), Spanish (Castilian) (es),
+  Lithuanian (lt), Swedish (sv)
+
+4.12.2
+======
+Stable release of xfdesktop for Xfce 4.12.
+
+* Bug fixes:
+ - Optimized sorting wallpapers (Bug #11817)
+ - Don't sort the image list when randomly cycling (Bug #11817)
+ - Don't load an image list unless we're cycling (Bug #11817)
+ - Allow dragging desktop launchers to the panel (Bug #2794)
+ - Load emblem-unreadable if necessary
+ - Bail out when a negative value was calculated for row/col. (Bug #11782)
+ - Hide empty comment line in icon tooltip
+ - Fix build error (Bug #11778)
+ - Ignore shadow blur radius when calculating icon text box
+ - Prefer "_NETSCAPE_URL" over "text/uri-list" (Bug #9632)
+ - Drop explicit LibSM check (Bug #11744)
+ - Preserve order when moving multiple icons (Bug #11195)
+ - Drop warning when D-Bus timeout error occurs (Bug #11283)
+ - Add default wallpaper folder to file chooser (Bug #11715)
+
+4.12.1
+======
+Stable release of xfdesktop for Xfce 4.12.
+
+* Bug fixes:
+ - Remove unused variable 'tmp_text'
+ - Monitor the wallpaper file for changes
+   (Bug #11620)
+ - Reinitialize background when reloading desktop
+   (Bug #11620)
+ - Update rc file after completing delete process
+   (Bug #11692)
+ - Add a xfconf settings to center the text on
+   xfdesktop icons. This fixes some issues with
+   RTL languages.
+ - Do not overwrite rc file while restoring icons
+   (bug #11266)
+ - Fix crash when moving 2+ icons to the bottom
+   right corner
+ - Fix icon placement when using "Arrange Desktop
+   Icons" (Bug #11639)
+ - Center icons vertically in the grid (Bug #11086)
+ - Set initial value of font size spin button
+ - Show sub directories in template menu again
+ - Prevent accidental double clicks in single
+   click mode (Bug #10720)
+ - Disable rename menu entry for special icons
+ - Add icon emblems in clockwise order
+ - Handle icons with preset emblems (Bug #7417)
+ - Enable drag&drop popup menu for local actions
+ - Use mini icon and allow dimming of non-scaled
+   icons
+
+* Translation updates:
+   Czech (cs), Greek (el), Spanish (Castilian) (es),
+   Croatian (hr), Italian (it), Japanese (ja),
+   Kazakh (kk), Korean (ko), Lithuanian (lt),
+   Malay (ms), Norwegian Bokmål (nb),
+   Polish (pl), Portuguese (pt),
+   Portuguese (Brazilian) (pt_BR), Russian (ru),
+   Slovak (sk), Thai (th), Turkish (tr),
+   Ukrainian (uk), Chinese (China) (zh_CN)
+
 4.12.0
 ======
 Stable release of xfdesktop for Xfce 4.12.
