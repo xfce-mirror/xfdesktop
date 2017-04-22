@@ -721,7 +721,7 @@ xfdesktop_settings_update_iconview_frame_name(AppearancePanel *panel,
 
     workspace_name = g_strdup(wnck_workspace_get_name(workspace));
 
-#if GTK_CHECK_VERSION (3, 22, 0)
+#if 0 /* GTK_CHECK_VERSION (3, 22, 0) */
     if(gdk_display_get_n_monitors(gtk_widget_get_display(panel->chk_apply_to_all)) > 1) {
 #else
     if(gdk_screen_get_n_monitors(gtk_widget_get_screen(panel->chk_apply_to_all)) > 1) {
@@ -1483,7 +1483,7 @@ suboptions_set_sensitive(GtkToggleButton *btn,
     gtk_widget_set_sensitive(box, gtk_toggle_button_get_active(btn));
 }
 
-#if GTK_CHECK_VERSION (3, 22, 0)
+#if 0 /* GTK_CHECK_VERSION (3, 22, 0) */
 static gint
 display_get_monitor_num(GdkDisplay *display, GdkMonitor *monitor)
 {
@@ -1512,7 +1512,7 @@ cb_update_background_tab(WnckWindow *wnck_window,
     WnckWorkspace *wnck_workspace = NULL;
     WnckScreen    *wnck_screen = NULL;
     GdkWindow     *window = NULL;
-#if GTK_CHECK_VERSION (3, 22, 0)
+#if 0 /* GTK_CHECK_VERSION (3, 22, 0) */
     GdkDisplay    *display = NULL;
     GdkMonitor    *monitor = NULL;
 #endif
@@ -1528,7 +1528,7 @@ cb_update_background_tab(WnckWindow *wnck_window,
     workspace_num = xfdesktop_settings_get_active_workspace(panel, wnck_window);
     screen_num = wnck_screen_get_number(wnck_screen);
     window = gtk_widget_get_window(panel->image_iconview);
-#if GTK_CHECK_VERSION (3, 22, 0)
+#if 0 /* GTK_CHECK_VERSION (3, 22, 0) */
     display = gdk_window_get_display(window);
     monitor = gdk_display_get_monitor_at_window(display, window);
     monitor_num = display_get_monitor_num(display, monitor);
@@ -1578,7 +1578,7 @@ cb_update_background_tab(WnckWindow *wnck_window,
      */
     gtk_combo_box_text_remove(GTK_COMBO_BOX_TEXT(panel->image_style_combo),
                               XFCE_BACKDROP_IMAGE_SPANNING_SCREENS);
-#if GTK_CHECK_VERSION (3, 22, 0)
+#if 0 /* GTK_CHECK_VERSION (3, 22, 0) */
     if(panel->monitor == 0 && gdk_display_get_n_monitors(gtk_widget_get_display(panel->image_style_combo)) > 1) {
         gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(panel->image_style_combo),
                                        _("Spanning screens"));

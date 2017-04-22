@@ -57,7 +57,7 @@
 gchar*
 xfdesktop_get_monitor_name_from_gtk_widget(GtkWidget *widget, gint monitor_num)
 {
-#if GTK_CHECK_VERSION (3, 22, 0)
+#if 0 /* GTK_CHECK_VERSION (3, 22, 0) */
     GdkWindow     *window = NULL;
     GdkDisplay    *display = NULL;
     GdkMonitor    *monitor = NULL;
