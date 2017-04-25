@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 23:19+0200\n"
-"PO-Revision-Date: 2017-04-21 10:51+0000\n"
+"PO-Revision-Date: 2017-04-25 12:35+0000\n"
 "Last-Translator: Aljoša Žagar <anthon.manix@gmail.com>\n"
 "Language-Team: Slovenian (http://www.transifex.com/xfce/xfdesktop/language/sl/)\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
 #, c-format
 msgid "Backdrop list file is not valid"
-msgstr ""
+msgstr "Datoteka seznama ozadji ni veljavna"
 
 #. no need to escape markup; it's already done for us
 #: ../settings/main.c:166
@@ -51,21 +51,21 @@ msgstr "Odstranljive naprave"
 #: ../settings/main.c:485
 #, c-format
 msgid "Cannot create backdrop list \"%s\""
-msgstr ""
+msgstr "Seznama ozadji \"%s\" ni mogoče ustvariti"
 
 #: ../settings/main.c:489 ../settings/main.c:875
 msgid "Backdrop List Error"
-msgstr ""
+msgstr "Napaka seznama ozadji"
 
 #: ../settings/main.c:514
 msgid "Create/Load Backdrop List"
-msgstr ""
+msgstr "Ustvari/Naloži seznam ozadji"
 
 #: ../settings/main.c:538
 #, c-format
 msgid ""
 "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
-msgstr ""
+msgstr "\"%s\" ni veljavna datoteka seznama ozadji. Ali jo želite prepisati?"
 
 #: ../settings/main.c:543
 msgid "Invalid List File"
@@ -82,7 +82,7 @@ msgstr "Zamenjaj"
 #: ../settings/main.c:871
 #, c-format
 msgid "Failed to write backdrop list to \"%s\""
-msgstr ""
+msgstr "Zapisovanje seznama ozadji v \"%s\" ni uspelo"
 
 #: ../settings/main.c:898
 msgid "Add Image File(s)"
@@ -136,7 +136,7 @@ msgstr "Podatki o različici"
 #: ../settings/main.c:1669
 #, c-format
 msgid "Type '%s --help' for usage."
-msgstr ""
+msgstr "Vtipkajte '%s --help' za navodila za uporabo."
 
 #: ../settings/main.c:1681
 msgid "The Xfce development team. All rights reserved."
@@ -166,7 +166,7 @@ msgstr "Nastavite ozadje namizja in obnašanje menijev in ikon"
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
 #: ../settings/xfdesktop-settings-ui.glade.h:1
 msgid "Auto"
-msgstr ""
+msgstr "Samodejno"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
 #: ../settings/xfdesktop-settings-ui.glade.h:2
@@ -223,7 +223,7 @@ msgstr "Odstrani izbrano sliko(e) s seznama"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
 msgid "Create a new list, or load an existing one"
-msgstr ""
+msgstr "Ustvarite nov seznam ali naložite obstoječega"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
 msgid "St_yle:"
@@ -307,7 +307,7 @@ msgstr "Poveča ali zmanjša barvno nasičenost končne slike"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
 msgid "<b>Adjustments</b>"
-msgstr ""
+msgstr "<b>Prilagoditve</b>"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
 msgid "_Change the background (in minutes):"
@@ -477,7 +477,7 @@ msgstr "_Prozornost oznake:"
 msgid ""
 "Specify the transparency level for the rounded label drawn behind the icon "
 "text"
-msgstr ""
+msgstr "Določite nivo prozornosti za zaobljene oznake izrisane za besedilom ikone"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:46
 msgid "<b>Appearance</b>"
@@ -561,7 +561,7 @@ msgstr "Ikone datotek namizja: %s\n"
 #: ../src/main.c:332
 #, c-format
 msgid "%s is not running.\n"
-msgstr ""
+msgstr "%s se ne izvaja.\n"
 
 #: ../src/menu.c:106
 msgid "_Applications"
@@ -603,7 +603,7 @@ msgstr "Odst_rani delovne površine: '%s'"
 #: ../src/xfce-desktop.c:1084
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
-msgstr ""
+msgstr "Slike iz datoteke seznama ozadji \"%s\" ni mogoče naložiti"
 
 #: ../src/xfce-desktop.c:1086
 msgid "Desktop Error"
