@@ -251,7 +251,7 @@ GtkWidget*
 xfdesktop_menu_create_menu_item_with_mnemonic(const gchar *name,
                                               GtkWidget   *image)
 {
-    GtkWidget *label = label = gtk_label_new_with_mnemonic(name);
+    GtkWidget *label = gtk_label_new_with_mnemonic(name);
 
     return create_menu_item(label, image);
 }
