@@ -2980,12 +2980,15 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
         }
 
 #ifdef G_ENABLE_DEBUG
-        xfdesktop_icon_get_position(icon, &row, &col);
-
-        DBG("painting pixbuf at %dx%d+%d+%d (row %d ,col %d)",
-              pixbuf_extents.width, pixbuf_extents.height,
-              pixbuf_extents.x, pixbuf_extents.y,
-              row, col);
+        if(!xfdesktop_icon_get_position(icon, &row, &col)) {
+            g_warning("trying to calculate without a position for icon '%s'",
+                      xfdesktop_icon_peek_label(icon));
+        } else {
+            DBG("painting pixbuf at %dx%d+%d+%d (row %d ,col %d)",
+                  pixbuf_extents.width, pixbuf_extents.height,
+                  pixbuf_extents.x, pixbuf_extents.y,
+                  row, col);
+        }
 #endif
 
         xfdesktop_icon_view_draw_image(cr, pix, &pixbuf_extents);
