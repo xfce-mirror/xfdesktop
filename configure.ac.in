@@ -151,10 +151,10 @@ if test "x$ac_cv_enable_desktop_menu" = "xno"; then
     build_desktop_menu="no"
 else
     dnl time for more abuse!
-    XDT_CHECK_PACKAGE([GARCON], [garcon-2],
+    XDT_CHECK_PACKAGE([GARCON], [garcon-1],
                       [garcon_minimum_version], [build_desktop_menu="yes"],
                       [
-echo "*** Optional package garcon-2 was either not found on your system"
+echo "*** Optional package garcon-1 was either not found on your system"
 echo "*** or is too old.  Please install or upgrade to at least version"
 echo "*** garcon_minimum_version, or adjust the PKG_CONFIG_PATH environment variable"
 echo "*** if you installed the new version of the package in a nonstandard"
