@@ -1797,13 +1797,15 @@ xfce_backdrop_loader_size_prepared_cb(GdkPixbufLoader *loader,
                                       gpointer user_data)
 {
     XfceBackdropImageData *image_data = user_data;
-    XfceBackdrop *backdrop = image_data->backdrop;
+    XfceBackdrop *backdrop;
     gdouble xscale, yscale;
 
     TRACE("entering");
 
     if(image_data == NULL)
         return;
+
+    backdrop = image_data->backdrop;
 
     /* canceled? quit now */
     if(g_cancellable_is_cancelled(image_data->cancellable)) {
