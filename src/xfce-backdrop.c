@@ -221,12 +221,8 @@ create_gradient(GdkRGBA *color1, GdkRGBA *color2, gint width, gint height,
 
     if(style == XFCE_BACKDROP_COLOR_VERT_GRADIENT) {
         pat = cairo_pattern_create_linear (0.0, 0.0,  0.0, height);
-    } else if(style == XFCE_BACKDROP_COLOR_HORIZ_GRADIENT) {
-        pat = cairo_pattern_create_linear (0.0, 0.0,  width, 0.0);
     } else {
-        cairo_destroy(cr);
-        cairo_surface_destroy(surface);
-        return NULL;
+        pat = cairo_pattern_create_linear (0.0, 0.0,  width, 0.0);
     }
 
     cairo_pattern_add_color_stop_rgba (pat, 1, color2->red, color2->green, color2->blue, color2->alpha);
