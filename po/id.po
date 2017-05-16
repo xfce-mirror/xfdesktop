@@ -6,14 +6,15 @@
 # Andhika Padmawan <andhika.padmawan@gmail.com>, 2008,2014
 # Anton Toni Agung <vdrive6@gmail.com>, 2015
 # Ardjuna <Asyura.x@gmail.com>, 2013-2014
-# Mohamad Hasan Al Banna <se7entime@protonmail.com>, 2013
-# Mohamad Hasan Al Banna <se7entime@protonmail.com>, 2013
+# Mohamad Hasan Al Banna <se7entime@openmailbox.org>, 2013
+# Mohamad Hasan Al Banna <se7entime@openmailbox.org>, 2013
+# Mohamad Hasan Al Banna <se7entime@openmailbox.org>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-15 18:31+0200\n"
-"PO-Revision-Date: 2017-02-26 06:43+0000\n"
+"POT-Creation-Date: 2017-05-04 18:31+0200\n"
+"PO-Revision-Date: 2017-05-16 04:26+0000\n"
 "Last-Translator: Kukuh Syafaat <syafaatkukuh@gmail.com>\n"
 "Language-Team: Indonesian (http://www.transifex.com/xfce/xfdesktop/language/id/)\n"
 "MIME-Version: 1.0\n"
@@ -22,37 +23,37 @@ msgstr ""
 "Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../settings/main.c:416 ../src/xfdesktop-special-file-icon.c:295
-#: ../src/xfdesktop-special-file-icon.c:479
+#: ../settings/main.c:417 ../src/xfdesktop-special-file-icon.c:295
+#: ../src/xfdesktop-special-file-icon.c:481
 msgid "Home"
 msgstr "Rumah"
 
-#: ../settings/main.c:418
+#: ../settings/main.c:419
 msgid "Filesystem"
 msgstr "Sistem Berkas"
 
-#: ../settings/main.c:420
+#: ../settings/main.c:421 ../src/xfdesktop-special-file-icon.c:299
 msgid "Trash"
 msgstr "Tempat Sampah"
 
-#: ../settings/main.c:422
+#: ../settings/main.c:423
 msgid "Removable Devices"
 msgstr "Divais Lepasan"
 
-#: ../settings/main.c:424
+#: ../settings/main.c:425
 msgid "Network Shares"
 msgstr "Berbagi Jaringan"
 
-#: ../settings/main.c:426
+#: ../settings/main.c:427
 msgid "Disks and Drives"
 msgstr "Media Simpan"
 
-#: ../settings/main.c:428
+#: ../settings/main.c:429
 msgid "Other Devices"
 msgstr "Perangkat Lain"
 
 #. Display the file name, file type, and file size in the tooltip.
-#: ../settings/main.c:541
+#: ../settings/main.c:542
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -60,106 +61,110 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nTipe:%s\nUkuran:%s"
 
-#: ../settings/main.c:728
+#: ../settings/main.c:733
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "Latar Belakang untuk Monitor %d (%s)"
 
-#: ../settings/main.c:731
+#: ../settings/main.c:736
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "Latar Belakang untuk Monitor %d"
 
-#: ../settings/main.c:737
+#: ../settings/main.c:742
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "Pindahkan dialog ini ke tampilan yang ingin Anda sunting pengaturannya."
 
-#: ../settings/main.c:744
+#: ../settings/main.c:749
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "Latar Belakang untuk %s pada Monitor %d (%s)"
 
-#: ../settings/main.c:748
+#: ../settings/main.c:753
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "Latar Belakang untuk %s pada Monitor %d"
 
-#: ../settings/main.c:755
+#: ../settings/main.c:760
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr "Pindahkan dialog ini ke tampilan dan area kerja yang ingin Anda sunting pengaturannya."
 
 #. Single monitor and single workspace
-#: ../settings/main.c:763
+#: ../settings/main.c:768
 #, c-format
 msgid "Wallpaper for my desktop"
 msgstr "Latar Belakang untuk desktop saya"
 
 #. Single monitor and per workspace wallpaper
-#: ../settings/main.c:769
+#: ../settings/main.c:774
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "Latar Belakang untuk %s"
 
-#: ../settings/main.c:774
+#: ../settings/main.c:779
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "Silahkan pindahkan jendela dialog ini ke ruang kerja yang akan diatur."
 
-#: ../settings/main.c:1194
+#: ../settings/main.c:1199
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "Seleksi gambar tidak tersedia ketika gaya gambar diset ke Tidak satupun"
 
-#: ../settings/main.c:1544
+#: ../settings/main.c:1584 ../settings/main.c:1589
 msgid "Spanning screens"
 msgstr "Merentang layar"
 
-#: ../settings/main.c:1858
+#: ../settings/main.c:1899
 msgid "Image files"
 msgstr "Berkas citra"
 
 #. Change the title of the file chooser dialog
-#: ../settings/main.c:1863
+#: ../settings/main.c:1907
 msgid "Select a Directory"
 msgstr "Pilih Direktori"
 
-#: ../settings/main.c:2055
+#: ../settings/main.c:2099
 msgid "Settings manager socket"
 msgstr "Soket manajer pengaturan"
 
-#: ../settings/main.c:2055
+#: ../settings/main.c:2099
 msgid "SOCKET ID"
 msgstr "ID SOKET"
 
-#: ../settings/main.c:2056
+#: ../settings/main.c:2100
 msgid "Version information"
 msgstr "Informasi versi"
 
-#: ../settings/main.c:2057 ../src/xfdesktop-application.c:844
+#: ../settings/main.c:2101 ../src/xfdesktop-application.c:774
 msgid "Enable debug messages"
 msgstr "Nyalakan pesan debug"
 
-#: ../settings/main.c:2085
+#: ../settings/main.c:2129
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Ketik '%s --help' untuk penggunaan."
 
-#: ../settings/main.c:2097
+#: ../settings/main.c:2141
 msgid "The Xfce development team. All rights reserved."
 msgstr "Tim pengembang Xfce. Hak cipta dilindungi undang-undang."
 
-#: ../settings/main.c:2098
+#: ../settings/main.c:2142
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Silahkan melaporkan galat ke <%s>."
 
-#: ../settings/main.c:2105
+#: ../settings/main.c:2149
 msgid "Desktop Settings"
 msgstr "Pengaturan Destop"
 
-#: ../settings/main.c:2107
+#: ../settings/main.c:2151
 msgid "Unable to contact settings server"
 msgstr "Gagal berkomunikasi dengan server pengaturan"
+
+#: ../settings/main.c:2153
+msgid "Quit"
+msgstr "Keluar"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop "
@@ -346,7 +351,7 @@ msgstr "Ikon aplikasi diminimalkan"
 msgid "File/launcher icons"
 msgstr "Ikon berkas / peluncur"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:1047
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:1049
 msgid "Desktop"
 msgstr "Destop"
 
@@ -468,7 +473,7 @@ msgstr "<b>Ikon Standar</b>"
 msgid "_Icons"
 msgstr "_Ikon"
 
-#: ../src/menu.c:106
+#: ../src/menu.c:81
 msgid "_Applications"
 msgstr "_Aplikasi"
 
@@ -502,410 +507,428 @@ msgstr "Apakah anda ingin menghapus ruang kerja '%s'?\nCatatan: Saat ini anda be
 msgid "Remove"
 msgstr "Hapus"
 
-#: ../src/windowlist.c:253
+#: ../src/windowlist.c:272
 msgid "Window List"
 msgstr "Senarai Jendela"
 
-#: ../src/windowlist.c:279
+#: ../src/windowlist.c:297
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>Ruang kerja %d</b>"
 
-#: ../src/windowlist.c:366 ../src/windowlist.c:369
+#: ../src/windowlist.c:393 ../src/windowlist.c:395
 msgid "_Add Workspace"
 msgstr "_Tambah Ruang Kerja"
 
-#: ../src/windowlist.c:377
+#: ../src/windowlist.c:403
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "Hapus _Ruang Kerja %d"
 
-#: ../src/windowlist.c:380
+#: ../src/windowlist.c:406
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "Hapus _Ruang Kerja '%s'"
 
-#: ../src/xfdesktop-app-menu-item.c:351
-#: ../src/xfdesktop-file-icon-manager.c:860
-#: ../src/xfdesktop-file-icon-manager.c:1154
-#: ../src/xfdesktop-file-icon-manager.c:1367 ../src/xfdesktop-file-utils.c:665
-#: ../src/xfdesktop-file-utils.c:1090 ../src/xfdesktop-file-utils.c:1167
-#: ../src/xfdesktop-file-utils.c:1192 ../src/xfdesktop-file-utils.c:1244
+#: ../src/xfdesktop-application.c:766
+msgid "Display version information"
+msgstr "Tampilkan informasi versi"
+
+#: ../src/xfdesktop-application.c:767
+msgid "Reload all settings"
+msgstr "Muat ulang semua pengaturan"
+
+#: ../src/xfdesktop-application.c:768
+msgid "Advance to the next wallpaper on the current workspace"
+msgstr "Maju ke gambar latar berikutnya pada area kerja saat ini"
+
+#: ../src/xfdesktop-application.c:769
+msgid "Pop up the menu (at the current mouse position)"
+msgstr "Munculkan menu (di posisi tetikus sekarang)"
+
+#: ../src/xfdesktop-application.c:770
+msgid "Pop up the window list (at the current mouse position)"
+msgstr "Munculkan daftar jendela (di posisi tetikus sekarang)"
+
+#: ../src/xfdesktop-application.c:772
+msgid "Automatically arrange all the icons on the desktop"
+msgstr "Rapikan tata letak ikon di destop"
+
+#: ../src/xfdesktop-application.c:775
+msgid "Disable debug messages"
+msgstr "Matikan pesan debug"
+
+#: ../src/xfdesktop-application.c:776
+msgid "Do not wait for a window manager on startup"
+msgstr "Jangan tunggu proses manajer jendela saat permulaan sistem berjalan"
+
+#: ../src/xfdesktop-application.c:777
+msgid "Cause xfdesktop to quit"
+msgstr "Menyebabkan xfdesktop berhenti"
+
+#: ../src/xfdesktop-application.c:792
+#, c-format
+msgid "Failed to parse arguments: %s\n"
+msgstr "Gagal mengurai argumen: %s\n"
+
+#: ../src/xfdesktop-application.c:803
+#, c-format
+msgid "This is %s version %s, running on Xfce %s.\n"
+msgstr "Ini adalah %s versi %s, yang berjalan pada Xfce %s.\n"
+
+#: ../src/xfdesktop-application.c:805
+#, c-format
+msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
+msgstr "Dibangun dengan GTK+ %d.%d.%d, ditautkan dengan GTK+ %d.%d.%d."
+
+#: ../src/xfdesktop-application.c:809
+#, c-format
+msgid "Build options:\n"
+msgstr "Opsi bangun:\n"
+
+#: ../src/xfdesktop-application.c:810
+#, c-format
+msgid "    Desktop Menu:        %s\n"
+msgstr "Menu Destop: %s\n"
+
+#: ../src/xfdesktop-application.c:812 ../src/xfdesktop-application.c:819
+#: ../src/xfdesktop-application.c:826
+msgid "enabled"
+msgstr "aktifkan"
+
+#: ../src/xfdesktop-application.c:814 ../src/xfdesktop-application.c:821
+#: ../src/xfdesktop-application.c:828
+msgid "disabled"
+msgstr "nonaktifkan"
+
+#: ../src/xfdesktop-application.c:817
+#, c-format
+msgid "    Desktop Icons:       %s\n"
+msgstr "Ikon Destop: %s\n"
+
+#: ../src/xfdesktop-application.c:824
+#, c-format
+msgid "    Desktop File Icons:  %s\n"
+msgstr "Ikon Berkas Destop: %s\n"
+
+#: ../src/xfdesktop-file-icon-manager.c:552
+#: ../src/xfdesktop-file-icon-manager.c:570
+#, c-format
+msgid "Could not create the desktop folder \"%s\""
+msgstr "Tak dapat membuat folder desktop \"%s\""
+
+#: ../src/xfdesktop-file-icon-manager.c:557
+#: ../src/xfdesktop-file-icon-manager.c:575
+msgid "Desktop Folder Error"
+msgstr "Galat Folder Desktop"
+
+#: ../src/xfdesktop-file-icon-manager.c:560
+#: ../src/xfdesktop-file-icon-manager.c:579
+#: ../src/xfdesktop-file-icon-manager.c:664
+#: ../src/xfdesktop-file-icon-manager.c:800
+#: ../src/xfdesktop-file-icon-manager.c:1095
+#: ../src/xfdesktop-file-icon-manager.c:1307
+#: ../src/xfdesktop-file-icon-manager.c:2827 ../src/xfdesktop-file-utils.c:674
+#: ../src/xfdesktop-file-utils.c:693 ../src/xfdesktop-file-utils.c:747
+#: ../src/xfdesktop-file-utils.c:811 ../src/xfdesktop-file-utils.c:872
+#: ../src/xfdesktop-file-utils.c:933 ../src/xfdesktop-file-utils.c:981
+#: ../src/xfdesktop-file-utils.c:1036 ../src/xfdesktop-file-utils.c:1094
+#: ../src/xfdesktop-file-utils.c:1146 ../src/xfdesktop-file-utils.c:1207
+#: ../src/xfdesktop-file-utils.c:1283 ../src/xfdesktop-file-utils.c:1309
+#: ../src/xfdesktop-file-utils.c:1371 ../src/xfdesktop-file-utils.c:1430
+#: ../src/xfdesktop-file-utils.c:1446 ../src/xfdesktop-file-utils.c:1508
+#: ../src/xfdesktop-file-utils.c:1526 ../src/xfdesktop-volume-icon.c:525
+#: ../src/xfdesktop-volume-icon.c:571 ../src/xfdesktop-volume-icon.c:607
+msgid "_Close"
+msgstr "_Tutup"
+
+#: ../src/xfdesktop-file-icon-manager.c:577
+msgid ""
+"A normal file with the same name already exists. Please delete or rename it."
+msgstr "Sebuah berkas normal dengan nama yang sama telah ada. Silakan hapus atau ganti nama."
+
+#: ../src/xfdesktop-file-icon-manager.c:661 ../src/xfdesktop-file-utils.c:743
+#: ../src/xfdesktop-file-utils.c:807
+msgid "Rename Error"
+msgstr "Galat Mengganti Nama"
+
+#: ../src/xfdesktop-file-icon-manager.c:662 ../src/xfdesktop-file-utils.c:808
+msgid "The files could not be renamed"
+msgstr "Berkas tidak dapat diganti namanya"
+
+#: ../src/xfdesktop-file-icon-manager.c:663
+msgid "None of the icons selected support being renamed."
+msgstr "Tidak ada dukungan pilihan ikon yang diganti nama."
+
+#. printf is to be translator-friendly
+#: ../src/xfdesktop-file-icon-manager.c:796
+#: ../src/xfdesktop-file-icon-manager.c:1304
+#, c-format
+msgid "Unable to launch \"%s\":"
+msgstr "Tak dapat menjalankan \"%s\":"
+
+#: ../src/xfdesktop-file-icon-manager.c:798
+#: ../src/xfdesktop-file-icon-manager.c:1091
+#: ../src/xfdesktop-file-icon-manager.c:1305 ../src/xfdesktop-file-utils.c:671
+#: ../src/xfdesktop-file-utils.c:1203 ../src/xfdesktop-file-utils.c:1281
+#: ../src/xfdesktop-file-utils.c:1305 ../src/xfdesktop-file-utils.c:1367
 msgid "Launch Error"
 msgstr "Galat Peluncur"
 
-#: ../src/xfdesktop-app-menu-item.c:353
-#: ../src/xfdesktop-file-icon-manager.c:1156
+#: ../src/xfdesktop-file-icon-manager.c:1017
+#, c-format
+msgid "_Open With \"%s\""
+msgstr "_Buka Dengan \"%s\""
+
+#: ../src/xfdesktop-file-icon-manager.c:1020
+#, c-format
+msgid "Open With \"%s\""
+msgstr "Buka Dengan \"%s\""
+
+#: ../src/xfdesktop-file-icon-manager.c:1093
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr "Tak dapat menjalankan \"exo-desktop-item-edit\", yang diperlukan untuk membuat dan menyunting peluncur serta tautan di destop."
 
-#: ../src/xfdesktop-application.c:836
-msgid "Display version information"
-msgstr "Tampilkan informasi versi"
-
-#: ../src/xfdesktop-application.c:837
-msgid "Reload all settings"
-msgstr "Muat ulang semua pengaturan"
-
-#: ../src/xfdesktop-application.c:838
-msgid "Advance to the next wallpaper on the current workspace"
-msgstr "Maju ke gambar latar berikutnya pada area kerja saat ini"
-
-#: ../src/xfdesktop-application.c:839
-msgid "Pop up the menu (at the current mouse position)"
-msgstr "Munculkan menu (di posisi tetikus sekarang)"
-
-#: ../src/xfdesktop-application.c:840
-msgid "Pop up the window list (at the current mouse position)"
-msgstr "Munculkan daftar jendela (di posisi tetikus sekarang)"
-
-#: ../src/xfdesktop-application.c:842
-msgid "Automatically arrange all the icons on the desktop"
-msgstr "Rapikan tata letak ikon di destop"
-
-#: ../src/xfdesktop-application.c:845
-msgid "Disable debug messages"
-msgstr "Matikan pesan debug"
-
-#: ../src/xfdesktop-application.c:846
-msgid "Do not wait for a window manager on startup"
-msgstr "Jangan tunggu proses manajer jendela saat permulaan sistem berjalan"
-
-#: ../src/xfdesktop-application.c:847
-msgid "Cause xfdesktop to quit"
-msgstr "Menyebabkan xfdesktop berhenti"
-
-#: ../src/xfdesktop-application.c:862
-#, c-format
-msgid "Failed to parse arguments: %s\n"
-msgstr "Gagal mengurai argumen: %s\n"
-
-#: ../src/xfdesktop-application.c:873
-#, c-format
-msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr "Ini adalah %s versi %s, yang berjalan pada Xfce %s.\n"
-
-#: ../src/xfdesktop-application.c:875
-#, c-format
-msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr "Dibangun dengan GTK+ %d.%d.%d, ditautkan dengan GTK+ %d.%d.%d."
-
-#: ../src/xfdesktop-application.c:879
-#, c-format
-msgid "Build options:\n"
-msgstr "Opsi bangun:\n"
-
-#: ../src/xfdesktop-application.c:880
-#, c-format
-msgid "    Desktop Menu:        %s\n"
-msgstr "Menu Destop: %s\n"
-
-#: ../src/xfdesktop-application.c:882 ../src/xfdesktop-application.c:889
-#: ../src/xfdesktop-application.c:896
-msgid "enabled"
-msgstr "aktifkan"
-
-#: ../src/xfdesktop-application.c:884 ../src/xfdesktop-application.c:891
-#: ../src/xfdesktop-application.c:898
-msgid "disabled"
-msgstr "nonaktifkan"
-
-#: ../src/xfdesktop-application.c:887
-#, c-format
-msgid "    Desktop Icons:       %s\n"
-msgstr "Ikon Destop: %s\n"
-
-#: ../src/xfdesktop-application.c:894
-#, c-format
-msgid "    Desktop File Icons:  %s\n"
-msgstr "Ikon Berkas Destop: %s\n"
-
-#: ../src/xfdesktop-file-icon-manager.c:561
-#: ../src/xfdesktop-file-icon-manager.c:578
-#, c-format
-msgid "Could not create the desktop folder \"%s\""
-msgstr "Tak dapat membuat folder desktop \"%s\""
-
-#: ../src/xfdesktop-file-icon-manager.c:566
-#: ../src/xfdesktop-file-icon-manager.c:583
-msgid "Desktop Folder Error"
-msgstr "Galat Folder Desktop"
-
-#: ../src/xfdesktop-file-icon-manager.c:585
-msgid ""
-"A normal file with the same name already exists. Please delete or rename it."
-msgstr "Sebuah berkas normal dengan nama yang sama telah ada. Silakan hapus atau ganti nama."
-
-#: ../src/xfdesktop-file-icon-manager.c:668 ../src/xfdesktop-file-utils.c:727
-#: ../src/xfdesktop-file-utils.c:780
-msgid "Rename Error"
-msgstr "Galat Mengganti Nama"
-
-#: ../src/xfdesktop-file-icon-manager.c:669 ../src/xfdesktop-file-utils.c:781
-msgid "The files could not be renamed"
-msgstr "Berkas tidak dapat diganti namanya"
-
-#: ../src/xfdesktop-file-icon-manager.c:670
-msgid "None of the icons selected support being renamed."
-msgstr "Tidak ada dukungan pilihan ikon yang diganti nama."
-
-#: ../src/xfdesktop-file-icon-manager.c:714
-#: ../src/xfdesktop-file-icon-manager.c:758 ../src/xfdesktop-file-utils.c:880
-#: ../src/xfdesktop-file-utils.c:917
-msgid "Trash Error"
-msgstr "Galat Tempat Sampah"
-
-#: ../src/xfdesktop-file-icon-manager.c:715
-#: ../src/xfdesktop-file-icon-manager.c:759
-msgid "The selected files could not be trashed"
-msgstr "Berkas terpilih tak dapat dihapus"
-
-#: ../src/xfdesktop-file-icon-manager.c:716
-#: ../src/xfdesktop-file-icon-manager.c:760 ../src/xfdesktop-file-utils.c:729
-#: ../src/xfdesktop-file-utils.c:782 ../src/xfdesktop-file-utils.c:832
-#: ../src/xfdesktop-file-utils.c:963 ../src/xfdesktop-file-utils.c:1010
-#: ../src/xfdesktop-file-utils.c:1051 ../src/xfdesktop-file-utils.c:1092
-#: ../src/xfdesktop-file-utils.c:1194 ../src/xfdesktop-file-utils.c:1246
-#: ../src/xfdesktop-file-utils.c:1319 ../src/xfdesktop-file-utils.c:1397
-msgid ""
-"This feature requires a file manager service to be present (such as the one "
-"supplied by Thunar)."
-msgstr "Fitur ini memerlukan adanya sebuah layanan manajer berkas yang tersedia (seperti yang disediakan oleh Thunar)."
-
-#. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:858
-#: ../src/xfdesktop-file-icon-manager.c:1366
-#, c-format
-msgid "Unable to launch \"%s\":"
-msgstr "Tak dapat menjalankan \"%s\":"
-
-#: ../src/xfdesktop-file-icon-manager.c:1078
-#, c-format
-msgid "_Open With \"%s\""
-msgstr "_Buka Dengan \"%s\""
-
-#: ../src/xfdesktop-file-icon-manager.c:1081
-#, c-format
-msgid "Open With \"%s\""
-msgstr "Buka Dengan \"%s\""
-
-#: ../src/xfdesktop-file-icon-manager.c:1436
+#: ../src/xfdesktop-file-icon-manager.c:1374
 msgid "_Open all"
 msgstr "_Buka semua"
 
-#: ../src/xfdesktop-file-icon-manager.c:1452
+#: ../src/xfdesktop-file-icon-manager.c:1388
 msgid "_Open in New Window"
 msgstr "_Buka di Jendela Baru"
 
-#: ../src/xfdesktop-file-icon-manager.c:1454
-#: ../src/xfdesktop-special-file-icon.c:547 ../src/xfdesktop-volume-icon.c:813
+#: ../src/xfdesktop-file-icon-manager.c:1390
+#: ../src/xfdesktop-special-file-icon.c:548 ../src/xfdesktop-volume-icon.c:813
 msgid "_Open"
 msgstr "B_uka"
 
-#. create launcher item
-#: ../src/xfdesktop-file-icon-manager.c:1473
+#: ../src/xfdesktop-file-icon-manager.c:1410
 msgid "Create _Launcher..."
 msgstr "Buat _Peluncur..."
 
-#. create link item
-#: ../src/xfdesktop-file-icon-manager.c:1489
+#: ../src/xfdesktop-file-icon-manager.c:1424
 msgid "Create _URL Link..."
 msgstr "Buat Tautan _URL..."
 
-#. create folder item
-#: ../src/xfdesktop-file-icon-manager.c:1505
+#: ../src/xfdesktop-file-icon-manager.c:1438
 msgid "Create _Folder..."
 msgstr "Buat _Folder..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1522
+#: ../src/xfdesktop-file-icon-manager.c:1450
 msgid "Create _Document"
 msgstr "Buat _Dokumen"
 
-#: ../src/xfdesktop-file-icon-manager.c:1546
+#: ../src/xfdesktop-file-icon-manager.c:1474
 msgid "No templates installed"
 msgstr "Tidak ada templet ya terpasang"
 
-#: ../src/xfdesktop-file-icon-manager.c:1563
+#: ../src/xfdesktop-file-icon-manager.c:1490
 msgid "_Empty File"
 msgstr "Berkas _Kosong"
 
-#: ../src/xfdesktop-file-icon-manager.c:1580
+#: ../src/xfdesktop-file-icon-manager.c:1505
 msgid "_Execute"
 msgstr "_Eksekusi"
 
-#: ../src/xfdesktop-file-icon-manager.c:1600
+#: ../src/xfdesktop-file-icon-manager.c:1523
 msgid "_Edit Launcher"
 msgstr "_Sunting Peluncur"
 
-#: ../src/xfdesktop-file-icon-manager.c:1659
+#: ../src/xfdesktop-file-icon-manager.c:1581
 msgid "Open With"
 msgstr "Buka Dengan"
 
-#: ../src/xfdesktop-file-icon-manager.c:1685
-#: ../src/xfdesktop-file-icon-manager.c:1700
+#: ../src/xfdesktop-file-icon-manager.c:1607
+#: ../src/xfdesktop-file-icon-manager.c:1621
 msgid "Open With Other _Application..."
 msgstr "Buka Dengan _Aplikasi Lain..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1759
+#: ../src/xfdesktop-file-icon-manager.c:1639
+msgid "_Paste"
+msgstr "_Tempel"
+
+#: ../src/xfdesktop-file-icon-manager.c:1681
 msgid "Paste Into Folder"
 msgstr "Salin Kedalam Folder"
 
-#. Trash
-#: ../src/xfdesktop-file-icon-manager.c:1778
+#: ../src/xfdesktop-file-icon-manager.c:1700
 msgid "Mo_ve to Trash"
 msgstr "Pin_dahkan ke Tempat Sampah"
 
+#: ../src/xfdesktop-file-icon-manager.c:1712
+msgid "_Delete"
+msgstr "_Hapus"
+
 #. Rename
-#: ../src/xfdesktop-file-icon-manager.c:1809
+#: ../src/xfdesktop-file-icon-manager.c:1728
 msgid "_Rename..."
 msgstr "_Namai Ulang..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1877
+#: ../src/xfdesktop-file-icon-manager.c:1795
 msgid "Arrange Desktop _Icons"
 msgstr "_Atur Ikon Desktop"
 
-#: ../src/xfdesktop-file-icon-manager.c:1888
+#: ../src/xfdesktop-file-icon-manager.c:1804
 msgid "Desktop _Settings..."
 msgstr "Pengaturan _Destop..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1899
-#: ../src/xfdesktop-volume-icon.c:855
+#: ../src/xfdesktop-file-icon-manager.c:1813
+#: ../src/xfdesktop-volume-icon.c:854
 msgid "P_roperties..."
 msgstr "_Properti..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2912
+#: ../src/xfdesktop-file-icon-manager.c:2824
 msgid "Load Error"
 msgstr "Galat Memuat"
 
-#: ../src/xfdesktop-file-icon-manager.c:2914
+#: ../src/xfdesktop-file-icon-manager.c:2826
 msgid "Failed to load the desktop folder"
 msgstr "Gagal memuat folder desktop"
 
-#: ../src/xfdesktop-file-icon-manager.c:3479
+#: ../src/xfdesktop-file-icon-manager.c:3392
 msgid "Copy _Here"
 msgstr "Salin ke _Sini"
 
-#: ../src/xfdesktop-file-icon-manager.c:3479
+#: ../src/xfdesktop-file-icon-manager.c:3392
 msgid "_Move Here"
 msgstr "_Pindah ke Sini"
 
-#: ../src/xfdesktop-file-icon-manager.c:3479
+#: ../src/xfdesktop-file-icon-manager.c:3392
 msgid "_Link Here"
 msgstr "_Taut ke Sini"
 
+#: ../src/xfdesktop-file-icon-manager.c:3427
+msgid "_Cancel"
+msgstr "_Batal"
+
 #. TRANSLATORS: file was modified less than one day ago
-#: ../src/xfdesktop-file-utils.c:140
+#: ../src/xfdesktop-file-utils.c:147
 #, c-format
 msgid "Today at %X"
 msgstr "Hari ini pada %X"
 
 #. TRANSLATORS: file was modified less than two days ago
-#: ../src/xfdesktop-file-utils.c:144
+#: ../src/xfdesktop-file-utils.c:151
 #, c-format
 msgid "Yesterday at %X"
 msgstr "Kemarin pada %X"
 
 #. Days from last week
-#: ../src/xfdesktop-file-utils.c:149
+#: ../src/xfdesktop-file-utils.c:156
 #, c-format
 msgid "%A at %X"
 msgstr "%A pada %X"
 
 #. Any other date
-#: ../src/xfdesktop-file-utils.c:152
+#: ../src/xfdesktop-file-utils.c:159
 #, c-format
 msgid "%x at %X"
 msgstr "%x pada %X"
 
 #. the file_time is invalid
-#: ../src/xfdesktop-file-utils.c:162
+#: ../src/xfdesktop-file-utils.c:169
 msgid "Unknown"
 msgstr "Tak diketahui"
 
-#: ../src/xfdesktop-file-utils.c:666
+#: ../src/xfdesktop-file-utils.c:672
 msgid "The folder could not be opened"
 msgstr "Folder tak dapat dibuka"
 
-#: ../src/xfdesktop-file-utils.c:685
+#: ../src/xfdesktop-file-utils.c:690
 msgid "Error"
 msgstr "Galat"
 
-#: ../src/xfdesktop-file-utils.c:686
+#: ../src/xfdesktop-file-utils.c:691
 msgid "The requested operation could not be completed"
 msgstr "Perintah tersebut tidak dapat dilaksanakan"
 
-#: ../src/xfdesktop-file-utils.c:728
+#: ../src/xfdesktop-file-utils.c:744
 msgid "The file could not be renamed"
 msgstr "Berkas tak dapat diganti nama"
 
-#: ../src/xfdesktop-file-utils.c:830
+#: ../src/xfdesktop-file-utils.c:745 ../src/xfdesktop-file-utils.c:809
+#: ../src/xfdesktop-file-utils.c:870 ../src/xfdesktop-file-utils.c:1034
+#: ../src/xfdesktop-file-utils.c:1092 ../src/xfdesktop-file-utils.c:1144
+#: ../src/xfdesktop-file-utils.c:1205 ../src/xfdesktop-file-utils.c:1307
+#: ../src/xfdesktop-file-utils.c:1369 ../src/xfdesktop-file-utils.c:1444
+#: ../src/xfdesktop-file-utils.c:1524
+msgid ""
+"This feature requires a file manager service to be present (such as the one "
+"supplied by Thunar)."
+msgstr "Fitur ini memerlukan adanya sebuah layanan manajer berkas yang tersedia (seperti yang disediakan oleh Thunar)."
+
+#: ../src/xfdesktop-file-utils.c:868
 msgid "Delete Error"
 msgstr "Hapus Galat"
 
-#: ../src/xfdesktop-file-utils.c:831
+#: ../src/xfdesktop-file-utils.c:869
 msgid "The selected files could not be deleted"
 msgstr "Berkas yang dipilih tidak dapat dihapus"
 
-#: ../src/xfdesktop-file-utils.c:881
+#: ../src/xfdesktop-file-utils.c:929 ../src/xfdesktop-file-utils.c:977
+msgid "Trash Error"
+msgstr "Galat Tempat Sampah"
+
+#: ../src/xfdesktop-file-utils.c:930
 msgid "The selected files could not be moved to the trash"
 msgstr "Berkas yang dipilih tidak dapat dipindahkan ke tempat sampah"
 
-#: ../src/xfdesktop-file-utils.c:882 ../src/xfdesktop-file-utils.c:919
+#: ../src/xfdesktop-file-utils.c:931 ../src/xfdesktop-file-utils.c:979
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
 msgstr "Fitur ini memerlukan adanya layanan tempat sampah (seperti yang disediakan oleh Thunar)."
 
-#: ../src/xfdesktop-file-utils.c:918
+#: ../src/xfdesktop-file-utils.c:978
 msgid "Could not empty the trash"
 msgstr "Tak dapat mengosongkan tempat sampah"
 
-#: ../src/xfdesktop-file-utils.c:961
+#: ../src/xfdesktop-file-utils.c:1032
 msgid "Create File Error"
 msgstr "Galat Membuat Berkas"
 
-#: ../src/xfdesktop-file-utils.c:962
+#: ../src/xfdesktop-file-utils.c:1033
 msgid "Could not create a new file"
 msgstr "Tak dapat membuat berkas baru"
 
-#: ../src/xfdesktop-file-utils.c:1008
+#: ../src/xfdesktop-file-utils.c:1090
 msgid "Create Document Error"
 msgstr "Galat Membuat Dokumen"
 
-#: ../src/xfdesktop-file-utils.c:1009
+#: ../src/xfdesktop-file-utils.c:1091
 msgid "Could not create a new document from the template"
 msgstr "Tak dapat membuat dokumen baru dari templat"
 
-#: ../src/xfdesktop-file-utils.c:1049
+#: ../src/xfdesktop-file-utils.c:1142
 msgid "File Properties Error"
 msgstr "Galat Properti Berkas"
 
-#: ../src/xfdesktop-file-utils.c:1050
+#: ../src/xfdesktop-file-utils.c:1143
 msgid "The file properties dialog could not be opened"
 msgstr "Dialog properti berkas tak dapat dibuka"
 
-#: ../src/xfdesktop-file-utils.c:1091
+#: ../src/xfdesktop-file-utils.c:1204
 msgid "The file could not be opened"
 msgstr "Berkas tak dapat dibuka"
 
-#: ../src/xfdesktop-file-utils.c:1164 ../src/xfdesktop-file-utils.c:1189
+#: ../src/xfdesktop-file-utils.c:1278 ../src/xfdesktop-file-utils.c:1302
 #, c-format
 msgid "Failed to run \"%s\""
 msgstr "Gagal menjalankan \"%s\""
 
-#: ../src/xfdesktop-file-utils.c:1245
+#: ../src/xfdesktop-file-utils.c:1368
 msgid "The application chooser could not be opened"
 msgstr "Pemilih aplikasi tak dapat dibuka"
 
-#: ../src/xfdesktop-file-utils.c:1303 ../src/xfdesktop-file-utils.c:1317
-#: ../src/xfdesktop-file-utils.c:1379 ../src/xfdesktop-file-utils.c:1395
+#: ../src/xfdesktop-file-utils.c:1427 ../src/xfdesktop-file-utils.c:1442
+#: ../src/xfdesktop-file-utils.c:1505 ../src/xfdesktop-file-utils.c:1522
 msgid "Transfer Error"
 msgstr "Galat Transfer"
 
-#: ../src/xfdesktop-file-utils.c:1304 ../src/xfdesktop-file-utils.c:1318
-#: ../src/xfdesktop-file-utils.c:1380 ../src/xfdesktop-file-utils.c:1396
+#: ../src/xfdesktop-file-utils.c:1428 ../src/xfdesktop-file-utils.c:1443
+#: ../src/xfdesktop-file-utils.c:1506 ../src/xfdesktop-file-utils.c:1523
 msgid "The file transfer could not be performed"
 msgstr "Transfer berkas tak dapat dilakukan"
 
@@ -968,24 +991,24 @@ msgid ""
 msgstr "Tipe: %s\nUkuran: %s\nTerakhir dimodifikasi: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:297
-#: ../src/xfdesktop-special-file-icon.c:477
+#: ../src/xfdesktop-special-file-icon.c:479
 msgid "File System"
 msgstr "Sistem Berkas"
 
-#: ../src/xfdesktop-special-file-icon.c:462
+#: ../src/xfdesktop-special-file-icon.c:464
 msgid "Trash is empty"
 msgstr "Tempat sampah kosong"
 
-#: ../src/xfdesktop-special-file-icon.c:465
+#: ../src/xfdesktop-special-file-icon.c:467
 msgid "Trash contains one item"
 msgstr "Tempat sampah berisi satu item"
 
-#: ../src/xfdesktop-special-file-icon.c:466
+#: ../src/xfdesktop-special-file-icon.c:468
 #, c-format
 msgid "Trash contains %d items"
 msgstr "Tempat sampah berisi %d item"
 
-#: ../src/xfdesktop-special-file-icon.c:495
+#: ../src/xfdesktop-special-file-icon.c:497
 #, c-format
 msgid ""
 "%s\n"
@@ -1011,36 +1034,36 @@ msgid ""
 "Not mounted yet"
 msgstr "Volume Dapat Dilepas\nBelum dikaitkan"
 
-#: ../src/xfdesktop-volume-icon.c:518 ../src/xfdesktop-volume-icon.c:563
+#: ../src/xfdesktop-volume-icon.c:518 ../src/xfdesktop-volume-icon.c:564
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "Tak dapat mengeluarkan \"%s\""
 
-#: ../src/xfdesktop-volume-icon.c:523 ../src/xfdesktop-volume-icon.c:568
+#: ../src/xfdesktop-volume-icon.c:523 ../src/xfdesktop-volume-icon.c:569
 msgid "Eject Failed"
 msgstr "Keluarkan Gagal"
 
-#: ../src/xfdesktop-volume-icon.c:600
+#: ../src/xfdesktop-volume-icon.c:602
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "Gagal mengaitkan \"%s\""
 
-#: ../src/xfdesktop-volume-icon.c:603
+#: ../src/xfdesktop-volume-icon.c:605
 msgid "Mount Failed"
 msgstr "Mount Gagal"
 
-#: ../src/xfdesktop-volume-icon.c:828
+#: ../src/xfdesktop-volume-icon.c:827
 msgid "E_ject Volume"
 msgstr "K_eluarkan Volume"
 
-#: ../src/xfdesktop-volume-icon.c:835
+#: ../src/xfdesktop-volume-icon.c:834
 msgid "_Unmount Volume"
 msgstr "_Lepas Mount Volume"
 
-#: ../src/xfdesktop-volume-icon.c:842
+#: ../src/xfdesktop-volume-icon.c:841
 msgid "_Mount Volume"
 msgstr "_Mount Volume"
 
-#: ../src/xfdesktop-window-icon.c:195
+#: ../src/xfdesktop-window-icon.c:194
 msgid "_Window Actions"
 msgstr "_Aksi Jendela"
