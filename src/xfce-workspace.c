@@ -706,11 +706,6 @@ xfce_workspace_connect_backdrop_settings(XfceWorkspace *workspace,
                            G_OBJECT(backdrop), "backdrop-cycle-random-order");
 
     buf[pp_len] = 0;
-    g_strlcat(buf, "backdrop-do-animations", sizeof(buf));
-    xfconf_g_property_bind(channel, buf, G_TYPE_BOOLEAN,
-                           G_OBJECT(backdrop), "backdrop-do-animations");
-
-    buf[pp_len] = 0;
     g_strlcat(buf, "last-image", sizeof(buf));
     if(!xfconf_channel_has_property(channel, buf)) {
         xfce_workspace_migrate_backdrop_image(workspace, backdrop, monitor);

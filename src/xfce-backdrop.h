@@ -145,9 +145,6 @@ gboolean xfce_backdrop_get_random_order  (XfceBackdrop *backdrop);
 
 void xfce_backdrop_force_cycle           (XfceBackdrop *backdrop);
 
-void xfce_backdrop_set_do_animations     (XfceBackdrop *backdrop,
-                                          gboolean do_animations);
-gboolean xfce_backdrop_get_do_animations (XfceBackdrop *backdrop);
 
 GdkPixbuf *xfce_backdrop_get_pixbuf      (XfceBackdrop *backdrop);
 
