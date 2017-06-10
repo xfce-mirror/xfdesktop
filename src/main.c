@@ -28,30 +28,6 @@
 #include <config.h>
 #endif
 
-#ifdef HAVE_STDLIB_H
-#include <stdlib.h>
-#endif
-
-#ifdef HAVE_UNISTD_H
-#include <unistd.h>
-#endif
-
-#ifdef HAVE_STRING_H
-#include <string.h>
-#endif
-
-#ifdef HAVE_SIGNAL_H
-#include <signal.h>
-#endif
-
-#ifdef HAVE_UNISTD_H
-#include <unistd.h>
-#endif
-
-#ifdef ENABLE_FILE_ICONS
-#include <dbus/dbus-glib.h>
-#endif
-
 #include <gtk/gtk.h>
 
 #include <libxfce4util/libxfce4util.h>
@@ -76,10 +52,6 @@ main(int argc, char **argv)
 
     /* bind gettext textdomain */
     xfce_textdomain(GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
-
-#ifdef ENABLE_FILE_ICONS
-    dbus_g_thread_init();
-#endif
 
     app = xfdesktop_application_get();
 
