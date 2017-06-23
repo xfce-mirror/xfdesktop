@@ -137,7 +137,24 @@ struct _XfdesktopApplicationClass
     GApplicationClass parent;
 };
 
-
+const gchar *ToZ_CSS =
+"XfdesktopIconView.view {"
+"	background-color: rgba(0,0,0,0.0);"
+"	color: white;"
+"}"
+"XfdesktopIconView.view:active {"
+"	background-color: rgba(57,142,231,0.75);"
+"	color: rgba(57,142,231,0.75);"
+"	border-radius: 5px;"
+"}"
+"XfdesktopIconView.rubberband {"
+"	background-color: rgba(0,0,0,0.25);"
+"}"
+"XfdesktopIconView.view.label,"
+"XfdesktopIconView.view.label:active {"
+"	color: white;"
+"	text-shadow: 1px 2px black;"
+"}";
 
 G_DEFINE_TYPE(XfdesktopApplication, xfdesktop_application, G_TYPE_APPLICATION)
 
@@ -622,8 +639,49 @@ xfdesktop_application_startup(GApplication *g_application)
 }
 
 static void
+xfdesktop_application_theme_changed (GtkSettings *settings,
+                                     XfdesktopApplication *app)
+{
+    GtkCssProvider *provider = NULL;
+    static GtkCssProvider *custom_provider = NULL;
+    gchar *theme;
+    gchar *css;
+
+    g_object_get(settings, "gtk-theme-name", &theme, NULL);
+
+    provider = gtk_css_provider_get_named(theme, NULL);
+    css = gtk_css_provider_to_string (provider);
+
+    if (g_strrstr (css, "XfdesktopIconView") != NULL) {
+        DBG("XfdesktopIconView section found in theme %s", theme);
+        if (custom_provider != NULL) {
+            gtk_style_context_remove_provider_for_screen (gdk_screen_get_default (),
+                                                          GTK_STYLE_PROVIDER(custom_provider));
+            g_clear_object (&custom_provider);
+        }
+    } else {
+        DBG("XfdesktopIconView section not found in theme %s, setting our fallback", theme);
+        if (custom_provider != NULL) {
+            gtk_style_context_remove_provider_for_screen (gdk_screen_get_default (),
+                                                          GTK_STYLE_PROVIDER(custom_provider));
+            g_clear_object (&custom_provider);
+        }
+        custom_provider = gtk_css_provider_new();
+        gtk_css_provider_load_from_data(custom_provider,
+                                        ToZ_CSS,
+                                        -1,
+                                        NULL);
+        gtk_style_context_add_provider_for_screen (gdk_screen_get_default (),
+                                                   GTK_STYLE_PROVIDER(custom_provider),
+                                                   GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+    }
+    g_free(css);
+}
+
+static void
 xfdesktop_application_start(XfdesktopApplication *app)
 {
+    GtkSettings *settings;
     GdkDisplay *gdpy;
     GError *error = NULL;
     gchar buf[1024];
@@ -631,6 +689,10 @@ xfdesktop_application_start(XfdesktopApplication *app)
     TRACE("entering");
 
     g_return_if_fail(app != NULL);
+
+    settings = gtk_settings_get_default();
+    g_signal_connect (settings, "notify::gtk-theme-name", G_CALLBACK (xfdesktop_application_theme_changed), NULL);
+    xfdesktop_application_theme_changed (settings, app);
 
     /* stop autostart timeout */
     if(app->wait_for_wm_timeout_id != 0)
