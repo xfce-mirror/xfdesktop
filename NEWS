@@ -1,3 +1,13 @@
+4.12.4
+======
+Stable release of xfdesktop for Xfce 4.12.
+
+* Bug fixes:
+ - Work around a regression in Gtk2 allowing directories to be selected
+   in the settings dialog Bug #12832
+ - Don't try to divide by 0 Bug #12115
+ - Add DBUS_CFLAGS and DBUS_LIBS so that it compiles with newer xfconf.
+
 4.12.3
 ======
 Stable release of xfdesktop for Xfce 4.12.
