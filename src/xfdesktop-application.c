@@ -153,7 +153,7 @@ const gchar *ToZ_CSS =
 "XfdesktopIconView.view.label,"
 "XfdesktopIconView.view.label:active {"
 "	color: white;"
-"	text-shadow: 1px 2px black;"
+"	text-shadow: 1px 1px black;"
 "}";
 
 G_DEFINE_TYPE(XfdesktopApplication, xfdesktop_application, G_TYPE_APPLICATION)
