@@ -752,14 +752,14 @@ screen_set_selection(XfceDesktop *desktop)
     /* the previous check in src/main.c occurs too early, so workaround by
      * adding this one. */
    if(XGetSelectionOwner(gdk_x11_get_default_xdisplay(), selection_atom) != None) {
-       g_warning("%s: already running, quitting.", PACKAGE);
+       g_critical("%s: already running, quitting.", PACKAGE);
        exit(0);
    }
 
     /* Check that _NET_DESKTOP_MANAGER_S%d isn't set, as it means another
      * desktop manager is running, e.g. nautilus */
     if(XGetSelectionOwner (gdk_x11_get_default_xdisplay(), common_selection_atom) != None) {
-        g_warning("%s: another desktop manager is running.", PACKAGE);
+        g_critical("%s: another desktop manager is running.", PACKAGE);
         exit(1);
     }
 
