@@ -2575,8 +2575,8 @@ xfdesktop_setup_grids(XfdesktopIconView *icon_view)
     icon_view->priv->width = width;
     icon_view->priv->height = height;
 
-    icon_view->priv->nrows = (height - MIN_MARGIN * 2) / CELL_SIZE;
-    icon_view->priv->ncols = (width - MIN_MARGIN * 2) / CELL_SIZE;
+    icon_view->priv->nrows = MAX((height - MIN_MARGIN * 2) / CELL_SIZE, 0);
+    icon_view->priv->ncols = MAX((width - MIN_MARGIN * 2) / CELL_SIZE, 0);
 
     xrest = icon_view->priv->width - icon_view->priv->ncols * CELL_SIZE;
     if (icon_view->priv->ncols > 1) {
@@ -3362,10 +3362,11 @@ xfdesktop_grid_is_free_position(XfdesktopIconView *icon_view,
                                 gint16 row,
                                 gint16 col)
 {
-    g_return_val_if_fail(icon_view->priv->grid_layout != NULL, FALSE);
+    if(icon_view->priv->grid_layout == NULL) {
+        return FALSE;
+    }
 
-    if(row >= icon_view->priv->nrows
-       || col >= icon_view->priv->ncols)
+    if(row >= icon_view->priv->nrows || col >= icon_view->priv->ncols)
     {
         return FALSE;
     }
