@@ -736,8 +736,8 @@ screen_set_selection(XfceDesktop *desktop)
 {
     Window xwin;
     gint xscreen;
-    gchar selection_name[100];
-    Atom selection_atom, manager_atom;
+    gchar selection_name[100], common_selection_name[32];
+    Atom selection_atom, common_selection_atom, manager_atom;
     
     xwin = GDK_WINDOW_XID(gtk_widget_get_window(GTK_WIDGET(desktop)));
     xscreen = gdk_screen_get_number(desktop->priv->gscreen);
@@ -746,6 +746,9 @@ screen_set_selection(XfceDesktop *desktop)
     selection_atom = XInternAtom(gdk_x11_get_default_xdisplay(), selection_name, False);
     manager_atom = XInternAtom(gdk_x11_get_default_xdisplay(), "MANAGER", False);
 
+    g_snprintf(common_selection_name, 32, "_NET_DESKTOP_MANAGER_S%d", xscreen);
+    common_selection_atom = XInternAtom(gdk_x11_get_default_xdisplay(), common_selection_name, False);
+
     /* the previous check in src/main.c occurs too early, so workaround by
      * adding this one. */
    if(XGetSelectionOwner(gdk_x11_get_default_xdisplay(), selection_atom) != None) {
@@ -753,8 +756,16 @@ screen_set_selection(XfceDesktop *desktop)
        exit(0);
    }
 
+    /* Check that _NET_DESKTOP_MANAGER_S%d isn't set, as it means another
+     * desktop manager is running, e.g. nautilus */
+    if(XGetSelectionOwner (gdk_x11_get_default_xdisplay(), common_selection_atom) != None) {
+        g_warning("%s: another desktop manager is running.", PACKAGE);
+        exit(1);
+    }
+
     XSelectInput(gdk_x11_get_default_xdisplay(), xwin, PropertyChangeMask | ButtonPressMask);
     XSetSelectionOwner(gdk_x11_get_default_xdisplay(), selection_atom, xwin, GDK_CURRENT_TIME);
+    XSetSelectionOwner(gdk_x11_get_default_xdisplay(), common_selection_atom, xwin, GDK_CURRENT_TIME);
 
     /* Check to see if we managed to claim the selection. If not,
      * we treat it as if we got it then immediately lost it */
