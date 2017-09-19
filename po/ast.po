@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-15 18:31+0200\n"
-"PO-Revision-Date: 2016-09-20 19:49+0000\n"
-"Last-Translator: enolp <enolp@softastur.org>\n"
+"POT-Creation-Date: 2017-05-04 18:31+0200\n"
+"PO-Revision-Date: 2017-09-19 18:02+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
 "Language-Team: Asturian (http://www.transifex.com/xfce/xfdesktop/language/ast/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,37 +21,37 @@ msgstr ""
 "Language: ast\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../settings/main.c:416 ../src/xfdesktop-special-file-icon.c:295
-#: ../src/xfdesktop-special-file-icon.c:479
+#: ../settings/main.c:417 ../src/xfdesktop-special-file-icon.c:295
+#: ../src/xfdesktop-special-file-icon.c:481
 msgid "Home"
 msgstr "Carpeta personal"
 
-#: ../settings/main.c:418
+#: ../settings/main.c:419
 msgid "Filesystem"
 msgstr "Sistema de ficheros"
 
-#: ../settings/main.c:420
+#: ../settings/main.c:421 ../src/xfdesktop-special-file-icon.c:299
 msgid "Trash"
 msgstr "Papelera"
 
-#: ../settings/main.c:422
+#: ../settings/main.c:423
 msgid "Removable Devices"
 msgstr "Preseos estrayíbles"
 
-#: ../settings/main.c:424
+#: ../settings/main.c:425
 msgid "Network Shares"
 msgstr "Comparticiones de Windows"
 
-#: ../settings/main.c:426
+#: ../settings/main.c:427
 msgid "Disks and Drives"
 msgstr "Discos y preseos"
 
-#: ../settings/main.c:428
+#: ../settings/main.c:429
 msgid "Other Devices"
 msgstr "Otros preseos"
 
 #. Display the file name, file type, and file size in the tooltip.
-#: ../settings/main.c:541
+#: ../settings/main.c:542
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -59,110 +59,114 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nTriba: %s\nTamañu: %s"
 
-#: ../settings/main.c:728
+#: ../settings/main.c:733
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "Fondu pantalla pal monitor %d (%s)"
 
-#: ../settings/main.c:731
+#: ../settings/main.c:736
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "Fondu pantalla pal monitor %d"
 
-#: ../settings/main.c:737
+#: ../settings/main.c:742
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "Muevi esti diálogu a la pantalla pa la que quieras editar los axustes."
 
-#: ../settings/main.c:744
+#: ../settings/main.c:749
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "Fondu pantalla pa %s nel monitor %d (%s)"
 
-#: ../settings/main.c:748
+#: ../settings/main.c:753
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "Fondu pantalla pa %s nel monitor %d"
 
-#: ../settings/main.c:755
+#: ../settings/main.c:760
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr "Muevi esti diálogu a la pantalla y estaya de trabayu pa les que queras editar los axustes."
 
 #. Single monitor and single workspace
-#: ../settings/main.c:763
+#: ../settings/main.c:768
 #, c-format
 msgid "Wallpaper for my desktop"
 msgstr "Fondu pantalla pal mio escritoriu"
 
 #. Single monitor and per workspace wallpaper
-#: ../settings/main.c:769
+#: ../settings/main.c:774
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "Fondu pantalla pa %s"
 
-#: ../settings/main.c:774
+#: ../settings/main.c:779
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "Mover esti diálogu a la estaya de trabayu pa la que quieras editar los axustes."
 
-#: ../settings/main.c:1194
+#: ../settings/main.c:1199
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "La esbilla d'imáxenes nun ta disponible entrín l'estilu d'imaxe tea afitáu a Dengún."
 
-#: ../settings/main.c:1544
+#: ../settings/main.c:1584 ../settings/main.c:1589
 msgid "Spanning screens"
 msgstr ""
 
-#: ../settings/main.c:1858
+#: ../settings/main.c:1899
 msgid "Image files"
 msgstr "Ficheros d'imaxe"
 
 #. Change the title of the file chooser dialog
-#: ../settings/main.c:1863
+#: ../settings/main.c:1907
 msgid "Select a Directory"
 msgstr "Esbillar un direutoriu"
 
-#: ../settings/main.c:2055
+#: ../settings/main.c:2099
 msgid "Settings manager socket"
 msgstr "Socket del xestor d'axustes"
 
-#: ../settings/main.c:2055
+#: ../settings/main.c:2099
 msgid "SOCKET ID"
 msgstr "ID de SOCKET"
 
-#: ../settings/main.c:2056
+#: ../settings/main.c:2100
 msgid "Version information"
 msgstr "Información de versión"
 
-#: ../settings/main.c:2057 ../src/xfdesktop-application.c:844
+#: ../settings/main.c:2101 ../src/xfdesktop-application.c:774
 msgid "Enable debug messages"
 msgstr "Habilitar mensaxes de depuración"
 
-#: ../settings/main.c:2085
+#: ../settings/main.c:2129
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Escribi '%s --help' pal usu."
 
-#: ../settings/main.c:2097
+#: ../settings/main.c:2141
 msgid "The Xfce development team. All rights reserved."
 msgstr "L'equipu de desendolcu de Xfce. Tolos drechos reservaos."
 
-#: ../settings/main.c:2098
+#: ../settings/main.c:2142
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Por favor, informa de fallos a <%s>."
 
-#: ../settings/main.c:2105
+#: ../settings/main.c:2149
 msgid "Desktop Settings"
 msgstr "Axustes del escritoriu"
 
-#: ../settings/main.c:2107
+#: ../settings/main.c:2151
 msgid "Unable to contact settings server"
 msgstr "Nun pue contautase col sirvidor d'axustes"
 
+#: ../settings/main.c:2153
+msgid "Quit"
+msgstr ""
+
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 msgid "Desktop "
-msgstr "Escritoriu"
+msgstr ""
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 #: ../settings/xfdesktop-settings-ui.glade.h:11
@@ -345,7 +349,7 @@ msgstr "Iconos d'aplicaciones minimizaes"
 msgid "File/launcher icons"
 msgstr "Iconos de ficheru/llanzador"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:1047
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:1049
 msgid "Desktop"
 msgstr "Escritoriu"
 
@@ -467,7 +471,7 @@ msgstr "<b>Iconos por defeutu</b>"
 msgid "_Icons"
 msgstr "_Iconos"
 
-#: ../src/menu.c:106
+#: ../src/menu.c:81
 msgid "_Applications"
 msgstr "_Aplicaciones"
 
@@ -501,410 +505,428 @@ msgstr "¿De xuru quies desaniciar la estaya de trabayu '%s'?\nNota: Tas anguañ
 msgid "Remove"
 msgstr "Desanciar"
 
-#: ../src/windowlist.c:253
+#: ../src/windowlist.c:272
 msgid "Window List"
 msgstr "Llista de ventanes"
 
-#: ../src/windowlist.c:279
+#: ../src/windowlist.c:297
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>Estaya de trabayu %d</b>"
 
-#: ../src/windowlist.c:366 ../src/windowlist.c:369
+#: ../src/windowlist.c:393 ../src/windowlist.c:395
 msgid "_Add Workspace"
 msgstr "_Amestar estaya de trabayu"
 
-#: ../src/windowlist.c:377
+#: ../src/windowlist.c:403
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "Desanicia_r estaya de trabayu %d"
 
-#: ../src/windowlist.c:380
+#: ../src/windowlist.c:406
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "Desanicia_r estaya de trabayu '%s'"
 
-#: ../src/xfdesktop-app-menu-item.c:351
-#: ../src/xfdesktop-file-icon-manager.c:860
-#: ../src/xfdesktop-file-icon-manager.c:1154
-#: ../src/xfdesktop-file-icon-manager.c:1367 ../src/xfdesktop-file-utils.c:665
-#: ../src/xfdesktop-file-utils.c:1090 ../src/xfdesktop-file-utils.c:1167
-#: ../src/xfdesktop-file-utils.c:1192 ../src/xfdesktop-file-utils.c:1244
+#: ../src/xfdesktop-application.c:766
+msgid "Display version information"
+msgstr "Amosar información de versión"
+
+#: ../src/xfdesktop-application.c:767
+msgid "Reload all settings"
+msgstr "Recargar tolos axustes"
+
+#: ../src/xfdesktop-application.c:768
+msgid "Advance to the next wallpaper on the current workspace"
+msgstr "Avanzar al siguiente fondu de pantalla nel espaciu de trabayu actual"
+
+#: ../src/xfdesktop-application.c:769
+msgid "Pop up the menu (at the current mouse position)"
+msgstr "Emerxer el menú (na posición actual del mur)"
+
+#: ../src/xfdesktop-application.c:770
+msgid "Pop up the window list (at the current mouse position)"
+msgstr "Emerxer la llista de ventanes (na posición actual del mur)"
+
+#: ../src/xfdesktop-application.c:772
+msgid "Automatically arrange all the icons on the desktop"
+msgstr "Organizar automáticamente tolos iconos nel escritoriu"
+
+#: ../src/xfdesktop-application.c:775
+msgid "Disable debug messages"
+msgstr "Deshabilitar mensaxes de depuración"
+
+#: ../src/xfdesktop-application.c:776
+msgid "Do not wait for a window manager on startup"
+msgstr "Nun esperar pol xestor de ventanes nel aniciu"
+
+#: ../src/xfdesktop-application.c:777
+msgid "Cause xfdesktop to quit"
+msgstr "Fai a xfdesktop colar"
+
+#: ../src/xfdesktop-application.c:792
+#, c-format
+msgid "Failed to parse arguments: %s\n"
+msgstr "Fallu al analizar los argumentos: %s\n"
+
+#: ../src/xfdesktop-application.c:803
+#, c-format
+msgid "This is %s version %s, running on Xfce %s.\n"
+msgstr "Esto ye %s versión %s, executándose en Xfce %s.\n"
+
+#: ../src/xfdesktop-application.c:805
+#, c-format
+msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
+msgstr "Construyíu con GTK+ %d.%d.%d, enllazáu con GTK+ %d.%d.%d."
+
+#: ../src/xfdesktop-application.c:809
+#, c-format
+msgid "Build options:\n"
+msgstr "Opciones de contrucción:\n"
+
+#: ../src/xfdesktop-application.c:810
+#, c-format
+msgid "    Desktop Menu:        %s\n"
+msgstr "Menú d'escritoriu: %s\n"
+
+#: ../src/xfdesktop-application.c:812 ../src/xfdesktop-application.c:819
+#: ../src/xfdesktop-application.c:826
+msgid "enabled"
+msgstr "habilitáu"
+
+#: ../src/xfdesktop-application.c:814 ../src/xfdesktop-application.c:821
+#: ../src/xfdesktop-application.c:828
+msgid "disabled"
+msgstr "deshabilitáu"
+
+#: ../src/xfdesktop-application.c:817
+#, c-format
+msgid "    Desktop Icons:       %s\n"
+msgstr "Iconos d'escritoiu: %s\n"
+
+#: ../src/xfdesktop-application.c:824
+#, c-format
+msgid "    Desktop File Icons:  %s\n"
+msgstr "Iconos de ficheru d'escritoriu: %s\n"
+
+#: ../src/xfdesktop-file-icon-manager.c:552
+#: ../src/xfdesktop-file-icon-manager.c:570
+#, c-format
+msgid "Could not create the desktop folder \"%s\""
+msgstr "Nun pudo crease la carpeta d'escritoriu «%s»"
+
+#: ../src/xfdesktop-file-icon-manager.c:557
+#: ../src/xfdesktop-file-icon-manager.c:575
+msgid "Desktop Folder Error"
+msgstr "Fallu de la carpeta d'escritoriu"
+
+#: ../src/xfdesktop-file-icon-manager.c:560
+#: ../src/xfdesktop-file-icon-manager.c:579
+#: ../src/xfdesktop-file-icon-manager.c:664
+#: ../src/xfdesktop-file-icon-manager.c:800
+#: ../src/xfdesktop-file-icon-manager.c:1095
+#: ../src/xfdesktop-file-icon-manager.c:1307
+#: ../src/xfdesktop-file-icon-manager.c:2827 ../src/xfdesktop-file-utils.c:674
+#: ../src/xfdesktop-file-utils.c:693 ../src/xfdesktop-file-utils.c:747
+#: ../src/xfdesktop-file-utils.c:811 ../src/xfdesktop-file-utils.c:872
+#: ../src/xfdesktop-file-utils.c:933 ../src/xfdesktop-file-utils.c:981
+#: ../src/xfdesktop-file-utils.c:1036 ../src/xfdesktop-file-utils.c:1094
+#: ../src/xfdesktop-file-utils.c:1146 ../src/xfdesktop-file-utils.c:1207
+#: ../src/xfdesktop-file-utils.c:1283 ../src/xfdesktop-file-utils.c:1309
+#: ../src/xfdesktop-file-utils.c:1371 ../src/xfdesktop-file-utils.c:1430
+#: ../src/xfdesktop-file-utils.c:1446 ../src/xfdesktop-file-utils.c:1508
+#: ../src/xfdesktop-file-utils.c:1526 ../src/xfdesktop-volume-icon.c:525
+#: ../src/xfdesktop-volume-icon.c:571 ../src/xfdesktop-volume-icon.c:607
+msgid "_Close"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:577
+msgid ""
+"A normal file with the same name already exists. Please delete or rename it."
+msgstr "Yá esiste un ficheru normal col mesmu nome. Por favor, desanicialu o renómalu."
+
+#: ../src/xfdesktop-file-icon-manager.c:661 ../src/xfdesktop-file-utils.c:743
+#: ../src/xfdesktop-file-utils.c:807
+msgid "Rename Error"
+msgstr "Fallu del renomáu"
+
+#: ../src/xfdesktop-file-icon-manager.c:662 ../src/xfdesktop-file-utils.c:808
+msgid "The files could not be renamed"
+msgstr "Los ficheros nun pudieron renomase"
+
+#: ../src/xfdesktop-file-icon-manager.c:663
+msgid "None of the icons selected support being renamed."
+msgstr "Dengún de los iconos esbillaos sofita renomase."
+
+#. printf is to be translator-friendly
+#: ../src/xfdesktop-file-icon-manager.c:796
+#: ../src/xfdesktop-file-icon-manager.c:1304
+#, c-format
+msgid "Unable to launch \"%s\":"
+msgstr "Nun pue llanzase «%s»:"
+
+#: ../src/xfdesktop-file-icon-manager.c:798
+#: ../src/xfdesktop-file-icon-manager.c:1091
+#: ../src/xfdesktop-file-icon-manager.c:1305 ../src/xfdesktop-file-utils.c:671
+#: ../src/xfdesktop-file-utils.c:1203 ../src/xfdesktop-file-utils.c:1281
+#: ../src/xfdesktop-file-utils.c:1305 ../src/xfdesktop-file-utils.c:1367
 msgid "Launch Error"
 msgstr "Fallu de llanzamientu"
 
-#: ../src/xfdesktop-app-menu-item.c:353
-#: ../src/xfdesktop-file-icon-manager.c:1156
+#: ../src/xfdesktop-file-icon-manager.c:1017
+#, c-format
+msgid "_Open With \"%s\""
+msgstr "_Abrir con «%s»"
+
+#: ../src/xfdesktop-file-icon-manager.c:1020
+#, c-format
+msgid "Open With \"%s\""
+msgstr "Abrir con «%s»"
+
+#: ../src/xfdesktop-file-icon-manager.c:1093
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr "Nun pue aniciase «exo-desktop-item-edit», que se rique pa crear y editar llanzadores y enllaces nel escritoriu."
 
-#: ../src/xfdesktop-application.c:836
-msgid "Display version information"
-msgstr "Amosar información de versión"
-
-#: ../src/xfdesktop-application.c:837
-msgid "Reload all settings"
-msgstr "Recargar tolos axustes"
-
-#: ../src/xfdesktop-application.c:838
-msgid "Advance to the next wallpaper on the current workspace"
-msgstr "Avanzar al siguiente fondu de pantalla nel espaciu de trabayu actual"
-
-#: ../src/xfdesktop-application.c:839
-msgid "Pop up the menu (at the current mouse position)"
-msgstr "Emerxer el menú (na posición actual del mur)"
-
-#: ../src/xfdesktop-application.c:840
-msgid "Pop up the window list (at the current mouse position)"
-msgstr "Emerxer la llista de ventanes (na posición actual del mur)"
-
-#: ../src/xfdesktop-application.c:842
-msgid "Automatically arrange all the icons on the desktop"
-msgstr "Organizar automáticamente tolos iconos nel escritoriu"
-
-#: ../src/xfdesktop-application.c:845
-msgid "Disable debug messages"
-msgstr "Deshabilitar mensaxes de depuración"
-
-#: ../src/xfdesktop-application.c:846
-msgid "Do not wait for a window manager on startup"
-msgstr "Nun esperar pol xestor de ventanes nel aniciu"
-
-#: ../src/xfdesktop-application.c:847
-msgid "Cause xfdesktop to quit"
-msgstr "Fai a xfdesktop colar"
-
-#: ../src/xfdesktop-application.c:862
-#, c-format
-msgid "Failed to parse arguments: %s\n"
-msgstr "Fallu al analizar los argumentos: %s\n"
-
-#: ../src/xfdesktop-application.c:873
-#, c-format
-msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr "Esto ye %s versión %s, executándose en Xfce %s.\n"
-
-#: ../src/xfdesktop-application.c:875
-#, c-format
-msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr "Construyíu con GTK+ %d.%d.%d, enllazáu con GTK+ %d.%d.%d."
-
-#: ../src/xfdesktop-application.c:879
-#, c-format
-msgid "Build options:\n"
-msgstr "Opciones de contrucción:\n"
-
-#: ../src/xfdesktop-application.c:880
-#, c-format
-msgid "    Desktop Menu:        %s\n"
-msgstr "Menú d'escritoriu: %s\n"
-
-#: ../src/xfdesktop-application.c:882 ../src/xfdesktop-application.c:889
-#: ../src/xfdesktop-application.c:896
-msgid "enabled"
-msgstr "habilitáu"
-
-#: ../src/xfdesktop-application.c:884 ../src/xfdesktop-application.c:891
-#: ../src/xfdesktop-application.c:898
-msgid "disabled"
-msgstr "deshabilitáu"
-
-#: ../src/xfdesktop-application.c:887
-#, c-format
-msgid "    Desktop Icons:       %s\n"
-msgstr "Iconos d'escritoiu: %s\n"
-
-#: ../src/xfdesktop-application.c:894
-#, c-format
-msgid "    Desktop File Icons:  %s\n"
-msgstr "Iconos de ficheru d'escritoriu: %s\n"
-
-#: ../src/xfdesktop-file-icon-manager.c:561
-#: ../src/xfdesktop-file-icon-manager.c:578
-#, c-format
-msgid "Could not create the desktop folder \"%s\""
-msgstr "Nun pudo crease la carpeta d'escritoriu «%s»"
-
-#: ../src/xfdesktop-file-icon-manager.c:566
-#: ../src/xfdesktop-file-icon-manager.c:583
-msgid "Desktop Folder Error"
-msgstr "Fallu de la carpeta d'escritoriu"
-
-#: ../src/xfdesktop-file-icon-manager.c:585
-msgid ""
-"A normal file with the same name already exists. Please delete or rename it."
-msgstr "Yá esiste un ficheru normal col mesmu nome. Por favor, desanicialu o renómalu."
-
-#: ../src/xfdesktop-file-icon-manager.c:668 ../src/xfdesktop-file-utils.c:727
-#: ../src/xfdesktop-file-utils.c:780
-msgid "Rename Error"
-msgstr "Fallu del renomáu"
-
-#: ../src/xfdesktop-file-icon-manager.c:669 ../src/xfdesktop-file-utils.c:781
-msgid "The files could not be renamed"
-msgstr "Los ficheros nun pudieron renomase"
-
-#: ../src/xfdesktop-file-icon-manager.c:670
-msgid "None of the icons selected support being renamed."
-msgstr "Dengún de los iconos esbillaos sofita renomase."
-
-#: ../src/xfdesktop-file-icon-manager.c:714
-#: ../src/xfdesktop-file-icon-manager.c:758 ../src/xfdesktop-file-utils.c:880
-#: ../src/xfdesktop-file-utils.c:917
-msgid "Trash Error"
-msgstr "Fallu de la papelera"
-
-#: ../src/xfdesktop-file-icon-manager.c:715
-#: ../src/xfdesktop-file-icon-manager.c:759
-msgid "The selected files could not be trashed"
-msgstr "Los ficheros esbillaos nun pudieron unviase a la papaelera"
-
-#: ../src/xfdesktop-file-icon-manager.c:716
-#: ../src/xfdesktop-file-icon-manager.c:760 ../src/xfdesktop-file-utils.c:729
-#: ../src/xfdesktop-file-utils.c:782 ../src/xfdesktop-file-utils.c:832
-#: ../src/xfdesktop-file-utils.c:963 ../src/xfdesktop-file-utils.c:1010
-#: ../src/xfdesktop-file-utils.c:1051 ../src/xfdesktop-file-utils.c:1092
-#: ../src/xfdesktop-file-utils.c:1194 ../src/xfdesktop-file-utils.c:1246
-#: ../src/xfdesktop-file-utils.c:1319 ../src/xfdesktop-file-utils.c:1397
-msgid ""
-"This feature requires a file manager service to be present (such as the one "
-"supplied by Thunar)."
-msgstr "Esta carauterística rique qu'un xestor de ficheros tea presente (como l'apurríu per Thunar)"
-
-#. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:858
-#: ../src/xfdesktop-file-icon-manager.c:1366
-#, c-format
-msgid "Unable to launch \"%s\":"
-msgstr "Nun pue llanzase «%s»:"
-
-#: ../src/xfdesktop-file-icon-manager.c:1078
-#, c-format
-msgid "_Open With \"%s\""
-msgstr "_Abrir con «%s»"
-
-#: ../src/xfdesktop-file-icon-manager.c:1081
-#, c-format
-msgid "Open With \"%s\""
-msgstr "Abrir con «%s»"
-
-#: ../src/xfdesktop-file-icon-manager.c:1436
+#: ../src/xfdesktop-file-icon-manager.c:1374
 msgid "_Open all"
 msgstr "_Abrir too"
 
-#: ../src/xfdesktop-file-icon-manager.c:1452
+#: ../src/xfdesktop-file-icon-manager.c:1388
 msgid "_Open in New Window"
 msgstr "_Abrir nuna ventana nueva"
 
-#: ../src/xfdesktop-file-icon-manager.c:1454
-#: ../src/xfdesktop-special-file-icon.c:547 ../src/xfdesktop-volume-icon.c:813
+#: ../src/xfdesktop-file-icon-manager.c:1390
+#: ../src/xfdesktop-special-file-icon.c:548 ../src/xfdesktop-volume-icon.c:813
 msgid "_Open"
 msgstr "_Abrir"
 
-#. create launcher item
-#: ../src/xfdesktop-file-icon-manager.c:1473
+#: ../src/xfdesktop-file-icon-manager.c:1410
 msgid "Create _Launcher..."
 msgstr "Crear _llanzador..."
 
-#. create link item
-#: ../src/xfdesktop-file-icon-manager.c:1489
+#: ../src/xfdesktop-file-icon-manager.c:1424
 msgid "Create _URL Link..."
 msgstr "Crear enllaz _URL..."
 
-#. create folder item
-#: ../src/xfdesktop-file-icon-manager.c:1505
+#: ../src/xfdesktop-file-icon-manager.c:1438
 msgid "Create _Folder..."
 msgstr "Crear _carpeta..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1522
+#: ../src/xfdesktop-file-icon-manager.c:1450
 msgid "Create _Document"
 msgstr "Crear _documentu"
 
-#: ../src/xfdesktop-file-icon-manager.c:1546
+#: ../src/xfdesktop-file-icon-manager.c:1474
 msgid "No templates installed"
 msgstr "Nun hai plantíes instalaes"
 
-#: ../src/xfdesktop-file-icon-manager.c:1563
+#: ../src/xfdesktop-file-icon-manager.c:1490
 msgid "_Empty File"
 msgstr "Ficheru _baleru"
 
-#: ../src/xfdesktop-file-icon-manager.c:1580
+#: ../src/xfdesktop-file-icon-manager.c:1505
 msgid "_Execute"
 msgstr "_Executar"
 
-#: ../src/xfdesktop-file-icon-manager.c:1600
+#: ../src/xfdesktop-file-icon-manager.c:1523
 msgid "_Edit Launcher"
 msgstr "_Editar llanzador"
 
-#: ../src/xfdesktop-file-icon-manager.c:1659
+#: ../src/xfdesktop-file-icon-manager.c:1581
 msgid "Open With"
 msgstr "Abrir con"
 
-#: ../src/xfdesktop-file-icon-manager.c:1685
-#: ../src/xfdesktop-file-icon-manager.c:1700
+#: ../src/xfdesktop-file-icon-manager.c:1607
+#: ../src/xfdesktop-file-icon-manager.c:1621
 msgid "Open With Other _Application..."
 msgstr "Abrir con otra _aplicación"
 
-#: ../src/xfdesktop-file-icon-manager.c:1759
+#: ../src/xfdesktop-file-icon-manager.c:1639
+msgid "_Paste"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1681
 msgid "Paste Into Folder"
 msgstr "Apegar na carpeta"
 
-#. Trash
-#: ../src/xfdesktop-file-icon-manager.c:1778
+#: ../src/xfdesktop-file-icon-manager.c:1700
 msgid "Mo_ve to Trash"
 msgstr "Mo_ver a la Papelera"
 
+#: ../src/xfdesktop-file-icon-manager.c:1712
+msgid "_Delete"
+msgstr ""
+
 #. Rename
-#: ../src/xfdesktop-file-icon-manager.c:1809
+#: ../src/xfdesktop-file-icon-manager.c:1728
 msgid "_Rename..."
 msgstr "_Renomar..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1877
+#: ../src/xfdesktop-file-icon-manager.c:1795
 msgid "Arrange Desktop _Icons"
 msgstr "Ordenar _iconos d'escritoriu"
 
-#: ../src/xfdesktop-file-icon-manager.c:1888
+#: ../src/xfdesktop-file-icon-manager.c:1804
 msgid "Desktop _Settings..."
 msgstr "Axu_stes d'escritoriu..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1899
-#: ../src/xfdesktop-volume-icon.c:855
+#: ../src/xfdesktop-file-icon-manager.c:1813
+#: ../src/xfdesktop-volume-icon.c:854
 msgid "P_roperties..."
 msgstr "_Propiedaes..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2912
+#: ../src/xfdesktop-file-icon-manager.c:2824
 msgid "Load Error"
 msgstr "Fallu de carga"
 
-#: ../src/xfdesktop-file-icon-manager.c:2914
+#: ../src/xfdesktop-file-icon-manager.c:2826
 msgid "Failed to load the desktop folder"
 msgstr "Fallu al cargar la carpeta d'escritoriu"
 
-#: ../src/xfdesktop-file-icon-manager.c:3479
+#: ../src/xfdesktop-file-icon-manager.c:3392
 msgid "Copy _Here"
 msgstr "Copiar _equí"
 
-#: ../src/xfdesktop-file-icon-manager.c:3479
+#: ../src/xfdesktop-file-icon-manager.c:3392
 msgid "_Move Here"
 msgstr "_Mover equí"
 
-#: ../src/xfdesktop-file-icon-manager.c:3479
+#: ../src/xfdesktop-file-icon-manager.c:3392
 msgid "_Link Here"
 msgstr "_Enllazar equí"
 
+#: ../src/xfdesktop-file-icon-manager.c:3427
+msgid "_Cancel"
+msgstr ""
+
 #. TRANSLATORS: file was modified less than one day ago
-#: ../src/xfdesktop-file-utils.c:140
+#: ../src/xfdesktop-file-utils.c:147
 #, c-format
 msgid "Today at %X"
 msgstr "Güei a les %X"
 
 #. TRANSLATORS: file was modified less than two days ago
-#: ../src/xfdesktop-file-utils.c:144
+#: ../src/xfdesktop-file-utils.c:151
 #, c-format
 msgid "Yesterday at %X"
 msgstr "Ayeri a les %X"
 
 #. Days from last week
-#: ../src/xfdesktop-file-utils.c:149
+#: ../src/xfdesktop-file-utils.c:156
 #, c-format
 msgid "%A at %X"
 msgstr "%A en %X"
 
 #. Any other date
-#: ../src/xfdesktop-file-utils.c:152
+#: ../src/xfdesktop-file-utils.c:159
 #, c-format
 msgid "%x at %X"
 msgstr "%x en %X"
 
 #. the file_time is invalid
-#: ../src/xfdesktop-file-utils.c:162
+#: ../src/xfdesktop-file-utils.c:169
 msgid "Unknown"
 msgstr "Desconocíu"
 
-#: ../src/xfdesktop-file-utils.c:666
+#: ../src/xfdesktop-file-utils.c:672
 msgid "The folder could not be opened"
 msgstr "La carpeta nun pudo reabrise"
 
-#: ../src/xfdesktop-file-utils.c:685
+#: ../src/xfdesktop-file-utils.c:690
 msgid "Error"
 msgstr "Fallu"
 
-#: ../src/xfdesktop-file-utils.c:686
+#: ../src/xfdesktop-file-utils.c:691
 msgid "The requested operation could not be completed"
 msgstr "Nun pudo completase la operación riquida"
 
-#: ../src/xfdesktop-file-utils.c:728
+#: ../src/xfdesktop-file-utils.c:744
 msgid "The file could not be renamed"
 msgstr "El ficheru nun pudo renomase"
 
-#: ../src/xfdesktop-file-utils.c:830
+#: ../src/xfdesktop-file-utils.c:745 ../src/xfdesktop-file-utils.c:809
+#: ../src/xfdesktop-file-utils.c:870 ../src/xfdesktop-file-utils.c:1034
+#: ../src/xfdesktop-file-utils.c:1092 ../src/xfdesktop-file-utils.c:1144
+#: ../src/xfdesktop-file-utils.c:1205 ../src/xfdesktop-file-utils.c:1307
+#: ../src/xfdesktop-file-utils.c:1369 ../src/xfdesktop-file-utils.c:1444
+#: ../src/xfdesktop-file-utils.c:1524
+msgid ""
+"This feature requires a file manager service to be present (such as the one "
+"supplied by Thunar)."
+msgstr "Esta carauterística rique qu'un xestor de ficheros tea presente (como l'apurríu per Thunar)"
+
+#: ../src/xfdesktop-file-utils.c:868
 msgid "Delete Error"
 msgstr "Fallu de desaniciu"
 
-#: ../src/xfdesktop-file-utils.c:831
+#: ../src/xfdesktop-file-utils.c:869
 msgid "The selected files could not be deleted"
 msgstr "Los ficheros esbillaos nun pudieron desaniciase"
 
-#: ../src/xfdesktop-file-utils.c:881
+#: ../src/xfdesktop-file-utils.c:929 ../src/xfdesktop-file-utils.c:977
+msgid "Trash Error"
+msgstr "Fallu de la papelera"
+
+#: ../src/xfdesktop-file-utils.c:930
 msgid "The selected files could not be moved to the trash"
 msgstr "Los ficheros esbillaos nun pudieron movese a la papelera"
 
-#: ../src/xfdesktop-file-utils.c:882 ../src/xfdesktop-file-utils.c:919
+#: ../src/xfdesktop-file-utils.c:931 ../src/xfdesktop-file-utils.c:979
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
 msgstr "Esta carauterística rique qu'un serviciu de papalera tea presente (como l'apurríu per Thunar)"
 
-#: ../src/xfdesktop-file-utils.c:918
+#: ../src/xfdesktop-file-utils.c:978
 msgid "Could not empty the trash"
 msgstr "Nun pudo balerase la papelera"
 
-#: ../src/xfdesktop-file-utils.c:961
+#: ../src/xfdesktop-file-utils.c:1032
 msgid "Create File Error"
 msgstr "Fallu al crear el ficheru"
 
-#: ../src/xfdesktop-file-utils.c:962
+#: ../src/xfdesktop-file-utils.c:1033
 msgid "Could not create a new file"
 msgstr "Nun pudo crease un ficheru nuevu"
 
-#: ../src/xfdesktop-file-utils.c:1008
+#: ../src/xfdesktop-file-utils.c:1090
 msgid "Create Document Error"
 msgstr "Fallu al crear el documentu"
 
-#: ../src/xfdesktop-file-utils.c:1009
+#: ../src/xfdesktop-file-utils.c:1091
 msgid "Could not create a new document from the template"
 msgstr "Nun pudo crease un documentu nuevu dende la palntía"
 
-#: ../src/xfdesktop-file-utils.c:1049
+#: ../src/xfdesktop-file-utils.c:1142
 msgid "File Properties Error"
 msgstr "Fallu de propiedaes de ficheru"
 
-#: ../src/xfdesktop-file-utils.c:1050
+#: ../src/xfdesktop-file-utils.c:1143
 msgid "The file properties dialog could not be opened"
 msgstr "Nun pudo abrise'l diálogu de propiedaes de ficheru"
 
-#: ../src/xfdesktop-file-utils.c:1091
+#: ../src/xfdesktop-file-utils.c:1204
 msgid "The file could not be opened"
 msgstr "El ficheru nun pudo abrise"
 
-#: ../src/xfdesktop-file-utils.c:1164 ../src/xfdesktop-file-utils.c:1189
+#: ../src/xfdesktop-file-utils.c:1278 ../src/xfdesktop-file-utils.c:1302
 #, c-format
 msgid "Failed to run \"%s\""
 msgstr "Fallu al executar «%s»"
 
-#: ../src/xfdesktop-file-utils.c:1245
+#: ../src/xfdesktop-file-utils.c:1368
 msgid "The application chooser could not be opened"
 msgstr "El seleutor d'aplicaciones nun pudo abrise"
 
-#: ../src/xfdesktop-file-utils.c:1303 ../src/xfdesktop-file-utils.c:1317
-#: ../src/xfdesktop-file-utils.c:1379 ../src/xfdesktop-file-utils.c:1395
+#: ../src/xfdesktop-file-utils.c:1427 ../src/xfdesktop-file-utils.c:1442
+#: ../src/xfdesktop-file-utils.c:1505 ../src/xfdesktop-file-utils.c:1522
 msgid "Transfer Error"
 msgstr "Fallu de tresferencia"
 
-#: ../src/xfdesktop-file-utils.c:1304 ../src/xfdesktop-file-utils.c:1318
-#: ../src/xfdesktop-file-utils.c:1380 ../src/xfdesktop-file-utils.c:1396
+#: ../src/xfdesktop-file-utils.c:1428 ../src/xfdesktop-file-utils.c:1443
+#: ../src/xfdesktop-file-utils.c:1506 ../src/xfdesktop-file-utils.c:1523
 msgid "The file transfer could not be performed"
 msgstr "Nun pudo facese la tresferencia de ficheros"
 
@@ -967,24 +989,24 @@ msgid ""
 msgstr "Triba: %s\nTamañu: %s\nModificación cabera: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:297
-#: ../src/xfdesktop-special-file-icon.c:477
+#: ../src/xfdesktop-special-file-icon.c:479
 msgid "File System"
 msgstr "Sistema de ficheros"
 
-#: ../src/xfdesktop-special-file-icon.c:462
+#: ../src/xfdesktop-special-file-icon.c:464
 msgid "Trash is empty"
 msgstr "La papelera ta balera"
 
-#: ../src/xfdesktop-special-file-icon.c:465
+#: ../src/xfdesktop-special-file-icon.c:467
 msgid "Trash contains one item"
 msgstr "La papelera contien un elementu"
 
-#: ../src/xfdesktop-special-file-icon.c:466
+#: ../src/xfdesktop-special-file-icon.c:468
 #, c-format
 msgid "Trash contains %d items"
 msgstr "La papelera contien %d elementos"
 
-#: ../src/xfdesktop-special-file-icon.c:495
+#: ../src/xfdesktop-special-file-icon.c:497
 #, c-format
 msgid ""
 "%s\n"
@@ -1010,36 +1032,36 @@ msgid ""
 "Not mounted yet"
 msgstr "Volume estrayible\nEntá non montáu"
 
-#: ../src/xfdesktop-volume-icon.c:518 ../src/xfdesktop-volume-icon.c:563
+#: ../src/xfdesktop-volume-icon.c:518 ../src/xfdesktop-volume-icon.c:564
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "Fallu al espulsar «%s»"
 
-#: ../src/xfdesktop-volume-icon.c:523 ../src/xfdesktop-volume-icon.c:568
+#: ../src/xfdesktop-volume-icon.c:523 ../src/xfdesktop-volume-icon.c:569
 msgid "Eject Failed"
 msgstr "Fallu al espulsar"
 
-#: ../src/xfdesktop-volume-icon.c:600
+#: ../src/xfdesktop-volume-icon.c:602
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "Fallu al montar «%s»"
 
-#: ../src/xfdesktop-volume-icon.c:603
+#: ../src/xfdesktop-volume-icon.c:605
 msgid "Mount Failed"
 msgstr "Fallu de montaxe"
 
-#: ../src/xfdesktop-volume-icon.c:828
+#: ../src/xfdesktop-volume-icon.c:827
 msgid "E_ject Volume"
 msgstr "E_spulsar volume"
 
-#: ../src/xfdesktop-volume-icon.c:835
+#: ../src/xfdesktop-volume-icon.c:834
 msgid "_Unmount Volume"
 msgstr "_Desmontar volume"
 
-#: ../src/xfdesktop-volume-icon.c:842
+#: ../src/xfdesktop-volume-icon.c:841
 msgid "_Mount Volume"
 msgstr "_Montar volume"
 
-#: ../src/xfdesktop-window-icon.c:195
+#: ../src/xfdesktop-window-icon.c:194
 msgid "_Window Actions"
 msgstr "_Aiciones de ventana"
