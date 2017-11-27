@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-05-04 18:31+0200\n"
-"PO-Revision-Date: 2017-11-17 15:04+0000\n"
+"PO-Revision-Date: 2017-11-27 21:44+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfdesktop/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -63,16 +63,16 @@ msgstr "<b>%s</b>\nType: %s\nStørrelse: %s"
 #: ../settings/main.c:733
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
-msgstr "Baggrundstapet for skærmen %d (%s)"
+msgstr "Tapet for skærmen %d (%s)"
 
 #: ../settings/main.c:736
 #, c-format
 msgid "Wallpaper for Monitor %d"
-msgstr "Baggrundstapet for skærmen %d"
+msgstr "Tapet for skærmen %d"
 
 #: ../settings/main.c:742
 msgid "Move this dialog to the display you want to edit the settings for."
-msgstr "Flyt dette vindue til skærmen som du ønsker at ændre indstillingerne for."
+msgstr "Flyt dialogen til skærmen som du ønsker at ændre indstillingerne for."
 
 #: ../settings/main.c:749
 #, c-format
@@ -82,29 +82,29 @@ msgstr "Baggrundstapet for %s på skærmen %d (%s)"
 #: ../settings/main.c:753
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
-msgstr "Baggrundstapet for %s på skærmen %d"
+msgstr "Tapet for %s på skærmen %d"
 
 #: ../settings/main.c:760
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
-msgstr "Flyt dette vindue til den skærm du ønsker at ændre indstillingerne for."
+msgstr "Flyt dialogen til den skærm du ønsker at ændre indstillingerne for."
 
 #. Single monitor and single workspace
 #: ../settings/main.c:768
 #, c-format
 msgid "Wallpaper for my desktop"
-msgstr "Baggrundstapet for mit skrivebord"
+msgstr "Tapet for mit skrivebord"
 
 #. Single monitor and per workspace wallpaper
 #: ../settings/main.c:774
 #, c-format
 msgid "Wallpaper for %s"
-msgstr "Baggrundstapet for %s"
+msgstr "Tapet for %s"
 
 #: ../settings/main.c:779
 msgid "Move this dialog to the workspace you want to edit the settings for."
-msgstr "Flyt dette vindue til det arbejdsområde du ønsker at ændre indstillingerne for."
+msgstr "Flyt dialogen til det arbejdsområde du ønsker at ændre indstillingerne for."
 
 #: ../settings/main.c:1199
 msgid "Image selection is unavailable while the image style is set to None."
@@ -180,11 +180,11 @@ msgstr "Ensfarvet"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
 msgid "Horizontal gradient"
-msgstr "Horisontalt aftagende"
+msgstr "Vandret gradient"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
 msgid "Vertical gradient"
-msgstr "Lodret aftagende"
+msgstr "Lodret gradient"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
 msgid "Transparent"
@@ -241,7 +241,7 @@ msgstr "_Farve:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Specify the style of the color drawn behind the backdrop image."
-msgstr "Angiv stilen til farven bag baggrundbillede."
+msgstr "Angiv stilen til farven bag baggrundsbilledet."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
@@ -316,7 +316,7 @@ msgstr "_Tilfældig rækkefølge"
 msgid ""
 "Randomly selects another image from the same directory when the wallpaper is"
 " to cycle."
-msgstr "Vælger tilfældigt et andet billede fra samme mappe, når baggrundstapetet runder en cyklus."
+msgstr "Vælger tilfældigt et andet billede fra samme mappe, når tapetet runder en cyklus."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:1
 msgid "Left"
@@ -368,7 +368,7 @@ msgstr "_Knap:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:15
 msgid "Mo_difier:"
-msgstr "Ju_stéring:"
+msgstr "Ju_stering:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:16
 msgid "Show _application icons in menu"
@@ -392,7 +392,7 @@ msgstr "_Knap:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:21
 msgid "Modi_fier:"
-msgstr "Jus_téring:"
+msgstr "Jus_tering:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:22
 msgid "Sh_ow application icons in menu"
@@ -555,7 +555,7 @@ msgstr "Sortér automatisk alle ikoner på skrivebordet"
 
 #: ../src/xfdesktop-application.c:775
 msgid "Disable debug messages"
-msgstr "Dekativer fejlsøgningsbeskeder"
+msgstr "Deaktivér fejlsøgningsbeskeder"
 
 #: ../src/xfdesktop-application.c:776
 msgid "Do not wait for a window manager on startup"
@@ -979,7 +979,7 @@ msgstr "Enheden \"%s\" bliver skubbet ud. Det kan tage lidt tid"
 
 #: ../src/xfdesktop-notify.c:406
 msgid "Eject Finished"
-msgstr "Udskubning gennemført"
+msgstr "Skub ud gennemført"
 
 #: ../src/xfdesktop-regular-file-icon.c:799
 #, c-format
@@ -1053,7 +1053,7 @@ msgstr "Montering fejlede"
 
 #: ../src/xfdesktop-volume-icon.c:827
 msgid "E_ject Volume"
-msgstr "_Udskub arkiv"
+msgstr "_Skub arkiv ud"
 
 #: ../src/xfdesktop-volume-icon.c:834
 msgid "_Unmount Volume"
