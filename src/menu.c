@@ -57,6 +57,7 @@ menu_populate(XfceDesktop *desktop,
     GtkWidget *mi, *img = NULL;
     GtkIconTheme *itheme = gtk_icon_theme_get_default();
     GtkWidget *desktop_menu = NULL;
+    GList *menu_children;
 
     TRACE("ENTERING");
 
@@ -67,26 +68,37 @@ menu_populate(XfceDesktop *desktop,
         garcon_menu = garcon_menu_new_applications();
     }
     desktop_menu = garcon_gtk_menu_new (garcon_menu);
-
-    mi = gtk_separator_menu_item_new();
-    gtk_widget_show(mi);
-    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-    
-    if(gtk_icon_theme_has_icon(itheme, "applications-other")) {
-        img = gtk_image_new_from_icon_name("applications-other",
-                                           GTK_ICON_SIZE_MENU);
-        gtk_widget_show(img);
-    }
-
-    mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Applications"), img);
-    gtk_widget_show(mi);
-
     XF_DEBUG("show desktop menu icons %s", show_desktop_menu_icons ? "TRUE" : "FALSE");
     garcon_gtk_menu_set_show_menu_icons(GARCON_GTK_MENU(desktop_menu), show_desktop_menu_icons);
 
-    gtk_menu_item_set_submenu (GTK_MENU_ITEM(mi), desktop_menu);
+    /* check to see if the menu is empty.  if not, add the desktop menu
+    * to a submenu */
+    menu_children = gtk_container_get_children(GTK_CONTAINER(menu));
+    if(menu_children) {
+        g_list_free(menu_children);
+        mi = gtk_separator_menu_item_new();
+        gtk_widget_show(mi);
+        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
 
-    gtk_menu_shell_append(menu, mi);
+        if(gtk_icon_theme_has_icon(itheme, "applications-other")) {
+            img = gtk_image_new_from_icon_name("applications-other",
+                                            GTK_ICON_SIZE_MENU);
+            gtk_widget_show(img);
+        }
+
+        mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Applications"), img);
+        gtk_widget_show(mi);
+
+        gtk_menu_item_set_submenu (GTK_MENU_ITEM(mi), desktop_menu);
+
+        gtk_menu_shell_append(menu, mi);
+    }
+    /* just get the menu as a list of toplevel GtkMenuItems instead of
+    * a toplevel menu */
+    else
+    {
+        gtk_menu_popup (GTK_MENU (desktop_menu), NULL, NULL, NULL, NULL, 3, gtk_get_current_event_time ());
+    }
 }
 #endif /* USE_DESKTOP_MENU */
 
