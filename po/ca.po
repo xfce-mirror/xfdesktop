@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-05-04 18:31+0200\n"
-"PO-Revision-Date: 2017-12-31 06:35+0000\n"
+"PO-Revision-Date: 2017-12-31 18:57+0000\n"
 "Last-Translator: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfdesktop/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -158,7 +158,7 @@ msgstr "Ajusts de l'escriptori"
 
 #: ../settings/main.c:2151
 msgid "Unable to contact settings server"
-msgstr "No s'ha pogut contactar amb el servidor d'ajusts"
+msgstr "No es pot contactar amb el servidor d'ajusts"
 
 #: ../settings/main.c:2153
 msgid "Quit"
@@ -567,7 +567,7 @@ msgstr "Provoca la sortida de xfdesktop"
 #: ../src/xfdesktop-application.c:792
 #, c-format
 msgid "Failed to parse arguments: %s\n"
-msgstr "No s'han pogut analitzar els arguments: %s\n"
+msgstr "Ha fallat l'anàlisi dels arguments: %s\n"
 
 #: ../src/xfdesktop-application.c:803
 #, c-format
@@ -613,7 +613,7 @@ msgstr "    Fitxer d'icones d'escriptori: %s\n"
 #: ../src/xfdesktop-file-icon-manager.c:570
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
-msgstr "No s'ha pogut crear la carpeta de l'escriptori \"%s\""
+msgstr "No s'ha pogut crear la carpeta de l'escriptori «%s»"
 
 #: ../src/xfdesktop-file-icon-manager.c:557
 #: ../src/xfdesktop-file-icon-manager.c:575
@@ -663,7 +663,7 @@ msgstr "Cap de les icones seleccionades tenen suport per canviar de nom."
 #: ../src/xfdesktop-file-icon-manager.c:1304
 #, c-format
 msgid "Unable to launch \"%s\":"
-msgstr "No s'ha pogut llançar «%s»:"
+msgstr "No es pot llançar «%s»:"
 
 #: ../src/xfdesktop-file-icon-manager.c:798
 #: ../src/xfdesktop-file-icon-manager.c:1091
@@ -687,7 +687,7 @@ msgstr "Obre amb «%s»"
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
-msgstr "No s'ha pogut llançar «exo-desktop-item-edit», el qual es requereix per crear i editar els llançadors i els enllaços a l'escriptori."
+msgstr "No es pot llançar «exo-desktop-item-edit», el qual es requereix per crear i editar els llançadors i els enllaços a l'escriptori."
 
 #: ../src/xfdesktop-file-icon-manager.c:1374
 msgid "_Open all"
@@ -783,7 +783,7 @@ msgstr "No s'ha pogut carregar"
 
 #: ../src/xfdesktop-file-icon-manager.c:2826
 msgid "Failed to load the desktop folder"
-msgstr "No s'ha pogut carregar la carpeta de l'escriptori"
+msgstr "Ha fallat la càrrega de la carpeta de l'escriptori"
 
 #: ../src/xfdesktop-file-icon-manager.c:3392
 msgid "Copy _Here"
@@ -914,7 +914,7 @@ msgstr "No s'ha pogut obrir el fitxer"
 #: ../src/xfdesktop-file-utils.c:1278 ../src/xfdesktop-file-utils.c:1302
 #, c-format
 msgid "Failed to run \"%s\""
-msgstr "No s'ha pogut executar \"%s\""
+msgstr "Ha fallat l'execució de «%s»"
 
 #: ../src/xfdesktop-file-utils.c:1368
 msgid "The application chooser could not be opened"
@@ -974,7 +974,7 @@ msgstr "Expulsió del dispositiu."
 #: ../src/xfdesktop-notify.c:316
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
-msgstr "S'està expulsant el dispositiu \"%s\". Això pot trigar una estona."
+msgstr "S'està expulsant el dispositiu «%s». Això pot trigar una estona."
 
 #: ../src/xfdesktop-notify.c:406
 msgid "Eject Finished"
@@ -1024,7 +1024,7 @@ msgid ""
 "Removable Volume\n"
 "Mounted in \"%s\"\n"
 "%s left (%s total)"
-msgstr "Volum extraïble\nMuntat a \"%s\"\n%s lliures (%s en total)"
+msgstr "Volum extraïble\nMuntat a «%s»\n%s lliures (%s en total)"
 
 #: ../src/xfdesktop-volume-icon.c:489
 msgid ""
@@ -1035,7 +1035,7 @@ msgstr "Volum extraïble\nNo muntat encara"
 #: ../src/xfdesktop-volume-icon.c:518 ../src/xfdesktop-volume-icon.c:564
 #, c-format
 msgid "Failed to eject \"%s\""
-msgstr "No s'ha pogut expulsar \"%s\""
+msgstr "Ha fallat l'expulsió de «%s»"
 
 #: ../src/xfdesktop-volume-icon.c:523 ../src/xfdesktop-volume-icon.c:569
 msgid "Eject Failed"
@@ -1044,7 +1044,7 @@ msgstr "Error d'expulsió"
 #: ../src/xfdesktop-volume-icon.c:602
 #, c-format
 msgid "Failed to mount \"%s\""
-msgstr "No s'ha pogut muntar \"%s\""
+msgstr "Ha fallat el muntatge de «%s»"
 
 #: ../src/xfdesktop-volume-icon.c:605
 msgid "Mount Failed"
