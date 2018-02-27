@@ -34,6 +34,7 @@
 #include <gtk/gtk.h>
 
 #include <libxfce4util/libxfce4util.h>
+#include <libxfce4ui/libxfce4ui.h>
 
 #include "xfdesktop-common.h"
 #include "menu.h"
@@ -97,7 +98,7 @@ menu_populate(XfceDesktop *desktop,
     * a toplevel menu */
     else
     {
-        gtk_menu_popup (GTK_MENU (desktop_menu), NULL, NULL, NULL, NULL, 3, gtk_get_current_event_time ());
+        xfce_gtk_menu_popup_until_mapped(GTK_MENU(desktop_menu), NULL, NULL, NULL, NULL, 3, gtk_get_current_event_time());
     }
 }
 #endif /* USE_DESKTOP_MENU */
