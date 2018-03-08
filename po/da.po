@@ -8,14 +8,14 @@
 # Jesper Berth <bigsanta@berthit.dk>, 2005
 # Linuxbruger <y.z@live.dk>, 2018
 # Per Kongstad <p_kongstad@op.pl>, 2009,2014-2015
-# scootergrisen, 2016-2017
+# scootergrisen, 2016-2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-05-04 18:31+0200\n"
-"PO-Revision-Date: 2018-03-01 23:26+0000\n"
-"Last-Translator: Linuxbruger <y.z@live.dk>\n"
+"PO-Revision-Date: 2018-03-08 15:22+0000\n"
+"Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfdesktop/language/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -64,12 +64,12 @@ msgstr "<b>%s</b>\nType: %s\nStørrelse: %s"
 #: ../settings/main.c:733
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
-msgstr "Baggrunds-billede for Skærmen %d (%s)"
+msgstr "Tapet for skærm %d (%s)"
 
 #: ../settings/main.c:736
 #, c-format
 msgid "Wallpaper for Monitor %d"
-msgstr "Baggrunds-billede for Skærmen %d"
+msgstr "Tapet for skærm %d"
 
 #: ../settings/main.c:742
 msgid "Move this dialog to the display you want to edit the settings for."
@@ -197,7 +197,7 @@ msgstr "_Mappe:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
 msgid "Choose the folder to select wallpapers from."
-msgstr "Vælg mappen at vælge skærmbaggrunde fra."
+msgstr "Vælg mappen som der skal vælges tapeter fra."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
 msgid "St_yle:"
@@ -455,7 +455,7 @@ msgstr "Vis værktøjstips for ikoner. Størrelse:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid "Size of the tooltip preview image."
-msgstr "Størren på forhåndsvist billede af værktøjstip."
+msgstr "Størrelsen på forhåndsvist billede af værktøjstip."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "Use custom _font size:"
@@ -540,7 +540,7 @@ msgstr "Genindlæs alle indstillinger"
 
 #: ../src/xfdesktop-application.c:768
 msgid "Advance to the next wallpaper on the current workspace"
-msgstr "Gå videre til næste baggrund i nuværende arbejdsområde"
+msgstr "Gå videre til det næste tapet på nuværende arbejdsområde"
 
 #: ../src/xfdesktop-application.c:769
 msgid "Pop up the menu (at the current mouse position)"
@@ -620,7 +620,7 @@ msgstr "Kan ikke oprette skrivebordsmappen \"%s\""
 #: ../src/xfdesktop-file-icon-manager.c:557
 #: ../src/xfdesktop-file-icon-manager.c:575
 msgid "Desktop Folder Error"
-msgstr "Skrivebordsmappefejl"
+msgstr "Fejl ved skrivebordsmappe"
 
 #: ../src/xfdesktop-file-icon-manager.c:560
 #: ../src/xfdesktop-file-icon-manager.c:579
@@ -650,7 +650,7 @@ msgstr "En standard fil med det samme navn findes allerede. Du bedes enten slett
 #: ../src/xfdesktop-file-icon-manager.c:661 ../src/xfdesktop-file-utils.c:743
 #: ../src/xfdesktop-file-utils.c:807
 msgid "Rename Error"
-msgstr "Omdøbningsfejl"
+msgstr "Fejl ved omdøbning"
 
 #: ../src/xfdesktop-file-icon-manager.c:662 ../src/xfdesktop-file-utils.c:808
 msgid "The files could not be renamed"
@@ -673,7 +673,7 @@ msgstr "Kunne ikke starte \"%s\":"
 #: ../src/xfdesktop-file-utils.c:1203 ../src/xfdesktop-file-utils.c:1281
 #: ../src/xfdesktop-file-utils.c:1305 ../src/xfdesktop-file-utils.c:1367
 msgid "Launch Error"
-msgstr "Starterfejl"
+msgstr "Fejl ved start"
 
 #: ../src/xfdesktop-file-icon-manager.c:1017
 #, c-format
@@ -781,7 +781,7 @@ msgstr "_Egenskaber..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2824
 msgid "Load Error"
-msgstr "Starterfejl"
+msgstr "Fejl ved indlæsning"
 
 #: ../src/xfdesktop-file-icon-manager.c:2826
 msgid "Failed to load the desktop folder"
@@ -861,7 +861,7 @@ msgstr "Denne egenskab kræver at en filhåndteringsservice er tilstede (som den
 
 #: ../src/xfdesktop-file-utils.c:868
 msgid "Delete Error"
-msgstr "Sletningsfejl"
+msgstr "Fejl ved sletning"
 
 #: ../src/xfdesktop-file-utils.c:869
 msgid "The selected files could not be deleted"
@@ -869,7 +869,7 @@ msgstr "De valgte filer kunne ikke slettes"
 
 #: ../src/xfdesktop-file-utils.c:929 ../src/xfdesktop-file-utils.c:977
 msgid "Trash Error"
-msgstr "Papirkurvsfejl"
+msgstr "Fejl ved papirkurv"
 
 #: ../src/xfdesktop-file-utils.c:930
 msgid "The selected files could not be moved to the trash"
@@ -925,7 +925,7 @@ msgstr "Programvælgeren kunne ikke åbnes"
 #: ../src/xfdesktop-file-utils.c:1427 ../src/xfdesktop-file-utils.c:1442
 #: ../src/xfdesktop-file-utils.c:1505 ../src/xfdesktop-file-utils.c:1522
 msgid "Transfer Error"
-msgstr "Overførselsfejl"
+msgstr "Fejl ved overførsel"
 
 #: ../src/xfdesktop-file-utils.c:1428 ../src/xfdesktop-file-utils.c:1443
 #: ../src/xfdesktop-file-utils.c:1506 ../src/xfdesktop-file-utils.c:1523
