@@ -1042,7 +1042,9 @@ xfdesktop_icon_view_button_release(GtkWidget *widget,
 
     gtk_grab_remove(widget);
 
-    return FALSE;
+    /* TRUE: stop other handlers from being invoked for the event. FALSE: propagate the event further. */
+    /* On FALSE this method will be called twice in single-click-mode (possibly a gtk3 bug)            */
+    return TRUE;
 }
 
 static gboolean
