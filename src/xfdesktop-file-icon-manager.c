@@ -1441,7 +1441,7 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
 
                     /* create launcher item */
 
-                    icon = g_content_type_get_icon("application/x-desktop");
+                    icon = g_themed_icon_new("application-x-executable");
                     img = gtk_image_new_from_gicon(icon, GTK_ICON_SIZE_MENU);
                     mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Create _Launcher..."), img);
                     g_object_set_data(G_OBJECT(mi), "xfdesktop-launcher-type", "Application");
