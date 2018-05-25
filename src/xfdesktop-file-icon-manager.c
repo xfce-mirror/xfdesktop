@@ -1690,7 +1690,7 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
             /* Menu popup on an icon */
             /* Cut */
             img = gtk_image_new_from_icon_name("edit-cut", GTK_ICON_SIZE_MENU);
-            mi = xfdesktop_menu_create_menu_item_with_mnemonic("Cu_t", img);
+            mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Cu_t"), img);
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             if(multi_sel || xfdesktop_file_icon_can_delete_file(file_icon)) {
@@ -1702,7 +1702,7 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
 
             /* Copy */
             img = gtk_image_new_from_icon_name("edit-copy", GTK_ICON_SIZE_MENU);
-            mi = xfdesktop_menu_create_menu_item_with_mnemonic("_Copy", img);
+            mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Copy"), img);
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             g_signal_connect(G_OBJECT(mi), "activate",
