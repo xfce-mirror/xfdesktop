@@ -4,10 +4,11 @@
 # 
 # Translators:
 # Cyryl Sochacki <cyrylsochacki@gmail.com>, 2013
-# Dawid, 2014
-# m4sk1n <m4sk1n@vivaldi.net>, 2017
-# m4sk1n <m4sk1n@vivaldi.net>, 2016
+# Hoek <dawid.job@gmail.com>, 2014
+# Marcin Mikołajczak <me@m4sk.in>, 2017
+# Marcin Mikołajczak <me@m4sk.in>, 2016
 # Michał Olber <michal@olber.pl>, 2013
+# No Ne, 2018
 # Michał Olber <michal@olber.pl>, 2013
 # Piotr Maliński <riklaunim@gmail.com>, 2006
 # Piotr Sokół <psokol.l10n@gmail.com>, 2009,2011-2015
@@ -19,9 +20,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-04 18:31+0200\n"
-"PO-Revision-Date: 2017-09-23 19:02+0000\n"
-"Last-Translator: m4sk1n <m4sk1n@vivaldi.net>\n"
+"POT-Creation-Date: 2018-05-25 06:32+0200\n"
+"PO-Revision-Date: 2018-05-25 12:09+0000\n"
+"Last-Translator: No Ne\n"
 "Language-Team: Polish (http://www.transifex.com/xfce/xfdesktop/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -142,7 +143,7 @@ msgstr "ID_GNIAZDA"
 msgid "Version information"
 msgstr "Informacje o wersji"
 
-#: ../settings/main.c:2101 ../src/xfdesktop-application.c:774
+#: ../settings/main.c:2101 ../src/xfdesktop-application.c:836
 msgid "Enable debug messages"
 msgstr "Włącza komunikaty diagnozowania błędów"
 
@@ -357,7 +358,7 @@ msgstr "Zminimalizowane okna"
 msgid "File/launcher icons"
 msgstr "Pliki i aktywatory"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:1049
+#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:1060
 msgid "Desktop"
 msgstr "Pulpit"
 
@@ -479,7 +480,7 @@ msgstr "<b>Domyślne</b>"
 msgid "_Icons"
 msgstr "_Ikony"
 
-#: ../src/menu.c:81
+#: ../src/menu.c:90
 msgid "_Applications"
 msgstr "_Programy"
 
@@ -536,83 +537,83 @@ msgstr "_Usuń obszar roboczy %d"
 msgid "_Remove Workspace '%s'"
 msgstr "_Usuń obszar roboczy „%s”"
 
-#: ../src/xfdesktop-application.c:766
+#: ../src/xfdesktop-application.c:828
 msgid "Display version information"
 msgstr "Wypisuje informacje o wersji"
 
-#: ../src/xfdesktop-application.c:767
+#: ../src/xfdesktop-application.c:829
 msgid "Reload all settings"
 msgstr "Wczytuje ponownie wszystkie ustawienia"
 
-#: ../src/xfdesktop-application.c:768
+#: ../src/xfdesktop-application.c:830
 msgid "Advance to the next wallpaper on the current workspace"
 msgstr "Przejdź do następnej tapety na bieżącym obszarze roboczym"
 
-#: ../src/xfdesktop-application.c:769
+#: ../src/xfdesktop-application.c:831
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "Wyświetla menu programów (w bieżącym położeniu kursora myszy)"
 
-#: ../src/xfdesktop-application.c:770
+#: ../src/xfdesktop-application.c:832
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "Wyświetla listę okien (w bieżącym położeniu kursora myszy)"
 
-#: ../src/xfdesktop-application.c:772
+#: ../src/xfdesktop-application.c:834
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "Automatycznie rozmieszcza wszystkie ikony na pulpicie"
 
-#: ../src/xfdesktop-application.c:775
+#: ../src/xfdesktop-application.c:837
 msgid "Disable debug messages"
 msgstr "Wyłącza komunikaty diagnozowania błędów"
 
-#: ../src/xfdesktop-application.c:776
+#: ../src/xfdesktop-application.c:838
 msgid "Do not wait for a window manager on startup"
 msgstr "Nie oczekuje na menedżera okien podczas uruchamiania"
 
-#: ../src/xfdesktop-application.c:777
+#: ../src/xfdesktop-application.c:839
 msgid "Cause xfdesktop to quit"
 msgstr "Kończy działanie programu"
 
-#: ../src/xfdesktop-application.c:792
+#: ../src/xfdesktop-application.c:854
 #, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "Nie udało się przetworzyć argumentów: %s\n"
 
-#: ../src/xfdesktop-application.c:803
+#: ../src/xfdesktop-application.c:865
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Program %s wersja %s, uruchomiony w środowisku Xfce %s.\n"
 
-#: ../src/xfdesktop-application.c:805
+#: ../src/xfdesktop-application.c:867
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Skompilowano przy użyciu Gtk+ %d.%d.%d, zlinkowano przy użyciu Gtk+ %d.%d.%d."
 
-#: ../src/xfdesktop-application.c:809
+#: ../src/xfdesktop-application.c:871
 #, c-format
 msgid "Build options:\n"
 msgstr "Opcje kompilacji:\n"
 
-#: ../src/xfdesktop-application.c:810
+#: ../src/xfdesktop-application.c:872
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "Menu pulpitu: %s\n"
 
-#: ../src/xfdesktop-application.c:812 ../src/xfdesktop-application.c:819
-#: ../src/xfdesktop-application.c:826
+#: ../src/xfdesktop-application.c:874 ../src/xfdesktop-application.c:881
+#: ../src/xfdesktop-application.c:888
 msgid "enabled"
 msgstr "włączone"
 
-#: ../src/xfdesktop-application.c:814 ../src/xfdesktop-application.c:821
-#: ../src/xfdesktop-application.c:828
+#: ../src/xfdesktop-application.c:876 ../src/xfdesktop-application.c:883
+#: ../src/xfdesktop-application.c:890
 msgid "disabled"
 msgstr "wyłączone"
 
-#: ../src/xfdesktop-application.c:817
+#: ../src/xfdesktop-application.c:879
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "Ikony pulpitu: %s\n"
 
-#: ../src/xfdesktop-application.c:824
+#: ../src/xfdesktop-application.c:886
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "Ikony plików pulpitu: %s\n"
@@ -633,8 +634,8 @@ msgstr "Błąd katalogu pulpitu"
 #: ../src/xfdesktop-file-icon-manager.c:664
 #: ../src/xfdesktop-file-icon-manager.c:800
 #: ../src/xfdesktop-file-icon-manager.c:1095
-#: ../src/xfdesktop-file-icon-manager.c:1307
-#: ../src/xfdesktop-file-icon-manager.c:2827 ../src/xfdesktop-file-utils.c:674
+#: ../src/xfdesktop-file-icon-manager.c:1343
+#: ../src/xfdesktop-file-icon-manager.c:2863 ../src/xfdesktop-file-utils.c:674
 #: ../src/xfdesktop-file-utils.c:693 ../src/xfdesktop-file-utils.c:747
 #: ../src/xfdesktop-file-utils.c:811 ../src/xfdesktop-file-utils.c:872
 #: ../src/xfdesktop-file-utils.c:933 ../src/xfdesktop-file-utils.c:981
@@ -668,14 +669,14 @@ msgstr "Nie zmieniono nazwy żadnej z zaznaczonych ikon."
 
 #. printf is to be translator-friendly
 #: ../src/xfdesktop-file-icon-manager.c:796
-#: ../src/xfdesktop-file-icon-manager.c:1304
+#: ../src/xfdesktop-file-icon-manager.c:1340
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Nie można uruchomić „%s”:"
 
 #: ../src/xfdesktop-file-icon-manager.c:798
 #: ../src/xfdesktop-file-icon-manager.c:1091
-#: ../src/xfdesktop-file-icon-manager.c:1305 ../src/xfdesktop-file-utils.c:671
+#: ../src/xfdesktop-file-icon-manager.c:1341 ../src/xfdesktop-file-utils.c:671
 #: ../src/xfdesktop-file-utils.c:1203 ../src/xfdesktop-file-utils.c:1281
 #: ../src/xfdesktop-file-utils.c:1305 ../src/xfdesktop-file-utils.c:1367
 msgid "Launch Error"
@@ -697,115 +698,123 @@ msgid ""
 "edit launchers and links on the desktop."
 msgstr "Nie można uruchomić programu „exo-desktop-item-edit”, wymaganego do tworzenia oraz modyfikowania aktywatorów i odnośników na pulpicie."
 
-#: ../src/xfdesktop-file-icon-manager.c:1374
+#: ../src/xfdesktop-file-icon-manager.c:1410
 msgid "_Open all"
 msgstr "Otwórz _wszystkie"
 
-#: ../src/xfdesktop-file-icon-manager.c:1388
+#: ../src/xfdesktop-file-icon-manager.c:1424
 msgid "_Open in New Window"
 msgstr "_Otwórz w nowym oknie"
 
-#: ../src/xfdesktop-file-icon-manager.c:1390
+#: ../src/xfdesktop-file-icon-manager.c:1426
 #: ../src/xfdesktop-special-file-icon.c:548 ../src/xfdesktop-volume-icon.c:813
 msgid "_Open"
 msgstr "_Otwórz"
 
-#: ../src/xfdesktop-file-icon-manager.c:1410
+#: ../src/xfdesktop-file-icon-manager.c:1446
 msgid "Create _Launcher..."
 msgstr "Utwórz _aktywator..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1424
+#: ../src/xfdesktop-file-icon-manager.c:1460
 msgid "Create _URL Link..."
 msgstr "Utwórz o_dnośnik..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1438
+#: ../src/xfdesktop-file-icon-manager.c:1474
 msgid "Create _Folder..."
 msgstr "Utwórz _katalog..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1450
+#: ../src/xfdesktop-file-icon-manager.c:1486
 msgid "Create _Document"
 msgstr "Utwórz _dokument"
 
-#: ../src/xfdesktop-file-icon-manager.c:1474
+#: ../src/xfdesktop-file-icon-manager.c:1510
 msgid "No templates installed"
 msgstr "Brak zainstalowanych szablonów"
 
-#: ../src/xfdesktop-file-icon-manager.c:1490
+#: ../src/xfdesktop-file-icon-manager.c:1526
 msgid "_Empty File"
 msgstr "_Pusty plik"
 
-#: ../src/xfdesktop-file-icon-manager.c:1505
+#: ../src/xfdesktop-file-icon-manager.c:1541
 msgid "_Execute"
 msgstr "_Uruchom"
 
-#: ../src/xfdesktop-file-icon-manager.c:1523
+#: ../src/xfdesktop-file-icon-manager.c:1559
 msgid "_Edit Launcher"
 msgstr "_Edytuj aktywator"
 
-#: ../src/xfdesktop-file-icon-manager.c:1581
+#: ../src/xfdesktop-file-icon-manager.c:1617
 msgid "Open With"
 msgstr "Otwórz za pomocą"
 
-#: ../src/xfdesktop-file-icon-manager.c:1607
-#: ../src/xfdesktop-file-icon-manager.c:1621
+#: ../src/xfdesktop-file-icon-manager.c:1643
+#: ../src/xfdesktop-file-icon-manager.c:1657
 msgid "Open With Other _Application..."
 msgstr "Otwórz za pomocą innego p_rogramu..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1639
+#: ../src/xfdesktop-file-icon-manager.c:1675
 msgid "_Paste"
 msgstr "_Wklej"
 
-#: ../src/xfdesktop-file-icon-manager.c:1681
+#: ../src/xfdesktop-file-icon-manager.c:1693
+msgid "Cu_t"
+msgstr "_Wytnij"
+
+#: ../src/xfdesktop-file-icon-manager.c:1705
+msgid "_Copy"
+msgstr "S_kopiuj"
+
+#: ../src/xfdesktop-file-icon-manager.c:1717
 msgid "Paste Into Folder"
 msgstr "Wklej do katalogu"
 
-#: ../src/xfdesktop-file-icon-manager.c:1700
+#: ../src/xfdesktop-file-icon-manager.c:1736
 msgid "Mo_ve to Trash"
 msgstr "_Przenieś do kosza"
 
-#: ../src/xfdesktop-file-icon-manager.c:1712
+#: ../src/xfdesktop-file-icon-manager.c:1748
 msgid "_Delete"
 msgstr "_Usuń"
 
 #. Rename
-#: ../src/xfdesktop-file-icon-manager.c:1728
+#: ../src/xfdesktop-file-icon-manager.c:1764
 msgid "_Rename..."
 msgstr "_Zmień nazwę..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1795
+#: ../src/xfdesktop-file-icon-manager.c:1831
 msgid "Arrange Desktop _Icons"
 msgstr "_Rozmieść ikony"
 
-#: ../src/xfdesktop-file-icon-manager.c:1804
+#: ../src/xfdesktop-file-icon-manager.c:1840
 msgid "Desktop _Settings..."
 msgstr "_Ustawienia pulpitu..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1813
+#: ../src/xfdesktop-file-icon-manager.c:1849
 #: ../src/xfdesktop-volume-icon.c:854
 msgid "P_roperties..."
 msgstr "_Właściwości..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2824
+#: ../src/xfdesktop-file-icon-manager.c:2860
 msgid "Load Error"
 msgstr "Błąd wczytywania"
 
-#: ../src/xfdesktop-file-icon-manager.c:2826
+#: ../src/xfdesktop-file-icon-manager.c:2862
 msgid "Failed to load the desktop folder"
 msgstr "Nie udało się wczytać katalogu pulpitu"
 
-#: ../src/xfdesktop-file-icon-manager.c:3392
+#: ../src/xfdesktop-file-icon-manager.c:3428
 msgid "Copy _Here"
 msgstr "_Skopiuj tutaj"
 
-#: ../src/xfdesktop-file-icon-manager.c:3392
+#: ../src/xfdesktop-file-icon-manager.c:3428
 msgid "_Move Here"
 msgstr "_Przenieś tutaj"
 
-#: ../src/xfdesktop-file-icon-manager.c:3392
+#: ../src/xfdesktop-file-icon-manager.c:3428
 msgid "_Link Here"
 msgstr "_Dowiąż tutaj"
 
-#: ../src/xfdesktop-file-icon-manager.c:3427
+#: ../src/xfdesktop-file-icon-manager.c:3463
 msgid "_Cancel"
 msgstr "_Anuluj"
 
