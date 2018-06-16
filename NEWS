@@ -1,3 +1,29 @@
+4.13.2 (Not yet released)
+======
+[Please note that this is a development release.]
+
+Development release of xfdesktop targeting for Xfce 4.14.
+Please report all problems at bugzilla.xfce.org.
+
+- Use the new Thunarx-3 API (Thunar >= 1.7)
+- Use custom CSS for the iconview as a fallback (Bug #13609)
+- Get/set _NET_DESKTOP_MANAGER_S<screen> atom (Bug #13653)
+- Make "another desktop manager is running" messages critical (Bug #13653)
+- Change "Create Launcher..." icon (Bug #14161)
+- Do not popup a single "Applications" menu when right clicking on desktop (Bug #13866)
+- Single-click mode executes desktop items twice (Bug #14021)
+- Fix menu popup issue with desktop icons disabled (Bug #14415)
+- Fix memory leak : Don't try to allocate all the memory (Bug #12805)
+- Fix some autotools warnings and bump dependencies
+- Make a couple of strings translatable (Bug #14374)
+- Translation Updates: Amharic, Arabic, Asturian, Belarusian, Bulgarian, Catalan, Czech,
+  Danish, German, Greek, English (Australia), English (United Kingdom), Spanish, Estonian,
+  Basque, Persian (Iran), Finnish, French, Galician, Hebrew, Croatian, Hungarian, Indonesian,
+  Icelandic, Italian, Japanese, Kazakh, Korean, Lithuanian, Malay, Norwegian Bokmål, Dutch,
+  Norwegian Nynorsk, Occitan (post 1500), Polish, Portuguese, Portuguese (Brazil), Romanian,
+  Russian, Slovak, Slovenian, Serbian, Swedish, Thai, Turkish, Uighur, Ukrainian, Uzbek,
+  Chinese (China), Chinese (Hong Kong), Chinese (Taiwan)
+
 4.13.1
 ======
 [Please note that this is a development release.]
