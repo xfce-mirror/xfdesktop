@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-25 06:32+0200\n"
-"PO-Revision-Date: 2018-08-01 14:44+0000\n"
+"PO-Revision-Date: 2018-08-02 14:08+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech (http://www.transifex.com/xfce/xfdesktop/language/cs/)\n"
 "MIME-Version: 1.0\n"
@@ -493,7 +493,7 @@ msgstr "Opravdu chcete odebrat pracovní prostor %d?\nPoznámka: Právě se nach
 #: ../src/windowlist.c:78
 #, c-format
 msgid "Remove Workspace '%s'"
-msgstr "Odstranění pracovní plochy '%s'"
+msgstr "Odstranění pracovní plochy „%s“"
 
 #: ../src/windowlist.c:79
 #, c-format
@@ -616,7 +616,7 @@ msgstr "Ikony souborů plochy: %s\n"
 #: ../src/xfdesktop-file-icon-manager.c:570
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
-msgstr "Nelze vytvořit složku na ploše \"%s\""
+msgstr "Nedaří se vytvořit složku na ploše „%s“"
 
 #: ../src/xfdesktop-file-icon-manager.c:557
 #: ../src/xfdesktop-file-icon-manager.c:575
@@ -810,7 +810,7 @@ msgstr "_Vytvořit zde odkaz"
 
 #: ../src/xfdesktop-file-icon-manager.c:3463
 msgid "_Cancel"
-msgstr "_Zrušit"
+msgstr "_Storno"
 
 #. TRANSLATORS: file was modified less than one day ago
 #: ../src/xfdesktop-file-utils.c:147
@@ -843,7 +843,7 @@ msgstr "Neznámý"
 
 #: ../src/xfdesktop-file-utils.c:672
 msgid "The folder could not be opened"
-msgstr "Složku nelze otevřít"
+msgstr "Složku se nedaří otevřít"
 
 #: ../src/xfdesktop-file-utils.c:690
 msgid "Error"
@@ -855,7 +855,7 @@ msgstr "Požadovaná operace nemohla být dokončena"
 
 #: ../src/xfdesktop-file-utils.c:744
 msgid "The file could not be renamed"
-msgstr "Soubor nelze přejmenovat"
+msgstr "Soubor se nedaří přejmenovat"
 
 #: ../src/xfdesktop-file-utils.c:745 ../src/xfdesktop-file-utils.c:809
 #: ../src/xfdesktop-file-utils.c:870 ../src/xfdesktop-file-utils.c:1034
@@ -892,7 +892,7 @@ msgstr "Tato vlastnost vyžaduje přítomnost služby koše (například dodáva
 
 #: ../src/xfdesktop-file-utils.c:978
 msgid "Could not empty the trash"
-msgstr "Nelze vysypat koš"
+msgstr "Koš se nedaří vysypat"
 
 #: ../src/xfdesktop-file-utils.c:1032
 msgid "Create File Error"
@@ -965,7 +965,7 @@ msgstr "Zápis dat na zařízení"
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be"
 " removed. Please do not remove the media or disconnect the drive"
-msgstr "Je nutné zapsat data na zařízení \"%s\" před jeho odebráním. Nevyjímejte médium ani neodpojujte jednotku"
+msgstr "Je nutné zapsat data na zařízení „%s“ před jeho odebráním. Nevyjímejte médium ani neodpojujte jednotku"
 
 #: ../src/xfdesktop-notify.c:221
 msgid "Unmount Finished"
