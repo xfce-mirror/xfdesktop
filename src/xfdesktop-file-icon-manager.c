@@ -1488,8 +1488,8 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                         gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
 
                         tmpl_menu = gtk_menu_new();
+                        gtk_menu_set_reserve_toggle_size(GTK_MENU(tmpl_menu), FALSE);
                         gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi), tmpl_menu);
-                        gtk_menu_set_reserve_toggle_size (GTK_MENU (tmpl_menu), FALSE);
 
                         /* check if XDG_TEMPLATES_DIR="$HOME" and don't show
                          * templates if so. */
@@ -1507,7 +1507,8 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                         }
 
                         if(!gtk_container_get_children((GtkContainer*) tmpl_menu)) {
-                            mi = gtk_menu_item_new_with_label(_("No templates installed"));
+                            img = gtk_image_new_from_icon_name("", GTK_ICON_SIZE_MENU);
+                            mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("No templates installed"), img);
                             gtk_widget_set_sensitive(mi, FALSE);
                             gtk_widget_show(mi);
                             gtk_menu_shell_append(GTK_MENU_SHELL(tmpl_menu), mi);
@@ -1614,13 +1615,14 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                         }
 
                         if(list_len >= 3) {
-                            mi = gtk_menu_item_new_with_label(_("Open With"));
+                            img = gtk_image_new_from_icon_name("", GTK_ICON_SIZE_MENU);
+                            mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Open With"), img);
                             gtk_widget_show(mi);
                             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
                             
                             app_infos_menu = gtk_menu_new();
-                            gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi),
-                                                      app_infos_menu);
+                            gtk_menu_set_reserve_toggle_size(GTK_MENU(app_infos_menu), FALSE);
+                            gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi), app_infos_menu);
                         } else
                             app_infos_menu = (GtkWidget *)menu;
 
@@ -1640,7 +1642,8 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                         }
                     }
 
-                    mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Open With Other _Application..."), NULL);
+                    img = gtk_image_new_from_icon_name("", GTK_ICON_SIZE_MENU);
+                    mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Open With Other _Application..."), img);
                     gtk_widget_show(mi);
                     if(list_len >= 3)
                         gtk_menu_shell_append(GTK_MENU_SHELL(app_infos_menu), mi);
@@ -1761,7 +1764,8 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
 
             /* Rename */
-            mi = gtk_menu_item_new_with_mnemonic(_("_Rename..."));
+            img = gtk_image_new_from_icon_name("", GTK_ICON_SIZE_MENU);
+            mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Rename..."), img);
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             if(!multi_sel && xfdesktop_file_icon_can_rename_file(file_icon)) {
