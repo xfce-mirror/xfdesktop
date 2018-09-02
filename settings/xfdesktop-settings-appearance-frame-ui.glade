@@ -34,7 +34,6 @@
     <property name="can_focus">False</property>
     <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
     <property name="border_width">12</property>
-    <property name="left_padding">6</property>
     <child>
       <object class="GtkBox" id="background_tab_vbox">
         <property name="visible">True</property>
