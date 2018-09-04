@@ -189,6 +189,7 @@
                 <property name="can_focus">False</property>
                 <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
                 <property name="tooltip_text" translatable="yes">Specify the style of the color drawn behind the backdrop image.</property>
+                <property name="valign">center</property>
                 <property name="hexpand">True</property>
                 <property name="model">model2</property>
                 <child>
