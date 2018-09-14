@@ -1,20 +1,22 @@
-# Albanian translations of the xfdesktop package.
-# Copyright (C) 2003-2006 The Xfce development team.
-# This file is distributed under the same license as the xfdesktop package.
-# Besnik Bleta <besnik@programeshqip.org>, 2007.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Besnik <besnik@programeshqip.org>, 2007
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop 4.4.0\n"
+"Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-16 17:44+0100\n"
-"PO-Revision-Date: 2008-11-11 00:45+0200\n"
-"Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
-"Language-Team: Albanian <translation-team-sq@lists.sourceforge.net>\n"
-"Language: sq\n"
+"POT-Creation-Date: 2013-07-02 23:19+0200\n"
+"PO-Revision-Date: 2018-09-14 00:30+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
+"Language-Team: Albanian (http://www.transifex.com/xfce/xfdesktop/language/sq/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.1\n"
+"Language: sq\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
 #, c-format
@@ -22,516 +24,541 @@ msgid "Backdrop list file is not valid"
 msgstr ""
 
 #. no need to escape markup; it's already done for us
-#: ../settings/main.c:162
+#: ../settings/main.c:166
 #, c-format
 msgid ""
 "%s\n"
 "<i>Size: %dx%d</i>"
 msgstr ""
 
-#: ../settings/main.c:272 ../src/xfdesktop-special-file-icon.c:247
-#: ../src/xfdesktop-special-file-icon.c:413
+#: ../settings/main.c:299 ../src/xfdesktop-special-file-icon.c:271
+#: ../src/xfdesktop-special-file-icon.c:434
 msgid "Home"
 msgstr "Hyrje"
 
-#: ../settings/main.c:274
+#: ../settings/main.c:301
 msgid "Filesystem"
 msgstr "Sistem kartelash"
 
-#: ../settings/main.c:276
+#: ../settings/main.c:303
 msgid "Trash"
 msgstr "Hedhurina"
 
-#: ../settings/main.c:278
+#: ../settings/main.c:305
 msgid "Removable Devices"
 msgstr "Pajisje të Heqshme"
 
-#: ../settings/main.c:458
+#: ../settings/main.c:485
 #, c-format
 msgid "Cannot create backdrop list \"%s\""
 msgstr ""
 
-#: ../settings/main.c:462 ../settings/main.c:779
+#: ../settings/main.c:489 ../settings/main.c:875
 msgid "Backdrop List Error"
 msgstr ""
 
-#: ../settings/main.c:487
+#: ../settings/main.c:514
 msgid "Create/Load Backdrop List"
 msgstr ""
 
-#: ../settings/main.c:511
+#: ../settings/main.c:538
 #, c-format
 msgid ""
 "File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
 msgstr ""
 
-#: ../settings/main.c:516
+#: ../settings/main.c:543
 msgid "Invalid List File"
 msgstr "Kartelë e Mangët Liste"
 
-#: ../settings/main.c:519
+#: ../settings/main.c:546
 msgid "Overwriting the file will cause its contents to be lost."
-msgstr ""
-"Mbishkrimi i kësaj kartele do të shkaktojë humbjen e përmbajtjes së saj."
+msgstr "Mbishkrimi i kësaj kartele do të shkaktojë humbjen e përmbajtjes së saj."
 
-#: ../settings/main.c:521
+#: ../settings/main.c:548
 msgid "Replace"
 msgstr "Zëvendëso"
 
-#: ../settings/main.c:775
+#: ../settings/main.c:871
 #, c-format
 msgid "Failed to write backdrop list to \"%s\""
 msgstr ""
 
-#: ../settings/main.c:802
+#: ../settings/main.c:898
 msgid "Add Image File(s)"
 msgstr "Shto Kartelë(a) Pamjesh"
 
-#: ../settings/main.c:811
+#: ../settings/main.c:907
 msgid "Image files"
 msgstr "Kartela pamje"
 
-#: ../settings/main.c:816
+#: ../settings/main.c:912
 msgid "All files"
 msgstr "Tërë kartelat "
 
-#: ../settings/main.c:1248
+#: ../settings/main.c:1376
 #, c-format
 msgid "Screen %d, Monitor %d (%s)"
 msgstr "Ekrani %d, Monitori %d (%s)"
 
-#: ../settings/main.c:1252
+#: ../settings/main.c:1380
 #, c-format
 msgid "Screen %d, Monitor %d"
 msgstr "Ekrani %d, Monitori %d"
 
-#: ../settings/main.c:1255
+#: ../settings/main.c:1383
 #, c-format
 msgid "Screen %d"
 msgstr "Ekrani %d"
 
-#: ../settings/main.c:1260
+#: ../settings/main.c:1388
 #, c-format
 msgid "Monitor %d (%s)"
 msgstr "Monitori %d (%s)"
 
-#: ../settings/main.c:1264
+#: ../settings/main.c:1392
 #, c-format
 msgid "Monitor %d"
 msgstr "Monitori %d"
 
-#: ../settings/main.c:1477
+#: ../settings/main.c:1651
 msgid "Settings manager socket"
-msgstr ""
+msgstr "\"Socket\" përgjegjësi rregullimesh"
 
-#: ../settings/main.c:1477
+#: ../settings/main.c:1651
 msgid "SOCKET ID"
-msgstr ""
+msgstr "ID SOCKET-i"
 
-#: ../settings/main.c:1478
+#: ../settings/main.c:1652
 msgid "Version information"
-msgstr ""
+msgstr "Të dhëna versioni"
 
-#: ../settings/main.c:1498
+#: ../settings/main.c:1669
 #, c-format
 msgid "Type '%s --help' for usage."
-msgstr ""
+msgstr "Për përdorimin, shtypni '%s --help'."
 
-#: ../settings/main.c:1510
+#: ../settings/main.c:1681
 msgid "The Xfce development team. All rights reserved."
-msgstr ""
+msgstr "Ekipi zhvillues i Xfce-së. Tërë të drejtat të rezervuara."
 
-#: ../settings/main.c:1511
+#: ../settings/main.c:1682
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr ""
+msgstr "Ju lutemi, njoftoni të meta te <%s>."
 
-#: ../settings/main.c:1518
+#: ../settings/main.c:1689
 msgid "Desktop Settings"
 msgstr "Rregullime Desktopi"
 
-#: ../settings/main.c:1520
+#: ../settings/main.c:1691
 msgid "Unable to contact settings server"
 msgstr "I pazoti të lidhet me shërbyesin e rregullimeve"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
-#, fuzzy
 msgid "Desktop "
-msgstr "Desktop"
+msgstr ""
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
-#, fuzzy
 msgid "Set desktop background and menu and icon behaviour"
-msgstr "Caktoni sfond desktopi dhe sjellje menush dhe ikonash"
+msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
-#, fuzzy
-msgid "<b>Adjustments</b>"
-msgstr "<b>Pamje</b>"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
-msgid "<b>Colors</b>"
-msgstr "<b>Ngjyra</b>"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
-msgid "<b>Image</b>"
-msgstr "<b>Pamje</b>"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
-msgid "<b>Images</b>"
-msgstr "<b>Pamje</b>"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
-msgid "Add an image to the list"
-msgstr "Shto pamje te lista"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
-#: ../settings/xfdesktop-settings-ui.glade.h:6
+#: ../settings/xfdesktop-settings-ui.glade.h:1
 msgid "Auto"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
-msgid "Automatically pick a random image from a list file"
-msgstr "Merr vetvetiu kuturu një pamje prej një kartelë liste"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
-msgid "B_rightness:"
-msgstr "_Ndriçim:"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
-#: ../settings/xfdesktop-settings-ui.glade.h:8
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
+#: ../settings/xfdesktop-settings-ui.glade.h:2
 msgid "Centered"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
-msgid "Create a new list, or load an existing one"
-msgstr "Krijoni listë të re, ose ngarkoni një ekzistuese"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
-msgid "Don't display an image at all"
-msgstr "Mos shfaq fare ndonjë pamje"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
-#: ../settings/xfdesktop-settings-ui.glade.h:12
-msgid "Horizontal gradient"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
-msgid "Image _list"
-msgstr "_Listë pamjesh"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
-msgid "Increase or decrease the brightness of the final image"
-msgstr "Ngri ose ul ndriçimin e pamjes përfundimtare"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
-msgid "Increase or decrease the color saturation of the final image"
-msgstr "Ngri ose ul ngopje ngjyrash të pamjes përfundimtare"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
-msgid "Remove the selected image(s) from the list"
-msgstr "Hiq prej liste pamjen(t) e përzgjedhur"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
-msgid "Sa_turation:"
-msgstr "_Ngopje:"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
-#: ../settings/xfdesktop-settings-ui.glade.h:23
-msgid "Scaled"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
-msgid "Select First Color"
-msgstr "Përzgjidhni Ngjyrën Parësore"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
-msgid "Select Second Color"
-msgstr "Përzgjidhni Ngjyrën Dytësore"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
-msgid "Select a single image as the backdrop"
-msgstr "Përzgjidhni si sfond një pamje njëshe"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
-#: ../settings/xfdesktop-settings-ui.glade.h:32
-msgid "Solid color"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
-msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-msgstr "Përcakton ngjyrën e \"djathtë\" ose \"të poshtme\" të gradientit"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
-msgid ""
-"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr ""
-"Përcakton ngjyrën e plotë, ose ngjyrën e \"majtë\" ose \"të sipërme\" të "
-"gradientit"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
-msgid "Specify how the image will be resized to fit the screen"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
-msgid "Specify the style of the color drawn behind the backdrop image"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
-msgid "St_yle:"
-msgstr "_Stil:"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
-#: ../settings/xfdesktop-settings-ui.glade.h:34
-msgid "Stretched"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
-#: ../settings/xfdesktop-settings-ui.glade.h:35
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
+#: ../settings/xfdesktop-settings-ui.glade.h:3
 msgid "Tiled"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
-#: ../settings/xfdesktop-settings-ui.glade.h:36
-msgid "Transparent"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
+#: ../settings/xfdesktop-settings-ui.glade.h:4
+msgid "Stretched"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
-#: ../settings/xfdesktop-settings-ui.glade.h:39
-msgid "Vertical gradient"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
+#: ../settings/xfdesktop-settings-ui.glade.h:5
+msgid "Scaled"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
-#: ../settings/xfdesktop-settings-ui.glade.h:40
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
+#: ../settings/xfdesktop-settings-ui.glade.h:6
 msgid "Zoomed"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
-msgid "_None"
-msgstr "_Asnjë"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
+#: ../settings/xfdesktop-settings-ui.glade.h:7
+msgid "Solid color"
+msgstr "Ngjyrë e plotë"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
+#: ../settings/xfdesktop-settings-ui.glade.h:8
+msgid "Horizontal gradient"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
+#: ../settings/xfdesktop-settings-ui.glade.h:9
+msgid "Vertical gradient"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
+#: ../settings/xfdesktop-settings-ui.glade.h:10
+msgid "Transparent"
+msgstr "I tejdukshëm"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
+msgid "Add an image to the list"
+msgstr "Shto pamje te lista"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
+msgid "Remove the selected image(s) from the list"
+msgstr "Hiq prej liste pamjen(t) e përzgjedhur"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
+msgid "Create a new list, or load an existing one"
+msgstr "Krijoni listë të re, ose ngarkoni një ekzistuese"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
+msgid "St_yle:"
+msgstr "_Stil:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
+msgid "Specify how the image will be resized to fit the screen"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
+msgid "<b>Images</b>"
+msgstr "<b>Pamje</b>"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
+msgid "Select a single image as the backdrop"
+msgstr "Përzgjidhni si sfond një pamje njëshe"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 msgid "_Single image"
 msgstr "Pmaje _njëshe"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:1
-msgid "<b>Appearance</b>"
-msgstr "<b>Dukje</b>"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
+msgid "Automatically pick a random image from a list file"
+msgstr "Merr vetvetiu kuturu një pamje prej një kartelë liste"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:2
-msgid "<b>Default Icons</b>"
-msgstr "<b>Ikona Parazgjedhje</b>"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
+msgid "Image _list"
+msgstr "_Listë pamjesh"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:3
-msgid "<b>Desktop Menu</b>"
-msgstr "<b>Menu Desktopi</b>"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
+msgid "Don't display an image at all"
+msgstr "Mos shfaq fare ndonjë pamje"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:4
-msgid "<b>Window List Menu</b>"
-msgstr "<b>Menu Liste Dritaresh</b>"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
+msgid "_None"
+msgstr "_Asnjë"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:5
-msgid "Alt"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
+msgid "<b>Image</b>"
+msgstr "<b>Pamje</b>"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
+msgid "Specify the style of the color drawn behind the backdrop image"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-ui.glade.h:7
-msgid "B_utton:"
-msgstr "_Buton:"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
+msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
+msgstr "Përcakton ngjyrën e plotë, ose ngjyrën e \"majtë\" ose \"të sipërme\" të gradientit"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:9
-#, fuzzy
-msgid "Control"
-msgstr "Pjesëmarrës"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
+msgid "Select First Color"
+msgstr "Përzgjidhni Ngjyrën Parësore"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:729
-msgid "Desktop"
-msgstr "Desktop"
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
+msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
+msgstr "Përcakton ngjyrën e \"djathtë\" ose \"të poshtme\" të gradientit"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
+msgid "Select Second Color"
+msgstr "Përzgjidhni Ngjyrën Dytësore"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
+msgid "<b>Colors</b>"
+msgstr "<b>Ngjyra</b>"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
+msgid "B_rightness:"
+msgstr "_Ndriçim:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
+msgid "Increase or decrease the brightness of the final image"
+msgstr "Ngri ose ul ndriçimin e pamjes përfundimtare"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
+msgid "Sa_turation:"
+msgstr "_Ngopje:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
+msgid "Increase or decrease the color saturation of the final image"
+msgstr "Ngri ose ul ngopje ngjyrash të pamjes përfundimtare"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
+msgid "<b>Adjustments</b>"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
+msgid "_Change the background (in minutes):"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:36
+msgid ""
+"While in image list mode, select this option to automatically select a "
+"different background from the image list after a set number of minutes."
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:37
+msgid ""
+"Number of minutes before a different background is randomly selected from "
+"the list."
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:38
+msgid "St_retch this background across all monitors."
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:39
+msgid ""
+"When multiple monitors are present, select this option to stretch the "
+"current background over all of them."
+msgstr ""
 
 #: ../settings/xfdesktop-settings-ui.glade.h:11
-msgid "File/launcher icons"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-ui.glade.h:13
-msgid "Icon _size:"
-msgstr "_Madhësi ikone:"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:14
-msgid "Icon _type:"
-msgstr "_Lloj ikone:"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:15
-msgid "Label trans_parency:"
-msgstr "_Tejdukshmëri etikete:"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:16
 msgid "Left"
-msgstr ""
+msgstr "Majtas"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:17
+#: ../settings/xfdesktop-settings-ui.glade.h:12
 msgid "Middle"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-ui.glade.h:18
-#, fuzzy
-msgid "Minimized application icons"
-msgstr ""
-"Asnjë\n"
-"Ikona të minimizuara zbatimesh\n"
-"Ikona kartelash/nisësash"
+#: ../settings/xfdesktop-settings-ui.glade.h:13
+msgid "Right"
+msgstr "Djathtas"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:19
-msgid "Mo_difier:"
-msgstr "_Ndryshues:"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:20
-msgid "Modi_fier:"
-msgstr "N_dryshues:"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:21
+#: ../settings/xfdesktop-settings-ui.glade.h:14
 msgid "None"
 msgstr "Asnjë"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:22
-msgid "Right"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-ui.glade.h:24
-msgid "Set desktop background and menu and icon behavior"
-msgstr "Caktoni sfond desktopi dhe sjellje menush dhe ikonash"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:25
-msgid "Sh_ow application icons in menu"
-msgstr "_Shfaq në menu ikona zbatimesh"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:26
+#: ../settings/xfdesktop-settings-ui.glade.h:15
 msgid "Shift"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-ui.glade.h:27
+#: ../settings/xfdesktop-settings-ui.glade.h:16
+msgid "Alt"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:17
+msgid "Control"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:18
+msgid "Minimized application icons"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:19
+msgid "File/launcher icons"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:20 ../src/xfce-desktop.c:795
+msgid "Desktop"
+msgstr "Desktop"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:21
+msgid "Set desktop background and menu and icon behavior"
+msgstr "Caktoni sfond desktopi dhe sjellje menush dhe ikonash"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:22
+msgid "_Background"
+msgstr "_Sfond"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:23
+msgid "Show applications menu on _desktop right click"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:24
+msgid "_Button:"
+msgstr "_Buton:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:25
+msgid "Mo_difier:"
+msgstr "_Ndryshues:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:26
 msgid "Show _application icons in menu"
 msgstr "Shfaq në menu ikona _zbatimesh"
 
+#: ../settings/xfdesktop-settings-ui.glade.h:27
+msgid "_Edit desktop menu"
+msgstr "_Përpunoni menu desktopi"
+
 #: ../settings/xfdesktop-settings-ui.glade.h:28
-#, fuzzy
-msgid "Show _window list menu on desktop middle click"
-msgstr "Shfaq listë _dritareje kur klikohet mbi desktop"
+msgid "<b>Desktop Menu</b>"
+msgstr "<b>Menu Desktopi</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:29
-#, fuzzy
-msgid "Show applications menu on _desktop right click"
-msgstr "Shfaq menu _desktopi kur klikohet mbi dekstop"
+msgid "Show _window list menu on desktop middle click"
+msgstr ""
 
 #: ../settings/xfdesktop-settings-ui.glade.h:30
-msgid "Show s_ticky windows only in active workspace"
-msgstr "Shfaq dritare _ngjitëse vetëm në hapësira pune aktive"
+msgid "B_utton:"
+msgstr "_Buton:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:31
+msgid "Modi_fier:"
+msgstr "N_dryshues:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:32
+msgid "Sh_ow application icons in menu"
+msgstr "_Shfaq në menu ikona zbatimesh"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:33
 msgid "Show workspace _names in list"
 msgstr "Shfaq në listë _emra hapësirash pune"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:33
+#: ../settings/xfdesktop-settings-ui.glade.h:34
+msgid "Use _submenus for the windows in each workspace"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:35
+msgid "Show s_ticky windows only in active workspace"
+msgstr "Shfaq dritare _ngjitëse vetëm në hapësira pune aktive"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:36
+msgid "<b>Window List Menu</b>"
+msgstr "<b>Menu Liste Dritaresh</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:37
+msgid "_Menus"
+msgstr "_Menu"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:38
+msgid "Icon _type:"
+msgstr "_Lloj ikone:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:39
+msgid "Icon _size:"
+msgstr "_Madhësi ikone:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:40
+msgid "Show t_humbnails"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:41
+msgid ""
+"Select this option to display preview-able files on the desktop as "
+"automatically generated thumbnail icons."
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:42
+msgid "Single _click to activate items"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:43
+msgid "Use custom _font size:"
+msgstr "Përdor madhësi _vetjake gërmash:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:44
+msgid "Label trans_parency:"
+msgstr "_Tejdukshmëri etikete:"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:45
 msgid ""
 "Specify the transparency level for the rounded label drawn behind the icon "
 "text"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-ui.glade.h:37
-msgid "Use _submenus for the windows in each workspace"
-msgstr ""
+#: ../settings/xfdesktop-settings-ui.glade.h:46
+msgid "<b>Appearance</b>"
+msgstr "<b>Dukje</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:38
-msgid "Use custom _font size:"
-msgstr "Përdor madhësi _vetjake gërmash:"
+#: ../settings/xfdesktop-settings-ui.glade.h:47
+msgid "<b>Default Icons</b>"
+msgstr "<b>Ikona Parazgjedhje</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:41
-msgid "_Background"
-msgstr "_Sfond"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:42
-msgid "_Button:"
-msgstr "_Buton:"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:43
-msgid "_Edit desktop menu"
-msgstr "_Përpunoni menu desktopi"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:44
+#: ../settings/xfdesktop-settings-ui.glade.h:48
 msgid "_Icons"
 msgstr "_Ikona"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:45
-msgid "_Menus"
-msgstr "_Menu"
-
-#: ../src/main.c:238
+#: ../src/main.c:243
 msgid "Display version information"
 msgstr ""
 
-#: ../src/main.c:239
-#, fuzzy
+#: ../src/main.c:244
 msgid "Reload all settings, refresh image list"
-msgstr "    --reload      Ringarko tërë rregullimet, rifresko listë pamjesh\n"
+msgstr ""
 
-#: ../src/main.c:240
-#, fuzzy
+#: ../src/main.c:245
 msgid "Pop up the menu (at the current mouse position)"
-msgstr "    --menu        Buthton menunë (te vendi i çastit i miut)\n"
+msgstr ""
 
-#: ../src/main.c:241
-#, fuzzy
+#: ../src/main.c:246
 msgid "Pop up the window list (at the current mouse position)"
 msgstr ""
-"    --windowlist  Buthton listën e dritares (te vendi i çastit i miut)\n"
 
-#: ../src/main.c:242
-#, fuzzy
+#: ../src/main.c:248
+msgid "Automatically arrange all the icons on the desktop"
+msgstr ""
+
+#: ../src/main.c:250
 msgid "Cause xfdesktop to quit"
-msgstr "    --quit        E bën xfdesktop-in të mbyllet\n"
-
-#: ../src/main.c:262
-#, fuzzy, c-format
-msgid "Failed to parse arguments: %s\n"
-msgstr "Xhirimi i \"%s\" dështoi:"
+msgstr ""
 
 #: ../src/main.c:270
+#, c-format
+msgid "Failed to parse arguments: %s\n"
+msgstr ""
+
+#: ../src/main.c:278
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Ky është versioni %s i %s, që po xhiron në Xfce %s.\n"
 
-#: ../src/main.c:272
+#: ../src/main.c:280
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Montuar me GTK+ %d.%d.%d, lidhur me GTK+ %d.%d.%d."
 
-#: ../src/main.c:276
+#: ../src/main.c:284
 #, c-format
 msgid "Build options:\n"
 msgstr "Mundësi montimi:\n"
 
-#: ../src/main.c:277
+#: ../src/main.c:285
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Menu Desktopi:        %s\n"
 
-#: ../src/main.c:279 ../src/main.c:286 ../src/main.c:293
+#: ../src/main.c:287 ../src/main.c:294 ../src/main.c:301
 msgid "enabled"
 msgstr "aktivizuar"
 
-#: ../src/main.c:281 ../src/main.c:288 ../src/main.c:295
+#: ../src/main.c:289 ../src/main.c:296 ../src/main.c:303
 msgid "disabled"
 msgstr "joveprues"
 
-#: ../src/main.c:284
+#: ../src/main.c:292
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Ikona Desktopi:       %s\n"
 
-#: ../src/main.c:291
+#: ../src/main.c:299
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Ikona Kartelash Desktopi:  %s\n"
 
-#: ../src/main.c:322
+#: ../src/main.c:332
 #, c-format
 msgid "%s is not running.\n"
 msgstr "%s nuk po xhiron.\n"
@@ -540,369 +567,358 @@ msgstr "%s nuk po xhiron.\n"
 msgid "_Applications"
 msgstr "_Zbatime"
 
-#: ../src/windowlist.c:235
+#: ../src/windowlist.c:229
 msgid "Window List"
 msgstr "Listë Dritareje"
 
-#: ../src/windowlist.c:261
+#: ../src/windowlist.c:255
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>Hapësirë pune %d</b>"
 
-#: ../src/windowlist.c:270
+#: ../src/windowlist.c:264
 #, c-format
 msgid "Workspace %d"
 msgstr "Hapësirë pune %d"
 
-#: ../src/windowlist.c:272
+#: ../src/windowlist.c:266
 #, c-format
 msgid "<i>Workspace %d</i>"
 msgstr "<i>Hapësirë pune %d</i>"
 
-#: ../src/windowlist.c:368 ../src/windowlist.c:371
+#: ../src/windowlist.c:362 ../src/windowlist.c:365
 msgid "_Add Workspace"
 msgstr "_Shto Hapësirë pune"
 
-#: ../src/windowlist.c:379
+#: ../src/windowlist.c:373
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "_Hiq Hapësirë pune %d"
 
-#: ../src/windowlist.c:382
+#: ../src/windowlist.c:376
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "_Hiq Hapësirë pune '%s'"
 
-#: ../src/xfce-desktop.c:1006
+#: ../src/xfce-desktop.c:1084
 #, c-format
 msgid "Unable to load image from backdrop list file \"%s\""
 msgstr ""
 
-#: ../src/xfce-desktop.c:1008
+#: ../src/xfce-desktop.c:1086
 msgid "Desktop Error"
 msgstr "Gabim Desktopi"
 
-#: ../src/xfdesktop-file-icon-manager.c:465
-#: ../src/xfdesktop-file-icon-manager.c:482
-#, fuzzy, c-format
+#: ../src/xfdesktop-file-icon-manager.c:497
+#: ../src/xfdesktop-file-icon-manager.c:514
+#, c-format
 msgid "Could not create the desktop folder \"%s\""
-msgstr "Krijo Dokument prej gjedhes \"%s\""
+msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:470
-#: ../src/xfdesktop-file-icon-manager.c:487
-#, fuzzy
+#: ../src/xfdesktop-file-icon-manager.c:502
+#: ../src/xfdesktop-file-icon-manager.c:519
 msgid "Desktop Folder Error"
-msgstr "Gabim Desktopi"
+msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:489
+#: ../src/xfdesktop-file-icon-manager.c:521
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:592
-#: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:803
-#: ../src/xfdesktop-file-utils.c:818 ../src/xfdesktop-special-file-icon.c:447
+#: ../src/xfdesktop-file-icon-manager.c:624
+#: ../src/xfdesktop-file-icon-manager.c:668 ../src/xfdesktop-file-utils.c:863
+#: ../src/xfdesktop-file-utils.c:878 ../src/xfdesktop-file-utils.c:910
+#: ../src/xfdesktop-file-utils.c:924
 msgid "Trash Error"
 msgstr "Gabim Hedhurinash"
 
-#: ../src/xfdesktop-file-icon-manager.c:593
-#: ../src/xfdesktop-file-icon-manager.c:637
-#, fuzzy
+#: ../src/xfdesktop-file-icon-manager.c:625
+#: ../src/xfdesktop-file-icon-manager.c:669
 msgid "The selected files could not be trashed"
-msgstr "Zgjedhësi i zbatimeve nuk u hap dot."
+msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:594
-#: ../src/xfdesktop-file-icon-manager.c:638 ../src/xfdesktop-file-utils.c:652
-#: ../src/xfdesktop-file-utils.c:702 ../src/xfdesktop-file-utils.c:761
-#: ../src/xfdesktop-file-utils.c:873 ../src/xfdesktop-file-utils.c:929
-#: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:1029
-#: ../src/xfdesktop-file-utils.c:1106 ../src/xfdesktop-file-utils.c:1167
-#: ../src/xfdesktop-file-utils.c:1240 ../src/xfdesktop-file-utils.c:1318
-#, fuzzy
+#: ../src/xfdesktop-file-icon-manager.c:626
+#: ../src/xfdesktop-file-icon-manager.c:670 ../src/xfdesktop-file-utils.c:762
+#: ../src/xfdesktop-file-utils.c:821 ../src/xfdesktop-file-utils.c:979
+#: ../src/xfdesktop-file-utils.c:1035 ../src/xfdesktop-file-utils.c:1085
+#: ../src/xfdesktop-file-utils.c:1135 ../src/xfdesktop-file-utils.c:1212
+#: ../src/xfdesktop-file-utils.c:1273 ../src/xfdesktop-file-utils.c:1346
+#: ../src/xfdesktop-file-utils.c:1424
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
 msgstr ""
-"Kjo karakteristikë lyp praninë e një shërbimi përgjegjësi kartelash (si "
-"fjala vjen ai që sillet nga Thunar-i)."
 
 #. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:738
-#: ../src/xfdesktop-file-icon-manager.c:1296
+#: ../src/xfdesktop-file-icon-manager.c:770
+#: ../src/xfdesktop-file-icon-manager.c:1349
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "I pazoti të nisë \"%s\":"
 
-#: ../src/xfdesktop-file-icon-manager.c:740
-#: ../src/xfdesktop-file-icon-manager.c:984
-#: ../src/xfdesktop-file-icon-manager.c:1297 ../src/xfdesktop-file-utils.c:635
-#: ../src/xfdesktop-file-utils.c:650 ../src/xfdesktop-file-utils.c:1012
-#: ../src/xfdesktop-file-utils.c:1027 ../src/xfdesktop-file-utils.c:1079
-#: ../src/xfdesktop-file-utils.c:1104 ../src/xfdesktop-file-utils.c:1150
-#: ../src/xfdesktop-file-utils.c:1165
+#: ../src/xfdesktop-file-icon-manager.c:772
+#: ../src/xfdesktop-file-icon-manager.c:1033
+#: ../src/xfdesktop-file-icon-manager.c:1350 ../src/xfdesktop-file-utils.c:707
+#: ../src/xfdesktop-file-utils.c:1118 ../src/xfdesktop-file-utils.c:1133
+#: ../src/xfdesktop-file-utils.c:1185 ../src/xfdesktop-file-utils.c:1210
+#: ../src/xfdesktop-file-utils.c:1256 ../src/xfdesktop-file-utils.c:1271
 msgid "Launch Error"
 msgstr "Gabim Nisësi"
 
-#: ../src/xfdesktop-file-icon-manager.c:908
+#: ../src/xfdesktop-file-icon-manager.c:957
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "_Hap Me \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:911
+#: ../src/xfdesktop-file-icon-manager.c:960
 #, c-format
 msgid "Open With \"%s\""
 msgstr "Hap Me \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:986
+#: ../src/xfdesktop-file-icon-manager.c:1035
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
-msgstr ""
-"I pazoti të nisë \"exo-desktop-item-edit\", i cili është i nevojshëm për "
-"krijim dhe përpunim nisësash dhe lidhjesh te desktopi."
+msgstr "I pazoti të nisë \"exo-desktop-item-edit\", i cili është i nevojshëm për krijim dhe përpunim nisësash dhe lidhjesh te desktopi."
 
-#: ../src/xfdesktop-file-icon-manager.c:1354
+#: ../src/xfdesktop-file-icon-manager.c:1407
 msgid "_Open all"
 msgstr "_Hapi të tërë"
 
-#: ../src/xfdesktop-file-icon-manager.c:1370
+#: ../src/xfdesktop-file-icon-manager.c:1423
 msgid "_Open in New Window"
 msgstr "_Hape në Dritare të Re"
 
-#: ../src/xfdesktop-file-icon-manager.c:1372
-#: ../src/xfdesktop-special-file-icon.c:570 ../src/xfdesktop-volume-icon.c:653
+#: ../src/xfdesktop-file-icon-manager.c:1425
+#: ../src/xfdesktop-special-file-icon.c:505 ../src/xfdesktop-volume-icon.c:691
 msgid "_Open"
 msgstr "_Hap"
 
 #. create launcher item
-#: ../src/xfdesktop-file-icon-manager.c:1391
+#: ../src/xfdesktop-file-icon-manager.c:1444
 msgid "Create _Launcher..."
 msgstr "Krijo _Nisës..."
 
 #. create link item
-#: ../src/xfdesktop-file-icon-manager.c:1407
+#: ../src/xfdesktop-file-icon-manager.c:1460
 msgid "Create _URL Link..."
 msgstr "Krijo Lidhje _URL..."
 
 #. create folder item
-#: ../src/xfdesktop-file-icon-manager.c:1423
+#: ../src/xfdesktop-file-icon-manager.c:1476
 msgid "Create _Folder..."
 msgstr "Krijo _Dosje..."
 
 #. create from template submenu
-#: ../src/xfdesktop-file-icon-manager.c:1438
-#, fuzzy
+#: ../src/xfdesktop-file-icon-manager.c:1491
 msgid "Create From _Template"
-msgstr "Krijo Dokument prej gjedhes \"%s\""
+msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1464
+#: ../src/xfdesktop-file-icon-manager.c:1517
 msgid "_Empty File"
 msgstr "Kartelë _Bosh"
 
-#: ../src/xfdesktop-file-icon-manager.c:1480
+#: ../src/xfdesktop-file-icon-manager.c:1533
 msgid "_Execute"
 msgstr "_Kryej"
 
-#: ../src/xfdesktop-file-icon-manager.c:1500
+#: ../src/xfdesktop-file-icon-manager.c:1553
 msgid "_Edit Launcher"
 msgstr "_Përpunoni Nisës"
 
-#: ../src/xfdesktop-file-icon-manager.c:1535
+#: ../src/xfdesktop-file-icon-manager.c:1588
 msgid "Open With"
 msgstr "Hap Me"
 
-#: ../src/xfdesktop-file-icon-manager.c:1561
+#: ../src/xfdesktop-file-icon-manager.c:1614
 msgid "Open With Other _Application..."
 msgstr "Hap Me Tjetër _Zbatim..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1649
+#: ../src/xfdesktop-file-icon-manager.c:1706
 msgid "_Rename..."
 msgstr "_Riemërto..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1667
+#: ../src/xfdesktop-file-icon-manager.c:1724
+msgid "Arrange Desktop _Icons"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1734
 msgid "Desktop _Settings..."
 msgstr "R_regullime Desktopi..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1677
-#: ../src/xfdesktop-volume-icon.c:701
+#: ../src/xfdesktop-file-icon-manager.c:1744
+#: ../src/xfdesktop-volume-icon.c:739
 msgid "P_roperties..."
 msgstr "_Veti..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2231
-#, fuzzy
+#: ../src/xfdesktop-file-icon-manager.c:2362
 msgid "Load Error"
-msgstr "Gabim Nisësi"
+msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:2233
+#: ../src/xfdesktop-file-icon-manager.c:2364
 msgid "Failed to load the desktop folder"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:2938
+msgid "Copy _Here"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:2938
+msgid "_Move Here"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:2938
+msgid "_Link Here"
 msgstr ""
 
 #. TRANSLATORS: file was modified less than one day ago
 #: ../src/xfdesktop-file-utils.c:137
 #, c-format
 msgid "Today at %X"
-msgstr ""
+msgstr "Sot më %X"
 
 #. TRANSLATORS: file was modified less than two days ago
 #: ../src/xfdesktop-file-utils.c:141
 #, c-format
 msgid "Yesterday at %X"
-msgstr ""
+msgstr "Dje më %X"
 
 #. Days from last week
 #: ../src/xfdesktop-file-utils.c:146
 #, c-format
 msgid "%A at %X"
-msgstr ""
+msgstr "%A më %X"
 
 #. Any other date
 #: ../src/xfdesktop-file-utils.c:149
 #, c-format
 msgid "%x at %X"
-msgstr ""
+msgstr "%x më %X"
 
 #. the file_time is invalid
 #: ../src/xfdesktop-file-utils.c:159
-#, fuzzy
 msgid "Unknown"
-msgstr "(i/e panjohur)"
+msgstr "I panjohur"
 
-#: ../src/xfdesktop-file-utils.c:636 ../src/xfdesktop-file-utils.c:651
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:708
 msgid "The folder could not be opened"
-msgstr "Zgjedhësi i zbatimeve nuk u hap dot."
-
-#: ../src/xfdesktop-file-utils.c:685 ../src/xfdesktop-file-utils.c:700
-#, fuzzy
-msgid "Rename Error"
-msgstr "Gabim Xhirimi"
-
-#: ../src/xfdesktop-file-utils.c:686 ../src/xfdesktop-file-utils.c:701
-#, fuzzy
-msgid "The file could not be renamed"
-msgstr "Zgjedhësi i zbatimeve nuk u hap dot."
-
-#: ../src/xfdesktop-file-utils.c:744 ../src/xfdesktop-file-utils.c:759
-#, fuzzy
-msgid "Delete Error"
-msgstr "Gabim Krijimi"
+msgstr ""
 
 #: ../src/xfdesktop-file-utils.c:745 ../src/xfdesktop-file-utils.c:760
-#, fuzzy
-msgid "The selected files could not be deleted"
-msgstr "Zbatimi i shoqëruar kësaj nuk u gjet apo nuk ekzekutua dot."
+msgid "Rename Error"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:746 ../src/xfdesktop-file-utils.c:761
+msgid "The file could not be renamed"
+msgstr ""
 
 #: ../src/xfdesktop-file-utils.c:804 ../src/xfdesktop-file-utils.c:819
-#, fuzzy
-msgid "The selected files could not be moved to the trash"
-msgstr "Zgjedhësi i zbatimeve nuk u hap dot."
+msgid "Delete Error"
+msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:820
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:805 ../src/xfdesktop-file-utils.c:820
+msgid "The selected files could not be deleted"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:864 ../src/xfdesktop-file-utils.c:879
+msgid "The selected files could not be moved to the trash"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:880 ../src/xfdesktop-file-utils.c:926
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
 msgstr ""
-"Kjo karakteristikë lyp praninë e një shërbimi përgjegjësi kartelash (si "
-"fjala vjen ai që sillet nga Thunar-i)."
 
-#: ../src/xfdesktop-file-utils.c:856 ../src/xfdesktop-file-utils.c:871
-#, fuzzy
-msgid "Create File Error"
-msgstr "Gabim Krijimi"
-
-#: ../src/xfdesktop-file-utils.c:857 ../src/xfdesktop-file-utils.c:872
-#, fuzzy
-msgid "Could not create a new file"
-msgstr "Krijo Dokument prej gjedhes \"%s\""
-
-#: ../src/xfdesktop-file-utils.c:912 ../src/xfdesktop-file-utils.c:927
-#, fuzzy
-msgid "Create Document Error"
-msgstr "Gabim Krijimi"
-
-#: ../src/xfdesktop-file-utils.c:913 ../src/xfdesktop-file-utils.c:928
-#, fuzzy
-msgid "Could not create a new document from the template"
-msgstr "Krijo Dokument prej gjedhes \"%s\""
+#: ../src/xfdesktop-file-utils.c:911 ../src/xfdesktop-file-utils.c:925
+msgid "Could not empty the trash"
+msgstr ""
 
 #: ../src/xfdesktop-file-utils.c:962 ../src/xfdesktop-file-utils.c:977
-#, fuzzy
-msgid "File Properties Error"
-msgstr "Gabim Vetish"
+msgid "Create File Error"
+msgstr ""
 
 #: ../src/xfdesktop-file-utils.c:963 ../src/xfdesktop-file-utils.c:978
-#, fuzzy
+msgid "Could not create a new file"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:1018 ../src/xfdesktop-file-utils.c:1033
+msgid "Create Document Error"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:1019 ../src/xfdesktop-file-utils.c:1034
+msgid "Could not create a new document from the template"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:1068 ../src/xfdesktop-file-utils.c:1083
+msgid "File Properties Error"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:1069 ../src/xfdesktop-file-utils.c:1084
 msgid "The file properties dialog could not be opened"
-msgstr "Zgjedhësi i zbatimeve nuk u hap dot."
+msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:1013 ../src/xfdesktop-file-utils.c:1028
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:1119 ../src/xfdesktop-file-utils.c:1134
 msgid "The file could not be opened"
-msgstr "Zgjedhësi i zbatimeve nuk u hap dot."
+msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:1076 ../src/xfdesktop-file-utils.c:1101
-#, fuzzy, c-format
+#: ../src/xfdesktop-file-utils.c:1182 ../src/xfdesktop-file-utils.c:1207
+#, c-format
 msgid "Failed to run \"%s\""
-msgstr "Xhirimi i \"%s\" dështoi:"
+msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:1151 ../src/xfdesktop-file-utils.c:1166
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:1257 ../src/xfdesktop-file-utils.c:1272
 msgid "The application chooser could not be opened"
-msgstr "Zgjedhësi i zbatimeve nuk u hap dot."
+msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:1224 ../src/xfdesktop-file-utils.c:1238
-#: ../src/xfdesktop-file-utils.c:1300 ../src/xfdesktop-file-utils.c:1316
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:1330 ../src/xfdesktop-file-utils.c:1344
+#: ../src/xfdesktop-file-utils.c:1406 ../src/xfdesktop-file-utils.c:1422
 msgid "Transfer Error"
-msgstr "Gabim Hedhurinash"
+msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:1225 ../src/xfdesktop-file-utils.c:1239
-#: ../src/xfdesktop-file-utils.c:1301 ../src/xfdesktop-file-utils.c:1317
-#, fuzzy
+#: ../src/xfdesktop-file-utils.c:1331 ../src/xfdesktop-file-utils.c:1345
+#: ../src/xfdesktop-file-utils.c:1407 ../src/xfdesktop-file-utils.c:1423
 msgid "The file transfer could not be performed"
-msgstr "Zgjedhësi i zbatimeve nuk u hap dot."
+msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:128
-#, fuzzy
 msgid "Unmounting device"
-msgstr "Çmontimi Dështoi"
+msgstr "Po çmontohet pajisja"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:131
 #, c-format
 msgid ""
-"The device \"%s\" is being unmounted by the system. Please do not remove the "
-"media or disconnect the drive"
-msgstr ""
+"The device \"%s\" is being unmounted by the system. Please do not remove the"
+" media or disconnect the drive"
+msgstr "Pajisja \"%s\" po çmontohet nga sistemi. Ju lutemi, mos e hiqni median ose mos e shkëputni pajisjen"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
 msgid "Writing data to device"
-msgstr ""
+msgstr "Po shkruhen të dhëna në pajisje"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
 #, c-format
 msgid ""
-"There is data that needs to be written to the device \"%s\" before it can be "
-"removed. Please do not remove the media or disconnect the drive"
-msgstr ""
+"There is data that needs to be written to the device \"%s\" before it can be"
+" removed. Please do not remove the media or disconnect the drive"
+msgstr "Ka të dhëna që duhet të shkruar te pajisja \"%s\", para se ajo të mund të hiqet. Ju lutemi, mos e hiqni median ose mos e shkëputni pajisjen"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:253
-#, fuzzy
 msgid "Ejecting device"
-msgstr "Çmontimi Dështoi"
+msgstr "Po nxirret pajisje"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:256
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
-msgstr ""
+msgstr "Pajisja \"%s\" po nxirret. Kjo mund të marrë pak kohë"
 
-#: ../src/xfdesktop-regular-file-icon.c:468
+#: ../src/xfdesktop-regular-file-icon.c:556
 #, c-format
 msgid ""
 "Type: %s\n"
@@ -910,26 +926,25 @@ msgid ""
 "Last modified: %s"
 msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:249
-#: ../src/xfdesktop-special-file-icon.c:411
-#, fuzzy
+#: ../src/xfdesktop-special-file-icon.c:273
+#: ../src/xfdesktop-special-file-icon.c:432
 msgid "File System"
-msgstr "Sistem kartelash"
+msgstr "Sistem Kartelash"
 
-#: ../src/xfdesktop-special-file-icon.c:396
+#: ../src/xfdesktop-special-file-icon.c:417
 msgid "Trash is empty"
-msgstr ""
+msgstr "Hedhurina është e zbrazët"
 
-#: ../src/xfdesktop-special-file-icon.c:399
+#: ../src/xfdesktop-special-file-icon.c:420
 msgid "Trash contains one item"
 msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:400
+#: ../src/xfdesktop-special-file-icon.c:421
 #, c-format
 msgid "Trash contains %d items"
 msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:428
+#: ../src/xfdesktop-special-file-icon.c:453
 #, c-format
 msgid ""
 "%s\n"
@@ -937,866 +952,50 @@ msgid ""
 "Last modified: %s"
 msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:449
-msgid "Unable to contact the Xfce Trash service."
-msgstr "I pazoti të lidhet me shërbimin Xfce për Hedhurinat."
-
-#: ../src/xfdesktop-special-file-icon.c:450
-msgid ""
-"Make sure you have a file manager installed that supports the Xfce Trash "
-"service, such as Thunar."
-msgstr ""
-"Sigurohuni që keni të instaluar një përgjegjës kartelash që mbulon shërbimin "
-"Xfce për Hedhurinat, si bie fjala Thunar-in."
-
-#: ../src/xfdesktop-special-file-icon.c:588
+#: ../src/xfdesktop-special-file-icon.c:522
 msgid "_Empty Trash"
 msgstr "_Zbraz Hedhurina"
 
-#: ../src/xfdesktop-volume-icon.c:413
-#, fuzzy, c-format
+#: ../src/xfdesktop-volume-icon.c:447
+#, c-format
 msgid ""
 "Removable Volume\n"
 "Mounted in \"%s\"\n"
 "%s left (%s total)"
 msgstr ""
-"Lloj: Vëllim i Heqshëm\n"
-"Pikë Montimi: %s\n"
-"Hapësirë e Lirë: %s"
 
-#: ../src/xfdesktop-volume-icon.c:420
-#, fuzzy
+#: ../src/xfdesktop-volume-icon.c:454
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
 msgstr ""
-"Lloj: Vëllim i Heqshëm\n"
-"Pikë Montimi: %s\n"
-"Hapësirë e Lirë: %s"
 
-#: ../src/xfdesktop-volume-icon.c:446 ../src/xfdesktop-volume-icon.c:488
-#, fuzzy, c-format
+#: ../src/xfdesktop-volume-icon.c:480 ../src/xfdesktop-volume-icon.c:522
+#, c-format
 msgid "Failed to eject \"%s\""
-msgstr "I pazoti të nxjerrë \"%s\":"
+msgstr "Dështoi në nxjerrjen e \"%s\""
 
-#: ../src/xfdesktop-volume-icon.c:451 ../src/xfdesktop-volume-icon.c:493
+#: ../src/xfdesktop-volume-icon.c:485 ../src/xfdesktop-volume-icon.c:527
 msgid "Eject Failed"
 msgstr "Nxjerrja Dështoi"
 
-#: ../src/xfdesktop-volume-icon.c:525
-#, fuzzy, c-format
+#: ../src/xfdesktop-volume-icon.c:559
+#, c-format
 msgid "Failed to mount \"%s\""
-msgstr "Xhirimi i \"%s\" dështoi:"
+msgstr "Dështoi në montimin e \"%s\""
 
-#: ../src/xfdesktop-volume-icon.c:528
+#: ../src/xfdesktop-volume-icon.c:562
 msgid "Mount Failed"
 msgstr "Montimi Dështoi"
 
-#: ../src/xfdesktop-volume-icon.c:669 ../src/xfdesktop-volume-icon.c:672
+#: ../src/xfdesktop-volume-icon.c:707 ../src/xfdesktop-volume-icon.c:710
 msgid "E_ject Volume"
 msgstr "N_xirr Vëllimin"
 
-#: ../src/xfdesktop-volume-icon.c:679
+#: ../src/xfdesktop-volume-icon.c:717
 msgid "_Mount Volume"
 msgstr "_Monto Vëllimin"
 
-#, fuzzy
-#~ msgid "Needs terminal"
-#~ msgstr "Terminal"
-
-#~ msgid "Command"
-#~ msgstr "Urdhër"
-
-#, fuzzy
-#~ msgid "Icon name"
-#~ msgstr "Hartues ikonash"
-
-#, fuzzy
-#~ msgid "Startup notification"
-#~ msgstr "Përdor _njoftime nisjesh"
-
-#~ msgid "Unable to launch xfce4-menueditor: %s"
-#~ msgstr "I pazoti të nisë përpunues menush xfce4: %s"
-
-#~ msgid "Select Icon"
-#~ msgstr "Përzgjidhni Ikonë"
-
-#~ msgid "Select Menu File"
-#~ msgstr "Përzgjidhni Kartelë Menuje"
-
-#~ msgid "All Files"
-#~ msgstr "Tërë Kartelat"
-
-#~ msgid "Image Files"
-#~ msgstr "Kartela Pamje"
-
-#~ msgid "Menu Files"
-#~ msgstr "Kartela Menush"
-
-#~ msgid "Xfce Menu"
-#~ msgstr "Menu Xfce"
-
-#~ msgid "Button"
-#~ msgstr "Buton"
-
-#~ msgid "Button _title:"
-#~ msgstr "Ti_tull butoni:"
-
-#~ msgid "_Show title in button"
-#~ msgstr "_Shfaq titull në buton"
-
-#~ msgid "Menu File"
-#~ msgstr "Kartelë Menush"
-
-#~ msgid "Use default _desktop menu file"
-#~ msgstr "Përdor kartelë parazgjedhje menuje _desktopi"
-
-#~ msgid "Use _custom menu file:"
-#~ msgstr "Përdor kartelë _vetjake menush:"
-
-#~ msgid "_Edit Menu"
-#~ msgstr "_Përpunoni Menu"
-
-#~ msgid "Icons"
-#~ msgstr "Ikona"
-
-#~ msgid "_Button icon:"
-#~ msgstr "Ikonë _butoni:"
-
-#~ msgid "Show _icons in menu"
-#~ msgstr "Shfaq _ikona në menu"
-
-#~ msgid "There is already a panel menu registered for this screen"
-#~ msgstr "Ka tashmë një menu paneli të regjistruar për këtë ekran"
-
-#~ msgid "Edit Menu"
-#~ msgstr "Përpunoni Menu"
-
-#~ msgid "Shows a menu containing categories of installed applications"
-#~ msgstr "Shfaq një menu që përmban kategori zbatimesh të instaluara"
-
-#~ msgid "%s: Unknown option: %s\n"
-#~ msgstr "%s: Mundësi e panjohur: %s\n"
-
-#~ msgid "Options are:\n"
-#~ msgstr "Mundësitë janë:\n"
-
-#~ msgid "    --reload      Reload all settings, refresh image list\n"
-#~ msgstr ""
-#~ "    --reload      Ringarko tërë rregullimet, rifresko listë pamjesh\n"
-
-#~ msgid "    --menu        Pop up the menu (at the current mouse position)\n"
-#~ msgstr "    --menu        Buthton menunë (te vendi i çastit i miut)\n"
-
-#~ msgid ""
-#~ "    --windowlist  Pop up the window list (at the current mouse position)\n"
-#~ msgstr ""
-#~ "    --windowlist  Buthton listën e dritares (te vendi i çastit i miut)\n"
-
-#~ msgid "    --quit        Cause xfdesktop to quit\n"
-#~ msgstr "    --quit        E bën xfdesktop-in të mbyllet\n"
-
-#~ msgid ""
-#~ "Xfdesktop was unable to create the folder \"%s\" to store desktop items:"
-#~ msgstr ""
-#~ "Xfdesktop-i nuk qe në gjendje të krijojë dosjen \"%s\" për ruajtjen e "
-#~ "objekteve të desktopit:"
-
-#~ msgid "Create Folder Failed"
-#~ msgstr "Krijimi i Dosjes Dështoi"
-
-#~ msgid ""
-#~ "Xfdesktop is unable to use \"%s\" to hold desktop items because it is not "
-#~ "a folder."
-#~ msgstr ""
-#~ "Xfdesktop-i nuk qe në gjendje të përdorë \"%s\" për të mbajtur objekte "
-#~ "desktopi, kjo ngaqë nuk është dosje."
-
-#~ msgid "Please delete or rename the file."
-#~ msgstr "Ju lutem fshijeni ose riemërtoni kartelën."
-
-#~ msgid "Rename \"%s\""
-#~ msgstr "Riemërto \"%s\""
-
-#~ msgid "Enter the new name:"
-#~ msgstr "Jepni emrin e ri:"
-
-#~ msgid "Rename"
-#~ msgstr "Riemërto"
-
-#~ msgid "Are you sure that you want to delete \"%s\"?"
-#~ msgstr "Jeni i sigurt se doni të fshihet \"%s\"?"
-
-#~ msgid "Question"
-#~ msgstr "Pyetje"
-
-#~ msgid "If you delete a file, it is permanently lost."
-#~ msgstr "Nëse fshini një kartelë, humbet përgjithmonë."
-
-#~ msgid "Are you sure you want to delete the following %d files?"
-#~ msgstr "Jeni i sigurt se doni të fshihe %d kartelat vijuese?"
-
-#~ msgid "Delete Multiple Files"
-#~ msgstr "Fshi Shumë Kartela"
-
-#~ msgid "The application chooser could not be opened."
-#~ msgstr "Zgjedhësi i zbatimeve nuk u hap dot."
-
-#~ msgid ""
-#~ "This feature requires a file manager service present (such as that "
-#~ "supplied by Thunar)."
-#~ msgstr ""
-#~ "Kjo karakteristikë lyp praninë e një shërbimi përgjegjësi kartelash (si "
-#~ "fjala vjen ai që sillet nga Thunar-i)."
-
-#~ msgid "Unable to create folder named \"%s\":"
-#~ msgstr "I pazoti të krijojë dosjen e emërtuar \"%s\":"
-
-#~ msgid "Create New Folder"
-#~ msgstr "Krijo Dosje të Re"
-
-#~ msgid "New Folder"
-#~ msgstr "Dosje e Re"
-
-#~ msgid "Create"
-#~ msgstr "Krijo"
-
-#~ msgid "Unable to create file named \"%s\":"
-#~ msgstr "I pazoti të krijojë kartelën e emërtuar \"%s\":"
-
-#~ msgid "Create File Failed"
-#~ msgstr "Krijimi i  Kartelës Dështoi"
-
-#~ msgid "Create Document from template \"%s\""
-#~ msgstr "Krijo Dokument prej gjedhes \"%s\""
-
-#~ msgid "Create Empty File"
-#~ msgstr "Krijo Kartelë Bosh"
-
-#~ msgid "New Empty File"
-#~ msgstr "Kartelë e Re Bosh"
-
-#~ msgid "Unable to create file \"%s\":"
-#~ msgstr "I pazoti të krijojë kartelën \"%s\":"
-
-#~ msgid "Create Error"
-#~ msgstr "Gabim Krijimi"
-
-#~ msgid "Failed to run \"%s\":"
-#~ msgstr "Xhirimi i \"%s\" dështoi:"
-
-#~ msgid "Run Error"
-#~ msgstr "Gabim Xhirimi"
-
-#~ msgid "The associated application could not be found or executed."
-#~ msgstr "Zbatimi i shoqëruar kësaj nuk u gjet apo nuk ekzekutua dot."
-
-#~ msgid "Unable to set default application for \"%s\" to \"%s\":"
-#~ msgstr "I pazoti të caktojë zbatim parazgjedhje për \"%s\" te \"%s\":"
-
-#~ msgid "Properties Error"
-#~ msgstr "Gabim Vetish"
-
-#~ msgid "Write only"
-#~ msgstr "Vetëm shkrim"
-
-#~ msgid "Read only"
-#~ msgstr "Vetëm lexim"
-
-#~ msgid "Read & Write"
-#~ msgstr "Lexim & Shkrim"
-
-#~ msgid "General"
-#~ msgstr "Të përgjithshme"
-
-#~ msgid "Name:"
-#~ msgstr "Emër:"
-
-#~ msgid "Kind:"
-#~ msgstr "Lloj:"
-
-#~ msgid "Link Target:"
-#~ msgstr "Objektiv Lidhjeje:"
-
-#~ msgid "(unknown)"
-#~ msgstr "(i/e panjohur)"
-
-#~ msgid "Open With:"
-#~ msgstr "Hap Me:"
-
-#~ msgid "Modified:"
-#~ msgstr "Ndryshuar:"
-
-#~ msgid "Accessed:"
-#~ msgstr "Hapur:"
-
-#~ msgid "Free Space:"
-#~ msgstr "Hapësirë e Lirë:"
-
-#~ msgid "Size:"
-#~ msgstr "Madhësi:"
-
-#~ msgid "%s (%"
-#~ msgstr "%s (%"
-
-#~ msgid "Permissions"
-#~ msgstr "Leje"
-
-#~ msgid "Owner:"
-#~ msgstr "Pronar:"
-
-#~ msgid "Access:"
-#~ msgstr "Hyrje:"
-
-#~ msgid "Group:"
-#~ msgstr "Grup:"
-
-#~ msgid "Others:"
-#~ msgstr "Tjetër:"
-
-#~ msgid "Yes to _all"
-#~ msgstr "Po për të _tëra"
-
-#~ msgid "There was an error moving \"%s\" to \"%s\":"
-#~ msgstr "Pati një gabim gjatë lëvizjes së \"%s\" te \"%s\":"
-
-#~ msgid "There was an error copying \"%s\" to \"%s\":"
-#~ msgstr "Pati një gabim gjatë kopjimit të \"%s\" te \"%s\":"
-
-#~ msgid "There was an error linking \"%s\" to \"%s\":"
-#~ msgstr "Pati një gabim gjatë lidhjes së \"%s\" te \"%s\":"
-
-#~ msgid "File Error"
-#~ msgstr "Gabim Kartele"
-
-#~ msgid "broken link"
-#~ msgstr "lidhje e dëmtuar"
-
-#~ msgid "link to %s"
-#~ msgstr "lidhje te %s"
-
-#~ msgid ""
-#~ "Kind: %s\n"
-#~ "Modified:%s\n"
-#~ "Size: %s"
-#~ msgstr ""
-#~ "Lloj: %s\n"
-#~ "Ndryshuar më:%s\n"
-#~ "Madhësi: %s"
-
-#~ msgid "Error"
-#~ msgstr "Gabim"
-
-#~ msgid "Failed to rename \"%s\" to \"%s\":"
-#~ msgstr "Dështoi në riemërtimin e \"%s\" si \"%s\":"
-
-#~ msgid "Kind: Trash"
-#~ msgstr "Lloj: Hedhurina"
-
-#~ msgid "%s (%s total)"
-#~ msgstr "%s (%s gjithsej)"
-
-#~ msgid ""
-#~ "Kind: Removable Volume\n"
-#~ "Mount Point: %s\n"
-#~ "Free Space: %s"
-#~ msgstr ""
-#~ "Lloj: Vëllim i Heqshëm\n"
-#~ "Pikë Montimi: %s\n"
-#~ "Hapësirë e Lirë: %s"
-
-#~ msgid "Unable to mount \"%s\":"
-#~ msgstr "I pazoti të montojë \"%s\":"
-
-#~ msgid "Unable to unmount \"%s\":"
-#~ msgstr "I pazoti të çmontojë \"%s\":"
-
-#~ msgid "Unmount Failed"
-#~ msgstr "Çmontimi Dështoi"
-
-#~ msgid "Unable to eject \"%s\":"
-#~ msgstr "I pazoti të nxjerrë \"%s\":"
-
-#~ msgid "_Unmount Volume"
-#~ msgstr "_Çmonto Vëllimin"
-
-#~ msgid "Accessories"
-#~ msgstr "Aksesorë"
-
-#~ msgid "Common desktop tools and applications"
-#~ msgstr "Mjete dhe zbatime të zakonshëm desktopi"
-
-#~ msgid "Development"
-#~ msgstr "Zhvillim"
-
-#~ msgid "Software development tools"
-#~ msgstr "Mjete për zhvillim programesh"
-
-#~ msgid "Education"
-#~ msgstr "Edukim"
-
-#~ msgid "Educational software"
-#~ msgstr "Programe edukimi"
-
-#~ msgid "Games"
-#~ msgstr "Lojëra"
-
-#~ msgid "Games, puzzles, and other fun software"
-#~ msgstr "Lojëra, \"puzzle\"-e dhe të tjera programe zbavitjeje"
-
-#~ msgid "Graphics"
-#~ msgstr "Grafika"
-
-#~ msgid "Graphics creation and manipulation applications"
-#~ msgstr "Zbatime krijimesh dhe manipulimesh grafike"
-
-#~ msgid "Audio and video players and editors"
-#~ msgstr "Lojtësa dhe përpunuesa audioje dhe videoje"
-
-#~ msgid "Multimedia"
-#~ msgstr "Multimedia"
-
-#~ msgid "Network"
-#~ msgstr "Rrjet"
-
-#~ msgid "Network applications and utilities"
-#~ msgstr "Zbatime dhe të dobishëm rrjetesh"
-
-#~ msgid "Office"
-#~ msgstr "Zyrë"
-
-#~ msgid "Office and productivity applications"
-#~ msgstr "Zbatime zyre dhe prodhimshmërie"
-
-#~ msgid "Applications that don't fit into other categories"
-#~ msgstr "Zbatime që nuk hyjnë në ndonjë kategori"
-
-#~ msgid "Other"
-#~ msgstr "Tjetër"
-
-#~ msgid "Screensaver applets"
-#~ msgstr "Zbatimthe ekrankursyesi"
-
-#~ msgid "Screensavers"
-#~ msgstr "Ekrankursyesa"
-
-#~ msgid "Desktop and system settings applications"
-#~ msgstr "Zbatime rregullimi desktopi dhe sistemi"
-
-#~ msgid "Settings"
-#~ msgstr "Rregullime"
-
-#~ msgid "System"
-#~ msgstr "Sistem"
-
-#~ msgid "System tools and utilities"
-#~ msgstr "Mjete dhe të dobishëm sistemi"
-
-#~ msgid "About Xfce"
-#~ msgstr "Rreth Xfce-së"
-
-#~ msgid "Information about the Xfce Desktop Environment"
-#~ msgstr "Të dhëna mbi Mjedisin Desktop Xfce"
-
-#~ msgid "File Manager"
-#~ msgstr "Përgjegjës Kartelash "
-
-#~ msgid "Thunar file manager"
-#~ msgstr "Përgjegjësi i Kartelave Thunar"
-
-#~ msgid "Help"
-#~ msgstr "Ndihmë"
-
-#~ msgid "Help using Xfce"
-#~ msgstr "Ndihmë për përdorimin e Xfce-së"
-
-#~ msgid "Log Out"
-#~ msgstr "Dilni"
-
-#~ msgid "Log out of the Xfce Desktop"
-#~ msgstr "Dil prej Desktopit Xfce 4"
-
-#~ msgid "Run Program..."
-#~ msgstr "Xhironi një Program..."
-
-#~ msgid "Run a program"
-#~ msgstr "Xhironi një program"
-
-#~ msgid "Terminal"
-#~ msgstr "Terminal"
-
-#~ msgid "Terminal emulator"
-#~ msgstr "Emulues terminali"
-
-#~ msgid "Browse the web"
-#~ msgstr "Eksploro web-in"
-
-#~ msgid "Web Browser"
-#~ msgstr "Shfletues Web"
-
-#, fuzzy
-#~ msgid ""
-#~ "Auto\n"
-#~ "Centered\n"
-#~ "Tiled\n"
-#~ "Stretched\n"
-#~ "Scaled\n"
-#~ "Zoomed"
-#~ msgstr ""
-#~ "Vetvetiu\n"
-#~ "Qendërzuar\n"
-#~ "Tjegullzuar\n"
-#~ "Tërhequr\n"
-#~ "Shkallëzuar\n"
-#~ "Zmadhuar"
-
-#~ msgid ""
-#~ "Left\n"
-#~ "Middle\n"
-#~ "Right"
-#~ msgstr ""
-#~ "Majtas\n"
-#~ "Në qendër\n"
-#~ "Djathtas"
-
-#~ msgid ""
-#~ "None\n"
-#~ "Minimized application icons\n"
-#~ "File/launcher icons"
-#~ msgstr ""
-#~ "Asnjë\n"
-#~ "Ikona të minimizuara zbatimesh\n"
-#~ "Ikona kartelash/nisësash"
-
-#~ msgid ""
-#~ "None\n"
-#~ "Shift\n"
-#~ "Alt\n"
-#~ "Control"
-#~ msgstr ""
-#~ "Asnjë\n"
-#~ "Shift\n"
-#~ "Alt\n"
-#~ "Control"
-
-#~ msgid ""
-#~ "Solid color\n"
-#~ "Horizontal gradient\n"
-#~ "Vertical gradient\n"
-#~ "Transparent"
-#~ msgstr ""
-#~ "Ngjyrë e plotë\n"
-#~ "Gradient horizontal\n"
-#~ "Gradient vertikal\n"
-#~ "E tejdukshme"
-
-#~ msgid "gtk-close"
-#~ msgstr "gtk-close"
-
-#~ msgid "gtk-help"
-#~ msgstr "gtk-help"
-
-#~ msgid "Use startup _notification"
-#~ msgstr "Përdor _njoftime nisjesh"
-
-#~ msgid "Contributor"
-#~ msgstr "Pjesëmarrës"
-
-#~ msgid "Icon designer"
-#~ msgstr "Hartues ikonash"
-
-#~ msgid "Add menu entry"
-#~ msgstr "Shto zë menuje"
-
-#~ msgid "Type:"
-#~ msgstr "Tip:"
-
-#~ msgid "Title"
-#~ msgstr "Titull"
-
-#~ msgid "Submenu"
-#~ msgstr "Nënmenu"
-
-#~ msgid "Launcher"
-#~ msgstr "Nisës"
-
-#~ msgid "Separator"
-#~ msgstr "Ndarës"
-
-#~ msgid "Quit"
-#~ msgstr "Lër"
-
-#~ msgid "Command:"
-#~ msgstr "Urdhër:"
-
-#~ msgid "Icon:"
-#~ msgstr "Ikonë:"
-
-#~ msgid "No icon"
-#~ msgstr "Pa ikonë"
-
-#~ msgid "Themed icon:"
-#~ msgstr "Ikonë teme:"
-
-#~ msgid "Select icon"
-#~ msgstr "Përzgjidhni ikonë"
-
-#~ msgid "Run in _terminal"
-#~ msgstr "Xhiroje në t_erminal"
-
-#~ msgid "Select command"
-#~ msgstr "Përzgjidhni urdhër"
-
-#~ msgid "Executable Files"
-#~ msgstr "Kartela të Ekzekutueshme"
-
-#~ msgid "Perl Scripts"
-#~ msgstr "Programthe Perl"
-
-#~ msgid "Python Scripts"
-#~ msgstr "Programthe Python"
-
-#~ msgid "Ruby Scripts"
-#~ msgstr "Programthe Ruby"
-
-#~ msgid "Shell Scripts"
-#~ msgstr "Programthe Shell"
-
-#~ msgid "Add external menu entry"
-#~ msgstr "Shto zë menuje të jashtëm"
-
-#~ msgid "File"
-#~ msgstr "Kartelë"
-
-#~ msgid "Source:"
-#~ msgstr "Burim:"
-
-#~ msgid "Select external menu"
-#~ msgstr "Përzgjidhni menu të jashtme"
-
-#~ msgid "Style:"
-#~ msgstr "Stil:"
-
-#~ msgid "Simple"
-#~ msgstr "I thjeshtë"
-
-#~ msgid "Multilevel"
-#~ msgstr "Shumënivelësh"
-
-#~ msgid "_Unique entries only"
-#~ msgstr "Vetëm zëra _unikë"
-
-#~ msgid "Edit menu entry"
-#~ msgstr "Përpunoni zë menuje"
-
-#~ msgid "Edit external menu entry"
-#~ msgstr "Përpunoni zë të jashtëm menuje"
-
-#~ msgid "Xfce4-MenuEditor"
-#~ msgstr "Përpunues Menush Xfce 4"
-
-#~ msgid "Menueditor Warning"
-#~ msgstr "Sinjalizim nga Menueditor"
-
-#~ msgid "xfce4-menueditor is deprecated"
-#~ msgstr "xfce4-menueditor është vjetëruar"
-
-#~ msgid ""
-#~ "Xfce's menu system has been replaced, and xfce4-menueditor is not able to "
-#~ "edit the new menu file format.  You may continue and edit an old-style "
-#~ "menu file, or quit."
-#~ msgstr ""
-#~ "Sistemi i menuve te Xfce-ja është zëvendësuar, dhe xfce4-menueditor nuk "
-#~ "është më në gjendje të përpunojë formatin e ri të kartelave të menuve.  "
-#~ "Mund të vazhdoni dhe të përpunoni një kartelë menush të stilit të "
-#~ "dikurshëm, ose të dilni që këtej."
-
-#~ msgid "Continue"
-#~ msgstr "Vazhdo"
-
-#~ msgid "_File"
-#~ msgstr "_Kartelë"
-
-#~ msgid "_New"
-#~ msgstr "i _Ri"
-
-#~ msgid "Create a new empty menu"
-#~ msgstr "Krijoni një menu të re bosh"
-
-#~ msgid "Open existing menu"
-#~ msgstr "Hap menu ekzistuese"
-
-#~ msgid "Open _default menu"
-#~ msgstr "Hap menunë _parazgjedhje"
-
-#~ msgid "Open default menu"
-#~ msgstr "Hap menunë parazgjedhje"
-
-#~ msgid "_Save"
-#~ msgstr "_Ruaj"
-
-#~ msgid "Save modifications"
-#~ msgstr "Ruaji ndryshimet"
-
-#~ msgid "Save _as..."
-#~ msgstr "Ruaj _si..."
-
-#~ msgid "Save menu under a given name"
-#~ msgstr "Ruaj menunë nën një emër të dhënë"
-
-#~ msgid "_Close"
-#~ msgstr "_Mbyll"
-
-#~ msgid "Close menu"
-#~ msgstr "Mbyll menunë"
-
-#~ msgid "_Quit"
-#~ msgstr "_Lër"
-
-#~ msgid "Quit Xfce4-Menueditor"
-#~ msgstr "Lërt Xfce4-Menueditor-in"
-
-#~ msgid "_Edit"
-#~ msgstr "_Përpunoni"
-
-#~ msgid "_Edit entry"
-#~ msgstr "Për_punoni zë"
-
-#~ msgid "Edit selected entry"
-#~ msgstr "Përpunoni zërin e përzgjedhur"
-
-#~ msgid "_Add entry"
-#~ msgstr "Sh_to zë"
-
-#~ msgid "Add a new entry in the menu"
-#~ msgstr "Shto një zë të ri te menuja"
-
-#~ msgid "Add _external"
-#~ msgstr "Shto të jashtëm"
-
-#~ msgid "Add an external entry"
-#~ msgstr "Shto një zë të jashtëm"
-
-#~ msgid "_Remove entry"
-#~ msgstr "_Hiq zë"
-
-#~ msgid "Remove entry"
-#~ msgstr "Hiqe zërin"
-
-#~ msgid "_Up"
-#~ msgstr "_Sipër"
-
-#~ msgid "Move entry up"
-#~ msgstr "Ngjite zërin sipër"
-
-#~ msgid "_Down"
-#~ msgstr "_Poshtë"
-
-#~ msgid "Move entry down"
-#~ msgstr "Ule zërin poshtë"
-
-#~ msgid "_Help"
-#~ msgstr "_Ndihmë"
-
-#~ msgid "_About..."
-#~ msgstr "_Rreth..."
-
-#~ msgid "Show informations about xfce4-menueditor"
-#~ msgstr "Shfaq të dhëna rreth përpunuesi menush xfce4"
-
-#~ msgid "Collapse all"
-#~ msgstr "Palosi të tëra"
-
-#~ msgid "Collapse all menu entries"
-#~ msgstr "Palos tërë zërat e menuve"
-
-#~ msgid "Expand all"
-#~ msgstr "Zgjeroji të tërë"
-
-#~ msgid "Expand all menu entries"
-#~ msgstr "Zgjero tërë zërat e menuve"
-
-#~ msgid "Name"
-#~ msgstr "Emër"
-
-#~ msgid "Hidden"
-#~ msgstr "Padukshëm"
-
-#~ msgid "Are you sure you want to close the current menu?"
-#~ msgstr "Jeni i sigurtë se dini ta mbyllni menunë e çastit?"
-
-#~ msgid "Do you want to save before closing the file?"
-#~ msgstr "Doni të ruhet para mbylljes së kartelës?"
-
-#~ msgid "Do you want to save before opening an other menu ?"
-#~ msgstr "Doni të ruhen para se të hapet një menu tjetër ?"
-
-#~ msgid "Ignore modifications"
-#~ msgstr "Shpërfilli ndryshimet"
-
-#~ msgid "Open menu file"
-#~ msgstr "Hap kartelë menush"
-
-#~ msgid "Do you want to save before opening the default menu ?"
-#~ msgstr "Doni të ruhen para hapjes së menusë parazgjedhje ?"
-
-#~ msgid "Save menu file as"
-#~ msgstr "Ruaj kartelë menush si"
-
-#~ msgid "Do you want to save before closing the menu ?"
-#~ msgstr "Doni të ruhen para se të mbyllni menunë?"
-
-#~ msgid "quit"
-#~ msgstr "lër"
-
-#~ msgid "--- separator ---"
-#~ msgstr "--- ndarës ---"
-
-#~ msgid "--- include ---"
-#~ msgstr "--- përfshi ---"
-
-#~ msgid "system"
-#~ msgstr "sistem"
-
-#~ msgid "Do you want to move the item into the submenu?"
-#~ msgstr "Doni ta kaloni objektin te nënmenuja?"
-
-#~ msgid "A menu editor for Xfce4"
-#~ msgstr "Një përpunues menush për Xfce4"
-
-#~ msgid "Author/Maintainer"
-#~ msgstr "Autor/Mirëmbajtës"
-
-#~ msgid "You have modified the menu, do you want to save it before quitting ?"
-#~ msgstr "Keni ndryshuar menunë, doni të ruhen para se të dilni ?"
-
-#~ msgid "Forget modifications"
-#~ msgstr "Harroji ndryshimet"
-
-#~ msgid "Unable to open the menu file %s in write mode"
-#~ msgstr "I pazoti të hapë kartelë menuje file %s për shkrim"
-
-#~ msgid "Graphical tool for editing the Xfce 4 menu"
-#~ msgstr "Mjet grafik për përpunimin e menuve të Xfce 4-s"
-
-#~ msgid "Menu Editor"
-#~ msgstr "Përpunues Menush"
-
-#~ msgid "Xfce 4 Menu Editor"
-#~ msgstr "Përpunues Menush Xfce 4"
-
-#~ msgid "Settings for the Xfce 4 Desktop Manager"
-#~ msgstr "Rregullime për Përgjegjësin e Desktopit Xfce 4"
-
-#~ msgid "Xfce 4 Desktop Settings"
-#~ msgstr "Rregullime Desktopi Xfce 4"
-
-#~ msgid "Show windows on each workspace in _submenus"
-#~ msgstr "Shfaq dritaret te secila hapësirë pune në _nënmenu"
-
-#~ msgid "Use _Xfce to manage the desktop"
-#~ msgstr "Përdor _Xfce-në të administrojë desktopin"
-
-#, fuzzy
-#~ msgid "Scientific software"
-#~ msgstr "Programe edukimi"
+#: ../src/xfdesktop-window-icon.c:208
+msgid "_Window Actions"
+msgstr ""
