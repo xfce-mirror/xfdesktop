@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 23:19+0200\n"
-"PO-Revision-Date: 2017-09-19 18:33+0000\n"
+"PO-Revision-Date: 2018-09-14 00:21+0000\n"
 "Last-Translator: Umidjon Almasov <u.almasov@gmail.com>\n"
 "Language-Team: Uzbek (http://www.transifex.com/xfce/xfdesktop/language/uz/)\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +29,7 @@ msgstr ""
 msgid ""
 "%s\n"
 "<i>Size: %dx%d</i>"
-msgstr ""
+msgstr "%s\n<i>Hajmi: %dx%d</i>"
 
 #: ../settings/main.c:299 ../src/xfdesktop-special-file-icon.c:271
 #: ../src/xfdesktop-special-file-icon.c:434
@@ -94,7 +94,7 @@ msgstr "Rasm fayllari"
 
 #: ../settings/main.c:912
 msgid "All files"
-msgstr ""
+msgstr "Hamma fayllar"
 
 #: ../settings/main.c:1376
 #, c-format
@@ -215,7 +215,7 @@ msgstr "Shaffof"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
 msgid "Add an image to the list"
-msgstr ""
+msgstr "Ro'yxatga rasm qo'shish"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
 msgid "Remove the selected image(s) from the list"
@@ -311,7 +311,7 @@ msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
 msgid "_Change the background (in minutes):"
-msgstr ""
+msgstr "_Orqa fonni o'zgartirish (daqiqada):"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:36
 msgid ""
@@ -493,7 +493,7 @@ msgstr "_Nishonchalar"
 
 #: ../src/main.c:243
 msgid "Display version information"
-msgstr ""
+msgstr "Versiya haqida ma'lumotini ko'rsatish"
 
 #: ../src/main.c:244
 msgid "Reload all settings, refresh image list"
@@ -509,7 +509,7 @@ msgstr ""
 
 #: ../src/main.c:248
 msgid "Automatically arrange all the icons on the desktop"
-msgstr ""
+msgstr "Ishchi stolda hamma nishonchalarni avtomatik ravishda tartiblash"
 
 #: ../src/main.c:250
 msgid "Cause xfdesktop to quit"
@@ -518,50 +518,50 @@ msgstr ""
 #: ../src/main.c:270
 #, c-format
 msgid "Failed to parse arguments: %s\n"
-msgstr ""
+msgstr "Argumentlarni tahlil qilish muvaffaqiyatsiz tugadi: %s\n"
 
 #: ../src/main.c:278
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr ""
+msgstr "Bu %s versiya %s, Xfce %s'da bajarilmoqda.\n"
 
 #: ../src/main.c:280
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
-msgstr ""
+msgstr "GTK+ %d.%d.%d bilan yig'ilgan, GTK+ %d.%d.%d bilan bog'langan."
 
 #: ../src/main.c:284
 #, c-format
 msgid "Build options:\n"
-msgstr ""
+msgstr "Yig'ish parametrlari:\n"
 
 #: ../src/main.c:285
 #, c-format
 msgid "    Desktop Menu:        %s\n"
-msgstr ""
+msgstr "    Ish stolining menyusi:        %s\n"
 
 #: ../src/main.c:287 ../src/main.c:294 ../src/main.c:301
 msgid "enabled"
-msgstr ""
+msgstr "yoqilgan"
 
 #: ../src/main.c:289 ../src/main.c:296 ../src/main.c:303
 msgid "disabled"
-msgstr ""
+msgstr "o'chirilgan"
 
 #: ../src/main.c:292
 #, c-format
 msgid "    Desktop Icons:       %s\n"
-msgstr ""
+msgstr "    Ish stolining nishonchalari:       %s\n"
 
 #: ../src/main.c:299
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
-msgstr ""
+msgstr "    Ish stolining fayl nishinchalari:  %s\n"
 
 #: ../src/main.c:332
 #, c-format
 msgid "%s is not running.\n"
-msgstr ""
+msgstr "%s ishga tushirilmagan.\n"
 
 #: ../src/menu.c:106
 msgid "_Applications"
