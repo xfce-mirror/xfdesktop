@@ -1281,17 +1281,21 @@ thunarx_action_callback (GtkAction *action,
 static GtkWidget*
 xfdesktop_menu_create_menu_item_from_thunarx_menu_item (GObject *item)
 {
-    gchar *label, *icon_name;
-    GtkWidget *mi, *img;
+    gchar *label, *icon_str;
+    GtkWidget *mi, *img = NULL;
 
     g_return_val_if_fail (THUNARX_IS_MENU_ITEM (item), NULL);
 
     g_object_get (G_OBJECT (item),
                   "label", &label,
-                  "icon", &icon_name,
+                  "icon", &icon_str,
                   NULL);
 
-    img = gtk_image_new_from_icon_name(icon_name, GTK_ICON_SIZE_MENU);
+    if (icon_str != NULL) {
+        GIcon *icon = g_icon_new_for_string (icon_str, NULL);
+        img = gtk_image_new_from_gicon (icon, GTK_ICON_SIZE_MENU);
+    }
+
     mi = xfdesktop_menu_create_menu_item_with_mnemonic (label, img);
 
     g_signal_connect_data (mi, "activate",
@@ -1300,7 +1304,7 @@ xfdesktop_menu_create_menu_item_from_thunarx_menu_item (GObject *item)
                            (GClosureNotify) g_object_unref, 0);
 
     g_free (label);
-    g_free (icon_name);
+    g_free (icon_str);
 
     return mi;
 }
