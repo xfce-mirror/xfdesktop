@@ -63,6 +63,7 @@
 #include <glib.h>
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
+#include <gio/gio.h>
 
 #ifdef ENABLE_DESKTOP_ICONS
 #include "xfdesktop-icon-view.h"
@@ -119,6 +120,8 @@ struct _XfceDesktopPriv
     GtkWidget *icon_view;
     gdouble system_font_size;
 #endif
+
+    gchar *last_filename;
 };
 
 enum
@@ -368,11 +371,74 @@ create_bg_surface(GdkScreen *gscreen, gpointer user_data)
 }
 
 static void
+set_accountsservice_user_bg(const gchar *background)
+{
+    GDBusConnection *bus;
+    GVariant *variant;
+    GError *error = NULL;
+    gchar *object_path = NULL;
+
+    bus = g_bus_get_sync (G_BUS_TYPE_SYSTEM, NULL, &error);
+    if (bus == NULL) {
+        g_warning ("Failed to get system bus: %s", error->message);
+        g_error_free (error);
+        return;
+    }
+
+    variant = g_dbus_connection_call_sync (bus,
+                                           "org.freedesktop.Accounts",
+                                           "/org/freedesktop/Accounts",
+                                           "org.freedesktop.Accounts",
+                                           "FindUserByName",
+                                           g_variant_new ("(s)", g_get_user_name ()),
+                                           G_VARIANT_TYPE ("(o)"),
+                                           G_DBUS_CALL_FLAGS_NONE,
+                                           -1,
+                                           NULL,
+                                           &error);
+
+    if (variant == NULL) {
+        DBG("Could not contact accounts service to look up '%s': %s",
+            g_get_user_name (), error->message);
+        g_error_free(error);
+        g_object_unref (bus);
+        return;
+    }
+
+    g_variant_get(variant, "(o)", &object_path);
+    g_variant_unref(variant);
+
+    variant = g_dbus_connection_call_sync (bus,
+                                           "org.freedesktop.Accounts",
+                                           object_path,
+                                           "org.freedesktop.DBus.Properties",
+                                           "Set",
+                                           g_variant_new ("(ssv)",
+                                                          "org.freedesktop.DisplayManager.AccountsService",
+                                                          "BackgroundFile",
+                                                          g_variant_new_string (background ? background : "")),
+                                           G_VARIANT_TYPE ("()"),
+                                           G_DBUS_CALL_FLAGS_NONE,
+                                           -1,
+                                           NULL,
+                                           &error);
+    if (variant != NULL) {
+        g_variant_unref (variant);
+    } else {
+        g_warning ("Failed to set the background '%s': %s", background, error->message);
+        g_clear_error (&error);
+    }
+
+    g_object_unref (bus);
+}
+
+static void
 backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(user_data);
     cairo_surface_t *surface = desktop->priv->bg_surface;
     GdkScreen *gscreen = desktop->priv->gscreen;
+    gchar *new_filename = NULL;
     GdkRectangle rect;
     cairo_region_t *clip_region = NULL;
     gint i, monitor = -1, current_workspace;
@@ -403,6 +469,20 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     }
     if(monitor == -1)
         return;
+    /* notify Accountsservice of the new bg (only for monitor0) */
+    if(monitor == 0)
+    {
+        if (xfce_desktop_get_current_workspace(desktop) == 0)
+        {
+            new_filename = g_strdup(xfce_backdrop_get_image_filename(backdrop));
+            if (g_strcmp0(desktop->priv->last_filename, new_filename) != 0)
+            {
+                desktop->priv->last_filename = g_strdup(new_filename);
+                set_accountsservice_user_bg(xfce_backdrop_get_image_filename(backdrop));
+            }
+            g_free(new_filename);
+        }
+    }
 
 #ifdef G_ENABLE_DEBUG
     monitor_name = gdk_screen_get_monitor_plug_name(gscreen, monitor);
@@ -1453,12 +1533,14 @@ xfce_desktop_new(GdkScreen *gscreen,
         gscreen = gdk_display_get_default_screen(gdk_display_get_default());
     gtk_window_set_screen(GTK_WINDOW(desktop), gscreen);
     desktop->priv->gscreen = gscreen;
-    
+
     desktop->priv->channel = g_object_ref(G_OBJECT(channel));
     desktop->priv->property_prefix = g_strdup(property_prefix);
 
     xfce_desktop_connect_settings(desktop);
-    
+
+    desktop->priv->last_filename = g_strdup("");
+
     return GTK_WIDGET(desktop);
 }
 
