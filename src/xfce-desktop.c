@@ -96,9 +96,9 @@ struct _XfceDesktopPriv
 
     XfconfChannel *channel;
     gchar *property_prefix;
-    
+
     cairo_surface_t *bg_surface;
-    
+
     gint nworkspaces;
     XfceWorkspace **workspaces;
     gint current_workspace;
@@ -195,12 +195,12 @@ xfce_desktop_ensure_system_font_size(XfceDesktop *desktop)
     GtkSettings *settings;
     gchar *font_name = NULL;
     PangoFontDescription *pfd;
-    
+
     gscreen = gtk_widget_get_screen(GTK_WIDGET(desktop));
-    
+
     settings = gtk_settings_get_for_screen(gscreen);
     g_object_get(G_OBJECT(settings), "gtk-font-name", &font_name, NULL);
-    
+
     pfd = pango_font_description_from_string(font_name);
     desktop->priv->system_font_size = pango_font_description_get_size(pfd);
     /* FIXME: this seems backwards from the documentation */
@@ -209,10 +209,10 @@ xfce_desktop_ensure_system_font_size(XfceDesktop *desktop)
         desktop->priv->system_font_size /= PANGO_SCALE;
     }
     XF_DEBUG("system font size is %.05f", desktop->priv->system_font_size);
-    
+
     g_free(font_name);
     pango_font_description_free(pfd);
-    
+
     return desktop->priv->system_font_size;
 }
 
@@ -220,22 +220,22 @@ static void
 xfce_desktop_setup_icon_view(XfceDesktop *desktop)
 {
     XfdesktopIconViewManager *manager = NULL;
-    
+
     switch(desktop->priv->icons_style) {
         case XFCE_DESKTOP_ICON_STYLE_NONE:
             /* nada */
             break;
-        
+
         case XFCE_DESKTOP_ICON_STYLE_WINDOWS:
             manager = xfdesktop_window_icon_manager_new(desktop->priv->gscreen);
             break;
-        
+
 #ifdef ENABLE_FILE_ICONS
         case XFCE_DESKTOP_ICON_STYLE_FILES:
             {
                 GFile *file;
                 const gchar *desktop_path;
-                
+
                 desktop_path = g_get_user_special_dir(G_USER_DIRECTORY_DESKTOP);
                 file = g_file_new_for_path(desktop_path);
                 manager = xfdesktop_file_icon_manager_new(file, desktop->priv->channel);
@@ -243,17 +243,17 @@ xfce_desktop_setup_icon_view(XfceDesktop *desktop)
             }
             break;
 #endif
-        
+
         default:
             g_critical("Unusable XfceDesktopIconStyle: %d.  Unable to " \
                        "display desktop icons.",
                        desktop->priv->icons_style);
             break;
     }
-    
+
     if(manager) {
         xfce_desktop_ensure_system_font_size(desktop);
-        
+
         desktop->priv->icon_view = xfdesktop_icon_view_new(manager);
         /* If the user set a custom font size, use it. Otherwise use the system
          * font size */
@@ -275,7 +275,7 @@ xfce_desktop_setup_icon_view(XfceDesktop *desktop)
             g_signal_connect(G_OBJECT(manager), "hidden-state-changed",
                              G_CALLBACK(hidden_state_changed_cb), desktop);
     }
-    
+
     gtk_widget_queue_draw(GTK_WIDGET(desktop));
 }
 #endif
@@ -285,9 +285,9 @@ set_imgfile_root_property(XfceDesktop *desktop, const gchar *filename,
         gint monitor)
 {
     gchar property_name[128];
-    
+
     gdk_error_trap_push();
-    
+
     g_snprintf(property_name, 128, XFDESKTOP_IMAGE_FILE_FMT, monitor);
     if(filename) {
         gdk_property_change(gdk_screen_get_root_window(desktop->priv->gscreen),
@@ -299,7 +299,7 @@ set_imgfile_root_property(XfceDesktop *desktop, const gchar *filename,
         gdk_property_delete(gdk_screen_get_root_window(desktop->priv->gscreen),
                             gdk_atom_intern(property_name, FALSE));
     }
-    
+
     gdk_error_trap_pop_ignored();
 }
 
@@ -311,12 +311,12 @@ set_real_root_window_surface(GdkScreen *gscreen,
     Window xid;
     GdkWindow *groot;
     cairo_pattern_t *pattern;
-    
+
     groot = gdk_screen_get_root_window(gscreen);
     xid = GDK_WINDOW_XID(groot);
-    
+
     gdk_error_trap_push();
-    
+
     /* set root property for transparent Eterms */
     gdk_property_change(groot,
             gdk_atom_intern("_XROOTPMAP_ID", FALSE),
@@ -447,7 +447,7 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
 #endif
 
     TRACE("entering");
-    
+
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
 
     if(!XFCE_IS_BACKDROP(backdrop))
@@ -818,10 +818,10 @@ screen_set_selection(XfceDesktop *desktop)
     gint xscreen;
     gchar selection_name[100], common_selection_name[32];
     Atom selection_atom, common_selection_atom, manager_atom;
-    
+
     xwin = GDK_WINDOW_XID(gtk_widget_get_window(GTK_WIDGET(desktop)));
     xscreen = gdk_screen_get_number(desktop->priv->gscreen);
-    
+
     g_snprintf(selection_name, 100, XFDESKTOP_SELECTION_FMT, xscreen);
     selection_atom = XInternAtom(gdk_x11_get_default_xdisplay(), selection_name, False);
     manager_atom = XInternAtom(gdk_x11_get_default_xdisplay(), "MANAGER", False);
@@ -852,7 +852,7 @@ screen_set_selection(XfceDesktop *desktop)
     if(XGetSelectionOwner(gdk_x11_get_default_xdisplay(), selection_atom) == xwin) {
         XClientMessageEvent xev;
         Window xroot = GDK_WINDOW_XID(gdk_screen_get_root_window(desktop->priv->gscreen));
-        
+
         xev.type = ClientMessage;
         xev.window = xroot;
         xev.message_type = manager_atom;
@@ -883,13 +883,13 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
 {
     GObjectClass *gobject_class = (GObjectClass *)klass;
     GtkWidgetClass *widget_class = (GtkWidgetClass *)klass;
-    
+
     g_type_class_add_private(klass, sizeof(XfceDesktopPriv));
-    
+
     gobject_class->finalize = xfce_desktop_finalize;
     gobject_class->set_property = xfce_desktop_set_property;
     gobject_class->get_property = xfce_desktop_get_property;
-    
+
     widget_class->realize = xfce_desktop_realize;
     widget_class->unrealize = xfce_desktop_unrealize;
     widget_class->button_press_event = xfce_desktop_button_press_event;
@@ -898,7 +898,7 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
     widget_class->delete_event = xfce_desktop_delete_event;
     widget_class->popup_menu = xfce_desktop_popup_menu;
     widget_class->style_updated = xfce_desktop_style_updated;
-    
+
     signals[SIG_POPULATE_ROOT_MENU] = g_signal_new("populate-root-menu",
                                                    XFCE_TYPE_DESKTOP,
                                                    G_SIGNAL_RUN_LAST,
@@ -908,7 +908,7 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
                                                    g_cclosure_marshal_VOID__OBJECT,
                                                    G_TYPE_NONE, 1,
                                                    GTK_TYPE_MENU_SHELL);
-    
+
     signals[SIG_POPULATE_SECONDARY_ROOT_MENU] = g_signal_new("populate-secondary-root-menu",
                                                              XFCE_TYPE_DESKTOP,
                                                              G_SIGNAL_RUN_LAST,
@@ -990,7 +990,7 @@ xfce_desktop_init(XfceDesktop *desktop)
 {
     desktop->priv = G_TYPE_INSTANCE_GET_PRIVATE(desktop, XFCE_TYPE_DESKTOP,
                                                 XfceDesktopPriv);
-    
+
     gtk_window_set_type_hint(GTK_WINDOW(desktop), GDK_WINDOW_TYPE_HINT_DESKTOP);
     /* Accept focus is needed for the menu pop up either by the menu key on
      * the keyboard or Shift+F10. */
@@ -1122,7 +1122,7 @@ xfce_desktop_realize(GtkWidget *widget)
     Window xid;
     GdkWindow *groot;
     WnckScreen *wnck_screen;
-    
+
     TRACE("entering");
 
     gtk_window_set_screen(GTK_WINDOW(desktop), desktop->priv->gscreen);
@@ -1133,15 +1133,15 @@ xfce_desktop_realize(GtkWidget *widget)
                      "monitors-changed",
                      G_CALLBACK(xfce_desktop_monitors_changed),
                      desktop);
-    
+
     /* chain up */
     GTK_WIDGET_CLASS(xfce_desktop_parent_class)->realize(widget);
-    
+
     gtk_window_set_title(GTK_WINDOW(desktop), _("Desktop"));
-    
+
     gtk_widget_set_size_request(GTK_WIDGET(desktop), sw, sh);
     gtk_window_move(GTK_WINDOW(desktop), 0, 0);
-    
+
     atom = gdk_atom_intern("_NET_WM_WINDOW_TYPE_DESKTOP", FALSE);
     gdk_property_change(gtk_widget_get_window(GTK_WIDGET(desktop)),
             gdk_atom_intern("_NET_WM_WINDOW_TYPE", FALSE),
@@ -1150,17 +1150,17 @@ xfce_desktop_realize(GtkWidget *widget)
 
     xid = GDK_WINDOW_XID(gtk_widget_get_window(GTK_WIDGET(desktop)));
     groot = gdk_screen_get_root_window(desktop->priv->gscreen);
-    
+
     gdk_property_change(groot,
             gdk_atom_intern("XFCE_DESKTOP_WINDOW", FALSE),
             gdk_atom_intern("WINDOW", FALSE), 32,
             GDK_PROP_MODE_REPLACE, (guchar *)&xid, 1);
-    
+
     gdk_property_change(groot,
             gdk_atom_intern("NAUTILUS_DESKTOP_WINDOW_ID", FALSE),
             gdk_atom_intern("WINDOW", FALSE), 32,
             GDK_PROP_MODE_REPLACE, (guchar *)&xid, 1);
-    
+
     screen_set_selection(desktop);
 
     wnck_screen = wnck_screen_get(gdk_screen_get_number(desktop->priv->gscreen));
@@ -1189,7 +1189,7 @@ xfce_desktop_realize(GtkWidget *widget)
             G_CALLBACK(screen_composited_changed_cb), desktop);
 
     gtk_widget_add_events(GTK_WIDGET(desktop), GDK_EXPOSURE_MASK);
-    
+
 #ifdef ENABLE_DESKTOP_ICONS
     xfce_desktop_setup_icon_view(desktop);
 #endif
@@ -1204,7 +1204,7 @@ xfce_desktop_unrealize(GtkWidget *widget)
     gint i;
     GdkWindow *groot;
     gchar property_name[128];
-    
+
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
 
     /* disconnect all the xfconf settings to this desktop */
@@ -1213,22 +1213,22 @@ xfce_desktop_unrealize(GtkWidget *widget)
     g_signal_handlers_disconnect_by_func(G_OBJECT(desktop->priv->gscreen),
                                          G_CALLBACK(xfce_desktop_monitors_changed),
                                          desktop);
-    
+
     if(gtk_widget_get_mapped(widget))
         gtk_widget_unmap(widget);
     gtk_widget_set_mapped(widget, FALSE);
-    
+
     gtk_container_forall(GTK_CONTAINER(widget),
                          (GtkCallback)gtk_widget_unrealize,
                          NULL);
-    
+
     g_signal_handlers_disconnect_by_func(G_OBJECT(desktop->priv->gscreen),
             G_CALLBACK(screen_size_changed_cb), desktop);
     g_signal_handlers_disconnect_by_func(G_OBJECT(desktop->priv->gscreen),
             G_CALLBACK(screen_composited_changed_cb), desktop);
 
     gdk_error_trap_push();
-    
+
     groot = gdk_screen_get_root_window(desktop->priv->gscreen);
     gdk_property_delete(groot, gdk_atom_intern("XFCE_DESKTOP_WINDOW", FALSE));
     gdk_property_delete(groot, gdk_atom_intern("NAUTILUS_DESKTOP_WINDOW_ID", FALSE));
@@ -1256,14 +1256,14 @@ xfce_desktop_unrealize(GtkWidget *widget)
         cairo_surface_destroy(desktop->priv->bg_surface);
         desktop->priv->bg_surface = NULL;
     }
-    
+
     gtk_window_set_icon(GTK_WINDOW(widget), NULL);
 
     g_object_unref(G_OBJECT(gtk_widget_get_window(widget)));
     gtk_widget_set_window(widget, NULL);
 
     gtk_selection_remove_all(widget);
-    
+
     gtk_widget_set_realized(widget, FALSE);
 }
 
@@ -1303,7 +1303,7 @@ xfce_desktop_button_press_event(GtkWidget *w,
             return TRUE;
         }
     }
-    
+
     return FALSE;
 }
 
@@ -1336,7 +1336,7 @@ xfce_desktop_popup_menu(GtkWidget *w)
         button = 0;
         etime = gtk_get_current_event_time();
     }
-    
+
     xfce_desktop_popup_root_menu(XFCE_DESKTOP(w), button, etime);
 
     gdk_event_free((GdkEvent*)evt);
@@ -1348,9 +1348,9 @@ xfce_desktop_draw(GtkWidget *w,
                   cairo_t *cr)
 {
     GList *children, *l;
-    
+
     /*TRACE("entering");*/
-    
+
     children = gtk_container_get_children(GTK_CONTAINER(w));
     for(l = children; l; l = l->next) {
         gtk_container_propagate_draw(GTK_CONTAINER(w),
@@ -1358,7 +1358,7 @@ xfce_desktop_draw(GtkWidget *w,
                                      cr);
     }
     g_list_free(children);
-    
+
     return FALSE;
 }
 
@@ -1368,7 +1368,7 @@ xfce_desktop_delete_event(GtkWidget *w,
 {
     if(XFCE_DESKTOP(w)->priv->session_logout_func)
         XFCE_DESKTOP(w)->priv->session_logout_func();
-    
+
     return TRUE;
 }
 
@@ -1524,7 +1524,7 @@ xfce_desktop_new(GdkScreen *gscreen,
                  const gchar *property_prefix)
 {
     XfceDesktop *desktop;
-    
+
     g_return_val_if_fail(channel && property_prefix, NULL);
 
     desktop = g_object_new(XFCE_TYPE_DESKTOP, NULL);
@@ -1548,7 +1548,7 @@ gint
 xfce_desktop_get_n_monitors(XfceDesktop *desktop)
 {
     g_return_val_if_fail(XFCE_IS_DESKTOP(desktop), 0);
-    
+
     return gdk_screen_get_n_monitors(desktop->priv->gscreen);
 }
 
@@ -1556,7 +1556,7 @@ gint
 xfce_desktop_get_width(XfceDesktop *desktop)
 {
     g_return_val_if_fail(XFCE_IS_DESKTOP(desktop), -1);
-    
+
     return gdk_screen_get_width(desktop->priv->gscreen);
 }
 
@@ -1564,7 +1564,7 @@ gint
 xfce_desktop_get_height(XfceDesktop *desktop)
 {
     g_return_val_if_fail(XFCE_IS_DESKTOP(desktop), -1);
-    
+
     return gdk_screen_get_height(desktop->priv->gscreen);
 }
 
@@ -1574,16 +1574,16 @@ xfce_desktop_set_icon_style(XfceDesktop *desktop,
 {
     g_return_if_fail(XFCE_IS_DESKTOP(desktop)
                      && style <= XFCE_DESKTOP_ICON_STYLE_FILES);
-    
+
 #ifdef ENABLE_DESKTOP_ICONS
     if(style == desktop->priv->icons_style)
         return;
-    
+
     if(desktop->priv->icon_view) {
         gtk_widget_destroy(desktop->priv->icon_view);
         desktop->priv->icon_view = NULL;
     }
-    
+
     desktop->priv->icons_style = style;
     if(gtk_widget_get_realized(GTK_WIDGET(desktop)))
         xfce_desktop_setup_icon_view(desktop);
@@ -1634,7 +1634,7 @@ XfceDesktopIconStyle
 xfce_desktop_get_icon_style(XfceDesktop *desktop)
 {
     g_return_val_if_fail(XFCE_IS_DESKTOP(desktop), XFCE_DESKTOP_ICON_STYLE_NONE);
-    
+
 #ifdef ENABLE_DESKTOP_ICONS
     return desktop->priv->icons_style;
 #else
@@ -1647,13 +1647,13 @@ xfce_desktop_set_icon_size(XfceDesktop *desktop,
                            guint icon_size)
 {
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
-    
+
 #ifdef ENABLE_DESKTOP_ICONS
     if(icon_size == desktop->priv->icons_size)
         return;
-    
+
     desktop->priv->icons_size = icon_size;
-    
+
     if(desktop->priv->icon_view) {
         xfdesktop_icon_view_set_icon_size(XFDESKTOP_ICON_VIEW(desktop->priv->icon_view),
                                           icon_size);
@@ -1666,13 +1666,13 @@ xfce_desktop_set_icon_font_size(XfceDesktop *desktop,
                                 guint font_size_points)
 {
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
-    
+
 #ifdef ENABLE_DESKTOP_ICONS
     if(font_size_points == desktop->priv->icons_font_size)
         return;
-    
+
     desktop->priv->icons_font_size = font_size_points;
-    
+
     if(desktop->priv->icons_font_size_set && desktop->priv->icon_view) {
         xfdesktop_icon_view_set_font_size(XFDESKTOP_ICON_VIEW(desktop->priv->icon_view),
                                           font_size_points);
@@ -1685,13 +1685,13 @@ xfce_desktop_set_use_icon_font_size(XfceDesktop *desktop,
                                     gboolean use_icon_font_size)
 {
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
-    
+
 #ifdef ENABLE_DESKTOP_ICONS
     if(use_icon_font_size == desktop->priv->icons_font_size_set)
         return;
-    
+
     desktop->priv->icons_font_size_set = use_icon_font_size;
-    
+
     if(desktop->priv->icon_view) {
         if(!use_icon_font_size) {
             xfce_desktop_ensure_system_font_size(desktop);
@@ -1710,7 +1710,7 @@ xfce_desktop_set_center_text (XfceDesktop *desktop,
                               gboolean center_text)
 {
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
-    
+
 #ifdef ENABLE_DESKTOP_ICONS
     if(center_text == desktop->priv->icons_center_text)
         return;
@@ -1780,7 +1780,7 @@ void
 xfce_desktop_thaw_updates(XfceDesktop *desktop)
 {
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
-    
+
     desktop->priv->updates_frozen = FALSE;
     if(gtk_widget_get_realized(GTK_WIDGET(desktop)))
         xfce_desktop_monitors_changed(desktop->priv->gscreen, desktop);
@@ -1802,9 +1802,9 @@ xfce_desktop_do_menu_popup(XfceDesktop *desktop,
     GdkScreen *screen;
     GtkWidget *menu;
     GList *menu_children;
-    
+
     DBG("entering");
-    
+
     if(gtk_widget_has_screen(GTK_WIDGET(desktop)))
         screen = gtk_widget_get_screen(GTK_WIDGET(desktop));
     else
