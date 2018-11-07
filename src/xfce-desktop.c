@@ -115,6 +115,7 @@ struct _XfceDesktopPriv
     gboolean icons_font_size_set;
     guint icons_font_size;
     guint icons_size;
+    gboolean primary;
     gboolean icons_center_text;
     gint  style_refresh_timer;
     GtkWidget *icon_view;
@@ -137,6 +138,7 @@ enum
 #ifdef ENABLE_DESKTOP_ICONS
     PROP_ICON_STYLE,
     PROP_ICON_SIZE,
+    PROP_ICON_ON_PRIMARY,
     PROP_ICON_FONT_SIZE,
     PROP_ICON_FONT_SIZE_SET,
     PROP_ICON_CENTER_TEXT,
@@ -169,6 +171,9 @@ static gboolean xfce_desktop_draw(GtkWidget *w,
 static gboolean xfce_desktop_delete_event(GtkWidget *w,
                                           GdkEventAny *evt);
 static void xfce_desktop_style_updated(GtkWidget *w);
+
+static void xfce_desktop_set_primary(XfceDesktop *desktop,
+                                     gboolean primary);
 
 static void xfce_desktop_set_single_workspace_mode(XfceDesktop *desktop,
                                                    gboolean single_workspace);
@@ -945,6 +950,13 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
                                                       8, 192, DEFAULT_ICON_SIZE,
                                                       XFDESKTOP_PARAM_FLAGS));
 
+    g_object_class_install_property(gobject_class, PROP_ICON_ON_PRIMARY,
+                                    g_param_spec_boolean("primary",
+                                                         "primary",
+                                                         "primary",
+                                                         FALSE,
+                                                         XFDESKTOP_PARAM_FLAGS));
+
     g_object_class_install_property(gobject_class, PROP_ICON_FONT_SIZE,
                                     g_param_spec_uint("icon-font-size",
                                                       "icon font size",
@@ -1036,6 +1048,11 @@ xfce_desktop_set_property(GObject *object,
                                        g_value_get_uint(value));
             break;
 
+        case PROP_ICON_ON_PRIMARY:
+            xfce_desktop_set_primary(desktop,
+                                       g_value_get_boolean(value));
+            break;
+
         case PROP_ICON_FONT_SIZE:
             xfce_desktop_set_icon_font_size(desktop,
                                             g_value_get_uint(value));
@@ -1084,6 +1101,10 @@ xfce_desktop_get_property(GObject *object,
 
         case PROP_ICON_SIZE:
             g_value_set_uint(value, desktop->priv->icons_size);
+            break;
+
+        case PROP_ICON_ON_PRIMARY:
+            g_value_set_boolean(value, desktop->priv->primary);
             break;
 
         case PROP_ICON_FONT_SIZE:
@@ -1451,6 +1472,8 @@ xfce_desktop_connect_settings(XfceDesktop *desktop)
                            G_OBJECT(desktop), "icon-style");
     xfconf_g_property_bind(channel, ICONS_PREFIX "icon-size", G_TYPE_UINT,
                            G_OBJECT(desktop), "icon-size");
+    xfconf_g_property_bind(channel, ICONS_PREFIX "primary", G_TYPE_BOOLEAN,
+                           G_OBJECT(desktop), "primary");
     xfconf_g_property_bind(channel, ICONS_PREFIX "font-size", G_TYPE_UINT,
                            G_OBJECT(desktop), "icon-font-size");
     xfconf_g_property_bind(channel, ICONS_PREFIX "use-custom-font-size",
@@ -1659,6 +1682,23 @@ xfce_desktop_set_icon_size(XfceDesktop *desktop,
                                           icon_size);
     }
 #endif
+}
+
+static void
+xfce_desktop_set_primary(XfceDesktop *desktop,
+                           gboolean primary)
+{
+    g_return_if_fail(XFCE_IS_DESKTOP(desktop));
+
+    if(primary == desktop->priv->primary)
+        return;
+
+    desktop->priv->primary = primary;
+
+    if(desktop->priv->icon_view) {
+        xfdesktop_icon_view_set_primary(XFDESKTOP_ICON_VIEW(desktop->priv->icon_view),
+                                        primary);
+    }
 }
 
 void

@@ -114,6 +114,9 @@ void xfdesktop_icon_view_set_icon_size(XfdesktopIconView *icon_view,
                                        guint icon_size);
 guint xfdesktop_icon_view_get_icon_size(XfdesktopIconView *icon_view);
 
+void xfdesktop_icon_view_set_primary(XfdesktopIconView *icon_view,
+                                     gboolean primary);
+
 void xfdesktop_icon_view_set_font_size(XfdesktopIconView *icon_view,
                                        gdouble font_size_points);
 gdouble xfdesktop_icon_view_get_font_size(XfdesktopIconView *icon_view);

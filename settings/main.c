@@ -80,6 +80,7 @@
 #define WINLIST_SHOW_WS_SUBMENUS_PROP        "/windowlist-menu/show-submenus"
 #define WINLIST_SHOW_ADD_REMOVE_WORKSPACES_PROP "/windowlist-menu/show-add-remove-workspaces"
 
+#define DESKTOP_ICONS_ON_PRIMARY_PROP        "/desktop-icons/primary"
 #define DESKTOP_ICONS_STYLE_PROP             "/desktop-icons/style"
 #define DESKTOP_ICONS_ICON_SIZE_PROP         "/desktop-icons/icon-size"
 #define DESKTOP_ICONS_FONT_SIZE_PROP         "/desktop-icons/font-size"
@@ -2030,6 +2031,9 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
                            gtk_builder_get_object(main_gxml, "chk_show_winlist_ws_submenus"),
                            "active");
 
+    w = GTK_WIDGET(gtk_builder_get_object(main_gxml, "primary"));
+    xfconf_g_property_bind(channel, DESKTOP_ICONS_ON_PRIMARY_PROP, G_TYPE_BOOLEAN,
+                          G_OBJECT(w), "active");
     w = GTK_WIDGET(gtk_builder_get_object(main_gxml, "combo_icons"));
 #ifdef ENABLE_FILE_ICONS
     gtk_combo_box_set_active(GTK_COMBO_BOX(w), 2);

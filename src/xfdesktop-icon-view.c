@@ -110,20 +110,21 @@ typedef struct
 struct _XfdesktopIconViewPrivate
 {
     XfdesktopIconViewManager *manager;
-    
+
     GtkWidget *parent_window;
-    
+
     guint icon_size;
+    gboolean primary;
     gdouble font_size;
     gboolean center_text;
-    
+
     WnckScreen *wnck_screen;
     PangoLayout *playout;
-    
+
     GList *pending_icons;
     GList *icons;
     GList *selected_icons;
-    
+
     gint xorigin;
     gint yorigin;
     gint width;
@@ -313,8 +314,10 @@ static inline void xfdesktop_xy_to_rowcol(XfdesktopIconView *icon_view,
                                           gint16 *row,
                                           gint16 *col);
 static gboolean xfdesktop_grid_resize_timeout(gpointer user_data);
+static void xfdesktop_monitors_changed_cb(GdkScreen *gscreen,
+                                          gpointer user_data);
 static void xfdesktop_screen_size_changed_cb(GdkScreen *gscreen,
-                                             gpointer user_data);
+                                            gpointer user_data);
 static GdkFilterReturn xfdesktop_rootwin_watch_workarea(GdkXEvent *gxevent,
                                                         GdkEvent *event,
                                                         gpointer user_data);
@@ -1935,22 +1938,24 @@ xfdesktop_icon_view_realize(GtkWidget *widget)
     g_signal_connect(G_OBJECT(icon_view->priv->parent_window),
                      "focus-out-event",
                      G_CALLBACK(xfdesktop_icon_view_focus_out), icon_view);
-    
+
     /* watch for _NET_WORKAREA changes */
     gscreen = gtk_widget_get_screen(widget);
     groot = gdk_screen_get_root_window(gscreen);
     gdk_window_set_events(groot, gdk_window_get_events(groot)
                                  | GDK_PROPERTY_CHANGE_MASK);
     gdk_window_add_filter(groot, xfdesktop_rootwin_watch_workarea, icon_view);
-    
+
+    g_signal_connect(G_OBJECT(gscreen), "monitors-changed",
+                     G_CALLBACK(xfdesktop_monitors_changed_cb), icon_view);
     g_signal_connect(G_OBJECT(gscreen), "size-changed",
                      G_CALLBACK(xfdesktop_screen_size_changed_cb), icon_view);
-    
+
     g_signal_connect_after(G_OBJECT(gtk_icon_theme_get_for_screen(gscreen)),
                            "changed",
                            G_CALLBACK(xfdesktop_icon_view_icon_theme_changed),
                            icon_view);
-    
+
     xfdesktop_move_all_pending_icons_to_desktop(icon_view);
 }
 
@@ -2415,11 +2420,27 @@ xfdesktop_icon_view_real_move_cursor(XfdesktopIconView *icon_view,
 
 
 static void
+xfdesktop_monitors_changed_cb(GdkScreen *gscreen,
+                              gpointer user_data)
+{
+    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(user_data);
+
+    /* Resize the grid to be sure we take into account monitor setup changes */
+    //xfdesktop_grid_do_resize(icon_view);
+    if(icon_view->priv->grid_resize_timeout)
+        g_source_remove(icon_view->priv->grid_resize_timeout);
+    icon_view->priv->grid_resize_timeout = g_timeout_add(7000,
+                                                         xfdesktop_grid_resize_timeout,
+                                                         icon_view);
+}
+
+
+static void
 xfdesktop_screen_size_changed_cb(GdkScreen *gscreen,
                                  gpointer user_data)
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(user_data);
-    
+
    /* this is kinda icky.  we want to use _NET_WORKAREA to reset the size of
      * the grid, but we can never be sure it'll actually change.  so let's
      * give it 7 seconds, and then fix it manually */
@@ -2539,30 +2560,45 @@ xfdesktop_icon_view_setup_grids_xinerama(XfdesktopIconView *icon_view)
                     break;
                 }
             }
-            
+
             if(!bounded) {
                 xfdesktop_grid_unset_position_free_raw(icon_view, row, col,
                                                        (gpointer)0xdeadbeef);
             }
         }
     }
-    
+
     g_free(monitor_geoms);
-    
+
     DBG("exiting");
 }
-    
+
 
 static void
 xfdesktop_setup_grids(XfdesktopIconView *icon_view)
 {
+    gboolean primary;
     gint xorigin = 0, yorigin = 0, xrest = 0, yrest = 0, width = 0, height = 0;
     gsize old_size, new_size;
-    
+
     old_size = (guint)icon_view->priv->nrows * icon_view->priv->ncols
                * sizeof(XfdesktopIcon *);
-    
-    if(!xfdesktop_get_workarea_single(icon_view, 0,
+
+    primary = xfconf_channel_get_bool (icon_view->priv->channel,
+                                       "/desktop-icons/primary",
+                                       TRUE);
+    if (primary)
+    {
+       GdkMonitor *monitor;
+       GdkRectangle rectangle;
+       monitor = gdk_display_get_primary_monitor (gdk_display_get_default());
+       gdk_monitor_get_geometry (monitor, &rectangle);
+       xorigin = rectangle.x;
+       yorigin = rectangle.y;
+       width = rectangle.width;
+       height = rectangle.height;
+    }
+    else if (!xfdesktop_get_workarea_single(icon_view, 0,
                                       &xorigin, &yorigin,
                                       &width, &height))
     {
@@ -3222,13 +3258,28 @@ xfdesktop_grid_do_resize(XfdesktopIconView *icon_view)
     gint16 new_rows, new_cols;
     gsize old_size, new_size;
     GdkScreen *gscreen;
+    gboolean primary;
 
-    /* First check to see if the grid actaully did change. This way
+    /* First check to see if the grid actually did change. This way
      * we don't remove all the icons just to put them back again */
     old_size = (guint)icon_view->priv->nrows * icon_view->priv->ncols
                * sizeof(XfdesktopIcon *);
-
-    if(!xfdesktop_get_workarea_single(icon_view, 0,
+    primary = xfconf_channel_get_bool (icon_view->priv->channel,
+                                       "/desktop-icons/primary",
+                                       TRUE);
+    if (primary)
+    {
+      GdkMonitor *monitor;
+      GdkRectangle rectangle;
+      monitor = gdk_display_get_primary_monitor (gdk_display_get_default());
+      gdk_monitor_get_geometry (monitor, &rectangle);
+      xorigin = rectangle.x;
+      yorigin = rectangle.y;
+      width = rectangle.width;
+      height = rectangle.height;
+      /* TODO: Take into account struts (_NET_WORKAREA doesn't work if x/y!=0) */
+    }
+    else if(!xfdesktop_get_workarea_single(icon_view, 0,
                                       &xorigin, &yorigin,
                                       &width, &height))
     {
@@ -4105,16 +4156,32 @@ xfdesktop_icon_view_get_icon_size(XfdesktopIconView *icon_view)
 }
 
 void
+xfdesktop_icon_view_set_primary(XfdesktopIconView *icon_view,
+                                gboolean primary)
+{
+    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view));
+
+    if(primary == icon_view->priv->primary)
+        return;
+
+    icon_view->priv->primary = primary;
+
+    if(gtk_widget_get_realized(GTK_WIDGET(icon_view))) {
+        xfdesktop_grid_do_resize(icon_view);
+    }
+}
+
+void
 xfdesktop_icon_view_set_font_size(XfdesktopIconView *icon_view,
                                   gdouble font_size_points)
 {
     g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view));
-    
+
     if(font_size_points == icon_view->priv->font_size)
         return;
-    
+
     icon_view->priv->font_size = font_size_points;
-    
+
     if(gtk_widget_get_realized(GTK_WIDGET(icon_view))) {
         xfdesktop_icon_view_modify_font_size(icon_view, font_size_points);
         xfdesktop_grid_do_resize(icon_view);
