@@ -2426,12 +2426,7 @@ xfdesktop_monitors_changed_cb(GdkScreen *gscreen,
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(user_data);
 
     /* Resize the grid to be sure we take into account monitor setup changes */
-    //xfdesktop_grid_do_resize(icon_view);
-    if(icon_view->priv->grid_resize_timeout)
-        g_source_remove(icon_view->priv->grid_resize_timeout);
-    icon_view->priv->grid_resize_timeout = g_timeout_add(7000,
-                                                         xfdesktop_grid_resize_timeout,
-                                                         icon_view);
+    xfdesktop_grid_do_resize(icon_view);
 }
 
 
@@ -2577,44 +2572,34 @@ xfdesktop_icon_view_setup_grids_xinerama(XfdesktopIconView *icon_view)
 static void
 xfdesktop_setup_grids(XfdesktopIconView *icon_view)
 {
-    gboolean primary;
-    gint xorigin = 0, yorigin = 0, xrest = 0, yrest = 0, width = 0, height = 0;
+    gint xrest = 0, yrest = 0;
     gsize old_size, new_size;
+    GdkScreen *screen;
+    GdkDisplay *display;
+    GdkMonitor *monitor;
+    GdkRectangle rectangle;
 
     old_size = (guint)icon_view->priv->nrows * icon_view->priv->ncols
                * sizeof(XfdesktopIcon *);
 
-    primary = xfconf_channel_get_bool (icon_view->priv->channel,
-                                       "/desktop-icons/primary",
-                                       TRUE);
-    if (primary)
+    screen = gtk_widget_get_screen (GTK_WIDGET (icon_view));
+    display = gdk_screen_get_display (screen);
+    if (icon_view->priv->primary)
     {
-       GdkMonitor *monitor;
-       GdkRectangle rectangle;
-       monitor = gdk_display_get_primary_monitor (gdk_display_get_default());
-       gdk_monitor_get_geometry (monitor, &rectangle);
-       xorigin = rectangle.x;
-       yorigin = rectangle.y;
-       width = rectangle.width;
-       height = rectangle.height;
+        monitor = gdk_display_get_primary_monitor (display);
     }
-    else if (!xfdesktop_get_workarea_single(icon_view, 0,
-                                      &xorigin, &yorigin,
-                                      &width, &height))
-    {
-        GdkScreen *gscreen = gtk_widget_get_screen(GTK_WIDGET(icon_view));
-        width = gdk_screen_get_width(gscreen);
-        height = gdk_screen_get_height(gscreen);
-        xorigin = yorigin = 0;
+    else {
+        monitor = gdk_display_get_monitor_at_window (display, gtk_widget_get_parent_window(GTK_WIDGET(icon_view)));
     }
+    gdk_monitor_get_workarea (monitor, &rectangle);
     
-    icon_view->priv->xorigin = xorigin;
-    icon_view->priv->yorigin = yorigin;
-    icon_view->priv->width = width;
-    icon_view->priv->height = height;
+    icon_view->priv->xorigin = rectangle.x;
+    icon_view->priv->yorigin = rectangle.y;
+    icon_view->priv->width = rectangle.width;
+    icon_view->priv->height = rectangle.height;
 
-    icon_view->priv->nrows = MAX((height - MIN_MARGIN * 2) / CELL_SIZE, 0);
-    icon_view->priv->ncols = MAX((width - MIN_MARGIN * 2) / CELL_SIZE, 0);
+    icon_view->priv->nrows = MAX((icon_view->priv->height - MIN_MARGIN * 2) / CELL_SIZE, 0);
+    icon_view->priv->ncols = MAX((icon_view->priv->width - MIN_MARGIN * 2) / CELL_SIZE, 0);
 
     xrest = icon_view->priv->width - icon_view->priv->ncols * CELL_SIZE;
     if (icon_view->priv->ncols > 1) {
@@ -3254,42 +3239,25 @@ xfdesktop_move_all_pending_icons_to_desktop(XfdesktopIconView *icon_view)
 static void
 xfdesktop_grid_do_resize(XfdesktopIconView *icon_view)
 {
-    gint xorigin = 0, yorigin = 0, width = 0, height = 0;
     gint16 new_rows, new_cols;
     gsize old_size, new_size;
-    GdkScreen *gscreen;
-    gboolean primary;
+    GdkScreen *screen;
+    GdkDisplay *display;
+    GdkMonitor *monitor;
+    GdkRectangle rectangle;
 
     /* First check to see if the grid actually did change. This way
      * we don't remove all the icons just to put them back again */
     old_size = (guint)icon_view->priv->nrows * icon_view->priv->ncols
                * sizeof(XfdesktopIcon *);
-    primary = xfconf_channel_get_bool (icon_view->priv->channel,
-                                       "/desktop-icons/primary",
-                                       TRUE);
-    if (primary)
-    {
-      GdkMonitor *monitor;
-      GdkRectangle rectangle;
-      monitor = gdk_display_get_primary_monitor (gdk_display_get_default());
-      gdk_monitor_get_geometry (monitor, &rectangle);
-      xorigin = rectangle.x;
-      yorigin = rectangle.y;
-      width = rectangle.width;
-      height = rectangle.height;
-      /* TODO: Take into account struts (_NET_WORKAREA doesn't work if x/y!=0) */
-    }
-    else if(!xfdesktop_get_workarea_single(icon_view, 0,
-                                      &xorigin, &yorigin,
-                                      &width, &height))
-    {
-        gscreen = gtk_widget_get_screen(GTK_WIDGET(icon_view));
-        width = gdk_screen_get_width(gscreen);
-        height = gdk_screen_get_height(gscreen);
-    }
 
-    new_rows = (height - MIN_MARGIN * 2) / CELL_SIZE;
-    new_cols = (width - MIN_MARGIN * 2) / CELL_SIZE;
+    screen = gtk_widget_get_screen (GTK_WIDGET (icon_view));
+    display = gdk_screen_get_display (screen);
+    monitor = gdk_display_get_monitor_at_window (display, gtk_widget_get_parent_window(GTK_WIDGET(icon_view)));
+    gdk_monitor_get_workarea (monitor, &rectangle);
+
+    new_rows = (rectangle.width - MIN_MARGIN * 2) / CELL_SIZE;
+    new_cols = (rectangle.height - MIN_MARGIN * 2) / CELL_SIZE;
 
     new_size = (guint)new_rows * new_cols * sizeof(XfdesktopIcon *);
 
@@ -3329,86 +3297,6 @@ xfdesktop_grid_resize_timeout(gpointer user_data)
     return FALSE;
 }
 
-
-gboolean
-xfdesktop_get_workarea_single(XfdesktopIconView *icon_view,
-                              guint ws_num,
-                              gint *xorigin,
-                              gint *yorigin,
-                              gint *width,
-                              gint *height)
-{
-    gboolean ret = FALSE;
-    GdkScreen *gscreen;
-    Display *dpy;
-    Window root;
-    Atom property, actual_type = None;
-    gint actual_format = 0, first_id;
-    gulong nitems = 0, bytes_after = 0, offset = 0, tmp_size = 0;
-    unsigned char *data_p = NULL;
-    
-    g_return_val_if_fail(xorigin && yorigin
-                         && width && height, FALSE);
-    
-    gscreen = gtk_widget_get_screen(GTK_WIDGET(icon_view));
-    dpy = GDK_DISPLAY_XDISPLAY(gdk_screen_get_display(gscreen));
-    root = GDK_WINDOW_XID(gdk_screen_get_root_window(gscreen));
-    property = XInternAtom(dpy, "_NET_WORKAREA", False);
-    
-    first_id = ws_num * 4;
-    
-    gdk_error_trap_push();
-    
-    do {
-        if(Success == XGetWindowProperty(dpy, root, property, offset,
-                                         G_MAXULONG, False, XA_CARDINAL,
-                                         &actual_type, &actual_format, &nitems,
-                                         &bytes_after, &data_p))
-        {
-            gint i;
-            gulong *data;
-
-            if(actual_format != 32 || actual_type != XA_CARDINAL) {
-                XFree(data_p);
-                break;
-            }
-
-            tmp_size = (actual_format / 8) * nitems;
-            if(actual_format == 32) {
-                tmp_size *= sizeof(long)/4;
-            }
-
-            data = g_malloc(tmp_size);
-            memcpy(data, data_p, tmp_size);
-            
-            i = offset / 32;  /* first element id in this batch */
-            
-            /* there's probably a better way to do this. */
-            if(i + (glong)nitems >= first_id && first_id - (glong)offset >= 0)
-                *xorigin = data[first_id - offset] + MIN_MARGIN;
-            if(i + (glong)nitems >= first_id + 1 && first_id - (glong)offset + 1 >= 0)
-                *yorigin = data[first_id - offset + 1] + MIN_MARGIN;
-            if(i + (glong)nitems >= first_id + 2 && first_id - (glong)offset + 2 >= 0)
-                *width = data[first_id - offset + 2] - 2 * MIN_MARGIN;
-            if(i + (glong)nitems >= first_id + 3 && first_id - (glong)offset + 3 >= 0) {
-                *height = data[first_id - offset + 3] - 2 * MIN_MARGIN;
-                ret = TRUE;
-                XFree(data_p);
-                g_free(data);
-                break;
-            }
-            
-            offset += actual_format * nitems;
-            XFree(data_p);
-            g_free(data);
-        } else
-            break;
-    } while(bytes_after > 0);
-    
-    gdk_error_trap_pop_ignored();
-    
-    return ret;
-}
 
 static inline gboolean
 xfdesktop_grid_is_free_position(XfdesktopIconView *icon_view,
