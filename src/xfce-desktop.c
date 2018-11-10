@@ -172,9 +172,6 @@ static gboolean xfce_desktop_delete_event(GtkWidget *w,
                                           GdkEventAny *evt);
 static void xfce_desktop_style_updated(GtkWidget *w);
 
-static void xfce_desktop_set_primary(XfceDesktop *desktop,
-                                     gboolean primary);
-
 static void xfce_desktop_set_single_workspace_mode(XfceDesktop *desktop,
                                                    gboolean single_workspace);
 static void xfce_desktop_set_single_workspace_number(XfceDesktop *desktop,
@@ -275,6 +272,9 @@ xfce_desktop_setup_icon_view(XfceDesktop *desktop)
 
         gtk_widget_show(desktop->priv->icon_view);
         gtk_container_add(GTK_CONTAINER(desktop), desktop->priv->icon_view);
+
+        xfdesktop_icon_view_set_primary(XFDESKTOP_ICON_VIEW(desktop->priv->icon_view),
+                                        desktop->priv->primary);
 
         if(desktop->priv->icons_style == XFCE_DESKTOP_ICON_STYLE_FILES)
             g_signal_connect(G_OBJECT(manager), "hidden-state-changed",
@@ -1684,7 +1684,7 @@ xfce_desktop_set_icon_size(XfceDesktop *desktop,
 #endif
 }
 
-static void
+void
 xfce_desktop_set_primary(XfceDesktop *desktop,
                            gboolean primary)
 {

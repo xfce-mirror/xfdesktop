@@ -51,7 +51,7 @@ typedef enum
 struct _XfceDesktop
 {
     GtkWindow window;
-    
+
     /*< private >*/
     XfceDesktopPriv *priv;
 };
@@ -59,13 +59,13 @@ struct _XfceDesktop
 struct _XfceDesktopClass
 {
     GtkWindowClass parent_class;
-    
+
     /*< signals >*/
-    
+
     /* for the app menu/file context menu */
     void (*populate_root_menu)(XfceDesktop *desktop,
                                GtkMenuShell *menu);
-    
+
     /* for the windowlist menu */
     void (*populate_secondary_root_menu)(XfceDesktop *desktop,
                                          GtkMenuShell *menu);
@@ -88,6 +88,9 @@ XfceDesktopIconStyle xfce_desktop_get_icon_style(XfceDesktop *desktop);
 
 void xfce_desktop_set_icon_size(XfceDesktop *desktop,
                                 guint icon_size);
+
+void xfce_desktop_set_primary(XfceDesktop *desktop,
+                              gboolean primary);
 
 void xfce_desktop_set_use_icon_font_size(XfceDesktop *desktop,
                                          gboolean use_system);
