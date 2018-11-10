@@ -1902,21 +1902,22 @@ xfdesktop_file_icon_manager_save_icons(gpointer user_data)
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
     gchar relpath[PATH_MAX], *tmppath, *path;
     XfceRc *rcfile;
-    gint x = 0, y = 0, width = 0, height = 0;
+    GdkScreen *screen;
+    GdkDisplay *display;
+    GdkMonitor *monitor;
+    GdkRectangle rectangle;
     
     fmanager->priv->save_icons_id = 0;
 
-    xfdesktop_get_workarea_single(fmanager->priv->icon_view,
-                                  0,
-                                  &x,
-                                  &y,
-                                  &width,
-                                  &height);
+    screen = gtk_widget_get_screen (GTK_WIDGET (fmanager->priv->icon_view));
+    display = gdk_screen_get_display (screen);
+    monitor = gdk_display_get_monitor_at_window (display, gtk_widget_get_parent_window(GTK_WIDGET(fmanager->priv->icon_view)));
+    gdk_monitor_get_workarea (monitor, &rectangle);
 
     g_snprintf(relpath, PATH_MAX, "xfce4/desktop/icons.screen%d-%dx%d.rc",
                0,
-               width,
-               height);
+               rectangle.width,
+               rectangle.height);
 
     path = xfce_resource_save_location(XFCE_RESOURCE_CONFIG, relpath, TRUE);
     if(!path)
@@ -2002,22 +2003,23 @@ xfdesktop_file_icon_manager_get_cached_icon_position(XfdesktopFileIconManager *f
     gchar relpath[PATH_MAX];
     gchar *filename = NULL;
     gboolean ret = FALSE;
-    gint x = 0, y = 0, width = 0, height = 0;
+    GdkScreen *screen;
+    GdkDisplay *display;
+    GdkMonitor *monitor;
+    GdkRectangle rectangle;
 
     if(!fmanager || !fmanager->priv)
         return FALSE;
 
-    xfdesktop_get_workarea_single(fmanager->priv->icon_view,
-                                  0,
-                                  &x,
-                                  &y,
-                                  &width,
-                                  &height);
+    screen = gtk_widget_get_screen (GTK_WIDGET (fmanager->priv->icon_view));
+    display = gdk_screen_get_display (screen);
+    monitor = gdk_display_get_monitor_at_window (display, gtk_widget_get_parent_window(GTK_WIDGET(fmanager->priv->icon_view)));
+    gdk_monitor_get_workarea (monitor, &rectangle);
     
     g_snprintf(relpath, PATH_MAX, "xfce4/desktop/icons.screen%d-%dx%d.rc",
                0,
-               width,
-               height);
+               rectangle.width,
+               rectangle.height);
 
     filename = xfce_resource_lookup(XFCE_RESOURCE_CONFIG, relpath);
 
