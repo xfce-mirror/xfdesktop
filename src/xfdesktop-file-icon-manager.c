@@ -1023,6 +1023,7 @@ xfdesktop_menu_item_from_app_info(XfdesktopFileIconManager *fmanager,
 
     gicon = g_app_info_get_icon(app_info);
     img = gtk_image_new_from_gicon(gicon, GTK_ICON_SIZE_MENU);
+    gtk_image_set_pixel_size(GTK_IMAGE(img), 16);
 
     if(with_mnemonic)
         mi = xfdesktop_menu_create_menu_item_with_mnemonic(title, img);
