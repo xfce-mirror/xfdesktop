@@ -218,7 +218,10 @@ create_menu_item(GtkWidget* label, GtkWidget* image)
     gtk_widget_set_halign (label, GTK_ALIGN_START);
 
     /* Add the image and label to the box, add the box to the menu item */
-    if(image && GTK_IS_WIDGET(image)) {
+    if (image && GTK_IS_WIDGET(image)) {
+        if (GTK_IS_IMAGE (image))
+            gtk_image_set_pixel_size (GTK_IMAGE (image), 16);
+
         /* only add the widget if it exists */
         gtk_widget_show (image);
 
