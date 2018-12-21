@@ -738,7 +738,7 @@ xfce_backdrop_class_init(XfceBackdropClass *klass)
                                                       "backdrop-cycle-period",
                                                       "backdrop-cycle-period",
                                                       XFCE_TYPE_BACKDROP_CYCLE_PERIOD,
-                                                      XFCE_BACKDROP_PERIOD_MINUES,
+                                                      XFCE_BACKDROP_PERIOD_MINUTES,
                                                       XFDESKTOP_PARAM_FLAGS));
 
     g_object_class_install_property(gobject_class, PROP_BACKDROP_CYCLE_TIMER,
@@ -1354,7 +1354,7 @@ xfce_backdrop_set_cycle_timer(XfceBackdrop *backdrop, guint cycle_timer)
                 cycle_interval = backdrop->priv->cycle_timer;
                 break;
 
-            case XFCE_BACKDROP_PERIOD_MINUES:
+            case XFCE_BACKDROP_PERIOD_MINUTES:
                 cycle_interval = backdrop->priv->cycle_timer * 60;
                 break;
 

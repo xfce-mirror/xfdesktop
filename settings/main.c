@@ -995,7 +995,7 @@ update_backdrop_cycle_spinbox(AppearancePanel *panel)
     if(gtk_widget_get_sensitive(panel->combo_backdrop_cycle_period)) {
         period = gtk_combo_box_get_active(GTK_COMBO_BOX(panel->combo_backdrop_cycle_period));
         if(period == XFCE_BACKDROP_PERIOD_SECONDS ||
-           period == XFCE_BACKDROP_PERIOD_MINUES  ||
+           period == XFCE_BACKDROP_PERIOD_MINUTES  ||
            period == XFCE_BACKDROP_PERIOD_HOURS)
         {
             sensitive = TRUE;
@@ -1435,7 +1435,7 @@ xfdesktop_settings_background_tab_change_bindings(AppearancePanel *panel,
                                G_OBJECT(panel->combo_backdrop_cycle_period), "active");
     } else {
         /* default is minutes, set that before we bind to it */
-        gtk_combo_box_set_active(GTK_COMBO_BOX(panel->combo_backdrop_cycle_period), XFCE_BACKDROP_PERIOD_MINUES);
+        gtk_combo_box_set_active(GTK_COMBO_BOX(panel->combo_backdrop_cycle_period), XFCE_BACKDROP_PERIOD_MINUTES);
 
         xfconf_g_property_bind(channel, buf, G_TYPE_INT,
                                G_OBJECT(panel->combo_backdrop_cycle_period), "active");
@@ -1968,7 +1968,7 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
                                                                      "chk_random_backdrop_order"));
 
     /* Pick the first entry so something shows up */
-    gtk_combo_box_set_active(GTK_COMBO_BOX(panel->combo_backdrop_cycle_period), XFCE_BACKDROP_PERIOD_MINUES);
+    gtk_combo_box_set_active(GTK_COMBO_BOX(panel->combo_backdrop_cycle_period), XFCE_BACKDROP_PERIOD_MINUTES);
 
     g_signal_connect(G_OBJECT(panel->backdrop_cycle_chkbox), "toggled",
                     G_CALLBACK(cb_xfdesktop_chk_cycle_backdrop_toggled),
