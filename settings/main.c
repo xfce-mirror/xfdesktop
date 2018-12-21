@@ -88,6 +88,7 @@
 #define DESKTOP_ICONS_SHOW_TOOLTIP_PROP      "/desktop-icons/show-tooltips"
 #define DESKTOP_ICONS_TOOLTIP_SIZE_PROP      "/desktop-icons/tooltip-size"
 #define DESKTOP_ICONS_SINGLE_CLICK_PROP      "/desktop-icons/single-click"
+#define DESKTOP_ICONS_GRAVITY_PROP           "/desktop-icons/gravity"
 
 typedef struct
 {
@@ -2042,6 +2043,14 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
 #endif
     xfconf_g_property_bind(channel, DESKTOP_ICONS_STYLE_PROP, G_TYPE_INT,
                            G_OBJECT(w), "active");
+
+    /* Orientation combo */
+    w = GTK_WIDGET(gtk_builder_get_object(main_gxml, "combo_orientation"));
+    gtk_combo_box_set_active(GTK_COMBO_BOX(w), 0);
+    xfconf_g_property_bind(channel, DESKTOP_ICONS_GRAVITY_PROP, G_TYPE_INT,
+                           G_OBJECT(w), "active");
+
+    /* bindings */
     xfconf_g_property_bind(channel, DESKTOP_ICONS_FONT_SIZE_PROP, G_TYPE_DOUBLE,
                            G_OBJECT(gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(spin_font_size))),
                            "value");

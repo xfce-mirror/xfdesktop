@@ -57,6 +57,10 @@
 #define DEFAULT_TOOLTIP_SIZE 128
 #define MAX_TOOLTIP_SIZE     512
 
+#define GRAVITY_HORIZONTAL     1
+#define GRAVITY_RIGHT          2
+#define GRAVITY_BOTTOM         4
+
 #define ICON_SIZE         (icon_view->priv->icon_size)
 #define TEXT_WIDTH        ((icon_view->priv->cell_text_width_proportion) * ICON_SIZE)
 #define ICON_WIDTH        (TEXT_WIDTH)
@@ -189,6 +193,7 @@ struct _XfdesktopIconViewPrivate
     double tooltip_size_from_xfconf;
 
     gboolean single_click;
+    gint gravity;
 };
 
 static void xfce_icon_view_set_property(GObject *object,
@@ -373,6 +378,7 @@ enum
     PROP_SINGLE_CLICK,
     PROP_SHOW_TOOLTIPS,
     PROP_TOOLTIP_SIZE,
+    PROP_GRAVITY,
 };
 
 
@@ -559,6 +565,13 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
                                                          FALSE,
                                                          XFDESKTOP_PARAM_FLAGS));
 
+    g_object_class_install_property(gobject_class, PROP_GRAVITY,
+                                    g_param_spec_int("gravity",
+                                                     "gravity",
+                                                     "set gravity of icons placement",
+                                                     0, 7, 0,
+                                                     XFDESKTOP_PARAM_FLAGS));
+
     g_object_class_install_property(gobject_class, PROP_SHOW_TOOLTIPS,
                                     g_param_spec_boolean("show-tooltips",
                                                          "show tooltips",
@@ -719,6 +732,10 @@ xfce_icon_view_set_property(GObject *object,
             icon_view->priv->tooltip_size_from_xfconf = g_value_get_double(value);
             break;
 
+        case PROP_GRAVITY:
+            icon_view->priv->gravity = g_value_get_int(value);
+            break;
+
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
             break;
@@ -736,6 +753,10 @@ xfce_icon_view_get_property(GObject *object,
     switch(property_id) {
         case PROP_SINGLE_CLICK:
             g_value_set_boolean(value, icon_view->priv->single_click);
+            break;
+
+        case PROP_GRAVITY:
+            g_value_set_int(value, icon_view->priv->gravity);
             break;
 
         case PROP_SHOW_TOOLTIPS:
@@ -1526,6 +1547,43 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
     return TRUE;
 }
 
+static void
+xfdesktop_next_slot(XfdesktopIconView *icon_view,
+                    gint16 *col,
+                    gint16 *row,
+                    gint16 ncols,
+                    gint16 nrows)
+{
+    gint scol = *col, srow = *row;
+
+    if(icon_view->priv->gravity & GRAVITY_HORIZONTAL) {
+        scol += (icon_view->priv->gravity & GRAVITY_RIGHT) ? -1 : 1;
+        if(scol < 0) {
+            scol = ncols - 1;
+            srow += (icon_view->priv->gravity & GRAVITY_BOTTOM) ? -1 : 1;
+        } else {
+            if(scol >= ncols) {
+                scol = 0;
+                srow += (icon_view->priv->gravity & GRAVITY_BOTTOM) ? -1 : 1;
+            }
+        }
+    } else {
+        srow += (icon_view->priv->gravity & GRAVITY_BOTTOM) ? -1 : 1;
+        if(srow < 0) {
+            srow = nrows - 1;
+            scol += (icon_view->priv->gravity & GRAVITY_RIGHT) ? -1 : 1;
+        } else {
+            if(srow >= nrows) {
+                srow = 0;
+                scol += (icon_view->priv->gravity & GRAVITY_RIGHT) ? -1 : 1;
+            }
+        }
+    }
+
+    *col = scol;
+    *row = srow;
+}
+
 static gboolean
 xfdesktop_icon_view_drag_drop(GtkWidget *widget,
                               GdkDragContext *context,
@@ -1598,7 +1656,7 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
         icon = icon_view->priv->cursor;
         g_return_val_if_fail(icon, FALSE);
         
-        /* 1: Get amount of offset between the old spot and new spot
+        /* 1: Get amount of offset between the old slot and new slot
          *    of the icon that's being dragged.
          * 2: Remove all the icons that are going to be moved from
          *    the desktop. That's in case the icons being moved
@@ -1631,17 +1689,9 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
                     row += icon_view->priv->nrows;
             }
 
-            /* Find the next available spot for an icon if offset spot is not available */
+            /* Find the next available slot for an icon if offset slot is not available */
             while(!xfdesktop_grid_is_free_position(icon_view, row, col)) {
-                if(row + 1 >= icon_view->priv->nrows) {
-                    if(col + 1 >= icon_view->priv->ncols)
-                        col = 0;
-                    else
-                        ++col;
-                    row = 0;
-                } else {
-                    ++row;
-                }
+                xfdesktop_next_slot(icon_view, &col, &row, icon_view->priv->ncols, icon_view->priv->nrows);
             }
 
             /* set new position */
@@ -1771,14 +1821,9 @@ xfdesktop_icon_view_append_icons(XfdesktopIconView *icon_view,
     GList *l = NULL;
     for(l = icon_list; l != NULL; l = g_list_next(l)) {
 
-        /* Find the next available spot for an icon */
+        /* Find the next available slot for an icon */
         do {
-            if(*row + 1 >= icon_view->priv->nrows) {
-                ++*col;
-                *row = 0;
-            } else {
-                ++*row;
-            }
+            xfdesktop_next_slot(icon_view, col, row, icon_view->priv->ncols, icon_view->priv->nrows);
         } while(!xfdesktop_grid_is_free_position(icon_view, *row, *col));
 
         /* set new position */
@@ -1797,17 +1842,12 @@ xfdesktop_icon_view_sort_icons(XfdesktopIconView *icon_view)
     GList *l = NULL;
     guint i;
     GList *icons[4] = { NULL, NULL, NULL, NULL };
-    gint16 row = -1; /* start at -1 because we'll increment it */
-    gint16 col = 0;
+    gint16 row;
+    gint16 col;
 
     for(l = icon_view->priv->icons; l; l = l->next) {
-        gint16 old_row, old_col;
-
         /* clear out old position */
         xfdesktop_icon_view_invalidate_icon(icon_view, l->data, FALSE);
-
-        if(xfdesktop_icon_get_position(l->data, &old_row, &old_col))
-            xfdesktop_grid_set_position_free(icon_view, old_row, old_col);
 
         /* Choose the correct list index */
         if(XFDESKTOP_IS_SPECIAL_FILE_ICON(l->data)) {
@@ -1827,6 +1867,25 @@ xfdesktop_icon_view_sort_icons(XfdesktopIconView *icon_view)
         /* Add the icon to the correct list */
         icons[i] = g_list_prepend(icons[i], l->data);
     }
+
+    /* free all positions in the layout */
+    for(col = 0; col < icon_view->priv->ncols; col++)
+        for(row = 0; row < icon_view->priv->nrows; row++)
+            icon_view->priv->grid_layout[col * icon_view->priv->nrows + row] = NULL;
+
+    /* start at appropriate position */
+    if(icon_view->priv->gravity & GRAVITY_HORIZONTAL) {
+        row = -1;
+        col = icon_view->priv->ncols - 1;
+    } else {
+        row = icon_view->priv->nrows - 1;
+        col = -1;
+    }
+
+    if(icon_view->priv->gravity & GRAVITY_RIGHT)
+        col = icon_view->priv->ncols - 1 - col;
+    if(icon_view->priv->gravity & GRAVITY_BOTTOM)
+        row = icon_view->priv->nrows - 1 - row;
 
     /* Append the icons: special, folder, then regular */
     for(i = 0; i < sizeof(icons) / sizeof(icons[0]); ++i) {
@@ -3146,7 +3205,7 @@ xfdesktop_move_all_cached_icons_to_desktop(XfdesktopIconView *icon_view)
             XF_DEBUG("icon %s setting position row%dxcol%d",
                      xfdesktop_icon_peek_label(icon), row, col);
 
-            /* Make sure the spot is available */
+            /* Make sure the slot is available */
             if(xfdesktop_grid_is_free_position(icon_view, row, col)) {
                 xfdesktop_icon_set_position(icon, row, col);
                 xfdesktop_icon_view_add_item_internal(icon_view, icon);
@@ -3166,7 +3225,7 @@ xfdesktop_move_all_cached_icons_to_desktop(XfdesktopIconView *icon_view)
 #endif
 }
 
-/* Takes any icons in the pending icons list that has their original spot open.
+/* Takes any icons in the pending icons list that has their original slot open.
  * This way icons stay somewhat stable during minor resolution changes */
 static void
 xfdesktop_move_all_previous_icons_to_desktop(XfdesktopIconView *icon_view)
@@ -3307,7 +3366,7 @@ xfdesktop_grid_is_free_position(XfdesktopIconView *icon_view,
         return FALSE;
     }
 
-    if(row >= icon_view->priv->nrows || col >= icon_view->priv->ncols)
+    if(row >= icon_view->priv->nrows || col >= icon_view->priv->ncols || row < 0 || col < 0)
     {
         return FALSE;
     }
@@ -3321,19 +3380,48 @@ xfdesktop_grid_get_next_free_position(XfdesktopIconView *icon_view,
                                       gint16 *row,
                                       gint16 *col)
 {
-    gint i, maxi;
-    
+    gint16 i, j, c, r, idx;
+
     g_return_val_if_fail(row && col, FALSE);
-    
-    maxi = icon_view->priv->nrows * icon_view->priv->ncols;
-    for(i = 0; i < maxi; ++i) {
-        if(!icon_view->priv->grid_layout[i]) {
-            *row = i % icon_view->priv->nrows;
-            *col = i / icon_view->priv->nrows;
-            return TRUE;
+
+    if(icon_view->priv->gravity & GRAVITY_HORIZONTAL) {
+        for(j = 0; j < icon_view->priv->nrows; ++j) {
+            r = (icon_view->priv->gravity & GRAVITY_BOTTOM) ?
+                 icon_view->priv->nrows - 1 - j : j;
+
+            for(i = 0; i < icon_view->priv->ncols; ++i) {
+                c = (icon_view->priv->gravity & GRAVITY_RIGHT) ?
+                     icon_view->priv->ncols - 1 - i : i;
+
+                idx = c * icon_view->priv->nrows + r;
+
+                if(!icon_view->priv->grid_layout[idx]) {
+                    *col = c;
+                    *row = r;
+                    return TRUE;
+                }
+            }
+        }
+    } else {
+        for(i = 0; i < icon_view->priv->ncols; ++i) {
+            c = (icon_view->priv->gravity & GRAVITY_RIGHT) ?
+                 icon_view->priv->ncols - 1 - i : i;
+
+            for(j = 0; j < icon_view->priv->nrows; ++j) {
+                r = (icon_view->priv->gravity & GRAVITY_BOTTOM) ?
+                    icon_view->priv->nrows - 1 - j : j;
+
+                idx = c * icon_view->priv->nrows + r;
+
+                if(!icon_view->priv->grid_layout[idx]) {
+                    *col = c;
+                    *row = r;
+                    return TRUE;
+                }
+            }
         }
     }
-    
+
     return FALSE;
 }
 
@@ -3344,7 +3432,8 @@ xfdesktop_grid_set_position_free(XfdesktopIconView *icon_view,
                                  gint16 col)
 {
     g_return_if_fail(row < icon_view->priv->nrows
-                     && col < icon_view->priv->ncols);
+                     && col < icon_view->priv->ncols
+                     && row >= 0 && col >= 0);
     
 #if 0 /*def DEBUG*/
     DUMP_GRID_LAYOUT(icon_view);
@@ -3366,7 +3455,8 @@ xfdesktop_grid_unset_position_free_raw(XfdesktopIconView *icon_view,
     gint idx;
     
     g_return_val_if_fail(row < icon_view->priv->nrows
-                         && col < icon_view->priv->ncols, FALSE);
+                         && col < icon_view->priv->ncols
+                         && row >= 0 && col >= 0, FALSE);
     
     idx = col * icon_view->priv->nrows + row;
     if(icon_view->priv->grid_layout[idx])
@@ -3523,6 +3613,12 @@ xfdesktop_icon_view_new(XfdesktopIconViewManager *manager)
                            "single_click");
 
     xfconf_g_property_bind(icon_view->priv->channel,
+                           "/desktop-icons/gravity",
+                           G_TYPE_INT,
+                           G_OBJECT(icon_view),
+                           "gravity");
+
+    xfconf_g_property_bind(icon_view->priv->channel,
                            "/desktop-icons/show-tooltips",
                            G_TYPE_BOOLEAN,
                            G_OBJECT(icon_view),
@@ -3603,10 +3699,12 @@ xfdesktop_icon_view_icon_find_position(XfdesktopIconView *icon_view,
 {
     gint16 row, col;
     
-    if(!xfdesktop_icon_get_position(icon, &row, &col)
-       || !xfdesktop_grid_is_free_position(icon_view, row, col))
+    if (!xfdesktop_icon_get_position(icon, &row, &col)
+        || !xfdesktop_grid_is_free_position(icon_view, row, col)
+        || (((icon_view->priv->gravity & GRAVITY_BOTTOM) ||
+             (icon_view->priv->gravity & GRAVITY_RIGHT)) && row == 0 && col == 0))
     {
-        if(xfdesktop_grid_get_next_free_position(icon_view, &row, &col)) {
+        if (xfdesktop_grid_get_next_free_position(icon_view, &row, &col)) {
             XF_DEBUG("old position didn't exist or isn't free, got (%d,%d) instead",
                      row, col);
             xfdesktop_icon_set_position(icon, row, col);
@@ -3909,8 +4007,7 @@ xfdesktop_icon_view_widget_coords_to_item(XfdesktopIconView *icon_view,
     gint16 row, col;
     
     xfdesktop_xy_to_rowcol(icon_view, wx, wy, &row, &col);
-    if(row < 0 || col < 0 || row >= icon_view->priv->nrows
-       || col >= icon_view->priv->ncols)
+    if(row >= icon_view->priv->nrows || col >= icon_view->priv->ncols || row < 0 || col < 0)
     {
         return NULL;
     }
