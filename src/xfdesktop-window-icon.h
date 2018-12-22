@@ -39,7 +39,7 @@ typedef struct _XfdesktopWindowIconPrivate  XfdesktopWindowIconPrivate;
 struct _XfdesktopWindowIcon
 {
     XfdesktopIcon parent;
-    
+
     /*< private >*/
     XfdesktopWindowIconPrivate *priv;
 };

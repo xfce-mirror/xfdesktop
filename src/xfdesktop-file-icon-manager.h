@@ -40,7 +40,7 @@ typedef struct _XfdesktopFileIconManagerPrivate  XfdesktopFileIconManagerPrivate
 struct _XfdesktopFileIconManager
 {
     GObject parent;
-    
+
     /*< private >*/
     XfdesktopFileIconManagerPrivate *priv;
 };

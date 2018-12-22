@@ -124,7 +124,7 @@ menu_settings_changed(XfconfChannel *channel,
 
 void
 menu_init(XfconfChannel *channel)
-{    
+{
 #ifdef USE_DESKTOP_MENU
     if(!channel || xfconf_channel_get_bool(channel, "/desktop-menu/show", TRUE))
     {

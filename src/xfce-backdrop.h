@@ -74,7 +74,7 @@ typedef enum
 struct _XfceBackdrop
 {
     GObject gobject;
-    
+
     /*< private >*/
     XfceBackdropPriv *priv;
 };
@@ -82,7 +82,7 @@ struct _XfceBackdrop
 struct _XfceBackdropClass
 {
     GObjectClass parent_class;
-    
+
     /*< signals >*/
     void (*changed)(XfceBackdrop *backdrop);
     void (*cycle)(XfceBackdrop *backdrop);

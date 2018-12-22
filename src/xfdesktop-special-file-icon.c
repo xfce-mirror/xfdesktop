@@ -61,7 +61,7 @@ struct _XfdesktopSpecialFileIconPrivate
     GFileInfo *filesystem_info;
     GFile *file;
     GdkScreen *gscreen;
-    
+
     /* only needed for trash */
     guint trash_item_count;
 };
@@ -115,11 +115,11 @@ xfdesktop_special_file_icon_class_init(XfdesktopSpecialFileIconClass *klass)
     GObjectClass *gobject_class = (GObjectClass *)klass;
     XfdesktopIconClass *icon_class = (XfdesktopIconClass *)klass;
     XfdesktopFileIconClass *file_icon_class = (XfdesktopFileIconClass *)klass;
-    
+
     g_type_class_add_private(klass, sizeof(XfdesktopSpecialFileIconPrivate));
-    
+
     gobject_class->finalize = xfdesktop_special_file_icon_finalize;
-    
+
     icon_class->peek_pixbuf = xfdesktop_special_file_icon_peek_pixbuf;
     icon_class->peek_label = xfdesktop_special_file_icon_peek_label;
     icon_class->get_identifier = xfdesktop_special_file_icon_get_identifier;
@@ -129,7 +129,7 @@ xfdesktop_special_file_icon_class_init(XfdesktopSpecialFileIconClass *klass)
     icon_class->get_allowed_drop_actions = xfdesktop_special_file_icon_get_allowed_drop_actions;
     icon_class->do_drop_dest = xfdesktop_special_file_icon_do_drop_dest;
     icon_class->populate_context_menu = xfdesktop_special_file_icon_populate_context_menu;
-    
+
     file_icon_class->peek_file_info = xfdesktop_special_file_icon_peek_file_info;
     file_icon_class->peek_filesystem_info = xfdesktop_special_file_icon_peek_filesystem_info;
     file_icon_class->peek_file = xfdesktop_special_file_icon_peek_file;
@@ -150,7 +150,7 @@ xfdesktop_special_file_icon_finalize(GObject *obj)
 {
     XfdesktopSpecialFileIcon *icon = XFDESKTOP_SPECIAL_FILE_ICON(obj);
     GtkIconTheme *itheme = gtk_icon_theme_get_for_screen(icon->priv->gscreen);
-    
+
     g_signal_handlers_disconnect_by_func(G_OBJECT(itheme),
                                          G_CALLBACK(xfdesktop_icon_invalidate_pixbuf),
                                          icon);
@@ -161,7 +161,7 @@ xfdesktop_special_file_icon_finalize(GObject *obj)
                                              icon);
         g_object_unref(icon->priv->monitor);
     }
-    
+
     g_object_unref(icon->priv->file);
 
     if(icon->priv->file_info)
@@ -169,7 +169,7 @@ xfdesktop_special_file_icon_finalize(GObject *obj)
 
     if(icon->priv->tooltip)
         g_free(icon->priv->tooltip);
-    
+
     G_OBJECT_CLASS(xfdesktop_special_file_icon_parent_class)->finalize(obj);
 }
 
@@ -178,7 +178,7 @@ static gchar *
 xfdesktop_special_file_icon_tfi_get_uri_scheme(ThunarxFileInfo *file_info)
 {
     XfdesktopSpecialFileIcon *icon = XFDESKTOP_SPECIAL_FILE_ICON(file_info);
-    
+
     if(XFDESKTOP_SPECIAL_FILE_ICON_TRASH == icon->priv->type)
         return g_strdup("trash");
     else
@@ -290,7 +290,7 @@ xfdesktop_special_file_icon_peek_label(XfdesktopIcon *icon)
 {
     XfdesktopSpecialFileIcon *special_file_icon = XFDESKTOP_SPECIAL_FILE_ICON(icon);
     GFileInfo *info = special_file_icon->priv->file_info;
-    
+
     if(XFDESKTOP_SPECIAL_FILE_ICON_HOME == special_file_icon->priv->type)
         return _("Home");
     else if(XFDESKTOP_SPECIAL_FILE_ICON_FILESYSTEM == special_file_icon->priv->type)
@@ -319,27 +319,27 @@ xfdesktop_special_file_icon_get_allowed_drag_actions(XfdesktopIcon *icon)
 {
     XfdesktopSpecialFileIcon *special_file_icon = XFDESKTOP_SPECIAL_FILE_ICON(icon);
     GdkDragAction actions = 0;
-    
+
     switch(special_file_icon->priv->type) {
         case XFDESKTOP_SPECIAL_FILE_ICON_FILESYSTEM:
             /* move is just impossible, and copy seems a bit retarded.  link
              * is possible */
             actions = GDK_ACTION_LINK;
             break;
-        
+
         case XFDESKTOP_SPECIAL_FILE_ICON_HOME:
             /* user shouldn't be able to move their own homedir.  copy might
              * be a little silly, but allow it anyway.  link is fine. */
             actions = GDK_ACTION_COPY | GDK_ACTION_LINK;
             break;
-            
+
         case XFDESKTOP_SPECIAL_FILE_ICON_TRASH:
             /* move is impossible, but we can copy and link the trash root
              * anywhere */
             actions = GDK_ACTION_COPY | GDK_ACTION_LINK;
             break;
     }
-    
+
     return actions;
 }
 
@@ -369,7 +369,7 @@ xfdesktop_special_file_icon_get_allowed_drop_actions(XfdesktopIcon *icon,
         if(suggested_action)
             *suggested_action = GDK_ACTION_MOVE;
     }
-    
+
     if(suggested_action)
         *suggested_action = 0;
 
@@ -387,19 +387,19 @@ xfdesktop_special_file_icon_do_drop_dest(XfdesktopIcon *icon,
     GFile *src_file;
     GFile *dest_file = NULL;
     gboolean result = FALSE;
-    
+
     TRACE("entering");
-    
+
     g_return_val_if_fail(special_file_icon && src_file_icon, FALSE);
     g_return_val_if_fail(xfdesktop_special_file_icon_get_allowed_drop_actions(icon, NULL),
                          FALSE);
-    
+
     src_file = xfdesktop_file_icon_peek_file(src_file_icon);
 
     src_info = xfdesktop_file_icon_peek_file_info(src_file_icon);
     if(!src_info)
         return FALSE;
-    
+
     if(special_file_icon->priv->type == XFDESKTOP_SPECIAL_FILE_ICON_TRASH) {
         GList files;
 
@@ -415,7 +415,7 @@ xfdesktop_special_file_icon_do_drop_dest(XfdesktopIcon *icon,
         gchar *name = g_file_get_basename(src_file);
         if(!name)
             return FALSE;
-    
+
         switch(action) {
             case GDK_ACTION_MOVE:
                 XF_DEBUG("doing move");
@@ -452,7 +452,7 @@ static const gchar *
 xfdesktop_special_file_icon_peek_tooltip(XfdesktopIcon *icon)
 {
     XfdesktopSpecialFileIcon *special_file_icon = XFDESKTOP_SPECIAL_FILE_ICON(icon);
-    
+
     if(!special_file_icon->priv->tooltip) {
         GFileInfo *info = xfdesktop_file_icon_peek_file_info(XFDESKTOP_FILE_ICON(icon));
 
@@ -466,7 +466,7 @@ xfdesktop_special_file_icon_peek_tooltip(XfdesktopIcon *icon)
                 special_file_icon->priv->tooltip = g_strdup_printf(g_dngettext(GETTEXT_PACKAGE,
                                                                                _("Trash contains one item"),
                                                                                _("Trash contains %d items"),
-                                                                               special_file_icon->priv->trash_item_count), 
+                                                                               special_file_icon->priv->trash_item_count),
 
                                                                    special_file_icon->priv->trash_item_count);
             }
@@ -493,7 +493,7 @@ xfdesktop_special_file_icon_peek_tooltip(XfdesktopIcon *icon)
                                                      G_FILE_ATTRIBUTE_TIME_MODIFIED);
             time_string = xfdesktop_file_utils_format_time_for_display(mtime);
 
-            special_file_icon->priv->tooltip = 
+            special_file_icon->priv->tooltip =
                 g_strdup_printf(_("%s\nSize: %s\nLast modified: %s"),
                                 description, size_string, time_string);
 
@@ -501,7 +501,7 @@ xfdesktop_special_file_icon_peek_tooltip(XfdesktopIcon *icon)
             g_free(time_string);
         }
     }
-    
+
     return special_file_icon->priv->tooltip;
 }
 
@@ -514,7 +514,7 @@ xfdesktop_special_file_icon_trash_open(GtkWidget *w,
 
     icon_view = xfdesktop_icon_peek_icon_view(XFDESKTOP_ICON(file_icon));
     toplevel = gtk_widget_get_toplevel(icon_view);
-    
+
     xfdesktop_file_utils_open_folder(file_icon->priv->file,
                                      file_icon->priv->gscreen,
                                      GTK_WINDOW(toplevel));
@@ -540,17 +540,17 @@ xfdesktop_special_file_icon_populate_context_menu(XfdesktopIcon *icon,
 {
     XfdesktopSpecialFileIcon *special_file_icon = XFDESKTOP_SPECIAL_FILE_ICON(icon);
     GtkWidget *mi, *img;
-    
+
     if(XFDESKTOP_SPECIAL_FILE_ICON_TRASH != special_file_icon->priv->type)
         return FALSE;
-    
+
     img = gtk_image_new_from_icon_name("document-open", GTK_ICON_SIZE_MENU);
     mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Open"), img);
     gtk_widget_show(mi);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
     g_signal_connect(G_OBJECT(mi), "activate",
                      G_CALLBACK(xfdesktop_special_file_icon_trash_open), icon);
-    
+
     mi = gtk_separator_menu_item_new();
     gtk_widget_show(mi);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
@@ -560,7 +560,7 @@ xfdesktop_special_file_icon_populate_context_menu(XfdesktopIcon *icon,
     } else {
         img = gtk_image_new_from_icon_name("user-trash-full", GTK_ICON_SIZE_MENU);
     }
-    
+
     mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Empty Trash"), img);
     gtk_widget_show(mi);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
@@ -570,7 +570,7 @@ xfdesktop_special_file_icon_populate_context_menu(XfdesktopIcon *icon,
                          icon);
     } else
         gtk_widget_set_sensitive(mi, FALSE);
-    
+
     return TRUE;
 }
 
@@ -625,7 +625,7 @@ xfdesktop_special_file_icon_changed(GFileMonitor *monitor,
     }
 
     /* reload the file information */
-    special_file_icon->priv->file_info = g_file_query_info(special_file_icon->priv->file, 
+    special_file_icon->priv->file_info = g_file_query_info(special_file_icon->priv->file,
                                                            XFDESKTOP_FILE_INFO_NAMESPACE,
                                                            G_FILE_QUERY_INFO_NONE,
                                                            NULL, NULL);
@@ -699,30 +699,30 @@ xfdesktop_special_file_icon_new(XfdesktopSpecialFileIconType type,
 {
     XfdesktopSpecialFileIcon *special_file_icon;
     GFile *file = NULL;
-    
+
     switch(type) {
         case XFDESKTOP_SPECIAL_FILE_ICON_FILESYSTEM:
             file = g_file_new_for_uri("file:///");
             break;
-        
+
         case XFDESKTOP_SPECIAL_FILE_ICON_HOME:
             file = g_file_new_for_path(xfce_get_homedir());
             break;
-        
+
         case XFDESKTOP_SPECIAL_FILE_ICON_TRASH:
             file = g_file_new_for_uri("trash:///");
             break;
-        
+
         default:
             g_return_val_if_reached(NULL);
     }
-    
+
     special_file_icon = g_object_new(XFDESKTOP_TYPE_SPECIAL_FILE_ICON, NULL);
     special_file_icon->priv->type = type;
     special_file_icon->priv->gscreen = screen;
     special_file_icon->priv->file = file;
 
-    special_file_icon->priv->file_info = g_file_query_info(file, 
+    special_file_icon->priv->file_info = g_file_query_info(file,
                                                            XFDESKTOP_FILE_INFO_NAMESPACE,
                                                            G_FILE_QUERY_INFO_NONE,
                                                            NULL, NULL);
@@ -754,7 +754,7 @@ xfdesktop_special_file_icon_new(XfdesktopSpecialFileIconType type,
                          G_CALLBACK(xfdesktop_special_file_icon_changed),
                          special_file_icon);
     }
-    
+
     return special_file_icon;
 }
 

@@ -38,7 +38,7 @@ typedef struct _XfdesktopIconPrivate XfdesktopIconPrivate;
 struct _XfdesktopIcon
 {
     GObject parent;
-    
+
     /*< private >*/
     XfdesktopIconPrivate *priv;
 };
@@ -46,13 +46,13 @@ struct _XfdesktopIcon
 struct _XfdesktopIconClass
 {
     GObjectClass parent;
-    
+
     /*< signals >*/
     void (*pixbuf_changed)(XfdesktopIcon *icon);
     void (*label_changed)(XfdesktopIcon *icon);
-    
+
     void (*position_changed)(XfdesktopIcon *icon);
-    
+
     void (*selected)(XfdesktopIcon *icon);
     /* XfdektopIcon::activated has weird semantics: you should NEVER connect to
      * this signal normally: always use g_signal_connect_after(), as the default
@@ -61,13 +61,13 @@ struct _XfdesktopIconClass
      * with return values are (for some unknown reason) not allowed to be
      * G_SIGNAL_RUN_FIRST.  go figure. */
     gboolean (*activated)(XfdesktopIcon *icon);
-    
+
     /*< virtual functions >*/
     GdkPixbuf *(*peek_pixbuf)(XfdesktopIcon *icon, gint width, gint height);
     const gchar *(*peek_label)(XfdesktopIcon *icon);
-    
+
     GdkDragAction (*get_allowed_drag_actions)(XfdesktopIcon *icon);
-    
+
     GdkDragAction (*get_allowed_drop_actions)(XfdesktopIcon *icon, GdkDragAction *suggested_action);
     gboolean (*do_drop_dest)(XfdesktopIcon *icon, XfdesktopIcon *src_icon, GdkDragAction action);
 
@@ -75,7 +75,7 @@ struct _XfdesktopIconClass
     const gchar *(*peek_tooltip)(XfdesktopIcon *icon);
 
     gchar *(*get_identifier)(XfdesktopIcon *icon);
-    
+
     void (*set_thumbnail_file)(XfdesktopIcon *icon, GFile *file);
     void (*delete_thumbnail_file)(XfdesktopIcon *icon);
 

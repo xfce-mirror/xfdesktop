@@ -49,13 +49,13 @@ struct _XfdesktopFileIcon
 struct _XfdesktopFileIconClass
 {
     XfdesktopIconClass parent;
-    
+
     /*< virtual functions >*/
     GFileInfo *(*peek_file_info)(XfdesktopFileIcon *icon);
     GFileInfo *(*peek_filesystem_info)(XfdesktopFileIcon *icon);
     GFile *(*peek_file)(XfdesktopFileIcon *icon);
     void (*update_file_info)(XfdesktopFileIcon *icon, GFileInfo *info);
-    
+
     gboolean (*can_rename_file)(XfdesktopFileIcon *icon);
     gboolean (*can_delete_file)(XfdesktopFileIcon *icon);
 };

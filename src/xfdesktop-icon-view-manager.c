@@ -31,7 +31,7 @@ GType
 xfdesktop_icon_view_manager_get_type(void)
 {
     static GType manager_type = 0;
-    
+
     if(!manager_type) {
         static const GTypeInfo manager_info = {
             sizeof(XfdesktopIconViewManagerIface),
@@ -44,13 +44,13 @@ xfdesktop_icon_view_manager_get_type(void)
             0,
             NULL,
         };
-        
+
         manager_type = g_type_register_static(G_TYPE_INTERFACE,
                                             "XfdesktopIconViewManager",
                                             &manager_info, 0);
         g_type_interface_add_prerequisite(manager_type, G_TYPE_OBJECT);
     }
-    
+
     return manager_type;
 }
 
@@ -59,13 +59,13 @@ xfdesktop_icon_view_manager_init(XfdesktopIconViewManager *manager,
                                  XfdesktopIconView *icon_view)
 {
     XfdesktopIconViewManagerIface *iface;
-    
+
     g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW_MANAGER(manager)
                          && XFDESKTOP_IS_ICON_VIEW(icon_view), FALSE);
-    
+
     iface = XFDESKTOP_ICON_VIEW_MANAGER_GET_IFACE(manager);
     g_return_val_if_fail(iface->manager_init, FALSE);
-    
+
     return iface->manager_init(manager, icon_view);
 }
 
@@ -73,12 +73,12 @@ void
 xfdesktop_icon_view_manager_fini(XfdesktopIconViewManager *manager)
 {
     XfdesktopIconViewManagerIface *iface;
-    
+
     g_return_if_fail(XFDESKTOP_IS_ICON_VIEW_MANAGER(manager));
-    
+
     iface = XFDESKTOP_ICON_VIEW_MANAGER_GET_IFACE(manager);
     g_return_if_fail(iface->manager_fini);
-    
+
     iface->manager_fini(manager);
 }
 
@@ -91,12 +91,12 @@ xfdesktop_icon_view_manager_drag_drop(XfdesktopIconViewManager *manager,
                                       guint time_)
 {
     XfdesktopIconViewManagerIface *iface;
-    
+
     g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW_MANAGER(manager), FALSE);
-    
+
     iface = XFDESKTOP_ICON_VIEW_MANAGER_GET_IFACE(manager);
     g_return_val_if_fail(iface->drag_drop, FALSE);
-    
+
     return iface->drag_drop(manager, drop_icon, context, row, col, time_);
 }
 
@@ -111,12 +111,12 @@ xfdesktop_icon_view_manager_drag_data_received(XfdesktopIconViewManager *manager
                                                guint time_)
 {
     XfdesktopIconViewManagerIface *iface;
-    
+
     g_return_if_fail(XFDESKTOP_IS_ICON_VIEW_MANAGER(manager));
-    
+
     iface = XFDESKTOP_ICON_VIEW_MANAGER_GET_IFACE(manager);
     g_return_if_fail(iface->drag_data_received);
-    
+
     iface->drag_data_received(manager, drop_icon, context, row, col, data, info,
                               time_);
 }
@@ -130,12 +130,12 @@ xfdesktop_icon_view_manager_drag_data_get(XfdesktopIconViewManager *manager,
                                           guint time_)
 {
     XfdesktopIconViewManagerIface *iface;
-    
+
     g_return_if_fail(XFDESKTOP_IS_ICON_VIEW_MANAGER(manager));
-    
+
     iface = XFDESKTOP_ICON_VIEW_MANAGER_GET_IFACE(manager);
     g_return_if_fail(iface->drag_data_get);
-    
+
     iface->drag_data_get(manager, drag_icons, context, data, info, time_);
 }
 

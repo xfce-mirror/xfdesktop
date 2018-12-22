@@ -42,12 +42,12 @@ struct _XfdesktopIconView;
 struct _XfdesktopIconViewManagerIface
 {
     GTypeInterface g_iface;
-    
+
     /*< virtual functions >*/
     gboolean (*manager_init)(XfdesktopIconViewManager *manager,
                              struct _XfdesktopIconView *icon_view);
     void (*manager_fini)(XfdesktopIconViewManager *manager);
-    
+
     gboolean (*drag_drop)(XfdesktopIconViewManager *manager,
                           XfdesktopIcon *drop_icon,
                           GdkDragContext *context,

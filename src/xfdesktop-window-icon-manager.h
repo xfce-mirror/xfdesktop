@@ -39,7 +39,7 @@ typedef struct _XfdesktopWindowIconManagerPrivate  XfdesktopWindowIconManagerPri
 struct _XfdesktopWindowIconManager
 {
     GObject parent;
-    
+
     /*< private >*/
     XfdesktopWindowIconManagerPrivate *priv;
 };

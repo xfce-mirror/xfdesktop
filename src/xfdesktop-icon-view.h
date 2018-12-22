@@ -42,7 +42,7 @@ typedef void (*XfdesktopIconViewIconFiniFunc)(XfdesktopIconView *icon_view);
 struct _XfdesktopIconView
 {
     GtkWidget parent;
-    
+
     /*< private >*/
     XfdesktopIconViewPrivate *priv;
 };
@@ -50,7 +50,7 @@ struct _XfdesktopIconView
 struct _XfdesktopIconViewClass
 {
     GtkWidgetClass parent;
-    
+
     /*< signals >*/
     void (*icon_selection_changed)(XfdesktopIconView *icon_view);
     void (*icon_activated)(XfdesktopIconView *icon_view);

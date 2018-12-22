@@ -422,7 +422,7 @@ xfdesktop_clipboard_manager_targets_received (GtkClipboard     *clipboard,
   GdkAtom                *targets;
   gint                    n_targets;
   gint                    n;
-  
+
   g_return_if_fail (GTK_IS_CLIPBOARD (clipboard));
   g_return_if_fail (XFDESKTOP_IS_CLIPBOARD_MANAGER (manager));
   g_return_if_fail (manager->clipboard == clipboard);
@@ -442,7 +442,7 @@ xfdesktop_clipboard_manager_targets_received (GtkClipboard     *clipboard,
 
       g_free (targets);
     }
-  
+
   /* notify listeners that we have a new clipboard state */
   g_signal_emit (G_OBJECT (manager), manager_signals[CHANGED], 0);
   g_object_notify (G_OBJECT (manager), "can-paste");
@@ -555,7 +555,7 @@ xfdesktop_clipboard_manager_transfer_files (XfdesktopClipboardManager *manager,
     {
       file = g_object_ref (G_OBJECT (lp->data));
       manager->files = g_list_prepend (manager->files, file);
-      g_object_weak_ref(G_OBJECT(file), 
+      g_object_weak_ref(G_OBJECT(file),
                         (GWeakNotify)xfdesktop_clipboard_manager_file_destroyed,
                         manager);
     }

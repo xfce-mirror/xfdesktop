@@ -352,7 +352,7 @@ xfdesktop_thumbnailer_dequeue_foreach(gpointer data, gpointer user_data)
 
 /**
  * xfdesktop_thumbnailer_dequeue_thumbnail:
- * 
+ *
  * Removes a file from the list of pending thumbnail creations.
  * This is not guaranteed to always remove the file, if processing
  * of that thumbnail has started it won't stop.
@@ -573,7 +573,7 @@ xfdesktop_thumbnailer_thumbnail_ready_dbus(TumblerThumbnailer1 *proxy,
         } else {
             iter = g_slist_next(iter);
         }
-        
+
         g_object_unref(file);
         g_free(f_uri);
     }
@@ -581,7 +581,7 @@ xfdesktop_thumbnailer_thumbnail_ready_dbus(TumblerThumbnailer1 *proxy,
 
 /**
  * xfdesktop_thumbnailer_delete_thumbnail:
- * 
+ *
  * Tells the thumbnail service the src_file will be deleted.
  * This function should be called when the file is deleted or moved so
  * the thumbnail file doesn't take up space on the user's drive.

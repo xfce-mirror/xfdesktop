@@ -33,8 +33,8 @@
 gboolean xfdesktop_file_utils_is_desktop_file(GFileInfo *info);
 gboolean xfdesktop_file_utils_file_is_executable(GFileInfo *info);
 gchar *xfdesktop_file_utils_format_time_for_display(guint64 file_time);
-GKeyFile *xfdesktop_file_utils_query_key_file(GFile *file, 
-                                              GCancellable *cancellable, 
+GKeyFile *xfdesktop_file_utils_query_key_file(GFile *file,
+                                              GCancellable *cancellable,
                                               GError **error);
 gchar *xfdesktop_file_utils_get_display_name(GFile *file,
                                              GFileInfo *info);

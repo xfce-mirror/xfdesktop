@@ -63,11 +63,11 @@ xfdesktop_window_icon_class_init(XfdesktopWindowIconClass *klass)
 {
     GObjectClass *gobject_class = (GObjectClass *)klass;
     XfdesktopIconClass *icon_class = (XfdesktopIconClass *)klass;
-    
+
     g_type_class_add_private(klass, sizeof(XfdesktopWindowIconPrivate));
-    
+
     gobject_class->finalize = xfdesktop_window_icon_finalize;
-    
+
     icon_class->peek_pixbuf = xfdesktop_window_icon_peek_pixbuf;
     icon_class->peek_label = xfdesktop_window_icon_peek_label;
     icon_class->get_identifier = xfdesktop_window_icon_get_identifier;
@@ -88,9 +88,9 @@ xfdesktop_window_icon_finalize(GObject *obj)
     XfdesktopWindowIcon *icon = XFDESKTOP_WINDOW_ICON(obj);
     gchar data_name[256];
     gint16 row, col;
-    
+
     g_free(icon->priv->label);
-    
+
     /* save previous position */
     if(xfdesktop_icon_get_position(XFDESKTOP_ICON(icon), &row, &col)) {
         g_snprintf(data_name, 256, "--xfdesktop-last-row-%d",
@@ -102,14 +102,14 @@ xfdesktop_window_icon_finalize(GObject *obj)
         g_object_set_data(G_OBJECT(icon->priv->window),
                           data_name, GUINT_TO_POINTER(col + 1));
     }
-    
+
     g_signal_handlers_disconnect_by_func(G_OBJECT(icon->priv->window),
                                          G_CALLBACK(xfdesktop_window_name_changed_cb),
                                          icon);
     g_signal_handlers_disconnect_by_func(G_OBJECT(icon->priv->window),
                                          G_CALLBACK(xfdesktop_window_icon_changed_cb),
                                          icon);
-    
+
     G_OBJECT_CLASS(xfdesktop_window_icon_parent_class)->finalize(obj);
 }
 
@@ -120,10 +120,10 @@ xfdesktop_window_name_changed_cb(WnckWindow *window,
                                  gpointer user_data)
 {
     XfdesktopWindowIcon *icon = user_data;
-    
+
     g_free(icon->priv->label);
     icon->priv->label = NULL;
-    
+
     xfdesktop_icon_label_changed(XFDESKTOP_ICON(icon));
 }
 
@@ -159,10 +159,10 @@ static const gchar *
 xfdesktop_window_icon_peek_label(XfdesktopIcon *icon)
 {
     XfdesktopWindowIcon *window_icon = XFDESKTOP_WINDOW_ICON(icon);
-    
+
     if(!window_icon->priv->label)
         window_icon->priv->label = g_strdup(wnck_window_get_name(window_icon->priv->window));
-    
+
     return window_icon->priv->label;
 }
 
@@ -176,10 +176,10 @@ static gboolean
 xfdesktop_window_icon_activated(XfdesktopIcon *icon)
 {
     XfdesktopWindowIcon *window_icon = XFDESKTOP_WINDOW_ICON(icon);
-    
+
     wnck_window_activate(window_icon->priv->window,
                          gtk_get_current_event_time());
-    
+
     return TRUE;
 }
 
@@ -208,10 +208,10 @@ xfdesktop_window_icon_new(WnckWindow *window,
     XfdesktopWindowIcon *icon = g_object_new(XFDESKTOP_TYPE_WINDOW_ICON, NULL);
     gchar data_name[256];
     gint row, col;
-    
+
     icon->priv->window = window;
     icon->priv->workspace = workspace;
-    
+
     /* check for availability of old position (if any) */
     g_snprintf(data_name, 256, "--xfdesktop-last-row-%d", workspace);
     row = GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(window),
@@ -221,14 +221,14 @@ xfdesktop_window_icon_new(WnckWindow *window,
                                              data_name));
     if(row > 0 && col > 0)
         xfdesktop_icon_set_position(XFDESKTOP_ICON(icon), row - 1, col - 1);
-    
+
     g_signal_connect(G_OBJECT(window), "name-changed",
                      G_CALLBACK(xfdesktop_window_name_changed_cb),
                      icon);
     g_signal_connect(G_OBJECT(window), "icon-changed",
                      G_CALLBACK(xfdesktop_window_icon_changed_cb),
                      icon);
-    
+
     return icon;
 }
 

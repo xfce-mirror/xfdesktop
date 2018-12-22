@@ -104,7 +104,7 @@ static void
 activate_window(GtkWidget *w, gpointer user_data)
 {
     WnckWindow *wnck_window = user_data;
-    
+
     if(!wnck_window_is_sticky(wnck_window)) {
         wnck_workspace_activate(wnck_window_get_workspace(wnck_window),
                                 gtk_get_current_event_time());
@@ -117,7 +117,7 @@ window_destroyed_cb(gpointer data, GObject *where_the_object_was)
 {
     GtkWidget *mi = data;
     GtkWidget *menu = gtk_widget_get_parent(mi);
-    
+
     if(mi && menu)
         gtk_container_remove(GTK_CONTAINER(menu), mi);
 }
@@ -206,7 +206,7 @@ menu_item_from_wnck_window(WnckWindow *wnck_window, gint icon_width,
 
     gtk_container_forall(GTK_CONTAINER(mi), menulist_set_label_flags,
                          &truncated);
-    
+
     return mi;
 }
 
@@ -248,15 +248,15 @@ windowlist_populate(XfceDesktop *desktop,
     GList *windows, *l;
     WnckWindow *wnck_window;
     gint w, h;
-    
+
     if(!show_windowlist)
         return;
-    
+
     if(gtk_widget_has_screen(GTK_WIDGET(menu)))
         gscreen = gtk_widget_get_screen(GTK_WIDGET(menu));
     else
         gscreen = gdk_display_get_default_screen(gdk_display_get_default());
-    
+
     /* check to see if the menu is empty.  if not, add the windowlist to a
      * submenu */
     menu_children = gtk_container_get_children(GTK_CONTAINER(menu));
@@ -268,27 +268,27 @@ windowlist_populate(XfceDesktop *desktop,
         mi = gtk_separator_menu_item_new();
         gtk_widget_show(mi);
         gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-        
+
         mi = gtk_menu_item_new_with_label(_("Window List"));
         gtk_widget_show(mi);
         gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-        
+
         gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi), tmpmenu);
         menu = (GtkMenuShell *)tmpmenu;
         g_list_free(menu_children);
     }
-    
+
     gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &w, &h);
 
     wnck_screen = wnck_screen_get(XScreenNumberOfScreen(gdk_x11_screen_get_xscreen(gtk_widget_get_screen(GTK_WIDGET(menu)))));
     wnck_screen_force_update (wnck_screen);
     nworkspaces = wnck_screen_get_workspace_count(wnck_screen);
     active_workspace = wnck_screen_get_active_workspace(wnck_screen);
-    
+
     for(i = 0; i < nworkspaces; i++) {
         wnck_workspace = wnck_screen_get_workspace(wnck_screen, i);
         submenu = (GtkWidget *)menu;
-        
+
         if(wl_show_ws_names || wl_submenus) {
             ws_name = wnck_workspace_get_name(wnck_workspace);
 
@@ -300,7 +300,7 @@ windowlist_populate(XfceDesktop *desktop,
                 ws_label = g_strdup_printf("<b>%s</b>", ws_name_esc);
                 g_free(ws_name_esc);
             }
-            
+
             mi = gtk_menu_item_new_with_label(ws_label);
             g_free(ws_label);
             label = gtk_bin_get_child(GTK_BIN(mi));
@@ -318,19 +318,19 @@ windowlist_populate(XfceDesktop *desktop,
                                          G_CALLBACK(wnck_workspace_activate),
                                          wnck_workspace);
             }
-            
+
             if(wl_submenus) {
                 submenu = gtk_menu_new();
                 gtk_menu_set_reserve_toggle_size (GTK_MENU (submenu), FALSE);
                 gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi), submenu);
             }
         }
-        
+
         windows = wnck_screen_get_windows_stacked(wnck_screen);
 
         for(l = windows; l; l = l->next) {
             wnck_window = l->data;
-            
+
             if((wnck_window_get_workspace(wnck_window) != wnck_workspace
                 && (!wnck_window_is_sticky(wnck_window)
                     || (wl_sticky_once && wnck_workspace != active_workspace)))
@@ -345,7 +345,7 @@ windowlist_populate(XfceDesktop *desktop,
                  */
                 continue;
             }
-            
+
             mi = menu_item_from_wnck_window(wnck_window, w, h);
             if(!mi)
                 continue;
@@ -378,7 +378,7 @@ windowlist_populate(XfceDesktop *desktop,
             g_signal_connect(G_OBJECT(mi), "destroy",
                              G_CALLBACK(mi_destroyed_cb), wnck_window);
         }
-        
+
         if(!wl_submenus && (i < nworkspaces-1 || wl_add_remove_options)) {
             mi = gtk_separator_menu_item_new();
             gtk_widget_show(mi);
@@ -397,7 +397,7 @@ windowlist_populate(XfceDesktop *desktop,
         gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
         g_signal_connect(G_OBJECT(mi), "activate",
                          G_CALLBACK(set_num_workspaces), GINT_TO_POINTER(nworkspaces+1));
-    
+
         /* 'remove workspace' item */
         if(!ws_name || atoi(ws_name) == nworkspaces)
             rm_label = g_strdup_printf(_("_Remove Workspace %d"), nworkspaces);
@@ -449,7 +449,7 @@ windowlist_init(XfconfChannel *channel)
         show_windowlist = xfconf_channel_get_bool(channel,
                                                   "/windowlist-menu/show",
                                                   TRUE);
-        
+
         wl_show_icons = xfconf_channel_get_bool(channel,
                                                 "/windowlist-menu/show-icons",
                                                 TRUE);
@@ -457,7 +457,7 @@ windowlist_init(XfconfChannel *channel)
         wl_show_ws_names = xfconf_channel_get_bool(channel,
                                                    "/windowlist-menu/show-workspace-names",
                                                    TRUE);
-        
+
         wl_submenus = xfconf_channel_get_bool(channel,
                                               "/windowlist-menu/show-submenus",
                                               FALSE);

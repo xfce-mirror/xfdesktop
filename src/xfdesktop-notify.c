@@ -2,14 +2,14 @@
 /*-
  * Copyright (c) 2010 Jannis Pohlmann <jannis@xfce.org>
  *
- * This program is free software; you can redistribute it and/or 
+ * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of 
+ * published by the Free Software Foundation; either version 2 of
  * the License, or (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -84,13 +84,13 @@ xfdesktop_notify_unmount (GMount *mount)
     return;
 
   mount_point = g_mount_get_root (mount);
-  
-  info = g_file_query_info (mount_point, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE, 
+
+  info = g_file_query_info (mount_point, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE,
                             G_FILE_QUERY_INFO_NONE, NULL, NULL);
 
   if (info != NULL)
     {
-      read_only = !g_file_info_get_attribute_boolean (info, 
+      read_only = !g_file_info_get_attribute_boolean (info,
                                                       G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE);
 
       g_object_unref (info);
@@ -156,7 +156,7 @@ xfdesktop_notify_unmount (GMount *mount)
   notify_notification_set_timeout (notification, NOTIFY_EXPIRES_NEVER);
   notify_notification_show (notification, NULL);
 
-  g_object_set_data_full (G_OBJECT (mount), "xfdesktop-notification", notification, 
+  g_object_set_data_full (G_OBJECT (mount), "xfdesktop-notification", notification,
                           g_object_unref);
 
   g_free (message);
@@ -269,8 +269,8 @@ xfdesktop_notify_eject (GVolume *volume)
   if (mount != NULL)
     {
       mount_point = g_mount_get_root (mount);
-      
-      info = g_file_query_info (mount_point, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE, 
+
+      info = g_file_query_info (mount_point, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE,
                                 G_FILE_QUERY_INFO_NONE, NULL, NULL);
 
       if (info != NULL)
@@ -341,7 +341,7 @@ xfdesktop_notify_eject (GVolume *volume)
   notify_notification_set_timeout (notification, NOTIFY_EXPIRES_NEVER);
   notify_notification_show (notification, NULL);
 
-  g_object_set_data_full (G_OBJECT (volume), "xfdesktop-notification", notification, 
+  g_object_set_data_full (G_OBJECT (volume), "xfdesktop-notification", notification,
                           g_object_unref);
 
   g_free (message);

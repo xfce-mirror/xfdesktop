@@ -38,7 +38,7 @@ typedef struct _XfdesktopSpecialFileIconPrivate  XfdesktopSpecialFileIconPrivate
 struct _XfdesktopSpecialFileIcon
 {
     XfdesktopFileIcon parent;
-    
+
     /*< private >*/
     XfdesktopSpecialFileIconPrivate *priv;
 };
