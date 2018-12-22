@@ -444,9 +444,9 @@ setup_special_icon_list(GtkBuilder *gxml,
         GdkPixbuf *pix = NULL;
 
         if(gtk_icon_theme_has_icon(itheme, icons[i].icon))
-            pix = gtk_icon_theme_load_icon(itheme, icons[i].icon, w, 0, NULL);
+            pix = gtk_icon_theme_load_icon(itheme, icons[i].icon, w, GTK_ICON_LOOKUP_FORCE_SIZE, NULL);
         else
-            pix = gtk_icon_theme_load_icon(itheme, icons[i].icon_fallback, w, 0, NULL);
+            pix = gtk_icon_theme_load_icon(itheme, icons[i].icon_fallback, w, GTK_ICON_LOOKUP_FORCE_SIZE, NULL);
 
         if(i < REMOVABLE_DEVICES) {
             gtk_tree_store_append(ts, &parent_iter, NULL);
@@ -472,6 +472,7 @@ setup_special_icon_list(GtkBuilder *gxml,
     treeview = GTK_WIDGET(gtk_builder_get_object(gxml, "treeview_default_icons"));
     g_object_set_data(G_OBJECT(treeview), "xfconf-channel", channel);
     col = gtk_tree_view_column_new();
+    gtk_tree_view_column_set_spacing(col, 6);
     gtk_tree_view_append_column(GTK_TREE_VIEW(treeview), col);
 
     render = gtk_cell_renderer_toggle_new();
