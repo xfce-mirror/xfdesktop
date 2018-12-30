@@ -1752,6 +1752,36 @@ xfdesktop_settings_setup_image_iconview(AppearancePanel *panel)
 }
 
 static void
+cb_xfdesktop_icon_orientation_changed(GtkComboBox *combo,
+                                      gpointer user_data)
+{
+    const gchar *cmd = "xfdesktop --arrange";
+    /* TRANSLATORS: Please split the message in half '\n' so the dialog will not be too wide. */
+    const gchar *question = _("Would you like to arrange all existing\n"
+                              "icons according to the selected orientation?");
+    GError *error = NULL;
+
+    GtkWindow *window = GTK_WINDOW (gtk_widget_get_toplevel(GTK_WIDGET(combo)));
+
+    if(!xfce_dialog_confirm(window, "view-sort-ascending", _("Arrange icons"),
+                            NULL, question))
+    {
+        return;
+    }
+
+    if(!g_spawn_command_line_async(cmd, &error))
+    {
+        gchar *primary = g_strdup_printf(_("Unable to launch \"%s\":"), cmd);
+        xfce_message_dialog(window, _("Launch Error"),
+                            "dialog-error", primary, error->message,
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"),
+                            GTK_RESPONSE_ACCEPT, NULL);
+        g_free(primary);
+        g_clear_error(&error);
+    }
+}
+
+static void
 xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
                                      AppearancePanel *panel)
 {
@@ -2050,6 +2080,8 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     gtk_combo_box_set_active(GTK_COMBO_BOX(w), 0);
     xfconf_g_property_bind(channel, DESKTOP_ICONS_GRAVITY_PROP, G_TYPE_INT,
                            G_OBJECT(w), "active");
+    g_signal_connect(G_OBJECT(w), "changed",
+                     G_CALLBACK(cb_xfdesktop_icon_orientation_changed), NULL);
 
     /* bindings */
     xfconf_g_property_bind(channel, DESKTOP_ICONS_FONT_SIZE_PROP, G_TYPE_DOUBLE,
