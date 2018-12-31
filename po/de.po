@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Andreas Eitel, 2018
+# Andreas Eitel <github-aneitel@online.de>, 2018
 # Benedikt Meurer <benny@xfce.org>, 2003
 # Georg Eckert <eckert.georg@gmx.de>, 2013
 # Harald Judt <h.judt@gmx.at>, 2014
@@ -17,9 +17,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-22 06:31+0100\n"
-"PO-Revision-Date: 2018-12-29 12:26+0000\n"
-"Last-Translator: Andreas Eitel\n"
+"POT-Creation-Date: 2018-12-31 00:31+0100\n"
+"PO-Revision-Date: 2018-12-31 16:44+0000\n"
+"Last-Translator: Andreas Eitel <github-aneitel@online.de>\n"
 "Language-Team: German (http://www.transifex.com/xfce/xfdesktop/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -119,54 +119,101 @@ msgstr "Bildauswahl ist nicht verfügbar, während Stil auf »Kein Bild« einges
 msgid "Spanning screens"
 msgstr "Bildschirmübergreifend"
 
-#: ../settings/main.c:1902
+#. TRANSLATORS: Please split the message in half '\n' so the dialog will not
+#. be too wide.
+#: ../settings/main.c:1760
+msgid ""
+"Would you like to arrange all existing\n"
+"icons according to the selected orientation?"
+msgstr "Möchten Sie alle existierenden\nSymbole entsprechend der gewählten Ausrichtung arrangieren?"
+
+#: ../settings/main.c:1766
+msgid "Arrange icons"
+msgstr "Symbole anordnen"
+
+#. printf is to be translator-friendly
+#: ../settings/main.c:1774 ../src/xfdesktop-file-icon-manager.c:796
+#: ../src/xfdesktop-file-icon-manager.c:1345
+#, c-format
+msgid "Unable to launch \"%s\":"
+msgstr "»%s« konnte nicht gestartet werden:"
+
+#: ../settings/main.c:1775 ../src/xfdesktop-file-icon-manager.c:798
+#: ../src/xfdesktop-file-icon-manager.c:1092
+#: ../src/xfdesktop-file-icon-manager.c:1346 ../src/xfdesktop-file-utils.c:671
+#: ../src/xfdesktop-file-utils.c:1203 ../src/xfdesktop-file-utils.c:1281
+#: ../src/xfdesktop-file-utils.c:1305 ../src/xfdesktop-file-utils.c:1367
+msgid "Launch Error"
+msgstr "Fehler beim Starten"
+
+#: ../settings/main.c:1777 ../src/xfdesktop-file-icon-manager.c:560
+#: ../src/xfdesktop-file-icon-manager.c:579
+#: ../src/xfdesktop-file-icon-manager.c:664
+#: ../src/xfdesktop-file-icon-manager.c:800
+#: ../src/xfdesktop-file-icon-manager.c:1096
+#: ../src/xfdesktop-file-icon-manager.c:1348
+#: ../src/xfdesktop-file-icon-manager.c:2874 ../src/xfdesktop-file-utils.c:674
+#: ../src/xfdesktop-file-utils.c:693 ../src/xfdesktop-file-utils.c:747
+#: ../src/xfdesktop-file-utils.c:811 ../src/xfdesktop-file-utils.c:872
+#: ../src/xfdesktop-file-utils.c:933 ../src/xfdesktop-file-utils.c:981
+#: ../src/xfdesktop-file-utils.c:1036 ../src/xfdesktop-file-utils.c:1094
+#: ../src/xfdesktop-file-utils.c:1146 ../src/xfdesktop-file-utils.c:1207
+#: ../src/xfdesktop-file-utils.c:1283 ../src/xfdesktop-file-utils.c:1309
+#: ../src/xfdesktop-file-utils.c:1371 ../src/xfdesktop-file-utils.c:1430
+#: ../src/xfdesktop-file-utils.c:1446 ../src/xfdesktop-file-utils.c:1508
+#: ../src/xfdesktop-file-utils.c:1526 ../src/xfdesktop-volume-icon.c:525
+#: ../src/xfdesktop-volume-icon.c:571 ../src/xfdesktop-volume-icon.c:607
+msgid "_Close"
+msgstr "S_chließen"
+
+#: ../settings/main.c:1932
 msgid "Image files"
 msgstr "Bilddateien"
 
 #. Change the title of the file chooser dialog
-#: ../settings/main.c:1910
+#: ../settings/main.c:1940
 msgid "Select a Directory"
 msgstr "Verzeichnis auswählen"
 
-#: ../settings/main.c:2113
+#: ../settings/main.c:2145
 msgid "Settings manager socket"
 msgstr "Socket für die Sitzungsverwaltung"
 
-#: ../settings/main.c:2113
+#: ../settings/main.c:2145
 msgid "SOCKET ID"
 msgstr "SOCKET-NUMMER"
 
-#: ../settings/main.c:2114
+#: ../settings/main.c:2146
 msgid "Version information"
 msgstr "Versionsinformation"
 
-#: ../settings/main.c:2115 ../src/xfdesktop-application.c:836
+#: ../settings/main.c:2147 ../src/xfdesktop-application.c:836
 msgid "Enable debug messages"
 msgstr "Fehlerdiagnosemeldungen aktivieren"
 
-#: ../settings/main.c:2143
+#: ../settings/main.c:2175
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "»%s --help« eingeben, um Hinweise zur Verwendung zu erhalten."
 
-#: ../settings/main.c:2155
+#: ../settings/main.c:2187
 msgid "The Xfce development team. All rights reserved."
 msgstr "Die Entwicklungsmannschaft von Xfce. Alle Rechte vorbehalten."
 
-#: ../settings/main.c:2156
+#: ../settings/main.c:2188
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Bitte Fehler an <%s> melden."
 
-#: ../settings/main.c:2163
+#: ../settings/main.c:2195
 msgid "Desktop Settings"
 msgstr "Schreibtischeinstellungen"
 
-#: ../settings/main.c:2165
+#: ../settings/main.c:2197
 msgid "Unable to contact settings server"
 msgstr "Der Einstellungsdienst konnte nicht kontaktiert werden."
 
-#: ../settings/main.c:2167
+#: ../settings/main.c:2199
 msgid "Quit"
 msgstr "Beenden"
 
@@ -675,26 +722,6 @@ msgstr "Der Schreibtischordner »%s« konnte nicht erstellt werden"
 msgid "Desktop Folder Error"
 msgstr "Fehler im Schreibtischordner"
 
-#: ../src/xfdesktop-file-icon-manager.c:560
-#: ../src/xfdesktop-file-icon-manager.c:579
-#: ../src/xfdesktop-file-icon-manager.c:664
-#: ../src/xfdesktop-file-icon-manager.c:800
-#: ../src/xfdesktop-file-icon-manager.c:1096
-#: ../src/xfdesktop-file-icon-manager.c:1348
-#: ../src/xfdesktop-file-icon-manager.c:2874 ../src/xfdesktop-file-utils.c:674
-#: ../src/xfdesktop-file-utils.c:693 ../src/xfdesktop-file-utils.c:747
-#: ../src/xfdesktop-file-utils.c:811 ../src/xfdesktop-file-utils.c:872
-#: ../src/xfdesktop-file-utils.c:933 ../src/xfdesktop-file-utils.c:981
-#: ../src/xfdesktop-file-utils.c:1036 ../src/xfdesktop-file-utils.c:1094
-#: ../src/xfdesktop-file-utils.c:1146 ../src/xfdesktop-file-utils.c:1207
-#: ../src/xfdesktop-file-utils.c:1283 ../src/xfdesktop-file-utils.c:1309
-#: ../src/xfdesktop-file-utils.c:1371 ../src/xfdesktop-file-utils.c:1430
-#: ../src/xfdesktop-file-utils.c:1446 ../src/xfdesktop-file-utils.c:1508
-#: ../src/xfdesktop-file-utils.c:1526 ../src/xfdesktop-volume-icon.c:525
-#: ../src/xfdesktop-volume-icon.c:571 ../src/xfdesktop-volume-icon.c:607
-msgid "_Close"
-msgstr "S_chließen"
-
 #: ../src/xfdesktop-file-icon-manager.c:577
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
@@ -712,21 +739,6 @@ msgstr "Die Dateien konnten nicht umbenannt werden"
 #: ../src/xfdesktop-file-icon-manager.c:663
 msgid "None of the icons selected support being renamed."
 msgstr "Keines der ausgewählten Symbole unterstützt es, umbenannt zu werden."
-
-#. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:796
-#: ../src/xfdesktop-file-icon-manager.c:1345
-#, c-format
-msgid "Unable to launch \"%s\":"
-msgstr "»%s« konnte nicht gestartet werden:"
-
-#: ../src/xfdesktop-file-icon-manager.c:798
-#: ../src/xfdesktop-file-icon-manager.c:1092
-#: ../src/xfdesktop-file-icon-manager.c:1346 ../src/xfdesktop-file-utils.c:671
-#: ../src/xfdesktop-file-utils.c:1203 ../src/xfdesktop-file-utils.c:1281
-#: ../src/xfdesktop-file-utils.c:1305 ../src/xfdesktop-file-utils.c:1367
-msgid "Launch Error"
-msgstr "Fehler beim Starten"
 
 #: ../src/xfdesktop-file-icon-manager.c:1017
 #, c-format
