@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-22 06:31+0100\n"
-"PO-Revision-Date: 2018-12-22 14:27+0000\n"
+"POT-Creation-Date: 2018-12-31 00:31+0100\n"
+"PO-Revision-Date: 2018-12-31 18:24+0000\n"
 "Last-Translator: Pjotr <pjotrvertaalt@gmail.com>\n"
 "Language-Team: Dutch (http://www.transifex.com/xfce/xfdesktop/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -112,54 +112,101 @@ msgstr "Afbeeldingkeuze is niet beschikbaar wanneer de afbeeldingstijl op Geen i
 msgid "Spanning screens"
 msgstr "Schermen overbruggen"
 
-#: ../settings/main.c:1902
+#. TRANSLATORS: Please split the message in half '\n' so the dialog will not
+#. be too wide.
+#: ../settings/main.c:1760
+msgid ""
+"Would you like to arrange all existing\n"
+"icons according to the selected orientation?"
+msgstr "Wilt u alle bestaande pictogrammen rang-\nschikken overeenkomstig de gekozen oriëntatie?"
+
+#: ../settings/main.c:1766
+msgid "Arrange icons"
+msgstr "Pictogrammen rangschikken"
+
+#. printf is to be translator-friendly
+#: ../settings/main.c:1774 ../src/xfdesktop-file-icon-manager.c:796
+#: ../src/xfdesktop-file-icon-manager.c:1345
+#, c-format
+msgid "Unable to launch \"%s\":"
+msgstr "Kan '%s' niet starten:"
+
+#: ../settings/main.c:1775 ../src/xfdesktop-file-icon-manager.c:798
+#: ../src/xfdesktop-file-icon-manager.c:1092
+#: ../src/xfdesktop-file-icon-manager.c:1346 ../src/xfdesktop-file-utils.c:671
+#: ../src/xfdesktop-file-utils.c:1203 ../src/xfdesktop-file-utils.c:1281
+#: ../src/xfdesktop-file-utils.c:1305 ../src/xfdesktop-file-utils.c:1367
+msgid "Launch Error"
+msgstr "Startfout"
+
+#: ../settings/main.c:1777 ../src/xfdesktop-file-icon-manager.c:560
+#: ../src/xfdesktop-file-icon-manager.c:579
+#: ../src/xfdesktop-file-icon-manager.c:664
+#: ../src/xfdesktop-file-icon-manager.c:800
+#: ../src/xfdesktop-file-icon-manager.c:1096
+#: ../src/xfdesktop-file-icon-manager.c:1348
+#: ../src/xfdesktop-file-icon-manager.c:2874 ../src/xfdesktop-file-utils.c:674
+#: ../src/xfdesktop-file-utils.c:693 ../src/xfdesktop-file-utils.c:747
+#: ../src/xfdesktop-file-utils.c:811 ../src/xfdesktop-file-utils.c:872
+#: ../src/xfdesktop-file-utils.c:933 ../src/xfdesktop-file-utils.c:981
+#: ../src/xfdesktop-file-utils.c:1036 ../src/xfdesktop-file-utils.c:1094
+#: ../src/xfdesktop-file-utils.c:1146 ../src/xfdesktop-file-utils.c:1207
+#: ../src/xfdesktop-file-utils.c:1283 ../src/xfdesktop-file-utils.c:1309
+#: ../src/xfdesktop-file-utils.c:1371 ../src/xfdesktop-file-utils.c:1430
+#: ../src/xfdesktop-file-utils.c:1446 ../src/xfdesktop-file-utils.c:1508
+#: ../src/xfdesktop-file-utils.c:1526 ../src/xfdesktop-volume-icon.c:525
+#: ../src/xfdesktop-volume-icon.c:571 ../src/xfdesktop-volume-icon.c:607
+msgid "_Close"
+msgstr "_Sluiten"
+
+#: ../settings/main.c:1932
 msgid "Image files"
 msgstr "Afbeeldingbestanden"
 
 #. Change the title of the file chooser dialog
-#: ../settings/main.c:1910
+#: ../settings/main.c:1940
 msgid "Select a Directory"
 msgstr "Kies een map"
 
-#: ../settings/main.c:2113
+#: ../settings/main.c:2145
 msgid "Settings manager socket"
 msgstr "Contactpunt voor instellingenbeheerder"
 
-#: ../settings/main.c:2113
+#: ../settings/main.c:2145
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: ../settings/main.c:2114
+#: ../settings/main.c:2146
 msgid "Version information"
 msgstr "Versie-informatie"
 
-#: ../settings/main.c:2115 ../src/xfdesktop-application.c:836
+#: ../settings/main.c:2147 ../src/xfdesktop-application.c:836
 msgid "Enable debug messages"
 msgstr "Foutopsporingsberichten inschakelen"
 
-#: ../settings/main.c:2143
+#: ../settings/main.c:2175
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Tik '%s --help' voor gebruiksinformatie."
 
-#: ../settings/main.c:2155
+#: ../settings/main.c:2187
 msgid "The Xfce development team. All rights reserved."
 msgstr "De Xfce-ontwikkelploeg. Alle rechten voorbehouden."
 
-#: ../settings/main.c:2156
+#: ../settings/main.c:2188
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Gelieve fouten te melden aan <%s>"
 
-#: ../settings/main.c:2163
+#: ../settings/main.c:2195
 msgid "Desktop Settings"
 msgstr "Bureaublad-instellingen"
 
-#: ../settings/main.c:2165
+#: ../settings/main.c:2197
 msgid "Unable to contact settings server"
 msgstr "Kan geen contact maken met de instellingendienst"
 
-#: ../settings/main.c:2167
+#: ../settings/main.c:2199
 msgid "Quit"
 msgstr "Afsluiten"
 
@@ -668,26 +715,6 @@ msgstr "Kon de bureaubladmap '%s' niet maken"
 msgid "Desktop Folder Error"
 msgstr "Fout van bureaubladmap"
 
-#: ../src/xfdesktop-file-icon-manager.c:560
-#: ../src/xfdesktop-file-icon-manager.c:579
-#: ../src/xfdesktop-file-icon-manager.c:664
-#: ../src/xfdesktop-file-icon-manager.c:800
-#: ../src/xfdesktop-file-icon-manager.c:1096
-#: ../src/xfdesktop-file-icon-manager.c:1348
-#: ../src/xfdesktop-file-icon-manager.c:2874 ../src/xfdesktop-file-utils.c:674
-#: ../src/xfdesktop-file-utils.c:693 ../src/xfdesktop-file-utils.c:747
-#: ../src/xfdesktop-file-utils.c:811 ../src/xfdesktop-file-utils.c:872
-#: ../src/xfdesktop-file-utils.c:933 ../src/xfdesktop-file-utils.c:981
-#: ../src/xfdesktop-file-utils.c:1036 ../src/xfdesktop-file-utils.c:1094
-#: ../src/xfdesktop-file-utils.c:1146 ../src/xfdesktop-file-utils.c:1207
-#: ../src/xfdesktop-file-utils.c:1283 ../src/xfdesktop-file-utils.c:1309
-#: ../src/xfdesktop-file-utils.c:1371 ../src/xfdesktop-file-utils.c:1430
-#: ../src/xfdesktop-file-utils.c:1446 ../src/xfdesktop-file-utils.c:1508
-#: ../src/xfdesktop-file-utils.c:1526 ../src/xfdesktop-volume-icon.c:525
-#: ../src/xfdesktop-volume-icon.c:571 ../src/xfdesktop-volume-icon.c:607
-msgid "_Close"
-msgstr "_Sluiten"
-
 #: ../src/xfdesktop-file-icon-manager.c:577
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
@@ -705,21 +732,6 @@ msgstr "De bestanden konden niet worden hernoemd"
 #: ../src/xfdesktop-file-icon-manager.c:663
 msgid "None of the icons selected support being renamed."
 msgstr "Geen der gekozen pictogrammen ondersteunen hernoeming."
-
-#. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:796
-#: ../src/xfdesktop-file-icon-manager.c:1345
-#, c-format
-msgid "Unable to launch \"%s\":"
-msgstr "Kan '%s' niet starten:"
-
-#: ../src/xfdesktop-file-icon-manager.c:798
-#: ../src/xfdesktop-file-icon-manager.c:1092
-#: ../src/xfdesktop-file-icon-manager.c:1346 ../src/xfdesktop-file-utils.c:671
-#: ../src/xfdesktop-file-utils.c:1203 ../src/xfdesktop-file-utils.c:1281
-#: ../src/xfdesktop-file-utils.c:1305 ../src/xfdesktop-file-utils.c:1367
-msgid "Launch Error"
-msgstr "Startfout"
 
 #: ../src/xfdesktop-file-icon-manager.c:1017
 #, c-format
