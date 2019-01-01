@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-12-31 00:31+0100\n"
-"PO-Revision-Date: 2019-01-01 12:48+0000\n"
+"PO-Revision-Date: 2019-01-01 23:11+0000\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech (http://www.transifex.com/xfce/xfdesktop/language/cs/)\n"
 "MIME-Version: 1.0\n"
@@ -31,7 +31,7 @@ msgstr "Domovská složka"
 
 #: ../settings/main.c:421
 msgid "Filesystem"
-msgstr "Souborový systém"
+msgstr "Systém souborů"
 
 #: ../settings/main.c:423 ../src/xfdesktop-special-file-icon.c:299
 msgid "Trash"
@@ -133,7 +133,7 @@ msgstr "Uspořádat ikony"
 #: ../src/xfdesktop-file-icon-manager.c:1345
 #, c-format
 msgid "Unable to launch \"%s\":"
-msgstr "Nedaří se spustit „%s“:"
+msgstr "Nelze spustit „%s“:"
 
 #: ../settings/main.c:1775 ../src/xfdesktop-file-icon-manager.c:798
 #: ../src/xfdesktop-file-icon-manager.c:1092
@@ -200,7 +200,7 @@ msgstr "Tým vývojářů Xfce. Všechna práva vyhrazena."
 #: ../settings/main.c:2188
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr "Chyby prosíme hlaste na <%s>."
+msgstr "Prosíme, nahlaste chyby na adresu <%s>."
 
 #: ../settings/main.c:2195
 msgid "Desktop Settings"
@@ -518,7 +518,7 @@ msgstr "Směr ik_on:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:41
 msgid "Show icons on primary display"
-msgstr "Zobrazovat ikony na hlavní obrazovce"
+msgstr "Zobrazit ikony na hlavním displeji"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:42
 msgid "Use custom _font size:"
@@ -577,14 +577,14 @@ msgstr "Apli_kace"
 #: ../src/windowlist.c:73
 #, c-format
 msgid "Remove Workspace %d"
-msgstr "Odstrannění pracovní plochy %d"
+msgstr "Odebrání pracovní plochy %d"
 
 #: ../src/windowlist.c:74
 #, c-format
 msgid ""
 "Do you really want to remove workspace %d?\n"
 "Note: You are currently on workspace %d."
-msgstr "Opravdu chcete odebrat pracovní prostor %d?\nPoznámka: Právě se nacházíte na pracovním prostoru %d."
+msgstr "Opravdu chcete odebrat pracovní plochu %d?\nPoznámka: Právě se nacházíte na pracovní ploše%d."
 
 #: ../src/windowlist.c:78
 #, c-format
@@ -596,13 +596,13 @@ msgstr "Odstranění pracovní plochy „%s“"
 msgid ""
 "Do you really want to remove workspace '%s'?\n"
 "Note: You are currently on workspace '%s'."
-msgstr "Opravdu chcete odebrat pracovní prostor %s?\nPoznámka: Právě se nacházíte na pracovním prostoru %s."
+msgstr "Opravdu chcete odebrat pracovní plochu %s?\nPoznámka: Právě se nacházíte na pracovní ploše %s."
 
 #. Popup a dialog box confirming that the user wants to remove a
 #. * workspace
 #: ../src/windowlist.c:86
 msgid "Remove"
-msgstr "Odstranění"
+msgstr "Odebrat"
 
 #: ../src/windowlist.c:272
 msgid "Window List"
@@ -784,7 +784,7 @@ msgstr "Vytvořit _dokument"
 
 #: ../src/xfdesktop-file-icon-manager.c:1516
 msgid "No templates installed"
-msgstr "Nejsou nainstalované žádné šablony"
+msgstr "Nejsou nainstalovány žádné šablony"
 
 #: ../src/xfdesktop-file-icon-manager.c:1532
 msgid "_Empty File"
@@ -841,7 +841,7 @@ msgstr "_Uspořádat ikony na ploše"
 
 #: ../src/xfdesktop-file-icon-manager.c:1849
 msgid "Desktop _Settings..."
-msgstr "_Nastavení plochy…"
+msgstr "_Nastavení pracovní plochy..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1858
 #: ../src/xfdesktop-volume-icon.c:854
@@ -870,7 +870,7 @@ msgstr "_Vytvořit zde odkaz"
 
 #: ../src/xfdesktop-file-icon-manager.c:3474
 msgid "_Cancel"
-msgstr "_Storno"
+msgstr "_Zrušit"
 
 #. TRANSLATORS: file was modified less than one day ago
 #: ../src/xfdesktop-file-utils.c:147
@@ -903,7 +903,7 @@ msgstr "Neznámý"
 
 #: ../src/xfdesktop-file-utils.c:672
 msgid "The folder could not be opened"
-msgstr "Složku se nedaří otevřít"
+msgstr "Složku nelze otevřít"
 
 #: ../src/xfdesktop-file-utils.c:690
 msgid "Error"
@@ -915,7 +915,7 @@ msgstr "Požadovaná operace nemohla být dokončena"
 
 #: ../src/xfdesktop-file-utils.c:744
 msgid "The file could not be renamed"
-msgstr "Soubor se nedaří přejmenovat"
+msgstr "Soubor nelze přejmenovat"
 
 #: ../src/xfdesktop-file-utils.c:745 ../src/xfdesktop-file-utils.c:809
 #: ../src/xfdesktop-file-utils.c:870 ../src/xfdesktop-file-utils.c:1034
@@ -952,7 +952,7 @@ msgstr "Tato vlastnost vyžaduje přítomnost služby koše (například dodáva
 
 #: ../src/xfdesktop-file-utils.c:978
 msgid "Could not empty the trash"
-msgstr "Koš se nedaří vysypat"
+msgstr "Nelze vysypat koš"
 
 #: ../src/xfdesktop-file-utils.c:1032
 msgid "Create File Error"
@@ -1025,7 +1025,7 @@ msgstr "Zápis dat na zařízení"
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be"
 " removed. Please do not remove the media or disconnect the drive"
-msgstr "Je nutné zapsat data na zařízení „%s“ před jeho odebráním. Nevyjímejte médium ani neodpojujte jednotku"
+msgstr "Před odebráním zařízení \"%s\" je nutné zapsat data. Nevyjímejte médium ani neodpojujte jednotku"
 
 #: ../src/xfdesktop-notify.c:221
 msgid "Unmount Finished"
