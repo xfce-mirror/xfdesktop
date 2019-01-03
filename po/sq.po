@@ -5,12 +5,13 @@
 # Translators:
 # Besnik <besnik@programeshqip.org>, 2007
 # Besnik <besnik@programeshqip.org>, 2007
+# Besnik <besnik@programeshqip.org>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-22 06:31+0100\n"
-"PO-Revision-Date: 2018-12-22 10:42+0000\n"
+"POT-Creation-Date: 2018-12-31 00:31+0100\n"
+"PO-Revision-Date: 2019-01-03 11:41+0000\n"
 "Last-Translator: Besnik <besnik@programeshqip.org>\n"
 "Language-Team: Albanian (http://www.transifex.com/xfce/xfdesktop/language/sq/)\n"
 "MIME-Version: 1.0\n"
@@ -109,56 +110,103 @@ msgstr "S’bëhet dot përzgjedhje figurash kur stili i figurës është caktua
 
 #: ../settings/main.c:1587 ../settings/main.c:1592
 msgid "Spanning screens"
-msgstr ""
+msgstr "Shtrirje në ekrane"
 
-#: ../settings/main.c:1902
+#. TRANSLATORS: Please split the message in half '\n' so the dialog will not
+#. be too wide.
+#: ../settings/main.c:1760
+msgid ""
+"Would you like to arrange all existing\n"
+"icons according to the selected orientation?"
+msgstr "Do të donit të sistemohen krejt ikonat\nekzistuese sipas orientimit të përzgjedhur?"
+
+#: ../settings/main.c:1766
+msgid "Arrange icons"
+msgstr "Sistemoji ikonat"
+
+#. printf is to be translator-friendly
+#: ../settings/main.c:1774 ../src/xfdesktop-file-icon-manager.c:796
+#: ../src/xfdesktop-file-icon-manager.c:1345
+#, c-format
+msgid "Unable to launch \"%s\":"
+msgstr "S’arrihet të niset \"%s\":"
+
+#: ../settings/main.c:1775 ../src/xfdesktop-file-icon-manager.c:798
+#: ../src/xfdesktop-file-icon-manager.c:1092
+#: ../src/xfdesktop-file-icon-manager.c:1346 ../src/xfdesktop-file-utils.c:671
+#: ../src/xfdesktop-file-utils.c:1203 ../src/xfdesktop-file-utils.c:1281
+#: ../src/xfdesktop-file-utils.c:1305 ../src/xfdesktop-file-utils.c:1367
+msgid "Launch Error"
+msgstr "Gabim Nisësi"
+
+#: ../settings/main.c:1777 ../src/xfdesktop-file-icon-manager.c:560
+#: ../src/xfdesktop-file-icon-manager.c:579
+#: ../src/xfdesktop-file-icon-manager.c:664
+#: ../src/xfdesktop-file-icon-manager.c:800
+#: ../src/xfdesktop-file-icon-manager.c:1096
+#: ../src/xfdesktop-file-icon-manager.c:1348
+#: ../src/xfdesktop-file-icon-manager.c:2874 ../src/xfdesktop-file-utils.c:674
+#: ../src/xfdesktop-file-utils.c:693 ../src/xfdesktop-file-utils.c:747
+#: ../src/xfdesktop-file-utils.c:811 ../src/xfdesktop-file-utils.c:872
+#: ../src/xfdesktop-file-utils.c:933 ../src/xfdesktop-file-utils.c:981
+#: ../src/xfdesktop-file-utils.c:1036 ../src/xfdesktop-file-utils.c:1094
+#: ../src/xfdesktop-file-utils.c:1146 ../src/xfdesktop-file-utils.c:1207
+#: ../src/xfdesktop-file-utils.c:1283 ../src/xfdesktop-file-utils.c:1309
+#: ../src/xfdesktop-file-utils.c:1371 ../src/xfdesktop-file-utils.c:1430
+#: ../src/xfdesktop-file-utils.c:1446 ../src/xfdesktop-file-utils.c:1508
+#: ../src/xfdesktop-file-utils.c:1526 ../src/xfdesktop-volume-icon.c:525
+#: ../src/xfdesktop-volume-icon.c:571 ../src/xfdesktop-volume-icon.c:607
+msgid "_Close"
+msgstr "_Mbylle"
+
+#: ../settings/main.c:1932
 msgid "Image files"
 msgstr "Kartela pamje"
 
 #. Change the title of the file chooser dialog
-#: ../settings/main.c:1910
+#: ../settings/main.c:1940
 msgid "Select a Directory"
 msgstr "Përzgjidhni Drejtori"
 
-#: ../settings/main.c:2113
+#: ../settings/main.c:2145
 msgid "Settings manager socket"
 msgstr "\"Socket\" përgjegjësi rregullimesh"
 
-#: ../settings/main.c:2113
+#: ../settings/main.c:2145
 msgid "SOCKET ID"
 msgstr "ID SOCKET-i"
 
-#: ../settings/main.c:2114
+#: ../settings/main.c:2146
 msgid "Version information"
 msgstr "Të dhëna versioni"
 
-#: ../settings/main.c:2115 ../src/xfdesktop-application.c:836
+#: ../settings/main.c:2147 ../src/xfdesktop-application.c:836
 msgid "Enable debug messages"
 msgstr "Aktivizo Mesazhe diagnostikimi"
 
-#: ../settings/main.c:2143
+#: ../settings/main.c:2175
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Për përdorimin, shtypni '%s --help'."
 
-#: ../settings/main.c:2155
+#: ../settings/main.c:2187
 msgid "The Xfce development team. All rights reserved."
 msgstr "Ekipi zhvillues i Xfce-së. Tërë të drejtat të rezervuara."
 
-#: ../settings/main.c:2156
+#: ../settings/main.c:2188
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Ju lutemi, njoftoni të meta te <%s>."
 
-#: ../settings/main.c:2163
+#: ../settings/main.c:2195
 msgid "Desktop Settings"
 msgstr "Rregullime Desktopi"
 
-#: ../settings/main.c:2165
+#: ../settings/main.c:2197
 msgid "Unable to contact settings server"
 msgstr "S’arrihet të lidhet me shërbyesin e rregullimeve"
 
-#: ../settings/main.c:2167
+#: ../settings/main.c:2199
 msgid "Quit"
 msgstr "Dilni"
 
@@ -227,11 +275,11 @@ msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
 msgid "Spanning Screens"
-msgstr ""
+msgstr "Shtrirje Në Ekrane"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
 msgid "Specify the style of the color drawn behind the backdrop image."
-msgstr ""
+msgstr "Përcaktoni stilin e ngjyrës së vizatuar pas figurës <em>backdrop</em>."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
@@ -667,26 +715,6 @@ msgstr "S’u krijua dot dosja e desktopit \"%s\""
 msgid "Desktop Folder Error"
 msgstr "Gabim Dosje Desktopi"
 
-#: ../src/xfdesktop-file-icon-manager.c:560
-#: ../src/xfdesktop-file-icon-manager.c:579
-#: ../src/xfdesktop-file-icon-manager.c:664
-#: ../src/xfdesktop-file-icon-manager.c:800
-#: ../src/xfdesktop-file-icon-manager.c:1096
-#: ../src/xfdesktop-file-icon-manager.c:1348
-#: ../src/xfdesktop-file-icon-manager.c:2874 ../src/xfdesktop-file-utils.c:674
-#: ../src/xfdesktop-file-utils.c:693 ../src/xfdesktop-file-utils.c:747
-#: ../src/xfdesktop-file-utils.c:811 ../src/xfdesktop-file-utils.c:872
-#: ../src/xfdesktop-file-utils.c:933 ../src/xfdesktop-file-utils.c:981
-#: ../src/xfdesktop-file-utils.c:1036 ../src/xfdesktop-file-utils.c:1094
-#: ../src/xfdesktop-file-utils.c:1146 ../src/xfdesktop-file-utils.c:1207
-#: ../src/xfdesktop-file-utils.c:1283 ../src/xfdesktop-file-utils.c:1309
-#: ../src/xfdesktop-file-utils.c:1371 ../src/xfdesktop-file-utils.c:1430
-#: ../src/xfdesktop-file-utils.c:1446 ../src/xfdesktop-file-utils.c:1508
-#: ../src/xfdesktop-file-utils.c:1526 ../src/xfdesktop-volume-icon.c:525
-#: ../src/xfdesktop-volume-icon.c:571 ../src/xfdesktop-volume-icon.c:607
-msgid "_Close"
-msgstr "_Mbylle"
-
 #: ../src/xfdesktop-file-icon-manager.c:577
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
@@ -704,21 +732,6 @@ msgstr "Kartelat s’u riemërtuan dot"
 #: ../src/xfdesktop-file-icon-manager.c:663
 msgid "None of the icons selected support being renamed."
 msgstr "Asnjë prej ikonave të përzgjedhura nuk mbulon riemërtim të vetes."
-
-#. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:796
-#: ../src/xfdesktop-file-icon-manager.c:1345
-#, c-format
-msgid "Unable to launch \"%s\":"
-msgstr "S’arrihet të niset \"%s\":"
-
-#: ../src/xfdesktop-file-icon-manager.c:798
-#: ../src/xfdesktop-file-icon-manager.c:1092
-#: ../src/xfdesktop-file-icon-manager.c:1346 ../src/xfdesktop-file-utils.c:671
-#: ../src/xfdesktop-file-utils.c:1203 ../src/xfdesktop-file-utils.c:1281
-#: ../src/xfdesktop-file-utils.c:1305 ../src/xfdesktop-file-utils.c:1367
-msgid "Launch Error"
-msgstr "Gabim Nisësi"
 
 #: ../src/xfdesktop-file-icon-manager.c:1017
 #, c-format
