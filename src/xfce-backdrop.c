@@ -1711,10 +1711,8 @@ xfce_backdrop_loader_size_prepared_cb(GdkPixbufLoader *loader,
         return;
     }
 
-    /* invalid backdrop? quit */
+    /* invalid backdrop? quit but don't free image data */
     if(!XFCE_IS_BACKDROP(backdrop)) {
-        xfce_backdrop_image_data_release(image_data);
-        g_free(image_data);
         return;
     }
 
@@ -1785,9 +1783,11 @@ xfce_backdrop_loader_closed_cb(GdkPixbufLoader *loader,
 
     TRACE("entering");
 
-    g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
+    /* invalid backdrop? just quit */
+    if(!XFCE_IS_BACKDROP(backdrop))
+        return;
 
-    /* canceled? quit now */
+    /* canceled? free data and quit now */
     if(g_cancellable_is_cancelled(image_data->cancellable)) {
         xfce_backdrop_image_data_release(image_data);
         g_free(image_data);
