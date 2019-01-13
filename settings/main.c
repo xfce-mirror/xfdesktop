@@ -1739,7 +1739,7 @@ cb_xfdesktop_icon_orientation_changed(GtkComboBox *combo,
                                       gpointer user_data)
 {
     const gchar *cmd = "xfdesktop --arrange";
-    /* TRANSLATORS: Please split the message in half '\n' so the dialog will not be too wide. */
+    /* TRANSLATORS: Please split the message in half with '\n' so the dialog will not be too wide. */
     const gchar *question = _("Would you like to arrange all existing\n"
                               "icons according to the selected orientation?");
     GError *error = NULL;
@@ -1747,7 +1747,7 @@ cb_xfdesktop_icon_orientation_changed(GtkComboBox *combo,
     GtkWindow *window = GTK_WINDOW (gtk_widget_get_toplevel(GTK_WIDGET(combo)));
 
     if(!xfce_dialog_confirm(window, "view-sort-ascending", _("Arrange icons"),
-                            NULL, question))
+                            "", question))
     {
         return;
     }
