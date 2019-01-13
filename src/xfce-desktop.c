@@ -443,6 +443,7 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     XfceDesktop *desktop = XFCE_DESKTOP(user_data);
     cairo_surface_t *surface = desktop->priv->bg_surface;
     GdkScreen *gscreen = desktop->priv->gscreen;
+    GdkDisplay *display;
     gchar *new_filename = NULL;
     GdkRectangle rect;
     cairo_region_t *clip_region = NULL;
@@ -463,6 +464,7 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
 
     TRACE("really entering");
 
+    display = gdk_display_get_default();
     current_workspace = xfce_desktop_get_current_workspace(desktop);
 
     /* Find out which monitor the backdrop is on */
@@ -502,12 +504,14 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
         /* Spanning screens */
         GdkRectangle monitor_rect;
 
-        gdk_screen_get_monitor_geometry(gscreen, 0, &rect);
+        gdk_monitor_get_geometry(gdk_display_get_monitor(display, 0),
+                                 &rect);
         /* Get the lowest x and y value for all the monitors in
          * case none of them start at 0,0 for whatever reason.
          */
         for(i = 1; i < xfce_desktop_get_n_monitors(desktop); i++) {
-            gdk_screen_get_monitor_geometry(gscreen, i, &monitor_rect);
+            gdk_monitor_get_geometry(gdk_display_get_monitor(display, i),
+                                     &monitor_rect);
 
             if(monitor_rect.x < rect.x)
                 rect.x = monitor_rect.x;
@@ -520,7 +524,8 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
         XF_DEBUG("xinerama_stretch x %d, y %d, width %d, height %d",
                  rect.x, rect.y, rect.width, rect.height);
     } else {
-        gdk_screen_get_monitor_geometry(gscreen, monitor, &rect);
+        gdk_monitor_get_geometry(gdk_display_get_monitor(display, monitor),
+                                 &rect);
         XF_DEBUG("monitor x %d, y %d, width %d, height %d",
                  rect.x, rect.y, rect.width, rect.height);
     }
@@ -541,7 +546,9 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
         for(i = 0; i < monitor; i++) {
             GdkRectangle previous_monitor;
             cairo_region_t *previous_region;
-            gdk_screen_get_monitor_geometry(gscreen, i, &previous_monitor);
+
+            gdk_monitor_get_geometry(gdk_display_get_monitor(display, i),
+                                     &previous_monitor);
 
             XF_DEBUG("previous_monitor: x: %d, y: %d, w: %d, h: %d",
                      previous_monitor.x, previous_monitor.y,
@@ -1572,7 +1579,7 @@ xfce_desktop_get_n_monitors(XfceDesktop *desktop)
 {
     g_return_val_if_fail(XFCE_IS_DESKTOP(desktop), 0);
 
-    return gdk_screen_get_n_monitors(desktop->priv->gscreen);
+    return gdk_display_get_n_monitors(gdk_screen_get_display(desktop->priv->gscreen));
 }
 
 gint

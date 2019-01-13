@@ -57,7 +57,6 @@
 gchar*
 xfdesktop_get_monitor_name_from_gtk_widget(GtkWidget *widget, gint monitor_num)
 {
-#if 0 /* GTK_CHECK_VERSION (3, 22, 0) */
     GdkWindow     *window = NULL;
     GdkDisplay    *display = NULL;
     GdkMonitor    *monitor = NULL;
@@ -67,12 +66,6 @@ xfdesktop_get_monitor_name_from_gtk_widget(GtkWidget *widget, gint monitor_num)
     monitor = gdk_display_get_monitor(display, monitor_num);
 
     return g_strdup(gdk_monitor_get_model(monitor));
-#else
-    GdkScreen     *screen = NULL;
-
-    screen = gtk_widget_get_screen(widget);
-    return gdk_screen_get_monitor_plug_name(screen, monitor_num);
-#endif
 }
 
 gint
