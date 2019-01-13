@@ -287,11 +287,13 @@ xfce_desktop_setup_icon_view(XfceDesktop *desktop)
 
 static void
 set_imgfile_root_property(XfceDesktop *desktop, const gchar *filename,
-        gint monitor)
+                          gint monitor)
 {
+    GdkDisplay *display;
     gchar property_name[128];
 
-    gdk_error_trap_push();
+    display = gdk_screen_get_display(desktop->priv->gscreen);
+    gdk_x11_display_error_trap_push(display);
 
     g_snprintf(property_name, 128, XFDESKTOP_IMAGE_FILE_FMT, monitor);
     if(filename) {
@@ -305,22 +307,24 @@ set_imgfile_root_property(XfceDesktop *desktop, const gchar *filename,
                             gdk_atom_intern(property_name, FALSE));
     }
 
-    gdk_error_trap_pop_ignored();
+    gdk_x11_display_error_trap_pop_ignored(display);
 }
 
 static void
 set_real_root_window_surface(GdkScreen *gscreen,
-                            cairo_surface_t *surface)
+                             cairo_surface_t *surface)
 {
 #ifndef DISABLE_FOR_BUG7442
     Window xid;
+    GdkDisplay *display;
     GdkWindow *groot;
     cairo_pattern_t *pattern;
 
     groot = gdk_screen_get_root_window(gscreen);
     xid = GDK_WINDOW_XID(groot);
 
-    gdk_error_trap_push();
+    display = gdk_screen_get_display(gscreen);
+    gdk_x11_display_error_trap_push(display);
 
     /* set root property for transparent Eterms */
     gdk_property_change(groot,
@@ -333,7 +337,7 @@ set_real_root_window_surface(GdkScreen *gscreen,
     cairo_pattern_destroy(pattern);
     /* there really should be a standard for this crap... */
 
-    gdk_error_trap_pop_ignored();
+    gdk_x11_display_error_trap_pop_ignored(display);
 #endif
 }
 
@@ -1229,6 +1233,7 @@ static void
 xfce_desktop_unrealize(GtkWidget *widget)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(widget);
+    GdkDisplay  *display;
     gint i;
     GdkWindow *groot;
     gchar property_name[128];
@@ -1255,7 +1260,8 @@ xfce_desktop_unrealize(GtkWidget *widget)
     g_signal_handlers_disconnect_by_func(G_OBJECT(desktop->priv->gscreen),
             G_CALLBACK(screen_composited_changed_cb), desktop);
 
-    gdk_error_trap_push();
+    display = gdk_screen_get_display(desktop->priv->gscreen);
+    gdk_x11_display_error_trap_push(display);
 
     groot = gdk_screen_get_root_window(desktop->priv->gscreen);
     gdk_property_delete(groot, gdk_atom_intern("XFCE_DESKTOP_WINDOW", FALSE));
@@ -1277,8 +1283,8 @@ xfce_desktop_unrealize(GtkWidget *widget)
         desktop->priv->workspaces = NULL;
     }
 
-    gdk_flush();
-    gdk_error_trap_pop_ignored();
+    gdk_display_flush(display);
+    gdk_x11_display_error_trap_pop_ignored(display);
 
     if(desktop->priv->bg_surface) {
         cairo_surface_destroy(desktop->priv->bg_surface);
