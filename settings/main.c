@@ -1747,7 +1747,7 @@ cb_xfdesktop_icon_orientation_changed(GtkComboBox *combo,
     GtkWindow *window = GTK_WINDOW (gtk_widget_get_toplevel(GTK_WIDGET(combo)));
 
     if(!xfce_dialog_confirm(window, "view-sort-ascending", _("Arrange icons"),
-                            "", question))
+                            NULL, "%s", question))
     {
         return;
     }
