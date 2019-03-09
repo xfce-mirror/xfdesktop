@@ -1,3 +1,30 @@
+
+4.13.3
+======
+[Please note that this is a development release.]
+
+Development release of xfdesktop targeting for Xfce 4.14.
+Please report all problems at bugzilla.xfce.org.
+
+- Minimal GTK version = 3.22
+- Avoid crash: do not clean up data to be used (Bug #14609)
+- Add orientation option to arrange icons (Bug #14979)
+- Fix icon size in Open with submenu (Bug #14774)
+- Add support for RandR's primary monitor (Bug #10688)
+- Sync user's wallpaper selection to AccountsService
+- Restore icons of custom actions
+- Port Settings UI to Glade 3
+- Add padding to some context menu icons (Bug #14628)
+- Translation Updates: Albanian, Amharic, Arabic, Asturian, Basque, Belarusian,
+  Bulgarian, Catalan, Chinese (China), Chinese (Hong Kong), Chinese (Taiwan),
+  Croatian, Czech, Danish, Dutch, English (Australia), English (Canada),
+  English (United Kingdom), Estonian, Finnish, French, Galician, German, Greek,
+  Hebrew, Hungarian, Icelandic, Indonesian, Italian, Japanese, Kazakh, Korean,
+  Lithuanian, Malay, Nepali, Norwegian Bokmål, Norwegian Nynorsk, Occitan,
+  Persian (Iran), Polish, Portuguese, Portuguese (Brazil), Romanian, Russian,
+  Serbian, Slovak, Slovenian, Spanish, Swedish, Thai, Turkish, Ukrainian,
+  Uyghur, Uzbek
+
 4.13.2
 ======
 [Please note that this is a development release.]
@@ -47,7 +74,8 @@ Development release of xfdesktop targeting for Xfce 4.14.
 Please report all problems at bugzilla.xfce.org.
 
 * Major changes:
- - Port to Gtk3.
+ - Port to  version = 3.22
+ - Fix icon size in Open with submenu (Bug #14774)3.
   - The iconview has a CSS name of "XfdesktopIconView" and
     adds the GTK_STYLE_CLASS_VIEW to it's base. It then adds
     GTK_STYLE_CLASS_LABEL when rendering the icon text with
