@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Ammuu5, 2017-2018
+# Ammuu5, 2017-2019
 # Juhani Numminen <juhaninumminen0@gmail.com>, 2013
 # Lasse Liehu <larso@gmx.com>, 2014,2016
 # Pasi Lallinaho <pasi@shimmerproject.org>, 2014-2015,2017
@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-22 06:31+0100\n"
-"PO-Revision-Date: 2018-12-23 13:00+0000\n"
+"POT-Creation-Date: 2018-12-31 00:31+0100\n"
+"PO-Revision-Date: 2019-03-11 10:05+0000\n"
 "Last-Translator: Ammuu5\n"
 "Language-Team: Finnish (http://www.transifex.com/xfce/xfdesktop/language/fi/)\n"
 "MIME-Version: 1.0\n"
@@ -113,54 +113,101 @@ msgstr "Kuvan valinta ei ole käytössä kun kuvan tyyliksi on valittu Ei mitä�
 msgid "Spanning screens"
 msgstr "Useille näytöille ulottuva"
 
-#: ../settings/main.c:1902
+#. TRANSLATORS: Please split the message in half '\n' so the dialog will not
+#. be too wide.
+#: ../settings/main.c:1760
+msgid ""
+"Would you like to arrange all existing\n"
+"icons according to the selected orientation?"
+msgstr ""
+
+#: ../settings/main.c:1766
+msgid "Arrange icons"
+msgstr "Järjestä kuvakkeet"
+
+#. printf is to be translator-friendly
+#: ../settings/main.c:1774 ../src/xfdesktop-file-icon-manager.c:796
+#: ../src/xfdesktop-file-icon-manager.c:1345
+#, c-format
+msgid "Unable to launch \"%s\":"
+msgstr "Ei voi käynnistää kohdetta \"%s\":"
+
+#: ../settings/main.c:1775 ../src/xfdesktop-file-icon-manager.c:798
+#: ../src/xfdesktop-file-icon-manager.c:1092
+#: ../src/xfdesktop-file-icon-manager.c:1346 ../src/xfdesktop-file-utils.c:671
+#: ../src/xfdesktop-file-utils.c:1203 ../src/xfdesktop-file-utils.c:1281
+#: ../src/xfdesktop-file-utils.c:1305 ../src/xfdesktop-file-utils.c:1367
+msgid "Launch Error"
+msgstr "Käynnistysvirhe"
+
+#: ../settings/main.c:1777 ../src/xfdesktop-file-icon-manager.c:560
+#: ../src/xfdesktop-file-icon-manager.c:579
+#: ../src/xfdesktop-file-icon-manager.c:664
+#: ../src/xfdesktop-file-icon-manager.c:800
+#: ../src/xfdesktop-file-icon-manager.c:1096
+#: ../src/xfdesktop-file-icon-manager.c:1348
+#: ../src/xfdesktop-file-icon-manager.c:2874 ../src/xfdesktop-file-utils.c:674
+#: ../src/xfdesktop-file-utils.c:693 ../src/xfdesktop-file-utils.c:747
+#: ../src/xfdesktop-file-utils.c:811 ../src/xfdesktop-file-utils.c:872
+#: ../src/xfdesktop-file-utils.c:933 ../src/xfdesktop-file-utils.c:981
+#: ../src/xfdesktop-file-utils.c:1036 ../src/xfdesktop-file-utils.c:1094
+#: ../src/xfdesktop-file-utils.c:1146 ../src/xfdesktop-file-utils.c:1207
+#: ../src/xfdesktop-file-utils.c:1283 ../src/xfdesktop-file-utils.c:1309
+#: ../src/xfdesktop-file-utils.c:1371 ../src/xfdesktop-file-utils.c:1430
+#: ../src/xfdesktop-file-utils.c:1446 ../src/xfdesktop-file-utils.c:1508
+#: ../src/xfdesktop-file-utils.c:1526 ../src/xfdesktop-volume-icon.c:525
+#: ../src/xfdesktop-volume-icon.c:571 ../src/xfdesktop-volume-icon.c:607
+msgid "_Close"
+msgstr "_Sulje"
+
+#: ../settings/main.c:1932
 msgid "Image files"
 msgstr "Kuvatiedostot"
 
 #. Change the title of the file chooser dialog
-#: ../settings/main.c:1910
+#: ../settings/main.c:1940
 msgid "Select a Directory"
 msgstr "Valitse hakemisto"
 
-#: ../settings/main.c:2113
+#: ../settings/main.c:2145
 msgid "Settings manager socket"
 msgstr "Asetustenhallinnan pistoke"
 
-#: ../settings/main.c:2113
+#: ../settings/main.c:2145
 msgid "SOCKET ID"
 msgstr "PISTOKE"
 
-#: ../settings/main.c:2114
+#: ../settings/main.c:2146
 msgid "Version information"
 msgstr "Versiotiedot"
 
-#: ../settings/main.c:2115 ../src/xfdesktop-application.c:836
+#: ../settings/main.c:2147 ../src/xfdesktop-application.c:836
 msgid "Enable debug messages"
 msgstr "Salli vianetsintä"
 
-#: ../settings/main.c:2143
+#: ../settings/main.c:2175
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Saat ohjeita komennolla ”%s --help”."
 
-#: ../settings/main.c:2155
+#: ../settings/main.c:2187
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce:n kehittäjät. Kaikki oikeudet pidätetään."
 
-#: ../settings/main.c:2156
+#: ../settings/main.c:2188
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Ilmoita ohjelmistovirheistä osoitteeseen <%s>."
 
-#: ../settings/main.c:2163
+#: ../settings/main.c:2195
 msgid "Desktop Settings"
 msgstr "Työpöydän asetukset"
 
-#: ../settings/main.c:2165
+#: ../settings/main.c:2197
 msgid "Unable to contact settings server"
 msgstr "D-Bus-istuntoväylään ei saada yhteyttä"
 
-#: ../settings/main.c:2167
+#: ../settings/main.c:2199
 msgid "Quit"
 msgstr "Lopeta"
 
@@ -669,26 +716,6 @@ msgstr "Työpöydän hakemistoa \"%s\" ei voi luoda"
 msgid "Desktop Folder Error"
 msgstr "Työpöydän hakemiston virhe"
 
-#: ../src/xfdesktop-file-icon-manager.c:560
-#: ../src/xfdesktop-file-icon-manager.c:579
-#: ../src/xfdesktop-file-icon-manager.c:664
-#: ../src/xfdesktop-file-icon-manager.c:800
-#: ../src/xfdesktop-file-icon-manager.c:1096
-#: ../src/xfdesktop-file-icon-manager.c:1348
-#: ../src/xfdesktop-file-icon-manager.c:2874 ../src/xfdesktop-file-utils.c:674
-#: ../src/xfdesktop-file-utils.c:693 ../src/xfdesktop-file-utils.c:747
-#: ../src/xfdesktop-file-utils.c:811 ../src/xfdesktop-file-utils.c:872
-#: ../src/xfdesktop-file-utils.c:933 ../src/xfdesktop-file-utils.c:981
-#: ../src/xfdesktop-file-utils.c:1036 ../src/xfdesktop-file-utils.c:1094
-#: ../src/xfdesktop-file-utils.c:1146 ../src/xfdesktop-file-utils.c:1207
-#: ../src/xfdesktop-file-utils.c:1283 ../src/xfdesktop-file-utils.c:1309
-#: ../src/xfdesktop-file-utils.c:1371 ../src/xfdesktop-file-utils.c:1430
-#: ../src/xfdesktop-file-utils.c:1446 ../src/xfdesktop-file-utils.c:1508
-#: ../src/xfdesktop-file-utils.c:1526 ../src/xfdesktop-volume-icon.c:525
-#: ../src/xfdesktop-volume-icon.c:571 ../src/xfdesktop-volume-icon.c:607
-msgid "_Close"
-msgstr "_Sulje"
-
 #: ../src/xfdesktop-file-icon-manager.c:577
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
@@ -706,21 +733,6 @@ msgstr "Tiedostoja ei voitu uudelleennimetä"
 #: ../src/xfdesktop-file-icon-manager.c:663
 msgid "None of the icons selected support being renamed."
 msgstr "Yksikään valituista kuvakkeista ei tue uudelleennimeämistä."
-
-#. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:796
-#: ../src/xfdesktop-file-icon-manager.c:1345
-#, c-format
-msgid "Unable to launch \"%s\":"
-msgstr "Ei voi käynnistää kohdetta \"%s\":"
-
-#: ../src/xfdesktop-file-icon-manager.c:798
-#: ../src/xfdesktop-file-icon-manager.c:1092
-#: ../src/xfdesktop-file-icon-manager.c:1346 ../src/xfdesktop-file-utils.c:671
-#: ../src/xfdesktop-file-utils.c:1203 ../src/xfdesktop-file-utils.c:1281
-#: ../src/xfdesktop-file-utils.c:1305 ../src/xfdesktop-file-utils.c:1367
-msgid "Launch Error"
-msgstr "Käynnistysvirhe"
 
 #: ../src/xfdesktop-file-icon-manager.c:1017
 #, c-format
