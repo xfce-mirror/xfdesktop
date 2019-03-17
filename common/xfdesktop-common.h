@@ -108,6 +108,10 @@ GtkWidget* xfdesktop_menu_create_menu_item_with_markup(const gchar *name,
 GtkWidget* xfdesktop_menu_create_menu_item_with_mnemonic(const gchar *name,
                                                          GtkWidget   *image);
 
+void xfdesktop_get_screen_dimensions(GdkScreen *gcreen,
+                                     gint      *width,
+                                     gint      *height);
+
 #if defined(G_HAVE_ISO_VARARGS)
 
 #define XF_DEBUG(...) xfdesktop_debug (__func__, __FILE__, __LINE__, __VA_ARGS__)

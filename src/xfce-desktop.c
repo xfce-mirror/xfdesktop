@@ -361,8 +361,7 @@ create_bg_surface(GdkScreen *gscreen, gpointer user_data)
 
     TRACE("really entering");
 
-    w = gdk_screen_get_width(gscreen);
-    h = gdk_screen_get_height(gscreen);
+    xfdesktop_get_screen_dimensions (gscreen, &w, &h);
     gtk_widget_set_size_request(GTK_WIDGET(desktop), w, h);
     gtk_window_resize(GTK_WINDOW(desktop), w, h);
 
@@ -523,8 +522,7 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
                 rect.y = monitor_rect.y;
         }
 
-        rect.width = gdk_screen_get_width(gscreen);
-        rect.height = gdk_screen_get_height(gscreen);
+        xfdesktop_get_screen_dimensions (gscreen, &rect.width, &rect.height);
         XF_DEBUG("xinerama_stretch x %d, y %d, width %d, height %d",
                  rect.x, rect.y, rect.width, rect.height);
     } else {
@@ -836,7 +834,7 @@ screen_set_selection(XfceDesktop *desktop)
     Atom selection_atom, common_selection_atom, manager_atom;
 
     xwin = GDK_WINDOW_XID(gtk_widget_get_window(GTK_WIDGET(desktop)));
-    xscreen = gdk_screen_get_number(desktop->priv->gscreen);
+    xscreen = gdk_x11_screen_get_screen_number(desktop->priv->gscreen);
 
     g_snprintf(selection_name, 100, XFDESKTOP_SELECTION_FMT, xscreen);
     selection_atom = XInternAtom(gdk_x11_get_default_xdisplay(), selection_name, False);
@@ -1158,8 +1156,7 @@ xfce_desktop_realize(GtkWidget *widget)
     TRACE("entering");
 
     gtk_window_set_screen(GTK_WINDOW(desktop), desktop->priv->gscreen);
-    sw = gdk_screen_get_width(desktop->priv->gscreen);
-    sh = gdk_screen_get_height(desktop->priv->gscreen);
+    xfdesktop_get_screen_dimensions (desktop->priv->gscreen, &sw, &sh);
 
     g_signal_connect(G_OBJECT(desktop->priv->gscreen),
                      "monitors-changed",
@@ -1195,7 +1192,7 @@ xfce_desktop_realize(GtkWidget *widget)
 
     screen_set_selection(desktop);
 
-    wnck_screen = wnck_screen_get(gdk_screen_get_number(desktop->priv->gscreen));
+    wnck_screen = wnck_screen_get(gdk_x11_screen_get_screen_number(desktop->priv->gscreen));
     desktop->priv->wnck_screen = wnck_screen;
 
     /* Watch for single workspace setting changes */

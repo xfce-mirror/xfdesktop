@@ -2642,8 +2642,7 @@ xfdesktop_setup_grids(XfdesktopIconView *icon_view)
                                             &xorigin, &yorigin,
                                             &width, &height)) {
         monitor = gdk_display_get_monitor_at_window (display, gtk_widget_get_parent_window(GTK_WIDGET(icon_view)));
-        width = gdk_screen_get_width(screen);
-        height = gdk_screen_get_height(screen);
+        xfdesktop_get_screen_dimensions (screen, &width, &height);
         xorigin = yorigin = 0;
     }
 
@@ -3321,8 +3320,7 @@ xfdesktop_grid_do_resize(XfdesktopIconView *icon_view)
                                            &xorigin, &yorigin,
                                            &width, &height))
     {
-        width = gdk_screen_get_width(screen);
-        height = gdk_screen_get_height(screen);
+        xfdesktop_get_screen_dimensions (screen, &width, &height);
     }
 
     new_rows = (width - MIN_MARGIN * 2) / CELL_SIZE;
@@ -3376,6 +3374,7 @@ xfdesktop_get_workarea_single(XfdesktopIconView *icon_view,
 {
     gboolean ret = FALSE;
     GdkScreen *gscreen;
+    GdkDisplay *gdisplay;
     Display *dpy;
     Window root;
     Atom property, actual_type = None;
@@ -3387,13 +3386,14 @@ xfdesktop_get_workarea_single(XfdesktopIconView *icon_view,
                          && width && height, FALSE);
 
     gscreen = gtk_widget_get_screen(GTK_WIDGET(icon_view));
-    dpy = GDK_DISPLAY_XDISPLAY(gdk_screen_get_display(gscreen));
+    gdisplay = gdk_screen_get_display(gscreen);
+    dpy = GDK_DISPLAY_XDISPLAY(gdisplay);
     root = GDK_WINDOW_XID(gdk_screen_get_root_window(gscreen));
     property = XInternAtom(dpy, "_NET_WORKAREA", False);
 
     first_id = ws_num * 4;
 
-    gdk_error_trap_push();
+    gdk_x11_display_error_trap_push(gdisplay);
 
     do {
         if(Success == XGetWindowProperty(dpy, root, property, offset,
@@ -3441,7 +3441,7 @@ xfdesktop_get_workarea_single(XfdesktopIconView *icon_view,
             break;
     } while(bytes_after > 0);
 
-    gdk_error_trap_pop_ignored();
+    gdk_x11_display_error_trap_pop_ignored(gdisplay);
 
     return ret;
 }
