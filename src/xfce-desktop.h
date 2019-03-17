@@ -79,9 +79,6 @@ GtkWidget *xfce_desktop_new(GdkScreen *gscreen,
 
 gint xfce_desktop_get_n_monitors(XfceDesktop *desktop);
 
-gint xfce_desktop_get_width(XfceDesktop *desktop);
-gint xfce_desktop_get_height(XfceDesktop *desktop);
-
 void xfce_desktop_set_icon_style(XfceDesktop *desktop,
                                  XfceDesktopIconStyle style);
 XfceDesktopIconStyle xfce_desktop_get_icon_style(XfceDesktop *desktop);

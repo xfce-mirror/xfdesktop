@@ -1585,22 +1585,6 @@ xfce_desktop_get_n_monitors(XfceDesktop *desktop)
     return gdk_display_get_n_monitors(gdk_screen_get_display(desktop->priv->gscreen));
 }
 
-gint
-xfce_desktop_get_width(XfceDesktop *desktop)
-{
-    g_return_val_if_fail(XFCE_IS_DESKTOP(desktop), -1);
-
-    return gdk_screen_get_width(desktop->priv->gscreen);
-}
-
-gint
-xfce_desktop_get_height(XfceDesktop *desktop)
-{
-    g_return_val_if_fail(XFCE_IS_DESKTOP(desktop), -1);
-
-    return gdk_screen_get_height(desktop->priv->gscreen);
-}
-
 void
 xfce_desktop_set_icon_style(XfceDesktop *desktop,
                             XfceDesktopIconStyle style)
