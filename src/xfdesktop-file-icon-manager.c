@@ -1740,7 +1740,7 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
 
             /* Trash */
-            img = gtk_image_new_from_icon_name("user-trash-full", GTK_ICON_SIZE_MENU);
+            img = gtk_image_new_from_icon_name("user-trash", GTK_ICON_SIZE_MENU);
             mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Mo_ve to Trash"), img);
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
