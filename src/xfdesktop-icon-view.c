@@ -813,6 +813,24 @@ xfdesktop_icon_view_get_single_click(XfdesktopIconView *icon_view)
     return icon_view->priv->single_click;
 }
 
+static void
+xfdesktop_icon_view_clear_drag_event(XfdesktopIconView *icon_view, GtkWidget *widget)
+{
+    DBG("unsetting stuff");
+    icon_view->priv->control_click = FALSE;
+    icon_view->priv->double_click = FALSE;
+    icon_view->priv->maybe_begin_drag = FALSE;
+    icon_view->priv->definitely_dragging = FALSE;
+    if(icon_view->priv->definitely_rubber_banding) {
+        /* Remove the rubber band selection box */
+        icon_view->priv->definitely_rubber_banding = FALSE;
+        gtk_widget_queue_draw_area(widget, icon_view->priv->band_rect.x,
+                                   icon_view->priv->band_rect.y,
+                                   icon_view->priv->band_rect.width,
+                                   icon_view->priv->band_rect.height);
+    }
+}
+
 static gboolean
 xfdesktop_icon_view_button_press(GtkWidget *widget,
                                  GdkEventButton *evt,
@@ -825,6 +843,10 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
 
     if(evt->type == GDK_BUTTON_PRESS) {
         GList *icon_l;
+
+        /* Clear drag event if ongoing */
+        if(evt->button == 2 || evt->button == 3)
+            xfdesktop_icon_view_clear_drag_event(icon_view, widget);
 
         /* Let xfce-desktop handle button 2 */
         if(evt->button == 2) {
@@ -971,24 +993,6 @@ xfdesktop_icon_view_get_tooltip_size(XfdesktopIconView *icon_view)
 
     /* Fall back */
     return DEFAULT_TOOLTIP_SIZE;
-}
-
-static void
-xfdesktop_icon_view_clear_drag_event(XfdesktopIconView *icon_view, GtkWidget *widget)
-{
-    DBG("unsetting stuff");
-    icon_view->priv->control_click = FALSE;
-    icon_view->priv->double_click = FALSE;
-    icon_view->priv->maybe_begin_drag = FALSE;
-    icon_view->priv->definitely_dragging = FALSE;
-    if(icon_view->priv->definitely_rubber_banding) {
-        /* Remove the rubber band selection box */
-        icon_view->priv->definitely_rubber_banding = FALSE;
-        gtk_widget_queue_draw_area(widget, icon_view->priv->band_rect.x,
-                                   icon_view->priv->band_rect.y,
-                                   icon_view->priv->band_rect.width,
-                                   icon_view->priv->band_rect.height);
-    }
 }
 
 static gboolean
