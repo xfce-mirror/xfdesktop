@@ -245,9 +245,9 @@ static const GtkTargetEntry drag_targets[] = {
 };
 static const gint n_drag_targets = (sizeof(drag_targets)/sizeof(drag_targets[0]));
 static const GtkTargetEntry drop_targets[] = {
-    { "_NETSCAPE_URL", 0, TARGET_NETSCAPE_URL, },
     { "text/uri-list", 0, TARGET_TEXT_URI_LIST, },
     { "XdndDirectSave0", 0, TARGET_XDND_DIRECT_SAVE0, },
+    { "_NETSCAPE_URL", 0, TARGET_NETSCAPE_URL, },
 };
 static const gint n_drop_targets = (sizeof(drop_targets)/sizeof(drop_targets[0]));
 
