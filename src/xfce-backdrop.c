@@ -1780,6 +1780,7 @@ xfce_backdrop_loader_closed_cb(GdkPixbufLoader *loader,
     gint dx, dy, xo, yo;
     gdouble xscale, yscale;
     GdkInterpType interp;
+    gboolean rotated = FALSE;
 
     TRACE("entering");
 
@@ -1796,6 +1797,8 @@ xfce_backdrop_loader_closed_cb(GdkPixbufLoader *loader,
 
     image = gdk_pixbuf_loader_get_pixbuf(loader);
     if(image) {
+        gint iw_orig = gdk_pixbuf_get_width(image);
+
         /* If the image is supposed to be rotated, do that now */
         GdkPixbuf *temp = gdk_pixbuf_apply_embedded_orientation (image);
         /* Do not unref image, gdk_pixbuf_loader_get_pixbuf is transfer none */
@@ -1803,6 +1806,8 @@ xfce_backdrop_loader_closed_cb(GdkPixbufLoader *loader,
 
         iw = gdk_pixbuf_get_width(image);
         ih = gdk_pixbuf_get_height(image);
+
+        rotated = (iw_orig != iw);
     }
 
     if(backdrop->priv->width == 0 || backdrop->priv->height == 0) {
@@ -1917,7 +1922,9 @@ xfce_backdrop_loader_closed_cb(GdkPixbufLoader *loader,
             dy = yo;
 
             gdk_pixbuf_composite(image, final_image, dx, dy,
-                    iw * xscale, ih * yscale, xo, yo, 1, 1,
+                    iw * xscale, ih * yscale, xo, yo,
+                    rotated ? xscale : 1,
+                    rotated ? yscale : 1,
                     interp, 255);
             break;
 
