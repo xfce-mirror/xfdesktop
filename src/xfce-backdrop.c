@@ -1858,6 +1858,9 @@ xfce_backdrop_loader_closed_cb(GdkPixbufLoader *loader,
         return;
     }
 
+    xscale = (gdouble)w / iw;
+    yscale = (gdouble)h / ih;
+
     switch(istyle) {
         case XFCE_BACKDROP_IMAGE_NONE:
             /* do nothing */
@@ -1903,12 +1906,13 @@ xfce_backdrop_loader_closed_cb(GdkPixbufLoader *loader,
 
         case XFCE_BACKDROP_IMAGE_STRETCHED:
             gdk_pixbuf_composite(image, final_image, 0, 0, w, h,
-                    0, 0, 1, 1, interp, 255);
+                    0, 0,
+                    rotated ? xscale : 1,
+                    rotated ? yscale : 1,
+                    interp, 255);
             break;
 
         case XFCE_BACKDROP_IMAGE_SCALED:
-            xscale = (gdouble)w / iw;
-            yscale = (gdouble)h / ih;
             if(xscale < yscale) {
                 yscale = xscale;
                 xo = 0;
@@ -1930,8 +1934,6 @@ xfce_backdrop_loader_closed_cb(GdkPixbufLoader *loader,
 
         case XFCE_BACKDROP_IMAGE_ZOOMED:
         case XFCE_BACKDROP_IMAGE_SPANNING_SCREENS:
-            xscale = (gdouble)w / iw;
-            yscale = (gdouble)h / ih;
             if(xscale < yscale) {
                 xscale = yscale;
                 xo = (w - (iw * xscale)) * 0.5;
@@ -1943,7 +1945,10 @@ xfce_backdrop_loader_closed_cb(GdkPixbufLoader *loader,
             }
 
             gdk_pixbuf_composite(image, final_image, 0, 0,
-                    w, h, xo, yo, 1, 1, interp, 255);
+                    w, h, xo, yo,
+                    rotated ? xscale : 1,
+                    rotated ? yscale : 1,
+                    interp, 255);
             break;
 
         default:
