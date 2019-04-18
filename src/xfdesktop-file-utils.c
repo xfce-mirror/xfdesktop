@@ -1701,7 +1701,7 @@ xfdesktop_thunarx_file_info_has_mime_type(ThunarxFileInfo *file_info,
         return FALSE;
 
     content_type = g_file_info_get_content_type(info);
-    return g_content_type_is_a(mime_type, content_type);
+    return g_content_type_is_a(content_type, mime_type);
 }
 
 gboolean
