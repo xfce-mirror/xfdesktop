@@ -333,7 +333,9 @@ set_real_root_window_surface(GdkScreen *gscreen,
             GDK_PROP_MODE_REPLACE, (guchar *)&xid, 1);
     /* and set the root window's BG surface, because aterm is somewhat lame. */
     pattern = cairo_pattern_create_for_surface(surface);
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     gdk_window_set_background_pattern(groot, pattern);
+G_GNUC_END_IGNORE_DEPRECATIONS
     cairo_pattern_destroy(pattern);
     /* there really should be a standard for this crap... */
 
@@ -372,7 +374,9 @@ create_bg_surface(GdkScreen *gscreen, gpointer user_data)
                                                           CAIRO_CONTENT_COLOR_ALPHA, w, h);
 
     pattern = cairo_pattern_create_for_surface(desktop->priv->bg_surface);
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     gdk_window_set_background_pattern(gtk_widget_get_window(GTK_WIDGET(desktop)), pattern);
+G_GNUC_END_IGNORE_DEPRECATIONS
     cairo_pattern_destroy(pattern);
 
     return desktop->priv->bg_surface;
@@ -1264,7 +1268,9 @@ xfce_desktop_unrealize(GtkWidget *widget)
 #ifndef DISABLE_FOR_BUG7442
     gdk_property_delete(groot, gdk_atom_intern("_XROOTPMAP_ID", FALSE));
     gdk_property_delete(groot, gdk_atom_intern("ESETROOT_PMAP_ID", FALSE));
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     gdk_window_set_background_pattern(groot, NULL);
+G_GNUC_END_IGNORE_DEPRECATIONS
 #endif
 
     if(desktop->priv->workspaces) {
@@ -1422,8 +1428,10 @@ style_refresh_cb(gpointer *w)
 
     if(desktop->priv->bg_surface) {
         pattern = cairo_pattern_create_for_surface(desktop->priv->bg_surface);
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
         gdk_window_set_background_pattern(gtk_widget_get_window(GTK_WIDGET(desktop)),
                                           pattern);
+G_GNUC_END_IGNORE_DEPRECATIONS
         cairo_pattern_destroy(pattern);
     }
 
