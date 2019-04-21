@@ -60,15 +60,13 @@ static guint __signals[SIG_N_SIGNALS] = { 0, };
 
 static void xfdesktop_icon_finalize(GObject *obj);
 
-G_DEFINE_ABSTRACT_TYPE(XfdesktopIcon, xfdesktop_icon, G_TYPE_OBJECT)
+G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE(XfdesktopIcon, xfdesktop_icon, G_TYPE_OBJECT)
 
 
 static void
 xfdesktop_icon_class_init(XfdesktopIconClass *klass)
 {
     GObjectClass *gobject_class = (GObjectClass *)klass;
-
-    g_type_class_add_private(klass, sizeof(XfdesktopIconPrivate));
 
     gobject_class->finalize = xfdesktop_icon_finalize;
 
@@ -122,8 +120,7 @@ xfdesktop_icon_class_init(XfdesktopIconClass *klass)
 static void
 xfdesktop_icon_init(XfdesktopIcon *icon)
 {
-    icon->priv = G_TYPE_INSTANCE_GET_PRIVATE(icon, XFDESKTOP_TYPE_ICON,
-                                             XfdesktopIconPrivate);
+    icon->priv = xfdesktop_icon_get_instance_private(icon);
 }
 
 static void

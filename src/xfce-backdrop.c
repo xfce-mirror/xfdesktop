@@ -98,7 +98,7 @@ static void cb_xfce_backdrop_image_files_changed(GFileMonitor     *monitor,
                                                  GFileMonitorEvent event,
                                                  gpointer          user_data);
 
-struct _XfceBackdropPriv
+struct _XfceBackdropPrivate
 {
     gint width, height;
     gint bpp;
@@ -650,15 +650,13 @@ xfce_backdrop_choose_chronological(XfceBackdrop *backdrop)
 /* gobject-related functions */
 
 
-G_DEFINE_TYPE(XfceBackdrop, xfce_backdrop, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE(XfceBackdrop, xfce_backdrop, G_TYPE_OBJECT)
 
 
 static void
 xfce_backdrop_class_init(XfceBackdropClass *klass)
 {
     GObjectClass *gobject_class = (GObjectClass *)klass;
-
-    g_type_class_add_private(klass, sizeof(XfceBackdropPriv));
 
     gobject_class->finalize = xfce_backdrop_finalize;
     gobject_class->set_property = xfce_backdrop_set_property;
@@ -761,8 +759,7 @@ xfce_backdrop_class_init(XfceBackdropClass *klass)
 static void
 xfce_backdrop_init(XfceBackdrop *backdrop)
 {
-    backdrop->priv = G_TYPE_INSTANCE_GET_PRIVATE(backdrop, XFCE_TYPE_BACKDROP,
-                                                 XfceBackdropPriv);
+    backdrop->priv = xfce_backdrop_get_instance_private(backdrop);
     backdrop->priv->cycle_timer_id = 0;
 
     /* color defaults */

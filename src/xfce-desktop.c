@@ -88,7 +88,7 @@
 /* disable setting the x background for bug 7442 */
 //#define DISABLE_FOR_BUG7442
 
-struct _XfceDesktopPriv
+struct _XfceDesktopPrivate
 {
     GdkScreen *gscreen;
     WnckScreen *wnck_screen;
@@ -889,7 +889,7 @@ screen_set_selection(XfceDesktop *desktop)
 /* gobject-related functions */
 
 
-G_DEFINE_TYPE(XfceDesktop, xfce_desktop, GTK_TYPE_WINDOW)
+G_DEFINE_TYPE_WITH_PRIVATE(XfceDesktop, xfce_desktop, GTK_TYPE_WINDOW)
 
 
 static void
@@ -897,8 +897,6 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
 {
     GObjectClass *gobject_class = (GObjectClass *)klass;
     GtkWidgetClass *widget_class = (GtkWidgetClass *)klass;
-
-    g_type_class_add_private(klass, sizeof(XfceDesktopPriv));
 
     gobject_class->finalize = xfce_desktop_finalize;
     gobject_class->set_property = xfce_desktop_set_property;
@@ -1009,8 +1007,7 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
 static void
 xfce_desktop_init(XfceDesktop *desktop)
 {
-    desktop->priv = G_TYPE_INSTANCE_GET_PRIVATE(desktop, XFCE_TYPE_DESKTOP,
-                                                XfceDesktopPriv);
+    desktop->priv = xfce_desktop_get_instance_private(desktop);
 
     gtk_window_set_type_hint(GTK_WINDOW(desktop), GDK_WINDOW_TYPE_HINT_DESKTOP);
     /* Accept focus is needed for the menu pop up either by the menu key on

@@ -392,7 +392,7 @@ static guint __signals[SIG_N_SIGNALS] = { 0, };
 static GQuark xfdesktop_cell_highlight_quark = 0;
 
 
-G_DEFINE_TYPE(XfdesktopIconView, xfdesktop_icon_view, GTK_TYPE_WIDGET)
+G_DEFINE_TYPE_WITH_PRIVATE(XfdesktopIconView, xfdesktop_icon_view, GTK_TYPE_WIDGET)
 
 
 static void
@@ -403,8 +403,6 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
     GtkBindingSet *binding_set;
 
     binding_set = gtk_binding_set_by_class(klass);
-
-    g_type_class_add_private(klass, sizeof(XfdesktopIconViewPrivate));
 
     gobject_class->finalize = xfdesktop_icon_view_finalize;
     gobject_class->set_property = xfce_icon_view_set_property;
@@ -656,9 +654,7 @@ xfdesktop_icon_view_init(XfdesktopIconView *icon_view)
 {
     GtkStyleContext *context;
 
-    icon_view->priv = G_TYPE_INSTANCE_GET_PRIVATE(icon_view,
-                                                  XFDESKTOP_TYPE_ICON_VIEW,
-                                                  XfdesktopIconViewPrivate);
+    icon_view->priv = xfdesktop_icon_view_get_instance_private(icon_view);
 
     icon_view->priv->icon_size = DEFAULT_ICON_SIZE;
     icon_view->priv->font_size = DEFAULT_FONT_SIZE;

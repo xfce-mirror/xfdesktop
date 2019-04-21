@@ -107,10 +107,11 @@ G_DEFINE_TYPE_EXTENDED(XfdesktopVolumeIcon, xfdesktop_volume_icon,
                        XFDESKTOP_TYPE_FILE_ICON, 0,
                        G_IMPLEMENT_INTERFACE(THUNARX_TYPE_FILE_INFO,
                                              xfdesktop_volume_icon_tfi_init)
+                       G_ADD_PRIVATE(XfdesktopVolumeIcon)
                        )
 #else
-G_DEFINE_TYPE(XfdesktopVolumeIcon, xfdesktop_volume_icon,
-              XFDESKTOP_TYPE_FILE_ICON)
+G_DEFINE_TYPE_WITH_PRIVATE(XfdesktopVolumeIcon, xfdesktop_volume_icon,
+                           XFDESKTOP_TYPE_FILE_ICON)
 #endif
 
 
@@ -127,8 +128,6 @@ xfdesktop_volume_icon_class_init(XfdesktopVolumeIconClass *klass)
     XfdesktopFileIconClass *file_icon_class = (XfdesktopFileIconClass *)klass;
 
     xfdesktop_volume_icon_activated_quark = g_quark_from_static_string("xfdesktop-volume-icon-activated");
-
-    g_type_class_add_private(klass, sizeof(XfdesktopVolumeIconClass));
 
     gobject_class->finalize = xfdesktop_volume_icon_finalize;
 
@@ -154,8 +153,7 @@ xfdesktop_volume_icon_class_init(XfdesktopVolumeIconClass *klass)
 static void
 xfdesktop_volume_icon_init(XfdesktopVolumeIcon *icon)
 {
-    icon->priv = G_TYPE_INSTANCE_GET_PRIVATE(icon, XFDESKTOP_TYPE_VOLUME_ICON,
-                                             XfdesktopVolumeIconPrivate);
+    icon->priv = xfdesktop_volume_icon_get_instance_private(icon);
 }
 
 static void

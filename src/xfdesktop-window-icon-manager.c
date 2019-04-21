@@ -88,14 +88,13 @@ G_DEFINE_TYPE_EXTENDED(XfdesktopWindowIconManager,
                        xfdesktop_window_icon_manager,
                        G_TYPE_OBJECT, 0,
                        G_IMPLEMENT_INTERFACE(XFDESKTOP_TYPE_ICON_VIEW_MANAGER,
-                                             xfdesktop_window_icon_manager_icon_view_manager_init))
+                                             xfdesktop_window_icon_manager_icon_view_manager_init)
+                       G_ADD_PRIVATE(XfdesktopWindowIconManager))
 
 static void
 xfdesktop_window_icon_manager_class_init(XfdesktopWindowIconManagerClass *klass)
 {
     GObjectClass *gobject_class = (GObjectClass *)klass;
-
-    g_type_class_add_private(klass, sizeof(XfdesktopWindowIconManagerPrivate));
 
     gobject_class->set_property = xfdesktop_window_icon_manager_set_property;
     gobject_class->get_property = xfdesktop_window_icon_manager_get_property;
@@ -112,9 +111,7 @@ xfdesktop_window_icon_manager_class_init(XfdesktopWindowIconManagerClass *klass)
 static void
 xfdesktop_window_icon_manager_init(XfdesktopWindowIconManager *wmanager)
 {
-    wmanager->priv = G_TYPE_INSTANCE_GET_PRIVATE(wmanager,
-                                                 XFDESKTOP_TYPE_WINDOW_ICON_MANAGER,
-                                                 XfdesktopWindowIconManagerPrivate);
+    wmanager->priv = xfdesktop_window_icon_manager_get_instance_private(wmanager);
 }
 
 static void

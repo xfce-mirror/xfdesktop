@@ -101,10 +101,11 @@ G_DEFINE_TYPE_EXTENDED(XfdesktopSpecialFileIcon, xfdesktop_special_file_icon,
                        XFDESKTOP_TYPE_FILE_ICON, 0,
                        G_IMPLEMENT_INTERFACE(THUNARX_TYPE_FILE_INFO,
                                              xfdesktop_special_file_icon_tfi_init)
+                       G_ADD_PRIVATE(XfdesktopSpecialFileIcon)
                        )
 #else
-G_DEFINE_TYPE(XfdesktopSpecialFileIcon, xfdesktop_special_file_icon,
-              XFDESKTOP_TYPE_FILE_ICON)
+G_DEFINE_TYPE_WITH_PRIVATE(XfdesktopSpecialFileIcon, xfdesktop_special_file_icon,
+                           XFDESKTOP_TYPE_FILE_ICON)
 #endif
 
 
@@ -115,8 +116,6 @@ xfdesktop_special_file_icon_class_init(XfdesktopSpecialFileIconClass *klass)
     GObjectClass *gobject_class = (GObjectClass *)klass;
     XfdesktopIconClass *icon_class = (XfdesktopIconClass *)klass;
     XfdesktopFileIconClass *file_icon_class = (XfdesktopFileIconClass *)klass;
-
-    g_type_class_add_private(klass, sizeof(XfdesktopSpecialFileIconPrivate));
 
     gobject_class->finalize = xfdesktop_special_file_icon_finalize;
 
@@ -140,9 +139,7 @@ xfdesktop_special_file_icon_class_init(XfdesktopSpecialFileIconClass *klass)
 static void
 xfdesktop_special_file_icon_init(XfdesktopSpecialFileIcon *icon)
 {
-    icon->priv = G_TYPE_INSTANCE_GET_PRIVATE(icon,
-                                             XFDESKTOP_TYPE_SPECIAL_FILE_ICON,
-                                             XfdesktopSpecialFileIconPrivate);
+    icon->priv = xfdesktop_special_file_icon_get_instance_private(icon);
 }
 
 static void

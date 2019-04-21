@@ -55,7 +55,7 @@ static void xfdesktop_window_icon_changed_cb(WnckWindow *window,
                                              gpointer user_data);
 
 
-G_DEFINE_TYPE(XfdesktopWindowIcon, xfdesktop_window_icon, XFDESKTOP_TYPE_ICON)
+G_DEFINE_TYPE_WITH_PRIVATE(XfdesktopWindowIcon, xfdesktop_window_icon, XFDESKTOP_TYPE_ICON)
 
 
 static void
@@ -63,8 +63,6 @@ xfdesktop_window_icon_class_init(XfdesktopWindowIconClass *klass)
 {
     GObjectClass *gobject_class = (GObjectClass *)klass;
     XfdesktopIconClass *icon_class = (XfdesktopIconClass *)klass;
-
-    g_type_class_add_private(klass, sizeof(XfdesktopWindowIconPrivate));
 
     gobject_class->finalize = xfdesktop_window_icon_finalize;
 
@@ -78,8 +76,7 @@ xfdesktop_window_icon_class_init(XfdesktopWindowIconClass *klass)
 static void
 xfdesktop_window_icon_init(XfdesktopWindowIcon *icon)
 {
-    icon->priv = G_TYPE_INSTANCE_GET_PRIVATE(icon, XFDESKTOP_TYPE_WINDOW_ICON,
-                                             XfdesktopWindowIconPrivate);
+    icon->priv = xfdesktop_window_icon_get_instance_private(icon);
 }
 
 static void

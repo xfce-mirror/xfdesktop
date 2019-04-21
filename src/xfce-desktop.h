@@ -37,7 +37,7 @@ G_BEGIN_DECLS
 
 typedef struct _XfceDesktop XfceDesktop;
 typedef struct _XfceDesktopClass XfceDesktopClass;
-typedef struct _XfceDesktopPriv XfceDesktopPriv;
+typedef struct _XfceDesktopPrivate XfceDesktopPrivate;
 
 typedef void (*SessionLogoutFunc)();
 
@@ -53,7 +53,7 @@ struct _XfceDesktop
     GtkWindow window;
 
     /*< private >*/
-    XfceDesktopPriv *priv;
+    XfceDesktopPrivate *priv;
 };
 
 struct _XfceDesktopClass

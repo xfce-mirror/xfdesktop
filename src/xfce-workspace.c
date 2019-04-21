@@ -73,7 +73,7 @@
 #include "xfce-workspace.h"
 #include "xfce-desktop-enum-types.h"
 
-struct _XfceWorkspacePriv
+struct _XfceWorkspacePrivate
 {
     GdkScreen *gscreen;
 
@@ -116,7 +116,7 @@ static void xfce_workspace_disconnect_backdrop_settings(XfceWorkspace *workspace
 
 static void xfce_workspace_remove_backdrops(XfceWorkspace *workspace);
 
-G_DEFINE_TYPE(XfceWorkspace, xfce_workspace, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE(XfceWorkspace, xfce_workspace, G_TYPE_OBJECT)
 
 
 /**
@@ -350,8 +350,6 @@ xfce_workspace_class_init(XfceWorkspaceClass *klass)
 {
     GObjectClass *gobject_class = (GObjectClass *)klass;
 
-    g_type_class_add_private(klass, sizeof(XfceWorkspacePriv));
-
     gobject_class->finalize = xfce_workspace_finalize;
     gobject_class->set_property = xfce_workspace_set_property;
     gobject_class->get_property = xfce_workspace_get_property;
@@ -370,8 +368,7 @@ xfce_workspace_class_init(XfceWorkspaceClass *klass)
 static void
 xfce_workspace_init(XfceWorkspace *workspace)
 {
-    workspace->priv = G_TYPE_INSTANCE_GET_PRIVATE(workspace, XFCE_TYPE_WORKSPACE,
-                                                XfceWorkspacePriv);
+    workspace->priv = xfce_workspace_get_instance_private(workspace);
 }
 
 static void

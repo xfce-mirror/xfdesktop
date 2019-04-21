@@ -36,7 +36,7 @@ G_BEGIN_DECLS
 
 typedef struct _XfceBackdrop XfceBackdrop;
 typedef struct _XfceBackdropClass XfceBackdropClass;
-typedef struct _XfceBackdropPriv XfceBackdropPriv;
+typedef struct _XfceBackdropPrivate XfceBackdropPrivate;
 
 typedef enum
 {
@@ -76,7 +76,7 @@ struct _XfceBackdrop
     GObject gobject;
 
     /*< private >*/
-    XfceBackdropPriv *priv;
+    XfceBackdropPrivate *priv;
 };
 
 struct _XfceBackdropClass

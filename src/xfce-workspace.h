@@ -37,14 +37,14 @@ G_BEGIN_DECLS
 
 typedef struct _XfceWorkspace XfceWorkspace;
 typedef struct _XfceWorkspaceClass XfceWorkspaceClass;
-typedef struct _XfceWorkspacePriv XfceWorkspacePriv;
+typedef struct _XfceWorkspacePrivate XfceWorkspacePrivate;
 
 struct _XfceWorkspace
 {
     GObject gobject;
 
     /*< private >*/
-    XfceWorkspacePriv *priv;
+    XfceWorkspacePrivate *priv;
 };
 
 struct _XfceWorkspaceClass

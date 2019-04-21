@@ -228,9 +228,9 @@ G_DEFINE_TYPE_EXTENDED(XfdesktopFileIconManager,
                        xfdesktop_file_icon_manager,
                        G_TYPE_OBJECT, 0,
                        G_IMPLEMENT_INTERFACE(XFDESKTOP_TYPE_ICON_VIEW_MANAGER,
-                                             xfdesktop_file_icon_manager_icon_view_manager_init))
+                                             xfdesktop_file_icon_manager_icon_view_manager_init)
+                       G_ADD_PRIVATE(XfdesktopFileIconManager))
 
-#define XFDESKTOP_FILE_ICON_MANAGER_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), XFDESKTOP_TYPE_ICON_VIEW_MANAGER, XfdesktopFileIconManagerPrivate))
 
 
 enum
@@ -262,8 +262,6 @@ static void
 xfdesktop_file_icon_manager_class_init(XfdesktopFileIconManagerClass *klass)
 {
     GObjectClass *gobject_class = (GObjectClass *)klass;
-
-    g_type_class_add_private(klass, sizeof(XfdesktopFileIconManagerPrivate));
 
     gobject_class->set_property = xfdesktop_file_icon_manager_set_property;
     gobject_class->get_property = xfdesktop_file_icon_manager_get_property;
@@ -361,9 +359,7 @@ xfdesktop_file_icon_manager_class_init(XfdesktopFileIconManagerClass *klass)
 static void
 xfdesktop_file_icon_manager_init(XfdesktopFileIconManager *fmanager)
 {
-    fmanager->priv = G_TYPE_INSTANCE_GET_PRIVATE(fmanager,
-                                                 XFDESKTOP_TYPE_FILE_ICON_MANAGER,
-                                                 XfdesktopFileIconManagerPrivate);
+    fmanager->priv = xfdesktop_file_icon_manager_get_instance_private(fmanager);
 
     /* be safe */
     fmanager->priv->gscreen = gdk_screen_get_default();

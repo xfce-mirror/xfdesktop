@@ -48,8 +48,8 @@ static void xfdesktop_file_icon_get_property(GObject *object,
                                              GValue *value,
                                              GParamSpec *pspec);
 
-G_DEFINE_ABSTRACT_TYPE(XfdesktopFileIcon, xfdesktop_file_icon,
-                       XFDESKTOP_TYPE_ICON)
+G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE(XfdesktopFileIcon, xfdesktop_file_icon,
+                                    XFDESKTOP_TYPE_ICON)
 
 enum
 {
@@ -62,8 +62,6 @@ xfdesktop_file_icon_class_init(XfdesktopFileIconClass *klass)
 {
     GObjectClass *gobject_class = (GObjectClass *)klass;
     XfdesktopIconClass *icon_class = (XfdesktopIconClass *)klass;
-
-    g_type_class_add_private(klass, sizeof(XfdesktopFileIconPrivate));
 
     gobject_class->finalize = xfdesktop_file_icon_finalize;
     gobject_class->set_property = xfdesktop_file_icon_set_property;
@@ -82,9 +80,7 @@ xfdesktop_file_icon_class_init(XfdesktopFileIconClass *klass)
 static void
 xfdesktop_file_icon_init(XfdesktopFileIcon *icon)
 {
-    icon->priv = G_TYPE_INSTANCE_GET_PRIVATE(icon,
-                                             XFDESKTOP_TYPE_FILE_ICON,
-                                             XfdesktopFileIconPrivate);
+    icon->priv = xfdesktop_file_icon_get_instance_private(icon);
 }
 
 static void
