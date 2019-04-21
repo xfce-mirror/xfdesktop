@@ -363,7 +363,7 @@ xfdesktop_file_utils_get_fallback_icon(gint size)
 
     xfdesktop_fallback_icon_size = size;
 
-    return g_object_ref(G_OBJECT(xfdesktop_fallback_icon));
+    return GDK_PIXBUF(g_object_ref(G_OBJECT(xfdesktop_fallback_icon)));
 }
 
 GdkPixbuf *

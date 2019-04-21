@@ -333,7 +333,7 @@ cb_thumbnail_ready(XfdesktopThumbnailer *thumbnailer,
                                    COL_THUMBNAIL, thumb_file, -1);
 
                 pdata = g_new0(PreviewData, 1);
-                pdata->model = g_object_ref(G_OBJECT(model));
+                pdata->model = GTK_TREE_MODEL(g_object_ref(G_OBJECT(model)));
                 pdata->iter = gtk_tree_iter_copy(&iter);
                 pdata->pix = NULL;
 
@@ -363,7 +363,7 @@ xfdesktop_settings_queue_preview(GtkTreeModel *model,
         /* Thumbnailing not possible, add it to the queue to be loaded manually */
         PreviewData *pdata;
         pdata = g_new0(PreviewData, 1);
-        pdata->model = g_object_ref(G_OBJECT(model));
+        pdata->model = GTK_TREE_MODEL(g_object_ref(G_OBJECT(model)));
         pdata->iter = gtk_tree_iter_copy(iter);
 
         XF_DEBUG("Thumbnailing failed, adding %s manually.", filename);

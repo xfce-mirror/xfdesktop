@@ -1077,7 +1077,7 @@ xfdesktop_volume_icon_new(GVolume *volume,
     g_return_val_if_fail(G_IS_VOLUME(volume), NULL);
 
     volume_icon = g_object_new(XFDESKTOP_TYPE_VOLUME_ICON, NULL);
-    volume_icon->priv->volume = g_object_ref(G_OBJECT(volume));
+    volume_icon->priv->volume = G_VOLUME(g_object_ref(G_OBJECT(volume)));
     volume_icon->priv->gscreen = screen;
 
     mount = g_volume_get_mount(volume);

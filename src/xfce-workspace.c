@@ -753,7 +753,7 @@ xfce_workspace_new(GdkScreen *gscreen,
 
     workspace->priv->gscreen = gscreen;
     workspace->priv->workspace_num = number;
-    workspace->priv->channel = g_object_ref(G_OBJECT(channel));
+    workspace->priv->channel = XFCONF_CHANNEL(g_object_ref(G_OBJECT(channel)));
     workspace->priv->property_prefix = g_strdup(property_prefix);
 
     return workspace;

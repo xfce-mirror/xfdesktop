@@ -3847,7 +3847,7 @@ xfdesktop_file_icon_manager_new(GFile *folder,
     fmanager = g_object_new(XFDESKTOP_TYPE_FILE_ICON_MANAGER,
                             "folder", folder,
                             NULL);
-    fmanager->priv->channel = g_object_ref(G_OBJECT(channel));
+    fmanager->priv->channel = XFCONF_CHANNEL(g_object_ref(G_OBJECT(channel)));
 
     xfconf_g_property_bind(channel, DESKTOP_ICONS_SHOW_FILESYSTEM, G_TYPE_BOOLEAN,
                            G_OBJECT(fmanager), "show-filesystem");

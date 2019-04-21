@@ -553,7 +553,7 @@ xfdesktop_clipboard_manager_transfer_files (XfdesktopClipboardManager *manager,
   /* setup the new file list */
   for (lp = files, manager->files = NULL; lp != NULL; lp = lp->next)
     {
-      file = g_object_ref (G_OBJECT (lp->data));
+      file = XFDESKTOP_FILE_ICON(g_object_ref (G_OBJECT (lp->data)));
       manager->files = g_list_prepend (manager->files, file);
       g_object_weak_ref(G_OBJECT(file),
                         (GWeakNotify)xfdesktop_clipboard_manager_file_destroyed,
@@ -613,7 +613,7 @@ xfdesktop_clipboard_manager_get_for_display (GdkDisplay *display)
 
   /* allocate a new manager */
   manager = g_object_new (XFDESKTOP_TYPE_CLIPBOARD_MANAGER, NULL);
-  manager->clipboard = g_object_ref (G_OBJECT (clipboard));
+  manager->clipboard = GTK_CLIPBOARD (g_object_ref (G_OBJECT (clipboard)));
   g_object_set_qdata (G_OBJECT (clipboard), xfdesktop_clipboard_manager_quark, manager);
 
   /* listen for the "owner-change" signal on the clipboard */
@@ -721,7 +721,7 @@ xfdesktop_clipboard_manager_paste_files (XfdesktopClipboardManager *manager,
 
   /* prepare the paste request */
   request = g_slice_new0 (XfdesktopClipboardPasteRequest);
-  request->manager = g_object_ref (G_OBJECT (manager));
+  request->manager = XFDESKTOP_CLIPBOARD_MANAGER (g_object_ref (G_OBJECT (manager)));
   request->target_file = g_object_ref (target_file);
   request->widget = widget;
 

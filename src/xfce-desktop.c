@@ -1572,7 +1572,7 @@ xfce_desktop_new(GdkScreen *gscreen,
     gtk_window_set_screen(GTK_WINDOW(desktop), gscreen);
     desktop->priv->gscreen = gscreen;
 
-    desktop->priv->channel = g_object_ref(G_OBJECT(channel));
+    desktop->priv->channel = XFCONF_CHANNEL(g_object_ref(G_OBJECT(channel)));
     desktop->priv->property_prefix = g_strdup(property_prefix);
 
     xfce_desktop_connect_settings(desktop);
