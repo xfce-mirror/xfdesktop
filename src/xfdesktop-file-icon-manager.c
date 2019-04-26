@@ -48,6 +48,10 @@
 #include <errno.h>
 #endif
 
+#ifdef HAVE_UNISTD_H
+#include <unistd.h>
+#endif
+
 #ifndef PATH_MAX
 #define PATH_MAX 4096
 #endif
@@ -1897,7 +1901,7 @@ static gboolean
 xfdesktop_file_icon_manager_save_icons(gpointer user_data)
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
-    gchar relpath[PATH_MAX], *tmppath, *path;
+    gchar relpath[PATH_MAX], *tmppath, *path, *last_path;
     XfceRc *rcfile;
     gint x = 0, y = 0, width = 0, height = 0;
 
@@ -1966,6 +1970,14 @@ xfdesktop_file_icon_manager_save_icons(gpointer user_data)
             g_warning("Unable to rename temp file to %s: %s", path,
                       strerror(errno));
             unlink(tmppath);
+        }
+        else {
+            last_path = xfce_resource_save_location(XFCE_RESOURCE_CONFIG, "xfce4/desktop/icons.screen.latest.rc", TRUE);
+            if(last_path != NULL) {
+                unlink(last_path);
+                symlink(path, last_path);
+                g_free(last_path);
+            }
         }
     } else {
         XF_DEBUG("didn't write anything in the RC file, desktop is probably empty");
@@ -2049,6 +2061,11 @@ xfdesktop_file_icon_manager_get_cached_icon_position(XfdesktopFileIconManager *f
     if(filename == NULL) {
         g_snprintf(relpath, PATH_MAX, "xfce4/desktop/icons.screen%d.rc", 0);
         filename = xfce_resource_lookup(XFCE_RESOURCE_CONFIG, relpath);
+    }
+
+    /* Still nothing ? Just use the latest available file as fallback */
+    if(filename == NULL) {
+        filename = xfce_resource_lookup(XFCE_RESOURCE_CONFIG, "xfce4/desktop/icons.screen.latest.rc");
     }
 
     if(filename != NULL) {
