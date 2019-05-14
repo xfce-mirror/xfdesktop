@@ -368,6 +368,11 @@ cb_xfce_backdrop_image_files_changed(GFileMonitor     *monitor,
                 backdrop->priv->image_files = g_list_delete_link(backdrop->priv->image_files, item);
 
             g_free(changed_file);
+
+            if (backdrop->priv->cycle_timer_id) {
+                g_source_remove(backdrop->priv->cycle_timer_id);
+                backdrop->priv->cycle_timer_id = 0;
+            }
             break;
         case G_FILE_MONITOR_EVENT_CHANGES_DONE_HINT:
             changed_file = g_file_get_path(file);
