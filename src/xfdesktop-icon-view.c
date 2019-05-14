@@ -3694,6 +3694,10 @@ xfdesktop_icon_view_icon_in_cell(XfdesktopIconView *icon_view,
                          && col < icon_view->priv->ncols, NULL);
     
     idx = col * icon_view->priv->nrows + row;
+
+    if (idx < 0)
+        return NULL;
+
     return xfdesktop_icon_view_icon_in_cell_raw(icon_view, idx);
 }
 
