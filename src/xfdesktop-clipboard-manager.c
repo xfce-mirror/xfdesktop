@@ -59,6 +59,7 @@ enum
 
 enum
 {
+  TARGET_TEXT_URI_LIST,
   TARGET_GNOME_COPIED_FILES,
   TARGET_UTF8_STRING,
 };
@@ -130,6 +131,7 @@ typedef struct
 
 static const GtkTargetEntry clipboard_targets[] =
 {
+  { "text/uri-list", 0, TARGET_TEXT_URI_LIST },
   { "x-special/gnome-copied-files", 0, TARGET_GNOME_COPIED_FILES },
   { "UTF8_STRING", 0, TARGET_UTF8_STRING }
 };
@@ -462,6 +464,7 @@ xfdesktop_clipboard_manager_get_callback (GtkClipboard     *clipboard,
   GList                  *file_list = NULL;
   gchar                  *string_list;
   gchar                  *data;
+  gchar                 **uris;
 
   g_return_if_fail (GTK_IS_CLIPBOARD (clipboard));
   g_return_if_fail (XFDESKTOP_IS_CLIPBOARD_MANAGER (manager));
@@ -475,6 +478,12 @@ xfdesktop_clipboard_manager_get_callback (GtkClipboard     *clipboard,
 
   switch (target_info)
     {
+    case TARGET_TEXT_URI_LIST:
+      uris = xfdesktop_file_utils_file_list_to_uri_array (file_list);
+      gtk_selection_data_set_uris (selection_data, uris);
+      g_strfreev (uris);
+      break;
+
     case TARGET_GNOME_COPIED_FILES:
       data = g_strconcat (manager->files_cutted ? "cut\n" : "copy\n", string_list, NULL);
       gtk_selection_data_set (selection_data,
