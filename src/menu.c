@@ -65,6 +65,9 @@ menu_populate(XfceDesktop *desktop,
     if(!show_desktop_menu)
         return;
 
+    /* init garcon environment */
+    garcon_set_environment_xdg(GARCON_ENVIRONMENT_XFCE);
+
     if(garcon_menu == NULL) {
         garcon_menu = garcon_menu_new_applications();
     }
