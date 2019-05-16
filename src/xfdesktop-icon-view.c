@@ -3602,6 +3602,8 @@ xfdesktop_icon_view_icon_in_cell(XfdesktopIconView *icon_view,
 
     idx = col * icon_view->priv->nrows + row;
 
+    /* FIXME: that's why we can't drag icons to monitors on the left or above,
+     * the array maps positions on the grid starting from the primary monitor. */
     if (idx < 0)
         return NULL;
 
