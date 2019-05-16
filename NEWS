@@ -1,3 +1,34 @@
+4.13.4 (Unreleased)
+======
+[Please note that this is a development release.]
+
+Development release of xfdesktop targeting for Xfce 4.14.
+Please report all problems at bugzilla.xfce.org.
+
+- Re-introduce ability to move icons to other displays (Bug #15198)
+- Make 'Move to Trash' icon the same as Thunar (Bug #15234)
+- Match Thunar Drag and Drop behavior (Bug #14919)
+- Stop ongoing drag/selection if middle/right mouse button is pressed (Bug #14180)
+- Fix Desktop icons order resets, by adding link to last used configuration as fallback (Bug #11266)
+- Fix xfdesktop crashes after multiples --reload (Bug #15060)
+- Fix scaling of images with orientation metadata (Bug #14644)
+- Fix stretching/zooming of images with orientation metadata (Bug #15292)
+- Fix has_mime_type implementation (Bug #15295)
+- Use clipboard target "text/uri-list" when copying/cutting (Bug #13379)
+- Set desktop environment for garcon app menu (Bug #14599)
+- Remove faulty line in glade file (Bug #15293)
+- Fix g_type_class_add_private is deprecated
+- Avoid invalid memory access (Bug #15299)
+- Avoid timer leak when docking-undocking monitors (Bug #13887)
+- Use clipboard target "text/uri-list" when copying/cutting (Bug #13379)
+- Set desktop environment for garcon app menu (Bug #14599)
+- Replace/remove deprecated functions
+- Translation Updates: Amharic, Arabic, Asturian, Belarusian, Bulgarian, Danish, Greek,
+  English (Australia), English (Canada), English (United Kingdom), Spanish, Estonian, Basque,
+  Finnish, French, Galician, Indonesian, Interlingue, Icelandic, Italian, Korean, Norwegian Bokmål,
+  Norwegian Nynorsk, Occitan (post 1500), Polish, Portuguese (Brazil), Romanian, Russian, Slovenian,
+  Albanian, Serbian, Uighur, Uzbek, Chinese (Hong Kong), Chinese (Taiwan)
+
 
 4.13.3
 ======
