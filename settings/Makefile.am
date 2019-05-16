@@ -32,12 +32,6 @@ xfdesktop_settings_LDADD =						\
 	$(LIBX11_LIBS)								\
 	$(GTK_LIBS)
 
-if HAVE_CYGWIN
-  xfdesktop_settings_LDADD += \
-	$(XFCONF_LIBS) \
-	$(LIBX11_LIBS)
-endif
-
 desktop_in_files = xfce-backdrop-settings.desktop.in
 desktopdir = $(datadir)/applications
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
