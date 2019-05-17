@@ -306,7 +306,7 @@ windowlist_populate(XfceDesktop *desktop,
             label = gtk_bin_get_child(GTK_BIN(mi));
             gtk_label_set_use_markup(GTK_LABEL(label), TRUE);
             /* center the workspace header */
-            gtk_label_set_xalign (GTK_LABEL(label), 0.44f);
+            gtk_label_set_xalign (GTK_LABEL(label), 0.5f);
             /* If it's not the active workspace, make the color insensitive */
             if(wnck_workspace != active_workspace) {
                 set_label_color_insensitive(label);
