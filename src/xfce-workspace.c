@@ -706,13 +706,10 @@ static void
 xfce_workspace_remove_backdrops(XfceWorkspace *workspace)
 {
     guint i;
-    guint n_monitors;
 
     g_return_if_fail(XFCE_IS_WORKSPACE(workspace));
 
-    n_monitors = gdk_display_get_n_monitors(gdk_screen_get_display(workspace->priv->gscreen));
-
-    for(i = 0; i < n_monitors && i < workspace->priv->nbackdrops; ++i) {
+    for(i = 0; i < workspace->priv->nbackdrops; ++i) {
         xfce_workspace_disconnect_backdrop_settings(workspace,
                                                     workspace->priv->backdrops[i],
                                                     i);
