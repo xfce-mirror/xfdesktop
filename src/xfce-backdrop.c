@@ -1536,10 +1536,7 @@ xfce_backdrop_force_cycle(XfceBackdrop *backdrop)
 
     TRACE("entering");
 
-    /* force it to update */
-    xfce_backdrop_cycle_backdrop(backdrop);
-
-    /* Update the timer, if running */
+    /* Just update the timer, if running, to cycle the backdrop */
     xfce_backdrop_timer(backdrop);
 }
 
