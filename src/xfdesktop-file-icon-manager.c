@@ -1975,7 +1975,9 @@ xfdesktop_file_icon_manager_save_icons(gpointer user_data)
             last_path = xfce_resource_save_location(XFCE_RESOURCE_CONFIG, "xfce4/desktop/icons.screen.latest.rc", TRUE);
             if(last_path != NULL) {
                 unlink(last_path);
-                symlink(path, last_path);
+                if (symlink(path, last_path) != 0)
+                   g_warning("Unable to create symbolic link: %s",
+                             strerror(errno));
                 g_free(last_path);
             }
         }
