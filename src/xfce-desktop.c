@@ -1935,13 +1935,10 @@ xfce_desktop_refresh(XfceDesktop *desktop, gboolean advance_wallpaper)
             backdrop_changed_cb(backdrop, desktop);
         }
     }
-
-    /* If we're only advancing the wallpaper we can exit here */
-    if(advance_wallpaper)
-        return;
 }
 
-void xfce_desktop_arrange_icons(XfceDesktop *desktop)
+void
+xfce_desktop_arrange_icons(XfceDesktop *desktop)
 {
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
 
@@ -1950,4 +1947,23 @@ void xfce_desktop_arrange_icons(XfceDesktop *desktop)
 
     xfdesktop_icon_view_sort_icons(XFDESKTOP_ICON_VIEW(desktop->priv->icon_view));
 #endif
+}
+
+gboolean
+xfce_desktop_get_cycle_backdrop(XfceDesktop *desktop)
+{
+    gint monitor;
+    XfceWorkspace *workspace;
+    XfceBackdrop  *backdrop;
+
+    g_return_val_if_fail(XFCE_IS_DESKTOP(desktop), FALSE);
+
+    xfce_gdk_screen_get_active(&monitor);
+    if(&monitor == NULL)
+        return FALSE;
+
+    workspace = desktop->priv->workspaces[desktop->priv->current_workspace];
+    backdrop = xfce_workspace_get_backdrop(workspace, monitor);
+
+    return xfce_backdrop_get_cycle_backdrop(backdrop);
 }

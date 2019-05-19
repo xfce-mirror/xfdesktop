@@ -115,6 +115,8 @@ void xfce_desktop_refresh(XfceDesktop *desktop, gboolean advance_wallpaper);
 
 void xfce_desktop_arrange_icons(XfceDesktop *desktop);
 
+gboolean xfce_desktop_get_cycle_backdrop(XfceDesktop *desktop);
+
 G_END_DECLS
 
 #endif

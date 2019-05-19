@@ -967,6 +967,14 @@ xfdesktop_file_icon_menu_arrange_icons(GtkWidget *widget,
 }
 
 static void
+xfdesktop_file_icon_menu_next_background(GtkWidget *widget,
+                                         gpointer user_data)
+{
+    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
+    xfce_desktop_refresh(XFCE_DESKTOP(fmanager->priv->desktop), TRUE);
+}
+
+static void
 xfdesktop_file_icon_menu_properties(GtkWidget *widget,
                                     gpointer user_data)
 {
@@ -1844,6 +1852,17 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                              G_CALLBACK(xfdesktop_file_icon_menu_arrange_icons),
                              fmanager);
 
+            if(xfce_desktop_get_cycle_backdrop(XFCE_DESKTOP(fmanager->priv->desktop))) {
+                /* show next background option */
+                img = gtk_image_new_from_icon_name("go-next", GTK_ICON_SIZE_MENU);
+                mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Next Background"), img);
+                gtk_widget_show(mi);
+                gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+                g_signal_connect(G_OBJECT(mi), "activate",
+                                 G_CALLBACK(xfdesktop_file_icon_menu_next_background),
+                                 fmanager);
+            }
+
             /* Desktop settings window */
             img = gtk_image_new_from_icon_name("preferences-desktop-wallpaper", GTK_ICON_SIZE_MENU);
             mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Desktop _Settings..."), img);
@@ -1851,6 +1870,11 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             g_signal_connect(G_OBJECT(mi), "activate",
                              G_CALLBACK(xfdesktop_settings_launch), fmanager);
+
+            /* Separator */
+            mi = gtk_separator_menu_item_new();
+            gtk_widget_show(mi);
+            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
         }
 
         /* Properties - applies to desktop window or an icon on the desktop */
