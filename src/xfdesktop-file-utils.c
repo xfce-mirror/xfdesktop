@@ -67,6 +67,18 @@ static void xfdesktop_file_utils_add_emblems(GdkPixbuf *pix, GList *emblems);
 static XfdesktopTrash       *xfdesktop_file_utils_peek_trash_proxy(void);
 static XfdesktopFileManager *xfdesktop_file_utils_peek_filemanager_proxy(void);
 
+static void xfdesktop_file_utils_trash_proxy_new_cb (GObject *source_object,
+                                                     GAsyncResult *res,
+                                                     gpointer user_data);
+
+static void xfdesktop_file_utils_file_manager_proxy_new_cb (GObject *source_object,
+                                                            GAsyncResult *res,
+                                                            gpointer user_data);
+
+static void xfdesktop_file_utils_thunar_proxy_new_cb (GObject *source_object,
+                                                      GAsyncResult *res,
+                                                      gpointer user_data);
+
 #ifdef HAVE_THUNARX
 static XfdesktopThunar *xfdesktop_file_utils_peek_thunar_proxy(void);
 #else
@@ -1554,27 +1566,30 @@ xfdesktop_file_utils_dbus_init(void)
     }
 
     if(dbus_gconn) {
-        dbus_trash_proxy = xfdesktop_trash_proxy_new_sync(dbus_gconn,
-                                                          G_DBUS_PROXY_FLAGS_NONE,
-                                                          "org.xfce.FileManager",
-                                                          "/org/xfce/FileManager",
-                                                          NULL,
-                                                          NULL);
+        xfdesktop_trash_proxy_new(dbus_gconn,
+                                  G_DBUS_PROXY_FLAGS_NONE,
+                                  "org.xfce.FileManager",
+                                  "/org/xfce/FileManager",
+                                  NULL,
+                                  xfdesktop_file_utils_trash_proxy_new_cb,
+                                  NULL);
 
-        dbus_filemanager_proxy = xfdesktop_file_manager_proxy_new_sync(dbus_gconn,
-                                                                       G_DBUS_PROXY_FLAGS_NONE,
-                                                                       "org.xfce.FileManager",
-                                                                       "/org/xfce/FileManager",
-                                                                       NULL,
-                                                                       NULL);
+        xfdesktop_file_manager_proxy_new(dbus_gconn,
+                                         G_DBUS_PROXY_FLAGS_NONE,
+                                         "org.xfce.FileManager",
+                                         "/org/xfce/FileManager",
+                                         NULL,
+                                         xfdesktop_file_utils_file_manager_proxy_new_cb,
+                                         NULL);
 
 #ifdef HAVE_THUNARX
-        dbus_thunar_proxy = xfdesktop_thunar_proxy_new_sync(dbus_gconn,
-                                                            G_DBUS_PROXY_FLAGS_NONE,
-                                                            "org.xfce.FileManager",
-                                                            "/org/xfce/FileManager",
-                                                            NULL,
-                                                            NULL);
+        xfdesktop_thunar_proxy_new(dbus_gconn,
+                                   G_DBUS_PROXY_FLAGS_NONE,
+                                   "org.xfce.FileManager",
+                                   "/org/xfce/FileManager",
+                                   NULL,
+                                   xfdesktop_file_utils_thunar_proxy_new_cb,
+                                   NULL);
 #else
         dbus_thunar_proxy = NULL;
 #endif
@@ -1612,6 +1627,29 @@ xfdesktop_file_utils_peek_thunar_proxy(void)
     return NULL;
 }
 #endif
+
+static void
+xfdesktop_file_utils_trash_proxy_new_cb (GObject *source_object,
+                                         GAsyncResult *res,
+                                         gpointer user_data) {
+    dbus_trash_proxy = xfdesktop_trash_proxy_new_finish (res, NULL);
+}
+
+static void
+xfdesktop_file_utils_file_manager_proxy_new_cb (GObject *source_object,
+                                                GAsyncResult *res,
+                                                gpointer user_data) {
+    dbus_filemanager_proxy = xfdesktop_file_manager_proxy_new_finish (res, NULL);
+}
+
+static void
+xfdesktop_file_utils_thunar_proxy_new_cb (GObject *source_object,
+                                          GAsyncResult *res,
+                                          gpointer user_data) {
+#ifdef HAVE_THUNARX
+    dbus_thunar_proxy = xfdesktop_thunar_proxy_new_finish (res, NULL);
+#endif
+}
 
 void
 xfdesktop_file_utils_dbus_cleanup(void)
