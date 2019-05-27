@@ -61,7 +61,7 @@ struct _XfdesktopIconViewClass
     void (*select_cursor_item)(XfdesktopIconView *icon_view);
     void (*toggle_cursor_item)(XfdesktopIconView *icon_view);
 
-    gboolean (*activate_cursor_item)(XfdesktopIconView *icon_view);
+    gboolean (*activate_selected_items)(XfdesktopIconView *icon_view);
 
     gboolean (*move_cursor)(XfdesktopIconView *icon_view,
                             GtkMovementStep step,

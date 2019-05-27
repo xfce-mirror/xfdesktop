@@ -98,7 +98,7 @@ enum
     SIG_SELECT_CURSOR_ITEM,
     SIG_TOGGLE_CURSOR_ITEM,
     SIG_MOVE_CURSOR,
-    SIG_ACTIVATE_CURSOR_ITEM,
+    SIG_ACTIVATE_SELECTED_ITEMS,
     SIG_RESIZE_EVENT,
     SIG_N_SIGNALS,
 };
@@ -355,7 +355,7 @@ static void xfdesktop_icon_view_real_select_all(XfdesktopIconView *icon_view);
 static void xfdesktop_icon_view_real_unselect_all(XfdesktopIconView *icon_view);
 static void xfdesktop_icon_view_real_select_cursor_item(XfdesktopIconView *icon_view);
 static void xfdesktop_icon_view_real_toggle_cursor_item(XfdesktopIconView *icon_view);
-static gboolean xfdesktop_icon_view_real_activate_cursor_item(XfdesktopIconView *icon_view);
+static gboolean xfdesktop_icon_view_real_activate_selected_items(XfdesktopIconView *icon_view);
 static gboolean xfdesktop_icon_view_real_move_cursor(XfdesktopIconView *icon_view,
                                                      GtkMovementStep step,
                                                      gint count);
@@ -422,7 +422,7 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
     klass->unselect_all = xfdesktop_icon_view_real_unselect_all;
     klass->select_cursor_item = xfdesktop_icon_view_real_select_cursor_item;
     klass->toggle_cursor_item = xfdesktop_icon_view_real_toggle_cursor_item;
-    klass->activate_cursor_item = xfdesktop_icon_view_real_activate_cursor_item;
+    klass->activate_selected_items = xfdesktop_icon_view_real_activate_selected_items;
     klass->move_cursor = xfdesktop_icon_view_real_move_cursor;
 
     __signals[SIG_ICON_SELECTION_CHANGED] = g_signal_new("icon-selection-changed",
@@ -479,11 +479,11 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
                                                      g_cclosure_marshal_VOID__VOID,
                                                      G_TYPE_NONE, 0);
 
-    __signals[SIG_ACTIVATE_CURSOR_ITEM] = g_signal_new(I_("activate-cursor-item"),
+    __signals[SIG_ACTIVATE_SELECTED_ITEMS] = g_signal_new(I_("activate-selected-items"),
                                                        XFDESKTOP_TYPE_ICON_VIEW,
                                                        G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                                                        G_STRUCT_OFFSET(XfdesktopIconViewClass,
-                                                                       activate_cursor_item),
+                                                                       activate_selected_items),
                                                        NULL, NULL,
                                                        xfdesktop_marshal_BOOLEAN__VOID,
                                                        G_TYPE_BOOLEAN, 0);
@@ -598,15 +598,15 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
                                  "toggle-cursor-item", 0);
 
     gtk_binding_entry_add_signal(binding_set, GDK_KEY_space, 0,
-                                 "activate-cursor-item", 0);
+                                 "activate-selected-items", 0);
     gtk_binding_entry_add_signal(binding_set, GDK_KEY_KP_Space, 0,
-                                 "activate-cursor-item", 0);
+                                 "activate-selected-items", 0);
     gtk_binding_entry_add_signal(binding_set, GDK_KEY_Return, 0,
-                                 "activate-cursor-item", 0);
+                                 "activate-selected-items", 0);
     gtk_binding_entry_add_signal(binding_set, GDK_KEY_ISO_Enter, 0,
-                                 "activate-cursor-item", 0);
+                                 "activate-selected-items", 0);
     gtk_binding_entry_add_signal(binding_set, GDK_KEY_KP_Enter, 0,
-                                 "activate-cursor-item", 0);
+                                 "activate-selected-items", 0);
 
     xfdesktop_icon_view_add_move_binding(binding_set, GDK_KEY_Up, 0,
                                          GTK_MOVEMENT_DISPLAY_LINES, -1);
@@ -2190,17 +2190,15 @@ xfdesktop_icon_view_real_toggle_cursor_item(XfdesktopIconView *icon_view)
 }
 
 static gboolean
-xfdesktop_icon_view_real_activate_cursor_item(XfdesktopIconView *icon_view)
+xfdesktop_icon_view_real_activate_selected_items(XfdesktopIconView *icon_view)
 {
     DBG("entering");
 
-    if(!icon_view->priv->cursor)
+    if(!icon_view->priv->selected_icons)
         return FALSE;
 
     g_signal_emit(G_OBJECT(icon_view), __signals[SIG_ICON_ACTIVATED], 0, NULL);
-    xfdesktop_icon_activated(icon_view->priv->cursor);
-    xfdesktop_icon_view_unselect_item(icon_view, icon_view->priv->cursor);
-    icon_view->priv->cursor = NULL;
+    g_list_foreach(icon_view->priv->selected_icons, (GFunc)xfdesktop_icon_activated, NULL);
 
     return TRUE;
 }
