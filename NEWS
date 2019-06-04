@@ -1,3 +1,15 @@
+4.12.5
+======
+Stable release of xfdesktop for Xfce 4.12.
+
+* Bug fixes:
+ - Desktop icons order resets (Bug #11266)
+ - Match Thunar DnD behavior (Bug #14919)
+ - Fix icon size in Settings -> Default Icons
+ - Avoid invalid memory access (Bug #15299)
+ - Avoid timer leak when docking-undocking monitors (Bug #13887)
+ - Use clipboard target "text/uri-list" when copying/cutting (Bug #13379)
+
 4.12.4
 ======
 Stable release of xfdesktop for Xfce 4.12.
