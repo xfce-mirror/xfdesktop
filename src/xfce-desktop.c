@@ -1198,8 +1198,8 @@ xfce_desktop_button_press_event(GtkWidget *w,
             if(!gtk_widget_has_grab(w))
                 gtk_grab_add(w);
 
-                xfce_desktop_popup_root_menu(desktop, button, evt->time);
-                return TRUE;
+            xfce_desktop_popup_root_menu(desktop, button, evt->time);
+            return TRUE;
         } else if(button == 2 || (button == 1 && (state & GDK_SHIFT_MASK)
                                   && (state & GDK_CONTROL_MASK)))
         {
