@@ -1169,6 +1169,9 @@ xfce_desktop_realize(GtkWidget *widget)
 
     gtk_window_set_title(GTK_WINDOW(desktop), _("Desktop"));
 
+    if(g_strcmp0(g_getenv("GTK_CSD"), "1") == 0)
+        gtk_window_set_decorated(GTK_WINDOW(desktop), FALSE);
+
     gtk_widget_set_size_request(GTK_WIDGET(desktop), sw, sh);
     gtk_window_move(GTK_WINDOW(desktop), 0, 0);
 
