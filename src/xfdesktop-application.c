@@ -137,23 +137,23 @@ struct _XfdesktopApplicationClass
     GApplicationClass parent;
 };
 
-const gchar *ToZ_CSS =
+const gchar *fallback_CSS =
 "XfdesktopIconView.view {"
-"	background-color: rgba(0,0,0,0.0);"
-"	color: white;"
+"	background: transparent;"
+"	color: @theme_selected_fg_color;"
+"	border-radius: 3px;"
 "}"
 "XfdesktopIconView.view:active {"
-"	background-color: rgba(57,142,231,0.75);"
-"	color: rgba(57,142,231,0.75);"
-"	border-radius: 5px;"
+"	background: alpha(@theme_selected_bg_color, 0.5);"
+"	text-shadow: 0 1px 1px black;"
 "}"
-"XfdesktopIconView.rubberband {"
-"	background-color: rgba(0,0,0,0.25);"
+"XfdesktopIconView.view .label {"
+"	text-shadow: 1px 1px 2px black;"
 "}"
-"XfdesktopIconView.view.label,"
-"XfdesktopIconView.view.label:active {"
-"	color: white;"
-"	text-shadow: 1px 1px black;"
+"XfdesktopIconView .rubberband {"
+"	background: alpha(@theme_selected_bg_color, 0.2);"
+"	border: 1px solid @theme_selected_bg_color;"
+"	border-radius: 0;"
 "}";
 
 G_DEFINE_TYPE(XfdesktopApplication, xfdesktop_application, G_TYPE_APPLICATION)
@@ -668,7 +668,7 @@ xfdesktop_application_theme_changed (GtkSettings *settings,
         }
         custom_provider = gtk_css_provider_new();
         gtk_css_provider_load_from_data(custom_provider,
-                                        ToZ_CSS,
+                                        fallback_CSS,
                                         -1,
                                         NULL);
         gtk_style_context_add_provider_for_screen (gdk_screen_get_default (),
