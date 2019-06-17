@@ -238,6 +238,9 @@ static gboolean xfdesktop_icon_view_drag_motion(GtkWidget *widget,
                                                 gint x,
                                                 gint y,
                                                 guint time_);
+static void xfdesktop_icon_view_drag_leave(GtkWidget *widget,
+                                           GdkDragContext *context,
+                                           guint time_);
 static gboolean xfdesktop_icon_view_drag_drop(GtkWidget *widget,
                                               GdkDragContext *context,
                                               gint x,
@@ -389,8 +392,6 @@ static const gint icon_view_n_targets = 1;
 
 static guint __signals[SIG_N_SIGNALS] = { 0, };
 
-static GQuark xfdesktop_cell_highlight_quark = 0;
-
 
 G_DEFINE_TYPE_WITH_PRIVATE(XfdesktopIconView, xfdesktop_icon_view, GTK_TYPE_WIDGET)
 
@@ -414,6 +415,7 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
     widget_class->draw = xfdesktop_icon_view_draw;
     widget_class->drag_begin = xfdesktop_icon_view_drag_begin;
     widget_class->drag_motion = xfdesktop_icon_view_drag_motion;
+    widget_class->drag_leave = xfdesktop_icon_view_drag_leave;
     widget_class->drag_drop = xfdesktop_icon_view_drag_drop;
     widget_class->drag_data_get = xfdesktop_icon_view_drag_data_get;
     widget_class->drag_data_received = xfdesktop_icon_view_drag_data_received;
@@ -643,8 +645,6 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
                                          GTK_MOVEMENT_VISUAL_POSITIONS, 1);
     xfdesktop_icon_view_add_move_binding(binding_set, GDK_KEY_KP_Left, 0,
                                          GTK_MOVEMENT_VISUAL_POSITIONS, -1);
-
-    xfdesktop_cell_highlight_quark = g_quark_from_static_string("xfdesktop-icon-view-cell-highlight");
 
     gtk_widget_class_set_css_name (widget_class, "XfdesktopIconView");
 }
@@ -1426,6 +1426,47 @@ xfdesktop_xy_to_rowcol(XfdesktopIconView *icon_view,
     *col = (x - icon_view->priv->xorigin - icon_view->priv->xmargin) / (CELL_SIZE + icon_view->priv->xspacing);
 }
 
+static inline void
+xfdesktop_icon_view_clear_drag_highlight(XfdesktopIconView *icon_view)
+{
+    XfdesktopIcon *icon;
+
+    /* remove highlight from icon */
+    if(icon_view->priv->item_under_pointer) {
+        icon = icon_view->priv->item_under_pointer;
+        icon_view->priv->item_under_pointer = NULL;
+
+        xfdesktop_icon_view_invalidate_icon_pixbuf(icon_view, icon);
+    }
+}
+
+static inline void
+xfdesktop_icon_view_draw_drag_highlight(XfdesktopIconView *icon_view,
+                                        guint16 row,
+                                        guint16 col)
+{
+    XfdesktopIcon *icon;
+
+    icon = xfdesktop_icon_view_icon_in_cell(icon_view, row, col);
+
+    if(!icon && icon_view->priv->item_under_pointer) {
+        /* clear previous highlight */
+        xfdesktop_icon_view_clear_drag_highlight(icon_view);
+    }
+
+    if(icon && icon_view->priv->item_under_pointer != icon) {
+        if(icon_view->priv->item_under_pointer) {
+            /* clear previous highlight */
+            xfdesktop_icon_view_clear_drag_highlight(icon_view);
+        }
+
+        /* highlight icon */
+        icon_view->priv->item_under_pointer = icon;
+
+        xfdesktop_icon_view_invalidate_icon_pixbuf(icon_view, icon);
+    }
+}
+
 static gboolean
 xfdesktop_icon_view_drag_motion(GtkWidget *widget,
                                 GdkDragContext *context,
@@ -1490,6 +1531,7 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
                 if(xfdesktop_icon_get_position(sel_icon, &sel_row, &sel_col)
                    && sel_row == hover_row && sel_col == hover_col)
                 {
+                    xfdesktop_icon_view_clear_drag_highlight(icon_view);
                     return FALSE;
                 }
             }
@@ -1545,6 +1587,14 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
      * xfdesktop_icon_view_drag_data_received() */
 
     return TRUE;
+}
+
+static void
+xfdesktop_icon_view_drag_leave(GtkWidget *widget,
+                               GdkDragContext *context,
+                               guint time_)
+{
+    xfdesktop_icon_view_clear_drag_highlight(XFDESKTOP_ICON_VIEW(widget));
 }
 
 static void
@@ -1783,6 +1833,13 @@ xfdesktop_icon_view_drag_data_received(GtkWidget *widget,
                                                                      context, data,
                                                                      info);
         }
+
+        if(action == 0)
+            xfdesktop_icon_view_clear_drag_highlight(icon_view);
+        else
+            xfdesktop_icon_view_draw_drag_highlight(icon_view,
+                                                    icon_view->priv->hover_row,
+                                                    icon_view->priv->hover_col);
 
         gdk_drag_status(context, action, time_);
     }
