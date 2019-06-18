@@ -1769,6 +1769,8 @@ xfdesktop_icon_view_drag_data_received(GtkWidget *widget,
                                      "--xfdesktop-icon-view-drop-icon");
     
     if(icon_view->priv->dropped) {
+        icon_view->priv->dropped = FALSE;
+
         xfdesktop_xy_to_rowcol(icon_view, x, y, &row, &col);
         if(row >= icon_view->priv->nrows || col >= icon_view->priv->ncols)
             return;
