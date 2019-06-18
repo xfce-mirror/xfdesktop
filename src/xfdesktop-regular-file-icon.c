@@ -362,11 +362,12 @@ xfdesktop_load_icon_location_from_folder(XfdesktopFileIcon *icon)
 static GIcon *
 xfdesktop_load_icon_from_desktop_file(XfdesktopRegularFileIcon *regular_icon)
 {
+    GKeyFile *key_file;
     gchar *contents, *icon_name;
     gsize length;
     GIcon *gicon = NULL;
-    gchar *p;
-    GKeyFile *key_file;
+    GtkIconTheme *itheme = gtk_icon_theme_get_default();
+    gboolean is_pixmaps = FALSE;
 
     /* try to load the file into memory */
     if(!g_file_load_contents(regular_icon->priv->file, NULL, &contents, &length, NULL, NULL))
@@ -402,38 +403,60 @@ xfdesktop_load_icon_from_desktop_file(XfdesktopRegularFileIcon *regular_icon)
 
     /* check if the icon theme includes the icon name as-is */
     if(gicon == NULL) {
-        if(gtk_icon_theme_has_icon(gtk_icon_theme_get_default(), icon_name)) {
+        if(gtk_icon_theme_has_icon(itheme, icon_name)) {
             /* load it */
             gicon = g_themed_icon_new(icon_name);
         }
     }
 
-    /* drop any suffix (e.g. '.png') from themed icons and try to laod that */
+    /* drop any suffix (e.g. '.png') from the icon name and try to load that */
     if(gicon == NULL) {
         gchar *tmp_name = NULL;
+        gchar *p = strrchr(icon_name, '.');
 
-        p = strrchr(icon_name, '.');
         if(p != NULL)
             tmp_name = g_strndup(icon_name, p - icon_name);
+        else
+            tmp_name = g_strdup(icon_name);
 
-        /* check if the icon theme includes the icon name */
-        if(tmp_name && gtk_icon_theme_has_icon(gtk_icon_theme_get_default(), tmp_name)) {
-            /* load it */
+        if(tmp_name)
             gicon = g_themed_icon_new(tmp_name);
+
+        /* check if icon file exists */
+        if(gicon != NULL) {
+            GtkIconInfo *icon_info = gtk_icon_theme_lookup_by_gicon(itheme,
+                                                                    gicon,
+                                                                    -1,
+                                                                    ITHEME_FLAGS);
+            if(icon_info) {
+                /* check if icon is located in pixmaps folder */
+                const gchar *filename = gtk_icon_info_get_filename(icon_info);
+                is_pixmaps = g_strrstr(filename, "pixmaps") ? TRUE : FALSE;
+
+                g_object_unref(icon_info);
+            } else {
+                /* icon not found*/
+                g_object_unref(gicon);
+                gicon = NULL;
+            }
         }
+
         g_free(tmp_name);
     }
 
     /* maybe it points to a file in the pixmaps folder */
-    if(gicon == NULL) {
+    if(gicon == NULL || is_pixmaps) {
         gchar *filename = g_build_filename("pixmaps", icon_name, NULL);
         gchar *tmp_name = NULL;
 
         if(filename)
             tmp_name = xfce_resource_lookup(XFCE_RESOURCE_DATA, filename);
 
-        if(tmp_name)
+        if(tmp_name) {
+            if(gicon != NULL)
+                g_object_unref(gicon);
             gicon = g_file_icon_new(g_file_new_for_path(tmp_name));
+        }
 
         g_free(filename);
         g_free(tmp_name);
