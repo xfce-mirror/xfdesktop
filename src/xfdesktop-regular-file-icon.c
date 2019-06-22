@@ -447,10 +447,8 @@ xfdesktop_load_icon_from_desktop_file(XfdesktopRegularFileIcon *regular_icon)
     /* maybe it points to a file in the pixmaps folder */
     if(gicon == NULL || is_pixmaps) {
         gchar *filename = g_build_filename("pixmaps", icon_name, NULL);
-        gchar *tmp_name = NULL;
+        gchar *tmp_name = xfce_resource_lookup(XFCE_RESOURCE_DATA, filename);
 
-        if(filename)
-            tmp_name = xfce_resource_lookup(XFCE_RESOURCE_DATA, filename);
 
         if(tmp_name) {
             if(gicon != NULL)
