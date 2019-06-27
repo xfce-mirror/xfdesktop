@@ -1,3 +1,28 @@
+4.13.5 (unreleased)
+======
+[Please note that this is a development release.]
+
+Development release of xfdesktop targeting for Xfce 4.14.
+Please report all problems at bugzilla.xfce.org.
+
+- Highlight drag target when hovering it (Bug #12695)
+- Fix drag data being received multiple times (Bug #14471)
+- Allow to load non-theme icons (Bug #15294)
+- Add Next Background option (Bug #12261)
+- Do not cycle backdrop twice
+- Ensure that CSD is not applied to desktop window (Bug #15241)
+- Use async dbus proxy initialization (Bug #15418)
+- Open all selected icons on key press (Bug #15420)
+- Improve fallback CSS
+- Fix warning about ignoring return value (Bug #15410)
+- Update README.xfconf (Bug #15457)
+- Translation Updates: Belarusian, Bulgarian, Catalan, Danish, German,
+  English (Australia), Spanish, Persian (Iran), Finnish, French, Galician, 
+  Hebrew, Croatian, Hungarian, Armenian (Armenia), Interlingue, Italian,
+  Lithuanian, Malay, Dutch, Polish, Portuguese, Russian, Albanian, Serbian, 
+  Thai, Turkish, Chinese (Taiwan)
+
+
 4.13.4
 ======
 [Please note that this is a development release.]
