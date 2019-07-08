@@ -4263,6 +4263,9 @@ xfdesktop_icon_view_set_icon_size(XfdesktopIconView *icon_view,
 {
     g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view));
 
+    /* Choose the correct icon based on it size */
+    wnck_set_default_icon_size (icon_size);
+
     if(icon_size == icon_view->priv->icon_size)
         return;
 
