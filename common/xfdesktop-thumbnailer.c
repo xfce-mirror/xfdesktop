@@ -23,9 +23,9 @@
  *  Copyright (c) Stephan Arts 2009-2011 <stephan@xfce.org>
  *
  *  Thumbnailer Spec
- *  http://live.gnome.org/ThumbnailerSpec
+ *  https://wiki.gnome.org/action/show/DraftSpecs/ThumbnailerSpec
  *  Thumbnail Managing Standard
- *  http://people.freedesktop.org/~vuntz/thumbnail-spec-cache/creation.html
+ *  https://specifications.freedesktop.org/thumbnail-spec/thumbnail-spec-latest.html
  */
 
 #include <config.h>

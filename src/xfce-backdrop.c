@@ -1826,7 +1826,7 @@ xfce_backdrop_loader_closed_cb(GdkPixbufLoader *loader,
 
     /* if we don't need to do any scaling, don't do any interpolation.  this
      * fixes a problem where hyper/bilinear filtering causes blurriness in
-     * some images.  http://bugzilla.xfce.org/show_bug.cgi?id=2939 */
+     * some images.  https://bugzilla.xfce.org/show_bug.cgi?id=2939 */
     if(XFCE_BACKDROP_IMAGE_TILED == istyle
        || XFCE_BACKDROP_IMAGE_CENTERED == istyle)
     {
