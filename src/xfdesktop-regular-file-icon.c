@@ -1022,12 +1022,6 @@ xfdesktop_regular_file_icon_new(GFile *file,
                                                                             XFDESKTOP_FILESYSTEM_INFO_NAMESPACE,
                                                                             NULL, NULL);
 
-    /* query file information from GIO */
-    regular_file_icon->priv->file_info = g_file_query_info(regular_file_icon->priv->file,
-                                                           XFDESKTOP_FILE_INFO_NAMESPACE,
-                                                           G_FILE_QUERY_INFO_NONE,
-                                                           NULL, NULL);
-
     regular_file_icon->priv->gscreen = screen;
 
     regular_file_icon->priv->fmanager = fmanager;
