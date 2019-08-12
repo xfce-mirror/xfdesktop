@@ -5,7 +5,7 @@ backgroundsdir = $(datadir)/backgrounds/xfce
 
 backgrounds_DATA = \
     xfce-blue.jpg \
-    xfce-stripes \
+    xfce-stripes.png \
     xfce-teal.jpg
 
 
