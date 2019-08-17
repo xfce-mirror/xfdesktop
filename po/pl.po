@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-01 06:32+0200\n"
-"PO-Revision-Date: 2019-08-14 10:29+0000\n"
+"PO-Revision-Date: 2019-08-17 19:13+0000\n"
 "Last-Translator: Piotr Sokół <psokol.l10n@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/xfce/xfdesktop/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -129,7 +129,7 @@ msgstr "Zakres monitorów"
 msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
-msgstr "Czy chcesz rozmieścić wszystkie istniejące\nikony zgodnie z wybraną orientacją?"
+msgstr "Rozmieścić wszystkie istniejące ikony\nzgodnie z wybraną orientacją?"
 
 #: ../settings/main.c:1749
 msgid "Arrange icons"
@@ -169,7 +169,7 @@ msgstr "Błąd uruchamiania"
 #: ../src/xfdesktop-file-utils.c:1538 ../src/xfdesktop-volume-icon.c:523
 #: ../src/xfdesktop-volume-icon.c:569 ../src/xfdesktop-volume-icon.c:605
 msgid "_Close"
-msgstr "_Zamknij"
+msgstr "Za_mknij"
 
 #: ../settings/main.c:1915
 msgid "Image files"
@@ -178,7 +178,7 @@ msgstr "Pliki obrazów"
 #. Change the title of the file chooser dialog
 #: ../settings/main.c:1923
 msgid "Select a Directory"
-msgstr "Wybierz katalog"
+msgstr "Wybór katalogu"
 
 #: ../settings/main.c:2128
 msgid "Settings manager socket"
@@ -220,7 +220,7 @@ msgstr "Nie można połączyć z serwerem ustawień"
 
 #: ../settings/main.c:2182
 msgid "Quit"
-msgstr "Wyjdź"
+msgstr "Zakończ"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
 #: ../settings/xfdesktop-settings-ui.glade.h:18 ../src/xfce-desktop.c:1170
@@ -283,7 +283,7 @@ msgstr "Przeskalowanie"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
 msgid "Zoomed"
-msgstr "Powiększenie"
+msgstr "Przybliżenie"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
 msgid "Spanning Screens"
@@ -336,15 +336,15 @@ msgstr "Określa, jak często ma być zmieniane tło pulpitu."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "in seconds:"
-msgstr "co daną ilość sekund:"
+msgstr "co liczbę sekund:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
 msgid "in minutes:"
-msgstr "co daną ilość minut:"
+msgstr "co liczbę minut:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
 msgid "in hours:"
-msgstr "co daną ilość godzin:"
+msgstr "co liczbę godzin:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
 msgid "at start up"
@@ -410,39 +410,39 @@ msgstr "Pliki i aktywatory"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:10
 msgid "Top Left Vertical"
-msgstr "Lewa górna, pionowa"
+msgstr "Góra-lewo, pionowo"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:11
 msgid "Top Left Horizontal"
-msgstr "Lewa górna, pozioma "
+msgstr "Góra-lewo, poziomo"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:12
 msgid "Top Right Vertical"
-msgstr "Prawa górna, pionowa"
+msgstr "Góra-prawo, pionowo"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:13
 msgid "Top Right Horizontal"
-msgstr "Prawa górna, pozioma "
+msgstr "Góra-prawo, poziomo"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:14
 msgid "Bottom Left Vertical"
-msgstr "Lewa dolna, pionowa"
+msgstr "Dół-lewo, pionowo"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:15
 msgid "Bottom Left Horizontal"
-msgstr "Lewa dolna, pozioma "
+msgstr "Dół-lewo, poziomo"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:16
 msgid "Bottom Right Vertical"
-msgstr "Prawa dolna, pionowa"
+msgstr "Dół-prawo, pionowo"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:17
 msgid "Bottom Right Horizontal"
-msgstr "Prawa dolna, pozioma "
+msgstr "Dół-prawo, poziomo "
 
 #: ../settings/xfdesktop-settings-ui.glade.h:20
 msgid "_Help"
-msgstr "_Pomoc"
+msgstr "Pomo_c"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:22
 msgid "_Background"
@@ -450,7 +450,7 @@ msgstr "_Tło"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:23
 msgid "Include applications menu on _desktop right click"
-msgstr "Dołącz menu programów po kliknięciu prawym klawiszem myszy"
+msgstr "_Dołączenie menu programów po kliknięciu prawym przyciskiem myszy"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:24
 msgid "_Button:"
@@ -530,7 +530,7 @@ msgstr "_Orientacja ikon:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:43
 msgid "Show icons on primary display"
-msgstr "Pokaż ikony na ekranie głównym"
+msgstr "Ikony na ekranie głównym"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:44
 msgid "Use custom _font size:"
@@ -564,7 +564,7 @@ msgstr "Wyświetla na pulpicie pliki jako miniatury"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:51
 msgid "Show hidden files on the desktop"
-msgstr "Pokaż ukryte pliki na pulpicie"
+msgstr "Ukryte pliki na pulpicie"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:52
 msgid "Single _click to activate items"
@@ -649,7 +649,7 @@ msgstr "Wczytuje ponownie wszystkie ustawienia"
 
 #: ../src/xfdesktop-application.c:830
 msgid "Advance to the next wallpaper on the current workspace"
-msgstr "Przejdź do następnej tapety na bieżącym obszarze roboczym"
+msgstr "Przejdź do następnego tła pulpitu na bieżącym obszarze roboczym"
 
 #: ../src/xfdesktop-application.c:831
 msgid "Pop up the menu (at the current mouse position)"
@@ -821,7 +821,7 @@ msgstr "Otwórz za pomocą innego p_rogramu..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1691
 msgid "_Paste"
-msgstr "_Wklej"
+msgstr "Wk_lej"
 
 #: ../src/xfdesktop-file-icon-manager.c:1709
 msgid "Cu_t"
@@ -853,7 +853,7 @@ msgstr "_Rozmieść ikony"
 
 #: ../src/xfdesktop-file-icon-manager.c:1858
 msgid "_Next Background"
-msgstr "_Następne tło"
+msgstr "_Następne tło pulpitu"
 
 #: ../src/xfdesktop-file-icon-manager.c:1868
 msgid "Desktop _Settings..."
