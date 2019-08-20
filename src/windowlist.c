@@ -143,7 +143,7 @@ menulist_set_label_flags(GtkWidget *widget, gpointer data)
         *done = TRUE;
     } else if(GTK_IS_CONTAINER (widget)) {
         gtk_container_forall(GTK_CONTAINER (widget), menulist_set_label_flags,
-                             &done);
+                             done);
     }
 }
 
