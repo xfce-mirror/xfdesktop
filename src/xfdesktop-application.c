@@ -150,10 +150,16 @@ const gchar *fallback_CSS =
 "XfdesktopIconView.view .label {"
 "	text-shadow: 1px 1px 2px black;"
 "}"
+"XfdesktopIconView.view .label:active {"
+"	color: @theme_selected_fg_color;"
+"}"
 "XfdesktopIconView .rubberband {"
 "	background: alpha(@theme_selected_bg_color, 0.2);"
 "	border: 1px solid @theme_selected_bg_color;"
 "	border-radius: 0;"
+"}"
+"XfdesktopIconView:active {"
+"	color: @theme_selected_bg_color;"
 "}";
 
 G_DEFINE_TYPE(XfdesktopApplication, xfdesktop_application, G_TYPE_APPLICATION)
