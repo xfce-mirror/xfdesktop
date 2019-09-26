@@ -814,7 +814,8 @@ xfdesktop_regular_file_icon_peek_tooltip(XfdesktopIcon *icon)
         time_string = xfdesktop_file_utils_format_time_for_display(mtime);
 
         regular_file_icon->priv->tooltip =
-            g_strdup_printf(_("Type: %s\nSize: %s\nLast modified: %s"),
+            g_strdup_printf(_("Name: %s\nType: %s\nSize: %s\nLast modified: %s"),
+                            regular_file_icon->priv->display_name,
                             description, size_string, time_string);
 
         /* Extract the Comment entry from the .desktop file */
