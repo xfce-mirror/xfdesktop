@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-01 06:32+0200\n"
-"PO-Revision-Date: 2019-08-23 14:10+0000\n"
+"POT-Creation-Date: 2019-09-26 06:31+0200\n"
+"PO-Revision-Date: 2019-09-26 18:44+0000\n"
 "Last-Translator: Daniel Muñiz Fontoira <dani@damufo.com>\n"
 "Language-Team: Galician (http://www.transifex.com/xfce/xfdesktop/language/gl/)\n"
 "MIME-Version: 1.0\n"
@@ -182,7 +182,7 @@ msgstr "ID CONECTADOR"
 msgid "Version information"
 msgstr "Información da versión"
 
-#: ../settings/main.c:2130 ../src/xfdesktop-application.c:836
+#: ../settings/main.c:2130 ../src/xfdesktop-application.c:842
 msgid "Enable debug messages"
 msgstr "Activar as mensaxes de depuración"
 
@@ -629,83 +629,83 @@ msgstr "_Retirar o espazo de traballo %d"
 msgid "_Remove Workspace '%s'"
 msgstr "_Retirar o espazo de traballo «%s»"
 
-#: ../src/xfdesktop-application.c:828
+#: ../src/xfdesktop-application.c:834
 msgid "Display version information"
 msgstr "Amosar a información da versión"
 
-#: ../src/xfdesktop-application.c:829
+#: ../src/xfdesktop-application.c:835
 msgid "Reload all settings"
 msgstr "Recargar toda a configuración"
 
-#: ../src/xfdesktop-application.c:830
+#: ../src/xfdesktop-application.c:836
 msgid "Advance to the next wallpaper on the current workspace"
 msgstr "Avanzar até o fondo de escritorio seguinte do espazo de traballo actual"
 
-#: ../src/xfdesktop-application.c:831
+#: ../src/xfdesktop-application.c:837
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "Amosar o menú (na posición actual do rato)"
 
-#: ../src/xfdesktop-application.c:832
+#: ../src/xfdesktop-application.c:838
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "Amosar a lista de xanelas (na posición actual do rato)"
 
-#: ../src/xfdesktop-application.c:834
+#: ../src/xfdesktop-application.c:840
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "Arrombar automaticamente todas as iconas do escritorio"
 
-#: ../src/xfdesktop-application.c:837
+#: ../src/xfdesktop-application.c:843
 msgid "Disable debug messages"
 msgstr "Desactivar as mensaxes de depuración"
 
-#: ../src/xfdesktop-application.c:838
+#: ../src/xfdesktop-application.c:844
 msgid "Do not wait for a window manager on startup"
 msgstr "Non esperar por un xestor de xanelas no inicio"
 
-#: ../src/xfdesktop-application.c:839
+#: ../src/xfdesktop-application.c:845
 msgid "Cause xfdesktop to quit"
 msgstr "Forzar xfdesktop a saír"
 
-#: ../src/xfdesktop-application.c:854
+#: ../src/xfdesktop-application.c:860
 #, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "Non se puido analizar os argumentos: %s\n"
 
-#: ../src/xfdesktop-application.c:865
+#: ../src/xfdesktop-application.c:871
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Isto é %s, versión %s, a se executar en Xfce %s.\n"
 
-#: ../src/xfdesktop-application.c:867
+#: ../src/xfdesktop-application.c:873
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Construído con GTK+ %d.%d.%d, ligado con GTK+ %d.%d.%d."
 
-#: ../src/xfdesktop-application.c:871
+#: ../src/xfdesktop-application.c:877
 #, c-format
 msgid "Build options:\n"
 msgstr "Opcións de construción:\n"
 
-#: ../src/xfdesktop-application.c:872
+#: ../src/xfdesktop-application.c:878
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "Menú do escritorio: %s\n"
 
-#: ../src/xfdesktop-application.c:874 ../src/xfdesktop-application.c:881
-#: ../src/xfdesktop-application.c:888
+#: ../src/xfdesktop-application.c:880 ../src/xfdesktop-application.c:887
+#: ../src/xfdesktop-application.c:894
 msgid "enabled"
 msgstr "activado"
 
-#: ../src/xfdesktop-application.c:876 ../src/xfdesktop-application.c:883
-#: ../src/xfdesktop-application.c:890
+#: ../src/xfdesktop-application.c:882 ../src/xfdesktop-application.c:889
+#: ../src/xfdesktop-application.c:896
 msgid "disabled"
 msgstr "desactivado"
 
-#: ../src/xfdesktop-application.c:879
+#: ../src/xfdesktop-application.c:885
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "Iconas do escritorio:  %s\n"
 
-#: ../src/xfdesktop-application.c:886
+#: ../src/xfdesktop-application.c:892
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "Iconas de ficheiro do escritorio: %s\n\n"
@@ -1060,10 +1060,11 @@ msgstr "Rematou a expulsión"
 #: ../src/xfdesktop-regular-file-icon.c:817
 #, c-format
 msgid ""
+"Name: %s\n"
 "Type: %s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr "Tipo: %s\nTamaño: %s\nÚltima modificación: %s"
+msgstr "Nome: %s\nTipo: %s\nTamaño: %s\nÚltima modificación: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:294
 #: ../src/xfdesktop-special-file-icon.c:476
