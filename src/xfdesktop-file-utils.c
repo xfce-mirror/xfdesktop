@@ -698,12 +698,14 @@ xfdesktop_file_utils_async_handle_error(GError *error, gpointer userdata)
     GtkWindow *parent = GTK_WINDOW(userdata);
 
     if(error != NULL) {
-        xfce_message_dialog(parent,
-                            _("Error"), "dialog-error",
-                            _("The requested operation could not be completed"),
-                            error->message,
-                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
-                            NULL);
+        if(error->domain != G_IO_ERROR || error->code != G_IO_ERROR_TIMED_OUT) {
+            xfce_message_dialog(parent,
+                                _("Error"), "dialog-error",
+                                _("The requested operation could not be completed"),
+                                error->message,
+                                XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                                NULL);
+        }
 
         g_clear_error(&error);
     }
