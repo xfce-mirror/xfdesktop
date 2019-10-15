@@ -1229,8 +1229,10 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget,
         /* we might have the start of an icon click + drag here */
         icon_view->priv->definitely_dragging = xfdesktop_icon_view_maybe_begin_drag(icon_view,
                                                                                     evt);
-        if(icon_view->priv->definitely_dragging)
+        if(icon_view->priv->definitely_dragging) {
+            icon_view->priv->maybe_begin_drag = FALSE;
             ret = TRUE;
+        }
     } else if(icon_view->priv->maybe_begin_drag
               && ((!icon_view->priv->item_under_pointer
                    && !icon_view->priv->definitely_rubber_banding)
