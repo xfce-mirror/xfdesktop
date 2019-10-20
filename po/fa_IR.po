@@ -1,22 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Ali Vakilzade <ali.vakilzade@gmail.com>, 2015
-# Behrooz Ramezani <b3hrooz.ram3zani@gmail.com>, 2015
-# Ramin Najjarbashi <ramin.najarbashi@gmail.com>, 2015
-# Ramin Najjarbashi <ramin.najarbashi@gmail.com>, 2017
-# Sajjad Sadeghi <sjsadeghii@gmail.com>, 2019
-# Vahid Nameni <vahidnameni@yahoo.com>, 2013,2017
+# Xfce Bot <transifex@xfce.org>, 2019
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Xfdesktop\n"
+"Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-20 00:33+0200\n"
-"PO-Revision-Date: 2019-06-01 14:41+0000\n"
-"Last-Translator: Sajjad Sadeghi <sjsadeghii@gmail.com>\n"
-"Language-Team: Persian (Iran) (http://www.transifex.com/xfce/xfdesktop/language/fa_IR/)\n"
+"POT-Creation-Date: 2019-10-20 18:40+0200\n"
+"PO-Revision-Date: 2019-10-20 16:40+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>, 2019\n"
+"Language-Team: Persian (Iran) (https://www.transifex.com/xfce/teams/16840/fa_IR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -59,7 +57,10 @@ msgid ""
 "<b>%s</b>\n"
 "Type: %s\n"
 "Size: %s"
-msgstr "<b>%s</b>\nنوع: %s\nحجم: %s"
+msgstr ""
+"<b>%s</b>\n"
+"نوع: %s\n"
+"حجم: %s"
 
 #: ../settings/main.c:732
 #, c-format
@@ -73,7 +74,8 @@ msgstr "کاغذ دیواری برای %d"
 
 #: ../settings/main.c:741
 msgid "Move this dialog to the display you want to edit the settings for."
-msgstr "این پیغام را به نمایشگری که قصد ویرایش تنظیمات آن را دارید انتقال دهید."
+msgstr ""
+"این پیغام را به نمایشگری که قصد ویرایش تنظیمات آن را دارید انتقال دهید."
 
 #: ../settings/main.c:748
 #, c-format
@@ -89,7 +91,9 @@ msgstr "کاغذدیواری برای %s در صفحه نمایش %d"
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
-msgstr "این پیغام را به فضای کاری و نمایشگری که قصد ویرایش تنظیمات آن را دارید انتقال دهید."
+msgstr ""
+"این پیغام را به فضای کاری و نمایشگری که قصد ویرایش تنظیمات آن را دارید "
+"انتقال دهید."
 
 #. Single monitor and single workspace
 #: ../settings/main.c:767
@@ -105,11 +109,14 @@ msgstr "کاغذ دیواری برای %s"
 
 #: ../settings/main.c:778
 msgid "Move this dialog to the workspace you want to edit the settings for."
-msgstr "این پیغام را به فضای کاری که قصد ویرایش تنظیمات آن را دارید انتقال دهید."
+msgstr ""
+"این پیغام را به فضای کاری که قصد ویرایش تنظیمات آن را دارید انتقال دهید."
 
 #: ../settings/main.c:1198
 msgid "Image selection is unavailable while the image style is set to None."
-msgstr "انتخاب تصویر در زمانی که سبک تصاویر بر روی هیچکدام انتخاب شده باشد امکان پذیر نیست"
+msgstr ""
+"انتخاب تصویر در زمانی که سبک تصاویر بر روی هیچکدام انتخاب شده باشد امکان "
+"پذیر نیست"
 
 #: ../settings/main.c:1575
 msgid "Spanning screens"
@@ -121,7 +128,9 @@ msgstr "محدوده صفحه نمایش"
 msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
-msgstr "آیا شما تمایل به مرتب کردن تمامی آیکن های موجود، بر اساس جهت انتخاب شده دارید؟"
+msgstr ""
+"آیا شما تمایل به مرتب کردن تمامی آیکن های موجود، بر اساس جهت انتخاب شده "
+"دارید؟"
 
 #: ../settings/main.c:1749
 msgid "Arrange icons"
@@ -136,28 +145,29 @@ msgstr "ناتوان در اجرا  \"%s\":"
 
 #: ../settings/main.c:1758 ../src/xfdesktop-file-icon-manager.c:798
 #: ../src/xfdesktop-file-icon-manager.c:1100
-#: ../src/xfdesktop-file-icon-manager.c:1354 ../src/xfdesktop-file-utils.c:671
-#: ../src/xfdesktop-file-utils.c:1203 ../src/xfdesktop-file-utils.c:1281
-#: ../src/xfdesktop-file-utils.c:1305 ../src/xfdesktop-file-utils.c:1367
+#: ../src/xfdesktop-file-icon-manager.c:1354 ../src/xfdesktop-file-utils.c:683
+#: ../src/xfdesktop-file-utils.c:1217 ../src/xfdesktop-file-utils.c:1295
+#: ../src/xfdesktop-file-utils.c:1319 ../src/xfdesktop-file-utils.c:1381
 msgid "Launch Error"
 msgstr "خطا اجرا"
 
-#: ../settings/main.c:1760 ../src/xfdesktop-file-icon-manager.c:560
+#: ../settings/main.c:1760 ../settings/xfdesktop-settings-ui.glade.h:21
+#: ../src/xfdesktop-file-icon-manager.c:560
 #: ../src/xfdesktop-file-icon-manager.c:579
 #: ../src/xfdesktop-file-icon-manager.c:664
 #: ../src/xfdesktop-file-icon-manager.c:800
 #: ../src/xfdesktop-file-icon-manager.c:1104
 #: ../src/xfdesktop-file-icon-manager.c:1356
-#: ../src/xfdesktop-file-icon-manager.c:2938 ../src/xfdesktop-file-utils.c:674
-#: ../src/xfdesktop-file-utils.c:693 ../src/xfdesktop-file-utils.c:747
-#: ../src/xfdesktop-file-utils.c:811 ../src/xfdesktop-file-utils.c:872
-#: ../src/xfdesktop-file-utils.c:933 ../src/xfdesktop-file-utils.c:981
-#: ../src/xfdesktop-file-utils.c:1036 ../src/xfdesktop-file-utils.c:1094
-#: ../src/xfdesktop-file-utils.c:1146 ../src/xfdesktop-file-utils.c:1207
-#: ../src/xfdesktop-file-utils.c:1283 ../src/xfdesktop-file-utils.c:1309
-#: ../src/xfdesktop-file-utils.c:1371 ../src/xfdesktop-file-utils.c:1430
-#: ../src/xfdesktop-file-utils.c:1446 ../src/xfdesktop-file-utils.c:1508
-#: ../src/xfdesktop-file-utils.c:1526 ../src/xfdesktop-volume-icon.c:523
+#: ../src/xfdesktop-file-icon-manager.c:2938 ../src/xfdesktop-file-utils.c:686
+#: ../src/xfdesktop-file-utils.c:706 ../src/xfdesktop-file-utils.c:761
+#: ../src/xfdesktop-file-utils.c:825 ../src/xfdesktop-file-utils.c:886
+#: ../src/xfdesktop-file-utils.c:947 ../src/xfdesktop-file-utils.c:995
+#: ../src/xfdesktop-file-utils.c:1050 ../src/xfdesktop-file-utils.c:1108
+#: ../src/xfdesktop-file-utils.c:1160 ../src/xfdesktop-file-utils.c:1221
+#: ../src/xfdesktop-file-utils.c:1297 ../src/xfdesktop-file-utils.c:1323
+#: ../src/xfdesktop-file-utils.c:1385 ../src/xfdesktop-file-utils.c:1444
+#: ../src/xfdesktop-file-utils.c:1460 ../src/xfdesktop-file-utils.c:1522
+#: ../src/xfdesktop-file-utils.c:1540 ../src/xfdesktop-volume-icon.c:523
 #: ../src/xfdesktop-volume-icon.c:569 ../src/xfdesktop-volume-icon.c:605
 msgid "_Close"
 msgstr "بستن"
@@ -183,7 +193,7 @@ msgstr "شناسه سوکت"
 msgid "Version information"
 msgstr "اطلاعات نسخه"
 
-#: ../settings/main.c:2130 ../src/xfdesktop-application.c:836
+#: ../settings/main.c:2130 ../src/xfdesktop-application.c:842
 msgid "Enable debug messages"
 msgstr "فعال سازی پیغام دیباگ"
 
@@ -365,7 +375,9 @@ msgstr "چینش تصادفی"
 msgid ""
 "Randomly selects another image from the same directory when the wallpaper is"
 " to cycle."
-msgstr "انتخاب تصویر دیگر به صورت تصادفی از همان پوشه در زمانی که کاغذدیواری بر روی در گردش باشد."
+msgstr ""
+"انتخاب تصویر دیگر به صورت تصادفی از همان پوشه در زمانی که کاغذدیواری بر روی "
+"در گردش باشد."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:1
 msgid "Left"
@@ -432,120 +444,116 @@ msgid "Bottom Right Horizontal"
 msgstr "پایین، سمت راست، افقی"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:20
+msgid "_Help"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:22
 msgid "_Background"
 msgstr "پس زمینه"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:21
+#: ../settings/xfdesktop-settings-ui.glade.h:23
 msgid "Include applications menu on _desktop right click"
 msgstr "شامل برنامه های فهرست راست کلیک میزکار"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:22
+#: ../settings/xfdesktop-settings-ui.glade.h:24
 msgid "_Button:"
 msgstr "کلید:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:23
+#: ../settings/xfdesktop-settings-ui.glade.h:25
 msgid "Mo_difier:"
 msgstr "اصلاح کننده:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:24
+#: ../settings/xfdesktop-settings-ui.glade.h:26
 msgid "Show _application icons in menu"
 msgstr "نمایش نماد برنامه در فهرست"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:25
+#: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "_Edit desktop menu"
 msgstr "ویرایش فهرست میزکار"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:26
+#: ../settings/xfdesktop-settings-ui.glade.h:28
 msgid "<b>Desktop Menu</b>"
 msgstr "<b>فهرست میزکار</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:27
+#: ../settings/xfdesktop-settings-ui.glade.h:29
 msgid "Show _window list menu on desktop middle click"
 msgstr "نمایش لیست پنجره ها در کلیک وسط میزکار"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:28
+#: ../settings/xfdesktop-settings-ui.glade.h:30
 msgid "B_utton:"
 msgstr "کلید:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:29
+#: ../settings/xfdesktop-settings-ui.glade.h:31
 msgid "Modi_fier:"
 msgstr "اصلاح کننده:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:30
+#: ../settings/xfdesktop-settings-ui.glade.h:32
 msgid "Sh_ow application icons in menu"
 msgstr "نمایش نماد برنامه در فهرست"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:31
+#: ../settings/xfdesktop-settings-ui.glade.h:33
 msgid "Show workspace _names in list"
 msgstr "نمایش نام فضا های کار در لیست"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:32
+#: ../settings/xfdesktop-settings-ui.glade.h:34
 msgid "Use _submenus for the windows in each workspace"
 msgstr "استفاده از زیرفهرست ها برای هر پنجره از فضا های کاری"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:33
+#: ../settings/xfdesktop-settings-ui.glade.h:35
 msgid "Show s_ticky windows only in active workspace"
 msgstr "نمایش پنجره های چسبیده شده فق در فضا کاری فعال"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:34
+#: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid "Show a_dd and remove workspace options in list"
 msgstr "نمایش افزودن و حذف تنظیمات محیط کاری در لیست تنظیمات"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:35
+#: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "<b>Window List Menu</b>"
 msgstr "<b>فهرست لیست پنجره</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:36
+#: ../settings/xfdesktop-settings-ui.glade.h:38
 msgid "_Menus"
 msgstr "فهرست ها"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:37
+#: ../settings/xfdesktop-settings-ui.glade.h:39
 msgid "Icon _type:"
 msgstr "نوع نماد:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:38
+#: ../settings/xfdesktop-settings-ui.glade.h:40
 msgid "Icon _size:"
 msgstr "اندازه نماد:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:39
+#: ../settings/xfdesktop-settings-ui.glade.h:41
 msgid "48"
 msgstr "48"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:40
+#: ../settings/xfdesktop-settings-ui.glade.h:42
 msgid "Icons _orientation:"
 msgstr "جهت آیکن ها"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:41
+#: ../settings/xfdesktop-settings-ui.glade.h:43
 msgid "Show icons on primary display"
 msgstr "نمایش آیکن ها در صفحه نمایش اصلی"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:42
+#: ../settings/xfdesktop-settings-ui.glade.h:44
 msgid "Use custom _font size:"
 msgstr "استفاده از سایز خط:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:43
+#: ../settings/xfdesktop-settings-ui.glade.h:45
 msgid "12"
 msgstr "12"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:44
+#: ../settings/xfdesktop-settings-ui.glade.h:46
 msgid "Show icon tooltips. Size:"
 msgstr "نمایش راهنمای کوتاه نماد ها. حجم:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:45
+#: ../settings/xfdesktop-settings-ui.glade.h:47
 msgid "Size of the tooltip preview image."
 msgstr "اندازه تصویر پیش نمایش راهنمای کوچک."
 
-#: ../settings/xfdesktop-settings-ui.glade.h:46
+#: ../settings/xfdesktop-settings-ui.glade.h:48
 msgid "128"
 msgstr "128"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:47
-msgid "Show hidden files on the desktop"
-msgstr "نمایش فایل‌های مخفی روز میزکار"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:48
-msgid "Single _click to activate items"
-msgstr "با یک کلیک می توانید این بخش ها را فعال کنید"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:49
 msgid "Show t_humbnails"
@@ -555,17 +563,27 @@ msgstr "نمایش بند انگشتی ها"
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
-msgstr "با انتخاب این گزینه فایل ها قابلیت پیش نمایش را از طریق نماد های از قبل ایجادشده به صورت خودکار خواهند داشت."
+msgstr ""
+"با انتخاب این گزینه فایل ها قابلیت پیش نمایش را از طریق نماد های از قبل "
+"ایجادشده به صورت خودکار خواهند داشت."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:51
+msgid "Show hidden files on the desktop"
+msgstr "نمایش فایل‌های مخفی روز میزکار"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:52
+msgid "Single _click to activate items"
+msgstr "با یک کلیک می توانید این بخش ها را فعال کنید"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:53
 msgid "<b>Appearance</b>"
 msgstr "<b>ظاهر</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:52
+#: ../settings/xfdesktop-settings-ui.glade.h:54
 msgid "<b>Default Icons</b>"
 msgstr "<b>نمادهای پیش فرض</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:53
+#: ../settings/xfdesktop-settings-ui.glade.h:55
 msgid "_Icons"
 msgstr "نماد ها"
 
@@ -583,7 +601,9 @@ msgstr "حذف فضا کاری %d"
 msgid ""
 "Do you really want to remove workspace %d?\n"
 "Note: You are currently on workspace %d."
-msgstr "آیا از حذف فضا کاری %d مطمئن هستید؟\nنکته: شما هم اکنون در فضا کاری %d هستید."
+msgstr ""
+"آیا از حذف فضا کاری %d مطمئن هستید؟\n"
+"نکته: شما هم اکنون در فضا کاری %d هستید."
 
 #: ../src/windowlist.c:78
 #, c-format
@@ -595,7 +615,9 @@ msgstr "حذف فضا کاری '%s'"
 msgid ""
 "Do you really want to remove workspace '%s'?\n"
 "Note: You are currently on workspace '%s'."
-msgstr "آیا از حذف فضا کاری %s مطمئن هستید؟\nنکته: شما هم اکنون در فضا کاری %s هستید."
+msgstr ""
+"آیا از حذف فضا کاری %s مطمئن هستید؟\n"
+"نکته: شما هم اکنون در فضا کاری %s هستید."
 
 #. Popup a dialog box confirming that the user wants to remove a
 #. * workspace
@@ -626,83 +648,83 @@ msgstr "حذف فضا کاری %d"
 msgid "_Remove Workspace '%s'"
 msgstr "حذف فضا کاری  '%s'"
 
-#: ../src/xfdesktop-application.c:828
+#: ../src/xfdesktop-application.c:834
 msgid "Display version information"
 msgstr "مایش اطلاعات نسخه"
 
-#: ../src/xfdesktop-application.c:829
+#: ../src/xfdesktop-application.c:835
 msgid "Reload all settings"
 msgstr "بارگذاری مجدد"
 
-#: ../src/xfdesktop-application.c:830
+#: ../src/xfdesktop-application.c:836
 msgid "Advance to the next wallpaper on the current workspace"
 msgstr "جلو بردن به تصویر زمینه بعدی در میزکار جاری"
 
-#: ../src/xfdesktop-application.c:831
+#: ../src/xfdesktop-application.c:837
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "فهرست پنجره بازشونده (در موقعیت کنونی موس)"
 
-#: ../src/xfdesktop-application.c:832
+#: ../src/xfdesktop-application.c:838
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "نمایش لیست پنجره در پنجره بازشونده(در موقعیت کنونی موس)"
 
-#: ../src/xfdesktop-application.c:834
+#: ../src/xfdesktop-application.c:840
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "مرتب سازی تمامی نماد ها در میزکار به صورت خودکار"
 
-#: ../src/xfdesktop-application.c:837
+#: ../src/xfdesktop-application.c:843
 msgid "Disable debug messages"
 msgstr "غیرفعال سازی پیغام دیباگ"
 
-#: ../src/xfdesktop-application.c:838
+#: ../src/xfdesktop-application.c:844
 msgid "Do not wait for a window manager on startup"
 msgstr "در زمان راه اندازی منتظر مدیر پنجره نمان"
 
-#: ../src/xfdesktop-application.c:839
+#: ../src/xfdesktop-application.c:845
 msgid "Cause xfdesktop to quit"
 msgstr "علت خروج از xfdesktop"
 
-#: ../src/xfdesktop-application.c:854
+#: ../src/xfdesktop-application.c:860
 #, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "تجزیه نشانوند با شکست روبرو شد: %s\n"
 
-#: ../src/xfdesktop-application.c:865
+#: ../src/xfdesktop-application.c:871
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "%s نسخه %s است که در Xfce %s در حال اجرا است.\n"
 
-#: ../src/xfdesktop-application.c:867
+#: ../src/xfdesktop-application.c:873
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "ساخته شده با GTK+ %d.%d.%d متصل شده است با  GTK+ %d.%d.%d."
 
-#: ../src/xfdesktop-application.c:871
+#: ../src/xfdesktop-application.c:877
 #, c-format
 msgid "Build options:\n"
 msgstr "تنظیمات ساخت: \n"
 
-#: ../src/xfdesktop-application.c:872
+#: ../src/xfdesktop-application.c:878
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "فهرست میزکار:  %s\n"
 
-#: ../src/xfdesktop-application.c:874 ../src/xfdesktop-application.c:881
-#: ../src/xfdesktop-application.c:888
+#: ../src/xfdesktop-application.c:880 ../src/xfdesktop-application.c:887
+#: ../src/xfdesktop-application.c:894
 msgid "enabled"
 msgstr "فعال شده"
 
-#: ../src/xfdesktop-application.c:876 ../src/xfdesktop-application.c:883
-#: ../src/xfdesktop-application.c:890
+#: ../src/xfdesktop-application.c:882 ../src/xfdesktop-application.c:889
+#: ../src/xfdesktop-application.c:896
 msgid "disabled"
 msgstr "غیرفعال شده"
 
-#: ../src/xfdesktop-application.c:879
+#: ../src/xfdesktop-application.c:885
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    نماد های میزکار: %s\n"
 
-#: ../src/xfdesktop-application.c:886
+#: ../src/xfdesktop-application.c:892
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    نماد فایل های میزکار:  %s\n"
@@ -723,12 +745,12 @@ msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr "یک فایل با همین نام موجود است. لطفا آن را حذف یا تغییر نام دهید."
 
-#: ../src/xfdesktop-file-icon-manager.c:661 ../src/xfdesktop-file-utils.c:743
-#: ../src/xfdesktop-file-utils.c:807
+#: ../src/xfdesktop-file-icon-manager.c:661 ../src/xfdesktop-file-utils.c:757
+#: ../src/xfdesktop-file-utils.c:821
 msgid "Rename Error"
 msgstr "خطا تغییر نام"
 
-#: ../src/xfdesktop-file-icon-manager.c:662 ../src/xfdesktop-file-utils.c:808
+#: ../src/xfdesktop-file-icon-manager.c:662 ../src/xfdesktop-file-utils.c:822
 msgid "The files could not be renamed"
 msgstr "تغییر نام فایل امکان پذیر نیست"
 
@@ -750,7 +772,9 @@ msgstr "باز کردن با  \"%s\""
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
-msgstr "ناتوان در اجرا  \"exo-desktop-item-edit\"، که نیاز به ایجاد و و ویرایش اجراگر ها و پیوند ها در میزکار دارد."
+msgstr ""
+"ناتوان در اجرا  \"exo-desktop-item-edit\"، که نیاز به ایجاد و و ویرایش "
+"اجراگر ها و پیوند ها در میزکار دارد."
 
 #: ../src/xfdesktop-file-icon-manager.c:1423
 msgid "_Open all"
@@ -876,131 +900,135 @@ msgid "_Cancel"
 msgstr "انصراف"
 
 #. TRANSLATORS: file was modified less than one day ago
-#: ../src/xfdesktop-file-utils.c:147
+#: ../src/xfdesktop-file-utils.c:159
 #, c-format
 msgid "Today at %X"
 msgstr "امروز در %X"
 
 #. TRANSLATORS: file was modified less than two days ago
-#: ../src/xfdesktop-file-utils.c:151
+#: ../src/xfdesktop-file-utils.c:163
 #, c-format
 msgid "Yesterday at %X"
 msgstr "دیروز در %X"
 
 #. Days from last week
-#: ../src/xfdesktop-file-utils.c:156
+#: ../src/xfdesktop-file-utils.c:168
 #, c-format
 msgid "%A at %X"
 msgstr "%A در %X"
 
 #. Any other date
-#: ../src/xfdesktop-file-utils.c:159
+#: ../src/xfdesktop-file-utils.c:171
 #, c-format
 msgid "%x at %X"
 msgstr "%x در %X"
 
 #. the file_time is invalid
-#: ../src/xfdesktop-file-utils.c:169
+#: ../src/xfdesktop-file-utils.c:181
 msgid "Unknown"
 msgstr "ناشناخته"
 
-#: ../src/xfdesktop-file-utils.c:672
+#: ../src/xfdesktop-file-utils.c:684
 msgid "The folder could not be opened"
 msgstr "پوشه قادر به باز شدن نیست"
 
-#: ../src/xfdesktop-file-utils.c:690
+#: ../src/xfdesktop-file-utils.c:703
 msgid "Error"
 msgstr "خطا"
 
-#: ../src/xfdesktop-file-utils.c:691
+#: ../src/xfdesktop-file-utils.c:704
 msgid "The requested operation could not be completed"
 msgstr "عمل در خواستی نمی تواند تکمیل شود"
 
-#: ../src/xfdesktop-file-utils.c:744
+#: ../src/xfdesktop-file-utils.c:758
 msgid "The file could not be renamed"
 msgstr "فایل نمی تواند تغییر نام یابد"
 
-#: ../src/xfdesktop-file-utils.c:745 ../src/xfdesktop-file-utils.c:809
-#: ../src/xfdesktop-file-utils.c:870 ../src/xfdesktop-file-utils.c:1034
-#: ../src/xfdesktop-file-utils.c:1092 ../src/xfdesktop-file-utils.c:1144
-#: ../src/xfdesktop-file-utils.c:1205 ../src/xfdesktop-file-utils.c:1307
-#: ../src/xfdesktop-file-utils.c:1369 ../src/xfdesktop-file-utils.c:1444
-#: ../src/xfdesktop-file-utils.c:1524
+#: ../src/xfdesktop-file-utils.c:759 ../src/xfdesktop-file-utils.c:823
+#: ../src/xfdesktop-file-utils.c:884 ../src/xfdesktop-file-utils.c:1048
+#: ../src/xfdesktop-file-utils.c:1106 ../src/xfdesktop-file-utils.c:1158
+#: ../src/xfdesktop-file-utils.c:1219 ../src/xfdesktop-file-utils.c:1321
+#: ../src/xfdesktop-file-utils.c:1383 ../src/xfdesktop-file-utils.c:1458
+#: ../src/xfdesktop-file-utils.c:1538
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
-msgstr "این ویژگی نیاز دارد تا سرویس مدیریت فایل حاضر باشد(مانند یکی که توسط ثونار پشتیبانی شده است)"
+msgstr ""
+"این ویژگی نیاز دارد تا سرویس مدیریت فایل حاضر باشد(مانند یکی که توسط ثونار "
+"پشتیبانی شده است)"
 
-#: ../src/xfdesktop-file-utils.c:868
+#: ../src/xfdesktop-file-utils.c:882
 msgid "Delete Error"
 msgstr "خطا حذف"
 
-#: ../src/xfdesktop-file-utils.c:869
+#: ../src/xfdesktop-file-utils.c:883
 msgid "The selected files could not be deleted"
 msgstr "فایل انتخاب شده نمی تواند حذف گردد"
 
-#: ../src/xfdesktop-file-utils.c:929 ../src/xfdesktop-file-utils.c:977
+#: ../src/xfdesktop-file-utils.c:943 ../src/xfdesktop-file-utils.c:991
 msgid "Trash Error"
 msgstr "خطا زباله دان"
 
-#: ../src/xfdesktop-file-utils.c:930
+#: ../src/xfdesktop-file-utils.c:944
 msgid "The selected files could not be moved to the trash"
 msgstr "فایل انتخاب شده نمی تواند به زباله دان منتقل شود"
 
-#: ../src/xfdesktop-file-utils.c:931 ../src/xfdesktop-file-utils.c:979
+#: ../src/xfdesktop-file-utils.c:945 ../src/xfdesktop-file-utils.c:993
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
-msgstr "این ویژگی نیاز دارد تا سرویس زباله دان حاضر باشد (مانند یکی که توسط ثونار پشتیبانی شده است)"
+msgstr ""
+"این ویژگی نیاز دارد تا سرویس زباله دان حاضر باشد (مانند یکی که توسط ثونار "
+"پشتیبانی شده است)"
 
-#: ../src/xfdesktop-file-utils.c:978
+#: ../src/xfdesktop-file-utils.c:992
 msgid "Could not empty the trash"
 msgstr "امکان خالی کردن زباله دان نیست"
 
-#: ../src/xfdesktop-file-utils.c:1032
+#: ../src/xfdesktop-file-utils.c:1046
 msgid "Create File Error"
 msgstr "خطا ایجاد فایل"
 
-#: ../src/xfdesktop-file-utils.c:1033
+#: ../src/xfdesktop-file-utils.c:1047
 msgid "Could not create a new file"
 msgstr "امکان ایجاد فایل جدید نیست"
 
-#: ../src/xfdesktop-file-utils.c:1090
+#: ../src/xfdesktop-file-utils.c:1104
 msgid "Create Document Error"
 msgstr "خطا ایجاد سند"
 
-#: ../src/xfdesktop-file-utils.c:1091
+#: ../src/xfdesktop-file-utils.c:1105
 msgid "Could not create a new document from the template"
 msgstr "اکان ایجاد سند جدید از قالب نیست"
 
-#: ../src/xfdesktop-file-utils.c:1142
+#: ../src/xfdesktop-file-utils.c:1156
 msgid "File Properties Error"
 msgstr "خطا ویژگی های فایل"
 
-#: ../src/xfdesktop-file-utils.c:1143
+#: ../src/xfdesktop-file-utils.c:1157
 msgid "The file properties dialog could not be opened"
 msgstr "امکان بازکردن پنجره محاوره ویژگی های فایل نیست"
 
-#: ../src/xfdesktop-file-utils.c:1204
+#: ../src/xfdesktop-file-utils.c:1218
 msgid "The file could not be opened"
 msgstr "امکان بازکردن فایل نیست"
 
-#: ../src/xfdesktop-file-utils.c:1278 ../src/xfdesktop-file-utils.c:1302
+#: ../src/xfdesktop-file-utils.c:1292 ../src/xfdesktop-file-utils.c:1316
 #, c-format
 msgid "Failed to run \"%s\""
 msgstr "اجرا \"%s\" با شکست مواجه شد"
 
-#: ../src/xfdesktop-file-utils.c:1368
+#: ../src/xfdesktop-file-utils.c:1382
 msgid "The application chooser could not be opened"
 msgstr "انتخاب کننده برنامه نمی تواند باز شود"
 
-#: ../src/xfdesktop-file-utils.c:1427 ../src/xfdesktop-file-utils.c:1442
-#: ../src/xfdesktop-file-utils.c:1505 ../src/xfdesktop-file-utils.c:1522
+#: ../src/xfdesktop-file-utils.c:1441 ../src/xfdesktop-file-utils.c:1456
+#: ../src/xfdesktop-file-utils.c:1519 ../src/xfdesktop-file-utils.c:1536
 msgid "Transfer Error"
 msgstr "خطا انتقال"
 
-#: ../src/xfdesktop-file-utils.c:1428 ../src/xfdesktop-file-utils.c:1443
-#: ../src/xfdesktop-file-utils.c:1506 ../src/xfdesktop-file-utils.c:1523
+#: ../src/xfdesktop-file-utils.c:1442 ../src/xfdesktop-file-utils.c:1457
+#: ../src/xfdesktop-file-utils.c:1520 ../src/xfdesktop-file-utils.c:1537
 msgid "The file transfer could not be performed"
 msgstr "امکان انتقال فایل نیست"
 
@@ -1015,7 +1043,9 @@ msgstr "پیاده کردن ابزار"
 msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the"
 " media or disconnect the drive"
-msgstr "ابزار  \"%s\" در حال پیاده شدن از سیستم است. لطفا درایور یا رسانه را نکشید یا "
+msgstr ""
+"ابزار  \"%s\" در حال پیاده شدن از سیستم است. لطفا درایور یا رسانه را نکشید "
+"یا "
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:137 ../src/xfdesktop-notify.c:322
@@ -1028,7 +1058,9 @@ msgstr "درحال نوشتن اطلاعات بر روی ابزار"
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be"
 " removed. Please do not remove the media or disconnect the drive"
-msgstr "نیاز است تا اطلاعاتی بر روی ابزار  \"%s\" قبل از اینکه برداشته شود نوشته شود. لطفا درایور یا رسانه را نکشید "
+msgstr ""
+"نیاز است تا اطلاعاتی بر روی ابزار  \"%s\" قبل از اینکه برداشته شود نوشته "
+"شود. لطفا درایور یا رسانه را نکشید "
 
 #: ../src/xfdesktop-notify.c:221
 msgid "Unmount Finished"
@@ -1054,13 +1086,14 @@ msgstr "ابزار  \"%s\" در حال خارج شدن است. این کار م�
 msgid "Eject Finished"
 msgstr "خارج کردن پایان یافت"
 
-#: ../src/xfdesktop-regular-file-icon.c:796
+#: ../src/xfdesktop-regular-file-icon.c:817
 #, c-format
 msgid ""
+"Name: %s\n"
 "Type: %s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr "نوع: %s\nاندازه: %s\nآخرین تغییر: %s"
+msgstr ""
 
 #: ../src/xfdesktop-special-file-icon.c:294
 #: ../src/xfdesktop-special-file-icon.c:476
@@ -1086,7 +1119,10 @@ msgid ""
 "%s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr "%s\nاندازه: %s\nآخرین تغییر: %s"
+msgstr ""
+"%s\n"
+"اندازه: %s\n"
+"آخرین تغییر: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:561
 msgid "_Empty Trash"
@@ -1098,13 +1134,18 @@ msgid ""
 "Removable Volume\n"
 "Mounted in \"%s\"\n"
 "%s left (%s total)"
-msgstr "ابزار قابل حمل\nسوار شده در \"%s\"\n%s حجم باقی مانده(%s در کل)"
+msgstr ""
+"ابزار قابل حمل\n"
+"سوار شده در \"%s\"\n"
+"%s حجم باقی مانده(%s در کل)"
 
 #: ../src/xfdesktop-volume-icon.c:487
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
-msgstr "ابزار قابل حمل\nهنوز سوار نشده است"
+msgstr ""
+"ابزار قابل حمل\n"
+"هنوز سوار نشده است"
 
 #: ../src/xfdesktop-volume-icon.c:516 ../src/xfdesktop-volume-icon.c:562
 #, c-format
@@ -1136,6 +1177,6 @@ msgstr "پیاده کردن ابزار"
 msgid "_Mount Volume"
 msgstr "سوار کردن ابزار"
 
-#: ../src/xfdesktop-window-icon.c:191
+#: ../src/xfdesktop-window-icon.c:193
 msgid "_Window Actions"
 msgstr "اقدامات پنجره"
