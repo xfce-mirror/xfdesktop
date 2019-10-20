@@ -1,26 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Balázs Meskó <meskobalazs@gmail.com>, 2017-2018
-# Benedek Imre <nucleo@indamail.hu>, 2013-2014
-# Egmont Koblinger <egmont@uhulinux.hu>, 2003
-# Gabor Kelemen <kelemeng at gnome dot hu>, 2009-2010,2012
-# Gábor P., 2019
-# gyeben <gyonkibendeguz@gmail.com>, 2016
-# gyeben <gyonkibendeguz@gmail.com>, 2013
-# kelemeng <kelemeng@ubuntu.com>, 2013
-# László Stygár, 2017
-# Somogyi Peter <jerry@gnu>, 2003
+# Xfce Bot <transifex@xfce.org>, 2019
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Xfdesktop\n"
+"Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-20 00:33+0200\n"
-"PO-Revision-Date: 2019-05-28 16:28+0000\n"
-"Last-Translator: Gábor P.\n"
-"Language-Team: Hungarian (http://www.transifex.com/xfce/xfdesktop/language/hu/)\n"
+"POT-Creation-Date: 2019-10-20 18:40+0200\n"
+"PO-Revision-Date: 2019-10-20 16:40+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>, 2019\n"
+"Language-Team: Hungarian (https://www.transifex.com/xfce/teams/16840/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -63,7 +57,10 @@ msgid ""
 "<b>%s</b>\n"
 "Type: %s\n"
 "Size: %s"
-msgstr "<b>%s</b>\nTípus: %s\nMéret: %s"
+msgstr ""
+"<b>%s</b>\n"
+"Típus: %s\n"
+"Méret: %s"
 
 #: ../settings/main.c:732
 #, c-format
@@ -77,7 +74,8 @@ msgstr "Háttérkép a %d monitorhoz"
 
 #: ../settings/main.c:741
 msgid "Move this dialog to the display you want to edit the settings for."
-msgstr "Párbeszédablak mozgatása arra a képernyőre, amelyet be szeretne állítani."
+msgstr ""
+"Párbeszédablak mozgatása arra a képernyőre, amelyet be szeretne állítani."
 
 #: ../settings/main.c:748
 #, c-format
@@ -93,7 +91,9 @@ msgstr "Háttérkép ehhez: %s, a(z) %d. monitoron"
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
-msgstr "Párbeszédablak mozgatása arra a képernyőre és munkaterületre, amelyet be szeretne állítani."
+msgstr ""
+"Párbeszédablak mozgatása arra a képernyőre és munkaterületre, amelyet be "
+"szeretne állítani."
 
 #. Single monitor and single workspace
 #: ../settings/main.c:767
@@ -109,7 +109,9 @@ msgstr "Háttérkép ehhez: %s"
 
 #: ../settings/main.c:778
 msgid "Move this dialog to the workspace you want to edit the settings for."
-msgstr "Húzza ezt a párbeszédablakot arra a munkaterületre, amelyiket be szeretné állítani."
+msgstr ""
+"Húzza ezt a párbeszédablakot arra a munkaterületre, amelyiket be szeretné "
+"állítani."
 
 #: ../settings/main.c:1198
 msgid "Image selection is unavailable while the image style is set to None."
@@ -125,7 +127,9 @@ msgstr "Összekapcsolt képernyők"
 msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
-msgstr "Szeretné elrendezni az összes létező\nikont a kiválasztott tájolásnak megfelelően?"
+msgstr ""
+"Szeretné elrendezni az összes létező\n"
+"ikont a kiválasztott tájolásnak megfelelően?"
 
 #: ../settings/main.c:1749
 msgid "Arrange icons"
@@ -140,28 +144,29 @@ msgstr "„%s” nem indítható:"
 
 #: ../settings/main.c:1758 ../src/xfdesktop-file-icon-manager.c:798
 #: ../src/xfdesktop-file-icon-manager.c:1100
-#: ../src/xfdesktop-file-icon-manager.c:1354 ../src/xfdesktop-file-utils.c:671
-#: ../src/xfdesktop-file-utils.c:1203 ../src/xfdesktop-file-utils.c:1281
-#: ../src/xfdesktop-file-utils.c:1305 ../src/xfdesktop-file-utils.c:1367
+#: ../src/xfdesktop-file-icon-manager.c:1354 ../src/xfdesktop-file-utils.c:683
+#: ../src/xfdesktop-file-utils.c:1217 ../src/xfdesktop-file-utils.c:1295
+#: ../src/xfdesktop-file-utils.c:1319 ../src/xfdesktop-file-utils.c:1381
 msgid "Launch Error"
 msgstr "Indítási hiba"
 
-#: ../settings/main.c:1760 ../src/xfdesktop-file-icon-manager.c:560
+#: ../settings/main.c:1760 ../settings/xfdesktop-settings-ui.glade.h:21
+#: ../src/xfdesktop-file-icon-manager.c:560
 #: ../src/xfdesktop-file-icon-manager.c:579
 #: ../src/xfdesktop-file-icon-manager.c:664
 #: ../src/xfdesktop-file-icon-manager.c:800
 #: ../src/xfdesktop-file-icon-manager.c:1104
 #: ../src/xfdesktop-file-icon-manager.c:1356
-#: ../src/xfdesktop-file-icon-manager.c:2938 ../src/xfdesktop-file-utils.c:674
-#: ../src/xfdesktop-file-utils.c:693 ../src/xfdesktop-file-utils.c:747
-#: ../src/xfdesktop-file-utils.c:811 ../src/xfdesktop-file-utils.c:872
-#: ../src/xfdesktop-file-utils.c:933 ../src/xfdesktop-file-utils.c:981
-#: ../src/xfdesktop-file-utils.c:1036 ../src/xfdesktop-file-utils.c:1094
-#: ../src/xfdesktop-file-utils.c:1146 ../src/xfdesktop-file-utils.c:1207
-#: ../src/xfdesktop-file-utils.c:1283 ../src/xfdesktop-file-utils.c:1309
-#: ../src/xfdesktop-file-utils.c:1371 ../src/xfdesktop-file-utils.c:1430
-#: ../src/xfdesktop-file-utils.c:1446 ../src/xfdesktop-file-utils.c:1508
-#: ../src/xfdesktop-file-utils.c:1526 ../src/xfdesktop-volume-icon.c:523
+#: ../src/xfdesktop-file-icon-manager.c:2938 ../src/xfdesktop-file-utils.c:686
+#: ../src/xfdesktop-file-utils.c:706 ../src/xfdesktop-file-utils.c:761
+#: ../src/xfdesktop-file-utils.c:825 ../src/xfdesktop-file-utils.c:886
+#: ../src/xfdesktop-file-utils.c:947 ../src/xfdesktop-file-utils.c:995
+#: ../src/xfdesktop-file-utils.c:1050 ../src/xfdesktop-file-utils.c:1108
+#: ../src/xfdesktop-file-utils.c:1160 ../src/xfdesktop-file-utils.c:1221
+#: ../src/xfdesktop-file-utils.c:1297 ../src/xfdesktop-file-utils.c:1323
+#: ../src/xfdesktop-file-utils.c:1385 ../src/xfdesktop-file-utils.c:1444
+#: ../src/xfdesktop-file-utils.c:1460 ../src/xfdesktop-file-utils.c:1522
+#: ../src/xfdesktop-file-utils.c:1540 ../src/xfdesktop-volume-icon.c:523
 #: ../src/xfdesktop-volume-icon.c:569 ../src/xfdesktop-volume-icon.c:605
 msgid "_Close"
 msgstr "_Bezár"
@@ -187,7 +192,7 @@ msgstr "FOGLALATAZONOSÍTÓ"
 msgid "Version information"
 msgstr "Verzióinformációk"
 
-#: ../settings/main.c:2130 ../src/xfdesktop-application.c:836
+#: ../settings/main.c:2130 ../src/xfdesktop-application.c:842
 msgid "Enable debug messages"
 msgstr "Hibakeresési üzenetek engedélyezése"
 
@@ -369,7 +374,9 @@ msgstr "Véletlen so_rrend"
 msgid ""
 "Randomly selects another image from the same directory when the wallpaper is"
 " to cycle."
-msgstr "Véletlenszerűen választ egy másik képet ugyanabból a könyvtárból, ha a háttérkép váltakozóra van állítva."
+msgstr ""
+"Véletlenszerűen választ egy másik képet ugyanabból a könyvtárból, ha a "
+"háttérkép váltakozóra van állítva."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:1
 msgid "Left"
@@ -436,120 +443,117 @@ msgid "Bottom Right Horizontal"
 msgstr "Jobb alsó vízszintes"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:20
+msgid "_Help"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:22
 msgid "_Background"
 msgstr "Hátté_r"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:21
+#: ../settings/xfdesktop-settings-ui.glade.h:23
 msgid "Include applications menu on _desktop right click"
 msgstr "Alkalmazások m_enü megjelenítése az asztalon jobb kattintásra"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:22
+#: ../settings/xfdesktop-settings-ui.glade.h:24
 msgid "_Button:"
 msgstr "G_omb:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:23
+#: ../settings/xfdesktop-settings-ui.glade.h:25
 msgid "Mo_difier:"
 msgstr "Mó_dosító:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:24
+#: ../settings/xfdesktop-settings-ui.glade.h:26
 msgid "Show _application icons in menu"
 msgstr "Alkalma_zásikonok megjelenítése a menüben"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:25
+#: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "_Edit desktop menu"
 msgstr "As_ztali menü szerkesztése"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:26
+#: ../settings/xfdesktop-settings-ui.glade.h:28
 msgid "<b>Desktop Menu</b>"
 msgstr "<b>Asztali menü</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:27
+#: ../settings/xfdesktop-settings-ui.glade.h:29
 msgid "Show _window list menu on desktop middle click"
 msgstr "Ablaklista me_nü megjelenítése az asztalon középső kattintásra"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:28
+#: ../settings/xfdesktop-settings-ui.glade.h:30
 msgid "B_utton:"
 msgstr "_Gomb:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:29
+#: ../settings/xfdesktop-settings-ui.glade.h:31
 msgid "Modi_fier:"
 msgstr "Mód_osító:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:30
+#: ../settings/xfdesktop-settings-ui.glade.h:32
 msgid "Sh_ow application icons in menu"
 msgstr "_Alkalmazásikonok megjelenítése a menüben"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:31
+#: ../settings/xfdesktop-settings-ui.glade.h:33
 msgid "Show workspace _names in list"
 msgstr "M_unkaterület-nevek megjelenítése a listában"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:32
+#: ../settings/xfdesktop-settings-ui.glade.h:34
 msgid "Use _submenus for the windows in each workspace"
 msgstr "Almenük _használata az ablakokhoz minden munkaterületen"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:33
+#: ../settings/xfdesktop-settings-ui.glade.h:35
 msgid "Show s_ticky windows only in active workspace"
 msgstr "A min_dig látható ablakok megjelenítése csak az aktív munkaterületen"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:34
+#: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid "Show a_dd and remove workspace options in list"
-msgstr "Munkaterület hozzáa_dása és eltávolítása lehetőség megjelenítése a listában"
+msgstr ""
+"Munkaterület hozzáa_dása és eltávolítása lehetőség megjelenítése a listában"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:35
+#: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "<b>Window List Menu</b>"
 msgstr "<b>Ablaklista menü</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:36
+#: ../settings/xfdesktop-settings-ui.glade.h:38
 msgid "_Menus"
 msgstr "_Menük"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:37
+#: ../settings/xfdesktop-settings-ui.glade.h:39
 msgid "Icon _type:"
 msgstr "Ikon_típus:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:38
+#: ../settings/xfdesktop-settings-ui.glade.h:40
 msgid "Icon _size:"
 msgstr "Ikon_méret:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:39
+#: ../settings/xfdesktop-settings-ui.glade.h:41
 msgid "48"
 msgstr "48"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:40
+#: ../settings/xfdesktop-settings-ui.glade.h:42
 msgid "Icons _orientation:"
 msgstr "Ikonok _tájolása:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:41
+#: ../settings/xfdesktop-settings-ui.glade.h:43
 msgid "Show icons on primary display"
 msgstr "Ikonok megjelenítése az elsődleges kijelzőn"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:42
+#: ../settings/xfdesktop-settings-ui.glade.h:44
 msgid "Use custom _font size:"
 msgstr "_Egyéni betűméret használata:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:43
+#: ../settings/xfdesktop-settings-ui.glade.h:45
 msgid "12"
 msgstr "12"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:44
+#: ../settings/xfdesktop-settings-ui.glade.h:46
 msgid "Show icon tooltips. Size:"
 msgstr "Súgóbuborékok megjelenítése. Méret:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:45
+#: ../settings/xfdesktop-settings-ui.glade.h:47
 msgid "Size of the tooltip preview image."
 msgstr "A súgóbuborék előnézeti képének mérete."
 
-#: ../settings/xfdesktop-settings-ui.glade.h:46
+#: ../settings/xfdesktop-settings-ui.glade.h:48
 msgid "128"
 msgstr "128"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:47
-msgid "Show hidden files on the desktop"
-msgstr "Rejtett fájlok mutatása az asztalon"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:48
-msgid "Single _click to activate items"
-msgstr "_Elemek aktiválása egy kattintással"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:49
 msgid "Show t_humbnails"
@@ -559,17 +563,27 @@ msgstr "Bélyeg_képek megjelenítése"
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
-msgstr "Válassza ezt a lehetőséget a fájlok előnézetének megjelenítéséhez az asztalon automatikusan előállított bélyegképekként, ha lehetséges."
+msgstr ""
+"Válassza ezt a lehetőséget a fájlok előnézetének megjelenítéséhez az "
+"asztalon automatikusan előállított bélyegképekként, ha lehetséges."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:51
+msgid "Show hidden files on the desktop"
+msgstr "Rejtett fájlok mutatása az asztalon"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:52
+msgid "Single _click to activate items"
+msgstr "_Elemek aktiválása egy kattintással"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:53
 msgid "<b>Appearance</b>"
 msgstr "<b>Megjelenés</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:52
+#: ../settings/xfdesktop-settings-ui.glade.h:54
 msgid "<b>Default Icons</b>"
 msgstr "<b>Alapértelmezett ikonok</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:53
+#: ../settings/xfdesktop-settings-ui.glade.h:55
 msgid "_Icons"
 msgstr "I_konok"
 
@@ -587,7 +601,9 @@ msgstr "%d. munkaterület eltávolítása"
 msgid ""
 "Do you really want to remove workspace %d?\n"
 "Note: You are currently on workspace %d."
-msgstr "Valóban el akarja távolítani a %d. munkaterületet? Megjegyzés: Ön pillanatnyilag a %d. munkaterületen van."
+msgstr ""
+"Valóban el akarja távolítani a %d. munkaterületet? Megjegyzés: Ön "
+"pillanatnyilag a %d. munkaterületen van."
 
 #: ../src/windowlist.c:78
 #, c-format
@@ -599,7 +615,9 @@ msgstr "„%s” munkaterület eltávolítása"
 msgid ""
 "Do you really want to remove workspace '%s'?\n"
 "Note: You are currently on workspace '%s'."
-msgstr "Valóban el akarja távolítani a(z) „%s” munkaterületet?\nMegjegyzés: Ön pillanatnyilag a(z) „%s” munkaterületen van."
+msgstr ""
+"Valóban el akarja távolítani a(z) „%s” munkaterületet?\n"
+"Megjegyzés: Ön pillanatnyilag a(z) „%s” munkaterületen van."
 
 #. Popup a dialog box confirming that the user wants to remove a
 #. * workspace
@@ -630,83 +648,83 @@ msgstr "%d. munkat_erület eltávolítása"
 msgid "_Remove Workspace '%s'"
 msgstr "„%s” mu_nkaterület eltávolítása"
 
-#: ../src/xfdesktop-application.c:828
+#: ../src/xfdesktop-application.c:834
 msgid "Display version information"
 msgstr "Verzióinformációk megjelenítése"
 
-#: ../src/xfdesktop-application.c:829
+#: ../src/xfdesktop-application.c:835
 msgid "Reload all settings"
 msgstr "Minden beállítás újratöltése"
 
-#: ../src/xfdesktop-application.c:830
+#: ../src/xfdesktop-application.c:836
 msgid "Advance to the next wallpaper on the current workspace"
 msgstr "Váltás a következő háttérképre a jelenlegi munkaterületen"
 
-#: ../src/xfdesktop-application.c:831
+#: ../src/xfdesktop-application.c:837
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "A menü megjelenítése (az aktuális egérpozícióban)"
 
-#: ../src/xfdesktop-application.c:832
+#: ../src/xfdesktop-application.c:838
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "Az ablaklista megjelenítése (az aktuális egérpozícióban)"
 
-#: ../src/xfdesktop-application.c:834
+#: ../src/xfdesktop-application.c:840
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "Az asztalon lévő ikonok automatikus rendezése"
 
-#: ../src/xfdesktop-application.c:837
+#: ../src/xfdesktop-application.c:843
 msgid "Disable debug messages"
 msgstr "Hibakeresési üzenetek letiltása"
 
-#: ../src/xfdesktop-application.c:838
+#: ../src/xfdesktop-application.c:844
 msgid "Do not wait for a window manager on startup"
 msgstr "Ne várjon az ablakkezelőre indításkor"
 
-#: ../src/xfdesktop-application.c:839
+#: ../src/xfdesktop-application.c:845
 msgid "Cause xfdesktop to quit"
 msgstr "Az xfdesktop bezárása"
 
-#: ../src/xfdesktop-application.c:854
+#: ../src/xfdesktop-application.c:860
 #, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "A paraméterek feldolgozása meghiúsult: %s\n"
 
-#: ../src/xfdesktop-application.c:865
+#: ../src/xfdesktop-application.c:871
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Ez a(z) %s %s verziója, az Xfce %s környezetben.\n"
 
-#: ../src/xfdesktop-application.c:867
+#: ../src/xfdesktop-application.c:873
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Összeállítva a GTK+ %d.%d.%d, fut a Gtk+-%d.%d.%d változatával."
 
-#: ../src/xfdesktop-application.c:871
+#: ../src/xfdesktop-application.c:877
 #, c-format
 msgid "Build options:\n"
 msgstr "Összeállítási beállítások:\n"
 
-#: ../src/xfdesktop-application.c:872
+#: ../src/xfdesktop-application.c:878
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "Asztali menü: %s\n"
 
-#: ../src/xfdesktop-application.c:874 ../src/xfdesktop-application.c:881
-#: ../src/xfdesktop-application.c:888
+#: ../src/xfdesktop-application.c:880 ../src/xfdesktop-application.c:887
+#: ../src/xfdesktop-application.c:894
 msgid "enabled"
 msgstr "engedélyezve"
 
-#: ../src/xfdesktop-application.c:876 ../src/xfdesktop-application.c:883
-#: ../src/xfdesktop-application.c:890
+#: ../src/xfdesktop-application.c:882 ../src/xfdesktop-application.c:889
+#: ../src/xfdesktop-application.c:896
 msgid "disabled"
 msgstr "letiltva"
 
-#: ../src/xfdesktop-application.c:879
+#: ../src/xfdesktop-application.c:885
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "Asztali ikonok: %s\n"
 
-#: ../src/xfdesktop-application.c:886
+#: ../src/xfdesktop-application.c:892
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "Asztali fájlikonok: %s\n"
@@ -727,12 +745,12 @@ msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr "Már létezik ilyen nevű normál fájl. Törölje vagy nevezze át."
 
-#: ../src/xfdesktop-file-icon-manager.c:661 ../src/xfdesktop-file-utils.c:743
-#: ../src/xfdesktop-file-utils.c:807
+#: ../src/xfdesktop-file-icon-manager.c:661 ../src/xfdesktop-file-utils.c:757
+#: ../src/xfdesktop-file-utils.c:821
 msgid "Rename Error"
 msgstr "Átnevezési hiba"
 
-#: ../src/xfdesktop-file-icon-manager.c:662 ../src/xfdesktop-file-utils.c:808
+#: ../src/xfdesktop-file-icon-manager.c:662 ../src/xfdesktop-file-utils.c:822
 msgid "The files could not be renamed"
 msgstr "A fájlokat nem lehet átnevezni"
 
@@ -754,7 +772,9 @@ msgstr "Megnyitás ezzel: „%s”"
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
-msgstr "Nem indítható az „exo-desktop-item-edit”, amely szükséges a indítóikonok és hivatkozások létrehozásához az asztalon."
+msgstr ""
+"Nem indítható az „exo-desktop-item-edit”, amely szükséges a indítóikonok és "
+"hivatkozások létrehozásához az asztalon."
 
 #: ../src/xfdesktop-file-icon-manager.c:1423
 msgid "_Open all"
@@ -880,131 +900,135 @@ msgid "_Cancel"
 msgstr "_Mégse"
 
 #. TRANSLATORS: file was modified less than one day ago
-#: ../src/xfdesktop-file-utils.c:147
+#: ../src/xfdesktop-file-utils.c:159
 #, c-format
 msgid "Today at %X"
 msgstr "Ma: %X"
 
 #. TRANSLATORS: file was modified less than two days ago
-#: ../src/xfdesktop-file-utils.c:151
+#: ../src/xfdesktop-file-utils.c:163
 #, c-format
 msgid "Yesterday at %X"
 msgstr "Tegnap: %X"
 
 #. Days from last week
-#: ../src/xfdesktop-file-utils.c:156
+#: ../src/xfdesktop-file-utils.c:168
 #, c-format
 msgid "%A at %X"
 msgstr "%A: %X"
 
 #. Any other date
-#: ../src/xfdesktop-file-utils.c:159
+#: ../src/xfdesktop-file-utils.c:171
 #, c-format
 msgid "%x at %X"
 msgstr "%x: %X"
 
 #. the file_time is invalid
-#: ../src/xfdesktop-file-utils.c:169
+#: ../src/xfdesktop-file-utils.c:181
 msgid "Unknown"
 msgstr "Ismeretlen"
 
-#: ../src/xfdesktop-file-utils.c:672
+#: ../src/xfdesktop-file-utils.c:684
 msgid "The folder could not be opened"
 msgstr "A mappa nem nyitható meg"
 
-#: ../src/xfdesktop-file-utils.c:690
+#: ../src/xfdesktop-file-utils.c:703
 msgid "Error"
 msgstr "Hiba"
 
-#: ../src/xfdesktop-file-utils.c:691
+#: ../src/xfdesktop-file-utils.c:704
 msgid "The requested operation could not be completed"
 msgstr "A kért művelet nem hajtható végre"
 
-#: ../src/xfdesktop-file-utils.c:744
+#: ../src/xfdesktop-file-utils.c:758
 msgid "The file could not be renamed"
 msgstr "A fájl nem nevezhető át"
 
-#: ../src/xfdesktop-file-utils.c:745 ../src/xfdesktop-file-utils.c:809
-#: ../src/xfdesktop-file-utils.c:870 ../src/xfdesktop-file-utils.c:1034
-#: ../src/xfdesktop-file-utils.c:1092 ../src/xfdesktop-file-utils.c:1144
-#: ../src/xfdesktop-file-utils.c:1205 ../src/xfdesktop-file-utils.c:1307
-#: ../src/xfdesktop-file-utils.c:1369 ../src/xfdesktop-file-utils.c:1444
-#: ../src/xfdesktop-file-utils.c:1524
+#: ../src/xfdesktop-file-utils.c:759 ../src/xfdesktop-file-utils.c:823
+#: ../src/xfdesktop-file-utils.c:884 ../src/xfdesktop-file-utils.c:1048
+#: ../src/xfdesktop-file-utils.c:1106 ../src/xfdesktop-file-utils.c:1158
+#: ../src/xfdesktop-file-utils.c:1219 ../src/xfdesktop-file-utils.c:1321
+#: ../src/xfdesktop-file-utils.c:1383 ../src/xfdesktop-file-utils.c:1458
+#: ../src/xfdesktop-file-utils.c:1538
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
-msgstr "Ez a szolgáltatás egy fájlkezelő-szolgáltatás jelenlétét igényli (például a Thunar által biztosítottat)."
+msgstr ""
+"Ez a szolgáltatás egy fájlkezelő-szolgáltatás jelenlétét igényli (például a "
+"Thunar által biztosítottat)."
 
-#: ../src/xfdesktop-file-utils.c:868
+#: ../src/xfdesktop-file-utils.c:882
 msgid "Delete Error"
 msgstr "Törlési hiba"
 
-#: ../src/xfdesktop-file-utils.c:869
+#: ../src/xfdesktop-file-utils.c:883
 msgid "The selected files could not be deleted"
 msgstr "A kiválasztott fájlok nem törölhetők"
 
-#: ../src/xfdesktop-file-utils.c:929 ../src/xfdesktop-file-utils.c:977
+#: ../src/xfdesktop-file-utils.c:943 ../src/xfdesktop-file-utils.c:991
 msgid "Trash Error"
 msgstr "Kuka hiba"
 
-#: ../src/xfdesktop-file-utils.c:930
+#: ../src/xfdesktop-file-utils.c:944
 msgid "The selected files could not be moved to the trash"
 msgstr "A kiválasztott fájlok nem helyezhetők át a Kukába"
 
-#: ../src/xfdesktop-file-utils.c:931 ../src/xfdesktop-file-utils.c:979
+#: ../src/xfdesktop-file-utils.c:945 ../src/xfdesktop-file-utils.c:993
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
-msgstr "Ez a szolgáltatás egy kukaszolgáltatás jelenlétét igényli (például a Thunar által biztosítottat)."
+msgstr ""
+"Ez a szolgáltatás egy kukaszolgáltatás jelenlétét igényli (például a Thunar "
+"által biztosítottat)."
 
-#: ../src/xfdesktop-file-utils.c:978
+#: ../src/xfdesktop-file-utils.c:992
 msgid "Could not empty the trash"
 msgstr "A Kuka nem üríthető"
 
-#: ../src/xfdesktop-file-utils.c:1032
+#: ../src/xfdesktop-file-utils.c:1046
 msgid "Create File Error"
 msgstr "Fájllétrehozási hiba"
 
-#: ../src/xfdesktop-file-utils.c:1033
+#: ../src/xfdesktop-file-utils.c:1047
 msgid "Could not create a new file"
 msgstr "Nem hozható létre új fájl"
 
-#: ../src/xfdesktop-file-utils.c:1090
+#: ../src/xfdesktop-file-utils.c:1104
 msgid "Create Document Error"
 msgstr "Dokumentum-létrehozási hiba"
 
-#: ../src/xfdesktop-file-utils.c:1091
+#: ../src/xfdesktop-file-utils.c:1105
 msgid "Could not create a new document from the template"
 msgstr "Nem hozható létre dokumentum a sablonból"
 
-#: ../src/xfdesktop-file-utils.c:1142
+#: ../src/xfdesktop-file-utils.c:1156
 msgid "File Properties Error"
 msgstr "Fájltulajdonságok-hiba"
 
-#: ../src/xfdesktop-file-utils.c:1143
+#: ../src/xfdesktop-file-utils.c:1157
 msgid "The file properties dialog could not be opened"
 msgstr "A fájl tulajdonságai ablak nem nyitható meg"
 
-#: ../src/xfdesktop-file-utils.c:1204
+#: ../src/xfdesktop-file-utils.c:1218
 msgid "The file could not be opened"
 msgstr "A fájl nem nyitható meg"
 
-#: ../src/xfdesktop-file-utils.c:1278 ../src/xfdesktop-file-utils.c:1302
+#: ../src/xfdesktop-file-utils.c:1292 ../src/xfdesktop-file-utils.c:1316
 #, c-format
 msgid "Failed to run \"%s\""
 msgstr "„%s” futtatása meghiúsult"
 
-#: ../src/xfdesktop-file-utils.c:1368
+#: ../src/xfdesktop-file-utils.c:1382
 msgid "The application chooser could not be opened"
 msgstr "Az alkalmazásválasztó nem nyitható meg"
 
-#: ../src/xfdesktop-file-utils.c:1427 ../src/xfdesktop-file-utils.c:1442
-#: ../src/xfdesktop-file-utils.c:1505 ../src/xfdesktop-file-utils.c:1522
+#: ../src/xfdesktop-file-utils.c:1441 ../src/xfdesktop-file-utils.c:1456
+#: ../src/xfdesktop-file-utils.c:1519 ../src/xfdesktop-file-utils.c:1536
 msgid "Transfer Error"
 msgstr "Átviteli hiba"
 
-#: ../src/xfdesktop-file-utils.c:1428 ../src/xfdesktop-file-utils.c:1443
-#: ../src/xfdesktop-file-utils.c:1506 ../src/xfdesktop-file-utils.c:1523
+#: ../src/xfdesktop-file-utils.c:1442 ../src/xfdesktop-file-utils.c:1457
+#: ../src/xfdesktop-file-utils.c:1520 ../src/xfdesktop-file-utils.c:1537
 msgid "The file transfer could not be performed"
 msgstr "A fájlátvitel nem hajtható végre"
 
@@ -1019,7 +1043,9 @@ msgstr "Eszköz leválasztása"
 msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the"
 " media or disconnect the drive"
-msgstr "A(z) „%s” eszköz leválasztása a rendszerről. Ne távolítsa el az adathordozót, és ne kapcsolja le a meghajtót"
+msgstr ""
+"A(z) „%s” eszköz leválasztása a rendszerről. Ne távolítsa el az "
+"adathordozót, és ne kapcsolja le a meghajtót"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:137 ../src/xfdesktop-notify.c:322
@@ -1032,7 +1058,9 @@ msgstr "Adatok eszközre írása"
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be"
 " removed. Please do not remove the media or disconnect the drive"
-msgstr "Adatokat kell a(z) „%s” eszközre írni annak eltávolítása előtt. Ne távolítsa el az adathordozót, és ne kapcsolja le a meghajtót"
+msgstr ""
+"Adatokat kell a(z) „%s” eszközre írni annak eltávolítása előtt. Ne távolítsa"
+" el az adathordozót, és ne kapcsolja le a meghajtót"
 
 #: ../src/xfdesktop-notify.c:221
 msgid "Unmount Finished"
@@ -1058,13 +1086,14 @@ msgstr "A(z) „%s” eszköz kiadása. Ez eltarthat egy ideig"
 msgid "Eject Finished"
 msgstr "Kiadva"
 
-#: ../src/xfdesktop-regular-file-icon.c:796
+#: ../src/xfdesktop-regular-file-icon.c:817
 #, c-format
 msgid ""
+"Name: %s\n"
 "Type: %s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr "Típus: %s\nMéret: %s\nUtolsó módosítás: %s"
+msgstr ""
 
 #: ../src/xfdesktop-special-file-icon.c:294
 #: ../src/xfdesktop-special-file-icon.c:476
@@ -1090,7 +1119,10 @@ msgid ""
 "%s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr "%s\nMéret: %s\nUtolsó módosítás: %s"
+msgstr ""
+"%s\n"
+"Méret: %s\n"
+"Utolsó módosítás: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:561
 msgid "_Empty Trash"
@@ -1102,13 +1134,18 @@ msgid ""
 "Removable Volume\n"
 "Mounted in \"%s\"\n"
 "%s left (%s total)"
-msgstr "Cserélhető kötet\nCsatolási pont: %s\n%s elérhető (összesen %s)"
+msgstr ""
+"Cserélhető kötet\n"
+"Csatolási pont: %s\n"
+"%s elérhető (összesen %s)"
 
 #: ../src/xfdesktop-volume-icon.c:487
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
-msgstr "Cserélhető kötet\nMég nincs csatolva"
+msgstr ""
+"Cserélhető kötet\n"
+"Még nincs csatolva"
 
 #: ../src/xfdesktop-volume-icon.c:516 ../src/xfdesktop-volume-icon.c:562
 #, c-format
@@ -1140,6 +1177,6 @@ msgstr "Kötet _leválasztása"
 msgid "_Mount Volume"
 msgstr "Kötet _csatolása"
 
-#: ../src/xfdesktop-window-icon.c:191
+#: ../src/xfdesktop-window-icon.c:193
 msgid "_Window Actions"
 msgstr "_Ablakműveletek"
