@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-01 06:32+0200\n"
-"PO-Revision-Date: 2019-09-20 20:15+0000\n"
-"Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
+"POT-Creation-Date: 2019-09-26 06:31+0200\n"
+"PO-Revision-Date: 2019-10-21 15:12+0000\n"
+"Last-Translator: Slavko <linux@slavino.sk>\n"
 "Language-Team: Slovak (http://www.transifex.com/xfce/xfdesktop/language/sk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -183,7 +183,7 @@ msgstr "ID SOKETU"
 msgid "Version information"
 msgstr "Informácie o verzii"
 
-#: ../settings/main.c:2130 ../src/xfdesktop-application.c:836
+#: ../settings/main.c:2130 ../src/xfdesktop-application.c:842
 msgid "Enable debug messages"
 msgstr "Zapnúť ladiace správy"
 
@@ -401,35 +401,35 @@ msgstr "Ikony súborov a spúšťačov"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:10
 msgid "Top Left Vertical"
-msgstr ""
+msgstr "Vľavo hore zvislo"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:11
 msgid "Top Left Horizontal"
-msgstr ""
+msgstr "Vľavo hore zvislo"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:12
 msgid "Top Right Vertical"
-msgstr ""
+msgstr "Vpravo hore zvislo"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:13
 msgid "Top Right Horizontal"
-msgstr ""
+msgstr "Vpravo hore vodorovne"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:14
 msgid "Bottom Left Vertical"
-msgstr ""
+msgstr "Vľavo dole zvislo"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:15
 msgid "Bottom Left Horizontal"
-msgstr ""
+msgstr "Vľavo dole vodorovne"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:16
 msgid "Bottom Right Vertical"
-msgstr ""
+msgstr "Vpravo dole zvislo"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:17
 msgid "Bottom Right Horizontal"
-msgstr ""
+msgstr "Vpravo dole vodorovne"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:20
 msgid "_Help"
@@ -630,83 +630,83 @@ msgstr "_Odstrániť virtuálnu plochu %d"
 msgid "_Remove Workspace '%s'"
 msgstr "_Odstrániť virtuálnu plochu '%s'"
 
-#: ../src/xfdesktop-application.c:828
+#: ../src/xfdesktop-application.c:834
 msgid "Display version information"
 msgstr "Zobrazí informácie o verzii"
 
-#: ../src/xfdesktop-application.c:829
+#: ../src/xfdesktop-application.c:835
 msgid "Reload all settings"
 msgstr "Obnoviť všetky nastavenia"
 
-#: ../src/xfdesktop-application.c:830
+#: ../src/xfdesktop-application.c:836
 msgid "Advance to the next wallpaper on the current workspace"
 msgstr "Postúpiť na ďalšiu tapetu aktuálnej pracovnej plochy"
 
-#: ../src/xfdesktop-application.c:831
+#: ../src/xfdesktop-application.c:837
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "Otvoriť menu (na aktuálnej pozícii ukazovateľa myši)"
 
-#: ../src/xfdesktop-application.c:832
+#: ../src/xfdesktop-application.c:838
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "Otvoriť zoznam okien (na aktuálnej pozícii ukazovateľa myši)"
 
-#: ../src/xfdesktop-application.c:834
+#: ../src/xfdesktop-application.c:840
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "Automaticky usporiadať všetky ikony na ploche"
 
-#: ../src/xfdesktop-application.c:837
+#: ../src/xfdesktop-application.c:843
 msgid "Disable debug messages"
 msgstr "Vypnúť ladiace správy"
 
-#: ../src/xfdesktop-application.c:838
+#: ../src/xfdesktop-application.c:844
 msgid "Do not wait for a window manager on startup"
 msgstr "Nečakať na správcu okien pri štarte"
 
-#: ../src/xfdesktop-application.c:839
+#: ../src/xfdesktop-application.c:845
 msgid "Cause xfdesktop to quit"
 msgstr "Ukončí správcu plochy xfdesktop"
 
-#: ../src/xfdesktop-application.c:854
+#: ../src/xfdesktop-application.c:860
 #, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "Zlyhalo spracovanie argumentov: %s\n"
 
-#: ../src/xfdesktop-application.c:865
+#: ../src/xfdesktop-application.c:871
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Toto je %s verzie %s, bežiace na Xfce %s.\n"
 
-#: ../src/xfdesktop-application.c:867
+#: ../src/xfdesktop-application.c:873
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Zostavené pomocou GTK+ %d.%d.%d, linkované s GTK+ %d.%d.%d."
 
-#: ../src/xfdesktop-application.c:871
+#: ../src/xfdesktop-application.c:877
 #, c-format
 msgid "Build options:\n"
 msgstr "Voľby zostavenia:\n"
 
-#: ../src/xfdesktop-application.c:872
+#: ../src/xfdesktop-application.c:878
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Ponuka pracovnej plochy:        %s\n"
 
-#: ../src/xfdesktop-application.c:874 ../src/xfdesktop-application.c:881
-#: ../src/xfdesktop-application.c:888
+#: ../src/xfdesktop-application.c:880 ../src/xfdesktop-application.c:887
+#: ../src/xfdesktop-application.c:894
 msgid "enabled"
 msgstr "zapnuté"
 
-#: ../src/xfdesktop-application.c:876 ../src/xfdesktop-application.c:883
-#: ../src/xfdesktop-application.c:890
+#: ../src/xfdesktop-application.c:882 ../src/xfdesktop-application.c:889
+#: ../src/xfdesktop-application.c:896
 msgid "disabled"
 msgstr "vypnuté"
 
-#: ../src/xfdesktop-application.c:879
+#: ../src/xfdesktop-application.c:885
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Ikony pracovnej plochy:       %s\n"
 
-#: ../src/xfdesktop-application.c:886
+#: ../src/xfdesktop-application.c:892
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Ikony súborov pracovnej plochy:  %s\n"
@@ -1061,10 +1061,11 @@ msgstr "Vysunutie dokončené"
 #: ../src/xfdesktop-regular-file-icon.c:817
 #, c-format
 msgid ""
+"Name: %s\n"
 "Type: %s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr "Typ: %s\nVeľkosť: %s\nPosledná zmena: %s"
+msgstr "Názov: %s\nTyp: %s\nVeľkosť: %s\nPosledná zmena: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:294
 #: ../src/xfdesktop-special-file-icon.c:476
