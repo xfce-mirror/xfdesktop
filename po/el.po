@@ -5,15 +5,16 @@
 # 
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2019
+# Πέτρος Σαμαράς <psamaras1@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-20 18:40+0200\n"
+"POT-Creation-Date: 2019-10-21 00:36+0200\n"
 "PO-Revision-Date: 2019-10-20 16:40+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>, 2019\n"
+"Last-Translator: Πέτρος Σαμαράς <psamaras1@gmail.com>, 2019\n"
 "Language-Team: Greek (https://www.transifex.com/xfce/teams/16840/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -131,10 +132,12 @@ msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
 msgstr ""
+"Θα θέλατε να τακτοποιήσετε όλα τα υπάρχοντα\n"
+"εικονίδια σύμφωνα με την επιλεγμένη διάταξη;"
 
 #: ../settings/main.c:1749
 msgid "Arrange icons"
-msgstr ""
+msgstr "Τακτοποίηση εικονιδίων"
 
 #. printf is to be translator-friendly
 #: ../settings/main.c:1757 ../src/xfdesktop-file-icon-manager.c:796
@@ -415,39 +418,39 @@ msgstr "Εικονίδια αρχείων/συντομεύσεων"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:10
 msgid "Top Left Vertical"
-msgstr ""
+msgstr "Επάνω Αριστερά Κάθετα"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:11
 msgid "Top Left Horizontal"
-msgstr ""
+msgstr "Επάνω Αριστερά Οριζόντια"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:12
 msgid "Top Right Vertical"
-msgstr ""
+msgstr "Επάνω Δεξιά Κάθετα"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:13
 msgid "Top Right Horizontal"
-msgstr ""
+msgstr "Επάνω Δεξιά Οριζόντια"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:14
 msgid "Bottom Left Vertical"
-msgstr ""
+msgstr "Κάτω Αριστερά Κάθετα"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:15
 msgid "Bottom Left Horizontal"
-msgstr ""
+msgstr "Κάτω Αριστερά Οριζόντια"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:16
 msgid "Bottom Right Vertical"
-msgstr ""
+msgstr "Κάτω Δεξιά Κάθετα"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:17
 msgid "Bottom Right Horizontal"
-msgstr ""
+msgstr "Κάτω Δεξιά Οριζόντια"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:20
 msgid "_Help"
-msgstr ""
+msgstr "_Βοήθεια"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:22
 msgid "_Background"
@@ -528,15 +531,15 @@ msgstr "Μέγεθος ε_ικονιδίου:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:41
 msgid "48"
-msgstr ""
+msgstr "48"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:42
 msgid "Icons _orientation:"
-msgstr ""
+msgstr "Διάτα_ξη εικονιδίων:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:43
 msgid "Show icons on primary display"
-msgstr ""
+msgstr "Εμφάνιση εικονιδίων στην κύρια οθόνη"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:44
 msgid "Use custom _font size:"
@@ -544,7 +547,7 @@ msgstr "Χρήση προσαρμοσμένου μεγέ_θους γραμματ
 
 #: ../settings/xfdesktop-settings-ui.glade.h:45
 msgid "12"
-msgstr ""
+msgstr "12"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:46
 msgid "Show icon tooltips. Size:"
@@ -556,7 +559,7 @@ msgstr "Μέγεθος ετικέτας προεπισκόπησης εικόν�
 
 #: ../settings/xfdesktop-settings-ui.glade.h:48
 msgid "128"
-msgstr ""
+msgstr "128"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:49
 msgid "Show t_humbnails"
@@ -873,7 +876,7 @@ msgstr "_Τακτοποίηση Εικονιδίων στην Επιφάνεια
 
 #: ../src/xfdesktop-file-icon-manager.c:1858
 msgid "_Next Background"
-msgstr ""
+msgstr "Ε_πόμενο Παρασκήνιο"
 
 #: ../src/xfdesktop-file-icon-manager.c:1868
 msgid "Desktop _Settings..."
@@ -1104,6 +1107,10 @@ msgid ""
 "Size: %s\n"
 "Last modified: %s"
 msgstr ""
+"Όνομα: %s\n"
+"Τύπος: %s\n"
+"Μέγεθος: %s\n"
+"Τελευταία τροποποίηση: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:294
 #: ../src/xfdesktop-special-file-icon.c:476
