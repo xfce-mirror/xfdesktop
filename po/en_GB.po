@@ -5,15 +5,16 @@
 # 
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2019
+# Jason Collins <JasonPCollins@protonmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-20 18:40+0200\n"
+"POT-Creation-Date: 2019-10-21 00:36+0200\n"
 "PO-Revision-Date: 2019-10-20 16:40+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>, 2019\n"
+"Last-Translator: Jason Collins <JasonPCollins@protonmail.com>, 2019\n"
 "Language-Team: English (United Kingdom) (https://www.transifex.com/xfce/teams/16840/en_GB/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -40,15 +41,15 @@ msgstr "Removable Devices"
 
 #: ../settings/main.c:427
 msgid "Network Shares"
-msgstr ""
+msgstr "Network Shares"
 
 #: ../settings/main.c:429
 msgid "Disks and Drives"
-msgstr ""
+msgstr "Disks and Drives"
 
 #: ../settings/main.c:431
 msgid "Other Devices"
-msgstr ""
+msgstr "Other Devices"
 
 #. Display the file name, file type, and file size in the tooltip.
 #: ../settings/main.c:545
@@ -74,7 +75,7 @@ msgstr "Wallpaper for Monitor %d"
 
 #: ../settings/main.c:741
 msgid "Move this dialog to the display you want to edit the settings for."
-msgstr ""
+msgstr "Move this dialogue to the display you want to edit the settings for."
 
 #: ../settings/main.c:748
 #, c-format
@@ -91,6 +92,8 @@ msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr ""
+"Move this dialogue to the display and workspace you want to edit the "
+"settings for."
 
 #. Single monitor and single workspace
 #: ../settings/main.c:767
@@ -107,6 +110,7 @@ msgstr "Wallpaper for %s"
 #: ../settings/main.c:778
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr ""
+"Move this dialogue to the workspace you want to edit the settings for."
 
 #: ../settings/main.c:1198
 msgid "Image selection is unavailable while the image style is set to None."
@@ -123,10 +127,12 @@ msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
 msgstr ""
+"Would you like to arrange all existing\n"
+"icons according to the selected orientation?"
 
 #: ../settings/main.c:1749
 msgid "Arrange icons"
-msgstr ""
+msgstr "Arrange icons"
 
 #. printf is to be translator-friendly
 #: ../settings/main.c:1757 ../src/xfdesktop-file-icon-manager.c:796
@@ -171,7 +177,7 @@ msgstr "Image files"
 #. Change the title of the file chooser dialog
 #: ../settings/main.c:1923
 msgid "Select a Directory"
-msgstr ""
+msgstr "Select a Directory"
 
 #: ../settings/main.c:2128
 msgid "Settings manager socket"
@@ -187,7 +193,7 @@ msgstr "Version information"
 
 #: ../settings/main.c:2130 ../src/xfdesktop-application.c:842
 msgid "Enable debug messages"
-msgstr ""
+msgstr "Enable debug messages"
 
 #: ../settings/main.c:2158
 #, c-format
@@ -243,7 +249,7 @@ msgstr "Transparent"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
 msgid "Choose the folder to select wallpapers from."
-msgstr ""
+msgstr "Choose the folder to select wallpapers from."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
 msgid "St_yle:"
@@ -251,7 +257,7 @@ msgstr "St_yle:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
 msgid "Specify how the image will be resized to fit the screen."
-msgstr ""
+msgstr "Specify how the image will be resized to fit the screen."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
 #: ../settings/xfdesktop-settings-ui.glade.h:4
@@ -284,11 +290,13 @@ msgstr "Spanning Screens"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
 msgid "Specify the style of the color drawn behind the backdrop image."
-msgstr ""
+msgstr "Specify the style of the colour drawn behind the backdrop image."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
 msgstr ""
+"Specifies the solid colour, or the \"left\" or \"top\" colour of the "
+"gradient."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Select First Color"
@@ -296,7 +304,7 @@ msgstr "Select First Colour"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient."
-msgstr ""
+msgstr "Specifies the \"right\" or \"bottom\" colour of the gradient."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
 msgid "Select Second Color"
@@ -308,7 +316,7 @@ msgstr "Apply to all _workspaces"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
 msgid "_Folder:"
-msgstr ""
+msgstr "_Folder:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
 msgid "C_olor:"
@@ -316,48 +324,49 @@ msgstr "C_olour:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 msgid "Change the _background "
-msgstr ""
+msgstr "Change the _background "
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
 msgid ""
 "Automatically select a different background from the current directory."
 msgstr ""
+"Automatically select a different background from the current directory."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid "Specify how often the background will change."
-msgstr ""
+msgstr "Specify how often the background will change."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "in seconds:"
-msgstr ""
+msgstr "in seconds:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
 msgid "in minutes:"
-msgstr ""
+msgstr "in minutes:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
 msgid "in hours:"
-msgstr ""
+msgstr "in hours:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
 msgid "at start up"
-msgstr ""
+msgstr "at start up"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
 msgid "every hour"
-msgstr ""
+msgstr "every hour"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
 msgid "every day"
-msgstr ""
+msgstr "every day"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
 msgid "chronologically"
-msgstr ""
+msgstr "chronologically"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
 msgid "Amount of time before a different background is selected."
-msgstr ""
+msgstr "Amount of time before a different background is selected."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
 msgid "_Random Order"
@@ -368,6 +377,8 @@ msgid ""
 "Randomly selects another image from the same directory when the wallpaper is"
 " to cycle."
 msgstr ""
+"Randomly selects another image from the same directory when the wallpaper is"
+" to cycle."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:1
 msgid "Left"
@@ -403,39 +414,39 @@ msgstr "File/launcher icons"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:10
 msgid "Top Left Vertical"
-msgstr ""
+msgstr "Top Left Vertical"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:11
 msgid "Top Left Horizontal"
-msgstr ""
+msgstr "Top Left Horizontal"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:12
 msgid "Top Right Vertical"
-msgstr ""
+msgstr "Top Right Vertical"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:13
 msgid "Top Right Horizontal"
-msgstr ""
+msgstr "Top Right Horizontal"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:14
 msgid "Bottom Left Vertical"
-msgstr ""
+msgstr "Bottom Left Vertical"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:15
 msgid "Bottom Left Horizontal"
-msgstr ""
+msgstr "Bottom Left Horizontal"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:16
 msgid "Bottom Right Vertical"
-msgstr ""
+msgstr "Bottom Right Vertical"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:17
 msgid "Bottom Right Horizontal"
-msgstr ""
+msgstr "Bottom Right Horizontal"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:20
 msgid "_Help"
-msgstr ""
+msgstr "_Help"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:22
 msgid "_Background"
@@ -443,7 +454,7 @@ msgstr "_Background"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:23
 msgid "Include applications menu on _desktop right click"
-msgstr ""
+msgstr "Include applications menu on _desktop right click"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:24
 msgid "_Button:"
@@ -495,7 +506,7 @@ msgstr "Show s_ticky windows only in active workspace"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid "Show a_dd and remove workspace options in list"
-msgstr ""
+msgstr "Show a_dd and remove workspace options in list"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "<b>Window List Menu</b>"
@@ -515,15 +526,15 @@ msgstr "Icon _size:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:41
 msgid "48"
-msgstr ""
+msgstr "48"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:42
 msgid "Icons _orientation:"
-msgstr ""
+msgstr "Icons _orientation:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:43
 msgid "Show icons on primary display"
-msgstr ""
+msgstr "Show icons on primary display"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:44
 msgid "Use custom _font size:"
@@ -531,19 +542,19 @@ msgstr "Use custom _font size:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:45
 msgid "12"
-msgstr ""
+msgstr "12"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:46
 msgid "Show icon tooltips. Size:"
-msgstr ""
+msgstr "Show icon tooltips. Size:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:47
 msgid "Size of the tooltip preview image."
-msgstr ""
+msgstr "Size of the tooltip preview image."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:48
 msgid "128"
-msgstr ""
+msgstr "128"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:49
 msgid "Show t_humbnails"
@@ -559,7 +570,7 @@ msgstr ""
 
 #: ../settings/xfdesktop-settings-ui.glade.h:51
 msgid "Show hidden files on the desktop"
-msgstr ""
+msgstr "Show hidden files on the desktop"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:52
 msgid "Single _click to activate items"
@@ -592,11 +603,13 @@ msgid ""
 "Do you really want to remove workspace %d?\n"
 "Note: You are currently on workspace %d."
 msgstr ""
+"Do you really want to remove workspace %d?\n"
+"Note: You are currently on workspace %d."
 
 #: ../src/windowlist.c:78
 #, c-format
 msgid "Remove Workspace '%s'"
-msgstr ""
+msgstr "Remove Workspace '%s'"
 
 #: ../src/windowlist.c:79
 #, c-format
@@ -604,6 +617,8 @@ msgid ""
 "Do you really want to remove workspace '%s'?\n"
 "Note: You are currently on workspace '%s'."
 msgstr ""
+"Do you really want to remove workspace '%s'?\n"
+"Note: You are currently on workspace '%s'."
 
 #. Popup a dialog box confirming that the user wants to remove a
 #. * workspace
@@ -640,11 +655,11 @@ msgstr "Display version information"
 
 #: ../src/xfdesktop-application.c:835
 msgid "Reload all settings"
-msgstr ""
+msgstr "Reload all settings"
 
 #: ../src/xfdesktop-application.c:836
 msgid "Advance to the next wallpaper on the current workspace"
-msgstr ""
+msgstr "Advance to the next wallpaper on the current workspace"
 
 #: ../src/xfdesktop-application.c:837
 msgid "Pop up the menu (at the current mouse position)"
@@ -660,7 +675,7 @@ msgstr "Automatically arrange all the icons on the desktop"
 
 #: ../src/xfdesktop-application.c:843
 msgid "Disable debug messages"
-msgstr ""
+msgstr "Disable debug messages"
 
 #: ../src/xfdesktop-application.c:844
 msgid "Do not wait for a window manager on startup"
@@ -739,11 +754,11 @@ msgstr "Rename Error"
 
 #: ../src/xfdesktop-file-icon-manager.c:662 ../src/xfdesktop-file-utils.c:822
 msgid "The files could not be renamed"
-msgstr ""
+msgstr "The files could not be renamed"
 
 #: ../src/xfdesktop-file-icon-manager.c:663
 msgid "None of the icons selected support being renamed."
-msgstr ""
+msgstr "None of the icons selected support being renamed."
 
 #: ../src/xfdesktop-file-icon-manager.c:1025
 #, c-format
@@ -851,7 +866,7 @@ msgstr "Arrange Desktop _Icons"
 
 #: ../src/xfdesktop-file-icon-manager.c:1858
 msgid "_Next Background"
-msgstr ""
+msgstr "_Next Background"
 
 #: ../src/xfdesktop-file-icon-manager.c:1868
 msgid "Desktop _Settings..."
@@ -925,7 +940,7 @@ msgstr "Error"
 
 #: ../src/xfdesktop-file-utils.c:704
 msgid "The requested operation could not be completed"
-msgstr ""
+msgstr "The requested operation could not be completed"
 
 #: ../src/xfdesktop-file-utils.c:758
 msgid "The file could not be renamed"
@@ -1081,6 +1096,10 @@ msgid ""
 "Size: %s\n"
 "Last modified: %s"
 msgstr ""
+"Name: %s\n"
+"Type: %s\n"
+"Size: %s\n"
+"Last modified: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:294
 #: ../src/xfdesktop-special-file-icon.c:476
