@@ -1300,10 +1300,8 @@ xfdesktop_menu_create_menu_item_from_thunarx_menu_item (GObject *item)
                   "icon", &icon_str,
                   NULL);
 
-    if (icon_str != NULL) {
-        GIcon *icon = g_icon_new_for_string (icon_str, NULL);
-        img = gtk_image_new_from_gicon (icon, GTK_ICON_SIZE_MENU);
-    }
+    img = gtk_image_new_from_icon_name (icon_str == NULL ? "" : icon_str,
+                                        GTK_ICON_SIZE_MENU);
 
     mi = xfdesktop_menu_create_menu_item_with_mnemonic (label, img);
 
