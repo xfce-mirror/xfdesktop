@@ -15,13 +15,14 @@
 # mc <correomc2000-ing@yahoo.es>, 2013
 # prflr88 <prflr88@gmail.com>, 2013-2015
 # prflr88 <prflr88@gmail.com>, 2016-2017
+# Toni Estévez <toni.estevez@gmail.com>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-26 06:31+0200\n"
-"PO-Revision-Date: 2019-10-21 11:17+0000\n"
-"Last-Translator: Héctor M. Monacci <hector.monacci@gmail.com>\n"
+"PO-Revision-Date: 2019-11-17 16:43+0000\n"
+"Last-Translator: Toni Estévez <toni.estevez@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/xfce/xfdesktop/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -79,7 +80,7 @@ msgstr "Fondo de pantalla para el monitor %d"
 
 #: ../settings/main.c:741
 msgid "Move this dialog to the display you want to edit the settings for."
-msgstr "Mueva esta ventana a la pantalla cuya configuración quiera modificar."
+msgstr "Mueva este diálogo a la pantalla cuya configuración quiera modificar."
 
 #: ../settings/main.c:748
 #, c-format
@@ -95,13 +96,13 @@ msgstr "Fondo de pantalla para %s en el monitor %d"
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
-msgstr "Mueva este diálogo a la pantalla y área de trabajo cuya configuración desea modificar."
+msgstr "Mueva este diálogo a la pantalla y área de trabajo cuya configuración quiera modificar."
 
 #. Single monitor and single workspace
 #: ../settings/main.c:767
 #, c-format
 msgid "Wallpaper for my desktop"
-msgstr "Fondo de pantalla para mi Escritorio"
+msgstr "Fondo de pantalla para mi escritorio"
 
 #. Single monitor and per workspace wallpaper
 #: ../settings/main.c:773
@@ -111,7 +112,7 @@ msgstr "Fondo de pantalla para %s"
 
 #: ../settings/main.c:778
 msgid "Move this dialog to the workspace you want to edit the settings for."
-msgstr "Mueva este diálogo al área de trabajo que desea modificar su configuración."
+msgstr "Mueva este diálogo al área de trabajo cuya configuración quiera modificar."
 
 #: ../settings/main.c:1198
 msgid "Image selection is unavailable while the image style is set to None."
@@ -127,11 +128,11 @@ msgstr "Extensión de pantallas"
 msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
-msgstr "¿Desea organizar todos los iconos\nexistentes según la orientación seleccionada?"
+msgstr "¿Quiere organizar todos los iconos\nexistentes según la orientación seleccionada?"
 
 #: ../settings/main.c:1749
 msgid "Arrange icons"
-msgstr "Organizar iconos"
+msgstr "Organizar los iconos"
 
 #. printf is to be translator-friendly
 #: ../settings/main.c:1757 ../src/xfdesktop-file-icon-manager.c:796
@@ -176,15 +177,15 @@ msgstr "Archivos de imagen"
 #. Change the title of the file chooser dialog
 #: ../settings/main.c:1923
 msgid "Select a Directory"
-msgstr "Seleccione un directorio"
+msgstr "Seleccione una carpeta"
 
 #: ../settings/main.c:2128
 msgid "Settings manager socket"
-msgstr "Entrada de administración de configuración"
+msgstr "Socket del gestor de configuración"
 
 #: ../settings/main.c:2128
 msgid "SOCKET ID"
-msgstr "Id. de SOCKET"
+msgstr "Id. del SOCKET"
 
 #: ../settings/main.c:2129
 msgid "Version information"
@@ -192,12 +193,12 @@ msgstr "Información de la versión"
 
 #: ../settings/main.c:2130 ../src/xfdesktop-application.c:842
 msgid "Enable debug messages"
-msgstr "Activar mensajes de depuración"
+msgstr "Activar los mensajes de depuración"
 
 #: ../settings/main.c:2158
 #, c-format
 msgid "Type '%s --help' for usage."
-msgstr "Escriba «%s --help» para opciones de uso."
+msgstr "Escriba «%s --help» para las opciones de uso."
 
 #: ../settings/main.c:2170
 msgid "The Xfce development team. All rights reserved."
@@ -206,7 +207,7 @@ msgstr "El equipo de desarrollo de Xfce. Todos los derechos reservados."
 #: ../settings/main.c:2171
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr "Por favor, informe de errores a <%s>."
+msgstr "Informe de errores a <%s>."
 
 #: ../settings/main.c:2178
 msgid "Desktop Settings"
@@ -228,7 +229,7 @@ msgstr "Escritorio"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 #: ../settings/xfdesktop-settings-ui.glade.h:19
 msgid "Set desktop background and menu and icon behavior"
-msgstr "Configure el fondo de escritorio y el comportamiento de menús e iconos"
+msgstr "Configure el fondo de escritorio y el comportamiento del menú e y los iconos"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
 msgid "Solid color"
@@ -248,7 +249,7 @@ msgstr "Transparente"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
 msgid "Choose the folder to select wallpapers from."
-msgstr "Elija el directorio donde se seleccionarán los fondos de escritorio"
+msgstr "Elija la carpeta donde se seleccionarán los fondos de escritorio"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
 msgid "St_yle:"
@@ -297,7 +298,7 @@ msgstr "Especifica el color sólido o el color de la parte «izquierda» o «sup
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Select First Color"
-msgstr "Seleccionar primer color"
+msgstr "Seleccionar el primer color"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient."
@@ -305,7 +306,7 @@ msgstr "Especifica el color de la parte «derecha» o «inferior» del degradado
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
 msgid "Select Second Color"
-msgstr "Seleccionar segundo color"
+msgstr "Seleccionar el segundo color"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
 msgid "Apply to all _workspaces"
@@ -313,7 +314,7 @@ msgstr "Aplicar a todas las áreas de _trabajo"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
 msgid "_Folder:"
-msgstr "_Directorio:"
+msgstr "_Carpeta:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
 msgid "C_olor:"
@@ -321,16 +322,16 @@ msgstr "C_olor:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 msgid "Change the _background "
-msgstr "Cambie el _fondo de escritorio"
+msgstr "Cambiar el _fondo de escritorio"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
 msgid ""
 "Automatically select a different background from the current directory."
-msgstr "Automáticamente elegir un fondo de escritorio diferente desde el directorio actual."
+msgstr "Seleccionar automáticamente un fondo diferente de la carpeta actual."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid "Specify how often the background will change."
-msgstr "Especifique la frecuencia de cambio del fondo de escritorio."
+msgstr "Especifique la frecuencia con la que se cambiará el fondo."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "in seconds:"
@@ -362,17 +363,17 @@ msgstr "cronológicamente"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
 msgid "Amount of time before a different background is selected."
-msgstr "Cantidad de tiempo trascurrido antes del cambio de fondo de escritorio"
+msgstr "Tiempo antes de que se seleccione un fondo diferente."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
 msgid "_Random Order"
-msgstr "Orden _Aleatorio"
+msgstr "Orden _aleatorio"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
 msgid ""
 "Randomly selects another image from the same directory when the wallpaper is"
 " to cycle."
-msgstr "Aleatoriamente seleccione una imagen del mismo directorio para ser usada cíclicamente como fondo de escritorio"
+msgstr "Seleccionar aleatoriamente otra imagen de la misma carpeta cuando el fondo cambia cíclicamente."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:1
 msgid "Left"
@@ -400,11 +401,11 @@ msgstr "Control"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:8
 msgid "Minimized application icons"
-msgstr "Iconos de aplicaciones minimizadas"
+msgstr "Iconos de las aplicaciones minimizadas"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:9
 msgid "File/launcher icons"
-msgstr "Iconos de archivo/lanzador"
+msgstr "Iconos de lanzadores y archivos"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:10
 msgid "Top Left Vertical"
@@ -1150,4 +1151,4 @@ msgstr "_Montar volumen"
 
 #: ../src/xfdesktop-window-icon.c:193
 msgid "_Window Actions"
-msgstr "Acciones de _Ventanas"
+msgstr "Acciones de la _ventana"
