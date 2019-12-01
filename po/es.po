@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-26 06:31+0200\n"
-"PO-Revision-Date: 2019-11-30 23:09+0000\n"
+"PO-Revision-Date: 2019-12-01 09:30+0000\n"
 "Last-Translator: Toni Estévez <toni.estevez@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/xfce/xfdesktop/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -49,7 +49,7 @@ msgstr "Dispositivos extraíbles"
 
 #: ../settings/main.c:427
 msgid "Network Shares"
-msgstr "Recursos de red"
+msgstr "Recursos compartidos de red"
 
 #: ../settings/main.c:429
 msgid "Disks and Drives"
@@ -80,7 +80,7 @@ msgstr "Fondo de pantalla para el monitor %d"
 
 #: ../settings/main.c:741
 msgid "Move this dialog to the display you want to edit the settings for."
-msgstr "Mueva este diálogo a la pantalla cuya configuración quiera modificar."
+msgstr "Mueva este diálogo a la pantalla para la que quiera editar la configuración."
 
 #: ../settings/main.c:748
 #, c-format
@@ -96,7 +96,7 @@ msgstr "Fondo de pantalla para %s en el monitor %d"
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
-msgstr "Mueva este diálogo a la pantalla y área de trabajo cuya configuración quiera modificar."
+msgstr "Mueva este diálogo a la pantalla y al área de trabajo para los que quiera editar la configuración."
 
 #. Single monitor and single workspace
 #: ../settings/main.c:767
@@ -112,15 +112,15 @@ msgstr "Fondo de pantalla para %s"
 
 #: ../settings/main.c:778
 msgid "Move this dialog to the workspace you want to edit the settings for."
-msgstr "Mueva este diálogo al área de trabajo cuya configuración quiera modificar."
+msgstr "Mueva este diálogo al área de trabajo para la que quiera editar la configuración."
 
 #: ../settings/main.c:1198
 msgid "Image selection is unavailable while the image style is set to None."
-msgstr "La selección de imágenes estará desactivada mientras el estilo esté configurado como desactivado."
+msgstr "La selección de imagen no estará disponible mientras el estilo de imagen esté desactivado."
 
 #: ../settings/main.c:1575
 msgid "Spanning screens"
-msgstr "Extensión de pantallas"
+msgstr "Pantallas extendidas"
 
 #. TRANSLATORS: Please split the message in half with '\n' so the dialog will
 #. not be too wide.
@@ -198,7 +198,7 @@ msgstr "Activar los mensajes de depuración"
 #: ../settings/main.c:2158
 #, c-format
 msgid "Type '%s --help' for usage."
-msgstr "Escriba «%s --help» para las opciones de uso."
+msgstr "Escriba «%s --help» para ver las opciones de uso."
 
 #: ../settings/main.c:2170
 msgid "The Xfce development team. All rights reserved."
@@ -229,7 +229,7 @@ msgstr "Escritorio"
 #: ../settings/xfce-backdrop-settings.desktop.in.h:2
 #: ../settings/xfdesktop-settings-ui.glade.h:19
 msgid "Set desktop background and menu and icon behavior"
-msgstr "Configure el fondo de escritorio y el comportamiento del menú e y los iconos"
+msgstr "Configure el fondo del escritorio y el comportamiento del menú y los iconos"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
 msgid "Solid color"
@@ -249,7 +249,7 @@ msgstr "Transparente"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
 msgid "Choose the folder to select wallpapers from."
-msgstr "Elija la carpeta donde se seleccionarán los fondos de escritorio"
+msgstr "Elija la carpeta en la que se seleccionarán los fondos de pantalla."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
 msgid "St_yle:"
@@ -257,7 +257,7 @@ msgstr "Est_ilo:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
 msgid "Specify how the image will be resized to fit the screen."
-msgstr "Especificar cómo se redimensionará la imagen para ajustarse a la pantalla."
+msgstr "Especifique cómo se redimensionará la imagen para que se ajuste a la pantalla."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
 #: ../settings/xfdesktop-settings-ui.glade.h:4
@@ -266,23 +266,23 @@ msgstr "Desactivar"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
 msgid "Centered"
-msgstr "Centrado"
+msgstr "Centrar"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
 msgid "Tiled"
-msgstr "Mosaico"
+msgstr "En mosaico"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
 msgid "Stretched"
-msgstr "Estirado"
+msgstr "Estirar"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
 msgid "Scaled"
-msgstr "Proporcionado"
+msgstr "Escalar"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
 msgid "Zoomed"
-msgstr "Ampliado"
+msgstr "Ampliar"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
 msgid "Spanning Screens"
@@ -290,11 +290,11 @@ msgstr "Extensión de pantallas"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
 msgid "Specify the style of the color drawn behind the backdrop image."
-msgstr "Especificar el estilo del color dibujado detrás de la imagen de fondo."
+msgstr "Especifique el estilo del color de detrás de la imagen de fondo."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
-msgstr "Especifica el color sólido o el color de la parte «izquierda» o «superior» del degradado."
+msgstr "Especifica el color sólido o el color de la parte izquierda o superior del degradado."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Select First Color"
@@ -302,7 +302,7 @@ msgstr "Seleccionar el primer color"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient."
-msgstr "Especifica el color de la parte «derecha» o «inferior» del degradado."
+msgstr "Especifica el color de la parte derecha o inferior del degradado."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
 msgid "Select Second Color"
@@ -322,7 +322,7 @@ msgstr "C_olor:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 msgid "Change the _background "
-msgstr "Cambiar el _fondo de escritorio"
+msgstr "Cambiar el _fondo"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
 msgid ""
