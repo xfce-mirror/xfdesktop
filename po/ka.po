@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-26 06:31+0200\n"
-"PO-Revision-Date: 2019-12-14 22:38+0000\n"
+"PO-Revision-Date: 2019-12-16 20:39+0000\n"
 "Last-Translator: zura davitashvili <zdavitashvili0@gmail.com>\n"
 "Language-Team: Georgian (http://www.transifex.com/xfce/xfdesktop/language/ka/)\n"
 "MIME-Version: 1.0\n"
@@ -34,7 +34,7 @@ msgstr "ნაგავი"
 
 #: ../settings/main.c:425
 msgid "Removable Devices"
-msgstr "მოსახსნელი მოწყობილობები"
+msgstr "მოცილებადი მოწყობილობები"
 
 #: ../settings/main.c:427
 msgid "Network Shares"
@@ -490,7 +490,7 @@ msgstr "წებოვანი ფანჯრების ჩვენებ�
 
 #: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid "Show a_dd and remove workspace options in list"
-msgstr "სამუშაო სივრცეების დამატებისა და წაშლის ვარიანტების ჩვენება სიაში"
+msgstr "სამუშაო სივრცეების დამატებისა და მოცილების ვარიანტების ჩვენება სიაში"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "<b>Window List Menu</b>"
@@ -577,32 +577,32 @@ msgstr "პროგრამები"
 #: ../src/windowlist.c:73
 #, c-format
 msgid "Remove Workspace %d"
-msgstr "წაშალე სამუშაო სივრცე %d"
+msgstr "მოაცილე სამუშაო სივრცე %d"
 
 #: ../src/windowlist.c:74
 #, c-format
 msgid ""
 "Do you really want to remove workspace %d?\n"
 "Note: You are currently on workspace %d."
-msgstr "ნამდვილად გსურთ %d სამუშაო სივრცის წაშლა?\nშენიშვნა: თქვენ ამჟამად იმყოფებით %d სამუშაო სივრცეზე."
+msgstr "ნამდვილად გსურთ %d სამუშაო სივრცის მოცილება?\nშენიშვნა: თქვენ ამჟამად იმყოფებით %d სამუშაო სივრცეზე."
 
 #: ../src/windowlist.c:78
 #, c-format
 msgid "Remove Workspace '%s'"
-msgstr "წაშალე სამუშაო სივრცე '%s'"
+msgstr "მოაცილე სამუშაო სივრცე '%s'"
 
 #: ../src/windowlist.c:79
 #, c-format
 msgid ""
 "Do you really want to remove workspace '%s'?\n"
 "Note: You are currently on workspace '%s'."
-msgstr "ნამდვილად გსურთ '%s' სამუშაო სივრცის წაშლა?\nშენიშვნა: თქვენ ამჟამად იმყოფებით '%s' სამუშაო სივრცეზე."
+msgstr "ნამდვილად გსურთ '%s' სამუშაო სივრცის მოცილება?\nშენიშვნა: თქვენ ამჟამად იმყოფებით '%s' სამუშაო სივრცეზე."
 
 #. Popup a dialog box confirming that the user wants to remove a
 #. * workspace
 #: ../src/windowlist.c:86
 msgid "Remove"
-msgstr "წაშლა"
+msgstr "მოცილება"
 
 #: ../src/windowlist.c:272
 msgid "Window List"
@@ -620,12 +620,12 @@ msgstr "სამუშაო სივრცის დამატება"
 #: ../src/windowlist.c:403
 #, c-format
 msgid "_Remove Workspace %d"
-msgstr "წაშალე სამუშაო სივრცე %d"
+msgstr "მოაცილე სამუშაო სივრცე %d"
 
 #: ../src/windowlist.c:406
 #, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "წაშალე სამუშაო სივრცე '%s'"
+msgstr "მოაცილე სამუშაო სივრცე '%s'"
 
 #: ../src/xfdesktop-application.c:834
 msgid "Display version information"
@@ -641,11 +641,11 @@ msgstr "მიმდინარე სამუშაო სივრცეზ�
 
 #: ../src/xfdesktop-application.c:837
 msgid "Pop up the menu (at the current mouse position)"
-msgstr ""
+msgstr "მენიუს ჩვენება (თაგვის ამჟამინდელ მდებარეობაზე)"
 
 #: ../src/xfdesktop-application.c:838
 msgid "Pop up the window list (at the current mouse position)"
-msgstr ""
+msgstr "ფანჯრების სიის ჩვენება (თაგვის ამჟამინდელ მდებარეობაზე)"
 
 #: ../src/xfdesktop-application.c:840
 msgid "Automatically arrange all the icons on the desktop"
@@ -892,13 +892,13 @@ msgstr "გუშინ %X-ზე"
 #: ../src/xfdesktop-file-utils.c:168
 #, c-format
 msgid "%A at %X"
-msgstr ""
+msgstr "%A %X-ზე"
 
 #. Any other date
 #: ../src/xfdesktop-file-utils.c:171
 #, c-format
 msgid "%x at %X"
-msgstr ""
+msgstr "%x %X-ზე"
 
 #. the file_time is invalid
 #: ../src/xfdesktop-file-utils.c:181
@@ -1008,7 +1008,7 @@ msgstr "ფაილის გადაცემა ვერ განხორ
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:127
 msgid "Unmounting device"
-msgstr ""
+msgstr "მიმდინარეობს მოწყობილობის მოხსნა"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:130
@@ -1016,7 +1016,7 @@ msgstr ""
 msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the"
 " media or disconnect the drive"
-msgstr ""
+msgstr "მოწყობილობა \"%s\" იხსნება სისტემის მიერ. გთხოვთ, არ მოაცილოთ მედია ან არ გამოაერთოთ დისკი"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:137 ../src/xfdesktop-notify.c:322
@@ -1029,31 +1029,31 @@ msgstr "მიმდინარეობს მონაცემების �
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be"
 " removed. Please do not remove the media or disconnect the drive"
-msgstr ""
+msgstr "არსებობს მონაცემები, რომელიც უნდა დაიწეროს მოწყობილობაზე \"%s\" ვიდრე მისი მოცილება იქნება შესაძლებელი.  გთხოვთ, არ მოაცილოთ მედია ან არ გამოაერთოთ დისკი"
 
 #: ../src/xfdesktop-notify.c:221
 msgid "Unmount Finished"
-msgstr ""
+msgstr "მოხსნა დასრულდა"
 
 #: ../src/xfdesktop-notify.c:223 ../src/xfdesktop-notify.c:408
 #, c-format
 msgid "The device \"%s\" has been safely removed from the system. "
-msgstr ""
+msgstr "მოწყობილობა \"%s\" სისტემიდან უსაფრთხოდ მოიხსნა."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:313
 msgid "Ejecting device"
-msgstr ""
+msgstr "მიმდინარეობს მოწყობილობის გამოღება"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:316
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
-msgstr ""
+msgstr "მიმდინარეობს მოწყობილობა \"%s\"-ს გამოღება. ამას შეიძლება გარკვეული დრო დასჭირდეს"
 
 #: ../src/xfdesktop-notify.c:406
 msgid "Eject Finished"
-msgstr ""
+msgstr "გამოღება დასრულდა"
 
 #: ../src/xfdesktop-regular-file-icon.c:817
 #, c-format
@@ -1100,43 +1100,43 @@ msgid ""
 "Removable Volume\n"
 "Mounted in \"%s\"\n"
 "%s left (%s total)"
-msgstr ""
+msgstr "მოცილებადი მოცულობა\nდამაგრებულია \"%s\"-ში\nდარჩა %s (სულ %s)"
 
 #: ../src/xfdesktop-volume-icon.c:487
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
-msgstr ""
+msgstr "მოცილებადი მოცულობა\nჯერ კიდევ არ არის დამაგრებული"
 
 #: ../src/xfdesktop-volume-icon.c:516 ../src/xfdesktop-volume-icon.c:562
 #, c-format
 msgid "Failed to eject \"%s\""
-msgstr ""
+msgstr "\"%s\"-ის გამოღება ვერ მოხერხდა"
 
 #: ../src/xfdesktop-volume-icon.c:521 ../src/xfdesktop-volume-icon.c:567
 msgid "Eject Failed"
-msgstr ""
+msgstr "გამოღება ვერ მოხერხდა"
 
 #: ../src/xfdesktop-volume-icon.c:600
 #, c-format
 msgid "Failed to mount \"%s\""
-msgstr ""
+msgstr "\"%s\"-ის დამაგრება ვერ მოხერხდა"
 
 #: ../src/xfdesktop-volume-icon.c:603
 msgid "Mount Failed"
-msgstr ""
+msgstr "დამაგრება ვერ მოხერხდა"
 
 #: ../src/xfdesktop-volume-icon.c:825
 msgid "E_ject Volume"
-msgstr ""
+msgstr "მოცულობის გამოღება"
 
 #: ../src/xfdesktop-volume-icon.c:832
 msgid "_Unmount Volume"
-msgstr ""
+msgstr "მოცულობის მოხსნა"
 
 #: ../src/xfdesktop-volume-icon.c:839
 msgid "_Mount Volume"
-msgstr ""
+msgstr "მოცულობის დამაგრება"
 
 #: ../src/xfdesktop-window-icon.c:193
 msgid "_Window Actions"
