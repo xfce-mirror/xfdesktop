@@ -242,6 +242,7 @@ enum
     TARGET_TEXT_URI_LIST = 0,
     TARGET_XDND_DIRECT_SAVE0,
     TARGET_NETSCAPE_URL,
+    TARGET_APPLICATION_OCTET_STREAM,
 };
 
 static const GtkTargetEntry drag_targets[] = {
@@ -250,6 +251,7 @@ static const GtkTargetEntry drag_targets[] = {
 static const gint n_drag_targets = (sizeof(drag_targets)/sizeof(drag_targets[0]));
 static const GtkTargetEntry drop_targets[] = {
     { "text/uri-list", 0, TARGET_TEXT_URI_LIST, },
+    { "application/octet-stream", 0, TARGET_APPLICATION_OCTET_STREAM, },
     { "XdndDirectSave0", 0, TARGET_XDND_DIRECT_SAVE0, },
     { "_NETSCAPE_URL", 0, TARGET_NETSCAPE_URL, },
 };
@@ -3647,6 +3649,46 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
         }
 
         g_free(exo_desktop_item_edit);
+    } else if(info == TARGET_APPLICATION_OCTET_STREAM) {
+        guchar *filename;
+        gchar *filepath;
+        gint length;
+        const gchar *content;
+        GFile *dest;
+        GFileOutputStream *out;
+
+        if(gdk_property_get(gdk_drag_context_get_source_window(context),
+                            gdk_atom_intern("XdndDirectSave0", FALSE),
+                            gdk_atom_intern("text/plain", FALSE), 0, 1024,
+                            FALSE, NULL, NULL, &length, &filename) && length > 0) {
+            filename = g_realloc(filename, length + 1);
+            filename[length] = '\0';
+        } else {
+            filename = g_strdup(_("Untitled document"));
+        }
+
+        filepath = g_strdup_printf ("%s/%s",
+                                    g_get_user_special_dir(G_USER_DIRECTORY_DESKTOP),
+                                    filename);
+
+        dest = g_file_new_for_path(filepath);
+        out = g_file_create(dest, G_FILE_CREATE_NONE, NULL, NULL);
+
+        if(out) {
+            content = (const gchar *)gtk_selection_data_get_data(data);
+            length = gtk_selection_data_get_length(data);
+
+            if(g_output_stream_write_all(G_OUTPUT_STREAM(out), content, length,
+                                         NULL, NULL, NULL)) {
+                g_output_stream_close(G_OUTPUT_STREAM(out), NULL, NULL);
+            }
+
+            g_object_unref(out);
+        }
+
+        g_free(filename);
+        g_free(filepath);
+        g_object_unref(dest);
     } else if(info == TARGET_TEXT_URI_LIST) {
         if(drop_icon) {
             file_icon = XFDESKTOP_FILE_ICON(drop_icon);
