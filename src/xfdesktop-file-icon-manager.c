@@ -2752,6 +2752,9 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
                     /* update the icon if the file still exists */
                     xfdesktop_file_icon_update_file_info(icon, file_info);
                     g_object_unref(file_info);
+
+                    /* update thumbnail */
+                    xfdesktop_file_icon_manager_queue_thumbnail (fmanager, icon);
                 } else {
                     /* Remove the icon as it doesn't seem to exist */
                     xfdesktop_file_icon_manager_remove_icon(fmanager, icon);
