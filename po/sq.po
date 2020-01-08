@@ -25,7 +25,7 @@ msgstr ""
 #: ../settings/main.c:419 ../src/xfdesktop-special-file-icon.c:292
 #: ../src/xfdesktop-special-file-icon.c:478
 msgid "Home"
-msgstr "Hyrje"
+msgstr "Shtëpi"
 
 #: ../settings/main.c:421
 msgid "Filesystem"
@@ -175,7 +175,7 @@ msgstr "_Mbylle"
 
 #: ../settings/main.c:1915
 msgid "Image files"
-msgstr "Kartela pamje"
+msgstr "Kartela figurë"
 
 #. Change the title of the file chooser dialog
 #: ../settings/main.c:1923
@@ -196,7 +196,7 @@ msgstr "Të dhëna versioni"
 
 #: ../settings/main.c:2130 ../src/xfdesktop-application.c:842
 msgid "Enable debug messages"
-msgstr "Aktivizo Mesazhe diagnostikimi"
+msgstr "Aktivizo mesazhe diagnostikimi"
 
 #: ../settings/main.c:2158
 #, c-format
@@ -273,7 +273,7 @@ msgstr "Në qendër"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
 msgid "Tiled"
-msgstr "Tjegullëzuar"
+msgstr "Tjegullzuar"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
 msgid "Stretched"
@@ -281,7 +281,7 @@ msgstr "Tërhequr"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
 msgid "Scaled"
-msgstr "Shkallëzuar"
+msgstr "Përshkallëzuar"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
 msgid "Zoomed"
@@ -299,8 +299,8 @@ msgstr ""
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
 msgstr ""
-"Përcakton ngjyrën e plotë, ose ngjyrë gradienti për \"majtas\" ose \"në "
-"krye\"."
+"Përcakton ngjyrën e plotë, ose ngjyrën e përshkallëzuesit për “majtas” ose "
+"“në krye”."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Select First Color"
@@ -308,7 +308,7 @@ msgstr "Përzgjidhni Ngjyrën Parësore"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient."
-msgstr "Përcakton ngjyrën e gradientit për \"djathtas\" ose \"poshtë\"."
+msgstr "Përcakton ngjyrën e përshkallëzuesit për “djathtas” ose “poshtë”."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
 msgid "Select Second Color"
@@ -373,7 +373,7 @@ msgstr "Sasi kohe përpara se të përzgjidhet një tjetër sfond."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
 msgid "_Random Order"
-msgstr "_Kuturu"
+msgstr "Rend _Kuturu"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
 msgid ""
@@ -469,7 +469,7 @@ msgstr "_Ndryshues:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:26
 msgid "Show _application icons in menu"
-msgstr "Shfaq në menu ikona _zbatimesh"
+msgstr "Shfaq në menu ikona _aplikacionesh"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "_Edit desktop menu"
@@ -481,7 +481,7 @@ msgstr "<b>Menu Desktopi</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:29
 msgid "Show _window list menu on desktop middle click"
-msgstr "Shfaq menu liste dritaresh kur djathtasklikohet në desktop"
+msgstr "Shfaq menu liste dritaresh, kur djathtasklikohet në desktop"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:30
 msgid "B_utton:"
@@ -493,7 +493,7 @@ msgstr "N_dryshues:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:32
 msgid "Sh_ow application icons in menu"
-msgstr "_Shfaq në menu ikona zbatimesh"
+msgstr "_Shfaq në menu ikona aplikacionesh"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
 msgid "Show workspace _names in list"
@@ -541,7 +541,7 @@ msgstr "Shfaq ikona në ekran parësor"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:44
 msgid "Use custom _font size:"
-msgstr "Përdor madhësi _vetjake gërmash:"
+msgstr "Përdor madhësi _vetjake shkronjash:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:45
 msgid "12"
@@ -573,7 +573,7 @@ msgstr ""
 
 #: ../settings/xfdesktop-settings-ui.glade.h:51
 msgid "Show hidden files on the desktop"
-msgstr "Shfaq kartela të fshehura në desktop"
+msgstr "Shfaq te desktopi kartela të fshehura"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:52
 msgid "Single _click to activate items"
@@ -593,12 +593,12 @@ msgstr "_Ikona"
 
 #: ../src/menu.c:93
 msgid "_Applications"
-msgstr "_Zbatime"
+msgstr "_Aplikacione"
 
 #: ../src/windowlist.c:73
 #, c-format
 msgid "Remove Workspace %d"
-msgstr "Hiq Hapësirë pune %d"
+msgstr "Hiq Hapësirë Pune %d"
 
 #: ../src/windowlist.c:74
 #, c-format
@@ -640,12 +640,12 @@ msgstr "<b>Hapësirë pune %d</b>"
 
 #: ../src/windowlist.c:393 ../src/windowlist.c:395
 msgid "_Add Workspace"
-msgstr "_Shto Hapësirë pune"
+msgstr "_Shto Hapësirë Pune"
 
 #: ../src/windowlist.c:403
 #, c-format
 msgid "_Remove Workspace %d"
-msgstr "_Hiq Hapësirë pune %d"
+msgstr "_Hiq Hapësirë Pune %d"
 
 #: ../src/windowlist.c:406
 #, c-format
@@ -678,7 +678,7 @@ msgstr "Sistemoji automatikisht krejt ikonat te desktopi"
 
 #: ../src/xfdesktop-application.c:843
 msgid "Disable debug messages"
-msgstr "Çaktivizo mesazhe diagnostikim"
+msgstr "Çaktivizo mesazhe diagnostikimi"
 
 #: ../src/xfdesktop-application.c:844
 msgid "Do not wait for a window manager on startup"
@@ -895,7 +895,7 @@ msgstr "Kopjoje _Këtu"
 
 #: ../src/xfdesktop-file-icon-manager.c:3503
 msgid "_Move Here"
-msgstr "_Lëvize Këtu"
+msgstr "_Sille Këtu"
 
 #: ../src/xfdesktop-file-icon-manager.c:3503
 msgid "_Link Here"
@@ -932,7 +932,7 @@ msgstr "%x më %X"
 #. the file_time is invalid
 #: ../src/xfdesktop-file-utils.c:181
 msgid "Unknown"
-msgstr "I panjohur"
+msgstr "E panjohur"
 
 #: ../src/xfdesktop-file-utils.c:684
 msgid "The folder could not be opened"
@@ -969,7 +969,7 @@ msgstr "Gabim Fshirjeje"
 
 #: ../src/xfdesktop-file-utils.c:883
 msgid "The selected files could not be deleted"
-msgstr "Kartelat e përzgjedhur s’u fshinë dot"
+msgstr "Kartelat e përzgjedhura s’u fshinë dot"
 
 #: ../src/xfdesktop-file-utils.c:943 ../src/xfdesktop-file-utils.c:991
 msgid "Trash Error"
@@ -1075,7 +1075,7 @@ msgstr "Çmontimi Përfundoi"
 #: ../src/xfdesktop-notify.c:223 ../src/xfdesktop-notify.c:408
 #, c-format
 msgid "The device \"%s\" has been safely removed from the system. "
-msgstr "Pajisja \"%s\" u hoq pa rreziqe nga sistemi. "
+msgstr "Pajisja \"%s\" u hoq nga sistemi pa rrezik. "
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:313
@@ -1100,6 +1100,10 @@ msgid ""
 "Size: %s\n"
 "Last modified: %s"
 msgstr ""
+"Emër: %s\n"
+"Lloj: %s\n"
+"Madhësi: %s\n"
+"Ndryshuar së fundi më: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:294
 #: ../src/xfdesktop-special-file-icon.c:476
@@ -1108,7 +1112,7 @@ msgstr "Sistem Kartelash"
 
 #: ../src/xfdesktop-special-file-icon.c:461
 msgid "Trash is empty"
-msgstr "Hedhurina është e zbrazët"
+msgstr "Hedhurinat janë të zbrazëta"
 
 #: ../src/xfdesktop-special-file-icon.c:464
 msgid "Trash contains one item"
@@ -1177,7 +1181,7 @@ msgstr "_Nxirre Vëllimin"
 
 #: ../src/xfdesktop-volume-icon.c:832
 msgid "_Unmount Volume"
-msgstr "_Çmontoje Volumin"
+msgstr "_Çmontoje Vëllimin"
 
 #: ../src/xfdesktop-volume-icon.c:839
 msgid "_Mount Volume"
