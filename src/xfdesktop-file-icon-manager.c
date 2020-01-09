@@ -2680,13 +2680,16 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
     gchar *filename;
 
     switch(event) {
+#if GLIB_CHECK_VERSION(2, 46, 0)
+        case G_FILE_MONITOR_EVENT_RENAMED:
+        case G_FILE_MONITOR_EVENT_MOVED_IN:
+        case G_FILE_MONITOR_EVENT_MOVED_OUT:
+#else
         case G_FILE_MONITOR_EVENT_MOVED:
+#endif
             XF_DEBUG("got a moved event");
 
             icon = g_hash_table_lookup(fmanager->priv->icons, file);
-
-            file_info = g_file_query_info(other_file, XFDESKTOP_FILE_INFO_NAMESPACE,
-                                          G_FILE_QUERY_INFO_NONE, NULL, NULL);
 
             if(icon) {
                 /* Get the old position so we can use it for the new icon */
@@ -2699,6 +2702,13 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
                 /* Remove the old icon */
                 xfdesktop_file_icon_manager_remove_icon(fmanager, icon);
             }
+
+            /* In case of MOVED_OUT, other_file will be NULL */
+            if(other_file == NULL)
+                return;
+
+            file_info = g_file_query_info(other_file, XFDESKTOP_FILE_INFO_NAMESPACE,
+                                            G_FILE_QUERY_INFO_NONE, NULL, NULL);
 
             /* Check to see if there's already an other_file represented on
              * the desktop and remove it so there aren't duplicated icons
@@ -2948,7 +2958,11 @@ xfdesktop_file_icon_manager_files_ready(GFileEnumerator *enumerator,
         /* initialize the file monitor */
         if(!fmanager->priv->monitor) {
             fmanager->priv->monitor = g_file_monitor(fmanager->priv->folder,
+#if GLIB_CHECK_VERSION(2, 46, 0)
+                                                     G_FILE_MONITOR_WATCH_MOVES,
+#else
                                                      G_FILE_MONITOR_SEND_MOVED,
+#endif
                                                      NULL, NULL);
             g_signal_connect(fmanager->priv->monitor, "changed",
                              G_CALLBACK(xfdesktop_file_icon_manager_file_changed),
