@@ -2637,6 +2637,16 @@ xfdesktop_file_icon_manager_key_press(GtkWidget *widget,
             }
             return TRUE;
 
+        case GDK_KEY_n:
+        case GDK_KEY_N:
+            if(!(evt->state & GDK_CONTROL_MASK && evt->state & GDK_SHIFT_MASK)
+               || (evt->state & (GDK_MOD1_MASK|GDK_MOD4_MASK)))
+            {
+                return FALSE;
+            }
+            xfdesktop_file_icon_menu_create_folder(NULL, fmanager);
+            return TRUE;
+
         case GDK_KEY_r:
         case GDK_KEY_R:
             if(!(evt->state & GDK_CONTROL_MASK)
