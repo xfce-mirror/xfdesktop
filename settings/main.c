@@ -1376,7 +1376,7 @@ xfdesktop_settings_background_tab_change_bindings(AppearancePanel *panel,
     g_free(buf);
 
     /* color 2 button */
-    /* Fixme: we will need to migrate from color1 to rgba1 (GdkColor to GdkRGBA) */
+    /* Fixme: we will need to migrate from color2 to rgba2 (GdkColor to GdkRGBA) */
     buf = xfdesktop_settings_generate_per_workspace_binding_string(panel, "rgba2");
     if(remove_binding) {
         xfconf_g_property_unbind(panel->color2_btn_id);
