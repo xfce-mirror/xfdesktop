@@ -2887,6 +2887,10 @@ xfdesktop_icon_view_setup_pango_layout(XfdesktopIconView *icon_view,
                                        XfdesktopIcon *icon,
                                        PangoLayout *playout)
 {
+#if PANGO_VERSION_CHECK (1, 44, 0)
+    PangoAttrList *attr_list;
+    PangoAttribute *attr;
+#endif
     const gchar *label = xfdesktop_icon_peek_label(icon);
 
     g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view)
@@ -2907,6 +2911,17 @@ xfdesktop_icon_view_setup_pango_layout(XfdesktopIconView *icon_view,
         pango_layout_set_height(playout, TEXT_HEIGHT * PANGO_SCALE);
         pango_layout_set_ellipsize(playout, PANGO_ELLIPSIZE_END);
     }
+
+#if PANGO_VERSION_CHECK (1, 44, 0)
+    /* Do not add hyphens on line breaks */
+    attr_list = pango_attr_list_new ();
+    attr = pango_attr_insert_hyphens_new (FALSE);
+    attr->start_index = 0;
+    attr->end_index = -1;
+    pango_attr_list_insert (attr_list, attr);
+    pango_layout_set_attributes (playout, attr_list);
+    pango_attr_list_unref (attr_list);
+#endif
 }
 
 static gboolean
