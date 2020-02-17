@@ -1564,7 +1564,7 @@ xfce_backdrop_generate_canvas(XfceBackdrop *backdrop)
     if(backdrop->priv->color_style == XFCE_BACKDROP_COLOR_SOLID)
         final_image = create_solid(&backdrop->priv->color1, w, h);
     else if(backdrop->priv->color_style == XFCE_BACKDROP_COLOR_TRANSPARENT) {
-        GdkRGBA c = { 1.0f, 1.0f, 1.0f, 1.0f };
+        GdkRGBA c = { 1.0f, 1.0f, 1.0f, 0.0f };
         final_image = create_solid(&c, w, h);
     } else {
         final_image = create_gradient(&backdrop->priv->color1,
