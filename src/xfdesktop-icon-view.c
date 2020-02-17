@@ -1137,12 +1137,15 @@ xfdesktop_icon_view_key_press(GtkWidget *widget,
      * so we have to activate the bindings manually */
     ret = gtk_bindings_activate_event(G_OBJECT(icon_view), evt);
     if(ret == FALSE) {
-        /* Binding not found, now inspect the pressed character.
-         * Let's try to find an icon starting with this character and make
-         * the icon selected. */
-        guint32 unicode = gdk_keyval_to_unicode(evt->keyval);
-        if(unicode && g_unichar_isgraph(unicode) == TRUE)
-            xfdesktop_icon_view_type_ahead_find_icon(icon_view, evt);
+        GdkModifierType ignore_modifiers = gtk_accelerator_get_default_mod_mask();
+        if((evt->state & ignore_modifiers) == 0) {
+            /* Binding not found and key press is not part of a combo.
+             * Now inspect the pressed character. Let's try to find an
+             * icon starting with this character and make the icon selected. */
+            guint32 unicode = gdk_keyval_to_unicode(evt->keyval);
+            if(unicode && g_unichar_isgraph(unicode) == TRUE)
+                xfdesktop_icon_view_type_ahead_find_icon(icon_view, evt);
+        }
     }
 
     return ret;
