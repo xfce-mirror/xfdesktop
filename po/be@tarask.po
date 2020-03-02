@@ -124,10 +124,12 @@ msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
 msgstr ""
+"Упарадкаваць усе існуючыя відарысы\n"
+"адпаведна абранай арыэнтацыі?"
 
 #: ../settings/main.c:1749
 msgid "Arrange icons"
-msgstr ""
+msgstr "Упарадкаваць відарысы"
 
 #. printf is to be translator-friendly
 #: ../settings/main.c:1757 ../src/xfdesktop-file-icon-manager.c:798
@@ -405,39 +407,39 @@ msgstr "Відарысы файла/пускача"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:10
 msgid "Top Left Vertical"
-msgstr ""
+msgstr "Зверху зьлева вэртыкальна"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:11
 msgid "Top Left Horizontal"
-msgstr ""
+msgstr "Зверху зьлева гарызантальна"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:12
 msgid "Top Right Vertical"
-msgstr ""
+msgstr "Зверху справа вэртыкальна"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:13
 msgid "Top Right Horizontal"
-msgstr ""
+msgstr "Зверху справа гарызантальна"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:14
 msgid "Bottom Left Vertical"
-msgstr ""
+msgstr "Зьнізу зьлева вэртыкальна"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:15
 msgid "Bottom Left Horizontal"
-msgstr ""
+msgstr "Зьнізу зьлева гарызантальна"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:16
 msgid "Bottom Right Vertical"
-msgstr ""
+msgstr "Зьнізу справа вэртыкальна"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:17
 msgid "Bottom Right Horizontal"
-msgstr ""
+msgstr "Зьнізу справа гарызантальна"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:20
 msgid "_Help"
-msgstr ""
+msgstr "_Даведка"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:22
 msgid "_Background"
@@ -517,15 +519,15 @@ msgstr "Памер _відарыса:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:41
 msgid "48"
-msgstr ""
+msgstr "48"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:42
 msgid "Icons _orientation:"
-msgstr ""
+msgstr "_Арыентацыя відарысаў:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:43
 msgid "Show icons on primary display"
-msgstr ""
+msgstr "Паказваць відарысы на асноўным дысплеі"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:44
 msgid "Use custom _font size:"
@@ -533,7 +535,7 @@ msgstr "Скарыстаць адмысловы _памер шрыфта:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:45
 msgid "12"
-msgstr ""
+msgstr "12"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:46
 msgid "Show icon tooltips. Size:"
@@ -545,7 +547,7 @@ msgstr "Памер падказкі перадпрагляду выявы."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:48
 msgid "128"
-msgstr ""
+msgstr "128"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:49
 msgid "Show t_humbnails"
@@ -600,7 +602,7 @@ msgstr ""
 #: ../src/windowlist.c:78
 #, c-format
 msgid "Remove Workspace '%s'"
-msgstr "Прыбраць прастору '%s"
+msgstr "Прыбраць прастору '%s'"
 
 #: ../src/windowlist.c:79
 #, c-format
@@ -832,11 +834,11 @@ msgstr "_Уклеіць"
 
 #: ../src/xfdesktop-file-icon-manager.c:1709
 msgid "Cu_t"
-msgstr ""
+msgstr "Вы_разаць"
 
 #: ../src/xfdesktop-file-icon-manager.c:1721
 msgid "_Copy"
-msgstr ""
+msgstr "_Скапіяваць"
 
 #: ../src/xfdesktop-file-icon-manager.c:1733
 msgid "Paste Into Folder"
@@ -860,7 +862,7 @@ msgstr "Уладкаваць _выявы Стальніцы"
 
 #: ../src/xfdesktop-file-icon-manager.c:1858
 msgid "_Next Background"
-msgstr ""
+msgstr "_Наступны фон"
 
 #: ../src/xfdesktop-file-icon-manager.c:1868
 msgid "Desktop _Settings..."
@@ -897,7 +899,7 @@ msgstr "_Скасаваць"
 
 #: ../src/xfdesktop-file-icon-manager.c:3670
 msgid "Untitled document"
-msgstr ""
+msgstr "Бязназоўны дакумэнт"
 
 #. TRANSLATORS: file was modified less than one day ago
 #: ../src/xfdesktop-file-utils.c:159
@@ -1094,6 +1096,10 @@ msgid ""
 "Size: %s\n"
 "Last modified: %s"
 msgstr ""
+"Імя: %s\n"
+"Тып: %s\n"
+"Памер: %s\n"
+"Апошнія зьмены: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:294
 #: ../src/xfdesktop-special-file-icon.c:476
