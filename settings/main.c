@@ -418,7 +418,7 @@ setup_special_icon_list(GtkBuilder *gxml,
     } icons[] = {
         { N_("Home"), "user-home", "gnome-fs-desktop",
           DESKTOP_ICONS_SHOW_HOME, TRUE },
-        { N_("Filesystem"), "drive-harddisk", "gnome-dev-harddisk",
+        { N_("File System"), "drive-harddisk", "gnome-dev-harddisk",
           DESKTOP_ICONS_SHOW_FILESYSTEM, TRUE },
         { N_("Trash"), "user-trash", "gnome-fs-trash-empty",
           DESKTOP_ICONS_SHOW_TRASH, TRUE },
