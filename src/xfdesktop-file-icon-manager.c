@@ -2692,7 +2692,6 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
     switch(event) {
 #if GLIB_CHECK_VERSION(2, 46, 0)
         case G_FILE_MONITOR_EVENT_RENAMED:
-        case G_FILE_MONITOR_EVENT_MOVED_IN:
         case G_FILE_MONITOR_EVENT_MOVED_OUT:
 #else
         case G_FILE_MONITOR_EVENT_MOVED:
@@ -2781,6 +2780,9 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
                 }
             }
             break;
+#if GLIB_CHECK_VERSION(2, 46, 0)
+        case G_FILE_MONITOR_EVENT_MOVED_IN:
+#endif
         case G_FILE_MONITOR_EVENT_CREATED:
             XF_DEBUG("got created event");
 
