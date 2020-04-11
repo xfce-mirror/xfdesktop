@@ -1599,6 +1599,11 @@ xfce_backdrop_image_data_release(XfceBackdropImageData *image_data)
 
     if(image_data->loader)
         g_object_unref(image_data->loader);
+
+    if(image_data->backdrop) {
+        g_object_unref(image_data->backdrop);
+        image_data->backdrop = NULL;
+    }
 }
 
 /**
@@ -1671,6 +1676,7 @@ xfce_backdrop_generate_async(XfceBackdrop *backdrop)
     backdrop->priv->image_data = image_data;
 
     image_data->backdrop = backdrop;
+    g_object_ref(backdrop);
     image_data->loader = gdk_pixbuf_loader_new();
     image_data->cancellable = g_cancellable_new();
     image_data->image_buffer = g_new0(guchar, XFCE_BACKDROP_BUFFER_SIZE);
