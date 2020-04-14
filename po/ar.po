@@ -9,9 +9,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-20 18:40+0200\n"
+"POT-Creation-Date: 2020-01-13 00:32+0100\n"
 "PO-Revision-Date: 2019-10-20 16:40+0000\n"
 "Last-Translator: Xfce Bot <transifex@xfce.org>, 2019\n"
 "Language-Team: Arabic (https://www.transifex.com/xfce/teams/16840/ar/)\n"
@@ -129,14 +129,14 @@ msgid "Arrange icons"
 msgstr ""
 
 #. printf is to be translator-friendly
-#: ../settings/main.c:1757 ../src/xfdesktop-file-icon-manager.c:796
+#: ../settings/main.c:1757 ../src/xfdesktop-file-icon-manager.c:798
 #: ../src/xfdesktop-file-icon-manager.c:1353
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "فشل في إطلاق \"%s\":"
 
-#: ../settings/main.c:1758 ../src/xfdesktop-file-icon-manager.c:798
-#: ../src/xfdesktop-file-icon-manager.c:1100
+#: ../settings/main.c:1758 ../src/xfdesktop-file-icon-manager.c:800
+#: ../src/xfdesktop-file-icon-manager.c:1102
 #: ../src/xfdesktop-file-icon-manager.c:1354 ../src/xfdesktop-file-utils.c:683
 #: ../src/xfdesktop-file-utils.c:1217 ../src/xfdesktop-file-utils.c:1295
 #: ../src/xfdesktop-file-utils.c:1319 ../src/xfdesktop-file-utils.c:1381
@@ -144,13 +144,13 @@ msgid "Launch Error"
 msgstr "خطأ في الإقلاع"
 
 #: ../settings/main.c:1760 ../settings/xfdesktop-settings-ui.glade.h:21
-#: ../src/xfdesktop-file-icon-manager.c:560
-#: ../src/xfdesktop-file-icon-manager.c:579
-#: ../src/xfdesktop-file-icon-manager.c:664
-#: ../src/xfdesktop-file-icon-manager.c:800
-#: ../src/xfdesktop-file-icon-manager.c:1104
+#: ../src/xfdesktop-file-icon-manager.c:562
+#: ../src/xfdesktop-file-icon-manager.c:581
+#: ../src/xfdesktop-file-icon-manager.c:666
+#: ../src/xfdesktop-file-icon-manager.c:802
+#: ../src/xfdesktop-file-icon-manager.c:1106
 #: ../src/xfdesktop-file-icon-manager.c:1356
-#: ../src/xfdesktop-file-icon-manager.c:2938 ../src/xfdesktop-file-utils.c:686
+#: ../src/xfdesktop-file-icon-manager.c:2941 ../src/xfdesktop-file-utils.c:686
 #: ../src/xfdesktop-file-utils.c:706 ../src/xfdesktop-file-utils.c:761
 #: ../src/xfdesktop-file-utils.c:825 ../src/xfdesktop-file-utils.c:886
 #: ../src/xfdesktop-file-utils.c:947 ../src/xfdesktop-file-utils.c:995
@@ -720,46 +720,46 @@ msgstr "أيقونات سطح المكتب: %s\n"
 msgid "    Desktop File Icons:  %s\n"
 msgstr "أيقونات ملف سطح المكتب: %s\n"
 
-#: ../src/xfdesktop-file-icon-manager.c:552
-#: ../src/xfdesktop-file-icon-manager.c:570
+#: ../src/xfdesktop-file-icon-manager.c:554
+#: ../src/xfdesktop-file-icon-manager.c:572
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
 msgstr "لا يمكن إنشاء مجلد سطح المكتب \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:557
-#: ../src/xfdesktop-file-icon-manager.c:575
+#: ../src/xfdesktop-file-icon-manager.c:559
+#: ../src/xfdesktop-file-icon-manager.c:577
 msgid "Desktop Folder Error"
 msgstr "خطأ في مجلد سطح المكتب"
 
-#: ../src/xfdesktop-file-icon-manager.c:577
+#: ../src/xfdesktop-file-icon-manager.c:579
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr "ملف عادي موجود أصلا بنفس الاسم. الرجاء حذفه أو إعادة تسميته."
 
-#: ../src/xfdesktop-file-icon-manager.c:661 ../src/xfdesktop-file-utils.c:757
+#: ../src/xfdesktop-file-icon-manager.c:663 ../src/xfdesktop-file-utils.c:757
 #: ../src/xfdesktop-file-utils.c:821
 msgid "Rename Error"
 msgstr "خطأ أثناء إعادة التسمية"
 
-#: ../src/xfdesktop-file-icon-manager.c:662 ../src/xfdesktop-file-utils.c:822
+#: ../src/xfdesktop-file-icon-manager.c:664 ../src/xfdesktop-file-utils.c:822
 msgid "The files could not be renamed"
 msgstr "لا يمكن إعادة تسمية الملفات"
 
-#: ../src/xfdesktop-file-icon-manager.c:663
+#: ../src/xfdesktop-file-icon-manager.c:665
 msgid "None of the icons selected support being renamed."
 msgstr "لا تدعم أي من الرموز المحددة إعادة تسميته."
 
-#: ../src/xfdesktop-file-icon-manager.c:1025
+#: ../src/xfdesktop-file-icon-manager.c:1027
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "_افتح باستخدام\"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1028
+#: ../src/xfdesktop-file-icon-manager.c:1030
 #, c-format
 msgid "Open With \"%s\""
 msgstr "افتح باستخدام\"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1102
+#: ../src/xfdesktop-file-icon-manager.c:1104
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
@@ -866,29 +866,33 @@ msgstr "إعدادات _سطح المكتب..."
 msgid "P_roperties..."
 msgstr "خصائص..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2935
+#: ../src/xfdesktop-file-icon-manager.c:2938
 msgid "Load Error"
 msgstr "خطأ أثناء التحميل"
 
-#: ../src/xfdesktop-file-icon-manager.c:2937
+#: ../src/xfdesktop-file-icon-manager.c:2940
 msgid "Failed to load the desktop folder"
 msgstr "فشل تحميل مجلد سطح المكتب"
 
-#: ../src/xfdesktop-file-icon-manager.c:3503
+#: ../src/xfdesktop-file-icon-manager.c:3506
 msgid "Copy _Here"
 msgstr "أنسخ _هنا"
 
-#: ../src/xfdesktop-file-icon-manager.c:3503
+#: ../src/xfdesktop-file-icon-manager.c:3506
 msgid "_Move Here"
 msgstr "_أنقل هنا"
 
-#: ../src/xfdesktop-file-icon-manager.c:3503
+#: ../src/xfdesktop-file-icon-manager.c:3506
 msgid "_Link Here"
 msgstr "_وصلة هنا"
 
-#: ../src/xfdesktop-file-icon-manager.c:3538
+#: ../src/xfdesktop-file-icon-manager.c:3541
 msgid "_Cancel"
 msgstr "_إلغاء"
+
+#: ../src/xfdesktop-file-icon-manager.c:3670
+msgid "Untitled document"
+msgstr ""
 
 #. TRANSLATORS: file was modified less than one day ago
 #: ../src/xfdesktop-file-utils.c:159
