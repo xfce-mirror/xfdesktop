@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-20 00:33+0200\n"
-"PO-Revision-Date: 2019-05-25 02:48+0000\n"
-"Last-Translator: Theppitak Karoonboonyanan <theppitak@gmail.com>\n"
+"POT-Creation-Date: 2019-12-22 00:32+0100\n"
+"PO-Revision-Date: 2019-12-21 23:32+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
 "Language-Team: Thai (http://www.transifex.com/xfce/xfdesktop/language/th/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -127,36 +127,37 @@ msgid "Arrange icons"
 msgstr "จัดเรียงไอคอน"
 
 #. printf is to be translator-friendly
-#: ../settings/main.c:1757 ../src/xfdesktop-file-icon-manager.c:796
+#: ../settings/main.c:1757 ../src/xfdesktop-file-icon-manager.c:798
 #: ../src/xfdesktop-file-icon-manager.c:1353
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "ไม่สามารถเรียกทำงาน \"%s\":"
 
-#: ../settings/main.c:1758 ../src/xfdesktop-file-icon-manager.c:798
-#: ../src/xfdesktop-file-icon-manager.c:1100
-#: ../src/xfdesktop-file-icon-manager.c:1354 ../src/xfdesktop-file-utils.c:671
-#: ../src/xfdesktop-file-utils.c:1203 ../src/xfdesktop-file-utils.c:1281
-#: ../src/xfdesktop-file-utils.c:1305 ../src/xfdesktop-file-utils.c:1367
+#: ../settings/main.c:1758 ../src/xfdesktop-file-icon-manager.c:800
+#: ../src/xfdesktop-file-icon-manager.c:1102
+#: ../src/xfdesktop-file-icon-manager.c:1354 ../src/xfdesktop-file-utils.c:683
+#: ../src/xfdesktop-file-utils.c:1217 ../src/xfdesktop-file-utils.c:1295
+#: ../src/xfdesktop-file-utils.c:1319 ../src/xfdesktop-file-utils.c:1381
 msgid "Launch Error"
 msgstr "เรียกทำงานผิดพลาด"
 
-#: ../settings/main.c:1760 ../src/xfdesktop-file-icon-manager.c:560
-#: ../src/xfdesktop-file-icon-manager.c:579
-#: ../src/xfdesktop-file-icon-manager.c:664
-#: ../src/xfdesktop-file-icon-manager.c:800
-#: ../src/xfdesktop-file-icon-manager.c:1104
+#: ../settings/main.c:1760 ../settings/xfdesktop-settings-ui.glade.h:21
+#: ../src/xfdesktop-file-icon-manager.c:562
+#: ../src/xfdesktop-file-icon-manager.c:581
+#: ../src/xfdesktop-file-icon-manager.c:666
+#: ../src/xfdesktop-file-icon-manager.c:802
+#: ../src/xfdesktop-file-icon-manager.c:1106
 #: ../src/xfdesktop-file-icon-manager.c:1356
-#: ../src/xfdesktop-file-icon-manager.c:2938 ../src/xfdesktop-file-utils.c:674
-#: ../src/xfdesktop-file-utils.c:693 ../src/xfdesktop-file-utils.c:747
-#: ../src/xfdesktop-file-utils.c:811 ../src/xfdesktop-file-utils.c:872
-#: ../src/xfdesktop-file-utils.c:933 ../src/xfdesktop-file-utils.c:981
-#: ../src/xfdesktop-file-utils.c:1036 ../src/xfdesktop-file-utils.c:1094
-#: ../src/xfdesktop-file-utils.c:1146 ../src/xfdesktop-file-utils.c:1207
-#: ../src/xfdesktop-file-utils.c:1283 ../src/xfdesktop-file-utils.c:1309
-#: ../src/xfdesktop-file-utils.c:1371 ../src/xfdesktop-file-utils.c:1430
-#: ../src/xfdesktop-file-utils.c:1446 ../src/xfdesktop-file-utils.c:1508
-#: ../src/xfdesktop-file-utils.c:1526 ../src/xfdesktop-volume-icon.c:523
+#: ../src/xfdesktop-file-icon-manager.c:2938 ../src/xfdesktop-file-utils.c:686
+#: ../src/xfdesktop-file-utils.c:706 ../src/xfdesktop-file-utils.c:761
+#: ../src/xfdesktop-file-utils.c:825 ../src/xfdesktop-file-utils.c:886
+#: ../src/xfdesktop-file-utils.c:947 ../src/xfdesktop-file-utils.c:995
+#: ../src/xfdesktop-file-utils.c:1050 ../src/xfdesktop-file-utils.c:1108
+#: ../src/xfdesktop-file-utils.c:1160 ../src/xfdesktop-file-utils.c:1221
+#: ../src/xfdesktop-file-utils.c:1297 ../src/xfdesktop-file-utils.c:1323
+#: ../src/xfdesktop-file-utils.c:1385 ../src/xfdesktop-file-utils.c:1444
+#: ../src/xfdesktop-file-utils.c:1460 ../src/xfdesktop-file-utils.c:1522
+#: ../src/xfdesktop-file-utils.c:1540 ../src/xfdesktop-volume-icon.c:523
 #: ../src/xfdesktop-volume-icon.c:569 ../src/xfdesktop-volume-icon.c:605
 msgid "_Close"
 msgstr "ปิ_ด"
@@ -182,7 +183,7 @@ msgstr "หมายเลขซ็อกเก็ต"
 msgid "Version information"
 msgstr "ข้อมูลรุ่น"
 
-#: ../settings/main.c:2130 ../src/xfdesktop-application.c:836
+#: ../settings/main.c:2130 ../src/xfdesktop-application.c:842
 msgid "Enable debug messages"
 msgstr "เปิดแสดงข้อความดีบั๊ก"
 
@@ -431,120 +432,116 @@ msgid "Bottom Right Horizontal"
 msgstr "ล่างขวาแนวนอน"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:20
+msgid "_Help"
+msgstr "_วิธีใช้"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:22
 msgid "_Background"
 msgstr "_พื้นหลัง"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:21
+#: ../settings/xfdesktop-settings-ui.glade.h:23
 msgid "Include applications menu on _desktop right click"
 msgstr "เพิ่มเมนูโปรแกรมเมื่อคลิกขวาบน_พื้นโต๊ะด้วย"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:22
+#: ../settings/xfdesktop-settings-ui.glade.h:24
 msgid "_Button:"
 msgstr "_ปุ่ม:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:23
+#: ../settings/xfdesktop-settings-ui.glade.h:25
 msgid "Mo_difier:"
 msgstr "ปุ่มป_ระกอบ:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:24
+#: ../settings/xfdesktop-settings-ui.glade.h:26
 msgid "Show _application icons in menu"
 msgstr "แสดงไอ_คอนโปรแกรมในเมนู"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:25
+#: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "_Edit desktop menu"
 msgstr "แ_ก้ไขเมนูพื้นโต๊ะ"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:26
+#: ../settings/xfdesktop-settings-ui.glade.h:28
 msgid "<b>Desktop Menu</b>"
 msgstr "<b>เมนูพื้นโต๊ะ</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:27
+#: ../settings/xfdesktop-settings-ui.glade.h:29
 msgid "Show _window list menu on desktop middle click"
 msgstr "แสดงเมนูรายชื่อ_หน้าต่างเมื่อคลิกเมาส์ปุ่มกลางบนพื้นโต๊ะ"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:28
+#: ../settings/xfdesktop-settings-ui.glade.h:30
 msgid "B_utton:"
 msgstr "ปุ่_ม:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:29
+#: ../settings/xfdesktop-settings-ui.glade.h:31
 msgid "Modi_fier:"
 msgstr "ปุ่มประกอ_บ"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:30
+#: ../settings/xfdesktop-settings-ui.glade.h:32
 msgid "Sh_ow application icons in menu"
 msgstr "แสดงไอคอ_นโปรแกรมในเมนู"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:31
+#: ../settings/xfdesktop-settings-ui.glade.h:33
 msgid "Show workspace _names in list"
 msgstr "แสดง_ชื่อพื้นที่ทำงานในรายชื่อ"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:32
+#: ../settings/xfdesktop-settings-ui.glade.h:34
 msgid "Use _submenus for the windows in each workspace"
 msgstr "ใช้เมนู_ย่อยสำหรับหน้าต่างในแต่ละพื้นที่ทำงาน"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:33
+#: ../settings/xfdesktop-settings-ui.glade.h:35
 msgid "Show s_ticky windows only in active workspace"
 msgstr "แสดงหน้าต่า_งปักหมุดในพื้นที่ทำงานที่ใช้งานอยู่เท่านั้น"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:34
+#: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid "Show a_dd and remove workspace options in list"
 msgstr "แสดงตัวเลือกสำหรับเ_พิ่มและลบพื้นที่ทำงานในรายชื่อด้วย"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:35
+#: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "<b>Window List Menu</b>"
 msgstr "<b>เมนูรายชื่อหน้าต่าง</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:36
+#: ../settings/xfdesktop-settings-ui.glade.h:38
 msgid "_Menus"
 msgstr "เ_มนู"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:37
+#: ../settings/xfdesktop-settings-ui.glade.h:39
 msgid "Icon _type:"
 msgstr "_ชนิดไอคอน:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:38
+#: ../settings/xfdesktop-settings-ui.glade.h:40
 msgid "Icon _size:"
 msgstr "_ขนาดไอคอน:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:39
+#: ../settings/xfdesktop-settings-ui.glade.h:41
 msgid "48"
 msgstr "48"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:40
+#: ../settings/xfdesktop-settings-ui.glade.h:42
 msgid "Icons _orientation:"
 msgstr "แ_นววางไอคอน:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:41
+#: ../settings/xfdesktop-settings-ui.glade.h:43
 msgid "Show icons on primary display"
 msgstr "แสดงไอคอนที่จอแสดงผลหลัก"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:42
+#: ../settings/xfdesktop-settings-ui.glade.h:44
 msgid "Use custom _font size:"
 msgstr "กำหนดขนาดอักษ_ร:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:43
+#: ../settings/xfdesktop-settings-ui.glade.h:45
 msgid "12"
 msgstr "12"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:44
+#: ../settings/xfdesktop-settings-ui.glade.h:46
 msgid "Show icon tooltips. Size:"
 msgstr "แสดงคำแนะนำของไอคอน ขนาด:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:45
+#: ../settings/xfdesktop-settings-ui.glade.h:47
 msgid "Size of the tooltip preview image."
 msgstr "ขนาดของภาพตัวอย่างที่จะแสดงเป็นคำแนะนำเครื่องมือ"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:46
+#: ../settings/xfdesktop-settings-ui.glade.h:48
 msgid "128"
 msgstr "128"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:47
-msgid "Show hidden files on the desktop"
-msgstr "แสดงแฟ้มซ่อนบนพื้นโต๊ะ"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:48
-msgid "Single _click to activate items"
-msgstr "เรียกรายการโดยใช้_คลิกเดียว"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:49
 msgid "Show t_humbnails"
@@ -557,14 +554,22 @@ msgid ""
 msgstr "เลือกตัวเลือกนี้หากต้องการแสดงแฟ้มที่สามารถทำภาพตัวอย่างได้ในรูปของไอคอนภาพย่อที่สร้างโดยอัตโนมัติ"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:51
+msgid "Show hidden files on the desktop"
+msgstr "แสดงแฟ้มซ่อนบนพื้นโต๊ะ"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:52
+msgid "Single _click to activate items"
+msgstr "เรียกรายการโดยใช้_คลิกเดียว"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:53
 msgid "<b>Appearance</b>"
 msgstr "<b>รูปลักษณ์</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:52
+#: ../settings/xfdesktop-settings-ui.glade.h:54
 msgid "<b>Default Icons</b>"
 msgstr "<b>ไอคอนปริยาย</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:53
+#: ../settings/xfdesktop-settings-ui.glade.h:55
 msgid "_Icons"
 msgstr "ไ_อคอน"
 
@@ -625,127 +630,127 @@ msgstr "_ลบพื้นที่ทำงาน %d"
 msgid "_Remove Workspace '%s'"
 msgstr "_ลบพื้นที่ทำงาน '%s'"
 
-#: ../src/xfdesktop-application.c:828
+#: ../src/xfdesktop-application.c:834
 msgid "Display version information"
 msgstr "แสดงข้อมูลรุ่น"
 
-#: ../src/xfdesktop-application.c:829
+#: ../src/xfdesktop-application.c:835
 msgid "Reload all settings"
 msgstr "โหลดค่าตั้งทั้งหมดใหม่"
 
-#: ../src/xfdesktop-application.c:830
+#: ../src/xfdesktop-application.c:836
 msgid "Advance to the next wallpaper on the current workspace"
 msgstr "ขยับไปใช้ภาพพื้นหลังถัดไปบนพื้นที่ทำงานปัจจุบัน"
 
-#: ../src/xfdesktop-application.c:831
+#: ../src/xfdesktop-application.c:837
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "ผุดเมนูขึ้น (ที่ตำแหน่งตัวชี้เมาส์ปัจจุบัน)"
 
-#: ../src/xfdesktop-application.c:832
+#: ../src/xfdesktop-application.c:838
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "ผุดรายชื่อหน้าต่างขึ้น (ที่ตำแหน่งตัวชี้เมาส์ปัจจุบัน)"
 
-#: ../src/xfdesktop-application.c:834
+#: ../src/xfdesktop-application.c:840
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "จัดเรียงไอคอนบนพื้นโต๊ะทั้งหมดโดยอัตโนมัติ"
 
-#: ../src/xfdesktop-application.c:837
+#: ../src/xfdesktop-application.c:843
 msgid "Disable debug messages"
 msgstr "ปิดการแสดงข้อความดีบั๊ก"
 
-#: ../src/xfdesktop-application.c:838
+#: ../src/xfdesktop-application.c:844
 msgid "Do not wait for a window manager on startup"
 msgstr "ไม่ต้องรอให้โปรแกรมจัดการหน้าต่างเปิดทำงาน"
 
-#: ../src/xfdesktop-application.c:839
+#: ../src/xfdesktop-application.c:845
 msgid "Cause xfdesktop to quit"
 msgstr "ให้ xfdesktop จบการทำงาน"
 
-#: ../src/xfdesktop-application.c:854
+#: ../src/xfdesktop-application.c:860
 #, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "แจงอาร์กิวเมนต์ไม่สำเร็จ: %s\n"
 
-#: ../src/xfdesktop-application.c:865
+#: ../src/xfdesktop-application.c:871
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "นี่คือ %s รุ่น %s ทำงานบน Xfce %s\n"
 
-#: ../src/xfdesktop-application.c:867
+#: ../src/xfdesktop-application.c:873
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "ประกอบสร้างด้วย GTK+ %d.%d.%d ลิงก์กับ GTK+ %d.%d.%d"
 
-#: ../src/xfdesktop-application.c:871
+#: ../src/xfdesktop-application.c:877
 #, c-format
 msgid "Build options:\n"
 msgstr "ตัวเลือกที่ใช้ประกอบสร้าง:\n"
 
-#: ../src/xfdesktop-application.c:872
+#: ../src/xfdesktop-application.c:878
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    เมนูพื้นโต๊ะ:            %s\n"
 
-#: ../src/xfdesktop-application.c:874 ../src/xfdesktop-application.c:881
-#: ../src/xfdesktop-application.c:888
+#: ../src/xfdesktop-application.c:880 ../src/xfdesktop-application.c:887
+#: ../src/xfdesktop-application.c:894
 msgid "enabled"
 msgstr "เปิดใช้งาน"
 
-#: ../src/xfdesktop-application.c:876 ../src/xfdesktop-application.c:883
-#: ../src/xfdesktop-application.c:890
+#: ../src/xfdesktop-application.c:882 ../src/xfdesktop-application.c:889
+#: ../src/xfdesktop-application.c:896
 msgid "disabled"
 msgstr "ปิดใช้"
 
-#: ../src/xfdesktop-application.c:879
+#: ../src/xfdesktop-application.c:885
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    ไอคอนพื้นโต๊ะ:          %s\n"
 
-#: ../src/xfdesktop-application.c:886
+#: ../src/xfdesktop-application.c:892
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    ไอคอนแฟ้มบนพื้นโต๊ะ:     %s\n"
 
-#: ../src/xfdesktop-file-icon-manager.c:552
-#: ../src/xfdesktop-file-icon-manager.c:570
+#: ../src/xfdesktop-file-icon-manager.c:554
+#: ../src/xfdesktop-file-icon-manager.c:572
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
 msgstr "ไม่สามารถสร้างโฟลเดอร์พื้นโต๊ะ \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:557
-#: ../src/xfdesktop-file-icon-manager.c:575
+#: ../src/xfdesktop-file-icon-manager.c:559
+#: ../src/xfdesktop-file-icon-manager.c:577
 msgid "Desktop Folder Error"
 msgstr "ข้อผิดพลาดเกี่ยวกับโฟลเดอร์พื้นโต๊ะ"
 
-#: ../src/xfdesktop-file-icon-manager.c:577
+#: ../src/xfdesktop-file-icon-manager.c:579
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr "มีแฟ้มธรรมดาในชื่อเดียวกันอยู่ก่อนแล้ว กรุณาลบหรือเปลี่ยนชื่อแฟ้มดังกล่าว"
 
-#: ../src/xfdesktop-file-icon-manager.c:661 ../src/xfdesktop-file-utils.c:743
-#: ../src/xfdesktop-file-utils.c:807
+#: ../src/xfdesktop-file-icon-manager.c:663 ../src/xfdesktop-file-utils.c:757
+#: ../src/xfdesktop-file-utils.c:821
 msgid "Rename Error"
 msgstr "ผิดพลาดขณะเปลี่ยนชื่อ"
 
-#: ../src/xfdesktop-file-icon-manager.c:662 ../src/xfdesktop-file-utils.c:808
+#: ../src/xfdesktop-file-icon-manager.c:664 ../src/xfdesktop-file-utils.c:822
 msgid "The files could not be renamed"
 msgstr "ไม่สามารถเปลี่ยนชื่อแฟ้มได้"
 
-#: ../src/xfdesktop-file-icon-manager.c:663
+#: ../src/xfdesktop-file-icon-manager.c:665
 msgid "None of the icons selected support being renamed."
 msgstr "ไอคอนที่เลือกไม่มีไอคอนใดรองรับการเปลี่ยนชื่อ"
 
-#: ../src/xfdesktop-file-icon-manager.c:1025
+#: ../src/xfdesktop-file-icon-manager.c:1027
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "_เปิดด้วย \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1028
+#: ../src/xfdesktop-file-icon-manager.c:1030
 #, c-format
 msgid "Open With \"%s\""
 msgstr "เปิดด้วย \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1102
+#: ../src/xfdesktop-file-icon-manager.c:1104
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
@@ -874,132 +879,136 @@ msgstr "เ_ชื่อมโยงมาที่นี่"
 msgid "_Cancel"
 msgstr "_ยกเลิก"
 
+#: ../src/xfdesktop-file-icon-manager.c:3667
+msgid "Untitled document"
+msgstr ""
+
 #. TRANSLATORS: file was modified less than one day ago
-#: ../src/xfdesktop-file-utils.c:147
+#: ../src/xfdesktop-file-utils.c:159
 #, c-format
 msgid "Today at %X"
 msgstr "วันนี้ เวลา %X"
 
 #. TRANSLATORS: file was modified less than two days ago
-#: ../src/xfdesktop-file-utils.c:151
+#: ../src/xfdesktop-file-utils.c:163
 #, c-format
 msgid "Yesterday at %X"
 msgstr "เมื่อวานนี้ เวลา %X"
 
 #. Days from last week
-#: ../src/xfdesktop-file-utils.c:156
+#: ../src/xfdesktop-file-utils.c:168
 #, c-format
 msgid "%A at %X"
 msgstr "วัน%A เวลา %X"
 
 #. Any other date
-#: ../src/xfdesktop-file-utils.c:159
+#: ../src/xfdesktop-file-utils.c:171
 #, c-format
 msgid "%x at %X"
 msgstr "%x เวลา %X"
 
 #. the file_time is invalid
-#: ../src/xfdesktop-file-utils.c:169
+#: ../src/xfdesktop-file-utils.c:181
 msgid "Unknown"
 msgstr "ไม่ทราบ"
 
-#: ../src/xfdesktop-file-utils.c:672
+#: ../src/xfdesktop-file-utils.c:684
 msgid "The folder could not be opened"
 msgstr "ไม่สามารถเปิดโฟลเดอร์ได้"
 
-#: ../src/xfdesktop-file-utils.c:690
+#: ../src/xfdesktop-file-utils.c:703
 msgid "Error"
 msgstr "ผิดพลาด"
 
-#: ../src/xfdesktop-file-utils.c:691
+#: ../src/xfdesktop-file-utils.c:704
 msgid "The requested operation could not be completed"
 msgstr "ไม่สามารถทำงานเสร็จสมบูรณ์ได้"
 
-#: ../src/xfdesktop-file-utils.c:744
+#: ../src/xfdesktop-file-utils.c:758
 msgid "The file could not be renamed"
 msgstr "ไม่สามารถเปลี่ยนชื่อแฟ้มได้"
 
-#: ../src/xfdesktop-file-utils.c:745 ../src/xfdesktop-file-utils.c:809
-#: ../src/xfdesktop-file-utils.c:870 ../src/xfdesktop-file-utils.c:1034
-#: ../src/xfdesktop-file-utils.c:1092 ../src/xfdesktop-file-utils.c:1144
-#: ../src/xfdesktop-file-utils.c:1205 ../src/xfdesktop-file-utils.c:1307
-#: ../src/xfdesktop-file-utils.c:1369 ../src/xfdesktop-file-utils.c:1444
-#: ../src/xfdesktop-file-utils.c:1524
+#: ../src/xfdesktop-file-utils.c:759 ../src/xfdesktop-file-utils.c:823
+#: ../src/xfdesktop-file-utils.c:884 ../src/xfdesktop-file-utils.c:1048
+#: ../src/xfdesktop-file-utils.c:1106 ../src/xfdesktop-file-utils.c:1158
+#: ../src/xfdesktop-file-utils.c:1219 ../src/xfdesktop-file-utils.c:1321
+#: ../src/xfdesktop-file-utils.c:1383 ../src/xfdesktop-file-utils.c:1458
+#: ../src/xfdesktop-file-utils.c:1538
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
 msgstr "ความสามารถนี้ต้องอาศัยบริการจัดการแฟ้ม (เช่นที่ให้บริการโดย Thunar)"
 
-#: ../src/xfdesktop-file-utils.c:868
+#: ../src/xfdesktop-file-utils.c:882
 msgid "Delete Error"
 msgstr "ผิดพลาดขณะลบ"
 
-#: ../src/xfdesktop-file-utils.c:869
+#: ../src/xfdesktop-file-utils.c:883
 msgid "The selected files could not be deleted"
 msgstr "ไม่สามารถลบแฟ้มที่เลือกได้"
 
-#: ../src/xfdesktop-file-utils.c:929 ../src/xfdesktop-file-utils.c:977
+#: ../src/xfdesktop-file-utils.c:943 ../src/xfdesktop-file-utils.c:991
 msgid "Trash Error"
 msgstr "ผิดพลาดขณะทิ้งขยะ"
 
-#: ../src/xfdesktop-file-utils.c:930
+#: ../src/xfdesktop-file-utils.c:944
 msgid "The selected files could not be moved to the trash"
 msgstr "ไม่สามารถย้ายแฟ้มที่เลือกไปลงถังขยะได้"
 
-#: ../src/xfdesktop-file-utils.c:931 ../src/xfdesktop-file-utils.c:979
+#: ../src/xfdesktop-file-utils.c:945 ../src/xfdesktop-file-utils.c:993
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
 msgstr "ความสามารถนี้ต้องอาศัยบริการถังขยะ (เช่นที่ให้บริการโดย Thunar)"
 
-#: ../src/xfdesktop-file-utils.c:978
+#: ../src/xfdesktop-file-utils.c:992
 msgid "Could not empty the trash"
 msgstr "ไม่สามารถเทขยะในถังขยะ"
 
-#: ../src/xfdesktop-file-utils.c:1032
+#: ../src/xfdesktop-file-utils.c:1046
 msgid "Create File Error"
 msgstr "ผิดพลาดขณะสร้างแฟ้ม"
 
-#: ../src/xfdesktop-file-utils.c:1033
+#: ../src/xfdesktop-file-utils.c:1047
 msgid "Could not create a new file"
 msgstr "ไม่สามารถสร้างแฟ้มใหม่"
 
-#: ../src/xfdesktop-file-utils.c:1090
+#: ../src/xfdesktop-file-utils.c:1104
 msgid "Create Document Error"
 msgstr "ผิดพลาดขณะสร้างเอกสาร"
 
-#: ../src/xfdesktop-file-utils.c:1091
+#: ../src/xfdesktop-file-utils.c:1105
 msgid "Could not create a new document from the template"
 msgstr "ไม่สามารถสร้างเอกสารใหม่จากแม่แบบ"
 
-#: ../src/xfdesktop-file-utils.c:1142
+#: ../src/xfdesktop-file-utils.c:1156
 msgid "File Properties Error"
 msgstr "ผิดพลาดขณะอ่านคุณสมบัติของแฟ้ม"
 
-#: ../src/xfdesktop-file-utils.c:1143
+#: ../src/xfdesktop-file-utils.c:1157
 msgid "The file properties dialog could not be opened"
 msgstr "ไม่สามารถเปิดกล่องโต้ตอบแสดงคุณสมบัติของแฟ้มได้"
 
-#: ../src/xfdesktop-file-utils.c:1204
+#: ../src/xfdesktop-file-utils.c:1218
 msgid "The file could not be opened"
 msgstr "ไม่สามารถเปิดแฟ้มได้"
 
-#: ../src/xfdesktop-file-utils.c:1278 ../src/xfdesktop-file-utils.c:1302
+#: ../src/xfdesktop-file-utils.c:1292 ../src/xfdesktop-file-utils.c:1316
 #, c-format
 msgid "Failed to run \"%s\""
 msgstr "เรียกทำงาน \"%s\" ไม่สำเร็จ"
 
-#: ../src/xfdesktop-file-utils.c:1368
+#: ../src/xfdesktop-file-utils.c:1382
 msgid "The application chooser could not be opened"
 msgstr "ไม่สามารถเปิดเครื่องมือเลือกโปรแกรมได้"
 
-#: ../src/xfdesktop-file-utils.c:1427 ../src/xfdesktop-file-utils.c:1442
-#: ../src/xfdesktop-file-utils.c:1505 ../src/xfdesktop-file-utils.c:1522
+#: ../src/xfdesktop-file-utils.c:1441 ../src/xfdesktop-file-utils.c:1456
+#: ../src/xfdesktop-file-utils.c:1519 ../src/xfdesktop-file-utils.c:1536
 msgid "Transfer Error"
 msgstr "ผิดพลาดขณะถ่ายโอน"
 
-#: ../src/xfdesktop-file-utils.c:1428 ../src/xfdesktop-file-utils.c:1443
-#: ../src/xfdesktop-file-utils.c:1506 ../src/xfdesktop-file-utils.c:1523
+#: ../src/xfdesktop-file-utils.c:1442 ../src/xfdesktop-file-utils.c:1457
+#: ../src/xfdesktop-file-utils.c:1520 ../src/xfdesktop-file-utils.c:1537
 msgid "The file transfer could not be performed"
 msgstr "ไม่สามารถถ่ายโอนแฟ้มได้"
 
@@ -1053,13 +1062,14 @@ msgstr "กำลังดันสื่อในอุปกรณ์ \"%s\" �
 msgid "Eject Finished"
 msgstr "ดันสื่อออกเรียบร้อยแล้ว"
 
-#: ../src/xfdesktop-regular-file-icon.c:796
+#: ../src/xfdesktop-regular-file-icon.c:817
 #, c-format
 msgid ""
+"Name: %s\n"
 "Type: %s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr "ชนิด: %s\nขนาด: %s\nเปลี่ยนแปลงล่าสุด: %s"
+msgstr ""
 
 #: ../src/xfdesktop-special-file-icon.c:294
 #: ../src/xfdesktop-special-file-icon.c:476
@@ -1135,6 +1145,6 @@ msgstr "เ_ลิกเมานท์โวลุม"
 msgid "_Mount Volume"
 msgstr "เ_มานท์โวลุม"
 
-#: ../src/xfdesktop-window-icon.c:191
+#: ../src/xfdesktop-window-icon.c:193
 msgid "_Window Actions"
 msgstr "การกระทำกับ_หน้าต่าง"
