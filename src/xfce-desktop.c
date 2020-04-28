@@ -102,6 +102,7 @@ struct _XfceDesktopPrivate
     gint nworkspaces;
     XfceWorkspace **workspaces;
     gint current_workspace;
+    gboolean current_workspace_initialized;
 
     gboolean single_workspace_mode;
     gint single_workspace_num;
@@ -745,10 +746,13 @@ workspace_changed_cb(WnckScreen *wnck_screen,
     current_workspace = desktop->priv->current_workspace;
     new_workspace = xfce_desktop_get_current_workspace(desktop);
 
+    if(desktop->priv->current_workspace_initialized && new_workspace == current_workspace)
+        return;
     if(new_workspace < 0 || new_workspace >= desktop->priv->nworkspaces)
         return;
 
     desktop->priv->current_workspace = new_workspace;
+    desktop->priv->current_workspace_initialized = TRUE;
 
     XF_DEBUG("current_workspace %d, new_workspace %d",
              current_workspace, new_workspace);
