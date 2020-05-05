@@ -41,15 +41,15 @@ msgstr "Eemaldatavad seadmed"
 
 #: ../settings/main.c:427
 msgid "Network Shares"
-msgstr ""
+msgstr "Võrgukaustad"
 
 #: ../settings/main.c:429
 msgid "Disks and Drives"
-msgstr ""
+msgstr "Kettad ja muud mäluseadmed"
 
 #: ../settings/main.c:431
 msgid "Other Devices"
-msgstr ""
+msgstr "Muud seadmed"
 
 #. Display the file name, file type, and file size in the tooltip.
 #: ../settings/main.c:545
@@ -59,52 +59,56 @@ msgid ""
 "Type: %s\n"
 "Size: %s"
 msgstr ""
+"<b>%s</b>\n"
+"Tüüp: %s\n"
+"Suurus: %s"
 
 #: ../settings/main.c:732
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
-msgstr ""
+msgstr "Taustapilt kuvarile %d (%s)"
 
 #: ../settings/main.c:735
 #, c-format
 msgid "Wallpaper for Monitor %d"
-msgstr ""
+msgstr "Taustapilt kuvarile %d"
 
 #: ../settings/main.c:741
 msgid "Move this dialog to the display you want to edit the settings for."
-msgstr ""
+msgstr "Tõsta see dialoogiaken kuvarile, mille seadistusi soovid muuta."
 
 #: ../settings/main.c:748
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
-msgstr ""
+msgstr "Taustapilt %s jaoks kuvaril %d (%s)"
 
 #: ../settings/main.c:752
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
-msgstr ""
+msgstr "Taustapilt %s jaoks kuvaril %d"
 
 #: ../settings/main.c:759
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr ""
+"Tõsta see dialoogiaken kuvarile ja tööalale, mille seadistusi soovid muuta."
 
 #. Single monitor and single workspace
 #: ../settings/main.c:767
 #, c-format
 msgid "Wallpaper for my desktop"
-msgstr ""
+msgstr "Taustapilt minu töölaua jaoks"
 
 #. Single monitor and per workspace wallpaper
 #: ../settings/main.c:773
 #, c-format
 msgid "Wallpaper for %s"
-msgstr ""
+msgstr "Taustapilt %s jaoks"
 
 #: ../settings/main.c:778
 msgid "Move this dialog to the workspace you want to edit the settings for."
-msgstr ""
+msgstr "Tõsta see dialoogiaken tööalale, mille seadistusi soovid muuta."
 
 #: ../settings/main.c:1198
 msgid "Image selection is unavailable while the image style is set to None."
@@ -121,10 +125,12 @@ msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
 msgstr ""
+"Kas sa soovid kõik olemasolevad ikoonid\n"
+"ümber tõsta vastavalt valitud suunale."
 
 #: ../settings/main.c:1749
 msgid "Arrange icons"
-msgstr ""
+msgstr "Paiguta ikoonid"
 
 #. printf is to be translator-friendly
 #: ../settings/main.c:1757 ../src/xfdesktop-file-icon-manager.c:798
@@ -169,7 +175,7 @@ msgstr "Pildifailid"
 #. Change the title of the file chooser dialog
 #: ../settings/main.c:1923
 msgid "Select a Directory"
-msgstr ""
+msgstr "Vali kataloog"
 
 #: ../settings/main.c:2128
 msgid "Settings manager socket"
@@ -185,7 +191,7 @@ msgstr "Versiooniteave"
 
 #: ../settings/main.c:2130 ../src/xfdesktop-application.c:842
 msgid "Enable debug messages"
-msgstr ""
+msgstr "Luba silumisteated"
 
 #: ../settings/main.c:2158
 #, c-format
@@ -241,7 +247,7 @@ msgstr "Läbipaistev"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
 msgid "Choose the folder to select wallpapers from."
-msgstr ""
+msgstr "Vali  kaust, kust taustapilte valitakse."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
 msgid "St_yle:"
@@ -249,7 +255,7 @@ msgstr "St_iil:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
 msgid "Specify how the image will be resized to fit the screen."
-msgstr ""
+msgstr "Täpsusta, kuidas pildi suurust muuta, et see ekraanile mahuks"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
 #: ../settings/xfdesktop-settings-ui.glade.h:4
@@ -282,11 +288,12 @@ msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
 msgid "Specify the style of the color drawn behind the backdrop image."
-msgstr ""
+msgstr "Määra taustapildi taha joonistatava värvi stiil."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
 msgstr ""
+"Täpsustab ühtlase värvi, või „vasakpoolse” või „ülemise” värvisiirde värvi."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Select First Color"
@@ -294,7 +301,7 @@ msgstr "Vali esimene värv"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient."
-msgstr ""
+msgstr "Täpsustab „parempoolse” või „alumise” värvisiirde värvi"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
 msgid "Select Second Color"
@@ -302,11 +309,11 @@ msgstr "Vali teine värv"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
 msgid "Apply to all _workspaces"
-msgstr ""
+msgstr "Kasuta kõikidel _tööaladel"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
 msgid "_Folder:"
-msgstr ""
+msgstr "_Kaust:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
 msgid "C_olor:"
@@ -314,58 +321,58 @@ msgstr "V_ärv"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 msgid "Change the _background "
-msgstr ""
+msgstr "Muuda _tausta"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
 msgid ""
 "Automatically select a different background from the current directory."
-msgstr ""
+msgstr "Automaatselt vali etteantud kaustast uus taustapilt."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid "Specify how often the background will change."
-msgstr ""
+msgstr "Kirjelda kui tihti taustapilti vahetatakse."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "in seconds:"
-msgstr ""
+msgstr "iga järgneva sekundi järel"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
 msgid "in minutes:"
-msgstr ""
+msgstr "iga järgneva minuti järel"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
 msgid "in hours:"
-msgstr ""
+msgstr "iga järgneva tunni järel"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
 msgid "at start up"
-msgstr ""
+msgstr "sisselogimisel"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
 msgid "every hour"
-msgstr ""
+msgstr "kord tunnis"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
 msgid "every day"
-msgstr ""
+msgstr "kord päevas"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
 msgid "chronologically"
-msgstr ""
+msgstr "piltide ajatempli järgi"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
 msgid "Amount of time before a different background is selected."
-msgstr ""
+msgstr "Ajavhemik, millal taustapilti muudetakse."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
 msgid "_Random Order"
-msgstr ""
+msgstr "Juhuslikus jä_rjekorras"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
 msgid ""
 "Randomly selects another image from the same directory when the wallpaper is"
 " to cycle."
-msgstr ""
+msgstr "Valib etteantud ajal samast kaustast juhusliku pildi."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:1
 msgid "Left"
@@ -401,35 +408,35 @@ msgstr "Faili/käivitaja ikoonid"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:10
 msgid "Top Left Vertical"
-msgstr ""
+msgstr "Ülal vasakul püstiselt"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:11
 msgid "Top Left Horizontal"
-msgstr ""
+msgstr "Ülal vasakul rõhtselt"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:12
 msgid "Top Right Vertical"
-msgstr ""
+msgstr "Ülal paremal püstiselt"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:13
 msgid "Top Right Horizontal"
-msgstr ""
+msgstr "Ülal paremal rõhtselt"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:14
 msgid "Bottom Left Vertical"
-msgstr ""
+msgstr "All vasakul rõhtselt"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:15
 msgid "Bottom Left Horizontal"
-msgstr ""
+msgstr "All vasakul püstiselt"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:16
 msgid "Bottom Right Vertical"
-msgstr ""
+msgstr "All paremal püstiselt"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:17
 msgid "Bottom Right Horizontal"
-msgstr ""
+msgstr "All paremal rõhtselt"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:20
 msgid "_Help"
@@ -441,7 +448,7 @@ msgstr "_Taust"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:23
 msgid "Include applications menu on _desktop right click"
-msgstr ""
+msgstr "Kaasa _töölaual hiire parema nupuga klõpsates rakenduste menüü"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:24
 msgid "_Button:"
@@ -534,11 +541,11 @@ msgstr "12"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:46
 msgid "Show icon tooltips. Size:"
-msgstr ""
+msgstr "Näita ikoonide teabemulle suurusega:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:47
 msgid "Size of the tooltip preview image."
-msgstr ""
+msgstr "Teabemulli eelvaate pildi suurus."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:48
 msgid "128"
@@ -553,6 +560,8 @@ msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
 msgstr ""
+"Selle valiku märgistamisel näidatakse eelvaadeldavaid faile automaatselt "
+"tekitatavate pisipiltidena."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:51
 msgid "Show hidden files on the desktop"
@@ -560,7 +569,7 @@ msgstr "Näita töölaual peidetud faile"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:52
 msgid "Single _click to activate items"
-msgstr ""
+msgstr "_Kirjed aktiveeritakse ühe klõpsuga"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:53
 msgid "<b>Appearance</b>"
@@ -645,7 +654,7 @@ msgstr "Lae uuesti käik seadistused"
 
 #: ../src/xfdesktop-application.c:836
 msgid "Advance to the next wallpaper on the current workspace"
-msgstr ""
+msgstr "Kuva sellel tööajal järgmine taustapilt"
 
 #: ../src/xfdesktop-application.c:837
 msgid "Pop up the menu (at the current mouse position)"
@@ -849,11 +858,11 @@ msgstr "_Muuda nime..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1848
 msgid "Arrange Desktop _Icons"
-msgstr ""
+msgstr "Paiguta ikoonid töölaual"
 
 #: ../src/xfdesktop-file-icon-manager.c:1858
 msgid "_Next Background"
-msgstr ""
+msgstr "_Järgmine taustapilt"
 
 #: ../src/xfdesktop-file-icon-manager.c:1868
 msgid "Desktop _Settings..."
@@ -874,15 +883,15 @@ msgstr "Töölaua kausta laadimine ebaõnnestus"
 
 #: ../src/xfdesktop-file-icon-manager.c:3506
 msgid "Copy _Here"
-msgstr ""
+msgstr "Kopeeri _siia"
 
 #: ../src/xfdesktop-file-icon-manager.c:3506
 msgid "_Move Here"
-msgstr ""
+msgstr "_Liiguta siia"
 
 #: ../src/xfdesktop-file-icon-manager.c:3506
 msgid "_Link Here"
-msgstr ""
+msgstr "_Lingi siia"
 
 #: ../src/xfdesktop-file-icon-manager.c:3541
 msgid "_Cancel"
@@ -890,7 +899,7 @@ msgstr "_Loobu"
 
 #: ../src/xfdesktop-file-icon-manager.c:3670
 msgid "Untitled document"
-msgstr ""
+msgstr "Nimeta dokument"
 
 #. TRANSLATORS: file was modified less than one day ago
 #: ../src/xfdesktop-file-utils.c:159
@@ -927,11 +936,11 @@ msgstr "Kausta ei suudetud avada"
 
 #: ../src/xfdesktop-file-utils.c:703
 msgid "Error"
-msgstr ""
+msgstr "Viga"
 
 #: ../src/xfdesktop-file-utils.c:704
 msgid "The requested operation could not be completed"
-msgstr ""
+msgstr "Soovitud tegevust ei olnud võimalik lõpetada"
 
 #: ../src/xfdesktop-file-utils.c:758
 msgid "The file could not be renamed"
@@ -1057,12 +1066,12 @@ msgstr ""
 
 #: ../src/xfdesktop-notify.c:221
 msgid "Unmount Finished"
-msgstr ""
+msgstr "Lahtihaakimine sai tehtud"
 
 #: ../src/xfdesktop-notify.c:223 ../src/xfdesktop-notify.c:408
 #, c-format
 msgid "The device \"%s\" has been safely removed from the system. "
-msgstr ""
+msgstr "Andmekandja \"%s\" on turvaliselt eemaldatud"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:313
@@ -1077,7 +1086,7 @@ msgstr "Seadet „%s“ väljutatakse. See võib võtta aega"
 
 #: ../src/xfdesktop-notify.c:406
 msgid "Eject Finished"
-msgstr ""
+msgstr "Väljutamine sai tehtud"
 
 #: ../src/xfdesktop-regular-file-icon.c:817
 #, c-format
@@ -1087,6 +1096,10 @@ msgid ""
 "Size: %s\n"
 "Last modified: %s"
 msgstr ""
+"Nimi: %s\n"
+"Tüüp: %s\n"
+"Suurus: %s\n"
+"Viimati muudetud: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:294
 #: ../src/xfdesktop-special-file-icon.c:476
@@ -1164,7 +1177,7 @@ msgstr "Väl_juta andmekandja"
 
 #: ../src/xfdesktop-volume-icon.c:832
 msgid "_Unmount Volume"
-msgstr ""
+msgstr "Haagi andmekandja _lahti"
 
 #: ../src/xfdesktop-volume-icon.c:839
 msgid "_Mount Volume"
