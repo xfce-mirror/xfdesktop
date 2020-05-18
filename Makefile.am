@@ -15,6 +15,7 @@ manpagedir = $(mandir)/man1
 manpage_DATA = xfdesktop.1
 
 EXTRA_DIST = \
+	README.md \
 	TODO \
 	intltool-extract.in \
 	intltool-merge.in \
