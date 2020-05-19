@@ -1,20 +1,22 @@
-icons32dir = $(datadir)/icons/hicolor/32x32/apps
+icons16dir = $(datadir)/icons/hicolor/16x16/apps
 
-icons32_DATA = \
-	32x32/xfce4-backdrop.png		\
-	32x32/xfce4-menueditor.png
+icons16_DATA = \
+	16x16/org.xfce.xfdesktop.png
 
 icons48dir = $(datadir)/icons/hicolor/48x48/apps
 
 icons48_DATA = \
-	48x48/xfce4-backdrop.png		\
-	48x48/xfce4-menueditor.png
+	48x48/org.xfce.xfdesktop.png
+
+icons128dir = $(datadir)/icons/hicolor/128x128/apps
+
+icons128_DATA = \
+	128x128/org.xfce.xfdesktop.png
 
 iconsscdir = $(datadir)/icons/hicolor/scalable/apps
 
 iconssc_DATA = \
-	scalable/xfce4-backdrop.svg		\
-	scalable/xfce4-menueditor.svg
+	scalable/org.xfce.xfdesktop.svg
 
 pixmapsdir = $(datadir)/pixmaps
 
@@ -31,8 +33,9 @@ pixmapsx_DATA = \
 	xfdesktop-fallback-icon.png
 
 EXTRA_DIST = \
-	$(icons32_DATA) \
+	$(icons16_DATA) \
 	$(icons48_DATA) \
+	$(icons128_DATA) \
 	$(iconssc_DATA) \
 	$(pixmaps_DATA) \
 	$(pixmapsx_DATA)
