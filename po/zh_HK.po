@@ -6,6 +6,7 @@
 # Ambrose Li <acli@ada.dhs.org>, 2004
 # Cheng-Chia Tseng <pswo10680@gmail.com>, 2010,2013
 # Hydonsingore Cia <hydonsingore@educities.edu.tw>, 2004
+# Ivan <personal@live.hk>, 2020
 # Ying-Chun Lai <sofyalai@gmail.com>, 2013
 # umm <umm@pchome.com.tw>, 2003
 # Walter Cheuk <wwycheuk@gmail.com>, 2013,2016
@@ -14,8 +15,8 @@ msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-22 00:32+0100\n"
-"PO-Revision-Date: 2019-12-21 23:32+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
+"PO-Revision-Date: 2020-05-26 05:42+0000\n"
+"Last-Translator: Ivan <personal@live.hk>\n"
 "Language-Team: Chinese (Hong Kong) (http://www.transifex.com/xfce/xfdesktop/language/zh_HK/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -73,7 +74,7 @@ msgstr "螢幕 %d 的桌布"
 
 #: ../settings/main.c:741
 msgid "Move this dialog to the display you want to edit the settings for."
-msgstr ""
+msgstr "將此對話框移至要為其編輯設置的顯示器。"
 
 #: ../settings/main.c:748
 #, c-format
@@ -89,7 +90,7 @@ msgstr "%s 的桌布，螢幕 %d"
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
-msgstr ""
+msgstr "將此對話框移至要為其編輯設置的顯示器和工作空間。"
 
 #. Single monitor and single workspace
 #: ../settings/main.c:767
@@ -125,7 +126,7 @@ msgstr ""
 
 #: ../settings/main.c:1749
 msgid "Arrange icons"
-msgstr ""
+msgstr "排列圖標"
 
 #. printf is to be translator-friendly
 #: ../settings/main.c:1757 ../src/xfdesktop-file-icon-manager.c:798
@@ -186,7 +187,7 @@ msgstr "版本資訊"
 
 #: ../settings/main.c:2130 ../src/xfdesktop-application.c:842
 msgid "Enable debug messages"
-msgstr ""
+msgstr "啟用調試消息"
 
 #: ../settings/main.c:2158
 #, c-format
@@ -242,7 +243,7 @@ msgstr "透明"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
 msgid "Choose the folder to select wallpapers from."
-msgstr ""
+msgstr "選擇要從中選擇牆紙的文件夾。"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
 msgid "St_yle:"
@@ -250,7 +251,7 @@ msgstr "樣式(_Y)："
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
 msgid "Specify how the image will be resized to fit the screen."
-msgstr ""
+msgstr "指定如何調整圖像大小以適應瑩幕。"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
 #: ../settings/xfdesktop-settings-ui.glade.h:4
@@ -283,11 +284,11 @@ msgstr "橫跨螢幕"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
 msgid "Specify the style of the color drawn behind the backdrop image."
-msgstr ""
+msgstr "指定在背景圖像後面繪製的顏色的樣式。"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
-msgstr ""
+msgstr "指定實色，或是漸層的左方或上方顏色"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Select First Color"
@@ -295,7 +296,7 @@ msgstr "選取第一色"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient."
-msgstr ""
+msgstr "指定漸層的右方或下方顏色"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
 msgid "Select Second Color"
@@ -324,7 +325,7 @@ msgstr "自動在目前目錄選取不同背景。"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid "Specify how often the background will change."
-msgstr ""
+msgstr "指定背景要多久變更一次"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "in seconds:"
@@ -402,35 +403,35 @@ msgstr "檔案／啟動器圖示"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:10
 msgid "Top Left Vertical"
-msgstr ""
+msgstr "左上垂直"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:11
 msgid "Top Left Horizontal"
-msgstr ""
+msgstr "左上水平"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:12
 msgid "Top Right Vertical"
-msgstr ""
+msgstr "右上垂直"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:13
 msgid "Top Right Horizontal"
-msgstr ""
+msgstr "右上水平"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:14
 msgid "Bottom Left Vertical"
-msgstr ""
+msgstr "左下垂直"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:15
 msgid "Bottom Left Horizontal"
-msgstr ""
+msgstr "左下水平"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:16
 msgid "Bottom Right Vertical"
-msgstr ""
+msgstr "右下垂直"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:17
 msgid "Bottom Right Horizontal"
-msgstr ""
+msgstr "右下水平"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:20
 msgid "_Help"
@@ -442,7 +443,7 @@ msgstr "背景(_B)"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:23
 msgid "Include applications menu on _desktop right click"
-msgstr ""
+msgstr "在桌面按下右鍵時包括應用程式清單(_D)"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:24
 msgid "_Button:"
@@ -514,15 +515,15 @@ msgstr "圖示大小(_S)："
 
 #: ../settings/xfdesktop-settings-ui.glade.h:41
 msgid "48"
-msgstr ""
+msgstr "48"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:42
 msgid "Icons _orientation:"
-msgstr ""
+msgstr "圖示方向(_O)"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:43
 msgid "Show icons on primary display"
-msgstr ""
+msgstr "在主顯示屏上顯示圖標"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:44
 msgid "Use custom _font size:"
@@ -530,7 +531,7 @@ msgstr "調整字型大小(_F)："
 
 #: ../settings/xfdesktop-settings-ui.glade.h:45
 msgid "12"
-msgstr ""
+msgstr "12"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:46
 msgid "Show icon tooltips. Size:"
@@ -542,7 +543,7 @@ msgstr "工具提示預覽圖像的大小。"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:48
 msgid "128"
-msgstr ""
+msgstr "128"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:49
 msgid "Show t_humbnails"
@@ -641,7 +642,7 @@ msgstr "重新載入所有設定"
 
 #: ../src/xfdesktop-application.c:836
 msgid "Advance to the next wallpaper on the current workspace"
-msgstr ""
+msgstr "前進下一個牆紙到當前工作區中"
 
 #: ../src/xfdesktop-application.c:837
 msgid "Pop up the menu (at the current mouse position)"
@@ -657,7 +658,7 @@ msgstr "自動排列桌面上的所有圖示"
 
 #: ../src/xfdesktop-application.c:843
 msgid "Disable debug messages"
-msgstr ""
+msgstr "禁用調試消息"
 
 #: ../src/xfdesktop-application.c:844
 msgid "Do not wait for a window manager on startup"
@@ -882,7 +883,7 @@ msgstr "取消(_C)"
 
 #: ../src/xfdesktop-file-icon-manager.c:3667
 msgid "Untitled document"
-msgstr ""
+msgstr "無標題文檔"
 
 #. TRANSLATORS: file was modified less than one day ago
 #: ../src/xfdesktop-file-utils.c:159
