@@ -126,7 +126,7 @@ msgid ""
 "icons according to the selected orientation?"
 msgstr ""
 "Kas sa soovid kõik olemasolevad ikoonid\n"
-"ümber tõsta vastavalt valitud suunale."
+"ümber tõsta vastavalt valitud suunale?"
 
 #: ../settings/main.c:1749
 msgid "Arrange icons"
@@ -255,7 +255,7 @@ msgstr "St_iil:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
 msgid "Specify how the image will be resized to fit the screen."
-msgstr "Täpsusta, kuidas pildi suurust muuta, et see ekraanile mahuks"
+msgstr "Täpsusta, kuidas pildi suurust muuta, et see ekraanile mahuks."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
 #: ../settings/xfdesktop-settings-ui.glade.h:4
@@ -317,11 +317,11 @@ msgstr "_Kaust:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
 msgid "C_olor:"
-msgstr "V_ärv"
+msgstr "V_ärv:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 msgid "Change the _background "
-msgstr "Muuda _tausta"
+msgstr "Muuda _tausta "
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
 msgid ""
@@ -334,15 +334,15 @@ msgstr "Kirjelda kui tihti taustapilti vahetatakse."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "in seconds:"
-msgstr "iga järgneva sekundi järel"
+msgstr "peale iga järgnevat sekundit:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
 msgid "in minutes:"
-msgstr "iga järgneva minuti järel"
+msgstr "peale iga järgnevat minutit:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
 msgid "in hours:"
-msgstr "iga järgneva tunni järel"
+msgstr "peale iga järgnevat tundi:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
 msgid "at start up"
@@ -501,7 +501,7 @@ msgstr "Näita _kinnitatud aknaid ainult käesoleval tööalal"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid "Show a_dd and remove workspace options in list"
-msgstr ""
+msgstr "Näita loen_dis tööalade lisamise ja eemaldamise kirjeid"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "<b>Window List Menu</b>"
@@ -1022,7 +1022,7 @@ msgstr "„%s“ käivitamine ebaõnnestus"
 
 #: ../src/xfdesktop-file-utils.c:1382
 msgid "The application chooser could not be opened"
-msgstr "Rakenduse valijat ei suudetud avada."
+msgstr "Rakenduse valijat ei olnud võimalik avada"
 
 #: ../src/xfdesktop-file-utils.c:1441 ../src/xfdesktop-file-utils.c:1456
 #: ../src/xfdesktop-file-utils.c:1519 ../src/xfdesktop-file-utils.c:1536
@@ -1071,7 +1071,7 @@ msgstr "Lahtihaakimine sai tehtud"
 #: ../src/xfdesktop-notify.c:223 ../src/xfdesktop-notify.c:408
 #, c-format
 msgid "The device \"%s\" has been safely removed from the system. "
-msgstr "Andmekandja \"%s\" on turvaliselt eemaldatud"
+msgstr "Andmekandja \"%s\" on turvaliselt eemaldatud."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:313
@@ -1185,4 +1185,4 @@ msgstr "_Haagi andmekandja"
 
 #: ../src/xfdesktop-window-icon.c:193
 msgid "_Window Actions"
-msgstr ""
+msgstr "_Tegevused akendega"
