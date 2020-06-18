@@ -1,3 +1,52 @@
+4.15.0
+======
+- Pull in new fallback icon from Adwaita
+- Add new app icon and switch to rDNS icon name
+- Avoid redundant calls to backdrop_changed_cb (Bug #16773)
+- Move from exo-csource to xdt-csource (Bug #16717)
+- Increase minimum desktop icon size to 16 (Bug #16667)
+- Correct spelling of file system (Bug #16543)
+- Increase desktop icon increments to 2 (Bug #16668)
+- Unselect all items after single click activation
+- Fix memory leak when reconnecting DP monitor (Bug #16314)
+- Fix regression caused by (Bug #16342)
+- Fix transparent background color (Bug #16380)
+- Add Shift+Ctrl+N keybinding for Create Folder (Bug #15660)
+- Ignore modifier key events in type-ahead find (Bug #11149)
+- Added type-ahead find for Desktop icons (Bug #11149)
+- Do not insert hyphens at intra-word line breaks (Bug #16339)
+- Replace deprecated G_FILE_MONITOR_EVENT_MOVED (Bug #16342)
+- Translation Updates: Albanian, Amharic, Arabic, Armenian (Armenia), Basque,
+  Belarusian, Belarusian (Tarask), Bulgarian, Catalan, Chinese (China),
+  Chinese (Hong Kong), Chinese (Taiwan), Croatian, Czech, Danish, Dutch,
+  English (Australia), English (Canada), English (United Kingdom), Estonian,
+  Finnish, French, Galician, Georgian, German, Greek, Hebrew, Hungarian,
+  Icelandic, Indonesian, Interlingue, Italian, Japanese, Kazakh, Korean,
+  Lithuanian, Malay, Norwegian Bokmål, Norwegian Nynorsk, Occitan (post 1500),
+  Persian (Iran), Polish, Portuguese, Portuguese (Brazil), Romanian, Russian,
+  Serbian, Slovak, Slovenian, Spanish, Swedish, Thai, Turkish, Uighur,
+  Ukrainian, Uzbek
+
+4.14.2
+======
+- Update thumbnail when file changes (Bug #14919)
+- Add DnD support for application/octet-stream (Bug #14919)
+- windowlist: Fix ellipsizing (Bug #15851)
+- Add padding to custom actions without icon (Bug #14628)
+- Fix yet another rubber band DnD issue (Bug #16046)
+- Reintroduce workaround for Bug #11283
+- Show file names in tooltips (Bug #15899)
+- fallback style: Highlight selected icons (Bug #15866)
+- Translation Updates: Albanian, Amharic, Arabic, Armenian (Armenia), Asturian,
+  Basque, Belarusian, Bulgarian, Catalan, Chinese (China), Chinese (Hong Kong),
+  Chinese (Taiwan), Croatian, Czech, Danish, Dutch, English (Australia),
+  English (Canada), English (United Kingdom), Estonian, Finnish, French,
+  Galician, Georgian, German, Greek, Hebrew, Hungarian, Icelandic, Indonesian,
+  Interlingue, Italian, Japanese, Kazakh, Korean, Lithuanian, Malay,
+  Norwegian Bokmål, Norwegian Nynorsk, Occitan (post 1500), Persian (Iran),
+  Polish, Portuguese, Portuguese (Brazil), Romanian, Russian, Serbian, Slovak,
+  Slovenian, Spanish, Swedish, Thai, Turkish, Uighur, Ukrainian, Uzbek
+
 4.14.1
 ======
 - Ensure the new default wallpaper gets installed
