@@ -44,5 +44,5 @@ of `configure --help`):
 
 ## How to report bugs?
 
-Bugs should be reported to the [Xfce bug tracking system](https://bugzilla.xfce.org)
-against the product xfdesktop. You will need to create an account for yourself.
+Bugs should be reported to [Xfce's GitLab](https://gitlab.xfce.org/xfce/xfdesktop). You will need to create an account for yourself.
+

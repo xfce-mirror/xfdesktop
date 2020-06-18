@@ -2166,7 +2166,7 @@ main(int argc, char **argv)
 
     if(G_UNLIKELY(opt_version)) {
         g_print("%s %s (Xfce %s)\n\n", G_LOG_DOMAIN, VERSION, xfce_version_string());
-        g_print("%s\n", "Copyright (c) 2004-2019");
+        g_print("%s\n", "Copyright (c) 2004-2020");
         g_print("\t%s\n\n", _("The Xfce development team. All rights reserved."));
         g_print(_("Please report bugs to <%s>."), PACKAGE_BUGREPORT);
         g_print("\n");

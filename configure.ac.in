@@ -1,5 +1,5 @@
 dnl
-dnl Copyright (c) 2003-2019
+dnl Copyright (c) 2003-2020
 dnl         The Xfce development team. All rights reserved.
 dnl
 dnl xfdesktop - xfce4's desktop manager
@@ -35,7 +35,7 @@ m4_append([xfdesktop_version_short], [xfdesktop_version_minor])
 m4_append([xfdesktop_version_short], ["])
 
 dnl init autoconf
-AC_INIT([xfdesktop], [xfdesktop_version], [https://bugzilla.xfce.org/])
+AC_INIT([xfdesktop], [xfdesktop_version], [https://gitlab.xfce.org/xfce/xfdesktop])
 AC_PREREQ([2.60])
 
 dnl init automake
