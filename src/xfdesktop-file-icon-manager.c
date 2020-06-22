@@ -1432,24 +1432,8 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
         } else if(info) {
             if(g_file_info_get_file_type(info) == G_FILE_TYPE_DIRECTORY) {
-                img = gtk_image_new_from_icon_name("document-open", GTK_ICON_SIZE_MENU);
-                if(file_icon == fmanager->priv->desktop_icon)
-                    mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Open in New Window"), img);
-                else
-                    mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Open"), img);
-                gtk_widget_show(mi);
-                gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-                g_signal_connect(G_OBJECT(mi), "activate",
-                                 file_icon == fmanager->priv->desktop_icon
-                                 ? G_CALLBACK(xfdesktop_file_icon_menu_open_desktop)
-                                 : G_CALLBACK(xfdesktop_file_icon_menu_open_folder),
-                                 fmanager);
-
-                mi = gtk_separator_menu_item_new();
-                gtk_widget_show(mi);
-                gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-
                 if(file_icon == fmanager->priv->desktop_icon) {
+                    /* Menu on the root desktop window */
                     GIcon *icon;
 
                     /* create launcher item */
@@ -1543,12 +1527,20 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                         g_signal_connect(G_OBJECT(mi), "activate",
                                          G_CALLBACK(xfdesktop_file_icon_template_item_activated),
                                          fmanager);
-
-                        mi = gtk_separator_menu_item_new();
-                        gtk_widget_show(mi);
-                        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
                     }
+                } else {
+                    img = gtk_image_new_from_icon_name("document-open", GTK_ICON_SIZE_MENU);
+                    mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Open"), img);
+                    gtk_widget_show(mi);
+                    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+                    g_signal_connect(G_OBJECT(mi), "activate",
+                                     G_CALLBACK(xfdesktop_file_icon_menu_open_folder),
+                                     fmanager);
                 }
+
+                mi = gtk_separator_menu_item_new();
+                gtk_widget_show(mi);
+                gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             } else {
                 if(xfdesktop_file_utils_file_is_executable(info)) {
                     img = gtk_image_new_from_icon_name("system-run", GTK_ICON_SIZE_MENU);
@@ -1843,6 +1835,14 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
 
         if(file_icon == fmanager->priv->desktop_icon) {
             /* Menu on the root desktop window */
+            img = gtk_image_new_from_icon_name("document-open", GTK_ICON_SIZE_MENU);
+            mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Open in File Manager"), img);
+            gtk_widget_show(mi);
+            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+            g_signal_connect(G_OBJECT(mi), "activate",
+                             G_CALLBACK(xfdesktop_file_icon_menu_open_desktop),
+                             fmanager);
+
             /* show arrange desktop icons option */
             img = gtk_image_new_from_icon_name("view-sort-ascending", GTK_ICON_SIZE_MENU);
             mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Arrange Desktop _Icons"), img);
@@ -1863,6 +1863,11 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                                  fmanager);
             }
 
+            /* Separator */
+            mi = gtk_separator_menu_item_new();
+            gtk_widget_show(mi);
+            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+
             /* Desktop settings window */
             img = gtk_image_new_from_icon_name("preferences-desktop-wallpaper", GTK_ICON_SIZE_MENU);
             mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Desktop _Settings..."), img);
@@ -1875,21 +1880,21 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
             mi = gtk_separator_menu_item_new();
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-        }
-
-        /* Properties - applies to desktop window or an icon on the desktop */
-        img = gtk_image_new_from_icon_name("document-properties", GTK_ICON_SIZE_MENU);
-        mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("P_roperties..."), img);
-        gtk_widget_show(mi);
-        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-        if(multi_sel || !info)
-            gtk_widget_set_sensitive(mi, FALSE);
-        else {
-            g_signal_connect(G_OBJECT(mi), "activate",
-                             file_icon == fmanager->priv->desktop_icon
-                             ? G_CALLBACK(xfdesktop_file_icon_manager_desktop_properties)
-                             : G_CALLBACK(xfdesktop_file_icon_menu_properties),
-                             fmanager);
+        } else {
+            /* Properties - applies to an icon on the desktop */
+            img = gtk_image_new_from_icon_name("document-properties", GTK_ICON_SIZE_MENU);
+            mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("P_roperties..."), img);
+            gtk_widget_show(mi);
+            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+            if(multi_sel || !info)
+                gtk_widget_set_sensitive(mi, FALSE);
+            else {
+                g_signal_connect(G_OBJECT(mi), "activate",
+                                 file_icon == fmanager->priv->desktop_icon
+                                 ? G_CALLBACK(xfdesktop_file_icon_manager_desktop_properties)
+                                 : G_CALLBACK(xfdesktop_file_icon_menu_properties),
+                                 fmanager);
+            }
         }
     }
 
