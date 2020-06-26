@@ -1273,7 +1273,6 @@ xfce_desktop_unrealize(GtkWidget *widget)
 
 #ifndef DISABLE_FOR_BUG7442
     gdk_property_delete(groot, gdk_atom_intern("_XROOTPMAP_ID", FALSE));
-    gdk_property_delete(groot, gdk_atom_intern("ESETROOT_PMAP_ID", FALSE));
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     gdk_window_set_background_pattern(groot, NULL);
 G_GNUC_END_IGNORE_DEPRECATIONS
