@@ -1877,19 +1877,21 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
         }
 
-        /* Properties - applies to desktop window or an icon on the desktop */
-        img = gtk_image_new_from_icon_name("document-properties", GTK_ICON_SIZE_MENU);
-        mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("P_roperties..."), img);
-        gtk_widget_show(mi);
-        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-        if(multi_sel || !info)
-            gtk_widget_set_sensitive(mi, FALSE);
-        else {
-            g_signal_connect(G_OBJECT(mi), "activate",
-                             file_icon == fmanager->priv->desktop_icon
-                             ? G_CALLBACK(xfdesktop_file_icon_manager_desktop_properties)
-                             : G_CALLBACK(xfdesktop_file_icon_menu_properties),
-                             fmanager);
+        /* Properties - applies only to icons on the desktop */
+        if(file_icon != fmanager->priv->desktop_icon) {
+            img = gtk_image_new_from_icon_name("document-properties", GTK_ICON_SIZE_MENU);
+            mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("P_roperties..."), img);
+            gtk_widget_show(mi);
+            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+            if(multi_sel || !info)
+                gtk_widget_set_sensitive(mi, FALSE);
+            else {
+                g_signal_connect(G_OBJECT(mi), "activate",
+                                file_icon == fmanager->priv->desktop_icon
+                                ? G_CALLBACK(xfdesktop_file_icon_manager_desktop_properties)
+                                : G_CALLBACK(xfdesktop_file_icon_menu_properties),
+                                fmanager);
+            }
         }
     }
 
