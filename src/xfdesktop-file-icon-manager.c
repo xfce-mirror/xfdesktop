@@ -1873,15 +1873,8 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             g_signal_connect(G_OBJECT(mi), "activate",
                              G_CALLBACK(xfdesktop_settings_launch), fmanager);
-
-            /* Separator */
-            mi = gtk_separator_menu_item_new();
-            gtk_widget_show(mi);
-            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-        }
-
-        /* Properties - applies only to icons on the desktop */
-        if(file_icon != fmanager->priv->desktop_icon) {
+        } else {
+            /* Properties - applies only to icons on the desktop */
             img = gtk_image_new_from_icon_name("document-properties", GTK_ICON_SIZE_MENU);
             mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("P_roperties..."), img);
             gtk_widget_show(mi);
