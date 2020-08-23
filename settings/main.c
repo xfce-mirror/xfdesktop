@@ -2211,7 +2211,8 @@ main(int argc, char **argv)
             (GTK_WINDOW(dialog),
              xfconf_channel_get_int(channel, SETTINGS_WINDOW_LAST_WIDTH, -1),
              xfconf_channel_get_int(channel, SETTINGS_WINDOW_LAST_HEIGHT, -1));
-        gtk_window_present(GTK_WINDOW (dialog));
+        gtk_window_set_type_hint(GTK_WINDOW(dialog), GDK_WINDOW_TYPE_HINT_NORMAL);
+        gtk_window_present(GTK_WINDOW(dialog));
 
         screen = XScreenNumberOfScreen(gdk_x11_screen_get_xscreen(gtk_widget_get_screen(dialog)));
 
