@@ -3,6 +3,16 @@ icons16dir = $(datadir)/icons/hicolor/16x16/apps
 icons16_DATA = \
 	16x16/org.xfce.xfdesktop.png
 
+icons24dir = $(datadir)/icons/hicolor/24x24/apps
+
+icons24_DATA = \
+	24x24/org.xfce.xfdesktop.png
+
+icons32dir = $(datadir)/icons/hicolor/32x32/apps
+
+icons32_DATA = \
+	32x32/org.xfce.xfdesktop.png
+
 icons48dir = $(datadir)/icons/hicolor/48x48/apps
 
 icons48_DATA = \
@@ -34,6 +44,8 @@ pixmapsx_DATA = \
 
 EXTRA_DIST = \
 	$(icons16_DATA) \
+	$(icons24_DATA) \
+	$(icons32_DATA) \
 	$(icons48_DATA) \
 	$(icons128_DATA) \
 	$(iconssc_DATA) \
