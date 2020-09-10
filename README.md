@@ -1,7 +1,7 @@
 [![License](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://gitlab.xfce.org/xfce/xfdesktop/COPYING)
 
-xfdesktop
-====================
+# xfdesktop
+
 
 The Desktop Manager manages the desktop of Xfce. xfdesktop handles the 
 following tasks:
@@ -32,6 +32,7 @@ See [NEWS](https://gitlab.xfce.org/xfce/xfdesktop/-/blob/master/NEWS) for detail
 [xfdesktop archive](https://archive.xfce.org/src/xfce/xfdesktop)
     or
 [xfdesktop tags](https://gitlab.xfce.org/xfce/xfdesktop/-/tags)
+
 ### Installation
 
 From source: 
