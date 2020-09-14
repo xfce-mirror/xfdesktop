@@ -1,9 +1,9 @@
-[![License](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://gitlab.xfce.org/xfce/xfdesktop/COPYING)
+[![License](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://gitlab.xfce.org/xfce/xfdesktop/-/blob/master/COPYING)
 
 # xfdesktop
 
 
-The Desktop Manager manages the desktop of Xfce. xfdesktop handles the 
+The Desktop Manager manages the desktop of Xfce. Xfdesktop handles the 
 following tasks:
 
   * background image / color
@@ -17,7 +17,7 @@ It can bring up an applications menu and a list of all running applications when
 
 ### Homepage
 
-[xfdesktop documentation](https://docs.xfce.org/xfce/xfdesktop/start)
+[Xfdesktop documentation](https://docs.xfce.org/xfce/xfdesktop/start)
 
 ### Changelog
 
@@ -25,13 +25,13 @@ See [NEWS](https://gitlab.xfce.org/xfce/xfdesktop/-/blob/master/NEWS) for detail
 
 ### Source Code Repository
 
-[xfdesktop source code](https://gitlab.xfce.org/xfce/xfdesktop)
+[Xfdesktop source code](https://gitlab.xfce.org/xfce/xfdesktop)
 
-### Download A Release Tarball
+### Download a Release Tarball
 
-[xfdesktop archive](https://archive.xfce.org/src/xfce/xfdesktop)
+[Xfdesktop archive](https://archive.xfce.org/src/xfce/xfdesktop)
     or
-[xfdesktop tags](https://gitlab.xfce.org/xfce/xfdesktop/-/tags)
+[Xfdesktop tags](https://gitlab.xfce.org/xfce/xfdesktop/-/tags)
 
 ### Installation
 
