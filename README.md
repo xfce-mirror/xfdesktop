@@ -3,8 +3,7 @@
 # xfdesktop
 
 
-The Desktop Manager manages the desktop of Xfce. Xfdesktop handles the 
-following tasks:
+Xfdesktop is a desktop manager for the Xfce Desktop Environment. It handles the following tasks::
 
   * background image / color
   * root menu, window list
