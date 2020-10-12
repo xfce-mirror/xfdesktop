@@ -1,48 +1,55 @@
-## What is it?
+[![License](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://gitlab.xfce.org/xfce/xfdesktop/-/blob/master/COPYING)
 
-xfdesktop is a desktop manager for the Xfce Desktop Environment. Desktop
-in this respect means the root window (or, rather, a window that sits on top
-of the root window). The manager handles the following tasks:
-* background image / color
-* root menu, window list
-* minimized app icons
-* file icons on the desktop (using Thunar libs)
+# xfdesktop
 
 
-## Minimum Requirements
+Xfdesktop is a desktop manager for the Xfce Desktop Environment. It handles the following tasks:
 
-* intltool 0.31
-* GTK+ 3.22.0
-* libxfce4util 4.13
-* libxfce4ui 4.13
-* libwnck 3.14
-* libexo 0.11
-* xfconf 4.12.1
-* garcon 0.6.0 (optional; required for apps menu)
-* thunar 1.7.0 (optional; required for file icons)
-* tumbler 1.6 (optional; enables thumbnail previews for file icons)
-* cairo 1.12
+  * background image / color
+  * root menu, window list
+  * minimized app icons
+  * file icons on the desktop (using Thunar libs)
 
+It can bring up an applications menu and a list of all running applications when you click on the desktop with the right or middle mouse button respectively. Settings are available via the Settings Manager.
 
-## Installation
+----
 
-The file [`INSTALL`](INSTALL) contains generic installation instructions.
+### Homepage
 
+[Xfdesktop documentation](https://docs.xfce.org/xfce/xfdesktop/start)
 
-## Debugging Support
+### Changelog
 
-xfdesktop currently supports three different levels of debugging support,
-which can be setup using the configure flag `--enable-debug` (check the output
-of `configure --help`):
+See [NEWS](https://gitlab.xfce.org/xfce/xfdesktop/-/blob/master/NEWS) for details on changes and fixes made in the current release.
 
-| Argument  | Description |
-| -------   | ----------- |
-| `yes`     | This is the default for Git snapshot builds. It adds all kinds of checks to the code, and is therefore likely to run slower. Use this for development of xfdesktop and locating bugs in xfdesktop. |
-| `minimum` | This is the default for release builds. **This is the recommended behaviour.** |
-| `no`      | Disables all sanity checks. Don't use this unless you know exactly what you do. |
+### Source Code Repository
 
+[Xfdesktop source code](https://gitlab.xfce.org/xfce/xfdesktop)
 
-## How to report bugs?
+### Download a Release Tarball
 
-Bugs should be reported to [Xfce's GitLab](https://gitlab.xfce.org/xfce/xfdesktop). You will need to create an account for yourself.
+[Xfdesktop archive](https://archive.xfce.org/src/xfce/xfdesktop)
+    or
+[Xfdesktop tags](https://gitlab.xfce.org/xfce/xfdesktop/-/tags)
+
+### Installation
+
+From source: 
+
+    % cd xfdesktop
+    % ./autogen.sh
+    % make
+    % make install
+
+From release tarball:
+
+    % tar xf xfdesktop-<version>.tar.bz2
+    % cd xfdesktop-<version>
+    % ./configure
+    % make
+    % make install
+
+### Reporting Bugs
+
+Visit the [reporting bugs](https://docs.xfce.org/xfce/xfdesktop/bugs) page to view currently open bug reports and instructions on reporting new bugs or submitting bugfixes.
 
