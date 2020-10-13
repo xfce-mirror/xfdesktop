@@ -409,39 +409,43 @@ xfdesktop_load_icon_from_desktop_file(XfdesktopRegularFileIcon *regular_icon)
         }
     }
 
-    /* drop any suffix (e.g. '.png') from the icon name and try to load that */
+    /* We first try to lookup exact the icon name and then drop any suffix (e.g. '.png') from the icon name and try to load that */
     if(gicon == NULL) {
-        gchar *tmp_name = NULL;
         gchar *p = strrchr(icon_name, '.');
-
+        size_t icon_name_length[2] = {0, 0};
+        icon_name_length[0] = strlen(icon_name);
         if(p != NULL)
-            tmp_name = g_strndup(icon_name, p - icon_name);
-        else
-            tmp_name = g_strdup(icon_name);
+            icon_name_length[1] = p - icon_name;
+        for(int i = 0; i < sizeof(icon_name_length) / sizeof(icon_name_length[0]) && gicon == NULL; i++){
+            if(icon_name_length[i] == 0)
+                continue;
+            gchar *tmp_name = NULL;
+            tmp_name = g_strndup(icon_name, icon_name_length[i]);
 
-        if(tmp_name)
-            gicon = g_themed_icon_new(tmp_name);
+            if(tmp_name)
+                gicon = g_themed_icon_new(tmp_name);
 
-        /* check if icon file exists */
-        if(gicon != NULL) {
-            GtkIconInfo *icon_info = gtk_icon_theme_lookup_by_gicon(itheme,
-                                                                    gicon,
-                                                                    -1,
-                                                                    ITHEME_FLAGS);
-            if(icon_info) {
-                /* check if icon is located in pixmaps folder */
-                const gchar *filename = gtk_icon_info_get_filename(icon_info);
-                is_pixmaps = g_strrstr(filename, "pixmaps") ? TRUE : FALSE;
+            /* check if icon file exists */
+            if(gicon != NULL) {
+                GtkIconInfo *icon_info = gtk_icon_theme_lookup_by_gicon(itheme,
+                                                                        gicon,
+                                                                        -1,
+                                                                        ITHEME_FLAGS);
+                if(icon_info) {
+                    /* check if icon is located in pixmaps folder */
+                    const gchar *filename = gtk_icon_info_get_filename(icon_info);
+                    is_pixmaps = g_strrstr(filename, "pixmaps") ? TRUE : FALSE;
 
-                g_object_unref(icon_info);
-            } else {
-                /* icon not found*/
-                g_object_unref(gicon);
-                gicon = NULL;
+                    g_object_unref(icon_info);
+                } else {
+                    /* icon not found*/
+                    g_object_unref(gicon);
+                    gicon = NULL;
+                }
             }
-        }
 
-        g_free(tmp_name);
+            g_free(tmp_name);
+        }
     }
 
     /* maybe it points to a file in the pixmaps folder */
