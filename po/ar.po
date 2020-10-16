@@ -20,8 +20,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-22 00:32+0100\n"
-"PO-Revision-Date: 2019-12-21 23:32+0000\n"
+"POT-Creation-Date: 2020-10-13 00:48+0200\n"
+"PO-Revision-Date: 2020-10-12 22:48+0000\n"
 "Last-Translator: Xfce Bot <transifex@xfce.org>\n"
 "Language-Team: Arabic (http://www.transifex.com/xfce/xfdesktop/language/ar/)\n"
 "MIME-Version: 1.0\n"
@@ -35,8 +35,9 @@ msgstr ""
 msgid "Home"
 msgstr "المنزل"
 
-#: ../settings/main.c:421
-msgid "Filesystem"
+#: ../settings/main.c:421 ../src/xfdesktop-special-file-icon.c:294
+#: ../src/xfdesktop-special-file-icon.c:476
+msgid "File System"
 msgstr "ملفات النظام"
 
 #: ../settings/main.c:423 ../src/xfdesktop-special-file-icon.c:296
@@ -156,7 +157,7 @@ msgstr "خطأ في الإقلاع"
 #: ../src/xfdesktop-file-icon-manager.c:802
 #: ../src/xfdesktop-file-icon-manager.c:1106
 #: ../src/xfdesktop-file-icon-manager.c:1356
-#: ../src/xfdesktop-file-icon-manager.c:2938 ../src/xfdesktop-file-utils.c:686
+#: ../src/xfdesktop-file-icon-manager.c:2961 ../src/xfdesktop-file-utils.c:686
 #: ../src/xfdesktop-file-utils.c:706 ../src/xfdesktop-file-utils.c:761
 #: ../src/xfdesktop-file-utils.c:825 ../src/xfdesktop-file-utils.c:886
 #: ../src/xfdesktop-file-utils.c:947 ../src/xfdesktop-file-utils.c:995
@@ -222,7 +223,7 @@ msgid "Quit"
 msgstr "خروج"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.h:1
-#: ../settings/xfdesktop-settings-ui.glade.h:18 ../src/xfce-desktop.c:1170
+#: ../settings/xfdesktop-settings-ui.glade.h:18 ../src/xfce-desktop.c:1174
 msgid "Desktop"
 msgstr "سطح المكتب"
 
@@ -230,6 +231,14 @@ msgstr "سطح المكتب"
 #: ../settings/xfdesktop-settings-ui.glade.h:19
 msgid "Set desktop background and menu and icon behavior"
 msgstr "حدد خلفية سطح المكتب و سلوك القائمة والأيقونات"
+
+#: ../settings/xfce-backdrop-settings.desktop.in.h:3
+msgid ""
+"desktop;settings;background;wallpaper;color;gradient;menu;applications;right"
+" click;window list;middle "
+"click;workspace;icon;size;orientation;arrangement;font;thumbnails;single "
+"click;default;"
+msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
 msgid "Solid color"
@@ -768,126 +777,126 @@ msgstr "فشل في تنفيذ \"exo-desktop-item-edit\", الضروري لإن�
 msgid "_Open all"
 msgstr "_افتح الكل"
 
-#: ../src/xfdesktop-file-icon-manager.c:1437
-msgid "_Open in New Window"
-msgstr "_افتح في نافذة جديدة"
+#: ../src/xfdesktop-file-icon-manager.c:1443
+msgid "Create _Launcher..."
+msgstr "أنشئ م_طلقة..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1439
+#: ../src/xfdesktop-file-icon-manager.c:1457
+msgid "Create _URL Link..."
+msgstr "أنشئ و_صلة..."
+
+#: ../src/xfdesktop-file-icon-manager.c:1471
+msgid "Create _Folder..."
+msgstr "أنشئ مجلد..."
+
+#: ../src/xfdesktop-file-icon-manager.c:1483
+msgid "Create _Document"
+msgstr "أنشئ _مستند"
+
+#: ../src/xfdesktop-file-icon-manager.c:1508
+msgid "No templates installed"
+msgstr "لا قوالب مثبتة"
+
+#: ../src/xfdesktop-file-icon-manager.c:1524
+msgid "_Empty File"
+msgstr "_ملف فارغ"
+
+#: ../src/xfdesktop-file-icon-manager.c:1534
 #: ../src/xfdesktop-special-file-icon.c:545 ../src/xfdesktop-volume-icon.c:811
 msgid "_Open"
 msgstr "_افتح"
 
-#: ../src/xfdesktop-file-icon-manager.c:1459
-msgid "Create _Launcher..."
-msgstr "أنشئ م_طلقة..."
-
-#: ../src/xfdesktop-file-icon-manager.c:1473
-msgid "Create _URL Link..."
-msgstr "أنشئ و_صلة..."
-
-#: ../src/xfdesktop-file-icon-manager.c:1487
-msgid "Create _Folder..."
-msgstr "أنشئ مجلد..."
-
-#: ../src/xfdesktop-file-icon-manager.c:1499
-msgid "Create _Document"
-msgstr "أنشئ _مستند"
-
-#: ../src/xfdesktop-file-icon-manager.c:1524
-msgid "No templates installed"
-msgstr "لا قوالب مثبتة"
-
-#: ../src/xfdesktop-file-icon-manager.c:1540
-msgid "_Empty File"
-msgstr "_ملف فارغ"
-
-#: ../src/xfdesktop-file-icon-manager.c:1555
+#: ../src/xfdesktop-file-icon-manager.c:1550
 msgid "_Execute"
 msgstr "_تنفيذ"
 
-#: ../src/xfdesktop-file-icon-manager.c:1573
+#: ../src/xfdesktop-file-icon-manager.c:1568
 msgid "_Edit Launcher"
 msgstr "_تحرير مطلق"
 
-#: ../src/xfdesktop-file-icon-manager.c:1632
+#: ../src/xfdesktop-file-icon-manager.c:1627
 msgid "Open With"
 msgstr "إفتح بـ"
 
-#: ../src/xfdesktop-file-icon-manager.c:1659
-#: ../src/xfdesktop-file-icon-manager.c:1673
+#: ../src/xfdesktop-file-icon-manager.c:1654
+#: ../src/xfdesktop-file-icon-manager.c:1668
 msgid "Open With Other _Application..."
 msgstr "أفتح بتطبيق أخر..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1691
+#: ../src/xfdesktop-file-icon-manager.c:1686
 msgid "_Paste"
 msgstr "_لصق"
 
-#: ../src/xfdesktop-file-icon-manager.c:1709
+#: ../src/xfdesktop-file-icon-manager.c:1704
 msgid "Cu_t"
 msgstr "ق_ص"
 
-#: ../src/xfdesktop-file-icon-manager.c:1721
+#: ../src/xfdesktop-file-icon-manager.c:1716
 msgid "_Copy"
 msgstr "_نسخ"
 
-#: ../src/xfdesktop-file-icon-manager.c:1733
+#: ../src/xfdesktop-file-icon-manager.c:1728
 msgid "Paste Into Folder"
 msgstr "لصق في المجلد"
 
-#: ../src/xfdesktop-file-icon-manager.c:1752
+#: ../src/xfdesktop-file-icon-manager.c:1747
 msgid "Mo_ve to Trash"
 msgstr "نقل إلى المهملات"
 
-#: ../src/xfdesktop-file-icon-manager.c:1764
+#: ../src/xfdesktop-file-icon-manager.c:1759
 msgid "_Delete"
 msgstr "_حذف"
 
-#: ../src/xfdesktop-file-icon-manager.c:1781
+#: ../src/xfdesktop-file-icon-manager.c:1776
 msgid "_Rename..."
 msgstr "_أعد تسمية..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1848
+#: ../src/xfdesktop-file-icon-manager.c:1842
+msgid "_Open in New Window"
+msgstr "_افتح في نافذة جديدة"
+
+#: ../src/xfdesktop-file-icon-manager.c:1851
 msgid "Arrange Desktop _Icons"
 msgstr "ترتيب _أيقونات سطح المكتب"
 
-#: ../src/xfdesktop-file-icon-manager.c:1858
+#: ../src/xfdesktop-file-icon-manager.c:1861
 msgid "_Next Background"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1868
+#: ../src/xfdesktop-file-icon-manager.c:1871
 msgid "Desktop _Settings..."
 msgstr "إعدادات _سطح المكتب..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1882
+#: ../src/xfdesktop-file-icon-manager.c:1879
 #: ../src/xfdesktop-volume-icon.c:852
 msgid "P_roperties..."
 msgstr "خصائص..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2935
+#: ../src/xfdesktop-file-icon-manager.c:2958
 msgid "Load Error"
 msgstr "خطأ أثناء التحميل"
 
-#: ../src/xfdesktop-file-icon-manager.c:2937
+#: ../src/xfdesktop-file-icon-manager.c:2960
 msgid "Failed to load the desktop folder"
 msgstr "فشل تحميل مجلد سطح المكتب"
 
-#: ../src/xfdesktop-file-icon-manager.c:3503
+#: ../src/xfdesktop-file-icon-manager.c:3530
 msgid "Copy _Here"
 msgstr "أنسخ _هنا"
 
-#: ../src/xfdesktop-file-icon-manager.c:3503
+#: ../src/xfdesktop-file-icon-manager.c:3530
 msgid "_Move Here"
 msgstr "_أنقل هنا"
 
-#: ../src/xfdesktop-file-icon-manager.c:3503
+#: ../src/xfdesktop-file-icon-manager.c:3530
 msgid "_Link Here"
 msgstr "_وصلة هنا"
 
-#: ../src/xfdesktop-file-icon-manager.c:3538
+#: ../src/xfdesktop-file-icon-manager.c:3565
 msgid "_Cancel"
 msgstr "_إلغاء"
 
-#: ../src/xfdesktop-file-icon-manager.c:3667
+#: ../src/xfdesktop-file-icon-manager.c:3694
 msgid "Untitled document"
 msgstr ""
 
@@ -1078,11 +1087,6 @@ msgid ""
 "Size: %s\n"
 "Last modified: %s"
 msgstr ""
-
-#: ../src/xfdesktop-special-file-icon.c:294
-#: ../src/xfdesktop-special-file-icon.c:476
-msgid "File System"
-msgstr "ملفات النظام"
 
 #: ../src/xfdesktop-special-file-icon.c:461
 msgid "Trash is empty"
