@@ -3677,7 +3677,7 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
 
         g_free(exo_desktop_item_edit);
     } else if(info == TARGET_APPLICATION_OCTET_STREAM) {
-        guchar *filename;
+        gchar *filename;
         gchar *filepath;
         gint length;
         const gchar *content;
@@ -3687,7 +3687,8 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
         if(gdk_property_get(gdk_drag_context_get_source_window(context),
                             gdk_atom_intern("XdndDirectSave0", FALSE),
                             gdk_atom_intern("text/plain", FALSE), 0, 1024,
-                            FALSE, NULL, NULL, &length, &filename) && length > 0) {
+                            FALSE, NULL, NULL, &length,
+                            (guchar **)&filename) && length > 0) {
             filename = g_realloc(filename, length + 1);
             filename[length] = '\0';
         } else {
