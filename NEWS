@@ -1,3 +1,22 @@
+4.14.3
+======
+- Avoid redundant calls to backdrop_changed_cb (Bug #16773)
+- Fix memory leak when reconnecting DP monitor (Bug #16314)
+- Fix transparent background color (Bug #16380)
+- Do not insert hyphens at intra-word line breaks (Bug #16339)
+- Translation Updates:
+  Albanian, Amharic, Arabic, Armenian (Armenia), Asturian, Basque,
+  Belarusian, Belarusian (Tarask), Bulgarian, Catalan, Chinese (China),
+  Chinese (Hong Kong), Chinese (Taiwan), Croatian, Czech, Danish,
+  Dutch, Eastern Armenian, English (Australia), English (Canada),
+  English (United Kingdom), Estonian, Finnish, French, Galician,
+  Georgian, German, Greek, Hebrew, Hungarian, Icelandic, Indonesian,
+  Interlingue, Italian, Japanese, Kazakh, Korean, Lithuanian, Malay,
+  Norwegian Bokmål, Norwegian Nynorsk, Occitan (post 1500), Persian
+  (Iran), Polish, Portuguese, Portuguese (Brazil), Romanian, Russian,
+  Serbian, Slovak, Slovenian, Spanish, Swedish, Thai, Turkish,
+  Ukrainian, Uyghur, Uzbek
+
 4.14.2
 ======
 - Update thumbnail when file changes (Bug #14919)
