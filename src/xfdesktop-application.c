@@ -396,7 +396,7 @@ cb_xfdesktop_application_reload(GAction  *action,
 
     /* hold the app so it doesn't quit while a queue up a refresh */
     g_application_hold(g_application);
-    g_idle_add((GSourceFunc)reload_idle_cb, g_application);
+    g_idle_add(reload_idle_cb, g_application);
 }
 
 static void

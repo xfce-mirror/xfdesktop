@@ -57,7 +57,7 @@ static void xfdesktop_thumbnailer_thumbnail_ready_dbus(TumblerThumbnailer1 *prox
                                                        const gchar *const *uri,
                                                        gpointer data);
 
-static gboolean xfdesktop_thumbnailer_queue_request_timer(XfdesktopThumbnailer *thumbnailer);
+static gboolean xfdesktop_thumbnailer_queue_request_timer(gpointer user_data);
 
 static GObjectClass *parent_class = NULL;
 static XfdesktopThumbnailer *thumbnailer_object = NULL;
@@ -337,7 +337,7 @@ xfdesktop_thumbnailer_queue_thumbnail(XfdesktopThumbnailer *thumbnailer,
     thumbnailer->priv->request_timer_id = g_timeout_add_full(
                         G_PRIORITY_LOW,
                         300,
-                        (GSourceFunc)xfdesktop_thumbnailer_queue_request_timer,
+                        xfdesktop_thumbnailer_queue_request_timer,
                         thumbnailer,
                         NULL);
 
@@ -394,7 +394,7 @@ xfdesktop_thumbnailer_dequeue_thumbnail(XfdesktopThumbnailer *thumbnailer,
     thumbnailer->priv->request_timer_id = g_timeout_add_full(
                         G_PRIORITY_LOW,
                         300,
-                        (GSourceFunc)xfdesktop_thumbnailer_queue_request_timer,
+                        xfdesktop_thumbnailer_queue_request_timer,
                         thumbnailer,
                         NULL);
 }
@@ -407,8 +407,9 @@ void xfdesktop_thumbnailer_dequeue_all_thumbnails(XfdesktopThumbnailer *thumbnai
 }
 
 static gboolean
-xfdesktop_thumbnailer_queue_request_timer(XfdesktopThumbnailer *thumbnailer)
+xfdesktop_thumbnailer_queue_request_timer(gpointer user_data)
 {
+    XfdesktopThumbnailer *thumbnailer = user_data;
     gchar **uris;
     gchar **mimetypes;
     GSList *iter;
