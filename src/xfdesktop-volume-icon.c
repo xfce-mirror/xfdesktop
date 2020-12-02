@@ -96,7 +96,7 @@ static GFile *xfdesktop_volume_icon_peek_file(XfdesktopFileIcon *icon);
 static void xfdesktop_volume_icon_update_file_info(XfdesktopFileIcon *icon,
                                                    GFileInfo *info);
 static gboolean xfdesktop_volume_icon_activated(XfdesktopIcon *icon);
-static gboolean volume_icon_changed_timeout(XfdesktopVolumeIcon *icon);
+static gboolean volume_icon_changed_timeout(gpointer user_data);
 static void xfdesktop_volume_icon_changed(GVolume *volume,
                                           XfdesktopVolumeIcon *volume_icon);
 
@@ -951,8 +951,9 @@ xfdesktop_volume_icon_activated(XfdesktopIcon *icon_p)
 }
 
 static gboolean
-volume_icon_changed_timeout(XfdesktopVolumeIcon *volume_icon)
+volume_icon_changed_timeout(gpointer user_data)
 {
+    XfdesktopVolumeIcon *volume_icon = user_data;
     GMount *mount;
     gboolean mounted_before = FALSE;
     gboolean mounted_after = FALSE;
@@ -1062,7 +1063,7 @@ xfdesktop_volume_icon_changed(GVolume *volume,
     volume_icon->priv->changed_timeout_count = 0;
     volume_icon->priv->changed_timeout_id =
         g_timeout_add_full(G_PRIORITY_LOW, 500,
-                           (GSourceFunc) volume_icon_changed_timeout,
+                           volume_icon_changed_timeout,
                            g_object_ref(volume_icon),
                            g_object_unref);
 }

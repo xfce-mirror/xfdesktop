@@ -1412,9 +1412,9 @@ xfce_desktop_delete_event(GtkWidget *w,
 
 #ifdef ENABLE_DESKTOP_ICONS
 static gboolean
-style_refresh_cb(gpointer *w)
+style_refresh_cb(gpointer user_data)
 {
-    XfceDesktop *desktop = XFCE_DESKTOP(w);
+    XfceDesktop *desktop = user_data;
     cairo_pattern_t *pattern;
     gdouble old_font_size;
 
@@ -1471,8 +1471,8 @@ xfce_desktop_style_updated(GtkWidget *w)
         g_source_remove(desktop->priv->style_refresh_timer);
 
     desktop->priv->style_refresh_timer = g_idle_add_full(G_PRIORITY_LOW,
-                                                         (GSourceFunc)style_refresh_cb,
-                                                         w,
+                                                         style_refresh_cb,
+                                                         desktop,
                                                          NULL);
 #endif
 }

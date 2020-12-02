@@ -1037,8 +1037,9 @@ cb_xfdesktop_chk_cycle_backdrop_toggled(GtkCheckButton *button,
 }
 
 static gboolean
-xfdesktop_spin_icon_size_timer(GtkSpinButton *button)
+xfdesktop_spin_icon_size_timer(gpointer user_data)
 {
+    GtkSpinButton *button = user_data;
     XfconfChannel *channel = g_object_get_data(G_OBJECT(button), "xfconf-chanel");
 
     TRACE("entering");
@@ -1070,9 +1071,7 @@ cb_xfdesktop_spin_icon_size_changed(GtkSpinButton *button,
         timer_id = 0;
     }
 
-    timer_id = g_timeout_add(500,
-                             (GSourceFunc)xfdesktop_spin_icon_size_timer,
-                             button);
+    timer_id = g_timeout_add(500, xfdesktop_spin_icon_size_timer, button);
 
     g_object_set_data(G_OBJECT(button), "timer-id", GUINT_TO_POINTER(timer_id));
 }
