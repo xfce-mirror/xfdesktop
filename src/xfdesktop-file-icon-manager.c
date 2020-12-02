@@ -2923,9 +2923,7 @@ xfdesktop_file_icon_manager_metadata_changed(GFileMonitor     *monitor,
 
     /* cool down timer so we don't call this due to multiple file
      * changes at the same time. */
-    timer = g_timeout_add_seconds(5,
-                                  (GSourceFunc)xfdesktop_file_icon_manager_metadata_timer,
-                                  fmanager);
+    timer = g_timeout_add_seconds(5, xfdesktop_file_icon_manager_metadata_timer, fmanager);
 
     fmanager->priv->metadata_timer = timer;
 }
