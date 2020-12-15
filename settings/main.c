@@ -535,11 +535,7 @@ xfdesktop_settings_image_iconview_add(GtkTreeModel *model,
         name_utf8 = g_filename_to_utf8(name, name_length,
                                        NULL, NULL, NULL);
         if(name_utf8) {
-#if GLIB_CHECK_VERSION (2, 30, 0)
             size_string = g_format_size(file_size);
-#else
-            size_string = g_format_size_for_display(file_size);
-#endif
 
             /* Display the file name, file type, and file size in the tooltip. */
             name_markup = g_markup_printf_escaped(_("<b>%s</b>\nType: %s\nSize: %s"),
@@ -2146,10 +2142,6 @@ main(int argc, char **argv)
 #endif
 
     xfce_textdomain(GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
-
-#if !GLIB_CHECK_VERSION(2, 32, 0)
-    g_thread_init(NULL);
-#endif
 
     if(!gtk_init_with_args(&argc, &argv, "", option_entries, PACKAGE, &error)) {
         if(G_LIKELY(error)) {

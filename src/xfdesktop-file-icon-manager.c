@@ -2688,12 +2688,8 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
     gchar *filename;
 
     switch(event) {
-#if GLIB_CHECK_VERSION(2, 46, 0)
         case G_FILE_MONITOR_EVENT_RENAMED:
         case G_FILE_MONITOR_EVENT_MOVED_OUT:
-#else
-        case G_FILE_MONITOR_EVENT_MOVED:
-#endif
             XF_DEBUG("got a moved event");
 
             icon = g_hash_table_lookup(fmanager->priv->icons, file);
@@ -2778,9 +2774,7 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
                 }
             }
             break;
-#if GLIB_CHECK_VERSION(2, 46, 0)
         case G_FILE_MONITOR_EVENT_MOVED_IN:
-#endif
         case G_FILE_MONITOR_EVENT_CREATED:
             XF_DEBUG("got created event");
 
@@ -2966,11 +2960,7 @@ xfdesktop_file_icon_manager_files_ready(GFileEnumerator *enumerator,
         /* initialize the file monitor */
         if(!fmanager->priv->monitor) {
             fmanager->priv->monitor = g_file_monitor(fmanager->priv->folder,
-#if GLIB_CHECK_VERSION(2, 46, 0)
                                                      G_FILE_MONITOR_WATCH_MOVES,
-#else
-                                                     G_FILE_MONITOR_SEND_MOVED,
-#endif
                                                      NULL, NULL);
             g_signal_connect(fmanager->priv->monitor, "changed",
                              G_CALLBACK(xfdesktop_file_icon_manager_file_changed),
