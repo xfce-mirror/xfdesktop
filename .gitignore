@@ -53,9 +53,7 @@ settings/xfce-backdrop-settings.desktop
 settings/xfdesktop-settings
 settings/xfdesktop-settings-appearance-frame-ui.h
 settings/xfdesktop-settings-ui.h
-# We want the settings.desktop.in file to be tracked in git so the xfce
-# transifex bot will pickup the translations.
-#settings/xfce-backdrop-settings.desktop.in
+settings/xfce-backdrop-settings.desktop.in
 src/*-enum-types.*
 src/xfdesktop
 src/xfdesktop-marshal.c
