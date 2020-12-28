@@ -1,19 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Xfce Bot <transifex@xfce.org>, 2019
-# Zmicer Turok <nashtlumach@gmail.com>, 2019-2020
-# Zmicer Turok <nashtlumach@gmail.com>, 2018-2019
+# Xfce Bot <transifex@xfce.org>, 2020
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Xfdesktop\n"
+"Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-13 00:48+0200\n"
-"PO-Revision-Date: 2020-10-13 06:39+0000\n"
-"Last-Translator: Zmicer Turok <nashtlumach@gmail.com>\n"
-"Language-Team: Belarusian (http://www.transifex.com/xfce/xfdesktop/language/be/)\n"
+"POT-Creation-Date: 2020-12-28 18:41+0100\n"
+"PO-Revision-Date: 2020-12-28 17:42+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>, 2020\n"
+"Language-Team: Belarusian (https://www.transifex.com/xfce/teams/16840/be/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -51,88 +52,94 @@ msgid "Other Devices"
 msgstr "Іншыя прылады"
 
 #. Display the file name, file type, and file size in the tooltip.
-#: ../settings/main.c:545
+#: ../settings/main.c:541
 #, c-format
 msgid ""
 "<b>%s</b>\n"
 "Type: %s\n"
 "Size: %s"
-msgstr "Тып: %s\nПамер: %s\nАпошняя змена: %s"
+msgstr ""
+"Тып: %s\n"
+"Памер: %s\n"
+"Апошняя змена: %s"
 
-#: ../settings/main.c:732
+#: ../settings/main.c:728
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "Шпалеры для манітора %d (%s)"
 
-#: ../settings/main.c:735
+#: ../settings/main.c:731
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "Шпалеры для манітора %d"
 
-#: ../settings/main.c:741
+#: ../settings/main.c:737
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "Перамясціць дыялог на экран, які вы хочаце наладзіць."
 
-#: ../settings/main.c:748
+#: ../settings/main.c:744
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "Шпалеры для %s манітора %d (%s)"
 
-#: ../settings/main.c:752
+#: ../settings/main.c:748
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "Шпалеры для %s манітора %d"
 
-#: ../settings/main.c:759
+#: ../settings/main.c:755
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
-msgstr "Перамясціць дыялог на экран і працоўную прастору, якія вы хочаце наладзіць."
+msgstr ""
+"Перамясціць дыялог на экран і працоўную прастору, якія вы хочаце наладзіць."
 
 #. Single monitor and single workspace
-#: ../settings/main.c:767
+#: ../settings/main.c:763
 #, c-format
 msgid "Wallpaper for my desktop"
 msgstr "Шпалеры для працоўнага стала"
 
 #. Single monitor and per workspace wallpaper
-#: ../settings/main.c:773
+#: ../settings/main.c:769
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "Шпалеры для %s"
 
-#: ../settings/main.c:778
+#: ../settings/main.c:774
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "Перамясціць дыялог на працоўную прастору, якую вы хочаце наладзіць."
 
-#: ../settings/main.c:1198
+#: ../settings/main.c:1193
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "Абраць выяву немагчыма, калі не вызначыць стыль выявы."
 
-#: ../settings/main.c:1575
+#: ../settings/main.c:1570
 msgid "Spanning screens"
 msgstr "Аб'яднаныя экраны"
 
 #. TRANSLATORS: Please split the message in half with '\n' so the dialog will
 #. not be too wide.
-#: ../settings/main.c:1743
+#: ../settings/main.c:1738
 msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
-msgstr "Хочаце ўпарадкаваць усе існыя значкі\nадпаведна абранай арыентацыі?"
+msgstr ""
+"Хочаце ўпарадкаваць усе існыя значкі\n"
+"адпаведна абранай арыентацыі?"
 
-#: ../settings/main.c:1749
+#: ../settings/main.c:1744
 msgid "Arrange icons"
 msgstr "Упарадкаваць значкі"
 
 #. printf is to be translator-friendly
-#: ../settings/main.c:1757 ../src/xfdesktop-file-icon-manager.c:798
+#: ../settings/main.c:1752 ../src/xfdesktop-file-icon-manager.c:798
 #: ../src/xfdesktop-file-icon-manager.c:1353
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Немагчыма запусціць \"%s\":"
 
-#: ../settings/main.c:1758 ../src/xfdesktop-file-icon-manager.c:800
+#: ../settings/main.c:1753 ../src/xfdesktop-file-icon-manager.c:800
 #: ../src/xfdesktop-file-icon-manager.c:1102
 #: ../src/xfdesktop-file-icon-manager.c:1354 ../src/xfdesktop-file-utils.c:683
 #: ../src/xfdesktop-file-utils.c:1217 ../src/xfdesktop-file-utils.c:1295
@@ -140,14 +147,14 @@ msgstr "Немагчыма запусціць \"%s\":"
 msgid "Launch Error"
 msgstr "Падчас запуску адбылася памылка"
 
-#: ../settings/main.c:1760 ../settings/xfdesktop-settings-ui.glade.h:21
+#: ../settings/main.c:1755 ../settings/xfdesktop-settings-ui.glade.h:20
 #: ../src/xfdesktop-file-icon-manager.c:562
 #: ../src/xfdesktop-file-icon-manager.c:581
 #: ../src/xfdesktop-file-icon-manager.c:666
 #: ../src/xfdesktop-file-icon-manager.c:802
 #: ../src/xfdesktop-file-icon-manager.c:1106
 #: ../src/xfdesktop-file-icon-manager.c:1356
-#: ../src/xfdesktop-file-icon-manager.c:2961 ../src/xfdesktop-file-utils.c:686
+#: ../src/xfdesktop-file-icon-manager.c:2953 ../src/xfdesktop-file-utils.c:686
 #: ../src/xfdesktop-file-utils.c:706 ../src/xfdesktop-file-utils.c:761
 #: ../src/xfdesktop-file-utils.c:825 ../src/xfdesktop-file-utils.c:886
 #: ../src/xfdesktop-file-utils.c:947 ../src/xfdesktop-file-utils.c:995
@@ -161,74 +168,65 @@ msgstr "Падчас запуску адбылася памылка"
 msgid "_Close"
 msgstr "_Закрыць"
 
-#: ../settings/main.c:1915
+#: ../settings/main.c:1910
 msgid "Image files"
 msgstr "Файлы выяў"
 
 #. Change the title of the file chooser dialog
-#: ../settings/main.c:1923
+#: ../settings/main.c:1918
 msgid "Select a Directory"
 msgstr "Абраць каталог"
 
-#: ../settings/main.c:2128
+#: ../settings/main.c:2123
 msgid "Settings manager socket"
 msgstr "Сокет кіраўніка налад"
 
-#: ../settings/main.c:2128
+#: ../settings/main.c:2123
 msgid "SOCKET ID"
 msgstr "Ідэнтыфікатар сокета"
 
-#: ../settings/main.c:2129
+#: ../settings/main.c:2124
 msgid "Version information"
 msgstr "Інфармацыя пра версію"
 
-#: ../settings/main.c:2130 ../src/xfdesktop-application.c:842
+#: ../settings/main.c:2125 ../src/xfdesktop-application.c:842
 msgid "Enable debug messages"
 msgstr "Уключыць адладачныя паведамленні"
 
-#: ../settings/main.c:2158
+#: ../settings/main.c:2149
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Увядзіце \"%s --help\" для вываду даведкі."
 
-#: ../settings/main.c:2170
+#: ../settings/main.c:2161
 msgid "The Xfce development team. All rights reserved."
 msgstr "Каманда распрацоўкі Xfce. Усе правы абароненыя."
 
-#: ../settings/main.c:2171
+#: ../settings/main.c:2162
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Калі ласка, паведамляйце пра памылкі на <%s>."
 
-#: ../settings/main.c:2178
+#: ../settings/main.c:2169
 msgid "Desktop Settings"
 msgstr "Налады працоўнага стала"
 
-#: ../settings/main.c:2180
+#: ../settings/main.c:2171
 msgid "Unable to contact settings server"
 msgstr "Немагчыма падлучыцца да сервера налад"
 
-#: ../settings/main.c:2182
+#: ../settings/main.c:2173
 msgid "Quit"
 msgstr "Выйсці"
 
-#: ../settings/xfce-backdrop-settings.desktop.in.h:1
+#: ../settings/xfce-backdrop-settings.desktop.in.in.h:1
 #: ../settings/xfdesktop-settings-ui.glade.h:18 ../src/xfce-desktop.c:1174
 msgid "Desktop"
 msgstr "Працоўны стол"
 
-#: ../settings/xfce-backdrop-settings.desktop.in.h:2
-#: ../settings/xfdesktop-settings-ui.glade.h:19
+#: ../settings/xfce-backdrop-settings.desktop.in.in.h:2
 msgid "Set desktop background and menu and icon behavior"
 msgstr "Наладка фону працоўнага стала, меню і значкоў"
-
-#: ../settings/xfce-backdrop-settings.desktop.in.h:3
-msgid ""
-"desktop;settings;background;wallpaper;color;gradient;menu;applications;right"
-" click;window list;middle "
-"click;workspace;icon;size;orientation;arrangement;font;thumbnails;single "
-"click;default;"
-msgstr "працоўны стол;налады;фон;шпалеры;колер;градыент;меню;праграмы;правая кнопка мышы;спіс акон;сярэдняя кнопка мышы;працоўная прастора;значок;памер;арыентацыя;парадкаванне;шрыфт;мініяцюры;адзіночная пстрычка;прадвызначана;"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
 msgid "Solid color"
@@ -438,145 +436,147 @@ msgstr "Знізу справа вертыкальна"
 msgid "Bottom Right Horizontal"
 msgstr "Знізу справа гарызантальна"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:20
+#: ../settings/xfdesktop-settings-ui.glade.h:19
 msgid "_Help"
 msgstr "_Даведка"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:22
+#: ../settings/xfdesktop-settings-ui.glade.h:21
 msgid "_Background"
 msgstr "_Фон"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:23
+#: ../settings/xfdesktop-settings-ui.glade.h:22
 msgid "Include applications menu on _desktop right click"
 msgstr "Меню праграм на працоўным _стале па пстрычцы правай кнопкай мышы"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:24
+#: ../settings/xfdesktop-settings-ui.glade.h:23
 msgid "_Button:"
 msgstr "_Кнопка:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:25
+#: ../settings/xfdesktop-settings-ui.glade.h:24
 msgid "Mo_difier:"
 msgstr "Мады_фікатар:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:26
+#: ../settings/xfdesktop-settings-ui.glade.h:25
 msgid "Show _application icons in menu"
 msgstr "Паказваць _значкі праграм у меню"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:27
+#: ../settings/xfdesktop-settings-ui.glade.h:26
 msgid "_Edit desktop menu"
 msgstr "_Рэдагаваць меню працоўнага стала"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:28
+#: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "<b>Desktop Menu</b>"
 msgstr "<b>Меню працоўнага стала</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:29
+#: ../settings/xfdesktop-settings-ui.glade.h:28
 msgid "Show _window list menu on desktop middle click"
 msgstr "Паказваць _спіс акон па пстрычцы сярэдняй кнопкай мышы"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:30
+#: ../settings/xfdesktop-settings-ui.glade.h:29
 msgid "B_utton:"
 msgstr "К_нопка:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:31
+#: ../settings/xfdesktop-settings-ui.glade.h:30
 msgid "Modi_fier:"
 msgstr "Мадыфі_катар:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:32
+#: ../settings/xfdesktop-settings-ui.glade.h:31
 msgid "Sh_ow application icons in menu"
 msgstr "Па_казваць значкі праграм у меню"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:33
+#: ../settings/xfdesktop-settings-ui.glade.h:32
 msgid "Show workspace _names in list"
 msgstr "Паказваць назвы _працоўных прастораў у спісе"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:34
+#: ../settings/xfdesktop-settings-ui.glade.h:33
 msgid "Use _submenus for the windows in each workspace"
 msgstr "Выкарыстоўваць _падменю ў вокнах на кожнай працоўнай прасторы"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:35
+#: ../settings/xfdesktop-settings-ui.glade.h:34
 msgid "Show s_ticky windows only in active workspace"
 msgstr "Паказваць пры_лепленыя вокны толькі на актыўнай працоўнай прасторы"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:36
+#: ../settings/xfdesktop-settings-ui.glade.h:35
 msgid "Show a_dd and remove workspace options in list"
 msgstr "Паказваць эле_менты для выдалення і дадання працоўных прастораў"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:37
+#: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid "<b>Window List Menu</b>"
 msgstr "<b>Спіс акон</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:38
+#: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "_Menus"
 msgstr "_Меню"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:39
+#: ../settings/xfdesktop-settings-ui.glade.h:38
 msgid "Icon _type:"
 msgstr "Тып _значкоў:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:40
+#: ../settings/xfdesktop-settings-ui.glade.h:39
 msgid "Icon _size:"
 msgstr "Памер _значкоў:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:41
+#: ../settings/xfdesktop-settings-ui.glade.h:40
 msgid "48"
 msgstr "48"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:42
+#: ../settings/xfdesktop-settings-ui.glade.h:41
 msgid "Icons _orientation:"
 msgstr "_Арыентацыя значкоў:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:43
+#: ../settings/xfdesktop-settings-ui.glade.h:42
 msgid "Show icons on primary display"
 msgstr "Паказваць значкі на асноўным дысплеі"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:44
+#: ../settings/xfdesktop-settings-ui.glade.h:43
 msgid "Use custom _font size:"
 msgstr "Выкарыстоўваць адвольны _памер шрыфту:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:45
+#: ../settings/xfdesktop-settings-ui.glade.h:44
 msgid "12"
 msgstr "12"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:46
+#: ../settings/xfdesktop-settings-ui.glade.h:45
 msgid "Show icon tooltips. Size:"
 msgstr "Паказваць падказкі для значкоў. Памер:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:47
+#: ../settings/xfdesktop-settings-ui.glade.h:46
 msgid "Size of the tooltip preview image."
 msgstr "Памер мініяцюры ў выплыўной падказцы."
 
-#: ../settings/xfdesktop-settings-ui.glade.h:48
+#: ../settings/xfdesktop-settings-ui.glade.h:47
 msgid "128"
 msgstr "128"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:49
+#: ../settings/xfdesktop-settings-ui.glade.h:48
 msgid "Show t_humbnails"
 msgstr "Паказваць мінія_цюры"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:50
+#: ../settings/xfdesktop-settings-ui.glade.h:49
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
-msgstr "Абярыце гэты параметр для адлюстравання файлаў на працоўным стале ў выглядзе мініяцюр."
+msgstr ""
+"Абярыце гэты параметр для адлюстравання файлаў на працоўным стале ў выглядзе"
+" мініяцюр."
 
-#: ../settings/xfdesktop-settings-ui.glade.h:51
+#: ../settings/xfdesktop-settings-ui.glade.h:50
 msgid "Show hidden files on the desktop"
 msgstr "Паказваць схаваныя файлы на працоўным стале"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:52
+#: ../settings/xfdesktop-settings-ui.glade.h:51
 msgid "Single _click to activate items"
 msgstr "Задзейнічаць элементы _адной пстрычкай"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:53
+#: ../settings/xfdesktop-settings-ui.glade.h:52
 msgid "<b>Appearance</b>"
 msgstr "<b>Выгляд</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:54
+#: ../settings/xfdesktop-settings-ui.glade.h:53
 msgid "<b>Default Icons</b>"
 msgstr "<b>Прадвызначаныя значкі</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:55
+#: ../settings/xfdesktop-settings-ui.glade.h:54
 msgid "_Icons"
 msgstr "_Значкі"
 
@@ -594,7 +594,10 @@ msgstr "Выдаліць прастору \"%d\""
 msgid ""
 "Do you really want to remove workspace %d?\n"
 "Note: You are currently on workspace %d."
-msgstr "Сапраўды выдаліць працоўную прастору \"%d\"?\n\nЗараз вы на працоўнай прасторы \"%d\"."
+msgstr ""
+"Сапраўды выдаліць працоўную прастору \"%d\"?\n"
+"\n"
+"Зараз вы на працоўнай прасторы \"%d\"."
 
 #: ../src/windowlist.c:78
 #, c-format
@@ -606,7 +609,9 @@ msgstr "Выдаліць працоўную прастору \"%s\""
 msgid ""
 "Do you really want to remove workspace '%s'?\n"
 "Note: You are currently on workspace '%s'."
-msgstr "Сапраўды выдаліць працоўную прастору \"%s\"?\nЗараз вы на працоўнай прасторы \"%s\"."
+msgstr ""
+"Сапраўды выдаліць працоўную прастору \"%s\"?\n"
+"Зараз вы на працоўнай прасторы \"%s\"."
 
 #. Popup a dialog box confirming that the user wants to remove a
 #. * workspace
@@ -732,7 +737,8 @@ msgstr "Памылка каталога працоўнага стала"
 #: ../src/xfdesktop-file-icon-manager.c:579
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
-msgstr "Файл з такою назвай ужо існуе. Калі ласка, выдаліце яго альбо змяніце назву."
+msgstr ""
+"Файл з такою назвай ужо існуе. Калі ласка, выдаліце яго альбо змяніце назву."
 
 #: ../src/xfdesktop-file-icon-manager.c:663 ../src/xfdesktop-file-utils.c:757
 #: ../src/xfdesktop-file-utils.c:821
@@ -761,7 +767,9 @@ msgstr "Адкрыць у \"%s\""
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
-msgstr "Немагчыма запусціць \"exo-desktop-item-edit\", што патрабуецца для стварэння і рэдагавання запускальнікаў і спасылак працоўнага стала."
+msgstr ""
+"Немагчыма запусціць \"exo-desktop-item-edit\", што патрабуецца для стварэння"
+" і рэдагавання запускальнікаў і спасылак працоўнага стала."
 
 #: ../src/xfdesktop-file-icon-manager.c:1423
 msgid "_Open all"
@@ -862,31 +870,31 @@ msgstr "Налады працоўнага _стала..."
 msgid "P_roperties..."
 msgstr "_Уласцівасці..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2958
+#: ../src/xfdesktop-file-icon-manager.c:2950
 msgid "Load Error"
 msgstr "Не атрымалася загрузіць"
 
-#: ../src/xfdesktop-file-icon-manager.c:2960
+#: ../src/xfdesktop-file-icon-manager.c:2952
 msgid "Failed to load the desktop folder"
 msgstr "Не атрымалася загрузіць каталог працоўнага стала"
 
-#: ../src/xfdesktop-file-icon-manager.c:3530
+#: ../src/xfdesktop-file-icon-manager.c:3518
 msgid "Copy _Here"
 msgstr "Скапіяваць _сюды"
 
-#: ../src/xfdesktop-file-icon-manager.c:3530
+#: ../src/xfdesktop-file-icon-manager.c:3518
 msgid "_Move Here"
 msgstr "_Перамясціць сюды"
 
-#: ../src/xfdesktop-file-icon-manager.c:3530
+#: ../src/xfdesktop-file-icon-manager.c:3518
 msgid "_Link Here"
 msgstr "_Стварыць спасылку"
 
-#: ../src/xfdesktop-file-icon-manager.c:3565
+#: ../src/xfdesktop-file-icon-manager.c:3553
 msgid "_Cancel"
 msgstr "_Скасаваць"
 
-#: ../src/xfdesktop-file-icon-manager.c:3694
+#: ../src/xfdesktop-file-icon-manager.c:3683
 msgid "Untitled document"
 msgstr "Дакумент без назвы"
 
@@ -944,7 +952,8 @@ msgstr "Немагчыма змяніць назву файла"
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
-msgstr "Гэтай функцыі патрабуецца служба кіраўніка файлаў (напрыклад, ад Thunar)."
+msgstr ""
+"Гэтай функцыі патрабуецца служба кіраўніка файлаў (напрыклад, ад Thunar)."
 
 #: ../src/xfdesktop-file-utils.c:882
 msgid "Delete Error"
@@ -1030,7 +1039,9 @@ msgstr "Адмантаванне прылады"
 msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the"
 " media or disconnect the drive"
-msgstr "Прылада \"%s\" адмантоўваецца сістэмай. Калі ласка, не вымайце дыск і не адключайце дыскавод"
+msgstr ""
+"Прылада \"%s\" адмантоўваецца сістэмай. Калі ласка, не вымайце дыск і не "
+"адключайце дыскавод"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:137 ../src/xfdesktop-notify.c:322
@@ -1043,7 +1054,9 @@ msgstr "Запіс даных на прыладу"
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be"
 " removed. Please do not remove the media or disconnect the drive"
-msgstr "Патрэбна запісаць даныя, перш чым можна будзе вызваліць прыладу \"%s\". Калі ласка, не вымайце дыск і не адключайце дыскавод"
+msgstr ""
+"Патрэбна запісаць даныя, перш чым можна будзе вызваліць прыладу \"%s\". Калі"
+" ласка, не вымайце дыск і не адключайце дыскавод"
 
 #: ../src/xfdesktop-notify.c:221
 msgid "Unmount Finished"
@@ -1076,7 +1089,11 @@ msgid ""
 "Type: %s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr "Назва: %s\nТып: %s\nПамер: %s\nАпошняя змена: %s"
+msgstr ""
+"Назва: %s\n"
+"Тып: %s\n"
+"Памер: %s\n"
+"Апошняя змена: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:461
 msgid "Trash is empty"
@@ -1097,7 +1114,10 @@ msgid ""
 "%s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr "%s\nПамер: %s\nАпошняя змена: %s"
+msgstr ""
+"%s\n"
+"Памер: %s\n"
+"Апошняя змена: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:561
 msgid "_Empty Trash"
@@ -1109,13 +1129,18 @@ msgid ""
 "Removable Volume\n"
 "Mounted in \"%s\"\n"
 "%s left (%s total)"
-msgstr "Рухомы носьбіт\nПрымантаваны ў \"%s\"\n%s вольна (%s агулам)"
+msgstr ""
+"Рухомы носьбіт\n"
+"Прымантаваны ў \"%s\"\n"
+"%s вольна (%s агулам)"
 
 #: ../src/xfdesktop-volume-icon.c:487
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
-msgstr "Рухомы носьбіт\nЯшчэ не прымантаваны"
+msgstr ""
+"Рухомы носьбіт\n"
+"Яшчэ не прымантаваны"
 
 #: ../src/xfdesktop-volume-icon.c:516 ../src/xfdesktop-volume-icon.c:562
 #, c-format
