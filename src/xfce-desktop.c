@@ -1878,7 +1878,9 @@ xfce_desktop_do_menu_popup(XfceDesktop *desktop,
     if(activate_time == 0)
         activate_time = gtk_get_current_event_time();
 
+    g_object_ref_sink(G_OBJECT(menu));
     xfce_gtk_menu_popup_until_mapped(GTK_MENU(menu), NULL, NULL, NULL, NULL, button, activate_time);
+    g_object_unref(G_OBJECT(menu));
 }
 
 
