@@ -1,24 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Andhika Padmawan <andhika.padmawan@gmail.com>, 2008,2014
-# Anton Toni Agung <vdrive6@gmail.com>, 2015
-# Ardjuna <Asyura.x@gmail.com>, 2013-2014
-# se7entime <se7entime@disroot.org>, 2013
-# se7entime <se7entime@disroot.org>, 2013
-# se7entime <se7entime@disroot.org>, 2013
-# se7entime <se7entime@disroot.org>, 2013
-# Triyan W. Nugroho <triyan.wn@gmail.com>, 2020
+# Xfce Bot <transifex@xfce.org>, 2020
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Xfdesktop\n"
+"Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-13 00:48+0200\n"
-"PO-Revision-Date: 2020-10-14 08:37+0000\n"
-"Last-Translator: Triyan W. Nugroho <triyan.wn@gmail.com>\n"
-"Language-Team: Indonesian (http://www.transifex.com/xfce/xfdesktop/language/id/)\n"
+"POT-Creation-Date: 2020-12-28 18:41+0100\n"
+"PO-Revision-Date: 2020-12-28 17:42+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>, 2020\n"
+"Language-Team: Indonesian (https://www.transifex.com/xfce/teams/16840/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -56,88 +52,98 @@ msgid "Other Devices"
 msgstr "Perangkat Lain"
 
 #. Display the file name, file type, and file size in the tooltip.
-#: ../settings/main.c:545
+#: ../settings/main.c:541
 #, c-format
 msgid ""
 "<b>%s</b>\n"
 "Type: %s\n"
 "Size: %s"
-msgstr "<b>%s</b>\nTipe:%s\nUkuran:%s"
+msgstr ""
+"<b>%s</b>\n"
+"Tipe:%s\n"
+"Ukuran:%s"
 
-#: ../settings/main.c:732
+#: ../settings/main.c:728
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "Latar Belakang untuk Monitor %d (%s)"
 
-#: ../settings/main.c:735
+#: ../settings/main.c:731
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "Latar Belakang untuk Monitor %d"
 
-#: ../settings/main.c:741
+#: ../settings/main.c:737
 msgid "Move this dialog to the display you want to edit the settings for."
-msgstr "Pindahkan dialog ini ke tampilan yang ingin Anda sunting pengaturannya."
+msgstr ""
+"Pindahkan dialog ini ke tampilan yang ingin Anda sunting pengaturannya."
 
-#: ../settings/main.c:748
+#: ../settings/main.c:744
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "Latar Belakang untuk %s pada Monitor %d (%s)"
 
-#: ../settings/main.c:752
+#: ../settings/main.c:748
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "Latar Belakang untuk %s pada Monitor %d"
 
-#: ../settings/main.c:759
+#: ../settings/main.c:755
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
-msgstr "Pindahkan dialog ini ke tampilan dan area kerja yang ingin Anda sunting pengaturannya."
+msgstr ""
+"Pindahkan dialog ini ke tampilan dan area kerja yang ingin Anda sunting "
+"pengaturannya."
 
 #. Single monitor and single workspace
-#: ../settings/main.c:767
+#: ../settings/main.c:763
 #, c-format
 msgid "Wallpaper for my desktop"
 msgstr "Latar Belakang untuk desktop saya"
 
 #. Single monitor and per workspace wallpaper
-#: ../settings/main.c:773
+#: ../settings/main.c:769
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "Latar Belakang untuk %s"
 
-#: ../settings/main.c:778
+#: ../settings/main.c:774
 msgid "Move this dialog to the workspace you want to edit the settings for."
-msgstr "Silahkan pindahkan jendela dialog ini ke ruang kerja yang akan diatur."
+msgstr ""
+"Silahkan pindahkan jendela dialog ini ke ruang kerja yang akan diatur."
 
-#: ../settings/main.c:1198
+#: ../settings/main.c:1193
 msgid "Image selection is unavailable while the image style is set to None."
-msgstr "Seleksi gambar tidak tersedia ketika gaya gambar disetel ke Tidak satupun."
+msgstr ""
+"Seleksi gambar tidak tersedia ketika gaya gambar disetel ke Tidak satupun."
 
-#: ../settings/main.c:1575
+#: ../settings/main.c:1570
 msgid "Spanning screens"
 msgstr "Merentang layar"
 
 #. TRANSLATORS: Please split the message in half with '\n' so the dialog will
 #. not be too wide.
-#: ../settings/main.c:1743
+#: ../settings/main.c:1738
 msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
-msgstr "Anda ingin mengatur semua ikon yang ada\nmenurut orientasi terpilih?"
+msgstr ""
+"Anda ingin mengatur semua ikon yang ada\n"
+"menurut orientasi terpilih?"
 
-#: ../settings/main.c:1749
+#: ../settings/main.c:1744
 msgid "Arrange icons"
 msgstr "Atur ikon"
 
 #. printf is to be translator-friendly
-#: ../settings/main.c:1757 ../src/xfdesktop-file-icon-manager.c:798
+#: ../settings/main.c:1752 ../src/xfdesktop-file-icon-manager.c:798
 #: ../src/xfdesktop-file-icon-manager.c:1353
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Tak dapat menjalankan \"%s\":"
 
-#: ../settings/main.c:1758 ../src/xfdesktop-file-icon-manager.c:800
+#: ../settings/main.c:1753 ../src/xfdesktop-file-icon-manager.c:800
 #: ../src/xfdesktop-file-icon-manager.c:1102
 #: ../src/xfdesktop-file-icon-manager.c:1354 ../src/xfdesktop-file-utils.c:683
 #: ../src/xfdesktop-file-utils.c:1217 ../src/xfdesktop-file-utils.c:1295
@@ -145,14 +151,14 @@ msgstr "Tak dapat menjalankan \"%s\":"
 msgid "Launch Error"
 msgstr "Galat Peluncur"
 
-#: ../settings/main.c:1760 ../settings/xfdesktop-settings-ui.glade.h:21
+#: ../settings/main.c:1755 ../settings/xfdesktop-settings-ui.glade.h:20
 #: ../src/xfdesktop-file-icon-manager.c:562
 #: ../src/xfdesktop-file-icon-manager.c:581
 #: ../src/xfdesktop-file-icon-manager.c:666
 #: ../src/xfdesktop-file-icon-manager.c:802
 #: ../src/xfdesktop-file-icon-manager.c:1106
 #: ../src/xfdesktop-file-icon-manager.c:1356
-#: ../src/xfdesktop-file-icon-manager.c:2961 ../src/xfdesktop-file-utils.c:686
+#: ../src/xfdesktop-file-icon-manager.c:2953 ../src/xfdesktop-file-utils.c:686
 #: ../src/xfdesktop-file-utils.c:706 ../src/xfdesktop-file-utils.c:761
 #: ../src/xfdesktop-file-utils.c:825 ../src/xfdesktop-file-utils.c:886
 #: ../src/xfdesktop-file-utils.c:947 ../src/xfdesktop-file-utils.c:995
@@ -166,74 +172,65 @@ msgstr "Galat Peluncur"
 msgid "_Close"
 msgstr "_Tutup"
 
-#: ../settings/main.c:1915
+#: ../settings/main.c:1910
 msgid "Image files"
 msgstr "Berkas citra"
 
 #. Change the title of the file chooser dialog
-#: ../settings/main.c:1923
+#: ../settings/main.c:1918
 msgid "Select a Directory"
 msgstr "Pilih Direktori"
 
-#: ../settings/main.c:2128
+#: ../settings/main.c:2123
 msgid "Settings manager socket"
 msgstr "Soket manajer pengaturan"
 
-#: ../settings/main.c:2128
+#: ../settings/main.c:2123
 msgid "SOCKET ID"
 msgstr "ID SOKET"
 
-#: ../settings/main.c:2129
+#: ../settings/main.c:2124
 msgid "Version information"
 msgstr "Informasi versi"
 
-#: ../settings/main.c:2130 ../src/xfdesktop-application.c:842
+#: ../settings/main.c:2125 ../src/xfdesktop-application.c:842
 msgid "Enable debug messages"
 msgstr "Nyalakan pesan debug"
 
-#: ../settings/main.c:2158
+#: ../settings/main.c:2149
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Ketik '%s --help' untuk penggunaan."
 
-#: ../settings/main.c:2170
+#: ../settings/main.c:2161
 msgid "The Xfce development team. All rights reserved."
 msgstr "Tim pengembang Xfce. Hak cipta dilindungi undang-undang."
 
-#: ../settings/main.c:2171
+#: ../settings/main.c:2162
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Silahkan melaporkan galat ke <%s>."
 
-#: ../settings/main.c:2178
+#: ../settings/main.c:2169
 msgid "Desktop Settings"
 msgstr "Pengaturan Destop"
 
-#: ../settings/main.c:2180
+#: ../settings/main.c:2171
 msgid "Unable to contact settings server"
 msgstr "Gagal berkomunikasi dengan server pengaturan"
 
-#: ../settings/main.c:2182
+#: ../settings/main.c:2173
 msgid "Quit"
 msgstr "Keluar"
 
-#: ../settings/xfce-backdrop-settings.desktop.in.h:1
+#: ../settings/xfce-backdrop-settings.desktop.in.in.h:1
 #: ../settings/xfdesktop-settings-ui.glade.h:18 ../src/xfce-desktop.c:1174
 msgid "Desktop"
 msgstr "Destop"
 
-#: ../settings/xfce-backdrop-settings.desktop.in.h:2
-#: ../settings/xfdesktop-settings-ui.glade.h:19
+#: ../settings/xfce-backdrop-settings.desktop.in.in.h:2
 msgid "Set desktop background and menu and icon behavior"
 msgstr "Atur latar belakang destop, perilaku ikon, serta menu"
-
-#: ../settings/xfce-backdrop-settings.desktop.in.h:3
-msgid ""
-"desktop;settings;background;wallpaper;color;gradient;menu;applications;right"
-" click;window list;middle "
-"click;workspace;icon;size;orientation;arrangement;font;thumbnails;single "
-"click;default;"
-msgstr "desktop;pengaturan;latar belakang;gambar latar;warna;gradien;menu;aplikasi;klik kanan;daftar jendela;klik tengah;ruang kerja;ikon;ukuran;orientasi;penataan;fonta;gambar miniatur;klik tunggal;bawaan;"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
 msgid "Solid color"
@@ -261,7 +258,8 @@ msgstr "Ga_ya:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
 msgid "Specify how the image will be resized to fit the screen."
-msgstr "Tentukan bagaimana gambar akan diubah ukurannya agar sesuai dengan layar."
+msgstr ""
+"Tentukan bagaimana gambar akan diubah ukurannya agar sesuai dengan layar."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
 #: ../settings/xfdesktop-settings-ui.glade.h:4
@@ -377,7 +375,8 @@ msgstr "_Acak"
 msgid ""
 "Randomly selects another image from the same directory when the wallpaper is"
 " to cycle."
-msgstr "Pilih acak gambar lain pada folder yang sama saat pergantian latar belakang."
+msgstr ""
+"Pilih acak gambar lain pada folder yang sama saat pergantian latar belakang."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:1
 msgid "Left"
@@ -443,145 +442,147 @@ msgstr "Bawah Kanan Vertikal"
 msgid "Bottom Right Horizontal"
 msgstr "Bawah Kanan Horisontal"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:20
+#: ../settings/xfdesktop-settings-ui.glade.h:19
 msgid "_Help"
 msgstr "Ba_ntuan"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:22
+#: ../settings/xfdesktop-settings-ui.glade.h:21
 msgid "_Background"
 msgstr "_Latar Belakang"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:23
+#: ../settings/xfdesktop-settings-ui.glade.h:22
 msgid "Include applications menu on _desktop right click"
 msgstr "Termasuk menu aplikasi pada klik kanan _deskop"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:24
+#: ../settings/xfdesktop-settings-ui.glade.h:23
 msgid "_Button:"
 msgstr "_Tombol:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:25
+#: ../settings/xfdesktop-settings-ui.glade.h:24
 msgid "Mo_difier:"
 msgstr "Penyun_ting:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:26
+#: ../settings/xfdesktop-settings-ui.glade.h:25
 msgid "Show _application icons in menu"
 msgstr "Tampilkan _ikon aplikasi di menu"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:27
+#: ../settings/xfdesktop-settings-ui.glade.h:26
 msgid "_Edit desktop menu"
 msgstr "_Sunting menu destop"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:28
+#: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "<b>Desktop Menu</b>"
 msgstr "<b>Menu Destop</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:29
+#: ../settings/xfdesktop-settings-ui.glade.h:28
 msgid "Show _window list menu on desktop middle click"
 msgstr "Tampilkan menu _senarai jendela saat klik tengah di destop"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:30
+#: ../settings/xfdesktop-settings-ui.glade.h:29
 msgid "B_utton:"
 msgstr "T_ombol:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:31
+#: ../settings/xfdesktop-settings-ui.glade.h:30
 msgid "Modi_fier:"
 msgstr "Penyun_ting:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:32
+#: ../settings/xfdesktop-settings-ui.glade.h:31
 msgid "Sh_ow application icons in menu"
 msgstr "Tamp_ilkan ikon aplikasi di menu"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:33
+#: ../settings/xfdesktop-settings-ui.glade.h:32
 msgid "Show workspace _names in list"
 msgstr "Tampilkan _nama ruang kerja dalam senarai"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:34
+#: ../settings/xfdesktop-settings-ui.glade.h:33
 msgid "Use _submenus for the windows in each workspace"
 msgstr "Gunakan _sub-menu untuk jendela di tiap ruang kerja"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:35
+#: ../settings/xfdesktop-settings-ui.glade.h:34
 msgid "Show s_ticky windows only in active workspace"
 msgstr "Ha_nya tampilkan Jendela Melekat pada ruang kerja aktif"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:36
+#: ../settings/xfdesktop-settings-ui.glade.h:35
 msgid "Show a_dd and remove workspace options in list"
 msgstr "Tampilkan opsi tambah / hapus ruang kerja dalam daftar"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:37
+#: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid "<b>Window List Menu</b>"
 msgstr "<b>Menu Senarai Jendela</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:38
+#: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "_Menus"
 msgstr "_Menu"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:39
+#: ../settings/xfdesktop-settings-ui.glade.h:38
 msgid "Icon _type:"
 msgstr "Tipe i_kon:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:40
+#: ../settings/xfdesktop-settings-ui.glade.h:39
 msgid "Icon _size:"
 msgstr "Ukuran _ikon:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:41
+#: ../settings/xfdesktop-settings-ui.glade.h:40
 msgid "48"
 msgstr "48"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:42
+#: ../settings/xfdesktop-settings-ui.glade.h:41
 msgid "Icons _orientation:"
 msgstr "_Orientasi ikon:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:43
+#: ../settings/xfdesktop-settings-ui.glade.h:42
 msgid "Show icons on primary display"
 msgstr "Tampilkan ikon di layar utama"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:44
+#: ../settings/xfdesktop-settings-ui.glade.h:43
 msgid "Use custom _font size:"
 msgstr "Gunakan ukuran _fonta suai:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:45
+#: ../settings/xfdesktop-settings-ui.glade.h:44
 msgid "12"
 msgstr "12"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:46
+#: ../settings/xfdesktop-settings-ui.glade.h:45
 msgid "Show icon tooltips. Size:"
 msgstr "Tampilkan tooltip ikon. Ukuran:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:47
+#: ../settings/xfdesktop-settings-ui.glade.h:46
 msgid "Size of the tooltip preview image."
 msgstr "Ukuran cuplikan pada tooltip."
 
-#: ../settings/xfdesktop-settings-ui.glade.h:48
+#: ../settings/xfdesktop-settings-ui.glade.h:47
 msgid "128"
 msgstr "128"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:49
+#: ../settings/xfdesktop-settings-ui.glade.h:48
 msgid "Show t_humbnails"
 msgstr "Tampilkan m_iniatur"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:50
+#: ../settings/xfdesktop-settings-ui.glade.h:49
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
-msgstr "Pilih opsi ini untuk menampilkan berkas tertentu di destop sebagai ikon miniatur."
+msgstr ""
+"Pilih opsi ini untuk menampilkan berkas tertentu di destop sebagai ikon "
+"miniatur."
 
-#: ../settings/xfdesktop-settings-ui.glade.h:51
+#: ../settings/xfdesktop-settings-ui.glade.h:50
 msgid "Show hidden files on the desktop"
 msgstr "Tampilkan file tersembunyi di desktop"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:52
+#: ../settings/xfdesktop-settings-ui.glade.h:51
 msgid "Single _click to activate items"
 msgstr "Klik _tunggal untuk mengaktifkan item"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:53
+#: ../settings/xfdesktop-settings-ui.glade.h:52
 msgid "<b>Appearance</b>"
 msgstr "<b>Tampilan</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:54
+#: ../settings/xfdesktop-settings-ui.glade.h:53
 msgid "<b>Default Icons</b>"
 msgstr "<b>Ikon Standar</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:55
+#: ../settings/xfdesktop-settings-ui.glade.h:54
 msgid "_Icons"
 msgstr "_Ikon"
 
@@ -599,7 +600,9 @@ msgstr "Hapus Ruang Kerja %d"
 msgid ""
 "Do you really want to remove workspace %d?\n"
 "Note: You are currently on workspace %d."
-msgstr "Apakah anda ingin menghapus ruang kerja %d?\nCatatan: Saat ini anda berada di ruang kerja %d."
+msgstr ""
+"Apakah anda ingin menghapus ruang kerja %d?\n"
+"Catatan: Saat ini anda berada di ruang kerja %d."
 
 #: ../src/windowlist.c:78
 #, c-format
@@ -611,7 +614,9 @@ msgstr "Hapus Ruang Kerja '%s'"
 msgid ""
 "Do you really want to remove workspace '%s'?\n"
 "Note: You are currently on workspace '%s'."
-msgstr "Apakah anda ingin menghapus ruang kerja '%s'?\nCatatan: Saat ini anda berada di ruang kerja '%s'."
+msgstr ""
+"Apakah anda ingin menghapus ruang kerja '%s'?\n"
+"Catatan: Saat ini anda berada di ruang kerja '%s'."
 
 #. Popup a dialog box confirming that the user wants to remove a
 #. * workspace
@@ -737,7 +742,9 @@ msgstr "Galat Folder Desktop"
 #: ../src/xfdesktop-file-icon-manager.c:579
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
-msgstr "Sebuah berkas normal dengan nama yang sama telah ada. Silakan hapus atau ganti nama."
+msgstr ""
+"Sebuah berkas normal dengan nama yang sama telah ada. Silakan hapus atau "
+"ganti nama."
 
 #: ../src/xfdesktop-file-icon-manager.c:663 ../src/xfdesktop-file-utils.c:757
 #: ../src/xfdesktop-file-utils.c:821
@@ -766,7 +773,9 @@ msgstr "Buka Dengan \"%s\""
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
-msgstr "Tak dapat menjalankan \"exo-desktop-item-edit\", yang diperlukan untuk membuat dan menyunting peluncur serta tautan di desktop."
+msgstr ""
+"Tak dapat menjalankan \"exo-desktop-item-edit\", yang diperlukan untuk "
+"membuat dan menyunting peluncur serta tautan di desktop."
 
 #: ../src/xfdesktop-file-icon-manager.c:1423
 msgid "_Open all"
@@ -867,31 +876,31 @@ msgstr "Pengaturan _Desktop..."
 msgid "P_roperties..."
 msgstr "_Properti..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2958
+#: ../src/xfdesktop-file-icon-manager.c:2950
 msgid "Load Error"
 msgstr "Galat Memuat"
 
-#: ../src/xfdesktop-file-icon-manager.c:2960
+#: ../src/xfdesktop-file-icon-manager.c:2952
 msgid "Failed to load the desktop folder"
 msgstr "Gagal memuat folder desktop"
 
-#: ../src/xfdesktop-file-icon-manager.c:3530
+#: ../src/xfdesktop-file-icon-manager.c:3518
 msgid "Copy _Here"
 msgstr "Salin ke _Sini"
 
-#: ../src/xfdesktop-file-icon-manager.c:3530
+#: ../src/xfdesktop-file-icon-manager.c:3518
 msgid "_Move Here"
 msgstr "_Pindah ke Sini"
 
-#: ../src/xfdesktop-file-icon-manager.c:3530
+#: ../src/xfdesktop-file-icon-manager.c:3518
 msgid "_Link Here"
 msgstr "_Taut ke Sini"
 
-#: ../src/xfdesktop-file-icon-manager.c:3565
+#: ../src/xfdesktop-file-icon-manager.c:3553
 msgid "_Cancel"
 msgstr "_Batal"
 
-#: ../src/xfdesktop-file-icon-manager.c:3694
+#: ../src/xfdesktop-file-icon-manager.c:3683
 msgid "Untitled document"
 msgstr "Dokumen tanpa judul"
 
@@ -949,7 +958,9 @@ msgstr "Berkas tak dapat diganti nama"
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
-msgstr "Fitur ini memerlukan adanya sebuah layanan manajer berkas yang tersedia (seperti yang disediakan oleh Thunar)."
+msgstr ""
+"Fitur ini memerlukan adanya sebuah layanan manajer berkas yang tersedia "
+"(seperti yang disediakan oleh Thunar)."
 
 #: ../src/xfdesktop-file-utils.c:882
 msgid "Delete Error"
@@ -971,7 +982,9 @@ msgstr "Berkas yang dipilih tidak dapat dipindahkan ke tempat sampah"
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
-msgstr "Fitur ini memerlukan adanya layanan tempat sampah (seperti yang disediakan oleh Thunar)."
+msgstr ""
+"Fitur ini memerlukan adanya layanan tempat sampah (seperti yang disediakan "
+"oleh Thunar)."
 
 #: ../src/xfdesktop-file-utils.c:992
 msgid "Could not empty the trash"
@@ -1035,7 +1048,9 @@ msgstr "Melepas kaitan divais"
 msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the"
 " media or disconnect the drive"
-msgstr "Divais \"%s\" sedang dilepaskaitkan oleh sistem. Tolong jangan mengeluarkan atau melepas peranti"
+msgstr ""
+"Divais \"%s\" sedang dilepaskaitkan oleh sistem. Tolong jangan mengeluarkan "
+"atau melepas peranti"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:137 ../src/xfdesktop-notify.c:322
@@ -1048,7 +1063,9 @@ msgstr "Menulis data ke divais"
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be"
 " removed. Please do not remove the media or disconnect the drive"
-msgstr "Ada data yang perlu ditulis ke divais \"%s\" sebelum divais dapat dilepaskan. Tolong jangan mengeluarkan media atau melepas peranti"
+msgstr ""
+"Ada data yang perlu ditulis ke divais \"%s\" sebelum divais dapat "
+"dilepaskan. Tolong jangan mengeluarkan media atau melepas peranti"
 
 #: ../src/xfdesktop-notify.c:221
 msgid "Unmount Finished"
@@ -1057,7 +1074,8 @@ msgstr "Selesai Melepas Divais"
 #: ../src/xfdesktop-notify.c:223 ../src/xfdesktop-notify.c:408
 #, c-format
 msgid "The device \"%s\" has been safely removed from the system. "
-msgstr "Divais \"%s\" sedang dikeluarkan. Hal ini dapat memakan waktu beberapa saat "
+msgstr ""
+"Divais \"%s\" sedang dikeluarkan. Hal ini dapat memakan waktu beberapa saat "
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:313
@@ -1068,7 +1086,8 @@ msgstr "Mengeluarkan divais"
 #: ../src/xfdesktop-notify.c:316
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
-msgstr "Divais \"%s\" sedang dikeluarkan. Hal ini dapat memakan waktu beberapa saat"
+msgstr ""
+"Divais \"%s\" sedang dikeluarkan. Hal ini dapat memakan waktu beberapa saat"
 
 #: ../src/xfdesktop-notify.c:406
 msgid "Eject Finished"
@@ -1081,7 +1100,11 @@ msgid ""
 "Type: %s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr "Nama: %s\nTipe: %s\nUkuran: %s\nTerakhir dimodifikasi: %s"
+msgstr ""
+"Nama: %s\n"
+"Tipe: %s\n"
+"Ukuran: %s\n"
+"Terakhir dimodifikasi: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:461
 msgid "Trash is empty"
@@ -1102,7 +1125,10 @@ msgid ""
 "%s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr "%s\nUkuran: %s\nTerakhir dimodifikasi: %s"
+msgstr ""
+"%s\n"
+"Ukuran: %s\n"
+"Terakhir dimodifikasi: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:561
 msgid "_Empty Trash"
@@ -1114,13 +1140,18 @@ msgid ""
 "Removable Volume\n"
 "Mounted in \"%s\"\n"
 "%s left (%s total)"
-msgstr "Volume Dapat Dilepas\nDikaitkan di \"%s\"\n%s tersisa (%s total)"
+msgstr ""
+"Volume Dapat Dilepas\n"
+"Dikaitkan di \"%s\"\n"
+"%s tersisa (%s total)"
 
 #: ../src/xfdesktop-volume-icon.c:487
 msgid ""
 "Removable Volume\n"
 "Not mounted yet"
-msgstr "Volume Dapat Dilepas\nBelum dikaitkan"
+msgstr ""
+"Volume Dapat Dilepas\n"
+"Belum dikaitkan"
 
 #: ../src/xfdesktop-volume-icon.c:516 ../src/xfdesktop-volume-icon.c:562
 #, c-format
