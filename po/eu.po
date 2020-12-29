@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-03 00:48+0100\n"
-"PO-Revision-Date: 2020-12-26 12:54+0000\n"
+"PO-Revision-Date: 2020-12-29 13:01+0000\n"
 "Last-Translator: beriain\n"
 "Language-Team: Basque (http://www.transifex.com/xfce/xfdesktop/language/eu/)\n"
 "MIME-Version: 1.0\n"
@@ -73,7 +73,7 @@ msgstr "%d monitorearen horma-papera"
 
 #: ../settings/main.c:741
 msgid "Move this dialog to the display you want to edit the settings for."
-msgstr ""
+msgstr "Eraman elkarrizketa-koadro hau ezarpenak editatu nahi dizkiozun pantailara."
 
 #: ../settings/main.c:748
 #, c-format
@@ -109,7 +109,7 @@ msgstr "Eraman elkarrizketa-koadro hau ezarpenak editatu nahi dizkiozun laneko a
 
 #: ../settings/main.c:1198
 msgid "Image selection is unavailable while the image style is set to None."
-msgstr ""
+msgstr "Irudiak hautatzea ez dago eskuragarri irudi estiloa \"Bat ere ez\" bezala ezarrita dagoenean."
 
 #: ../settings/main.c:1575
 msgid "Spanning screens"
@@ -121,7 +121,7 @@ msgstr "Hedatu pantailak"
 msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
-msgstr ""
+msgstr "Ikono guztiak hautatutako orientazioaren\narabera antolatu nahi dituzu?"
 
 #: ../settings/main.c:1749
 msgid "Arrange icons"
@@ -279,11 +279,11 @@ msgstr "Haunditua"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
 msgid "Spanning Screens"
-msgstr ""
+msgstr "Pantailak hedatu"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
 msgid "Specify the style of the color drawn behind the backdrop image."
-msgstr ""
+msgstr "Zehaztu idazpaper irudiaren atzean margotuko den kolorearen estiloa."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
@@ -324,7 +324,7 @@ msgstr "Automatikoki atzealde ezberdin bat hautatu oraingo direktoriotik."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid "Specify how often the background will change."
-msgstr ""
+msgstr "Atzealdea zenbatero aldatuko den zehaztu."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "in seconds:"
@@ -356,7 +356,7 @@ msgstr "kronologikoki"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
 msgid "Amount of time before a different background is selected."
-msgstr ""
+msgstr "Beste atzealde bat hautatua izan baino lehen pasatuko den denbora kopurua."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
 msgid "_Random Order"
@@ -366,7 +366,7 @@ msgstr "_Ausazko ordena"
 msgid ""
 "Randomly selects another image from the same directory when the wallpaper is"
 " to cycle."
-msgstr ""
+msgstr "Direktorio bereko ausazko beste irudi bat hautatzen du atzealdea zikloan aldatzera doanean."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:1
 msgid "Left"
@@ -402,35 +402,35 @@ msgstr "Fitx/abiarazle ikonoak"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:10
 msgid "Top Left Vertical"
-msgstr ""
+msgstr "Goiko ezkerreko bertikala"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:11
 msgid "Top Left Horizontal"
-msgstr ""
+msgstr "Goiko ezkerreko horizontala"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:12
 msgid "Top Right Vertical"
-msgstr ""
+msgstr "Goiko eskuineko bertikala"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:13
 msgid "Top Right Horizontal"
-msgstr ""
+msgstr "Goiko eskuineko horizontala"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:14
 msgid "Bottom Left Vertical"
-msgstr ""
+msgstr "Beheko ezkerreko bertikala"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:15
 msgid "Bottom Left Horizontal"
-msgstr ""
+msgstr "Beheko ezkerreko horizontala"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:16
 msgid "Bottom Right Vertical"
-msgstr ""
+msgstr "Beheko eskuineko bertikala"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:17
 msgid "Bottom Right Horizontal"
-msgstr ""
+msgstr "Beheko eskuineko horizontala"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:20
 msgid "_Help"
@@ -442,7 +442,7 @@ msgstr "Atzeko _planoa:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:23
 msgid "Include applications menu on _desktop right click"
-msgstr ""
+msgstr "Aplikazioen menua gehitu mahaigainean eskuineko botoiaz klikatzerakoan"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:24
 msgid "_Button:"
@@ -522,7 +522,7 @@ msgstr "Ikonoen _orientazioa:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:43
 msgid "Show icons on primary display"
-msgstr ""
+msgstr "Ikonoak erakutsi pantaila nagusian"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:44
 msgid "Use custom _font size:"
@@ -534,11 +534,11 @@ msgstr "12"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:46
 msgid "Show icon tooltips. Size:"
-msgstr ""
+msgstr "Ikono tresna-informazioak erakutsi. Tamaina:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:47
 msgid "Size of the tooltip preview image."
-msgstr ""
+msgstr "Tresna-informazioaren aurrebistaren irudiaren tamaina."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:48
 msgid "128"
