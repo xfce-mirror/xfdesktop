@@ -5,15 +5,16 @@
 # 
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2020
+# Michael Martins <michaelfm21@gmail.com>, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-28 18:41+0100\n"
+"POT-Creation-Date: 2020-12-29 00:46+0100\n"
 "PO-Revision-Date: 2020-12-28 17:42+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>, 2020\n"
+"Last-Translator: Michael Martins <michaelfm21@gmail.com>, 2021\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/xfce/teams/16840/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -261,8 +262,7 @@ msgstr "Est_ilo:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
 msgid "Specify how the image will be resized to fit the screen."
-msgstr ""
-"Especifique como a imagem que será redimensionada para ajustar à imagem."
+msgstr "Especifique como a imagem será redimensionada para ajustar à imagem."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
 #: ../settings/xfdesktop-settings-ui.glade.h:4
@@ -703,7 +703,7 @@ msgstr "Falha ao analisar os argumentos: %s\n"
 #: ../src/xfdesktop-application.c:871
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
-msgstr "Este é o %s versão %s, executando no Xfce %s.\n"
+msgstr "Este é a %s versão %s, executando no Xfce %s.\n"
 
 #: ../src/xfdesktop-application.c:873
 #, c-format
@@ -799,7 +799,7 @@ msgstr "Criar _lançador..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1457
 msgid "Create _URL Link..."
-msgstr "Criar ligação para _URL..."
+msgstr "Criar link para _URL..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1471
 msgid "Create _Folder..."
@@ -920,13 +920,13 @@ msgstr "Documento sem título"
 #: ../src/xfdesktop-file-utils.c:159
 #, c-format
 msgid "Today at %X"
-msgstr "hoje às %X"
+msgstr "Hoje às %X"
 
 #. TRANSLATORS: file was modified less than two days ago
 #: ../src/xfdesktop-file-utils.c:163
 #, c-format
 msgid "Yesterday at %X"
-msgstr "ontem às %X"
+msgstr "Ontem às %X"
 
 #. Days from last week
 #: ../src/xfdesktop-file-utils.c:168
@@ -972,7 +972,7 @@ msgid ""
 "supplied by Thunar)."
 msgstr ""
 "Este recurso requer um serviço de gerenciador de arquivos presente (como o "
-"provido pelo Thunar)."
+"fornecido pelo Thunar)."
 
 #: ../src/xfdesktop-file-utils.c:882
 msgid "Delete Error"
