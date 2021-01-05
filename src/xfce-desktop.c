@@ -1963,9 +1963,6 @@ xfce_desktop_get_cycle_backdrop(XfceDesktop *desktop)
     g_return_val_if_fail(XFCE_IS_DESKTOP(desktop), FALSE);
 
     xfce_gdk_screen_get_active(&monitor);
-    if(&monitor == NULL)
-        return FALSE;
-
     workspace = desktop->priv->workspaces[desktop->priv->current_workspace];
     backdrop = xfce_workspace_get_backdrop(workspace, monitor);
 
