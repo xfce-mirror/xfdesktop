@@ -1642,13 +1642,14 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                             gtk_menu_shell_append(GTK_MENU_SHELL(app_infos_menu), mi);
                             g_object_unref(app_info);
                         }
-
-                        if(list_len >= 3) {
-                            mi = gtk_separator_menu_item_new();
-                            gtk_widget_show(mi);
-                            gtk_menu_shell_append(GTK_MENU_SHELL(app_infos_menu), mi);
-                        }
                     }
+
+                    mi = gtk_separator_menu_item_new();
+                    gtk_widget_show(mi);
+                    if(list_len >= 3)
+                        gtk_menu_shell_append(GTK_MENU_SHELL(app_infos_menu), mi);
+                    else
+                        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
 
                     img = gtk_image_new_from_icon_name("", GTK_ICON_SIZE_MENU);
                     mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Open With Other _Application..."), img);
