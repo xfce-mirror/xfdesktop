@@ -111,7 +111,9 @@ void xfce_desktop_popup_secondary_root_menu(XfceDesktop *desktop,
                                             guint button,
                                             guint activate_time);
 
-void xfce_desktop_refresh(XfceDesktop *desktop, gboolean advance_wallpaper);
+void xfce_desktop_refresh(XfceDesktop *desktop,
+                          gboolean advance_wallpaper,
+                          gboolean all_monitors);
 
 void xfce_desktop_arrange_icons(XfceDesktop *desktop);
 

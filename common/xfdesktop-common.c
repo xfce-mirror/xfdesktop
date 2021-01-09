@@ -286,6 +286,44 @@ xfdesktop_get_screen_dimensions (GdkScreen *screen,
 
 
 
+gint
+xfdesktop_get_monitor_num(GdkDisplay *display,
+                          GdkMonitor *monitor)
+{
+    gint i;
+
+    g_return_val_if_fail(GDK_IS_DISPLAY(display), 0);
+    g_return_val_if_fail(GDK_IS_MONITOR(monitor), 0);
+
+    for(i=0; i<gdk_display_get_n_monitors(display); i++) {
+        if(monitor == gdk_display_get_monitor(display, i))
+            return i;
+    }
+
+    g_warning("unable to get the monitor number");
+    return 0;
+}
+
+
+
+gint
+xfdesktop_get_current_monitor_num(GdkDisplay *display)
+{
+    GdkSeat    *seat;
+    GdkMonitor *monitor;
+    gint        rootx, rooty;
+
+    g_return_val_if_fail(GDK_IS_DISPLAY(display), 0);
+
+    seat = gdk_display_get_default_seat(display);
+    gdk_device_get_position(gdk_seat_get_pointer(seat), NULL, &rootx, &rooty);
+    monitor = gdk_display_get_monitor_at_point(display, rootx, rooty);
+
+    return xfdesktop_get_monitor_num(display, monitor);
+}
+
+
+
 #ifdef G_ENABLE_DEBUG
 /* With --enable-debug=full turn on debugging messages from the start */
 static gboolean enable_debug = TRUE;

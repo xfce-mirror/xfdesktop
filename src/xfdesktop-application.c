@@ -375,7 +375,7 @@ reload_idle_cb(gpointer data)
 
     /* reload all the desktop */
     if(app->desktop)
-        xfce_desktop_refresh(XFCE_DESKTOP(app->desktop), FALSE);
+        xfce_desktop_refresh(XFCE_DESKTOP(app->desktop), FALSE, TRUE);
 
     g_application_release(G_APPLICATION(app));
 
@@ -418,7 +418,7 @@ cb_xfdesktop_application_next(GAction  *action,
 
     /* reload the desktop forcing the wallpaper to advance */
     if(app->desktop)
-        xfce_desktop_refresh(XFCE_DESKTOP(app->desktop), TRUE);
+        xfce_desktop_refresh(XFCE_DESKTOP(app->desktop), TRUE, TRUE);
 }
 
 static void

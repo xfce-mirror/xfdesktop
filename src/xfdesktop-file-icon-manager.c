@@ -973,7 +973,7 @@ xfdesktop_file_icon_menu_next_background(GtkWidget *widget,
                                          gpointer user_data)
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
-    xfce_desktop_refresh(XFCE_DESKTOP(fmanager->priv->desktop), TRUE);
+    xfce_desktop_refresh(XFCE_DESKTOP(fmanager->priv->desktop), TRUE, FALSE);
 }
 
 static void
