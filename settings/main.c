@@ -1477,23 +1477,6 @@ suboptions_set_sensitive(GtkToggleButton *btn,
     gtk_widget_set_sensitive(box, gtk_toggle_button_get_active(btn));
 }
 
-static gint
-display_get_monitor_num(GdkDisplay *display, GdkMonitor *monitor)
-{
-    gint i;
-
-    g_return_val_if_fail(GDK_IS_DISPLAY(display), 0);
-    g_return_val_if_fail(GDK_IS_MONITOR(monitor), 0);
-
-    for(i=0; i<gdk_display_get_n_monitors(display); i++) {
-        if(monitor == gdk_display_get_monitor(display, i))
-            return i;
-    }
-
-    g_warning("unable to get the monitor number");
-    return 0;
-}
-
 static void
 cb_update_background_tab(WnckWindow *wnck_window,
                          gpointer user_data)
@@ -1520,7 +1503,7 @@ cb_update_background_tab(WnckWindow *wnck_window,
     window = gtk_widget_get_window(panel->image_iconview);
     display = gdk_window_get_display(window);
     monitor = gdk_display_get_monitor_at_window(display, window);
-    monitor_num = display_get_monitor_num(display, monitor);
+    monitor_num = xfdesktop_get_monitor_num(display, monitor);
     monitor_name = xfdesktop_get_monitor_name_from_gtk_widget(panel->image_iconview, monitor_num);
 
     /* Most of the time we won't change monitor, screen, or workspace so try

@@ -1906,9 +1906,11 @@ xfce_desktop_popup_secondary_root_menu(XfceDesktop *desktop,
 }
 
 void
-xfce_desktop_refresh(XfceDesktop *desktop, gboolean advance_wallpaper)
+xfce_desktop_refresh(XfceDesktop *desktop,
+                     gboolean advance_wallpaper,
+                     gboolean all_monitors)
 {
-    gint i, current_workspace;
+    gint i, current_workspace, current_monitor_num = -1;
 
     TRACE("entering");
 
@@ -1923,9 +1925,18 @@ xfce_desktop_refresh(XfceDesktop *desktop, gboolean advance_wallpaper)
 
     current_workspace = xfce_desktop_get_current_workspace(desktop);
 
+    if(!all_monitors) {
+        GdkDisplay *display = gdk_screen_get_display(desktop->priv->gscreen);
+        current_monitor_num = xfdesktop_get_current_monitor_num(display);
+    }
+
     /* reload backgrounds */
     for(i = 0; i < xfce_desktop_get_n_monitors(desktop); i++) {
         XfceBackdrop *backdrop;
+
+        if(!all_monitors && current_monitor_num != i) {
+            continue;
+        }
 
         backdrop = xfce_workspace_get_backdrop(desktop->priv->workspaces[current_workspace], i);
 
@@ -1956,18 +1967,18 @@ xfce_desktop_arrange_icons(XfceDesktop *desktop)
 gboolean
 xfce_desktop_get_cycle_backdrop(XfceDesktop *desktop)
 {
-    gint monitor;
+    gint           monitor_num;
+    GdkDisplay    *display;
     XfceWorkspace *workspace;
     XfceBackdrop  *backdrop;
 
     g_return_val_if_fail(XFCE_IS_DESKTOP(desktop), FALSE);
 
-    xfce_gdk_screen_get_active(&monitor);
-    if(&monitor == NULL)
-        return FALSE;
+    display = gdk_screen_get_display(desktop->priv->gscreen);
+    monitor_num = xfdesktop_get_current_monitor_num(display);
 
     workspace = desktop->priv->workspaces[desktop->priv->current_workspace];
-    backdrop = xfce_workspace_get_backdrop(workspace, monitor);
+    backdrop = xfce_workspace_get_backdrop(workspace, monitor_num);
 
     return xfce_backdrop_get_cycle_backdrop(backdrop);
 }
