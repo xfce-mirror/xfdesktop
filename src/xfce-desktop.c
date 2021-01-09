@@ -1910,7 +1910,7 @@ xfce_desktop_refresh(XfceDesktop *desktop,
                      gboolean advance_wallpaper,
                      gboolean all_monitors)
 {
-    gint i, current_workspace, current_monitor_num;
+    gint i, current_workspace, current_monitor_num = -1;
 
     TRACE("entering");
 
