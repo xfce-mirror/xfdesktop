@@ -112,6 +112,11 @@ void xfdesktop_get_screen_dimensions(GdkScreen *gcreen,
                                      gint      *width,
                                      gint      *height);
 
+gint xfdesktop_get_monitor_num(GdkDisplay *display,
+                               GdkMonitor *monitor);
+
+gint xfdesktop_get_current_monitor_num(GdkDisplay *display);
+
 #if defined(G_HAVE_ISO_VARARGS)
 
 #define XF_DEBUG(...) xfdesktop_debug (__func__, __FILE__, __LINE__, __VA_ARGS__)
