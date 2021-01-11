@@ -1801,7 +1801,7 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     /* tooltip options */
     chk_show_tooltips = GTK_WIDGET(gtk_builder_get_object(main_gxml, "chk_show_tooltips"));
     spin_tooltip_size = GTK_WIDGET(gtk_builder_get_object(main_gxml, "spin_tooltip_size"));
-    gtk_spin_button_set_value(GTK_SPIN_BUTTON(spin_tooltip_size), 128);
+    gtk_spin_button_set_value(GTK_SPIN_BUTTON(spin_tooltip_size), 64);
 
     /* connect up the signals */
     g_signal_connect(G_OBJECT(chk_custom_font_size), "toggled",
