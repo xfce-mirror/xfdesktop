@@ -5,16 +5,15 @@
 # 
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2020
-# Priit Jõerüüt <transifex@joeruut.com>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-29 00:46+0100\n"
-"PO-Revision-Date: 2020-12-28 17:42+0000\n"
-"Last-Translator: Priit Jõerüüt <transifex@joeruut.com>, 2020\n"
+"POT-Creation-Date: 2020-12-29 00:51+0100\n"
+"PO-Revision-Date: 2020-12-28 17:18+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>, 2020\n"
 "Language-Team: Estonian (https://www.transifex.com/xfce/teams/16840/et/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -138,7 +137,7 @@ msgstr "Paiguta ikoonid"
 #: ../src/xfdesktop-file-icon-manager.c:1353
 #, c-format
 msgid "Unable to launch \"%s\":"
-msgstr "„%s“ käivitamine ei õnnestunud:"
+msgstr "„%s“ käivitamine ebaõnnestus:"
 
 #: ../settings/main.c:1753 ../src/xfdesktop-file-icon-manager.c:800
 #: ../src/xfdesktop-file-icon-manager.c:1102
@@ -184,7 +183,7 @@ msgstr "Sätete halduri pistik"
 
 #: ../settings/main.c:2123
 msgid "SOCKET ID"
-msgstr "SOKLI ID"
+msgstr "PISTIK"
 
 #: ../settings/main.c:2124
 msgid "Version information"
@@ -197,7 +196,7 @@ msgstr "Luba silumisteated"
 #: ../settings/main.c:2149
 #, c-format
 msgid "Type '%s --help' for usage."
-msgstr "Trüki „%s --help“ kasutusjuhisteks."
+msgstr "Trüki „%s --help” kasutusjuhisteks."
 
 #: ../settings/main.c:2161
 msgid "The Xfce development team. All rights reserved."
@@ -293,7 +292,7 @@ msgstr "Määra taustapildi taha joonistatava värvi stiil."
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
 msgstr ""
-"Täpsustab ühtlase värvi, või „vasakpoolse“ või „ülemise“ värvisiirde värvi."
+"Täpsustab ühtlase värvi, või „vasakpoolse” või „ülemise” värvisiirde värvi."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Select First Color"
@@ -301,7 +300,7 @@ msgstr "Vali esimene värv"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient."
-msgstr "Täpsustab „parempoolse“ või „alumise“ värvisiirde värvi."
+msgstr "Täpsustab „parempoolse” või „alumise” värvisiirde värvi."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
 msgid "Select Second Color"
@@ -598,13 +597,13 @@ msgid ""
 "Do you really want to remove workspace %d?\n"
 "Note: You are currently on workspace %d."
 msgstr ""
-"Kas sa kindlasti soovid eemaldada tööala „%d“?\n"
-"Märkus: sinu praegune tööala on „%d“."
+"Kas sa kindlasti soovid eemaldada tööala '%d'?\n"
+"Märkus: sinu praegune tööala on '%d'."
 
 #: ../src/windowlist.c:78
 #, c-format
 msgid "Remove Workspace '%s'"
-msgstr "Eemalda tööala „%s“"
+msgstr "Eemalda tööala '%s'"
 
 #: ../src/windowlist.c:79
 #, c-format
@@ -612,8 +611,8 @@ msgid ""
 "Do you really want to remove workspace '%s'?\n"
 "Note: You are currently on workspace '%s'."
 msgstr ""
-"Kas sa kindlasti soovid eemaldada tööala „%s“?\n"
-"Märkus: sinu praegune tööala on „%s“."
+"Kas sa kindlasti soovid eemaldada tööala '%s'?\n"
+"Märkus: sinu praegune tööala on '%s'."
 
 #. Popup a dialog box confirming that the user wants to remove a
 #. * workspace
@@ -683,7 +682,7 @@ msgstr "Sulge xfdesktop"
 #: ../src/xfdesktop-application.c:860
 #, c-format
 msgid "Failed to parse arguments: %s\n"
-msgstr "Argumentide sõelumine ei õnnestunud: „%s“\n"
+msgstr "Argumentide sõelumine ebaõnnestus: „%s“\n"
 
 #: ../src/xfdesktop-application.c:871
 #, c-format
@@ -879,7 +878,7 @@ msgstr "Viga laadimisel"
 
 #: ../src/xfdesktop-file-icon-manager.c:2952
 msgid "Failed to load the desktop folder"
-msgstr "Töölaua kausta laadimine ei õnnestunud"
+msgstr "Töölaua kausta laadimine ebaõnnestus"
 
 #: ../src/xfdesktop-file-icon-manager.c:3518
 msgid "Copy _Here"
@@ -932,7 +931,7 @@ msgstr "Tundmatu"
 
 #: ../src/xfdesktop-file-utils.c:684
 msgid "The folder could not be opened"
-msgstr "Kausta ei õnnestunud avada"
+msgstr "Kausta ei suudetud avada"
 
 #: ../src/xfdesktop-file-utils.c:703
 msgid "Error"
@@ -944,7 +943,7 @@ msgstr "Soovitud tegevust ei olnud võimalik lõpetada"
 
 #: ../src/xfdesktop-file-utils.c:758
 msgid "The file could not be renamed"
-msgstr "Faili nime ei õnnestunud muuta"
+msgstr "Faili nime ei suudetud muuta"
 
 #: ../src/xfdesktop-file-utils.c:759 ../src/xfdesktop-file-utils.c:823
 #: ../src/xfdesktop-file-utils.c:884 ../src/xfdesktop-file-utils.c:1048
@@ -965,7 +964,7 @@ msgstr "Viga kustutamisel"
 
 #: ../src/xfdesktop-file-utils.c:883
 msgid "The selected files could not be deleted"
-msgstr "Valitud faile ei õnnestunud kustutada"
+msgstr "Valitud faile ei suudetud kustutada"
 
 #: ../src/xfdesktop-file-utils.c:943 ../src/xfdesktop-file-utils.c:991
 msgid "Trash Error"
@@ -973,7 +972,7 @@ msgstr "Prügikasti Viga"
 
 #: ../src/xfdesktop-file-utils.c:944
 msgid "The selected files could not be moved to the trash"
-msgstr "Valitud faile ei õnnestunud prügikasti visata"
+msgstr "Valitud faile ei suudetud prügikasti visata"
 
 #: ../src/xfdesktop-file-utils.c:945 ../src/xfdesktop-file-utils.c:993
 msgid ""
@@ -985,7 +984,7 @@ msgstr ""
 
 #: ../src/xfdesktop-file-utils.c:992
 msgid "Could not empty the trash"
-msgstr "Prügikasti ei õnnestunud tühjendada"
+msgstr "Prügikasti ei suudetud tühjendada"
 
 #: ../src/xfdesktop-file-utils.c:1046
 msgid "Create File Error"
@@ -993,7 +992,7 @@ msgstr "Viga faili loomisel"
 
 #: ../src/xfdesktop-file-utils.c:1047
 msgid "Could not create a new file"
-msgstr "Uut faili ei õnnestunud luua"
+msgstr "Uut faili ei suudetud luua"
 
 #: ../src/xfdesktop-file-utils.c:1104
 msgid "Create Document Error"
@@ -1001,24 +1000,24 @@ msgstr "Viga dokumendi loomisel"
 
 #: ../src/xfdesktop-file-utils.c:1105
 msgid "Could not create a new document from the template"
-msgstr "Uut dokumenti ei õnnestunud malli põhjal luua"
+msgstr "Uut dokumenti ei suudetud malli põhjal luua"
 
 #: ../src/xfdesktop-file-utils.c:1156
 msgid "File Properties Error"
-msgstr "Viga faili omadustega"
+msgstr "Viga  faili omadustega"
 
 #: ../src/xfdesktop-file-utils.c:1157
 msgid "The file properties dialog could not be opened"
-msgstr "Faili omaduste dialoogi ei õnnestunud avada"
+msgstr "Faili omaduste dialoogi ei suudetud avada"
 
 #: ../src/xfdesktop-file-utils.c:1218
 msgid "The file could not be opened"
-msgstr "Faili ei õnnestunud avada"
+msgstr "Faili ei suudetud avada"
 
 #: ../src/xfdesktop-file-utils.c:1292 ../src/xfdesktop-file-utils.c:1316
 #, c-format
 msgid "Failed to run \"%s\""
-msgstr "„%s“ käivitamine ei õnnestunud"
+msgstr "„%s“ käivitamine ebaõnnestus"
 
 #: ../src/xfdesktop-file-utils.c:1382
 msgid "The application chooser could not be opened"
@@ -1052,7 +1051,7 @@ msgstr ""
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:137 ../src/xfdesktop-notify.c:322
 msgid "Writing data to device"
-msgstr "Kirjutan andmeid seadmesse"
+msgstr "Andmete seadmele kirjutamine"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:140 ../src/xfdesktop-notify.c:325
@@ -1071,7 +1070,7 @@ msgstr "Lahtihaakimine sai tehtud"
 #: ../src/xfdesktop-notify.c:223 ../src/xfdesktop-notify.c:408
 #, c-format
 msgid "The device \"%s\" has been safely removed from the system. "
-msgstr "Andmekandja „%s“ on turvaliselt eemaldatud."
+msgstr "Andmekandja \"%s\" on turvaliselt eemaldatud."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:313
@@ -1082,7 +1081,7 @@ msgstr "Seadme väljutamine"
 #: ../src/xfdesktop-notify.c:316
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
-msgstr "Väljutan seadet „%s“. See võib võtta aega"
+msgstr "Seadet „%s“ väljutatakse. See võib võtta aega"
 
 #: ../src/xfdesktop-notify.c:406
 msgid "Eject Finished"
@@ -1151,20 +1150,20 @@ msgstr ""
 #: ../src/xfdesktop-volume-icon.c:516 ../src/xfdesktop-volume-icon.c:562
 #, c-format
 msgid "Failed to eject \"%s\""
-msgstr "„%s“ väljutamine ei õnnestunud"
+msgstr "\"%s\" väljutamine ebaõnnestus"
 
 #: ../src/xfdesktop-volume-icon.c:521 ../src/xfdesktop-volume-icon.c:567
 msgid "Eject Failed"
-msgstr "Väljutamine ei õnnestunud"
+msgstr "Väljutamine ebaõnnestus"
 
 #: ../src/xfdesktop-volume-icon.c:600
 #, c-format
 msgid "Failed to mount \"%s\""
-msgstr "„%s“ haakimine ei õnnestunud"
+msgstr "„%s“ haakimine ebaõnnestus"
 
 #: ../src/xfdesktop-volume-icon.c:603
 msgid "Mount Failed"
-msgstr "Haakimine ei õnnestunud"
+msgstr "Haakimine ebaõnnestus"
 
 #: ../src/xfdesktop-volume-icon.c:825
 msgid "E_ject Volume"
