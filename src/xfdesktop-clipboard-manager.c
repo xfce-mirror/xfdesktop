@@ -66,8 +66,10 @@ enum
 
 
 
-static void xfdesktop_clipboard_manager_class_init        (XfdesktopClipboardManagerClass *klass);
-static void xfdesktop_clipboard_manager_init              (XfdesktopClipboardManager      *manager);
+static void xfdesktop_clipboard_manager_class_init        (gpointer                        g_class,
+                                                           gpointer                        class_data);
+static void xfdesktop_clipboard_manager_init              (GTypeInstance                  *instance,
+                                                           gpointer                        g_class);
 static void xfdesktop_clipboard_manager_finalize          (GObject                        *object);
 static void xfdesktop_clipboard_manager_get_property      (GObject                        *object,
                                                            guint                           prop_id,
@@ -154,12 +156,12 @@ xfdesktop_clipboard_manager_get_type (void)
         sizeof (XfdesktopClipboardManagerClass),
         NULL,
         NULL,
-        (GClassInitFunc) xfdesktop_clipboard_manager_class_init,
+        xfdesktop_clipboard_manager_class_init,
         NULL,
         NULL,
         sizeof (XfdesktopClipboardManager),
         0,
-        (GInstanceInitFunc) xfdesktop_clipboard_manager_init,
+        xfdesktop_clipboard_manager_init,
         NULL,
       };
 
@@ -172,14 +174,15 @@ xfdesktop_clipboard_manager_get_type (void)
 
 
 static void
-xfdesktop_clipboard_manager_class_init (XfdesktopClipboardManagerClass *klass)
+xfdesktop_clipboard_manager_class_init (gpointer g_class,
+                                        gpointer class_data)
 {
   GObjectClass *gobject_class;
 
   /* determine the parent type class */
-  xfdesktop_clipboard_manager_parent_class = g_type_class_peek_parent (klass);
+  xfdesktop_clipboard_manager_parent_class = g_type_class_peek_parent (g_class);
 
-  gobject_class = G_OBJECT_CLASS (klass);
+  gobject_class = G_OBJECT_CLASS (g_class);
   gobject_class->finalize = xfdesktop_clipboard_manager_finalize;
   gobject_class->get_property = xfdesktop_clipboard_manager_get_property;
 
@@ -190,7 +193,7 @@ xfdesktop_clipboard_manager_class_init (XfdesktopClipboardManagerClass *klass)
    * this #XfdesktopClipboardManager can be pasted into the desktop
    * displayed by #XfdesktopIconView.
    **/
-  g_object_class_install_property (gobject_class,
+  g_object_class_install_property (g_class,
                                    PROP_CAN_PASTE,
                                    g_param_spec_boolean ("can-paste", "can-pase", "can-paste",
                                                          FALSE,
@@ -204,7 +207,7 @@ xfdesktop_clipboard_manager_class_init (XfdesktopClipboardManagerClass *klass)
    **/
   manager_signals[CHANGED] =
     g_signal_new (I_("changed"),
-                  G_TYPE_FROM_CLASS (klass),
+                  G_TYPE_FROM_CLASS (g_class),
                   G_SIGNAL_RUN_FIRST,
                   G_STRUCT_OFFSET (XfdesktopClipboardManagerClass, changed),
                   NULL, NULL,
@@ -215,8 +218,11 @@ xfdesktop_clipboard_manager_class_init (XfdesktopClipboardManagerClass *klass)
 
 
 static void
-xfdesktop_clipboard_manager_init (XfdesktopClipboardManager *manager)
+xfdesktop_clipboard_manager_init (GTypeInstance *instance,
+                                  gpointer       g_class)
 {
+  XfdesktopClipboardManager *manager = XFDESKTOP_CLIPBOARD_MANAGER (instance);
+
   manager->x_special_gnome_copied_files = gdk_atom_intern ("x-special/gnome-copied-files", FALSE);
 }
 

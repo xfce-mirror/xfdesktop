@@ -134,6 +134,8 @@ void xfdesktop_icon_position_changed(XfdesktopIcon *icon);
 
 void xfdesktop_icon_selected(XfdesktopIcon *icon);
 gboolean xfdesktop_icon_activated(XfdesktopIcon *icon);
+void xfdesktop_icon_activated_g_func(gpointer data,
+                                     gpointer user_data);
 
 /*< private-ish; only for use by XfdesktopIconView >*/
 void xfdesktop_icon_set_extents(XfdesktopIcon *icon,
