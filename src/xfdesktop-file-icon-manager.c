@@ -620,7 +620,7 @@ xfdesktop_file_icon_menu_open_all(GtkWidget *widget,
     selected = xfdesktop_icon_view_get_selected_items(fmanager->priv->icon_view);
     g_return_if_fail(selected);
 
-    g_list_foreach(selected, (GFunc)xfdesktop_icon_activated, NULL);
+    g_list_foreach(selected, xfdesktop_icon_activated_g_func, NULL);
     g_list_free(selected);
 }
 
@@ -712,6 +712,13 @@ xfdesktop_file_icon_manager_trash_files(XfdesktopFileIconManager *fmanager,
 }
 
 static void
+xfdesktop_object_ref(gpointer data,
+                     gpointer user_data)
+{
+  g_object_ref(data);
+}
+
+static void
 xfdesktop_file_icon_manager_delete_selected(XfdesktopFileIconManager *fmanager,
                                             gboolean force_delete)
 {
@@ -746,7 +753,7 @@ xfdesktop_file_icon_manager_delete_selected(XfdesktopFileIconManager *fmanager,
         return;
 
     /* make sure the icons don't get destroyed while we're working */
-    g_list_foreach(selected, (GFunc)g_object_ref, NULL);
+    g_list_foreach(selected, xfdesktop_object_ref, NULL);
 
     if (!force_delete) {
         xfdesktop_file_icon_manager_trash_files(fmanager, selected);
@@ -754,8 +761,7 @@ xfdesktop_file_icon_manager_delete_selected(XfdesktopFileIconManager *fmanager,
         xfdesktop_file_icon_manager_delete_files(fmanager, selected);
     }
 
-    g_list_foreach(selected, (GFunc)g_object_unref, NULL);
-    g_list_free(selected);
+    g_list_free_full(selected, g_object_unref);
 }
 
 static void
@@ -1058,8 +1064,7 @@ xfdesktop_file_icon_menu_free_icon_list_idled(gpointer user_data)
 {
     GList *icon_list = user_data;
 
-    g_list_foreach(icon_list, (GFunc)g_object_unref, NULL);
-    g_list_free(icon_list);
+    g_list_free_full(icon_list, g_object_unref);
 
     return FALSE;
 }
@@ -1289,6 +1294,15 @@ thunarx_action_callback (GtkAction *action,
 
 
 
+static void
+xfdesktop_object_unref(gpointer data,
+                       GClosure *closure)
+{
+  g_object_unref(data);
+}
+
+
+
 static GtkWidget*
 xfdesktop_menu_create_menu_item_from_thunarx_menu_item (GObject *item)
 {
@@ -1310,7 +1324,7 @@ xfdesktop_menu_create_menu_item_from_thunarx_menu_item (GObject *item)
     g_signal_connect_data (mi, "activate",
                            G_CALLBACK (thunarx_action_callback),
                            g_object_ref (item),
-                           (GClosureNotify) g_object_unref, 0);
+                           xfdesktop_object_unref, 0);
 
     g_free (label);
     g_free (icon_str);
@@ -1411,7 +1425,7 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
     }
 
     /* make sure icons don't get destroyed while menu is open */
-    g_list_foreach(selected, (GFunc)g_object_ref, NULL);
+    g_list_foreach(selected, xfdesktop_object_ref, NULL);
     g_object_set_data(G_OBJECT(menu), "--xfdesktop-icon-list", selected);
     g_signal_connect(G_OBJECT(menu), "deactivate",
                      G_CALLBACK(xfdesktop_file_icon_menu_free_icon_list),
@@ -1826,8 +1840,7 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
             if(menu_items) {
                 xfdesktop_menu_shell_append_thunarx_menu_item_list(GTK_MENU_SHELL(menu),
                                                         menu_items);
-                g_list_foreach(menu_items, (GFunc)g_object_unref, NULL);
-                g_list_free(menu_items);
+                g_list_free_full(menu_items, g_object_unref);
 
                 mi = gtk_separator_menu_item_new();
                 gtk_widget_show(mi);
@@ -3341,8 +3354,7 @@ xfdesktop_file_icon_manager_fini(XfdesktopIconViewManager *manager)
 
     /* Free anything left in the pending_icons queue */
     if(fmanager->priv->pending_icons) {
-        g_queue_foreach(fmanager->priv->pending_icons, (GFunc)g_object_unref, NULL);
-        g_queue_free(fmanager->priv->pending_icons);
+        g_queue_free_full(fmanager->priv->pending_icons, g_object_unref);
         fmanager->priv->pending_icons = NULL;
     }
 
@@ -3374,13 +3386,8 @@ xfdesktop_file_icon_manager_fini(XfdesktopIconViewManager *manager)
     fmanager->priv->desktop_icon = NULL;
 
 #ifdef HAVE_THUNARX
-    g_list_foreach(fmanager->priv->thunarx_menu_providers,
-                   (GFunc)g_object_unref, NULL);
-    g_list_free(fmanager->priv->thunarx_menu_providers);
-
-    g_list_foreach(fmanager->priv->thunarx_properties_providers,
-                   (GFunc)g_object_unref, NULL);
-    g_list_free(fmanager->priv->thunarx_properties_providers);
+    g_list_free_full(fmanager->priv->thunarx_menu_providers, g_object_unref);
+    g_list_free_full(fmanager->priv->thunarx_properties_providers, g_object_unref);
 #endif
 
     g_hash_table_destroy(fmanager->priv->special_icons);

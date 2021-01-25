@@ -456,9 +456,6 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     GdkRectangle rect;
     cairo_region_t *clip_region = NULL;
     gint i, monitor = -1, current_workspace;
-#ifdef G_ENABLE_DEBUG
-    gchar *monitor_name = NULL;
-#endif
 
     TRACE("entering");
 
@@ -500,11 +497,8 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     }
 
 #ifdef G_ENABLE_DEBUG
-    monitor_name = gdk_screen_get_monitor_plug_name(gscreen, monitor);
-
-    XF_DEBUG("backdrop changed for workspace %d, monitor %d (%s)", current_workspace, monitor, monitor_name);
-
-    g_free(monitor_name);
+    XF_DEBUG("backdrop changed for workspace %d, monitor %d (%s)", current_workspace, monitor,
+             gdk_monitor_get_model(gdk_display_get_monitor(display, monitor)));
 #endif
 
     if(xfce_desktop_get_n_monitors(desktop) > 1
@@ -1232,6 +1226,13 @@ xfce_desktop_realize(GtkWidget *widget)
 }
 
 static void
+xfce_desktop_widget_unrealize(GtkWidget *widget,
+                              gpointer data)
+{
+  gtk_widget_unrealize(widget);
+}
+
+static void
 xfce_desktop_unrealize(GtkWidget *widget)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(widget);
@@ -1254,7 +1255,7 @@ xfce_desktop_unrealize(GtkWidget *widget)
     gtk_widget_set_mapped(widget, FALSE);
 
     gtk_container_forall(GTK_CONTAINER(widget),
-                         (GtkCallback)gtk_widget_unrealize,
+                         xfce_desktop_widget_unrealize,
                          NULL);
 
     g_signal_handlers_disconnect_by_func(G_OBJECT(desktop->priv->gscreen),

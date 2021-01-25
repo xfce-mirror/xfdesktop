@@ -42,8 +42,10 @@
 #include "xfdesktop-common.h"
 #include "tumbler.h"
 
-static void xfdesktop_thumbnailer_init(GObject *);
-static void xfdesktop_thumbnailer_class_init(GObjectClass *);
+static void xfdesktop_thumbnailer_init(GTypeInstance *instance,
+                                       gpointer g_class);
+static void xfdesktop_thumbnailer_class_init(gpointer g_class,
+                                             gpointer class_data);
 
 static void xfdesktop_thumbnailer_dispose(GObject *object);
 static void xfdesktop_thumbnailer_finalize(GObject *object);
@@ -79,14 +81,14 @@ xfdesktop_thumbnailer_get_type(void)
         static const GTypeInfo xfdesktop_thumbnailer_info =
         {
             sizeof (XfdesktopThumbnailerClass),
-            (GBaseInitFunc) NULL,
-            (GBaseFinalizeFunc) NULL,
-            (GClassInitFunc) xfdesktop_thumbnailer_class_init,
-            (GClassFinalizeFunc) NULL,
+            NULL,
+            NULL,
+            xfdesktop_thumbnailer_class_init,
+            NULL,
             NULL,
             sizeof (XfdesktopThumbnailer),
             0,
-            (GInstanceInitFunc) xfdesktop_thumbnailer_init,
+            xfdesktop_thumbnailer_init,
             NULL
         };
 
@@ -112,12 +114,13 @@ struct _XfdesktopThumbnailerPriv
 };
 
 static void
-xfdesktop_thumbnailer_init(GObject *object)
+xfdesktop_thumbnailer_init(GTypeInstance *instance,
+                           gpointer g_class)
 {
     XfdesktopThumbnailer *thumbnailer;
     GDBusConnection      *connection;
 
-    thumbnailer = XFDESKTOP_THUMBNAILER(object);
+    thumbnailer = XFDESKTOP_THUMBNAILER(instance);
 
     thumbnailer->priv = g_new0(XfdesktopThumbnailerPriv, 1);
 
@@ -178,8 +181,10 @@ xfdesktop_thumbnailer_init(GObject *object)
 }
 
 static void
-xfdesktop_thumbnailer_class_init (GObjectClass *object_class)
+xfdesktop_thumbnailer_class_init (gpointer g_class,
+                                  gpointer class_data)
 {
+    GObjectClass              *object_class = g_class;
     XfdesktopThumbnailerClass *thumbnailer_class = XFDESKTOP_THUMBNAILER_CLASS(object_class);
 
     parent_class = g_type_class_peek_parent(thumbnailer_class);

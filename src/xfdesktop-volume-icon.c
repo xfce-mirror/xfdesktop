@@ -146,8 +146,6 @@ xfdesktop_volume_icon_class_init(XfdesktopVolumeIconClass *klass)
     file_icon_class->peek_filesystem_info = xfdesktop_volume_icon_peek_filesystem_info;
     file_icon_class->peek_file = xfdesktop_volume_icon_peek_file;
     file_icon_class->update_file_info = xfdesktop_volume_icon_update_file_info;
-    file_icon_class->can_rename_file = (gboolean (*)(XfdesktopFileIcon *))gtk_false;
-    file_icon_class->can_delete_file = (gboolean (*)(XfdesktopFileIcon *))gtk_false;
 }
 
 static void
