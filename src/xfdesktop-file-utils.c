@@ -331,8 +331,7 @@ xfdesktop_file_utils_file_list_to_uri_array(GList *file_list)
 void
 xfdesktop_file_utils_file_list_free(GList *file_list)
 {
-  g_list_foreach(file_list, (GFunc) g_object_unref, NULL);
-  g_list_free(file_list);
+    g_list_free_full(file_list, g_object_unref);
 }
 
 static GdkPixbuf *xfdesktop_fallback_icon = NULL;

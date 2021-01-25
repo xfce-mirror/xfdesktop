@@ -458,3 +458,10 @@ xfdesktop_icon_activated(XfdesktopIcon *icon)
 
     return ret;
 }
+
+void
+xfdesktop_icon_activated_g_func(gpointer data,
+                                gpointer user_data)
+{
+    xfdesktop_icon_activated(XFDESKTOP_ICON (data));
+}

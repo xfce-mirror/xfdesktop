@@ -117,6 +117,17 @@ gint xfdesktop_get_monitor_num(GdkDisplay *display,
 
 gint xfdesktop_get_current_monitor_num(GdkDisplay *display);
 
+void xfdesktop_tree_path_free(gpointer data);
+
+void xfdesktop_widget_unrealize(GtkWidget *widget,
+                                gpointer data);
+
+void xfdesktop_object_ref(gpointer data,
+                          gpointer user_data);
+
+void xfdesktop_object_unref(gpointer data,
+                            GClosure *closure);
+
 #if defined(G_HAVE_ISO_VARARGS)
 
 #define XF_DEBUG(...) xfdesktop_debug (__func__, __FILE__, __LINE__, __VA_ARGS__)
