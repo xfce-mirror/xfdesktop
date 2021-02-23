@@ -65,6 +65,8 @@
 #include <gtk/gtk.h>
 #include <gio/gio.h>
 
+#include <cairo-xlib.h>
+
 #ifdef ENABLE_DESKTOP_ICONS
 #include "xfdesktop-icon-view.h"
 #include "xfdesktop-window-icon-manager.h"
@@ -316,13 +318,13 @@ set_real_root_window_surface(GdkScreen *gscreen,
                              cairo_surface_t *surface)
 {
 #ifndef DISABLE_FOR_BUG7442
-    Window xid;
+    Pixmap pixmap_id;
     GdkDisplay *display;
     GdkWindow *groot;
     cairo_pattern_t *pattern;
 
     groot = gdk_screen_get_root_window(gscreen);
-    xid = GDK_WINDOW_XID(groot);
+    pixmap_id = cairo_xlib_surface_get_drawable (surface);
 
     display = gdk_screen_get_display(gscreen);
     gdk_x11_display_error_trap_push(display);
@@ -331,7 +333,7 @@ set_real_root_window_surface(GdkScreen *gscreen,
     gdk_property_change(groot,
             gdk_atom_intern("_XROOTPMAP_ID", FALSE),
             gdk_atom_intern("PIXMAP", FALSE), 32,
-            GDK_PROP_MODE_REPLACE, (guchar *)&xid, 1);
+            GDK_PROP_MODE_REPLACE, (guchar *)&pixmap_id, 1);
     /* and set the root window's BG surface, because aterm is somewhat lame. */
     pattern = cairo_pattern_create_for_surface(surface);
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
@@ -1271,7 +1273,6 @@ xfce_desktop_unrealize(GtkWidget *widget)
 
 #ifndef DISABLE_FOR_BUG7442
     gdk_property_delete(groot, gdk_atom_intern("_XROOTPMAP_ID", FALSE));
-    gdk_property_delete(groot, gdk_atom_intern("ESETROOT_PMAP_ID", FALSE));
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     gdk_window_set_background_pattern(groot, NULL);
 G_GNUC_END_IGNORE_DEPRECATIONS
