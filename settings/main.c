@@ -899,8 +899,7 @@ cb_image_selection_changed(GtkIconView *icon_view,
         xfconf_channel_set_string(panel->channel, buf, filename);
     }
 
-    g_list_foreach (selected_items, (GFunc)gtk_tree_path_free, NULL);
-    g_list_free(selected_items);
+    g_list_free_full(selected_items, xfdesktop_tree_path_free);
     g_free(current_filename);
     if(buf)
         g_free(buf);

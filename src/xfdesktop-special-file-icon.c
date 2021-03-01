@@ -132,8 +132,6 @@ xfdesktop_special_file_icon_class_init(XfdesktopSpecialFileIconClass *klass)
     file_icon_class->peek_file_info = xfdesktop_special_file_icon_peek_file_info;
     file_icon_class->peek_filesystem_info = xfdesktop_special_file_icon_peek_filesystem_info;
     file_icon_class->peek_file = xfdesktop_special_file_icon_peek_file;
-    file_icon_class->can_rename_file = (gboolean (*)(XfdesktopFileIcon *))gtk_false;
-    file_icon_class->can_delete_file = (gboolean (*)(XfdesktopFileIcon *))gtk_false;
 }
 
 static void

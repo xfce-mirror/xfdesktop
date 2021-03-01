@@ -324,6 +324,41 @@ xfdesktop_get_current_monitor_num(GdkDisplay *display)
 
 
 
+void
+xfdesktop_tree_path_free(gpointer data)
+{
+    gtk_tree_path_free((GtkTreePath *) data);
+}
+
+
+
+void
+xfdesktop_widget_unrealize(GtkWidget *widget,
+                           gpointer data)
+{
+    gtk_widget_unrealize(widget);
+}
+
+
+
+void
+xfdesktop_object_ref(gpointer data,
+                     gpointer user_data)
+{
+    g_object_ref(data);
+}
+
+
+
+void
+xfdesktop_object_unref(gpointer data,
+                       GClosure *closure)
+{
+    g_object_unref(data);
+}
+
+
+
 #ifdef G_ENABLE_DEBUG
 /* With --enable-debug=full turn on debugging messages from the start */
 static gboolean enable_debug = TRUE;
