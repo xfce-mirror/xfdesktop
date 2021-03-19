@@ -81,6 +81,10 @@
 #define SAVE_DELAY  1000
 #define BORDER         8
 
+#ifdef USE_DESKTOP_MENU
+extern gboolean show_delete_menu;
+#endif
+
 typedef enum
 {
     PROP0 = 0,
@@ -1753,16 +1757,22 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                 gtk_widget_set_sensitive(mi, FALSE);
 
             /* Delete */
-            img = gtk_image_new_from_icon_name("edit-delete", GTK_ICON_SIZE_MENU);
-            mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Delete"), img);
-            gtk_widget_show(mi);
-            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-            if(multi_sel || xfdesktop_file_icon_can_delete_file(file_icon)) {
-                g_signal_connect(G_OBJECT(mi), "activate",
-                                 G_CALLBACK(xfdesktop_file_icon_menu_delete),
-                                 fmanager);
-            } else
-                gtk_widget_set_sensitive(mi, FALSE);
+            #ifdef USE_DESKTOP_MENU
+            if(show_delete_menu == TRUE) {
+            #endif
+                img = gtk_image_new_from_icon_name("edit-delete", GTK_ICON_SIZE_MENU);
+                mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Delete"), img);
+                gtk_widget_show(mi);
+                gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+                if(multi_sel || xfdesktop_file_icon_can_delete_file(file_icon)) {
+                    g_signal_connect(G_OBJECT(mi), "activate",
+                                     G_CALLBACK(xfdesktop_file_icon_menu_delete),
+                                     fmanager);
+                } else
+                    gtk_widget_set_sensitive(mi, FALSE);
+            #ifdef USE_DESKTOP_MENU
+            }
+            #endif
 
             /* Separator */
             mi = gtk_separator_menu_item_new();
