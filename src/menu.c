@@ -143,7 +143,7 @@ menu_init(XfconfChannel *channel)
     } else {
         show_delete_menu = FALSE;
     }
-    
+
     if(!channel || xfconf_channel_get_bool(channel, "/desktop-menu/show", TRUE))
     {
         show_desktop_menu = TRUE;
