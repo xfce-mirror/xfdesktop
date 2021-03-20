@@ -44,6 +44,7 @@
 #endif
 
 #ifdef USE_DESKTOP_MENU
+static gboolean show_delete_menu = TRUE;
 static gboolean show_desktop_menu = TRUE;
 static gboolean show_desktop_menu_icons = TRUE;
 static GarconMenu *garcon_menu = NULL;
@@ -115,6 +116,11 @@ menu_settings_changed(XfconfChannel *channel,
                       const GValue *value,
                       gpointer user_data)
 {
+    if(!strcmp(property, "/delete-menu/show")) {
+        show_delete_menu = G_VALUE_TYPE(value)
+                            ? g_value_get_boolean(value)
+                            : TRUE;
+    }
     if(!strcmp(property, "/desktop-menu/show")) {
         show_desktop_menu = G_VALUE_TYPE(value)
                             ? g_value_get_boolean(value)
@@ -131,6 +137,13 @@ void
 menu_init(XfconfChannel *channel)
 {
 #ifdef USE_DESKTOP_MENU
+    if(!channel || xfconf_channel_get_bool(channel, "/delete-menu/show", TRUE))
+    {
+        show_delete_menu = TRUE;
+    } else {
+        show_delete_menu = FALSE;
+    }
+    
     if(!channel || xfconf_channel_get_bool(channel, "/desktop-menu/show", TRUE))
     {
         show_desktop_menu = TRUE;
