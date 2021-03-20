@@ -44,7 +44,7 @@
 #endif
 
 #ifdef USE_DESKTOP_MENU
-gboolean show_delete_menu = TRUE;
+static gboolean show_delete_menu = TRUE;
 static gboolean show_desktop_menu = TRUE;
 static gboolean show_desktop_menu_icons = TRUE;
 static GarconMenu *garcon_menu = NULL;

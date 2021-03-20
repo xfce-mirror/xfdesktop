@@ -81,10 +81,6 @@
 #define SAVE_DELAY  1000
 #define BORDER         8
 
-#ifdef USE_DESKTOP_MENU
-extern gboolean show_delete_menu;
-#endif
-
 typedef enum
 {
     PROP0 = 0,
@@ -1766,9 +1762,7 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                 gtk_widget_set_sensitive(mi, FALSE);
 
             /* Delete */
-            #ifdef USE_DESKTOP_MENU
-            if(show_delete_menu == TRUE) {
-            #endif
+            if(xfconf_channel_get_bool(fmanager->priv->channel, "/delete-menu/show", TRUE)) {
                 img = gtk_image_new_from_icon_name("edit-delete", GTK_ICON_SIZE_MENU);
                 mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Delete"), img);
                 gtk_widget_show(mi);
@@ -1779,9 +1773,7 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                                      fmanager);
                 } else
                     gtk_widget_set_sensitive(mi, FALSE);
-            #ifdef USE_DESKTOP_MENU
             }
-            #endif
 
             /* Separator */
             mi = gtk_separator_menu_item_new();
