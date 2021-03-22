@@ -65,7 +65,7 @@
 #define DESKTOP_ICONS_SHOW_REMOVABLE         "/desktop-icons/file-icons/show-removable"
 
 #define DESKTOP_MENU_MAX_TEMPLATE_FILES     "/desktop-menu/max-template-files"
-#define DESKTOP_MENU_DELETE                 "/delete-menu/show"     
+#define DESKTOP_MENU_DELETE                 "/delete-menu/show"
 
 /**
  * File information namespaces queried for #GFileInfo objects.
