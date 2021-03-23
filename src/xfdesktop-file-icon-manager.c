@@ -4120,9 +4120,6 @@ xfdesktop_file_icon_manager_set_show_delete_menu(XfdesktopFileIconManager *manag
 {
     g_return_if_fail(XFDESKTOP_IS_FILE_ICON_MANAGER(manager));
 
-    if(show_delete_menu == manager->priv->show_delete_menu)
-        return;
-
     manager->priv->show_delete_menu = show_delete_menu;
 }
 
