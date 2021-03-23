@@ -819,8 +819,34 @@ xfdesktop_volume_icon_populate_context_menu(XfdesktopIcon *icon,
     mount = g_volume_get_mount(volume);
 
     if(mount && g_volume_can_eject(volume)) {
+        GDrive              *drive;
+        GDriveStartStopType  start_stop_type = G_DRIVE_START_STOP_TYPE_UNKNOWN;
+
+        drive = g_volume_get_drive (volume);
+        if (drive != NULL)
+          {
+            start_stop_type = g_drive_get_start_stop_type (drive);
+            g_object_unref (drive);
+          }
+
+        switch (start_stop_type)
+          {
+          case G_DRIVE_START_STOP_TYPE_SHUTDOWN:
+            icon_label = _("_Safely Remove Volume");
+            break;
+          case G_DRIVE_START_STOP_TYPE_NETWORK:
+            icon_label = _("_Disconnect Volume");
+            break;
+          case G_DRIVE_START_STOP_TYPE_MULTIDISK:
+            icon_label = _("_Stop the Multi-Disk Drive");
+            break;
+          case G_DRIVE_START_STOP_TYPE_PASSWORD:
+            icon_label = _("_Lock Volume");
+            break;
+          default:
+            icon_label = _("E_ject Volume");
+          }
         icon_name = "media-eject";
-        icon_label = _("E_ject Volume");
         xfdesktop_volume_icon_add_context_menu_option(icon, icon_name, icon_label,
                         menu, G_CALLBACK(xfdesktop_volume_icon_menu_eject));
     }
