@@ -1974,6 +1974,10 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
 
 
     /* Menus Tab */
+    w = GTK_WIDGET(gtk_builder_get_object(main_gxml, "chk_show_delete_option"));
+    xfconf_g_property_bind(channel, DESKTOP_MENU_DELETE, G_TYPE_BOOLEAN,
+                           G_OBJECT(w), "active");
+
     w = GTK_WIDGET(gtk_builder_get_object(main_gxml, "chk_show_desktop_menu"));
     xfconf_g_property_bind(channel, SHOW_DESKTOP_MENU_PROP, G_TYPE_BOOLEAN,
                            G_OBJECT(w), "active");
