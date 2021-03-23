@@ -828,6 +828,7 @@ xfdesktop_volume_icon_populate_context_menu(XfdesktopIcon *icon,
             start_stop_type = g_drive_get_start_stop_type (drive);
             g_object_unref (drive);
           }
+
         switch (start_stop_type)
           {
           case G_DRIVE_START_STOP_TYPE_SHUTDOWN:
