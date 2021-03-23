@@ -843,7 +843,6 @@ xfdesktop_volume_icon_populate_context_menu(XfdesktopIcon *icon,
           case G_DRIVE_START_STOP_TYPE_PASSWORD:
             icon_label = _("_Lock Volume");
             break;
-          case G_DRIVE_START_STOP_TYPE_UNKNOWN:
           default:
             icon_label = _("E_ject Volume");
           }
