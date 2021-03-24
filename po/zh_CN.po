@@ -20,8 +20,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-02 12:50+0100\n"
-"PO-Revision-Date: 2021-03-03 00:02+0000\n"
+"POT-Creation-Date: 2021-03-23 12:50+0100\n"
+"PO-Revision-Date: 2021-03-24 00:04+0000\n"
 "Last-Translator: 玉堂白鹤 <yjwork@qq.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/xfce/xfdesktop/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -137,14 +137,14 @@ msgstr "排列图标"
 
 #. printf is to be translator-friendly
 #: ../settings/main.c:1734 ../src/xfdesktop-file-icon-manager.c:797
-#: ../src/xfdesktop-file-icon-manager.c:1351
+#: ../src/xfdesktop-file-icon-manager.c:1360
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "未能启动 “%s”："
 
 #: ../settings/main.c:1735 ../src/xfdesktop-file-icon-manager.c:799
-#: ../src/xfdesktop-file-icon-manager.c:1100
-#: ../src/xfdesktop-file-icon-manager.c:1352 ../src/xfdesktop-file-utils.c:682
+#: ../src/xfdesktop-file-icon-manager.c:1109
+#: ../src/xfdesktop-file-icon-manager.c:1361 ../src/xfdesktop-file-utils.c:682
 #: ../src/xfdesktop-file-utils.c:1216 ../src/xfdesktop-file-utils.c:1294
 #: ../src/xfdesktop-file-utils.c:1318 ../src/xfdesktop-file-utils.c:1380
 msgid "Launch Error"
@@ -155,9 +155,9 @@ msgstr "启动错误"
 #: ../src/xfdesktop-file-icon-manager.c:581
 #: ../src/xfdesktop-file-icon-manager.c:666
 #: ../src/xfdesktop-file-icon-manager.c:801
-#: ../src/xfdesktop-file-icon-manager.c:1104
-#: ../src/xfdesktop-file-icon-manager.c:1354
-#: ../src/xfdesktop-file-icon-manager.c:2950 ../src/xfdesktop-file-utils.c:685
+#: ../src/xfdesktop-file-icon-manager.c:1113
+#: ../src/xfdesktop-file-icon-manager.c:1363
+#: ../src/xfdesktop-file-icon-manager.c:2959 ../src/xfdesktop-file-utils.c:685
 #: ../src/xfdesktop-file-utils.c:705 ../src/xfdesktop-file-utils.c:760
 #: ../src/xfdesktop-file-utils.c:824 ../src/xfdesktop-file-utils.c:885
 #: ../src/xfdesktop-file-utils.c:946 ../src/xfdesktop-file-utils.c:994
@@ -748,146 +748,156 @@ msgstr "未能重命名文件"
 msgid "None of the icons selected support being renamed."
 msgstr "选中的图标都不支持重命名。"
 
-#: ../src/xfdesktop-file-icon-manager.c:1026
+#: ../src/xfdesktop-file-icon-manager.c:969
+msgid ""
+"This will reorder all desktop items and place them on different screen positions.\n"
+"You are sure?"
+msgstr "这将重新排列所有桌面项目并将它们放置在不同的屏幕位置。 您确定?"
+
+#: ../src/xfdesktop-file-icon-manager.c:973
+msgid "_OK"
+msgstr "确定(_O)"
+
+#: ../src/xfdesktop-file-icon-manager.c:1035
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "用 “%s” 打开(_O)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1029
+#: ../src/xfdesktop-file-icon-manager.c:1038
 #, c-format
 msgid "Open With \"%s\""
 msgstr "用 “%s” 打开"
 
-#: ../src/xfdesktop-file-icon-manager.c:1102
+#: ../src/xfdesktop-file-icon-manager.c:1111
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr "未能启动 “exo-desktop-item-edit”，它是在桌面上创建和编辑启动器和链接所需的。"
 
-#: ../src/xfdesktop-file-icon-manager.c:1421
+#: ../src/xfdesktop-file-icon-manager.c:1430
 msgid "_Open all"
 msgstr "全部打开(_O)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1441
+#: ../src/xfdesktop-file-icon-manager.c:1450
 msgid "Create _Launcher..."
 msgstr "创建启动器(_L)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1455
+#: ../src/xfdesktop-file-icon-manager.c:1464
 msgid "Create _URL Link..."
 msgstr "创建 URL 链接(_U)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1469
+#: ../src/xfdesktop-file-icon-manager.c:1478
 msgid "Create _Folder..."
 msgstr "创建文件夹(_F)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1481
+#: ../src/xfdesktop-file-icon-manager.c:1490
 msgid "Create _Document"
 msgstr "创建文档 (_D)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1506
+#: ../src/xfdesktop-file-icon-manager.c:1515
 msgid "No templates installed"
 msgstr "未安装模板"
 
-#: ../src/xfdesktop-file-icon-manager.c:1522
+#: ../src/xfdesktop-file-icon-manager.c:1531
 msgid "_Empty File"
 msgstr "空文件(_E)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1532
+#: ../src/xfdesktop-file-icon-manager.c:1541
 #: ../src/xfdesktop-special-file-icon.c:543 ../src/xfdesktop-volume-icon.c:809
 msgid "_Open"
 msgstr "打开(_O)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1548
+#: ../src/xfdesktop-file-icon-manager.c:1557
 msgid "_Execute"
 msgstr "执行(_E)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1566
+#: ../src/xfdesktop-file-icon-manager.c:1575
 msgid "_Edit Launcher"
 msgstr "编辑启动器(_E)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1625
+#: ../src/xfdesktop-file-icon-manager.c:1634
 msgid "Open With"
 msgstr "打开方式"
 
-#: ../src/xfdesktop-file-icon-manager.c:1652
-#: ../src/xfdesktop-file-icon-manager.c:1666
+#: ../src/xfdesktop-file-icon-manager.c:1661
+#: ../src/xfdesktop-file-icon-manager.c:1675
 msgid "Open With Other _Application..."
 msgstr "用其它应用程序打开(_A)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1684
+#: ../src/xfdesktop-file-icon-manager.c:1693
 msgid "_Paste"
 msgstr "粘贴(_P)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1702
+#: ../src/xfdesktop-file-icon-manager.c:1711
 msgid "Cu_t"
 msgstr "剪切(_T)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1714
+#: ../src/xfdesktop-file-icon-manager.c:1723
 msgid "_Copy"
 msgstr "复制(_C)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1726
+#: ../src/xfdesktop-file-icon-manager.c:1735
 msgid "Paste Into Folder"
 msgstr "粘贴至文件夹"
 
-#: ../src/xfdesktop-file-icon-manager.c:1745
+#: ../src/xfdesktop-file-icon-manager.c:1754
 msgid "Mo_ve to Trash"
 msgstr "移至回收站(_V)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1757
+#: ../src/xfdesktop-file-icon-manager.c:1766
 msgid "_Delete"
 msgstr "删除(_D)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1774
+#: ../src/xfdesktop-file-icon-manager.c:1783
 msgid "_Rename..."
 msgstr "重命名(_R)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1839
+#: ../src/xfdesktop-file-icon-manager.c:1848
 msgid "_Open in New Window"
 msgstr "在新窗口中打开(_O)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1848
+#: ../src/xfdesktop-file-icon-manager.c:1857
 msgid "Arrange Desktop _Icons"
 msgstr "排列桌面图标(_I)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1858
+#: ../src/xfdesktop-file-icon-manager.c:1867
 msgid "_Next Background"
 msgstr "下一背景(_N)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1868
+#: ../src/xfdesktop-file-icon-manager.c:1877
 msgid "Desktop _Settings..."
 msgstr "桌面设置(_S)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1876
-#: ../src/xfdesktop-volume-icon.c:850
+#: ../src/xfdesktop-file-icon-manager.c:1885
+#: ../src/xfdesktop-volume-icon.c:876
 msgid "P_roperties..."
 msgstr "属性(_R)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2947
+#: ../src/xfdesktop-file-icon-manager.c:2956
 msgid "Load Error"
 msgstr "载入错误"
 
-#: ../src/xfdesktop-file-icon-manager.c:2949
+#: ../src/xfdesktop-file-icon-manager.c:2958
 msgid "Failed to load the desktop folder"
 msgstr "无法载入桌面文件夹"
 
-#: ../src/xfdesktop-file-icon-manager.c:3509
+#: ../src/xfdesktop-file-icon-manager.c:3518
 msgid "Copy _Here"
 msgstr "复制至此(_H)"
 
-#: ../src/xfdesktop-file-icon-manager.c:3509
+#: ../src/xfdesktop-file-icon-manager.c:3518
 msgid "_Move Here"
 msgstr "移动至此(_M)"
 
-#: ../src/xfdesktop-file-icon-manager.c:3509
+#: ../src/xfdesktop-file-icon-manager.c:3518
 msgid "_Link Here"
 msgstr "链接至此(_L)"
 
-#: ../src/xfdesktop-file-icon-manager.c:3544
+#: ../src/xfdesktop-file-icon-manager.c:3553
 msgid "_Cancel"
 msgstr "取消(_C)"
 
-#: ../src/xfdesktop-file-icon-manager.c:3674
+#: ../src/xfdesktop-file-icon-manager.c:3683
 msgid "Untitled document"
 msgstr "无标题文档"
 
@@ -1136,15 +1146,31 @@ msgstr "无法挂载 “%s”"
 msgid "Mount Failed"
 msgstr "无法挂载"
 
-#: ../src/xfdesktop-volume-icon.c:823
+#: ../src/xfdesktop-volume-icon.c:835
+msgid "_Safely Remove Volume"
+msgstr "安全移除卷(_S)"
+
+#: ../src/xfdesktop-volume-icon.c:838
+msgid "_Disconnect Volume"
+msgstr "断开卷连接(_D)"
+
+#: ../src/xfdesktop-volume-icon.c:841
+msgid "_Stop the Multi-Disk Drive"
+msgstr "停止多磁盘驱动器(_S)"
+
+#: ../src/xfdesktop-volume-icon.c:844
+msgid "_Lock Volume"
+msgstr "锁定卷(_L)"
+
+#: ../src/xfdesktop-volume-icon.c:847
 msgid "E_ject Volume"
 msgstr "弹出卷(_J)"
 
-#: ../src/xfdesktop-volume-icon.c:830
+#: ../src/xfdesktop-volume-icon.c:856
 msgid "_Unmount Volume"
 msgstr "卸载卷(_U)"
 
-#: ../src/xfdesktop-volume-icon.c:837
+#: ../src/xfdesktop-volume-icon.c:863
 msgid "_Mount Volume"
 msgstr "挂载卷(_M)"
 
