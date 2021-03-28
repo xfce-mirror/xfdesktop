@@ -94,6 +94,7 @@ typedef enum
     PROP_SHOW_UNKNOWN_VOLUME,
     PROP_SHOW_THUMBNAILS,
     PROP_SHOW_HIDDEN_FILES,
+    PROP_SHOW_DELETE_MENU,
     PROP_MAX_TEMPLATES,
 } XfdesktopFileIconManagerProp;
 
@@ -136,6 +137,7 @@ struct _XfdesktopFileIconManagerPrivate
     gboolean show_special[XFDESKTOP_SPECIAL_FILE_ICON_TRASH+1];
     gboolean show_thumbnails;
     gboolean show_hidden_files;
+    gboolean show_delete_menu;
 
     guint save_icons_id;
 
@@ -214,6 +216,9 @@ static void xfdesktop_file_icon_manager_set_show_hidden_files(XfdesktopFileIconM
 static void xfdesktop_file_icon_manager_set_show_removable_media(XfdesktopFileIconManager *manager,
                                                                  XfdesktopFileIconManagerProp prop,
                                                                  gboolean show);
+
+static void xfdesktop_file_icon_manager_set_show_delete_menu(XfdesktopFileIconManager *manager,
+                                                             gboolean show_delete_menu);
 
 static void xfdesktop_file_icon_position_changed(XfdesktopFileIcon *icon,
                                                  gpointer user_data);
@@ -351,6 +356,12 @@ xfdesktop_file_icon_manager_class_init(XfdesktopFileIconManagerClass *klass)
                                                          "show-hidden-files",
                                                          FALSE,
                                                          XFDESKTOP_PARAM_FLAGS));
+    g_object_class_install_property(gobject_class, PROP_SHOW_DELETE_MENU,
+                                    g_param_spec_boolean("show-delete-menu",
+                                                         "show-delete-menu",
+                                                         "show-delete-menu",
+                                                         TRUE,
+                                                         XFDESKTOP_PARAM_FLAGS));
     g_object_class_install_property(gobject_class, PROP_MAX_TEMPLATES,
                                     g_param_spec_uint("max-templates",
                                                       "max-templates",
@@ -430,6 +441,11 @@ xfdesktop_file_icon_manager_set_property(GObject *object,
                                                               g_value_get_boolean(value));
             break;
 
+        case PROP_SHOW_DELETE_MENU:
+            xfdesktop_file_icon_manager_set_show_delete_menu(fmanager,
+                                                             g_value_get_boolean(value));
+            break;
+
         case PROP_MAX_TEMPLATES:
             xfdesktop_file_icon_manager_set_max_templates(fmanager,
                                                           g_value_get_uint(value));
@@ -490,6 +506,10 @@ xfdesktop_file_icon_manager_get_property(GObject *object,
 
         case PROP_SHOW_HIDDEN_FILES:
             g_value_set_boolean(value, fmanager->priv->show_hidden_files);
+            break;
+
+        case PROP_SHOW_DELETE_MENU:
+            g_value_set_boolean(value, fmanager->priv->show_delete_menu);
             break;
 
         case PROP_MAX_TEMPLATES:
@@ -1762,16 +1782,18 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                 gtk_widget_set_sensitive(mi, FALSE);
 
             /* Delete */
-            img = gtk_image_new_from_icon_name("edit-delete", GTK_ICON_SIZE_MENU);
-            mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Delete"), img);
-            gtk_widget_show(mi);
-            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-            if(multi_sel || xfdesktop_file_icon_can_delete_file(file_icon)) {
-                g_signal_connect(G_OBJECT(mi), "activate",
-                                 G_CALLBACK(xfdesktop_file_icon_menu_delete),
-                                 fmanager);
-            } else
-                gtk_widget_set_sensitive(mi, FALSE);
+            if(fmanager->priv->show_delete_menu) {
+                img = gtk_image_new_from_icon_name("edit-delete", GTK_ICON_SIZE_MENU);
+                mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Delete"), img);
+                gtk_widget_show(mi);
+                gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+                if(multi_sel || xfdesktop_file_icon_can_delete_file(file_icon)) {
+                    g_signal_connect(G_OBJECT(mi), "activate",
+                                     G_CALLBACK(xfdesktop_file_icon_menu_delete),
+                                     fmanager);
+                } else
+                    gtk_widget_set_sensitive(mi, FALSE);
+            }
 
             /* Separator */
             mi = gtk_separator_menu_item_new();
@@ -3966,6 +3988,8 @@ xfdesktop_file_icon_manager_new(GFile *folder,
                            G_OBJECT(fmanager), "show-thumbnails");
     xfconf_g_property_bind(channel, DESKTOP_ICONS_SHOW_HIDDEN_FILES, G_TYPE_BOOLEAN,
                            G_OBJECT(fmanager), "show-hidden-files");
+    xfconf_g_property_bind(channel, DESKTOP_MENU_DELETE, G_TYPE_BOOLEAN,
+                           G_OBJECT(fmanager), "show-delete-menu");
     xfconf_g_property_bind(channel, DESKTOP_MENU_MAX_TEMPLATE_FILES, G_TYPE_INT,
                            G_OBJECT(fmanager), "max-templates");
 
@@ -4088,6 +4112,15 @@ xfdesktop_file_icon_manager_set_show_hidden_files(XfdesktopFileIconManager *mana
 
     /* Emit a signal so the desktop knows to reload the icons */
     g_signal_emit(G_OBJECT(manager), fmanager_signals[HIDDEN_STATE_CHANGED], 0);
+}
+
+static void
+xfdesktop_file_icon_manager_set_show_delete_menu(XfdesktopFileIconManager *manager,
+                                                 gboolean show_delete_menu)
+{
+    g_return_if_fail(XFDESKTOP_IS_FILE_ICON_MANAGER(manager));
+
+    manager->priv->show_delete_menu = show_delete_menu;
 }
 
 static void
