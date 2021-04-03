@@ -3,9 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Adolfo Jayme-Barrientos, 2014
 # Adolfo Jayme Barrientos, 2014
 # Adolfo Jayme-Barrientos, 2014
 # Andre Miranda <andre42m@gmail.com>, 2018
+# Casper casper, 2019,2021
 # Casper casper, 2019,2021
 # David Segura Monroy <davidseg@gmail.com>, 2015
 # gabrieltandil <gabriel.tandil@gmail.com>, 2014
@@ -22,7 +24,7 @@ msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-23 12:50+0100\n"
-"PO-Revision-Date: 2021-04-02 21:04+0000\n"
+"PO-Revision-Date: 2021-04-03 09:30+0000\n"
 "Last-Translator: Toni Estévez <toni.estevez@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/xfce/xfdesktop/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -130,7 +132,7 @@ msgstr "Pantallas extendidas"
 msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
-msgstr "¿Quiere organizar todos los iconos\nexistentes según la orientación seleccionada?"
+msgstr "¿Quiere organizar todos los iconos\npresentes según la orientación seleccionada?"
 
 #: ../settings/main.c:1726
 msgid "Arrange icons"
@@ -141,7 +143,7 @@ msgstr "Organizar los iconos"
 #: ../src/xfdesktop-file-icon-manager.c:1360
 #, c-format
 msgid "Unable to launch \"%s\":"
-msgstr "No se ha podido iniciar «%s»"
+msgstr "No se ha podido iniciar «%s»:"
 
 #: ../settings/main.c:1735 ../src/xfdesktop-file-icon-manager.c:799
 #: ../src/xfdesktop-file-icon-manager.c:1109
@@ -323,7 +325,7 @@ msgstr "C_olor:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 msgid "Change the _background "
-msgstr "Cambiar el _fondo"
+msgstr "Cambiar el _fondo "
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
 msgid ""
@@ -450,7 +452,7 @@ msgstr "_Fondo"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:22
 msgid "Include applications menu on _desktop right click"
-msgstr "Incluir el menú de aplicaciones al hacer clic _derecho sobre el escritorio."
+msgstr "Incluir el menú de aplicaciones al hacer clic _derecho sobre el escritorio"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:23
 msgid "_Button:"
@@ -530,7 +532,7 @@ msgstr "_Orientación de los iconos:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:42
 msgid "Show icons on primary display"
-msgstr "Mostrar los iconos en la pantalla primaria"
+msgstr "Mostrar los iconos en la pantalla principal"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:43
 msgid "Use custom _font size:"
@@ -560,7 +562,7 @@ msgstr "Mostrar mi_niaturas"
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
-msgstr "Seleccione esta opción para mostrar miniaturas generadas automáticamente en los iconos de los archivos del escritorio que admitan vista previa"
+msgstr "Seleccione esta opción para mostrar miniaturas generadas automáticamente en los iconos de los archivos del escritorio que admitan vista previa."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:50
 msgid "Show hidden files on the desktop"
@@ -673,7 +675,7 @@ msgstr "No esperar a que se inicie un gestor de ventanas"
 
 #: ../src/xfdesktop-application.c:845
 msgid "Cause xfdesktop to quit"
-msgstr "Salir de xfdesktop"
+msgstr "Salir de Xfdesktop"
 
 #: ../src/xfdesktop-application.c:860
 #, c-format
@@ -781,15 +783,15 @@ msgstr "_Abrir todo"
 
 #: ../src/xfdesktop-file-icon-manager.c:1450
 msgid "Create _Launcher..."
-msgstr "Crear un _lanzador…"
+msgstr "Crear un _lanzador..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1464
 msgid "Create _URL Link..."
-msgstr "Crear un enlace a un _URL…"
+msgstr "Crear un enlace a un _URL..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1478
 msgid "Create _Folder..."
-msgstr "Crear una _carpeta…"
+msgstr "Crear una _carpeta..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1490
 msgid "Create _Document"
@@ -823,7 +825,7 @@ msgstr "Abrir con"
 #: ../src/xfdesktop-file-icon-manager.c:1661
 #: ../src/xfdesktop-file-icon-manager.c:1675
 msgid "Open With Other _Application..."
-msgstr "Abrir con _otra aplicación…"
+msgstr "Abrir con _otra aplicación..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1693
 msgid "_Paste"
@@ -867,12 +869,12 @@ msgstr "Fondo _siguiente"
 
 #: ../src/xfdesktop-file-icon-manager.c:1877
 msgid "Desktop _Settings..."
-msgstr "_Configuración del escritorio…"
+msgstr "_Configuración del escritorio..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1885
 #: ../src/xfdesktop-volume-icon.c:876
 msgid "P_roperties..."
-msgstr "P_ropiedades…"
+msgstr "P_ropiedades..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2956
 msgid "Load Error"
@@ -1055,7 +1057,7 @@ msgstr "Escribiendo datos en el dispositivo"
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be"
 " removed. Please do not remove the media or disconnect the drive"
-msgstr "Se deben escribir datos en el dispositivo «%s» antes de poder extraerlo. No extraiga el soporte ni desconecte la unidad."
+msgstr "Se deben escribir datos en el dispositivo «%s» antes de poder extraerlo. No extraiga el soporte ni desconecte la unidad"
 
 #: ../src/xfdesktop-notify.c:221
 msgid "Unmount Finished"
@@ -1064,7 +1066,7 @@ msgstr "Desmontaje finalizado"
 #: ../src/xfdesktop-notify.c:223 ../src/xfdesktop-notify.c:408
 #, c-format
 msgid "The device \"%s\" has been safely removed from the system. "
-msgstr "Se ha extraído el dispositivo «%s» de forma segura."
+msgstr "Se ha extraído el dispositivo «%s» de forma segura. "
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:313
@@ -1075,7 +1077,7 @@ msgstr "Expulsando el dispositivo"
 #: ../src/xfdesktop-notify.c:316
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
-msgstr "Se está expulsando el dispositivo «%s». Esto puede llevar un tiempo."
+msgstr "Se está expulsando el dispositivo «%s». Esto puede llevar un tiempo"
 
 #: ../src/xfdesktop-notify.c:406
 msgid "Eject Finished"
@@ -1088,7 +1090,7 @@ msgid ""
 "Type: %s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr "Nombre: %s\nTipo: %s\nTamaño: %s\nFecha de modificación: %s "
+msgstr "Nombre: %s\nTipo: %s\nTamaño: %s\nFecha de modificación: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:459
 msgid "Trash is empty"
