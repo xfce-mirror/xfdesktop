@@ -6,6 +6,7 @@
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2020
 # sulaiman saeed <sulaiman3352@gmail.com>, 2021
+# Muadh Abdulaziz <m_abdulaziz@tutamail.com>, 2021
 # 
 #, fuzzy
 msgid ""
@@ -14,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-13 00:32+0100\n"
 "PO-Revision-Date: 2019-10-20 16:40+0000\n"
-"Last-Translator: sulaiman saeed <sulaiman3352@gmail.com>, 2021\n"
+"Last-Translator: Muadh Abdulaziz <m_abdulaziz@tutamail.com>, 2021\n"
 "Language-Team: Arabic (https://www.transifex.com/xfce/teams/16840/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -124,10 +125,12 @@ msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
 msgstr ""
+"هل تريد ترتيب جميع الأيقونات\n"
+"الموجودة طبقا للاتجاه المحدد؟"
 
 #: ../settings/main.c:1749
 msgid "Arrange icons"
-msgstr ""
+msgstr "ترتيب الأيقونات"
 
 #. printf is to be translator-friendly
 #: ../settings/main.c:1757 ../src/xfdesktop-file-icon-manager.c:798
@@ -405,35 +408,35 @@ msgstr "ملف/مٌطلق أيقونات"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:10
 msgid "Top Left Vertical"
-msgstr ""
+msgstr "في الأعلى على اليسار عموديا"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:11
 msgid "Top Left Horizontal"
-msgstr ""
+msgstr "في الأعلى على اليسار أفقيا"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:12
 msgid "Top Right Vertical"
-msgstr ""
+msgstr "في الأعلى على اليمين عموديا"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:13
 msgid "Top Right Horizontal"
-msgstr ""
+msgstr "في الأعلى على اليمين أفقيا"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:14
 msgid "Bottom Left Vertical"
-msgstr ""
+msgstr "في الأسفل على اليسار عموديا"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:15
 msgid "Bottom Left Horizontal"
-msgstr ""
+msgstr "في الأسفل على اليسار أفقيا"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:16
 msgid "Bottom Right Vertical"
-msgstr ""
+msgstr "في الأسفل على اليمين عموديا"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:17
 msgid "Bottom Right Horizontal"
-msgstr ""
+msgstr "في الأسفل على اليمين أفقيا"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:20
 msgid "_Help"
@@ -517,11 +520,11 @@ msgstr "ح_جم الأيقونة:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:41
 msgid "48"
-msgstr ""
+msgstr "48"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:42
 msgid "Icons _orientation:"
-msgstr ""
+msgstr "اتجاه_الأيقونات"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:43
 msgid "Show icons on primary display"
@@ -533,7 +536,7 @@ msgstr "إستعما_ل حجم خط مخصص:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:45
 msgid "12"
-msgstr ""
+msgstr "12"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:46
 msgid "Show icon tooltips. Size:"
@@ -545,7 +548,7 @@ msgstr "حجم صورة عرض التلميحة"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:48
 msgid "128"
-msgstr ""
+msgstr "128"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:49
 msgid "Show t_humbnails"
@@ -1086,6 +1089,10 @@ msgid ""
 "Size: %s\n"
 "Last modified: %s"
 msgstr ""
+"الاسم: %s\n"
+"النوع: %s\n"
+"الحجم: %s\n"
+"آخر تعديل: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:294
 #: ../src/xfdesktop-special-file-icon.c:476
