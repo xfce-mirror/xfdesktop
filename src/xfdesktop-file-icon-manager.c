@@ -887,6 +887,7 @@ xfdesktop_file_icon_menu_other_app(GtkWidget *widget,
     file = xfdesktop_file_icon_peek_file(icon);
 
     xfdesktop_file_utils_display_chooser_dialog(file, TRUE,
+                                                TRUE,
                                                 fmanager->priv->gscreen,
                                                 GTK_WINDOW(toplevel));
 }
