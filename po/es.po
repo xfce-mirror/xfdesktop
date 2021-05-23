@@ -118,8 +118,8 @@ msgstr ""
 #: ../settings/main.c:1193
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr ""
-"La selección de imagen no estará disponible mientras el estilo de imagen "
-"esté configurado como «desactivar»."
+"La selección de imagen no está disponible si el estilo de imagen se ha "
+"configurado como «desactivar»."
 
 #: ../settings/main.c:1570
 msgid "Spanning screens"
@@ -133,7 +133,7 @@ msgid ""
 "icons according to the selected orientation?"
 msgstr ""
 "¿Quiere organizar todos los iconos\n"
-"presentes según la orientación seleccionada?"
+"según la orientación seleccionada?"
 
 #: ../settings/main.c:1744
 msgid "Arrange icons"
@@ -144,7 +144,7 @@ msgstr "Organizar los iconos"
 #: ../src/xfdesktop-file-icon-manager.c:1353
 #, c-format
 msgid "Unable to launch \"%s\":"
-msgstr "No se ha podido iniciar «%s»:"
+msgstr "No se puede iniciar «%s»:"
 
 #: ../settings/main.c:1753 ../src/xfdesktop-file-icon-manager.c:800
 #: ../src/xfdesktop-file-icon-manager.c:1102
@@ -294,7 +294,7 @@ msgstr "Ampliar"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
 msgid "Spanning Screens"
-msgstr "Extensión de pantallas"
+msgstr "Pantallas extendidas"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
 msgid "Specify the style of the color drawn behind the backdrop image."
@@ -308,7 +308,7 @@ msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Select First Color"
-msgstr "Seleccionar el primer color"
+msgstr "Seleccione el primer color"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient."
@@ -316,7 +316,7 @@ msgstr "Especifique el color de la parte derecha o inferior del degradado."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
 msgid "Select Second Color"
-msgstr "Seleccionar el segundo color"
+msgstr "Seleccione el segundo color"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
 msgid "Apply to all _workspaces"
@@ -557,7 +557,7 @@ msgstr "12"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:45
 msgid "Show icon tooltips. Size:"
-msgstr "Mostrar iconos en las descripciones emergentes. Tamaño:"
+msgstr "Mostrar los iconos en las descripciones emergentes. Tamaño:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:46
 msgid "Size of the tooltip preview image."
@@ -674,11 +674,11 @@ msgstr "Avanzar al siguiente fondo de pantalla en el área de trabajo actual"
 
 #: ../src/xfdesktop-application.c:837
 msgid "Pop up the menu (at the current mouse position)"
-msgstr "Mostrar el menú (en la posición actual del ratón)"
+msgstr "Mostrar el menú (en la posición del ratón)"
 
 #: ../src/xfdesktop-application.c:838
 msgid "Pop up the window list (at the current mouse position)"
-msgstr "Mostrar la lista de ventanas (en la posición actual del ratón)"
+msgstr "Mostrar la lista de ventanas (en la posición del ratón)"
 
 #: ../src/xfdesktop-application.c:840
 msgid "Automatically arrange all the icons on the desktop"
@@ -785,8 +785,8 @@ msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr ""
-"No se ha podido iniciar «exo-desktop-item-edit», que es necesario para crear"
-" y editar lanzadores y enlaces en el escritorio."
+"No se ha podido iniciar «exo-desktop-item-edit», que se necesita para crear "
+"y editar lanzadores y enlaces en el escritorio."
 
 #: ../src/xfdesktop-file-icon-manager.c:1423
 msgid "_Open all"
@@ -1061,7 +1061,7 @@ msgid ""
 " media or disconnect the drive"
 msgstr ""
 "Se está desmontando el dispositivo «%s» del sistema. No extraiga el soporte "
-"o desconecte la unidad"
+"ni desconecte la unidad"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:137 ../src/xfdesktop-notify.c:322
