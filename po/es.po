@@ -101,7 +101,7 @@ msgstr ""
 #: ../settings/main.c:763
 #, c-format
 msgid "Wallpaper for my desktop"
-msgstr "Fondo de pantalla para mi escritorio"
+msgstr "Fondo de pantalla para el escritorio"
 
 #. Single monitor and per workspace wallpaper
 #: ../settings/main.c:769
@@ -259,7 +259,7 @@ msgstr "Elija la carpeta para seleccionar los fondos de pantalla."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
 msgid "St_yle:"
-msgstr "Est_ilo:"
+msgstr "_Estilo:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
 msgid "Specify how the image will be resized to fit the screen."
@@ -320,11 +320,11 @@ msgstr "Seleccione el segundo color"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
 msgid "Apply to all _workspaces"
-msgstr "Aplicar a todas las áreas de _trabajo"
+msgstr "_Aplicar a todas las áreas de trabajo"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
 msgid "_Folder:"
-msgstr "_Carpeta:"
+msgstr "Ca_rpeta:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
 msgid "C_olor:"
@@ -332,7 +332,7 @@ msgstr "C_olor:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 msgid "Change the _background "
-msgstr "Cambiar el _fondo "
+msgstr "Cam_biar el fondo "
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
 msgid ""
@@ -377,7 +377,7 @@ msgstr "Tiempo de espera antes de que se seleccione un fondo diferente."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
 msgid "_Random Order"
-msgstr "Orden _aleatorio"
+msgstr "Or_den aleatorio"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
 msgid ""
@@ -413,7 +413,7 @@ msgstr "Control"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:8
 msgid "Minimized application icons"
-msgstr "Iconos de las aplicaciones minimizadas"
+msgstr "Iconos de aplicaciones minimizadas"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:9
 msgid "File/launcher icons"
@@ -500,7 +500,7 @@ msgstr "Modi_ficador:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:31
 msgid "Sh_ow application icons in menu"
-msgstr "Mostrar los i_conos de las aplicaciones en el menú"
+msgstr "Most_rar los iconos de las aplicaciones en el menú"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:32
 msgid "Show workspace _names in list"
@@ -512,12 +512,12 @@ msgstr "Usar _submenús para las ventanas de cada área de trabajo"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:34
 msgid "Show s_ticky windows only in active workspace"
-msgstr "Mostrar las ventanas ad_hesivas solo en el área de trabajo activa"
+msgstr "Mostrar las ventanas _fijas solo en el área de trabajo activa"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:35
 msgid "Show a_dd and remove workspace options in list"
 msgstr ""
-"Mostrar las opciones de añadir y eliminar áreas de _trabajo en la lista"
+"Mostrar las _opciones de añadir y eliminar áreas de trabajo en la lista"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid "<b>Window List Menu</b>"
@@ -529,7 +529,7 @@ msgstr "_Menús"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:38
 msgid "Icon _type:"
-msgstr "_Tipo de icono:"
+msgstr "Tipo de ic_ono:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:39
 msgid "Icon _size:"
@@ -541,7 +541,7 @@ msgstr "48"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:41
 msgid "Icons _orientation:"
-msgstr "_Orientación de los iconos:"
+msgstr "O_rientación de los iconos:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:42
 msgid "Show icons on primary display"
@@ -569,15 +569,15 @@ msgstr "128"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:48
 msgid "Show t_humbnails"
-msgstr "Mostrar mi_niaturas"
+msgstr "Mostrar las mi_niaturas"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:49
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
 msgstr ""
-"Seleccione esta opción para mostrar miniaturas generadas automáticamente en "
-"los iconos de los archivos del escritorio que admitan vista previa."
+"Seleccione esta opción para mostrar las miniaturas generadas automáticamente"
+" en los iconos de los archivos del escritorio que admitan vista previa."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:50
 msgid "Show hidden files on the desktop"
@@ -585,7 +585,7 @@ msgstr "Mostrar los archivos ocultos en el escritorio"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:51
 msgid "Single _click to activate items"
-msgstr "Un solo _clic para activar los elementos"
+msgstr "Un _solo clic para activar los elementos"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:52
 msgid "<b>Appearance</b>"
@@ -601,7 +601,7 @@ msgstr "_Iconos"
 
 #: ../src/menu.c:93
 msgid "_Applications"
-msgstr "_Aplicaciones"
+msgstr "Aplicacio_nes"
 
 #: ../src/windowlist.c:73
 #, c-format
@@ -653,12 +653,12 @@ msgstr "_Añadir un área de trabajo"
 #: ../src/windowlist.c:403
 #, c-format
 msgid "_Remove Workspace %d"
-msgstr "Elimina_r el área de trabajo %d"
+msgstr "_Eliminar el área de trabajo %d"
 
 #: ../src/windowlist.c:406
 #, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "Elimina_r el área de trabajo «%s»"
+msgstr "_Eliminar el área de trabajo «%s»"
 
 #: ../src/xfdesktop-application.c:834
 msgid "Display version information"
@@ -666,7 +666,7 @@ msgstr "Mostrar información de la versión"
 
 #: ../src/xfdesktop-application.c:835
 msgid "Reload all settings"
-msgstr "Recargar toda la configuración"
+msgstr "Recargar la configuración"
 
 #: ../src/xfdesktop-application.c:836
 msgid "Advance to the next wallpaper on the current workspace"
@@ -674,11 +674,11 @@ msgstr "Avanzar al siguiente fondo de pantalla en el área de trabajo actual"
 
 #: ../src/xfdesktop-application.c:837
 msgid "Pop up the menu (at the current mouse position)"
-msgstr "Mostrar el menú (en la posición del ratón)"
+msgstr "Mostrar el menú (en la posición del cursor)"
 
 #: ../src/xfdesktop-application.c:838
 msgid "Pop up the window list (at the current mouse position)"
-msgstr "Mostrar la lista de ventanas (en la posición del ratón)"
+msgstr "Mostrar la lista de ventanas (en la posición del cursor)"
 
 #: ../src/xfdesktop-application.c:840
 msgid "Automatically arrange all the icons on the desktop"
@@ -785,8 +785,8 @@ msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr ""
-"No se ha podido iniciar «exo-desktop-item-edit», que se necesita para crear "
-"y editar lanzadores y enlaces en el escritorio."
+"No se puede iniciar «exo-desktop-item-edit», que se necesita para crear y "
+"editar lanzadores y enlaces en el escritorio."
 
 #: ../src/xfdesktop-file-icon-manager.c:1423
 msgid "_Open all"
@@ -802,11 +802,11 @@ msgstr "Crear un enlace a un _URL..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1471
 msgid "Create _Folder..."
-msgstr "Crear una _carpeta..."
+msgstr "Cr_ear una carpeta..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1483
 msgid "Create _Document"
-msgstr "Crear un _documento"
+msgstr "Crear un docu_mento"
 
 #: ../src/xfdesktop-file-icon-manager.c:1508
 msgid "No templates installed"
@@ -814,7 +814,7 @@ msgstr "No hay plantillas instaladas"
 
 #: ../src/xfdesktop-file-icon-manager.c:1524
 msgid "_Empty File"
-msgstr "Archivo _vacío"
+msgstr "_Archivo vacío"
 
 #: ../src/xfdesktop-file-icon-manager.c:1534
 #: ../src/xfdesktop-special-file-icon.c:545 ../src/xfdesktop-volume-icon.c:811
@@ -823,11 +823,11 @@ msgstr "_Abrir"
 
 #: ../src/xfdesktop-file-icon-manager.c:1550
 msgid "_Execute"
-msgstr "_Ejecutar"
+msgstr "Ejec_utar"
 
 #: ../src/xfdesktop-file-icon-manager.c:1568
 msgid "_Edit Launcher"
-msgstr "_Editar el lanzador"
+msgstr "Editar el _lanzador"
 
 #: ../src/xfdesktop-file-icon-manager.c:1627
 msgid "Open With"
@@ -852,15 +852,15 @@ msgstr "_Copiar"
 
 #: ../src/xfdesktop-file-icon-manager.c:1728
 msgid "Paste Into Folder"
-msgstr "Pegar en la carpeta"
+msgstr "_Pegar en la carpeta"
 
 #: ../src/xfdesktop-file-icon-manager.c:1747
 msgid "Mo_ve to Trash"
-msgstr "Mo_ver a la papelera"
+msgstr "_Mover a la papelera"
 
 #: ../src/xfdesktop-file-icon-manager.c:1759
 msgid "_Delete"
-msgstr "_Borrar"
+msgstr "_Eliminar"
 
 #: ../src/xfdesktop-file-icon-manager.c:1776
 msgid "_Rename..."
@@ -876,7 +876,7 @@ msgstr "_Organizar los iconos del escritorio"
 
 #: ../src/xfdesktop-file-icon-manager.c:1861
 msgid "_Next Background"
-msgstr "Fondo _siguiente"
+msgstr "_Fondo siguiente"
 
 #: ../src/xfdesktop-file-icon-manager.c:1871
 msgid "Desktop _Settings..."
@@ -885,7 +885,7 @@ msgstr "_Configuración del escritorio..."
 #: ../src/xfdesktop-file-icon-manager.c:1879
 #: ../src/xfdesktop-volume-icon.c:852
 msgid "P_roperties..."
-msgstr "P_ropiedades..."
+msgstr "Propie_dades..."
 
 #: ../src/xfdesktop-file-icon-manager.c:2950
 msgid "Load Error"
@@ -919,13 +919,13 @@ msgstr "Documento sin titulo"
 #: ../src/xfdesktop-file-utils.c:159
 #, c-format
 msgid "Today at %X"
-msgstr "Hoy a las %X"
+msgstr "hoy a las %X"
 
 #. TRANSLATORS: file was modified less than two days ago
 #: ../src/xfdesktop-file-utils.c:163
 #, c-format
 msgid "Yesterday at %X"
-msgstr "Ayer a las %X"
+msgstr "ayer a las %X"
 
 #. Days from last week
 #: ../src/xfdesktop-file-utils.c:168
@@ -942,7 +942,7 @@ msgstr "%x a las %X"
 #. the file_time is invalid
 #: ../src/xfdesktop-file-utils.c:181
 msgid "Unknown"
-msgstr "Desconocido"
+msgstr "Dato desconocido"
 
 #: ../src/xfdesktop-file-utils.c:684
 msgid "The folder could not be opened"
@@ -1121,7 +1121,7 @@ msgstr "La papelera está vacía"
 
 #: ../src/xfdesktop-special-file-icon.c:464
 msgid "Trash contains one item"
-msgstr "La papelera contiene un solo elemento"
+msgstr "La papelera contiene un elemento"
 
 #: ../src/xfdesktop-special-file-icon.c:465
 #, c-format
@@ -1152,7 +1152,7 @@ msgid ""
 msgstr ""
 "Volumen extraíble\n"
 "Punto de montaje: %s\n"
-"Espacio libre: %s (total: %s)"
+"Espacio libre: %s (en total: %s)"
 
 #: ../src/xfdesktop-volume-icon.c:487
 msgid ""
@@ -1160,7 +1160,7 @@ msgid ""
 "Not mounted yet"
 msgstr ""
 "Volumen extraíble\n"
-"No montado todavía"
+"No se ha montado todavía"
 
 #: ../src/xfdesktop-volume-icon.c:516 ../src/xfdesktop-volume-icon.c:562
 #, c-format
