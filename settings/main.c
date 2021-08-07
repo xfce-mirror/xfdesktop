@@ -2116,7 +2116,7 @@ main(int argc, char **argv)
     GtkBuilder *gxml;
     gint screen;
     GError *error = NULL;
-    AppearancePanel *panel = g_new0(AppearancePanel, 1);
+    AppearancePanel *panel;
 
 #ifdef G_ENABLE_DEBUG
     /* do NOT remove this line. If something doesn't work,
@@ -2171,6 +2171,7 @@ main(int argc, char **argv)
     }
 
     channel = xfconf_channel_new(XFDESKTOP_CHANNEL);
+    panel = g_new0(AppearancePanel, 1);
 
     if(opt_enable_debug)
         xfdesktop_debug_set(TRUE);
