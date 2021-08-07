@@ -768,7 +768,7 @@ xfdesktop_file_icon_manager_delete_selected(XfdesktopFileIconManager *fmanager,
     /* make sure the icons don't get destroyed while we're working */
     g_list_foreach(selected, xfdesktop_object_ref, NULL);
 
-    if (!force_delete) {
+    if(!force_delete) {
         xfdesktop_file_icon_manager_trash_files(fmanager, selected);
     } else {
         xfdesktop_file_icon_manager_delete_files(fmanager, selected);
@@ -960,7 +960,7 @@ xfdesktop_file_icon_menu_paste_into_folder(GtkWidget *widget,
     GFile *file;
     GList *selected;
 
-    if (!fmanager || !XFDESKTOP_IS_FILE_ICON_MANAGER(fmanager))
+    if(!fmanager || !XFDESKTOP_IS_FILE_ICON_MANAGER(fmanager))
         return;
 
     selected = xfdesktop_icon_view_get_selected_items(fmanager->priv->icon_view);
@@ -984,14 +984,14 @@ xfdesktop_file_icon_menu_arrange_icons(GtkWidget *widget,
                                        gpointer user_data)
 {
 
-  XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
-  GtkWidget                *window;
-  const gchar              *question = _("This will reorder all desktop items and place them on different screen positions.\n"
-                                         "You are sure?");
+    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
+    GtkWidget                *window;
+    const gchar              *question = _("This will reorder all desktop items and place them on different screen positions.\n"
+                                           "You are sure?");
 
-  window = gtk_widget_get_toplevel (fmanager->priv->desktop);
-  if(xfce_dialog_confirm(GTK_WINDOW(window), NULL, _("_OK"), NULL, "%s", question))
-      xfdesktop_icon_view_sort_icons(fmanager->priv->icon_view);
+    window = gtk_widget_get_toplevel(fmanager->priv->desktop);
+    if(xfce_dialog_confirm(GTK_WINDOW(window), NULL, _("_OK"), NULL, "%s", question))
+        xfdesktop_icon_view_sort_icons(fmanager->priv->icon_view);
 }
 
 static void
@@ -1614,11 +1614,11 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
 
                     /* move any default application in front of the list */
                     default_application = g_app_info_get_default_for_type (g_file_info_get_content_type(info), FALSE);
-                    if (G_LIKELY (default_application != NULL))
+                    if(G_LIKELY (default_application != NULL))
                     {
                         for (ap = app_infos; ap != NULL; ap = ap->next)
                         {
-                            if (g_app_info_equal (ap->data, default_application))
+                            if(g_app_info_equal (ap->data, default_application))
                             {
                                 g_object_unref (ap->data);
                                 app_infos = g_list_delete_link (app_infos, ap);
@@ -1955,7 +1955,7 @@ xfdesktop_file_icon_manager_save_icons(gpointer user_data)
 
     fmanager->priv->save_icons_id = 0;
 
-    if (!xfdesktop_get_workarea_single(fmanager->priv->icon_view,
+    if(!xfdesktop_get_workarea_single(fmanager->priv->icon_view,
                                        0,
                                        &x,
                                        &y,
@@ -2023,7 +2023,7 @@ xfdesktop_file_icon_manager_save_icons(gpointer user_data)
             last_path = xfce_resource_save_location(XFCE_RESOURCE_CONFIG, "xfce4/desktop/icons.screen.latest.rc", TRUE);
             if(last_path != NULL) {
                 unlink(last_path);
-                if (symlink(path, last_path) != 0)
+                if(symlink(path, last_path) != 0)
                    g_warning("Unable to create symbolic link: %s",
                              strerror(errno));
                 g_free(last_path);
@@ -2080,7 +2080,7 @@ xfdesktop_file_icon_manager_get_cached_icon_position(XfdesktopFileIconManager *f
     if(!fmanager || !fmanager->priv)
         return FALSE;
 
-    if (!xfdesktop_get_workarea_single(fmanager->priv->icon_view,
+    if(!xfdesktop_get_workarea_single(fmanager->priv->icon_view,
                                        0,
                                        &x,
                                        &y,
