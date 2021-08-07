@@ -1038,7 +1038,7 @@ xfdesktop_icon_view_button_release(GtkWidget *widget,
          * now.
          * We pass 0 as the button because the docs say that you must use 0
          * for pop ups other than button press events. */
-        if(icon_l && (icon = icon_l->data)) {
+        if(icon_l && icon_l->data) {
             xfce_desktop_popup_root_menu(XFCE_DESKTOP(widget), 0, evt->time);
         }
     }
