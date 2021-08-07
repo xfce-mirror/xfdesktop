@@ -988,12 +988,10 @@ xfdesktop_file_icon_menu_arrange_icons(GtkWidget *widget,
   GtkWidget                *window;
   const gchar              *question = _("This will reorder all desktop items and place them on different screen positions.\n"
                                          "You are sure?");
-                            
+
   window = gtk_widget_get_toplevel (fmanager->priv->desktop);
-  if(xfce_dialog_confirm(GTK_WINDOW(window), NULL, _("_OK"), NULL, "%s", question)) {
-      XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
+  if(xfce_dialog_confirm(GTK_WINDOW(window), NULL, _("_OK"), NULL, "%s", question))
       xfdesktop_icon_view_sort_icons(fmanager->priv->icon_view);
-  }
 }
 
 static void
