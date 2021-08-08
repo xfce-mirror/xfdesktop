@@ -805,7 +805,7 @@ xfdesktop_volume_icon_populate_context_menu(XfdesktopIcon *icon,
 
     icon_name = "document-open";
 
-    img = gtk_image_new_from_icon_name("document-open", GTK_ICON_SIZE_MENU);
+    img = gtk_image_new_from_icon_name(icon_name, GTK_ICON_SIZE_MENU);
     mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Open"), img);
     gtk_widget_show(mi);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
