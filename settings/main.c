@@ -1061,10 +1061,8 @@ cb_xfdesktop_spin_icon_size_changed(GtkSpinButton *button,
     g_object_set_data(G_OBJECT(button), "xfconf-chanel", user_data);
 
     timer_id = GPOINTER_TO_UINT(g_object_get_data(G_OBJECT(button), "timer-id"));
-    if(timer_id != 0) {
+    if(timer_id != 0)
         g_source_remove(timer_id);
-        timer_id = 0;
-    }
 
     timer_id = g_timeout_add(500, xfdesktop_spin_icon_size_timer, button);
 
@@ -2119,7 +2117,7 @@ main(int argc, char **argv)
     GtkBuilder *gxml;
     gint screen;
     GError *error = NULL;
-    AppearancePanel *panel = g_new0(AppearancePanel, 1);
+    AppearancePanel *panel;
 
 #ifdef G_ENABLE_DEBUG
     /* do NOT remove this line. If something doesn't work,
@@ -2174,6 +2172,7 @@ main(int argc, char **argv)
     }
 
     channel = xfconf_channel_new(XFDESKTOP_CHANNEL);
+    panel = g_new0(AppearancePanel, 1);
 
     if(opt_enable_debug)
         xfdesktop_debug_set(TRUE);
