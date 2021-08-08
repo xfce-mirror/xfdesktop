@@ -2765,7 +2765,6 @@ xfdesktop_setup_grids(XfdesktopIconView *icon_view)
     else if (!xfdesktop_get_workarea_single(icon_view, 0,
                                             &xorigin, &yorigin,
                                             &width, &height)) {
-        monitor = gdk_display_get_monitor_at_window (display, gtk_widget_get_parent_window(GTK_WIDGET(icon_view)));
         xfdesktop_get_screen_dimensions (screen, &width, &height);
         xorigin = yorigin = 0;
     }
