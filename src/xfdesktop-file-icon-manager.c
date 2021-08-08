@@ -1407,13 +1407,12 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
     TRACE("ENTERING");
 
     selected = xfdesktop_icon_view_get_selected_items(fmanager->priv->icon_view);
-    if(selected)
-        file_icon = selected->data;
-    else {
+    if(!selected) {
         /* assume click on the desktop itself */
         selected = g_list_append(selected, fmanager->priv->desktop_icon);
-        file_icon = fmanager->priv->desktop_icon;
     }
+
+    file_icon = selected->data;
     info = xfdesktop_file_icon_peek_file_info(file_icon);
 
     multi_sel = (g_list_length(selected) > 1);
