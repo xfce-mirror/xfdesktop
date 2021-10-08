@@ -414,8 +414,8 @@ xfdesktop_load_icon_from_desktop_file(XfdesktopRegularFileIcon *regular_icon)
         gchar *tmp_name = NULL;
         gchar *p = strrchr(icon_name, '.');
 
-	if(!(g_strcmp0(p, ".png") == 0 || g_strcmp0(p, ".xpm") == 0 || g_strcmp0(p, ".svg") == 0))
-	    p = NULL;
+        if(!(g_strcmp0(p, ".png") == 0 || g_strcmp0(p, ".xpm") == 0 || g_strcmp0(p, ".svg") == 0))
+            p = NULL;
 
         if(p != NULL)
             tmp_name = g_strndup(icon_name, p - icon_name);
