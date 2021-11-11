@@ -4,8 +4,8 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Quentin PAGÈS, 2020
 # Xfce Bot <transifex@xfce.org>, 2020
+# Quentin PAGÈS, 2021
 # 
 #, fuzzy
 msgid ""
@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-13 00:32+0100\n"
 "PO-Revision-Date: 2019-10-20 16:40+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>, 2020\n"
+"Last-Translator: Quentin PAGÈS, 2021\n"
 "Language-Team: Occitan (post 1500) (https://www.transifex.com/xfce/teams/16840/oc/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -76,6 +76,8 @@ msgstr "Fons d'ecran pel monitor %d "
 #: ../settings/main.c:741
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr ""
+"Desplaçar aquesta fenèstra cap a l’ecran que volètz modificar los "
+"paramètres."
 
 #: ../settings/main.c:748
 #, c-format
@@ -92,6 +94,8 @@ msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr ""
+"Desplaçar aquesta fenèstra cap a l’ecran e espaci de trabalh que volètz "
+"modificar los paramètres."
 
 #. Single monitor and single workspace
 #: ../settings/main.c:767
@@ -128,10 +132,12 @@ msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
 msgstr ""
+"Volètz organizar totas las icònas\n"
+"existentas segon l’orientacion causida ?"
 
 #: ../settings/main.c:1749
 msgid "Arrange icons"
-msgstr ""
+msgstr "Arrengar las icònas"
 
 #. printf is to be translator-friendly
 #: ../settings/main.c:1757 ../src/xfdesktop-file-icon-manager.c:798
@@ -192,7 +198,7 @@ msgstr "Informacions sus la version"
 
 #: ../settings/main.c:2130 ../src/xfdesktop-application.c:842
 msgid "Enable debug messages"
-msgstr ""
+msgstr "Activar los messatge de desbugatge"
 
 #: ../settings/main.c:2158
 #, c-format
@@ -249,7 +255,7 @@ msgstr "Transparent"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
 msgid "Choose the folder to select wallpapers from."
-msgstr ""
+msgstr "Causir lo dorsièr que conten los fonzes  d’ecran."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
 msgid "St_yle:"
@@ -257,7 +263,7 @@ msgstr "E_stil :"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
 msgid "Specify how the image will be resized to fit the screen."
-msgstr ""
+msgstr "Especificar cossí l’imatge serà retalhada per s’adaptar a l’ecran."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
 #: ../settings/xfdesktop-settings-ui.glade.h:4
@@ -290,11 +296,12 @@ msgstr "Ecrans cobrent"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
 msgid "Specify the style of the color drawn behind the backdrop image."
-msgstr ""
+msgstr "Especificar l’estil de la color ajustada darrièr l’imatge de fons."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
 msgstr ""
+"Especifica la color unida, o aquela d’esquèrra o d’ennaut del degradat."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Select First Color"
@@ -302,7 +309,7 @@ msgstr "Seleccionar la primièra color"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient."
-msgstr ""
+msgstr "Especifica la color unida, o aquela de drech o d’enbàs del degradat."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
 msgid "Select Second Color"
@@ -333,7 +340,7 @@ msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid "Specify how often the background will change."
-msgstr ""
+msgstr "Especificar la frequéncia que lo fons d’ecran cambiarà."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "in seconds:"
@@ -413,35 +420,35 @@ msgstr "Icònas fichièr / aviador"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:10
 msgid "Top Left Vertical"
-msgstr ""
+msgstr "D’ennaut a esquèrra a la verticala"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:11
 msgid "Top Left Horizontal"
-msgstr ""
+msgstr "D’ennaut a esquèrra a l’orizontala"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:12
 msgid "Top Right Vertical"
-msgstr ""
+msgstr "D’ennaut a drecha a la verticala"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:13
 msgid "Top Right Horizontal"
-msgstr ""
+msgstr "D’ennaut a drecha a l’orizontala"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:14
 msgid "Bottom Left Vertical"
-msgstr ""
+msgstr "D’enbàs a esquèrra a la verticala"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:15
 msgid "Bottom Left Horizontal"
-msgstr ""
+msgstr "D’enbàs a esquèrra a l’orizontala"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:16
 msgid "Bottom Right Vertical"
-msgstr ""
+msgstr "D’enbàs a drecha a la verticala"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:17
 msgid "Bottom Right Horizontal"
-msgstr ""
+msgstr "D’enbàs a la drecha a l’orizontala"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:20
 msgid "_Help"
@@ -453,7 +460,7 @@ msgstr "_Fons d'ecran"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:23
 msgid "Include applications menu on _desktop right click"
-msgstr ""
+msgstr "Inclure lo menú Aplicacion pel clic drech pels _burèu"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:24
 msgid "_Button:"
@@ -510,6 +517,7 @@ msgstr ""
 #: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid "Show a_dd and remove workspace options in list"
 msgstr ""
+"Afichar las opcions a_pondre e suprimir d’espacis de trabalh a la lista"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "<b>Window List Menu</b>"
@@ -533,11 +541,11 @@ msgstr "48"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:42
 msgid "Icons _orientation:"
-msgstr ""
+msgstr "_Orientacion de las icònas :"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:43
 msgid "Show icons on primary display"
-msgstr ""
+msgstr "Afichar las icònas pel monitor principal"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:44
 msgid "Use custom _font size:"
@@ -573,7 +581,7 @@ msgstr ""
 
 #: ../settings/xfdesktop-settings-ui.glade.h:51
 msgid "Show hidden files on the desktop"
-msgstr ""
+msgstr "Afichar los fichièrs amagats pel burèu"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:52
 msgid "Single _click to activate items"
@@ -662,7 +670,7 @@ msgstr "Recargar totes los paramètres"
 
 #: ../src/xfdesktop-application.c:836
 msgid "Advance to the next wallpaper on the current workspace"
-msgstr ""
+msgstr "Avançar cap al fons d’ecran venant sus l’espaci de trabalh actual"
 
 #: ../src/xfdesktop-application.c:837
 msgid "Pop up the menu (at the current mouse position)"
@@ -680,7 +688,7 @@ msgstr "Organizar automaticament totas las icònas sul burèu"
 
 #: ../src/xfdesktop-application.c:843
 msgid "Disable debug messages"
-msgstr ""
+msgstr "Desactivar los messatge de desbugatge"
 
 #: ../src/xfdesktop-application.c:844
 msgid "Do not wait for a window manager on startup"
@@ -872,7 +880,7 @@ msgstr "_Arrengar las icònas del burèu"
 
 #: ../src/xfdesktop-file-icon-manager.c:1858
 msgid "_Next Background"
-msgstr ""
+msgstr "Fons d’ecran _seguent"
 
 #: ../src/xfdesktop-file-icon-manager.c:1868
 msgid "Desktop _Settings..."
