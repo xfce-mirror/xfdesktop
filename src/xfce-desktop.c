@@ -440,7 +440,7 @@ set_accountsservice_user_bg(const gchar *background)
     if (variant != NULL) {
         g_variant_unref (variant);
     } else {
-        g_warning ("Failed to set the background '%s': %s", background, error->message);
+        g_warning ("Failed to register the newly set background with AccountsService '%s': %s", background, error->message);
         g_clear_error (&error);
     }
 
