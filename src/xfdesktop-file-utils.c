@@ -1343,6 +1343,7 @@ display_chooser_cb (GObject *source_object, GAsyncResult *res, gpointer user_dat
 void
 xfdesktop_file_utils_display_chooser_dialog(GFile *file,
                                             gboolean open,
+                                            gboolean preselect_default_checkbox,
                                             GdkScreen *screen,
                                             GtkWindow *parent)
 {
@@ -1364,6 +1365,7 @@ xfdesktop_file_utils_display_chooser_dialog(GFile *file,
 
         xfdesktop_file_manager_call_display_chooser_dialog(fileman_proxy,
                                                            uri, open,
+                                                           preselect_default_checkbox,
                                                            display_name,
                                                            startup_id,
                                                            NULL,
