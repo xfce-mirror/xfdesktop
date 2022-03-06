@@ -100,6 +100,7 @@ gboolean xfdesktop_file_utils_execute(GFile *working_directory,
                                       GtkWindow *parent);
 void xfdesktop_file_utils_display_chooser_dialog(GFile *file,
                                                  gboolean open,
+                                                 gboolean preselect_default_checkbox,
                                                  GdkScreen *screen,
                                                  GtkWindow *parent);
 void xfdesktop_file_utils_transfer_file(GdkDragAction action,
