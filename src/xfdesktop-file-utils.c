@@ -1244,6 +1244,7 @@ xfdesktop_file_utils_execute(GFile *working_directory,
     if(fileman_proxy) {
         GError *error = NULL;
         gchar *working_dir = working_directory != NULL ? g_file_get_uri(working_directory) : NULL;
+        const gchar * path_prop;
         gchar *uri = g_file_get_uri(file);
         gchar *display_name = g_strdup(gdk_display_get_name(gdk_screen_get_display(screen)));
         gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
@@ -1269,7 +1270,11 @@ xfdesktop_file_utils_execute(GFile *working_directory,
                 if(path != NULL) {
                     rc = xfce_rc_simple_open(path, TRUE);
                     if(rc != NULL) {
-                        working_dir = g_strdup(xfce_rc_read_entry(rc, "Path", NULL));
+                        path_prop = xfce_rc_read_entry(rc, "Path", NULL);
+                        if(xfce_str_is_empty(path_prop))
+                            working_dir = g_strdup(g_get_user_special_dir(G_USER_DIRECTORY_DESKTOP));
+                        else
+                            working_dir = g_strdup(path_prop);
                         xfce_rc_close(rc);
                     }
                     g_free(path);
