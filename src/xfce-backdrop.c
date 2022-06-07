@@ -257,6 +257,7 @@ xfdesktop_backdrop_clear_directory_monitor(XfceBackdrop *backdrop)
                                                  G_CALLBACK(cb_xfce_backdrop_image_files_changed),
                                                  backdrop);
 
+            g_file_monitor_cancel(backdrop->priv->monitor);
             g_object_unref(backdrop->priv->monitor);
             backdrop->priv->monitor = NULL;
         }
