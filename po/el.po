@@ -83,12 +83,12 @@ msgstr ""
 #: ../settings/main.c:744
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
-msgstr "Φόντο για %s στην Οθόνη %d (%s)"
+msgstr "Φόντο για %s στην οθόνη %d (%s)"
 
 #: ../settings/main.c:748
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
-msgstr "Φόντο για %s στην Οθόνη %d"
+msgstr "Φόντο για %s στην οθόνη %d"
 
 #: ../settings/main.c:755
 msgid ""
@@ -183,7 +183,7 @@ msgstr "Αρχεία εικόνας"
 #. Change the title of the file chooser dialog
 #: ../settings/main.c:1918
 msgid "Select a Directory"
-msgstr "Επιλογή ενός Καταλόγου"
+msgstr "Επιλογή καταλόγου"
 
 #: ../settings/main.c:2123
 msgid "Settings manager socket"
@@ -204,7 +204,7 @@ msgstr "Ενεργοποίηση μηνυμάτων αποσφαλμάτωσης
 #: ../settings/main.c:2149
 #, c-format
 msgid "Type '%s --help' for usage."
-msgstr "Πληκτρολογήστε '%s --help' για βοήθεια σχετικά με τη χρήση του."
+msgstr "Πληκτρολογήστε για χρήση '%s --help'."
 
 #: ../settings/main.c:2161
 msgid "The Xfce development team. All rights reserved."
@@ -329,7 +329,7 @@ msgstr "Χ_ρώμα:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 msgid "Change the _background "
-msgstr "Αλλαγή του φόντου"
+msgstr "Α_λλαγή φόντου"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
 msgid ""
@@ -374,15 +374,14 @@ msgstr "Ο χρόνος που απαιτείται πριν την επιλογ
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
 msgid "_Random Order"
-msgstr "_Τυχαία Σειρά"
+msgstr "_Τυχαία σειρά"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
 msgid ""
 "Randomly selects another image from the same directory when the wallpaper is"
 " to cycle."
 msgstr ""
-"Επιλέγει τυχαία μια εικόνα από τον ίδιο κατάλογο όταν γίνεται εναλλαγή "
-"φόντου."
+"Τυχαία επιλογή εικόνας από τον ίδιο κατάλογο όταν γίνεται εναλλαγή φόντου."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:1
 msgid "Left"
@@ -494,7 +493,7 @@ msgstr "Πλήκτρο εναλλα_γής:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:31
 msgid "Sh_ow application icons in menu"
-msgstr "Εμφάνιση εικ_ονιδίων εφραρμογών στο μενού"
+msgstr "Εμφάνιση εικ_ονιδίων εφαρμογών στο μενού"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:32
 msgid "Show workspace _names in list"
@@ -506,7 +505,7 @@ msgstr "Χρή_ση υπομενού για τα παράθυρα σε κάθε 
 
 #: ../settings/xfdesktop-settings-ui.glade.h:34
 msgid "Show s_ticky windows only in active workspace"
-msgstr "Εμφάνιση s_ticky παραθύρων μόνο στην ενεργή περιοχή εργασίας"
+msgstr "Εμφάνιση συ_γκόλλησης παραθύρων μόνο στην ενεργή περιοχή εργασίας"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:35
 msgid "Show a_dd and remove workspace options in list"
@@ -710,7 +709,7 @@ msgstr "Δομημένο με το GTK+ %d.%d.%d, συνδεδεμένο με τ
 #: ../src/xfdesktop-application.c:877
 #, c-format
 msgid "Build options:\n"
-msgstr "Επιλογές build:\n"
+msgstr "Επιλογές δόμησης:\n"
 
 #: ../src/xfdesktop-application.c:878
 #, c-format
@@ -746,14 +745,14 @@ msgstr "Δεν ήταν δυνατή η δημιουργία του φακέλο
 #: ../src/xfdesktop-file-icon-manager.c:559
 #: ../src/xfdesktop-file-icon-manager.c:577
 msgid "Desktop Folder Error"
-msgstr "Σφάλμα φακέλου επιφάνεια εργασίας"
+msgstr "Σφάλμα φακέλου επιφάνειας εργασίας"
 
 #: ../src/xfdesktop-file-icon-manager.c:579
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr ""
-"Ένα κανονικό αρχείο με το ίδιο όνομα υπάρχει ήδη. Παρακαλούμε να το "
-"διαγράψετε ή να το μετονομάσετε."
+"Ένα κανονικό αρχείο με το ίδιο όνομα υπάρχει ήδη. Παρακαλώ διαγράψετε ή "
+"μετονομάσετε το."
 
 #: ../src/xfdesktop-file-icon-manager.c:663 ../src/xfdesktop-file-utils.c:757
 #: ../src/xfdesktop-file-utils.c:821
@@ -856,7 +855,7 @@ msgstr "Επικόλληση μέσα στον φάκελο"
 
 #: ../src/xfdesktop-file-icon-manager.c:1747
 msgid "Mo_ve to Trash"
-msgstr "Μετα_κίνηση στον κάδο ανακύκλωσης"
+msgstr "Μετα_κίνηση στα απορρίμματα"
 
 #: ../src/xfdesktop-file-icon-manager.c:1759
 msgid "_Delete"
@@ -872,11 +871,11 @@ msgstr "Άνοιγμ_α σε νέο παράθυρο"
 
 #: ../src/xfdesktop-file-icon-manager.c:1851
 msgid "Arrange Desktop _Icons"
-msgstr "_Τακτοποίηση Εικονιδίων στην Επιφάνεια Εργασίας"
+msgstr "_Τακτοποίηση εικονιδίων στην επιφάνεια εργασίας"
 
 #: ../src/xfdesktop-file-icon-manager.c:1861
 msgid "_Next Background"
-msgstr "Ε_πόμενο Παρασκήνιο"
+msgstr "Ε_πόμενο φόντο"
 
 #: ../src/xfdesktop-file-icon-manager.c:1871
 msgid "Desktop _Settings..."
@@ -931,7 +930,7 @@ msgstr "Χθες στις %X"
 #: ../src/xfdesktop-file-utils.c:168
 #, c-format
 msgid "%A at %X"
-msgstr "% A στις %X"
+msgstr "%A στις %X"
 
 #. Any other date
 #: ../src/xfdesktop-file-utils.c:171
@@ -1000,7 +999,7 @@ msgstr ""
 
 #: ../src/xfdesktop-file-utils.c:992
 msgid "Could not empty the trash"
-msgstr "Δεν θα μπορεί να αδειάσει ο κάδος απορριμμάτων"
+msgstr "Δεν μπορεί να αδειάσει ο κάδος απορριμμάτων"
 
 #: ../src/xfdesktop-file-utils.c:1046
 msgid "Create File Error"
@@ -1033,11 +1032,11 @@ msgstr "Το αρχείο δεν ήταν δυνατόν να ανοιχθεί"
 #: ../src/xfdesktop-file-utils.c:1292 ../src/xfdesktop-file-utils.c:1316
 #, c-format
 msgid "Failed to run \"%s\""
-msgstr "Η εκτέλεση του \"%s\" απέτυχε"
+msgstr "Απέτυχε η εκτέλεση του \"%s\""
 
 #: ../src/xfdesktop-file-utils.c:1382
 msgid "The application chooser could not be opened"
-msgstr "Ο επιλογέας εφαρμογών δεν μπορούσε να εκτελεστεί"
+msgstr "Ο επιλογέας εφαρμογών δεν μπόρεσε να ανοίξει"
 
 #: ../src/xfdesktop-file-utils.c:1441 ../src/xfdesktop-file-utils.c:1456
 #: ../src/xfdesktop-file-utils.c:1519 ../src/xfdesktop-file-utils.c:1536
@@ -1047,7 +1046,7 @@ msgstr "Σφάλμα μεταφοράς"
 #: ../src/xfdesktop-file-utils.c:1442 ../src/xfdesktop-file-utils.c:1457
 #: ../src/xfdesktop-file-utils.c:1520 ../src/xfdesktop-file-utils.c:1537
 msgid "The file transfer could not be performed"
-msgstr "Η μεταφορά αρχείων δεν θα μπορούσε να πραγματοποιηθεί"
+msgstr "Η μεταφορά αρχείων δεν μπόρεσε να πραγματοποιηθεί"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:127
@@ -1061,8 +1060,8 @@ msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the"
 " media or disconnect the drive"
 msgstr ""
-"Η συσκευή \\ \"% s \" αποπροσαρτείται από το σύστημα. Παρακαλώ μην "
-"αφαιρέσετε το μέσο ή αποσυνδέσετε τη συσκευή"
+"Γίνεται αποπροσάρτηση της συσκευής \"%s\" από το σύστημα. Παρακαλώ μην "
+"αφαιρέσετε το μέσο ή αποσυνδέσετε τον δίσκο"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:137 ../src/xfdesktop-notify.c:322
@@ -1076,8 +1075,8 @@ msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be"
 " removed. Please do not remove the media or disconnect the drive"
 msgstr ""
-"Υπάρχουν δεδομένα που πρέπει να εγγραφούν στη συσκευή \"%s\" πριν να μπορεί "
-"να αφαιρεθεί. Παρακαλώ μην αφαιρέσετε το μέσο ή αποσυνδέσετε τη συσκευή"
+"Πρέπει να εγγραφούν δεδομένα στη συσκευή \"%s\" πριν την αφαίρεση της. "
+"Παρακαλώ μην αφαιρέσετε το μέσο ή αποσυνδέσετε τον δίσκο"
 
 #: ../src/xfdesktop-notify.c:221
 msgid "Unmount Finished"
