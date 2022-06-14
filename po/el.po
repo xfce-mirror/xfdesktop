@@ -308,7 +308,7 @@ msgstr "Επιλογή δεύτερου χρώματος"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
 msgid "Apply to all _workspaces"
-msgstr "Εφαρμογή σε όλες τις επιφάνειες εργασίας"
+msgstr "Εφαρμογή σε όλoυς τους χώρους ερ_γασίας"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
 msgid "_Folder:"
@@ -451,7 +451,7 @@ msgstr "Ενεργοποίηση της επιλογής \"Διαγραφή\" σ
 
 #: ../settings/xfdesktop-settings-ui.glade.h:23
 msgid "Include applications menu on _desktop right click"
-msgstr "Εμφάνιση μενού εφαρμογών στο δεξί κλικ στην επιφάνεια εργασίας"
+msgstr "Εμφάνιση μενού εφαρμογών στο _δεξί κλικ στην επιφάνεια εργασίας"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:24
 msgid "_Button:"
@@ -491,19 +491,19 @@ msgstr "Εμφάνιση εικ_ονιδίων εφαρμογών στο μεν�
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
 msgid "Show workspace _names in list"
-msgstr "Εμφάνιση ο_νομάτων περιοχών εργασίας στη λίστα"
+msgstr "Εμφάνιση ο_νομάτων των χώρων εργασίας στη λίστα"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:34
 msgid "Use _submenus for the windows in each workspace"
-msgstr "Χρή_ση υπομενού για τα παράθυρα σε κάθε περιοχή εργασίας"
+msgstr "Χρή_ση υπομενού στα παράθυρα για κάθε χώρο εργασίας"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:35
 msgid "Show s_ticky windows only in active workspace"
-msgstr "Εμφάνιση συ_γκόλλησης παραθύρων μόνο στην ενεργή περιοχή εργασίας"
+msgstr "Εμφάνιση συ_γκόλλησης παραθύρων μόνο στον ενεργό χώρο εργασίας"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid "Show a_dd and remove workspace options in list"
-msgstr "Εμφάνιση των επιλογών _προσθήκης και αφαίρεσης χώρων εργασίας στη λίστα"
+msgstr "Εμφάνιση των επιλογών _προσθήκης και αφαίρεσης των χώρων εργασίας στη λίστα"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "<b>Window List Menu</b>"
@@ -511,7 +511,7 @@ msgstr "<b>Μενού λίστας παραθύρων</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:38
 msgid "_Menus"
-msgstr "_Μενού"
+msgstr "Μ_ενού"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:39
 msgid "Icon _type:"
@@ -519,7 +519,7 @@ msgstr "_Τύπος εικονιδίου:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:40
 msgid "Icon _size:"
-msgstr "Μέγεθος ε_ικονιδίου:"
+msgstr "Μέ_γεθος εικονιδίου:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:41
 msgid "48"
@@ -569,7 +569,7 @@ msgstr "Εμφάνιση κρυφών αρχείων"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:52
 msgid "Single _click to activate items"
-msgstr "Μονό _κλικ για ενεργοποίηση αντικειμένων"
+msgstr "Μονό κλικ για ενε_ργοποίηση αντικειμένων"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:53
 msgid "<b>Appearance</b>"
@@ -597,7 +597,7 @@ msgstr "Αφαίρεση του χώρου εργασίας %d"
 msgid ""
 "Do you really want to remove workspace %d?\n"
 "Note: You are currently on workspace %d."
-msgstr "Θέλετε σίγουρα να αφαιρέσετε το χώρο εργασίας %d;\nΣημείωση: Τώρα βρίσκεστε στο χώρο εργασίας %d."
+msgstr "Θέλετε σίγουρα να αφαιρέσετε το %d;\nΣημείωση: Τώρα βρίσκεστε στο %d."
 
 #: ../src/windowlist.c:78
 #, c-format
@@ -609,7 +609,7 @@ msgstr "Αφαίρεση του χώρου εργασίας '%s'"
 msgid ""
 "Do you really want to remove workspace '%s'?\n"
 "Note: You are currently on workspace '%s'."
-msgstr "Θέλετε σίγουρα να αφαιρέσετε το χώρο εργασίας %s;\nΣημείωση: Τώρα βρίσκεστε στο χώρο εργασίας %s."
+msgstr "Θέλετε σίγουρα να αφαιρέσετε το %s;\nΣημείωση: Τώρα βρίσκεστε στο %s."
 
 #. Popup a dialog box confirming that the user wants to remove a
 #. * workspace
@@ -650,7 +650,7 @@ msgstr "Επαναφόρτωση όλων των ρυθμίσεων"
 
 #: ../src/xfdesktop-application.c:836
 msgid "Advance to the next wallpaper on the current workspace"
-msgstr "Εμφάνιση επόμενου φόντου στον τρέχοντα χώρο εργασίας"
+msgstr "Μετάβαση στο επόμενο φόντο στο τρέχοντα χώρο εργασίας"
 
 #: ../src/xfdesktop-application.c:837
 msgid "Pop up the menu (at the current mouse position)"
@@ -670,11 +670,11 @@ msgstr "Απενεργοποίηση μηνυμάτων αποσφαλμάτωσ
 
 #: ../src/xfdesktop-application.c:844
 msgid "Do not wait for a window manager on startup"
-msgstr "Να μην αναμένει για ένα διαχειριστή παραθύρων κατά την έναρξη"
+msgstr "Χωρίς αναμονή για διαχειριστή παραθύρων στην έναρξη"
 
 #: ../src/xfdesktop-application.c:845
 msgid "Cause xfdesktop to quit"
-msgstr "Προκαλεί τον τερματισμό του xfdesktop"
+msgstr "Αιτία τερματισμού του xfdesktop"
 
 #: ../src/xfdesktop-application.c:860
 #, c-format
