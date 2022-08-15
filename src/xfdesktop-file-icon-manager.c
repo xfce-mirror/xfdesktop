@@ -3684,8 +3684,10 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
 
         g_free(exo_desktop_item_edit);
     } else if(info == TARGET_APPLICATION_OCTET_STREAM) {
+        const gchar *folder;
         gchar *filename;
         gchar *filepath;
+        gchar *tmp;
         gint length;
         const gchar *content;
         GFile *dest;
@@ -3702,9 +3704,15 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
             filename = g_strdup(_("Untitled document"));
         }
 
-        filepath = g_strdup_printf ("%s/%s",
-                                    g_get_user_special_dir(G_USER_DIRECTORY_DESKTOP),
-                                    filename);
+        folder = g_get_user_special_dir(G_USER_DIRECTORY_DESKTOP);
+
+        /* get unique filename in case of duplicate */
+        tmp = xfdesktop_file_utils_next_new_file_name(filename, folder);
+        g_free(filename);
+        filename = tmp;
+        tmp = NULL;
+
+        filepath = g_strdup_printf("%s/%s", folder, filename);
 
         dest = g_file_new_for_path(filepath);
         out = g_file_create(dest, G_FILE_CREATE_NONE, NULL, NULL);

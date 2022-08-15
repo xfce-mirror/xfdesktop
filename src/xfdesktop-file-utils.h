@@ -38,6 +38,8 @@ GKeyFile *xfdesktop_file_utils_query_key_file(GFile *file,
                                               GError **error);
 gchar *xfdesktop_file_utils_get_display_name(GFile *file,
                                              GFileInfo *info);
+gchar* xfdesktop_file_utils_next_new_file_name(const gchar *filename,
+                                               const gchar *folder);
 
 GList *xfdesktop_file_utils_file_icon_list_to_file_list(GList *icon_list);
 GList *xfdesktop_file_utils_file_list_from_string(const gchar *string);
