@@ -275,7 +275,7 @@ xfdesktop_file_utils_get_display_name(GFile *file,
  * filename will be 'file (copy 1)'.
  *
  * The caller is responsible to free the returned string using g_free() when no longer needed.
- * 
+ *
  * Code extracted and adapted from on thunar_util_next_new_file_name.
  *
  * Return value: pointer to the new filename.
