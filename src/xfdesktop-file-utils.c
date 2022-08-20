@@ -256,6 +256,62 @@ xfdesktop_file_utils_get_display_name(GFile *file,
     return display_name;
 }
 
+/**
+ * xfdesktop_file_utils_next_new_file_name
+ * @filename : the filename which will be used as the basis/default
+ * @folder : the directory to search for a free filename
+ *
+ * Returns a filename that is like @filename with the possible addition of
+ * a number to differentiate it from other similarly named files. In other words
+ * it searches @folder for incrementally named files starting from @file_name
+ * and returns the first available increment.
+ *
+ * e.g. in a folder with the following files:
+ * - file
+ * - empty
+ * - file_copy
+ *
+ * Calling this functions with the above folder and @filename equal to 'file' the returned
+ * filename will be 'file (copy 1)'.
+ *
+ * The caller is responsible to free the returned string using g_free() when no longer needed.
+ *
+ * Code extracted and adapted from on thunar_util_next_new_file_name.
+ *
+ * Return value: pointer to the new filename.
+ **/
+gchar*
+xfdesktop_file_utils_next_new_file_name(const gchar *filename,
+                                        const gchar *folder)
+{
+  unsigned long   file_name_size  = strlen(filename);
+  unsigned        count           = 0;
+  gboolean        found_duplicate = FALSE;
+  gchar          *extension       = NULL;
+  gchar          *new_name        = g_strdup(filename);
+
+  extension = strrchr(filename, '.');
+  if (!extension || extension == filename)
+    extension = "";
+  else
+    file_name_size -= strlen(extension);
+
+  /* loop until new_name is unique */
+  while(TRUE)
+    {
+      GFile *file = g_file_new_build_filename(folder, new_name, NULL);
+      found_duplicate = g_file_query_exists(file, NULL);
+      g_object_unref(file);
+
+      if (!found_duplicate)
+        break;
+      g_free(new_name);
+      new_name = g_strdup_printf(_("%.*s (copy %u)%s"), (int) file_name_size, filename, ++count, extension ? extension : "");
+    }
+
+  return new_name;
+}
+
 GList *
 xfdesktop_file_utils_file_icon_list_to_file_list(GList *icon_list)
 {
