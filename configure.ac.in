@@ -106,6 +106,20 @@ else
 fi
 AM_CONDITIONAL([ENABLE_DESKTOP_ICONS], [test "x$enable_desktop_icons" = "xyes"])
 
+AC_ARG_ENABLE([use-patched-dm-accountservice-dbus-api],
+    [AS_HELP_STRING([--disable-patched-dm-accountservice-dbus-api],
+            [Do not compile in support for patched dm-accountservice dbus api (default=enabled)])],
+        [ac_cv_enable_patched_dm_accountservice_dbus_api=$enableval],
+        [ac_cv_enable_patched_dm_accountservice_dbus_api=yes])
+if test "x$ac_cv_enable_patched_dm_accountservice_dbus_api" = "xno"; then
+    enable_patched_dm_accountservice_dbus_api="no"
+else
+    enable_patched_dm_accountservice_dbus_api="yes"
+    AC_DEFINE([USE_PATCHED_DM_ACCOUNTSERVICE_DBUS_API], [1], [Set if patched accountsservice integration support is enabled])
+fi
+AM_CONDITIONAL([USE_PATCHED_DM_ACCOUNTSERVICE_DBUS_API], [test "x$enable_patched_dm_accountservice_dbus_api" = "xyes"])
+
+
 dnl if we want desktop icons, do we also want file icons?
 AC_ARG_ENABLE([file-icons],
     [AS_HELP_STRING([--disable-file-icons],
@@ -203,6 +217,7 @@ AC_OUTPUT
 echo
 echo "Build Configuration:"
 echo "* Build desktop menu module:                    $build_desktop_menu"
+echo "* Build support for ubuntu accountsservice integration: $enable_ubuntu_accountsservice_integration"
 echo "* Build support for desktop icons:              $enable_desktop_icons"
 echo "      Include support for file/launcher icons:  $enable_file_icons"
 if test x"$LIBNOTIFY_FOUND" = x"yes"; then
