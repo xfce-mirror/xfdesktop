@@ -1682,6 +1682,7 @@ xfce_desktop_set_icon_size(XfceDesktop *desktop,
 #endif
 }
 
+#ifdef ENABLE_DESKTOP_ICONS
 void
 xfce_desktop_set_primary(XfceDesktop *desktop,
                            gboolean primary)
@@ -1698,6 +1699,7 @@ xfce_desktop_set_primary(XfceDesktop *desktop,
                                         primary);
     }
 }
+#endif
 
 void
 xfce_desktop_set_icon_font_size(XfceDesktop *desktop,
