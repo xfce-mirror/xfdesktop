@@ -71,8 +71,6 @@ XDT_I18N([@LINGUAS@])
 dnl Check for X11 installed
 XDT_CHECK_LIBX11_REQUIRE
 
-AC_PATH_PROGS([XDT_CSOURCE], [xdt-csource exo-csource])
-
 dnl define xfdesktop's short version (major.minor)
 AC_DEFINE([XFDESKTOP_VERSION_SHORT], [xfdesktop_version_short], [Short version string of xfdesktop])
 dnl replace the version in settings/xfce-backdrop-settings.desktop.in.in

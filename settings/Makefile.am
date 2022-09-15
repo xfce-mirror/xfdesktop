@@ -46,7 +46,7 @@ BUILT_SOURCES = \
 SUFFIXES: .ui
 
 %-ui.h: $(srcdir)/%-ui.glade Makefile
-	$(AM_V_GEN) $(XDT_CSOURCE) --static --name=`basename $< .glade | $(SED) -e 's/-/_/g'`  $< >$@
+	$(AM_V_GEN) xdt-csource --static --name=`basename $< .glade | $(SED) -e 's/-/_/g'`  $< >$@
 
 endif
 
