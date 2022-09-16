@@ -29,11 +29,7 @@
 
 #include <xfconf/xfconf.h>
 
-G_BEGIN_DECLS
-
 void menu_init(XfconfChannel *channel);
 GtkMenuShell *menu_populate(GtkMenuShell *menu, gint scale_factor);
-
-G_END_DECLS
 
 #endif
