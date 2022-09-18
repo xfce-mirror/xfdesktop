@@ -1397,15 +1397,16 @@ static void
 display_chooser_cb (GObject *source_object, GAsyncResult *res, gpointer user_data)
 {
     GError *error = NULL;
-    if (!xfdesktop_file_manager_call_display_chooser_dialog_finish(XFDESKTOP_FILE_MANAGER(source_object), res, &error))
+    if (!xfdesktop_file_manager_call_display_application_chooser_dialog_finish(XFDESKTOP_FILE_MANAGER(source_object), res, &error))
         xfdesktop_file_utils_async_handle_error(error, user_data);
 }
 
 void
-xfdesktop_file_utils_display_chooser_dialog(GFile *file,
-                                            gboolean open,
-                                            GdkScreen *screen,
-                                            GtkWindow *parent)
+xfdesktop_file_utils_display_app_chooser_dialog(GFile *file,
+                                                gboolean open,
+                                                gboolean preselect_default_checkbox,
+                                                GdkScreen *screen,
+                                                GtkWindow *parent)
 {
     XfdesktopFileManager *fileman_proxy;
 
@@ -1423,13 +1424,14 @@ xfdesktop_file_utils_display_chooser_dialog(GFile *file,
 
         xfdesktop_file_utils_set_window_cursor(parent, GDK_WATCH);
 
-        xfdesktop_file_manager_call_display_chooser_dialog(fileman_proxy,
-                                                           uri, open,
-                                                           display_name,
-                                                           startup_id,
-                                                           NULL,
-                                                           display_chooser_cb,
-                                                           parent);
+        xfdesktop_file_manager_call_display_application_chooser_dialog(fileman_proxy,
+                                                                       uri, open,
+                                                                       preselect_default_checkbox,
+                                                                       display_name,
+                                                                       startup_id,
+                                                                       NULL,
+                                                                       display_chooser_cb,
+                                                                       parent);
 
         xfdesktop_file_utils_set_window_cursor(parent, GDK_LEFT_PTR);
 
