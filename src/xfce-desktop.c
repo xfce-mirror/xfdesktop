@@ -1199,10 +1199,10 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
     /* Watch for single workspace setting changes */
     xfconf_g_property_bind(desktop->priv->channel,
-                           SINGLE_WORKSPACE_MODE, G_TYPE_BOOLEAN,
+                           XFCONF_SINGLE_WORKSPACE_MODE, G_TYPE_BOOLEAN,
                            G_OBJECT(desktop), PROPERTY_SINGLE_WORKSPACE_MODE);
     xfconf_g_property_bind(desktop->priv->channel,
-                           SINGLE_WORKSPACE_NUMBER, G_TYPE_INT,
+                           XFCONF_SINGLE_WORKSPACE_NUMBER, G_TYPE_INT,
                            G_OBJECT(desktop), PROPERTY_SINGLE_WORKSPACE_NUMBER);
 
     /* watch for workspace changes */
@@ -1481,19 +1481,19 @@ xfce_desktop_connect_settings(XfceDesktop *desktop)
 
     xfce_desktop_freeze_updates(desktop);
 
-    xfconf_g_property_bind(channel, DESKTOP_ICONS_STYLE,
+    xfconf_g_property_bind(channel, XFCONF_DESKTOP_ICONS_STYLE,
                            XFCE_TYPE_DESKTOP_ICON_STYLE,
                            G_OBJECT(desktop), PROPERTY_ICON_STYLE);
-    xfconf_g_property_bind(channel, DESKTOP_ICONS_ICON_SIZE, G_TYPE_UINT,
+    xfconf_g_property_bind(channel, XFCONF_DESKTOP_ICONS_ICON_SIZE, G_TYPE_UINT,
                            G_OBJECT(desktop), PROPERTY_ICON_SIZE);
-    xfconf_g_property_bind(channel, DESKTOP_ICONS_ON_PRIMARY, G_TYPE_BOOLEAN,
+    xfconf_g_property_bind(channel, XFCONF_DESKTOP_ICONS_ON_PRIMARY, G_TYPE_BOOLEAN,
                            G_OBJECT(desktop), PROPERTY_ICON_ON_PRIMARY);
-    xfconf_g_property_bind(channel, DESKTOP_ICONS_FONT_SIZE, G_TYPE_UINT,
+    xfconf_g_property_bind(channel, XFCONF_DESKTOP_ICONS_FONT_SIZE, G_TYPE_UINT,
                            G_OBJECT(desktop), PROPERTY_ICON_FONT_SIZE);
-    xfconf_g_property_bind(channel, DESKTOP_ICONS_CUSTOM_FONT_SIZE,
+    xfconf_g_property_bind(channel, XFCONF_DESKTOP_ICONS_CUSTOM_FONT_SIZE,
                            G_TYPE_BOOLEAN,
                            G_OBJECT(desktop), PROPERTY_ICON_FONT_SIZE_SET);
-    xfconf_g_property_bind(channel, DESKTOP_ICONS_CENTER_TEXT,
+    xfconf_g_property_bind(channel, XFCONF_DESKTOP_ICONS_CENTER_TEXT,
                            G_TYPE_BOOLEAN,
                            G_OBJECT(desktop), PROPERTY_ICON_CENTER_TEXT);
 
