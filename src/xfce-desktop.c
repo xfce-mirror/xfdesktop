@@ -1464,29 +1464,27 @@ static void
 xfce_desktop_connect_settings(XfceDesktop *desktop)
 {
 #ifdef ENABLE_DESKTOP_ICONS
-#define ICONS_PREFIX "/desktop-icons/"
     XfconfChannel *channel = desktop->priv->channel;
 
     xfce_desktop_freeze_updates(desktop);
 
-    xfconf_g_property_bind(channel, ICONS_PREFIX "style",
+    xfconf_g_property_bind(channel, DESKTOP_ICONS_STYLE,
                            XFCE_TYPE_DESKTOP_ICON_STYLE,
                            G_OBJECT(desktop), "icon-style");
-    xfconf_g_property_bind(channel, ICONS_PREFIX "icon-size", G_TYPE_UINT,
+    xfconf_g_property_bind(channel, DESKTOP_ICONS_ICON_SIZE, G_TYPE_UINT,
                            G_OBJECT(desktop), "icon-size");
-    xfconf_g_property_bind(channel, ICONS_PREFIX "primary", G_TYPE_BOOLEAN,
+    xfconf_g_property_bind(channel, DESKTOP_ICONS_ON_PRIMARY, G_TYPE_BOOLEAN,
                            G_OBJECT(desktop), "primary");
-    xfconf_g_property_bind(channel, ICONS_PREFIX "font-size", G_TYPE_UINT,
+    xfconf_g_property_bind(channel, DESKTOP_ICONS_FONT_SIZE, G_TYPE_UINT,
                            G_OBJECT(desktop), "icon-font-size");
-    xfconf_g_property_bind(channel, ICONS_PREFIX "use-custom-font-size",
+    xfconf_g_property_bind(channel, DESKTOP_ICONS_CUSTOM_FONT_SIZE,
                            G_TYPE_BOOLEAN,
                            G_OBJECT(desktop), "icon-font-size-set");
-    xfconf_g_property_bind(channel, ICONS_PREFIX "center-text",
+    xfconf_g_property_bind(channel, DESKTOP_ICONS_CENTER_TEXT,
                            G_TYPE_BOOLEAN,
                            G_OBJECT(desktop), "icon-center-text");
 
     xfce_desktop_thaw_updates(desktop);
-#undef ICONS_PREFIX
 #endif
 }
 
