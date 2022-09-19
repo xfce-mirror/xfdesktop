@@ -67,26 +67,27 @@ xfdesktop_CFLAGS = \
 	-I$(top_srcdir) \
 	-I$(top_srcdir)/common	\
 	-I$(top_builddir)/common \
-	-DWNCK_I_KNOW_THIS_IS_UNSTABLE \
 	-DBINDIR=\"$(bindir)\" \
 	-DLOCALEDIR=\"$(localedir)\" \
 	-DDATADIR=\"$(datadir)\" \
 	-DSYSCONFDIR=\"$(sysconfdir)\" \
 	-DXFCEMODDIR=\"$(libdir)/xfce4/modules\" \
-        $(GIO_CFLAGS) \
+	$(GIO_CFLAGS) \
 	$(GIO_UNIX_CFLAGS) \
-        $(GLIB_CFLAGS) \
+	$(GLIB_CFLAGS) \
 	$(GTHREAD_CFLAGS) \
-        $(GTK_CFLAGS) \
+	$(GTK_CFLAGS) \
 	$(LIBNOTIFY_CFLAGS) \
 	$(LIBX11_CFLAGS) \
 	$(LIBXFCE4UTIL_CFLAGS) \
 	$(LIBXFCE4UI_CFLAGS) \
+	$(LIBXFCE4WINDOWING_CFLAGS) \
+	$(LIBXFCE4WINDOWINGUI_CFLAGS) \
 	$(LIBXFCE4SMCLIENT_PRIVATE_CFLAGS) \
-	$(LIBWNCK_CFLAGS) \
 	$(XFCONF_CFLAGS) \
 	-DEXO_API_SUBJECT_TO_CHANGE \
-	$(LIBEXO_CFLAGS)
+	$(LIBEXO_CFLAGS) \
+	$(GTK_LAYER_SHELL_CFLAGS)
 
 xfdesktop_LDFLAGS = \
 	-export-dynamic
@@ -94,20 +95,22 @@ xfdesktop_LDFLAGS = \
 # cygwin link order requires this split
 xfdesktop_LDADD = $(top_builddir)/common/libxfdesktop.la
 xfdesktop_LDADD += \
-        $(GIO_LIBS) \
+	$(GIO_LIBS) \
 	$(GIO_UNIX_LIBS) \
-        $(GLIB_LIBS) \
+	$(GLIB_LIBS) \
 	$(GTHREAD_LIBS) \
-        $(GTK_LIBS) \
+	$(GTK_LIBS) \
 	$(LIBNOTIFY_LIBS) \
 	$(LIBX11_LDFLAGS) \
 	$(LIBX11_LIBS) \
 	$(LIBXFCE4UTIL_LIBS) \
 	$(LIBXFCE4UI_LIBS) \
+	$(LIBXFCE4WINDOWING_LIBS) \
+	$(LIBXFCE4WINDOWINGUI_LIBS) \
 	$(LIBXFCE4SMCLIENT_PRIVATE_LIBS) \
-	$(LIBWNCK_LIBS) \
 	$(XFCONF_LIBS) \
 	$(LIBEXO_LIBS) \
+	$(GTK_LAYER_SHELL_LIBS) \
 	-lm
 
 if BUILD_DESKTOP_MENU
