@@ -149,6 +149,17 @@ enum
     PROP_SINGLE_WORKSPACE_NUMBER,
 };
 
+/* property / param names -- used for property <-> xfconf mapping */
+#define PROPERTY_ICON_STYLE               "icon-style"
+#define PROPERTY_ICON_SIZE                "icon-size"
+#define PROPERTY_ICON_FONT_SIZE           "icon-font-size"
+#define PROPERTY_ICON_FONT_SIZE_SET       "icon-font-size-set"
+#define PROPERTY_ICON_CENTER_TEXT         "icon-center-text"
+#define PROPERTY_ICON_ON_PRIMARY          "primary"
+
+#define PROPERTY_SINGLE_WORKSPACE_MODE    "single-workspace-mode"
+#define PROPERTY_SINGLE_WORKSPACE_NUMBER  "single-workspace-number"
+
 
 static void xfce_desktop_finalize(GObject *object);
 static void xfce_desktop_set_property(GObject *object,
@@ -927,7 +938,7 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
 
 #ifdef ENABLE_DESKTOP_ICONS
     g_object_class_install_property(gobject_class, PROP_ICON_STYLE,
-                                    g_param_spec_enum("icon-style",
+                                    g_param_spec_enum(PROPERTY_ICON_STYLE,
                                                       "icon style",
                                                       "icon style",
                                                       XFCE_TYPE_DESKTOP_ICON_STYLE,
@@ -939,35 +950,35 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
                                                       XFDESKTOP_PARAM_FLAGS));
 
     g_object_class_install_property(gobject_class, PROP_ICON_SIZE,
-                                    g_param_spec_uint("icon-size",
+                                    g_param_spec_uint(PROPERTY_ICON_SIZE,
                                                       "icon size",
                                                       "icon size",
                                                       8, 192, DEFAULT_ICON_SIZE,
                                                       XFDESKTOP_PARAM_FLAGS));
 
     g_object_class_install_property(gobject_class, PROP_ICON_ON_PRIMARY,
-                                    g_param_spec_boolean("primary",
+                                    g_param_spec_boolean(PROPERTY_ICON_ON_PRIMARY,
                                                          "primary",
                                                          "show icons on primary desktop",
                                                          FALSE,
                                                          XFDESKTOP_PARAM_FLAGS));
 
     g_object_class_install_property(gobject_class, PROP_ICON_FONT_SIZE,
-                                    g_param_spec_uint("icon-font-size",
+                                    g_param_spec_uint(PROPERTY_ICON_FONT_SIZE,
                                                       "icon font size",
                                                       "icon font size",
                                                       0, 144, 12,
                                                       XFDESKTOP_PARAM_FLAGS));
 
     g_object_class_install_property(gobject_class, PROP_ICON_FONT_SIZE_SET,
-                                    g_param_spec_boolean("icon-font-size-set",
+                                    g_param_spec_boolean(PROPERTY_ICON_FONT_SIZE,
                                                          "icon font size set",
                                                          "icon font size set",
                                                          FALSE,
                                                          XFDESKTOP_PARAM_FLAGS));
 
     g_object_class_install_property(gobject_class, PROP_ICON_CENTER_TEXT,
-                                    g_param_spec_boolean("icon-center-text",
+                                    g_param_spec_boolean(PROPERTY_ICON_CENTER_TEXT,
                                                          "icon center text",
                                                          "icon center text",
                                                          TRUE,
@@ -976,14 +987,14 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
 #endif /* ENABLE_DESKTOP_ICONS */
 
     g_object_class_install_property(gobject_class, PROP_SINGLE_WORKSPACE_MODE,
-                                    g_param_spec_boolean("single-workspace-mode",
+                                    g_param_spec_boolean(PROPERTY_SINGLE_WORKSPACE_MODE,
                                                          "single-workspace-mode",
                                                          "single-workspace-mode",
                                                          TRUE,
                                                          XFDESKTOP_PARAM_FLAGS));
 
     g_object_class_install_property(gobject_class, PROP_SINGLE_WORKSPACE_NUMBER,
-                                    g_param_spec_int("single-workspace-number",
+                                    g_param_spec_int(PROPERTY_SINGLE_WORKSPACE_NUMBER,
                                                      "single-workspace-number",
                                                      "single-workspace-number",
                                                      0, G_MAXINT16, 0,
@@ -1189,10 +1200,10 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     /* Watch for single workspace setting changes */
     xfconf_g_property_bind(desktop->priv->channel,
                            SINGLE_WORKSPACE_MODE, G_TYPE_BOOLEAN,
-                           G_OBJECT(desktop), "single-workspace-mode");
+                           G_OBJECT(desktop), PROPERTY_SINGLE_WORKSPACE_MODE);
     xfconf_g_property_bind(desktop->priv->channel,
                            SINGLE_WORKSPACE_NUMBER, G_TYPE_INT,
-                           G_OBJECT(desktop), "single-workspace-number");
+                           G_OBJECT(desktop), PROPERTY_SINGLE_WORKSPACE_NUMBER);
 
     /* watch for workspace changes */
     g_signal_connect(desktop->priv->wnck_screen, "active-workspace-changed",
@@ -1472,19 +1483,19 @@ xfce_desktop_connect_settings(XfceDesktop *desktop)
 
     xfconf_g_property_bind(channel, DESKTOP_ICONS_STYLE,
                            XFCE_TYPE_DESKTOP_ICON_STYLE,
-                           G_OBJECT(desktop), "icon-style");
+                           G_OBJECT(desktop), PROPERTY_ICON_STYLE);
     xfconf_g_property_bind(channel, DESKTOP_ICONS_ICON_SIZE, G_TYPE_UINT,
-                           G_OBJECT(desktop), "icon-size");
+                           G_OBJECT(desktop), PROPERTY_ICON_SIZE);
     xfconf_g_property_bind(channel, DESKTOP_ICONS_ON_PRIMARY, G_TYPE_BOOLEAN,
-                           G_OBJECT(desktop), "primary");
+                           G_OBJECT(desktop), PROPERTY_ICON_ON_PRIMARY);
     xfconf_g_property_bind(channel, DESKTOP_ICONS_FONT_SIZE, G_TYPE_UINT,
-                           G_OBJECT(desktop), "icon-font-size");
+                           G_OBJECT(desktop), PROPERTY_ICON_FONT_SIZE);
     xfconf_g_property_bind(channel, DESKTOP_ICONS_CUSTOM_FONT_SIZE,
                            G_TYPE_BOOLEAN,
-                           G_OBJECT(desktop), "icon-font-size-set");
+                           G_OBJECT(desktop), PROPERTY_ICON_FONT_SIZE_SET);
     xfconf_g_property_bind(channel, DESKTOP_ICONS_CENTER_TEXT,
                            G_TYPE_BOOLEAN,
-                           G_OBJECT(desktop), "icon-center-text");
+                           G_OBJECT(desktop), PROPERTY_ICON_CENTER_TEXT);
 
     xfce_desktop_thaw_updates(desktop);
 #endif
