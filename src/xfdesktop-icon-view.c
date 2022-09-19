@@ -31,15 +31,16 @@
 #endif
 
 #include <glib-object.h>
-
-#include <X11/Xlib.h>
-#include <X11/Xatom.h>
-
 #include <gdk/gdk.h>
-#include <gdk/gdkx.h>
 #include <gdk/gdkkeysyms.h>
 #include <gtk/gtk.h>
 #include <exo/exo.h>
+
+#ifdef ENABLE_X11
+#include <X11/Xlib.h>
+#include <X11/Xatom.h>
+#include <gdk/gdkx.h>
+#endif  /* ENABLE_X11 */
 
 #include "xfdesktop-icon-view.h"
 #include "xfdesktop-file-icon-manager.h"
@@ -49,8 +50,8 @@
 #include "xfdesktop-volume-icon.h"
 #include "xfdesktop-common.h"
 
-#include <libwnck/libwnck.h>
 #include <libxfce4ui/libxfce4ui.h>
+#include <libxfce4windowing/libxfce4windowing.h>
 #include <xfconf/xfconf.h>
 
 #define DEFAULT_FONT_SIZE     12
@@ -125,7 +126,6 @@ struct _XfdesktopIconViewPrivate
     gdouble font_size;
     gboolean center_text;
 
-    WnckScreen *wnck_screen;
     PangoLayout *playout;
 
     GList *pending_icons;
@@ -3610,73 +3610,98 @@ xfdesktop_get_workarea_single(XfdesktopIconView *icon_view,
     gboolean ret = FALSE;
     GdkScreen *gscreen;
     GdkDisplay *gdisplay;
-    Display *dpy;
-    Window root;
-    Atom property, actual_type = None;
-    gint actual_format = 0, first_id;
-    gulong nitems = 0, bytes_after = 0, offset = 0, tmp_size = 0;
-    unsigned char *data_p = NULL;
 
     g_return_val_if_fail(xorigin && yorigin
                          && width && height, FALSE);
 
     gscreen = gtk_widget_get_screen(GTK_WIDGET(icon_view));
     gdisplay = gdk_screen_get_display(gscreen);
-    dpy = GDK_DISPLAY_XDISPLAY(gdisplay);
-    root = GDK_WINDOW_XID(gdk_screen_get_root_window(gscreen));
-    property = XInternAtom(dpy, "_NET_WORKAREA", False);
 
-    first_id = ws_num * 4;
+#ifdef ENABLE_X11
+    if (xfw_windowing_get() == XFW_WINDOWING_X11) {
+        Display *dpy;
+        Window root;
+        Atom property, actual_type = None;
+        gint actual_format = 0, first_id;
+        gulong nitems = 0, bytes_after = 0, offset = 0, tmp_size = 0;
+        unsigned char *data_p = NULL;
 
-    gdk_x11_display_error_trap_push(gdisplay);
+        dpy = GDK_DISPLAY_XDISPLAY(gdisplay);
+        root = GDK_WINDOW_XID(gdk_screen_get_root_window(gscreen));
+        property = XInternAtom(dpy, "_NET_WORKAREA", False);
 
-    do {
-        if(Success == XGetWindowProperty(dpy, root, property, offset,
-                                         G_MAXULONG, False, XA_CARDINAL,
-                                         &actual_type, &actual_format, &nitems,
-                                         &bytes_after, &data_p))
-        {
-            gint i;
-            gulong *data;
+        first_id = ws_num * 4;
 
-            if(actual_format != 32 || actual_type != XA_CARDINAL) {
-                XFree(data_p);
-                break;
-            }
+        xfw_windowing_error_trap_push(gdisplay);
 
-            tmp_size = (actual_format / 8) * nitems;
-            if(actual_format == 32) {
-                tmp_size *= sizeof(long)/4;
-            }
+        do {
+            if(Success == XGetWindowProperty(dpy, root, property, offset,
+                                             G_MAXULONG, False, XA_CARDINAL,
+                                             &actual_type, &actual_format, &nitems,
+                                             &bytes_after, &data_p))
+            {
+                gint i;
+                gulong *data;
 
-            data = g_malloc(tmp_size);
-            memcpy(data, data_p, tmp_size);
+                if(actual_format != 32 || actual_type != XA_CARDINAL) {
+                    XFree(data_p);
+                    break;
+                }
 
-            i = offset / 32;  /* first element id in this batch */
+                tmp_size = (actual_format / 8) * nitems;
+                if(actual_format == 32) {
+                    tmp_size *= sizeof(long)/4;
+                }
 
-            /* there's probably a better way to do this. */
-            if(i + (glong)nitems >= first_id && first_id - (glong)offset >= 0)
-                *xorigin = data[first_id - offset] / icon_view->priv->scale_factor + MIN_MARGIN;
-            if(i + (glong)nitems >= first_id + 1 && first_id - (glong)offset + 1 >= 0)
-                *yorigin = data[first_id - offset + 1] / icon_view->priv->scale_factor + MIN_MARGIN;
-            if(i + (glong)nitems >= first_id + 2 && first_id - (glong)offset + 2 >= 0)
-                *width = data[first_id - offset + 2] / icon_view->priv->scale_factor - 2 * MIN_MARGIN;
-            if(i + (glong)nitems >= first_id + 3 && first_id - (glong)offset + 3 >= 0) {
-                *height = data[first_id - offset + 3] / icon_view->priv->scale_factor - 2 * MIN_MARGIN;
-                ret = TRUE;
+                data = g_malloc(tmp_size);
+                memcpy(data, data_p, tmp_size);
+
+                i = offset / 32;  /* first element id in this batch */
+
+                /* there's probably a better way to do this. */
+                if(i + (glong)nitems >= first_id && first_id - (glong)offset >= 0)
+                    *xorigin = data[first_id - offset] / icon_view->priv->scale_factor + MIN_MARGIN;
+                if(i + (glong)nitems >= first_id + 1 && first_id - (glong)offset + 1 >= 0)
+                    *yorigin = data[first_id - offset + 1] / icon_view->priv->scale_factor + MIN_MARGIN;
+                if(i + (glong)nitems >= first_id + 2 && first_id - (glong)offset + 2 >= 0)
+                    *width = data[first_id - offset + 2] / icon_view->priv->scale_factor - 2 * MIN_MARGIN;
+                if(i + (glong)nitems >= first_id + 3 && first_id - (glong)offset + 3 >= 0) {
+                    *height = data[first_id - offset + 3] / icon_view->priv->scale_factor - 2 * MIN_MARGIN;
+                    ret = TRUE;
+                    XFree(data_p);
+                    g_free(data);
+                    break;
+                }
+
+                offset += actual_format * nitems;
                 XFree(data_p);
                 g_free(data);
+            } else
                 break;
-            }
+        } while(bytes_after > 0);
 
-            offset += actual_format * nitems;
-            XFree(data_p);
-            g_free(data);
-        } else
-            break;
-    } while(bytes_after > 0);
+        xfw_windowing_error_trap_pop_ignored(gdisplay);
+    } else
+#endif  /* ENABLE_X11 */
+    {
+        GdkDisplay *display = gtk_widget_get_display(GTK_WIDGET(icon_view));
+        GdkRectangle total = { 0, };
+        gint n_monitors = gdk_display_get_n_monitors(display);
 
-    gdk_x11_display_error_trap_pop_ignored(gdisplay);
+        for (gint i = 0; i < n_monitors; ++i) {
+            GdkMonitor *monitor = gdk_display_get_monitor(display, i);
+            GdkRectangle geom;
+
+            gdk_monitor_get_geometry(monitor, &geom);
+            gdk_rectangle_union(&total, &geom, &total);
+        }
+
+        *xorigin = total.x;
+        *yorigin = total.y;
+        *width = total.width;
+        *height = total.height;
+        ret = TRUE;
+    }
 
     return ret;
 }
@@ -4427,11 +4452,6 @@ xfdesktop_icon_view_set_icon_size(XfdesktopIconView *icon_view,
                                   guint icon_size)
 {
     g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view));
-
-    /* Choose the correct icon based on it size */
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-    wnck_set_default_icon_size(icon_size * gtk_widget_get_scale_factor(GTK_WIDGET(icon_view)));
-G_GNUC_END_IGNORE_DEPRECATIONS
 
     if(icon_size == icon_view->priv->icon_size)
         return;
