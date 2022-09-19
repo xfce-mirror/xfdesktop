@@ -38,19 +38,19 @@
 
 #include "xfdesktop-common.h"
 #include "menu.h"
-#ifdef USE_DESKTOP_MENU
+#ifdef ENABLE_DESKTOP_MENU
 #include <garcon/garcon.h>
 #include <garcon-gtk/garcon-gtk.h>
 #endif
 
-#ifdef USE_DESKTOP_MENU
+#ifdef ENABLE_DESKTOP_MENU
 static gboolean show_delete_option = TRUE;
 static gboolean show_desktop_menu = TRUE;
 static gboolean show_desktop_menu_icons = TRUE;
 static GarconMenu *garcon_menu = NULL;
 #endif
 
-#ifdef USE_DESKTOP_MENU
+#ifdef ENABLE_DESKTOP_MENU
 static void
 menu_populate(XfceDesktop *desktop,
               GtkMenuShell *menu,
@@ -107,9 +107,9 @@ menu_populate(XfceDesktop *desktop,
         g_object_unref(G_OBJECT(desktop_menu));
     }
 }
-#endif /* USE_DESKTOP_MENU */
+#endif /* ENABLE_DESKTOP_MENU */
 
-#ifdef USE_DESKTOP_MENU
+#ifdef ENABLE_DESKTOP_MENU
 static void
 menu_settings_changed(XfconfChannel *channel,
                       const gchar *property,
@@ -131,7 +131,7 @@ menu_settings_changed(XfconfChannel *channel,
 void
 menu_init(XfconfChannel *channel)
 {
-#ifdef USE_DESKTOP_MENU
+#ifdef ENABLE_DESKTOP_MENU
     if(channel) {
         show_delete_option = xfconf_channel_get_bool(channel, XFCONF_DESKTOP_MENU_DELETE, TRUE);
     }
@@ -158,11 +158,11 @@ menu_init(XfconfChannel *channel)
 void
 menu_attach(XfceDesktop *desktop)
 {
-#ifdef USE_DESKTOP_MENU
+#ifdef ENABLE_DESKTOP_MENU
     DBG("attached default menu");
     g_signal_connect_after(G_OBJECT(desktop), "populate-root-menu",
                            G_CALLBACK(menu_populate), NULL);
-#endif /* USE_DESKTOP_MENU */
+#endif /* ENABLE_DESKTOP_MENU */
 }
 
 void
