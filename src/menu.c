@@ -116,11 +116,11 @@ menu_settings_changed(XfconfChannel *channel,
                       const GValue *value,
                       gpointer user_data)
 {
-    if(!strcmp(property, "/desktop-menu/show")) {
+    if(!strcmp(property, DESKTOP_MENU_SHOW)) {
         show_desktop_menu = G_VALUE_TYPE(value)
                             ? g_value_get_boolean(value)
                             : TRUE;
-    } else if(!strcmp(property, "/desktop-menu/show-icons")) {
+    } else if(!strcmp(property, DESKTOP_MENU_SHOW_ICONS)) {
         show_desktop_menu_icons = G_VALUE_TYPE(value)
                                   ? g_value_get_boolean(value)
                                   : TRUE;
@@ -136,12 +136,12 @@ menu_init(XfconfChannel *channel)
         show_delete_option = xfconf_channel_get_bool(channel, DESKTOP_MENU_DELETE, TRUE);
     }
 
-    if(!channel || xfconf_channel_get_bool(channel, "/desktop-menu/show", TRUE))
+    if(!channel || xfconf_channel_get_bool(channel, DESKTOP_MENU_SHOW, TRUE))
     {
         show_desktop_menu = TRUE;
         if(channel) {
             show_desktop_menu_icons = xfconf_channel_get_bool(channel,
-                                                              "/desktop-menu/show-icons",
+                                                              DESKTOP_MENU_SHOW_ICONS,
                                                               TRUE);
         }
     } else {
