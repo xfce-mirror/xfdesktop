@@ -964,7 +964,7 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
     g_object_class_install_property(gobject_class, PROP_ICON_ON_PRIMARY,
                                     g_param_spec_boolean("primary",
                                                          "primary",
-                                                         "primary",
+                                                         "show icons on primary desktop",
                                                          FALSE,
                                                          XFDESKTOP_PARAM_FLAGS));
 
