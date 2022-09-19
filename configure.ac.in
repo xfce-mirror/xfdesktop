@@ -19,13 +19,14 @@ m4_define([glib_minimum_version], [2.50.0])
 m4_define([gtk_minimum_version], [3.22.0])
 m4_define([libxfce4util_minimum_version], [4.13.0])
 m4_define([libxfce4ui_minimum_version], [4.13.0])
+m4_define([libxfce4windowing_minimum_version], [4.17.0])
 m4_define([garcon_minimum_version], [0.6.0])
 m4_define([exo_minimum_version], [0.11.0])
 m4_define([thunar_minimum_version], [1.7.0])
-m4_define([wnck_minimum_version], [3.14])
 m4_define([intltool_minimum_version], [0.31])
 m4_define([xfconf_minimum_version], [4.12.1])
 m4_define([cairo_minimum_version], [1.12])
+m4_define([gtk_layer_shell_minimum_version], [0.7.0])
 
 dnl define a short version string for xfdesktop
 m4_append([xfdesktop_version_short], ["])
@@ -87,10 +88,58 @@ XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0],
                   [libxfce4util_minimum_version])
 XDT_CHECK_PACKAGE([LIBXFCE4UI], [libxfce4ui-2],
                   [libxfce4ui_minimum_version])
-XDT_CHECK_PACKAGE([LIBWNCK], [libwnck-3.0], [wnck_minimum_version])
+XDT_CHECK_PACKAGE([LIBXFCE4WINDOWING], [libxfce4windowing-0],
+                  [libxfce4windowing_minimum_version])
+XDT_CHECK_PACKAGE([LIBXFCE4WINDOWINGUI], [libxfce4windowingui-0],
+                  [libxfce4windowing_minimum_version])
 XDT_CHECK_PACKAGE([XFCONF], [libxfconf-0], [xfconf_minimum_version])
 XDT_CHECK_PACKAGE([LIBEXO], [exo-2], [exo_minimum_version])
 XDT_CHECK_PACKAGE([CAIRO], [cairo], [cairo_minimum_version])
+
+XDT_CHECK_OPTIONAL_PACKAGE([GDK_X11], [gdk-x11-3.0], [gtk_minimum_version],
+                           [gdk-x11], [X11 backend for GDK])
+AC_ARG_ENABLE([x11],
+              [AS_HELP_STRING([--disable-x11],
+                              [Do not compile with X11 support (default=auto)])],
+              [ac_cv_enable_x11=$enableval],
+              [ac_cv_enable_x11=auto])
+
+enable_x11="no"
+if test x"$ac_cv_enable_x11" != x"no"; then
+    if test x"$GDK_X11_FOUND" = x"yes"; then
+        enable_x11="yes"
+        AC_DEFINE([ENABLE_X11], [1], [Set if X11 support is enabled])
+    elif test x"$ac_cv_enable_x11" = x"yes"; then
+        AC_MSG_ERROR([X11 support was requested, but required dependencies were not found.])
+    fi
+fi
+AM_CONDITIONAL([ENABLE_X11], [test x"$enable_x11" = x"yes"])
+
+XDT_CHECK_OPTIONAL_PACKAGE([GDK_WAYLAND], [gdk-wayland-3.0], [gtk_minimum_version],
+                           [gdk-wayland], [Wayland backend for GDK])
+XDT_CHECK_OPTIONAL_PACKAGE([GTK_LAYER_SHELL], [gtk-layer-shell-0],
+                           [gtk_layer_shell_minimum_version],
+                           [gtk-layer-shell], [Wayland GTK layer shell support])
+AC_ARG_ENABLE([wayland],
+              [AS_HELP_STRING([--disable-wayland],
+                              [Do not compile with Wayland support (default=auto)])],
+              [ac_cv_enable_wayland=$enableval],
+              [ac_cv_enable_wayland=auto])
+
+enable_wayland="no"
+if test x"$ac_cv_enable_wayland" != x"no"; then
+    if test x"$GDK_WAYLAND_FOUND" = x"yes" -a x"$GTK_LAYER_SHELL_FOUND" = x"yes"; then
+        enable_wayland="yes"
+        AC_DEFINE([ENABLE_WAYLAND], [1], [Set if Wayland support is enabled])
+    elif test x"$ac_cv_enable_wayland" = x"yes"; then
+        AC_MSG_ERROR([Wayland support was requested, but required dependencies were not found.])
+    fi
+fi
+AM_CONDITIONAL([ENABLE_WAYLAND], [test x"$enable_wayland" = x"yes"])
+
+if test x"$enable_x11" != x"yes" -a x"$enable_wayland" != x"yes"; then
+    AC_MSG_ERROR([Either both X11 and Wayland support was disabled, or required dependencies are missing. One of the two must be enabled.])
+fi
 
 dnl do we want desktop icons at all?
 AC_ARG_ENABLE([desktop-icons],
@@ -210,4 +259,7 @@ echo "* Mount notification support:                   yes"
 else
 echo "* Mount notification support:                   no"
 fi
+echo "* Windowing:"
+echo "      X11:                                      $enable_x11"
+echo "      Wayland:                                  $enable_wayland"
 echo
