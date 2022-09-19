@@ -51,8 +51,10 @@
 #define ARRANGE_MESSAGE    "arrange"
 #define QUIT_MESSAGE       "quit"
 
-#define SINGLE_WORKSPACE_MODE     "/backdrop/single-workspace-mode"
-#define SINGLE_WORKSPACE_NUMBER   "/backdrop/single-workspace-number"
+/* xfconf property pathes */
+
+#define SINGLE_WORKSPACE_MODE                "/backdrop/single-workspace-mode"
+#define SINGLE_WORKSPACE_NUMBER              "/backdrop/single-workspace-number"
 
 #define DESKTOP_ICONS_SHOW_THUMBNAILS        "/desktop-icons/show-thumbnails"
 #define DESKTOP_ICONS_SHOW_HIDDEN_FILES      "/desktop-icons/show-hidden-files"
@@ -63,9 +65,32 @@
 #define DESKTOP_ICONS_SHOW_TRASH             "/desktop-icons/file-icons/show-trash"
 #define DESKTOP_ICONS_SHOW_FILESYSTEM        "/desktop-icons/file-icons/show-filesystem"
 #define DESKTOP_ICONS_SHOW_REMOVABLE         "/desktop-icons/file-icons/show-removable"
+#define DESKTOP_ICONS_ON_PRIMARY             "/desktop-icons/primary"
+#define DESKTOP_ICONS_STYLE                  "/desktop-icons/style"
+#define DESKTOP_ICONS_ICON_SIZE              "/desktop-icons/icon-size"
+#define DESKTOP_ICONS_FONT_SIZE              "/desktop-icons/font-size"
+#define DESKTOP_ICONS_CUSTOM_FONT_SIZE       "/desktop-icons/use-custom-font-size"
+#define DESKTOP_ICONS_SHOW_TOOLTIP           "/desktop-icons/show-tooltips"
+#define DESKTOP_ICONS_TOOLTIP_SIZE           "/desktop-icons/tooltip-size"
+#define DESKTOP_ICONS_SINGLE_CLICK           "/desktop-icons/single-click"
+#define DESKTOP_ICONS_GRAVITY                "/desktop-icons/gravity"
+#define DESKTOP_ICONS_CENTER_TEXT            "/desktop-icons/center-text"
 
 #define DESKTOP_MENU_MAX_TEMPLATE_FILES      "/desktop-menu/max-template-files"
 #define DESKTOP_MENU_DELETE                  "/desktop-menu/show-delete"
+#define DESKTOP_MENU_SHOW                    "/desktop-menu/show"
+#define DESKTOP_MENU_SHOW_ICONS              "/desktop-menu/show-icons"
+
+#define SETTINGS_WINDOW_LAST_WIDTH           "/last/window-width"
+#define SETTINGS_WINDOW_LAST_HEIGHT          "/last/window-height"
+
+#define WINLIST_SHOW_WINDOWS_MENU            "/windowlist-menu/show"
+#define WINLIST_SHOW_APP_ICONS               "/windowlist-menu/show-icons"
+#define WINLIST_SHOW_STICKY_WIN_ONCE         "/windowlist-menu/show-sticky-once"
+#define WINLIST_SHOW_WS_NAMES                "/windowlist-menu/show-workspace-names"
+#define WINLIST_SHOW_WS_SUBMENUS             "/windowlist-menu/show-submenus"
+#define WINLIST_SHOW_ADD_REMOVE_WORKSPACES   "/windowlist-menu/show-add-remove-workspaces"
+
 
 /**
  * File information namespaces queried for #GFileInfo objects.
