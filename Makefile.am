@@ -33,7 +33,7 @@ distuninstallcheck_listfiles = \
 	find . -type f -print | grep -v ./share/icons/hicolor/icon-theme.cache
 
 distclean-local:
-	-rm -rf *.cache *~
+	-rm -rf *.cache *~ compile_flags.txt
 
 .PHONY: ChangeLog
 
@@ -43,3 +43,33 @@ ChangeLog: Makefile
 	|| (touch ChangeLog; echo 'Git directory not found: installing possibly empty changelog.' >&2)
 
 dist-hook: ChangeLog
+
+compile_flags.txt: $(shell find . -name Makefile)
+	rm -f $@
+	for flag in \
+		-DPACKAGE=\"xfdesktop\" \
+		-DGETTEXT_PACKAGE=\"xfdesktop\" \
+		-DENABLE_DESKTOP_ICONS=1 \
+		-DENABLE_FILE_ICONS=1 \
+		-I$(top_srcdir) \
+		-I$(top_srcdir)/common	\
+		-I$(top_builddir)/common \
+		-DWNCK_I_KNOW_THIS_IS_UNSTABLE \
+		$(GIO_CFLAGS) \
+		$(GIO_UNIX_CFLAGS) \
+		$(GLIB_CFLAGS) \
+		$(GTHREAD_CFLAGS) \
+		$(GTK_CFLAGS) \
+		$(LIBNOTIFY_CFLAGS) \
+		$(LIBX11_CFLAGS) \
+		$(LIBXFCE4UTIL_CFLAGS) \
+		$(LIBXFCE4UI_CFLAGS) \
+		$(LIBXFCE4SMCLIENT_PRIVATE_CFLAGS) \
+		$(LIBWNCK_CFLAGS) \
+		$(XFCONF_CFLAGS) \
+		-DEXO_API_SUBJECT_TO_CHANGE \
+		$(LIBEXO_CFLAGS) \
+		$(GTK_LAYER_SHELL_CFLAGS); \
+	do \
+		echo "$$flag" >> $@ || exit 1; \
+	done
