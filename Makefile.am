@@ -43,3 +43,49 @@ ChangeLog: Makefile
 	|| (touch ChangeLog; echo 'Git directory not found: installing possibly empty changelog.' >&2)
 
 dist-hook: ChangeLog
+
+if MAINTAINER_MODE
+
+DISTCLEANFILES += \
+	compile_flags.txt
+
+all-local: compile_flags.txt
+
+compile_flags.txt: $(shell find . -name Makefile)
+	rm -f $@
+	for flag in \
+		-DPACKAGE=\"xfdesktop\" \
+		-DGETTEXT_PACKAGE=\"xfdesktop\" \
+		-DVERSION=\"4.0.0\" \
+		-DENABLE_DESKTOP_ICONS=1 \
+		-DENABLE_FILE_ICONS=1 \
+		-DLOCALEDIR=\"$(localedir)\" \
+		-DEXO_API_SUBJECT_TO_CHANGE \
+		-DWNCK_I_KNOW_THIS_IS_UNSTABLE \
+		-DDEFAULT_BACKDROP=\"\" \
+		-I$(top_srcdir) \
+		-I$(top_srcdir)/common	\
+		-I$(top_builddir)/common \
+		$(GIO_CFLAGS) \
+		$(GIO_UNIX_CFLAGS) \
+		$(GLIB_CFLAGS) \
+		$(GTHREAD_CFLAGS) \
+		$(GTK_CFLAGS) \
+		$(LIBNOTIFY_CFLAGS) \
+		$(LIBX11_CFLAGS) \
+		$(LIBXFCE4UTIL_CFLAGS) \
+		$(LIBXFCE4UI_CFLAGS) \
+		$(LIBXFCE4SMCLIENT_PRIVATE_CFLAGS) \
+		$(LIBWNCK_CFLAGS) \
+		$(XFCONF_CFLAGS) \
+		$(LIBEXO_CFLAGS) \
+		$(CAIRO_CFLAGS) \
+		$(THUNARX_CFLAGS) \
+		$(GARCON_CFLAGS) \
+		$(GARCON_GTK3_CFLAGS) \
+		$(LIBNOTIFY_CFLAGS) \
+	; do \
+		echo "$$flag" >> $@ || exit 1; \
+	done
+
+endif
