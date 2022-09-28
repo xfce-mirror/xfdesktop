@@ -3870,11 +3870,7 @@ xfdesktop_icon_view_add_item_internal(XfdesktopIconView *icon_view,
                                       XfdesktopIcon *icon)
 {
     gint16 row, col;
-    cairo_rectangle_int_t fake_area;
-    GdkDrawingContext *gdc;
-    cairo_region_t *region;
-    cairo_t *cr;
-    GdkWindow *gdkwindow;
+    GdkRectangle pixbuf_extents, text_extents, box_extents, total_extents;
 
     /* sanity check: at this point this should be taken care of */
     if(!xfdesktop_icon_get_position(icon, &row, &col)) {
@@ -3893,25 +3889,11 @@ xfdesktop_icon_view_add_item_internal(XfdesktopIconView *icon_view,
                      G_CALLBACK(xfdesktop_icon_view_icon_changed),
                      icon_view);
 
-    gdkwindow = gtk_widget_get_window(GTK_WIDGET(icon_view));
-
-    /* Calculate the region the icon will occupy */
-    fake_area.x = icon_view->priv->xorigin + icon_view->priv->xmargin + col * CELL_SIZE + col * icon_view->priv->xspacing;
-    fake_area.y = icon_view->priv->yorigin + icon_view->priv->ymargin + row * CELL_SIZE + row * icon_view->priv->yspacing;
-    fake_area.width = fake_area.height = CELL_SIZE;
-
-    /* Pack it into a cairo region to tell gdk that's where we will be painting */
-    region = cairo_region_create_rectangle(&fake_area);
-    gdc = gdk_window_begin_draw_frame(gdkwindow, region);
-    cr = gdk_drawing_context_get_cairo_context(gdc);
-
-    /* paint the icon */
-    xfdesktop_icon_view_paint_icon(icon_view, icon, &fake_area, cr);
-
-    /* we're done drawing */
-    gdk_window_end_draw_frame(gdkwindow, gdc);
-
-    cairo_region_destroy(region);
+    xfdesktop_icon_view_update_icon_extents(icon_view, icon,
+                                            &pixbuf_extents, &text_extents, &box_extents, &total_extents);
+    gtk_widget_queue_draw_area(GTK_WIDGET(icon_view),
+                               total_extents.x, total_extents.y,
+                               total_extents.width, total_extents.y);
 }
 
 static gboolean
