@@ -437,6 +437,9 @@ window_workspace_changed_cb(WnckWindow *window,
             /* window is not sticky */
             if(i != new_ws_num && icon) {
                 if(i == wmanager->priv->active_ws_num) {
+                    if(wmanager->priv->icon_workspaces[i]->selected_icon == XFDESKTOP_WINDOW_ICON(icon)) {
+                        wmanager->priv->icon_workspaces[i]->selected_icon = NULL;
+                    }
                     xfdesktop_icon_view_remove_item(wmanager->priv->icon_view,
                                                     icon);
                 }
