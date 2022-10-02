@@ -886,7 +886,31 @@ xfdesktop_file_icon_menu_other_app(GtkWidget *widget,
 
     file = xfdesktop_file_icon_peek_file(icon);
 
-    xfdesktop_file_utils_display_chooser_dialog(file, TRUE,
+    xfdesktop_file_utils_display_app_chooser_dialog(file, TRUE, FALSE,
+                                                    fmanager->priv->gscreen,
+                                                    GTK_WINDOW(toplevel));
+}
+
+static void
+xfdesktop_file_icon_menu_set_default_app(GtkWidget *widget,
+                                         gpointer user_data)
+{
+    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
+    XfdesktopFileIcon *icon;
+    GtkWidget *toplevel;
+    GList *selected;
+    GFile *file;
+
+    selected = xfdesktop_icon_view_get_selected_items(fmanager->priv->icon_view);
+    g_return_if_fail(g_list_length(selected) == 1);
+    icon = XFDESKTOP_FILE_ICON(selected->data);
+    g_list_free(selected);
+
+    toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
+
+    file = xfdesktop_file_icon_peek_file(icon);
+
+    xfdesktop_file_utils_display_app_chooser_dialog(file, TRUE, TRUE,
                                                 fmanager->priv->gscreen,
                                                 GTK_WINDOW(toplevel));
 }
@@ -1683,6 +1707,17 @@ xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
                         gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
                     g_signal_connect(G_OBJECT(mi), "activate",
                                      G_CALLBACK(xfdesktop_file_icon_menu_other_app),
+                                     fmanager);
+
+                    img = gtk_image_new_from_icon_name("", GTK_ICON_SIZE_MENU);
+                    mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Set _Default Application..."), img);
+                    gtk_widget_show(mi);
+                    if(list_len >= 3)
+                        gtk_menu_shell_append(GTK_MENU_SHELL(app_infos_menu), mi);
+                    else
+                        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+                    g_signal_connect(G_OBJECT(mi), "activate",
+                                     G_CALLBACK(xfdesktop_file_icon_menu_set_default_app),
                                      fmanager);
 
                     /* free the app info list */
