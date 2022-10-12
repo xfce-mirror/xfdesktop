@@ -1688,6 +1688,7 @@ xfce_desktop_set_primary(XfceDesktop *desktop,
 {
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
 
+#ifdef ENABLE_DESKTOP_ICONS
     if(primary == desktop->priv->primary)
         return;
 
@@ -1697,6 +1698,7 @@ xfce_desktop_set_primary(XfceDesktop *desktop,
         xfdesktop_icon_view_set_primary(XFDESKTOP_ICON_VIEW(desktop->priv->icon_view),
                                         primary);
     }
+#endif
 }
 
 void
