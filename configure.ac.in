@@ -164,7 +164,7 @@ echo "*** prefix.  Desktop menu will be disabled."
 build_desktop_menu="no"
 ])
     if test "x$build_desktop_menu" = "xyes"; then
-        AC_DEFINE([USE_DESKTOP_MENU], [1],
+        AC_DEFINE([ENABLE_DESKTOP_MENU], [1],
                   [Define if we should build the desktop menu module])
     fi
 fi
