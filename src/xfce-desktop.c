@@ -1886,9 +1886,23 @@ xfce_desktop_popup_root_menu(XfceDesktop *desktop,
 {
     DBG("entering");
 
+    gchar *cmd = xfconf_channel_get_string (desktop->priv->channel , DESKTOP_MENU_COMMAND, NULL);
+
+    if(cmd != NULL) {
+        DBG("calling root menu command: %s", cmd);
+        GAppInfo *appinfo = g_app_info_create_from_commandline(cmd,
+                                                               NULL,
+                                                               G_APP_INFO_CREATE_NONE,
+                                                               NULL);
+        g_free(cmd);
+        g_return_if_fail(appinfo != NULL);
+        g_app_info_launch(appinfo, NULL, NULL, NULL);
+        g_object_unref(appinfo);
+        return;
+    }
+
     xfce_desktop_do_menu_popup(desktop, button, activate_time,
                                signals[SIG_POPULATE_ROOT_MENU]);
-
 }
 
 void
