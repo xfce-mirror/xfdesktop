@@ -103,6 +103,7 @@ menu_populate(XfceDesktop *desktop,
     else
     {
         g_object_ref_sink(G_OBJECT(desktop_menu));
+        gtk_menu_attach_to_widget(GTK_MENU(desktop_menu), GTK_WIDGET(desktop), NULL);
         xfce_gtk_menu_popup_until_mapped(GTK_MENU(desktop_menu), NULL, NULL, NULL, NULL, 3, gtk_get_current_event_time());
         g_object_unref(G_OBJECT(desktop_menu));
     }
