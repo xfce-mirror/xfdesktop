@@ -36,16 +36,22 @@
 #include <string.h>
 #endif
 
+#include <gtk/gtk.h>
 
+#ifdef ENABLE_X11
 #include <X11/Xlib.h>
 #include <X11/Xatom.h>
-
 #include <gdk/gdkx.h>
-#include <gtk/gtk.h>
+#endif  /* ENABLE_X11 */
+
+#ifdef ENABLE_WAYLAND
+#include <gtk-layer-shell.h>
+#endif  /* ENABLE_WAYLAND */
 
 #include <xfconf/xfconf.h>
 #include <libxfce4ui/libxfce4ui.h>
 #include <libxfce4util/libxfce4util.h>
+#include <libxfce4windowing/libxfce4windowing.h>
 
 #include "xfdesktop-common.h"
 #include "xfce-backdrop.h"
@@ -64,9 +70,12 @@ static void xfdesktop_application_finalize(GObject *object);
 static void session_logout(void);
 static void session_die(gpointer user_data);
 
+#ifdef ENABLE_X11
 static void event_forward_to_rootwin(GdkScreen *gscreen, GdkEvent *event);
-
 static gboolean scroll_cb(GtkWidget *w, GdkEventScroll *evt, gpointer user_data);
+static gboolean cb_wait_for_window_manager(gpointer data);
+static void     cb_wait_for_window_manager_destroyed(gpointer data);
+#endif  /* ENABLE_X11 */
 
 static gboolean reload_idle_cb(gpointer data);
 static void cb_xfdesktop_application_reload(GAction  *action,
@@ -93,9 +102,6 @@ static void cb_xfdesktop_application_arrange(GAction  *action,
 static void cb_xfdesktop_application_debug(GAction  *action,
                                            GVariant *parameter,
                                            gpointer  data);
-
-static gboolean cb_wait_for_window_manager(gpointer data);
-static void     cb_wait_for_window_manager_destroyed(gpointer data);
 
 static void xfdesktop_application_startup(GApplication *g_application);
 static void xfdesktop_application_start(XfdesktopApplication *app);
@@ -288,6 +294,7 @@ session_die(gpointer user_data)
     g_application_quit(G_APPLICATION(app));
 }
 
+#ifdef ENABLE_X11
 static void
 event_forward_to_rootwin(GdkScreen *gscreen, GdkEvent *event)
 {
@@ -353,12 +360,17 @@ event_forward_to_rootwin(GdkScreen *gscreen, GdkEvent *event)
     XSendEvent(dpy, xev2.window, False, ButtonPressMask | ButtonReleaseMask,
             (XEvent *)&xev2);
 }
+#endif  /* ENABLE_X11 */
 
 static gboolean
 scroll_cb(GtkWidget *w, GdkEventScroll *evt, gpointer user_data)
 {
+#ifdef ENABLE_X11
     event_forward_to_rootwin(gtk_widget_get_screen(w), (GdkEvent*)evt);
     return TRUE;
+#else  /* !ENABLE_X11 */
+    return FALSE;
+#endif  /* ENABLE_X11 */
 }
 
 static gboolean
@@ -525,6 +537,7 @@ cb_xfdesktop_application_debug(GAction  *action,
     xfdesktop_debug_set(g_variant_get_boolean(parameter));
 }
 
+#ifdef ENABLE_X11
 /* Cleans up the associated wait for wm resources */
 static void
 wait_for_window_manager_cleanup(WaitForWM *wfwm)
@@ -594,21 +607,24 @@ cb_wait_for_window_manager_destroyed(gpointer data)
 
     wait_for_window_manager_cleanup(wfwm);
 }
+#endif  /* ENABLE_X11 */
 
 static void
 xfdesktop_application_startup(GApplication *g_application)
 {
     XfdesktopApplication *app = XFDESKTOP_APPLICATION(g_application);
-    WaitForWM *wfwm;
-    guint i;
-    gchar **atom_names;
 
     TRACE("entering");
 
     /* hold so it does not exit on us before the main loop gets going */
     g_application_hold(g_application);
 
-    if(!app->opt_disable_wm_check) {
+#ifdef ENABLE_X11
+    if(!app->opt_disable_wm_check && xfw_windowing_get() == XFW_WINDOWING_X11) {
+        WaitForWM *wfwm;
+        guint i;
+        gchar **atom_names;
+
         /* setup data for wm checking */
         wfwm = g_slice_new0(WaitForWM);
         wfwm->dpy = XOpenDisplay(NULL);
@@ -635,7 +651,9 @@ xfdesktop_application_startup(GApplication *g_application)
                                                          cb_wait_for_window_manager,
                                                          wfwm,
                                                          cb_wait_for_window_manager_destroyed);
-    } else {
+    } else
+#endif  /* ENABLE_X11 */
+    {
         /* directly launch */
         xfdesktop_application_start(app);
     }
@@ -735,12 +753,31 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_snprintf(buf, sizeof(buf), "/backdrop/screen%d/", screen_num);
     app->desktop = xfce_desktop_new(gscreen, app->channel, buf);
 
-    /* hook into the scroll event so we can forward it to the window
-     * manager */
     gtk_widget_add_events(app->desktop, GDK_BUTTON_PRESS_MASK
-                          | GDK_BUTTON_RELEASE_MASK | GDK_SCROLL_MASK);
-    g_signal_connect(G_OBJECT(app->desktop), "scroll-event",
-                     G_CALLBACK(scroll_cb), app);
+                          | GDK_BUTTON_RELEASE_MASK);
+    if (xfw_windowing_get() == XFW_WINDOWING_X11) {
+        /* hook into the scroll event so we can forward it to the window
+         * manager */
+        gtk_widget_add_events(app->desktop, GDK_SCROLL_MASK);
+        g_signal_connect(G_OBJECT(app->desktop), "scroll-event",
+                         G_CALLBACK(scroll_cb), app);
+    } else if (xfw_windowing_get() == XFW_WINDOWING_WAYLAND) {
+#ifdef ENABLE_WAYLAND
+        GtkWindow *window = GTK_WINDOW(app->desktop);
+
+        if (!gtk_layer_is_supported()) {
+            g_critical("Your compositor must support the zwlr_layer_shell_v1 protocol");
+            exit(1);
+        }
+
+        gtk_layer_init_for_window(window);
+        gtk_layer_set_layer(window, GTK_LAYER_SHELL_LAYER_BACKGROUND);
+        gtk_layer_set_namespace(window, "desktop");
+#else  /* !ENABLE_WAYLAND */
+        g_critical("xfdesktop was not built with Wayland support");
+        exit(1);
+#endif  /* ENABLE_WAYLAND */
+    }
 
     menu_attach(XFCE_DESKTOP(app->desktop));
     windowlist_attach(XFCE_DESKTOP(app->desktop));
