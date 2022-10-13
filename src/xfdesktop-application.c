@@ -689,6 +689,8 @@ xfdesktop_application_start(XfdesktopApplication *app)
 {
     GtkSettings *settings;
     GdkDisplay *gdpy;
+    GdkScreen *gscreen;
+    gint screen_num;
     GError *error = NULL;
     gchar buf[1024];
 
@@ -705,6 +707,10 @@ xfdesktop_application_start(XfdesktopApplication *app)
         g_source_remove(app->wait_for_wm_timeout_id);
 
     gdpy = gdk_display_get_default();
+    gscreen = gdk_display_get_default_screen(gdpy);
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+    screen_num = gdk_screen_get_number(gscreen);
+G_GNUC_END_IGNORE_DEPRECATIONS
 
     /* setup the session management options */
     app->sm_client = xfce_sm_client_get();
@@ -726,9 +732,8 @@ xfdesktop_application_start(XfdesktopApplication *app)
     } else
         app->channel = xfconf_channel_get(XFDESKTOP_CHANNEL);
 
-    g_snprintf(buf, sizeof(buf), "/backdrop/screen%d/", 0);
-    app->desktop = xfce_desktop_new(gdk_display_get_default_screen(gdpy),
-                                    app->channel, buf);
+    g_snprintf(buf, sizeof(buf), "/backdrop/screen%d/", screen_num);
+    app->desktop = xfce_desktop_new(gscreen, app->channel, buf);
 
     /* hook into the scroll event so we can forward it to the window
      * manager */
