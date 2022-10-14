@@ -117,6 +117,8 @@ struct _XfceDesktopPrivate
 
     guint32 grab_time;
 
+    GtkWidget *active_root_menu;
+
 #ifdef ENABLE_DESKTOP_ICONS
     XfceDesktopIconStyle icons_style;
     gboolean icons_font_size_set;
@@ -1002,6 +1004,10 @@ xfce_desktop_finalize(GObject *object)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(object);
 
+    if (desktop->priv->active_root_menu != NULL) {
+        gtk_menu_shell_deactivate(GTK_MENU_SHELL(desktop->priv->active_root_menu));
+    }
+
     g_object_unref(G_OBJECT(desktop->priv->channel));
     g_free(desktop->priv->property_prefix);
 
@@ -1809,6 +1815,16 @@ xfce_desktop_menu_destroy_idled(gpointer data)
 }
 
 static void
+xfce_desktop_menu_deactivated(GtkWidget *menu,
+                              XfceDesktop *desktop)
+{
+    if (desktop->priv->active_root_menu == menu) {
+        desktop->priv->active_root_menu = NULL;
+    }
+    g_idle_add(xfce_desktop_menu_destroy_idled, menu);
+}
+
+static void
 xfce_desktop_do_menu_popup(XfceDesktop *desktop,
                            guint button,
                            guint activate_time,
@@ -1821,13 +1837,17 @@ xfce_desktop_do_menu_popup(XfceDesktop *desktop,
 
     DBG("entering");
 
+    if (desktop->priv->active_root_menu != NULL) {
+        gtk_menu_shell_deactivate(GTK_MENU_SHELL(desktop->priv->active_root_menu));
+        desktop->priv->active_root_menu = NULL;
+    }
+
     if(gtk_widget_has_screen(GTK_WIDGET(desktop)))
         screen = gtk_widget_get_screen(GTK_WIDGET(desktop));
     else
         screen = gdk_display_get_default_screen(gdk_display_get_default());
 
     menu = gtk_menu_new();
-    g_object_ref_sink(menu);
     gtk_menu_set_screen(GTK_MENU(menu), screen);
     gtk_menu_set_reserve_toggle_size (GTK_MENU (menu), FALSE);
 
@@ -1847,15 +1867,15 @@ xfce_desktop_do_menu_popup(XfceDesktop *desktop,
 
     if (actual_menu != NULL) {
         gtk_menu_attach_to_widget(GTK_MENU(actual_menu), GTK_WIDGET(desktop), NULL);
-        g_signal_connect_swapped(G_OBJECT(actual_menu), "deactivate",
-                                 G_CALLBACK(g_idle_add),
-                                 (gpointer)xfce_desktop_menu_destroy_idled);
+        g_signal_connect(actual_menu, "deactivate",
+                         G_CALLBACK(xfce_desktop_menu_deactivated), desktop);
 
         /* Per gtk_menu_popup's documentation "for conflict-resolve initiation of
          * concurrent requests for mouse/keyboard grab requests." */
         if(activate_time == 0)
             activate_time = gtk_get_current_event_time();
 
+        desktop->priv->active_root_menu = actual_menu;
         xfce_gtk_menu_popup_until_mapped(GTK_MENU(actual_menu), NULL, NULL, NULL, NULL, button, activate_time);
     }
 }
