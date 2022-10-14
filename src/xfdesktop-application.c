@@ -881,7 +881,7 @@ xfdesktop_application_local_command_line(GApplication *g_application,
         g_print("\n");
         g_print(_("Build options:\n"));
         g_print(_("    Desktop Menu:        %s\n"),
-#ifdef USE_DESKTOP_MENU
+#ifdef ENABLE_DESKTOP_MENU
                 _("enabled")
 #else
                 _("disabled")
