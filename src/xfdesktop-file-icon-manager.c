@@ -199,6 +199,8 @@ static GdkDragAction xfdesktop_file_icon_manager_propose_drop_action(XfdesktopIc
                                                                      GdkDragContext *context,
                                                                      GtkSelectionData *data,
                                                                      guint info);
+static void xfdesktop_file_icon_manager_populate_context_menu(XfdesktopIconViewManager *manager,
+                                                              GtkMenuShell *menu);
 
 static gboolean xfdesktop_file_icon_manager_check_create_desktop_folder(GFile *file);
 static void xfdesktop_file_icon_manager_load_desktop_folder(XfdesktopFileIconManager *fmanager);
@@ -552,6 +554,7 @@ xfdesktop_file_icon_manager_icon_view_manager_init(XfdesktopIconViewManagerIface
     iface->drag_data_received = xfdesktop_file_icon_manager_drag_data_received;
     iface->drag_data_get = xfdesktop_file_icon_manager_drag_data_get;
     iface->propose_drop_action = xfdesktop_file_icon_manager_propose_drop_action;
+    iface->populate_context_menu = xfdesktop_file_icon_manager_populate_context_menu;
 }
 
 static gboolean
@@ -1388,11 +1391,10 @@ xfdesktop_settings_launch(GtkWidget *w,
 }
 
 static void
-xfdesktop_file_icon_manager_populate_context_menu(XfceDesktop *desktop,
-                                                  GtkMenuShell *menu,
-                                                  gpointer user_data)
+xfdesktop_file_icon_manager_populate_context_menu(XfdesktopIconViewManager *manager,
+                                                  GtkMenuShell *menu)
 {
-    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
+    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(manager);
     XfdesktopFileIcon *file_icon = NULL;
     GFileInfo *info = NULL;
     GList *selected, *app_infos, *l;
@@ -3215,10 +3217,6 @@ xfdesktop_file_icon_manager_real_init(XfdesktopIconViewManager *manager,
     g_signal_connect(G_OBJECT(fmanager->priv->icon_view), "resize-event", G_CALLBACK(icon_view_resized), fmanager);
 
     fmanager->priv->desktop = gtk_widget_get_toplevel(GTK_WIDGET(icon_view));
-    g_signal_connect(G_OBJECT(fmanager->priv->desktop), "populate-root-menu",
-                     G_CALLBACK(xfdesktop_file_icon_manager_populate_context_menu),
-                     fmanager);
-
     fmanager->priv->gscreen = gtk_widget_get_screen(GTK_WIDGET(icon_view));
 
     if(!clipboard_manager) {
@@ -3321,10 +3319,6 @@ xfdesktop_file_icon_manager_fini(XfdesktopIconViewManager *manager)
 
     g_signal_handlers_disconnect_by_func(G_OBJECT(fmanager->priv->icon_view),
                                          G_CALLBACK(icon_view_resized),
-                                         fmanager);
-
-    g_signal_handlers_disconnect_by_func(G_OBJECT(fmanager->priv->desktop),
-                                         G_CALLBACK(xfdesktop_file_icon_manager_populate_context_menu),
                                          fmanager);
 
     if(fmanager->priv->save_icons_id) {

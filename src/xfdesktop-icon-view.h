@@ -74,6 +74,8 @@ GType xfdesktop_icon_view_get_type(void) G_GNUC_CONST;
 
 GtkWidget *xfdesktop_icon_view_new(XfdesktopIconViewManager *manager);
 
+XfdesktopIconViewManager *xfdesktop_icon_view_get_manager(XfdesktopIconView *icon_view);
+
 void xfdesktop_icon_view_add_item(XfdesktopIconView *icon_view,
                                   XfdesktopIcon *icon);
 

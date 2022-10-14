@@ -742,9 +742,6 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     g_signal_connect(G_OBJECT(app->desktop), "scroll-event",
                      G_CALLBACK(scroll_cb), app);
 
-    menu_attach(XFCE_DESKTOP(app->desktop));
-    windowlist_attach(XFCE_DESKTOP(app->desktop));
-
     /* display the desktop and try to put it at the bottom */
     gtk_widget_realize(app->desktop);
     gdk_window_lower(gtk_widget_get_window(app->desktop));
