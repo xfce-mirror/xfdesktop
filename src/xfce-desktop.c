@@ -82,6 +82,8 @@
 #include <xfconf/xfconf.h>
 #include <libwnck/libwnck.h>
 
+#include "menu.h"
+#include "windowlist.h"
 #include "xfdesktop-common.h"
 #include "xfce-desktop.h"
 #include "xfce-desktop-enum-types.h"
@@ -89,6 +91,8 @@
 
 /* disable setting the x background for bug 7442 */
 //#define DISABLE_FOR_BUG7442
+
+typedef GtkMenuShell *(*PopulateMenuFunc)(GtkMenuShell *);
 
 struct _XfceDesktopPrivate
 {
@@ -113,6 +117,8 @@ struct _XfceDesktopPrivate
 
     guint32 grab_time;
 
+    GtkWidget *active_root_menu;
+
 #ifdef ENABLE_DESKTOP_ICONS
     XfceDesktopIconStyle icons_style;
     gboolean icons_font_size_set;
@@ -126,13 +132,6 @@ struct _XfceDesktopPrivate
 #endif
 
     gchar *last_filename;
-};
-
-enum
-{
-    SIG_POPULATE_ROOT_MENU = 0,
-    SIG_POPULATE_SECONDARY_ROOT_MENU,
-    N_SIGNALS
 };
 
 enum
@@ -187,8 +186,6 @@ static gint xfce_desktop_get_current_workspace(XfceDesktop *desktop);
 static void hidden_state_changed_cb(GObject *object, XfceDesktop *desktop);
 #endif
 
-
-static guint signals[N_SIGNALS] = { 0, };
 
 /* private functions */
 
@@ -915,26 +912,6 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
     widget_class->popup_menu = xfce_desktop_popup_menu;
     widget_class->style_updated = xfce_desktop_style_updated;
 
-    signals[SIG_POPULATE_ROOT_MENU] = g_signal_new("populate-root-menu",
-                                                   XFCE_TYPE_DESKTOP,
-                                                   G_SIGNAL_RUN_LAST,
-                                                   G_STRUCT_OFFSET(XfceDesktopClass,
-                                                                   populate_root_menu),
-                                                   NULL, NULL,
-                                                   g_cclosure_marshal_VOID__OBJECT,
-                                                   G_TYPE_NONE, 1,
-                                                   GTK_TYPE_MENU_SHELL);
-
-    signals[SIG_POPULATE_SECONDARY_ROOT_MENU] = g_signal_new("populate-secondary-root-menu",
-                                                             XFCE_TYPE_DESKTOP,
-                                                             G_SIGNAL_RUN_LAST,
-                                                             G_STRUCT_OFFSET(XfceDesktopClass,
-                                                                             populate_secondary_root_menu),
-                                                             NULL, NULL,
-                                                             g_cclosure_marshal_VOID__OBJECT,
-                                                             G_TYPE_NONE, 1,
-                                                             GTK_TYPE_MENU_SHELL);
-
 #define XFDESKTOP_PARAM_FLAGS  (G_PARAM_READWRITE \
                                 | G_PARAM_CONSTRUCT \
                                 | G_PARAM_STATIC_NAME \
@@ -1026,6 +1003,10 @@ static void
 xfce_desktop_finalize(GObject *object)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(object);
+
+    if (desktop->priv->active_root_menu != NULL) {
+        gtk_menu_shell_deactivate(GTK_MENU_SHELL(desktop->priv->active_root_menu));
+    }
 
     g_object_unref(G_OBJECT(desktop->priv->channel));
     g_free(desktop->priv->property_prefix);
@@ -1834,16 +1815,33 @@ xfce_desktop_menu_destroy_idled(gpointer data)
 }
 
 static void
+xfce_desktop_menu_deactivated(GtkWidget *menu,
+                              XfceDesktop *desktop)
+{
+    if (desktop->priv->active_root_menu == menu) {
+        desktop->priv->active_root_menu = NULL;
+    }
+    g_idle_add(xfce_desktop_menu_destroy_idled, menu);
+}
+
+static void
 xfce_desktop_do_menu_popup(XfceDesktop *desktop,
                            guint button,
                            guint activate_time,
-                           guint populate_signal)
+                           gboolean populate_from_icon_view,
+                           PopulateMenuFunc populate_func)
 {
     GdkScreen *screen;
     GtkWidget *menu;
+    GtkWidget *actual_menu = NULL;
     GList *menu_children;
 
     DBG("entering");
+
+    if (desktop->priv->active_root_menu != NULL) {
+        gtk_menu_shell_deactivate(GTK_MENU_SHELL(desktop->priv->active_root_menu));
+        desktop->priv->active_root_menu = NULL;
+    }
 
     if(gtk_widget_has_screen(GTK_WIDGET(desktop)))
         screen = gtk_widget_get_screen(GTK_WIDGET(desktop));
@@ -1853,29 +1851,42 @@ xfce_desktop_do_menu_popup(XfceDesktop *desktop,
     menu = gtk_menu_new();
     gtk_menu_set_screen(GTK_MENU(menu), screen);
     gtk_menu_set_reserve_toggle_size (GTK_MENU (menu), FALSE);
-    g_signal_connect_swapped(G_OBJECT(menu), "deactivate",
-                             G_CALLBACK(g_idle_add),
-                             (gpointer)xfce_desktop_menu_destroy_idled);
 
-    g_signal_emit(G_OBJECT(desktop), populate_signal, 0, menu);
+#ifdef ENABLE_DESKTOP_ICONS
+    if (populate_from_icon_view && desktop->priv->icon_view != NULL) {
+        XfdesktopIconViewManager *manager = xfdesktop_icon_view_get_manager(XFDESKTOP_ICON_VIEW(desktop->priv->icon_view));
+        xfdesktop_icon_view_manager_populate_context_menu(manager, GTK_MENU_SHELL(menu));
+    }
+#endif
 
-    /* if nobody populated the menu, don't do anything */
-    menu_children = gtk_container_get_children(GTK_CONTAINER(menu));
-    if(!menu_children) {
+    actual_menu = GTK_WIDGET((*populate_func)(GTK_MENU_SHELL(menu)));
+    if (actual_menu != menu) {
+        g_object_ref_sink(menu);
         gtk_widget_destroy(menu);
-        return;
+        menu = NULL;
     }
 
-    g_list_free(menu_children);
+    /* if the toplevel is the garcon menu, it loads items asynchronously; calling _show() forces
+     * loading to complete.  otherwise, the _get_children() call would return NULL */
+    gtk_widget_show(actual_menu);
 
-    gtk_menu_attach_to_widget(GTK_MENU(menu), GTK_WIDGET(desktop), NULL);
+    /* if nobody populated the menu, don't do anything */
+    menu_children = gtk_container_get_children(GTK_CONTAINER(actual_menu));
+    if (menu_children != NULL) {
+        g_list_free(menu_children);
 
-    /* Per gtk_menu_popup's documentation "for conflict-resolve initiation of
-     * concurrent requests for mouse/keyboard grab requests." */
-    if(activate_time == 0)
-        activate_time = gtk_get_current_event_time();
+        gtk_menu_attach_to_widget(GTK_MENU(actual_menu), GTK_WIDGET(desktop), NULL);
+        g_signal_connect(actual_menu, "deactivate",
+                         G_CALLBACK(xfce_desktop_menu_deactivated), desktop);
 
-    xfce_gtk_menu_popup_until_mapped(GTK_MENU(menu), NULL, NULL, NULL, NULL, button, activate_time);
+        /* Per gtk_menu_popup's documentation "for conflict-resolve initiation of
+         * concurrent requests for mouse/keyboard grab requests." */
+        if(activate_time == 0)
+            activate_time = gtk_get_current_event_time();
+
+        desktop->priv->active_root_menu = actual_menu;
+        xfce_gtk_menu_popup_until_mapped(GTK_MENU(actual_menu), NULL, NULL, NULL, NULL, button, activate_time);
+    }
 }
 
 
@@ -1886,8 +1897,7 @@ xfce_desktop_popup_root_menu(XfceDesktop *desktop,
 {
     DBG("entering");
 
-    xfce_desktop_do_menu_popup(desktop, button, activate_time,
-                               signals[SIG_POPULATE_ROOT_MENU]);
+    xfce_desktop_do_menu_popup(desktop, button, activate_time, TRUE, menu_populate);
 
 }
 
@@ -1898,8 +1908,7 @@ xfce_desktop_popup_secondary_root_menu(XfceDesktop *desktop,
 {
     DBG("entering");
 
-    xfce_desktop_do_menu_popup(desktop, button, activate_time,
-                               signals[SIG_POPULATE_SECONDARY_ROOT_MENU]);
+    xfce_desktop_do_menu_popup(desktop, button, activate_time, FALSE, windowlist_populate);
 }
 
 void

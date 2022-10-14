@@ -32,7 +32,7 @@
 G_BEGIN_DECLS
 
 void menu_init(XfconfChannel *channel);
-void menu_attach(XfceDesktop *desktop);
+GtkMenuShell *menu_populate(GtkMenuShell *menu);
 void menu_cleanup(void);
 
 G_END_DECLS
