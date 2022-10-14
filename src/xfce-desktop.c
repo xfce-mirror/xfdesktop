@@ -480,6 +480,7 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     }
     if(monitor == -1)
         return;
+#ifdef USE_PATCHED_DM_ACCOUNTSERVICE_DBUS_API
     /* notify Accountsservice of the new bg (only for monitor0) */
     if(monitor == 0)
     {
@@ -494,6 +495,7 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
             g_free(new_filename);
         }
     }
+#endif
 
 #ifdef G_ENABLE_DEBUG
     XF_DEBUG("backdrop changed for workspace %d, monitor %d (%s)", current_workspace, monitor,
