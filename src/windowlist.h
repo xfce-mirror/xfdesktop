@@ -32,7 +32,7 @@
 G_BEGIN_DECLS
 
 void windowlist_init(XfconfChannel *channel);
-void windowlist_attach(XfceDesktop *desktop);
+GtkMenuShell *windowlist_populate(GtkMenuShell *menu);
 void windowlist_cleanup(void);
 
 G_END_DECLS

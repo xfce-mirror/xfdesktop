@@ -59,16 +59,6 @@ struct _XfceDesktop
 struct _XfceDesktopClass
 {
     GtkWindowClass parent_class;
-
-    /*< signals >*/
-
-    /* for the app menu/file context menu */
-    void (*populate_root_menu)(XfceDesktop *desktop,
-                               GtkMenuShell *menu);
-
-    /* for the windowlist menu */
-    void (*populate_secondary_root_menu)(XfceDesktop *desktop,
-                                         GtkMenuShell *menu);
 };
 
 GType xfce_desktop_get_type                     (void) G_GNUC_CONST;
