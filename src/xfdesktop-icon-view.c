@@ -3865,6 +3865,13 @@ xfdesktop_icon_view_new(XfdesktopIconViewManager *manager)
     return GTK_WIDGET(icon_view);
 }
 
+XfdesktopIconViewManager *
+xfdesktop_icon_view_get_manager(XfdesktopIconView *icon_view)
+{
+    g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view), NULL);
+    return icon_view->priv->manager;
+}
+
 static void
 xfdesktop_icon_view_add_item_internal(XfdesktopIconView *icon_view,
                                       XfdesktopIcon *icon)

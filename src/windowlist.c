@@ -232,11 +232,10 @@ set_label_color_insensitive(GtkWidget *lbl)
     pango_attr_list_unref (attrs);
 }
 
-static void
-windowlist_populate(XfceDesktop *desktop,
-                    GtkMenuShell *menu,
-                    gpointer user_data)
+GtkMenuShell *
+windowlist_populate(GtkMenuShell *menu)
 {
+    GtkMenuShell *top_menu = menu;
     GtkWidget *submenu, *mi, *label, *img;
     GdkScreen *gscreen;
     GList *menu_children;
@@ -250,7 +249,7 @@ windowlist_populate(XfceDesktop *desktop,
     gint w, h;
 
     if(!show_windowlist)
-        return;
+        return top_menu;
 
     if(gtk_widget_has_screen(GTK_WIDGET(menu)))
         gscreen = gtk_widget_get_screen(GTK_WIDGET(menu));
@@ -420,6 +419,8 @@ windowlist_populate(XfceDesktop *desktop,
                          G_CALLBACK(set_num_workspaces),
                          GINT_TO_POINTER(nworkspaces-1));
     }
+
+    return top_menu;
 }
 
 static void
@@ -473,13 +474,6 @@ windowlist_init(XfconfChannel *channel)
         g_signal_connect(G_OBJECT(channel), "property-changed",
                          G_CALLBACK(windowlist_settings_changed), NULL);
     }
-}
-
-void
-windowlist_attach(XfceDesktop *desktop)
-{
-    g_signal_connect_after(G_OBJECT(desktop), "populate-secondary-root-menu",
-                           G_CALLBACK(windowlist_populate), NULL);
 }
 
 void

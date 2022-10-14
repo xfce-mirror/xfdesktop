@@ -50,12 +50,10 @@ static gboolean show_desktop_menu_icons = TRUE;
 static GarconMenu *garcon_menu = NULL;
 #endif
 
-#ifdef USE_DESKTOP_MENU
-static void
-menu_populate(XfceDesktop *desktop,
-              GtkMenuShell *menu,
-              gpointer user_data)
+GtkMenuShell *
+menu_populate(GtkMenuShell *menu)
 {
+#ifdef USE_DESKTOP_MENU
     GtkWidget *mi, *img = NULL;
     GtkIconTheme *itheme = gtk_icon_theme_get_default();
     GtkWidget *desktop_menu = NULL;
@@ -64,7 +62,7 @@ menu_populate(XfceDesktop *desktop,
     TRACE("ENTERING");
 
     if(!show_desktop_menu)
-        return;
+        return menu;
 
     /* init garcon environment */
     garcon_set_environment_xdg(GARCON_ENVIRONMENT_XFCE);
@@ -97,17 +95,15 @@ menu_populate(XfceDesktop *desktop,
         gtk_menu_item_set_submenu (GTK_MENU_ITEM(mi), desktop_menu);
 
         gtk_menu_shell_append(menu, mi);
+
+        return menu;
+    } else {
+        return GTK_MENU_SHELL(desktop_menu);
     }
-    /* just get the menu as a list of toplevel GtkMenuItems instead of
-    * a toplevel menu */
-    else
-    {
-        g_object_ref_sink(G_OBJECT(desktop_menu));
-        xfce_gtk_menu_popup_until_mapped(GTK_MENU(desktop_menu), NULL, NULL, NULL, NULL, 3, gtk_get_current_event_time());
-        g_object_unref(G_OBJECT(desktop_menu));
-    }
-}
+#else  /* !USE_DESKTOP_MENU */
+    return menu;
 #endif /* USE_DESKTOP_MENU */
+}
 
 #ifdef USE_DESKTOP_MENU
 static void
@@ -153,16 +149,6 @@ menu_init(XfconfChannel *channel)
                          G_CALLBACK(menu_settings_changed), NULL);
     }
 #endif
-}
-
-void
-menu_attach(XfceDesktop *desktop)
-{
-#ifdef USE_DESKTOP_MENU
-    DBG("attached default menu");
-    g_signal_connect_after(G_OBJECT(desktop), "populate-root-menu",
-                           G_CALLBACK(menu_populate), NULL);
-#endif /* USE_DESKTOP_MENU */
 }
 
 void

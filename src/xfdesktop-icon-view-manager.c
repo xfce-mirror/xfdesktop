@@ -157,3 +157,17 @@ xfdesktop_icon_view_manager_propose_drop_action(XfdesktopIconViewManager *manage
     return iface->propose_drop_action(manager, drop_icon, action, context, data,
                                       info);
 }
+
+void
+xfdesktop_icon_view_manager_populate_context_menu(XfdesktopIconViewManager *manager,
+                                                  GtkMenuShell *menu)
+{
+    XfdesktopIconViewManagerIface *iface;
+
+    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW_MANAGER(manager));
+
+    iface = XFDESKTOP_ICON_VIEW_MANAGER_GET_IFACE(manager);
+    if (iface->populate_context_menu != NULL) {
+        iface->populate_context_menu(manager, menu);
+    }
+}

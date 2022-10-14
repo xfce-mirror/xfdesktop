@@ -74,6 +74,8 @@ struct _XfdesktopIconViewManagerIface
                                          GdkDragContext *context,
                                          GtkSelectionData *data,
                                          guint info);
+    void (*populate_context_menu)(XfdesktopIconViewManager *manager,
+                                  GtkMenuShell *menu);
 };
 
 GType xfdesktop_icon_view_manager_get_type(void) G_GNUC_CONST;
@@ -111,7 +113,8 @@ GdkDragAction xfdesktop_icon_view_manager_propose_drop_action(XfdesktopIconViewM
                                                               GtkSelectionData *data,
                                                               guint info);
 
-
+void xfdesktop_icon_view_manager_populate_context_menu(XfdesktopIconViewManager *manager,
+                                                       GtkMenuShell *menu);
 
 G_END_DECLS
 

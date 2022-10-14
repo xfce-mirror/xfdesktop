@@ -56,6 +56,8 @@ static gboolean xfdesktop_window_icon_manager_real_init(XfdesktopIconViewManager
                                                         XfdesktopIconView *icon_view);
 static void xfdesktop_window_icon_manager_fini(XfdesktopIconViewManager *manager);
 
+static void xfdesktop_window_icon_manager_populate_context_menu(XfdesktopIconViewManager *manager,
+                                                                GtkMenuShell *menu);
 enum
 {
     PROP0 = 0,
@@ -171,6 +173,7 @@ xfdesktop_window_icon_manager_icon_view_manager_init(XfdesktopIconViewManagerIfa
 {
     iface->manager_init = xfdesktop_window_icon_manager_real_init;
     iface->manager_fini = xfdesktop_window_icon_manager_fini;
+    iface->populate_context_menu = xfdesktop_window_icon_manager_populate_context_menu;
 }
 
 
@@ -500,18 +503,16 @@ window_created_cb(WnckScreen *wnck_screen,
 }
 
 static void
-xfdesktop_window_icon_manager_populate_context_menu(XfceDesktop *desktop,
-                                                    GtkMenuShell *menu,
-                                                    gpointer user_data)
+xfdesktop_window_icon_manager_populate_context_menu(XfdesktopIconViewManager *manager,
+                                                    GtkMenuShell *menu)
 {
-    XfdesktopWindowIconManager *wmanager = XFDESKTOP_WINDOW_ICON_MANAGER(user_data);
+    XfdesktopWindowIconManager *wmanager = XFDESKTOP_WINDOW_ICON_MANAGER(manager);
     XfdesktopWindowIconWorkspace *wiws = wmanager->priv->icon_workspaces[wmanager->priv->active_ws_num];
 
-    if(!wiws->selected_icon)
-        return;
-
-    xfdesktop_icon_populate_context_menu(XFDESKTOP_ICON(wiws->selected_icon),
-                                         GTK_WIDGET(menu));
+    if (wiws->selected_icon != NULL) {
+        xfdesktop_icon_populate_context_menu(XFDESKTOP_ICON(wiws->selected_icon),
+                                             GTK_WIDGET(menu));
+    }
 }
 
 
@@ -544,9 +545,6 @@ xfdesktop_window_icon_manager_real_init(XfdesktopIconViewManager *manager,
                      wmanager);
 
     wmanager->priv->desktop = gtk_widget_get_toplevel(GTK_WIDGET(icon_view));
-    g_signal_connect(G_OBJECT(wmanager->priv->desktop), "populate-root-menu",
-                     G_CALLBACK(xfdesktop_window_icon_manager_populate_context_menu),
-                     wmanager);
 
     wnck_screen_force_update(wmanager->priv->wnck_screen);
     g_signal_connect(G_OBJECT(wmanager->priv->wnck_screen),
@@ -609,10 +607,6 @@ xfdesktop_window_icon_manager_fini(XfdesktopIconViewManager *manager)
                                          wmanager);
     g_signal_handlers_disconnect_by_func(G_OBJECT(wmanager->priv->wnck_screen),
                                          G_CALLBACK(workspace_destroyed_cb),
-                                         wmanager);
-
-    g_signal_handlers_disconnect_by_func(G_OBJECT(wmanager->priv->desktop),
-                                         G_CALLBACK(xfdesktop_window_icon_manager_populate_context_menu),
                                          wmanager);
 
     windows = wnck_screen_get_windows(wmanager->priv->wnck_screen);
