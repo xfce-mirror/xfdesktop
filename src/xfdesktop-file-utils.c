@@ -1589,8 +1589,8 @@ xfdesktop_file_utils_transfer_files(GdkDragAction action,
 
         g_free(startup_id);
         g_free(display_name);
-        g_free(target_uris[0]);
-        g_free(source_uris[0]);
+        g_strfreev(target_uris);
+        g_strfreev(source_uris);
     } else {
         xfce_message_dialog(NULL,
                             _("Transfer Error"), "dialog-error",
