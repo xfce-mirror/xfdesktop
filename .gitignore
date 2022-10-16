@@ -11,10 +11,10 @@ Makefile
 .*.swp
 *stamp
 stamp*
+*~
 config.log
 config.h
 config.cache
-config.h.in~
 autom4te.cache
 config.status
 stamp-h1
@@ -38,8 +38,8 @@ intltool-*
 INSTALL
 config.status.lineno
 ChangeLog
-config.h.in~
 cov-int/
+compile_flags.txt
 common/xfdesktop-marshal.c
 common/xfdesktop-marshal.h
 common/tumbler.c
