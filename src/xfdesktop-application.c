@@ -714,6 +714,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
     /* setup the session management options */
     app->sm_client = xfce_sm_client_get();
+    g_object_add_weak_pointer(G_OBJECT(app->sm_client), (gpointer *)&app->sm_client);
     xfce_sm_client_set_restart_style(app->sm_client, XFCE_SM_CLIENT_RESTART_IMMEDIATELY);
     xfce_sm_client_set_priority(app->sm_client, XFCE_SM_CLIENT_PRIORITY_DESKTOP);
     g_signal_connect(app->sm_client, "quit", G_CALLBACK(session_die), app);
@@ -729,11 +730,14 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                   PACKAGE, error->message);
         g_clear_error(&error);
         error = NULL;
-    } else
+    } else {
         app->channel = xfconf_channel_get(XFDESKTOP_CHANNEL);
+        g_object_add_weak_pointer(G_OBJECT(app->channel), (gpointer *)&app->channel);
+    }
 
     g_snprintf(buf, sizeof(buf), "/backdrop/screen%d/", screen_num);
     app->desktop = xfce_desktop_new(gscreen, app->channel, buf);
+    g_object_add_weak_pointer(G_OBJECT(app->desktop), (gpointer *)&app->desktop);
 
     /* hook into the scroll event so we can forward it to the window
      * manager */
@@ -796,15 +800,15 @@ xfdesktop_application_shutdown(GApplication *g_application)
     menu_cleanup();
     windowlist_cleanup();
 
-    if(app->desktop) {
-        /* ensure the desktop gets freed if it hasen't been */
-        if(app->desktop && GTK_IS_WIDGET(app->desktop))
-            gtk_widget_destroy(app->desktop);
-
-        app->desktop = NULL;
+    if (app->desktop != NULL) {
+        gtk_widget_destroy(app->desktop);
     }
 
     xfconf_shutdown();
+
+    if (app->sm_client != NULL) {
+        g_object_unref(app->sm_client);
+    }
 
 #ifdef HAVE_LIBNOTIFY
     xfdesktop_notify_uninit();
