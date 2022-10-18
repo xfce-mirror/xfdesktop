@@ -2113,8 +2113,8 @@ xfdesktop_file_icon_manager_get_cached_icon_position(XfdesktopFileIconManager *f
     gboolean ret = FALSE;
     gint x = 0, y = 0, width = 0, height = 0;
 
-    if(!fmanager || !fmanager->priv)
-        return FALSE;
+    g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON_MANAGER(fmanager) && fmanager->priv != NULL, FALSE);
+    g_return_val_if_fail(row != NULL && col != NULL, FALSE);
 
     if(!xfdesktop_get_workarea_single(fmanager->priv->icon_view,
                                        0,
@@ -2155,25 +2155,33 @@ xfdesktop_file_icon_manager_get_cached_icon_position(XfdesktopFileIconManager *f
     }
 
     if(filename != NULL) {
-        XfceRc *rcfile;
-        const gchar *icon_name;
-        rcfile = xfce_rc_simple_open(filename, TRUE);
+        XfceRc *rcfile = xfce_rc_simple_open(filename, TRUE);
 
-        /* Newer versions use the identifier rather than the icon label when
-         * possible */
-        if(xfce_rc_has_group(rcfile, XFDESKTOP_RC_VERSION_STAMP) && identifier)
-            icon_name = identifier;
-        else
-            icon_name = name;
+        if (rcfile != NULL) {
+            gboolean has_group = FALSE;
 
-        if(xfce_rc_has_group(rcfile, icon_name)) {
-            xfce_rc_set_group(rcfile, icon_name);
-            *row = xfce_rc_read_int_entry(rcfile, "row", -1);
-            *col = xfce_rc_read_int_entry(rcfile, "col", -1);
-            if(*row >= 0 && *col >= 0)
-                ret = TRUE;
+            /* Newer versions use the identifier rather than the icon label when
+             * possible */
+            if (xfce_rc_has_group(rcfile, XFDESKTOP_RC_VERSION_STAMP)
+                && identifier != NULL
+                && xfce_rc_has_group(rcfile, identifier))
+            {
+                xfce_rc_set_group(rcfile, identifier);
+                has_group = TRUE;
+            } else if (xfce_rc_has_group(rcfile, name)) {
+                xfce_rc_set_group(rcfile, name);
+                has_group = TRUE;
+            }
+
+            if (has_group) {
+                *row = xfce_rc_read_int_entry(rcfile, "row", -1);
+                *col = xfce_rc_read_int_entry(rcfile, "col", -1);
+                if(*row >= 0 && *col >= 0)
+                    ret = TRUE;
+            }
+            xfce_rc_close(rcfile);
         }
-        xfce_rc_close(rcfile);
+
         g_free(filename);
     }
 
