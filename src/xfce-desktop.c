@@ -57,15 +57,16 @@
 #include <time.h>
 #endif
 
-#include <X11/Xlib.h>
-#include <X11/Xatom.h>
-
 #include <glib.h>
-#include <gdk/gdkx.h>
 #include <gtk/gtk.h>
 #include <gio/gio.h>
 
+#ifdef ENABLE_X11
+#include <X11/Xlib.h>
+#include <X11/Xatom.h>
+#include <gdk/gdkx.h>
 #include <cairo-xlib.h>
+#endif  /* ENABLE_X11 */
 
 #ifdef ENABLE_DESKTOP_ICONS
 #include "xfdesktop-icon-view.h"
@@ -78,9 +79,9 @@
 
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4ui/libxfce4ui.h>
+#include <libxfce4windowing/libxfce4windowing.h>
 
 #include <xfconf/xfconf.h>
-#include <libwnck/libwnck.h>
 
 #include "menu.h"
 #include "windowlist.h"
@@ -97,7 +98,8 @@ typedef GtkMenuShell *(*PopulateMenuFunc)(GtkMenuShell *);
 struct _XfceDesktopPrivate
 {
     GdkScreen *gscreen;
-    WnckScreen *wnck_screen;
+    XfwScreen *xfw_screen;
+    XfwWorkspaceManager *workspace_manager;
     gboolean updates_frozen;
 
     XfconfChannel *channel;
@@ -285,29 +287,32 @@ xfce_desktop_setup_icon_view(XfceDesktop *desktop)
 }
 #endif
 
+#ifdef ENABLE_X11
 static void
 set_imgfile_root_property(XfceDesktop *desktop, const gchar *filename,
                           gint monitor)
 {
-    GdkDisplay *display;
-    gchar property_name[128];
+    if (xfw_windowing_get() == XFW_WINDOWING_X11) {
+        GdkDisplay *display;
+        gchar property_name[128];
 
-    display = gdk_screen_get_display(desktop->priv->gscreen);
-    gdk_x11_display_error_trap_push(display);
+        display = gdk_screen_get_display(desktop->priv->gscreen);
+        xfw_windowing_error_trap_push(display);
 
-    g_snprintf(property_name, 128, XFDESKTOP_IMAGE_FILE_FMT, monitor);
-    if(filename) {
-        gdk_property_change(gdk_screen_get_root_window(desktop->priv->gscreen),
-                            gdk_atom_intern(property_name, FALSE),
-                            gdk_x11_xatom_to_atom(XA_STRING), 8,
-                            GDK_PROP_MODE_REPLACE,
-                            (guchar *)filename, strlen(filename)+1);
-    } else {
-        gdk_property_delete(gdk_screen_get_root_window(desktop->priv->gscreen),
-                            gdk_atom_intern(property_name, FALSE));
+        g_snprintf(property_name, 128, XFDESKTOP_IMAGE_FILE_FMT, monitor);
+        if(filename) {
+            gdk_property_change(gdk_screen_get_root_window(desktop->priv->gscreen),
+                                gdk_atom_intern(property_name, FALSE),
+                                gdk_x11_xatom_to_atom(XA_STRING), 8,
+                                GDK_PROP_MODE_REPLACE,
+                                (guchar *)filename, strlen(filename)+1);
+        } else {
+            gdk_property_delete(gdk_screen_get_root_window(desktop->priv->gscreen),
+                                gdk_atom_intern(property_name, FALSE));
+        }
+
+        xfw_windowing_error_trap_pop_ignored(display);
     }
-
-    gdk_x11_display_error_trap_pop_ignored(display);
 }
 
 static void
@@ -324,7 +329,7 @@ set_real_root_window_surface(GdkScreen *gscreen,
     pixmap_id = cairo_xlib_surface_get_drawable (surface);
 
     display = gdk_screen_get_display(gscreen);
-    gdk_x11_display_error_trap_push(display);
+    xfw_windowing_error_trap_push(display);
 
     /* set root property for transparent Eterms */
     gdk_property_change(groot,
@@ -339,9 +344,10 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     cairo_pattern_destroy(pattern);
     /* there really should be a standard for this crap... */
 
-    gdk_x11_display_error_trap_pop_ignored(display);
+    xfw_windowing_error_trap_pop_ignored(display);
 #endif
 }
+#endif  /* ENABLE_X11 */
 
 static cairo_surface_t *
 create_bg_surface(GdkScreen *gscreen, gpointer user_data)
@@ -613,12 +619,14 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
         gtk_widget_queue_draw_area(GTK_WIDGET(desktop), rect.x, rect.y,
                                    rect.width, rect.height);
 
+#ifdef ENABLE_X11
         set_imgfile_root_property(desktop,
                                   xfce_backdrop_get_image_filename(backdrop),
                                   monitor);
 
         /* do this again so apps watching the root win notice the update */
         set_real_root_window_surface(gscreen, surface);
+#endif  /* ENABLE_X11 */
 
         g_object_unref(G_OBJECT(pix));
         cairo_destroy(cr);
@@ -726,8 +734,8 @@ workspace_backdrop_changed_cb(XfceWorkspace *workspace,
 }
 
 static void
-workspace_changed_cb(WnckScreen *wnck_screen,
-                     WnckWorkspace *previously_active_space,
+workspace_changed_cb(XfwScreen *xfw_screen,
+                     XfwWorkspace *previously_active_space,
                      gpointer user_data)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(user_data);
@@ -753,7 +761,7 @@ workspace_changed_cb(WnckScreen *wnck_screen,
     for(i = 0; i < xfce_desktop_get_n_monitors(desktop); i++) {
         backdrop = xfce_workspace_get_backdrop(desktop->priv->workspaces[new_workspace], i);
         /* update it */
-        backdrop_changed_cb(backdrop, user_data);
+        backdrop_changed_cb(backdrop, desktop);
 
         /* When we're spanning screens we only care about the first monitor */
         if(xfce_workspace_get_xinerama_stretch(desktop->priv->workspaces[new_workspace]))
@@ -762,12 +770,13 @@ workspace_changed_cb(WnckScreen *wnck_screen,
 }
 
 static void
-workspace_created_cb(WnckScreen *wnck_screen,
-                     WnckWorkspace *new_workspace,
+workspace_created_cb(XfwScreen *screen,
+                     XfwWorkspace *new_workspace,
                      gpointer user_data)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(user_data);
     gint nlast_workspace;
+
     TRACE("entering");
 
     nlast_workspace = desktop->priv->nworkspaces;
@@ -794,9 +803,9 @@ workspace_created_cb(WnckScreen *wnck_screen,
 }
 
 static void
-workspace_destroyed_cb(WnckScreen *wnck_screen,
-                     WnckWorkspace *old_workspace,
-                     gpointer user_data)
+workspace_destroyed_cb(XfwScreen *screen,
+                       XfwWorkspace *old_workspace,
+                       gpointer user_data)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(user_data);
     gint nlast_workspace;
@@ -827,7 +836,47 @@ workspace_destroyed_cb(WnckScreen *wnck_screen,
 }
 
 static void
-screen_set_selection(XfceDesktop *desktop)
+workspace_group_created_cb(XfwScreen *screen,
+                           XfwWorkspaceGroup *group,
+                           gpointer user_data)
+{
+    XfceDesktop *desktop = XFCE_DESKTOP(user_data);
+
+    TRACE("entering");
+
+    g_signal_connect(group, "active-workspace-changed",
+                     G_CALLBACK(workspace_changed_cb), desktop);
+    g_signal_connect(group, "workspace-created",
+                     G_CALLBACK(workspace_created_cb), desktop);
+    g_signal_connect(group, "workspace-destroyed",
+                     G_CALLBACK(workspace_destroyed_cb), desktop);
+}
+
+static void
+workspace_group_destroyed_cb(XfwScreen *screen,
+                             XfwWorkspaceGroup *group,
+                             gpointer user_data)
+{
+    XfceDesktop *desktop = XFCE_DESKTOP(user_data);
+
+    TRACE("entering");
+
+    g_signal_handlers_disconnect_by_func(group, G_CALLBACK(workspace_changed_cb), desktop);
+    g_signal_handlers_disconnect_by_func(group, G_CALLBACK(workspace_created_cb), desktop);
+    g_signal_handlers_disconnect_by_func(group, G_CALLBACK(workspace_destroyed_cb), desktop);
+
+    for (GList *l = xfw_workspace_group_list_workspaces(group);
+         l != NULL;
+         l = l->next)
+    {
+        workspace_destroyed_cb(desktop->priv->xfw_screen, XFW_WORKSPACE(l->data), desktop);
+    }
+}
+
+
+#ifdef ENABLE_X11
+static void
+screen_set_x11_selection(XfceDesktop *desktop)
 {
     Window xwin;
     gint xscreen;
@@ -884,6 +933,7 @@ screen_set_selection(XfceDesktop *desktop)
         exit(1);
     }
 }
+#endif  /* ENABLE_X11 */
 
 
 
@@ -1131,9 +1181,8 @@ xfce_desktop_realize(GtkWidget *widget)
     XfceDesktop *desktop = XFCE_DESKTOP(widget);
     GdkAtom atom;
     gint sw, sh;
-    Window xid;
-    GdkWindow *groot;
-    WnckScreen *wnck_screen;
+    XfwScreen *xfw_screen;
+    XfwWorkspaceManager *workspace_manager;
 
     TRACE("entering");
 
@@ -1159,23 +1208,29 @@ xfce_desktop_realize(GtkWidget *widget)
             gdk_atom_intern("ATOM", FALSE), 32,
             GDK_PROP_MODE_REPLACE, (guchar *)&atom, 1);
 
-    xid = GDK_WINDOW_XID(gtk_widget_get_window(GTK_WIDGET(desktop)));
-    groot = gdk_screen_get_root_window(desktop->priv->gscreen);
+#ifdef ENABLE_X11
+    if (xfw_windowing_get() == XFW_WINDOWING_X11) {
+        Window xid = GDK_WINDOW_XID(gtk_widget_get_window(GTK_WIDGET(desktop)));
+        GdkWindow *groot = gdk_screen_get_root_window(desktop->priv->gscreen);
 
-    gdk_property_change(groot,
-            gdk_atom_intern("XFCE_DESKTOP_WINDOW", FALSE),
-            gdk_atom_intern("WINDOW", FALSE), 32,
-            GDK_PROP_MODE_REPLACE, (guchar *)&xid, 1);
+        gdk_property_change(groot,
+                gdk_atom_intern("XFCE_DESKTOP_WINDOW", FALSE),
+                gdk_atom_intern("WINDOW", FALSE), 32,
+                GDK_PROP_MODE_REPLACE, (guchar *)&xid, 1);
 
-    gdk_property_change(groot,
-            gdk_atom_intern("NAUTILUS_DESKTOP_WINDOW_ID", FALSE),
-            gdk_atom_intern("WINDOW", FALSE), 32,
-            GDK_PROP_MODE_REPLACE, (guchar *)&xid, 1);
+        gdk_property_change(groot,
+                gdk_atom_intern("NAUTILUS_DESKTOP_WINDOW_ID", FALSE),
+                gdk_atom_intern("WINDOW", FALSE), 32,
+                GDK_PROP_MODE_REPLACE, (guchar *)&xid, 1);
 
-    screen_set_selection(desktop);
+        screen_set_x11_selection(desktop);
+    }
+#endif  /* ENABLE_X11 */
 
-    wnck_screen = wnck_screen_get(gdk_x11_screen_get_screen_number(desktop->priv->gscreen));
-    desktop->priv->wnck_screen = wnck_screen;
+    xfw_screen = xfw_screen_get_default();
+    desktop->priv->xfw_screen = xfw_screen;
+    workspace_manager = xfw_screen_get_workspace_manager(xfw_screen);
+    desktop->priv->workspace_manager = workspace_manager;
 
     /* Watch for single workspace setting changes */
     xfconf_g_property_bind(desktop->priv->channel,
@@ -1186,12 +1241,23 @@ xfce_desktop_realize(GtkWidget *widget)
                            G_OBJECT(desktop), "single-workspace-number");
 
     /* watch for workspace changes */
-    g_signal_connect(desktop->priv->wnck_screen, "active-workspace-changed",
-                     G_CALLBACK(workspace_changed_cb), desktop);
-    g_signal_connect(desktop->priv->wnck_screen, "workspace-created",
-                     G_CALLBACK(workspace_created_cb), desktop);
-    g_signal_connect(desktop->priv->wnck_screen, "workspace-destroyed",
-                     G_CALLBACK(workspace_destroyed_cb), desktop);
+    for (GList *gl = xfw_workspace_manager_list_workspace_groups(workspace_manager);
+         gl != NULL;
+         gl = gl->next)
+    {
+        XfwWorkspaceGroup *group = XFW_WORKSPACE_GROUP(gl->data);
+        workspace_group_created_cb(xfw_screen, group, desktop);
+        for (GList *wl = xfw_workspace_group_list_workspaces(group);
+             wl != NULL;
+             wl = wl->next)
+        {
+            workspace_created_cb(xfw_screen, XFW_WORKSPACE(wl->data), desktop);
+        }
+    }
+    g_signal_connect(workspace_manager, "workspace-group-created",
+                     G_CALLBACK(workspace_group_created_cb), desktop);
+    g_signal_connect(workspace_manager, "workspace-group-destroyed",
+                     G_CALLBACK(workspace_group_destroyed_cb), desktop);
 
     /* watch for screen changes */
     g_signal_connect(G_OBJECT(desktop->priv->gscreen), "size-changed",
@@ -1204,6 +1270,8 @@ xfce_desktop_realize(GtkWidget *widget)
 #ifdef ENABLE_DESKTOP_ICONS
     xfce_desktop_setup_icon_view(desktop);
 #endif
+
+    xfce_desktop_refresh(desktop, FALSE, TRUE);
 
     TRACE("exiting");
 }
@@ -1240,7 +1308,7 @@ xfce_desktop_unrealize(GtkWidget *widget)
             G_CALLBACK(screen_composited_changed_cb), desktop);
 
     display = gdk_screen_get_display(desktop->priv->gscreen);
-    gdk_x11_display_error_trap_push(display);
+    xfw_windowing_error_trap_push(display);
 
     groot = gdk_screen_get_root_window(desktop->priv->gscreen);
     gdk_property_delete(groot, gdk_atom_intern("XFCE_DESKTOP_WINDOW", FALSE));
@@ -1264,7 +1332,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     }
 
     gdk_display_flush(display);
-    gdk_x11_display_error_trap_pop_ignored(display);
+    xfw_windowing_error_trap_pop_ignored(display);
 
     if(desktop->priv->bg_surface) {
         cairo_surface_destroy(desktop->priv->bg_surface);
@@ -1494,15 +1562,24 @@ xfce_desktop_get_single_workspace_mode(XfceDesktop *desktop)
 static gint
 xfce_desktop_get_current_workspace(XfceDesktop *desktop)
 {
-    WnckWorkspace *wnck_workspace;
+    XfwWorkspace *workspace = NULL;
     gint workspace_num, current_workspace;
 
     g_return_val_if_fail(XFCE_IS_DESKTOP(desktop), -1);
 
-    wnck_workspace = wnck_screen_get_active_workspace(desktop->priv->wnck_screen);
-
-    if(wnck_workspace != NULL) {
-        workspace_num = wnck_workspace_get_number(wnck_workspace);
+    // TODO: handle multiple workspace groups somehow
+    for (GList *l = xfw_workspace_manager_list_workspace_groups(desktop->priv->workspace_manager);
+         l != NULL;
+         l = l->next)
+    {
+        workspace = xfw_workspace_group_get_active_workspace(XFW_WORKSPACE_GROUP(l->data));
+        if (workspace != NULL) {
+            break;
+        }
+    }
+    if (workspace != NULL) {
+        gint n_ws;
+        xfdesktop_workspace_get_number_and_total(desktop->priv->workspace_manager, workspace, &workspace_num, &n_ws);
     } else {
         workspace_num = desktop->priv->nworkspaces;
     }
