@@ -38,12 +38,12 @@
 
 #include "xfdesktop-common.h"
 #include "menu.h"
-#ifdef USE_DESKTOP_MENU
+#ifdef ENABLE_DESKTOP_MENU
 #include <garcon/garcon.h>
 #include <garcon-gtk/garcon-gtk.h>
 #endif
 
-#ifdef USE_DESKTOP_MENU
+#ifdef ENABLE_DESKTOP_MENU
 static gboolean show_delete_option = TRUE;
 static gboolean show_desktop_menu = TRUE;
 static gboolean show_desktop_menu_icons = TRUE;
@@ -53,7 +53,7 @@ static GarconMenu *garcon_menu = NULL;
 GtkMenuShell *
 menu_populate(GtkMenuShell *menu)
 {
-#ifdef USE_DESKTOP_MENU
+#ifdef ENABLE_DESKTOP_MENU
     GtkWidget *mi, *img = NULL;
     GtkIconTheme *itheme = gtk_icon_theme_get_default();
     GtkWidget *desktop_menu = NULL;
@@ -100,23 +100,23 @@ menu_populate(GtkMenuShell *menu)
     } else {
         return GTK_MENU_SHELL(desktop_menu);
     }
-#else  /* !USE_DESKTOP_MENU */
+#else  /* !ENABLE_DESKTOP_MENU */
     return menu;
-#endif /* USE_DESKTOP_MENU */
+#endif /* ENABLE_DESKTOP_MENU */
 }
 
-#ifdef USE_DESKTOP_MENU
+#ifdef ENABLE_DESKTOP_MENU
 static void
 menu_settings_changed(XfconfChannel *channel,
                       const gchar *property,
                       const GValue *value,
                       gpointer user_data)
 {
-    if(!strcmp(property, "/desktop-menu/show")) {
+    if(!strcmp(property, XFCONF_DESKTOP_MENU_SHOW)) {
         show_desktop_menu = G_VALUE_TYPE(value)
                             ? g_value_get_boolean(value)
                             : TRUE;
-    } else if(!strcmp(property, "/desktop-menu/show-icons")) {
+    } else if(!strcmp(property, XFCONF_DESKTOP_MENU_SHOW_ICONS)) {
         show_desktop_menu_icons = G_VALUE_TYPE(value)
                                   ? g_value_get_boolean(value)
                                   : TRUE;
@@ -127,17 +127,17 @@ menu_settings_changed(XfconfChannel *channel,
 void
 menu_init(XfconfChannel *channel)
 {
-#ifdef USE_DESKTOP_MENU
+#ifdef ENABLE_DESKTOP_MENU
     if(channel) {
-        show_delete_option = xfconf_channel_get_bool(channel, DESKTOP_MENU_DELETE, TRUE);
+        show_delete_option = xfconf_channel_get_bool(channel, XFCONF_DESKTOP_MENU_DELETE, TRUE);
     }
 
-    if(!channel || xfconf_channel_get_bool(channel, "/desktop-menu/show", TRUE))
+    if(!channel || xfconf_channel_get_bool(channel, XFCONF_DESKTOP_MENU_SHOW, TRUE))
     {
         show_desktop_menu = TRUE;
         if(channel) {
             show_desktop_menu_icons = xfconf_channel_get_bool(channel,
-                                                              "/desktop-menu/show-icons",
+                                                              XFCONF_DESKTOP_MENU_SHOW_ICONS,
                                                               TRUE);
         }
     } else {
