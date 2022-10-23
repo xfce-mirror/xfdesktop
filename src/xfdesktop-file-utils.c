@@ -62,6 +62,11 @@
 #include "xfdesktop-trash-proxy.h"
 #include "xfdesktop-thunar-proxy.h"
 
+typedef struct {
+    GtkWindow *parent;
+    GFile *file;
+} ExecuteData;
+
 static void xfdesktop_file_utils_add_emblems(GdkPixbuf *pix, GList *emblems);
 
 static XfdesktopTrash       *xfdesktop_file_utils_peek_trash_proxy(void);
@@ -1278,6 +1283,38 @@ xfdesktop_file_utils_launch(GFile *file,
     }
 }
 
+static void
+execute_finished_cb(GObject *source,
+                    GAsyncResult *res,
+                    gpointer user_data)
+{
+    ExecuteData *edata = (ExecuteData *)user_data;
+    gboolean ret;
+    GError *error = NULL;
+
+    ret = xfdesktop_file_manager_call_execute_finish(XFDESKTOP_FILE_MANAGER(source), res, &error);
+    if (!ret) {
+        gchar *filename = g_file_get_uri(edata->file);
+        gchar *name = g_filename_display_basename(filename);
+        gchar *primary = g_markup_printf_escaped(_("Failed to run \"%s\""), name);
+
+        xfce_message_dialog(edata->parent,
+                            _("Launch Error"), "dialog-error",
+                            primary, error->message,
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            NULL);
+
+        g_free(primary);
+        g_free(name);
+        g_free(filename);
+        g_error_free(error);
+    }
+
+    g_object_unref(edata->parent);
+    g_object_unref(edata->file);
+    g_free(edata);
+}
+
 gboolean
 xfdesktop_file_utils_execute(GFile *working_directory,
                              GFile *file,
@@ -1298,7 +1335,7 @@ xfdesktop_file_utils_execute(GFile *working_directory,
 
     fileman_proxy = xfdesktop_file_utils_peek_filemanager_proxy();
     if(fileman_proxy) {
-        GError *error = NULL;
+        ExecuteData *edata;
         gchar *working_dir = working_directory != NULL ? g_file_get_uri(working_directory) : NULL;
         const gchar *path_prop;
         gchar *uri = g_file_get_uri(file);
@@ -1341,29 +1378,18 @@ xfdesktop_file_utils_execute(GFile *working_directory,
                 g_object_unref(info);
         }
 
-        if(!xfdesktop_file_manager_call_execute_sync(fileman_proxy,
-                                                     working_dir, uri,
-                                                     (const gchar **)uris,
-                                                     display_name, startup_id,
-                                                     NULL, &error))
-        {
-            gchar *filename = g_file_get_uri(file);
-            gchar *name = g_filename_display_basename(filename);
-            gchar *primary = g_markup_printf_escaped(_("Failed to run \"%s\""), name);
-
-            xfce_message_dialog(parent,
-                                _("Launch Error"), "dialog-error",
-                                primary, error->message,
-                                XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
-                                NULL);
-
-            g_free(primary);
-            g_free(name);
-            g_free(filename);
-            g_clear_error(&error);
-
-            success = FALSE;
-        }
+        edata = g_new0(ExecuteData, 1);
+        edata->parent = g_object_ref(parent);
+        edata->file = g_object_ref(file);
+        xfdesktop_file_manager_call_execute(fileman_proxy,
+                                            working_dir,
+                                            uri,
+                                            (const gchar **)uris,
+                                            display_name,
+                                            startup_id,
+                                            NULL,
+                                            execute_finished_cb,
+                                            edata);
 
         g_free(startup_id);
         g_strfreev(uris);
