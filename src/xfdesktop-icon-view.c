@@ -74,6 +74,8 @@
 #define TEXT_HEIGHT       (CELL_SIZE - ICON_SIZE - SPACING - (CELL_PADDING * 2) - LABEL_RADIUS)
 #define MIN_MARGIN        8
 
+#define KEYBOARD_NAVIGATION_TIMEOUT  1500
+
 #if defined(DEBUG) && DEBUG > 0
 #define DUMP_GRID_LAYOUT(icon_view) \
 {\
@@ -157,6 +159,10 @@ struct _XfdesktopIconViewPrivate
     GdkRectangle band_rect;
 
     XfconfChannel *channel;
+
+    /* element-type gunichar */
+    GArray *keyboard_navigation_state;
+    guint keyboard_navigation_state_timeout;
 
     XfdesktopIcon *cursor;
     XfdesktopIcon *first_clicked_item;
@@ -688,6 +694,13 @@ xfdesktop_icon_view_finalize(GObject *obj)
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(obj);
 
+    if (icon_view->priv->keyboard_navigation_state_timeout != 0) {
+        g_source_remove(icon_view->priv->keyboard_navigation_state_timeout);
+    }
+    if (icon_view->priv->keyboard_navigation_state) {
+        g_array_free(icon_view->priv->keyboard_navigation_state, TRUE);
+    }
+
     if(icon_view->priv->manager) {
         xfdesktop_icon_view_manager_fini(icon_view->priv->manager);
         g_object_unref(G_OBJECT(icon_view->priv->manager));
@@ -1069,24 +1082,64 @@ xfdesktop_icon_view_button_release(GtkWidget *widget,
     return TRUE;
 }
 
-static gboolean
-xfdesktop_icon_view_select_icon_from_list_by_key(XfdesktopIconView *icon_view,
-                                                 GdkEventKey *evt,
-                                                 GList *icon_list)
+static void
+clear_keyboard_navigation_state(gpointer data)
 {
-    XfdesktopIcon *icon = NULL;
-    const gchar *label;
-    gunichar lchar, kchar;
-    GList *l;
+    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(data);
 
-    /* Do it case-insensitive */
-    kchar = g_unichar_tolower(gdk_keyval_to_unicode(evt->keyval));
-    for(l = icon_list; l; l = l->next) {
-        icon = (XfdesktopIcon *)l->data;
-        label = xfdesktop_icon_peek_label(icon);
-        if(label && g_utf8_validate(label, g_utf8_strlen(label, -1), NULL) == TRUE) {
-            lchar = g_unichar_tolower(g_utf8_get_char(label));
-            if(lchar == kchar) {
+    if (icon_view->priv->keyboard_navigation_state != NULL) {
+        g_array_free(icon_view->priv->keyboard_navigation_state, TRUE);
+        icon_view->priv->keyboard_navigation_state = NULL;
+    }
+
+    icon_view->priv->keyboard_navigation_state_timeout = 0;
+}
+
+static gboolean
+xfdesktop_icon_view_keyboard_navigate(XfdesktopIconView *icon_view,
+                                      gunichar lower_char)
+{
+    if (icon_view->priv->keyboard_navigation_state == NULL) {
+        icon_view->priv->keyboard_navigation_state = g_array_sized_new(TRUE, TRUE, sizeof(gunichar), 16);
+        xfdesktop_icon_view_unselect_all(icon_view);
+    }
+
+    if (icon_view->priv->keyboard_navigation_state_timeout != 0) {
+        g_source_remove(icon_view->priv->keyboard_navigation_state_timeout);
+    }
+    icon_view->priv->keyboard_navigation_state_timeout = g_timeout_add_once(KEYBOARD_NAVIGATION_TIMEOUT,
+                                                                            clear_keyboard_navigation_state,
+                                                                            icon_view);
+
+    g_array_append_val(icon_view->priv->keyboard_navigation_state, lower_char);
+
+    for (GList *l = icon_view->priv->icons; l != NULL; l = l->next) {
+        XfdesktopIcon *icon = (XfdesktopIcon *)l->data;
+        const gchar *label = xfdesktop_icon_peek_label(icon);
+
+        if (label != NULL && g_utf8_validate(label, -1, NULL)) {
+            gchar *p = (gchar *)label;
+            gboolean matches = TRUE;
+
+            for (guint i = 0; i < icon_view->priv->keyboard_navigation_state->len; ++i) {
+                gunichar label_char;
+
+                if (*p == '\0') {
+                    matches = FALSE;
+                    break;
+                }
+
+                label_char = g_unichar_tolower(g_utf8_get_char(p));
+                if (label_char != g_array_index(icon_view->priv->keyboard_navigation_state, gunichar, i)) {
+                    matches = FALSE;
+                    break;
+                }
+
+                p = g_utf8_find_next_char(p, NULL);
+            }
+
+            if (matches) {
+                xfdesktop_icon_view_unselect_all(icon_view);
                 icon_view->priv->cursor = icon;
                 xfdesktop_icon_view_select_item(icon_view, icon);
                 return TRUE;
@@ -1097,30 +1150,6 @@ xfdesktop_icon_view_select_icon_from_list_by_key(XfdesktopIconView *icon_view,
     return FALSE;
 }
 
-static void
-xfdesktop_icon_view_type_ahead_find_icon(XfdesktopIconView *icon_view,
-                                         GdkEventKey *evt)
-{
-    GList *icon_list_p_current_cursor;
-    gboolean icon_selected = FALSE;
-
-    xfdesktop_icon_view_unselect_all(icon_view);
-
-    /* If we have a cursor, we try to select the next matching item after the cursor */
-    if(icon_view->priv->cursor != NULL) {
-    icon_list_p_current_cursor = g_list_find(icon_view->priv->icons, icon_view->priv->cursor);
-    icon_selected = xfdesktop_icon_view_select_icon_from_list_by_key(icon_view, evt,
-                                                                     g_list_next(icon_list_p_current_cursor));
-    }
-
-    /* still nothing is selected, select first icon from the beginning of the list */
-    if(icon_selected == FALSE) {
-        xfdesktop_icon_view_select_icon_from_list_by_key(icon_view,
-                                                         evt,
-                                                         icon_view->priv->icons);
-    }
-}
-
 static gboolean
 xfdesktop_icon_view_key_press(GtkWidget *widget,
                               GdkEventKey *evt,
@@ -1128,6 +1157,7 @@ xfdesktop_icon_view_key_press(GtkWidget *widget,
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(user_data);
     gboolean ret = FALSE;
+    gboolean could_keyboard_navigate = FALSE;
 
     DBG("entering");
 
@@ -1141,8 +1171,17 @@ xfdesktop_icon_view_key_press(GtkWidget *widget,
              * Now inspect the pressed character. Let's try to find an
              * icon starting with this character and make the icon selected. */
             guint32 unicode = gdk_keyval_to_unicode(evt->keyval);
-            if(unicode && g_unichar_isgraph(unicode) == TRUE)
-                xfdesktop_icon_view_type_ahead_find_icon(icon_view, evt);
+            if (unicode != 0 && g_unichar_isgraph(unicode)) {
+                could_keyboard_navigate = TRUE;
+                xfdesktop_icon_view_keyboard_navigate(icon_view, g_unichar_tolower(unicode));
+            }
+        }
+    }
+
+    if (!could_keyboard_navigate) {
+        if (icon_view->priv->keyboard_navigation_state != NULL) {
+            g_array_free(icon_view->priv->keyboard_navigation_state, TRUE);
+            icon_view->priv->keyboard_navigation_state = NULL;
         }
     }
 
