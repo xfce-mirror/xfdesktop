@@ -825,7 +825,7 @@ xfdesktop_volume_icon_populate_context_menu(XfdesktopIcon *icon,
 
     mount = g_volume_get_mount(volume);
 
-    if(mount && g_volume_can_eject(volume)) {
+    if (g_volume_can_eject(volume)) {
         GDrive              *drive;
         GDriveStartStopType  start_stop_type = G_DRIVE_START_STOP_TYPE_UNKNOWN;
 
