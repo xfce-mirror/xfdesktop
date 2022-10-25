@@ -646,6 +646,15 @@ xfdesktop_image_list_add_item(gpointer user_data)
     gtk_icon_view_set_model(GTK_ICON_VIEW(panel->image_iconview),
                             GTK_TREE_MODEL(dir_data->ls));
 
+    /* if we've actually switched to a new directory, select the first item
+     * in the model, else we won't end up saving the new directory, and it'll
+     * revert to whatever previous image/directory was set. */
+    if (dir_data->selected_iter == NULL) {
+        GtkTreeIter first;
+        gtk_tree_model_get_iter_first(GTK_TREE_MODEL(dir_data->ls), &first);
+        dir_data->selected_iter = gtk_tree_iter_copy(&first);
+    }
+
     /* last_image is in the directory added then it should be selected */
     if(dir_data->selected_iter) {
         GtkTreePath *path;
