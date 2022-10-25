@@ -200,6 +200,8 @@ create_menu_item(GtkWidget* label, GtkWidget* image)
 {
     GtkWidget *mi;
     GtkWidget *box;
+    GtkSettings *settings;
+    gboolean show_icons = TRUE;
 
     /* create item */
     mi = gtk_menu_item_new ();
@@ -224,6 +226,14 @@ create_menu_item(GtkWidget* label, GtkWidget* image)
     gtk_box_pack_start (GTK_BOX (box), label, TRUE, TRUE, 6);
     gtk_widget_show_all (box);
     gtk_container_add (GTK_CONTAINER (mi), box);
+
+    if (gtk_widget_has_screen(label)) {
+        settings = gtk_settings_get_for_screen(gtk_widget_get_screen(label));
+    } else {
+        settings = gtk_settings_get_default();
+    }
+    g_object_get(settings, "gtk-menu-images", &show_icons, NULL);
+    gtk_widget_set_visible(image, show_icons);
 
     return mi;
 }

@@ -193,7 +193,7 @@ xfdesktop_window_icon_populate_context_menu(XfdesktopIcon *icon,
     mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Window Actions"), img);
     gtk_menu_item_set_submenu (GTK_MENU_ITEM(mi), amenu);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-    gtk_widget_show_all(mi);
+    gtk_widget_show(mi);
 
     return TRUE;
 }
