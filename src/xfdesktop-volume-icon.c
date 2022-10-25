@@ -770,10 +770,13 @@ xfdesktop_volume_icon_menu_properties(GtkWidget *widget,
                                       gpointer user_data)
 {
     XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(user_data);
-    GFile *file;
+    GFile *file = xfdesktop_file_icon_peek_file(icon);
+    GList file_l = {
+        .data = file,
+        .next = NULL,
+    };
 
-    file = xfdesktop_file_icon_peek_file(icon);
-    xfdesktop_file_utils_show_properties_dialog(file,
+    xfdesktop_file_utils_show_properties_dialog(&file_l,
                                                 XFDESKTOP_VOLUME_ICON(icon)->priv->gscreen,
                                                 NULL);
 }

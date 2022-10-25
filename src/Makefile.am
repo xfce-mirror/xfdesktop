@@ -5,6 +5,8 @@ bin_PROGRAMS = xfdesktop
 xfdesktop_built_sources = \
 	xfce-desktop-enum-types.c \
 	xfce-desktop-enum-types.h \
+	xfdesktop-file-manager-fdo-proxy.c \
+	xfdesktop-file-manager-fdo-proxy.h \
 	xfdesktop-file-manager-proxy.c \
 	xfdesktop-file-manager-proxy.h \
 	xfdesktop-thunar-proxy.c \
@@ -176,6 +178,12 @@ xfce-desktop-enum-types.c: $(enum_headers) Makefile
 	      && cp xgen-xdetc xfce-desktop-enum-types.c \
 	      && rm -f xgen-xdetc
 
+xfdesktop-file-manager-fdo-proxy.c xfdesktop-file-manager-fdo-proxy.h : $(srcdir)/xfdesktop-file-manager-fdo-dbus.xml Makefile
+	gdbus-codegen \
+		--c-namespace=Xfdesktop \
+		--interface-prefix=org.freedesktop. \
+		--generate-c-code=xfdesktop-file-manager-fdo-proxy \
+		$(srcdir)/xfdesktop-file-manager-fdo-dbus.xml
 
 xfdesktop-file-manager-proxy.c xfdesktop-file-manager-proxy.h : $(srcdir)/xfdesktop-file-manager-dbus.xml Makefile
 	gdbus-codegen \
