@@ -1115,42 +1115,40 @@ cb_folder_selection_changed(GtkWidget *button,
                             gpointer user_data)
 {
     AppearancePanel *panel = user_data;
-    gchar *filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(button));
-    gchar *previous_filename = NULL;
+    gchar *new_folder = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(button));
+    gchar *previous_folder = NULL;
 
     TRACE("entering");
 
     if(panel->selected_folder != NULL)
-        previous_filename = g_file_get_path(panel->selected_folder);
+        previous_folder = g_file_get_path(panel->selected_folder);
 
     /* Check to see if the folder actually did change */
-    if(g_strcmp0(filename, previous_filename) == 0) {
-        const gchar *current_folder = xfdesktop_settings_get_backdrop_image(panel);
-        gchar *dirname;
-
-        dirname = g_path_get_dirname(current_folder);
+    if(g_strcmp0(new_folder, previous_folder) == 0) {
+        const gchar *current_filename = xfdesktop_settings_get_backdrop_image(panel);
+        gchar *current_folder = g_path_get_dirname(current_filename);
 
         /* workaround another gtk bug - if the user sets the file chooser
          * button to something then it can't be changed with a set folder
          * call anymore. */
-        if(g_strcmp0(filename, dirname) == 0) {
+        if(g_strcmp0(new_folder, current_folder) == 0) {
             XF_DEBUG("folder didn't change");
-            g_free(dirname);
-            g_free(filename);
-            g_free(previous_filename);
+            g_free(current_folder);
+            g_free(new_folder);
+            g_free(previous_folder);
             return;
         } else {
-            g_free(filename);
-            filename = dirname;
+            g_free(new_folder);
+            new_folder = current_folder;
         }
     }
 
-    TRACE("folder changed to: %s", filename);
+    TRACE("folder changed to: %s", new_folder);
 
     if(panel->selected_folder != NULL)
         g_object_unref(panel->selected_folder);
 
-    panel->selected_folder = g_file_new_for_path(filename);
+    panel->selected_folder = g_file_new_for_path(new_folder);
 
     /* Stop any previous loading since something changed */
     xfdesktop_settings_stop_image_loading(panel);
@@ -1165,8 +1163,8 @@ cb_folder_selection_changed(GtkWidget *button,
                                     xfdesktop_image_list_add_dir,
                                     panel);
 
-    g_free(filename);
-    g_free(previous_filename);
+    g_free(new_folder);
+    g_free(previous_folder);
 }
 
 static void
