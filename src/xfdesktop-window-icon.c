@@ -26,8 +26,9 @@
 #include <string.h>
 #endif
 
-#include <libwnck/libwnck.h>
 #include <libxfce4ui/libxfce4ui.h>
+#include <libxfce4windowing/libxfce4windowing.h>
+#include <libxfce4windowingui/libxfce4windowingui.h>
 
 #include "xfdesktop-common.h"
 #include "xfdesktop-window-icon.h"
@@ -36,7 +37,7 @@ struct _XfdesktopWindowIconPrivate
 {
     gint workspace;
     gchar *label;
-    WnckWindow *window;
+    XfwWindow *window;
 };
 
 static void xfdesktop_window_icon_finalize(GObject *obj);
@@ -50,9 +51,9 @@ static gboolean xfdesktop_window_icon_activated(XfdesktopIcon *icon);
 static gboolean xfdesktop_window_icon_populate_context_menu(XfdesktopIcon *icon,
                                                             GtkWidget *menu);
 
-static void xfdesktop_window_name_changed_cb(WnckWindow *window,
+static void xfdesktop_window_name_changed_cb(XfwWindow *window,
                                              gpointer user_data);
-static void xfdesktop_window_icon_changed_cb(WnckWindow *window,
+static void xfdesktop_window_icon_changed_cb(XfwWindow *window,
                                              gpointer user_data);
 
 
@@ -114,7 +115,7 @@ xfdesktop_window_icon_finalize(GObject *obj)
 
 
 static void
-xfdesktop_window_name_changed_cb(WnckWindow *window,
+xfdesktop_window_name_changed_cb(XfwWindow *window,
                                  gpointer user_data)
 {
     XfdesktopWindowIcon *icon = user_data;
@@ -126,7 +127,7 @@ xfdesktop_window_name_changed_cb(WnckWindow *window,
 }
 
 static void
-xfdesktop_window_icon_changed_cb(WnckWindow *window,
+xfdesktop_window_icon_changed_cb(XfwWindow *window,
                                  gpointer user_data)
 {
     XfdesktopWindowIcon *icon = user_data;
@@ -141,8 +142,9 @@ xfdesktop_window_icon_peek_pixbuf(XfdesktopIcon *icon,
 {
     XfdesktopWindowIcon *window_icon = XFDESKTOP_WINDOW_ICON(icon);
     GdkPixbuf *pix = NULL;
+    gint icon_size = width > height ? width : height;
 
-    pix = wnck_window_get_icon(window_icon->priv->window);
+    pix = xfw_window_get_icon(window_icon->priv->window, icon_size);
     if(pix) {
         if(gdk_pixbuf_get_height(pix) != height) {
             pix = gdk_pixbuf_scale_simple(pix, height, height, GDK_INTERP_BILINEAR);
@@ -159,7 +161,7 @@ xfdesktop_window_icon_peek_label(XfdesktopIcon *icon)
     XfdesktopWindowIcon *window_icon = XFDESKTOP_WINDOW_ICON(icon);
 
     if(!window_icon->priv->label)
-        window_icon->priv->label = g_strdup(wnck_window_get_name(window_icon->priv->window));
+        window_icon->priv->label = g_strdup(xfw_window_get_name(window_icon->priv->window));
 
     return window_icon->priv->label;
 }
@@ -175,8 +177,9 @@ xfdesktop_window_icon_activated(XfdesktopIcon *icon)
 {
     XfdesktopWindowIcon *window_icon = XFDESKTOP_WINDOW_ICON(icon);
 
-    wnck_window_activate(window_icon->priv->window,
-                         gtk_get_current_event_time());
+    xfw_window_activate(window_icon->priv->window,
+                        gtk_get_current_event_time(),
+                        NULL);
 
     return TRUE;
 }
@@ -186,7 +189,7 @@ xfdesktop_window_icon_populate_context_menu(XfdesktopIcon *icon,
                                             GtkWidget *menu)
 {
     XfdesktopWindowIcon *window_icon = XFDESKTOP_WINDOW_ICON(icon);
-    GtkWidget *amenu = wnck_action_menu_new(window_icon->priv->window);
+    GtkWidget *amenu = xfw_window_action_menu_new(window_icon->priv->window);
     GtkWidget *mi, *img;
 
     img = gtk_image_new_from_icon_name("", GTK_ICON_SIZE_MENU);
@@ -201,7 +204,7 @@ xfdesktop_window_icon_populate_context_menu(XfdesktopIcon *icon,
 
 
 XfdesktopWindowIcon *
-xfdesktop_window_icon_new(WnckWindow *window,
+xfdesktop_window_icon_new(XfwWindow *window,
                           gint workspace)
 {
     XfdesktopWindowIcon *icon = g_object_new(XFDESKTOP_TYPE_WINDOW_ICON, NULL);
