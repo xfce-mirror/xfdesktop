@@ -659,9 +659,9 @@ xfdesktop_image_list_add_item(gpointer user_data)
     if(dir_data->selected_iter) {
         GtkTreePath *path;
         path = gtk_tree_model_get_path(GTK_TREE_MODEL(dir_data->ls), dir_data->selected_iter);
+        gtk_tree_iter_free(dir_data->selected_iter);
         if(path) {
             gtk_icon_view_select_path(GTK_ICON_VIEW(panel->image_iconview), path);
-            gtk_tree_iter_free(dir_data->selected_iter);
             gtk_tree_path_free(path);
         }
      }
