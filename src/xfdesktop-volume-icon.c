@@ -460,10 +460,11 @@ xfdesktop_volume_icon_peek_tooltip(XfdesktopIcon *icon)
     GFile *file = xfdesktop_file_icon_peek_file(XFDESKTOP_FILE_ICON(icon));
 
     if(!volume_icon->priv->tooltip) {
-        guint64 size, free_space;
         gchar *mount_point = NULL, *size_string = NULL, *free_space_string = NULL;
 
         if(file && fs_info) {
+            guint64 size, free_space;
+
             mount_point = g_file_get_parse_name(file);
 
             size = g_file_info_get_attribute_uint64(fs_info,
@@ -473,17 +474,23 @@ xfdesktop_volume_icon_peek_tooltip(XfdesktopIcon *icon)
 
             size_string = g_format_size(size);
             free_space_string = g_format_size(free_space);
-
-            volume_icon->priv->tooltip =
-                g_strdup_printf(_("Removable Volume\nMounted in \"%s\"\n%s left (%s total)"),
-                                mount_point, free_space_string, size_string);
-
-            g_free(free_space_string);
-            g_free(size_string);
-            g_free(mount_point);
         } else {
-            volume_icon->priv->tooltip = g_strdup(_("Removable Volume\nNot mounted yet"));
+            mount_point = g_strdup(_("(not mounted)"));
+            size_string = g_strdup(_("(unknown)"));
+            free_space_string = g_strdup(_("(unknown)"));
         }
+
+        volume_icon->priv->tooltip =
+            g_strdup_printf(_("Name: %s\nType: %s\nMounted at: %s\nSize: %s\nFree Space: %s"),
+                            volume_icon->priv->label,
+                            _("Removable Volume"),
+                            mount_point,
+                            size_string,
+                            free_space_string);
+
+        g_free(free_space_string);
+        g_free(size_string);
+        g_free(mount_point);
     }
 
     return volume_icon->priv->tooltip;
