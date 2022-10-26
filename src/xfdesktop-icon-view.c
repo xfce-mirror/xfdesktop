@@ -3146,11 +3146,17 @@ xfdesktop_icon_view_update_icon_extents(XfdesktopIconView *icon_view,
 }
 
 static void
-xfdesktop_icon_view_draw_image(cairo_t *cr, GdkPixbuf *pix, GdkRectangle *rect)
+xfdesktop_icon_view_draw_image(XfdesktopIconView *icon_view, cairo_t *cr, GdkPixbuf *pix, GdkRectangle *rect)
 {
+    cairo_surface_t *pix_surface;
+
     cairo_save(cr);
 
-    gdk_cairo_set_source_pixbuf(cr, pix, rect->x, rect->y);
+    pix_surface = gdk_cairo_surface_create_from_pixbuf(pix,
+                                                       gtk_widget_get_scale_factor(GTK_WIDGET(icon_view)),
+                                                       gtk_widget_get_window(GTK_WIDGET(icon_view)));
+    cairo_set_source_surface(cr, pix_surface, rect->x, rect->y);
+    cairo_surface_destroy(pix_surface);
     cairo_paint(cr);
 
     cairo_restore(cr);
@@ -3229,7 +3235,9 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
         state = GTK_STATE_FLAG_NORMAL;
 
     if(gdk_rectangle_intersect(area, &pixbuf_extents, &intersection)) {
-        GdkPixbuf *pix = xfdesktop_icon_peek_pixbuf(icon, ICON_WIDTH, ICON_SIZE);
+        GdkPixbuf *pix = xfdesktop_icon_peek_pixbuf(icon,
+                                                    ICON_WIDTH * icon_view->priv->scale_factor,
+                                                    ICON_SIZE * icon_view->priv->scale_factor);
         GdkPixbuf *pix_free = NULL;
 
         if(state != GTK_STATE_FLAG_NORMAL) {
@@ -3268,7 +3276,7 @@ xfdesktop_icon_view_paint_icon(XfdesktopIconView *icon_view,
         }
 #endif
 
-        xfdesktop_icon_view_draw_image(cr, pix, &pixbuf_extents);
+        xfdesktop_icon_view_draw_image(icon_view, cr, pix, &pixbuf_extents);
 
         if(pix_free)
             g_object_unref(G_OBJECT(pix_free));
