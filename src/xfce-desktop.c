@@ -449,12 +449,14 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(user_data);
     cairo_surface_t *surface = desktop->priv->bg_surface;
+    cairo_surface_t *pix_surface;
     GdkScreen *gscreen = desktop->priv->gscreen;
     GdkDisplay *display;
     gchar *new_filename = NULL;
     GdkRectangle rect;
     cairo_region_t *clip_region = NULL;
     gint i, monitor = -1, current_workspace;
+    gint scale_factor;
 
     TRACE("entering");
 
@@ -530,7 +532,8 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
                  rect.x, rect.y, rect.width, rect.height);
     }
 
-    xfce_backdrop_set_size(backdrop, rect.width, rect.height);
+    scale_factor = gtk_widget_get_scale_factor(GTK_WIDGET(desktop));
+    xfce_backdrop_set_size(backdrop, rect.width * scale_factor, rect.height * scale_factor);
 
     if(monitor > 0
        && !xfce_workspace_get_xinerama_stretch(desktop->priv->workspaces[current_workspace])) {
@@ -599,7 +602,11 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
         }
 
         cr = cairo_create(surface);
-        gdk_cairo_set_source_pixbuf(cr, pix, rect.x, rect.y);
+        pix_surface = gdk_cairo_surface_create_from_pixbuf(pix,
+                                                           scale_factor,
+                                                           gtk_widget_get_window(GTK_WIDGET(desktop)));
+        cairo_set_source_surface(cr, pix_surface, rect.x, rect.y);
+        cairo_surface_destroy(pix_surface);
 
         /* clip the area so we don't draw over a previous wallpaper */
         if(clip_region != NULL) {
