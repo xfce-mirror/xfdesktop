@@ -3964,7 +3964,7 @@ xfdesktop_icon_view_add_item_internal(XfdesktopIconView *icon_view,
                                             &pixbuf_extents, &text_extents, &box_extents, &total_extents);
     gtk_widget_queue_draw_area(GTK_WIDGET(icon_view),
                                total_extents.x, total_extents.y,
-                               total_extents.width, total_extents.y);
+                               total_extents.width, total_extents.height);
 }
 
 static gboolean
