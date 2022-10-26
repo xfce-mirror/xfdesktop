@@ -119,6 +119,7 @@ struct _XfdesktopIconViewPrivate
 
     GtkWidget *parent_window;
 
+    gint scale_factor;
     guint icon_size;
     gboolean primary;
     gdouble font_size;
@@ -2098,16 +2099,35 @@ xfdesktop_icon_view_style_updated(GtkWidget *widget)
 }
 
 static void
+scale_factor_changed_cb(XfdesktopIconView *icon_view,
+                        gpointer user_data)
+{
+    if (gtk_widget_get_realized(GTK_WIDGET(icon_view))) {
+        gint new_scale_factor = gtk_widget_get_scale_factor(GTK_WIDGET(icon_view));
+        if (new_scale_factor != icon_view->priv->scale_factor) {
+            icon_view->priv->scale_factor = new_scale_factor;
+            xfdesktop_grid_do_resize(icon_view);
+        }
+    }
+}
+
+static void
 xfdesktop_icon_view_realize(GtkWidget *widget)
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
+    GdkWindow *topwin;
     PangoContext *pctx;
     GdkScreen *gscreen;
     GdkWindow *groot;
 
     icon_view->priv->parent_window = gtk_widget_get_toplevel(widget);
     g_return_if_fail(icon_view->priv->parent_window);
-    gtk_widget_set_window(widget, gtk_widget_get_window(icon_view->priv->parent_window));
+    topwin = gtk_widget_get_window(icon_view->priv->parent_window);
+    gtk_widget_set_window(widget, topwin);
+
+    icon_view->priv->scale_factor = gdk_window_get_scale_factor(topwin);
+    g_signal_connect(icon_view, "notify::scale-factor",
+                     G_CALLBACK(scale_factor_changed_cb), NULL);
 
     /* we need this call here to initalize some members of icon_view->priv,
      * those depend on custom style properties */
@@ -2224,6 +2244,10 @@ xfdesktop_icon_view_unrealize(GtkWidget *widget)
     g_signal_handlers_disconnect_by_func(G_OBJECT(gscreen),
                                          G_CALLBACK(xfdesktop_screen_size_changed_cb),
                                          icon_view);
+
+    g_signal_handlers_disconnect_by_func(G_OBJECT(icon_view),
+                                         G_CALLBACK(scale_factor_changed_cb),
+                                         NULL);
 
     /* FIXME: really clear these? */
     g_list_free(icon_view->priv->selected_icons);
@@ -2776,7 +2800,6 @@ xfdesktop_icon_view_setup_grids_xinerama(XfdesktopIconView *icon_view)
 
     DBG("exiting");
 }
-
 
 static void
 xfdesktop_setup_grids(XfdesktopIconView *icon_view)
@@ -3599,13 +3622,13 @@ xfdesktop_get_workarea_single(XfdesktopIconView *icon_view,
 
             /* there's probably a better way to do this. */
             if(i + (glong)nitems >= first_id && first_id - (glong)offset >= 0)
-                *xorigin = data[first_id - offset] + MIN_MARGIN;
+                *xorigin = data[first_id - offset] / icon_view->priv->scale_factor + MIN_MARGIN;
             if(i + (glong)nitems >= first_id + 1 && first_id - (glong)offset + 1 >= 0)
-                *yorigin = data[first_id - offset + 1] + MIN_MARGIN;
+                *yorigin = data[first_id - offset + 1] / icon_view->priv->scale_factor + MIN_MARGIN;
             if(i + (glong)nitems >= first_id + 2 && first_id - (glong)offset + 2 >= 0)
-                *width = data[first_id - offset + 2] - 2 * MIN_MARGIN;
+                *width = data[first_id - offset + 2] / icon_view->priv->scale_factor - 2 * MIN_MARGIN;
             if(i + (glong)nitems >= first_id + 3 && first_id - (glong)offset + 3 >= 0) {
-                *height = data[first_id - offset + 3] - 2 * MIN_MARGIN;
+                *height = data[first_id - offset + 3] / icon_view->priv->scale_factor - 2 * MIN_MARGIN;
                 ret = TRUE;
                 XFree(data_p);
                 g_free(data);
