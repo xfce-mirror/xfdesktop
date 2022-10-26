@@ -1035,20 +1035,24 @@ xfdesktop_file_icon_menu_properties(GtkWidget *widget,
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
     GList *selected;
-    XfdesktopFileIcon *icon;
-    GtkWidget *toplevel;
-    GFile *file;
+    GList *selected_files = NULL;
 
     selected = xfdesktop_icon_view_get_selected_items(fmanager->priv->icon_view);
-    g_return_if_fail(g_list_length(selected) == 1);
-    icon = XFDESKTOP_FILE_ICON(selected->data);
+    for (GList *l = selected; l != NULL; l = l->next) {
+        XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(l->data);
+        GFile *file = xfdesktop_file_icon_peek_file(icon);
+        selected_files = g_list_prepend(selected_files, file);
+    }
     g_list_free(selected);
+    selected_files = g_list_reverse(selected_files);
 
-    file = xfdesktop_file_icon_peek_file(icon);
-    toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
-
-    xfdesktop_file_utils_show_properties_dialog(file, fmanager->priv->gscreen,
-                                                GTK_WINDOW(toplevel));
+    if (selected_files != NULL) {
+        GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
+        xfdesktop_file_utils_show_properties_dialog(selected_files,
+                                                    fmanager->priv->gscreen,
+                                                    GTK_WINDOW(toplevel));
+        g_list_free(selected_files);
+    }
 }
 
 static void
@@ -1058,8 +1062,12 @@ xfdesktop_file_icon_manager_desktop_properties(GtkWidget *widget,
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
     GtkWidget *parent = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
     GFile *file = xfdesktop_file_icon_peek_file (fmanager->priv->desktop_icon);
+    GList file_l = {
+        .data = file,
+        .next = NULL,
+    };
 
-    xfdesktop_file_utils_show_properties_dialog(file, fmanager->priv->gscreen,
+    xfdesktop_file_utils_show_properties_dialog(&file_l, fmanager->priv->gscreen,
                                                 GTK_WINDOW(parent));
 }
 
@@ -1941,9 +1949,9 @@ xfdesktop_file_icon_manager_populate_context_menu(XfdesktopIconViewManager *mana
             mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("P_roperties..."), img);
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-            if(multi_sel || !info)
+            if (!info) {
                 gtk_widget_set_sensitive(mi, FALSE);
-            else {
+            } else {
                 g_signal_connect(G_OBJECT(mi), "activate",
                                 file_icon == fmanager->priv->desktop_icon
                                 ? G_CALLBACK(xfdesktop_file_icon_manager_desktop_properties)
