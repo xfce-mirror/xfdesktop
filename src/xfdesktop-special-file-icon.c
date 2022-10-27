@@ -79,7 +79,7 @@ static GdkDragAction xfdesktop_special_file_icon_get_allowed_drag_actions(Xfdesk
 static GdkDragAction xfdesktop_special_file_icon_get_allowed_drop_actions(XfdesktopIcon *icon,
                                                                           GdkDragAction *suggested_action);
 static gboolean xfdesktop_special_file_icon_do_drop_dest(XfdesktopIcon *icon,
-                                                         XfdesktopIcon *src_icon,
+                                                         GList *src_icons,
                                                          GdkDragAction action);
 static gboolean xfdesktop_special_file_icon_populate_context_menu(XfdesktopIcon *icon,
                                                                   GtkWidget *menu);
@@ -373,71 +373,51 @@ xfdesktop_special_file_icon_get_allowed_drop_actions(XfdesktopIcon *icon,
 
 static gboolean
 xfdesktop_special_file_icon_do_drop_dest(XfdesktopIcon *icon,
-                                         XfdesktopIcon *src_icon,
+                                         GList *src_icons,
                                          GdkDragAction action)
 {
     XfdesktopSpecialFileIcon *special_file_icon = XFDESKTOP_SPECIAL_FILE_ICON(icon);
-    XfdesktopFileIcon *src_file_icon = XFDESKTOP_FILE_ICON(src_icon);
-    GFileInfo *src_info;
-    GFile *src_file;
-    GFile *dest_file = NULL;
     gboolean result = FALSE;
 
     TRACE("entering");
 
-    g_return_val_if_fail(special_file_icon && src_file_icon, FALSE);
+    g_return_val_if_fail(special_file_icon != NULL && src_icons != NULL, FALSE);
     g_return_val_if_fail(xfdesktop_special_file_icon_get_allowed_drop_actions(icon, NULL),
                          FALSE);
 
-    src_file = xfdesktop_file_icon_peek_file(src_file_icon);
-
-    src_info = xfdesktop_file_icon_peek_file_info(src_file_icon);
-    if(!src_info)
-        return FALSE;
-
     if(special_file_icon->priv->type == XFDESKTOP_SPECIAL_FILE_ICON_TRASH) {
-        GList files;
+        GList *files = NULL;
 
         XF_DEBUG("doing trash");
 
-        /* fake a file list */
-        files.data = src_file;
-        files.prev = files.next = NULL;
-
-        /* let the trash service handle the trash operation */
-        xfdesktop_file_utils_trash_files(&files, special_file_icon->priv->gscreen, NULL);
-    } else {
-        gchar *name = g_file_get_basename(src_file);
-        if(!name)
-            return FALSE;
-
-        switch(action) {
-            case GDK_ACTION_MOVE:
-                XF_DEBUG("doing move");
-                dest_file = g_object_ref(special_file_icon->priv->file);
-                break;
-            case GDK_ACTION_COPY:
-                XF_DEBUG("doing copy");
-                dest_file = g_file_get_child(special_file_icon->priv->file, name);
-                break;
-            case GDK_ACTION_LINK:
-                XF_DEBUG("doing link");
-                dest_file = g_object_ref(special_file_icon->priv->file);
-                break;
-            default:
-                g_warning("Unsupported drag action: %d", action);
+        for (GList *l = src_icons; l != NULL; l = l->next) {
+            GFile *file = xfdesktop_file_icon_peek_file(XFDESKTOP_FILE_ICON(l->data));
+            if (file != NULL) {
+                files = g_list_prepend(files, file);
+            }
         }
+        files = g_list_reverse(files);
+
+        if (files != NULL) {
+            /* let the trash service handle the trash operation */
+            xfdesktop_file_utils_trash_files(files, special_file_icon->priv->gscreen, NULL);
+            result = TRUE;
+        }
+    } else {
+        GList *src_files = NULL;
+        GList *dest_files = NULL;
+
+        xfdesktop_file_utils_build_transfer_file_lists(action, src_icons, XFDESKTOP_FILE_ICON(icon), &src_files, &dest_files);
 
         /* let the file manager service move/copy/link the file */
-        if(dest_file) {
-            xfdesktop_file_utils_transfer_file(action, src_file, dest_file,
+        if (src_files != NULL && dest_files != NULL) {
+            xfdesktop_file_utils_transfer_files(action, src_files, dest_files,
                                                special_file_icon->priv->gscreen);
-
             result = TRUE;
         }
 
-        g_object_unref(dest_file);
-        g_free(name);
+        g_list_free_full(dest_files, g_object_unref);
+        g_list_free(src_files);
     }
 
     return result;

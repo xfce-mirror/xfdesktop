@@ -282,7 +282,7 @@ xfdesktop_icon_get_allowed_drop_actions(XfdesktopIcon *icon,
 /*< optional; required if get_allowed_drop_actions() can return nonzero >*/
 gboolean
 xfdesktop_icon_do_drop_dest(XfdesktopIcon *icon,
-                            XfdesktopIcon *src_icon,
+                            GList *src_icons,
                             GdkDragAction action)
 {
     XfdesktopIconClass *klass;
@@ -291,7 +291,7 @@ xfdesktop_icon_do_drop_dest(XfdesktopIcon *icon,
     klass = XFDESKTOP_ICON_GET_CLASS(icon);
     g_return_val_if_fail(klass->do_drop_dest, FALSE);
 
-    return klass->do_drop_dest(icon, src_icon, action);
+    return klass->do_drop_dest(icon, src_icons, action);
 }
 
 /*< optional >*/

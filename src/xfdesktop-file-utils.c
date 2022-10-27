@@ -1351,7 +1351,9 @@ execute_finished_cb(GObject *source,
         g_error_free(error);
     }
 
-    g_object_unref(edata->parent);
+    if (edata->parent != NULL) {
+        g_object_unref(edata->parent);
+    }
     g_object_unref(edata->file);
     g_free(edata);
 }
@@ -1420,7 +1422,9 @@ xfdesktop_file_utils_execute(GFile *working_directory,
         }
 
         edata = g_new0(ExecuteData, 1);
-        edata->parent = g_object_ref(parent);
+        if (parent != NULL) {
+            edata->parent = g_object_ref(parent);
+        }
         edata->file = g_object_ref(file);
         xfdesktop_file_manager_call_execute(fileman_proxy,
                                             working_dir,
@@ -1513,6 +1517,56 @@ xfdesktop_file_utils_display_app_chooser_dialog(GFile *file,
                               "be present (such as the one supplied by Thunar)."),
                             XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
                             NULL);
+    }
+}
+
+/**
+ * 'out_source_files' will hold a list owned by caller with contents owned by callee
+ * 'dest_source_files' will hold a list and contents owned by caller
+ */
+void
+xfdesktop_file_utils_build_transfer_file_lists(GdkDragAction action,
+                                               GList *source_icons,
+                                               XfdesktopFileIcon *dest_icon,
+                                               GList **out_source_files,
+                                               GList **out_dest_files)
+{
+    g_return_if_fail(source_icons != NULL);
+    g_return_if_fail(XFDESKTOP_IS_FILE_ICON(dest_icon));
+    g_return_if_fail(out_source_files != NULL && out_dest_files != NULL);
+
+    switch (action) {
+        case GDK_ACTION_MOVE:
+        case GDK_ACTION_LINK:
+            *out_dest_files = g_list_append(NULL, g_object_ref(xfdesktop_file_icon_peek_file(dest_icon)));
+            for (GList *l = source_icons; l != NULL; l = l->next) {
+                GFile *source_file = xfdesktop_file_icon_peek_file(XFDESKTOP_FILE_ICON(l->data));
+                if (source_file != NULL) {
+                    *out_source_files = g_list_prepend(*out_source_files, source_file);
+                }
+            }
+            *out_source_files = g_list_reverse(*out_source_files);
+            break;
+
+        case GDK_ACTION_COPY:
+            for (GList *l = source_icons; l != NULL; l = l->next) {
+                GFile *source_file = xfdesktop_file_icon_peek_file(XFDESKTOP_FILE_ICON(l->data));
+                if (source_file != NULL) {
+                    gchar *name = g_file_get_basename(source_file);
+                    if (name != NULL) {
+                        GFile *dest_file = g_file_get_child(xfdesktop_file_icon_peek_file(dest_icon), name);
+                        *out_dest_files = g_list_prepend(*out_dest_files, dest_file);
+                        *out_source_files = g_list_prepend(*out_source_files, source_file);
+                        g_free(name);
+                    }
+                }
+            }
+            *out_source_files = g_list_reverse(*out_source_files);
+            *out_dest_files = g_list_reverse(*out_dest_files);
+            break;
+
+        default:
+            g_warning("Unsupported drag action: %d", action);
     }
 }
 

@@ -69,7 +69,7 @@ struct _XfdesktopIconClass
     GdkDragAction (*get_allowed_drag_actions)(XfdesktopIcon *icon);
 
     GdkDragAction (*get_allowed_drop_actions)(XfdesktopIcon *icon, GdkDragAction *suggested_action);
-    gboolean (*do_drop_dest)(XfdesktopIcon *icon, XfdesktopIcon *src_icon, GdkDragAction action);
+    gboolean (*do_drop_dest)(XfdesktopIcon *icon, GList *src_icons, GdkDragAction action);
 
     GdkPixbuf *(*peek_tooltip_pixbuf)(XfdesktopIcon *icon, gint width, gint height);
     const gchar *(*peek_tooltip)(XfdesktopIcon *icon);
@@ -111,7 +111,7 @@ GdkDragAction xfdesktop_icon_get_allowed_drag_actions(XfdesktopIcon *icon);
 GdkDragAction xfdesktop_icon_get_allowed_drop_actions(XfdesktopIcon *icon,
                                                       GdkDragAction *suggested_action);
 gboolean xfdesktop_icon_do_drop_dest(XfdesktopIcon *icon,
-                                     XfdesktopIcon *src_icon,
+                                     GList *src_icons,
                                      GdkDragAction action);
 
 gboolean xfdesktop_icon_populate_context_menu(XfdesktopIcon *icon,
