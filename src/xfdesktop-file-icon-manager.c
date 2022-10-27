@@ -4020,27 +4020,27 @@ xfdesktop_file_icon_manager_new(GFile *folder,
                             NULL);
     fmanager->priv->channel = XFCONF_CHANNEL(g_object_ref(G_OBJECT(channel)));
 
-    xfconf_g_property_bind(channel, DESKTOP_ICONS_SHOW_FILESYSTEM, G_TYPE_BOOLEAN,
+    xfconf_g_property_bind(channel, XFCONF_DESKTOP_ICONS_SHOW_FILESYSTEM, G_TYPE_BOOLEAN,
                            G_OBJECT(fmanager), "show-filesystem");
-    xfconf_g_property_bind(channel, DESKTOP_ICONS_SHOW_HOME, G_TYPE_BOOLEAN,
+    xfconf_g_property_bind(channel, XFCONF_DESKTOP_ICONS_SHOW_HOME, G_TYPE_BOOLEAN,
                            G_OBJECT(fmanager), "show-home");
-    xfconf_g_property_bind(channel, DESKTOP_ICONS_SHOW_TRASH, G_TYPE_BOOLEAN,
+    xfconf_g_property_bind(channel, XFCONF_DESKTOP_ICONS_SHOW_TRASH, G_TYPE_BOOLEAN,
                            G_OBJECT(fmanager), "show-trash");
-    xfconf_g_property_bind(channel, DESKTOP_ICONS_SHOW_REMOVABLE, G_TYPE_BOOLEAN,
+    xfconf_g_property_bind(channel, XFCONF_DESKTOP_ICONS_SHOW_REMOVABLE, G_TYPE_BOOLEAN,
                            G_OBJECT(fmanager), "show-removable");
-    xfconf_g_property_bind(channel, DESKTOP_ICONS_SHOW_NETWORK_REMOVABLE, G_TYPE_BOOLEAN,
+    xfconf_g_property_bind(channel, XFCONF_DESKTOP_ICONS_SHOW_NETWORK_REMOVABLE, G_TYPE_BOOLEAN,
                            G_OBJECT(fmanager), "show-network-volume");
-    xfconf_g_property_bind(channel, DESKTOP_ICONS_SHOW_DEVICE_REMOVABLE, G_TYPE_BOOLEAN,
+    xfconf_g_property_bind(channel, XFCONF_DESKTOP_ICONS_SHOW_DEVICE_REMOVABLE, G_TYPE_BOOLEAN,
                            G_OBJECT(fmanager), "show-device-volume");
-    xfconf_g_property_bind(channel, DESKTOP_ICONS_SHOW_UNKNWON_REMOVABLE, G_TYPE_BOOLEAN,
+    xfconf_g_property_bind(channel, XFCONF_DESKTOP_ICONS_SHOW_UNKNWON_REMOVABLE, G_TYPE_BOOLEAN,
                            G_OBJECT(fmanager), "show-unknown-volume");
-    xfconf_g_property_bind(channel, DESKTOP_ICONS_SHOW_THUMBNAILS, G_TYPE_BOOLEAN,
+    xfconf_g_property_bind(channel, XFCONF_DESKTOP_ICONS_SHOW_THUMBNAILS, G_TYPE_BOOLEAN,
                            G_OBJECT(fmanager), "show-thumbnails");
-    xfconf_g_property_bind(channel, DESKTOP_ICONS_SHOW_HIDDEN_FILES, G_TYPE_BOOLEAN,
+    xfconf_g_property_bind(channel, XFCONF_DESKTOP_ICONS_SHOW_HIDDEN_FILES, G_TYPE_BOOLEAN,
                            G_OBJECT(fmanager), "show-hidden-files");
-    xfconf_g_property_bind(channel, DESKTOP_MENU_DELETE, G_TYPE_BOOLEAN,
+    xfconf_g_property_bind(channel, XFCONF_DESKTOP_MENU_DELETE, G_TYPE_BOOLEAN,
                            G_OBJECT(fmanager), "show-delete-menu");
-    xfconf_g_property_bind(channel, DESKTOP_MENU_MAX_TEMPLATE_FILES, G_TYPE_INT,
+    xfconf_g_property_bind(channel, XFCONF_DESKTOP_MENU_MAX_TEMPLATE_FILES, G_TYPE_INT,
                            G_OBJECT(fmanager), "max-templates");
 
     return XFDESKTOP_ICON_VIEW_MANAGER(fmanager);
