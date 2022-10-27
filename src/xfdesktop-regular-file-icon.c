@@ -89,7 +89,7 @@ static GdkDragAction xfdesktop_regular_file_icon_get_allowed_drag_actions(Xfdesk
 static GdkDragAction xfdesktop_regular_file_icon_get_allowed_drop_actions(XfdesktopIcon *icon,
                                                                           GdkDragAction *suggested_action);
 static gboolean xfdesktop_regular_file_icon_do_drop_dest(XfdesktopIcon *icon,
-                                                         XfdesktopIcon *src_icon,
+                                                         GList *src_icons,
                                                          GdkDragAction action);
 
 static GFileInfo *xfdesktop_regular_file_icon_peek_file_info(XfdesktopFileIcon *icon);
@@ -701,76 +701,51 @@ xfdesktop_regular_file_icon_get_allowed_drop_actions(XfdesktopIcon *icon,
 
 gboolean
 xfdesktop_regular_file_icon_do_drop_dest(XfdesktopIcon *icon,
-                                         XfdesktopIcon *src_icon,
+                                         GList *src_icons,
                                          GdkDragAction action)
 {
     XfdesktopRegularFileIcon *regular_file_icon = XFDESKTOP_REGULAR_FILE_ICON(icon);
-    XfdesktopFileIcon *src_file_icon = XFDESKTOP_FILE_ICON(src_icon);
-    GFileInfo *src_info;
-    GFile *src_file;
     gboolean result = FALSE;
 
     TRACE("entering");
 
-    g_return_val_if_fail(regular_file_icon && src_file_icon, FALSE);
+    g_return_val_if_fail(regular_file_icon != NULL && src_icons != NULL, FALSE);
     g_return_val_if_fail(xfdesktop_regular_file_icon_get_allowed_drop_actions(icon, NULL) != 0,
                          FALSE);
-
-    src_file = xfdesktop_file_icon_peek_file(src_file_icon);
-
-    src_info = xfdesktop_file_icon_peek_file_info(src_file_icon);
-    if(!src_info)
-        return FALSE;
 
     if(g_file_info_get_file_type(regular_file_icon->priv->file_info) != G_FILE_TYPE_DIRECTORY
        && xfdesktop_file_utils_file_is_executable(regular_file_icon->priv->file_info))
     {
-        GList files;
+        GList *files = NULL;
 
-        files.data = src_file;
-        files.prev = files.next = NULL;
-
-        xfdesktop_file_utils_execute(NULL, regular_file_icon->priv->file, &files,
-                                     regular_file_icon->priv->gscreen, NULL);
-
-        result = TRUE;
-    } else {
-        GFile *parent, *dest_file = NULL;
-        gchar *name;
-
-        parent = g_file_get_parent(src_file);
-        if(!parent)
-            return FALSE;
-        g_object_unref(parent);
-
-        name = g_file_get_basename(src_file);
-        if(!name)
-            return FALSE;
-
-        switch(action) {
-            case GDK_ACTION_MOVE:
-                dest_file = g_object_ref(regular_file_icon->priv->file);
-                break;
-            case GDK_ACTION_COPY:
-                dest_file = g_file_get_child(regular_file_icon->priv->file, name);
-                break;
-            case GDK_ACTION_LINK:
-                dest_file = g_object_ref(regular_file_icon->priv->file);
-                break;
-            default:
-                g_warning("Unsupported drag action: %d", action);
+        for (GList *l = src_icons; l != NULL; l = l->next) {
+            GFile *file = xfdesktop_file_icon_peek_file(XFDESKTOP_FILE_ICON(l->data));
+            if (file != NULL) {
+                files = g_list_prepend(files, file);
+            }
         }
+        files = g_list_reverse(files);
 
-        if(dest_file) {
-            xfdesktop_file_utils_transfer_file(action, src_file, dest_file,
-                                               regular_file_icon->priv->gscreen);
+        if (files != NULL) {
+            xfdesktop_file_utils_execute(NULL, regular_file_icon->priv->file, files,
+                                         regular_file_icon->priv->gscreen, NULL);
+            g_list_free(files);
+            result = TRUE;
+        }
+    } else {
+        GList *src_files = NULL;
+        GList *dest_files = NULL;
 
-            g_object_unref(dest_file);
+        xfdesktop_file_utils_build_transfer_file_lists(action, src_icons, XFDESKTOP_FILE_ICON(icon), &src_files, &dest_files);
 
+        if (src_files != NULL && dest_files != NULL) {
+            xfdesktop_file_utils_transfer_files(action, src_files, dest_files,
+                                                regular_file_icon->priv->gscreen);
             result = TRUE;
         }
 
-        g_free(name);
+        g_list_free_full(dest_files, g_object_unref);
+        g_list_free(src_files);
     }
 
     return result;

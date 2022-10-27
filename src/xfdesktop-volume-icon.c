@@ -85,7 +85,7 @@ static GdkDragAction xfdesktop_volume_icon_get_allowed_drag_actions(XfdesktopIco
 static GdkDragAction xfdesktop_volume_icon_get_allowed_drop_actions(XfdesktopIcon *icon,
                                                                     GdkDragAction *suggested_action);
 static gboolean xfdesktop_volume_icon_do_drop_dest(XfdesktopIcon *icon,
-                                                   XfdesktopIcon *src_icon,
+                                                   GList *src_icons,
                                                    GdkDragAction action);
 static gboolean xfdesktop_volume_icon_populate_context_menu(XfdesktopIcon *icon,
                                                             GtkWidget *menu);
@@ -384,70 +384,30 @@ xfdesktop_volume_icon_get_allowed_drop_actions(XfdesktopIcon *icon,
 
 static gboolean
 xfdesktop_volume_icon_do_drop_dest(XfdesktopIcon *icon,
-                                 XfdesktopIcon *src_icon,
-                                 GdkDragAction action)
+                                   GList *src_icons,
+                                   GdkDragAction action)
 {
     XfdesktopVolumeIcon *volume_icon = XFDESKTOP_VOLUME_ICON(icon);
-    XfdesktopFileIcon *src_file_icon = XFDESKTOP_FILE_ICON(src_icon);
-    GFileInfo *src_info;
-    GFile *src_file, *parent, *dest_file = NULL;
     gboolean result = FALSE;
-    gchar *name;
+    GList *src_files = NULL;
+    GList *dest_files = NULL;
 
     TRACE("entering");
 
-    g_return_val_if_fail(volume_icon && src_file_icon, FALSE);
+    g_return_val_if_fail(volume_icon != NULL && src_icons != NULL, FALSE);
     g_return_val_if_fail(xfdesktop_volume_icon_get_allowed_drop_actions(icon, NULL),
                          FALSE);
 
-    src_file = xfdesktop_file_icon_peek_file(src_file_icon);
+    xfdesktop_file_utils_build_transfer_file_lists(action, src_icons, XFDESKTOP_FILE_ICON(icon), &src_files, &dest_files);
 
-    src_info = xfdesktop_file_icon_peek_file_info(src_file_icon);
-    if(!src_info)
-        return FALSE;
-
-    if(!volume_icon->priv->file_info)
-        return FALSE;
-
-    parent = g_file_get_parent(src_file);
-    if(!parent)
-        return FALSE;
-    g_object_unref(parent);
-
-    name = g_file_get_basename(src_file);
-    if(!name)
-        return FALSE;
-
-    switch(action) {
-        case GDK_ACTION_MOVE:
-            XF_DEBUG("doing move");
-            dest_file = g_object_ref(volume_icon->priv->file);
-            break;
-
-        case GDK_ACTION_COPY:
-            XF_DEBUG("doing copy");
-            dest_file = g_file_get_child(volume_icon->priv->file, name);
-            break;
-
-        case GDK_ACTION_LINK:
-            XF_DEBUG("doing link");
-            dest_file = g_object_ref(volume_icon->priv->file);
-            break;
-
-        default:
-            g_warning("Unsupported drag action: %d", action);
-    }
-
-    if(dest_file) {
-        xfdesktop_file_utils_transfer_file(action, src_file, dest_file,
-                                           volume_icon->priv->gscreen);
-
-        g_object_unref(dest_file);
-
+    if (src_files != NULL && dest_files != NULL) {
+        xfdesktop_file_utils_transfer_files(action, src_files, dest_files,
+                                            volume_icon->priv->gscreen);
         result = TRUE;
     }
 
-    g_free(name);
+    g_list_free_full(dest_files, g_object_unref);
+    g_list_free(src_files);
 
     return result;
 }

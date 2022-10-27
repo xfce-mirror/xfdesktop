@@ -106,6 +106,11 @@ void xfdesktop_file_utils_display_app_chooser_dialog(GFile *file,
                                                      gboolean preselect_default_checkbox,
                                                      GdkScreen *screen,
                                                      GtkWindow *parent);
+void xfdesktop_file_utils_build_transfer_file_lists(GdkDragAction action,
+                                                    GList *source_icons,
+                                                    XfdesktopFileIcon *dest_icon,
+                                                    GList **out_source_files,
+                                                    GList **out_dest_files);
 void xfdesktop_file_utils_transfer_file(GdkDragAction action,
                                         GFile *source_file,
                                         GFile *target_file,

@@ -1797,14 +1797,7 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
             }
 #endif
 
-            for(l = icon_view->priv->selected_icons; l; l = l->next) {
-                if(xfdesktop_icon_do_drop_dest(icon_on_dest,
-                                               XFDESKTOP_ICON(l->data),
-                                               action))
-                {
-                    ret = TRUE;
-                }
-            }
+            ret = xfdesktop_icon_do_drop_dest(icon_on_dest, icon_view->priv->selected_icons, action);
 
             gtk_drag_finish(context, ret, FALSE, time_);
 
