@@ -440,11 +440,10 @@ setup_special_icon_list(GtkBuilder *gxml,
           DESKTOP_ICONS_SHOW_DEVICE_REMOVABLE, TRUE },
         { N_("Other Devices"), { "multimedia-player", "phone" },
           DESKTOP_ICONS_SHOW_UNKNWON_REMOVABLE, TRUE },
-        { NULL, NULL, NULL, NULL, FALSE },
+        { NULL, { NULL, NULL }, NULL, FALSE },
     };
     const int REMOVABLE_DEVICES = 4;
     int i, w;
-    GtkIconTheme *itheme = gtk_icon_theme_get_default();
 
     gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &w, NULL);
 
