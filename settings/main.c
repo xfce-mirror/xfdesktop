@@ -41,6 +41,7 @@
 #endif
 
 #include <gdk-pixbuf/gdk-pixbuf.h>
+#include <cairo-gobject.h>
 #include <gtk/gtk.h>
 #include <gtk/gtkx.h>
 #include <gdk/gdkx.h>
@@ -95,6 +96,7 @@ typedef struct
     GtkTreeModel *model;
     GtkTreeIter *iter;
     GdkPixbuf *pix;
+    gint scale_factor;
 } PreviewData;
 
 typedef struct
@@ -155,6 +157,7 @@ typedef struct
 enum
 {
     COL_PIX = 0,
+    COL_SURFACE,
     COL_NAME,
     COL_FILENAME,
     COL_THUMBNAIL,
@@ -237,12 +240,12 @@ xfdesktop_settings_do_single_preview(PreviewData *pdata)
     if(thumbnail == NULL) {
         XF_DEBUG("generating thumbnail for filename %s", filename);
         pix = gdk_pixbuf_new_from_file_at_scale(filename,
-                                                PREVIEW_WIDTH, PREVIEW_HEIGHT,
+                                                PREVIEW_WIDTH * pdata->scale_factor, PREVIEW_HEIGHT * pdata->scale_factor,
                                                 TRUE, NULL);
     } else {
         XF_DEBUG("loading thumbnail %s", thumbnail);
         pix = gdk_pixbuf_new_from_file_at_scale(thumbnail,
-                                                PREVIEW_WIDTH, PREVIEW_HEIGHT,
+                                                PREVIEW_WIDTH * pdata->scale_factor, PREVIEW_HEIGHT * pdata->scale_factor,
                                                 TRUE, NULL);
         g_free(thumbnail);
     }
@@ -250,14 +253,20 @@ xfdesktop_settings_do_single_preview(PreviewData *pdata)
     g_free(filename);
 
     if(pix) {
+        cairo_surface_t *surface;
+
         pdata->pix = pix;
 
         /* set the image */
+        surface = gdk_cairo_surface_create_from_pixbuf(pix, pdata->scale_factor, NULL);
         gtk_list_store_set(GTK_LIST_STORE(pdata->model), pdata->iter,
-                       COL_PIX, pdata->pix,
-                       -1);
+                           COL_PIX, pdata->pix,
+                           COL_SURFACE, surface,
+                           -1);
+        cairo_surface_destroy(surface);
+
     }
-        xfdesktop_settings_free_pdata(pdata);
+    xfdesktop_settings_free_pdata(pdata);
 }
 
 static gboolean
@@ -336,6 +345,7 @@ cb_thumbnail_ready(XfdesktopThumbnailer *thumbnailer,
                 pdata->model = GTK_TREE_MODEL(g_object_ref(G_OBJECT(model)));
                 pdata->iter = gtk_tree_iter_copy(&iter);
                 pdata->pix = NULL;
+                pdata->scale_factor = gtk_widget_get_scale_factor(GTK_WIDGET(panel->image_iconview));
 
                 /* Create the preview image */
                 xfdesktop_settings_add_file_to_queue(panel, pdata);
@@ -365,6 +375,7 @@ xfdesktop_settings_queue_preview(GtkTreeModel *model,
         pdata = g_new0(PreviewData, 1);
         pdata->model = GTK_TREE_MODEL(g_object_ref(G_OBJECT(model)));
         pdata->iter = gtk_tree_iter_copy(iter);
+        pdata->scale_factor = gtk_widget_get_scale_factor(GTK_WIDGET(panel->image_iconview));
 
         XF_DEBUG("Thumbnailing failed, adding %s manually.", filename);
         xfdesktop_settings_add_file_to_queue(panel, pdata);
@@ -411,42 +422,35 @@ setup_special_icon_list(GtkBuilder *gxml,
     GtkTreeIter iter, parent_iter, child_iter;
     const struct {
         const gchar *name;
-        const gchar *icon;
-        const gchar *icon_fallback;
+        const gchar *icon_names[2];
         const gchar *xfconf_property;
         gboolean state;
     } icons[] = {
-        { N_("Home"), "user-home", "gnome-fs-desktop",
+        { N_("Home"), { "user-home", "gnome-fs-desktop" },
           DESKTOP_ICONS_SHOW_HOME, TRUE },
-        { N_("File System"), "drive-harddisk", "gnome-dev-harddisk",
+        { N_("File System"), { "drive-harddisk", "gnome-dev-harddisk" },
           DESKTOP_ICONS_SHOW_FILESYSTEM, TRUE },
-        { N_("Trash"), "user-trash", "gnome-fs-trash-empty",
+        { N_("Trash"), { "user-trash", "gnome-fs-trash-empty" },
           DESKTOP_ICONS_SHOW_TRASH, TRUE },
-        { N_("Removable Devices"), "drive-removable-media", "gnome-dev-removable",
+        { N_("Removable Devices"), { "drive-removable-media", "gnome-dev-removable" },
           DESKTOP_ICONS_SHOW_REMOVABLE, TRUE },
-        { N_("Network Shares"), "gtk-network", "gnome-dev-network",
+        { N_("Network Shares"), { "gtk-network", "gnome-dev-network" },
           DESKTOP_ICONS_SHOW_NETWORK_REMOVABLE, TRUE },
-        { N_("Disks and Drives"), "drive-harddisk-usb", "gnome-dev-removable-usb",
+        { N_("Disks and Drives"), { "drive-harddisk-usb", "gnome-dev-removable-usb" },
           DESKTOP_ICONS_SHOW_DEVICE_REMOVABLE, TRUE },
-        { N_("Other Devices"), "multimedia-player", "phone",
+        { N_("Other Devices"), { "multimedia-player", "phone" },
           DESKTOP_ICONS_SHOW_UNKNWON_REMOVABLE, TRUE },
-        { NULL, NULL, NULL, NULL, FALSE },
+        { NULL, { NULL, NULL }, NULL, FALSE },
     };
     const int REMOVABLE_DEVICES = 4;
     int i, w;
-    GtkIconTheme *itheme = gtk_icon_theme_get_default();
 
     gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &w, NULL);
 
-    ts = gtk_tree_store_new(N_ICON_COLS, GDK_TYPE_PIXBUF, G_TYPE_STRING,
+    ts = gtk_tree_store_new(N_ICON_COLS, G_TYPE_ICON, G_TYPE_STRING,
                             G_TYPE_BOOLEAN, G_TYPE_STRING);
     for(i = 0; icons[i].name; ++i) {
-        GdkPixbuf *pix = NULL;
-
-        if(gtk_icon_theme_has_icon(itheme, icons[i].icon))
-            pix = gtk_icon_theme_load_icon(itheme, icons[i].icon, w, GTK_ICON_LOOKUP_FORCE_SIZE, NULL);
-        else
-            pix = gtk_icon_theme_load_icon(itheme, icons[i].icon_fallback, w, GTK_ICON_LOOKUP_FORCE_SIZE, NULL);
+        GIcon *icon = g_themed_icon_new_from_names((char **)icons[i].icon_names, G_N_ELEMENTS(icons[i].icon_names));
 
         if(i < REMOVABLE_DEVICES) {
             gtk_tree_store_append(ts, &parent_iter, NULL);
@@ -458,15 +462,15 @@ setup_special_icon_list(GtkBuilder *gxml,
 
         gtk_tree_store_set(ts, &iter,
                            COL_ICON_NAME, _(icons[i].name),
-                           COL_ICON_PIX, pix,
+                           COL_ICON_PIX, icon,
                            COL_ICON_PROPERTY, icons[i].xfconf_property,
                            COL_ICON_ENABLED,
                            xfconf_channel_get_bool(channel,
                                                    icons[i].xfconf_property,
                                                    icons[i].state),
                            -1);
-        if(pix)
-            g_object_unref(G_OBJECT(pix));
+        if (icon != NULL)
+            g_object_unref(icon);
     }
 
     treeview = GTK_WIDGET(gtk_builder_get_object(gxml, "treeview_default_icons"));
@@ -484,7 +488,7 @@ setup_special_icon_list(GtkBuilder *gxml,
 
     render = gtk_cell_renderer_pixbuf_new();
     gtk_tree_view_column_pack_start(col, render, FALSE);
-    gtk_tree_view_column_add_attribute(col, render, "pixbuf", COL_ICON_PIX);
+    gtk_tree_view_column_add_attribute(col, render, "gicon", COL_ICON_PIX);
 
     render = gtk_cell_renderer_text_new();
     gtk_tree_view_column_pack_start(col, render, TRUE);
@@ -682,7 +686,7 @@ xfdesktop_image_list_add_dir(GObject *source_object,
 
     dir_data->panel = panel;
 
-    dir_data->ls = gtk_list_store_new(N_COLS, GDK_TYPE_PIXBUF, G_TYPE_STRING,
+    dir_data->ls = gtk_list_store_new(N_COLS, GDK_TYPE_PIXBUF, CAIRO_GOBJECT_TYPE_SURFACE, G_TYPE_STRING,
                                       G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
 
     /* Get the last image/current image displayed so we can select it in the
@@ -1694,6 +1698,7 @@ static void
 xfdesktop_settings_setup_image_iconview(AppearancePanel *panel)
 {
     GtkIconView *iconview = GTK_ICON_VIEW(panel->image_iconview);
+    GList *cells;
 
     TRACE("entering");
 
@@ -1708,6 +1713,18 @@ xfdesktop_settings_setup_image_iconview(AppearancePanel *panel)
                 "item-padding", 10,
                 "margin", 2,
                 NULL);
+
+    cells = gtk_cell_layout_get_cells(GTK_CELL_LAYOUT(iconview));
+    for (GList *l = cells; l != NULL; l = l->next) {
+        if (GTK_IS_CELL_RENDERER_PIXBUF(l->data)) {
+            gtk_cell_layout_set_attributes(GTK_CELL_LAYOUT(iconview),
+                                           GTK_CELL_RENDERER(l->data),
+                                           "surface", COL_SURFACE,
+                                           NULL);
+            break;
+        }
+    }
+    g_list_free(cells);
 
     g_signal_connect(G_OBJECT(iconview), "selection-changed",
                      G_CALLBACK(cb_image_selection_changed), panel);
