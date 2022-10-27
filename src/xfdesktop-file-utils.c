@@ -57,6 +57,7 @@
 
 #include "xfdesktop-common.h"
 #include "xfdesktop-file-icon.h"
+#include "xfdesktop-file-manager-fdo-proxy.h"
 #include "xfdesktop-file-manager-proxy.h"
 #include "xfdesktop-file-utils.h"
 #include "xfdesktop-trash-proxy.h"
@@ -71,6 +72,7 @@ static void xfdesktop_file_utils_add_emblems(GdkPixbuf *pix, GList *emblems);
 
 static XfdesktopTrash       *xfdesktop_file_utils_peek_trash_proxy(void);
 static XfdesktopFileManager *xfdesktop_file_utils_peek_filemanager_proxy(void);
+static XfdesktopFileManager1 *xfdesktop_file_utils_peek_filemanager_fdo_proxy(void);
 
 static void xfdesktop_file_utils_trash_proxy_new_cb (GObject *source_object,
                                                      GAsyncResult *res,
@@ -79,6 +81,10 @@ static void xfdesktop_file_utils_trash_proxy_new_cb (GObject *source_object,
 static void xfdesktop_file_utils_file_manager_proxy_new_cb (GObject *source_object,
                                                             GAsyncResult *res,
                                                             gpointer user_data);
+
+static void xfdesktop_file_utils_file_manager_fdo_proxy_new_cb(GObject *source_object,
+                                                               GAsyncResult *res,
+                                                               gpointer user_data);
 
 static void xfdesktop_file_utils_thunar_proxy_new_cb (GObject *source_object,
                                                       GAsyncResult *res,
@@ -1171,6 +1177,16 @@ xfdesktop_file_utils_create_file_from_template(GFile *parent_folder,
 }
 
 static void
+show_properties_fdo_cb(GObject *source_object, GAsyncResult *res, gpointer user_data)
+{
+    GError *error = NULL;
+    if (!xfdesktop_file_manager1_call_show_item_properties_finish(XFDESKTOP_FILE_MANAGER1(source_object), res, &error)) {
+        xfdesktop_file_utils_async_handle_error(error, user_data);
+    }
+}
+
+
+static void
 show_properties_cb (GObject *source_object, GAsyncResult *res, gpointer user_data)
 {
     GError *error = NULL;
@@ -1179,26 +1195,51 @@ show_properties_cb (GObject *source_object, GAsyncResult *res, gpointer user_dat
 }
 
 void
-xfdesktop_file_utils_show_properties_dialog(GFile *file,
+xfdesktop_file_utils_show_properties_dialog(GList *files,
                                             GdkScreen *screen,
                                             GtkWindow *parent)
 {
     XfdesktopFileManager *fileman_proxy;
+    XfdesktopFileManager1 *fileman_fdo_proxy;
 
-    g_return_if_fail(G_IS_FILE(file));
+    g_return_if_fail(files != NULL);
     g_return_if_fail(GDK_IS_SCREEN(screen) || GTK_IS_WINDOW(parent));
 
     if(!screen)
         screen = gtk_widget_get_screen(GTK_WIDGET(parent));
 
     fileman_proxy = xfdesktop_file_utils_peek_filemanager_proxy();
-    if(fileman_proxy) {
+    fileman_fdo_proxy = xfdesktop_file_utils_peek_filemanager_fdo_proxy();
+
+    if ((files->next != NULL || fileman_proxy == NULL) && fileman_fdo_proxy != NULL) {  // multiple files or no xfce fileman proxy
+        gchar **uris = g_new0(gchar *, g_list_length(files) + 1);
+        gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
+        gint i = 0;
+
+        for (GList *l = files; l != NULL; l = l->next, ++i) {
+            uris[i] = g_file_get_uri(G_FILE(l->data));
+        }
+
+        xfdesktop_file_utils_set_window_cursor(parent, GDK_WATCH);
+
+        xfdesktop_file_manager1_call_show_item_properties(fileman_fdo_proxy,
+                                                          (const gchar *const *)uris,
+                                                          startup_id,
+                                                          NULL,
+                                                          show_properties_fdo_cb,
+                                                          parent);
+
+        xfdesktop_file_utils_set_window_cursor(parent, GDK_LEFT_PTR);
+
+        g_strfreev(uris);
+        g_free(startup_id);
+    } else if (files->next == NULL && fileman_proxy) {
+        GFile *file = files->data;
         gchar *uri = g_file_get_uri(file);
         gchar *display_name = g_strdup(gdk_display_get_name(gdk_screen_get_display(screen)));
         gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
 
         xfdesktop_file_utils_set_window_cursor(parent, GDK_WATCH);
-
 
         xfdesktop_file_manager_call_display_file_properties(fileman_proxy,
                                                             uri, display_name, startup_id,
@@ -1638,6 +1679,7 @@ static gint dbus_ref_cnt = 0;
 static GDBusConnection *dbus_gconn = NULL;
 static XfdesktopTrash *dbus_trash_proxy = NULL;
 static XfdesktopFileManager *dbus_filemanager_proxy = NULL;
+static XfdesktopFileManager1 *dbus_filemanager_fdo_proxy = NULL;
 #ifdef HAVE_THUNARX
 static XfdesktopThunar *dbus_thunar_proxy = NULL;
 #else
@@ -1672,6 +1714,14 @@ xfdesktop_file_utils_dbus_init(void)
                                          xfdesktop_file_utils_file_manager_proxy_new_cb,
                                          NULL);
 
+        xfdesktop_file_manager1_proxy_new(dbus_gconn,
+                                         G_DBUS_PROXY_FLAGS_NONE,
+                                         "org.freedesktop.FileManager1",
+                                         "/org/freedesktop/FileManager1",
+                                         NULL,
+                                         xfdesktop_file_utils_file_manager_fdo_proxy_new_cb,
+                                         NULL);
+
 #ifdef HAVE_THUNARX
         xfdesktop_thunar_proxy_new(dbus_gconn,
                                    G_DBUS_PROXY_FLAGS_NONE,
@@ -1704,6 +1754,12 @@ xfdesktop_file_utils_peek_filemanager_proxy(void)
     return dbus_filemanager_proxy;
 }
 
+static XfdesktopFileManager1 *
+xfdesktop_file_utils_peek_filemanager_fdo_proxy(void)
+{
+    return dbus_filemanager_fdo_proxy;
+}
+
 #ifdef HAVE_THUNARX
 static XfdesktopThunar *
 xfdesktop_file_utils_peek_thunar_proxy(void)
@@ -1733,6 +1789,14 @@ xfdesktop_file_utils_file_manager_proxy_new_cb (GObject *source_object,
 }
 
 static void
+xfdesktop_file_utils_file_manager_fdo_proxy_new_cb(GObject *source_object,
+                                                   GAsyncResult *res,
+                                                   gpointer user_data)
+{
+    dbus_filemanager_fdo_proxy = xfdesktop_file_manager1_proxy_new_finish(res, NULL);
+}
+
+static void
 xfdesktop_file_utils_thunar_proxy_new_cb (GObject *source_object,
                                           GAsyncResult *res,
                                           gpointer user_data) {
@@ -1751,6 +1815,9 @@ xfdesktop_file_utils_dbus_cleanup(void)
         g_object_unref(G_OBJECT(dbus_trash_proxy));
     if(dbus_filemanager_proxy)
         g_object_unref(G_OBJECT(dbus_filemanager_proxy));
+    if (dbus_filemanager_fdo_proxy) {
+        g_object_unref(G_OBJECT(dbus_filemanager_fdo_proxy));
+    }
     if(dbus_thunar_proxy)
         g_object_unref(G_OBJECT(dbus_thunar_proxy));
     if(dbus_gconn)
