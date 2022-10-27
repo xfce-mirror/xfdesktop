@@ -1287,6 +1287,7 @@ xfdesktop_icon_view_show_tooltip(GtkWidget *widget,
     const gchar *tip_text;
     gchar *padded_tip_text = NULL;
     gint tooltip_size;
+    GtkWidget *box, *label;
 
     if(!icon_view->priv->item_under_pointer
        || icon_view->priv->definitely_dragging)
@@ -1298,22 +1299,32 @@ xfdesktop_icon_view_show_tooltip(GtkWidget *widget,
     if(!icon_view->priv->show_tooltips)
         return FALSE;
 
-    tooltip_size = xfdesktop_icon_view_get_tooltip_size(icon_view);
-
     tip_text = xfdesktop_icon_peek_tooltip(icon_view->priv->item_under_pointer);
-    if(!tip_text)
+    if (!tip_text)
         return FALSE;
 
-    padded_tip_text = g_strdup_printf("%s\t", tip_text);
+    box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 8);
 
-    if(tooltip_size > 0) {
-        gtk_tooltip_set_icon(tooltip,
-                xfdesktop_icon_peek_tooltip_pixbuf(icon_view->priv->item_under_pointer,
-                                                   tooltip_size * 1.5f,
-                                                   tooltip_size));
+    tooltip_size = xfdesktop_icon_view_get_tooltip_size(icon_view);
+    if (tooltip_size > 0) {
+        gint scale_factor = gtk_widget_get_scale_factor(GTK_WIDGET(icon_view));
+        GdkPixbuf *tip_pix = xfdesktop_icon_peek_tooltip_pixbuf(icon_view->priv->item_under_pointer,
+                                                                tooltip_size * scale_factor * 1.5f,
+                                                                tooltip_size * scale_factor);
+        cairo_surface_t *surface = gdk_cairo_surface_create_from_pixbuf(tip_pix, scale_factor, gtk_widget_get_window(GTK_WIDGET(icon_view)));
+        GtkWidget *img = gtk_image_new_from_surface(surface);
+        cairo_surface_destroy(surface);
+        gtk_box_pack_start(GTK_BOX(box), img, FALSE, FALSE, 0);
     }
 
-    gtk_tooltip_set_text(tooltip, padded_tip_text);
+    padded_tip_text = g_strdup_printf("%s\t", tip_text);
+    label = gtk_label_new(padded_tip_text);
+    gtk_label_set_xalign(GTK_LABEL(label), 0.0);
+    gtk_label_set_yalign(GTK_LABEL(label), 0.5);
+    gtk_box_pack_start(GTK_BOX(box), label, TRUE, TRUE, 0);
+
+    gtk_widget_show_all(box);
+    gtk_tooltip_set_custom(tooltip, box);
 
     g_free(padded_tip_text);
 
