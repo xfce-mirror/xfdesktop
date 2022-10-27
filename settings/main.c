@@ -411,24 +411,23 @@ setup_special_icon_list(GtkBuilder *gxml,
     GtkTreeIter iter, parent_iter, child_iter;
     const struct {
         const gchar *name;
-        const gchar *icon;
-        const gchar *icon_fallback;
+        const gchar *icon_names[2];
         const gchar *xfconf_property;
         gboolean state;
     } icons[] = {
-        { N_("Home"), "user-home", "gnome-fs-desktop",
+        { N_("Home"), { "user-home", "gnome-fs-desktop" },
           DESKTOP_ICONS_SHOW_HOME, TRUE },
-        { N_("File System"), "drive-harddisk", "gnome-dev-harddisk",
+        { N_("File System"), { "drive-harddisk", "gnome-dev-harddisk" },
           DESKTOP_ICONS_SHOW_FILESYSTEM, TRUE },
-        { N_("Trash"), "user-trash", "gnome-fs-trash-empty",
+        { N_("Trash"), { "user-trash", "gnome-fs-trash-empty" },
           DESKTOP_ICONS_SHOW_TRASH, TRUE },
-        { N_("Removable Devices"), "drive-removable-media", "gnome-dev-removable",
+        { N_("Removable Devices"), { "drive-removable-media", "gnome-dev-removable" },
           DESKTOP_ICONS_SHOW_REMOVABLE, TRUE },
-        { N_("Network Shares"), "gtk-network", "gnome-dev-network",
+        { N_("Network Shares"), { "gtk-network", "gnome-dev-network" },
           DESKTOP_ICONS_SHOW_NETWORK_REMOVABLE, TRUE },
-        { N_("Disks and Drives"), "drive-harddisk-usb", "gnome-dev-removable-usb",
+        { N_("Disks and Drives"), { "drive-harddisk-usb", "gnome-dev-removable-usb" },
           DESKTOP_ICONS_SHOW_DEVICE_REMOVABLE, TRUE },
-        { N_("Other Devices"), "multimedia-player", "phone",
+        { N_("Other Devices"), { "multimedia-player", "phone" },
           DESKTOP_ICONS_SHOW_UNKNWON_REMOVABLE, TRUE },
         { NULL, NULL, NULL, NULL, FALSE },
     };
@@ -438,15 +437,10 @@ setup_special_icon_list(GtkBuilder *gxml,
 
     gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &w, NULL);
 
-    ts = gtk_tree_store_new(N_ICON_COLS, GDK_TYPE_PIXBUF, G_TYPE_STRING,
+    ts = gtk_tree_store_new(N_ICON_COLS, G_TYPE_ICON, G_TYPE_STRING,
                             G_TYPE_BOOLEAN, G_TYPE_STRING);
     for(i = 0; icons[i].name; ++i) {
-        GdkPixbuf *pix = NULL;
-
-        if(gtk_icon_theme_has_icon(itheme, icons[i].icon))
-            pix = gtk_icon_theme_load_icon(itheme, icons[i].icon, w, GTK_ICON_LOOKUP_FORCE_SIZE, NULL);
-        else
-            pix = gtk_icon_theme_load_icon(itheme, icons[i].icon_fallback, w, GTK_ICON_LOOKUP_FORCE_SIZE, NULL);
+        GIcon *icon = g_themed_icon_new_from_names((char **)icons[i].icon_names, G_N_ELEMENTS(icons[i].icon_names));
 
         if(i < REMOVABLE_DEVICES) {
             gtk_tree_store_append(ts, &parent_iter, NULL);
@@ -458,15 +452,15 @@ setup_special_icon_list(GtkBuilder *gxml,
 
         gtk_tree_store_set(ts, &iter,
                            COL_ICON_NAME, _(icons[i].name),
-                           COL_ICON_PIX, pix,
+                           COL_ICON_PIX, icon,
                            COL_ICON_PROPERTY, icons[i].xfconf_property,
                            COL_ICON_ENABLED,
                            xfconf_channel_get_bool(channel,
                                                    icons[i].xfconf_property,
                                                    icons[i].state),
                            -1);
-        if(pix)
-            g_object_unref(G_OBJECT(pix));
+        if (icon != NULL)
+            g_object_unref(icon);
     }
 
     treeview = GTK_WIDGET(gtk_builder_get_object(gxml, "treeview_default_icons"));
@@ -484,7 +478,7 @@ setup_special_icon_list(GtkBuilder *gxml,
 
     render = gtk_cell_renderer_pixbuf_new();
     gtk_tree_view_column_pack_start(col, render, FALSE);
-    gtk_tree_view_column_add_attribute(col, render, "pixbuf", COL_ICON_PIX);
+    gtk_tree_view_column_add_attribute(col, render, "gicon", COL_ICON_PIX);
 
     render = gtk_cell_renderer_text_new();
     gtk_tree_view_column_pack_start(col, render, TRUE);
