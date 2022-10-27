@@ -41,6 +41,7 @@
 #endif
 
 #include <gdk-pixbuf/gdk-pixbuf.h>
+#include <cairo-gobject.h>
 #include <gtk/gtk.h>
 #include <gtk/gtkx.h>
 #include <gdk/gdkx.h>
@@ -95,6 +96,7 @@ typedef struct
     GtkTreeModel *model;
     GtkTreeIter *iter;
     GdkPixbuf *pix;
+    gint scale_factor;
 } PreviewData;
 
 typedef struct
@@ -155,6 +157,7 @@ typedef struct
 enum
 {
     COL_PIX = 0,
+    COL_SURFACE,
     COL_NAME,
     COL_FILENAME,
     COL_THUMBNAIL,
@@ -237,12 +240,12 @@ xfdesktop_settings_do_single_preview(PreviewData *pdata)
     if(thumbnail == NULL) {
         XF_DEBUG("generating thumbnail for filename %s", filename);
         pix = gdk_pixbuf_new_from_file_at_scale(filename,
-                                                PREVIEW_WIDTH, PREVIEW_HEIGHT,
+                                                PREVIEW_WIDTH * pdata->scale_factor, PREVIEW_HEIGHT * pdata->scale_factor,
                                                 TRUE, NULL);
     } else {
         XF_DEBUG("loading thumbnail %s", thumbnail);
         pix = gdk_pixbuf_new_from_file_at_scale(thumbnail,
-                                                PREVIEW_WIDTH, PREVIEW_HEIGHT,
+                                                PREVIEW_WIDTH * pdata->scale_factor, PREVIEW_HEIGHT * pdata->scale_factor,
                                                 TRUE, NULL);
         g_free(thumbnail);
     }
@@ -250,14 +253,20 @@ xfdesktop_settings_do_single_preview(PreviewData *pdata)
     g_free(filename);
 
     if(pix) {
+        cairo_surface_t *surface;
+
         pdata->pix = pix;
 
         /* set the image */
+        surface = gdk_cairo_surface_create_from_pixbuf(pix, pdata->scale_factor, NULL);
         gtk_list_store_set(GTK_LIST_STORE(pdata->model), pdata->iter,
-                       COL_PIX, pdata->pix,
-                       -1);
+                           COL_PIX, pdata->pix,
+                           COL_SURFACE, surface,
+                           -1);
+        cairo_surface_destroy(surface);
+
     }
-        xfdesktop_settings_free_pdata(pdata);
+    xfdesktop_settings_free_pdata(pdata);
 }
 
 static gboolean
@@ -336,6 +345,7 @@ cb_thumbnail_ready(XfdesktopThumbnailer *thumbnailer,
                 pdata->model = GTK_TREE_MODEL(g_object_ref(G_OBJECT(model)));
                 pdata->iter = gtk_tree_iter_copy(&iter);
                 pdata->pix = NULL;
+                pdata->scale_factor = gtk_widget_get_scale_factor(GTK_WIDGET(panel->image_iconview));
 
                 /* Create the preview image */
                 xfdesktop_settings_add_file_to_queue(panel, pdata);
@@ -365,6 +375,7 @@ xfdesktop_settings_queue_preview(GtkTreeModel *model,
         pdata = g_new0(PreviewData, 1);
         pdata->model = GTK_TREE_MODEL(g_object_ref(G_OBJECT(model)));
         pdata->iter = gtk_tree_iter_copy(iter);
+        pdata->scale_factor = gtk_widget_get_scale_factor(GTK_WIDGET(panel->image_iconview));
 
         XF_DEBUG("Thumbnailing failed, adding %s manually.", filename);
         xfdesktop_settings_add_file_to_queue(panel, pdata);
@@ -676,7 +687,7 @@ xfdesktop_image_list_add_dir(GObject *source_object,
 
     dir_data->panel = panel;
 
-    dir_data->ls = gtk_list_store_new(N_COLS, GDK_TYPE_PIXBUF, G_TYPE_STRING,
+    dir_data->ls = gtk_list_store_new(N_COLS, GDK_TYPE_PIXBUF, CAIRO_GOBJECT_TYPE_SURFACE, G_TYPE_STRING,
                                       G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
 
     /* Get the last image/current image displayed so we can select it in the
@@ -1688,6 +1699,7 @@ static void
 xfdesktop_settings_setup_image_iconview(AppearancePanel *panel)
 {
     GtkIconView *iconview = GTK_ICON_VIEW(panel->image_iconview);
+    GList *cells;
 
     TRACE("entering");
 
@@ -1702,6 +1714,18 @@ xfdesktop_settings_setup_image_iconview(AppearancePanel *panel)
                 "item-padding", 10,
                 "margin", 2,
                 NULL);
+
+    cells = gtk_cell_layout_get_cells(GTK_CELL_LAYOUT(iconview));
+    for (GList *l = cells; l != NULL; l = l->next) {
+        if (GTK_IS_CELL_RENDERER_PIXBUF(l->data)) {
+            gtk_cell_layout_set_attributes(GTK_CELL_LAYOUT(iconview),
+                                           GTK_CELL_RENDERER(l->data),
+                                           "surface", COL_SURFACE,
+                                           NULL);
+            break;
+        }
+    }
+    g_list_free(cells);
 
     g_signal_connect(G_OBJECT(iconview), "selection-changed",
                      G_CALLBACK(cb_image_selection_changed), panel);
