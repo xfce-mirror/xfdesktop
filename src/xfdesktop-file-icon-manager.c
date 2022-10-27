@@ -785,28 +785,25 @@ xfdesktop_file_icon_menu_app_info_executed(GtkWidget *widget,
                                            gpointer user_data)
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
-    XfdesktopFileIcon *icon;
     GdkAppLaunchContext *context;
     GAppInfo *app_info;
-    GFile *file;
-    GList files, *selected;
+    GList *files = NULL, *selected;
     GtkWidget *toplevel;
     GError *error = NULL;
 
     selected = xfdesktop_icon_view_get_selected_items(fmanager->priv->icon_view);
-    g_return_if_fail(g_list_length(selected) == 1);
-    icon = XFDESKTOP_FILE_ICON(selected->data);
+    for (GList *l = selected; l != NULL; l = l->next) {
+        XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(l->data);
+        GFile *file = xfdesktop_file_icon_peek_file(icon);
+        files = g_list_prepend(files, file);
+    }
     g_list_free(selected);
+    files = g_list_reverse(files);
 
     /* get the app info related to this menu item */
     app_info = g_object_get_qdata(G_OBJECT(widget), xfdesktop_app_info_quark);
     if(!app_info)
         return;
-
-    /* build a fake file list */
-    file = xfdesktop_file_icon_peek_file(icon);
-    files.prev = files.next = NULL;
-    files.data = file;
 
     /* prepare the launch context and configure its screen */
     context = gdk_display_get_app_launch_context(gtk_widget_get_display(GTK_WIDGET(fmanager->priv->icon_view)));
@@ -814,7 +811,7 @@ xfdesktop_file_icon_menu_app_info_executed(GtkWidget *widget,
     gdk_app_launch_context_set_screen(context, gtk_widget_get_screen(toplevel));
 
     /* try to launch the application */
-    if(!xfdesktop_file_utils_app_info_launch(app_info, fmanager->priv->folder, &files,
+    if(!xfdesktop_file_utils_app_info_launch(app_info, fmanager->priv->folder, files,
                                              G_APP_LAUNCH_CONTEXT(context), &error))
     {
         gchar *primary = g_markup_printf_escaped(_("Unable to launch \"%s\":"),
@@ -1429,7 +1426,7 @@ xfdesktop_file_icon_manager_populate_context_menu(XfdesktopIconViewManager *mana
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(manager);
     XfdesktopFileIcon *file_icon = NULL;
     GFileInfo *info = NULL;
-    GList *selected, *app_infos, *l;
+    GList *selected;
     GtkWidget *mi, *img, *tmpl_menu;
     gboolean multi_sel, multi_sel_special = FALSE, got_custom_menu = FALSE;
     GFile *templates_dir = NULL, *home_dir;
@@ -1453,7 +1450,7 @@ xfdesktop_file_icon_manager_populate_context_menu(XfdesktopIconViewManager *mana
 
     if(multi_sel) {
         /* check if special icons are selected */
-        for(l = selected; l != NULL; l = l->next) {
+        for(GList *l = selected; l != NULL; l = l->next) {
             if(XFDESKTOP_IS_SPECIAL_FILE_ICON(l->data)
                || XFDESKTOP_IS_VOLUME_ICON(l->data))
             {
@@ -1476,7 +1473,55 @@ xfdesktop_file_icon_manager_populate_context_menu(XfdesktopIconViewManager *mana
                      selected);
 
     if(!got_custom_menu) {
-        if(multi_sel) {
+        gboolean same_app_infos = FALSE;
+
+        if (!multi_sel) {
+            same_app_infos = TRUE;
+        } else if (info != NULL && g_file_info_get_content_type(info) != NULL) {
+            GList *target_app_infos = g_app_info_get_all_for_type(g_file_info_get_content_type(info));
+
+            same_app_infos = TRUE;
+            for (GList *l = selected->next; l != NULL; l = l->next) {
+                XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(l->data);
+                GFileInfo *icon_info = xfdesktop_file_icon_peek_file_info(icon);
+
+                if (icon_info != NULL) {
+                    if (!XFDESKTOP_IS_REGULAR_FILE_ICON(icon)) {
+                        same_app_infos = FALSE;
+                        break;
+                    } else if (g_file_info_get_content_type(icon_info) != NULL) {
+                        GList *app_infos = g_app_info_get_all_for_type(g_file_info_get_content_type(icon_info));
+                        GList *tail, *ail;
+
+                        // TODO: This assumes that the app info entries are in the same order.  So far my minimal
+                        // TODO: testing shows that seems to be the case, but not sure if we can rely on that.
+                        for (tail = target_app_infos, ail = app_infos;
+                             tail != NULL && ail != NULL;
+                             tail = tail->next, ail = ail->next)
+                        {
+                            if (!g_app_info_equal(G_APP_INFO(tail->data), G_APP_INFO(ail->data))) {
+                                same_app_infos = FALSE;
+                                break;
+                            }
+                        }
+
+                        g_list_free(app_infos);
+
+                        if (!same_app_infos || tail != NULL || ail != NULL) {
+                            same_app_infos = FALSE;
+                            break;
+                        }
+                    } else {
+                        same_app_infos = FALSE;
+                        break;
+                    }
+                }
+            }
+
+            g_list_free_full(target_app_infos, g_object_unref);
+        }
+
+        if (!same_app_infos) {
             img = gtk_image_new_from_icon_name("document-open", GTK_ICON_SIZE_MENU);
             mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Open all"), img);
             gtk_widget_show(mi);
@@ -1602,6 +1647,7 @@ xfdesktop_file_icon_manager_populate_context_menu(XfdesktopIconViewManager *mana
                 gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             } else {
                 /* Menu on non-folder icons */
+                GList *app_infos = NULL;
 
                 if(xfdesktop_file_utils_file_is_executable(info)) {
                     img = gtk_image_new_from_icon_name("system-run", GTK_ICON_SIZE_MENU);
@@ -1692,7 +1738,7 @@ xfdesktop_file_icon_manager_populate_context_menu(XfdesktopIconViewManager *mana
                         } else
                             app_infos_menu = (GtkWidget *)menu;
 
-                        for(l = app_infos->next; l; l = l->next) {
+                        for(GList *l = app_infos->next; l; l = l->next) {
                             app_info = G_APP_INFO(l->data);
                             mi = xfdesktop_menu_item_from_app_info(fmanager,
                                                                    file_icon, app_info,
@@ -1875,7 +1921,7 @@ xfdesktop_file_icon_manager_populate_context_menu(XfdesktopIconViewManager *mana
 
             if(selected->data == fmanager->priv->desktop_icon) {
                 /* click on the desktop itself, only show folder actions */
-                for(l = fmanager->priv->thunarx_menu_providers; l; l = l->next) {
+                for(GList *l = fmanager->priv->thunarx_menu_providers; l; l = l->next) {
                     provider = THUNARX_MENU_PROVIDER(l->data);
                     menu_items = g_list_concat(menu_items,
                                                  thunarx_menu_provider_get_folder_menu_items(provider,
@@ -1885,7 +1931,7 @@ xfdesktop_file_icon_manager_populate_context_menu(XfdesktopIconViewManager *mana
             } else {
                 /* thunar file specific actions (allows them to operate on folders
                  * that are on the desktop as well) */
-                for(l = fmanager->priv->thunarx_menu_providers; l; l = l->next) {
+                for(GList *l = fmanager->priv->thunarx_menu_providers; l; l = l->next) {
                     provider = THUNARX_MENU_PROVIDER(l->data);
                     menu_items = g_list_concat(menu_items,
                                                  thunarx_menu_provider_get_file_menu_items(provider,
