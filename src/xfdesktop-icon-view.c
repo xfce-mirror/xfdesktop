@@ -1526,9 +1526,16 @@ xfdesktop_icon_view_drag_begin(GtkWidget *widget,
     if(xfdesktop_icon_get_extents(icon, NULL, NULL, &extents)) {
         GdkPixbuf *pix;
 
-        pix = xfdesktop_icon_peek_pixbuf(icon, ICON_WIDTH, ICON_SIZE);
-        if(pix)
-            gtk_drag_set_icon_pixbuf(context, pix, 0, 0);
+        pix = xfdesktop_icon_peek_pixbuf(icon,
+                                         ICON_WIDTH * icon_view->priv->scale_factor,
+                                         ICON_SIZE * icon_view->priv->scale_factor);
+        if(pix) {
+            cairo_surface_t *surface = gdk_cairo_surface_create_from_pixbuf(pix,
+                                                                            icon_view->priv->scale_factor,
+                                                                            gtk_widget_get_window(GTK_WIDGET(icon_view)));
+            gtk_drag_set_icon_surface(context, surface);
+            cairo_surface_destroy(surface);
+        }
     }
 }
 
