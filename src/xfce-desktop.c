@@ -1181,7 +1181,9 @@ xfce_desktop_realize(GtkWidget *widget)
 
     screen_set_selection(desktop);
 
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     wnck_screen = wnck_screen_get(gdk_x11_screen_get_screen_number(desktop->priv->gscreen));
+G_GNUC_END_IGNORE_DEPRECATIONS
     desktop->priv->wnck_screen = wnck_screen;
 
     /* Watch for single workspace setting changes */
