@@ -1846,7 +1846,9 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
                                   TRUE);
 
     screen = gtk_widget_get_screen(appearance_container);
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     wnck_screen = wnck_screen_get(panel->screen);
+G_GNUC_END_IGNORE_DEPRECATIONS
 
     /* watch for workspace changes */
     g_signal_connect(wnck_screen, "workspace-created",
@@ -2238,7 +2240,9 @@ main(int argc, char **argv)
         /* In a GtkPlug setting there isn't an easy way to find our window
          * in cb_window_opened so we'll just force wnck to init and get the
          * active window */
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
         wnck_screen = wnck_screen_get(screen);
+G_GNUC_END_IGNORE_DEPRECATIONS
         wnck_screen_force_update(wnck_screen);
         panel->wnck_window = wnck_screen_get_active_window(wnck_screen);
 
