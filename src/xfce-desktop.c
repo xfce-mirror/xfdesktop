@@ -92,7 +92,7 @@
 /* disable setting the x background for bug 7442 */
 //#define DISABLE_FOR_BUG7442
 
-typedef GtkMenuShell *(*PopulateMenuFunc)(GtkMenuShell *);
+typedef GtkMenuShell *(*PopulateMenuFunc)(GtkMenuShell *, gint);
 
 struct _XfceDesktopPrivate
 {
@@ -1868,7 +1868,7 @@ xfce_desktop_do_menu_popup(XfceDesktop *desktop,
     }
 #endif
 
-    actual_menu = GTK_WIDGET((*populate_func)(GTK_MENU_SHELL(menu)));
+    actual_menu = GTK_WIDGET((*populate_func)(GTK_MENU_SHELL(menu), gtk_widget_get_scale_factor(GTK_WIDGET(desktop))));
     if (actual_menu != menu) {
         g_object_ref_sink(menu);
         gtk_widget_destroy(menu);

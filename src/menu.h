@@ -32,7 +32,7 @@
 G_BEGIN_DECLS
 
 void menu_init(XfconfChannel *channel);
-GtkMenuShell *menu_populate(GtkMenuShell *menu);
+GtkMenuShell *menu_populate(GtkMenuShell *menu, gint scale_factor);
 void menu_cleanup(void);
 
 G_END_DECLS

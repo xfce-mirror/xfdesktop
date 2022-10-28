@@ -151,8 +151,10 @@ menulist_set_label_flags(GtkWidget *widget, gpointer data)
 
 
 static GtkWidget *
-menu_item_from_wnck_window(WnckWindow *wnck_window, gint icon_width,
-        gint icon_height)
+menu_item_from_wnck_window(WnckWindow *wnck_window,
+                           gint icon_width,
+                           gint icon_height,
+                           gint scale_factor)
 {
     GtkWidget *mi, *img = NULL;
     gchar *title;
@@ -180,11 +182,15 @@ menu_item_from_wnck_window(WnckWindow *wnck_window, gint icon_width,
         g_string_append(label, "  ");
 
     if(wl_show_icons) {
+        cairo_surface_t *surface;
+
         icon = wnck_window_get_mini_icon(wnck_window);
         w = gdk_pixbuf_get_width(icon);
         h = gdk_pixbuf_get_height(icon);
-        if(w != icon_width || h != icon_height) {
-            tmp = gdk_pixbuf_scale_simple(icon, icon_width, icon_height,
+        if(w != icon_width * scale_factor || h != icon_height * scale_factor) {
+            tmp = gdk_pixbuf_scale_simple(icon,
+                                          icon_width * scale_factor,
+                                          icon_height * scale_factor,
                                           GDK_INTERP_BILINEAR);
         }
 
@@ -196,10 +202,14 @@ menu_item_from_wnck_window(WnckWindow *wnck_window, gint icon_width,
         }
 
         if(tmp) {
-            img = gtk_image_new_from_pixbuf(tmp);
+            surface = gdk_cairo_surface_create_from_pixbuf(tmp, scale_factor, NULL);
             g_object_unref(G_OBJECT(tmp));
-        } else
-            img = gtk_image_new_from_pixbuf(icon);
+        } else {
+            surface = gdk_cairo_surface_create_from_pixbuf(icon, scale_factor, NULL);
+        }
+
+        img = gtk_image_new_from_surface(surface);
+        cairo_surface_destroy(surface);
     }
 
     mi = xfdesktop_menu_create_menu_item_with_markup(label->str, img);
@@ -235,7 +245,7 @@ set_label_color_insensitive(GtkWidget *lbl)
 }
 
 GtkMenuShell *
-windowlist_populate(GtkMenuShell *menu)
+windowlist_populate(GtkMenuShell *menu, gint scale_factor)
 {
     GtkMenuShell *top_menu = menu;
     GtkWidget *submenu, *mi, *label, *img;
@@ -283,6 +293,7 @@ windowlist_populate(GtkMenuShell *menu)
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     wnck_screen = wnck_screen_get(XScreenNumberOfScreen(gdk_x11_screen_get_xscreen(gtk_widget_get_screen(GTK_WIDGET(menu)))));
+    wnck_set_default_mini_icon_size((w > h ? w : h) * scale_factor);
 G_GNUC_END_IGNORE_DEPRECATIONS
     wnck_screen_force_update (wnck_screen);
     nworkspaces = wnck_screen_get_workspace_count(wnck_screen);
@@ -349,7 +360,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                 continue;
             }
 
-            mi = menu_item_from_wnck_window(wnck_window, w, h);
+            mi = menu_item_from_wnck_window(wnck_window, w, h, scale_factor);
             if(!mi)
                 continue;
 
