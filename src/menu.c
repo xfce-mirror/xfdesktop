@@ -38,12 +38,12 @@
 
 #include "xfdesktop-common.h"
 #include "menu.h"
-#ifdef USE_DESKTOP_MENU
+#ifdef ENABLE_DESKTOP_MENU
 #include <garcon/garcon.h>
 #include <garcon-gtk/garcon-gtk.h>
 #endif
 
-#ifdef USE_DESKTOP_MENU
+#ifdef ENABLE_DESKTOP_MENU
 static gboolean show_delete_option = TRUE;
 static gboolean show_desktop_menu = TRUE;
 static gboolean show_desktop_menu_icons = TRUE;
@@ -53,7 +53,7 @@ static GarconMenu *garcon_menu = NULL;
 GtkMenuShell *
 menu_populate(GtkMenuShell *menu, gint scale_factor)
 {
-#ifdef USE_DESKTOP_MENU
+#ifdef ENABLE_DESKTOP_MENU
     GtkWidget *mi, *img = NULL;
     GtkIconTheme *itheme = gtk_icon_theme_get_default();
     GtkWidget *desktop_menu = NULL;
@@ -100,12 +100,12 @@ menu_populate(GtkMenuShell *menu, gint scale_factor)
     } else {
         return GTK_MENU_SHELL(desktop_menu);
     }
-#else  /* !USE_DESKTOP_MENU */
+#else  /* !ENABLE_DESKTOP_MENU */
     return menu;
-#endif /* USE_DESKTOP_MENU */
+#endif /* ENABLE_DESKTOP_MENU */
 }
 
-#ifdef USE_DESKTOP_MENU
+#ifdef ENABLE_DESKTOP_MENU
 static void
 menu_settings_changed(XfconfChannel *channel,
                       const gchar *property,
@@ -127,7 +127,7 @@ menu_settings_changed(XfconfChannel *channel,
 void
 menu_init(XfconfChannel *channel)
 {
-#ifdef USE_DESKTOP_MENU
+#ifdef ENABLE_DESKTOP_MENU
     if(channel) {
         show_delete_option = xfconf_channel_get_bool(channel, DESKTOP_MENU_DELETE, TRUE);
     }
