@@ -32,7 +32,7 @@
 G_BEGIN_DECLS
 
 void windowlist_init(XfconfChannel *channel);
-GtkMenuShell *windowlist_populate(GtkMenuShell *menu);
+GtkMenuShell *windowlist_populate(GtkMenuShell *menu, gint scale_factor);
 void windowlist_cleanup(void);
 
 G_END_DECLS

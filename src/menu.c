@@ -51,7 +51,7 @@ static GarconMenu *garcon_menu = NULL;
 #endif
 
 GtkMenuShell *
-menu_populate(GtkMenuShell *menu)
+menu_populate(GtkMenuShell *menu, gint scale_factor)
 {
 #ifdef USE_DESKTOP_MENU
     GtkWidget *mi, *img = NULL;
