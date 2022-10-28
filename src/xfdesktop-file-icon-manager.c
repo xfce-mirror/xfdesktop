@@ -1154,7 +1154,7 @@ xfdesktop_file_icon_menu_create_launcher(GtkWidget *widget,
                               display_name, type, uri);
     }
 
-    if(!xfce_spawn_command_line_on_screen(NULL, cmd, FALSE, FALSE, &error)) {
+    if (!xfce_spawn_command_line(fmanager->priv->gscreen, cmd, FALSE, FALSE, TRUE, &error)) {
         GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
         xfce_message_dialog(GTK_WINDOW(toplevel), _("Launch Error"),
                             "dialog-error",
@@ -1404,7 +1404,7 @@ xfdesktop_settings_launch(GtkWidget *w,
     if(!cmd)
         cmd = g_strdup(BINDIR "/xfdesktop-settings");
 
-    if(!xfce_spawn_command_line_on_screen(fmanager->priv->gscreen, cmd, FALSE, TRUE, &error)) {
+    if (!xfce_spawn_command_line(fmanager->priv->gscreen, cmd, FALSE, TRUE, TRUE, &error)) {
         GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
         /* printf is to be translator-friendly */
         gchar *primary = g_strdup_printf(_("Unable to launch \"%s\":"), cmd);
@@ -3759,13 +3759,10 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
                 myargv[i++] = cwd;
                 myargv[i++] = NULL;
 
-                if(xfce_spawn_on_screen(fmanager->priv->gscreen, NULL, myargv,
-                                        NULL, G_SPAWN_SEARCH_PATH, TRUE,
-                                        gtk_get_current_event_time(),
-                                        NULL, NULL))
-                {
-                    drop_ok = TRUE;
-                }
+                drop_ok = xfce_spawn(fmanager->priv->gscreen, NULL, myargv,
+                                     NULL, G_SPAWN_SEARCH_PATH, TRUE,
+                                     gtk_get_current_event_time(),
+                                     NULL, TRUE, NULL);
 
                 g_free(cwd);
             }
