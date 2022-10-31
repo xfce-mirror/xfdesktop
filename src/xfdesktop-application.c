@@ -730,10 +730,10 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                   PACKAGE, error->message);
         g_clear_error(&error);
         error = NULL;
-    } else {
-        app->channel = xfconf_channel_get(XFDESKTOP_CHANNEL);
-        g_object_add_weak_pointer(G_OBJECT(app->channel), (gpointer *)&app->channel);
     }
+
+    app->channel = xfconf_channel_get(XFDESKTOP_CHANNEL);
+    g_object_add_weak_pointer(G_OBJECT(app->channel), (gpointer *)&app->channel);
 
     g_snprintf(buf, sizeof(buf), "/backdrop/screen%d/", screen_num);
     app->desktop = xfce_desktop_new(gscreen, app->channel, buf);
