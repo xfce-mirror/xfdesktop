@@ -22,6 +22,7 @@
 #define __XFDESKTOP_ICON_VIEW_H__
 
 #include <gtk/gtk.h>
+#include <xfconf/xfconf.h>
 
 #include "xfdesktop-icon.h"
 #include "xfdesktop-icon-view-manager.h"
@@ -72,7 +73,8 @@ struct _XfdesktopIconViewClass
 
 GType xfdesktop_icon_view_get_type(void) G_GNUC_CONST;
 
-GtkWidget *xfdesktop_icon_view_new(XfdesktopIconViewManager *manager);
+GtkWidget *xfdesktop_icon_view_new(XfdesktopIconViewManager *manager,
+                                   XfconfChannel *channel);
 
 XfdesktopIconViewManager *xfdesktop_icon_view_get_manager(XfdesktopIconView *icon_view);
 
