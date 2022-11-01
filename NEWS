@@ -1,3 +1,55 @@
+4.17.1
+======
+- doc: README.xfconf: fix missing type for 'primary' attribute
+- xfce-desktop: give the 'primary' property a more clear description
+- harmonize build-time option USE_DESKTOP_MENU to ENABLE_DESKTOP_MENU
+- Fix windowlist icon blurriness when UI scale factor != 1
+- Don't use deprecated xfce_spawn_*() functions
+- Ignore deprecation warnings from libwnck functions
+- Fix blurriness in window icons when UI scale != 1
+- Fix blurry drag icon when UI scale != 1
+- Fix warnings in settings dialog
+- Make background previews less blurry when UI scale factor != 1
+- Fix blurry rendering of special file icons in settings dialog
+- Fix tooltip icon blurriness when UI scale factor != 1
+- Remove single-file thunar transfer function
+- Support dropping multiple icons onto another icon
+- Better context menu population with multiple selected icons
+- Allow showing file properties when multiple are selected
+- Fix blurry desktop icons when UI scaling != 1
+- Fix blurry background when UI scaling != 1
+- Fix incorrect args to gtk_widget_queue_draw_area()
+- Properly handle UI scale factor
+- Allow ejecting unmounted volumes
+- settings: fix memleak on background directory change
+- settings: select first image when directory changes
+- settings: rename some confusingly-named variables
+- Make removable volume tooltop more consistent with the others
+- Follow global gtk-menu-images setting for icon context menus
+- Implement better keyboard typeahead navigation
+- Call file manager launch API asynchronously
+- Possibly fix issues finding icon locations in the rc file
+- Support for menu item "set default application"
+- Output compile_flags.txt
+- Clean up resources better on exit
+- Properly free string array when transferring multiple files
+- Prevent more than one root menu popping up at the same time
+- Refactor how root menu population works
+- Use proper X11 screen number for enumerating windows
+- Fix X11 multiscreen support
+- Fix build when desktop icons are disabled
+- Fix icon view drawing glitches
+- Fix crash when selected icon changed workspaces
+- Revert "Fall back to exo-csource if xdt-csource isn't found"
+- Fall back to exo-csource if xdt-csource isn't found
+- Translation Updates:
+  Albanian, Basque, Bulgarian, Chinese (China), Chinese (Taiwan),
+  Czech, Danish, Dutch, English (United Kingdom), Estonian, French,
+  Galician, German, Greek, Hebrew, Indonesian, Italian, Japanese,
+  Kazakh, Lithuanian, Malay, Norwegian Bokmål, Occitan (post 1500),
+  Persian (Iran), Polish, Portuguese, Portuguese (Brazil), Russian,
+  Serbian, Slovenian, Spanish, Swedish, Ukrainian
+
 4.17.0 (2022-08-20)
 ======
 - Copy file instead of overwrite for DND
