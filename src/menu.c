@@ -150,8 +150,3 @@ menu_init(XfconfChannel *channel)
     }
 #endif
 }
-
-void
-menu_cleanup(void)
-{
-}
