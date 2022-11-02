@@ -113,8 +113,9 @@ xfdesktop_icon_class_init(XfdesktopIconClass *klass)
                                                             activated),
                                             g_signal_accumulator_true_handled,
                                             NULL,
-                                            xfdesktop_marshal_BOOLEAN__VOID,
-                                            G_TYPE_BOOLEAN, 0);
+                                            xfdesktop_marshal_BOOLEAN__OBJECT,
+                                            G_TYPE_BOOLEAN, 1,
+                                            GTK_TYPE_WINDOW);
 }
 
 static void
@@ -361,10 +362,11 @@ xfdesktop_icon_set_thumbnail_file(XfdesktopIcon *icon, GFile *file)
 
     klass = XFDESKTOP_ICON_GET_CLASS(icon);
 
-    if(!klass->set_thumbnail_file)
-        return;
-
-    klass->set_thumbnail_file(icon, file);
+    if (klass->set_thumbnail_file == NULL) {
+        g_object_unref(file);
+    } else {
+        klass->set_thumbnail_file(icon, file);
+    }
 }
 
 /*< optional >*/
@@ -448,20 +450,15 @@ xfdesktop_icon_selected(XfdesktopIcon *icon)
 }
 
 gboolean
-xfdesktop_icon_activated(XfdesktopIcon *icon)
+xfdesktop_icon_activated(XfdesktopIcon *icon,
+                         GtkWindow *window)
 {
     gboolean ret = FALSE;
 
     g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), FALSE);
+    g_return_val_if_fail(GTK_IS_WINDOW(window), FALSE);
 
-    g_signal_emit(G_OBJECT(icon), __signals[SIG_ACTIVATED], 0, &ret);
+    g_signal_emit(G_OBJECT(icon), __signals[SIG_ACTIVATED], 0, window, &ret);
 
     return ret;
-}
-
-void
-xfdesktop_icon_activated_g_func(gpointer data,
-                                gpointer user_data)
-{
-    xfdesktop_icon_activated(XFDESKTOP_ICON (data));
 }

@@ -60,7 +60,8 @@ struct _XfdesktopIconClass
      * you should be able to use normal g_signal_connect(), but signal handlers
      * with return values are (for some unknown reason) not allowed to be
      * G_SIGNAL_RUN_FIRST.  go figure. */
-    gboolean (*activated)(XfdesktopIcon *icon);
+    gboolean (*activated)(XfdesktopIcon *icon,
+                          GtkWindow *window);
 
     /*< virtual functions >*/
     GdkPixbuf *(*peek_pixbuf)(XfdesktopIcon *icon, gint width, gint height);
@@ -133,9 +134,8 @@ void xfdesktop_icon_label_changed(XfdesktopIcon *icon);
 void xfdesktop_icon_position_changed(XfdesktopIcon *icon);
 
 void xfdesktop_icon_selected(XfdesktopIcon *icon);
-gboolean xfdesktop_icon_activated(XfdesktopIcon *icon);
-void xfdesktop_icon_activated_g_func(gpointer data,
-                                     gpointer user_data);
+gboolean xfdesktop_icon_activated(XfdesktopIcon *icon,
+                                  GtkWindow *window);
 
 /*< private-ish; only for use by XfdesktopIconView >*/
 void xfdesktop_icon_set_extents(XfdesktopIcon *icon,

@@ -21,100 +21,61 @@
 #ifndef __XFDESKTOP_ICON_VIEW_MANAGER_H__
 #define __XFDESKTOP_ICON_VIEW_MANAGER_H__
 
-#include <glib-object.h>
 #include <gtk/gtk.h>
 
+#include <xfconf/xfconf.h>
+
 #include "xfdesktop-icon.h"
+#include "xfdesktop-icon-view.h"
 
 G_BEGIN_DECLS
 
 #define XFDESKTOP_TYPE_ICON_VIEW_MANAGER            (xfdesktop_icon_view_manager_get_type())
 #define XFDESKTOP_ICON_VIEW_MANAGER(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), XFDESKTOP_TYPE_ICON_VIEW_MANAGER, XfdesktopIconViewManager))
 #define XFDESKTOP_IS_ICON_VIEW_MANAGER(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), XFDESKTOP_TYPE_ICON_VIEW_MANAGER))
-#define XFDESKTOP_ICON_VIEW_MANAGER_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE((obj), XFDESKTOP_TYPE_ICON_VIEW_MANAGER, XfdesktopIconViewManagerIface))
+#define XFDESKTOP_ICON_VIEW_MANAGER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), XFDESKTOP_TYPE_ICON_VIEW_MANAGER, XfdesktopIconViewManagerClass))
+#define XFDESKTOP_ICON_VIEW_MANAGER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), XFDESKTOP_TYPE_ICON_VIEW_MANAGER, XfdesktopIconViewManagerClass))
 
-typedef struct _XfdesktopIconViewManagerIface XfdesktopIconViewManagerIface;
-typedef struct _XfdesktopIconViewManager XfdesktopIconViewManager;  /* dummy */
+typedef struct _XfdesktopIconViewManager XfdesktopIconViewManager;
+typedef struct _XfdesktopIconViewManagerPrivate XfdesktopIconViewManagerPrivate;
+typedef struct _XfdesktopIconViewManagerClass XfdesktopIconViewManagerClass;
 
-/* fwd decl - meh */
-struct _XfdesktopIconView;
-
-struct _XfdesktopIconViewManagerIface
+struct _XfdesktopIconViewManager
 {
-    GTypeInterface g_iface;
+    GObject parent;
 
-    /*< virtual functions >*/
-    gboolean (*manager_init)(XfdesktopIconViewManager *manager,
-                             struct _XfdesktopIconView *icon_view);
-    void (*manager_fini)(XfdesktopIconViewManager *manager);
+    /*< private >*/
+    XfdesktopIconViewManagerPrivate *priv;
+};
 
-    gboolean (*drag_drop)(XfdesktopIconViewManager *manager,
-                          XfdesktopIcon *drop_icon,
-                          GdkDragContext *context,
-                          gint16 row,
-                          gint16 col,
-                          guint time_);
-    void (*drag_data_received)(XfdesktopIconViewManager *manager,
-                               XfdesktopIcon *drop_icon,
-                               GdkDragContext *context,
-                               gint16 row,
-                               gint16 col,
-                               GtkSelectionData *data,
-                               guint info,
-                               guint time_);
-    void (*drag_data_get)(XfdesktopIconViewManager *manager,
-                          GList *drag_icons,
-                          GdkDragContext *context,
-                          GtkSelectionData *data,
-                          guint info,
-                          guint time_);
-    GdkDragAction (*propose_drop_action)(XfdesktopIconViewManager *manager,
-                                         XfdesktopIcon *drop_icon,
-                                         GdkDragAction action,
-                                         GdkDragContext *context,
-                                         GtkSelectionData *data,
-                                         guint info);
+struct _XfdesktopIconViewManagerClass
+{
+    GObjectClass parent_class;
+
+    /* Virtual Functions */
+
     void (*populate_context_menu)(XfdesktopIconViewManager *manager,
                                   GtkMenuShell *menu);
+
+    void (*sort_icons)(XfdesktopIconViewManager *manager,
+                       GtkSortType sort_type);
 };
 
 GType xfdesktop_icon_view_manager_get_type(void) G_GNUC_CONST;
 
+GtkWidget *xfdesktop_icon_view_manager_get_parent(XfdesktopIconViewManager *manager);
+XfconfChannel *xfdesktop_icon_view_manager_get_channel(XfdesktopIconViewManager *manager);
+
+gint xfdesktop_icon_view_manager_get_tooltip_icon_size(XfdesktopIconViewManager *manager,
+                                                       GtkWidget *icon_view);
+gboolean xfdesktop_icon_view_manager_get_show_icons_on_primary(XfdesktopIconViewManager *manager);
+
 /* virtual function accessors */
-
-gboolean xfdesktop_icon_view_manager_init(XfdesktopIconViewManager *manager,
-                                          struct _XfdesktopIconView *icon_view);
-void xfdesktop_icon_view_manager_fini(XfdesktopIconViewManager *manager);
-
-gboolean xfdesktop_icon_view_manager_drag_drop(XfdesktopIconViewManager *manager,
-                                               XfdesktopIcon *drop_icon,
-                                               GdkDragContext *context,
-                                               gint16 row,
-                                               gint16 col,
-                                               guint time_);
-void xfdesktop_icon_view_manager_drag_data_received(XfdesktopIconViewManager *manager,
-                                                    XfdesktopIcon *drop_icon,
-                                                    GdkDragContext *context,
-                                                    gint16 row,
-                                                    gint16 col,
-                                                    GtkSelectionData *data,
-                                                    guint info,
-                                                    guint time_);
-void xfdesktop_icon_view_manager_drag_data_get(XfdesktopIconViewManager *manager,
-                                               GList *drag_icons,
-                                               GdkDragContext *context,
-                                               GtkSelectionData *data,
-                                               guint info,
-                                               guint time_);
-GdkDragAction xfdesktop_icon_view_manager_propose_drop_action(XfdesktopIconViewManager *manager,
-                                                              XfdesktopIcon *drop_icon,
-                                                              GdkDragAction action,
-                                                              GdkDragContext *context,
-                                                              GtkSelectionData *data,
-                                                              guint info);
 
 void xfdesktop_icon_view_manager_populate_context_menu(XfdesktopIconViewManager *manager,
                                                        GtkMenuShell *menu);
+void xfdesktop_icon_view_manager_sort_icons(XfdesktopIconViewManager *manager,
+                                            GtkSortType sort_type);
 
 G_END_DECLS
 

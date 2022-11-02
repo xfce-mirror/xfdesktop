@@ -668,29 +668,28 @@ xfdesktop_special_file_icon_update_trash_count(XfdesktopSpecialFileIcon *special
 
 /* public API */
 
+
+GFile *
+xfdesktop_special_file_icon_file_for_type(XfdesktopSpecialFileIconType type)
+{
+    switch (type) {
+        case XFDESKTOP_SPECIAL_FILE_ICON_FILESYSTEM:
+            return g_file_new_for_uri("file:///");
+        case XFDESKTOP_SPECIAL_FILE_ICON_HOME:
+            return g_file_new_for_path(xfce_get_homedir());
+        case XFDESKTOP_SPECIAL_FILE_ICON_TRASH:
+            return g_file_new_for_uri("trash:///");
+        default:
+            g_assert_not_reached();
+    }
+}
+
 XfdesktopSpecialFileIcon *
 xfdesktop_special_file_icon_new(XfdesktopSpecialFileIconType type,
                                 GdkScreen *screen)
 {
     XfdesktopSpecialFileIcon *special_file_icon;
-    GFile *file = NULL;
-
-    switch(type) {
-        case XFDESKTOP_SPECIAL_FILE_ICON_FILESYSTEM:
-            file = g_file_new_for_uri("file:///");
-            break;
-
-        case XFDESKTOP_SPECIAL_FILE_ICON_HOME:
-            file = g_file_new_for_path(xfce_get_homedir());
-            break;
-
-        case XFDESKTOP_SPECIAL_FILE_ICON_TRASH:
-            file = g_file_new_for_uri("trash:///");
-            break;
-
-        default:
-            g_return_val_if_reached(NULL);
-    }
+    GFile *file = xfdesktop_special_file_icon_file_for_type(type);
 
     special_file_icon = g_object_new(XFDESKTOP_TYPE_SPECIAL_FILE_ICON, NULL);
     special_file_icon->priv->type = type;

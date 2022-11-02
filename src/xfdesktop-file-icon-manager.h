@@ -24,7 +24,6 @@
 #include <glib.h>
 #include <xfconf/xfconf.h>
 
-#include "xfdesktop-special-file-icon.h"
 #include "xfdesktop-icon-view-manager.h"
 
 G_BEGIN_DECLS
@@ -39,7 +38,7 @@ typedef struct _XfdesktopFileIconManagerPrivate  XfdesktopFileIconManagerPrivate
 
 struct _XfdesktopFileIconManager
 {
-    GObject parent;
+    XfdesktopIconViewManager parent;
 
     /*< private >*/
     XfdesktopFileIconManagerPrivate *priv;
@@ -47,7 +46,7 @@ struct _XfdesktopFileIconManager
 
 struct _XfdesktopFileIconManagerClass
 {
-    GObjectClass parent;
+    XfdesktopIconViewManagerClass parent;
 
     /*< signals >*/
     void (*hidden_state_changed)(XfdesktopFileIconManager *fmanager);
@@ -55,25 +54,9 @@ struct _XfdesktopFileIconManagerClass
 
 GType xfdesktop_file_icon_manager_get_type(void) G_GNUC_CONST;
 
-XfdesktopIconViewManager *xfdesktop_file_icon_manager_new(GFile *folder,
-                                                          XfconfChannel *channel);
-
-void xfdesktop_file_icon_save(gpointer user_data);
-
-gboolean xfdesktop_file_icon_manager_get_cached_icon_position(
-                                                    XfdesktopFileIconManager *fmanager,
-                                                    const gchar *name,
-                                                    const gchar *identifier,
-                                                    gint16 *row,
-                                                    gint16 *col);
-
-void xfdesktop_dnd_menu (XfdesktopIconViewManager *manager,
-                         XfdesktopIcon *drop_icon,
-                         GdkDragContext *context,
-                         GdkDragAction *action,
-                         gint16 row,
-                         gint16 col,
-                         guint time_);
+XfdesktopIconViewManager *xfdesktop_file_icon_manager_new(XfconfChannel *channel,
+                                                          GtkWidget *parent,
+                                                          GFile *folder);
 
 G_END_DECLS
 

@@ -21,8 +21,8 @@
 #ifndef __XFDESKTOP_WINDOW_ICON_MANAGER_H__
 #define __XFDESKTOP_WINDOW_ICON_MANAGER_H__
 
-#include <glib.h>
-#include <gdk/gdk.h>
+#include <gtk/gtk.h>
+#include <xfconf/xfconf.h>
 
 #include "xfdesktop-icon-view-manager.h"
 
@@ -38,7 +38,7 @@ typedef struct _XfdesktopWindowIconManagerPrivate  XfdesktopWindowIconManagerPri
 
 struct _XfdesktopWindowIconManager
 {
-    GObject parent;
+    XfdesktopIconViewManager parent;
 
     /*< private >*/
     XfdesktopWindowIconManagerPrivate *priv;
@@ -46,12 +46,13 @@ struct _XfdesktopWindowIconManager
 
 struct _XfdesktopWindowIconManagerClass
 {
-    GObjectClass parent;
+    XfdesktopIconViewManagerClass parent_class;
 };
 
 GType xfdesktop_window_icon_manager_get_type(void) G_GNUC_CONST;
 
-XfdesktopIconViewManager *xfdesktop_window_icon_manager_new(GdkScreen *gscreen);
+XfdesktopIconViewManager *xfdesktop_window_icon_manager_new(XfconfChannel *channel,
+                                                            GtkWidget *parent);
 
 G_END_DECLS
 

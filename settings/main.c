@@ -83,16 +83,6 @@
 #define WINLIST_SHOW_WS_SUBMENUS_PROP        "/windowlist-menu/show-submenus"
 #define WINLIST_SHOW_ADD_REMOVE_WORKSPACES_PROP "/windowlist-menu/show-add-remove-workspaces"
 
-#define DESKTOP_ICONS_ON_PRIMARY_PROP        "/desktop-icons/primary"
-#define DESKTOP_ICONS_STYLE_PROP             "/desktop-icons/style"
-#define DESKTOP_ICONS_ICON_SIZE_PROP         "/desktop-icons/icon-size"
-#define DESKTOP_ICONS_FONT_SIZE_PROP         "/desktop-icons/font-size"
-#define DESKTOP_ICONS_CUSTOM_FONT_SIZE_PROP  "/desktop-icons/use-custom-font-size"
-#define DESKTOP_ICONS_SHOW_TOOLTIP_PROP      "/desktop-icons/show-tooltips"
-#define DESKTOP_ICONS_TOOLTIP_SIZE_PROP      "/desktop-icons/tooltip-size"
-#define DESKTOP_ICONS_SINGLE_CLICK_PROP      "/desktop-icons/single-click"
-#define DESKTOP_ICONS_GRAVITY_PROP           "/desktop-icons/gravity"
-
 typedef struct
 {
     GtkTreeModel *model;

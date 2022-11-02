@@ -98,10 +98,14 @@ static GFileInfo *xfdesktop_volume_icon_peek_filesystem_info(XfdesktopFileIcon *
 static GFile *xfdesktop_volume_icon_peek_file(XfdesktopFileIcon *icon);
 static void xfdesktop_volume_icon_update_file_info(XfdesktopFileIcon *icon,
                                                    GFileInfo *info);
-static gboolean xfdesktop_volume_icon_activated(XfdesktopIcon *icon);
+static gboolean xfdesktop_volume_icon_activated(XfdesktopIcon *icon,
+                                                GtkWindow *window);
 static gboolean volume_icon_changed_timeout(gpointer user_data);
 static void xfdesktop_volume_icon_changed(GVolume *volume,
                                           XfdesktopVolumeIcon *volume_icon);
+
+static guint xfdesktop_volume_icon_hash(XfdesktopFileIcon *icon);
+static gchar *xfdesktop_volume_icon_get_sort_key(XfdesktopFileIcon *icon);
 
 static void xfdesktop_volume_icon_fetch_file_info(XfdesktopVolumeIcon *volume_icon,
                                                   GAsyncReadyCallback callback);
@@ -130,8 +134,13 @@ G_DEFINE_TYPE_WITH_PRIVATE(XfdesktopVolumeIcon, xfdesktop_volume_icon,
 
 
 
+// Value type is GtkWindow*
 static GQuark xfdesktop_volume_icon_activated_quark;
 
+const gchar *idents_for_sort_key[] = {
+    G_VOLUME_IDENTIFIER_KIND_UNIX_DEVICE,
+    G_VOLUME_IDENTIFIER_KIND_UUID,
+};
 
 
 static void
@@ -160,6 +169,8 @@ xfdesktop_volume_icon_class_init(XfdesktopVolumeIconClass *klass)
     file_icon_class->peek_filesystem_info = xfdesktop_volume_icon_peek_filesystem_info;
     file_icon_class->peek_file = xfdesktop_volume_icon_peek_file;
     file_icon_class->update_file_info = xfdesktop_volume_icon_update_file_info;
+    file_icon_class->hash = xfdesktop_volume_icon_hash;
+    file_icon_class->get_sort_key = xfdesktop_volume_icon_get_sort_key;
 }
 
 static void
@@ -595,15 +606,15 @@ xfdesktop_volume_icon_mounted_file_info_ready(GObject *source,
 
         file_info = g_file_query_info_finish(file, result, &error);
         if (file_info != NULL) {
-            gboolean activated = FALSE;
+            GtkWindow *window;
 
             xfdesktop_file_icon_update_file_info(XFDESKTOP_FILE_ICON(volume_icon), file_info);
 
-            activated = GPOINTER_TO_UINT(g_object_get_qdata(G_OBJECT(volume_icon),
-                                                            xfdesktop_volume_icon_activated_quark));
-            if (activated) {
+            window = g_object_get_qdata(G_OBJECT(volume_icon),
+                                        xfdesktop_volume_icon_activated_quark);
+            if (window != NULL) {
                 XfdesktopIcon *icon_p = XFDESKTOP_ICON(volume_icon);
-                XFDESKTOP_ICON_CLASS(xfdesktop_volume_icon_parent_class)->activated(icon_p);
+                XFDESKTOP_ICON_CLASS(xfdesktop_volume_icon_parent_class)->activated(icon_p, window);
             }
             g_object_set_qdata(G_OBJECT(volume_icon), xfdesktop_volume_icon_activated_quark, NULL);
         } else {
@@ -852,6 +863,25 @@ xfdesktop_volume_icon_add_context_menu_option(XfdesktopIcon *icon,
     }
 }
 
+static void
+xfdesktop_volume_icon_open_activated(GtkWidget *item,
+                                     XfdesktopIcon *icon)
+{
+    GtkWidget *toplevel = NULL;
+    GtkWidget *menu = gtk_widget_get_parent(item);
+
+    if (GTK_IS_MENU(menu)) {
+        toplevel = gtk_menu_get_attach_widget(GTK_MENU(menu));
+        if (!GTK_IS_WINDOW(toplevel)) {
+            toplevel = NULL;
+        }
+    } else {
+        toplevel = gtk_widget_get_toplevel(item);
+    }
+
+    xfdesktop_volume_icon_activated(icon, GTK_WINDOW(toplevel));
+}
+
 static gboolean
 xfdesktop_volume_icon_populate_context_menu(XfdesktopIcon *icon,
                                             GtkWidget *menu)
@@ -868,8 +898,8 @@ xfdesktop_volume_icon_populate_context_menu(XfdesktopIcon *icon,
     mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Open"), img);
     gtk_widget_show(mi);
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-    g_signal_connect_swapped(G_OBJECT(mi), "activate",
-                             G_CALLBACK(xfdesktop_icon_activated), icon);
+    g_signal_connect(G_OBJECT(mi), "activate",
+                     G_CALLBACK(xfdesktop_volume_icon_open_activated), icon);
 
     mi = gtk_separator_menu_item_new();
     gtk_widget_show(mi);
@@ -1001,7 +1031,8 @@ xfdesktop_volume_icon_update_file_info(XfdesktopFileIcon *icon,
 }
 
 static gboolean
-xfdesktop_volume_icon_activated(XfdesktopIcon *icon_p)
+xfdesktop_volume_icon_activated(XfdesktopIcon *icon_p,
+                                GtkWindow *window)
 {
     XfdesktopVolumeIcon *icon = XFDESKTOP_VOLUME_ICON(icon_p);
     GVolume *volume = xfdesktop_volume_icon_peek_volume(icon);
@@ -1014,8 +1045,9 @@ xfdesktop_volume_icon_activated(XfdesktopIcon *icon_p)
     if(!mount) {
         /* set the activated flag so we can chain the event up to the
          * parent class in the mount finish callback */
-        g_object_set_qdata(G_OBJECT(icon), xfdesktop_volume_icon_activated_quark,
-                           GUINT_TO_POINTER(TRUE));
+        g_object_set_qdata_full(G_OBJECT(icon), xfdesktop_volume_icon_activated_quark,
+                                g_object_ref(window),
+                                g_object_unref);
 
         /* mount the volume and open the folder in the mount finish callback */
         xfdesktop_volume_icon_menu_mount(NULL, icon);
@@ -1026,8 +1058,22 @@ xfdesktop_volume_icon_activated(XfdesktopIcon *icon_p)
 
         /* chain up to the parent class (where the mount point folder is
          * opened in the file manager) */
-        return XFDESKTOP_ICON_CLASS(xfdesktop_volume_icon_parent_class)->activated(icon_p);
+        return XFDESKTOP_ICON_CLASS(xfdesktop_volume_icon_parent_class)->activated(icon_p, window);
     }
+}
+
+static guint
+xfdesktop_volume_icon_hash(XfdesktopFileIcon *icon)
+{
+    return g_str_hash(xfdesktop_file_icon_peek_sort_key(icon));
+}
+
+static gchar *
+xfdesktop_volume_icon_get_sort_key(XfdesktopFileIcon *icon)
+{
+    XfdesktopVolumeIcon *vicon = XFDESKTOP_VOLUME_ICON(icon);
+
+    return xfdesktop_volume_icon_sort_key_for_volume(vicon->priv->volume);
 }
 
 static gboolean
@@ -1260,4 +1306,29 @@ xfdesktop_volume_icon_peek_volume(XfdesktopVolumeIcon *icon)
 {
     g_return_val_if_fail(XFDESKTOP_IS_VOLUME_ICON(icon), NULL);
     return icon->priv->volume;
+}
+
+gchar *
+xfdesktop_volume_icon_sort_key_for_volume(GVolume *volume)
+{
+    gchar *sort_key = NULL;
+
+    if (G_UNLIKELY(g_volume_get_sort_key(G_VOLUME(volume)) != NULL)) {
+        sort_key = g_strdup(g_volume_get_sort_key(volume));
+    }
+
+    if (G_UNLIKELY(sort_key == NULL)) {
+        for (gsize i = 0; i < G_N_ELEMENTS(idents_for_sort_key); ++i) {
+            sort_key = g_volume_get_identifier(volume, idents_for_sort_key[i]);
+            if (sort_key != NULL) {
+                break;
+            }
+        }
+    }
+
+    if (G_UNLIKELY(sort_key == NULL)) {
+        sort_key = g_volume_get_name(volume);
+    }
+
+    return sort_key;
 }
