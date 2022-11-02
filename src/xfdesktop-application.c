@@ -797,9 +797,6 @@ xfdesktop_application_shutdown(GApplication *g_application)
         app->wait_for_wm_timeout_id = 0;
     }
 
-    menu_cleanup();
-    windowlist_cleanup();
-
     if (app->desktop != NULL) {
         gtk_widget_destroy(app->desktop);
     }
