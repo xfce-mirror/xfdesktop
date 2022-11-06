@@ -111,10 +111,10 @@ void xfdesktop_file_utils_build_transfer_file_lists(GdkDragAction action,
                                                     XfdesktopFileIcon *dest_icon,
                                                     GList **out_source_files,
                                                     GList **out_dest_files);
-gboolean xfdesktop_file_utils_transfer_files(GdkDragAction action,
-                                             GList *source_files,
-                                             GList *target_files,
-                                             GdkScreen *screen);
+void xfdesktop_file_utils_transfer_files(GdkDragAction action,
+                                         GList *source_files,
+                                         GList *target_files,
+                                         GdkScreen *screen);
 
 
 gboolean xfdesktop_file_utils_dbus_init(void);

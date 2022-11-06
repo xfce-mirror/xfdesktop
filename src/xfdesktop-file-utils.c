@@ -1570,25 +1570,47 @@ xfdesktop_file_utils_build_transfer_file_lists(GdkDragAction action,
     }
 }
 
-gboolean
+static void
+transfer_files_cb(GObject *source_object,
+                  GAsyncResult *result,
+                  gpointer user_data)
+{
+    gboolean (*finish_func)(XfdesktopFileManager *, GAsyncResult *, GError **) = user_data;
+    GError *error = NULL;
+    gboolean success;
+
+    success = finish_func(XFDESKTOP_FILE_MANAGER(source_object), result, &error);
+    if (!success) {
+        gchar *message = error != NULL ? error->message : _("Unknown");
+        xfce_message_dialog(NULL,
+                            _("Transfer Error"), "dialog-error",
+                            _("The file transfer could not be performed"),
+                            message,
+                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            NULL);
+
+        g_clear_error(&error);
+    }
+}
+
+void
 xfdesktop_file_utils_transfer_files(GdkDragAction action,
                                     GList *source_files,
                                     GList *target_files,
                                     GdkScreen *screen)
 {
     XfdesktopFileManager *fileman_proxy;
-    gboolean success = TRUE;
 
-    g_return_val_if_fail(source_files != NULL && G_IS_FILE(source_files->data), FALSE);
-    g_return_val_if_fail(target_files != NULL && G_IS_FILE(target_files->data), FALSE);
-    g_return_val_if_fail(screen == NULL || GDK_IS_SCREEN(screen), FALSE);
+    g_return_if_fail(action == GDK_ACTION_MOVE || action == GDK_ACTION_COPY || action == GDK_ACTION_LINK);
+    g_return_if_fail(source_files != NULL && G_IS_FILE(source_files->data));
+    g_return_if_fail(target_files != NULL && G_IS_FILE(target_files->data));
+    g_return_if_fail(screen == NULL || GDK_IS_SCREEN(screen));
 
     if(!screen)
         screen = gdk_display_get_default_screen(gdk_display_get_default());
 
     fileman_proxy = xfdesktop_file_utils_peek_filemanager_proxy();
     if(fileman_proxy) {
-        GError *error = NULL;
         gchar **source_uris = xfdesktop_file_utils_file_list_to_uri_array(source_files);
         gchar **target_uris = xfdesktop_file_utils_file_list_to_uri_array(target_files);
         gchar *display_name = g_strdup(gdk_display_get_name(gdk_screen_get_display(screen)));
@@ -1596,43 +1618,32 @@ xfdesktop_file_utils_transfer_files(GdkDragAction action,
 
         switch(action) {
             case GDK_ACTION_MOVE:
-                xfdesktop_file_manager_call_move_into_sync(fileman_proxy, "",
-                                                           (const gchar **)source_uris,
-                                                           (const gchar *)target_uris[0],
-                                                           display_name, startup_id,
-                                                           NULL, &error);
+                xfdesktop_file_manager_call_move_into(fileman_proxy, "",
+                                                      (const gchar **)source_uris,
+                                                      (const gchar *)target_uris[0],
+                                                      display_name, startup_id,
+                                                      NULL,
+                                                      transfer_files_cb, xfdesktop_file_manager_call_move_into_finish);
                 break;
             case GDK_ACTION_COPY:
-                xfdesktop_file_manager_call_copy_to_sync(fileman_proxy, "",
-                                                         (const gchar **)source_uris,
-                                                         (const gchar **)target_uris,
-                                                         display_name, startup_id,
-                                                         NULL, &error);
+                xfdesktop_file_manager_call_copy_to(fileman_proxy, "",
+                                                    (const gchar **)source_uris,
+                                                    (const gchar **)target_uris,
+                                                    display_name, startup_id,
+                                                    NULL,
+                                                    transfer_files_cb, xfdesktop_file_manager_call_copy_to_finish);
                 break;
             case GDK_ACTION_LINK:
-                xfdesktop_file_manager_call_link_into_sync(fileman_proxy, "",
-                                                          (const gchar **)source_uris,
-                                                          (const gchar *)target_uris[0],
-                                                          display_name, startup_id,
-                                                          NULL, &error);
+                xfdesktop_file_manager_call_link_into(fileman_proxy, "",
+                                                      (const gchar **)source_uris,
+                                                      (const gchar *)target_uris[0],
+                                                      display_name, startup_id,
+                                                      NULL,
+                                                      transfer_files_cb, xfdesktop_file_manager_call_link_into_finish);
                 break;
             default:
-                g_warning("Unsupported transfer action");
-                success = FALSE;
+                g_assert_not_reached();
                 break;
-        }
-
-        if(error) {
-            xfce_message_dialog(NULL,
-                                _("Transfer Error"), "dialog-error",
-                                _("The file transfer could not be performed"),
-                                error->message,
-                                XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
-                                NULL);
-
-            g_clear_error(&error);
-
-            success = FALSE;
         }
 
         g_free(startup_id);
@@ -1647,11 +1658,7 @@ xfdesktop_file_utils_transfer_files(GdkDragAction action,
                               "be present (such as the one supplied by Thunar)."),
                             XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
                             NULL);
-
-        success = FALSE;
     }
-
-    return success;
 }
 
 static gint dbus_ref_cnt = 0;

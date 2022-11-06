@@ -3891,10 +3891,11 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
                 if(dest_file_list) {
                     dest_file_list = g_list_reverse(dest_file_list);
 
-                    drop_ok = xfdesktop_file_utils_transfer_files(action,
-                                                                  file_list,
-                                                                  dest_file_list,
-                                                                  fmanager->priv->gscreen);
+                    xfdesktop_file_utils_transfer_files(action,
+                                                        file_list,
+                                                        dest_file_list,
+                                                        fmanager->priv->gscreen);
+                    drop_ok = TRUE;
                 }
 
                 if(copy_only) {
