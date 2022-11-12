@@ -40,20 +40,22 @@
 #include <errno.h>
 #endif
 
-#include <gdk-pixbuf/gdk-pixbuf.h>
-#include <cairo-gobject.h>
-#include <gtk/gtk.h>
-#include <gtk/gtkx.h>
-#include <gdk/gdkx.h>
-
 #include <glib.h>
 #include <glib/gstdio.h>
 #include <gio/gio.h>
+#include <gdk-pixbuf/gdk-pixbuf.h>
+#include <cairo-gobject.h>
+#include <gtk/gtk.h>
+
+#ifdef ENABLE_X11
+#include <gdk/gdkx.h>
+#include <gtk/gtkx.h>
+#endif  /* ENABLE_X11 */
 
 #include <libxfce4util/libxfce4util.h>
 #include <xfconf/xfconf.h>
 #include <libxfce4ui/libxfce4ui.h>
-#include <libwnck/libwnck.h>
+#include <libxfce4windowing/libxfce4windowing.h>
 #include <exo/exo.h>
 
 #include "xfdesktop-common.h"
@@ -108,9 +110,9 @@ typedef struct
     gchar *monitor_name;
     gulong image_list_loaded:1;
 
-    WnckWindow *wnck_window;
+    XfwWindow *xfw_window;
     /* We keep track of the current workspace number because
-     * wnck_screen_get_active_workspace sometimes has to return NULL. */
+     * sometimes fetching the active workspace returns NULL. */
     gint active_workspace;
 
     GtkWidget *infobar;
@@ -707,31 +709,69 @@ xfdesktop_image_list_add_dir(GObject *source_object,
                                              cb_destroy_add_dir_enumeration);
 }
 
+static gint
+workspace_count_total(XfwWorkspaceManager *workspace_manager) {
+    gint n_ws = 0;
+    for (GList *l = xfw_workspace_manager_list_workspace_groups(workspace_manager);
+         l != NULL;
+         l = l->next)
+    {
+        n_ws += xfw_workspace_group_get_workspace_count(XFW_WORKSPACE_GROUP(l->data));
+    }
+    return n_ws;
+}
+
+static XfwWorkspace *
+find_workspace_by_number(XfwWorkspaceManager *workspace_manager,
+                         gint workspace_num)
+{
+    gint total_workspaces = 0;
+    for (GList *l = xfw_workspace_manager_list_workspace_groups(workspace_manager);
+         l != NULL;
+         l = l->next)
+    {
+        XfwWorkspaceGroup *group = XFW_WORKSPACE_GROUP(l->data);
+        gint n_workspaces = xfw_workspace_group_get_workspace_count(group);
+        if (total_workspaces + n_workspaces > workspace_num) {
+            return g_list_nth_data(xfw_workspace_group_list_workspaces(group),
+                                   workspace_num - total_workspaces);
+        }
+    }
+    return NULL;
+}
+
 static void
 xfdesktop_settings_update_iconview_frame_name(AppearancePanel *panel,
-                                              WnckWorkspace *wnck_workspace)
+                                              XfwWorkspace *xfw_workspace)
 {
     gchar buf[1024];
     gchar *workspace_name;
-    WnckScreen *screen;
-    WnckWorkspace *workspace;
+    XfwScreen *screen;
+    XfwWorkspaceManager *workspace_manager;
+    XfwWorkspace *workspace;
 
     /* Don't update the name until we find our window */
-    if(panel->wnck_window == NULL)
+    if (panel->xfw_window == NULL)
         return;
 
     g_return_if_fail(panel->monitor >= 0 && panel->workspace >= 0);
 
-    screen = wnck_window_get_screen(panel->wnck_window);
+    screen = xfw_window_get_screen(panel->xfw_window);
+    workspace_manager = xfw_screen_get_workspace_manager(screen);
 
     /* If it's a pinned window get the active workspace */
-    if(wnck_workspace == NULL) {
-        workspace = wnck_screen_get_workspace(screen, panel->active_workspace);
+    if(xfw_workspace == NULL) {
+        workspace = find_workspace_by_number(workspace_manager, panel->active_workspace);
     } else {
-        workspace = wnck_workspace;
+        workspace = xfw_workspace;
     }
 
-    workspace_name = g_strdup(wnck_workspace_get_name(workspace));
+    if (workspace == NULL) {
+        g_critical("active workspace is not in list");
+        return;
+    }
+
+    workspace_name = g_strdup(xfw_workspace_get_name(workspace));
 
     if(gdk_display_get_n_monitors(gtk_widget_get_display(panel->chk_apply_to_all)) > 1) {
         if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(panel->chk_apply_to_all))) {
@@ -771,7 +811,7 @@ xfdesktop_settings_update_iconview_frame_name(AppearancePanel *panel,
         }
     } else {
         if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(panel->chk_apply_to_all)) ||
-           (wnck_screen_get_workspace_count(screen) == 1)) {
+           (workspace_count_total(workspace_manager) == 1)) {
             /* Single monitor and single workspace */
             g_snprintf(buf, sizeof(buf), _("Wallpaper for my desktop"));
 
@@ -920,21 +960,23 @@ cb_image_selection_changed(GtkIconView *icon_view,
 
 static gint
 xfdesktop_settings_get_active_workspace(AppearancePanel *panel,
-                                        WnckWindow *wnck_window)
+                                        XfwWindow *xfw_window)
 {
-    WnckWorkspace *wnck_workspace;
+    XfwWorkspace *workspace;
     gboolean single_workspace;
-    gint workspace_num, single_workspace_num;
-    WnckScreen *wnck_screen = wnck_window_get_screen(wnck_window);
+    gint workspace_num = -1, n_workspaces = 0, single_workspace_num;
+    XfwScreen *xfw_screen = xfw_window_get_screen(xfw_window);
+    XfwWorkspaceManager *workspace_manager = xfw_screen_get_workspace_manager(xfw_screen);
 
-    wnck_workspace = wnck_window_get_workspace(wnck_window);
+    workspace = xfw_window_get_workspace(xfw_window);
 
-    /* If wnck_workspace is NULL that means it's pinned and we just need to
+    /* If workspace is NULL that means it's pinned and we just need to
      * use the active/current workspace */
-    if(wnck_workspace != NULL) {
-        workspace_num = wnck_workspace_get_number(wnck_workspace);
+    if(workspace != NULL) {
+        xfdesktop_workspace_get_number_and_total(workspace_manager, workspace, &workspace_num, &n_workspaces);
     } else {
         workspace_num = panel->active_workspace;
+        n_workspaces = workspace_count_total(workspace_manager);
     }
 
     single_workspace = xfconf_channel_get_bool(panel->channel,
@@ -948,7 +990,7 @@ xfdesktop_settings_get_active_workspace(AppearancePanel *panel,
         single_workspace_num = xfconf_channel_get_int(panel->channel,
                                                       SINGLE_WORKSPACE_NUMBER,
                                                       0);
-        if(single_workspace_num < wnck_screen_get_workspace_count(wnck_screen)) {
+        if(single_workspace_num < n_workspaces) {
             return single_workspace_num;
         } else {
             gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(panel->chk_apply_to_all),
@@ -1250,7 +1292,7 @@ xfdesktop_settings_update_iconview_folder(AppearancePanel *panel)
     gchar *current_folder, *dirname;
 
     /* If we haven't found our window return now and wait for that */
-    if(panel->wnck_window == NULL)
+    if(panel->xfw_window == NULL)
         return;
 
     TRACE("entering");
@@ -1486,28 +1528,27 @@ suboptions_set_sensitive(GtkToggleButton *btn,
 }
 
 static void
-cb_update_background_tab(WnckWindow *wnck_window,
+cb_update_background_tab(XfwWindow *xfw_window,
                          gpointer user_data)
 {
     AppearancePanel *panel = user_data;
     gint screen_num, monitor_num, workspace_num;
     gchar *monitor_name = NULL;
-    WnckWorkspace *wnck_workspace = NULL;
-    WnckScreen    *wnck_screen = NULL;
+    XfwWorkspace  *workspace = NULL;
     GdkWindow     *window = NULL;
     GdkDisplay    *display = NULL;
     GdkMonitor    *monitor = NULL;
 
     /* If we haven't found our window return now and wait for that */
-    if(panel->wnck_window == NULL)
+    if(panel->xfw_window == NULL)
         return;
 
     /* Get all the new settings for comparison */
-    wnck_screen = wnck_window_get_screen(panel->wnck_window);
-    wnck_workspace = wnck_window_get_workspace(panel->wnck_window);
-
-    workspace_num = xfdesktop_settings_get_active_workspace(panel, wnck_window);
-    screen_num = wnck_screen_get_number(wnck_screen);
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+    screen_num = gdk_screen_get_number(gtk_widget_get_screen(panel->image_iconview));
+G_GNUC_END_IGNORE_DEPRECATIONS
+    workspace = xfw_window_get_workspace(panel->xfw_window);
+    workspace_num = xfdesktop_settings_get_active_workspace(panel, xfw_window);
     window = gtk_widget_get_window(panel->image_iconview);
     display = gdk_window_get_display(window);
     monitor = gdk_display_get_monitor_at_window(display, window);
@@ -1566,25 +1607,28 @@ cb_update_background_tab(WnckWindow *wnck_window,
     xfdesktop_settings_background_tab_change_bindings(panel,
                                                       FALSE);
 
-    xfdesktop_settings_update_iconview_frame_name(panel, wnck_workspace);
+    xfdesktop_settings_update_iconview_frame_name(panel, workspace);
     xfdesktop_settings_update_iconview_folder(panel);
 }
 
 static void
-cb_workspace_changed(WnckScreen *screen,
-                     WnckWorkspace *workspace,
+cb_workspace_changed(XfwWorkspaceGroup *group,
+                     XfwWorkspace *previously_active_workspace,
                      gpointer user_data)
 {
     AppearancePanel *panel = user_data;
-    WnckWorkspace *active_workspace;
+    XfwWorkspace *active_workspace;
     gint new_num = -1;
 
-    g_return_if_fail(WNCK_IS_SCREEN(screen));
+    g_return_if_fail(group != NULL);
 
     /* Update the current workspace number */
-    active_workspace = wnck_screen_get_active_workspace(screen);
-    if(WNCK_IS_WORKSPACE(active_workspace))
-        new_num = wnck_workspace_get_number(active_workspace);
+    active_workspace = xfw_workspace_group_get_active_workspace(group);
+    if (active_workspace != NULL) {
+        XfwWorkspaceManager *workspace_manager = xfw_workspace_group_get_workspace_manager(group);
+        gint n_ws;
+        xfdesktop_workspace_get_number_and_total(workspace_manager, active_workspace, &new_num, &n_ws);
+    }
 
     /* This will sometimes fail to update */
     if(new_num != -1)
@@ -1593,63 +1637,103 @@ cb_workspace_changed(WnckScreen *screen,
     XF_DEBUG("active_workspace now %d", panel->active_workspace);
 
     /* Call cb_update_background_tab in case this is a pinned window */
-    if(panel->wnck_window != NULL)
-        cb_update_background_tab(panel->wnck_window, panel);
+    if(panel->xfw_window != NULL)
+        cb_update_background_tab(panel->xfw_window, panel);
 }
 
 static void
-cb_workspace_count_changed(WnckScreen *screen,
-                           WnckWorkspace *workspace,
+cb_workspace_count_changed(XfwWorkspaceGroup *group,
+                           XfwWorkspace *workspace,
                            gpointer user_data)
 {
     AppearancePanel *panel = user_data;
 
     /* Update background because the single workspace mode may have
      * changed due to the addition/removal of a workspace */
-    if(panel->wnck_window != NULL)
-        cb_update_background_tab(panel->wnck_window, user_data);
+    if(panel->xfw_window != NULL)
+        cb_update_background_tab(panel->xfw_window, user_data);
 }
 
 static void
-cb_window_opened(WnckScreen *screen,
-                 WnckWindow *window,
+cb_window_opened(XfwScreen *screen,
+                 XfwWindow *window,
                  gpointer user_data)
 {
     AppearancePanel *panel = user_data;
     GtkWidget *toplevel;
-    WnckWorkspace *workspace;
+    XfwWorkspace *workspace;
+    XfwWorkspaceGroup *group = NULL;
 
     /* If we already found our window, exit */
-    if(panel->wnck_window != NULL)
+    if (panel->xfw_window != NULL) {
         return;
+    }
 
     toplevel = gtk_widget_get_toplevel(panel->image_iconview);
 
     /* If they don't match then it's not our window, exit */
-    if(wnck_window_get_xid(window) != GDK_WINDOW_XID(gtk_widget_get_window(toplevel)))
-        return;
+#ifdef ENABLE_X11
+    if (xfw_windowing_get() == XFW_WINDOWING_X11) {
+        if (xfw_window_get_id(window) != gdk_x11_window_get_xid(gtk_widget_get_window(toplevel))) {
+            return;
+        }
+    } else
+#endif  /* ENABLE_X11 */
+#ifdef ENABLE_WAYLAND
+    if (xfw_windowing_get() == XFW_WINDOWING_WAYLAND) {
+        GtkWindow *toplevel_win = GTK_WINDOW(toplevel);
+        const gchar *window_name = xfw_window_get_name(window);
+        const gchar *toplevel_name = gtk_window_get_title(toplevel_win);
+
+        g_message("No good way to match a GdkWindow and XfwWindow for Wayland; guessing");
+
+        if (window_name == NULL || toplevel_name == NULL || strcmp(window_name, toplevel_name) != 0) {
+            return;
+        }
+        if (gtk_window_is_maximized(toplevel_win) != xfw_window_is_maximized(window)) {
+            return;
+        }
+        // TODO: check window geometry?
+    }
+#endif  /* GTK_WINDOWING_WAYLAND */
 
     XF_DEBUG("Found our window");
-    panel->wnck_window = window;
+    panel->xfw_window = window;
 
     /* These callbacks are for updating the image_iconview when the window
      * moves to another monitor or workspace */
-    g_signal_connect(panel->wnck_window, "geometry-changed",
+    // FIXME: signal not implemented yet, and not currently implementable on wayland
+    g_signal_connect(panel->xfw_window, "geometry-changed",
                      G_CALLBACK(cb_update_background_tab), panel);
-    g_signal_connect(panel->wnck_window, "workspace-changed",
+    g_signal_connect(panel->xfw_window, "workspace-changed",
                      G_CALLBACK(cb_update_background_tab), panel);
 
-    workspace = wnck_window_get_workspace(window);
+    workspace = xfw_window_get_workspace(window);
+    if (workspace == NULL) {
+        XfwWorkspaceManager *workspace_manager = xfw_screen_get_workspace_manager(screen);
+        for (GList *l = xfw_workspace_manager_list_workspace_groups(workspace_manager);
+             l != NULL;
+             l = l->next)
+        {
+            workspace = xfw_workspace_group_get_active_workspace(XFW_WORKSPACE_GROUP(l->data));
+            if (workspace != NULL) {
+                group = XFW_WORKSPACE_GROUP(l->data);
+                break;
+            }
+        }
+    } else {
+        group = xfw_workspace_get_workspace_group(workspace);
+    }
 
-    /* Update the active workspace number */
-    cb_workspace_changed(screen, workspace, panel);
+    if (group != NULL) {
+        /* Update the active workspace number */
+        cb_workspace_changed(group, NULL, panel);
+    } else {
+        g_message("Couldn't find active workspace or group");
+    }
 
     /* Update the background settings */
     cb_update_background_tab(window, panel);
-
-    /* If it's a pinned window get the active workspace */
-    if(workspace == NULL)
-        workspace = wnck_screen_get_workspace(screen, panel->active_workspace);
 
     /* Update the frame name */
     xfdesktop_settings_update_iconview_frame_name(panel, workspace);
@@ -1662,10 +1746,10 @@ cb_monitor_changed(GdkScreen *gscreen,
     AppearancePanel *panel = user_data;
 
     /* Update background because the monitor we're on may have changed */
-    cb_update_background_tab(panel->wnck_window, user_data);
+    cb_update_background_tab(panel->xfw_window, user_data);
 
     /* Update the frame name because we may change from/to a single monitor */
-    xfdesktop_settings_update_iconview_frame_name(panel, wnck_window_get_workspace(panel->wnck_window));
+    xfdesktop_settings_update_iconview_frame_name(panel, xfw_window_get_workspace(panel->xfw_window));
 }
 
 static void
@@ -1687,11 +1771,11 @@ cb_xfdesktop_chk_apply_to_all(GtkCheckButton *button,
                                SINGLE_WORKSPACE_NUMBER,
                                panel->workspace);
     } else {
-        cb_update_background_tab(panel->wnck_window, panel);
+        cb_update_background_tab(panel->xfw_window, panel);
     }
 
     /* update the frame name to since we changed to/from single workspace mode */
-    xfdesktop_settings_update_iconview_frame_name(panel, wnck_window_get_workspace(panel->wnck_window));
+    xfdesktop_settings_update_iconview_frame_name(panel, xfw_window_get_workspace(panel->xfw_window));
 }
 
 static void
@@ -1776,7 +1860,8 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     GError *error = NULL;
     GtkFileFilter *filter;
     GdkScreen *screen;
-    WnckScreen *wnck_screen;
+    XfwScreen *xfw_screen;
+    XfwWorkspaceManager *workspace_manager;
     XfconfChannel *channel = panel->channel;
     const gchar *path;
     GFile *file;
@@ -1846,20 +1931,25 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
                                   TRUE);
 
     screen = gtk_widget_get_screen(appearance_container);
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-    wnck_screen = wnck_screen_get(panel->screen);
-G_GNUC_END_IGNORE_DEPRECATIONS
+    xfw_screen = xfw_screen_get_default();
+    workspace_manager = xfw_screen_get_workspace_manager(xfw_screen);
+    // FIXME: watch for new and destroyed workspace groups
 
     /* watch for workspace changes */
-    g_signal_connect(wnck_screen, "workspace-created",
-                     G_CALLBACK(cb_workspace_count_changed), panel);
-    g_signal_connect(wnck_screen, "workspace-destroyed",
-                     G_CALLBACK(cb_workspace_count_changed), panel);
-    g_signal_connect(wnck_screen, "active-workspace-changed",
-                     G_CALLBACK(cb_workspace_changed), panel);
+    for (GList *l = xfw_workspace_manager_list_workspace_groups(workspace_manager);
+         l != NULL;
+         l = l->next)
+    {
+        g_signal_connect(l->data, "workspace-created",
+                         G_CALLBACK(cb_workspace_count_changed), panel);
+        g_signal_connect(l->data, "workspace-destroyed",
+                         G_CALLBACK(cb_workspace_count_changed), panel);
+        g_signal_connect(l->data, "active-workspace-changed",
+                         G_CALLBACK(cb_workspace_changed), panel);
+    }
 
     /* watch for window-opened so we can find our window and track it's changes */
-    g_signal_connect(wnck_screen, "window-opened",
+    g_signal_connect(xfw_screen, "window-opened",
                      G_CALLBACK(cb_window_opened), panel);
 
     /* watch for monitor changes */
@@ -2095,7 +2185,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                            "active");
 
     setup_special_icon_list(main_gxml, channel);
-    cb_update_background_tab(panel->wnck_window, panel);
+    cb_update_background_tab(panel->xfw_window, panel);
 }
 
 static void
@@ -2203,26 +2293,10 @@ main(int argc, char **argv)
     if(opt_enable_debug)
         xfdesktop_debug_set(TRUE);
 
-    if(opt_socket_id == 0) {
-        GtkWidget *dialog;
-        dialog = GTK_WIDGET(gtk_builder_get_object(gxml, "prefs_dialog"));
-        g_signal_connect(dialog, "response",
-                         G_CALLBACK(xfdesktop_settings_response),
-                         channel);
-        gtk_window_set_default_size
-            (GTK_WINDOW(dialog),
-             xfconf_channel_get_int(channel, SETTINGS_WINDOW_LAST_WIDTH, -1),
-             xfconf_channel_get_int(channel, SETTINGS_WINDOW_LAST_HEIGHT, -1));
-        gtk_window_present(GTK_WINDOW (dialog));
-
-        screen = XScreenNumberOfScreen(gdk_x11_screen_get_xscreen(gtk_widget_get_screen(dialog)));
-
-        /* To prevent the settings dialog to be saved in the session */
-        gdk_x11_set_sm_client_id("FAKE ID");
-
-    } else {
+#ifdef ENABLE_X11
+    if (opt_socket_id != 0 && xfw_windowing_get() == XFW_WINDOWING_X11) {
         GtkWidget *plug, *plug_child;
-        WnckScreen *wnck_screen;
+        XfwScreen *xfw_screen;
 
         plug = gtk_plug_new(opt_socket_id);
         gtk_widget_show(plug);
@@ -2235,23 +2309,44 @@ main(int argc, char **argv)
         xfce_widget_reparent(plug_child, plug);
         gtk_widget_show(plug_child);
 
-        screen = XScreenNumberOfScreen(gdk_x11_screen_get_xscreen(gtk_widget_get_screen(plug)));
+        screen = gdk_x11_screen_get_screen_number(gtk_widget_get_screen(plug));
 
         /* In a GtkPlug setting there isn't an easy way to find our window
-         * in cb_window_opened so we'll just force wnck to init and get the
-         * active window */
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-        wnck_screen = wnck_screen_get(screen);
-G_GNUC_END_IGNORE_DEPRECATIONS
-        wnck_screen_force_update(wnck_screen);
-        panel->wnck_window = wnck_screen_get_active_window(wnck_screen);
+         * in cb_window_opened so we'll just get the screen's active window */
+        xfw_screen = xfw_screen_get_default();
+        panel->xfw_window = xfw_screen_get_active_window(xfw_screen);
 
         /* These callbacks are for updating the image_iconview when the window
          * moves to another monitor or workspace */
-        g_signal_connect(panel->wnck_window, "geometry-changed",
+        // FIXME: this signal is not implemented
+        g_signal_connect(panel->xfw_window, "geometry-changed",
                          G_CALLBACK(cb_update_background_tab), panel);
-        g_signal_connect(panel->wnck_window, "workspace-changed",
+        g_signal_connect(panel->xfw_window, "workspace-changed",
                          G_CALLBACK(cb_update_background_tab), panel);
+    } else
+#endif  /* ENABLE_X11 */
+    {
+        GtkWidget *dialog = GTK_WIDGET(gtk_builder_get_object(gxml, "prefs_dialog"));
+
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+        screen = gdk_screen_get_number(gtk_widget_get_screen(dialog));
+G_GNUC_END_IGNORE_DEPRECATIONS
+
+        g_signal_connect(dialog, "response",
+                         G_CALLBACK(xfdesktop_settings_response),
+                         channel);
+        gtk_window_set_default_size
+            (GTK_WINDOW(dialog),
+             xfconf_channel_get_int(channel, SETTINGS_WINDOW_LAST_WIDTH, -1),
+             xfconf_channel_get_int(channel, SETTINGS_WINDOW_LAST_HEIGHT, -1));
+        gtk_window_present(GTK_WINDOW (dialog));
+
+#ifdef ENABLE_X11
+        if (xfw_windowing_get() == XFW_WINDOWING_X11) {
+            /* To prevent the settings dialog to be saved in the session */
+            gdk_x11_set_sm_client_id("FAKE ID");
+        }
+#endif  /* ENABLE_X11 */
     }
 
     panel->channel = channel;
