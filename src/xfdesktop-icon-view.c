@@ -2925,26 +2925,34 @@ xfdesktop_icon_view_invalidate_icon(XfdesktopIconView *icon_view,
                                     XfdesktopIcon *icon,
                                     gboolean recalc_extents)
 {
-    GdkRectangle extents, box_extents;
-    gboolean invalidated_something = FALSE;
+    GdkRectangle invalidate_extents = { 0, };
+    GdkRectangle cell_extents, icon_total_extents;
 
     g_return_if_fail(icon);
 
     /*DBG("entering (recalc=%s)", recalc_extents?"true":"false");*/
 
-    /* we always have to invalidate the old extents */
-    if(xfdesktop_icon_get_extents(icon, NULL, NULL, &extents)) {
-        if(gtk_widget_get_realized(GTK_WIDGET(icon_view))) {
-            gtk_widget_queue_draw_area(GTK_WIDGET(icon_view), extents.x,
-                                       extents.y, extents.width,
-                                       extents.height);
+    // First find the normal cell extents.
+    cell_extents.width = cell_extents.height = CELL_SIZE;
+    if (xfdesktop_icon_view_shift_area_to_cell(icon_view, icon, &cell_extents)) {
+        invalidate_extents = cell_extents;
+    }
+
+    // The normal cell extents may not encompass everything; if the icon is
+    // selected, and the icon label is long, it might spill out past the
+    // cell extents.
+    if (xfdesktop_icon_get_extents(icon, NULL, NULL, &icon_total_extents)) {
+        if (invalidate_extents.width > 0 && invalidate_extents.height > 0) {
+            gdk_rectangle_union(&invalidate_extents, &icon_total_extents, &invalidate_extents);
+        } else {
+            invalidate_extents = icon_total_extents;
         }
-        invalidated_something = TRUE;
-    } else
+    } else {
         recalc_extents = TRUE;
+    }
 
     if(recalc_extents) {
-        GdkRectangle pixbuf_extents, text_extents, total_extents;
+        GdkRectangle pixbuf_extents, text_extents, box_extents, total_extents;
 
         if(!xfdesktop_icon_view_update_icon_extents(icon_view, icon,
                                                     &pixbuf_extents,
@@ -2953,15 +2961,22 @@ xfdesktop_icon_view_invalidate_icon(XfdesktopIconView *icon_view,
                                                     &total_extents))
         {
             g_warning("Trying to invalidate icon, but can't recalculate extents");
-        } else if(gtk_widget_get_realized(GTK_WIDGET(icon_view))) {
-            gtk_widget_queue_draw_area(GTK_WIDGET(icon_view),
-                                       total_extents.x, total_extents.y,
-                                       total_extents.width, total_extents.height);
-            invalidated_something = TRUE;
+        } else {
+            if (invalidate_extents.width > 0 && invalidate_extents.height > 0) {
+                gdk_rectangle_union(&invalidate_extents, &total_extents, &invalidate_extents);
+            } else {
+                invalidate_extents = total_extents;
+            }
         }
     }
 
-    if(!invalidated_something) {
+    if (invalidate_extents.width > 0 && invalidate_extents.height > 0) {
+        if (gtk_widget_get_realized(GTK_WIDGET(icon_view))) {
+            gtk_widget_queue_draw_area(GTK_WIDGET(icon_view),
+                                       invalidate_extents.x, invalidate_extents.y,
+                                       invalidate_extents.width, invalidate_extents.height);
+        }
+    } else {
         DBG("Icon '%s' doesn't have extents: need to call paint some other way",
             xfdesktop_icon_peek_label(icon));
     }
