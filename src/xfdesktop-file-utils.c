@@ -451,7 +451,7 @@ xfdesktop_file_utils_get_icon(GIcon *icon,
                               guint opacity)
 {
     GtkIconTheme *itheme = gtk_icon_theme_get_default();
-    GdkPixbuf *pix_theme = NULL, *pix = NULL;
+    GdkPixbuf *pix = NULL;
     GIcon *base_icon = NULL;
     gint size = MIN(width, height);
 
@@ -471,7 +471,10 @@ xfdesktop_file_utils_get_icon(GIcon *icon,
                                                               base_icon, size,
                                                               ITHEME_FLAGS);
       if(icon_info) {
-          pix_theme = gtk_icon_info_load_icon(icon_info, NULL);
+          GdkPixbuf *pix_theme = gtk_icon_info_load_icon(icon_info, NULL);
+          // these icons are owned by GtkIconTheme and shouldn't be modified
+          pix = gdk_pixbuf_copy(pix_theme);
+          g_object_unref(pix_theme);
           g_object_unref(icon_info);
       }
     } else if(G_IS_LOADABLE_ICON(base_icon)) {
@@ -491,29 +494,21 @@ xfdesktop_file_utils_get_icon(GIcon *icon,
         g_object_unref(file);
     }
 
+    if (G_LIKELY(pix != NULL)) {
+        gint pix_width = gdk_pixbuf_get_width(pix);
+        gint pix_height = gdk_pixbuf_get_height(pix);
 
-    if(pix_theme) {
-        GdkPixbuf *tmp;
-        /* we can't edit thsese icons */
-        tmp = gdk_pixbuf_copy(pix_theme);
-
-        /* ensure icons are within our size requirements since
-         * gtk_icon_theme_lookup_by_gicon isn't exact */
-        pix = exo_gdk_pixbuf_scale_down(tmp, TRUE, width, height);
-
-        g_object_unref(G_OBJECT(tmp));
-        g_object_unref(G_OBJECT(pix_theme));
-        pix_theme = tmp = NULL;
-    }
-
-    /* fallback */
-    if(G_UNLIKELY(!pix))
+        if (pix_width > width || pix_height > height) {
+            GdkPixbuf *scaled = exo_gdk_pixbuf_scale_down(pix, TRUE, width, height);
+            g_object_unref(pix);
+            pix = scaled;
+        }
+    } else {
         pix = xfdesktop_file_utils_get_fallback_icon(size);
-
-    /* sanity check */
-    if(G_UNLIKELY(!pix)) {
-        g_warning("Unable to find fallback icon");
-        return NULL;
+        if (G_UNLIKELY(pix == NULL)) {
+            g_warning("Unable to find fallback icon");
+            return NULL;
+        }
     }
 
     /* Add the emblems */
