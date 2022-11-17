@@ -118,6 +118,7 @@ typedef struct
     GtkWidget *label_header;
     GtkWidget *image_iconview;
     GtkWidget *btn_folder;
+    GtkWidget *btn_folder_apply;
     GtkWidget *chk_apply_to_all;
     GtkWidget *image_style_combo;
     GtkWidget *color_style_combo;
@@ -661,6 +662,17 @@ xfdesktop_image_list_add_item(gpointer user_data)
         }
      }
 
+    if (dir_data->selected_iter == NULL) {
+        gchar *prop_name = xfdesktop_settings_generate_per_workspace_binding_string(panel, "backdrop-cycle-enable");
+        gboolean backdrop_cycle_enable = xfconf_channel_get_bool(panel->channel, prop_name, FALSE);
+
+        if (backdrop_cycle_enable) {
+            gtk_widget_show(panel->btn_folder_apply);
+        }
+
+        g_free(prop_name);
+    }
+
     /* cb_destroy_add_dir_enumeration will get called to clean up */
     return FALSE;
 }
@@ -880,6 +892,8 @@ cb_image_selection_changed(GtkIconView *icon_view,
     if(!gtk_tree_model_get_iter(model, &iter, g_list_first(selected_items)->data))
         return;
 
+    gtk_widget_hide(panel->btn_folder_apply);
+
     gtk_tree_model_get(model, &iter, COL_FILENAME, &filename, -1);
 
     /* Get the current/last image, handles migrating from old versions */
@@ -1033,6 +1047,17 @@ cb_xfdesktop_chk_cycle_backdrop_toggled(GtkCheckButton *button,
     update_backdrop_cycle_spinbox(panel);
     /* determine if the random check box should be sensitive */
     update_backdrop_random_order_chkbox(panel);
+
+    if (!sensitive) {
+        gtk_widget_hide(panel->btn_folder_apply);
+    } else {
+        GList *selected = gtk_icon_view_get_selected_items(GTK_ICON_VIEW(panel->image_iconview));
+        if (selected == NULL) {
+            gtk_widget_show(panel->btn_folder_apply);
+        } else {
+            g_list_free(selected);
+        }
+    }
 }
 
 static gboolean
@@ -1169,6 +1194,32 @@ cb_folder_selection_changed(GtkWidget *button,
 
     g_free(new_folder);
     g_free(previous_folder);
+}
+
+static void
+cb_folder_apply_clicked(GtkWidget *button,
+                        AppearancePanel *panel)
+{
+    GList *selected;
+
+    selected = gtk_icon_view_get_selected_items(GTK_ICON_VIEW(panel->image_iconview));
+    if (G_LIKELY(selected == NULL)) {
+        GtkTreeModel *model;
+        GtkTreeIter first;
+
+        model = gtk_icon_view_get_model(GTK_ICON_VIEW(panel->image_iconview));
+        if (gtk_tree_model_get_iter_first(model, &first)) {
+            GtkTreePath *path = gtk_tree_model_get_path(model, &first);
+            if (G_LIKELY(path != NULL)) {
+                gtk_icon_view_select_path(GTK_ICON_VIEW(panel->image_iconview), path);
+                gtk_tree_path_free(path);
+            }
+        }
+    } else {
+        g_list_free(selected);
+    }
+
+    gtk_widget_hide(button);
 }
 
 static void
@@ -1902,6 +1953,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     panel->btn_folder = GTK_WIDGET(gtk_builder_get_object(appearance_gxml, "btn_folder"));
     g_signal_connect(G_OBJECT(panel->btn_folder), "selection-changed",
                      G_CALLBACK(cb_folder_selection_changed), panel);
+    panel->btn_folder_apply = GTK_WIDGET(gtk_builder_get_object(appearance_gxml, "btn_folder_apply"));
+    g_signal_connect(G_OBJECT(panel->btn_folder_apply), "clicked",
+                     G_CALLBACK(cb_folder_apply_clicked), panel);
 
     filter = gtk_file_filter_new();
     gtk_file_filter_set_name(filter, _("Image files"));
