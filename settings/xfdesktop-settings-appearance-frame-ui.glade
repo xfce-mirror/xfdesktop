@@ -137,6 +137,19 @@
               </packing>
             </child>
             <child>
+              <object class="GtkButton" id="btn_folder_apply">
+                <property name="label" translatable="yes">Apply</property>
+                <property name="visible">False</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">True</property>
+              </object>
+              <packing>
+                <property name="left-attach">2</property>
+                <property name="top-attach">0</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkAlignment" id="alignment_spacer">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
