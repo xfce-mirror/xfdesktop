@@ -3925,7 +3925,8 @@ xfdesktop_icon_view_is_icon_selected(XfdesktopIconView *icon_view,
 
 
 GtkWidget *
-xfdesktop_icon_view_new(XfdesktopIconViewManager *manager)
+xfdesktop_icon_view_new(XfdesktopIconViewManager *manager,
+                        XfconfChannel *channel)
 {
     XfdesktopIconView *icon_view;
 
@@ -3934,27 +3935,27 @@ xfdesktop_icon_view_new(XfdesktopIconViewManager *manager)
     icon_view = g_object_new(XFDESKTOP_TYPE_ICON_VIEW, NULL);
     icon_view->priv->manager = manager;
 
-    icon_view->priv->channel = xfconf_channel_get(XFDESKTOP_CHANNEL);
+    icon_view->priv->channel = channel;
 
-    xfconf_g_property_bind(icon_view->priv->channel,
+    xfconf_g_property_bind(channel,
                            "/desktop-icons/single-click",
                            G_TYPE_BOOLEAN,
                            G_OBJECT(icon_view),
                            "single_click");
 
-    xfconf_g_property_bind(icon_view->priv->channel,
+    xfconf_g_property_bind(channel,
                            "/desktop-icons/gravity",
                            G_TYPE_INT,
                            G_OBJECT(icon_view),
                            "gravity");
 
-    xfconf_g_property_bind(icon_view->priv->channel,
+    xfconf_g_property_bind(channel,
                            "/desktop-icons/show-tooltips",
                            G_TYPE_BOOLEAN,
                            G_OBJECT(icon_view),
                            "show_tooltips");
 
-    xfconf_g_property_bind(icon_view->priv->channel,
+    xfconf_g_property_bind(channel,
                            "/desktop-icons/tooltip-size",
                            G_TYPE_DOUBLE,
                            G_OBJECT(icon_view),
