@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-29 00:51+0100\n"
+"POT-Creation-Date: 2022-11-28 15:09+0100\n"
 "PO-Revision-Date: 2020-12-28 17:18+0000\n"
 "Last-Translator: Xfce Bot <transifex@xfce.org>, 2020\n"
 "Language-Team: Uyghur (https://www.transifex.com/xfce/teams/16840/ug/)\n"
@@ -110,30 +110,30 @@ msgstr ""
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr ""
 
-#: ../settings/main.c:1570
+#: ../settings/main.c:1553
 msgid "Spanning screens"
 msgstr ""
 
 #. TRANSLATORS: Please split the message in half with '\n' so the dialog will
 #. not be too wide.
-#: ../settings/main.c:1738
+#: ../settings/main.c:1721
 msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
 msgstr ""
 
-#: ../settings/main.c:1744
+#: ../settings/main.c:1727
 msgid "Arrange icons"
 msgstr ""
 
 #. printf is to be translator-friendly
-#: ../settings/main.c:1752 ../src/xfdesktop-file-icon-manager.c:798
+#: ../settings/main.c:1735 ../src/xfdesktop-file-icon-manager.c:798
 #: ../src/xfdesktop-file-icon-manager.c:1353
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "«%s» نى ئىجرا قىلغىلى بولمىدى:"
 
-#: ../settings/main.c:1753 ../src/xfdesktop-file-icon-manager.c:800
+#: ../settings/main.c:1736 ../src/xfdesktop-file-icon-manager.c:800
 #: ../src/xfdesktop-file-icon-manager.c:1102
 #: ../src/xfdesktop-file-icon-manager.c:1354 ../src/xfdesktop-file-utils.c:683
 #: ../src/xfdesktop-file-utils.c:1217 ../src/xfdesktop-file-utils.c:1295
@@ -141,7 +141,7 @@ msgstr "«%s» نى ئىجرا قىلغىلى بولمىدى:"
 msgid "Launch Error"
 msgstr "ئىجرا قىلىش خاتالىقى"
 
-#: ../settings/main.c:1755 ../settings/xfdesktop-settings-ui.glade.h:20
+#: ../settings/main.c:1738 ../settings/xfdesktop-settings-ui.glade.h:20
 #: ../src/xfdesktop-file-icon-manager.c:562
 #: ../src/xfdesktop-file-icon-manager.c:581
 #: ../src/xfdesktop-file-icon-manager.c:666
@@ -162,59 +162,59 @@ msgstr "ئىجرا قىلىش خاتالىقى"
 msgid "_Close"
 msgstr "تاقا(_C)"
 
-#: ../settings/main.c:1910
+#: ../settings/main.c:1893
 msgid "Image files"
 msgstr "سۈرەت ھۆججىتى"
 
 #. Change the title of the file chooser dialog
-#: ../settings/main.c:1918
+#: ../settings/main.c:1901
 msgid "Select a Directory"
 msgstr ""
 
-#: ../settings/main.c:2123
+#: ../settings/main.c:2106
 msgid "Settings manager socket"
 msgstr "باشقۇرغۇچى سوكېتنىڭ تەڭشەكلىرى"
 
-#: ../settings/main.c:2123
+#: ../settings/main.c:2106
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: ../settings/main.c:2124
+#: ../settings/main.c:2107
 msgid "Version information"
 msgstr "نەشر ئۇچۇرى"
 
-#: ../settings/main.c:2125 ../src/xfdesktop-application.c:842
+#: ../settings/main.c:2108 ../src/xfdesktop-application.c:842
 msgid "Enable debug messages"
 msgstr ""
 
-#: ../settings/main.c:2149
+#: ../settings/main.c:2132
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "'%s --help' كىرگۈزسە ئىشلىتىش ئۇسۇلىنى كۆرگىلى بولىدۇ"
 
-#: ../settings/main.c:2161
+#: ../settings/main.c:2144
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce ئىجادىيەت گۇرۇپپىسى. نەشر ھوقۇقى ئۆزىمىزگە تەۋە."
 
-#: ../settings/main.c:2162
+#: ../settings/main.c:2145
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "كەمتۈكنى <%s> غا دوكلات قىلىڭ."
 
-#: ../settings/main.c:2169
+#: ../settings/main.c:2152
 msgid "Desktop Settings"
 msgstr "ئۈستەلئۈستى تەڭشىكى"
 
-#: ../settings/main.c:2171
+#: ../settings/main.c:2154
 msgid "Unable to contact settings server"
 msgstr "تەڭشەك مۇلازىمېتىر بىلەن ئۇلىنالمىدى"
 
-#: ../settings/main.c:2173
+#: ../settings/main.c:2156
 msgid "Quit"
 msgstr "ئاخىرلاشتۇر"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.in.h:1
-#: ../settings/xfdesktop-settings-ui.glade.h:18 ../src/xfce-desktop.c:1174
+#: ../settings/xfdesktop-settings-ui.glade.h:18 ../src/xfce-desktop.c:1176
 msgid "Desktop"
 msgstr "ئۈستەلئۈستى"
 
