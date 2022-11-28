@@ -45,10 +45,10 @@
 #endif
 
 #include <glib.h>
-#include <gdk/gdkx.h>
 #include <gtk/gtk.h>
 
 #include <libxfce4util/libxfce4util.h>
+#include <libxfce4windowing/libxfce4windowing.h>
 
 #include "xfdesktop-common.h"
 #include "xfce-backdrop.h" /* for XfceBackdropImageStyle */
@@ -332,7 +332,36 @@ xfdesktop_get_current_monitor_num(GdkDisplay *display)
     return xfdesktop_get_monitor_num(display, monitor);
 }
 
+/* Gets the workspace number across all workspace groups, and also returns
+ * the total number of workspaces.
+ */
+gboolean
+xfdesktop_workspace_get_number_and_total(XfwWorkspaceManager *workspace_manager,
+                                         XfwWorkspace *workspace,
+                                         gint *workspace_number,
+                                         gint *total_workspace_count)
+{
+    XfwWorkspaceGroup *group = xfw_workspace_get_workspace_group(workspace);
 
+    g_return_val_if_fail(workspace_number != NULL, FALSE);
+    g_return_val_if_fail(total_workspace_count != NULL, FALSE);
+
+    *workspace_number = -1;
+    *total_workspace_count = 0;
+
+    for (GList *l = xfw_workspace_manager_list_workspace_groups(workspace_manager);
+         l != NULL;
+         l = l->next)
+    {
+        XfwWorkspaceGroup *g = XFW_WORKSPACE_GROUP(l->data);
+        if (g == group) {
+            *workspace_number = *total_workspace_count + xfw_workspace_get_number(workspace);
+        }
+        *total_workspace_count += xfw_workspace_group_get_workspace_count(XFW_WORKSPACE_GROUP(l->data));
+    }
+
+    return *workspace_number >= 0;
+}
 
 void
 xfdesktop_tree_path_free(gpointer data)
