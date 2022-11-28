@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-17 00:53+0100\n"
-"PO-Revision-Date: 2021-11-16 23:53+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
+"POT-Creation-Date: 2022-11-28 15:09+0100\n"
+"PO-Revision-Date: 2013-07-02 20:50+0000\n"
+"Last-Translator: Real School <localization@ehayq.am>, 2019\n"
 "Language-Team: Armenian (Armenia) (http://www.transifex.com/xfce/xfdesktop/language/hy_AM/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,38 +19,38 @@ msgstr ""
 "Language: hy_AM\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../settings/main.c:419 ../src/xfdesktop-special-file-icon.c:290
-#: ../src/xfdesktop-special-file-icon.c:476
+#: ../settings/main.c:430 ../src/xfdesktop-special-file-icon.c:290
+#: ../src/xfdesktop-special-file-icon.c:456
 msgid "Home"
 msgstr "Տուն"
 
-#: ../settings/main.c:421 ../src/xfdesktop-special-file-icon.c:292
-#: ../src/xfdesktop-special-file-icon.c:474
+#: ../settings/main.c:432 ../src/xfdesktop-special-file-icon.c:292
+#: ../src/xfdesktop-special-file-icon.c:454
 msgid "File System"
 msgstr "Նիշային համակարգ"
 
-#: ../settings/main.c:423 ../src/xfdesktop-special-file-icon.c:294
+#: ../settings/main.c:434 ../src/xfdesktop-special-file-icon.c:294
 msgid "Trash"
 msgstr "Աղբաման"
 
-#: ../settings/main.c:425
+#: ../settings/main.c:436
 msgid "Removable Devices"
 msgstr "Հեռացուելի յիշասարքեր"
 
-#: ../settings/main.c:427
+#: ../settings/main.c:438
 msgid "Network Shares"
 msgstr "Ցանցային պաշար"
 
-#: ../settings/main.c:429
+#: ../settings/main.c:440
 msgid "Disks and Drives"
 msgstr "Սկաւառակներ եւ յիշասարքեր"
 
-#: ../settings/main.c:431
+#: ../settings/main.c:442
 msgid "Other Devices"
 msgstr "Այլ սարքեր"
 
 #. Display the file name, file type, and file size in the tooltip.
-#: ../settings/main.c:541
+#: ../settings/main.c:546
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -58,161 +58,160 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nՏիպ․ %s\nՉափ․ %s"
 
-#: ../settings/main.c:728
+#: ../settings/main.c:744
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "Ցուցասարքի պաստառը՝ %d (%s)"
 
-#: ../settings/main.c:731
+#: ../settings/main.c:747
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "Ցուցասարքի պաստառը՝ %d"
 
-#: ../settings/main.c:737
+#: ../settings/main.c:753
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "Տեղափոխել այս երկխաւսութիւնը այն ցուցադրիչ, որի կարգաւորումները, որ ցանկանում էք փոխել։"
 
-#: ../settings/main.c:744
+#: ../settings/main.c:760
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "Պաստառ %s֊ի համար՝ %d (%s) ցուցասարքում"
 
-#: ../settings/main.c:748
+#: ../settings/main.c:764
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "Պաստառ (%s)֊ի համար՝ %d ցուցասարքում"
 
-#: ../settings/main.c:755
+#: ../settings/main.c:771
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr "Տեղափոխել այս երկխաւսութիւնը այն աշխատատարածք, որի կարգաւորումները, որ ցանկանում էք խմբագրել։"
 
 #. Single monitor and single workspace
-#: ../settings/main.c:763
+#: ../settings/main.c:779
 #, c-format
 msgid "Wallpaper for my desktop"
 msgstr "Աշխատասեղանի պաստառ"
 
 #. Single monitor and per workspace wallpaper
-#: ../settings/main.c:769
+#: ../settings/main.c:785
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "Պաստառ %s֊ի համար"
 
-#: ../settings/main.c:774
+#: ../settings/main.c:790
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "Տեղափոխել այս երկխաւսութիւնը այն աշխատատարածք, որի կարգաւորումները, որ ցանկանում էք խմբագրել։"
 
-#: ../settings/main.c:1190
+#: ../settings/main.c:1243
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "Անհնար է ընտրել պատկեր, եթե ընտրուած է «Ոչինչ» ձեւը։"
 
-#: ../settings/main.c:1550
+#: ../settings/main.c:1603
 msgid "Spanning screens"
 msgstr "Միաւորուած ցուցադրիչներ"
 
 #. TRANSLATORS: Please split the message in half with '\n' so the dialog will
 #. not be too wide.
-#: ../settings/main.c:1718
+#: ../settings/main.c:1784
 msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
 msgstr "Դադսաւորել բոլոր առկա\nպատկերակները ըստ ընտրուած դիրքի։"
 
-#: ../settings/main.c:1724
+#: ../settings/main.c:1790
 msgid "Arrange icons"
 msgstr "Դասաւորել պատկերակները"
 
 #. printf is to be translator-friendly
-#: ../settings/main.c:1732 ../src/xfdesktop-file-icon-manager.c:817
-#: ../src/xfdesktop-file-icon-manager.c:1378
+#: ../settings/main.c:1798 ../src/xfdesktop-file-icon-manager.c:817
+#: ../src/xfdesktop-file-icon-manager.c:1410
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Հնարաւոր չէ գործարկել «%s»֊ը"
 
-#: ../settings/main.c:1733 ../src/xfdesktop-file-icon-manager.c:819
-#: ../src/xfdesktop-file-icon-manager.c:1127
-#: ../src/xfdesktop-file-icon-manager.c:1379 ../src/xfdesktop-file-utils.c:682
-#: ../src/xfdesktop-file-utils.c:1216 ../src/xfdesktop-file-utils.c:1294
-#: ../src/xfdesktop-file-utils.c:1318 ../src/xfdesktop-file-utils.c:1380
+#: ../settings/main.c:1799 ../src/xfdesktop-file-icon-manager.c:819
+#: ../src/xfdesktop-file-icon-manager.c:1159
+#: ../src/xfdesktop-file-icon-manager.c:1411 ../src/xfdesktop-file-utils.c:744
+#: ../src/xfdesktop-file-utils.c:1313 ../src/xfdesktop-file-utils.c:1338
+#: ../src/xfdesktop-file-utils.c:1445 ../src/xfdesktop-file-utils.c:1509
 msgid "Launch Error"
 msgstr "Գործարկման սխալ"
 
-#: ../settings/main.c:1735 ../settings/xfdesktop-settings-ui.glade.h:20
-#: ../src/xfdesktop-file-icon-manager.c:582
-#: ../src/xfdesktop-file-icon-manager.c:601
-#: ../src/xfdesktop-file-icon-manager.c:686
+#: ../settings/main.c:1801 ../settings/xfdesktop-settings-ui.glade.h:20
+#: ../src/xfdesktop-file-icon-manager.c:585
+#: ../src/xfdesktop-file-icon-manager.c:604
+#: ../src/xfdesktop-file-icon-manager.c:689
 #: ../src/xfdesktop-file-icon-manager.c:821
-#: ../src/xfdesktop-file-icon-manager.c:1131
-#: ../src/xfdesktop-file-icon-manager.c:1381
-#: ../src/xfdesktop-file-icon-manager.c:2978 ../src/xfdesktop-file-utils.c:685
-#: ../src/xfdesktop-file-utils.c:705 ../src/xfdesktop-file-utils.c:760
-#: ../src/xfdesktop-file-utils.c:824 ../src/xfdesktop-file-utils.c:885
-#: ../src/xfdesktop-file-utils.c:946 ../src/xfdesktop-file-utils.c:994
-#: ../src/xfdesktop-file-utils.c:1049 ../src/xfdesktop-file-utils.c:1107
-#: ../src/xfdesktop-file-utils.c:1159 ../src/xfdesktop-file-utils.c:1220
-#: ../src/xfdesktop-file-utils.c:1296 ../src/xfdesktop-file-utils.c:1322
-#: ../src/xfdesktop-file-utils.c:1384 ../src/xfdesktop-file-utils.c:1443
-#: ../src/xfdesktop-file-utils.c:1459 ../src/xfdesktop-file-utils.c:1521
-#: ../src/xfdesktop-file-utils.c:1539 ../src/xfdesktop-volume-icon.c:521
-#: ../src/xfdesktop-volume-icon.c:567 ../src/xfdesktop-volume-icon.c:603
+#: ../src/xfdesktop-file-icon-manager.c:1163
+#: ../src/xfdesktop-file-icon-manager.c:1413
+#: ../src/xfdesktop-file-icon-manager.c:3077 ../src/xfdesktop-file-utils.c:747
+#: ../src/xfdesktop-file-utils.c:767 ../src/xfdesktop-file-utils.c:822
+#: ../src/xfdesktop-file-utils.c:886 ../src/xfdesktop-file-utils.c:947
+#: ../src/xfdesktop-file-utils.c:1008 ../src/xfdesktop-file-utils.c:1056
+#: ../src/xfdesktop-file-utils.c:1111 ../src/xfdesktop-file-utils.c:1169
+#: ../src/xfdesktop-file-utils.c:1256 ../src/xfdesktop-file-utils.c:1317
+#: ../src/xfdesktop-file-utils.c:1340 ../src/xfdesktop-file-utils.c:1449
+#: ../src/xfdesktop-file-utils.c:1513 ../src/xfdesktop-file-utils.c:1584
+#: ../src/xfdesktop-file-utils.c:1654 ../src/xfdesktop-volume-icon.c:488
+#: ../src/xfdesktop-volume-icon.c:534 ../src/xfdesktop-volume-icon.c:570
 msgid "_Close"
 msgstr "_Փակել"
 
-#: ../settings/main.c:1890
+#: ../settings/main.c:1961
 msgid "Image files"
 msgstr "Պատկերանիշեր"
 
 #. Change the title of the file chooser dialog
-#: ../settings/main.c:1898
+#: ../settings/main.c:1969
 msgid "Select a Directory"
 msgstr "Նշել նշարան"
 
-#: ../settings/main.c:2107
+#: ../settings/main.c:2178
 msgid "Settings manager socket"
 msgstr "Կարգաւորումների կառավարչի բնիկ"
 
-#: ../settings/main.c:2107
+#: ../settings/main.c:2178
 msgid "SOCKET ID"
 msgstr "ԲՆԻԿԻ ID֊ն"
 
-#: ../settings/main.c:2108
+#: ../settings/main.c:2179
 msgid "Version information"
 msgstr "Տեղեկոյթ"
 
-#: ../settings/main.c:2109 ../src/xfdesktop-application.c:842
+#: ../settings/main.c:2180 ../src/xfdesktop-application.c:848
 msgid "Enable debug messages"
 msgstr "Միացնել վրիպազերծման ծանուցումները"
 
-#: ../settings/main.c:2133
+#: ../settings/main.c:2204
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Մուտքագրէք «%s --help» աջակցութեան համար։"
 
-#: ../settings/main.c:2145
+#: ../settings/main.c:2216
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce֊ի մշակման խումբ։ Բոլոր իրաւունքները պաշտպանուած են։"
 
-#: ../settings/main.c:2146
+#: ../settings/main.c:2217
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Սխալների դէպքում կարող էք դիմել <%s> հասցէով։"
 
-#: ../settings/main.c:2153
+#: ../settings/main.c:2224
 msgid "Desktop Settings"
 msgstr "Աշխատասեղանի կարգաւորումներ"
 
-#: ../settings/main.c:2155
+#: ../settings/main.c:2226
 msgid "Unable to contact settings server"
 msgstr "Հնարաւոր չէ կապուել կարգաւորումների սպասարկչին"
 
-#: ../settings/main.c:2157
+#: ../settings/main.c:2228
 msgid "Quit"
 msgstr "Ելք"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.in.h:1
-#: ../settings/xfdesktop-settings-ui.glade.h:18 ../src/xfce-desktop.c:1170
+#: ../settings/xfdesktop-settings-ui.glade.h:18 ../src/xfce-desktop.c:1158
 msgid "Desktop"
 msgstr "Աշխատասեղան"
 
@@ -241,124 +240,128 @@ msgid "Choose the folder to select wallpapers from."
 msgstr "Նշել պանակը, որից ընտրուելու են պաստառները։"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
+msgid "Apply"
+msgstr "Գործադրել"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
 msgid "St_yle:"
 msgstr "Ո_ճ․"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
 msgid "Specify how the image will be resized to fit the screen."
 msgstr "Պատկերակի չափը՝ ցուցադրիչի վրայ։"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
 #: ../settings/xfdesktop-settings-ui.glade.h:4
 msgid "None"
 msgstr "Ոչինչ"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
 msgid "Centered"
 msgstr "Կենտրոնացուած"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
 msgid "Tiled"
 msgstr "Կցաշարուած"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
 msgid "Stretched"
 msgstr "Ձիգ"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
 msgid "Scaled"
 msgstr "Չափուած"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
 msgid "Zoomed"
 msgstr "Խոշորացուած"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
 msgid "Spanning Screens"
 msgstr "Միաւորուած ցուցադրիչներ"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
 msgid "Specify the style of the color drawn behind the backdrop image."
 msgstr "Սահմանել յետնաշերտի պատկերի գոյնը։"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
 msgstr "Սահմանում է հոծ գոյն, կամ էլ՝ սահանցման «ձախ» կամ «վերեւ» գոյները։"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 msgid "Select First Color"
 msgstr "Ընտրել առաջնային գոյնը"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient."
 msgstr "Սահմանում է սահանցման «աջ» կամ «ներքեւ» գոյները։"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
 msgid "Select Second Color"
 msgstr "Ընտրել երկրորդական գոյնը"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
 msgid "Apply to all _workspaces"
 msgstr "Հաստատել բոլոր _աշխատատարածքների համար"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
 msgid "_Folder:"
 msgstr "_Պանակ․"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 msgid "C_olor:"
 msgstr "Գ_ոյն․"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
 msgid "Change the _background "
 msgstr "Փոխել _յետնապատկերը"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid ""
 "Automatically select a different background from the current directory."
 msgstr "Ինքնաշխատաւրէն ընտրել այլ յետնապատկեր հետեւեալ նշարանից։"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "Specify how often the background will change."
 msgstr "Ընտրել, թե քանի անգամ յետնապատկերը կը փոխուի։"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
 msgid "in seconds:"
 msgstr "վայրկեանի ընթացքում․"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
 msgid "in minutes:"
 msgstr "րոպէի ընթացքում․"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
 msgid "in hours:"
 msgstr "ժամի ընթացքում․"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
 msgid "at start up"
 msgstr "մեկնարկի ժամանակ"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
 msgid "every hour"
 msgstr "ամեն ժամ"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
 msgid "every day"
 msgstr "ամեն աւր"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
 msgid "chronologically"
 msgstr "ժամանակագրաւրէն"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
 msgid "Amount of time before a different background is selected."
 msgstr "Յետնապատկերների փոփոխութեան միջեւ ընկած ժամանակահատուածը։"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
 msgid "_Random Order"
 msgstr "_Պատահական հերթականութիւն"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:36
 msgid ""
 "Randomly selects another image from the same directory when the wallpaper is"
 " to cycle."
@@ -574,28 +577,28 @@ msgstr "<b>Սկզբնադիր պատկերակներ</b>"
 msgid "_Icons"
 msgstr "_Պատկերակներ"
 
-#: ../src/menu.c:94
+#: ../src/menu.c:92
 msgid "_Applications"
 msgstr "_Ծրագրեր"
 
-#: ../src/windowlist.c:73
+#: ../src/windowlist.c:75
 #, c-format
 msgid "Remove Workspace %d"
 msgstr "Հեռացնել %d աշխատատարածքը"
 
-#: ../src/windowlist.c:74
+#: ../src/windowlist.c:76
 #, c-format
 msgid ""
 "Do you really want to remove workspace %d?\n"
 "Note: You are currently on workspace %d."
 msgstr "Հեռացնե՞լ %d աշխատատարածքը։\nՅուշում․ այս պահին դուք %d աշխատատարածքում էք։"
 
-#: ../src/windowlist.c:78
+#: ../src/windowlist.c:80
 #, c-format
 msgid "Remove Workspace '%s'"
 msgstr "Հեռացնել «%s» աշխատատարածքը"
 
-#: ../src/windowlist.c:79
+#: ../src/windowlist.c:81
 #, c-format
 msgid ""
 "Do you really want to remove workspace '%s'?\n"
@@ -604,422 +607,428 @@ msgstr "Հեռացնե՞լ «%s»։\nՅուշում․ այս պահին դու�
 
 #. Popup a dialog box confirming that the user wants to remove a
 #. * workspace
-#: ../src/windowlist.c:86
+#: ../src/windowlist.c:88
 msgid "Remove"
 msgstr "Հեռացնել"
 
-#: ../src/windowlist.c:272
+#: ../src/windowlist.c:283
 msgid "Window List"
 msgstr "Պատուհանների ցուցակ"
 
-#: ../src/windowlist.c:297
+#: ../src/windowlist.c:311
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>Աշխատատարածք %d</b>"
 
-#: ../src/windowlist.c:393 ../src/windowlist.c:395
+#: ../src/windowlist.c:407 ../src/windowlist.c:409
 msgid "_Add Workspace"
 msgstr "_Յաւելել աշխատատարածք"
 
-#: ../src/windowlist.c:403
+#: ../src/windowlist.c:417
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "_Հեռացնել %d աշխատատարածքը"
 
-#: ../src/windowlist.c:406
+#: ../src/windowlist.c:420
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "_Հեռացնել «%s» աշխատատարածքը"
 
-#: ../src/xfdesktop-application.c:834
+#: ../src/xfdesktop-application.c:840
 msgid "Display version information"
 msgstr "Ցուցադրել տարբերակի վերաբերեալ տեղեկոյթը"
 
-#: ../src/xfdesktop-application.c:835
+#: ../src/xfdesktop-application.c:841
 msgid "Reload all settings"
 msgstr "Վերբեռնել բոլոր կարգաւորումները"
 
-#: ../src/xfdesktop-application.c:836
+#: ../src/xfdesktop-application.c:842
 msgid "Advance to the next wallpaper on the current workspace"
 msgstr "Անցնել ներկայիս աշխատատարածքի յաջորդ պաստառին"
 
-#: ../src/xfdesktop-application.c:837
+#: ../src/xfdesktop-application.c:843
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "Ցուցադրել ցանկը (մկնիկի ներկայիս դիրքում)"
 
-#: ../src/xfdesktop-application.c:838
+#: ../src/xfdesktop-application.c:844
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "Ցուցադրել պատուհանների ցուցակը (մկնիկի ներկայիս դիրքում)"
 
-#: ../src/xfdesktop-application.c:840
+#: ../src/xfdesktop-application.c:846
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "Ինքնաշխատաւրէն հաւասարեցնել աշխատասեղանի բոլոր պատկերակները"
 
-#: ../src/xfdesktop-application.c:843
+#: ../src/xfdesktop-application.c:849
 msgid "Disable debug messages"
 msgstr "Անջատել վրիպազերծման ծանուցումները"
 
-#: ../src/xfdesktop-application.c:844
+#: ../src/xfdesktop-application.c:850
 msgid "Do not wait for a window manager on startup"
 msgstr "Չսպասել պատուհանների կառավաչին՝ մեկնարկում"
 
-#: ../src/xfdesktop-application.c:845
+#: ../src/xfdesktop-application.c:851
 msgid "Cause xfdesktop to quit"
 msgstr "xfdesktop֊ի փակում"
 
-#: ../src/xfdesktop-application.c:860
+#: ../src/xfdesktop-application.c:866
 #, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "Չյաջողուեց վերլուծել յենարկները․ %s\n"
 
-#: ../src/xfdesktop-application.c:871
+#: ../src/xfdesktop-application.c:877
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Սա %s֊ի %s տարբերակն է, գործարկուող Xfce֊ում %s։\n"
 
-#: ../src/xfdesktop-application.c:873
+#: ../src/xfdesktop-application.c:879
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Կառուցուած GTK+֊ով %d.%d.%d, յղուած GTK+ %d.%d.%d֊ին։"
 
-#: ../src/xfdesktop-application.c:877
+#: ../src/xfdesktop-application.c:883
 #, c-format
 msgid "Build options:\n"
 msgstr "Կառուցման ընտրանքներ․\n"
 
-#: ../src/xfdesktop-application.c:878
+#: ../src/xfdesktop-application.c:884
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "Աշխատասեղանի ընտրացանկ․    %s\n"
 
-#: ../src/xfdesktop-application.c:880 ../src/xfdesktop-application.c:887
-#: ../src/xfdesktop-application.c:894
+#: ../src/xfdesktop-application.c:886 ../src/xfdesktop-application.c:893
+#: ../src/xfdesktop-application.c:900
 msgid "enabled"
 msgstr "միացուած"
 
-#: ../src/xfdesktop-application.c:882 ../src/xfdesktop-application.c:889
-#: ../src/xfdesktop-application.c:896
+#: ../src/xfdesktop-application.c:888 ../src/xfdesktop-application.c:895
+#: ../src/xfdesktop-application.c:902
 msgid "disabled"
 msgstr "անջատուած"
 
-#: ../src/xfdesktop-application.c:885
+#: ../src/xfdesktop-application.c:891
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "Աշխատասեղանի պատկերակ․    %s\n"
 
-#: ../src/xfdesktop-application.c:892
+#: ../src/xfdesktop-application.c:898
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "Աշխատասեղանին նիշերի պատկերակներ․ %s\n"
 
-#: ../src/xfdesktop-file-icon-manager.c:574
-#: ../src/xfdesktop-file-icon-manager.c:592
+#: ../src/xfdesktop-file-icon-manager.c:577
+#: ../src/xfdesktop-file-icon-manager.c:595
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
 msgstr "Չյաջողուեց ստեղծել «%s» պանակը"
 
-#: ../src/xfdesktop-file-icon-manager.c:579
-#: ../src/xfdesktop-file-icon-manager.c:597
+#: ../src/xfdesktop-file-icon-manager.c:582
+#: ../src/xfdesktop-file-icon-manager.c:600
 msgid "Desktop Folder Error"
 msgstr "Աշխատասեղանի պանակի սխալ"
 
-#: ../src/xfdesktop-file-icon-manager.c:599
+#: ../src/xfdesktop-file-icon-manager.c:602
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr "Սովորական նիշ, նոյն անունով արդէն գոյութիւն ունի։ Ջնջէք կամ անուանափոխէք այն։"
 
-#: ../src/xfdesktop-file-icon-manager.c:683 ../src/xfdesktop-file-utils.c:756
-#: ../src/xfdesktop-file-utils.c:820
+#: ../src/xfdesktop-file-icon-manager.c:686 ../src/xfdesktop-file-utils.c:818
+#: ../src/xfdesktop-file-utils.c:882
 msgid "Rename Error"
 msgstr "Անուանափոխման սխալ"
 
-#: ../src/xfdesktop-file-icon-manager.c:684 ../src/xfdesktop-file-utils.c:821
+#: ../src/xfdesktop-file-icon-manager.c:687 ../src/xfdesktop-file-utils.c:883
 msgid "The files could not be renamed"
 msgstr "Նիշերը չեն անուանափոխուել"
 
-#: ../src/xfdesktop-file-icon-manager.c:685
+#: ../src/xfdesktop-file-icon-manager.c:688
 msgid "None of the icons selected support being renamed."
 msgstr "Ընտրուած պատկերակների ոչ մի սատարում չի վերանուանուել։"
 
-#: ../src/xfdesktop-file-icon-manager.c:989
+#: ../src/xfdesktop-file-icon-manager.c:1013
 msgid ""
 "This will reorder all desktop items and place them on different screen positions.\n"
 "Are you sure?"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:993
+#: ../src/xfdesktop-file-icon-manager.c:1017
 msgid "_OK"
 msgstr "_Բարի"
 
-#: ../src/xfdesktop-file-icon-manager.c:1053
+#: ../src/xfdesktop-file-icon-manager.c:1085
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "_Բացել «%s»֊ի աւգնութեամբ"
 
-#: ../src/xfdesktop-file-icon-manager.c:1056
+#: ../src/xfdesktop-file-icon-manager.c:1088
 #, c-format
 msgid "Open With \"%s\""
 msgstr "Բացել «%s»֊ի աւգնութեամբ"
 
-#: ../src/xfdesktop-file-icon-manager.c:1129
+#: ../src/xfdesktop-file-icon-manager.c:1161
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr "Անհնար է գործարկել «exo-desktop-item-edit»֊ը, որը պահանջուում է, աշխատասեղանում՝ գործարկիչներ, յղումներ ստեղծելու եւ խմբագրելու համար։"
 
-#: ../src/xfdesktop-file-icon-manager.c:1447
+#: ../src/xfdesktop-file-icon-manager.c:1526
 msgid "_Open all"
 msgstr "_Բացել բոլորը"
 
-#: ../src/xfdesktop-file-icon-manager.c:1467
+#: ../src/xfdesktop-file-icon-manager.c:1546
 msgid "Create _Launcher..."
 msgstr "Ստեղծել _գործարկիչ..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1481
+#: ../src/xfdesktop-file-icon-manager.c:1560
 msgid "Create _URL Link..."
 msgstr "Ստեղծել _գերյղում..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1495
+#: ../src/xfdesktop-file-icon-manager.c:1574
 msgid "Create _Folder..."
 msgstr "Ստեղծել _պանակ..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1507
+#: ../src/xfdesktop-file-icon-manager.c:1586
 msgid "Create _Document"
 msgstr "Ստեղծել _փաստաթուղթ"
 
-#: ../src/xfdesktop-file-icon-manager.c:1532
+#: ../src/xfdesktop-file-icon-manager.c:1611
 msgid "No templates installed"
 msgstr "Տեղակայուած նմուշներ չկան"
 
-#: ../src/xfdesktop-file-icon-manager.c:1548
+#: ../src/xfdesktop-file-icon-manager.c:1627
 msgid "_Empty File"
 msgstr "_Դատարկ նիշ"
 
-#: ../src/xfdesktop-file-icon-manager.c:1558
-#: ../src/xfdesktop-special-file-icon.c:543 ../src/xfdesktop-volume-icon.c:809
+#: ../src/xfdesktop-file-icon-manager.c:1637
+#: ../src/xfdesktop-special-file-icon.c:523 ../src/xfdesktop-volume-icon.c:779
 msgid "_Open"
 msgstr "_Բացել"
 
-#: ../src/xfdesktop-file-icon-manager.c:1574
+#: ../src/xfdesktop-file-icon-manager.c:1654
 msgid "_Execute"
 msgstr "_Գործարկել"
 
-#: ../src/xfdesktop-file-icon-manager.c:1592
+#: ../src/xfdesktop-file-icon-manager.c:1672
 msgid "_Edit Launcher"
 msgstr "_Խմբագրել թողարկիչը"
 
-#: ../src/xfdesktop-file-icon-manager.c:1651
+#: ../src/xfdesktop-file-icon-manager.c:1731
 msgid "Open With"
 msgstr "Բացել՝"
 
-#: ../src/xfdesktop-file-icon-manager.c:1678
-#: ../src/xfdesktop-file-icon-manager.c:1692
+#: ../src/xfdesktop-file-icon-manager.c:1758
+#: ../src/xfdesktop-file-icon-manager.c:1783
 msgid "Open With Other _Application..."
 msgstr "Բացել _այլ ծրագրով..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1710
+#: ../src/xfdesktop-file-icon-manager.c:1769
+msgid "Set _Default Application..."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1801
 msgid "_Paste"
 msgstr "_Զետեղել"
 
-#: ../src/xfdesktop-file-icon-manager.c:1728
+#: ../src/xfdesktop-file-icon-manager.c:1819
 msgid "Cu_t"
 msgstr "Կտ_րել"
 
-#: ../src/xfdesktop-file-icon-manager.c:1740
+#: ../src/xfdesktop-file-icon-manager.c:1831
 msgid "_Copy"
 msgstr "_Պատճէնել"
 
-#: ../src/xfdesktop-file-icon-manager.c:1752
+#: ../src/xfdesktop-file-icon-manager.c:1843
 msgid "Paste Into Folder"
 msgstr "Զետեղել պանակում"
 
-#: ../src/xfdesktop-file-icon-manager.c:1771
+#: ../src/xfdesktop-file-icon-manager.c:1862
 msgid "Mo_ve to Trash"
 msgstr "Տե_ղափոխել աղբաման"
 
-#: ../src/xfdesktop-file-icon-manager.c:1784
+#: ../src/xfdesktop-file-icon-manager.c:1875
 msgid "_Delete"
 msgstr "_Ջնջել"
 
-#: ../src/xfdesktop-file-icon-manager.c:1802
+#: ../src/xfdesktop-file-icon-manager.c:1893
 msgid "_Rename..."
 msgstr "_Անուանափոխել..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1867
+#: ../src/xfdesktop-file-icon-manager.c:1958
 msgid "_Open in New Window"
 msgstr "_Բացել նոր պատուհանում"
 
-#: ../src/xfdesktop-file-icon-manager.c:1876
+#: ../src/xfdesktop-file-icon-manager.c:1967
 msgid "Arrange Desktop _Icons"
 msgstr "Հ_աւասարեցնել աշխատասեղանի _պատկերակները"
 
-#: ../src/xfdesktop-file-icon-manager.c:1886
+#: ../src/xfdesktop-file-icon-manager.c:1977
 msgid "_Next Background"
 msgstr "_Հաջորդ յետնաշերտը"
 
-#: ../src/xfdesktop-file-icon-manager.c:1896
+#: ../src/xfdesktop-file-icon-manager.c:1987
 msgid "Desktop _Settings..."
 msgstr "Աշխատասեղանի _կարգաւորումներ..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1904
-#: ../src/xfdesktop-volume-icon.c:876
+#: ../src/xfdesktop-file-icon-manager.c:1995
+#: ../src/xfdesktop-volume-icon.c:846
 msgid "P_roperties..."
 msgstr "Յ_ատկութիւններ..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2975
+#: ../src/xfdesktop-file-icon-manager.c:3074
 msgid "Load Error"
 msgstr "Բեռնման սխալ"
 
-#: ../src/xfdesktop-file-icon-manager.c:2977
+#: ../src/xfdesktop-file-icon-manager.c:3076
 msgid "Failed to load the desktop folder"
 msgstr "Չյաջողուեց բեռնել աշխատասեղանի պանակը"
 
-#: ../src/xfdesktop-file-icon-manager.c:3537
+#: ../src/xfdesktop-file-icon-manager.c:3628
 msgid "Copy _Here"
 msgstr "Պատճէնել _այստեղ"
 
-#: ../src/xfdesktop-file-icon-manager.c:3537
+#: ../src/xfdesktop-file-icon-manager.c:3628
 msgid "_Move Here"
 msgstr "_Տեղափոխել այստեղ"
 
-#: ../src/xfdesktop-file-icon-manager.c:3537
+#: ../src/xfdesktop-file-icon-manager.c:3628
 msgid "_Link Here"
 msgstr "_Յղել այստեղ"
 
-#: ../src/xfdesktop-file-icon-manager.c:3572
+#: ../src/xfdesktop-file-icon-manager.c:3663
 msgid "_Cancel"
 msgstr "_Չեղարկել"
 
-#: ../src/xfdesktop-file-icon-manager.c:3702
+#: ../src/xfdesktop-file-icon-manager.c:3792
 msgid "Untitled document"
 msgstr "Անանուն փաստաթուղթ"
 
 #. TRANSLATORS: file was modified less than one day ago
-#: ../src/xfdesktop-file-utils.c:159
+#: ../src/xfdesktop-file-utils.c:170
 #, c-format
 msgid "Today at %X"
 msgstr "Այսաւր %X֊ին"
 
 #. TRANSLATORS: file was modified less than two days ago
-#: ../src/xfdesktop-file-utils.c:163
+#: ../src/xfdesktop-file-utils.c:174
 #, c-format
 msgid "Yesterday at %X"
 msgstr "Երեկ %X֊ին"
 
 #. Days from last week
-#: ../src/xfdesktop-file-utils.c:168
+#: ../src/xfdesktop-file-utils.c:179
 #, c-format
 msgid "%A at %X"
 msgstr "%A֊ում, %X֊ին"
 
 #. Any other date
-#: ../src/xfdesktop-file-utils.c:171
+#: ../src/xfdesktop-file-utils.c:182
 #, c-format
 msgid "%x at %X"
 msgstr "%x֊ը %X֊ում"
 
 #. the file_time is invalid
-#: ../src/xfdesktop-file-utils.c:181
+#: ../src/xfdesktop-file-utils.c:192 ../src/xfdesktop-file-utils.c:1579
 msgid "Unknown"
 msgstr "Անյայտ"
 
-#: ../src/xfdesktop-file-utils.c:683
+#: ../src/xfdesktop-file-utils.c:320
+#, c-format
+msgid "%.*s (copy %u)%s"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:745
 msgid "The folder could not be opened"
 msgstr "Պանակը չի բացուել"
 
-#: ../src/xfdesktop-file-utils.c:702
+#: ../src/xfdesktop-file-utils.c:764
 msgid "Error"
 msgstr "Սխալ"
 
-#: ../src/xfdesktop-file-utils.c:703
+#: ../src/xfdesktop-file-utils.c:765
 msgid "The requested operation could not be completed"
 msgstr "Տրուած գործողութիւնը չի կատարոիել"
 
-#: ../src/xfdesktop-file-utils.c:757
+#: ../src/xfdesktop-file-utils.c:819
 msgid "The file could not be renamed"
 msgstr "Նիշը չի անուանափոխուել"
 
-#: ../src/xfdesktop-file-utils.c:758 ../src/xfdesktop-file-utils.c:822
-#: ../src/xfdesktop-file-utils.c:883 ../src/xfdesktop-file-utils.c:1047
-#: ../src/xfdesktop-file-utils.c:1105 ../src/xfdesktop-file-utils.c:1157
-#: ../src/xfdesktop-file-utils.c:1218 ../src/xfdesktop-file-utils.c:1320
-#: ../src/xfdesktop-file-utils.c:1382 ../src/xfdesktop-file-utils.c:1457
-#: ../src/xfdesktop-file-utils.c:1537
+#: ../src/xfdesktop-file-utils.c:820 ../src/xfdesktop-file-utils.c:884
+#: ../src/xfdesktop-file-utils.c:945 ../src/xfdesktop-file-utils.c:1109
+#: ../src/xfdesktop-file-utils.c:1167 ../src/xfdesktop-file-utils.c:1254
+#: ../src/xfdesktop-file-utils.c:1315 ../src/xfdesktop-file-utils.c:1447
+#: ../src/xfdesktop-file-utils.c:1511 ../src/xfdesktop-file-utils.c:1652
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
 msgstr "Յատկութիւնը պահանջում է նիշային կառավարչի ծառայութիւնը (աւրինակ՝ Thunar֊ի կողմից սատարուողը)։"
 
-#: ../src/xfdesktop-file-utils.c:881
+#: ../src/xfdesktop-file-utils.c:943
 msgid "Delete Error"
 msgstr "Ջնջման սխալ"
 
-#: ../src/xfdesktop-file-utils.c:882
+#: ../src/xfdesktop-file-utils.c:944
 msgid "The selected files could not be deleted"
 msgstr "Նշուած նիշերը չեն ջնջուել"
 
-#: ../src/xfdesktop-file-utils.c:942 ../src/xfdesktop-file-utils.c:990
+#: ../src/xfdesktop-file-utils.c:1004 ../src/xfdesktop-file-utils.c:1052
 msgid "Trash Error"
 msgstr "Աղբամանի սխալ"
 
-#: ../src/xfdesktop-file-utils.c:943
+#: ../src/xfdesktop-file-utils.c:1005
 msgid "The selected files could not be moved to the trash"
 msgstr "Նշուած նիշերը չեն նետուել աղբաման"
 
-#: ../src/xfdesktop-file-utils.c:944 ../src/xfdesktop-file-utils.c:992
+#: ../src/xfdesktop-file-utils.c:1006 ../src/xfdesktop-file-utils.c:1054
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
 msgstr "Այս յատկութիւնը պահանջում է աղբամանի ծառայութիւնը (աւրինակ՝ Thunar֊ի կողմից սատարուողը)։"
 
-#: ../src/xfdesktop-file-utils.c:991
+#: ../src/xfdesktop-file-utils.c:1053
 msgid "Could not empty the trash"
 msgstr "Աղբամանը չի դատարկուել"
 
-#: ../src/xfdesktop-file-utils.c:1045
+#: ../src/xfdesktop-file-utils.c:1107
 msgid "Create File Error"
 msgstr "Նիշի ստեղծման սխալ"
 
-#: ../src/xfdesktop-file-utils.c:1046
+#: ../src/xfdesktop-file-utils.c:1108
 msgid "Could not create a new file"
 msgstr "Նոր նիշ չի ստեղծուել"
 
-#: ../src/xfdesktop-file-utils.c:1103
+#: ../src/xfdesktop-file-utils.c:1165
 msgid "Create Document Error"
 msgstr "Փաստաթղթի ստեղծման սխալ"
 
-#: ../src/xfdesktop-file-utils.c:1104
+#: ../src/xfdesktop-file-utils.c:1166
 msgid "Could not create a new document from the template"
 msgstr "Նմուշիչ, նոր փաստաթուղթը չի ստեղծուել"
 
-#: ../src/xfdesktop-file-utils.c:1155
+#: ../src/xfdesktop-file-utils.c:1252
 msgid "File Properties Error"
 msgstr "Նիշի յատկութիւնների սխալ"
 
-#: ../src/xfdesktop-file-utils.c:1156
+#: ../src/xfdesktop-file-utils.c:1253
 msgid "The file properties dialog could not be opened"
 msgstr "Նիշի յատկութիւնների երկխաւսութիւնը չի բացուել"
 
-#: ../src/xfdesktop-file-utils.c:1217
+#: ../src/xfdesktop-file-utils.c:1314
 msgid "The file could not be opened"
 msgstr "Նիշը չի բացուել"
 
-#: ../src/xfdesktop-file-utils.c:1291 ../src/xfdesktop-file-utils.c:1315
+#: ../src/xfdesktop-file-utils.c:1335 ../src/xfdesktop-file-utils.c:1442
 #, c-format
 msgid "Failed to run \"%s\""
 msgstr "Չյաջողուեց գործարկել «%s»֊ը"
 
-#: ../src/xfdesktop-file-utils.c:1381
+#: ../src/xfdesktop-file-utils.c:1510
 msgid "The application chooser could not be opened"
 msgstr "Ծրագրային ընտրիչը չի բացուել"
 
-#: ../src/xfdesktop-file-utils.c:1440 ../src/xfdesktop-file-utils.c:1455
-#: ../src/xfdesktop-file-utils.c:1518 ../src/xfdesktop-file-utils.c:1535
+#: ../src/xfdesktop-file-utils.c:1581 ../src/xfdesktop-file-utils.c:1650
 msgid "Transfer Error"
 msgstr "Փոխանցման սխալ"
 
-#: ../src/xfdesktop-file-utils.c:1441 ../src/xfdesktop-file-utils.c:1456
-#: ../src/xfdesktop-file-utils.c:1519 ../src/xfdesktop-file-utils.c:1536
+#: ../src/xfdesktop-file-utils.c:1582 ../src/xfdesktop-file-utils.c:1651
 msgid "The file transfer could not be performed"
 msgstr "Նիշի փոխանցումը չի կատարուել"
 
@@ -1073,7 +1082,7 @@ msgstr "«%s» սարքն անջատուում է։ Սա կարող է որոշ 
 msgid "Eject Finished"
 msgstr "Անջատման աւարտ"
 
-#: ../src/xfdesktop-regular-file-icon.c:820
+#: ../src/xfdesktop-regular-file-icon.c:795
 #, c-format
 msgid ""
 "Name: %s\n"
@@ -1082,20 +1091,20 @@ msgid ""
 "Last modified: %s"
 msgstr "Անուն․ %s\nՏեսակ․ %s\nՉափ․ %s\nՎերջին փոփոխութիւն%s"
 
-#: ../src/xfdesktop-special-file-icon.c:459
+#: ../src/xfdesktop-special-file-icon.c:439
 msgid "Trash is empty"
 msgstr "Աղբամանը դատարկ է"
 
-#: ../src/xfdesktop-special-file-icon.c:462
+#: ../src/xfdesktop-special-file-icon.c:442
 msgid "Trash contains one item"
 msgstr "Աղբամանը պարունակում է մեկ տարր"
 
-#: ../src/xfdesktop-special-file-icon.c:463
+#: ../src/xfdesktop-special-file-icon.c:443
 #, c-format
 msgid "Trash contains %d items"
 msgstr "Աղբամանը պարունակում է %d տարր"
 
-#: ../src/xfdesktop-special-file-icon.c:492
+#: ../src/xfdesktop-special-file-icon.c:472
 #, c-format
 msgid ""
 "%s\n"
@@ -1103,67 +1112,75 @@ msgid ""
 "Last modified: %s"
 msgstr "%s\nՉափ․ %s\nՎերջին փոփոխությունը․ %s֊ին"
 
-#: ../src/xfdesktop-special-file-icon.c:559
+#: ../src/xfdesktop-special-file-icon.c:539
 msgid "_Empty Trash"
 msgstr "_Մաքրել աղբամանը"
 
-#: ../src/xfdesktop-volume-icon.c:478
+#: ../src/xfdesktop-volume-icon.c:438
+msgid "(not mounted)"
+msgstr ""
+
+#: ../src/xfdesktop-volume-icon.c:439 ../src/xfdesktop-volume-icon.c:440
+msgid "(unknown)"
+msgstr "(անյայտ)"
+
+#: ../src/xfdesktop-volume-icon.c:444
 #, c-format
 msgid ""
-"Removable Volume\n"
-"Mounted in \"%s\"\n"
-"%s left (%s total)"
-msgstr "Հեռացուելի ծաւալ\nՏեղակայուած «%s»֊ում\nմնացել է՝ %s (ամբողջը՝ %s)"
+"Name: %s\n"
+"Type: %s\n"
+"Mounted at: %s\n"
+"Size: %s\n"
+"Free Space: %s"
+msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:485
-msgid ""
-"Removable Volume\n"
-"Not mounted yet"
-msgstr "Հեռացուելի ծաւալ\nԴեռ տեղակայուած չէ"
+#: ../src/xfdesktop-volume-icon.c:446
+msgid "Removable Volume"
+msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:514 ../src/xfdesktop-volume-icon.c:560
+#: ../src/xfdesktop-volume-icon.c:481 ../src/xfdesktop-volume-icon.c:527
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "Չյաջողուեց անջատել «%s»֊ը"
 
-#: ../src/xfdesktop-volume-icon.c:519 ../src/xfdesktop-volume-icon.c:565
+#: ../src/xfdesktop-volume-icon.c:486 ../src/xfdesktop-volume-icon.c:532
 msgid "Eject Failed"
 msgstr "Անջատման ձախողում"
 
-#: ../src/xfdesktop-volume-icon.c:598
+#: ../src/xfdesktop-volume-icon.c:565
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "Չյաջողուեց տեղակայել «%s»֊ը"
 
-#: ../src/xfdesktop-volume-icon.c:601
+#: ../src/xfdesktop-volume-icon.c:568
 msgid "Mount Failed"
 msgstr "Տեղակայման ձախողում"
 
-#: ../src/xfdesktop-volume-icon.c:835
+#: ../src/xfdesktop-volume-icon.c:805
 msgid "_Safely Remove Volume"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:838
+#: ../src/xfdesktop-volume-icon.c:808
 msgid "_Disconnect Volume"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:841
+#: ../src/xfdesktop-volume-icon.c:811
 msgid "_Stop the Multi-Disk Drive"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:844
+#: ../src/xfdesktop-volume-icon.c:814
 msgid "_Lock Volume"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:847
+#: ../src/xfdesktop-volume-icon.c:817
 msgid "E_ject Volume"
 msgstr "Ա_նջատել ծաւալը"
 
-#: ../src/xfdesktop-volume-icon.c:856
+#: ../src/xfdesktop-volume-icon.c:826
 msgid "_Unmount Volume"
 msgstr "Ա_պատեղակայել ծաւալը"
 
-#: ../src/xfdesktop-volume-icon.c:863
+#: ../src/xfdesktop-volume-icon.c:833
 msgid "_Mount Volume"
 msgstr "_Տեղակայել ծաւալը"
 
