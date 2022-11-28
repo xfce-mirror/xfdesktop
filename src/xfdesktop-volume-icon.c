@@ -68,6 +68,9 @@ struct _XfdesktopVolumeIconPrivate
     GFile *file;
     GdkScreen *gscreen;
 
+    GCancellable *file_info_op_handle;
+    GCancellable *filesystem_info_op_handle;
+
     guint changed_timeout_id;
     guint changed_timeout_count;
 };
@@ -99,6 +102,17 @@ static gboolean xfdesktop_volume_icon_activated(XfdesktopIcon *icon);
 static gboolean volume_icon_changed_timeout(gpointer user_data);
 static void xfdesktop_volume_icon_changed(GVolume *volume,
                                           XfdesktopVolumeIcon *volume_icon);
+
+static void xfdesktop_volume_icon_fetch_file_info(XfdesktopVolumeIcon *volume_icon,
+                                                  GAsyncReadyCallback callback);
+static void xfdesktop_volume_icon_fetch_filesystem_info(XfdesktopVolumeIcon *volume_icon);
+
+static void xfdesktop_volume_icon_file_info_ready(GObject *source,
+                                                  GAsyncResult *result,
+                                                  gpointer user_data);
+static void xfdesktop_volume_icon_filesystem_info_ready(GObject *source,
+                                                        GAsyncResult *result,
+                                                        gpointer user_data);
 
 #ifdef HAVE_THUNARX
 static void xfdesktop_volume_icon_tfi_init(ThunarxFileInfoIface *iface);
@@ -173,11 +187,17 @@ xfdesktop_volume_icon_finalize(GObject *obj)
         icon->priv->label = NULL;
     }
 
-    if(icon->priv->file_info)
-        g_object_unref(icon->priv->file_info);
+    if (icon->priv->file_info_op_handle != NULL) {
+        g_cancellable_cancel(icon->priv->file_info_op_handle);
+        g_clear_object(&icon->priv->file_info_op_handle);
+    }
+    g_clear_object(&icon->priv->file_info);
 
-    if(icon->priv->filesystem_info)
-        g_object_unref(icon->priv->filesystem_info);
+    if (icon->priv->filesystem_info_op_handle != NULL) {
+        g_cancellable_cancel(icon->priv->filesystem_info_op_handle);
+        g_clear_object(&icon->priv->filesystem_info_op_handle);
+    }
+    g_clear_object(&icon->priv->filesystem_info);
 
     if(icon->priv->file)
         g_object_unref(icon->priv->file);
@@ -549,6 +569,41 @@ xfdesktop_volume_icon_unmount_finish(GObject *object,
 }
 
 static void
+xfdesktop_volume_icon_mounted_file_info_ready(GObject *source,
+                                              GAsyncResult *result,
+                                              gpointer user_data)
+{
+    GFile *file = G_FILE(source);
+    XfdesktopVolumeIcon *volume_icon = XFDESKTOP_VOLUME_ICON(user_data);
+    GFileInfo *file_info;
+    GError *error = NULL;
+
+    g_clear_object(&volume_icon->priv->file_info);
+    g_clear_object(&volume_icon->priv->file_info_op_handle);
+
+    file_info = g_file_query_info_finish(file, result, &error);
+    if (file_info != NULL) {
+            gboolean activated = FALSE;
+
+            xfdesktop_file_icon_update_file_info(XFDESKTOP_FILE_ICON(volume_icon), file_info);
+
+            activated = GPOINTER_TO_UINT(g_object_get_qdata(G_OBJECT(volume_icon),
+                                                            xfdesktop_volume_icon_activated_quark));
+            if(activated) {
+                XfdesktopIcon *icon_p = XFDESKTOP_ICON(volume_icon);
+                XFDESKTOP_ICON_CLASS(xfdesktop_volume_icon_parent_class)->activated(icon_p);
+            }
+            g_object_set_qdata(G_OBJECT(volume_icon), xfdesktop_volume_icon_activated_quark, NULL);
+    } else {
+        if (error != NULL) {
+            g_printerr("Failed to query volume file info after mount (%d, %d): %s\n",
+                       error->domain, error->code, error->message);
+            g_error_free(error);
+        }
+    }
+}
+
+static void
 xfdesktop_volume_icon_mount_finish(GObject *object,
                                    GAsyncResult *result,
                                    gpointer user_data)
@@ -576,34 +631,13 @@ xfdesktop_volume_icon_mount_finish(GObject *object,
         g_clear_error(&error);
     } else {
         GMount *mount = g_volume_get_mount(volume);
-        GFile *file = NULL;
-        GFileInfo *info = NULL;
 
-        if(mount) {
-            file = g_mount_get_root(mount);
-            info = g_file_query_info(file,
-                                     XFDESKTOP_FILE_INFO_NAMESPACE,
-                                     G_FILE_QUERY_INFO_NONE,
-                                     NULL, NULL);
+        if (mount != NULL) {
+            g_clear_object(&icon->priv->file);
+            icon->priv->file = g_mount_get_root(mount);
             g_object_unref(mount);
-        }
 
-        if(file && info) {
-            gboolean activated = FALSE;
-
-            if(icon->priv->file)
-                g_object_unref(icon->priv->file);
-            icon->priv->file = g_object_ref(file);
-
-            xfdesktop_file_icon_update_file_info(XFDESKTOP_FILE_ICON(icon), info);
-
-            activated = GPOINTER_TO_UINT(g_object_get_qdata(G_OBJECT(icon),
-                                                            xfdesktop_volume_icon_activated_quark));
-            if(activated) {
-                XfdesktopIcon *icon_p = XFDESKTOP_ICON(icon);
-                XFDESKTOP_ICON_CLASS(xfdesktop_volume_icon_parent_class)->activated(icon_p);
-            }
-            g_object_set_qdata(G_OBJECT(icon), xfdesktop_volume_icon_activated_quark, NULL);
+            xfdesktop_volume_icon_fetch_file_info(icon, xfdesktop_volume_icon_mounted_file_info_ready);
         } else {
             if(icon->priv->file)
                 g_object_unref(icon->priv->file);
@@ -611,13 +645,45 @@ xfdesktop_volume_icon_mount_finish(GObject *object,
 
             xfdesktop_file_icon_update_file_info(XFDESKTOP_FILE_ICON(icon), NULL);
         }
-
-        if(file)
-            g_object_unref(file);
-
-        if(info)
-            g_object_unref(info);
     }
+}
+
+static void
+xfdesktop_volume_icon_fetch_file_info(XfdesktopVolumeIcon *volume_icon,
+                                      GAsyncReadyCallback callback)
+{
+    g_return_if_fail(G_IS_FILE(volume_icon->priv->file));
+
+    if (volume_icon->priv->file_info_op_handle != NULL) {
+        g_cancellable_cancel(volume_icon->priv->file_info_op_handle);
+        g_object_unref(volume_icon->priv->file_info_op_handle);
+    }
+    volume_icon->priv->file_info_op_handle = g_cancellable_new();
+    g_file_query_info_async(volume_icon->priv->file,
+                            XFDESKTOP_FILE_INFO_NAMESPACE,
+                            G_FILE_QUERY_INFO_NONE,
+                            G_PRIORITY_DEFAULT,
+                            volume_icon->priv->file_info_op_handle,
+                            callback,
+                            volume_icon);
+}
+
+static void
+xfdesktop_volume_icon_fetch_filesystem_info(XfdesktopVolumeIcon *volume_icon)
+{
+    g_return_if_fail(G_IS_FILE(volume_icon->priv->file));
+
+    if (volume_icon->priv->filesystem_info_op_handle != NULL) {
+        g_cancellable_cancel(volume_icon->priv->filesystem_info_op_handle);
+        g_object_unref(volume_icon->priv->filesystem_info_op_handle);
+    }
+    volume_icon->priv->filesystem_info_op_handle = g_cancellable_new();
+    g_file_query_filesystem_info_async(volume_icon->priv->file,
+                                       XFDESKTOP_FILESYSTEM_INFO_NAMESPACE,
+                                       G_PRIORITY_DEFAULT,
+                                       NULL,
+                                       xfdesktop_volume_icon_filesystem_info_ready,
+                                       volume_icon);
 }
 
 static void
@@ -894,12 +960,9 @@ xfdesktop_volume_icon_update_file_info(XfdesktopFileIcon *icon,
     volume_icon->priv->file_info = info ? g_object_ref(info) : NULL;
 
     /* update the filesystem info as well */
-    if(volume_icon->priv->filesystem_info)
-        g_object_unref(volume_icon->priv->filesystem_info);
-    if(volume_icon->priv->file) {
-        volume_icon->priv->filesystem_info = g_file_query_filesystem_info(volume_icon->priv->file,
-                                                                          XFDESKTOP_FILE_INFO_NAMESPACE,
-                                                                          NULL, NULL);
+    g_clear_object(&volume_icon->priv->filesystem_info);
+    if (volume_icon->priv->file != NULL) {
+        xfdesktop_volume_icon_fetch_filesystem_info(volume_icon);
     }
 
     /* invalidate the tooltip */
@@ -979,15 +1042,9 @@ volume_icon_changed_timeout(gpointer user_data)
     if(mount) {
         /* load mount point information */
         volume_icon->priv->file = g_mount_get_root(mount);
-        volume_icon->priv->file_info =
-            g_file_query_info(volume_icon->priv->file,
-                              XFDESKTOP_FILE_INFO_NAMESPACE,
-                              G_FILE_QUERY_INFO_NONE,
-                              NULL, NULL);
-        volume_icon->priv->filesystem_info =
-            g_file_query_filesystem_info(volume_icon->priv->file,
-                                         XFDESKTOP_FILESYSTEM_INFO_NAMESPACE,
-                                         NULL, NULL);
+
+        xfdesktop_volume_icon_fetch_file_info(volume_icon, xfdesktop_volume_icon_file_info_ready);
+        xfdesktop_volume_icon_fetch_filesystem_info(volume_icon);
 
         /* release the mount itself */
         g_object_unref(mount);
@@ -1062,6 +1119,57 @@ xfdesktop_volume_icon_changed(GVolume *volume,
                            g_object_unref);
 }
 
+static void
+xfdesktop_volume_icon_file_info_ready(GObject *source,
+                                      GAsyncResult *result,
+                                      gpointer user_data)
+{
+    XfdesktopVolumeIcon *volume_icon = XFDESKTOP_VOLUME_ICON(user_data);
+    GFileInfo *file_info;
+    GError *error = NULL;
+
+    g_clear_object(&volume_icon->priv->file_info);
+    g_clear_object(&volume_icon->priv->file_info_op_handle);
+
+    file_info = g_file_query_info_finish(G_FILE(source), result, &error);
+    if (file_info != NULL) {
+        volume_icon->priv->file_info = file_info;
+        xfdesktop_icon_invalidate_pixbuf(XFDESKTOP_ICON(volume_icon));
+        xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(volume_icon));
+        xfdesktop_icon_label_changed(XFDESKTOP_ICON(volume_icon));
+    } else {
+        if (error != NULL) {
+            g_printerr("Failed to query new volume icon file info (%d, %d): %s\n",
+                       error->domain, error->code, error->message);
+            g_error_free(error);
+        }
+    }
+}
+
+static void
+xfdesktop_volume_icon_filesystem_info_ready(GObject *source,
+                                            GAsyncResult *result,
+                                            gpointer user_data)
+{
+    XfdesktopVolumeIcon *volume_icon = XFDESKTOP_VOLUME_ICON(user_data);
+    GFileInfo *file_info;
+    GError *error = NULL;
+
+    g_clear_object(&volume_icon->priv->filesystem_info);
+    g_clear_object(&volume_icon->priv->filesystem_info_op_handle);
+
+    file_info = g_file_query_filesystem_info_finish(G_FILE(source), result, &error);
+    if (file_info != NULL) {
+        volume_icon->priv->filesystem_info = file_info;
+    } else {
+        if (error != NULL) {
+            g_printerr("Failed to query new volume icon filesystem info (%d, %d): %s\n",
+                       error->domain, error->code, error->message);
+            g_error_free(error);
+        }
+    }
+}
+
 XfdesktopVolumeIcon *
 xfdesktop_volume_icon_new(GVolume *volume,
                           GdkScreen *screen)
@@ -1078,14 +1186,10 @@ xfdesktop_volume_icon_new(GVolume *volume,
     mount = g_volume_get_mount(volume);
     if(mount) {
         volume_icon->priv->file = g_mount_get_root(mount);
-        volume_icon->priv->file_info = g_file_query_info(volume_icon->priv->file,
-                                                         XFDESKTOP_FILE_INFO_NAMESPACE,
-                                                         G_FILE_QUERY_INFO_NONE,
-                                                         NULL, NULL);
-        volume_icon->priv->filesystem_info = g_file_query_filesystem_info(volume_icon->priv->file,
-                                                                          XFDESKTOP_FILESYSTEM_INFO_NAMESPACE,
-                                                                          NULL, NULL);
         g_object_unref(mount);
+
+        xfdesktop_volume_icon_fetch_file_info(volume_icon, xfdesktop_volume_icon_file_info_ready);
+        xfdesktop_volume_icon_fetch_filesystem_info(volume_icon);
     }
 
     g_signal_connect_swapped(G_OBJECT(gtk_icon_theme_get_for_screen(screen)),
