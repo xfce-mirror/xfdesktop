@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-17 00:53+0100\n"
-"PO-Revision-Date: 2021-11-16 23:53+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
+"POT-Creation-Date: 2022-11-28 15:09+0100\n"
+"PO-Revision-Date: 2013-07-02 20:50+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Uyghur (http://www.transifex.com/xfce/xfdesktop/language/ug/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,38 +17,38 @@ msgstr ""
 "Language: ug\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../settings/main.c:419 ../src/xfdesktop-special-file-icon.c:290
-#: ../src/xfdesktop-special-file-icon.c:476
+#: ../settings/main.c:430 ../src/xfdesktop-special-file-icon.c:290
+#: ../src/xfdesktop-special-file-icon.c:456
 msgid "Home"
 msgstr "ماكان"
 
-#: ../settings/main.c:421 ../src/xfdesktop-special-file-icon.c:292
-#: ../src/xfdesktop-special-file-icon.c:474
+#: ../settings/main.c:432 ../src/xfdesktop-special-file-icon.c:292
+#: ../src/xfdesktop-special-file-icon.c:454
 msgid "File System"
 msgstr "ھۆججەت سىستېمىسى"
 
-#: ../settings/main.c:423 ../src/xfdesktop-special-file-icon.c:294
+#: ../settings/main.c:434 ../src/xfdesktop-special-file-icon.c:294
 msgid "Trash"
 msgstr "ئەخلەتخانا"
 
-#: ../settings/main.c:425
+#: ../settings/main.c:436
 msgid "Removable Devices"
 msgstr "ھەرىكەتچان ئۈسكۈنىلەر"
 
-#: ../settings/main.c:427
+#: ../settings/main.c:438
 msgid "Network Shares"
 msgstr ""
 
-#: ../settings/main.c:429
+#: ../settings/main.c:440
 msgid "Disks and Drives"
 msgstr ""
 
-#: ../settings/main.c:431
+#: ../settings/main.c:442
 msgid "Other Devices"
 msgstr ""
 
 #. Display the file name, file type, and file size in the tooltip.
-#: ../settings/main.c:541
+#: ../settings/main.c:546
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -56,161 +56,160 @@ msgid ""
 "Size: %s"
 msgstr ""
 
-#: ../settings/main.c:728
+#: ../settings/main.c:744
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr ""
 
-#: ../settings/main.c:731
+#: ../settings/main.c:747
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr ""
 
-#: ../settings/main.c:737
+#: ../settings/main.c:753
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr ""
 
-#: ../settings/main.c:744
+#: ../settings/main.c:760
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr ""
 
-#: ../settings/main.c:748
+#: ../settings/main.c:764
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr ""
 
-#: ../settings/main.c:755
+#: ../settings/main.c:771
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr ""
 
 #. Single monitor and single workspace
-#: ../settings/main.c:763
+#: ../settings/main.c:779
 #, c-format
 msgid "Wallpaper for my desktop"
 msgstr ""
 
 #. Single monitor and per workspace wallpaper
-#: ../settings/main.c:769
+#: ../settings/main.c:785
 #, c-format
 msgid "Wallpaper for %s"
 msgstr ""
 
-#: ../settings/main.c:774
+#: ../settings/main.c:790
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr ""
 
-#: ../settings/main.c:1190
+#: ../settings/main.c:1243
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr ""
 
-#: ../settings/main.c:1550
+#: ../settings/main.c:1603
 msgid "Spanning screens"
 msgstr ""
 
 #. TRANSLATORS: Please split the message in half with '\n' so the dialog will
 #. not be too wide.
-#: ../settings/main.c:1718
+#: ../settings/main.c:1784
 msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
 msgstr ""
 
-#: ../settings/main.c:1724
+#: ../settings/main.c:1790
 msgid "Arrange icons"
 msgstr ""
 
 #. printf is to be translator-friendly
-#: ../settings/main.c:1732 ../src/xfdesktop-file-icon-manager.c:817
-#: ../src/xfdesktop-file-icon-manager.c:1378
+#: ../settings/main.c:1798 ../src/xfdesktop-file-icon-manager.c:817
+#: ../src/xfdesktop-file-icon-manager.c:1410
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "«%s» نى ئىجرا قىلغىلى بولمىدى:"
 
-#: ../settings/main.c:1733 ../src/xfdesktop-file-icon-manager.c:819
-#: ../src/xfdesktop-file-icon-manager.c:1127
-#: ../src/xfdesktop-file-icon-manager.c:1379 ../src/xfdesktop-file-utils.c:682
-#: ../src/xfdesktop-file-utils.c:1216 ../src/xfdesktop-file-utils.c:1294
-#: ../src/xfdesktop-file-utils.c:1318 ../src/xfdesktop-file-utils.c:1380
+#: ../settings/main.c:1799 ../src/xfdesktop-file-icon-manager.c:819
+#: ../src/xfdesktop-file-icon-manager.c:1159
+#: ../src/xfdesktop-file-icon-manager.c:1411 ../src/xfdesktop-file-utils.c:744
+#: ../src/xfdesktop-file-utils.c:1313 ../src/xfdesktop-file-utils.c:1338
+#: ../src/xfdesktop-file-utils.c:1445 ../src/xfdesktop-file-utils.c:1509
 msgid "Launch Error"
 msgstr "ئىجرا قىلىش خاتالىقى"
 
-#: ../settings/main.c:1735 ../settings/xfdesktop-settings-ui.glade.h:20
-#: ../src/xfdesktop-file-icon-manager.c:582
-#: ../src/xfdesktop-file-icon-manager.c:601
-#: ../src/xfdesktop-file-icon-manager.c:686
+#: ../settings/main.c:1801 ../settings/xfdesktop-settings-ui.glade.h:20
+#: ../src/xfdesktop-file-icon-manager.c:585
+#: ../src/xfdesktop-file-icon-manager.c:604
+#: ../src/xfdesktop-file-icon-manager.c:689
 #: ../src/xfdesktop-file-icon-manager.c:821
-#: ../src/xfdesktop-file-icon-manager.c:1131
-#: ../src/xfdesktop-file-icon-manager.c:1381
-#: ../src/xfdesktop-file-icon-manager.c:2978 ../src/xfdesktop-file-utils.c:685
-#: ../src/xfdesktop-file-utils.c:705 ../src/xfdesktop-file-utils.c:760
-#: ../src/xfdesktop-file-utils.c:824 ../src/xfdesktop-file-utils.c:885
-#: ../src/xfdesktop-file-utils.c:946 ../src/xfdesktop-file-utils.c:994
-#: ../src/xfdesktop-file-utils.c:1049 ../src/xfdesktop-file-utils.c:1107
-#: ../src/xfdesktop-file-utils.c:1159 ../src/xfdesktop-file-utils.c:1220
-#: ../src/xfdesktop-file-utils.c:1296 ../src/xfdesktop-file-utils.c:1322
-#: ../src/xfdesktop-file-utils.c:1384 ../src/xfdesktop-file-utils.c:1443
-#: ../src/xfdesktop-file-utils.c:1459 ../src/xfdesktop-file-utils.c:1521
-#: ../src/xfdesktop-file-utils.c:1539 ../src/xfdesktop-volume-icon.c:521
-#: ../src/xfdesktop-volume-icon.c:567 ../src/xfdesktop-volume-icon.c:603
+#: ../src/xfdesktop-file-icon-manager.c:1163
+#: ../src/xfdesktop-file-icon-manager.c:1413
+#: ../src/xfdesktop-file-icon-manager.c:3077 ../src/xfdesktop-file-utils.c:747
+#: ../src/xfdesktop-file-utils.c:767 ../src/xfdesktop-file-utils.c:822
+#: ../src/xfdesktop-file-utils.c:886 ../src/xfdesktop-file-utils.c:947
+#: ../src/xfdesktop-file-utils.c:1008 ../src/xfdesktop-file-utils.c:1056
+#: ../src/xfdesktop-file-utils.c:1111 ../src/xfdesktop-file-utils.c:1169
+#: ../src/xfdesktop-file-utils.c:1256 ../src/xfdesktop-file-utils.c:1317
+#: ../src/xfdesktop-file-utils.c:1340 ../src/xfdesktop-file-utils.c:1449
+#: ../src/xfdesktop-file-utils.c:1513 ../src/xfdesktop-file-utils.c:1584
+#: ../src/xfdesktop-file-utils.c:1654 ../src/xfdesktop-volume-icon.c:488
+#: ../src/xfdesktop-volume-icon.c:534 ../src/xfdesktop-volume-icon.c:570
 msgid "_Close"
 msgstr "تاقا(_C)"
 
-#: ../settings/main.c:1890
+#: ../settings/main.c:1961
 msgid "Image files"
 msgstr "سۈرەت ھۆججىتى"
 
 #. Change the title of the file chooser dialog
-#: ../settings/main.c:1898
+#: ../settings/main.c:1969
 msgid "Select a Directory"
 msgstr ""
 
-#: ../settings/main.c:2107
+#: ../settings/main.c:2178
 msgid "Settings manager socket"
 msgstr "باشقۇرغۇچى سوكېتنىڭ تەڭشەكلىرى"
 
-#: ../settings/main.c:2107
+#: ../settings/main.c:2178
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: ../settings/main.c:2108
+#: ../settings/main.c:2179
 msgid "Version information"
 msgstr "نەشر ئۇچۇرى"
 
-#: ../settings/main.c:2109 ../src/xfdesktop-application.c:842
+#: ../settings/main.c:2180 ../src/xfdesktop-application.c:848
 msgid "Enable debug messages"
 msgstr ""
 
-#: ../settings/main.c:2133
+#: ../settings/main.c:2204
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "'%s --help' كىرگۈزسە ئىشلىتىش ئۇسۇلىنى كۆرگىلى بولىدۇ"
 
-#: ../settings/main.c:2145
+#: ../settings/main.c:2216
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce ئىجادىيەت گۇرۇپپىسى. نەشر ھوقۇقى ئۆزىمىزگە تەۋە."
 
-#: ../settings/main.c:2146
+#: ../settings/main.c:2217
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "كەمتۈكنى <%s> غا دوكلات قىلىڭ."
 
-#: ../settings/main.c:2153
+#: ../settings/main.c:2224
 msgid "Desktop Settings"
 msgstr "ئۈستەلئۈستى تەڭشىكى"
 
-#: ../settings/main.c:2155
+#: ../settings/main.c:2226
 msgid "Unable to contact settings server"
 msgstr "تەڭشەك مۇلازىمېتىر بىلەن ئۇلىنالمىدى"
 
-#: ../settings/main.c:2157
+#: ../settings/main.c:2228
 msgid "Quit"
 msgstr "ئاخىرلاشتۇر"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.in.h:1
-#: ../settings/xfdesktop-settings-ui.glade.h:18 ../src/xfce-desktop.c:1170
+#: ../settings/xfdesktop-settings-ui.glade.h:18 ../src/xfce-desktop.c:1158
 msgid "Desktop"
 msgstr "ئۈستەلئۈستى"
 
@@ -239,124 +238,128 @@ msgid "Choose the folder to select wallpapers from."
 msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
+msgid "Apply"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
 msgid "St_yle:"
 msgstr "ئۇسلۇب(_Y):"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
 msgid "Specify how the image will be resized to fit the screen."
 msgstr ""
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
 #: ../settings/xfdesktop-settings-ui.glade.h:4
 msgid "None"
 msgstr "يوق"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
 msgid "Centered"
 msgstr "ئوتتۇرىدا"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
 msgid "Tiled"
 msgstr "كاھىشتەك"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
 msgid "Stretched"
 msgstr "سوزۇلغان"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
 msgid "Scaled"
 msgstr "سوزۇلغان-قىسىلغان"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
 msgid "Zoomed"
 msgstr "چوڭايتىلغان ياكى كىچىكلىتىلگەن"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
 msgid "Spanning Screens"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
 msgid "Specify the style of the color drawn behind the backdrop image."
 msgstr ""
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
 msgstr ""
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 msgid "Select First Color"
 msgstr "تۇنجى رەڭنى تاللاش"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient."
 msgstr ""
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
 msgid "Select Second Color"
 msgstr "ئىككىنچى رەڭنى تاللاش"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
 msgid "Apply to all _workspaces"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
 msgid "_Folder:"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 msgid "C_olor:"
 msgstr "رەڭ(_o):"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
 msgid "Change the _background "
 msgstr ""
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid ""
 "Automatically select a different background from the current directory."
 msgstr ""
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "Specify how often the background will change."
 msgstr ""
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
 msgid "in seconds:"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
 msgid "in minutes:"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
 msgid "in hours:"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
 msgid "at start up"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
 msgid "every hour"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
 msgid "every day"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
 msgid "chronologically"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
 msgid "Amount of time before a different background is selected."
 msgstr ""
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
 msgid "_Random Order"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:36
 msgid ""
 "Randomly selects another image from the same directory when the wallpaper is"
 " to cycle."
@@ -572,28 +575,28 @@ msgstr "<b>كۆڭۈلدىكى سىنبەلگىلەر</b>"
 msgid "_Icons"
 msgstr "سىنبەلگە(_I)"
 
-#: ../src/menu.c:94
+#: ../src/menu.c:92
 msgid "_Applications"
 msgstr "پروگراممىلار(_A)"
 
-#: ../src/windowlist.c:73
+#: ../src/windowlist.c:75
 #, c-format
 msgid "Remove Workspace %d"
 msgstr "خىزمەت رايونى %d نى ئۆچۈر"
 
-#: ../src/windowlist.c:74
+#: ../src/windowlist.c:76
 #, c-format
 msgid ""
 "Do you really want to remove workspace %d?\n"
 "Note: You are currently on workspace %d."
 msgstr ""
 
-#: ../src/windowlist.c:78
+#: ../src/windowlist.c:80
 #, c-format
 msgid "Remove Workspace '%s'"
 msgstr ""
 
-#: ../src/windowlist.c:79
+#: ../src/windowlist.c:81
 #, c-format
 msgid ""
 "Do you really want to remove workspace '%s'?\n"
@@ -602,422 +605,428 @@ msgstr ""
 
 #. Popup a dialog box confirming that the user wants to remove a
 #. * workspace
-#: ../src/windowlist.c:86
+#: ../src/windowlist.c:88
 msgid "Remove"
 msgstr ""
 
-#: ../src/windowlist.c:272
+#: ../src/windowlist.c:283
 msgid "Window List"
 msgstr "كۆزنەك تىزىمى"
 
-#: ../src/windowlist.c:297
+#: ../src/windowlist.c:311
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>خىزمەت رايونى %d</b>"
 
-#: ../src/windowlist.c:393 ../src/windowlist.c:395
+#: ../src/windowlist.c:407 ../src/windowlist.c:409
 msgid "_Add Workspace"
 msgstr "خىزمەت رايونى قوش(_A)"
 
-#: ../src/windowlist.c:403
+#: ../src/windowlist.c:417
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "خىزمەت رايونى %d نى ئۆچۈر(_R)"
 
-#: ../src/windowlist.c:406
+#: ../src/windowlist.c:420
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "خىزمەت رايونى ‹%s› نى ئۆچۈر(_R)"
 
-#: ../src/xfdesktop-application.c:834
+#: ../src/xfdesktop-application.c:840
 msgid "Display version information"
 msgstr "نەشر ئۇچۇرىنى كۆرسەت"
 
-#: ../src/xfdesktop-application.c:835
+#: ../src/xfdesktop-application.c:841
 msgid "Reload all settings"
 msgstr ""
 
-#: ../src/xfdesktop-application.c:836
+#: ../src/xfdesktop-application.c:842
 msgid "Advance to the next wallpaper on the current workspace"
 msgstr ""
 
-#: ../src/xfdesktop-application.c:837
+#: ../src/xfdesktop-application.c:843
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "تىزىملىكنى كۆرسەت(چاشقىنەكنىڭ ھازىرقى ئورنىدا)"
 
-#: ../src/xfdesktop-application.c:838
+#: ../src/xfdesktop-application.c:844
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "كۆزنەك تىزىمىنى كۆرسەت(چاشقىنەكنىڭ ھازىرقى ئورنىدا)"
 
-#: ../src/xfdesktop-application.c:840
+#: ../src/xfdesktop-application.c:846
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "ئۈستەلئۈستىدىكى بارلىق سىنبەلگىلەرنى ئاپتوماتىك رەتلىسۇن"
 
-#: ../src/xfdesktop-application.c:843
+#: ../src/xfdesktop-application.c:849
 msgid "Disable debug messages"
 msgstr ""
 
-#: ../src/xfdesktop-application.c:844
+#: ../src/xfdesktop-application.c:850
 msgid "Do not wait for a window manager on startup"
 msgstr "باشلانغاندا ھۆججەت باشقۇرغۇنى كۈتمىسۇن"
 
-#: ../src/xfdesktop-application.c:845
+#: ../src/xfdesktop-application.c:851
 msgid "Cause xfdesktop to quit"
 msgstr "xfdesktop نىڭ ئاخىرلىشىشنى كەلتۈرۈپ چىقىرىدۇ"
 
-#: ../src/xfdesktop-application.c:860
+#: ../src/xfdesktop-application.c:866
 #, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "پارامېتىرلارنى يېشىش مەغلۇپ بولدى: %s\n"
 
-#: ../src/xfdesktop-application.c:871
+#: ../src/xfdesktop-application.c:877
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "بۇ %s ،  نەشرى %s،  Xfce %s دا ئىجرا بولۇۋاتىدۇ.\n"
 
-#: ../src/xfdesktop-application.c:873
+#: ../src/xfdesktop-application.c:879
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Gtk+ %d.%d.%d دا ھاسىللانغان، Gtk+ %d.%d.%d بىلەن ئۇلانغان."
 
-#: ../src/xfdesktop-application.c:877
+#: ../src/xfdesktop-application.c:883
 #, c-format
 msgid "Build options:\n"
 msgstr "ھاسىللاش تاللانمىلىرى:\n"
 
-#: ../src/xfdesktop-application.c:878
+#: ../src/xfdesktop-application.c:884
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    ئۈستەلئۈستى تىزىملىكى:            %s\n"
 
-#: ../src/xfdesktop-application.c:880 ../src/xfdesktop-application.c:887
-#: ../src/xfdesktop-application.c:894
+#: ../src/xfdesktop-application.c:886 ../src/xfdesktop-application.c:893
+#: ../src/xfdesktop-application.c:900
 msgid "enabled"
 msgstr "ئىناۋەتلىك قىلىنغان"
 
-#: ../src/xfdesktop-application.c:882 ../src/xfdesktop-application.c:889
-#: ../src/xfdesktop-application.c:896
+#: ../src/xfdesktop-application.c:888 ../src/xfdesktop-application.c:895
+#: ../src/xfdesktop-application.c:902
 msgid "disabled"
 msgstr "ئىناۋەتسىز قىلىنغان"
 
-#: ../src/xfdesktop-application.c:885
+#: ../src/xfdesktop-application.c:891
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    ئۈستەلئۈستى سىنبەلگىلىرى:            %s\n"
 
-#: ../src/xfdesktop-application.c:892
+#: ../src/xfdesktop-application.c:898
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    ئۈستەلئۈستى ھۆججەت سىنبەلگىلىرى:    %s\n"
 
-#: ../src/xfdesktop-file-icon-manager.c:574
-#: ../src/xfdesktop-file-icon-manager.c:592
+#: ../src/xfdesktop-file-icon-manager.c:577
+#: ../src/xfdesktop-file-icon-manager.c:595
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
 msgstr "ئۈستەلئۈستى قىسقۇچى «%s» نى قۇرغىلى بولمىدى"
 
-#: ../src/xfdesktop-file-icon-manager.c:579
-#: ../src/xfdesktop-file-icon-manager.c:597
+#: ../src/xfdesktop-file-icon-manager.c:582
+#: ../src/xfdesktop-file-icon-manager.c:600
 msgid "Desktop Folder Error"
 msgstr "ئۈستەلئۈستى قىسقۇچى خاتالىقى"
 
-#: ../src/xfdesktop-file-icon-manager.c:599
+#: ../src/xfdesktop-file-icon-manager.c:602
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr "ئاتى ئوخشاش بولغان نورمال ھۆججەت مەۋجۇت. ئۇنى ئۆچۈرۈڭ ياكى ئاتىنى ئۆزگەرتىڭ."
 
-#: ../src/xfdesktop-file-icon-manager.c:683 ../src/xfdesktop-file-utils.c:756
-#: ../src/xfdesktop-file-utils.c:820
+#: ../src/xfdesktop-file-icon-manager.c:686 ../src/xfdesktop-file-utils.c:818
+#: ../src/xfdesktop-file-utils.c:882
 msgid "Rename Error"
 msgstr "ئاتىنى ئۆزگەرتىش خاتالىقى"
 
-#: ../src/xfdesktop-file-icon-manager.c:684 ../src/xfdesktop-file-utils.c:821
+#: ../src/xfdesktop-file-icon-manager.c:687 ../src/xfdesktop-file-utils.c:883
 msgid "The files could not be renamed"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:685
+#: ../src/xfdesktop-file-icon-manager.c:688
 msgid "None of the icons selected support being renamed."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:989
+#: ../src/xfdesktop-file-icon-manager.c:1013
 msgid ""
 "This will reorder all desktop items and place them on different screen positions.\n"
 "Are you sure?"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:993
+#: ../src/xfdesktop-file-icon-manager.c:1017
 msgid "_OK"
 msgstr "تامام"
 
-#: ../src/xfdesktop-file-icon-manager.c:1053
+#: ../src/xfdesktop-file-icon-manager.c:1085
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "%s دا ئاچ(_O)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1056
+#: ../src/xfdesktop-file-icon-manager.c:1088
 #, c-format
 msgid "Open With \"%s\""
 msgstr "«%s» دا ئاچ"
 
-#: ../src/xfdesktop-file-icon-manager.c:1129
+#: ../src/xfdesktop-file-icon-manager.c:1161
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr "ئۈستەلئۈستىگە ئىجراچى ياساش ياكى ئۇلانما ياساشتا زۆرۈر بولغان \"exo-desktop-item-edit\" نى ئىجرا قىلالمىدى."
 
-#: ../src/xfdesktop-file-icon-manager.c:1447
+#: ../src/xfdesktop-file-icon-manager.c:1526
 msgid "_Open all"
 msgstr "ھەممىنى ئاچ(_O)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1467
+#: ../src/xfdesktop-file-icon-manager.c:1546
 msgid "Create _Launcher..."
 msgstr "ئىجراچى ياسا(_L)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1481
+#: ../src/xfdesktop-file-icon-manager.c:1560
 msgid "Create _URL Link..."
 msgstr "URL ئۇلانمىسى ياسا(_U)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1495
+#: ../src/xfdesktop-file-icon-manager.c:1574
 msgid "Create _Folder..."
 msgstr "قىسقۇچ ياسا(_F)…"
 
-#: ../src/xfdesktop-file-icon-manager.c:1507
+#: ../src/xfdesktop-file-icon-manager.c:1586
 msgid "Create _Document"
 msgstr "پۈتۈك ياسا(_D)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1532
+#: ../src/xfdesktop-file-icon-manager.c:1611
 msgid "No templates installed"
 msgstr "ھېچقانداق قېلىپ ئورنىتىلمىغان"
 
-#: ../src/xfdesktop-file-icon-manager.c:1548
+#: ../src/xfdesktop-file-icon-manager.c:1627
 msgid "_Empty File"
 msgstr "قۇرۇق ھۆججەت(_E)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1558
-#: ../src/xfdesktop-special-file-icon.c:543 ../src/xfdesktop-volume-icon.c:809
+#: ../src/xfdesktop-file-icon-manager.c:1637
+#: ../src/xfdesktop-special-file-icon.c:523 ../src/xfdesktop-volume-icon.c:779
 msgid "_Open"
 msgstr "ئاچ(_O)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1574
+#: ../src/xfdesktop-file-icon-manager.c:1654
 msgid "_Execute"
 msgstr "ئىجرا قىل(_E)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1592
+#: ../src/xfdesktop-file-icon-manager.c:1672
 msgid "_Edit Launcher"
 msgstr "ئىجراچى تەھرىرلە(_E)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1651
+#: ../src/xfdesktop-file-icon-manager.c:1731
 msgid "Open With"
 msgstr "پروگراممىدا ئاچ"
 
-#: ../src/xfdesktop-file-icon-manager.c:1678
-#: ../src/xfdesktop-file-icon-manager.c:1692
+#: ../src/xfdesktop-file-icon-manager.c:1758
+#: ../src/xfdesktop-file-icon-manager.c:1783
 msgid "Open With Other _Application..."
 msgstr "باش پروگراممىدا ئاچ(_A)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1710
+#: ../src/xfdesktop-file-icon-manager.c:1769
+msgid "Set _Default Application..."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1801
 msgid "_Paste"
 msgstr "چاپلا(_P)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1728
+#: ../src/xfdesktop-file-icon-manager.c:1819
 msgid "Cu_t"
 msgstr "كەس(_T)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1740
+#: ../src/xfdesktop-file-icon-manager.c:1831
 msgid "_Copy"
 msgstr "كۆچۈر(_C)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1752
+#: ../src/xfdesktop-file-icon-manager.c:1843
 msgid "Paste Into Folder"
 msgstr "مۇندەرىجىگە چاپلاش"
 
-#: ../src/xfdesktop-file-icon-manager.c:1771
+#: ../src/xfdesktop-file-icon-manager.c:1862
 msgid "Mo_ve to Trash"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1784
+#: ../src/xfdesktop-file-icon-manager.c:1875
 msgid "_Delete"
 msgstr "ئۆچۈر(_D)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1802
+#: ../src/xfdesktop-file-icon-manager.c:1893
 msgid "_Rename..."
 msgstr "ئات ئۆزگەرت(_R)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1867
+#: ../src/xfdesktop-file-icon-manager.c:1958
 msgid "_Open in New Window"
 msgstr "يېڭى كۆزنەكتە ئاچ(_O)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1876
+#: ../src/xfdesktop-file-icon-manager.c:1967
 msgid "Arrange Desktop _Icons"
 msgstr "ئۈستەلئۈستى سىنبەلگىلىرىنى رەتلە(_I)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1886
+#: ../src/xfdesktop-file-icon-manager.c:1977
 msgid "_Next Background"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1896
+#: ../src/xfdesktop-file-icon-manager.c:1987
 msgid "Desktop _Settings..."
 msgstr "ئۈستەلئۈستى تەڭشىكى(_S)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1904
-#: ../src/xfdesktop-volume-icon.c:876
+#: ../src/xfdesktop-file-icon-manager.c:1995
+#: ../src/xfdesktop-volume-icon.c:846
 msgid "P_roperties..."
 msgstr "خاسلىق(_R)..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2975
+#: ../src/xfdesktop-file-icon-manager.c:3074
 msgid "Load Error"
 msgstr "ئوقۇش خاتالىقى"
 
-#: ../src/xfdesktop-file-icon-manager.c:2977
+#: ../src/xfdesktop-file-icon-manager.c:3076
 msgid "Failed to load the desktop folder"
 msgstr "ئۈستەلئۈستى قىسقۇچىنى ئوقۇش مەغلۇپ بولدى"
 
-#: ../src/xfdesktop-file-icon-manager.c:3537
+#: ../src/xfdesktop-file-icon-manager.c:3628
 msgid "Copy _Here"
 msgstr "بۇ يەرگە كۆچۈر(_H)"
 
-#: ../src/xfdesktop-file-icon-manager.c:3537
+#: ../src/xfdesktop-file-icon-manager.c:3628
 msgid "_Move Here"
 msgstr "بۇ يەرگە يۆتكە(_M)"
 
-#: ../src/xfdesktop-file-icon-manager.c:3537
+#: ../src/xfdesktop-file-icon-manager.c:3628
 msgid "_Link Here"
 msgstr "بۇ يەرگە ئۇلا(_L)"
 
-#: ../src/xfdesktop-file-icon-manager.c:3572
+#: ../src/xfdesktop-file-icon-manager.c:3663
 msgid "_Cancel"
 msgstr "ۋاز كەچ(_C)"
 
-#: ../src/xfdesktop-file-icon-manager.c:3702
+#: ../src/xfdesktop-file-icon-manager.c:3792
 msgid "Untitled document"
 msgstr ""
 
 #. TRANSLATORS: file was modified less than one day ago
-#: ../src/xfdesktop-file-utils.c:159
+#: ../src/xfdesktop-file-utils.c:170
 #, c-format
 msgid "Today at %X"
 msgstr "بۈگۈن سائەت %X"
 
 #. TRANSLATORS: file was modified less than two days ago
-#: ../src/xfdesktop-file-utils.c:163
+#: ../src/xfdesktop-file-utils.c:174
 #, c-format
 msgid "Yesterday at %X"
 msgstr "تۈنۈگۈن سائەت %X"
 
 #. Days from last week
-#: ../src/xfdesktop-file-utils.c:168
+#: ../src/xfdesktop-file-utils.c:179
 #, c-format
 msgid "%A at %X"
 msgstr "%A  %X دە"
 
 #. Any other date
-#: ../src/xfdesktop-file-utils.c:171
+#: ../src/xfdesktop-file-utils.c:182
 #, c-format
 msgid "%x at %X"
 msgstr "%x %X دە"
 
 #. the file_time is invalid
-#: ../src/xfdesktop-file-utils.c:181
+#: ../src/xfdesktop-file-utils.c:192 ../src/xfdesktop-file-utils.c:1579
 msgid "Unknown"
 msgstr "نامەلۇم"
 
-#: ../src/xfdesktop-file-utils.c:683
+#: ../src/xfdesktop-file-utils.c:320
+#, c-format
+msgid "%.*s (copy %u)%s"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:745
 msgid "The folder could not be opened"
 msgstr "قىسقۇچنى ئاچقىلى بولمىدى"
 
-#: ../src/xfdesktop-file-utils.c:702
+#: ../src/xfdesktop-file-utils.c:764
 msgid "Error"
 msgstr "خاتالىق"
 
-#: ../src/xfdesktop-file-utils.c:703
+#: ../src/xfdesktop-file-utils.c:765
 msgid "The requested operation could not be completed"
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:757
+#: ../src/xfdesktop-file-utils.c:819
 msgid "The file could not be renamed"
 msgstr "ھۆججەتنىڭ ئاتىنى ئۆزگەرتكىلى بولمىدى"
 
-#: ../src/xfdesktop-file-utils.c:758 ../src/xfdesktop-file-utils.c:822
-#: ../src/xfdesktop-file-utils.c:883 ../src/xfdesktop-file-utils.c:1047
-#: ../src/xfdesktop-file-utils.c:1105 ../src/xfdesktop-file-utils.c:1157
-#: ../src/xfdesktop-file-utils.c:1218 ../src/xfdesktop-file-utils.c:1320
-#: ../src/xfdesktop-file-utils.c:1382 ../src/xfdesktop-file-utils.c:1457
-#: ../src/xfdesktop-file-utils.c:1537
+#: ../src/xfdesktop-file-utils.c:820 ../src/xfdesktop-file-utils.c:884
+#: ../src/xfdesktop-file-utils.c:945 ../src/xfdesktop-file-utils.c:1109
+#: ../src/xfdesktop-file-utils.c:1167 ../src/xfdesktop-file-utils.c:1254
+#: ../src/xfdesktop-file-utils.c:1315 ../src/xfdesktop-file-utils.c:1447
+#: ../src/xfdesktop-file-utils.c:1511 ../src/xfdesktop-file-utils.c:1652
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
 msgstr "بۇنىڭ ئۈچۈن ھۆججەت باشقۇرغۇنىڭ مۇلازىمىتى زۆرۈردۇر(يەڭ سۇنار(Thunar) تەمىنلىگەن بىرەر مۇلازىمەت)."
 
-#: ../src/xfdesktop-file-utils.c:881
+#: ../src/xfdesktop-file-utils.c:943
 msgid "Delete Error"
 msgstr "ئۆچۈرۈش خاتالىقى"
 
-#: ../src/xfdesktop-file-utils.c:882
+#: ../src/xfdesktop-file-utils.c:944
 msgid "The selected files could not be deleted"
 msgstr "تاللانغان ھۆججەتنى ئۆچۈرگىلى بولمىدى"
 
-#: ../src/xfdesktop-file-utils.c:942 ../src/xfdesktop-file-utils.c:990
+#: ../src/xfdesktop-file-utils.c:1004 ../src/xfdesktop-file-utils.c:1052
 msgid "Trash Error"
 msgstr "ئەخلەتخانا خاتالىقى"
 
-#: ../src/xfdesktop-file-utils.c:943
+#: ../src/xfdesktop-file-utils.c:1005
 msgid "The selected files could not be moved to the trash"
 msgstr "تاللانغان ھۆججەتنى ئەخلەتخانىغا تاشلىغىلى بولمىدى"
 
-#: ../src/xfdesktop-file-utils.c:944 ../src/xfdesktop-file-utils.c:992
+#: ../src/xfdesktop-file-utils.c:1006 ../src/xfdesktop-file-utils.c:1054
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
 msgstr "بۇنىڭ ئۈچۈن بىر ئەخلەتخانا مۇلازىمىتى بولۇشى كېرەك(سۇنار(Thunar) تەمىنلىگەندەك)"
 
-#: ../src/xfdesktop-file-utils.c:991
+#: ../src/xfdesktop-file-utils.c:1053
 msgid "Could not empty the trash"
 msgstr "ئەخلەتخانىنى قۇرۇقدىغىلى بولمىدى"
 
-#: ../src/xfdesktop-file-utils.c:1045
+#: ../src/xfdesktop-file-utils.c:1107
 msgid "Create File Error"
 msgstr "ھۆججەت قۇرۇش خاتالىقى"
 
-#: ../src/xfdesktop-file-utils.c:1046
+#: ../src/xfdesktop-file-utils.c:1108
 msgid "Could not create a new file"
 msgstr "يېڭى ھۆججەت قۇرغىلى بولمىدى"
 
-#: ../src/xfdesktop-file-utils.c:1103
+#: ../src/xfdesktop-file-utils.c:1165
 msgid "Create Document Error"
 msgstr "پۈتۈك قۇرۇش خاتالىقى"
 
-#: ../src/xfdesktop-file-utils.c:1104
+#: ../src/xfdesktop-file-utils.c:1166
 msgid "Could not create a new document from the template"
 msgstr "قېلىپتىن يېڭى پۈتۈك قۇرغىلى بولمىدى"
 
-#: ../src/xfdesktop-file-utils.c:1155
+#: ../src/xfdesktop-file-utils.c:1252
 msgid "File Properties Error"
 msgstr "ھۆججەت خاسلىقى خاتالىقى"
 
-#: ../src/xfdesktop-file-utils.c:1156
+#: ../src/xfdesktop-file-utils.c:1253
 msgid "The file properties dialog could not be opened"
 msgstr "ھۆججەت خاسلىقى سۆزلەشكۈسىنى ئاچقىلى بولمىدى"
 
-#: ../src/xfdesktop-file-utils.c:1217
+#: ../src/xfdesktop-file-utils.c:1314
 msgid "The file could not be opened"
 msgstr "ھۆججەتنى ئاچقىلى بولمىدى"
 
-#: ../src/xfdesktop-file-utils.c:1291 ../src/xfdesktop-file-utils.c:1315
+#: ../src/xfdesktop-file-utils.c:1335 ../src/xfdesktop-file-utils.c:1442
 #, c-format
 msgid "Failed to run \"%s\""
 msgstr "«%s» نى ئىجرا قىلىش مەغلۇپ بولدى"
 
-#: ../src/xfdesktop-file-utils.c:1381
+#: ../src/xfdesktop-file-utils.c:1510
 msgid "The application chooser could not be opened"
 msgstr "پروگرامما تاللىغۇچنى ئاچقىلى بولمىدى"
 
-#: ../src/xfdesktop-file-utils.c:1440 ../src/xfdesktop-file-utils.c:1455
-#: ../src/xfdesktop-file-utils.c:1518 ../src/xfdesktop-file-utils.c:1535
+#: ../src/xfdesktop-file-utils.c:1581 ../src/xfdesktop-file-utils.c:1650
 msgid "Transfer Error"
 msgstr "يوللاش خاتالىقى"
 
-#: ../src/xfdesktop-file-utils.c:1441 ../src/xfdesktop-file-utils.c:1456
-#: ../src/xfdesktop-file-utils.c:1519 ../src/xfdesktop-file-utils.c:1536
+#: ../src/xfdesktop-file-utils.c:1582 ../src/xfdesktop-file-utils.c:1651
 msgid "The file transfer could not be performed"
 msgstr "ھۆججەت  يوللاش مەشغۇلاتىنى قىلغىلى بولمىدى"
 
@@ -1071,7 +1080,7 @@ msgstr "ئۈسكۈنە «%s» نى چىقىرىۋاتىدۇ. ئازراق ۋاق
 msgid "Eject Finished"
 msgstr ""
 
-#: ../src/xfdesktop-regular-file-icon.c:820
+#: ../src/xfdesktop-regular-file-icon.c:795
 #, c-format
 msgid ""
 "Name: %s\n"
@@ -1080,20 +1089,20 @@ msgid ""
 "Last modified: %s"
 msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:459
+#: ../src/xfdesktop-special-file-icon.c:439
 msgid "Trash is empty"
 msgstr "ئەخلەتخانا قۇرۇق"
 
-#: ../src/xfdesktop-special-file-icon.c:462
+#: ../src/xfdesktop-special-file-icon.c:442
 msgid "Trash contains one item"
 msgstr "ئەخلەتخانىدا بىر  نەرسە بار"
 
-#: ../src/xfdesktop-special-file-icon.c:463
+#: ../src/xfdesktop-special-file-icon.c:443
 #, c-format
 msgid "Trash contains %d items"
 msgstr "ئەخلەتخانىدا %d نەرسە بار"
 
-#: ../src/xfdesktop-special-file-icon.c:492
+#: ../src/xfdesktop-special-file-icon.c:472
 #, c-format
 msgid ""
 "%s\n"
@@ -1101,67 +1110,75 @@ msgid ""
 "Last modified: %s"
 msgstr "%s\nچوڭلۇقى: %s\nئەڭ ئاخىرقى ئۆزگەرتىلگەن ۋاقتى: %s"
 
-#: ../src/xfdesktop-special-file-icon.c:559
+#: ../src/xfdesktop-special-file-icon.c:539
 msgid "_Empty Trash"
 msgstr "ئەخلەتخانىنى قۇرۇقدا(_E)"
 
-#: ../src/xfdesktop-volume-icon.c:478
+#: ../src/xfdesktop-volume-icon.c:438
+msgid "(not mounted)"
+msgstr ""
+
+#: ../src/xfdesktop-volume-icon.c:439 ../src/xfdesktop-volume-icon.c:440
+msgid "(unknown)"
+msgstr "(نامەلۇم)"
+
+#: ../src/xfdesktop-volume-icon.c:444
 #, c-format
 msgid ""
-"Removable Volume\n"
-"Mounted in \"%s\"\n"
-"%s left (%s total)"
-msgstr "يۆتكىلىشچان دىسكا\nئېگەرلەنگەن ئورنى \"%s\"\n%s قالغىنى (%s جەمئىي)"
+"Name: %s\n"
+"Type: %s\n"
+"Mounted at: %s\n"
+"Size: %s\n"
+"Free Space: %s"
+msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:485
-msgid ""
-"Removable Volume\n"
-"Not mounted yet"
-msgstr "يۆتكىلىشچان دىسكا\nتېخى ئېگەرلەنمىگەن"
+#: ../src/xfdesktop-volume-icon.c:446
+msgid "Removable Volume"
+msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:514 ../src/xfdesktop-volume-icon.c:560
+#: ../src/xfdesktop-volume-icon.c:481 ../src/xfdesktop-volume-icon.c:527
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "«%s» نى چىقىرىش مەغلۇپ بولدى"
 
-#: ../src/xfdesktop-volume-icon.c:519 ../src/xfdesktop-volume-icon.c:565
+#: ../src/xfdesktop-volume-icon.c:486 ../src/xfdesktop-volume-icon.c:532
 msgid "Eject Failed"
 msgstr "چىقىرىش مەغلۇپ بولدى"
 
-#: ../src/xfdesktop-volume-icon.c:598
+#: ../src/xfdesktop-volume-icon.c:565
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "«%s» نى ئېگەرلەش مەغلۇپ بولدى"
 
-#: ../src/xfdesktop-volume-icon.c:601
+#: ../src/xfdesktop-volume-icon.c:568
 msgid "Mount Failed"
 msgstr "ئېگەرلەش مەغلۇپ بولدى"
 
-#: ../src/xfdesktop-volume-icon.c:835
+#: ../src/xfdesktop-volume-icon.c:805
 msgid "_Safely Remove Volume"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:838
+#: ../src/xfdesktop-volume-icon.c:808
 msgid "_Disconnect Volume"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:841
+#: ../src/xfdesktop-volume-icon.c:811
 msgid "_Stop the Multi-Disk Drive"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:844
+#: ../src/xfdesktop-volume-icon.c:814
 msgid "_Lock Volume"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:847
+#: ../src/xfdesktop-volume-icon.c:817
 msgid "E_ject Volume"
 msgstr "دىسكىنى چىقار(_J)"
 
-#: ../src/xfdesktop-volume-icon.c:856
+#: ../src/xfdesktop-volume-icon.c:826
 msgid "_Unmount Volume"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:863
+#: ../src/xfdesktop-volume-icon.c:833
 msgid "_Mount Volume"
 msgstr "دىسكىنى ئېگەرلە(_M)"
 
