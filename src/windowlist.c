@@ -461,7 +461,6 @@ windowlist_settings_changed(XfconfChannel *channel,
 void
 windowlist_init(XfconfChannel *channel)
 {
-    if(channel) {
         show_windowlist = xfconf_channel_get_bool(channel,
                                                   "/windowlist-menu/show",
                                                   TRUE);
@@ -488,7 +487,6 @@ windowlist_init(XfconfChannel *channel)
 
         g_signal_connect(G_OBJECT(channel), "property-changed",
                          G_CALLBACK(windowlist_settings_changed), NULL);
-    }
 }
 
 void
