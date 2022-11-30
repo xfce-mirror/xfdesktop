@@ -67,30 +67,6 @@
 #define PREVIEW_HEIGHT   96
 #define PREVIEW_WIDTH    (PREVIEW_HEIGHT * MAX_ASPECT_RATIO)
 
-
-#define SETTINGS_WINDOW_LAST_WIDTH           "/last/window-width"
-#define SETTINGS_WINDOW_LAST_HEIGHT          "/last/window-height"
-
-#define SHOW_DESKTOP_MENU_PROP               "/desktop-menu/show"
-#define DESKTOP_MENU_SHOW_ICONS_PROP         "/desktop-menu/show-icons"
-
-#define WINLIST_SHOW_WINDOWS_MENU_PROP       "/windowlist-menu/show"
-#define WINLIST_SHOW_APP_ICONS_PROP          "/windowlist-menu/show-icons"
-#define WINLIST_SHOW_STICKY_WIN_ONCE_PROP    "/windowlist-menu/show-sticky-once"
-#define WINLIST_SHOW_WS_NAMES_PROP           "/windowlist-menu/show-workspace-names"
-#define WINLIST_SHOW_WS_SUBMENUS_PROP        "/windowlist-menu/show-submenus"
-#define WINLIST_SHOW_ADD_REMOVE_WORKSPACES_PROP "/windowlist-menu/show-add-remove-workspaces"
-
-#define DESKTOP_ICONS_ON_PRIMARY_PROP        "/desktop-icons/primary"
-#define DESKTOP_ICONS_STYLE_PROP             "/desktop-icons/style"
-#define DESKTOP_ICONS_ICON_SIZE_PROP         "/desktop-icons/icon-size"
-#define DESKTOP_ICONS_FONT_SIZE_PROP         "/desktop-icons/font-size"
-#define DESKTOP_ICONS_CUSTOM_FONT_SIZE_PROP  "/desktop-icons/use-custom-font-size"
-#define DESKTOP_ICONS_SHOW_TOOLTIP_PROP      "/desktop-icons/show-tooltips"
-#define DESKTOP_ICONS_TOOLTIP_SIZE_PROP      "/desktop-icons/tooltip-size"
-#define DESKTOP_ICONS_SINGLE_CLICK_PROP      "/desktop-icons/single-click"
-#define DESKTOP_ICONS_GRAVITY_PROP           "/desktop-icons/gravity"
-
 typedef struct
 {
     GtkTreeModel *model;
@@ -428,19 +404,19 @@ setup_special_icon_list(GtkBuilder *gxml,
         gboolean state;
     } icons[] = {
         { N_("Home"), { "user-home", "gnome-fs-desktop" },
-          DESKTOP_ICONS_SHOW_HOME, TRUE },
+          XFCONF_DESKTOP_ICONS_SHOW_HOME, TRUE },
         { N_("File System"), { "drive-harddisk", "gnome-dev-harddisk" },
-          DESKTOP_ICONS_SHOW_FILESYSTEM, TRUE },
+          XFCONF_DESKTOP_ICONS_SHOW_FILESYSTEM, TRUE },
         { N_("Trash"), { "user-trash", "gnome-fs-trash-empty" },
-          DESKTOP_ICONS_SHOW_TRASH, TRUE },
+          XFCONF_DESKTOP_ICONS_SHOW_TRASH, TRUE },
         { N_("Removable Devices"), { "drive-removable-media", "gnome-dev-removable" },
-          DESKTOP_ICONS_SHOW_REMOVABLE, TRUE },
+          XFCONF_DESKTOP_ICONS_SHOW_REMOVABLE, TRUE },
         { N_("Network Shares"), { "gtk-network", "gnome-dev-network" },
-          DESKTOP_ICONS_SHOW_NETWORK_REMOVABLE, TRUE },
+          XFCONF_DESKTOP_ICONS_SHOW_NETWORK_REMOVABLE, TRUE },
         { N_("Disks and Drives"), { "drive-harddisk-usb", "gnome-dev-removable-usb" },
-          DESKTOP_ICONS_SHOW_DEVICE_REMOVABLE, TRUE },
+          XFCONF_DESKTOP_ICONS_SHOW_DEVICE_REMOVABLE, TRUE },
         { N_("Other Devices"), { "multimedia-player", "phone" },
-          DESKTOP_ICONS_SHOW_UNKNWON_REMOVABLE, TRUE },
+          XFCONF_DESKTOP_ICONS_SHOW_UNKNWON_REMOVABLE, TRUE },
         { NULL, { NULL, NULL }, NULL, FALSE },
     };
     const int REMOVABLE_DEVICES = 4;
@@ -943,7 +919,7 @@ xfdesktop_settings_get_active_workspace(AppearancePanel *panel,
     }
 
     single_workspace = xfconf_channel_get_bool(panel->channel,
-                                               SINGLE_WORKSPACE_MODE,
+                                               XFCONF_SINGLE_WORKSPACE_MODE,
                                                TRUE);
 
     /* If we're in single_workspace mode we need to return the workspace that
@@ -951,7 +927,7 @@ xfdesktop_settings_get_active_workspace(AppearancePanel *panel,
      * workspace and turn off the single workspace mode */
     if(single_workspace) {
         single_workspace_num = xfconf_channel_get_int(panel->channel,
-                                                      SINGLE_WORKSPACE_NUMBER,
+                                                      XFCONF_SINGLE_WORKSPACE_NUMBER,
                                                       0);
         if(single_workspace_num < wnck_screen_get_workspace_count(wnck_screen)) {
             return single_workspace_num;
@@ -1071,7 +1047,7 @@ xfdesktop_spin_icon_size_timer(gpointer user_data)
     g_return_val_if_fail(XFCONF_IS_CHANNEL(channel), FALSE);
 
     xfconf_channel_set_uint(channel,
-                            DESKTOP_ICONS_ICON_SIZE_PROP,
+                            XFCONF_DESKTOP_ICONS_ICON_SIZE,
                             gtk_spin_button_get_value(button));
 
     g_object_set_data(G_OBJECT(button), "timer-id", NULL);
@@ -1721,12 +1697,12 @@ cb_xfdesktop_chk_apply_to_all(GtkCheckButton *button,
     TRACE("entering");
 
     xfconf_channel_set_bool(panel->channel,
-                            SINGLE_WORKSPACE_MODE,
+                            XFCONF_SINGLE_WORKSPACE_MODE,
                             active);
 
     if(active) {
         xfconf_channel_set_int(panel->channel,
-                               SINGLE_WORKSPACE_NUMBER,
+                               XFCONF_SINGLE_WORKSPACE_NUMBER,
                                panel->workspace);
     } else {
         cb_update_background_tab(panel->wnck_window, panel);
@@ -1845,7 +1821,7 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
 
     gtk_spin_button_set_value(GTK_SPIN_BUTTON(spin_icon_size),
                               xfconf_channel_get_uint(channel,
-                                                      DESKTOP_ICONS_ICON_SIZE_PROP,
+                                                      XFCONF_DESKTOP_ICONS_ICON_SIZE,
                                                       DEFAULT_ICON_SIZE));
 
     /* font size */
@@ -2010,7 +1986,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     panel->chk_apply_to_all =  GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
                                                                  "chk_apply_to_all"));
 
-    if(xfconf_channel_get_bool(channel, SINGLE_WORKSPACE_MODE, TRUE)) {
+    if(xfconf_channel_get_bool(channel, XFCONF_SINGLE_WORKSPACE_MODE, TRUE)) {
         gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(panel->chk_apply_to_all), TRUE);
     }
 
@@ -2044,60 +2020,60 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
     /* Menus Tab */
     w = GTK_WIDGET(gtk_builder_get_object(main_gxml, "chk_show_delete_option"));
-    xfconf_g_property_bind(channel, DESKTOP_MENU_DELETE, G_TYPE_BOOLEAN,
+    xfconf_g_property_bind(channel, XFCONF_DESKTOP_MENU_DELETE, G_TYPE_BOOLEAN,
                            G_OBJECT(w), "active");
 
     w = GTK_WIDGET(gtk_builder_get_object(main_gxml, "chk_show_desktop_menu"));
-    xfconf_g_property_bind(channel, SHOW_DESKTOP_MENU_PROP, G_TYPE_BOOLEAN,
+    xfconf_g_property_bind(channel, XFCONF_DESKTOP_MENU_SHOW, G_TYPE_BOOLEAN,
                            G_OBJECT(w), "active");
     box = GTK_WIDGET(gtk_builder_get_object(main_gxml, "box_menu_subopts"));
     g_signal_connect(G_OBJECT(w), "toggled",
                      G_CALLBACK(suboptions_set_sensitive), box);
     suboptions_set_sensitive(GTK_TOGGLE_BUTTON(w), box);
 
-    xfconf_g_property_bind(channel, DESKTOP_MENU_SHOW_ICONS_PROP,
+    xfconf_g_property_bind(channel, XFCONF_DESKTOP_MENU_SHOW_ICONS,
                            G_TYPE_BOOLEAN,
                            G_OBJECT(GTK_WIDGET(gtk_builder_get_object(main_gxml,
                                                                       "chk_menu_show_app_icons"))),
                            "active");
 
     w = GTK_WIDGET(gtk_builder_get_object(main_gxml, "chk_show_winlist_menu"));
-    xfconf_g_property_bind(channel, WINLIST_SHOW_WINDOWS_MENU_PROP,
+    xfconf_g_property_bind(channel, XFCONF_WINLIST_SHOW_WINDOWS_MENU,
                            G_TYPE_BOOLEAN, G_OBJECT(w), "active");
     box = GTK_WIDGET(gtk_builder_get_object(main_gxml, "box_winlist_subopts"));
     g_signal_connect(G_OBJECT(w), "toggled",
                      G_CALLBACK(suboptions_set_sensitive), box);
     suboptions_set_sensitive(GTK_TOGGLE_BUTTON(w), box);
 
-    xfconf_g_property_bind(channel, WINLIST_SHOW_APP_ICONS_PROP, G_TYPE_BOOLEAN,
+    xfconf_g_property_bind(channel, XFCONF_WINLIST_SHOW_APP_ICONS, G_TYPE_BOOLEAN,
                            gtk_builder_get_object(main_gxml, "chk_winlist_show_app_icons"),
                            "active");
 
-    xfconf_g_property_bind(channel, WINLIST_SHOW_STICKY_WIN_ONCE_PROP,
+    xfconf_g_property_bind(channel, XFCONF_WINLIST_SHOW_STICKY_WIN_ONCE,
                            G_TYPE_BOOLEAN,
                            gtk_builder_get_object(main_gxml, "chk_show_winlist_sticky_once"),
                            "active");
 
-    xfconf_g_property_bind(channel, WINLIST_SHOW_ADD_REMOVE_WORKSPACES_PROP,
+    xfconf_g_property_bind(channel, XFCONF_WINLIST_SHOW_ADD_REMOVE_WORKSPACES,
                            G_TYPE_BOOLEAN,
                            gtk_builder_get_object(main_gxml, "chk_show_app_remove_workspaces"),
                            "active");
 
     w = GTK_WIDGET(gtk_builder_get_object(main_gxml, "chk_show_winlist_ws_names"));
-    xfconf_g_property_bind(channel, WINLIST_SHOW_WS_NAMES_PROP, G_TYPE_BOOLEAN,
+    xfconf_g_property_bind(channel, XFCONF_WINLIST_SHOW_WS_NAMES, G_TYPE_BOOLEAN,
                            G_OBJECT(w), "active");
     box = GTK_WIDGET(gtk_builder_get_object(main_gxml, "box_winlist_names_subopts"));
     g_signal_connect(G_OBJECT(w), "toggled",
                      G_CALLBACK(suboptions_set_sensitive), box);
     suboptions_set_sensitive(GTK_TOGGLE_BUTTON(w), box);
 
-    xfconf_g_property_bind(channel, WINLIST_SHOW_WS_SUBMENUS_PROP,
+    xfconf_g_property_bind(channel, XFCONF_WINLIST_SHOW_WS_SUBMENUS,
                            G_TYPE_BOOLEAN,
                            gtk_builder_get_object(main_gxml, "chk_show_winlist_ws_submenus"),
                            "active");
 
     w = GTK_WIDGET(gtk_builder_get_object(main_gxml, "primary"));
-    xfconf_g_property_bind(channel, DESKTOP_ICONS_ON_PRIMARY_PROP, G_TYPE_BOOLEAN,
+    xfconf_g_property_bind(channel, XFCONF_DESKTOP_ICONS_ON_PRIMARY, G_TYPE_BOOLEAN,
                           G_OBJECT(w), "active");
     w = GTK_WIDGET(gtk_builder_get_object(main_gxml, "combo_icons"));
 #ifdef ENABLE_FILE_ICONS
@@ -2105,37 +2081,37 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 #else
     gtk_combo_box_set_active(GTK_COMBO_BOX(w), 1);
 #endif
-    xfconf_g_property_bind(channel, DESKTOP_ICONS_STYLE_PROP, G_TYPE_INT,
+    xfconf_g_property_bind(channel, XFCONF_DESKTOP_ICONS_STYLE, G_TYPE_INT,
                            G_OBJECT(w), "active");
 
     /* Orientation combo */
     w = GTK_WIDGET(gtk_builder_get_object(main_gxml, "combo_orientation"));
     gtk_combo_box_set_active(GTK_COMBO_BOX(w), 0);
-    xfconf_g_property_bind(channel, DESKTOP_ICONS_GRAVITY_PROP, G_TYPE_INT,
+    xfconf_g_property_bind(channel, XFCONF_DESKTOP_ICONS_GRAVITY, G_TYPE_INT,
                            G_OBJECT(w), "active");
     g_signal_connect(G_OBJECT(w), "changed",
                      G_CALLBACK(cb_xfdesktop_icon_orientation_changed), NULL);
 
     /* bindings */
-    xfconf_g_property_bind(channel, DESKTOP_ICONS_FONT_SIZE_PROP, G_TYPE_DOUBLE,
+    xfconf_g_property_bind(channel, XFCONF_DESKTOP_ICONS_FONT_SIZE, G_TYPE_DOUBLE,
                            G_OBJECT(gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(spin_font_size))),
                            "value");
-    xfconf_g_property_bind(channel, DESKTOP_ICONS_CUSTOM_FONT_SIZE_PROP,
+    xfconf_g_property_bind(channel, XFCONF_DESKTOP_ICONS_CUSTOM_FONT_SIZE,
                            G_TYPE_BOOLEAN, G_OBJECT(chk_custom_font_size),
                            "active");
-    xfconf_g_property_bind(channel, DESKTOP_ICONS_SHOW_TOOLTIP_PROP,
+    xfconf_g_property_bind(channel, XFCONF_DESKTOP_ICONS_SHOW_TOOLTIP,
                            G_TYPE_BOOLEAN, G_OBJECT(chk_show_tooltips),
                            "active");
-    xfconf_g_property_bind(channel, DESKTOP_ICONS_TOOLTIP_SIZE_PROP, G_TYPE_DOUBLE,
+    xfconf_g_property_bind(channel, XFCONF_DESKTOP_ICONS_TOOLTIP_SIZE, G_TYPE_DOUBLE,
                            G_OBJECT(gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(spin_tooltip_size))),
                            "value");
-    xfconf_g_property_bind(channel, DESKTOP_ICONS_SHOW_HIDDEN_FILES,
+    xfconf_g_property_bind(channel, XFCONF_DESKTOP_ICONS_SHOW_HIDDEN_FILES,
                            G_TYPE_BOOLEAN, G_OBJECT(chk_show_hidden_files),
                            "active");
-    xfconf_g_property_bind(channel, DESKTOP_ICONS_SHOW_THUMBNAILS,
+    xfconf_g_property_bind(channel, XFCONF_DESKTOP_ICONS_SHOW_THUMBNAILS,
                            G_TYPE_BOOLEAN, G_OBJECT(chk_show_thumbnails),
                            "active");
-    xfconf_g_property_bind(channel, DESKTOP_ICONS_SINGLE_CLICK_PROP,
+    xfconf_g_property_bind(channel, XFCONF_DESKTOP_ICONS_SINGLE_CLICK,
                            G_TYPE_BOOLEAN, G_OBJECT(chk_single_click),
                            "active");
 
@@ -2163,8 +2139,8 @@ xfdesktop_settings_response(GtkWidget *dialog, gint response_id, gpointer user_d
         if ((state & (GDK_WINDOW_STATE_MAXIMIZED | GDK_WINDOW_STATE_FULLSCREEN)) == 0) {
             /* save window size */
             gtk_window_get_size(GTK_WINDOW(dialog), &width, &height);
-            xfconf_channel_set_int(channel, SETTINGS_WINDOW_LAST_WIDTH, width);
-            xfconf_channel_set_int(channel, SETTINGS_WINDOW_LAST_HEIGHT, height);
+            xfconf_channel_set_int(channel, XFCONF_SETTINGS_WINDOW_LAST_WIDTH, width);
+            xfconf_channel_set_int(channel, XFCONF_SETTINGS_WINDOW_LAST_HEIGHT, height);
         }
 
         gtk_main_quit();
@@ -2256,8 +2232,8 @@ main(int argc, char **argv)
                          channel);
         gtk_window_set_default_size
             (GTK_WINDOW(dialog),
-             xfconf_channel_get_int(channel, SETTINGS_WINDOW_LAST_WIDTH, -1),
-             xfconf_channel_get_int(channel, SETTINGS_WINDOW_LAST_HEIGHT, -1));
+             xfconf_channel_get_int(channel, XFCONF_SETTINGS_WINDOW_LAST_WIDTH, -1),
+             xfconf_channel_get_int(channel, XFCONF_SETTINGS_WINDOW_LAST_HEIGHT, -1));
         gtk_window_present(GTK_WINDOW (dialog));
 
         screen = XScreenNumberOfScreen(gdk_x11_screen_get_xscreen(gtk_widget_get_screen(dialog)));
