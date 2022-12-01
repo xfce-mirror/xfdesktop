@@ -7,7 +7,8 @@ backgrounds_DATA = \
     xfce-blue.jpg \
     xfce-stripes.png \
     xfce-verticals.png \
-    xfce-teal.jpg
+    xfce-teal.jpg \
+    xfce-weird-shapes.svg
 
 
 EXTRA_DIST = $(backgrounds_DATA)
