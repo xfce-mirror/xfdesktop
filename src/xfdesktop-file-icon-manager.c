@@ -940,7 +940,7 @@ xfdesktop_file_icon_menu_executed(GtkWidget *widget,
     g_list_free(selected);
 
     parent = xfdesktop_icon_view_manager_get_parent(XFDESKTOP_ICON_VIEW_MANAGER(fmanager));
-    xfdesktop_icon_activated(icon, GTK_WINDOW(gtk_widget_get_toplevel(parent)));
+    xfdesktop_icon_activate(icon, GTK_WINDOW(gtk_widget_get_toplevel(parent)));
 }
 
 static void
@@ -4450,8 +4450,8 @@ xfdesktop_file_icon_manager_icon_activated(XfdesktopIconView *icon_view,
             XfdesktopFileIcon *icon = xfdesktop_file_icon_model_get_icon(fmanager->priv->model, &iter);
             if (icon != NULL) {
                 GtkWidget *parent = xfdesktop_icon_view_manager_get_parent(XFDESKTOP_ICON_VIEW_MANAGER(fmanager));
-                xfdesktop_icon_activated(XFDESKTOP_ICON(icon),
-                                         GTK_WINDOW(gtk_widget_get_toplevel(parent)));
+                xfdesktop_icon_activate(XFDESKTOP_ICON(icon),
+                                        GTK_WINDOW(gtk_widget_get_toplevel(parent)));
             }
         }
     }

@@ -53,15 +53,6 @@ struct _XfdesktopIconClass
 
     void (*position_changed)(XfdesktopIcon *icon);
 
-    /* XfdektopIcon::activated has weird semantics: you should NEVER connect to
-     * this signal normally: always use g_signal_connect_after(), as the default
-     * signal handler may do some special setup for the icon.  this is lame;
-     * you should be able to use normal g_signal_connect(), but signal handlers
-     * with return values are (for some unknown reason) not allowed to be
-     * G_SIGNAL_RUN_FIRST.  go figure. */
-    gboolean (*activated)(XfdesktopIcon *icon,
-                          GtkWindow *window);
-
     /*< virtual functions >*/
     GdkPixbuf *(*peek_pixbuf)(XfdesktopIcon *icon, gint width, gint height);
     const gchar *(*peek_label)(XfdesktopIcon *icon);
@@ -79,6 +70,8 @@ struct _XfdesktopIconClass
     void (*set_thumbnail_file)(XfdesktopIcon *icon, GFile *file);
     void (*delete_thumbnail_file)(XfdesktopIcon *icon);
 
+    gboolean (*activate)(XfdesktopIcon *icon,
+                         GtkWindow *window);
     gboolean (*populate_context_menu)(XfdesktopIcon *icon,
                                       GtkWidget *menu);
 };
@@ -114,6 +107,8 @@ gboolean xfdesktop_icon_do_drop_dest(XfdesktopIcon *icon,
                                      GList *src_icons,
                                      GdkDragAction action);
 
+gboolean xfdesktop_icon_activate(XfdesktopIcon *icon,
+                                 GtkWindow *window);
 gboolean xfdesktop_icon_populate_context_menu(XfdesktopIcon *icon,
                                               GtkWidget *menu);
 
@@ -129,9 +124,6 @@ void xfdesktop_icon_invalidate_pixbuf(XfdesktopIcon *icon);
 void xfdesktop_icon_pixbuf_changed(XfdesktopIcon *icon);
 void xfdesktop_icon_label_changed(XfdesktopIcon *icon);
 void xfdesktop_icon_position_changed(XfdesktopIcon *icon);
-
-gboolean xfdesktop_icon_activated(XfdesktopIcon *icon,
-                                  GtkWindow *window);
 
 G_END_DECLS
 

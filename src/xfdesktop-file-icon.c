@@ -38,8 +38,8 @@ struct _XfdesktopFileIconPrivate
 
 static void xfdesktop_file_icon_finalize(GObject *obj);
 
-static gboolean xfdesktop_file_icon_activated(XfdesktopIcon *icon,
-                                              GtkWindow *window);
+static gboolean xfdesktop_file_icon_activate(XfdesktopIcon *icon,
+                                             GtkWindow *window);
 
 static void xfdesktop_file_icon_set_property(GObject *object,
                                              guint property_id,
@@ -69,7 +69,7 @@ xfdesktop_file_icon_class_init(XfdesktopFileIconClass *klass)
     gobject_class->set_property = xfdesktop_file_icon_set_property;
     gobject_class->get_property = xfdesktop_file_icon_get_property;
 
-    icon_class->activated = xfdesktop_file_icon_activated;
+    icon_class->activate = xfdesktop_file_icon_activate;
 
     g_object_class_install_property(gobject_class,
                                     PROP_GICON,
@@ -136,8 +136,8 @@ xfdesktop_file_icon_get_property(GObject *object,
 }
 
 static gboolean
-xfdesktop_file_icon_activated(XfdesktopIcon *icon,
-                              GtkWindow *window)
+xfdesktop_file_icon_activate(XfdesktopIcon *icon,
+                             GtkWindow *window)
 {
     XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
     GFileInfo *info = xfdesktop_file_icon_peek_file_info(file_icon);
