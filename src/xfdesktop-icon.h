@@ -53,7 +53,6 @@ struct _XfdesktopIconClass
 
     void (*position_changed)(XfdesktopIcon *icon);
 
-    void (*selected)(XfdesktopIcon *icon);
     /* XfdektopIcon::activated has weird semantics: you should NEVER connect to
      * this signal normally: always use g_signal_connect_after(), as the default
      * signal handler may do some special setup for the icon.  this is lame;
@@ -118,8 +117,6 @@ gboolean xfdesktop_icon_do_drop_dest(XfdesktopIcon *icon,
 gboolean xfdesktop_icon_populate_context_menu(XfdesktopIcon *icon,
                                               GtkWidget *menu);
 
-GtkWidget *xfdesktop_icon_peek_icon_view(XfdesktopIcon *icon);
-
 void xfdesktop_icon_set_thumbnail_file(XfdesktopIcon *icon, GFile *file);
 void xfdesktop_icon_delete_thumbnail(XfdesktopIcon *icon);
 
@@ -133,19 +130,8 @@ void xfdesktop_icon_pixbuf_changed(XfdesktopIcon *icon);
 void xfdesktop_icon_label_changed(XfdesktopIcon *icon);
 void xfdesktop_icon_position_changed(XfdesktopIcon *icon);
 
-void xfdesktop_icon_selected(XfdesktopIcon *icon);
 gboolean xfdesktop_icon_activated(XfdesktopIcon *icon,
                                   GtkWindow *window);
-
-/*< private-ish; only for use by XfdesktopIconView >*/
-void xfdesktop_icon_set_extents(XfdesktopIcon *icon,
-                                const GdkRectangle *pixbuf_extents,
-                                const GdkRectangle *text_extents,
-                                const GdkRectangle *total_extents);
-gboolean xfdesktop_icon_get_extents(XfdesktopIcon *icon,
-                                    GdkRectangle *pixbuf_extents,
-                                    GdkRectangle *text_extents,
-                                    GdkRectangle *total_extents);
 
 G_END_DECLS
 

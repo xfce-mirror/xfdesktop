@@ -493,8 +493,6 @@ xfdesktop_volume_icon_eject_finish(GObject *object,
                                    gpointer user_data)
 {
     XfdesktopVolumeIcon *icon = XFDESKTOP_VOLUME_ICON(user_data);
-    GtkWidget *icon_view = xfdesktop_icon_peek_icon_view(XFDESKTOP_ICON(icon));
-    GtkWidget *toplevel = icon_view ? gtk_widget_get_toplevel(icon_view) : NULL;
     GVolume *volume = G_VOLUME(object);
     GError *error = NULL;
     gboolean eject_successful;
@@ -513,7 +511,7 @@ xfdesktop_volume_icon_eject_finish(GObject *object,
                                                      volume_name);
 
             /* display an error dialog to inform the user */
-            xfce_message_dialog(toplevel ? GTK_WINDOW(toplevel) : NULL,
+            xfce_message_dialog(NULL,
                                 _("Eject Failed"), "dialog-error",
                                 primary, error->message,
                                 XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
@@ -539,8 +537,6 @@ xfdesktop_volume_icon_unmount_finish(GObject *object,
                                      gpointer user_data)
 {
     XfdesktopVolumeIcon *icon = XFDESKTOP_VOLUME_ICON(user_data);
-    GtkWidget *icon_view = xfdesktop_icon_peek_icon_view(XFDESKTOP_ICON(icon));
-    GtkWidget *toplevel = gtk_widget_get_toplevel(icon_view);
     GMount *mount = G_MOUNT(object);
     GError *error = NULL;
     gboolean unmount_successful;
@@ -559,7 +555,7 @@ xfdesktop_volume_icon_unmount_finish(GObject *object,
                                                      mount_name);
 
             /* display an error dialog to inform the user */
-            xfce_message_dialog(toplevel ? GTK_WINDOW(toplevel) : NULL,
+            xfce_message_dialog(NULL,
                                 _("Eject Failed"), "dialog-error",
                                 primary, error->message,
                                 XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
@@ -633,8 +629,6 @@ xfdesktop_volume_icon_mount_finish(GObject *object,
                                    gpointer user_data)
 {
     XfdesktopVolumeIcon *icon = XFDESKTOP_VOLUME_ICON(user_data);
-    GtkWidget *icon_view = xfdesktop_icon_peek_icon_view(XFDESKTOP_ICON(icon));
-    GtkWidget *toplevel = gtk_widget_get_toplevel(icon_view);
     GVolume *volume = G_VOLUME(object);
     GError *error = NULL;
 
@@ -643,7 +637,7 @@ xfdesktop_volume_icon_mount_finish(GObject *object,
             gchar *volume_name = g_volume_get_name(volume);
             gchar *primary = g_markup_printf_escaped(_("Failed to mount \"%s\""),
                                                      volume_name);
-            xfce_message_dialog(toplevel ? GTK_WINDOW(toplevel) : NULL,
+            xfce_message_dialog(NULL,
                                 _("Mount Failed"), "dialog-error",
                                 primary, error->message,
                                 XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
@@ -724,8 +718,7 @@ static void
 xfdesktop_volume_icon_menu_mount(GtkWidget *widget, gpointer user_data)
 {
     XfdesktopVolumeIcon *icon = XFDESKTOP_VOLUME_ICON(user_data);
-    GtkWidget *icon_view = xfdesktop_icon_peek_icon_view(XFDESKTOP_ICON(icon));
-    GtkWidget *toplevel = gtk_widget_get_toplevel(icon_view);
+    GtkWindow *toplevel = xfdesktop_find_toplevel(widget);
     GVolume *volume;
     GMount *mount;
     GMountOperation *operation;
@@ -738,7 +731,7 @@ xfdesktop_volume_icon_menu_mount(GtkWidget *widget, gpointer user_data)
         return;
     }
 
-    operation = gtk_mount_operation_new(toplevel ? GTK_WINDOW(toplevel) : NULL);
+    operation = gtk_mount_operation_new(toplevel);
     gtk_mount_operation_set_screen(GTK_MOUNT_OPERATION(operation),
                                    icon->priv->gscreen);
 
@@ -753,8 +746,7 @@ static void
 xfdesktop_volume_icon_menu_unmount(GtkWidget *widget, gpointer user_data)
 {
     XfdesktopVolumeIcon *icon = XFDESKTOP_VOLUME_ICON(user_data);
-    GtkWidget *icon_view = xfdesktop_icon_peek_icon_view(XFDESKTOP_ICON(icon));
-    GtkWidget *toplevel = gtk_widget_get_toplevel(icon_view);
+    GtkWindow *toplevel = xfdesktop_find_toplevel(widget);
     GVolume *volume;
     GMount *mount;
     GMountOperation *operation;
@@ -769,7 +761,7 @@ xfdesktop_volume_icon_menu_unmount(GtkWidget *widget, gpointer user_data)
     xfdesktop_notify_unmount(mount);
 #endif
 
-    operation = gtk_mount_operation_new(toplevel ? GTK_WINDOW(toplevel) : NULL);
+    operation = gtk_mount_operation_new(toplevel);
     gtk_mount_operation_set_screen(GTK_MOUNT_OPERATION(operation),
                                    icon->priv->gscreen);
 
@@ -789,8 +781,7 @@ xfdesktop_volume_icon_menu_eject(GtkWidget *widget,
                                  gpointer user_data)
 {
     XfdesktopVolumeIcon *icon = XFDESKTOP_VOLUME_ICON(user_data);
-    GtkWidget *icon_view = xfdesktop_icon_peek_icon_view(XFDESKTOP_ICON(icon));
-    GtkWidget *toplevel = gtk_widget_get_toplevel(icon_view);
+    GtkWindow *toplevel = xfdesktop_find_toplevel(widget);
     GVolume *volume;
     GMount *mount;
     GMountOperation *operation = NULL;
@@ -805,7 +796,7 @@ xfdesktop_volume_icon_menu_eject(GtkWidget *widget,
 #ifdef HAVE_LIBNOTIFY
         xfdesktop_notify_eject(volume);
 #endif
-        operation = gtk_mount_operation_new(toplevel ? GTK_WINDOW(toplevel) : NULL);
+        operation = gtk_mount_operation_new(toplevel);
         gtk_mount_operation_set_screen(GTK_MOUNT_OPERATION(operation),
                                        icon->priv->gscreen);
 

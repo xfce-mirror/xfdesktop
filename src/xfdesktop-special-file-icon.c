@@ -485,14 +485,11 @@ xfdesktop_special_file_icon_trash_open(GtkWidget *w,
                                        gpointer user_data)
 {
     XfdesktopSpecialFileIcon *file_icon = XFDESKTOP_SPECIAL_FILE_ICON(user_data);
-    GtkWidget *icon_view, *toplevel;
-
-    icon_view = xfdesktop_icon_peek_icon_view(XFDESKTOP_ICON(file_icon));
-    toplevel = gtk_widget_get_toplevel(icon_view);
+    GtkWindow *toplevel = xfdesktop_find_toplevel(w);
 
     xfdesktop_file_utils_open_folder(file_icon->priv->file,
                                      file_icon->priv->gscreen,
-                                     GTK_WINDOW(toplevel));
+                                     toplevel);
 }
 
 static void
@@ -500,13 +497,9 @@ xfdesktop_special_file_icon_trash_empty(GtkWidget *w,
                                         gpointer user_data)
 {
     XfdesktopSpecialFileIcon *file_icon = XFDESKTOP_SPECIAL_FILE_ICON(user_data);
-    GtkWidget *icon_view, *toplevel;
+    GtkWindow *toplevel = xfdesktop_find_toplevel(w);
 
-    icon_view = xfdesktop_icon_peek_icon_view(XFDESKTOP_ICON(file_icon));
-    toplevel = gtk_widget_get_toplevel(icon_view);
-
-    xfdesktop_file_utils_empty_trash(file_icon->priv->gscreen,
-                                     GTK_WINDOW(toplevel));
+    xfdesktop_file_utils_empty_trash(file_icon->priv->gscreen, toplevel);
 }
 
 static gboolean

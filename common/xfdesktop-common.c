@@ -363,6 +363,31 @@ xfdesktop_workspace_get_number_and_total(XfwWorkspaceManager *workspace_manager,
     return *workspace_number >= 0;
 }
 
+GtkWindow *
+xfdesktop_find_toplevel(GtkWidget *widget)
+{
+    GtkWidget *toplevel = NULL;
+    GtkWidget *cur = widget;
+
+    while (cur != NULL && toplevel == NULL) {
+        if (GTK_IS_MENU(cur)) {
+            toplevel = gtk_menu_get_attach_widget(GTK_MENU(cur));
+            if (!GTK_IS_WINDOW(toplevel)) {
+                toplevel = NULL;
+            }
+        }
+
+        if (toplevel == NULL && GTK_IS_WINDOW(cur)) {
+            toplevel = cur;
+        }
+
+        cur = gtk_widget_get_parent(cur);
+    }
+
+    return toplevel != NULL && GTK_IS_WINDOW(toplevel) ? GTK_WINDOW(toplevel) : NULL;
+}
+
+
 void
 xfdesktop_tree_path_free(gpointer data)
 {

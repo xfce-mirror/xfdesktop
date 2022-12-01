@@ -150,6 +150,8 @@ gboolean xfdesktop_workspace_get_number_and_total(XfwWorkspaceManager *workspace
                                                   gint *workspace_number,
                                                   gint *total_workspace_count);
 
+GtkWindow * xfdesktop_find_toplevel(GtkWidget *widget);
+
 void xfdesktop_tree_path_free(gpointer data);
 
 void xfdesktop_widget_unrealize(GtkWidget *widget,
