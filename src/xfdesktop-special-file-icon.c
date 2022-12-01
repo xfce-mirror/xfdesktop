@@ -68,8 +68,9 @@ struct _XfdesktopSpecialFileIconPrivate
 
 static void xfdesktop_special_file_icon_finalize(GObject *obj);
 
-static GdkPixbuf *xfdesktop_special_file_icon_peek_pixbuf(XfdesktopIcon *icon,
-                                                          gint width, gint height);
+static GdkPixbuf *xfdesktop_special_file_icon_get_pixbuf(XfdesktopIcon *icon,
+                                                         gint width,
+                                                         gint height);
 static const gchar *xfdesktop_special_file_icon_peek_label(XfdesktopIcon *icon);
 static gchar *xfdesktop_special_file_icon_get_identifier(XfdesktopIcon *icon);
 static GdkPixbuf *xfdesktop_special_file_icon_peek_tooltip_pixbuf(XfdesktopIcon *icon,
@@ -119,7 +120,7 @@ xfdesktop_special_file_icon_class_init(XfdesktopSpecialFileIconClass *klass)
 
     gobject_class->finalize = xfdesktop_special_file_icon_finalize;
 
-    icon_class->peek_pixbuf = xfdesktop_special_file_icon_peek_pixbuf;
+    icon_class->get_pixbuf = xfdesktop_special_file_icon_get_pixbuf;
     icon_class->peek_label = xfdesktop_special_file_icon_peek_label;
     icon_class->get_identifier = xfdesktop_special_file_icon_get_identifier;
     icon_class->peek_tooltip_pixbuf = xfdesktop_special_file_icon_peek_tooltip_pixbuf;
@@ -144,11 +145,6 @@ static void
 xfdesktop_special_file_icon_finalize(GObject *obj)
 {
     XfdesktopSpecialFileIcon *icon = XFDESKTOP_SPECIAL_FILE_ICON(obj);
-    GtkIconTheme *itheme = gtk_icon_theme_get_for_screen(icon->priv->gscreen);
-
-    g_signal_handlers_disconnect_by_func(G_OBJECT(itheme),
-                                         G_CALLBACK(xfdesktop_icon_invalidate_pixbuf),
-                                         icon);
 
     if(icon->priv->monitor) {
         g_signal_handlers_disconnect_by_func(icon->priv->monitor,
@@ -247,8 +243,9 @@ xfdesktop_special_file_icon_load_icon(XfdesktopIcon *icon)
 }
 
 static GdkPixbuf *
-xfdesktop_special_file_icon_peek_pixbuf(XfdesktopIcon *icon,
-                                        gint width, gint height)
+xfdesktop_special_file_icon_get_pixbuf(XfdesktopIcon *icon,
+                                       gint width,
+                                       gint height)
 {
     GIcon *gicon = NULL;
     GdkPixbuf *pix = NULL;
@@ -613,7 +610,7 @@ xfdesktop_special_file_icon_changed(GFileMonitor *monitor,
 
     /* update the icon */
     xfdesktop_file_icon_invalidate_icon(XFDESKTOP_FILE_ICON(special_file_icon));
-    xfdesktop_icon_invalidate_pixbuf(XFDESKTOP_ICON(special_file_icon));
+    xfdesktop_icon_invalidate_tooltip_pixbuf(XFDESKTOP_ICON(special_file_icon));
     xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(special_file_icon));
 }
 
@@ -706,11 +703,6 @@ xfdesktop_special_file_icon_new(XfdesktopSpecialFileIconType type,
     /* update the trash full state */
     if(type == XFDESKTOP_SPECIAL_FILE_ICON_TRASH)
         xfdesktop_special_file_icon_update_trash_count(special_file_icon);
-
-    g_signal_connect_swapped(G_OBJECT(gtk_icon_theme_get_for_screen(screen)),
-                             "changed",
-                             G_CALLBACK(xfdesktop_icon_invalidate_pixbuf),
-                             special_file_icon);
 
     special_file_icon->priv->monitor = g_file_monitor(special_file_icon->priv->file,
                                                       G_FILE_MONITOR_NONE,

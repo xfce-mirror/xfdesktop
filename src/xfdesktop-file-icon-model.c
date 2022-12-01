@@ -336,13 +336,14 @@ xfdesktop_file_icon_model_get_value(GtkTreeModel *model,
 
     switch (column) {
         case XFDESKTOP_FILE_ICON_MODEL_COLUMN_SURFACE: {
-            GdkPixbuf *pix = xfdesktop_icon_peek_pixbuf(XFDESKTOP_ICON(icon),
-                                                        fmodel->icon_width * fmodel->scale_factor,
-                                                        fmodel->icon_height * fmodel->scale_factor);
+            GdkPixbuf *pix = xfdesktop_icon_get_pixbuf(XFDESKTOP_ICON(icon),
+                                                       fmodel->icon_width * fmodel->scale_factor,
+                                                       fmodel->icon_height * fmodel->scale_factor);
             if (pix != NULL) {
                 cairo_surface_t *surface = gdk_cairo_surface_create_from_pixbuf(pix, fmodel->scale_factor, NULL);
                 g_value_init(value, CAIRO_GOBJECT_TYPE_SURFACE);
                 g_value_take_boxed(value, surface);
+                g_object_unref(pix);
             }
             break;
         }

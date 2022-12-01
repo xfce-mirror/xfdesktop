@@ -77,8 +77,9 @@ struct _XfdesktopVolumeIconPrivate
 
 static void xfdesktop_volume_icon_finalize(GObject *obj);
 
-static GdkPixbuf *xfdesktop_volume_icon_peek_pixbuf(XfdesktopIcon *icon,
-                                                    gint width, gint height);
+static GdkPixbuf *xfdesktop_volume_icon_get_pixbuf(XfdesktopIcon *icon,
+                                                   gint width,
+                                                   gint height);
 static const gchar *xfdesktop_volume_icon_peek_label(XfdesktopIcon *icon);
 static gchar *xfdesktop_volume_icon_get_identifier(XfdesktopIcon *icon);
 static GdkPixbuf *xfdesktop_volume_icon_peek_tooltip_pixbuf(XfdesktopIcon *icon,
@@ -154,7 +155,7 @@ xfdesktop_volume_icon_class_init(XfdesktopVolumeIconClass *klass)
 
     gobject_class->finalize = xfdesktop_volume_icon_finalize;
 
-    icon_class->peek_pixbuf = xfdesktop_volume_icon_peek_pixbuf;
+    icon_class->get_pixbuf = xfdesktop_volume_icon_get_pixbuf;
     icon_class->peek_label = xfdesktop_volume_icon_peek_label;
     icon_class->get_identifier = xfdesktop_volume_icon_get_identifier;
     icon_class->peek_tooltip_pixbuf = xfdesktop_volume_icon_peek_tooltip_pixbuf;
@@ -183,15 +184,10 @@ static void
 xfdesktop_volume_icon_finalize(GObject *obj)
 {
     XfdesktopVolumeIcon *icon = XFDESKTOP_VOLUME_ICON(obj);
-    GtkIconTheme *itheme = gtk_icon_theme_get_for_screen(icon->priv->gscreen);
 
     /* remove pending change timeouts */
     if(icon->priv->changed_timeout_id > 0)
         g_source_remove(icon->priv->changed_timeout_id);
-
-    g_signal_handlers_disconnect_by_func(G_OBJECT(itheme),
-                                         G_CALLBACK(xfdesktop_icon_invalidate_pixbuf),
-                                         icon);
 
     if(icon->priv->label) {
         g_free(icon->priv->label);
@@ -291,8 +287,9 @@ xfdesktop_volume_icon_load_icon(XfdesktopIcon *icon)
 }
 
 static GdkPixbuf *
-xfdesktop_volume_icon_peek_pixbuf(XfdesktopIcon *icon,
-                                  gint width, gint height)
+xfdesktop_volume_icon_get_pixbuf(XfdesktopIcon *icon,
+                                 gint width,
+                                 gint height)
 {
     gint opacity = 100;
     GIcon *gicon = NULL;
@@ -1017,7 +1014,7 @@ xfdesktop_volume_icon_update_file_info(XfdesktopFileIcon *icon,
 
     /* not really easy to check if this changed or not, so just invalidate it */
     xfdesktop_file_icon_invalidate_icon(XFDESKTOP_FILE_ICON(icon));
-    xfdesktop_icon_invalidate_pixbuf(XFDESKTOP_ICON(icon));
+    xfdesktop_icon_invalidate_tooltip_pixbuf(XFDESKTOP_ICON(icon));
     xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(icon));
 }
 
@@ -1122,7 +1119,7 @@ volume_icon_changed_timeout(gpointer user_data)
         }
 
         /* not really easy to check if this changed or not, so just invalidate it */
-        xfdesktop_icon_invalidate_pixbuf(XFDESKTOP_ICON(volume_icon));
+        xfdesktop_icon_invalidate_tooltip_pixbuf(XFDESKTOP_ICON(volume_icon));
         xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(volume_icon));
 
         /* finalize the timeout source */
@@ -1206,7 +1203,7 @@ xfdesktop_volume_icon_file_info_ready(GObject *source,
         file_info = g_file_query_info_finish(file, result, &error);
         if (file_info != NULL) {
             volume_icon->priv->file_info = file_info;
-            xfdesktop_icon_invalidate_pixbuf(XFDESKTOP_ICON(volume_icon));
+            xfdesktop_icon_invalidate_tooltip_pixbuf(XFDESKTOP_ICON(volume_icon));
             xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(volume_icon));
             xfdesktop_icon_label_changed(XFDESKTOP_ICON(volume_icon));
         } else {
@@ -1278,11 +1275,6 @@ xfdesktop_volume_icon_new(GVolume *volume,
         xfdesktop_volume_icon_fetch_file_info(volume_icon, xfdesktop_volume_icon_file_info_ready);
         xfdesktop_volume_icon_fetch_filesystem_info(volume_icon);
     }
-
-    g_signal_connect_swapped(G_OBJECT(gtk_icon_theme_get_for_screen(screen)),
-                             "changed",
-                             G_CALLBACK(xfdesktop_icon_invalidate_pixbuf),
-                             volume_icon);
 
     g_signal_connect(volume, "changed",
                      G_CALLBACK(xfdesktop_volume_icon_changed),

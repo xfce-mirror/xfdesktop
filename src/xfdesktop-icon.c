@@ -37,8 +37,7 @@ struct _XfdesktopIconPrivate
     gint16 row;
     gint16 col;
 
-    GdkPixbuf *pix, *tooltip_pix;
-    gint cur_pix_width, cur_pix_height;
+    GdkPixbuf *tooltip_pix;
     gint cur_tooltip_pix_width, cur_tooltip_pix_height;
 };
 
@@ -103,7 +102,7 @@ xfdesktop_icon_finalize(GObject *obj)
 {
     XfdesktopIcon *icon = XFDESKTOP_ICON(obj);
 
-    xfdesktop_icon_invalidate_pixbuf(icon);
+    xfdesktop_icon_invalidate_tooltip_pixbuf(icon);
 }
 
 void
@@ -134,27 +133,17 @@ xfdesktop_icon_get_position(XfdesktopIcon *icon,
 
 /*< required >*/
 GdkPixbuf *
-xfdesktop_icon_peek_pixbuf(XfdesktopIcon *icon,
-                           gint width, gint height)
+xfdesktop_icon_get_pixbuf(XfdesktopIcon *icon,
+                          gint width,
+                          gint height)
 {
     XfdesktopIconClass *klass;
 
     g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), NULL);
     klass = XFDESKTOP_ICON_GET_CLASS(icon);
-    g_return_val_if_fail(klass->peek_pixbuf, NULL);
+    g_return_val_if_fail(klass->get_pixbuf, NULL);
 
-    if(width != icon->priv->cur_pix_width || height != icon->priv->cur_pix_height)
-        xfdesktop_icon_invalidate_regular_pixbuf(icon);
-
-    if(icon->priv->pix == NULL) {
-        icon->priv->cur_pix_width = width;
-        icon->priv->cur_pix_height = height;
-
-        /* Generate a new pixbuf */
-        icon->priv->pix = klass->peek_pixbuf(icon, width, height);
-    }
-
-    return icon->priv->pix;
+    return klass->get_pixbuf(icon, width, height);
 }
 
 /*< required >*/
@@ -347,28 +336,12 @@ xfdesktop_icon_populate_context_menu(XfdesktopIcon *icon,
 }
 
 void
-xfdesktop_icon_invalidate_regular_pixbuf(XfdesktopIcon *icon)
-{
-    if(icon->priv->pix) {
-        g_object_unref(G_OBJECT(icon->priv->pix));
-        icon->priv->pix = NULL;
-    }
-}
-
-void
 xfdesktop_icon_invalidate_tooltip_pixbuf(XfdesktopIcon *icon)
 {
     if(icon->priv->tooltip_pix) {
         g_object_unref(G_OBJECT(icon->priv->tooltip_pix));
         icon->priv->tooltip_pix = NULL;
     }
-}
-
-void
-xfdesktop_icon_invalidate_pixbuf(XfdesktopIcon *icon)
-{
-    xfdesktop_icon_invalidate_regular_pixbuf(icon);
-    xfdesktop_icon_invalidate_tooltip_pixbuf(icon);
 }
 
 /*< signal triggers >*/

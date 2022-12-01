@@ -54,7 +54,7 @@ struct _XfdesktopIconClass
     void (*position_changed)(XfdesktopIcon *icon);
 
     /*< virtual functions >*/
-    GdkPixbuf *(*peek_pixbuf)(XfdesktopIcon *icon, gint width, gint height);
+    GdkPixbuf *(*get_pixbuf)(XfdesktopIcon *icon, gint width, gint height);
     const gchar *(*peek_label)(XfdesktopIcon *icon);
 
     GdkDragAction (*get_allowed_drag_actions)(XfdesktopIcon *icon);
@@ -80,7 +80,7 @@ GType xfdesktop_icon_get_type(void) G_GNUC_CONST;
 
 /* xfdesktop virtual function accessors */
 
-GdkPixbuf *xfdesktop_icon_peek_pixbuf(XfdesktopIcon *icon,
+GdkPixbuf *xfdesktop_icon_get_pixbuf(XfdesktopIcon *icon,
                                      gint width,
                                      gint height);
 const gchar *xfdesktop_icon_peek_label(XfdesktopIcon *icon);
@@ -115,9 +115,7 @@ gboolean xfdesktop_icon_populate_context_menu(XfdesktopIcon *icon,
 void xfdesktop_icon_set_thumbnail_file(XfdesktopIcon *icon, GFile *file);
 void xfdesktop_icon_delete_thumbnail(XfdesktopIcon *icon);
 
-void xfdesktop_icon_invalidate_regular_pixbuf(XfdesktopIcon *icon);
 void xfdesktop_icon_invalidate_tooltip_pixbuf(XfdesktopIcon *icon);
-void xfdesktop_icon_invalidate_pixbuf(XfdesktopIcon *icon);
 
 /*< signal triggers >*/
 

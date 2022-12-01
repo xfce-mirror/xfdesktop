@@ -148,6 +148,8 @@ typedef struct
     GdkRectangle *cell_extents;
     GdkRectangle slot_extents;
 
+    cairo_surface_t *pixbuf_surface;
+
     guint32 selected:1;
     guint32 placed:1;
 } ViewItem;
@@ -225,6 +227,9 @@ view_item_get_path(ViewItem *item,
 static void
 view_item_free(ViewItem *item)
 {
+    if (item->pixbuf_surface != NULL) {
+        cairo_surface_destroy(item->pixbuf_surface);
+    }
     g_free(item->cell_extents);
     g_slice_free(ViewItem, item);
 }
@@ -564,6 +569,8 @@ static void xfdesktop_icon_view_invalidate_all(XfdesktopIconView *icon_view,
 static void xfdesktop_icon_view_invalidate_item(XfdesktopIconView *icon_view,
                                                 ViewItem *item,
                                                 gboolean recalc_extents);
+
+static void xfdesktop_icon_view_invalidate_pixbuf_cache(XfdesktopIconView *icon_view);
 
 static void xfdesktop_icon_view_select_item_internal(XfdesktopIconView *icon_view,
                                                      ViewItem *item,
@@ -1538,6 +1545,19 @@ xfdesktop_icon_view_invalidate_all(XfdesktopIconView *icon_view,
 }
 
 static void
+xfdesktop_icon_view_invalidate_pixbuf_cache(XfdesktopIconView *icon_view)
+{
+    for (GList *l = icon_view->priv->items; l != NULL; l = l->next) {
+        ViewItem *item = (ViewItem *)l->data;
+
+        if (item->pixbuf_surface != NULL) {
+            cairo_surface_destroy(item->pixbuf_surface);
+            item->pixbuf_surface = NULL;
+        }
+    }
+}
+
+static void
 xfdesktop_icon_view_add_move_binding(GtkBindingSet *binding_set,
                                      guint keyval,
                                      guint modmask,
@@ -2227,29 +2247,37 @@ xfdesktop_icon_view_get_surface_for_item(XfdesktopIconView *icon_view,
 
     g_return_val_if_fail(icon_view->priv->model != NULL, NULL);
 
-    if (icon_view->priv->pixbuf_column != -1) {
-        GtkTreeIter iter;
+    if (item->pixbuf_surface != NULL) {
+        surface = cairo_surface_reference(item->pixbuf_surface);
+    } else {
+        if (icon_view->priv->pixbuf_column != -1) {
+            GtkTreeIter iter;
 
-        if (view_item_get_iter(item, icon_view->priv->model, &iter)) {
-            GType column_type = gtk_tree_model_get_column_type(icon_view->priv->model,
-                                                               icon_view->priv->pixbuf_column);
-            if (g_type_is_a(column_type, GDK_TYPE_PIXBUF)) {
-                GdkPixbuf *pix = NULL;
-                gtk_tree_model_get(icon_view->priv->model, &iter,
-                                   icon_view->priv->pixbuf_column, &pix,
-                                   -1);
-                if (pix != NULL) {
-                    surface = gdk_cairo_surface_create_from_pixbuf(pix,
-                                                                   gtk_widget_get_scale_factor(GTK_WIDGET(icon_view)),
-                                                                   gtk_widget_get_window(GTK_WIDGET(icon_view)));
-                    g_object_unref(pix);
+            if (view_item_get_iter(item, icon_view->priv->model, &iter)) {
+                GType column_type = gtk_tree_model_get_column_type(icon_view->priv->model,
+                                                                   icon_view->priv->pixbuf_column);
+                if (g_type_is_a(column_type, GDK_TYPE_PIXBUF)) {
+                    GdkPixbuf *pix = NULL;
+                    gtk_tree_model_get(icon_view->priv->model, &iter,
+                                       icon_view->priv->pixbuf_column, &pix,
+                                       -1);
+                    if (pix != NULL) {
+                        surface = gdk_cairo_surface_create_from_pixbuf(pix,
+                                                                       gtk_widget_get_scale_factor(GTK_WIDGET(icon_view)),
+                                                                       gtk_widget_get_window(GTK_WIDGET(icon_view)));
+                        g_object_unref(pix);
+                    }
+                } else if (g_type_is_a(column_type, CAIRO_GOBJECT_TYPE_SURFACE)) {
+                    gtk_tree_model_get(icon_view->priv->model, &iter,
+                                       icon_view->priv->pixbuf_column, &surface,
+                                       -1);
+                } else {
+                    g_assert_not_reached();
                 }
-            } else if (g_type_is_a(column_type, CAIRO_GOBJECT_TYPE_SURFACE)) {
-                gtk_tree_model_get(icon_view->priv->model, &iter,
-                                   icon_view->priv->pixbuf_column, &surface,
-                                   -1);
-            } else {
-                g_assert_not_reached();
+            }
+
+            if (surface != NULL) {
+                item->pixbuf_surface = cairo_surface_reference(surface);
             }
         }
     }
@@ -2824,6 +2852,7 @@ xfdesktop_icon_view_style_updated(GtkWidget *widget)
     }
 
     if (gtk_widget_get_realized(widget)) {
+        xfdesktop_icon_view_invalidate_pixbuf_cache(icon_view);
         xfdesktop_icon_view_invalidate_all(icon_view, TRUE);
         gtk_widget_queue_draw(widget);
     }
@@ -2837,6 +2866,7 @@ scale_factor_changed_cb(XfdesktopIconView *icon_view,
                         gpointer user_data)
 {
     if (gtk_widget_get_realized(GTK_WIDGET(icon_view))) {
+        xfdesktop_icon_view_invalidate_pixbuf_cache(icon_view);
         xfdesktop_grid_do_resize(icon_view);
     }
 }
@@ -3109,12 +3139,24 @@ xfdesktop_icon_view_set_cell_properties(XfdesktopIconView *icon_view,
             AttrPair *attr_pair = (AttrPair *)al->data;
             GtkTreeIter iter;
             GValue value = G_VALUE_INIT;
+            gboolean is_pixbuf_surface = attr_pair->column == icon_view->priv->pixbuf_column
+                && g_strcmp0(attr_pair->attribute, "surface") == 0;
 
-            if (view_item_get_iter(item, icon_view->priv->model, &iter)) {
-                gtk_tree_model_get_value(icon_view->priv->model, &iter, attr_pair->column, &value);
+            if (is_pixbuf_surface && item->pixbuf_surface != NULL) {
+                g_value_init(&value, CAIRO_GOBJECT_TYPE_SURFACE);
+                g_value_set_boxed(&value, item->pixbuf_surface);
             } else {
-                g_value_init(&value, G_TYPE_NONE);
+                if (view_item_get_iter(item, icon_view->priv->model, &iter)) {
+                    gtk_tree_model_get_value(icon_view->priv->model, &iter, attr_pair->column, &value);
+
+                    if (is_pixbuf_surface) {
+                        item->pixbuf_surface = g_value_dup_boxed(&value);
+                    }
+                } else {
+                    g_value_init(&value, G_TYPE_NONE);
+                }
             }
+
             g_object_set_property(G_OBJECT(cell_info->renderer), attr_pair->attribute, &value);
             g_value_unset(&value);
         }
@@ -4663,6 +4705,10 @@ xfdesktop_icon_view_model_row_changed(GtkTreeModel *model,
     ViewItem *item = g_list_nth_data(icon_view->priv->items, gtk_tree_path_get_indices(path)[0]);
 
     if (item != NULL) {
+        if (item->pixbuf_surface != NULL) {
+            cairo_surface_destroy(item->pixbuf_surface);
+            item->pixbuf_surface = NULL;
+        }
         xfdesktop_icon_view_invalidate_item(icon_view, item, TRUE);
     }
 }
@@ -5285,6 +5331,7 @@ xfdesktop_icon_view_set_icon_size(XfdesktopIconView *icon_view,
     icon_view->priv->icon_size = icon_size;
 
     if(gtk_widget_get_realized(GTK_WIDGET(icon_view))) {
+        xfdesktop_icon_view_invalidate_pixbuf_cache(icon_view);
         xfdesktop_grid_do_resize(icon_view);
         gtk_widget_queue_draw(GTK_WIDGET(icon_view));
     }
