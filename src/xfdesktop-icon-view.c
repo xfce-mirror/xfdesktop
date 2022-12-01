@@ -4622,6 +4622,7 @@ xfdesktop_icon_view_init_builtin_cell_renderers(XfdesktopIconView *icon_view)
 
     g_object_set(icon_view->priv->text_renderer,
                  "attributes", attr_list,
+                 "underline-when-prelit", icon_view->priv->single_click,
                  "wrap-mode", PANGO_WRAP_WORD_CHAR,
                  "xalign", (gfloat)0.5,
                  "yalign", (gfloat)0.0,
@@ -5535,6 +5536,12 @@ xfdesktop_icon_view_set_single_click(XfdesktopIconView *icon_view,
     }
 
     icon_view->priv->single_click = single_click;
+
+    if (icon_view->priv->text_renderer != NULL) {
+        g_object_set(icon_view->priv->text_renderer,
+                     "underline-when-prelit", icon_view->priv->single_click,
+                     NULL);
+    }
 
     if(gtk_widget_get_realized(GTK_WIDGET(icon_view))) {
         gtk_widget_queue_draw(GTK_WIDGET(icon_view));

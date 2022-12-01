@@ -36,6 +36,7 @@
 #define DEFAULT_SIZE_POINTS_SET               FALSE
 #define DEFAULT_SIZE                          (DEFAULT_SIZE_POINTS * PANGO_SCALE)
 #define DEFAULT_SIZE_SET                      FALSE
+#define DEFAULT_UNDERLINE_WHEN_PRELIT         FALSE
 #define DEFAULT_UNSELECTED_HEIGHT             (-1)
 #define DEFAULT_UNSELECTED_WIDTH              (-1)
 #define DEFAULT_WRAP_MODE                     PANGO_WRAP_WORD
@@ -60,6 +61,7 @@ struct _XfdesktopCellRendererIconLabel
     guint ellipsize_set: 1;
     guint size_set: 1;
     guint size_points_set: 1;
+    guint underline_when_prelit: 1;
 };
 
 struct _XfdesktopCellRendererIconLabelClass
@@ -80,6 +82,7 @@ enum
     PROP_SIZE_POINTS,
     PROP_SIZE_POINTS_SET,
     PROP_TEXT,
+    PROP_UNDERLINE_WHEN_PRELIT,
     PROP_UNSELECTED_HEIGHT,
     PROP_UNSELECTED_WIDTH,
     PROP_WRAP_MODE,
@@ -239,6 +242,7 @@ xfdesktop_cell_renderer_icon_label_class_init(XfdesktopCellRendererIconLabelClas
     DEFINE_BOOL_PROP(PROP_ELLIPSIZE_SET, "ellipsize-set", "whether or not the 'ellipsize' property should be used", DEFAULT_ELLIPSIZE_SET);
     DEFINE_BOOL_PROP(PROP_SIZE_SET, "size-set", "whether or not the 'size' property should be used", DEFAULT_SIZE_SET);
     DEFINE_BOOL_PROP(PROP_SIZE_POINTS_SET, "size-points-set", "whether or not the 'size-points' property should be used", DEFAULT_SIZE_POINTS_SET);
+    DEFINE_BOOL_PROP(PROP_UNDERLINE_WHEN_PRELIT, "underline-when-prelit", "whether or not to underline text when the PRELIT flag is set", DEFAULT_UNDERLINE_WHEN_PRELIT);
     
 #undef DEFINE_SETTER
 #undef PARAM_FLAGS
@@ -307,6 +311,9 @@ xfdesktop_cell_renderer_icon_label_set_property(GObject *obj,
             g_free(renderer->text);
             renderer->text = g_value_dup_string(value);
             break;
+        case PROP_UNDERLINE_WHEN_PRELIT:
+            renderer->underline_when_prelit = g_value_get_boolean(value);
+            break;
         case PROP_UNSELECTED_HEIGHT:
             renderer->unselected_height = g_value_get_int(value);
             break;
@@ -363,6 +370,9 @@ xfdesktop_cell_renderer_icon_label_get_property(GObject *obj,
             break;
         case PROP_TEXT:
             g_value_set_string(value, renderer->text);
+            break;
+        case PROP_UNDERLINE_WHEN_PRELIT:
+            g_value_set_boolean(value, renderer->underline_when_prelit);
             break;
         case PROP_UNSELECTED_HEIGHT:
             g_value_set_int(value, renderer->unselected_height);
@@ -674,6 +684,13 @@ create_layout(XfdesktopCellRendererIconLabel *renderer,
         attr_list = pango_attr_list_copy(renderer->extra_attrs);
     } else {
         attr_list = pango_attr_list_new();
+    }
+
+    if (renderer->underline_when_prelit && (flags & GTK_CELL_RENDERER_PRELIT) != 0) {
+        PangoAttribute *uline = pango_attr_underline_new(PANGO_UNDERLINE_SINGLE);
+        uline->start_index = 0;
+        uline->end_index = -1;
+        pango_attr_list_change(attr_list, uline);
     }
 
     if (renderer->align_set) {
