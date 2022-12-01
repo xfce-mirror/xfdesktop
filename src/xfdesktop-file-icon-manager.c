@@ -994,7 +994,7 @@ xfdesktop_file_icon_menu_paste_into_folder(GtkWidget *widget,
 
     info = xfdesktop_file_icon_peek_file_info(icon);
 
-    if(g_file_info_get_file_type(info) != G_FILE_TYPE_DIRECTORY)
+    if(!info || g_file_info_get_file_type(info) != G_FILE_TYPE_DIRECTORY)
         return;
 
     file = xfdesktop_file_icon_peek_file(icon);
@@ -3190,20 +3190,13 @@ xfdesktop_file_icon_manager_clipboard_changed(XfdesktopClipboardManager *cmanage
 }
 
 static void
-xfdesktop_file_icon_manager_add_removable_volume(XfdesktopFileIconManager *fmanager,
-                                                 GVolume *volume)
-{
-    xfdesktop_file_icon_manager_add_volume_icon(fmanager, volume);
-}
-
-static void
 xfdesktop_file_icon_manager_volume_added(GVolumeMonitor *monitor,
                                          GVolume *volume,
                                          gpointer user_data)
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
 
-    xfdesktop_file_icon_manager_add_removable_volume(fmanager, volume);
+    xfdesktop_file_icon_manager_add_volume_icon(fmanager, volume);
 }
 
 static void
@@ -3240,7 +3233,8 @@ xfdesktop_file_icon_manager_load_removable_media(XfdesktopFileIconManager *fmana
 
     volumes = g_volume_monitor_get_volumes(fmanager->priv->volume_monitor);
     for(l = volumes; l; l = l->next) {
-        xfdesktop_file_icon_manager_add_removable_volume(fmanager, l->data);
+        GVolume *volume = G_VOLUME(l->data);
+        xfdesktop_file_icon_manager_add_volume_icon(fmanager, volume);
         g_object_unref(l->data);
     }
     g_list_free(volumes);
@@ -3734,7 +3728,7 @@ xfdesktop_file_icon_manager_drag_data_received(XfdesktopIconViewManager *manager
 
         if(drop_icon) {
             GFileInfo *finfo = xfdesktop_file_icon_peek_file_info(XFDESKTOP_FILE_ICON(drop_icon));
-            if(g_file_info_get_file_type(finfo) == G_FILE_TYPE_DIRECTORY)
+            if(finfo != NULL && g_file_info_get_file_type(finfo) == G_FILE_TYPE_DIRECTORY)
                 source_file = xfdesktop_file_icon_peek_file(XFDESKTOP_FILE_ICON(drop_icon));
         } else
             source_file = fmanager->priv->folder;
