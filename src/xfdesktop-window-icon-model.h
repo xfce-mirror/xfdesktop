@@ -24,8 +24,6 @@
 #include <gtk/gtk.h>
 #include <libxfce4windowing/libxfce4windowing.h>
 
-#include "xfdesktop-window-icon.h"
-
 G_BEGIN_DECLS
 
 #define XFDESKTOP_TYPE_WINDOW_ICON_MODEL    (xfdesktop_window_icon_model_get_type())
