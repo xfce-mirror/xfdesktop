@@ -79,8 +79,7 @@ static void xfdesktop_window_icon_manager_workarea_changed(XfdesktopWindowIconMa
 
 static void xfdesktop_window_icon_manager_populate_workspaces(XfdesktopWindowIconManager *wmanager);
 
-static void xfdesktop_window_icon_manager_populate_context_menu(XfdesktopIconViewManager *manager,
-                                                                GtkMenuShell *menu);
+static GtkMenu *xfdesktop_window_icon_manager_get_context_menu(XfdesktopIconViewManager *manager);
 static void xfdesktop_window_icon_manager_sort_icons(XfdesktopIconViewManager *manager,
                                                      GtkSortType sort_type);
 
@@ -144,7 +143,7 @@ xfdesktop_window_icon_manager_class_init(XfdesktopWindowIconManagerClass *klass)
     gobject_class->dispose = xfdesktop_window_icon_manager_dispose;
     gobject_class->finalize = xfdesktop_window_icon_manager_finalize;
 
-    manager_class->populate_context_menu = xfdesktop_window_icon_manager_populate_context_menu;
+    manager_class->get_context_menu = xfdesktop_window_icon_manager_get_context_menu;
     manager_class->sort_icons = xfdesktop_window_icon_manager_sort_icons;
 }
 
@@ -844,22 +843,16 @@ xfdesktop_window_icon_manager_populate_workspaces(XfdesktopWindowIconManager *wm
     g_hash_table_destroy(workspaces);
 }
 
-static void
-xfdesktop_window_icon_manager_populate_context_menu(XfdesktopIconViewManager *manager,
-                                                    GtkMenuShell *menu)
+static GtkMenu *
+xfdesktop_window_icon_manager_get_context_menu(XfdesktopIconViewManager *manager)
 {
     XfdesktopWindowIconManager *wmanager = XFDESKTOP_WINDOW_ICON_MANAGER(manager);
     XfdesktopWindowIconWorkspace *wiws = &wmanager->priv->icon_workspaces[wmanager->priv->active_ws_num];
 
     if (wiws->selected_icon != NULL) {
-        GtkWidget *amenu = xfw_window_action_menu_new(wiws->selected_icon);
-        GtkWidget *mi, *img;
-
-        img = gtk_image_new_from_icon_name("", GTK_ICON_SIZE_MENU);
-        mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Window Actions"), img);
-        gtk_menu_item_set_submenu (GTK_MENU_ITEM(mi), amenu);
-        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-        gtk_widget_show(mi);
+        return GTK_MENU(xfw_window_action_menu_new(wiws->selected_icon));
+    } else {
+        return NULL;
     }
 }
 

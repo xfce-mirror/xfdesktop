@@ -254,12 +254,11 @@ set_label_color_insensitive(GtkWidget *lbl)
     pango_attr_list_unref (attrs);
 }
 
-GtkMenuShell *
-windowlist_populate(GtkMenuShell *menu, gint scale_factor)
+GtkMenu *
+windowlist_populate(GtkMenu *menu, gint scale_factor)
 {
-    GtkMenuShell *top_menu = menu;
+    GtkMenu *top_menu = menu;
     GdkScreen *gscreen;
-    GList *menu_children;
     XfwScreen *xfw_screen;
     XfwWorkspaceManager *workspace_manager;
     GList *groups;
@@ -270,15 +269,13 @@ windowlist_populate(GtkMenuShell *menu, gint scale_factor)
     if(!show_windowlist)
         return top_menu;
 
-    if(gtk_widget_has_screen(GTK_WIDGET(menu)))
+    if (menu != NULL && gtk_widget_has_screen(GTK_WIDGET(menu)))
         gscreen = gtk_widget_get_screen(GTK_WIDGET(menu));
     else
         gscreen = gdk_display_get_default_screen(gdk_display_get_default());
 
-    /* check to see if the menu is empty.  if not, add the windowlist to a
-     * submenu */
-    menu_children = gtk_container_get_children(GTK_CONTAINER(menu));
-    if(menu_children) {
+    // If we were given a menu to populate, add the windowlist to a submenu
+    if (menu != NULL) {
         GtkWidget *mi;
 
         GtkWidget *tmpmenu = gtk_menu_new();
@@ -294,8 +291,10 @@ windowlist_populate(GtkMenuShell *menu, gint scale_factor)
         gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
 
         gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi), tmpmenu);
-        menu = (GtkMenuShell *)tmpmenu;
-        g_list_free(menu_children);
+        menu = (GtkMenu *)tmpmenu;
+    } else {
+        top_menu = menu = GTK_MENU(gtk_menu_new());
+        gtk_menu_set_reserve_toggle_size(GTK_MENU(menu), FALSE);
     }
 
     gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &w, &h);
@@ -393,19 +392,8 @@ windowlist_populate(GtkMenuShell *menu, gint scale_factor)
                    && (!xfw_window_is_pinned(xfw_window)
                        || xfw_workspace != active_workspace))
                 {
-                    /* The menu item has a GtkBox of which one of the children
-                     * is the label we want to modify */
-                    GList *items = gtk_container_get_children(GTK_CONTAINER(gtk_bin_get_child(GTK_BIN(mi))));
-                    GList *li;
-
-                    for(li = items; li != NULL; li = li->next)
-                    {
-                        if(GTK_IS_LABEL(li->data))
-                        {
-                            set_label_color_insensitive(li->data);
-                            break;
-                        }
-                    }
+                    GtkWidget *mi_label = gtk_bin_get_child(GTK_BIN(mi));
+                    set_label_color_insensitive(mi_label);
                 }
 
                 gtk_widget_show(mi);

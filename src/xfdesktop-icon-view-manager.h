@@ -54,8 +54,7 @@ struct _XfdesktopIconViewManagerClass
 
     /* Virtual Functions */
 
-    void (*populate_context_menu)(XfdesktopIconViewManager *manager,
-                                  GtkMenuShell *menu);
+    GtkMenu *(*get_context_menu)(XfdesktopIconViewManager *manager);
 
     void (*sort_icons)(XfdesktopIconViewManager *manager,
                        GtkSortType sort_type);
@@ -74,8 +73,7 @@ void xfdesktop_icon_view_manager_get_workarea(XfdesktopIconViewManager *manager,
 
 /* virtual function accessors */
 
-void xfdesktop_icon_view_manager_populate_context_menu(XfdesktopIconViewManager *manager,
-                                                       GtkMenuShell *menu);
+GtkMenu *xfdesktop_icon_view_manager_get_context_menu(XfdesktopIconViewManager *manager);
 void xfdesktop_icon_view_manager_sort_icons(XfdesktopIconViewManager *manager,
                                             GtkSortType sort_type);
 

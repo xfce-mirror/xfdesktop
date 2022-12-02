@@ -195,45 +195,34 @@ xfdesktop_remove_whitspaces(gchar* str)
 }
 
 
-static GtkWidget*
-create_menu_item(GtkWidget* label, GtkWidget* image)
+static GtkWidget *
+create_menu_item(const gchar *name,
+                 GtkWidget *image)
 {
     GtkWidget *mi;
-    GtkWidget *box;
-    GtkSettings *settings;
-    gboolean show_icons = TRUE;
 
-    /* create item */
-    mi = gtk_menu_item_new ();
-
-    gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
-    gtk_label_set_xalign (GTK_LABEL (label), 0.0);
-
-    box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-    gtk_widget_set_halign (label, GTK_ALIGN_START);
-
-    /* Add the image and label to the box, add the box to the menu item */
-    if (image && GTK_IS_WIDGET(image)) {
-        if (GTK_IS_IMAGE (image))
-            gtk_image_set_pixel_size (GTK_IMAGE (image), 16);
-
-        /* only add the widget if it exists */
-        gtk_widget_show (image);
-
-        gtk_box_pack_start (GTK_BOX (box), image, FALSE, FALSE, 0);
-    }
-
-    gtk_box_pack_start (GTK_BOX (box), label, TRUE, TRUE, 6);
-    gtk_widget_show_all (box);
-    gtk_container_add (GTK_CONTAINER (mi), box);
-
-    if (gtk_widget_has_screen(label)) {
-        settings = gtk_settings_get_for_screen(gtk_widget_get_screen(label));
+    if (image == NULL) {
+        mi = gtk_menu_item_new_with_label(name);
     } else {
-        settings = gtk_settings_get_default();
+        GtkSettings *settings;
+        gboolean show_icons = TRUE;
+
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+        mi = gtk_image_menu_item_new_with_label(name);
+        gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), image);
+G_GNUC_END_IGNORE_DEPRECATIONS
+
+        if (gtk_widget_has_screen(image)) {
+            settings = gtk_settings_get_for_screen(gtk_widget_get_screen(image));
+        } else {
+            settings = gtk_settings_get_default();
+        }
+        gtk_widget_show(image);
+        g_object_get(settings, "gtk-menu-images", &show_icons, NULL);
+        gtk_widget_set_visible(image, show_icons);
     }
-    g_object_get(settings, "gtk-menu-images", &show_icons, NULL);
-    gtk_widget_set_visible(image, show_icons);
+
+    gtk_widget_show(mi);
 
     return mi;
 }
@@ -245,10 +234,10 @@ GtkWidget*
 xfdesktop_menu_create_menu_item_with_markup(const gchar *name,
                                             GtkWidget   *image)
 {
-    GtkWidget *label = gtk_label_new (NULL);
-
+    GtkWidget *mi = create_menu_item(name, image);
+    GtkWidget *label = gtk_bin_get_child(GTK_BIN(mi));
     gtk_label_set_markup(GTK_LABEL(label), name);
-    return create_menu_item(label, image);
+    return mi;
 }
 
 
@@ -257,9 +246,9 @@ GtkWidget*
 xfdesktop_menu_create_menu_item_with_mnemonic(const gchar *name,
                                               GtkWidget   *image)
 {
-    GtkWidget *label = gtk_label_new_with_mnemonic(name);
-
-    return create_menu_item(label, image);
+    GtkWidget *mi = create_menu_item(name, image);
+    gtk_menu_item_set_use_underline(GTK_MENU_ITEM(mi), TRUE);
+    return mi;
 }
 
 
