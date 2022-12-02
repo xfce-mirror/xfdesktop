@@ -36,15 +36,15 @@
 #define XFDESKTOP_CHANNEL  "xfce4-desktop"
 #define DEFAULT_BACKDROP   DATADIR "/backgrounds/xfce/xfce-shapes.svg"
 
-#define MIN_ICON_SIZE                8
+#define MIN_ICON_SIZE               16
 #define MAX_ICON_SIZE              192
 #define DEFAULT_ICON_SIZE           48
 #define MIN_ICON_FONT_SIZE           2
 #define MAX_ICON_FONT_SIZE         144
 #define DEFAULT_ICON_FONT_SIZE      12
-#define MIN_TOOLTIP_ICON_SIZE        8
-#define MAX_TOOLTIP_ICON_SIZE      192
-#define DEFAULT_TOOLTIP_ICON_SIZE  128
+#define MIN_TOOLTIP_ICON_SIZE        0
+#define MAX_TOOLTIP_ICON_SIZE      256
+#define DEFAULT_TOOLTIP_ICON_SIZE   64
 #define MIN_GRAVITY                  0
 #define MAX_GRAVITY                  7
 #define DEFAULT_GRAVITY              0
