@@ -73,8 +73,6 @@ static GdkPixbuf *xfdesktop_special_file_icon_get_pixbuf(XfdesktopIcon *icon,
                                                          gint height);
 static const gchar *xfdesktop_special_file_icon_peek_label(XfdesktopIcon *icon);
 static gchar *xfdesktop_special_file_icon_get_identifier(XfdesktopIcon *icon);
-static GdkPixbuf *xfdesktop_special_file_icon_peek_tooltip_pixbuf(XfdesktopIcon *icon,
-                                                                  gint width, gint height);
 static const gchar *xfdesktop_special_file_icon_peek_tooltip(XfdesktopIcon *icon);
 static GdkDragAction xfdesktop_special_file_icon_get_allowed_drag_actions(XfdesktopIcon *icon);
 static GdkDragAction xfdesktop_special_file_icon_get_allowed_drop_actions(XfdesktopIcon *icon,
@@ -123,7 +121,6 @@ xfdesktop_special_file_icon_class_init(XfdesktopSpecialFileIconClass *klass)
     icon_class->get_pixbuf = xfdesktop_special_file_icon_get_pixbuf;
     icon_class->peek_label = xfdesktop_special_file_icon_peek_label;
     icon_class->get_identifier = xfdesktop_special_file_icon_get_identifier;
-    icon_class->peek_tooltip_pixbuf = xfdesktop_special_file_icon_peek_tooltip_pixbuf;
     icon_class->peek_tooltip = xfdesktop_special_file_icon_peek_tooltip;
     icon_class->get_allowed_drag_actions = xfdesktop_special_file_icon_get_allowed_drag_actions;
     icon_class->get_allowed_drop_actions = xfdesktop_special_file_icon_get_allowed_drop_actions;
@@ -258,23 +255,6 @@ xfdesktop_special_file_icon_get_pixbuf(XfdesktopIcon *icon,
     pix = xfdesktop_file_utils_get_icon(gicon, height, height, 100);
 
     return pix;
-}
-
-static GdkPixbuf *
-xfdesktop_special_file_icon_peek_tooltip_pixbuf(XfdesktopIcon *icon,
-                                                gint width, gint height)
-{
-    GIcon *gicon = NULL;
-    GdkPixbuf *tooltip_pix = NULL;
-
-    if(!xfdesktop_file_icon_has_gicon(XFDESKTOP_FILE_ICON(icon)))
-        gicon = xfdesktop_special_file_icon_load_icon(icon);
-    else
-        g_object_get(XFDESKTOP_FILE_ICON(icon), "gicon", &gicon, NULL);
-
-    tooltip_pix = xfdesktop_file_utils_get_icon(gicon, height, height, 100);
-
-    return tooltip_pix;
 }
 
 static const gchar *
@@ -610,7 +590,6 @@ xfdesktop_special_file_icon_changed(GFileMonitor *monitor,
 
     /* update the icon */
     xfdesktop_file_icon_invalidate_icon(XFDESKTOP_FILE_ICON(special_file_icon));
-    xfdesktop_icon_invalidate_tooltip_pixbuf(XFDESKTOP_ICON(special_file_icon));
     xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(special_file_icon));
 }
 

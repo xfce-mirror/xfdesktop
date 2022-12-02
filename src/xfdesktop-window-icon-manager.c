@@ -46,13 +46,6 @@ static void xfdesktop_window_icon_manager_constructed(GObject *object);
 static void xfdesktop_window_icon_manager_dispose(GObject *obj);
 static void xfdesktop_window_icon_manager_finalize(GObject *obj);
 
-static gboolean xfdesktop_window_icon_manager_query_icon_tooltip(XfdesktopIconView *icon_view,
-                                                                 GtkTreeIter *iter,
-                                                                 gint x,
-                                                                 gint y,
-                                                                 gboolean keyboard_tooltip,
-                                                                 GtkTooltip *tooltip,
-                                                                 XfdesktopWindowIconManager *wmanager);
 static void xfdesktop_window_icon_manager_icon_selection_changed_cb(XfdesktopIconView *icon_view,
                                                                     gpointer user_data);
 static void xfdesktop_window_icon_manager_icon_activated(XfdesktopIconView *icon_view,
@@ -75,6 +68,8 @@ static void xfdesktop_window_icon_manager_populate_context_menu(XfdesktopIconVie
                                                                 GtkMenuShell *menu);
 static void xfdesktop_window_icon_manager_sort_icons(XfdesktopIconViewManager *manager,
                                                      GtkSortType sort_type);
+
+static XfdesktopWindowIconModel * create_model(XfdesktopWindowIconManager *wmanager);
 
 static void workspace_group_created_cb(XfwWorkspaceManager *manager,
                                        XfwWorkspaceGroup *group,
@@ -163,6 +158,8 @@ xfdesktop_window_icon_manager_constructed(GObject *object)
                                              "pixbuf-column", XFDESKTOP_WINDOW_ICON_MODEL_COLUMN_SURFACE,
                                              "text-column", XFDESKTOP_WINDOW_ICON_MODEL_COLUMN_LABEL,
                                              "search-column", XFDESKTOP_WINDOW_ICON_MODEL_COLUMN_LABEL,
+                                             "tooltip-surface-column", XFDESKTOP_WINDOW_ICON_MODEL_COLUMN_TOOLTIP_SURFACE,
+                                             "tooltip-text-column", XFDESKTOP_WINDOW_ICON_MODEL_COLUMN_TOOLTIP_TEXT,
                                              "row-column", XFDESKTOP_WINDOW_ICON_MODEL_COLUMN_ROW,
                                              "col-column", XFDESKTOP_WINDOW_ICON_MODEL_COLUMN_COL,
                                              NULL);
@@ -171,8 +168,6 @@ xfdesktop_window_icon_manager_constructed(GObject *object)
     gtk_widget_show(wmanager->priv->icon_view);
     gtk_container_add(GTK_CONTAINER(parent), wmanager->priv->icon_view);
 
-    g_signal_connect(wmanager->priv->icon_view, "query-icon-tooltip",
-                     G_CALLBACK(xfdesktop_window_icon_manager_query_icon_tooltip), wmanager);
     g_signal_connect(G_OBJECT(wmanager->priv->icon_view), "icon-selection-changed",
                      G_CALLBACK(xfdesktop_window_icon_manager_icon_selection_changed_cb),
                      wmanager);
@@ -208,13 +203,7 @@ xfdesktop_window_icon_manager_constructed(GObject *object)
         wmanager->priv->icon_workspaces = g_malloc0(wmanager->priv->nworkspaces
                                                     * sizeof(XfdesktopWindowIconWorkspace));
         for (gint i = 0; i < wmanager->priv->nworkspaces; ++i) {
-            wmanager->priv->icon_workspaces[i].model = xfdesktop_window_icon_model_new();
-            g_object_bind_property(wmanager->priv->icon_view, "icon-size",
-                                   wmanager->priv->icon_workspaces[i].model, "icon-size",
-                                   G_BINDING_SYNC_CREATE);
-            g_object_bind_property(wmanager->priv->icon_view, "scale-factor",
-                                   wmanager->priv->icon_workspaces[i].model, "scale-factor",
-                                   G_BINDING_SYNC_CREATE);
+            wmanager->priv->icon_workspaces[i].model = create_model(wmanager);
         }
 
         for (GList *l = workspace_groups; l != NULL; l = l->next) {
@@ -389,6 +378,21 @@ xfdesktop_window_icon_manager_add_icon(XfdesktopWindowIconManager *wmanager,
     xfdesktop_window_icon_model_append(xwiw->model, window, NULL);
 }
 
+static XfdesktopWindowIconModel *
+create_model(XfdesktopWindowIconManager *wmanager) {
+    XfdesktopWindowIconModel *model = xfdesktop_window_icon_model_new();
+    g_object_bind_property(wmanager->priv->icon_view, "icon-size",
+                           model, "icon-size",
+                           G_BINDING_SYNC_CREATE);
+    g_object_bind_property(wmanager->priv->icon_view, "scale-factor",
+                           model, "scale-factor",
+                           G_BINDING_SYNC_CREATE);
+    g_object_bind_property(wmanager, "tooltip-icon-size",
+                           model, "tooltip-icon-size",
+                           G_BINDING_SYNC_CREATE);
+    return model;
+}
+
 static void
 workspace_changed_cb(XfwWorkspaceGroup *group,
                      XfwWorkspace *previously_active_space,
@@ -469,13 +473,7 @@ workspace_created_cb(XfwWorkspaceGroup *group,
         }
 
         memset(&wmanager->priv->icon_workspaces[ws_num], 0, sizeof(XfdesktopWindowIconWorkspace));
-        wmanager->priv->icon_workspaces[ws_num].model = xfdesktop_window_icon_model_new();
-        g_object_bind_property(wmanager->priv->icon_view, "icon-size",
-                               wmanager->priv->icon_workspaces[ws_num].model, "icon-size",
-                               G_BINDING_SYNC_CREATE);
-        g_object_bind_property(wmanager->priv->icon_view, "scale-factor",
-                               wmanager->priv->icon_workspaces[ws_num].model, "scale-factor",
-                               G_BINDING_SYNC_CREATE);
+        wmanager->priv->icon_workspaces[ws_num].model = create_model(wmanager);
     }
 }
 
@@ -717,55 +715,6 @@ window_created_cb(XfwScreen *xfw_screen,
                             XFW_WINDOW_STATE_MINIMIZED | XFW_WINDOW_STATE_SKIP_TASKLIST,
                             xfw_window_get_state(window),
                             wmanager);
-}
-
-static gboolean
-xfdesktop_window_icon_manager_query_icon_tooltip(XfdesktopIconView *icon_view,
-                                                 GtkTreeIter *iter,
-                                                 gint x,
-                                                 gint y,
-                                                 gboolean keyboard_tooltip,
-                                                 GtkTooltip *tooltip,
-                                                 XfdesktopWindowIconManager *wmanager)
-{
-    XfwWindow *window = xfdesktop_window_icon_model_get_window(wmanager->priv->icon_workspaces[wmanager->priv->active_ws_num].model,
-                                                               iter);
-
-    if (window != NULL) {
-        GtkWidget *box, *label;
-        guint tooltip_size;
-        const gchar *tip_text;
-        gchar *padded_tip_text;
-
-        box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 8);
-
-        tooltip_size = xfdesktop_icon_view_manager_get_tooltip_icon_size(XFDESKTOP_ICON_VIEW_MANAGER(wmanager),
-                                                                         GTK_WIDGET(icon_view));
-        if (tooltip_size > 0) {
-            gint scale_factor = gtk_widget_get_scale_factor(GTK_WIDGET(icon_view));
-            GdkPixbuf *tip_pix = xfw_window_get_icon(window, tooltip_size * scale_factor);
-            cairo_surface_t *surface = gdk_cairo_surface_create_from_pixbuf(tip_pix, scale_factor, gtk_widget_get_window(GTK_WIDGET(icon_view)));
-            GtkWidget *img = gtk_image_new_from_surface(surface);
-            cairo_surface_destroy(surface);
-            gtk_box_pack_start(GTK_BOX(box), img, FALSE, FALSE, 0);
-        }
-
-        tip_text = xfw_window_get_name(window);
-        padded_tip_text = g_strdup_printf("%s\t", tip_text);
-        label = gtk_label_new(padded_tip_text);
-        gtk_label_set_xalign(GTK_LABEL(label), 0.0);
-        gtk_label_set_yalign(GTK_LABEL(label), 0.5);
-        gtk_box_pack_start(GTK_BOX(box), label, TRUE, TRUE, 0);
-
-        gtk_widget_show_all(box);
-        gtk_tooltip_set_custom(tooltip, box);
-
-        g_free(padded_tip_text);
-
-        return TRUE;
-    } else {
-        return FALSE;
-    }
 }
 
 static void

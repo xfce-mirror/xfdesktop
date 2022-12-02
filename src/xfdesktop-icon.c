@@ -36,9 +36,6 @@ struct _XfdesktopIconPrivate
 {
     gint16 row;
     gint16 col;
-
-    GdkPixbuf *tooltip_pix;
-    gint cur_tooltip_pix_width, cur_tooltip_pix_height;
 };
 
 enum {
@@ -51,18 +48,12 @@ enum {
 
 static guint __signals[SIG_N_SIGNALS] = { 0, };
 
-static void xfdesktop_icon_finalize(GObject *obj);
-
 G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE(XfdesktopIcon, xfdesktop_icon, G_TYPE_OBJECT)
 
 
 static void
 xfdesktop_icon_class_init(XfdesktopIconClass *klass)
 {
-    GObjectClass *gobject_class = (GObjectClass *)klass;
-
-    gobject_class->finalize = xfdesktop_icon_finalize;
-
     __signals[SIG_PIXBUF_CHANGED] = g_signal_new("pixbuf-changed",
                                                  XFDESKTOP_TYPE_ICON,
                                                  G_SIGNAL_RUN_LAST,
@@ -95,14 +86,6 @@ static void
 xfdesktop_icon_init(XfdesktopIcon *icon)
 {
     icon->priv = xfdesktop_icon_get_instance_private(icon);
-}
-
-static void
-xfdesktop_icon_finalize(GObject *obj)
-{
-    XfdesktopIcon *icon = XFDESKTOP_ICON(obj);
-
-    xfdesktop_icon_invalidate_tooltip_pixbuf(icon);
 }
 
 void
@@ -227,31 +210,6 @@ xfdesktop_icon_do_drop_dest(XfdesktopIcon *icon,
 }
 
 /*< optional >*/
-GdkPixbuf *
-xfdesktop_icon_peek_tooltip_pixbuf(XfdesktopIcon *icon,
-                                   gint width, gint height)
-{
-    XfdesktopIconClass *klass;
-
-    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), NULL);
-    klass = XFDESKTOP_ICON_GET_CLASS(icon);
-    g_return_val_if_fail(klass->peek_tooltip_pixbuf, NULL);
-
-    if(width != icon->priv->cur_tooltip_pix_width || height != icon->priv->cur_tooltip_pix_height)
-        xfdesktop_icon_invalidate_tooltip_pixbuf(icon);
-
-    if(icon->priv->tooltip_pix == NULL) {
-        icon->priv->cur_tooltip_pix_width = width;
-        icon->priv->cur_tooltip_pix_height = height;
-
-        /* Generate a new pixbuf */
-        icon->priv->tooltip_pix = klass->peek_tooltip_pixbuf(icon, width, height);
-    }
-
-    return icon->priv->tooltip_pix;
-}
-
-/*< optional >*/
 const gchar *
 xfdesktop_icon_peek_tooltip(XfdesktopIcon *icon)
 {
@@ -333,15 +291,6 @@ xfdesktop_icon_populate_context_menu(XfdesktopIcon *icon,
         return FALSE;
 
     return klass->populate_context_menu(icon, menu);
-}
-
-void
-xfdesktop_icon_invalidate_tooltip_pixbuf(XfdesktopIcon *icon)
-{
-    if(icon->priv->tooltip_pix) {
-        g_object_unref(G_OBJECT(icon->priv->tooltip_pix));
-        icon->priv->tooltip_pix = NULL;
-    }
 }
 
 /*< signal triggers >*/

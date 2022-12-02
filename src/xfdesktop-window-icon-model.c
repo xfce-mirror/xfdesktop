@@ -70,6 +70,7 @@ struct _XfdesktopWindowIconModel
     GHashTable *windows;
 
     gint icon_size;
+    gint tooltip_icon_size;
     gint scale_factor;
 };
 
@@ -82,6 +83,7 @@ enum
 {
     PROP0 = 0,
     PROP_ICON_SIZE,
+    PROP_TOOLTIP_ICON_SIZE,
     PROP_SCALE_FACTOR,
 };
 
@@ -160,6 +162,14 @@ xfdesktop_window_icon_model_class_init(XfdesktopWindowIconModelClass *klass)
                                                      PARAM_FLAGS));
 
     g_object_class_install_property(gobject_class,
+                                    PROP_TOOLTIP_ICON_SIZE,
+                                    g_param_spec_int("tooltip-icon-size",
+                                                     "tooltip-icon-size",
+                                                     "size of tooltip icon images",
+                                                     MIN_TOOLTIP_ICON_SIZE, MAX_TOOLTIP_ICON_SIZE, DEFAULT_TOOLTIP_ICON_SIZE,
+                                                     PARAM_FLAGS));
+
+    g_object_class_install_property(gobject_class,
                                     PROP_SCALE_FACTOR,
                                     g_param_spec_int("scale-factor",
                                                      "scale-factor",
@@ -193,6 +203,7 @@ xfdesktop_window_icon_model_init(XfdesktopWindowIconModel *wmodel)
 {
     wmodel->windows = g_hash_table_new(g_direct_hash, g_direct_equal);
     wmodel->icon_size = DEFAULT_ICON_SIZE;
+    wmodel->tooltip_icon_size = DEFAULT_TOOLTIP_ICON_SIZE;
     wmodel->scale_factor = 1;
 }
 
@@ -207,6 +218,10 @@ xfdesktop_window_icon_model_set_property(GObject *obj,
     switch (prop_id) {
         case PROP_ICON_SIZE:
             xfdesktop_window_icon_model_set_icon_size(wmodel, g_value_get_int(value));
+            break;
+
+        case PROP_TOOLTIP_ICON_SIZE:
+            xfdesktop_window_icon_model_set_tooltip_icon_size(wmodel, g_value_get_int(value));
             break;
 
         case PROP_SCALE_FACTOR:
@@ -230,6 +245,10 @@ xfdesktop_window_icon_model_get_property(GObject *obj,
     switch (prop_id) {
         case PROP_ICON_SIZE:
             g_value_set_int(value, wmodel->icon_size);
+            break;
+
+        case PROP_TOOLTIP_ICON_SIZE:
+            g_value_set_int(value, wmodel->tooltip_icon_size);
             break;
 
         case PROP_SCALE_FACTOR:
@@ -275,6 +294,10 @@ xfdesktop_window_icon_model_get_column_type(GtkTreeModel *model,
         case XFDESKTOP_WINDOW_ICON_MODEL_COLUMN_SURFACE:
             return CAIRO_GOBJECT_TYPE_SURFACE;
         case XFDESKTOP_WINDOW_ICON_MODEL_COLUMN_LABEL:
+            return G_TYPE_STRING;
+        case XFDESKTOP_WINDOW_ICON_MODEL_COLUMN_TOOLTIP_SURFACE:
+            return CAIRO_GOBJECT_TYPE_SURFACE;
+        case XFDESKTOP_WINDOW_ICON_MODEL_COLUMN_TOOLTIP_TEXT:
             return G_TYPE_STRING;
         case XFDESKTOP_WINDOW_ICON_MODEL_COLUMN_ROW:
             return G_TYPE_INT;
@@ -356,6 +379,25 @@ xfdesktop_window_icon_model_get_value(GtkTreeModel *model,
             if (label != NULL) {
                 g_value_init(value, G_TYPE_STRING);
                 g_value_set_string(value, label);
+            }
+            break;
+        }
+
+        case XFDESKTOP_WINDOW_ICON_MODEL_COLUMN_TOOLTIP_SURFACE:{
+            GdkPixbuf *pix = xfw_window_get_icon(model_item->window, wmodel->tooltip_icon_size * wmodel->scale_factor);
+            if (pix != NULL) {
+                cairo_surface_t *surface = gdk_cairo_surface_create_from_pixbuf(pix, wmodel->scale_factor, NULL);
+                g_value_init(value, CAIRO_GOBJECT_TYPE_SURFACE);
+                g_value_take_boxed(value, surface);
+            }
+            break;
+        }
+
+        case XFDESKTOP_WINDOW_ICON_MODEL_COLUMN_TOOLTIP_TEXT: {
+            const gchar *tip_text = xfw_window_get_name(model_item->window);
+            if (tip_text != NULL) {
+                g_value_init(value, G_TYPE_STRING);
+                g_value_set_string(value, tip_text);
             }
             break;
         }
@@ -519,6 +561,20 @@ xfdesktop_window_icon_model_set_icon_size(XfdesktopWindowIconModel *wmodel,
     if (icon_size != wmodel->icon_size) {
         wmodel->icon_size = icon_size;
         g_object_notify(G_OBJECT(wmodel), "icon-size");
+        notify_all_rows_changed(wmodel);
+    }
+}
+
+void
+xfdesktop_window_icon_model_set_tooltip_icon_size(XfdesktopWindowIconModel *wmodel,
+                                                  gint size)
+{
+    g_return_if_fail(XFDESKTOP_IS_WINDOW_ICON_MODEL(wmodel));
+    g_return_if_fail(size >= 0);
+
+    if (size != wmodel->tooltip_icon_size) {
+        wmodel->tooltip_icon_size = size;
+        g_object_notify(G_OBJECT(wmodel), "tooltip-icon-size");
         notify_all_rows_changed(wmodel);
     }
 }

@@ -82,8 +82,6 @@ static GdkPixbuf *xfdesktop_volume_icon_get_pixbuf(XfdesktopIcon *icon,
                                                    gint height);
 static const gchar *xfdesktop_volume_icon_peek_label(XfdesktopIcon *icon);
 static gchar *xfdesktop_volume_icon_get_identifier(XfdesktopIcon *icon);
-static GdkPixbuf *xfdesktop_volume_icon_peek_tooltip_pixbuf(XfdesktopIcon *icon,
-                                                            gint width, gint height);
 static const gchar *xfdesktop_volume_icon_peek_tooltip(XfdesktopIcon *icon);
 static GdkDragAction xfdesktop_volume_icon_get_allowed_drag_actions(XfdesktopIcon *icon);
 static GdkDragAction xfdesktop_volume_icon_get_allowed_drop_actions(XfdesktopIcon *icon,
@@ -158,7 +156,6 @@ xfdesktop_volume_icon_class_init(XfdesktopVolumeIconClass *klass)
     icon_class->get_pixbuf = xfdesktop_volume_icon_get_pixbuf;
     icon_class->peek_label = xfdesktop_volume_icon_peek_label;
     icon_class->get_identifier = xfdesktop_volume_icon_get_identifier;
-    icon_class->peek_tooltip_pixbuf = xfdesktop_volume_icon_peek_tooltip_pixbuf;
     icon_class->peek_tooltip = xfdesktop_volume_icon_peek_tooltip;
     icon_class->get_allowed_drag_actions = xfdesktop_volume_icon_get_allowed_drag_actions;
     icon_class->get_allowed_drop_actions = xfdesktop_volume_icon_get_allowed_drop_actions;
@@ -309,25 +306,6 @@ xfdesktop_volume_icon_get_pixbuf(XfdesktopIcon *icon,
     pix = xfdesktop_file_utils_get_icon(gicon, height, height, opacity);
 
     return pix;
-}
-
-static GdkPixbuf *
-xfdesktop_volume_icon_peek_tooltip_pixbuf(XfdesktopIcon *icon,
-                                          gint width, gint height)
-{
-    GIcon *gicon = NULL;
-    GdkPixbuf *tooltip_pix = NULL;
-
-    g_return_val_if_fail(XFDESKTOP_IS_VOLUME_ICON(icon), NULL);
-
-    if(!xfdesktop_file_icon_has_gicon(XFDESKTOP_FILE_ICON(icon)))
-        gicon = xfdesktop_volume_icon_load_icon(icon);
-    else
-        g_object_get(XFDESKTOP_FILE_ICON(icon), "gicon", &gicon, NULL);
-
-    tooltip_pix = xfdesktop_file_utils_get_icon(gicon, height, height, 100);
-
-    return tooltip_pix;
 }
 
 const gchar *
@@ -1014,7 +992,6 @@ xfdesktop_volume_icon_update_file_info(XfdesktopFileIcon *icon,
 
     /* not really easy to check if this changed or not, so just invalidate it */
     xfdesktop_file_icon_invalidate_icon(XFDESKTOP_FILE_ICON(icon));
-    xfdesktop_icon_invalidate_tooltip_pixbuf(XFDESKTOP_ICON(icon));
     xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(icon));
 }
 
@@ -1119,7 +1096,6 @@ volume_icon_changed_timeout(gpointer user_data)
         }
 
         /* not really easy to check if this changed or not, so just invalidate it */
-        xfdesktop_icon_invalidate_tooltip_pixbuf(XFDESKTOP_ICON(volume_icon));
         xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(volume_icon));
 
         /* finalize the timeout source */
@@ -1203,7 +1179,6 @@ xfdesktop_volume_icon_file_info_ready(GObject *source,
         file_info = g_file_query_info_finish(file, result, &error);
         if (file_info != NULL) {
             volume_icon->priv->file_info = file_info;
-            xfdesktop_icon_invalidate_tooltip_pixbuf(XFDESKTOP_ICON(volume_icon));
             xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(volume_icon));
             xfdesktop_icon_label_changed(XFDESKTOP_ICON(volume_icon));
         } else {

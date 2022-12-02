@@ -38,6 +38,8 @@ typedef enum
     XFDESKTOP_FILE_ICON_MODEL_COLUMN_ROW,
     XFDESKTOP_FILE_ICON_MODEL_COLUMN_COL,
     XFDESKTOP_FILE_ICON_MODEL_COLUMN_SORT_PRIORITY,
+    XFDESKTOP_FILE_ICON_MODEL_COLUMN_TOOLTIP_SURFACE,
+    XFDESKTOP_FILE_ICON_MODEL_COLUMN_TOOLTIP_TEXT,
 
     XFDESKTOP_FILE_ICON_MODEL_COLUMN_N_COLUMNS,
 } XfdesktopFileIconModelColumn;
@@ -53,6 +55,8 @@ void xfdesktop_file_icon_model_set_icon_width(XfdesktopFileIconModel *fmodel,
                                               gint width);
 void xfdesktop_file_icon_model_set_icon_height(XfdesktopFileIconModel *fmodel,
                                                gint height);
+void xfdesktop_file_icon_model_set_tooltip_icon_size(XfdesktopFileIconModel *fmodel,
+                                                     gint size);
 void xfdesktop_file_icon_model_set_scale_factor(XfdesktopFileIconModel *fmodel,
                                                 gint scale_factor);
 

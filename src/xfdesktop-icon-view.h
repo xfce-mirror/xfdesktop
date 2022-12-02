@@ -105,6 +105,10 @@ void xfdesktop_icon_view_set_search_column(XfdesktopIconView *icon_view,
                                            gint column);
 void xfdesktop_icon_view_set_sort_priority_column(XfdesktopIconView *icon_view,
                                                   gint column);
+void xfdesktop_icon_view_set_tooltip_surface_column(XfdesktopIconView *icon_view,
+                                                    gint column);
+void xfdesktop_icon_view_set_tooltip_text_column(XfdesktopIconView *icon_view,
+                                                 gint column);
 void xfdesktop_icon_view_set_row_column(XfdesktopIconView *icon_view,
                                         gint column);
 void xfdesktop_icon_view_set_col_column(XfdesktopIconView *icon_view,

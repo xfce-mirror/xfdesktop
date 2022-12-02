@@ -56,14 +56,12 @@ struct _XfdesktopIconClass
     /*< virtual functions >*/
     GdkPixbuf *(*get_pixbuf)(XfdesktopIcon *icon, gint width, gint height);
     const gchar *(*peek_label)(XfdesktopIcon *icon);
+    const gchar *(*peek_tooltip)(XfdesktopIcon *icon);
 
     GdkDragAction (*get_allowed_drag_actions)(XfdesktopIcon *icon);
 
     GdkDragAction (*get_allowed_drop_actions)(XfdesktopIcon *icon, GdkDragAction *suggested_action);
     gboolean (*do_drop_dest)(XfdesktopIcon *icon, GList *src_icons, GdkDragAction action);
-
-    GdkPixbuf *(*peek_tooltip_pixbuf)(XfdesktopIcon *icon, gint width, gint height);
-    const gchar *(*peek_tooltip)(XfdesktopIcon *icon);
 
     gchar *(*get_identifier)(XfdesktopIcon *icon);
 
@@ -84,9 +82,6 @@ GdkPixbuf *xfdesktop_icon_get_pixbuf(XfdesktopIcon *icon,
                                      gint width,
                                      gint height);
 const gchar *xfdesktop_icon_peek_label(XfdesktopIcon *icon);
-GdkPixbuf *xfdesktop_icon_peek_tooltip_pixbuf(XfdesktopIcon *icon,
-                                              gint width,
-                                              gint height);
 const gchar *xfdesktop_icon_peek_tooltip(XfdesktopIcon *icon);
 
 /* returns a unique identifier for the icon, free when done using it */
@@ -114,8 +109,6 @@ gboolean xfdesktop_icon_populate_context_menu(XfdesktopIcon *icon,
 
 void xfdesktop_icon_set_thumbnail_file(XfdesktopIcon *icon, GFile *file);
 void xfdesktop_icon_delete_thumbnail(XfdesktopIcon *icon);
-
-void xfdesktop_icon_invalidate_tooltip_pixbuf(XfdesktopIcon *icon);
 
 /*< signal triggers >*/
 

@@ -34,6 +34,8 @@ typedef enum
 {
     XFDESKTOP_WINDOW_ICON_MODEL_COLUMN_SURFACE,
     XFDESKTOP_WINDOW_ICON_MODEL_COLUMN_LABEL,
+    XFDESKTOP_WINDOW_ICON_MODEL_COLUMN_TOOLTIP_SURFACE,
+    XFDESKTOP_WINDOW_ICON_MODEL_COLUMN_TOOLTIP_TEXT,
     XFDESKTOP_WINDOW_ICON_MODEL_COLUMN_ROW,
     XFDESKTOP_WINDOW_ICON_MODEL_COLUMN_COL,
 
@@ -49,6 +51,8 @@ XfdesktopWindowIconModel *xfdesktop_window_icon_model_new(void);
 
 void xfdesktop_window_icon_model_set_icon_size(XfdesktopWindowIconModel *wmodel,
                                                gint icon_size);
+void xfdesktop_window_icon_model_set_tooltip_icon_size(XfdesktopWindowIconModel *wmodel,
+                                                       gint size);
 void xfdesktop_window_icon_model_set_scale_factor(XfdesktopWindowIconModel *wmodel,
                                                   gint scale_factor);
 

@@ -44,6 +44,7 @@ struct _XfdesktopFileIconModel
 
     gint icon_width;
     gint icon_height;
+    gint tooltip_icon_size;
     gint scale_factor;
 };
 
@@ -57,6 +58,7 @@ enum
     PROP0 = 0,
     PROP_ICON_WIDTH,
     PROP_ICON_HEIGHT,
+    PROP_TOOLTIP_ICON_SIZE,
     PROP_SCALE_FACTOR,
 };
 
@@ -143,6 +145,14 @@ xfdesktop_file_icon_model_class_init(XfdesktopFileIconModelClass *klass)
                                                      PARAM_FLAGS));
 
     g_object_class_install_property(gobject_class,
+                                    PROP_TOOLTIP_ICON_SIZE,
+                                    g_param_spec_int("tooltip-icon-size",
+                                                     "tooltip-icon-size",
+                                                     "size of tooltip images",
+                                                     MIN_TOOLTIP_ICON_SIZE, MAX_TOOLTIP_ICON_SIZE, DEFAULT_TOOLTIP_ICON_SIZE,
+                                                     PARAM_FLAGS));
+
+    g_object_class_install_property(gobject_class,
                                     PROP_SCALE_FACTOR,
                                     g_param_spec_int("scale-factor",
                                                      "scale-factor",
@@ -177,6 +187,7 @@ xfdesktop_file_icon_model_init(XfdesktopFileIconModel *fmodel)
     fmodel->icons = g_hash_table_new(xfdesktop_file_icon_hash, xfdesktop_file_icon_equal);
     fmodel->icon_width = DEFAULT_ICON_SIZE;
     fmodel->icon_height = DEFAULT_ICON_SIZE;
+    fmodel->tooltip_icon_size = DEFAULT_TOOLTIP_ICON_SIZE;
     fmodel->scale_factor = 1;
 }
 
@@ -195,6 +206,10 @@ xfdesktop_file_icon_model_set_property(GObject *obj,
 
         case PROP_ICON_HEIGHT:
             xfdesktop_file_icon_model_set_icon_height(fmodel, g_value_get_int(value));
+            break;
+
+        case PROP_TOOLTIP_ICON_SIZE:
+            xfdesktop_file_icon_model_set_tooltip_icon_size(fmodel, g_value_get_int(value));
             break;
 
         case PROP_SCALE_FACTOR:
@@ -222,6 +237,10 @@ xfdesktop_file_icon_model_get_property(GObject *obj,
 
         case PROP_ICON_HEIGHT:
             g_value_set_int(value, fmodel->icon_height);
+            break;
+
+        case PROP_TOOLTIP_ICON_SIZE:
+            g_value_set_int(value, fmodel->tooltip_icon_size);
             break;
 
         case PROP_SCALE_FACTOR:
@@ -274,6 +293,10 @@ xfdesktop_file_icon_model_get_column_type(GtkTreeModel *model,
             return G_TYPE_INT;
         case XFDESKTOP_FILE_ICON_MODEL_COLUMN_SORT_PRIORITY:
             return G_TYPE_INT;
+        case XFDESKTOP_FILE_ICON_MODEL_COLUMN_TOOLTIP_SURFACE:
+            return CAIRO_GOBJECT_TYPE_SURFACE;
+        case XFDESKTOP_FILE_ICON_MODEL_COLUMN_TOOLTIP_TEXT:
+            return G_TYPE_STRING;
         default:
             g_assert_not_reached();
     }
@@ -390,6 +413,34 @@ xfdesktop_file_icon_model_get_value(GtkTreeModel *model,
 
             g_value_init(value, G_TYPE_INT);
             g_value_set_int(value, priority);
+            break;
+        }
+
+        case XFDESKTOP_FILE_ICON_MODEL_COLUMN_TOOLTIP_SURFACE: {
+            if (fmodel->tooltip_icon_size > 0) {
+                GdkPixbuf *pix = xfdesktop_icon_get_pixbuf(XFDESKTOP_ICON(icon),
+                                                           fmodel->tooltip_icon_size * fmodel->scale_factor,
+                                                           fmodel->tooltip_icon_size * fmodel->scale_factor);
+                if (pix != NULL) {
+                    cairo_surface_t *surface = gdk_cairo_surface_create_from_pixbuf(pix, fmodel->scale_factor, NULL);
+                    if (cairo_surface_status(surface) != CAIRO_STATUS_SUCCESS) {
+                        g_warning("failed to create cairo surface: %d", cairo_surface_status(surface));
+                    } else {
+                        g_value_init(value, CAIRO_GOBJECT_TYPE_SURFACE);
+                        g_value_take_boxed(value, surface);
+                        g_object_unref(pix);
+                    }
+                }
+            }
+            break;
+        }
+
+        case XFDESKTOP_FILE_ICON_MODEL_COLUMN_TOOLTIP_TEXT: {
+            const gchar *tip_text = xfdesktop_icon_peek_tooltip(XFDESKTOP_ICON(icon));
+            if (tip_text != NULL) {
+                g_value_init(value, G_TYPE_STRING);
+                g_value_set_string(value, tip_text);
+            }
             break;
         }
 
@@ -554,6 +605,20 @@ xfdesktop_file_icon_model_set_icon_height(XfdesktopFileIconModel *fmodel,
     if (height != fmodel->icon_height) {
         fmodel->icon_height = height;
         g_object_notify(G_OBJECT(fmodel), "icon-height");
+        notify_all_rows_changed(fmodel);
+    }
+}
+
+void
+xfdesktop_file_icon_model_set_tooltip_icon_size(XfdesktopFileIconModel *fmodel,
+                                                gint size)
+{
+    g_return_if_fail(XFDESKTOP_IS_FILE_ICON_MODEL(fmodel));
+    g_return_if_fail(size >= 0);
+
+    if (size != fmodel->tooltip_icon_size) {
+        fmodel->tooltip_icon_size = size;
+        g_object_notify(G_OBJECT(fmodel), "tooltip-icon-size");
         notify_all_rows_changed(fmodel);
     }
 }

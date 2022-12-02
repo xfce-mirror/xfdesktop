@@ -129,6 +129,8 @@ enum
     PROP_TEXT_COLUMN,
     PROP_SEARCH_COLUMN,
     PROP_SORT_PRIORITY_COLUMN,
+    PROP_TOOLTIP_SURFACE_COLUMN,
+    PROP_TOOLTIP_TEXT_COLUMN,
     PROP_ROW_COLUMN,
     PROP_COL_COLUMN,
 };
@@ -149,6 +151,7 @@ typedef struct
     GdkRectangle slot_extents;
 
     cairo_surface_t *pixbuf_surface;
+    cairo_surface_t *tooltip_surface;
 
     guint32 selected:1;
     guint32 placed:1;
@@ -229,6 +232,9 @@ view_item_free(ViewItem *item)
 {
     if (item->pixbuf_surface != NULL) {
         cairo_surface_destroy(item->pixbuf_surface);
+    }
+    if (item->tooltip_surface != NULL) {
+        cairo_surface_destroy(item->tooltip_surface);
     }
     g_free(item->cell_extents);
     g_slice_free(ViewItem, item);
@@ -379,6 +385,8 @@ struct _XfdesktopIconViewPrivate
     gint text_column;
     gint search_column;
     gint sort_priority_column;
+    gint tooltip_surface_column;
+    gint tooltip_text_column;
     gint row_column;
     gint col_column;
 
@@ -1084,6 +1092,8 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
     DECL_COLUMN_PROP(PROP_TEXT_COLUMN, "text-column");
     DECL_COLUMN_PROP(PROP_SEARCH_COLUMN, "search-column");
     DECL_COLUMN_PROP(PROP_SORT_PRIORITY_COLUMN, "sort-priority-column");
+    DECL_COLUMN_PROP(PROP_TOOLTIP_SURFACE_COLUMN, "tooltip-surface-column");
+    DECL_COLUMN_PROP(PROP_TOOLTIP_TEXT_COLUMN, "tooltip-text-column");
     DECL_COLUMN_PROP(PROP_ROW_COLUMN, "row-column");
     DECL_COLUMN_PROP(PROP_COL_COLUMN, "col-column");
 
@@ -1170,6 +1180,8 @@ xfdesktop_icon_view_init(XfdesktopIconView *icon_view)
     icon_view->priv->pixbuf_column = -1;
     icon_view->priv->text_column = -1;
     icon_view->priv->search_column = -1;
+    icon_view->priv->tooltip_surface_column = -1;
+    icon_view->priv->tooltip_text_column = -1;
     icon_view->priv->row_column = -1;
     icon_view->priv->col_column = -1;
 
@@ -1294,6 +1306,14 @@ xfdesktop_icon_view_set_property(GObject *object,
             xfdesktop_icon_view_set_sort_priority_column(icon_view, g_value_get_int(value));
             break;
 
+        case PROP_TOOLTIP_SURFACE_COLUMN:
+            xfdesktop_icon_view_set_tooltip_surface_column(icon_view, g_value_get_int(value));
+            break;
+
+        case PROP_TOOLTIP_TEXT_COLUMN:
+            xfdesktop_icon_view_set_tooltip_text_column(icon_view, g_value_get_int(value));
+            break;
+
         case PROP_ROW_COLUMN:
             xfdesktop_icon_view_set_row_column(icon_view, g_value_get_int(value));
             break;
@@ -1371,6 +1391,14 @@ xfdesktop_icon_view_get_property(GObject *object,
 
         case PROP_SORT_PRIORITY_COLUMN:
             g_value_set_int(value, icon_view->priv->sort_priority_column);
+            break;
+
+        case PROP_TOOLTIP_SURFACE_COLUMN:
+            g_value_set_int(value, icon_view->priv->tooltip_surface_column);
+            break;
+
+        case PROP_TOOLTIP_TEXT_COLUMN:
+            g_value_set_int(value, icon_view->priv->tooltip_text_column);
             break;
 
         case PROP_ROW_COLUMN:
@@ -1553,6 +1581,10 @@ xfdesktop_icon_view_invalidate_pixbuf_cache(XfdesktopIconView *icon_view)
         if (item->pixbuf_surface != NULL) {
             cairo_surface_destroy(item->pixbuf_surface);
             item->pixbuf_surface = NULL;
+        }
+        if (item->tooltip_surface != NULL) {
+            cairo_surface_destroy(item->tooltip_surface);
+            item->tooltip_surface = NULL;
         }
     }
 }
@@ -2054,10 +2086,62 @@ xfdesktop_icon_view_show_tooltip(GtkWidget *widget,
         return FALSE;
     }
 
-    if (view_item_get_iter(icon_view->priv->item_under_pointer, icon_view->priv->model, &iter)) {
-        g_signal_emit(icon_view, __signals[SIG_QUERY_ICON_TOOLTIP], 0,
-                      &iter, x, y, keyboard_tooltip, tooltip,
-                      &result);
+    if (!view_item_get_iter(icon_view->priv->item_under_pointer, icon_view->priv->model, &iter)) {
+        return FALSE;
+    }
+
+    g_signal_emit(icon_view, __signals[SIG_QUERY_ICON_TOOLTIP], 0,
+                  &iter, x, y, keyboard_tooltip, tooltip,
+                  &result);
+
+    if (!result && (icon_view->priv->tooltip_surface_column != -1 || icon_view->priv->tooltip_text_column != -1)) {
+        cairo_surface_t *surface = NULL;
+        gchar *tip_text = NULL;
+
+        if (icon_view->priv->tooltip_surface_column != -1) {
+            if (icon_view->priv->item_under_pointer->tooltip_surface != NULL) {
+                surface = cairo_surface_reference(icon_view->priv->item_under_pointer->tooltip_surface);
+            } else {
+                gtk_tree_model_get(icon_view->priv->model, &iter,
+                                   icon_view->priv->tooltip_surface_column, &surface,
+                                   -1);
+                if (surface != NULL) {
+                    icon_view->priv->item_under_pointer->tooltip_surface = cairo_surface_reference(surface);
+                }
+            }
+        }
+
+        if (icon_view->priv->tooltip_text_column != -1) {
+            gtk_tree_model_get(icon_view->priv->model, &iter,
+                               icon_view->priv->tooltip_text_column, &tip_text,
+                               -1);
+        }
+
+        if (surface != NULL || tip_text != NULL) {
+            GtkWidget *box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 8);
+
+            if (surface != NULL) {
+                GtkWidget *img = gtk_image_new_from_surface(surface);
+                cairo_surface_destroy(surface);
+                gtk_box_pack_start(GTK_BOX(box), img, FALSE, FALSE, 0);
+            }
+
+            if (tip_text != NULL) {
+                gchar *padded_tip_text = g_strdup_printf("%s\t", tip_text);
+                GtkWidget *label = gtk_label_new(padded_tip_text);
+
+                gtk_label_set_xalign(GTK_LABEL(label), 0.0);
+                gtk_label_set_yalign(GTK_LABEL(label), 0.5);
+                gtk_box_pack_start(GTK_BOX(box), label, TRUE, TRUE, 0);
+
+                g_free(padded_tip_text);
+            }
+
+            gtk_widget_show_all(box);
+            gtk_tooltip_set_custom(tooltip, box);
+
+            result = TRUE;
+        }
     }
 
     return result;
@@ -4709,6 +4793,10 @@ xfdesktop_icon_view_model_row_changed(GtkTreeModel *model,
             cairo_surface_destroy(item->pixbuf_surface);
             item->pixbuf_surface = NULL;
         }
+        if (item->tooltip_surface != NULL) {
+            cairo_surface_destroy(item->tooltip_surface);
+            item->tooltip_surface = NULL;
+        }
         xfdesktop_icon_view_invalidate_item(icon_view, item, TRUE);
     }
 }
@@ -4870,6 +4958,8 @@ xfdesktop_icon_view_set_model(XfdesktopIconView *icon_view,
         if (!xfdesktop_icon_view_validate_column_type(icon_view, model, icon_view->priv->pixbuf_column, CAIRO_GOBJECT_TYPE_SURFACE, GDK_TYPE_PIXBUF, "pixbuf-column", &pixbuf_column_type)
             || !xfdesktop_icon_view_validate_column_type(icon_view, model, icon_view->priv->text_column, G_TYPE_STRING, G_TYPE_NONE, "text-column", NULL)
             || !xfdesktop_icon_view_validate_column_type(icon_view, model, icon_view->priv->search_column, G_TYPE_STRING, G_TYPE_NONE, "search-column", NULL)
+            || !xfdesktop_icon_view_validate_column_type(icon_view, model, icon_view->priv->tooltip_surface_column, CAIRO_GOBJECT_TYPE_SURFACE, G_TYPE_NONE, "tooltip-surface-column", NULL)
+            || !xfdesktop_icon_view_validate_column_type(icon_view, model, icon_view->priv->tooltip_text_column, G_TYPE_STRING, G_TYPE_NONE, "tooltip-text-column", NULL)
             || !xfdesktop_icon_view_validate_column_type(icon_view, model, icon_view->priv->row_column, G_TYPE_INT, G_TYPE_NONE, "row-column", NULL)
             || !xfdesktop_icon_view_validate_column_type(icon_view, model, icon_view->priv->col_column, G_TYPE_INT, G_TYPE_NONE, "col-column", NULL))
         {
@@ -5008,6 +5098,20 @@ xfdesktop_icon_view_set_sort_priority_column(XfdesktopIconView *icon_view,
                                              gint column)
 {
     xfdesktop_icon_view_set_column(icon_view, column, &icon_view->priv->sort_priority_column, G_TYPE_INT, G_TYPE_NONE, "sort-priority-column", NULL);
+}
+
+void
+xfdesktop_icon_view_set_tooltip_surface_column(XfdesktopIconView *icon_view,
+                                               gint column)
+{
+    xfdesktop_icon_view_set_column(icon_view, column, &icon_view->priv->tooltip_surface_column, CAIRO_GOBJECT_TYPE_SURFACE, G_TYPE_NONE, "tooltip-surface-column", NULL);
+}
+
+void
+xfdesktop_icon_view_set_tooltip_text_column(XfdesktopIconView *icon_view,
+                                            gint column)
+{
+    xfdesktop_icon_view_set_column(icon_view, column, &icon_view->priv->tooltip_text_column, G_TYPE_STRING, G_TYPE_NONE, "tooltip-text-column", NULL);
 }
 
 void
