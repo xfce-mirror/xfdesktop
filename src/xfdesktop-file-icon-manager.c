@@ -224,8 +224,7 @@ static GdkDragAction xfdesktop_file_icon_manager_drop_propose_action(XfdesktopIc
                                                                      guint info,
                                                                      XfdesktopFileIconManager *fmanager);
 
-static void xfdesktop_file_icon_manager_populate_context_menu(XfdesktopIconViewManager *manager,
-                                                              GtkMenuShell *menu);
+static GtkMenu *xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager);
 static void xfdesktop_file_icon_manager_sort_icons(XfdesktopIconViewManager *manager,
                                                    GtkSortType sort_type);
 
@@ -371,7 +370,7 @@ xfdesktop_file_icon_manager_class_init(XfdesktopFileIconManagerClass *klass)
     gobject_class->dispose = xfdesktop_file_icon_manager_dispose;
     gobject_class->finalize = xfdesktop_file_icon_manager_finalize;
 
-    ivm_class->populate_context_menu = xfdesktop_file_icon_manager_populate_context_menu;
+    ivm_class->get_context_menu = xfdesktop_file_icon_manager_get_context_menu;
     ivm_class->sort_icons = xfdesktop_file_icon_manager_sort_icons;
 
     fmanager_signals[HIDDEN_STATE_CHANGED] = g_signal_new("hidden-state-changed",
@@ -1726,11 +1725,11 @@ xfdesktop_settings_launch(GtkWidget *w,
     g_free(cmd);
 }
 
-static void
-xfdesktop_file_icon_manager_populate_context_menu(XfdesktopIconViewManager *manager,
-                                                  GtkMenuShell *menu)
+static GtkMenu *
+xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager)
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(manager);
+    GtkWidget *menu;
     XfdesktopFileIcon *file_icon = NULL;
     GFileInfo *info = NULL;
     GList *selected;
@@ -1743,6 +1742,9 @@ xfdesktop_file_icon_manager_populate_context_menu(XfdesktopIconViewManager *mana
 #endif
 
     TRACE("ENTERING");
+
+    menu = gtk_menu_new();
+    gtk_menu_set_reserve_toggle_size(GTK_MENU(menu), FALSE);
 
     selected = xfdesktop_file_icon_manager_get_selected_icons(fmanager);
     if(!selected) {
@@ -2316,6 +2318,8 @@ xfdesktop_file_icon_manager_populate_context_menu(XfdesktopIconViewManager *mana
     }
 
     /* don't free |selected|.  the menu deactivated handler does that */
+
+    return GTK_MENU(menu);
 }
 
 static void

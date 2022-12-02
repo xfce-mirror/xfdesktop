@@ -470,17 +470,18 @@ xfdesktop_icon_view_manager_get_workarea(XfdesktopIconViewManager *manager,
     *workarea = manager->priv->workarea;
 }
 
-void
-xfdesktop_icon_view_manager_populate_context_menu(XfdesktopIconViewManager *manager,
-                                                  GtkMenuShell *menu)
+GtkMenu *
+xfdesktop_icon_view_manager_get_context_menu(XfdesktopIconViewManager *manager)
 {
     XfdesktopIconViewManagerClass *klass;
 
-    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW_MANAGER(manager));
+    g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW_MANAGER(manager), NULL);
 
     klass = XFDESKTOP_ICON_VIEW_MANAGER_GET_CLASS(manager);
-    if (klass->populate_context_menu != NULL) {
-        klass->populate_context_menu(manager, menu);
+    if (klass->get_context_menu != NULL) {
+        return klass->get_context_menu(manager);
+    } else {
+        return NULL;
     }
 }
 
