@@ -29,8 +29,7 @@
 #include <glib.h>
 #include <gdk/gdk.h>
 #include <gtk/gtk.h>
-
-#include <X11/Xlib.h>
+#include <libxfce4windowing/libxfce4windowing.h>
 
 #include <stdarg.h>
 
@@ -117,6 +116,11 @@ gint xfdesktop_get_monitor_num(GdkDisplay *display,
                                GdkMonitor *monitor);
 
 gint xfdesktop_get_current_monitor_num(GdkDisplay *display);
+
+gboolean xfdesktop_workspace_get_number_and_total(XfwWorkspaceManager *workspace_manager,
+                                                  XfwWorkspace *workspace,
+                                                  gint *workspace_number,
+                                                  gint *total_workspace_count);
 
 void xfdesktop_tree_path_free(gpointer data);
 
