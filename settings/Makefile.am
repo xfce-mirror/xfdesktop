@@ -11,13 +11,12 @@ xfdesktop_settings_CFLAGS =						\
 	-I$(top_srcdir)/src 						\
 	$(LIBEXO_CFLAGS)							\
 	$(LIBXFCE4UI_CFLAGS)						\
+	$(LIBXFCE4WINDOWING_CFLAGS)					\
 	$(XFCONF_CFLAGS)							\
 	$(GTHREAD_CFLAGS)							\
 	$(LIBX11_CFLAGS)							\
-	$(LIBWNCK_CFLAGS) 							\
 	-DG_LOG_DOMAIN=\"xfdesktop-settings\"		\
 	-DEXO_API_SUBJECT_TO_CHANGE					\
-	-DWNCK_I_KNOW_THIS_IS_UNSTABLE 				\
 	-DLOCALEDIR=\"$(localedir)\"				\
 	-DDATADIR=\"$(datadir)\"					\
 	-DBINDIR=\"$(bindir)\"
@@ -26,9 +25,9 @@ xfdesktop_settings_LDADD =						\
 	$(top_builddir)/common/libxfdesktop.la		\
 	$(XFCONF_LIBS)								\
 	$(LIBXFCE4UI_LIBS)							\
+	$(LIBXFCE4WINDOWING_LIBS)					\
 	$(LIBEXO_LIBS)								\
 	$(GTHREAD_LIBS)								\
-	$(LIBWNCK_LIBS) 							\
 	$(LIBX11_LIBS)								\
 	$(GTK_LIBS)
 
