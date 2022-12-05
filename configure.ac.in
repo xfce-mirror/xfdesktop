@@ -15,8 +15,8 @@ m4_define([xfdesktop_version_tag], [git])
 m4_define([xfdesktop_version], [xfdesktop_version_major().xfdesktop_version_minor().xfdesktop_version_micro()ifelse(xfdesktop_version_nano(), [], [], [.xfdesktop_version_nano()])ifelse(xfdesktop_version_tag(), [git], [xfdesktop_version_tag()-xfdesktop_version_build()], [xfdesktop_version_tag()])])
 
 dnl minimum required versions
-m4_define([glib_minimum_version], [2.50.0])
-m4_define([gtk_minimum_version], [3.22.0])
+m4_define([glib_minimum_version], [2.66.0])
+m4_define([gtk_minimum_version], [3.24.0])
 m4_define([libxfce4util_minimum_version], [4.13.0])
 m4_define([libxfce4ui_minimum_version], [4.13.0])
 m4_define([garcon_minimum_version], [0.6.0])
@@ -25,7 +25,7 @@ m4_define([thunar_minimum_version], [4.17.10])
 m4_define([wnck_minimum_version], [3.14])
 m4_define([intltool_minimum_version], [0.31])
 m4_define([xfconf_minimum_version], [4.12.1])
-m4_define([cairo_minimum_version], [1.12])
+m4_define([cairo_minimum_version], [1.16])
 
 dnl define a short version string for xfdesktop
 m4_append([xfdesktop_version_short], ["])
