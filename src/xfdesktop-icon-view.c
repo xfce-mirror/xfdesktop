@@ -583,9 +583,6 @@ static void xfdesktop_icon_view_unselect_item_internal(XfdesktopIconView *icon_v
                                                        ViewItem *item,
                                                        gboolean emit_signal);
 
-static gboolean xfdesktop_grid_get_next_free_position(XfdesktopIconView *icon_view,
-                                                      gint *row,
-                                                      gint *col);
 static void xfdesktop_icon_view_size_grid(XfdesktopIconView *icon_view);
 static inline gboolean xfdesktop_grid_is_free_position(XfdesktopIconView *icon_view,
                                                        gint row,
@@ -3190,7 +3187,7 @@ xfdesktop_icon_view_place_item(XfdesktopIconView *icon_view,
         }
     }
 
-    if (!item->placed && xfdesktop_grid_get_next_free_position(icon_view, &row, &col)) {
+    if (!item->placed && xfdesktop_icon_view_get_next_free_grid_position(icon_view, -1, -1, &row, &col)) {
         xfdesktop_icon_view_place_item_at(icon_view, item, row, col);
     }
 
@@ -4320,57 +4317,117 @@ xfdesktop_grid_is_free_position(XfdesktopIconView *icon_view,
     return !icon_view->priv->grid_layout[col * icon_view->priv->nrows + row];
 }
 
-
-static gboolean
-xfdesktop_grid_get_next_free_position(XfdesktopIconView *icon_view,
-                                      gint *row,
-                                      gint *col)
+static inline gboolean
+next_pos(XfdesktopIconView *icon_view,
+         gint row,
+         gint col,
+         gint *next_row,
+         gint *next_col)
 {
-    gint i, j, c, r, idx;
+    g_return_val_if_fail((row == -1 && col == -1) || (row != -1 && col != -1), FALSE);
+    g_return_val_if_fail(next_row != NULL && next_col != NULL, FALSE);
 
-    g_return_val_if_fail(row && col, FALSE);
+    if (row == -1 && col == -1) {
+        if ((icon_view->priv->gravity & XFDESKTOP_ICON_VIEW_GRAVITY_BOTTOM) != 0) {
+            *next_row = icon_view->priv->nrows - 1;
+        } else {
+            *next_row = 0;
+        }
 
-    if(icon_view->priv->gravity & XFDESKTOP_ICON_VIEW_GRAVITY_HORIZONTAL) {
-        for(j = 0; j < icon_view->priv->nrows; ++j) {
-            r = (icon_view->priv->gravity & XFDESKTOP_ICON_VIEW_GRAVITY_BOTTOM) ?
-                 icon_view->priv->nrows - 1 - j : j;
+        if ((icon_view->priv->gravity & XFDESKTOP_ICON_VIEW_GRAVITY_RIGHT) != 0) {
+            *next_col = icon_view->priv->ncols - 1;
+        } else {
+            *next_col = 0;
+        }
+    } else if ((icon_view->priv->gravity & XFDESKTOP_ICON_VIEW_GRAVITY_HORIZONTAL) != 0) {
+        if ((icon_view->priv->gravity & XFDESKTOP_ICON_VIEW_GRAVITY_RIGHT) != 0) {
+            col -= 1;
+        } else {
+            col += 1;
+        }
 
-            for(i = 0; i < icon_view->priv->ncols; ++i) {
-                c = (icon_view->priv->gravity & XFDESKTOP_ICON_VIEW_GRAVITY_RIGHT) ?
-                     icon_view->priv->ncols - 1 - i : i;
+        if (col < 0 || col >= icon_view->priv->ncols) {
+            if (col < 0) {
+                col = icon_view->priv->ncols - 1;
+            } else {
+                col = 0;
+            }
 
-                idx = c * icon_view->priv->nrows + r;
-
-                if(!icon_view->priv->grid_layout[idx]) {
-                    *col = c;
-                    *row = r;
-                    return TRUE;
+            if ((icon_view->priv->gravity & XFDESKTOP_ICON_VIEW_GRAVITY_BOTTOM) != 0) {
+                row -= 1;
+                if (row < 0) {
+                    return FALSE;
+                }
+            } else {
+                row += 1;
+                if (row >= icon_view->priv->nrows) {
+                    return FALSE;
                 }
             }
         }
+
+        *next_row = row;
+        *next_col = col;
     } else {
-        for(i = 0; i < icon_view->priv->ncols; ++i) {
-            c = (icon_view->priv->gravity & XFDESKTOP_ICON_VIEW_GRAVITY_RIGHT) ?
-                 icon_view->priv->ncols - 1 - i : i;
+        if ((icon_view->priv->gravity & XFDESKTOP_ICON_VIEW_GRAVITY_BOTTOM) != 0) {
+            row -= 1;
+        } else {
+            row += 1;
+        }
 
-            for(j = 0; j < icon_view->priv->nrows; ++j) {
-                r = (icon_view->priv->gravity & XFDESKTOP_ICON_VIEW_GRAVITY_BOTTOM) ?
-                    icon_view->priv->nrows - 1 - j : j;
+        if (row < 0 || row >= icon_view->priv->nrows) {
+            if (row < 0) {
+                row = icon_view->priv->nrows - 1;
+            } else {
+                row = 0;
+            }
 
-                idx = c * icon_view->priv->nrows + r;
-
-                if(!icon_view->priv->grid_layout[idx]) {
-                    *col = c;
-                    *row = r;
-                    return TRUE;
+            if ((icon_view->priv->gravity & XFDESKTOP_ICON_VIEW_GRAVITY_RIGHT) != 0) {
+                col -= 1;
+                if (col < 0) {
+                    return FALSE;
+                }
+            } else {
+                col += 1;
+                if (col >= icon_view->priv->ncols) {
+                    return FALSE;
                 }
             }
+        }
+
+        *next_row = row;
+        *next_col = col;
+    }
+
+    return TRUE;
+}
+
+gboolean
+xfdesktop_icon_view_get_next_free_grid_position(XfdesktopIconView *icon_view,
+                                                gint row,
+                                                gint col,
+                                                gint *next_row,
+                                                gint *next_col)
+{
+    gint cur_row = row;
+    gint cur_col = col;
+
+    g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view), FALSE);
+    g_return_val_if_fail(row >= -1 && row < icon_view->priv->nrows, FALSE);
+    g_return_val_if_fail(col >= -1 && col < icon_view->priv->ncols, FALSE);
+    g_return_val_if_fail(next_row != NULL && next_col != NULL, FALSE);
+
+    while (next_pos(icon_view, cur_row, cur_col, &cur_row, &cur_col)) {
+        gint idx = cur_col * icon_view->priv->nrows + cur_row;
+        if (icon_view->priv->grid_layout[idx] == NULL) {
+            *next_row = cur_row;
+            *next_col = cur_col;
+            return TRUE;
         }
     }
 
     return FALSE;
 }
-
 
 static inline void
 xfdesktop_grid_set_position_free(XfdesktopIconView *icon_view,

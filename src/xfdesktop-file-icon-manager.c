@@ -85,6 +85,42 @@
 
 #define VOLUME_HASH_STR_PREFIX  "xfdesktop-volume-"
 
+#define PENDING_NEW_FILES_TIMEOUT  (60)
+
+typedef struct
+{
+    GFile *file;
+    gint row;
+    gint col;
+} PendingNewFile;
+
+static PendingNewFile *
+pending_new_file_new(GFile *file,
+                     gint row,
+                     gint col)
+{
+    PendingNewFile *pnfile;
+
+    g_return_val_if_fail(G_IS_FILE(file), NULL);
+    g_return_val_if_fail(row >= 0 && col >= 0, NULL);
+
+    pnfile = g_slice_new0(PendingNewFile);
+    pnfile->file = g_object_ref(file);
+    pnfile->row = row;
+    pnfile->col = col;
+
+    return pnfile;
+}
+
+static void
+pending_new_file_free(PendingNewFile *pnfile)
+{
+    g_return_if_fail(pnfile != NULL);
+
+    g_object_unref(pnfile->file);
+    g_slice_free(PendingNewFile, pnfile);
+}
+
 typedef enum
 {
     PROP0 = 0,
@@ -136,6 +172,9 @@ struct _XfdesktopFileIconManagerPrivate
     //   * Special file icons: xfdesktop_file_icon_sort_key_for_file()
     //   * Volume icons: xfdesktop_volume_icon_sort_key_for_volume()
     GHashTable *icons;
+
+    GList *pending_new_files;
+    guint pending_new_files_id;
 
     gboolean show_removable_media;
     gboolean show_network_volumes;
@@ -837,6 +876,11 @@ xfdesktop_file_icon_manager_finalize(GObject *obj)
 
     g_object_unref(fmanager->priv->folder);
     g_object_unref(fmanager->priv->thumbnailer);
+
+    if (fmanager->priv->pending_new_files_id != 0) {
+        g_source_remove(fmanager->priv->pending_new_files_id);
+    }
+    g_list_free_full(fmanager->priv->pending_new_files, (GDestroyNotify)pending_new_file_free);
 
     G_OBJECT_CLASS(xfdesktop_file_icon_manager_parent_class)->finalize(obj);
 }
@@ -3017,6 +3061,17 @@ xfdesktop_file_icon_manager_populate_icons(XfdesktopFileIconManager *fmanager)
     xfdesktop_file_icon_manager_load_desktop_folder(fmanager);
 }
 
+static gint
+find_pending_new_file(PendingNewFile *pnfile,
+                      GFile *file)
+{
+    if (g_file_equal(pnfile->file, file)) {
+        return 0;
+    } else {
+        return g_file_hash(file) - g_file_hash(pnfile->file);
+    }
+}
+
 static void
 xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
                                          GFile            *file,
@@ -3027,7 +3082,7 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
     XfdesktopFileIcon *icon, *moved_icon;
     GFileInfo *file_info;
-    gint16 row = 0, col = 0;
+    gint16 row = -1, col = -1;
     gchar *filename;
 
     switch(event) {
@@ -3133,6 +3188,7 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
         case G_FILE_MONITOR_EVENT_MOVED_IN:
         case G_FILE_MONITOR_EVENT_CREATED: {
             gchar *ht_key;
+            GList *pnfile_link;
 
             XF_DEBUG("got created event");
 
@@ -3150,12 +3206,28 @@ xfdesktop_file_icon_manager_file_changed(GFileMonitor     *monitor,
                 xfdesktop_file_icon_manager_remove_icon(fmanager, icon);
             }
 
+            pnfile_link = g_list_find_custom(fmanager->priv->pending_new_files, file, (GCompareFunc)find_pending_new_file);
+            if (pnfile_link != NULL) {
+                PendingNewFile *pnfile = (PendingNewFile *)pnfile_link->data;
+
+                row = pnfile->row;
+                col = pnfile->col;
+
+                fmanager->priv->pending_new_files = g_list_remove_link(fmanager->priv->pending_new_files, pnfile_link);
+                pending_new_file_free(pnfile);
+
+                if (fmanager->priv->pending_new_files == NULL && fmanager->priv->pending_new_files_id != 0) {
+                    g_source_remove(fmanager->priv->pending_new_files_id);
+                    fmanager->priv->pending_new_files_id = 0;
+                }
+            }
+
             file_info = g_file_query_info(file, XFDESKTOP_FILE_INFO_NAMESPACE,
                                           G_FILE_QUERY_INFO_NONE, NULL, NULL);
             if(file_info) {
                 xfdesktop_file_icon_manager_add_regular_icon(fmanager,
                                                              file, file_info,
-                                                             -1, -1,
+                                                             row, col,
                                                              TRUE);
 
                 g_object_unref(file_info);
@@ -3758,6 +3830,14 @@ xfdesktop_file_icon_manager_drag_drop_ask(XfdesktopIconView *icon_view,
     return response;
 }
 
+static gboolean
+xfdesktop_file_icon_manager_pending_files_timeout(XfdesktopFileIconManager *fmanager)
+{
+    fmanager->priv->pending_new_files_id = 0;
+    g_list_free_full(fmanager->priv->pending_new_files, (GDestroyNotify)pending_new_file_free);
+    return FALSE;
+}
+
 static void
 xfdesktop_file_icon_manager_drag_item_data_received(XfdesktopIconView *icon_view,
                                                     GdkDragContext *context,
@@ -3931,9 +4011,12 @@ xfdesktop_file_icon_manager_drag_item_data_received(XfdesktopIconView *icon_view
                                                  GTK_WINDOW(toplevel));
             } else {
                 GFile *base_dest_file = NULL;
-                GList *l, *dest_file_list = NULL;
+                GList *dest_file_list = NULL;
                 gboolean dest_is_volume = (drop_icon
                                            && XFDESKTOP_IS_VOLUME_ICON(drop_icon));
+                gint cur_row = row;
+                gint cur_col = col;
+                gboolean pending_new_files_added = FALSE;
 
                 /* if it's a volume, but we don't have |tinfo|, this just isn't
                  * going to work */
@@ -3949,7 +4032,7 @@ xfdesktop_file_icon_manager_drag_item_data_received(XfdesktopIconView *icon_view
                     base_dest_file = g_object_ref(fmanager->priv->folder);
                 }
 
-                for (l = file_list; l; l = l->next) {
+                for (GList *l = file_list; l; l = l->next) {
                     gchar *dest_basename = g_file_get_basename(l->data);
 
                     if(dest_basename && *dest_basename != '\0') {
@@ -3962,12 +4045,37 @@ xfdesktop_file_icon_manager_drag_item_data_received(XfdesktopIconView *icon_view
                         } else {
                             dest_file_list = g_list_prepend(dest_file_list, base_dest_file);
                         }
+
+                        if (drop_icon == NULL && row != -1 && col != -1) {
+                            // We are copying/moving/linking new files onto the desktop.  In order to later place them
+                            // correctly (when the GFileMonitor gets notified about them), we need to store a little
+                            // bit of data about the new files based on the drop location.
+                            PendingNewFile *pnfile = pending_new_file_new(g_file_get_child(base_dest_file, dest_basename), cur_row, cur_col);
+                            fmanager->priv->pending_new_files = g_list_prepend(fmanager->priv->pending_new_files, pnfile);
+                            pending_new_files_added = TRUE;
+                            if (!xfdesktop_icon_view_get_next_free_grid_position(icon_view,
+                                                                                 cur_row, cur_col,
+                                                                                 &cur_row, &cur_col))
+                            {
+                                cur_row = -1;
+                                cur_col = -1;
+                            }
+                        }
                     }
 
                     g_free(dest_basename);
                 }
 
                 g_object_unref(base_dest_file);
+
+                if (pending_new_files_added) {
+                    if (fmanager->priv->pending_new_files_id != 0) {
+                        g_source_remove(fmanager->priv->pending_new_files_id);
+                    }
+                    fmanager->priv->pending_new_files_id = g_timeout_add_seconds(PENDING_NEW_FILES_TIMEOUT,
+                                                                                 (GSourceFunc)xfdesktop_file_icon_manager_pending_files_timeout,
+                                                                                 fmanager);
+                }
 
                 if(dest_file_list) {
                     dest_file_list = g_list_reverse(dest_file_list);

@@ -86,6 +86,8 @@ static void
 xfdesktop_icon_init(XfdesktopIcon *icon)
 {
     icon->priv = xfdesktop_icon_get_instance_private(icon);
+    icon->priv->row = -1;
+    icon->priv->col = -1;
 }
 
 void
