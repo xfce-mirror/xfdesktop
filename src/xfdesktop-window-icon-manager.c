@@ -43,6 +43,8 @@
 #include "xfdesktop-window-icon-model.h"
 #include "xfdesktop-common.h"
 
+#define TARGET_TEXT 1000
+
 static void xfdesktop_window_icon_manager_constructed(GObject *object);
 static void xfdesktop_window_icon_manager_dispose(GObject *obj);
 static void xfdesktop_window_icon_manager_finalize(GObject *obj);
@@ -56,6 +58,16 @@ static void xfdesktop_window_icon_manager_icon_moved(XfdesktopIconView *icon_vie
                                                      gint row,
                                                      gint col,
                                                      XfdesktopWindowIconManager *wmanager);
+
+static GdkDragAction xfdesktop_window_icon_manager_drag_actions_get(XfdesktopIconView *icon_view,
+                                                                    GtkTreeIter *iter,
+                                                                    XfdesktopWindowIconManager *wmanager);
+static void xfdesktop_window_icon_manager_drag_data_get(GtkWidget *icon_view,
+                                                        GdkDragContext *context,
+                                                        GtkSelectionData *data,
+                                                        guint info,
+                                                        guint time_,
+                                                        XfdesktopWindowIconManager *wmanager);
 static GdkDragAction xfdesktop_window_icon_manager_drop_propose_action(XfdesktopIconView *icon_view,
                                                                        GdkDragContext *context,
                                                                        GtkTreeIter *iter,
@@ -148,10 +160,18 @@ xfdesktop_window_icon_manager_constructed(GObject *object)
     XfdesktopWindowIconManager *wmanager = XFDESKTOP_WINDOW_ICON_MANAGER(object);
     GList *workspace_groups;
     GtkWidget *parent;
+    GtkTargetList *text_target_list;
+    GtkTargetEntry *text_targets;
+    gint n_text_targets = 0;
 
     DBG("entering");
 
     G_OBJECT_CLASS(xfdesktop_window_icon_manager_parent_class)->constructed(object);
+
+    text_target_list = gtk_target_list_new(NULL, 0);
+    gtk_target_list_add_text_targets(text_target_list, TARGET_TEXT);
+    text_targets = gtk_target_table_new_from_list(text_target_list, &n_text_targets);
+    gtk_target_list_unref(text_target_list);
 
     parent = xfdesktop_icon_view_manager_get_parent(XFDESKTOP_ICON_VIEW_MANAGER(wmanager));
     wmanager->priv->icon_view = g_object_new(XFDESKTOP_TYPE_ICON_VIEW,
@@ -166,6 +186,11 @@ xfdesktop_window_icon_manager_constructed(GObject *object)
                                              NULL);
     xfdesktop_icon_view_set_selection_mode(XFDESKTOP_ICON_VIEW(wmanager->priv->icon_view),
                                            GTK_SELECTION_SINGLE);
+    xfdesktop_icon_view_enable_drag_source(XFDESKTOP_ICON_VIEW(wmanager->priv->icon_view),
+                                           GDK_SHIFT_MASK | GDK_CONTROL_MASK | GDK_BUTTON1_MASK,
+                                           text_targets, n_text_targets,
+                                           GDK_ACTION_COPY);
+    gtk_target_table_free(text_targets, n_text_targets);
     gtk_widget_show(wmanager->priv->icon_view);
     gtk_container_add(GTK_CONTAINER(parent), wmanager->priv->icon_view);
 
@@ -176,6 +201,10 @@ xfdesktop_window_icon_manager_constructed(GObject *object)
                      G_CALLBACK(xfdesktop_window_icon_manager_icon_activated), wmanager);
     g_signal_connect(wmanager->priv->icon_view, "icon-moved",
                      G_CALLBACK(xfdesktop_window_icon_manager_icon_moved), wmanager);
+    g_signal_connect(wmanager->priv->icon_view, "drag-actions-get",
+                     G_CALLBACK(xfdesktop_window_icon_manager_drag_actions_get), wmanager);
+    g_signal_connect(wmanager->priv->icon_view, "drag-data-get",
+                     G_CALLBACK(xfdesktop_window_icon_manager_drag_data_get), wmanager);
     g_signal_connect(wmanager->priv->icon_view, "drop-propose-action",
                      G_CALLBACK(xfdesktop_window_icon_manager_drop_propose_action), wmanager);
 
@@ -350,6 +379,53 @@ xfdesktop_window_icon_manager_icon_moved(XfdesktopIconView *icon_view,
 {
     xfdesktop_window_icon_model_set_position(wmanager->priv->icon_workspaces[wmanager->priv->active_ws_num].model,
                                              iter, row, col);
+}
+
+static GdkDragAction
+xfdesktop_window_icon_manager_drag_actions_get(XfdesktopIconView *icon_view,
+                                             GtkTreeIter *iter,
+                                             XfdesktopWindowIconManager *wmanager)
+{
+    XfwWindow *window = xfdesktop_window_icon_model_get_window(wmanager->priv->icon_workspaces[wmanager->priv->active_ws_num].model, iter);
+
+    if (window != NULL) {
+        return GDK_ACTION_COPY;
+    } else {
+        return 0;
+    }
+}
+
+static void
+xfdesktop_window_icon_manager_drag_data_get(GtkWidget *icon_view,
+                                            GdkDragContext *context,
+                                            GtkSelectionData *data,
+                                            guint info,
+                                            guint time_,
+                                            XfdesktopWindowIconManager *wmanager)
+{
+    if (info == TARGET_TEXT) {
+        GList *selected_items = xfdesktop_icon_view_get_selected_items(XFDESKTOP_ICON_VIEW(icon_view));
+
+        if (selected_items != NULL) {
+            XfdesktopWindowIconModel *model = wmanager->priv->icon_workspaces[wmanager->priv->active_ws_num].model;
+            GtkTreePath *path = (GtkTreePath *)selected_items->data;
+            GtkTreeIter iter;
+
+            if (gtk_tree_model_get_iter(GTK_TREE_MODEL(model), &iter, path)) {
+                XfwWindow *window = xfdesktop_window_icon_model_get_window(model, &iter);
+
+                if (window != NULL) {
+                    const gchar *name = xfw_window_get_name(window);
+
+                    if (name != NULL && name[0] != '\0') {
+                        gtk_selection_data_set_text(data, name, strlen(name));
+                    }
+                }
+            }
+
+            g_list_free(selected_items);
+        }
+    }
 }
 
 static GdkDragAction
