@@ -647,9 +647,6 @@ static gboolean xfdesktop_icon_view_real_move_cursor(XfdesktopIconView *icon_vie
                                                      GtkMovementStep step,
                                                      gint count);
 
-static void xfdesktop_icon_view_move_cursor_left_right(XfdesktopIconView *icon_view,
-                                                       gint count,
-                                                       GdkModifierType modmask);
 static void xfdesktop_icon_view_select_between(XfdesktopIconView *icon_view,
                                                ViewItem *start_item,
                                                ViewItem *end_item);
@@ -3739,134 +3736,83 @@ xfdesktop_icon_view_find_last_icon(XfdesktopIconView *icon_view)
 }
 
 static void
-xfdesktop_icon_view_move_cursor_left_right(XfdesktopIconView *icon_view,
-                                           gint count,
-                                           GdkModifierType modmask)
+xfdesktop_icon_view_move_cursor_direction(XfdesktopIconView *icon_view,
+                                          GtkDirectionType direction,
+                                          guint count,
+                                          GdkModifierType modmask)
 {
-    guint left = (count < 0 ? -count : count);
-    gint step = (count < 0 ? -1 : 1);
+    g_return_if_fail(direction == GTK_DIR_UP
+                     || direction == GTK_DIR_DOWN
+                     || direction == GTK_DIR_LEFT
+                     || direction == GTK_DIR_RIGHT);
 
-    if(!icon_view->priv->cursor) {
+    if (icon_view->priv->cursor == NULL) {
         ViewItem *item = NULL;
 
-        /* choose first or last item depending on left or right */
-        if (count < 0) {
+        /* choose first or last item depending on left/up or right/down */
+        if (direction == GTK_DIR_LEFT || direction == GTK_DIR_UP) {
             item = xfdesktop_icon_view_find_last_icon(icon_view);
         } else {
             item = xfdesktop_icon_view_find_first_icon(icon_view);
         }
 
         if (item != NULL) {
-            if(!(modmask & GDK_CONTROL_MASK))
+            if ((modmask & GDK_CONTROL_MASK) == 0) {
                 xfdesktop_icon_view_unselect_all(icon_view);
+            }
             icon_view->priv->cursor = item;
             xfdesktop_icon_view_select_item_internal(icon_view, item, TRUE);
         }
     } else {
+        guint remaining = count;
+        gint step = direction == GTK_DIR_UP || direction == GTK_DIR_LEFT ? -1 : 1;
         gint row = icon_view->priv->cursor->row;
         gint col = icon_view->priv->cursor->col;
+        gboolean row_major = direction == GTK_DIR_LEFT || direction == GTK_DIR_RIGHT;
 
         if (row < 0 || col < 0) {
             return;
         }
 
-        xfdesktop_icon_view_invalidate_item(icon_view, icon_view->priv->cursor, FALSE);
+        if (!icon_view->priv->cursor->selected) {
+            xfdesktop_icon_view_invalidate_item(icon_view, icon_view->priv->cursor, FALSE);
+        }
 
-        if(!(modmask & (GDK_SHIFT_MASK|GDK_CONTROL_MASK)))
+        if ((modmask & (GDK_SHIFT_MASK | GDK_CONTROL_MASK)) == 0) {
             xfdesktop_icon_view_unselect_all(icon_view);
+        }
 
-        for(gint i = row;
-            (count < 0 ? i >= 0 : i < icon_view->priv->nrows) && left > 0;
+        for(gint i = row_major ? row : col;
+            remaining > 0 && (row_major
+                              ? (step < 0 ? i >= 0 : i < icon_view->priv->nrows)
+                              : (step < 0 ? i >= 0 : i < icon_view->priv->ncols));
             i += step)
         {
-            for(gint j = (i == row ? col + step : (count < 0) ? icon_view->priv->ncols - 1 : 0);
-                (count < 0 ? j >= 0 : j < icon_view->priv->ncols) && left > 0;
+            for(gint j = row_major
+                         ? (i == row ? col + step : (step < 0) ? icon_view->priv->ncols - 1 : 0)
+                         : (i == col ? row + step : (step < 0) ? icon_view->priv->nrows - 1 : 0);
+                remaining > 0 && (row_major
+                                  ? (step < 0 ? j >= 0 : j < icon_view->priv->ncols)
+                                  : (step < 0 ? j >= 0 : j < icon_view->priv->nrows));
                 j += step)
             {
-                ViewItem *item = xfdesktop_icon_view_item_in_slot(icon_view, i, j);
+                gint slot_row = row_major ? i : j;
+                gint slot_col = row_major ? j : i;
+                ViewItem *item = xfdesktop_icon_view_item_in_slot(icon_view, slot_row, slot_col);
+
                 if (item != NULL) {
                     icon_view->priv->cursor = item;
-                    if((modmask & (GDK_SHIFT_MASK|GDK_CONTROL_MASK)) || left == 1)
+                    if ((modmask & (GDK_SHIFT_MASK | GDK_CONTROL_MASK)) != 0 || remaining == 1) {
                         xfdesktop_icon_view_select_item_internal(icon_view, item, TRUE);
-                    left--;
+                    }
+                    remaining -= 1;
                 }
             }
         }
 
         if (icon_view->priv->selected_items == NULL) {
             ViewItem *item;
-            if (count < 0) {
-                item = xfdesktop_icon_view_find_first_icon(icon_view);
-            } else {
-                item = xfdesktop_icon_view_find_last_icon(icon_view);
-            }
-
-            if (item != NULL) {
-                icon_view->priv->cursor = item;
-                xfdesktop_icon_view_select_item_internal(icon_view, item, TRUE);
-            }
-        }
-    }
-}
-
-static void
-xfdesktop_icon_view_move_cursor_up_down(XfdesktopIconView *icon_view,
-                                        gint count,
-                                        GdkModifierType modmask)
-{
-    guint left = (count < 0 ? -count : count);
-    gint step = (count < 0 ? -1 : 1);
-
-    if(!icon_view->priv->cursor) {
-        ViewItem *item;
-
-        /* choose first or last item depending on up or down */
-        if(count < 0) {
-            item = xfdesktop_icon_view_find_last_icon(icon_view);
-        } else {
-            item = xfdesktop_icon_view_find_first_icon(icon_view);
-        }
-
-        if (item != NULL) {
-            if(!(modmask & GDK_CONTROL_MASK))
-                xfdesktop_icon_view_unselect_all(icon_view);
-            icon_view->priv->cursor = item;
-            xfdesktop_icon_view_select_item_internal(icon_view, item, TRUE);
-        }
-    } else {
-        gint row = icon_view->priv->cursor->row;
-        gint col = icon_view->priv->cursor->col;
-
-        if (row < 0 || col < 0) {
-            return;
-        }
-
-        xfdesktop_icon_view_invalidate_item(icon_view, icon_view->priv->cursor, FALSE);
-
-        if(!(modmask & (GDK_SHIFT_MASK|GDK_CONTROL_MASK)))
-            xfdesktop_icon_view_unselect_all(icon_view);
-
-        for(gint j = col;
-            (count < 0 ? j >= 0 : j < icon_view->priv->ncols) && left > 0;
-            j += step)
-        {
-            for(gint i = (j == col ? row + step : (count < 0) ? icon_view->priv->nrows - 1 : 0);
-                (count < 0 ? i >= 0 : i < icon_view->priv->nrows) && left > 0;
-                i += step)
-            {
-                ViewItem *item = xfdesktop_icon_view_item_in_slot(icon_view, i, j);
-                if (item != NULL) {
-                    icon_view->priv->cursor = item;
-                    if((modmask & (GDK_SHIFT_MASK|GDK_CONTROL_MASK)) || left == 1)
-                        xfdesktop_icon_view_select_item_internal(icon_view, item, TRUE);
-                    left--;
-                }
-            }
-        }
-
-        if (icon_view->priv->selected_items == NULL) {
-            ViewItem *item;
-            if (count < 0) {
+            if (step < 0) {
                 item = xfdesktop_icon_view_find_first_icon(icon_view);
             } else {
                 item = xfdesktop_icon_view_find_last_icon(icon_view);
@@ -3935,11 +3881,17 @@ xfdesktop_icon_view_real_move_cursor(XfdesktopIconView *icon_view,
 
     switch(step) {
         case GTK_MOVEMENT_VISUAL_POSITIONS:
-            xfdesktop_icon_view_move_cursor_left_right(icon_view, count, modmask);
+            xfdesktop_icon_view_move_cursor_direction(icon_view,
+                                                      count > 0 ? GTK_DIR_RIGHT : GTK_DIR_LEFT,
+                                                      ABS(count),
+                                                      modmask);
             break;
 
         case GTK_MOVEMENT_DISPLAY_LINES:
-            xfdesktop_icon_view_move_cursor_up_down(icon_view, count, modmask);
+            xfdesktop_icon_view_move_cursor_direction(icon_view,
+                                                      count > 0 ? GTK_DIR_DOWN : GTK_DIR_UP,
+                                                      ABS(count),
+                                                      modmask);
             break;
 
         case GTK_MOVEMENT_BUFFER_ENDS:
@@ -4207,18 +4159,19 @@ xfdesktop_icon_view_select_item_internal(XfdesktopIconView *icon_view,
                                          ViewItem *item,
                                          gboolean emit_signal)
 {
-    g_return_if_fail(!item->selected);
+    if (!item->selected) {
+        if (icon_view->priv->sel_mode == GTK_SELECTION_SINGLE) {
+            xfdesktop_icon_view_unselect_all(icon_view);
+        }
 
-    if (icon_view->priv->sel_mode == GTK_SELECTION_SINGLE)
-        xfdesktop_icon_view_unselect_all(icon_view);
+        item->selected = TRUE;
+        icon_view->priv->selected_items = g_list_prepend(icon_view->priv->selected_items, item);
 
-    item->selected = TRUE;
-    icon_view->priv->selected_items = g_list_prepend(icon_view->priv->selected_items, item);
+        xfdesktop_icon_view_invalidate_item(icon_view, item, TRUE);
 
-    xfdesktop_icon_view_invalidate_item(icon_view, item, TRUE);
-
-    if (emit_signal) {
-        g_signal_emit(icon_view, __signals[SIG_ICON_SELECTION_CHANGED], 0);
+        if (emit_signal) {
+            g_signal_emit(icon_view, __signals[SIG_ICON_SELECTION_CHANGED], 0);
+        }
     }
 }
 
@@ -4227,15 +4180,15 @@ xfdesktop_icon_view_unselect_item_internal(XfdesktopIconView *icon_view,
                                            ViewItem *item,
                                            gboolean emit_signal)
 {
-    g_return_if_fail(item->selected);
+    if (item->selected) {
+        item->selected = FALSE;
+        icon_view->priv->selected_items = g_list_remove(icon_view->priv->selected_items, item);
 
-    item->selected = FALSE;
-    icon_view->priv->selected_items = g_list_remove(icon_view->priv->selected_items, item);
+        xfdesktop_icon_view_invalidate_item(icon_view, item, TRUE);
 
-    xfdesktop_icon_view_invalidate_item(icon_view, item, TRUE);
-
-    if (emit_signal) {
-        g_signal_emit(icon_view, __signals[SIG_ICON_SELECTION_CHANGED], 0);
+        if (emit_signal) {
+            g_signal_emit(icon_view, __signals[SIG_ICON_SELECTION_CHANGED], 0);
+        }
     }
 }
 
