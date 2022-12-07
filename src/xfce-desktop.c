@@ -256,7 +256,8 @@ xfce_desktop_setup_icon_view(XfceDesktop *desktop)
     if(manager) {
         xfce_desktop_ensure_system_font_size(desktop);
 
-        desktop->priv->icon_view = xfdesktop_icon_view_new(manager);
+        desktop->priv->icon_view = xfdesktop_icon_view_new(manager,
+                                                           desktop->priv->channel);
         /* If the user set a custom font size, use it. Otherwise use the system
          * font size */
         xfdesktop_icon_view_set_font_size(XFDESKTOP_ICON_VIEW(desktop->priv->icon_view),
