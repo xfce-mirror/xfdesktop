@@ -1921,7 +1921,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     }
 
     appearance_settings = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
-                                                            "alignment_settings"));
+                                                            "background_tab_vbox"));
 
     /* Add the background tab widgets to the main window and don't display the
      * notebook label/tab */
@@ -2276,7 +2276,7 @@ main(int argc, char **argv)
 
         gdk_notify_startup_complete();
 
-        plug_child = GTK_WIDGET(gtk_builder_get_object(gxml, "alignment1"));
+        plug_child = GTK_WIDGET(gtk_builder_get_object(gxml, "notebook_settings"));
         xfce_widget_reparent(plug_child, plug);
         gtk_widget_show(plug_child);
 
