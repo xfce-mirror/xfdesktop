@@ -2,7 +2,7 @@
  *  xfdesktop
  *
  *  Copyright (c) 2008 Stephan Arts <stephan@xfce.org>
- *  Copyright (c) 2008 Brian Tarricone <bjt23@cornell.edu>
+ *  Copyright (c) 2008 Brian Tarricone <brian@tarricone.org>
  *  Copyright (c) 2008 Jérôme Guelfucci <jerome.guelfucci@gmail.com>
  *  Copyright (c) 2011 Jannis Pohlmann <jannis@xfce.org>
  *

@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  *
- * Copied, renamed, and hacked to pieces by Brian Tarricone <bjt23@cornell.edu>.
+ * Copied, renamed, and hacked to pieces by Brian Tarricone <brian@tarricone.org>.
  * Original code from Thunar.
  */
 
