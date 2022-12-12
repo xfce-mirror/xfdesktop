@@ -23,13 +23,14 @@
 # Poul Ionkin <wizzard@nmg.lv>, 2003
 # Sergey Alyoshin <alyoshin.s@gmail.com>, 2013-2015
 # Sergey Fedoseev <fedoseev.sergey@gmail.com>, 2006
+# Артём Котлубай <artemkotlubai@yandex.ru>, 2022
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-28 15:09+0100\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
-"Last-Translator: Andrei Stepanov, 2022\n"
+"Last-Translator: Артём Котлубай <artemkotlubai@yandex.ru>, 2022\n"
 "Language-Team: Russian (http://www.transifex.com/xfce/xfdesktop/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -459,7 +460,7 @@ msgstr "_Фон"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:22
 msgid "Enable \"Delete\" option in file context menu"
-msgstr "Добавить опцию \"Удалить\" в контекстном меню файла"
+msgstr "Добавить раздел «Удалить» в контекстном меню файла"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:23
 msgid "Include applications menu on _desktop right click"
@@ -1136,7 +1137,7 @@ msgstr "_Очистить корзину"
 
 #: ../src/xfdesktop-volume-icon.c:438
 msgid "(not mounted)"
-msgstr ""
+msgstr "(не смонтировано)"
 
 #: ../src/xfdesktop-volume-icon.c:439 ../src/xfdesktop-volume-icon.c:440
 msgid "(unknown)"
@@ -1150,11 +1151,11 @@ msgid ""
 "Mounted at: %s\n"
 "Size: %s\n"
 "Free Space: %s"
-msgstr ""
+msgstr "Название: %s\nТип: %s\nСмонтировано на: %s\nРазмер: %s\nСвободное пространство: %s"
 
 #: ../src/xfdesktop-volume-icon.c:446
 msgid "Removable Volume"
-msgstr ""
+msgstr "Съёмный том"
 
 #: ../src/xfdesktop-volume-icon.c:481 ../src/xfdesktop-volume-icon.c:527
 #, c-format
