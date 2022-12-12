@@ -697,6 +697,8 @@ static const struct
     { DESKTOP_ICONS_GRAVITY_PROP, G_TYPE_INT, "gravity" },
 };
 
+static ViewItem *TOMBSTONE = NULL;
+
 
 G_DEFINE_TYPE_WITH_CODE(XfdesktopIconView, xfdesktop_icon_view, GTK_TYPE_WIDGET,
                         G_ADD_PRIVATE(XfdesktopIconView)
@@ -1159,6 +1161,8 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
                                          GTK_MOVEMENT_VISUAL_POSITIONS, -1);
 
     gtk_widget_class_set_css_name (widget_class, "XfdesktopIconView");
+
+    TOMBSTONE = g_slice_new0(ViewItem);
 }
 
 static void
@@ -4039,8 +4043,7 @@ xfdesktop_icon_view_setup_grids_xinerama(XfdesktopIconView *icon_view)
             }
 
             if(!bounded) {
-                xfdesktop_grid_unset_position_free_raw(icon_view, row, col,
-                                                       (gpointer)0xdeadbeef);
+                xfdesktop_grid_unset_position_free_raw(icon_view, row, col, TOMBSTONE);
             }
         }
     }
@@ -4583,7 +4586,7 @@ xfdesktop_icon_view_item_in_slot_raw(XfdesktopIconView *icon_view,
 {
     ViewItem *item = icon_view->priv->grid_layout[idx];
 
-    if ((gpointer)0xdeadbeef == item) {
+    if (TOMBSTONE == item) {
         return NULL;
     } else {
         return item;
@@ -4826,7 +4829,7 @@ xfdesktop_icon_view_clear_grid_layout(XfdesktopIconView *icon_view)
 {
     if (icon_view->priv->nrows > 0 && icon_view->priv->ncols > 0 && icon_view->priv->grid_layout != NULL) {
         for (gint i = 0; i < icon_view->priv->nrows * icon_view->priv->ncols; ++i) {
-            if (icon_view->priv->grid_layout[i] != NULL && icon_view->priv->grid_layout != (gpointer)0xdeadbeef) {
+            if (icon_view->priv->grid_layout[i] != NULL && icon_view->priv->grid_layout[i] != TOMBSTONE) {
                 icon_view->priv->grid_layout[i] = NULL;
             }
         }
