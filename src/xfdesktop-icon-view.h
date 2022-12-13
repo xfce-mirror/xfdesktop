@@ -172,14 +172,6 @@ void xfdesktop_icon_view_set_show_tooltips(XfdesktopIconView *icon_view,
 
 GtkWidget *xfdesktop_icon_view_get_window_widget(XfdesktopIconView *icon_view);
 
-gboolean
-xfdesktop_get_workarea_single(XfdesktopIconView *icon_view,
-                              guint ws_num,
-                              gint *xorigin,
-                              gint *yorigin,
-                              gint *width,
-                              gint *height);
-
 void xfdesktop_icon_view_sort_icons(XfdesktopIconView *icon_view,
                                     GtkSortType sort_type);
 

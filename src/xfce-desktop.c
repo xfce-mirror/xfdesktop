@@ -275,7 +275,6 @@ static cairo_surface_t *
 create_bg_surface(GdkScreen *gscreen, gpointer user_data)
 {
     XfceDesktop *desktop = user_data;
-    cairo_pattern_t *pattern;
     gint w, h;
 
     TRACE("entering");
@@ -300,12 +299,6 @@ create_bg_surface(GdkScreen *gscreen, gpointer user_data)
     desktop->priv->bg_surface = gdk_window_create_similar_surface(
                                     gtk_widget_get_window(GTK_WIDGET(desktop)),
                                                           CAIRO_CONTENT_COLOR_ALPHA, w, h);
-
-    pattern = cairo_pattern_create_for_surface(desktop->priv->bg_surface);
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-    gdk_window_set_background_pattern(gtk_widget_get_window(GTK_WIDGET(desktop)), pattern);
-G_GNUC_END_IGNORE_DEPRECATIONS
-    cairo_pattern_destroy(pattern);
 
     return desktop->priv->bg_surface;
 }
@@ -1324,9 +1317,22 @@ static gboolean
 xfce_desktop_draw(GtkWidget *w,
                   cairo_t *cr)
 {
+    XfceDesktop *desktop = XFCE_DESKTOP(w);
     GList *children, *l;
 
     /*TRACE("entering");*/
+
+    if (desktop->priv->bg_surface == NULL) {
+        create_bg_surface(gtk_widget_get_screen(w), desktop);
+    }
+
+    cairo_save(cr);
+
+    cairo_set_source_surface(cr, desktop->priv->bg_surface, 0, 0);
+    cairo_set_operator(cr, CAIRO_OPERATOR_SOURCE);
+    cairo_paint(cr);
+
+    cairo_restore(cr);
 
     children = gtk_container_get_children(GTK_CONTAINER(w));
     for(l = children; l; l = l->next) {
@@ -1354,7 +1360,6 @@ static gboolean
 style_refresh_cb(gpointer user_data)
 {
     XfceDesktop *desktop = user_data;
-    cairo_pattern_t *pattern;
     GList *children;
 
     TRACE("entering");
@@ -1368,15 +1373,6 @@ style_refresh_cb(gpointer user_data)
 
     if(desktop->priv->workspaces == NULL)
         return FALSE;
-
-    if(desktop->priv->bg_surface) {
-        pattern = cairo_pattern_create_for_surface(desktop->priv->bg_surface);
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-        gdk_window_set_background_pattern(gtk_widget_get_window(GTK_WIDGET(desktop)),
-                                          pattern);
-G_GNUC_END_IGNORE_DEPRECATIONS
-        cairo_pattern_destroy(pattern);
-    }
 
     gtk_widget_queue_draw(GTK_WIDGET(desktop));
 

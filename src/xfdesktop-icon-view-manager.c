@@ -22,6 +22,11 @@
 #include <config.h>
 #endif
 
+#ifdef ENABLE_X11
+#include <X11/Xlib.h>
+#include <X11/Xatom.h>
+#endif
+
 #include <glib-object.h>
 
 #include <libxfce4util/libxfce4util.h>
@@ -37,15 +42,18 @@ enum {
     PROP_CHANNEL,
     PROP_TOOLTIP_ICON_SIZE,
     PROP_ICON_ON_PRIMARY,
+    PROP_WORKAREA,
 };
 
 struct _XfdesktopIconViewManagerPrivate
 {
     GtkWidget *parent;
+    GtkFixed *container;
     XfconfChannel *channel;
 
     gint tooltip_icon_size_xfconf;
     gboolean icons_on_primary;
+    GdkRectangle workarea;
 };
 
 static void xfdesktop_icon_view_manager_constructed(GObject *obj);
@@ -58,6 +66,15 @@ static void xfdesktop_icon_view_manager_get_property(GObject *obj,
                                                      GValue *value,
                                                      GParamSpec *pspec);
 static void xfdesktop_icon_view_manager_dispose(GObject *obj);
+
+static void xfdesktop_icon_view_manager_update_workarea(XfdesktopIconViewManager *manager);
+static GdkFilterReturn xfdesktop_icon_view_manager_rootwin_event_filter(GdkXEvent *gxevent,
+                                                                        GdkEvent *event,
+                                                                        gpointer user_data);
+static void xfdesktop_icon_view_manager_parent_realized(GtkWidget *parent,
+                                                        XfdesktopIconViewManager *manager);
+static void xfdesktop_icon_view_manager_parent_unrealized(GtkWidget *parent,
+                                                          XfdesktopIconViewManager *manager);
 
 static void xfdesktop_icon_view_manager_set_tooltip_icon_size(XfdesktopIconViewManager *manager,
                                                               gint tooltip_icon_size);
@@ -121,6 +138,13 @@ xfdesktop_icon_view_manager_class_init(XfdesktopIconViewManagerClass *klass)
                                                          DEFAULT_ICONS_ON_PRIMARY,
                                                          PARAM_FLAGS));
 
+    g_object_class_install_property(gobject_class, PROP_WORKAREA,
+                                    g_param_spec_boxed("workarea",
+                                                       "workarea",
+                                                       "workarea",
+                                                       GDK_TYPE_RECTANGLE,
+                                                       G_PARAM_READABLE | G_PARAM_STATIC_STRINGS));
+
 #undef PARAM_FLAGS
 }
 
@@ -140,6 +164,10 @@ xfdesktop_icon_view_manager_constructed(GObject *obj)
 
     G_OBJECT_CLASS(xfdesktop_icon_view_manager_parent_class)->constructed(obj);
 
+    manager->priv->container = GTK_FIXED(gtk_fixed_new());
+    gtk_widget_show(GTK_WIDGET(manager->priv->container));
+    gtk_container_add(GTK_CONTAINER(manager->priv->parent), GTK_WIDGET(manager->priv->container));
+
     for (gsize i = 0; i < G_N_ELEMENTS(setting_bindings); ++i) {
         xfconf_g_property_bind(manager->priv->channel,
                                setting_bindings[i].setting,
@@ -147,6 +175,16 @@ xfdesktop_icon_view_manager_constructed(GObject *obj)
                                manager,
                                setting_bindings[i].property);
     }
+
+    g_signal_connect(manager->priv->parent, "realize",
+                     G_CALLBACK(xfdesktop_icon_view_manager_parent_realized), manager);
+    g_signal_connect(manager->priv->parent, "unrealize",
+                     G_CALLBACK(xfdesktop_icon_view_manager_parent_realized), manager);
+
+    if (gtk_widget_get_realized(manager->priv->parent)) {
+        xfdesktop_icon_view_manager_parent_realized(manager->priv->parent, manager);
+    }
+
 }
 
 static void
@@ -207,6 +245,13 @@ xfdesktop_icon_view_manager_get_property(GObject *obj,
             g_value_set_boolean(value, manager->priv->icons_on_primary);
             break;
 
+        case PROP_WORKAREA: {
+            GdkRectangle *workarea = g_new0(GdkRectangle, 1);
+            *workarea = manager->priv->workarea;
+            g_value_take_boxed(value, workarea);
+            break;
+        }
+
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(obj, prop_id, pspec);
             break;
@@ -218,10 +263,60 @@ xfdesktop_icon_view_manager_dispose(GObject *obj)
 {
     XfdesktopIconViewManager *manager = XFDESKTOP_ICON_VIEW_MANAGER(obj);
 
-    manager->priv->parent = NULL;
+    if (manager->priv->container != NULL) {
+        gtk_widget_destroy(GTK_WIDGET(manager->priv->container));
+        manager->priv->container = NULL;
+    }
+
+    if (manager->priv->parent != NULL) {
+        if (gtk_widget_get_realized(manager->priv->parent)) {
+            GdkScreen *screen = gtk_widget_get_screen(manager->priv->parent);
+            GdkWindow *rootwin = gdk_screen_get_root_window(screen);
+            gdk_window_remove_filter(rootwin, xfdesktop_icon_view_manager_rootwin_event_filter, manager);
+        }
+
+        g_signal_handlers_disconnect_by_func(manager->priv->parent,
+                                             G_CALLBACK(xfdesktop_icon_view_manager_parent_realized),
+                                             manager);
+        g_signal_handlers_disconnect_by_func(manager->priv->parent,
+                                             G_CALLBACK(xfdesktop_icon_view_manager_parent_unrealized),
+                                             manager);
+
+        manager->priv->parent = NULL;
+    }
+
     g_clear_object(&manager->priv->channel);
 
     G_OBJECT_CLASS(xfdesktop_icon_view_manager_parent_class)->dispose(obj);
+}
+
+static void
+xfdesktop_icon_view_manager_parent_realized(GtkWidget *parent,
+                                            XfdesktopIconViewManager *manager)
+{
+    GdkScreen *screen = gtk_widget_get_screen(manager->priv->parent);
+    GdkWindow *rootwin = gdk_screen_get_root_window(screen);
+
+    gdk_window_set_events(rootwin, gdk_window_get_events(rootwin) | GDK_PROPERTY_CHANGE_MASK);
+    gdk_window_add_filter(rootwin, xfdesktop_icon_view_manager_rootwin_event_filter, manager);
+    xfdesktop_icon_view_manager_update_workarea(manager);
+}
+
+static void
+xfdesktop_icon_view_manager_parent_unrealized(GtkWidget *parent,
+                                              XfdesktopIconViewManager *manager)
+{
+    GdkScreen *screen;
+    GdkWindow *rootwin;
+
+    if (gtk_widget_has_screen(manager->priv->parent)) {
+        screen = gtk_widget_get_screen(manager->priv->parent);
+    } else {
+        screen = gdk_screen_get_default();
+    }
+    rootwin = gdk_screen_get_root_window(screen);
+
+    gdk_window_remove_filter(rootwin, xfdesktop_icon_view_manager_rootwin_event_filter, manager);
 }
 
 static void
@@ -244,10 +339,146 @@ xfdesktop_icon_view_manager_set_show_icons_on_primary(XfdesktopIconViewManager *
     }
 }
 
+static gboolean
+xfdesktop_icon_view_manager_get_full_workarea(XfdesktopIconViewManager *manager,
+                                              GdkRectangle *workarea)
+{
+    gboolean ret = FALSE;
+    GdkRectangle new_workarea = { 0, };
+
+#ifdef ENABLE_X11
+    if (xfw_windowing_get() == XFW_WINDOWING_X11) {
+        GdkScreen *gscreen;
+        GdkDisplay *gdisplay;
+        Display *dpy;
+        Window root;
+        Atom property, actual_type = None;
+        gint actual_format = 0, first_id;
+        gulong nitems = 0, bytes_after = 0, offset = 0, tmp_size = 0;
+        unsigned char *data_p = NULL;
+        gint scale_factor;
+
+        gscreen = gtk_widget_has_screen(manager->priv->parent)
+            ? gtk_widget_get_screen(manager->priv->parent)
+            : gdk_screen_get_default();
+        gdisplay = gdk_screen_get_display(gscreen);
+        dpy = gdk_x11_display_get_xdisplay(gdisplay);
+        root =  gdk_x11_window_get_xid(gdk_screen_get_root_window(gscreen));
+        property = XInternAtom(dpy, "_NET_WORKAREA", False);
+        scale_factor = gtk_widget_get_scale_factor(manager->priv->parent);
+
+        // We only really support a single workarea that all workspaces share,
+        // otherwise this would be 'ws_num * 4'
+        first_id = 0;
+
+        xfw_windowing_error_trap_push(gdisplay);
+
+        do {
+            if (Success == XGetWindowProperty(dpy, root, property, offset,
+                                              G_MAXULONG, False, XA_CARDINAL,
+                                              &actual_type, &actual_format, &nitems,
+                                              &bytes_after, &data_p))
+            {
+                gint i;
+                gulong *data;
+
+                if(actual_format != 32 || actual_type != XA_CARDINAL) {
+                    XFree(data_p);
+                    break;
+                }
+
+                tmp_size = (actual_format / 8) * nitems;
+                if(actual_format == 32) {
+                    tmp_size *= sizeof(long)/4;
+                }
+
+                data = g_malloc(tmp_size);
+                memcpy(data, data_p, tmp_size);
+
+                i = offset / 32;  /* first element id in this batch */
+
+                /* there's probably a better way to do this. */
+                if(i + (glong)nitems >= first_id && first_id - (glong)offset >= 0)
+                    new_workarea.x = data[first_id - offset] / scale_factor;
+                if(i + (glong)nitems >= first_id + 1 && first_id - (glong)offset + 1 >= 0)
+                    new_workarea.y = data[first_id - offset + 1] / scale_factor;
+                if(i + (glong)nitems >= first_id + 2 && first_id - (glong)offset + 2 >= 0)
+                    new_workarea.width = data[first_id - offset + 2] / scale_factor;
+                if(i + (glong)nitems >= first_id + 3 && first_id - (glong)offset + 3 >= 0) {
+                    new_workarea.height = data[first_id - offset + 3] / scale_factor;
+                    ret = TRUE;
+                    XFree(data_p);
+                    g_free(data);
+                    break;
+                }
+
+                offset += actual_format * nitems;
+                XFree(data_p);
+                g_free(data);
+            } else {
+                break;
+            }
+        } while (bytes_after > 0);
+
+        xfw_windowing_error_trap_pop_ignored(gdisplay);
+    }
+#endif  /* ENABLE_X11 */
+
+    if (ret) {
+        *workarea = new_workarea;
+    }
+
+    return ret;
+}
+
+static void
+xfdesktop_icon_view_manager_update_workarea(XfdesktopIconViewManager *manager)
+{
+    GdkRectangle new_workarea = { 0, };
+    GdkScreen *screen = gtk_widget_get_screen(manager->priv->parent);
+    GdkDisplay *display = gdk_screen_get_display(screen);
+
+    if (manager->priv->icons_on_primary) {
+        GdkMonitor *monitor = gdk_display_get_primary_monitor(display);
+        gdk_monitor_get_workarea(monitor, &new_workarea);
+    } else if (!xfdesktop_icon_view_manager_get_full_workarea(manager, &new_workarea)) {
+        xfdesktop_get_screen_dimensions(screen, &new_workarea.width, &new_workarea.height);
+        new_workarea.x = new_workarea.y = 0;
+    }
+
+    if (!gdk_rectangle_equal(&manager->priv->workarea, &new_workarea)) {
+        DBG("new workarea: %dx%d+%d+%d", new_workarea.width, new_workarea.height, new_workarea.x, new_workarea.y);
+        manager->priv->workarea = new_workarea;
+        g_object_notify(G_OBJECT(manager), "workarea");
+    }
+}
+
+static GdkFilterReturn
+xfdesktop_icon_view_manager_rootwin_event_filter(GdkXEvent *gxevent,
+                                                 GdkEvent *event,
+                                                 gpointer user_data)
+{
+    XfdesktopIconViewManager *manager = XFDESKTOP_ICON_VIEW_MANAGER(user_data);
+    XPropertyEvent *xevt = (XPropertyEvent *)gxevent;
+
+    if(xevt->type == PropertyNotify && XInternAtom(xevt->display, "_NET_WORKAREA", False) == xevt->atom) {
+        XF_DEBUG("got _NET_WORKAREA change on rootwin!");
+        xfdesktop_icon_view_manager_update_workarea(manager);
+    }
+
+    return GDK_FILTER_CONTINUE;
+}
+
 GtkWidget *
 xfdesktop_icon_view_manager_get_parent(XfdesktopIconViewManager *manager)
 {
     return manager->priv->parent;
+}
+
+GtkFixed *
+xfdesktop_icon_view_manager_get_container(XfdesktopIconViewManager *manager)
+{
+    return manager->priv->container;
 }
 
 XfconfChannel *
@@ -283,6 +514,14 @@ xfdesktop_icon_view_manager_get_show_icons_on_primary(XfdesktopIconViewManager *
 {
     g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW_MANAGER(manager), DEFAULT_ICONS_ON_PRIMARY);
     return manager->priv->icons_on_primary;
+}
+
+void
+xfdesktop_icon_view_manager_get_workarea(XfdesktopIconViewManager *manager,
+                                         GdkRectangle *workarea)
+{
+    g_return_if_fail(workarea != NULL);
+    *workarea = manager->priv->workarea;
 }
 
 void

@@ -75,6 +75,8 @@ static GdkDragAction xfdesktop_window_icon_manager_drop_propose_action(Xfdesktop
                                                                        guint info,
                                                                        XfdesktopWindowIconManager *wmanager);
 
+static void xfdesktop_window_icon_manager_workarea_changed(XfdesktopWindowIconManager *wmanager);
+
 static void xfdesktop_window_icon_manager_populate_workspaces(XfdesktopWindowIconManager *wmanager);
 
 static void xfdesktop_window_icon_manager_populate_context_menu(XfdesktopIconViewManager *manager,
@@ -159,7 +161,8 @@ xfdesktop_window_icon_manager_constructed(GObject *object)
 {
     XfdesktopWindowIconManager *wmanager = XFDESKTOP_WINDOW_ICON_MANAGER(object);
     GList *workspace_groups;
-    GtkWidget *parent;
+    GtkFixed *container;
+    GdkRectangle workarea;
     GtkTargetList *text_target_list;
     GtkTargetEntry *text_targets;
     gint n_text_targets = 0;
@@ -173,7 +176,9 @@ xfdesktop_window_icon_manager_constructed(GObject *object)
     text_targets = gtk_target_table_new_from_list(text_target_list, &n_text_targets);
     gtk_target_list_unref(text_target_list);
 
-    parent = xfdesktop_icon_view_manager_get_parent(XFDESKTOP_ICON_VIEW_MANAGER(wmanager));
+    container = xfdesktop_icon_view_manager_get_container(XFDESKTOP_ICON_VIEW_MANAGER(wmanager));
+    xfdesktop_icon_view_manager_get_workarea(XFDESKTOP_ICON_VIEW_MANAGER(wmanager), &workarea);
+
     wmanager->priv->icon_view = g_object_new(XFDESKTOP_TYPE_ICON_VIEW,
                                              "channel", xfdesktop_icon_view_manager_get_channel(XFDESKTOP_ICON_VIEW_MANAGER(wmanager)),
                                              "pixbuf-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_SURFACE,
@@ -191,8 +196,15 @@ xfdesktop_window_icon_manager_constructed(GObject *object)
                                            text_targets, n_text_targets,
                                            GDK_ACTION_COPY);
     gtk_target_table_free(text_targets, n_text_targets);
-    gtk_widget_show(wmanager->priv->icon_view);
-    gtk_container_add(GTK_CONTAINER(parent), wmanager->priv->icon_view);
+    if (workarea.width > 0 && workarea.height > 0) {
+        gtk_widget_set_size_request(GTK_WIDGET(wmanager->priv->icon_view), workarea.width, workarea.height);
+    }
+    gtk_fixed_put(container, GTK_WIDGET(wmanager->priv->icon_view), workarea.x, workarea.y);
+    gtk_widget_show(GTK_WIDGET(wmanager->priv->icon_view));
+
+    g_signal_connect(wmanager, "notify::workarea",
+                     G_CALLBACK(xfdesktop_window_icon_manager_workarea_changed), NULL);
+    xfdesktop_window_icon_manager_workarea_changed(wmanager);
 
     g_signal_connect(G_OBJECT(wmanager->priv->icon_view), "icon-selection-changed",
                      G_CALLBACK(xfdesktop_window_icon_manager_icon_selection_changed_cb),
@@ -795,6 +807,20 @@ window_created_cb(XfwScreen *xfw_screen,
                             XFW_WINDOW_STATE_MINIMIZED | XFW_WINDOW_STATE_SKIP_TASKLIST,
                             xfw_window_get_state(window),
                             wmanager);
+}
+
+static void
+xfdesktop_window_icon_manager_workarea_changed(XfdesktopWindowIconManager *wmanager)
+{
+    GdkRectangle workarea;
+
+    xfdesktop_icon_view_manager_get_workarea(XFDESKTOP_ICON_VIEW_MANAGER(wmanager), &workarea);
+    DBG("moving icon view to %dx%d+%d+%d", workarea.width, workarea.height, workarea.x, workarea.y);
+    gtk_widget_set_size_request(GTK_WIDGET(wmanager->priv->icon_view), workarea.width, workarea.height);
+    gtk_fixed_move(xfdesktop_icon_view_manager_get_container(XFDESKTOP_ICON_VIEW_MANAGER(wmanager)),
+                   GTK_WIDGET(wmanager->priv->icon_view),
+                   workarea.x,
+                   workarea.y);
 }
 
 static void
