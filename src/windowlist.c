@@ -490,9 +490,3 @@ windowlist_init(XfconfChannel *channel)
                          G_CALLBACK(windowlist_settings_changed), NULL);
     }
 }
-
-void
-windowlist_cleanup(void)
-{
-    /* notused */
-}
