@@ -39,6 +39,7 @@
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4ui/libxfce4ui.h>
 #include <libxfce4windowing/libxfce4windowing.h>
+#include <libxfce4windowingui/libxfce4windowingui.h>
 
 #include "windowlist.h"
 #include "xfdesktop-common.h"
@@ -117,6 +118,28 @@ activate_window(GtkWidget *w, gpointer user_data)
         xfw_workspace_activate(xfw_window_get_workspace(xfw_window), NULL);
     }
     xfw_window_activate(xfw_window, gtk_get_current_event_time(), NULL);
+}
+
+static gboolean
+mi_button_press_cb(GtkWidget *mi,
+                   GdkEventButton *evt,
+                   XfwWindow *window)
+{
+    if (evt->button == GDK_BUTTON_SECONDARY) {
+        GtkWidget *parent_menu = gtk_widget_get_parent(mi);
+        GtkWidget *actions_menu = xfw_window_action_menu_new(window);
+
+        g_signal_connect_swapped(actions_menu, "deactivate",
+                                 G_CALLBACK(gtk_menu_shell_deactivate), parent_menu);
+        g_signal_connect_after(actions_menu, "selection-done",
+                               G_CALLBACK(gtk_widget_destroy), NULL);
+
+        gtk_menu_popup_at_pointer(GTK_MENU(actions_menu), (GdkEvent *)evt);
+
+        return TRUE;
+    } else {
+        return FALSE;
+    }
 }
 
 static void
@@ -402,6 +425,8 @@ windowlist_populate(GtkMenu *menu, gint scale_factor)
                                   (GWeakNotify)window_destroyed_cb, mi);
                 g_signal_connect(G_OBJECT(mi), "activate",
                                  G_CALLBACK(activate_window), xfw_window);
+                g_signal_connect(G_OBJECT(mi), "button-press-event",
+                                 G_CALLBACK(mi_button_press_cb), xfw_window);
                 g_signal_connect(G_OBJECT(mi), "destroy",
                                  G_CALLBACK(mi_destroyed_cb), xfw_window);
             }
