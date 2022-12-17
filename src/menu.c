@@ -70,9 +70,11 @@ menu_populate(GtkMenuShell *menu, gint scale_factor)
     if(garcon_menu == NULL) {
         garcon_menu = garcon_menu_new_applications();
     }
-    desktop_menu = garcon_gtk_menu_new (garcon_menu);
+    desktop_menu = g_object_new(GARCON_GTK_TYPE_MENU,
+                                "show-menu-icons", show_desktop_menu_icons,
+                                "menu", garcon_menu,
+                                NULL);
     XF_DEBUG("show desktop menu icons %s", show_desktop_menu_icons ? "TRUE" : "FALSE");
-    garcon_gtk_menu_set_show_menu_icons(GARCON_GTK_MENU(desktop_menu), show_desktop_menu_icons);
 
     /* check to see if the menu is empty.  if not, add the desktop menu
     * to a submenu */
