@@ -118,6 +118,9 @@ menu_settings_changed(XfconfChannel *channel,
         show_desktop_menu = G_VALUE_TYPE(value)
                             ? g_value_get_boolean(value)
                             : TRUE;
+        if (!show_desktop_menu) {
+            g_clear_object(&garcon_menu);
+        }
     } else if(!strcmp(property, "/desktop-menu/show-icons")) {
         show_desktop_menu_icons = G_VALUE_TYPE(value)
                                   ? g_value_get_boolean(value)
