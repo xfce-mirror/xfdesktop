@@ -171,6 +171,8 @@ menu_cleanup(void)
         g_clear_object(&xfconf_channel);
     }
 
+    g_clear_object(&garcon_menu);
+
     inited = FALSE;
 #endif
 }
