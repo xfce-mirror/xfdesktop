@@ -71,6 +71,7 @@
 #include "xfdesktop-file-icon-model.h"
 #include "xfdesktop-file-utils.h"
 #include "xfdesktop-icon-view.h"
+#include "xfdesktop-icon-view-model.h"
 #include "xfdesktop-regular-file-icon.h"
 #include "xfdesktop-special-file-icon.h"
 #include "xfdesktop-volume-icon.h"
@@ -514,14 +515,14 @@ xfdesktop_file_icon_manager_constructed(GObject *obj)
 
     fmanager->priv->icon_view = g_object_new(XFDESKTOP_TYPE_ICON_VIEW,
                                              "channel", channel,
-                                             "pixbuf-column", XFDESKTOP_FILE_ICON_MODEL_COLUMN_SURFACE,
-                                             "text-column", XFDESKTOP_FILE_ICON_MODEL_COLUMN_LABEL,
-                                             "search-column", XFDESKTOP_FILE_ICON_MODEL_COLUMN_LABEL,
-                                             "sort-priority-column", XFDESKTOP_FILE_ICON_MODEL_COLUMN_SORT_PRIORITY,
-                                             "tooltip-surface-column", XFDESKTOP_FILE_ICON_MODEL_COLUMN_TOOLTIP_SURFACE,
-                                             "tooltip-text-column", XFDESKTOP_FILE_ICON_MODEL_COLUMN_TOOLTIP_TEXT,
-                                             "row-column", XFDESKTOP_FILE_ICON_MODEL_COLUMN_ROW,
-                                             "col-column", XFDESKTOP_FILE_ICON_MODEL_COLUMN_COL,
+                                             "pixbuf-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_SURFACE,
+                                             "text-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_LABEL,
+                                             "search-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_LABEL,
+                                             "sort-priority-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_SORT_PRIORITY,
+                                             "tooltip-surface-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_TOOLTIP_SURFACE,
+                                             "tooltip-text-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_TOOLTIP_TEXT,
+                                             "row-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_ROW,
+                                             "col-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_COL,
                                              NULL);
     xfdesktop_icon_view_set_selection_mode(fmanager->priv->icon_view, GTK_SELECTION_MULTIPLE);
     xfdesktop_icon_view_enable_drag_source(fmanager->priv->icon_view,
@@ -3013,7 +3014,7 @@ xfdesktop_file_icon_manager_populate_icons(XfdesktopFileIconManager *fmanager)
     DBG("entering");
 
     xfdesktop_icon_view_set_model(fmanager->priv->icon_view, NULL);
-    xfdesktop_file_icon_model_clear(fmanager->priv->model);
+    xfdesktop_icon_view_model_clear(XFDESKTOP_ICON_VIEW_MODEL(fmanager->priv->model));
 
     for (gint i = 0; i <= XFDESKTOP_SPECIAL_FILE_ICON_TRASH; ++i) {
         if (fmanager->priv->show_special[i]) {

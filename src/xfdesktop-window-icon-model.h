@@ -30,31 +30,12 @@ G_BEGIN_DECLS
 #define XFDESKTOP_WINDOW_ICON_MODEL(obj)    (G_TYPE_CHECK_INSTANCE_CAST((obj), XFDESKTOP_TYPE_WINDOW_ICON_MODEL, XfdesktopWindowIconModel))
 #define XFDESKTOP_IS_WINDOW_ICON_MODEL(obj) (G_TYPE_CHECK_INSTANCE_TYPE((obj), XFDESKTOP_TYPE_WINDOW_ICON_MODEL))
 
-typedef enum
-{
-    XFDESKTOP_WINDOW_ICON_MODEL_COLUMN_SURFACE,
-    XFDESKTOP_WINDOW_ICON_MODEL_COLUMN_LABEL,
-    XFDESKTOP_WINDOW_ICON_MODEL_COLUMN_TOOLTIP_SURFACE,
-    XFDESKTOP_WINDOW_ICON_MODEL_COLUMN_TOOLTIP_TEXT,
-    XFDESKTOP_WINDOW_ICON_MODEL_COLUMN_ROW,
-    XFDESKTOP_WINDOW_ICON_MODEL_COLUMN_COL,
-
-    XFDESKTOP_WINDOW_ICON_MODEL_COLUMN_N_COLUMNS,
-} XfdesktopWindowIconModelColumn;
-
 typedef struct _XfdesktopWindowIconModel XfdesktopWindowIconModel;
 typedef struct _XfdesktopWindowIconModelClass XfdesktopWindowIconModelClass;
 
 GType xfdesktop_window_icon_model_get_type(void) G_GNUC_CONST;
 
 XfdesktopWindowIconModel *xfdesktop_window_icon_model_new(void);
-
-void xfdesktop_window_icon_model_set_icon_size(XfdesktopWindowIconModel *wmodel,
-                                               gint icon_size);
-void xfdesktop_window_icon_model_set_tooltip_icon_size(XfdesktopWindowIconModel *wmodel,
-                                                       gint size);
-void xfdesktop_window_icon_model_set_scale_factor(XfdesktopWindowIconModel *wmodel,
-                                                  gint scale_factor);
 
 void xfdesktop_window_icon_model_append(XfdesktopWindowIconModel *wmodel,
                                         XfwWindow *window,
@@ -74,8 +55,6 @@ XfwWindow *xfdesktop_window_icon_model_get_window(XfdesktopWindowIconModel *wmod
 gboolean xfdesktop_window_icon_model_get_window_iter(XfdesktopWindowIconModel *wmodel,
                                                      XfwWindow *window,
                                                      GtkTreeIter *iter);
-
-void xfdesktop_window_icon_model_clear(XfdesktopWindowIconModel *wmodel);
 
 G_END_DECLS
 

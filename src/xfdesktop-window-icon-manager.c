@@ -38,6 +38,7 @@
 
 #include "xfdesktop-cell-renderer-icon-label.h"
 #include "xfdesktop-icon-view.h"
+#include "xfdesktop-icon-view-model.h"
 #include "xfdesktop-window-icon-manager.h"
 #include "xfdesktop-window-icon-model.h"
 #include "xfdesktop-common.h"
@@ -155,13 +156,13 @@ xfdesktop_window_icon_manager_constructed(GObject *object)
     parent = xfdesktop_icon_view_manager_get_parent(XFDESKTOP_ICON_VIEW_MANAGER(wmanager));
     wmanager->priv->icon_view = g_object_new(XFDESKTOP_TYPE_ICON_VIEW,
                                              "channel", xfdesktop_icon_view_manager_get_channel(XFDESKTOP_ICON_VIEW_MANAGER(wmanager)),
-                                             "pixbuf-column", XFDESKTOP_WINDOW_ICON_MODEL_COLUMN_SURFACE,
-                                             "text-column", XFDESKTOP_WINDOW_ICON_MODEL_COLUMN_LABEL,
-                                             "search-column", XFDESKTOP_WINDOW_ICON_MODEL_COLUMN_LABEL,
-                                             "tooltip-surface-column", XFDESKTOP_WINDOW_ICON_MODEL_COLUMN_TOOLTIP_SURFACE,
-                                             "tooltip-text-column", XFDESKTOP_WINDOW_ICON_MODEL_COLUMN_TOOLTIP_TEXT,
-                                             "row-column", XFDESKTOP_WINDOW_ICON_MODEL_COLUMN_ROW,
-                                             "col-column", XFDESKTOP_WINDOW_ICON_MODEL_COLUMN_COL,
+                                             "pixbuf-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_SURFACE,
+                                             "text-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_LABEL,
+                                             "search-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_LABEL,
+                                             "tooltip-surface-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_TOOLTIP_SURFACE,
+                                             "tooltip-text-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_TOOLTIP_TEXT,
+                                             "row-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_ROW,
+                                             "col-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_COL,
                                              NULL);
     xfdesktop_icon_view_set_selection_mode(XFDESKTOP_ICON_VIEW(wmanager->priv->icon_view),
                                            GTK_SELECTION_SINGLE);
@@ -382,7 +383,10 @@ static XfdesktopWindowIconModel *
 create_model(XfdesktopWindowIconManager *wmanager) {
     XfdesktopWindowIconModel *model = xfdesktop_window_icon_model_new();
     g_object_bind_property(wmanager->priv->icon_view, "icon-size",
-                           model, "icon-size",
+                           model, "icon-width",
+                           G_BINDING_SYNC_CREATE);
+    g_object_bind_property(wmanager->priv->icon_view, "icon-size",
+                           model, "icon-height",
                            G_BINDING_SYNC_CREATE);
     g_object_bind_property(wmanager->priv->icon_view, "scale-factor",
                            model, "scale-factor",

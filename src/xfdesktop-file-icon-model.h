@@ -31,34 +31,12 @@ G_BEGIN_DECLS
 #define XFDESKTOP_FILE_ICON_MODEL(obj)    (G_TYPE_CHECK_INSTANCE_CAST((obj), XFDESKTOP_TYPE_FILE_ICON_MODEL, XfdesktopFileIconModel))
 #define XFDESKTOP_IS_FILE_ICON_MODEL(obj) (G_TYPE_CHECK_INSTANCE_TYPE((obj), XFDESKTOP_TYPE_FILE_ICON_MODEL))
 
-typedef enum
-{
-    XFDESKTOP_FILE_ICON_MODEL_COLUMN_SURFACE,
-    XFDESKTOP_FILE_ICON_MODEL_COLUMN_LABEL,
-    XFDESKTOP_FILE_ICON_MODEL_COLUMN_ROW,
-    XFDESKTOP_FILE_ICON_MODEL_COLUMN_COL,
-    XFDESKTOP_FILE_ICON_MODEL_COLUMN_SORT_PRIORITY,
-    XFDESKTOP_FILE_ICON_MODEL_COLUMN_TOOLTIP_SURFACE,
-    XFDESKTOP_FILE_ICON_MODEL_COLUMN_TOOLTIP_TEXT,
-
-    XFDESKTOP_FILE_ICON_MODEL_COLUMN_N_COLUMNS,
-} XfdesktopFileIconModelColumn;
-
 typedef struct _XfdesktopFileIconModel XfdesktopFileIconModel;
 typedef struct _XfdesktopFileIconModelClass XfdesktopFileIconModelClass;
 
 GType xfdesktop_file_icon_model_get_type(void) G_GNUC_CONST;
 
 XfdesktopFileIconModel *xfdesktop_file_icon_model_new(void);
-
-void xfdesktop_file_icon_model_set_icon_width(XfdesktopFileIconModel *fmodel,
-                                              gint width);
-void xfdesktop_file_icon_model_set_icon_height(XfdesktopFileIconModel *fmodel,
-                                               gint height);
-void xfdesktop_file_icon_model_set_tooltip_icon_size(XfdesktopFileIconModel *fmodel,
-                                                     gint size);
-void xfdesktop_file_icon_model_set_scale_factor(XfdesktopFileIconModel *fmodel,
-                                                gint scale_factor);
 
 void xfdesktop_file_icon_model_append(XfdesktopFileIconModel *fmodel,
                                       XfdesktopFileIcon *icon,
@@ -70,8 +48,6 @@ void xfdesktop_file_icon_model_changed(XfdesktopFileIconModel *fmodel,
 
 XfdesktopFileIcon *xfdesktop_file_icon_model_get_icon(XfdesktopFileIconModel *fmodel,
                                                       GtkTreeIter *iter);
-
-void xfdesktop_file_icon_model_clear(XfdesktopFileIconModel *fmodel);
 
 G_END_DECLS
 
