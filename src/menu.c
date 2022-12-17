@@ -45,7 +45,6 @@
 
 #ifdef ENABLE_DESKTOP_MENU
 static gboolean inited = FALSE;
-static gboolean show_delete_option = TRUE;
 static gboolean show_desktop_menu = TRUE;
 static gboolean show_desktop_menu_icons = TRUE;
 static XfconfChannel *xfconf_channel = NULL;
@@ -136,10 +135,6 @@ menu_init(XfconfChannel *channel)
 {
 #ifdef ENABLE_DESKTOP_MENU
     g_return_if_fail(!inited);
-
-    if(channel) {
-        show_delete_option = xfconf_channel_get_bool(channel, DESKTOP_MENU_DELETE, TRUE);
-    }
 
     if(!channel || xfconf_channel_get_bool(channel, "/desktop-menu/show", TRUE))
     {
