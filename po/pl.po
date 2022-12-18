@@ -22,7 +22,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-28 15:09+0100\n"
+"POT-Creation-Date: 2022-12-18 12:52+0100\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Marek Adamski, 2021-2022\n"
 "Language-Team: Polish (http://www.transifex.com/xfce/xfdesktop/language/pl/)\n"
@@ -127,24 +127,24 @@ msgstr "Zakres monitorów"
 
 #. TRANSLATORS: Please split the message in half with '\n' so the dialog will
 #. not be too wide.
-#: ../settings/main.c:1784
+#: ../settings/main.c:1792
 msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
 msgstr "Rozmieścić wszystkie istniejące ikony\nzgodnie z wybraną orientacją?"
 
-#: ../settings/main.c:1790
+#: ../settings/main.c:1798
 msgid "Arrange icons"
 msgstr "Rozmieść ikony"
 
 #. printf is to be translator-friendly
-#: ../settings/main.c:1798 ../src/xfdesktop-file-icon-manager.c:817
+#: ../settings/main.c:1806 ../src/xfdesktop-file-icon-manager.c:817
 #: ../src/xfdesktop-file-icon-manager.c:1410
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Nie można uruchomić „%s”:"
 
-#: ../settings/main.c:1799 ../src/xfdesktop-file-icon-manager.c:819
+#: ../settings/main.c:1807 ../src/xfdesktop-file-icon-manager.c:819
 #: ../src/xfdesktop-file-icon-manager.c:1159
 #: ../src/xfdesktop-file-icon-manager.c:1411 ../src/xfdesktop-file-utils.c:744
 #: ../src/xfdesktop-file-utils.c:1313 ../src/xfdesktop-file-utils.c:1338
@@ -152,7 +152,7 @@ msgstr "Nie można uruchomić „%s”:"
 msgid "Launch Error"
 msgstr "Błąd uruchamiania"
 
-#: ../settings/main.c:1801 ../settings/xfdesktop-settings-ui.glade.h:20
+#: ../settings/main.c:1809 ../settings/xfdesktop-settings-ui.glade.h:20
 #: ../src/xfdesktop-file-icon-manager.c:585
 #: ../src/xfdesktop-file-icon-manager.c:604
 #: ../src/xfdesktop-file-icon-manager.c:689
@@ -167,59 +167,59 @@ msgstr "Błąd uruchamiania"
 #: ../src/xfdesktop-file-utils.c:1256 ../src/xfdesktop-file-utils.c:1317
 #: ../src/xfdesktop-file-utils.c:1340 ../src/xfdesktop-file-utils.c:1449
 #: ../src/xfdesktop-file-utils.c:1513 ../src/xfdesktop-file-utils.c:1584
-#: ../src/xfdesktop-file-utils.c:1654 ../src/xfdesktop-volume-icon.c:488
-#: ../src/xfdesktop-volume-icon.c:534 ../src/xfdesktop-volume-icon.c:570
+#: ../src/xfdesktop-file-utils.c:1654 ../src/xfdesktop-volume-icon.c:508
+#: ../src/xfdesktop-volume-icon.c:554 ../src/xfdesktop-volume-icon.c:638
 msgid "_Close"
 msgstr "Za_mknij"
 
-#: ../settings/main.c:1961
+#: ../settings/main.c:1969
 msgid "Image files"
 msgstr "Pliki obrazów"
 
 #. Change the title of the file chooser dialog
-#: ../settings/main.c:1969
+#: ../settings/main.c:1977
 msgid "Select a Directory"
 msgstr "Wybór katalogu"
 
-#: ../settings/main.c:2178
+#: ../settings/main.c:2190
 msgid "Settings manager socket"
 msgstr "Określa gniazdo menedżera ustawień"
 
-#: ../settings/main.c:2178
+#: ../settings/main.c:2190
 msgid "SOCKET ID"
 msgstr "ID_GNIAZDA"
 
-#: ../settings/main.c:2179
+#: ../settings/main.c:2191
 msgid "Version information"
 msgstr "Informacje o wersji"
 
-#: ../settings/main.c:2180 ../src/xfdesktop-application.c:848
+#: ../settings/main.c:2192 ../src/xfdesktop-application.c:848
 msgid "Enable debug messages"
 msgstr "Włącza komunikaty diagnozowania błędów"
 
-#: ../settings/main.c:2204
+#: ../settings/main.c:2216
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Proszę wprowadzić „%s --help”, aby wypisać komunikat pomocy."
 
-#: ../settings/main.c:2216
+#: ../settings/main.c:2228
 msgid "The Xfce development team. All rights reserved."
 msgstr "Zespół twórców środowiska graficznego Xfce. Wszystkie prawa zastrzeżone."
 
-#: ../settings/main.c:2217
+#: ../settings/main.c:2229
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Proszę zgłaszać błędy na adres <%s>."
 
-#: ../settings/main.c:2224
+#: ../settings/main.c:2236
 msgid "Desktop Settings"
 msgstr "Pulpit"
 
-#: ../settings/main.c:2226
+#: ../settings/main.c:2238
 msgid "Unable to contact settings server"
 msgstr "Nie można połączyć z serwerem ustawień"
 
-#: ../settings/main.c:2228
+#: ../settings/main.c:2240
 msgid "Quit"
 msgstr "Zakończ"
 
@@ -453,144 +453,148 @@ msgid "_Background"
 msgstr "_Tło"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:22
-msgid "Enable \"Delete\" option in file context menu"
-msgstr "Włączenie opcji „Usuń” w menu kontekstowym pliku"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:23
 msgid "Include applications menu on _desktop right click"
 msgstr "_Dołączenie menu programów po kliknięciu prawym przyciskiem myszy"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:24
+#: ../settings/xfdesktop-settings-ui.glade.h:23
 msgid "_Button:"
 msgstr "_Przycisk:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:25
+#: ../settings/xfdesktop-settings-ui.glade.h:24
 msgid "Mo_difier:"
 msgstr "Mo_dyfikator:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:26
+#: ../settings/xfdesktop-settings-ui.glade.h:25
 msgid "Show _application icons in menu"
 msgstr "I_kony w menu"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:27
+#: ../settings/xfdesktop-settings-ui.glade.h:26
 msgid "_Edit desktop menu"
 msgstr "_Edytuj menu programów"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:28
+#: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "<b>Desktop Menu</b>"
 msgstr "<b>Programy</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:29
+#: ../settings/xfdesktop-settings-ui.glade.h:28
 msgid "Show _window list menu on desktop middle click"
 msgstr "Wyświet_lanie listy po kliknięciu środkowym klawiszem myszy"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:30
+#: ../settings/xfdesktop-settings-ui.glade.h:29
 msgid "B_utton:"
 msgstr "_Przycisk:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:31
+#: ../settings/xfdesktop-settings-ui.glade.h:30
 msgid "Modi_fier:"
 msgstr "Mody_fikator:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:32
+#: ../settings/xfdesktop-settings-ui.glade.h:31
 msgid "Sh_ow application icons in menu"
 msgstr "Ik_ony w menu"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:33
+#: ../settings/xfdesktop-settings-ui.glade.h:32
 msgid "Show workspace _names in list"
 msgstr "_Nazwy obszarów roboczych"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:34
+#: ../settings/xfdesktop-settings-ui.glade.h:33
 msgid "Use _submenus for the windows in each workspace"
 msgstr "Okna każdego obszaru roboczego w o_sobnym menu"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:35
+#: ../settings/xfdesktop-settings-ui.glade.h:34
 msgid "Show s_ticky windows only in active workspace"
 msgstr "_Przypięte okna tylko w bieżącym obszarze roboczym"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:36
+#: ../settings/xfdesktop-settings-ui.glade.h:35
 msgid "Show a_dd and remove workspace options in list"
 msgstr "Polecenia _dodawania i usuwania obszarów roboczych"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:37
+#: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid "<b>Window List Menu</b>"
 msgstr "<b>Okna</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:38
+#: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "_Menus"
 msgstr "M_enu"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:39
+#: ../settings/xfdesktop-settings-ui.glade.h:38
 msgid "Icon _type:"
 msgstr "_Typ:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:40
+#: ../settings/xfdesktop-settings-ui.glade.h:39
 msgid "Icon _size:"
 msgstr "_Rozmiar:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:41
+#: ../settings/xfdesktop-settings-ui.glade.h:40
 msgid "48"
 msgstr "48"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:42
+#: ../settings/xfdesktop-settings-ui.glade.h:41
 msgid "Icons _orientation:"
 msgstr "_Orientacja ikon:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:43
+#: ../settings/xfdesktop-settings-ui.glade.h:42
 msgid "Show icons on primary display"
 msgstr "Ikony na ekranie głównym"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:44
+#: ../settings/xfdesktop-settings-ui.glade.h:43
 msgid "Use custom _font size:"
 msgstr "Wł_asny rozmiar czcionki:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:45
+#: ../settings/xfdesktop-settings-ui.glade.h:44
 msgid "12"
 msgstr "12"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:46
+#: ../settings/xfdesktop-settings-ui.glade.h:45
 msgid "Show icon tooltips. Size:"
 msgstr "Rozmiar ikon podpowiedzi:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:47
+#: ../settings/xfdesktop-settings-ui.glade.h:46
 msgid "Size of the tooltip preview image."
 msgstr "Określa rozmiar ikon wyświetlanych w podpowiedzich"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:48
+#: ../settings/xfdesktop-settings-ui.glade.h:47
 msgid "64"
 msgstr "64"
 
+#: ../settings/xfdesktop-settings-ui.glade.h:48
+msgid "Single _click to activate items"
+msgstr "Uruchamianie elementów jednokrotnym _kliknięciem"
+
 #: ../settings/xfdesktop-settings-ui.glade.h:49
+msgid "<b>Appearance</b>"
+msgstr "<b>Wygląd</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:50
+msgid "Show hidden files on the desktop"
+msgstr "Ukryte pliki na pulpicie"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:51
 msgid "Show t_humbnails"
 msgstr "Wyświetlanie m_iniatur"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:50
+#: ../settings/xfdesktop-settings-ui.glade.h:52
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
 msgstr "Wyświetla na pulpicie pliki jako miniatury"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:51
-msgid "Show hidden files on the desktop"
-msgstr "Ukryte pliki na pulpicie"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:52
-msgid "Single _click to activate items"
-msgstr "Uruchamianie elementów jednokrotnym _kliknięciem"
-
 #: ../settings/xfdesktop-settings-ui.glade.h:53
-msgid "<b>Appearance</b>"
-msgstr "<b>Wygląd</b>"
+msgid "Show \"Delete\" option in file context menu"
+msgstr "Wyświetlanie opcji „Usuń” w menu kontekstowym pliku"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:54
 msgid "<b>Default Icons</b>"
 msgstr "<b>Domyślne</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:55
+msgid "<b>File/Launcher Icons</b>"
+msgstr "<b>Pliki i aktywatory</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:56
 msgid "_Icons"
 msgstr "_Ikony"
 
-#: ../src/menu.c:92
+#: ../src/menu.c:95
 msgid "_Applications"
 msgstr "_Programy"
 
@@ -812,7 +816,7 @@ msgid "_Empty File"
 msgstr "_Pusty plik"
 
 #: ../src/xfdesktop-file-icon-manager.c:1637
-#: ../src/xfdesktop-special-file-icon.c:523 ../src/xfdesktop-volume-icon.c:779
+#: ../src/xfdesktop-special-file-icon.c:523 ../src/xfdesktop-volume-icon.c:868
 msgid "_Open"
 msgstr "_Otwórz"
 
@@ -882,7 +886,7 @@ msgid "Desktop _Settings..."
 msgstr "_Ustawienia pulpitu..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1995
-#: ../src/xfdesktop-volume-icon.c:846
+#: ../src/xfdesktop-volume-icon.c:935
 msgid "P_roperties..."
 msgstr "_Właściwości..."
 
@@ -894,23 +898,23 @@ msgstr "Błąd wczytywania"
 msgid "Failed to load the desktop folder"
 msgstr "Nie udało się wczytać katalogu pulpitu"
 
-#: ../src/xfdesktop-file-icon-manager.c:3628
+#: ../src/xfdesktop-file-icon-manager.c:3622
 msgid "Copy _Here"
 msgstr "_Skopiuj tutaj"
 
-#: ../src/xfdesktop-file-icon-manager.c:3628
+#: ../src/xfdesktop-file-icon-manager.c:3622
 msgid "_Move Here"
 msgstr "_Przenieś tutaj"
 
-#: ../src/xfdesktop-file-icon-manager.c:3628
+#: ../src/xfdesktop-file-icon-manager.c:3622
 msgid "_Link Here"
 msgstr "_Dowiąż tutaj"
 
-#: ../src/xfdesktop-file-icon-manager.c:3663
+#: ../src/xfdesktop-file-icon-manager.c:3657
 msgid "_Cancel"
 msgstr "_Anuluj"
 
-#: ../src/xfdesktop-file-icon-manager.c:3792
+#: ../src/xfdesktop-file-icon-manager.c:3786
 msgid "Untitled document"
 msgstr "Dokument bez tytułu"
 
@@ -1129,15 +1133,15 @@ msgstr "%s\nRozmiar: %s\nCzas modyfikacji: %s"
 msgid "_Empty Trash"
 msgstr "Opróżnij _kosz"
 
-#: ../src/xfdesktop-volume-icon.c:438
+#: ../src/xfdesktop-volume-icon.c:458
 msgid "(not mounted)"
 msgstr "(niezamontowany)"
 
-#: ../src/xfdesktop-volume-icon.c:439 ../src/xfdesktop-volume-icon.c:440
+#: ../src/xfdesktop-volume-icon.c:459 ../src/xfdesktop-volume-icon.c:460
 msgid "(unknown)"
 msgstr "(nieznany)"
 
-#: ../src/xfdesktop-volume-icon.c:444
+#: ../src/xfdesktop-volume-icon.c:464
 #, c-format
 msgid ""
 "Name: %s\n"
@@ -1147,53 +1151,53 @@ msgid ""
 "Free Space: %s"
 msgstr "Nazwa: %s\nTyp: %s\nZamontowany w: %s\nRozmiar: %s\nWolne miejsce: %s"
 
-#: ../src/xfdesktop-volume-icon.c:446
+#: ../src/xfdesktop-volume-icon.c:466
 msgid "Removable Volume"
 msgstr "Wolumen wymienny"
 
-#: ../src/xfdesktop-volume-icon.c:481 ../src/xfdesktop-volume-icon.c:527
+#: ../src/xfdesktop-volume-icon.c:501 ../src/xfdesktop-volume-icon.c:547
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "Nie udało się wysunąć „%s”"
 
-#: ../src/xfdesktop-volume-icon.c:486 ../src/xfdesktop-volume-icon.c:532
+#: ../src/xfdesktop-volume-icon.c:506 ../src/xfdesktop-volume-icon.c:552
 msgid "Eject Failed"
 msgstr "Nieudane wysuwanie"
 
-#: ../src/xfdesktop-volume-icon.c:565
+#: ../src/xfdesktop-volume-icon.c:633
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "Nie udało się zamontować „%s”"
 
-#: ../src/xfdesktop-volume-icon.c:568
+#: ../src/xfdesktop-volume-icon.c:636
 msgid "Mount Failed"
 msgstr "Nieudane montowanie"
 
-#: ../src/xfdesktop-volume-icon.c:805
+#: ../src/xfdesktop-volume-icon.c:894
 msgid "_Safely Remove Volume"
 msgstr "_Bezpiecznie usuń wolumen"
 
-#: ../src/xfdesktop-volume-icon.c:808
+#: ../src/xfdesktop-volume-icon.c:897
 msgid "_Disconnect Volume"
 msgstr "_Rozłącz wolumen"
 
-#: ../src/xfdesktop-volume-icon.c:811
+#: ../src/xfdesktop-volume-icon.c:900
 msgid "_Stop the Multi-Disk Drive"
 msgstr "Zatrzymaj _napęd wielodyskowy"
 
-#: ../src/xfdesktop-volume-icon.c:814
+#: ../src/xfdesktop-volume-icon.c:903
 msgid "_Lock Volume"
 msgstr "Z_ablokuj wolumen"
 
-#: ../src/xfdesktop-volume-icon.c:817
+#: ../src/xfdesktop-volume-icon.c:906
 msgid "E_ject Volume"
 msgstr "_Wysuń"
 
-#: ../src/xfdesktop-volume-icon.c:826
+#: ../src/xfdesktop-volume-icon.c:915
 msgid "_Unmount Volume"
 msgstr "_Odmontuj"
 
-#: ../src/xfdesktop-volume-icon.c:833
+#: ../src/xfdesktop-volume-icon.c:922
 msgid "_Mount Volume"
 msgstr "_Zamontuj"
 
