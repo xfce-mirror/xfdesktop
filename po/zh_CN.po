@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-28 15:09+0100\n"
+"POT-Creation-Date: 2022-12-18 12:52+0100\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: 玉堂白鹤 <yjwork@qq.com>, 2013,2015-2022\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/xfce/xfdesktop/language/zh_CN/)\n"
@@ -125,24 +125,24 @@ msgstr "跨屏幕"
 
 #. TRANSLATORS: Please split the message in half with '\n' so the dialog will
 #. not be too wide.
-#: ../settings/main.c:1784
+#: ../settings/main.c:1792
 msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
 msgstr "您想根据所选方向排列\n所有现有图标吗？"
 
-#: ../settings/main.c:1790
+#: ../settings/main.c:1798
 msgid "Arrange icons"
 msgstr "排列图标"
 
 #. printf is to be translator-friendly
-#: ../settings/main.c:1798 ../src/xfdesktop-file-icon-manager.c:817
+#: ../settings/main.c:1806 ../src/xfdesktop-file-icon-manager.c:817
 #: ../src/xfdesktop-file-icon-manager.c:1410
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "未能启动 “%s”："
 
-#: ../settings/main.c:1799 ../src/xfdesktop-file-icon-manager.c:819
+#: ../settings/main.c:1807 ../src/xfdesktop-file-icon-manager.c:819
 #: ../src/xfdesktop-file-icon-manager.c:1159
 #: ../src/xfdesktop-file-icon-manager.c:1411 ../src/xfdesktop-file-utils.c:744
 #: ../src/xfdesktop-file-utils.c:1313 ../src/xfdesktop-file-utils.c:1338
@@ -150,7 +150,7 @@ msgstr "未能启动 “%s”："
 msgid "Launch Error"
 msgstr "启动错误"
 
-#: ../settings/main.c:1801 ../settings/xfdesktop-settings-ui.glade.h:20
+#: ../settings/main.c:1809 ../settings/xfdesktop-settings-ui.glade.h:20
 #: ../src/xfdesktop-file-icon-manager.c:585
 #: ../src/xfdesktop-file-icon-manager.c:604
 #: ../src/xfdesktop-file-icon-manager.c:689
@@ -165,59 +165,59 @@ msgstr "启动错误"
 #: ../src/xfdesktop-file-utils.c:1256 ../src/xfdesktop-file-utils.c:1317
 #: ../src/xfdesktop-file-utils.c:1340 ../src/xfdesktop-file-utils.c:1449
 #: ../src/xfdesktop-file-utils.c:1513 ../src/xfdesktop-file-utils.c:1584
-#: ../src/xfdesktop-file-utils.c:1654 ../src/xfdesktop-volume-icon.c:488
-#: ../src/xfdesktop-volume-icon.c:534 ../src/xfdesktop-volume-icon.c:570
+#: ../src/xfdesktop-file-utils.c:1654 ../src/xfdesktop-volume-icon.c:508
+#: ../src/xfdesktop-volume-icon.c:554 ../src/xfdesktop-volume-icon.c:638
 msgid "_Close"
 msgstr "关闭(_C)"
 
-#: ../settings/main.c:1961
+#: ../settings/main.c:1969
 msgid "Image files"
 msgstr "图片文件"
 
 #. Change the title of the file chooser dialog
-#: ../settings/main.c:1969
+#: ../settings/main.c:1977
 msgid "Select a Directory"
 msgstr "选择一个目录"
 
-#: ../settings/main.c:2178
+#: ../settings/main.c:2190
 msgid "Settings manager socket"
 msgstr "设置管理器套接字"
 
-#: ../settings/main.c:2178
+#: ../settings/main.c:2190
 msgid "SOCKET ID"
 msgstr "套接字 ID"
 
-#: ../settings/main.c:2179
+#: ../settings/main.c:2191
 msgid "Version information"
 msgstr "版本信息"
 
-#: ../settings/main.c:2180 ../src/xfdesktop-application.c:848
+#: ../settings/main.c:2192 ../src/xfdesktop-application.c:848
 msgid "Enable debug messages"
 msgstr "启用调试消息"
 
-#: ../settings/main.c:2204
+#: ../settings/main.c:2216
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "输入 ‘%s --help’ 获取用法。"
 
-#: ../settings/main.c:2216
+#: ../settings/main.c:2228
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce 开发团队。保留所有权利。"
 
-#: ../settings/main.c:2217
+#: ../settings/main.c:2229
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "请向 <%s> 报告缺陷。"
 
-#: ../settings/main.c:2224
+#: ../settings/main.c:2236
 msgid "Desktop Settings"
 msgstr "桌面设置"
 
-#: ../settings/main.c:2226
+#: ../settings/main.c:2238
 msgid "Unable to contact settings server"
 msgstr "未能与设置服务器联系"
 
-#: ../settings/main.c:2228
+#: ../settings/main.c:2240
 msgid "Quit"
 msgstr "退出"
 
@@ -451,144 +451,148 @@ msgid "_Background"
 msgstr "背景(_B)"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:22
-msgid "Enable \"Delete\" option in file context menu"
-msgstr "在文件交互菜单中启用“删除”选项 "
-
-#: ../settings/xfdesktop-settings-ui.glade.h:23
 msgid "Include applications menu on _desktop right click"
 msgstr "在桌面上右击时包含应用程序菜单(_D)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:24
+#: ../settings/xfdesktop-settings-ui.glade.h:23
 msgid "_Button:"
 msgstr "按钮(_B)："
 
-#: ../settings/xfdesktop-settings-ui.glade.h:25
+#: ../settings/xfdesktop-settings-ui.glade.h:24
 msgid "Mo_difier:"
 msgstr "转义键(_D)："
 
-#: ../settings/xfdesktop-settings-ui.glade.h:26
+#: ../settings/xfdesktop-settings-ui.glade.h:25
 msgid "Show _application icons in menu"
 msgstr "在菜单中显示应用程序图标(_A) "
 
-#: ../settings/xfdesktop-settings-ui.glade.h:27
+#: ../settings/xfdesktop-settings-ui.glade.h:26
 msgid "_Edit desktop menu"
 msgstr "编辑桌面菜单(_E) "
 
-#: ../settings/xfdesktop-settings-ui.glade.h:28
+#: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "<b>Desktop Menu</b>"
 msgstr "<b>桌面菜单</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:29
+#: ../settings/xfdesktop-settings-ui.glade.h:28
 msgid "Show _window list menu on desktop middle click"
 msgstr "在桌面上中击时显示窗口列表菜单(_W)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:30
+#: ../settings/xfdesktop-settings-ui.glade.h:29
 msgid "B_utton:"
 msgstr "按钮(_U)："
 
-#: ../settings/xfdesktop-settings-ui.glade.h:31
+#: ../settings/xfdesktop-settings-ui.glade.h:30
 msgid "Modi_fier:"
 msgstr "转义键(_F)："
 
-#: ../settings/xfdesktop-settings-ui.glade.h:32
+#: ../settings/xfdesktop-settings-ui.glade.h:31
 msgid "Sh_ow application icons in menu"
 msgstr "在菜单中显示应用程序图标(_O)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:33
+#: ../settings/xfdesktop-settings-ui.glade.h:32
 msgid "Show workspace _names in list"
 msgstr "在列表中显示工作区名称(_N)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:34
+#: ../settings/xfdesktop-settings-ui.glade.h:33
 msgid "Use _submenus for the windows in each workspace"
 msgstr "在每个工作区中为窗口使用子菜单(_S)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:35
+#: ../settings/xfdesktop-settings-ui.glade.h:34
 msgid "Show s_ticky windows only in active workspace"
 msgstr "仅在当前工作区中显示已粘滞窗口(_T)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:36
+#: ../settings/xfdesktop-settings-ui.glade.h:35
 msgid "Show a_dd and remove workspace options in list"
 msgstr "在列表中显示添加和移除工作区选项(_D)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:37
+#: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid "<b>Window List Menu</b>"
 msgstr "<b>窗口列表菜单</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:38
+#: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "_Menus"
 msgstr "菜单(_M)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:39
+#: ../settings/xfdesktop-settings-ui.glade.h:38
 msgid "Icon _type:"
 msgstr "图标类型(_T)："
 
-#: ../settings/xfdesktop-settings-ui.glade.h:40
+#: ../settings/xfdesktop-settings-ui.glade.h:39
 msgid "Icon _size:"
 msgstr "图标大小(_S)："
 
-#: ../settings/xfdesktop-settings-ui.glade.h:41
+#: ../settings/xfdesktop-settings-ui.glade.h:40
 msgid "48"
 msgstr "48"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:42
+#: ../settings/xfdesktop-settings-ui.glade.h:41
 msgid "Icons _orientation:"
 msgstr "图标方向(_O)："
 
-#: ../settings/xfdesktop-settings-ui.glade.h:43
+#: ../settings/xfdesktop-settings-ui.glade.h:42
 msgid "Show icons on primary display"
 msgstr "在主显示屏上显示图标"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:44
+#: ../settings/xfdesktop-settings-ui.glade.h:43
 msgid "Use custom _font size:"
 msgstr "使用自定义的字体大小(_F)："
 
-#: ../settings/xfdesktop-settings-ui.glade.h:45
+#: ../settings/xfdesktop-settings-ui.glade.h:44
 msgid "12"
 msgstr "12"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:46
+#: ../settings/xfdesktop-settings-ui.glade.h:45
 msgid "Show icon tooltips. Size:"
 msgstr "显示图标提示"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:47
+#: ../settings/xfdesktop-settings-ui.glade.h:46
 msgid "Size of the tooltip preview image."
 msgstr "提示预览图像的大小。"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:48
+#: ../settings/xfdesktop-settings-ui.glade.h:47
 msgid "64"
 msgstr "64"
 
+#: ../settings/xfdesktop-settings-ui.glade.h:48
+msgid "Single _click to activate items"
+msgstr "单击激活项目(_C)"
+
 #: ../settings/xfdesktop-settings-ui.glade.h:49
+msgid "<b>Appearance</b>"
+msgstr "<b>外观</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:50
+msgid "Show hidden files on the desktop"
+msgstr "显示桌面上的隐藏文件。"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:51
 msgid "Show t_humbnails"
 msgstr "显示缩略图(_H)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:50
+#: ../settings/xfdesktop-settings-ui.glade.h:52
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
 msgstr "选中此项在桌面上以自动生成的缩略图图标显示可预览的文件。"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:51
-msgid "Show hidden files on the desktop"
-msgstr "显示桌面上的隐藏文件。"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:52
-msgid "Single _click to activate items"
-msgstr "单击激活项目(_C)"
-
 #: ../settings/xfdesktop-settings-ui.glade.h:53
-msgid "<b>Appearance</b>"
-msgstr "<b>外观</b>"
+msgid "Show \"Delete\" option in file context menu"
+msgstr ""
 
 #: ../settings/xfdesktop-settings-ui.glade.h:54
 msgid "<b>Default Icons</b>"
 msgstr "<b>默认图标</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:55
+msgid "<b>File/Launcher Icons</b>"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:56
 msgid "_Icons"
 msgstr "图标(_I) "
 
-#: ../src/menu.c:92
+#: ../src/menu.c:95
 msgid "_Applications"
 msgstr "应用程序(_A)"
 
@@ -810,7 +814,7 @@ msgid "_Empty File"
 msgstr "空文件(_E)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1637
-#: ../src/xfdesktop-special-file-icon.c:523 ../src/xfdesktop-volume-icon.c:779
+#: ../src/xfdesktop-special-file-icon.c:523 ../src/xfdesktop-volume-icon.c:868
 msgid "_Open"
 msgstr "打开(_O)"
 
@@ -880,7 +884,7 @@ msgid "Desktop _Settings..."
 msgstr "桌面设置(_S)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1995
-#: ../src/xfdesktop-volume-icon.c:846
+#: ../src/xfdesktop-volume-icon.c:935
 msgid "P_roperties..."
 msgstr "属性(_R)..."
 
@@ -892,23 +896,23 @@ msgstr "载入错误"
 msgid "Failed to load the desktop folder"
 msgstr "无法载入桌面文件夹"
 
-#: ../src/xfdesktop-file-icon-manager.c:3628
+#: ../src/xfdesktop-file-icon-manager.c:3622
 msgid "Copy _Here"
 msgstr "复制至此(_H)"
 
-#: ../src/xfdesktop-file-icon-manager.c:3628
+#: ../src/xfdesktop-file-icon-manager.c:3622
 msgid "_Move Here"
 msgstr "移动至此(_M)"
 
-#: ../src/xfdesktop-file-icon-manager.c:3628
+#: ../src/xfdesktop-file-icon-manager.c:3622
 msgid "_Link Here"
 msgstr "链接至此(_L)"
 
-#: ../src/xfdesktop-file-icon-manager.c:3663
+#: ../src/xfdesktop-file-icon-manager.c:3657
 msgid "_Cancel"
 msgstr "取消(_C)"
 
-#: ../src/xfdesktop-file-icon-manager.c:3792
+#: ../src/xfdesktop-file-icon-manager.c:3786
 msgid "Untitled document"
 msgstr "无标题文档"
 
@@ -1127,15 +1131,15 @@ msgstr "%s\n大小：%s\n上次修改：%s"
 msgid "_Empty Trash"
 msgstr "清空回收站(_E)"
 
-#: ../src/xfdesktop-volume-icon.c:438
+#: ../src/xfdesktop-volume-icon.c:458
 msgid "(not mounted)"
 msgstr "(未挂载)"
 
-#: ../src/xfdesktop-volume-icon.c:439 ../src/xfdesktop-volume-icon.c:440
+#: ../src/xfdesktop-volume-icon.c:459 ../src/xfdesktop-volume-icon.c:460
 msgid "(unknown)"
 msgstr "(未知)"
 
-#: ../src/xfdesktop-volume-icon.c:444
+#: ../src/xfdesktop-volume-icon.c:464
 #, c-format
 msgid ""
 "Name: %s\n"
@@ -1145,53 +1149,53 @@ msgid ""
 "Free Space: %s"
 msgstr "名称: %s\n类型: %s\n挂载位置: %s\n大小: %s\n可用空间: %s"
 
-#: ../src/xfdesktop-volume-icon.c:446
+#: ../src/xfdesktop-volume-icon.c:466
 msgid "Removable Volume"
 msgstr "可移动卷"
 
-#: ../src/xfdesktop-volume-icon.c:481 ../src/xfdesktop-volume-icon.c:527
+#: ../src/xfdesktop-volume-icon.c:501 ../src/xfdesktop-volume-icon.c:547
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "无法弹出 “%s”"
 
-#: ../src/xfdesktop-volume-icon.c:486 ../src/xfdesktop-volume-icon.c:532
+#: ../src/xfdesktop-volume-icon.c:506 ../src/xfdesktop-volume-icon.c:552
 msgid "Eject Failed"
 msgstr "无法弹出"
 
-#: ../src/xfdesktop-volume-icon.c:565
+#: ../src/xfdesktop-volume-icon.c:633
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "无法挂载 “%s”"
 
-#: ../src/xfdesktop-volume-icon.c:568
+#: ../src/xfdesktop-volume-icon.c:636
 msgid "Mount Failed"
 msgstr "无法挂载"
 
-#: ../src/xfdesktop-volume-icon.c:805
+#: ../src/xfdesktop-volume-icon.c:894
 msgid "_Safely Remove Volume"
 msgstr "安全移除卷(_S)"
 
-#: ../src/xfdesktop-volume-icon.c:808
+#: ../src/xfdesktop-volume-icon.c:897
 msgid "_Disconnect Volume"
 msgstr "断开卷连接(_D)"
 
-#: ../src/xfdesktop-volume-icon.c:811
+#: ../src/xfdesktop-volume-icon.c:900
 msgid "_Stop the Multi-Disk Drive"
 msgstr "停止多磁盘驱动器(_S)"
 
-#: ../src/xfdesktop-volume-icon.c:814
+#: ../src/xfdesktop-volume-icon.c:903
 msgid "_Lock Volume"
 msgstr "锁定卷(_L)"
 
-#: ../src/xfdesktop-volume-icon.c:817
+#: ../src/xfdesktop-volume-icon.c:906
 msgid "E_ject Volume"
 msgstr "弹出卷(_J)"
 
-#: ../src/xfdesktop-volume-icon.c:826
+#: ../src/xfdesktop-volume-icon.c:915
 msgid "_Unmount Volume"
 msgstr "卸载卷(_U)"
 
-#: ../src/xfdesktop-volume-icon.c:833
+#: ../src/xfdesktop-volume-icon.c:922
 msgid "_Mount Volume"
 msgstr "挂载卷(_M)"
 
