@@ -47,11 +47,13 @@ gchar *xfdesktop_file_utils_file_list_to_string(GList *file_list);
 gchar **xfdesktop_file_utils_file_list_to_uri_array(GList *file_list);
 void xfdesktop_file_utils_file_list_free(GList *file_list);
 
-GdkPixbuf *xfdesktop_file_utils_get_fallback_icon(gint size);
+GdkPixbuf *xfdesktop_file_utils_get_fallback_icon(gint size,
+                                                  gint scale);
 
 GdkPixbuf *xfdesktop_file_utils_get_icon(GIcon *icon,
                                          gint width,
                                          gint height,
+                                         gint scale,
                                          guint opacity);
 
 void xfdesktop_file_utils_set_window_cursor(GtkWindow *window,

@@ -108,8 +108,9 @@ xfdesktop_file_icon_model_get_value(GtkTreeModel *model,
                          NULL);
 
             pix = xfdesktop_icon_get_pixbuf(XFDESKTOP_ICON(icon),
-                                            icon_width * scale_factor,
-                                            icon_height * scale_factor);
+                                            icon_width,
+                                            icon_height,
+                                            scale_factor);
             if (pix != NULL) {
                 cairo_surface_t *surface = gdk_cairo_surface_create_from_pixbuf(pix, scale_factor, NULL);
                 g_value_init(value, CAIRO_GOBJECT_TYPE_SURFACE);
@@ -174,8 +175,9 @@ xfdesktop_file_icon_model_get_value(GtkTreeModel *model,
 
             if (tooltip_icon_size > 0) {
                 GdkPixbuf *pix = xfdesktop_icon_get_pixbuf(XFDESKTOP_ICON(icon),
-                                                           tooltip_icon_size * scale_factor,
-                                                           tooltip_icon_size * scale_factor);
+                                                           tooltip_icon_size,
+                                                           tooltip_icon_size,
+                                                           scale_factor);
                 if (pix != NULL) {
                     cairo_surface_t *surface = gdk_cairo_surface_create_from_pixbuf(pix, scale_factor, NULL);
                     if (cairo_surface_status(surface) != CAIRO_STATUS_SUCCESS) {

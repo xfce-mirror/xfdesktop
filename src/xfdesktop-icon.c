@@ -118,7 +118,8 @@ xfdesktop_icon_get_position(XfdesktopIcon *icon,
 GdkPixbuf *
 xfdesktop_icon_get_pixbuf(XfdesktopIcon *icon,
                           gint width,
-                          gint height)
+                          gint height,
+                          gint scale)
 {
     XfdesktopIconClass *klass;
 
@@ -126,7 +127,7 @@ xfdesktop_icon_get_pixbuf(XfdesktopIcon *icon,
     klass = XFDESKTOP_ICON_GET_CLASS(icon);
     g_return_val_if_fail(klass->get_pixbuf, NULL);
 
-    return klass->get_pixbuf(icon, width, height);
+    return klass->get_pixbuf(icon, width, height, scale);
 }
 
 /*< required >*/

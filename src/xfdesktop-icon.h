@@ -54,7 +54,7 @@ struct _XfdesktopIconClass
     void (*position_changed)(XfdesktopIcon *icon);
 
     /*< virtual functions >*/
-    GdkPixbuf *(*get_pixbuf)(XfdesktopIcon *icon, gint width, gint height);
+    GdkPixbuf *(*get_pixbuf)(XfdesktopIcon *icon, gint width, gint height, gint scale);
     const gchar *(*peek_label)(XfdesktopIcon *icon);
     const gchar *(*peek_tooltip)(XfdesktopIcon *icon);
 
@@ -80,7 +80,8 @@ GType xfdesktop_icon_get_type(void) G_GNUC_CONST;
 
 GdkPixbuf *xfdesktop_icon_get_pixbuf(XfdesktopIcon *icon,
                                      gint width,
-                                     gint height);
+                                     gint height,
+                                     gint scale);
 const gchar *xfdesktop_icon_peek_label(XfdesktopIcon *icon);
 const gchar *xfdesktop_icon_peek_tooltip(XfdesktopIcon *icon);
 

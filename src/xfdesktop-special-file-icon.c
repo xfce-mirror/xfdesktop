@@ -70,7 +70,8 @@ static void xfdesktop_special_file_icon_finalize(GObject *obj);
 
 static GdkPixbuf *xfdesktop_special_file_icon_get_pixbuf(XfdesktopIcon *icon,
                                                          gint width,
-                                                         gint height);
+                                                         gint height,
+                                                         gint scale);
 static const gchar *xfdesktop_special_file_icon_peek_label(XfdesktopIcon *icon);
 static gchar *xfdesktop_special_file_icon_get_identifier(XfdesktopIcon *icon);
 static const gchar *xfdesktop_special_file_icon_peek_tooltip(XfdesktopIcon *icon);
@@ -242,7 +243,8 @@ xfdesktop_special_file_icon_load_icon(XfdesktopIcon *icon)
 static GdkPixbuf *
 xfdesktop_special_file_icon_get_pixbuf(XfdesktopIcon *icon,
                                        gint width,
-                                       gint height)
+                                       gint height,
+                                       gint scale)
 {
     GIcon *gicon = NULL;
     GdkPixbuf *pix = NULL;
@@ -252,7 +254,7 @@ xfdesktop_special_file_icon_get_pixbuf(XfdesktopIcon *icon,
     else
         g_object_get(XFDESKTOP_FILE_ICON(icon), "gicon", &gicon, NULL);
 
-    pix = xfdesktop_file_utils_get_icon(gicon, height, height, 100);
+    pix = xfdesktop_file_utils_get_icon(gicon, height, height, scale, 100);
 
     return pix;
 }

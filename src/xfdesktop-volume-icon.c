@@ -79,7 +79,8 @@ static void xfdesktop_volume_icon_finalize(GObject *obj);
 
 static GdkPixbuf *xfdesktop_volume_icon_get_pixbuf(XfdesktopIcon *icon,
                                                    gint width,
-                                                   gint height);
+                                                   gint height,
+                                                   gint scale);
 static const gchar *xfdesktop_volume_icon_peek_label(XfdesktopIcon *icon);
 static gchar *xfdesktop_volume_icon_get_identifier(XfdesktopIcon *icon);
 static const gchar *xfdesktop_volume_icon_peek_tooltip(XfdesktopIcon *icon);
@@ -286,7 +287,8 @@ xfdesktop_volume_icon_load_icon(XfdesktopIcon *icon)
 static GdkPixbuf *
 xfdesktop_volume_icon_get_pixbuf(XfdesktopIcon *icon,
                                  gint width,
-                                 gint height)
+                                 gint height,
+                                 gint scale)
 {
     gint opacity = 100;
     GIcon *gicon = NULL;
@@ -303,7 +305,7 @@ xfdesktop_volume_icon_get_pixbuf(XfdesktopIcon *icon,
     if(!xfdesktop_volume_icon_is_mounted(icon))
         opacity = 50;
 
-    pix = xfdesktop_file_utils_get_icon(gicon, height, height, opacity);
+    pix = xfdesktop_file_utils_get_icon(gicon, height, height, scale, opacity);
 
     return pix;
 }
