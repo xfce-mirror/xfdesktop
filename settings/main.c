@@ -1776,6 +1776,14 @@ xfdesktop_settings_setup_image_iconview(AppearancePanel *panel)
 }
 
 static void
+cb_show_hide_file_icons_settings_pane(GtkComboBox *combo,
+                                      GtkWidget *file_icons_settings_pane)
+{
+    gtk_widget_set_sensitive(file_icons_settings_pane,
+                             gtk_combo_box_get_active(combo) == 2);
+}
+
+static void
 cb_xfdesktop_icon_orientation_changed(GtkComboBox *combo,
                                       gpointer user_data)
 {
@@ -1921,7 +1929,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     }
 
     appearance_settings = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
-                                                            "alignment_settings"));
+                                                            "background_tab_vbox"));
 
     /* Add the background tab widgets to the main window and don't display the
      * notebook label/tab */
@@ -2102,8 +2110,12 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     w = GTK_WIDGET(gtk_builder_get_object(main_gxml, "combo_icons"));
 #ifdef ENABLE_FILE_ICONS
     gtk_combo_box_set_active(GTK_COMBO_BOX(w), 2);
+    g_signal_connect(w, "changed",
+                     G_CALLBACK(cb_show_hide_file_icons_settings_pane),
+                     gtk_builder_get_object(main_gxml, "box_file_icons_settings"));
 #else
     gtk_combo_box_set_active(GTK_COMBO_BOX(w), 1);
+    gtk_widget_hide(GTK_WIDGET(gtk_builder_get_object(main_gxml, "box_file_icons_settings")));
 #endif
     xfconf_g_property_bind(channel, DESKTOP_ICONS_STYLE_PROP, G_TYPE_INT,
                            G_OBJECT(w), "active");
@@ -2276,7 +2288,7 @@ main(int argc, char **argv)
 
         gdk_notify_startup_complete();
 
-        plug_child = GTK_WIDGET(gtk_builder_get_object(gxml, "alignment1"));
+        plug_child = GTK_WIDGET(gtk_builder_get_object(gxml, "notebook_settings"));
         xfce_widget_reparent(plug_child, plug);
         gtk_widget_show(plug_child);
 
