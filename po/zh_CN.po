@@ -1,29 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Aron Xu <aronmalache@163.com>, 2009
-# Chipong Luo <chipong.luo@yahoo.com>, 2011-2013
-# Chris K. Zhang <plutino@gmail.com>, 2009
-# Hunt Xu <huntxu@live.cn>, 2009-2010
-# Cally Mal <zhouxiaobo.500@gmail.com>, 2013
-# 玉堂白鹤 <yjwork@qq.com>, 2013-2014
-# Yongtao Yang <yongtao.yang@telia.com>, 2004
-# Cally Mal <zhouxiaobo.500@gmail.com>, 2013
-# Cally Mal <zhouxiaobo.500@gmail.com>, 2013-2014
-# 浩翔 赵 <1637979429@qq.com>, 2018
-# Cally Mal <zhouxiaobo.500@gmail.com>, 2013
-# 玉堂白鹤 <yjwork@qq.com>, 2013,2015-2022
-# Mingcong Bai <jeffbai@aosc.xyz>, 2015
+# Nick Schermer <nick@xfce.org>, 2022
+# 玉堂白鹤 <yjwork@qq.com>, 2022
+# Xfce Bot <transifex@xfce.org>, 2022
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Xfdesktop\n"
+"Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-28 15:09+0100\n"
-"PO-Revision-Date: 2013-07-02 20:50+0000\n"
-"Last-Translator: 玉堂白鹤 <yjwork@qq.com>, 2013,2015-2022\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/xfce/xfdesktop/language/zh_CN/)\n"
+"POT-Creation-Date: 2022-12-22 12:24+0100\n"
+"PO-Revision-Date: 2022-12-22 11:24+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>, 2022\n"
+"Language-Team: Chinese (China) (https://www.transifex.com/xfce/teams/16840/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -67,7 +60,10 @@ msgid ""
 "<b>%s</b>\n"
 "Type: %s\n"
 "Size: %s"
-msgstr "<b>%s</b>\n类型： %s\n大小：%s"
+msgstr ""
+"<b>%s</b>\n"
+"类型： %s\n"
+"大小：%s"
 
 #: ../settings/main.c:744
 #, c-format
@@ -129,7 +125,9 @@ msgstr "跨屏幕"
 msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
-msgstr "您想根据所选方向排列\n所有现有图标吗？"
+msgstr ""
+"您想根据所选方向排列\n"
+"所有现有图标吗？"
 
 #: ../settings/main.c:1790
 msgid "Arrange icons"
@@ -165,8 +163,8 @@ msgstr "启动错误"
 #: ../src/xfdesktop-file-utils.c:1256 ../src/xfdesktop-file-utils.c:1317
 #: ../src/xfdesktop-file-utils.c:1340 ../src/xfdesktop-file-utils.c:1449
 #: ../src/xfdesktop-file-utils.c:1513 ../src/xfdesktop-file-utils.c:1584
-#: ../src/xfdesktop-file-utils.c:1654 ../src/xfdesktop-volume-icon.c:488
-#: ../src/xfdesktop-volume-icon.c:534 ../src/xfdesktop-volume-icon.c:570
+#: ../src/xfdesktop-file-utils.c:1654 ../src/xfdesktop-volume-icon.c:508
+#: ../src/xfdesktop-volume-icon.c:554 ../src/xfdesktop-volume-icon.c:638
 msgid "_Close"
 msgstr "关闭(_C)"
 
@@ -244,7 +242,7 @@ msgstr "竖直渐变"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
 msgid "Transparent"
-msgstr "透明"
+msgstr "透明度"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
 msgid "Choose the folder to select wallpapers from."
@@ -321,7 +319,7 @@ msgstr "目录(_F)："
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 msgid "C_olor:"
-msgstr "颜色(_C)："
+msgstr "颜色(_O)："
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
 msgid "Change the _background "
@@ -586,9 +584,9 @@ msgstr "<b>默认图标</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:55
 msgid "_Icons"
-msgstr "图标(_I) "
+msgstr "图标(_I)"
 
-#: ../src/menu.c:92
+#: ../src/menu.c:94
 msgid "_Applications"
 msgstr "应用程序(_A)"
 
@@ -602,7 +600,9 @@ msgstr "移除工作区 %d"
 msgid ""
 "Do you really want to remove workspace %d?\n"
 "Note: You are currently on workspace %d."
-msgstr "您确定要移除工作区 %d？\n注意：您目前位于工作区 %d。"
+msgstr ""
+"您确定要移除工作区 %d？\n"
+"注意：您目前位于工作区 %d。"
 
 #: ../src/windowlist.c:80
 #, c-format
@@ -614,7 +614,9 @@ msgstr "移除工作区  '%s'"
 msgid ""
 "Do you really want to remove workspace '%s'?\n"
 "Note: You are currently on workspace '%s'."
-msgstr "您确定要移除工作区 '%s' ？\n注意：您目前位于工作区 '%s'。"
+msgstr ""
+"您确定要移除工作区 '%s' ？\n"
+"注意：您目前位于工作区 '%s'。"
 
 #. Popup a dialog box confirming that the user wants to remove a
 #. * workspace
@@ -675,7 +677,7 @@ msgstr "禁用调试消息"
 
 #: ../src/xfdesktop-application.c:850
 msgid "Do not wait for a window manager on startup"
-msgstr "启动时不要等待窗口管理器"
+msgstr "启动时不等待窗口管理器"
 
 #: ../src/xfdesktop-application.c:851
 msgid "Cause xfdesktop to quit"
@@ -759,7 +761,9 @@ msgstr "选中的图标都不支持重命名。"
 msgid ""
 "This will reorder all desktop items and place them on different screen positions.\n"
 "Are you sure?"
-msgstr "这将重新排列所有桌面项目并将它们放置在不同的屏幕位置。\n您确定?"
+msgstr ""
+"这将重新排列所有桌面项目并将它们放置在不同的屏幕位置。\n"
+"您确定?"
 
 #: ../src/xfdesktop-file-icon-manager.c:1017
 msgid "_OK"
@@ -799,7 +803,7 @@ msgstr "创建文件夹(_F)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1586
 msgid "Create _Document"
-msgstr "创建文档 (_D)"
+msgstr "创建文档(_D)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1611
 msgid "No templates installed"
@@ -810,7 +814,7 @@ msgid "_Empty File"
 msgstr "空文件(_E)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1637
-#: ../src/xfdesktop-special-file-icon.c:523 ../src/xfdesktop-volume-icon.c:779
+#: ../src/xfdesktop-special-file-icon.c:523 ../src/xfdesktop-volume-icon.c:868
 msgid "_Open"
 msgstr "打开(_O)"
 
@@ -829,7 +833,7 @@ msgstr "打开方式"
 #: ../src/xfdesktop-file-icon-manager.c:1758
 #: ../src/xfdesktop-file-icon-manager.c:1783
 msgid "Open With Other _Application..."
-msgstr "用其它应用程序打开(_A)..."
+msgstr "使用用其它应用程序打开(_A)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1769
 msgid "Set _Default Application..."
@@ -880,7 +884,7 @@ msgid "Desktop _Settings..."
 msgstr "桌面设置(_S)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1995
-#: ../src/xfdesktop-volume-icon.c:846
+#: ../src/xfdesktop-volume-icon.c:935
 msgid "P_roperties..."
 msgstr "属性(_R)..."
 
@@ -892,23 +896,23 @@ msgstr "载入错误"
 msgid "Failed to load the desktop folder"
 msgstr "无法载入桌面文件夹"
 
-#: ../src/xfdesktop-file-icon-manager.c:3628
+#: ../src/xfdesktop-file-icon-manager.c:3622
 msgid "Copy _Here"
 msgstr "复制至此(_H)"
 
-#: ../src/xfdesktop-file-icon-manager.c:3628
+#: ../src/xfdesktop-file-icon-manager.c:3622
 msgid "_Move Here"
 msgstr "移动至此(_M)"
 
-#: ../src/xfdesktop-file-icon-manager.c:3628
+#: ../src/xfdesktop-file-icon-manager.c:3622
 msgid "_Link Here"
 msgstr "链接至此(_L)"
 
-#: ../src/xfdesktop-file-icon-manager.c:3663
+#: ../src/xfdesktop-file-icon-manager.c:3657
 msgid "_Cancel"
 msgstr "取消(_C)"
 
-#: ../src/xfdesktop-file-icon-manager.c:3792
+#: ../src/xfdesktop-file-icon-manager.c:3786
 msgid "Untitled document"
 msgstr "无标题文档"
 
@@ -939,7 +943,7 @@ msgstr "%x %X"
 #. the file_time is invalid
 #: ../src/xfdesktop-file-utils.c:192 ../src/xfdesktop-file-utils.c:1579
 msgid "Unknown"
-msgstr "未知"
+msgstr "未知的"
 
 #: ../src/xfdesktop-file-utils.c:320
 #, c-format
@@ -1100,7 +1104,11 @@ msgid ""
 "Type: %s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr "名称: %s\n类型: %s\n大小: %s\n上次修改: %s"
+msgstr ""
+"名称: %s\n"
+"类型: %s\n"
+"大小: %s\n"
+"上次修改: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:439
 msgid "Trash is empty"
@@ -1121,21 +1129,24 @@ msgid ""
 "%s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr "%s\n大小：%s\n上次修改：%s"
+msgstr ""
+"%s\n"
+"大小：%s\n"
+"上次修改：%s"
 
 #: ../src/xfdesktop-special-file-icon.c:539
 msgid "_Empty Trash"
 msgstr "清空回收站(_E)"
 
-#: ../src/xfdesktop-volume-icon.c:438
+#: ../src/xfdesktop-volume-icon.c:458
 msgid "(not mounted)"
 msgstr "(未挂载)"
 
-#: ../src/xfdesktop-volume-icon.c:439 ../src/xfdesktop-volume-icon.c:440
+#: ../src/xfdesktop-volume-icon.c:459 ../src/xfdesktop-volume-icon.c:460
 msgid "(unknown)"
 msgstr "(未知)"
 
-#: ../src/xfdesktop-volume-icon.c:444
+#: ../src/xfdesktop-volume-icon.c:464
 #, c-format
 msgid ""
 "Name: %s\n"
@@ -1143,55 +1154,60 @@ msgid ""
 "Mounted at: %s\n"
 "Size: %s\n"
 "Free Space: %s"
-msgstr "名称: %s\n类型: %s\n挂载位置: %s\n大小: %s\n可用空间: %s"
+msgstr ""
+"名称: %s\n"
+"类型: %s\n"
+"挂载位置: %s\n"
+"大小: %s\n"
+"可用空间: %s"
 
-#: ../src/xfdesktop-volume-icon.c:446
+#: ../src/xfdesktop-volume-icon.c:466
 msgid "Removable Volume"
 msgstr "可移动卷"
 
-#: ../src/xfdesktop-volume-icon.c:481 ../src/xfdesktop-volume-icon.c:527
+#: ../src/xfdesktop-volume-icon.c:501 ../src/xfdesktop-volume-icon.c:547
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "无法弹出 “%s”"
 
-#: ../src/xfdesktop-volume-icon.c:486 ../src/xfdesktop-volume-icon.c:532
+#: ../src/xfdesktop-volume-icon.c:506 ../src/xfdesktop-volume-icon.c:552
 msgid "Eject Failed"
 msgstr "无法弹出"
 
-#: ../src/xfdesktop-volume-icon.c:565
+#: ../src/xfdesktop-volume-icon.c:633
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "无法挂载 “%s”"
 
-#: ../src/xfdesktop-volume-icon.c:568
+#: ../src/xfdesktop-volume-icon.c:636
 msgid "Mount Failed"
 msgstr "无法挂载"
 
-#: ../src/xfdesktop-volume-icon.c:805
+#: ../src/xfdesktop-volume-icon.c:894
 msgid "_Safely Remove Volume"
 msgstr "安全移除卷(_S)"
 
-#: ../src/xfdesktop-volume-icon.c:808
+#: ../src/xfdesktop-volume-icon.c:897
 msgid "_Disconnect Volume"
 msgstr "断开卷连接(_D)"
 
-#: ../src/xfdesktop-volume-icon.c:811
+#: ../src/xfdesktop-volume-icon.c:900
 msgid "_Stop the Multi-Disk Drive"
 msgstr "停止多磁盘驱动器(_S)"
 
-#: ../src/xfdesktop-volume-icon.c:814
+#: ../src/xfdesktop-volume-icon.c:903
 msgid "_Lock Volume"
 msgstr "锁定卷(_L)"
 
-#: ../src/xfdesktop-volume-icon.c:817
+#: ../src/xfdesktop-volume-icon.c:906
 msgid "E_ject Volume"
 msgstr "弹出卷(_J)"
 
-#: ../src/xfdesktop-volume-icon.c:826
+#: ../src/xfdesktop-volume-icon.c:915
 msgid "_Unmount Volume"
 msgstr "卸载卷(_U)"
 
-#: ../src/xfdesktop-volume-icon.c:833
+#: ../src/xfdesktop-volume-icon.c:922
 msgid "_Mount Volume"
 msgstr "挂载卷(_M)"
 
