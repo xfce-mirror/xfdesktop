@@ -1776,11 +1776,16 @@ xfdesktop_settings_setup_image_iconview(AppearancePanel *panel)
 }
 
 static void
-cb_show_hide_file_icons_settings_pane(GtkComboBox *combo,
-                                      GtkWidget *file_icons_settings_pane)
+cb_icon_style_changed(GtkComboBox *combo,
+                      GtkBuilder *main_gxml)
 {
-    gtk_widget_set_sensitive(file_icons_settings_pane,
+    gtk_widget_set_sensitive(GTK_WIDGET(gtk_builder_get_object(main_gxml, "box_icons_appearance_settings")),
+                             gtk_combo_box_get_active(combo) != 0);
+
+#ifdef ENABLE_FILE_ICONS
+    gtk_widget_set_sensitive(GTK_WIDGET(gtk_builder_get_object(main_gxml, "box_file_icons_settings")),
                              gtk_combo_box_get_active(combo) == 2);
+#endif
 }
 
 static void
@@ -2104,15 +2109,11 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                            gtk_builder_get_object(main_gxml, "chk_show_winlist_ws_submenus"),
                            "active");
 
-    w = GTK_WIDGET(gtk_builder_get_object(main_gxml, "primary"));
-    xfconf_g_property_bind(channel, DESKTOP_ICONS_ON_PRIMARY_PROP, G_TYPE_BOOLEAN,
-                          G_OBJECT(w), "active");
     w = GTK_WIDGET(gtk_builder_get_object(main_gxml, "combo_icons"));
+    g_signal_connect(w, "changed",
+                     G_CALLBACK(cb_icon_style_changed), main_gxml);
 #ifdef ENABLE_FILE_ICONS
     gtk_combo_box_set_active(GTK_COMBO_BOX(w), 2);
-    g_signal_connect(w, "changed",
-                     G_CALLBACK(cb_show_hide_file_icons_settings_pane),
-                     gtk_builder_get_object(main_gxml, "box_file_icons_settings"));
 #else
     gtk_combo_box_set_active(GTK_COMBO_BOX(w), 1);
     gtk_widget_hide(GTK_WIDGET(gtk_builder_get_object(main_gxml, "box_file_icons_settings")));
@@ -2129,6 +2130,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                      G_CALLBACK(cb_xfdesktop_icon_orientation_changed), NULL);
 
     /* bindings */
+    xfconf_g_property_bind(channel, DESKTOP_ICONS_ON_PRIMARY_PROP, G_TYPE_BOOLEAN,
+                           G_OBJECT(gtk_builder_get_object(main_gxml, "primary")),
+                           "active");
     xfconf_g_property_bind(channel, DESKTOP_ICONS_FONT_SIZE_PROP, G_TYPE_DOUBLE,
                            G_OBJECT(gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(spin_font_size))),
                            "value");
