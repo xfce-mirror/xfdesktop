@@ -161,6 +161,8 @@ enum
 
 static guint backdrop_signals[LAST_SIGNAL] = { 0, };
 
+static const double backdrop_gamma = 2.2;
+
 /* helper functions */
 
 static GdkPixbuf *
@@ -192,9 +194,9 @@ create_solid(GdkRGBA *color,
     return pix;
 }
 
-static const double backdrop_gamma = 2.2;
-
-static void apply_gamma(GdkRGBA *dest, const GdkRGBA *src)
+static void
+apply_gamma(GdkRGBA *dest,
+            const GdkRGBA *src)
 {
     dest->red = pow(src->red, backdrop_gamma);
     dest->green = pow(src->green, backdrop_gamma);
@@ -202,16 +204,23 @@ static void apply_gamma(GdkRGBA *dest, const GdkRGBA *src)
     dest->alpha = src->alpha;
 }
 
-static unsigned char interpolate(double x1, double x2, int position, int max)
+static unsigned char
+interpolate(double x1,
+            double x2,
+            int position,
+            int max)
 {
-    const double t = (double)position / (max-1); // we want to interpolate all the way to max-1
-    const double xi = x1 * (1-t) + x2 * t;
-    return CLAMP(round(pow(xi, 1/backdrop_gamma) * 255), 0, 255);
+    const double t = (double)position / (max - 1); // we want to interpolate all the way to max-1
+    const double xi = x1 * (1 - t) + x2 * t;
+    return CLAMP(round(pow(xi, 1 / backdrop_gamma) * 255), 0, 255);
 }
 
 static GdkPixbuf *
-create_gradient(GdkRGBA *color1, GdkRGBA *color2, gint width, gint height,
-        XfceBackdropColorStyle style)
+create_gradient(GdkRGBA *color1,
+                GdkRGBA *color2,
+                gint width,
+                gint height,
+                XfceBackdropColorStyle style)
 {
     GdkWindow *root;
     GdkPixbuf *pix;
@@ -230,37 +239,35 @@ create_gradient(GdkRGBA *color1, GdkRGBA *color2, gint width, gint height,
     g_return_val_if_fail(width > 0 && height > 0, NULL);
     g_return_val_if_fail(style == XFCE_BACKDROP_COLOR_HORIZ_GRADIENT || style == XFCE_BACKDROP_COLOR_VERT_GRADIENT, NULL);
 
-    root = gdk_screen_get_root_window(gdk_screen_get_default ());
+    root = gdk_screen_get_root_window(gdk_screen_get_default());
     scale_factor = gdk_window_get_scale_factor(root);
     surface = gdk_window_create_similar_image_surface(root, CAIRO_FORMAT_RGB24, width, height, scale_factor);
     data = cairo_image_surface_get_data(surface);
     stride = cairo_image_surface_get_stride(surface);
 
-    if(style == XFCE_BACKDROP_COLOR_VERT_GRADIENT) {
+    if (style == XFCE_BACKDROP_COLOR_VERT_GRADIENT) {
         ax1_max = height;
         ax2_max = width;
-    }
-    else {
+    } else {
         ax1_max = width;
         ax2_max = height;
     }
 
     apply_gamma(&color1_lin, color1);
     apply_gamma(&color2_lin, color2);
-    for(ax1 = 0; ax1 < ax1_max; ax1++) {
+    for (ax1 = 0; ax1 < ax1_max; ax1++) {
         unsigned char r, g, b;
-        r = interpolate(color1_lin.red,   color2_lin.red,   ax1, ax1_max);
+        r = interpolate(color1_lin.red, color2_lin.red, ax1, ax1_max);
         g = interpolate(color1_lin.green, color2_lin.green, ax1, ax1_max);
-        b = interpolate(color1_lin.blue,  color2_lin.blue,  ax1, ax1_max);
+        b = interpolate(color1_lin.blue, color2_lin.blue, ax1, ax1_max);
 
-        for(ax2 = 0; ax2 < ax2_max; ax2++) {
+        for (ax2 = 0; ax2 < ax2_max; ax2++) {
             guint x, y;
             guint32 *p;
-            if(style == XFCE_BACKDROP_COLOR_VERT_GRADIENT) {
+            if (style == XFCE_BACKDROP_COLOR_VERT_GRADIENT) {
                 x = ax2;
                 y = ax1;
-            }
-            else {
+            } else {
                 x = ax1;
                 y = ax2;
             }
