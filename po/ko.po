@@ -1,24 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Alan Lee <bkrhlim@aol.com>, 2013
-# Allen Choi <byunghyun.choi@gmail.com>, 2005
-# Allen Choi <byunghyun.choi@gmail.com>, 2005
-# Seong-ho Cho <darkcircle.0426@gmail.com>, 2013
-# 1763f4a4329a2376c933c5e919a36cbc_341ca53 <1f851310383599d03339229d772e1290_119292>, 2017-2018
-# Seong-ho Cho <darkcircle.0426@gmail.com>, 2013-2016,2018-2021
-# Thomas Sungjin Kang <potopro@gmail.com>, 2013
-# Thomas Sungjin Kang <potopro@gmail.com>, 2013
+# Kim, Jeongu, 2022
+# Nick Schermer <nick@xfce.org>, 2022
+# Seong-ho Cho <darkcircle.0426@gmail.com>, 2022
+# Xfce Bot <transifex@xfce.org>, 2022
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Xfdesktop\n"
+"Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-28 15:09+0100\n"
-"PO-Revision-Date: 2013-07-02 20:50+0000\n"
-"Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>, 2013-2016,2018-2021\n"
-"Language-Team: Korean (http://www.transifex.com/xfce/xfdesktop/language/ko/)\n"
+"POT-Creation-Date: 2022-12-22 12:24+0100\n"
+"PO-Revision-Date: 2022-12-22 11:24+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>, 2022\n"
+"Language-Team: Korean (https://www.transifex.com/xfce/teams/16840/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -62,7 +61,10 @@ msgid ""
 "<b>%s</b>\n"
 "Type: %s\n"
 "Size: %s"
-msgstr "<b>%s</b>\n형식: %s\n크기: %s"
+msgstr ""
+"<b>%s</b>\n"
+"형식: %s\n"
+"크기: %s"
 
 #: ../settings/main.c:744
 #, c-format
@@ -124,7 +126,9 @@ msgstr "화면 확장"
 msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
-msgstr "모든 기존 아이콘을 선택한 방향에 따라\n정렬하시겠습니까?"
+msgstr ""
+"모든 기존 아이콘을 선택한 방향에 따라\n"
+"정렬하시겠습니까?"
 
 #: ../settings/main.c:1790
 msgid "Arrange icons"
@@ -160,10 +164,10 @@ msgstr "실행 오류"
 #: ../src/xfdesktop-file-utils.c:1256 ../src/xfdesktop-file-utils.c:1317
 #: ../src/xfdesktop-file-utils.c:1340 ../src/xfdesktop-file-utils.c:1449
 #: ../src/xfdesktop-file-utils.c:1513 ../src/xfdesktop-file-utils.c:1584
-#: ../src/xfdesktop-file-utils.c:1654 ../src/xfdesktop-volume-icon.c:488
-#: ../src/xfdesktop-volume-icon.c:534 ../src/xfdesktop-volume-icon.c:570
+#: ../src/xfdesktop-file-utils.c:1654 ../src/xfdesktop-volume-icon.c:508
+#: ../src/xfdesktop-volume-icon.c:554 ../src/xfdesktop-volume-icon.c:638
 msgid "_Close"
-msgstr "닫기(_C)"
+msgstr "닫기(_O)"
 
 #: ../settings/main.c:1961
 msgid "Image files"
@@ -176,11 +180,11 @@ msgstr "디렉터리 선택"
 
 #: ../settings/main.c:2178
 msgid "Settings manager socket"
-msgstr "관리자 소켓 설정"
+msgstr "관리자 소켓을 설정합니다"
 
 #: ../settings/main.c:2178
 msgid "SOCKET ID"
-msgstr "소켓 ID"
+msgstr "SOCKET ID"
 
 #: ../settings/main.c:2179
 msgid "Version information"
@@ -193,16 +197,16 @@ msgstr "디버깅 메시지 활성화"
 #: ../settings/main.c:2204
 #, c-format
 msgid "Type '%s --help' for usage."
-msgstr "사용법을 보려면 '%s --help'를 입력하십시오."
+msgstr "사용방법을 보려면 '%s --help'를 입력합니다."
 
 #: ../settings/main.c:2216
 msgid "The Xfce development team. All rights reserved."
-msgstr "Xfce 개발 팀. All rights reserved."
+msgstr "XFCE 개발 팀. All rights reserved."
 
 #: ../settings/main.c:2217
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr "<%s>(으)로 버그를 알려주십시오."
+msgstr "<%s>로 버그를 알려주십시오."
 
 #: ../settings/main.c:2224
 msgid "Desktop Settings"
@@ -210,7 +214,7 @@ msgstr "작업 공간 설정"
 
 #: ../settings/main.c:2226
 msgid "Unable to contact settings server"
-msgstr "설정 서버에 연결할 수 없습니다."
+msgstr "설정 서버로 연결할 수 없습니다"
 
 #: ../settings/main.c:2228
 msgid "Quit"
@@ -227,7 +231,7 @@ msgstr "데스크톱 배경, 메뉴, 아이콘 동작을 설정합니다"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
 msgid "Solid color"
-msgstr "단색"
+msgstr "단일 색상"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
 msgid "Horizontal gradient"
@@ -316,7 +320,7 @@ msgstr "폴더(_F):"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 msgid "C_olor:"
-msgstr "색상(_O):"
+msgstr "색(_O):"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
 msgid "Change the _background "
@@ -583,21 +587,23 @@ msgstr "<b>기본 아이콘</b>"
 msgid "_Icons"
 msgstr "아이콘(_I)"
 
-#: ../src/menu.c:92
+#: ../src/menu.c:94
 msgid "_Applications"
 msgstr "프로그램(_A)"
 
 #: ../src/windowlist.c:75
 #, c-format
 msgid "Remove Workspace %d"
-msgstr "%d번 작업 공간 제거"
+msgstr "작업 공간 %d번 제거"
 
 #: ../src/windowlist.c:76
 #, c-format
 msgid ""
 "Do you really want to remove workspace %d?\n"
 "Note: You are currently on workspace %d."
-msgstr "정말로  %d번 작업 공간을 제거하시렵니까?\n참고: 현재 %d번 작업 공간에 있습니다."
+msgstr ""
+"정말로  %d번 작업 공간을 제거하시렵니까?\n"
+"참고: 현재 %d번 작업 공간에 있습니다."
 
 #: ../src/windowlist.c:80
 #, c-format
@@ -609,7 +615,9 @@ msgstr "'%s' 작업 공간 제거"
 msgid ""
 "Do you really want to remove workspace '%s'?\n"
 "Note: You are currently on workspace '%s'."
-msgstr "정말로 '%s' 작업 공간을 제거하시렵니까?\n참고: 현재 '%s' 작업 공간에 있습니다."
+msgstr ""
+"정말로 '%s' 작업 공간을 제거하시렵니까?\n"
+"참고: 현재 '%s' 작업 공간에 있습니다."
 
 #. Popup a dialog box confirming that the user wants to remove a
 #. * workspace
@@ -670,7 +678,7 @@ msgstr "디버깅 메시지 비활성화"
 
 #: ../src/xfdesktop-application.c:850
 msgid "Do not wait for a window manager on startup"
-msgstr "시동시 창 관리자를 기다리지 않습니다"
+msgstr "시작시 창 관리자 기다리지 않기"
 
 #: ../src/xfdesktop-application.c:851
 msgid "Cause xfdesktop to quit"
@@ -790,7 +798,7 @@ msgstr "URL 연결 만들기(_U)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1574
 msgid "Create _Folder..."
-msgstr "새 폴더 만들기(_F)..."
+msgstr "폴더 만들기(_F)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1586
 msgid "Create _Document"
@@ -805,7 +813,7 @@ msgid "_Empty File"
 msgstr "빈 파일(_E)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1637
-#: ../src/xfdesktop-special-file-icon.c:523 ../src/xfdesktop-volume-icon.c:779
+#: ../src/xfdesktop-special-file-icon.c:523 ../src/xfdesktop-volume-icon.c:868
 msgid "_Open"
 msgstr "열기(_O)"
 
@@ -848,11 +856,11 @@ msgstr "폴더에 붙여넣기"
 
 #: ../src/xfdesktop-file-icon-manager.c:1862
 msgid "Mo_ve to Trash"
-msgstr "휴지통으로 이동(_V)"
+msgstr "휴지통으로 옮기기(_V)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1875
 msgid "_Delete"
-msgstr "지우기(_D)"
+msgstr "삭제(_D)"
 
 #: ../src/xfdesktop-file-icon-manager.c:1893
 msgid "_Rename..."
@@ -875,7 +883,7 @@ msgid "Desktop _Settings..."
 msgstr "데스크톱 설정(_S)..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1995
-#: ../src/xfdesktop-volume-icon.c:846
+#: ../src/xfdesktop-volume-icon.c:935
 msgid "P_roperties..."
 msgstr "속성(_R)..."
 
@@ -887,23 +895,23 @@ msgstr "불러오기 오류"
 msgid "Failed to load the desktop folder"
 msgstr "데스크톱 폴더 불러오기에 실패했습니다"
 
-#: ../src/xfdesktop-file-icon-manager.c:3628
+#: ../src/xfdesktop-file-icon-manager.c:3622
 msgid "Copy _Here"
 msgstr "여기로 복사(_H)"
 
-#: ../src/xfdesktop-file-icon-manager.c:3628
+#: ../src/xfdesktop-file-icon-manager.c:3622
 msgid "_Move Here"
 msgstr "여기로 이동(_M)"
 
-#: ../src/xfdesktop-file-icon-manager.c:3628
+#: ../src/xfdesktop-file-icon-manager.c:3622
 msgid "_Link Here"
 msgstr "여기에 연결 만들기(_L)"
 
-#: ../src/xfdesktop-file-icon-manager.c:3663
+#: ../src/xfdesktop-file-icon-manager.c:3657
 msgid "_Cancel"
 msgstr "취소(_C)"
 
-#: ../src/xfdesktop-file-icon-manager.c:3792
+#: ../src/xfdesktop-file-icon-manager.c:3786
 msgid "Untitled document"
 msgstr "무제 문서"
 
@@ -911,35 +919,35 @@ msgstr "무제 문서"
 #: ../src/xfdesktop-file-utils.c:170
 #, c-format
 msgid "Today at %X"
-msgstr "오늘, %X"
+msgstr "오늘(%X)"
 
 #. TRANSLATORS: file was modified less than two days ago
 #: ../src/xfdesktop-file-utils.c:174
 #, c-format
 msgid "Yesterday at %X"
-msgstr "어제, %X"
+msgstr "어제(%X)"
 
 #. Days from last week
 #: ../src/xfdesktop-file-utils.c:179
 #, c-format
 msgid "%A at %X"
-msgstr "%A, %X"
+msgstr "%A(%X)"
 
 #. Any other date
 #: ../src/xfdesktop-file-utils.c:182
 #, c-format
 msgid "%x at %X"
-msgstr "%x, %X"
+msgstr "%x(%X)"
 
 #. the file_time is invalid
 #: ../src/xfdesktop-file-utils.c:192 ../src/xfdesktop-file-utils.c:1579
 msgid "Unknown"
-msgstr "알 수 없음"
+msgstr "모름"
 
 #: ../src/xfdesktop-file-utils.c:320
 #, c-format
 msgid "%.*s (copy %u)%s"
-msgstr ""
+msgstr "%.*s (사본 %u)%s"
 
 #: ../src/xfdesktop-file-utils.c:745
 msgid "The folder could not be opened"
@@ -1049,7 +1057,7 @@ msgstr "장치 마운트 해제 중"
 msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the"
 " media or disconnect the drive"
-msgstr "시스템에서 \"%s\" 장치 마운트를 해제하고 있습니다. 미디어를 제거하거나 드라이브의 연결을 끊지 마십시오"
+msgstr "\"%s\" 장치를 시스템에서 마운트 해제하는 중입니다. 미디어를 제거하거나 드라이브의 연결을 끊지 마십시오"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:137 ../src/xfdesktop-notify.c:322
@@ -1062,7 +1070,7 @@ msgstr "장치에 데이터 쓰는 중"
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be"
 " removed. Please do not remove the media or disconnect the drive"
-msgstr "장치 제거 전 \"%s\" 장치로 기록할 데이터가 있습니다. 미디어를 제거하거나 드라이브의 연결을 끊지 마십시오"
+msgstr "\"%s\" 장치를 제거하기 전에 이 장치에 기록해야 하는 데이터가 있습니다. 미디어를 제거하거나 드라이브의 연결을 끊지 마십시오"
 
 #: ../src/xfdesktop-notify.c:221
 msgid "Unmount Finished"
@@ -1082,7 +1090,7 @@ msgstr "장치 꺼내는 중"
 #: ../src/xfdesktop-notify.c:316
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
-msgstr "\"%s\" 장치를 꺼내는 중입니다. 시간이 약간 걸릴 수도 있습니다"
+msgstr "\"%s\" 장치를 꺼내는 중입니다. 시간이 좀 걸립니다"
 
 #: ../src/xfdesktop-notify.c:406
 msgid "Eject Finished"
@@ -1095,7 +1103,11 @@ msgid ""
 "Type: %s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr "이름: %s\n형식: %s\n크기: %s\n최종 수정: %s"
+msgstr ""
+"이름: %s\n"
+"형식: %s\n"
+"크기: %s\n"
+"최종 수정: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:439
 msgid "Trash is empty"
@@ -1116,21 +1128,24 @@ msgid ""
 "%s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr "%s\n크기: %s\n최종 수정: %s"
+msgstr ""
+"%s\n"
+"크기: %s\n"
+"최종 수정: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:539
 msgid "_Empty Trash"
 msgstr "휴지통 비우기(_E)"
 
-#: ../src/xfdesktop-volume-icon.c:438
+#: ../src/xfdesktop-volume-icon.c:458
 msgid "(not mounted)"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:439 ../src/xfdesktop-volume-icon.c:440
+#: ../src/xfdesktop-volume-icon.c:459 ../src/xfdesktop-volume-icon.c:460
 msgid "(unknown)"
 msgstr "(알 수 없음)"
 
-#: ../src/xfdesktop-volume-icon.c:444
+#: ../src/xfdesktop-volume-icon.c:464
 #, c-format
 msgid ""
 "Name: %s\n"
@@ -1140,53 +1155,53 @@ msgid ""
 "Free Space: %s"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:446
+#: ../src/xfdesktop-volume-icon.c:466
 msgid "Removable Volume"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:481 ../src/xfdesktop-volume-icon.c:527
+#: ../src/xfdesktop-volume-icon.c:501 ../src/xfdesktop-volume-icon.c:547
 #, c-format
 msgid "Failed to eject \"%s\""
-msgstr "\"%s\" 꺼내기 실패"
+msgstr "\"%s\" 꺼내기에 실패했습니다"
 
-#: ../src/xfdesktop-volume-icon.c:486 ../src/xfdesktop-volume-icon.c:532
+#: ../src/xfdesktop-volume-icon.c:506 ../src/xfdesktop-volume-icon.c:552
 msgid "Eject Failed"
 msgstr "꺼내기 실패"
 
-#: ../src/xfdesktop-volume-icon.c:565
+#: ../src/xfdesktop-volume-icon.c:633
 #, c-format
 msgid "Failed to mount \"%s\""
-msgstr "\"%s\" 마운트 실패"
+msgstr "\"%s\" 마운트에 실패했습니다"
 
-#: ../src/xfdesktop-volume-icon.c:568
+#: ../src/xfdesktop-volume-icon.c:636
 msgid "Mount Failed"
 msgstr "마운트 실패"
 
-#: ../src/xfdesktop-volume-icon.c:805
+#: ../src/xfdesktop-volume-icon.c:894
 msgid "_Safely Remove Volume"
 msgstr "안전하게 볼륨 제거(_S)"
 
-#: ../src/xfdesktop-volume-icon.c:808
+#: ../src/xfdesktop-volume-icon.c:897
 msgid "_Disconnect Volume"
 msgstr "볼륨 연결 해제(_D)"
 
-#: ../src/xfdesktop-volume-icon.c:811
+#: ../src/xfdesktop-volume-icon.c:900
 msgid "_Stop the Multi-Disk Drive"
 msgstr "다중 디스크 드라이브 가동 중지(_S)"
 
-#: ../src/xfdesktop-volume-icon.c:814
+#: ../src/xfdesktop-volume-icon.c:903
 msgid "_Lock Volume"
 msgstr "볼륨 잠그기(_L)"
 
-#: ../src/xfdesktop-volume-icon.c:817
+#: ../src/xfdesktop-volume-icon.c:906
 msgid "E_ject Volume"
 msgstr "볼륨 꺼내기(_J)"
 
-#: ../src/xfdesktop-volume-icon.c:826
+#: ../src/xfdesktop-volume-icon.c:915
 msgid "_Unmount Volume"
 msgstr "볼륨 마운트 해제(_U)"
 
-#: ../src/xfdesktop-volume-icon.c:833
+#: ../src/xfdesktop-volume-icon.c:922
 msgid "_Mount Volume"
 msgstr "볼륨 마운트(_M)"
 
