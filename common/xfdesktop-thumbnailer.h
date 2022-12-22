@@ -37,13 +37,13 @@ G_BEGIN_DECLS
 #define XFDESKTOP_IS_THUMBNAILER_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), XFDESKTOP_TYPE_THUMBNAILER()))
 
 typedef struct _XfdesktopThumbnailer XfdesktopThumbnailer;
-typedef struct _XfdesktopThumbnailerPriv XfdesktopThumbnailerPriv;
+typedef struct _XfdesktopThumbnailerPrivate XfdesktopThumbnailerPrivate;
 
 struct _XfdesktopThumbnailer
 {
     GObject parent;
 
-    XfdesktopThumbnailerPriv *priv;
+    XfdesktopThumbnailerPrivate *priv;
 };
 
 typedef struct _XfdesktopThumbnailerClass XfdesktopThumbnailerClass;

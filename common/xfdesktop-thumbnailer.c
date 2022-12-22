@@ -42,10 +42,17 @@
 #include "xfdesktop-common.h"
 #include "tumbler.h"
 
-static void xfdesktop_thumbnailer_init(GTypeInstance *instance,
-                                       gpointer g_class);
-static void xfdesktop_thumbnailer_class_init(gpointer g_class,
-                                             gpointer class_data);
+struct _XfdesktopThumbnailerPrivate
+{
+    TumblerThumbnailer1      *proxy;
+
+    GSList                   *queue;
+    gchar                   **supported_mimetypes;
+    gboolean                  big_thumbnails;
+    guint                     handle;
+
+    guint                     request_timer_id;
+};
 
 static void xfdesktop_thumbnailer_dispose(GObject *object);
 static void xfdesktop_thumbnailer_finalize(GObject *object);
@@ -61,7 +68,6 @@ static void xfdesktop_thumbnailer_thumbnail_ready_dbus(TumblerThumbnailer1 *prox
 
 static gboolean xfdesktop_thumbnailer_queue_request_timer(gpointer user_data);
 
-static GObjectClass *parent_class = NULL;
 static XfdesktopThumbnailer *thumbnailer_object = NULL;
 
 enum
@@ -72,57 +78,35 @@ enum
 
 static guint thumbnailer_signals[LAST_SIGNAL] = { 0, };
 
-GType
-xfdesktop_thumbnailer_get_type(void)
-{
-    static GType xfdesktop_thumbnailer_type = 0;
 
-    if(!xfdesktop_thumbnailer_type) {
-        static const GTypeInfo xfdesktop_thumbnailer_info =
-        {
-            sizeof (XfdesktopThumbnailerClass),
-            NULL,
-            NULL,
-            xfdesktop_thumbnailer_class_init,
-            NULL,
-            NULL,
-            sizeof (XfdesktopThumbnailer),
-            0,
-            xfdesktop_thumbnailer_init,
-            NULL
-        };
+G_DEFINE_TYPE_WITH_PRIVATE(XfdesktopThumbnailer, xfdesktop_thumbnailer, G_TYPE_OBJECT);
 
-        xfdesktop_thumbnailer_type = g_type_register_static(
-                                                    G_TYPE_OBJECT,
-                                                    "XfdesktopThumbnailer",
-                                                    &xfdesktop_thumbnailer_info,
-                                                    0);
-    }
-    return xfdesktop_thumbnailer_type;
-}
-
-struct _XfdesktopThumbnailerPriv
-{
-    TumblerThumbnailer1      *proxy;
-
-    GSList                   *queue;
-    gchar                   **supported_mimetypes;
-    gboolean                  big_thumbnails;
-    guint                     handle;
-
-    gint                      request_timer_id;
-};
 
 static void
-xfdesktop_thumbnailer_init(GTypeInstance *instance,
-                           gpointer g_class)
+xfdesktop_thumbnailer_class_init(XfdesktopThumbnailerClass *klass)
 {
-    XfdesktopThumbnailer *thumbnailer;
-    GDBusConnection      *connection;
+    GObjectClass *object_class = G_OBJECT_CLASS(klass);
 
-    thumbnailer = XFDESKTOP_THUMBNAILER(instance);
+    object_class->dispose = xfdesktop_thumbnailer_dispose;
+    object_class->finalize = xfdesktop_thumbnailer_finalize;
 
-    thumbnailer->priv = g_new0(XfdesktopThumbnailerPriv, 1);
+    thumbnailer_signals[THUMBNAIL_READY] = g_signal_new (
+                        "thumbnail-ready",
+                        G_OBJECT_CLASS_TYPE (object_class),
+                        G_SIGNAL_RUN_LAST,
+                        G_STRUCT_OFFSET(XfdesktopThumbnailerClass, thumbnail_ready),
+                        NULL, NULL,
+                        xfdesktop_marshal_VOID__STRING_STRING,
+                        G_TYPE_NONE, 2,
+                        G_TYPE_STRING, G_TYPE_STRING);
+}
+
+static void
+xfdesktop_thumbnailer_init(XfdesktopThumbnailer *thumbnailer)
+{
+    GDBusConnection *connection;
+
+    thumbnailer->priv = xfdesktop_thumbnailer_get_instance_private(thumbnailer);
 
     connection = g_bus_get_sync(G_BUS_TYPE_SESSION, NULL, NULL);
 
@@ -180,29 +164,6 @@ xfdesktop_thumbnailer_init(GTypeInstance *instance,
     }
 }
 
-static void
-xfdesktop_thumbnailer_class_init (gpointer g_class,
-                                  gpointer class_data)
-{
-    GObjectClass              *object_class = g_class;
-    XfdesktopThumbnailerClass *thumbnailer_class = XFDESKTOP_THUMBNAILER_CLASS(object_class);
-
-    parent_class = g_type_class_peek_parent(thumbnailer_class);
-
-    object_class->dispose = xfdesktop_thumbnailer_dispose;
-    object_class->finalize = xfdesktop_thumbnailer_finalize;
-
-    thumbnailer_signals[THUMBNAIL_READY] = g_signal_new (
-                        "thumbnail-ready",
-                        G_OBJECT_CLASS_TYPE (object_class),
-                        G_SIGNAL_RUN_LAST,
-                        G_STRUCT_OFFSET(XfdesktopThumbnailerClass, thumbnail_ready),
-                        NULL, NULL,
-                        xfdesktop_marshal_VOID__STRING_STRING,
-                        G_TYPE_NONE, 2,
-                        G_TYPE_STRING, G_TYPE_STRING);
-}
-
 /**
  * xfdesktop_thumbnailer_dispose:
  * @object:
@@ -213,18 +174,18 @@ xfdesktop_thumbnailer_dispose(GObject *object)
 {
     XfdesktopThumbnailer *thumbnailer = XFDESKTOP_THUMBNAILER(object);
 
-    if(thumbnailer->priv) {
-        if(thumbnailer->priv->proxy)
-            g_object_unref(thumbnailer->priv->proxy);
-
-        if(thumbnailer->priv->supported_mimetypes)
-            g_strfreev(thumbnailer->priv->supported_mimetypes);
-
-        g_free(thumbnailer->priv);
-        thumbnailer->priv = NULL;
+    if (thumbnailer->priv->request_timer_id != 0) {
+        g_source_remove(thumbnailer->priv->request_timer_id);
+        thumbnailer->priv->request_timer_id = 0;
     }
 
-    thumbnailer_object = NULL;
+    g_clear_object(&thumbnailer->priv->proxy);
+
+    if (thumbnailer == thumbnailer_object) {
+        thumbnailer_object = NULL;
+    }
+
+    G_OBJECT_CLASS(xfdesktop_thumbnailer_parent_class)->dispose(object);
 }
 
 /**
@@ -235,6 +196,14 @@ xfdesktop_thumbnailer_dispose(GObject *object)
 static void
 xfdesktop_thumbnailer_finalize(GObject *object)
 {
+    XfdesktopThumbnailer *thumbnailer = XFDESKTOP_THUMBNAILER(object);
+
+    g_slist_free(thumbnailer->priv->queue);
+
+    if (thumbnailer->priv->supported_mimetypes != NULL)
+        g_strfreev(thumbnailer->priv->supported_mimetypes);
+
+    G_OBJECT_CLASS(xfdesktop_thumbnailer_parent_class)->finalize(object);
 }
 
 /**
