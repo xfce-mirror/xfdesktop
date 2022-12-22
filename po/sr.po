@@ -1,22 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Саша Петровић <salepetronije@gmail.com>, 2012-2013
-# Саша Петровић <salepetronije@gmail.com>, 2013-2015,2017,2019
-# Саша Петровић <salepetronije@gmail.com>, 2014-2015
-# Саша Петровић <salepetronije@gmail.com>, 2017-2018
-# Саша Петровић <salepetronije@gmail.com>, 2018-2019
-# Саша Петровић <salepetronije@gmail.com>, 2019
+# Nick Schermer <nick@xfce.org>, 2022
+# Саша Петровић <salepetronije@gmail.com>, 2022
+# Xfce Bot <transifex@xfce.org>, 2022
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Xfdesktop\n"
+"Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-28 15:09+0100\n"
-"PO-Revision-Date: 2013-07-02 20:50+0000\n"
-"Last-Translator: Саша Петровић <salepetronije@gmail.com>, 2013-2015,2017,2019\n"
-"Language-Team: Serbian (http://www.transifex.com/xfce/xfdesktop/language/sr/)\n"
+"POT-Creation-Date: 2022-12-22 12:24+0100\n"
+"PO-Revision-Date: 2022-12-22 11:24+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>, 2022\n"
+"Language-Team: Serbian (https://www.transifex.com/xfce/teams/16840/sr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -26,7 +26,7 @@ msgstr ""
 #: ../settings/main.c:430 ../src/xfdesktop-special-file-icon.c:290
 #: ../src/xfdesktop-special-file-icon.c:456
 msgid "Home"
-msgstr "Матица"
+msgstr "Лична фасцикла"
 
 #: ../settings/main.c:432 ../src/xfdesktop-special-file-icon.c:292
 #: ../src/xfdesktop-special-file-icon.c:454
@@ -60,7 +60,10 @@ msgid ""
 "<b>%s</b>\n"
 "Type: %s\n"
 "Size: %s"
-msgstr "<b>%s</b>\nВрста: %s\nВеличина: %s"
+msgstr ""
+"<b>%s</b>\n"
+"Врста: %s\n"
+"Величина: %s"
 
 #: ../settings/main.c:744
 #, c-format
@@ -74,7 +77,8 @@ msgstr "Позадинска слика за приказ %d"
 
 #: ../settings/main.c:753
 msgid "Move this dialog to the display you want to edit the settings for."
-msgstr "Преместите ово прозорче на радни простор којем желите да уредите поставке."
+msgstr ""
+"Преместите ово прозорче на радни простор којем желите да уредите поставке."
 
 #: ../settings/main.c:760
 #, c-format
@@ -90,7 +94,9 @@ msgstr "Позадинска слика за %s на приказу %d"
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
-msgstr "Преместите ово прозорче на приказ и радни простор којем желите да уредите поставке."
+msgstr ""
+"Преместите ово прозорче на приказ и радни простор којем желите да уредите "
+"поставке."
 
 #. Single monitor and single workspace
 #: ../settings/main.c:779
@@ -106,7 +112,8 @@ msgstr "Позадинска слика за %s"
 
 #: ../settings/main.c:790
 msgid "Move this dialog to the workspace you want to edit the settings for."
-msgstr "Преместите ово прозорче на радни простор којем желите да уредите поставке."
+msgstr ""
+"Преместите ово прозорче на радни простор којем желите да уредите поставке."
 
 #: ../settings/main.c:1243
 msgid "Image selection is unavailable while the image style is set to None."
@@ -122,7 +129,9 @@ msgstr "Обухватање приказа"
 msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
-msgstr "Желите ли да преуредите све постојеће\nсличице по изабраном усмерењу?"
+msgstr ""
+"Желите ли да преуредите све постојеће\n"
+"сличице по изабраном усмерењу?"
 
 #: ../settings/main.c:1790
 msgid "Arrange icons"
@@ -158,8 +167,8 @@ msgstr "Грешка покретања програма"
 #: ../src/xfdesktop-file-utils.c:1256 ../src/xfdesktop-file-utils.c:1317
 #: ../src/xfdesktop-file-utils.c:1340 ../src/xfdesktop-file-utils.c:1449
 #: ../src/xfdesktop-file-utils.c:1513 ../src/xfdesktop-file-utils.c:1584
-#: ../src/xfdesktop-file-utils.c:1654 ../src/xfdesktop-volume-icon.c:488
-#: ../src/xfdesktop-volume-icon.c:534 ../src/xfdesktop-volume-icon.c:570
+#: ../src/xfdesktop-file-utils.c:1654 ../src/xfdesktop-volume-icon.c:508
+#: ../src/xfdesktop-volume-icon.c:554 ../src/xfdesktop-volume-icon.c:638
 msgid "_Close"
 msgstr "_Затвори"
 
@@ -174,11 +183,11 @@ msgstr "Изаберите фасциклу"
 
 #: ../settings/main.c:2178
 msgid "Settings manager socket"
-msgstr "Управник подешавања утичнице"
+msgstr "Утичница управника поставки"
 
 #: ../settings/main.c:2178
 msgid "SOCKET ID"
-msgstr "ЛБ УТИЧНИЦЕ"
+msgstr "ЛБ ПРИКЉУЧНИЦЕ"
 
 #: ../settings/main.c:2179
 msgid "Version information"
@@ -200,7 +209,7 @@ msgstr "Развојна дружина Иксфце-а. Сва права су 
 #: ../settings/main.c:2217
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr "Молим пријавите грешку на <%s>."
+msgstr "Молим, пријавите грешке на <%s>."
 
 #: ../settings/main.c:2224
 msgid "Desktop Settings"
@@ -208,11 +217,11 @@ msgstr "Поставке радне површи"
 
 #: ../settings/main.c:2226
 msgid "Unable to contact settings server"
-msgstr "Нисам успео да покренем служитеља поставки"
+msgstr "Нисам успео да успоставим везу са служитељем подешавања"
 
 #: ../settings/main.c:2228
 msgid "Quit"
-msgstr "Напусти"
+msgstr "Одустани"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.in.h:1
 #: ../settings/xfdesktop-settings-ui.glade.h:18 ../src/xfce-desktop.c:1158
@@ -237,7 +246,7 @@ msgstr "Усправни прелив"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
 msgid "Transparent"
-msgstr "Провидна"
+msgstr "Провидан"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
 msgid "Choose the folder to select wallpapers from."
@@ -253,12 +262,13 @@ msgstr "На_чин:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
 msgid "Specify how the image will be resized to fit the screen."
-msgstr "Одреди како ће слици бити промењена величина да би се уклопила на приказ."
+msgstr ""
+"Одреди како ће слици бити промењена величина да би се уклопила на приказ."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
 #: ../settings/xfdesktop-settings-ui.glade.h:4
 msgid "None"
-msgstr "Ништа"
+msgstr "ништа"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
 msgid "Centered"
@@ -369,11 +379,13 @@ msgstr "_Насумичан редослед"
 msgid ""
 "Randomly selects another image from the same directory when the wallpaper is"
 " to cycle."
-msgstr "Насумично бира следећу слику из исте фасцикле када је подешено да се слика позадине мења."
+msgstr ""
+"Насумично бира следећу слику из исте фасцикле када је подешено да се слика "
+"позадине мења."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:1
 msgid "Left"
-msgstr "Лево"
+msgstr "лево"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:2
 msgid "Middle"
@@ -381,7 +393,7 @@ msgstr "Средње"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:3
 msgid "Right"
-msgstr "Десно"
+msgstr "десно"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:5
 msgid "Shift"
@@ -559,7 +571,9 @@ msgstr "Приказуј у_мањене сличице"
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
-msgstr "Одаберите ову могућност да би се приказивале датотеке с прегледом на радној површини као самостално створене умањене сличице."
+msgstr ""
+"Одаберите ову могућност да би се приказивале датотеке с прегледом на радној "
+"површини као самостално створене умањене сличице."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:51
 msgid "Show hidden files on the desktop"
@@ -581,21 +595,23 @@ msgstr "<b>Задате сличице</b>"
 msgid "_Icons"
 msgstr "_Сличице"
 
-#: ../src/menu.c:92
+#: ../src/menu.c:94
 msgid "_Applications"
 msgstr "_Програми"
 
 #: ../src/windowlist.c:75
 #, c-format
 msgid "Remove Workspace %d"
-msgstr "Уклони радну површ %d"
+msgstr "Уклони радни простор %d"
 
 #: ../src/windowlist.c:76
 #, c-format
 msgid ""
 "Do you really want to remove workspace %d?\n"
 "Note: You are currently on workspace %d."
-msgstr "Да ли заиста желите да уклоните радну површ %d?\nПримедба: Тренутно сте на радној површи %d."
+msgstr ""
+"Да ли заиста желите да уклоните радну површ %d?\n"
+"Примедба: Тренутно сте на радној површи %d."
 
 #: ../src/windowlist.c:80
 #, c-format
@@ -607,7 +623,9 @@ msgstr "Уклони радну површ „%s“"
 msgid ""
 "Do you really want to remove workspace '%s'?\n"
 "Note: You are currently on workspace '%s'."
-msgstr "Да ли заиста желите да уклоните радну површ „%s“?\nПримедба: Тренутно сте на радној површи „%s“."
+msgstr ""
+"Да ли заиста желите да уклоните радну површ „%s“?\n"
+"Примедба: Тренутно сте на радној површи „%s“."
 
 #. Popup a dialog box confirming that the user wants to remove a
 #. * workspace
@@ -668,7 +686,7 @@ msgstr "Онемогући поруке исправки грешака"
 
 #: ../src/xfdesktop-application.c:850
 msgid "Do not wait for a window manager on startup"
-msgstr "Не чекај управника прозора при пријави"
+msgstr "Не чекај управника прозора при покретању"
 
 #: ../src/xfdesktop-application.c:851
 msgid "Cause xfdesktop to quit"
@@ -733,7 +751,9 @@ msgstr "Грешка фасцикле радне површи"
 #: ../src/xfdesktop-file-icon-manager.c:602
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
-msgstr "Обична датотека са истим именом већ постоји. Преименујте је или је избришите."
+msgstr ""
+"Обична датотека са истим именом већ постоји. Преименујте је или је "
+"избришите."
 
 #: ../src/xfdesktop-file-icon-manager.c:686 ../src/xfdesktop-file-utils.c:818
 #: ../src/xfdesktop-file-utils.c:882
@@ -752,7 +772,9 @@ msgstr "Преименовање означених сличица није по
 msgid ""
 "This will reorder all desktop items and place them on different screen positions.\n"
 "Are you sure?"
-msgstr "Ово ће променити место свим ставкама радне површи.\nДа ли сте сигурни?"
+msgstr ""
+"Ово ће променити место свим ставкама радне површи.\n"
+"Да ли сте сигурни?"
 
 #: ../src/xfdesktop-file-icon-manager.c:1017
 msgid "_OK"
@@ -761,18 +783,20 @@ msgstr "_У реду"
 #: ../src/xfdesktop-file-icon-manager.c:1085
 #, c-format
 msgid "_Open With \"%s\""
-msgstr "_Отвори програмом „%s“"
+msgstr "О_твори помоћу „%s“"
 
 #: ../src/xfdesktop-file-icon-manager.c:1088
 #, c-format
 msgid "Open With \"%s\""
-msgstr "Отвори програмом „%s“"
+msgstr "Отвори помоћу „%s“"
 
 #: ../src/xfdesktop-file-icon-manager.c:1161
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
-msgstr "Нисам успео да покренем \"exo-desktop-item-edit\", који је неопходан за прављење и уређивање покретача и веза на радном простору."
+msgstr ""
+"Нисам успео да покренем \"exo-desktop-item-edit\", који је неопходан за "
+"прављење и уређивање покретача и веза на радном простору."
 
 #: ../src/xfdesktop-file-icon-manager.c:1526
 msgid "_Open all"
@@ -800,10 +824,10 @@ msgstr "Нема уграђених образаца"
 
 #: ../src/xfdesktop-file-icon-manager.c:1627
 msgid "_Empty File"
-msgstr "_Празан документ"
+msgstr "Пра_зна датотека"
 
 #: ../src/xfdesktop-file-icon-manager.c:1637
-#: ../src/xfdesktop-special-file-icon.c:523 ../src/xfdesktop-volume-icon.c:779
+#: ../src/xfdesktop-special-file-icon.c:523 ../src/xfdesktop-volume-icon.c:868
 msgid "_Open"
 msgstr "_Отвори"
 
@@ -817,7 +841,7 @@ msgstr "_Уреди покретач"
 
 #: ../src/xfdesktop-file-icon-manager.c:1731
 msgid "Open With"
-msgstr "Отвори програмом"
+msgstr "Отвори помоћу"
 
 #: ../src/xfdesktop-file-icon-manager.c:1758
 #: ../src/xfdesktop-file-icon-manager.c:1783
@@ -830,11 +854,11 @@ msgstr "Постави _подразумевани програм..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1801
 msgid "_Paste"
-msgstr "_Налепи"
+msgstr "_Убаци"
 
 #: ../src/xfdesktop-file-icon-manager.c:1819
 msgid "Cu_t"
-msgstr "Исец_и"
+msgstr "_Исеци"
 
 #: ../src/xfdesktop-file-icon-manager.c:1831
 msgid "_Copy"
@@ -850,7 +874,7 @@ msgstr "_Премести у смеће"
 
 #: ../src/xfdesktop-file-icon-manager.c:1875
 msgid "_Delete"
-msgstr "_Избриши"
+msgstr "_Обриши"
 
 #: ../src/xfdesktop-file-icon-manager.c:1893
 msgid "_Rename..."
@@ -873,7 +897,7 @@ msgid "Desktop _Settings..."
 msgstr "_Поставке радне површи..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1995
-#: ../src/xfdesktop-volume-icon.c:846
+#: ../src/xfdesktop-volume-icon.c:935
 msgid "P_roperties..."
 msgstr "О_собине..."
 
@@ -885,23 +909,23 @@ msgstr "Грешка учитавања"
 msgid "Failed to load the desktop folder"
 msgstr "Нисам успео да учитам фасциклу радне површи"
 
-#: ../src/xfdesktop-file-icon-manager.c:3628
+#: ../src/xfdesktop-file-icon-manager.c:3622
 msgid "Copy _Here"
 msgstr "Умножи _овде"
 
-#: ../src/xfdesktop-file-icon-manager.c:3628
+#: ../src/xfdesktop-file-icon-manager.c:3622
 msgid "_Move Here"
 msgstr "_Премести овде"
 
-#: ../src/xfdesktop-file-icon-manager.c:3628
+#: ../src/xfdesktop-file-icon-manager.c:3622
 msgid "_Link Here"
 msgstr "_Повежи овде"
 
-#: ../src/xfdesktop-file-icon-manager.c:3663
+#: ../src/xfdesktop-file-icon-manager.c:3657
 msgid "_Cancel"
 msgstr "_Откажи"
 
-#: ../src/xfdesktop-file-icon-manager.c:3792
+#: ../src/xfdesktop-file-icon-manager.c:3786
 msgid "Untitled document"
 msgstr "Безимени докуменат"
 
@@ -963,7 +987,9 @@ msgstr "Нисам успео да преименујем датотеку"
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
-msgstr "Ова могућност захтева присутност услуге управника датотека (као што је она што долази с Тунаром)."
+msgstr ""
+"Ова могућност захтева присутност услуге управника датотека (као што је она "
+"што долази с Тунаром)."
 
 #: ../src/xfdesktop-file-utils.c:943
 msgid "Delete Error"
@@ -985,7 +1011,9 @@ msgstr "Нисам успео да означену датотеку преме�
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
-msgstr "Ова могућност захтева присутност услуге корпе смећа (као што је она коју пружа Тунар)."
+msgstr ""
+"Ова могућност захтева присутност услуге корпе смећа (као што је она коју "
+"пружа Тунар)."
 
 #: ../src/xfdesktop-file-utils.c:1053
 msgid "Could not empty the trash"
@@ -1047,12 +1075,12 @@ msgstr "Откачујем уређај"
 msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the"
 " media or disconnect the drive"
-msgstr "Систем је откачио уређај „%s“. Не уклањајте уређај и не прекидајте везу"
+msgstr "Уређај „%s“ се откачиње са система датотека. Немојте га још уклањати"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:137 ../src/xfdesktop-notify.c:322
 msgid "Writing data to device"
-msgstr "Пишем податке на уређај"
+msgstr "Уписујем податке на уређај"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:140 ../src/xfdesktop-notify.c:325
@@ -1060,7 +1088,9 @@ msgstr "Пишем податке на уређај"
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be"
 " removed. Please do not remove the media or disconnect the drive"
-msgstr "Одређени подаци требају бити уписани на уређај „%s“, да би уређај био уклоњен. Не извлачите и не уклањајте уређај"
+msgstr ""
+"Неки подаци још нису уписани на уређај „%s“. Немојте га уклањати док се "
+"уписују подаци"
 
 #: ../src/xfdesktop-notify.c:221
 msgid "Unmount Finished"
@@ -1080,7 +1110,7 @@ msgstr "Избацујем уређај"
 #: ../src/xfdesktop-notify.c:316
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
-msgstr "Избацујем уређај „%s“. То може потрајати"
+msgstr "Избацује уређај: „%s“. Ово може да потраје"
 
 #: ../src/xfdesktop-notify.c:406
 msgid "Eject Finished"
@@ -1093,11 +1123,15 @@ msgid ""
 "Type: %s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr "Име: %s\nВрста: %s\nВеличина: %s\nПоследња измена: %s"
+msgstr ""
+"Име: %s\n"
+"Врста: %s\n"
+"Величина: %s\n"
+"Последња измена: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:439
 msgid "Trash is empty"
-msgstr "Нема смећа"
+msgstr "Корпа смећа је празна"
 
 #: ../src/xfdesktop-special-file-icon.c:442
 msgid "Trash contains one item"
@@ -1114,21 +1148,24 @@ msgid ""
 "%s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr "%s\nВеличина: %s\nЗадња измена: %s"
+msgstr ""
+"%s\n"
+"Величина: %s\n"
+"Задња измена: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:539
 msgid "_Empty Trash"
-msgstr "_Избаци Смеће"
+msgstr "_Избаци смеће"
 
-#: ../src/xfdesktop-volume-icon.c:438
+#: ../src/xfdesktop-volume-icon.c:458
 msgid "(not mounted)"
 msgstr "(није прикачен)"
 
-#: ../src/xfdesktop-volume-icon.c:439 ../src/xfdesktop-volume-icon.c:440
+#: ../src/xfdesktop-volume-icon.c:459 ../src/xfdesktop-volume-icon.c:460
 msgid "(unknown)"
 msgstr "(непознато)"
 
-#: ../src/xfdesktop-volume-icon.c:444
+#: ../src/xfdesktop-volume-icon.c:464
 #, c-format
 msgid ""
 "Name: %s\n"
@@ -1136,55 +1173,60 @@ msgid ""
 "Mounted at: %s\n"
 "Size: %s\n"
 "Free Space: %s"
-msgstr "Име: %s\nВрста: %s\nПрикачено на: %s\nВеличина: %s\nСлободан простор: %s"
+msgstr ""
+"Име: %s\n"
+"Врста: %s\n"
+"Прикачено на: %s\n"
+"Величина: %s\n"
+"Слободан простор: %s"
 
-#: ../src/xfdesktop-volume-icon.c:446
+#: ../src/xfdesktop-volume-icon.c:466
 msgid "Removable Volume"
 msgstr "Уклоњиви уређај"
 
-#: ../src/xfdesktop-volume-icon.c:481 ../src/xfdesktop-volume-icon.c:527
+#: ../src/xfdesktop-volume-icon.c:501 ../src/xfdesktop-volume-icon.c:547
 #, c-format
 msgid "Failed to eject \"%s\""
-msgstr "Нисам успео да откачим „%s“"
+msgstr "Нисам успео да избацим „%s“"
 
-#: ../src/xfdesktop-volume-icon.c:486 ../src/xfdesktop-volume-icon.c:532
+#: ../src/xfdesktop-volume-icon.c:506 ../src/xfdesktop-volume-icon.c:552
 msgid "Eject Failed"
 msgstr "Избацивање није успело"
 
-#: ../src/xfdesktop-volume-icon.c:565
+#: ../src/xfdesktop-volume-icon.c:633
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "Нисам успео да прикачим „%s“"
 
-#: ../src/xfdesktop-volume-icon.c:568
+#: ../src/xfdesktop-volume-icon.c:636
 msgid "Mount Failed"
 msgstr "Нисам успео да прикачим уређај"
 
-#: ../src/xfdesktop-volume-icon.c:805
+#: ../src/xfdesktop-volume-icon.c:894
 msgid "_Safely Remove Volume"
 msgstr "_Безбедно уклони уређај"
 
-#: ../src/xfdesktop-volume-icon.c:808
+#: ../src/xfdesktop-volume-icon.c:897
 msgid "_Disconnect Volume"
 msgstr "_Откачи уређај"
 
-#: ../src/xfdesktop-volume-icon.c:811
+#: ../src/xfdesktop-volume-icon.c:900
 msgid "_Stop the Multi-Disk Drive"
 msgstr "_Заустави уређај са више дискова"
 
-#: ../src/xfdesktop-volume-icon.c:814
+#: ../src/xfdesktop-volume-icon.c:903
 msgid "_Lock Volume"
 msgstr "_Закључај уређај"
 
-#: ../src/xfdesktop-volume-icon.c:817
+#: ../src/xfdesktop-volume-icon.c:906
 msgid "E_ject Volume"
 msgstr "И_збаци уређај"
 
-#: ../src/xfdesktop-volume-icon.c:826
+#: ../src/xfdesktop-volume-icon.c:915
 msgid "_Unmount Volume"
 msgstr "_Откачи уређај"
 
-#: ../src/xfdesktop-volume-icon.c:833
+#: ../src/xfdesktop-volume-icon.c:922
 msgid "_Mount Volume"
 msgstr "_Прикачи уређај"
 
