@@ -1,17 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Kevin Brubeck Unhammer <unhammer+dill@mm.st>, 2017-2019
+# Nick Schermer <nick@xfce.org>, 2022
+# Xfce Bot <transifex@xfce.org>, 2022
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Xfdesktop\n"
+"Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-28 15:09+0100\n"
-"PO-Revision-Date: 2013-07-02 20:50+0000\n"
-"Last-Translator: Kevin Brubeck Unhammer <unhammer+dill@mm.st>, 2017-2019\n"
-"Language-Team: Norwegian Nynorsk (http://www.transifex.com/xfce/xfdesktop/language/nn/)\n"
+"POT-Creation-Date: 2022-12-22 12:24+0100\n"
+"PO-Revision-Date: 2022-12-22 11:24+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>, 2022\n"
+"Language-Team: Norwegian Nynorsk (https://www.transifex.com/xfce/teams/16840/nn/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -55,7 +59,10 @@ msgid ""
 "<b>%s</b>\n"
 "Type: %s\n"
 "Size: %s"
-msgstr "<b>%s</b>\nType: %s\nStorleik: %s"
+msgstr ""
+"<b>%s</b>\n"
+"Type: %s\n"
+"Storleik: %s"
 
 #: ../settings/main.c:744
 #, c-format
@@ -69,7 +76,8 @@ msgstr "Bakgrunnsbilete for skjerm %d"
 
 #: ../settings/main.c:753
 msgid "Move this dialog to the display you want to edit the settings for."
-msgstr "Flytt denne dialogen til den skjermen du vil endra innstillingane for."
+msgstr ""
+"Flytt denne dialogen til den skjermen du vil endra innstillingane for."
 
 #: ../settings/main.c:760
 #, c-format
@@ -85,7 +93,9 @@ msgstr "Bakgrunnsbilete for %s på skjerm %d"
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
-msgstr "Flytt denne dialogen til den skjermen og det arbeidsområdet du vil endra innstillingane for."
+msgstr ""
+"Flytt denne dialogen til den skjermen og det arbeidsområdet du vil endra "
+"innstillingane for."
 
 #. Single monitor and single workspace
 #: ../settings/main.c:779
@@ -101,7 +111,8 @@ msgstr "Bakgrunnsbilete for %s"
 
 #: ../settings/main.c:790
 msgid "Move this dialog to the workspace you want to edit the settings for."
-msgstr "Flytt denne dialogen til det arbeidsområdet du vil endra innstillingane for."
+msgstr ""
+"Flytt denne dialogen til det arbeidsområdet du vil endra innstillingane for."
 
 #: ../settings/main.c:1243
 msgid "Image selection is unavailable while the image style is set to None."
@@ -117,7 +128,9 @@ msgstr "På tvers av skjermar"
 msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
-msgstr "Vil du stilla opp alle eksisterande\nikon etter den valde orienteringa?"
+msgstr ""
+"Vil du stilla opp alle eksisterande\n"
+"ikon etter den valde orienteringa?"
 
 #: ../settings/main.c:1790
 msgid "Arrange icons"
@@ -153,10 +166,10 @@ msgstr "Startfeil"
 #: ../src/xfdesktop-file-utils.c:1256 ../src/xfdesktop-file-utils.c:1317
 #: ../src/xfdesktop-file-utils.c:1340 ../src/xfdesktop-file-utils.c:1449
 #: ../src/xfdesktop-file-utils.c:1513 ../src/xfdesktop-file-utils.c:1584
-#: ../src/xfdesktop-file-utils.c:1654 ../src/xfdesktop-volume-icon.c:488
-#: ../src/xfdesktop-volume-icon.c:534 ../src/xfdesktop-volume-icon.c:570
+#: ../src/xfdesktop-file-utils.c:1654 ../src/xfdesktop-volume-icon.c:508
+#: ../src/xfdesktop-volume-icon.c:554 ../src/xfdesktop-volume-icon.c:638
 msgid "_Close"
-msgstr "L_ukk"
+msgstr "_Lat att"
 
 #: ../settings/main.c:1961
 msgid "Image files"
@@ -285,7 +298,8 @@ msgstr "Vel stilen på fargen som kjem bak bakgrunnsbiletet."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
-msgstr "Den reine fargen, eller «venstre» eller «øvste» fargen i ein overgang."
+msgstr ""
+"Den reine fargen, eller «venstre» eller «øvste» fargen i ein overgang."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 msgid "Select First Color"
@@ -364,7 +378,9 @@ msgstr "_Tilfeldig følgje"
 msgid ""
 "Randomly selects another image from the same directory when the wallpaper is"
 " to cycle."
-msgstr "Vel eit tilfeldig anna bilete frå same mappa når bakgrunnsbiletet skal endrast."
+msgstr ""
+"Vel eit tilfeldig anna bilete frå same mappa når bakgrunnsbiletet skal "
+"endrast."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:1
 msgid "Left"
@@ -554,7 +570,8 @@ msgstr "Vis _småbilete"
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
-msgstr "Vel dette for å laga småbilete automatisk av filer som kan førehandsvisast."
+msgstr ""
+"Vel dette for å laga småbilete automatisk av filer som kan førehandsvisast."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:51
 msgid "Show hidden files on the desktop"
@@ -576,21 +593,23 @@ msgstr "<b>Standardikon</b>"
 msgid "_Icons"
 msgstr "_Ikon"
 
-#: ../src/menu.c:92
+#: ../src/menu.c:94
 msgid "_Applications"
 msgstr "Progr_am"
 
 #: ../src/windowlist.c:75
 #, c-format
 msgid "Remove Workspace %d"
-msgstr "Fjern arbeidsområde %d"
+msgstr "Fjern arbeidsområdet %d"
 
 #: ../src/windowlist.c:76
 #, c-format
 msgid ""
 "Do you really want to remove workspace %d?\n"
 "Note: You are currently on workspace %d."
-msgstr "Vil du verkeleg fjerna arbeidsområde %d?\nMerk: Du bruker arbeidsområde %d no."
+msgstr ""
+"Vil du verkeleg fjerna arbeidsområde %d?\n"
+"Merk: Du bruker arbeidsområde %d no."
 
 #: ../src/windowlist.c:80
 #, c-format
@@ -602,7 +621,9 @@ msgstr "Fjern arbeidsområde «%s»"
 msgid ""
 "Do you really want to remove workspace '%s'?\n"
 "Note: You are currently on workspace '%s'."
-msgstr "Vil du verkeleg fjerna arbeidsområde %s?\nMerk: Du bruker arbeidsområde «%s» no."
+msgstr ""
+"Vil du verkeleg fjerna arbeidsområde %s?\n"
+"Merk: Du bruker arbeidsområde «%s» no."
 
 #. Popup a dialog box confirming that the user wants to remove a
 #. * workspace
@@ -767,7 +788,9 @@ msgstr "Opna med «%s»"
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
-msgstr "Klarte ikkje starta «exo-desktop-item-edit», som krevst for å laga og endra startarar og lenkjer på skrivebordet."
+msgstr ""
+"Klarte ikkje starta «exo-desktop-item-edit», som krevst for å laga og endra "
+"startarar og lenkjer på skrivebordet."
 
 #: ../src/xfdesktop-file-icon-manager.c:1526
 msgid "_Open all"
@@ -783,7 +806,7 @@ msgstr "Lag _URL-lenkje..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1574
 msgid "Create _Folder..."
-msgstr "Lag _mappe …"
+msgstr "Opprett _mappe …"
 
 #: ../src/xfdesktop-file-icon-manager.c:1586
 msgid "Create _Document"
@@ -798,7 +821,7 @@ msgid "_Empty File"
 msgstr "_Tom fil"
 
 #: ../src/xfdesktop-file-icon-manager.c:1637
-#: ../src/xfdesktop-special-file-icon.c:523 ../src/xfdesktop-volume-icon.c:779
+#: ../src/xfdesktop-special-file-icon.c:523 ../src/xfdesktop-volume-icon.c:868
 msgid "_Open"
 msgstr "_Opna"
 
@@ -829,7 +852,7 @@ msgstr "_Lim inn"
 
 #: ../src/xfdesktop-file-icon-manager.c:1819
 msgid "Cu_t"
-msgstr "K_lipp"
+msgstr "Klipp _ut"
 
 #: ../src/xfdesktop-file-icon-manager.c:1831
 msgid "_Copy"
@@ -868,7 +891,7 @@ msgid "Desktop _Settings..."
 msgstr "_Skrivebordsoppsett..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1995
-#: ../src/xfdesktop-volume-icon.c:846
+#: ../src/xfdesktop-volume-icon.c:935
 msgid "P_roperties..."
 msgstr "Ei_genskapar …"
 
@@ -880,23 +903,23 @@ msgstr "Feil ved lasting"
 msgid "Failed to load the desktop folder"
 msgstr "Klarte ikkje opna skrivebordsmappa."
 
-#: ../src/xfdesktop-file-icon-manager.c:3628
+#: ../src/xfdesktop-file-icon-manager.c:3622
 msgid "Copy _Here"
 msgstr "Kopier _hit"
 
-#: ../src/xfdesktop-file-icon-manager.c:3628
+#: ../src/xfdesktop-file-icon-manager.c:3622
 msgid "_Move Here"
 msgstr "_Flytt hit"
 
-#: ../src/xfdesktop-file-icon-manager.c:3628
+#: ../src/xfdesktop-file-icon-manager.c:3622
 msgid "_Link Here"
 msgstr "_Lenk hit"
 
-#: ../src/xfdesktop-file-icon-manager.c:3663
+#: ../src/xfdesktop-file-icon-manager.c:3657
 msgid "_Cancel"
-msgstr "_Avbryt"
+msgstr "Av_bryt"
 
-#: ../src/xfdesktop-file-icon-manager.c:3792
+#: ../src/xfdesktop-file-icon-manager.c:3786
 msgid "Untitled document"
 msgstr "Dokument utan namn"
 
@@ -958,7 +981,8 @@ msgstr "Klarte ikkje døypa om fila"
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
-msgstr "Denne funksjonen krev at det finst ein filhandsamar (slik som Thunar)."
+msgstr ""
+"Denne funksjonen krev at det finst ein filhandsamar (slik som Thunar)."
 
 #: ../src/xfdesktop-file-utils.c:943
 msgid "Delete Error"
@@ -980,7 +1004,9 @@ msgstr "Klarte ikkje flytta desse filene til papirkorga"
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
-msgstr "Denne funksjonen krev eit program som kan kasta i papirkorga (slik som Thunar). "
+msgstr ""
+"Denne funksjonen krev eit program som kan kasta i papirkorga (slik som "
+"Thunar). "
 
 #: ../src/xfdesktop-file-utils.c:1053
 msgid "Could not empty the trash"
@@ -1042,7 +1068,8 @@ msgstr "Avmonterer eininga"
 msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the"
 " media or disconnect the drive"
-msgstr "Eininga «%s» blir avmontert. Ikkje fjern ho eller kopla frå stasjonen."
+msgstr ""
+"Eininga «%s» blir avmontert. Ikkje fjern ho eller kopla frå stasjonen."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:137 ../src/xfdesktop-notify.c:322
@@ -1055,7 +1082,9 @@ msgstr "Skriv data til eininga"
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be"
 " removed. Please do not remove the media or disconnect the drive"
-msgstr "Det er data som må skrivast til «%s» før du kan fjerna henne. Ikkje fjern lagringseininga eller kopla frå stasjonen"
+msgstr ""
+"Det er data som må skrivast til «%s» før du kan fjerna henne. Ikkje fjern "
+"lagringseininga eller kopla frå stasjonen"
 
 #: ../src/xfdesktop-notify.c:221
 msgid "Unmount Finished"
@@ -1088,7 +1117,11 @@ msgid ""
 "Type: %s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr "Namn: %s\nType: %s\nStorleik: %s\nSist endra: %s"
+msgstr ""
+"Namn: %s\n"
+"Type: %s\n"
+"Storleik: %s\n"
+"Sist endra: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:439
 msgid "Trash is empty"
@@ -1109,21 +1142,24 @@ msgid ""
 "%s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr "%s\nStorleik: %s\nSist endra: %s"
+msgstr ""
+"%s\n"
+"Storleik: %s\n"
+"Sist endra: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:539
 msgid "_Empty Trash"
 msgstr "_Tøm papirkorga"
 
-#: ../src/xfdesktop-volume-icon.c:438
+#: ../src/xfdesktop-volume-icon.c:458
 msgid "(not mounted)"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:439 ../src/xfdesktop-volume-icon.c:440
+#: ../src/xfdesktop-volume-icon.c:459 ../src/xfdesktop-volume-icon.c:460
 msgid "(unknown)"
 msgstr "(ukjent)"
 
-#: ../src/xfdesktop-volume-icon.c:444
+#: ../src/xfdesktop-volume-icon.c:464
 #, c-format
 msgid ""
 "Name: %s\n"
@@ -1133,53 +1169,53 @@ msgid ""
 "Free Space: %s"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:446
+#: ../src/xfdesktop-volume-icon.c:466
 msgid "Removable Volume"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:481 ../src/xfdesktop-volume-icon.c:527
+#: ../src/xfdesktop-volume-icon.c:501 ../src/xfdesktop-volume-icon.c:547
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "Klarte ikkje løysa ut «%s»"
 
-#: ../src/xfdesktop-volume-icon.c:486 ../src/xfdesktop-volume-icon.c:532
+#: ../src/xfdesktop-volume-icon.c:506 ../src/xfdesktop-volume-icon.c:552
 msgid "Eject Failed"
 msgstr "Klarte ikkje løysa ut"
 
-#: ../src/xfdesktop-volume-icon.c:565
+#: ../src/xfdesktop-volume-icon.c:633
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "Klarte ikkje montera «%s»"
 
-#: ../src/xfdesktop-volume-icon.c:568
+#: ../src/xfdesktop-volume-icon.c:636
 msgid "Mount Failed"
 msgstr "Klarte ikkje montera"
 
-#: ../src/xfdesktop-volume-icon.c:805
+#: ../src/xfdesktop-volume-icon.c:894
 msgid "_Safely Remove Volume"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:808
+#: ../src/xfdesktop-volume-icon.c:897
 msgid "_Disconnect Volume"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:811
+#: ../src/xfdesktop-volume-icon.c:900
 msgid "_Stop the Multi-Disk Drive"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:814
+#: ../src/xfdesktop-volume-icon.c:903
 msgid "_Lock Volume"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:817
+#: ../src/xfdesktop-volume-icon.c:906
 msgid "E_ject Volume"
 msgstr "_Løys ut stasjon"
 
-#: ../src/xfdesktop-volume-icon.c:826
+#: ../src/xfdesktop-volume-icon.c:915
 msgid "_Unmount Volume"
 msgstr "_Avmonter stasjonen"
 
-#: ../src/xfdesktop-volume-icon.c:833
+#: ../src/xfdesktop-volume-icon.c:922
 msgid "_Mount Volume"
 msgstr "_Monter stasjon"
 
