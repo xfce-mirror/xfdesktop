@@ -216,10 +216,9 @@ create_gradient(GdkRGBA *color1, GdkRGBA *color2, gint width, gint height,
     GdkWindow *root;
     GdkPixbuf *pix;
     cairo_surface_t *surface;
-    cairo_surface_t *image_surface;
+    gint scale_factor;
     unsigned char *data;
     int stride;
-    cairo_t *cr;
     gint ax1;
     gint ax1_max;
     gint ax2;
@@ -232,10 +231,10 @@ create_gradient(GdkRGBA *color1, GdkRGBA *color2, gint width, gint height,
     g_return_val_if_fail(style == XFCE_BACKDROP_COLOR_HORIZ_GRADIENT || style == XFCE_BACKDROP_COLOR_VERT_GRADIENT, NULL);
 
     root = gdk_screen_get_root_window(gdk_screen_get_default ());
-    surface = gdk_window_create_similar_surface(root, CAIRO_CONTENT_COLOR_ALPHA, width, height);
-    image_surface = cairo_image_surface_create(CAIRO_FORMAT_RGB24, width, height);
-    data = cairo_image_surface_get_data(image_surface);
-    stride = cairo_image_surface_get_stride(image_surface);
+    scale_factor = gdk_window_get_scale_factor(root);
+    surface = gdk_window_create_similar_image_surface(root, CAIRO_FORMAT_RGB24, width, height, scale_factor);
+    data = cairo_image_surface_get_data(surface);
+    stride = cairo_image_surface_get_stride(surface);
 
     if(style == XFCE_BACKDROP_COLOR_VERT_GRADIENT) {
         ax1_max = height;
@@ -269,19 +268,10 @@ create_gradient(GdkRGBA *color1, GdkRGBA *color2, gint width, gint height,
             *p = (r << 16) | (g << 8) | (b << 0);
         }
     }
-    cairo_surface_mark_dirty(image_surface);
-
-    cr = cairo_create(surface);
-    cairo_set_source_surface(cr, image_surface, 0, 0);
-    cairo_paint(cr);
-
-    cairo_surface_flush(surface);
+    cairo_surface_mark_dirty(surface);
 
     pix = gdk_pixbuf_get_from_surface(surface, 0, 0, width, height);
-
-    cairo_destroy(cr);
     cairo_surface_destroy(surface);
-    cairo_surface_destroy(image_surface);
 
     return pix;
 }
