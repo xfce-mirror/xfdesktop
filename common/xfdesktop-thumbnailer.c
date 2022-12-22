@@ -214,6 +214,11 @@ xfdesktop_thumbnailer_dispose(GObject *object)
     XfdesktopThumbnailer *thumbnailer = XFDESKTOP_THUMBNAILER(object);
 
     if(thumbnailer->priv) {
+        if (thumbnailer->priv->request_timer_id != 0) {
+            g_source_remove(thumbnailer->priv->request_timer_id);
+            thumbnailer->priv->request_timer_id = 0;
+        }
+
         if(thumbnailer->priv->proxy)
             g_object_unref(thumbnailer->priv->proxy);
 
