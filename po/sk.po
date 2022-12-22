@@ -1,21 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Dušan Kazik <prescott66@gmail.com>, 2016-2020
-# Juraj Brosz <juro@jurajbrosz.info>, 2004
-# Robert Hartl <hartl.robert@gmail.com>, 2008-2009
-# Slavko <linux@slavino.sk>, 2013,2015
-# 7dcd6f74323fe8d9c477949ff8fcbb1c_c427b63 <3fcd202e3dfab15fda15b8e88e54d449_7173>, 2011-2012
+# Nick Schermer <nick@xfce.org>, 2022
+# Xfce Bot <transifex@xfce.org>, 2022
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Xfdesktop\n"
+"Project-Id-Version: xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-28 15:09+0100\n"
-"PO-Revision-Date: 2013-07-02 20:50+0000\n"
-"Last-Translator: Dušan Kazik <prescott66@gmail.com>, 2016-2020\n"
-"Language-Team: Slovak (http://www.transifex.com/xfce/xfdesktop/language/sk/)\n"
+"POT-Creation-Date: 2022-12-22 12:24+0100\n"
+"PO-Revision-Date: 2022-12-22 11:24+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>, 2022\n"
+"Language-Team: Slovak (https://www.transifex.com/xfce/teams/16840/sk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -59,7 +59,10 @@ msgid ""
 "<b>%s</b>\n"
 "Type: %s\n"
 "Size: %s"
-msgstr "<b>%s</b>\nTyp: %s\nVeľkosť: %s"
+msgstr ""
+"<b>%s</b>\n"
+"Typ: %s\n"
+"Veľkosť: %s"
 
 #: ../settings/main.c:744
 #, c-format
@@ -73,7 +76,8 @@ msgstr "Pozadie monitora %d"
 
 #: ../settings/main.c:753
 msgid "Move this dialog to the display you want to edit the settings for."
-msgstr "Presuňte toto dialógové okno na obrazovku, ktorej chcete zmeniť nastavenia."
+msgstr ""
+"Presuňte toto dialógové okno na obrazovku, ktorej chcete zmeniť nastavenia."
 
 #: ../settings/main.c:760
 #, c-format
@@ -89,7 +93,9 @@ msgstr "Pozadie pre %s na monitore %d"
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
-msgstr "Presuňte toto dialógové okno na obrazovku a pracovnú plochu, ktorým chcete zmeniť nastavenia."
+msgstr ""
+"Presuňte toto dialógové okno na obrazovku a pracovnú plochu, ktorým chcete "
+"zmeniť nastavenia."
 
 #. Single monitor and single workspace
 #: ../settings/main.c:779
@@ -105,11 +111,13 @@ msgstr "Pozadie pre %s"
 
 #: ../settings/main.c:790
 msgid "Move this dialog to the workspace you want to edit the settings for."
-msgstr "Presuňte tento dialóg na pracovnú plochu, ktorej chcete meniť nastavenia."
+msgstr ""
+"Presuňte tento dialóg na pracovnú plochu, ktorej chcete meniť nastavenia."
 
 #: ../settings/main.c:1243
 msgid "Image selection is unavailable while the image style is set to None."
-msgstr "Výber obrázku nie je dostupný, keď je štýl obrázku nastavený na Žiadny."
+msgstr ""
+"Výber obrázku nie je dostupný, keď je štýl obrázku nastavený na Žiadny."
 
 #: ../settings/main.c:1603
 msgid "Spanning screens"
@@ -121,7 +129,9 @@ msgstr "Rozloženie cez obrazovky"
 msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
-msgstr "Chceli by ste usporiadať všetky existujúce\nikony v závislosti na vybranej orientácii?"
+msgstr ""
+"Chceli by ste usporiadať všetky existujúce\n"
+"ikony v závislosti na vybranej orientácii?"
 
 #: ../settings/main.c:1790
 msgid "Arrange icons"
@@ -157,10 +167,10 @@ msgstr "Chyba pri spustení"
 #: ../src/xfdesktop-file-utils.c:1256 ../src/xfdesktop-file-utils.c:1317
 #: ../src/xfdesktop-file-utils.c:1340 ../src/xfdesktop-file-utils.c:1449
 #: ../src/xfdesktop-file-utils.c:1513 ../src/xfdesktop-file-utils.c:1584
-#: ../src/xfdesktop-file-utils.c:1654 ../src/xfdesktop-volume-icon.c:488
-#: ../src/xfdesktop-volume-icon.c:534 ../src/xfdesktop-volume-icon.c:570
+#: ../src/xfdesktop-file-utils.c:1654 ../src/xfdesktop-volume-icon.c:508
+#: ../src/xfdesktop-volume-icon.c:554 ../src/xfdesktop-volume-icon.c:638
 msgid "_Close"
-msgstr "_Zavrieť"
+msgstr "_Zatvoriť"
 
 #: ../settings/main.c:1961
 msgid "Image files"
@@ -173,15 +183,15 @@ msgstr "Výber adresára"
 
 #: ../settings/main.c:2178
 msgid "Settings manager socket"
-msgstr "Soket správcu nastavení"
+msgstr "Nastavenia správcu soketu"
 
 #: ../settings/main.c:2178
 msgid "SOCKET ID"
-msgstr "ID SOKETU"
+msgstr "SOCKET ID"
 
 #: ../settings/main.c:2179
 msgid "Version information"
-msgstr "Informácie o verzii"
+msgstr "Informácia o verzií"
 
 #: ../settings/main.c:2180 ../src/xfdesktop-application.c:848
 msgid "Enable debug messages"
@@ -190,16 +200,16 @@ msgstr "Zapnúť ladiace správy"
 #: ../settings/main.c:2204
 #, c-format
 msgid "Type '%s --help' for usage."
-msgstr "Informácie o použití získate príkazom '%s --help'."
+msgstr "Informácie o použití získate príkazom '%s --help'"
 
 #: ../settings/main.c:2216
 msgid "The Xfce development team. All rights reserved."
-msgstr "Tím vývojárov Xfce. Všetky práva vyhradené."
+msgstr "Vývojársky tím Xfce. Všetky práva vyhradené."
 
 #: ../settings/main.c:2217
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr "Prosím ohláste chyby na <%s>."
+msgstr "Prosím, chyby nahláste na <%s>."
 
 #: ../settings/main.c:2224
 msgid "Desktop Settings"
@@ -207,7 +217,7 @@ msgstr "Nastavenia plochy"
 
 #: ../settings/main.c:2226
 msgid "Unable to contact settings server"
-msgstr "Nie je možné sa pripojiť na server nastavení"
+msgstr "Nedá sa pripojiť so serverom nastavení"
 
 #: ../settings/main.c:2228
 msgid "Quit"
@@ -216,7 +226,7 @@ msgstr "Ukončiť"
 #: ../settings/xfce-backdrop-settings.desktop.in.in.h:1
 #: ../settings/xfdesktop-settings-ui.glade.h:18 ../src/xfce-desktop.c:1158
 msgid "Desktop"
-msgstr "Plocha"
+msgstr "Pracovná plocha"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.in.h:2
 msgid "Set desktop background and menu and icon behavior"
@@ -224,7 +234,7 @@ msgstr "Nastavenie pozadia pracovnej plochy a ponuky a správania ikon"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
 msgid "Solid color"
-msgstr "Jednofarebné"
+msgstr "Jednofarebný"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
 msgid "Horizontal gradient"
@@ -236,7 +246,7 @@ msgstr "Zvislý prechod"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
 msgid "Transparent"
-msgstr "Priesvitné"
+msgstr "Priesvitný"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
 msgid "Choose the folder to select wallpapers from."
@@ -257,7 +267,7 @@ msgstr "Zadajte spôsob, ako bude obrázok prispôsobený obrazovke."
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
 #: ../settings/xfdesktop-settings-ui.glade.h:4
 msgid "None"
-msgstr "Žiadne"
+msgstr "Nič"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
 msgid "Centered"
@@ -313,7 +323,7 @@ msgstr "_Zložka:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 msgid "C_olor:"
-msgstr "F_arba:"
+msgstr "_Farba:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
 msgid "Change the _background "
@@ -368,7 +378,8 @@ msgstr "_Náhodné poradie"
 msgid ""
 "Randomly selects another image from the same directory when the wallpaper is"
 " to cycle."
-msgstr "Náhodne vyberá obrázok zo z jednej zložky. ked má byť pozadie zmenené."
+msgstr ""
+"Náhodne vyberá obrázok zo z jednej zložky. ked má byť pozadie zmenené."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:1
 msgid "Left"
@@ -472,7 +483,9 @@ msgstr "<b>Ponuka pracovnej plochy</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:29
 msgid "Show _window list menu on desktop middle click"
-msgstr "Zobraziť ponuku _zoznam okien pri kliknutí prostredným tlačidlom myši na plochu"
+msgstr ""
+"Zobraziť ponuku _zoznam okien pri kliknutí prostredným tlačidlom myši na "
+"plochu"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:30
 msgid "B_utton:"
@@ -558,7 +571,9 @@ msgstr "Zobraziť náhľady"
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
-msgstr "Vyberte túto možnosť pre zobrazenie prehliadateľných súborov na ploche ako automaticky generované náhľadové ikony."
+msgstr ""
+"Vyberte túto možnosť pre zobrazenie prehliadateľných súborov na ploche ako "
+"automaticky generované náhľadové ikony."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:51
 msgid "Show hidden files on the desktop"
@@ -580,7 +595,7 @@ msgstr "<b>Predvolené ikony</b>"
 msgid "_Icons"
 msgstr "_Ikony"
 
-#: ../src/menu.c:92
+#: ../src/menu.c:94
 msgid "_Applications"
 msgstr "_Aplikácie"
 
@@ -594,7 +609,9 @@ msgstr "Odstrániť pracovnú plochu %d"
 msgid ""
 "Do you really want to remove workspace %d?\n"
 "Note: You are currently on workspace %d."
-msgstr "Naozaj chcete odstrániť pracovnú plochu %d?\nPoznámka: Práve ste na pracovnej ploche %d."
+msgstr ""
+"Naozaj chcete odstrániť pracovnú plochu %d?\n"
+"Poznámka: Práve ste na pracovnej ploche %d."
 
 #: ../src/windowlist.c:80
 #, c-format
@@ -606,7 +623,9 @@ msgstr "Odstrániť pracovnú plochu „%s”"
 msgid ""
 "Do you really want to remove workspace '%s'?\n"
 "Note: You are currently on workspace '%s'."
-msgstr "Naozaj chcete odstrániť pracovnú plochu „%s”?\nPoznámka: Práve ste na pracovnej ploche „%s”."
+msgstr ""
+"Naozaj chcete odstrániť pracovnú plochu „%s”?\n"
+"Poznámka: Práve ste na pracovnej ploche „%s”."
 
 #. Popup a dialog box confirming that the user wants to remove a
 #. * workspace
@@ -667,7 +686,7 @@ msgstr "Vypnúť ladiace správy"
 
 #: ../src/xfdesktop-application.c:850
 msgid "Do not wait for a window manager on startup"
-msgstr "Nečakať na správcu okien pri štarte"
+msgstr "Nečakať na správcu okien pri spúšťaní"
 
 #: ../src/xfdesktop-application.c:851
 msgid "Cause xfdesktop to quit"
@@ -760,18 +779,20 @@ msgstr "_OK"
 #: ../src/xfdesktop-file-icon-manager.c:1085
 #, c-format
 msgid "_Open With \"%s\""
-msgstr "_Otvoriť pomocou \"%s\""
+msgstr "_Otvoriť programom \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:1088
 #, c-format
 msgid "Open With \"%s\""
-msgstr "Otvoriť pomocou \"%s\""
+msgstr "Otvoriť programom \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:1161
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
-msgstr "Nie je možné spustiť \"exo-desktop-item-edit\". Táto aplikácia je vyžadovaná pri vytváraní a úpravu spúšťačov a odkazov na ploche."
+msgstr ""
+"Nie je možné spustiť \"exo-desktop-item-edit\". Táto aplikácia je vyžadovaná"
+" pri vytváraní a úpravu spúšťačov a odkazov na ploche."
 
 #: ../src/xfdesktop-file-icon-manager.c:1526
 msgid "_Open all"
@@ -787,7 +808,7 @@ msgstr "Vytvoriť odkaz _URL..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1574
 msgid "Create _Folder..."
-msgstr "Vytvoriť _priečinok..."
+msgstr "Vytvoriť priečinok..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1586
 msgid "Create _Document"
@@ -802,7 +823,7 @@ msgid "_Empty File"
 msgstr "_Prázdny súbor"
 
 #: ../src/xfdesktop-file-icon-manager.c:1637
-#: ../src/xfdesktop-special-file-icon.c:523 ../src/xfdesktop-volume-icon.c:779
+#: ../src/xfdesktop-special-file-icon.c:523 ../src/xfdesktop-volume-icon.c:868
 msgid "_Open"
 msgstr "_Otvoriť"
 
@@ -821,7 +842,7 @@ msgstr "Otvoriť pomocou"
 #: ../src/xfdesktop-file-icon-manager.c:1758
 #: ../src/xfdesktop-file-icon-manager.c:1783
 msgid "Open With Other _Application..."
-msgstr "Otvoriť v inej _aplikácii..."
+msgstr "Otvoriť _pomocou iného programu..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1769
 msgid "Set _Default Application..."
@@ -845,11 +866,11 @@ msgstr "Vložiť do priečinka"
 
 #: ../src/xfdesktop-file-icon-manager.c:1862
 msgid "Mo_ve to Trash"
-msgstr "P_resunúť do Koša"
+msgstr "Presunúť do _koša"
 
 #: ../src/xfdesktop-file-icon-manager.c:1875
 msgid "_Delete"
-msgstr "O_dstrániť"
+msgstr "_Odstrániť"
 
 #: ../src/xfdesktop-file-icon-manager.c:1893
 msgid "_Rename..."
@@ -872,7 +893,7 @@ msgid "Desktop _Settings..."
 msgstr "Nastavenia pracovnej plochy..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1995
-#: ../src/xfdesktop-volume-icon.c:846
+#: ../src/xfdesktop-volume-icon.c:935
 msgid "P_roperties..."
 msgstr "_Vlastnosti"
 
@@ -884,23 +905,23 @@ msgstr "Chyba pri načítaní"
 msgid "Failed to load the desktop folder"
 msgstr "Načítanie priečinka pracovnej plochy zlyhalo"
 
-#: ../src/xfdesktop-file-icon-manager.c:3628
+#: ../src/xfdesktop-file-icon-manager.c:3622
 msgid "Copy _Here"
 msgstr "_Kopírovať sem"
 
-#: ../src/xfdesktop-file-icon-manager.c:3628
+#: ../src/xfdesktop-file-icon-manager.c:3622
 msgid "_Move Here"
 msgstr "_Presunúť sem"
 
-#: ../src/xfdesktop-file-icon-manager.c:3628
+#: ../src/xfdesktop-file-icon-manager.c:3622
 msgid "_Link Here"
 msgstr "Vytvoriť _odkaz"
 
-#: ../src/xfdesktop-file-icon-manager.c:3663
+#: ../src/xfdesktop-file-icon-manager.c:3657
 msgid "_Cancel"
-msgstr "Z_rušiť"
+msgstr "_Zrušiť"
 
-#: ../src/xfdesktop-file-icon-manager.c:3792
+#: ../src/xfdesktop-file-icon-manager.c:3786
 msgid "Untitled document"
 msgstr "Nepomenovaný dokument"
 
@@ -920,13 +941,13 @@ msgstr "Včera o %X"
 #: ../src/xfdesktop-file-utils.c:179
 #, c-format
 msgid "%A at %X"
-msgstr "%A o %X"
+msgstr "%A na %X"
 
 #. Any other date
 #: ../src/xfdesktop-file-utils.c:182
 #, c-format
 msgid "%x at %X"
-msgstr "%x o %X"
+msgstr "%x na %X"
 
 #. the file_time is invalid
 #: ../src/xfdesktop-file-utils.c:192 ../src/xfdesktop-file-utils.c:1579
@@ -962,7 +983,9 @@ msgstr "Súbor nie je možné premenovať"
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
-msgstr "Táto vlastnosť vyžaduje prítomnosť služby správcu súborov (napríklad aplikáciu Thunar)."
+msgstr ""
+"Táto vlastnosť vyžaduje prítomnosť služby správcu súborov (napríklad "
+"aplikáciu Thunar)."
 
 #: ../src/xfdesktop-file-utils.c:943
 msgid "Delete Error"
@@ -984,7 +1007,9 @@ msgstr "Zvolené súbory nemožno presunúť do koša"
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
-msgstr "Táto vlastnosť vyžaduje prítomnosť služby koša (napríklad dodávanú v rámci aplikácie Thunar)."
+msgstr ""
+"Táto vlastnosť vyžaduje prítomnosť služby koša (napríklad dodávanú v rámci "
+"aplikácie Thunar)."
 
 #: ../src/xfdesktop-file-utils.c:1053
 msgid "Could not empty the trash"
@@ -1046,12 +1071,14 @@ msgstr "Odpájanie zariadenia"
 msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the"
 " media or disconnect the drive"
-msgstr "Systém odpája zariadenie \"%s\". Neodoberajte médium ani neodpájajte jednotku"
+msgstr ""
+"Systém odpojuje zariadenie \"%s\". Prosím nevyberajte médium ani neodpájajte"
+" jednotku"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:137 ../src/xfdesktop-notify.c:322
 msgid "Writing data to device"
-msgstr "Zápis dát do zariadenia"
+msgstr "Zapisovanie dát na zariadenie"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:140 ../src/xfdesktop-notify.c:325
@@ -1059,7 +1086,9 @@ msgstr "Zápis dát do zariadenia"
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be"
 " removed. Please do not remove the media or disconnect the drive"
-msgstr "Dáta je potrebné zapísať na zariadenie \"%s\" pred jeho odobratím. Neodoberajte médium ani neodpájajte jednotku"
+msgstr ""
+"Pred odobratím zariadenia \"%s\" je nutné zapísať dáta. Prosím nevyberajte "
+"médium ani neodpájajte jednotku"
 
 #: ../src/xfdesktop-notify.c:221
 msgid "Unmount Finished"
@@ -1073,7 +1102,7 @@ msgstr "Zariadenie „%s” bolo zo systému bezpečne odstránené. "
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:313
 msgid "Ejecting device"
-msgstr "Vysúvanie zariadenia"
+msgstr "Odpája sa zariadenie"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
 #: ../src/xfdesktop-notify.c:316
@@ -1092,7 +1121,11 @@ msgid ""
 "Type: %s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr "Názov: %s\nTyp: %s\nVeľkosť: %s\nPosledná zmena: %s"
+msgstr ""
+"Názov: %s\n"
+"Typ: %s\n"
+"Veľkosť: %s\n"
+"Posledná zmena: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:439
 msgid "Trash is empty"
@@ -1113,21 +1146,24 @@ msgid ""
 "%s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr "%s\nVeľkosť: %s\nPosledná zmena: %s"
+msgstr ""
+"%s\n"
+"Veľkosť: %s\n"
+"Posledná zmena: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:539
 msgid "_Empty Trash"
-msgstr "_Vysypať kôš"
+msgstr "_Vyprázdniť kôš"
 
-#: ../src/xfdesktop-volume-icon.c:438
+#: ../src/xfdesktop-volume-icon.c:458
 msgid "(not mounted)"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:439 ../src/xfdesktop-volume-icon.c:440
+#: ../src/xfdesktop-volume-icon.c:459 ../src/xfdesktop-volume-icon.c:460
 msgid "(unknown)"
 msgstr "(neznámy)"
 
-#: ../src/xfdesktop-volume-icon.c:444
+#: ../src/xfdesktop-volume-icon.c:464
 #, c-format
 msgid ""
 "Name: %s\n"
@@ -1137,53 +1173,53 @@ msgid ""
 "Free Space: %s"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:446
+#: ../src/xfdesktop-volume-icon.c:466
 msgid "Removable Volume"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:481 ../src/xfdesktop-volume-icon.c:527
+#: ../src/xfdesktop-volume-icon.c:501 ../src/xfdesktop-volume-icon.c:547
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "Nepodarilo sa vysunúť \"%s\""
 
-#: ../src/xfdesktop-volume-icon.c:486 ../src/xfdesktop-volume-icon.c:532
+#: ../src/xfdesktop-volume-icon.c:506 ../src/xfdesktop-volume-icon.c:552
 msgid "Eject Failed"
 msgstr "Vysunutie zlyhalo"
 
-#: ../src/xfdesktop-volume-icon.c:565
+#: ../src/xfdesktop-volume-icon.c:633
 #, c-format
 msgid "Failed to mount \"%s\""
-msgstr "Pripojenie \"%s\" zlyhalo"
+msgstr "Nepodarilo sa pripojiť \"%s\""
 
-#: ../src/xfdesktop-volume-icon.c:568
+#: ../src/xfdesktop-volume-icon.c:636
 msgid "Mount Failed"
 msgstr "Pripojenie zlyhalo"
 
-#: ../src/xfdesktop-volume-icon.c:805
+#: ../src/xfdesktop-volume-icon.c:894
 msgid "_Safely Remove Volume"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:808
+#: ../src/xfdesktop-volume-icon.c:897
 msgid "_Disconnect Volume"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:811
+#: ../src/xfdesktop-volume-icon.c:900
 msgid "_Stop the Multi-Disk Drive"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:814
+#: ../src/xfdesktop-volume-icon.c:903
 msgid "_Lock Volume"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:817
+#: ../src/xfdesktop-volume-icon.c:906
 msgid "E_ject Volume"
 msgstr "_Vysunúť zväzok"
 
-#: ../src/xfdesktop-volume-icon.c:826
+#: ../src/xfdesktop-volume-icon.c:915
 msgid "_Unmount Volume"
 msgstr "_Odpojiť zariadenie"
 
-#: ../src/xfdesktop-volume-icon.c:833
+#: ../src/xfdesktop-volume-icon.c:922
 msgid "_Mount Volume"
 msgstr "_Pripojiť zväzok"
 
