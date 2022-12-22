@@ -772,6 +772,7 @@
                             <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
                             <property name="label" translatable="yes">Icon _size:</property>
                             <property name="use-underline">True</property>
+                            <property name="mnemonic-widget">spin_icon_size</property>
                             <property name="xalign">0</property>
                           </object>
                           <packing>
@@ -801,6 +802,7 @@
                             <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
                             <property name="label" translatable="yes">Icons _orientation:</property>
                             <property name="use-underline">True</property>
+                            <property name="mnemonic-widget">combo_orientation</property>
                             <property name="xalign">0</property>
                           </object>
                           <packing>
