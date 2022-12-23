@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-18 12:52+0100\n"
+"POT-Creation-Date: 2022-12-22 13:09+0100\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Daniel Muñiz Fontoira <dani@damufo.eu>, 2022\n"
 "Language-Team: Galician (http://www.transifex.com/xfce/xfdesktop/language/gl/)\n"
@@ -117,24 +117,24 @@ msgstr "Atravesando os monitores"
 
 #. TRANSLATORS: Please split the message in half with '\n' so the dialog will
 #. not be too wide.
-#: ../settings/main.c:1792
+#: ../settings/main.c:1797
 msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
 msgstr "Desexa arrombar todas as iconas existentes\nde acordo coa orientación seleccionada?"
 
-#: ../settings/main.c:1798
+#: ../settings/main.c:1803
 msgid "Arrange icons"
 msgstr "Arrombar iconas"
 
 #. printf is to be translator-friendly
-#: ../settings/main.c:1806 ../src/xfdesktop-file-icon-manager.c:817
+#: ../settings/main.c:1811 ../src/xfdesktop-file-icon-manager.c:817
 #: ../src/xfdesktop-file-icon-manager.c:1410
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Non se puido iniciar «%s»:"
 
-#: ../settings/main.c:1807 ../src/xfdesktop-file-icon-manager.c:819
+#: ../settings/main.c:1812 ../src/xfdesktop-file-icon-manager.c:819
 #: ../src/xfdesktop-file-icon-manager.c:1159
 #: ../src/xfdesktop-file-icon-manager.c:1411 ../src/xfdesktop-file-utils.c:744
 #: ../src/xfdesktop-file-utils.c:1313 ../src/xfdesktop-file-utils.c:1338
@@ -142,7 +142,7 @@ msgstr "Non se puido iniciar «%s»:"
 msgid "Launch Error"
 msgstr "Fallo ao iniciar"
 
-#: ../settings/main.c:1809 ../settings/xfdesktop-settings-ui.glade.h:20
+#: ../settings/main.c:1814 ../settings/xfdesktop-settings-ui.glade.h:20
 #: ../src/xfdesktop-file-icon-manager.c:585
 #: ../src/xfdesktop-file-icon-manager.c:604
 #: ../src/xfdesktop-file-icon-manager.c:689
@@ -162,54 +162,54 @@ msgstr "Fallo ao iniciar"
 msgid "_Close"
 msgstr "_Cerrar"
 
-#: ../settings/main.c:1969
+#: ../settings/main.c:1974
 msgid "Image files"
 msgstr "Ficheiros de imaxe"
 
 #. Change the title of the file chooser dialog
-#: ../settings/main.c:1977
+#: ../settings/main.c:1982
 msgid "Select a Directory"
 msgstr "Seleccione un directorio"
 
-#: ../settings/main.c:2190
+#: ../settings/main.c:2194
 msgid "Settings manager socket"
 msgstr "Conectador do xestor de configuración"
 
-#: ../settings/main.c:2190
+#: ../settings/main.c:2194
 msgid "SOCKET ID"
 msgstr "ID CONECTADOR"
 
-#: ../settings/main.c:2191
+#: ../settings/main.c:2195
 msgid "Version information"
 msgstr "Información da versión"
 
-#: ../settings/main.c:2192 ../src/xfdesktop-application.c:848
+#: ../settings/main.c:2196 ../src/xfdesktop-application.c:848
 msgid "Enable debug messages"
 msgstr "Activar as mensaxes de depuración"
 
-#: ../settings/main.c:2216
+#: ../settings/main.c:2220
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Introduza '%s --help'  para ver a información de uso."
 
-#: ../settings/main.c:2228
+#: ../settings/main.c:2232
 msgid "The Xfce development team. All rights reserved."
 msgstr "O equipo de desenvolvemento de Xfce. Tódolos dereitos reservados."
 
-#: ../settings/main.c:2229
+#: ../settings/main.c:2233
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Comuníquelle os fallos a <%s>."
 
-#: ../settings/main.c:2236
+#: ../settings/main.c:2240
 msgid "Desktop Settings"
 msgstr "Configuración do escritorio"
 
-#: ../settings/main.c:2238
+#: ../settings/main.c:2242
 msgid "Unable to contact settings server"
 msgstr "Non se puido contactar co servidor de configuración"
 
-#: ../settings/main.c:2240
+#: ../settings/main.c:2244
 msgid "Quit"
 msgstr "Saír"
 
@@ -507,8 +507,8 @@ msgid "_Menus"
 msgstr "_Menús"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:38
-msgid "Icon _type:"
-msgstr "_Tipo de icona:"
+msgid "Icon _Type"
+msgstr ""
 
 #: ../settings/xfdesktop-settings-ui.glade.h:39
 msgid "Icon _size:"
