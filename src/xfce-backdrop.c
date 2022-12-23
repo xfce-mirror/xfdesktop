@@ -39,6 +39,7 @@
 #include <gdk/gdk.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <gdk-pixbuf/gdk-pixdata.h>
+#include <pixman.h>
 
 #include <libxfce4util/libxfce4util.h> /* for DBG/TRACE */
 
@@ -204,7 +205,7 @@ apply_gamma(GdkRGBA *dest,
     dest->alpha = src->alpha;
 }
 
-static unsigned char
+static float
 interpolate(double x1,
             double x2,
             int position,
@@ -212,7 +213,7 @@ interpolate(double x1,
 {
     const double t = (double)position / (max - 1); // we want to interpolate all the way to max-1
     const double xi = x1 * (1 - t) + x2 * t;
-    return CLAMP(round(pow(xi, 1 / backdrop_gamma) * 255), 0, 255);
+    return CLAMP(pow(xi, 1 / backdrop_gamma), 0.0, 1.0);
 }
 
 static GdkPixbuf *
@@ -222,12 +223,14 @@ create_gradient(GdkRGBA *color1,
                 gint height,
                 XfceBackdropColorStyle style)
 {
-    GdkWindow *root;
     GdkPixbuf *pix;
     cairo_surface_t *surface;
-    gint scale_factor;
     unsigned char *data;
+    unsigned char *dithered_data;
+    int stridef;
     int stride;
+    pixman_image_t *raw_image;
+    pixman_image_t *dithered_image;
     gint ax1;
     gint ax1_max;
     gint ax2;
@@ -239,11 +242,9 @@ create_gradient(GdkRGBA *color1,
     g_return_val_if_fail(width > 0 && height > 0, NULL);
     g_return_val_if_fail(style == XFCE_BACKDROP_COLOR_HORIZ_GRADIENT || style == XFCE_BACKDROP_COLOR_VERT_GRADIENT, NULL);
 
-    root = gdk_screen_get_root_window(gdk_screen_get_default());
-    scale_factor = gdk_window_get_scale_factor(root);
-    surface = gdk_window_create_similar_image_surface(root, CAIRO_FORMAT_RGB24, width, height, scale_factor);
-    data = cairo_image_surface_get_data(surface);
-    stride = cairo_image_surface_get_stride(surface);
+    stridef = width * 3 * sizeof(float);
+    stridef += stridef % 8;
+    data = g_malloc0(stridef * height);
 
     if (style == XFCE_BACKDROP_COLOR_VERT_GRADIENT) {
         ax1_max = height;
@@ -256,14 +257,16 @@ create_gradient(GdkRGBA *color1,
     apply_gamma(&color1_lin, color1);
     apply_gamma(&color2_lin, color2);
     for (ax1 = 0; ax1 < ax1_max; ax1++) {
-        unsigned char r, g, b;
+        float r, g, b;
+
         r = interpolate(color1_lin.red, color2_lin.red, ax1, ax1_max);
         g = interpolate(color1_lin.green, color2_lin.green, ax1, ax1_max);
         b = interpolate(color1_lin.blue, color2_lin.blue, ax1, ax1_max);
 
         for (ax2 = 0; ax2 < ax2_max; ax2++) {
             guint x, y;
-            guint32 *p;
+            float *p;
+
             if (style == XFCE_BACKDROP_COLOR_VERT_GRADIENT) {
                 x = ax2;
                 y = ax1;
@@ -271,14 +274,30 @@ create_gradient(GdkRGBA *color1,
                 x = ax1;
                 y = ax2;
             }
-            p = (guint32 *) (data + y * stride + x * sizeof(guint32));
-            *p = (r << 16) | (g << 8) | (b << 0);
+
+            p = (float *)(data + y * stridef + x * 3 * sizeof(float));
+            p[0] = r;
+            p[1] = g;
+            p[2] = b;
         }
     }
-    cairo_surface_mark_dirty(surface);
+    raw_image = pixman_image_create_bits_no_clear(PIXMAN_rgb_float, width, height, (uint32_t *)data, stridef);
 
+    stride = cairo_format_stride_for_width(CAIRO_FORMAT_ARGB32, width);
+    dithered_data = g_malloc0(stride * height);
+    dithered_image = pixman_image_create_bits(PIXMAN_a8r8g8b8, width, height, (uint32_t *)dithered_data, stride);
+    pixman_image_set_dither(dithered_image, PIXMAN_DITHER_BEST);
+    pixman_image_set_dither_offset(dithered_image, 100, 100);
+
+    pixman_image_composite32(PIXMAN_OP_SRC, raw_image, NULL, dithered_image, 0, 0, 0, 0, 0, 0, width, height);
+    surface = cairo_image_surface_create_for_data((unsigned char *)pixman_image_get_data(dithered_image), CAIRO_FORMAT_ARGB32, width, height, stride);
     pix = gdk_pixbuf_get_from_surface(surface, 0, 0, width, height);
+
     cairo_surface_destroy(surface);
+    g_free(data);
+    g_free(dithered_data);
+    pixman_image_unref(raw_image);
+    pixman_image_unref(dithered_image);
 
     return pix;
 }
