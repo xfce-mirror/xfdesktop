@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-18 12:52+0100\n"
+"POT-Creation-Date: 2022-12-22 13:09+0100\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>, 2014-2021\n"
 "Language-Team: Czech (http://www.transifex.com/xfce/xfdesktop/language/cs/)\n"
@@ -119,24 +119,24 @@ msgstr "Rozložení přes obrazovky"
 
 #. TRANSLATORS: Please split the message in half with '\n' so the dialog will
 #. not be too wide.
-#: ../settings/main.c:1792
+#: ../settings/main.c:1797
 msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
 msgstr "Chcete uspořádat všechny existující\nikony podle vybraného směru?"
 
-#: ../settings/main.c:1798
+#: ../settings/main.c:1803
 msgid "Arrange icons"
 msgstr "Uspořádat ikony"
 
 #. printf is to be translator-friendly
-#: ../settings/main.c:1806 ../src/xfdesktop-file-icon-manager.c:817
+#: ../settings/main.c:1811 ../src/xfdesktop-file-icon-manager.c:817
 #: ../src/xfdesktop-file-icon-manager.c:1410
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Nelze spustit „%s“:"
 
-#: ../settings/main.c:1807 ../src/xfdesktop-file-icon-manager.c:819
+#: ../settings/main.c:1812 ../src/xfdesktop-file-icon-manager.c:819
 #: ../src/xfdesktop-file-icon-manager.c:1159
 #: ../src/xfdesktop-file-icon-manager.c:1411 ../src/xfdesktop-file-utils.c:744
 #: ../src/xfdesktop-file-utils.c:1313 ../src/xfdesktop-file-utils.c:1338
@@ -144,7 +144,7 @@ msgstr "Nelze spustit „%s“:"
 msgid "Launch Error"
 msgstr "Chyba při spuštění"
 
-#: ../settings/main.c:1809 ../settings/xfdesktop-settings-ui.glade.h:20
+#: ../settings/main.c:1814 ../settings/xfdesktop-settings-ui.glade.h:20
 #: ../src/xfdesktop-file-icon-manager.c:585
 #: ../src/xfdesktop-file-icon-manager.c:604
 #: ../src/xfdesktop-file-icon-manager.c:689
@@ -164,54 +164,54 @@ msgstr "Chyba při spuštění"
 msgid "_Close"
 msgstr "Za_vřit"
 
-#: ../settings/main.c:1969
+#: ../settings/main.c:1974
 msgid "Image files"
 msgstr "Soubory s obrázky"
 
 #. Change the title of the file chooser dialog
-#: ../settings/main.c:1977
+#: ../settings/main.c:1982
 msgid "Select a Directory"
 msgstr "Vyberte adresář"
 
-#: ../settings/main.c:2190
+#: ../settings/main.c:2194
 msgid "Settings manager socket"
 msgstr "Soket správce nastavení"
 
-#: ../settings/main.c:2190
+#: ../settings/main.c:2194
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: ../settings/main.c:2191
+#: ../settings/main.c:2195
 msgid "Version information"
 msgstr "Informace o verzi"
 
-#: ../settings/main.c:2192 ../src/xfdesktop-application.c:848
+#: ../settings/main.c:2196 ../src/xfdesktop-application.c:848
 msgid "Enable debug messages"
 msgstr "Povolit ladění"
 
-#: ../settings/main.c:2216
+#: ../settings/main.c:2220
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Informace o použití získáte příkazem '%s --help'."
 
-#: ../settings/main.c:2228
+#: ../settings/main.c:2232
 msgid "The Xfce development team. All rights reserved."
 msgstr "Tým vývojářů Xfce. Všechna práva vyhrazena."
 
-#: ../settings/main.c:2229
+#: ../settings/main.c:2233
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Prosíme, nahlaste chyby na adresu <%s>."
 
-#: ../settings/main.c:2236
+#: ../settings/main.c:2240
 msgid "Desktop Settings"
 msgstr "Nastavení plochy"
 
-#: ../settings/main.c:2238
+#: ../settings/main.c:2242
 msgid "Unable to contact settings server"
 msgstr "Spojení se serverem nastavení nelze navázat"
 
-#: ../settings/main.c:2240
+#: ../settings/main.c:2244
 msgid "Quit"
 msgstr "Ukončit"
 
@@ -509,8 +509,8 @@ msgid "_Menus"
 msgstr "_Nabídky"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:38
-msgid "Icon _type:"
-msgstr "Typ _ikon:"
+msgid "Icon _Type"
+msgstr ""
 
 #: ../settings/xfdesktop-settings-ui.glade.h:39
 msgid "Icon _size:"
