@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-18 12:52+0100\n"
+"POT-Creation-Date: 2022-12-22 13:09+0100\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Triyan W. Nugroho <triyan.wn@gmail.com>, 2020\n"
 "Language-Team: Indonesian (http://www.transifex.com/xfce/xfdesktop/language/id/)\n"
@@ -120,24 +120,24 @@ msgstr "Merentang layar"
 
 #. TRANSLATORS: Please split the message in half with '\n' so the dialog will
 #. not be too wide.
-#: ../settings/main.c:1792
+#: ../settings/main.c:1797
 msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
 msgstr "Anda ingin mengatur semua ikon yang ada\nmenurut orientasi terpilih?"
 
-#: ../settings/main.c:1798
+#: ../settings/main.c:1803
 msgid "Arrange icons"
 msgstr "Atur ikon"
 
 #. printf is to be translator-friendly
-#: ../settings/main.c:1806 ../src/xfdesktop-file-icon-manager.c:817
+#: ../settings/main.c:1811 ../src/xfdesktop-file-icon-manager.c:817
 #: ../src/xfdesktop-file-icon-manager.c:1410
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Tak dapat menjalankan \"%s\":"
 
-#: ../settings/main.c:1807 ../src/xfdesktop-file-icon-manager.c:819
+#: ../settings/main.c:1812 ../src/xfdesktop-file-icon-manager.c:819
 #: ../src/xfdesktop-file-icon-manager.c:1159
 #: ../src/xfdesktop-file-icon-manager.c:1411 ../src/xfdesktop-file-utils.c:744
 #: ../src/xfdesktop-file-utils.c:1313 ../src/xfdesktop-file-utils.c:1338
@@ -145,7 +145,7 @@ msgstr "Tak dapat menjalankan \"%s\":"
 msgid "Launch Error"
 msgstr "Galat Peluncur"
 
-#: ../settings/main.c:1809 ../settings/xfdesktop-settings-ui.glade.h:20
+#: ../settings/main.c:1814 ../settings/xfdesktop-settings-ui.glade.h:20
 #: ../src/xfdesktop-file-icon-manager.c:585
 #: ../src/xfdesktop-file-icon-manager.c:604
 #: ../src/xfdesktop-file-icon-manager.c:689
@@ -165,54 +165,54 @@ msgstr "Galat Peluncur"
 msgid "_Close"
 msgstr "_Tutup"
 
-#: ../settings/main.c:1969
+#: ../settings/main.c:1974
 msgid "Image files"
 msgstr "Berkas citra"
 
 #. Change the title of the file chooser dialog
-#: ../settings/main.c:1977
+#: ../settings/main.c:1982
 msgid "Select a Directory"
 msgstr "Pilih Direktori"
 
-#: ../settings/main.c:2190
+#: ../settings/main.c:2194
 msgid "Settings manager socket"
 msgstr "Soket manajer pengaturan"
 
-#: ../settings/main.c:2190
+#: ../settings/main.c:2194
 msgid "SOCKET ID"
 msgstr "ID SOKET"
 
-#: ../settings/main.c:2191
+#: ../settings/main.c:2195
 msgid "Version information"
 msgstr "Informasi versi"
 
-#: ../settings/main.c:2192 ../src/xfdesktop-application.c:848
+#: ../settings/main.c:2196 ../src/xfdesktop-application.c:848
 msgid "Enable debug messages"
 msgstr "Nyalakan pesan debug"
 
-#: ../settings/main.c:2216
+#: ../settings/main.c:2220
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Ketik '%s --help' untuk penggunaan."
 
-#: ../settings/main.c:2228
+#: ../settings/main.c:2232
 msgid "The Xfce development team. All rights reserved."
 msgstr "Tim pengembang Xfce. Hak cipta dilindungi undang-undang."
 
-#: ../settings/main.c:2229
+#: ../settings/main.c:2233
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Silahkan melaporkan galat ke <%s>."
 
-#: ../settings/main.c:2236
+#: ../settings/main.c:2240
 msgid "Desktop Settings"
 msgstr "Pengaturan Destop"
 
-#: ../settings/main.c:2238
+#: ../settings/main.c:2242
 msgid "Unable to contact settings server"
 msgstr "Gagal berkomunikasi dengan server pengaturan"
 
-#: ../settings/main.c:2240
+#: ../settings/main.c:2244
 msgid "Quit"
 msgstr "Keluar"
 
@@ -510,8 +510,8 @@ msgid "_Menus"
 msgstr "_Menu"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:38
-msgid "Icon _type:"
-msgstr "Tipe i_kon:"
+msgid "Icon _Type"
+msgstr ""
 
 #: ../settings/xfdesktop-settings-ui.glade.h:39
 msgid "Icon _size:"
