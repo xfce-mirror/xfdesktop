@@ -5,18 +5,18 @@
 # 
 # Translators:
 # Nick Schermer <nick@xfce.org>, 2022
-# Luna Jernberg <bittin@cafe8bitar.se>, 2022
 # Anders Jonsson <transifex@norsjovallen.se>, 2022
 # Xfce Bot <transifex@xfce.org>, 2022
+# Luna Jernberg <bittin@cafe8bitar.se>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-22 12:24+0100\n"
+"POT-Creation-Date: 2022-12-22 13:11+0100\n"
 "PO-Revision-Date: 2022-12-22 11:24+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>, 2022\n"
+"Last-Translator: Luna Jernberg <bittin@cafe8bitar.se>, 2022\n"
 "Language-Team: Swedish (https://www.transifex.com/xfce/teams/16840/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1164,7 +1164,7 @@ msgstr "Töm pappers_korgen"
 
 #: ../src/xfdesktop-volume-icon.c:458
 msgid "(not mounted)"
-msgstr ""
+msgstr "(inte monterad)"
 
 #: ../src/xfdesktop-volume-icon.c:459 ../src/xfdesktop-volume-icon.c:460
 msgid "(unknown)"
@@ -1179,10 +1179,15 @@ msgid ""
 "Size: %s\n"
 "Free Space: %s"
 msgstr ""
+"Namn: %s\n"
+"Typ: %s\n"
+"Monterad på: %s\n"
+"Storlek: %s\n"
+"Fritt utrymme: %s"
 
 #: ../src/xfdesktop-volume-icon.c:466
 msgid "Removable Volume"
-msgstr ""
+msgstr "Flyttbar volym"
 
 #: ../src/xfdesktop-volume-icon.c:501 ../src/xfdesktop-volume-icon.c:547
 #, c-format
