@@ -204,15 +204,33 @@ apply_gamma(GdkRGBA *dest,
     dest->alpha = src->alpha;
 }
 
+static unsigned int
+round_threshold(double x,
+                double threshold)
+{
+    double ipart;
+    double fpart = modf(x, &ipart);
+    if (fpart >= threshold)
+        return ipart + 1;
+    else
+        return ipart;
+}
+
 static unsigned char
 interpolate(double x1,
             double x2,
             int position,
-            int max)
+            int max,
+            double threshold)
 {
     const double t = (double)position / (max - 1); // we want to interpolate all the way to max-1
     const double xi = x1 * (1 - t) + x2 * t;
-    return CLAMP(round(pow(xi, 1 / backdrop_gamma) * 255), 0, 255);
+    return CLAMP(round_threshold(pow(xi, 1 / backdrop_gamma) * 255, threshold), 0, 255);
+}
+
+static double gen_threshold(unsigned int *seed)
+{
+    return (double)rand_r(seed) / RAND_MAX;
 }
 
 static GdkPixbuf *
@@ -234,6 +252,7 @@ create_gradient(GdkRGBA *color1,
     gint ax2_max;
     GdkRGBA color1_lin;
     GdkRGBA color2_lin;
+    unsigned int seed;
 
     g_return_val_if_fail(color1 != NULL && color2 != NULL, NULL);
     g_return_val_if_fail(width > 0 && height > 0, NULL);
@@ -255,13 +274,15 @@ create_gradient(GdkRGBA *color1,
 
     apply_gamma(&color1_lin, color1);
     apply_gamma(&color2_lin, color2);
-    for (ax1 = 0; ax1 < ax1_max; ax1++) {
-        unsigned char r, g, b;
-        r = interpolate(color1_lin.red, color2_lin.red, ax1, ax1_max);
-        g = interpolate(color1_lin.green, color2_lin.green, ax1, ax1_max);
-        b = interpolate(color1_lin.blue, color2_lin.blue, ax1, ax1_max);
+    seed = 0;
 
+    for (ax1 = 0; ax1 < ax1_max; ax1++) {
         for (ax2 = 0; ax2 < ax2_max; ax2++) {
+            unsigned char r, g, b;
+            double threshold = gen_threshold(&seed);
+            r = interpolate(color1_lin.red, color2_lin.red, ax1, ax1_max, threshold);
+            g = interpolate(color1_lin.green, color2_lin.green, ax1, ax1_max, threshold);
+            b = interpolate(color1_lin.blue, color2_lin.blue, ax1, ax1_max, threshold);
             guint x, y;
             guint32 *p;
             if (style == XFCE_BACKDROP_COLOR_VERT_GRADIENT) {
