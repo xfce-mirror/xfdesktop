@@ -26,6 +26,7 @@ m4_define([wnck_minimum_version], [3.14])
 m4_define([intltool_minimum_version], [0.31])
 m4_define([xfconf_minimum_version], [4.12.1])
 m4_define([cairo_minimum_version], [1.16])
+m4_define([pixman_minimum_version], [0.30])
 
 dnl define a short version string for xfdesktop
 m4_append([xfdesktop_version_short], ["])
@@ -91,6 +92,7 @@ XDT_CHECK_PACKAGE([LIBWNCK], [libwnck-3.0], [wnck_minimum_version])
 XDT_CHECK_PACKAGE([XFCONF], [libxfconf-0], [xfconf_minimum_version])
 XDT_CHECK_PACKAGE([LIBEXO], [exo-2], [exo_minimum_version])
 XDT_CHECK_PACKAGE([CAIRO], [cairo], [cairo_minimum_version])
+XDT_CHECK_PACKAGE([PIXMAN], [pixman-1], [pixman_minimum_version])
 
 dnl do we want desktop icons at all?
 AC_ARG_ENABLE([desktop-icons],
