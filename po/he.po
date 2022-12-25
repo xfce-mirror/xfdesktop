@@ -5,18 +5,18 @@
 # 
 # Translators:
 # Nick Schermer <nick@xfce.org>, 2022
-# Elishai Eliyahu <elishai@mailfence.com>, 2022
 # Omer I.S. <omeritzicschwartz@gmail.com>, 2022
 # Xfce Bot <transifex@xfce.org>, 2022
+# Elishai Eliyahu <elishai@mailfence.com>, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-22 12:24+0100\n"
+"POT-Creation-Date: 2022-12-22 13:11+0100\n"
 "PO-Revision-Date: 2022-12-22 11:24+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>, 2022\n"
+"Last-Translator: Elishai Eliyahu <elishai@mailfence.com>, 2022\n"
 "Language-Team: Hebrew (https://www.transifex.com/xfce/teams/16840/he/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1150,7 +1150,7 @@ msgstr "_רוקן אשפה"
 
 #: ../src/xfdesktop-volume-icon.c:458
 msgid "(not mounted)"
-msgstr ""
+msgstr "(לא מעוגן)"
 
 #: ../src/xfdesktop-volume-icon.c:459 ../src/xfdesktop-volume-icon.c:460
 msgid "(unknown)"
@@ -1165,10 +1165,15 @@ msgid ""
 "Size: %s\n"
 "Free Space: %s"
 msgstr ""
+"שם: %s\n"
+"סוג: %s\n"
+"מעוגן ב-: %s\n"
+"גודל: %s\n"
+"שטח חופשי: %s"
 
 #: ../src/xfdesktop-volume-icon.c:466
 msgid "Removable Volume"
-msgstr ""
+msgstr "כונן ניתן להסרה"
 
 #: ../src/xfdesktop-volume-icon.c:501 ../src/xfdesktop-volume-icon.c:547
 #, c-format
