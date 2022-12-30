@@ -8,7 +8,7 @@
 # Allen Choi <byunghyun.choi@gmail.com>, 2005
 # Seong-ho Cho <darkcircle.0426@gmail.com>, 2013
 # 1763f4a4329a2376c933c5e919a36cbc_341ca53 <1f851310383599d03339229d772e1290_119292>, 2017-2018
-# Seong-ho Cho <darkcircle.0426@gmail.com>, 2013-2016,2018-2021
+# Seong-ho Cho <darkcircle.0426@gmail.com>, 2013-2016,2018-2022
 # Thomas Sungjin Kang <potopro@gmail.com>, 2013
 # Thomas Sungjin Kang <potopro@gmail.com>, 2013
 msgid ""
@@ -17,7 +17,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-22 13:09+0100\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
-"Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>, 2013-2016,2018-2021\n"
+"Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>, 2013-2016,2018-2022\n"
 "Language-Team: Korean (http://www.transifex.com/xfce/xfdesktop/language/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -511,7 +511,7 @@ msgstr "메뉴(_M)"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:38
 msgid "Icon _Type"
-msgstr ""
+msgstr "아이콘 형태(_T):"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:39
 msgid "Icon _size:"
@@ -573,7 +573,7 @@ msgstr "자동으로 만들어지는 섬네일 아이콘으로 데스크톱에�
 
 #: ../settings/xfdesktop-settings-ui.glade.h:53
 msgid "Show \"Delete\" option in file context menu"
-msgstr ""
+msgstr "파일 단축 메뉴에서 \"삭제\" 옵션 표시"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:54
 msgid "<b>Default Icons</b>"
@@ -581,7 +581,7 @@ msgstr "<b>기본 아이콘</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:55
 msgid "<b>File/Launcher Icons</b>"
-msgstr ""
+msgstr "<b>파일/실행 아이콘</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:56
 msgid "_Icons"
@@ -758,7 +758,7 @@ msgstr "이름 바꾸기를 지원하려 선택한 아이콘이 없습니다."
 msgid ""
 "This will reorder all desktop items and place them on different screen positions.\n"
 "Are you sure?"
-msgstr ""
+msgstr "모든 바탕화면 항목을 재배치하여 서로 다른 화면 위치에 둡니다.\n계속하시렵니까?"
 
 #: ../src/xfdesktop-file-icon-manager.c:1017
 msgid "_OK"
@@ -1128,7 +1128,7 @@ msgstr "휴지통 비우기(_E)"
 
 #: ../src/xfdesktop-volume-icon.c:458
 msgid "(not mounted)"
-msgstr ""
+msgstr "(마운트 안함)"
 
 #: ../src/xfdesktop-volume-icon.c:459 ../src/xfdesktop-volume-icon.c:460
 msgid "(unknown)"
@@ -1142,11 +1142,11 @@ msgid ""
 "Mounted at: %s\n"
 "Size: %s\n"
 "Free Space: %s"
-msgstr ""
+msgstr "이름: %s\n형식: %s\n마운트: %s\n크기: %s\n여분 용량: %s"
 
 #: ../src/xfdesktop-volume-icon.c:466
 msgid "Removable Volume"
-msgstr ""
+msgstr "이동식 볼륨"
 
 #: ../src/xfdesktop-volume-icon.c:501 ../src/xfdesktop-volume-icon.c:547
 #, c-format
