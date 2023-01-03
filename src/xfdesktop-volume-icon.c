@@ -77,10 +77,6 @@ struct _XfdesktopVolumeIconPrivate
 
 static void xfdesktop_volume_icon_finalize(GObject *obj);
 
-static GdkPixbuf *xfdesktop_volume_icon_get_pixbuf(XfdesktopIcon *icon,
-                                                   gint width,
-                                                   gint height,
-                                                   gint scale);
 static const gchar *xfdesktop_volume_icon_peek_label(XfdesktopIcon *icon);
 static gchar *xfdesktop_volume_icon_get_identifier(XfdesktopIcon *icon);
 static const gchar *xfdesktop_volume_icon_peek_tooltip(XfdesktopIcon *icon);
@@ -93,6 +89,7 @@ static gboolean xfdesktop_volume_icon_do_drop_dest(XfdesktopIcon *icon,
 static gboolean xfdesktop_volume_icon_populate_context_menu(XfdesktopIcon *icon,
                                                             GtkWidget *menu);
 
+static GIcon * xfdesktop_volume_icon_get_gicon(XfdesktopFileIcon *icon);
 static GFileInfo *xfdesktop_volume_icon_peek_file_info(XfdesktopFileIcon *icon);
 static GFileInfo *xfdesktop_volume_icon_peek_filesystem_info(XfdesktopFileIcon *icon);
 static GFile *xfdesktop_volume_icon_peek_file(XfdesktopFileIcon *icon);
@@ -154,7 +151,6 @@ xfdesktop_volume_icon_class_init(XfdesktopVolumeIconClass *klass)
 
     gobject_class->finalize = xfdesktop_volume_icon_finalize;
 
-    icon_class->get_pixbuf = xfdesktop_volume_icon_get_pixbuf;
     icon_class->peek_label = xfdesktop_volume_icon_peek_label;
     icon_class->get_identifier = xfdesktop_volume_icon_get_identifier;
     icon_class->peek_tooltip = xfdesktop_volume_icon_peek_tooltip;
@@ -164,6 +160,7 @@ xfdesktop_volume_icon_class_init(XfdesktopVolumeIconClass *klass)
     icon_class->populate_context_menu = xfdesktop_volume_icon_populate_context_menu;
     icon_class->activate = xfdesktop_volume_icon_activate;
 
+    file_icon_class->get_gicon = xfdesktop_volume_icon_get_gicon;
     file_icon_class->peek_file_info = xfdesktop_volume_icon_peek_file_info;
     file_icon_class->peek_filesystem_info = xfdesktop_volume_icon_peek_filesystem_info;
     file_icon_class->peek_file = xfdesktop_volume_icon_peek_file;
@@ -260,54 +257,24 @@ xfdesktop_volume_icon_is_mounted(XfdesktopIcon *icon)
 }
 
 static GIcon *
-xfdesktop_volume_icon_load_icon(XfdesktopIcon *icon)
+xfdesktop_volume_icon_get_gicon(XfdesktopFileIcon *icon)
 {
     XfdesktopVolumeIcon *volume_icon = XFDESKTOP_VOLUME_ICON(icon);
-    XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
     GIcon *gicon = NULL;
 
     TRACE("entering");
 
     /* load icon and keep a ref to it */
     if(volume_icon->priv->volume) {
-        gicon = g_volume_get_icon(volume_icon->priv->volume);
+        GIcon *base_gicon = g_volume_get_icon(volume_icon->priv->volume);
 
-        if(G_IS_ICON(gicon))
-            g_object_ref(gicon);
-
-        g_object_set(file_icon, "gicon", gicon, NULL);
-
-        /* Add any user set emblems */
-        gicon = xfdesktop_file_icon_add_emblems(file_icon);
+        if (base_gicon != NULL) {
+            /* Add any user set emblems */
+            gicon = xfdesktop_file_icon_add_emblems(icon, base_gicon);
+        }
     }
 
     return gicon;
-}
-
-static GdkPixbuf *
-xfdesktop_volume_icon_get_pixbuf(XfdesktopIcon *icon,
-                                 gint width,
-                                 gint height,
-                                 gint scale)
-{
-    gint opacity = 100;
-    GIcon *gicon = NULL;
-    GdkPixbuf *pix = NULL;
-
-    g_return_val_if_fail(XFDESKTOP_IS_VOLUME_ICON(icon), NULL);
-
-    if(!xfdesktop_file_icon_has_gicon(XFDESKTOP_FILE_ICON(icon)))
-        gicon = xfdesktop_volume_icon_load_icon(icon);
-    else
-        g_object_get(XFDESKTOP_FILE_ICON(icon), "gicon", &gicon, NULL);
-
-    /* If the volume isn't mounted show it as semi-transparent */
-    if(!xfdesktop_volume_icon_is_mounted(icon))
-        opacity = 50;
-
-    pix = xfdesktop_file_utils_get_icon(gicon, height, height, scale, opacity);
-
-    return pix;
 }
 
 const gchar *

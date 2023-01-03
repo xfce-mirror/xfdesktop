@@ -84,8 +84,6 @@ static void xfdesktop_window_icon_manager_populate_context_menu(XfdesktopIconVie
 static void xfdesktop_window_icon_manager_sort_icons(XfdesktopIconViewManager *manager,
                                                      GtkSortType sort_type);
 
-static XfdesktopWindowIconModel * create_model(XfdesktopWindowIconManager *wmanager);
-
 static void workspace_group_created_cb(XfwWorkspaceManager *manager,
                                        XfwWorkspaceGroup *group,
                                        gpointer user_data);
@@ -181,10 +179,10 @@ xfdesktop_window_icon_manager_constructed(GObject *object)
 
     wmanager->priv->icon_view = g_object_new(XFDESKTOP_TYPE_ICON_VIEW,
                                              "channel", xfdesktop_icon_view_manager_get_channel(XFDESKTOP_ICON_VIEW_MANAGER(wmanager)),
-                                             "pixbuf-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_SURFACE,
+                                             "pixbuf-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_IMAGE,
                                              "text-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_LABEL,
                                              "search-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_LABEL,
-                                             "tooltip-surface-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_TOOLTIP_SURFACE,
+                                             "tooltip-icon-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_TOOLTIP_IMAGE,
                                              "tooltip-text-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_TOOLTIP_TEXT,
                                              "row-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_ROW,
                                              "col-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_COL,
@@ -245,7 +243,7 @@ xfdesktop_window_icon_manager_constructed(GObject *object)
         wmanager->priv->icon_workspaces = g_malloc0(wmanager->priv->nworkspaces
                                                     * sizeof(XfdesktopWindowIconWorkspace));
         for (gint i = 0; i < wmanager->priv->nworkspaces; ++i) {
-            wmanager->priv->icon_workspaces[i].model = create_model(wmanager);
+            wmanager->priv->icon_workspaces[i].model = xfdesktop_window_icon_model_new();
         }
 
         for (GList *l = workspace_groups; l != NULL; l = l->next) {
@@ -467,24 +465,6 @@ xfdesktop_window_icon_manager_add_icon(XfdesktopWindowIconManager *wmanager,
     xfdesktop_window_icon_model_append(xwiw->model, window, NULL);
 }
 
-static XfdesktopWindowIconModel *
-create_model(XfdesktopWindowIconManager *wmanager) {
-    XfdesktopWindowIconModel *model = xfdesktop_window_icon_model_new();
-    g_object_bind_property(wmanager->priv->icon_view, "icon-size",
-                           model, "icon-width",
-                           G_BINDING_SYNC_CREATE);
-    g_object_bind_property(wmanager->priv->icon_view, "icon-size",
-                           model, "icon-height",
-                           G_BINDING_SYNC_CREATE);
-    g_object_bind_property(wmanager->priv->icon_view, "scale-factor",
-                           model, "scale-factor",
-                           G_BINDING_SYNC_CREATE);
-    g_object_bind_property(wmanager, "tooltip-icon-size",
-                           model, "tooltip-icon-size",
-                           G_BINDING_SYNC_CREATE);
-    return model;
-}
-
 static void
 workspace_changed_cb(XfwWorkspaceGroup *group,
                      XfwWorkspace *previously_active_space,
@@ -565,7 +545,7 @@ workspace_created_cb(XfwWorkspaceGroup *group,
         }
 
         memset(&wmanager->priv->icon_workspaces[ws_num], 0, sizeof(XfdesktopWindowIconWorkspace));
-        wmanager->priv->icon_workspaces[ws_num].model = create_model(wmanager);
+        wmanager->priv->icon_workspaces[ws_num].model = xfdesktop_window_icon_model_new();
     }
 }
 

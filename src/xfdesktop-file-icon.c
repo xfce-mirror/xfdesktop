@@ -252,7 +252,8 @@ xfdesktop_file_icon_can_delete_file(XfdesktopFileIcon *icon)
 }
 
 GIcon *
-xfdesktop_file_icon_add_emblems(XfdesktopFileIcon *icon)
+xfdesktop_file_icon_add_emblems(XfdesktopFileIcon *icon,
+                                GIcon *gicon)
 {
     GIcon *emblemed_icon = NULL;
     gchar **emblem_names;
@@ -260,16 +261,16 @@ xfdesktop_file_icon_add_emblems(XfdesktopFileIcon *icon)
     TRACE("entering");
 
     g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON(icon), NULL);
+    g_return_val_if_fail(G_IS_ICON(gicon), NULL);
 
-    if(G_IS_EMBLEMED_ICON(icon->priv->gicon))
-        emblemed_icon = icon->priv->gicon;
-    else if(G_IS_ICON(icon->priv->gicon))
-        emblemed_icon = g_emblemed_icon_new(icon->priv->gicon, NULL);
-    else
-        return NULL;
+    if (G_IS_EMBLEMED_ICON(gicon)) {
+        emblemed_icon = g_object_ref(gicon);
+    } else {
+        emblemed_icon = g_emblemed_icon_new(gicon, NULL);
+    }
 
     if(!G_IS_FILE_INFO(xfdesktop_file_icon_peek_file_info(icon)))
-        return icon->priv->gicon = emblemed_icon;
+        return emblemed_icon;
 
     /* Get the list of emblems */
     emblem_names = g_file_info_get_attribute_stringv(xfdesktop_file_icon_peek_file_info(icon),
@@ -289,9 +290,7 @@ xfdesktop_file_icon_add_emblems(XfdesktopFileIcon *icon)
         }
     }
 
-    /* Clear out the old icon and set the new one */
-    xfdesktop_file_icon_invalidate_icon(icon);
-    return icon->priv->gicon = emblemed_icon;
+    return emblemed_icon;
 }
 
 void
@@ -311,6 +310,20 @@ xfdesktop_file_icon_has_gicon(XfdesktopFileIcon *icon)
     g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON(icon), FALSE);
 
     return G_IS_ICON(icon->priv->gicon);
+}
+
+GIcon *
+xfdesktop_file_icon_get_gicon(XfdesktopFileIcon *icon)
+{
+    g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON(icon), NULL);
+
+    if (icon->priv->gicon == NULL) {
+        XfdesktopFileIconClass *klass = XFDESKTOP_FILE_ICON_GET_CLASS(icon);
+        g_return_val_if_fail(klass->get_gicon != NULL, NULL);
+        icon->priv->gicon = klass->get_gicon(icon);
+    }
+
+    return icon->priv->gicon != NULL ? g_object_ref(icon->priv->gicon) : NULL;
 }
 
 gchar *

@@ -22,8 +22,6 @@
 #include <config.h>
 #endif
 
-#include <cairo-gobject.h>
-
 #include "xfdesktop-common.h"
 #include "xfdesktop-extensions.h"
 #include "xfdesktop-icon-view-model.h"
@@ -34,33 +32,10 @@ struct _XfdesktopIconViewModelPrivate
 {
     GList *items;
     GHashTable *model_items;
-
-    gint icon_width;
-    gint icon_height;
-    gint tooltip_icon_size;
-    gint scale_factor;
 };
-
-enum
-{
-    PROP0 = 0,
-    PROP_ICON_WIDTH,
-    PROP_ICON_HEIGHT,
-    PROP_TOOLTIP_ICON_SIZE,
-    PROP_SCALE_FACTOR,
-};
-
 
 static void xfdesktop_icon_view_model_tree_model_init(GtkTreeModelIface *iface);
 
-static void xfdesktop_icon_view_model_set_property(GObject *obj,
-                                                   guint prop_id,
-                                                   const GValue *value,
-                                                   GParamSpec *pspec);
-static void xfdesktop_icon_view_model_get_property(GObject *obj,
-                                                   guint prop_id,
-                                                   GValue *value,
-                                                   GParamSpec *pspec);
 static void xfdesktop_icon_view_model_finalize(GObject *obj);
 
 static GtkTreeModelFlags xfdesktop_icon_view_model_get_flags(GtkTreeModel *model);
@@ -104,48 +79,7 @@ xfdesktop_icon_view_model_class_init(XfdesktopIconViewModelClass *klass)
 {
     GObjectClass *gobject_class = G_OBJECT_CLASS(klass);
 
-    gobject_class->set_property = xfdesktop_icon_view_model_set_property;
-    gobject_class->get_property = xfdesktop_icon_view_model_get_property;
     gobject_class->finalize = xfdesktop_icon_view_model_finalize;
-
-#define PARAM_FLAGS (G_PARAM_READWRITE \
-                     | G_PARAM_STATIC_NAME \
-                     | G_PARAM_STATIC_NICK \
-                     | G_PARAM_STATIC_BLURB)
-
-    g_object_class_install_property(gobject_class,
-                                    PROP_ICON_WIDTH,
-                                    g_param_spec_int("icon-width",
-                                                     "icon-width",
-                                                     "width of icon images",
-                                                     MIN_ICON_SIZE, MAX_ICON_SIZE, DEFAULT_ICON_SIZE,
-                                                     PARAM_FLAGS));
-
-    g_object_class_install_property(gobject_class,
-                                    PROP_ICON_HEIGHT,
-                                    g_param_spec_int("icon-height",
-                                                     "icon-height",
-                                                     "height of icon images",
-                                                     MIN_ICON_SIZE, MAX_ICON_SIZE, DEFAULT_ICON_SIZE,
-                                                     PARAM_FLAGS));
-
-    g_object_class_install_property(gobject_class,
-                                    PROP_TOOLTIP_ICON_SIZE,
-                                    g_param_spec_int("tooltip-icon-size",
-                                                     "tooltip-icon-size",
-                                                     "size of tooltip images",
-                                                     MIN_TOOLTIP_ICON_SIZE, MAX_TOOLTIP_ICON_SIZE, DEFAULT_TOOLTIP_ICON_SIZE,
-                                                     PARAM_FLAGS));
-
-    g_object_class_install_property(gobject_class,
-                                    PROP_SCALE_FACTOR,
-                                    g_param_spec_int("scale-factor",
-                                                     "scale-factor",
-                                                     "UI scale factor (used for rendering icons)",
-                                                     1, G_MAXINT, 1,
-                                                     PARAM_FLAGS));
-
-#undef PARAM_FLAGS
 }
 
 static void
@@ -173,72 +107,6 @@ xfdesktop_icon_view_model_init(XfdesktopIconViewModel *ivmodel)
     ivmodel->priv = xfdesktop_icon_view_model_get_instance_private(ivmodel);
 
     ivmodel->priv->model_items = g_hash_table_new(klass->model_item_hash, klass->model_item_equal);
-    ivmodel->priv->icon_width = DEFAULT_ICON_SIZE;
-    ivmodel->priv->icon_height = DEFAULT_ICON_SIZE;
-    ivmodel->priv->tooltip_icon_size = DEFAULT_TOOLTIP_ICON_SIZE;
-    ivmodel->priv->scale_factor = 1;
-}
-
-static void
-xfdesktop_icon_view_model_set_property(GObject *obj,
-                                       guint prop_id,
-                                       const GValue *value,
-                                       GParamSpec *pspec)
-{
-    XfdesktopIconViewModel *ivmodel = XFDESKTOP_ICON_VIEW_MODEL(obj);
-
-    switch (prop_id) {
-        case PROP_ICON_WIDTH:
-            xfdesktop_icon_view_model_set_icon_width(ivmodel, g_value_get_int(value));
-            break;
-
-        case PROP_ICON_HEIGHT:
-            xfdesktop_icon_view_model_set_icon_height(ivmodel, g_value_get_int(value));
-            break;
-
-        case PROP_TOOLTIP_ICON_SIZE:
-            xfdesktop_icon_view_model_set_tooltip_icon_size(ivmodel, g_value_get_int(value));
-            break;
-
-        case PROP_SCALE_FACTOR:
-            xfdesktop_icon_view_model_set_scale_factor(ivmodel, g_value_get_int(value));
-            break;
-
-        default:
-            G_OBJECT_WARN_INVALID_PROPERTY_ID(obj, prop_id, pspec);
-            break;
-    }
-}
-
-static void
-xfdesktop_icon_view_model_get_property(GObject *obj,
-                                       guint prop_id,
-                                       GValue *value,
-                                       GParamSpec *pspec)
-{
-    XfdesktopIconViewModel *ivmodel = XFDESKTOP_ICON_VIEW_MODEL(obj);
-
-    switch (prop_id) {
-        case PROP_ICON_WIDTH:
-            g_value_set_int(value, ivmodel->priv->icon_width);
-            break;
-
-        case PROP_ICON_HEIGHT:
-            g_value_set_int(value, ivmodel->priv->icon_height);
-            break;
-
-        case PROP_TOOLTIP_ICON_SIZE:
-            g_value_set_int(value, ivmodel->priv->tooltip_icon_size);
-            break;
-
-        case PROP_SCALE_FACTOR:
-            g_value_set_int(value, ivmodel->priv->scale_factor);
-            break;
-
-        default:
-            G_OBJECT_WARN_INVALID_PROPERTY_ID(obj, prop_id, pspec);
-            break;
-    }
 }
 
 static void
@@ -272,8 +140,8 @@ xfdesktop_icon_view_model_get_column_type(GtkTreeModel *model,
     g_return_val_if_fail(column >= 0 && column < XFDESKTOP_ICON_VIEW_MODEL_COLUMN_N_COLUMNS, G_TYPE_NONE);
 
     switch (column) {
-        case XFDESKTOP_ICON_VIEW_MODEL_COLUMN_SURFACE:
-            return CAIRO_GOBJECT_TYPE_SURFACE;
+        case XFDESKTOP_ICON_VIEW_MODEL_COLUMN_IMAGE:
+            return G_TYPE_ICON;
         case XFDESKTOP_ICON_VIEW_MODEL_COLUMN_LABEL:
             return G_TYPE_STRING;
         case XFDESKTOP_ICON_VIEW_MODEL_COLUMN_ROW:
@@ -282,8 +150,8 @@ xfdesktop_icon_view_model_get_column_type(GtkTreeModel *model,
             return G_TYPE_INT;
         case XFDESKTOP_ICON_VIEW_MODEL_COLUMN_SORT_PRIORITY:
             return G_TYPE_INT;
-        case XFDESKTOP_ICON_VIEW_MODEL_COLUMN_TOOLTIP_SURFACE:
-            return CAIRO_GOBJECT_TYPE_SURFACE;
+        case XFDESKTOP_ICON_VIEW_MODEL_COLUMN_TOOLTIP_IMAGE:
+            return G_TYPE_ICON;
         case XFDESKTOP_ICON_VIEW_MODEL_COLUMN_TOOLTIP_TEXT:
             return G_TYPE_STRING;
         default:
@@ -437,78 +305,6 @@ xfdesktop_icon_view_model_iter_nth_child(GtkTreeModel *model,
             iter->stamp = 0;
             return FALSE;
         }
-    }
-}
-
-static void
-notify_all_rows_changed(XfdesktopIconViewModel *ivmodel)
-{
-    gint i = 0;
-    for (GList *l = ivmodel->priv->items; l != NULL; l = l->next, ++i) {
-        GtkTreePath *path = gtk_tree_path_new_from_indices(i, -1);
-        GtkTreeIter iter = {
-            .stamp = ITER_STAMP,
-            .user_data = l,
-        };
-        gtk_tree_model_row_changed(GTK_TREE_MODEL(ivmodel), path, &iter);
-        gtk_tree_path_free(path);
-    }
-}
-
-
-void
-xfdesktop_icon_view_model_set_icon_width(XfdesktopIconViewModel *ivmodel,
-                                        gint width)
-{
-    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW_MODEL(ivmodel));
-    g_return_if_fail(width > 0);
-
-    if (width != ivmodel->priv->icon_width) {
-        ivmodel->priv->icon_width = width;
-        g_object_notify(G_OBJECT(ivmodel), "icon-width");
-        notify_all_rows_changed(ivmodel);
-    }
-}
-
-void
-xfdesktop_icon_view_model_set_icon_height(XfdesktopIconViewModel *ivmodel,
-                                          gint height)
-{
-    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW_MODEL(ivmodel));
-    g_return_if_fail(height > 0);
-
-    if (height != ivmodel->priv->icon_height) {
-        ivmodel->priv->icon_height = height;
-        g_object_notify(G_OBJECT(ivmodel), "icon-height");
-        notify_all_rows_changed(ivmodel);
-    }
-}
-
-void
-xfdesktop_icon_view_model_set_tooltip_icon_size(XfdesktopIconViewModel *ivmodel,
-                                                gint size)
-{
-    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW_MODEL(ivmodel));
-    g_return_if_fail(size >= 0);
-
-    if (size != ivmodel->priv->tooltip_icon_size) {
-        ivmodel->priv->tooltip_icon_size = size;
-        g_object_notify(G_OBJECT(ivmodel), "tooltip-icon-size");
-        notify_all_rows_changed(ivmodel);
-    }
-}
-
-void
-xfdesktop_icon_view_model_set_scale_factor(XfdesktopIconViewModel *ivmodel,
-                                           gint scale_factor)
-{
-    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW_MODEL(ivmodel));
-    g_return_if_fail(scale_factor > 0);
-
-    if (scale_factor != ivmodel->priv->scale_factor) {
-        ivmodel->priv->scale_factor = scale_factor;
-        g_object_notify(G_OBJECT(ivmodel), "scale-factor");
-        notify_all_rows_changed(ivmodel);
     }
 }
 

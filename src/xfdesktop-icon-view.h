@@ -105,8 +105,8 @@ void xfdesktop_icon_view_set_search_column(XfdesktopIconView *icon_view,
                                            gint column);
 void xfdesktop_icon_view_set_sort_priority_column(XfdesktopIconView *icon_view,
                                                   gint column);
-void xfdesktop_icon_view_set_tooltip_surface_column(XfdesktopIconView *icon_view,
-                                                    gint column);
+void xfdesktop_icon_view_set_tooltip_icon_column(XfdesktopIconView *icon_view,
+                                                 gint column);
 void xfdesktop_icon_view_set_tooltip_text_column(XfdesktopIconView *icon_view,
                                                  gint column);
 void xfdesktop_icon_view_set_row_column(XfdesktopIconView *icon_view,
@@ -169,6 +169,7 @@ void xfdesktop_icon_view_set_gravity(XfdesktopIconView *icon_view,
 
 void xfdesktop_icon_view_set_show_tooltips(XfdesktopIconView *icon_view,
                                            gboolean show_tooltips);
+gint xfdesktop_icon_view_get_tooltip_icon_size(XfdesktopIconView *icon_view);
 
 GtkWidget *xfdesktop_icon_view_get_window_widget(XfdesktopIconView *icon_view);
 

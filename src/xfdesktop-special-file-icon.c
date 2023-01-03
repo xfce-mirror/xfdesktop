@@ -68,10 +68,6 @@ struct _XfdesktopSpecialFileIconPrivate
 
 static void xfdesktop_special_file_icon_finalize(GObject *obj);
 
-static GdkPixbuf *xfdesktop_special_file_icon_get_pixbuf(XfdesktopIcon *icon,
-                                                         gint width,
-                                                         gint height,
-                                                         gint scale);
 static const gchar *xfdesktop_special_file_icon_peek_label(XfdesktopIcon *icon);
 static gchar *xfdesktop_special_file_icon_get_identifier(XfdesktopIcon *icon);
 static const gchar *xfdesktop_special_file_icon_peek_tooltip(XfdesktopIcon *icon);
@@ -84,6 +80,7 @@ static gboolean xfdesktop_special_file_icon_do_drop_dest(XfdesktopIcon *icon,
 static gboolean xfdesktop_special_file_icon_populate_context_menu(XfdesktopIcon *icon,
                                                                   GtkWidget *menu);
 
+static GIcon * xfdesktop_special_file_icon_get_gicon(XfdesktopFileIcon *icon);
 static GFileInfo *xfdesktop_special_file_icon_peek_file_info(XfdesktopFileIcon *icon);
 static GFileInfo *xfdesktop_special_file_icon_peek_filesystem_info(XfdesktopFileIcon *icon);
 static GFile *xfdesktop_special_file_icon_peek_file(XfdesktopFileIcon *icon);
@@ -119,7 +116,6 @@ xfdesktop_special_file_icon_class_init(XfdesktopSpecialFileIconClass *klass)
 
     gobject_class->finalize = xfdesktop_special_file_icon_finalize;
 
-    icon_class->get_pixbuf = xfdesktop_special_file_icon_get_pixbuf;
     icon_class->peek_label = xfdesktop_special_file_icon_peek_label;
     icon_class->get_identifier = xfdesktop_special_file_icon_get_identifier;
     icon_class->peek_tooltip = xfdesktop_special_file_icon_peek_tooltip;
@@ -128,6 +124,7 @@ xfdesktop_special_file_icon_class_init(XfdesktopSpecialFileIconClass *klass)
     icon_class->do_drop_dest = xfdesktop_special_file_icon_do_drop_dest;
     icon_class->populate_context_menu = xfdesktop_special_file_icon_populate_context_menu;
 
+    file_icon_class->get_gicon = xfdesktop_special_file_icon_get_gicon;
     file_icon_class->peek_file_info = xfdesktop_special_file_icon_peek_file_info;
     file_icon_class->peek_filesystem_info = xfdesktop_special_file_icon_peek_filesystem_info;
     file_icon_class->peek_file = xfdesktop_special_file_icon_peek_file;
@@ -192,12 +189,13 @@ xfdesktop_special_file_icon_tfi_init(ThunarxFileInfoIface *iface)
 
 
 static GIcon *
-xfdesktop_special_file_icon_load_icon(XfdesktopIcon *icon)
+xfdesktop_special_file_icon_get_gicon(XfdesktopFileIcon *icon)
 {
     XfdesktopSpecialFileIcon *special_icon = XFDESKTOP_SPECIAL_FILE_ICON(icon);
     XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
     gchar *icon_name = NULL;
     GFile *parent = NULL;
+    GIcon *base_gicon = NULL;
     GIcon *gicon = NULL;
 
     TRACE("entering");
@@ -221,42 +219,22 @@ xfdesktop_special_file_icon_load_icon(XfdesktopIcon *icon)
 
     /* Create the themed icon for it */
     if(icon_name) {
-        gicon = g_themed_icon_new(icon_name);
+        base_gicon = g_themed_icon_new(icon_name);
         g_free(icon_name);
     }
 
     /* If we still don't have an icon, use the default */
-    if(!G_IS_ICON(gicon)) {
-        gicon = g_file_info_get_icon(special_icon->priv->file_info);
-        if(G_IS_ICON(gicon))
-            g_object_ref(gicon);
+    if(!G_IS_ICON(base_gicon)) {
+        base_gicon = g_file_info_get_icon(special_icon->priv->file_info);
+        if(G_IS_ICON(base_gicon))
+            g_object_ref(base_gicon);
     }
 
-    g_object_set(file_icon, "gicon", gicon, NULL);
-
     /* Add any user set emblems */
-    gicon = xfdesktop_file_icon_add_emblems(file_icon);
+    gicon = xfdesktop_file_icon_add_emblems(file_icon, base_gicon);
+    g_object_unref(base_gicon);
 
     return gicon;
-}
-
-static GdkPixbuf *
-xfdesktop_special_file_icon_get_pixbuf(XfdesktopIcon *icon,
-                                       gint width,
-                                       gint height,
-                                       gint scale)
-{
-    GIcon *gicon = NULL;
-    GdkPixbuf *pix = NULL;
-
-    if(!xfdesktop_file_icon_has_gicon(XFDESKTOP_FILE_ICON(icon)))
-        gicon = xfdesktop_special_file_icon_load_icon(icon);
-    else
-        g_object_get(XFDESKTOP_FILE_ICON(icon), "gicon", &gicon, NULL);
-
-    pix = xfdesktop_file_utils_get_icon(gicon, height, height, scale, 100);
-
-    return pix;
 }
 
 static const gchar *

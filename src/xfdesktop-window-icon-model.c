@@ -123,20 +123,11 @@ xfdesktop_window_icon_model_get_value(GtkTreeModel *model,
     model_item = (ModelItem *)item;
 
     switch (column) {
-        case XFDESKTOP_ICON_VIEW_MODEL_COLUMN_SURFACE: {
-            gint icon_height, scale_factor;
-            GdkPixbuf *pix;
-
-            g_object_get(model,
-                         "icon-height", &icon_height,
-                         "scale-factor", &scale_factor,
-                         NULL);
-
-            pix = xfw_window_get_icon(model_item->window, icon_height, scale_factor);
-            if (pix != NULL) {
-                cairo_surface_t *surface = gdk_cairo_surface_create_from_pixbuf(pix, scale_factor, NULL);
-                g_value_init(value, CAIRO_GOBJECT_TYPE_SURFACE);
-                g_value_take_boxed(value, surface);
+        case XFDESKTOP_ICON_VIEW_MODEL_COLUMN_IMAGE: {
+            GIcon *icon = xfw_window_get_gicon(model_item->window);
+            if (icon != NULL) {
+                g_value_init(value, G_TYPE_ICON);
+                g_value_set_object(value, icon);
             }
             break;
         }
@@ -150,21 +141,11 @@ xfdesktop_window_icon_model_get_value(GtkTreeModel *model,
             break;
         }
 
-        case XFDESKTOP_ICON_VIEW_MODEL_COLUMN_TOOLTIP_SURFACE:{
-            gint tooltip_icon_size, scale_factor;
-
-            g_object_get(model,
-                         "tooltip-icon-size", &tooltip_icon_size,
-                         "scale-factor", &scale_factor,
-                         NULL);
-
-            if (tooltip_icon_size > 0) {
-                GdkPixbuf *pix = xfw_window_get_icon(model_item->window, tooltip_icon_size, scale_factor);
-                if (pix != NULL) {
-                    cairo_surface_t *surface = gdk_cairo_surface_create_from_pixbuf(pix, scale_factor, NULL);
-                    g_value_init(value, CAIRO_GOBJECT_TYPE_SURFACE);
-                    g_value_take_boxed(value, surface);
-                }
+        case XFDESKTOP_ICON_VIEW_MODEL_COLUMN_TOOLTIP_IMAGE:{
+            GIcon *icon = xfw_window_get_gicon(model_item->window);
+            if (icon != NULL) {
+                g_value_init(value, G_TYPE_ICON);
+                g_value_set_object(value, icon);
             }
             break;
         }

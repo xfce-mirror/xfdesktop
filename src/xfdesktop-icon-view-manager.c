@@ -40,7 +40,6 @@ enum {
     PROP0 = 0,
     PROP_PARENT,
     PROP_CHANNEL,
-    PROP_TOOLTIP_ICON_SIZE,
     PROP_ICON_ON_PRIMARY,
     PROP_WORKAREA,
 };
@@ -51,7 +50,6 @@ struct _XfdesktopIconViewManagerPrivate
     GtkFixed *container;
     XfconfChannel *channel;
 
-    gint tooltip_icon_size_xfconf;
     gboolean icons_on_primary;
     GdkRectangle workarea;
 };
@@ -76,8 +74,6 @@ static void xfdesktop_icon_view_manager_parent_realized(GtkWidget *parent,
 static void xfdesktop_icon_view_manager_parent_unrealized(GtkWidget *parent,
                                                           XfdesktopIconViewManager *manager);
 
-static void xfdesktop_icon_view_manager_set_tooltip_icon_size(XfdesktopIconViewManager *manager,
-                                                              gint tooltip_icon_size);
 static void xfdesktop_icon_view_manager_set_show_icons_on_primary(XfdesktopIconViewManager *manager,
                                                                   gboolean icons_on_primary);
 
@@ -86,7 +82,6 @@ static const struct {
     GType setting_type;
     const gchar *property;
 } setting_bindings[] = {
-    { DESKTOP_ICONS_TOOLTIP_SIZE_PROP, G_TYPE_INT, "tooltip-icon-size" },
     { DESKTOP_ICONS_ON_PRIMARY_PROP, G_TYPE_BOOLEAN, "icons-on-primary" },
 };
 
@@ -124,13 +119,6 @@ xfdesktop_icon_view_manager_class_init(XfdesktopIconViewManagerClass *klass)
                                                         XFCONF_TYPE_CHANNEL,
                                                         PARAM_FLAGS | G_PARAM_CONSTRUCT_ONLY));
 
-    g_object_class_install_property(gobject_class, PROP_TOOLTIP_ICON_SIZE,
-                                    g_param_spec_int("tooltip-icon-size",
-                                                     "tooltip icon size",
-                                                     "Pixel size of tooltip icon",
-                                                     MIN_TOOLTIP_ICON_SIZE, MAX_TOOLTIP_ICON_SIZE, DEFAULT_TOOLTIP_ICON_SIZE,
-                                                     PARAM_FLAGS));
-
     g_object_class_install_property(gobject_class, PROP_ICON_ON_PRIMARY,
                                     g_param_spec_boolean("icons-on-primary",
                                                          "icons on primary",
@@ -153,7 +141,6 @@ xfdesktop_icon_view_manager_init(XfdesktopIconViewManager *manager)
 {
     manager->priv = xfdesktop_icon_view_manager_get_instance_private(manager);
 
-    manager->priv->tooltip_icon_size_xfconf = DEFAULT_TOOLTIP_ICON_SIZE;
     manager->priv->icons_on_primary = DEFAULT_ICONS_ON_PRIMARY;
 }
 
@@ -204,11 +191,6 @@ xfdesktop_icon_view_manager_set_property(GObject *obj,
             manager->priv->channel = g_value_dup_object(value);
             break;
 
-        case PROP_TOOLTIP_ICON_SIZE:
-            xfdesktop_icon_view_manager_set_tooltip_icon_size(manager,
-                                                              g_value_get_int(value));
-            break;
-
         case PROP_ICON_ON_PRIMARY:
             xfdesktop_icon_view_manager_set_show_icons_on_primary(manager,
                                                                   g_value_get_boolean(value));
@@ -235,10 +217,6 @@ xfdesktop_icon_view_manager_get_property(GObject *obj,
 
         case PROP_CHANNEL:
             g_value_set_object(value, manager->priv->channel);
-            break;
-
-        case PROP_TOOLTIP_ICON_SIZE:
-            g_value_set_int(value, manager->priv->tooltip_icon_size_xfconf);
             break;
 
         case PROP_ICON_ON_PRIMARY:
@@ -317,16 +295,6 @@ xfdesktop_icon_view_manager_parent_unrealized(GtkWidget *parent,
     rootwin = gdk_screen_get_root_window(screen);
 
     gdk_window_remove_filter(rootwin, xfdesktop_icon_view_manager_rootwin_event_filter, manager);
-}
-
-static void
-xfdesktop_icon_view_manager_set_tooltip_icon_size(XfdesktopIconViewManager *manager,
-                                                  gint tooltip_icon_size)
-{
-    if (manager->priv->tooltip_icon_size_xfconf != tooltip_icon_size) {
-        manager->priv->tooltip_icon_size_xfconf = tooltip_icon_size;
-        g_object_notify(G_OBJECT(manager), "tooltip-icon-size");
-    }
 }
 
 static void
@@ -485,28 +453,6 @@ XfconfChannel *
 xfdesktop_icon_view_manager_get_channel(XfdesktopIconViewManager *manager)
 {
     return manager->priv->channel;
-}
-
-gint
-xfdesktop_icon_view_manager_get_tooltip_icon_size(XfdesktopIconViewManager *manager,
-                                                  GtkWidget *icon_view)
-{
-    g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW_MANAGER(manager), DEFAULT_TOOLTIP_ICON_SIZE);
-    g_return_val_if_fail(GTK_IS_WIDGET(icon_view), DEFAULT_TOOLTIP_ICON_SIZE);
-
-    if (manager->priv->tooltip_icon_size_xfconf >= 0) {
-        return manager->priv->tooltip_icon_size_xfconf;
-    } else {
-        gint tooltip_size = -1;
-        gtk_widget_style_get(icon_view,
-                             "tooltip-size", &tooltip_size,
-                             NULL);
-        if (tooltip_size >= 0) {
-            return tooltip_size;
-        } else {
-            return DEFAULT_TOOLTIP_ICON_SIZE;
-        }
-    }
 }
 
 gboolean

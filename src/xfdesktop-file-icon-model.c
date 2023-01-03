@@ -22,8 +22,6 @@
 #include <config.h>
 #endif
 
-#include <cairo-gobject.h>
-
 #include "xfdesktop-common.h"
 #include "xfdesktop-extensions.h"
 #include "xfdesktop-file-icon-model.h"
@@ -97,25 +95,11 @@ xfdesktop_file_icon_model_get_value(GtkTreeModel *model,
     icon = XFDESKTOP_FILE_ICON(model_item);
 
     switch (column) {
-        case XFDESKTOP_ICON_VIEW_MODEL_COLUMN_SURFACE: {
-            gint icon_width, icon_height, scale_factor;
-            GdkPixbuf *pix;
-
-            g_object_get(model,
-                         "icon-width", &icon_width,
-                         "icon-height", &icon_height,
-                         "scale-factor", &scale_factor,
-                         NULL);
-
-            pix = xfdesktop_icon_get_pixbuf(XFDESKTOP_ICON(icon),
-                                            icon_width,
-                                            icon_height,
-                                            scale_factor);
-            if (pix != NULL) {
-                cairo_surface_t *surface = gdk_cairo_surface_create_from_pixbuf(pix, scale_factor, NULL);
-                g_value_init(value, CAIRO_GOBJECT_TYPE_SURFACE);
-                g_value_take_boxed(value, surface);
-                g_object_unref(pix);
+        case XFDESKTOP_ICON_VIEW_MODEL_COLUMN_IMAGE: {
+            GIcon *gicon = xfdesktop_file_icon_get_gicon(icon);
+            if (icon != NULL) {
+                g_value_init(value, G_TYPE_ICON);
+                g_value_set_object(value, gicon);
             }
             break;
         }
@@ -165,29 +149,11 @@ xfdesktop_file_icon_model_get_value(GtkTreeModel *model,
             break;
         }
 
-        case XFDESKTOP_ICON_VIEW_MODEL_COLUMN_TOOLTIP_SURFACE: {
-            gint tooltip_icon_size, scale_factor;
-
-            g_object_get(model,
-                         "tooltip-icon-size", &tooltip_icon_size,
-                         "scale-factor", &scale_factor,
-                         NULL);
-
-            if (tooltip_icon_size > 0) {
-                GdkPixbuf *pix = xfdesktop_icon_get_pixbuf(XFDESKTOP_ICON(icon),
-                                                           tooltip_icon_size,
-                                                           tooltip_icon_size,
-                                                           scale_factor);
-                if (pix != NULL) {
-                    cairo_surface_t *surface = gdk_cairo_surface_create_from_pixbuf(pix, scale_factor, NULL);
-                    if (cairo_surface_status(surface) != CAIRO_STATUS_SUCCESS) {
-                        g_warning("failed to create cairo surface: %d", cairo_surface_status(surface));
-                    } else {
-                        g_value_init(value, CAIRO_GOBJECT_TYPE_SURFACE);
-                        g_value_take_boxed(value, surface);
-                        g_object_unref(pix);
-                    }
-                }
+        case XFDESKTOP_ICON_VIEW_MODEL_COLUMN_TOOLTIP_IMAGE: {
+            GIcon *gicon = xfdesktop_file_icon_get_gicon(icon);
+            if (icon != NULL) {
+                g_value_init(value, G_TYPE_ICON);
+                g_value_set_object(value, gicon);
             }
             break;
         }

@@ -30,7 +30,6 @@
 #include <math.h>
 #endif
 
-#include <cairo-gobject.h>
 #include <gdk/gdk.h>
 #include <gdk/gdkkeysyms.h>
 #include <gtk/gtk.h>
@@ -129,7 +128,7 @@ enum
     PROP_TEXT_COLUMN,
     PROP_SEARCH_COLUMN,
     PROP_SORT_PRIORITY_COLUMN,
-    PROP_TOOLTIP_SURFACE_COLUMN,
+    PROP_TOOLTIP_ICON_COLUMN,
     PROP_TOOLTIP_TEXT_COLUMN,
     PROP_ROW_COLUMN,
     PROP_COL_COLUMN,
@@ -151,7 +150,6 @@ typedef struct
     GdkRectangle slot_extents;
 
     cairo_surface_t *pixbuf_surface;
-    cairo_surface_t *tooltip_surface;
 
     guint32 selected:1;
     guint32 placed:1;
@@ -232,9 +230,6 @@ view_item_free(ViewItem *item)
 {
     if (item->pixbuf_surface != NULL) {
         cairo_surface_destroy(item->pixbuf_surface);
-    }
-    if (item->tooltip_surface != NULL) {
-        cairo_surface_destroy(item->tooltip_surface);
     }
     g_free(item->cell_extents);
     g_slice_free(ViewItem, item);
@@ -381,11 +376,10 @@ struct _XfdesktopIconViewPrivate
 
     GtkTreeModel *model;
     gint pixbuf_column;
-    const gchar *pixbuf_column_attribute;
     gint text_column;
     gint search_column;
     gint sort_priority_column;
-    gint tooltip_surface_column;
+    gint tooltip_icon_column;
     gint tooltip_text_column;
     gint row_column;
     gint col_column;
@@ -464,6 +458,8 @@ struct _XfdesktopIconViewPrivate
     gboolean ellipsize_icon_labels;
 
     gboolean show_tooltips;
+    gint tooltip_icon_size_xfconf;
+    gint tooltip_icon_size_style;
 
     gboolean single_click;
     XfdesktopIconViewGravity gravity;
@@ -627,12 +623,17 @@ static void xfdesktop_screen_size_changed_cb(GdkScreen *gscreen,
 static inline gboolean xfdesktop_rectangle_contains_point(GdkRectangle *rect,
                                                           gint x,
                                                           gint y);
+
 static gboolean xfdesktop_icon_view_show_tooltip(GtkWidget *widget,
                                                  gint x,
                                                  gint y,
                                                  gboolean keyboard_tooltip,
                                                  GtkTooltip *tooltip,
                                                  gpointer user_data);
+static void xfdesktop_icon_view_xfconf_tooltip_icon_size_changed(XfconfChannel *channel,
+                                                                 const gchar *property,
+                                                                 const GValue *value,
+                                                                 XfdesktopIconView *icon_view);
 
 static void xfdesktop_icon_view_real_select_all(XfdesktopIconView *icon_view);
 static void xfdesktop_icon_view_real_unselect_all(XfdesktopIconView *icon_view);
@@ -1088,7 +1089,7 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
     DECL_COLUMN_PROP(PROP_TEXT_COLUMN, "text-column");
     DECL_COLUMN_PROP(PROP_SEARCH_COLUMN, "search-column");
     DECL_COLUMN_PROP(PROP_SORT_PRIORITY_COLUMN, "sort-priority-column");
-    DECL_COLUMN_PROP(PROP_TOOLTIP_SURFACE_COLUMN, "tooltip-surface-column");
+    DECL_COLUMN_PROP(PROP_TOOLTIP_ICON_COLUMN, "tooltip-icon-column");
     DECL_COLUMN_PROP(PROP_TOOLTIP_TEXT_COLUMN, "tooltip-text-column");
     DECL_COLUMN_PROP(PROP_ROW_COLUMN, "row-column");
     DECL_COLUMN_PROP(PROP_COL_COLUMN, "col-column");
@@ -1178,7 +1179,7 @@ xfdesktop_icon_view_init(XfdesktopIconView *icon_view)
     icon_view->priv->pixbuf_column = -1;
     icon_view->priv->text_column = -1;
     icon_view->priv->search_column = -1;
-    icon_view->priv->tooltip_surface_column = -1;
+    icon_view->priv->tooltip_icon_column = -1;
     icon_view->priv->tooltip_text_column = -1;
     icon_view->priv->row_column = -1;
     icon_view->priv->col_column = -1;
@@ -1187,8 +1188,10 @@ xfdesktop_icon_view_init(XfdesktopIconView *icon_view)
     icon_view->priv->font_size = DEFAULT_ICON_FONT_SIZE;
     icon_view->priv->font_size_set = DEFAULT_ICON_FONT_SIZE_SET;
     icon_view->priv->gravity = DEFAULT_GRAVITY;
-    icon_view->priv->show_tooltips = DEFAULT_SHOW_TOOLTIPS;
     icon_view->priv->icons_on_primary = DEFAULT_ICONS_ON_PRIMARY;
+    icon_view->priv->show_tooltips = DEFAULT_SHOW_TOOLTIPS;
+    icon_view->priv->tooltip_icon_size_xfconf = 0;
+    icon_view->priv->tooltip_icon_size_style = 0;
 
     icon_view->priv->allow_rubber_banding = TRUE;
 }
@@ -1215,6 +1218,9 @@ xfdesktop_icon_view_constructed(GObject *object)
     g_object_bind_property(icon_view, "show-tooltips", icon_view, "has-tooltip", G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE);
     g_signal_connect(G_OBJECT(icon_view), "query-tooltip",
                      G_CALLBACK(xfdesktop_icon_view_show_tooltip), NULL);
+    icon_view->priv->tooltip_icon_size_xfconf = xfconf_channel_get_double(icon_view->priv->channel, DESKTOP_ICONS_TOOLTIP_SIZE_PROP, 0);
+    g_signal_connect(icon_view->priv->channel, "property-changed::" DESKTOP_ICONS_TOOLTIP_SIZE_PROP,
+                     G_CALLBACK(xfdesktop_icon_view_xfconf_tooltip_icon_size_changed), icon_view);
 
     gtk_widget_set_has_window(GTK_WIDGET(icon_view), FALSE);
     gtk_widget_set_can_focus(GTK_WIDGET(icon_view), TRUE);
@@ -1304,8 +1310,8 @@ xfdesktop_icon_view_set_property(GObject *object,
             xfdesktop_icon_view_set_sort_priority_column(icon_view, g_value_get_int(value));
             break;
 
-        case PROP_TOOLTIP_SURFACE_COLUMN:
-            xfdesktop_icon_view_set_tooltip_surface_column(icon_view, g_value_get_int(value));
+        case PROP_TOOLTIP_ICON_COLUMN:
+            xfdesktop_icon_view_set_tooltip_icon_column(icon_view, g_value_get_int(value));
             break;
 
         case PROP_TOOLTIP_TEXT_COLUMN:
@@ -1391,8 +1397,8 @@ xfdesktop_icon_view_get_property(GObject *object,
             g_value_set_int(value, icon_view->priv->sort_priority_column);
             break;
 
-        case PROP_TOOLTIP_SURFACE_COLUMN:
-            g_value_set_int(value, icon_view->priv->tooltip_surface_column);
+        case PROP_TOOLTIP_ICON_COLUMN:
+            g_value_set_int(value, icon_view->priv->tooltip_icon_column);
             break;
 
         case PROP_TOOLTIP_TEXT_COLUMN:
@@ -1579,10 +1585,6 @@ xfdesktop_icon_view_invalidate_pixbuf_cache(XfdesktopIconView *icon_view)
         if (item->pixbuf_surface != NULL) {
             cairo_surface_destroy(item->pixbuf_surface);
             item->pixbuf_surface = NULL;
-        }
-        if (item->tooltip_surface != NULL) {
-            cairo_surface_destroy(item->tooltip_surface);
-            item->tooltip_surface = NULL;
         }
     }
 }
@@ -2125,21 +2127,14 @@ xfdesktop_icon_view_show_tooltip(GtkWidget *widget,
                   &iter, x, y, keyboard_tooltip, tooltip,
                   &result);
 
-    if (!result && (icon_view->priv->tooltip_surface_column != -1 || icon_view->priv->tooltip_text_column != -1)) {
-        cairo_surface_t *surface = NULL;
+    if (!result && (icon_view->priv->tooltip_icon_column != -1 || icon_view->priv->tooltip_text_column != -1)) {
+        GIcon *icon = NULL;
         gchar *tip_text = NULL;
 
-        if (icon_view->priv->tooltip_surface_column != -1) {
-            if (icon_view->priv->item_under_pointer->tooltip_surface != NULL) {
-                surface = cairo_surface_reference(icon_view->priv->item_under_pointer->tooltip_surface);
-            } else {
-                gtk_tree_model_get(icon_view->priv->model, &iter,
-                                   icon_view->priv->tooltip_surface_column, &surface,
-                                   -1);
-                if (surface != NULL) {
-                    icon_view->priv->item_under_pointer->tooltip_surface = cairo_surface_reference(surface);
-                }
-            }
+        if (icon_view->priv->tooltip_icon_column != -1) {
+            gtk_tree_model_get(icon_view->priv->model, &iter,
+                               icon_view->priv->tooltip_icon_column, &icon,
+                               -1);
         }
 
         if (icon_view->priv->tooltip_text_column != -1) {
@@ -2148,12 +2143,13 @@ xfdesktop_icon_view_show_tooltip(GtkWidget *widget,
                                -1);
         }
 
-        if (surface != NULL || tip_text != NULL) {
+        if (icon != NULL || tip_text != NULL) {
             GtkWidget *box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 8);
 
-            if (surface != NULL) {
-                GtkWidget *img = gtk_image_new_from_surface(surface);
-                cairo_surface_destroy(surface);
+            if (icon != NULL) {
+                GtkWidget *img = gtk_image_new_from_gicon(icon, GTK_ICON_SIZE_DIALOG);
+                gtk_image_set_pixel_size(GTK_IMAGE(img), xfdesktop_icon_view_get_tooltip_icon_size(icon_view));
+                g_object_unref(icon);
                 gtk_box_pack_start(GTK_BOX(box), img, FALSE, FALSE, 0);
             }
 
@@ -2176,6 +2172,15 @@ xfdesktop_icon_view_show_tooltip(GtkWidget *widget,
     }
 
     return result;
+}
+
+static void
+xfdesktop_icon_view_xfconf_tooltip_icon_size_changed(XfconfChannel *channel,
+                                                     const gchar *property,
+                                                     const GValue *value,
+                                                     XfdesktopIconView *icon_view)
+{
+    icon_view->priv->tooltip_icon_size_xfconf = g_value_get_double(value);
 }
 
 static gboolean
@@ -2377,25 +2382,27 @@ xfdesktop_icon_view_get_surface_for_item(XfdesktopIconView *icon_view,
             GtkTreeIter iter;
 
             if (view_item_get_iter(item, icon_view->priv->model, &iter)) {
-                GType column_type = gtk_tree_model_get_column_type(icon_view->priv->model,
-                                                                   icon_view->priv->pixbuf_column);
-                if (g_type_is_a(column_type, GDK_TYPE_PIXBUF)) {
-                    GdkPixbuf *pix = NULL;
-                    gtk_tree_model_get(icon_view->priv->model, &iter,
-                                       icon_view->priv->pixbuf_column, &pix,
-                                       -1);
-                    if (pix != NULL) {
-                        surface = gdk_cairo_surface_create_from_pixbuf(pix,
-                                                                       gtk_widget_get_scale_factor(GTK_WIDGET(icon_view)),
-                                                                       gtk_widget_get_window(GTK_WIDGET(icon_view)));
-                        g_object_unref(pix);
+                GIcon *icon = NULL;
+                gtk_tree_model_get(icon_view->priv->model, &iter,
+                                   icon_view->priv->pixbuf_column, &icon,
+                                   -1);
+                if (icon != NULL) {
+                    GtkIconInfo *icon_info = gtk_icon_theme_lookup_by_gicon_for_scale(gtk_icon_theme_get_default(),
+                                                                                      icon,
+                                                                                      ICON_SIZE,
+                                                                                      gtk_widget_get_scale_factor(GTK_WIDGET(icon_view)),
+                                                                                      GTK_ICON_LOOKUP_FORCE_SIZE);
+                    if (icon_info != NULL) {
+                        GdkPixbuf *pix = gtk_icon_info_load_icon(icon_info, NULL);
+                        if (pix != NULL) {
+                            surface = gdk_cairo_surface_create_from_pixbuf(pix,
+                                                                           gtk_widget_get_scale_factor(GTK_WIDGET(icon_view)),
+                                                                           gtk_widget_get_window(GTK_WIDGET(icon_view)));
+                            g_object_unref(pix);
+                        }
+                        g_object_unref(icon_info);
                     }
-                } else if (g_type_is_a(column_type, CAIRO_GOBJECT_TYPE_SURFACE)) {
-                    gtk_tree_model_get(icon_view->priv->model, &iter,
-                                       icon_view->priv->pixbuf_column, &surface,
-                                       -1);
-                } else {
-                    g_assert_not_reached();
+                    g_object_unref(icon);
                 }
             }
 
@@ -2942,6 +2949,7 @@ xfdesktop_icon_view_style_updated(GtkWidget *widget)
                          "cell-text-width-proportion", &cell_text_width_proportion,
                          "ellipsize-icon-labels", &icon_view->priv->ellipsize_icon_labels,
                          "label-radius", &icon_view->priv->label_radius,
+                         "tooltip-size", &icon_view->priv->tooltip_icon_size_style,
                          NULL);
 
     if (cell_text_width_proportion != icon_view->priv->cell_text_width_proportion) {
@@ -3267,28 +3275,32 @@ xfdesktop_icon_view_set_cell_properties(XfdesktopIconView *icon_view,
 
         for (GSList *al = cell_info->attributes; al != NULL; al = al->next) {
             AttrPair *attr_pair = (AttrPair *)al->data;
-            GtkTreeIter iter;
-            GValue value = G_VALUE_INIT;
-            gboolean is_pixbuf_surface = attr_pair->column == icon_view->priv->pixbuf_column
-                && g_strcmp0(attr_pair->attribute, "surface") == 0;
+            gboolean is_pixbuf_gicon = attr_pair->column == icon_view->priv->pixbuf_column
+                && g_strcmp0(attr_pair->attribute, "gicon") == 0;
 
-            if (is_pixbuf_surface && item->pixbuf_surface != NULL) {
-                g_value_init(&value, CAIRO_GOBJECT_TYPE_SURFACE);
-                g_value_set_boxed(&value, item->pixbuf_surface);
+            if (is_pixbuf_gicon) {
+                cairo_surface_t *surface = xfdesktop_icon_view_get_surface_for_item(icon_view, item);
+
+                g_object_set(cell_info->renderer,
+                             "surface", surface,
+                             NULL);
+
+                if (G_LIKELY(surface != NULL)) {
+                    cairo_surface_destroy(surface);
+                }
             } else {
+                GtkTreeIter iter;
+                GValue value = G_VALUE_INIT;
+
                 if (view_item_get_iter(item, icon_view->priv->model, &iter)) {
                     gtk_tree_model_get_value(icon_view->priv->model, &iter, attr_pair->column, &value);
-
-                    if (is_pixbuf_surface) {
-                        item->pixbuf_surface = g_value_dup_boxed(&value);
-                    }
                 } else {
                     g_value_init(&value, G_TYPE_NONE);
                 }
-            }
 
-            g_object_set_property(G_OBJECT(cell_info->renderer), attr_pair->attribute, &value);
-            g_value_unset(&value);
+                g_object_set_property(G_OBJECT(cell_info->renderer), attr_pair->attribute, &value);
+                g_value_unset(&value);
+            }
         }
     }
 }
@@ -3302,23 +3314,21 @@ xfdesktop_icon_view_unset_cell_properties(XfdesktopIconView *icon_view)
 
         for (GSList *al = cell_info->attributes; al != NULL; al = al->next) {
             AttrPair *attr_pair = (AttrPair *)al->data;
-            GParamSpec *pspec;
+            gboolean is_pixbuf_gicon = attr_pair->column == icon_view->priv->pixbuf_column
+                && g_strcmp0(attr_pair->attribute, "gicon") == 0;
 
-            pspec = g_object_class_find_property(cell_class, attr_pair->attribute);
-            if (pspec != NULL && (G_IS_PARAM_SPEC_OBJECT(pspec) || G_IS_PARAM_SPEC_BOXED(pspec))) {
-                GValue value = G_VALUE_INIT;
+            if (is_pixbuf_gicon) {
+                g_object_set(cell_info->renderer,
+                             "surface", NULL,
+                             NULL);
+            } else {
+                GParamSpec *pspec = g_object_class_find_property(cell_class, attr_pair->attribute);
 
-                g_value_init(&value, pspec->value_type);
-                if (G_IS_PARAM_SPEC_OBJECT(pspec)) {
-                    g_value_set_object(&value, NULL);
-                } else if (G_IS_PARAM_SPEC_BOXED(pspec)) {
-                    g_value_set_boxed(&value, NULL);
-                } else {
-                    g_assert_not_reached();
+                if (pspec != NULL && (G_IS_PARAM_SPEC_OBJECT(pspec) || G_IS_PARAM_SPEC_BOXED(pspec) || G_IS_PARAM_SPEC_POINTER(pspec))) {
+                    g_object_set(cell_info->renderer,
+                                 attr_pair->attribute, NULL,
+                                 NULL);
                 }
-
-                g_object_set_property(G_OBJECT(cell_info->renderer), attr_pair->attribute, &value);
-                g_value_unset(&value);
             }
         }
     }
@@ -4476,10 +4486,10 @@ xfdesktop_icon_view_init_builtin_cell_renderers(XfdesktopIconView *icon_view)
     g_return_if_fail(icon_view->priv->pixbuf_renderer != NULL);
     g_return_if_fail(icon_view->priv->text_renderer != NULL);
 
-    if (icon_view->priv->pixbuf_column != -1 && icon_view->priv->pixbuf_column_attribute != NULL) {
+    if (icon_view->priv->pixbuf_column != -1) {
         gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(icon_view),
                                       icon_view->priv->pixbuf_renderer,
-                                      icon_view->priv->pixbuf_column_attribute,
+                                      "gicon",
                                       icon_view->priv->pixbuf_column);
     }
 
@@ -4631,10 +4641,6 @@ xfdesktop_icon_view_model_row_changed(GtkTreeModel *model,
             cairo_surface_destroy(item->pixbuf_surface);
             item->pixbuf_surface = NULL;
         }
-        if (item->tooltip_surface != NULL) {
-            cairo_surface_destroy(item->tooltip_surface);
-            item->tooltip_surface = NULL;
-        }
         xfdesktop_icon_view_invalidate_item(icon_view, item, TRUE);
     }
 }
@@ -4711,80 +4717,31 @@ xfdesktop_icon_view_new_with_model(XfconfChannel *channel,
                         NULL);
 }
 
-static void
-update_pixbuf_column_attribute(XfdesktopIconView *icon_view,
-                               GType pixbuf_column_type)
-{
-    const gchar *old_value = icon_view->priv->pixbuf_column_attribute;
-
-    if (pixbuf_column_type == CAIRO_GOBJECT_TYPE_SURFACE) {
-        icon_view->priv->pixbuf_column_attribute = "surface";
-    } else if (pixbuf_column_type == GDK_TYPE_PIXBUF) {
-        icon_view->priv->pixbuf_column_attribute = "pixbuf";
-    } else if (pixbuf_column_type == G_TYPE_NONE) {
-        icon_view->priv->pixbuf_column_attribute = NULL;
-    } else {
-        g_assert_not_reached();
-    }
-
-    if (g_strcmp0(old_value, icon_view->priv->pixbuf_column_attribute) != 0) {
-        if (icon_view->priv->pixbuf_renderer != NULL) {
-            gtk_cell_layout_clear_attributes(GTK_CELL_LAYOUT(icon_view), icon_view->priv->pixbuf_renderer);
-            if (icon_view->priv->pixbuf_column != -1 && icon_view->priv->pixbuf_column_attribute != NULL) {
-                gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(icon_view), icon_view->priv->pixbuf_renderer,
-                                              icon_view->priv->pixbuf_column_attribute, icon_view->priv->pixbuf_column);
-            }
-            xfdesktop_icon_view_invalidate_all(icon_view, TRUE);
-        }
-    }
-}
-
 static gboolean
 xfdesktop_icon_view_validate_column_type(XfdesktopIconView *icon_view,
                                          GtkTreeModel *model,
                                          gint column,
                                          GType required_type,
-                                         GType other_required_type,
-                                         const gchar *property_name,
-                                         GType *out_actual_type)
+                                         const gchar *property_name)
 {
-    GType actual_type = G_TYPE_NONE;
-    GType model_col_type;
-
     if (column == -1) {
         return TRUE;
-    }
-
-    model_col_type = gtk_tree_model_get_column_type(model, column);
-    if (g_type_is_a(model_col_type, required_type)) {
-        actual_type = required_type;
-    } else if (other_required_type != G_TYPE_NONE && g_type_is_a(model_col_type, other_required_type)) {
-        actual_type = other_required_type;
     } else {
-        if (G_LIKELY(other_required_type == G_TYPE_NONE)) {
+        GType model_col_type = gtk_tree_model_get_column_type(model, column);
+        if (!g_type_is_a(model_col_type, required_type)) {
             g_warning("XfdesktopIconView requires %s to be of type %s, but got %s",
                       property_name, g_type_name(required_type), g_type_name(model_col_type));
+            return FALSE;
         } else {
-            g_warning("XfdesktopIconView requires %s to be of type %s or %s, but got %s",
-                      property_name, g_type_name(required_type), g_type_name(other_required_type),
-                      g_type_name(model_col_type));
+            return TRUE;
         }
-        return FALSE;
     }
-
-    if (out_actual_type != NULL) {
-        *out_actual_type = actual_type;
-    }
-
-    return TRUE;
 }
 
 void
 xfdesktop_icon_view_set_model(XfdesktopIconView *icon_view,
                               GtkTreeModel *model)
 {
-    GType pixbuf_column_type = G_TYPE_NONE;
-
     g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view));
     g_return_if_fail(model == NULL || GTK_IS_TREE_MODEL(model));
 
@@ -4793,13 +4750,13 @@ xfdesktop_icon_view_set_model(XfdesktopIconView *icon_view,
     }
 
     if (model != NULL) {
-        if (!xfdesktop_icon_view_validate_column_type(icon_view, model, icon_view->priv->pixbuf_column, CAIRO_GOBJECT_TYPE_SURFACE, GDK_TYPE_PIXBUF, "pixbuf-column", &pixbuf_column_type)
-            || !xfdesktop_icon_view_validate_column_type(icon_view, model, icon_view->priv->text_column, G_TYPE_STRING, G_TYPE_NONE, "text-column", NULL)
-            || !xfdesktop_icon_view_validate_column_type(icon_view, model, icon_view->priv->search_column, G_TYPE_STRING, G_TYPE_NONE, "search-column", NULL)
-            || !xfdesktop_icon_view_validate_column_type(icon_view, model, icon_view->priv->tooltip_surface_column, CAIRO_GOBJECT_TYPE_SURFACE, G_TYPE_NONE, "tooltip-surface-column", NULL)
-            || !xfdesktop_icon_view_validate_column_type(icon_view, model, icon_view->priv->tooltip_text_column, G_TYPE_STRING, G_TYPE_NONE, "tooltip-text-column", NULL)
-            || !xfdesktop_icon_view_validate_column_type(icon_view, model, icon_view->priv->row_column, G_TYPE_INT, G_TYPE_NONE, "row-column", NULL)
-            || !xfdesktop_icon_view_validate_column_type(icon_view, model, icon_view->priv->col_column, G_TYPE_INT, G_TYPE_NONE, "col-column", NULL))
+        if (!xfdesktop_icon_view_validate_column_type(icon_view, model, icon_view->priv->pixbuf_column, G_TYPE_ICON, "pixbuf-column")
+            || !xfdesktop_icon_view_validate_column_type(icon_view, model, icon_view->priv->text_column, G_TYPE_STRING, "text-column")
+            || !xfdesktop_icon_view_validate_column_type(icon_view, model, icon_view->priv->search_column, G_TYPE_STRING, "search-column")
+            || !xfdesktop_icon_view_validate_column_type(icon_view, model, icon_view->priv->tooltip_icon_column, G_TYPE_ICON, "tooltip-icon-column")
+            || !xfdesktop_icon_view_validate_column_type(icon_view, model, icon_view->priv->tooltip_text_column, G_TYPE_STRING, "tooltip-text-column")
+            || !xfdesktop_icon_view_validate_column_type(icon_view, model, icon_view->priv->row_column, G_TYPE_INT, "row-column")
+            || !xfdesktop_icon_view_validate_column_type(icon_view, model, icon_view->priv->col_column, G_TYPE_INT, "col-column"))
         {
             return;
         }
@@ -4810,23 +4767,11 @@ xfdesktop_icon_view_set_model(XfdesktopIconView *icon_view,
             xfdesktop_icon_view_disconnect_model_signals(icon_view);
         }
         xfdesktop_icon_view_items_free(icon_view);
-
-        if (model == NULL) {
-            // Only update this if we're not setting a new model in order to avoid
-            // resetting the cell renderer attribute if the pixbuf types are the same
-            icon_view->priv->pixbuf_column_attribute = NULL;
-            if (icon_view->priv->pixbuf_renderer != NULL) {
-                gtk_cell_layout_clear_attributes(GTK_CELL_LAYOUT(icon_view), icon_view->priv->pixbuf_renderer);
-            }
-        }
-
         g_clear_object(&icon_view->priv->model);
     }
 
     if (model != NULL) {
         icon_view->priv->model = g_object_ref(model);
-
-        update_pixbuf_column_attribute(icon_view, pixbuf_column_type);
 
         if (gtk_widget_get_realized(GTK_WIDGET(icon_view))) {
             xfdesktop_icon_view_connect_model_signals(icon_view);
@@ -4853,55 +4798,50 @@ xfdesktop_icon_view_set_column(XfdesktopIconView *icon_view,
                                gint column,
                                gint *column_store_location,
                                GType required_type,
-                               GType other_required_type,
-                               const gchar *property_name,
-                               GType *actual_type)
+                               const gchar *property_name)
 {
     g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view), FALSE);
     g_return_val_if_fail(column >= -1, FALSE);
 
     if (*column_store_location == column) {
         return FALSE;
+    } else if (icon_view->priv->model != NULL
+               && !xfdesktop_icon_view_validate_column_type(icon_view,
+                                                            icon_view->priv->model,
+                                                            column,
+                                                            required_type,
+                                                            property_name))
+    {
+        return FALSE;
+    } else {
+        *column_store_location = column;
+        g_object_notify(G_OBJECT(icon_view), property_name);
+        return TRUE;
     }
-
-    if (icon_view->priv->model != NULL) {
-        if (!xfdesktop_icon_view_validate_column_type(icon_view,
-                                                      icon_view->priv->model,
-                                                      column,
-                                                      required_type,
-                                                      other_required_type,
-                                                      property_name,
-                                                      actual_type))
-        {
-            return FALSE;
-        }
-    }
-
-    *column_store_location = column;
-
-    g_object_notify(G_OBJECT(icon_view), property_name);
-
-    return TRUE;
 }
-
 
 void
 xfdesktop_icon_view_set_pixbuf_column(XfdesktopIconView *icon_view,
                                       gint column)
 {
-    GType pixbuf_column_type = G_TYPE_NONE;
     gboolean changed;
 
     // Delay notify for pixbuf-column until after we set up the column
     g_object_freeze_notify(G_OBJECT(icon_view));
 
-    changed = xfdesktop_icon_view_set_column(icon_view, column, &icon_view->priv->pixbuf_column, CAIRO_GOBJECT_TYPE_SURFACE, GDK_TYPE_PIXBUF, "pixbuf-column", &pixbuf_column_type);
-    if (changed) {
-        update_pixbuf_column_attribute(icon_view, pixbuf_column_type);
+    changed = xfdesktop_icon_view_set_column(icon_view, column, &icon_view->priv->pixbuf_column, G_TYPE_ICON, "pixbuf-column");
+    if (changed && icon_view->priv->pixbuf_renderer != NULL) {
+        gtk_cell_layout_clear_attributes(GTK_CELL_LAYOUT(icon_view), icon_view->priv->pixbuf_renderer);
+        if (icon_view->priv->pixbuf_column != -1) {
+            gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(icon_view), icon_view->priv->pixbuf_renderer,
+                                          "gicon", icon_view->priv->pixbuf_column);
+        }
+        xfdesktop_icon_view_invalidate_all(icon_view, TRUE);
     }
 
     g_object_thaw_notify(G_OBJECT(icon_view));
 }
+
 void
 xfdesktop_icon_view_set_text_column(XfdesktopIconView *icon_view,
                                     gint column)
@@ -4911,7 +4851,7 @@ xfdesktop_icon_view_set_text_column(XfdesktopIconView *icon_view,
     // Delay notify for text-column until after we set up the column
     g_object_freeze_notify(G_OBJECT(icon_view));
 
-    changed = xfdesktop_icon_view_set_column(icon_view, column, &icon_view->priv->text_column, G_TYPE_STRING, G_TYPE_NONE, "text-column", NULL);
+    changed = xfdesktop_icon_view_set_column(icon_view, column, &icon_view->priv->text_column, G_TYPE_STRING, "text-column");
     if (changed && icon_view->priv->text_renderer != NULL) {
         gtk_cell_layout_clear_attributes(GTK_CELL_LAYOUT(icon_view), icon_view->priv->text_renderer);
         if (icon_view->priv->text_column != -1) {
@@ -4928,42 +4868,42 @@ void
 xfdesktop_icon_view_set_search_column(XfdesktopIconView *icon_view,
                                       gint column)
 {
-    xfdesktop_icon_view_set_column(icon_view, column, &icon_view->priv->search_column, G_TYPE_STRING, G_TYPE_NONE, "search-column", NULL);
+    xfdesktop_icon_view_set_column(icon_view, column, &icon_view->priv->search_column, G_TYPE_STRING, "search-column");
 }
 
 void
 xfdesktop_icon_view_set_sort_priority_column(XfdesktopIconView *icon_view,
                                              gint column)
 {
-    xfdesktop_icon_view_set_column(icon_view, column, &icon_view->priv->sort_priority_column, G_TYPE_INT, G_TYPE_NONE, "sort-priority-column", NULL);
+    xfdesktop_icon_view_set_column(icon_view, column, &icon_view->priv->sort_priority_column, G_TYPE_INT, "sort-priority-column");
 }
 
 void
-xfdesktop_icon_view_set_tooltip_surface_column(XfdesktopIconView *icon_view,
+xfdesktop_icon_view_set_tooltip_icon_column(XfdesktopIconView *icon_view,
                                                gint column)
 {
-    xfdesktop_icon_view_set_column(icon_view, column, &icon_view->priv->tooltip_surface_column, CAIRO_GOBJECT_TYPE_SURFACE, G_TYPE_NONE, "tooltip-surface-column", NULL);
+    xfdesktop_icon_view_set_column(icon_view, column, &icon_view->priv->tooltip_icon_column, G_TYPE_ICON, "tooltip-icon-column");
 }
 
 void
 xfdesktop_icon_view_set_tooltip_text_column(XfdesktopIconView *icon_view,
                                             gint column)
 {
-    xfdesktop_icon_view_set_column(icon_view, column, &icon_view->priv->tooltip_text_column, G_TYPE_STRING, G_TYPE_NONE, "tooltip-text-column", NULL);
+    xfdesktop_icon_view_set_column(icon_view, column, &icon_view->priv->tooltip_text_column, G_TYPE_STRING, "tooltip-text-column");
 }
 
 void
 xfdesktop_icon_view_set_row_column(XfdesktopIconView *icon_view,
                                    gint column)
 {
-    xfdesktop_icon_view_set_column(icon_view, column, &icon_view->priv->row_column, G_TYPE_INT, G_TYPE_NONE, "row-column", NULL);
+    xfdesktop_icon_view_set_column(icon_view, column, &icon_view->priv->row_column, G_TYPE_INT, "row-column");
 }
 
 void
 xfdesktop_icon_view_set_col_column(XfdesktopIconView *icon_view,
                                    gint column)
 {
-    xfdesktop_icon_view_set_column(icon_view, column, &icon_view->priv->col_column, G_TYPE_INT, G_TYPE_NONE, "col-column", NULL);
+    xfdesktop_icon_view_set_column(icon_view, column, &icon_view->priv->col_column, G_TYPE_INT, "col-column");
 }
 
 void
@@ -5460,6 +5400,21 @@ xfdesktop_icon_view_set_show_tooltips(XfdesktopIconView *icon_view,
     icon_view->priv->show_tooltips = show_tooltips;
     g_object_notify(G_OBJECT(icon_view), "show-tooltips");
 }
+
+gint
+xfdesktop_icon_view_get_tooltip_icon_size(XfdesktopIconView *icon_view)
+{
+    g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view), DEFAULT_TOOLTIP_ICON_SIZE);
+
+    if (icon_view->priv->tooltip_icon_size_xfconf > 0) {
+        return icon_view->priv->tooltip_icon_size_xfconf;
+    } else if (icon_view->priv->tooltip_icon_size_style > 0) {
+        return icon_view->priv->tooltip_icon_size_style;
+    } else {
+        return DEFAULT_TOOLTIP_ICON_SIZE;
+    }
+}
+
 
 GtkWidget *
 xfdesktop_icon_view_get_window_widget(XfdesktopIconView *icon_view)

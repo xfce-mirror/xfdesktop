@@ -67,8 +67,6 @@ GtkWidget *xfdesktop_icon_view_manager_get_parent(XfdesktopIconViewManager *mana
 GtkFixed *xfdesktop_icon_view_manager_get_container(XfdesktopIconViewManager *manager);
 XfconfChannel *xfdesktop_icon_view_manager_get_channel(XfdesktopIconViewManager *manager);
 
-gint xfdesktop_icon_view_manager_get_tooltip_icon_size(XfdesktopIconViewManager *manager,
-                                                       GtkWidget *icon_view);
 gboolean xfdesktop_icon_view_manager_get_show_icons_on_primary(XfdesktopIconViewManager *manager);
 
 void xfdesktop_icon_view_manager_get_workarea(XfdesktopIconViewManager *manager,

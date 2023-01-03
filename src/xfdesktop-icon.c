@@ -115,22 +115,6 @@ xfdesktop_icon_get_position(XfdesktopIcon *icon,
 }
 
 /*< required >*/
-GdkPixbuf *
-xfdesktop_icon_get_pixbuf(XfdesktopIcon *icon,
-                          gint width,
-                          gint height,
-                          gint scale)
-{
-    XfdesktopIconClass *klass;
-
-    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), NULL);
-    klass = XFDESKTOP_ICON_GET_CLASS(icon);
-    g_return_val_if_fail(klass->get_pixbuf, NULL);
-
-    return klass->get_pixbuf(icon, width, height, scale);
-}
-
-/*< required >*/
 const gchar *
 xfdesktop_icon_peek_label(XfdesktopIcon *icon)
 {

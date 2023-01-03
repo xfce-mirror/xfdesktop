@@ -33,12 +33,12 @@ G_BEGIN_DECLS
 
 typedef enum
 {
-    XFDESKTOP_ICON_VIEW_MODEL_COLUMN_SURFACE,
+    XFDESKTOP_ICON_VIEW_MODEL_COLUMN_IMAGE,
     XFDESKTOP_ICON_VIEW_MODEL_COLUMN_LABEL,
     XFDESKTOP_ICON_VIEW_MODEL_COLUMN_ROW,
     XFDESKTOP_ICON_VIEW_MODEL_COLUMN_COL,
     XFDESKTOP_ICON_VIEW_MODEL_COLUMN_SORT_PRIORITY,
-    XFDESKTOP_ICON_VIEW_MODEL_COLUMN_TOOLTIP_SURFACE,
+    XFDESKTOP_ICON_VIEW_MODEL_COLUMN_TOOLTIP_IMAGE,
     XFDESKTOP_ICON_VIEW_MODEL_COLUMN_TOOLTIP_TEXT,
 
     XFDESKTOP_ICON_VIEW_MODEL_COLUMN_N_COLUMNS,
@@ -69,15 +69,6 @@ struct _XfdesktopIconViewModelClass
 GType xfdesktop_icon_view_model_get_type(void) G_GNUC_CONST;
 
 XfdesktopIconViewModel *xfdesktop_icon_view_model_new(void);
-
-void xfdesktop_icon_view_model_set_icon_width(XfdesktopIconViewModel *fmodel,
-                                              gint width);
-void xfdesktop_icon_view_model_set_icon_height(XfdesktopIconViewModel *fmodel,
-                                               gint height);
-void xfdesktop_icon_view_model_set_tooltip_icon_size(XfdesktopIconViewModel *fmodel,
-                                                     gint size);
-void xfdesktop_icon_view_model_set_scale_factor(XfdesktopIconViewModel *fmodel,
-                                                gint scale_factor);
 
 void xfdesktop_icon_view_model_append(XfdesktopIconViewModel *ivmodel,
                                       gpointer key,

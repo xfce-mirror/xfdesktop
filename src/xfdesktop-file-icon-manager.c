@@ -565,11 +565,11 @@ xfdesktop_file_icon_manager_constructed(GObject *obj)
 
     fmanager->priv->icon_view = g_object_new(XFDESKTOP_TYPE_ICON_VIEW,
                                              "channel", channel,
-                                             "pixbuf-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_SURFACE,
+                                             "pixbuf-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_IMAGE,
                                              "text-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_LABEL,
                                              "search-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_LABEL,
                                              "sort-priority-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_SORT_PRIORITY,
-                                             "tooltip-surface-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_TOOLTIP_SURFACE,
+                                             "tooltip-icon-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_TOOLTIP_IMAGE,
                                              "tooltip-text-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_TOOLTIP_TEXT,
                                              "row-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_ROW,
                                              "col-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_COL,
@@ -628,18 +628,6 @@ xfdesktop_file_icon_manager_constructed(GObject *obj)
     }
 
     fmanager->priv->model = xfdesktop_file_icon_model_new();
-    g_object_bind_property(fmanager->priv->icon_view, "icon-width",
-                           fmanager->priv->model, "icon-width",
-                           G_BINDING_SYNC_CREATE);
-    g_object_bind_property(fmanager->priv->icon_view, "icon-height",
-                           fmanager->priv->model, "icon-height",
-                           G_BINDING_SYNC_CREATE);
-    g_object_bind_property(fmanager->priv->icon_view, "scale-factor",
-                           fmanager->priv->model, "scale-factor",
-                           G_BINDING_SYNC_CREATE);
-    g_object_bind_property(fmanager, "tooltip-icon-size",
-                           fmanager->priv->model, "tooltip-icon-size",
-                           G_BINDING_SYNC_CREATE);
 
     for (gsize i = 0; i < G_N_ELEMENTS(setting_bindings); ++i) {
         xfconf_g_property_bind(channel,
