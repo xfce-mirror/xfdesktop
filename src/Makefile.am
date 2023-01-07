@@ -80,6 +80,7 @@ xfdesktop_CFLAGS = \
         $(GLIB_CFLAGS) \
 	$(GTHREAD_CFLAGS) \
         $(GTK_CFLAGS) \
+    $(PIXMAN_CFLAGS) \
 	$(LIBNOTIFY_CFLAGS) \
 	$(LIBX11_CFLAGS) \
 	$(LIBXFCE4UTIL_CFLAGS) \
@@ -101,6 +102,7 @@ xfdesktop_LDADD += \
         $(GLIB_LIBS) \
 	$(GTHREAD_LIBS) \
         $(GTK_LIBS) \
+    $(PIXMAN_LIBS) \
 	$(LIBNOTIFY_LIBS) \
 	$(LIBX11_LDFLAGS) \
 	$(LIBX11_LIBS) \
