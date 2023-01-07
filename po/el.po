@@ -5,17 +5,17 @@
 # 
 # Translators:
 # Nick Schermer <nick@xfce.org>, 2022
-# Ioannis LM, 2022
 # Xfce Bot <transifex@xfce.org>, 2022
+# Ioannis LM, 2023
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-22 12:24+0100\n"
+"POT-Creation-Date: 2022-12-22 13:11+0100\n"
 "PO-Revision-Date: 2022-12-22 11:24+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>, 2022\n"
+"Last-Translator: Ioannis LM, 2023\n"
 "Language-Team: Greek (https://www.transifex.com/xfce/teams/16840/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -120,8 +120,7 @@ msgstr ""
 #: ../settings/main.c:1243
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr ""
-"Η επιλογή εικόνας δεν είναι διαθέσιμη όταν το στυλ εικόνας έχει οριστεί σε "
-"«Κανένα»."
+"Η επιλογή εικόνας δεν είναι διαθέσιμη όταν το στυλ έχει οριστεί σε Κανένα."
 
 #: ../settings/main.c:1603
 msgid "Spanning screens"
@@ -468,7 +467,7 @@ msgstr "Ενεργοποίηση της επιλογής \"Διαγραφή\" σ
 
 #: ../settings/xfdesktop-settings-ui.glade.h:23
 msgid "Include applications menu on _desktop right click"
-msgstr "Εμφάνιση μενού εφαρμογών στο _δεξί κλικ στην επιφάνεια εργασίας"
+msgstr "Προσθήκη του μενού εφαρμογών στο _δεξί κλικ στην επιφάνεια εργασίας"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:24
 msgid "_Button:"
@@ -480,7 +479,7 @@ msgstr "Πλήκτρο εναλλα_γής:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:26
 msgid "Show _application icons in menu"
-msgstr "Εμφάνιση εικονιδίων εφ_αρμογών στο μενού"
+msgstr "Εμφάνιση εικονιδίων στο μενού εφ_αρμογών"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "_Edit desktop menu"
@@ -504,7 +503,7 @@ msgstr "Πλήκτρο εναλλα_γής:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:32
 msgid "Sh_ow application icons in menu"
-msgstr "Εμφάνιση εικ_ονιδίων εφαρμογών στο μενού"
+msgstr "Εμφάνιση εικ_ονιδίων στο μενού εφαρμογών"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:33
 msgid "Show workspace _names in list"
@@ -512,7 +511,7 @@ msgstr "Εμφάνιση ο_νομάτων των χώρων εργασίας σ
 
 #: ../settings/xfdesktop-settings-ui.glade.h:34
 msgid "Use _submenus for the windows in each workspace"
-msgstr "Χρή_ση υπομενού στα παράθυρα για κάθε χώρο εργασίας"
+msgstr "Χρή_ση υπομενού για τα παράθυρα σε κάθε χώρο εργασίας"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:35
 msgid "Show s_ticky windows only in active workspace"
@@ -521,7 +520,7 @@ msgstr "Εμφάνιση συ_γκόλλησης παραθύρων μόνο σ�
 #: ../settings/xfdesktop-settings-ui.glade.h:36
 msgid "Show a_dd and remove workspace options in list"
 msgstr ""
-"Εμφάνιση των επιλογών _προσθήκης και αφαίρεσης των χώρων εργασίας στη λίστα"
+"Εμφάνιση των επιλογών _προσθήκης και αφαίρεσης χώρων εργασίας στη λίστα"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:37
 msgid "<b>Window List Menu</b>"
@@ -545,7 +544,7 @@ msgstr "48"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:42
 msgid "Icons _orientation:"
-msgstr "Διάτα_ξη εικονιδίων"
+msgstr "Διάτα_ξη εικονιδίων:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:43
 msgid "Show icons on primary display"
@@ -561,11 +560,11 @@ msgstr "12"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:46
 msgid "Show icon tooltips. Size:"
-msgstr "Εμφάνιση επεξήγησης εικονιδίων. Μέγεθος:"
+msgstr "Εμφάνιση αναδυόμενου κειμένου στα εικονιδία. Μέγεθος:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:47
 msgid "Size of the tooltip preview image."
-msgstr "Μέγεθος ετικέτας προεπισκόπησης εικόνας."
+msgstr "Μέγεθος εικόνας αναδυόμενου κειμένου."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:48
 msgid "64"
@@ -580,12 +579,12 @@ msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
 msgstr ""
-"Επιλέξτε το για να εμφανίζονται μικρογραφίες στα εικονίδια των αρχείων με "
+"Επιλέξτε το για να εμφανίζονται εικονίδια μικρογραφιών στα αρχεία με "
 "δυνατότητα επισκόπησης."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:51
 msgid "Show hidden files on the desktop"
-msgstr "Εμφάνιση κρυφών αρχείων"
+msgstr "Εμφάνιση κρυφών αρχείων στην επιφάνεια εργασίας"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:52
 msgid "Single _click to activate items"
@@ -1000,8 +999,8 @@ msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
 msgstr ""
-"Αυτό το χαρακτηριστικό απαιτεί μια υπηρεσία διαχειριστή (όπως αυτή που "
-"παρέχει ο Thunar)."
+"Αυτό το χαρακτηριστικό απαιτεί μια υπηρεσία διαχειριστή αρχείων (όπως αυτή "
+"που παρέχει ο Thunar)."
 
 #: ../src/xfdesktop-file-utils.c:943
 msgid "Delete Error"
