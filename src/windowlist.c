@@ -36,9 +36,9 @@
 
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
-#include <libwnck/libwnck.h>
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4ui/libxfce4ui.h>
+#include <libxfce4windowing/libxfce4windowing.h>
 
 #include "windowlist.h"
 #include "xfdesktop-common.h"
@@ -53,65 +53,70 @@ static gboolean wl_sticky_once = FALSE;
 static gboolean wl_add_remove_options = TRUE;
 
 static void
-set_num_workspaces(GtkWidget *w, gpointer data)
-{
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-    WnckScreen *wnck_screen = wnck_screen_get(XScreenNumberOfScreen(gdk_x11_screen_get_xscreen(gtk_widget_get_screen(w))));
-G_GNUC_END_IGNORE_DEPRECATIONS
-    WnckWorkspace *wnck_workspace = wnck_screen_get_active_workspace(wnck_screen);
-    gint nworkspaces = wnck_screen_get_workspace_count(wnck_screen);
-    const gchar *ws_name = wnck_workspace_get_name(wnck_screen_get_workspace(wnck_screen, nworkspaces -1));
-    gint num = GPOINTER_TO_INT(data);
+add_workspace(GtkWidget *w, gpointer data) {
+    XfwWorkspaceGroup *group = XFW_WORKSPACE_GROUP(data);
+    xfw_workspace_group_create_workspace(group, NULL, NULL);
+}
+
+static void
+remove_workspace(GtkWidget *w, gpointer data) {
+    XfwWorkspace *workspace = XFW_WORKSPACE(data);
+    gint workspace_num = xfw_workspace_get_number(workspace);
+    const gchar *workspace_name = xfw_workspace_get_name(workspace);
+    XfwWorkspace *current_workspace = xfw_workspace_group_get_active_workspace(xfw_workspace_get_workspace_group(workspace));
+    gint current_workspace_num = -1;
+    const gchar *current_workspace_name = NULL;
     gchar *rm_label_short = NULL, *rm_label_long = NULL;
-    gint current_workspace = wnck_workspace_get_number(wnck_workspace);
-    const gchar *current_workspace_name = wnck_workspace_get_name(wnck_workspace);
 
-    g_return_if_fail(nworkspaces != num);
-
-    TRACE("entering");
-
-    if(num < nworkspaces) {
-        if(!ws_name || atoi(ws_name) == nworkspaces) {
-            rm_label_short = g_strdup_printf(_("Remove Workspace %d"), nworkspaces);
-            rm_label_long = g_strdup_printf(_("Do you really want to remove workspace %d?\nNote: You are currently on workspace %d."),
-                                            nworkspaces, current_workspace);
-        } else {
-            gchar *ws_name_esc = g_markup_escape_text(ws_name, strlen(ws_name));
-            rm_label_short = g_strdup_printf(_("Remove Workspace '%s'"), ws_name_esc);
-            rm_label_long = g_strdup_printf(_("Do you really want to remove workspace '%s'?\nNote: You are currently on workspace '%s'."),
-                                            ws_name_esc, current_workspace_name);
-            g_free(ws_name_esc);
-        }
-
-        /* Popup a dialog box confirming that the user wants to remove a
-         * workspace */
-        if(!xfce_dialog_confirm(NULL, NULL, _("Remove"), rm_label_long,
-                                "%s", rm_label_short))
-        {
-            g_free(rm_label_short);
-            g_free(rm_label_long);
-            return;
-        }
+    if (current_workspace != NULL) {
+        current_workspace_num = xfw_workspace_get_number(current_workspace);
+        current_workspace_name = xfw_workspace_get_name(current_workspace);
     }
 
-    if(rm_label_short != NULL)
-        g_free(rm_label_short);
-    if(rm_label_long != NULL)
-        g_free(rm_label_long);
+    if (workspace_name == NULL) {
+        rm_label_short = g_strdup_printf(_("Remove Workspace %d"), xfw_workspace_get_number(workspace));
+        if (current_workspace_num > -1) {
+            rm_label_long = g_strdup_printf(_("Do you really want to remove workspace %d?\nNote: You are currently on workspace %d."),
+                                            workspace_num, current_workspace_num);
+        } else {
+            rm_label_long = g_strdup_printf(_("Do you really want to remove workspace %d"),
+                                            workspace_num);
+        }
+    } else {
+        gchar *last_ws_name_esc = g_markup_escape_text(workspace_name, strlen(workspace_name));
+        rm_label_short = g_strdup_printf(_("Remove Workspace '%s'"), last_ws_name_esc);
+        if (current_workspace_name != NULL) {
+            rm_label_long = g_strdup_printf(_("Do you really want to remove workspace '%s'?\nNote: You are currently on workspace '%s'."),
+                                            last_ws_name_esc, current_workspace_name);
+        } else {
+            rm_label_long = g_strdup_printf(_("Do you really want to remove workspace '%s'?"), last_ws_name_esc);
+        }
+        g_free(last_ws_name_esc);
+    }
 
-    wnck_screen_change_workspace_count(wnck_screen, num);
+    /* Popup a dialog box confirming that the user wants to remove a
+     * workspace */
+    if (xfce_dialog_confirm(NULL, NULL, _("Remove"), rm_label_long,
+                           "%s", rm_label_short))
+    {
+        xfw_workspace_remove(workspace, NULL);
+    }
+
+    if (rm_label_short != NULL)
+        g_free(rm_label_short);
+    if (rm_label_long != NULL)
+        g_free(rm_label_long);
 }
 
 static void
 activate_window(GtkWidget *w, gpointer user_data)
 {
-    WnckWindow *wnck_window = user_data;
+    XfwWindow *xfw_window = user_data;
 
-    if(!wnck_window_is_sticky(wnck_window)) {
-        wnck_workspace_activate(wnck_window_get_workspace(wnck_window),
-                                gtk_get_current_event_time());
+    if(!xfw_window_is_pinned(xfw_window)) {
+        xfw_workspace_activate(xfw_window_get_workspace(xfw_window), NULL);
     }
-    wnck_window_activate(wnck_window, gtk_get_current_event_time());
+    xfw_window_activate(xfw_window, gtk_get_current_event_time(), NULL);
 }
 
 static void
@@ -151,10 +156,10 @@ menulist_set_label_flags(GtkWidget *widget, gpointer data)
 
 
 static GtkWidget *
-menu_item_from_wnck_window(WnckWindow *wnck_window,
-                           gint icon_width,
-                           gint icon_height,
-                           gint scale_factor)
+menu_item_from_xfw_window(XfwWindow *xfw_window,
+                          gint icon_width,
+                          gint icon_height,
+                          gint scale_factor)
 {
     GtkWidget *mi, *img = NULL;
     gchar *title;
@@ -163,14 +168,14 @@ menu_item_from_wnck_window(WnckWindow *wnck_window,
     gint w, h;
     gboolean truncated = FALSE;
 
-    title = g_markup_escape_text(wnck_window_get_name(wnck_window), -1);
+    title = g_markup_escape_text(xfw_window_get_name(xfw_window), -1);
     if(!title)
         return NULL;
 
     label = g_string_new(title);
     g_free(title);
 
-    if(wnck_window_is_active(wnck_window)) {
+    if (xfw_window_is_active(xfw_window)) {
         g_string_prepend(label, "<b><i>");
         g_string_append(label, "</i></b>");
     }
@@ -182,20 +187,23 @@ menu_item_from_wnck_window(WnckWindow *wnck_window,
         g_string_append(label, "  ");
 
     if(wl_show_icons) {
-        cairo_surface_t *surface;
+        cairo_surface_t *surface = NULL;
 
-        icon = wnck_window_get_mini_icon(wnck_window);
-        w = gdk_pixbuf_get_width(icon);
-        h = gdk_pixbuf_get_height(icon);
-        if(w != icon_width * scale_factor || h != icon_height * scale_factor) {
-            tmp = gdk_pixbuf_scale_simple(icon,
-                                          icon_width * scale_factor,
-                                          icon_height * scale_factor,
-                                          GDK_INTERP_BILINEAR);
+        gint icon_size = icon_width > icon_height ? icon_width : icon_height;
+        icon = xfw_window_get_icon(xfw_window, icon_size, scale_factor);
+        if (icon != NULL) {
+            w = gdk_pixbuf_get_width(icon);
+            h = gdk_pixbuf_get_height(icon);
+            if (w != icon_width * scale_factor || h != icon_height * scale_factor) {
+                tmp = gdk_pixbuf_scale_simple(icon,
+                                              icon_width * scale_factor,
+                                              icon_height * scale_factor,
+                                              GDK_INTERP_BILINEAR);
+            }
         }
 
-        if(wnck_window_is_minimized(wnck_window)) {
-            if(!tmp)
+        if (icon != NULL && xfw_window_is_minimized(xfw_window)) {
+            if( tmp == NULL)
                 tmp = gdk_pixbuf_copy(icon);
             /* minimized window, fade out app icon */
             gdk_pixbuf_saturate_and_pixelate(tmp, tmp, 0.55, TRUE);
@@ -208,8 +216,10 @@ menu_item_from_wnck_window(WnckWindow *wnck_window,
             surface = gdk_cairo_surface_create_from_pixbuf(icon, scale_factor, NULL);
         }
 
-        img = gtk_image_new_from_surface(surface);
-        cairo_surface_destroy(surface);
+        if (surface != NULL) {
+            img = gtk_image_new_from_surface(surface);
+            cairo_surface_destroy(surface);
+        }
     }
 
     mi = xfdesktop_menu_create_menu_item_with_markup(label->str, img);
@@ -248,16 +258,13 @@ GtkMenuShell *
 windowlist_populate(GtkMenuShell *menu, gint scale_factor)
 {
     GtkMenuShell *top_menu = menu;
-    GtkWidget *submenu, *mi, *label, *img;
     GdkScreen *gscreen;
     GList *menu_children;
-    WnckScreen *wnck_screen;
-    gint nworkspaces, i;
-    WnckWorkspace *active_workspace, *wnck_workspace;
-    gchar *ws_label, *rm_label;
-    const gchar *ws_name = NULL;
-    GList *windows, *l;
-    WnckWindow *wnck_window;
+    XfwScreen *xfw_screen;
+    XfwWorkspaceManager *workspace_manager;
+    GList *groups;
+    gint group_num = 0;
+    gboolean has_multiple_groups = FALSE;
     gint w, h;
 
     if(!show_windowlist)
@@ -272,6 +279,8 @@ windowlist_populate(GtkMenuShell *menu, gint scale_factor)
      * submenu */
     menu_children = gtk_container_get_children(GTK_CONTAINER(menu));
     if(menu_children) {
+        GtkWidget *mi;
+
         GtkWidget *tmpmenu = gtk_menu_new();
         gtk_menu_set_screen(GTK_MENU(tmpmenu), gscreen);
         gtk_menu_set_reserve_toggle_size (GTK_MENU (tmpmenu), FALSE);
@@ -291,149 +300,181 @@ windowlist_populate(GtkMenuShell *menu, gint scale_factor)
 
     gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &w, &h);
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-    wnck_screen = wnck_screen_get(XScreenNumberOfScreen(gdk_x11_screen_get_xscreen(gtk_widget_get_screen(GTK_WIDGET(menu)))));
-    wnck_set_default_mini_icon_size((w > h ? w : h) * scale_factor);
-G_GNUC_END_IGNORE_DEPRECATIONS
-    wnck_screen_force_update (wnck_screen);
-    nworkspaces = wnck_screen_get_workspace_count(wnck_screen);
-    active_workspace = wnck_screen_get_active_workspace(wnck_screen);
+    xfw_screen = xfw_screen_get_default();
+    workspace_manager = xfw_screen_get_workspace_manager(xfw_screen);
+    groups = xfw_workspace_manager_list_workspace_groups(workspace_manager);
+    if (g_list_nth(groups, 1) != NULL) {
+        has_multiple_groups = TRUE;
+    }
 
-    for(i = 0; i < nworkspaces; i++) {
-        wnck_workspace = wnck_screen_get_workspace(wnck_screen, i);
-        submenu = (GtkWidget *)menu;
+    for (GList *gl = groups; gl != NULL; gl = gl->next, ++group_num) {
+        XfwWorkspaceGroup *group = XFW_WORKSPACE_GROUP(gl->data);
+        XfwWorkspace *active_workspace = xfw_workspace_group_get_active_workspace(group);
+        // Keep this around outside the next loop so we know the info about the last workspace
+        XfwWorkspace *xfw_workspace = NULL;
 
-        if(wl_show_ws_names || wl_submenus) {
-            ws_name = wnck_workspace_get_name(wnck_workspace);
+        DBG("ws group num %d", group_num);
 
-            /* Workspace header */
-            if(ws_name == NULL || *ws_name == '\0')
-                ws_label = g_strdup_printf(_("<b>Workspace %d</b>"), i+1);
-            else {
-                gchar *ws_name_esc = g_markup_escape_text(ws_name, strlen(ws_name));
-                ws_label = g_strdup_printf("<b>%s</b>", ws_name_esc);
-                g_free(ws_name_esc);
-            }
+        for (GList *wl = xfw_workspace_group_list_workspaces(group);
+             wl != NULL;
+             wl = wl->next)
+        {
+            GtkWidget *submenu = (GtkWidget *)menu, *mi, *label;
+            xfw_workspace = XFW_WORKSPACE(wl->data);
 
-            mi = gtk_menu_item_new_with_label(ws_label);
-            g_free(ws_label);
-            label = gtk_bin_get_child(GTK_BIN(mi));
-            gtk_label_set_use_markup(GTK_LABEL(label), TRUE);
-            /* center the workspace header */
-            gtk_label_set_xalign (GTK_LABEL(label), 0.5f);
-            /* If it's not the active workspace, make the color insensitive */
-            if(wnck_workspace != active_workspace) {
-                set_label_color_insensitive(label);
-            }
-            gtk_widget_show(mi);
-            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-            if(!wl_submenus) {
-                g_signal_connect_swapped(G_OBJECT(mi), "activate",
-                                         G_CALLBACK(wnck_workspace_activate),
-                                         wnck_workspace);
-            }
+            DBG("ws num %d", xfw_workspace_get_number(xfw_workspace));
 
-            if(wl_submenus) {
-                submenu = gtk_menu_new();
-                gtk_menu_set_reserve_toggle_size (GTK_MENU (submenu), FALSE);
-                gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi), submenu);
-            }
-        }
+            if(wl_show_ws_names || wl_submenus) {
+                const gchar *ws_name = xfw_workspace_get_name(xfw_workspace);
+                gchar *ws_label = NULL;
 
-        windows = wnck_screen_get_windows_stacked(wnck_screen);
-
-        for(l = windows; l; l = l->next) {
-            wnck_window = l->data;
-
-            if((wnck_window_get_workspace(wnck_window) != wnck_workspace
-                && (!wnck_window_is_sticky(wnck_window)
-                    || (wl_sticky_once && wnck_workspace != active_workspace)))
-                || wnck_window_is_skip_pager(wnck_window)
-                || wnck_window_is_skip_tasklist(wnck_window))
-            {
-                /* the window isn't on the current WS AND isn't sticky,
-                 * OR,
-                 * the window is set to skip the pager,
-                 * OR,
-                 * the window is set to skip the tasklist
-                 */
-                continue;
-            }
-
-            mi = menu_item_from_wnck_window(wnck_window, w, h, scale_factor);
-            if(!mi)
-                continue;
-
-            if(wnck_workspace != active_workspace
-               && (!wnck_window_is_sticky(wnck_window)
-                   || wnck_workspace != active_workspace))
-            {
-                /* The menu item has a GtkBox of which one of the children
-                 * is the label we want to modify */
-                GList *items = gtk_container_get_children(GTK_CONTAINER(gtk_bin_get_child(GTK_BIN(mi))));
-                GList *li;
-
-                for(li = items; li != NULL; li = li->next)
-                {
-                    if(GTK_IS_LABEL(li->data))
-                    {
-                        set_label_color_insensitive(li->data);
-                        break;
+                /* Workspace header */
+                if(ws_name == NULL || *ws_name == '\0') {
+                    gint ws_num = xfw_workspace_get_number(xfw_workspace);
+                    if (has_multiple_groups) {
+                        ws_label = g_strdup_printf(_("<b>Group %d, Workspace %d</b>"), group_num+1, ws_num+1);
+                    } else {
+                        ws_label = g_strdup_printf(_("<b>Workspace %d</b>"), ws_num+1);
                     }
+                } else {
+                    gchar *ws_name_esc = g_markup_escape_text(ws_name, strlen(ws_name));
+                    ws_label = g_strdup_printf("<b>%s</b>", ws_name_esc);
+                    g_free(ws_name_esc);
+                }
+
+                mi = gtk_menu_item_new_with_label(ws_label);
+                g_free(ws_label);
+                label = gtk_bin_get_child(GTK_BIN(mi));
+                gtk_label_set_use_markup(GTK_LABEL(label), TRUE);
+                /* center the workspace header */
+                gtk_label_set_xalign (GTK_LABEL(label), 0.5f);
+                /* If it's not the active workspace, make the color insensitive */
+                if(xfw_workspace != active_workspace) {
+                    set_label_color_insensitive(label);
+                }
+                gtk_widget_show(mi);
+                gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+                if(!wl_submenus) {
+                    g_signal_connect_swapped(G_OBJECT(mi), "activate",
+                                             G_CALLBACK(xfw_workspace_activate),
+                                             xfw_workspace);
+                }
+
+                if(wl_submenus) {
+                    submenu = gtk_menu_new();
+                    gtk_menu_set_reserve_toggle_size (GTK_MENU (submenu), FALSE);
+                    gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi), submenu);
                 }
             }
 
-            gtk_widget_show(mi);
-            gtk_menu_shell_append(GTK_MENU_SHELL(submenu), mi);
-            g_object_weak_ref(G_OBJECT(wnck_window),
-                              (GWeakNotify)window_destroyed_cb, mi);
-            g_signal_connect(G_OBJECT(mi), "activate",
-                             G_CALLBACK(activate_window), wnck_window);
-            g_signal_connect(G_OBJECT(mi), "destroy",
-                             G_CALLBACK(mi_destroyed_cb), wnck_window);
+            for(GList *l = xfw_screen_get_windows_stacked(xfw_screen); l; l = l->next) {
+                XfwWindow *xfw_window = XFW_WINDOW(l->data);
+
+                if((xfw_window_get_workspace(xfw_window) != xfw_workspace
+                    && (!xfw_window_is_pinned(xfw_window)
+                        || (wl_sticky_once && xfw_workspace != active_workspace)))
+                    || xfw_window_is_skip_pager(xfw_window)
+                    || xfw_window_is_skip_tasklist(xfw_window))
+                {
+                    /* the window isn't on the current WS AND isn't sticky,
+                     * OR,
+                     * the window is set to skip the pager,
+                     * OR,
+                     * the window is set to skip the tasklist
+                     */
+                    continue;
+                }
+
+                mi = menu_item_from_xfw_window(xfw_window, w, h, scale_factor);
+                if(!mi)
+                    continue;
+
+                if(xfw_workspace != active_workspace
+                   && (!xfw_window_is_pinned(xfw_window)
+                       || xfw_workspace != active_workspace))
+                {
+                    /* The menu item has a GtkBox of which one of the children
+                     * is the label we want to modify */
+                    GList *items = gtk_container_get_children(GTK_CONTAINER(gtk_bin_get_child(GTK_BIN(mi))));
+                    GList *li;
+
+                    for(li = items; li != NULL; li = li->next)
+                    {
+                        if(GTK_IS_LABEL(li->data))
+                        {
+                            set_label_color_insensitive(li->data);
+                            break;
+                        }
+                    }
+                }
+
+                gtk_widget_show(mi);
+                gtk_menu_shell_append(GTK_MENU_SHELL(submenu), mi);
+                g_object_weak_ref(G_OBJECT(xfw_window),
+                                  (GWeakNotify)window_destroyed_cb, mi);
+                g_signal_connect(G_OBJECT(mi), "activate",
+                                 G_CALLBACK(activate_window), xfw_window);
+                g_signal_connect(G_OBJECT(mi), "destroy",
+                                 G_CALLBACK(mi_destroyed_cb), xfw_window);
+            }
+
+            // FIXME: need to not add after last item
+            if(!wl_submenus || wl_add_remove_options) {
+                mi = gtk_separator_menu_item_new();
+                gtk_widget_show(mi);
+                gtk_menu_shell_append(GTK_MENU_SHELL(submenu), mi);
+            }
         }
 
-        if(!wl_submenus && (i < nworkspaces-1 || wl_add_remove_options)) {
-            mi = gtk_separator_menu_item_new();
-            gtk_widget_show(mi);
-            gtk_menu_shell_append(GTK_MENU_SHELL(submenu), mi);
+        if (wl_add_remove_options) {
+            GtkWidget *img, *mi;
+
+            if ((xfw_workspace_group_get_capabilities(group) & XFW_WORKSPACE_GROUP_CAPABILITIES_CREATE_WORKSPACE) != 0) {
+                /* 'add workspace' item */
+                if(wl_show_icons) {
+                    img = gtk_image_new_from_icon_name("list-add", GTK_ICON_SIZE_MENU);
+                    mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Add Workspace"), img);
+                } else
+                    mi = gtk_menu_item_new_with_mnemonic(_("_Add Workspace"));
+                gtk_widget_show(mi);
+                gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+                g_signal_connect(G_OBJECT(mi), "activate",
+                                 G_CALLBACK(add_workspace), group);
+            }
+
+            if (xfw_workspace != NULL && (xfw_workspace_get_capabilities(xfw_workspace) & XFW_WORKSPACE_CAPABILITIES_REMOVE) != 0) {
+                const gchar *ws_name = xfw_workspace_get_name(xfw_workspace);
+                gint nworkspaces = xfw_workspace_group_get_workspace_count(group);
+                gchar *rm_label = NULL;
+
+                /* 'remove workspace' item */
+                if (ws_name == NULL)
+                    rm_label = g_strdup_printf(_("_Remove Workspace %d"), nworkspaces);
+                else {
+                    gchar *ws_name_esc = g_markup_escape_text(ws_name, strlen(ws_name));
+                    rm_label = g_strdup_printf(_("_Remove Workspace '%s'"), ws_name_esc);
+                    g_free(ws_name_esc);
+                }
+                if(wl_show_icons) {
+                    img = gtk_image_new_from_icon_name("list-remove", GTK_ICON_SIZE_MENU);
+                    mi = xfdesktop_menu_create_menu_item_with_mnemonic(rm_label, img);
+                } else
+                    mi = gtk_menu_item_new_with_mnemonic(rm_label);
+                g_free(rm_label);
+                if(nworkspaces == 1)
+                    gtk_widget_set_sensitive(mi, FALSE);
+                gtk_widget_show(mi);
+                gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+                g_signal_connect(G_OBJECT(mi), "activate",
+                                 G_CALLBACK(remove_workspace), xfw_workspace);
+            }
         }
+
+        // Clear it out in case the next group has no workspaces
+        xfw_workspace = NULL;
     }
 
-    if(wl_add_remove_options) {
-        /* 'add workspace' item */
-        if(wl_show_icons) {
-            img = gtk_image_new_from_icon_name("list-add", GTK_ICON_SIZE_MENU);
-            mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Add Workspace"), img);
-        } else
-            mi = gtk_menu_item_new_with_mnemonic(_("_Add Workspace"));
-        gtk_widget_show(mi);
-        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-        g_signal_connect(G_OBJECT(mi), "activate",
-                         G_CALLBACK(set_num_workspaces), GINT_TO_POINTER(nworkspaces+1));
-
-        /* 'remove workspace' item */
-        if(!ws_name || atoi(ws_name) == nworkspaces)
-            rm_label = g_strdup_printf(_("_Remove Workspace %d"), nworkspaces);
-        else {
-            gchar *ws_name_esc = g_markup_escape_text(ws_name, strlen(ws_name));
-            rm_label = g_strdup_printf(_("_Remove Workspace '%s'"), ws_name_esc);
-            g_free(ws_name_esc);
-        }
-        if(wl_show_icons) {
-            img = gtk_image_new_from_icon_name("list-remove", GTK_ICON_SIZE_MENU);
-            mi = xfdesktop_menu_create_menu_item_with_mnemonic(rm_label, img);
-        } else
-            mi = gtk_menu_item_new_with_mnemonic(rm_label);
-        g_free(rm_label);
-        if(nworkspaces == 1)
-            gtk_widget_set_sensitive(mi, FALSE);
-        gtk_widget_show(mi);
-        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-        g_signal_connect(G_OBJECT(mi), "activate",
-                         G_CALLBACK(set_num_workspaces),
-                         GINT_TO_POINTER(nworkspaces-1));
-    }
+    g_object_unref(xfw_screen);
 
     return top_menu;
 }

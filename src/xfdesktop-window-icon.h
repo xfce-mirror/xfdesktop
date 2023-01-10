@@ -23,6 +23,7 @@
 
 #include <glib-object.h>
 #include <libxfce4ui/libxfce4ui.h>
+#include <libxfce4windowing/libxfce4windowing.h>
 
 #include "xfdesktop-icon.h"
 
@@ -51,7 +52,7 @@ struct _XfdesktopWindowIconClass
 
 GType xfdesktop_window_icon_get_type(void) G_GNUC_CONST;
 
-XfdesktopWindowIcon *xfdesktop_window_icon_new(WnckWindow *window,
+XfdesktopWindowIcon *xfdesktop_window_icon_new(XfwWindow *window,
                                                gint workspace);
 
 gint xfdesktop_window_icon_get_workspace(XfdesktopWindowIcon *window_icon);
