@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-22 13:09+0100\n"
+"POT-Creation-Date: 2023-01-10 12:53+0100\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Markus Mikkonen <markus.mikkonen@outlook.com>, 2021\n"
 "Language-Team: Finnish (http://www.transifex.com/xfce/xfdesktop/language/fi/)\n"
@@ -23,38 +23,38 @@ msgstr ""
 "Language: fi\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../settings/main.c:430 ../src/xfdesktop-special-file-icon.c:290
+#: ../settings/main.c:432 ../src/xfdesktop-special-file-icon.c:290
 #: ../src/xfdesktop-special-file-icon.c:456
 msgid "Home"
 msgstr "Kotihakemisto"
 
-#: ../settings/main.c:432 ../src/xfdesktop-special-file-icon.c:292
+#: ../settings/main.c:434 ../src/xfdesktop-special-file-icon.c:292
 #: ../src/xfdesktop-special-file-icon.c:454
 msgid "File System"
 msgstr "Tiedostojärjestelmä"
 
-#: ../settings/main.c:434 ../src/xfdesktop-special-file-icon.c:294
+#: ../settings/main.c:436 ../src/xfdesktop-special-file-icon.c:294
 msgid "Trash"
 msgstr "Roskakori"
 
-#: ../settings/main.c:436
+#: ../settings/main.c:438
 msgid "Removable Devices"
 msgstr "Irrotettavat taltiot"
 
-#: ../settings/main.c:438
+#: ../settings/main.c:440
 msgid "Network Shares"
 msgstr "Verkkojaot"
 
-#: ../settings/main.c:440
+#: ../settings/main.c:442
 msgid "Disks and Drives"
 msgstr "Levyt ja asemat"
 
-#: ../settings/main.c:442
+#: ../settings/main.c:444
 msgid "Other Devices"
 msgstr "Muut laitteet"
 
 #. Display the file name, file type, and file size in the tooltip.
-#: ../settings/main.c:546
+#: ../settings/main.c:548
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -62,80 +62,80 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nTyyppi: %s\nKoko: %s"
 
-#: ../settings/main.c:744
+#: ../settings/main.c:784
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "Taustakuva näytölle %d (%s)"
 
-#: ../settings/main.c:747
+#: ../settings/main.c:787
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "Taustakuva näytölle %d"
 
-#: ../settings/main.c:753
+#: ../settings/main.c:793
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "Siirrä tämä ikkuna näytölle, jonka asetuksia haluat muuttaa."
 
-#: ../settings/main.c:760
+#: ../settings/main.c:800
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "Taustakuva %s:lle näytöllä %d (%s)"
 
-#: ../settings/main.c:764
+#: ../settings/main.c:804
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "Taustakuva %s:lle näytöllä %d"
 
-#: ../settings/main.c:771
+#: ../settings/main.c:811
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr "Siirrä tämä ikkuna näytölle ja työtilalle, joiden asetuksia haluat muuttaa."
 
 #. Single monitor and single workspace
-#: ../settings/main.c:779
+#: ../settings/main.c:819
 #, c-format
 msgid "Wallpaper for my desktop"
 msgstr "Taustakuva työpöydälleni"
 
 #. Single monitor and per workspace wallpaper
-#: ../settings/main.c:785
+#: ../settings/main.c:825
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "Taustakuva työtilalle %s"
 
-#: ../settings/main.c:790
+#: ../settings/main.c:830
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "Siirrä tämä ikkuna työtilalle, jonka asetuksia haluat muuttaa."
 
-#: ../settings/main.c:1243
+#: ../settings/main.c:1285
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "Kuvan valinta ei ole käytössä kun kuvan tyyliksi on valittu Ei mitään."
 
-#: ../settings/main.c:1603
+#: ../settings/main.c:1644
 msgid "Spanning screens"
 msgstr "Useille näytöille ulottuva"
 
 #. TRANSLATORS: Please split the message in half with '\n' so the dialog will
 #. not be too wide.
-#: ../settings/main.c:1797
+#: ../settings/main.c:1931
 msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
 msgstr "Haluatko järjestää kaikki olemassa olevat\nkuvakeet valitun suunnan mukaisesti?"
 
-#: ../settings/main.c:1803
+#: ../settings/main.c:1937
 msgid "Arrange icons"
 msgstr "Järjestä kuvakkeet"
 
 #. printf is to be translator-friendly
-#: ../settings/main.c:1811 ../src/xfdesktop-file-icon-manager.c:817
+#: ../settings/main.c:1945 ../src/xfdesktop-file-icon-manager.c:817
 #: ../src/xfdesktop-file-icon-manager.c:1410
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Ei voi käynnistää kohdetta \"%s\":"
 
-#: ../settings/main.c:1812 ../src/xfdesktop-file-icon-manager.c:819
+#: ../settings/main.c:1946 ../src/xfdesktop-file-icon-manager.c:819
 #: ../src/xfdesktop-file-icon-manager.c:1159
 #: ../src/xfdesktop-file-icon-manager.c:1411 ../src/xfdesktop-file-utils.c:744
 #: ../src/xfdesktop-file-utils.c:1313 ../src/xfdesktop-file-utils.c:1338
@@ -143,7 +143,7 @@ msgstr "Ei voi käynnistää kohdetta \"%s\":"
 msgid "Launch Error"
 msgstr "Käynnistysvirhe"
 
-#: ../settings/main.c:1814 ../settings/xfdesktop-settings-ui.glade.h:20
+#: ../settings/main.c:1948 ../settings/xfdesktop-settings-ui.glade.h:20
 #: ../src/xfdesktop-file-icon-manager.c:585
 #: ../src/xfdesktop-file-icon-manager.c:604
 #: ../src/xfdesktop-file-icon-manager.c:689
@@ -163,59 +163,59 @@ msgstr "Käynnistysvirhe"
 msgid "_Close"
 msgstr "_Sulje"
 
-#: ../settings/main.c:1974
+#: ../settings/main.c:2114
 msgid "Image files"
 msgstr "Kuvatiedostot"
 
 #. Change the title of the file chooser dialog
-#: ../settings/main.c:1982
+#: ../settings/main.c:2122
 msgid "Select a Directory"
 msgstr "Valitse hakemisto"
 
-#: ../settings/main.c:2194
+#: ../settings/main.c:2334
 msgid "Settings manager socket"
 msgstr "Asetustenhallinnan pistoke"
 
-#: ../settings/main.c:2194
+#: ../settings/main.c:2334
 msgid "SOCKET ID"
 msgstr "PISTOKE"
 
-#: ../settings/main.c:2195
+#: ../settings/main.c:2335
 msgid "Version information"
 msgstr "Versiotiedot"
 
-#: ../settings/main.c:2196 ../src/xfdesktop-application.c:848
+#: ../settings/main.c:2336 ../src/xfdesktop-application.c:885
 msgid "Enable debug messages"
 msgstr "Salli vianetsintä"
 
-#: ../settings/main.c:2220
+#: ../settings/main.c:2360
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Saat ohjeita komennolla ”%s --help”."
 
-#: ../settings/main.c:2232
+#: ../settings/main.c:2372
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce:n kehittäjät. Kaikki oikeudet pidätetään."
 
-#: ../settings/main.c:2233
+#: ../settings/main.c:2373
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Ilmoita ohjelmistovirheistä osoitteeseen <%s>."
 
-#: ../settings/main.c:2240
+#: ../settings/main.c:2380
 msgid "Desktop Settings"
 msgstr "Työpöydän asetukset"
 
-#: ../settings/main.c:2242
+#: ../settings/main.c:2382
 msgid "Unable to contact settings server"
 msgstr "Asetuspalvelimeen ei saada yhteyttä"
 
-#: ../settings/main.c:2244
+#: ../settings/main.c:2384
 msgid "Quit"
 msgstr "Lopeta"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.in.h:1
-#: ../settings/xfdesktop-settings-ui.glade.h:18 ../src/xfce-desktop.c:1158
+#: ../settings/xfdesktop-settings-ui.glade.h:18 ../src/xfce-desktop.c:1207
 msgid "Desktop"
 msgstr "Työpöytä"
 
@@ -589,136 +589,151 @@ msgstr "_Kuvakkeet"
 msgid "_Applications"
 msgstr "_Sovellukset"
 
-#: ../src/windowlist.c:75
+#: ../src/windowlist.c:77
 #, c-format
 msgid "Remove Workspace %d"
 msgstr "Poista työtila %d"
 
-#: ../src/windowlist.c:76
+#: ../src/windowlist.c:79
 #, c-format
 msgid ""
 "Do you really want to remove workspace %d?\n"
 "Note: You are currently on workspace %d."
 msgstr "Haluatko todella poistaa työtilan %d?\nHuomaa: Olet tällä hetkellä työtilassa %d."
 
-#: ../src/windowlist.c:80
+#: ../src/windowlist.c:82
+#, c-format
+msgid "Do you really want to remove workspace %d"
+msgstr ""
+
+#: ../src/windowlist.c:87
 #, c-format
 msgid "Remove Workspace '%s'"
 msgstr "Poista työtila '%s'"
 
-#: ../src/windowlist.c:81
+#: ../src/windowlist.c:89
 #, c-format
 msgid ""
 "Do you really want to remove workspace '%s'?\n"
 "Note: You are currently on workspace '%s'."
 msgstr "Haluatko todella poistaa työtilan '%s'?\nHuomaa: Olet tällä hetkellä työtilassa '%s'."
 
+#: ../src/windowlist.c:92
+#, c-format
+msgid "Do you really want to remove workspace '%s'?"
+msgstr ""
+
 #. Popup a dialog box confirming that the user wants to remove a
 #. * workspace
-#: ../src/windowlist.c:88
+#: ../src/windowlist.c:99
 msgid "Remove"
 msgstr "Poista"
 
-#: ../src/windowlist.c:283
+#: ../src/windowlist.c:292
 msgid "Window List"
 msgstr "Ikkunalista"
 
-#: ../src/windowlist.c:311
+#: ../src/windowlist.c:335
+#, c-format
+msgid "<b>Group %d, Workspace %d</b>"
+msgstr ""
+
+#: ../src/windowlist.c:337
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>Työtila %d</b>"
 
-#: ../src/windowlist.c:407 ../src/windowlist.c:409
+#: ../src/windowlist.c:436 ../src/windowlist.c:438
 msgid "_Add Workspace"
 msgstr "_Lisää työtila"
 
-#: ../src/windowlist.c:417
+#: ../src/windowlist.c:452
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "_Poista työtila %d"
 
-#: ../src/windowlist.c:420
+#: ../src/windowlist.c:455
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "_Poista työtila '%s'"
 
-#: ../src/xfdesktop-application.c:840
+#: ../src/xfdesktop-application.c:877
 msgid "Display version information"
 msgstr "Näytä versiotiedot"
 
-#: ../src/xfdesktop-application.c:841
+#: ../src/xfdesktop-application.c:878
 msgid "Reload all settings"
 msgstr "Lataa kaikki asetukset uudelleen"
 
-#: ../src/xfdesktop-application.c:842
+#: ../src/xfdesktop-application.c:879
 msgid "Advance to the next wallpaper on the current workspace"
 msgstr "Siirry seuraavaan taustakuvaan nykyisessä työtilassa"
 
-#: ../src/xfdesktop-application.c:843
+#: ../src/xfdesktop-application.c:880
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "Näytä valikko (osoittimen nykyisessä sijainnissa)"
 
-#: ../src/xfdesktop-application.c:844
+#: ../src/xfdesktop-application.c:881
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "Näytä ikkunalista (kursorin nykyisessä sijainnissa)"
 
-#: ../src/xfdesktop-application.c:846
+#: ../src/xfdesktop-application.c:883
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "Järjestä työpöydän kuvakkeet automaattisesti"
 
-#: ../src/xfdesktop-application.c:849
+#: ../src/xfdesktop-application.c:886
 msgid "Disable debug messages"
 msgstr "Älä käytä virheenetsintää"
 
-#: ../src/xfdesktop-application.c:850
+#: ../src/xfdesktop-application.c:887
 msgid "Do not wait for a window manager on startup"
 msgstr "Älä odota ikkunanhallintaa käynnistyksessä"
 
-#: ../src/xfdesktop-application.c:851
+#: ../src/xfdesktop-application.c:888
 msgid "Cause xfdesktop to quit"
 msgstr "Sulje xfdesktop"
 
-#: ../src/xfdesktop-application.c:866
+#: ../src/xfdesktop-application.c:903
 #, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "Argumenttien jäsennys epäonnistui: %s\n"
 
-#: ../src/xfdesktop-application.c:877
+#: ../src/xfdesktop-application.c:914
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Tämä on %s versio %s, suoritusympäristönä Xfce %s.\n"
 
-#: ../src/xfdesktop-application.c:879
+#: ../src/xfdesktop-application.c:916
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Kääntäessä käytössä GTK+ %d.%d.%d, nyt GTK+ %d.%d.%d."
 
-#: ../src/xfdesktop-application.c:883
+#: ../src/xfdesktop-application.c:920
 #, c-format
 msgid "Build options:\n"
 msgstr "Käännösvalitsimet:\n"
 
-#: ../src/xfdesktop-application.c:884
+#: ../src/xfdesktop-application.c:921
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "Työpöytävalikko: %s\n"
 
-#: ../src/xfdesktop-application.c:886 ../src/xfdesktop-application.c:893
-#: ../src/xfdesktop-application.c:900
+#: ../src/xfdesktop-application.c:923 ../src/xfdesktop-application.c:930
+#: ../src/xfdesktop-application.c:937
 msgid "enabled"
 msgstr "käytössä"
 
-#: ../src/xfdesktop-application.c:888 ../src/xfdesktop-application.c:895
-#: ../src/xfdesktop-application.c:902
+#: ../src/xfdesktop-application.c:925 ../src/xfdesktop-application.c:932
+#: ../src/xfdesktop-application.c:939
 msgid "disabled"
 msgstr "pois käytöstä"
 
-#: ../src/xfdesktop-application.c:891
+#: ../src/xfdesktop-application.c:928
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "Työpöytäkuvakkeet: %s\n"
 
-#: ../src/xfdesktop-application.c:898
+#: ../src/xfdesktop-application.c:935
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "Työpöydän tiedostokuvakkeet: %s\n"
@@ -830,7 +845,7 @@ msgstr "Avaa muussa _sovelluksessa..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1769
 msgid "Set _Default Application..."
-msgstr ""
+msgstr "Aseta _oletussovellus..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1801
 msgid "_Paste"
@@ -1192,6 +1207,6 @@ msgstr "_Poista taltion liitos"
 msgid "_Mount Volume"
 msgstr "_Liitä taltio"
 
-#: ../src/xfdesktop-window-icon.c:193
+#: ../src/xfdesktop-window-icon.c:196
 msgid "_Window Actions"
 msgstr "_Ikkunatoiminnot"
