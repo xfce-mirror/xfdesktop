@@ -1,3 +1,38 @@
+4.19.0 (2023-01-10)
+======
+- Fix warnings
+- xfdesktop: dither backdrop gradients to reduce color banding
+- Add preliminary Wayland support using libxfce4windowing
+- Fix minor coding style issues
+- Avoid drawing gradient to temporary surface
+- backdrop: render gamma-correct gradients
+- Fix a couple dangling mnemonic-widget properties
+- Set all icon appearance settings insensitive when disabled
+- Modernize GObject usage in XfdesktopThumbnailer
+- Fix crash when request timer active after finalize
+- Update my email address everywhere
+- Move file icons settings to its own section
+- Remove deprecated widgets from settings UI
+- Update glade files to latest version
+- Free cached GarconMenu in menu_cleanup()
+- Remove unused show_delete_option var in menu.c
+- Disconnect xfconf signal in menu_cleanup()
+- Free cached GarconMenu when apps menu is disabled
+- Load removable volume information asynchronously
+- Fix apps menu not popping up when menu icons disabled
+- Translation Updates:
+  Albanian, Amharic, Arabic, Armenian (Armenia), Asturian, Azerbaijani,
+  Basque, Belarusian, Belarusian (Tarask), Bulgarian, Catalan, Chinese
+  (China), Chinese (Hong Kong), Chinese (Taiwan), Croatian, Czech,
+  Danish, Dutch, Eastern Armenian, English (Australia), English
+  (Canada), English (United Kingdom), Estonian, Finnish, French,
+  Galician, Georgian, German, Greek, Hebrew, Hungarian, Icelandic,
+  Indonesian, Interlingue, Italian, Japanese, Kazakh, Korean,
+  Lithuanian, Malay, Norwegian Bokmål, Norwegian Nynorsk, Occitan
+  (post 1500), Persian (Iran), Polish, Portuguese, Portuguese (Brazil),
+  Romanian, Russian, Serbian, Slovak, Slovenian, Spanish, Swedish,
+  Thai, Ukrainian, Uyghur, Uzbek
+
 4.18.0
 ======
 - build: Bump requirements for Xfce 4.18
