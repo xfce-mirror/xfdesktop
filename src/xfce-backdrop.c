@@ -225,7 +225,7 @@ interpolate(double x1,
 {
     const double t = (double)position / (max - 1); // we want to interpolate all the way to max-1
     const double xi = x1 * (1 - t) + x2 * t;
-    return CLAMP(round_threshold(pow(xi, 1 / backdrop_gamma) * 255, threshold), 0, 255);
+    return CLAMP((int)round_threshold(pow(xi, 1 / backdrop_gamma) * 255, threshold), 0, 255);
 }
 
 static double gen_threshold(unsigned int *seed)
@@ -278,13 +278,13 @@ create_gradient(GdkRGBA *color1,
 
     for (ax1 = 0; ax1 < ax1_max; ax1++) {
         for (ax2 = 0; ax2 < ax2_max; ax2++) {
+            guint x, y;
+            guint32 *p;
             unsigned char r, g, b;
             double threshold = gen_threshold(&seed);
             r = interpolate(color1_lin.red, color2_lin.red, ax1, ax1_max, threshold);
             g = interpolate(color1_lin.green, color2_lin.green, ax1, ax1_max, threshold);
             b = interpolate(color1_lin.blue, color2_lin.blue, ax1, ax1_max, threshold);
-            guint x, y;
-            guint32 *p;
             if (style == XFCE_BACKDROP_COLOR_VERT_GRADIENT) {
                 x = ax2;
                 y = ax1;
