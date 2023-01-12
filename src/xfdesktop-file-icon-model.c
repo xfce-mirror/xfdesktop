@@ -50,6 +50,8 @@ static void xfdesktop_file_icon_model_get_value(GtkTreeModel *model,
                                                 gint column,
                                                 GValue *value);
 
+static void xfdesktop_file_icon_model_clear(XfdesktopIconViewModel *ivmodel);
+
 
 G_DEFINE_TYPE_WITH_CODE(XfdesktopFileIconModel,
                         xfdesktop_file_icon_model,
@@ -66,6 +68,8 @@ xfdesktop_file_icon_model_class_init(XfdesktopFileIconModelClass *klass)
     ivmodel_class->model_item_free = g_object_unref;
     ivmodel_class->model_item_hash = xfdesktop_file_icon_hash;
     ivmodel_class->model_item_equal = xfdesktop_file_icon_equal;
+
+    ivmodel_class->clear = xfdesktop_file_icon_model_clear;
 }
 
 static void
@@ -173,6 +177,26 @@ xfdesktop_file_icon_model_get_value(GtkTreeModel *model,
     }
 }
 
+static void
+xfdesktop_file_icon_model_clear(XfdesktopIconViewModel *ivmodel)
+{
+    XfdesktopFileIconModel *fmodel = XFDESKTOP_FILE_ICON_MODEL(ivmodel);
+    GtkTreeIter iter;
+
+    if (gtk_tree_model_get_iter_first(GTK_TREE_MODEL(fmodel), &iter)) {
+        do {
+            XfdesktopFileIcon *icon = xfdesktop_file_icon_model_get_icon(fmodel, &iter);
+            if (G_LIKELY(icon != NULL)) {
+                g_signal_handlers_disconnect_by_func(icon,
+                                                     G_CALLBACK(xfdesktop_file_icon_model_changed),
+                                                     fmodel);
+            }
+        } while (gtk_tree_model_iter_next(GTK_TREE_MODEL(fmodel), &iter));
+    }
+
+    XFDESKTOP_ICON_VIEW_MODEL_CLASS(xfdesktop_file_icon_model_parent_class)->clear(ivmodel);
+}
+
 
 XfdesktopFileIconModel *
 xfdesktop_file_icon_model_new(void)
@@ -188,6 +212,11 @@ xfdesktop_file_icon_model_append(XfdesktopFileIconModel *fmodel,
     g_return_if_fail(XFDESKTOP_IS_FILE_ICON_MODEL(fmodel));
     g_return_if_fail(XFDESKTOP_IS_FILE_ICON(icon));
 
+    g_signal_connect_swapped(icon, "label-changed",
+                             G_CALLBACK(xfdesktop_file_icon_model_changed), fmodel);
+    g_signal_connect_swapped(icon, "pixbuf-changed",
+                             G_CALLBACK(xfdesktop_file_icon_model_changed), fmodel);
+
     xfdesktop_icon_view_model_append(XFDESKTOP_ICON_VIEW_MODEL(fmodel), icon, icon, iter);
 }
 
@@ -197,6 +226,10 @@ xfdesktop_file_icon_model_remove(XfdesktopFileIconModel *fmodel,
 {
     g_return_if_fail(XFDESKTOP_IS_FILE_ICON_MODEL(fmodel));
     g_return_if_fail(XFDESKTOP_IS_FILE_ICON(icon));
+
+    g_signal_handlers_disconnect_by_func(icon,
+                                         G_CALLBACK(xfdesktop_file_icon_model_changed),
+                                         fmodel);
 
     xfdesktop_icon_view_model_remove(XFDESKTOP_ICON_VIEW_MODEL(fmodel), icon);
 }
