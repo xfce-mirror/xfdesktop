@@ -176,6 +176,12 @@ GtkWidget *xfdesktop_icon_view_get_window_widget(XfdesktopIconView *icon_view);
 void xfdesktop_icon_view_sort_icons(XfdesktopIconView *icon_view,
                                     GtkSortType sort_type);
 
+gboolean xfdesktop_icon_view_get_next_free_grid_position(XfdesktopIconView *icon_view,
+                                                         gint row,
+                                                         gint col,
+                                                         gint *next_row,
+                                                         gint *next_col);
+
 G_END_DECLS
 
 #endif  /* __XFDESKTOP_ICON_VIEW_H__ */
