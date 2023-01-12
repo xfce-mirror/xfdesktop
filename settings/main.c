@@ -1743,8 +1743,9 @@ is_our_window(AppearancePanel *panel,
 
         g_message("No good way to match a GdkWindow and XfwWindow for Wayland; guessing");
 
-        if (window_name != NULL && g_strcmp0(window_name, toplevel_name) != 0
-            && gtk_window_is_maximized(toplevel_win) != xfw_window_is_maximized(window))
+        if (window_name != NULL && g_strcmp0(window_name, toplevel_name) == 0
+            && gtk_window_is_maximized(toplevel_win) == xfw_window_is_maximized(window)
+            && ((gdk_window_get_state(gtk_widget_get_window(toplevel)) & GDK_WINDOW_STATE_FULLSCREEN) != 0) == xfw_window_is_fullscreen(window))
         {
             matches = TRUE;
         }
