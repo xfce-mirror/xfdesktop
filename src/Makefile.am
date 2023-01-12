@@ -38,16 +38,20 @@ xfdesktop_SOURCES = \
 	xfdesktop-application.h
 
 desktop_icon_sources = \
+	xfdesktop-cell-renderer-icon-label.c \
+	xfdesktop-cell-renderer-icon-label.h \
 	xfdesktop-icon.c \
 	xfdesktop-icon.h \
 	xfdesktop-icon-view.c \
 	xfdesktop-icon-view.h \
 	xfdesktop-icon-view-manager.c \
 	xfdesktop-icon-view-manager.h \
-	xfdesktop-window-icon.c \
-	xfdesktop-window-icon.h \
+	xfdesktop-icon-view-model.c \
+	xfdesktop-icon-view-model.h \
 	xfdesktop-window-icon-manager.c \
-	xfdesktop-window-icon-manager.h
+	xfdesktop-window-icon-manager.h \
+	xfdesktop-window-icon-model.c \
+	xfdesktop-window-icon-model.h
 
 desktop_file_icon_sources = \
 	xfdesktop-clipboard-manager.c \
@@ -56,6 +60,8 @@ desktop_file_icon_sources = \
 	xfdesktop-file-icon.h \
 	xfdesktop-file-icon-manager.c \
 	xfdesktop-file-icon-manager.h \
+	xfdesktop-file-icon-model.c \
+	xfdesktop-file-icon-model.h \
 	xfdesktop-file-utils.c \
 	xfdesktop-file-utils.h \
 	xfdesktop-regular-file-icon.c \

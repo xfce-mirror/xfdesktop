@@ -10,6 +10,8 @@ libxfdesktop_la_SOURCES = \
 	$(libxfdesktop_built_sources) \
 	xfdesktop-common.c \
 	xfdesktop-common.h \
+	xfdesktop-extensions.c \
+	xfdesktop-extensions.h \
 	xfdesktop-thumbnailer.c \
 	xfdesktop-thumbnailer.h
 

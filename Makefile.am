@@ -58,6 +58,8 @@ compile_flags.txt: $(shell find . -name Makefile)
 		-DGETTEXT_PACKAGE=\"xfdesktop\" \
 		-DVERSION=\"4.0.0\" \
 		-DENABLE_DESKTOP_ICONS=1 \
+		-DENABLE_X11=1 \
+		-DENABLE_WAYLAND=1 \
 		-DENABLE_FILE_ICONS=1 \
 		-DLOCALEDIR=\"$(localedir)\" \
 		-DEXO_API_SUBJECT_TO_CHANGE \

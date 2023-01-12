@@ -51,14 +51,11 @@ static XfconfChannel *xfconf_channel = NULL;
 static GarconMenu *garcon_menu = NULL;
 #endif
 
-GtkMenuShell *
-menu_populate(GtkMenuShell *menu, gint scale_factor)
+GtkMenu *
+menu_populate(GtkMenu *menu, gint scale_factor)
 {
 #ifdef ENABLE_DESKTOP_MENU
-    GtkWidget *mi, *img = NULL;
-    GtkIconTheme *itheme = gtk_icon_theme_get_default();
     GtkWidget *desktop_menu = NULL;
-    GList *menu_children;
 
     TRACE("ENTERING");
 
@@ -77,31 +74,33 @@ menu_populate(GtkMenuShell *menu, gint scale_factor)
                                 NULL);
     XF_DEBUG("show desktop menu icons %s", show_desktop_menu_icons ? "TRUE" : "FALSE");
 
-    /* check to see if the menu is empty.  if not, add the desktop menu
-    * to a submenu */
-    menu_children = gtk_container_get_children(GTK_CONTAINER(menu));
-    if(menu_children) {
-        g_list_free(menu_children);
+    // If we were provided a menu to populate, add the apps menu to a submenu
+    if (menu != NULL) {
+        GtkIconTheme *itheme = gtk_icon_theme_get_default();
+        GtkWidget *mi;
+
         mi = gtk_separator_menu_item_new();
         gtk_widget_show(mi);
         gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
 
-        if(gtk_icon_theme_has_icon(itheme, "applications-other")) {
-            img = gtk_image_new_from_icon_name("applications-other",
-                                            GTK_ICON_SIZE_MENU);
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+        mi = gtk_image_menu_item_new_with_mnemonic(_("_Applications"));
+G_GNUC_END_IGNORE_DEPRECATIONS
+        if (gtk_icon_theme_has_icon(itheme, "applications-other")) {
+            GtkWidget *img = gtk_image_new_from_icon_name("applications-other",
+                                                          GTK_ICON_SIZE_MENU);
             gtk_widget_show(img);
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+            gtk_image_menu_item_set_image(GTK_IMAGE_MENU_ITEM(mi), img);
+G_GNUC_END_IGNORE_DEPRECATIONS
         }
-
-        mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Applications"), img);
-        gtk_widget_show(mi);
-
         gtk_menu_item_set_submenu (GTK_MENU_ITEM(mi), desktop_menu);
-
-        gtk_menu_shell_append(menu, mi);
+        gtk_widget_show(mi);
+        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
 
         return menu;
     } else {
-        return GTK_MENU_SHELL(desktop_menu);
+        return GTK_MENU(desktop_menu);
     }
 #else  /* !ENABLE_DESKTOP_MENU */
     return menu;

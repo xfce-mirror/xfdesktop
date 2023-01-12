@@ -57,6 +57,8 @@ typedef enum
 
 GType xfdesktop_special_file_icon_get_type(void) G_GNUC_CONST;
 
+GFile *xfdesktop_special_file_icon_file_for_type(XfdesktopSpecialFileIconType type) G_GNUC_WARN_UNUSED_RESULT;
+
 XfdesktopSpecialFileIcon *xfdesktop_special_file_icon_new(XfdesktopSpecialFileIconType type,
                                                           GdkScreen *screen);
 

@@ -76,14 +76,12 @@ struct _XfceWorkspacePrivate
 
     XfconfChannel *channel;
     gchar *property_prefix;
+    GArray *binding_ids;
 
     guint workspace_num;
     guint nbackdrops;
     gboolean xinerama_stretch;
     XfceBackdrop **backdrops;
-
-    gulong *first_color_id;
-    gulong *second_color_id;
 };
 
 enum
@@ -311,14 +309,9 @@ xfce_workspace_monitors_changed(XfceWorkspace *workspace,
      * things stay in the correct order */
     xfce_workspace_remove_backdrops(workspace);
 
-    /* Allocate space for the backdrops and their color properties so they
-     * can correctly be removed */
+    /* Allocate space for the backdrops */
     workspace->priv->backdrops = g_realloc(workspace->priv->backdrops,
                                            sizeof(XfceBackdrop *) * n_monitors);
-    workspace->priv->first_color_id = g_realloc(workspace->priv->first_color_id,
-                                                sizeof(gulong) * n_monitors);
-    workspace->priv->second_color_id = g_realloc(workspace->priv->second_color_id,
-                                                 sizeof(gulong) * n_monitors);
 
     workspace->priv->nbackdrops = n_monitors;
 
@@ -366,6 +359,7 @@ static void
 xfce_workspace_init(XfceWorkspace *workspace)
 {
     workspace->priv = xfce_workspace_get_instance_private(workspace);
+    workspace->priv->binding_ids = g_array_sized_new(TRUE, TRUE, sizeof(gulong), 10);
 }
 
 static void
@@ -375,11 +369,19 @@ xfce_workspace_finalize(GObject *object)
 
     xfce_workspace_remove_backdrops(workspace);
 
+    for (gulong *binding_id = (gulong *)workspace->priv->binding_ids->data;
+         *binding_id != 0;
+         ++binding_id)
+    {
+        xfconf_g_property_unbind(*binding_id);
+    }
+    g_array_free(workspace->priv->binding_ids, TRUE);
+
     g_object_unref(G_OBJECT(workspace->priv->channel));
     g_free(workspace->priv->property_prefix);
     g_free(workspace->priv->backdrops);
-    g_free(workspace->priv->first_color_id);
-    g_free(workspace->priv->second_color_id);
+
+    G_OBJECT_CLASS(xfce_workspace_parent_class)->finalize(object);
 }
 
 static void
@@ -605,6 +607,7 @@ xfce_workspace_connect_backdrop_settings(XfceWorkspace *workspace,
 {
     XfconfChannel *channel = workspace->priv->channel;
     char buf[1024];
+    gulong binding_id;
     gint pp_len;
     GdkDisplay *display;
     gchar *monitor_name = NULL;
@@ -630,61 +633,69 @@ xfce_workspace_connect_backdrop_settings(XfceWorkspace *workspace,
     if(!xfconf_channel_has_property(channel, buf)) {
         xfce_workspace_migrate_backdrop_color_style(workspace, backdrop, monitor);
     }
-    xfconf_g_property_bind(channel, buf, XFCE_TYPE_BACKDROP_COLOR_STYLE,
-                           G_OBJECT(backdrop), "color-style");
+    binding_id = xfconf_g_property_bind(channel, buf, XFCE_TYPE_BACKDROP_COLOR_STYLE,
+                                        G_OBJECT(backdrop), "color-style");
+    g_array_append_val(workspace->priv->binding_ids, binding_id);
 
     buf[pp_len] = 0;
     g_strlcat(buf, "rgba1", sizeof(buf));
     if(!xfconf_channel_has_property(channel, buf)) {
         xfce_workspace_migrate_backdrop_first_color(workspace, backdrop, monitor);
     }
-    workspace->priv->first_color_id[monitor] = xfconf_g_property_bind_gdkrgba(channel, buf,
-                                                            G_OBJECT(backdrop), "first-color");
+    binding_id = xfconf_g_property_bind_gdkrgba(channel, buf,
+                                                G_OBJECT(backdrop), "first-color");
+    g_array_append_val(workspace->priv->binding_ids, binding_id);
 
     buf[pp_len] = 0;
     g_strlcat(buf, "rgba2", sizeof(buf));
     if(!xfconf_channel_has_property(channel, buf)) {
         xfce_workspace_migrate_backdrop_second_color(workspace, backdrop, monitor);
     }
-    workspace->priv->second_color_id[monitor] = xfconf_g_property_bind_gdkrgba(channel, buf,
-                                                            G_OBJECT(backdrop), "second-color");
+    binding_id = xfconf_g_property_bind_gdkrgba(channel, buf,
+                                                G_OBJECT(backdrop), "second-color");
+    g_array_append_val(workspace->priv->binding_ids, binding_id);
 
     buf[pp_len] = 0;
     g_strlcat(buf, "image-style", sizeof(buf));
     if(!xfconf_channel_has_property(channel, buf)) {
         xfce_workspace_migrate_backdrop_image_style(workspace, backdrop, monitor);
     }
-    xfconf_g_property_bind(channel, buf, XFCE_TYPE_BACKDROP_IMAGE_STYLE,
-                           G_OBJECT(backdrop), "image-style");
+    binding_id = xfconf_g_property_bind(channel, buf, XFCE_TYPE_BACKDROP_IMAGE_STYLE,
+                                        G_OBJECT(backdrop), "image-style");
+    g_array_append_val(workspace->priv->binding_ids, binding_id);
 
     buf[pp_len] = 0;
     g_strlcat(buf, "backdrop-cycle-enable", sizeof(buf));
-    xfconf_g_property_bind(channel, buf, G_TYPE_BOOLEAN,
-                           G_OBJECT(backdrop), "backdrop-cycle-enable");
+    binding_id = xfconf_g_property_bind(channel, buf, G_TYPE_BOOLEAN,
+                                        G_OBJECT(backdrop), "backdrop-cycle-enable");
+    g_array_append_val(workspace->priv->binding_ids, binding_id);
 
     buf[pp_len] = 0;
     g_strlcat(buf, "backdrop-cycle-period", sizeof(buf));
-    xfconf_g_property_bind(channel, buf, XFCE_TYPE_BACKDROP_CYCLE_PERIOD,
-                           G_OBJECT(backdrop), "backdrop-cycle-period");
+    binding_id = xfconf_g_property_bind(channel, buf, XFCE_TYPE_BACKDROP_CYCLE_PERIOD,
+                                        G_OBJECT(backdrop), "backdrop-cycle-period");
+    g_array_append_val(workspace->priv->binding_ids, binding_id);
 
     buf[pp_len] = 0;
     g_strlcat(buf, "backdrop-cycle-timer", sizeof(buf));
-    xfconf_g_property_bind(channel, buf, G_TYPE_UINT,
-                           G_OBJECT(backdrop), "backdrop-cycle-timer");
+    binding_id = xfconf_g_property_bind(channel, buf, G_TYPE_UINT,
+                                        G_OBJECT(backdrop), "backdrop-cycle-timer");
+    g_array_append_val(workspace->priv->binding_ids, binding_id);
 
     buf[pp_len] = 0;
     g_strlcat(buf, "backdrop-cycle-random-order", sizeof(buf));
-    xfconf_g_property_bind(channel, buf, G_TYPE_BOOLEAN,
-                           G_OBJECT(backdrop), "backdrop-cycle-random-order");
+    binding_id = xfconf_g_property_bind(channel, buf, G_TYPE_BOOLEAN,
+                                        G_OBJECT(backdrop), "backdrop-cycle-random-order");
+    g_array_append_val(workspace->priv->binding_ids, binding_id);
 
     buf[pp_len] = 0;
     g_strlcat(buf, "last-image", sizeof(buf));
     if(!xfconf_channel_has_property(channel, buf)) {
         xfce_workspace_migrate_backdrop_image(workspace, backdrop, monitor);
     }
-    xfconf_g_property_bind(channel, buf, G_TYPE_STRING,
-                           G_OBJECT(backdrop), "image-filename");
-
+    binding_id = xfconf_g_property_bind(channel, buf, G_TYPE_STRING,
+                                        G_OBJECT(backdrop), "image-filename");
+    g_array_append_val(workspace->priv->binding_ids, binding_id);
 }
 
 static void
@@ -696,7 +707,13 @@ xfce_workspace_disconnect_backdrop_settings(XfceWorkspace *workspace,
 
     g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
 
-    xfconf_g_property_unbind_all(G_OBJECT(backdrop));
+    for (gulong *binding_id = (gulong *)workspace->priv->binding_ids->data;
+         *binding_id != 0;
+         ++binding_id)
+    {
+        xfconf_g_property_unbind(*binding_id);
+    }
+    g_array_remove_range(workspace->priv->binding_ids, 0, workspace->priv->binding_ids->len);
 }
 
 static void

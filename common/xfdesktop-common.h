@@ -33,11 +33,29 @@
 
 #include <stdarg.h>
 
-#define XFDESKTOP_CHANNEL        "xfce4-desktop"
-#define DEFAULT_BACKDROP         DATADIR "/backgrounds/xfce/xfce-shapes.svg"
-#define DEFAULT_ICON_FONT_SIZE   12
-#define DEFAULT_ICON_SIZE        48
-#define ITHEME_FLAGS             (GTK_ICON_LOOKUP_USE_BUILTIN)
+#define XFDESKTOP_CHANNEL  "xfce4-desktop"
+#define DEFAULT_BACKDROP   DATADIR "/backgrounds/xfce/xfce-shapes.svg"
+
+#define MIN_ICON_SIZE               16
+#define MAX_ICON_SIZE              192
+#define DEFAULT_ICON_SIZE           48
+#define MIN_ICON_FONT_SIZE           2
+#define MAX_ICON_FONT_SIZE         144
+#define DEFAULT_ICON_FONT_SIZE      12
+#define MIN_TOOLTIP_ICON_SIZE        0
+#define MAX_TOOLTIP_ICON_SIZE      256
+#define DEFAULT_TOOLTIP_ICON_SIZE   64
+#define MIN_GRAVITY                  0
+#define MAX_GRAVITY                  7
+#define DEFAULT_GRAVITY              0
+
+#define DEFAULT_SINGLE_CLICK       FALSE
+#define DEFAULT_ICONS_ON_PRIMARY    FALSE
+#define DEFAULT_ICON_FONT_SIZE_SET  FALSE
+#define DEFAULT_ICON_CENTER_TEXT    TRUE
+#define DEFAULT_SHOW_TOOLTIPS       TRUE
+
+#define ITHEME_FLAGS             (GTK_ICON_LOOKUP_USE_BUILTIN | GTK_ICON_LOOKUP_FORCE_SIZE)
 
 #define LIST_TEXT                "# xfce backdrop list"
 #define XFDESKTOP_SELECTION_FMT  "XFDESKTOP_SELECTION_%d"
@@ -52,6 +70,16 @@
 
 #define SINGLE_WORKSPACE_MODE     "/backdrop/single-workspace-mode"
 #define SINGLE_WORKSPACE_NUMBER   "/backdrop/single-workspace-number"
+
+#define DESKTOP_ICONS_ON_PRIMARY_PROP        "/desktop-icons/primary"
+#define DESKTOP_ICONS_STYLE_PROP             "/desktop-icons/style"
+#define DESKTOP_ICONS_ICON_SIZE_PROP         "/desktop-icons/icon-size"
+#define DESKTOP_ICONS_FONT_SIZE_PROP         "/desktop-icons/font-size"
+#define DESKTOP_ICONS_CUSTOM_FONT_SIZE_PROP  "/desktop-icons/use-custom-font-size"
+#define DESKTOP_ICONS_SHOW_TOOLTIP_PROP      "/desktop-icons/show-tooltips"
+#define DESKTOP_ICONS_TOOLTIP_SIZE_PROP      "/desktop-icons/tooltip-size"
+#define DESKTOP_ICONS_SINGLE_CLICK_PROP      "/desktop-icons/single-click"
+#define DESKTOP_ICONS_GRAVITY_PROP           "/desktop-icons/gravity"
 
 #define DESKTOP_ICONS_SHOW_THUMBNAILS        "/desktop-icons/show-thumbnails"
 #define DESKTOP_ICONS_SHOW_HIDDEN_FILES      "/desktop-icons/show-hidden-files"
@@ -121,6 +149,8 @@ gboolean xfdesktop_workspace_get_number_and_total(XfwWorkspaceManager *workspace
                                                   XfwWorkspace *workspace,
                                                   gint *workspace_number,
                                                   gint *total_workspace_count);
+
+GtkWindow * xfdesktop_find_toplevel(GtkWidget *widget);
 
 void xfdesktop_tree_path_free(gpointer data);
 

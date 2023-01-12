@@ -68,7 +68,9 @@ typedef struct {
     GFile *file;
 } ExecuteData;
 
-static void xfdesktop_file_utils_add_emblems(GdkPixbuf *pix, GList *emblems);
+static void xfdesktop_file_utils_add_emblems(GdkPixbuf *pix,
+                                             GList *emblems,
+                                             gint scale_factor);
 
 static XfdesktopTrash       *xfdesktop_file_utils_peek_trash_proxy(void);
 static XfdesktopFileManager *xfdesktop_file_utils_peek_filemanager_proxy(void);
@@ -403,43 +405,47 @@ xfdesktop_file_utils_file_list_free(GList *file_list)
 
 static GdkPixbuf *xfdesktop_fallback_icon = NULL;
 static gint xfdesktop_fallback_icon_size = -1;
+static gint xfdesktop_fallback_icon_scale = -1;
 
 GdkPixbuf *
-xfdesktop_file_utils_get_fallback_icon(gint size)
+xfdesktop_file_utils_get_fallback_icon(gint size,
+                                       gint scale)
 {
     g_return_val_if_fail(size > 0, NULL);
 
-    if(size != xfdesktop_fallback_icon_size && xfdesktop_fallback_icon) {
+    if((size != xfdesktop_fallback_icon_size || scale != xfdesktop_fallback_icon_scale) && xfdesktop_fallback_icon) {
         g_object_unref(G_OBJECT(xfdesktop_fallback_icon));
         xfdesktop_fallback_icon = NULL;
     }
 
     if(!xfdesktop_fallback_icon) {
         xfdesktop_fallback_icon = gdk_pixbuf_new_from_file_at_size(DATADIR "/pixmaps/xfdesktop/xfdesktop-fallback-icon.png",
-                                                                   size,
-                                                                   size,
+                                                                   size * scale,
+                                                                   size * scale,
                                                                    NULL);
     }
 
     if(G_UNLIKELY(!xfdesktop_fallback_icon)) {
         /* this is kinda crappy, but hopefully should never happen */
-        xfdesktop_fallback_icon = gtk_icon_theme_load_icon(gtk_icon_theme_get_default(),
-                                                           "image-missing",
-                                                           size,
-                                                           GTK_ICON_LOOKUP_USE_BUILTIN,
-                                                           NULL);
-        if(gdk_pixbuf_get_width(xfdesktop_fallback_icon) != size
-           || gdk_pixbuf_get_height(xfdesktop_fallback_icon) != size)
+        xfdesktop_fallback_icon = gtk_icon_theme_load_icon_for_scale(gtk_icon_theme_get_default(),
+                                                                     "image-missing",
+                                                                     size,
+                                                                     scale,
+                                                                     GTK_ICON_LOOKUP_USE_BUILTIN,
+                                                                     NULL);
+        if(gdk_pixbuf_get_width(xfdesktop_fallback_icon) != size * scale
+           || gdk_pixbuf_get_height(xfdesktop_fallback_icon) != size * scale)
         {
             GdkPixbuf *tmp = gdk_pixbuf_scale_simple(xfdesktop_fallback_icon,
-                                                     size, size,
-                                                     GDK_INTERP_BILINEAR);
+                                                     size * scale, size,
+                                                     GDK_INTERP_BILINEAR * scale);
             g_object_unref(G_OBJECT(xfdesktop_fallback_icon));
             xfdesktop_fallback_icon = tmp;
         }
     }
 
     xfdesktop_fallback_icon_size = size;
+    xfdesktop_fallback_icon_scale = scale;
 
     return GDK_PIXBUF(g_object_ref(G_OBJECT(xfdesktop_fallback_icon)));
 }
@@ -448,6 +454,7 @@ GdkPixbuf *
 xfdesktop_file_utils_get_icon(GIcon *icon,
                               gint width,
                               gint height,
+                              gint scale,
                               guint opacity)
 {
     GtkIconTheme *itheme = gtk_icon_theme_get_default();
@@ -455,7 +462,7 @@ xfdesktop_file_utils_get_icon(GIcon *icon,
     GIcon *base_icon = NULL;
     gint size = MIN(width, height);
 
-    g_return_val_if_fail(width > 0 && height > 0 && icon != NULL, NULL);
+    g_return_val_if_fail(width > 0 && height > 0 && scale > 0 && icon != NULL, NULL);
 
     /* Extract the base icon if available */
     if(G_IS_EMBLEMED_ICON(icon))
@@ -467,9 +474,11 @@ xfdesktop_file_utils_get_icon(GIcon *icon,
         return NULL;
 
     if(G_IS_THEMED_ICON(base_icon)) {
-      GtkIconInfo *icon_info = gtk_icon_theme_lookup_by_gicon(itheme,
-                                                              base_icon, size,
-                                                              ITHEME_FLAGS);
+        GtkIconInfo *icon_info = gtk_icon_theme_lookup_by_gicon_for_scale(itheme,
+                                                                          base_icon,
+                                                                          size,
+                                                                          scale,
+                                                                          ITHEME_FLAGS);
       if(icon_info) {
           GdkPixbuf *pix_theme = gtk_icon_info_load_icon(icon_info, NULL);
           // these icons are owned by GtkIconTheme and shouldn't be modified
@@ -479,16 +488,16 @@ xfdesktop_file_utils_get_icon(GIcon *icon,
       }
     } else if(G_IS_LOADABLE_ICON(base_icon)) {
         GInputStream *stream = g_loadable_icon_load(G_LOADABLE_ICON(base_icon),
-                                                    size, NULL, NULL, NULL);
+                                                    size * scale, NULL, NULL, NULL);
         if(stream) {
-            pix = gdk_pixbuf_new_from_stream_at_scale(stream, width, height, TRUE, NULL, NULL);
+            pix = gdk_pixbuf_new_from_stream_at_scale(stream, width * scale, height * scale, TRUE, NULL, NULL);
             g_object_unref(stream);
         }
     } else if(G_IS_FILE_ICON(base_icon)) {
         GFile *file = g_file_icon_get_file(G_FILE_ICON(icon));
         gchar *path = g_file_get_path(file);
 
-        pix = gdk_pixbuf_new_from_file_at_size(path, width, height, NULL);
+        pix = gdk_pixbuf_new_from_file_at_size(path, width * scale, height * scale, NULL);
 
         g_free(path);
         g_object_unref(file);
@@ -498,13 +507,13 @@ xfdesktop_file_utils_get_icon(GIcon *icon,
         gint pix_width = gdk_pixbuf_get_width(pix);
         gint pix_height = gdk_pixbuf_get_height(pix);
 
-        if (pix_width > width || pix_height > height) {
-            GdkPixbuf *scaled = exo_gdk_pixbuf_scale_down(pix, TRUE, width, height);
+        if (pix_width > width * scale || pix_height > height * scale) {
+            GdkPixbuf *scaled = exo_gdk_pixbuf_scale_down(pix, TRUE, width * scale, height * scale);
             g_object_unref(pix);
             pix = scaled;
         }
     } else {
-        pix = xfdesktop_file_utils_get_fallback_icon(size);
+        pix = xfdesktop_file_utils_get_fallback_icon(size, scale);
         if (G_UNLIKELY(pix == NULL)) {
             g_warning("Unable to find fallback icon");
             return NULL;
@@ -513,7 +522,7 @@ xfdesktop_file_utils_get_icon(GIcon *icon,
 
     /* Add the emblems */
     if(G_IS_EMBLEMED_ICON(icon))
-        xfdesktop_file_utils_add_emblems(pix, g_emblemed_icon_get_emblems(G_EMBLEMED_ICON(icon)));
+        xfdesktop_file_utils_add_emblems(pix, g_emblemed_icon_get_emblems(G_EMBLEMED_ICON(icon)), scale);
 
     if(opacity != 100) {
         GdkPixbuf *tmp = exo_gdk_pixbuf_lucent(pix, opacity);
@@ -525,7 +534,9 @@ xfdesktop_file_utils_get_icon(GIcon *icon,
 }
 
 static void
-xfdesktop_file_utils_add_emblems(GdkPixbuf *pix, GList *emblems)
+xfdesktop_file_utils_add_emblems(GdkPixbuf *pix,
+                                 GList *emblems,
+                                 gint scale_factor)
 {
     GdkPixbuf *emblem_pix = NULL;
     gint max_emblems;
@@ -550,10 +561,11 @@ xfdesktop_file_utils_add_emblems(GdkPixbuf *pix, GList *emblems)
         iter != NULL && position < max_emblems; iter = iter->prev) {
         /* extract the icon from the emblem and load it */
         GIcon *emblem = g_emblem_get_icon(iter->data);
-        GtkIconInfo *icon_info = gtk_icon_theme_lookup_by_gicon(itheme,
-                                                                emblem,
-                                                                emblem_size,
-                                                                ITHEME_FLAGS);
+        GtkIconInfo *icon_info = gtk_icon_theme_lookup_by_gicon_for_scale(itheme,
+                                                                          emblem,
+                                                                          emblem_size,
+                                                                          scale_factor,
+                                                                          ITHEME_FLAGS);
         if(icon_info) {
             emblem_pix = gtk_icon_info_load_icon(icon_info, NULL);
             g_object_unref(icon_info);
