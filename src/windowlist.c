@@ -546,7 +546,9 @@ windowlist_init(XfconfChannel *channel)
 }
 
 void
-windowlist_cleanup(void)
+windowlist_cleanup(XfconfChannel *channel)
 {
-    /* notused */
+    g_signal_handlers_disconnect_by_func(channel,
+                                         G_CALLBACK(windowlist_settings_changed),
+                                         NULL);
 }
