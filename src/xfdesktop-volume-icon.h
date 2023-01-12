@@ -55,6 +55,7 @@ XfdesktopVolumeIcon *xfdesktop_volume_icon_new(GVolume *volume,
 
 GVolume *xfdesktop_volume_icon_peek_volume(XfdesktopVolumeIcon *icon);
 
+gchar *xfdesktop_volume_icon_sort_key_for_volume(GVolume *volume);
 
 G_END_DECLS
 

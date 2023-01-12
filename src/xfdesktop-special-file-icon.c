@@ -68,12 +68,8 @@ struct _XfdesktopSpecialFileIconPrivate
 
 static void xfdesktop_special_file_icon_finalize(GObject *obj);
 
-static GdkPixbuf *xfdesktop_special_file_icon_peek_pixbuf(XfdesktopIcon *icon,
-                                                          gint width, gint height);
 static const gchar *xfdesktop_special_file_icon_peek_label(XfdesktopIcon *icon);
 static gchar *xfdesktop_special_file_icon_get_identifier(XfdesktopIcon *icon);
-static GdkPixbuf *xfdesktop_special_file_icon_peek_tooltip_pixbuf(XfdesktopIcon *icon,
-                                                                  gint width, gint height);
 static const gchar *xfdesktop_special_file_icon_peek_tooltip(XfdesktopIcon *icon);
 static GdkDragAction xfdesktop_special_file_icon_get_allowed_drag_actions(XfdesktopIcon *icon);
 static GdkDragAction xfdesktop_special_file_icon_get_allowed_drop_actions(XfdesktopIcon *icon,
@@ -84,6 +80,7 @@ static gboolean xfdesktop_special_file_icon_do_drop_dest(XfdesktopIcon *icon,
 static gboolean xfdesktop_special_file_icon_populate_context_menu(XfdesktopIcon *icon,
                                                                   GtkWidget *menu);
 
+static GIcon * xfdesktop_special_file_icon_get_gicon(XfdesktopFileIcon *icon);
 static GFileInfo *xfdesktop_special_file_icon_peek_file_info(XfdesktopFileIcon *icon);
 static GFileInfo *xfdesktop_special_file_icon_peek_filesystem_info(XfdesktopFileIcon *icon);
 static GFile *xfdesktop_special_file_icon_peek_file(XfdesktopFileIcon *icon);
@@ -119,16 +116,15 @@ xfdesktop_special_file_icon_class_init(XfdesktopSpecialFileIconClass *klass)
 
     gobject_class->finalize = xfdesktop_special_file_icon_finalize;
 
-    icon_class->peek_pixbuf = xfdesktop_special_file_icon_peek_pixbuf;
     icon_class->peek_label = xfdesktop_special_file_icon_peek_label;
     icon_class->get_identifier = xfdesktop_special_file_icon_get_identifier;
-    icon_class->peek_tooltip_pixbuf = xfdesktop_special_file_icon_peek_tooltip_pixbuf;
     icon_class->peek_tooltip = xfdesktop_special_file_icon_peek_tooltip;
     icon_class->get_allowed_drag_actions = xfdesktop_special_file_icon_get_allowed_drag_actions;
     icon_class->get_allowed_drop_actions = xfdesktop_special_file_icon_get_allowed_drop_actions;
     icon_class->do_drop_dest = xfdesktop_special_file_icon_do_drop_dest;
     icon_class->populate_context_menu = xfdesktop_special_file_icon_populate_context_menu;
 
+    file_icon_class->get_gicon = xfdesktop_special_file_icon_get_gicon;
     file_icon_class->peek_file_info = xfdesktop_special_file_icon_peek_file_info;
     file_icon_class->peek_filesystem_info = xfdesktop_special_file_icon_peek_filesystem_info;
     file_icon_class->peek_file = xfdesktop_special_file_icon_peek_file;
@@ -144,11 +140,6 @@ static void
 xfdesktop_special_file_icon_finalize(GObject *obj)
 {
     XfdesktopSpecialFileIcon *icon = XFDESKTOP_SPECIAL_FILE_ICON(obj);
-    GtkIconTheme *itheme = gtk_icon_theme_get_for_screen(icon->priv->gscreen);
-
-    g_signal_handlers_disconnect_by_func(G_OBJECT(itheme),
-                                         G_CALLBACK(xfdesktop_icon_invalidate_pixbuf),
-                                         icon);
 
     if(icon->priv->monitor) {
         g_signal_handlers_disconnect_by_func(icon->priv->monitor,
@@ -198,12 +189,13 @@ xfdesktop_special_file_icon_tfi_init(ThunarxFileInfoIface *iface)
 
 
 static GIcon *
-xfdesktop_special_file_icon_load_icon(XfdesktopIcon *icon)
+xfdesktop_special_file_icon_get_gicon(XfdesktopFileIcon *icon)
 {
     XfdesktopSpecialFileIcon *special_icon = XFDESKTOP_SPECIAL_FILE_ICON(icon);
     XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
     gchar *icon_name = NULL;
     GFile *parent = NULL;
+    GIcon *base_gicon = NULL;
     GIcon *gicon = NULL;
 
     TRACE("entering");
@@ -227,57 +219,22 @@ xfdesktop_special_file_icon_load_icon(XfdesktopIcon *icon)
 
     /* Create the themed icon for it */
     if(icon_name) {
-        gicon = g_themed_icon_new(icon_name);
+        base_gicon = g_themed_icon_new(icon_name);
         g_free(icon_name);
     }
 
     /* If we still don't have an icon, use the default */
-    if(!G_IS_ICON(gicon)) {
-        gicon = g_file_info_get_icon(special_icon->priv->file_info);
-        if(G_IS_ICON(gicon))
-            g_object_ref(gicon);
+    if(!G_IS_ICON(base_gicon)) {
+        base_gicon = g_file_info_get_icon(special_icon->priv->file_info);
+        if(G_IS_ICON(base_gicon))
+            g_object_ref(base_gicon);
     }
 
-    g_object_set(file_icon, "gicon", gicon, NULL);
-
     /* Add any user set emblems */
-    gicon = xfdesktop_file_icon_add_emblems(file_icon);
+    gicon = xfdesktop_file_icon_add_emblems(file_icon, base_gicon);
+    g_object_unref(base_gicon);
 
     return gicon;
-}
-
-static GdkPixbuf *
-xfdesktop_special_file_icon_peek_pixbuf(XfdesktopIcon *icon,
-                                        gint width, gint height)
-{
-    GIcon *gicon = NULL;
-    GdkPixbuf *pix = NULL;
-
-    if(!xfdesktop_file_icon_has_gicon(XFDESKTOP_FILE_ICON(icon)))
-        gicon = xfdesktop_special_file_icon_load_icon(icon);
-    else
-        g_object_get(XFDESKTOP_FILE_ICON(icon), "gicon", &gicon, NULL);
-
-    pix = xfdesktop_file_utils_get_icon(gicon, height, height, 100);
-
-    return pix;
-}
-
-static GdkPixbuf *
-xfdesktop_special_file_icon_peek_tooltip_pixbuf(XfdesktopIcon *icon,
-                                                gint width, gint height)
-{
-    GIcon *gicon = NULL;
-    GdkPixbuf *tooltip_pix = NULL;
-
-    if(!xfdesktop_file_icon_has_gicon(XFDESKTOP_FILE_ICON(icon)))
-        gicon = xfdesktop_special_file_icon_load_icon(icon);
-    else
-        g_object_get(XFDESKTOP_FILE_ICON(icon), "gicon", &gicon, NULL);
-
-    tooltip_pix = xfdesktop_file_utils_get_icon(gicon, height, height, 100);
-
-    return tooltip_pix;
 }
 
 static const gchar *
@@ -485,14 +442,11 @@ xfdesktop_special_file_icon_trash_open(GtkWidget *w,
                                        gpointer user_data)
 {
     XfdesktopSpecialFileIcon *file_icon = XFDESKTOP_SPECIAL_FILE_ICON(user_data);
-    GtkWidget *icon_view, *toplevel;
-
-    icon_view = xfdesktop_icon_peek_icon_view(XFDESKTOP_ICON(file_icon));
-    toplevel = gtk_widget_get_toplevel(icon_view);
+    GtkWindow *toplevel = xfdesktop_find_toplevel(w);
 
     xfdesktop_file_utils_open_folder(file_icon->priv->file,
                                      file_icon->priv->gscreen,
-                                     GTK_WINDOW(toplevel));
+                                     toplevel);
 }
 
 static void
@@ -500,13 +454,9 @@ xfdesktop_special_file_icon_trash_empty(GtkWidget *w,
                                         gpointer user_data)
 {
     XfdesktopSpecialFileIcon *file_icon = XFDESKTOP_SPECIAL_FILE_ICON(user_data);
-    GtkWidget *icon_view, *toplevel;
+    GtkWindow *toplevel = xfdesktop_find_toplevel(w);
 
-    icon_view = xfdesktop_icon_peek_icon_view(XFDESKTOP_ICON(file_icon));
-    toplevel = gtk_widget_get_toplevel(icon_view);
-
-    xfdesktop_file_utils_empty_trash(file_icon->priv->gscreen,
-                                     GTK_WINDOW(toplevel));
+    xfdesktop_file_utils_empty_trash(file_icon->priv->gscreen, toplevel);
 }
 
 static gboolean
@@ -620,7 +570,6 @@ xfdesktop_special_file_icon_changed(GFileMonitor *monitor,
 
     /* update the icon */
     xfdesktop_file_icon_invalidate_icon(XFDESKTOP_FILE_ICON(special_file_icon));
-    xfdesktop_icon_invalidate_pixbuf(XFDESKTOP_ICON(special_file_icon));
     xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(special_file_icon));
 }
 
@@ -668,29 +617,28 @@ xfdesktop_special_file_icon_update_trash_count(XfdesktopSpecialFileIcon *special
 
 /* public API */
 
+
+GFile *
+xfdesktop_special_file_icon_file_for_type(XfdesktopSpecialFileIconType type)
+{
+    switch (type) {
+        case XFDESKTOP_SPECIAL_FILE_ICON_FILESYSTEM:
+            return g_file_new_for_uri("file:///");
+        case XFDESKTOP_SPECIAL_FILE_ICON_HOME:
+            return g_file_new_for_path(xfce_get_homedir());
+        case XFDESKTOP_SPECIAL_FILE_ICON_TRASH:
+            return g_file_new_for_uri("trash:///");
+        default:
+            g_assert_not_reached();
+    }
+}
+
 XfdesktopSpecialFileIcon *
 xfdesktop_special_file_icon_new(XfdesktopSpecialFileIconType type,
                                 GdkScreen *screen)
 {
     XfdesktopSpecialFileIcon *special_file_icon;
-    GFile *file = NULL;
-
-    switch(type) {
-        case XFDESKTOP_SPECIAL_FILE_ICON_FILESYSTEM:
-            file = g_file_new_for_uri("file:///");
-            break;
-
-        case XFDESKTOP_SPECIAL_FILE_ICON_HOME:
-            file = g_file_new_for_path(xfce_get_homedir());
-            break;
-
-        case XFDESKTOP_SPECIAL_FILE_ICON_TRASH:
-            file = g_file_new_for_uri("trash:///");
-            break;
-
-        default:
-            g_return_val_if_reached(NULL);
-    }
+    GFile *file = xfdesktop_special_file_icon_file_for_type(type);
 
     special_file_icon = g_object_new(XFDESKTOP_TYPE_SPECIAL_FILE_ICON, NULL);
     special_file_icon->priv->type = type;
@@ -714,11 +662,6 @@ xfdesktop_special_file_icon_new(XfdesktopSpecialFileIconType type,
     /* update the trash full state */
     if(type == XFDESKTOP_SPECIAL_FILE_ICON_TRASH)
         xfdesktop_special_file_icon_update_trash_count(special_file_icon);
-
-    g_signal_connect_swapped(G_OBJECT(gtk_icon_theme_get_for_screen(screen)),
-                             "changed",
-                             G_CALLBACK(xfdesktop_icon_invalidate_pixbuf),
-                             special_file_icon);
 
     special_file_icon->priv->monitor = g_file_monitor(special_file_icon->priv->file,
                                                       G_FILE_MONITOR_NONE,

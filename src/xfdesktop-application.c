@@ -146,20 +146,21 @@ struct _XfdesktopApplicationClass
 const gchar *fallback_CSS =
 "XfdesktopIconView.view {"
 "	background: transparent;"
-"	color: @theme_selected_fg_color;"
+"}"
+"XfdesktopIconView.view.label {"
 "	border-radius: 3px;"
-"}"
-"XfdesktopIconView.view:active {"
-"	background: alpha(@theme_selected_bg_color, 0.5);"
-"	text-shadow: 0 1px 1px black;"
-"}"
-"XfdesktopIconView.view .label {"
 "	text-shadow: 1px 1px 2px black;"
 "}"
-"XfdesktopIconView.view .label:active {"
+"XfdesktopIconView.view.label:selected:backdrop {"
+"	background: alpha(@theme_selected_bg_color, 0.5);"
+"	color: @theme_selected_fg_color;"
+"	text-shadow: 0 1px 1px black;"
+"}"
+"XfdesktopIconView.view.label:selected {"
+"	background: @theme_selected_bg_color;"
 "	color: @theme_selected_fg_color;"
 "}"
-"XfdesktopIconView .rubberband {"
+"XfdesktopIconView.rubberband {"
 "	background: alpha(@theme_selected_bg_color, 0.2);"
 "	border: 1px solid @theme_selected_bg_color;"
 "	border-radius: 0;"
@@ -167,6 +168,7 @@ const gchar *fallback_CSS =
 "XfdesktopIconView:active {"
 "	color: @theme_selected_bg_color;"
 "}";
+
 
 G_DEFINE_TYPE(XfdesktopApplication, xfdesktop_application, G_TYPE_APPLICATION)
 

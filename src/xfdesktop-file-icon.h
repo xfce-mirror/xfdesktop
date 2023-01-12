@@ -51,6 +51,7 @@ struct _XfdesktopFileIconClass
     XfdesktopIconClass parent;
 
     /*< virtual functions >*/
+    GIcon *(*get_gicon)(XfdesktopFileIcon *icon);
     GFileInfo *(*peek_file_info)(XfdesktopFileIcon *icon);
     GFileInfo *(*peek_filesystem_info)(XfdesktopFileIcon *icon);
     GFile *(*peek_file)(XfdesktopFileIcon *icon);
@@ -58,6 +59,9 @@ struct _XfdesktopFileIconClass
 
     gboolean (*can_rename_file)(XfdesktopFileIcon *icon);
     gboolean (*can_delete_file)(XfdesktopFileIcon *icon);
+
+    guint (*hash)(XfdesktopFileIcon *icon);
+    gchar *(*get_sort_key)(XfdesktopFileIcon *icon);
 };
 
 GType xfdesktop_file_icon_get_type(void) G_GNUC_CONST;
@@ -72,11 +76,23 @@ gboolean xfdesktop_file_icon_can_rename_file(XfdesktopFileIcon *icon);
 
 gboolean xfdesktop_file_icon_can_delete_file(XfdesktopFileIcon *icon);
 
-GIcon *xfdesktop_file_icon_add_emblems(XfdesktopFileIcon *icon);
+GIcon *xfdesktop_file_icon_add_emblems(XfdesktopFileIcon *icon,
+                                       GIcon *gicon);
 
 void xfdesktop_file_icon_invalidate_icon(XfdesktopFileIcon *icon);
 
 gboolean xfdesktop_file_icon_has_gicon(XfdesktopFileIcon *icon);
+GIcon *xfdesktop_file_icon_get_gicon(XfdesktopFileIcon *icon);
+
+gpointer xfdesktop_file_icon_get_hash_key(XfdesktopFileIcon *icon);
+void xfdesktop_file_icon_free_hash_key(gpointer key);
+
+const gchar *xfdesktop_file_icon_peek_sort_key(XfdesktopFileIcon *icon);
+guint xfdesktop_file_icon_hash(gconstpointer icon);
+gint xfdesktop_file_icon_equal(gconstpointer a,
+                               gconstpointer b);
+
+gchar *xfdesktop_file_icon_sort_key_for_file(GFile *file);
 
 G_END_DECLS
 

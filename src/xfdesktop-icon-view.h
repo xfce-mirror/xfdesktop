@@ -22,9 +22,7 @@
 #define __XFDESKTOP_ICON_VIEW_H__
 
 #include <gtk/gtk.h>
-
-#include "xfdesktop-icon.h"
-#include "xfdesktop-icon-view-manager.h"
+#include <xfconf/xfconf.h>
 
 G_BEGIN_DECLS
 
@@ -36,8 +34,12 @@ typedef struct _XfdesktopIconView         XfdesktopIconView;
 typedef struct _XfdesktopIconViewClass    XfdesktopIconViewClass;
 typedef struct _XfdesktopIconViewPrivate  XfdesktopIconViewPrivate;
 
-typedef void (*XfdesktopIconViewIconInitFunc)(XfdesktopIconView *icon_view);
-typedef void (*XfdesktopIconViewIconFiniFunc)(XfdesktopIconView *icon_view);
+typedef enum
+{
+    XFDESKTOP_ICON_VIEW_GRAVITY_HORIZONTAL = 1 << 0,
+    XFDESKTOP_ICON_VIEW_GRAVITY_RIGHT      = 1 << 1,
+    XFDESKTOP_ICON_VIEW_GRAVITY_BOTTOM     = 1 << 2,
+} XfdesktopIconViewGravity;
 
 struct _XfdesktopIconView
 {
@@ -54,6 +56,21 @@ struct _XfdesktopIconViewClass
     /*< signals >*/
     void (*icon_selection_changed)(XfdesktopIconView *icon_view);
     void (*icon_activated)(XfdesktopIconView *icon_view);
+    void (*icon_moved)(XfdesktopIconView *icon_view,
+                       GtkTreeIter *iter,
+                       gint new_row,
+                       gint new_col);
+    gboolean (*query_icon_tooltip)(XfdesktopIconView *icon_view,
+                                   GtkTreeIter *iter,
+                                   gint x,
+                                   gint y,
+                                   gboolean keyboard_tooltip,
+                                   GtkTooltip *tooltip);
+
+    void (*start_grid_resize)(XfdesktopIconView *icon_view,
+                              gint new_rows,
+                              gint new_cols);
+    void (*end_grid_resize)(XfdesktopIconView *icon_view);
 
     void (*select_all)(XfdesktopIconView *icon_view);
     void (*unselect_all)(XfdesktopIconView *icon_view);
@@ -72,16 +89,30 @@ struct _XfdesktopIconViewClass
 
 GType xfdesktop_icon_view_get_type(void) G_GNUC_CONST;
 
-GtkWidget *xfdesktop_icon_view_new(XfdesktopIconViewManager *manager);
+GtkWidget *xfdesktop_icon_view_new(XfconfChannel *channel) G_GNUC_WARN_UNUSED_RESULT;
+GtkWidget *xfdesktop_icon_view_new_with_model(XfconfChannel *channel,
+                                              GtkTreeModel *model) G_GNUC_WARN_UNUSED_RESULT;
 
-XfdesktopIconViewManager *xfdesktop_icon_view_get_manager(XfdesktopIconView *icon_view);
+void xfdesktop_icon_view_set_model(XfdesktopIconView *icon_view,
+                                   GtkTreeModel *model);
+GtkTreeModel *xfdesktop_icon_view_get_model(XfdesktopIconView *icon_view);
 
-void xfdesktop_icon_view_add_item(XfdesktopIconView *icon_view,
-                                  XfdesktopIcon *icon);
-
-void xfdesktop_icon_view_remove_item(XfdesktopIconView *icon_view,
-                                     XfdesktopIcon *icon);
-void xfdesktop_icon_view_remove_all(XfdesktopIconView *icon_view);
+void xfdesktop_icon_view_set_pixbuf_column(XfdesktopIconView *icon_view,
+                                           gint column);
+void xfdesktop_icon_view_set_text_column(XfdesktopIconView *icon_view,
+                                         gint column);
+void xfdesktop_icon_view_set_search_column(XfdesktopIconView *icon_view,
+                                           gint column);
+void xfdesktop_icon_view_set_sort_priority_column(XfdesktopIconView *icon_view,
+                                                  gint column);
+void xfdesktop_icon_view_set_tooltip_icon_column(XfdesktopIconView *icon_view,
+                                                 gint column);
+void xfdesktop_icon_view_set_tooltip_text_column(XfdesktopIconView *icon_view,
+                                                 gint column);
+void xfdesktop_icon_view_set_row_column(XfdesktopIconView *icon_view,
+                                        gint column);
+void xfdesktop_icon_view_set_col_column(XfdesktopIconView *icon_view,
+                                        gint column);
 
 void xfdesktop_icon_view_set_selection_mode(XfdesktopIconView *icon_view,
                                             GtkSelectionMode mode);
@@ -99,47 +130,51 @@ void xfdesktop_icon_view_enable_drag_dest(XfdesktopIconView *icon_view,
 void xfdesktop_icon_view_unset_drag_source(XfdesktopIconView *icon_view);
 void xfdesktop_icon_view_unset_drag_dest(XfdesktopIconView *icon_view);
 
-XfdesktopIcon *xfdesktop_icon_view_widget_coords_to_item(XfdesktopIconView *icon_view,
-                                                         gint wx,
-                                                         gint wy);
+gboolean xfdesktop_icon_view_widget_coords_to_item(XfdesktopIconView *icon_view,
+                                                   gint wx,
+                                                   gint wy,
+                                                   GtkTreeIter *iter);
 
-GList *xfdesktop_icon_view_get_selected_items(XfdesktopIconView *icon_view);
+GList *xfdesktop_icon_view_get_selected_items(XfdesktopIconView *icon_view) G_GNUC_WARN_UNUSED_RESULT;
 
 void xfdesktop_icon_view_select_item(XfdesktopIconView *icon_view,
-                                     XfdesktopIcon *icon);
+                                     GtkTreeIter *iter);
 void xfdesktop_icon_view_select_all(XfdesktopIconView *icon_view);
 void xfdesktop_icon_view_unselect_item(XfdesktopIconView *icon_view,
-                                       XfdesktopIcon *icon);
+                                       GtkTreeIter *iter);
 void xfdesktop_icon_view_unselect_all(XfdesktopIconView *icon_view);
 
 void xfdesktop_icon_view_set_icon_size(XfdesktopIconView *icon_view,
-                                       guint icon_size);
-guint xfdesktop_icon_view_get_icon_size(XfdesktopIconView *icon_view);
+                                       gint icon_size);
+gint xfdesktop_icon_view_get_icon_size(XfdesktopIconView *icon_view);
 
-void xfdesktop_icon_view_set_primary(XfdesktopIconView *icon_view,
-                                     gboolean primary);
+void xfdesktop_icon_view_set_show_icons_on_primary(XfdesktopIconView *icon_view,
+                                                   gboolean primary);
 
 void xfdesktop_icon_view_set_font_size(XfdesktopIconView *icon_view,
                                        gdouble font_size_points);
 gdouble xfdesktop_icon_view_get_font_size(XfdesktopIconView *icon_view);
-void xfdesktop_icon_view_set_center_text (XfdesktopIconView *icon_view,
-                                          gboolean center_text);
+void xfdesktop_icon_view_set_use_font_size(XfdesktopIconView *icon_view,
+                                           gboolean use_font_size);
+
+void xfdesktop_icon_view_set_center_text(XfdesktopIconView *icon_view,
+                                         gboolean center_text);
+
+gboolean xfdesktop_icon_view_get_single_click(XfdesktopIconView *icon_view);
+void xfdesktop_icon_view_set_single_click(XfdesktopIconView *icon_view,
+                                          gboolean single_click);
+
+void xfdesktop_icon_view_set_gravity(XfdesktopIconView *icon_view,
+                                     XfdesktopIconViewGravity gravity);
+
+void xfdesktop_icon_view_set_show_tooltips(XfdesktopIconView *icon_view,
+                                           gboolean show_tooltips);
+gint xfdesktop_icon_view_get_tooltip_icon_size(XfdesktopIconView *icon_view);
 
 GtkWidget *xfdesktop_icon_view_get_window_widget(XfdesktopIconView *icon_view);
 
-gboolean
-xfdesktop_get_workarea_single(XfdesktopIconView *icon_view,
-                              guint ws_num,
-                              gint *xorigin,
-                              gint *yorigin,
-                              gint *width,
-                              gint *height);
-
-void xfdesktop_icon_view_sort_icons(XfdesktopIconView *icon_view);
-
-#if defined(DEBUG) && DEBUG > 0
-guint _xfdesktop_icon_view_n_items(XfdesktopIconView *icon_view);
-#endif
+void xfdesktop_icon_view_sort_icons(XfdesktopIconView *icon_view,
+                                    GtkSortType sort_type);
 
 G_END_DECLS
 
