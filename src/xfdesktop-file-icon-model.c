@@ -50,6 +50,9 @@ static void xfdesktop_file_icon_model_get_value(GtkTreeModel *model,
                                                 gint column,
                                                 GValue *value);
 
+static void xfdesktop_file_icon_model_item_free(XfdesktopIconViewModel *ivmodel,
+                                                gpointer item);
+
 
 G_DEFINE_TYPE_WITH_CODE(XfdesktopFileIconModel,
                         xfdesktop_file_icon_model,
@@ -63,7 +66,7 @@ xfdesktop_file_icon_model_class_init(XfdesktopFileIconModelClass *klass)
     XfdesktopIconViewModelClass *ivmodel_class = XFDESKTOP_ICON_VIEW_MODEL_CLASS(klass);
 
     ivmodel_class->model_item_ref = g_object_ref;
-    ivmodel_class->model_item_free = g_object_unref;
+    ivmodel_class->model_item_free = xfdesktop_file_icon_model_item_free;
     ivmodel_class->model_item_hash = xfdesktop_file_icon_hash;
     ivmodel_class->model_item_equal = xfdesktop_file_icon_equal;
 }
@@ -173,6 +176,18 @@ xfdesktop_file_icon_model_get_value(GtkTreeModel *model,
     }
 }
 
+static void
+xfdesktop_file_icon_model_item_free(XfdesktopIconViewModel *ivmodel,
+                                    gpointer item)
+{
+    XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(item);
+
+    g_signal_handlers_disconnect_by_func(icon,
+                                         G_CALLBACK(xfdesktop_file_icon_model_changed),
+                                         ivmodel);
+    g_object_unref(icon);
+}
+
 
 XfdesktopFileIconModel *
 xfdesktop_file_icon_model_new(void)
@@ -187,6 +202,11 @@ xfdesktop_file_icon_model_append(XfdesktopFileIconModel *fmodel,
 {
     g_return_if_fail(XFDESKTOP_IS_FILE_ICON_MODEL(fmodel));
     g_return_if_fail(XFDESKTOP_IS_FILE_ICON(icon));
+
+    g_signal_connect_swapped(icon, "label-changed",
+                             G_CALLBACK(xfdesktop_file_icon_model_changed), fmodel);
+    g_signal_connect_swapped(icon, "pixbuf-changed",
+                             G_CALLBACK(xfdesktop_file_icon_model_changed), fmodel);
 
     xfdesktop_icon_view_model_append(XFDESKTOP_ICON_VIEW_MODEL(fmodel), icon, icon, iter);
 }

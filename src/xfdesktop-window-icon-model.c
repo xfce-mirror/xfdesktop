@@ -78,6 +78,9 @@ static void xfdesktop_window_icon_model_get_value(GtkTreeModel *model,
                                                   gint column,
                                                   GValue *value);
 
+static void xfdesktop_window_icon_model_item_free(XfdesktopIconViewModel *ivmodel,
+                                                  gpointer item);
+
 
 G_DEFINE_TYPE_WITH_CODE(XfdesktopWindowIconModel,
                         xfdesktop_window_icon_model,
@@ -91,7 +94,7 @@ xfdesktop_window_icon_model_class_init(XfdesktopWindowIconModelClass *klass)
     XfdesktopIconViewModelClass *ivmodel_class = XFDESKTOP_ICON_VIEW_MODEL_CLASS(klass);
 
     ivmodel_class->model_item_ref = NULL;
-    ivmodel_class->model_item_free = (void (*)(gpointer))model_item_free;
+    ivmodel_class->model_item_free = xfdesktop_window_icon_model_item_free;
     ivmodel_class->model_item_hash = g_direct_hash;
     ivmodel_class->model_item_equal = g_direct_equal;
 }
@@ -177,6 +180,19 @@ xfdesktop_window_icon_model_get_value(GtkTreeModel *model,
     }
 }
 
+static void
+xfdesktop_window_icon_model_item_free(XfdesktopIconViewModel *ivmodel,
+                                      gpointer item)
+
+{
+    ModelItem *model_item = (ModelItem *)item;
+
+    g_signal_handlers_disconnect_by_func(model_item->window,
+                                         G_CALLBACK(xfdesktop_window_icon_model_changed),
+                                         ivmodel);
+    model_item_free(model_item);
+}
+
 
 XfdesktopWindowIconModel *
 xfdesktop_window_icon_model_new(void)
@@ -193,6 +209,11 @@ xfdesktop_window_icon_model_append(XfdesktopWindowIconModel *wmodel,
 
     g_return_if_fail(XFDESKTOP_IS_WINDOW_ICON_MODEL(wmodel));
     g_return_if_fail(XFW_IS_WINDOW(window));
+
+    g_signal_connect_swapped(window, "name-changed",
+                             G_CALLBACK(xfdesktop_window_icon_model_changed), wmodel);
+    g_signal_connect_swapped(window, "icon-changed",
+                             G_CALLBACK(xfdesktop_window_icon_model_changed), wmodel);
 
     model_item = model_item_new(window);
     xfdesktop_icon_view_model_append(XFDESKTOP_ICON_VIEW_MODEL(wmodel), window, model_item, iter);

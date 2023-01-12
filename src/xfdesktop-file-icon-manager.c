@@ -252,9 +252,6 @@ static void xfdesktop_file_icon_manager_set_show_removable_media(XfdesktopFileIc
 static void xfdesktop_file_icon_manager_set_show_delete_menu(XfdesktopFileIconManager *manager,
                                                              gboolean show_delete_menu);
 
-static void xfdesktop_file_icon_manager_icon_changed(XfdesktopFileIconManager *fmanager,
-                                                     XfdesktopFileIcon *icon);
-
 static void xfdesktop_file_icon_manager_update_image(GtkWidget *widget,
                                                      gchar *srcfile,
                                                      gchar *thumbfile,
@@ -2440,13 +2437,6 @@ xfdesktop_file_icon_manager_save_icons_idled(gpointer user_data)
 }
 
 static void
-xfdesktop_file_icon_manager_icon_changed(XfdesktopFileIconManager *fmanager,
-                                         XfdesktopFileIcon *icon)
-{
-    xfdesktop_file_icon_model_changed(fmanager->priv->model, icon);
-}
-
-static void
 xfdesktop_file_icon_manager_save_icons(XfdesktopFileIconManager *fmanager)
 {
     g_return_if_fail(XFDESKTOP_IS_FILE_ICON_MANAGER(fmanager));
@@ -2994,13 +2984,6 @@ xfdesktop_file_icon_manager_add_icon(XfdesktopFileIconManager *fmanager,
     {
         xfdesktop_icon_set_position(XFDESKTOP_ICON(icon), row, col);
     }
-
-    g_signal_connect_swapped(G_OBJECT(icon), "pixbuf-changed",
-                             G_CALLBACK(xfdesktop_file_icon_manager_icon_changed),
-                             fmanager);
-    g_signal_connect_swapped(G_OBJECT(icon), "label-changed",
-                             G_CALLBACK(xfdesktop_file_icon_manager_icon_changed),
-                             fmanager);
 
     g_hash_table_replace(fmanager->priv->icons, g_strdup(xfdesktop_file_icon_peek_sort_key(icon)), icon);
 

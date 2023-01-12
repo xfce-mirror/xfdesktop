@@ -61,14 +61,16 @@ struct _XfdesktopIconViewModelClass
     GObjectClass parent_class;
 
     gpointer (*model_item_ref)(gpointer model_item);
-    void (*model_item_free)(gpointer model_item);
+    void (*model_item_free)(XfdesktopIconViewModel *ivmodel, gpointer model_item);
     guint (*model_item_hash)(gconstpointer model_item);
     gint (*model_item_equal)(gconstpointer a, gconstpointer b);
 };
 
 GType xfdesktop_icon_view_model_get_type(void) G_GNUC_CONST;
 
-XfdesktopIconViewModel *xfdesktop_icon_view_model_new(void);
+void xfdesktop_icon_view_model_clear(XfdesktopIconViewModel *ivmodel);
+
+/* The following should only be called by subclasses */
 
 void xfdesktop_icon_view_model_append(XfdesktopIconViewModel *ivmodel,
                                       gpointer key,
@@ -84,8 +86,6 @@ gpointer xfdesktop_icon_view_model_get_model_item(XfdesktopIconViewModel *ivmode
 gboolean xfdesktop_icon_view_model_get_iter_for_key(XfdesktopIconViewModel *ivmodel,
                                                     gpointer key,
                                                     GtkTreeIter *iter);
-
-void xfdesktop_icon_view_model_clear(XfdesktopIconViewModel *fmodel);
 
 G_END_DECLS
 

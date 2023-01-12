@@ -116,7 +116,13 @@ xfdesktop_icon_view_model_finalize(GObject *obj)
     XfdesktopIconViewModelClass *klass = XFDESKTOP_ICON_VIEW_MODEL_GET_CLASS(ivmodel);
 
     g_hash_table_destroy(ivmodel->priv->model_items);
-    g_list_free_full(ivmodel->priv->items, klass->model_item_free);
+
+    for (GList *l = ivmodel->priv->items; l != NULL;) {
+        GList *link = l;
+        l = l->next;
+        klass->model_item_free(ivmodel, link->data);
+        g_list_free_1(link);
+    }
 
     G_OBJECT_CLASS(xfdesktop_icon_view_model_parent_class)->finalize(obj);
 }
@@ -308,6 +314,7 @@ xfdesktop_icon_view_model_iter_nth_child(GtkTreeModel *model,
     }
 }
 
+
 void
 xfdesktop_icon_view_model_append(XfdesktopIconViewModel *ivmodel,
                                  gpointer key,
@@ -363,7 +370,7 @@ xfdesktop_icon_view_model_remove(XfdesktopIconViewModel *ivmodel,
         g_assert(index >= 0);
 
         g_hash_table_remove(ivmodel->priv->model_items, key);
-        klass->model_item_free(item->data);
+        klass->model_item_free(ivmodel, item->data);
         ivmodel->priv->items = g_list_delete_link(ivmodel->priv->items, item);
 
         gtk_tree_model_row_deleted(GTK_TREE_MODEL(ivmodel), path);
@@ -457,7 +464,7 @@ xfdesktop_icon_view_model_clear(XfdesktopIconViewModel *ivmodel)
         GList *item = last;
         last = last->prev;
 
-        klass->model_item_free(item->data);
+        klass->model_item_free(ivmodel, item->data);
         ivmodel->priv->items = g_list_delete_link(ivmodel->priv->items, item);
         gtk_tree_model_row_deleted(GTK_TREE_MODEL(ivmodel), path);
         gtk_tree_path_free(path);
