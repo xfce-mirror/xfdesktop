@@ -1733,7 +1733,7 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager)
     XfdesktopFileIcon *file_icon = NULL;
     GFileInfo *info = NULL;
     GList *selected;
-    GtkWidget *mi, *img, *tmpl_menu;
+    GtkWidget *mi, *img;
     gboolean multi_sel, multi_sel_special = FALSE, got_custom_menu = FALSE;
     GFile *templates_dir = NULL, *home_dir;
     const gchar *templates_dir_path = NULL;
@@ -1847,14 +1847,30 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager)
                 if(file_icon == fmanager->priv->desktop_icon) {
                     /* Menu on the root desktop window */
                     GIcon *icon;
+                    GtkWidget *create_menu;
+                    const gchar *document_new_names[] = {
+                        "document-new",
+                        "document-new-symbolic",
+                    };
+
+                    icon = g_themed_icon_new_from_names((gchar **)document_new_names, G_N_ELEMENTS(document_new_names));
+                    img = gtk_image_new_from_gicon(icon, GTK_ICON_SIZE_MENU);
+                    mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Create New"), img);
+                    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+                    gtk_widget_show(mi);
+
+                    create_menu = gtk_menu_new();
+                    gtk_menu_set_reserve_toggle_size(GTK_MENU(create_menu), FALSE);
+                    gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi), create_menu);
+                    gtk_widget_show(create_menu);
 
                     /* create launcher item */
 
                     icon = g_themed_icon_new("application-x-executable");
                     img = gtk_image_new_from_gicon(icon, GTK_ICON_SIZE_MENU);
-                    mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Create _Launcher..."), img);
+                    mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Launcher..."), img);
                     g_object_set_data(G_OBJECT(mi), "xfdesktop-launcher-type", "Application");
-                    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+                    gtk_menu_shell_append(GTK_MENU_SHELL(create_menu), mi);
                     gtk_widget_show(mi);
 
                     g_signal_connect(G_OBJECT(mi), "activate",
@@ -1866,9 +1882,9 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager)
 
                     icon = g_themed_icon_new("insert-link");
                     img = gtk_image_new_from_gicon(icon, GTK_ICON_SIZE_MENU);
-                    mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Create _URL Link..."), img);
+                    mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_URL Link..."), img);
                     g_object_set_data(G_OBJECT(mi), "xfdesktop-launcher-type", "Link");
-                    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+                    gtk_menu_shell_append(GTK_MENU_SHELL(create_menu), mi);
                     gtk_widget_show(mi);
 
                     g_signal_connect(G_OBJECT(mi), "activate",
@@ -1880,8 +1896,8 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager)
 
                     icon = g_themed_icon_new("folder-new");
                     img = gtk_image_new_from_gicon(icon, GTK_ICON_SIZE_MENU);
-                    mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Create _Folder..."), img);
-                    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+                    mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Folder..."), img);
+                    gtk_menu_shell_append(GTK_MENU_SHELL(create_menu), mi);
                     gtk_widget_show(mi);
 
                     g_signal_connect(G_OBJECT(mi), "activate",
@@ -1891,14 +1907,18 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager)
 
                     /* create document submenu, 0 disables the sub-menu */
                     if(fmanager->priv->max_templates > 0) {
-                        img = gtk_image_new_from_icon_name("document-new", GTK_ICON_SIZE_MENU);
-                        mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Create _Document"), img);
+                        mi = gtk_separator_menu_item_new();
                         gtk_widget_show(mi);
-                        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+                        gtk_menu_shell_append(GTK_MENU_SHELL(create_menu), mi);
 
-                        tmpl_menu = gtk_menu_new();
-                        gtk_menu_set_reserve_toggle_size(GTK_MENU(tmpl_menu), FALSE);
-                        gtk_menu_item_set_submenu(GTK_MENU_ITEM(mi), tmpl_menu);
+                        /* add the "Empty File" template option */
+                        img = gtk_image_new_from_icon_name("text-x-generic", GTK_ICON_SIZE_MENU);
+                        mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Empty File"), img);
+                        gtk_widget_show(mi);
+                        gtk_menu_shell_append(GTK_MENU_SHELL(create_menu), mi);
+                        g_signal_connect(G_OBJECT(mi), "activate",
+                                         G_CALLBACK(xfdesktop_file_icon_template_item_activated),
+                                         fmanager);
 
                         /* check if XDG_TEMPLATES_DIR="$HOME" and don't show
                          * templates if so. */
@@ -1909,36 +1929,15 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager)
                         }
 
                         if(templates_dir && !g_file_equal(home_dir, templates_dir)) {
-                            xfdesktop_file_icon_menu_fill_template_menu(tmpl_menu,
+                            xfdesktop_file_icon_menu_fill_template_menu(create_menu,
                                                                         templates_dir,
                                                                         fmanager,
                                                                         FALSE);
                         }
 
-                        if(!gtk_container_get_children((GtkContainer*) tmpl_menu)) {
-                            img = gtk_image_new_from_icon_name("", GTK_ICON_SIZE_MENU);
-                            mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("No templates installed"), img);
-                            gtk_widget_set_sensitive(mi, FALSE);
-                            gtk_widget_show(mi);
-                            gtk_menu_shell_append(GTK_MENU_SHELL(tmpl_menu), mi);
-                        }
-
                         if(templates_dir)
                             g_object_unref(templates_dir);
                         g_object_unref(home_dir);
-
-                        mi = gtk_separator_menu_item_new();
-                        gtk_widget_show(mi);
-                        gtk_menu_shell_append(GTK_MENU_SHELL(tmpl_menu), mi);
-
-                        /* add the "Empty File" template option */
-                        img = gtk_image_new_from_icon_name("text-x-generic", GTK_ICON_SIZE_MENU);
-                        mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Empty File"), img);
-                        gtk_widget_show(mi);
-                        gtk_menu_shell_append(GTK_MENU_SHELL(tmpl_menu), mi);
-                        g_signal_connect(G_OBJECT(mi), "activate",
-                                         G_CALLBACK(xfdesktop_file_icon_template_item_activated),
-                                         fmanager);
                     }
                 } else {
                     /* Menu on folder icons */
