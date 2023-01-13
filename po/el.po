@@ -20,7 +20,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-12 12:53+0100\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
-"Last-Translator: Πέτρος Σαμαράς <psamaras1@gmail.com>, 2017\n"
+"Last-Translator: Ioannis LM, 2018,2022-2023\n"
 "Language-Team: Greek (http://www.transifex.com/xfce/xfdesktop/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -213,7 +213,7 @@ msgstr "Επιφάνεια εργασίας"
 
 #: ../settings/main.c:2373
 msgid "Unable to contact settings server"
-msgstr "Δεν ήταν δυνατή η επικοινωνία με τον εξυπηρετητή ρυθμίσεων"
+msgstr "Δεν ήταν δυνατή η επικοινωνία με το διακομιστή ρυθμίσεων"
 
 #: ../settings/main.c:2375
 msgid "Quit"
@@ -609,7 +609,7 @@ msgstr "Θέλετε σίγουρα να αφαιρέσετε το %d;\nΣημε
 #: ../src/windowlist.c:83
 #, c-format
 msgid "Do you really want to remove workspace %d"
-msgstr ""
+msgstr "Θέλετε σίγουρα να αφαιρέσετε το %d"
 
 #: ../src/windowlist.c:88
 #, c-format
@@ -626,7 +626,7 @@ msgstr "Θέλετε σίγουρα να αφαιρέσετε το %s;\nΣημε
 #: ../src/windowlist.c:93
 #, c-format
 msgid "Do you really want to remove workspace '%s'?"
-msgstr ""
+msgstr "Θέλετε σίγουρα να αφαιρέσετε το '%s';"
 
 #. Popup a dialog box confirming that the user wants to remove a
 #. * workspace
@@ -641,7 +641,7 @@ msgstr "Λίστα παραθύρων"
 #: ../src/windowlist.c:357
 #, c-format
 msgid "<b>Group %d, Workspace %d</b>"
-msgstr ""
+msgstr "<b>Ομάδα %d, %d</b>"
 
 #: ../src/windowlist.c:359
 #, c-format
