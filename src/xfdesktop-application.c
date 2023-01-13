@@ -148,6 +148,7 @@ const gchar *fallback_CSS =
 "	background: transparent;"
 "}"
 "XfdesktopIconView.view.label {"
+"	background: @theme_bg_color;"
 "	border-radius: 3px;"
 "	text-shadow: 1px 1px 2px black;"
 "}"
