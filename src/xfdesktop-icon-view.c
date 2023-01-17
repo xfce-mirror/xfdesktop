@@ -4096,6 +4096,8 @@ xfdesktop_icon_view_setup_grids_xinerama(XfdesktopIconView *icon_view)
 
             if(!bounded) {
                 xfdesktop_grid_unset_position_free_raw(icon_view, row, col, TOMBSTONE);
+            } else if (xfdesktop_icon_view_item_in_slot(icon_view, row, col) == TOMBSTONE) {
+                xfdesktop_grid_set_position_free(icon_view, row, col);
             }
         }
     }
@@ -4182,6 +4184,8 @@ xfdesktop_icon_view_size_grid(XfdesktopIconView *icon_view)
             memset(((guint8 *)icon_view->priv->grid_layout) + old_size, 0,
                    new_size - old_size);
         }
+        xfdesktop_icon_view_setup_grids_xinerama(icon_view);
+    } else if (old_nrows != new_nrows || old_ncols != new_ncols) {
         xfdesktop_icon_view_setup_grids_xinerama(icon_view);
     }
 

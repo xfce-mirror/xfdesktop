@@ -166,7 +166,7 @@ xfdesktop_icon_view_manager_constructed(GObject *obj)
     g_signal_connect(manager->priv->parent, "realize",
                      G_CALLBACK(xfdesktop_icon_view_manager_parent_realized), manager);
     g_signal_connect(manager->priv->parent, "unrealize",
-                     G_CALLBACK(xfdesktop_icon_view_manager_parent_realized), manager);
+                     G_CALLBACK(xfdesktop_icon_view_manager_parent_unrealized), manager);
 
     if (gtk_widget_get_realized(manager->priv->parent)) {
         xfdesktop_icon_view_manager_parent_realized(manager->priv->parent, manager);
@@ -278,6 +278,8 @@ xfdesktop_icon_view_manager_parent_realized(GtkWidget *parent,
     gdk_window_set_events(rootwin, gdk_window_get_events(rootwin) | GDK_PROPERTY_CHANGE_MASK);
     gdk_window_add_filter(rootwin, xfdesktop_icon_view_manager_rootwin_event_filter, manager);
     xfdesktop_icon_view_manager_update_workarea(manager);
+    g_signal_connect_swapped(parent, "notify::scale-factor",
+                             G_CALLBACK(xfdesktop_icon_view_manager_update_workarea), manager);
 }
 
 static void
