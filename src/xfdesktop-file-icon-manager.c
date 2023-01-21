@@ -1687,59 +1687,55 @@ xfdesktop_file_icon_menu_fill_template_menu(GtkWidget *menu,
 }
 
 #ifdef HAVE_THUNARX
-static void
-thunarx_action_callback (GtkAction *action,
-                         gpointer callback_data)
-{
-    thunarx_menu_item_activate (THUNARX_MENU_ITEM (callback_data));
-}
-
-
-
 static GtkWidget*
-xfdesktop_menu_create_menu_item_from_thunarx_menu_item (GObject *item)
+xfdesktop_menu_create_menu_item_from_thunarx_menu_item (GObject      *thunarx_menu_item,
+                                                        GtkMenuShell *menu_to_append_item)
 {
-    gchar *label, *icon_str;
+    gchar *label, *tooltip_text, *icon_str;
     GtkWidget *mi, *img = NULL;
+    ThunarxMenu  *thunarx_menu;
+    GList        *children;
+    GList        *lp;
+    GtkWidget    *submenu;
+    GIcon        *icon = NULL;
 
-    g_return_val_if_fail (THUNARX_IS_MENU_ITEM (item), NULL);
+    g_return_val_if_fail(THUNARX_IS_MENU_ITEM(thunarx_menu_item), NULL);
 
-    g_object_get (G_OBJECT (item),
-                  "label", &label,
-                  "icon", &icon_str,
+    g_object_get (G_OBJECT   (thunarx_menu_item),
+                  "label",   &label,
+                  "tooltip", &tooltip_text,
+                  "icon",    &icon_str,
+                  "menu",    &thunarx_menu,
                   NULL);
 
-    img = gtk_image_new_from_icon_name (icon_str == NULL ? "" : icon_str,
-                                        GTK_ICON_SIZE_MENU);
+    if(icon_str != NULL)
+        icon = g_icon_new_for_string(icon_str, NULL);
+    if(icon != NULL)
+        img = gtk_image_new_from_gicon(icon,GTK_ICON_SIZE_MENU);
+    mi = xfce_gtk_image_menu_item_new(label, tooltip_text, NULL,
+                                        G_CALLBACK(thunarx_menu_item_activate),
+                                        G_OBJECT(thunarx_menu_item), img, menu_to_append_item);
+    gtk_widget_show(mi);
 
-    mi = xfdesktop_menu_create_menu_item_with_mnemonic (label, img);
-
-    g_signal_connect_data (mi, "activate",
-                           G_CALLBACK (thunarx_action_callback),
-                           g_object_ref (item),
-                           xfdesktop_object_unref, 0);
+    /* recursively add submenu items if any */
+    if(mi != NULL && thunarx_menu != NULL) {
+        children = thunarx_menu_get_items(thunarx_menu);
+        submenu = gtk_menu_new();
+        for(lp = children; lp != NULL; lp = lp->next)
+        xfdesktop_menu_create_menu_item_from_thunarx_menu_item(lp->data, GTK_MENU_SHELL (submenu));
+        gtk_menu_item_set_submenu(GTK_MENU_ITEM (mi), submenu);
+        thunarx_menu_item_list_free(children);
+    }
 
     g_free (label);
+    g_free (tooltip_text);
     g_free (icon_str);
+    if (icon != NULL)
+      g_object_unref (icon);
 
     return mi;
 }
 
-
-
-static inline void
-xfdesktop_menu_shell_append_thunarx_menu_item_list(GtkMenuShell *menu_shell,
-                                                   GList *items)
-{
-    GList *l;
-    GtkWidget *mi;
-
-    for(l = items; l; l = l->next) {
-        mi = xfdesktop_menu_create_menu_item_from_thunarx_menu_item (l->data);
-        gtk_widget_show(mi);
-        gtk_menu_shell_append(menu_shell, mi);
-    }
-}
 #endif
 
 static void
@@ -2269,38 +2265,36 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager)
 
 #ifdef HAVE_THUNARX
         if(!multi_sel_special && fmanager->priv->thunarx_menu_providers) {
-            GList *menu_items = NULL;
+            GList               *menu_items = NULL;
+            GtkWidget           *gtk_menu_item;
+            GList               *lp_item;
             ThunarxMenuProvider *provider;
 
-            if(selected->data == fmanager->priv->desktop_icon) {
-                /* click on the desktop itself, only show folder actions */
-                for(GList *l = fmanager->priv->thunarx_menu_providers; l; l = l->next) {
-                    provider = THUNARX_MENU_PROVIDER(l->data);
-                    menu_items = g_list_concat(menu_items,
-                                                 thunarx_menu_provider_get_folder_menu_items(provider,
-                                                                                             toplevel,
-                                                                                             THUNARX_FILE_INFO(file_icon)));
-                }
-            } else {
-                /* thunar file specific actions (allows them to operate on folders
-                 * that are on the desktop as well) */
-                for(GList *l = fmanager->priv->thunarx_menu_providers; l; l = l->next) {
-                    provider = THUNARX_MENU_PROVIDER(l->data);
-                    menu_items = g_list_concat(menu_items,
-                                                 thunarx_menu_provider_get_file_menu_items(provider,
-                                                                                           toplevel,
-                                                                                           selected));
-                }
-            }
+            for(GList *l = fmanager->priv->thunarx_menu_providers; l; l = l->next) {
+                provider = THUNARX_MENU_PROVIDER(l->data);
 
-            if(menu_items) {
-                xfdesktop_menu_shell_append_thunarx_menu_item_list(GTK_MENU_SHELL(menu),
-                                                        menu_items);
-                g_list_free_full(menu_items, g_object_unref);
+                if(selected->data == fmanager->priv->desktop_icon) {
+                    /* click on the desktop itself, only show folder actions */
+                    menu_items = thunarx_menu_provider_get_folder_menu_items(provider,
+                                                                                toplevel,
+                                                                                THUNARX_FILE_INFO(file_icon));
+                }
+                else {
+                    /* thunar file specific actions (allows them to operate on folders
+                        * that are on the desktop as well) */
+                    menu_items = thunarx_menu_provider_get_file_menu_items(provider,
+                                                                            toplevel,
+                                                                            selected);       
+                }
 
-                mi = gtk_separator_menu_item_new();
-                gtk_widget_show(mi);
-                gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+                for (lp_item = menu_items; lp_item != NULL; lp_item = lp_item->next) {
+                    gtk_menu_item = xfdesktop_menu_create_menu_item_from_thunarx_menu_item(lp_item->data, GTK_MENU_SHELL (menu));
+
+                    /* Each thunarx_menu_item will be destroyed together with its related gtk_menu_item*/
+                    g_signal_connect_swapped(G_OBJECT(gtk_menu_item), "destroy", G_CALLBACK(g_object_unref), lp_item->data);
+                    }
+
+                g_list_free (menu_items);
             }
         }
 #endif
