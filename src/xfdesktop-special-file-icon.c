@@ -486,13 +486,18 @@ xfdesktop_special_file_icon_trash_open(GtkWidget *w,
 {
     XfdesktopSpecialFileIcon *file_icon = XFDESKTOP_SPECIAL_FILE_ICON(user_data);
     GtkWidget *icon_view, *toplevel;
+    GList link = {
+        .data = file_icon->priv->file,
+        .prev = NULL,
+        .next = NULL,
+    };
 
     icon_view = xfdesktop_icon_peek_icon_view(XFDESKTOP_ICON(file_icon));
     toplevel = gtk_widget_get_toplevel(icon_view);
 
-    xfdesktop_file_utils_open_folder(file_icon->priv->file,
-                                     file_icon->priv->gscreen,
-                                     GTK_WINDOW(toplevel));
+    xfdesktop_file_utils_open_folders(&link,
+                                      file_icon->priv->gscreen,
+                                      GTK_WINDOW(toplevel));
 }
 
 static void

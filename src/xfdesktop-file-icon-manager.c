@@ -830,22 +830,25 @@ xfdesktop_file_icon_menu_open_folder(GtkWidget *widget,
                                      gpointer user_data)
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
-    XfdesktopFileIcon *icon;
     GList *selected;
-    GFile *file;
+    GList *files = NULL;
     GtkWidget *toplevel;
 
     selected = xfdesktop_icon_view_get_selected_items(fmanager->priv->icon_view);
-    g_return_if_fail(g_list_length(selected) == 1);
-    icon = XFDESKTOP_FILE_ICON(selected->data);
+    for (GList *l = selected; l != NULL; l = l->next) {
+        XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(selected->data);
+        GFile *file = xfdesktop_file_icon_peek_file(icon);
+        files = g_list_prepend(files, file);
+    }
+    files = g_list_reverse(files);
     g_list_free(selected);
-
-    file = xfdesktop_file_icon_peek_file(icon);
 
     toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
 
-    xfdesktop_file_utils_open_folder(file, fmanager->priv->gscreen,
-                                     GTK_WINDOW(toplevel));
+    xfdesktop_file_utils_open_folders(files,
+                                      fmanager->priv->gscreen,
+                                      GTK_WINDOW(toplevel));
+    g_list_free(files);
 }
 
 static void
@@ -853,18 +856,18 @@ xfdesktop_file_icon_menu_open_desktop(GtkWidget *widget,
                                       gpointer user_data)
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
-    XfdesktopFileIcon *icon = fmanager->priv->desktop_icon;
-    GFile *file;
-    GtkWidget *toplevel;
+    GList link = {
+        .data = xfdesktop_file_icon_peek_file(fmanager->priv->desktop_icon),
+        .prev = NULL,
+        .next = NULL,
+    };
 
-    file = xfdesktop_file_icon_peek_file(icon);
-    if(!file)
-        return;
-
-    toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
-
-    xfdesktop_file_utils_open_folder(file, fmanager->priv->gscreen,
-                                     GTK_WINDOW(toplevel));
+    if (link.data != NULL) {
+        GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
+        xfdesktop_file_utils_open_folders(&link,
+                                          fmanager->priv->gscreen,
+                                          GTK_WINDOW(toplevel));
+    }
 }
 
 static void
@@ -1634,7 +1637,7 @@ xfdesktop_file_icon_manager_populate_context_menu(XfdesktopIconViewManager *mana
                 } else {
                     /* Menu on folder icons */
                     img = gtk_image_new_from_icon_name("document-open", GTK_ICON_SIZE_MENU);
-                    mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Open"), img);
+                    mi = xfdesktop_menu_create_menu_item_with_mnemonic(multi_sel ? _("_Open All") : _("_Open"), img);
                     gtk_widget_show(mi);
                     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
                     g_signal_connect(G_OBJECT(mi), "activate",
