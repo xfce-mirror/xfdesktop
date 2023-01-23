@@ -3181,10 +3181,7 @@ update_icon_surface_for_state(GtkCellRenderer *cell,
                               GtkStyleContext *style_context,
                               GtkCellRendererState flags)
 {
-    GtkStateFlags state;
-
-    state = gtk_style_context_get_state(style_context);
-    if (((flags & GTK_CELL_RENDERER_SELECTED) != 0) || (((flags & GTK_CELL_RENDERER_PRELIT) != 0) ^ ((state & GTK_STATE_FLAG_BACKDROP) != 0))) {
+    if (((flags & (GTK_CELL_RENDERER_SELECTED | GTK_CELL_RENDERER_PRELIT)) != 0)) {
         cairo_surface_t *orig_surface = NULL;
 
         g_object_get(cell,
@@ -3233,10 +3230,6 @@ update_icon_surface_for_state(GtkCellRenderer *cell,
                 cairo_set_operator(cr, CAIRO_OPERATOR_COLOR_DODGE);
                 cairo_set_source_rgb(cr, 0.2, 0.2, 0.2);
                 cairo_mask_surface(cr, surface, 0, 0);
-            } else if ((state & GTK_STATE_FLAG_BACKDROP) != 0) {
-                cairo_set_operator(cr, CAIRO_OPERATOR_SOURCE);
-                cairo_set_source_rgba(cr, 0, 0, 0, 0);
-                cairo_paint_with_alpha(cr, 0.3);
             }
 
             cairo_destroy(cr);
