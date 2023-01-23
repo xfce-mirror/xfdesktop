@@ -48,6 +48,9 @@ void xfdesktop_file_icon_model_changed(XfdesktopFileIconModel *fmodel,
 
 XfdesktopFileIcon *xfdesktop_file_icon_model_get_icon(XfdesktopFileIconModel *fmodel,
                                                       GtkTreeIter *iter);
+gboolean xfdesktop_file_icon_model_get_icon_iter(XfdesktopFileIconModel *fmodel,
+                                                 XfdesktopFileIcon *icon,
+                                                 GtkTreeIter *iter);
 
 G_END_DECLS
 

@@ -144,6 +144,10 @@ void xfdesktop_icon_view_unselect_item(XfdesktopIconView *icon_view,
                                        GtkTreeIter *iter);
 void xfdesktop_icon_view_unselect_all(XfdesktopIconView *icon_view);
 
+void xfdesktop_icon_view_set_item_sensitive(XfdesktopIconView *icon_view,
+                                            GtkTreeIter *iter,
+                                            gboolean sensitive);
+
 void xfdesktop_icon_view_set_icon_size(XfdesktopIconView *icon_view,
                                        gint icon_size);
 gint xfdesktop_icon_view_get_icon_size(XfdesktopIconView *icon_view);

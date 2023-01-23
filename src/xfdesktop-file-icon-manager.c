@@ -3473,18 +3473,19 @@ xfdesktop_file_icon_manager_load_desktop_folder(XfdesktopFileIconManager *fmanag
 }
 
 static void
-xfdesktop_file_icon_manager_check_icons_opacity(gpointer key,
-                                                gpointer value,
-                                                gpointer data)
+xfdesktop_file_icon_manager_check_icon_is_cut(gpointer key,
+                                              gpointer value,
+                                              gpointer data)
 {
-    XfdesktopClipboardManager *cmanager = XFDESKTOP_CLIPBOARD_MANAGER(data);
-
     if (XFDESKTOP_IS_REGULAR_FILE_ICON(value)) {
-        XfdesktopRegularFileIcon *icon = XFDESKTOP_REGULAR_FILE_ICON(value);
-        if(G_UNLIKELY(xfdesktop_clipboard_manager_has_cutted_file(cmanager, XFDESKTOP_FILE_ICON(icon))))
-            xfdesktop_regular_file_icon_set_pixbuf_opacity(icon, 50);
-        else
-            xfdesktop_regular_file_icon_set_pixbuf_opacity(icon, 100);
+        XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(data);
+        XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(value);
+        GtkTreeIter iter;
+
+        if (xfdesktop_file_icon_model_get_icon_iter(fmanager->priv->model, icon, &iter)) {
+            gboolean is_cut = xfdesktop_clipboard_manager_has_cutted_file(clipboard_manager, XFDESKTOP_FILE_ICON(icon));
+            xfdesktop_icon_view_set_item_sensitive(fmanager->priv->icon_view, &iter, !is_cut);
+        }
     }
 }
 
@@ -3496,10 +3497,11 @@ xfdesktop_file_icon_manager_clipboard_changed(XfdesktopClipboardManager *cmanage
 
     TRACE("entering");
 
-    /* slooow? */
-    g_hash_table_foreach(fmanager->priv->icons,
-                         xfdesktop_file_icon_manager_check_icons_opacity,
-                         cmanager);
+    if (fmanager->priv->model != NULL) {
+        g_hash_table_foreach(fmanager->priv->icons,
+                             xfdesktop_file_icon_manager_check_icon_is_cut,
+                             fmanager);
+    }
 }
 
 static void

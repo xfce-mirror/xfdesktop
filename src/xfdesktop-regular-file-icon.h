@@ -56,10 +56,6 @@ XfdesktopRegularFileIcon *xfdesktop_regular_file_icon_new(GFile *file,
                                                           GdkScreen *screen,
                                                           XfdesktopFileIconManager *fmanager);
 
-void xfdesktop_regular_file_icon_set_pixbuf_opacity(XfdesktopRegularFileIcon *icon,
-                                                    guint opacity);
-
-
 G_END_DECLS
 
 #endif /* __XFDESKTOP_REGULAR_FILE_ICON_H__ */

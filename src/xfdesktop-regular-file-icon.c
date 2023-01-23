@@ -62,7 +62,6 @@ struct _XfdesktopRegularFileIconPrivate
 {
     gchar *display_name;
     gchar *tooltip;
-    guint pix_opacity;
     GFileInfo *file_info;
     GFileInfo *filesystem_info;
     GFile *file;
@@ -143,7 +142,6 @@ static void
 xfdesktop_regular_file_icon_init(XfdesktopRegularFileIcon *icon)
 {
     icon->priv = xfdesktop_regular_file_icon_get_instance_private(icon);
-    icon->priv->pix_opacity = 100;
     icon->priv->display_name = NULL;
 }
 
@@ -975,18 +973,4 @@ xfdesktop_regular_file_icon_new(GFile *file,
                          G_CALLBACK(cb_show_thumbnails_notify), regular_file_icon);
     }
     return regular_file_icon;
-}
-
-void
-xfdesktop_regular_file_icon_set_pixbuf_opacity(XfdesktopRegularFileIcon *icon,
-                                       guint opacity)
-{
-    g_return_if_fail(XFDESKTOP_IS_REGULAR_FILE_ICON(icon) && opacity <= 100);
-
-    if(opacity == icon->priv->pix_opacity)
-        return;
-
-    icon->priv->pix_opacity = opacity;
-
-    xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(icon));
 }

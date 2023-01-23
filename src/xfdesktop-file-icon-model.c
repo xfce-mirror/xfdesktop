@@ -246,3 +246,15 @@ xfdesktop_file_icon_model_get_icon(XfdesktopFileIconModel *fmodel,
         return NULL;
     }
 }
+
+gboolean
+xfdesktop_file_icon_model_get_icon_iter(XfdesktopFileIconModel *fmodel,
+                                        XfdesktopFileIcon *icon,
+                                        GtkTreeIter *iter)
+{
+    g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON_MODEL(fmodel), FALSE);
+    g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON(icon), FALSE);
+    g_return_val_if_fail(iter != NULL, FALSE);
+
+    return xfdesktop_icon_view_model_get_iter_for_key(XFDESKTOP_ICON_VIEW_MODEL(fmodel), icon, iter);
+}

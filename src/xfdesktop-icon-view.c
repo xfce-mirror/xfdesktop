@@ -154,6 +154,7 @@ typedef struct
     cairo_surface_t *pixbuf_surface;
 
     guint32 selected:1;
+    guint32 sensitive:1;
     guint32 placed:1;
 } ViewItem;
 
@@ -170,6 +171,7 @@ view_item_new(GtkTreeModel *model, GtkTreeIter *iter)
     item = g_slice_new0(ViewItem);
     item->row = -1;
     item->col = -1;
+    item->sensitive = TRUE;
 
     if ((gtk_tree_model_get_flags(model) & GTK_TREE_MODEL_ITERS_PERSIST) != 0) {
         item->ref.iter = *iter;
@@ -3181,7 +3183,7 @@ update_icon_surface_for_state(GtkCellRenderer *cell,
                               GtkStyleContext *style_context,
                               GtkCellRendererState flags)
 {
-    if (((flags & (GTK_CELL_RENDERER_SELECTED | GTK_CELL_RENDERER_PRELIT)) != 0)) {
+    if (((flags & (GTK_CELL_RENDERER_SELECTED | GTK_CELL_RENDERER_PRELIT | GTK_CELL_RENDERER_INSENSITIVE)) != 0)) {
         cairo_surface_t *orig_surface = NULL;
 
         g_object_get(cell,
@@ -3216,6 +3218,15 @@ update_icon_surface_for_state(GtkCellRenderer *cell,
             cairo_surface_destroy(orig_surface);
 
             cr = cairo_create(surface);
+
+            if ((flags & GTK_CELL_RENDERER_INSENSITIVE) != 0) {
+                GdkRGBA color;
+
+                gtk_style_context_get_color(style_context, GTK_STATE_FLAG_INSENSITIVE, &color);
+                cairo_set_operator(cr, CAIRO_OPERATOR_MULTIPLY);
+                gdk_cairo_set_source_rgba(cr, &color);
+                cairo_mask_surface(cr, surface, 0, 0);
+            }
 
             if ((flags & GTK_CELL_RENDERER_SELECTED) != 0) {
                 GdkRGBA color;
@@ -3338,6 +3349,10 @@ xfdesktop_icon_view_draw_item(XfdesktopIconView *icon_view,
     if (G_UNLIKELY(icon_view->priv->item_under_pointer == item)) {
         state |= GTK_STATE_FLAG_PRELIGHT;
         flags |= GTK_CELL_RENDERER_PRELIT;
+    }
+
+    if (G_UNLIKELY(!item->sensitive)) {
+        flags |= GTK_CELL_RENDERER_INSENSITIVE;
     }
 
     gtk_style_context_set_state(style_context, state);
@@ -5042,6 +5057,25 @@ xfdesktop_icon_view_unselect_all(XfdesktopIconView *icon_view)
 
     if (unselected_something) {
         g_signal_emit(icon_view, __signals[SIG_ICON_SELECTION_CHANGED], 0);
+    }
+}
+
+void
+xfdesktop_icon_view_set_item_sensitive(XfdesktopIconView *icon_view,
+                                       GtkTreeIter *iter,
+                                       gboolean sensitive)
+{
+    ViewItem *item;
+
+    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view));
+    g_return_if_fail(iter != NULL);
+
+    item = xfdesktop_icon_view_find_item(icon_view, iter);
+    if (item != NULL) {
+        if (item->sensitive != sensitive) {
+            item->sensitive = sensitive;
+            xfdesktop_icon_view_invalidate_item(icon_view, item, FALSE);
+        }
     }
 }
 
