@@ -151,12 +151,18 @@ xfdesktop_file_icon_activate(XfdesktopIcon *icon,
 
     gscreen = gtk_widget_get_screen(GTK_WIDGET(window));
 
-    if(g_file_info_get_file_type(info) == G_FILE_TYPE_DIRECTORY)
-        xfdesktop_file_utils_open_folder(file, gscreen, window);
-    else if(xfdesktop_file_utils_file_is_executable(info))
+    if(g_file_info_get_file_type(info) == G_FILE_TYPE_DIRECTORY) {
+        GList link = {
+            .data = file,
+            .prev = NULL,
+            .next = NULL,
+        };
+        xfdesktop_file_utils_open_folders(&link, gscreen, window);
+    } else if(xfdesktop_file_utils_file_is_executable(info)) {
         xfdesktop_file_utils_execute(NULL, file, NULL, gscreen, window);
-    else
+    } else {
         xfdesktop_file_utils_launch(file, gscreen, window);
+    }
 
     return TRUE;
 }
