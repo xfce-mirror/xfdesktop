@@ -443,10 +443,15 @@ xfdesktop_special_file_icon_trash_open(GtkWidget *w,
 {
     XfdesktopSpecialFileIcon *file_icon = XFDESKTOP_SPECIAL_FILE_ICON(user_data);
     GtkWindow *toplevel = xfdesktop_find_toplevel(w);
+    GList link = {
+        .data = file_icon->priv->file,
+        .prev = NULL,
+        .next = NULL,
+    };
 
-    xfdesktop_file_utils_open_folder(file_icon->priv->file,
-                                     file_icon->priv->gscreen,
-                                     toplevel);
+    xfdesktop_file_utils_open_folders(&link,
+                                      file_icon->priv->gscreen,
+                                      toplevel);
 }
 
 static void

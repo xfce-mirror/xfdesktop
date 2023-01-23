@@ -729,40 +729,119 @@ xfdesktop_file_utils_app_info_launch(GAppInfo *app_info,
     return result;
 }
 
-void
-xfdesktop_file_utils_open_folder(GFile *file,
-                                 GdkScreen *screen,
-                                 GtkWindow *parent)
+static void
+report_open_folders_error(GtkWindow *parent,
+                          GError *error)
 {
-    gchar *uri = NULL;
+    xfce_message_dialog(parent,
+                        _("Launch Error"), "dialog-error",
+                        _("The folder could not be opened"),
+                        error->message,
+                        XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                        NULL);
+}
+
+static gboolean
+xfdesktop_file_utils_open_folders_fallback(const gchar *const *uris,
+                                           GdkScreen *screen,
+                                           GtkWindow *parent,
+                                           gboolean report_errors)
+{
+    gboolean succeeded = TRUE;
+
+    for (gint i = 0; uris[i] != NULL; ++i) {
+        GError *error = NULL;
+
+        if (!exo_execute_preferred_application_on_screen("FileManager",
+                                                         uris[i],
+                                                         NULL,
+                                                         NULL,
+                                                         screen,
+                                                         &error))
+        {
+            if (report_errors) {
+                report_open_folders_error(parent, error);
+            }
+
+            g_clear_error(&error);
+            succeeded = FALSE;
+        }
+    }
+
+    return succeeded;
+}
+
+typedef struct {
+    gchar **uris;
+    GdkScreen *screen;
+    GtkWindow *parent;
+} ShowFoldersFallbackData;
+
+static void
+show_folders_finished(GObject *source_object,
+                      GAsyncResult *res,
+                      gpointer user_data)
+{
+    ShowFoldersFallbackData *data = user_data;
     GError *error = NULL;
 
-    g_return_if_fail(G_IS_FILE(file));
+    if (!xfdesktop_file_manager1_call_show_folders_finish(XFDESKTOP_FILE_MANAGER1(source_object), res, &error)) {
+        if (!xfdesktop_file_utils_open_folders_fallback((const gchar *const *)data->uris,
+                                                        data->screen,
+                                                        data->parent,
+                                                        FALSE))
+        {
+            report_open_folders_error(data->parent, error);
+        }
+
+        g_clear_error(&error);
+    }
+
+    g_strfreev(data->uris);
+    if (data->parent != NULL) {
+        g_object_unref(data->parent);
+    }
+    g_slice_free(ShowFoldersFallbackData, data);
+}
+
+void
+xfdesktop_file_utils_open_folders(GList *files,
+                                  GdkScreen *screen,
+                                  GtkWindow *parent)
+{
+    XfdesktopFileManager1 *fileman_fdo_proxy;
+    gchar **uris;
+
+    g_return_if_fail(files != NULL);
     g_return_if_fail(GDK_IS_SCREEN(screen) || GTK_IS_WINDOW(parent));
 
     if(!screen)
         screen = gtk_widget_get_screen(GTK_WIDGET(parent));
 
-    uri = g_file_get_uri(file);
+    uris = xfdesktop_file_utils_file_list_to_uri_array(files);
+    g_return_if_fail(uris != NULL && uris[0] != NULL);
 
-    if(!exo_execute_preferred_application_on_screen("FileManager",
-                                                    uri,
-                                                    NULL,
-                                                    NULL,
-                                                    screen,
-                                                    &error))
-    {
-        xfce_message_dialog(parent,
-                            _("Launch Error"), "dialog-error",
-                            _("The folder could not be opened"),
-                            error->message,
-                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
-                            NULL);
+    fileman_fdo_proxy = xfdesktop_file_utils_peek_filemanager_fdo_proxy();
+    if (fileman_fdo_proxy != NULL) {
+        ShowFoldersFallbackData *data = g_slice_new0(ShowFoldersFallbackData);
+        gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
 
-        g_clear_error(&error);
+        data->uris = uris;
+        data->screen = screen;
+        data->parent = parent != NULL ? g_object_ref(parent) : NULL;
+
+        xfdesktop_file_manager1_call_show_folders(fileman_fdo_proxy,
+                                                  (const gchar *const *)uris,
+                                                  startup_id,
+                                                  NULL,
+                                                  show_folders_finished,
+                                                  data);
+
+        g_free(startup_id);
+    } else {
+        xfdesktop_file_utils_open_folders_fallback((const gchar *const *)uris,screen, parent, TRUE);
+        g_strfreev(uris);
     }
-
-    g_free(uri);
 }
 
 static void

@@ -65,9 +65,9 @@ gboolean xfdesktop_file_utils_app_info_launch(GAppInfo *app_info,
                                               GAppLaunchContext *context,
                                               GError **error);
 
-void xfdesktop_file_utils_open_folder(GFile *file,
-                                      GdkScreen *screen,
-                                      GtkWindow *parent);
+void xfdesktop_file_utils_open_folders(GList *files,
+                                       GdkScreen *screen,
+                                       GtkWindow *parent);
 void xfdesktop_file_utils_rename_file(GFile *file,
                                       GdkScreen *screen,
                                       GtkWindow *parent);
