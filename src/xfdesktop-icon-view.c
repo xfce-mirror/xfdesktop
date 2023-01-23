@@ -146,7 +146,9 @@ typedef struct
     gint row;
     gint col;
 
-    GdkRectangle *cell_extents;
+    GdkRectangle icon_extents;
+    GdkRectangle text_extents;
+
     GdkRectangle slot_extents;
 
     cairo_surface_t *pixbuf_surface;
@@ -231,91 +233,9 @@ view_item_free(ViewItem *item)
     if (item->pixbuf_surface != NULL) {
         cairo_surface_destroy(item->pixbuf_surface);
     }
-    g_free(item->cell_extents);
     g_slice_free(ViewItem, item);
 }
 
-
-typedef struct
-{
-    gchar *attribute;
-    gint column;
-} AttrPair;
-
-static AttrPair *
-attr_pair_new(const gchar *attribute,
-               gint column)
-{
-    AttrPair *attr_pair;
-
-    g_return_val_if_fail(attribute != NULL && attribute[0] != '\0', NULL);
-    g_return_val_if_fail(column >= 0, NULL);
-
-    attr_pair = g_slice_new0(AttrPair);
-    attr_pair->attribute = g_strdup(attribute);
-    attr_pair->column = column;
-
-    return attr_pair;
-}
-
-static void
-attr_pair_free(AttrPair *attr_pair)
-{
-    if (G_LIKELY(attr_pair != NULL)) {
-        g_free(attr_pair->attribute);
-        g_slice_free(AttrPair, attr_pair);
-    }
-}
-
-typedef struct
-{
-    GtkCellRenderer *renderer;
-    gboolean expand;
-    GtkPackType pack;
-    guint position;
-    GSList *attributes;
-} CellInfo;
-
-static CellInfo *
-cell_info_new(GtkCellRenderer *renderer,
-              gboolean expand,
-              GtkPackType pack,
-              guint position)
-{
-    CellInfo *cell_info;
-
-    g_return_val_if_fail(GTK_IS_CELL_RENDERER(renderer), NULL);
-
-    cell_info = g_slice_new0(CellInfo);
-    cell_info->renderer = g_object_ref_sink(renderer);
-    cell_info->expand = expand;
-    cell_info->pack = pack;
-    cell_info->position = position;
-
-    return cell_info;
-}
-
-static CellInfo *
-cell_info_find(GSList *cell_infos,
-               GtkCellRenderer *renderer)
-{
-    for (GSList *l = cell_infos; l != NULL; l = l->next) {
-        if (((CellInfo *)l->data)->renderer == renderer) {
-            return (CellInfo *)l->data;
-        }
-    }
-    return NULL;
-}
-
-static void
-cell_info_free(CellInfo *cell_info)
-{
-    if (G_LIKELY(cell_info != NULL)) {
-        g_object_unref(cell_info->renderer);
-        g_slist_free_full(cell_info->attributes, (GDestroyNotify)attr_pair_free);
-        g_slice_free(CellInfo, cell_info);
-    }
-}
 
 typedef struct
 {
@@ -384,10 +304,7 @@ struct _XfdesktopIconViewPrivate
     gint row_column;
     gint col_column;
 
-    GSList *cells;
-    guint n_cells;
-
-    GtkCellRenderer *pixbuf_renderer;
+    GtkCellRenderer *icon_renderer;
     GtkCellRenderer *text_renderer;
 
     gint icon_size;
@@ -465,8 +382,6 @@ struct _XfdesktopIconViewPrivate
     XfdesktopIconViewGravity gravity;
 };
 
-static void xfdesktop_icon_view_cell_layout_init(GtkCellLayoutIface *iface);
-
 static void xfdesktop_icon_view_constructed(GObject *object);
 static void xfdesktop_icon_view_set_property(GObject *object,
                                              guint property_id,
@@ -478,22 +393,6 @@ static void xfdesktop_icon_view_get_property(GObject *object,
                                              GParamSpec *pspec);
 static void xfdesktop_icon_view_dispose(GObject *obj);
 static void xfdesktop_icon_view_finalize(GObject *obj);
-
-
-static void xfdesktop_icon_view_cell_layout_pack_start(GtkCellLayout *layout,
-                                                       GtkCellRenderer *renderer,
-                                                       gboolean expand);
-static void xfdesktop_icon_view_cell_layout_pack_end(GtkCellLayout *layout,
-                                                     GtkCellRenderer *renderer,
-                                                     gboolean expand);
-static void xfdesktop_icon_view_cell_layout_add_attribute(GtkCellLayout *layout,
-                                                          GtkCellRenderer *renderer,
-                                                          const gchar *attribute,
-                                                          gint column);
-static void xfdesktop_icon_view_cell_layout_clear_attributes(GtkCellLayout *layout,
-                                                             GtkCellRenderer *renderer);
-static void xfdesktop_icon_view_cell_layout_clear(GtkCellLayout *layout);
-static GList *xfdesktop_icon_view_cell_layout_get_cells(GtkCellLayout *layout);
 
 static gboolean xfdesktop_icon_view_button_press(GtkWidget *widget,
                                                  GdkEventButton *evt,
@@ -691,9 +590,7 @@ static const struct
 static ViewItem *TOMBSTONE = NULL;
 
 
-G_DEFINE_TYPE_WITH_CODE(XfdesktopIconView, xfdesktop_icon_view, GTK_TYPE_WIDGET,
-                        G_ADD_PRIVATE(XfdesktopIconView)
-                        G_IMPLEMENT_INTERFACE(GTK_TYPE_CELL_LAYOUT, xfdesktop_icon_view_cell_layout_init))
+G_DEFINE_TYPE_WITH_PRIVATE(XfdesktopIconView, xfdesktop_icon_view, GTK_TYPE_WIDGET)
 
 
 static void
@@ -1158,17 +1055,6 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
 }
 
 static void
-xfdesktop_icon_view_cell_layout_init(GtkCellLayoutIface *iface)
-{
-    iface->pack_start = xfdesktop_icon_view_cell_layout_pack_start;
-    iface->pack_end = xfdesktop_icon_view_cell_layout_pack_end;
-    iface->add_attribute = xfdesktop_icon_view_cell_layout_add_attribute;
-    iface->clear_attributes = xfdesktop_icon_view_cell_layout_clear_attributes;
-    iface->clear = xfdesktop_icon_view_cell_layout_clear;
-    iface->get_cells = xfdesktop_icon_view_cell_layout_get_cells;
-}
-
-static void
 xfdesktop_icon_view_init(XfdesktopIconView *icon_view)
 {
     icon_view->priv = xfdesktop_icon_view_get_instance_private(icon_view);
@@ -1225,12 +1111,8 @@ xfdesktop_icon_view_constructed(GObject *object)
     context = gtk_widget_get_style_context(GTK_WIDGET(icon_view));
     gtk_style_context_add_class(context, GTK_STYLE_CLASS_VIEW);
 
-    icon_view->priv->pixbuf_renderer = gtk_cell_renderer_pixbuf_new();
-    gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(icon_view), icon_view->priv->pixbuf_renderer, FALSE);
-
+    icon_view->priv->icon_renderer = gtk_cell_renderer_pixbuf_new();
     icon_view->priv->text_renderer = xfdesktop_cell_renderer_icon_label_new();
-    gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(icon_view), icon_view->priv->text_renderer, FALSE);
-
     xfdesktop_icon_view_init_builtin_cell_renderers(icon_view);
 
     for (gsize i = 0; i < G_N_ELEMENTS(setting_bindings); ++i) {
@@ -1454,114 +1336,6 @@ xfdesktop_icon_view_get_property(GObject *object,
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
             break;
     }
-}
-
-static void
-cell_layout_pack(GtkCellLayout *layout,
-                 GtkCellRenderer *renderer,
-                 gboolean expand,
-                 GtkPackType pack)
-{
-    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(layout);
-    CellInfo *cell_info;
-
-    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view));
-    g_return_if_fail(GTK_IS_CELL_RENDERER(renderer));
-
-    cell_info = cell_info_new(renderer, expand, pack, icon_view->priv->n_cells);
-    if (G_LIKELY(cell_info)) {
-        icon_view->priv->cells = g_slist_append(icon_view->priv->cells, cell_info);
-        icon_view->priv->n_cells++;
-        xfdesktop_icon_view_invalidate_all(icon_view, TRUE);
-    }
-}
-
-static void
-xfdesktop_icon_view_cell_layout_pack_start(GtkCellLayout *layout,
-                                           GtkCellRenderer *renderer,
-                                           gboolean expand)
-{
-    cell_layout_pack(layout, renderer, expand, GTK_PACK_START);
-}
-
-
-static void
-xfdesktop_icon_view_cell_layout_pack_end(GtkCellLayout *layout,
-                                         GtkCellRenderer *renderer,
-                                         gboolean expand)
-{
-    cell_layout_pack(layout, renderer, expand, GTK_PACK_END);
-}
-
-static void
-xfdesktop_icon_view_cell_layout_add_attribute(GtkCellLayout *layout,
-                                              GtkCellRenderer *renderer,
-                                              const gchar *attribute,
-                                              gint column)
-{
-    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(layout);
-    CellInfo *cell_info = NULL;
-    AttrPair *attr_pair;
-
-    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view));
-    g_return_if_fail(GTK_IS_CELL_RENDERER(renderer));
-
-    cell_info = cell_info_find(icon_view->priv->cells, renderer);
-    g_return_if_fail(cell_info != NULL);
-
-    attr_pair = attr_pair_new(attribute, column);
-    if (G_LIKELY(attr_pair != NULL)) {
-        cell_info->attributes = g_slist_append(cell_info->attributes, attr_pair);
-        xfdesktop_icon_view_invalidate_all(icon_view, TRUE);
-    }
-}
-
-static void
-xfdesktop_icon_view_cell_layout_clear_attributes(GtkCellLayout *layout,
-                                                 GtkCellRenderer *renderer)
-{
-    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(layout);
-    CellInfo *cell_info = NULL;
-
-    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view));
-    g_return_if_fail(GTK_IS_CELL_RENDERER(renderer));
-
-    cell_info = cell_info_find(icon_view->priv->cells, renderer);
-    g_return_if_fail(cell_info != NULL);
-
-    if (G_LIKELY(cell_info->attributes != NULL)) {
-        g_slist_free_full(cell_info->attributes, (GDestroyNotify)attr_pair_free);
-        cell_info->attributes = NULL;
-        xfdesktop_icon_view_invalidate_all(icon_view, TRUE);
-    }
-}
-
-static void
-xfdesktop_icon_view_cell_layout_clear(GtkCellLayout *layout)
-{
-    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(layout);
-
-    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view));
-
-    if (G_LIKELY(icon_view->priv->cells != NULL)) {
-        g_slist_free_full(icon_view->priv->cells, (GDestroyNotify)cell_info_free);
-        icon_view->priv->cells = NULL;
-        xfdesktop_icon_view_invalidate_all(icon_view, TRUE);
-    }
-}
-
-static GList *
-xfdesktop_icon_view_cell_layout_get_cells(GtkCellLayout *layout)
-{
-    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(layout);
-    GList *cells = NULL;
-
-    g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view), NULL);
-
-    for (GSList *l = icon_view->priv->cells; l != NULL; l = l->next) {
-        cells = g_list_prepend(cells, l->data);
-    }
-    return g_list_reverse(cells);
 }
 
 static void
@@ -3265,77 +3039,55 @@ static void
 xfdesktop_icon_view_set_cell_properties(XfdesktopIconView *icon_view,
                                         ViewItem *item)
 {
+    GtkTreeIter iter;
+
     g_return_if_fail(GTK_IS_TREE_MODEL(icon_view->priv->model));
+    g_return_if_fail(icon_view->priv->icon_renderer != NULL);
+    g_return_if_fail(icon_view->priv->text_renderer != NULL);
 
-    for (GSList *cl = icon_view->priv->cells; cl != NULL; cl = cl->next) {
-        CellInfo *cell_info = (CellInfo *)cl->data;
-
-        for (GSList *al = cell_info->attributes; al != NULL; al = al->next) {
-            AttrPair *attr_pair = (AttrPair *)al->data;
-            gboolean is_pixbuf_gicon = attr_pair->column == icon_view->priv->pixbuf_column
-                && g_strcmp0(attr_pair->attribute, "gicon") == 0;
-
-            if (is_pixbuf_gicon) {
-                cairo_surface_t *surface = xfdesktop_icon_view_get_surface_for_item(icon_view, item);
-
-                g_object_set(cell_info->renderer,
-                             "surface", surface,
-                             NULL);
-
-                if (G_LIKELY(surface != NULL)) {
-                    cairo_surface_destroy(surface);
-                }
-            } else {
-                GtkTreeIter iter;
-                GValue value = G_VALUE_INIT;
-
-                if (view_item_get_iter(item, icon_view->priv->model, &iter)) {
-                    gtk_tree_model_get_value(icon_view->priv->model, &iter, attr_pair->column, &value);
-                } else {
-                    g_value_init(&value, G_TYPE_NONE);
-                }
-
-                g_object_set_property(G_OBJECT(cell_info->renderer), attr_pair->attribute, &value);
-                g_value_unset(&value);
-            }
+    if (icon_view->priv->pixbuf_column != -1) {
+        cairo_surface_t *surface = xfdesktop_icon_view_get_surface_for_item(icon_view, item);
+        g_object_set(icon_view->priv->icon_renderer,
+                     "surface", surface,
+                     NULL);
+        if (surface != NULL) {
+            cairo_surface_destroy(surface);
         }
+    }
+
+    if (icon_view->priv->text_column != -1 && view_item_get_iter(item, icon_view->priv->model, &iter)) {
+        gchar *text = NULL;
+        gtk_tree_model_get(icon_view->priv->model,
+                           &iter,
+                           icon_view->priv->text_column, &text,
+                           -1);
+        g_object_set(icon_view->priv->text_renderer,
+                     "text", text,
+                     NULL);
+        g_free(text);
     }
 }
 
 static void
 xfdesktop_icon_view_unset_cell_properties(XfdesktopIconView *icon_view)
 {
-    for (GSList *cl = icon_view->priv->cells; cl != NULL; cl = cl->next) {
-        CellInfo *cell_info = (CellInfo *)cl->data;
-        GObjectClass *cell_class = G_OBJECT_GET_CLASS(cell_info->renderer);
+    g_return_if_fail(icon_view->priv->icon_renderer != NULL);
+    g_return_if_fail(icon_view->priv->text_renderer != NULL);
 
-        for (GSList *al = cell_info->attributes; al != NULL; al = al->next) {
-            AttrPair *attr_pair = (AttrPair *)al->data;
-            gboolean is_pixbuf_gicon = attr_pair->column == icon_view->priv->pixbuf_column
-                && g_strcmp0(attr_pair->attribute, "gicon") == 0;
-
-            if (is_pixbuf_gicon) {
-                g_object_set(cell_info->renderer,
-                             "surface", NULL,
-                             NULL);
-            } else {
-                GParamSpec *pspec = g_object_class_find_property(cell_class, attr_pair->attribute);
-
-                if (pspec != NULL && (G_IS_PARAM_SPEC_OBJECT(pspec) || G_IS_PARAM_SPEC_BOXED(pspec) || G_IS_PARAM_SPEC_POINTER(pspec))) {
-                    g_object_set(cell_info->renderer,
-                                 attr_pair->attribute, NULL,
-                                 NULL);
-                }
-            }
-        }
-    }
+    g_object_set(icon_view->priv->icon_renderer,
+                 "surface", NULL,
+                 NULL);
+    g_object_set(icon_view->priv->text_renderer,
+                 "text", NULL,
+                 NULL);
 }
 
 static void
 xfdesktop_icon_view_update_item_extents(XfdesktopIconView *icon_view,
                                         ViewItem *item)
 {
-    gint cur_y = icon_view->priv->slot_padding;
+    GtkRequisition min_req, nat_req;
+    GtkRequisition *req;
     GdkRectangle total_extents;
 
     if (!item->placed) {
@@ -3346,45 +3098,33 @@ xfdesktop_icon_view_update_item_extents(XfdesktopIconView *icon_view,
 
     xfdesktop_icon_view_set_cell_properties(icon_view, item);
 
-    if (item->cell_extents == NULL) {
-        item->cell_extents = g_new0(GdkRectangle, icon_view->priv->n_cells);
-    }
-
     total_extents.x = total_extents.y = 0;
     total_extents.width = total_extents.height = -1;
 
-    for (GSList *l = icon_view->priv->cells; l != NULL; l = l->next) {
-        CellInfo *cell_info = l->data;
-        GdkRectangle *extents = &item->cell_extents[cell_info->position];
-        GtkRequisition min_req, nat_req;
-        GtkRequisition *req;
+    // Icon renderer
+    gtk_cell_renderer_get_preferred_size(icon_view->priv->icon_renderer, GTK_WIDGET(icon_view), &min_req, NULL);
+    item->icon_extents.width = MIN(ICON_WIDTH, min_req.width);
+    item->icon_extents.height = MIN(ICON_SIZE, min_req.height);
+    item->icon_extents.x = MAX(0, (SLOT_SIZE - item->icon_extents.width) / 2);
+    item->icon_extents.y = icon_view->priv->slot_padding + MAX(0, (ICON_SIZE - min_req.height) / 2);
 
-        if (cell_info->renderer == icon_view->priv->text_renderer) {
-            req = item->selected ? &nat_req : &min_req;
-        } else {
-            req = &min_req;
-        }
-        gtk_cell_renderer_get_preferred_size(cell_info->renderer, GTK_WIDGET(icon_view), &min_req, &nat_req);
+    // Text renderer
+    gtk_cell_renderer_get_preferred_size(icon_view->priv->text_renderer, GTK_WIDGET(icon_view), &min_req, &nat_req);
+    req = item->selected ? &nat_req : &min_req;
+    item->text_extents.width = MIN(SLOT_SIZE, req->width);
+    item->text_extents.height = req->height;
+    item->text_extents.x = MAX(0, (SLOT_SIZE - item->text_extents.width) / 2);
+    item->text_extents.y = icon_view->priv->slot_padding + ICON_SIZE + icon_view->priv->slot_padding;
 
-        extents->x = MIN(SLOT_SIZE, (SLOT_SIZE - req->width) / 2);
-        extents->y = cur_y;
-        extents->width = req->width;
-        extents->height = req->height;
-
-        if (total_extents.width == -1 || total_extents.height == -1) {
-            // first cell; copy extents
-            total_extents = *extents;
-        } else {
-            gdk_rectangle_union(extents, &total_extents, &total_extents);
-        }
-
-        cur_y += req->height + SLOT_PADDING;
-    }
-
+    gdk_rectangle_union(&item->icon_extents, &item->text_extents, &total_extents);
     item->slot_extents.x = item->slot_extents.y = item->slot_extents.width = item->slot_extents.height = 0;
     xfdesktop_icon_view_shift_to_slot_area(icon_view, item, &total_extents, &item->slot_extents);
 
-    DBG("new extents: %dx%d+%d+%d", item->slot_extents.width, item->slot_extents.height, item->slot_extents.x, item->slot_extents.y);
+#if 0
+    DBG("new icon extents: %dx%d+%d+%d", item->icon_extents.width, item->icon_extents.height, item->icon_extents.x, item->icon_extents.y);
+    DBG("new text extents: %dx%d+%d+%d", item->text_extents.width, item->text_extents.height, item->text_extents.x, item->text_extents.y);
+    DBG("new slot extents: %dx%d+%d+%d", item->slot_extents.width, item->slot_extents.height, item->slot_extents.x, item->slot_extents.y);
+#endif
 }
 
 static void
@@ -3461,6 +3201,63 @@ update_icon_surface_for_state(GtkCellRenderer *cell,
 }
 
 static void
+xfdesktop_icon_view_draw_item_cell(XfdesktopIconView *icon_view,
+                                   GtkStyleContext *style_context,
+                                   cairo_t *cr,
+                                   GdkRectangle *area,
+                                   ViewItem *item,
+                                   GtkCellRenderer *renderer,
+                                   GtkCellRendererState flags,
+                                   GdkRectangle *cell_extents)
+{
+    GdkRectangle cell_area;
+    GdkRectangle draw_area;
+
+    if (G_UNLIKELY(!gtk_cell_renderer_get_visible(renderer))) {
+        return;
+    }
+
+    if (G_UNLIKELY(!xfdesktop_icon_view_shift_to_slot_area(icon_view, item, cell_extents, &cell_area))) {
+        return;
+    }
+
+    if (G_UNLIKELY(!gdk_rectangle_intersect(area, &cell_area, &draw_area))) {
+        return;
+    }
+
+    if (GTK_IS_CELL_RENDERER_PIXBUF(renderer)) {
+        // Despite cell renderers supposedly following state, when you
+        // set a surface (instead of a pixbuf) on a GtkCellRendererPixbuf
+        // it doesn't apply icon effects.
+        update_icon_surface_for_state(renderer, style_context, flags);
+    }
+
+    cairo_save(cr);
+
+    gdk_cairo_rectangle(cr, &draw_area);
+    cairo_clip(cr);
+
+#if 0
+    DBG("paint cell for (%d,%d) at %dx%d+%d+%d", item->row, item->col, cell_area.width, cell_area.height, cell_area.x, cell_area.y);
+#endif
+
+    gtk_cell_renderer_render(renderer,
+                             cr,
+                             GTK_WIDGET(icon_view),
+                             &cell_area,
+                             &cell_area,
+                             flags);
+
+#if 0
+    cairo_set_source_rgb(cr, 1.0, 0.0, 0.0);
+    cairo_rectangle(cr, cell_area.x, cell_area.y, cell_area.width, cell_area.height);
+    cairo_stroke(cr);
+#endif
+
+    cairo_restore(cr);
+}
+
+static void
 xfdesktop_icon_view_draw_item(XfdesktopIconView *icon_view,
                               cairo_t *cr,
                               GdkRectangle *area,
@@ -3473,7 +3270,6 @@ xfdesktop_icon_view_draw_item(XfdesktopIconView *icon_view,
 
     g_return_if_fail(item->row >= 0 && item->row < icon_view->priv->nrows);
     g_return_if_fail(item->col >= 0 && item->col < icon_view->priv->ncols);
-    g_return_if_fail(item->cell_extents != NULL);
 
     // TODO: check grid slot area against extents and bail early if possible
 
@@ -3504,54 +3300,22 @@ xfdesktop_icon_view_draw_item(XfdesktopIconView *icon_view,
 
     gtk_style_context_set_state(style_context, state);
 
-    for (GSList *l = icon_view->priv->cells; l != NULL; l = l->next) {
-        CellInfo *cell_info = (CellInfo *)l->data;
-        GdkRectangle cell_area;
-        GdkRectangle draw_area;
-
-        if (G_UNLIKELY(!gtk_cell_renderer_get_visible(cell_info->renderer))) {
-            continue;
-        }
-
-        if (G_UNLIKELY(!xfdesktop_icon_view_shift_to_slot_area(icon_view, item, &item->cell_extents[cell_info->position], &cell_area))) {
-            continue;
-        }
-
-        if (G_UNLIKELY(!gdk_rectangle_intersect(area, &cell_area, &draw_area))) {
-            continue;
-        }
-
-        if (GTK_IS_CELL_RENDERER_PIXBUF(cell_info->renderer)) {
-            // Despite cell renderers supposedly following state, when you
-            // set a surface (instead of a pixbuf) on a GtkCellRendererPixbuf
-            // it doesn't apply icon effects.
-            update_icon_surface_for_state(cell_info->renderer, style_context, flags);
-        }
-
-        cairo_save(cr);
-
-        gdk_cairo_rectangle(cr, &draw_area);
-        cairo_clip(cr);
-
-#if 0
-        DBG("paint cell for (%d,%d) at %dx%d+%d+%d", item->row, item->col, cell_area.width, cell_area.height, cell_area.x, cell_area.y);
-#endif
-
-        gtk_cell_renderer_render(cell_info->renderer,
-                                 cr,
-                                 GTK_WIDGET(icon_view),
-                                 &cell_area,
-                                 &cell_area,
-                                 flags);
-
-#if 0
-        cairo_set_source_rgb(cr, 1.0, 0.0, 0.0);
-        cairo_rectangle(cr, cell_area.x, cell_area.y, cell_area.width, cell_area.height);
-        cairo_stroke(cr);
-#endif
-
-        cairo_restore(cr);
-    }
+    xfdesktop_icon_view_draw_item_cell(icon_view,
+                                       style_context,
+                                       cr,
+                                       area,
+                                       item,
+                                       icon_view->priv->icon_renderer,
+                                       flags,
+                                       &item->icon_extents);
+    xfdesktop_icon_view_draw_item_cell(icon_view,
+                                       style_context,
+                                       cr,
+                                       area,
+                                       item,
+                                       icon_view->priv->text_renderer,
+                                       flags,
+                                       &item->text_extents);
 
     if (item == icon_view->priv->drop_dest_item) {
         GdkRectangle slot_rect = {
@@ -3562,7 +3326,6 @@ xfdesktop_icon_view_draw_item(XfdesktopIconView *icon_view,
         };
 
         xfdesktop_icon_view_shift_to_slot_area(icon_view, item, &slot_rect, &slot_rect);
-
         gtk_render_focus(style_context, cr, slot_rect.x, slot_rect.y, slot_rect.width, slot_rect.height);
     }
 
@@ -4544,20 +4307,8 @@ xfdesktop_icon_view_init_builtin_cell_renderers(XfdesktopIconView *icon_view)
 {
     PangoAttrList *attr_list = NULL;
 
-    g_return_if_fail(icon_view->priv->pixbuf_renderer != NULL);
+    g_return_if_fail(icon_view->priv->icon_renderer != NULL);
     g_return_if_fail(icon_view->priv->text_renderer != NULL);
-
-    if (icon_view->priv->pixbuf_column != -1) {
-        gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(icon_view),
-                                      icon_view->priv->pixbuf_renderer,
-                                      "gicon",
-                                      icon_view->priv->pixbuf_column);
-    }
-
-    if (icon_view->priv->text_column != -1) {
-        gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(icon_view), icon_view->priv->text_renderer,
-                                      "text", icon_view->priv->text_column);
-    }
 
 #if PANGO_VERSION_CHECK (1, 44, 0)
     attr_list = pango_attr_list_new();
@@ -4891,12 +4642,7 @@ xfdesktop_icon_view_set_pixbuf_column(XfdesktopIconView *icon_view,
     g_object_freeze_notify(G_OBJECT(icon_view));
 
     changed = xfdesktop_icon_view_set_column(icon_view, column, &icon_view->priv->pixbuf_column, G_TYPE_ICON, "pixbuf-column");
-    if (changed && icon_view->priv->pixbuf_renderer != NULL) {
-        gtk_cell_layout_clear_attributes(GTK_CELL_LAYOUT(icon_view), icon_view->priv->pixbuf_renderer);
-        if (icon_view->priv->pixbuf_column != -1) {
-            gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(icon_view), icon_view->priv->pixbuf_renderer,
-                                          "gicon", icon_view->priv->pixbuf_column);
-        }
+    if (changed) {
         xfdesktop_icon_view_invalidate_all(icon_view, TRUE);
     }
 
@@ -4913,12 +4659,7 @@ xfdesktop_icon_view_set_text_column(XfdesktopIconView *icon_view,
     g_object_freeze_notify(G_OBJECT(icon_view));
 
     changed = xfdesktop_icon_view_set_column(icon_view, column, &icon_view->priv->text_column, G_TYPE_STRING, "text-column");
-    if (changed && icon_view->priv->text_renderer != NULL) {
-        gtk_cell_layout_clear_attributes(GTK_CELL_LAYOUT(icon_view), icon_view->priv->text_renderer);
-        if (icon_view->priv->text_column != -1) {
-            gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(icon_view), icon_view->priv->text_renderer,
-                                          "text", icon_view->priv->text_column);
-        }
+    if (changed) {
         xfdesktop_icon_view_invalidate_all(icon_view, TRUE);
     }
 
