@@ -2154,25 +2154,74 @@ xfdesktop_icon_view_get_surface_for_item(XfdesktopIconView *icon_view,
 
             if (view_item_get_iter(item, icon_view->priv->model, &iter)) {
                 GIcon *icon = NULL;
+
                 gtk_tree_model_get(icon_view->priv->model, &iter,
                                    icon_view->priv->pixbuf_column, &icon,
                                    -1);
-                if (icon != NULL) {
-                    GtkIconInfo *icon_info = gtk_icon_theme_lookup_by_gicon_for_scale(gtk_icon_theme_get_default(),
-                                                                                      icon,
-                                                                                      ICON_SIZE,
-                                                                                      gtk_widget_get_scale_factor(GTK_WIDGET(icon_view)),
-                                                                                      GTK_ICON_LOOKUP_FORCE_SIZE);
-                    if (icon_info != NULL) {
-                        GdkPixbuf *pix = gtk_icon_info_load_icon(icon_info, NULL);
-                        if (pix != NULL) {
-                            surface = gdk_cairo_surface_create_from_pixbuf(pix,
-                                                                           gtk_widget_get_scale_factor(GTK_WIDGET(icon_view)),
-                                                                           gtk_widget_get_window(GTK_WIDGET(icon_view)));
-                            g_object_unref(pix);
+
+                if (G_LIKELY(icon != NULL)) {
+                    GtkIconTheme *icon_theme = gtk_icon_theme_get_for_screen(gtk_widget_get_screen(GTK_WIDGET(icon_view)));
+                    gint scale_factor = gtk_widget_get_scale_factor(GTK_WIDGET(icon_view));
+                    GdkPixbuf *pix = NULL;
+
+                    if (G_IS_FILE_ICON(icon) || (G_IS_EMBLEMED_ICON(icon) && G_IS_FILE_ICON(g_emblemed_icon_get_icon(G_EMBLEMED_ICON(icon))))) {
+                        // Special case for GFileIcon, which will usually be a thumbnail.  We
+                        // allow thumbnails to be wider than the icon size that's set, as long
+                        // as the height is no taller than the icon size.
+                        GtkIconInfo *icon_info = gtk_icon_theme_lookup_by_gicon_for_scale(icon_theme,
+                                                                                          icon,
+                                                                                          ICON_WIDTH,
+                                                                                          scale_factor,
+                                                                                          GTK_ICON_LOOKUP_FORCE_SIZE);
+                        if (G_LIKELY(icon_info != NULL)) {
+                            pix = gtk_icon_info_load_icon(icon_info, NULL);
+                            if (G_LIKELY(pix != NULL)) {
+                                gint width = gdk_pixbuf_get_width(pix);
+                                gint height = gdk_pixbuf_get_height(pix);
+
+                                if (height > ICON_SIZE * scale_factor) {
+                                    if (height < width) {
+                                        // The height is less than the width, so it's probably
+                                        // worth using the larger icon.
+                                        GdkPixbuf *scaled = exo_gdk_pixbuf_scale_down(pix,
+                                                                                      TRUE,
+                                                                                      ICON_WIDTH * scale_factor,
+                                                                                      ICON_SIZE * scale_factor);
+                                        g_object_unref(pix);
+                                        pix = scaled;
+                                    } else {
+                                        // The height is of equal size to the width, so we
+                                        // should try to load the icon at the correct size.
+                                        g_object_unref(pix);
+                                        pix = NULL;
+                                    }
+                                }
+                            }
+                            g_object_unref(icon_info);
                         }
-                        g_object_unref(icon_info);
                     }
+
+                    if (pix == NULL) {
+                        // Either it's a regular themed icon, or the icon height ended up being
+                        // too large when we tried to allow the icon to be wider.
+                        GtkIconInfo *icon_info = gtk_icon_theme_lookup_by_gicon_for_scale(icon_theme,
+                                                                                          icon,
+                                                                                          ICON_SIZE,
+                                                                                          scale_factor,
+                                                                                          GTK_ICON_LOOKUP_FORCE_SIZE);
+                        if (G_LIKELY(icon_info != NULL)) {
+                            pix = gtk_icon_info_load_icon(icon_info, NULL);
+                            g_object_unref(icon_info);
+                        }
+                    }
+
+                    if (G_LIKELY(pix != NULL)) {
+                        surface = gdk_cairo_surface_create_from_pixbuf(pix,
+                                                                       gtk_widget_get_scale_factor(GTK_WIDGET(icon_view)),
+                                                                       gtk_widget_get_window(GTK_WIDGET(icon_view)));
+                        g_object_unref(pix);
+                    }
+
                     g_object_unref(icon);
                 }
             }
