@@ -4,7 +4,7 @@
 # 
 # Translators:
 # 8b03701f910565d01acaec9ce3f558ab_e9f0fee <b5b06e8f85fb8288fe43ad0bc2422d94_32848>, 2013,2017
-# Arnold Marko <arnold.marko@gmail.com>, 2019-2021
+# Arnold Marko <arnold.marko@gmail.com>, 2019-2021,2023
 # Dražen M. <drazen@ubuntu.si>, 2015
 # Kernc, 2015
 # Kernc, 2017
@@ -14,9 +14,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-12 12:53+0100\n"
+"POT-Creation-Date: 2023-01-23 12:53+0100\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
-"Last-Translator: Arnold Marko <arnold.marko@gmail.com>, 2019-2021\n"
+"Last-Translator: Arnold Marko <arnold.marko@gmail.com>, 2019-2021,2023\n"
 "Language-Team: Slovenian (http://www.transifex.com/xfce/xfdesktop/language/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -36,7 +36,7 @@ msgstr "Datotečni sistem"
 
 #: ../settings/main.c:426 ../src/xfdesktop-special-file-icon.c:251
 msgid "Trash"
-msgstr "Smeti"
+msgstr "Koš"
 
 #: ../settings/main.c:428
 msgid "Removable Devices"
@@ -131,16 +131,16 @@ msgstr "Zaporedi ikone"
 
 #. printf is to be translator-friendly
 #: ../settings/main.c:1936 ../src/xfdesktop-file-icon-manager.c:1159
-#: ../src/xfdesktop-file-icon-manager.c:1760
+#: ../src/xfdesktop-file-icon-manager.c:1759
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "\"%s\" ni mogoče zagnati:"
 
 #: ../settings/main.c:1937 ../src/xfdesktop-file-icon-manager.c:1161
-#: ../src/xfdesktop-file-icon-manager.c:1509
-#: ../src/xfdesktop-file-icon-manager.c:1761 ../src/xfdesktop-file-utils.c:756
-#: ../src/xfdesktop-file-utils.c:1325 ../src/xfdesktop-file-utils.c:1350
-#: ../src/xfdesktop-file-utils.c:1457 ../src/xfdesktop-file-utils.c:1521
+#: ../src/xfdesktop-file-icon-manager.c:1512
+#: ../src/xfdesktop-file-icon-manager.c:1760 ../src/xfdesktop-file-utils.c:737
+#: ../src/xfdesktop-file-utils.c:1404 ../src/xfdesktop-file-utils.c:1429
+#: ../src/xfdesktop-file-utils.c:1536 ../src/xfdesktop-file-utils.c:1600
 msgid "Launch Error"
 msgstr "Napaka ob zagonu"
 
@@ -149,17 +149,17 @@ msgstr "Napaka ob zagonu"
 #: ../src/xfdesktop-file-icon-manager.c:932
 #: ../src/xfdesktop-file-icon-manager.c:1031
 #: ../src/xfdesktop-file-icon-manager.c:1163
-#: ../src/xfdesktop-file-icon-manager.c:1513
-#: ../src/xfdesktop-file-icon-manager.c:1763
-#: ../src/xfdesktop-file-icon-manager.c:3374 ../src/xfdesktop-file-utils.c:759
-#: ../src/xfdesktop-file-utils.c:779 ../src/xfdesktop-file-utils.c:834
-#: ../src/xfdesktop-file-utils.c:898 ../src/xfdesktop-file-utils.c:959
-#: ../src/xfdesktop-file-utils.c:1020 ../src/xfdesktop-file-utils.c:1068
-#: ../src/xfdesktop-file-utils.c:1123 ../src/xfdesktop-file-utils.c:1181
-#: ../src/xfdesktop-file-utils.c:1268 ../src/xfdesktop-file-utils.c:1329
-#: ../src/xfdesktop-file-utils.c:1352 ../src/xfdesktop-file-utils.c:1461
-#: ../src/xfdesktop-file-utils.c:1525 ../src/xfdesktop-file-utils.c:1596
-#: ../src/xfdesktop-file-utils.c:1666 ../src/xfdesktop-volume-icon.c:461
+#: ../src/xfdesktop-file-icon-manager.c:1516
+#: ../src/xfdesktop-file-icon-manager.c:1762
+#: ../src/xfdesktop-file-icon-manager.c:3371 ../src/xfdesktop-file-utils.c:740
+#: ../src/xfdesktop-file-utils.c:858 ../src/xfdesktop-file-utils.c:913
+#: ../src/xfdesktop-file-utils.c:977 ../src/xfdesktop-file-utils.c:1038
+#: ../src/xfdesktop-file-utils.c:1099 ../src/xfdesktop-file-utils.c:1147
+#: ../src/xfdesktop-file-utils.c:1202 ../src/xfdesktop-file-utils.c:1260
+#: ../src/xfdesktop-file-utils.c:1347 ../src/xfdesktop-file-utils.c:1408
+#: ../src/xfdesktop-file-utils.c:1431 ../src/xfdesktop-file-utils.c:1540
+#: ../src/xfdesktop-file-utils.c:1604 ../src/xfdesktop-file-utils.c:1675
+#: ../src/xfdesktop-file-utils.c:1745 ../src/xfdesktop-volume-icon.c:461
 #: ../src/xfdesktop-volume-icon.c:505 ../src/xfdesktop-volume-icon.c:587
 msgid "_Close"
 msgstr "_Zapri"
@@ -185,7 +185,7 @@ msgstr "ID VTIČNICE"
 msgid "Version information"
 msgstr "Podatki o različici"
 
-#: ../settings/main.c:2327 ../src/xfdesktop-application.c:889
+#: ../settings/main.c:2327 ../src/xfdesktop-application.c:890
 msgid "Enable debug messages"
 msgstr "Omogoči razhroščevalna sporočila"
 
@@ -510,7 +510,7 @@ msgstr "_Meniji"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:38
 msgid "Icon _Type"
-msgstr ""
+msgstr "Vrs_ta ikone"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:39
 msgid "Icon _size:"
@@ -572,7 +572,7 @@ msgstr "Izberite to možnost, za prikaz predogledov določenih datotek na namizj
 
 #: ../settings/xfdesktop-settings-ui.glade.h:53
 msgid "Show \"Delete\" option in file context menu"
-msgstr ""
+msgstr "Prikaži možnost \"Izbriši\" v kontekstualnem meniju datotek"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:54
 msgid "<b>Default Icons</b>"
@@ -580,7 +580,7 @@ msgstr "<b>Privzete ikone</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:55
 msgid "<b>File/Launcher Icons</b>"
-msgstr ""
+msgstr "<b>Ikone datotek/zaganjalnika</b>"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:56
 msgid "_Icons"
@@ -605,7 +605,7 @@ msgstr "Resnično želite odstraniti delovno površino %d?\nOpomba: Trenutno ste
 #: ../src/windowlist.c:83
 #, c-format
 msgid "Do you really want to remove workspace %d"
-msgstr ""
+msgstr "Ali res želite odstraniti delovno površino %d"
 
 #: ../src/windowlist.c:88
 #, c-format
@@ -622,7 +622,7 @@ msgstr "Resnično želite odstraniti delovno površino '%s'?\nOpomba: Trenutno s
 #: ../src/windowlist.c:93
 #, c-format
 msgid "Do you really want to remove workspace '%s'?"
-msgstr ""
+msgstr "Ali res želite odstraniti delovno površino '%s'?"
 
 #. Popup a dialog box confirming that the user wants to remove a
 #. * workspace
@@ -637,7 +637,7 @@ msgstr "Seznam oken"
 #: ../src/windowlist.c:357
 #, c-format
 msgid "<b>Group %d, Workspace %d</b>"
-msgstr ""
+msgstr "<b>Skupina %d, delovna površina %d</b>"
 
 #: ../src/windowlist.c:359
 #, c-format
@@ -658,83 +658,83 @@ msgstr "Odst_rani delovno površino %d"
 msgid "_Remove Workspace '%s'"
 msgstr "Odst_rani delovno površino: '%s'"
 
-#: ../src/xfdesktop-application.c:881
+#: ../src/xfdesktop-application.c:882
 msgid "Display version information"
 msgstr "Prikaži podatke o različici"
 
-#: ../src/xfdesktop-application.c:882
+#: ../src/xfdesktop-application.c:883
 msgid "Reload all settings"
 msgstr "Znova naloži vse nastavitve"
 
-#: ../src/xfdesktop-application.c:883
+#: ../src/xfdesktop-application.c:884
 msgid "Advance to the next wallpaper on the current workspace"
 msgstr "Nadaljuj na naslednjo sliko ozadja na trenutni delovni površini"
 
-#: ../src/xfdesktop-application.c:884
+#: ../src/xfdesktop-application.c:885
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "Odpri pojavni meni (na trenutnem mestu kazalke)"
 
-#: ../src/xfdesktop-application.c:885
+#: ../src/xfdesktop-application.c:886
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "Odpri seznam oken (na trenutnem mestu kazalke)"
 
-#: ../src/xfdesktop-application.c:887
+#: ../src/xfdesktop-application.c:888
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "Samodejno razvrsti vse ikone na namizju"
 
-#: ../src/xfdesktop-application.c:890
+#: ../src/xfdesktop-application.c:891
 msgid "Disable debug messages"
 msgstr "Onemogoči sporočila razhroščevanja"
 
-#: ../src/xfdesktop-application.c:891
+#: ../src/xfdesktop-application.c:892
 msgid "Do not wait for a window manager on startup"
 msgstr "Ob zagonu ne čakaj na upravljalnik oken"
 
-#: ../src/xfdesktop-application.c:892
+#: ../src/xfdesktop-application.c:893
 msgid "Cause xfdesktop to quit"
 msgstr "Povzroči končanje xfdesktop-a"
 
-#: ../src/xfdesktop-application.c:907
+#: ../src/xfdesktop-application.c:908
 #, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "Razčlenjevanje argumentov ni uspelo: %s\n"
 
-#: ../src/xfdesktop-application.c:918
+#: ../src/xfdesktop-application.c:919
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "To je %s različica %s, ki se izvaja na Xfce %s.\n"
 
-#: ../src/xfdesktop-application.c:920
+#: ../src/xfdesktop-application.c:921
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Izgrajeno z GTK+ %d.%d.%d, povezano z GTK+ %d.%d.%d."
 
-#: ../src/xfdesktop-application.c:924
+#: ../src/xfdesktop-application.c:925
 #, c-format
 msgid "Build options:\n"
 msgstr "Možnosti izgradnje:\n"
 
-#: ../src/xfdesktop-application.c:925
+#: ../src/xfdesktop-application.c:926
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "Meni namizja: %s\n"
 
-#: ../src/xfdesktop-application.c:927 ../src/xfdesktop-application.c:934
-#: ../src/xfdesktop-application.c:941
+#: ../src/xfdesktop-application.c:928 ../src/xfdesktop-application.c:935
+#: ../src/xfdesktop-application.c:942
 msgid "enabled"
 msgstr "omogočeno"
 
-#: ../src/xfdesktop-application.c:929 ../src/xfdesktop-application.c:936
-#: ../src/xfdesktop-application.c:943
+#: ../src/xfdesktop-application.c:930 ../src/xfdesktop-application.c:937
+#: ../src/xfdesktop-application.c:944
 msgid "disabled"
 msgstr "onemogočeno"
 
-#: ../src/xfdesktop-application.c:932
+#: ../src/xfdesktop-application.c:933
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "Ikone namizja: %s\n"
 
-#: ../src/xfdesktop-application.c:939
+#: ../src/xfdesktop-application.c:940
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "Ikone datotek namizja: %s\n"
@@ -755,12 +755,12 @@ msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr "Običajna datoteka z istim imenom že obstaja. Izbrišete ali pa jo preimenujete."
 
-#: ../src/xfdesktop-file-icon-manager.c:1028 ../src/xfdesktop-file-utils.c:830
-#: ../src/xfdesktop-file-utils.c:894
+#: ../src/xfdesktop-file-icon-manager.c:1028 ../src/xfdesktop-file-utils.c:909
+#: ../src/xfdesktop-file-utils.c:973
 msgid "Rename Error"
 msgstr "Napaka preimenovanja"
 
-#: ../src/xfdesktop-file-icon-manager.c:1029 ../src/xfdesktop-file-utils.c:895
+#: ../src/xfdesktop-file-icon-manager.c:1029 ../src/xfdesktop-file-utils.c:974
 msgid "The files could not be renamed"
 msgstr "Datotek ni bilo mogoče preimenovati"
 
@@ -768,160 +768,164 @@ msgstr "Datotek ni bilo mogoče preimenovati"
 msgid "None of the icons selected support being renamed."
 msgstr "Nobena od izbranih ikon ne podpira preimenovanja."
 
-#: ../src/xfdesktop-file-icon-manager.c:1356
+#: ../src/xfdesktop-file-icon-manager.c:1359
 msgid ""
 "This will reorder all desktop items and place them on different screen positions.\n"
 "Are you sure?"
 msgstr "To bo prerazvrstilo vse predmete na namizju in jih postavilo na druge položaje na zaslonu.\nAli ste prepričani?"
 
-#: ../src/xfdesktop-file-icon-manager.c:1360
+#: ../src/xfdesktop-file-icon-manager.c:1363
 msgid "_OK"
 msgstr "_V redu"
 
-#: ../src/xfdesktop-file-icon-manager.c:1435
+#: ../src/xfdesktop-file-icon-manager.c:1438
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "_Odpri z \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1438
+#: ../src/xfdesktop-file-icon-manager.c:1441
 #, c-format
 msgid "Open With \"%s\""
 msgstr "Odpri z \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:1511
+#: ../src/xfdesktop-file-icon-manager.c:1514
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr "Ni mogoče zagnati \"exo-desktop-item-edit\", ki je potreben za ustvarjanje in urejanje zaganjalnikov in bližnjic na namizju."
 
-#: ../src/xfdesktop-file-icon-manager.c:1879
+#: ../src/xfdesktop-file-icon-manager.c:1878
 msgid "_Open all"
 msgstr "_Odpri vse"
 
-#: ../src/xfdesktop-file-icon-manager.c:1899
+#: ../src/xfdesktop-file-icon-manager.c:1898
 msgid "Create _Launcher..."
 msgstr "Ustvari zaganja_lnik..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1913
+#: ../src/xfdesktop-file-icon-manager.c:1912
 msgid "Create _URL Link..."
 msgstr "Ustvari povezavo _URL ..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1927
+#: ../src/xfdesktop-file-icon-manager.c:1926
 msgid "Create _Folder..."
 msgstr "Ustvari _mapo..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1939
+#: ../src/xfdesktop-file-icon-manager.c:1938
 msgid "Create _Document"
 msgstr "Ustvari _dokument"
 
-#: ../src/xfdesktop-file-icon-manager.c:1964
+#: ../src/xfdesktop-file-icon-manager.c:1963
 msgid "No templates installed"
 msgstr "Nobena predloga ni nameščena"
 
-#: ../src/xfdesktop-file-icon-manager.c:1980
+#: ../src/xfdesktop-file-icon-manager.c:1979
 msgid "_Empty File"
 msgstr "Prazna datot_eka"
 
-#: ../src/xfdesktop-file-icon-manager.c:1990
-#: ../src/xfdesktop-special-file-icon.c:473 ../src/xfdesktop-volume-icon.c:833
+#: ../src/xfdesktop-file-icon-manager.c:1989
+msgid "_Open All"
+msgstr "_Odpri vse"
+
+#: ../src/xfdesktop-file-icon-manager.c:1989
+#: ../src/xfdesktop-special-file-icon.c:478 ../src/xfdesktop-volume-icon.c:833
 msgid "_Open"
 msgstr "_Odpri"
 
-#: ../src/xfdesktop-file-icon-manager.c:2007
+#: ../src/xfdesktop-file-icon-manager.c:2006
 msgid "_Execute"
 msgstr "Izv_edi"
 
-#: ../src/xfdesktop-file-icon-manager.c:2025
+#: ../src/xfdesktop-file-icon-manager.c:2024
 msgid "_Edit Launcher"
 msgstr "Ur_edi zaganjalnik"
 
-#: ../src/xfdesktop-file-icon-manager.c:2084
+#: ../src/xfdesktop-file-icon-manager.c:2083
 msgid "Open With"
 msgstr "Odpri z"
 
-#: ../src/xfdesktop-file-icon-manager.c:2111
-#: ../src/xfdesktop-file-icon-manager.c:2136
+#: ../src/xfdesktop-file-icon-manager.c:2110
+#: ../src/xfdesktop-file-icon-manager.c:2135
 msgid "Open With Other _Application..."
 msgstr "Odpri z drugim progr_amom..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2122
+#: ../src/xfdesktop-file-icon-manager.c:2121
 msgid "Set _Default Application..."
 msgstr "_Določitev privzetega programa..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2154
+#: ../src/xfdesktop-file-icon-manager.c:2153
 msgid "_Paste"
 msgstr "_Prilepi"
 
-#: ../src/xfdesktop-file-icon-manager.c:2172
+#: ../src/xfdesktop-file-icon-manager.c:2171
 msgid "Cu_t"
 msgstr "Iz_reži"
 
-#: ../src/xfdesktop-file-icon-manager.c:2184
+#: ../src/xfdesktop-file-icon-manager.c:2183
 msgid "_Copy"
 msgstr "_Kopiraj"
 
-#: ../src/xfdesktop-file-icon-manager.c:2196
+#: ../src/xfdesktop-file-icon-manager.c:2195
 msgid "Paste Into Folder"
 msgstr "Prilepi v mapo"
 
-#: ../src/xfdesktop-file-icon-manager.c:2215
+#: ../src/xfdesktop-file-icon-manager.c:2214
 msgid "Mo_ve to Trash"
-msgstr "Premakni v smeti"
+msgstr "Premakni v koš"
 
-#: ../src/xfdesktop-file-icon-manager.c:2228
+#: ../src/xfdesktop-file-icon-manager.c:2227
 msgid "_Delete"
 msgstr "I_zbriši"
 
-#: ../src/xfdesktop-file-icon-manager.c:2246
+#: ../src/xfdesktop-file-icon-manager.c:2245
 msgid "_Rename..."
 msgstr "P_reimenuj ..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2311
+#: ../src/xfdesktop-file-icon-manager.c:2308
 msgid "_Open in New Window"
 msgstr "_Odpri v novem oknu"
 
-#: ../src/xfdesktop-file-icon-manager.c:2320
+#: ../src/xfdesktop-file-icon-manager.c:2317
 msgid "Arrange Desktop _Icons"
 msgstr "Razporedi _ikone na namizju"
 
-#: ../src/xfdesktop-file-icon-manager.c:2331
+#: ../src/xfdesktop-file-icon-manager.c:2328
 msgid "_Next Background"
 msgstr "_Naslednje ozadje"
 
-#: ../src/xfdesktop-file-icon-manager.c:2341
+#: ../src/xfdesktop-file-icon-manager.c:2338
 msgid "Desktop _Settings..."
 msgstr "Na_stavitve namizja ..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2349
+#: ../src/xfdesktop-file-icon-manager.c:2346
 #: ../src/xfdesktop-volume-icon.c:900
 msgid "P_roperties..."
 msgstr "_Lastnosti ..."
 
-#: ../src/xfdesktop-file-icon-manager.c:3371
+#: ../src/xfdesktop-file-icon-manager.c:3368
 msgid "Load Error"
 msgstr "Napaka nalaganja"
 
-#: ../src/xfdesktop-file-icon-manager.c:3373
+#: ../src/xfdesktop-file-icon-manager.c:3370
 msgid "Failed to load the desktop folder"
 msgstr "Nalaganje mape namizja ni uspelo"
 
-#: ../src/xfdesktop-file-icon-manager.c:3776
+#: ../src/xfdesktop-file-icon-manager.c:3773
 msgid "Copy _Here"
 msgstr "Kopiraj _sem"
 
-#: ../src/xfdesktop-file-icon-manager.c:3776
+#: ../src/xfdesktop-file-icon-manager.c:3773
 msgid "_Move Here"
 msgstr "Pre_makni sem"
 
-#: ../src/xfdesktop-file-icon-manager.c:3776
+#: ../src/xfdesktop-file-icon-manager.c:3773
 msgid "_Link Here"
 msgstr "Ust_vari povezavo tukaj"
 
-#: ../src/xfdesktop-file-icon-manager.c:3811
+#: ../src/xfdesktop-file-icon-manager.c:3808
 msgid "_Cancel"
 msgstr "_Prekliči"
 
-#: ../src/xfdesktop-file-icon-manager.c:3953
+#: ../src/xfdesktop-file-icon-manager.c:3950
 msgid "Untitled document"
 msgstr "Neimenovan dokument"
 
@@ -950,7 +954,7 @@ msgid "%x at %X"
 msgstr "%x ob %X"
 
 #. the file_time is invalid
-#: ../src/xfdesktop-file-utils.c:194 ../src/xfdesktop-file-utils.c:1591
+#: ../src/xfdesktop-file-utils.c:194 ../src/xfdesktop-file-utils.c:1670
 msgid "Unknown"
 msgstr "Neznano"
 
@@ -959,100 +963,100 @@ msgstr "Neznano"
 msgid "%.*s (copy %u)%s"
 msgstr "%.*s (kopija %u)%s"
 
-#: ../src/xfdesktop-file-utils.c:757
+#: ../src/xfdesktop-file-utils.c:738
 msgid "The folder could not be opened"
 msgstr "Mape ni bilo mogoče odpreti"
 
-#: ../src/xfdesktop-file-utils.c:776
+#: ../src/xfdesktop-file-utils.c:855
 msgid "Error"
 msgstr "Napaka"
 
-#: ../src/xfdesktop-file-utils.c:777
+#: ../src/xfdesktop-file-utils.c:856
 msgid "The requested operation could not be completed"
 msgstr "Zahtevanega opravila ni bilo mogoče dokončati"
 
-#: ../src/xfdesktop-file-utils.c:831
+#: ../src/xfdesktop-file-utils.c:910
 msgid "The file could not be renamed"
 msgstr "Datoteke ni bilo mogoče preimenovati"
 
-#: ../src/xfdesktop-file-utils.c:832 ../src/xfdesktop-file-utils.c:896
-#: ../src/xfdesktop-file-utils.c:957 ../src/xfdesktop-file-utils.c:1121
-#: ../src/xfdesktop-file-utils.c:1179 ../src/xfdesktop-file-utils.c:1266
-#: ../src/xfdesktop-file-utils.c:1327 ../src/xfdesktop-file-utils.c:1459
-#: ../src/xfdesktop-file-utils.c:1523 ../src/xfdesktop-file-utils.c:1664
+#: ../src/xfdesktop-file-utils.c:911 ../src/xfdesktop-file-utils.c:975
+#: ../src/xfdesktop-file-utils.c:1036 ../src/xfdesktop-file-utils.c:1200
+#: ../src/xfdesktop-file-utils.c:1258 ../src/xfdesktop-file-utils.c:1345
+#: ../src/xfdesktop-file-utils.c:1406 ../src/xfdesktop-file-utils.c:1538
+#: ../src/xfdesktop-file-utils.c:1602 ../src/xfdesktop-file-utils.c:1743
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
 msgstr "Ta zmožnost zahteva storitev upravljalnika datotek (kot tista, ki jo vključuje Thunar)."
 
-#: ../src/xfdesktop-file-utils.c:955
+#: ../src/xfdesktop-file-utils.c:1034
 msgid "Delete Error"
 msgstr "Napaka pri brisanju"
 
-#: ../src/xfdesktop-file-utils.c:956
+#: ../src/xfdesktop-file-utils.c:1035
 msgid "The selected files could not be deleted"
 msgstr "Izbranih datotek ni bilo mogoče izbrisati"
 
-#: ../src/xfdesktop-file-utils.c:1016 ../src/xfdesktop-file-utils.c:1064
+#: ../src/xfdesktop-file-utils.c:1095 ../src/xfdesktop-file-utils.c:1143
 msgid "Trash Error"
-msgstr "Napaka smeti"
+msgstr "Napaka koša"
 
-#: ../src/xfdesktop-file-utils.c:1017
+#: ../src/xfdesktop-file-utils.c:1096
 msgid "The selected files could not be moved to the trash"
 msgstr "Izbranih datotek ni mogoče prestaviti v koš"
 
-#: ../src/xfdesktop-file-utils.c:1018 ../src/xfdesktop-file-utils.c:1066
+#: ../src/xfdesktop-file-utils.c:1097 ../src/xfdesktop-file-utils.c:1145
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
 msgstr "Ta zmožnost zahteva storitev koša (kot tista, ki jo vključuje Thunar)."
 
-#: ../src/xfdesktop-file-utils.c:1065
+#: ../src/xfdesktop-file-utils.c:1144
 msgid "Could not empty the trash"
-msgstr "Smeti ni bilo mogoče izprazniti"
+msgstr "Koša ni bilo mogoče izprazniti"
 
-#: ../src/xfdesktop-file-utils.c:1119
+#: ../src/xfdesktop-file-utils.c:1198
 msgid "Create File Error"
 msgstr "Napaka ustvarjanja datoteke"
 
-#: ../src/xfdesktop-file-utils.c:1120
+#: ../src/xfdesktop-file-utils.c:1199
 msgid "Could not create a new file"
 msgstr "Nove datoteke ni bilo mogoče ustvariti"
 
-#: ../src/xfdesktop-file-utils.c:1177
+#: ../src/xfdesktop-file-utils.c:1256
 msgid "Create Document Error"
 msgstr "Napaka ustvarjanja dokumenta"
 
-#: ../src/xfdesktop-file-utils.c:1178
+#: ../src/xfdesktop-file-utils.c:1257
 msgid "Could not create a new document from the template"
 msgstr "Nove datoteke iz predloge ni bilo mogoče ustvariti"
 
-#: ../src/xfdesktop-file-utils.c:1264
+#: ../src/xfdesktop-file-utils.c:1343
 msgid "File Properties Error"
 msgstr "Napaka lastnosti datoteke"
 
-#: ../src/xfdesktop-file-utils.c:1265
+#: ../src/xfdesktop-file-utils.c:1344
 msgid "The file properties dialog could not be opened"
 msgstr "Pogovornega okna lastnosti datoteke ni bilo mogoče odpreti"
 
-#: ../src/xfdesktop-file-utils.c:1326
+#: ../src/xfdesktop-file-utils.c:1405
 msgid "The file could not be opened"
 msgstr "Datoteke ni bilo mogoče odpreti"
 
-#: ../src/xfdesktop-file-utils.c:1347 ../src/xfdesktop-file-utils.c:1454
+#: ../src/xfdesktop-file-utils.c:1426 ../src/xfdesktop-file-utils.c:1533
 #, c-format
 msgid "Failed to run \"%s\""
 msgstr "Zaganjanje \"%s\" ni uspelo"
 
-#: ../src/xfdesktop-file-utils.c:1522
+#: ../src/xfdesktop-file-utils.c:1601
 msgid "The application chooser could not be opened"
 msgstr "Pogovornega okna za izbiro programa ni bilo mogoče odpreti"
 
-#: ../src/xfdesktop-file-utils.c:1593 ../src/xfdesktop-file-utils.c:1662
+#: ../src/xfdesktop-file-utils.c:1672 ../src/xfdesktop-file-utils.c:1741
 msgid "Transfer Error"
 msgstr "Napaka prenosa"
 
-#: ../src/xfdesktop-file-utils.c:1594 ../src/xfdesktop-file-utils.c:1663
+#: ../src/xfdesktop-file-utils.c:1673 ../src/xfdesktop-file-utils.c:1742
 msgid "The file transfer could not be performed"
 msgstr "Prenosa datoteke ni bilo mogoče izvesti"
 
@@ -1117,16 +1121,16 @@ msgstr "Ime: %s\nVrsta: %s\nVelikost: %s\nZadnja sprememba: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:396
 msgid "Trash is empty"
-msgstr "Smeti so prazne"
+msgstr "Koš je prazen"
 
 #: ../src/xfdesktop-special-file-icon.c:399
 msgid "Trash contains one item"
-msgstr "Smeti vsebujejo en predmet"
+msgstr "Koš vsebuje en predmet"
 
 #: ../src/xfdesktop-special-file-icon.c:400
 #, c-format
 msgid "Trash contains %d items"
-msgstr "Smeti vsebujejo %d predmetov"
+msgstr "Koš vsebuje %dpredmetov"
 
 #: ../src/xfdesktop-special-file-icon.c:429
 #, c-format
@@ -1136,13 +1140,13 @@ msgid ""
 "Last modified: %s"
 msgstr "%s\nVelikost %s\nZadnja sprememba: %s"
 
-#: ../src/xfdesktop-special-file-icon.c:489
+#: ../src/xfdesktop-special-file-icon.c:494
 msgid "_Empty Trash"
-msgstr "Izprazni sm_eti"
+msgstr "Izprazni _koš"
 
 #: ../src/xfdesktop-volume-icon.c:413
 msgid "(not mounted)"
-msgstr ""
+msgstr "(ni priklopljen)"
 
 #: ../src/xfdesktop-volume-icon.c:414 ../src/xfdesktop-volume-icon.c:415
 msgid "(unknown)"
@@ -1156,11 +1160,11 @@ msgid ""
 "Mounted at: %s\n"
 "Size: %s\n"
 "Free Space: %s"
-msgstr ""
+msgstr "Ime: %s\nVrsta: %s\nPriklop: %s\nVelikost: %s\nProstor na voljo: %s"
 
 #: ../src/xfdesktop-volume-icon.c:421
 msgid "Removable Volume"
-msgstr ""
+msgstr "Odstranljiv nosilec"
 
 #: ../src/xfdesktop-volume-icon.c:454 ../src/xfdesktop-volume-icon.c:498
 #, c-format
