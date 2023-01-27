@@ -234,7 +234,8 @@ msgstr "Επιφάνεια εργασίας"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.in.h:2
 msgid "Set desktop background and menu and icon behavior"
-msgstr "Ρύθμιση φόντου και συμπεριφοράς μενού και εικονιδίων"
+msgstr ""
+"Ρύθμιση φόντου επιφάνειας εργασίας και συμπεριφοράς μενού και εικονιδίων"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
 msgid "Solid color"
@@ -258,12 +259,12 @@ msgstr "Επιλογή φακέλου για τις εικόνες φόντου.
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
 msgid "St_yle:"
-msgstr "Στ_υλ:"
+msgstr "_Στυλ:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
 msgid "Specify how the image will be resized to fit the screen."
 msgstr ""
-"Επιλέξτε τον τρόπο αλλαγής μεγέθους της εικόνας ώστε να ταιριάζει στην "
+"Καθορίζει τον τρόπο αλλαγής μεγέθους της εικόνας ώστε να ταιριάζει στην "
 "οθόνη."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
@@ -273,7 +274,7 @@ msgstr "Κανένα"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
 msgid "Centered"
-msgstr "Κεντραρισμένο"
+msgstr "Στο κέντρο"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
 msgid "Tiled"
@@ -297,12 +298,12 @@ msgstr "Συνεχόμενες οθόνες"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
 msgid "Specify the style of the color drawn behind the backdrop image."
-msgstr "Επιλέξτε το στυλ του χρώματος πίσω από την εικόνα φόντου."
+msgstr "Καθορίζει το στυλ του χρώματος πίσω από την εικόνα φόντου."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
 msgstr ""
-"Ορίζει το συμπαγές χρώμα, ή το \"αριστερό\" ή \"επάνω\" χρώμα της "
+"Καθορίζει το συμπαγές χρώμα, ή το \"αριστερό\" ή το \"επάνω\" χρώμα της "
 "διαβάθμισης."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
@@ -311,7 +312,7 @@ msgstr "Επιλογή πρώτου χρώματος"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient."
-msgstr "Ορίζει το \"δεξιά\" ή \"κάτω\" χρώμα της διαβάθμισης"
+msgstr "Καθορίζει το \"δεξιά\" ή το \"κάτω\" χρώμα της διαβάθμισης"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
 msgid "Select Second Color"
@@ -331,16 +332,17 @@ msgstr "_Χρώμα:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
 msgid "Change the _background "
-msgstr "Α_λλαγή φόντου"
+msgstr "_Αλλαγή εικόνας φόντου "
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
 msgid ""
 "Automatically select a different background from the current directory."
-msgstr "Αυτόματη επιλογή διαφορετικού φόντου από τον τρέχοντα κατάλογο."
+msgstr ""
+"Αυτόματη επιλογή διαφορετικής εικόνας φόντου από τον τρέχοντα κατάλογο."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
 msgid "Specify how often the background will change."
-msgstr "Ορίστε πόσο συχνά θα αλλάζει το φόντο."
+msgstr "Καθορίζει πόσο συχνά θα αλλάζει η εικόνα στο φόντο."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
 msgid "in seconds:"
@@ -356,7 +358,7 @@ msgstr "σε ώρες:"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
 msgid "at start up"
-msgstr "κατά την εκκίνηση"
+msgstr "στην εκκίνηση"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
 msgid "every hour"
@@ -364,15 +366,15 @@ msgstr "κάθε ώρα"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
 msgid "every day"
-msgstr "κάθε μέρα"
+msgstr "κάθε ημέρα"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
 msgid "chronologically"
-msgstr "χρονολογικώς"
+msgstr "χρονολογικά"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
 msgid "Amount of time before a different background is selected."
-msgstr "Ο χρόνος που απαιτείται πριν την επιλογή νέου φόντου."
+msgstr "Το χρονικό διάστημα μέχρι να επιλεγεί διαφορετική εικόνα φόντου."
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
 msgid "_Random Order"
@@ -382,8 +384,7 @@ msgstr "_Τυχαία σειρά"
 msgid ""
 "Randomly selects another image from the same directory when the wallpaper is"
 " to cycle."
-msgstr ""
-"Τυχαία επιλογή εικόνας από τον ίδιο κατάλογο όταν γίνεται εναλλαγή φόντου."
+msgstr "Τυχαία επιλογή εικόνας από τον ίδιο κατάλογο όταν γίνεται αλλαγή."
 
 #: ../settings/xfdesktop-settings-ui.glade.h:1
 msgid "Left"
@@ -524,11 +525,11 @@ msgstr "Μ_ενού"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:38
 msgid "Icon _type:"
-msgstr "_Τύπος εικονιδίου:"
+msgstr "Τύπος εικ_ονιδίου:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:39
 msgid "Icon _size:"
-msgstr "Μέ_γεθος εικονιδίου:"
+msgstr "_Μέγεθος εικονιδίου:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:40
 msgid "48"
@@ -536,7 +537,7 @@ msgstr "48"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:41
 msgid "Icons _orientation:"
-msgstr "Διάτα_ξη εικονιδίων:"
+msgstr "_Διάταξη εικονιδίων:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:42
 msgid "Show icons on primary display"
@@ -544,7 +545,7 @@ msgstr "Εμφάνιση εικονιδίων στην κύρια οθόνη"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:43
 msgid "Use custom _font size:"
-msgstr "Προσαρμογή μεγέ_θους γραμματοσειράς:"
+msgstr "Προσαρμογή μεγέθους _γραμματοσειράς:"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:44
 msgid "12"
@@ -648,12 +649,12 @@ msgstr "_Προσθήκη χώρου εργασίας"
 #: ../src/windowlist.c:403
 #, c-format
 msgid "_Remove Workspace %d"
-msgstr "_Αφαίρεση χώρου εργασίας %d"
+msgstr "Α_φαίρεση χώρου εργασίας %d"
 
 #: ../src/windowlist.c:406
 #, c-format
 msgid "_Remove Workspace '%s'"
-msgstr "_Αφαίρεση χώρου εργασίας '%s'"
+msgstr "Α_φαίρεση χώρου εργασίας '%s'"
 
 #: ../src/xfdesktop-application.c:834
 msgid "Display version information"
@@ -695,7 +696,7 @@ msgstr "Αιτία τερματισμού του xfdesktop"
 #, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr ""
-"Αδύνατη η ανάγνωση των παραμέτρων: %s\n"
+"Απέτυχε η ανάλυση των παραμέτρων: %s\n"
 "\n"
 
 #: ../src/xfdesktop-application.c:871
@@ -773,7 +774,7 @@ msgstr "Κανένα από τα επιλεγμένα εικονίδια δεν 
 #: ../src/xfdesktop-file-icon-manager.c:1027
 #, c-format
 msgid "_Open With \"%s\""
-msgstr "Άνοιγμα _με \"%s\""
+msgstr "Άνοι_γμα με \"%s\""
 
 #: ../src/xfdesktop-file-icon-manager.c:1030
 #, c-format
@@ -795,7 +796,7 @@ msgstr "Άνοι_γμα όλων"
 
 #: ../src/xfdesktop-file-icon-manager.c:1443
 msgid "Create _Launcher..."
-msgstr "Δημιουργία _εκκινητή..."
+msgstr "Δημιουργία ε_κκινητή..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1457
 msgid "Create _URL Link..."
@@ -820,7 +821,7 @@ msgstr "_Κενό αρχείο"
 #: ../src/xfdesktop-file-icon-manager.c:1534
 #: ../src/xfdesktop-special-file-icon.c:545 ../src/xfdesktop-volume-icon.c:811
 msgid "_Open"
-msgstr "Ά_νοιγμα"
+msgstr "Άνοι_γμα"
 
 #: ../src/xfdesktop-file-icon-manager.c:1550
 msgid "_Execute"
@@ -845,11 +846,11 @@ msgstr "_Επικόλληση"
 
 #: ../src/xfdesktop-file-icon-manager.c:1704
 msgid "Cu_t"
-msgstr "Α_ποκοπή"
+msgstr "Απ_οκοπή"
 
 #: ../src/xfdesktop-file-icon-manager.c:1716
 msgid "_Copy"
-msgstr "_Αντιγραφή"
+msgstr "Α_ντιγραφή"
 
 #: ../src/xfdesktop-file-icon-manager.c:1728
 msgid "Paste Into Folder"
@@ -865,11 +866,11 @@ msgstr "_Διαγραφή"
 
 #: ../src/xfdesktop-file-icon-manager.c:1776
 msgid "_Rename..."
-msgstr "Με_τονομασία..."
+msgstr "_Μετονομασία..."
 
 #: ../src/xfdesktop-file-icon-manager.c:1842
 msgid "_Open in New Window"
-msgstr "Άνοιγμ_α σε νέο παράθυρο"
+msgstr "Άνοι_γμα σε νέο παράθυρο"
 
 #: ../src/xfdesktop-file-icon-manager.c:1851
 msgid "Arrange Desktop _Icons"
@@ -902,15 +903,15 @@ msgstr "Αντιγραφή _εδώ"
 
 #: ../src/xfdesktop-file-icon-manager.c:3518
 msgid "_Move Here"
-msgstr "_Μεταφορά εδώ"
+msgstr "_Μετακίνηση εδώ"
 
 #: ../src/xfdesktop-file-icon-manager.c:3518
 msgid "_Link Here"
-msgstr "_Σύνδεση εδώ"
+msgstr "Σύνδεσ_η εδώ"
 
 #: ../src/xfdesktop-file-icon-manager.c:3553
 msgid "_Cancel"
-msgstr "_Ακύρωση"
+msgstr "Άκ_υρο"
 
 #: ../src/xfdesktop-file-icon-manager.c:3683
 msgid "Untitled document"
