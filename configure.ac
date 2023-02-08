@@ -24,7 +24,7 @@ XDT_VERSION_INIT([4.19.0], [git])
 m4_define([xfdesktop_version_short], [xdt_version_major].[xdt_version_minor])
 
 dnl init autoconf
-AC_INIT([xfdesktop], [xfdesktop_version], [https://gitlab.xfce.org/xfce/xfdesktop])
+AC_INIT([xfdesktop], [xdt_version], [https://gitlab.xfce.org/xfce/xfdesktop])
 AC_PREREQ([2.60])
 
 dnl init automake
