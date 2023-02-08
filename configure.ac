@@ -5,15 +5,6 @@ dnl
 dnl xfdesktop - xfce4's desktop manager
 dnl
 
-dnl version info
-m4_define([xfdesktop_version_major], [4])
-m4_define([xfdesktop_version_minor], [19])
-m4_define([xfdesktop_version_micro], [0])
-m4_define([xfdesktop_version_nano], [])
-m4_define([xfdesktop_version_build], [@REVISION@])
-m4_define([xfdesktop_version_tag], [git])
-m4_define([xfdesktop_version], [xfdesktop_version_major().xfdesktop_version_minor().xfdesktop_version_micro()ifelse(xfdesktop_version_nano(), [], [], [.xfdesktop_version_nano()])ifelse(xfdesktop_version_tag(), [git], [xfdesktop_version_tag()-xfdesktop_version_build()], [xfdesktop_version_tag()])])
-
 dnl minimum required versions
 m4_define([glib_minimum_version], [2.66.0])
 m4_define([gtk_minimum_version], [3.24.0])
@@ -28,12 +19,9 @@ m4_define([xfconf_minimum_version], [4.18.0])
 m4_define([cairo_minimum_version], [1.16])
 m4_define([gtk_layer_shell_minimum_version], [0.7.0])
 
-dnl define a short version string for xfdesktop
-m4_append([xfdesktop_version_short], ["])
-m4_append([xfdesktop_version_short], [xfdesktop_version_major])
-m4_append([xfdesktop_version_short], [.])
-m4_append([xfdesktop_version_short], [xfdesktop_version_minor])
-m4_append([xfdesktop_version_short], ["])
+dnl version info
+XDT_VERSION_INIT([4.19.0], [git])
+m4_define([xfdesktop_version_short], [xdt_version_major].[xdt_version_minor])
 
 dnl init autoconf
 AC_INIT([xfdesktop], [xfdesktop_version], [https://gitlab.xfce.org/xfce/xfdesktop])
@@ -67,13 +55,13 @@ AC_CHECK_HEADERS([ctype.h errno.h fcntl.h math.h pwd.h signal.h \
                   sys/types.h time.h \
                   unistd.h])
 dnl Check for i18n support
-XDT_I18N([@LINGUAS@])
+XDT_I18N()
 
 dnl Check for X11 installed
 XDT_CHECK_LIBX11_REQUIRE
 
 dnl define xfdesktop's short version (major.minor)
-AC_DEFINE([XFDESKTOP_VERSION_SHORT], [xfdesktop_version_short], [Short version string of xfdesktop])
+AC_DEFINE([XFDESKTOP_VERSION_SHORT], ["xfdesktop_version_short"], [Short version string of xfdesktop])
 dnl replace the version in settings/xfce-backdrop-settings.desktop.in.in
 AC_SUBST([XFDESKTOP_VERSION_SHORT], [xfdesktop_version_short])
 
