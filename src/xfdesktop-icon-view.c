@@ -2162,6 +2162,7 @@ xfdesktop_icon_view_get_surface_for_item(XfdesktopIconView *icon_view,
                                    -1);
 
                 if (G_LIKELY(icon != NULL)) {
+                    GtkStyleContext *context = gtk_widget_get_style_context(GTK_WIDGET(icon_view));
                     GtkIconTheme *icon_theme = gtk_icon_theme_get_for_screen(gtk_widget_get_screen(GTK_WIDGET(icon_view)));
                     gint scale_factor = gtk_widget_get_scale_factor(GTK_WIDGET(icon_view));
                     GdkPixbuf *pix = NULL;
@@ -2176,7 +2177,7 @@ xfdesktop_icon_view_get_surface_for_item(XfdesktopIconView *icon_view,
                                                                                           scale_factor,
                                                                                           GTK_ICON_LOOKUP_FORCE_SIZE);
                         if (G_LIKELY(icon_info != NULL)) {
-                            pix = gtk_icon_info_load_icon(icon_info, NULL);
+                            pix = gtk_icon_info_load_symbolic_for_context(icon_info, context, NULL, NULL);
                             if (G_LIKELY(pix != NULL)) {
                                 gint width = gdk_pixbuf_get_width(pix);
                                 gint height = gdk_pixbuf_get_height(pix);
@@ -2212,7 +2213,7 @@ xfdesktop_icon_view_get_surface_for_item(XfdesktopIconView *icon_view,
                                                                                           scale_factor,
                                                                                           GTK_ICON_LOOKUP_FORCE_SIZE);
                         if (G_LIKELY(icon_info != NULL)) {
-                            pix = gtk_icon_info_load_icon(icon_info, NULL);
+                            pix = gtk_icon_info_load_symbolic_for_context(icon_info, context, NULL, NULL);
                             g_object_unref(icon_info);
                         }
                     }
