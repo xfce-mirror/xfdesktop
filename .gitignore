@@ -15,6 +15,7 @@ stamp*
 config.log
 config.h
 config.cache
+config.rpath
 autom4te.cache
 config.status
 stamp-h1
@@ -33,7 +34,6 @@ install-sh
 ltmain.sh
 missing
 mkinstalldirs
-intltool-*
 INSTALL
 config.status.lineno
 ChangeLog
@@ -47,7 +47,17 @@ po/POTFILES
 po/Makefile.in.in
 po/stamp-it
 po/*.gmo
-po/.intltool-merge-cache*
+ABOUT-NLS
+po/Makevars.template
+po/Rules-quot
+po/boldquot.sed
+po/en@boldquot.header
+po/en@quot.header
+po/insert-header.sin
+po/quot.sed
+po/remove-potcdate.sin
+po/remove-potcdate.sed
+po/xfdesktop.pot
 settings/xfce-backdrop-settings.desktop
 settings/xfdesktop-settings
 settings/xfdesktop-settings-appearance-frame-ui.h

@@ -34,7 +34,9 @@ xfdesktop_settings_LDADD =						\
 desktop_in_files = xfce-backdrop-settings.desktop.in
 desktopdir = $(datadir)/applications
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
-@INTLTOOL_DESKTOP_RULE@
+
+%.desktop: $(srcdir)/%.desktop.in
+	$(AM_V_GEN)$(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
 
 if MAINTAINER_MODE
 
