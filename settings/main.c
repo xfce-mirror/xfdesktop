@@ -1740,8 +1740,11 @@ is_our_window(AppearancePanel *panel,
             matches = TRUE;
         }
         // TODO: check window geometry?
+    } else
+#endif  /* ENABLE_WAYLAND */
+    {
+        do {} while (0);
     }
-#endif  /* GTK_WINDOWING_WAYLAND */
 
     return matches;
 }
