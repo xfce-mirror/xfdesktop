@@ -61,7 +61,6 @@
 #include "xfdesktop-common.h"
 #include "xfdesktop-thumbnailer.h"
 #include "xfdesktop-settings-ui.h"
-#include "xfdesktop-settings-appearance-frame-ui.h"
 /* for XfceBackdropImageStyle && XfceBackdropColorStyle */
 #include "xfce-backdrop.h"
 
@@ -2055,12 +2054,8 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     g_signal_connect(G_OBJECT(screen), "monitors-changed",
                      G_CALLBACK(cb_monitor_changed), panel);
 
-    appearance_gxml = gtk_builder_new();
-    if(!gtk_builder_add_from_string(appearance_gxml,
-                                    xfdesktop_settings_appearance_frame_ui,
-                                    xfdesktop_settings_appearance_frame_ui_length,
-                                    &error))
-    {
+    appearance_gxml = gtk_builder_new_from_resource("/org/xfce/xfdesktop/settings/xfdesktop-settings-appearance-frame-ui.glade");
+    if (G_UNLIKELY(appearance_gxml == NULL)) {
         g_printerr("Failed to parse appearance settings UI description: %s\n",
                    error->message);
         g_clear_error(&error);
@@ -2381,12 +2376,10 @@ main(int argc, char **argv)
         return 1;
     }
 
+    xfdesktop_settings_ui_register_resource();
 
-    gxml = gtk_builder_new();
-    if(!gtk_builder_add_from_string(gxml, xfdesktop_settings_ui,
-                                    xfdesktop_settings_ui_length,
-                                    &error))
-    {
+    gxml = gtk_builder_new_from_resource("/org/xfce/xfdesktop/settings/xfdesktop-settings-ui.glade");
+    if (G_UNLIKELY(gxml == NULL)) {
         g_printerr("Failed to parse UI description: %s\n", error->message);
         g_clear_error(&error);
         return 1;

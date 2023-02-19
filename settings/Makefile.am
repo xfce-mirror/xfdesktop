@@ -1,8 +1,8 @@
 bin_PROGRAMS = xfdesktop-settings
 
 xfdesktop_settings_SOURCES = \
-	xfdesktop-settings-appearance-frame-ui.h \
 	xfdesktop-settings-ui.h \
+	xfdesktop-settings-ui.c \
 	main.c
 
 xfdesktop_settings_CFLAGS =						\
@@ -35,27 +35,27 @@ desktop_in_files = xfce-backdrop-settings.desktop.in
 desktopdir = $(datadir)/applications
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 
-%.desktop: $(srcdir)/%.desktop.in
-	$(AM_V_GEN)$(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
-
-if MAINTAINER_MODE
+glade_files = \
+	xfdesktop-settings-ui.glade \
+	xfdesktop-settings-appearance-frame-ui.glade
 
 BUILT_SOURCES = \
-	xfdesktop-settings-appearance-frame-ui.h \
-	xfdesktop-settings-ui.h
-
-SUFFIXES: .ui
-
-%-ui.h: $(srcdir)/%-ui.glade Makefile
-	$(AM_V_GEN) xdt-csource --static --name=`basename $< .glade | $(SED) -e 's/-/_/g'`  $< >$@
-
-endif
+	xfdesktop-settings-ui.h \
+	xfdesktop-settings-ui.c
 
 EXTRA_DIST = \
-	xfdesktop-settings-ui.glade \
-	xfdesktop-settings-appearance-frame-ui.glade \
+	$(glade_files) \
 	$(desktop_in_files)
 
 CLEANFILES = \
 	$(BUILT_SOURCES) \
 	$(desktop_DATA)
+
+%.desktop: $(srcdir)/%.desktop.in
+	$(AM_V_GEN) $(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
+
+%-ui.h: $(srcdir)/%-ui.gresource.xml $(glade_files) Makefile
+	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(srcdir) --generate-header --manual-register $<
+
+%-ui.c: $(srcdir)/%-ui.gresource.xml $(glade_files) Makefile
+	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(srcdir) --generate-source --manual-register $<
