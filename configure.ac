@@ -14,7 +14,6 @@ m4_define([libxfce4windowing_minimum_version], [4.19.1])
 m4_define([garcon_minimum_version], [0.6.0])
 m4_define([exo_minimum_version], [0.11.0])
 m4_define([thunar_minimum_version], [4.17.10])
-m4_define([intltool_minimum_version], [0.31])
 m4_define([xfconf_minimum_version], [4.18.0])
 m4_define([cairo_minimum_version], [1.16])
 m4_define([gtk_layer_shell_minimum_version], [0.7.0])
@@ -42,7 +41,6 @@ dnl check for basic programs
 AC_PROG_CC
 AM_PROG_CC_C_O
 AC_PROG_INSTALL
-IT_PROG_INTLTOOL([intltool_minimum_version], [no-xml])
 m4_ifdef([AC_PROG_SED], [AC_PROG_SED], [AC_CHECK_PROG(SED, sed, sed)])
 
 dnl prepare libtool
@@ -54,8 +52,12 @@ AC_CHECK_HEADERS([ctype.h errno.h fcntl.h math.h pwd.h signal.h \
                   string.h sys/param.h sys/stat.h  \
                   sys/types.h time.h \
                   unistd.h])
-dnl Check for i18n support
-XDT_I18N()
+
+GETTEXT_PACKAGE="$PACKAGE"
+AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE], ["$GETTEXT_PACKAGE"], [Name of default gettext domain])
+AC_SUBST([GETTEXT_PACKAGE])
+AM_GNU_GETTEXT_VERSION([0.19.8])
+AM_GNU_GETTEXT([external])
 
 dnl Check for X11 installed
 XDT_CHECK_LIBX11_REQUIRE
