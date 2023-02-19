@@ -246,7 +246,6 @@ common/Makefile
 doc/Makefile
 pixmaps/Makefile
 po/Makefile.in
-settings/xfce-backdrop-settings.desktop.in
 settings/Makefile
 src/Makefile
 ])
