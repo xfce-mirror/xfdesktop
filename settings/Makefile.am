@@ -52,7 +52,8 @@ CLEANFILES = \
 	$(desktop_DATA)
 
 %.desktop: $(srcdir)/%.desktop.in
-	$(AM_V_GEN) $(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
+	$(AM_V_GEN) $(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o - | \
+		sed -e 's/\@XFDESKTOP_VERSION_SHORT\@/$(XFDESKTOP_VERSION_SHORT)/g' > $@
 
 %-ui.h: $(srcdir)/%-ui.gresource.xml $(glade_files) Makefile
 	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(srcdir) --generate-header --manual-register $<
