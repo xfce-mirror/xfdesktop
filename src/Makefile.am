@@ -150,8 +150,6 @@ xfdesktop_LDADD += \
 endif
 endif
 
-if MAINTAINER_MODE
-
 BUILT_SOURCES = \
 	$(xfdesktop_built_sources)
 
@@ -159,64 +157,59 @@ DISTCLEANFILES = \
 	$(xfdesktop_built_sources) \
 	stamp-xfce-desktop-enum-types.h
 
+EXTRA_DIST = \
+	$(desktop_icon_sources) \
+	$(desktop_file_icon_sources) \
+	xfdesktop-file-manager-fdo-dbus.xml \
+	xfdesktop-file-manager-dbus.xml \
+	xfdesktop-thunar-dbus.xml \
+	xfdesktop-trash-dbus.xml
 
 enum_headers = \
 	xfce-backdrop.h \
 	xfce-desktop.h
 
-xfce-desktop-enum-types.h: stamp-xfce-desktop-enum-types.h
-	@true
-stamp-xfce-desktop-enum-types.h: $(enum_headers) Makefile
-	$(AM_V_GEN) ( cd $(srcdir) && glib-mkenums \
+xfce-desktop-enum-types.h: $(enum_headers) Makefile
+	$(AM_V_GEN) $(GLIB_MKENUMS) \
 	      --fhead "#ifndef __XFCE_DESKTOP_ENUM_TYPES_H__\n#define __XFCE_DESKTOP_ENUM_TYPES_H__\nG_BEGIN_DECLS\n" \
 	      --fprod "/* enumerations from \"@filename@\" */\n" \
 	      --vhead "GType @enum_name@_get_type (void) G_GNUC_CONST;\n#define XFCE_TYPE_@ENUMSHORT@ (@enum_name@_get_type())\n" \
 	      --ftail "G_END_DECLS\n\n#endif /* !__XFCE_DESKTOP_ENUM_TYPES_H__ */" \
-	      $(enum_headers) ) >> xgen-xdeth \
-	      && ( cmp -s xgen-xdeth xfce-desktop-enum-types.h || cp xgen-xdeth xfce-desktop-enum-types.h ) \
-	      && rm -f xgen-xdeth \
-		  && echo timestamp > $(@F)
+	      $(addprefix $(srcdir)/,$(enum_headers)) > $@ || { rm -f $@; exit 1; }
+
 xfce-desktop-enum-types.c: $(enum_headers) Makefile
-	$(AM_V_GEN) ( cd $(srcdir) && glib-mkenums \
+	$(AM_V_GEN) $(GLIB_MKENUMS) \
 	      --fhead "#undef GTK_DISABLE_DEPRECATED\n#define GTK_ENABLE_BROKEN\n#include \"xfce-desktop.h\"\n#include \"xfce-backdrop.h\"\n#include \"xfce-desktop-enum-types.h\"" \
 	      --fprod "\n/* enumerations from \"@filename@\" */" \
 	      --vhead "GType\n@enum_name@_get_type (void)\n{\n\tstatic GType type = 0;\n\tif (type == 0) {\n\tstatic const G@Type@Value values[] = {"\
 	      --vprod "\t{ @VALUENAME@, \"@VALUENAME@\", \"@valuenick@\" }," \
 	      --vtail "\t{ 0, NULL, NULL }\n\t};\n\ttype = g_@type@_register_static (\"@EnumName@\", values);\n  }\n\treturn type;\n}\n" \
-	      $(enum_headers) ) >> xgen-xdetc \
-	      && cp xgen-xdetc xfce-desktop-enum-types.c \
-	      && rm -f xgen-xdetc
+	      $(addprefix $(srcdir)/,$(enum_headers)) > $@ || { rm -f $@; exit 1; }
 
 xfdesktop-file-manager-fdo-proxy.c xfdesktop-file-manager-fdo-proxy.h : $(srcdir)/xfdesktop-file-manager-fdo-dbus.xml Makefile
-	gdbus-codegen \
+	$(AM_V_GEN) $(GDBUS_CODEGEN) \
 		--c-namespace=Xfdesktop \
 		--interface-prefix=org.freedesktop. \
 		--generate-c-code=xfdesktop-file-manager-fdo-proxy \
-		$(srcdir)/xfdesktop-file-manager-fdo-dbus.xml
+		$<
 
 xfdesktop-file-manager-proxy.c xfdesktop-file-manager-proxy.h : $(srcdir)/xfdesktop-file-manager-dbus.xml Makefile
-	gdbus-codegen \
+	$(AM_V_GEN) $(GDBUS_CODEGEN) \
 		--c-namespace=Xfdesktop \
 		--interface-prefix=org.xfce. \
 		--generate-c-code=xfdesktop-file-manager-proxy \
-		$(srcdir)/xfdesktop-file-manager-dbus.xml
+		$<
 
 xfdesktop-thunar-proxy.c xfdesktop-thunar-proxy.h : $(srcdir)/xfdesktop-thunar-dbus.xml Makefile
-	gdbus-codegen \
+	$(AM_V_GEN) $(GDBUS_CODEGEN) \
 		--c-namespace=Xfdesktop \
 		--interface-prefix=org.xfce. \
 		--generate-c-code=xfdesktop-thunar-proxy \
-		$(srcdir)/xfdesktop-thunar-dbus.xml
+		$<
 
 xfdesktop-trash-proxy.c xfdesktop-trash-proxy.h : $(srcdir)/xfdesktop-trash-dbus.xml Makefile
-	gdbus-codegen \
+	$(AM_V_GEN) $(GDBUS_CODEGEN) \
 		--c-namespace=Xfdesktop \
 		--interface-prefix=org.xfce. \
 		--generate-c-code=xfdesktop-trash-proxy \
-		$(srcdir)/xfdesktop-trash-dbus.xml
-
-endif
-
-EXTRA_DIST = \
-	$(desktop_icon_sources) \
-	$(desktop_file_icon_sources)
+		$<

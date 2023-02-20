@@ -7,8 +7,8 @@ SUBDIRS = \
 	common \
 	doc \
 	settings \
-	po \
 	src \
+	po \
 	pixmaps
 
 manpagedir = $(mandir)/man1

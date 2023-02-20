@@ -23,30 +23,35 @@ libxfdesktop_la_CFLAGS = \
 	$(GIO_CFLAGS) \
 	$(GIO_UNIX_CFLAGS)
 
-
-if MAINTAINER_MODE
-
-xfdesktop-marshal.h: xfdesktop-marshal.list Makefile
-	$(AM_V_GEN) glib-genmarshal --prefix=xfdesktop_marshal --internal --header $< > $@
-
-xfdesktop-marshal.c: xfdesktop-marshal.list Makefile
-	$(AM_V_GEN) echo '#include "xfdesktop-marshal.h"' > $@ \
-	&& glib-genmarshal --prefix=xfdesktop_marshal --body $< >> $@
-
-tumbler.c tumbler.h : $(srcdir)/tumbler-service-dbus.xml Makefile.am
-	gdbus-codegen \
-		--c-namespace=Tumbler \
-		--interface-prefix=org.freedesktop.thumbnails. \
-		--generate-c-code=tumbler \
-		$(srcdir)/tumbler-service-dbus.xml
-
 DISTCLEANFILES = \
 	$(libxfdesktop_built_sources)
 
 BUILT_SOURCES = \
 	$(libxfdesktop_built_sources)
 
-endif
-
 EXTRA_DIST = \
+	tumbler-service-dbus.xml \
 	xfdesktop-marshal.list
+
+xfdesktop-marshal.h: xfdesktop-marshal.list Makefile
+	$(AM_V_GEN) $(GLIB_GENMARSHAL) \
+		--quiet \
+		--prefix=xfdesktop_marshal \
+		--internal \
+		--header \
+		$< > $@ || { rm -f $@; exit 1; }
+
+xfdesktop-marshal.c: xfdesktop-marshal.list Makefile
+	$(AM_V_GEN) $(GLIB_GENMARSHAL) \
+		--quiet \
+		--include-header "xfdesktop-marshal.h" \
+		--prefix=xfdesktop_marshal \
+		--body \
+		$< > $@ || { rm -f $@; exit 1; }
+
+tumbler.c tumbler.h : $(srcdir)/tumbler-service-dbus.xml Makefile.am
+	$(AM_V_GEN) $(GDBUS_CODEGEN) \
+		--c-namespace=Tumbler \
+		--interface-prefix=org.freedesktop.thumbnails. \
+		--generate-c-code=tumbler \
+		$<

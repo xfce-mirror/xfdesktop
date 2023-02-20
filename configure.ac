@@ -64,7 +64,7 @@ XDT_CHECK_LIBX11_REQUIRE
 
 dnl define xfdesktop's short version (major.minor)
 AC_DEFINE([XFDESKTOP_VERSION_SHORT], ["xfdesktop_version_short"], [Short version string of xfdesktop])
-dnl replace the version in settings/xfce-backdrop-settings.desktop.in.in
+dnl replace the version in settings/xfce-backdrop-settings.desktop.in
 AC_SUBST([XFDESKTOP_VERSION_SHORT], [xfdesktop_version_short])
 
 dnl required
@@ -131,6 +131,19 @@ if test x"$enable_x11" != x"yes" -a x"$enable_wayland" != x"yes"; then
     AC_MSG_ERROR([Either both X11 and Wayland support was disabled, or required dependencies are missing. One of the two must be enabled.])
 fi
 
+AC_ARG_VAR([GDBUS_CODEGEN], [D-Bus code and documentation generator from XML D-Bus interface definitions])
+AC_MSG_CHECKING([for gdbus-codegen])
+if test x"$GDBUS_CODEGEN" = x""; then
+    GDBUS_CODEGEN=`$PKG_CONFIG --variable=gdbus_codegen gio-2.0`
+fi
+if test -x "$GDBUS_CODEGEN"; then
+    AC_MSG_RESULT([$GDBUS_CODEGEN])
+else
+    AC_MSG_ERROR([could not find gdbus-codegen in \$PATH. You can run
+./configure GDBUS_CODEGEN=/path/to/gdbus-codegen
+to define a custom location for it.])
+fi
+
 AC_ARG_VAR([GLIB_COMPILE_RESOURCES], [GResource compiler/generator])
 AC_MSG_CHECKING([for glib-compile-resources])
 if test x"$GLIB_COMPILE_RESOURCES" = x""; then
@@ -141,6 +154,32 @@ if test -x "$GLIB_COMPILE_RESOURCES"; then
 else
     AC_MSG_ERROR([could not find glib-compile-resources in \$PATH. You can run
 ./configure GLIB_COMPILE_RESOURCES=/path/to/glib-compile-resources
+to define a custom location for it.])
+fi
+
+AC_ARG_VAR([GLIB_GENMARSHAL], [gclosure marshalling function generator])
+AC_MSG_CHECKING([for glib-genmarshal])
+if test x"$GLIB_GENMARSHAL" = x""; then
+    GLIB_GENMARSHAL=`$PKG_CONFIG --variable=glib_genmarshal glib-2.0`
+fi
+if test -x "$GLIB_GENMARSHAL"; then
+    AC_MSG_RESULT([$GLIB_GENMARSHAL])
+else
+    AC_MSG_ERROR([could not find glib-genmarshal in \$PATH. You can run
+./configure GLIB_GENMARSHAL=/path/to/glib-genmarshal
+to define a custom location for it.])
+fi
+
+AC_ARG_VAR([GLIB_MKENUMS], [generates boxed types for enums])
+AC_MSG_CHECKING([for glib-mkenums])
+if test x"$GLIB_MKENUMS" = x""; then
+    GLIB_MKENUMS=`$PKG_CONFIG --variable=glib_mkenums glib-2.0`
+fi
+if test -x "$GLIB_MKENUMS"; then
+    AC_MSG_RESULT([$GLIB_MKENUMS])
+else
+    AC_MSG_ERROR([could not find glib-mkenums in \$PATH. You can run
+./configure GLIB_MKENUMS=/path/to/glib-mkenums
 to define a custom location for it.])
 fi
 
