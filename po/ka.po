@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR Xfce
+# This file is distributed under the same license as the xfdesktop.master package.
 # 
 # Translators:
 # ზურაბი დავითაშვილი <zurabi@tuta.io>, 2018
@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-20 00:51+0100\n"
+"Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
+"POT-Creation-Date: 2023-02-22 14:45+0100\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: ზურაბი დავითაშვილი <zurabi@tuta.io>, 2019-2020\n"
 "Language-Team: Georgian (http://www.transifex.com/xfce/xfdesktop/language/ka/)\n"
@@ -19,38 +19,38 @@ msgstr ""
 "Language: ka\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
-#: ../settings/main.c:421 ../src/xfdesktop-special-file-icon.c:247
-#: ../src/xfdesktop-special-file-icon.c:413
+#: settings/main.c:421 src/xfdesktop-special-file-icon.c:247
+#: src/xfdesktop-special-file-icon.c:413
 msgid "Home"
 msgstr "სახლი"
 
-#: ../settings/main.c:423 ../src/xfdesktop-special-file-icon.c:249
-#: ../src/xfdesktop-special-file-icon.c:411
+#: settings/main.c:423 src/xfdesktop-special-file-icon.c:249
+#: src/xfdesktop-special-file-icon.c:411
 msgid "File System"
 msgstr "ფაილური სისტემა"
 
-#: ../settings/main.c:425 ../src/xfdesktop-special-file-icon.c:251
+#: settings/main.c:425 src/xfdesktop-special-file-icon.c:251
 msgid "Trash"
 msgstr "ნაგავი"
 
-#: ../settings/main.c:427
+#: settings/main.c:427
 msgid "Removable Devices"
 msgstr "მოცილებადი მოწყობილობები"
 
-#: ../settings/main.c:429
+#: settings/main.c:429
 msgid "Network Shares"
 msgstr "ქსელში გაზიარებები"
 
-#: ../settings/main.c:431
+#: settings/main.c:431
 msgid "Disks and Drives"
 msgstr "დისკები"
 
-#: ../settings/main.c:433
+#: settings/main.c:433
 msgid "Other Devices"
 msgstr "სხვა მოწყობილებები"
 
 #. Display the file name, file type, and file size in the tooltip.
-#: ../settings/main.c:537
+#: settings/main.c:537
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -58,1005 +58,1016 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nტიპი: %s\nზომა: %s"
 
-#: ../settings/main.c:773
+#: settings/main.c:773
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "ფონური გამოსახულება %d (%s) მონიტორისთვის"
 
-#: ../settings/main.c:776
+#: settings/main.c:776
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "ფონური გამოსახულება %d მონიტორისთვის"
 
-#: ../settings/main.c:782
+#: settings/main.c:782
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "გადაიტანეთ ეს დიალოგი იმ ეკრანზე, რომლისთვისაც გსურთ პარამეტრების შეცვლა."
 
-#: ../settings/main.c:789
+#: settings/main.c:789
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "ფონური გამოსახულება %s-თვის %d (%s) მონიტორზე"
 
-#: ../settings/main.c:793
+#: settings/main.c:793
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "ფონური გამოსახულება %s-თვის %d მონიტორზე"
 
-#: ../settings/main.c:800
+#: settings/main.c:800
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr "გადაიტანეთ ეს დიალოგი იმ ეკრანზე და სამუშაო სივრცეზე, რომლისთვისაც გსურთ პარამეტრების შეცვლა."
 
 #. Single monitor and single workspace
-#: ../settings/main.c:808
-#, c-format
+#: settings/main.c:808
 msgid "Wallpaper for my desktop"
 msgstr "ფონური გამოსახულება ჩემი სამუშაო მაგიდისთვის"
 
 #. Single monitor and per workspace wallpaper
-#: ../settings/main.c:814
+#: settings/main.c:814
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "ფონური გამოსახულება %s-სთვის"
 
-#: ../settings/main.c:819
+#: settings/main.c:819
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "გადაიტანეთ ეს დიალოგი იმ სამუშაო სივრცეზე, რომლისთვისაც გსურთ პარამეტრების შეცვლა."
 
-#: ../settings/main.c:1274
+#: settings/main.c:1274
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "სანამ გამოსახულების სტილში მითითებულია - არცერთი, გამოსახულების შერჩევა მიუწვდომელია."
 
-#: ../settings/main.c:1633
+#: settings/main.c:1633
 msgid "Spanning screens"
 msgstr "გაერთიანებული ეკრანები"
 
 #. TRANSLATORS: Please split the message in half with '\n' so the dialog will
 #. not be too wide.
-#: ../settings/main.c:1924
+#: settings/main.c:1924
 msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
 msgstr "გსურთ მოაწყოთ ყველა არსებული\nხატულა არჩეული ორიენტაციის მიხედვით?"
 
-#: ../settings/main.c:1930
+#: settings/main.c:1930
 msgid "Arrange icons"
 msgstr "ხატულების მოწყობა"
 
 #. printf is to be translator-friendly
-#: ../settings/main.c:1938 ../src/xfdesktop-file-icon-manager.c:1159
-#: ../src/xfdesktop-file-icon-manager.c:1759
+#: settings/main.c:1938 src/xfdesktop-file-icon-manager.c:1159
+#: src/xfdesktop-file-icon-manager.c:1759
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "\"%s\"-ის გაშვება შეუძლებელია:"
 
-#: ../settings/main.c:1939 ../src/xfdesktop-file-icon-manager.c:1161
-#: ../src/xfdesktop-file-icon-manager.c:1512
-#: ../src/xfdesktop-file-icon-manager.c:1760 ../src/xfdesktop-file-utils.c:555
-#: ../src/xfdesktop-file-utils.c:1222 ../src/xfdesktop-file-utils.c:1247
-#: ../src/xfdesktop-file-utils.c:1354 ../src/xfdesktop-file-utils.c:1418
+#: settings/main.c:1939 src/xfdesktop-file-icon-manager.c:1161
+#: src/xfdesktop-file-icon-manager.c:1512
+#: src/xfdesktop-file-icon-manager.c:1760 src/xfdesktop-file-utils.c:555
+#: src/xfdesktop-file-utils.c:1222 src/xfdesktop-file-utils.c:1247
+#: src/xfdesktop-file-utils.c:1354 src/xfdesktop-file-utils.c:1418
 msgid "Launch Error"
 msgstr "შეცდომა გაშვებაში"
 
-#: ../settings/main.c:1941 ../settings/xfdesktop-settings-ui.glade.h:20
-#: ../src/xfdesktop-file-icon-manager.c:913
-#: ../src/xfdesktop-file-icon-manager.c:932
-#: ../src/xfdesktop-file-icon-manager.c:1031
-#: ../src/xfdesktop-file-icon-manager.c:1163
-#: ../src/xfdesktop-file-icon-manager.c:1516
-#: ../src/xfdesktop-file-icon-manager.c:1762
-#: ../src/xfdesktop-file-icon-manager.c:3371 ../src/xfdesktop-file-utils.c:558
-#: ../src/xfdesktop-file-utils.c:676 ../src/xfdesktop-file-utils.c:731
-#: ../src/xfdesktop-file-utils.c:795 ../src/xfdesktop-file-utils.c:856
-#: ../src/xfdesktop-file-utils.c:917 ../src/xfdesktop-file-utils.c:965
-#: ../src/xfdesktop-file-utils.c:1020 ../src/xfdesktop-file-utils.c:1078
-#: ../src/xfdesktop-file-utils.c:1165 ../src/xfdesktop-file-utils.c:1226
-#: ../src/xfdesktop-file-utils.c:1249 ../src/xfdesktop-file-utils.c:1358
-#: ../src/xfdesktop-file-utils.c:1422 ../src/xfdesktop-file-utils.c:1493
-#: ../src/xfdesktop-file-utils.c:1563 ../src/xfdesktop-volume-icon.c:461
-#: ../src/xfdesktop-volume-icon.c:505 ../src/xfdesktop-volume-icon.c:587
+#: settings/main.c:1941 settings/xfdesktop-settings-ui.glade:198
+#: src/xfdesktop-file-icon-manager.c:913 src/xfdesktop-file-icon-manager.c:932
+#: src/xfdesktop-file-icon-manager.c:1031
+#: src/xfdesktop-file-icon-manager.c:1163
+#: src/xfdesktop-file-icon-manager.c:1516
+#: src/xfdesktop-file-icon-manager.c:1762
+#: src/xfdesktop-file-icon-manager.c:3371 src/xfdesktop-file-utils.c:558
+#: src/xfdesktop-file-utils.c:676 src/xfdesktop-file-utils.c:731
+#: src/xfdesktop-file-utils.c:795 src/xfdesktop-file-utils.c:856
+#: src/xfdesktop-file-utils.c:917 src/xfdesktop-file-utils.c:965
+#: src/xfdesktop-file-utils.c:1020 src/xfdesktop-file-utils.c:1078
+#: src/xfdesktop-file-utils.c:1165 src/xfdesktop-file-utils.c:1226
+#: src/xfdesktop-file-utils.c:1249 src/xfdesktop-file-utils.c:1358
+#: src/xfdesktop-file-utils.c:1422 src/xfdesktop-file-utils.c:1493
+#: src/xfdesktop-file-utils.c:1563 src/xfdesktop-volume-icon.c:461
+#: src/xfdesktop-volume-icon.c:505 src/xfdesktop-volume-icon.c:587
 msgid "_Close"
 msgstr "დახურვა"
 
-#: ../settings/main.c:2103
+#: settings/main.c:2103
 msgid "Image files"
 msgstr "გამოსახულების ფაილები"
 
 #. Change the title of the file chooser dialog
-#: ../settings/main.c:2111
+#: settings/main.c:2111
 msgid "Select a Directory"
 msgstr "აირჩიეთ კატალოგი"
 
-#: ../settings/main.c:2323
+#: settings/main.c:2323
 msgid "Settings manager socket"
 msgstr "პარამეტრების მმართველის სოკეტი"
 
-#: ../settings/main.c:2323
+#: settings/main.c:2323
 msgid "SOCKET ID"
 msgstr "სოკეტის აიდი"
 
-#: ../settings/main.c:2324
+#: settings/main.c:2324
 msgid "Version information"
 msgstr "ვერსიის შესახებ ინფორმაცია"
 
-#: ../settings/main.c:2325 ../src/xfdesktop-application.c:890
+#: settings/main.c:2325 src/xfdesktop-application.c:890
 msgid "Enable debug messages"
 msgstr "დეფექტების აღმოსაჩენი შეტყობინებების ჩართვა"
 
-#: ../settings/main.c:2349
+#: settings/main.c:2349
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "აკრიფეთ \"%s --help\" გამოყენებისთვის."
 
-#: ../settings/main.c:2361
+#: settings/main.c:2361
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce-ის განვითარების ჯგუფი. ყველა უფლება დაცულია."
 
-#: ../settings/main.c:2362
+#: settings/main.c:2362
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "გთხოვთ, შეცდომების შესახებ გვაცნობეთ აქ <%s>."
 
-#: ../settings/main.c:2369
+#: settings/main.c:2369
 msgid "Desktop Settings"
 msgstr "სამუშაო მაგიდის პარამეტრები"
 
-#: ../settings/main.c:2371
+#: settings/main.c:2371
 msgid "Unable to contact settings server"
 msgstr "პარამეტრების სერვერთან დაკავშირება შეუძლებელია"
 
-#: ../settings/main.c:2373
+#: settings/main.c:2373
 msgid "Quit"
 msgstr "დატოვება"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
+#: settings/xfce-backdrop-settings.desktop.in:4
+#: settings/xfdesktop-settings-ui.glade:162 src/xfce-desktop.c:1108
+msgid "Desktop"
+msgstr "სამუშაო მაგიდა"
+
+#: settings/xfce-backdrop-settings.desktop.in:5
+msgid "Set desktop background and menu and icon behavior"
+msgstr "გაასწორეთ სამუშაო მაგიდის ფონი, მენიუ და ხატულას ქცევა"
+
+#: settings/xfce-backdrop-settings.desktop.in:7
+msgid "org.xfce.xfdesktop"
+msgstr ""
+
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:19
 msgid "Solid color"
 msgstr "მყარი ფერი"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:22
 msgid "Horizontal gradient"
 msgstr "ჰორიზონტალური დახრილობა"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:25
 msgid "Vertical gradient"
 msgstr "ვერტიკალური დახრილობა"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:28
 msgid "Transparent"
 msgstr "გამჭვირვალე"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:106
 msgid "Choose the folder to select wallpapers from."
 msgstr "აირჩიეთ საქაღალდე, საიდანაც შეარჩევთ ფონურ გამოსახულებებს."
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:117
 msgid "Apply"
 msgstr "გამოყენება"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:132
 msgid "St_yle:"
 msgstr "სტილი:"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:147
 msgid "Specify how the image will be resized to fit the screen."
 msgstr "მიუთითეთ, თუ როგორ შეიცვალოს გამოსახულების ზომა, რათა ეკრანს მოერგოს."
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
-#: ../settings/xfdesktop-settings-ui.glade.h:4
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:149
+#: settings/xfdesktop-settings-ui.glade:60
+#: settings/xfdesktop-settings-ui.glade:97
+#: settings/xfdesktop-settings-ui.glade:117
 msgid "None"
 msgstr "არცერთი"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:150
 msgid "Centered"
 msgstr "დაცენტრებული"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:151
 msgid "Tiled"
 msgstr "მოზაიკური"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:152
 msgid "Stretched"
 msgstr "გაჭიმული"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:153
 msgid "Scaled"
 msgstr "მასშტაბური"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:154
 msgid "Zoomed"
 msgstr "გადიდებული"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:155
 msgid "Spanning Screens"
 msgstr "გაერთიანებული ეკრანები"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:168
 msgid "Specify the style of the color drawn behind the backdrop image."
 msgstr "მიუთითეთ ფერის სტილი, რომელიც იხატება ფონური გამოსახულების უკან."
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:190
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
 msgstr "\"მარცხენა\" ან \"ზედა\" დახრილობის ფერი, განსაზღვრავს მყარ ფერს."
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:191
 msgid "Select First Color"
 msgstr "აირჩიეთ პირველი ფერი"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:204
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient."
 msgstr "განსაზღვრავს \"მარჯვენა\" ან \"ქვედა\" დახრილობის ფერს."
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:205
 msgid "Select Second Color"
 msgstr "აირჩიეთ მეორე ფერი"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:214
 msgid "Apply to all _workspaces"
 msgstr "ყოველ სამუშაო სივრცეზე გამოყენება"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:232
 msgid "_Folder:"
 msgstr "საქაღალდე:"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:247
 msgid "C_olor:"
 msgstr "ფერი:"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:302
 msgid "Change the _background "
 msgstr "ფონის შეცვლა"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:307
 msgid ""
 "Automatically select a different background from the current directory."
 msgstr "ავტომატურად შეარჩიე განსხვავებული ფონი მიმდინარე კატალოგიდან."
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:323
 msgid "Specify how often the background will change."
 msgstr "მიუთითეთ, ფონის შეცვლის სიხშირე."
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:325
 msgid "in seconds:"
 msgstr "წამებში:"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:326
 msgid "in minutes:"
 msgstr "წუთებში:"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:327
 msgid "in hours:"
 msgstr "საათებში:"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:328
 msgid "at start up"
 msgstr "ჩატვირთვისას"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:329
 msgid "every hour"
 msgstr "ყოველ საათს"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:330
 msgid "every day"
 msgstr "ყოველდღე"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:331
 msgid "chronologically"
 msgstr "ქრონოლოგიურად"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:346
 msgid "Amount of time before a different background is selected."
 msgstr "დროის ოდენობა მომდევნო ფონის არჩევამდე."
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:357
 msgid "_Random Order"
 msgstr "შემთხვევითი წყობა"
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:36
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:363
 msgid ""
 "Randomly selects another image from the same directory when the wallpaper is"
 " to cycle."
 msgstr "ფონური გამოსახულების წრიულად შეცვლის დროს, შემთხვევით ირჩევს სხვა გამოსახულებას იმავე კატალოგიდან. "
 
-#: ../settings/xfdesktop-settings-ui.glade.h:1
+#: settings/xfdesktop-settings-ui.glade:43
+#: settings/xfdesktop-settings-ui.glade:80
 msgid "Left"
 msgstr "მარცხენა"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:2
+#: settings/xfdesktop-settings-ui.glade:46
+#: settings/xfdesktop-settings-ui.glade:83
 msgid "Middle"
 msgstr "შუა"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:3
+#: settings/xfdesktop-settings-ui.glade:49
+#: settings/xfdesktop-settings-ui.glade:86
 msgid "Right"
 msgstr "მარჯვენა"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:5
+#: settings/xfdesktop-settings-ui.glade:63
+#: settings/xfdesktop-settings-ui.glade:100
 msgid "Shift"
 msgstr "Shift"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:6
+#: settings/xfdesktop-settings-ui.glade:66
+#: settings/xfdesktop-settings-ui.glade:103
 msgid "Alt"
 msgstr "Alt"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:7
+#: settings/xfdesktop-settings-ui.glade:69
+#: settings/xfdesktop-settings-ui.glade:106
 msgid "Control"
 msgstr "Control"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:8
+#: settings/xfdesktop-settings-ui.glade:120
 msgid "Minimized application icons"
 msgstr "ჩაკეცილი პროგრამების ხატულები"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:9
+#: settings/xfdesktop-settings-ui.glade:123
 msgid "File/launcher icons"
 msgstr "ფაილების/გამშვებების ხატულები"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10
+#: settings/xfdesktop-settings-ui.glade:134
 msgid "Top Left Vertical"
 msgstr "ზედა მარცხენა ვერტიკალური"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:11
+#: settings/xfdesktop-settings-ui.glade:137
 msgid "Top Left Horizontal"
 msgstr "ზედა მარცხენა ჰორიზონტალური"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:12
+#: settings/xfdesktop-settings-ui.glade:140
 msgid "Top Right Vertical"
 msgstr "ზედა მარჯვენა ვერტიკალური"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:13
+#: settings/xfdesktop-settings-ui.glade:143
 msgid "Top Right Horizontal"
 msgstr "ზედა მარჯვენა ჰორიზონტალური"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:14
+#: settings/xfdesktop-settings-ui.glade:146
 msgid "Bottom Left Vertical"
 msgstr "ქვედა მარცხენა ვერტიკალური"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:15
+#: settings/xfdesktop-settings-ui.glade:149
 msgid "Bottom Left Horizontal"
 msgstr "ქვედა მარცხენა ჰორიზონტალური"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:16
+#: settings/xfdesktop-settings-ui.glade:152
 msgid "Bottom Right Vertical"
 msgstr "ქვედა მარჯვენა ვერტიკალური"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:17
+#: settings/xfdesktop-settings-ui.glade:155
 msgid "Bottom Right Horizontal"
 msgstr "ქვედა მარჯვენა ჰორიზონტალური"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:18 ../src/xfce-desktop.c:1108
-msgid "Desktop"
-msgstr "სამუშაო მაგიდა"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:19
+#: settings/xfdesktop-settings-ui.glade:182
 msgid "_Help"
 msgstr "დახმარება"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:21
+#: settings/xfdesktop-settings-ui.glade:238
 msgid "_Background"
 msgstr "ფონი"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:22
+#: settings/xfdesktop-settings-ui.glade:271
 msgid "Include applications menu on _desktop right click"
 msgstr "სამუშაო მაგიდაზე მარჯვენა ღილაკზე დაჭერით, გამოაჩინე პროგრამების მენიუ "
 
-#: ../settings/xfdesktop-settings-ui.glade.h:23
+#: settings/xfdesktop-settings-ui.glade:304
 msgid "_Button:"
 msgstr "ღილაკი:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:24
+#: settings/xfdesktop-settings-ui.glade:338
 msgid "Mo_difier:"
 msgstr "მოდიფიკატორი:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:25
+#: settings/xfdesktop-settings-ui.glade:376
 msgid "Show _application icons in menu"
 msgstr "პროგრამების ხატულების ჩვენება მენიუში"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:26
+#: settings/xfdesktop-settings-ui.glade:398
 msgid "_Edit desktop menu"
 msgstr "სამუშაო მაგიდის მენიუს რედაქტირება"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:27
+#: settings/xfdesktop-settings-ui.glade:432
 msgid "<b>Desktop Menu</b>"
 msgstr "<b>სამუშაო მაგიდის მენიუ</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:28
+#: settings/xfdesktop-settings-ui.glade:461
 msgid "Show _window list menu on desktop middle click"
 msgstr "სამუშაო მაგიდაზე შუა ღილაკზე დაჭერით, ფანჯრების სიის მენიუს ჩვენება"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:29
+#: settings/xfdesktop-settings-ui.glade:494
 msgid "B_utton:"
 msgstr "ღილაკი:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:30
+#: settings/xfdesktop-settings-ui.glade:528
 msgid "Modi_fier:"
 msgstr "მოდიფიკატორი:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:31
+#: settings/xfdesktop-settings-ui.glade:566
 msgid "Sh_ow application icons in menu"
 msgstr "პროგრამის ხატულას ჩვენება მენიუში"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:32
+#: settings/xfdesktop-settings-ui.glade:583
 msgid "Show workspace _names in list"
 msgstr "სამუშაო სივრცეების სახელების ჩვენება სიაში"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:33
+#: settings/xfdesktop-settings-ui.glade:606
 msgid "Use _submenus for the windows in each workspace"
 msgstr "თითოეულ სამუშაო სივრცეში, ქვემენიუების გამოყენება ფანჯრებისთვის"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:34
+#: settings/xfdesktop-settings-ui.glade:629
 msgid "Show s_ticky windows only in active workspace"
 msgstr "წებოვანი ფანჯრების ჩვენება მხოლოდ აქტიურ სამუშაო სივრცეში"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:35
+#: settings/xfdesktop-settings-ui.glade:645
 msgid "Show a_dd and remove workspace options in list"
 msgstr "სამუშაო სივრცეების დამატებისა და მოცილების ვარიანტების ჩვენება სიაში"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:36
+#: settings/xfdesktop-settings-ui.glade:674
 msgid "<b>Window List Menu</b>"
 msgstr "<b>ფანჯრების სიის მენიუ</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:37
+#: settings/xfdesktop-settings-ui.glade:695
 msgid "_Menus"
 msgstr "მენიუები"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:38
+#: settings/xfdesktop-settings-ui.glade:738
 msgid "Icon _Type"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-ui.glade.h:39
+#: settings/xfdesktop-settings-ui.glade:774
 msgid "Icon _size:"
 msgstr "ხატულას ზომა:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:40
+#: settings/xfdesktop-settings-ui.glade:790
 msgid "48"
 msgstr "48"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:41
+#: settings/xfdesktop-settings-ui.glade:804
 msgid "Icons _orientation:"
 msgstr "ხატულების ორიენტაცია:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:42
+#: settings/xfdesktop-settings-ui.glade:835
 msgid "Show icons on primary display"
 msgstr "ხატულების ძირითად ეკრანზე ჩვენება"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:43
+#: settings/xfdesktop-settings-ui.glade:848
 msgid "Use custom _font size:"
 msgstr "განსხვავებული შრიფტის ზომის გამოყენება:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:44
+#: settings/xfdesktop-settings-ui.glade:868
 msgid "12"
 msgstr "12"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:45
+#: settings/xfdesktop-settings-ui.glade:879
 msgid "Show icon tooltips. Size:"
 msgstr "ხატულას მინიშნებების ჩვენება. ზომა:"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:46
+#: settings/xfdesktop-settings-ui.glade:898
 msgid "Size of the tooltip preview image."
 msgstr "მინიშნების ესკიზის გამოსახულების ზომა."
 
-#: ../settings/xfdesktop-settings-ui.glade.h:47
+#: settings/xfdesktop-settings-ui.glade:900
 msgid "64"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-ui.glade.h:48
+#: settings/xfdesktop-settings-ui.glade:911
 msgid "Single _click to activate items"
 msgstr "საგნების ერთი დაჭერით გააქტიურება"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:49
+#: settings/xfdesktop-settings-ui.glade:955
 msgid "<b>Appearance</b>"
 msgstr "გარეგნობა"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:50
+#: settings/xfdesktop-settings-ui.glade:983
 msgid "Show hidden files on the desktop"
 msgstr "დამალული ფაილების სამუშაო მაგიდაზე ჩვენება"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:51
+#: settings/xfdesktop-settings-ui.glade:999
 msgid "Show t_humbnails"
 msgstr "მინიატურების ჩვენება"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:52
+#: settings/xfdesktop-settings-ui.glade:1004
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
 msgstr "აირჩიეთ ეს ვარიანტი, რომ წინასწარ ნახოთ ფაილები სამუშაო მაგიდაზე, როგორც ავტომატურად წარმოქმნილი მინიატურული ხატულები."
 
-#: ../settings/xfdesktop-settings-ui.glade.h:53
+#: settings/xfdesktop-settings-ui.glade:1016
 msgid "Show \"Delete\" option in file context menu"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-ui.glade.h:54
+#: settings/xfdesktop-settings-ui.glade:1062
 msgid "<b>Default Icons</b>"
 msgstr "<b>ნაგულისხმები ხატულები</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:55
+#: settings/xfdesktop-settings-ui.glade:1080
 msgid "<b>File/Launcher Icons</b>"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-ui.glade.h:56
+#: settings/xfdesktop-settings-ui.glade:1101
 msgid "_Icons"
 msgstr "ხატულები"
 
-#: ../src/menu.c:86
+#: src/menu.c:86
 msgid "_Applications"
 msgstr "პროგრამები"
 
-#: ../src/windowlist.c:78
+#: src/windowlist.c:78
 #, c-format
 msgid "Remove Workspace %d"
 msgstr "მოაცილე სამუშაო სივრცე %d"
 
-#: ../src/windowlist.c:80
+#: src/windowlist.c:80
 #, c-format
 msgid ""
 "Do you really want to remove workspace %d?\n"
 "Note: You are currently on workspace %d."
 msgstr "ნამდვილად გსურთ %d სამუშაო სივრცის მოცილება?\nშენიშვნა: თქვენ ამჟამად იმყოფებით %d სამუშაო სივრცეზე."
 
-#: ../src/windowlist.c:83
+#: src/windowlist.c:83
 #, c-format
 msgid "Do you really want to remove workspace %d"
 msgstr ""
 
-#: ../src/windowlist.c:88
+#: src/windowlist.c:88
 #, c-format
 msgid "Remove Workspace '%s'"
 msgstr "მოაცილე სამუშაო სივრცე '%s'"
 
-#: ../src/windowlist.c:90
+#: src/windowlist.c:90
 #, c-format
 msgid ""
 "Do you really want to remove workspace '%s'?\n"
 "Note: You are currently on workspace '%s'."
 msgstr "ნამდვილად გსურთ '%s' სამუშაო სივრცის მოცილება?\nშენიშვნა: თქვენ ამჟამად იმყოფებით '%s' სამუშაო სივრცეზე."
 
-#: ../src/windowlist.c:93
+#: src/windowlist.c:93
 #, c-format
 msgid "Do you really want to remove workspace '%s'?"
 msgstr ""
 
 #. Popup a dialog box confirming that the user wants to remove a
 #. * workspace
-#: ../src/windowlist.c:100
+#: src/windowlist.c:100
 msgid "Remove"
 msgstr "მოცილება"
 
-#: ../src/windowlist.c:312
+#: src/windowlist.c:312
 msgid "Window List"
 msgstr "ფანჯრების სია"
 
-#: ../src/windowlist.c:357
+#: src/windowlist.c:357
 #, c-format
 msgid "<b>Group %d, Workspace %d</b>"
 msgstr ""
 
-#: ../src/windowlist.c:359
+#: src/windowlist.c:359
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>სამუშაო სივრცე %d</b>"
 
-#: ../src/windowlist.c:449 ../src/windowlist.c:451
+#: src/windowlist.c:449 src/windowlist.c:451
 msgid "_Add Workspace"
 msgstr "სამუშაო სივრცის დამატება"
 
-#: ../src/windowlist.c:465
+#: src/windowlist.c:465
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "მოაცილე სამუშაო სივრცე %d"
 
-#: ../src/windowlist.c:468
+#: src/windowlist.c:468
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "მოაცილე სამუშაო სივრცე '%s'"
 
-#: ../src/xfdesktop-application.c:882
+#: src/xfdesktop-application.c:882
 msgid "Display version information"
 msgstr "ინფორმაცია ვერსიის შესახებ"
 
-#: ../src/xfdesktop-application.c:883
+#: src/xfdesktop-application.c:883
 msgid "Reload all settings"
 msgstr "ყველა პარამეტრის გადატვირთვა"
 
-#: ../src/xfdesktop-application.c:884
+#: src/xfdesktop-application.c:884
 msgid "Advance to the next wallpaper on the current workspace"
 msgstr "მიმდინარე სამუშაო სივრცეზე, შემდეგ ფონურ გამოსახულებაზე გადასვლა"
 
-#: ../src/xfdesktop-application.c:885
+#: src/xfdesktop-application.c:885
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "მენიუს ჩვენება (თაგვის ამჟამინდელ მდებარეობაზე)"
 
-#: ../src/xfdesktop-application.c:886
+#: src/xfdesktop-application.c:886
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "ფანჯრების სიის ჩვენება (თაგვის ამჟამინდელ მდებარეობაზე)"
 
-#: ../src/xfdesktop-application.c:888
+#: src/xfdesktop-application.c:888
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "სამუშაო მაგიდაზე ყველა ხატულას ავტომატურად მოწყობა"
 
-#: ../src/xfdesktop-application.c:891
+#: src/xfdesktop-application.c:891
 msgid "Disable debug messages"
 msgstr "დეფექტების აღმოსაჩენი შეტყობინებების გამორთვა"
 
-#: ../src/xfdesktop-application.c:892
+#: src/xfdesktop-application.c:892
 msgid "Do not wait for a window manager on startup"
 msgstr "არ დაელოდო ფანჯრის მმართველს ჩატვირთვისას"
 
-#: ../src/xfdesktop-application.c:893
+#: src/xfdesktop-application.c:893
 msgid "Cause xfdesktop to quit"
 msgstr "აიძულა xfdesktop-ს დატოვება"
 
-#: ../src/xfdesktop-application.c:908
+#: src/xfdesktop-application.c:908
 #, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "არგუმენტების გაანალიზება ვერ მოხერხდა: %s\n"
 
-#: ../src/xfdesktop-application.c:919
+#: src/xfdesktop-application.c:919
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "ეს არის %s, ვერსია %s, გაშვებულია Xfce %s-ზე.\n"
 
-#: ../src/xfdesktop-application.c:921
+#: src/xfdesktop-application.c:921
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "აგებულია GTK+ %d.%d.%d-ით, დაკავშირებულია GTK+ %d.%d.%d-ით."
 
-#: ../src/xfdesktop-application.c:925
-#, c-format
+#: src/xfdesktop-application.c:925
 msgid "Build options:\n"
 msgstr "აგების ვარიანტები:\n"
 
-#: ../src/xfdesktop-application.c:926
+#: src/xfdesktop-application.c:926
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "სამუშაო მაგიდის მენიუ: %s\n"
 
-#: ../src/xfdesktop-application.c:928 ../src/xfdesktop-application.c:935
-#: ../src/xfdesktop-application.c:942
+#: src/xfdesktop-application.c:928 src/xfdesktop-application.c:935
+#: src/xfdesktop-application.c:942
 msgid "enabled"
 msgstr "ჩართულია"
 
-#: ../src/xfdesktop-application.c:930 ../src/xfdesktop-application.c:937
-#: ../src/xfdesktop-application.c:944
+#: src/xfdesktop-application.c:930 src/xfdesktop-application.c:937
+#: src/xfdesktop-application.c:944
 msgid "disabled"
 msgstr "გამორთულია"
 
-#: ../src/xfdesktop-application.c:933
+#: src/xfdesktop-application.c:933
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "სამუშაო მაგიდის ხატულები: %s\n"
 
-#: ../src/xfdesktop-application.c:940
+#: src/xfdesktop-application.c:940
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "სამუშაო მაგიდაზე ფაილების ხატულები: %s\n"
 
-#: ../src/xfdesktop-file-icon-manager.c:905
-#: ../src/xfdesktop-file-icon-manager.c:923
+#: src/xfdesktop-file-icon-manager.c:905 src/xfdesktop-file-icon-manager.c:923
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
 msgstr "სამუშაო მაგიდის საქაღალდის შექმნა ვერ მოხერხდა \"%s\""
 
-#: ../src/xfdesktop-file-icon-manager.c:910
-#: ../src/xfdesktop-file-icon-manager.c:928
+#: src/xfdesktop-file-icon-manager.c:910 src/xfdesktop-file-icon-manager.c:928
 msgid "Desktop Folder Error"
 msgstr "სამუშაო მაგიდის საქაღალდის შეცდომა"
 
-#: ../src/xfdesktop-file-icon-manager.c:930
+#: src/xfdesktop-file-icon-manager.c:930
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr "იგივე სახელის ნორმალური ფაილი უკვე არსებობს. გთხოვთ, წაშალეთ ან სახელი შეუცვალეთ."
 
-#: ../src/xfdesktop-file-icon-manager.c:1028 ../src/xfdesktop-file-utils.c:727
-#: ../src/xfdesktop-file-utils.c:791
+#: src/xfdesktop-file-icon-manager.c:1028 src/xfdesktop-file-utils.c:727
+#: src/xfdesktop-file-utils.c:791
 msgid "Rename Error"
 msgstr "სახელის შეცვლის შეცდომა"
 
-#: ../src/xfdesktop-file-icon-manager.c:1029 ../src/xfdesktop-file-utils.c:792
+#: src/xfdesktop-file-icon-manager.c:1029 src/xfdesktop-file-utils.c:792
 msgid "The files could not be renamed"
 msgstr "ფაილების სახელის შეცვლა შეუძლებელია"
 
-#: ../src/xfdesktop-file-icon-manager.c:1030
+#: src/xfdesktop-file-icon-manager.c:1030
 msgid "None of the icons selected support being renamed."
 msgstr "არჩეული ხატულებიდან არცერთს არ აქვს სახელის შეცვლის მხარდაჭერა."
 
-#: ../src/xfdesktop-file-icon-manager.c:1359
+#: src/xfdesktop-file-icon-manager.c:1359
 msgid ""
 "This will reorder all desktop items and place them on different screen positions.\n"
 "Are you sure?"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1363
+#: src/xfdesktop-file-icon-manager.c:1363
 msgid "_OK"
 msgstr "კარგი"
 
-#: ../src/xfdesktop-file-icon-manager.c:1438
+#: src/xfdesktop-file-icon-manager.c:1438
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "\"%s\"-ით გახსნა"
 
-#: ../src/xfdesktop-file-icon-manager.c:1441
+#: src/xfdesktop-file-icon-manager.c:1441
 #, c-format
 msgid "Open With \"%s\""
 msgstr "\"%s\"-ით გახსნა"
 
-#: ../src/xfdesktop-file-icon-manager.c:1514
+#: src/xfdesktop-file-icon-manager.c:1514
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr "\"exo-desktop-item-edit\"-ის გაშვება შეუძლებელია, რომელიც საჭიროა გამშვებების და ბმულების შექმნისა და რედაქტირებისათვის."
 
-#: ../src/xfdesktop-file-icon-manager.c:1878
+#: src/xfdesktop-file-icon-manager.c:1878
 msgid "_Open all"
 msgstr "ყველას გახსნა"
 
-#: ../src/xfdesktop-file-icon-manager.c:1898
+#: src/xfdesktop-file-icon-manager.c:1898
 msgid "Create _Launcher..."
 msgstr "გამშვების შექმნა..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1912
+#: src/xfdesktop-file-icon-manager.c:1912
 msgid "Create _URL Link..."
 msgstr "ვებ-მისამართის ბმულის შექმნა"
 
-#: ../src/xfdesktop-file-icon-manager.c:1926
+#: src/xfdesktop-file-icon-manager.c:1926
 msgid "Create _Folder..."
 msgstr "Საქაღალდის შექმნა..."
 
-#: ../src/xfdesktop-file-icon-manager.c:1938
+#: src/xfdesktop-file-icon-manager.c:1938
 msgid "Create _Document"
 msgstr "დოკუმენტის შექმნა"
 
-#: ../src/xfdesktop-file-icon-manager.c:1963
+#: src/xfdesktop-file-icon-manager.c:1963
 msgid "No templates installed"
 msgstr "შაბლონები არ არის დაყენებული"
 
-#: ../src/xfdesktop-file-icon-manager.c:1979
+#: src/xfdesktop-file-icon-manager.c:1979
 msgid "_Empty File"
 msgstr "ცარიელი ფაილი"
 
-#: ../src/xfdesktop-file-icon-manager.c:1989
+#: src/xfdesktop-file-icon-manager.c:1989
 msgid "_Open All"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1989
-#: ../src/xfdesktop-special-file-icon.c:478 ../src/xfdesktop-volume-icon.c:833
+#: src/xfdesktop-file-icon-manager.c:1989
+#: src/xfdesktop-special-file-icon.c:478 src/xfdesktop-volume-icon.c:833
 msgid "_Open"
 msgstr "გახსნა"
 
-#: ../src/xfdesktop-file-icon-manager.c:2006
+#: src/xfdesktop-file-icon-manager.c:2006
 msgid "_Execute"
 msgstr "გაშვება"
 
-#: ../src/xfdesktop-file-icon-manager.c:2024
+#: src/xfdesktop-file-icon-manager.c:2024
 msgid "_Edit Launcher"
 msgstr "გამშვების რედაქტირება"
 
-#: ../src/xfdesktop-file-icon-manager.c:2083
+#: src/xfdesktop-file-icon-manager.c:2083
 msgid "Open With"
 msgstr "გახსნა"
 
-#: ../src/xfdesktop-file-icon-manager.c:2110
-#: ../src/xfdesktop-file-icon-manager.c:2135
+#: src/xfdesktop-file-icon-manager.c:2110
+#: src/xfdesktop-file-icon-manager.c:2135
 msgid "Open With Other _Application..."
 msgstr "სხვა პროგრამით გახსნა..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2121
+#: src/xfdesktop-file-icon-manager.c:2121
 msgid "Set _Default Application..."
 msgstr "ნაგულისხმები პროგრამის დაყენება..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2153
+#: src/xfdesktop-file-icon-manager.c:2153
 msgid "_Paste"
 msgstr "ჩასმა"
 
-#: ../src/xfdesktop-file-icon-manager.c:2171
+#: src/xfdesktop-file-icon-manager.c:2171
 msgid "Cu_t"
 msgstr "ამოჭრა"
 
-#: ../src/xfdesktop-file-icon-manager.c:2183
+#: src/xfdesktop-file-icon-manager.c:2183
 msgid "_Copy"
 msgstr "ასლი"
 
-#: ../src/xfdesktop-file-icon-manager.c:2195
+#: src/xfdesktop-file-icon-manager.c:2195
 msgid "Paste Into Folder"
 msgstr "საქაღალდეში ჩასმა"
 
-#: ../src/xfdesktop-file-icon-manager.c:2214
+#: src/xfdesktop-file-icon-manager.c:2214
 msgid "Mo_ve to Trash"
 msgstr "ნაგავში გადატანა"
 
-#: ../src/xfdesktop-file-icon-manager.c:2227
+#: src/xfdesktop-file-icon-manager.c:2227
 msgid "_Delete"
 msgstr "წაშლა"
 
-#: ../src/xfdesktop-file-icon-manager.c:2245
+#: src/xfdesktop-file-icon-manager.c:2245
 msgid "_Rename..."
 msgstr "სახელის შეცვლა..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2308
+#: src/xfdesktop-file-icon-manager.c:2308
 msgid "_Open in New Window"
 msgstr "ახალ ფანჯარაში გახსნა"
 
-#: ../src/xfdesktop-file-icon-manager.c:2317
+#: src/xfdesktop-file-icon-manager.c:2317
 msgid "Arrange Desktop _Icons"
 msgstr "ხატულების მოწესრიგება"
 
-#: ../src/xfdesktop-file-icon-manager.c:2328
+#: src/xfdesktop-file-icon-manager.c:2328
 msgid "_Next Background"
 msgstr "შემდეგი ფონი"
 
-#: ../src/xfdesktop-file-icon-manager.c:2338
+#: src/xfdesktop-file-icon-manager.c:2338
 msgid "Desktop _Settings..."
 msgstr "სამუშაო მაგიდის პარამეტრები..."
 
-#: ../src/xfdesktop-file-icon-manager.c:2346
-#: ../src/xfdesktop-volume-icon.c:900
+#: src/xfdesktop-file-icon-manager.c:2346 src/xfdesktop-volume-icon.c:900
 msgid "P_roperties..."
 msgstr "თვისებები..."
 
-#: ../src/xfdesktop-file-icon-manager.c:3368
+#: src/xfdesktop-file-icon-manager.c:3368
 msgid "Load Error"
 msgstr "ჩატვირთვის შეცდომა"
 
-#: ../src/xfdesktop-file-icon-manager.c:3370
+#: src/xfdesktop-file-icon-manager.c:3370
 msgid "Failed to load the desktop folder"
 msgstr "სამუშაო მაგიდის საქაღალდის ჩატვირთვა ვერ მოხერხდა"
 
-#: ../src/xfdesktop-file-icon-manager.c:3775
+#: src/xfdesktop-file-icon-manager.c:3775
 msgid "Copy _Here"
 msgstr "აქ დაკოპირება"
 
-#: ../src/xfdesktop-file-icon-manager.c:3775
+#: src/xfdesktop-file-icon-manager.c:3775
 msgid "_Move Here"
 msgstr "აქ გადმოტანა"
 
-#: ../src/xfdesktop-file-icon-manager.c:3775
+#: src/xfdesktop-file-icon-manager.c:3775
 msgid "_Link Here"
 msgstr "ბმულის გაკეთება"
 
-#: ../src/xfdesktop-file-icon-manager.c:3810
+#: src/xfdesktop-file-icon-manager.c:3810
 msgid "_Cancel"
 msgstr "გაუქმება"
 
-#: ../src/xfdesktop-file-icon-manager.c:3952
+#: src/xfdesktop-file-icon-manager.c:3952
 msgid "Untitled document"
 msgstr "უსახელო დოკუმენტი"
 
 #. TRANSLATORS: file was modified less than one day ago
-#: ../src/xfdesktop-file-utils.c:168
+#: src/xfdesktop-file-utils.c:168
 #, c-format
 msgid "Today at %X"
 msgstr "დღეს %X-ზე"
 
 #. TRANSLATORS: file was modified less than two days ago
-#: ../src/xfdesktop-file-utils.c:172
+#: src/xfdesktop-file-utils.c:172
 #, c-format
 msgid "Yesterday at %X"
 msgstr "გუშინ %X-ზე"
 
 #. Days from last week
-#: ../src/xfdesktop-file-utils.c:177
+#: src/xfdesktop-file-utils.c:177
 #, c-format
 msgid "%A at %X"
 msgstr "%A %X-ზე"
 
 #. Any other date
-#: ../src/xfdesktop-file-utils.c:180
+#: src/xfdesktop-file-utils.c:180
 #, c-format
 msgid "%x at %X"
 msgstr "%x %X-ზე"
 
 #. the file_time is invalid
-#: ../src/xfdesktop-file-utils.c:190 ../src/xfdesktop-file-utils.c:1488
+#: src/xfdesktop-file-utils.c:190 src/xfdesktop-file-utils.c:1488
 msgid "Unknown"
 msgstr "უცნობი"
 
-#: ../src/xfdesktop-file-utils.c:318
+#: src/xfdesktop-file-utils.c:318
 #, c-format
 msgid "%.*s (copy %u)%s"
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:556
+#: src/xfdesktop-file-utils.c:556
 msgid "The folder could not be opened"
 msgstr "საქაღალდის გახსნა შეუძლებელია"
 
-#: ../src/xfdesktop-file-utils.c:673
+#: src/xfdesktop-file-utils.c:673
 msgid "Error"
 msgstr "შეცდომა"
 
-#: ../src/xfdesktop-file-utils.c:674
+#: src/xfdesktop-file-utils.c:674
 msgid "The requested operation could not be completed"
 msgstr "მოთხოვნილი ოპერაციის დასრულება შეუძლებელია"
 
-#: ../src/xfdesktop-file-utils.c:728
+#: src/xfdesktop-file-utils.c:728
 msgid "The file could not be renamed"
 msgstr "ფაილის სახელის შეცვლა შეუძლებელია"
 
-#: ../src/xfdesktop-file-utils.c:729 ../src/xfdesktop-file-utils.c:793
-#: ../src/xfdesktop-file-utils.c:854 ../src/xfdesktop-file-utils.c:1018
-#: ../src/xfdesktop-file-utils.c:1076 ../src/xfdesktop-file-utils.c:1163
-#: ../src/xfdesktop-file-utils.c:1224 ../src/xfdesktop-file-utils.c:1356
-#: ../src/xfdesktop-file-utils.c:1420 ../src/xfdesktop-file-utils.c:1561
+#: src/xfdesktop-file-utils.c:729 src/xfdesktop-file-utils.c:793
+#: src/xfdesktop-file-utils.c:854 src/xfdesktop-file-utils.c:1018
+#: src/xfdesktop-file-utils.c:1076 src/xfdesktop-file-utils.c:1163
+#: src/xfdesktop-file-utils.c:1224 src/xfdesktop-file-utils.c:1356
+#: src/xfdesktop-file-utils.c:1420 src/xfdesktop-file-utils.c:1561
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
 msgstr "ეს თვისება მოითხოვს ფაილების მმართველის სერვისის არსებობას (მაგ.: როგორიცაა Thunar–ის მიერ მოწოდებული)."
 
-#: ../src/xfdesktop-file-utils.c:852
+#: src/xfdesktop-file-utils.c:852
 msgid "Delete Error"
 msgstr "წაშლის შეცდომა"
 
-#: ../src/xfdesktop-file-utils.c:853
+#: src/xfdesktop-file-utils.c:853
 msgid "The selected files could not be deleted"
 msgstr "არჩეული ფაილების წაშლა შეუძლებელია"
 
-#: ../src/xfdesktop-file-utils.c:913 ../src/xfdesktop-file-utils.c:961
+#: src/xfdesktop-file-utils.c:913 src/xfdesktop-file-utils.c:961
 msgid "Trash Error"
 msgstr "ნაგვის შეცდომა"
 
-#: ../src/xfdesktop-file-utils.c:914
+#: src/xfdesktop-file-utils.c:914
 msgid "The selected files could not be moved to the trash"
 msgstr "არჩეული ფაილების ნაგავში გადატანა შეუძლებელია"
 
-#: ../src/xfdesktop-file-utils.c:915 ../src/xfdesktop-file-utils.c:963
+#: src/xfdesktop-file-utils.c:915 src/xfdesktop-file-utils.c:963
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
 msgstr "ეს თვისება მოითხოვს ნაგვის სერვისის არსებობას (მაგ.: როგორიცაა Thunar– ის მიერ მოწოდებული)."
 
-#: ../src/xfdesktop-file-utils.c:962
+#: src/xfdesktop-file-utils.c:962
 msgid "Could not empty the trash"
 msgstr "ნაგვის დაცლა ვერ მოხერხდა"
 
-#: ../src/xfdesktop-file-utils.c:1016
+#: src/xfdesktop-file-utils.c:1016
 msgid "Create File Error"
 msgstr "ფაილის შექმნის შეცდომა"
 
-#: ../src/xfdesktop-file-utils.c:1017
+#: src/xfdesktop-file-utils.c:1017
 msgid "Could not create a new file"
 msgstr "ახალი ფაილის შექმნა შეუძლებელია"
 
-#: ../src/xfdesktop-file-utils.c:1074
+#: src/xfdesktop-file-utils.c:1074
 msgid "Create Document Error"
 msgstr "დოკუმენტის შექმნის შეცდომა"
 
-#: ../src/xfdesktop-file-utils.c:1075
+#: src/xfdesktop-file-utils.c:1075
 msgid "Could not create a new document from the template"
 msgstr "შაბლონიდან ახალი დოკუმენტის შექმნა შეუძლებელია"
 
-#: ../src/xfdesktop-file-utils.c:1161
+#: src/xfdesktop-file-utils.c:1161
 msgid "File Properties Error"
 msgstr "ფაილის თვისებების შეცდომა"
 
-#: ../src/xfdesktop-file-utils.c:1162
+#: src/xfdesktop-file-utils.c:1162
 msgid "The file properties dialog could not be opened"
 msgstr "ფაილის თვისებების დიალოგის გახსნა შეუძლებელია"
 
-#: ../src/xfdesktop-file-utils.c:1223
+#: src/xfdesktop-file-utils.c:1223
 msgid "The file could not be opened"
 msgstr "ფაილის გახსნა შეუძლებელია"
 
-#: ../src/xfdesktop-file-utils.c:1244 ../src/xfdesktop-file-utils.c:1351
+#: src/xfdesktop-file-utils.c:1244 src/xfdesktop-file-utils.c:1351
 #, c-format
 msgid "Failed to run \"%s\""
 msgstr "\"%s\"-ის გაშვება ვერ მოხერხდა"
 
-#: ../src/xfdesktop-file-utils.c:1419
+#: src/xfdesktop-file-utils.c:1419
 msgid "The application chooser could not be opened"
 msgstr "პროგრამის ამომრჩევის გახსნა შეუძლებელია"
 
-#: ../src/xfdesktop-file-utils.c:1490 ../src/xfdesktop-file-utils.c:1559
+#: src/xfdesktop-file-utils.c:1490 src/xfdesktop-file-utils.c:1559
 msgid "Transfer Error"
 msgstr "გადაცემის შეცდომა"
 
-#: ../src/xfdesktop-file-utils.c:1491 ../src/xfdesktop-file-utils.c:1560
+#: src/xfdesktop-file-utils.c:1491 src/xfdesktop-file-utils.c:1560
 msgid "The file transfer could not be performed"
 msgstr "ფაილის გადაცემა ვერ განხორციელდა"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:127
+#: src/xfdesktop-notify.c:127
 msgid "Unmounting device"
 msgstr "მიმდინარეობს მოწყობილობის მოხსნა"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:130
+#: src/xfdesktop-notify.c:130
 #, c-format
 msgid ""
 "The device \"%s\" is being unmounted by the system. Please do not remove the"
@@ -1064,43 +1075,43 @@ msgid ""
 msgstr "მოწყობილობა \"%s\" იხსნება სისტემის მიერ. გთხოვთ, არ მოაცილოთ მედია ან არ გამოაერთოთ დისკი"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:137 ../src/xfdesktop-notify.c:322
+#: src/xfdesktop-notify.c:137 src/xfdesktop-notify.c:322
 msgid "Writing data to device"
 msgstr "მიმდინარეობს მონაცემების ჩაწერა მოწყობილობაზე"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:140 ../src/xfdesktop-notify.c:325
+#: src/xfdesktop-notify.c:140 src/xfdesktop-notify.c:325
 #, c-format
 msgid ""
 "There is data that needs to be written to the device \"%s\" before it can be"
 " removed. Please do not remove the media or disconnect the drive"
 msgstr "არსებობს მონაცემები, რომელიც უნდა დაიწეროს მოწყობილობაზე \"%s\" ვიდრე მისი მოცილება იქნება შესაძლებელი.  გთხოვთ, არ მოაცილოთ მედია ან არ გამოაერთოთ დისკი"
 
-#: ../src/xfdesktop-notify.c:221
+#: src/xfdesktop-notify.c:221
 msgid "Unmount Finished"
 msgstr "მოხსნა დასრულდა"
 
-#: ../src/xfdesktop-notify.c:223 ../src/xfdesktop-notify.c:408
+#: src/xfdesktop-notify.c:223 src/xfdesktop-notify.c:408
 #, c-format
 msgid "The device \"%s\" has been safely removed from the system. "
 msgstr "მოწყობილობა \"%s\" სისტემიდან უსაფრთხოდ მოიხსნა."
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:313
+#: src/xfdesktop-notify.c:313
 msgid "Ejecting device"
 msgstr "მიმდინარეობს მოწყობილობის გამოღება"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:316
+#: src/xfdesktop-notify.c:316
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
 msgstr "მიმდინარეობს მოწყობილობა \"%s\"-ს გამოღება. ამას შეიძლება გარკვეული დრო დასჭირდეს"
 
-#: ../src/xfdesktop-notify.c:406
+#: src/xfdesktop-notify.c:406
 msgid "Eject Finished"
 msgstr "გამოღება დასრულდა"
 
-#: ../src/xfdesktop-regular-file-icon.c:745
+#: src/xfdesktop-regular-file-icon.c:745
 #, c-format
 msgid ""
 "Name: %s\n"
@@ -1109,20 +1120,20 @@ msgid ""
 "Last modified: %s"
 msgstr "სახელი: %s\nტიპი: %s\nზომა: %s\nბოლოს შეიცვლა: %s"
 
-#: ../src/xfdesktop-special-file-icon.c:396
+#: src/xfdesktop-special-file-icon.c:396
 msgid "Trash is empty"
 msgstr "ნაგავი ცარიელია"
 
-#: ../src/xfdesktop-special-file-icon.c:399
+#: src/xfdesktop-special-file-icon.c:399
 msgid "Trash contains one item"
 msgstr "ნაგავი შეიცავს ერთ საგანს"
 
-#: ../src/xfdesktop-special-file-icon.c:400
+#: src/xfdesktop-special-file-icon.c:400
 #, c-format
 msgid "Trash contains %d items"
 msgstr "ნაგავი შეიცავს %d საგანს"
 
-#: ../src/xfdesktop-special-file-icon.c:429
+#: src/xfdesktop-special-file-icon.c:429
 #, c-format
 msgid ""
 "%s\n"
@@ -1130,19 +1141,19 @@ msgid ""
 "Last modified: %s"
 msgstr "%s\nზომა: %s\nბოლოს შეიცვალა: %s"
 
-#: ../src/xfdesktop-special-file-icon.c:494
+#: src/xfdesktop-special-file-icon.c:494
 msgid "_Empty Trash"
 msgstr "ნაგვის დაცლა"
 
-#: ../src/xfdesktop-volume-icon.c:413
+#: src/xfdesktop-volume-icon.c:413
 msgid "(not mounted)"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:414 ../src/xfdesktop-volume-icon.c:415
+#: src/xfdesktop-volume-icon.c:414 src/xfdesktop-volume-icon.c:415
 msgid "(unknown)"
 msgstr "(უცნობი)"
 
-#: ../src/xfdesktop-volume-icon.c:419
+#: src/xfdesktop-volume-icon.c:419
 #, c-format
 msgid ""
 "Name: %s\n"
@@ -1152,52 +1163,52 @@ msgid ""
 "Free Space: %s"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:421
+#: src/xfdesktop-volume-icon.c:421
 msgid "Removable Volume"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:454 ../src/xfdesktop-volume-icon.c:498
+#: src/xfdesktop-volume-icon.c:454 src/xfdesktop-volume-icon.c:498
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "\"%s\"-ის გამოღება ვერ მოხერხდა"
 
-#: ../src/xfdesktop-volume-icon.c:459 ../src/xfdesktop-volume-icon.c:503
+#: src/xfdesktop-volume-icon.c:459 src/xfdesktop-volume-icon.c:503
 msgid "Eject Failed"
 msgstr "გამოღება ვერ მოხერხდა"
 
-#: ../src/xfdesktop-volume-icon.c:582
+#: src/xfdesktop-volume-icon.c:582
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "\"%s\"-ის დამაგრება ვერ მოხერხდა"
 
-#: ../src/xfdesktop-volume-icon.c:585
+#: src/xfdesktop-volume-icon.c:585
 msgid "Mount Failed"
 msgstr "დამაგრება ვერ მოხერხდა"
 
-#: ../src/xfdesktop-volume-icon.c:859
+#: src/xfdesktop-volume-icon.c:859
 msgid "_Safely Remove Volume"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:862
+#: src/xfdesktop-volume-icon.c:862
 msgid "_Disconnect Volume"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:865
+#: src/xfdesktop-volume-icon.c:865
 msgid "_Stop the Multi-Disk Drive"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:868
+#: src/xfdesktop-volume-icon.c:868
 msgid "_Lock Volume"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:871
+#: src/xfdesktop-volume-icon.c:871
 msgid "E_ject Volume"
 msgstr "მოცულობის გამოღება"
 
-#: ../src/xfdesktop-volume-icon.c:880
+#: src/xfdesktop-volume-icon.c:880
 msgid "_Unmount Volume"
 msgstr "მოცულობის მოხსნა"
 
-#: ../src/xfdesktop-volume-icon.c:887
+#: src/xfdesktop-volume-icon.c:887
 msgid "_Mount Volume"
 msgstr "მოცულობის დამაგრება"
