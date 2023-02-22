@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-23 12:53+0100\n"
+"POT-Creation-Date: 2023-02-20 00:51+0100\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Πέτρος Σαμαράς <psamaras1@gmail.com>, 2017\n"
 "Language-Team: Greek (http://www.transifex.com/xfce/xfdesktop/language/el/)\n"
@@ -28,38 +28,38 @@ msgstr ""
 "Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../settings/main.c:422 ../src/xfdesktop-special-file-icon.c:247
+#: ../settings/main.c:421 ../src/xfdesktop-special-file-icon.c:247
 #: ../src/xfdesktop-special-file-icon.c:413
 msgid "Home"
 msgstr "Αρχικός κατάλογος"
 
-#: ../settings/main.c:424 ../src/xfdesktop-special-file-icon.c:249
+#: ../settings/main.c:423 ../src/xfdesktop-special-file-icon.c:249
 #: ../src/xfdesktop-special-file-icon.c:411
 msgid "File System"
 msgstr "Σύστημα αρχείων"
 
-#: ../settings/main.c:426 ../src/xfdesktop-special-file-icon.c:251
+#: ../settings/main.c:425 ../src/xfdesktop-special-file-icon.c:251
 msgid "Trash"
 msgstr "Απορρίμματα"
 
-#: ../settings/main.c:428
+#: ../settings/main.c:427
 msgid "Removable Devices"
 msgstr "Αφαιρούμενες συσκευές"
 
-#: ../settings/main.c:430
+#: ../settings/main.c:429
 msgid "Network Shares"
 msgstr "Κοινόχρηστα στοιχεία δικτύου"
 
-#: ../settings/main.c:432
+#: ../settings/main.c:431
 msgid "Disks and Drives"
 msgstr "Δίσκοι και οδηγοί"
 
-#: ../settings/main.c:434
+#: ../settings/main.c:433
 msgid "Other Devices"
 msgstr "Άλλες συσκευές"
 
 #. Display the file name, file type, and file size in the tooltip.
-#: ../settings/main.c:538
+#: ../settings/main.c:537
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -67,166 +67,157 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nΤύπος: %s\nΜέγεθος: %s"
 
-#: ../settings/main.c:774
+#: ../settings/main.c:773
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "Φόντο για την οθόνη %d (%s)"
 
-#: ../settings/main.c:777
+#: ../settings/main.c:776
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "Φόντο για την οθόνη %d"
 
-#: ../settings/main.c:783
+#: ../settings/main.c:782
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "Μετακινήστε αυτό το παράθυρο στην οθόνη της οποίας επιθυμείτε να επεξεργαστείτε τις ρυθμίσεις."
 
-#: ../settings/main.c:790
+#: ../settings/main.c:789
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "Φόντο για %s στην οθόνη %d (%s)"
 
-#: ../settings/main.c:794
+#: ../settings/main.c:793
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "Φόντο για %s στην οθόνη %d"
 
-#: ../settings/main.c:801
+#: ../settings/main.c:800
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr "Μετακινήστε αυτό το παράθυρο στην οθόνη και το χώρο εργασίας του οποίου επιθυμείτε να επεξεργαστείτε τις ρυθμίσεις."
 
 #. Single monitor and single workspace
-#: ../settings/main.c:809
+#: ../settings/main.c:808
 #, c-format
 msgid "Wallpaper for my desktop"
 msgstr "Φόντο για την επιφάνεια εργασίας μου"
 
 #. Single monitor and per workspace wallpaper
-#: ../settings/main.c:815
+#: ../settings/main.c:814
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "Φόντο για %s"
 
-#: ../settings/main.c:820
+#: ../settings/main.c:819
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "Μετακινήστε αυτό το παράθυρο στο χώρο εργασίας του οποίου θέλετε να επεξεργαστείτε τις ρυθμίσεις."
 
-#: ../settings/main.c:1275
+#: ../settings/main.c:1274
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "Η επιλογή εικόνας δεν είναι διαθέσιμη όταν το στυλ έχει οριστεί σε κανένα."
 
-#: ../settings/main.c:1634
+#: ../settings/main.c:1633
 msgid "Spanning screens"
 msgstr "Συνεχόμενες οθόνες"
 
 #. TRANSLATORS: Please split the message in half with '\n' so the dialog will
 #. not be too wide.
-#: ../settings/main.c:1922
+#: ../settings/main.c:1924
 msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
 msgstr "Θα θέλατε να τακτοποιήσετε όλα τα υπάρχοντα\nεικονίδια σύμφωνα με την επιλεγμένη διάταξη;"
 
-#: ../settings/main.c:1928
+#: ../settings/main.c:1930
 msgid "Arrange icons"
 msgstr "Τακτοποίηση εικονιδίων"
 
 #. printf is to be translator-friendly
-#: ../settings/main.c:1936 ../src/xfdesktop-file-icon-manager.c:1159
+#: ../settings/main.c:1938 ../src/xfdesktop-file-icon-manager.c:1159
 #: ../src/xfdesktop-file-icon-manager.c:1759
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Αδύνατη η έναρξη του \"%s\":"
 
-#: ../settings/main.c:1937 ../src/xfdesktop-file-icon-manager.c:1161
+#: ../settings/main.c:1939 ../src/xfdesktop-file-icon-manager.c:1161
 #: ../src/xfdesktop-file-icon-manager.c:1512
-#: ../src/xfdesktop-file-icon-manager.c:1760 ../src/xfdesktop-file-utils.c:737
-#: ../src/xfdesktop-file-utils.c:1404 ../src/xfdesktop-file-utils.c:1429
-#: ../src/xfdesktop-file-utils.c:1536 ../src/xfdesktop-file-utils.c:1600
+#: ../src/xfdesktop-file-icon-manager.c:1760 ../src/xfdesktop-file-utils.c:555
+#: ../src/xfdesktop-file-utils.c:1222 ../src/xfdesktop-file-utils.c:1247
+#: ../src/xfdesktop-file-utils.c:1354 ../src/xfdesktop-file-utils.c:1418
 msgid "Launch Error"
 msgstr "Σφάλμα έναρξης"
 
-#: ../settings/main.c:1939 ../settings/xfdesktop-settings-ui.glade.h:20
+#: ../settings/main.c:1941 ../settings/xfdesktop-settings-ui.glade.h:20
 #: ../src/xfdesktop-file-icon-manager.c:913
 #: ../src/xfdesktop-file-icon-manager.c:932
 #: ../src/xfdesktop-file-icon-manager.c:1031
 #: ../src/xfdesktop-file-icon-manager.c:1163
 #: ../src/xfdesktop-file-icon-manager.c:1516
 #: ../src/xfdesktop-file-icon-manager.c:1762
-#: ../src/xfdesktop-file-icon-manager.c:3371 ../src/xfdesktop-file-utils.c:740
-#: ../src/xfdesktop-file-utils.c:858 ../src/xfdesktop-file-utils.c:913
-#: ../src/xfdesktop-file-utils.c:977 ../src/xfdesktop-file-utils.c:1038
-#: ../src/xfdesktop-file-utils.c:1099 ../src/xfdesktop-file-utils.c:1147
-#: ../src/xfdesktop-file-utils.c:1202 ../src/xfdesktop-file-utils.c:1260
-#: ../src/xfdesktop-file-utils.c:1347 ../src/xfdesktop-file-utils.c:1408
-#: ../src/xfdesktop-file-utils.c:1431 ../src/xfdesktop-file-utils.c:1540
-#: ../src/xfdesktop-file-utils.c:1604 ../src/xfdesktop-file-utils.c:1675
-#: ../src/xfdesktop-file-utils.c:1745 ../src/xfdesktop-volume-icon.c:461
+#: ../src/xfdesktop-file-icon-manager.c:3371 ../src/xfdesktop-file-utils.c:558
+#: ../src/xfdesktop-file-utils.c:676 ../src/xfdesktop-file-utils.c:731
+#: ../src/xfdesktop-file-utils.c:795 ../src/xfdesktop-file-utils.c:856
+#: ../src/xfdesktop-file-utils.c:917 ../src/xfdesktop-file-utils.c:965
+#: ../src/xfdesktop-file-utils.c:1020 ../src/xfdesktop-file-utils.c:1078
+#: ../src/xfdesktop-file-utils.c:1165 ../src/xfdesktop-file-utils.c:1226
+#: ../src/xfdesktop-file-utils.c:1249 ../src/xfdesktop-file-utils.c:1358
+#: ../src/xfdesktop-file-utils.c:1422 ../src/xfdesktop-file-utils.c:1493
+#: ../src/xfdesktop-file-utils.c:1563 ../src/xfdesktop-volume-icon.c:461
 #: ../src/xfdesktop-volume-icon.c:505 ../src/xfdesktop-volume-icon.c:587
 msgid "_Close"
 msgstr "_Κλείσιμο"
 
-#: ../settings/main.c:2105
+#: ../settings/main.c:2103
 msgid "Image files"
 msgstr "Αρχεία εικόνας"
 
 #. Change the title of the file chooser dialog
-#: ../settings/main.c:2113
+#: ../settings/main.c:2111
 msgid "Select a Directory"
 msgstr "Επιλογή καταλόγου"
 
-#: ../settings/main.c:2325
+#: ../settings/main.c:2323
 msgid "Settings manager socket"
 msgstr "Διαχείριση ρυθμίσεων υποδοχής"
 
-#: ../settings/main.c:2325
+#: ../settings/main.c:2323
 msgid "SOCKET ID"
 msgstr "ID ΥΠΟΔΟΧΗΣ"
 
-#: ../settings/main.c:2326
+#: ../settings/main.c:2324
 msgid "Version information"
 msgstr "Πληροφορίες έκδοσης"
 
-#: ../settings/main.c:2327 ../src/xfdesktop-application.c:890
+#: ../settings/main.c:2325 ../src/xfdesktop-application.c:890
 msgid "Enable debug messages"
 msgstr "Ενεργοποίηση μηνυμάτων αποσφαλμάτωσης"
 
-#: ../settings/main.c:2351
+#: ../settings/main.c:2349
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Για πληροφορίες χρήσης πληκτρολογήστε '%s --help'."
 
-#: ../settings/main.c:2363
+#: ../settings/main.c:2361
 msgid "The Xfce development team. All rights reserved."
 msgstr "Η ομάδα ανάπτυξης του Xfce. Με την επιφύλαξη παντός νόμιμου δικαιώματος."
 
-#: ../settings/main.c:2364
+#: ../settings/main.c:2362
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Παρακαλώ αναφέρετε τυχόν σφάλματα στο <%s>."
 
-#: ../settings/main.c:2371
+#: ../settings/main.c:2369
 msgid "Desktop Settings"
 msgstr "Επιφάνεια εργασίας"
 
-#: ../settings/main.c:2373
+#: ../settings/main.c:2371
 msgid "Unable to contact settings server"
 msgstr "Αδύνατη η επικοινωνία με το διακομιστή ρυθμίσεων"
 
-#: ../settings/main.c:2375
+#: ../settings/main.c:2373
 msgid "Quit"
 msgstr "Τερματισμός"
-
-#: ../settings/xfce-backdrop-settings.desktop.in.in.h:1
-#: ../settings/xfdesktop-settings-ui.glade.h:18 ../src/xfce-desktop.c:1108
-msgid "Desktop"
-msgstr "Επιφάνεια εργασίας"
-
-#: ../settings/xfce-backdrop-settings.desktop.in.in.h:2
-msgid "Set desktop background and menu and icon behavior"
-msgstr "Ρύθμιση φόντου επιφάνειας εργασίας και συμπεριφοράς μενού και εικονιδίων"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
 msgid "Solid color"
@@ -439,6 +430,10 @@ msgstr "Κάτω δεξιά κάθετα"
 #: ../settings/xfdesktop-settings-ui.glade.h:17
 msgid "Bottom Right Horizontal"
 msgstr "Κάτω δεξιά οριζόντια"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:18 ../src/xfce-desktop.c:1108
+msgid "Desktop"
+msgstr "Επιφάνεια εργασίας"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:19
 msgid "_Help"
@@ -759,12 +754,12 @@ msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr "Υπάρχει ήδη ένα κανονικό αρχείο με το ίδιο όνομα. Παρακαλώ διαγράψετε ή μετονομάσετε το."
 
-#: ../src/xfdesktop-file-icon-manager.c:1028 ../src/xfdesktop-file-utils.c:909
-#: ../src/xfdesktop-file-utils.c:973
+#: ../src/xfdesktop-file-icon-manager.c:1028 ../src/xfdesktop-file-utils.c:727
+#: ../src/xfdesktop-file-utils.c:791
 msgid "Rename Error"
 msgstr "Σφάλμα μετονομασίας"
 
-#: ../src/xfdesktop-file-icon-manager.c:1029 ../src/xfdesktop-file-utils.c:974
+#: ../src/xfdesktop-file-icon-manager.c:1029 ../src/xfdesktop-file-utils.c:792
 msgid "The files could not be renamed"
 msgstr "Δεν κατέστη δυνατό να μετονομαστούν τα αρχεία"
 
@@ -913,154 +908,154 @@ msgstr "Σφάλμα στο άνοιγμα"
 msgid "Failed to load the desktop folder"
 msgstr "Απέτυχε το άνοιγμα του φακέλου της επιφάνειας εργασίας"
 
-#: ../src/xfdesktop-file-icon-manager.c:3773
+#: ../src/xfdesktop-file-icon-manager.c:3775
 msgid "Copy _Here"
 msgstr "Αντιγραφή _εδώ"
 
-#: ../src/xfdesktop-file-icon-manager.c:3773
+#: ../src/xfdesktop-file-icon-manager.c:3775
 msgid "_Move Here"
 msgstr "_Μετακίνηση εδώ"
 
-#: ../src/xfdesktop-file-icon-manager.c:3773
+#: ../src/xfdesktop-file-icon-manager.c:3775
 msgid "_Link Here"
 msgstr "Σύνδεσ_η εδώ"
 
-#: ../src/xfdesktop-file-icon-manager.c:3808
+#: ../src/xfdesktop-file-icon-manager.c:3810
 msgid "_Cancel"
 msgstr "Άκ_υρο"
 
-#: ../src/xfdesktop-file-icon-manager.c:3950
+#: ../src/xfdesktop-file-icon-manager.c:3952
 msgid "Untitled document"
 msgstr "Έγγραφο χωρίς όνομα"
 
 #. TRANSLATORS: file was modified less than one day ago
-#: ../src/xfdesktop-file-utils.c:172
+#: ../src/xfdesktop-file-utils.c:168
 #, c-format
 msgid "Today at %X"
 msgstr "Σήμερα στις %X"
 
 #. TRANSLATORS: file was modified less than two days ago
-#: ../src/xfdesktop-file-utils.c:176
+#: ../src/xfdesktop-file-utils.c:172
 #, c-format
 msgid "Yesterday at %X"
 msgstr "Χθες στις %X"
 
 #. Days from last week
-#: ../src/xfdesktop-file-utils.c:181
+#: ../src/xfdesktop-file-utils.c:177
 #, c-format
 msgid "%A at %X"
 msgstr "%A στις %X"
 
 #. Any other date
-#: ../src/xfdesktop-file-utils.c:184
+#: ../src/xfdesktop-file-utils.c:180
 #, c-format
 msgid "%x at %X"
 msgstr "%x στις %X"
 
 #. the file_time is invalid
-#: ../src/xfdesktop-file-utils.c:194 ../src/xfdesktop-file-utils.c:1670
+#: ../src/xfdesktop-file-utils.c:190 ../src/xfdesktop-file-utils.c:1488
 msgid "Unknown"
 msgstr "Άγνωστο"
 
-#: ../src/xfdesktop-file-utils.c:322
+#: ../src/xfdesktop-file-utils.c:318
 #, c-format
 msgid "%.*s (copy %u)%s"
 msgstr "%.*s (αντιγραφή %u) %s"
 
-#: ../src/xfdesktop-file-utils.c:738
+#: ../src/xfdesktop-file-utils.c:556
 msgid "The folder could not be opened"
 msgstr "Ο φάκελος δεν μπόρεσε να ανοίξει"
 
-#: ../src/xfdesktop-file-utils.c:855
+#: ../src/xfdesktop-file-utils.c:673
 msgid "Error"
 msgstr "Σφάλμα"
 
-#: ../src/xfdesktop-file-utils.c:856
+#: ../src/xfdesktop-file-utils.c:674
 msgid "The requested operation could not be completed"
 msgstr "Η αιτούμενη λειτουργία δεν κατέστη δυνατό να ολοκληρωθεί"
 
-#: ../src/xfdesktop-file-utils.c:910
+#: ../src/xfdesktop-file-utils.c:728
 msgid "The file could not be renamed"
 msgstr "Το αρχείο δεν μπόρεσε να μετονομαστεί"
 
-#: ../src/xfdesktop-file-utils.c:911 ../src/xfdesktop-file-utils.c:975
-#: ../src/xfdesktop-file-utils.c:1036 ../src/xfdesktop-file-utils.c:1200
-#: ../src/xfdesktop-file-utils.c:1258 ../src/xfdesktop-file-utils.c:1345
-#: ../src/xfdesktop-file-utils.c:1406 ../src/xfdesktop-file-utils.c:1538
-#: ../src/xfdesktop-file-utils.c:1602 ../src/xfdesktop-file-utils.c:1743
+#: ../src/xfdesktop-file-utils.c:729 ../src/xfdesktop-file-utils.c:793
+#: ../src/xfdesktop-file-utils.c:854 ../src/xfdesktop-file-utils.c:1018
+#: ../src/xfdesktop-file-utils.c:1076 ../src/xfdesktop-file-utils.c:1163
+#: ../src/xfdesktop-file-utils.c:1224 ../src/xfdesktop-file-utils.c:1356
+#: ../src/xfdesktop-file-utils.c:1420 ../src/xfdesktop-file-utils.c:1561
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
 msgstr "Αυτό το χαρακτηριστικό απαιτεί μια υπηρεσία διαχειριστή αρχείων (όπως αυτή που παρέχει ο Thunar)."
 
-#: ../src/xfdesktop-file-utils.c:1034
+#: ../src/xfdesktop-file-utils.c:852
 msgid "Delete Error"
 msgstr "Σφάλμα διαγραφής"
 
-#: ../src/xfdesktop-file-utils.c:1035
+#: ../src/xfdesktop-file-utils.c:853
 msgid "The selected files could not be deleted"
 msgstr "Τα επιλεγμένα αρχεία δεν μπόρεσαν να διαγραφούν"
 
-#: ../src/xfdesktop-file-utils.c:1095 ../src/xfdesktop-file-utils.c:1143
+#: ../src/xfdesktop-file-utils.c:913 ../src/xfdesktop-file-utils.c:961
 msgid "Trash Error"
 msgstr "Σφάλμα απορριμμάτων"
 
-#: ../src/xfdesktop-file-utils.c:1096
+#: ../src/xfdesktop-file-utils.c:914
 msgid "The selected files could not be moved to the trash"
 msgstr "Τα επιλεγμένα αρχεία δεν μπόρεσαν να μετακινηθούν στον κάδο απορριμμάτων"
 
-#: ../src/xfdesktop-file-utils.c:1097 ../src/xfdesktop-file-utils.c:1145
+#: ../src/xfdesktop-file-utils.c:915 ../src/xfdesktop-file-utils.c:963
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
 msgstr "Αυτό το χαρακτηριστικό απαιτεί μια υπηρεσία διαχείρισης απορριμμάτων (όπως αυτή που παρέχει ο Thunar)."
 
-#: ../src/xfdesktop-file-utils.c:1144
+#: ../src/xfdesktop-file-utils.c:962
 msgid "Could not empty the trash"
 msgstr "Δεν μπόρεσε να αδειάσει ο κάδος απορριμμάτων"
 
-#: ../src/xfdesktop-file-utils.c:1198
+#: ../src/xfdesktop-file-utils.c:1016
 msgid "Create File Error"
 msgstr "Σφάλμα δημιουργίας αρχείου"
 
-#: ../src/xfdesktop-file-utils.c:1199
+#: ../src/xfdesktop-file-utils.c:1017
 msgid "Could not create a new file"
 msgstr "Δεν κατέστη δυνατή η δημιουργία νέου αρχείου"
 
-#: ../src/xfdesktop-file-utils.c:1256
+#: ../src/xfdesktop-file-utils.c:1074
 msgid "Create Document Error"
 msgstr "Σφάλμα δημιουργίας εγγράφου"
 
-#: ../src/xfdesktop-file-utils.c:1257
+#: ../src/xfdesktop-file-utils.c:1075
 msgid "Could not create a new document from the template"
 msgstr "Δεν κατέστη δυνατή η δημιουργία νέου εγγράφου από πρότυπο"
 
-#: ../src/xfdesktop-file-utils.c:1343
+#: ../src/xfdesktop-file-utils.c:1161
 msgid "File Properties Error"
 msgstr "Σφάλμα ιδιοτήτων αρχείου"
 
-#: ../src/xfdesktop-file-utils.c:1344
+#: ../src/xfdesktop-file-utils.c:1162
 msgid "The file properties dialog could not be opened"
 msgstr "Το παράθυρο ιδιοτήτων του αρχείου δεν μπόρεσε να ανοίξει"
 
-#: ../src/xfdesktop-file-utils.c:1405
+#: ../src/xfdesktop-file-utils.c:1223
 msgid "The file could not be opened"
 msgstr "Το αρχείο δεν μπόρεσε να ανοίξει"
 
-#: ../src/xfdesktop-file-utils.c:1426 ../src/xfdesktop-file-utils.c:1533
+#: ../src/xfdesktop-file-utils.c:1244 ../src/xfdesktop-file-utils.c:1351
 #, c-format
 msgid "Failed to run \"%s\""
 msgstr "Απέτυχε η εκτέλεση του \"%s\""
 
-#: ../src/xfdesktop-file-utils.c:1601
+#: ../src/xfdesktop-file-utils.c:1419
 msgid "The application chooser could not be opened"
 msgstr "Ο επιλογέας εφαρμογών δεν μπόρεσε να ανοίξει"
 
-#: ../src/xfdesktop-file-utils.c:1672 ../src/xfdesktop-file-utils.c:1741
+#: ../src/xfdesktop-file-utils.c:1490 ../src/xfdesktop-file-utils.c:1559
 msgid "Transfer Error"
 msgstr "Σφάλμα μεταφοράς"
 
-#: ../src/xfdesktop-file-utils.c:1673 ../src/xfdesktop-file-utils.c:1742
+#: ../src/xfdesktop-file-utils.c:1491 ../src/xfdesktop-file-utils.c:1560
 msgid "The file transfer could not be performed"
 msgstr "Η μεταφορά αρχείων δεν μπόρεσε να πραγματοποιηθεί"
 
@@ -1114,7 +1109,7 @@ msgstr "Γίνεται εξαγωγή της συσκευής \"%s\". Αυτό �
 msgid "Eject Finished"
 msgstr "Ολοκληρώθηκε η εξαγωγή"
 
-#: ../src/xfdesktop-regular-file-icon.c:747
+#: ../src/xfdesktop-regular-file-icon.c:745
 #, c-format
 msgid ""
 "Name: %s\n"
