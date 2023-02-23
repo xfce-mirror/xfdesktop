@@ -8,7 +8,7 @@
 # Allen Choi <byunghyun.choi@gmail.com>, 2005
 # Seong-ho Cho <darkcircle.0426@gmail.com>, 2013
 # 1763f4a4329a2376c933c5e919a36cbc_341ca53 <1f851310383599d03339229d772e1290_119292>, 2017-2018
-# Seong-ho Cho <darkcircle.0426@gmail.com>, 2013-2016,2018-2022
+# Seong-ho Cho <darkcircle.0426@gmail.com>, 2013-2016,2018-2023
 # Thomas Sungjin Kang <potopro@gmail.com>, 2013
 # Thomas Sungjin Kang <potopro@gmail.com>, 2013
 msgid ""
@@ -17,7 +17,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2023-02-22 14:45+0100\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
-"Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>, 2013-2016,2018-2022\n"
+"Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>, 2013-2016,2018-2023\n"
 "Language-Team: Korean (http://www.transifex.com/xfce/xfdesktop/language/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -225,7 +225,7 @@ msgstr "데스크톱 배경, 메뉴, 아이콘 동작을 설정합니다"
 
 #: settings/xfce-backdrop-settings.desktop.in:7
 msgid "org.xfce.xfdesktop"
-msgstr ""
+msgstr "org.xfce.xfdesktop"
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:19
 msgid "Solid color"
@@ -616,7 +616,7 @@ msgstr "정말로  %d번 작업 공간을 제거하시렵니까?\n참고: 현재
 #: src/windowlist.c:83
 #, c-format
 msgid "Do you really want to remove workspace %d"
-msgstr ""
+msgstr "작업 공간 %d번을 정말로 제거하시렵니까?"
 
 #: src/windowlist.c:88
 #, c-format
@@ -633,7 +633,7 @@ msgstr "정말로 '%s' 작업 공간을 제거하시렵니까?\n참고: 현재 '
 #: src/windowlist.c:93
 #, c-format
 msgid "Do you really want to remove workspace '%s'?"
-msgstr ""
+msgstr "'%s' 작업 공간을 정말로 제거하시렵니까?"
 
 #. Popup a dialog box confirming that the user wants to remove a
 #. * workspace
@@ -648,7 +648,7 @@ msgstr "창 목록"
 #: src/windowlist.c:357
 #, c-format
 msgid "<b>Group %d, Workspace %d</b>"
-msgstr ""
+msgstr "<b>그룹 %d번, 작업 공간 %d번</b>"
 
 #: src/windowlist.c:359
 #, c-format
@@ -832,7 +832,7 @@ msgstr "빈 파일(_E)"
 
 #: src/xfdesktop-file-icon-manager.c:1989
 msgid "_Open All"
-msgstr ""
+msgstr "모두 열기(_O)"
 
 #: src/xfdesktop-file-icon-manager.c:1989
 #: src/xfdesktop-special-file-icon.c:478 src/xfdesktop-volume-icon.c:833
