@@ -84,11 +84,11 @@ static void xfdesktop_file_utils_file_manager_fdo_proxy_new_cb(GObject *source_o
                                                                GAsyncResult *res,
                                                                gpointer user_data);
 
+#ifdef HAVE_THUNARX
 static void xfdesktop_file_utils_thunar_proxy_new_cb (GObject *source_object,
                                                       GAsyncResult *res,
                                                       gpointer user_data);
 
-#ifdef HAVE_THUNARX
 static XfdesktopThunar *xfdesktop_file_utils_peek_thunar_proxy(void);
 #else
 static gpointer xfdesktop_file_utils_peek_thunar_proxy(void);
@@ -1686,14 +1686,15 @@ xfdesktop_file_utils_file_manager_fdo_proxy_new_cb(GObject *source_object,
     dbus_filemanager_fdo_proxy = xfdesktop_file_manager1_proxy_new_finish(res, NULL);
 }
 
+#ifdef HAVE_THUNARX
 static void
 xfdesktop_file_utils_thunar_proxy_new_cb (GObject *source_object,
                                           GAsyncResult *res,
                                           gpointer user_data) {
-#ifdef HAVE_THUNARX
+
     dbus_thunar_proxy = xfdesktop_thunar_proxy_new_finish (res, NULL);
-#endif
 }
+#endif
 
 void
 xfdesktop_file_utils_dbus_cleanup(void)
