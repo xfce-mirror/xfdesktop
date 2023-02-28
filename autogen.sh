@@ -7,6 +7,7 @@
 #                 and Brian Tarricone <brian@tarricone.org>.
 #
 
+set -e
 export XDT_AUTOGEN_REQUIRED_VERSION="4.14.0"
 
 (type xdt-autogen) >/dev/null 2>&1 || {
@@ -19,6 +20,16 @@ EOF
   exit 1
 }
 
-exec xdt-autogen "$@"
+[ "$AUTORECONF" ] || AUTORECONF=autoreconf
+
+if xdt-autogen "$@" ; then
+    exit 0
+fi
+
+echo "need extra autoreconf run ?"
+$AUTORECONF -vsi --force || true
+
+xdt-autogen "$@"
+exit $?
 
 # vi:set ts=2 sw=2 et ai:
