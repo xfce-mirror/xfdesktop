@@ -6,6 +6,7 @@ dnl xfdesktop - xfce4's desktop manager
 dnl
 
 dnl minimum required versions
+m4_define([libx11_minimum_version], [1.6.7])
 m4_define([glib_minimum_version], [2.66.0])
 m4_define([gtk_minimum_version], [3.24.0])
 m4_define([libxfce4util_minimum_version], [4.13.0])
@@ -59,9 +60,6 @@ AC_SUBST([GETTEXT_PACKAGE])
 AM_GNU_GETTEXT_VERSION([0.19.8])
 AM_GNU_GETTEXT([external])
 
-dnl Check for X11 installed
-XDT_CHECK_LIBX11_REQUIRE
-
 dnl define xfdesktop's short version (major.minor)
 AC_DEFINE([XFDESKTOP_VERSION_SHORT], ["xfdesktop_version_short"], [Short version string of xfdesktop])
 dnl replace the version in settings/xfce-backdrop-settings.desktop.in
@@ -86,102 +84,30 @@ XDT_CHECK_PACKAGE([XFCONF], [libxfconf-0], [xfconf_minimum_version])
 XDT_CHECK_PACKAGE([LIBEXO], [exo-2], [exo_minimum_version])
 XDT_CHECK_PACKAGE([CAIRO], [cairo], [cairo_minimum_version])
 
-XDT_CHECK_OPTIONAL_PACKAGE([GDK_X11], [gdk-x11-3.0], [gtk_minimum_version],
-                           [gdk-x11], [X11 backend for GDK])
-AC_ARG_ENABLE([x11],
-              [AS_HELP_STRING([--disable-x11],
-                              [Do not compile with X11 support (default=auto)])],
-              [ac_cv_enable_x11=$enableval],
-              [ac_cv_enable_x11=auto])
+XDT_CHECK_OPTIONAL_FEATURE([X11],
+                           [x11],
+                           [
+                               XDT_FEATURE_DEPENDENCY([LIBX11], [x11], [libx11_minimum_version])
+                               XDT_FEATURE_DEPENDENCY([GDK_X11], [gdk-x11-3.0], [gtk_minimum_version])
+                           ],
+                           [the X11 windowing system])
+XDT_CHECK_OPTIONAL_FEATURE([WAYLAND],
+                           [wayland],
+                           [
+                               XDT_FEATURE_DEPENDENCY([GDK_WAYLAND], [gdk-wayland-3.0], [gtk_minimum_version])
+                               XDT_FEATURE_DEPENDENCY([GTK_LAYER_SHELL], [gtk-layer-shell-0], [gtk_layer_shell_minimum_version])
+                           ],
+                           [the Wayland windowing system])
 
-enable_x11="no"
-if test x"$ac_cv_enable_x11" != x"no"; then
-    if test x"$GDK_X11_FOUND" = x"yes"; then
-        enable_x11="yes"
-        AC_DEFINE([ENABLE_X11], [1], [Set if X11 support is enabled])
-    elif test x"$ac_cv_enable_x11" = x"yes"; then
-        AC_MSG_ERROR([X11 support was requested, but required dependencies were not found.])
-    fi
-fi
-AM_CONDITIONAL([ENABLE_X11], [test x"$enable_x11" = x"yes"])
 
-XDT_CHECK_OPTIONAL_PACKAGE([GDK_WAYLAND], [gdk-wayland-3.0], [gtk_minimum_version],
-                           [gdk-wayland], [Wayland backend for GDK])
-XDT_CHECK_OPTIONAL_PACKAGE([GTK_LAYER_SHELL], [gtk-layer-shell-0],
-                           [gtk_layer_shell_minimum_version],
-                           [gtk-layer-shell], [Wayland GTK layer shell support])
-AC_ARG_ENABLE([wayland],
-              [AS_HELP_STRING([--disable-wayland],
-                              [Do not compile with Wayland support (default=auto)])],
-              [ac_cv_enable_wayland=$enableval],
-              [ac_cv_enable_wayland=auto])
-
-enable_wayland="no"
-if test x"$ac_cv_enable_wayland" != x"no"; then
-    if test x"$GDK_WAYLAND_FOUND" = x"yes" -a x"$GTK_LAYER_SHELL_FOUND" = x"yes"; then
-        enable_wayland="yes"
-        AC_DEFINE([ENABLE_WAYLAND], [1], [Set if Wayland support is enabled])
-    elif test x"$ac_cv_enable_wayland" = x"yes"; then
-        AC_MSG_ERROR([Wayland support was requested, but required dependencies were not found.])
-    fi
-fi
-AM_CONDITIONAL([ENABLE_WAYLAND], [test x"$enable_wayland" = x"yes"])
-
-if test x"$enable_x11" != x"yes" -a x"$enable_wayland" != x"yes"; then
+if test x"$ENABLE_X11" != x"yes" -a x"$ENABLE_WAYLAND" != x"yes"; then
     AC_MSG_ERROR([Either both X11 and Wayland support was disabled, or required dependencies are missing. One of the two must be enabled.])
 fi
 
-AC_ARG_VAR([GDBUS_CODEGEN], [D-Bus code and documentation generator from XML D-Bus interface definitions])
-AC_MSG_CHECKING([for gdbus-codegen])
-if test x"$GDBUS_CODEGEN" = x""; then
-    GDBUS_CODEGEN=`$PKG_CONFIG --variable=gdbus_codegen gio-2.0`
-fi
-if test -x "$GDBUS_CODEGEN"; then
-    AC_MSG_RESULT([$GDBUS_CODEGEN])
-else
-    AC_MSG_ERROR([could not find gdbus-codegen in \$PATH. You can run
-./configure GDBUS_CODEGEN=/path/to/gdbus-codegen
-to define a custom location for it.])
-fi
-
-AC_ARG_VAR([GLIB_COMPILE_RESOURCES], [GResource compiler/generator])
-AC_MSG_CHECKING([for glib-compile-resources])
-if test x"$GLIB_COMPILE_RESOURCES" = x""; then
-    GLIB_COMPILE_RESOURCES=`$PKG_CONFIG --variable=glib_compile_resources gio-2.0`
-fi
-if test -x "$GLIB_COMPILE_RESOURCES"; then
-    AC_MSG_RESULT([$GLIB_COMPILE_RESOURCES])
-else
-    AC_MSG_ERROR([could not find glib-compile-resources in \$PATH. You can run
-./configure GLIB_COMPILE_RESOURCES=/path/to/glib-compile-resources
-to define a custom location for it.])
-fi
-
-AC_ARG_VAR([GLIB_GENMARSHAL], [gclosure marshalling function generator])
-AC_MSG_CHECKING([for glib-genmarshal])
-if test x"$GLIB_GENMARSHAL" = x""; then
-    GLIB_GENMARSHAL=`$PKG_CONFIG --variable=glib_genmarshal glib-2.0`
-fi
-if test -x "$GLIB_GENMARSHAL"; then
-    AC_MSG_RESULT([$GLIB_GENMARSHAL])
-else
-    AC_MSG_ERROR([could not find glib-genmarshal in \$PATH. You can run
-./configure GLIB_GENMARSHAL=/path/to/glib-genmarshal
-to define a custom location for it.])
-fi
-
-AC_ARG_VAR([GLIB_MKENUMS], [generates boxed types for enums])
-AC_MSG_CHECKING([for glib-mkenums])
-if test x"$GLIB_MKENUMS" = x""; then
-    GLIB_MKENUMS=`$PKG_CONFIG --variable=glib_mkenums glib-2.0`
-fi
-if test -x "$GLIB_MKENUMS"; then
-    AC_MSG_RESULT([$GLIB_MKENUMS])
-else
-    AC_MSG_ERROR([could not find glib-mkenums in \$PATH. You can run
-./configure GLIB_MKENUMS=/path/to/glib-mkenums
-to define a custom location for it.])
-fi
+XDT_CHECK_PACKAGE_BINARY([GDBUS_CODEGEN], [gio-2.0], [gdbus_codegen], [gdbus-codegen])
+XDT_CHECK_PACKAGE_BINARY([GLIB_COMPILE_RESOURCES], [gio-2.0], [glib_compile_resources], [glib-compile-resources])
+XDT_CHECK_PACKAGE_BINARY([GLIB_GENMARSHAL], [glib-2.0], [glib_genmarshal], [glib-genmarshal])
+XDT_CHECK_PACKAGE_BINARY([GLIB_MKENUMS], [glib-2.0], [glib_mkenums], [glib-mkenums])
 
 dnl do we want desktop icons at all?
 AC_ARG_ENABLE([desktop-icons],
