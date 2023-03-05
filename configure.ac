@@ -227,6 +227,6 @@ else
 echo "* Mount notification support:                   no"
 fi
 echo "* Windowing:"
-echo "      X11:                                      $enable_x11"
-echo "      Wayland:                                  $enable_wayland"
+echo "      X11:                                      $ENABLE_X11"
+echo "      Wayland:                                  $ENABLE_WAYLAND"
 echo
