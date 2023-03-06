@@ -93,6 +93,7 @@
 
 #define DESKTOP_MENU_MAX_TEMPLATE_FILES      "/desktop-menu/max-template-files"
 #define DESKTOP_MENU_DELETE                  "/desktop-menu/show-delete"
+#define DESKTOP_MENU_COMMAND                 "/desktop-menu/command"
 
 /**
  * File information namespaces queried for #GFileInfo objects.
