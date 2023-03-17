@@ -1,0 +1,4 @@
+#!/bin/bash
+
+me=$(basename "$0")
+exec -a "$me" xfce4-settings-manager --standalone --dialog xfce-backdrop-settings
