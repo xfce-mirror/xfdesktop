@@ -1,11 +1,13 @@
-bin_PROGRAMS = xfdesktop-settings
 
-xfdesktop_settings_SOURCES = \
+dialog_LTLIBRARIES = libxfce-backdrop-settings.la
+dialogdir = $(SETTINGS_DIALOG_LIBRARY_DIR)
+
+libxfce_backdrop_settings_la_SOURCES = \
 	xfdesktop-settings-ui.h \
 	xfdesktop-settings-ui.c \
 	main.c
 
-xfdesktop_settings_CFLAGS =						\
+libxfce_backdrop_settings_la_CFLAGS =				\
 	-I$(top_srcdir)								\
 	-I$(top_srcdir)/common						\
 	-I$(top_srcdir)/src 						\
@@ -21,7 +23,14 @@ xfdesktop_settings_CFLAGS =						\
 	-DDATADIR=\"$(datadir)\"					\
 	-DBINDIR=\"$(bindir)\"
 
-xfdesktop_settings_LDADD =						\
+libxfce_backdrop_settings_la_LDFLAGS = \
+       -avoid-version \
+       -module \
+       -no-undefined \
+       -export-symbols-regex '^xfce_settings_dialog_impl' \
+       $(PLATFORM_LDFLAGS)
+
+libxfce_backdrop_settings_la_LIBADD =					\
 	$(top_builddir)/common/libxfdesktop.la		\
 	$(XFCONF_LIBS)								\
 	$(LIBXFCE4UI_LIBS)							\
@@ -38,6 +47,9 @@ desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 glade_files = \
 	xfdesktop-settings-ui.glade \
 	xfdesktop-settings-appearance-frame-ui.glade
+
+dist_bin_SCRIPTS = \
+	xfdesktop-settings
 
 BUILT_SOURCES = \
 	xfdesktop-settings-ui.h \
