@@ -6,18 +6,19 @@
 # Ali Vakilzade <ali.vakilzade@gmail.com>, 2015
 # Behrooz Ramezani <b3hrooz.ram3zani@gmail.com>, 2015
 # Goudarz Jafari <goudarz.jafari@gmail.com>, 2020
-# MohammadSaleh Kamyab <mskf1383@protonmail.com>, 2022
+# محمدصالح کامیاب <mskf1383@envs.net>, 2022
 # Ramin Najjarbashi <ramin.najarbashi@gmail.com>, 2015
 # Ramin Najjarbashi <ramin.najarbashi@gmail.com>, 2015,2017
 # Sajjad Sadeghi <sjsadeghii@gmail.com>, 2019
 # Vahid Nameni <vahidnameni@yahoo.com>, 2013,2017
+# محمدصالح کامیاب <mskf1383@envs.net>, 2023
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2023-02-22 14:45+0100\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
-"Last-Translator: MohammadSaleh Kamyab <mskf1383@protonmail.com>, 2022\n"
+"Last-Translator: محمدصالح کامیاب <mskf1383@envs.net>, 2023\n"
 "Language-Team: Persian (Iran) (http://www.transifex.com/xfce/xfdesktop/language/fa_IR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -225,7 +226,7 @@ msgstr "تنظیم رفتار پس‌زمینه و فهرست و نقشک میز
 
 #: settings/xfce-backdrop-settings.desktop.in:7
 msgid "org.xfce.xfdesktop"
-msgstr ""
+msgstr "org.xfce.xfdesktop"
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:19
 msgid "Solid color"
@@ -249,7 +250,7 @@ msgstr "پوشه‌ای برای گزینش کاغذدیواری‌ها از آ�
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:117
 msgid "Apply"
-msgstr ""
+msgstr "اِعمال"
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:132
 msgid "St_yle:"
@@ -521,7 +522,7 @@ msgstr "_فهرست‌ها"
 
 #: settings/xfdesktop-settings-ui.glade:738
 msgid "Icon _Type"
-msgstr ""
+msgstr "_نوع نقشک"
 
 #: settings/xfdesktop-settings-ui.glade:774
 msgid "Icon _size:"
@@ -583,7 +584,7 @@ msgstr "با گزینش این گزینه پرونده ها قابلیت پیش 
 
 #: settings/xfdesktop-settings-ui.glade:1016
 msgid "Show \"Delete\" option in file context menu"
-msgstr ""
+msgstr "نمایش گزینهٔ «حذف» در فهرست مفاد پرونده"
 
 #: settings/xfdesktop-settings-ui.glade:1062
 msgid "<b>Default Icons</b>"
@@ -591,7 +592,7 @@ msgstr "<b>نقشک‌ها پیش‌گزیده</b>"
 
 #: settings/xfdesktop-settings-ui.glade:1080
 msgid "<b>File/Launcher Icons</b>"
-msgstr ""
+msgstr "<b>نقشک‌های پرونده/اجراگر</b>"
 
 #: settings/xfdesktop-settings-ui.glade:1101
 msgid "_Icons"
@@ -616,7 +617,7 @@ msgstr "آیا از برداشتن فضای کاری ‎%d مطمئنید؟\nت�
 #: src/windowlist.c:83
 #, c-format
 msgid "Do you really want to remove workspace %d"
-msgstr ""
+msgstr "آیا واقعاً می‌خواهید فضای کاری %d را بردارید"
 
 #: src/windowlist.c:88
 #, c-format
@@ -633,7 +634,7 @@ msgstr "آیا از برداشتن فضای کاری ‎%s مطمئنید؟\nت�
 #: src/windowlist.c:93
 #, c-format
 msgid "Do you really want to remove workspace '%s'?"
-msgstr ""
+msgstr "آیا واقعاً می‌خواهید فضای کاری «%s» را بردارید؟"
 
 #. Popup a dialog box confirming that the user wants to remove a
 #. * workspace
@@ -648,7 +649,7 @@ msgstr "سیاههٔ پنجره"
 #: src/windowlist.c:357
 #, c-format
 msgid "<b>Group %d, Workspace %d</b>"
-msgstr ""
+msgstr "<b>گروه %d، فضای کاری %d</b>"
 
 #: src/windowlist.c:359
 #, c-format
@@ -832,7 +833,7 @@ msgstr "_پروندهٔ خالی"
 
 #: src/xfdesktop-file-icon-manager.c:1989
 msgid "_Open All"
-msgstr ""
+msgstr "_گشودن همه"
 
 #: src/xfdesktop-file-icon-manager.c:1989
 #: src/xfdesktop-special-file-icon.c:478 src/xfdesktop-volume-icon.c:833
@@ -1153,11 +1154,11 @@ msgstr "_خالی کردن زباله‌دان"
 
 #: src/xfdesktop-volume-icon.c:413
 msgid "(not mounted)"
-msgstr ""
+msgstr "(سوار نشده)"
 
 #: src/xfdesktop-volume-icon.c:414 src/xfdesktop-volume-icon.c:415
 msgid "(unknown)"
-msgstr ""
+msgstr "(ناشناخته)"
 
 #: src/xfdesktop-volume-icon.c:419
 #, c-format
@@ -1167,11 +1168,11 @@ msgid ""
 "Mounted at: %s\n"
 "Size: %s\n"
 "Free Space: %s"
-msgstr ""
+msgstr "نام: %s\nگونه: %s\nسوار در: %s\nاندازه: %s\nفضای خالی: %s"
 
 #: src/xfdesktop-volume-icon.c:421
 msgid "Removable Volume"
-msgstr ""
+msgstr "حجم برداشتنی"
 
 #: src/xfdesktop-volume-icon.c:454 src/xfdesktop-volume-icon.c:498
 #, c-format
