@@ -42,6 +42,7 @@
 
 #include <glib.h>
 #include <glib/gstdio.h>
+#include <glib/gi18n-lib.h>
 #include <gio/gio.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <cairo-gobject.h>
@@ -103,6 +104,8 @@ typedef struct
     /* We keep track of the current workspace number because
      * sometimes fetching the active workspace returns NULL. */
     gint active_workspace;
+
+    GtkBuilder *gxml;
 
     GtkWidget *infobar;
     GtkWidget *infobar_label;
@@ -1163,14 +1166,6 @@ xfdesktop_settings_stop_image_loading(AppearancePanel *panel)
 }
 
 static void
-cb_xfdesktop_bnt_exit_clicked(GtkButton *button, gpointer user_data)
-{
-    AppearancePanel *panel = user_data;
-
-    xfdesktop_settings_stop_image_loading(panel);
-}
-
-static void
 cb_folder_selection_changed(GtkWidget *button,
                             gpointer user_data)
 {
@@ -1808,6 +1803,7 @@ cb_window_opened(XfwScreen *screen,
     xfdesktop_settings_update_iconview_frame_name(panel, workspace);
 }
 
+#if 0
 static void
 cb_active_window_changed(XfwScreen *screen,
                          XfwWindow *previously_active_window,
@@ -1823,6 +1819,7 @@ cb_active_window_changed(XfwScreen *screen,
         }
     }
 }
+#endif
 
 static void
 cb_monitor_changed(GdkScreen *gscreen,
@@ -1952,7 +1949,7 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     GtkWidget *appearance_container, *chk_custom_font_size,
               *spin_font_size, *w, *box, *spin_icon_size,
               *chk_show_thumbnails, *chk_single_click, *appearance_settings,
-              *chk_show_tooltips, *spin_tooltip_size, *bnt_exit, *content_area,
+              *chk_show_tooltips, *spin_tooltip_size, *content_area,
               *chk_show_hidden_files;
     GtkBuilder *appearance_gxml;
     GError *error = NULL;
@@ -1969,12 +1966,6 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
 
     appearance_container = GTK_WIDGET(gtk_builder_get_object(main_gxml,
                                                              "notebook_screens"));
-
-    bnt_exit = GTK_WIDGET(gtk_builder_get_object(main_gxml, "bnt_exit"));
-
-    g_signal_connect(G_OBJECT(bnt_exit), "clicked",
-                     G_CALLBACK(cb_xfdesktop_bnt_exit_clicked),
-                     panel);
 
     /* Icons tab */
     /* icon size */
@@ -2288,6 +2279,7 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     cb_update_background_tab(panel->xfw_window, panel);
 }
 
+#if 0
 static void
 xfdesktop_settings_response(GtkWidget *dialog, gint response_id, gpointer user_data)
 {
@@ -2315,7 +2307,9 @@ xfdesktop_settings_response(GtkWidget *dialog, gint response_id, gpointer user_d
         gtk_main_quit();
     }
 }
+#endif
 
+#if 0
 static Window opt_socket_id = 0;
 static gboolean opt_version = FALSE;
 static gboolean opt_enable_debug = FALSE;
@@ -2325,36 +2319,42 @@ static GOptionEntry option_entries[] = {
     { "enable-debug", 'e', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_enable_debug, N_("Enable debug messages"), NULL },
     { NULL, },
 };
-
-int
-main(int argc, char **argv)
-{
-    XfconfChannel *channel;
-    GtkBuilder *gxml;
-    gint screen;
-    GError *error = NULL;
-    AppearancePanel *panel;
-
-#ifdef G_ENABLE_DEBUG
-    /* do NOT remove this line. If something doesn't work,
-     * fix your code instead! */
-    g_log_set_always_fatal(G_LOG_LEVEL_CRITICAL | G_LOG_LEVEL_WARNING);
 #endif
+
+static void
+dialog_widget_freed(gpointer data, GObject *freed_obj)
+{
+    AppearancePanel *panel = data;
+
+    xfdesktop_settings_stop_image_loading(panel);
+
+    if (panel->thumbnailer != NULL) {
+        g_object_unref(panel->thumbnailer);
+    }
+
+    if (panel->selected_folder != NULL) {
+        g_object_unref(panel->selected_folder);
+    }
+
+    g_object_unref(panel->gxml);
+    g_object_unref(G_OBJECT(panel->channel));
+
+    xfdesktop_settings_ui_unregister_resource();
+
+    g_free(panel);
+}
+
+G_MODULE_EXPORT GtkWidget *xfce_settings_dialog_impl_get_dialog_widget(GError **error);
+G_MODULE_EXPORT GtkWidget *
+xfce_settings_dialog_impl_get_dialog_widget(GError **error)
+{
+    GtkBuilder *gxml;
+    AppearancePanel *panel;
+    GtkWidget *dialog_widget;
 
     xfce_textdomain(GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
 
-    if(!gtk_init_with_args(&argc, &argv, "", option_entries, PACKAGE, &error)) {
-        if(G_LIKELY(error)) {
-            g_printerr("%s: %s.\n", G_LOG_DOMAIN, error->message);
-            g_printerr(_("Type '%s --help' for usage."), G_LOG_DOMAIN);
-            g_printerr("\n");
-            g_clear_error(&error);
-        } else
-            g_error("Unable to open display.");
-
-        return EXIT_FAILURE;
-    }
-
+#if 0
     if(G_UNLIKELY(opt_version)) {
         g_print("%s %s (Xfce %s)\n\n", G_LOG_DOMAIN, VERSION, xfce_version_string());
         g_print("%s\n", "Copyright (c) 2004-2022");
@@ -2364,108 +2364,38 @@ main(int argc, char **argv)
 
         return EXIT_SUCCESS;
     }
+#endif
 
-    if(!xfconf_init(&error)) {
-        xfce_message_dialog(NULL, _("Desktop Settings"),
-                            "dialog-error",
-                            _("Unable to contact settings server"),
-                            error->message,
-                            XFCE_BUTTON_TYPE_MIXED, "application-exit", _("Quit"), GTK_RESPONSE_ACCEPT,
-                            NULL);
-        g_clear_error(&error);
-        return 1;
+    if(!xfconf_init(error)) {
+        return NULL;
     }
 
     xfdesktop_settings_ui_register_resource();
 
-    gxml = gtk_builder_new_from_resource("/org/xfce/xfdesktop/settings/xfdesktop-settings-ui.glade");
-    if (G_UNLIKELY(gxml == NULL)) {
-        g_printerr("Failed to parse UI description: %s\n", error->message);
-        g_clear_error(&error);
-        return 1;
+    gxml = gtk_builder_new();
+    if (G_UNLIKELY(!gtk_builder_add_from_resource(gxml, "/org/xfce/xfdesktop/settings/xfdesktop-settings-ui.glade", error))) {
+        g_object_unref(gxml);
+        return NULL;
     }
 
-    channel = xfconf_channel_new(XFDESKTOP_CHANNEL);
     panel = g_new0(AppearancePanel, 1);
+    panel->channel = xfconf_channel_new(XFDESKTOP_CHANNEL);
+    panel->gxml = gxml;
 
-    if(opt_enable_debug)
-        xfdesktop_debug_set(TRUE);
-
-#ifdef ENABLE_X11
-    if (opt_socket_id != 0 && xfw_windowing_get() == XFW_WINDOWING_X11) {
-        GtkWidget *plug, *plug_child;
-        XfwScreen *xfw_screen;
-
-        plug = gtk_plug_new(opt_socket_id);
-        gtk_widget_show(plug);
-        g_signal_connect(G_OBJECT(plug), "delete-event",
-                         G_CALLBACK(gtk_main_quit), NULL);
-
-        gdk_notify_startup_complete();
-
-        plug_child = GTK_WIDGET(gtk_builder_get_object(gxml, "notebook_settings"));
-        xfce_widget_reparent(plug_child, plug);
-        gtk_widget_show(plug_child);
-
-        screen = gdk_x11_screen_get_screen_number(gtk_widget_get_screen(plug));
-
-        /* In a GtkPlug setting there isn't an easy way to find our window
-         * in cb_window_opened so we'll just get the screen's active window */
-        xfw_screen = xfw_screen_get_default();
-        panel->xfw_window = xfw_screen_get_active_window(xfw_screen);
-
-        if (panel->xfw_window != NULL) {
-            /* These callbacks are for updating the image_iconview when the window
-             * moves to another monitor or workspace */
-            g_signal_connect(panel->xfw_window, "geometry-changed",
-                             G_CALLBACK(cb_update_background_tab), panel);
-            g_signal_connect(panel->xfw_window, "workspace-changed",
-                             G_CALLBACK(cb_update_background_tab), panel);
-        } else {
-            // XfwScreen doesn't know the active window yet, so wait until it
-            // figures it out
-            g_signal_connect(xfw_screen, "active-window-changed",
-                             G_CALLBACK(cb_active_window_changed), panel);
-        }
-    } else
-#endif  /* ENABLE_X11 */
-    {
-        GtkWidget *dialog = GTK_WIDGET(gtk_builder_get_object(gxml, "prefs_dialog"));
-
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-        screen = gdk_screen_get_number(gtk_widget_get_screen(dialog));
-G_GNUC_END_IGNORE_DEPRECATIONS
-
-        g_signal_connect(dialog, "response",
-                         G_CALLBACK(xfdesktop_settings_response),
-                         channel);
-        gtk_window_set_default_size
-            (GTK_WINDOW(dialog),
-             xfconf_channel_get_int(channel, SETTINGS_WINDOW_LAST_WIDTH, -1),
-             xfconf_channel_get_int(channel, SETTINGS_WINDOW_LAST_HEIGHT, -1));
-        gtk_window_present(GTK_WINDOW (dialog));
-
-#ifdef ENABLE_X11
-        if (xfw_windowing_get() == XFW_WINDOWING_X11) {
-            /* To prevent the settings dialog to be saved in the session */
-            gdk_x11_set_sm_client_id("FAKE ID");
-        }
-#endif  /* ENABLE_X11 */
-    }
-
-    panel->channel = channel;
-    panel->screen = screen;
-
+    dialog_widget = GTK_WIDGET(gtk_builder_get_object(gxml, "notebook_settings"));
+    g_object_weak_ref(G_OBJECT(dialog_widget), dialog_widget_freed, panel);
     xfdesktop_settings_dialog_setup_tabs(gxml, panel);
 
-    gtk_main();
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+    panel->screen = gdk_screen_get_number(gtk_widget_get_screen(dialog_widget));
+G_GNUC_END_IGNORE_DEPRECATIONS
 
-    g_object_unref(G_OBJECT(gxml));
+#if 0
+    gtk_window_set_default_size
+        (GTK_WINDOW(dialog),
+         xfconf_channel_get_int(channel, SETTINGS_WINDOW_LAST_WIDTH, -1),
+         xfconf_channel_get_int(channel, SETTINGS_WINDOW_LAST_HEIGHT, -1));
+#endif
 
-    g_object_unref(G_OBJECT(channel));
-    xfconf_shutdown();
-
-    g_free(panel);
-
-    return 0;
+    return dialog_widget;
 }
