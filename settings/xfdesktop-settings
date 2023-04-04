@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec -a "$0" xfce4-settings-manager --standalone --dialog xfce-backdrop-settings
