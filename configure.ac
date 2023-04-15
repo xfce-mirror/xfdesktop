@@ -109,6 +109,16 @@ XDT_CHECK_PACKAGE_BINARY([GLIB_COMPILE_RESOURCES], [gio-2.0], [glib_compile_reso
 XDT_CHECK_PACKAGE_BINARY([GLIB_GENMARSHAL], [glib-2.0], [glib_genmarshal], [glib-genmarshal])
 XDT_CHECK_PACKAGE_BINARY([GLIB_MKENUMS], [glib-2.0], [glib_mkenums], [glib-mkenums])
 
+dnl update version requirement after release
+XDT_CHECK_PACKAGE([XFCE4_SETTINGS_MANAGER], [xfce4-settings-manager], [4.18])
+AC_ARG_WITH([settings-dialog-library-dir],
+            [AS_HELP_STRING([--with-settings-dialog-library-dir=DIR],
+                            [Specify the location to install the settings dialog shared library (default=auto)])],
+            [settings_dialog_library_dir=$withval],
+            [settings_dialog_library_dir=`$PKG_CONFIG --variable=settings_dialog_library_dir xfce4-settings-manager`])
+SETTINGS_DIALOG_LIBRARY_DIR="$settings_dialog_library_dir"
+AC_SUBST([SETTINGS_DIALOG_LIBRARY_DIR])
+
 dnl do we want desktop icons at all?
 AC_ARG_ENABLE([desktop-icons],
     [AS_HELP_STRING([--disable-desktop-icons],
