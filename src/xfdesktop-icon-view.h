@@ -168,6 +168,9 @@ gboolean xfdesktop_icon_view_get_single_click(XfdesktopIconView *icon_view);
 void xfdesktop_icon_view_set_single_click(XfdesktopIconView *icon_view,
                                           gboolean single_click);
 
+void xfdesktop_icon_view_set_single_click_underline_hover(XfdesktopIconView *icon_view,
+                                                          gboolean single_click_underline_hover);
+
 void xfdesktop_icon_view_set_gravity(XfdesktopIconView *icon_view,
                                      XfdesktopIconViewGravity gravity);
 

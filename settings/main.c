@@ -1951,7 +1951,8 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
 {
     GtkWidget *appearance_container, *chk_custom_font_size,
               *spin_font_size, *w, *box, *spin_icon_size,
-              *chk_show_thumbnails, *chk_single_click, *appearance_settings,
+              *chk_show_thumbnails, *chk_single_click, *chk_single_click_underline,
+              *appearance_settings,
               *chk_show_tooltips, *spin_tooltip_size, *bnt_exit, *content_area,
               *chk_show_hidden_files;
     GtkBuilder *appearance_gxml;
@@ -1998,6 +1999,11 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     /* single click */
     chk_single_click = GTK_WIDGET(gtk_builder_get_object(main_gxml,
                                                          "chk_single_click"));
+    chk_single_click_underline = GTK_WIDGET(gtk_builder_get_object(main_gxml,
+                                                                   "chk_single_click_underline"));
+    g_object_bind_property(chk_single_click, "active",
+                           chk_single_click_underline, "sensitive",
+                           G_BINDING_SYNC_CREATE);
 
     /* show hidden files */
     chk_show_hidden_files = GTK_WIDGET(gtk_builder_get_object(main_gxml,
@@ -2282,6 +2288,9 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
                            "active");
     xfconf_g_property_bind(channel, DESKTOP_ICONS_SINGLE_CLICK_PROP,
                            G_TYPE_BOOLEAN, G_OBJECT(chk_single_click),
+                           "active");
+    xfconf_g_property_bind(channel, DESKTOP_ICONS_SINGLE_CLICK_ULINE_PROP,
+                           G_TYPE_BOOLEAN, G_OBJECT(chk_single_click_underline),
                            "active");
 
     setup_special_icon_list(main_gxml, channel);

@@ -49,7 +49,8 @@
 #define MAX_GRAVITY                  7
 #define DEFAULT_GRAVITY              0
 
-#define DEFAULT_SINGLE_CLICK       FALSE
+#define DEFAULT_SINGLE_CLICK        FALSE
+#define DEFAULT_SINGLE_CLICK_ULINE  FALSE
 #define DEFAULT_ICONS_ON_PRIMARY    FALSE
 #define DEFAULT_ICON_FONT_SIZE_SET  FALSE
 #define DEFAULT_ICON_CENTER_TEXT    TRUE
@@ -79,6 +80,7 @@
 #define DESKTOP_ICONS_SHOW_TOOLTIP_PROP      "/desktop-icons/show-tooltips"
 #define DESKTOP_ICONS_TOOLTIP_SIZE_PROP      "/desktop-icons/tooltip-size"
 #define DESKTOP_ICONS_SINGLE_CLICK_PROP      "/desktop-icons/single-click"
+#define DESKTOP_ICONS_SINGLE_CLICK_ULINE_PROP "/desktop-icons/single-click-underline-hover"
 #define DESKTOP_ICONS_GRAVITY_PROP           "/desktop-icons/gravity"
 
 #define DESKTOP_ICONS_SHOW_THUMBNAILS        "/desktop-icons/show-thumbnails"

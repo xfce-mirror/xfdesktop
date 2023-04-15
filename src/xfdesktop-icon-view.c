@@ -123,6 +123,7 @@ enum
     PROP_ICON_ON_PRIMARY,
     PROP_SHOW_TOOLTIPS,
     PROP_SINGLE_CLICK,
+    PROP_SINGLE_CLICK_UNDERLINE_HOVER,
     PROP_GRAVITY,
     PROP_PIXBUF_COLUMN,
     PROP_TEXT_COLUMN,
@@ -381,6 +382,7 @@ struct _XfdesktopIconViewPrivate
     gint tooltip_icon_size_style;
 
     gboolean single_click;
+    gboolean single_click_underline_hover;
     XfdesktopIconViewGravity gravity;
 };
 
@@ -586,6 +588,7 @@ static const struct
     { DESKTOP_ICONS_ON_PRIMARY_PROP, G_TYPE_BOOLEAN, "icons-on-primary" },
     { DESKTOP_ICONS_SHOW_TOOLTIP_PROP, G_TYPE_BOOLEAN, "show-tooltips" },
     { DESKTOP_ICONS_SINGLE_CLICK_PROP, G_TYPE_BOOLEAN, "single-click" },
+    { DESKTOP_ICONS_SINGLE_CLICK_ULINE_PROP, G_TYPE_BOOLEAN, "single-click-underline-hover" },
     { DESKTOP_ICONS_GRAVITY_PROP, G_TYPE_INT, "gravity" },
 };
 
@@ -964,6 +967,13 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
                                                          DEFAULT_SINGLE_CLICK,
                                                          PARAM_FLAGS));
 
+    g_object_class_install_property(gobject_class, PROP_SINGLE_CLICK_UNDERLINE_HOVER,
+                                    g_param_spec_boolean("single-click-underline-hover",
+                                                         "single-click-underline-hover",
+                                                         "single-click-underline-hover",
+                                                         DEFAULT_SINGLE_CLICK_ULINE,
+                                                         PARAM_FLAGS));
+
     g_object_class_install_property(gobject_class, PROP_GRAVITY,
                                     g_param_spec_int("gravity",
                                                      "gravity",
@@ -1231,6 +1241,10 @@ xfdesktop_icon_view_set_property(GObject *object,
             xfdesktop_icon_view_set_single_click(icon_view, g_value_get_boolean(value));
             break;
 
+        case PROP_SINGLE_CLICK_UNDERLINE_HOVER:
+            xfdesktop_icon_view_set_single_click_underline_hover(icon_view, g_value_get_boolean(value));
+            break;
+
         case PROP_GRAVITY:
             xfdesktop_icon_view_set_gravity(icon_view, g_value_get_int(value));
             break;
@@ -1324,6 +1338,10 @@ xfdesktop_icon_view_get_property(GObject *object,
 
         case PROP_SINGLE_CLICK:
             g_value_set_boolean(value, icon_view->priv->single_click);
+            break;
+
+        case PROP_SINGLE_CLICK_UNDERLINE_HOVER:
+            g_value_set_boolean(value, icon_view->priv->single_click_underline_hover);
             break;
 
         case PROP_GRAVITY:
@@ -4380,7 +4398,8 @@ xfdesktop_icon_view_init_builtin_cell_renderers(XfdesktopIconView *icon_view)
 
     g_object_set(icon_view->priv->text_renderer,
                  "attributes", attr_list,
-                 "underline-when-prelit", icon_view->priv->single_click,
+                 "underline-when-prelit", icon_view->priv->single_click &&
+                                          icon_view->priv->single_click_underline_hover,
                  "wrap-mode", PANGO_WRAP_WORD_CHAR,
                  "xalign", (gfloat)0.5,
                  "yalign", (gfloat)0.0,
@@ -5238,7 +5257,8 @@ xfdesktop_icon_view_set_single_click(XfdesktopIconView *icon_view,
 
     if (icon_view->priv->text_renderer != NULL) {
         g_object_set(icon_view->priv->text_renderer,
-                     "underline-when-prelit", icon_view->priv->single_click,
+                     "underline-when-prelit", icon_view->priv->single_click &&
+                                              icon_view->priv->single_click_underline_hover,
                      NULL);
     }
 
@@ -5247,6 +5267,35 @@ xfdesktop_icon_view_set_single_click(XfdesktopIconView *icon_view,
     }
 
     g_object_notify(G_OBJECT(icon_view), "single-click");
+}
+
+void
+xfdesktop_icon_view_set_single_click_underline_hover(XfdesktopIconView *icon_view,
+                                                     gboolean single_click_underline_hover)
+{
+    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view));
+
+    if (single_click_underline_hover != icon_view->priv->single_click_underline_hover) {
+        icon_view->priv->single_click_underline_hover = single_click_underline_hover;
+
+        if (icon_view->priv->text_renderer != NULL) {
+            g_object_set(icon_view->priv->text_renderer,
+                         "underline-when-prelit", icon_view->priv->single_click &&
+                         icon_view->priv->single_click_underline_hover,
+                         NULL);
+        }
+
+        if (gtk_widget_get_realized(GTK_WIDGET(icon_view)) && icon_view->priv->item_under_pointer != NULL) {
+            ViewItem *item = icon_view->priv->item_under_pointer;
+            gtk_widget_queue_draw_area(GTK_WIDGET(icon_view),
+                                       item->text_extents.x,
+                                       item->text_extents.y,
+                                       item->text_extents.width,
+                                       item->text_extents.height);
+        }
+
+        g_object_notify(G_OBJECT(icon_view), "single-click-underline-hover");
+    }
 }
 
 void

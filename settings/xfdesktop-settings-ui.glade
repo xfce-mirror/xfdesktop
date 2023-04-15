@@ -758,7 +758,7 @@
                     <property name="label-xalign">0</property>
                     <property name="shadow-type">none</property>
                     <child>
-                      <!-- n-columns=3 n-rows=6 -->
+                      <!-- n-columns=3 n-rows=7 -->
                       <object class="GtkGrid">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
@@ -920,6 +920,27 @@
                             <property name="left-attach">0</property>
                             <property name="top-attach">5</property>
                           </packing>
+                        </child>
+                        <child>
+                          <object class="GtkCheckButton" id="chk_single_click_underline">
+                            <property name="label" translatable="yes">_Underline text on hover</property>
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="receives-default">False</property>
+                            <property name="margin-start">12</property>
+                            <property name="use-underline">True</property>
+                            <property name="draw-indicator">True</property>
+                          </object>
+                          <packing>
+                            <property name="left-attach">0</property>
+                            <property name="top-attach">6</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <placeholder/>
+                        </child>
+                        <child>
+                          <placeholder/>
                         </child>
                         <child>
                           <placeholder/>
