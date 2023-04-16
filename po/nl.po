@@ -10,10 +10,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2023-02-22 14:45+0100\n"
+"POT-Creation-Date: 2023-04-16 00:50+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Pjotr <pjotrvertaalt@gmail.com>, 2013-2023\n"
-"Language-Team: Dutch (http://www.transifex.com/xfce/xfdesktop/language/nl/)\n"
+"Language-Team: Dutch (http://app.transifex.com/xfce/xfdesktop/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -158,54 +158,54 @@ msgstr "Startfout"
 msgid "_Close"
 msgstr "_Sluiten"
 
-#: settings/main.c:2103
+#: settings/main.c:2109
 msgid "Image files"
 msgstr "Afbeeldingbestanden"
 
 #. Change the title of the file chooser dialog
-#: settings/main.c:2111
+#: settings/main.c:2117
 msgid "Select a Directory"
 msgstr "Kies een map"
 
-#: settings/main.c:2323
+#: settings/main.c:2332
 msgid "Settings manager socket"
 msgstr "Contactpunt voor instellingenbeheerder"
 
-#: settings/main.c:2323
+#: settings/main.c:2332
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: settings/main.c:2324
+#: settings/main.c:2333
 msgid "Version information"
 msgstr "Versie-informatie"
 
-#: settings/main.c:2325 src/xfdesktop-application.c:890
+#: settings/main.c:2334 src/xfdesktop-application.c:890
 msgid "Enable debug messages"
 msgstr "Foutopsporingsberichten inschakelen"
 
-#: settings/main.c:2349
+#: settings/main.c:2358
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Tik '%s --help' voor gebruiksinformatie."
 
-#: settings/main.c:2361
+#: settings/main.c:2370
 msgid "The Xfce development team. All rights reserved."
 msgstr "De Xfce-ontwikkelploeg. Alle rechten voorbehouden."
 
-#: settings/main.c:2362
+#: settings/main.c:2371
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Gelieve fouten te melden aan <%s>"
 
-#: settings/main.c:2369
+#: settings/main.c:2378
 msgid "Desktop Settings"
 msgstr "Bureaubladinstellingen"
 
-#: settings/main.c:2371
+#: settings/main.c:2380
 msgid "Unable to contact settings server"
 msgstr "Kan geen contact maken met de instellingendienst"
 
-#: settings/main.c:2373
+#: settings/main.c:2382
 msgid "Quit"
 msgstr "Afsluiten"
 
@@ -558,37 +558,41 @@ msgstr "64"
 msgid "Single _click to activate items"
 msgstr "Onderdelen activeren met enkele klik"
 
-#: settings/xfdesktop-settings-ui.glade:955
+#: settings/xfdesktop-settings-ui.glade:926
+msgid "_Underline text on hover"
+msgstr "Tekst onderstrepen bij zweven"
+
+#: settings/xfdesktop-settings-ui.glade:976
 msgid "<b>Appearance</b>"
 msgstr "<b>Uiterlijk</b>"
 
-#: settings/xfdesktop-settings-ui.glade:983
+#: settings/xfdesktop-settings-ui.glade:1004
 msgid "Show hidden files on the desktop"
 msgstr "Toon verborgen bestanden op het bureaublad"
 
-#: settings/xfdesktop-settings-ui.glade:999
+#: settings/xfdesktop-settings-ui.glade:1020
 msgid "Show t_humbnails"
 msgstr "Toon miniaturen"
 
-#: settings/xfdesktop-settings-ui.glade:1004
+#: settings/xfdesktop-settings-ui.glade:1025
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
 msgstr "Kies deze optie om bestanden waarvoor voorbeeldweergave mogelijk is, te tonen op het bureaublad als automatisch gegenereerde miniaturen."
 
-#: settings/xfdesktop-settings-ui.glade:1016
+#: settings/xfdesktop-settings-ui.glade:1037
 msgid "Show \"Delete\" option in file context menu"
 msgstr "Toon optie voor 'Verwijderen' in het contextmenu voor bestanden"
 
-#: settings/xfdesktop-settings-ui.glade:1062
+#: settings/xfdesktop-settings-ui.glade:1083
 msgid "<b>Default Icons</b>"
 msgstr "<b>Standaardpictogrammen</b>"
 
-#: settings/xfdesktop-settings-ui.glade:1080
+#: settings/xfdesktop-settings-ui.glade:1101
 msgid "<b>File/Launcher Icons</b>"
 msgstr "<b>Pictogrammen voor Bestanden/Starters</b>"
 
-#: settings/xfdesktop-settings-ui.glade:1101
+#: settings/xfdesktop-settings-ui.glade:1122
 msgid "_Icons"
 msgstr "_Pictogrammen"
 
