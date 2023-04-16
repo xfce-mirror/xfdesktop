@@ -488,6 +488,8 @@ setup_special_icon_list(GtkBuilder *gxml,
 
     gtk_tree_view_set_model(GTK_TREE_VIEW(treeview), GTK_TREE_MODEL(ts));
     g_object_unref(G_OBJECT(ts));
+
+    gtk_tree_view_expand_all(GTK_TREE_VIEW(treeview));
 }
 
 
@@ -1910,8 +1912,11 @@ cb_icon_style_changed(GtkComboBox *combo,
                              gtk_combo_box_get_active(combo) != 0);
 
 #ifdef ENABLE_FILE_ICONS
-    gtk_widget_set_sensitive(GTK_WIDGET(gtk_builder_get_object(main_gxml, "box_file_icons_settings")),
+    gtk_widget_set_sensitive(GTK_WIDGET(gtk_builder_get_object(main_gxml, "tab_file_launcher_icons_content")),
                              gtk_combo_box_get_active(combo) == 2);
+    gtk_widget_set_visible(GTK_WIDGET(gtk_builder_get_object(main_gxml, "infobar_file_launcher_icons_disabled")),
+                           gtk_combo_box_get_active(combo) != 2);
+
 #endif
 }
 
@@ -2251,7 +2256,7 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     gtk_combo_box_set_active(GTK_COMBO_BOX(w), 2);
 #else
     gtk_combo_box_set_active(GTK_COMBO_BOX(w), 1);
-    gtk_widget_hide(GTK_WIDGET(gtk_builder_get_object(main_gxml, "box_file_icons_settings")));
+    gtk_notebook_remove_page(GTK_NOTEBOOK(gtk_builder_get_object(main_gxml, "notebook_settings")), 3);
 #endif
     xfconf_g_property_bind(channel, DESKTOP_ICONS_STYLE_PROP, G_TYPE_INT,
                            G_OBJECT(w), "active");

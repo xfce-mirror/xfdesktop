@@ -984,131 +984,6 @@
                     <property name="position">1</property>
                   </packing>
                 </child>
-                <child>
-                  <object class="GtkFrame" id="box_file_icons_settings">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                    <property name="label-xalign">0</property>
-                    <property name="shadow-type">none</property>
-                    <child>
-                      <object class="GtkBox">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="margin-start">12</property>
-                        <property name="margin-top">6</property>
-                        <property name="orientation">vertical</property>
-                        <property name="spacing">6</property>
-                        <child>
-                          <object class="GtkCheckButton" id="chk_show_hidden_files">
-                            <property name="label" translatable="yes">Show hidden files on the desktop</property>
-                            <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                            <property name="receives-default">False</property>
-                            <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                            <property name="use-underline">True</property>
-                            <property name="draw-indicator">True</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkCheckButton" id="chk_show_thumbnails">
-                            <property name="label" translatable="yes">Show t_humbnails</property>
-                            <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                            <property name="receives-default">False</property>
-                            <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                            <property name="tooltip-text" translatable="yes">Select this option to display preview-able files on the desktop as automatically generated thumbnail icons.</property>
-                            <property name="use-underline">True</property>
-                            <property name="draw-indicator">True</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkCheckButton" id="chk_show_delete_option">
-                            <property name="label" translatable="yes">Show "Delete" option in file context menu</property>
-                            <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                            <property name="receives-default">False</property>
-                            <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                            <property name="use-underline">True</property>
-                            <property name="active">True</property>
-                            <property name="draw-indicator">True</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">2</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkFrame">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="label-xalign">0</property>
-                            <property name="shadow-type">none</property>
-                            <child>
-                              <object class="GtkScrolledWindow" id="scrolledwindow2">
-                                <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                                <property name="margin-start">6</property>
-                                <property name="margin-top">6</property>
-                                <property name="shadow-type">etched-in</property>
-                                <child>
-                                  <object class="GtkTreeView" id="treeview_default_icons">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">True</property>
-                                    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                                    <property name="headers-visible">False</property>
-                                    <child internal-child="selection">
-                                      <object class="GtkTreeSelection"/>
-                                    </child>
-                                  </object>
-                                </child>
-                              </object>
-                            </child>
-                            <child type="label">
-                              <object class="GtkLabel">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">&lt;b&gt;Default Icons&lt;/b&gt;</property>
-                                <property name="use-markup">True</property>
-                              </object>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="expand">True</property>
-                            <property name="fill">True</property>
-                            <property name="position">3</property>
-                          </packing>
-                        </child>
-                      </object>
-                    </child>
-                    <child type="label">
-                      <object class="GtkLabel" id="label16">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                        <property name="label" translatable="yes">&lt;b&gt;File/Launcher Icons&lt;/b&gt;</property>
-                        <property name="use-markup">True</property>
-                      </object>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="expand">True</property>
-                    <property name="fill">True</property>
-                    <property name="position">2</property>
-                  </packing>
-                </child>
               </object>
               <packing>
                 <property name="position">2</property>
@@ -1119,11 +994,204 @@
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                <property name="label" translatable="yes">_Icons</property>
+                <property name="label" translatable="yes">Desktop _Icons</property>
                 <property name="use-underline">True</property>
               </object>
               <packing>
                 <property name="position">2</property>
+                <property name="tab-fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkBox" id="tab_file_launcher_icons">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="margin-top">6</property>
+                <property name="orientation">vertical</property>
+                <property name="spacing">12</property>
+                <child>
+                  <object class="GtkInfoBar" id="infobar_file_launcher_icons_disabled">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <child internal-child="action_area">
+                      <object class="GtkButtonBox">
+                        <property name="can-focus">False</property>
+                        <property name="spacing">6</property>
+                        <property name="layout-style">end</property>
+                        <child>
+                          <placeholder/>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">False</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child internal-child="content_area">
+                      <object class="GtkBox">
+                        <property name="can-focus">False</property>
+                        <property name="spacing">16</property>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="icon-name">info</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="label" translatable="yes">File/Launcher icons are not enabled. You can enable them from the "Desktop Icons" tab.</property>
+                            <property name="wrap">True</property>
+                            <property name="wrap-mode">word-char</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">False</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkBox" id="tab_file_launcher_icons_content">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="margin-start">6</property>
+                    <property name="margin-end">6</property>
+                    <property name="margin-bottom">6</property>
+                    <property name="orientation">vertical</property>
+                    <property name="spacing">6</property>
+                    <child>
+                      <object class="GtkCheckButton" id="chk_show_hidden_files">
+                        <property name="label" translatable="yes">Show hidden files on the desktop</property>
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="receives-default">False</property>
+                        <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                        <property name="use-underline">True</property>
+                        <property name="draw-indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="chk_show_thumbnails">
+                        <property name="label" translatable="yes">Show t_humbnails</property>
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="receives-default">False</property>
+                        <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                        <property name="tooltip-text" translatable="yes">Select this option to display preview-able files on the desktop as automatically generated thumbnail icons.</property>
+                        <property name="use-underline">True</property>
+                        <property name="draw-indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="chk_show_delete_option">
+                        <property name="label" translatable="yes">Show "Delete" option in file context menu</property>
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="receives-default">False</property>
+                        <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                        <property name="use-underline">True</property>
+                        <property name="active">True</property>
+                        <property name="draw-indicator">True</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkFrame">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label-xalign">0</property>
+                        <property name="shadow-type">none</property>
+                        <child>
+                          <object class="GtkScrolledWindow" id="scrolledwindow2">
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                            <property name="margin-start">6</property>
+                            <property name="margin-top">6</property>
+                            <property name="shadow-type">etched-in</property>
+                            <child>
+                              <object class="GtkTreeView" id="treeview_default_icons">
+                                <property name="visible">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                                <property name="headers-visible">False</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child type="label">
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="label" translatable="yes">&lt;b&gt;Default Icons&lt;/b&gt;</property>
+                            <property name="use-markup">True</property>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">3</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">4</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="position">3</property>
+              </packing>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                <property name="label" translatable="yes">_File/Launcher Icons</property>
+                <property name="use-underline">True</property>
+              </object>
+              <packing>
+                <property name="position">3</property>
                 <property name="tab-fill">False</property>
               </packing>
             </child>
