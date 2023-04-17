@@ -22,7 +22,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2023-04-16 00:50+0200\n"
+"POT-Creation-Date: 2023-04-17 00:50+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Marek Adamski, 2021-2023\n"
 "Language-Team: Polish (http://app.transifex.com/xfce/xfdesktop/language/pl/)\n"
@@ -63,7 +63,7 @@ msgid "Other Devices"
 msgstr "Inne urządzenia"
 
 #. Display the file name, file type, and file size in the tooltip.
-#: settings/main.c:537
+#: settings/main.c:539
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -71,79 +71,79 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nTyp: %s\nRozmiar: %s"
 
-#: settings/main.c:773
+#: settings/main.c:775
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "Tło pulpitu na ekranie %d (%s)"
 
-#: settings/main.c:776
+#: settings/main.c:778
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "Tło pulpitu na ekranie %d"
 
-#: settings/main.c:782
+#: settings/main.c:784
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "Proszę przemieścić to okno na ekran, którego ustawienia mają zostać zmodyfikowane."
 
-#: settings/main.c:789
+#: settings/main.c:791
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "Tło pulpitu dla %s na ekranie %d (%s)"
 
-#: settings/main.c:793
+#: settings/main.c:795
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "Tło pulpitu dla %s na ekranie %d"
 
-#: settings/main.c:800
+#: settings/main.c:802
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr "Proszę przemieścić to okno na ekran i obszar roboczy, których ustawienia mają zostać zmodyfikowane."
 
 #. Single monitor and single workspace
-#: settings/main.c:808
+#: settings/main.c:810
 msgid "Wallpaper for my desktop"
 msgstr "Tło pulpitu"
 
 #. Single monitor and per workspace wallpaper
-#: settings/main.c:814
+#: settings/main.c:816
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "Tło pulpitu dla %s"
 
-#: settings/main.c:819
+#: settings/main.c:821
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "Proszę umieścić to okno dialogowe na obszarze roboczym, który ma zostać skonfigurowany."
 
-#: settings/main.c:1274
+#: settings/main.c:1276
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "Wybór obrazów jest niedostępny dopóki styl obrazów jest ustawiony na Brak."
 
-#: settings/main.c:1633
+#: settings/main.c:1635
 msgid "Spanning screens"
 msgstr "Zakres monitorów"
 
 #. TRANSLATORS: Please split the message in half with '\n' so the dialog will
 #. not be too wide.
-#: settings/main.c:1924
+#: settings/main.c:1929
 msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
 msgstr "Rozmieścić wszystkie istniejące ikony\nzgodnie z wybraną orientacją?"
 
-#: settings/main.c:1930
+#: settings/main.c:1935
 msgid "Arrange icons"
 msgstr "Rozmieść ikony"
 
 #. printf is to be translator-friendly
-#: settings/main.c:1938 src/xfdesktop-file-icon-manager.c:1159
+#: settings/main.c:1943 src/xfdesktop-file-icon-manager.c:1159
 #: src/xfdesktop-file-icon-manager.c:1759
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Nie można uruchomić „%s”:"
 
-#: settings/main.c:1939 src/xfdesktop-file-icon-manager.c:1161
+#: settings/main.c:1944 src/xfdesktop-file-icon-manager.c:1161
 #: src/xfdesktop-file-icon-manager.c:1512
 #: src/xfdesktop-file-icon-manager.c:1760 src/xfdesktop-file-utils.c:555
 #: src/xfdesktop-file-utils.c:1222 src/xfdesktop-file-utils.c:1247
@@ -151,7 +151,7 @@ msgstr "Nie można uruchomić „%s”:"
 msgid "Launch Error"
 msgstr "Błąd uruchamiania"
 
-#: settings/main.c:1941 settings/xfdesktop-settings-ui.glade:198
+#: settings/main.c:1946 settings/xfdesktop-settings-ui.glade:198
 #: src/xfdesktop-file-icon-manager.c:913 src/xfdesktop-file-icon-manager.c:932
 #: src/xfdesktop-file-icon-manager.c:1031
 #: src/xfdesktop-file-icon-manager.c:1163
@@ -170,54 +170,54 @@ msgstr "Błąd uruchamiania"
 msgid "_Close"
 msgstr "Za_mknij"
 
-#: settings/main.c:2109
+#: settings/main.c:2114
 msgid "Image files"
 msgstr "Pliki obrazów"
 
 #. Change the title of the file chooser dialog
-#: settings/main.c:2117
+#: settings/main.c:2122
 msgid "Select a Directory"
 msgstr "Wybór katalogu"
 
-#: settings/main.c:2332
+#: settings/main.c:2337
 msgid "Settings manager socket"
 msgstr "Określa gniazdo menedżera ustawień"
 
-#: settings/main.c:2332
+#: settings/main.c:2337
 msgid "SOCKET ID"
 msgstr "ID_GNIAZDA"
 
-#: settings/main.c:2333
+#: settings/main.c:2338
 msgid "Version information"
 msgstr "Informacje o wersji"
 
-#: settings/main.c:2334 src/xfdesktop-application.c:890
+#: settings/main.c:2339 src/xfdesktop-application.c:890
 msgid "Enable debug messages"
 msgstr "Włącza komunikaty diagnozowania błędów"
 
-#: settings/main.c:2358
+#: settings/main.c:2363
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Proszę wprowadzić „%s --help”, aby wypisać komunikat pomocy."
 
-#: settings/main.c:2370
+#: settings/main.c:2375
 msgid "The Xfce development team. All rights reserved."
 msgstr "Zespół twórców środowiska graficznego Xfce. Wszystkie prawa zastrzeżone."
 
-#: settings/main.c:2371
+#: settings/main.c:2376
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Proszę zgłaszać błędy na adres <%s>."
 
-#: settings/main.c:2378
+#: settings/main.c:2383
 msgid "Desktop Settings"
 msgstr "Pulpit"
 
-#: settings/main.c:2380
+#: settings/main.c:2385
 msgid "Unable to contact settings server"
 msgstr "Nie można połączyć z serwerem ustawień"
 
-#: settings/main.c:2382
+#: settings/main.c:2387
 msgid "Quit"
 msgstr "Zakończ"
 
@@ -578,35 +578,41 @@ msgstr "_Podkreślanie tekstu po najechaniu myszką"
 msgid "<b>Appearance</b>"
 msgstr "<b>Wygląd</b>"
 
-#: settings/xfdesktop-settings-ui.glade:1004
+#: settings/xfdesktop-settings-ui.glade:997
+msgid "Desktop _Icons"
+msgstr "_Ikony pulpitu"
+
+#: settings/xfdesktop-settings-ui.glade:1051
+msgid ""
+"File/Launcher icons are not enabled. You can enable them from the \"Desktop "
+"Icons\" tab."
+msgstr "Ikony plików i aktywatorów nie są włączone. Możesz je włączyć na karcie „Ikony pulpitu”."
+
+#: settings/xfdesktop-settings-ui.glade:1086
 msgid "Show hidden files on the desktop"
 msgstr "Ukryte pliki na pulpicie"
 
-#: settings/xfdesktop-settings-ui.glade:1020
+#: settings/xfdesktop-settings-ui.glade:1102
 msgid "Show t_humbnails"
 msgstr "Wyświetlanie m_iniatur"
 
-#: settings/xfdesktop-settings-ui.glade:1025
+#: settings/xfdesktop-settings-ui.glade:1107
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
 msgstr "Wyświetla na pulpicie pliki jako miniatury"
 
-#: settings/xfdesktop-settings-ui.glade:1037
+#: settings/xfdesktop-settings-ui.glade:1119
 msgid "Show \"Delete\" option in file context menu"
 msgstr "Wyświetlanie opcji „Usuń” w menu kontekstowym pliku"
 
-#: settings/xfdesktop-settings-ui.glade:1083
+#: settings/xfdesktop-settings-ui.glade:1162
 msgid "<b>Default Icons</b>"
 msgstr "<b>Domyślne</b>"
 
-#: settings/xfdesktop-settings-ui.glade:1101
-msgid "<b>File/Launcher Icons</b>"
-msgstr "<b>Pliki i aktywatory</b>"
-
-#: settings/xfdesktop-settings-ui.glade:1122
-msgid "_Icons"
-msgstr "_Ikony"
+#: settings/xfdesktop-settings-ui.glade:1190
+msgid "_File/Launcher Icons"
+msgstr "Ikony _plików i aktywatorów"
 
 #: src/menu.c:86
 msgid "_Applications"
