@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2023-04-16 00:50+0200\n"
+"POT-Creation-Date: 2023-04-17 00:50+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>, 2019-2023\n"
 "Language-Team: Portuguese (http://app.transifex.com/xfce/xfdesktop/language/pt/)\n"
@@ -54,7 +54,7 @@ msgid "Other Devices"
 msgstr "Outros dispositivos"
 
 #. Display the file name, file type, and file size in the tooltip.
-#: settings/main.c:537
+#: settings/main.c:539
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -62,79 +62,79 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nTipo: %s\nTamanho: %s"
 
-#: settings/main.c:773
+#: settings/main.c:775
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "Papel de parede do ecrã %d (%s)"
 
-#: settings/main.c:776
+#: settings/main.c:778
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "Papel de parede do ecrã %d"
 
-#: settings/main.c:782
+#: settings/main.c:784
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "Mova este diálogo para o ecrã no qual pretende editar as definições."
 
-#: settings/main.c:789
+#: settings/main.c:791
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "Papel de parede para %s no monitor %d (%s)"
 
-#: settings/main.c:793
+#: settings/main.c:795
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "Papel de parede para %s no monitor %d"
 
-#: settings/main.c:800
+#: settings/main.c:802
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr "Mova este diálogo para o ecrã e área de trabalho na qual pretende editar as definições."
 
 #. Single monitor and single workspace
-#: settings/main.c:808
+#: settings/main.c:810
 msgid "Wallpaper for my desktop"
 msgstr "Papel de parede do ambiente de trabalho"
 
 #. Single monitor and per workspace wallpaper
-#: settings/main.c:814
+#: settings/main.c:816
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "Papel de parede para %s"
 
-#: settings/main.c:819
+#: settings/main.c:821
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "Mova este diálogo para o ecrã e área de trabalho na qual pretende editar as definições."
 
-#: settings/main.c:1274
+#: settings/main.c:1276
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "A seleção de imagens não está disponível se o estilo de imagem for Nenhum."
 
-#: settings/main.c:1633
+#: settings/main.c:1635
 msgid "Spanning screens"
 msgstr "Expandir ecrãs"
 
 #. TRANSLATORS: Please split the message in half with '\n' so the dialog will
 #. not be too wide.
-#: settings/main.c:1924
+#: settings/main.c:1929
 msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
 msgstr "Deseja colocar todos os ícones\nde acordo com a orientação selecionada?"
 
-#: settings/main.c:1930
+#: settings/main.c:1935
 msgid "Arrange icons"
 msgstr "Ordenar ícones"
 
 #. printf is to be translator-friendly
-#: settings/main.c:1938 src/xfdesktop-file-icon-manager.c:1159
+#: settings/main.c:1943 src/xfdesktop-file-icon-manager.c:1159
 #: src/xfdesktop-file-icon-manager.c:1759
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Incapaz de iniciar \"%s\":"
 
-#: settings/main.c:1939 src/xfdesktop-file-icon-manager.c:1161
+#: settings/main.c:1944 src/xfdesktop-file-icon-manager.c:1161
 #: src/xfdesktop-file-icon-manager.c:1512
 #: src/xfdesktop-file-icon-manager.c:1760 src/xfdesktop-file-utils.c:555
 #: src/xfdesktop-file-utils.c:1222 src/xfdesktop-file-utils.c:1247
@@ -142,7 +142,7 @@ msgstr "Incapaz de iniciar \"%s\":"
 msgid "Launch Error"
 msgstr "Erro do lançador"
 
-#: settings/main.c:1941 settings/xfdesktop-settings-ui.glade:198
+#: settings/main.c:1946 settings/xfdesktop-settings-ui.glade:198
 #: src/xfdesktop-file-icon-manager.c:913 src/xfdesktop-file-icon-manager.c:932
 #: src/xfdesktop-file-icon-manager.c:1031
 #: src/xfdesktop-file-icon-manager.c:1163
@@ -161,54 +161,54 @@ msgstr "Erro do lançador"
 msgid "_Close"
 msgstr "Fe_char"
 
-#: settings/main.c:2109
+#: settings/main.c:2114
 msgid "Image files"
 msgstr "Ficheiros de imagem"
 
 #. Change the title of the file chooser dialog
-#: settings/main.c:2117
+#: settings/main.c:2122
 msgid "Select a Directory"
 msgstr "Selecione um diretório"
 
-#: settings/main.c:2332
+#: settings/main.c:2337
 msgid "Settings manager socket"
 msgstr "Gestor de definições"
 
-#: settings/main.c:2332
+#: settings/main.c:2337
 msgid "SOCKET ID"
 msgstr "ID do SOCKET"
 
-#: settings/main.c:2333
+#: settings/main.c:2338
 msgid "Version information"
 msgstr "Informações de versão"
 
-#: settings/main.c:2334 src/xfdesktop-application.c:890
+#: settings/main.c:2339 src/xfdesktop-application.c:890
 msgid "Enable debug messages"
 msgstr "Ligar mensagens de debug"
 
-#: settings/main.c:2358
+#: settings/main.c:2363
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Digite '%s --help' para utilização."
 
-#: settings/main.c:2370
+#: settings/main.c:2375
 msgid "The Xfce development team. All rights reserved."
 msgstr "A equipa de desenvolvimento do Xfce. Todos os direitos reservados."
 
-#: settings/main.c:2371
+#: settings/main.c:2376
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Por favor reporte os erros em <%s>."
 
-#: settings/main.c:2378
+#: settings/main.c:2383
 msgid "Desktop Settings"
 msgstr "Definições do ambiente de trabalho"
 
-#: settings/main.c:2380
+#: settings/main.c:2385
 msgid "Unable to contact settings server"
 msgstr "Incapaz de contactar o servidor de definições"
 
-#: settings/main.c:2382
+#: settings/main.c:2387
 msgid "Quit"
 msgstr "Sair"
 
@@ -569,35 +569,41 @@ msgstr "_Sublinhar texto ao pairar"
 msgid "<b>Appearance</b>"
 msgstr "<b>Aparência</b>"
 
-#: settings/xfdesktop-settings-ui.glade:1004
+#: settings/xfdesktop-settings-ui.glade:997
+msgid "Desktop _Icons"
+msgstr ""
+
+#: settings/xfdesktop-settings-ui.glade:1051
+msgid ""
+"File/Launcher icons are not enabled. You can enable them from the \"Desktop "
+"Icons\" tab."
+msgstr ""
+
+#: settings/xfdesktop-settings-ui.glade:1086
 msgid "Show hidden files on the desktop"
 msgstr "Mostrar ficheiros ocultos no ambiente de trabalho"
 
-#: settings/xfdesktop-settings-ui.glade:1020
+#: settings/xfdesktop-settings-ui.glade:1102
 msgid "Show t_humbnails"
 msgstr "Mostrar mi_niaturas"
 
-#: settings/xfdesktop-settings-ui.glade:1025
+#: settings/xfdesktop-settings-ui.glade:1107
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
 msgstr "Selecione esta opção para pré-visualizar automaticamente os ficheiros no ambiente de trabalho como miniatura."
 
-#: settings/xfdesktop-settings-ui.glade:1037
+#: settings/xfdesktop-settings-ui.glade:1119
 msgid "Show \"Delete\" option in file context menu"
 msgstr "Mostrar a opção \"Eliminar\" no menu de contexto do ficheiro"
 
-#: settings/xfdesktop-settings-ui.glade:1083
+#: settings/xfdesktop-settings-ui.glade:1162
 msgid "<b>Default Icons</b>"
 msgstr "<b>Ícones predefinidos</b>"
 
-#: settings/xfdesktop-settings-ui.glade:1101
-msgid "<b>File/Launcher Icons</b>"
-msgstr "<b>Ícones de ficheiro/lançador</b>"
-
-#: settings/xfdesktop-settings-ui.glade:1122
-msgid "_Icons"
-msgstr "Í_cones"
+#: settings/xfdesktop-settings-ui.glade:1190
+msgid "_File/Launcher Icons"
+msgstr ""
 
 #: src/menu.c:86
 msgid "_Applications"
