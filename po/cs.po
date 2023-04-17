@@ -14,10 +14,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2023-02-22 14:45+0100\n"
+"POT-Creation-Date: 2023-04-17 00:50+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>, 2014-2021\n"
-"Language-Team: Czech (http://www.transifex.com/xfce/xfdesktop/language/cs/)\n"
+"Language-Team: Czech (http://app.transifex.com/xfce/xfdesktop/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -55,7 +55,7 @@ msgid "Other Devices"
 msgstr "Ostatní zařízení"
 
 #. Display the file name, file type, and file size in the tooltip.
-#: settings/main.c:537
+#: settings/main.c:539
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -63,79 +63,79 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nTyp: %s\nVelikost: %s"
 
-#: settings/main.c:773
+#: settings/main.c:775
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "Tapeta pro monitor %d (%s)"
 
-#: settings/main.c:776
+#: settings/main.c:778
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "Tapeta pro monitor %d"
 
-#: settings/main.c:782
+#: settings/main.c:784
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "Přesuňte toto dialogové okno na displej, jehož nastavení chcete měnit."
 
-#: settings/main.c:789
+#: settings/main.c:791
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "Tapeta pro %s na monitoru %d (%s)"
 
-#: settings/main.c:793
+#: settings/main.c:795
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "Tapeta pro %s na monitoru %d"
 
-#: settings/main.c:800
+#: settings/main.c:802
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr "Přesuňte toto dialogové okno na displej a pracovní plochu, jehož nastavení chcete měnit."
 
 #. Single monitor and single workspace
-#: settings/main.c:808
+#: settings/main.c:810
 msgid "Wallpaper for my desktop"
 msgstr "Tapeta pro můj desktop"
 
 #. Single monitor and per workspace wallpaper
-#: settings/main.c:814
+#: settings/main.c:816
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "Tapeta pro %s"
 
-#: settings/main.c:819
+#: settings/main.c:821
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "Přesuňte toto dialogové okno na pracovní plochu, jejíž nastavení chcete měnit."
 
-#: settings/main.c:1274
+#: settings/main.c:1276
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "Výběr obrazu není k dispozici, pokud je styl obrazu nastaven na hodnotu Žádný."
 
-#: settings/main.c:1633
+#: settings/main.c:1635
 msgid "Spanning screens"
 msgstr "Rozložení přes obrazovky"
 
 #. TRANSLATORS: Please split the message in half with '\n' so the dialog will
 #. not be too wide.
-#: settings/main.c:1924
+#: settings/main.c:1929
 msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
 msgstr "Chcete uspořádat všechny existující\nikony podle vybraného směru?"
 
-#: settings/main.c:1930
+#: settings/main.c:1935
 msgid "Arrange icons"
 msgstr "Uspořádat ikony"
 
 #. printf is to be translator-friendly
-#: settings/main.c:1938 src/xfdesktop-file-icon-manager.c:1159
+#: settings/main.c:1943 src/xfdesktop-file-icon-manager.c:1159
 #: src/xfdesktop-file-icon-manager.c:1759
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Nelze spustit „%s“:"
 
-#: settings/main.c:1939 src/xfdesktop-file-icon-manager.c:1161
+#: settings/main.c:1944 src/xfdesktop-file-icon-manager.c:1161
 #: src/xfdesktop-file-icon-manager.c:1512
 #: src/xfdesktop-file-icon-manager.c:1760 src/xfdesktop-file-utils.c:555
 #: src/xfdesktop-file-utils.c:1222 src/xfdesktop-file-utils.c:1247
@@ -143,7 +143,7 @@ msgstr "Nelze spustit „%s“:"
 msgid "Launch Error"
 msgstr "Chyba při spuštění"
 
-#: settings/main.c:1941 settings/xfdesktop-settings-ui.glade:198
+#: settings/main.c:1946 settings/xfdesktop-settings-ui.glade:198
 #: src/xfdesktop-file-icon-manager.c:913 src/xfdesktop-file-icon-manager.c:932
 #: src/xfdesktop-file-icon-manager.c:1031
 #: src/xfdesktop-file-icon-manager.c:1163
@@ -162,54 +162,54 @@ msgstr "Chyba při spuštění"
 msgid "_Close"
 msgstr "Za_vřit"
 
-#: settings/main.c:2103
+#: settings/main.c:2114
 msgid "Image files"
 msgstr "Soubory s obrázky"
 
 #. Change the title of the file chooser dialog
-#: settings/main.c:2111
+#: settings/main.c:2122
 msgid "Select a Directory"
 msgstr "Vyberte adresář"
 
-#: settings/main.c:2323
+#: settings/main.c:2337
 msgid "Settings manager socket"
 msgstr "Soket správce nastavení"
 
-#: settings/main.c:2323
+#: settings/main.c:2337
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: settings/main.c:2324
+#: settings/main.c:2338
 msgid "Version information"
 msgstr "Informace o verzi"
 
-#: settings/main.c:2325 src/xfdesktop-application.c:890
+#: settings/main.c:2339 src/xfdesktop-application.c:890
 msgid "Enable debug messages"
 msgstr "Povolit ladění"
 
-#: settings/main.c:2349
+#: settings/main.c:2363
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Informace o použití získáte příkazem '%s --help'."
 
-#: settings/main.c:2361
+#: settings/main.c:2375
 msgid "The Xfce development team. All rights reserved."
 msgstr "Tým vývojářů Xfce. Všechna práva vyhrazena."
 
-#: settings/main.c:2362
+#: settings/main.c:2376
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Prosíme, nahlaste chyby na adresu <%s>."
 
-#: settings/main.c:2369
+#: settings/main.c:2383
 msgid "Desktop Settings"
 msgstr "Nastavení plochy"
 
-#: settings/main.c:2371
+#: settings/main.c:2385
 msgid "Unable to contact settings server"
 msgstr "Spojení se serverem nastavení nelze navázat"
 
-#: settings/main.c:2373
+#: settings/main.c:2387
 msgid "Quit"
 msgstr "Ukončit"
 
@@ -562,39 +562,49 @@ msgstr "64"
 msgid "Single _click to activate items"
 msgstr "_Aktivace položek jedním kliknutím"
 
-#: settings/xfdesktop-settings-ui.glade:955
+#: settings/xfdesktop-settings-ui.glade:926
+msgid "_Underline text on hover"
+msgstr ""
+
+#: settings/xfdesktop-settings-ui.glade:976
 msgid "<b>Appearance</b>"
 msgstr "<b>Vzhled</b>"
 
-#: settings/xfdesktop-settings-ui.glade:983
+#: settings/xfdesktop-settings-ui.glade:997
+msgid "Desktop _Icons"
+msgstr ""
+
+#: settings/xfdesktop-settings-ui.glade:1051
+msgid ""
+"File/Launcher icons are not enabled. You can enable them from the \"Desktop "
+"Icons\" tab."
+msgstr ""
+
+#: settings/xfdesktop-settings-ui.glade:1086
 msgid "Show hidden files on the desktop"
 msgstr "Zobrazit skryté soubory na ploše"
 
-#: settings/xfdesktop-settings-ui.glade:999
+#: settings/xfdesktop-settings-ui.glade:1102
 msgid "Show t_humbnails"
 msgstr "Zobrazit _náhledy"
 
-#: settings/xfdesktop-settings-ui.glade:1004
+#: settings/xfdesktop-settings-ui.glade:1107
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
 msgstr "Tuto možnost vyberte pro automatické vygenerování ikon s náhledy pro soubory, které to umožňují."
 
-#: settings/xfdesktop-settings-ui.glade:1016
+#: settings/xfdesktop-settings-ui.glade:1119
 msgid "Show \"Delete\" option in file context menu"
 msgstr ""
 
-#: settings/xfdesktop-settings-ui.glade:1062
+#: settings/xfdesktop-settings-ui.glade:1162
 msgid "<b>Default Icons</b>"
 msgstr "<b>Výchozí ikony</b>"
 
-#: settings/xfdesktop-settings-ui.glade:1080
-msgid "<b>File/Launcher Icons</b>"
+#: settings/xfdesktop-settings-ui.glade:1190
+msgid "_File/Launcher Icons"
 msgstr ""
-
-#: settings/xfdesktop-settings-ui.glade:1101
-msgid "_Icons"
-msgstr "_Ikony"
 
 #: src/menu.c:86
 msgid "_Applications"
