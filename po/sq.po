@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2023-04-17 00:50+0200\n"
+"POT-Creation-Date: 2023-04-18 00:50+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>, 2007,2020-2023\n"
 "Language-Team: Albanian (http://app.transifex.com/xfce/xfdesktop/language/sq/)\n"
@@ -561,7 +561,7 @@ msgstr "Klikim _njësh për aktivizim elementësh"
 
 #: settings/xfdesktop-settings-ui.glade:926
 msgid "_Underline text on hover"
-msgstr ""
+msgstr "_Nënvijëzoje tekstin, kur i kalohet kursori përsipër"
 
 #: settings/xfdesktop-settings-ui.glade:976
 msgid "<b>Appearance</b>"
@@ -569,39 +569,43 @@ msgstr "<b>Dukje</b>"
 
 #: settings/xfdesktop-settings-ui.glade:997
 msgid "Desktop _Icons"
-msgstr ""
+msgstr "_Ikona Dekstopi"
 
 #: settings/xfdesktop-settings-ui.glade:1051
 msgid ""
 "File/Launcher icons are not enabled. You can enable them from the \"Desktop "
 "Icons\" tab."
-msgstr ""
+msgstr "S’janë aktivizuar ikona Kartelash/Nisësish. Mund t’i aktivizoni që nga skeda “Ikona Desktopi”."
 
-#: settings/xfdesktop-settings-ui.glade:1086
+#: settings/xfdesktop-settings-ui.glade:1097
 msgid "Show hidden files on the desktop"
 msgstr "Shfaq te desktopi kartela të fshehura"
 
-#: settings/xfdesktop-settings-ui.glade:1102
+#: settings/xfdesktop-settings-ui.glade:1113
 msgid "Show t_humbnails"
 msgstr "Shfaq _miniatura"
 
-#: settings/xfdesktop-settings-ui.glade:1107
+#: settings/xfdesktop-settings-ui.glade:1118
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
 msgstr "Përzgjidheni këtë mundësi për të shfaqur në desktop si ikona miniaturash, të prodhuara automatikisht, kartela të cilave mund t’u bëhet paraparje."
 
-#: settings/xfdesktop-settings-ui.glade:1119
+#: settings/xfdesktop-settings-ui.glade:1130
 msgid "Show \"Delete\" option in file context menu"
 msgstr "Shfaq mundësinë “Fshije” te menuja e kontekstit për kartelën"
 
-#: settings/xfdesktop-settings-ui.glade:1162
-msgid "<b>Default Icons</b>"
-msgstr "<b>Ikona Parazgjedhje</b>"
+#: settings/xfdesktop-settings-ui.glade:1151
+msgid "General"
+msgstr "Të përgjithshme"
 
-#: settings/xfdesktop-settings-ui.glade:1190
+#: settings/xfdesktop-settings-ui.glade:1195
+msgid "Default Icons"
+msgstr "Ikona Parazgjedhje"
+
+#: settings/xfdesktop-settings-ui.glade:1225
 msgid "_File/Launcher Icons"
-msgstr ""
+msgstr "Ikona _Kartelash/Nisësish"
 
 #: src/menu.c:86
 msgid "_Applications"
