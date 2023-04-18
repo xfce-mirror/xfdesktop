@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2023-04-17 00:50+0200\n"
+"POT-Creation-Date: 2023-04-18 00:50+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: 玉堂白鹤 <yjwork@qq.com>, 2013,2015-2023\n"
 "Language-Team: Chinese (China) (http://app.transifex.com/xfce/xfdesktop/language/zh_CN/)\n"
@@ -570,7 +570,7 @@ msgstr "单击激活项目(_C)"
 
 #: settings/xfdesktop-settings-ui.glade:926
 msgid "_Underline text on hover"
-msgstr ""
+msgstr "悬停时给文本添加下划线(_U)"
 
 #: settings/xfdesktop-settings-ui.glade:976
 msgid "<b>Appearance</b>"
@@ -578,39 +578,43 @@ msgstr "<b>外观</b>"
 
 #: settings/xfdesktop-settings-ui.glade:997
 msgid "Desktop _Icons"
-msgstr ""
+msgstr "桌面图标(_I)"
 
 #: settings/xfdesktop-settings-ui.glade:1051
 msgid ""
 "File/Launcher icons are not enabled. You can enable them from the \"Desktop "
 "Icons\" tab."
-msgstr ""
+msgstr "文件/启动器图标未启用。您可以从“桌面图标”选项卡启用它们。"
 
-#: settings/xfdesktop-settings-ui.glade:1086
+#: settings/xfdesktop-settings-ui.glade:1097
 msgid "Show hidden files on the desktop"
 msgstr "显示桌面上的隐藏文件。"
 
-#: settings/xfdesktop-settings-ui.glade:1102
+#: settings/xfdesktop-settings-ui.glade:1113
 msgid "Show t_humbnails"
 msgstr "显示缩略图(_H)"
 
-#: settings/xfdesktop-settings-ui.glade:1107
+#: settings/xfdesktop-settings-ui.glade:1118
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
 msgstr "选中此项在桌面上以自动生成的缩略图图标显示可预览的文件。"
 
-#: settings/xfdesktop-settings-ui.glade:1119
+#: settings/xfdesktop-settings-ui.glade:1130
 msgid "Show \"Delete\" option in file context menu"
 msgstr "在文件交互菜单中显示“删除”选项 "
 
-#: settings/xfdesktop-settings-ui.glade:1162
-msgid "<b>Default Icons</b>"
-msgstr "<b>默认图标</b>"
+#: settings/xfdesktop-settings-ui.glade:1151
+msgid "General"
+msgstr "常规"
 
-#: settings/xfdesktop-settings-ui.glade:1190
+#: settings/xfdesktop-settings-ui.glade:1195
+msgid "Default Icons"
+msgstr "默认图标"
+
+#: settings/xfdesktop-settings-ui.glade:1225
 msgid "_File/Launcher Icons"
-msgstr ""
+msgstr "文件/启动器图标(_F)"
 
 #: src/menu.c:86
 msgid "_Applications"
