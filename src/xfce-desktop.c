@@ -1293,15 +1293,15 @@ xfce_desktop_button_release_event(GtkWidget *w,
 static gboolean
 xfce_desktop_popup_menu(GtkWidget *w)
 {
-    GdkEventButton *evt;
+    GdkEvent *evt;
     guint button, etime;
 
     DBG("entering");
 
-    evt = (GdkEventButton *)gtk_get_current_event();
-    if(evt && GDK_BUTTON_PRESS == evt->type) {
-        button = evt->button;
-        etime = evt->time;
+    evt = gtk_get_current_event();
+    if(evt != NULL && (GDK_BUTTON_PRESS == evt->type || GDK_BUTTON_RELEASE == evt->type)) {
+        button = evt->button.button;
+        etime = evt->button.time;
     } else {
         button = 0;
         etime = gtk_get_current_event_time();
