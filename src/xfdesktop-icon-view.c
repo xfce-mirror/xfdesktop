@@ -1651,9 +1651,7 @@ xfdesktop_icon_view_button_release(GtkWidget *widget,
 
         /* If we clicked an icon then we didn't pop up the menu during the
          * button press in order to support right click DND, pop up the menu
-         * now.
-         * We pass 0 as the button because the docs say that you must use 0
-         * for pop ups other than button press events. */
+         * now. */
         if(icon_l && icon_l->data) {
             gboolean dummy;
             g_signal_emit_by_name(widget, "popup-menu", &dummy);
