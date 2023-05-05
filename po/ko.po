@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2023-04-18 00:50+0200\n"
+"POT-Creation-Date: 2023-05-05 10:59+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>, 2013-2016,2018-2023\n"
 "Language-Team: Korean (http://app.transifex.com/xfce/xfdesktop/language/ko/)\n"
@@ -184,7 +184,7 @@ msgstr "소켓 ID"
 msgid "Version information"
 msgstr "버전 정보"
 
-#: settings/main.c:2339 src/xfdesktop-application.c:890
+#: settings/main.c:2339 src/xfdesktop-application.c:894
 msgid "Enable debug messages"
 msgstr "디버깅 메시지 활성화"
 
@@ -222,10 +222,6 @@ msgstr "데스크톱"
 #: settings/xfce-backdrop-settings.desktop.in:5
 msgid "Set desktop background and menu and icon behavior"
 msgstr "데스크톱 배경, 메뉴, 아이콘 동작을 설정합니다"
-
-#: settings/xfce-backdrop-settings.desktop.in:7
-msgid "org.xfce.xfdesktop"
-msgstr "org.xfce.xfdesktop"
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:19
 msgid "Solid color"
@@ -683,82 +679,82 @@ msgstr "%d번 작업 공간 제거(_R)"
 msgid "_Remove Workspace '%s'"
 msgstr "'%s' 작업 공간 제거(_R)"
 
-#: src/xfdesktop-application.c:882
+#: src/xfdesktop-application.c:886
 msgid "Display version information"
 msgstr "버전 정보를 표시합니다"
 
-#: src/xfdesktop-application.c:883
+#: src/xfdesktop-application.c:887
 msgid "Reload all settings"
 msgstr "모든 설정을 다시 읽어들입니다"
 
-#: src/xfdesktop-application.c:884
+#: src/xfdesktop-application.c:888
 msgid "Advance to the next wallpaper on the current workspace"
 msgstr "현재 작업 공간에 다음 배경 표시 진행"
 
-#: src/xfdesktop-application.c:885
+#: src/xfdesktop-application.c:889
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "(현재 마우스 커서 위치에)단축 메뉴를 나타냅니다"
 
-#: src/xfdesktop-application.c:886
+#: src/xfdesktop-application.c:890
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "(현재 마우스 커서 위치에)창 목록을 나타냅니다"
 
-#: src/xfdesktop-application.c:888
+#: src/xfdesktop-application.c:892
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "모든 데스크톱의 아이콘을 자동 정렬합니다"
 
-#: src/xfdesktop-application.c:891
+#: src/xfdesktop-application.c:895
 msgid "Disable debug messages"
 msgstr "디버깅 메시지 비활성화"
 
-#: src/xfdesktop-application.c:892
+#: src/xfdesktop-application.c:896
 msgid "Do not wait for a window manager on startup"
 msgstr "시동시 창 관리자를 기다리지 않습니다"
 
-#: src/xfdesktop-application.c:893
+#: src/xfdesktop-application.c:897
 msgid "Cause xfdesktop to quit"
 msgstr "xfdesktop을 끝냅니다"
 
-#: src/xfdesktop-application.c:908
+#: src/xfdesktop-application.c:912
 #, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "인자 해석에 실패했습니다: %s\n"
 
-#: src/xfdesktop-application.c:919
+#: src/xfdesktop-application.c:923
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "%s 버전 %s 입니다. xfce %s에서 실행 중입니다.\n"
 
-#: src/xfdesktop-application.c:921
+#: src/xfdesktop-application.c:925
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "GTK+ %d.%d.%d에서 빌드하고 GTK+ %d.%d.%d에 연결했습니다."
 
-#: src/xfdesktop-application.c:925
+#: src/xfdesktop-application.c:929
 msgid "Build options:\n"
 msgstr "빌드 옵션:\n"
 
-#: src/xfdesktop-application.c:926
+#: src/xfdesktop-application.c:930
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "데스크톱 메뉴: %s\n"
 
-#: src/xfdesktop-application.c:928 src/xfdesktop-application.c:935
-#: src/xfdesktop-application.c:942
+#: src/xfdesktop-application.c:932 src/xfdesktop-application.c:939
+#: src/xfdesktop-application.c:946
 msgid "enabled"
 msgstr "활성화"
 
-#: src/xfdesktop-application.c:930 src/xfdesktop-application.c:937
-#: src/xfdesktop-application.c:944
+#: src/xfdesktop-application.c:934 src/xfdesktop-application.c:941
+#: src/xfdesktop-application.c:948
 msgid "disabled"
 msgstr "비활성화"
 
-#: src/xfdesktop-application.c:933
+#: src/xfdesktop-application.c:937
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "데스크톱 아이콘: %s\n"
 
-#: src/xfdesktop-application.c:940
+#: src/xfdesktop-application.c:944
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "데스크톱 파일 아이콘: %s\n"
