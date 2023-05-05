@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2023-04-18 00:50+0200\n"
+"POT-Creation-Date: 2023-05-05 10:59+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Ioannis LM, 2018,2022-2023\n"
 "Language-Team: Greek (http://app.transifex.com/xfce/xfdesktop/language/el/)\n"
@@ -187,7 +187,7 @@ msgstr "ID ΥΠΟΔΟΧΗΣ"
 msgid "Version information"
 msgstr "Πληροφορίες έκδοσης"
 
-#: settings/main.c:2339 src/xfdesktop-application.c:890
+#: settings/main.c:2339 src/xfdesktop-application.c:894
 msgid "Enable debug messages"
 msgstr "Ενεργοποίηση μηνυμάτων αποσφαλμάτωσης"
 
@@ -225,10 +225,6 @@ msgstr "Επιφάνεια εργασίας"
 #: settings/xfce-backdrop-settings.desktop.in:5
 msgid "Set desktop background and menu and icon behavior"
 msgstr "Ρύθμιση φόντου επιφάνειας εργασίας και συμπεριφοράς μενού και εικονιδίων"
-
-#: settings/xfce-backdrop-settings.desktop.in:7
-msgid "org.xfce.xfdesktop"
-msgstr "org.xfce.xfdesktop"
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:19
 msgid "Solid color"
@@ -686,82 +682,82 @@ msgstr "Α_φαίρεση χώρου εργασίας %d"
 msgid "_Remove Workspace '%s'"
 msgstr "Α_φαίρεση χώρου εργασίας '%s'"
 
-#: src/xfdesktop-application.c:882
+#: src/xfdesktop-application.c:886
 msgid "Display version information"
 msgstr "Εμφάνιση πληροφοριών έκδοσης"
 
-#: src/xfdesktop-application.c:883
+#: src/xfdesktop-application.c:887
 msgid "Reload all settings"
 msgstr "Επαναφόρτωση όλων των ρυθμίσεων"
 
-#: src/xfdesktop-application.c:884
+#: src/xfdesktop-application.c:888
 msgid "Advance to the next wallpaper on the current workspace"
 msgstr "Μετάβαση στο επόμενο φόντο στο τρέχοντα χώρο εργασίας"
 
-#: src/xfdesktop-application.c:885
+#: src/xfdesktop-application.c:889
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "Εμφάνιση του μενού (στην τρέχουσα θέση του ποντικιού)"
 
-#: src/xfdesktop-application.c:886
+#: src/xfdesktop-application.c:890
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "Εμφάνιση της λίστας παραθύρων (στην τρέχουσα θέση του ποντικιού)"
 
-#: src/xfdesktop-application.c:888
+#: src/xfdesktop-application.c:892
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "Αυτόματη τακτοποίηση όλων των εικονιδίων στην επιφάνεια εργασίας"
 
-#: src/xfdesktop-application.c:891
+#: src/xfdesktop-application.c:895
 msgid "Disable debug messages"
 msgstr "Απενεργοποίηση μηνυμάτων αποσφαλμάτωσης"
 
-#: src/xfdesktop-application.c:892
+#: src/xfdesktop-application.c:896
 msgid "Do not wait for a window manager on startup"
 msgstr "Χωρίς αναμονή για διαχειριστή παραθύρων στην έναρξη"
 
-#: src/xfdesktop-application.c:893
+#: src/xfdesktop-application.c:897
 msgid "Cause xfdesktop to quit"
 msgstr "Αιτία τερματισμού του xfdesktop"
 
-#: src/xfdesktop-application.c:908
+#: src/xfdesktop-application.c:912
 #, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "Απέτυχε η ανάλυση των παραμέτρων: %s\n\n"
 
-#: src/xfdesktop-application.c:919
+#: src/xfdesktop-application.c:923
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Αυτό είναι το %s έκδοση %s, που τρέχει στο Xfce %s.\n"
 
-#: src/xfdesktop-application.c:921
+#: src/xfdesktop-application.c:925
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Δομημένο με το GTK+ %d.%d.%d, συνδεδεμένο με το GTK+ %d.%d.%d."
 
-#: src/xfdesktop-application.c:925
+#: src/xfdesktop-application.c:929
 msgid "Build options:\n"
 msgstr "Επιλογές δόμησης:\n"
 
-#: src/xfdesktop-application.c:926
+#: src/xfdesktop-application.c:930
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Μενού επιφάνειας εργασίας:        %s\n"
 
-#: src/xfdesktop-application.c:928 src/xfdesktop-application.c:935
-#: src/xfdesktop-application.c:942
+#: src/xfdesktop-application.c:932 src/xfdesktop-application.c:939
+#: src/xfdesktop-application.c:946
 msgid "enabled"
 msgstr "ενεργοποιημένο"
 
-#: src/xfdesktop-application.c:930 src/xfdesktop-application.c:937
-#: src/xfdesktop-application.c:944
+#: src/xfdesktop-application.c:934 src/xfdesktop-application.c:941
+#: src/xfdesktop-application.c:948
 msgid "disabled"
 msgstr "απενεργοποιημένο"
 
-#: src/xfdesktop-application.c:933
+#: src/xfdesktop-application.c:937
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Εικονίδια επιφάνειας εργασίας:       %s\n"
 
-#: src/xfdesktop-application.c:940
+#: src/xfdesktop-application.c:944
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Εικονίδια αρχείων επιφάνειας εργασίας:  %s\n"
