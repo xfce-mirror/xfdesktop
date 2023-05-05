@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2023-04-18 00:50+0200\n"
+"POT-Creation-Date: 2023-05-05 10:59+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2019-2023\n"
 "Language-Team: Japanese (http://app.transifex.com/xfce/xfdesktop/language/ja/)\n"
@@ -180,7 +180,7 @@ msgstr "SOCKET ID"
 msgid "Version information"
 msgstr "バージョン情報"
 
-#: settings/main.c:2339 src/xfdesktop-application.c:890
+#: settings/main.c:2339 src/xfdesktop-application.c:894
 msgid "Enable debug messages"
 msgstr "デバッグメッセージを有効にする"
 
@@ -218,10 +218,6 @@ msgstr "デスクトップ"
 #: settings/xfce-backdrop-settings.desktop.in:5
 msgid "Set desktop background and menu and icon behavior"
 msgstr "デスクトップの背景およびメニューとアイコンの振る舞いを設定します"
-
-#: settings/xfce-backdrop-settings.desktop.in:7
-msgid "org.xfce.xfdesktop"
-msgstr "org.xfce.xfdesktop"
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:19
 msgid "Solid color"
@@ -679,82 +675,82 @@ msgstr "ワークスペース %d を削除(_R)"
 msgid "_Remove Workspace '%s'"
 msgstr "ワークスペース '%s' を削除(_R)"
 
-#: src/xfdesktop-application.c:882
+#: src/xfdesktop-application.c:886
 msgid "Display version information"
 msgstr "バージョン情報を表示する"
 
-#: src/xfdesktop-application.c:883
+#: src/xfdesktop-application.c:887
 msgid "Reload all settings"
 msgstr "すべての設定を再読込みする"
 
-#: src/xfdesktop-application.c:884
+#: src/xfdesktop-application.c:888
 msgid "Advance to the next wallpaper on the current workspace"
 msgstr "現在の壁紙から次の壁紙へ進む"
 
-#: src/xfdesktop-application.c:885
+#: src/xfdesktop-application.c:889
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "現在のマウス位置でメニューをポップアップする"
 
-#: src/xfdesktop-application.c:886
+#: src/xfdesktop-application.c:890
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "現在のマウス位置でウィンドウリストをポップアップする"
 
-#: src/xfdesktop-application.c:888
+#: src/xfdesktop-application.c:892
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "デスクトップにあるすべてのアイコンを自動整列する"
 
-#: src/xfdesktop-application.c:891
+#: src/xfdesktop-application.c:895
 msgid "Disable debug messages"
 msgstr "デバッグメッセージを無効にする"
 
-#: src/xfdesktop-application.c:892
+#: src/xfdesktop-application.c:896
 msgid "Do not wait for a window manager on startup"
 msgstr "起動時にウィンドウマネージャーを待たない"
 
-#: src/xfdesktop-application.c:893
+#: src/xfdesktop-application.c:897
 msgid "Cause xfdesktop to quit"
 msgstr "xfdesktop を終了させる"
 
-#: src/xfdesktop-application.c:908
+#: src/xfdesktop-application.c:912
 #, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "引数の解析に失敗しました: %s\n"
 
-#: src/xfdesktop-application.c:919
+#: src/xfdesktop-application.c:923
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "%s バージョン %s, Xfce %s で実行されています。\n"
 
-#: src/xfdesktop-application.c:921
+#: src/xfdesktop-application.c:925
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Gtk+ %d.%d.%d でビルド、Gtk+ %d.%d.%d で実行しています。"
 
-#: src/xfdesktop-application.c:925
+#: src/xfdesktop-application.c:929
 msgid "Build options:\n"
 msgstr "ビルドオプション:\n"
 
-#: src/xfdesktop-application.c:926
+#: src/xfdesktop-application.c:930
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    メニュー:            %s\n"
 
-#: src/xfdesktop-application.c:928 src/xfdesktop-application.c:935
-#: src/xfdesktop-application.c:942
+#: src/xfdesktop-application.c:932 src/xfdesktop-application.c:939
+#: src/xfdesktop-application.c:946
 msgid "enabled"
 msgstr "有効"
 
-#: src/xfdesktop-application.c:930 src/xfdesktop-application.c:937
-#: src/xfdesktop-application.c:944
+#: src/xfdesktop-application.c:934 src/xfdesktop-application.c:941
+#: src/xfdesktop-application.c:948
 msgid "disabled"
 msgstr "無効"
 
-#: src/xfdesktop-application.c:933
+#: src/xfdesktop-application.c:937
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    アイコン:            %s\n"
 
-#: src/xfdesktop-application.c:940
+#: src/xfdesktop-application.c:944
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    ファイルアイコン:    %s\n"
