@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2023-04-18 00:50+0200\n"
+"POT-Creation-Date: 2023-05-30 00:56+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>, 2016-2019,2021\n"
 "Language-Team: Catalan (http://app.transifex.com/xfce/xfdesktop/language/ca/)\n"
@@ -180,7 +180,7 @@ msgstr "ID SÒCOL"
 msgid "Version information"
 msgstr "Informació de la versió"
 
-#: settings/main.c:2339 src/xfdesktop-application.c:890
+#: settings/main.c:2339 src/xfdesktop-application.c:894
 msgid "Enable debug messages"
 msgstr "Habilita els missatges de depuració"
 
@@ -218,10 +218,6 @@ msgstr "Escriptori"
 #: settings/xfce-backdrop-settings.desktop.in:5
 msgid "Set desktop background and menu and icon behavior"
 msgstr "Establiu el fons de l'escriptori i el comportament dels menús i de les icones"
-
-#: settings/xfce-backdrop-settings.desktop.in:7
-msgid "org.xfce.xfdesktop"
-msgstr ""
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:19
 msgid "Solid color"
@@ -679,82 +675,82 @@ msgstr "Sup_rimeix l'espai de treball %d"
 msgid "_Remove Workspace '%s'"
 msgstr "Sup_rimeix l'espai de treball «%s»"
 
-#: src/xfdesktop-application.c:882
+#: src/xfdesktop-application.c:886
 msgid "Display version information"
 msgstr "Mostra la informació de la versió"
 
-#: src/xfdesktop-application.c:883
+#: src/xfdesktop-application.c:887
 msgid "Reload all settings"
 msgstr "Torna a carregar tots els ajusts"
 
-#: src/xfdesktop-application.c:884
+#: src/xfdesktop-application.c:888
 msgid "Advance to the next wallpaper on the current workspace"
 msgstr "Avança al següent fons de pantalla en l'espai de treball actual"
 
-#: src/xfdesktop-application.c:885
+#: src/xfdesktop-application.c:889
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "Mostra el menú (a la posició actual del ratolí)"
 
-#: src/xfdesktop-application.c:886
+#: src/xfdesktop-application.c:890
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "Mostra la llista de les finestres (a la posició actual del ratolí)"
 
-#: src/xfdesktop-application.c:888
+#: src/xfdesktop-application.c:892
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "Organitza automàticament totes les icones de l'escriptori"
 
-#: src/xfdesktop-application.c:891
+#: src/xfdesktop-application.c:895
 msgid "Disable debug messages"
 msgstr "Inhabilita els missatges de depuració"
 
-#: src/xfdesktop-application.c:892
+#: src/xfdesktop-application.c:896
 msgid "Do not wait for a window manager on startup"
 msgstr "No esperis un gestor de finestres a l'inici"
 
-#: src/xfdesktop-application.c:893
+#: src/xfdesktop-application.c:897
 msgid "Cause xfdesktop to quit"
 msgstr "Provoca la sortida de xfdesktop"
 
-#: src/xfdesktop-application.c:908
+#: src/xfdesktop-application.c:912
 #, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "Ha fallat l'anàlisi dels arguments: %s\n"
 
-#: src/xfdesktop-application.c:919
+#: src/xfdesktop-application.c:923
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Això és %s versió %s, executant-se en Xfce %s.\n"
 
-#: src/xfdesktop-application.c:921
+#: src/xfdesktop-application.c:925
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Es va construir amb GTK+ %d.%d.%d, es va enllaçar amb GTK+ %d.%d.%d."
 
-#: src/xfdesktop-application.c:925
+#: src/xfdesktop-application.c:929
 msgid "Build options:\n"
 msgstr "Opcions de construcció:\n"
 
-#: src/xfdesktop-application.c:926
+#: src/xfdesktop-application.c:930
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Menú d'escriptori:   %s\n"
 
-#: src/xfdesktop-application.c:928 src/xfdesktop-application.c:935
-#: src/xfdesktop-application.c:942
+#: src/xfdesktop-application.c:932 src/xfdesktop-application.c:939
+#: src/xfdesktop-application.c:946
 msgid "enabled"
 msgstr "habilitat"
 
-#: src/xfdesktop-application.c:930 src/xfdesktop-application.c:937
-#: src/xfdesktop-application.c:944
+#: src/xfdesktop-application.c:934 src/xfdesktop-application.c:941
+#: src/xfdesktop-application.c:948
 msgid "disabled"
 msgstr "inhabilitat"
 
-#: src/xfdesktop-application.c:933
+#: src/xfdesktop-application.c:937
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Icones d'escriptori: %s\n"
 
-#: src/xfdesktop-application.c:940
+#: src/xfdesktop-application.c:944
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Fitxer d'icones d'escriptori: %s\n"
@@ -978,7 +974,7 @@ msgstr "Desconegut"
 #: src/xfdesktop-file-utils.c:318
 #, c-format
 msgid "%.*s (copy %u)%s"
-msgstr ""
+msgstr "%.*s (còpia %u)%s"
 
 #: src/xfdesktop-file-utils.c:556
 msgid "The folder could not be opened"
