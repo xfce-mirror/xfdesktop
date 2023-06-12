@@ -787,6 +787,8 @@ msgid ""
 "This will reorder all desktop items and place them on different screen positions.\n"
 "Are you sure?"
 msgstr ""
+"Això reordenarà tots els elements de l'escriptori i els situarà en diferents posicions a la pantalla.\n"
+"Esteu segur?"
 
 #: ../src/xfdesktop-file-icon-manager.c:1020
 msgid "_OK"
@@ -840,7 +842,7 @@ msgstr "Fitx_er buit"
 
 #: ../src/xfdesktop-file-icon-manager.c:1640
 msgid "_Open All"
-msgstr ""
+msgstr "_Obre-ho tot"
 
 #: ../src/xfdesktop-file-icon-manager.c:1640
 #: ../src/xfdesktop-special-file-icon.c:528 ../src/xfdesktop-volume-icon.c:868
@@ -1177,7 +1179,7 @@ msgstr "Buida la pap_erera"
 
 #: ../src/xfdesktop-volume-icon.c:458
 msgid "(not mounted)"
-msgstr ""
+msgstr "(no muntat)"
 
 #: ../src/xfdesktop-volume-icon.c:459 ../src/xfdesktop-volume-icon.c:460
 msgid "(unknown)"
@@ -1192,10 +1194,15 @@ msgid ""
 "Size: %s\n"
 "Free Space: %s"
 msgstr ""
+"Nom: %s\n"
+"Tipus: %s\n"
+"Muntat a: %s\n"
+"Mida: %s\n"
+"Espai lliure: %s"
 
 #: ../src/xfdesktop-volume-icon.c:466
 msgid "Removable Volume"
-msgstr ""
+msgstr "Volum extraïble"
 
 #: ../src/xfdesktop-volume-icon.c:501 ../src/xfdesktop-volume-icon.c:547
 #, c-format
