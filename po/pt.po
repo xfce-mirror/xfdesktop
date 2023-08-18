@@ -5,17 +5,17 @@
 # 
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2020
-# Hugo Carvalho <hugokarvalho@hotmail.com>, 2021
+# Hugo Carvalho <hugokarvalho@hotmail.com>, 2023
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-29 00:51+0100\n"
+"POT-Creation-Date: 2023-05-30 00:56+0200\n"
 "PO-Revision-Date: 2020-12-28 17:18+0000\n"
-"Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>, 2021\n"
-"Language-Team: Portuguese (https://www.transifex.com/xfce/teams/16840/pt/)\n"
+"Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>, 2023\n"
+"Language-Team: Portuguese (https://app.transifex.com/xfce/teams/16840/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -119,13 +119,13 @@ msgid "Image selection is unavailable while the image style is set to None."
 msgstr ""
 "A seleção de imagens não está disponível se o estilo de imagem for Nenhum."
 
-#: ../settings/main.c:1570
+#: ../settings/main.c:1553
 msgid "Spanning screens"
 msgstr "Expandir ecrãs"
 
 #. TRANSLATORS: Please split the message in half with '\n' so the dialog will
 #. not be too wide.
-#: ../settings/main.c:1738
+#: ../settings/main.c:1721
 msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
@@ -133,18 +133,18 @@ msgstr ""
 "Deseja colocar todos os ícones\n"
 "de acordo com a orientação selecionada?"
 
-#: ../settings/main.c:1744
+#: ../settings/main.c:1727
 msgid "Arrange icons"
 msgstr "Ordenar ícones"
 
 #. printf is to be translator-friendly
-#: ../settings/main.c:1752 ../src/xfdesktop-file-icon-manager.c:798
+#: ../settings/main.c:1735 ../src/xfdesktop-file-icon-manager.c:798
 #: ../src/xfdesktop-file-icon-manager.c:1353
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Incapaz de iniciar \"%s\":"
 
-#: ../settings/main.c:1753 ../src/xfdesktop-file-icon-manager.c:800
+#: ../settings/main.c:1736 ../src/xfdesktop-file-icon-manager.c:800
 #: ../src/xfdesktop-file-icon-manager.c:1102
 #: ../src/xfdesktop-file-icon-manager.c:1354 ../src/xfdesktop-file-utils.c:683
 #: ../src/xfdesktop-file-utils.c:1217 ../src/xfdesktop-file-utils.c:1295
@@ -152,7 +152,7 @@ msgstr "Incapaz de iniciar \"%s\":"
 msgid "Launch Error"
 msgstr "Erro do lançador"
 
-#: ../settings/main.c:1755 ../settings/xfdesktop-settings-ui.glade.h:20
+#: ../settings/main.c:1738 ../settings/xfdesktop-settings-ui.glade.h:20
 #: ../src/xfdesktop-file-icon-manager.c:562
 #: ../src/xfdesktop-file-icon-manager.c:581
 #: ../src/xfdesktop-file-icon-manager.c:666
@@ -173,59 +173,59 @@ msgstr "Erro do lançador"
 msgid "_Close"
 msgstr "_Fechar"
 
-#: ../settings/main.c:1910
+#: ../settings/main.c:1893
 msgid "Image files"
 msgstr "Ficheiros de imagem"
 
 #. Change the title of the file chooser dialog
-#: ../settings/main.c:1918
+#: ../settings/main.c:1901
 msgid "Select a Directory"
 msgstr "Selecione um diretório"
 
-#: ../settings/main.c:2123
+#: ../settings/main.c:2106
 msgid "Settings manager socket"
 msgstr "Gestor de definições"
 
-#: ../settings/main.c:2123
+#: ../settings/main.c:2106
 msgid "SOCKET ID"
 msgstr "ID do SOCKET"
 
-#: ../settings/main.c:2124
+#: ../settings/main.c:2107
 msgid "Version information"
 msgstr "Informações de versão"
 
-#: ../settings/main.c:2125 ../src/xfdesktop-application.c:842
+#: ../settings/main.c:2108 ../src/xfdesktop-application.c:842
 msgid "Enable debug messages"
 msgstr "Ligar mensagens de debug"
 
-#: ../settings/main.c:2149
+#: ../settings/main.c:2132
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Digite '%s --help' para utilização."
 
-#: ../settings/main.c:2161
+#: ../settings/main.c:2144
 msgid "The Xfce development team. All rights reserved."
 msgstr "A equipa de desenvolvimento do Xfce. Todos os direitos reservados."
 
-#: ../settings/main.c:2162
+#: ../settings/main.c:2145
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Por favor reporte os erros em <%s>."
 
-#: ../settings/main.c:2169
+#: ../settings/main.c:2152
 msgid "Desktop Settings"
 msgstr "Definições do ambiente de trabalho"
 
-#: ../settings/main.c:2171
+#: ../settings/main.c:2154
 msgid "Unable to contact settings server"
 msgstr "Incapaz de contactar o servidor de definições"
 
-#: ../settings/main.c:2173
+#: ../settings/main.c:2156
 msgid "Quit"
 msgstr "Sair"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.in.h:1
-#: ../settings/xfdesktop-settings-ui.glade.h:18 ../src/xfce-desktop.c:1174
+#: ../settings/xfdesktop-settings-ui.glade.h:18 ../src/xfce-desktop.c:1176
 msgid "Desktop"
 msgstr "Ambiente de trabalho"
 
@@ -414,35 +414,35 @@ msgstr "Ícones de ficheiro/lançador"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:10
 msgid "Top Left Vertical"
-msgstr "Topo esquerdo vertical"
+msgstr "Superior esquerdo vertical"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:11
 msgid "Top Left Horizontal"
-msgstr "Topo esquerdo horizontal"
+msgstr "Superior esquerdo horizontal"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:12
 msgid "Top Right Vertical"
-msgstr "Topo direito vertical"
+msgstr "Superior direito vertical"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:13
 msgid "Top Right Horizontal"
-msgstr "Topo direito horizontal"
+msgstr "Superior direito horizontal"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:14
 msgid "Bottom Left Vertical"
-msgstr "Fundo esquerda vertical"
+msgstr "Inferior esquerdo vertical"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:15
 msgid "Bottom Left Horizontal"
-msgstr "Fundo esquerda horizontal"
+msgstr "Inferior esquerdo horizontal"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:16
 msgid "Bottom Right Vertical"
-msgstr "Fundo direita vertical"
+msgstr "Inferior direito vertical"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:17
 msgid "Bottom Right Horizontal"
-msgstr "Fundo direita horizontal"
+msgstr "Inferior direito horizontal"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:19
 msgid "_Help"
