@@ -9,6 +9,7 @@ xfdesktop_settings_CFLAGS =						\
 	-I$(top_srcdir)								\
 	-I$(top_srcdir)/common						\
 	-I$(top_srcdir)/src 						\
+	-DDEFAULT_BACKDROP=\"$(DEFAULT_BACKDROP)\" \
 	$(LIBEXO_CFLAGS)							\
 	$(LIBXFCE4UI_CFLAGS)						\
 	$(LIBXFCE4WINDOWING_CFLAGS)					\

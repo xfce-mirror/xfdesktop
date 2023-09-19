@@ -80,6 +80,7 @@ xfdesktop_CFLAGS = \
 	-DDATADIR=\"$(datadir)\" \
 	-DSYSCONFDIR=\"$(sysconfdir)\" \
 	-DXFCEMODDIR=\"$(libdir)/xfce4/modules\" \
+	-DDEFAULT_BACKDROP=\"$(DEFAULT_BACKDROP)\" \
 	$(GIO_CFLAGS) \
 	$(GIO_UNIX_CFLAGS) \
 	$(GLIB_CFLAGS) \

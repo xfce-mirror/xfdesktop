@@ -34,7 +34,6 @@
 #include <stdarg.h>
 
 #define XFDESKTOP_CHANNEL  "xfce4-desktop"
-#define DEFAULT_BACKDROP   DATADIR "/backgrounds/xfce/xfce-shapes.svg"
 
 #define MIN_ICON_SIZE               16
 #define MAX_ICON_SIZE              192
