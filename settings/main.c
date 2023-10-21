@@ -1810,6 +1810,7 @@ cb_window_opened(XfwScreen *screen,
     xfdesktop_settings_update_iconview_frame_name(panel, workspace);
 }
 
+#ifdef ENABLE_X11
 static void
 cb_active_window_changed(XfwScreen *screen,
                          XfwWindow *previously_active_window,
@@ -1825,6 +1826,7 @@ cb_active_window_changed(XfwScreen *screen,
         }
     }
 }
+#endif
 
 static void
 cb_monitor_changed(GdkScreen *gscreen,
