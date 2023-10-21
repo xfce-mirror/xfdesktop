@@ -66,9 +66,6 @@ static void xfdesktop_icon_view_manager_get_property(GObject *obj,
 static void xfdesktop_icon_view_manager_dispose(GObject *obj);
 
 static void xfdesktop_icon_view_manager_update_workarea(XfdesktopIconViewManager *manager);
-static GdkFilterReturn xfdesktop_icon_view_manager_rootwin_event_filter(GdkXEvent *gxevent,
-                                                                        GdkEvent *event,
-                                                                        gpointer user_data);
 static void xfdesktop_icon_view_manager_parent_realized(GtkWidget *parent,
                                                         XfdesktopIconViewManager *manager);
 static void xfdesktop_icon_view_manager_parent_unrealized(GtkWidget *parent,
@@ -76,6 +73,12 @@ static void xfdesktop_icon_view_manager_parent_unrealized(GtkWidget *parent,
 
 static void xfdesktop_icon_view_manager_set_show_icons_on_primary(XfdesktopIconViewManager *manager,
                                                                   gboolean icons_on_primary);
+
+#ifdef ENABLE_X11
+static GdkFilterReturn xfdesktop_icon_view_manager_rootwin_event_filter(GdkXEvent *gxevent,
+                                                                        GdkEvent *event,
+                                                                        gpointer user_data);
+#endif
 
 static const struct {
     const gchar *setting;
@@ -247,11 +250,13 @@ xfdesktop_icon_view_manager_dispose(GObject *obj)
     }
 
     if (manager->priv->parent != NULL) {
+#ifdef ENABLE_X11
         if (gtk_widget_get_realized(manager->priv->parent)) {
             GdkScreen *screen = gtk_widget_get_screen(manager->priv->parent);
             GdkWindow *rootwin = gdk_screen_get_root_window(screen);
             gdk_window_remove_filter(rootwin, xfdesktop_icon_view_manager_rootwin_event_filter, manager);
         }
+#endif
 
         g_signal_handlers_disconnect_by_func(manager->priv->parent,
                                              G_CALLBACK(xfdesktop_icon_view_manager_parent_realized),
@@ -272,11 +277,14 @@ static void
 xfdesktop_icon_view_manager_parent_realized(GtkWidget *parent,
                                             XfdesktopIconViewManager *manager)
 {
+#ifdef ENABLE_X11
     GdkScreen *screen = gtk_widget_get_screen(manager->priv->parent);
     GdkWindow *rootwin = gdk_screen_get_root_window(screen);
 
     gdk_window_set_events(rootwin, gdk_window_get_events(rootwin) | GDK_PROPERTY_CHANGE_MASK);
     gdk_window_add_filter(rootwin, xfdesktop_icon_view_manager_rootwin_event_filter, manager);
+#endif
+
     xfdesktop_icon_view_manager_update_workarea(manager);
     g_signal_connect_swapped(parent, "notify::scale-factor",
                              G_CALLBACK(xfdesktop_icon_view_manager_update_workarea), manager);
@@ -286,6 +294,7 @@ static void
 xfdesktop_icon_view_manager_parent_unrealized(GtkWidget *parent,
                                               XfdesktopIconViewManager *manager)
 {
+#ifdef ENABLE_X11
     GdkScreen *screen;
     GdkWindow *rootwin;
 
@@ -297,6 +306,7 @@ xfdesktop_icon_view_manager_parent_unrealized(GtkWidget *parent,
     rootwin = gdk_screen_get_root_window(screen);
 
     gdk_window_remove_filter(rootwin, xfdesktop_icon_view_manager_rootwin_event_filter, manager);
+#endif
 }
 
 static void
@@ -423,6 +433,7 @@ xfdesktop_icon_view_manager_update_workarea(XfdesktopIconViewManager *manager)
     }
 }
 
+#ifdef ENABLE_X11
 static GdkFilterReturn
 xfdesktop_icon_view_manager_rootwin_event_filter(GdkXEvent *gxevent,
                                                  GdkEvent *event,
@@ -438,6 +449,7 @@ xfdesktop_icon_view_manager_rootwin_event_filter(GdkXEvent *gxevent,
 
     return GDK_FILTER_CONTINUE;
 }
+#endif
 
 GtkWidget *
 xfdesktop_icon_view_manager_get_parent(XfdesktopIconViewManager *manager)
