@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the xfdesktop.master package.
 # 
 # Translators:
+# Caarmi, 2023
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2023-04-18 00:50+0200\n"
+"POT-Creation-Date: 2023-05-30 00:56+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Last-Translator: Caarmi, 2023\n"
 "Language-Team: Interlingue (http://app.transifex.com/xfce/xfdesktop/language/ie/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -176,7 +177,7 @@ msgstr "ID DE SOCKET"
 msgid "Version information"
 msgstr "Information del version"
 
-#: settings/main.c:2339 src/xfdesktop-application.c:890
+#: settings/main.c:2339 src/xfdesktop-application.c:894
 msgid "Enable debug messages"
 msgstr "Permisser debug-anuncies"
 
@@ -214,10 +215,6 @@ msgstr "Pupitre"
 #: settings/xfce-backdrop-settings.desktop.in:5
 msgid "Set desktop background and menu and icon behavior"
 msgstr "Selection de funde del Pupitre e de conduida de menú e icones"
-
-#: settings/xfce-backdrop-settings.desktop.in:7
-msgid "org.xfce.xfdesktop"
-msgstr ""
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:19
 msgid "Solid color"
@@ -513,7 +510,7 @@ msgstr "_Menús"
 
 #: settings/xfdesktop-settings-ui.glade:738
 msgid "Icon _Type"
-msgstr ""
+msgstr "_Tip de icone"
 
 #: settings/xfdesktop-settings-ui.glade:774
 msgid "Icon _size:"
@@ -549,7 +546,7 @@ msgstr "Dimension de miniatura in li panel de information."
 
 #: settings/xfdesktop-settings-ui.glade:900
 msgid "64"
-msgstr ""
+msgstr "64"
 
 #: settings/xfdesktop-settings-ui.glade:911
 msgid "Single _click to activate items"
@@ -557,7 +554,7 @@ msgstr "Singul _clic por activar elementes"
 
 #: settings/xfdesktop-settings-ui.glade:926
 msgid "_Underline text on hover"
-msgstr ""
+msgstr "S_uperscrir li textu sub li apuntator"
 
 #: settings/xfdesktop-settings-ui.glade:976
 msgid "<b>Appearance</b>"
@@ -565,13 +562,13 @@ msgstr "<b>Aspecte</b>"
 
 #: settings/xfdesktop-settings-ui.glade:997
 msgid "Desktop _Icons"
-msgstr ""
+msgstr "_Icones del Pupitre"
 
 #: settings/xfdesktop-settings-ui.glade:1051
 msgid ""
 "File/Launcher icons are not enabled. You can enable them from the \"Desktop "
 "Icons\" tab."
-msgstr ""
+msgstr "Icones de files e lansatores ne es activ. On posse activar les sur li carte «Icones del Pupitre»."
 
 #: settings/xfdesktop-settings-ui.glade:1097
 msgid "Show hidden files on the desktop"
@@ -597,11 +594,11 @@ msgstr "General"
 
 #: settings/xfdesktop-settings-ui.glade:1195
 msgid "Default Icons"
-msgstr ""
+msgstr "Icones predefinit"
 
 #: settings/xfdesktop-settings-ui.glade:1225
 msgid "_File/Launcher Icons"
-msgstr ""
+msgstr "Icones de _files e lansatores"
 
 #: src/menu.c:86
 msgid "_Applications"
@@ -622,7 +619,7 @@ msgstr "Esque vu vole remover li labor-spacie %d?\nLi actual labor-spacie: %d."
 #: src/windowlist.c:83
 #, c-format
 msgid "Do you really want to remove workspace %d"
-msgstr ""
+msgstr "Esque vu vole remover li labor-spacie %d"
 
 #: src/windowlist.c:88
 #, c-format
@@ -639,7 +636,7 @@ msgstr "Esque vu vole remover li labor-spacie «%s»?\nLi actual labor-spacie: �
 #: src/windowlist.c:93
 #, c-format
 msgid "Do you really want to remove workspace '%s'?"
-msgstr ""
+msgstr "Esque vu vole remover li labor-spacie «%s»?"
 
 #. Popup a dialog box confirming that the user wants to remove a
 #. * workspace
@@ -654,7 +651,7 @@ msgstr "Liste del fenestres"
 #: src/windowlist.c:357
 #, c-format
 msgid "<b>Group %d, Workspace %d</b>"
-msgstr ""
+msgstr "<b>Gruppe %d, labor-spacie %d</b>"
 
 #: src/windowlist.c:359
 #, c-format
@@ -675,82 +672,82 @@ msgstr "_Remover labor-spacie %d"
 msgid "_Remove Workspace '%s'"
 msgstr "_Remover labor-spacie «%s»"
 
-#: src/xfdesktop-application.c:882
+#: src/xfdesktop-application.c:886
 msgid "Display version information"
 msgstr "Monstra li information del version"
 
-#: src/xfdesktop-application.c:883
+#: src/xfdesktop-application.c:887
 msgid "Reload all settings"
 msgstr "Recargar omni parametres"
 
-#: src/xfdesktop-application.c:884
+#: src/xfdesktop-application.c:888
 msgid "Advance to the next wallpaper on the current workspace"
 msgstr "Monstrar li sequent tapete sur li actual labor-spacie"
 
-#: src/xfdesktop-application.c:885
+#: src/xfdesktop-application.c:889
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "Monstrar li menú (al apuntator)"
 
-#: src/xfdesktop-application.c:886
+#: src/xfdesktop-application.c:890
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "Monstrar li liste de fenestres (al apuntator)"
 
-#: src/xfdesktop-application.c:888
+#: src/xfdesktop-application.c:892
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "Automaticmen ordinar li icones sur li Pupitre"
 
-#: src/xfdesktop-application.c:891
+#: src/xfdesktop-application.c:895
 msgid "Disable debug messages"
 msgstr "Depermisser debug-anuncies"
 
-#: src/xfdesktop-application.c:892
+#: src/xfdesktop-application.c:896
 msgid "Do not wait for a window manager on startup"
 msgstr "Ne atende por un gerente de fenestres al inicie"
 
-#: src/xfdesktop-application.c:893
+#: src/xfdesktop-application.c:897
 msgid "Cause xfdesktop to quit"
 msgstr "Terminar xfdesktop"
 
-#: src/xfdesktop-application.c:908
+#: src/xfdesktop-application.c:912
 #, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "Ne successat analisar li argumentes: %s\n"
 
-#: src/xfdesktop-application.c:919
+#: src/xfdesktop-application.c:923
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "To ci es %s de version %s, executent in Xfce %s.\n"
 
-#: src/xfdesktop-application.c:921
+#: src/xfdesktop-application.c:925
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Constructet con GTK+ %d.%d.%d, ligat con GTK+ %d.%d.%d."
 
-#: src/xfdesktop-application.c:925
+#: src/xfdesktop-application.c:929
 msgid "Build options:\n"
 msgstr "Optiones del construction:\n"
 
-#: src/xfdesktop-application.c:926
+#: src/xfdesktop-application.c:930
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Menú del Pupitre:           %s\n"
 
-#: src/xfdesktop-application.c:928 src/xfdesktop-application.c:935
-#: src/xfdesktop-application.c:942
+#: src/xfdesktop-application.c:932 src/xfdesktop-application.c:939
+#: src/xfdesktop-application.c:946
 msgid "enabled"
 msgstr "permisset"
 
-#: src/xfdesktop-application.c:930 src/xfdesktop-application.c:937
-#: src/xfdesktop-application.c:944
+#: src/xfdesktop-application.c:934 src/xfdesktop-application.c:941
+#: src/xfdesktop-application.c:948
 msgid "disabled"
 msgstr "depermisset"
 
-#: src/xfdesktop-application.c:933
+#: src/xfdesktop-application.c:937
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Icones del Pupitre:         %s\n"
 
-#: src/xfdesktop-application.c:940
+#: src/xfdesktop-application.c:944
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Fil-icones sur li Pupitre:  %s\n"
@@ -786,7 +783,7 @@ msgstr "Null selectet icones supporta renomination."
 msgid ""
 "This will reorder all desktop items and place them on different screen positions.\n"
 "Are you sure?"
-msgstr ""
+msgstr "To va reordinar omni elementes del Pupitre e metter les in nov positiones.\nEsque continuar?"
 
 #: src/xfdesktop-file-icon-manager.c:1363
 msgid "_OK"
@@ -838,7 +835,7 @@ msgstr "_Vacui file"
 
 #: src/xfdesktop-file-icon-manager.c:1989
 msgid "_Open All"
-msgstr ""
+msgstr "_Aperter omnis"
 
 #: src/xfdesktop-file-icon-manager.c:1989
 #: src/xfdesktop-special-file-icon.c:478 src/xfdesktop-volume-icon.c:833
@@ -1159,11 +1156,11 @@ msgstr "Vacuar li _Paper-corb"
 
 #: src/xfdesktop-volume-icon.c:413
 msgid "(not mounted)"
-msgstr ""
+msgstr "(ne montet)"
 
 #: src/xfdesktop-volume-icon.c:414 src/xfdesktop-volume-icon.c:415
 msgid "(unknown)"
-msgstr ""
+msgstr "(ínconosset)"
 
 #: src/xfdesktop-volume-icon.c:419
 #, c-format
@@ -1173,11 +1170,11 @@ msgid ""
 "Mounted at: %s\n"
 "Size: %s\n"
 "Free Space: %s"
-msgstr ""
+msgstr "Nómine: %s\nTip: %s\nMontet ye: %s\nGrandore: %s\nLíber spacie: %s"
 
 #: src/xfdesktop-volume-icon.c:421
 msgid "Removable Volume"
-msgstr ""
+msgstr "Removibil unité"
 
 #: src/xfdesktop-volume-icon.c:454 src/xfdesktop-volume-icon.c:498
 #, c-format
@@ -1199,11 +1196,11 @@ msgstr "Monte ne successat"
 
 #: src/xfdesktop-volume-icon.c:859
 msgid "_Safely Remove Volume"
-msgstr ""
+msgstr "Remover li volume _securmen"
 
 #: src/xfdesktop-volume-icon.c:862
 msgid "_Disconnect Volume"
-msgstr ""
+msgstr "_Deserrar volume"
 
 #: src/xfdesktop-volume-icon.c:865
 msgid "_Stop the Multi-Disk Drive"
@@ -1211,7 +1208,7 @@ msgstr "_Stoppar li unité multidisco"
 
 #: src/xfdesktop-volume-icon.c:868
 msgid "_Lock Volume"
-msgstr ""
+msgstr "_Serrar volume"
 
 #: src/xfdesktop-volume-icon.c:871
 msgid "E_ject Volume"
