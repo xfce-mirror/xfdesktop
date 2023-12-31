@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2023-05-05 10:59+0200\n"
+"POT-Creation-Date: 2023-05-30 00:56+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Arnold Marko <arnold.marko@gmail.com>, 2019-2021,2023\n"
 "Language-Team: Slovenian (http://app.transifex.com/xfce/xfdesktop/language/sl/)\n"
@@ -127,7 +127,7 @@ msgstr "Ali bi radi razporedili vse obstoječe\nikone glede na izbrano orientaci
 
 #: settings/main.c:1935
 msgid "Arrange icons"
-msgstr "Zaporedi ikone"
+msgstr "Razporedi ikone"
 
 #. printf is to be translator-friendly
 #: settings/main.c:1943 src/xfdesktop-file-icon-manager.c:1159
@@ -191,7 +191,7 @@ msgstr "Omogoči razhroščevalna sporočila"
 #: settings/main.c:2363
 #, c-format
 msgid "Type '%s --help' for usage."
-msgstr "Za navodila o uporabi zaženite ukaz \"%s --help\"."
+msgstr "Za pomoč izvedite ukaz \"%s --help\"."
 
 #: settings/main.c:2375
 msgid "The Xfce development team. All rights reserved."
@@ -200,7 +200,7 @@ msgstr "Xfce razvojna ekipa. Vse pravice pridržane."
 #: settings/main.c:2376
 #, c-format
 msgid "Please report bugs to <%s>."
-msgstr "Prijavite napake na <%s>."
+msgstr "Prijavite hrošče na <%s>."
 
 #: settings/main.c:2383
 msgid "Desktop Settings"
@@ -208,7 +208,7 @@ msgstr "Nastavitve namizja"
 
 #: settings/main.c:2385
 msgid "Unable to contact settings server"
-msgstr "S strežnikom nastavitev ni mogoče vzpostaviti stika"
+msgstr "Nastavitveni strežnik ni dosegljiv"
 
 #: settings/main.c:2387
 msgid "Quit"
@@ -229,11 +229,11 @@ msgstr "Enobarvno"
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:22
 msgid "Horizontal gradient"
-msgstr "Vodoravno prelivanje"
+msgstr "Vodoraven preliv"
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:25
 msgid "Vertical gradient"
-msgstr "Navpično prelivanje"
+msgstr "Navpičen preliv"
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:28
 msgid "Transparent"
@@ -253,14 +253,14 @@ msgstr "Sl_og:"
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:147
 msgid "Specify how the image will be resized to fit the screen."
-msgstr "Določi način prilagajanja slike velikosti zaslona."
+msgstr "Določite način prilagajanja slike velikosti zaslona."
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:149
 #: settings/xfdesktop-settings-ui.glade:60
 #: settings/xfdesktop-settings-ui.glade:97
 #: settings/xfdesktop-settings-ui.glade:117
 msgid "None"
-msgstr "Noben"
+msgstr "Brez"
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:150
 msgid "Centered"
@@ -288,7 +288,7 @@ msgstr "Raztezajoči se zasloni"
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:168
 msgid "Specify the style of the color drawn behind the backdrop image."
-msgstr "Določite stil prelivanja barve v ozadju slike."
+msgstr "Določite slog barvnega preliva pod sliko."
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:190
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
@@ -401,7 +401,7 @@ msgstr "Alt"
 #: settings/xfdesktop-settings-ui.glade:69
 #: settings/xfdesktop-settings-ui.glade:106
 msgid "Control"
-msgstr "Control"
+msgstr "Ctrl"
 
 #: settings/xfdesktop-settings-ui.glade:120
 msgid "Minimized application icons"
