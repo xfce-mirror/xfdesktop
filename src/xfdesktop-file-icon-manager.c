@@ -2814,6 +2814,7 @@ xfdesktop_file_icon_manager_add_volume_icon(XfdesktopFileIconManager *fmanager,
                                             GVolume *volume)
 {
     XfdesktopVolumeIcon *icon;
+    GDrive *drive;
     gchar *volume_type;
 
     g_return_val_if_fail(fmanager && G_IS_VOLUME(volume), NULL);
@@ -2821,6 +2822,15 @@ xfdesktop_file_icon_manager_add_volume_icon(XfdesktopFileIconManager *fmanager,
     /* If we aren't showing any media exit now */
     if(!fmanager->priv->show_removable_media)
         return NULL;
+
+    drive = g_volume_get_drive(volume);
+    if (drive != NULL) {
+        gboolean is_removable = g_drive_is_media_removable(drive) || g_volume_can_eject(volume);
+        g_object_unref(drive);
+        if (!is_removable) {
+            return NULL;
+        }
+    }
 
     volume_type = g_volume_get_identifier(volume, G_VOLUME_IDENTIFIER_KIND_CLASS);
 
