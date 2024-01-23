@@ -5,7 +5,7 @@
 # Translators:
 # Kristján Magnússon, 2015
 # Kristján Magnússon, 2015
-# Sveinn í Felli <sv1@fellsnet.is>, 2010,2012-2015,2017-2019,2023
+# Sveinn í Felli <sv1@fellsnet.is>, 2010,2012-2015,2017-2019,2023-2024
 # Sveinn í Felli <sv1@fellsnet.is>, 2015,2018-2019
 # Sveinn í Felli <sv1@fellsnet.is>, 2010,2012-2013
 msgid ""
@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2023-05-30 00:56+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
-"Last-Translator: Sveinn í Felli <sv1@fellsnet.is>, 2010,2012-2015,2017-2019,2023\n"
+"Last-Translator: Sveinn í Felli <sv1@fellsnet.is>, 2010,2012-2015,2017-2019,2023-2024\n"
 "Language-Team: Icelandic (http://app.transifex.com/xfce/xfdesktop/language/is/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -572,7 +572,7 @@ msgstr "Tá_knmyndir á skjáborði"
 msgid ""
 "File/Launcher icons are not enabled. You can enable them from the \"Desktop "
 "Icons\" tab."
-msgstr ""
+msgstr "Skráa/ræsitáknmyndir eru ekki virkjaðar. Þú getur virkjað þær í flipanum \"Skjáborðstáknmyndir\"."
 
 #: settings/xfdesktop-settings-ui.glade:1097
 msgid "Show hidden files on the desktop"
@@ -590,7 +590,7 @@ msgstr "Veldu þetta til að birta á skjáborðinu sjálfvirkt gerðar smámynd
 
 #: settings/xfdesktop-settings-ui.glade:1130
 msgid "Show \"Delete\" option in file context menu"
-msgstr ""
+msgstr "Birta \"Eyða\"-valkost í samhengisvalmynd skráa"
 
 #: settings/xfdesktop-settings-ui.glade:1151
 msgid "General"
@@ -598,11 +598,11 @@ msgstr "Almennt"
 
 #: settings/xfdesktop-settings-ui.glade:1195
 msgid "Default Icons"
-msgstr ""
+msgstr "Sjálfgefnar táknmyndir"
 
 #: settings/xfdesktop-settings-ui.glade:1225
 msgid "_File/Launcher Icons"
-msgstr ""
+msgstr "Skráa/ræsitá_knmyndir"
 
 #: src/menu.c:86
 msgid "_Applications"
@@ -623,7 +623,7 @@ msgstr "Viltu í alvörunni fjarlægja vinnusvæði %d?\nATH: Þú ert núna á 
 #: src/windowlist.c:83
 #, c-format
 msgid "Do you really want to remove workspace %d"
-msgstr ""
+msgstr "Ertu viss um að þú viljir fjarlægja vinnusvæðið %d"
 
 #: src/windowlist.c:88
 #, c-format
@@ -640,7 +640,7 @@ msgstr "Viltu í alvörunni fjarlægja vinnusvæði '%s'?\nATH: Þú ert núna �
 #: src/windowlist.c:93
 #, c-format
 msgid "Do you really want to remove workspace '%s'?"
-msgstr ""
+msgstr "Ertu viss um að þú viljir fjarlægja vinnusvæðið '%s'?"
 
 #. Popup a dialog box confirming that the user wants to remove a
 #. * workspace
@@ -655,7 +655,7 @@ msgstr "Gluggalisti"
 #: src/windowlist.c:357
 #, c-format
 msgid "<b>Group %d, Workspace %d</b>"
-msgstr ""
+msgstr "<b>Hópur %d, Vinnusvæði %d</b>"
 
 #: src/windowlist.c:359
 #, c-format
@@ -787,7 +787,7 @@ msgstr "Ekki mátti endurnefna neinar af völdu táknmyndunum."
 msgid ""
 "This will reorder all desktop items and place them on different screen positions.\n"
 "Are you sure?"
-msgstr ""
+msgstr "Þetta mun endurraða öllum atriðum á skjáborðinu og setja þau á aðra staði á skjánum.\nErtu viss um að þú viljir þetta?"
 
 #: src/xfdesktop-file-icon-manager.c:1363
 msgid "_OK"
@@ -839,7 +839,7 @@ msgstr "_Tóm skrá"
 
 #: src/xfdesktop-file-icon-manager.c:1989
 msgid "_Open All"
-msgstr ""
+msgstr "_Opna allt"
 
 #: src/xfdesktop-file-icon-manager.c:1989
 #: src/xfdesktop-special-file-icon.c:478 src/xfdesktop-volume-icon.c:833
@@ -865,7 +865,7 @@ msgstr "Opn_a með öðru forriti..."
 
 #: src/xfdesktop-file-icon-manager.c:2121
 msgid "Set _Default Application..."
-msgstr ""
+msgstr "Setja sjálf_gefið forrit..."
 
 #: src/xfdesktop-file-icon-manager.c:2153
 msgid "_Paste"
@@ -905,7 +905,7 @@ msgstr "_Raða táknmyndum á skjáborði"
 
 #: src/xfdesktop-file-icon-manager.c:2328
 msgid "_Next Background"
-msgstr ""
+msgstr "_Næsti bakgrunnur"
 
 #: src/xfdesktop-file-icon-manager.c:2338
 msgid "Desktop _Settings..."
@@ -941,7 +941,7 @@ msgstr "_Hætta við"
 
 #: src/xfdesktop-file-icon-manager.c:3952
 msgid "Untitled document"
-msgstr ""
+msgstr "Ónefnt skjal"
 
 #. TRANSLATORS: file was modified less than one day ago
 #: src/xfdesktop-file-utils.c:168
@@ -975,7 +975,7 @@ msgstr "Óþekkt"
 #: src/xfdesktop-file-utils.c:318
 #, c-format
 msgid "%.*s (copy %u)%s"
-msgstr ""
+msgstr "%.*s (afrita %u)%s"
 
 #: src/xfdesktop-file-utils.c:556
 msgid "The folder could not be opened"
@@ -1131,7 +1131,7 @@ msgid ""
 "Type: %s\n"
 "Size: %s\n"
 "Last modified: %s"
-msgstr ""
+msgstr "Heiti %s\nTegund: %s\nStærð: %s\nSeinast breytt: %s"
 
 #: src/xfdesktop-special-file-icon.c:396
 msgid "Trash is empty"
@@ -1160,7 +1160,7 @@ msgstr "_Tæma ruslið"
 
 #: src/xfdesktop-volume-icon.c:413
 msgid "(not mounted)"
-msgstr ""
+msgstr "(ekki tengt í skráakerfi)"
 
 #: src/xfdesktop-volume-icon.c:414 src/xfdesktop-volume-icon.c:415
 msgid "(unknown)"
@@ -1174,11 +1174,11 @@ msgid ""
 "Mounted at: %s\n"
 "Size: %s\n"
 "Free Space: %s"
-msgstr ""
+msgstr "Heiti: %s\nTegund: %s\nTengt á: %s\nStærð: %s\nLaust pláss: %s"
 
 #: src/xfdesktop-volume-icon.c:421
 msgid "Removable Volume"
-msgstr ""
+msgstr "Útskiptanlegur geymslumiðill"
 
 #: src/xfdesktop-volume-icon.c:454 src/xfdesktop-volume-icon.c:498
 #, c-format
@@ -1200,19 +1200,19 @@ msgstr "Tenging mistókst"
 
 #: src/xfdesktop-volume-icon.c:859
 msgid "_Safely Remove Volume"
-msgstr ""
+msgstr "_Fjarlægja geymslumiðil á öruggan hátt"
 
 #: src/xfdesktop-volume-icon.c:862
 msgid "_Disconnect Volume"
-msgstr ""
+msgstr "_Aftengja geymslumiðil"
 
 #: src/xfdesktop-volume-icon.c:865
 msgid "_Stop the Multi-Disk Drive"
-msgstr ""
+msgstr "_Stöðva margdiska-drifið"
 
 #: src/xfdesktop-volume-icon.c:868
 msgid "_Lock Volume"
-msgstr ""
+msgstr "_Læsa geymslumiðli"
 
 #: src/xfdesktop-volume-icon.c:871
 msgid "E_ject Volume"
