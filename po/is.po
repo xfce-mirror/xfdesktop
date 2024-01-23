@@ -5,16 +5,17 @@
 # 
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2020
+# Sveinn í Felli <sv1@fellsnet.is>, 2024
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-29 00:51+0100\n"
+"POT-Creation-Date: 2023-05-30 00:56+0200\n"
 "PO-Revision-Date: 2020-12-28 17:18+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>, 2020\n"
-"Language-Team: Icelandic (https://www.transifex.com/xfce/teams/16840/is/)\n"
+"Last-Translator: Sveinn í Felli <sv1@fellsnet.is>, 2024\n"
+"Language-Team: Icelandic (https://app.transifex.com/xfce/teams/16840/is/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -117,13 +118,13 @@ msgstr ""
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "Ekki er hægt að velja myndir á meðan myndastíll er ekki virkur."
 
-#: ../settings/main.c:1570
+#: ../settings/main.c:1553
 msgid "Spanning screens"
 msgstr "Samliggjandi skjáir"
 
 #. TRANSLATORS: Please split the message in half with '\n' so the dialog will
 #. not be too wide.
-#: ../settings/main.c:1738
+#: ../settings/main.c:1721
 msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
@@ -131,18 +132,18 @@ msgstr ""
 "Viltu raða upp öllum fyrirliggjandi\n"
 "táknmyndum samkvæmt valinni stefnu?"
 
-#: ../settings/main.c:1744
+#: ../settings/main.c:1727
 msgid "Arrange icons"
 msgstr "Raða táknmyndum"
 
 #. printf is to be translator-friendly
-#: ../settings/main.c:1752 ../src/xfdesktop-file-icon-manager.c:798
+#: ../settings/main.c:1735 ../src/xfdesktop-file-icon-manager.c:798
 #: ../src/xfdesktop-file-icon-manager.c:1353
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Ekki tókst að keyra \"%s\":"
 
-#: ../settings/main.c:1753 ../src/xfdesktop-file-icon-manager.c:800
+#: ../settings/main.c:1736 ../src/xfdesktop-file-icon-manager.c:800
 #: ../src/xfdesktop-file-icon-manager.c:1102
 #: ../src/xfdesktop-file-icon-manager.c:1354 ../src/xfdesktop-file-utils.c:683
 #: ../src/xfdesktop-file-utils.c:1217 ../src/xfdesktop-file-utils.c:1295
@@ -150,7 +151,7 @@ msgstr "Ekki tókst að keyra \"%s\":"
 msgid "Launch Error"
 msgstr "Villa í ræsingu"
 
-#: ../settings/main.c:1755 ../settings/xfdesktop-settings-ui.glade.h:20
+#: ../settings/main.c:1738 ../settings/xfdesktop-settings-ui.glade.h:20
 #: ../src/xfdesktop-file-icon-manager.c:562
 #: ../src/xfdesktop-file-icon-manager.c:581
 #: ../src/xfdesktop-file-icon-manager.c:666
@@ -171,59 +172,59 @@ msgstr "Villa í ræsingu"
 msgid "_Close"
 msgstr "Lo_ka"
 
-#: ../settings/main.c:1910
+#: ../settings/main.c:1893
 msgid "Image files"
 msgstr "Myndskrár"
 
 #. Change the title of the file chooser dialog
-#: ../settings/main.c:1918
+#: ../settings/main.c:1901
 msgid "Select a Directory"
 msgstr "Veldu möppu"
 
-#: ../settings/main.c:2123
+#: ../settings/main.c:2106
 msgid "Settings manager socket"
 msgstr "Sökkull stillingastjórnunar"
 
-#: ../settings/main.c:2123
+#: ../settings/main.c:2106
 msgid "SOCKET ID"
 msgstr "AUÐKENNI SÖKKULS - ID"
 
-#: ../settings/main.c:2124
+#: ../settings/main.c:2107
 msgid "Version information"
 msgstr "Útgáfuupplýsingar"
 
-#: ../settings/main.c:2125 ../src/xfdesktop-application.c:842
+#: ../settings/main.c:2108 ../src/xfdesktop-application.c:842
 msgid "Enable debug messages"
 msgstr "Virkja afslúsunarskilaboð"
 
-#: ../settings/main.c:2149
+#: ../settings/main.c:2132
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Skrifaðu '%s --help' til að sjá hvernig á að nota þetta."
 
-#: ../settings/main.c:2161
+#: ../settings/main.c:2144
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce þróunarteymið. Allur réttur áskilinn."
 
-#: ../settings/main.c:2162
+#: ../settings/main.c:2145
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Tilkynntu villur til <%s>."
 
-#: ../settings/main.c:2169
+#: ../settings/main.c:2152
 msgid "Desktop Settings"
 msgstr "Skjáborðsstillingar"
 
-#: ../settings/main.c:2171
+#: ../settings/main.c:2154
 msgid "Unable to contact settings server"
 msgstr "Gat ekki tengt við stillingaþjón"
 
-#: ../settings/main.c:2173
+#: ../settings/main.c:2156
 msgid "Quit"
 msgstr "Hætta"
 
 #: ../settings/xfce-backdrop-settings.desktop.in.in.h:1
-#: ../settings/xfdesktop-settings-ui.glade.h:18 ../src/xfce-desktop.c:1174
+#: ../settings/xfdesktop-settings-ui.glade.h:18 ../src/xfce-desktop.c:1176
 msgid "Desktop"
 msgstr "Skjáborð"
 
@@ -865,7 +866,7 @@ msgstr "_Raða táknmyndum á skjáborði"
 
 #: ../src/xfdesktop-file-icon-manager.c:1861
 msgid "_Next Background"
-msgstr ""
+msgstr "_Næsti bakgrunnur"
 
 #: ../src/xfdesktop-file-icon-manager.c:1871
 msgid "Desktop _Settings..."
@@ -902,7 +903,7 @@ msgstr "_Hætta við"
 
 #: ../src/xfdesktop-file-icon-manager.c:3683
 msgid "Untitled document"
-msgstr ""
+msgstr "Ónefnt skjal"
 
 #. TRANSLATORS: file was modified less than one day ago
 #: ../src/xfdesktop-file-utils.c:159
@@ -1099,6 +1100,10 @@ msgid ""
 "Size: %s\n"
 "Last modified: %s"
 msgstr ""
+"Heiti %s\n"
+"Tegund: %s\n"
+"Stærð: %s\n"
+"Seinast breytt: %s"
 
 #: ../src/xfdesktop-special-file-icon.c:461
 msgid "Trash is empty"
