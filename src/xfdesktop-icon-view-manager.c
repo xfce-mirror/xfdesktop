@@ -420,6 +420,9 @@ xfdesktop_icon_view_manager_update_workarea(XfdesktopIconViewManager *manager)
 
     if (manager->priv->icons_on_primary) {
         GdkMonitor *monitor = gdk_display_get_primary_monitor(display);
+        if (monitor == NULL) {
+            monitor = gdk_display_get_monitor(display, 0);
+        }
         gdk_monitor_get_workarea(monitor, &new_workarea);
     } else if (!xfdesktop_icon_view_manager_get_full_workarea(manager, &new_workarea)) {
         xfdesktop_get_screen_dimensions(screen, &new_workarea.width, &new_workarea.height);
