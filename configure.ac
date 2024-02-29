@@ -11,7 +11,7 @@ m4_define([glib_minimum_version], [2.66.0])
 m4_define([gtk_minimum_version], [3.24.0])
 m4_define([libxfce4util_minimum_version], [4.13.0])
 m4_define([libxfce4ui_minimum_version], [4.13.0])
-m4_define([libxfce4windowing_minimum_version], [4.19.1])
+m4_define([libxfce4windowing_minimum_version], [4.19.3])
 m4_define([garcon_minimum_version], [0.6.0])
 m4_define([exo_minimum_version], [0.11.0])
 m4_define([thunar_minimum_version], [4.17.10])
@@ -89,6 +89,7 @@ XDT_CHECK_OPTIONAL_FEATURE([X11],
                            [
                                XDT_FEATURE_DEPENDENCY([LIBX11], [x11], [libx11_minimum_version])
                                XDT_FEATURE_DEPENDENCY([GDK_X11], [gdk-x11-3.0], [gtk_minimum_version])
+                               XDT_FEATURE_DEPENDENCY([LIBXFCE4WINDOWING_X11], [libxfce4windowing-x11-0], [libxfce4windowing_minimum_version])
                            ],
                            [the X11 windowing system])
 XDT_CHECK_OPTIONAL_FEATURE([WAYLAND],
