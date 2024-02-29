@@ -56,6 +56,9 @@
 #include <xfconf/xfconf.h>
 #include <libxfce4ui/libxfce4ui.h>
 #include <libxfce4windowing/libxfce4windowing.h>
+#ifdef ENABLE_X11
+#include <libxfce4windowing/xfw-x11.h>
+#endif  /* ENABLE_X11 */
 #include <exo/exo.h>
 
 #include "xfdesktop-common.h"
@@ -1698,7 +1701,7 @@ is_our_window(AppearancePanel *panel,
     if (xfw_windowing_get() == XFW_WINDOWING_X11) {
         GdkWindow *toplevel_window = gtk_widget_get_window(toplevel);
         Window our_xid = gdk_x11_window_get_xid(toplevel_window);
-        Window window_xid = xfw_window_get_id(window);
+        Window window_xid = xfw_window_x11_get_xid(window);
         Window cur_win = our_xid;
         GdkDisplay *gdpy = gdk_window_get_display(toplevel_window);
         Display *dpy = gdk_x11_display_get_xdisplay(gdpy);
