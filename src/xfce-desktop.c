@@ -771,9 +771,9 @@ workspace_group_created_cb(XfwScreen *screen,
 
     g_signal_connect(group, "active-workspace-changed",
                      G_CALLBACK(workspace_changed_cb), desktop);
-    g_signal_connect(group, "workspace-created",
+    g_signal_connect(group, "workspace-added",
                      G_CALLBACK(workspace_created_cb), desktop);
-    g_signal_connect(group, "workspace-destroyed",
+    g_signal_connect(group, "workspace-removed",
                      G_CALLBACK(workspace_destroyed_cb), desktop);
 }
 
