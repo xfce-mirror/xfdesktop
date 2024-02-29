@@ -2054,9 +2054,9 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
          l != NULL;
          l = l->next)
     {
-        g_signal_connect(l->data, "workspace-created",
+        g_signal_connect(l->data, "workspace-added",
                          G_CALLBACK(cb_workspace_count_changed), panel);
-        g_signal_connect(l->data, "workspace-destroyed",
+        g_signal_connect(l->data, "workspace-removed",
                          G_CALLBACK(cb_workspace_count_changed), panel);
         g_signal_connect(l->data, "active-workspace-changed",
                          G_CALLBACK(cb_workspace_changed), panel);
