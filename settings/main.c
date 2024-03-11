@@ -1835,13 +1835,15 @@ static void
 cb_monitor_changed(GdkScreen *gscreen,
                    gpointer user_data)
 {
-    AppearancePanel *panel = user_data;
+    if (gdk_display_get_n_monitors(gdk_screen_get_display(gscreen)) > 0) {
+        AppearancePanel *panel = user_data;
 
-    /* Update background because the monitor we're on may have changed */
-    cb_update_background_tab(panel->xfw_window, user_data);
+        /* Update background because the monitor we're on may have changed */
+        cb_update_background_tab(panel->xfw_window, user_data);
 
-    /* Update the frame name because we may change from/to a single monitor */
-    xfdesktop_settings_update_iconview_frame_name(panel, xfw_window_get_workspace(panel->xfw_window));
+        /* Update the frame name because we may change from/to a single monitor */
+        xfdesktop_settings_update_iconview_frame_name(panel, xfw_window_get_workspace(panel->xfw_window));
+    }
 }
 
 static void

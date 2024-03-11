@@ -616,14 +616,16 @@ xfce_desktop_monitors_changed(GdkScreen *gscreen,
 
     TRACE("entering");
 
-    /* Update the workspaces */
-    for(i = 0; i < desktop->priv->nworkspaces; i++) {
-        xfce_workspace_monitors_changed(desktop->priv->workspaces[i],
-                                        gscreen);
-    }
+    if (gdk_display_get_n_monitors(gdk_screen_get_display(gscreen)) > 0) {
+        /* Update the workspaces */
+        for(i = 0; i < desktop->priv->nworkspaces; i++) {
+            xfce_workspace_monitors_changed(desktop->priv->workspaces[i],
+                                            gscreen);
+        }
 
-    /* fake a screen size changed, so the background is properly set */
-    screen_size_changed_cb(gscreen, user_data);
+        /* fake a screen size changed, so the background is properly set */
+        screen_size_changed_cb(gscreen, user_data);
+    }
 }
 
 static void

@@ -3802,8 +3802,10 @@ xfdesktop_monitors_changed_cb(GdkScreen *gscreen,
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(user_data);
 
-    /* Resize the grid to be sure we take into account monitor setup changes */
-    xfdesktop_icon_view_size_grid(icon_view);
+    if (gdk_display_get_n_monitors(gdk_screen_get_display(gscreen)) > 0) {
+        /* Resize the grid to be sure we take into account monitor setup changes */
+        xfdesktop_icon_view_size_grid(icon_view);
+    }
 }
 
 
