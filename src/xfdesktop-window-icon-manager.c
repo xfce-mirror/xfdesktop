@@ -587,9 +587,9 @@ workspace_group_created_cb(XfwWorkspaceManager *workspace_manager,
 
     g_signal_connect(G_OBJECT(group), "active-workspace-changed",
                      G_CALLBACK(workspace_changed_cb), wmanager);
-    g_signal_connect(G_OBJECT(group), "workspace-created",
+    g_signal_connect(G_OBJECT(group), "workspace-added",
                      G_CALLBACK(workspace_created_cb), wmanager);
-    g_signal_connect(G_OBJECT(group), "workspace-destroyed",
+    g_signal_connect(G_OBJECT(group), "workspace-removed",
                      G_CALLBACK(workspace_destroyed_cb), wmanager);
 }
 
