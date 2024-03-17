@@ -1,3 +1,39 @@
+4.19.2 (2024-03-17)
+======
+- Fix critical warning when disabling window icons
+- Update for new libxfce4windowing workspace API
+- Fix issue with XfceDesktop->workspace_manager NULL on realize
+- Don't react to GdkScreen::monitors-changed if no monitors
+- Update for `xfw_window_x11_get_xid()` in `libxfce4windowing-4.19.3`
+- Fix crash when primary monitor is not set
+- Avoid showing non-removable drives/volumes on the desktop
+- Add CI builds for --disable-x11 and --disable-wayland
+- ifdef out unusued code in settings dialog when X11 is disabled
+- Fix build when X11 support disabled
+- Make DEFAULT_BACKDROP configurable at build time
+- Close rc file under sanity check
+- I18n: Update po/LINGUAS list
+- I18n: Update po/LINGUAS list
+- I18n: Update po/LINGUAS list
+- Fix desktop window positioning on multi-monitor Wayland
+- Remove inaccurate comment
+- Pass event button on menu popup when it's a release event as well
+- Fix spacing/layout in new settings tab for consistency
+- Move File/Launcher icons settings to a separate tab
+- Add pref for label underline when in single click mode
+- Translation Updates:
+  Albanian, Amharic, Arabic, Armenian (Armenia), Asturian, Azerbaijani,
+  Basque, Belarusian, Belarusian (Tarask), Bulgarian, Catalan, Chinese
+  (China), Chinese (Hong Kong), Chinese (Taiwan), Croatian, Czech,
+  Danish, Dutch, Eastern Armenian, English (Australia), English
+  (Canada), English (United Kingdom), Estonian, Finnish, French,
+  Galician, Georgian, German, Greek, Hebrew, Hungarian, Icelandic,
+  Indonesian, Interlingue, Italian, Japanese, Kazakh, Korean,
+  Lithuanian, Malay, Norwegian Bokmål, Norwegian Nynorsk, Occitan
+  (post 1500), Persian (Iran), Polish, Portuguese, Portuguese (Brazil),
+  Romanian, Russian, Serbian, Slovak, Slovenian, Spanish, Swedish,
+  Thai, Ukrainian, Uyghur, Uzbek
+
 4.19.1 (2023-04-14)
 ======
 - Fix configure configuration summary
