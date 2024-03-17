@@ -548,7 +548,9 @@ workspace_destroyed_cb(XfwWorkspaceManager *manager,
     if (icon_workspace != NULL) {
         if (wmanager->priv->active_icon_workspace == icon_workspace) {
             wmanager->priv->active_icon_workspace = NULL;
-            gtk_icon_view_set_model(GTK_ICON_VIEW(wmanager->priv->icon_view), NULL);
+            if (wmanager->priv->icon_view != NULL) {
+                gtk_icon_view_set_model(GTK_ICON_VIEW(wmanager->priv->icon_view), NULL);
+            }
         }
 
         g_hash_table_remove(wmanager->priv->icon_workspaces, workspace);
