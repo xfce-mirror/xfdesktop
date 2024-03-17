@@ -159,14 +159,14 @@ void
 menu_cleanup(XfconfChannel *channel)
 {
 #ifdef ENABLE_DESKTOP_MENU
-    g_return_if_fail(inited);
+    if (inited) {
+        g_signal_handlers_disconnect_by_func(channel,
+                                             G_CALLBACK(menu_settings_changed),
+                                             NULL);
 
-    g_signal_handlers_disconnect_by_func(channel,
-                                         G_CALLBACK(menu_settings_changed),
-                                         NULL);
+        g_clear_object(&garcon_menu);
 
-    g_clear_object(&garcon_menu);
-
-    inited = FALSE;
+        inited = FALSE;
+    }
 #endif
 }
