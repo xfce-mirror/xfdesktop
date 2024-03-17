@@ -1728,15 +1728,16 @@ xfce_desktop_refresh(XfceDesktop *desktop,
         }
 
         backdrop = xfce_workspace_get_backdrop(current_workspace, i);
-
-        if(advance_wallpaper) {
-            /* We need to trigger a new wallpaper event */
-            xfce_backdrop_force_cycle(backdrop);
-        } else {
-            /* Reinitialize wallpaper */
-            xfce_backdrop_clear_cached_image(backdrop);
-            /* Fake a changed event so we redraw the wallpaper */
-            backdrop_changed_cb(backdrop, desktop);
+        if (G_LIKELY(backdrop != NULL)) {
+            if(advance_wallpaper) {
+                /* We need to trigger a new wallpaper event */
+                xfce_backdrop_force_cycle(backdrop);
+            } else {
+                /* Reinitialize wallpaper */
+                xfce_backdrop_clear_cached_image(backdrop);
+                /* Fake a changed event so we redraw the wallpaper */
+                backdrop_changed_cb(backdrop, desktop);
+            }
         }
     }
 }
