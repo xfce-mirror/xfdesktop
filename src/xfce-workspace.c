@@ -74,6 +74,8 @@ struct _XfceWorkspacePrivate
 {
     GdkScreen *gscreen;
 
+    XfwWorkspace *xfw_workspace;
+
     XfconfChannel *channel;
     gchar *property_prefix;
     GArray *binding_ids;
@@ -739,6 +741,7 @@ xfce_workspace_remove_backdrops(XfceWorkspace *workspace)
  * xfce_workspace_new:
  * @gscreen: The current #GdkScreen.
  * @channel: An #XfconfChannel to use for settings.
+ * @workspace: The corresponding #XfwWorkspace.
  * @property_prefix: String prefix for per-screen properties.
  * @number: The workspace number to represent
  *
@@ -750,12 +753,14 @@ xfce_workspace_remove_backdrops(XfceWorkspace *workspace)
 XfceWorkspace *
 xfce_workspace_new(GdkScreen *gscreen,
                    XfconfChannel *channel,
+                   XfwWorkspace *xfw_workspace,
                    const gchar *property_prefix,
                    gint number)
 {
     XfceWorkspace *workspace;
 
     g_return_val_if_fail(channel && property_prefix, NULL);
+    g_return_val_if_fail(XFW_IS_WORKSPACE(xfw_workspace), NULL);
 
     workspace = g_object_new(XFCE_TYPE_WORKSPACE, NULL);
 
@@ -763,9 +768,10 @@ xfce_workspace_new(GdkScreen *gscreen,
         gscreen = gdk_display_get_default_screen(gdk_display_get_default());
 
     workspace->priv->gscreen = gscreen;
-    workspace->priv->workspace_num = number;
     workspace->priv->channel = XFCONF_CHANNEL(g_object_ref(G_OBJECT(channel)));
+    workspace->priv->xfw_workspace = xfw_workspace;
     workspace->priv->property_prefix = g_strdup(property_prefix);
+    workspace->priv->workspace_num = number;
 
     return workspace;
 }
@@ -776,6 +782,12 @@ xfce_workspace_get_workspace_num(XfceWorkspace *workspace)
     g_return_val_if_fail(XFCE_IS_WORKSPACE(workspace), -1);
 
     return workspace->priv->workspace_num;
+}
+
+XfwWorkspace *
+xfce_workspace_get_xfw_workspace(XfceWorkspace *workspace) {
+    g_return_val_if_fail(XFCE_IS_WORKSPACE(workspace), NULL);
+    return workspace->priv->xfw_workspace;
 }
 
 /**

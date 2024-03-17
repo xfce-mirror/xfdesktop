@@ -1678,7 +1678,16 @@ cb_workspace_changed(XfwWorkspaceGroup *group,
 }
 
 static void
-cb_workspace_count_changed(XfwWorkspaceGroup *group,
+cb_workspace_group_created(XfwWorkspaceManager *manager,
+                           XfwWorkspaceGroup *group,
+                           AppearancePanel *panel)
+{
+    g_signal_connect(group, "active-workspace-changed",
+                     G_CALLBACK(cb_workspace_changed), panel);
+}
+
+static void
+cb_workspace_count_changed(XfwWorkspaceManager *manager,
                            XfwWorkspace *workspace,
                            gpointer user_data)
 {
@@ -2049,17 +2058,18 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     screen = gtk_widget_get_screen(appearance_container);
     xfw_screen = xfw_screen_get_default();
     workspace_manager = xfw_screen_get_workspace_manager(xfw_screen);
-    // FIXME: watch for new and destroyed workspace groups
+    g_signal_connect(workspace_manager, "workspace-group-created",
+                     G_CALLBACK(cb_workspace_group_created), panel);
+    g_signal_connect(workspace_manager, "workspace-created",
+                     G_CALLBACK(cb_workspace_count_changed), panel);
+    g_signal_connect(workspace_manager, "workspace-destroyed",
+                     G_CALLBACK(cb_workspace_count_changed), panel);
 
     /* watch for workspace changes */
     for (GList *l = xfw_workspace_manager_list_workspace_groups(workspace_manager);
          l != NULL;
          l = l->next)
     {
-        g_signal_connect(l->data, "workspace-created",
-                         G_CALLBACK(cb_workspace_count_changed), panel);
-        g_signal_connect(l->data, "workspace-destroyed",
-                         G_CALLBACK(cb_workspace_count_changed), panel);
         g_signal_connect(l->data, "active-workspace-changed",
                          G_CALLBACK(cb_workspace_changed), panel);
     }

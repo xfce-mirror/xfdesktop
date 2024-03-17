@@ -23,6 +23,7 @@
 
 #include <gtk/gtk.h>
 #include <xfconf/xfconf.h>
+#include <libxfce4windowing/libxfce4windowing.h>
 
 #include "xfce-backdrop.h"
 
@@ -59,11 +60,14 @@ GType xfce_workspace_get_type                     (void) G_GNUC_CONST;
 
 XfceWorkspace *xfce_workspace_new(GdkScreen *gscreen,
                                   XfconfChannel *channel,
+                                  XfwWorkspace *xfw_workspace,
                                   const gchar *property_prefix,
                                   gint number);
 
 gint xfce_workspace_get_workspace_num(XfceWorkspace *workspace);
 void xfce_workspace_set_workspace_num(XfceWorkspace *workspace, gint number);
+
+XfwWorkspace *xfce_workspace_get_xfw_workspace(XfceWorkspace *workspace);
 
 void xfce_workspace_monitors_changed(XfceWorkspace *workspace,
                                      GdkScreen *gscreen);
