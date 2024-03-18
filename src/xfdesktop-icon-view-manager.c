@@ -36,6 +36,10 @@
 #include "xfdesktop-icon-view-manager.h"
 #include "xfdesktop-icon-view.h"
 
+#ifdef ENABLE_X11
+#include "xfdesktop-x11.h"
+#endif
+
 enum {
     PROP0 = 0,
     PROP_PARENT,
@@ -328,79 +332,10 @@ xfdesktop_icon_view_manager_get_full_workarea(XfdesktopIconViewManager *manager,
 
 #ifdef ENABLE_X11
     if (xfw_windowing_get() == XFW_WINDOWING_X11) {
-        GdkScreen *gscreen;
-        GdkDisplay *gdisplay;
-        Display *dpy;
-        Window root;
-        Atom property, actual_type = None;
-        gint actual_format = 0, first_id;
-        gulong nitems = 0, bytes_after = 0, offset = 0, tmp_size = 0;
-        unsigned char *data_p = NULL;
-        gint scale_factor;
-
-        gscreen = gtk_widget_has_screen(manager->priv->parent)
+        GdkScreen *gscreen = gtk_widget_has_screen(manager->priv->parent)
             ? gtk_widget_get_screen(manager->priv->parent)
             : gdk_screen_get_default();
-        gdisplay = gdk_screen_get_display(gscreen);
-        dpy = gdk_x11_display_get_xdisplay(gdisplay);
-        root =  gdk_x11_window_get_xid(gdk_screen_get_root_window(gscreen));
-        property = XInternAtom(dpy, "_NET_WORKAREA", False);
-        scale_factor = gtk_widget_get_scale_factor(manager->priv->parent);
-
-        // We only really support a single workarea that all workspaces share,
-        // otherwise this would be 'ws_num * 4'
-        first_id = 0;
-
-        xfw_windowing_error_trap_push(gdisplay);
-
-        do {
-            if (Success == XGetWindowProperty(dpy, root, property, offset,
-                                              G_MAXULONG, False, XA_CARDINAL,
-                                              &actual_type, &actual_format, &nitems,
-                                              &bytes_after, &data_p))
-            {
-                gint i;
-                gulong *data;
-
-                if(actual_format != 32 || actual_type != XA_CARDINAL) {
-                    XFree(data_p);
-                    break;
-                }
-
-                tmp_size = (actual_format / 8) * nitems;
-                if(actual_format == 32) {
-                    tmp_size *= sizeof(long)/4;
-                }
-
-                data = g_malloc(tmp_size);
-                memcpy(data, data_p, tmp_size);
-
-                i = offset / 32;  /* first element id in this batch */
-
-                /* there's probably a better way to do this. */
-                if(i + (glong)nitems >= first_id && first_id - (glong)offset >= 0)
-                    new_workarea.x = data[first_id - offset] / scale_factor;
-                if(i + (glong)nitems >= first_id + 1 && first_id - (glong)offset + 1 >= 0)
-                    new_workarea.y = data[first_id - offset + 1] / scale_factor;
-                if(i + (glong)nitems >= first_id + 2 && first_id - (glong)offset + 2 >= 0)
-                    new_workarea.width = data[first_id - offset + 2] / scale_factor;
-                if(i + (glong)nitems >= first_id + 3 && first_id - (glong)offset + 3 >= 0) {
-                    new_workarea.height = data[first_id - offset + 3] / scale_factor;
-                    ret = TRUE;
-                    XFree(data_p);
-                    g_free(data);
-                    break;
-                }
-
-                offset += actual_format * nitems;
-                XFree(data_p);
-                g_free(data);
-            } else {
-                break;
-            }
-        } while (bytes_after > 0);
-
-        xfw_windowing_error_trap_pop_ignored(gdisplay);
+        ret = xfdesktop_x11_get_full_workarea(gscreen, &new_workarea);
     }
 #endif  /* ENABLE_X11 */
 

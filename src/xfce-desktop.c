@@ -90,6 +90,10 @@
 #include "xfce-desktop-enum-types.h"
 #include "xfce-workspace.h"
 
+#ifdef ENABLE_X11
+#include "xfdesktop-x11.h"
+#endif
+
 /* disable setting the x background for bug 7442 */
 //#define DISABLE_FOR_BUG7442
 
@@ -207,68 +211,6 @@ xfce_desktop_settings_bindings_init(void)
 
 
 /* private functions */
-
-#ifdef ENABLE_X11
-static void
-set_imgfile_root_property(XfceDesktop *desktop, const gchar *filename,
-                          gint monitor)
-{
-    if (xfw_windowing_get() == XFW_WINDOWING_X11) {
-        GdkDisplay *display;
-        gchar property_name[128];
-
-        display = gdk_screen_get_display(desktop->priv->gscreen);
-        xfw_windowing_error_trap_push(display);
-
-        g_snprintf(property_name, 128, XFDESKTOP_IMAGE_FILE_FMT, monitor);
-        if(filename) {
-            gdk_property_change(gdk_screen_get_root_window(desktop->priv->gscreen),
-                                gdk_atom_intern(property_name, FALSE),
-                                gdk_x11_xatom_to_atom(XA_STRING), 8,
-                                GDK_PROP_MODE_REPLACE,
-                                (guchar *)filename, strlen(filename)+1);
-        } else {
-            gdk_property_delete(gdk_screen_get_root_window(desktop->priv->gscreen),
-                                gdk_atom_intern(property_name, FALSE));
-        }
-
-        xfw_windowing_error_trap_pop_ignored(display);
-    }
-}
-
-static void
-set_real_root_window_surface(GdkScreen *gscreen,
-                             cairo_surface_t *surface)
-{
-#ifndef DISABLE_FOR_BUG7442
-    Pixmap pixmap_id;
-    GdkDisplay *display;
-    GdkWindow *groot;
-    cairo_pattern_t *pattern;
-
-    groot = gdk_screen_get_root_window(gscreen);
-    pixmap_id = cairo_xlib_surface_get_drawable (surface);
-
-    display = gdk_screen_get_display(gscreen);
-    xfw_windowing_error_trap_push(display);
-
-    /* set root property for transparent Eterms */
-    gdk_property_change(groot,
-            gdk_atom_intern("_XROOTPMAP_ID", FALSE),
-            gdk_atom_intern("PIXMAP", FALSE), 32,
-            GDK_PROP_MODE_REPLACE, (guchar *)&pixmap_id, 1);
-    /* and set the root window's BG surface, because aterm is somewhat lame. */
-    pattern = cairo_pattern_create_for_surface(surface);
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-    gdk_window_set_background_pattern(groot, pattern);
-G_GNUC_END_IGNORE_DEPRECATIONS
-    cairo_pattern_destroy(pattern);
-    /* there really should be a standard for this crap... */
-
-    xfw_windowing_error_trap_pop_ignored(display);
-#endif
-}
-#endif  /* ENABLE_X11 */
 
 static cairo_surface_t *
 create_bg_surface(GdkScreen *gscreen, gpointer user_data)
@@ -534,12 +476,14 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
                                    rect.width, rect.height);
 
 #ifdef ENABLE_X11
-        set_imgfile_root_property(desktop,
-                                  xfce_backdrop_get_image_filename(backdrop),
-                                  monitor);
+        if (xfw_windowing_get() == XFW_WINDOWING_X11) {
+            xfdesktop_x11_set_root_image_file_property(gscreen,
+                                                       monitor,
+                                                       xfce_backdrop_get_image_filename(backdrop));
 
-        /* do this again so apps watching the root win notice the update */
-        set_real_root_window_surface(gscreen, surface);
+            /* do this again so apps watching the root win notice the update */
+            xfdesktop_x11_set_root_image_surface(gscreen, surface);
+        }
 #endif  /* ENABLE_X11 */
 
         g_object_unref(G_OBJECT(pix));
@@ -763,72 +707,6 @@ workspace_group_destroyed_cb(XfwWorkspaceManager *manager,
 }
 
 
-#ifdef ENABLE_X11
-static void
-screen_set_x11_selection(XfceDesktop *desktop)
-{
-    Window xwin;
-    gint xscreen;
-    gchar selection_name[100], common_selection_name[32];
-    Atom selection_atom, common_selection_atom, manager_atom;
-
-    xwin = GDK_WINDOW_XID(gtk_widget_get_window(GTK_WIDGET(desktop)));
-    xscreen = gdk_x11_screen_get_screen_number(desktop->priv->gscreen);
-
-    g_snprintf(selection_name, 100, XFDESKTOP_SELECTION_FMT, xscreen);
-    selection_atom = XInternAtom(gdk_x11_get_default_xdisplay(), selection_name, False);
-    manager_atom = XInternAtom(gdk_x11_get_default_xdisplay(), "MANAGER", False);
-
-    g_snprintf(common_selection_name, 32, "_NET_DESKTOP_MANAGER_S%d", xscreen);
-    common_selection_atom = XInternAtom(gdk_x11_get_default_xdisplay(), common_selection_name, False);
-
-    /* the previous check in src/main.c occurs too early, so workaround by
-     * adding this one. */
-   if(XGetSelectionOwner(gdk_x11_get_default_xdisplay(), selection_atom) != None) {
-       g_critical("%s: already running, quitting.", PACKAGE);
-       exit(0);
-   }
-
-    /* Check that _NET_DESKTOP_MANAGER_S%d isn't set, as it means another
-     * desktop manager is running, e.g. nautilus */
-    if(XGetSelectionOwner (gdk_x11_get_default_xdisplay(), common_selection_atom) != None) {
-        g_critical("%s: another desktop manager is running.", PACKAGE);
-        exit(1);
-    }
-
-    XSelectInput(gdk_x11_get_default_xdisplay(), xwin, PropertyChangeMask | ButtonPressMask);
-    XSetSelectionOwner(gdk_x11_get_default_xdisplay(), selection_atom, xwin, GDK_CURRENT_TIME);
-    XSetSelectionOwner(gdk_x11_get_default_xdisplay(), common_selection_atom, xwin, GDK_CURRENT_TIME);
-
-    /* Check to see if we managed to claim the selection. If not,
-     * we treat it as if we got it then immediately lost it */
-    if(XGetSelectionOwner(gdk_x11_get_default_xdisplay(), selection_atom) == xwin) {
-        XClientMessageEvent xev;
-        Window xroot = GDK_WINDOW_XID(gdk_screen_get_root_window(desktop->priv->gscreen));
-
-        xev.type = ClientMessage;
-        xev.window = xroot;
-        xev.message_type = manager_atom;
-        xev.format = 32;
-        xev.data.l[0] = GDK_CURRENT_TIME;
-        xev.data.l[1] = selection_atom;
-        xev.data.l[2] = xwin;
-        xev.data.l[3] = 0;    /* manager specific data */
-        xev.data.l[4] = 0;    /* manager specific data */
-
-        XSendEvent(gdk_x11_get_default_xdisplay(), xroot, False, StructureNotifyMask, (XEvent *)&xev);
-    } else {
-        g_error("%s: could not set selection ownership", PACKAGE);
-        exit(1);
-    }
-}
-#endif  /* ENABLE_X11 */
-
-
-
-/* gobject-related functions */
-
-
 G_DEFINE_TYPE_WITH_PRIVATE(XfceDesktop, xfce_desktop, GTK_TYPE_WINDOW)
 
 
@@ -983,6 +861,15 @@ xfce_desktop_finalize(GObject *object)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(object);
 
+#ifdef ENABLE_X11
+    if (xfw_windowing_get() == XFW_WINDOWING_X11) {
+        guint nmonitors = gdk_display_get_n_monitors(gdk_display_get_default());
+        for (guint i = 0; i < nmonitors; ++i) {
+            xfdesktop_x11_set_root_image_file_property(desktop->priv->gscreen, i, NULL);
+        }
+     }
+#endif
+
     if (desktop->priv->active_root_menu != NULL) {
         gtk_menu_shell_deactivate(GTK_MENU_SHELL(desktop->priv->active_root_menu));
     }
@@ -1112,25 +999,6 @@ xfce_desktop_realize(GtkWidget *widget)
             gdk_atom_intern("ATOM", FALSE), 32,
             GDK_PROP_MODE_REPLACE, (guchar *)&atom, 1);
 
-#ifdef ENABLE_X11
-    if (xfw_windowing_get() == XFW_WINDOWING_X11) {
-        Window xid = GDK_WINDOW_XID(gtk_widget_get_window(GTK_WIDGET(desktop)));
-        GdkWindow *groot = gdk_screen_get_root_window(desktop->priv->gscreen);
-
-        gdk_property_change(groot,
-                gdk_atom_intern("XFCE_DESKTOP_WINDOW", FALSE),
-                gdk_atom_intern("WINDOW", FALSE), 32,
-                GDK_PROP_MODE_REPLACE, (guchar *)&xid, 1);
-
-        gdk_property_change(groot,
-                gdk_atom_intern("NAUTILUS_DESKTOP_WINDOW_ID", FALSE),
-                gdk_atom_intern("WINDOW", FALSE), 32,
-                GDK_PROP_MODE_REPLACE, (guchar *)&xid, 1);
-
-        screen_set_x11_selection(desktop);
-    }
-#endif  /* ENABLE_X11 */
-
     /* watch for screen changes */
     g_signal_connect(G_OBJECT(desktop->priv->gscreen), "monitors-changed",
                      G_CALLBACK(xfce_desktop_monitors_changed), desktop);
@@ -1151,10 +1019,7 @@ xfce_desktop_unrealize(GtkWidget *widget)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(widget);
     GdkDisplay  *display;
-    GHashTableIter iter;
-    XfceWorkspace *workspace;
     GdkWindow *groot;
-    gchar property_name[128];
 
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
 
@@ -1189,11 +1054,14 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 G_GNUC_END_IGNORE_DEPRECATIONS
 #endif
 
-    g_hash_table_iter_init(&iter, desktop->priv->workspaces);
-    while (g_hash_table_iter_next(&iter, NULL, (gpointer)&workspace)) {
-        g_snprintf(property_name, 128, XFDESKTOP_IMAGE_FILE_FMT, xfce_workspace_get_workspace_num(workspace));
-        gdk_property_delete(groot, gdk_atom_intern(property_name, FALSE));
+#ifdef ENABLE_X11
+    if (xfw_windowing_get() == XFW_WINDOWING_X11) {
+        guint nmonitors = gdk_display_get_n_monitors(display);
+        for (guint i = 0; i < nmonitors; ++i) {
+            xfdesktop_x11_set_root_image_file_property(desktop->priv->gscreen, i, NULL);
+        }
     }
+#endif
 
     gdk_display_flush(display);
     xfw_windowing_error_trap_pop_ignored(display);

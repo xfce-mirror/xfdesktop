@@ -37,6 +37,12 @@ xfdesktop_SOURCES = \
 	xfdesktop-application.c \
 	xfdesktop-application.h
 
+if ENABLE_X11
+xfdesktop_SOURCES += \
+	xfdesktop-x11.c \
+	xfdesktop-x11.h
+endif
+
 desktop_icon_sources = \
 	xfdesktop-cell-renderer-icon-label.c \
 	xfdesktop-cell-renderer-icon-label.h \

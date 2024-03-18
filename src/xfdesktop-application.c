@@ -59,6 +59,10 @@
 #include "menu.h"
 #include "windowlist.h"
 
+#ifdef ENABLE_X11
+#include "xfdesktop-x11.h"
+#endif
+
 #ifdef HAVE_LIBNOTIFY
 #include "xfdesktop-notify.h"
 #endif
@@ -69,13 +73,6 @@ static void xfdesktop_application_finalize(GObject *object);
 
 static void session_logout(void);
 static void session_die(gpointer user_data);
-
-#ifdef ENABLE_X11
-static void event_forward_to_rootwin(GdkScreen *gscreen, GdkEvent *event);
-static gboolean scroll_cb(GtkWidget *w, GdkEventScroll *evt, gpointer user_data);
-static gboolean cb_wait_for_window_manager(gpointer data);
-static void     cb_wait_for_window_manager_destroyed(gpointer data);
-#endif  /* ENABLE_X11 */
 
 static gboolean reload_idle_cb(gpointer data);
 static void cb_xfdesktop_application_reload(GAction  *action,
@@ -112,18 +109,6 @@ static gint xfdesktop_application_handle_local_options(GApplication *g_applicati
 static gint xfdesktop_application_command_line(GApplication *g_application,
                                                GApplicationCommandLine *command_line);
 
-typedef struct
-{
-    XfdesktopApplication *app;
-
-    Display *dpy;
-    Atom *atoms;
-    guint atom_count;
-    guint have_wm : 1;
-    guint counter;
-    guint wait_for_wm_timeout_id;
-} WaitForWM;
-
 typedef struct {
     gboolean version;
     gboolean enable_debug;
@@ -139,12 +124,17 @@ struct _XfdesktopApplication
     GtkWidget *desktop;
     XfconfChannel *channel;
 
-    gboolean disable_wm_check;
-    guint wait_for_wm_timeout_id;
     XfceSMClient *sm_client;
     GCancellable *cancel;
 
     XfdesktopLocalArgs *args;
+
+#ifdef ENABLE_X11
+    gboolean disable_wm_check;
+    WaitForWM *wfwm;
+
+    GdkWindow *selection_window;
+#endif
 };
 
 struct _XfdesktopApplicationClass
@@ -218,7 +208,9 @@ xfdesktop_application_init(XfdesktopApplication *app)
 #endif
         { "enable-debug", 'e', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &args->enable_debug, N_("Enable debug messages"), NULL },
         { "disable-debug", 'd', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &args->disable_debug, N_("Disable debug messages"), NULL },
+#ifdef ENABLE_X11
         { "disable-wm-check", 'D', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &app->disable_wm_check, N_("Do not wait for a window manager on startup"), NULL },
+#endif
         { "quit", 'Q', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, NULL, N_("Cause xfdesktop to quit"), NULL },
         G_OPTION_ENTRY_NULL
     };
@@ -272,6 +264,17 @@ xfdesktop_application_finalize(GObject *object)
     XfdesktopApplication *app = XFDESKTOP_APPLICATION(object);
 
     g_free(app->args);
+
+#ifdef ENABLE_X11
+    xfdesktop_x11_wait_for_wm_destroy(app->wfwm);
+    if (app->selection_window != NULL) {
+        gdk_window_destroy(app->selection_window);
+    }
+
+    if (xfw_windowing_get() == XFW_WINDOWING_X11) {
+        xfdesktop_x11_set_compat_properties(NULL);
+    }
+#endif
 
     G_OBJECT_CLASS(xfdesktop_application_parent_class)->finalize(object);
 }
@@ -329,83 +332,17 @@ session_die(gpointer user_data)
     g_application_quit(G_APPLICATION(app));
 }
 
-#ifdef ENABLE_X11
-static void
-event_forward_to_rootwin(GdkScreen *gscreen, GdkEvent *event)
-{
-    XButtonEvent xev, xev2;
-    Display *dpy = GDK_DISPLAY_XDISPLAY(gdk_screen_get_display(gscreen));
-
-    if(event->type == GDK_BUTTON_PRESS || event->type == GDK_BUTTON_RELEASE) {
-        if(event->type == GDK_BUTTON_PRESS) {
-            xev.type = ButtonPress;
-            /*
-             * rox has an option to disable the next
-             * instruction. it is called "blackbox_hack". Does
-             * anyone know why exactly it is needed?
-             */
-            XUngrabPointer(dpy, event->button.time);
-        } else
-            xev.type = ButtonRelease;
-
-        xev.button = event->button.button;
-        xev.x = event->button.x;    /* Needed for icewm */
-        xev.y = event->button.y;
-        xev.x_root = event->button.x_root;
-        xev.y_root = event->button.y_root;
-        xev.state = event->button.state;
-
-        xev2.type = 0;
-    } else if(event->type == GDK_SCROLL) {
-        xev.type = ButtonPress;
-        xev.button = event->scroll.direction + 4;
-        xev.x = event->scroll.x;    /* Needed for icewm */
-        xev.y = event->scroll.y;
-        xev.x_root = event->scroll.x_root;
-        xev.y_root = event->scroll.y_root;
-        xev.state = event->scroll.state;
-
-        xev2.type = ButtonRelease;
-        xev2.button = xev.button;
-    } else
-        return;
-    xev.window = GDK_WINDOW_XID(gdk_screen_get_root_window(gscreen));
-    xev.root =  xev.window;
-    xev.subwindow = None;
-    xev.time = event->button.time;
-    xev.same_screen = True;
-
-    XSendEvent(dpy, xev.window, False, ButtonPressMask | ButtonReleaseMask,
-            (XEvent *)&xev);
-    if(xev2.type == 0)
-        return;
-
-    /* send button release for scroll event */
-    xev2.window = xev.window;
-    xev2.root = xev.root;
-    xev2.subwindow = xev.subwindow;
-    xev2.time = xev.time;
-    xev2.x = xev.x;
-    xev2.y = xev.y;
-    xev2.x_root = xev.x_root;
-    xev2.y_root = xev.y_root;
-    xev2.state = xev.state;
-    xev2.same_screen = xev.same_screen;
-
-    XSendEvent(dpy, xev2.window, False, ButtonPressMask | ButtonReleaseMask,
-            (XEvent *)&xev2);
-}
-#endif  /* ENABLE_X11 */
-
 static gboolean
 scroll_cb(GtkWidget *w, GdkEventScroll *evt, gpointer user_data)
 {
 #ifdef ENABLE_X11
-    event_forward_to_rootwin(gtk_widget_get_screen(w), (GdkEvent*)evt);
-    return TRUE;
-#else  /* !ENABLE_X11 */
+    if (xfw_windowing_get() == XFW_WINDOWING_X11) {
+        xfdesktop_x11_desktop_scrolled(w, evt);
+        return TRUE;
+    }
+#endif
+
     return FALSE;
-#endif  /* ENABLE_X11 */
 }
 
 static gboolean
@@ -572,79 +509,6 @@ cb_xfdesktop_application_debug(GAction  *action,
     xfdesktop_debug_set(g_variant_get_boolean(parameter));
 }
 
-#ifdef ENABLE_X11
-/* Cleans up the associated wait for wm resources */
-static void
-wait_for_window_manager_cleanup(WaitForWM *wfwm)
-{
-    g_free(wfwm->atoms);
-    XCloseDisplay(wfwm->dpy);
-    g_slice_free(WaitForWM, wfwm);
-}
-
-static gboolean
-cb_wait_for_window_manager(gpointer data)
-{
-    WaitForWM *wfwm = data;
-    guint i;
-    gboolean have_wm = TRUE;
-
-    /* Check if it was canceled. This way xfdesktop doesn't start up if
-     * we're quitting */
-    if(g_cancellable_is_cancelled(wfwm->app->cancel)) {
-        g_application_release(G_APPLICATION(wfwm->app));
-        wait_for_window_manager_cleanup(wfwm);
-        return FALSE;
-    }
-
-    for(i = 0; i < wfwm->atom_count; i++) {
-        if(XGetSelectionOwner(wfwm->dpy, wfwm->atoms[i]) == None) {
-            XF_DEBUG("window manager not ready on screen %d", i);
-            have_wm = FALSE;
-            break;
-        }
-    }
-
-    wfwm->have_wm = have_wm;
-
-    /* abort if a window manager is found or 5 seconds expired */
-    return wfwm->counter++ < 20 * 5 && !wfwm->have_wm;
-}
-
-static void
-cb_wait_for_window_manager_destroyed(gpointer data)
-{
-    WaitForWM *wfwm = data;
-
-    g_return_if_fail(wfwm->app != NULL);
-
-    /* Check if it was canceled. This way xfdesktop doesn't start up if
-     * we're quitting */
-    if(g_cancellable_is_cancelled(wfwm->app->cancel)) {
-        g_application_release(G_APPLICATION(wfwm->app));
-        wait_for_window_manager_cleanup(wfwm);
-        return;
-    }
-
-
-    wfwm->app->wait_for_wm_timeout_id = 0;
-
-    if(!wfwm->have_wm) {
-        g_printerr("No window manager registered on screen 0. "
-                   "To start the xfdesktop without this check, run with --disable-wm-check.\n");
-    } else {
-        XF_DEBUG("found window manager after %d tries", wfwm->counter);
-    }
-
-    /* start loading the desktop, hopefully a window manager is found, but it
-     * also works without it */
-    xfdesktop_application_start(wfwm->app);
-
-    g_application_release(G_APPLICATION(wfwm->app));
-    wait_for_window_manager_cleanup(wfwm);
-}
-#endif  /* ENABLE_X11 */
-
 static void
 xfdesktop_application_startup(GApplication *g_application)
 {
@@ -663,39 +527,9 @@ xfdesktop_application_startup(GApplication *g_application)
 
 #ifdef ENABLE_X11
     if(!app->disable_wm_check && xfw_windowing_get() == XFW_WINDOWING_X11) {
-        WaitForWM *wfwm;
-        guint i;
-        gchar **atom_names;
-
-        /* hold so it does not exit on us before the main loop gets going */
-        g_application_hold(g_application);
-
-        /* setup data for wm checking */
-        wfwm = g_slice_new0(WaitForWM);
-        wfwm->dpy = XOpenDisplay(NULL);
-        wfwm->have_wm = FALSE;
-        wfwm->counter = 0;
-        wfwm->app = app;
-
-        /* preload wm atoms for all screens */
-        wfwm->atom_count = XScreenCount(wfwm->dpy);
-        wfwm->atoms = g_new(Atom, wfwm->atom_count);
-        atom_names = g_new0(gchar *, wfwm->atom_count + 1);
-
-        for(i = 0; i < wfwm->atom_count; i++)
-            atom_names[i] = g_strdup_printf ("WM_S%d", i);
-
-        if(!XInternAtoms(wfwm->dpy, atom_names, wfwm->atom_count, False, wfwm->atoms))
-            wfwm->atom_count = 0;
-
-        g_strfreev(atom_names);
-
-        /* setup timeout to check for a window manager */
-        app->wait_for_wm_timeout_id = g_timeout_add_full(G_PRIORITY_DEFAULT_IDLE,
-                                                         50,
-                                                         cb_wait_for_window_manager,
-                                                         wfwm,
-                                                         cb_wait_for_window_manager_destroyed);
+        app->wfwm = xfdesktop_x11_wait_for_wm(g_application,
+                                              app->cancel,
+                                              (WMFoundCallback)xfdesktop_application_start);
     } else
 #endif  /* ENABLE_X11 */
     {
@@ -768,15 +602,27 @@ xfdesktop_application_start(XfdesktopApplication *app)
     g_signal_connect (settings, "notify::gtk-theme-name", G_CALLBACK (xfdesktop_application_theme_changed), NULL);
     xfdesktop_application_theme_changed (settings, app);
 
-    /* stop autostart timeout */
-    if(app->wait_for_wm_timeout_id != 0)
-        g_source_remove(app->wait_for_wm_timeout_id);
+#ifdef ENABLE_X11
+    xfdesktop_x11_wait_for_wm_destroy(app->wfwm);
+    app->wfwm = NULL;
+#endif
 
     gdpy = gdk_display_get_default();
     gscreen = gdk_display_get_default_screen(gdpy);
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     screen_num = gdk_screen_get_number(gscreen);
 G_GNUC_END_IGNORE_DEPRECATIONS
+
+#ifdef ENABLE_X11
+    if (xfw_windowing_get() == XFW_WINDOWING_X11) {
+        app->selection_window = xfdesktop_x11_set_desktop_manager_selection(gscreen, &error);
+        if (app->selection_window == NULL) {
+            g_error("%s", error->message);
+            g_error_free(error);
+            exit(1);
+        }
+    }
+#endif
 
     /* setup the session management options */
     app->sm_client = xfce_sm_client_get();
@@ -838,6 +684,11 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
     /* display the desktop and try to put it at the bottom */
     gtk_widget_realize(app->desktop);
+#ifdef ENABLE_X11
+    if (xfw_windowing_get() == XFW_WINDOWING_X11) {
+        xfdesktop_x11_set_compat_properties(app->desktop);
+    }
+#endif  /* ENABLE_X11 */
     gdk_window_lower(gtk_widget_get_window(app->desktop));
     gtk_widget_show_all(app->desktop);
 
@@ -878,10 +729,10 @@ xfdesktop_application_shutdown(GApplication *g_application)
 
     TRACE("entering");
 
-    if(app->wait_for_wm_timeout_id != 0) {
-        g_source_remove(app->wait_for_wm_timeout_id);
-        app->wait_for_wm_timeout_id = 0;
-    }
+#ifdef ENABLE_X11
+    xfdesktop_x11_wait_for_wm_destroy(app->wfwm);
+    app->wfwm = NULL;
+#endif
 
     if (app->channel != NULL) {
         menu_cleanup(app->channel);
