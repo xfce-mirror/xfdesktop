@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2023-05-05 10:59+0200\n"
+"POT-Creation-Date: 2024-03-18 12:53+0100\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2019-2023\n"
 "Language-Team: Japanese (http://app.transifex.com/xfce/xfdesktop/language/ja/)\n"
@@ -21,38 +21,38 @@ msgstr ""
 "Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: settings/main.c:421 src/xfdesktop-special-file-icon.c:247
+#: settings/main.c:424 src/xfdesktop-special-file-icon.c:247
 #: src/xfdesktop-special-file-icon.c:413
 msgid "Home"
 msgstr "ホーム"
 
-#: settings/main.c:423 src/xfdesktop-special-file-icon.c:249
+#: settings/main.c:426 src/xfdesktop-special-file-icon.c:249
 #: src/xfdesktop-special-file-icon.c:411
 msgid "File System"
 msgstr "ファイルシステム"
 
-#: settings/main.c:425 src/xfdesktop-special-file-icon.c:251
+#: settings/main.c:428 src/xfdesktop-special-file-icon.c:251
 msgid "Trash"
 msgstr "ゴミ箱"
 
-#: settings/main.c:427
+#: settings/main.c:430
 msgid "Removable Devices"
 msgstr "リムーバブルデバイス"
 
-#: settings/main.c:429
+#: settings/main.c:432
 msgid "Network Shares"
 msgstr "ネットワーク共有"
 
-#: settings/main.c:431
+#: settings/main.c:434
 msgid "Disks and Drives"
 msgstr "ディスクとドライブ"
 
-#: settings/main.c:433
+#: settings/main.c:436
 msgid "Other Devices"
 msgstr "その他のデバイス"
 
 #. Display the file name, file type, and file size in the tooltip.
-#: settings/main.c:539
+#: settings/main.c:542
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -60,79 +60,79 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nタイプ: %s\nサイズ: %s"
 
-#: settings/main.c:775
+#: settings/main.c:778
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "モニター %d (%s) の壁紙"
 
-#: settings/main.c:778
+#: settings/main.c:781
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "モニター %d の壁紙"
 
-#: settings/main.c:784
+#: settings/main.c:787
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "設定したいディスプレイにこのダイアログを移動してください。"
 
-#: settings/main.c:791
+#: settings/main.c:794
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "モニター %2$d (%3$s) %1$s の壁紙"
 
-#: settings/main.c:795
+#: settings/main.c:798
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "モニター %2$d %1$s の壁紙"
 
-#: settings/main.c:802
+#: settings/main.c:805
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr "設定したいディスプレイおよびワークスペースにこのダイアログを移動してください。"
 
 #. Single monitor and single workspace
-#: settings/main.c:810
+#: settings/main.c:813
 msgid "Wallpaper for my desktop"
 msgstr "デスクトップの壁紙"
 
 #. Single monitor and per workspace wallpaper
-#: settings/main.c:816
+#: settings/main.c:819
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "%s の壁紙"
 
-#: settings/main.c:821
+#: settings/main.c:824
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "設定したいワークスペースにこのダイアログを移動してください。"
 
-#: settings/main.c:1276
+#: settings/main.c:1279
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "画像のスタイルが「なし」の時、壁紙は無効になります。"
 
-#: settings/main.c:1635
+#: settings/main.c:1638
 msgid "Spanning screens"
 msgstr "複数画面にまたがって表示する"
 
 #. TRANSLATORS: Please split the message in half with '\n' so the dialog will
 #. not be too wide.
-#: settings/main.c:1929
+#: settings/main.c:1945
 msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
 msgstr "選択した向きに従って、\n既存のすべてのアイコンを整列しますか ?"
 
-#: settings/main.c:1935
+#: settings/main.c:1951
 msgid "Arrange icons"
 msgstr "アイコンの整列"
 
 #. printf is to be translator-friendly
-#: settings/main.c:1943 src/xfdesktop-file-icon-manager.c:1159
+#: settings/main.c:1959 src/xfdesktop-file-icon-manager.c:1159
 #: src/xfdesktop-file-icon-manager.c:1759
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "\"%s\" を実行できません:"
 
-#: settings/main.c:1944 src/xfdesktop-file-icon-manager.c:1161
+#: settings/main.c:1960 src/xfdesktop-file-icon-manager.c:1161
 #: src/xfdesktop-file-icon-manager.c:1512
 #: src/xfdesktop-file-icon-manager.c:1760 src/xfdesktop-file-utils.c:555
 #: src/xfdesktop-file-utils.c:1222 src/xfdesktop-file-utils.c:1247
@@ -140,13 +140,13 @@ msgstr "\"%s\" を実行できません:"
 msgid "Launch Error"
 msgstr "実行エラー"
 
-#: settings/main.c:1946 settings/xfdesktop-settings-ui.glade:198
+#: settings/main.c:1962 settings/xfdesktop-settings-ui.glade:198
 #: src/xfdesktop-file-icon-manager.c:913 src/xfdesktop-file-icon-manager.c:932
 #: src/xfdesktop-file-icon-manager.c:1031
 #: src/xfdesktop-file-icon-manager.c:1163
 #: src/xfdesktop-file-icon-manager.c:1516
 #: src/xfdesktop-file-icon-manager.c:1762
-#: src/xfdesktop-file-icon-manager.c:3371 src/xfdesktop-file-utils.c:558
+#: src/xfdesktop-file-icon-manager.c:3381 src/xfdesktop-file-utils.c:558
 #: src/xfdesktop-file-utils.c:676 src/xfdesktop-file-utils.c:731
 #: src/xfdesktop-file-utils.c:795 src/xfdesktop-file-utils.c:856
 #: src/xfdesktop-file-utils.c:917 src/xfdesktop-file-utils.c:965
@@ -159,59 +159,59 @@ msgstr "実行エラー"
 msgid "_Close"
 msgstr "閉じる(_C)"
 
-#: settings/main.c:2114
+#: settings/main.c:2131
 msgid "Image files"
 msgstr "画像ファイル"
 
 #. Change the title of the file chooser dialog
-#: settings/main.c:2122
+#: settings/main.c:2139
 msgid "Select a Directory"
 msgstr "ディレクトリを選択してください"
 
-#: settings/main.c:2337
+#: settings/main.c:2354
 msgid "Settings manager socket"
 msgstr "設定マネージャーソケット"
 
-#: settings/main.c:2337
+#: settings/main.c:2354
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: settings/main.c:2338
+#: settings/main.c:2355
 msgid "Version information"
 msgstr "バージョン情報"
 
-#: settings/main.c:2339 src/xfdesktop-application.c:894
+#: settings/main.c:2356 src/xfdesktop-application.c:209
 msgid "Enable debug messages"
 msgstr "デバッグメッセージを有効にする"
 
-#: settings/main.c:2363
+#: settings/main.c:2380
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "'%s --help' で使用方法が表示されます。"
 
-#: settings/main.c:2375
+#: settings/main.c:2392
 msgid "The Xfce development team. All rights reserved."
 msgstr "The Xfce development team. All rights reserved."
 
-#: settings/main.c:2376
+#: settings/main.c:2393
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "バグの報告は <%s> までおねがいします。"
 
-#: settings/main.c:2383
+#: settings/main.c:2400
 msgid "Desktop Settings"
 msgstr "デスクトップ設定"
 
-#: settings/main.c:2385
+#: settings/main.c:2402
 msgid "Unable to contact settings server"
 msgstr "設定サーバーに接続できません"
 
-#: settings/main.c:2387
+#: settings/main.c:2404
 msgid "Quit"
 msgstr "終了"
 
 #: settings/xfce-backdrop-settings.desktop.in:4
-#: settings/xfdesktop-settings-ui.glade:162 src/xfce-desktop.c:1108
+#: settings/xfdesktop-settings-ui.glade:162 src/xfce-desktop.c:991
 msgid "Desktop"
 msgstr "デスクトップ"
 
@@ -675,82 +675,77 @@ msgstr "ワークスペース %d を削除(_R)"
 msgid "_Remove Workspace '%s'"
 msgstr "ワークスペース '%s' を削除(_R)"
 
-#: src/xfdesktop-application.c:886
+#: src/xfdesktop-application.c:201
 msgid "Display version information"
 msgstr "バージョン情報を表示する"
 
-#: src/xfdesktop-application.c:887
+#: src/xfdesktop-application.c:202
 msgid "Reload all settings"
 msgstr "すべての設定を再読込みする"
 
-#: src/xfdesktop-application.c:888
+#: src/xfdesktop-application.c:203
 msgid "Advance to the next wallpaper on the current workspace"
 msgstr "現在の壁紙から次の壁紙へ進む"
 
-#: src/xfdesktop-application.c:889
+#: src/xfdesktop-application.c:204
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "現在のマウス位置でメニューをポップアップする"
 
-#: src/xfdesktop-application.c:890
+#: src/xfdesktop-application.c:205
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "現在のマウス位置でウィンドウリストをポップアップする"
 
-#: src/xfdesktop-application.c:892
+#: src/xfdesktop-application.c:207
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "デスクトップにあるすべてのアイコンを自動整列する"
 
-#: src/xfdesktop-application.c:895
+#: src/xfdesktop-application.c:210
 msgid "Disable debug messages"
 msgstr "デバッグメッセージを無効にする"
 
-#: src/xfdesktop-application.c:896
+#: src/xfdesktop-application.c:212
 msgid "Do not wait for a window manager on startup"
 msgstr "起動時にウィンドウマネージャーを待たない"
 
-#: src/xfdesktop-application.c:897
+#: src/xfdesktop-application.c:214
 msgid "Cause xfdesktop to quit"
 msgstr "xfdesktop を終了させる"
 
-#: src/xfdesktop-application.c:912
-#, c-format
-msgid "Failed to parse arguments: %s\n"
-msgstr "引数の解析に失敗しました: %s\n"
-
-#: src/xfdesktop-application.c:923
+#: src/xfdesktop-application.c:782
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "%s バージョン %s, Xfce %s で実行されています。\n"
 
-#: src/xfdesktop-application.c:925
+#: src/xfdesktop-application.c:784
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Gtk+ %d.%d.%d でビルド、Gtk+ %d.%d.%d で実行しています。"
 
-#: src/xfdesktop-application.c:929
+#: src/xfdesktop-application.c:788
 msgid "Build options:\n"
 msgstr "ビルドオプション:\n"
 
-#: src/xfdesktop-application.c:930
+#: src/xfdesktop-application.c:789
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    メニュー:            %s\n"
 
-#: src/xfdesktop-application.c:932 src/xfdesktop-application.c:939
-#: src/xfdesktop-application.c:946
+#: src/xfdesktop-application.c:791 src/xfdesktop-application.c:798
+#: src/xfdesktop-application.c:805
 msgid "enabled"
 msgstr "有効"
 
-#: src/xfdesktop-application.c:934 src/xfdesktop-application.c:941
-#: src/xfdesktop-application.c:948
+#: src/xfdesktop-application.c:793 src/xfdesktop-application.c:800
+#: src/xfdesktop-application.c:807
 msgid "disabled"
 msgstr "無効"
 
-#: src/xfdesktop-application.c:937
+#: src/xfdesktop-application.c:796
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    アイコン:            %s\n"
 
-#: src/xfdesktop-application.c:944
+#: src/xfdesktop-application.c:803
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    ファイルアイコン:    %s\n"
@@ -914,31 +909,31 @@ msgstr "デスクトップの設定(_S)..."
 msgid "P_roperties..."
 msgstr "プロパティ(_R)..."
 
-#: src/xfdesktop-file-icon-manager.c:3368
+#: src/xfdesktop-file-icon-manager.c:3378
 msgid "Load Error"
 msgstr "読み込みエラー"
 
-#: src/xfdesktop-file-icon-manager.c:3370
+#: src/xfdesktop-file-icon-manager.c:3380
 msgid "Failed to load the desktop folder"
 msgstr "デスクトップフォルダーの読み込みに失敗しました"
 
-#: src/xfdesktop-file-icon-manager.c:3775
+#: src/xfdesktop-file-icon-manager.c:3785
 msgid "Copy _Here"
 msgstr "ここにコピー(_H)"
 
-#: src/xfdesktop-file-icon-manager.c:3775
+#: src/xfdesktop-file-icon-manager.c:3785
 msgid "_Move Here"
 msgstr "ここに移動(_M)"
 
-#: src/xfdesktop-file-icon-manager.c:3775
+#: src/xfdesktop-file-icon-manager.c:3785
 msgid "_Link Here"
 msgstr "ここにリンクを作成(_L)"
 
-#: src/xfdesktop-file-icon-manager.c:3810
+#: src/xfdesktop-file-icon-manager.c:3820
 msgid "_Cancel"
 msgstr "キャンセル(_C)"
 
-#: src/xfdesktop-file-icon-manager.c:3952
+#: src/xfdesktop-file-icon-manager.c:3962
 msgid "Untitled document"
 msgstr "無題のドキュメント"
 
