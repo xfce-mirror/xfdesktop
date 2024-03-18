@@ -271,6 +271,7 @@ xfdesktop_application_get(void)
                           "application-id", "org.xfce.xfdesktop",
                           "flags", G_APPLICATION_HANDLES_COMMAND_LINE,
                           NULL);
+       g_object_add_weak_pointer(G_OBJECT(app), (gpointer)&app);
     } else {
         g_object_ref(app);
     }
@@ -306,6 +307,7 @@ session_die(gpointer user_data)
         gtk_main_quit();
 
     g_application_quit(G_APPLICATION(app));
+    g_object_unref(app);
 }
 
 static gboolean
