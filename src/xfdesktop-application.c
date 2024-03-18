@@ -107,9 +107,8 @@ static void xfdesktop_application_startup(GApplication *g_application);
 static void xfdesktop_application_start(XfdesktopApplication *app);
 static void xfdesktop_application_shutdown(GApplication *g_application);
 
-static gboolean xfdesktop_application_local_command_line(GApplication *g_application,
-                                                         gchar ***arguments,
-                                                         int *exit_status);
+static gint xfdesktop_application_handle_local_options(GApplication *g_application,
+                                                       GVariantDict *options);
 static gint xfdesktop_application_command_line(GApplication *g_application,
                                                GApplicationCommandLine *command_line);
 
@@ -125,22 +124,32 @@ typedef struct
     guint wait_for_wm_timeout_id;
 } WaitForWM;
 
+typedef struct {
+    gboolean version;
+    gboolean enable_debug;
+    gboolean disable_debug;
+
+    gboolean has_remote_command;
+} XfdesktopLocalArgs;
+
 struct _XfdesktopApplication
 {
-    GApplication parent;
+    GtkApplication parent;
 
     GtkWidget *desktop;
     XfconfChannel *channel;
+
+    gboolean disable_wm_check;
     guint wait_for_wm_timeout_id;
     XfceSMClient *sm_client;
     GCancellable *cancel;
 
-    gboolean opt_disable_wm_check;
+    XfdesktopLocalArgs *args;
 };
 
 struct _XfdesktopApplicationClass
 {
-    GApplicationClass parent;
+    GtkApplicationClass parent;
 };
 
 const gchar *fallback_CSS =
@@ -171,7 +180,7 @@ const gchar *fallback_CSS =
 "}";
 
 
-G_DEFINE_TYPE(XfdesktopApplication, xfdesktop_application, G_TYPE_APPLICATION)
+G_DEFINE_TYPE(XfdesktopApplication, xfdesktop_application, GTK_TYPE_APPLICATION)
 
 
 static void
@@ -184,7 +193,7 @@ xfdesktop_application_class_init(XfdesktopApplicationClass *klass)
 
     gapplication_class->startup = xfdesktop_application_startup;
     gapplication_class->shutdown = xfdesktop_application_shutdown;
-    gapplication_class->local_command_line = xfdesktop_application_local_command_line;
+    gapplication_class->handle_local_options = xfdesktop_application_handle_local_options;
     gapplication_class->command_line = xfdesktop_application_command_line;
 }
 
@@ -197,9 +206,28 @@ xfdesktop_application_add_action(XfdesktopApplication *app, GAction *action)
 static void
 xfdesktop_application_init(XfdesktopApplication *app)
 {
+    XfdesktopLocalArgs *args = g_new0(XfdesktopLocalArgs, 1);
+    const GOptionEntry main_entries[] = {
+        { "version", 'V', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &args->version, N_("Display version information"), NULL },
+        { "reload", 'R', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, NULL, N_("Reload all settings"), NULL },
+        { "next", 'N', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, NULL, N_("Advance to the next wallpaper on the current workspace"), NULL },
+        { "menu", 'M', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, NULL, N_("Pop up the menu (at the current mouse position)"), NULL },
+        { "windowlist", 'W', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, NULL, N_("Pop up the window list (at the current mouse position)"), NULL },
+#ifdef ENABLE_FILE_ICONS
+        { "arrange", 'A', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, NULL, N_("Automatically arrange all the icons on the desktop"), NULL },
+#endif
+        { "enable-debug", 'e', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &args->enable_debug, N_("Enable debug messages"), NULL },
+        { "disable-debug", 'd', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &args->disable_debug, N_("Disable debug messages"), NULL },
+        { "disable-wm-check", 'D', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &app->disable_wm_check, N_("Do not wait for a window manager on startup"), NULL },
+        { "quit", 'Q', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, NULL, N_("Cause xfdesktop to quit"), NULL },
+        G_OPTION_ENTRY_NULL
+    };
     GSimpleAction *action;
 
+    app->args = args;
     app->cancel = g_cancellable_new();
+
+    g_application_add_main_option_entries(G_APPLICATION(app), main_entries);
 
     /* reload action */
     action = g_simple_action_new("reload", NULL);
@@ -241,6 +269,10 @@ xfdesktop_application_init(XfdesktopApplication *app)
 static void
 xfdesktop_application_finalize(GObject *object)
 {
+    XfdesktopApplication *app = XFDESKTOP_APPLICATION(object);
+
+    g_free(app->args);
+
     G_OBJECT_CLASS(xfdesktop_application_parent_class)->finalize(object);
 }
 
@@ -608,6 +640,7 @@ cb_wait_for_window_manager_destroyed(gpointer data)
      * also works without it */
     xfdesktop_application_start(wfwm->app);
 
+    g_application_release(G_APPLICATION(wfwm->app));
     wait_for_window_manager_cleanup(wfwm);
 }
 #endif  /* ENABLE_X11 */
@@ -619,14 +652,23 @@ xfdesktop_application_startup(GApplication *g_application)
 
     TRACE("entering");
 
-    /* hold so it does not exit on us before the main loop gets going */
-    g_application_hold(g_application);
+    if (app->args->has_remote_command) {
+        g_printerr(PACKAGE " is not running\n");
+        exit(1);
+    }
+
+    g_clear_pointer(&app->args, g_free);
+
+    G_APPLICATION_CLASS(xfdesktop_application_parent_class)->startup(g_application);
 
 #ifdef ENABLE_X11
-    if(!app->opt_disable_wm_check && xfw_windowing_get() == XFW_WINDOWING_X11) {
+    if(!app->disable_wm_check && xfw_windowing_get() == XFW_WINDOWING_X11) {
         WaitForWM *wfwm;
         guint i;
         gchar **atom_names;
+
+        /* hold so it does not exit on us before the main loop gets going */
+        g_application_hold(g_application);
 
         /* setup data for wm checking */
         wfwm = g_slice_new0(WaitForWM);
@@ -660,9 +702,6 @@ xfdesktop_application_startup(GApplication *g_application)
         /* directly launch */
         xfdesktop_application_start(app);
     }
-
-    /* let the parent class do it's startup as well */
-    G_APPLICATION_CLASS(xfdesktop_application_parent_class)->startup(g_application);
 }
 
 static void
@@ -706,6 +745,12 @@ xfdesktop_application_theme_changed (GtkSettings *settings,
 }
 
 static void
+desktop_destroyed(XfceDesktop *desktop, XfdesktopApplication *app) {
+    gtk_application_remove_window(GTK_APPLICATION(app), GTK_WINDOW(desktop));
+    app->desktop = NULL;
+}
+
+static void
 xfdesktop_application_start(XfdesktopApplication *app)
 {
     GtkSettings *settings;
@@ -745,7 +790,6 @@ G_GNUC_END_IGNORE_DEPRECATIONS
         g_clear_error(&error);
     }
 
-
     if(!xfconf_init(&error)) {
         g_warning("%s: unable to connect to settings daemon: %s.  Defaults will be used",
                   PACKAGE, error->message);
@@ -758,7 +802,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
     g_snprintf(buf, sizeof(buf), "/backdrop/screen%d/", screen_num);
     app->desktop = xfce_desktop_new(gscreen, app->channel, buf);
-    g_object_add_weak_pointer(G_OBJECT(app->desktop), (gpointer *)&app->desktop);
+    gtk_application_add_window(GTK_APPLICATION(app), GTK_WINDOW(app->desktop));
+    g_signal_connect(app->desktop, "destroy",
+                     G_CALLBACK(desktop_destroyed), app);
 
     gtk_widget_add_events(app->desktop, GDK_BUTTON_PRESS_MASK
                           | GDK_BUTTON_RELEASE_MASK);
@@ -816,11 +862,6 @@ G_GNUC_END_IGNORE_DEPRECATIONS
         g_warning("Unable to set up POSIX signal handlers: %s", error->message);
         g_clear_error(&error);
     }
-
-    gtk_main();
-
-    /* now that main has started we can release our hold */
-    g_application_release(G_APPLICATION(app));
 }
 
 gint
@@ -865,62 +906,27 @@ xfdesktop_application_shutdown(GApplication *g_application)
 }
 
 static gboolean
-xfdesktop_application_local_command_line(GApplication *g_application,
-                                         gchar ***arguments,
-                                         int *exit_status)
-{
+check_bool_option(GVariantDict *options, const gchar *name, gboolean default_value) {
+    gboolean value = FALSE;
+    if (g_variant_dict_lookup(options, name, "b", &value)) {
+        return value;
+    } else {
+        return default_value;
+    }
+}
+
+// If this function returns 0 or a postitive integer, it instructs GApplication
+// to stop doing what it's doing, and exit with that status code.  Return -1 to
+// have it continue with startup.
+static gint
+xfdesktop_application_handle_local_options(GApplication *g_application, GVariantDict *options) {
     XfdesktopApplication *app = XFDESKTOP_APPLICATION(g_application);
-    GOptionContext *octx;
-    gint argc;
-    GError *error = NULL;
-    gboolean opt_version = FALSE;
-    gboolean opt_reload = FALSE;
-    gboolean opt_next = FALSE;
-    gboolean opt_menu = FALSE;
-    gboolean opt_windowlist = FALSE;
-    gboolean opt_arrange = FALSE;
-    gboolean opt_quit = FALSE;
-    gboolean opt_enable_debug = FALSE;
-    gboolean opt_disable_debug = FALSE;
-    gboolean option_set = FALSE;
-    const GOptionEntry main_entries[] = {
-        { "version", 'V', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_version, N_("Display version information"), NULL },
-        { "reload", 'R', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_reload, N_("Reload all settings"), NULL },
-        { "next", 'N', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_next, N_("Advance to the next wallpaper on the current workspace"), NULL },
-        { "menu", 'M', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_menu, N_("Pop up the menu (at the current mouse position)"), NULL },
-        { "windowlist", 'W', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_windowlist, N_("Pop up the window list (at the current mouse position)"), NULL },
-#ifdef ENABLE_FILE_ICONS
-        { "arrange", 'A', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_arrange, N_("Automatically arrange all the icons on the desktop"), NULL },
-#endif
-        { "enable-debug", 'e', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_enable_debug, N_("Enable debug messages"), NULL },
-        { "disable-debug", 'd', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_disable_debug, N_("Disable debug messages"), NULL },
-        { "disable-wm-check", 'D', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &app->opt_disable_wm_check, N_("Do not wait for a window manager on startup"), NULL },
-        { "quit", 'Q', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_quit, N_("Cause xfdesktop to quit"), NULL },
-        { NULL, 0, 0, 0, NULL, NULL, NULL }
-    };
+    XfdesktopLocalArgs *args = app->args;
 
     TRACE("entering");
 
-    argc = g_strv_length(*arguments);
-
-    octx = g_option_context_new("");
-    g_option_context_set_ignore_unknown_options(octx, TRUE);
-    g_option_context_add_main_entries(octx, main_entries, NULL);
-    g_option_context_add_group(octx, gtk_get_option_group(TRUE));
-    g_option_context_add_group(octx, xfce_sm_client_get_option_group(argc, *arguments));
-
-    if(!g_option_context_parse(octx, &argc, arguments, &error)) {
-        g_printerr(_("Failed to parse arguments: %s\n"), error->message);
-        g_option_context_free(octx);
-        g_clear_error(&error);
-        *exit_status = 1;
-        return TRUE;
-    }
-
-    g_option_context_free(octx);
-
     /* Print the version info and exit */
-    if(opt_version) {
+    if (args->version) {
         g_print(_("This is %s version %s, running on Xfce %s.\n"), PACKAGE,
                 VERSION, xfce_version_string());
         g_print(_("Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."),
@@ -950,60 +956,55 @@ xfdesktop_application_local_command_line(GApplication *g_application,
 #endif
                 );
 
-        *exit_status = 0;
-        return TRUE;
-    }
-
-    /* This will call xfdesktop_application_startup if it needs to */
-    g_application_register(g_application, NULL, NULL);
-
-    /* handle our defined options */
-    if(opt_quit) {
-        g_action_group_activate_action(G_ACTION_GROUP(g_application), "quit", NULL);
-        option_set = TRUE;
-    } else if(opt_reload) {
-        g_action_group_activate_action(G_ACTION_GROUP(g_application), "reload", NULL);
-        option_set = TRUE;
-    } else if(opt_next) {
-        g_action_group_activate_action(G_ACTION_GROUP(g_application), "next", NULL);
-        option_set = TRUE;
-    } else if(opt_menu) {
-        g_action_group_activate_action(G_ACTION_GROUP(g_application), "menu",
-                                       g_variant_new_boolean(TRUE));
-        option_set = TRUE;
-    } else if(opt_windowlist) {
-        g_action_group_activate_action(G_ACTION_GROUP(g_application), "menu",
-                                       g_variant_new_boolean(FALSE));
-        option_set = TRUE;
-    } else if(opt_arrange) {
-        g_action_group_activate_action(G_ACTION_GROUP(g_application), "arrange", NULL);
-        option_set = TRUE;
-    } else if(opt_enable_debug) {
+        return 0;
+    } else if (args->enable_debug) {
         g_action_group_activate_action(G_ACTION_GROUP(g_application), "debug",
                                        g_variant_new_boolean(TRUE));
-        option_set = TRUE;
-    } else if(opt_disable_debug) {
+    } else if (args->disable_debug) {
         g_action_group_activate_action(G_ACTION_GROUP(g_application), "debug",
                                        g_variant_new_boolean(FALSE));
-        option_set = TRUE;
     }
 
-    /* We handled the command line option */
-    if(option_set) {
-        *exit_status = 0;
-        return TRUE;
+    if (check_bool_option(options, "quit", FALSE)
+        ||check_bool_option(options, "reload", FALSE) ||
+        check_bool_option(options, "next", FALSE) ||
+        check_bool_option(options, "menu", FALSE) ||
+        check_bool_option(options, "windowlist", FALSE) ||
+        check_bool_option(options, "arrange", FALSE))
+    {
+        app->args->has_remote_command = TRUE;
     }
 
-    /* propagate it up */
-    return G_APPLICATION_CLASS(xfdesktop_application_parent_class)->local_command_line(g_application, arguments, exit_status);
+    return G_APPLICATION_CLASS(xfdesktop_application_parent_class)->handle_local_options(g_application, options);
 }
 
 static gint
 xfdesktop_application_command_line(GApplication *g_application,
                                    GApplicationCommandLine *command_line)
 {
-    /* If we don't process everything in the local command line then the options
-     * won't show up during xfdesktop --help */
+    GVariantDict *options = g_application_command_line_get_options_dict(command_line);
+
+    TRACE("entering");
+
+    /* handle our defined remote options */
+    if (check_bool_option(options, "quit", FALSE)) {
+        g_action_group_activate_action(G_ACTION_GROUP(g_application), "quit", NULL);
+    } else if (check_bool_option(options, "reload", FALSE)) {
+        g_action_group_activate_action(G_ACTION_GROUP(g_application), "reload", NULL);
+    } else if (check_bool_option(options, "next", FALSE)) {
+        g_action_group_activate_action(G_ACTION_GROUP(g_application), "next", NULL);
+    } else if (check_bool_option(options, "menu", FALSE)) {
+        g_action_group_activate_action(G_ACTION_GROUP(g_application), "menu",
+                                       g_variant_new_boolean(TRUE));
+    } else if (check_bool_option(options, "windowlist", FALSE)) {
+        g_action_group_activate_action(G_ACTION_GROUP(g_application), "menu",
+                                       g_variant_new_boolean(FALSE));
+    } else if (check_bool_option(options, "arrange", FALSE)) {
+        g_action_group_activate_action(G_ACTION_GROUP(g_application), "arrange", NULL);
+    } else {
+        g_application_command_line_printerr(command_line, PACKAGE " is already running\n");
+        return 1;
+    }
 
     return 0;
 }
