@@ -773,6 +773,8 @@ xfce_workspace_new(GdkScreen *gscreen,
     workspace->priv->property_prefix = g_strdup(property_prefix);
     workspace->priv->workspace_num = number;
 
+    xfce_workspace_monitors_changed(workspace, gscreen);
+
     return workspace;
 }
 

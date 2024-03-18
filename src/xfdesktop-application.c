@@ -839,6 +839,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     /* display the desktop and try to put it at the bottom */
     gtk_widget_realize(app->desktop);
     gdk_window_lower(gtk_widget_get_window(app->desktop));
+    gtk_widget_show_all(app->desktop);
 
     xfce_desktop_set_session_logout_func(XFCE_DESKTOP(app->desktop),
                                          session_logout);

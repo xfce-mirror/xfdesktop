@@ -925,6 +925,7 @@ xfce_desktop_constructed(GObject *obj)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(obj);
     XfwWorkspaceManager *workspace_manager;
+    GList *groups;
 
     G_OBJECT_CLASS(xfce_desktop_parent_class)->constructed(obj);
 
@@ -952,8 +953,7 @@ xfce_desktop_constructed(GObject *obj)
          gl != NULL;
          gl = gl->next)
     {
-        XfwWorkspaceGroup *group = XFW_WORKSPACE_GROUP(gl->data);
-        workspace_group_created_cb(workspace_manager, group, desktop);
+        workspace_group_created_cb(workspace_manager, XFW_WORKSPACE_GROUP(gl->data), desktop);
     }
     g_signal_connect(workspace_manager, "workspace-group-created",
                      G_CALLBACK(workspace_group_created_cb), desktop);
@@ -970,6 +970,12 @@ xfce_desktop_constructed(GObject *obj)
                      G_CALLBACK(workspace_created_cb), desktop);
     g_signal_connect(workspace_manager, "workspace-destroyed",
                      G_CALLBACK(workspace_destroyed_cb), desktop);
+
+    groups = g_list_reverse(g_list_copy(xfw_workspace_manager_list_workspace_groups(workspace_manager)));
+    for (GList *gl = groups; gl != NULL; gl = gl->next) {
+        workspace_changed_cb(XFW_WORKSPACE_GROUP(gl->data), NULL, desktop);
+    }
+    g_list_free(groups);
 }
 
 static void

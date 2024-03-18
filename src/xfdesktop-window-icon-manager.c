@@ -169,6 +169,7 @@ xfdesktop_window_icon_manager_constructed(GObject *object)
     GtkTargetList *text_target_list;
     GtkTargetEntry *text_targets;
     gint n_text_targets = 0;
+    GList *groups;
 
     DBG("entering");
 
@@ -252,12 +253,11 @@ xfdesktop_window_icon_manager_constructed(GObject *object)
         workspace_created_cb(wmanager->priv->workspace_manager, XFW_WORKSPACE(l->data), wmanager);
     }
 
-    for (GList *l = g_list_reverse(xfw_workspace_manager_list_workspace_groups(wmanager->priv->workspace_manager));
-         l != NULL;
-         l = l->next)
-    {
+    groups = g_list_reverse(g_list_copy(xfw_workspace_manager_list_workspace_groups(wmanager->priv->workspace_manager)));
+    for (GList *l = groups; l != NULL; l = l->next) {
         workspace_changed_cb(XFW_WORKSPACE_GROUP(l->data), NULL, wmanager);
     }
+    g_list_free(groups);
 
     xfdesktop_window_icon_manager_populate_workspaces(wmanager);
 }
