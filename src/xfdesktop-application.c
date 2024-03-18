@@ -1001,7 +1001,7 @@ xfdesktop_application_command_line(GApplication *g_application,
                                        g_variant_new_boolean(FALSE));
     } else if (check_bool_option(options, "arrange", FALSE)) {
         g_action_group_activate_action(G_ACTION_GROUP(g_application), "arrange", NULL);
-    } else {
+    } else if (g_application_command_line_get_is_remote(command_line)) {
         g_application_command_line_printerr(command_line, PACKAGE " is already running\n");
         return 1;
     }
