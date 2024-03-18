@@ -37,18 +37,17 @@
 /* disable setting the x background for bug 7442 */
 //#define DISABLE_FOR_BUG7442
 
-struct _WaitForWM {
-    GApplication *app;
-    GCancellable *cancel;
-    WMFoundCallback found_callback;
+typedef struct _WaitForWM {
+    WaitForWMCompleteCallback complete_callback;
+    gpointer complete_data;
+    GCancellable *cancellable;
 
     Display *dpy;
     Atom *atoms;
     guint atom_count;
-    guint have_wm : 1;
+    gboolean have_wm;
     guint counter;
-    guint wait_for_wm_timeout_id;
-};
+} WaitForWM;
 
 
 static void
@@ -331,8 +330,18 @@ xfdesktop_x11_set_desktop_manager_selection(GdkScreen *gscreen, GError **error) 
     return selection_window;
 }
 
+static void
+wait_for_wm_free(WaitForWM *wfwm) {
+    g_object_unref(wfwm->cancellable);
+
+    g_free(wfwm->atoms);
+    XCloseDisplay(wfwm->dpy);
+
+    g_free(wfwm);
+}
+
 static gboolean
-cb_wait_for_window_manager(gpointer data)
+cb_wait_for_wm_timeout(gpointer data)
 {
     WaitForWM *wfwm = data;
     guint i;
@@ -340,13 +349,12 @@ cb_wait_for_window_manager(gpointer data)
 
     /* Check if it was canceled. This way xfdesktop doesn't start up if
      * we're quitting */
-    if(g_cancellable_is_cancelled(wfwm->cancel)) {
-        g_application_release(G_APPLICATION(wfwm->app));
+    if (g_cancellable_is_cancelled(wfwm->cancellable)) {
         return FALSE;
     }
 
     for(i = 0; i < wfwm->atom_count; i++) {
-        if(XGetSelectionOwner(wfwm->dpy, wfwm->atoms[i]) == None) {
+        if (XGetSelectionOwner(wfwm->dpy, wfwm->atoms[i]) == None) {
             XF_DEBUG("window manager not ready on screen %d", i);
             have_wm = FALSE;
             break;
@@ -360,46 +368,42 @@ cb_wait_for_window_manager(gpointer data)
 }
 
 static void
-cb_wait_for_window_manager_destroyed(gpointer data)
+cb_wait_for_wm_timeout_destroyed(gpointer data)
 {
     WaitForWM *wfwm = data;
-
-    g_return_if_fail(wfwm->app != NULL);
-
-    wfwm->wait_for_wm_timeout_id = 0;
+    WaitForWMStatus status;
 
     /* Check if it was canceled. This way xfdesktop doesn't start up if
      * we're quitting */
-    if (g_cancellable_is_cancelled(wfwm->cancel)) {
-        g_application_release(G_APPLICATION(wfwm->app));
-    } else {
-        if(!wfwm->have_wm) {
-            g_printerr("No window manager registered on screen 0. "
-                       "To start the xfdesktop without this check, run with --disable-wm-check.\n");
-        } else {
-            XF_DEBUG("found window manager after %d tries", wfwm->counter);
-        }
 
-        /* start loading the desktop, hopefully a window manager is found, but it
-         * also works without it */
-        wfwm->found_callback(wfwm->app);
+    if (g_cancellable_is_cancelled(wfwm->cancellable)) {
+        status = WAIT_FOR_WM_CANCELLED;
+    } else {
+        status = wfwm->have_wm ? WAIT_FOR_WM_SUCCESSFUL : WAIT_FOR_WM_FAILED;
     }
+
+    // Inform the caller that we're done
+    wfwm->complete_callback(status, wfwm->complete_data);
+    wait_for_wm_free(wfwm);
 }
 
-WaitForWM *
-xfdesktop_x11_wait_for_wm(GApplication *app, GCancellable *cancel, WMFoundCallback found_callback) {
+void
+xfdesktop_x11_wait_for_wm(WaitForWMCompleteCallback complete_callback,
+                          gpointer complete_data,
+                          GCancellable *cancellable)
+{
     WaitForWM *wfwm;
     guint i;
     gchar **atom_names;
 
     /* setup data for wm checking */
-    wfwm = g_slice_new0(WaitForWM);
+    wfwm = g_new0(WaitForWM, 1);
+    wfwm->complete_callback = complete_callback;
+    wfwm->complete_data = complete_data;
+    wfwm->cancellable = g_object_ref(cancellable);
     wfwm->dpy = XOpenDisplay(NULL);
     wfwm->have_wm = FALSE;
     wfwm->counter = 0;
-    wfwm->app = app;
-    wfwm->cancel = cancel;
-    wfwm->found_callback = found_callback;
 
     /* preload wm atoms for all screens */
     wfwm->atom_count = XScreenCount(wfwm->dpy);
@@ -417,27 +421,11 @@ xfdesktop_x11_wait_for_wm(GApplication *app, GCancellable *cancel, WMFoundCallba
     g_strfreev(atom_names);
 
     /* setup timeout to check for a window manager */
-    wfwm->wait_for_wm_timeout_id = g_timeout_add_full(G_PRIORITY_DEFAULT_IDLE,
-                                                      50,
-                                                      cb_wait_for_window_manager,
-                                                      wfwm,
-                                                      cb_wait_for_window_manager_destroyed);
-
-    return wfwm;
-}
-
-void
-xfdesktop_x11_wait_for_wm_destroy(WaitForWM *wfwm) {
-    if (wfwm != NULL) {
-        if (wfwm->wait_for_wm_timeout_id != 0) {
-            g_source_remove(wfwm->wait_for_wm_timeout_id);
-        }
-
-        g_free(wfwm->atoms);
-        XCloseDisplay(wfwm->dpy);
-
-        g_slice_free(WaitForWM, wfwm);
-    }
+    g_timeout_add_full(G_PRIORITY_DEFAULT_IDLE,
+                       50,
+                       cb_wait_for_wm_timeout,
+                       wfwm,
+                       cb_wait_for_wm_timeout_destroyed);
 }
 
 gboolean

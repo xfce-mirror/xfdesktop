@@ -109,6 +109,10 @@ static gint xfdesktop_application_handle_local_options(GApplication *g_applicati
 static gint xfdesktop_application_command_line(GApplication *g_application,
                                                GApplicationCommandLine *command_line);
 
+#ifdef ENABLE_X11
+static void cancel_wait_for_wm(XfdesktopApplication *app);
+#endif
+
 typedef struct {
     gboolean version;
     gboolean enable_debug;
@@ -125,13 +129,12 @@ struct _XfdesktopApplication
     XfconfChannel *channel;
 
     XfceSMClient *sm_client;
-    GCancellable *cancel;
 
     XfdesktopLocalArgs *args;
 
 #ifdef ENABLE_X11
+    GCancellable *cancel_wait_for_wm;
     gboolean disable_wm_check;
-    WaitForWM *wfwm;
 
     GdkWindow *selection_window;
 #endif
@@ -217,7 +220,6 @@ xfdesktop_application_init(XfdesktopApplication *app)
     GSimpleAction *action;
 
     app->args = args;
-    app->cancel = g_cancellable_new();
 
     g_application_add_main_option_entries(G_APPLICATION(app), main_entries);
 
@@ -266,13 +268,10 @@ xfdesktop_application_finalize(GObject *object)
     g_free(app->args);
 
 #ifdef ENABLE_X11
-    xfdesktop_x11_wait_for_wm_destroy(app->wfwm);
+    cancel_wait_for_wm(app);
+
     if (app->selection_window != NULL) {
         gdk_window_destroy(app->selection_window);
-    }
-
-    if (xfw_windowing_get() == XFW_WINDOWING_X11) {
-        xfdesktop_x11_set_compat_properties(NULL);
     }
 #endif
 
@@ -323,8 +322,9 @@ session_die(gpointer user_data)
     /* Ensure we always have a valid reference so we can quit xfdesktop */
     app = xfdesktop_application_get();
 
-    /* Cancel the wait for wm check if it's still running */
-    g_cancellable_cancel(app->cancel);
+#ifdef ENABLE_X11
+    cancel_wait_for_wm(app);
+#endif
 
     for(main_level = gtk_main_level(); main_level > 0; --main_level)
         gtk_main_quit();
@@ -509,6 +509,39 @@ cb_xfdesktop_application_debug(GAction  *action,
     xfdesktop_debug_set(g_variant_get_boolean(parameter));
 }
 
+#ifdef ENABLE_X11
+static void
+cancel_wait_for_wm(XfdesktopApplication *app) {
+    if (app->cancel_wait_for_wm != NULL) {
+        g_cancellable_cancel(app->cancel_wait_for_wm);
+        g_clear_object(&app->cancel_wait_for_wm);
+        g_application_release(G_APPLICATION(app));
+    }
+}
+
+static void
+wait_for_wm_complete(WaitForWMStatus status, gpointer data) {
+    XfdesktopApplication *app = XFDESKTOP_APPLICATION(data);
+
+    switch (status) {
+        case WAIT_FOR_WM_CANCELLED:
+            // NB: dont't touch 'app' here, as it may have already been freed.
+            break;
+
+        case WAIT_FOR_WM_FAILED:
+            g_printerr("No window manager registered on screen 0. "
+                       "To start the xfdesktop without this check, run with --disable-wm-check.\n");
+            // Intentionally fall through
+
+        case WAIT_FOR_WM_SUCCESSFUL:
+            g_clear_object(&app->cancel_wait_for_wm);
+            xfdesktop_application_start(app);
+            g_application_release(G_APPLICATION(app));
+            break;
+    }
+}
+#endif
+
 static void
 xfdesktop_application_startup(GApplication *g_application)
 {
@@ -527,9 +560,11 @@ xfdesktop_application_startup(GApplication *g_application)
 
 #ifdef ENABLE_X11
     if(!app->disable_wm_check && xfw_windowing_get() == XFW_WINDOWING_X11) {
-        app->wfwm = xfdesktop_x11_wait_for_wm(g_application,
-                                              app->cancel,
-                                              (WMFoundCallback)xfdesktop_application_start);
+        g_application_hold(g_application);
+        app->cancel_wait_for_wm = g_cancellable_new();
+        xfdesktop_x11_wait_for_wm(wait_for_wm_complete,
+                                  g_application,
+                                  app->cancel_wait_for_wm);
     } else
 #endif  /* ENABLE_X11 */
     {
@@ -601,11 +636,6 @@ xfdesktop_application_start(XfdesktopApplication *app)
     settings = gtk_settings_get_default();
     g_signal_connect (settings, "notify::gtk-theme-name", G_CALLBACK (xfdesktop_application_theme_changed), NULL);
     xfdesktop_application_theme_changed (settings, app);
-
-#ifdef ENABLE_X11
-    xfdesktop_x11_wait_for_wm_destroy(app->wfwm);
-    app->wfwm = NULL;
-#endif
 
     gdpy = gdk_display_get_default();
     gscreen = gdk_display_get_default_screen(gdpy);
@@ -730,8 +760,11 @@ xfdesktop_application_shutdown(GApplication *g_application)
     TRACE("entering");
 
 #ifdef ENABLE_X11
-    xfdesktop_x11_wait_for_wm_destroy(app->wfwm);
-    app->wfwm = NULL;
+    cancel_wait_for_wm(app);
+
+    if (xfw_windowing_get() == XFW_WINDOWING_X11) {
+        xfdesktop_x11_set_compat_properties(NULL);
+    }
 #endif
 
     if (app->channel != NULL) {

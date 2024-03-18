@@ -25,13 +25,18 @@
 
 G_BEGIN_DECLS
 
-typedef struct _WaitForWM WaitForWM;
-typedef void (*WMFoundCallback)(GApplication *app);
+typedef enum {
+    WAIT_FOR_WM_SUCCESSFUL = 0,
+    WAIT_FOR_WM_FAILED,
+    WAIT_FOR_WM_CANCELLED,
+} WaitForWMStatus;
 
-WaitForWM *xfdesktop_x11_wait_for_wm(GApplication *app,
-                                     GCancellable *cancel,
-                                     WMFoundCallback found_callback);
-void xfdesktop_x11_wait_for_wm_destroy(WaitForWM *wfwm);
+typedef void (*WaitForWMCompleteCallback)(WaitForWMStatus status,
+                                          gpointer data);
+
+void xfdesktop_x11_wait_for_wm(WaitForWMCompleteCallback complete_callback,
+                               gpointer complete_data,
+                               GCancellable *cancellable);
 
 void xfdesktop_x11_set_compat_properties(GtkWidget *desktop);
 
