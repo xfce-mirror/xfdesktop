@@ -191,12 +191,6 @@ xfdesktop_application_class_init(XfdesktopApplicationClass *klass)
 }
 
 static void
-xfdesktop_application_add_action(XfdesktopApplication *app, GAction *action)
-{
-    g_action_map_add_action(G_ACTION_MAP(app), action);
-}
-
-static void
 xfdesktop_application_init(XfdesktopApplication *app)
 {
     XfdesktopLocalArgs *args = g_new0(XfdesktopLocalArgs, 1);
@@ -217,47 +211,29 @@ xfdesktop_application_init(XfdesktopApplication *app)
         { "quit", 'Q', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, NULL, N_("Cause xfdesktop to quit"), NULL },
         G_OPTION_ENTRY_NULL
     };
-    GSimpleAction *action;
+    const struct {
+        const gchar *name;
+        const GVariantType *arg_type;
+        void (*callback)(GAction *, GVariant *, gpointer);
+    } actions[] = {
+        { "reload", NULL, cb_xfdesktop_application_reload },
+        { "next", NULL, cb_xfdesktop_application_next },
+        { "quit", NULL, cb_xfdesktop_application_quit },
+        { "menu", G_VARIANT_TYPE_BOOLEAN, cb_xfdesktop_application_menu },
+        { "arrange", NULL, cb_xfdesktop_application_arrange },
+        { "debug", G_VARIANT_TYPE_BOOLEAN, cb_xfdesktop_application_debug },
+    };
 
     app->args = args;
 
     g_application_add_main_option_entries(G_APPLICATION(app), main_entries);
 
-    /* reload action */
-    action = g_simple_action_new("reload", NULL);
-    g_signal_connect(action, "activate", G_CALLBACK(cb_xfdesktop_application_reload), app);
-    xfdesktop_application_add_action(app, G_ACTION(action));
-    g_object_unref(action);
-
-    /* next action */
-    action = g_simple_action_new("next", NULL);
-    g_signal_connect(action, "activate", G_CALLBACK(cb_xfdesktop_application_next), app);
-    xfdesktop_application_add_action(app, G_ACTION(action));
-    g_object_unref(action);
-
-    /* quit action */
-    action = g_simple_action_new("quit", NULL);
-    g_signal_connect(action, "activate", G_CALLBACK(cb_xfdesktop_application_quit), app);
-    xfdesktop_application_add_action(app, G_ACTION(action));
-    g_object_unref(action);
-
-    /* menu action, parameter pops up primary (TRUE) or windowlist menu */
-    action = g_simple_action_new("menu", G_VARIANT_TYPE_BOOLEAN);
-    g_signal_connect(action, "activate", G_CALLBACK(cb_xfdesktop_application_menu), app);
-    xfdesktop_application_add_action(app, G_ACTION(action));
-    g_object_unref(action);
-
-    /* arrange action */
-    action = g_simple_action_new("arrange", NULL);
-    g_signal_connect(action, "activate", G_CALLBACK(cb_xfdesktop_application_arrange), app);
-    xfdesktop_application_add_action(app, G_ACTION(action));
-    g_object_unref(action);
-
-    /* debug action, parameter toggles debug state */
-    action = g_simple_action_new("debug", G_VARIANT_TYPE_BOOLEAN);
-    g_signal_connect(action, "activate", G_CALLBACK(cb_xfdesktop_application_debug), app);
-    xfdesktop_application_add_action(app, G_ACTION(action));
-    g_object_unref(action);
+    for (gsize i = 0; i < G_N_ELEMENTS(actions); ++i) {
+        GSimpleAction *action = g_simple_action_new(actions[i].name, actions[i].arg_type);
+        g_signal_connect(action, "activate", G_CALLBACK(actions[i].callback), app);
+        g_action_map_add_action(G_ACTION_MAP(app), G_ACTION(action));
+        g_object_unref(action);
+    }
 }
 
 static void
