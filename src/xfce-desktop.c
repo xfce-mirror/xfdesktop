@@ -280,15 +280,6 @@ create_bg_surface(GdkScreen *gscreen, gpointer user_data)
 
     g_return_val_if_fail(XFCE_IS_DESKTOP(desktop), NULL);
 
-    /* If the workspaces haven't been created yet there's no need to do the
-     * background surface */
-    if (g_hash_table_size(desktop->priv->workspaces) == 0) {
-        XF_DEBUG("exiting, desktop->priv->workspaces empty");
-        return NULL;
-    }
-
-    TRACE("really entering");
-
     xfdesktop_get_screen_dimensions (gscreen, &w, &h);
     gtk_widget_set_size_request(GTK_WIDGET(desktop), w, h);
     gtk_window_resize(GTK_WINDOW(desktop), w, h);
