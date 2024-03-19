@@ -51,7 +51,7 @@ main(int argc, char **argv)
 
     app = xfdesktop_application_get();
 
-    ret = xfdesktop_application_run(app, argc, argv);
+    ret = g_application_run(G_APPLICATION(app), argc, argv);
 
     g_object_unref(app);
 

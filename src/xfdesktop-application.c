@@ -69,36 +69,33 @@
 
 #include "xfdesktop-application.h"
 
+#define ACTION_RELOAD "reload"
+#define ACTION_NEXT "next"
+#define ACTION_MENU "menu"
+#define ACTION_ARRANGE "arrange"
+#define ACTION_DEBUG "debug"
+#define ACTION_QUIT "quit"
+
+#define OPTION_VERSION "version"
+#define OPTION_RELOAD ACTION_RELOAD
+#define OPTION_NEXT ACTION_NEXT
+#define OPTION_MENU ACTION_MENU
+#define OPTION_WINDOWLIST "windowlist"
+#define OPTION_ARRANGE ACTION_ARRANGE
+#define OPTION_ENABLE_DEBUG "enable-debug"
+#define OPTION_DISABLE_DEBUG "disable-debug"
+#define OPTION_QUIT ACTION_QUIT
+#define OPTION_DISABLE_WM_CHECK "disable-wm-check"
+
 static void xfdesktop_application_finalize(GObject *object);
 
 static void session_logout(void);
 static void session_die(gpointer user_data);
 
-static gboolean reload_idle_cb(gpointer data);
-static void cb_xfdesktop_application_reload(GAction  *action,
-                                            GVariant *parameter,
-                                            gpointer  data);
-
-static void cb_xfdesktop_application_next(GAction  *action,
-                                          GVariant *parameter,
-                                          gpointer  data);
-
+static void xfdesktop_application_action_activated(GAction *action,
+                                                   GVariant *parameter,
+                                                   gpointer data);
 static void xfdesktop_handle_quit_signals(gint sig, gpointer user_data);
-static void cb_xfdesktop_application_quit(GAction  *action,
-                                          GVariant *parameter,
-                                          gpointer  data);
-
-static void cb_xfdesktop_application_menu(GAction  *action,
-                                          GVariant *parameter,
-                                          gpointer  data);
-
-static void cb_xfdesktop_application_arrange(GAction  *action,
-                                             GVariant *parameter,
-                                             gpointer  data);
-
-static void cb_xfdesktop_application_debug(GAction  *action,
-                                           GVariant *parameter,
-                                           gpointer  data);
 
 static void xfdesktop_application_startup(GApplication *g_application);
 static void xfdesktop_application_start(XfdesktopApplication *app);
@@ -115,10 +112,7 @@ static void cancel_wait_for_wm(XfdesktopApplication *app);
 
 typedef struct {
     gboolean version;
-    gboolean enable_debug;
-    gboolean disable_debug;
-
-    gboolean has_remote_command;
+    gboolean has_remote_only_command;
 } XfdesktopLocalArgs;
 
 struct _XfdesktopApplication
@@ -195,33 +189,32 @@ xfdesktop_application_init(XfdesktopApplication *app)
 {
     XfdesktopLocalArgs *args = g_new0(XfdesktopLocalArgs, 1);
     const GOptionEntry main_entries[] = {
-        { "version", 'V', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &args->version, N_("Display version information"), NULL },
-        { "reload", 'R', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, NULL, N_("Reload all settings"), NULL },
-        { "next", 'N', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, NULL, N_("Advance to the next wallpaper on the current workspace"), NULL },
-        { "menu", 'M', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, NULL, N_("Pop up the menu (at the current mouse position)"), NULL },
-        { "windowlist", 'W', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, NULL, N_("Pop up the window list (at the current mouse position)"), NULL },
+        { OPTION_VERSION, 'V', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &args->version, N_("Display version information"), NULL },
+        { OPTION_RELOAD, 'R', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, NULL, N_("Reload all settings"), NULL },
+        { OPTION_NEXT, 'N', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, NULL, N_("Advance to the next wallpaper on the current workspace"), NULL },
+        { OPTION_MENU, 'M', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, NULL, N_("Pop up the menu (at the current mouse position)"), NULL },
+        { OPTION_WINDOWLIST, 'W', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, NULL, N_("Pop up the window list (at the current mouse position)"), NULL },
 #ifdef ENABLE_FILE_ICONS
-        { "arrange", 'A', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, NULL, N_("Automatically arrange all the icons on the desktop"), NULL },
+        { OPTION_ARRANGE, 'A', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, NULL, N_("Automatically arrange all the icons on the desktop"), NULL },
 #endif
-        { "enable-debug", 'e', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &args->enable_debug, N_("Enable debug messages"), NULL },
-        { "disable-debug", 'd', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &args->disable_debug, N_("Disable debug messages"), NULL },
+        { OPTION_ENABLE_DEBUG, 'e', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, NULL, N_("Enable debug messages"), NULL },
+        { OPTION_DISABLE_DEBUG, 'd', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, NULL, N_("Disable debug messages"), NULL },
 #ifdef ENABLE_X11
-        { "disable-wm-check", 'D', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &app->disable_wm_check, N_("Do not wait for a window manager on startup"), NULL },
+        { OPTION_DISABLE_WM_CHECK, 'D', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &app->disable_wm_check, N_("Do not wait for a window manager on startup"), NULL },
 #endif
-        { "quit", 'Q', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, NULL, N_("Cause xfdesktop to quit"), NULL },
+        { ACTION_QUIT, 'Q', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, NULL, N_("Cause xfdesktop to quit"), NULL },
         G_OPTION_ENTRY_NULL
     };
     const struct {
         const gchar *name;
         const GVariantType *arg_type;
-        void (*callback)(GAction *, GVariant *, gpointer);
     } actions[] = {
-        { "reload", NULL, cb_xfdesktop_application_reload },
-        { "next", NULL, cb_xfdesktop_application_next },
-        { "quit", NULL, cb_xfdesktop_application_quit },
-        { "menu", G_VARIANT_TYPE_BOOLEAN, cb_xfdesktop_application_menu },
-        { "arrange", NULL, cb_xfdesktop_application_arrange },
-        { "debug", G_VARIANT_TYPE_BOOLEAN, cb_xfdesktop_application_debug },
+        { ACTION_RELOAD, NULL },
+        { ACTION_NEXT, NULL },
+        { ACTION_QUIT, NULL },
+        { ACTION_MENU, G_VARIANT_TYPE_BOOLEAN },
+        { ACTION_ARRANGE, NULL },
+        { ACTION_DEBUG, G_VARIANT_TYPE_BOOLEAN },
     };
 
     app->args = args;
@@ -230,7 +223,7 @@ xfdesktop_application_init(XfdesktopApplication *app)
 
     for (gsize i = 0; i < G_N_ELEMENTS(actions); ++i) {
         GSimpleAction *action = g_simple_action_new(actions[i].name, actions[i].arg_type);
-        g_signal_connect(action, "activate", G_CALLBACK(actions[i].callback), app);
+        g_signal_connect(action, "activate", G_CALLBACK(xfdesktop_application_action_activated), app);
         g_action_map_add_action(G_ACTION_MAP(app), G_ACTION(action));
         g_object_unref(action);
     }
@@ -330,58 +323,62 @@ reload_idle_cb(gpointer data)
 
     TRACE("entering");
 
-    /* If xfdesktop never started there's nothing to reload, xfdesktop will
-     * now startup */
-    if(!app->desktop)
-        return FALSE;
-
-    /* reload all the desktop */
-    if(app->desktop)
+    if (app->desktop != NULL) {
         xfce_desktop_refresh(XFCE_DESKTOP(app->desktop), FALSE, TRUE);
-
+    }
     g_application_release(G_APPLICATION(app));
 
     return FALSE;
 }
 
 static void
-cb_xfdesktop_application_reload(GAction  *action,
-                                GVariant *parameter,
-                                gpointer  data)
-{
-    GApplication *g_application;
+xfdesktop_application_action_activated(GAction *action, GVariant *parameter, gpointer data) {
+    XfdesktopApplication *app = XFDESKTOP_APPLICATION(data);
+    const gchar *name = g_action_get_name(action);
 
-    if(!data || !G_IS_APPLICATION(data))
-        return;
+    TRACE("entering: %s", name);
 
-    g_application = G_APPLICATION(data);
+    if (g_strcmp0(name, ACTION_RELOAD) == 0) {
+        if (app->desktop != NULL) {
+            /* hold the app so it doesn't quit while we queue up a refresh */
+            g_application_hold(G_APPLICATION(app));
+            g_idle_add(reload_idle_cb, app);
+        }
+    } else if (g_strcmp0(name, ACTION_NEXT) == 0) {
+        if (app->desktop != NULL) {
+            xfce_desktop_refresh(XFCE_DESKTOP(app->desktop), TRUE, TRUE);
+        }
+    } else if (g_strcmp0(name, ACTION_MENU) == 0) {
+        if (app->desktop != NULL && g_variant_is_of_type(parameter, G_VARIANT_TYPE_BOOLEAN)) {
+            if (g_variant_get_boolean(parameter)) {
+                xfce_desktop_popup_root_menu(XFCE_DESKTOP(app->desktop),
+                                             0, GDK_CURRENT_TIME);
+            } else {
+                xfce_desktop_popup_secondary_root_menu(XFCE_DESKTOP(app->desktop),
+                                                       0, GDK_CURRENT_TIME);
+            }
+        }
+    } else if (g_strcmp0(name, ACTION_ARRANGE) == 0) {
+        if (app->desktop != NULL) {
+            xfce_desktop_arrange_icons(XFCE_DESKTOP(app->desktop));
+        }
+    } else if (g_strcmp0(name, ACTION_QUIT) == 0) {
+        /* If the user told xfdesktop to quit, set the restart style to something
+         * where it won't restart itself */
+        if (app->sm_client && XFCE_IS_SM_CLIENT(app->sm_client)) {
+            xfce_sm_client_set_restart_style(app->sm_client, XFCE_SM_CLIENT_RESTART_NORMAL);
+        }
 
-    /* hold the app so it doesn't quit while a queue up a refresh */
-    g_application_hold(g_application);
-    g_idle_add(reload_idle_cb, g_application);
+        session_die(app);
+    } else if (g_strcmp0(name, ACTION_DEBUG) == 0) {
+        if (g_variant_is_of_type(parameter, G_VARIANT_TYPE_BOOLEAN)) {
+            xfdesktop_debug_set(g_variant_get_boolean(parameter));
+        }
+    } else {
+        g_message("Unhandled action '%s'", name);
+    }
 }
 
-static void
-cb_xfdesktop_application_next(GAction  *action,
-                              GVariant *parameter,
-                              gpointer  data)
-{
-    XfdesktopApplication *app;
-
-    TRACE("entering");
-
-    g_return_if_fail(XFDESKTOP_IS_APPLICATION(data));
-
-    app = XFDESKTOP_APPLICATION(data);
-
-    /* If xfdesktop never started there's nothing to do here */
-    if(!app->desktop)
-        return;
-
-    /* reload the desktop forcing the wallpaper to advance */
-    if(app->desktop)
-        xfce_desktop_refresh(XFCE_DESKTOP(app->desktop), TRUE, TRUE);
-}
 
 static void
 xfdesktop_handle_quit_signals(gint sig,
@@ -392,99 +389,6 @@ xfdesktop_handle_quit_signals(gint sig,
     g_return_if_fail(XFDESKTOP_IS_APPLICATION(user_data));
 
     session_die(user_data);
-}
-
-static void
-cb_xfdesktop_application_quit(GAction  *action,
-                              GVariant *parameter,
-                              gpointer  data)
-{
-    XfdesktopApplication *app;
-
-    TRACE("entering");
-
-    g_return_if_fail(XFDESKTOP_IS_APPLICATION(data));
-
-    app = XFDESKTOP_APPLICATION(data);
-
-    /* If the user told xfdesktop to quit, set the restart style to something
-     * where it won't restart itself */
-    if(app->sm_client && XFCE_IS_SM_CLIENT(app->sm_client)) {
-        xfce_sm_client_set_restart_style(app->sm_client,
-                                         XFCE_SM_CLIENT_RESTART_NORMAL);
-    }
-
-    session_die(app);
-}
-
-
-/* parameter is a boolean that determines whether to popup the primay or
- * windowlist menu */
-static void
-cb_xfdesktop_application_menu(GAction  *action,
-                              GVariant *parameter,
-                              gpointer  data)
-{
-    XfdesktopApplication *app;
-    gboolean popup_root_menu;
-
-    TRACE("entering");
-
-    /* sanity checks */
-    if(!data || !XFDESKTOP_IS_APPLICATION(data))
-        return;
-
-    if(!g_variant_is_of_type(parameter, G_VARIANT_TYPE_BOOLEAN))
-        return;
-
-    popup_root_menu = g_variant_get_boolean(parameter);
-    app = XFDESKTOP_APPLICATION(data);
-
-    if(popup_root_menu) {
-        xfce_desktop_popup_root_menu(XFCE_DESKTOP(app->desktop),
-                                     0, GDK_CURRENT_TIME);
-    } else {
-        xfce_desktop_popup_secondary_root_menu(XFCE_DESKTOP(app->desktop),
-                                               0, GDK_CURRENT_TIME);
-    }
-}
-
-static void
-cb_xfdesktop_application_arrange(GAction  *action,
-                                 GVariant *parameter,
-                                 gpointer  data)
-{
-    XfdesktopApplication *app;
-
-    TRACE("entering");
-
-    /* sanity check */
-    if(!data || !XFDESKTOP_IS_APPLICATION(data))
-        return;
-
-    app = XFDESKTOP_APPLICATION(data);
-
-    xfce_desktop_arrange_icons(XFCE_DESKTOP(app->desktop));
-}
-
-/* parameter is a boolean that determines whether to enable or disable the
- * debug messages */
-static void
-cb_xfdesktop_application_debug(GAction  *action,
-                               GVariant *parameter,
-                               gpointer  data)
-{
-    TRACE("entering");
-
-    /* sanity checks */
-    if(!data || !XFDESKTOP_IS_APPLICATION(data))
-        return;
-
-    if(!g_variant_is_of_type(parameter, G_VARIANT_TYPE_BOOLEAN))
-        return;
-
-    /* Toggle the debug state */
-    xfdesktop_debug_set(g_variant_get_boolean(parameter));
 }
 
 #ifdef ENABLE_X11
@@ -527,7 +431,7 @@ xfdesktop_application_startup(GApplication *g_application)
 
     TRACE("entering");
 
-    if (app->args->has_remote_command) {
+    if (app->args->has_remote_only_command) {
         g_printerr(PACKAGE " is not running\n");
         exit(1);
     }
@@ -724,12 +628,6 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     }
 }
 
-gint
-xfdesktop_application_run(XfdesktopApplication *app, int argc, char **argv)
-{
-    return g_application_run(G_APPLICATION(app), argc, argv);
-}
-
 static void
 xfdesktop_application_shutdown(GApplication *g_application)
 {
@@ -820,25 +718,52 @@ xfdesktop_application_handle_local_options(GApplication *g_application, GVariant
                 );
 
         return 0;
-    } else if (args->enable_debug) {
-        g_action_group_activate_action(G_ACTION_GROUP(g_application), "debug",
-                                       g_variant_new_boolean(TRUE));
-    } else if (args->disable_debug) {
-        g_action_group_activate_action(G_ACTION_GROUP(g_application), "debug",
-                                       g_variant_new_boolean(FALSE));
     }
 
-    if (check_bool_option(options, "quit", FALSE)
-        ||check_bool_option(options, "reload", FALSE) ||
-        check_bool_option(options, "next", FALSE) ||
-        check_bool_option(options, "menu", FALSE) ||
-        check_bool_option(options, "windowlist", FALSE) ||
-        check_bool_option(options, "arrange", FALSE))
+    if (check_bool_option(options, OPTION_QUIT, FALSE) ||
+        check_bool_option(options, OPTION_RELOAD, FALSE) ||
+        check_bool_option(options, OPTION_NEXT, FALSE) ||
+        check_bool_option(options, OPTION_MENU, FALSE) ||
+        check_bool_option(options, OPTION_WINDOWLIST, FALSE) ||
+        check_bool_option(options, OPTION_ARRANGE, FALSE))
     {
-        app->args->has_remote_command = TRUE;
+        app->args->has_remote_only_command = TRUE;
     }
 
     return G_APPLICATION_CLASS(xfdesktop_application_parent_class)->handle_local_options(g_application, options);
+}
+
+static gboolean
+handle_option(GApplication *app, GVariantDict *options) {
+    static const struct {
+        const gchar *option_name;
+        const gchar *action_name;
+        gboolean has_arg;
+        gboolean arg_value;
+    } options_to_actions[] = {
+        { OPTION_QUIT, ACTION_QUIT, FALSE, },
+        { OPTION_NEXT, ACTION_NEXT, FALSE, },
+        { OPTION_MENU, ACTION_MENU, TRUE, TRUE },
+        { OPTION_WINDOWLIST, ACTION_MENU, TRUE, FALSE },
+        { OPTION_ARRANGE, ACTION_ARRANGE, FALSE, },
+        { OPTION_ENABLE_DEBUG, ACTION_DEBUG, TRUE, TRUE },
+        { OPTION_DISABLE_DEBUG, ACTION_DEBUG, TRUE, FALSE },
+    };
+
+    for (gsize i = 0; i < G_N_ELEMENTS(options_to_actions); ++i) {
+        if (check_bool_option(options, options_to_actions[i].option_name, FALSE)) {
+            GVariant *arg = NULL;
+            if (options_to_actions[i].has_arg) {
+                arg = g_variant_new_boolean(options_to_actions[i].arg_value);
+            }
+
+            g_action_group_activate_action(G_ACTION_GROUP(app), options_to_actions[i].action_name, arg);
+
+            return TRUE;
+        }
+    }
+
+    return FALSE;
 }
 
 static gint
@@ -849,22 +774,7 @@ xfdesktop_application_command_line(GApplication *g_application,
 
     TRACE("entering");
 
-    /* handle our defined remote options */
-    if (check_bool_option(options, "quit", FALSE)) {
-        g_action_group_activate_action(G_ACTION_GROUP(g_application), "quit", NULL);
-    } else if (check_bool_option(options, "reload", FALSE)) {
-        g_action_group_activate_action(G_ACTION_GROUP(g_application), "reload", NULL);
-    } else if (check_bool_option(options, "next", FALSE)) {
-        g_action_group_activate_action(G_ACTION_GROUP(g_application), "next", NULL);
-    } else if (check_bool_option(options, "menu", FALSE)) {
-        g_action_group_activate_action(G_ACTION_GROUP(g_application), "menu",
-                                       g_variant_new_boolean(TRUE));
-    } else if (check_bool_option(options, "windowlist", FALSE)) {
-        g_action_group_activate_action(G_ACTION_GROUP(g_application), "menu",
-                                       g_variant_new_boolean(FALSE));
-    } else if (check_bool_option(options, "arrange", FALSE)) {
-        g_action_group_activate_action(G_ACTION_GROUP(g_application), "arrange", NULL);
-    } else if (g_application_command_line_get_is_remote(command_line)) {
+    if (!handle_option(g_application, options) && g_application_command_line_get_is_remote(command_line)) {
         g_application_command_line_printerr(command_line, PACKAGE " is already running\n");
         return 1;
     }

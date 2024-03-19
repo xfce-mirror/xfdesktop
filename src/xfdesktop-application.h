@@ -40,8 +40,6 @@ GType xfdesktop_application_get_type(void) G_GNUC_CONST;
 
 XfdesktopApplication *xfdesktop_application_get(void);
 
-gint xfdesktop_application_run(XfdesktopApplication *app, int argc, char **argv);
-
 G_END_DECLS
 
 #endif  /* __XFDESKTOP_ICON_H__ */
