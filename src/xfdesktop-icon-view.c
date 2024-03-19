@@ -5144,7 +5144,7 @@ xfdesktop_icon_view_set_show_icons_on_primary(XfdesktopIconView *icon_view,
         xfdesktop_icon_view_size_grid(icon_view);
     }
 
-    g_object_notify(G_OBJECT(icon_view), "show-icons-on-primary");
+    g_object_notify(G_OBJECT(icon_view), "icons-on-primary");
 }
 
 void
