@@ -274,69 +274,39 @@ xfdesktop_check_file_is_valid(const gchar *folder, const gchar *file)
 static gchar *
 xfdesktop_load_icon_location_from_folder(XfdesktopFileIcon *icon)
 {
+    /* So much for standards */
+    static const gchar *folder_icon_names[] = {
+        "Folder.jpg",
+        "folder.jpg",
+        "Folder.JPG",
+        "folder.JPG",
+        "folder.jpeg",
+        "folder.JPEG",
+        "Folder.JPEG",
+        "Folder.jpeg",
+        "Cover.jpg",
+        "cover.jpg",
+        "Cover.jpeg",
+        "cover.jpeg",
+        "albumart.jpg",
+        "albumart.jpeg",
+        "fanart.jpg",
+        "Fanart.jpg",
+        "fanart.JPG",
+        "Fanart.JPG",
+        "FANART.JPG",
+        "FANART.jpg",
+    };
     gchar *icon_file = g_file_get_path(xfdesktop_file_icon_peek_file(icon));
-    gchar *path;
+    gchar *path = NULL;
 
     g_return_val_if_fail(icon_file, NULL);
 
-    /* So much for standards */
-    path = xfdesktop_check_file_is_valid(icon_file, "Folder.jpg");
-    if(path == NULL) {
-        path = xfdesktop_check_file_is_valid(icon_file, "folder.jpg");
-    }
-    if(path == NULL) {
-        path = xfdesktop_check_file_is_valid(icon_file, "Folder.JPG");
-    }
-    if(path == NULL) {
-        path = xfdesktop_check_file_is_valid(icon_file, "folder.JPG");
-    }
-    if(path == NULL) {
-        path = xfdesktop_check_file_is_valid(icon_file, "folder.jpeg");
-    }
-    if(path == NULL) {
-        path = xfdesktop_check_file_is_valid(icon_file, "folder.JPEG");
-    }
-    if(path == NULL) {
-        path = xfdesktop_check_file_is_valid(icon_file, "Folder.JPEG");
-    }
-    if(path == NULL) {
-        path = xfdesktop_check_file_is_valid(icon_file, "Folder.jpeg");
-    }
-    if(path == NULL) {
-        path = xfdesktop_check_file_is_valid(icon_file, "Cover.jpg");
-    }
-    if(path == NULL) {
-        path = xfdesktop_check_file_is_valid(icon_file, "cover.jpg");
-    }
-    if(path == NULL) {
-        path = xfdesktop_check_file_is_valid(icon_file, "Cover.jpeg");
-    }
-    if(path == NULL) {
-        path = xfdesktop_check_file_is_valid(icon_file, "cover.jpeg");
-    }
-    if(path == NULL) {
-        path = xfdesktop_check_file_is_valid(icon_file, "albumart.jpg");
-    }
-    if(path == NULL) {
-        path = xfdesktop_check_file_is_valid(icon_file, "albumart.jpeg");
-    }
-    if(path == NULL) {
-        path = xfdesktop_check_file_is_valid(icon_file, "fanart.jpg");
-    }
-    if(path == NULL) {
-        path = xfdesktop_check_file_is_valid(icon_file, "Fanart.jpg");
-    }
-    if(path == NULL) {
-        path = xfdesktop_check_file_is_valid(icon_file, "fanart.JPG");
-    }
-    if(path == NULL) {
-        path = xfdesktop_check_file_is_valid(icon_file, "Fanart.JPG");
-    }
-    if(path == NULL) {
-        path = xfdesktop_check_file_is_valid(icon_file, "FANART.JPG");
-    }
-    if(path == NULL) {
-        path = xfdesktop_check_file_is_valid(icon_file, "FANART.jpg");
+    for (gsize i = 0; i < G_N_ELEMENTS(folder_icon_names); ++i) {
+        path = xfdesktop_check_file_is_valid(icon_file, folder_icon_names[i]);
+        if (path != NULL) {
+            break;
+        }
     }
 
     g_free(icon_file);
