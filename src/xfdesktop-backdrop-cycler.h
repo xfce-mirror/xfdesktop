@@ -22,18 +22,27 @@
  *     Copyright (C) 2003 Benedikt Meurer <benedikt.meurer@unix-ag.uni-siegen.de>
  */
 
-#ifndef _XFDESKTOP__WINDOWLIST_H_
-#define _XFDESKTOP__WINDOWLIST_H_
+#ifndef __XFDESKTOP_BACKDROP_CYCLER_H__
+#define __XFDESKTOP_BACKDROP_CYCLER_H__
+
+#include <gio/gio.h>
 
 #include <xfconf/xfconf.h>
-#include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 
-void windowlist_init(XfconfChannel *channel);
-GtkMenu *windowlist_populate(GtkMenu *menu, gint scale_factor);
-void windowlist_cleanup(XfconfChannel *channel);
+G_DECLARE_FINAL_TYPE(XfdesktopBackdropCycler, xfdesktop_backdrop_cycler, XFDESKTOP, BACKDROP_CYCLER, GObject)
+#define XFDESKTOP_TYPE_BACKDROP_CYCLER (xfdesktop_backdrop_cycler_get_type())
+
+XfdesktopBackdropCycler *xfdesktop_backdrop_cycler_new(XfconfChannel *channel,
+                                                       const gchar *property_prefix);
+
+const gchar *xfdesktop_backdrop_cycler_get_property_prefix(XfdesktopBackdropCycler *cycler);
+
+gboolean xfdesktop_backdrop_cycler_is_enabled(XfdesktopBackdropCycler *cycler);
+
+void xfdesktop_backdrop_cycler_cycle_backdrop(XfdesktopBackdropCycler *cycler);
 
 G_END_DECLS
 
-#endif
+#endif  /* __XFDESKTOP_BACKDROP_CYCLER_H__ */
