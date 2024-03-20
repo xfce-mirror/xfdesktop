@@ -21,7 +21,8 @@ libxfdesktop_la_CFLAGS = \
 	$(LIBXFCE4WINDOWING_CFLAGS) \
 	$(GTK_CFLAGS) \
 	$(GIO_CFLAGS) \
-	$(GIO_UNIX_CFLAGS)
+	$(GIO_UNIX_CFLAGS) \
+	$(XFCONF_CFLAGS)
 
 DISTCLEANFILES = \
 	$(libxfdesktop_built_sources)
