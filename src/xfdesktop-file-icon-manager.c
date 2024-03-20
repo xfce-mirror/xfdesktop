@@ -64,6 +64,7 @@
 #endif
 
 #include "xfce-desktop.h"
+#include "xfdesktop-backdrop-manager.h"
 #include "xfdesktop-clipboard-manager.h"
 #include "xfdesktop-common.h"
 #include "xfdesktop-file-icon.h"
@@ -79,6 +80,7 @@
 
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4ui/libxfce4ui.h>
+#include <libxfce4windowing/libxfce4windowing.h>
 
 #define SAVE_DELAY  1000
 #define BORDER         8
@@ -1378,7 +1380,7 @@ xfdesktop_file_icon_menu_next_background(GtkWidget *widget,
     GtkWidget *parent = xfdesktop_icon_view_manager_get_parent(XFDESKTOP_ICON_VIEW_MANAGER(fmanager));
     // FIXME: this thing shouldn't know about XfceDesktop
     if (XFCE_IS_DESKTOP(parent)) {
-        xfce_desktop_refresh(XFCE_DESKTOP(parent), TRUE, FALSE);
+        xfce_desktop_refresh(XFCE_DESKTOP(parent), TRUE);
     } else {
         g_warning("BUG: parent is not an XfceDesktop");
     }
@@ -2337,8 +2339,26 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager)
                              G_CALLBACK(xfdesktop_file_icon_menu_arrange_icons),
                              fmanager);
 
-            // FIXME: this shouldn't know about XfceDesktop
-            if(xfce_desktop_get_cycle_backdrop(XFCE_DESKTOP(xfdesktop_icon_view_manager_get_parent(XFDESKTOP_ICON_VIEW_MANAGER(fmanager))))) {
+            GtkWidget *parent = xfdesktop_icon_view_manager_get_parent(XFDESKTOP_ICON_VIEW_MANAGER(fmanager));
+            GdkMonitor *monitor = gdk_display_get_monitor_at_window(gtk_widget_get_display(parent), gtk_widget_get_window(parent));
+
+            XfwScreen *xfw_screen = xfw_screen_get_default();
+            XfwWorkspaceManager *workspace_manager = xfw_screen_get_workspace_manager(xfw_screen);
+            XfwWorkspaceGroup *group = NULL;
+            for (GList *l = xfw_workspace_manager_list_workspace_groups(workspace_manager); l != NULL; l = l->next) {
+                if (g_list_find(xfw_workspace_group_get_monitors(XFW_WORKSPACE_GROUP(l->data)), monitor)) {
+                    group = XFW_WORKSPACE_GROUP(l->data);
+                    break;
+                }
+            }
+            XfwWorkspace *workspace = group != NULL ? xfw_workspace_group_get_active_workspace(group) : NULL;
+
+            XfdesktopBackdropManager *backdrop_manager = xfdesktop_backdrop_manager_get();
+
+            if (monitor != NULL &&
+                workspace != NULL &&
+                xfdesktop_backdrop_manager_can_cycle_backdrop(backdrop_manager, monitor, workspace))
+            {
                 /* show next background option */
                 img = gtk_image_new_from_icon_name("go-next", GTK_ICON_SIZE_MENU);
                 mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Next Background"), img);
@@ -2348,6 +2368,8 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager)
                                  G_CALLBACK(xfdesktop_file_icon_menu_next_background),
                                  fmanager);
             }
+
+            g_object_unref(xfw_screen);
 
             /* Separator */
             mi = gtk_separator_menu_item_new();
