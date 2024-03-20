@@ -34,6 +34,7 @@ libxfdesktop = static_library(
     gtk,
     libxfce4util,
     libxfce4windowing,
+    xfconf,
   ],
   install: false,
 )
