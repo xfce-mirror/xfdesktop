@@ -1,14 +1,5 @@
 xfdesktop_generated_sources = []
 
-xfdesktop_generated_sources += gnome.mkenums_simple(
-  'xfce-desktop-enum-types',
-  sources: [
-    'xfce-backdrop.h',
-    'xfce-desktop.h',
-  ],
-  install_header: false,
-)
-
 dbus_codegen = {
   'xfdesktop-file-manager-fdo': 'org.freedesktop.',
   'xfdesktop-file-manager': 'org.xfce.',
@@ -30,10 +21,11 @@ xfdesktop_sources = [
   'main.c',
   'menu.c',
   'windowlist.c',
-  'xfce-backdrop.c',
   'xfce-desktop.c',
-  'xfce-workspace.c',
   'xfdesktop-application.c',
+  'xfdesktop-backdrop-cycler.c',
+  'xfdesktop-backdrop-manager.c',
+  'xfdesktop-backdrop-renderer.c',
 ]
 
 xfdesktop_sources += xfdesktop_generated_sources

@@ -3,8 +3,6 @@
 bin_PROGRAMS = xfdesktop
 
 xfdesktop_built_sources = \
-	xfce-desktop-enum-types.c \
-	xfce-desktop-enum-types.h \
 	xfdesktop-file-manager-fdo-proxy.c \
 	xfdesktop-file-manager-fdo-proxy.h \
 	xfdesktop-file-manager-proxy.c \
@@ -28,14 +26,16 @@ xfdesktop_SOURCES = \
 	menu.h \
 	windowlist.c \
 	windowlist.h \
-	xfce-backdrop.c \
-	xfce-backdrop.h \
-	xfce-workspace.c \
-	xfce-workspace.h \
 	xfce-desktop.c \
 	xfce-desktop.h \
 	xfdesktop-application.c \
-	xfdesktop-application.h
+	xfdesktop-application.h \
+	xfdesktop-backdrop-cycler.c \
+	xfdesktop-backdrop-cycler.h \
+	xfdesktop-backdrop-manager.c \
+	xfdesktop-backdrop-manager.h \
+	xfdesktop-backdrop-renderer.c \
+	xfdesktop-backdrop-renderer.h
 
 if ENABLE_X11
 xfdesktop_SOURCES += \
@@ -161,8 +161,7 @@ BUILT_SOURCES = \
 	$(xfdesktop_built_sources)
 
 DISTCLEANFILES = \
-	$(xfdesktop_built_sources) \
-	stamp-xfce-desktop-enum-types.h
+	$(xfdesktop_built_sources)
 
 EXTRA_DIST = \
 	$(desktop_icon_sources) \
@@ -171,27 +170,6 @@ EXTRA_DIST = \
 	xfdesktop-file-manager-dbus.xml \
 	xfdesktop-thunar-dbus.xml \
 	xfdesktop-trash-dbus.xml
-
-enum_headers = \
-	xfce-backdrop.h \
-	xfce-desktop.h
-
-xfce-desktop-enum-types.h: $(enum_headers) Makefile
-	$(AM_V_GEN) $(GLIB_MKENUMS) \
-	      --fhead "#ifndef __XFCE_DESKTOP_ENUM_TYPES_H__\n#define __XFCE_DESKTOP_ENUM_TYPES_H__\nG_BEGIN_DECLS\n" \
-	      --fprod "/* enumerations from \"@filename@\" */\n" \
-	      --vhead "GType @enum_name@_get_type (void) G_GNUC_CONST;\n#define XFCE_TYPE_@ENUMSHORT@ (@enum_name@_get_type())\n" \
-	      --ftail "G_END_DECLS\n\n#endif /* !__XFCE_DESKTOP_ENUM_TYPES_H__ */" \
-	      $(addprefix $(srcdir)/,$(enum_headers)) > $@ || { rm -f $@; exit 1; }
-
-xfce-desktop-enum-types.c: $(enum_headers) Makefile
-	$(AM_V_GEN) $(GLIB_MKENUMS) \
-	      --fhead "#undef GTK_DISABLE_DEPRECATED\n#define GTK_ENABLE_BROKEN\n#include \"xfce-desktop.h\"\n#include \"xfce-backdrop.h\"\n#include \"xfce-desktop-enum-types.h\"" \
-	      --fprod "\n/* enumerations from \"@filename@\" */" \
-	      --vhead "GType\n@enum_name@_get_type (void)\n{\n\tstatic GType type = 0;\n\tif (type == 0) {\n\tstatic const G@Type@Value values[] = {"\
-	      --vprod "\t{ @VALUENAME@, \"@VALUENAME@\", \"@valuenick@\" }," \
-	      --vtail "\t{ 0, NULL, NULL }\n\t};\n\ttype = g_@type@_register_static (\"@EnumName@\", values);\n  }\n\treturn type;\n}\n" \
-	      $(addprefix $(srcdir)/,$(enum_headers)) > $@ || { rm -f $@; exit 1; }
 
 xfdesktop-file-manager-fdo-proxy.c xfdesktop-file-manager-fdo-proxy.h : $(srcdir)/xfdesktop-file-manager-fdo-dbus.xml Makefile
 	$(AM_V_GEN) $(GDBUS_CODEGEN) \

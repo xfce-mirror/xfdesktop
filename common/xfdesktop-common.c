@@ -49,9 +49,45 @@
 
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4windowing/libxfce4windowing.h>
+#include <xfconf/xfconf.h>
 
 #include "xfdesktop-common.h"
-#include "xfce-backdrop.h" /* for XfceBackdropImageStyle */
+
+G_DEFINE_ENUM_TYPE(XfceBackdropColorStyle, xfce_backdrop_color_style,
+    G_DEFINE_ENUM_VALUE(XFCE_BACKDROP_COLOR_INVALID, "invalid"),
+    G_DEFINE_ENUM_VALUE(XFCE_BACKDROP_COLOR_SOLID, "solid"),
+    G_DEFINE_ENUM_VALUE(XFCE_BACKDROP_COLOR_HORIZ_GRADIENT, "horiz-gradient"),
+    G_DEFINE_ENUM_VALUE(XFCE_BACKDROP_COLOR_VERT_GRADIENT, "vert-gradient"),
+    G_DEFINE_ENUM_VALUE(XFCE_BACKDROP_COLOR_TRANSPARENT, "transparent")
+)
+
+G_DEFINE_ENUM_TYPE(XfceBackdropImageStyle, xfce_backdrop_image_style,
+    G_DEFINE_ENUM_VALUE(XFCE_BACKDROP_IMAGE_INVALID, "invalid"),
+    G_DEFINE_ENUM_VALUE(XFCE_BACKDROP_IMAGE_NONE, "none"),
+    G_DEFINE_ENUM_VALUE(XFCE_BACKDROP_IMAGE_CENTERED, "centered"),
+    G_DEFINE_ENUM_VALUE(XFCE_BACKDROP_IMAGE_TILED, "tiled"),
+    G_DEFINE_ENUM_VALUE(XFCE_BACKDROP_IMAGE_STRETCHED, "stretched"),
+    G_DEFINE_ENUM_VALUE(XFCE_BACKDROP_IMAGE_SCALED, "scaled"),
+    G_DEFINE_ENUM_VALUE(XFCE_BACKDROP_IMAGE_ZOOMED, "zoomed"),
+    G_DEFINE_ENUM_VALUE(XFCE_BACKDROP_IMAGE_SPANNING_SCREENS, "spanning-screens")
+)
+
+G_DEFINE_ENUM_TYPE(XfceBcakdropCyclePeriod, xfce_backdrop_cycle_period,
+    G_DEFINE_ENUM_VALUE(XFCE_BACKDROP_PERIOD_INVALID, "invalid"),
+    G_DEFINE_ENUM_VALUE(XFCE_BACKDROP_PERIOD_SECONDS, "seconds"),
+    G_DEFINE_ENUM_VALUE(XFCE_BACKDROP_PERIOD_MINUTES, "minutes"),
+    G_DEFINE_ENUM_VALUE(XFCE_BACKDROP_PERIOD_HOURS, "hours"),
+    G_DEFINE_ENUM_VALUE(XFCE_BACKDROP_PERIOD_STARTUP, "startup"),
+    G_DEFINE_ENUM_VALUE(XFCE_BACKDROP_PERIOD_HOURLY, "hourly"),
+    G_DEFINE_ENUM_VALUE(XFCE_BACKDROP_PERIOD_DAILY, "daily"),
+    G_DEFINE_ENUM_VALUE(XFCE_BACKDROP_PERIOD_CHRONOLOGICAL, "chronological")
+)
+
+G_DEFINE_ENUM_TYPE(XfceDesktopIconStyle, xfce_desktop_icon_style,
+    G_DEFINE_ENUM_VALUE(XFCE_DESKTOP_ICON_STYLE_NONE, "none"),
+    G_DEFINE_ENUM_VALUE(XFCE_DESKTOP_ICON_STYLE_WINDOWS, "windows"),
+    G_DEFINE_ENUM_VALUE(XFCE_DESKTOP_ICON_STYLE_FILES, "files")
+)
 
 /* Free the string whe done using it */
 gchar*
@@ -448,4 +484,183 @@ xfdesktop_debug_set(gboolean debug)
     enable_debug = debug;
     if(enable_debug)
         XF_DEBUG("debugging enabled");
+}
+
+#define LAST_SETTINGS_MIGRATION_PROP "/last-settings-migration-version"
+#define CUR_SETTINGS_MIGRATION_VERSION 1
+
+static gboolean
+maybe_migrate_gdkcolor(XfconfChannel *channel,
+                       const gchar *name,
+                       const GValue *value,
+                       int screen_num,
+                       const gchar *monitor_name,
+                       const char *setting_name,
+                       gint n_workspaces)
+{
+    gboolean ok = FALSE;
+
+    gboolean is_color1 = strcmp(setting_name, "color1") == 0;
+    gboolean is_color2 = !is_color1 && strcmp(setting_name, "color2") == 0;
+    if (is_color1 || is_color2) {
+        if (G_VALUE_HOLDS(value, G_TYPE_PTR_ARRAY)) {
+            GPtrArray *array = g_value_get_boxed(value);
+            if (array->len == 4) {
+                GValue *redv = g_ptr_array_index(array, 0);
+                GValue *greenv = g_ptr_array_index(array, 1);
+                GValue *bluev = g_ptr_array_index(array, 2);
+                GValue *alphav = g_ptr_array_index(array, 3);
+
+                if (G_VALUE_HOLDS(redv, XFCONF_TYPE_UINT16) &&
+                    G_VALUE_HOLDS(greenv, XFCONF_TYPE_UINT16) &&
+                    G_VALUE_HOLDS(bluev, XFCONF_TYPE_UINT16) &&
+                    G_VALUE_HOLDS(alphav, XFCONF_TYPE_UINT16))
+                {
+                    const gchar *new_setting_name = is_color1 ? "rgba1" : "rgba2";
+
+                    gdouble red = CLAMP((gdouble)g_value_get_uint(redv) / G_MAXUINT16, 0.0, 1.0);
+                    gdouble green = CLAMP((gdouble)g_value_get_uint(greenv) / G_MAXUINT16, 0.0, 1.0);
+                    gdouble blue = CLAMP((gdouble)g_value_get_uint(bluev) / G_MAXUINT16, 0.0, 1.0);
+                    gdouble alpha = CLAMP((gdouble)g_value_get_uint(alphav) / G_MAXUINT16, 0.0, 1.0);
+
+                    for (gint i = 0; i < n_workspaces; ++i) {
+                        gchar *new_name = g_strdup_printf("/backdrop/screen%d/monitor%s/workspace%d/%s",
+                                                          screen_num,
+                                                          monitor_name,
+                                                          i,
+                                                          new_setting_name);
+                        if (!xfconf_channel_has_property(channel, new_name)) {
+                            xfconf_channel_set_array(channel, new_name,
+                                                     G_TYPE_DOUBLE, &red,
+                                                     G_TYPE_DOUBLE, &green,
+                                                     G_TYPE_DOUBLE, &blue,
+                                                     G_TYPE_DOUBLE, &alpha,
+                                                     G_TYPE_INVALID);
+                        } else {
+                            g_message("New property %s already exists; not migrating", new_name);
+                        }
+                        g_free(new_name);
+                    }
+
+                    xfconf_channel_reset_property(channel, name, FALSE);
+                    ok = TRUE;
+                }
+            }
+        }
+
+        if (!ok) {
+            g_message("Unable to migrate %s to RGBA as it contains invalid data", name);
+        }
+    }
+
+    return ok;
+}
+
+static gboolean
+maybe_migrate_image_show(XfconfChannel *channel,
+                         const gchar *name,
+                         const GValue *value,
+                         int screen_num,
+                         const gchar *monitor_name,
+                         const char *setting_name,
+                         gint n_workspaces)
+{
+    if (g_strcmp0(setting_name, "image-show") == 0) {
+        if (G_VALUE_HOLDS_BOOLEAN(value) && !g_value_get_boolean(value)) {
+            for (gint i = 0; i < n_workspaces; ++i) {
+                gchar *new_name = g_strdup_printf("/backdrop/screen%d/monitor%s/workspace%d/image-style",
+                                                  screen_num,
+                                                  monitor_name,
+                                                  i);
+                if (!xfconf_channel_has_property(channel, new_name)) {
+                    xfconf_channel_set_int(channel, new_name, XFCE_BACKDROP_IMAGE_NONE);
+                } else {
+                    g_message("New property %s already exists; not migrating", new_name);
+                }
+                g_free(new_name);
+            }
+        }
+
+        xfconf_channel_reset_property(channel, name, FALSE);
+
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+
+// NB: this can only successfully migrate for monitors that are currently plugged in
+void
+xfdesktop_migrate_backdrop_settings(GdkDisplay *display, XfconfChannel *channel) {
+    guint migration_version = xfconf_channel_get_uint(channel, LAST_SETTINGS_MIGRATION_PROP, 0);
+
+    if (migration_version < 1) {
+        XfwScreen *xfw_screen = xfw_screen_get_default();
+        XfwWorkspaceManager *workspace_manager = xfw_screen_get_workspace_manager(xfw_screen);
+        gint n_workspaces = g_list_length(xfw_workspace_manager_list_workspaces(workspace_manager));
+        g_object_unref(xfw_screen);
+
+        gint n_monitors = gdk_display_get_n_monitors(display);
+        GHashTable *backdrop_properties = xfconf_channel_get_properties(channel, "/backdrop");
+
+        GHashTableIter iter;
+        g_hash_table_iter_init(&iter, backdrop_properties);
+
+        gchar *name;
+        GValue *value;
+        while (g_hash_table_iter_next(&iter, (gpointer)&name, (gpointer)&value)) {
+            if (g_strrstr(name, "/workspace") == NULL) {
+                int screen_num = -1;
+                int monitor_num = -1;
+                char *setting_name = NULL;
+
+                if (3 == sscanf(name, "/backdrop/screen%d/monitor%d/%ms", &screen_num, &monitor_num, &setting_name) &&
+                    screen_num >= 0 &&
+                    monitor_num >= 0 &&
+                    setting_name != NULL)
+                {
+                    if (monitor_num < n_monitors) {
+                        GdkMonitor *monitor = gdk_display_get_monitor(display, monitor_num);
+                        const gchar *monitor_name = gdk_monitor_get_model(monitor);
+
+                        if (!maybe_migrate_gdkcolor(channel, name, value, screen_num, monitor_name, setting_name, n_workspaces) &&
+                            !maybe_migrate_image_show(channel, name, value, screen_num, monitor_name, setting_name, n_workspaces))
+                        {
+                            if (g_strcmp0(setting_name, "image-path") == 0) {
+                                free(setting_name);
+                                setting_name = strdup("last-image");
+                            }
+
+                            for (gint i = 0; i < n_workspaces; ++i) {
+                                gchar *new_name = g_strdup_printf("/backdrop/screen%d/monitor%s/workspace%d/%s",
+                                                                  screen_num,
+                                                                  monitor_name,
+                                                                  i,
+                                                                  setting_name);
+                                if (!xfconf_channel_has_property(channel, new_name)) {
+                                    xfconf_channel_set_property(channel, new_name, value);
+                                } else {
+                                    g_message("New property %s already exists; not migrating", new_name);
+                                }
+                                g_free(new_name);
+                            }
+                        }
+                    } else {
+                        g_message("Unable to migrate old setting %s; monitor %d is not currently attached", name, monitor_num);
+                    }
+
+                    xfconf_channel_reset_property(channel, name, FALSE);
+                }
+
+                if (setting_name != NULL) {
+                    free(setting_name);
+                }
+            }
+        }
+
+        g_hash_table_destroy(backdrop_properties);
+    }
+
+    xfconf_channel_set_uint(channel, LAST_SETTINGS_MIGRATION_PROP, CUR_SETTINGS_MIGRATION_VERSION);
 }

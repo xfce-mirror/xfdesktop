@@ -123,31 +123,34 @@ xfdesktop_x11_desktop_scrolled(GtkWidget *widget, GdkEventScroll *event) {
 }
 
 void
-xfdesktop_x11_set_root_image_file_property(GdkScreen *gscreen, guint monitor_num, const gchar *filename) {
+xfdesktop_x11_set_root_image_file_property(GdkScreen *gscreen, GdkMonitor *monitor, const gchar *filename) {
     GdkDisplay *display;
-    gchar *property_name;
 
     display = gdk_screen_get_display(gscreen);
+    gint nmonitors = gdk_display_get_n_monitors(display);
+    for (gint i = 0; i < nmonitors; ++i) {
+        if (monitor == gdk_display_get_monitor(display, i)) {
+            gchar *property_name = g_strdup_printf(XFDESKTOP_IMAGE_FILE_FMT, i);
 
-    gdk_x11_display_error_trap_push(display);
+            gdk_x11_display_error_trap_push(display);
+            if (filename != NULL) {
+                gdk_property_change(gdk_screen_get_root_window(gscreen),
+                                    gdk_atom_intern(property_name, FALSE),
+                                    gdk_x11_xatom_to_atom(XA_STRING),
+                                    8,
+                                    GDK_PROP_MODE_REPLACE,
+                                    (guchar *)filename,
+                                    strlen(filename)+1);
+            } else {
+                gdk_property_delete(gdk_screen_get_root_window(gscreen),
+                                    gdk_atom_intern(property_name, FALSE));
+            }
+            gdk_x11_display_error_trap_pop_ignored(display);
 
-    property_name = g_strdup_printf(XFDESKTOP_IMAGE_FILE_FMT, monitor_num);
-    if (filename != NULL) {
-        gdk_property_change(gdk_screen_get_root_window(gscreen),
-                            gdk_atom_intern(property_name, FALSE),
-                            gdk_x11_xatom_to_atom(XA_STRING),
-                            8,
-                            GDK_PROP_MODE_REPLACE,
-                            (guchar *)filename,
-                            strlen(filename)+1);
-    } else {
-        gdk_property_delete(gdk_screen_get_root_window(gscreen),
-                            gdk_atom_intern(property_name, FALSE));
+            g_free(property_name);
+        }
     }
 
-    gdk_x11_display_error_trap_pop_ignored(display);
-
-    g_free(property_name);
 }
 
 void
