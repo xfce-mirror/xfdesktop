@@ -29,6 +29,7 @@
 #include <glib.h>
 #include <gdk/gdk.h>
 #include <gtk/gtk.h>
+#include <xfconf/xfconf.h>
 #include <libxfce4windowing/libxfce4windowing.h>
 
 #include <stdarg.h>
@@ -116,7 +117,64 @@
 #define XFDESKTOP_FILESYSTEM_INFO_NAMESPACE \
   "filesystem::*"
 
+#define XFCE_TYPE_BACKDROP_COLOR_STYLE (xfce_backdrop_color_style_get_type())
+#define XFCE_TYPE_BACKDROP_IMAGE_STYLE (xfce_backdrop_image_style_get_type())
+#define XFCE_TYPE_BACKDROP_CYCLE_PERIOD (xfce_backdrop_cycle_period_get_type())
+#define XFCE_TYPE_DESKTOP_ICON_STYLE (xfce_desktop_icon_style_get_type())
+
+
+#ifdef ENABLE_DESKTOP_ICONS
+#ifdef ENABLE_FILE_ICONS
+#define ICON_STYLE_DEFAULT XFCE_DESKTOP_ICON_STYLE_FILES
+#else  /* !ENABLE_FILE_ICONS */
+#define ICON_STYLE_DEFAULT XFCE_DESKTOP_ICON_STYLE_WINDOWS
+#endif /* ENABLE_FILE_ICONS */
+#else  /* !ENABLE_DESKTOP_ICONS */
+#define ICON_STYLE_DEFAULT XFCE_DESKTOP_ICON_STYLE_NONE
+#endif  /* ENABLE_DESKTOP_ICONS */
+
 G_BEGIN_DECLS
+
+typedef enum {
+    XFCE_BACKDROP_COLOR_INVALID = -1,
+    XFCE_BACKDROP_COLOR_SOLID = 0,
+    XFCE_BACKDROP_COLOR_HORIZ_GRADIENT,
+    XFCE_BACKDROP_COLOR_VERT_GRADIENT,
+    XFCE_BACKDROP_COLOR_TRANSPARENT,
+} XfceBackdropColorStyle;
+
+typedef enum {
+    XFCE_BACKDROP_IMAGE_INVALID = -1,
+    XFCE_BACKDROP_IMAGE_NONE = 0,
+    XFCE_BACKDROP_IMAGE_CENTERED,
+    XFCE_BACKDROP_IMAGE_TILED,
+    XFCE_BACKDROP_IMAGE_STRETCHED,
+    XFCE_BACKDROP_IMAGE_SCALED,
+    XFCE_BACKDROP_IMAGE_ZOOMED,
+    XFCE_BACKDROP_IMAGE_SPANNING_SCREENS,
+} XfceBackdropImageStyle;
+
+typedef enum {
+    XFCE_BACKDROP_PERIOD_INVALID = -1,
+    XFCE_BACKDROP_PERIOD_SECONDS = 0,
+    XFCE_BACKDROP_PERIOD_MINUTES,
+    XFCE_BACKDROP_PERIOD_HOURS,
+    XFCE_BACKDROP_PERIOD_STARTUP,
+    XFCE_BACKDROP_PERIOD_HOURLY,
+    XFCE_BACKDROP_PERIOD_DAILY,
+    XFCE_BACKDROP_PERIOD_CHRONOLOGICAL,
+} XfceBackdropCyclePeriod;
+
+typedef enum {
+    XFCE_DESKTOP_ICON_STYLE_NONE = 0,
+    XFCE_DESKTOP_ICON_STYLE_WINDOWS,
+    XFCE_DESKTOP_ICON_STYLE_FILES,
+} XfceDesktopIconStyle;
+
+GType xfce_backdrop_color_style_get_type(void) G_GNUC_CONST;
+GType xfce_backdrop_image_style_get_type(void) G_GNUC_CONST;
+GType xfce_backdrop_cycle_period_get_type(void) G_GNUC_CONST;
+GType xfce_desktop_icon_style_get_type(void) G_GNUC_CONST;
 
 gchar* xfdesktop_get_monitor_name_from_gtk_widget(GtkWidget *widget,
                                                   gint monitor_num);
@@ -178,6 +236,8 @@ void xfdesktop_debug(const char *func, const char *file, int line, const char *f
 
 void xfdesktop_debug_set(gboolean debug);
 
+void xfdesktop_migrate_backdrop_settings(GdkDisplay *display,
+                                         XfconfChannel *channel);
 G_END_DECLS
 
 #endif
