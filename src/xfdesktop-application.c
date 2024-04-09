@@ -741,11 +741,11 @@ handle_option(GApplication *app, GVariantDict *options) {
         gboolean has_arg;
         gboolean arg_value;
     } options_to_actions[] = {
-        { OPTION_QUIT, ACTION_QUIT, FALSE, },
-        { OPTION_NEXT, ACTION_NEXT, FALSE, },
+        { OPTION_QUIT, ACTION_QUIT, FALSE, FALSE, },
+        { OPTION_NEXT, ACTION_NEXT, FALSE, FALSE, },
         { OPTION_MENU, ACTION_MENU, TRUE, TRUE },
         { OPTION_WINDOWLIST, ACTION_MENU, TRUE, FALSE },
-        { OPTION_ARRANGE, ACTION_ARRANGE, FALSE, },
+        { OPTION_ARRANGE, ACTION_ARRANGE, FALSE, FALSE, },
         { OPTION_ENABLE_DEBUG, ACTION_DEBUG, TRUE, TRUE },
         { OPTION_DISABLE_DEBUG, ACTION_DEBUG, TRUE, FALSE },
     };

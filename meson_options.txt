@@ -1,0 +1,60 @@
+option(
+  'desktop-menu',
+  type: 'feature',
+  value: 'auto',
+  description: 'Desktop right-click applications menu',
+)
+
+option(
+  'desktop-icons',
+  type: 'boolean',
+  value: true,
+  description: 'Support for desktop icons',
+)
+
+option(
+  'file-icons',
+  type: 'boolean',
+  value: true,
+  description: 'Support for desktop file icons',
+)
+
+option(
+  'thunarx',
+  type: 'feature',
+  value: 'auto',
+  description: 'Support for Thunar file management extensions',
+)
+
+option(
+  'notifications',
+  type: 'feature',
+  value: 'auto',
+  description: 'Support for mount notifications',
+)
+
+option(
+  'windowing-systems',
+  type: 'array',
+  choices: [
+    'auto',
+    'wayland',
+    'x11',
+  ],
+  value: ['auto'],
+  description: 'List of windowing backends to support',
+)
+
+option(
+  'file-manager-fallback',
+  type: 'string',
+  value: 'Thunar',
+  description: 'Fallback file manager to use if the DBus interface is not available',
+)
+
+option(
+  'default-backdrop-filename',
+  type: 'string',
+  value: 'backgrounds/xfce/xfce-shapes.svg',
+  description: 'The path to the default background image (relative paths will prepend $(datadir)',
+)
