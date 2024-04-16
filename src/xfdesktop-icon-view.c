@@ -120,7 +120,6 @@ enum
     PROP_ICON_FONT_SIZE,
     PROP_ICON_FONT_SIZE_SET,
     PROP_ICON_CENTER_TEXT,
-    PROP_ICON_ON_PRIMARY,
     PROP_SHOW_TOOLTIPS,
     PROP_SINGLE_CLICK,
     PROP_SINGLE_CLICK_UNDERLINE_HOVER,
@@ -313,7 +312,6 @@ struct _XfdesktopIconViewPrivate
     GtkCellRenderer *text_renderer;
 
     gint icon_size;
-    gboolean icons_on_primary;
     gdouble font_size;
     gboolean font_size_set;
     gboolean center_text;
@@ -587,7 +585,6 @@ static const struct
     { DESKTOP_ICONS_ICON_SIZE_PROP, G_TYPE_INT, "icon-size" },
     { DESKTOP_ICONS_CUSTOM_FONT_SIZE_PROP, G_TYPE_BOOLEAN, "icon-font-size-set" },
     { DESKTOP_ICONS_FONT_SIZE_PROP, G_TYPE_INT, "icon-font-size" },
-    { DESKTOP_ICONS_ON_PRIMARY_PROP, G_TYPE_BOOLEAN, "icons-on-primary" },
     { DESKTOP_ICONS_SHOW_TOOLTIP_PROP, G_TYPE_BOOLEAN, "show-tooltips" },
     { DESKTOP_ICONS_SINGLE_CLICK_PROP, G_TYPE_BOOLEAN, "single-click" },
     { DESKTOP_ICONS_SINGLE_CLICK_ULINE_PROP, G_TYPE_BOOLEAN, "single-click-underline-hover" },
@@ -927,13 +924,6 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
                                                      MIN_ICON_SIZE, MAX_ICON_SIZE, DEFAULT_ICON_SIZE,
                                                      G_PARAM_READABLE | G_PARAM_STATIC_STRINGS));
 
-    g_object_class_install_property(gobject_class, PROP_ICON_ON_PRIMARY,
-                                    g_param_spec_boolean("icons-on-primary",
-                                                         "icons on primary",
-                                                         "show icons on primary desktop",
-                                                         DEFAULT_ICONS_ON_PRIMARY,
-                                                         PARAM_FLAGS));
-
     g_object_class_install_property(gobject_class, PROP_ICON_FONT_SIZE,
                                     g_param_spec_double("icon-font-size",
                                                         "icon font size",
@@ -1087,7 +1077,6 @@ xfdesktop_icon_view_init(XfdesktopIconView *icon_view)
     icon_view->priv->font_size = DEFAULT_ICON_FONT_SIZE;
     icon_view->priv->font_size_set = DEFAULT_ICON_FONT_SIZE_SET;
     icon_view->priv->gravity = DEFAULT_GRAVITY;
-    icon_view->priv->icons_on_primary = DEFAULT_ICONS_ON_PRIMARY;
     icon_view->priv->show_tooltips = DEFAULT_SHOW_TOOLTIPS;
     icon_view->priv->tooltip_icon_size_xfconf = 0;
     icon_view->priv->tooltip_icon_size_style = 0;
@@ -1229,10 +1218,6 @@ xfdesktop_icon_view_set_property(GObject *object,
             xfdesktop_icon_view_set_icon_size(icon_view, g_value_get_int(value));
             break;
 
-        case PROP_ICON_ON_PRIMARY:
-            xfdesktop_icon_view_set_show_icons_on_primary(icon_view, g_value_get_boolean(value));
-            break;
-
         case PROP_ICON_FONT_SIZE:
             xfdesktop_icon_view_set_font_size(icon_view, g_value_get_double(value));
             break;
@@ -1330,10 +1315,6 @@ xfdesktop_icon_view_get_property(GObject *object,
 
         case PROP_ICON_HEIGHT:
             g_value_set_int(value, ICON_SIZE);
-            break;
-
-        case PROP_ICON_ON_PRIMARY:
-            g_value_set_boolean(value, icon_view->priv->icons_on_primary);
             break;
 
         case PROP_ICON_FONT_SIZE:
@@ -5166,24 +5147,6 @@ xfdesktop_icon_view_get_icon_size(XfdesktopIconView *icon_view)
 {
     g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view), 0);
     return icon_view->priv->icon_size;
-}
-
-void
-xfdesktop_icon_view_set_show_icons_on_primary(XfdesktopIconView *icon_view,
-                                              gboolean icons_on_primary)
-{
-    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view));
-
-    if(icons_on_primary == icon_view->priv->icons_on_primary)
-        return;
-
-    icon_view->priv->icons_on_primary = icons_on_primary;
-
-    if(gtk_widget_get_realized(GTK_WIDGET(icon_view))) {
-        xfdesktop_icon_view_size_grid(icon_view);
-    }
-
-    g_object_notify(G_OBJECT(icon_view), "icons-on-primary");
 }
 
 void
