@@ -454,7 +454,7 @@ xfdesktop_icon_view_model_clear(XfdesktopIconViewModel *ivmodel)
 
     last = xfdesktop_g_list_last(ivmodel->priv->items, &n);
 #ifdef G_ENABLE_DEBUG
-    g_assert(n == g_list_length(ivmodel->items));
+    g_assert(n == g_list_length(ivmodel->priv->items));
 #endif
 
     g_hash_table_remove_all(ivmodel->priv->model_items);
