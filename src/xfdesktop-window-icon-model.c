@@ -137,7 +137,7 @@ xfdesktop_window_icon_model_get_value(GtkTreeModel *model,
 
         case XFDESKTOP_ICON_VIEW_MODEL_COLUMN_IMAGE_OPACITY:
             g_value_init(value, G_TYPE_DOUBLE);
-            g_value_set_double(value, 0.5);
+            g_value_set_double(value, 0.65);
             break;
 
         case XFDESKTOP_ICON_VIEW_MODEL_COLUMN_LABEL: {
