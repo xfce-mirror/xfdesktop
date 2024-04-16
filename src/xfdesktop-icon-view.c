@@ -2252,6 +2252,7 @@ xfdesktop_icon_view_get_surface_for_item(XfdesktopIconView *icon_view,
                             gtk_tree_model_get(icon_view->priv->model, &iter,
                                                icon_view->priv->icon_opacity_column, &opacity,
                                                -1);
+                            opacity = CLAMP(opacity, 0.0, 1.0);
                             if (opacity < 1.0) {
                                 GdkPixbuf *tmp = exo_gdk_pixbuf_lucent(pix, opacity * 100);
                                 g_object_unref(pix);
