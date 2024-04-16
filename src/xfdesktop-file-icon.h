@@ -52,6 +52,8 @@ struct _XfdesktopFileIconClass
 
     /*< virtual functions >*/
     GIcon *(*get_gicon)(XfdesktopFileIcon *icon);
+    gdouble (*get_icon_opacity)(XfdesktopFileIcon *icon);
+
     GFileInfo *(*peek_file_info)(XfdesktopFileIcon *icon);
     GFileInfo *(*peek_filesystem_info)(XfdesktopFileIcon *icon);
     GFile *(*peek_file)(XfdesktopFileIcon *icon);
@@ -83,6 +85,7 @@ void xfdesktop_file_icon_invalidate_icon(XfdesktopFileIcon *icon);
 
 gboolean xfdesktop_file_icon_has_gicon(XfdesktopFileIcon *icon);
 GIcon *xfdesktop_file_icon_get_gicon(XfdesktopFileIcon *icon);
+gdouble xfdesktop_file_icon_get_opacity(XfdesktopFileIcon *icon);
 
 gpointer xfdesktop_file_icon_get_hash_key(XfdesktopFileIcon *icon);
 void xfdesktop_file_icon_free_hash_key(gpointer key);

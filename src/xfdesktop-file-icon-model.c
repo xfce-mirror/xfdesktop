@@ -107,6 +107,13 @@ xfdesktop_file_icon_model_get_value(GtkTreeModel *model,
             break;
         }
 
+        case XFDESKTOP_ICON_VIEW_MODEL_COLUMN_IMAGE_OPACITY: {
+            gdouble opacity = CLAMP(xfdesktop_file_icon_get_opacity(icon), 0.0, 1.0);
+            g_value_init(value, G_TYPE_DOUBLE);
+            g_value_set_double(value, opacity);
+            break;
+        }
+
         case XFDESKTOP_ICON_VIEW_MODEL_COLUMN_LABEL: {
             const gchar *label = xfdesktop_icon_peek_label(XFDESKTOP_ICON(icon));
             if (label != NULL) {

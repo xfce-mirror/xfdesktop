@@ -332,6 +332,18 @@ xfdesktop_file_icon_get_gicon(XfdesktopFileIcon *icon)
     return icon->priv->gicon != NULL ? g_object_ref(icon->priv->gicon) : NULL;
 }
 
+gdouble
+xfdesktop_file_icon_get_opacity(XfdesktopFileIcon *icon) {
+    g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON(icon), 1.0);
+
+    XfdesktopFileIconClass *klass = XFDESKTOP_FILE_ICON_GET_CLASS(icon);
+    if (klass->get_icon_opacity != NULL) {
+        return klass->get_icon_opacity(icon);
+    } else {
+        return 1.0;
+    }
+}
+
 gchar *
 xfdesktop_file_icon_sort_key_for_file(GFile *file)
 {

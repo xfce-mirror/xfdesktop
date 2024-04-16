@@ -90,6 +90,7 @@ static gboolean xfdesktop_volume_icon_populate_context_menu(XfdesktopIcon *icon,
                                                             GtkWidget *menu);
 
 static GIcon * xfdesktop_volume_icon_get_gicon(XfdesktopFileIcon *icon);
+static gdouble xfdesktop_volume_icon_get_opacity(XfdesktopFileIcon *icon);
 static GFileInfo *xfdesktop_volume_icon_peek_file_info(XfdesktopFileIcon *icon);
 static GFileInfo *xfdesktop_volume_icon_peek_filesystem_info(XfdesktopFileIcon *icon);
 static GFile *xfdesktop_volume_icon_peek_file(XfdesktopFileIcon *icon);
@@ -161,6 +162,7 @@ xfdesktop_volume_icon_class_init(XfdesktopVolumeIconClass *klass)
     icon_class->activate = xfdesktop_volume_icon_activate;
 
     file_icon_class->get_gicon = xfdesktop_volume_icon_get_gicon;
+    file_icon_class->get_icon_opacity = xfdesktop_volume_icon_get_opacity;
     file_icon_class->peek_file_info = xfdesktop_volume_icon_peek_file_info;
     file_icon_class->peek_filesystem_info = xfdesktop_volume_icon_peek_filesystem_info;
     file_icon_class->peek_file = xfdesktop_volume_icon_peek_file;
@@ -275,6 +277,11 @@ xfdesktop_volume_icon_get_gicon(XfdesktopFileIcon *icon)
     }
 
     return gicon;
+}
+
+static gdouble
+xfdesktop_volume_icon_get_opacity(XfdesktopFileIcon *icon) {
+    return xfdesktop_volume_icon_is_mounted(XFDESKTOP_ICON(icon)) ? 1.0 : 0.5;
 }
 
 const gchar *

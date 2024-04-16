@@ -186,6 +186,7 @@ xfdesktop_window_icon_manager_constructed(GObject *object)
     wmanager->priv->icon_view = g_object_new(XFDESKTOP_TYPE_ICON_VIEW,
                                              "channel", xfdesktop_icon_view_manager_get_channel(XFDESKTOP_ICON_VIEW_MANAGER(wmanager)),
                                              "pixbuf-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_IMAGE,
+                                             "icon-opacity-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_IMAGE_OPACITY,
                                              "text-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_LABEL,
                                              "search-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_LABEL,
                                              "tooltip-icon-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_TOOLTIP_IMAGE,

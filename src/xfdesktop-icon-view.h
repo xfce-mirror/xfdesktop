@@ -99,6 +99,8 @@ GtkTreeModel *xfdesktop_icon_view_get_model(XfdesktopIconView *icon_view);
 
 void xfdesktop_icon_view_set_pixbuf_column(XfdesktopIconView *icon_view,
                                            gint column);
+void xfdesktop_icon_view_set_icon_opacity_column(XfdesktopIconView *icon_view,
+                                                 gint column);
 void xfdesktop_icon_view_set_text_column(XfdesktopIconView *icon_view,
                                          gint column);
 void xfdesktop_icon_view_set_search_column(XfdesktopIconView *icon_view,

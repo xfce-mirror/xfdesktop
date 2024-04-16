@@ -148,6 +148,8 @@ xfdesktop_icon_view_model_get_column_type(GtkTreeModel *model,
     switch (column) {
         case XFDESKTOP_ICON_VIEW_MODEL_COLUMN_IMAGE:
             return G_TYPE_ICON;
+        case XFDESKTOP_ICON_VIEW_MODEL_COLUMN_IMAGE_OPACITY:
+            return G_TYPE_DOUBLE;
         case XFDESKTOP_ICON_VIEW_MODEL_COLUMN_LABEL:
             return G_TYPE_STRING;
         case XFDESKTOP_ICON_VIEW_MODEL_COLUMN_ROW:

@@ -126,6 +126,7 @@ enum
     PROP_SINGLE_CLICK_UNDERLINE_HOVER,
     PROP_GRAVITY,
     PROP_PIXBUF_COLUMN,
+    PROP_ICON_OPACITY_COLUMN,
     PROP_TEXT_COLUMN,
     PROP_SEARCH_COLUMN,
     PROP_SORT_PRIORITY_COLUMN,
@@ -299,6 +300,7 @@ struct _XfdesktopIconViewPrivate
 
     GtkTreeModel *model;
     gint pixbuf_column;
+    gint icon_opacity_column;
     gint text_column;
     gint search_column;
     gint sort_priority_column;
@@ -992,6 +994,7 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
                                                      PARAM_FLAGS))
 
     DECL_COLUMN_PROP(PROP_PIXBUF_COLUMN, "pixbuf-column");
+    DECL_COLUMN_PROP(PROP_ICON_OPACITY_COLUMN, "icon-opacity-column");
     DECL_COLUMN_PROP(PROP_TEXT_COLUMN, "text-column");
     DECL_COLUMN_PROP(PROP_SEARCH_COLUMN, "search-column");
     DECL_COLUMN_PROP(PROP_SORT_PRIORITY_COLUMN, "sort-priority-column");
@@ -1072,6 +1075,7 @@ xfdesktop_icon_view_init(XfdesktopIconView *icon_view)
     icon_view->priv = xfdesktop_icon_view_get_instance_private(icon_view);
 
     icon_view->priv->pixbuf_column = -1;
+    icon_view->priv->icon_opacity_column = -1;
     icon_view->priv->text_column = -1;
     icon_view->priv->search_column = -1;
     icon_view->priv->tooltip_icon_column = -1;
@@ -1189,6 +1193,10 @@ xfdesktop_icon_view_set_property(GObject *object,
             xfdesktop_icon_view_set_pixbuf_column(icon_view, g_value_get_int(value));
             break;
 
+        case PROP_ICON_OPACITY_COLUMN:
+            xfdesktop_icon_view_set_icon_opacity_column(icon_view, g_value_get_int(value));
+            break;
+
         case PROP_TEXT_COLUMN:
             xfdesktop_icon_view_set_text_column(icon_view, g_value_get_int(value));
             break;
@@ -1278,6 +1286,10 @@ xfdesktop_icon_view_get_property(GObject *object,
 
         case PROP_PIXBUF_COLUMN:
             g_value_set_int(value, icon_view->priv->pixbuf_column);
+            break;
+
+        case PROP_ICON_OPACITY_COLUMN:
+            g_value_set_int(value, icon_view->priv->icon_opacity_column);
             break;
 
         case PROP_TEXT_COLUMN:
@@ -2235,6 +2247,18 @@ xfdesktop_icon_view_get_surface_for_item(XfdesktopIconView *icon_view,
                     }
 
                     if (G_LIKELY(pix != NULL)) {
+                        if (icon_view->priv->icon_opacity_column != -1) {
+                            gdouble opacity = 1.0;
+                            gtk_tree_model_get(icon_view->priv->model, &iter,
+                                               icon_view->priv->icon_opacity_column, &opacity,
+                                               -1);
+                            if (opacity < 1.0) {
+                                GdkPixbuf *tmp = exo_gdk_pixbuf_lucent(pix, opacity * 100);
+                                g_object_unref(pix);
+                                pix = tmp;
+                            }
+                        }
+
                         surface = gdk_cairo_surface_create_from_pixbuf(pix,
                                                                        gtk_widget_get_scale_factor(GTK_WIDGET(icon_view)),
                                                                        gtk_widget_get_window(GTK_WIDGET(icon_view)));
@@ -4719,6 +4743,21 @@ xfdesktop_icon_view_set_pixbuf_column(XfdesktopIconView *icon_view,
     g_object_freeze_notify(G_OBJECT(icon_view));
 
     changed = xfdesktop_icon_view_set_column(icon_view, column, &icon_view->priv->pixbuf_column, G_TYPE_ICON, "pixbuf-column");
+    if (changed) {
+        xfdesktop_icon_view_invalidate_all(icon_view, TRUE);
+    }
+
+    g_object_thaw_notify(G_OBJECT(icon_view));
+}
+
+void
+xfdesktop_icon_view_set_icon_opacity_column(XfdesktopIconView *icon_view, gint column) {
+    gboolean changed;
+
+    // Delay notify for pixbuf-column until after we set up the column
+    g_object_freeze_notify(G_OBJECT(icon_view));
+
+    changed = xfdesktop_icon_view_set_column(icon_view, column, &icon_view->priv->icon_opacity_column, G_TYPE_DOUBLE, "icon-opacity-column");
     if (changed) {
         xfdesktop_icon_view_invalidate_all(icon_view, TRUE);
     }

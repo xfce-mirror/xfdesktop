@@ -601,6 +601,7 @@ xfdesktop_file_icon_manager_constructed(GObject *obj)
     fmanager->priv->icon_view = g_object_new(XFDESKTOP_TYPE_ICON_VIEW,
                                              "channel", channel,
                                              "pixbuf-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_IMAGE,
+                                             "icon-opacity-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_IMAGE_OPACITY,
                                              "text-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_LABEL,
                                              "search-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_LABEL,
                                              "sort-priority-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_SORT_PRIORITY,
