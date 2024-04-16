@@ -320,6 +320,7 @@ xfdesktop_icon_view_manager_set_show_icons_on_primary(XfdesktopIconViewManager *
     if (manager->priv->icons_on_primary != icons_on_primary) {
         manager->priv->icons_on_primary = icons_on_primary;
         g_object_notify(G_OBJECT(manager), "icons-on-primary");
+        xfdesktop_icon_view_manager_update_workarea(manager);
     }
 }
 
@@ -368,6 +369,9 @@ xfdesktop_icon_view_manager_update_workarea(XfdesktopIconViewManager *manager)
         DBG("new workarea: %dx%d+%d+%d", new_workarea.width, new_workarea.height, new_workarea.x, new_workarea.y);
         manager->priv->workarea = new_workarea;
         g_object_notify(G_OBJECT(manager), "workarea");
+
+        XfdesktopIconViewManagerClass *klass = XFDESKTOP_ICON_VIEW_MANAGER_GET_CLASS(manager);
+        klass->update_workarea(manager);
     }
 }
 
