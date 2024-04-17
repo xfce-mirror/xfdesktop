@@ -295,6 +295,9 @@ xfdesktop_icon_view_manager_parent_realized(GtkWidget *parent,
 
     g_signal_connect_swapped(screen, "monitors-changed",
                              G_CALLBACK(xfdesktop_icon_view_manager_update_workarea), manager);
+    g_signal_connect_swapped(screen, "size-changed",
+                             G_CALLBACK(xfdesktop_icon_view_manager_update_workarea), manager);
+
 }
 
 static void

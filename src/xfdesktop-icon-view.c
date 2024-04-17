@@ -329,8 +329,6 @@ struct _XfdesktopIconViewPrivate
     gint ncols;
     ViewItem **grid_layout;
 
-    guint grid_resize_timeout;
-
     GtkSelectionMode sel_mode;
     guint maybe_begin_drag:1,
           definitely_dragging:1,
@@ -513,9 +511,6 @@ static inline void xfdesktop_xy_to_rowcol(XfdesktopIconView *icon_view,
                                           gint y,
                                           gint *row,
                                           gint *col);
-static gboolean xfdesktop_grid_resize_timeout(gpointer user_data);
-static void xfdesktop_screen_size_changed_cb(GdkScreen *gscreen,
-                                            gpointer user_data);
 static inline gboolean xfdesktop_rectangle_contains_point(GdkRectangle *rect,
                                                           gint x,
                                                           gint y);
@@ -2897,9 +2892,6 @@ xfdesktop_icon_view_realize(GtkWidget *widget)
                      G_CALLBACK(xfdesktop_icon_view_focus_out), icon_view);
 
     gscreen = gtk_widget_get_screen(widget);
-    g_signal_connect(G_OBJECT(gscreen), "size-changed",
-                     G_CALLBACK(xfdesktop_screen_size_changed_cb), icon_view);
-
     g_signal_connect_after(G_OBJECT(gtk_icon_theme_get_for_screen(gscreen)),
                            "changed",
                            G_CALLBACK(xfdesktop_icon_view_icon_theme_changed),
@@ -2939,15 +2931,6 @@ xfdesktop_icon_view_unrealize(GtkWidget *widget)
                      G_CALLBACK(xfdesktop_icon_view_focus_in), icon_view);
     g_signal_handlers_disconnect_by_func(G_OBJECT(icon_view->priv->parent_window),
                      G_CALLBACK(xfdesktop_icon_view_focus_out), icon_view);
-
-    if(icon_view->priv->grid_resize_timeout) {
-        g_source_remove(icon_view->priv->grid_resize_timeout);
-        icon_view->priv->grid_resize_timeout = 0;
-    }
-
-    g_signal_handlers_disconnect_by_func(G_OBJECT(gscreen),
-                                         G_CALLBACK(xfdesktop_screen_size_changed_cb),
-                                         icon_view);
 
     g_signal_handlers_disconnect_by_func(G_OBJECT(icon_view),
                                          G_CALLBACK(scale_factor_changed_cb),
@@ -3771,22 +3754,6 @@ xfdesktop_icon_view_real_move_cursor(XfdesktopIconView *icon_view,
     return TRUE;
 }
 
-static void
-xfdesktop_screen_size_changed_cb(GdkScreen *gscreen,
-                                 gpointer user_data)
-{
-    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(user_data);
-
-   /* this is kinda icky.  we want to use _NET_WORKAREA to reset the size of
-     * the grid, but we can never be sure it'll actually change.  so let's
-     * give it 7 seconds, and then fix it manually */
-    if(icon_view->priv->grid_resize_timeout)
-        g_source_remove(icon_view->priv->grid_resize_timeout);
-    icon_view->priv->grid_resize_timeout = g_timeout_add(7000,
-                                                         xfdesktop_grid_resize_timeout,
-                                                         icon_view);
-}
-
 static inline gboolean
 xfdesktop_rectangle_equal(GdkRectangle *rect1, GdkRectangle *rect2)
 {
@@ -4092,17 +4059,6 @@ xfdesktop_icon_view_unselect_item_internal(XfdesktopIconView *icon_view,
             g_signal_emit(icon_view, __signals[SIG_ICON_SELECTION_CHANGED], 0);
         }
     }
-}
-
-static gboolean
-xfdesktop_grid_resize_timeout(gpointer user_data)
-{
-    XfdesktopIconView *icon_view = user_data;
-
-    icon_view->priv->grid_resize_timeout = 0;
-    xfdesktop_icon_view_size_grid(icon_view);
-
-    return FALSE;
 }
 
 static inline gboolean
