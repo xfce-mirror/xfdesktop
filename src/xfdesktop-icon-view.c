@@ -516,8 +516,6 @@ static inline void xfdesktop_xy_to_rowcol(XfdesktopIconView *icon_view,
                                           gint *row,
                                           gint *col);
 static gboolean xfdesktop_grid_resize_timeout(gpointer user_data);
-static void xfdesktop_monitors_changed_cb(GdkScreen *gscreen,
-                                          gpointer user_data);
 static void xfdesktop_screen_size_changed_cb(GdkScreen *gscreen,
                                             gpointer user_data);
 static inline gboolean xfdesktop_rectangle_contains_point(GdkRectangle *rect,
@@ -2922,8 +2920,6 @@ xfdesktop_icon_view_realize(GtkWidget *widget)
                      G_CALLBACK(xfdesktop_icon_view_focus_out), icon_view);
 
     gscreen = gtk_widget_get_screen(widget);
-    g_signal_connect(G_OBJECT(gscreen), "monitors-changed",
-                     G_CALLBACK(xfdesktop_monitors_changed_cb), icon_view);
     g_signal_connect(G_OBJECT(gscreen), "size-changed",
                      G_CALLBACK(xfdesktop_screen_size_changed_cb), icon_view);
 
@@ -2972,9 +2968,6 @@ xfdesktop_icon_view_unrealize(GtkWidget *widget)
         icon_view->priv->grid_resize_timeout = 0;
     }
 
-    g_signal_handlers_disconnect_by_func(G_OBJECT(gscreen),
-                                         G_CALLBACK(xfdesktop_monitors_changed_cb),
-                                         icon_view);
     g_signal_handlers_disconnect_by_func(G_OBJECT(gscreen),
                                          G_CALLBACK(xfdesktop_screen_size_changed_cb),
                                          icon_view);
@@ -3800,20 +3793,6 @@ xfdesktop_icon_view_real_move_cursor(XfdesktopIconView *icon_view,
 
     return TRUE;
 }
-
-
-static void
-xfdesktop_monitors_changed_cb(GdkScreen *gscreen,
-                              gpointer user_data)
-{
-    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(user_data);
-
-    if (gdk_display_get_n_monitors(gdk_screen_get_display(gscreen)) > 0) {
-        /* Resize the grid to be sure we take into account monitor setup changes */
-        xfdesktop_icon_view_size_grid(icon_view);
-    }
-}
-
 
 static void
 xfdesktop_screen_size_changed_cb(GdkScreen *gscreen,
