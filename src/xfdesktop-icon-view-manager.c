@@ -281,8 +281,8 @@ static void
 xfdesktop_icon_view_manager_parent_realized(GtkWidget *parent,
                                             XfdesktopIconViewManager *manager)
 {
-#ifdef ENABLE_X11
     GdkScreen *screen = gtk_widget_get_screen(manager->priv->parent);
+#ifdef ENABLE_X11
     GdkWindow *rootwin = gdk_screen_get_root_window(screen);
 
     gdk_window_set_events(rootwin, gdk_window_get_events(rootwin) | GDK_PROPERTY_CHANGE_MASK);
@@ -292,25 +292,29 @@ xfdesktop_icon_view_manager_parent_realized(GtkWidget *parent,
     xfdesktop_icon_view_manager_update_workarea(manager);
     g_signal_connect_swapped(parent, "notify::scale-factor",
                              G_CALLBACK(xfdesktop_icon_view_manager_update_workarea), manager);
+
+    g_signal_connect_swapped(screen, "monitors-changed",
+                             G_CALLBACK(xfdesktop_icon_view_manager_update_workarea), manager);
 }
 
 static void
 xfdesktop_icon_view_manager_parent_unrealized(GtkWidget *parent,
                                               XfdesktopIconViewManager *manager)
 {
-#ifdef ENABLE_X11
     GdkScreen *screen;
-    GdkWindow *rootwin;
-
     if (gtk_widget_has_screen(manager->priv->parent)) {
         screen = gtk_widget_get_screen(manager->priv->parent);
     } else {
         screen = gdk_screen_get_default();
     }
-    rootwin = gdk_screen_get_root_window(screen);
 
+#ifdef ENABLE_X11
+    GdkWindow *rootwin = gdk_screen_get_root_window(screen);
     gdk_window_remove_filter(rootwin, xfdesktop_icon_view_manager_rootwin_event_filter, manager);
 #endif
+
+    g_signal_handlers_disconnect_by_func(screen, xfdesktop_icon_view_manager_update_workarea, manager);
+    g_signal_handlers_disconnect_by_func(parent, xfdesktop_icon_view_manager_update_workarea, manager);
 }
 
 static void
@@ -320,6 +324,7 @@ xfdesktop_icon_view_manager_set_show_icons_on_primary(XfdesktopIconViewManager *
     if (manager->priv->icons_on_primary != icons_on_primary) {
         manager->priv->icons_on_primary = icons_on_primary;
         g_object_notify(G_OBJECT(manager), "icons-on-primary");
+        xfdesktop_icon_view_manager_update_workarea(manager);
     }
 }
 
@@ -353,6 +358,12 @@ xfdesktop_icon_view_manager_update_workarea(XfdesktopIconViewManager *manager)
     GdkScreen *screen = gtk_widget_get_screen(manager->priv->parent);
     GdkDisplay *display = gdk_screen_get_display(screen);
 
+    if (gdk_display_get_n_monitors(gdk_screen_get_display(screen)) == 0) {
+        // Ignore; intermediate state and we should get another event with at
+        // least one monitor.
+        return;
+    }
+
     if (manager->priv->icons_on_primary) {
         GdkMonitor *monitor = gdk_display_get_primary_monitor(display);
         if (monitor == NULL) {
@@ -368,6 +379,9 @@ xfdesktop_icon_view_manager_update_workarea(XfdesktopIconViewManager *manager)
         DBG("new workarea: %dx%d+%d+%d", new_workarea.width, new_workarea.height, new_workarea.x, new_workarea.y);
         manager->priv->workarea = new_workarea;
         g_object_notify(G_OBJECT(manager), "workarea");
+
+        XfdesktopIconViewManagerClass *klass = XFDESKTOP_ICON_VIEW_MANAGER_GET_CLASS(manager);
+        klass->update_workarea(manager);
     }
 }
 
