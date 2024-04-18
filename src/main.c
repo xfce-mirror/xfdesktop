@@ -31,6 +31,7 @@
 #include <gtk/gtk.h>
 
 #include <libxfce4util/libxfce4util.h>
+#include <libxfce4ui/libxfce4ui.h>
 
 #include "xfdesktop-application.h"
 
@@ -50,6 +51,7 @@ main(int argc, char **argv)
     xfce_textdomain(GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
 
     app = xfdesktop_application_get();
+    g_application_add_option_group(G_APPLICATION(app), xfce_sm_client_get_option_group(argc, argv));
 
     ret = g_application_run(G_APPLICATION(app), argc, argv);
 
