@@ -58,8 +58,6 @@ struct _XfdesktopIconViewManagerClass
 
     void (*sort_icons)(XfdesktopIconViewManager *manager,
                        GtkSortType sort_type);
-
-    void (*update_workarea)(XfdesktopIconViewManager *manager);
 };
 
 GType xfdesktop_icon_view_manager_get_type(void) G_GNUC_CONST;

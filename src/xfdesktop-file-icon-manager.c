@@ -266,7 +266,6 @@ static GdkDragAction xfdesktop_file_icon_manager_drop_propose_action(XfdesktopIc
 static GtkMenu *xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager);
 static void xfdesktop_file_icon_manager_sort_icons(XfdesktopIconViewManager *manager,
                                                    GtkSortType sort_type);
-static void xfdesktop_file_icon_manager_update_workarea(XfdesktopIconViewManager *manager);
 
 static void xfdesktop_file_icon_manager_save_icons(XfdesktopFileIconManager *fmanager);
 
@@ -412,7 +411,6 @@ xfdesktop_file_icon_manager_class_init(XfdesktopFileIconManagerClass *klass)
 
     ivm_class->get_context_menu = xfdesktop_file_icon_manager_get_context_menu;
     ivm_class->sort_icons = xfdesktop_file_icon_manager_sort_icons;
-    ivm_class->update_workarea = xfdesktop_file_icon_manager_update_workarea;
 
     fmanager_signals[HIDDEN_STATE_CHANGED] = g_signal_new("hidden-state-changed",
                                                           G_OBJECT_CLASS_TYPE(gobject_class),
@@ -2376,23 +2374,6 @@ xfdesktop_file_icon_manager_sort_icons(XfdesktopIconViewManager *manager,
 }
 
 static void
-xfdesktop_file_icon_manager_update_workarea(XfdesktopIconViewManager *manager) {
-    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(manager);
-
-    if (fmanager->priv->icon_view != NULL) {
-        GdkRectangle workarea;
-        xfdesktop_icon_view_manager_get_workarea(manager, &workarea);
-
-        if (workarea.width > 0 && workarea.height > 0) {
-            gtk_widget_set_size_request(GTK_WIDGET(fmanager->priv->icon_view), workarea.width, workarea.height);
-        }
-
-        GtkFixed *container = xfdesktop_icon_view_manager_get_container(manager);
-        gtk_fixed_move(container, GTK_WIDGET(fmanager->priv->icon_view), workarea.x, workarea.y);
-    }
-}
-
-static void
 file_icon_hash_write_icons(gpointer key,
                            gpointer value,
                            gpointer data)
@@ -2706,14 +2687,14 @@ static void
 xfdesktop_file_icon_manager_workarea_changed(XfdesktopFileIconManager *fmanager)
 {
     GdkRectangle workarea;
-
     xfdesktop_icon_view_manager_get_workarea(XFDESKTOP_ICON_VIEW_MANAGER(fmanager), &workarea);
-    DBG("moving icon view to +%d+%d", workarea.x, workarea.y);
-    gtk_fixed_move(xfdesktop_icon_view_manager_get_container(XFDESKTOP_ICON_VIEW_MANAGER(fmanager)),
-                   GTK_WIDGET(fmanager->priv->icon_view),
-                   workarea.x,
-                   workarea.y);
-    gtk_widget_set_size_request(GTK_WIDGET(fmanager->priv->icon_view), workarea.width, workarea.height);
+
+    if (workarea.width > 0 && workarea.height > 0) {
+        gtk_widget_set_size_request(GTK_WIDGET(fmanager->priv->icon_view), workarea.width, workarea.height);
+    }
+
+    GtkFixed *container = xfdesktop_icon_view_manager_get_container(XFDESKTOP_ICON_VIEW_MANAGER(fmanager));
+    gtk_fixed_move(container, GTK_WIDGET(fmanager->priv->icon_view), workarea.x, workarea.y);
 }
 
 static void
