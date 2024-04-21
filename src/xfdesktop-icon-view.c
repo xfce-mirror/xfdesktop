@@ -1104,7 +1104,7 @@ xfdesktop_icon_view_constructed(GObject *object)
                      G_CALLBACK(xfdesktop_icon_view_xfconf_tooltip_icon_size_changed), icon_view);
 
     gtk_widget_set_has_window(GTK_WIDGET(icon_view), FALSE);
-    gtk_widget_set_can_focus(GTK_WIDGET(icon_view), TRUE);
+    gtk_widget_set_can_focus(GTK_WIDGET(icon_view), FALSE);
 
     context = gtk_widget_get_style_context(GTK_WIDGET(icon_view));
     gtk_style_context_add_class(context, GTK_STYLE_CLASS_VIEW);
