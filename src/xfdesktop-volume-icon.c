@@ -732,19 +732,15 @@ xfdesktop_volume_icon_menu_eject(GtkWidget *widget,
                                  gpointer user_data)
 {
     XfdesktopVolumeIcon *icon = XFDESKTOP_VOLUME_ICON(user_data);
-    GtkWindow *toplevel = xfdesktop_find_toplevel(widget);
-    GVolume *volume;
-    GMount *mount;
-    GMountOperation *operation = NULL;
-
-    volume = xfdesktop_volume_icon_peek_volume(icon);
-    mount = g_volume_get_mount(volume);
+    GVolume *volume = xfdesktop_volume_icon_peek_volume(icon);
 
     if (volume != NULL && g_volume_can_eject(volume)) {
 #ifdef HAVE_LIBNOTIFY
         xfdesktop_notify_eject(volume);
 #endif
-        operation = gtk_mount_operation_new(toplevel);
+
+        GtkWindow *toplevel = xfdesktop_find_toplevel(widget);
+        GMountOperation *operation = gtk_mount_operation_new(toplevel);
         gtk_mount_operation_set_screen(GTK_MOUNT_OPERATION(operation),
                                        icon->priv->gscreen);
 
@@ -754,16 +750,11 @@ xfdesktop_volume_icon_menu_eject(GtkWidget *widget,
                                       NULL,
                                       xfdesktop_volume_icon_eject_finish,
                                       g_object_ref(icon));
+        g_object_unref(operation);
     } else {
         /* If we can't eject the volume try to unmount it */
         xfdesktop_volume_icon_menu_unmount(widget, user_data);
     }
-
-    if (mount != NULL) {
-        g_object_unref(mount);
-    }
-    if(operation != NULL)
-        g_object_unref(operation);
 }
 
 static void
