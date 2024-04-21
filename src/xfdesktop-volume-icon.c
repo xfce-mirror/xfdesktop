@@ -740,10 +740,7 @@ xfdesktop_volume_icon_menu_eject(GtkWidget *widget,
     volume = xfdesktop_volume_icon_peek_volume(icon);
     mount = g_volume_get_mount(volume);
 
-    if(!mount)
-        return;
-
-    if(g_volume_can_eject(volume)) {
+    if (volume != NULL && g_volume_can_eject(volume)) {
 #ifdef HAVE_LIBNOTIFY
         xfdesktop_notify_eject(volume);
 #endif
@@ -762,7 +759,9 @@ xfdesktop_volume_icon_menu_eject(GtkWidget *widget,
         xfdesktop_volume_icon_menu_unmount(widget, user_data);
     }
 
-    g_object_unref(mount);
+    if (mount != NULL) {
+        g_object_unref(mount);
+    }
     if(operation != NULL)
         g_object_unref(operation);
 }
