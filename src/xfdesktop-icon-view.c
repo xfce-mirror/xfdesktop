@@ -4018,32 +4018,38 @@ static gboolean
 xfdesktop_icon_view_queue_draw_item(XfdesktopIconView *icon_view,
                                     ViewItem *item)
 {
-    gint dx, dy;
+    gboolean ret = FALSE;
 
-    gtk_widget_translate_coordinates(xfdesktop_icon_view_get_window_widget(icon_view),
-                                     GTK_WIDGET(icon_view),
-                                     0, 0, &dx, &dy);
-
-    if (icon_view->priv->drop_dest_item == item) {
-        GdkRectangle slot_rect = {
-            .x = 0,
-            .y = 0,
-            .width = SLOT_SIZE,
-            .height = SLOT_SIZE,
-        };
-        xfdesktop_icon_view_shift_to_slot_area(icon_view, item, &slot_rect, &slot_rect);
-        gtk_widget_queue_draw_area(GTK_WIDGET(icon_view),
-                                   slot_rect.x - dx, slot_rect.y - dy,
-                                   slot_rect.width, slot_rect.height);
-    }
+    GdkRectangle slot_rect = {
+        .x = 0,
+        .y = 0,
+        .width = SLOT_SIZE,
+        .height = SLOT_SIZE,
+    };
+    xfdesktop_icon_view_shift_to_slot_area(icon_view, item, &slot_rect, &slot_rect);
 
     if (item->slot_extents.width > 0 && item->slot_extents.height > 0) {
+        gint dx, dy;
+        gtk_widget_translate_coordinates(xfdesktop_icon_view_get_window_widget(icon_view),
+                                         GTK_WIDGET(icon_view),
+                                         0, 0, &dx, &dy);
+
+        GdkRectangle extents_rect = {
+            .x = item->slot_extents.x - dx,
+            .y = item->slot_extents.y - dy,
+            .width = item->slot_extents.width,
+            .height = item->slot_extents.height,
+        };
+        gdk_rectangle_union(&extents_rect, &slot_rect, &slot_rect);
+
         gtk_widget_queue_draw_area(GTK_WIDGET(icon_view),
-                                   item->slot_extents.x - dx, item->slot_extents.y - dy,
-                                   item->slot_extents.width, item->slot_extents.height);
-        return TRUE;
+                                   slot_rect.x, slot_rect.y,
+                                   slot_rect.width, slot_rect.height);
+
+        ret = TRUE;
     }
-    return FALSE;
+
+    return ret;
 }
 
 static void
