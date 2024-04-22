@@ -2819,7 +2819,6 @@ xfdesktop_icon_view_style_updated(GtkWidget *widget)
     }
 
     if (gtk_widget_get_realized(widget)) {
-        xfdesktop_icon_view_invalidate_pixbuf_cache(icon_view);
         xfdesktop_icon_view_invalidate_all(icon_view, TRUE);
     }
 
