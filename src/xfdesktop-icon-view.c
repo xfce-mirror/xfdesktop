@@ -2775,18 +2775,28 @@ static void
 xfdesktop_icon_view_style_updated(GtkWidget *widget)
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
-    gdouble cell_text_width_proportion;
 
     DBG("entering");
 
+    gint cell_spacing;
+    gint slot_padding;
+    gdouble cell_text_width_proportion;
     gtk_widget_style_get(widget,
-                         "cell-spacing", &icon_view->priv->cell_spacing,
-                         "cell-padding", &icon_view->priv->slot_padding,
+                         "cell-spacing", &cell_spacing,
+                         "cell-padding", &slot_padding,
                          "cell-text-width-proportion", &cell_text_width_proportion,
                          "ellipsize-icon-labels", &icon_view->priv->ellipsize_icon_labels,
                          "label-radius", &icon_view->priv->label_radius,
                          "tooltip-size", &icon_view->priv->tooltip_icon_size_style,
                          NULL);
+
+    gboolean need_grid_resize =
+        cell_spacing != icon_view->priv->cell_spacing ||
+        slot_padding != icon_view->priv->slot_padding ||
+        cell_text_width_proportion != icon_view->priv->cell_text_width_proportion;
+
+    icon_view->priv->cell_spacing = cell_spacing;
+    icon_view->priv->slot_padding = slot_padding;
 
     if (cell_text_width_proportion != icon_view->priv->cell_text_width_proportion) {
         icon_view->priv->cell_text_width_proportion = cell_text_width_proportion;
@@ -2819,7 +2829,11 @@ xfdesktop_icon_view_style_updated(GtkWidget *widget)
     }
 
     if (gtk_widget_get_realized(widget)) {
-        xfdesktop_icon_view_invalidate_all(icon_view, TRUE);
+        if (need_grid_resize) {
+            xfdesktop_icon_view_size_grid(icon_view);
+        } else {
+            xfdesktop_icon_view_invalidate_all(icon_view, TRUE);
+        }
     }
 
     GTK_WIDGET_CLASS(xfdesktop_icon_view_parent_class)->style_updated(widget);
