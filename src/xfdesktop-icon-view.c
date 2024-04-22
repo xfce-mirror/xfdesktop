@@ -2855,13 +2855,21 @@ xfdesktop_icon_view_size_allocate(GtkWidget *widget,
                                   GtkAllocation *allocation)
 {
     DBG("got size allocation: %dx%d+%d+%d", allocation->width, allocation->height, allocation->x, allocation->y);
-    gtk_widget_set_allocation(widget, allocation);
 
-    if (gtk_widget_get_realized(widget)) {
-        if (gtk_widget_get_has_window(widget)) {
-            gdk_window_move_resize(gtk_widget_get_window(widget), allocation->x, allocation->y, allocation->width, allocation->height);
-        }
+    GtkAllocation old_allocation;
+    gtk_widget_get_allocation(widget, &old_allocation);
+
+    GTK_WIDGET_CLASS(xfdesktop_icon_view_parent_class)->size_allocate(widget, allocation);
+
+    if (gtk_widget_get_realized(widget) &&
+        (old_allocation.x != allocation->x ||
+         old_allocation.y != allocation->y ||
+         old_allocation.width != allocation->width ||
+         old_allocation.height != allocation->height))
+    {
         xfdesktop_icon_view_size_grid(XFDESKTOP_ICON_VIEW(widget));
+    } else {
+        DBG("allocation did not change; ignoring");
     }
 }
 
