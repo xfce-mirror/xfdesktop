@@ -2026,7 +2026,7 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager)
                         GFile *file = xfdesktop_file_icon_peek_file(file_icon);
 
                         img = gtk_image_new_from_icon_name("gtk-edit", GTK_ICON_SIZE_MENU);
-                        mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Edit Launcher"), img);
+                        mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Edit _Launcher"), img);
                         g_object_set_data_full(G_OBJECT(mi), "file",
                                                g_object_ref(file), g_object_unref);
                         gtk_widget_show(mi);
@@ -2085,7 +2085,7 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager)
 
                         if(list_len >= 3) {
                             img = gtk_image_new_from_icon_name("", GTK_ICON_SIZE_MENU);
-                            mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Open With"), img);
+                            mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Ope_n With"), img);
                             gtk_widget_show(mi);
                             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
 
@@ -2112,7 +2112,7 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager)
                     }
 
                     img = gtk_image_new_from_icon_name("", GTK_ICON_SIZE_MENU);
-                    mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Open With Other _Application..."), img);
+                    mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Ope_n With Other Application..."), img);
                     gtk_widget_show(mi);
                     if(list_len >= 3)
                         gtk_menu_shell_append(GTK_MENU_SHELL(app_infos_menu), mi);
@@ -2127,7 +2127,7 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager)
                     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
 
                     img = gtk_image_new_from_icon_name("", GTK_ICON_SIZE_MENU);
-                    mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Set _Default Application..."), img);
+                    mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Set Defa_ult Application..."), img);
                     gtk_widget_show(mi);
                     if(list_len >= 3)
                         gtk_menu_shell_append(GTK_MENU_SHELL(app_infos_menu), mi);
@@ -2141,7 +2141,7 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager)
                     g_list_free(app_infos);
                 } else {
                     img = gtk_image_new_from_icon_name("document-open", GTK_ICON_SIZE_MENU);
-                    mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Open With Other _Application..."), img);
+                    mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Ope_n With Other Application..."), img);
                     gtk_widget_show(mi);
                     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
                     g_signal_connect(G_OBJECT(mi), "activate",
@@ -2364,7 +2364,7 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager)
         } else {
             /* Properties - applies only to icons on the desktop */
             img = gtk_image_new_from_icon_name("document-properties", GTK_ICON_SIZE_MENU);
-            mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("P_roperties..."), img);
+            mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("_Properties..."), img);
             gtk_widget_show(mi);
             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             if (!info) {
