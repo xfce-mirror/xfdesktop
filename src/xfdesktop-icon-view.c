@@ -474,6 +474,8 @@ static void xfdesktop_icon_view_invalidate_all(XfdesktopIconView *icon_view,
 static void xfdesktop_icon_view_invalidate_item(XfdesktopIconView *icon_view,
                                                 ViewItem *item,
                                                 gboolean recalc_extents);
+static void xfdesktop_icon_view_invalidate_item_text(XfdesktopIconView *icon_view,
+                                                     ViewItem *item);
 
 static void xfdesktop_icon_view_invalidate_pixbuf_cache(XfdesktopIconView *icon_view);
 
@@ -1803,7 +1805,7 @@ xfdesktop_icon_view_focus_in(GtkWidget *widget,
     DBG("GOT FOCUS");
 
     for (GList *l = icon_view->priv->selected_items; l != NULL; l = l->next) {
-        xfdesktop_icon_view_invalidate_item(icon_view, (ViewItem *)l->data, FALSE);
+        xfdesktop_icon_view_invalidate_item_text(icon_view, (ViewItem *)l->data);
     }
 
     return FALSE;
@@ -1819,7 +1821,7 @@ xfdesktop_icon_view_focus_out(GtkWidget *widget,
     DBG("LOST FOCUS");
 
     for (GList *l = icon_view->priv->selected_items; l != NULL; l = l->next) {
-        xfdesktop_icon_view_invalidate_item(icon_view, (ViewItem *)l->data, FALSE);
+        xfdesktop_icon_view_invalidate_item_text(icon_view, (ViewItem *)l->data);
     }
 
     if(G_UNLIKELY(icon_view->priv->single_click)) {
@@ -2767,28 +2769,36 @@ xfdesktop_icon_view_sort_icons(XfdesktopIconView *icon_view,
 }
 
 static void
-xfdesktop_icon_view_icon_theme_changed(GtkIconTheme *icon_theme,
-                                       gpointer user_data)
-{
-    gtk_widget_queue_draw(GTK_WIDGET(user_data));
+xfdesktop_icon_view_icon_theme_changed(GtkIconTheme *icon_theme, XfdesktopIconView *icon_view) {
+    xfdesktop_icon_view_invalidate_all(icon_view, TRUE);
 }
 
 static void
 xfdesktop_icon_view_style_updated(GtkWidget *widget)
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
-    gdouble cell_text_width_proportion;
 
     DBG("entering");
 
+    gint cell_spacing;
+    gint slot_padding;
+    gdouble cell_text_width_proportion;
     gtk_widget_style_get(widget,
-                         "cell-spacing", &icon_view->priv->cell_spacing,
-                         "cell-padding", &icon_view->priv->slot_padding,
+                         "cell-spacing", &cell_spacing,
+                         "cell-padding", &slot_padding,
                          "cell-text-width-proportion", &cell_text_width_proportion,
                          "ellipsize-icon-labels", &icon_view->priv->ellipsize_icon_labels,
                          "label-radius", &icon_view->priv->label_radius,
                          "tooltip-size", &icon_view->priv->tooltip_icon_size_style,
                          NULL);
+
+    gboolean need_grid_resize =
+        cell_spacing != icon_view->priv->cell_spacing ||
+        slot_padding != icon_view->priv->slot_padding ||
+        cell_text_width_proportion != icon_view->priv->cell_text_width_proportion;
+
+    icon_view->priv->cell_spacing = cell_spacing;
+    icon_view->priv->slot_padding = slot_padding;
 
     if (cell_text_width_proportion != icon_view->priv->cell_text_width_proportion) {
         icon_view->priv->cell_text_width_proportion = cell_text_width_proportion;
@@ -2821,9 +2831,13 @@ xfdesktop_icon_view_style_updated(GtkWidget *widget)
     }
 
     if (gtk_widget_get_realized(widget)) {
-        xfdesktop_icon_view_invalidate_pixbuf_cache(icon_view);
-        xfdesktop_icon_view_invalidate_all(icon_view, TRUE);
-        gtk_widget_queue_draw(widget);
+        if (need_grid_resize) {
+            xfdesktop_icon_view_size_grid(icon_view);
+        } else {
+            for (GList *l = icon_view->priv->selected_items; l != NULL; l = l->next) {
+                xfdesktop_icon_view_invalidate_item_text(icon_view, (ViewItem *)l->data);
+            }
+        }
     }
 
     GTK_WIDGET_CLASS(xfdesktop_icon_view_parent_class)->style_updated(widget);
@@ -2845,13 +2859,21 @@ xfdesktop_icon_view_size_allocate(GtkWidget *widget,
                                   GtkAllocation *allocation)
 {
     DBG("got size allocation: %dx%d+%d+%d", allocation->width, allocation->height, allocation->x, allocation->y);
-    gtk_widget_set_allocation(widget, allocation);
 
-    if (gtk_widget_get_realized(widget)) {
-        if (gtk_widget_get_has_window(widget)) {
-            gdk_window_move_resize(gtk_widget_get_window(widget), allocation->x, allocation->y, allocation->width, allocation->height);
-        }
+    GtkAllocation old_allocation;
+    gtk_widget_get_allocation(widget, &old_allocation);
+
+    GTK_WIDGET_CLASS(xfdesktop_icon_view_parent_class)->size_allocate(widget, allocation);
+
+    if (gtk_widget_get_realized(widget) &&
+        (old_allocation.x != allocation->x ||
+         old_allocation.y != allocation->y ||
+         old_allocation.width != allocation->width ||
+         old_allocation.height != allocation->height))
+    {
         xfdesktop_icon_view_size_grid(XFDESKTOP_ICON_VIEW(widget));
+    } else {
+        DBG("allocation did not change; ignoring");
     }
 }
 
@@ -3937,6 +3959,7 @@ xfdesktop_icon_view_size_grid(XfdesktopIconView *icon_view)
 
     if (grid_changed) {
         g_signal_emit(icon_view, __signals[SIG_START_GRID_RESIZE], 0, new_nrows, new_ncols);
+        xfdesktop_icon_view_invalidate_all(icon_view, FALSE);
         xfdesktop_icon_view_temp_unplace_items(icon_view);
     }
 
@@ -3993,42 +4016,44 @@ xfdesktop_icon_view_size_grid(XfdesktopIconView *icon_view)
 
     XF_DEBUG("created grid_layout with %lu positions", (gulong)(new_size/sizeof(gpointer)));
     DUMP_GRID_LAYOUT(icon_view);
-
-    if (gtk_widget_get_realized(GTK_WIDGET(icon_view))) {
-        gtk_widget_queue_draw(GTK_WIDGET(icon_view));
-    }
 }
 
 static gboolean
 xfdesktop_icon_view_queue_draw_item(XfdesktopIconView *icon_view,
                                     ViewItem *item)
 {
-    gint dx, dy;
+    gboolean ret = FALSE;
 
-    gtk_widget_translate_coordinates(xfdesktop_icon_view_get_window_widget(icon_view),
-                                     GTK_WIDGET(icon_view),
-                                     0, 0, &dx, &dy);
-
-    if (icon_view->priv->drop_dest_item == item) {
-        GdkRectangle slot_rect = {
-            .x = 0,
-            .y = 0,
-            .width = SLOT_SIZE,
-            .height = SLOT_SIZE,
-        };
-        xfdesktop_icon_view_shift_to_slot_area(icon_view, item, &slot_rect, &slot_rect);
-        gtk_widget_queue_draw_area(GTK_WIDGET(icon_view),
-                                   slot_rect.x - dx, slot_rect.y - dy,
-                                   slot_rect.width, slot_rect.height);
-    }
+    GdkRectangle slot_rect = {
+        .x = 0,
+        .y = 0,
+        .width = SLOT_SIZE,
+        .height = SLOT_SIZE,
+    };
+    xfdesktop_icon_view_shift_to_slot_area(icon_view, item, &slot_rect, &slot_rect);
 
     if (item->slot_extents.width > 0 && item->slot_extents.height > 0) {
+        gint dx, dy;
+        gtk_widget_translate_coordinates(xfdesktop_icon_view_get_window_widget(icon_view),
+                                         GTK_WIDGET(icon_view),
+                                         0, 0, &dx, &dy);
+
+        GdkRectangle extents_rect = {
+            .x = item->slot_extents.x - dx,
+            .y = item->slot_extents.y - dy,
+            .width = item->slot_extents.width,
+            .height = item->slot_extents.height,
+        };
+        gdk_rectangle_union(&extents_rect, &slot_rect, &slot_rect);
+
         gtk_widget_queue_draw_area(GTK_WIDGET(icon_view),
-                                   item->slot_extents.x - dx, item->slot_extents.y - dy,
-                                   item->slot_extents.width, item->slot_extents.height);
-        return TRUE;
+                                   slot_rect.x, slot_rect.y,
+                                   slot_rect.width, slot_rect.height);
+
+        ret = TRUE;
     }
-    return FALSE;
+
+    return ret;
 }
 
 static void
@@ -4045,6 +4070,17 @@ xfdesktop_icon_view_invalidate_item(XfdesktopIconView *icon_view,
     if (recalc_extents) {
         xfdesktop_icon_view_update_item_extents(icon_view, item);
         xfdesktop_icon_view_queue_draw_item(icon_view, item);
+    }
+}
+
+static void
+xfdesktop_icon_view_invalidate_item_text(XfdesktopIconView *icon_view, ViewItem *item) {
+    g_return_if_fail(item != NULL);
+
+    if (item->text_extents.width > 0 && item->text_extents.height > 0) {
+        gtk_widget_queue_draw_area(GTK_WIDGET(icon_view),
+                                   item->text_extents.x, item->text_extents.y,
+                                   item->text_extents.width, item->text_extents.height);
     }
 }
 
@@ -4596,6 +4632,7 @@ xfdesktop_icon_view_set_model(XfdesktopIconView *icon_view,
 
     if (icon_view->priv->model != NULL) {
         if (gtk_widget_get_realized(GTK_WIDGET(icon_view))) {
+            xfdesktop_icon_view_invalidate_all(icon_view, FALSE);
             xfdesktop_icon_view_disconnect_model_signals(icon_view);
         }
         xfdesktop_icon_view_items_free(icon_view);
@@ -4612,10 +4649,6 @@ xfdesktop_icon_view_set_model(XfdesktopIconView *icon_view,
     }
 
     g_object_notify(G_OBJECT(icon_view), "model");
-
-    if (gtk_widget_get_realized(GTK_WIDGET(icon_view))) {
-        gtk_widget_queue_draw(GTK_WIDGET(icon_view));
-    }
 }
 
 GtkTreeModel *
@@ -5169,7 +5202,6 @@ xfdesktop_icon_view_set_center_text(XfdesktopIconView *icon_view,
 
     if (gtk_widget_get_realized(GTK_WIDGET(icon_view))) {
         xfdesktop_icon_view_invalidate_all(icon_view, TRUE);
-        gtk_widget_queue_draw(GTK_WIDGET(icon_view));
     }
 
     g_object_notify(G_OBJECT(icon_view), "icon-center-text");
@@ -5203,7 +5235,9 @@ xfdesktop_icon_view_set_single_click(XfdesktopIconView *icon_view,
     }
 
     if(gtk_widget_get_realized(GTK_WIDGET(icon_view))) {
-        gtk_widget_queue_draw(GTK_WIDGET(icon_view));
+        for (GList *l = icon_view->priv->selected_items; l != NULL; l = l->next) {
+            xfdesktop_icon_view_invalidate_item(icon_view, l->data, TRUE);
+        }
     }
 
     g_object_notify(G_OBJECT(icon_view), "single-click");
@@ -5248,10 +5282,6 @@ xfdesktop_icon_view_set_gravity(XfdesktopIconView *icon_view,
         return;
 
     icon_view->priv->gravity = gravity;
-
-    if(gtk_widget_get_realized(GTK_WIDGET(icon_view))) {
-        gtk_widget_queue_draw(GTK_WIDGET(icon_view));
-    }
 
     g_object_notify(G_OBJECT(icon_view), "gravity");
 }
