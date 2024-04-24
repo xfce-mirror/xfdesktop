@@ -474,6 +474,8 @@ static void xfdesktop_icon_view_invalidate_all(XfdesktopIconView *icon_view,
 static void xfdesktop_icon_view_invalidate_item(XfdesktopIconView *icon_view,
                                                 ViewItem *item,
                                                 gboolean recalc_extents);
+static void xfdesktop_icon_view_invalidate_item_text(XfdesktopIconView *icon_view,
+                                                     ViewItem *item);
 
 static void xfdesktop_icon_view_invalidate_pixbuf_cache(XfdesktopIconView *icon_view);
 
@@ -1803,7 +1805,7 @@ xfdesktop_icon_view_focus_in(GtkWidget *widget,
     DBG("GOT FOCUS");
 
     for (GList *l = icon_view->priv->selected_items; l != NULL; l = l->next) {
-        xfdesktop_icon_view_invalidate_item(icon_view, (ViewItem *)l->data, FALSE);
+        xfdesktop_icon_view_invalidate_item_text(icon_view, (ViewItem *)l->data);
     }
 
     return FALSE;
@@ -1819,7 +1821,7 @@ xfdesktop_icon_view_focus_out(GtkWidget *widget,
     DBG("LOST FOCUS");
 
     for (GList *l = icon_view->priv->selected_items; l != NULL; l = l->next) {
-        xfdesktop_icon_view_invalidate_item(icon_view, (ViewItem *)l->data, FALSE);
+        xfdesktop_icon_view_invalidate_item_text(icon_view, (ViewItem *)l->data);
     }
 
     if(G_UNLIKELY(icon_view->priv->single_click)) {
@@ -2832,7 +2834,9 @@ xfdesktop_icon_view_style_updated(GtkWidget *widget)
         if (need_grid_resize) {
             xfdesktop_icon_view_size_grid(icon_view);
         } else {
-            xfdesktop_icon_view_invalidate_all(icon_view, TRUE);
+            for (GList *l = icon_view->priv->selected_items; l != NULL; l = l->next) {
+                xfdesktop_icon_view_invalidate_item_text(icon_view, (ViewItem *)l->data);
+            }
         }
     }
 
@@ -4066,6 +4070,17 @@ xfdesktop_icon_view_invalidate_item(XfdesktopIconView *icon_view,
     if (recalc_extents) {
         xfdesktop_icon_view_update_item_extents(icon_view, item);
         xfdesktop_icon_view_queue_draw_item(icon_view, item);
+    }
+}
+
+static void
+xfdesktop_icon_view_invalidate_item_text(XfdesktopIconView *icon_view, ViewItem *item) {
+    g_return_if_fail(item != NULL);
+
+    if (item->text_extents.width > 0 && item->text_extents.height > 0) {
+        gtk_widget_queue_draw_area(GTK_WIDGET(icon_view),
+                                   item->text_extents.x, item->text_extents.y,
+                                   item->text_extents.width, item->text_extents.height);
     }
 }
 
