@@ -731,6 +731,7 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
     widget_class->style_updated = xfce_desktop_style_updated;
 
 #define XFDESKTOP_PARAM_FLAGS  (G_PARAM_READWRITE \
+                                | G_PARAM_CONSTRUCT \
                                 | G_PARAM_STATIC_NAME \
                                 | G_PARAM_STATIC_NICK \
                                 | G_PARAM_STATIC_BLURB)
