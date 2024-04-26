@@ -2118,6 +2118,10 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager)
                                      G_CALLBACK(xfdesktop_file_icon_menu_other_app),
                                      fmanager);
 
+                    mi = gtk_separator_menu_item_new();
+                    gtk_widget_show(mi);
+                    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+
                     img = gtk_image_new_from_icon_name("", GTK_ICON_SIZE_MENU);
                     mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Set _Default Application..."), img);
                     gtk_widget_show(mi);
@@ -2270,7 +2274,7 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager)
 #ifdef HAVE_THUNARX
         if(!multi_sel_special && fmanager->priv->thunarx_menu_providers) {
             GList               *menu_items = NULL;
-            GtkWidget           *gtk_menu_item;
+            GtkWidget           *gtk_menu_item = NULL;
             GList               *lp_item;
             ThunarxMenuProvider *provider;
 
@@ -2299,6 +2303,13 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager)
                     }
 
                 g_list_free (menu_items);
+            }
+
+            if (gtk_menu_item != NULL) {
+                /* Separator */
+                mi = gtk_separator_menu_item_new();
+                gtk_widget_show(mi);
+                gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
             }
         }
 #endif
@@ -2333,6 +2344,11 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager)
                                  G_CALLBACK(xfdesktop_file_icon_menu_next_background),
                                  fmanager);
             }
+
+            /* Separator */
+            mi = gtk_separator_menu_item_new();
+            gtk_widget_show(mi);
+            gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
 
             /* Desktop settings window */
             img = gtk_image_new_from_icon_name("preferences-desktop-wallpaper", GTK_ICON_SIZE_MENU);
