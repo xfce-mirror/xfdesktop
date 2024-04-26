@@ -730,32 +730,26 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
     widget_class->popup_menu = xfce_desktop_popup_menu;
     widget_class->style_updated = xfce_desktop_style_updated;
 
-#define XFDESKTOP_PARAM_FLAGS  (G_PARAM_READWRITE \
-                                | G_PARAM_CONSTRUCT \
-                                | G_PARAM_STATIC_NAME \
-                                | G_PARAM_STATIC_NICK \
-                                | G_PARAM_STATIC_BLURB)
-
     g_object_class_install_property(gobject_class, PROP_SCREEN,
                                     g_param_spec_object("screen",
                                                         "gdk screen",
                                                         "gdk screen",
                                                         GDK_TYPE_SCREEN,
-                                                        XFDESKTOP_PARAM_FLAGS | G_PARAM_CONSTRUCT_ONLY));
+                                                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS));
 
     g_object_class_install_property(gobject_class, PROP_CHANNEL,
                                     g_param_spec_object("channel",
                                                         "xfconf channel",
                                                         "xfconf channel",
                                                         XFCONF_TYPE_CHANNEL,
-                                                        XFDESKTOP_PARAM_FLAGS | G_PARAM_CONSTRUCT_ONLY));
+                                                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS));
 
     g_object_class_install_property(gobject_class, PROP_PROPERTY_PREFIX,
                                     g_param_spec_string("property-prefix",
                                                         "xfconf property prefix",
                                                         "xfconf property prefix",
                                                         "",
-                                                        XFDESKTOP_PARAM_FLAGS | G_PARAM_CONSTRUCT_ONLY));
+                                                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS));
 
 #ifdef ENABLE_DESKTOP_ICONS
     g_object_class_install_property(gobject_class, PROP_ICON_STYLE,
@@ -768,7 +762,7 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
 #else
                                                       XFCE_DESKTOP_ICON_STYLE_WINDOWS,
 #endif /* ENABLE_FILE_ICONS */
-                                                      XFDESKTOP_PARAM_FLAGS));
+                                                      G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS));
 #endif /* ENABLE_DESKTOP_ICONS */
 
     g_object_class_install_property(gobject_class, PROP_SINGLE_WORKSPACE_MODE,
@@ -776,16 +770,14 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
                                                          "single-workspace-mode",
                                                          "single-workspace-mode",
                                                          TRUE,
-                                                         XFDESKTOP_PARAM_FLAGS));
+                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS));
 
     g_object_class_install_property(gobject_class, PROP_SINGLE_WORKSPACE_NUMBER,
                                     g_param_spec_int("single-workspace-number",
                                                      "single-workspace-number",
                                                      "single-workspace-number",
                                                      0, G_MAXINT16, 0,
-                                                     XFDESKTOP_PARAM_FLAGS));
-
-#undef XFDESKTOP_PARAM_FLAGS
+                                                     G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS));
 
     xfce_desktop_settings_bindings_init();
 }
