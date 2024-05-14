@@ -1890,19 +1890,21 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager,
                         app_infos_menu = menu;
                     }
 
-                    add_menu_item(app_infos_menu,
-                                  _("Ope_n With Other Application..."),
-                                  NULL,
-                                  G_CALLBACK(xfdesktop_file_icon_menu_other_app),
-                                  mdata);
+                    if (!multi_sel) {
+                        add_menu_item(app_infos_menu,
+                                      _("Ope_n With Other Application..."),
+                                      NULL,
+                                      G_CALLBACK(xfdesktop_file_icon_menu_other_app),
+                                      mdata);
 
-                    add_menu_separator(app_infos_menu);
+                        add_menu_separator(app_infos_menu);
 
-                    add_menu_item(app_infos_menu,
-                                  _("Set Defa_ult Application..."),
-                                  NULL,
-                                  G_CALLBACK(xfdesktop_file_icon_menu_set_default_app),
-                                  mdata);
+                        add_menu_item(app_infos_menu,
+                                      _("Set Defa_ult Application..."),
+                                      NULL,
+                                      G_CALLBACK(xfdesktop_file_icon_menu_set_default_app),
+                                      mdata);
+                    }
 
                     g_list_free(app_infos);
                 } else {
