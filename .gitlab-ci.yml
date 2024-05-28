@@ -2,18 +2,3 @@ include:
   - project: 'xfce/xfce4-dev-tools'
     file: '/ci/build_project.yml'
 
-build-no-x11:
-  extends: .make
-  before_script:
-    - ./autogen.sh --disable-x11
-  stage: build
-  script:
-    - make
-
-build-no-wayland:
-  extends: .make
-  before_script:
-    - ./autogen.sh --disable-wayland
-  stage: build
-  script:
-    - make
