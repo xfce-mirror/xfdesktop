@@ -2770,6 +2770,7 @@ xfdesktop_icon_view_sort_icons(XfdesktopIconView *icon_view,
 
 static void
 xfdesktop_icon_view_icon_theme_changed(GtkIconTheme *icon_theme, XfdesktopIconView *icon_view) {
+    xfdesktop_icon_view_invalidate_pixbuf_cache(icon_view);
     xfdesktop_icon_view_invalidate_all(icon_view, TRUE);
 }
 
