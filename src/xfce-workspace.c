@@ -371,7 +371,7 @@ xfce_workspace_finalize(GObject *object)
 
     xfce_workspace_remove_backdrops(workspace);
 
-    for (gulong *binding_id = (gulong *)workspace->priv->binding_ids->data;
+    for (gulong *binding_id = (gulong *)(gpointer)workspace->priv->binding_ids->data;
          *binding_id != 0;
          ++binding_id)
     {
@@ -709,7 +709,7 @@ xfce_workspace_disconnect_backdrop_settings(XfceWorkspace *workspace,
 
     g_return_if_fail(XFCE_IS_BACKDROP(backdrop));
 
-    for (gulong *binding_id = (gulong *)workspace->priv->binding_ids->data;
+    for (gulong *binding_id = (gulong *)(gpointer)workspace->priv->binding_ids->data;
          *binding_id != 0;
          ++binding_id)
     {

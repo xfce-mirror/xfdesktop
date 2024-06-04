@@ -292,7 +292,7 @@ create_gradient(GdkRGBA *color1,
                 x = ax1;
                 y = ax2;
             }
-            p = (guint32 *) (data + y * stride + x * sizeof(guint32));
+            p = (guint32 *)(gpointer)(data + y * stride + x * sizeof(guint32));
             *p = (r << 16) | (g << 8) | (b << 0);
         }
     }
