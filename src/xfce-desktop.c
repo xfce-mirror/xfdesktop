@@ -498,7 +498,7 @@ backdrop_changed_cb(XfceBackdrop *backdrop, gpointer user_data)
     }
 
 #ifdef G_ENABLE_DEBUG
-    XF_DEBUG("backdrop changed for workspace %p, monitor %d (%s)", current_workspace, monitor,
+    XF_DEBUG("backdrop changed for workspace %d, monitor %d (%s)", current_workspace, monitor,
              gdk_monitor_get_model(gdk_display_get_monitor(display, monitor)));
 #endif
 
