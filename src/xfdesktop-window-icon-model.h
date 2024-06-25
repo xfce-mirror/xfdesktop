@@ -35,13 +35,8 @@ typedef struct _XfdesktopWindowIconModelClass XfdesktopWindowIconModelClass;
 
 GType xfdesktop_window_icon_model_get_type(void) G_GNUC_CONST;
 
-XfdesktopWindowIconModel *xfdesktop_window_icon_model_new(void);
+XfdesktopWindowIconModel *xfdesktop_window_icon_model_new(XfwScreen *screen);
 
-void xfdesktop_window_icon_model_append(XfdesktopWindowIconModel *wmodel,
-                                        XfwWindow *window,
-                                        GtkTreeIter *iter);
-void xfdesktop_window_icon_model_remove(XfdesktopWindowIconModel *wmodel,
-                                        XfwWindow *window);
 void xfdesktop_window_icon_model_changed(XfdesktopWindowIconModel *wmodel,
                                          XfwWindow *window);
 
