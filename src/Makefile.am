@@ -50,6 +50,8 @@ desktop_icon_sources = \
 	xfdesktop-icon.h \
 	xfdesktop-icon-view.c \
 	xfdesktop-icon-view.h \
+	xfdesktop-icon-view-holder.c \
+	xfdesktop-icon-view-holder.h \
 	xfdesktop-icon-view-manager.c \
 	xfdesktop-icon-view-manager.h \
 	xfdesktop-icon-view-model.c \
