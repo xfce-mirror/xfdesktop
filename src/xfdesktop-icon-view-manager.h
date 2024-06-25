@@ -31,23 +31,8 @@
 
 G_BEGIN_DECLS
 
-#define XFDESKTOP_TYPE_ICON_VIEW_MANAGER            (xfdesktop_icon_view_manager_get_type())
-#define XFDESKTOP_ICON_VIEW_MANAGER(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), XFDESKTOP_TYPE_ICON_VIEW_MANAGER, XfdesktopIconViewManager))
-#define XFDESKTOP_IS_ICON_VIEW_MANAGER(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), XFDESKTOP_TYPE_ICON_VIEW_MANAGER))
-#define XFDESKTOP_ICON_VIEW_MANAGER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), XFDESKTOP_TYPE_ICON_VIEW_MANAGER, XfdesktopIconViewManagerClass))
-#define XFDESKTOP_ICON_VIEW_MANAGER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), XFDESKTOP_TYPE_ICON_VIEW_MANAGER, XfdesktopIconViewManagerClass))
-
-typedef struct _XfdesktopIconViewManager XfdesktopIconViewManager;
-typedef struct _XfdesktopIconViewManagerPrivate XfdesktopIconViewManagerPrivate;
-typedef struct _XfdesktopIconViewManagerClass XfdesktopIconViewManagerClass;
-
-struct _XfdesktopIconViewManager
-{
-    GObject parent;
-
-    /*< private >*/
-    XfdesktopIconViewManagerPrivate *priv;
-};
+G_DECLARE_DERIVABLE_TYPE(XfdesktopIconViewManager, xfdesktop_icon_view_manager, XFDESKTOP, ICON_VIEW_MANAGER, GObject)
+#define XFDESKTOP_TYPE_ICON_VIEW_MANAGER (xfdesktop_icon_view_manager_get_type())
 
 struct _XfdesktopIconViewManagerClass
 {
@@ -55,28 +40,26 @@ struct _XfdesktopIconViewManagerClass
 
     /* Virtual Functions */
 
-    GtkMenu *(*get_context_menu)(XfdesktopIconViewManager *manager);
+    GtkMenu *(*get_context_menu)(XfdesktopIconViewManager *manager,
+                                 GtkWidget *widget);
 
     void (*sort_icons)(XfdesktopIconViewManager *manager,
                        GtkSortType sort_type);
 };
 
-GType xfdesktop_icon_view_manager_get_type(void) G_GNUC_CONST;
-
 XfwScreen *xfdesktop_icon_view_manager_get_screen(XfdesktopIconViewManager *manager);
-
-GtkWidget *xfdesktop_icon_view_manager_get_parent(XfdesktopIconViewManager *manager);
-GtkFixed *xfdesktop_icon_view_manager_get_container(XfdesktopIconViewManager *manager);
+GList *xfdesktop_icon_view_manager_get_desktops(XfdesktopIconViewManager *manager);
 XfconfChannel *xfdesktop_icon_view_manager_get_channel(XfdesktopIconViewManager *manager);
 
 gboolean xfdesktop_icon_view_manager_get_show_icons_on_primary(XfdesktopIconViewManager *manager);
 
-void xfdesktop_icon_view_manager_get_workarea(XfdesktopIconViewManager *manager,
-                                              GdkRectangle *workarea);
+void xfdesktop_icon_view_manager_desktops_changed(XfdesktopIconViewManager *manager,
+                                                  GList *desktops);
 
 /* virtual function accessors */
 
-GtkMenu *xfdesktop_icon_view_manager_get_context_menu(XfdesktopIconViewManager *manager);
+GtkMenu *xfdesktop_icon_view_manager_get_context_menu(XfdesktopIconViewManager *manager,
+                                                      GtkWidget *widget);
 void xfdesktop_icon_view_manager_sort_icons(XfdesktopIconViewManager *manager,
                                             GtkSortType sort_type);
 
