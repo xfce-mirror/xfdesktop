@@ -23,6 +23,8 @@
 #endif
 
 #include <cairo-gobject.h>
+#include <libxfce4util/libxfce4util.h>
+#include <libxfce4windowing/libxfce4windowing.h>
 
 #include "xfdesktop-common.h"
 #include "xfdesktop-extensions.h"
@@ -63,6 +65,8 @@ model_item_free(ModelItem *item)
 struct _XfdesktopWindowIconModel
 {
     XfdesktopIconViewModel parent;
+
+    XfwScreen *screen;
 };
 
 struct _XfdesktopWindowIconModelClass
@@ -70,6 +74,21 @@ struct _XfdesktopWindowIconModelClass
     XfdesktopIconViewModelClass parent_class;
 };
 
+enum {
+    PROP0,
+    PROP_SCREEN,
+};
+
+static void xfdesktop_window_icon_model_constructed(GObject *object);
+static void xfdesktop_window_icon_model_set_property(GObject *object,
+                                                     guint property_id,
+                                                     const GValue *value,
+                                                     GParamSpec *pspec);
+static void xfdesktop_window_icon_model_get_property(GObject *object,
+                                                     guint property_id,
+                                                     GValue *value,
+                                                     GParamSpec *pspec);
+static void xfdesktop_window_icon_model_finalize(GObject *object);
 
 static void xfdesktop_window_icon_model_tree_model_init(GtkTreeModelIface *iface);
 
@@ -81,6 +100,16 @@ static void xfdesktop_window_icon_model_get_value(GtkTreeModel *model,
 static void xfdesktop_window_icon_model_item_free(XfdesktopIconViewModel *ivmodel,
                                                   gpointer item);
 
+static void window_opened(XfwScreen *screen,
+                          XfwWindow *window,
+                          XfdesktopWindowIconModel *wmodel);
+static void window_state_changed(XfwWindow *window,
+                                 XfwWindowState changed_mask,
+                                 XfwWindowState new_state,
+                                 XfdesktopWindowIconModel *wmodel);
+static void window_closed(XfwWindow *window,
+                          XfdesktopWindowIconModel *wmodel);
+
 
 G_DEFINE_TYPE_WITH_CODE(XfdesktopWindowIconModel,
                         xfdesktop_window_icon_model,
@@ -91,8 +120,21 @@ G_DEFINE_TYPE_WITH_CODE(XfdesktopWindowIconModel,
 static void
 xfdesktop_window_icon_model_class_init(XfdesktopWindowIconModelClass *klass)
 {
-    XfdesktopIconViewModelClass *ivmodel_class = XFDESKTOP_ICON_VIEW_MODEL_CLASS(klass);
+    GObjectClass *gobject_class = G_OBJECT_CLASS(klass);
+    gobject_class->constructed = xfdesktop_window_icon_model_constructed;
+    gobject_class->set_property = xfdesktop_window_icon_model_set_property;
+    gobject_class->get_property = xfdesktop_window_icon_model_get_property;
+    gobject_class->finalize = xfdesktop_window_icon_model_finalize;
 
+    g_object_class_install_property(gobject_class,
+                                    PROP_SCREEN,
+                                    g_param_spec_object("screen",
+                                                        "screen",
+                                                        "XfwScreen",
+                                                        XFW_TYPE_SCREEN,
+                                                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS));
+
+    XfdesktopIconViewModelClass *ivmodel_class = XFDESKTOP_ICON_VIEW_MODEL_CLASS(klass);
     ivmodel_class->model_item_ref = NULL;
     ivmodel_class->model_item_free = xfdesktop_window_icon_model_item_free;
     ivmodel_class->model_item_hash = g_direct_hash;
@@ -100,14 +142,72 @@ xfdesktop_window_icon_model_class_init(XfdesktopWindowIconModelClass *klass)
 }
 
 static void
-xfdesktop_window_icon_model_tree_model_init(GtkTreeModelIface *iface)
-{
-    iface->get_value = xfdesktop_window_icon_model_get_value;
+xfdesktop_window_icon_model_init(XfdesktopWindowIconModel *wmodel) {}
+
+
+static void
+xfdesktop_window_icon_model_constructed(GObject *object) {
+    XfdesktopWindowIconModel *wmodel = XFDESKTOP_WINDOW_ICON_MODEL(object);
+
+    G_OBJECT_CLASS(xfdesktop_window_icon_model_parent_class)->constructed(object);
+
+    for (GList *l = xfw_screen_get_windows(wmodel->screen); l != NULL; l = l->next) {
+        XfwWindow *window = XFW_WINDOW(l->data);
+        window_opened(wmodel->screen, window, wmodel);
+    }
+    g_signal_connect(wmodel->screen, "window-opened",
+                     G_CALLBACK(window_opened), wmodel);
 }
 
 static void
-xfdesktop_window_icon_model_init(XfdesktopWindowIconModel *wmodel)
+xfdesktop_window_icon_model_set_property(GObject *object, guint property_id, const GValue *value, GParamSpec *pspec) {
+    XfdesktopWindowIconModel *wmodel = XFDESKTOP_WINDOW_ICON_MODEL(object);
+
+    switch (property_id) {
+        case PROP_SCREEN:
+            wmodel->screen = g_value_dup_object(value);
+            break;
+
+        default:
+            G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
+            break;
+    }
+}
+
+static void
+xfdesktop_window_icon_model_get_property(GObject *object, guint property_id, GValue *value, GParamSpec *pspec) {
+    XfdesktopWindowIconModel *wmodel = XFDESKTOP_WINDOW_ICON_MODEL(object);
+
+    switch (property_id) {
+        case PROP_SCREEN:
+            g_value_set_object(value, wmodel->screen);
+            break;
+
+        default:
+            G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
+            break;
+    }
+}
+
+static void
+xfdesktop_window_icon_model_finalize(GObject *object) {
+    XfdesktopWindowIconModel *wmodel = XFDESKTOP_WINDOW_ICON_MODEL(object);
+
+    XfwScreen *screen = wmodel->screen;
+    g_signal_handlers_disconnect_by_data(screen, wmodel);
+
+    G_OBJECT_CLASS(xfdesktop_window_icon_model_parent_class)->finalize(object);
+
+    // Ensure screen stays alive while the parent class finalizes all the
+    // ModelItems, since it has to disconnect signals from the XfwWindow
+    // instances, and we don't own references to those.
+    g_object_unref(screen);
+}
+
+static void
+xfdesktop_window_icon_model_tree_model_init(GtkTreeModelIface *iface)
 {
+    iface->get_value = xfdesktop_window_icon_model_get_value;
 }
 
 static void
@@ -179,6 +279,9 @@ xfdesktop_window_icon_model_get_value(GtkTreeModel *model,
             break;
         }
 
+        case XFDESKTOP_ICON_VIEW_MODEL_COLUMN_MONITOR:
+            break;
+
         default:
             g_warning("Invalid XfdesktopWindowIconManager column %d", column);
             break;
@@ -191,47 +294,52 @@ xfdesktop_window_icon_model_item_free(XfdesktopIconViewModel *ivmodel,
 
 {
     ModelItem *model_item = (ModelItem *)item;
-
-    g_signal_handlers_disconnect_by_func(model_item->window,
-                                         G_CALLBACK(xfdesktop_window_icon_model_changed),
-                                         ivmodel);
+    g_signal_handlers_disconnect_by_data(model_item->window, ivmodel);
     model_item_free(model_item);
 }
 
-
-XfdesktopWindowIconModel *
-xfdesktop_window_icon_model_new(void)
-{
-    return g_object_new(XFDESKTOP_TYPE_WINDOW_ICON_MODEL, NULL);
-}
-
-void
-xfdesktop_window_icon_model_append(XfdesktopWindowIconModel *wmodel,
-                                   XfwWindow *window,
-                                   GtkTreeIter *iter)
-{
-    ModelItem *model_item;
-
-    g_return_if_fail(XFDESKTOP_IS_WINDOW_ICON_MODEL(wmodel));
-    g_return_if_fail(XFW_IS_WINDOW(window));
-
+static void
+window_opened(XfwScreen *screen, XfwWindow *window, XfdesktopWindowIconModel *wmodel) {
     g_signal_connect_swapped(window, "name-changed",
                              G_CALLBACK(xfdesktop_window_icon_model_changed), wmodel);
     g_signal_connect_swapped(window, "icon-changed",
                              G_CALLBACK(xfdesktop_window_icon_model_changed), wmodel);
+    g_signal_connect_swapped(window, "workspace-changed",
+                             G_CALLBACK(xfdesktop_window_icon_model_changed), wmodel);
+    g_signal_connect(window, "state-changed",
+                     G_CALLBACK(window_state_changed), wmodel);
+    g_signal_connect(window, "closed",
+                     G_CALLBACK(window_closed), wmodel);
 
-    model_item = model_item_new(window);
-    xfdesktop_icon_view_model_append(XFDESKTOP_ICON_VIEW_MODEL(wmodel), window, model_item, iter);
+    ModelItem *model_item = model_item_new(window);
+    GtkTreeIter iter;
+    xfdesktop_icon_view_model_append(XFDESKTOP_ICON_VIEW_MODEL(wmodel), window, model_item, &iter);
+
+    DBG("added window \"%s\"", xfw_window_get_name(window));
 }
 
-void
-xfdesktop_window_icon_model_remove(XfdesktopWindowIconModel *wmodel,
-                                   XfwWindow *window)
+static void
+window_state_changed(XfwWindow *window,
+                     XfwWindowState changed_mask,
+                     XfwWindowState new_state,
+                     XfdesktopWindowIconModel *wmodel)
 {
-    g_return_if_fail(XFDESKTOP_IS_WINDOW_ICON_MODEL(wmodel));
-    g_return_if_fail(XFW_IS_WINDOW(window));
+    if ((changed_mask & (XFW_WINDOW_STATE_SKIP_TASKLIST | XFW_WINDOW_STATE_MINIMIZED)) != 0) {
+        xfdesktop_window_icon_model_changed(wmodel, window);
+    }
+}
 
+static void
+window_closed(XfwWindow *window, XfdesktopWindowIconModel *wmodel) {
     xfdesktop_icon_view_model_remove(XFDESKTOP_ICON_VIEW_MODEL(wmodel), window);
+}
+
+XfdesktopWindowIconModel *
+xfdesktop_window_icon_model_new(XfwScreen *screen)
+{
+    return g_object_new(XFDESKTOP_TYPE_WINDOW_ICON_MODEL,
+                        "screen", screen,
+                        NULL);
 }
 
 void
