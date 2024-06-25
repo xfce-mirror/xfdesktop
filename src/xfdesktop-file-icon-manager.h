@@ -21,7 +21,7 @@
 #ifndef __XFDESKTOP_FILE_ICON_MANAGER_H__
 #define __XFDESKTOP_FILE_ICON_MANAGER_H__
 
-#include <glib.h>
+#include <gdk/gdk.h>
 #include <xfconf/xfconf.h>
 #include <libxfce4windowing/libxfce4windowing.h>
 
@@ -56,8 +56,9 @@ struct _XfdesktopFileIconManagerClass
 GType xfdesktop_file_icon_manager_get_type(void) G_GNUC_CONST;
 
 XfdesktopIconViewManager *xfdesktop_file_icon_manager_new(XfwScreen *screen,
+                                                          GdkScreen *gdkscreen,
                                                           XfconfChannel *channel,
-                                                          GtkWidget *parent,
+                                                          GList *desktops,
                                                           GFile *folder);
 
 G_END_DECLS

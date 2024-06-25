@@ -39,6 +39,7 @@ if enable_desktop_icons
     'xfdesktop-cell-renderer-icon-label.c',
     'xfdesktop-icon.c',
     'xfdesktop-icon-view.c',
+    'xfdesktop-icon-view-holder.c',
     'xfdesktop-icon-view-manager.c',
     'xfdesktop-icon-view-model.c',
     'xfdesktop-window-icon-manager.c',
