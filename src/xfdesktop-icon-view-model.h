@@ -41,6 +41,7 @@ typedef enum
     XFDESKTOP_ICON_VIEW_MODEL_COLUMN_SORT_PRIORITY,
     XFDESKTOP_ICON_VIEW_MODEL_COLUMN_TOOLTIP_IMAGE,
     XFDESKTOP_ICON_VIEW_MODEL_COLUMN_TOOLTIP_TEXT,
+    XFDESKTOP_ICON_VIEW_MODEL_COLUMN_MONITOR,
 
     XFDESKTOP_ICON_VIEW_MODEL_COLUMN_N_COLUMNS,
 } XfdesktopIconViewModelColumn;
@@ -65,9 +66,17 @@ struct _XfdesktopIconViewModelClass
     void (*model_item_free)(XfdesktopIconViewModel *ivmodel, gpointer model_item);
     guint (*model_item_hash)(gconstpointer model_item);
     gint (*model_item_equal)(gconstpointer a, gconstpointer b);
+
+    gboolean (*set_monitor)(XfdesktopIconViewModel *ivmodel,
+                            GtkTreeIter *iter,
+                            GdkMonitor *monitor);
 };
 
 GType xfdesktop_icon_view_model_get_type(void) G_GNUC_CONST;
+
+void xfdesktop_icon_view_model_set_monitor(XfdesktopIconViewModel *ivmodel,
+                                           GtkTreeIter *iter,
+                                           GdkMonitor *monitor);
 
 void xfdesktop_icon_view_model_clear(XfdesktopIconViewModel *ivmodel);
 
