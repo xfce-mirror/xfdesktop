@@ -107,7 +107,10 @@ endif
 file_manager_fallback = get_option('file-manager-fallback')
 feature_cflags += '-DFILE_MANAGER_FALLBACK="@0@"'.format(file_manager_fallback)
 
-default_backdrop_filename = get_option('datadir') / get_option('default-backdrop-filename')
+default_backdrop_filename = get_option('default-backdrop-filename')
+if not default_backdrop_filename.startswith('/')
+  default_backdrop_filename = get_option('prefix') / get_option('datadir') / default_backdrop_filename
+endif
 feature_cflags += '-DDEFAULT_BACKDROP="@0@"'.format(default_backdrop_filename)
 
 headers = [
