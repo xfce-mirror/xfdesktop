@@ -3382,23 +3382,25 @@ xfdesktop_file_icon_manager_files_ready(GFileEnumerator *enumerator,
 
     /* Make sure not to reference user_data if we have been cancelled */
     files = g_file_enumerator_next_files_finish(enumerator, result, &error);
-    if (!files && g_error_matches (error, G_IO_ERROR, G_IO_ERROR_CANCELLED)) {
+    if (files == NULL && g_error_matches(error, G_IO_ERROR, G_IO_ERROR_CANCELLED) == TRUE) {
         DBG("cancelled");
         g_error_free(error);
         return;
     }
 
     /* Sanity check */
-    if(user_data == NULL || !XFDESKTOP_IS_FILE_ICON_MANAGER(user_data))
+    if(user_data == NULL || XFDESKTOP_IS_FILE_ICON_MANAGER(user_data) == FALSE) {
         return;
+    }
 
     fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
 
-    if(enumerator != fmanager->priv->enumerator)
+    if(enumerator != fmanager->priv->enumerator) {
         return;
+    }
 
-    if(!files) {
-        if(error) {
+    if(files == NULL) {
+        if(error != NULL) {
             GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(fmanager->priv->icon_view));
 
             xfce_message_dialog(gtk_widget_is_toplevel(toplevel) ? GTK_WINDOW(toplevel) : NULL,
@@ -3482,11 +3484,13 @@ xfdesktop_file_icon_manager_file_enumerator_ready(GFile *file,
     enumerator = g_file_enumerate_children_finish(file, result, &error);
     if (enumerator == NULL) {
         if (error != NULL) {
-            if (! g_error_matches (error, G_IO_ERROR, G_IO_ERROR_CANCELLED))
+            if (g_error_matches (error, G_IO_ERROR, G_IO_ERROR_CANCELLED) == FALSE) {
                 g_printerr("Failed to enumerate desktop folder (%s) (%d,%d): %s\n",
                            g_file_peek_path(file), error->domain, error->code, error->message);
-            else
+            }
+            else {
                 DBG("cancelled");
+            }
             g_error_free(error);
         }
     } else {
