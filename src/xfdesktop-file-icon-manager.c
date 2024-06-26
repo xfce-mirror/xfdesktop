@@ -158,6 +158,7 @@ struct _XfdesktopFileIconManagerPrivate
     XfdesktopFileIcon *desktop_icon;
     GFileMonitor *monitor;
     GFileEnumerator *enumerator;
+    GCancellable *cancel_enumeration;
 
     GVolumeMonitor *volume_monitor;
 
@@ -882,6 +883,9 @@ xfdesktop_file_icon_manager_finalize(GObject *obj)
         g_source_remove(fmanager->priv->pending_new_files_id);
     }
     g_list_free_full(fmanager->priv->pending_new_files, (GDestroyNotify)pending_new_file_free);
+
+    g_cancellable_cancel(fmanager->priv->cancel_enumeration);
+    g_clear_object(&fmanager->priv->cancel_enumeration);
 
     G_OBJECT_CLASS(xfdesktop_file_icon_manager_parent_class)->finalize(obj);
 }
@@ -3376,6 +3380,14 @@ xfdesktop_file_icon_manager_files_ready(GFileEnumerator *enumerator,
 
     DBG("entering");
 
+    /* Make sure not to reference user_data if we have been cancelled */
+    files = g_file_enumerator_next_files_finish(enumerator, result, &error);
+    if (!files && g_error_matches (error, G_IO_ERROR, G_IO_ERROR_CANCELLED)) {
+        DBG("cancelled");
+        g_error_free(error);
+        return;
+    }
+
     /* Sanity check */
     if(user_data == NULL || !XFDESKTOP_IS_FILE_ICON_MANAGER(user_data))
         return;
@@ -3384,8 +3396,6 @@ xfdesktop_file_icon_manager_files_ready(GFileEnumerator *enumerator,
 
     if(enumerator != fmanager->priv->enumerator)
         return;
-
-    files = g_file_enumerator_next_files_finish(enumerator, result, &error);
 
     if(!files) {
         if(error) {
@@ -3468,19 +3478,22 @@ xfdesktop_file_icon_manager_file_enumerator_ready(GFile *file,
     GFileEnumerator *enumerator;
     GError *error = NULL;
 
-    g_clear_object(&fmanager->priv->enumerator);
-
+    /* Make sure we don't access fmanager until after we have checked for cancellation */
     enumerator = g_file_enumerate_children_finish(file, result, &error);
     if (enumerator == NULL) {
         if (error != NULL) {
-            g_printerr("Failed to enumerate desktop folder (%s) (%d,%d): %s\n",
-                       g_file_peek_path(file), error->domain, error->code, error->message);
+            if (! g_error_matches (error, G_IO_ERROR, G_IO_ERROR_CANCELLED))
+                g_printerr("Failed to enumerate desktop folder (%s) (%d,%d): %s\n",
+                           g_file_peek_path(file), error->domain, error->code, error->message);
+            else
+                DBG("cancelled");
             g_error_free(error);
         }
     } else {
+        g_clear_object(&fmanager->priv->enumerator);
         fmanager->priv->enumerator = enumerator;
         g_file_enumerator_next_files_async(fmanager->priv->enumerator,
-                                           10, G_PRIORITY_DEFAULT, NULL,
+                                           10, G_PRIORITY_DEFAULT, fmanager->priv->cancel_enumeration,
                                            (GAsyncReadyCallback) xfdesktop_file_icon_manager_files_ready,
                                            fmanager);
     }
@@ -3490,11 +3503,14 @@ static void
 xfdesktop_file_icon_manager_load_desktop_folder(XfdesktopFileIconManager *fmanager)
 {
     g_clear_object(&fmanager->priv->enumerator);
+    g_clear_object(&fmanager->priv->cancel_enumeration);
+    fmanager->priv->cancel_enumeration = g_cancellable_new();
+
     g_file_enumerate_children_async(fmanager->priv->folder,
                                     XFDESKTOP_FILE_INFO_NAMESPACE,
                                     G_FILE_QUERY_INFO_NONE,
                                     G_PRIORITY_DEFAULT,
-                                    NULL,
+                                    fmanager->priv->cancel_enumeration,
                                     (GAsyncReadyCallback)xfdesktop_file_icon_manager_file_enumerator_ready,
                                     fmanager);
 }
