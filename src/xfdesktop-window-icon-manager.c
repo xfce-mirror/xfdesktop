@@ -53,7 +53,6 @@ typedef struct
 
 struct _XfdesktopWindowIconManagerPrivate
 {
-    XfwScreen *xfw_screen;
     XfwWorkspaceManager *workspace_manager;
 
     GtkWidget *icon_view;
@@ -183,7 +182,9 @@ xfdesktop_window_icon_manager_constructed(GObject *object)
     container = xfdesktop_icon_view_manager_get_container(XFDESKTOP_ICON_VIEW_MANAGER(wmanager));
     xfdesktop_icon_view_manager_get_workarea(XFDESKTOP_ICON_VIEW_MANAGER(wmanager), &workarea);
 
+    XfwScreen *screen = xfdesktop_icon_view_manager_get_screen(XFDESKTOP_ICON_VIEW_MANAGER(wmanager));
     wmanager->priv->icon_view = g_object_new(XFDESKTOP_TYPE_ICON_VIEW,
+                                             "screen", screen,
                                              "channel", xfdesktop_icon_view_manager_get_channel(XFDESKTOP_ICON_VIEW_MANAGER(wmanager)),
                                              "pixbuf-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_IMAGE,
                                              "icon-opacity-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_IMAGE_OPACITY,
@@ -225,11 +226,11 @@ xfdesktop_window_icon_manager_constructed(GObject *object)
     g_signal_connect(wmanager->priv->icon_view, "drop-propose-action",
                      G_CALLBACK(xfdesktop_window_icon_manager_drop_propose_action), wmanager);
 
-    wmanager->priv->xfw_screen = xfw_screen_get_default();
-    g_signal_connect(G_OBJECT(wmanager->priv->xfw_screen), "window-opened",
+    XfwScreen *xfw_screen = xfdesktop_icon_view_manager_get_screen(XFDESKTOP_ICON_VIEW_MANAGER(wmanager));
+    g_signal_connect(G_OBJECT(xfw_screen), "window-opened",
                      G_CALLBACK(window_created_cb), wmanager);
 
-    wmanager->priv->workspace_manager = xfw_screen_get_workspace_manager(wmanager->priv->xfw_screen);
+    wmanager->priv->workspace_manager = xfw_screen_get_workspace_manager(xfw_screen);
 
     g_signal_connect(G_OBJECT(wmanager->priv->workspace_manager), "workspace-group-created",
                      G_CALLBACK(workspace_group_created_cb), wmanager);
@@ -299,13 +300,12 @@ xfdesktop_window_icon_manager_finalize(GObject *obj)
         workspace_group_destroyed_cb(wmanager->priv->workspace_manager, XFW_WORKSPACE_GROUP(l->data), wmanager);
     }
 
-    g_signal_handlers_disconnect_by_data(G_OBJECT(wmanager->priv->xfw_screen), wmanager);
+    XfwScreen *xfw_screen = xfdesktop_icon_view_manager_get_screen(XFDESKTOP_ICON_VIEW_MANAGER(wmanager));
+    g_signal_handlers_disconnect_by_data(G_OBJECT(xfw_screen), wmanager);
 
-    for (GList *l = xfw_screen_get_windows(wmanager->priv->xfw_screen); l; l = l->next) {
+    for (GList *l = xfw_screen_get_windows(xfw_screen); l; l = l->next) {
         g_signal_handlers_disconnect_by_data(G_OBJECT(l->data), wmanager);
     }
-
-    g_object_unref(wmanager->priv->xfw_screen);
 
     g_hash_table_destroy(wmanager->priv->icon_workspaces);
 
@@ -763,23 +763,10 @@ xfdesktop_window_icon_manager_workarea_changed(XfdesktopWindowIconManager *wmana
 static void
 xfdesktop_window_icon_manager_populate_workspaces(XfdesktopWindowIconManager *wmanager)
 {
-    for (GList *l = xfw_screen_get_windows(wmanager->priv->xfw_screen); l != NULL; l = l->next) {
+    XfwScreen *xfw_screen = xfdesktop_icon_view_manager_get_screen(XFDESKTOP_ICON_VIEW_MANAGER(wmanager));
+    for (GList *l = xfw_screen_get_windows(xfw_screen); l != NULL; l = l->next) {
         XfwWindow *window = XFW_WINDOW(l->data);
-
-        if (xfw_window_is_minimized(window) && !xfw_window_is_skip_tasklist(window)) {
-            XfwWorkspace *workspace = xfw_window_get_workspace(window);
-            XfdesktopWindowIconWorkspace *icon_workspace = g_hash_table_lookup(wmanager->priv->icon_workspaces, workspace);
-
-            if (icon_workspace != NULL) {
-                xfdesktop_window_icon_model_append(icon_workspace->model, window, NULL);
-            } else if (xfw_window_is_pinned(window)) {
-                GHashTableIter iter;
-                g_hash_table_iter_init(&iter, wmanager->priv->icon_workspaces);
-                while (g_hash_table_iter_next(&iter, NULL, (gpointer)&icon_workspace)) {
-                    xfdesktop_window_icon_model_append(icon_workspace->model, window, NULL);
-                }
-            }
-        }
+        window_created_cb(xfw_screen, window, wmanager);
     }
 }
 
@@ -810,11 +797,13 @@ xfdesktop_window_icon_manager_sort_icons(XfdesktopIconViewManager *manager,
 
 
 XfdesktopIconViewManager *
-xfdesktop_window_icon_manager_new(XfconfChannel *channel,
+xfdesktop_window_icon_manager_new(XfwScreen *screen,
+                                  XfconfChannel *channel,
                                   GtkWidget *parent)
 {
     g_return_val_if_fail(GTK_IS_CONTAINER(parent), NULL);
     return g_object_new(XFDESKTOP_TYPE_WINDOW_ICON_MANAGER,
+                        "screen", screen,
                         "channel", channel,
                         "parent", parent,
                         NULL);

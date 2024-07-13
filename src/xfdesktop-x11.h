@@ -44,7 +44,7 @@ GdkWindow *xfdesktop_x11_set_desktop_manager_selection(GdkScreen *gscreen,
                                                        GError **error);
 
 void xfdesktop_x11_set_root_image_file_property(GdkScreen *gscreen,
-                                                GdkMonitor *monitor,
+                                                gint monitor_idx,
                                                 const gchar *filename);
 
 void xfdesktop_x11_set_root_image_surface(GdkScreen *gscreen,
