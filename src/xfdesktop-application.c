@@ -174,9 +174,10 @@ struct _XfdesktopApplication
 
     XfconfChannel *channel;
     XfceSMClient *sm_client;
+    XfwScreen *screen;
     XfdesktopBackdropManager *backdrop_manager;
 
-    GPtrArray *desktops;  // GdkMonitor -> XfceDesktop
+    GPtrArray *desktops;  // XfceDesktop
 
     XfdesktopLocalArgs *args;
 
@@ -463,12 +464,12 @@ find_desktop_for_monitor(XfdesktopApplication *app, GdkMonitor *monitor) {
 
     for (guint i = 0; i < app->desktops->len; ++i) {
         XfceDesktop *desktop = XFCE_DESKTOP(g_ptr_array_index(app->desktops, i));
-        if (xfce_desktop_get_monitor(desktop) == monitor) {
+        if (xfw_monitor_get_gdk_monitor(xfce_desktop_get_monitor(desktop)) == monitor) {
             return desktop;
         }
     }
 
-    DBG("No XfceDesktop found for monitor named '%s'", gdk_monitor_get_model(monitor));
+    DBG("No XfceDesktop found for monitor '%s'", gdk_monitor_get_model(monitor));
     return NULL;
 }
 
@@ -681,8 +682,8 @@ xfdesktop_application_theme_changed (GtkSettings *settings,
 }
 
 static void
-monitors_changed(GdkScreen *screen, XfdesktopApplication *app) {
-    xfdesktop_backdrop_manager_monitors_changed(app->backdrop_manager, gdk_screen_get_display(screen));
+monitors_changed(XfwScreen *screen, XfdesktopApplication *app) {
+    xfdesktop_backdrop_manager_monitors_changed(app->backdrop_manager);
 }
 
 static void
@@ -694,7 +695,7 @@ desktop_destroyed(XfceDesktop *desktop, XfdesktopApplication *app) {
 static GtkWidget *
 create_desktop(XfdesktopApplication *app,
                GdkScreen *gscreen,
-               GdkMonitor *monitor,
+               XfwMonitor *monitor,
                XfconfChannel *channel,
                const gchar *property_prefix,
                XfdesktopBackdropManager *backdrop_manager)
@@ -750,6 +751,8 @@ xfdesktop_application_start(XfdesktopApplication *app)
 #endif
     }
 
+    app->screen = xfw_screen_get_default();
+
     settings = gtk_settings_get_default();
     g_signal_connect (settings, "notify::gtk-theme-name", G_CALLBACK (xfdesktop_application_theme_changed), NULL);
     xfdesktop_application_theme_changed (settings, app);
@@ -792,23 +795,23 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     menu_init(app->channel);
     windowlist_init(app->channel);
 
+    GList *monitors = xfw_screen_get_monitors(app->screen);
     gchar *property_prefix = g_strdup_printf("/backdrop/screen%d/", screen_num);
-    gint nmonitors = gdk_display_get_n_monitors(gdpy);
-    for (gint i = 0; i < nmonitors; ++i) {
-        GdkMonitor *monitor = gdk_display_get_monitor(gdpy, i);
+    for (GList *l = monitors; l != NULL; l = l->next) {
+        XfwMonitor *monitor = XFW_MONITOR(l->data);
         GtkWidget *desktop = create_desktop(app, gscreen, monitor, app->channel, property_prefix, app->backdrop_manager);
         g_ptr_array_add(app->desktops, desktop);
         gtk_widget_show_all(desktop);
 
 #ifdef ENABLE_X11
-        if (i == 0 && xfw_windowing_get() == XFW_WINDOWING_X11) {
+        if (l == monitors && xfw_windowing_get() == XFW_WINDOWING_X11) {
             xfdesktop_x11_set_compat_properties(desktop);
         }
 #endif  /* ENABLE_X11 */
     }
     g_free(property_prefix);
 
-    g_signal_connect(gscreen, "monitors-changed",
+    g_signal_connect(app->screen, "monitors-changed",
                      G_CALLBACK(monitors_changed), app);
 
     xfconf_g_property_bind(app->channel, DESKTOP_ICONS_STYLE_PROP, XFCE_TYPE_DESKTOP_ICON_STYLE, app, "icon-style");
@@ -868,6 +871,11 @@ xfdesktop_application_shutdown(GApplication *g_application)
     for (gint i = app->desktops->len - 1; i >= 0; --i) {
         GtkWidget *widget = GTK_WIDGET(g_ptr_array_index(app->desktops, i));
         gtk_widget_destroy(widget);
+    }
+
+    if (app->screen != NULL) {
+        g_signal_handlers_disconnect_by_data(app->screen, app);
+        g_clear_object(&app->screen);
     }
 
     xfconf_shutdown();
@@ -1169,6 +1177,18 @@ xfdesktop_application_set_icon_style(XfdesktopApplication *app, XfceDesktopIconS
     // instances are no longer present as children
     g_clear_object(&app->icon_view_manager);
 
+    XfceDesktop *primary_desktop = NULL;
+    XfwMonitor *primary_monitor = xfw_screen_get_primary_monitor(app->screen);
+    DBG("primary monitor: %p", primary_monitor);
+    for (guint i = 0; i < app->desktops->len; ++i) {
+        XfceDesktop *desktop = g_ptr_array_index(app->desktops, i);
+        DBG("other monitor: %p", xfce_desktop_get_monitor(desktop));
+        if (primary_monitor == xfce_desktop_get_monitor(desktop)) {
+            primary_desktop = desktop;
+            break;
+        }
+    }
+
     switch (app->icon_style) {
         case XFCE_DESKTOP_ICON_STYLE_NONE:
             /* nada */
@@ -1176,7 +1196,9 @@ xfdesktop_application_set_icon_style(XfdesktopApplication *app, XfceDesktopIconS
 
         case XFCE_DESKTOP_ICON_STYLE_WINDOWS: {
             if (app->desktops->len > 0) {
-                app->icon_view_manager = xfdesktop_window_icon_manager_new(app->channel, g_ptr_array_index(app->desktops, 0));
+                app->icon_view_manager = xfdesktop_window_icon_manager_new(app->screen,
+                                                                           app->channel,
+                                                                           GTK_WIDGET(primary_desktop));
             }
             break;
         }
@@ -1186,7 +1208,10 @@ xfdesktop_application_set_icon_style(XfdesktopApplication *app, XfceDesktopIconS
             if (app->desktops->len > 0) {
                 const gchar *desktop_path = g_get_user_special_dir(G_USER_DIRECTORY_DESKTOP);
                 GFile *file = g_file_new_for_path(desktop_path);
-                app->icon_view_manager = xfdesktop_file_icon_manager_new(app->channel, g_ptr_array_index(app->desktops, 0), file);
+                app->icon_view_manager = xfdesktop_file_icon_manager_new(app->screen,
+                                                                         app->channel,
+                                                                         GTK_WIDGET(primary_desktop),
+                                                                         file);
                 g_object_unref(file);
             }
             break;
