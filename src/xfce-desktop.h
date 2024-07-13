@@ -23,6 +23,7 @@
 
 #include <gtk/gtk.h>
 #include <xfconf/xfconf.h>
+#include <libxfce4windowing/libxfce4windowing.h>
 
 #include "xfdesktop-backdrop-manager.h"
 
@@ -57,14 +58,14 @@ struct _XfceDesktopClass
 GType xfce_desktop_get_type(void) G_GNUC_CONST;
 
 GtkWidget *xfce_desktop_new(GdkScreen *gscreen,
-                            GdkMonitor *monitor,
+                            XfwMonitor *monitor,
                             XfconfChannel *channel,
                             const gchar *property_prefix,
                             XfdesktopBackdropManager *backdrop_manager);
 
-GdkMonitor *xfce_desktop_get_monitor(XfceDesktop *desktop);
+XfwMonitor *xfce_desktop_get_monitor(XfceDesktop *desktop);
 void xfce_desktop_update_monitor(XfceDesktop *desktop,
-                                 GdkMonitor *monitor);
+                                 XfwMonitor *monitor);
 
 void xfce_desktop_freeze_updates(XfceDesktop *desktop);
 void xfce_desktop_thaw_updates(XfceDesktop *desktop);
