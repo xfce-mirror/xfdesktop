@@ -289,38 +289,6 @@ xfdesktop_menu_create_menu_item_with_mnemonic(const gchar *name,
 
 
 
-/* Replacement for gdk_screen_width/gdk_screen_height */
-void
-xfdesktop_get_screen_dimensions (GdkScreen *screen,
-                                 gint      *width,
-                                 gint      *height)
-{
-    gint x, y, w, h;
-    GdkDisplay *display = gdk_screen_get_display(screen);
-    int num_monitors = gdk_display_get_n_monitors(display);
-
-    x = y = G_MAXINT;
-    w = h = G_MININT;
-
-    for(int i = 0; i < num_monitors; i++) {
-        GdkRectangle rect;
-        GdkMonitor *monitor = gdk_display_get_monitor(display, i);
-        gdk_monitor_get_geometry(monitor, &rect);
-
-        x = MIN(x, rect.x);
-        y = MIN(y, rect.y);
-        w = MAX(w, rect.x + rect.width);
-        h = MAX(h, rect.y + rect.height);
-    }
-
-    if(width != NULL)
-        *width = w - x;
-    if(height != NULL)
-        *height = h - y;
-}
-
-
-
 gint
 xfdesktop_get_monitor_num(GdkDisplay *display,
                           GdkMonitor *monitor)
