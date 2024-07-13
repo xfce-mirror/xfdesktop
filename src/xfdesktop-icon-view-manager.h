@@ -24,6 +24,7 @@
 #include <gtk/gtk.h>
 
 #include <xfconf/xfconf.h>
+#include <libxfce4windowing/libxfce4windowing.h>
 
 #include "xfdesktop-icon.h"
 #include "xfdesktop-icon-view.h"
@@ -61,6 +62,8 @@ struct _XfdesktopIconViewManagerClass
 };
 
 GType xfdesktop_icon_view_manager_get_type(void) G_GNUC_CONST;
+
+XfwScreen *xfdesktop_icon_view_manager_get_screen(XfdesktopIconViewManager *manager);
 
 GtkWidget *xfdesktop_icon_view_manager_get_parent(XfdesktopIconViewManager *manager);
 GtkFixed *xfdesktop_icon_view_manager_get_container(XfdesktopIconViewManager *manager);
