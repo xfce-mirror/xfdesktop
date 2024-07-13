@@ -601,7 +601,9 @@ xfdesktop_file_icon_manager_constructed(GObject *obj)
 
     xfdesktop_icon_view_manager_get_workarea(XFDESKTOP_ICON_VIEW_MANAGER(fmanager), &workarea);
 
+    XfwScreen *screen = xfdesktop_icon_view_manager_get_screen(XFDESKTOP_ICON_VIEW_MANAGER(fmanager));
     fmanager->priv->icon_view = g_object_new(XFDESKTOP_TYPE_ICON_VIEW,
+                                             "screen", screen,
                                              "channel", channel,
                                              "pixbuf-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_IMAGE,
                                              "icon-opacity-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_IMAGE_OPACITY,
@@ -2340,15 +2342,26 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager)
                              fmanager);
 
             GtkWidget *parent = xfdesktop_icon_view_manager_get_parent(XFDESKTOP_ICON_VIEW_MANAGER(fmanager));
-            GdkMonitor *monitor = gdk_display_get_monitor_at_window(gtk_widget_get_display(parent), gtk_widget_get_window(parent));
+            GdkMonitor *gdkmonitor = gdk_display_get_monitor_at_window(gtk_widget_get_display(parent), gtk_widget_get_window(parent));
 
-            XfwScreen *xfw_screen = xfw_screen_get_default();
+            XfwScreen *xfw_screen = xfdesktop_icon_view_manager_get_screen(XFDESKTOP_ICON_VIEW_MANAGER(fmanager));
+            XfwMonitor *monitor = NULL;
+            for (GList *l = xfw_screen_get_monitors(xfw_screen); l != NULL; l = l->next) {
+                XfwMonitor *a_monitor = XFW_MONITOR(l->data);
+                if (xfw_monitor_get_gdk_monitor(a_monitor) == gdkmonitor) {
+                    monitor = a_monitor;
+                    break;
+                }
+            }
+
             XfwWorkspaceManager *workspace_manager = xfw_screen_get_workspace_manager(xfw_screen);
             XfwWorkspaceGroup *group = NULL;
-            for (GList *l = xfw_workspace_manager_list_workspace_groups(workspace_manager); l != NULL; l = l->next) {
-                if (g_list_find(xfw_workspace_group_get_monitors(XFW_WORKSPACE_GROUP(l->data)), monitor)) {
-                    group = XFW_WORKSPACE_GROUP(l->data);
-                    break;
+            if (monitor != NULL) {
+                for (GList *l = xfw_workspace_manager_list_workspace_groups(workspace_manager); l != NULL; l = l->next) {
+                    if (g_list_find(xfw_workspace_group_get_monitors(XFW_WORKSPACE_GROUP(l->data)), monitor)) {
+                        group = XFW_WORKSPACE_GROUP(l->data);
+                        break;
+                    }
                 }
             }
             XfwWorkspace *workspace = group != NULL ? xfw_workspace_group_get_active_workspace(group) : NULL;
@@ -2368,8 +2381,6 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager)
                                  G_CALLBACK(xfdesktop_file_icon_menu_next_background),
                                  fmanager);
             }
-
-            g_object_unref(xfw_screen);
 
             /* Separator */
             mi = gtk_separator_menu_item_new();
@@ -4570,7 +4581,8 @@ xfdesktop_file_icon_manager_icon_activated(XfdesktopIconView *icon_view,
 
 
 XfdesktopIconViewManager *
-xfdesktop_file_icon_manager_new(XfconfChannel *channel,
+xfdesktop_file_icon_manager_new(XfwScreen *screen,
+                                XfconfChannel *channel,
                                 GtkWidget *parent,
                                 GFile *folder)
 {
@@ -4579,6 +4591,7 @@ xfdesktop_file_icon_manager_new(XfconfChannel *channel,
     g_return_val_if_fail(G_IS_FILE(folder), NULL);
 
     return g_object_new(XFDESKTOP_TYPE_FILE_ICON_MANAGER,
+                        "screen", screen,
                         "channel", channel,
                         "parent", parent,
                         "folder", folder,

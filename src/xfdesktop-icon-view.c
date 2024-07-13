@@ -113,6 +113,7 @@ enum
 {
     PROP_0 = 0,
     PROP_CHANNEL,
+    PROP_SCREEN,
     PROP_MODEL,
     PROP_ICON_SIZE,
     PROP_ICON_WIDTH,
@@ -301,6 +302,8 @@ int_compare(gconstpointer a,
 struct _XfdesktopIconViewPrivate
 {
     GtkWidget *parent_window;
+
+    XfwScreen *screen;
 
     GtkTreeModel *model;
     gint pixbuf_column;
@@ -896,6 +899,14 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
                                                         XFCONF_TYPE_CHANNEL,
                                                         (PARAM_FLAGS | G_PARAM_CONSTRUCT_ONLY) & ~G_PARAM_CONSTRUCT));
 
+    g_object_class_install_property(gobject_class,
+                                    PROP_SCREEN,
+                                    g_param_spec_object("screen",
+                                                        "screen",
+                                                        "XfwScreen",
+                                                        XFW_TYPE_SCREEN,
+                                                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS));
+
     g_object_class_install_property(gobject_class, PROP_MODEL,
                                     g_param_spec_object("model",
                                                         "model",
@@ -1158,6 +1169,8 @@ xfdesktop_icon_view_finalize(GObject *obj)
     gtk_target_list_unref(icon_view->priv->source_targets);
     gtk_target_list_unref(icon_view->priv->dest_targets);
 
+    g_object_unref(icon_view->priv->screen);
+
     G_OBJECT_CLASS(xfdesktop_icon_view_parent_class)->finalize(obj);
 }
 
@@ -1172,6 +1185,10 @@ xfdesktop_icon_view_set_property(GObject *object,
     switch(property_id) {
         case PROP_CHANNEL:
             icon_view->priv->channel = g_value_dup_object(value);
+            break;
+
+        case PROP_SCREEN:
+            icon_view->priv->screen = g_value_dup_object(value);
             break;
 
         case PROP_MODEL:
@@ -1263,6 +1280,10 @@ xfdesktop_icon_view_get_property(GObject *object,
     switch(property_id) {
         case PROP_CHANNEL:
             g_value_set_object(value, icon_view->priv->channel);
+            break;
+
+        case PROP_SCREEN:
+            g_value_set_object(value, icon_view->priv->screen);
             break;
 
         case PROP_MODEL:
@@ -3875,56 +3896,52 @@ xfdesktop_icon_view_place_items(XfdesktopIconView *icon_view)
 static void
 xfdesktop_icon_view_setup_grids_xinerama(XfdesktopIconView *icon_view)
 {
-    GdkDisplay *display;
-    GdkRectangle *monitor_geoms, cell_rect;
-    gint nmonitors, i, row, col;
-    gint dx = 0, dy = 0;
-
     DBG("entering");
 
-    display = gtk_widget_get_display(GTK_WIDGET(icon_view));
-    nmonitors = gdk_display_get_n_monitors(display);
-
-    if(nmonitors == 1)  /* optimisation */
-        return;
-
+    gint dx = 0, dy = 0;
     gtk_widget_translate_coordinates(xfdesktop_icon_view_get_window_widget(icon_view),
                                      GTK_WIDGET(icon_view),
                                      0, 0, &dx, &dy);
 
-    monitor_geoms = g_new0(GdkRectangle, nmonitors);
-
-    for(i = 0; i < nmonitors; ++i) {
-        gdk_monitor_get_geometry(gdk_display_get_monitor(display, i), &monitor_geoms[i]);
+    GArray *monitor_geoms = g_array_new(FALSE, FALSE, sizeof(GdkRectangle));
+    for (GList *l = xfw_screen_get_monitors(icon_view->priv->screen); l != NULL; l = l->next) {
+        GdkRectangle geom;
+        xfw_monitor_get_logical_geometry(XFW_MONITOR(l->data), &geom);
+        g_array_append_val(monitor_geoms, geom);
     }
 
-    /* cubic time; w00t! */
-    cell_rect.width = cell_rect.height = SLOT_SIZE;
-    for(row = 0; row < icon_view->priv->nrows; ++row) {
-        for(col = 0; col < icon_view->priv->ncols; ++col) {
-            gboolean bounded = FALSE;
+    if (monitor_geoms->len > 1) {
+        /* cubic time; w00t! */
+        GdkRectangle cell_rect = {
+            .x = 0,
+            .y = 0,
+            .width = SLOT_SIZE,
+            .height = SLOT_SIZE,
+        };
+        for (gint row = 0; row < icon_view->priv->nrows; ++row) {
+            for (gint col = 0; col < icon_view->priv->ncols; ++col) {
+                gboolean bounded = FALSE;
 
-            cell_rect.x = icon_view->priv->xmargin + col * SLOT_SIZE + col * icon_view->priv->xspacing - dx;
-            cell_rect.y = icon_view->priv->ymargin + row * SLOT_SIZE + row * icon_view->priv->yspacing - dy;
+                cell_rect.x = icon_view->priv->xmargin + col * SLOT_SIZE + col * icon_view->priv->xspacing - dx;
+                cell_rect.y = icon_view->priv->ymargin + row * SLOT_SIZE + row * icon_view->priv->yspacing - dy;
 
-            for(i = 0; i < nmonitors; ++i) {
-                if(xfdesktop_rectangle_is_bounded_by(&cell_rect,
-                                                     &monitor_geoms[i]))
-                {
-                    bounded = TRUE;
-                    break;
+                for (guint i = 0; i < monitor_geoms->len; ++i) {
+                    if (xfdesktop_rectangle_is_bounded_by(&cell_rect,  &g_array_index(monitor_geoms, GdkRectangle, i))) {
+                        bounded = TRUE;
+                        break;
+                    }
                 }
-            }
 
-            if(!bounded) {
-                xfdesktop_grid_unset_position_free_raw(icon_view, row, col, TOMBSTONE);
-            } else if (xfdesktop_icon_view_item_in_slot(icon_view, row, col) == TOMBSTONE) {
-                xfdesktop_grid_set_position_free(icon_view, row, col);
+                if (!bounded) {
+                    xfdesktop_grid_unset_position_free_raw(icon_view, row, col, TOMBSTONE);
+                } else if (xfdesktop_icon_view_item_in_slot(icon_view, row, col) == TOMBSTONE) {
+                    xfdesktop_grid_set_position_free(icon_view, row, col);
+                }
             }
         }
     }
 
-    g_free(monitor_geoms);
+    g_array_free(monitor_geoms, TRUE);
 
     DBG("exiting");
 }
