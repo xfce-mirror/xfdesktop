@@ -60,24 +60,23 @@ XfdesktopBackdropManager *xfdesktop_backdrop_manager_get(void);
 
 void xfdesktop_backdrop_manager_get_image_surface(XfdesktopBackdropManager *manager,
                                                   GCancellable *cancellable,
-                                                  GdkMonitor *monitor,
+                                                  XfwMonitor *monitor,
                                                   XfwWorkspace *workspace,
                                                   GetImageSurfaceCallback callback,
                                                   gpointer callback_user_data);
 
 gboolean xfdesktop_backdrop_manager_can_cycle_backdrop(XfdesktopBackdropManager *manager,
-                                                       GdkMonitor *monitor,
+                                                       XfwMonitor *monitor,
                                                        XfwWorkspace *workspace);
 
 void xfdesktop_backdrop_manager_cycle_backdrop(XfdesktopBackdropManager *manager,
-                                               GdkMonitor *monitor,
+                                               XfwMonitor *monitor,
                                                XfwWorkspace *workspace);
 
 void xfdesktop_backdrop_manager_invalidate(XfdesktopBackdropManager *manager,
-                                           GdkMonitor *gdkmonitor,
+                                           XfwMonitor *gdkmonitor,
                                            XfwWorkspace *workspace);
-void xfdesktop_backdrop_manager_monitors_changed(XfdesktopBackdropManager *manager,
-                                                 GdkDisplay *display);
+void xfdesktop_backdrop_manager_monitors_changed(XfdesktopBackdropManager *manager);
 
 G_END_DECLS
 
