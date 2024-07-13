@@ -195,10 +195,6 @@ GtkWidget* xfdesktop_menu_create_menu_item_with_markup(const gchar *name,
 GtkWidget* xfdesktop_menu_create_menu_item_with_mnemonic(const gchar *name,
                                                          GtkWidget   *image);
 
-void xfdesktop_get_screen_dimensions(GdkScreen *gcreen,
-                                     gint      *width,
-                                     gint      *height);
-
 gint xfdesktop_get_monitor_num(GdkDisplay *display,
                                GdkMonitor *monitor);
 
