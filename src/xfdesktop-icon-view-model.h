@@ -70,6 +70,7 @@ struct _XfdesktopIconViewModelClass
     gboolean (*set_monitor)(XfdesktopIconViewModel *ivmodel,
                             GtkTreeIter *iter,
                             GdkMonitor *monitor);
+
 };
 
 GType xfdesktop_icon_view_model_get_type(void) G_GNUC_CONST;
