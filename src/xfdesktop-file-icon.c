@@ -257,6 +257,18 @@ xfdesktop_file_icon_can_delete_file(XfdesktopFileIcon *icon)
         return FALSE;
 }
 
+gboolean
+xfdesktop_file_icon_is_hidden_file(XfdesktopFileIcon *icon) {
+    g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON(icon), FALSE);
+
+    XfdesktopFileIconClass *klass = XFDESKTOP_FILE_ICON_GET_CLASS(icon);
+    if (klass->is_hidden_file != NULL) {
+        return klass->is_hidden_file(icon);
+    } else {
+        return FALSE;
+    }
+}
+
 GIcon *
 xfdesktop_file_icon_add_emblems(XfdesktopFileIcon *icon,
                                 GIcon *gicon)
