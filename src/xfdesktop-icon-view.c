@@ -154,6 +154,7 @@ typedef struct
 
     cairo_surface_t *pixbuf_surface;
 
+    guint32 has_iter:1;
     guint32 selected:1;
     guint32 sensitive:1;
     guint32 placed:1;
@@ -172,9 +173,10 @@ view_item_new(GtkTreeModel *model, GtkTreeIter *iter)
     item = g_slice_new0(ViewItem);
     item->row = -1;
     item->col = -1;
+    item->has_iter = (gtk_tree_model_get_flags(model) & GTK_TREE_MODEL_ITERS_PERSIST) != 0;
     item->sensitive = TRUE;
 
-    if ((gtk_tree_model_get_flags(model) & GTK_TREE_MODEL_ITERS_PERSIST) != 0) {
+    if (item->has_iter) {
         item->ref.iter = *iter;
     } else {
         GtkTreePath *path = gtk_tree_model_get_path(model, iter);
@@ -201,7 +203,7 @@ view_item_get_iter(ViewItem *item,
     g_return_val_if_fail(model != NULL, FALSE);
     g_return_val_if_fail(iter_out != NULL, FALSE);
 
-    if ((gtk_tree_model_get_flags(model) & GTK_TREE_MODEL_ITERS_PERSIST) != 0) {
+    if (item->has_iter) {
         *iter_out = item->ref.iter;
         return TRUE;
     } else {
@@ -223,7 +225,7 @@ view_item_get_path(ViewItem *item,
 {
     g_return_val_if_fail(model != NULL, FALSE);
 
-    if ((gtk_tree_model_get_flags(model) & GTK_TREE_MODEL_ITERS_PERSIST) != 0) {
+    if (item->has_iter) {
         return gtk_tree_model_get_path(model, &item->ref.iter);
     } else {
         return gtk_tree_row_reference_get_path(item->ref.row_ref);
@@ -235,6 +237,9 @@ view_item_free(ViewItem *item)
 {
     if (item->pixbuf_surface != NULL) {
         cairo_surface_destroy(item->pixbuf_surface);
+    }
+    if (!item->has_iter && item->ref.row_ref != NULL) {
+        gtk_tree_row_reference_free(item->ref.row_ref);
     }
     g_slice_free(ViewItem, item);
 }
@@ -1139,7 +1144,7 @@ xfdesktop_icon_view_dispose(GObject *obj)
     }
 
     g_clear_object(&icon_view->priv->channel);
-    g_clear_object(&icon_view->priv->model);
+    xfdesktop_icon_view_set_model(icon_view, NULL);  // Call so ->items are freed too
 
     G_OBJECT_CLASS(xfdesktop_icon_view_parent_class)->dispose(obj);
 }
