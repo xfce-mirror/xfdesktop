@@ -29,28 +29,8 @@
 
 G_BEGIN_DECLS
 
-#define XFDESKTOP_TYPE_FILE_ICON_MANAGER     (xfdesktop_file_icon_manager_get_type())
-#define XFDESKTOP_FILE_ICON_MANAGER(obj)     (G_TYPE_CHECK_INSTANCE_CAST((obj), XFDESKTOP_TYPE_FILE_ICON_MANAGER, XfdesktopFileIconManager))
-#define XFDESKTOP_IS_FILE_ICON_MANAGER(obj)  (G_TYPE_CHECK_INSTANCE_TYPE((obj), XFDESKTOP_TYPE_FILE_ICON_MANAGER))
-
-typedef struct _XfdesktopFileIconManager         XfdesktopFileIconManager;
-typedef struct _XfdesktopFileIconManagerClass    XfdesktopFileIconManagerClass;
-typedef struct _XfdesktopFileIconManagerPrivate  XfdesktopFileIconManagerPrivate;
-
-struct _XfdesktopFileIconManager
-{
-    XfdesktopIconViewManager parent;
-
-    /*< private >*/
-    XfdesktopFileIconManagerPrivate *priv;
-};
-
-struct _XfdesktopFileIconManagerClass
-{
-    XfdesktopIconViewManagerClass parent;
-};
-
-GType xfdesktop_file_icon_manager_get_type(void) G_GNUC_CONST;
+G_DECLARE_FINAL_TYPE(XfdesktopFileIconManager, xfdesktop_file_icon_manager, XFDESKTOP, FILE_ICON_MANAGER, XfdesktopIconViewManager)
+#define XFDESKTOP_TYPE_FILE_ICON_MANAGER (xfdesktop_file_icon_manager_get_type())
 
 XfdesktopIconViewManager *xfdesktop_file_icon_manager_new(XfwScreen *screen,
                                                           GdkScreen *gdkscreen,
