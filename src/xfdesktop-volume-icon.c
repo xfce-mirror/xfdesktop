@@ -853,19 +853,19 @@ xfdesktop_volume_icon_populate_context_menu(XfdesktopIcon *icon,
         switch (start_stop_type)
           {
           case G_DRIVE_START_STOP_TYPE_SHUTDOWN:
-            icon_label = _("_Safely Remove Volume");
+            icon_label = _("Safely _Remove Volume");
             break;
           case G_DRIVE_START_STOP_TYPE_NETWORK:
             icon_label = _("_Disconnect Volume");
             break;
           case G_DRIVE_START_STOP_TYPE_MULTIDISK:
-            icon_label = _("_Stop the Multi-Disk Drive");
+            icon_label = _("Stop the _Multi-Disk Drive");
             break;
           case G_DRIVE_START_STOP_TYPE_PASSWORD:
             icon_label = _("_Lock Volume");
             break;
           default:
-            icon_label = _("E_ject Volume");
+            icon_label = _("_Eject Volume");
           }
         icon_name = "media-eject";
         xfdesktop_volume_icon_add_context_menu_option(icon, icon_name, icon_label,
@@ -894,7 +894,7 @@ xfdesktop_volume_icon_populate_context_menu(XfdesktopIcon *icon,
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
 
     icon_name = "document-properties";
-    icon_label = _("P_roperties...");
+    icon_label = _("_Properties...");
 
     if(!volume_icon->priv->file_info)
         xfdesktop_volume_icon_add_context_menu_option(icon, icon_name, icon_label,
