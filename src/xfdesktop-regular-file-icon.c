@@ -95,6 +95,8 @@ static void xfdesktop_regular_file_icon_update_file_info(XfdesktopFileIcon *icon
                                                          GFileInfo *info);
 static gboolean xfdesktop_regular_file_can_write_parent(XfdesktopFileIcon *icon);
 
+static gboolean is_folder_icon(GFile *file);
+
 #ifdef HAVE_THUNARX
 static void xfdesktop_regular_file_icon_tfi_init(ThunarxFileInfoIface *iface);
 
@@ -110,6 +112,29 @@ G_DEFINE_TYPE_WITH_PRIVATE(XfdesktopRegularFileIcon, xfdesktop_regular_file_icon
 #endif
 
 
+/* So much for standards */
+static const gchar *folder_icon_names[] = {
+    "Folder.jpg",
+    "folder.jpg",
+    "Folder.JPG",
+    "folder.JPG",
+    "folder.jpeg",
+    "folder.JPEG",
+    "Folder.JPEG",
+    "Folder.jpeg",
+    "Cover.jpg",
+    "cover.jpg",
+    "Cover.jpeg",
+    "cover.jpeg",
+    "albumart.jpg",
+    "albumart.jpeg",
+    "fanart.jpg",
+    "Fanart.jpg",
+    "fanart.JPG",
+    "Fanart.JPG",
+    "FANART.JPG",
+    "FANART.jpg",
+};
 
 static void
 xfdesktop_regular_file_icon_class_init(XfdesktopRegularFileIconClass *klass)
@@ -271,32 +296,29 @@ xfdesktop_check_file_is_valid(const gchar *folder, const gchar *file)
     return path;
 }
 
+static gboolean
+is_folder_icon(GFile *file) {
+    if (file != NULL) {
+        gboolean match = FALSE;
+
+        gchar *filename = g_file_get_basename(file);
+        for (gsize i = 0; i < G_N_ELEMENTS(folder_icon_names); ++i) {
+            if (g_strcmp0(filename, folder_icon_names[i]) == 0) {
+                match = TRUE;
+                break;
+            }
+        }
+
+        g_free(filename);
+        return match;
+    } else {
+        return FALSE;
+    }
+}
+
 static gchar *
 xfdesktop_load_icon_location_from_folder(XfdesktopFileIcon *icon)
 {
-    /* So much for standards */
-    static const gchar *folder_icon_names[] = {
-        "Folder.jpg",
-        "folder.jpg",
-        "Folder.JPG",
-        "folder.JPG",
-        "folder.jpeg",
-        "folder.JPEG",
-        "Folder.JPEG",
-        "Folder.jpeg",
-        "Cover.jpg",
-        "cover.jpg",
-        "Cover.jpeg",
-        "cover.jpeg",
-        "albumart.jpg",
-        "albumart.jpeg",
-        "fanart.jpg",
-        "Fanart.jpg",
-        "fanart.JPG",
-        "Fanart.JPG",
-        "FANART.JPG",
-        "FANART.jpg",
-    };
     gchar *icon_file = g_file_get_path(xfdesktop_file_icon_peek_file(icon));
     gchar *path = NULL;
 
@@ -860,7 +882,6 @@ cb_folder_contents_changed(GFileMonitor     *monitor,
                            gpointer          user_data)
 {
     XfdesktopRegularFileIcon *regular_file_icon;
-    gchar *thumbnail_file = NULL;
 
     if(!user_data || !XFDESKTOP_IS_REGULAR_FILE_ICON(user_data))
         return;
@@ -871,23 +892,35 @@ cb_folder_contents_changed(GFileMonitor     *monitor,
     if(!regular_file_icon->priv->show_thumbnails)
         return;
 
-    /* Already has a thumbnail */
-    if(regular_file_icon->priv->thumbnail_file != NULL)
-        return;
-
+    gboolean reload_icon;
     switch(event) {
         case G_FILE_MONITOR_EVENT_CREATED:
-                thumbnail_file = xfdesktop_load_icon_location_from_folder(XFDESKTOP_FILE_ICON(regular_file_icon));
-                if(thumbnail_file) {
-                    GFile *thumbnail = g_file_new_for_path(thumbnail_file);
-                    /* found a thumbnail file, apply it */
-                    xfdesktop_regular_file_icon_set_thumbnail_file(XFDESKTOP_ICON(regular_file_icon),
-                                                                   thumbnail);
-                    g_free(thumbnail_file);
-                }
+        case G_FILE_MONITOR_EVENT_CHANGES_DONE_HINT:
+        case G_FILE_MONITOR_EVENT_DELETED:
+            reload_icon = is_folder_icon(file);
             break;
+
+        case G_FILE_MONITOR_EVENT_MOVED:
+        case G_FILE_MONITOR_EVENT_MOVED_IN:
+        case G_FILE_MONITOR_EVENT_MOVED_OUT:
+            reload_icon = is_folder_icon(file) || is_folder_icon(other_file);
+            break;
+
         default:
+            reload_icon = FALSE;
             break;
+    }
+
+    if (reload_icon) {
+        gchar *thumbnail_file = xfdesktop_load_icon_location_from_folder(XFDESKTOP_FILE_ICON(regular_file_icon));
+        if (thumbnail_file) {
+            GFile *thumbnail = g_file_new_for_path(thumbnail_file);
+            /* found a thumbnail file, apply it */
+            xfdesktop_regular_file_icon_set_thumbnail_file(XFDESKTOP_ICON(regular_file_icon), thumbnail);
+            g_free(thumbnail_file);
+        } else {
+            xfdesktop_regular_file_icon_set_thumbnail_file(XFDESKTOP_ICON(regular_file_icon), NULL);
+        }
     }
 }
 
@@ -925,7 +958,7 @@ xfdesktop_regular_file_icon_new(GFile *file,
 
     if(g_file_info_get_file_type(regular_file_icon->priv->file_info) == G_FILE_TYPE_DIRECTORY) {
         regular_file_icon->priv->monitor = g_file_monitor(regular_file_icon->priv->file,
-                                                          G_FILE_MONITOR_NONE,
+                                                          G_FILE_MONITOR_WATCH_MOVES,
                                                           NULL,
                                                           NULL);
 
