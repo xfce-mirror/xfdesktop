@@ -136,6 +136,11 @@ gboolean xfdesktop_icon_view_widget_coords_to_item(XfdesktopIconView *icon_view,
                                                    gint wx,
                                                    gint wy,
                                                    GtkTreeIter *iter);
+gboolean xfdesktop_icon_view_widget_coords_to_slot_coords(XfdesktopIconView *icon_view,
+                                                          gint wx,
+                                                          gint wy,
+                                                          gint *row,
+                                                          gint *col);
 
 GList *xfdesktop_icon_view_get_selected_items(XfdesktopIconView *icon_view) G_GNUC_WARN_UNUSED_RESULT;
 
