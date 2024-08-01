@@ -573,7 +573,7 @@ static void xfdesktop_icon_view_items_free(XfdesktopIconView *icon_view);
 
 
 static const GtkTargetEntry icon_view_targets[] = {
-    { "XFDESKTOP_ICON", GTK_TARGET_SAME_APP, TARGET_XFDESKTOP_ICON }
+    { "XFDESKTOP_ICON", GTK_TARGET_SAME_APP | GTK_TARGET_SAME_WIDGET, TARGET_XFDESKTOP_ICON }
 };
 static const gint icon_view_n_targets = 1;
 
@@ -4955,11 +4955,34 @@ xfdesktop_icon_view_widget_coords_to_item(XfdesktopIconView *icon_view,
 
     g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view), FALSE);
     g_return_val_if_fail(icon_view->priv->model != NULL, FALSE);
-    g_return_val_if_fail(iter != NULL, FALSE);
 
     item = xfdesktop_icon_view_widget_coords_to_item_internal(icon_view, wx, wy);
     if (item != NULL) {
-        return view_item_get_iter(item, icon_view->priv->model, iter);
+        return iter != NULL ? view_item_get_iter(item, icon_view->priv->model, iter) : TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+gboolean
+xfdesktop_icon_view_widget_coords_to_slot_coords(XfdesktopIconView *icon_view,
+                                                 gint wx,
+                                                 gint wy,
+                                                 gint *row_out,
+                                                 gint *col_out)
+{
+    g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view), FALSE);
+
+    gint row, col;
+    xfdesktop_xy_to_rowcol(icon_view, wx, wy, &row, &col);
+    if (row >= 0 && row < icon_view->priv->nrows && col >= 0 && col < icon_view->priv->ncols) {
+        if (row_out != NULL) {
+            *row_out = row;
+        }
+        if (col_out != NULL) {
+            *col_out = col;
+        }
+        return TRUE;
     } else {
         return FALSE;
     }
