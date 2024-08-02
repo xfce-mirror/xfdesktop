@@ -177,7 +177,7 @@ struct _XfdesktopApplication
     GdkScreen *gdkscreen;
     XfdesktopBackdropManager *backdrop_manager;
 
-    GPtrArray *desktops;  // XfceDesktop
+    GList *desktops;  // XfceDesktop
 
     XfdesktopLocalArgs *args;
 
@@ -293,7 +293,6 @@ xfdesktop_application_init(XfdesktopApplication *app)
     };
 
     app->args = args;
-    app->desktops = g_ptr_array_new();
     app->icon_style = -1;
 
     g_application_add_main_option_entries(G_APPLICATION(app), main_entries);
@@ -449,8 +448,8 @@ reload_idle_cb(gpointer data)
 
     TRACE("entering");
 
-    for (guint i = 0; i < app->desktops->len; ++i) {
-        XfceDesktop *desktop = XFCE_DESKTOP(g_ptr_array_index(app->desktops, i));
+    for (GList *l = app->desktops; l != NULL; l = l->next) {
+        XfceDesktop *desktop = XFCE_DESKTOP(l->data);
         xfce_desktop_refresh(desktop, FALSE);
     }
     g_application_release(G_APPLICATION(app));
@@ -462,8 +461,8 @@ static XfceDesktop *
 find_desktop_for_monitor(XfdesktopApplication *app, GdkMonitor *monitor) {
     g_return_val_if_fail(GDK_IS_MONITOR(monitor), NULL);
 
-    for (guint i = 0; i < app->desktops->len; ++i) {
-        XfceDesktop *desktop = XFCE_DESKTOP(g_ptr_array_index(app->desktops, i));
+    for (GList *l = app->desktops; l != NULL; l = l->next) {
+        XfceDesktop *desktop = XFCE_DESKTOP(l->data);
         if (xfw_monitor_get_gdk_monitor(xfce_desktop_get_monitor(desktop)) == monitor) {
             return desktop;
         }
@@ -493,8 +492,8 @@ find_active_desktop(XfdesktopApplication *app) {
 #endif
 
     if (desktop == NULL) {
-        for (guint i = 0; i < app->desktops->len; ++i) {
-            XfceDesktop *a_desktop = XFCE_DESKTOP(g_ptr_array_index(app->desktops, i));
+        for (GList *l = app->desktops; l != NULL; l = l->next) {
+            XfceDesktop *a_desktop = XFCE_DESKTOP(l->data);
             if (gtk_widget_has_focus(GTK_WIDGET(a_desktop)) || xfce_desktop_has_pointer(a_desktop)) {
                 desktop = a_desktop;
                 break;
@@ -508,8 +507,8 @@ find_active_desktop(XfdesktopApplication *app) {
     }
 
     if (G_UNLIKELY(desktop == NULL)) {
-        if (app->desktops->len > 0) {
-            desktop = g_ptr_array_index(app->desktops, 0);
+        if (app->desktops != NULL) {
+            desktop = XFCE_DESKTOP(g_list_nth_data(app->desktops, 0));
         }
     }
 
@@ -528,8 +527,8 @@ xfdesktop_application_action_activated(GAction *action, GVariant *parameter, gpo
         g_application_hold(G_APPLICATION(app));
         g_idle_add(reload_idle_cb, app);
     } else if (g_strcmp0(name, ACTION_NEXT) == 0) {
-        for (guint i = 0; i < app->desktops->len; ++i) {
-            XfceDesktop *desktop = XFCE_DESKTOP(g_ptr_array_index(app->desktops, i));
+        for (GList *l = app->desktops; l != NULL; l = l->next) {
+            XfceDesktop *desktop = XFCE_DESKTOP(l->data);
             xfce_desktop_refresh(XFCE_DESKTOP(desktop), TRUE);
         }
     } else if (g_strcmp0(name, ACTION_MENU) == 0) {
@@ -689,7 +688,7 @@ monitors_changed(XfwScreen *screen, XfdesktopApplication *app) {
 static void
 desktop_destroyed(XfceDesktop *desktop, XfdesktopApplication *app) {
     gtk_application_remove_window(GTK_APPLICATION(app), GTK_WINDOW(desktop));
-    g_ptr_array_remove(app->desktops, desktop);
+    app->desktops = g_list_remove(app->desktops, desktop);
 }
 
 static GtkWidget *
@@ -798,7 +797,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     for (GList *l = monitors; l != NULL; l = l->next) {
         XfwMonitor *monitor = XFW_MONITOR(l->data);
         GtkWidget *desktop = create_desktop(app, monitor, app->channel, property_prefix, app->backdrop_manager);
-        g_ptr_array_add(app->desktops, desktop);
+        app->desktops = g_list_append(app->desktops, desktop);
         gtk_widget_show_all(desktop);
 
 #ifdef ENABLE_X11
@@ -864,12 +863,15 @@ xfdesktop_application_shutdown(GApplication *g_application)
         app->channel = NULL;
     }
 
-    // Do this in reverse as the destroy signal handler will remove them from
-    // the array after each call
-    for (gint i = app->desktops->len - 1; i >= 0; --i) {
-        GtkWidget *widget = GTK_WIDGET(g_ptr_array_index(app->desktops, i));
-        gtk_widget_destroy(widget);
+    // Do this carefully, since desktop_destroy will remove each
+    // desktop from the list as it's destroyed
+    GList *ld = app->desktops;
+    while (ld != NULL) {
+        GtkWidget *desktop = GTK_WIDGET(ld->data);
+        ld = ld->next;
+        gtk_widget_destroy(desktop);
     }
+    g_assert(app->desktops == NULL);
 
     if (app->screen != NULL) {
         g_signal_handlers_disconnect_by_data(app->screen, app);
@@ -1160,17 +1162,6 @@ xfce_desktop_delete_event(GtkWidget *w, GdkEventAny *evt, XfdesktopApplication *
     return TRUE;
 }
 
-#ifdef ENABLE_DESKTOP_ICONS
-static GList *
-desktops_to_glist(XfdesktopApplication *app) {
-    GList *desktops = NULL;
-    for (guint i = 0; i < app->desktops->len; ++i) {
-        desktops = g_list_append(desktops, g_ptr_array_index(app->desktops, i));
-    }
-    return desktops;
-}
-#endif
-
 static void
 xfdesktop_application_set_icon_style(XfdesktopApplication *app, XfceDesktopIconStyle style) {
     g_return_if_fail(style <= XFCE_DESKTOP_ICON_STYLE_FILES);
@@ -1191,21 +1182,18 @@ xfdesktop_application_set_icon_style(XfdesktopApplication *app, XfceDesktopIconS
             /* nada */
             break;
 
-        case XFCE_DESKTOP_ICON_STYLE_WINDOWS: {
-            GList *desktops = desktops_to_glist(app);
-            app->icon_view_manager = xfdesktop_window_icon_manager_new(app->screen, app->channel, desktops);
+        case XFCE_DESKTOP_ICON_STYLE_WINDOWS:
+            app->icon_view_manager = xfdesktop_window_icon_manager_new(app->screen, app->channel, app->desktops);
             break;
-        }
 
 #ifdef ENABLE_FILE_ICONS
         case XFCE_DESKTOP_ICON_STYLE_FILES: {
             const gchar *desktop_path = g_get_user_special_dir(G_USER_DIRECTORY_DESKTOP);
             GFile *file = g_file_new_for_path(desktop_path);
-            GList *desktops = desktops_to_glist(app);
             app->icon_view_manager = xfdesktop_file_icon_manager_new(app->screen,
                                                                      app->gdkscreen,
                                                                      app->channel,
-                                                                     desktops,
+                                                                     app->desktops,
                                                                      file);
             g_object_unref(file);
             break;
@@ -1219,8 +1207,8 @@ xfdesktop_application_set_icon_style(XfdesktopApplication *app, XfceDesktopIconS
             break;
     }
 
-    for (guint i = 0; i < app->desktops->len; ++i) {
-        gtk_widget_queue_draw(GTK_WIDGET(g_ptr_array_index(app->desktops, i)));
+    for (GList *l = app->desktops; l != NULL; l = l->next) {
+        gtk_widget_queue_draw(GTK_WIDGET(l->data));
     }
 #endif
 }
