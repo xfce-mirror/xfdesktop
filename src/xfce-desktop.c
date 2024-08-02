@@ -297,7 +297,7 @@ backdrop_loaded(cairo_surface_t *surface, GdkRectangle *region, const gchar *ima
         desktop->priv->bg_surface_region = *region;
 
 #ifdef ENABLE_X11
-        if (xfw_windowing_get() == XFW_WINDOWING_X11) {
+        if (xfw_monitor_is_primary(desktop->priv->monitor) && xfw_windowing_get() == XFW_WINDOWING_X11) {
             gint monitor_idx = -1;
             for (GList *l = xfw_screen_get_monitors(desktop->priv->xfw_screen); l != NULL; l = l->next) {
                 if (XFW_MONITOR(l->data) == desktop->priv->monitor) {
@@ -311,6 +311,7 @@ backdrop_loaded(cairo_surface_t *surface, GdkRectangle *region, const gchar *ima
 
             /* do this again so apps watching the root win notice the update */
             xfdesktop_x11_set_root_image_surface(desktop->priv->gscreen, surface);
+            xfdesktop_x11_set_compat_properties(GTK_WIDGET(desktop));
         }
 #endif  /* ENABLE_X11 */
 
@@ -752,38 +753,17 @@ static void
 xfce_desktop_unrealize(GtkWidget *widget)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(widget);
-    GdkDisplay  *display;
-    GdkWindow *groot;
 
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
-
-    if(gtk_widget_get_mapped(widget))
-        gtk_widget_unmap(widget);
-    gtk_widget_set_mapped(widget, FALSE);
-
-    gtk_container_forall(GTK_CONTAINER(widget),
-                         xfdesktop_widget_unrealize,
-                         NULL);
 
     g_signal_handlers_disconnect_by_func(G_OBJECT(desktop->priv->gscreen),
                                          G_CALLBACK(screen_composited_changed_cb), desktop);
 
-    display = gdk_screen_get_display(desktop->priv->gscreen);
-    xfw_windowing_error_trap_push(display);
-
-    groot = gdk_screen_get_root_window(desktop->priv->gscreen);
-    gdk_property_delete(groot, gdk_atom_intern("XFCE_DESKTOP_WINDOW", FALSE));
-    gdk_property_delete(groot, gdk_atom_intern("NAUTILUS_DESKTOP_WINDOW_ID", FALSE));
-
-#ifndef DISABLE_FOR_BUG7442
-    gdk_property_delete(groot, gdk_atom_intern("_XROOTPMAP_ID", FALSE));
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-    gdk_window_set_background_pattern(groot, NULL);
-G_GNUC_END_IGNORE_DEPRECATIONS
-#endif
-
 #ifdef ENABLE_X11
-    if (xfw_windowing_get() == XFW_WINDOWING_X11) {
+    if (xfw_monitor_is_primary(desktop->priv->monitor) && xfw_windowing_get() == XFW_WINDOWING_X11) {
+        xfdesktop_x11_set_root_image_surface(desktop->priv->gscreen, NULL);
+        xfdesktop_x11_set_compat_properties(NULL);
+
         gint monitor_idx = -1;
         for (GList *l = xfw_screen_get_monitors(desktop->priv->xfw_screen); l != NULL; l = l->next) {
             if (XFW_MONITOR(l->data) == desktop->priv->monitor) {
@@ -797,20 +777,12 @@ G_GNUC_END_IGNORE_DEPRECATIONS
      }
 #endif
 
-    gdk_display_flush(display);
-    xfw_windowing_error_trap_pop_ignored(display);
-
     if(desktop->priv->bg_surface) {
         cairo_surface_destroy(desktop->priv->bg_surface);
         desktop->priv->bg_surface = NULL;
     }
 
-    g_object_unref(G_OBJECT(gtk_widget_get_window(widget)));
-    gtk_widget_set_window(widget, NULL);
-
-    gtk_selection_remove_all(widget);
-
-    gtk_widget_set_realized(widget, FALSE);
+    GTK_WIDGET_CLASS(xfce_desktop_parent_class)->unrealize(widget);
 }
 
 static gboolean
