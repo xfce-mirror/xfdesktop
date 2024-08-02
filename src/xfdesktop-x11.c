@@ -148,34 +148,40 @@ xfdesktop_x11_set_root_image_file_property(GdkScreen *gscreen, gint monitor_idx,
 void
 xfdesktop_x11_set_root_image_surface(GdkScreen *gscreen, cairo_surface_t *surface) {
 #ifndef DISABLE_FOR_BUG7442
-    Pixmap pixmap_id;
-    GdkDisplay *display;
-    GdkWindow *groot;
-    cairo_pattern_t *pattern;
+    GdkWindow *groot = gdk_screen_get_root_window(gscreen);
+    GdkAtom prop_atom = gdk_atom_intern("_XROOTPMAP_ID", FALSE);
+    cairo_pattern_t *pattern = NULL;
 
-    groot = gdk_screen_get_root_window(gscreen);
-    pixmap_id = cairo_xlib_surface_get_drawable (surface);
+    if (surface != NULL) {
+        Pixmap pixmap_id = cairo_xlib_surface_get_drawable(surface);
+        pattern = cairo_pattern_create_for_surface(surface);
 
-    display = gdk_screen_get_display(gscreen);
-    xfw_windowing_error_trap_push(display);
+        GdkDisplay *display = gdk_screen_get_display(gscreen);
+        xfw_windowing_error_trap_push(display);
 
-    /* set root property for transparent Eterms */
-    gdk_property_change(groot,
-                        gdk_atom_intern("_XROOTPMAP_ID", FALSE),
-                        gdk_atom_intern("PIXMAP", FALSE),
-                        32,
-                        GDK_PROP_MODE_REPLACE,
-                        (guchar *)&pixmap_id,
-                        1);
-    /* and set the root window's BG surface, because aterm is somewhat lame. */
-    pattern = cairo_pattern_create_for_surface(surface);
+        /* set root property for transparent Eterms */
+        gdk_property_change(groot,
+                            prop_atom,
+                            gdk_atom_intern("PIXMAP", FALSE),
+                            32,
+                            GDK_PROP_MODE_REPLACE,
+                            (guchar *)&pixmap_id,
+                            1);
+        /* there really should be a standard for this crap... */
+
+        xfw_windowing_error_trap_pop_ignored(display);
+    } else {
+        gdk_property_delete(groot, prop_atom);
+    }
+
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+    /* and set the root window's BG surface, because aterm is somewhat lame. */
     gdk_window_set_background_pattern(groot, pattern);
 G_GNUC_END_IGNORE_DEPRECATIONS
-    cairo_pattern_destroy(pattern);
-    /* there really should be a standard for this crap... */
 
-    xfw_windowing_error_trap_pop_ignored(display);
+    if (pattern != NULL) {
+        cairo_pattern_destroy(pattern);
+    }
 #endif
 }
 
