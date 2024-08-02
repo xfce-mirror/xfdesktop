@@ -433,7 +433,8 @@ static void
 xfdesktop_backdrop_manager_invalidate_internal(XfdesktopBackdropManager *manager,
                                                const gchar *property_prefix,
                                                XfwMonitor *xfwmonitor,
-                                               XfwWorkspace *workspace)
+                                               XfwWorkspace *workspace,
+                                               gboolean emit_signals)
 {
     Backdrop *backdrop = g_hash_table_lookup(manager->backdrops, property_prefix);
     if (backdrop != NULL) {
@@ -441,40 +442,41 @@ xfdesktop_backdrop_manager_invalidate_internal(XfdesktopBackdropManager *manager
             cairo_surface_destroy(backdrop->surface);
             backdrop->surface = NULL;
 
-            gint screen_num = 0;
-            Monitor *monitor = NULL;
-
-            if (xfwmonitor == NULL || workspace == NULL) {
-                if (parse_property_prefix(manager, property_prefix, &screen_num, &monitor, &workspace)) {
-                    xfwmonitor = monitor->xfwmonitor;
-                } else {
-                    g_message("Can't parse property prefix to figure out monitor and workspace");
-                }
-            }
-
-            if (xfwmonitor != NULL && workspace != NULL) {
-                GPtrArray *xfwmonitors_to_signal = NULL;
-
-                if (backdrop->is_spanning) {
-                    GList *xfw_monitors = xfw_screen_get_monitors(manager->xfw_screen);
-                    xfwmonitors_to_signal = g_ptr_array_sized_new(g_list_length(xfw_monitors));
-                    for (GList *l = xfw_monitors; l != NULL; l = l->next) {
-                        g_ptr_array_add(xfwmonitors_to_signal, XFW_MONITOR(l->data));
+            if (emit_signals) {
+                if (xfwmonitor == NULL || workspace == NULL) {
+                    gint screen_num = 0;
+                    Monitor *monitor = NULL;
+                    if (parse_property_prefix(manager, property_prefix, &screen_num, &monitor, &workspace)) {
+                        xfwmonitor = monitor->xfwmonitor;
+                    } else {
+                        g_message("Can't parse property prefix to figure out monitor and workspace");
                     }
-                } else {
-                    xfwmonitors_to_signal = g_ptr_array_sized_new(1);
-                    g_ptr_array_add(xfwmonitors_to_signal, xfwmonitor);
                 }
 
-                for (guint i = 0; i < xfwmonitors_to_signal->len; ++i) {
-                    g_signal_emit(manager,
-                                  signals[SIG_BACKDROP_CHANGED],
-                                  0,
-                                  g_ptr_array_index(xfwmonitors_to_signal, i),
-                                  workspace);
-                }
+                if (xfwmonitor != NULL && workspace != NULL) {
+                    GPtrArray *xfwmonitors_to_signal = NULL;
 
-                g_ptr_array_free(xfwmonitors_to_signal, TRUE);
+                    if (backdrop->is_spanning) {
+                        GList *xfw_monitors = xfw_screen_get_monitors(manager->xfw_screen);
+                        xfwmonitors_to_signal = g_ptr_array_sized_new(g_list_length(xfw_monitors));
+                        for (GList *l = xfw_monitors; l != NULL; l = l->next) {
+                            g_ptr_array_add(xfwmonitors_to_signal, XFW_MONITOR(l->data));
+                        }
+                    } else {
+                        xfwmonitors_to_signal = g_ptr_array_sized_new(1);
+                        g_ptr_array_add(xfwmonitors_to_signal, xfwmonitor);
+                    }
+
+                    for (guint i = 0; i < xfwmonitors_to_signal->len; ++i) {
+                        g_signal_emit(manager,
+                                      signals[SIG_BACKDROP_CHANGED],
+                                      0,
+                                      g_ptr_array_index(xfwmonitors_to_signal, i),
+                                      workspace);
+                    }
+
+                    g_ptr_array_free(xfwmonitors_to_signal, TRUE);
+                }
             }
         }
     }
@@ -490,7 +492,7 @@ channel_property_changed(XfdesktopBackdropManager *manager, const gchar *propert
         gsize len = (gsize)(last_slash - property_name);
         if (len > 0) {
             gchar *property_prefix = g_strndup(property_name, len);
-            xfdesktop_backdrop_manager_invalidate_internal(manager, property_prefix, NULL, NULL);
+            xfdesktop_backdrop_manager_invalidate_internal(manager, property_prefix, NULL, NULL, TRUE);
             g_free(property_prefix);
         }
     }
@@ -757,7 +759,7 @@ xfdesktop_backdrop_manager_invalidate(XfdesktopBackdropManager *manager,
     g_return_if_fail(XFW_IS_WORKSPACE(workspace));
 
     gchar *property_prefix = build_property_prefix(manager, xfwmonitor, workspace, NULL, NULL);
-    xfdesktop_backdrop_manager_invalidate_internal(manager, property_prefix, xfwmonitor, workspace);
+    xfdesktop_backdrop_manager_invalidate_internal(manager, property_prefix, xfwmonitor, workspace, TRUE);
     g_free(property_prefix);
 }
 
@@ -836,7 +838,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
         g_hash_table_iter_init(&iter, manager->backdrops);
         const gchar *property_prefix;
         while (g_hash_table_iter_next(&iter, (gpointer)&property_prefix, NULL)) {
-            xfdesktop_backdrop_manager_invalidate_internal(manager, property_prefix, NULL, NULL);
+            xfdesktop_backdrop_manager_invalidate_internal(manager, property_prefix, NULL, NULL, FALSE);
         }
     }
 }
