@@ -413,6 +413,7 @@ group_monitor_removed(XfwWorkspaceGroup *group, XfwMonitor *monitor, XfceDesktop
     if (monitor == desktop->priv->monitor) {
         g_signal_handlers_disconnect_by_func(group, group_workspace_added, desktop);
         g_signal_handlers_disconnect_by_func(group, group_workspace_removed, desktop);
+        g_signal_handlers_disconnect_by_func(group, workspace_changed_cb, desktop);
     }
 }
 
@@ -600,6 +601,15 @@ static void
 xfce_desktop_finalize(GObject *object)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(object);
+
+    g_signal_handlers_disconnect_by_data(desktop->priv->backdrop_manager, desktop);
+    g_signal_handlers_disconnect_by_data(desktop->priv->workspace_manager, desktop);
+    for (GList *l = xfw_workspace_manager_list_workspace_groups(desktop->priv->workspace_manager);
+         l != NULL;
+         l = l->next)
+    {
+        g_signal_handlers_disconnect_by_data(l->data, desktop);
+    }
 
     if (desktop->priv->backdrop_load_cancellable != NULL) {
         g_cancellable_cancel(desktop->priv->backdrop_load_cancellable);
