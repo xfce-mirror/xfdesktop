@@ -629,6 +629,9 @@ xfce_desktop_finalize(GObject *object)
         g_source_remove(desktop->priv->style_refresh_timer);
 #endif
 
+    g_signal_handlers_disconnect_by_data(desktop->priv->monitor, desktop);
+    g_object_unref(desktop->priv->monitor);
+
     G_OBJECT_CLASS(xfce_desktop_parent_class)->finalize(object);
 }
 
@@ -985,18 +988,22 @@ xfce_desktop_update_monitor(XfceDesktop *desktop, XfwMonitor *monitor) {
     if (desktop->priv->monitor != monitor) {
         if (desktop->priv->monitor != NULL) {
             g_signal_handlers_disconnect_by_data(desktop->priv->monitor, desktop);
+            g_object_unref(desktop->priv->monitor);
         }
+
+        desktop->priv->monitor = g_object_ref(monitor);
+
         g_signal_connect(monitor, "notify::logical-geometry",
                          G_CALLBACK(monitor_prop_changed), desktop);
         g_signal_connect(monitor, "notify::scale",
                          G_CALLBACK(monitor_prop_changed), desktop);
+
+        if (gtk_widget_get_realized(GTK_WIDGET(desktop))) {
+            xfce_desktop_place_on_monitor(desktop);
+            fetch_backdrop(desktop);
+        }
     }
 
-    desktop->priv->monitor = monitor;
-    if (gtk_widget_get_realized(GTK_WIDGET(desktop))) {
-        xfce_desktop_place_on_monitor(desktop);
-        fetch_backdrop(desktop);
-    }
 }
 
 static void
