@@ -161,7 +161,7 @@ xfdesktop_icon_view_manager_set_property(GObject *obj,
             break;
 
         case PROP_DESKTOPS:
-            priv->desktops = g_value_get_pointer(value);
+            priv->desktops = g_list_copy(g_value_get_pointer(value));
             break;
 
         case PROP_CHANNEL:
@@ -267,7 +267,7 @@ xfdesktop_icon_view_manager_desktops_changed(XfdesktopIconViewManager *manager, 
 
     XfdesktopIconViewManagerPrivate *priv = XFDESKTOP_ICON_VIEW_MANAGER_GET_PRIVATE(manager);
     g_list_free(priv->desktops);
-    priv->desktops = desktops;
+    priv->desktops = g_list_copy(desktops);
 
     g_object_notify(G_OBJECT(manager), "desktops");
 }
