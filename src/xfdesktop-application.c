@@ -416,6 +416,8 @@ session_die(gpointer user_data)
 
     /* Ensure we always have a valid reference so we can quit xfdesktop */
     app = xfdesktop_application_get();
+    // Release our own hold on the app
+    g_application_release(G_APPLICATION(app));
 
 #ifdef ENABLE_X11
     cancel_wait_for_wm(app);
@@ -818,6 +820,11 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                                                                  ICON_STYLE_DEFAULT);
         xfdesktop_application_set_icon_style(app, icon_style);
     }
+
+    // Put a hold on the app, because at times we may have no monitors
+    // (suspend/resume, etc.), which will cause us to destroy all our
+    // toplevels, which will cause GApplication to quit.
+    g_application_hold(G_APPLICATION(app));
 
     /* hook up to the different quit signals */
     if (xfce_posix_signal_handler_init(&error)) {
