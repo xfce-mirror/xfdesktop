@@ -679,24 +679,19 @@ xfdesktop_application_theme_changed (GtkSettings *settings,
 }
 
 static void
-monitors_changed(XfwScreen *screen, XfdesktopApplication *app) {
-    xfdesktop_backdrop_manager_monitors_changed(app->backdrop_manager);
-}
-
-static void
 desktop_destroyed(XfceDesktop *desktop, XfdesktopApplication *app) {
     gtk_application_remove_window(GTK_APPLICATION(app), GTK_WINDOW(desktop));
     app->desktops = g_list_remove(app->desktops, desktop);
 }
 
 static GtkWidget *
-create_desktop(XfdesktopApplication *app,
-               XfwMonitor *monitor,
-               XfconfChannel *channel,
-               const gchar *property_prefix,
-               XfdesktopBackdropManager *backdrop_manager)
-{
-    GtkWidget *desktop = xfce_desktop_new(app->gdkscreen, monitor, channel, property_prefix, backdrop_manager);
+create_desktop(XfdesktopApplication *app, XfwMonitor *monitor) {
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+    gint screen_num = gdk_screen_get_number(app->gdkscreen);
+G_GNUC_END_IGNORE_DEPRECATIONS
+    gchar *property_prefix = g_strdup_printf("/backdrop/screen%d/", screen_num);
+    GtkWidget *desktop = xfce_desktop_new(app->gdkscreen, monitor, app->channel, property_prefix, app->backdrop_manager);
+    g_free(property_prefix);
 
     gtk_application_add_window(GTK_APPLICATION(app), GTK_WINDOW(desktop));
     g_signal_connect(desktop, "destroy",
@@ -721,7 +716,71 @@ create_desktop(XfdesktopApplication *app,
                          G_CALLBACK(scroll_cb), app);
     }
 
+    gtk_widget_show_all(desktop);
+
     return desktop;
+}
+
+static XfceDesktop *
+match_and_steal_desktop_with_monitor(GList **desktops, XfwMonitor *monitor) {
+    GdkRectangle geom;
+    xfw_monitor_get_physical_geometry(monitor, &geom);
+    const gchar *connector = xfw_monitor_get_connector(monitor);
+
+    GList *matched_link = NULL;
+
+    for (GList *l = *desktops; l != NULL; l = l->next) {
+        XfceDesktop *a_desktop = XFCE_DESKTOP(l->data);
+        XfwMonitor *a_monitor = xfce_desktop_get_monitor(a_desktop);
+        if (monitor == a_monitor) {
+            matched_link = l;
+            break;
+        } else {
+            GdkRectangle a_geom;
+            xfw_monitor_get_physical_geometry(a_monitor, &a_geom);
+            if ((a_geom.x == geom.x && a_geom.y == geom.y)
+                || g_strcmp0(xfw_monitor_get_connector(a_monitor), connector) == 0)
+            {
+                matched_link = l;
+                break;
+            }
+        }
+    }
+
+    if (matched_link != NULL) {
+        XfceDesktop *matched_desktop = XFCE_DESKTOP(matched_link->data);
+        *desktops = g_list_delete_link(*desktops, matched_link);
+        return matched_desktop;
+    } else {
+        return NULL;
+    }
+}
+
+static void
+monitors_changed(XfwScreen *screen, XfdesktopApplication *app) {
+    // Need to do this first, otherwise when the desktop creations/updates
+    // below try to talk to the backdrop manager, it will be confused about the
+    // available monitors.
+    xfdesktop_backdrop_manager_monitors_changed(app->backdrop_manager);
+
+    GList *old_desktops = app->desktops;
+    app->desktops = NULL;
+
+    GList *new_monitors = xfw_screen_get_monitors(screen);
+
+    for (GList *l = new_monitors; l != NULL; l = l->next) {
+        XfwMonitor *new_monitor = XFW_MONITOR(l->data);
+        XfceDesktop *matched_desktop = match_and_steal_desktop_with_monitor(&old_desktops, new_monitor);
+        if (matched_desktop != NULL) {
+            xfce_desktop_update_monitor(matched_desktop, new_monitor);
+            app->desktops = g_list_append(app->desktops, matched_desktop);
+        } else {
+            GtkWidget *desktop = create_desktop(app, new_monitor);
+            app->desktops = g_list_append(app->desktops, desktop);
+        }
+    }
+
+    g_list_free_full(old_desktops, (GDestroyNotify)gtk_widget_destroy);
 }
 
 static void
@@ -729,7 +788,6 @@ xfdesktop_application_start(XfdesktopApplication *app)
 {
     GtkSettings *settings;
     GdkDisplay *gdpy;
-    gint screen_num;
     GError *error = NULL;
 
     TRACE("entering");
@@ -754,9 +812,6 @@ xfdesktop_application_start(XfdesktopApplication *app)
 
     gdpy = gdk_display_get_default();
     app->gdkscreen = gdk_display_get_default_screen(gdpy);
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-    screen_num = gdk_screen_get_number(app->gdkscreen);
-G_GNUC_END_IGNORE_DEPRECATIONS
 
 #ifdef ENABLE_X11
     if (xfw_windowing_get() == XFW_WINDOWING_X11) {
@@ -791,20 +846,11 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     windowlist_init(app->channel);
 
     GList *monitors = xfw_screen_get_monitors(app->screen);
-    gchar *property_prefix = g_strdup_printf("/backdrop/screen%d/", screen_num);
     for (GList *l = monitors; l != NULL; l = l->next) {
         XfwMonitor *monitor = XFW_MONITOR(l->data);
-        GtkWidget *desktop = create_desktop(app, monitor, app->channel, property_prefix, app->backdrop_manager);
+        GtkWidget *desktop = create_desktop(app, monitor);
         app->desktops = g_list_append(app->desktops, desktop);
-        gtk_widget_show_all(desktop);
-
-#ifdef ENABLE_X11
-        if (l == monitors && xfw_windowing_get() == XFW_WINDOWING_X11) {
-            xfdesktop_x11_set_compat_properties(desktop);
-        }
-#endif  /* ENABLE_X11 */
     }
-    g_free(property_prefix);
 
     g_signal_connect(app->screen, "monitors-changed",
                      G_CALLBACK(monitors_changed), app);
