@@ -92,6 +92,7 @@ typedef enum
 {
     PROP0 = 0,
     PROP_GDK_SCREEN,
+    PROP_BACKDROP_MANAGER,
     PROP_FOLDER,
     PROP_SHOW_FILESYSTEM,
     PROP_SHOW_HOME,
@@ -116,6 +117,7 @@ struct _XfdesktopFileIconManager
     GtkTreeModelFilter *filter;
 
     GdkScreen *gscreen;
+    XfdesktopBackdropManager *backdrop_manager;
 
     GFile *folder;
     XfdesktopFileIcon *desktop_icon;
@@ -336,6 +338,14 @@ xfdesktop_file_icon_manager_class_init(XfdesktopFileIconManagerClass *klass)
                                                         "gdk-screen",
                                                         "GdkScreen",
                                                         GDK_TYPE_SCREEN,
+                                                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS));
+
+    g_object_class_install_property(gobject_class,
+                                    PROP_BACKDROP_MANAGER,
+                                    g_param_spec_object("backdrop-manager",
+                                                        "backdrop-manager",
+                                                        "backdrop manager",
+                                                        XFDESKTOP_TYPE_BACKDROP_MANAGER,
                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS));
 
     g_object_class_install_property(gobject_class, PROP_FOLDER,
@@ -588,6 +598,10 @@ xfdesktop_file_icon_manager_set_property(GObject *object,
             fmanager->gscreen = g_value_get_object(value);
             break;
 
+        case PROP_BACKDROP_MANAGER:
+            fmanager->backdrop_manager = g_value_get_object(value);
+            break;
+
         case PROP_FOLDER:
             fmanager->folder = g_value_dup_object(value);
             break;
@@ -650,6 +664,10 @@ xfdesktop_file_icon_manager_get_property(GObject *object,
     switch(property_id) {
         case PROP_GDK_SCREEN:
             g_value_set_object(value, fmanager->gscreen);
+            break;
+
+        case PROP_BACKDROP_MANAGER:
+            g_value_set_object(value, fmanager->backdrop_manager);
             break;
 
         case PROP_FOLDER:
@@ -2133,11 +2151,9 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager, 
             }
             XfwWorkspace *workspace = group != NULL ? xfw_workspace_group_get_active_workspace(group) : NULL;
 
-            XfdesktopBackdropManager *backdrop_manager = xfdesktop_backdrop_manager_get();
-
             if (monitor != NULL &&
                 workspace != NULL &&
-                xfdesktop_backdrop_manager_can_cycle_backdrop(backdrop_manager, monitor, workspace))
+                xfdesktop_backdrop_manager_can_cycle_backdrop(fmanager->backdrop_manager, monitor, workspace))
             {
                 /* show next background option */
                 img = gtk_image_new_from_icon_name("go-next", GTK_ICON_SIZE_MENU);
@@ -3536,6 +3552,7 @@ XfdesktopIconViewManager *
 xfdesktop_file_icon_manager_new(XfwScreen *screen,
                                 GdkScreen *gdkscreen,
                                 XfconfChannel *channel,
+                                XfdesktopBackdropManager *backdrop_manager,
                                 GList *desktops,
                                 GFile *folder)
 {
@@ -3546,6 +3563,7 @@ xfdesktop_file_icon_manager_new(XfwScreen *screen,
                         "screen", screen,
                         "gdk-screen", gdkscreen,
                         "channel", channel,
+                        "backdrop-manager", backdrop_manager,
                         "desktops", desktops,
                         "folder", folder,
                         NULL);
