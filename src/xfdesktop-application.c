@@ -762,11 +762,6 @@ match_and_steal_desktop_with_monitor(GList **desktops, XfwMonitor *monitor) {
 
 static void
 monitors_changed(XfwScreen *screen, XfdesktopApplication *app) {
-    // Need to do this first, otherwise when the desktop creations/updates
-    // below try to talk to the backdrop manager, it will be confused about the
-    // available monitors.
-    xfdesktop_backdrop_manager_monitors_changed(app->backdrop_manager);
-
     GList *old_desktops = app->desktops;
     app->desktops = NULL;
 
@@ -844,7 +839,7 @@ xfdesktop_application_start(XfdesktopApplication *app)
         xfdesktop_migrate_backdrop_settings(gdk_display_get_default(), app->channel);
     }
 
-    app->backdrop_manager = xfdesktop_backdrop_manager_get();
+    app->backdrop_manager = xfdesktop_backdrop_manager_new(app->screen, app->channel);
 
     menu_init(app->channel);
     windowlist_init(app->channel);
@@ -1246,6 +1241,7 @@ xfdesktop_application_set_icon_style(XfdesktopApplication *app, XfceDesktopIconS
             app->icon_view_manager = xfdesktop_file_icon_manager_new(app->screen,
                                                                      app->gdkscreen,
                                                                      app->channel,
+                                                                     app->backdrop_manager,
                                                                      app->desktops,
                                                                      file);
             g_object_unref(file);

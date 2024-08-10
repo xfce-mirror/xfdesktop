@@ -25,6 +25,7 @@
 #include <xfconf/xfconf.h>
 #include <libxfce4windowing/libxfce4windowing.h>
 
+#include "xfdesktop-backdrop-manager.h"
 #include "xfdesktop-icon-view-manager.h"
 
 G_BEGIN_DECLS
@@ -35,6 +36,7 @@ G_DECLARE_FINAL_TYPE(XfdesktopFileIconManager, xfdesktop_file_icon_manager, XFDE
 XfdesktopIconViewManager *xfdesktop_file_icon_manager_new(XfwScreen *screen,
                                                           GdkScreen *gdkscreen,
                                                           XfconfChannel *channel,
+                                                          XfdesktopBackdropManager *backdrop_manager,
                                                           GList *desktops,
                                                           GFile *folder);
 
