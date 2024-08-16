@@ -34,15 +34,17 @@ option(
 )
 
 option(
-  'windowing-systems',
-  type: 'array',
-  choices: [
-    'auto',
-    'wayland',
-    'x11',
-  ],
-  value: ['auto'],
-  description: 'List of windowing backends to support',
+  'x11',
+  type: 'feature',
+  value: 'auto',
+  description: 'Support for the X11 windowing system',
+)
+
+option(
+  'wayland',
+  type: 'feature',
+  value: 'auto',
+  description: 'Support for the Wayland windowing system',
 )
 
 option(

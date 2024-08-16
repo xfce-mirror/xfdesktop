@@ -53,13 +53,13 @@ thunarx = dependency('thunarx-3', version: dependency_versions['xfce4'], require
 libnotify = dependency('libnotify', version: dependency_versions['libnotify'], required: get_option('notifications'))
 
 # Feature windowing=x11
-libx11 = dependency('x11', version: dependency_versions['libx11'], required: get_option('windowing-systems').contains('x11'))
-gdk_x11 = dependency('gdk-x11-3.0', version: dependency_versions['gtk'], required: get_option('windowing-systems').contains('x11'))
-libxfce4windowing_x11 = dependency('libxfce4windowing-x11-0', version: dependency_versions['libxfce4windowing'], required: get_option('windowing-systems').contains('x11'))
+libx11 = dependency('x11', version: dependency_versions['libx11'], required: get_option('x11'))
+gdk_x11 = dependency('gdk-x11-3.0', version: dependency_versions['gtk'], required: get_option('x11'))
+libxfce4windowing_x11 = dependency('libxfce4windowing-x11-0', version: dependency_versions['libxfce4windowing'], required: get_option('x11'))
 
 # Feature windowing=wayland
-gdk_wayland = dependency('gdk-wayland-3.0', version: dependency_versions['gtk'], required: get_option('windowing-systems').contains('wayland'))
-gtk_layer_shell = dependency('gtk-layer-shell-0', version: dependency_versions['gtk-layer-shell'], required: get_option('windowing-systems').contains('wayland'))
+gdk_wayland = dependency('gdk-wayland-3.0', version: dependency_versions['gtk'], required: get_option('wayland'))
+gtk_layer_shell = dependency('gtk-layer-shell-0', version: dependency_versions['gtk-layer-shell'], required: get_option('wayland'))
 
 feature_cflags = []
 
