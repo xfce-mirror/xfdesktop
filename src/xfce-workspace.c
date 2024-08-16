@@ -449,7 +449,6 @@ xfce_workspace_migrate_backdrop_first_color(XfceWorkspace *workspace,
                                             XfceBackdrop *backdrop,
                                             guint monitor)
 {
-    XfconfChannel *channel = workspace->priv->channel;
     char buf[1024];
     GValue value = { 0, };
 
@@ -467,7 +466,7 @@ xfce_workspace_migrate_backdrop_first_color(XfceWorkspace *workspace,
 
     /* first color */
     g_strlcat(buf, "color1", sizeof(buf));
-    xfconf_channel_get_property(channel, buf, &value);
+    xfconf_channel_get_property(workspace->priv->channel, buf, &value);
 
     if(G_VALUE_HOLDS_BOXED(&value)) {
         xfce_workspace_set_xfconf_property_value(workspace, monitor, "color1", &value);
@@ -481,7 +480,6 @@ xfce_workspace_migrate_backdrop_second_color(XfceWorkspace *workspace,
                                              XfceBackdrop *backdrop,
                                              guint monitor)
 {
-    XfconfChannel *channel = workspace->priv->channel;
     char buf[1024];
     GValue value = { 0, };
 
@@ -499,7 +497,7 @@ xfce_workspace_migrate_backdrop_second_color(XfceWorkspace *workspace,
 
     /* second color */
     g_strlcat(buf, "color2", sizeof(buf));
-    xfconf_channel_get_property(channel, buf, &value);
+    xfconf_channel_get_property(workspace->priv->channel, buf, &value);
 
     if(G_VALUE_HOLDS_BOXED(&value)) {
         xfce_workspace_set_xfconf_property_value(workspace, monitor, "color2", &value);

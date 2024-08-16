@@ -2082,8 +2082,11 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     g_signal_connect(G_OBJECT(screen), "monitors-changed",
                      G_CALLBACK(cb_monitor_changed), panel);
 
-    appearance_gxml = gtk_builder_new_from_resource("/org/xfce/xfdesktop/settings/xfdesktop-settings-appearance-frame-ui.glade");
-    if (G_UNLIKELY(appearance_gxml == NULL)) {
+    appearance_gxml = gtk_builder_new();
+    if (gtk_builder_add_from_resource(appearance_gxml,
+                                      "/org/xfce/xfdesktop/settings/xfdesktop-settings-appearance-frame-ui.glade",
+                                      &error) == 0)
+    {
         g_printerr("Failed to parse appearance settings UI description: %s\n",
                    error->message);
         g_clear_error(&error);
@@ -2354,7 +2357,7 @@ static GOptionEntry option_entries[] = {
     { "socket-id", 's', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_INT, &opt_socket_id, N_("Settings manager socket"), N_("SOCKET ID") },
     { "version", 'V', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_version, N_("Version information"), NULL },
     { "enable-debug", 'e', G_OPTION_FLAG_IN_MAIN, G_OPTION_ARG_NONE, &opt_enable_debug, N_("Enable debug messages"), NULL },
-    { NULL, },
+    { NULL, '\0', 0, 0, NULL, NULL, NULL },
 };
 
 int
@@ -2409,8 +2412,8 @@ main(int argc, char **argv)
 
     xfdesktop_settings_ui_register_resource();
 
-    gxml = gtk_builder_new_from_resource("/org/xfce/xfdesktop/settings/xfdesktop-settings-ui.glade");
-    if (G_UNLIKELY(gxml == NULL)) {
+    gxml = gtk_builder_new();
+    if (gtk_builder_add_from_resource(gxml, "/org/xfce/xfdesktop/settings/xfdesktop-settings-ui.glade", &error) == 0) {
         g_printerr("Failed to parse UI description: %s\n", error->message);
         g_clear_error(&error);
         return 1;
