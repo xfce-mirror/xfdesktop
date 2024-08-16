@@ -774,15 +774,14 @@ xfdesktop_file_icon_menu_executed(GtkWidget *widget,
                                   gpointer user_data)
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
-    XfdesktopIcon *icon;
-    GList *selected;
 
-    selected = xfdesktop_file_icon_manager_get_selected_icons(fmanager);
-    g_return_if_fail(g_list_length(selected) == 1);
-    icon = XFDESKTOP_ICON(selected->data);
+    GList *selected = xfdesktop_file_icon_manager_get_selected_icons(fmanager);
+    if (selected != NULL && selected->next == NULL) {
+        XfdesktopIcon *icon = XFDESKTOP_ICON(selected->data);
+        xfdesktop_icon_activate(icon, GTK_WINDOW(gtk_widget_get_toplevel(GTK_WIDGET(fmanager->holder))));
+    }
+
     g_list_free(selected);
-
-    xfdesktop_icon_activate(icon, GTK_WINDOW(gtk_widget_get_toplevel(GTK_WIDGET(fmanager->holder))));
 }
 
 static void
@@ -1021,23 +1020,18 @@ xfdesktop_file_icon_menu_other_app(GtkWidget *widget,
                                    gpointer user_data)
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
-    XfdesktopFileIcon *icon;
-    GtkWidget *toplevel;
-    GList *selected;
-    GFile *file;
 
-    selected = xfdesktop_file_icon_manager_get_selected_icons(fmanager);
-    g_return_if_fail(g_list_length(selected) == 1);
-    icon = XFDESKTOP_FILE_ICON(selected->data);
+    GList *selected = xfdesktop_file_icon_manager_get_selected_icons(fmanager);
+    if (selected != NULL && selected->next == NULL) {
+        XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(selected->data);
+        GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(xfdesktop_icon_view_holder_get_icon_view(fmanager->holder)));
+        GFile *file = xfdesktop_file_icon_peek_file(icon);
+        xfdesktop_file_utils_display_app_chooser_dialog(file, TRUE, FALSE,
+                                                        fmanager->gscreen,
+                                                        GTK_WINDOW(toplevel));
+    }
+
     g_list_free(selected);
-
-    toplevel = gtk_widget_get_toplevel(GTK_WIDGET(xfdesktop_icon_view_holder_get_icon_view(fmanager->holder)));
-
-    file = xfdesktop_file_icon_peek_file(icon);
-
-    xfdesktop_file_utils_display_app_chooser_dialog(file, TRUE, FALSE,
-                                                    fmanager->gscreen,
-                                                    GTK_WINDOW(toplevel));
 }
 
 static void
@@ -1045,23 +1039,18 @@ xfdesktop_file_icon_menu_set_default_app(GtkWidget *widget,
                                          gpointer user_data)
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
-    XfdesktopFileIcon *icon;
-    GtkWidget *toplevel;
-    GList *selected;
-    GFile *file;
 
-    selected = xfdesktop_file_icon_manager_get_selected_icons(fmanager);
-    g_return_if_fail(g_list_length(selected) == 1);
-    icon = XFDESKTOP_FILE_ICON(selected->data);
+    GList *selected = xfdesktop_file_icon_manager_get_selected_icons(fmanager);
+    if (selected != NULL && selected->next == NULL) {
+        XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(selected->data);
+        GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(xfdesktop_icon_view_holder_get_icon_view(fmanager->holder)));
+        GFile *file = xfdesktop_file_icon_peek_file(icon);
+        xfdesktop_file_utils_display_app_chooser_dialog(file, TRUE, TRUE,
+                                                        fmanager->gscreen,
+                                                        GTK_WINDOW(toplevel));
+    }
+
     g_list_free(selected);
-
-    toplevel = gtk_widget_get_toplevel(GTK_WIDGET(xfdesktop_icon_view_holder_get_icon_view(fmanager->holder)));
-
-    file = xfdesktop_file_icon_peek_file(icon);
-
-    xfdesktop_file_utils_display_app_chooser_dialog(file, TRUE, TRUE,
-                                                fmanager->gscreen,
-                                                GTK_WINDOW(toplevel));
 }
 
 static void
@@ -1128,28 +1117,22 @@ xfdesktop_file_icon_menu_paste_into_folder(GtkWidget *widget,
                                            gpointer user_data)
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(user_data);
-    XfdesktopFileIcon *icon;
-    GFileInfo *info;
-    GFile *file;
-    GList *selected;
 
-    if(!fmanager || !XFDESKTOP_IS_FILE_ICON_MANAGER(fmanager))
+    if (widget == NULL || fmanager == NULL || !XFDESKTOP_IS_FILE_ICON_MANAGER(fmanager)) {
         return;
+    }
 
-    selected = xfdesktop_file_icon_manager_get_selected_icons(fmanager);
-    g_return_if_fail(g_list_length(selected) == 1);
-    icon = XFDESKTOP_FILE_ICON(selected->data);
+    GList *selected = xfdesktop_file_icon_manager_get_selected_icons(fmanager);
+    if (selected != NULL && selected->next == NULL) {
+        XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(selected->data);
+        GFileInfo *info = xfdesktop_file_icon_peek_file_info(icon);
+        if (info != NULL && g_file_info_get_file_type(info) == G_FILE_TYPE_DIRECTORY) {
+            GFile *file = xfdesktop_file_icon_peek_file(icon);
+            xfdesktop_clipboard_manager_paste_files(clipboard_manager, file, widget, NULL);
+        }
+    }
+
     g_list_free(selected);
-
-    info = xfdesktop_file_icon_peek_file_info(icon);
-
-    if(info == NULL || g_file_info_get_file_type(info) != G_FILE_TYPE_DIRECTORY)
-        return;
-
-    file = xfdesktop_file_icon_peek_file(icon);
-
-    if(widget)
-        xfdesktop_clipboard_manager_paste_files(clipboard_manager, file, widget, NULL);
 }
 
 static void
@@ -2629,7 +2612,7 @@ xfdesktop_file_icon_manager_key_press(GtkWidget *widget,
 
         case GDK_KEY_F2:
             selected_icons = xfdesktop_file_icon_manager_get_selected_icons(fmanager);
-            if (g_list_length(selected_icons) == 1) {
+            if (selected_icons != NULL && selected_icons->next == NULL) {
                 XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(selected_icons->data);
                 if(xfdesktop_file_icon_can_rename_file(icon)) {
                     xfdesktop_file_icon_menu_rename(NULL, fmanager);
