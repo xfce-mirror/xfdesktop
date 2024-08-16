@@ -186,7 +186,6 @@ menu_item_from_xfw_window(XfwWindow *xfw_window,
 {
     GtkWidget *mi, *img = NULL;
     gchar *title;
-    GString *label;
     GdkPixbuf *icon, *tmp = NULL;
     gint w, h;
     gboolean truncated = FALSE;
@@ -194,20 +193,6 @@ menu_item_from_xfw_window(XfwWindow *xfw_window,
     title = g_markup_escape_text(xfw_window_get_name(xfw_window), -1);
     if(!title)
         return NULL;
-
-    label = g_string_new(title);
-    g_free(title);
-
-    if (xfw_window_is_active(xfw_window)) {
-        g_string_prepend(label, "<b><i>");
-        g_string_append(label, "</i></b>");
-    }
-
-    /* add some padding to the right */
-    if(gtk_widget_get_default_direction() == GTK_TEXT_DIR_RTL)
-        g_string_prepend(label, "  ");
-    else
-        g_string_append(label, "  ");
 
     if(wl_show_icons) {
         cairo_surface_t *surface = NULL;
@@ -244,6 +229,20 @@ menu_item_from_xfw_window(XfwWindow *xfw_window,
             cairo_surface_destroy(surface);
         }
     }
+
+    GString *label = g_string_new(title);
+    g_free(title);
+
+    if (xfw_window_is_active(xfw_window)) {
+        g_string_prepend(label, "<b><i>");
+        g_string_append(label, "</i></b>");
+    }
+
+    /* add some padding to the right */
+    if(gtk_widget_get_default_direction() == GTK_TEXT_DIR_RTL)
+        g_string_prepend(label, "  ");
+    else
+        g_string_append(label, "  ");
 
     mi = xfdesktop_menu_create_menu_item_with_markup(label->str, img);
 
