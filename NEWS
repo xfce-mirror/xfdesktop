@@ -1,3 +1,71 @@
+4.19.3 (2024-08-16)
+======
+- Add false positives file for scan-build
+- Silence some scan-build warnings
+- Fix gcc-analyzer warnings
+- meson: use x11 & wayland option names, rather than windowing-systems
+- Fix broken icon sorting direction
+- Fix monitoring of folder icon files in subdirs
+- Rework the icon view grid sizing and placement code a bit
+- Fix long-standing memory leak in XfdesktopIconView
+- Make desktop folder loading cancellable
+- Fix default-backdrop-filename option for meson build
+- build: clang: Fix -Wcast-align
+- build: Fix -Werror=format=
+- Invalidate icon surface cache on icon theme change
+- Revert "Add CI builds for --disable-x11 and --disable-wayland"
+- Add missing menu separators
+- Fix invalid param flags
+- Fix some default settings not being applied on startup
+- Only redraw icon text when focus changes
+- Compute icon invalidation rect more generously
+- Only resize grid on size_allocate if the allocation actually changed
+- Resize icon grid if style changes affect slot/cell size
+- Don't invalidate the icon view pixbuf cache on style update
+- Be more precise in what gets redrawn
+- Clean up xfdesktop_volume_icon_menu_eject()
+- Fix safe removal for unmounted volumes
+- Icon view should not accept focus in order to reduce redraws
+- Fix xfdesktop no longer being saved as part of the session
+- Remove icon view manager's update_workarea vfunc
+- Move GdkScreen::size-changed handler to XfdesktopIconViewManager
+- Resize icon grid on size change even if we don't have our own window
+- Handle monitors-changed in the icon view manager
+- Resize and reposition icon view when workarea changes
+- Remove XfdesktopIconView's show-icons-on-primary property
+- Use 65% for the window icon opacity value
+- Clamp the icon opacity value where it actually needs to be used
+- Restore behavior where unmounted volume icons are drawn 50% opaque
+- Fix icon view not getting motion events
+- Fix build error when full debug enabled
+- Add meson build
+- Fix wrong property name for icons-on-primary
+- Reduce copy-paste duplication in XfdesktopRegularFileIcon
+- Simplify a bunch of code and reduce duplication in 
+XfdesktopApplication
+- Clear out XfdesktopApplication singleton pointer on finalize
+- Reduce duplicated code in app action init
+- Fix crash on startup with WM check, refactor
+- Start isolating X11 code as much as possible
+- Ensure workspaces are fully initialized on construction
+- Don't allow bg_surface to be NULL
+- Don't spuriously print that we're already running when starting up
+- Refactor the GApplication stuff
+- Fix warnings on --quit when xfdesktop isn't running
+- Avoid a critical warning depending on init order
+- Translation Updates:
+  Albanian, Amharic, Arabic, Armenian (Armenia), Asturian, Azerbaijani,
+  Basque, Belarusian, Belarusian (Tarask), Bulgarian, Catalan, Chinese
+  (China), Chinese (Hong Kong), Chinese (Taiwan), Croatian, Czech,
+  Danish, Dutch, Eastern Armenian, English (Australia), English
+  (Canada), English (United Kingdom), Estonian, Finnish, French,
+  Galician, Georgian, German, Greek, Hebrew, Hungarian, Icelandic,
+  Indonesian, Interlingue, Italian, Japanese, Kazakh, Korean,
+  Lithuanian, Malay, Norwegian Bokmål, Norwegian Nynorsk, Occitan
+  (post 1500), Persian (Iran), Polish, Portuguese, Portuguese (Brazil),
+  Romanian, Russian, Serbian, Slovak, Slovenian, Spanish, Swedish,
+  Thai, Ukrainian, Uyghur, Uzbek
+
 4.19.2 (2024-03-17)
 ======
 - Fix critical warning when disabling window icons
