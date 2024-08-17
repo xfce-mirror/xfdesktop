@@ -20,7 +20,7 @@ m4_define([cairo_minimum_version], [1.16])
 m4_define([gtk_layer_shell_minimum_version], [0.7.0])
 
 dnl version info
-XDT_VERSION_INIT([4.19.3])
+XDT_VERSION_INIT([4.19.3], [git])
 m4_define([xfdesktop_version_short], [xdt_version_major].[xdt_version_minor])
 
 dnl init autoconf
