@@ -103,12 +103,6 @@ static void xfdesktop_window_icon_model_item_free(XfdesktopIconViewModel *ivmode
 static void window_opened(XfwScreen *screen,
                           XfwWindow *window,
                           XfdesktopWindowIconModel *wmodel);
-static void window_state_changed(XfwWindow *window,
-                                 XfwWindowState changed_mask,
-                                 XfwWindowState new_state,
-                                 XfdesktopWindowIconModel *wmodel);
-static void window_closed(XfwWindow *window,
-                          XfdesktopWindowIconModel *wmodel);
 
 
 G_DEFINE_TYPE_WITH_CODE(XfdesktopWindowIconModel,
@@ -299,23 +293,8 @@ xfdesktop_window_icon_model_item_free(XfdesktopIconViewModel *ivmodel,
 }
 
 static void
-window_opened(XfwScreen *screen, XfwWindow *window, XfdesktopWindowIconModel *wmodel) {
-    g_signal_connect_swapped(window, "name-changed",
-                             G_CALLBACK(xfdesktop_window_icon_model_changed), wmodel);
-    g_signal_connect_swapped(window, "icon-changed",
-                             G_CALLBACK(xfdesktop_window_icon_model_changed), wmodel);
-    g_signal_connect_swapped(window, "workspace-changed",
-                             G_CALLBACK(xfdesktop_window_icon_model_changed), wmodel);
-    g_signal_connect(window, "state-changed",
-                     G_CALLBACK(window_state_changed), wmodel);
-    g_signal_connect(window, "closed",
-                     G_CALLBACK(window_closed), wmodel);
-
-    ModelItem *model_item = model_item_new(window);
-    GtkTreeIter iter;
-    xfdesktop_icon_view_model_append(XFDESKTOP_ICON_VIEW_MODEL(wmodel), window, model_item, &iter);
-
-    DBG("added window \"%s\"", xfw_window_get_name(window));
+window_monitors_changed(XfwWindow *window, GParamSpec *pspec, XfdesktopWindowIconModel *wmodel) {
+    xfdesktop_window_icon_model_changed(wmodel, window);
 }
 
 static void
@@ -332,6 +311,28 @@ window_state_changed(XfwWindow *window,
 static void
 window_closed(XfwWindow *window, XfdesktopWindowIconModel *wmodel) {
     xfdesktop_icon_view_model_remove(XFDESKTOP_ICON_VIEW_MODEL(wmodel), window);
+}
+
+static void
+window_opened(XfwScreen *screen, XfwWindow *window, XfdesktopWindowIconModel *wmodel) {
+    g_signal_connect_swapped(window, "name-changed",
+                             G_CALLBACK(xfdesktop_window_icon_model_changed), wmodel);
+    g_signal_connect_swapped(window, "icon-changed",
+                             G_CALLBACK(xfdesktop_window_icon_model_changed), wmodel);
+    g_signal_connect_swapped(window, "workspace-changed",
+                             G_CALLBACK(xfdesktop_window_icon_model_changed), wmodel);
+    g_signal_connect(window, "notify::monitors",
+                             G_CALLBACK(window_monitors_changed), wmodel);
+    g_signal_connect(window, "state-changed",
+                     G_CALLBACK(window_state_changed), wmodel);
+    g_signal_connect(window, "closed",
+                     G_CALLBACK(window_closed), wmodel);
+
+    ModelItem *model_item = model_item_new(window);
+    GtkTreeIter iter;
+    xfdesktop_icon_view_model_append(XFDESKTOP_ICON_VIEW_MODEL(wmodel), window, model_item, &iter);
+
+    DBG("added window \"%s\"", xfw_window_get_name(window));
 }
 
 XfdesktopWindowIconModel *
