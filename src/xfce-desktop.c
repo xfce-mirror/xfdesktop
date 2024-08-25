@@ -1002,6 +1002,8 @@ xfce_desktop_update_monitor(XfceDesktop *desktop, XfwMonitor *monitor) {
             xfce_desktop_place_on_monitor(desktop);
             fetch_backdrop(desktop);
         }
+
+        g_object_notify(G_OBJECT(desktop), "monitor");
     }
 
 }
