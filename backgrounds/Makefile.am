@@ -13,4 +13,6 @@ backgrounds_DATA = \
     xfce-leaves.svg
 
 
-EXTRA_DIST = $(backgrounds_DATA)
+EXTRA_DIST = \
+	$(backgrounds_DATA) \
+	LICENSE.md
