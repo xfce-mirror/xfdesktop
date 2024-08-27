@@ -15,4 +15,4 @@ backgrounds_DATA = \
 
 EXTRA_DIST = \
 	$(backgrounds_DATA) \
-	LICENSE.md
+	README.md
