@@ -1,9 +1,9 @@
 install_data(
   [
     'xfce-blue.jpg',
-    'xfce-stripes.png',
-    'xfce-verticals.png',
-    'xfce-teal.jpg',
+    'xfce-stripes.svg',
+    'xfce-verticals.svg',
+    'xfce-teal.svg',
     'xfce-shapes.svg',
     'xfce-flower.svg',
     'xfce-leaves.svg',
