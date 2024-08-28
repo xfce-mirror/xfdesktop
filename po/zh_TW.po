@@ -4,7 +4,7 @@
 # 
 # Translators:
 # Ambrose Li <acli@ada.dhs.org>, 2004
-# Bill Chang, 2022-2023
+# anenasa, 2022-2023
 # pan93412 <pan93412@gmail.com>, 2018
 # Cheng-Chia Tseng <pswo10680@gmail.com>, 2010,2013
 # D Dong <dongdahui@mail.cjcu.edu.tw>, 2023
@@ -21,9 +21,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-03-18 12:53+0100\n"
+"POT-Creation-Date: 2024-08-28 01:02+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
-"Last-Translator: Bill Chang, 2022-2023\n"
+"Last-Translator: anenasa, 2022-2023\n"
 "Language-Team: Chinese (Taiwan) (http://app.transifex.com/xfce/xfdesktop/language/zh_TW/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -136,27 +136,27 @@ msgid "Arrange icons"
 msgstr "排列圖示"
 
 #. printf is to be translator-friendly
-#: settings/main.c:1959 src/xfdesktop-file-icon-manager.c:1159
-#: src/xfdesktop-file-icon-manager.c:1759
+#: settings/main.c:1959 src/xfdesktop-file-icon-manager.c:1164
+#: src/xfdesktop-file-icon-manager.c:1764
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "無法啟動「%s」："
 
-#: settings/main.c:1960 src/xfdesktop-file-icon-manager.c:1161
-#: src/xfdesktop-file-icon-manager.c:1512
-#: src/xfdesktop-file-icon-manager.c:1760 src/xfdesktop-file-utils.c:555
+#: settings/main.c:1960 src/xfdesktop-file-icon-manager.c:1166
+#: src/xfdesktop-file-icon-manager.c:1517
+#: src/xfdesktop-file-icon-manager.c:1765 src/xfdesktop-file-utils.c:555
 #: src/xfdesktop-file-utils.c:1222 src/xfdesktop-file-utils.c:1247
 #: src/xfdesktop-file-utils.c:1354 src/xfdesktop-file-utils.c:1418
 msgid "Launch Error"
 msgstr "啟動發生錯誤"
 
 #: settings/main.c:1962 settings/xfdesktop-settings-ui.glade:198
-#: src/xfdesktop-file-icon-manager.c:913 src/xfdesktop-file-icon-manager.c:932
-#: src/xfdesktop-file-icon-manager.c:1031
-#: src/xfdesktop-file-icon-manager.c:1163
-#: src/xfdesktop-file-icon-manager.c:1516
-#: src/xfdesktop-file-icon-manager.c:1762
-#: src/xfdesktop-file-icon-manager.c:3381 src/xfdesktop-file-utils.c:558
+#: src/xfdesktop-file-icon-manager.c:918 src/xfdesktop-file-icon-manager.c:937
+#: src/xfdesktop-file-icon-manager.c:1036
+#: src/xfdesktop-file-icon-manager.c:1168
+#: src/xfdesktop-file-icon-manager.c:1521
+#: src/xfdesktop-file-icon-manager.c:1767
+#: src/xfdesktop-file-icon-manager.c:3408 src/xfdesktop-file-utils.c:558
 #: src/xfdesktop-file-utils.c:676 src/xfdesktop-file-utils.c:731
 #: src/xfdesktop-file-utils.c:795 src/xfdesktop-file-utils.c:856
 #: src/xfdesktop-file-utils.c:917 src/xfdesktop-file-utils.c:965
@@ -164,64 +164,64 @@ msgstr "啟動發生錯誤"
 #: src/xfdesktop-file-utils.c:1165 src/xfdesktop-file-utils.c:1226
 #: src/xfdesktop-file-utils.c:1249 src/xfdesktop-file-utils.c:1358
 #: src/xfdesktop-file-utils.c:1422 src/xfdesktop-file-utils.c:1493
-#: src/xfdesktop-file-utils.c:1563 src/xfdesktop-volume-icon.c:461
-#: src/xfdesktop-volume-icon.c:505 src/xfdesktop-volume-icon.c:587
+#: src/xfdesktop-file-utils.c:1563 src/xfdesktop-volume-icon.c:468
+#: src/xfdesktop-volume-icon.c:512 src/xfdesktop-volume-icon.c:594
 msgid "_Close"
 msgstr "關閉(_C)"
 
-#: settings/main.c:2131
+#: settings/main.c:2134
 msgid "Image files"
 msgstr "影像檔案"
 
 #. Change the title of the file chooser dialog
-#: settings/main.c:2139
+#: settings/main.c:2142
 msgid "Select a Directory"
 msgstr "選取目錄"
 
-#: settings/main.c:2354
+#: settings/main.c:2357
 msgid "Settings manager socket"
 msgstr "設定值管理員 socket"
 
-#: settings/main.c:2354
+#: settings/main.c:2357
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: settings/main.c:2355
+#: settings/main.c:2358
 msgid "Version information"
 msgstr "版本資訊"
 
-#: settings/main.c:2356 src/xfdesktop-application.c:209
+#: settings/main.c:2359 src/xfdesktop-application.c:200
 msgid "Enable debug messages"
 msgstr "啟用除錯訊息"
 
-#: settings/main.c:2380
+#: settings/main.c:2383
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "輸入 '%s --help' 以瞭解用法。"
 
-#: settings/main.c:2392
+#: settings/main.c:2395
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce 開發團隊。保留所有權利。"
 
-#: settings/main.c:2393
+#: settings/main.c:2396
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "請回報程式錯誤至 <%s>。"
 
-#: settings/main.c:2400
+#: settings/main.c:2403
 msgid "Desktop Settings"
 msgstr "桌面設定"
 
-#: settings/main.c:2402
+#: settings/main.c:2405
 msgid "Unable to contact settings server"
 msgstr "無法聯絡設定值伺服器"
 
-#: settings/main.c:2404
+#: settings/main.c:2407
 msgid "Quit"
 msgstr "結束"
 
 #: settings/xfce-backdrop-settings.desktop.in:4
-#: settings/xfdesktop-settings-ui.glade:162 src/xfce-desktop.c:991
+#: settings/xfdesktop-settings-ui.glade:162 src/xfce-desktop.c:984
 msgid "Desktop"
 msgstr "桌面"
 
@@ -657,293 +657,293 @@ msgstr "您是否真想移除工作區「%s」？"
 msgid "Remove"
 msgstr "移除"
 
-#: src/windowlist.c:312
+#: src/windowlist.c:311
 msgid "Window List"
 msgstr "視窗清單"
 
-#: src/windowlist.c:357
+#: src/windowlist.c:356
 #, c-format
 msgid "<b>Group %d, Workspace %d</b>"
 msgstr "<b>群組 %d，工作區 %d</b>"
 
-#: src/windowlist.c:359
+#: src/windowlist.c:358
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>工作區 %d</b>"
 
-#: src/windowlist.c:449 src/windowlist.c:451
+#: src/windowlist.c:448 src/windowlist.c:450
 msgid "_Add Workspace"
 msgstr "新增工作區(_A)"
 
-#: src/windowlist.c:465
+#: src/windowlist.c:464
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "移除工作區 %d (_R)"
 
-#: src/windowlist.c:468
+#: src/windowlist.c:467
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "移除工作區「%s」(_R)"
 
-#: src/xfdesktop-application.c:201
+#: src/xfdesktop-application.c:192
 msgid "Display version information"
 msgstr "顯示版本資訊"
 
-#: src/xfdesktop-application.c:202
+#: src/xfdesktop-application.c:193
 msgid "Reload all settings"
 msgstr "重新載入所有設定值"
 
-#: src/xfdesktop-application.c:203
+#: src/xfdesktop-application.c:194
 msgid "Advance to the next wallpaper on the current workspace"
 msgstr "在目前工作區前進至下個桌布"
 
-#: src/xfdesktop-application.c:204
+#: src/xfdesktop-application.c:195
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "彈出選單 (於目前滑鼠位置)"
 
-#: src/xfdesktop-application.c:205
+#: src/xfdesktop-application.c:196
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "彈出視窗清單 (於目前滑鼠位置)"
 
-#: src/xfdesktop-application.c:207
+#: src/xfdesktop-application.c:198
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "自動排列桌面上的所有圖示"
 
-#: src/xfdesktop-application.c:210
+#: src/xfdesktop-application.c:201
 msgid "Disable debug messages"
 msgstr "停用除錯訊息"
 
-#: src/xfdesktop-application.c:212
+#: src/xfdesktop-application.c:203
 msgid "Do not wait for a window manager on startup"
 msgstr "初始啟動時不要等待視窗管理員"
 
-#: src/xfdesktop-application.c:214
+#: src/xfdesktop-application.c:205
 msgid "Cause xfdesktop to quit"
 msgstr "導致 xfdesktop 退出"
 
-#: src/xfdesktop-application.c:782
+#: src/xfdesktop-application.c:691
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "這是 %s 版本 %s，運行於 Xfce %s。\n"
 
-#: src/xfdesktop-application.c:784
+#: src/xfdesktop-application.c:693
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "依 GTK+ %d.%d.%d 建置，以 GTK+ %d.%d.%d 連結。"
 
-#: src/xfdesktop-application.c:788
+#: src/xfdesktop-application.c:697
 msgid "Build options:\n"
 msgstr "建置選項：\n"
 
-#: src/xfdesktop-application.c:789
+#: src/xfdesktop-application.c:698
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "桌面選單：%s\n"
 
-#: src/xfdesktop-application.c:791 src/xfdesktop-application.c:798
-#: src/xfdesktop-application.c:805
+#: src/xfdesktop-application.c:700 src/xfdesktop-application.c:707
+#: src/xfdesktop-application.c:714
 msgid "enabled"
 msgstr "已啟用"
 
-#: src/xfdesktop-application.c:793 src/xfdesktop-application.c:800
-#: src/xfdesktop-application.c:807
+#: src/xfdesktop-application.c:702 src/xfdesktop-application.c:709
+#: src/xfdesktop-application.c:716
 msgid "disabled"
 msgstr "已停用"
 
-#: src/xfdesktop-application.c:796
+#: src/xfdesktop-application.c:705
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "桌面圖示：%s\n"
 
-#: src/xfdesktop-application.c:803
+#: src/xfdesktop-application.c:712
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "桌面檔案圖示：%s\n"
 
-#: src/xfdesktop-file-icon-manager.c:905 src/xfdesktop-file-icon-manager.c:923
+#: src/xfdesktop-file-icon-manager.c:910 src/xfdesktop-file-icon-manager.c:928
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
 msgstr "無法建立桌面資料夾「%s」"
 
-#: src/xfdesktop-file-icon-manager.c:910 src/xfdesktop-file-icon-manager.c:928
+#: src/xfdesktop-file-icon-manager.c:915 src/xfdesktop-file-icon-manager.c:933
 msgid "Desktop Folder Error"
 msgstr "桌面資料夾發生錯誤"
 
-#: src/xfdesktop-file-icon-manager.c:930
+#: src/xfdesktop-file-icon-manager.c:935
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr "已存在相同名稱的正常檔案。請刪除或是重新命名。"
 
-#: src/xfdesktop-file-icon-manager.c:1028 src/xfdesktop-file-utils.c:727
+#: src/xfdesktop-file-icon-manager.c:1033 src/xfdesktop-file-utils.c:727
 #: src/xfdesktop-file-utils.c:791
 msgid "Rename Error"
 msgstr "重新命名發生錯誤"
 
-#: src/xfdesktop-file-icon-manager.c:1029 src/xfdesktop-file-utils.c:792
+#: src/xfdesktop-file-icon-manager.c:1034 src/xfdesktop-file-utils.c:792
 msgid "The files could not be renamed"
 msgstr "無法重新命名檔案"
 
-#: src/xfdesktop-file-icon-manager.c:1030
+#: src/xfdesktop-file-icon-manager.c:1035
 msgid "None of the icons selected support being renamed."
 msgstr "選取的圖示皆不支援重新命名功能。"
 
-#: src/xfdesktop-file-icon-manager.c:1359
+#: src/xfdesktop-file-icon-manager.c:1364
 msgid ""
 "This will reorder all desktop items and place them on different screen positions.\n"
 "Are you sure?"
 msgstr "這會重新排序所有桌面項目，將它們放在螢幕不同的位置。\n您確定嗎？"
 
-#: src/xfdesktop-file-icon-manager.c:1363
+#: src/xfdesktop-file-icon-manager.c:1368
 msgid "_OK"
 msgstr "確定(_O)"
 
-#: src/xfdesktop-file-icon-manager.c:1438
+#: src/xfdesktop-file-icon-manager.c:1443
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "以「%s」開啟(_O)"
 
-#: src/xfdesktop-file-icon-manager.c:1441
+#: src/xfdesktop-file-icon-manager.c:1446
 #, c-format
 msgid "Open With \"%s\""
 msgstr "以「%s」開啟"
 
-#: src/xfdesktop-file-icon-manager.c:1514
+#: src/xfdesktop-file-icon-manager.c:1519
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr "無法啟動「exo-desktop-item-edit」，此為建立及編輯桌面啟動器和連結所必需。"
 
-#: src/xfdesktop-file-icon-manager.c:1878
+#: src/xfdesktop-file-icon-manager.c:1883
 msgid "_Open all"
 msgstr "開啟全部(_O)"
 
-#: src/xfdesktop-file-icon-manager.c:1898
+#: src/xfdesktop-file-icon-manager.c:1903
 msgid "Create _Launcher..."
 msgstr "建立啟動器(_L)..."
 
-#: src/xfdesktop-file-icon-manager.c:1912
+#: src/xfdesktop-file-icon-manager.c:1917
 msgid "Create _URL Link..."
 msgstr "建立 URL 連結(_U)..."
 
-#: src/xfdesktop-file-icon-manager.c:1926
+#: src/xfdesktop-file-icon-manager.c:1931
 msgid "Create _Folder..."
 msgstr "建立資料夾(_F)..."
 
-#: src/xfdesktop-file-icon-manager.c:1938
+#: src/xfdesktop-file-icon-manager.c:1943
 msgid "Create _Document"
 msgstr "建立文件(_D)"
 
-#: src/xfdesktop-file-icon-manager.c:1963
+#: src/xfdesktop-file-icon-manager.c:1968
 msgid "No templates installed"
 msgstr "未安裝模版"
 
-#: src/xfdesktop-file-icon-manager.c:1979
+#: src/xfdesktop-file-icon-manager.c:1984
 msgid "_Empty File"
 msgstr "空檔案(_E)"
 
-#: src/xfdesktop-file-icon-manager.c:1989
+#: src/xfdesktop-file-icon-manager.c:1994
 msgid "_Open All"
 msgstr "開啟全部(_O)"
 
-#: src/xfdesktop-file-icon-manager.c:1989
-#: src/xfdesktop-special-file-icon.c:478 src/xfdesktop-volume-icon.c:833
+#: src/xfdesktop-file-icon-manager.c:1994
+#: src/xfdesktop-special-file-icon.c:478 src/xfdesktop-volume-icon.c:830
 msgid "_Open"
 msgstr "開啟(_O)"
 
-#: src/xfdesktop-file-icon-manager.c:2006
+#: src/xfdesktop-file-icon-manager.c:2011
 msgid "_Execute"
 msgstr "執行(_E)"
 
-#: src/xfdesktop-file-icon-manager.c:2024
-msgid "_Edit Launcher"
-msgstr "編輯啟動器(_E)"
+#: src/xfdesktop-file-icon-manager.c:2029
+msgid "Edit _Launcher"
+msgstr "編輯啟動器(_L)"
 
-#: src/xfdesktop-file-icon-manager.c:2083
-msgid "Open With"
-msgstr "開啟程式"
+#: src/xfdesktop-file-icon-manager.c:2088
+msgid "Ope_n With"
+msgstr "開啟程式(_N)"
 
-#: src/xfdesktop-file-icon-manager.c:2110
-#: src/xfdesktop-file-icon-manager.c:2135
-msgid "Open With Other _Application..."
-msgstr "以其它應用程式開啟(_A)..."
+#: src/xfdesktop-file-icon-manager.c:2115
+#: src/xfdesktop-file-icon-manager.c:2144
+msgid "Ope_n With Other Application..."
+msgstr "使用其他應用程式開啟(_N)……"
 
-#: src/xfdesktop-file-icon-manager.c:2121
-msgid "Set _Default Application..."
-msgstr "設定預設應用程式……(_D)"
+#: src/xfdesktop-file-icon-manager.c:2130
+msgid "Set Defa_ult Application..."
+msgstr "設定預設應用程式(_U)……"
 
-#: src/xfdesktop-file-icon-manager.c:2153
+#: src/xfdesktop-file-icon-manager.c:2162
 msgid "_Paste"
 msgstr "貼上(_P)"
 
-#: src/xfdesktop-file-icon-manager.c:2171
+#: src/xfdesktop-file-icon-manager.c:2180
 msgid "Cu_t"
 msgstr "剪下(_T)"
 
-#: src/xfdesktop-file-icon-manager.c:2183
+#: src/xfdesktop-file-icon-manager.c:2192
 msgid "_Copy"
 msgstr "複製(_C)"
 
-#: src/xfdesktop-file-icon-manager.c:2195
+#: src/xfdesktop-file-icon-manager.c:2204
 msgid "Paste Into Folder"
 msgstr "貼進資料夾"
 
-#: src/xfdesktop-file-icon-manager.c:2214
+#: src/xfdesktop-file-icon-manager.c:2223
 msgid "Mo_ve to Trash"
 msgstr "丟到垃圾桶(_V)"
 
-#: src/xfdesktop-file-icon-manager.c:2227
+#: src/xfdesktop-file-icon-manager.c:2236
 msgid "_Delete"
 msgstr "刪除(_D)"
 
-#: src/xfdesktop-file-icon-manager.c:2245
+#: src/xfdesktop-file-icon-manager.c:2254
 msgid "_Rename..."
 msgstr "重新命名(_R)..."
 
-#: src/xfdesktop-file-icon-manager.c:2308
+#: src/xfdesktop-file-icon-manager.c:2324
 msgid "_Open in New Window"
 msgstr "於新視窗內開啟(_O)"
 
-#: src/xfdesktop-file-icon-manager.c:2317
+#: src/xfdesktop-file-icon-manager.c:2333
 msgid "Arrange Desktop _Icons"
 msgstr "重新排列桌面圖示(_I)"
 
-#: src/xfdesktop-file-icon-manager.c:2328
+#: src/xfdesktop-file-icon-manager.c:2344
 msgid "_Next Background"
 msgstr "下一個背景(_N)"
 
-#: src/xfdesktop-file-icon-manager.c:2338
+#: src/xfdesktop-file-icon-manager.c:2359
 msgid "Desktop _Settings..."
 msgstr "桌面設定(_S)..."
 
-#: src/xfdesktop-file-icon-manager.c:2346 src/xfdesktop-volume-icon.c:900
-msgid "P_roperties..."
-msgstr "屬性(_R)..."
+#: src/xfdesktop-file-icon-manager.c:2367 src/xfdesktop-volume-icon.c:897
+msgid "_Properties..."
+msgstr "屬性(_P)..."
 
-#: src/xfdesktop-file-icon-manager.c:3378
+#: src/xfdesktop-file-icon-manager.c:3405
 msgid "Load Error"
 msgstr "載入發生錯誤"
 
-#: src/xfdesktop-file-icon-manager.c:3380
+#: src/xfdesktop-file-icon-manager.c:3407
 msgid "Failed to load the desktop folder"
 msgstr "無法載入桌面資料夾"
 
-#: src/xfdesktop-file-icon-manager.c:3785
+#: src/xfdesktop-file-icon-manager.c:3819
 msgid "Copy _Here"
 msgstr "複製到這裡(_H)"
 
-#: src/xfdesktop-file-icon-manager.c:3785
+#: src/xfdesktop-file-icon-manager.c:3819
 msgid "_Move Here"
 msgstr "移動到這裡(_M)"
 
-#: src/xfdesktop-file-icon-manager.c:3785
+#: src/xfdesktop-file-icon-manager.c:3819
 msgid "_Link Here"
 msgstr "連結到這裡(_L)"
 
-#: src/xfdesktop-file-icon-manager.c:3820
+#: src/xfdesktop-file-icon-manager.c:3854
 msgid "_Cancel"
 msgstr "取消(_C)"
 
-#: src/xfdesktop-file-icon-manager.c:3962
+#: src/xfdesktop-file-icon-manager.c:3996
 msgid "Untitled document"
 msgstr "未命名的文件"
 
@@ -1128,7 +1128,7 @@ msgstr "裝置「%s」正在退出。這可能會花上一些時間"
 msgid "Eject Finished"
 msgstr "退出完成"
 
-#: src/xfdesktop-regular-file-icon.c:745
+#: src/xfdesktop-regular-file-icon.c:737
 #, c-format
 msgid ""
 "Name: %s\n"
@@ -1162,15 +1162,15 @@ msgstr "%s\n大小：%s\n上次修改：%s"
 msgid "_Empty Trash"
 msgstr "清空垃圾桶(_E)"
 
-#: src/xfdesktop-volume-icon.c:413
+#: src/xfdesktop-volume-icon.c:420
 msgid "(not mounted)"
 msgstr "（未掛載）"
 
-#: src/xfdesktop-volume-icon.c:414 src/xfdesktop-volume-icon.c:415
+#: src/xfdesktop-volume-icon.c:421 src/xfdesktop-volume-icon.c:422
 msgid "(unknown)"
 msgstr "(不明)"
 
-#: src/xfdesktop-volume-icon.c:419
+#: src/xfdesktop-volume-icon.c:426
 #, c-format
 msgid ""
 "Name: %s\n"
@@ -1180,52 +1180,52 @@ msgid ""
 "Free Space: %s"
 msgstr "名稱：%s\n類型：%s\n掛載於：%s\n大小：%s\n可用空間：%s"
 
-#: src/xfdesktop-volume-icon.c:421
+#: src/xfdesktop-volume-icon.c:428
 msgid "Removable Volume"
 msgstr "可移除式儲存裝置"
 
-#: src/xfdesktop-volume-icon.c:454 src/xfdesktop-volume-icon.c:498
+#: src/xfdesktop-volume-icon.c:461 src/xfdesktop-volume-icon.c:505
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "無法退出「%s」"
 
-#: src/xfdesktop-volume-icon.c:459 src/xfdesktop-volume-icon.c:503
+#: src/xfdesktop-volume-icon.c:466 src/xfdesktop-volume-icon.c:510
 msgid "Eject Failed"
 msgstr "退出失敗"
 
-#: src/xfdesktop-volume-icon.c:582
+#: src/xfdesktop-volume-icon.c:589
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "無法掛載「%s」"
 
-#: src/xfdesktop-volume-icon.c:585
+#: src/xfdesktop-volume-icon.c:592
 msgid "Mount Failed"
 msgstr "掛載失敗"
 
-#: src/xfdesktop-volume-icon.c:859
-msgid "_Safely Remove Volume"
-msgstr "安全移除儲存裝置(_S)"
+#: src/xfdesktop-volume-icon.c:856
+msgid "Safely _Remove Volume"
+msgstr ""
 
-#: src/xfdesktop-volume-icon.c:862
+#: src/xfdesktop-volume-icon.c:859
 msgid "_Disconnect Volume"
 msgstr "儲存裝置中斷連線(_D)"
 
-#: src/xfdesktop-volume-icon.c:865
-msgid "_Stop the Multi-Disk Drive"
-msgstr "停止多磁碟馬達(_S)"
+#: src/xfdesktop-volume-icon.c:862
+msgid "Stop the _Multi-Disk Drive"
+msgstr "停止多碟片磁碟機"
 
-#: src/xfdesktop-volume-icon.c:868
+#: src/xfdesktop-volume-icon.c:865
 msgid "_Lock Volume"
 msgstr "鎖定儲存裝置(_L)"
 
-#: src/xfdesktop-volume-icon.c:871
-msgid "E_ject Volume"
-msgstr "退出儲存裝置(_J)"
+#: src/xfdesktop-volume-icon.c:868
+msgid "_Eject Volume"
+msgstr ""
 
-#: src/xfdesktop-volume-icon.c:880
+#: src/xfdesktop-volume-icon.c:877
 msgid "_Unmount Volume"
 msgstr "卸載儲存裝置(_U)"
 
-#: src/xfdesktop-volume-icon.c:887
+#: src/xfdesktop-volume-icon.c:884
 msgid "_Mount Volume"
 msgstr "掛載儲存裝置(_M)"
