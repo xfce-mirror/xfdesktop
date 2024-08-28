@@ -557,6 +557,30 @@ maybe_migrate_image_show(XfconfChannel *channel,
     }
 }
 
+static void
+fixup_image_filename(XfconfChannel *channel, const gchar *property_name, const GValue *value) {
+    static const gchar *to_svg[] = {
+        BACKGROUNDS_DIR "/xfce-stripes.png",
+        BACKGROUNDS_DIR "/xfce-teal.png",
+        BACKGROUNDS_DIR "/xfce-verticals.png",
+    };
+
+    if (g_str_has_suffix(property_name, "/last-image") && G_VALUE_HOLDS_STRING(value)) {
+        const gchar *filename = g_value_get_string(value);
+        for (gsize i = 0; i < G_N_ELEMENTS(to_svg); ++i) {
+            if (g_strcmp0(filename, to_svg[i]) == 0) {
+                gchar *new_filename = g_strdup(filename);
+                gsize len = strlen(new_filename);
+                memcpy(&new_filename[len - 3], "svg", 3);
+
+                xfconf_channel_set_string(channel, property_name, new_filename);
+                g_free(new_filename);
+
+                break;
+            }
+        }
+    }
+}
 
 // NB: this can only successfully migrate for monitors that are currently plugged in
 void
@@ -627,6 +651,14 @@ xfdesktop_migrate_backdrop_settings(GdkDisplay *display, XfconfChannel *channel)
             }
         }
 
+        g_hash_table_destroy(backdrop_properties);
+
+        // Fetch them again because the names of properties may have changed
+        backdrop_properties = xfconf_channel_get_properties(channel, "/backdrop");
+        g_hash_table_iter_init(&iter, backdrop_properties);
+        while (g_hash_table_iter_next(&iter, (gpointer)&name, (gpointer)&value)) {
+            fixup_image_filename(channel,name, value);
+        }
         g_hash_table_destroy(backdrop_properties);
     }
 
