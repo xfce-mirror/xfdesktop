@@ -70,6 +70,8 @@ desktop_file_icon_sources = \
 	xfdesktop-file-icon-manager.h \
 	xfdesktop-file-icon-model.c \
 	xfdesktop-file-icon-model.h \
+	xfdesktop-file-icon-model-filter.c \
+	xfdesktop-file-icon-model-filter.h \
 	xfdesktop-file-utils.c \
 	xfdesktop-file-utils.h \
 	xfdesktop-regular-file-icon.c \
