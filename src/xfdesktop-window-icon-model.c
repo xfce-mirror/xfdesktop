@@ -322,7 +322,7 @@ window_opened(XfwScreen *screen, XfwWindow *window, XfdesktopWindowIconModel *wm
     g_signal_connect_swapped(window, "workspace-changed",
                              G_CALLBACK(xfdesktop_window_icon_model_changed), wmodel);
     g_signal_connect(window, "notify::monitors",
-                             G_CALLBACK(window_monitors_changed), wmodel);
+                     G_CALLBACK(window_monitors_changed), wmodel);
     g_signal_connect(window, "state-changed",
                      G_CALLBACK(window_state_changed), wmodel);
     g_signal_connect(window, "closed",
