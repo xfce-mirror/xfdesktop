@@ -67,14 +67,6 @@ xfdesktop_icon_view_holder_finalize(GObject *object) {
 
     g_signal_handlers_disconnect_by_data(holder->monitor, holder);
 
-#ifdef ENABLE_X11
-    if (xfw_windowing_get() == XFW_WINDOWING_X11) {
-        g_signal_handlers_disconnect_by_data(holder->screen, holder);
-        XfwMonitor *monitor = xfce_desktop_get_monitor(holder->desktop);
-        g_signal_handlers_disconnect_by_data(monitor, holder);
-    }
-#endif
-
     gtk_widget_destroy(holder->container);
 
     G_OBJECT_CLASS(xfdesktop_icon_view_holder_parent_class)->finalize(object);
@@ -83,12 +75,11 @@ xfdesktop_icon_view_holder_finalize(GObject *object) {
 #ifdef ENABLE_X11
 static void
 update_x11_icon_view_geometry(XfdesktopIconViewHolder *holder) {
-    XfwMonitor *monitor = xfce_desktop_get_monitor(holder->desktop);
     GdkRectangle new_workarea = { 0, };
-    xfw_monitor_get_workarea(monitor, &new_workarea);
+    xfw_monitor_get_workarea(holder->monitor, &new_workarea);
 
     DBG("new monitor %s workarea: %dx%d+%d+%d",
-        xfw_monitor_get_connector(monitor),
+        xfw_monitor_get_connector(holder->monitor),
         new_workarea.width, new_workarea.height,
         new_workarea.x, new_workarea.y);
 
@@ -135,16 +126,10 @@ init_for_x11(XfdesktopIconViewHolder *holder) {
     update_x11_icon_view_geometry(holder);
     gtk_widget_show(GTK_WIDGET(holder->icon_view));
 
-    g_signal_connect_object(holder->screen, "monitors-changed",
-                            G_CALLBACK(update_x11_icon_view_geometry), holder,
-                            G_CONNECT_AFTER | G_CONNECT_SWAPPED);
-
-    XfwMonitor *monitor = xfce_desktop_get_monitor(holder->desktop);
-    g_signal_connect_object(monitor, "notify::workarea",
+    g_signal_connect_object(holder->monitor, "notify::workarea",
                             G_CALLBACK(update_x11_icon_view_geometry), holder,
                             G_CONNECT_AFTER | G_CONNECT_SWAPPED);
 }
-
 #endif  /* ENABLE_X11 */
 
 #ifdef ENABLE_WAYLAND
