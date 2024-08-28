@@ -17,6 +17,7 @@ libxfdesktop_la_SOURCES = \
 
 libxfdesktop_la_CFLAGS = \
 	-I$(top_srcdir)/src \
+	-DBACKGROUNDS_DIR=\"$(datadir)/backgrounds/xfce\" \
 	$(LIBXFCE4UTIL_CFLAGS) \
 	$(LIBXFCE4WINDOWING_CFLAGS) \
 	$(GTK_CFLAGS) \
