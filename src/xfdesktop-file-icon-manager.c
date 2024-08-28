@@ -70,6 +70,7 @@
 #include "xfdesktop-file-icon.h"
 #include "xfdesktop-file-icon-manager.h"
 #include "xfdesktop-file-icon-model.h"
+#include "xfdesktop-file-icon-model-filter.h"
 #include "xfdesktop-file-utils.h"
 #include "xfdesktop-icon-view-holder.h"
 #include "xfdesktop-icon-view.h"
@@ -77,7 +78,6 @@
 #include "xfdesktop-regular-file-icon.h"
 #include "xfdesktop-special-file-icon.h"
 #include "xfdesktop-volume-icon.h"
-#include "xfdesktop-thumbnailer.h"
 
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4ui/libxfce4ui.h>
@@ -88,24 +88,6 @@
 
 #define VOLUME_HASH_STR_PREFIX  "xfdesktop-volume-"
 
-typedef enum
-{
-    PROP0 = 0,
-    PROP_GDK_SCREEN,
-    PROP_BACKDROP_MANAGER,
-    PROP_FOLDER,
-    PROP_SHOW_FILESYSTEM,
-    PROP_SHOW_HOME,
-    PROP_SHOW_TRASH,
-    PROP_SHOW_REMOVABLE,
-    PROP_SHOW_NETWORK_VOLUME,
-    PROP_SHOW_DEVICE_VOLUME,
-    PROP_SHOW_UNKNOWN_VOLUME,
-    PROP_SHOW_HIDDEN_FILES,
-    PROP_SHOW_DELETE_MENU,
-    PROP_MAX_TEMPLATES,
-} XfdesktopFileIconManagerProp;
-
 struct _XfdesktopFileIconManager
 {
     XfdesktopIconViewManager parent;
@@ -114,7 +96,7 @@ struct _XfdesktopFileIconManager
 
     XfdesktopIconViewHolder *holder;
     XfdesktopFileIconModel *model;
-    GtkTreeModelFilter *filter;
+    XfdesktopFileIconModelFilter *filter;
 
     GdkScreen *gscreen;
     XfdesktopBackdropManager *backdrop_manager;
@@ -122,12 +104,6 @@ struct _XfdesktopFileIconManager
     GFile *folder;
     XfdesktopFileIcon *desktop_icon;
 
-    gboolean show_removable_media;
-    gboolean show_network_volumes;
-    gboolean show_device_volumes;
-    gboolean show_unknown_volumes;
-    gboolean show_special[XFDESKTOP_SPECIAL_FILE_ICON_TRASH+1];
-    gboolean show_hidden_files;
     gboolean show_delete_menu;
 
     guint save_icons_id;
@@ -142,6 +118,15 @@ struct _XfdesktopFileIconManager
 
     guint max_templates;
     guint templates_count;
+};
+
+enum {
+    PROP0 = 0,
+    PROP_GDK_SCREEN,
+    PROP_BACKDROP_MANAGER,
+    PROP_FOLDER,
+    PROP_SHOW_DELETE_MENU,
+    PROP_MAX_TEMPLATES,
 };
 
 static void xfdesktop_file_icon_manager_constructed(GObject *obj);
@@ -217,16 +202,6 @@ static void xfdesktop_file_icon_manager_sort_icons(XfdesktopIconViewManager *man
 
 static void xfdesktop_file_icon_manager_save_icons(XfdesktopFileIconManager *fmanager);
 
-
-static void xfdesktop_file_icon_manager_set_show_special_file(XfdesktopFileIconManager *manager,
-                                                              XfdesktopSpecialFileIconType type,
-                                                              gboolean show_special_file);
-static void xfdesktop_file_icon_manager_set_show_hidden_files(XfdesktopFileIconManager *manager,
-                                                              gboolean show_hidden_files);
-static void xfdesktop_file_icon_manager_set_show_removable_media(XfdesktopFileIconManager *manager,
-                                                                 XfdesktopFileIconManagerProp prop,
-                                                                 gboolean show);
-
 static void xfdesktop_file_icon_manager_set_show_delete_menu(XfdesktopFileIconManager *manager,
                                                              gboolean show_delete_menu);
 
@@ -275,9 +250,6 @@ static void model_ready(XfdesktopFileIconModel *fmodel,
 static void model_error(XfdesktopFileIconModel *fmodel,
                         GError *error,
                         XfdesktopFileIconManager *fmanager);
-static gboolean model_filter_visible(GtkTreeModel *model,
-                                     GtkTreeIter *iter,
-                                     gpointer data);
 
 
 G_DEFINE_TYPE(XfdesktopFileIconManager, xfdesktop_file_icon_manager, XFDESKTOP_TYPE_ICON_VIEW_MANAGER)
@@ -297,14 +269,6 @@ static const struct
     GType setting_type;
     const gchar *property;
 } setting_bindings[] = {
-    { DESKTOP_ICONS_SHOW_FILESYSTEM, G_TYPE_BOOLEAN, "show-filesystem" },
-    { DESKTOP_ICONS_SHOW_HOME, G_TYPE_BOOLEAN, "show-home" },
-    { DESKTOP_ICONS_SHOW_TRASH, G_TYPE_BOOLEAN, "show-trash" },
-    { DESKTOP_ICONS_SHOW_REMOVABLE, G_TYPE_BOOLEAN, "show-removable" },
-    { DESKTOP_ICONS_SHOW_NETWORK_REMOVABLE, G_TYPE_BOOLEAN, "show-network-volume" },
-    { DESKTOP_ICONS_SHOW_DEVICE_REMOVABLE, G_TYPE_BOOLEAN, "show-device-volume" },
-    { DESKTOP_ICONS_SHOW_UNKNWON_REMOVABLE, G_TYPE_BOOLEAN, "show-unknown-volume" },
-    { DESKTOP_ICONS_SHOW_HIDDEN_FILES, G_TYPE_BOOLEAN, "show-hidden-files" },
     { DESKTOP_MENU_DELETE, G_TYPE_BOOLEAN, "show-delete-menu" },
     { DESKTOP_MENU_MAX_TEMPLATE_FILES, G_TYPE_INT, "max-templates" },
 };
@@ -367,72 +331,18 @@ xfdesktop_file_icon_manager_class_init(XfdesktopFileIconManagerClass *klass)
                                                        | G_PARAM_STATIC_NICK
                                                        | G_PARAM_STATIC_BLURB));
 
-#define XFDESKTOP_PARAM_FLAGS  (G_PARAM_READWRITE \
-                                | G_PARAM_STATIC_NAME \
-                                | G_PARAM_STATIC_NICK \
-                                | G_PARAM_STATIC_BLURB)
-
-    g_object_class_install_property(gobject_class, PROP_SHOW_FILESYSTEM,
-                                    g_param_spec_boolean("show-filesystem",
-                                                         "show filesystem",
-                                                         "show filesystem",
-                                                         TRUE,
-                                                         XFDESKTOP_PARAM_FLAGS));
-    g_object_class_install_property(gobject_class, PROP_SHOW_HOME,
-                                    g_param_spec_boolean("show-home",
-                                                         "show home",
-                                                         "show home",
-                                                         TRUE,
-                                                         XFDESKTOP_PARAM_FLAGS));
-    g_object_class_install_property(gobject_class, PROP_SHOW_TRASH,
-                                    g_param_spec_boolean("show-trash",
-                                                         "show trash",
-                                                         "show trash",
-                                                         TRUE,
-                                                         XFDESKTOP_PARAM_FLAGS));
-    g_object_class_install_property(gobject_class, PROP_SHOW_REMOVABLE,
-                                    g_param_spec_boolean("show-removable",
-                                                         "show removable",
-                                                         "show removable",
-                                                         TRUE,
-                                                         XFDESKTOP_PARAM_FLAGS));
-    g_object_class_install_property(gobject_class, PROP_SHOW_NETWORK_VOLUME,
-                                    g_param_spec_boolean("show-network-volume",
-                                                         "show network volume",
-                                                         "show network volume",
-                                                         TRUE,
-                                                         XFDESKTOP_PARAM_FLAGS));
-    g_object_class_install_property(gobject_class, PROP_SHOW_DEVICE_VOLUME,
-                                    g_param_spec_boolean("show-device-volume",
-                                                         "show device volume",
-                                                         "show device volume",
-                                                         TRUE,
-                                                         XFDESKTOP_PARAM_FLAGS));
-    g_object_class_install_property(gobject_class, PROP_SHOW_UNKNOWN_VOLUME,
-                                    g_param_spec_boolean("show-unknown-volume",
-                                                         "show unknown volume",
-                                                         "show unknown volume",
-                                                         TRUE,
-                                                         XFDESKTOP_PARAM_FLAGS));
-    g_object_class_install_property(gobject_class, PROP_SHOW_HIDDEN_FILES,
-                                    g_param_spec_boolean("show-hidden-files",
-                                                         "show-hidden-files",
-                                                         "show-hidden-files",
-                                                         FALSE,
-                                                         XFDESKTOP_PARAM_FLAGS));
     g_object_class_install_property(gobject_class, PROP_SHOW_DELETE_MENU,
                                     g_param_spec_boolean("show-delete-menu",
                                                          "show-delete-menu",
                                                          "show-delete-menu",
                                                          TRUE,
-                                                         XFDESKTOP_PARAM_FLAGS));
+                                                         G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
     g_object_class_install_property(gobject_class, PROP_MAX_TEMPLATES,
                                     g_param_spec_uint("max-templates",
                                                       "max-templates",
                                                       "max-templates",
                                                       0, G_MAXUSHORT, 16,
-                                                      XFDESKTOP_PARAM_FLAGS));
-#undef XFDESKTOP_PARAM_FLAGS
+                                                      G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     xfdesktop_app_info_quark = g_quark_from_static_string("xfdesktop-app-info-quark");
 }
@@ -441,14 +351,6 @@ static void
 xfdesktop_file_icon_manager_init(XfdesktopFileIconManager *fmanager)
 {
     fmanager->ready = FALSE;
-    for (gsize i = 0; i < G_N_ELEMENTS(fmanager->show_special); ++i) {
-        fmanager->show_special[i] = TRUE;
-    }
-    fmanager->show_removable_media = TRUE;
-    fmanager->show_network_volumes = TRUE;
-    fmanager->show_device_volumes = TRUE;
-    fmanager->show_unknown_volumes = TRUE;
-    fmanager->show_hidden_files = FALSE;
     fmanager->show_delete_menu = TRUE;
     fmanager->max_templates = 16;
 }
@@ -523,8 +425,7 @@ xfdesktop_file_icon_manager_constructed(GObject *obj)
     g_signal_connect_swapped(fmanager->model, "icon-position-request",
                              G_CALLBACK(xfdesktop_file_icon_manager_get_cached_icon_position), fmanager);
 
-    fmanager->filter = GTK_TREE_MODEL_FILTER(gtk_tree_model_filter_new(GTK_TREE_MODEL(fmanager->model), NULL));
-    gtk_tree_model_filter_set_visible_func(fmanager->filter, model_filter_visible, fmanager, NULL);
+    fmanager->filter = xfdesktop_file_icon_model_filter_new(channel, fmanager->model);
 
     for (gsize i = 0; i < G_N_ELEMENTS(setting_bindings); ++i) {
         xfconf_g_property_bind(channel,
@@ -554,38 +455,6 @@ xfdesktop_file_icon_manager_set_property(GObject *object,
 
         case PROP_FOLDER:
             fmanager->folder = g_value_dup_object(value);
-            break;
-
-        case PROP_SHOW_FILESYSTEM:
-            xfdesktop_file_icon_manager_set_show_special_file(fmanager,
-                                                              XFDESKTOP_SPECIAL_FILE_ICON_FILESYSTEM,
-                                                              g_value_get_boolean(value));
-            break;
-
-        case PROP_SHOW_HOME:
-            xfdesktop_file_icon_manager_set_show_special_file(fmanager,
-                                                              XFDESKTOP_SPECIAL_FILE_ICON_HOME,
-                                                              g_value_get_boolean(value));
-            break;
-
-        case PROP_SHOW_TRASH:
-            xfdesktop_file_icon_manager_set_show_special_file(fmanager,
-                                                              XFDESKTOP_SPECIAL_FILE_ICON_TRASH,
-                                                              g_value_get_boolean(value));
-            break;
-
-        case PROP_SHOW_REMOVABLE:
-        case PROP_SHOW_NETWORK_VOLUME:
-        case PROP_SHOW_DEVICE_VOLUME:
-        case PROP_SHOW_UNKNOWN_VOLUME:
-            xfdesktop_file_icon_manager_set_show_removable_media(fmanager,
-                                                                 property_id,
-                                                                 g_value_get_boolean(value));
-            break;
-
-        case PROP_SHOW_HIDDEN_FILES:
-            xfdesktop_file_icon_manager_set_show_hidden_files(fmanager,
-                                                              g_value_get_boolean(value));
             break;
 
         case PROP_SHOW_DELETE_MENU:
@@ -622,41 +491,6 @@ xfdesktop_file_icon_manager_get_property(GObject *object,
 
         case PROP_FOLDER:
             g_value_set_object(value, fmanager->folder);
-            break;
-
-        case PROP_SHOW_FILESYSTEM:
-            g_value_set_boolean(value,
-                                fmanager->show_special[XFDESKTOP_SPECIAL_FILE_ICON_FILESYSTEM]);
-            break;
-
-        case PROP_SHOW_HOME:
-            g_value_set_boolean(value,
-                                fmanager->show_special[XFDESKTOP_SPECIAL_FILE_ICON_HOME]);
-            break;
-
-        case PROP_SHOW_TRASH:
-            g_value_set_boolean(value,
-                                fmanager->show_special[XFDESKTOP_SPECIAL_FILE_ICON_TRASH]);
-            break;
-
-        case PROP_SHOW_REMOVABLE:
-            g_value_set_boolean(value, fmanager->show_removable_media);
-            break;
-
-        case PROP_SHOW_NETWORK_VOLUME:
-            g_value_set_boolean(value, fmanager->show_network_volumes);
-            break;
-
-        case PROP_SHOW_DEVICE_VOLUME:
-            g_value_set_boolean(value, fmanager->show_device_volumes);
-            break;
-
-        case PROP_SHOW_UNKNOWN_VOLUME:
-            g_value_set_boolean(value, fmanager->show_unknown_volumes);
-            break;
-
-        case PROP_SHOW_HIDDEN_FILES:
-            g_value_set_boolean(value, fmanager->show_hidden_files);
             break;
 
         case PROP_SHOW_DELETE_MENU:
@@ -2277,7 +2111,7 @@ xfdesktop_file_icon_manager_get_icon_view_size(XfdesktopFileIconManager *fmanage
 static XfdesktopFileIcon *
 icon_for_filter_iter(XfdesktopFileIconManager *fmanager, GtkTreeIter *filt_iter) {
     GtkTreeIter iter;
-    gtk_tree_model_filter_convert_iter_to_child_iter(fmanager->filter, &iter, filt_iter);
+    gtk_tree_model_filter_convert_iter_to_child_iter(GTK_TREE_MODEL_FILTER(fmanager->filter), &iter, filt_iter);
     return xfdesktop_file_icon_model_get_icon(fmanager->model, &iter);
 }
 
@@ -3360,67 +3194,6 @@ xfdesktop_file_icon_manager_drop_propose_action(XfdesktopIconView *icon_view,
 }
 
 static void
-xfdesktop_file_icon_manager_set_show_removable_media(XfdesktopFileIconManager *manager,
-                                                     XfdesktopFileIconManagerProp prop,
-                                                     gboolean show)
-{
-    g_return_if_fail(XFDESKTOP_IS_FILE_ICON_MANAGER(manager));
-
-    switch(prop) {
-        case PROP_SHOW_REMOVABLE:
-            if(show == manager->show_removable_media)
-                return;
-
-            manager->show_removable_media = show;
-            break;
-        case PROP_SHOW_NETWORK_VOLUME:
-            if(show == manager->show_network_volumes)
-                return;
-
-            manager->show_network_volumes = show;
-            break;
-        case PROP_SHOW_DEVICE_VOLUME:
-            if(show == manager->show_device_volumes)
-                return;
-
-            manager->show_device_volumes = show;
-            break;
-        case PROP_SHOW_UNKNOWN_VOLUME:
-            if(show == manager->show_unknown_volumes)
-                return;
-
-            manager->show_unknown_volumes = show;
-            break;
-        default:
-            g_assert_not_reached();
-            break;
-    }
-
-    if (manager->ready) {
-        gtk_tree_model_filter_refilter(manager->filter);
-    }
-}
-
-static void
-xfdesktop_file_icon_manager_set_show_hidden_files(XfdesktopFileIconManager *manager,
-                                                  gboolean show_hidden_files)
-{
-    g_return_if_fail(XFDESKTOP_IS_FILE_ICON_MANAGER(manager));
-
-    TRACE("entering show_hidden_files %s", show_hidden_files ? "TRUE" : "FALSE");
-
-    if(show_hidden_files == manager->show_hidden_files)
-        return;
-
-    manager->show_hidden_files = show_hidden_files;
-    g_object_notify(G_OBJECT(manager), "show-hidden-files");
-
-    if (manager->ready) {
-        xfdesktop_file_icon_manager_refresh_icons(manager);
-    }
-}
-
-static void
 xfdesktop_file_icon_manager_set_show_delete_menu(XfdesktopFileIconManager *manager,
                                                  gboolean show_delete_menu)
 {
@@ -3494,59 +3267,6 @@ model_error(XfdesktopFileIconModel *fmodel, GError *error, XfdesktopFileIconMana
                         NULL);
 
     g_free(primary);
-}
-
-static gboolean
-is_special_file_visible(XfdesktopFileIconManager *fmanager, XfdesktopSpecialFileIcon *icon) {
-    XfdesktopSpecialFileIconType type = xfdesktop_special_file_icon_get_icon_type(icon);
-    return fmanager->show_special[type];
-}
-
-static gboolean
-is_volume_visible(XfdesktopFileIconManager *fmanager, XfdesktopVolumeIcon *icon) {
-    if (fmanager->show_removable_media) {
-        GVolume *volume = xfdesktop_volume_icon_peek_volume(icon);
-        gchar *volume_type = g_volume_get_identifier(volume, G_VOLUME_IDENTIFIER_KIND_CLASS);
-        gboolean visible = (g_strcmp0(volume_type, "network") == 0 && fmanager->show_network_volumes)
-            || (g_strcmp0(volume_type, "device") == 0 && fmanager->show_device_volumes)
-            || (volume_type == NULL && fmanager->show_unknown_volumes);
-        g_free(volume_type);
-        return visible;
-    } else {
-        return FALSE;
-    }
-}
-
-static gboolean
-is_regular_file_visible(XfdesktopFileIconManager *fmanager, XfdesktopRegularFileIcon *icon) {
-    return fmanager->show_hidden_files || !xfdesktop_file_icon_is_hidden_file(XFDESKTOP_FILE_ICON(icon));
-}
-
-static gboolean
-model_filter_visible(GtkTreeModel *model, GtkTreeIter *iter, gpointer data) {
-    XfdesktopFileIcon *icon = xfdesktop_file_icon_model_get_icon(XFDESKTOP_FILE_ICON_MODEL(model), iter);
-    if (icon != NULL) {
-        XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(data);
-        return (XFDESKTOP_IS_SPECIAL_FILE_ICON(icon) && is_special_file_visible(fmanager, XFDESKTOP_SPECIAL_FILE_ICON(icon)))
-            || (XFDESKTOP_IS_VOLUME_ICON(icon) && is_volume_visible(fmanager, XFDESKTOP_VOLUME_ICON(icon)))
-            || (XFDESKTOP_IS_REGULAR_FILE_ICON(icon) && is_regular_file_visible(fmanager, XFDESKTOP_REGULAR_FILE_ICON(icon)));
-    } else {
-        return FALSE;
-    }
-}
-
-static void
-xfdesktop_file_icon_manager_set_show_special_file(XfdesktopFileIconManager *manager,
-                                                  XfdesktopSpecialFileIconType type,
-                                                  gboolean show_special_file)
-{
-    g_return_if_fail(XFDESKTOP_IS_FILE_ICON_MANAGER(manager));
-    g_return_if_fail((int)type >= 0 && type <= XFDESKTOP_SPECIAL_FILE_ICON_TRASH);
-
-    if (manager->show_special[type] != show_special_file) {
-        manager->show_special[type] = show_special_file;
-        gtk_tree_model_filter_refilter(manager->filter);
-    }
 }
 
 static void
