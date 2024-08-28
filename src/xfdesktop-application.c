@@ -174,6 +174,7 @@ struct _XfdesktopApplication
     XfdesktopBackdropManager *backdrop_manager;
 
     GList *desktops;  // XfceDesktop
+    GHashTable *monitors;  // XfwMonitor -> XfceDesktop
 
     XfdesktopLocalArgs *args;
 
@@ -290,6 +291,7 @@ xfdesktop_application_init(XfdesktopApplication *app)
 
     app->args = args;
     app->icon_style = -1;
+    app->monitors = g_hash_table_new(g_direct_hash, g_direct_equal);
 
     g_application_add_main_option_entries(G_APPLICATION(app), main_entries);
 
@@ -356,6 +358,7 @@ xfdesktop_application_finalize(GObject *object)
     XfdesktopApplication *app = XFDESKTOP_APPLICATION(object);
 
     g_free(app->args);
+    g_hash_table_destroy(app->monitors);
 
 #ifdef ENABLE_X11
     cancel_wait_for_wm(app);
@@ -681,6 +684,7 @@ xfdesktop_application_theme_changed (GtkSettings *settings,
 static void
 desktop_destroyed(XfceDesktop *desktop, XfdesktopApplication *app) {
     gtk_application_remove_window(GTK_APPLICATION(app), GTK_WINDOW(desktop));
+    g_hash_table_remove(app->monitors, xfce_desktop_get_monitor(desktop));
     app->desktops = g_list_remove(app->desktops, desktop);
 }
 
@@ -721,61 +725,36 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     return desktop;
 }
 
-static XfceDesktop *
-match_and_steal_desktop_with_monitor(GList **desktops, XfwMonitor *monitor) {
-    GdkRectangle geom;
-    xfw_monitor_get_physical_geometry(monitor, &geom);
-    const gchar *connector = xfw_monitor_get_connector(monitor);
+static void
+screen_monitor_added(XfwScreen *screen, XfwMonitor *monitor, XfdesktopApplication *app) {
+    TRACE("entering");
 
-    GList *matched_link = NULL;
+    GtkWidget *desktop = create_desktop(app, monitor);
+    app->desktops = g_list_append(app->desktops, desktop);
+    g_hash_table_insert(app->monitors, monitor, desktop);
 
-    for (GList *l = *desktops; l != NULL; l = l->next) {
-        XfceDesktop *a_desktop = XFCE_DESKTOP(l->data);
-        XfwMonitor *a_monitor = xfce_desktop_get_monitor(a_desktop);
-        if (monitor == a_monitor) {
-            matched_link = l;
-            break;
-        } else {
-            GdkRectangle a_geom;
-            xfw_monitor_get_physical_geometry(a_monitor, &a_geom);
-            if ((a_geom.x == geom.x && a_geom.y == geom.y)
-                || g_strcmp0(xfw_monitor_get_connector(a_monitor), connector) == 0)
-            {
-                matched_link = l;
-                break;
-            }
-        }
+#ifdef ENABLE_DESKTOP_ICONS
+    if (app->icon_view_manager != NULL) {
+        xfdesktop_icon_view_manager_desktop_added(app->icon_view_manager, XFCE_DESKTOP(desktop));
     }
-
-    if (matched_link != NULL) {
-        XfceDesktop *matched_desktop = XFCE_DESKTOP(matched_link->data);
-        *desktops = g_list_delete_link(*desktops, matched_link);
-        return matched_desktop;
-    } else {
-        return NULL;
-    }
+#endif
 }
 
 static void
-monitors_changed(XfwScreen *screen, XfdesktopApplication *app) {
-    GList *old_desktops = app->desktops;
-    app->desktops = NULL;
+screen_monitor_removed(XfwScreen *screen, XfwMonitor *monitor, XfdesktopApplication *app) {
+    TRACE("entering");
 
-    GList *new_monitors = xfw_screen_get_monitors(screen);
-
-    for (GList *l = new_monitors; l != NULL; l = l->next) {
-        XfwMonitor *new_monitor = XFW_MONITOR(l->data);
-        XfceDesktop *matched_desktop = match_and_steal_desktop_with_monitor(&old_desktops, new_monitor);
-        if (matched_desktop != NULL) {
-            xfce_desktop_update_monitor(matched_desktop, new_monitor);
-            app->desktops = g_list_append(app->desktops, matched_desktop);
-        } else {
-            GtkWidget *desktop = create_desktop(app, new_monitor);
-            app->desktops = g_list_append(app->desktops, desktop);
+    XfceDesktop *desktop = g_hash_table_lookup(app->monitors, monitor);
+    app->desktops = g_list_remove(app->desktops, desktop);
+    if (desktop != NULL) {
+#ifdef ENABLE_DESKTOP_ICONS
+        if (app->icon_view_manager != NULL) {
+            xfdesktop_icon_view_manager_desktop_removed(app->icon_view_manager, desktop);
         }
-    }
+#endif
 
-    g_list_free_full(old_desktops, (GDestroyNotify)gtk_widget_destroy);
+        gtk_widget_destroy(GTK_WIDGET(desktop));
+    }
 }
 
 static void
@@ -847,8 +826,10 @@ xfdesktop_application_start(XfdesktopApplication *app)
         app->desktops = g_list_append(app->desktops, desktop);
     }
 
-    g_signal_connect(app->screen, "monitors-changed",
-                     G_CALLBACK(monitors_changed), app);
+    g_signal_connect(app->screen, "monitor-added",
+                     G_CALLBACK(screen_monitor_added), app);
+    g_signal_connect(app->screen, "monitor-removed",
+                     G_CALLBACK(screen_monitor_removed), app);
 
     xfconf_g_property_bind(app->channel, DESKTOP_ICONS_STYLE_PROP, XFCE_TYPE_DESKTOP_ICON_STYLE, app, "icon-style");
     if ((gint)app->icon_style == -1) {
@@ -907,6 +888,7 @@ xfdesktop_application_shutdown(GApplication *g_application)
         app->channel = NULL;
     }
 
+    g_hash_table_remove_all(app->monitors);
     // Do this carefully, since desktop_destroy will remove each
     // desktop from the list as it's destroyed
     GList *ld = app->desktops;
