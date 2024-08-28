@@ -26,8 +26,7 @@
 #include <xfconf/xfconf.h>
 #include <libxfce4windowing/libxfce4windowing.h>
 
-#include "xfdesktop-icon.h"
-#include "xfdesktop-icon-view.h"
+#include "xfce-desktop.h"
 
 G_BEGIN_DECLS
 
@@ -39,6 +38,11 @@ struct _XfdesktopIconViewManagerClass
     GObjectClass parent_class;
 
     /* Virtual Functions */
+
+    void (*desktop_added)(XfdesktopIconViewManager *manager,
+                          XfceDesktop *desktop);
+    void (*desktop_removed)(XfdesktopIconViewManager *manager,
+                            XfceDesktop *desktop);
 
     GtkMenu *(*get_context_menu)(XfdesktopIconViewManager *manager,
                                  GtkWidget *widget);
@@ -53,8 +57,10 @@ XfconfChannel *xfdesktop_icon_view_manager_get_channel(XfdesktopIconViewManager 
 
 gboolean xfdesktop_icon_view_manager_get_show_icons_on_primary(XfdesktopIconViewManager *manager);
 
-void xfdesktop_icon_view_manager_desktops_changed(XfdesktopIconViewManager *manager,
-                                                  GList *desktops);
+void xfdesktop_icon_view_manager_desktop_added(XfdesktopIconViewManager *manager,
+                                               XfceDesktop *desktop);
+void xfdesktop_icon_view_manager_desktop_removed(XfdesktopIconViewManager *manager,
+                                                 XfceDesktop *desktop);
 
 /* virtual function accessors */
 
