@@ -66,6 +66,10 @@ monitor_data_free(MonitorData *mdata) {
 static void xfdesktop_window_icon_manager_constructed(GObject *object);
 static void xfdesktop_window_icon_manager_finalize(GObject *object);
 
+static void xfdesktop_window_icon_manager_desktop_added(XfdesktopIconViewManager *manager,
+                                                        XfceDesktop *desktop);
+static void xfdesktop_window_icon_manager_desktop_removed(XfdesktopIconViewManager *manager,
+                                                          XfceDesktop *desktop);
 static GtkMenu *xfdesktop_window_icon_manager_get_context_menu(XfdesktopIconViewManager *manager,
                                                                GtkWidget *widget);
 static void xfdesktop_window_icon_manager_sort_icons(XfdesktopIconViewManager *manager,
@@ -77,6 +81,10 @@ static XfwWindow *window_for_filter_path(XfdesktopWindowIconManager *wmanager,
 
 static void create_icon_view(XfdesktopWindowIconManager *wmanager,
                              XfceDesktop *desktop);
+
+static void refresh_workspace_group_monitors(XfdesktopWindowIconManager *wmanager,
+                                             XfwWorkspaceGroup *group);
+
 static void screen_window_closed(XfwScreen *screen,
                                  XfwWindow *window,
                                  XfdesktopWindowIconManager *wmanager);
@@ -86,7 +94,6 @@ static void workspace_group_destroyed(XfwWorkspaceGroup *group,
                                       XfdesktopWindowIconManager *wmanager);
 static void workspace_destroyed(XfwWorkspace *workspace,
                                 XfdesktopWindowIconManager *wmanager);
-static void desktops_changed(XfdesktopWindowIconManager *wmanager);
 
 G_DEFINE_TYPE(XfdesktopWindowIconManager, xfdesktop_window_icon_manager, XFDESKTOP_TYPE_ICON_VIEW_MANAGER)
 
@@ -98,6 +105,8 @@ xfdesktop_window_icon_manager_class_init(XfdesktopWindowIconManagerClass *klass)
     gobject_class->finalize = xfdesktop_window_icon_manager_finalize;
 
     XfdesktopIconViewManagerClass *ivm_class = XFDESKTOP_ICON_VIEW_MANAGER_CLASS(klass);
+    ivm_class->desktop_added = xfdesktop_window_icon_manager_desktop_added;
+    ivm_class->desktop_removed = xfdesktop_window_icon_manager_desktop_removed;
     ivm_class->get_context_menu = xfdesktop_window_icon_manager_get_context_menu;
     ivm_class->sort_icons = xfdesktop_window_icon_manager_sort_icons;
 }
@@ -131,9 +140,10 @@ xfdesktop_window_icon_manager_constructed(GObject *object) {
 
     wmanager->model = xfdesktop_window_icon_model_new(screen);
 
-    desktops_changed(wmanager);
-    g_signal_connect(wmanager, "notify::desktops",
-                     G_CALLBACK(desktops_changed), NULL);
+    GList *desktops = xfdesktop_icon_view_manager_get_desktops(manager);
+    for (GList *l = desktops; l != NULL; l = l->next) {
+        xfdesktop_window_icon_manager_desktop_added(manager, XFCE_DESKTOP(l->data));
+    }
 
     XfwWorkspaceManager *workspace_manager = xfw_screen_get_workspace_manager(screen);
     GList *groups = xfw_workspace_manager_list_workspace_groups(workspace_manager);
@@ -173,6 +183,18 @@ xfdesktop_window_icon_manager_finalize(GObject *object) {
     gtk_target_list_unref(wmanager->dest_targets);
 
     G_OBJECT_CLASS(xfdesktop_window_icon_manager_parent_class)->finalize(object);
+}
+
+static void
+xfdesktop_window_icon_manager_desktop_added(XfdesktopIconViewManager *manager, XfceDesktop *desktop) {
+    XfdesktopWindowIconManager *wmanager = XFDESKTOP_WINDOW_ICON_MANAGER(manager);
+    create_icon_view(wmanager, desktop);
+}
+
+static void
+xfdesktop_window_icon_manager_desktop_removed(XfdesktopIconViewManager *manager, XfceDesktop *desktop) {
+    XfdesktopWindowIconManager *wmanager = XFDESKTOP_WINDOW_ICON_MANAGER(manager);
+    g_hash_table_remove(wmanager->monitor_data, xfce_desktop_get_monitor(desktop));
 }
 
 static GtkMenu *
@@ -458,6 +480,21 @@ filter_visible_func(GtkTreeModel *model, GtkTreeIter *iter, gpointer data) {
     }
 }
 
+static XfwWorkspaceGroup *
+find_workspace_group_for_monitor(XfdesktopWindowIconManager *wmanager, XfwMonitor *monitor) {
+    XfwScreen *screen = xfdesktop_icon_view_manager_get_screen(XFDESKTOP_ICON_VIEW_MANAGER(wmanager));
+    XfwWorkspaceManager *workspace_manager = xfw_screen_get_workspace_manager(screen);
+    GList *groups = xfw_workspace_manager_list_workspace_groups(workspace_manager);
+    for (GList *l = groups; l != NULL; l = l->next) {
+        XfwWorkspaceGroup *group = XFW_WORKSPACE_GROUP(l->data);
+        if (g_list_find(xfw_workspace_group_get_monitors(group), monitor) != NULL) {
+            return group;
+        }
+    }
+
+    return NULL;
+}
+
 static void
 create_icon_view(XfdesktopWindowIconManager *wmanager, XfceDesktop *desktop) {
     XfwScreen *screen = xfdesktop_icon_view_manager_get_screen(XFDESKTOP_ICON_VIEW_MANAGER(wmanager));
@@ -510,6 +547,10 @@ create_icon_view(XfdesktopWindowIconManager *wmanager, XfceDesktop *desktop) {
     mdata->wmanager = wmanager;
     mdata->holder = xfdesktop_icon_view_holder_new(screen, desktop, icon_view);
     mdata->selected_icons = g_hash_table_new(g_direct_hash, g_direct_equal);
+    mdata->group = find_workspace_group_for_monitor(wmanager, xfce_desktop_get_monitor(desktop));
+    if (mdata->group != NULL) {
+        refresh_workspace_group_monitors(wmanager, mdata->group);
+    }
 
     GtkTreeModel *filter = gtk_tree_model_filter_new(GTK_TREE_MODEL(wmanager->model), NULL);
     gtk_tree_model_filter_set_visible_func(GTK_TREE_MODEL_FILTER(filter), filter_visible_func, mdata, NULL);
@@ -610,16 +651,19 @@ screen_window_closed(XfwScreen *screen, XfwWindow *window, XfdesktopWindowIconMa
 }
 
 static void
-workspace_group_created(XfwWorkspaceGroup *group, XfdesktopWindowIconManager *wmanager) {
-    DBG("entering");
-
+refresh_workspace_group_monitors(XfdesktopWindowIconManager *wmanager, XfwWorkspaceGroup *group) {
     for (GList *l = xfw_workspace_group_get_monitors(group); l != NULL; l = l->next) {
         XfwMonitor *monitor = XFW_MONITOR(l->data);
         workspace_group_monitor_added(group, monitor, wmanager);
     }
+}
+
+static void
+workspace_group_created(XfwWorkspaceGroup *group, XfdesktopWindowIconManager *wmanager) {
+    refresh_workspace_group_monitors(wmanager, group);
 
     g_signal_connect(group, "monitor-added",
-                     G_CALLBACK(workspace_group_monitor_removed), wmanager);
+                     G_CALLBACK(workspace_group_monitor_added), wmanager);
     g_signal_connect(group, "monitor-removed",
                      G_CALLBACK(workspace_group_monitor_removed), wmanager);
     g_signal_connect(group, "active-workspace-changed",
@@ -647,38 +691,6 @@ workspace_destroyed(XfwWorkspace *workspace, XfdesktopWindowIconManager *wmanage
     MonitorData *mdata;
     while (g_hash_table_iter_next(&iter, NULL, (gpointer)&mdata)) {
         g_hash_table_remove(mdata->selected_icons, workspace);
-    }
-}
-
-static void
-desktops_changed(XfdesktopWindowIconManager *wmanager) {
-    TRACE("entering");
-
-    XfdesktopIconViewManager *manager = XFDESKTOP_ICON_VIEW_MANAGER(wmanager);
-    GList *desktops = g_list_copy(xfdesktop_icon_view_manager_get_desktops(manager));
-
-    GHashTableIter iter;
-    g_hash_table_iter_init(&iter, wmanager->monitor_data);
-
-    XfwMonitor *monitor;
-    MonitorData *mdata;
-    while (g_hash_table_iter_next(&iter, (gpointer)&monitor, (gpointer)&mdata)) {
-        XfceDesktop *desktop = xfdesktop_icon_view_holder_get_desktop(mdata->holder);
-
-        GList *ld = g_list_find(desktops, desktop);
-        if (ld == NULL) {
-            DBG("removing desktop");
-            g_hash_table_iter_remove(&iter);
-        } else {
-            DBG("keeping desktop");
-            desktops = g_list_delete_link(desktops, ld);
-        }
-    }
-
-    for (GList *l = desktops; l != NULL; l = l->next) {
-        XfceDesktop *desktop = XFCE_DESKTOP(l->data);
-        DBG("adding desktop");
-        create_icon_view(wmanager, desktop);
     }
 }
 

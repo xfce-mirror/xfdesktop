@@ -206,6 +206,10 @@ static GdkDragAction xfdesktop_file_icon_manager_drop_propose_action(XfdesktopIc
                                                                      guint info,
                                                                      XfdesktopFileIconManager *fmanager);
 
+static void xfdesktop_file_icon_manager_desktop_added(XfdesktopIconViewManager *manager,
+                                                      XfceDesktop *desktop);
+static void xfdesktop_file_icon_manager_desktop_removed(XfdesktopIconViewManager *manager,
+                                                        XfceDesktop *desktop);
 static GtkMenu *xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager,
                                                              GtkWidget *widget);
 static void xfdesktop_file_icon_manager_sort_icons(XfdesktopIconViewManager *manager,
@@ -225,6 +229,9 @@ static void xfdesktop_file_icon_manager_set_show_removable_media(XfdesktopFileIc
 
 static void xfdesktop_file_icon_manager_set_show_delete_menu(XfdesktopFileIconManager *manager,
                                                              gboolean show_delete_menu);
+
+static void create_icon_view(XfdesktopFileIconManager *fmanager,
+                             XfceDesktop *desktop);
 
 static void
 xfdesktop_file_icon_manager_set_max_templates(XfdesktopFileIconManager *manager,
@@ -329,6 +336,8 @@ xfdesktop_file_icon_manager_class_init(XfdesktopFileIconManagerClass *klass)
     gobject_class->dispose = xfdesktop_file_icon_manager_dispose;
     gobject_class->finalize = xfdesktop_file_icon_manager_finalize;
 
+    ivm_class->desktop_added = xfdesktop_file_icon_manager_desktop_added;
+    ivm_class->desktop_removed = xfdesktop_file_icon_manager_desktop_removed;
     ivm_class->get_context_menu = xfdesktop_file_icon_manager_get_context_menu;
     ivm_class->sort_icons = xfdesktop_file_icon_manager_sort_icons;
 
@@ -501,66 +510,7 @@ xfdesktop_file_icon_manager_constructed(GObject *obj)
     for (GList *l = desktops; l != NULL; l = l->next) {
         XfceDesktop *desktop = XFCE_DESKTOP(l->data);
         if (xfw_monitor_is_primary(xfce_desktop_get_monitor(desktop))) {
-            XfwScreen *screen = xfdesktop_icon_view_manager_get_screen(XFDESKTOP_ICON_VIEW_MANAGER(fmanager));
-            XfdesktopIconView *icon_view = g_object_new(XFDESKTOP_TYPE_ICON_VIEW,
-                                                        "screen", screen,
-                                                        "channel", channel,
-                                                        "pixbuf-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_IMAGE,
-                                                        "icon-opacity-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_IMAGE_OPACITY,
-                                                        "text-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_LABEL,
-                                                        "search-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_LABEL,
-                                                        "sort-priority-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_SORT_PRIORITY,
-                                                        "tooltip-icon-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_TOOLTIP_IMAGE,
-                                                        "tooltip-text-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_TOOLTIP_TEXT,
-                                                        "row-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_ROW,
-                                                        "col-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_COL,
-                                                        NULL);
-            xfdesktop_icon_view_set_selection_mode(icon_view, GTK_SELECTION_MULTIPLE);
-            xfdesktop_icon_view_enable_drag_source(icon_view,
-                                                   GDK_SHIFT_MASK | GDK_CONTROL_MASK | GDK_BUTTON1_MASK,
-                                                   drag_targets, G_N_ELEMENTS(drag_targets),
-                                                   GDK_ACTION_LINK | GDK_ACTION_COPY | GDK_ACTION_MOVE);
-            xfdesktop_icon_view_enable_drag_dest(icon_view,
-                                                 drop_targets, G_N_ELEMENTS(drop_targets),
-                                                 GDK_ACTION_LINK | GDK_ACTION_COPY | GDK_ACTION_MOVE);
-
-            g_signal_connect(icon_view, "icon-moved",
-                             G_CALLBACK(xfdesktop_file_icon_manager_icon_moved), fmanager);
-            g_signal_connect(icon_view, "icon-activated",
-                             G_CALLBACK(xfdesktop_file_icon_manager_icon_activated), fmanager);
-            g_signal_connect(icon_view, "realize",
-                             G_CALLBACK(xfdesktop_file_icon_manager_icon_view_realized), fmanager);
-            g_signal_connect(icon_view, "unrealize",
-                             G_CALLBACK(xfdesktop_file_icon_manager_icon_view_unrealized), fmanager);
-            // DnD signals
-            g_signal_connect(icon_view, "drag-actions-get",
-                             G_CALLBACK(xfdesktop_file_icon_manager_drag_actions_get), fmanager);
-            g_signal_connect(icon_view, "drop-actions-get",
-                             G_CALLBACK(xfdesktop_file_icon_manager_drop_actions_get), fmanager);
-            g_signal_connect(icon_view, "drag-drop-ask",
-                             G_CALLBACK(xfdesktop_file_icon_manager_drag_drop_ask), fmanager);
-            g_signal_connect(icon_view, "drag-drop-item",
-                             G_CALLBACK(xfdesktop_file_icon_manager_drag_drop_item), fmanager);
-            g_signal_connect(icon_view, "drag-drop-items",
-                             G_CALLBACK(xfdesktop_file_icon_manager_drag_drop_items), fmanager);
-            g_signal_connect(icon_view, "drag-data-get",
-                             G_CALLBACK(xfdesktop_file_icon_manager_drag_data_get), fmanager);
-            g_signal_connect(icon_view, "drag-item-data-received",
-                             G_CALLBACK(xfdesktop_file_icon_manager_drag_item_data_received), fmanager);
-            g_signal_connect(icon_view, "drop-propose-action",
-                             G_CALLBACK(xfdesktop_file_icon_manager_drop_propose_action), fmanager);
-            // Below signals allow us to sort icons and replace them where they belong in the newly-sized view
-            g_signal_connect(G_OBJECT(icon_view), "start-grid-resize",
-                             G_CALLBACK(xfdesktop_file_icon_manager_start_grid_resize), fmanager);
-            g_signal_connect(G_OBJECT(icon_view), "end-grid-resize",
-                             G_CALLBACK(xfdesktop_file_icon_manager_end_grid_resize), fmanager);
-
-            if (gtk_widget_get_realized(GTK_WIDGET(icon_view))) {
-                xfdesktop_file_icon_manager_icon_view_realized(GTK_WIDGET(icon_view), fmanager);
-            }
-
-            fmanager->holder = xfdesktop_icon_view_holder_new(screen, desktop, icon_view);
-
+            create_icon_view(fmanager, desktop);
             break;
         }
     }
@@ -1567,6 +1517,105 @@ xfdesktop_settings_launch(GtkWidget *w,
     }
 
     g_free(cmd);
+}
+
+static void
+create_icon_view(XfdesktopFileIconManager *fmanager, XfceDesktop *desktop) {
+    XfwScreen *screen = xfdesktop_icon_view_manager_get_screen(XFDESKTOP_ICON_VIEW_MANAGER(fmanager));
+    XfconfChannel *channel = xfdesktop_icon_view_manager_get_channel(XFDESKTOP_ICON_VIEW_MANAGER(fmanager));
+    XfdesktopIconView *icon_view = g_object_new(XFDESKTOP_TYPE_ICON_VIEW,
+                                                "screen", screen,
+                                                "channel", channel,
+                                                "pixbuf-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_IMAGE,
+                                                "icon-opacity-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_IMAGE_OPACITY,
+                                                "text-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_LABEL,
+                                                "search-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_LABEL,
+                                                "sort-priority-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_SORT_PRIORITY,
+                                                "tooltip-icon-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_TOOLTIP_IMAGE,
+                                                "tooltip-text-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_TOOLTIP_TEXT,
+                                                "row-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_ROW,
+                                                "col-column", XFDESKTOP_ICON_VIEW_MODEL_COLUMN_COL,
+                                                NULL);
+    xfdesktop_icon_view_set_selection_mode(icon_view, GTK_SELECTION_MULTIPLE);
+    xfdesktop_icon_view_enable_drag_source(icon_view,
+                                           GDK_SHIFT_MASK | GDK_CONTROL_MASK | GDK_BUTTON1_MASK,
+                                           drag_targets, G_N_ELEMENTS(drag_targets),
+                                           GDK_ACTION_LINK | GDK_ACTION_COPY | GDK_ACTION_MOVE);
+    xfdesktop_icon_view_enable_drag_dest(icon_view,
+                                         drop_targets, G_N_ELEMENTS(drop_targets),
+                                         GDK_ACTION_LINK | GDK_ACTION_COPY | GDK_ACTION_MOVE);
+
+    g_signal_connect(icon_view, "icon-moved",
+                     G_CALLBACK(xfdesktop_file_icon_manager_icon_moved), fmanager);
+    g_signal_connect(icon_view, "icon-activated",
+                     G_CALLBACK(xfdesktop_file_icon_manager_icon_activated), fmanager);
+    g_signal_connect(icon_view, "realize",
+                     G_CALLBACK(xfdesktop_file_icon_manager_icon_view_realized), fmanager);
+    g_signal_connect(icon_view, "unrealize",
+                     G_CALLBACK(xfdesktop_file_icon_manager_icon_view_unrealized), fmanager);
+    // DnD signals
+    g_signal_connect(icon_view, "drag-actions-get",
+                     G_CALLBACK(xfdesktop_file_icon_manager_drag_actions_get), fmanager);
+    g_signal_connect(icon_view, "drop-actions-get",
+                     G_CALLBACK(xfdesktop_file_icon_manager_drop_actions_get), fmanager);
+    g_signal_connect(icon_view, "drag-drop-ask",
+                     G_CALLBACK(xfdesktop_file_icon_manager_drag_drop_ask), fmanager);
+    g_signal_connect(icon_view, "drag-drop-item",
+                     G_CALLBACK(xfdesktop_file_icon_manager_drag_drop_item), fmanager);
+    g_signal_connect(icon_view, "drag-drop-items",
+                     G_CALLBACK(xfdesktop_file_icon_manager_drag_drop_items), fmanager);
+    g_signal_connect(icon_view, "drag-data-get",
+                     G_CALLBACK(xfdesktop_file_icon_manager_drag_data_get), fmanager);
+    g_signal_connect(icon_view, "drag-item-data-received",
+                     G_CALLBACK(xfdesktop_file_icon_manager_drag_item_data_received), fmanager);
+    g_signal_connect(icon_view, "drop-propose-action",
+                     G_CALLBACK(xfdesktop_file_icon_manager_drop_propose_action), fmanager);
+    // Below signals allow us to sort icons and replace them where they belong in the newly-sized view
+    g_signal_connect(G_OBJECT(icon_view), "start-grid-resize",
+                     G_CALLBACK(xfdesktop_file_icon_manager_start_grid_resize), fmanager);
+    g_signal_connect(G_OBJECT(icon_view), "end-grid-resize",
+                     G_CALLBACK(xfdesktop_file_icon_manager_end_grid_resize), fmanager);
+
+    if (gtk_widget_get_realized(GTK_WIDGET(icon_view))) {
+        xfdesktop_file_icon_manager_icon_view_realized(GTK_WIDGET(icon_view), fmanager);
+    }
+
+    fmanager->holder = xfdesktop_icon_view_holder_new(screen, desktop, icon_view);
+}
+
+static void
+xfdesktop_file_icon_manager_desktop_added(XfdesktopIconViewManager *manager, XfceDesktop *desktop) {
+    TRACE("entering");
+    if (xfw_monitor_is_primary(xfce_desktop_get_monitor(desktop))) {
+        XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(manager);
+        if (fmanager->holder == NULL || xfdesktop_icon_view_holder_get_desktop(fmanager->holder) != desktop) {
+            DBG("creating new icon view");
+            g_clear_object(&fmanager->holder);
+            create_icon_view(fmanager, desktop);
+            if (fmanager->ready) {
+                XfdesktopIconView *icon_view = xfdesktop_icon_view_holder_get_icon_view(fmanager->holder);
+                xfdesktop_icon_view_set_model(icon_view, GTK_TREE_MODEL(fmanager->filter));
+            } else {
+                xfdesktop_file_icon_model_reload(fmanager->model);
+            }
+        }
+
+    }
+}
+
+static void
+xfdesktop_file_icon_manager_desktop_removed(XfdesktopIconViewManager *manager, XfceDesktop *desktop) {
+    TRACE("entering");
+    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(manager);
+    if (fmanager->holder != NULL && desktop == xfdesktop_icon_view_holder_get_desktop(fmanager->holder)) {
+        DBG("dropping old icon view");
+        g_clear_object(&fmanager->holder);
+
+        GList *desktops = xfdesktop_icon_view_manager_get_desktops(manager);
+        for (GList *l = desktops; l != NULL; l = l->next) {
+            xfdesktop_file_icon_manager_desktop_added(manager, XFCE_DESKTOP(l->data));
+        }
+    }
 }
 
 static GtkMenu *
