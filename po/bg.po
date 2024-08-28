@@ -5,7 +5,7 @@
 # Translators:
 # Kiril Kirilov <cybercop_montana@abv.bg>, 2012-2013
 # Kiril Kirilov <cybercop_montana@abv.bg>, 2012
-# Kiril Kirilov <cybercop_montana@abv.bg>, 2013-2023
+# Kiril Kirilov <cybercop_montana@abv.bg>, 2013-2024
 # Любомир Василев, 2015
 # Miroslav Yordanov <miordanov@i-space.org>, 2004
 # Красимир Беров, 2021
@@ -13,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-03-18 12:53+0100\n"
+"POT-Creation-Date: 2024-08-28 01:02+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
-"Last-Translator: Kiril Kirilov <cybercop_montana@abv.bg>, 2013-2023\n"
+"Last-Translator: Kiril Kirilov <cybercop_montana@abv.bg>, 2013-2024\n"
 "Language-Team: Bulgarian (http://app.transifex.com/xfce/xfdesktop/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -128,27 +128,27 @@ msgid "Arrange icons"
 msgstr "Подреждане на иконите"
 
 #. printf is to be translator-friendly
-#: settings/main.c:1959 src/xfdesktop-file-icon-manager.c:1159
-#: src/xfdesktop-file-icon-manager.c:1759
+#: settings/main.c:1959 src/xfdesktop-file-icon-manager.c:1164
+#: src/xfdesktop-file-icon-manager.c:1764
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Неуспешно изпълнение на \"%s\":"
 
-#: settings/main.c:1960 src/xfdesktop-file-icon-manager.c:1161
-#: src/xfdesktop-file-icon-manager.c:1512
-#: src/xfdesktop-file-icon-manager.c:1760 src/xfdesktop-file-utils.c:555
+#: settings/main.c:1960 src/xfdesktop-file-icon-manager.c:1166
+#: src/xfdesktop-file-icon-manager.c:1517
+#: src/xfdesktop-file-icon-manager.c:1765 src/xfdesktop-file-utils.c:555
 #: src/xfdesktop-file-utils.c:1222 src/xfdesktop-file-utils.c:1247
 #: src/xfdesktop-file-utils.c:1354 src/xfdesktop-file-utils.c:1418
 msgid "Launch Error"
 msgstr "Грешка при стартиране"
 
 #: settings/main.c:1962 settings/xfdesktop-settings-ui.glade:198
-#: src/xfdesktop-file-icon-manager.c:913 src/xfdesktop-file-icon-manager.c:932
-#: src/xfdesktop-file-icon-manager.c:1031
-#: src/xfdesktop-file-icon-manager.c:1163
-#: src/xfdesktop-file-icon-manager.c:1516
-#: src/xfdesktop-file-icon-manager.c:1762
-#: src/xfdesktop-file-icon-manager.c:3381 src/xfdesktop-file-utils.c:558
+#: src/xfdesktop-file-icon-manager.c:918 src/xfdesktop-file-icon-manager.c:937
+#: src/xfdesktop-file-icon-manager.c:1036
+#: src/xfdesktop-file-icon-manager.c:1168
+#: src/xfdesktop-file-icon-manager.c:1521
+#: src/xfdesktop-file-icon-manager.c:1767
+#: src/xfdesktop-file-icon-manager.c:3408 src/xfdesktop-file-utils.c:558
 #: src/xfdesktop-file-utils.c:676 src/xfdesktop-file-utils.c:731
 #: src/xfdesktop-file-utils.c:795 src/xfdesktop-file-utils.c:856
 #: src/xfdesktop-file-utils.c:917 src/xfdesktop-file-utils.c:965
@@ -156,64 +156,64 @@ msgstr "Грешка при стартиране"
 #: src/xfdesktop-file-utils.c:1165 src/xfdesktop-file-utils.c:1226
 #: src/xfdesktop-file-utils.c:1249 src/xfdesktop-file-utils.c:1358
 #: src/xfdesktop-file-utils.c:1422 src/xfdesktop-file-utils.c:1493
-#: src/xfdesktop-file-utils.c:1563 src/xfdesktop-volume-icon.c:461
-#: src/xfdesktop-volume-icon.c:505 src/xfdesktop-volume-icon.c:587
+#: src/xfdesktop-file-utils.c:1563 src/xfdesktop-volume-icon.c:468
+#: src/xfdesktop-volume-icon.c:512 src/xfdesktop-volume-icon.c:594
 msgid "_Close"
 msgstr "_Затваряне"
 
-#: settings/main.c:2131
+#: settings/main.c:2134
 msgid "Image files"
 msgstr "Файлове с изображения"
 
 #. Change the title of the file chooser dialog
-#: settings/main.c:2139
+#: settings/main.c:2142
 msgid "Select a Directory"
 msgstr "Избор на Директория"
 
-#: settings/main.c:2354
+#: settings/main.c:2357
 msgid "Settings manager socket"
 msgstr "Гнездо за управление на настройките"
 
-#: settings/main.c:2354
+#: settings/main.c:2357
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: settings/main.c:2355
+#: settings/main.c:2358
 msgid "Version information"
 msgstr "Сведения за изданието"
 
-#: settings/main.c:2356 src/xfdesktop-application.c:209
+#: settings/main.c:2359 src/xfdesktop-application.c:200
 msgid "Enable debug messages"
 msgstr "Разреши съобщения за грешки"
 
-#: settings/main.c:2380
+#: settings/main.c:2383
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Въведете '%s --help' за показване на потребителското ръководство."
 
-#: settings/main.c:2392
+#: settings/main.c:2395
 msgid "The Xfce development team. All rights reserved."
 msgstr "Екипът за разработка на Xfce. Всички права запазени."
 
-#: settings/main.c:2393
+#: settings/main.c:2396
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Докладвайте за грешки на <%s>."
 
-#: settings/main.c:2400
+#: settings/main.c:2403
 msgid "Desktop Settings"
 msgstr "Настройки на Работния плот"
 
-#: settings/main.c:2402
+#: settings/main.c:2405
 msgid "Unable to contact settings server"
 msgstr "Не може да се свърже със сървъра за настройки"
 
-#: settings/main.c:2404
+#: settings/main.c:2407
 msgid "Quit"
 msgstr "Изход"
 
 #: settings/xfce-backdrop-settings.desktop.in:4
-#: settings/xfdesktop-settings-ui.glade:162 src/xfce-desktop.c:991
+#: settings/xfdesktop-settings-ui.glade:162 src/xfce-desktop.c:984
 msgid "Desktop"
 msgstr "Работен плот"
 
@@ -649,293 +649,293 @@ msgstr "Наистина ли искате да премахнете работ�
 msgid "Remove"
 msgstr "Премахване"
 
-#: src/windowlist.c:312
+#: src/windowlist.c:311
 msgid "Window List"
 msgstr "Списък с прозорци"
 
-#: src/windowlist.c:357
+#: src/windowlist.c:356
 #, c-format
 msgid "<b>Group %d, Workspace %d</b>"
 msgstr "<b>Група %d, Работно място %d</b>"
 
-#: src/windowlist.c:359
+#: src/windowlist.c:358
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>Работно място %d</b>"
 
-#: src/windowlist.c:449 src/windowlist.c:451
+#: src/windowlist.c:448 src/windowlist.c:450
 msgid "_Add Workspace"
 msgstr "_Добавяне на работно място"
 
-#: src/windowlist.c:465
+#: src/windowlist.c:464
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "_Премахване на работно място %d"
 
-#: src/windowlist.c:468
+#: src/windowlist.c:467
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "_Премахване на работно място '%s'"
 
-#: src/xfdesktop-application.c:201
+#: src/xfdesktop-application.c:192
 msgid "Display version information"
 msgstr "Покажи сведения за изданието"
 
-#: src/xfdesktop-application.c:202
+#: src/xfdesktop-application.c:193
 msgid "Reload all settings"
 msgstr "Презареждане на всички настройки"
 
-#: src/xfdesktop-application.c:203
+#: src/xfdesktop-application.c:194
 msgid "Advance to the next wallpaper on the current workspace"
 msgstr "Преминаване към следващият тапет на текущото работно място"
 
-#: src/xfdesktop-application.c:204
+#: src/xfdesktop-application.c:195
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "Покажи изскачащо меню (в текущата позиция на мишката)"
 
-#: src/xfdesktop-application.c:205
+#: src/xfdesktop-application.c:196
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "Покажи списъка с прозорци (в текущата позиция на мишката)"
 
-#: src/xfdesktop-application.c:207
+#: src/xfdesktop-application.c:198
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "Автоматично подреждане на иконите върху десктопа"
 
-#: src/xfdesktop-application.c:210
+#: src/xfdesktop-application.c:201
 msgid "Disable debug messages"
 msgstr "Забрани съобщения за грешки"
 
-#: src/xfdesktop-application.c:212
+#: src/xfdesktop-application.c:203
 msgid "Do not wait for a window manager on startup"
 msgstr "Не чакайте мениджъра на прозорците да стартира"
 
-#: src/xfdesktop-application.c:214
+#: src/xfdesktop-application.c:205
 msgid "Cause xfdesktop to quit"
 msgstr "Причина за изключване на xfdesktop "
 
-#: src/xfdesktop-application.c:782
+#: src/xfdesktop-application.c:691
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Това е %s версия %s, работеща на Xfce %s.\n"
 
-#: src/xfdesktop-application.c:784
+#: src/xfdesktop-application.c:693
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Създаден с GTK+ %d.%d.%d, свързан с GTK+ %d.%d.%d."
 
-#: src/xfdesktop-application.c:788
+#: src/xfdesktop-application.c:697
 msgid "Build options:\n"
 msgstr "Опции за изграждане:\n"
 
-#: src/xfdesktop-application.c:789
+#: src/xfdesktop-application.c:698
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "Меню на Работния плот:  %s\n"
 
-#: src/xfdesktop-application.c:791 src/xfdesktop-application.c:798
-#: src/xfdesktop-application.c:805
+#: src/xfdesktop-application.c:700 src/xfdesktop-application.c:707
+#: src/xfdesktop-application.c:714
 msgid "enabled"
 msgstr "включено"
 
-#: src/xfdesktop-application.c:793 src/xfdesktop-application.c:800
-#: src/xfdesktop-application.c:807
+#: src/xfdesktop-application.c:702 src/xfdesktop-application.c:709
+#: src/xfdesktop-application.c:716
 msgid "disabled"
 msgstr "изключено"
 
-#: src/xfdesktop-application.c:796
+#: src/xfdesktop-application.c:705
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "Икони на Работния плот: %s\n"
 
-#: src/xfdesktop-application.c:803
+#: src/xfdesktop-application.c:712
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "Файлове с икони за Работния плот:  %s\n"
 
-#: src/xfdesktop-file-icon-manager.c:905 src/xfdesktop-file-icon-manager.c:923
+#: src/xfdesktop-file-icon-manager.c:910 src/xfdesktop-file-icon-manager.c:928
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
 msgstr "Неуспешно създаване на директория \"%s\" на работния плот"
 
-#: src/xfdesktop-file-icon-manager.c:910 src/xfdesktop-file-icon-manager.c:928
+#: src/xfdesktop-file-icon-manager.c:915 src/xfdesktop-file-icon-manager.c:933
 msgid "Desktop Folder Error"
 msgstr "Грешка в десктоп директория"
 
-#: src/xfdesktop-file-icon-manager.c:930
+#: src/xfdesktop-file-icon-manager.c:935
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr "Нормален файл със същото име вече съществува. Моля, изтрийте или го преименувате."
 
-#: src/xfdesktop-file-icon-manager.c:1028 src/xfdesktop-file-utils.c:727
+#: src/xfdesktop-file-icon-manager.c:1033 src/xfdesktop-file-utils.c:727
 #: src/xfdesktop-file-utils.c:791
 msgid "Rename Error"
 msgstr "Грешка при преименуване"
 
-#: src/xfdesktop-file-icon-manager.c:1029 src/xfdesktop-file-utils.c:792
+#: src/xfdesktop-file-icon-manager.c:1034 src/xfdesktop-file-utils.c:792
 msgid "The files could not be renamed"
 msgstr "Файловете не могат да бъдат преименувани"
 
-#: src/xfdesktop-file-icon-manager.c:1030
+#: src/xfdesktop-file-icon-manager.c:1035
 msgid "None of the icons selected support being renamed."
 msgstr "Нито една от избраните икони не може да бъде преименувана."
 
-#: src/xfdesktop-file-icon-manager.c:1359
+#: src/xfdesktop-file-icon-manager.c:1364
 msgid ""
 "This will reorder all desktop items and place them on different screen positions.\n"
 "Are you sure?"
 msgstr "Това ще пренареди всички елементи на работния плот и ще ги постави на различни позиции на екрана.\nСигурни ли сте?"
 
-#: src/xfdesktop-file-icon-manager.c:1363
+#: src/xfdesktop-file-icon-manager.c:1368
 msgid "_OK"
 msgstr "_ОК"
 
-#: src/xfdesktop-file-icon-manager.c:1438
+#: src/xfdesktop-file-icon-manager.c:1443
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "_Отваряне с \"%s\""
 
-#: src/xfdesktop-file-icon-manager.c:1441
+#: src/xfdesktop-file-icon-manager.c:1446
 #, c-format
 msgid "Open With \"%s\""
 msgstr "Отваряне с \"%s\""
 
-#: src/xfdesktop-file-icon-manager.c:1514
+#: src/xfdesktop-file-icon-manager.c:1519
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr "Неуспешно изпълнение на \"exo-desktop-item-edit\", който е необходим за създаване и редактиране на стартери и връзките на работния плот."
 
-#: src/xfdesktop-file-icon-manager.c:1878
+#: src/xfdesktop-file-icon-manager.c:1883
 msgid "_Open all"
 msgstr "_Отваряне на всички"
 
-#: src/xfdesktop-file-icon-manager.c:1898
+#: src/xfdesktop-file-icon-manager.c:1903
 msgid "Create _Launcher..."
 msgstr "Създаване на _стартер..."
 
-#: src/xfdesktop-file-icon-manager.c:1912
+#: src/xfdesktop-file-icon-manager.c:1917
 msgid "Create _URL Link..."
 msgstr "Създаване на _интернет връзка..."
 
-#: src/xfdesktop-file-icon-manager.c:1926
+#: src/xfdesktop-file-icon-manager.c:1931
 msgid "Create _Folder..."
 msgstr "Създаване на _папка..."
 
-#: src/xfdesktop-file-icon-manager.c:1938
+#: src/xfdesktop-file-icon-manager.c:1943
 msgid "Create _Document"
 msgstr "Създаване на документ"
 
-#: src/xfdesktop-file-icon-manager.c:1963
+#: src/xfdesktop-file-icon-manager.c:1968
 msgid "No templates installed"
 msgstr "Няма инсталирани шаблони"
 
-#: src/xfdesktop-file-icon-manager.c:1979
+#: src/xfdesktop-file-icon-manager.c:1984
 msgid "_Empty File"
 msgstr "_Празен файл"
 
-#: src/xfdesktop-file-icon-manager.c:1989
+#: src/xfdesktop-file-icon-manager.c:1994
 msgid "_Open All"
 msgstr "_Отваряне на всички"
 
-#: src/xfdesktop-file-icon-manager.c:1989
-#: src/xfdesktop-special-file-icon.c:478 src/xfdesktop-volume-icon.c:833
+#: src/xfdesktop-file-icon-manager.c:1994
+#: src/xfdesktop-special-file-icon.c:478 src/xfdesktop-volume-icon.c:830
 msgid "_Open"
 msgstr "_Отваряне"
 
-#: src/xfdesktop-file-icon-manager.c:2006
+#: src/xfdesktop-file-icon-manager.c:2011
 msgid "_Execute"
 msgstr "_Изпълнение"
 
-#: src/xfdesktop-file-icon-manager.c:2024
-msgid "_Edit Launcher"
-msgstr "_Редактиране на стартер"
+#: src/xfdesktop-file-icon-manager.c:2029
+msgid "Edit _Launcher"
+msgstr "Редактиране на _стартер"
 
-#: src/xfdesktop-file-icon-manager.c:2083
-msgid "Open With"
+#: src/xfdesktop-file-icon-manager.c:2088
+msgid "Ope_n With"
 msgstr "Отваряне с"
 
-#: src/xfdesktop-file-icon-manager.c:2110
-#: src/xfdesktop-file-icon-manager.c:2135
-msgid "Open With Other _Application..."
-msgstr "Отваряне с друга _програма..."
+#: src/xfdesktop-file-icon-manager.c:2115
+#: src/xfdesktop-file-icon-manager.c:2144
+msgid "Ope_n With Other Application..."
+msgstr "Отваряне с _друга програма..."
 
-#: src/xfdesktop-file-icon-manager.c:2121
-msgid "Set _Default Application..."
-msgstr "Задаване на програма по подразбиране..."
+#: src/xfdesktop-file-icon-manager.c:2130
+msgid "Set Defa_ult Application..."
+msgstr "Задаване на приложение по _подразбиране..."
 
-#: src/xfdesktop-file-icon-manager.c:2153
+#: src/xfdesktop-file-icon-manager.c:2162
 msgid "_Paste"
 msgstr "_Поставяне"
 
-#: src/xfdesktop-file-icon-manager.c:2171
+#: src/xfdesktop-file-icon-manager.c:2180
 msgid "Cu_t"
 msgstr "_Отрязване"
 
-#: src/xfdesktop-file-icon-manager.c:2183
+#: src/xfdesktop-file-icon-manager.c:2192
 msgid "_Copy"
 msgstr "_Копиране"
 
-#: src/xfdesktop-file-icon-manager.c:2195
+#: src/xfdesktop-file-icon-manager.c:2204
 msgid "Paste Into Folder"
 msgstr "Поставяне в Папка"
 
-#: src/xfdesktop-file-icon-manager.c:2214
+#: src/xfdesktop-file-icon-manager.c:2223
 msgid "Mo_ve to Trash"
 msgstr "Преместване в Кошчето"
 
-#: src/xfdesktop-file-icon-manager.c:2227
+#: src/xfdesktop-file-icon-manager.c:2236
 msgid "_Delete"
 msgstr "_Изтриване"
 
-#: src/xfdesktop-file-icon-manager.c:2245
+#: src/xfdesktop-file-icon-manager.c:2254
 msgid "_Rename..."
 msgstr "_Преименуване..."
 
-#: src/xfdesktop-file-icon-manager.c:2308
+#: src/xfdesktop-file-icon-manager.c:2324
 msgid "_Open in New Window"
 msgstr "_Отваряне в нов прозорец"
 
-#: src/xfdesktop-file-icon-manager.c:2317
+#: src/xfdesktop-file-icon-manager.c:2333
 msgid "Arrange Desktop _Icons"
 msgstr "Подреждане на иконите върху Работния плот"
 
-#: src/xfdesktop-file-icon-manager.c:2328
+#: src/xfdesktop-file-icon-manager.c:2344
 msgid "_Next Background"
 msgstr "_Следващ фон"
 
-#: src/xfdesktop-file-icon-manager.c:2338
+#: src/xfdesktop-file-icon-manager.c:2359
 msgid "Desktop _Settings..."
 msgstr "Настройки на Работния плот..."
 
-#: src/xfdesktop-file-icon-manager.c:2346 src/xfdesktop-volume-icon.c:900
-msgid "P_roperties..."
-msgstr "_Свойства..."
+#: src/xfdesktop-file-icon-manager.c:2367 src/xfdesktop-volume-icon.c:897
+msgid "_Properties..."
+msgstr "Свойства..."
 
-#: src/xfdesktop-file-icon-manager.c:3378
+#: src/xfdesktop-file-icon-manager.c:3405
 msgid "Load Error"
 msgstr "Грешка при зареждане"
 
-#: src/xfdesktop-file-icon-manager.c:3380
+#: src/xfdesktop-file-icon-manager.c:3407
 msgid "Failed to load the desktop folder"
 msgstr "Проблем при зареждането на десктоп папка"
 
-#: src/xfdesktop-file-icon-manager.c:3785
+#: src/xfdesktop-file-icon-manager.c:3819
 msgid "Copy _Here"
 msgstr "Копиране тук"
 
-#: src/xfdesktop-file-icon-manager.c:3785
+#: src/xfdesktop-file-icon-manager.c:3819
 msgid "_Move Here"
 msgstr "Преместване тук"
 
-#: src/xfdesktop-file-icon-manager.c:3785
+#: src/xfdesktop-file-icon-manager.c:3819
 msgid "_Link Here"
 msgstr "Връзка тук"
 
-#: src/xfdesktop-file-icon-manager.c:3820
+#: src/xfdesktop-file-icon-manager.c:3854
 msgid "_Cancel"
 msgstr "_Отказ"
 
-#: src/xfdesktop-file-icon-manager.c:3962
+#: src/xfdesktop-file-icon-manager.c:3996
 msgid "Untitled document"
 msgstr "Неозаглавен документ"
 
@@ -1120,7 +1120,7 @@ msgstr "Устройството \"%s\" се изважда. Това може �
 msgid "Eject Finished"
 msgstr "Изваждането приключи"
 
-#: src/xfdesktop-regular-file-icon.c:745
+#: src/xfdesktop-regular-file-icon.c:737
 #, c-format
 msgid ""
 "Name: %s\n"
@@ -1154,15 +1154,15 @@ msgstr "%s\nРазмер: %s\nПоследна промяна: %s"
 msgid "_Empty Trash"
 msgstr "Изпразване на Кошчето"
 
-#: src/xfdesktop-volume-icon.c:413
+#: src/xfdesktop-volume-icon.c:420
 msgid "(not mounted)"
 msgstr "(не е монтирано)"
 
-#: src/xfdesktop-volume-icon.c:414 src/xfdesktop-volume-icon.c:415
+#: src/xfdesktop-volume-icon.c:421 src/xfdesktop-volume-icon.c:422
 msgid "(unknown)"
 msgstr "(неизвестно)"
 
-#: src/xfdesktop-volume-icon.c:419
+#: src/xfdesktop-volume-icon.c:426
 #, c-format
 msgid ""
 "Name: %s\n"
@@ -1172,52 +1172,52 @@ msgid ""
 "Free Space: %s"
 msgstr "Име: %s\nТип: %s\nМонтирано в: %s\nРазмер: %s\nСвободно място: %s"
 
-#: src/xfdesktop-volume-icon.c:421
+#: src/xfdesktop-volume-icon.c:428
 msgid "Removable Volume"
 msgstr "Сменяемо устройство"
 
-#: src/xfdesktop-volume-icon.c:454 src/xfdesktop-volume-icon.c:498
+#: src/xfdesktop-volume-icon.c:461 src/xfdesktop-volume-icon.c:505
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "Неуспешно изваждане на \"%s\""
 
-#: src/xfdesktop-volume-icon.c:459 src/xfdesktop-volume-icon.c:503
+#: src/xfdesktop-volume-icon.c:466 src/xfdesktop-volume-icon.c:510
 msgid "Eject Failed"
 msgstr "Изваждането е неуспешно"
 
-#: src/xfdesktop-volume-icon.c:582
+#: src/xfdesktop-volume-icon.c:589
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "Неуспешно монтиране на \"%s\""
 
-#: src/xfdesktop-volume-icon.c:585
+#: src/xfdesktop-volume-icon.c:592
 msgid "Mount Failed"
 msgstr "Монтирането е неуспешно"
 
-#: src/xfdesktop-volume-icon.c:859
-msgid "_Safely Remove Volume"
-msgstr "_Безопасно премахване на устройството"
+#: src/xfdesktop-volume-icon.c:856
+msgid "Safely _Remove Volume"
+msgstr "Безопасно _премахване на устройството"
 
-#: src/xfdesktop-volume-icon.c:862
+#: src/xfdesktop-volume-icon.c:859
 msgid "_Disconnect Volume"
 msgstr "_Демонтиране на устройството"
 
-#: src/xfdesktop-volume-icon.c:865
-msgid "_Stop the Multi-Disk Drive"
-msgstr "_Спиране на мулти-дисковото устройство"
+#: src/xfdesktop-volume-icon.c:862
+msgid "Stop the _Multi-Disk Drive"
+msgstr "Спиране на мултидисковото устройство"
 
-#: src/xfdesktop-volume-icon.c:868
+#: src/xfdesktop-volume-icon.c:865
 msgid "_Lock Volume"
 msgstr "_Заключване на устройството"
 
-#: src/xfdesktop-volume-icon.c:871
-msgid "E_ject Volume"
-msgstr "Изваждане на устройството"
+#: src/xfdesktop-volume-icon.c:868
+msgid "_Eject Volume"
+msgstr "_Изваждане на устройството"
 
-#: src/xfdesktop-volume-icon.c:880
+#: src/xfdesktop-volume-icon.c:877
 msgid "_Unmount Volume"
 msgstr "_Демонтиране на устройството"
 
-#: src/xfdesktop-volume-icon.c:887
+#: src/xfdesktop-volume-icon.c:884
 msgid "_Mount Volume"
 msgstr "_Монтиране на устройството"
