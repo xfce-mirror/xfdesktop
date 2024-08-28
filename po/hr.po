@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-03-18 12:53+0100\n"
+"POT-Creation-Date: 2024-08-28 01:02+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Ivica  Kolić <ikoli@yahoo.com>, 2013-2015,2019,2023\n"
 "Language-Team: Croatian (http://app.transifex.com/xfce/xfdesktop/language/hr/)\n"
@@ -129,27 +129,27 @@ msgid "Arrange icons"
 msgstr "Uredite ikone"
 
 #. printf is to be translator-friendly
-#: settings/main.c:1959 src/xfdesktop-file-icon-manager.c:1159
-#: src/xfdesktop-file-icon-manager.c:1759
+#: settings/main.c:1959 src/xfdesktop-file-icon-manager.c:1164
+#: src/xfdesktop-file-icon-manager.c:1764
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Nije moguće pokrenuti \"%s\":"
 
-#: settings/main.c:1960 src/xfdesktop-file-icon-manager.c:1161
-#: src/xfdesktop-file-icon-manager.c:1512
-#: src/xfdesktop-file-icon-manager.c:1760 src/xfdesktop-file-utils.c:555
+#: settings/main.c:1960 src/xfdesktop-file-icon-manager.c:1166
+#: src/xfdesktop-file-icon-manager.c:1517
+#: src/xfdesktop-file-icon-manager.c:1765 src/xfdesktop-file-utils.c:555
 #: src/xfdesktop-file-utils.c:1222 src/xfdesktop-file-utils.c:1247
 #: src/xfdesktop-file-utils.c:1354 src/xfdesktop-file-utils.c:1418
 msgid "Launch Error"
 msgstr "Greška pokretanja"
 
 #: settings/main.c:1962 settings/xfdesktop-settings-ui.glade:198
-#: src/xfdesktop-file-icon-manager.c:913 src/xfdesktop-file-icon-manager.c:932
-#: src/xfdesktop-file-icon-manager.c:1031
-#: src/xfdesktop-file-icon-manager.c:1163
-#: src/xfdesktop-file-icon-manager.c:1516
-#: src/xfdesktop-file-icon-manager.c:1762
-#: src/xfdesktop-file-icon-manager.c:3381 src/xfdesktop-file-utils.c:558
+#: src/xfdesktop-file-icon-manager.c:918 src/xfdesktop-file-icon-manager.c:937
+#: src/xfdesktop-file-icon-manager.c:1036
+#: src/xfdesktop-file-icon-manager.c:1168
+#: src/xfdesktop-file-icon-manager.c:1521
+#: src/xfdesktop-file-icon-manager.c:1767
+#: src/xfdesktop-file-icon-manager.c:3408 src/xfdesktop-file-utils.c:558
 #: src/xfdesktop-file-utils.c:676 src/xfdesktop-file-utils.c:731
 #: src/xfdesktop-file-utils.c:795 src/xfdesktop-file-utils.c:856
 #: src/xfdesktop-file-utils.c:917 src/xfdesktop-file-utils.c:965
@@ -157,64 +157,64 @@ msgstr "Greška pokretanja"
 #: src/xfdesktop-file-utils.c:1165 src/xfdesktop-file-utils.c:1226
 #: src/xfdesktop-file-utils.c:1249 src/xfdesktop-file-utils.c:1358
 #: src/xfdesktop-file-utils.c:1422 src/xfdesktop-file-utils.c:1493
-#: src/xfdesktop-file-utils.c:1563 src/xfdesktop-volume-icon.c:461
-#: src/xfdesktop-volume-icon.c:505 src/xfdesktop-volume-icon.c:587
+#: src/xfdesktop-file-utils.c:1563 src/xfdesktop-volume-icon.c:468
+#: src/xfdesktop-volume-icon.c:512 src/xfdesktop-volume-icon.c:594
 msgid "_Close"
 msgstr "_Zatvori"
 
-#: settings/main.c:2131
+#: settings/main.c:2134
 msgid "Image files"
 msgstr "Datoteke slika"
 
 #. Change the title of the file chooser dialog
-#: settings/main.c:2139
+#: settings/main.c:2142
 msgid "Select a Directory"
 msgstr "Odaberi direktorij"
 
-#: settings/main.c:2354
+#: settings/main.c:2357
 msgid "Settings manager socket"
 msgstr "Socket upravitelja postavkama"
 
-#: settings/main.c:2354
+#: settings/main.c:2357
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: settings/main.c:2355
+#: settings/main.c:2358
 msgid "Version information"
 msgstr "Informacija o verziji"
 
-#: settings/main.c:2356 src/xfdesktop-application.c:209
+#: settings/main.c:2359 src/xfdesktop-application.c:200
 msgid "Enable debug messages"
 msgstr "Omogući poruke otklanjanja grešaka"
 
-#: settings/main.c:2380
+#: settings/main.c:2383
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Upiši '%s -help' za upotrebu."
 
-#: settings/main.c:2392
+#: settings/main.c:2395
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce razvojni tim.Sva prava pridržana."
 
-#: settings/main.c:2393
+#: settings/main.c:2396
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Prijavite probleme <%s>."
 
-#: settings/main.c:2400
+#: settings/main.c:2403
 msgid "Desktop Settings"
 msgstr "Postavke radne površine"
 
-#: settings/main.c:2402
+#: settings/main.c:2405
 msgid "Unable to contact settings server"
 msgstr "Ne mogu se spojiti na server za postavke"
 
-#: settings/main.c:2404
+#: settings/main.c:2407
 msgid "Quit"
 msgstr "Ugasi"
 
 #: settings/xfce-backdrop-settings.desktop.in:4
-#: settings/xfdesktop-settings-ui.glade:162 src/xfce-desktop.c:991
+#: settings/xfdesktop-settings-ui.glade:162 src/xfce-desktop.c:984
 msgid "Desktop"
 msgstr "Radna površina"
 
@@ -650,293 +650,293 @@ msgstr "Želite li doista ukloniti radni prostor  '%s'?"
 msgid "Remove"
 msgstr "Ukloni"
 
-#: src/windowlist.c:312
+#: src/windowlist.c:311
 msgid "Window List"
 msgstr "Lista prozora"
 
-#: src/windowlist.c:357
+#: src/windowlist.c:356
 #, c-format
 msgid "<b>Group %d, Workspace %d</b>"
 msgstr ""
 
-#: src/windowlist.c:359
+#: src/windowlist.c:358
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>Radni prostor %d</b>"
 
-#: src/windowlist.c:449 src/windowlist.c:451
+#: src/windowlist.c:448 src/windowlist.c:450
 msgid "_Add Workspace"
 msgstr "_Dodaj radni prostor"
 
-#: src/windowlist.c:465
+#: src/windowlist.c:464
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "_Ukloni radni prostor %d"
 
-#: src/windowlist.c:468
+#: src/windowlist.c:467
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "_Ukloni radni prostor '%s'"
 
-#: src/xfdesktop-application.c:201
+#: src/xfdesktop-application.c:192
 msgid "Display version information"
 msgstr "Prikaži informacije o verziji"
 
-#: src/xfdesktop-application.c:202
+#: src/xfdesktop-application.c:193
 msgid "Reload all settings"
 msgstr "Ponovno učitaj sve postavke"
 
-#: src/xfdesktop-application.c:203
+#: src/xfdesktop-application.c:194
 msgid "Advance to the next wallpaper on the current workspace"
 msgstr "Nastavi do slijedeće pozadine na trenutnom radnom prostoru"
 
-#: src/xfdesktop-application.c:204
+#: src/xfdesktop-application.c:195
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "Skočni prozor (na trenutnoj poziciji miša)"
 
-#: src/xfdesktop-application.c:205
+#: src/xfdesktop-application.c:196
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "Skočni prozor liste prozora (na trenutnoj poziciji miša)"
 
-#: src/xfdesktop-application.c:207
+#: src/xfdesktop-application.c:198
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "Automatski uredite sve ikone na radnoj površini"
 
-#: src/xfdesktop-application.c:210
+#: src/xfdesktop-application.c:201
 msgid "Disable debug messages"
 msgstr "Onemogući poruke otklanjanja grešaka"
 
-#: src/xfdesktop-application.c:212
+#: src/xfdesktop-application.c:203
 msgid "Do not wait for a window manager on startup"
 msgstr "Ne čekaj upravitelja prozora pri pokretanju"
 
-#: src/xfdesktop-application.c:214
+#: src/xfdesktop-application.c:205
 msgid "Cause xfdesktop to quit"
 msgstr "Uzrokuje  xfdesktop isključivanje"
 
-#: src/xfdesktop-application.c:782
+#: src/xfdesktop-application.c:691
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Ovo je %s verzija %s, pokrenuta na Xfce %s.\n"
 
-#: src/xfdesktop-application.c:784
+#: src/xfdesktop-application.c:693
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Izrađeno sa GTK+ %d.%d.%d, povezan s GTK +%d.%d.%d."
 
-#: src/xfdesktop-application.c:788
+#: src/xfdesktop-application.c:697
 msgid "Build options:\n"
 msgstr "Opcije izrade:\n"
 
-#: src/xfdesktop-application.c:789
+#: src/xfdesktop-application.c:698
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "Izbornik radne površine: %s\n"
 
-#: src/xfdesktop-application.c:791 src/xfdesktop-application.c:798
-#: src/xfdesktop-application.c:805
+#: src/xfdesktop-application.c:700 src/xfdesktop-application.c:707
+#: src/xfdesktop-application.c:714
 msgid "enabled"
 msgstr "omogućeno"
 
-#: src/xfdesktop-application.c:793 src/xfdesktop-application.c:800
-#: src/xfdesktop-application.c:807
+#: src/xfdesktop-application.c:702 src/xfdesktop-application.c:709
+#: src/xfdesktop-application.c:716
 msgid "disabled"
 msgstr "onemogućeno"
 
-#: src/xfdesktop-application.c:796
+#: src/xfdesktop-application.c:705
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "Ikone radne površine: %s\n"
 
-#: src/xfdesktop-application.c:803
+#: src/xfdesktop-application.c:712
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "Ikone datoteke radne površine: %s\n"
 
-#: src/xfdesktop-file-icon-manager.c:905 src/xfdesktop-file-icon-manager.c:923
+#: src/xfdesktop-file-icon-manager.c:910 src/xfdesktop-file-icon-manager.c:928
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
 msgstr "Ne mogu kreirati mapu radne površine \"%s\""
 
-#: src/xfdesktop-file-icon-manager.c:910 src/xfdesktop-file-icon-manager.c:928
+#: src/xfdesktop-file-icon-manager.c:915 src/xfdesktop-file-icon-manager.c:933
 msgid "Desktop Folder Error"
 msgstr "Greška mape radne površine"
 
-#: src/xfdesktop-file-icon-manager.c:930
+#: src/xfdesktop-file-icon-manager.c:935
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr "Normalna datoteka s istim imenom već postoji.Molim izbrišite je ili preimenujte."
 
-#: src/xfdesktop-file-icon-manager.c:1028 src/xfdesktop-file-utils.c:727
+#: src/xfdesktop-file-icon-manager.c:1033 src/xfdesktop-file-utils.c:727
 #: src/xfdesktop-file-utils.c:791
 msgid "Rename Error"
 msgstr "Greška preimenovanja"
 
-#: src/xfdesktop-file-icon-manager.c:1029 src/xfdesktop-file-utils.c:792
+#: src/xfdesktop-file-icon-manager.c:1034 src/xfdesktop-file-utils.c:792
 msgid "The files could not be renamed"
 msgstr "Datoteke se ne može preimenovati"
 
-#: src/xfdesktop-file-icon-manager.c:1030
+#: src/xfdesktop-file-icon-manager.c:1035
 msgid "None of the icons selected support being renamed."
 msgstr "Nijedna izabrana ikona ne podržava preimenovanje."
 
-#: src/xfdesktop-file-icon-manager.c:1359
+#: src/xfdesktop-file-icon-manager.c:1364
 msgid ""
 "This will reorder all desktop items and place them on different screen positions.\n"
 "Are you sure?"
 msgstr ""
 
-#: src/xfdesktop-file-icon-manager.c:1363
+#: src/xfdesktop-file-icon-manager.c:1368
 msgid "_OK"
 msgstr "_U redu"
 
-#: src/xfdesktop-file-icon-manager.c:1438
+#: src/xfdesktop-file-icon-manager.c:1443
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "_Otvori pomoću \"%s\""
 
-#: src/xfdesktop-file-icon-manager.c:1441
+#: src/xfdesktop-file-icon-manager.c:1446
 #, c-format
 msgid "Open With \"%s\""
 msgstr "Otvori pomoću \"%s\""
 
-#: src/xfdesktop-file-icon-manager.c:1514
+#: src/xfdesktop-file-icon-manager.c:1519
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr "Ne mogu pokrenuti \"exo-desktop-item-edit\" što je potrebno za kreiranje i uređivanje pokretača i poveznica na radnoj površini."
 
-#: src/xfdesktop-file-icon-manager.c:1878
+#: src/xfdesktop-file-icon-manager.c:1883
 msgid "_Open all"
 msgstr "_Otvori sve"
 
-#: src/xfdesktop-file-icon-manager.c:1898
+#: src/xfdesktop-file-icon-manager.c:1903
 msgid "Create _Launcher..."
 msgstr "Napravi _pokretač..."
 
-#: src/xfdesktop-file-icon-manager.c:1912
+#: src/xfdesktop-file-icon-manager.c:1917
 msgid "Create _URL Link..."
 msgstr "Napravi _URL poveznicu..."
 
-#: src/xfdesktop-file-icon-manager.c:1926
+#: src/xfdesktop-file-icon-manager.c:1931
 msgid "Create _Folder..."
 msgstr "Napravi _mapu..."
 
-#: src/xfdesktop-file-icon-manager.c:1938
+#: src/xfdesktop-file-icon-manager.c:1943
 msgid "Create _Document"
 msgstr "Napravi _dokument"
 
-#: src/xfdesktop-file-icon-manager.c:1963
+#: src/xfdesktop-file-icon-manager.c:1968
 msgid "No templates installed"
 msgstr "Nema instaliranih predložaka"
 
-#: src/xfdesktop-file-icon-manager.c:1979
+#: src/xfdesktop-file-icon-manager.c:1984
 msgid "_Empty File"
 msgstr "_Prazna datoteka"
 
-#: src/xfdesktop-file-icon-manager.c:1989
+#: src/xfdesktop-file-icon-manager.c:1994
 msgid "_Open All"
 msgstr "_Otvori sve"
 
-#: src/xfdesktop-file-icon-manager.c:1989
-#: src/xfdesktop-special-file-icon.c:478 src/xfdesktop-volume-icon.c:833
+#: src/xfdesktop-file-icon-manager.c:1994
+#: src/xfdesktop-special-file-icon.c:478 src/xfdesktop-volume-icon.c:830
 msgid "_Open"
 msgstr "_Otvori"
 
-#: src/xfdesktop-file-icon-manager.c:2006
+#: src/xfdesktop-file-icon-manager.c:2011
 msgid "_Execute"
 msgstr "_Izvrši"
 
-#: src/xfdesktop-file-icon-manager.c:2024
-msgid "_Edit Launcher"
-msgstr "_Uredi pokretač"
+#: src/xfdesktop-file-icon-manager.c:2029
+msgid "Edit _Launcher"
+msgstr ""
 
-#: src/xfdesktop-file-icon-manager.c:2083
-msgid "Open With"
-msgstr "Otvori pomoću"
+#: src/xfdesktop-file-icon-manager.c:2088
+msgid "Ope_n With"
+msgstr ""
 
-#: src/xfdesktop-file-icon-manager.c:2110
-#: src/xfdesktop-file-icon-manager.c:2135
-msgid "Open With Other _Application..."
-msgstr "Otvori sa drugim _programom..."
+#: src/xfdesktop-file-icon-manager.c:2115
+#: src/xfdesktop-file-icon-manager.c:2144
+msgid "Ope_n With Other Application..."
+msgstr ""
 
-#: src/xfdesktop-file-icon-manager.c:2121
-msgid "Set _Default Application..."
-msgstr "Postavi zadani program..."
+#: src/xfdesktop-file-icon-manager.c:2130
+msgid "Set Defa_ult Application..."
+msgstr ""
 
-#: src/xfdesktop-file-icon-manager.c:2153
+#: src/xfdesktop-file-icon-manager.c:2162
 msgid "_Paste"
 msgstr "Zalije_pi"
 
-#: src/xfdesktop-file-icon-manager.c:2171
+#: src/xfdesktop-file-icon-manager.c:2180
 msgid "Cu_t"
 msgstr "Izrež_i"
 
-#: src/xfdesktop-file-icon-manager.c:2183
+#: src/xfdesktop-file-icon-manager.c:2192
 msgid "_Copy"
 msgstr "_Kopiraj"
 
-#: src/xfdesktop-file-icon-manager.c:2195
+#: src/xfdesktop-file-icon-manager.c:2204
 msgid "Paste Into Folder"
 msgstr "Zalijepi u mapu"
 
-#: src/xfdesktop-file-icon-manager.c:2214
+#: src/xfdesktop-file-icon-manager.c:2223
 msgid "Mo_ve to Trash"
 msgstr "Premje_sti u smeće"
 
-#: src/xfdesktop-file-icon-manager.c:2227
+#: src/xfdesktop-file-icon-manager.c:2236
 msgid "_Delete"
 msgstr "_Obriši"
 
-#: src/xfdesktop-file-icon-manager.c:2245
+#: src/xfdesktop-file-icon-manager.c:2254
 msgid "_Rename..."
 msgstr "_Preimenuj..."
 
-#: src/xfdesktop-file-icon-manager.c:2308
+#: src/xfdesktop-file-icon-manager.c:2324
 msgid "_Open in New Window"
 msgstr "_Otvori u novom prozoru"
 
-#: src/xfdesktop-file-icon-manager.c:2317
+#: src/xfdesktop-file-icon-manager.c:2333
 msgid "Arrange Desktop _Icons"
 msgstr "Uredite ikone _radne površine"
 
-#: src/xfdesktop-file-icon-manager.c:2328
+#: src/xfdesktop-file-icon-manager.c:2344
 msgid "_Next Background"
 msgstr "_Sljedeća pozadina"
 
-#: src/xfdesktop-file-icon-manager.c:2338
+#: src/xfdesktop-file-icon-manager.c:2359
 msgid "Desktop _Settings..."
 msgstr "Postavke _radne površine..."
 
-#: src/xfdesktop-file-icon-manager.c:2346 src/xfdesktop-volume-icon.c:900
-msgid "P_roperties..."
-msgstr "S_vojstva..."
+#: src/xfdesktop-file-icon-manager.c:2367 src/xfdesktop-volume-icon.c:897
+msgid "_Properties..."
+msgstr "_Svojstva..."
 
-#: src/xfdesktop-file-icon-manager.c:3378
+#: src/xfdesktop-file-icon-manager.c:3405
 msgid "Load Error"
 msgstr "Greška učitavanja"
 
-#: src/xfdesktop-file-icon-manager.c:3380
+#: src/xfdesktop-file-icon-manager.c:3407
 msgid "Failed to load the desktop folder"
 msgstr "Neuspjelo učitavanje mape radne površine"
 
-#: src/xfdesktop-file-icon-manager.c:3785
+#: src/xfdesktop-file-icon-manager.c:3819
 msgid "Copy _Here"
 msgstr "Kopiraj _ovdje"
 
-#: src/xfdesktop-file-icon-manager.c:3785
+#: src/xfdesktop-file-icon-manager.c:3819
 msgid "_Move Here"
 msgstr "_Premjesti ovdje"
 
-#: src/xfdesktop-file-icon-manager.c:3785
+#: src/xfdesktop-file-icon-manager.c:3819
 msgid "_Link Here"
 msgstr "_Poveznica ovdje"
 
-#: src/xfdesktop-file-icon-manager.c:3820
+#: src/xfdesktop-file-icon-manager.c:3854
 msgid "_Cancel"
 msgstr "_Odustani"
 
-#: src/xfdesktop-file-icon-manager.c:3962
+#: src/xfdesktop-file-icon-manager.c:3996
 msgid "Untitled document"
 msgstr "Bezimeni dokument"
 
@@ -1121,7 +1121,7 @@ msgstr "Uređaj \"%s\" se izbacuje.Ovo može potrajati"
 msgid "Eject Finished"
 msgstr "Izbacivanje završeno"
 
-#: src/xfdesktop-regular-file-icon.c:745
+#: src/xfdesktop-regular-file-icon.c:737
 #, c-format
 msgid ""
 "Name: %s\n"
@@ -1155,15 +1155,15 @@ msgstr "%s\nVeličina: %s\nZadnja izmjena: %s"
 msgid "_Empty Trash"
 msgstr "_Isprazni smeće"
 
-#: src/xfdesktop-volume-icon.c:413
+#: src/xfdesktop-volume-icon.c:420
 msgid "(not mounted)"
 msgstr ""
 
-#: src/xfdesktop-volume-icon.c:414 src/xfdesktop-volume-icon.c:415
+#: src/xfdesktop-volume-icon.c:421 src/xfdesktop-volume-icon.c:422
 msgid "(unknown)"
 msgstr "(nepoznato)"
 
-#: src/xfdesktop-volume-icon.c:419
+#: src/xfdesktop-volume-icon.c:426
 #, c-format
 msgid ""
 "Name: %s\n"
@@ -1173,52 +1173,52 @@ msgid ""
 "Free Space: %s"
 msgstr ""
 
-#: src/xfdesktop-volume-icon.c:421
+#: src/xfdesktop-volume-icon.c:428
 msgid "Removable Volume"
 msgstr ""
 
-#: src/xfdesktop-volume-icon.c:454 src/xfdesktop-volume-icon.c:498
+#: src/xfdesktop-volume-icon.c:461 src/xfdesktop-volume-icon.c:505
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "Ne mogu izbaciti \"%s\""
 
-#: src/xfdesktop-volume-icon.c:459 src/xfdesktop-volume-icon.c:503
+#: src/xfdesktop-volume-icon.c:466 src/xfdesktop-volume-icon.c:510
 msgid "Eject Failed"
 msgstr "Neuspješno izbacivanje"
 
-#: src/xfdesktop-volume-icon.c:582
+#: src/xfdesktop-volume-icon.c:589
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "Nije uspjelo montirati \"% s \""
 
-#: src/xfdesktop-volume-icon.c:585
+#: src/xfdesktop-volume-icon.c:592
 msgid "Mount Failed"
 msgstr "Neuspješno montiranje"
 
-#: src/xfdesktop-volume-icon.c:859
-msgid "_Safely Remove Volume"
+#: src/xfdesktop-volume-icon.c:856
+msgid "Safely _Remove Volume"
 msgstr ""
 
-#: src/xfdesktop-volume-icon.c:862
+#: src/xfdesktop-volume-icon.c:859
 msgid "_Disconnect Volume"
 msgstr ""
 
-#: src/xfdesktop-volume-icon.c:865
-msgid "_Stop the Multi-Disk Drive"
+#: src/xfdesktop-volume-icon.c:862
+msgid "Stop the _Multi-Disk Drive"
 msgstr ""
 
-#: src/xfdesktop-volume-icon.c:868
+#: src/xfdesktop-volume-icon.c:865
 msgid "_Lock Volume"
 msgstr ""
 
-#: src/xfdesktop-volume-icon.c:871
-msgid "E_ject Volume"
-msgstr "I_zbaci uređaj"
+#: src/xfdesktop-volume-icon.c:868
+msgid "_Eject Volume"
+msgstr ""
 
-#: src/xfdesktop-volume-icon.c:880
+#: src/xfdesktop-volume-icon.c:877
 msgid "_Unmount Volume"
 msgstr "_Odmontiraj uređaj"
 
-#: src/xfdesktop-volume-icon.c:887
+#: src/xfdesktop-volume-icon.c:884
 msgid "_Mount Volume"
 msgstr "_Montiraj uređaj"
