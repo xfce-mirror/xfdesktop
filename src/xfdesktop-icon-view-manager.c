@@ -29,7 +29,6 @@
 
 #include "xfdesktop-common.h"
 #include "xfdesktop-icon-view-manager.h"
-#include "xfdesktop-icon-view.h"
 
 #define XFDESKTOP_ICON_VIEW_MANAGER_GET_PRIVATE(manager) ((XfdesktopIconViewManagerPrivate *)xfdesktop_icon_view_manager_get_instance_private(XFDESKTOP_ICON_VIEW_MANAGER(manager)))
 
@@ -262,12 +261,29 @@ xfdesktop_icon_view_manager_get_show_icons_on_primary(XfdesktopIconViewManager *
 }
 
 void
-xfdesktop_icon_view_manager_desktops_changed(XfdesktopIconViewManager *manager, GList *desktops) {
+xfdesktop_icon_view_manager_desktop_added(XfdesktopIconViewManager *manager, XfceDesktop *desktop) {
     g_return_if_fail(XFDESKTOP_IS_ICON_VIEW_MANAGER(manager));
+    g_return_if_fail(XFCE_IS_DESKTOP(desktop));
 
     XfdesktopIconViewManagerPrivate *priv = XFDESKTOP_ICON_VIEW_MANAGER_GET_PRIVATE(manager);
-    g_list_free(priv->desktops);
-    priv->desktops = g_list_copy(desktops);
+    priv->desktops = g_list_append(priv->desktops, desktop);
+
+    XfdesktopIconViewManagerClass *klass = XFDESKTOP_ICON_VIEW_MANAGER_GET_CLASS(manager);
+    klass->desktop_added(manager, desktop);
+
+    g_object_notify(G_OBJECT(manager), "desktops");
+}
+
+void
+xfdesktop_icon_view_manager_desktop_removed(XfdesktopIconViewManager *manager, XfceDesktop *desktop) {
+    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW_MANAGER(manager));
+    g_return_if_fail(XFCE_IS_DESKTOP(desktop));
+
+    XfdesktopIconViewManagerPrivate *priv = XFDESKTOP_ICON_VIEW_MANAGER_GET_PRIVATE(manager);
+    priv->desktops = g_list_remove(priv->desktops, desktop);
+
+    XfdesktopIconViewManagerClass *klass = XFDESKTOP_ICON_VIEW_MANAGER_GET_CLASS(manager);
+    klass->desktop_removed(manager, desktop);
 
     g_object_notify(G_OBJECT(manager), "desktops");
 }
