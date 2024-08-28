@@ -53,6 +53,7 @@ if enable_file_icons
     'xfdesktop-file-icon.c',
     'xfdesktop-file-icon-manager.c',
     'xfdesktop-file-icon-model.c',
+    'xfdesktop-file-icon-model-filter.c',
     'xfdesktop-file-utils.c',
     'xfdesktop-regular-file-icon.c',
     'xfdesktop-special-file-icon.c',
