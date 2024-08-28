@@ -26,6 +26,9 @@ libxfdesktop = static_library(
     'xfdesktop-thumbnailer.c',
     'xfdesktop-thumbnailer.h',
   ] + common_generated_sources,
+  c_args: [
+    '-DBACKGROUNDS_DIR="@0@/backgrounds/xfce"'.format(get_option('prefix') / get_option('datadir')),
+  ],
   include_directories: [
     include_directories('../src'),
   ],
