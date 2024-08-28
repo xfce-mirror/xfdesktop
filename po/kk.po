@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-03-18 12:53+0100\n"
+"POT-Creation-Date: 2024-08-28 01:02+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>, 2009,2013-2024\n"
 "Language-Team: Kazakh (http://app.transifex.com/xfce/xfdesktop/language/kk/)\n"
@@ -123,27 +123,27 @@ msgid "Arrange icons"
 msgstr "Таңбашаларды реттеу"
 
 #. printf is to be translator-friendly
-#: settings/main.c:1959 src/xfdesktop-file-icon-manager.c:1159
-#: src/xfdesktop-file-icon-manager.c:1759
+#: settings/main.c:1959 src/xfdesktop-file-icon-manager.c:1164
+#: src/xfdesktop-file-icon-manager.c:1764
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "\"%s\" жөнелту қатесі:"
 
-#: settings/main.c:1960 src/xfdesktop-file-icon-manager.c:1161
-#: src/xfdesktop-file-icon-manager.c:1512
-#: src/xfdesktop-file-icon-manager.c:1760 src/xfdesktop-file-utils.c:555
+#: settings/main.c:1960 src/xfdesktop-file-icon-manager.c:1166
+#: src/xfdesktop-file-icon-manager.c:1517
+#: src/xfdesktop-file-icon-manager.c:1765 src/xfdesktop-file-utils.c:555
 #: src/xfdesktop-file-utils.c:1222 src/xfdesktop-file-utils.c:1247
 #: src/xfdesktop-file-utils.c:1354 src/xfdesktop-file-utils.c:1418
 msgid "Launch Error"
 msgstr "Жөнелту қатесі"
 
 #: settings/main.c:1962 settings/xfdesktop-settings-ui.glade:198
-#: src/xfdesktop-file-icon-manager.c:913 src/xfdesktop-file-icon-manager.c:932
-#: src/xfdesktop-file-icon-manager.c:1031
-#: src/xfdesktop-file-icon-manager.c:1163
-#: src/xfdesktop-file-icon-manager.c:1516
-#: src/xfdesktop-file-icon-manager.c:1762
-#: src/xfdesktop-file-icon-manager.c:3381 src/xfdesktop-file-utils.c:558
+#: src/xfdesktop-file-icon-manager.c:918 src/xfdesktop-file-icon-manager.c:937
+#: src/xfdesktop-file-icon-manager.c:1036
+#: src/xfdesktop-file-icon-manager.c:1168
+#: src/xfdesktop-file-icon-manager.c:1521
+#: src/xfdesktop-file-icon-manager.c:1767
+#: src/xfdesktop-file-icon-manager.c:3408 src/xfdesktop-file-utils.c:558
 #: src/xfdesktop-file-utils.c:676 src/xfdesktop-file-utils.c:731
 #: src/xfdesktop-file-utils.c:795 src/xfdesktop-file-utils.c:856
 #: src/xfdesktop-file-utils.c:917 src/xfdesktop-file-utils.c:965
@@ -151,64 +151,64 @@ msgstr "Жөнелту қатесі"
 #: src/xfdesktop-file-utils.c:1165 src/xfdesktop-file-utils.c:1226
 #: src/xfdesktop-file-utils.c:1249 src/xfdesktop-file-utils.c:1358
 #: src/xfdesktop-file-utils.c:1422 src/xfdesktop-file-utils.c:1493
-#: src/xfdesktop-file-utils.c:1563 src/xfdesktop-volume-icon.c:461
-#: src/xfdesktop-volume-icon.c:505 src/xfdesktop-volume-icon.c:587
+#: src/xfdesktop-file-utils.c:1563 src/xfdesktop-volume-icon.c:468
+#: src/xfdesktop-volume-icon.c:512 src/xfdesktop-volume-icon.c:594
 msgid "_Close"
 msgstr "_Жабу"
 
-#: settings/main.c:2131
+#: settings/main.c:2134
 msgid "Image files"
 msgstr "Сурет файлдары"
 
 #. Change the title of the file chooser dialog
-#: settings/main.c:2139
+#: settings/main.c:2142
 msgid "Select a Directory"
 msgstr "Буманы таңдаңыз"
 
-#: settings/main.c:2354
+#: settings/main.c:2357
 msgid "Settings manager socket"
 msgstr "Баптаулар басқарушысының сокеті"
 
-#: settings/main.c:2354
+#: settings/main.c:2357
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: settings/main.c:2355
+#: settings/main.c:2358
 msgid "Version information"
 msgstr "Нұсқа ақпараты"
 
-#: settings/main.c:2356 src/xfdesktop-application.c:209
+#: settings/main.c:2359 src/xfdesktop-application.c:200
 msgid "Enable debug messages"
 msgstr "Жөндеуді хабарламаларын іске қосу"
 
-#: settings/main.c:2380
+#: settings/main.c:2383
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Көмек үшін '%s --help' енгізіңіз."
 
-#: settings/main.c:2392
+#: settings/main.c:2395
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce өндіру тобы. Барлық құқықтары қорғалған."
 
-#: settings/main.c:2393
+#: settings/main.c:2396
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Ақаулықтар жөнінде хабарласыңыз: <%s>."
 
-#: settings/main.c:2400
+#: settings/main.c:2403
 msgid "Desktop Settings"
 msgstr "Жұмыс үстел баптаулары"
 
-#: settings/main.c:2402
+#: settings/main.c:2405
 msgid "Unable to contact settings server"
 msgstr "Баптаулар қызметімен байланыс орнату мүмкін емес"
 
-#: settings/main.c:2404
+#: settings/main.c:2407
 msgid "Quit"
 msgstr "Шығу"
 
 #: settings/xfce-backdrop-settings.desktop.in:4
-#: settings/xfdesktop-settings-ui.glade:162 src/xfce-desktop.c:991
+#: settings/xfdesktop-settings-ui.glade:162 src/xfce-desktop.c:984
 msgid "Desktop"
 msgstr "Жұмыс үстелі"
 
@@ -644,293 +644,293 @@ msgstr "'%s' жұмыс орнын өшіруді шынымен қалайсы�
 msgid "Remove"
 msgstr "Өшіру"
 
-#: src/windowlist.c:312
+#: src/windowlist.c:311
 msgid "Window List"
 msgstr "Терезелер тізімі"
 
-#: src/windowlist.c:357
+#: src/windowlist.c:356
 #, c-format
 msgid "<b>Group %d, Workspace %d</b>"
 msgstr "<b>Топ %d, Жұмыс орны %d</b>"
 
-#: src/windowlist.c:359
+#: src/windowlist.c:358
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>Жұмыс орны %d</b>"
 
-#: src/windowlist.c:449 src/windowlist.c:451
+#: src/windowlist.c:448 src/windowlist.c:450
 msgid "_Add Workspace"
 msgstr "_Жұмыс орнын қосу"
 
-#: src/windowlist.c:465
+#: src/windowlist.c:464
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "%d _жұмыс орнын өшіру"
 
-#: src/windowlist.c:468
+#: src/windowlist.c:467
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "'%s' жұ_мыс орнын өшіру"
 
-#: src/xfdesktop-application.c:201
+#: src/xfdesktop-application.c:192
 msgid "Display version information"
 msgstr "Нұсқа ақпаратын көрсету"
 
-#: src/xfdesktop-application.c:202
+#: src/xfdesktop-application.c:193
 msgid "Reload all settings"
 msgstr "Баптауларды қайта жүктеу"
 
-#: src/xfdesktop-application.c:203
+#: src/xfdesktop-application.c:194
 msgid "Advance to the next wallpaper on the current workspace"
 msgstr "Ағымдағы жұмыс ортасында келесі түсқағазға өту"
 
-#: src/xfdesktop-application.c:204
+#: src/xfdesktop-application.c:195
 msgid "Pop up the menu (at the current mouse position)"
 msgstr "Мәзірді көрсету (тышқанның ағымдағы орнында)"
 
-#: src/xfdesktop-application.c:205
+#: src/xfdesktop-application.c:196
 msgid "Pop up the window list (at the current mouse position)"
 msgstr "Терезелер тізімін шығару (тышқанның ағымдағы орнында)"
 
-#: src/xfdesktop-application.c:207
+#: src/xfdesktop-application.c:198
 msgid "Automatically arrange all the icons on the desktop"
 msgstr "Жұмыс үстеліндегі барлық таңбашаларды автореттеу"
 
-#: src/xfdesktop-application.c:210
+#: src/xfdesktop-application.c:201
 msgid "Disable debug messages"
 msgstr "Жөндеуді хабарламаларын сөндіру"
 
-#: src/xfdesktop-application.c:212
+#: src/xfdesktop-application.c:203
 msgid "Do not wait for a window manager on startup"
 msgstr "Іске қосылғанда, терезелер басқарушысын күтпеу"
 
-#: src/xfdesktop-application.c:214
+#: src/xfdesktop-application.c:205
 msgid "Cause xfdesktop to quit"
 msgstr "Xfdesktop жұмысын аяқтау"
 
-#: src/xfdesktop-application.c:782
+#: src/xfdesktop-application.c:691
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "Бұл %s, нұсқасы %s, Xfce %s қосылған.\n"
 
-#: src/xfdesktop-application.c:784
+#: src/xfdesktop-application.c:693
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Жиналған GTK+ %d.%d.%d нұсқасымен, байланысқан GTK+ %d.%d.%d."
 
-#: src/xfdesktop-application.c:788
+#: src/xfdesktop-application.c:697
 msgid "Build options:\n"
 msgstr "Жинау опциялары:\n"
 
-#: src/xfdesktop-application.c:789
+#: src/xfdesktop-application.c:698
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Жұмыс үстел мәзірі:        %s\n"
 
-#: src/xfdesktop-application.c:791 src/xfdesktop-application.c:798
-#: src/xfdesktop-application.c:805
+#: src/xfdesktop-application.c:700 src/xfdesktop-application.c:707
+#: src/xfdesktop-application.c:714
 msgid "enabled"
 msgstr "қосулы"
 
-#: src/xfdesktop-application.c:793 src/xfdesktop-application.c:800
-#: src/xfdesktop-application.c:807
+#: src/xfdesktop-application.c:702 src/xfdesktop-application.c:709
+#: src/xfdesktop-application.c:716
 msgid "disabled"
 msgstr "сөндірулі"
 
-#: src/xfdesktop-application.c:796
+#: src/xfdesktop-application.c:705
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Жұмыс үстел таңбашалары:       %s\n"
 
-#: src/xfdesktop-application.c:803
+#: src/xfdesktop-application.c:712
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Жұмыс үстел файл таңбашалары:  %s\n"
 
-#: src/xfdesktop-file-icon-manager.c:905 src/xfdesktop-file-icon-manager.c:923
+#: src/xfdesktop-file-icon-manager.c:910 src/xfdesktop-file-icon-manager.c:928
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
 msgstr "\"%s\" жұмыс үстел бумасын жасау мүмкін емес"
 
-#: src/xfdesktop-file-icon-manager.c:910 src/xfdesktop-file-icon-manager.c:928
+#: src/xfdesktop-file-icon-manager.c:915 src/xfdesktop-file-icon-manager.c:933
 msgid "Desktop Folder Error"
 msgstr "Жұмыс үстел бумасының қатесі"
 
-#: src/xfdesktop-file-icon-manager.c:930
+#: src/xfdesktop-file-icon-manager.c:935
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr "Ондай атауы бар файл бар болып тұр. Алдымен оны өшіріңіз не атын өзгертіңіз."
 
-#: src/xfdesktop-file-icon-manager.c:1028 src/xfdesktop-file-utils.c:727
+#: src/xfdesktop-file-icon-manager.c:1033 src/xfdesktop-file-utils.c:727
 #: src/xfdesktop-file-utils.c:791
 msgid "Rename Error"
 msgstr "Атын ауыстыру қатесі"
 
-#: src/xfdesktop-file-icon-manager.c:1029 src/xfdesktop-file-utils.c:792
+#: src/xfdesktop-file-icon-manager.c:1034 src/xfdesktop-file-utils.c:792
 msgid "The files could not be renamed"
 msgstr "Файлдар аттарын ауыстыру мүмкін емес"
 
-#: src/xfdesktop-file-icon-manager.c:1030
+#: src/xfdesktop-file-icon-manager.c:1035
 msgid "None of the icons selected support being renamed."
 msgstr "Таңдалған таңбашалардың ешбірі де атын ауыстыруды қолдамайды."
 
-#: src/xfdesktop-file-icon-manager.c:1359
+#: src/xfdesktop-file-icon-manager.c:1364
 msgid ""
 "This will reorder all desktop items and place them on different screen positions.\n"
 "Are you sure?"
 msgstr "Бұның нәтижесінде жұмыс үстел нәрселердің реті өзгеріп, экранда әр түрлі орындарды алады.\nЖалғастыру керек пе?"
 
-#: src/xfdesktop-file-icon-manager.c:1363
+#: src/xfdesktop-file-icon-manager.c:1368
 msgid "_OK"
 msgstr "_ОК"
 
-#: src/xfdesktop-file-icon-manager.c:1438
+#: src/xfdesktop-file-icon-manager.c:1443
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "\"%s\" _көмегімен ашу"
 
-#: src/xfdesktop-file-icon-manager.c:1441
+#: src/xfdesktop-file-icon-manager.c:1446
 #, c-format
 msgid "Open With \"%s\""
 msgstr "\"%s\" көмегімен ашу"
 
-#: src/xfdesktop-file-icon-manager.c:1514
+#: src/xfdesktop-file-icon-manager.c:1519
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr "\"exo-desktop-item-edit\" жөнелту қатесі, ол жұмыс үстелінде жөнелткіштерді мен сілтемелерді жасау үшін керек."
 
-#: src/xfdesktop-file-icon-manager.c:1878
+#: src/xfdesktop-file-icon-manager.c:1883
 msgid "_Open all"
 msgstr "Б_арлығын ашу"
 
-#: src/xfdesktop-file-icon-manager.c:1898
+#: src/xfdesktop-file-icon-manager.c:1903
 msgid "Create _Launcher..."
 msgstr "Жөне_лткішті жасау..."
 
-#: src/xfdesktop-file-icon-manager.c:1912
+#: src/xfdesktop-file-icon-manager.c:1917
 msgid "Create _URL Link..."
 msgstr "URL сіл_темесін жасау..."
 
-#: src/xfdesktop-file-icon-manager.c:1926
+#: src/xfdesktop-file-icon-manager.c:1931
 msgid "Create _Folder..."
 msgstr "_Буманы жасау..."
 
-#: src/xfdesktop-file-icon-manager.c:1938
+#: src/xfdesktop-file-icon-manager.c:1943
 msgid "Create _Document"
 msgstr "Құжат_ты жасау"
 
-#: src/xfdesktop-file-icon-manager.c:1963
+#: src/xfdesktop-file-icon-manager.c:1968
 msgid "No templates installed"
 msgstr "Үлгілер орнатылмаған"
 
-#: src/xfdesktop-file-icon-manager.c:1979
+#: src/xfdesktop-file-icon-manager.c:1984
 msgid "_Empty File"
 msgstr "Б_ос файл"
 
-#: src/xfdesktop-file-icon-manager.c:1989
+#: src/xfdesktop-file-icon-manager.c:1994
 msgid "_Open All"
 msgstr "Б_арлығын ашу"
 
-#: src/xfdesktop-file-icon-manager.c:1989
-#: src/xfdesktop-special-file-icon.c:478 src/xfdesktop-volume-icon.c:833
+#: src/xfdesktop-file-icon-manager.c:1994
+#: src/xfdesktop-special-file-icon.c:478 src/xfdesktop-volume-icon.c:830
 msgid "_Open"
 msgstr "А_шу"
 
-#: src/xfdesktop-file-icon-manager.c:2006
+#: src/xfdesktop-file-icon-manager.c:2011
 msgid "_Execute"
 msgstr "О_рындау"
 
-#: src/xfdesktop-file-icon-manager.c:2024
-msgid "_Edit Launcher"
-msgstr "Жөн_елткішті түзету"
+#: src/xfdesktop-file-icon-manager.c:2029
+msgid "Edit _Launcher"
+msgstr "Жөнелткішті тү_зету"
 
-#: src/xfdesktop-file-icon-manager.c:2083
-msgid "Open With"
-msgstr "Көмегімен ашу"
+#: src/xfdesktop-file-icon-manager.c:2088
+msgid "Ope_n With"
+msgstr "Көмегімен а_шу"
 
-#: src/xfdesktop-file-icon-manager.c:2110
-#: src/xfdesktop-file-icon-manager.c:2135
-msgid "Open With Other _Application..."
-msgstr "Б_асқа қолданба көмегімен ашу..."
+#: src/xfdesktop-file-icon-manager.c:2115
+#: src/xfdesktop-file-icon-manager.c:2144
+msgid "Ope_n With Other Application..."
+msgstr "Басқа қолданбамен а_шу..."
 
-#: src/xfdesktop-file-icon-manager.c:2121
-msgid "Set _Default Application..."
-msgstr "Бас_тапқы қолданбаны баптау..."
+#: src/xfdesktop-file-icon-manager.c:2130
+msgid "Set Defa_ult Application..."
+msgstr "Баста_пқы қолданбаны орнату..."
 
-#: src/xfdesktop-file-icon-manager.c:2153
+#: src/xfdesktop-file-icon-manager.c:2162
 msgid "_Paste"
 msgstr "Кіріс_тіру"
 
-#: src/xfdesktop-file-icon-manager.c:2171
+#: src/xfdesktop-file-icon-manager.c:2180
 msgid "Cu_t"
 msgstr "Қ_иып алу"
 
-#: src/xfdesktop-file-icon-manager.c:2183
+#: src/xfdesktop-file-icon-manager.c:2192
 msgid "_Copy"
 msgstr "_Көшіріп алу"
 
-#: src/xfdesktop-file-icon-manager.c:2195
+#: src/xfdesktop-file-icon-manager.c:2204
 msgid "Paste Into Folder"
 msgstr "Бума ішіне кірістіру"
 
-#: src/xfdesktop-file-icon-manager.c:2214
+#: src/xfdesktop-file-icon-manager.c:2223
 msgid "Mo_ve to Trash"
 msgstr "Қ_оқыс шелегіне тастау"
 
-#: src/xfdesktop-file-icon-manager.c:2227
+#: src/xfdesktop-file-icon-manager.c:2236
 msgid "_Delete"
 msgstr "Ө_шіру"
 
-#: src/xfdesktop-file-icon-manager.c:2245
+#: src/xfdesktop-file-icon-manager.c:2254
 msgid "_Rename..."
 msgstr "Атын ау_ыстыру..."
 
-#: src/xfdesktop-file-icon-manager.c:2308
+#: src/xfdesktop-file-icon-manager.c:2324
 msgid "_Open in New Window"
 msgstr "_Жаңа терезеде ашу"
 
-#: src/xfdesktop-file-icon-manager.c:2317
+#: src/xfdesktop-file-icon-manager.c:2333
 msgid "Arrange Desktop _Icons"
 msgstr "Жұ_мыс үстел таңбашаларын реттеу"
 
-#: src/xfdesktop-file-icon-manager.c:2328
+#: src/xfdesktop-file-icon-manager.c:2344
 msgid "_Next Background"
 msgstr "_Келесі фон суреті"
 
-#: src/xfdesktop-file-icon-manager.c:2338
+#: src/xfdesktop-file-icon-manager.c:2359
 msgid "Desktop _Settings..."
 msgstr "Жұмыс ү_стелінің баптаулары..."
 
-#: src/xfdesktop-file-icon-manager.c:2346 src/xfdesktop-volume-icon.c:900
-msgid "P_roperties..."
+#: src/xfdesktop-file-icon-manager.c:2367 src/xfdesktop-volume-icon.c:897
+msgid "_Properties..."
 msgstr "Қас_иеттері..."
 
-#: src/xfdesktop-file-icon-manager.c:3378
+#: src/xfdesktop-file-icon-manager.c:3405
 msgid "Load Error"
 msgstr "Жүктеу қатесі"
 
-#: src/xfdesktop-file-icon-manager.c:3380
+#: src/xfdesktop-file-icon-manager.c:3407
 msgid "Failed to load the desktop folder"
 msgstr "Жұмыс үстел бумасын жүктеу сәтсіз"
 
-#: src/xfdesktop-file-icon-manager.c:3785
+#: src/xfdesktop-file-icon-manager.c:3819
 msgid "Copy _Here"
 msgstr "Ос_ында көшіру"
 
-#: src/xfdesktop-file-icon-manager.c:3785
+#: src/xfdesktop-file-icon-manager.c:3819
 msgid "_Move Here"
 msgstr "Осында жы_лжыту"
 
-#: src/xfdesktop-file-icon-manager.c:3785
+#: src/xfdesktop-file-icon-manager.c:3819
 msgid "_Link Here"
 msgstr "Осында _сілтеме жасау"
 
-#: src/xfdesktop-file-icon-manager.c:3820
+#: src/xfdesktop-file-icon-manager.c:3854
 msgid "_Cancel"
 msgstr "Ба_с тарту"
 
-#: src/xfdesktop-file-icon-manager.c:3962
+#: src/xfdesktop-file-icon-manager.c:3996
 msgid "Untitled document"
 msgstr "Атаусыз құжат"
 
@@ -1115,7 +1115,7 @@ msgstr "\"%s\" құрылғысы шығарылуда. Бұл біраз уақ
 msgid "Eject Finished"
 msgstr "Шығару аяқталды"
 
-#: src/xfdesktop-regular-file-icon.c:745
+#: src/xfdesktop-regular-file-icon.c:737
 #, c-format
 msgid ""
 "Name: %s\n"
@@ -1149,15 +1149,15 @@ msgstr "%s\nӨлшемі: %s\nСоңғы өзгертілген: %s"
 msgid "_Empty Trash"
 msgstr "Қоқыс шел_егін тазарту"
 
-#: src/xfdesktop-volume-icon.c:413
+#: src/xfdesktop-volume-icon.c:420
 msgid "(not mounted)"
 msgstr "(тіркелмеген)"
 
-#: src/xfdesktop-volume-icon.c:414 src/xfdesktop-volume-icon.c:415
+#: src/xfdesktop-volume-icon.c:421 src/xfdesktop-volume-icon.c:422
 msgid "(unknown)"
 msgstr "(белгісіз)"
 
-#: src/xfdesktop-volume-icon.c:419
+#: src/xfdesktop-volume-icon.c:426
 #, c-format
 msgid ""
 "Name: %s\n"
@@ -1167,52 +1167,52 @@ msgid ""
 "Free Space: %s"
 msgstr "Аты: %s\nТүрі: %s\nТіркелген жері: %s\nӨлшемі: %s\nБос орны: %s"
 
-#: src/xfdesktop-volume-icon.c:421
+#: src/xfdesktop-volume-icon.c:428
 msgid "Removable Volume"
 msgstr "Ауыстырмалы том"
 
-#: src/xfdesktop-volume-icon.c:454 src/xfdesktop-volume-icon.c:498
+#: src/xfdesktop-volume-icon.c:461 src/xfdesktop-volume-icon.c:505
 #, c-format
 msgid "Failed to eject \"%s\""
 msgstr "\"%s\" шығару мүмкін емес"
 
-#: src/xfdesktop-volume-icon.c:459 src/xfdesktop-volume-icon.c:503
+#: src/xfdesktop-volume-icon.c:466 src/xfdesktop-volume-icon.c:510
 msgid "Eject Failed"
 msgstr "Шығару сәтсіз аяқталды"
 
-#: src/xfdesktop-volume-icon.c:582
+#: src/xfdesktop-volume-icon.c:589
 #, c-format
 msgid "Failed to mount \"%s\""
 msgstr "\"%s\" тіркеу сәтсіз"
 
-#: src/xfdesktop-volume-icon.c:585
+#: src/xfdesktop-volume-icon.c:592
 msgid "Mount Failed"
 msgstr "Тіркеу сәтсіз аяқталды"
 
-#: src/xfdesktop-volume-icon.c:859
-msgid "_Safely Remove Volume"
-msgstr "Бөлімді қауіп_сіз шығару"
+#: src/xfdesktop-volume-icon.c:856
+msgid "Safely _Remove Volume"
+msgstr ""
 
-#: src/xfdesktop-volume-icon.c:862
+#: src/xfdesktop-volume-icon.c:859
 msgid "_Disconnect Volume"
 msgstr "Бөлім байланысын а_жырату"
 
-#: src/xfdesktop-volume-icon.c:865
-msgid "_Stop the Multi-Disk Drive"
-msgstr "Көпдискті жетекті _тоқтату"
+#: src/xfdesktop-volume-icon.c:862
+msgid "Stop the _Multi-Disk Drive"
+msgstr "Кө_пдискті жетекті тоқтату"
 
-#: src/xfdesktop-volume-icon.c:868
+#: src/xfdesktop-volume-icon.c:865
 msgid "_Lock Volume"
 msgstr "Бөлімді құ_лыптау"
 
-#: src/xfdesktop-volume-icon.c:871
-msgid "E_ject Volume"
-msgstr "Бөлімді _шығару"
+#: src/xfdesktop-volume-icon.c:868
+msgid "_Eject Volume"
+msgstr ""
 
-#: src/xfdesktop-volume-icon.c:880
+#: src/xfdesktop-volume-icon.c:877
 msgid "_Unmount Volume"
 msgstr "_Бөлімді тіркеуден босату"
 
-#: src/xfdesktop-volume-icon.c:887
+#: src/xfdesktop-volume-icon.c:884
 msgid "_Mount Volume"
 msgstr "Бө_лімді тіркеу"
