@@ -25,6 +25,7 @@
 #include <xfconf/xfconf.h>
 
 #include "xfdesktop-file-icon-model.h"
+#include "xfdesktop-file-icon.h"
 
 G_BEGIN_DECLS
 
@@ -33,6 +34,9 @@ G_DECLARE_FINAL_TYPE(XfdesktopFileIconModelFilter, xfdesktop_file_icon_model_fil
 
 XfdesktopFileIconModelFilter *xfdesktop_file_icon_model_filter_new(XfconfChannel *channel,
                                                                    XfdesktopFileIconModel *child);
+
+XfdesktopFileIcon *xfdesktop_file_icon_model_filter_get_icon(XfdesktopFileIconModelFilter *filter,
+                                                             GtkTreeIter *iter);
 
 G_END_DECLS
 
