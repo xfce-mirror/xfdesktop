@@ -363,3 +363,14 @@ xfdesktop_file_icon_model_filter_new(XfconfChannel *channel, XfdesktopFileIconMo
                         "child-model", child,
                         NULL);
 }
+
+XfdesktopFileIcon *
+xfdesktop_file_icon_model_filter_get_icon(XfdesktopFileIconModelFilter *filter, GtkTreeIter *iter) {
+    g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON_MODEL_FILTER(filter), NULL);
+    g_return_val_if_fail(iter != NULL, NULL);
+
+    GtkTreeIter child_iter;
+    gtk_tree_model_filter_convert_iter_to_child_iter(GTK_TREE_MODEL_FILTER(filter), &child_iter, iter);
+    GtkTreeModel *child = gtk_tree_model_filter_get_model(GTK_TREE_MODEL_FILTER(filter));
+    return xfdesktop_file_icon_model_get_icon(XFDESKTOP_FILE_ICON_MODEL(child), &child_iter);
+}
