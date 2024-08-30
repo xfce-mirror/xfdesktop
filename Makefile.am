@@ -9,7 +9,8 @@ SUBDIRS = \
 	settings \
 	src \
 	po \
-	pixmaps
+	pixmaps \
+	tests
 
 manpagedir = $(mandir)/man1
 manpage_DATA = xfdesktop.1
