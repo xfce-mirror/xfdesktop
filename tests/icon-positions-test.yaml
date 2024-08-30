@@ -1,0 +1,37 @@
+configs:
+  - level: 0
+    geometry:
+      x: 0
+      y: 0
+      width: 1920
+      height: 1080
+    monitors:
+      - id: abc123Vx
+        display_name: "FooCorp 27\""
+      - id: 987fed
+        display_name: "BarCorp 54\""
+    icons:
+      "blah.desktop":
+        row: 2
+        col: 7
+        last_seen: 1234567
+      "somefolder":
+        row: 5
+        col: 3
+  - level: 1
+    geometry:
+      x: 1920
+      y: 300
+      width: 640
+      height: 480
+    monitors:
+      - id: 09123091283091283
+        display_name: "Laptop Screen"
+    icons:
+      "Monkeys Are Nice":
+        row: 3
+        col: 12
+        last_seen: 9438943898923
+      "another":
+        row: 1
+        col: 2
