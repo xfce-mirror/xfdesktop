@@ -74,6 +74,8 @@ desktop_file_icon_sources = \
 	xfdesktop-file-icon-model-filter.h \
 	xfdesktop-file-utils.c \
 	xfdesktop-file-utils.h \
+	xfdesktop-icon-position-configs.c \
+	xfdesktop-icon-position-configs.h \
 	xfdesktop-regular-file-icon.c \
 	xfdesktop-regular-file-icon.h \
 	xfdesktop-special-file-icon.c \
@@ -106,7 +108,8 @@ xfdesktop_CFLAGS = \
 	$(XFCONF_CFLAGS) \
 	-DEXO_API_SUBJECT_TO_CHANGE \
 	$(LIBEXO_CFLAGS) \
-	$(GTK_LAYER_SHELL_CFLAGS)
+	$(GTK_LAYER_SHELL_CFLAGS) \
+	$(LIBYAML_CFLAGS)
 
 xfdesktop_LDFLAGS = \
 	-export-dynamic
@@ -130,6 +133,7 @@ xfdesktop_LDADD += \
 	$(XFCONF_LIBS) \
 	$(LIBEXO_LIBS) \
 	$(GTK_LAYER_SHELL_LIBS) \
+	$(LIBYAML_LIBS) \
 	-lm
 
 if BUILD_DESKTOP_MENU
