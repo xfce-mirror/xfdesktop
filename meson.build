@@ -26,6 +26,7 @@ dependency_versions = {
   'libnotify': '>= 0.4.0',
   'libx11': '>= 1.6.7',
   'libxfce4windowing': '>= 4.19.3',
+  'libyaml': '>= 0.2.5',
   'xfce4': '>= 4.18.0',
   'gtk-layer-shell': '>= 0.7.0',
 }
@@ -52,14 +53,17 @@ thunarx = dependency('thunarx-3', version: dependency_versions['xfce4'], require
 # Feature libnotify
 libnotify = dependency('libnotify', version: dependency_versions['libnotify'], required: get_option('notifications'))
 
-# Feature windowing=x11
+# Feature x11
 libx11 = dependency('x11', version: dependency_versions['libx11'], required: get_option('x11'))
 gdk_x11 = dependency('gdk-x11-3.0', version: dependency_versions['gtk'], required: get_option('x11'))
 libxfce4windowing_x11 = dependency('libxfce4windowing-x11-0', version: dependency_versions['libxfce4windowing'], required: get_option('x11'))
 
-# Feature windowing=wayland
+# Feature wayland
 gdk_wayland = dependency('gdk-wayland-3.0', version: dependency_versions['gtk'], required: get_option('wayland'))
 gtk_layer_shell = dependency('gtk-layer-shell-0', version: dependency_versions['gtk-layer-shell'], required: get_option('wayland'))
+
+# Feature file-icons
+libyaml = dependency('yaml-0.1', version: dependency_versions['libyaml'], required: get_option('desktop-icons') and get_option('file-icons'))
 
 feature_cflags = []
 
@@ -79,6 +83,7 @@ if enable_desktop_icons
   feature_cflags += '-DENABLE_DESKTOP_ICONS=1'
   if enable_file_icons
     feature_cflags += '-DENABLE_FILE_ICONS=1'
+    desktop_icons_deps += libyaml
     if enable_thunarx
       feature_cflags += '-DHAVE_THUNARX=1'
       desktop_icons_deps += [thunarx]
@@ -232,3 +237,4 @@ subdir('settings')
 subdir('src')
 subdir('po')
 subdir('pixmaps')
+subdir('tests')
