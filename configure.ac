@@ -18,6 +18,7 @@ m4_define([thunar_minimum_version], [4.17.10])
 m4_define([xfconf_minimum_version], [4.18.0])
 m4_define([cairo_minimum_version], [1.16])
 m4_define([gtk_layer_shell_minimum_version], [0.7.0])
+m4_define([libyaml_minimum_version], [0.2.5])
 
 dnl version info
 XDT_VERSION_INIT([4.19.3], [git])
@@ -28,7 +29,7 @@ AC_INIT([xfdesktop], [xdt_version], [https://gitlab.xfce.org/xfce/xfdesktop])
 AC_PREREQ([2.60])
 
 dnl init automake
-AM_INIT_AUTOMAKE([1.8 dist-bzip2 tar-ustar no-dist-gzip foreign])
+AM_INIT_AUTOMAKE([1.8 dist-bzip2 tar-ustar no-dist-gzip foreign subdir-objects])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIRS([m4])
 AM_MAINTAINER_MODE
@@ -126,24 +127,21 @@ fi
 AM_CONDITIONAL([ENABLE_DESKTOP_ICONS], [test "x$enable_desktop_icons" = "xyes"])
 
 dnl if we want desktop icons, do we also want file icons?
-AC_ARG_ENABLE([file-icons],
-    [AS_HELP_STRING([--disable-file-icons],
-            [Do not compile in support for desktop file icons (default=enabled)])],
-        [ac_cv_enable_file_icons=$enableval],
-        [ac_cv_enable_file_icons=yes])
-if test "x$ac_cv_enable_file_icons" = "xno" -o "x$enable_desktop_icons" != "xyes"; then
+if test x"$enable_desktop_icons" != x"yes"; then
+    xdt_cv_FILE_ICONS_enabled=no
+fi
+XDT_CHECK_OPTIONAL_FEATURE([FILE_ICONS],
+                           [file-icons],
+                           [
+                               XDT_FEATURE_DEPENDENCY([LIBYAML], [yaml-0.1], [libyaml_minimum_version])
+                           ],
+                           [Whether to compile in support for desktop file icons (default=enabled)])
+
+if test x"$ENABLE_FILE_ICONS" != x"yes" -o "x$enable_desktop_icons" != "xyes"; then
     enable_file_icons="no"
 else
     enable_file_icons="yes"
 fi
-
-if test "x$enable_desktop_icons" = "xyes" -a "x$enable_file_icons" = "xyes"; then
-        AC_DEFINE([ENABLE_FILE_ICONS], [1],
-                  [Define if file icons should be enabled])
-fi
-
-AM_CONDITIONAL([ENABLE_FILE_ICONS], [test "x$enable_file_icons" = "xyes"])
-
 
 dnl i'd rather have these two only checked conditionally, but this macro also
 dnl calls AM_CONDITIONAL(), which cannot be in an 'if' block
@@ -212,6 +210,14 @@ dnl so ${datadir} just becomes ${datarootdir}, which of course cpp won't expand
 DEFAULT_BACKDROP="$default_backdrop_filename"
 AC_SUBST([DEFAULT_BACKDROP])
 
+AC_ARG_ENABLE([tests],
+              [
+AS_HELP_STRING([--enable-tests], [Build some small test programs (default=enabled)])
+AS_HELP_STRING([--disable-tests], [Don't build test programs (default=enabled)])
+              ],
+              [enable_tests=$enableval], [enable_tests=yes])
+AM_CONDITIONAL([ENABLE_TESTS], [test x"$enable_tests" = x"yes"])
+
 dnl check for debugging support
 XDT_FEATURE_DEBUG([xdt_debug_default])
 
@@ -224,6 +230,7 @@ pixmaps/Makefile
 po/Makefile.in
 settings/Makefile
 src/Makefile
+tests/Makefile
 ])
 AC_OUTPUT
 
@@ -240,4 +247,5 @@ fi
 echo "* Windowing:"
 echo "      X11:                                      $ENABLE_X11"
 echo "      Wayland:                                  $ENABLE_WAYLAND"
+echo "* Test programs:                                $enable_tests"
 echo
