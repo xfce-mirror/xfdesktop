@@ -74,6 +74,8 @@ desktop_file_icon_sources = \
 	xfdesktop-file-icon-model-filter.h \
 	xfdesktop-file-utils.c \
 	xfdesktop-file-utils.h \
+	xfdesktop-icon-position-configs.c \
+	xfdesktop-icon-position-configs.h \
 	xfdesktop-regular-file-icon.c \
 	xfdesktop-regular-file-icon.h \
 	xfdesktop-special-file-icon.c \
