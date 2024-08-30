@@ -223,6 +223,7 @@ pixmaps/Makefile
 po/Makefile.in
 settings/Makefile
 src/Makefile
+tests/Makefile
 ])
 AC_OUTPUT
 
