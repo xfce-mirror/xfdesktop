@@ -77,8 +77,7 @@ void xfdesktop_icon_position_configs_free(XfdesktopIconPositionConfigs *configs)
 
 
 
-XfdesktopIconPositionConfig *xfdesktop_icon_position_config_new(XfdesktopIconPositionLevel level,
-                                                                GdkRectangle *geometry);
+XfdesktopIconPositionConfig *xfdesktop_icon_position_config_new(XfdesktopIconPositionLevel level);
 
 GList *xfdesktop_icon_position_config_get_monitor_display_names(XfdesktopIconPositionConfig *config);
 

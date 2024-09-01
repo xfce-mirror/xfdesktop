@@ -23,9 +23,7 @@ main(int argc, char **argv) {
     for (GList *l = xfw_screen_get_monitors(screen); l != NULL; l = l->next) {
         XfwMonitor *monitor = XFW_MONITOR(l->data);
 
-        GdkRectangle geom;
-        xfw_monitor_get_logical_geometry(monitor, &geom);
-        XfdesktopIconPositionConfig *config = xfdesktop_icon_position_config_new(0, &geom);
+        XfdesktopIconPositionConfig *config = xfdesktop_icon_position_config_new(XFDESKTOP_ICON_POSITION_LEVEL_PRIMARY);
         xfdesktop_icon_position_configs_assign_monitor(configs, config, monitor);
 
         xfdesktop_icon_position_configs_set_icon_position(configs,
