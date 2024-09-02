@@ -1215,6 +1215,23 @@ xfdesktop_icon_position_configs_set_icon_position(XfdesktopIconPositionConfigs *
     schedule_save(configs);
 }
 
+gboolean
+xfdesktop_icon_position_configs_has_exact_monitor(XfdesktopIconPositionConfigs *configs, XfwMonitor *monitor) {
+    g_return_val_if_fail(configs != NULL, FALSE);
+    g_return_val_if_fail(XFW_IS_MONITOR(monitor), FALSE);
+
+    const gchar *monitor_id = xfw_monitor_get_identifier(monitor);
+
+    for (GList *l = configs->configs; l != NULL; l = l->next) {
+        XfdesktopIconPositionConfig *config = l->data;
+        if (g_hash_table_contains(config->monitors, monitor_id)) {
+            return TRUE;
+        }
+    }
+
+    return FALSE;
+}
+
 XfdesktopIconPositionConfig *
 xfdesktop_icon_position_configs_add_monitor(XfdesktopIconPositionConfigs *configs,
                                             XfwMonitor *monitor,
@@ -1388,6 +1405,25 @@ XfdesktopIconPositionConfig *
 xfdesktop_icon_position_config_new(XfdesktopIconPositionLevel level) {
     g_return_val_if_fail(level >= XFDESKTOP_ICON_POSITION_LEVEL_PRIMARY && level <= XFDESKTOP_ICON_POSITION_LEVEL_OTHER, NULL);
     return xfdesktop_icon_position_config_new_internal(level);
+}
+
+void
+_xfdesktop_icon_position_config_set_icon_position(XfdesktopIconPositionConfig *config,
+                                                  const gchar *identifier,
+                                                  guint row,
+                                                  guint col)
+{
+    g_return_if_fail(config != NULL);
+    g_return_if_fail(identifier != NULL);
+
+    XfdesktopIconPosition *position = g_hash_table_lookup(config->icon_positions, identifier);
+    if (position == NULL) {
+        position = g_new0(XfdesktopIconPosition, 1);
+        g_hash_table_insert(config->icon_positions, g_strdup(identifier), position);
+    }
+
+    position->row = row;
+    position->col = col;
 }
 
 GList *  // caller owned container, callee owned data
