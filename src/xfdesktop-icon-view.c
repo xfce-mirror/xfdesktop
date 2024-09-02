@@ -327,9 +327,6 @@ struct _XfdesktopIconViewPrivate
     GList *items;
     GList *selected_items;
 
-    gint width;
-    gint height;
-
     gint xmargin;
     gint ymargin;
     gint xspacing;
@@ -391,6 +388,17 @@ struct _XfdesktopIconViewPrivate
     gboolean single_click_underline_hover;
     XfdesktopIconViewGravity gravity;
 };
+
+typedef struct {
+    gint nrows;
+    gint ncols;
+
+    gint xspacing;
+    gint yspacing;
+
+    gint xmargin;
+    gint ymargin;
+} GridParams;
 
 static void xfdesktop_icon_view_constructed(GObject *object);
 static void xfdesktop_icon_view_set_property(GObject *object,
@@ -498,16 +506,7 @@ static void xfdesktop_icon_view_size_grid(XfdesktopIconView *icon_view);
 static inline gboolean xfdesktop_grid_is_free_position(XfdesktopIconView *icon_view,
                                                        gint row,
                                                        gint col);
-static inline void xfdesktop_grid_set_position_free(XfdesktopIconView *icon_view,
-                                                    gint row,
-                                                    gint col);
-static inline gboolean xfdesktop_grid_unset_position_free_raw(XfdesktopIconView *icon_view,
-                                                              gint row,
-                                                              gint col,
-                                                              gpointer data);
 static void xfdesktop_icon_view_clear_grid_layout(XfdesktopIconView *icon_view);
-static inline ViewItem *xfdesktop_icon_view_item_in_slot_raw(XfdesktopIconView *icon_view,
-                                                             gint idx);
 static inline ViewItem *xfdesktop_icon_view_item_in_slot(XfdesktopIconView *icon_view,
                                                          gint row,
                                                          gint col);
@@ -593,8 +592,6 @@ static const struct
     { DESKTOP_ICONS_SINGLE_CLICK_ULINE_PROP, G_TYPE_BOOLEAN, "single-click-underline-hover" },
     { DESKTOP_ICONS_GRAVITY_PROP, G_TYPE_INT, "gravity" },
 };
-
-static ViewItem *TOMBSTONE = NULL;
 
 
 G_DEFINE_TYPE_WITH_PRIVATE(XfdesktopIconView, xfdesktop_icon_view, GTK_TYPE_WIDGET)
@@ -1066,8 +1063,6 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
                                          GTK_MOVEMENT_VISUAL_POSITIONS, -1);
 
     gtk_widget_class_set_css_name (widget_class, "XfdesktopIconView");
-
-    TOMBSTONE = g_slice_new0(ViewItem);
 }
 
 static void
@@ -3827,27 +3822,6 @@ xfdesktop_icon_view_real_move_cursor(XfdesktopIconView *icon_view,
     return TRUE;
 }
 
-static inline gboolean
-xfdesktop_rectangle_equal(GdkRectangle *rect1, GdkRectangle *rect2)
-{
-    return (rect1->x == rect2->x && rect1->y == rect2->y
-            && rect1->width == rect2->width && rect1->height == rect2->height);
-}
-
-static inline gboolean
-xfdesktop_rectangle_is_bounded_by(GdkRectangle *rect,
-                                  GdkRectangle *bounds)
-{
-    GdkRectangle intersection;
-
-    if(gdk_rectangle_intersect(rect, bounds, &intersection)) {
-        if(xfdesktop_rectangle_equal(rect, &intersection))
-            return TRUE;
-    }
-
-    return FALSE;
-}
-
 static void
 xfdesktop_icon_view_temp_unplace_items(XfdesktopIconView *icon_view)
 {
@@ -3892,58 +3866,45 @@ xfdesktop_icon_view_place_items(XfdesktopIconView *icon_view)
     }
 }
 
-/* FIXME: add a cache for this so we don't have to compute this EVERY time */
-static void
-xfdesktop_icon_view_setup_grids_xinerama(XfdesktopIconView *icon_view)
+static gboolean
+_xfdesktop_icon_view_build_grid_params(XfdesktopIconView *icon_view,
+                                       GtkAllocation *allocation,
+                                       GridParams *grid_params)
 {
-    DBG("entering");
+    DBG("icon view size: %dx%d", allocation->width, allocation->height);
 
-    gint dx = 0, dy = 0;
-    gtk_widget_translate_coordinates(xfdesktop_icon_view_get_window_widget(icon_view),
-                                     GTK_WIDGET(icon_view),
-                                     0, 0, &dx, &dy);
+    gint new_nrows = MAX((allocation->height - MIN_MARGIN * 2) / SLOT_SIZE, 0);
+    gint new_ncols = MAX((allocation->width - MIN_MARGIN * 2) / SLOT_SIZE, 0);
+    if (new_nrows <= 0 || new_ncols <= 0) {
+        return FALSE;
+    } else {
+        DBG("new grid size: rows=%d, cols=%d", new_nrows, new_ncols);
+        grid_params->nrows = new_nrows;
+        grid_params->ncols = new_ncols;
 
-    GArray *monitor_geoms = g_array_new(FALSE, FALSE, sizeof(GdkRectangle));
-    for (GList *l = xfw_screen_get_monitors(icon_view->priv->screen); l != NULL; l = l->next) {
-        GdkRectangle geom;
-        xfw_monitor_get_logical_geometry(XFW_MONITOR(l->data), &geom);
-        g_array_append_val(monitor_geoms, geom);
+        gint xrest = allocation->width - grid_params->ncols * SLOT_SIZE;
+        grid_params->xspacing = new_ncols > 1 ? (xrest - MIN_MARGIN * 2) / (new_ncols - 1) : 1;
+        grid_params->xmargin = (xrest - (grid_params->ncols - 1) * grid_params->xspacing) / 2;
+
+        gint yrest = allocation->height - grid_params->nrows * SLOT_SIZE;
+        grid_params->yspacing = new_nrows > 1 ? (yrest - MIN_MARGIN * 2) / (new_nrows - 1) : 1;
+        grid_params->ymargin = (yrest - (grid_params->nrows - 1) * grid_params->yspacing) / 2;
+
+        DBG("margin: (%d, %d), spacing: (%d, %d)",
+            grid_params->xmargin, grid_params->ymargin,
+            grid_params->xspacing, grid_params->yspacing);
+
+        return TRUE;
     }
+}
 
-    if (monitor_geoms->len > 1) {
-        /* cubic time; w00t! */
-        GdkRectangle cell_rect = {
-            .x = 0,
-            .y = 0,
-            .width = SLOT_SIZE,
-            .height = SLOT_SIZE,
-        };
-        for (gint row = 0; row < icon_view->priv->nrows; ++row) {
-            for (gint col = 0; col < icon_view->priv->ncols; ++col) {
-                gboolean bounded = FALSE;
-
-                cell_rect.x = icon_view->priv->xmargin + col * SLOT_SIZE + col * icon_view->priv->xspacing - dx;
-                cell_rect.y = icon_view->priv->ymargin + row * SLOT_SIZE + row * icon_view->priv->yspacing - dy;
-
-                for (guint i = 0; i < monitor_geoms->len; ++i) {
-                    if (xfdesktop_rectangle_is_bounded_by(&cell_rect,  &g_array_index(monitor_geoms, GdkRectangle, i))) {
-                        bounded = TRUE;
-                        break;
-                    }
-                }
-
-                if (!bounded) {
-                    xfdesktop_grid_unset_position_free_raw(icon_view, row, col, TOMBSTONE);
-                } else if (xfdesktop_icon_view_item_in_slot(icon_view, row, col) == TOMBSTONE) {
-                    xfdesktop_grid_set_position_free(icon_view, row, col);
-                }
-            }
-        }
+static gsize
+grid_layout_bytes(gint nrows, gint ncols) {
+    if (nrows <= 0 || ncols <= 0) {
+        return 0;
+    } else {
+        return nrows * ncols * sizeof(ViewItem *);
     }
-
-    g_array_free(monitor_geoms, TRUE);
-
-    DBG("exiting");
 }
 
 static void
@@ -3953,85 +3914,57 @@ xfdesktop_icon_view_size_grid(XfdesktopIconView *icon_view)
         return;
     }
 
-    gint xrest = 0, yrest = 0;
-    gsize old_size, new_size;
-    gint old_nrows, old_ncols;
-    gint new_nrows, new_ncols;
-    gboolean grid_changed;
-
     DBG("entering");
+
+    gint old_nrows = icon_view->priv->nrows;
+    gint old_ncols = icon_view->priv->ncols;
+    gsize old_size = grid_layout_bytes(old_nrows, old_ncols);
+    gint old_xmargin = icon_view->priv->xmargin;
+    gint old_ymargin = icon_view->priv->ymargin;
+    gint old_xspacing = icon_view->priv->xspacing;
+    gint old_yspacing = icon_view->priv->yspacing;
 
     GtkAllocation allocation;
     gtk_widget_get_allocation(GTK_WIDGET(icon_view), &allocation);
-    gint width = allocation.width;
-    gint height = allocation.height;
-    DBG("icon view size: %dx%d", width, height);
 
-    old_size = (guint)icon_view->priv->nrows * icon_view->priv->ncols * sizeof(ViewItem *);
-    old_nrows = icon_view->priv->nrows;
-    old_ncols = icon_view->priv->ncols;
-
-    new_nrows = MAX((height - MIN_MARGIN * 2) / SLOT_SIZE, 0);
-    new_ncols = MAX((width - MIN_MARGIN * 2) / SLOT_SIZE, 0);
-    if (new_nrows <= 0 || new_ncols <= 0) {
+    GridParams new_grid_params;
+    if (!_xfdesktop_icon_view_build_grid_params(icon_view, &allocation, &new_grid_params)) {
         return;
     }
-    grid_changed = old_nrows != new_nrows || old_ncols != new_ncols;
 
-    if (!grid_changed
-        && icon_view->priv->grid_layout != NULL
-        && icon_view->priv->width == width
-        && icon_view->priv->height == height)
+    gboolean grid_changed = old_nrows != new_grid_params.nrows || old_ncols != new_grid_params.ncols;
+    gsize new_size = grid_layout_bytes(new_grid_params.nrows, new_grid_params.ncols);
+
+    if (grid_changed
+        || old_xmargin != new_grid_params.xmargin
+        || old_ymargin != new_grid_params.ymargin
+        || old_xspacing != new_grid_params.xspacing
+        || old_yspacing != new_grid_params.yspacing)
     {
-        return;
+        xfdesktop_icon_view_invalidate_all(icon_view, FALSE);
     }
 
     if (grid_changed) {
-        g_signal_emit(icon_view, __signals[SIG_START_GRID_RESIZE], 0, new_nrows, new_ncols);
-        xfdesktop_icon_view_invalidate_all(icon_view, FALSE);
+        g_signal_emit(icon_view, __signals[SIG_START_GRID_RESIZE], 0, new_grid_params.nrows, new_grid_params.ncols);
         xfdesktop_icon_view_temp_unplace_items(icon_view);
     }
 
-    icon_view->priv->width = width;
-    icon_view->priv->height = height;
-    icon_view->priv->nrows = new_nrows;
-    icon_view->priv->ncols = new_ncols;
-
-    new_size = (guint)icon_view->priv->nrows * icon_view->priv->ncols * sizeof(ViewItem *);
-
-    xrest = icon_view->priv->width - icon_view->priv->ncols * SLOT_SIZE;
-    if (icon_view->priv->ncols > 1) {
-        icon_view->priv->xspacing = (xrest - MIN_MARGIN * 2) / (icon_view->priv->ncols - 1);
-    } else {
-        /* Let's not try to divide by 0 */
-        icon_view->priv->xspacing = 1;
-    }
-    icon_view->priv->xmargin = (xrest - (icon_view->priv->ncols - 1) * icon_view->priv->xspacing) / 2;
-
-    yrest = icon_view->priv->height - icon_view->priv->nrows * SLOT_SIZE;
-    if (icon_view->priv->nrows > 1) {
-        icon_view->priv->yspacing = (yrest - MIN_MARGIN * 2) / (icon_view->priv->nrows - 1);
-    } else {
-        /* Let's not try to divide by 0 */
-        icon_view->priv->yspacing = 1;
-    }
-    icon_view->priv->ymargin = (yrest - (icon_view->priv->nrows - 1) * icon_view->priv->yspacing) / 2;
+    icon_view->priv->nrows = new_grid_params.nrows;
+    icon_view->priv->ncols = new_grid_params.ncols;
+    icon_view->priv->xmargin = new_grid_params.xmargin;
+    icon_view->priv->ymargin = new_grid_params.ymargin;
+    icon_view->priv->xspacing = new_grid_params.xspacing;
+    icon_view->priv->yspacing = new_grid_params.yspacing;
 
     if (icon_view->priv->grid_layout == NULL) {
         icon_view->priv->grid_layout = g_malloc0(new_size);
-        xfdesktop_icon_view_setup_grids_xinerama(icon_view);
     } else if (old_size != new_size) {
         DBG("old_size != new_size; resizing grid");
-        icon_view->priv->grid_layout = g_realloc(icon_view->priv->grid_layout,
-                                                 new_size);
+        icon_view->priv->grid_layout = g_realloc(icon_view->priv->grid_layout, new_size);
 
         if (new_size > old_size) {
-            memset(((guint8 *)icon_view->priv->grid_layout) + old_size, 0,
-                   new_size - old_size);
+            memset(((guint8 *)icon_view->priv->grid_layout) + old_size, 0, new_size - old_size);
         }
-        xfdesktop_icon_view_setup_grids_xinerama(icon_view);
-    } else if (old_nrows != new_nrows || old_ncols != new_ncols) {
-        xfdesktop_icon_view_setup_grids_xinerama(icon_view);
     }
 
     if (grid_changed) {
@@ -4092,7 +4025,7 @@ xfdesktop_icon_view_invalidate_item(XfdesktopIconView *icon_view,
 {
     g_return_if_fail(item != NULL);
 
-    if (item->row >= 0 && item->col >= 0) {
+    if (item->row >= 0 && item->row < icon_view->priv->nrows && item->col >= 0 && item->col < icon_view->priv->ncols) {
         if (!xfdesktop_icon_view_queue_draw_item(icon_view, item)) {
             recalc_extents = TRUE;
         }
@@ -4283,68 +4216,6 @@ xfdesktop_icon_view_get_next_free_grid_position(XfdesktopIconView *icon_view,
     return FALSE;
 }
 
-static inline void
-xfdesktop_grid_set_position_free(XfdesktopIconView *icon_view,
-                                 gint row,
-                                 gint col)
-{
-    g_return_if_fail(row < icon_view->priv->nrows
-                     && col < icon_view->priv->ncols
-                     && row >= 0 && col >= 0);
-
-#if 0 /*def DEBUG*/
-    DUMP_GRID_LAYOUT(icon_view);
-#endif
-
-    icon_view->priv->grid_layout[col * icon_view->priv->nrows + row] = NULL;
-
-#if 0 /*def DEBUG*/
-    DUMP_GRID_LAYOUT(icon_view);
-#endif
-}
-
-static inline gboolean
-xfdesktop_grid_unset_position_free_raw(XfdesktopIconView *icon_view,
-                                       gint row,
-                                       gint col,
-                                       gpointer data)
-{
-    gint idx;
-
-    g_return_val_if_fail(row < icon_view->priv->nrows
-                         && col < icon_view->priv->ncols
-                         && row >= 0 && col >= 0, FALSE);
-
-    idx = col * icon_view->priv->nrows + row;
-    if(icon_view->priv->grid_layout[idx])
-        return FALSE;
-
-#if 0 /*def DEBUG*/
-    DUMP_GRID_LAYOUT(icon_view);
-#endif
-
-    icon_view->priv->grid_layout[idx] = data;
-
-#if 0 /*def DEBUG*/
-    DUMP_GRID_LAYOUT(icon_view);
-#endif
-
-    return TRUE;
-}
-
-static inline ViewItem *
-xfdesktop_icon_view_item_in_slot_raw(XfdesktopIconView *icon_view,
-                                     gint idx)
-{
-    ViewItem *item = icon_view->priv->grid_layout[idx];
-
-    if (TOMBSTONE == item) {
-        return NULL;
-    } else {
-        return item;
-    }
-}
-
 static inline ViewItem *
 xfdesktop_icon_view_item_in_slot(XfdesktopIconView *icon_view,
                                  gint row,
@@ -4362,7 +4233,7 @@ xfdesktop_icon_view_item_in_slot(XfdesktopIconView *icon_view,
     if (idx < 0)
         return NULL;
 
-    return xfdesktop_icon_view_item_in_slot_raw(icon_view, idx);
+    return icon_view->priv->grid_layout[idx];
 }
 
 static inline gboolean
@@ -4542,12 +4413,9 @@ xfdesktop_icon_view_model_row_deleted(GtkTreeModel *model,
 static void
 xfdesktop_icon_view_clear_grid_layout(XfdesktopIconView *icon_view)
 {
-    if (icon_view->priv->nrows > 0 && icon_view->priv->ncols > 0 && icon_view->priv->grid_layout != NULL) {
-        for (gint i = 0; i < icon_view->priv->nrows * icon_view->priv->ncols; ++i) {
-            if (icon_view->priv->grid_layout[i] != NULL && icon_view->priv->grid_layout[i] != TOMBSTONE) {
-                icon_view->priv->grid_layout[i] = NULL;
-            }
-        }
+    gsize size = grid_layout_bytes(icon_view->priv->nrows, icon_view->priv->ncols);
+    if (size > 0 && icon_view->priv->grid_layout != NULL) {
+        memset(icon_view->priv->grid_layout, 0, size);
     }
 }
 
