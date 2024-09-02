@@ -60,6 +60,15 @@ if enable_file_icons
     'xfdesktop-special-file-icon.c',
     'xfdesktop-volume-icon.c',
   ]
+
+  xfdesktop_sources += gnome.compile_resources(
+    'xfdesktop-monitor-chooser-ui',
+    'xfdesktop-monitor-chooser-ui.gresource.xml',
+    export: false,
+    extra_args: [
+      '--manual-register',
+      ],
+    )
 endif
 
 if enable_libnotify
