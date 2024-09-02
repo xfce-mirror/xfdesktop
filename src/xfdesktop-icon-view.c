@@ -4486,21 +4486,20 @@ xfdesktop_icon_view_items_free(XfdesktopIconView *icon_view)
 
 
 GtkWidget *
-xfdesktop_icon_view_new(XfconfChannel *channel)
-{
+xfdesktop_icon_view_new(XfconfChannel *channel, XfwScreen *screen) {
     return g_object_new(XFDESKTOP_TYPE_ICON_VIEW,
                         "channel", channel,
+                        "screen", screen,
                         NULL);
 }
 
 GtkWidget *
-xfdesktop_icon_view_new_with_model(XfconfChannel *channel,
-                                   GtkTreeModel *model)
-{
+xfdesktop_icon_view_new_with_model(XfconfChannel *channel, XfwScreen *screen, GtkTreeModel *model) {
     g_return_val_if_fail(GTK_IS_TREE_MODEL(model), NULL);
 
     return g_object_new(XFDESKTOP_TYPE_ICON_VIEW,
                         "channel", channel,
+                        "screen", screen,
                         "model", model,
                         NULL);
 }
@@ -5258,4 +5257,73 @@ xfdesktop_icon_view_get_window_widget(XfdesktopIconView *icon_view)
     g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view), NULL);
 
     return icon_view->priv->parent_window;
+}
+
+
+// For config migration only
+static void
+find_slot_for_coords(XfdesktopIconView *icon_view, gint x, gint y, gint *row, gint *col) {
+    // Algebraically rearranged from xfdesktop_icon_view_shift_to_slot_area()
+    *row = (y - icon_view->priv->ymargin) / (SLOT_SIZE + icon_view->priv->yspacing);
+    *col = (x - icon_view->priv->xmargin) / (SLOT_SIZE + icon_view->priv->xspacing);
+    DBG("row=%d, col=%d", *row, *col);
+}
+
+// For config migration only
+gboolean
+xfdesktop_icon_view_grid_geometry_for_metrics(XfdesktopIconView *icon_view,
+                                              GdkRectangle *total_workarea,
+                                              GdkRectangle *monitor_workarea,
+                                              gint *first_row,
+                                              gint *first_col,
+                                              gint *last_row,
+                                              gint *last_col)
+{
+    xfdesktop_icon_view_style_updated(GTK_WIDGET(icon_view));
+
+    GtkAllocation allocation = {
+        .x = total_workarea->x,
+        .y = total_workarea->y,
+        .width = total_workarea->width,
+        .height = total_workarea->height,
+    };
+    if (!_xfdesktop_icon_view_size_grid(icon_view, &allocation)) {
+        return FALSE;
+    }
+
+    DBG("SLOT_SIZE=%.02f", SLOT_SIZE);
+
+    // If our monitor origin is all the way to the top or left, the margin will
+    // come into play, so add that buffer so our coord will actually be in the
+    // row/col.
+    gint xleftoff = monitor_workarea->x == total_workarea->x ? icon_view->priv->xmargin : 0;
+    gint ytopoff = monitor_workarea->y == total_workarea->y ? icon_view->priv->ymargin : 0;
+    gint xorigin = monitor_workarea->x + xleftoff;
+    gint yorigin = monitor_workarea->y + ytopoff;
+    DBG("xorigin=%d, yorigin=%d", xorigin, yorigin);
+    find_slot_for_coords(icon_view, xorigin, yorigin, first_row, first_col);
+
+    // If our monitor is all the way to the bottom or left, the margin will
+    // again come into play, so subtract that out.
+    gint xrightoff = monitor_workarea->x + monitor_workarea->width == total_workarea->x + total_workarea->width
+        ? icon_view->priv->xmargin : 0;
+    gint ybottomoff = monitor_workarea->y + monitor_workarea->height == total_workarea->y + total_workarea->height
+        ? icon_view->priv->ymargin : 0;
+    // + 1 on these next two is because SLOT_SIZE is floating-point, and we
+    // always want to round up to ensure we're actually inside the last slot.
+    gint xlast = monitor_workarea->x + monitor_workarea->width - xrightoff - SLOT_SIZE + 1;
+    gint ylast = monitor_workarea->y + monitor_workarea->height - ybottomoff - SLOT_SIZE + 1;
+    DBG("xlast=%d, ylast=%d", xlast, ylast);
+    find_slot_for_coords(icon_view, xlast, ylast, last_row, last_col);
+
+    return *first_row >= 0
+        && *first_row < icon_view->priv->nrows
+        && *first_col >= 0
+        && *first_col < icon_view->priv->ncols
+        && *last_row >= 0
+        && *last_row < icon_view->priv->nrows
+        && *last_col >= 0
+        && *last_col < icon_view->priv->ncols
+        && *first_row <= *last_row
+        && *first_col <= *last_col;
 }
