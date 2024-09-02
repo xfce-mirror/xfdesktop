@@ -29,6 +29,7 @@ struct _XfdesktopFileIconModelFilter {
     GtkTreeModelFilter parent;
 
     XfconfChannel *channel;
+    XfwMonitor *monitor;
 
     gboolean show_special_home;
     gboolean show_special_filesystem;
@@ -43,6 +44,7 @@ struct _XfdesktopFileIconModelFilter {
 enum {
     PROP0,
     PROP_CHANNEL,
+    PROP_MONITOR,
     PROP_SHOW_HOME,
     PROP_SHOW_FILESYSTEM,
     PROP_SHOW_TRASH,
@@ -110,6 +112,13 @@ xfdesktop_file_icon_model_filter_class_init(XfdesktopFileIconModelFilterClass *k
                                                         "channel",
                                                         "xfconf channel",
                                                         XFCONF_TYPE_CHANNEL,
+                                                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS));
+    g_object_class_install_property(gobject_class,
+                                    PROP_MONITOR,
+                                    g_param_spec_object("monitor",
+                                                        "monitor",
+                                                        "xfw monitor",
+                                                        XFW_TYPE_MONITOR,
                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS));
     g_object_class_install_property(gobject_class,
                                     PROP_SHOW_HOME,
@@ -207,6 +216,10 @@ xfdesktop_file_icon_model_filter_set_property(GObject *object, guint property_id
             filter->channel = g_value_dup_object(value);
             break;
 
+        case PROP_MONITOR:
+            filter->monitor = g_value_dup_object(value);
+            break;
+
         case PROP_SHOW_HOME:
             filter->show_special_home = g_value_get_boolean(value);
             gtk_tree_model_filter_refilter(GTK_TREE_MODEL_FILTER(filter));
@@ -260,6 +273,10 @@ xfdesktop_file_icon_model_filter_get_property(GObject *object, guint property_id
     switch (property_id) {
         case PROP_CHANNEL:
             g_value_set_object(value, filter->channel);
+            break;
+
+        case PROP_MONITOR:
+            g_value_set_object(value, filter->monitor);
             break;
 
         case PROP_SHOW_HOME:
@@ -356,10 +373,11 @@ is_regular_file_visible(XfdesktopFileIconModelFilter *filter, XfdesktopRegularFi
 }
 
 XfdesktopFileIconModelFilter *
-xfdesktop_file_icon_model_filter_new(XfconfChannel *channel, XfdesktopFileIconModel *child) {
+xfdesktop_file_icon_model_filter_new(XfconfChannel *channel, XfwMonitor *monitor, XfdesktopFileIconModel *child) {
     g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON_MODEL(child), NULL);
     return g_object_new(XFDESKTOP_TYPE_FILE_ICON_MODEL_FILTER,
                         "channel", channel,
+                        "monitor", monitor,
                         "child-model", child,
                         NULL);
 }

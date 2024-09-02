@@ -22,6 +22,7 @@
 #define __XFDESKTOP_ICON_H__
 
 #include <gtk/gtk.h>
+#include <libxfce4windowing/libxfce4windowing.h>
 
 G_BEGIN_DECLS
 
@@ -74,6 +75,10 @@ struct _XfdesktopIconClass
 };
 
 GType xfdesktop_icon_get_type(void) G_GNUC_CONST;
+
+void xfdesktop_icon_set_monitor(XfdesktopIcon *icon,
+                                XfwMonitor *monitor);
+XfwMonitor *xfdesktop_icon_get_monitor(XfdesktopIcon *icon);
 
 /* xfdesktop virtual function accessors */
 
