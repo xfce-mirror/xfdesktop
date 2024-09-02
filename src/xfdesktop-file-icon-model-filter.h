@@ -23,6 +23,7 @@
 
 #include <gtk/gtk.h>
 #include <xfconf/xfconf.h>
+#include <libxfce4windowing/libxfce4windowing.h>
 
 #include "xfdesktop-file-icon-model.h"
 #include "xfdesktop-file-icon.h"
@@ -33,6 +34,7 @@ G_DECLARE_FINAL_TYPE(XfdesktopFileIconModelFilter, xfdesktop_file_icon_model_fil
 #define XFDESKTOP_TYPE_FILE_ICON_MODEL_FILTER (xfdesktop_file_icon_model_filter_get_type())
 
 XfdesktopFileIconModelFilter *xfdesktop_file_icon_model_filter_new(XfconfChannel *channel,
+                                                                   XfwMonitor *monitor,
                                                                    XfdesktopFileIconModel *child);
 
 XfdesktopFileIcon *xfdesktop_file_icon_model_filter_get_icon(XfdesktopFileIconModelFilter *filter,
