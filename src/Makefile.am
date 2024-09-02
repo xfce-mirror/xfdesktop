@@ -154,6 +154,10 @@ xfdesktop_SOURCES += $(desktop_icon_sources)
 
 if ENABLE_FILE_ICONS
 
+xfdesktop_built_sources += \
+	xfdesktop-monitor-chooser-ui.c \
+	xfdesktop-monitor-chooser-ui.h
+
 xfdesktop_SOURCES += $(desktop_file_icon_sources)
 
 xfdesktop_CFLAGS += \
@@ -165,6 +169,9 @@ xfdesktop_LDADD += \
 endif
 endif
 
+glade_files = \
+	xfdesktop-monitor-chooser-ui.glade
+
 BUILT_SOURCES = \
 	$(xfdesktop_built_sources)
 
@@ -174,6 +181,7 @@ DISTCLEANFILES = \
 EXTRA_DIST = \
 	$(desktop_icon_sources) \
 	$(desktop_file_icon_sources) \
+	$(glade_files) \
 	xfdesktop-file-manager-fdo-dbus.xml \
 	xfdesktop-file-manager-dbus.xml \
 	xfdesktop-thunar-dbus.xml \
@@ -206,3 +214,9 @@ xfdesktop-trash-proxy.c xfdesktop-trash-proxy.h : $(srcdir)/xfdesktop-trash-dbus
 		--interface-prefix=org.xfce. \
 		--generate-c-code=xfdesktop-trash-proxy \
 		$<
+
+%-ui.h: $(srcdir)/%-ui.gresource.xml $(glade_files) Makefile
+	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(srcdir) --generate-header --manual-register $<
+
+%-ui.c: $(srcdir)/%-ui.gresource.xml $(glade_files) Makefile
+	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(srcdir) --generate-source --manual-register $<
