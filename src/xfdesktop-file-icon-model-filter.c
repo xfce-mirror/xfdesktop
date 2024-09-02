@@ -18,9 +18,13 @@
  *  Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
+#include <glib-object.h>
+
 #include "common/xfdesktop-common.h"
 #include "xfdesktop-file-icon-model-filter.h"
 #include "xfdesktop-file-icon-model.h"
+#include "xfdesktop-icon-position-configs.h"
+#include "xfdesktop-icon.h"
 #include "xfdesktop-regular-file-icon.h"
 #include "xfdesktop-special-file-icon.h"
 #include "xfdesktop-volume-icon.h"
@@ -29,6 +33,8 @@ struct _XfdesktopFileIconModelFilter {
     GtkTreeModelFilter parent;
 
     XfconfChannel *channel;
+    XfdesktopIconPositionConfigs *position_configs;
+    XfwMonitor *monitor;
 
     gboolean show_special_home;
     gboolean show_special_filesystem;
@@ -43,6 +49,8 @@ struct _XfdesktopFileIconModelFilter {
 enum {
     PROP0,
     PROP_CHANNEL,
+    PROP_POSITION_CONFIGS,
+    PROP_MONITOR,
     PROP_SHOW_HOME,
     PROP_SHOW_FILESYSTEM,
     PROP_SHOW_TRASH,
@@ -110,6 +118,19 @@ xfdesktop_file_icon_model_filter_class_init(XfdesktopFileIconModelFilterClass *k
                                                         "channel",
                                                         "xfconf channel",
                                                         XFCONF_TYPE_CHANNEL,
+                                                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS));
+    g_object_class_install_property(gobject_class,
+                                    PROP_POSITION_CONFIGS,
+                                    g_param_spec_pointer("position-configs",
+                                                         "position-configs",
+                                                         "XfdesktopIconPositionConfigs",
+                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS));
+    g_object_class_install_property(gobject_class,
+                                    PROP_MONITOR,
+                                    g_param_spec_object("monitor",
+                                                        "monitor",
+                                                        "xfw monitor",
+                                                        XFW_TYPE_MONITOR,
                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS));
     g_object_class_install_property(gobject_class,
                                     PROP_SHOW_HOME,
@@ -207,6 +228,14 @@ xfdesktop_file_icon_model_filter_set_property(GObject *object, guint property_id
             filter->channel = g_value_dup_object(value);
             break;
 
+        case PROP_POSITION_CONFIGS:
+            filter->position_configs = g_value_get_pointer(value);
+            break;
+
+        case PROP_MONITOR:
+            filter->monitor = g_value_dup_object(value);
+            break;
+
         case PROP_SHOW_HOME:
             filter->show_special_home = g_value_get_boolean(value);
             gtk_tree_model_filter_refilter(GTK_TREE_MODEL_FILTER(filter));
@@ -262,6 +291,14 @@ xfdesktop_file_icon_model_filter_get_property(GObject *object, guint property_id
             g_value_set_object(value, filter->channel);
             break;
 
+        case PROP_POSITION_CONFIGS:
+            g_value_set_object(value, filter->position_configs);
+            break;
+
+        case PROP_MONITOR:
+            g_value_set_object(value, filter->monitor);
+            break;
+
         case PROP_SHOW_HOME:
             g_value_set_boolean(value, filter->show_special_home);
             break;
@@ -311,13 +348,22 @@ static gboolean
 xfdesktop_file_icon_model_filter_visible(GtkTreeModelFilter *tmfilter, GtkTreeModel *child_model, GtkTreeIter *child_iter) {
     XfdesktopFileIconModelFilter *filter = XFDESKTOP_FILE_ICON_MODEL_FILTER(tmfilter);
     XfdesktopFileIcon *icon = xfdesktop_file_icon_model_get_icon(XFDESKTOP_FILE_ICON_MODEL(child_model), child_iter);
-    return icon != NULL
-        && (
-            (XFDESKTOP_IS_REGULAR_FILE_ICON(icon) && is_regular_file_visible(filter, XFDESKTOP_REGULAR_FILE_ICON(icon)))
-            || (XFDESKTOP_IS_SPECIAL_FILE_ICON(icon) && is_special_file_visible(filter, XFDESKTOP_SPECIAL_FILE_ICON(icon)))
-            || (XFDESKTOP_IS_VOLUME_ICON(icon) && is_volume_visible(filter, XFDESKTOP_VOLUME_ICON(icon)))
-        )
-        && GTK_TREE_MODEL_FILTER_CLASS(xfdesktop_file_icon_model_filter_parent_class)->visible(tmfilter, child_model, child_iter);
+    if (icon != NULL) {
+        gchar *icon_id = xfdesktop_icon_get_identifier(XFDESKTOP_ICON(icon));
+        XfwMonitor *monitor = NULL;
+        gboolean found = xfdesktop_icon_position_configs_lookup(filter->position_configs, icon_id, &monitor, NULL, NULL);
+        g_free(icon_id);
+
+        return ((found && monitor == filter->monitor) || (!found && xfw_monitor_is_primary(filter->monitor)))
+            && (
+                (XFDESKTOP_IS_REGULAR_FILE_ICON(icon) && is_regular_file_visible(filter, XFDESKTOP_REGULAR_FILE_ICON(icon)))
+                || (XFDESKTOP_IS_SPECIAL_FILE_ICON(icon) && is_special_file_visible(filter, XFDESKTOP_SPECIAL_FILE_ICON(icon)))
+                || (XFDESKTOP_IS_VOLUME_ICON(icon) && is_volume_visible(filter, XFDESKTOP_VOLUME_ICON(icon)))
+            )
+            && GTK_TREE_MODEL_FILTER_CLASS(xfdesktop_file_icon_model_filter_parent_class)->visible(tmfilter, child_model, child_iter);
+    } else {
+        return FALSE;
+    }
 }
 
 static gboolean
@@ -356,10 +402,19 @@ is_regular_file_visible(XfdesktopFileIconModelFilter *filter, XfdesktopRegularFi
 }
 
 XfdesktopFileIconModelFilter *
-xfdesktop_file_icon_model_filter_new(XfconfChannel *channel, XfdesktopFileIconModel *child) {
+xfdesktop_file_icon_model_filter_new(XfconfChannel *channel,
+                                     XfdesktopIconPositionConfigs *position_configs,
+                                     XfwMonitor *monitor,
+                                     XfdesktopFileIconModel *child)
+{
+    g_return_val_if_fail(XFCONF_IS_CHANNEL(channel), NULL);
+    g_return_val_if_fail(position_configs != NULL, NULL);
+    g_return_val_if_fail(XFW_IS_MONITOR(monitor), NULL);
     g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON_MODEL(child), NULL);
     return g_object_new(XFDESKTOP_TYPE_FILE_ICON_MODEL_FILTER,
                         "channel", channel,
+                        "position-configs", position_configs,
+                        "monitor", monitor,
                         "child-model", child,
                         NULL);
 }
