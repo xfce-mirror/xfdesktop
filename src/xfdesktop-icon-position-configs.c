@@ -1277,7 +1277,10 @@ xfdesktop_icon_position_configs_add_monitor(XfdesktopIconPositionConfigs *config
     if (best_config == NULL) {
         gint n_candidates = g_list_length(*candidates);
         if (n_candidates == 0) {
-            best_config = xfdesktop_icon_position_config_new(level);
+            // Usually if there are no candidates we'd just create a new config
+            // and move on, but for now we want to return nothing and let the
+            // migration code have a crack at it.
+            //best_config = xfdesktop_icon_position_config_new(level);
         } else if (n_candidates == 1) {
             best_config = g_list_nth_data(*candidates, 0);
         } else {
@@ -1407,6 +1410,25 @@ XfdesktopIconPositionConfig *
 xfdesktop_icon_position_config_new(XfdesktopIconPositionLevel level) {
     g_return_val_if_fail(level >= XFDESKTOP_ICON_POSITION_LEVEL_PRIMARY && level <= XFDESKTOP_ICON_POSITION_LEVEL_OTHER, NULL);
     return xfdesktop_icon_position_config_new_internal(level);
+}
+
+void
+_xfdesktop_icon_position_config_set_icon_position(XfdesktopIconPositionConfig *config,
+                                                  const gchar *identifier,
+                                                  guint row,
+                                                  guint col)
+{
+    g_return_if_fail(config != NULL);
+    g_return_if_fail(identifier != NULL);
+
+    XfdesktopIconPosition *position = g_hash_table_lookup(config->icon_positions, identifier);
+    if (position == NULL) {
+        position = g_new0(XfdesktopIconPosition, 1);
+        g_hash_table_insert(config->icon_positions, g_strdup(identifier), position);
+    }
+
+    position->row = row;
+    position->col = col;
 }
 
 GList *  // caller owned container, callee owned data
