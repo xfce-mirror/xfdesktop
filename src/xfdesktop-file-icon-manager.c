@@ -68,6 +68,7 @@
 #include "xfdesktop-file-icon-model-filter.h"
 #include "xfdesktop-file-utils.h"
 #include "xfdesktop-icon-position-configs.h"
+#include "xfdesktop-icon-position-migration.h"
 #include "xfdesktop-icon-view-holder.h"
 #include "xfdesktop-icon-view.h"
 #include "xfdesktop-icon-view-model.h"
@@ -1289,11 +1290,21 @@ create_icon_view(XfdesktopFileIconManager *fmanager, XfceDesktop *desktop) {
     } else {
         level = XFDESKTOP_ICON_POSITION_LEVEL_OTHER;
     }
+
+    if (!xfdesktop_icon_position_configs_has_exact_monitor(fmanager->position_configs, monitor)) {
+        mdata->position_config = xfdesktop_icon_positions_try_migrate(channel, screen, monitor, level);
+        if (mdata->position_config != NULL) {
+            xfdesktop_icon_position_configs_assign_monitor(fmanager->position_configs, mdata->position_config, monitor);
+        }
+    }
+
     GList *candidates = NULL;
-    mdata->position_config = xfdesktop_icon_position_configs_add_monitor(fmanager->position_configs,
-                                                                         monitor,
-                                                                         level,
-                                                                         &candidates);
+    if (mdata->position_config == NULL) {
+        mdata->position_config = xfdesktop_icon_position_configs_add_monitor(fmanager->position_configs,
+                                                                             monitor,
+                                                                             level,
+                                                                             &candidates);
+    }
 
     if (mdata->position_config == NULL) {
         g_assert(candidates != NULL);
