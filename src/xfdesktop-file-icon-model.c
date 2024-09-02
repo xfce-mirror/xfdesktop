@@ -18,6 +18,7 @@
  *  Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
+#include "libxfce4windowing/libxfce4windowing.h"
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -261,8 +262,8 @@ xfdesktop_file_icon_model_class_init(XfdesktopFileIconModelClass *klass)
                                                       0,
                                                       NULL,
                                                       NULL,
-                                                      xfdesktop_marshal_BOOLEAN__OBJECT_POINTER_POINTER,
-                                                      G_TYPE_BOOLEAN,
+                                                      xfdesktop_marshal_OBJECT__OBJECT_POINTER_POINTER,
+                                                      XFW_TYPE_MONITOR,
                                                       3,
                                                       XFDESKTOP_TYPE_FILE_ICON,
                                                       G_TYPE_POINTER,
@@ -542,10 +543,11 @@ check_create_desktop_folder(XfdesktopFileIconModel *fmodel) {
 
 static void
 add_icon(XfdesktopFileIconModel *fmodel, XfdesktopFileIcon *icon) {
-    gboolean pos_valid = FALSE;
+    XfwMonitor *monitor = NULL;
     gint16 row = -1, col = -1;
-    g_signal_emit(fmodel, signals[SIG_ICON_POSITION_REQUEST], 0, icon, &row, &col, &pos_valid);
-    if (pos_valid) {
+    g_signal_emit(fmodel, signals[SIG_ICON_POSITION_REQUEST], 0, icon, &row, &col, &monitor);
+    xfdesktop_icon_set_monitor(XFDESKTOP_ICON(icon), monitor);
+    if (row != -1 && col != -1) {
         xfdesktop_icon_set_position(XFDESKTOP_ICON(icon), row, col);
     }
 
