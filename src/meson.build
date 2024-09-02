@@ -56,6 +56,7 @@ if enable_file_icons
     'xfdesktop-file-icon-model-filter.c',
     'xfdesktop-file-utils.c',
     'xfdesktop-icon-position-configs.c',
+    'xfdesktop-icon-position-migration.c',
     'xfdesktop-regular-file-icon.c',
     'xfdesktop-special-file-icon.c',
     'xfdesktop-volume-icon.c',
