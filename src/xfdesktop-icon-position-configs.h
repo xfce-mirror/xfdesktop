@@ -57,6 +57,9 @@ void xfdesktop_icon_position_configs_set_icon_position(XfdesktopIconPositionConf
                                                        guint col,
                                                        guint64 last_seen_timestamp);
 
+gboolean xfdesktop_icon_position_configs_has_exact_monitor(XfdesktopIconPositionConfigs *configs,
+                                                           XfwMonitor *monitor);
+
 XfdesktopIconPositionConfig *xfdesktop_icon_position_configs_add_monitor(XfdesktopIconPositionConfigs *configs,
                                                                          XfwMonitor *monitor,
                                                                          XfdesktopIconPositionLevel level,
@@ -78,6 +81,12 @@ void xfdesktop_icon_position_configs_free(XfdesktopIconPositionConfigs *configs)
 
 
 XfdesktopIconPositionConfig *xfdesktop_icon_position_config_new(XfdesktopIconPositionLevel level);
+
+// For config migration only
+void _xfdesktop_icon_position_config_set_icon_position(XfdesktopIconPositionConfig *config,
+                                                       const gchar *identifier,
+                                                       guint row,
+                                                       guint col);
 
 GList *xfdesktop_icon_position_config_get_monitor_display_names(XfdesktopIconPositionConfig *config);
 
