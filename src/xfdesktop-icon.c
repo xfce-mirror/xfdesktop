@@ -18,6 +18,7 @@
  *  Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
+#include "libxfce4windowing/libxfce4windowing.h"
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -30,10 +31,10 @@
 #include <gobject/gmarshal.h>
 
 #include "xfdesktop-icon.h"
-#include "xfdesktop-marshal.h"
 
 struct _XfdesktopIconPrivate
 {
+    XfwMonitor *monitor;
     gint16 row;
     gint16 col;
 };
@@ -88,6 +89,19 @@ xfdesktop_icon_init(XfdesktopIcon *icon)
     icon->priv = xfdesktop_icon_get_instance_private(icon);
     icon->priv->row = -1;
     icon->priv->col = -1;
+}
+
+void
+xfdesktop_icon_set_monitor(XfdesktopIcon *icon, XfwMonitor *monitor) {
+    g_return_if_fail(XFDESKTOP_IS_ICON(icon));
+    g_return_if_fail(monitor == NULL || XFW_IS_MONITOR(monitor));
+    icon->priv->monitor = monitor;
+}
+
+XfwMonitor *
+xfdesktop_icon_get_monitor(XfdesktopIcon *icon) {
+    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), NULL);
+    return icon->priv->monitor;
 }
 
 void
