@@ -76,6 +76,8 @@ desktop_file_icon_sources = \
 	xfdesktop-file-utils.h \
 	xfdesktop-icon-position-configs.c \
 	xfdesktop-icon-position-configs.h \
+	xfdesktop-icon-position-migration.c \
+	xfdesktop-icon-position-migration.h \
 	xfdesktop-monitor-chooser-ui.c \
 	xfdesktop-monitor-chooser-ui.h \
 	xfdesktop-regular-file-icon.c \
