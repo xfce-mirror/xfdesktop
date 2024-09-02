@@ -219,7 +219,8 @@ static void xfdesktop_file_icon_manager_icon_moved(XfdesktopIconView *icon_view,
                                                    gint new_row,
                                                    gint new_col,
                                                    MonitorData *mdata);
-static void xfdesktop_file_icon_manager_activate_selected(XfdesktopFileIconManager *fmanager);
+static void xfdesktop_file_icon_manager_activate_selected(GtkWidget *widget,
+                                                          XfdesktopFileIconManager *fmanager);
 
 static GList *xfdesktop_file_icon_manager_get_selected_icons(XfdesktopFileIconManager *fmanager);
 
@@ -591,6 +592,8 @@ toplevel_window_for_widget(GtkWidget *widget) {
                 }
             }
         }
+    } else {
+        return GTK_WINDOW(gtk_widget_get_toplevel(widget));
     }
 
     return NULL;
@@ -611,7 +614,7 @@ xfdesktop_file_icon_menu_executed(GtkWidget *widget, XfdesktopFileIconManager *f
 
 static void
 xfdesktop_file_icon_menu_open_all(GtkWidget *widget, XfdesktopFileIconManager *fmanager) {
-    xfdesktop_file_icon_manager_activate_selected(fmanager);
+    xfdesktop_file_icon_manager_activate_selected(widget, fmanager);
 }
 
 static void
@@ -1243,8 +1246,8 @@ create_icon_view(XfdesktopFileIconManager *fmanager, XfceDesktop *desktop) {
 
     g_signal_connect(icon_view, "icon-moved",
                      G_CALLBACK(xfdesktop_file_icon_manager_icon_moved), mdata);
-    g_signal_connect_swapped(icon_view, "icon-activated",
-                             G_CALLBACK(xfdesktop_file_icon_manager_activate_selected), fmanager);
+    g_signal_connect(icon_view, "icon-activated",
+                     G_CALLBACK(xfdesktop_file_icon_manager_activate_selected), fmanager);
     g_signal_connect(icon_view, "realize",
                      G_CALLBACK(xfdesktop_file_icon_manager_icon_view_realized), fmanager);
     g_signal_connect(icon_view, "unrealize",
@@ -2965,12 +2968,12 @@ xfdesktop_file_icon_manager_icon_moved(XfdesktopIconView *icon_view,
 }
 
 static void
-xfdesktop_file_icon_manager_activate_selected(XfdesktopFileIconManager *fmanager) {
+xfdesktop_file_icon_manager_activate_selected(GtkWidget *widget, XfdesktopFileIconManager *fmanager) {
     GList *selected_icons = xfdesktop_file_icon_manager_get_selected_icons(fmanager);
 
     for (GList *l = selected_icons; l != NULL; l = l->next) {
         XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(l->data);
-        xfdesktop_icon_activate(XFDESKTOP_ICON(icon), NULL);  // FIXME: provide a toplevel
+        xfdesktop_icon_activate(XFDESKTOP_ICON(icon), toplevel_window_for_widget(widget));
     }
 
     g_list_free(selected_icons);
