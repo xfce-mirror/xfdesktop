@@ -78,6 +78,12 @@ void xfdesktop_icon_position_configs_free(XfdesktopIconPositionConfigs *configs)
 
 XfdesktopIconPositionConfig *xfdesktop_icon_position_config_new(XfdesktopIconPositionLevel level);
 
+// For config migration only
+void _xfdesktop_icon_position_config_set_icon_position(XfdesktopIconPositionConfig *config,
+                                                       const gchar *identifier,
+                                                       guint row,
+                                                       guint col);
+
 GList *xfdesktop_icon_position_config_get_monitor_display_names(XfdesktopIconPositionConfig *config);
 
 void xfdesktop_icon_position_config_free(XfdesktopIconPositionConfig *config);
