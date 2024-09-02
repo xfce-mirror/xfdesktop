@@ -18,6 +18,7 @@
  *  Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
+#include "libxfce4windowing/libxfce4windowing.h"
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -30,10 +31,10 @@
 #include <gobject/gmarshal.h>
 
 #include "xfdesktop-icon.h"
-#include "xfdesktop-marshal.h"
 
 struct _XfdesktopIconPrivate
 {
+    XfwMonitor *monitor;
     gint16 row;
     gint16 col;
 };
@@ -90,17 +91,41 @@ xfdesktop_icon_init(XfdesktopIcon *icon)
     icon->priv->col = -1;
 }
 
-void
+gboolean
+xfdesktop_icon_set_monitor(XfdesktopIcon *icon, XfwMonitor *monitor) {
+    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), FALSE);
+    g_return_val_if_fail(monitor == NULL || XFW_IS_MONITOR(monitor), FALSE);
+
+    if (icon->priv->monitor != monitor) {
+        icon->priv->monitor = monitor;
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+XfwMonitor *
+xfdesktop_icon_get_monitor(XfdesktopIcon *icon) {
+    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), NULL);
+    return icon->priv->monitor;
+}
+
+gboolean
 xfdesktop_icon_set_position(XfdesktopIcon *icon,
                             gint16 row,
                             gint16 col)
 {
-    g_return_if_fail(XFDESKTOP_IS_ICON(icon));
+    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), FALSE);
+    g_return_val_if_fail((row >= 0 && col >= 0) || (row == -1 && col == -1), FALSE);
 
-    icon->priv->row = row;
-    icon->priv->col = col;
-
-    g_signal_emit(G_OBJECT(icon), __signals[SIG_POS_CHANGED], 0, NULL);
+    if (row != icon->priv->row || col != icon->priv->col) {
+        icon->priv->row = row;
+        icon->priv->col = col;
+        g_signal_emit(G_OBJECT(icon), __signals[SIG_POS_CHANGED], 0, NULL);
+        return TRUE;
+    } else {
+        return FALSE;
+    }
 }
 
 gboolean
@@ -110,10 +135,13 @@ xfdesktop_icon_get_position(XfdesktopIcon *icon,
 {
     g_return_val_if_fail(XFDESKTOP_IS_ICON(icon) && row && col, FALSE);
 
-    *row = icon->priv->row;
-    *col = icon->priv->col;
-
-    return TRUE;
+    if (icon->priv->row != -1 && icon->priv->col != -1) {
+        *row = icon->priv->row;
+        *col = icon->priv->col;
+        return TRUE;
+    } else {
+        return FALSE;
+    }
 }
 
 /*< required >*/
