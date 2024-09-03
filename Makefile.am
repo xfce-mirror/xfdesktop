@@ -57,6 +57,7 @@ compile_flags.txt: $(shell find . -name Makefile)
 		-DLOCALEDIR=\"$(localedir)\" \
 		-DEXO_API_SUBJECT_TO_CHANGE \
 		-DDEFAULT_BACKDROP=\"\" \
+		-DBACKGROUNDS_DIR=\"\" \
 		-I$(top_srcdir) \
 		-I$(top_srcdir)/common	\
 		-I$(top_builddir)/common \
