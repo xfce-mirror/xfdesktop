@@ -1114,6 +1114,14 @@ popup_secondary_root_menu(XfdesktopApplication *app, XfceDesktop *desktop, guint
     do_menu_popup(app, desktop, button, activate_time, FALSE, windowlist_populate);
 }
 
+static gboolean
+icon_view_active(XfdesktopApplication *app) {
+#ifdef ENABLE_DESKTOP_ICONS
+    return app->icon_view_manager != NULL;
+#else
+    return FALSE;
+#endif
+}
 
 static gboolean
 xfce_desktop_button_press_event(GtkWidget *w, GdkEventButton *evt, XfdesktopApplication *app) {
@@ -1128,8 +1136,9 @@ xfce_desktop_button_press_event(GtkWidget *w, GdkEventButton *evt, XfdesktopAppl
     if(evt->type == GDK_BUTTON_PRESS) {
         if(button == 3 || (button == 1 && (state & GDK_SHIFT_MASK))) {
             /* no icons on the desktop, grab the focus and pop up the menu */
-            if(!gtk_widget_has_grab(w))
+            if (!icon_view_active(app) && !gtk_widget_has_grab(w)) {
                 gtk_grab_add(w);
+            }
 
             popup_root_menu(app, desktop, button, evt->time);
             return TRUE;
@@ -1137,8 +1146,9 @@ xfce_desktop_button_press_event(GtkWidget *w, GdkEventButton *evt, XfdesktopAppl
                                   && (state & GDK_CONTROL_MASK)))
         {
             /* always grab the focus and pop up the menu */
-            if(!gtk_widget_has_grab(w))
+            if (!icon_view_active(app) && !gtk_widget_has_grab(w)) {
                 gtk_grab_add(w);
+            }
 
             popup_secondary_root_menu(app, desktop, button, evt->time);
             return TRUE;
