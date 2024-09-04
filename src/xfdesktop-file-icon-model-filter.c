@@ -349,10 +349,9 @@ xfdesktop_file_icon_model_filter_visible(GtkTreeModelFilter *tmfilter, GtkTreeMo
     XfdesktopFileIconModelFilter *filter = XFDESKTOP_FILE_ICON_MODEL_FILTER(tmfilter);
     XfdesktopFileIcon *icon = xfdesktop_file_icon_model_get_icon(XFDESKTOP_FILE_ICON_MODEL(child_model), child_iter);
     if (icon != NULL) {
-        gchar *icon_id = xfdesktop_icon_get_identifier(XFDESKTOP_ICON(icon));
+        const gchar *icon_id = xfdesktop_icon_peek_identifier(XFDESKTOP_ICON(icon));
         XfwMonitor *monitor = NULL;
         gboolean found = xfdesktop_icon_position_configs_lookup(filter->position_configs, icon_id, &monitor, NULL, NULL);
-        g_free(icon_id);
 
         return ((found && monitor == filter->monitor) || (!found && xfw_monitor_is_primary(filter->monitor)))
             && (

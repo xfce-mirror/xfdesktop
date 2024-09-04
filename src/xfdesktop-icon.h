@@ -85,8 +85,8 @@ XfwMonitor *xfdesktop_icon_get_monitor(XfdesktopIcon *icon);
 const gchar *xfdesktop_icon_peek_label(XfdesktopIcon *icon);
 const gchar *xfdesktop_icon_peek_tooltip(XfdesktopIcon *icon);
 
-/* returns a unique identifier for the icon, free when done using it */
-gchar *xfdesktop_icon_get_identifier(XfdesktopIcon *icon);
+/* returns a unique identifier for the icon */
+const gchar *xfdesktop_icon_peek_identifier(XfdesktopIcon *icon);
 
 gboolean xfdesktop_icon_set_position(XfdesktopIcon *icon,
                                      gint16 row,
