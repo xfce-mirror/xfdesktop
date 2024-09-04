@@ -60,3 +60,10 @@ option(
   value: 'backgrounds/xfce/xfce-shapes.svg',
   description: 'The path to the default background image (relative paths will prepend $(datadir)',
 )
+
+option(
+  'tests',
+  type: 'boolean',
+  value: false,
+  description: 'Whether or not to build test programs',
+)

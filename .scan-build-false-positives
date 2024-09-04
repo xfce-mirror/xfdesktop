@@ -1,4 +1,8 @@
 (common/)?tumbler.c:[0-9]+:[0-9]+: warning: Value stored to 'skeleton' during its initialization is never read \[deadcode.DeadStores\]
+# it seems to think that assigning _to_ a variable i just freed is a UAF
+(src/)?xfdesktop-backdrop-cycler.c:[0-9]+:[0-9]+: warning: Use of memory after it is freed \[unix.Malloc\]
+# no idea why it thinks 'manager' is NULL
+(src/)?xfdesktop-backdrop-manager.c:[0-9]+:[0-9]+: warning: Access to field 'monitors' results in a dereference of a null pointer (loaded from variable 'manager') \[core.NullDereference\]
 (src/)?xfdesktop-file-manager-fdo-proxy.c:[0-9]+:[0-9]+: warning: Value stored to 'skeleton' during its initialization is never read \[deadcode.DeadStores\]
 (src/)?xfdesktop-file-manager-proxy.c:[0-9]+:[0-9]+: warning: Value stored to 'skeleton' during its initialization is never read \[deadcode.DeadStores\]
 # g_value_take_boxed() transfers ownership to the GValue, which will free it
