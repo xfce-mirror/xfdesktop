@@ -1390,7 +1390,7 @@ update_icon_monitors(XfdesktopFileIconManager *fmanager) {
             if (icon != NULL) {
                 gboolean changed = FALSE;
 
-                gchar *identifier = xfdesktop_icon_get_identifier(XFDESKTOP_ICON(icon));
+                const gchar *identifier = xfdesktop_icon_peek_identifier(XFDESKTOP_ICON(icon));
                 XfwMonitor *icon_monitor = NULL;
                 gint row, col;
                 if (xfdesktop_icon_position_configs_lookup(fmanager->position_configs, identifier, &icon_monitor, &row, &col)) {
@@ -1407,7 +1407,6 @@ update_icon_monitors(XfdesktopFileIconManager *fmanager) {
                     gtk_tree_model_row_changed(GTK_TREE_MODEL(fmanager->model), path, &iter);
                     gtk_tree_path_free(path);
                 }
-                g_free(identifier);
             }
         } while (gtk_tree_model_iter_next(GTK_TREE_MODEL(fmanager->model), &iter));
     }
@@ -1989,7 +1988,7 @@ xfdesktop_file_icon_manager_get_cached_icon_position(XfdesktopFileIconManager *f
     g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON_MANAGER(fmanager), NULL);
     g_return_val_if_fail(ret_row != NULL && ret_col != NULL, NULL);
 
-    gchar *identifier = xfdesktop_icon_get_identifier(XFDESKTOP_ICON(icon));
+    const gchar *identifier = xfdesktop_icon_peek_identifier(XFDESKTOP_ICON(icon));
     XfwMonitor *monitor = NULL;
     gint row = -1;
     gint col = -1;
@@ -1998,7 +1997,6 @@ xfdesktop_file_icon_manager_get_cached_icon_position(XfdesktopFileIconManager *f
                                                               &monitor,
                                                               &row,
                                                               &col);
-    g_free(identifier);
     if (success) {
         *ret_row = row;
         *ret_col = col;
@@ -2014,7 +2012,7 @@ static void
 update_icon_position(MonitorData *mdata, XfdesktopFileIcon *icon, gint row, gint col) {
     xfdesktop_icon_set_position(XFDESKTOP_ICON(icon), row, col);
 
-    gchar *identifier = xfdesktop_icon_get_identifier(XFDESKTOP_ICON(icon));
+    const gchar *identifier = xfdesktop_icon_peek_identifier(XFDESKTOP_ICON(icon));
     guint64 last_seen = XFDESKTOP_IS_VOLUME_ICON(icon) ? g_get_real_time() : 0;
     xfdesktop_icon_position_configs_set_icon_position(mdata->fmanager->position_configs,
                                                       mdata->position_config,
@@ -2022,7 +2020,6 @@ update_icon_position(MonitorData *mdata, XfdesktopFileIcon *icon, gint row, gint
                                                       row,
                                                       col,
                                                       last_seen);
-    g_free(identifier);
 
     GtkTreeIter iter;
     if (xfdesktop_file_icon_model_get_icon_iter(mdata->fmanager->model, icon, &iter)) {
@@ -2036,9 +2033,8 @@ static void
 clear_icon_position(MonitorData *mdata, XfdesktopFileIcon *icon) {
     xfdesktop_icon_set_position(XFDESKTOP_ICON(icon), -1, -1);
     
-    gchar *identifier = xfdesktop_icon_get_identifier(XFDESKTOP_ICON(icon));
+    const gchar *identifier = xfdesktop_icon_peek_identifier(XFDESKTOP_ICON(icon));
     xfdesktop_icon_position_configs_remove_icon(mdata->fmanager->position_configs, mdata->position_config, identifier);
-    g_free(identifier);
 }
 
 static gint
