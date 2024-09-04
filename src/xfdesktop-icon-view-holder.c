@@ -137,10 +137,29 @@ init_for_x11(XfdesktopIconViewHolder *holder) {
 #endif  /* ENABLE_X11 */
 
 #ifdef ENABLE_WAYLAND
+static gboolean
+forward_button_to_desktop(GtkWidget *widget, GdkEventButton *evt, XfdesktopIconViewHolder *holder) {
+    gboolean ret = FALSE;
+    const gchar *signal_name = evt->type == GDK_BUTTON_RELEASE ? "button-release-event" : "button-press-event";
+    TRACE("forwarding %s", signal_name);
+    g_signal_emit_by_name(holder->desktop, signal_name, evt, &ret);
+    return ret;
+}
+
+static gboolean
+forward_popup_menu_to_desktop(GtkWidget *widget, XfdesktopIconViewHolder *holder) {
+    TRACE("entering");
+    gboolean ret = FALSE;
+    g_signal_emit_by_name(holder->desktop, "popup-menu", &ret);
+    return ret;
+}
+
 static void
 init_for_wayland(XfdesktopIconViewHolder *holder) {
     holder->container = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     gtk_widget_set_app_paintable(holder->container, TRUE);
+    gtk_widget_add_events(holder->container, GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK);
+
     gtk_layer_init_for_window(GTK_WINDOW(holder->container));
     gtk_layer_set_layer(GTK_WINDOW(holder->container), GTK_LAYER_SHELL_LAYER_BOTTOM);
     gtk_layer_set_monitor(GTK_WINDOW(holder->container), xfw_monitor_get_gdk_monitor(holder->monitor));
@@ -150,6 +169,13 @@ init_for_wayland(XfdesktopIconViewHolder *holder) {
     gtk_layer_set_anchor(GTK_WINDOW(holder->container), GTK_LAYER_SHELL_EDGE_RIGHT, TRUE);
     gtk_layer_set_keyboard_mode(GTK_WINDOW(holder->container), GTK_LAYER_SHELL_KEYBOARD_MODE_ON_DEMAND);
     gtk_layer_set_namespace(GTK_WINDOW(holder->container), "desktop-icons");
+
+    g_signal_connect(holder->container, "button-press-event",
+                     G_CALLBACK(forward_button_to_desktop), holder);
+    g_signal_connect(holder->container, "button-release-event",
+                     G_CALLBACK(forward_button_to_desktop), holder);
+    g_signal_connect(holder->container, "popup-menu",
+                     G_CALLBACK(forward_popup_menu_to_desktop), holder);
 
     gtk_container_add(GTK_CONTAINER(holder->container), GTK_WIDGET(holder->icon_view));
     gtk_widget_show(GTK_WIDGET(holder->icon_view));
