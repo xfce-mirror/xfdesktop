@@ -34,6 +34,7 @@
 
 struct _XfdesktopIconPrivate
 {
+    gchar *identifier;
     XfwMonitor *monitor;
     gint16 row;
     gint16 col;
@@ -46,6 +47,8 @@ enum {
     SIG_N_SIGNALS,
 };
 
+static void xfdesktop_icon_finalize(GObject *object);
+
 
 static guint __signals[SIG_N_SIGNALS] = { 0, };
 
@@ -55,6 +58,9 @@ G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE(XfdesktopIcon, xfdesktop_icon, G_TYPE_OBJECT
 static void
 xfdesktop_icon_class_init(XfdesktopIconClass *klass)
 {
+    GObjectClass *gobject_class = G_OBJECT_CLASS(klass);
+    gobject_class->finalize = xfdesktop_icon_finalize;
+
     __signals[SIG_PIXBUF_CHANGED] = g_signal_new("pixbuf-changed",
                                                  XFDESKTOP_TYPE_ICON,
                                                  G_SIGNAL_RUN_LAST,
@@ -89,6 +95,14 @@ xfdesktop_icon_init(XfdesktopIcon *icon)
     icon->priv = xfdesktop_icon_get_instance_private(icon);
     icon->priv->row = -1;
     icon->priv->col = -1;
+}
+
+static void
+xfdesktop_icon_finalize(GObject *object) {
+    XfdesktopIcon *icon = XFDESKTOP_ICON(object);
+    g_free(icon->priv->identifier);
+
+    G_OBJECT_CLASS(xfdesktop_icon_parent_class)->finalize(object);
 }
 
 gboolean
@@ -158,19 +172,18 @@ xfdesktop_icon_peek_label(XfdesktopIcon *icon)
 }
 
 /*< required >*/
-gchar *
-xfdesktop_icon_get_identifier(XfdesktopIcon *icon)
+const gchar *
+xfdesktop_icon_peek_identifier(XfdesktopIcon *icon)
 {
-    XfdesktopIconClass *klass;
-
     g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), NULL);
 
-    klass = XFDESKTOP_ICON_GET_CLASS(icon);
+    if (icon->priv->identifier == NULL) {
+        XfdesktopIconClass *klass = XFDESKTOP_ICON_GET_CLASS(icon);
+        g_return_val_if_fail(klass->get_identifier != NULL, NULL);
+        icon->priv->identifier = klass->get_identifier(icon);
+    }
 
-    if(!klass->get_identifier)
-        return NULL;
-
-    return klass->get_identifier(icon);
+    return icon->priv->identifier;
 }
 
 /*< optional; drags aren't allowed if not provided >*/
