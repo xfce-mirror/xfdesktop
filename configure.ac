@@ -7,7 +7,7 @@ dnl
 
 dnl minimum required versions
 m4_define([libx11_minimum_version], [1.6.7])
-m4_define([glib_minimum_version], [2.66.0])
+m4_define([glib_minimum_version], [2.74.0])
 m4_define([gtk_minimum_version], [3.24.0])
 m4_define([libxfce4util_minimum_version], [4.13.0])
 m4_define([libxfce4ui_minimum_version], [4.13.0])
@@ -223,6 +223,7 @@ pixmaps/Makefile
 po/Makefile.in
 settings/Makefile
 src/Makefile
+tests/Makefile
 ])
 AC_OUTPUT
 
