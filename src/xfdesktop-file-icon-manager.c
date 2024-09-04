@@ -230,11 +230,6 @@ static gboolean xfdesktop_file_icon_manager_key_press(GtkWidget *widget,
                                                       GdkEventKey *evt,
                                                       XfdesktopFileIconManager *fmanager);
 
-static void xfdesktop_file_icon_manager_icon_view_realized(GtkWidget *icon_view,
-                                                           XfdesktopFileIconManager *fmanager);
-static void xfdesktop_file_icon_manager_icon_view_unrealized(GtkWidget *icon_view,
-                                                             XfdesktopFileIconManager *fmanager);
-
 static void xfdesktop_file_icon_manager_start_grid_resize(XfdesktopIconView *icon_view,
                                                           gint new_rows,
                                                           gint new_cols,
@@ -559,19 +554,6 @@ xfdesktop_file_icon_manager_finalize(GObject *obj)
     g_object_unref(fmanager->folder);
 
     G_OBJECT_CLASS(xfdesktop_file_icon_manager_parent_class)->finalize(obj);
-}
-
-static void
-xfdesktop_file_icon_manager_icon_view_realized(GtkWidget *icon_view, XfdesktopFileIconManager *fmanager) {
-    GtkWidget *window_widget = xfdesktop_icon_view_get_window_widget(XFDESKTOP_ICON_VIEW(icon_view));
-    g_signal_connect(window_widget, "key-press-event",
-                     G_CALLBACK(xfdesktop_file_icon_manager_key_press), fmanager);
-}
-
-static void
-xfdesktop_file_icon_manager_icon_view_unrealized(GtkWidget *icon_view, XfdesktopFileIconManager *fmanager) {
-    GtkWidget *window_widget = xfdesktop_icon_view_get_window_widget(XFDESKTOP_ICON_VIEW(icon_view));
-    g_signal_handlers_disconnect_by_data(window_widget, fmanager);
 }
 
 static GtkWindow *
@@ -1243,14 +1225,13 @@ create_icon_view(XfdesktopFileIconManager *fmanager, XfceDesktop *desktop) {
                                          drop_targets, G_N_ELEMENTS(drop_targets),
                                          GDK_ACTION_LINK | GDK_ACTION_COPY | GDK_ACTION_MOVE);
 
+    g_signal_connect(icon_view, "key-press-event",
+                     G_CALLBACK(xfdesktop_file_icon_manager_key_press), fmanager);
+
     g_signal_connect(icon_view, "icon-moved",
                      G_CALLBACK(xfdesktop_file_icon_manager_icon_moved), mdata);
     g_signal_connect(icon_view, "icon-activated",
                      G_CALLBACK(xfdesktop_file_icon_manager_activate_selected), fmanager);
-    g_signal_connect(icon_view, "realize",
-                     G_CALLBACK(xfdesktop_file_icon_manager_icon_view_realized), fmanager);
-    g_signal_connect(icon_view, "unrealize",
-                     G_CALLBACK(xfdesktop_file_icon_manager_icon_view_unrealized), fmanager);
     // DnD signals
     g_signal_connect(icon_view, "drag-actions-get",
                      G_CALLBACK(xfdesktop_file_icon_manager_drag_actions_get), mdata);
@@ -1273,10 +1254,6 @@ create_icon_view(XfdesktopFileIconManager *fmanager, XfceDesktop *desktop) {
                      G_CALLBACK(xfdesktop_file_icon_manager_start_grid_resize), mdata);
     g_signal_connect(G_OBJECT(icon_view), "end-grid-resize",
                      G_CALLBACK(xfdesktop_file_icon_manager_end_grid_resize), mdata);
-
-    if (gtk_widget_get_realized(GTK_WIDGET(icon_view))) {
-        xfdesktop_file_icon_manager_icon_view_realized(GTK_WIDGET(icon_view), fmanager);
-    }
 
     mdata->holder = xfdesktop_icon_view_holder_new(screen, desktop, icon_view);
 
