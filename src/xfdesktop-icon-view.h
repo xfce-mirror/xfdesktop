@@ -44,7 +44,7 @@ typedef enum
 
 struct _XfdesktopIconView
 {
-    GtkWidget parent;
+    GtkEventBox parent;
 
     /*< private >*/
     XfdesktopIconViewPrivate *priv;
@@ -52,7 +52,7 @@ struct _XfdesktopIconView
 
 struct _XfdesktopIconViewClass
 {
-    GtkWidgetClass parent;
+    GtkEventBoxClass parent;
 
     /*< signals >*/
     void (*icon_selection_changed)(XfdesktopIconView *icon_view);
@@ -187,8 +187,6 @@ void xfdesktop_icon_view_set_gravity(XfdesktopIconView *icon_view,
 void xfdesktop_icon_view_set_show_tooltips(XfdesktopIconView *icon_view,
                                            gboolean show_tooltips);
 gint xfdesktop_icon_view_get_tooltip_icon_size(XfdesktopIconView *icon_view);
-
-GtkWidget *xfdesktop_icon_view_get_window_widget(XfdesktopIconView *icon_view);
 
 void xfdesktop_icon_view_sort_icons(XfdesktopIconView *icon_view,
                                     GtkSortType sort_type);
