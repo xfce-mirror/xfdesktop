@@ -17,11 +17,13 @@ libxfdesktop_la_SOURCES = \
 
 libxfdesktop_la_CFLAGS = \
 	-I$(top_srcdir)/src \
+	-DBACKGROUNDS_DIR=\"$(datadir)/backgrounds/xfce\" \
 	$(LIBXFCE4UTIL_CFLAGS) \
 	$(LIBXFCE4WINDOWING_CFLAGS) \
 	$(GTK_CFLAGS) \
 	$(GIO_CFLAGS) \
-	$(GIO_UNIX_CFLAGS)
+	$(GIO_UNIX_CFLAGS) \
+	$(XFCONF_CFLAGS)
 
 DISTCLEANFILES = \
 	$(libxfdesktop_built_sources)
