@@ -75,8 +75,9 @@ xfdesktop_icon_view_holder_finalize(GObject *object) {
 #ifdef ENABLE_X11
 static void
 update_x11_icon_view_geometry(XfdesktopIconViewHolder *holder) {
-    GdkRectangle new_workarea = { 0, };
+    GdkRectangle new_workarea, geom;
     xfw_monitor_get_workarea(holder->monitor, &new_workarea);
+    xfw_monitor_get_logical_geometry(holder->monitor, &geom);
 
     DBG("new monitor %s workarea: %dx%d+%d+%d",
         xfw_monitor_get_connector(holder->monitor),
@@ -85,7 +86,10 @@ update_x11_icon_view_geometry(XfdesktopIconViewHolder *holder) {
 
     if (new_workarea.width > 0 && new_workarea.height > 0) {
         gtk_widget_set_size_request(GTK_WIDGET(holder->icon_view), new_workarea.width, new_workarea.height);
-        gtk_fixed_move(GTK_FIXED(holder->container), GTK_WIDGET(holder->icon_view), new_workarea.x, new_workarea.y);
+        gtk_fixed_move(GTK_FIXED(holder->container),
+                       GTK_WIDGET(holder->icon_view),
+                       new_workarea.x - geom.x,
+                       new_workarea.y - geom.y);
     }
 }
 #endif
