@@ -61,6 +61,7 @@ struct _XfdesktopFileIconClass
 
     gboolean (*can_rename_file)(XfdesktopFileIcon *icon);
     gboolean (*can_delete_file)(XfdesktopFileIcon *icon);
+    gboolean (*is_hidden_file)(XfdesktopFileIcon *icon);
 
     guint (*hash)(XfdesktopFileIcon *icon);
     gchar *(*get_sort_key)(XfdesktopFileIcon *icon);
@@ -77,6 +78,8 @@ void xfdesktop_file_icon_update_file_info(XfdesktopFileIcon *icon,
 gboolean xfdesktop_file_icon_can_rename_file(XfdesktopFileIcon *icon);
 
 gboolean xfdesktop_file_icon_can_delete_file(XfdesktopFileIcon *icon);
+
+gboolean xfdesktop_file_icon_is_hidden_file(XfdesktopFileIcon *icon);
 
 GIcon *xfdesktop_file_icon_add_emblems(XfdesktopFileIcon *icon,
                                        GIcon *gicon);

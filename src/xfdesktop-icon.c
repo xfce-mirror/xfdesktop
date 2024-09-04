@@ -18,6 +18,7 @@
  *  Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
+#include "libxfce4windowing/libxfce4windowing.h"
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -30,10 +31,11 @@
 #include <gobject/gmarshal.h>
 
 #include "xfdesktop-icon.h"
-#include "xfdesktop-marshal.h"
 
 struct _XfdesktopIconPrivate
 {
+    gchar *identifier;
+    XfwMonitor *monitor;
     gint16 row;
     gint16 col;
 };
@@ -45,6 +47,8 @@ enum {
     SIG_N_SIGNALS,
 };
 
+static void xfdesktop_icon_finalize(GObject *object);
+
 
 static guint __signals[SIG_N_SIGNALS] = { 0, };
 
@@ -54,6 +58,9 @@ G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE(XfdesktopIcon, xfdesktop_icon, G_TYPE_OBJECT
 static void
 xfdesktop_icon_class_init(XfdesktopIconClass *klass)
 {
+    GObjectClass *gobject_class = G_OBJECT_CLASS(klass);
+    gobject_class->finalize = xfdesktop_icon_finalize;
+
     __signals[SIG_PIXBUF_CHANGED] = g_signal_new("pixbuf-changed",
                                                  XFDESKTOP_TYPE_ICON,
                                                  G_SIGNAL_RUN_LAST,
@@ -90,17 +97,49 @@ xfdesktop_icon_init(XfdesktopIcon *icon)
     icon->priv->col = -1;
 }
 
-void
+static void
+xfdesktop_icon_finalize(GObject *object) {
+    XfdesktopIcon *icon = XFDESKTOP_ICON(object);
+    g_free(icon->priv->identifier);
+
+    G_OBJECT_CLASS(xfdesktop_icon_parent_class)->finalize(object);
+}
+
+gboolean
+xfdesktop_icon_set_monitor(XfdesktopIcon *icon, XfwMonitor *monitor) {
+    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), FALSE);
+    g_return_val_if_fail(monitor == NULL || XFW_IS_MONITOR(monitor), FALSE);
+
+    if (icon->priv->monitor != monitor) {
+        icon->priv->monitor = monitor;
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+XfwMonitor *
+xfdesktop_icon_get_monitor(XfdesktopIcon *icon) {
+    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), NULL);
+    return icon->priv->monitor;
+}
+
+gboolean
 xfdesktop_icon_set_position(XfdesktopIcon *icon,
                             gint16 row,
                             gint16 col)
 {
-    g_return_if_fail(XFDESKTOP_IS_ICON(icon));
+    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), FALSE);
+    g_return_val_if_fail((row >= 0 && col >= 0) || (row == -1 && col == -1), FALSE);
 
-    icon->priv->row = row;
-    icon->priv->col = col;
-
-    g_signal_emit(G_OBJECT(icon), __signals[SIG_POS_CHANGED], 0, NULL);
+    if (row != icon->priv->row || col != icon->priv->col) {
+        icon->priv->row = row;
+        icon->priv->col = col;
+        g_signal_emit(G_OBJECT(icon), __signals[SIG_POS_CHANGED], 0, NULL);
+        return TRUE;
+    } else {
+        return FALSE;
+    }
 }
 
 gboolean
@@ -110,10 +149,13 @@ xfdesktop_icon_get_position(XfdesktopIcon *icon,
 {
     g_return_val_if_fail(XFDESKTOP_IS_ICON(icon) && row && col, FALSE);
 
-    *row = icon->priv->row;
-    *col = icon->priv->col;
-
-    return TRUE;
+    if (icon->priv->row != -1 && icon->priv->col != -1) {
+        *row = icon->priv->row;
+        *col = icon->priv->col;
+        return TRUE;
+    } else {
+        return FALSE;
+    }
 }
 
 /*< required >*/
@@ -130,19 +172,18 @@ xfdesktop_icon_peek_label(XfdesktopIcon *icon)
 }
 
 /*< required >*/
-gchar *
-xfdesktop_icon_get_identifier(XfdesktopIcon *icon)
+const gchar *
+xfdesktop_icon_peek_identifier(XfdesktopIcon *icon)
 {
-    XfdesktopIconClass *klass;
-
     g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), NULL);
 
-    klass = XFDESKTOP_ICON_GET_CLASS(icon);
+    if (icon->priv->identifier == NULL) {
+        XfdesktopIconClass *klass = XFDESKTOP_ICON_GET_CLASS(icon);
+        g_return_val_if_fail(klass->get_identifier != NULL, NULL);
+        icon->priv->identifier = klass->get_identifier(icon);
+    }
 
-    if(!klass->get_identifier)
-        return NULL;
-
-    return klass->get_identifier(icon);
+    return icon->priv->identifier;
 }
 
 /*< optional; drags aren't allowed if not provided >*/
