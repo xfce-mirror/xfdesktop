@@ -345,6 +345,9 @@ struct _XfdesktopIconViewPrivate
     gint press_start_y;
     GdkRectangle band_rect;
 
+    GdkEventButton *drag_timer_event;
+    guint drag_timer_id;
+
     XfconfChannel *channel;
 
     /* element-type gunichar */
@@ -1143,6 +1146,10 @@ xfdesktop_icon_view_dispose(GObject *obj)
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(obj);
 
+    if (icon_view->priv->drag_timer_id != 0) {
+        g_source_remove(icon_view->priv->drag_timer_id);
+    }
+
     if (icon_view->priv->keyboard_navigation_state_timeout != 0) {
         g_source_remove(icon_view->priv->keyboard_navigation_state_timeout);
         icon_view->priv->keyboard_navigation_state_timeout = 0;
@@ -1444,6 +1451,46 @@ xfdesktop_icon_view_clear_drag_event(XfdesktopIconView *icon_view) {
 }
 
 static gboolean
+context_menu_drag_timeout(gpointer data) {
+    TRACE("entering");
+
+    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(data);
+    xfdesktop_icon_view_clear_drag_event(icon_view);
+
+    GdkEventButton *evt = icon_view->priv->drag_timer_event;
+    gint orig_x = evt->x;
+    gint orig_y = evt->y;
+
+    GtkWidget *parent = gtk_widget_get_parent(GTK_WIDGET(icon_view));
+    gboolean ret = FALSE;
+    while (parent != NULL && !ret) {
+        if ((gtk_widget_get_events(parent) & GDK_BUTTON_PRESS_MASK) != 0) {
+            g_object_unref(evt->window);
+            evt->window = g_object_ref(gtk_widget_get_window(parent));
+
+            gint x, y;
+            if (gtk_widget_translate_coordinates(GTK_WIDGET(icon_view), parent, orig_x, orig_y, &x, &y)) {
+                evt->x = x;
+                evt->y = y;
+            }
+
+            g_signal_emit_by_name(parent, "button-press-event", evt, &ret);
+        }
+
+        parent = gtk_widget_get_parent(parent);
+    }
+
+    return FALSE;
+}
+
+static void
+context_menu_drag_timeout_destroy(XfdesktopIconView *icon_view) {
+    icon_view->priv->drag_timer_id = 0;
+    gdk_event_free((GdkEvent *)icon_view->priv->drag_timer_event);
+    icon_view->priv->drag_timer_event = NULL;
+}
+
+static gboolean
 xfdesktop_icon_view_button_press(GtkWidget *widget, GdkEventButton *evt) {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
 
@@ -1524,6 +1571,22 @@ xfdesktop_icon_view_button_press(GtkWidget *widget, GdkEventButton *evt) {
                 icon_view->priv->press_start_y = evt->y;
             }
 
+            if (evt->button == 3) {
+                // We'll want a context menu to pop up, but we have to wait a
+                // short time just in case the user starts dragging.
+                GtkSettings *settings = gtk_settings_get_for_screen(gtk_widget_get_screen(widget));
+                gint delay = 0;
+                g_object_get(settings,
+                             "gtk-menu-popup-delay", &delay,
+                             NULL);
+                icon_view->priv->drag_timer_event = (GdkEventButton *)gdk_event_copy((GdkEvent *)evt);
+                icon_view->priv->drag_timer_id = g_timeout_add_full(G_PRIORITY_DEFAULT,
+                                                                    MAX(225, delay),
+                                                                    context_menu_drag_timeout,
+                                                                    icon_view,
+                                                                    (GDestroyNotify) context_menu_drag_timeout_destroy);
+            }
+
             return TRUE;
         } else {
             /* Button press wasn't over any icons */
@@ -1589,7 +1652,7 @@ xfdesktop_icon_view_button_press(GtkWidget *widget, GdkEventButton *evt) {
 static gboolean
 xfdesktop_icon_view_button_release(GtkWidget *widget, GdkEventButton *evt) {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
-    GList *icon_l = NULL;
+    gboolean ret = FALSE;
 
     DBG("entering btn=%d", evt->button);
 
@@ -1603,14 +1666,15 @@ xfdesktop_icon_view_button_release(GtkWidget *widget, GdkEventButton *evt) {
        && !icon_view->priv->double_click)
     {
         /* Find out if we clicked on an icon */
-        icon_l = g_list_find_custom(icon_view->priv->items, evt,
-                                    (GCompareFunc)xfdesktop_check_icon_clicked);
+        GList *icon_l = g_list_find_custom(icon_view->priv->items, evt,
+                                           (GCompareFunc)xfdesktop_check_icon_clicked);
         if (icon_l != NULL) {
             ViewItem *item = icon_l->data;
             /* We did, activate it */
             icon_view->priv->cursor = item;
             g_signal_emit(G_OBJECT(icon_view), __signals[SIG_ICON_ACTIVATED], 0);
             xfdesktop_icon_view_unselect_all(icon_view);
+            ret = TRUE;
         }
     }
 
@@ -1619,33 +1683,24 @@ xfdesktop_icon_view_button_release(GtkWidget *widget, GdkEventButton *evt) {
        icon_view->priv->definitely_rubber_banding == FALSE &&
        icon_view->priv->maybe_begin_drag == TRUE)
     {
-        /* If we're in single click mode we may already have the icon, don't
-         * find it again. */
-        if(icon_l == NULL) {
-            icon_l = g_list_find_custom(icon_view->priv->items, evt,
-                                        (GCompareFunc)xfdesktop_check_icon_clicked);
-        }
-
-        /* If we clicked an icon then we didn't pop up the menu during the
-         * button press in order to support right click DND, pop up the menu
-         * now. */
-        if(icon_l && icon_l->data) {
-            gboolean dummy;
-            g_signal_emit_by_name(widget, "popup-menu", &dummy);
+        if (evt->button == 3 && icon_view->priv->drag_timer_id != 0) {
+            context_menu_drag_timeout(icon_view);
+            g_source_remove(icon_view->priv->drag_timer_id);
         }
     }
 
     if(evt->button == 1 && evt->state & GDK_CONTROL_MASK
        && icon_view->priv->control_click)
     {
-        icon_l = g_list_find_custom(icon_view->priv->items, evt,
-                                    (GCompareFunc)xfdesktop_check_icon_clicked);
+        GList *icon_l = g_list_find_custom(icon_view->priv->items, evt,
+                                           (GCompareFunc)xfdesktop_check_icon_clicked);
         if (icon_l != NULL) {
             ViewItem *item = icon_l->data;
             if (item->selected) {
                 /* clicked an already-selected icon; unselect it */
                 xfdesktop_icon_view_unselect_item_internal(icon_view, item, TRUE);
             }
+            ret = TRUE;
         }
     }
 
@@ -1657,7 +1712,7 @@ xfdesktop_icon_view_button_release(GtkWidget *widget, GdkEventButton *evt) {
 
     /* TRUE: stop other handlers from being invoked for the event. FALSE: propagate the event further. */
     /* On FALSE this method will be called twice in single-click-mode (possibly a gtk3 bug)            */
-    return TRUE;
+    return ret;
 }
 
 static gboolean
@@ -1938,6 +1993,10 @@ static gboolean
 xfdesktop_icon_view_motion_notify(GtkWidget *widget, GdkEventMotion *evt) {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
     gboolean ret = FALSE;
+
+    if (icon_view->priv->drag_timer_id != 0) {
+        g_source_remove(icon_view->priv->drag_timer_id);
+    }
 
     if(icon_view->priv->maybe_begin_drag
        && icon_view->priv->item_under_pointer
