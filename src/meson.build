@@ -1,14 +1,5 @@
 xfdesktop_generated_sources = []
 
-xfdesktop_generated_sources += gnome.mkenums_simple(
-  'xfce-desktop-enum-types',
-  sources: [
-    'xfce-backdrop.h',
-    'xfce-desktop.h',
-  ],
-  install_header: false,
-)
-
 dbus_codegen = {
   'xfdesktop-file-manager-fdo': 'org.freedesktop.',
   'xfdesktop-file-manager': 'org.xfce.',
@@ -30,10 +21,11 @@ xfdesktop_sources = [
   'main.c',
   'menu.c',
   'windowlist.c',
-  'xfce-backdrop.c',
   'xfce-desktop.c',
-  'xfce-workspace.c',
   'xfdesktop-application.c',
+  'xfdesktop-backdrop-cycler.c',
+  'xfdesktop-backdrop-manager.c',
+  'xfdesktop-backdrop-renderer.c',
 ]
 
 xfdesktop_sources += xfdesktop_generated_sources
@@ -47,6 +39,7 @@ if enable_desktop_icons
     'xfdesktop-cell-renderer-icon-label.c',
     'xfdesktop-icon.c',
     'xfdesktop-icon-view.c',
+    'xfdesktop-icon-view-holder.c',
     'xfdesktop-icon-view-manager.c',
     'xfdesktop-icon-view-model.c',
     'xfdesktop-window-icon-manager.c',
@@ -60,11 +53,23 @@ if enable_file_icons
     'xfdesktop-file-icon.c',
     'xfdesktop-file-icon-manager.c',
     'xfdesktop-file-icon-model.c',
+    'xfdesktop-file-icon-model-filter.c',
     'xfdesktop-file-utils.c',
+    'xfdesktop-icon-position-configs.c',
+    'xfdesktop-icon-position-migration.c',
     'xfdesktop-regular-file-icon.c',
     'xfdesktop-special-file-icon.c',
     'xfdesktop-volume-icon.c',
   ]
+
+  xfdesktop_sources += gnome.compile_resources(
+    'xfdesktop-monitor-chooser-ui',
+    'xfdesktop-monitor-chooser-ui.gresource.xml',
+    export: false,
+    extra_args: [
+      '--manual-register',
+      ],
+    )
 endif
 
 if enable_libnotify
