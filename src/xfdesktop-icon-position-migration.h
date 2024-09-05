@@ -1,7 +1,7 @@
 /*
  *  xfdesktop - xfce4's desktop manager
  *
- *  Copyright (c) 2004 Brian Tarricone, <brian@tarricone.org>
+ *  Copyright(c) 2024 Brian Tarricone, <brian@tarricone.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -16,24 +16,24 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program; if not, write to the Free Software Foundation,
  *  Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
- *
- *  Random portions taken from or inspired by the original xfdesktop for xfce4:
- *     Copyright (C) 2002-2003 Jasper Huijsmans (huysmans@users.sourceforge.net)
- *     Copyright (C) 2003 Benedikt Meurer <benedikt.meurer@unix-ag.uni-siegen.de>
  */
 
-#ifndef _XFDESKTOP__WINDOWLIST_H_
-#define _XFDESKTOP__WINDOWLIST_H_
+#ifndef __XFDESKTOP_ICON_POSITION_MIGRATION_H__
+#define __XFDESKTOP_ICON_POSITION_MIGRATION_H__
 
+#include <glib.h>
+#include <libxfce4windowing/libxfce4windowing.h>
 #include <xfconf/xfconf.h>
-#include <gtk/gtk.h>
+
+#include "xfdesktop-icon-position-configs.h"
 
 G_BEGIN_DECLS
 
-void windowlist_init(XfconfChannel *channel);
-GtkMenu *windowlist_populate(GtkMenu *menu, gint scale_factor);
-void windowlist_cleanup(XfconfChannel *channel);
+XfdesktopIconPositionConfig *xfdesktop_icon_positions_try_migrate(XfconfChannel *channel,
+                                                                  XfwScreen *screen,
+                                                                  XfwMonitor *monitor,
+                                                                  XfdesktopIconPositionLevel level);
 
 G_END_DECLS
 
-#endif
+#endif /* __XFDESKTOP_ICON_POSITION_MIGRATION_H__ */
