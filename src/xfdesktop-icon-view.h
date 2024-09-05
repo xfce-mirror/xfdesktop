@@ -22,6 +22,7 @@
 #define __XFDESKTOP_ICON_VIEW_H__
 
 #include <gtk/gtk.h>
+#include <libxfce4windowing/libxfce4windowing.h>
 #include <xfconf/xfconf.h>
 
 G_BEGIN_DECLS
@@ -43,7 +44,7 @@ typedef enum
 
 struct _XfdesktopIconView
 {
-    GtkWidget parent;
+    GtkEventBox parent;
 
     /*< private >*/
     XfdesktopIconViewPrivate *priv;
@@ -51,7 +52,7 @@ struct _XfdesktopIconView
 
 struct _XfdesktopIconViewClass
 {
-    GtkWidgetClass parent;
+    GtkEventBoxClass parent;
 
     /*< signals >*/
     void (*icon_selection_changed)(XfdesktopIconView *icon_view);
@@ -89,8 +90,10 @@ struct _XfdesktopIconViewClass
 
 GType xfdesktop_icon_view_get_type(void) G_GNUC_CONST;
 
-GtkWidget *xfdesktop_icon_view_new(XfconfChannel *channel) G_GNUC_WARN_UNUSED_RESULT;
+GtkWidget *xfdesktop_icon_view_new(XfconfChannel *channel,
+                                   XfwScreen *screen) G_GNUC_WARN_UNUSED_RESULT;
 GtkWidget *xfdesktop_icon_view_new_with_model(XfconfChannel *channel,
+                                              XfwScreen *screen,
                                               GtkTreeModel *model) G_GNUC_WARN_UNUSED_RESULT;
 
 void xfdesktop_icon_view_set_model(XfdesktopIconView *icon_view,
@@ -136,6 +139,11 @@ gboolean xfdesktop_icon_view_widget_coords_to_item(XfdesktopIconView *icon_view,
                                                    gint wx,
                                                    gint wy,
                                                    GtkTreeIter *iter);
+gboolean xfdesktop_icon_view_widget_coords_to_slot_coords(XfdesktopIconView *icon_view,
+                                                          gint wx,
+                                                          gint wy,
+                                                          gint *row,
+                                                          gint *col);
 
 GList *xfdesktop_icon_view_get_selected_items(XfdesktopIconView *icon_view) G_GNUC_WARN_UNUSED_RESULT;
 
@@ -180,8 +188,6 @@ void xfdesktop_icon_view_set_show_tooltips(XfdesktopIconView *icon_view,
                                            gboolean show_tooltips);
 gint xfdesktop_icon_view_get_tooltip_icon_size(XfdesktopIconView *icon_view);
 
-GtkWidget *xfdesktop_icon_view_get_window_widget(XfdesktopIconView *icon_view);
-
 void xfdesktop_icon_view_sort_icons(XfdesktopIconView *icon_view,
                                     GtkSortType sort_type);
 
@@ -190,6 +196,15 @@ gboolean xfdesktop_icon_view_get_next_free_grid_position(XfdesktopIconView *icon
                                                          gint col,
                                                          gint *next_row,
                                                          gint *next_col);
+
+// This is used only for migration from previous icon position configuration formats
+gboolean xfdesktop_icon_view_grid_geometry_for_metrics(XfdesktopIconView *icon_view,
+                                                       GdkRectangle *total_workarea,
+                                                       GdkRectangle *monitor_workarea,
+                                                       gint *first_row,
+                                                       gint *first_col,
+                                                       gint *last_row,
+                                                       gint *last_col);
 
 G_END_DECLS
 
