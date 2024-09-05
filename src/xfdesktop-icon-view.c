@@ -687,7 +687,7 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
     __signals[SIG_END_GRID_RESIZE] = g_signal_new(I_("end-grid-resize"),
                                                     XFDESKTOP_TYPE_ICON_VIEW,
                                                     G_SIGNAL_RUN_LAST,
-                                                    G_STRUCT_OFFSET(XfdesktopIconViewClass, start_grid_resize),
+                                                    G_STRUCT_OFFSET(XfdesktopIconViewClass, end_grid_resize),
                                                     NULL, NULL,
                                                     g_cclosure_marshal_VOID__VOID,
                                                     G_TYPE_NONE, 0);
