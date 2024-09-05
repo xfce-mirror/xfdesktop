@@ -150,7 +150,7 @@ const gchar *fallback_CSS =
 "	background-color: shade(@theme_selected_bg_color, 0.5);"
 "	border-radius: 3px;"
 "	color: @theme_selected_fg_color;"
-"	text-shadow: 0 1px 1px black;"
+"	text-shadow: 1px 1px 2px black;"
 "}"
 "XfdesktopIconView.view.label:backdrop {"
 "	background-color: alpha(shade(@theme_selected_bg_color, 0.5), 0.5);"
