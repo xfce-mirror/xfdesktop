@@ -511,6 +511,8 @@ xfdesktop_cell_renderer_icon_label_get_preferred_width(GtkCellRenderer *cell,
     if (natural_size != NULL) {
         *natural_size = MAX(min_width, extents.width + xpad * 2);
     }
+
+    g_object_unref(layout);
 }
 
 static void
@@ -543,6 +545,8 @@ xfdesktop_cell_renderer_icon_label_get_preferred_height(GtkCellRenderer *cell,
     if (*natural_size) {
         *natural_size = MAX(min_height, nat_height);
     }
+
+    g_object_unref(layout);
 }
 
 static void
@@ -573,6 +577,8 @@ xfdesktop_cell_renderer_icon_label_get_preferred_height_for_width(GtkCellRendere
     if (natural_height != NULL) {
         *natural_height = MAX(nat_height, min_height) + ypad * 2;
     }
+
+    g_object_unref(layout);
 }
 
 static void
@@ -603,6 +609,8 @@ xfdesktop_cell_renderer_icon_label_get_preferred_width_for_height(GtkCellRendere
     if (natural_width != NULL) {
         *natural_width = MAX(nat_width, min_width) + ypad * 2;
     }
+
+    g_object_unref(layout);
 }
 
 static void
