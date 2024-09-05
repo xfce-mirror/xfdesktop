@@ -511,11 +511,6 @@ static ViewItem *xfdesktop_icon_view_widget_coords_to_item_internal(XfdesktopIco
 static gint xfdesktop_check_icon_clicked(gconstpointer data,
                                          gconstpointer user_data);
 
-static inline void xfdesktop_xy_to_rowcol(XfdesktopIconView *icon_view,
-                                          gint x,
-                                          gint y,
-                                          gint *row,
-                                          gint *col);
 static inline gboolean xfdesktop_rectangle_contains_point(GdkRectangle *rect,
                                                           gint x,
                                                           gint y);
@@ -2296,19 +2291,6 @@ xfdesktop_icon_view_drag_begin(GtkWidget *widget,
 }
 
 static inline void
-xfdesktop_xy_to_rowcol(XfdesktopIconView *icon_view,
-                       gint x,
-                       gint y,
-                       gint *row,
-                       gint *col)
-{
-    g_return_if_fail(row && col);
-
-    *row = (y - icon_view->priv->ymargin) / (SLOT_SIZE + icon_view->priv->yspacing);
-    *col = (x - icon_view->priv->xmargin) / (SLOT_SIZE + icon_view->priv->xspacing);
-}
-
-static inline void
 xfdesktop_icon_view_clear_drag_highlight(XfdesktopIconView *icon_view)
 {
     ViewItem *item = icon_view->priv->drop_dest_item;
@@ -2362,9 +2344,9 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
     }
 
     /* can we drop here? */
-    xfdesktop_xy_to_rowcol(icon_view, x, y, &hover_row, &hover_col);
-    if(hover_row >= icon_view->priv->nrows || hover_col >= icon_view->priv->ncols)
+    if (!xfdesktop_icon_view_widget_coords_to_slot_coords(icon_view, x, y, &hover_row, &hover_col)) {
         return FALSE;
+    }
     item_on_dest = xfdesktop_icon_view_item_in_slot(icon_view, hover_row,
                                                     hover_col);
     if (item_on_dest != NULL) {
@@ -2555,7 +2537,9 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
     }
     XF_DEBUG("target=%ld (%s)", (glong)target, gdk_atom_name(target));
 
-    xfdesktop_xy_to_rowcol(icon_view, x, y, &row, &col);
+    if (!xfdesktop_icon_view_widget_coords_to_slot_coords(icon_view, x, y, &row, &col)) {
+        return FALSE;
+    }
     item_on_dest = xfdesktop_icon_view_item_in_slot(icon_view, row, col);
 
     if(target == gdk_atom_intern("XFDESKTOP_ICON", FALSE)) {
@@ -2695,12 +2679,10 @@ xfdesktop_icon_view_drag_data_received(GtkWidget *widget,
 
         xfdesktop_icon_view_clear_drag_highlight(icon_view);
 
-        xfdesktop_xy_to_rowcol(icon_view, x, y, &row, &col);
-        if(row >= icon_view->priv->nrows || col >= icon_view->priv->ncols)
-            return;
-
-        g_signal_emit(icon_view, __signals[SIG_DRAG_ITEM_DATA_RECEIVED], 0,
-                      context, iter, row, col, data, info, time_);
+        if (xfdesktop_icon_view_widget_coords_to_slot_coords(icon_view, x, y, &row, &col)) {
+            g_signal_emit(icon_view, __signals[SIG_DRAG_ITEM_DATA_RECEIVED], 0,
+                          context, iter, row, col, data, info, time_);
+        }
     } else {
         /* FIXME: cannot use x and y here, for they don't seem to have any
          * meaningful value */
@@ -4732,12 +4714,12 @@ xfdesktop_icon_view_widget_coords_to_item_internal(XfdesktopIconView *icon_view,
 {
     gint row, col;
 
-    xfdesktop_xy_to_rowcol(icon_view, wx, wy, &row, &col);
-    if (row >= icon_view->priv->nrows || col >= icon_view->priv->ncols || row < 0 || col < 0) {
+    if (xfdesktop_icon_view_widget_coords_to_slot_coords(icon_view, wx, wy, &row, &col)) {
+        return xfdesktop_icon_view_item_in_slot(icon_view, row, col);
+    } else {
         return NULL;
     }
 
-    return xfdesktop_icon_view_item_in_slot(icon_view, row, col);
 }
 
 gboolean
@@ -4768,8 +4750,8 @@ xfdesktop_icon_view_widget_coords_to_slot_coords(XfdesktopIconView *icon_view,
 {
     g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view), FALSE);
 
-    gint row, col;
-    xfdesktop_xy_to_rowcol(icon_view, wx, wy, &row, &col);
+    gint row = (wy - icon_view->priv->ymargin) / (SLOT_SIZE + icon_view->priv->yspacing);
+    gint col = (wx - icon_view->priv->xmargin) / (SLOT_SIZE + icon_view->priv->xspacing);
     if (row >= 0 && row < icon_view->priv->nrows && col >= 0 && col < icon_view->priv->ncols) {
         if (row_out != NULL) {
             *row_out = row;
