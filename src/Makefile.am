@@ -3,8 +3,6 @@
 bin_PROGRAMS = xfdesktop
 
 xfdesktop_built_sources = \
-	xfce-desktop-enum-types.c \
-	xfce-desktop-enum-types.h \
 	xfdesktop-file-manager-fdo-proxy.c \
 	xfdesktop-file-manager-fdo-proxy.h \
 	xfdesktop-file-manager-proxy.c \
@@ -28,14 +26,16 @@ xfdesktop_SOURCES = \
 	menu.h \
 	windowlist.c \
 	windowlist.h \
-	xfce-backdrop.c \
-	xfce-backdrop.h \
-	xfce-workspace.c \
-	xfce-workspace.h \
 	xfce-desktop.c \
 	xfce-desktop.h \
 	xfdesktop-application.c \
-	xfdesktop-application.h
+	xfdesktop-application.h \
+	xfdesktop-backdrop-cycler.c \
+	xfdesktop-backdrop-cycler.h \
+	xfdesktop-backdrop-manager.c \
+	xfdesktop-backdrop-manager.h \
+	xfdesktop-backdrop-renderer.c \
+	xfdesktop-backdrop-renderer.h
 
 if ENABLE_X11
 xfdesktop_SOURCES += \
@@ -50,6 +50,8 @@ desktop_icon_sources = \
 	xfdesktop-icon.h \
 	xfdesktop-icon-view.c \
 	xfdesktop-icon-view.h \
+	xfdesktop-icon-view-holder.c \
+	xfdesktop-icon-view-holder.h \
 	xfdesktop-icon-view-manager.c \
 	xfdesktop-icon-view-manager.h \
 	xfdesktop-icon-view-model.c \
@@ -68,8 +70,14 @@ desktop_file_icon_sources = \
 	xfdesktop-file-icon-manager.h \
 	xfdesktop-file-icon-model.c \
 	xfdesktop-file-icon-model.h \
+	xfdesktop-file-icon-model-filter.c \
+	xfdesktop-file-icon-model-filter.h \
 	xfdesktop-file-utils.c \
 	xfdesktop-file-utils.h \
+	xfdesktop-icon-position-configs.c \
+	xfdesktop-icon-position-configs.h \
+	xfdesktop-icon-position-migration.c \
+	xfdesktop-icon-position-migration.h \
 	xfdesktop-regular-file-icon.c \
 	xfdesktop-regular-file-icon.h \
 	xfdesktop-special-file-icon.c \
@@ -102,7 +110,8 @@ xfdesktop_CFLAGS = \
 	$(XFCONF_CFLAGS) \
 	-DEXO_API_SUBJECT_TO_CHANGE \
 	$(LIBEXO_CFLAGS) \
-	$(GTK_LAYER_SHELL_CFLAGS)
+	$(GTK_LAYER_SHELL_CFLAGS) \
+	$(LIBYAML_CFLAGS)
 
 xfdesktop_LDFLAGS = \
 	-export-dynamic
@@ -126,6 +135,7 @@ xfdesktop_LDADD += \
 	$(XFCONF_LIBS) \
 	$(LIBEXO_LIBS) \
 	$(GTK_LAYER_SHELL_LIBS) \
+	$(LIBYAML_LIBS) \
 	-lm
 
 if BUILD_DESKTOP_MENU
@@ -146,6 +156,10 @@ xfdesktop_SOURCES += $(desktop_icon_sources)
 
 if ENABLE_FILE_ICONS
 
+xfdesktop_built_sources += \
+	xfdesktop-monitor-chooser-ui.c \
+	xfdesktop-monitor-chooser-ui.h
+
 xfdesktop_SOURCES += $(desktop_file_icon_sources)
 
 xfdesktop_CFLAGS += \
@@ -157,41 +171,23 @@ xfdesktop_LDADD += \
 endif
 endif
 
+glade_files = \
+	xfdesktop-monitor-chooser-ui.glade
+
 BUILT_SOURCES = \
 	$(xfdesktop_built_sources)
 
 DISTCLEANFILES = \
-	$(xfdesktop_built_sources) \
-	stamp-xfce-desktop-enum-types.h
+	$(xfdesktop_built_sources)
 
 EXTRA_DIST = \
 	$(desktop_icon_sources) \
 	$(desktop_file_icon_sources) \
+	$(glade_files) \
 	xfdesktop-file-manager-fdo-dbus.xml \
 	xfdesktop-file-manager-dbus.xml \
 	xfdesktop-thunar-dbus.xml \
 	xfdesktop-trash-dbus.xml
-
-enum_headers = \
-	xfce-backdrop.h \
-	xfce-desktop.h
-
-xfce-desktop-enum-types.h: $(enum_headers) Makefile
-	$(AM_V_GEN) $(GLIB_MKENUMS) \
-	      --fhead "#ifndef __XFCE_DESKTOP_ENUM_TYPES_H__\n#define __XFCE_DESKTOP_ENUM_TYPES_H__\nG_BEGIN_DECLS\n" \
-	      --fprod "/* enumerations from \"@filename@\" */\n" \
-	      --vhead "GType @enum_name@_get_type (void) G_GNUC_CONST;\n#define XFCE_TYPE_@ENUMSHORT@ (@enum_name@_get_type())\n" \
-	      --ftail "G_END_DECLS\n\n#endif /* !__XFCE_DESKTOP_ENUM_TYPES_H__ */" \
-	      $(addprefix $(srcdir)/,$(enum_headers)) > $@ || { rm -f $@; exit 1; }
-
-xfce-desktop-enum-types.c: $(enum_headers) Makefile
-	$(AM_V_GEN) $(GLIB_MKENUMS) \
-	      --fhead "#undef GTK_DISABLE_DEPRECATED\n#define GTK_ENABLE_BROKEN\n#include \"xfce-desktop.h\"\n#include \"xfce-backdrop.h\"\n#include \"xfce-desktop-enum-types.h\"" \
-	      --fprod "\n/* enumerations from \"@filename@\" */" \
-	      --vhead "GType\n@enum_name@_get_type (void)\n{\n\tstatic GType type = 0;\n\tif (type == 0) {\n\tstatic const G@Type@Value values[] = {"\
-	      --vprod "\t{ @VALUENAME@, \"@VALUENAME@\", \"@valuenick@\" }," \
-	      --vtail "\t{ 0, NULL, NULL }\n\t};\n\ttype = g_@type@_register_static (\"@EnumName@\", values);\n  }\n\treturn type;\n}\n" \
-	      $(addprefix $(srcdir)/,$(enum_headers)) > $@ || { rm -f $@; exit 1; }
 
 xfdesktop-file-manager-fdo-proxy.c xfdesktop-file-manager-fdo-proxy.h : $(srcdir)/xfdesktop-file-manager-fdo-dbus.xml Makefile
 	$(AM_V_GEN) $(GDBUS_CODEGEN) \
@@ -220,3 +216,9 @@ xfdesktop-trash-proxy.c xfdesktop-trash-proxy.h : $(srcdir)/xfdesktop-trash-dbus
 		--interface-prefix=org.xfce. \
 		--generate-c-code=xfdesktop-trash-proxy \
 		$<
+
+%-ui.h: $(srcdir)/%-ui.gresource.xml $(glade_files) Makefile
+	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(srcdir) --generate-header --manual-register $<
+
+%-ui.c: $(srcdir)/%-ui.gresource.xml $(glade_files) Makefile
+	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(srcdir) --generate-source --manual-register $<
