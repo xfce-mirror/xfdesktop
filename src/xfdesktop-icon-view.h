@@ -88,7 +88,15 @@ struct _XfdesktopIconViewClass
     void (*resize_event)(XfdesktopIconView *icon_view);
 };
 
+typedef struct {
+    XfdesktopIconView *source_icon_view;
+    GList *dragged_icons;  // GtkTreeIter
+} XfdesktopDraggedIconList;
+
 GType xfdesktop_icon_view_get_type(void) G_GNUC_CONST;
+
+guint xfdesktop_icon_view_get_icon_drag_info(void);
+GdkAtom xfdesktop_icon_view_get_icon_drag_target(void);
 
 GtkWidget *xfdesktop_icon_view_new(XfconfChannel *channel,
                                    XfwScreen *screen) G_GNUC_WARN_UNUSED_RESULT;
@@ -135,6 +143,10 @@ void xfdesktop_icon_view_enable_drag_dest(XfdesktopIconView *icon_view,
 void xfdesktop_icon_view_unset_drag_source(XfdesktopIconView *icon_view);
 void xfdesktop_icon_view_unset_drag_dest(XfdesktopIconView *icon_view);
 
+gboolean xfdesktop_icon_view_is_icon_drag(XfdesktopIconView *icon_view,
+                                          GdkDragContext *context,
+                                          GdkAtom *target);
+
 gboolean xfdesktop_icon_view_widget_coords_to_item(XfdesktopIconView *icon_view,
                                                    gint wx,
                                                    gint wy,
@@ -144,6 +156,11 @@ gboolean xfdesktop_icon_view_widget_coords_to_slot_coords(XfdesktopIconView *ico
                                                           gint wy,
                                                           gint *row,
                                                           gint *col);
+
+gboolean xfdesktop_icon_view_get_cursor(XfdesktopIconView *icon_view,
+                                        GtkTreeIter *iter,
+                                        gint *row,
+                                        gint *col);
 
 GList *xfdesktop_icon_view_get_selected_items(XfdesktopIconView *icon_view) G_GNUC_WARN_UNUSED_RESULT;
 
