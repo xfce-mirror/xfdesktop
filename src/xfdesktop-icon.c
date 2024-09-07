@@ -186,57 +186,6 @@ xfdesktop_icon_peek_identifier(XfdesktopIcon *icon)
     return icon->priv->identifier;
 }
 
-/*< optional; drags aren't allowed if not provided >*/
-GdkDragAction
-xfdesktop_icon_get_allowed_drag_actions(XfdesktopIcon *icon)
-{
-    XfdesktopIconClass *klass;
-
-    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), FALSE);
-
-    klass = XFDESKTOP_ICON_GET_CLASS(icon);
-
-    if(!klass->get_allowed_drag_actions)
-        return 0;
-
-    return klass->get_allowed_drag_actions(icon);
-}
-
-/*< optional; drops aren't allowed if not provided >*/
-GdkDragAction
-xfdesktop_icon_get_allowed_drop_actions(XfdesktopIcon *icon,
-                                        GdkDragAction *suggested_action)
-{
-    XfdesktopIconClass *klass;
-
-    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), FALSE);
-
-    klass = XFDESKTOP_ICON_GET_CLASS(icon);
-
-    if(!klass->get_allowed_drop_actions) {
-        if(suggested_action)
-            *suggested_action = 0;
-        return 0;
-    }
-
-    return klass->get_allowed_drop_actions(icon, suggested_action);
-}
-
-/*< optional; required if get_allowed_drop_actions() can return nonzero >*/
-gboolean
-xfdesktop_icon_do_drop_dest(XfdesktopIcon *icon,
-                            GList *src_icons,
-                            GdkDragAction action)
-{
-    XfdesktopIconClass *klass;
-
-    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), FALSE);
-    klass = XFDESKTOP_ICON_GET_CLASS(icon);
-    g_return_val_if_fail(klass->do_drop_dest, FALSE);
-
-    return klass->do_drop_dest(icon, src_icons, action);
-}
-
 /*< optional >*/
 const gchar *
 xfdesktop_icon_peek_tooltip(XfdesktopIcon *icon)
