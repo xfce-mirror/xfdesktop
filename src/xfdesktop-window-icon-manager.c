@@ -35,8 +35,6 @@
 #include "xfdesktop-window-icon-model.h"
 
 #define TARGET_TEXT 1000
-#define TARGET_WINDOW 1001
-#define TYPE_WINDOW "WINDOW_ICON"
 #define WINDOW_MONITOR_OVERRIDE_KEY "xfdesktop-window-monitor-override"
 
 struct _XfdesktopWindowIconManager {
@@ -123,16 +121,8 @@ xfdesktop_window_icon_manager_constructed(GObject *object) {
     XfdesktopWindowIconManager *wmanager = XFDESKTOP_WINDOW_ICON_MANAGER(object);
     XfdesktopIconViewManager *manager = XFDESKTOP_ICON_VIEW_MANAGER(wmanager);
 
-    const GtkTargetEntry window_target = {
-        .target = TYPE_WINDOW,
-        .flags = GTK_TARGET_SAME_APP | GTK_TARGET_OTHER_WIDGET,
-        .info = TARGET_WINDOW,
-    };
-
-    wmanager->source_targets = gtk_target_list_new(&window_target, 1);
+    wmanager->source_targets = gtk_target_list_new(NULL, 0);
     gtk_target_list_add_text_targets(wmanager->source_targets, TARGET_TEXT);
-
-    wmanager->dest_targets = gtk_target_list_new(&window_target, 1);
 
     XfwScreen *screen = xfdesktop_icon_view_manager_get_screen(manager);
     g_signal_connect(screen, "window-closed",
@@ -180,7 +170,6 @@ xfdesktop_window_icon_manager_finalize(GObject *object) {
     g_object_unref(wmanager->model);
 
     gtk_target_list_unref(wmanager->source_targets);
-    gtk_target_list_unref(wmanager->dest_targets);
 
     G_OBJECT_CLASS(xfdesktop_window_icon_manager_parent_class)->finalize(object);
 }
@@ -238,21 +227,6 @@ xfdesktop_window_icon_manager_sort_icons(XfdesktopIconViewManager *manager, GtkS
     }
 }
 
-static MonitorData *
-monitor_data_for_icon_view(XfdesktopWindowIconManager *wmanager, XfdesktopIconView *icon_view) {
-    GHashTableIter iter;
-    g_hash_table_iter_init(&iter, wmanager->monitor_data);
-
-    MonitorData *mdata;
-    while (g_hash_table_iter_next(&iter, NULL, (gpointer)&mdata)) {
-        if (xfdesktop_icon_view_holder_get_icon_view(mdata->holder) == icon_view) {
-            return mdata;
-        }
-    }
-
-    g_assert_not_reached();
-}
-
 static XfwWindow *
 window_for_filter_path(XfdesktopWindowIconManager *wmanager, MonitorData *mdata, GtkTreePath *filt_path) {
     if (filt_path != NULL) {
@@ -270,15 +244,14 @@ window_for_filter_path(XfdesktopWindowIconManager *wmanager, MonitorData *mdata,
 }
 
 static void
-icon_view_icon_selection_changed(XfdesktopIconView *icon_view, XfdesktopWindowIconManager *wmanager) {
+icon_view_icon_selection_changed(XfdesktopIconView *icon_view, MonitorData *mdata) {
     DBG("entering");
 
-    MonitorData *mdata = monitor_data_for_icon_view(wmanager, icon_view);
     XfwWorkspace *active_workspace = mdata->group != NULL ? xfw_workspace_group_get_active_workspace(mdata->group) : NULL;
 
     if (active_workspace != NULL) {
         GList *selected = xfdesktop_icon_view_get_selected_items(icon_view);
-        XfwWindow *window = window_for_filter_path(wmanager, mdata, selected != NULL ? selected->data : NULL);
+        XfwWindow *window = window_for_filter_path(mdata->wmanager, mdata, selected != NULL ? selected->data : NULL);
         if (window != NULL) {
             g_hash_table_insert(mdata->selected_icons, active_workspace, window);
         } else {
@@ -289,89 +262,13 @@ icon_view_icon_selection_changed(XfdesktopIconView *icon_view, XfdesktopWindowIc
 }
 
 static void
-icon_view_icon_activated(XfdesktopIconView *icon_view, XfdesktopWindowIconManager *wmanager) {
-    MonitorData *mdata = monitor_data_for_icon_view(wmanager, icon_view);
+icon_view_icon_activated(XfdesktopIconView *icon_view, MonitorData *mdata) {
     GList *selected = xfdesktop_icon_view_get_selected_items(icon_view);
-    XfwWindow *window = window_for_filter_path(wmanager, mdata, selected != NULL ? selected->data : NULL);
+    XfwWindow *window = window_for_filter_path(mdata->wmanager, mdata, selected != NULL ? selected->data : NULL);
     if (window != NULL) {
         xfw_window_activate(window, gtk_get_current_event_time(), NULL);
     }
     g_list_free(selected);
-}
-
-static void
-icon_view_icon_moved(XfdesktopIconView *icon_view,
-                     GtkTreeIter *filt_iter,
-                     gint row,
-                     gint col,
-                     XfdesktopWindowIconManager *wmanager)
-{
-    GtkTreeModel *filter = xfdesktop_icon_view_get_model(icon_view);
-    GtkTreeIter real_iter;
-    gtk_tree_model_filter_convert_iter_to_child_iter(GTK_TREE_MODEL_FILTER(filter), &real_iter, filt_iter);
-    xfdesktop_window_icon_model_set_position(wmanager->model, &real_iter, row, col);
-}
-
-static GdkDragAction
-icon_view_drag_actions_get(XfdesktopIconView *icon_view, GtkTreeIter *filt_iter, XfdesktopWindowIconManager *wmanager) {
-    GtkTreeModel *filter = xfdesktop_icon_view_get_model(icon_view);
-    GtkTreeIter real_iter;
-    gtk_tree_model_filter_convert_iter_to_child_iter(GTK_TREE_MODEL_FILTER(filter), &real_iter, filt_iter);
-    XfwWindow *window = xfdesktop_window_icon_model_get_window(wmanager->model, &real_iter);
-    return window != NULL ? GDK_ACTION_COPY | GDK_ACTION_MOVE : 0;
-}
-
-static void
-icon_view_drag_data_get(GtkWidget *icon_view,
-                        GdkDragContext *context,
-                        GtkSelectionData *data,
-                        guint info,
-                        guint time_,
-                        XfdesktopWindowIconManager *wmanager)
-{
-    if (info == TARGET_TEXT || info == TARGET_WINDOW) {
-        MonitorData *mdata = monitor_data_for_icon_view(wmanager, XFDESKTOP_ICON_VIEW(icon_view));
-        GList *selected = xfdesktop_icon_view_get_selected_items(XFDESKTOP_ICON_VIEW(icon_view));
-        XfwWindow *window = window_for_filter_path(wmanager, mdata, selected != NULL ? selected->data : NULL);
-
-        if (window != NULL) {
-            if (info == TARGET_TEXT) {
-                const gchar *name = xfw_window_get_name(window);
-                if (name != NULL && name[0] != '\0') {
-                    gtk_selection_data_set_text(data, name, strlen(name));
-                }
-            } else if (info == TARGET_WINDOW) {
-                GdkAtom type = gdk_atom_intern(TYPE_WINDOW, FALSE);
-                gtk_selection_data_set(data, type, 1, (guchar *)window, sizeof(gpointer));
-            } else {
-                g_assert_not_reached();
-            }
-        }
-
-        g_list_free(selected);
-    }
-}
-
-static gboolean
-icon_view_drag_drop(GtkWidget *widget,
-                    GdkDragContext *context,
-                    gint x,
-                    gint y,
-                    guint time,
-                    XfdesktopWindowIconManager *wmanager)
-{
-    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
-
-    if (!xfdesktop_icon_view_widget_coords_to_item(icon_view, x, y, NULL)) {
-        GdkAtom target = gtk_drag_dest_find_target(widget, context, wmanager->dest_targets);
-        GdkAtom window_icon_type = gdk_atom_intern(TYPE_WINDOW, FALSE);
-        if (target == window_icon_type ) {
-            gtk_drag_get_data(widget, context, window_icon_type, time);
-            return TRUE;
-        }
-    }
-
-    return FALSE;
 }
 
 static void
@@ -381,75 +278,66 @@ window_clear_monitor_override(gpointer data, GObject *where_the_object_was) {
 }
 
 static void
-icon_view_drag_data_received(GtkWidget *widget,
-                             GdkDragContext *context,
-                             gint x,
-                             gint y,
-                             GtkSelectionData *data,
-                             guint info,
-                             guint time,
-                             XfdesktopWindowIconManager *wmanager)
+icon_view_icon_moved(XfdesktopIconView *icon_view,
+                     XfdesktopIconView *source_icon_view,
+                     GtkTreeIter *source_iter,
+                     gint row,
+                     gint col,
+                     MonitorData *mdata)
 {
-    if (info == TARGET_WINDOW) {
-        gboolean success = FALSE;
+    TRACE("entering");
 
-        if (gtk_selection_data_get_format(data) == 1 && gtk_selection_data_get_length(data) == sizeof(gpointer)) {
-            XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
-            gint row, col;
-            if (xfdesktop_icon_view_widget_coords_to_slot_coords(icon_view, x, y, &row, &col)) {
-                XfwWindow *window = (gpointer)gtk_selection_data_get_data(data);
-                g_assert(XFW_IS_WINDOW(window));
+    GtkTreeModel *filter = xfdesktop_icon_view_get_model(icon_view);
+    GtkTreeIter real_iter;
+    gtk_tree_model_filter_convert_iter_to_child_iter(GTK_TREE_MODEL_FILTER(filter), &real_iter, source_iter);
 
-                MonitorData *mdata = monitor_data_for_icon_view(wmanager, icon_view);
-                if (mdata != NULL) {
-                    XfwMonitor *old_monitor = g_object_get_data(G_OBJECT(window), WINDOW_MONITOR_OVERRIDE_KEY);
-                    if (old_monitor != NULL) {
-                        g_object_weak_unref(G_OBJECT(old_monitor), window_clear_monitor_override, window);
-                    }
+    XfwWindow *window = xfdesktop_window_icon_model_get_window(mdata->wmanager->model, &real_iter);
+    if (window != NULL && icon_view != source_icon_view) {
+        XfwMonitor *monitor = xfce_desktop_get_monitor(xfdesktop_icon_view_holder_get_desktop(mdata->holder));
+        gboolean has_override = g_object_get_data(G_OBJECT(window), WINDOW_MONITOR_OVERRIDE_KEY) != NULL;
 
-                    XfwMonitor *monitor = xfce_desktop_get_monitor(xfdesktop_icon_view_holder_get_desktop(mdata->holder));
-                    g_object_set_data(G_OBJECT(window), WINDOW_MONITOR_OVERRIDE_KEY, monitor);
-                    g_object_weak_ref(G_OBJECT(monitor), window_clear_monitor_override, window);
-
-                    if (old_monitor != NULL) {
-                        MonitorData *old_mdata = g_hash_table_lookup(wmanager->monitor_data, old_monitor);
-                        if (old_mdata != NULL) {
-                            XfdesktopIconView *old_icon_view = xfdesktop_icon_view_holder_get_icon_view(mdata->holder);
-                            gtk_tree_model_filter_refilter(GTK_TREE_MODEL_FILTER(xfdesktop_icon_view_get_model(old_icon_view)));
-                        }
-                    } else {
-                        for (GList *l = xfw_window_get_monitors(window); l != NULL; l = l->next) {
-                            old_monitor = XFW_MONITOR(l->data);
-                            if (old_monitor != monitor) {
-                                MonitorData *old_mdata = g_hash_table_lookup(wmanager->monitor_data, old_monitor);
-                                if (old_mdata != NULL) {
-                                    XfdesktopIconView *old_icon_view = xfdesktop_icon_view_holder_get_icon_view(mdata->holder);
-                                    gtk_tree_model_filter_refilter(GTK_TREE_MODEL_FILTER(xfdesktop_icon_view_get_model(old_icon_view)));
-                                }
-                            }
-                        }
-                    }
-
-                    gtk_tree_model_filter_refilter(GTK_TREE_MODEL_FILTER(xfdesktop_icon_view_get_model(icon_view)));
-
-                    success = TRUE;
-                }
-            }
+        if (has_override) {
+            g_object_weak_unref(G_OBJECT(monitor), window_clear_monitor_override, window);
         }
 
-        gtk_drag_finish(context, success, FALSE, time);
+        if (g_list_find(xfw_window_get_monitors(window), monitor) != NULL) {
+            g_object_set_data(G_OBJECT(window), WINDOW_MONITOR_OVERRIDE_KEY, NULL);
+        } else {
+            g_object_set_data(G_OBJECT(window), WINDOW_MONITOR_OVERRIDE_KEY, monitor);
+            g_object_weak_ref(G_OBJECT(monitor), window_clear_monitor_override, window);
+        }
+    }
+
+    xfdesktop_window_icon_model_set_position(mdata->wmanager->model, &real_iter, row, col);
+
+    GtkTreePath *path = gtk_tree_model_get_path(GTK_TREE_MODEL(mdata->wmanager->model), &real_iter);
+    if (path != NULL) {
+        gtk_tree_model_row_changed(GTK_TREE_MODEL(mdata->wmanager->model), path, &real_iter);
+        gtk_tree_path_free(path);
     }
 }
 
-static GdkDragAction
-icon_view_drop_propose_action(XfdesktopIconView *icon_view,
-                              GdkDragContext *context,
-                              GtkTreeIter *iter,
-                              GtkSelectionData *data,
-                              guint info,
-                              XfdesktopWindowIconManager *wmanager)
+static void
+icon_view_drag_data_get(GtkWidget *icon_view,
+                        GdkDragContext *context,
+                        GtkSelectionData *data,
+                        guint info,
+                        guint time_,
+                        MonitorData *mdata)
 {
-    return iter == NULL ? GDK_ACTION_MOVE : 0;
+    if (info == TARGET_TEXT) {
+        GList *selected = xfdesktop_icon_view_get_selected_items(XFDESKTOP_ICON_VIEW(icon_view));
+        XfwWindow *window = window_for_filter_path(mdata->wmanager, mdata, selected != NULL ? selected->data : NULL);
+
+        if (window != NULL) {
+            const gchar *name = xfw_window_get_name(window);
+            if (name != NULL && name[0] != '\0') {
+                gtk_selection_data_set_text(data, name, strlen(name));
+            }
+        }
+
+        g_list_free(selected);
+    }
 }
 
 static gboolean
@@ -500,6 +388,11 @@ create_icon_view(XfdesktopWindowIconManager *wmanager, XfceDesktop *desktop) {
     XfwScreen *screen = xfdesktop_icon_view_manager_get_screen(XFDESKTOP_ICON_VIEW_MANAGER(wmanager));
     XfconfChannel *channel = xfdesktop_icon_view_manager_get_channel(XFDESKTOP_ICON_VIEW_MANAGER(wmanager));
 
+    MonitorData *mdata = g_new0(MonitorData, 1);
+    mdata->wmanager = wmanager;
+    mdata->selected_icons = g_hash_table_new(g_direct_hash, g_direct_equal);
+    mdata->group = find_workspace_group_for_monitor(wmanager, xfce_desktop_get_monitor(desktop));
+
     XfdesktopIconView *icon_view = g_object_new(XFDESKTOP_TYPE_ICON_VIEW,
                                                 "screen", screen,
                                                 "channel", channel,
@@ -519,35 +412,21 @@ create_icon_view(XfdesktopWindowIconManager *wmanager, XfceDesktop *desktop) {
     xfdesktop_icon_view_enable_drag_source(icon_view,
                                            GDK_SHIFT_MASK | GDK_CONTROL_MASK | GDK_BUTTON1_MASK,
                                            targets, n_targets,
-                                           GDK_ACTION_COPY | GDK_ACTION_MOVE);
-    gtk_target_table_free(targets, n_targets);
-
-    targets = gtk_target_table_new_from_list(wmanager->dest_targets, &n_targets);
-    xfdesktop_icon_view_enable_drag_dest(icon_view, targets, n_targets, GDK_ACTION_MOVE);
+                                           GDK_ACTION_COPY);
     gtk_target_table_free(targets, n_targets);
 
     g_signal_connect(G_OBJECT(icon_view), "icon-selection-changed",
-                     G_CALLBACK(icon_view_icon_selection_changed), wmanager);
+                     G_CALLBACK(icon_view_icon_selection_changed), mdata);
     g_signal_connect(icon_view, "icon-activated",
-                     G_CALLBACK(icon_view_icon_activated), wmanager);
+                     G_CALLBACK(icon_view_icon_activated), mdata);
     g_signal_connect(icon_view, "icon-moved",
-                     G_CALLBACK(icon_view_icon_moved), wmanager);
-    g_signal_connect(icon_view, "drag-actions-get",
-                     G_CALLBACK(icon_view_drag_actions_get), wmanager);
-    g_signal_connect(icon_view, "drag-data-get",
-                     G_CALLBACK(icon_view_drag_data_get), wmanager);
-    g_signal_connect(icon_view, "drop-propose-action",
-                     G_CALLBACK(icon_view_drop_propose_action), wmanager);
-    g_signal_connect(icon_view, "drag-drop",
-                     G_CALLBACK(icon_view_drag_drop), wmanager);
-    g_signal_connect(icon_view, "drag-data-received",
-                     G_CALLBACK(icon_view_drag_data_received), wmanager);
+                     G_CALLBACK(icon_view_icon_moved), mdata);
 
-    MonitorData *mdata = g_new0(MonitorData, 1);
-    mdata->wmanager = wmanager;
+    // DnD source signals
+    g_signal_connect(icon_view, "drag-data-get",
+                     G_CALLBACK(icon_view_drag_data_get), mdata);
+
     mdata->holder = xfdesktop_icon_view_holder_new(screen, desktop, icon_view);
-    mdata->selected_icons = g_hash_table_new(g_direct_hash, g_direct_equal);
-    mdata->group = find_workspace_group_for_monitor(wmanager, xfce_desktop_get_monitor(desktop));
     if (mdata->group != NULL) {
         refresh_workspace_group_monitors(wmanager, mdata->group);
     }
