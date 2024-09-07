@@ -100,12 +100,6 @@ static void xfdesktop_regular_file_icon_delete_thumbnail_file(XfdesktopIcon *ico
 
 static const gchar *xfdesktop_regular_file_icon_peek_label(XfdesktopIcon *icon);
 static const gchar *xfdesktop_regular_file_icon_peek_tooltip(XfdesktopIcon *icon);
-static GdkDragAction xfdesktop_regular_file_icon_get_allowed_drag_actions(XfdesktopIcon *icon);
-static GdkDragAction xfdesktop_regular_file_icon_get_allowed_drop_actions(XfdesktopIcon *icon,
-                                                                          GdkDragAction *suggested_action);
-static gboolean xfdesktop_regular_file_icon_do_drop_dest(XfdesktopIcon *icon,
-                                                         GList *src_icons,
-                                                         GdkDragAction action);
 
 static GIcon *xfdesktop_regular_file_icon_get_gicon(XfdesktopFileIcon *icon);
 static GFileInfo *xfdesktop_regular_file_icon_peek_file_info(XfdesktopFileIcon *icon);
@@ -177,9 +171,6 @@ xfdesktop_regular_file_icon_class_init(XfdesktopRegularFileIconClass *klass)
 
     icon_class->peek_label = xfdesktop_regular_file_icon_peek_label;
     icon_class->peek_tooltip = xfdesktop_regular_file_icon_peek_tooltip;
-    icon_class->get_allowed_drag_actions = xfdesktop_regular_file_icon_get_allowed_drag_actions;
-    icon_class->get_allowed_drop_actions = xfdesktop_regular_file_icon_get_allowed_drop_actions;
-    icon_class->do_drop_dest = xfdesktop_regular_file_icon_do_drop_dest;
     icon_class->set_thumbnail_file = xfdesktop_regular_file_icon_set_thumbnail_file;
     icon_class->delete_thumbnail_file = xfdesktop_regular_file_icon_delete_thumbnail_file;
 
@@ -698,130 +689,6 @@ xfdesktop_regular_file_icon_peek_label(XfdesktopIcon *icon)
     g_return_val_if_fail(XFDESKTOP_IS_REGULAR_FILE_ICON(icon), NULL);
 
     return regular_file_icon->priv->display_name;
-}
-
-static GdkDragAction
-xfdesktop_regular_file_icon_get_allowed_drag_actions(XfdesktopIcon *icon)
-{
-    GFileInfo *info = xfdesktop_file_icon_peek_file_info(XFDESKTOP_FILE_ICON(icon));
-    GFile *file = xfdesktop_file_icon_peek_file(XFDESKTOP_FILE_ICON(icon));
-    GdkDragAction actions = GDK_ACTION_LINK;  /* we can always link */
-
-    if(!info)
-        return 0;
-
-    if(g_file_info_get_attribute_boolean(info,
-                                         G_FILE_ATTRIBUTE_ACCESS_CAN_READ))
-    {
-        GFileInfo *parent_info;
-        GFile *parent_file;
-
-        actions |= GDK_ACTION_COPY;
-
-        /* we can only move if the parent is writable */
-        parent_file = g_file_get_parent(file);
-        parent_info = g_file_query_info(parent_file,
-                                        XFDESKTOP_FILE_INFO_NAMESPACE,
-                                        G_FILE_QUERY_INFO_NONE,
-                                        NULL, NULL);
-        if(parent_info) {
-            if(g_file_info_get_attribute_boolean(parent_info,
-                                                 G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
-            {
-                actions |= GDK_ACTION_MOVE;
-            }
-            g_object_unref(parent_info);
-        }
-        g_object_unref(parent_file);
-    }
-
-    return actions;
-}
-
-static GdkDragAction
-xfdesktop_regular_file_icon_get_allowed_drop_actions(XfdesktopIcon *icon,
-                                                     GdkDragAction *suggested_action)
-{
-    GFileInfo *info = xfdesktop_file_icon_peek_file_info(XFDESKTOP_FILE_ICON(icon));
-
-    if(!info) {
-        if(suggested_action)
-            *suggested_action = 0;
-        return 0;
-    }
-
-    /* if it's executable we can 'copy'.  if it's a folder we can do anything
-     * if it's writable. */
-    if(g_file_info_get_file_type(info) == G_FILE_TYPE_DIRECTORY) {
-        if(g_file_info_get_attribute_boolean(info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE)) {
-            if(suggested_action)
-                *suggested_action = GDK_ACTION_MOVE;
-            return GDK_ACTION_MOVE | GDK_ACTION_COPY | GDK_ACTION_LINK | GDK_ACTION_ASK;
-        }
-    } else {
-        if(xfdesktop_file_utils_file_is_executable(info)) {
-            if(suggested_action)
-                *suggested_action = GDK_ACTION_COPY;
-            return GDK_ACTION_COPY;
-        }
-    }
-
-    if(suggested_action)
-        *suggested_action = 0;
-
-    return 0;
-}
-
-gboolean
-xfdesktop_regular_file_icon_do_drop_dest(XfdesktopIcon *icon,
-                                         GList *src_icons,
-                                         GdkDragAction action)
-{
-    XfdesktopRegularFileIcon *regular_file_icon = XFDESKTOP_REGULAR_FILE_ICON(icon);
-    gboolean result = FALSE;
-
-    TRACE("entering");
-
-    g_return_val_if_fail(regular_file_icon != NULL && src_icons != NULL, FALSE);
-    g_return_val_if_fail(xfdesktop_regular_file_icon_get_allowed_drop_actions(icon, NULL) != 0,
-                         FALSE);
-
-    if(g_file_info_get_file_type(regular_file_icon->priv->file_info) != G_FILE_TYPE_DIRECTORY
-       && xfdesktop_file_utils_file_is_executable(regular_file_icon->priv->file_info))
-    {
-        GList *files = NULL;
-
-        for (GList *l = src_icons; l != NULL; l = l->next) {
-            GFile *file = xfdesktop_file_icon_peek_file(XFDESKTOP_FILE_ICON(l->data));
-            if (file != NULL) {
-                files = g_list_prepend(files, file);
-            }
-        }
-        files = g_list_reverse(files);
-
-        if (files != NULL) {
-            xfdesktop_file_utils_execute(NULL, regular_file_icon->priv->file, files,
-                                         regular_file_icon->priv->gscreen, NULL);
-            g_list_free(files);
-            result = TRUE;
-        }
-    } else {
-        GList *src_files = NULL;
-        GList *dest_files = NULL;
-
-        xfdesktop_file_utils_build_transfer_file_lists(action, src_icons, XFDESKTOP_FILE_ICON(icon), &src_files, &dest_files);
-
-        if (src_files != NULL && dest_files != NULL) {
-            xfdesktop_file_utils_transfer_files(action, src_files, dest_files,
-                                                regular_file_icon->priv->gscreen);
-            result = TRUE;
-        }
-
-        g_list_free_full(dest_files, g_object_unref);
-        g_list_free(src_files);
-    }
-
-    return result;
 }
 
 static const gchar *
