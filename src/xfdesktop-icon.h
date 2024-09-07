@@ -58,11 +58,6 @@ struct _XfdesktopIconClass
     const gchar *(*peek_label)(XfdesktopIcon *icon);
     const gchar *(*peek_tooltip)(XfdesktopIcon *icon);
 
-    GdkDragAction (*get_allowed_drag_actions)(XfdesktopIcon *icon);
-
-    GdkDragAction (*get_allowed_drop_actions)(XfdesktopIcon *icon, GdkDragAction *suggested_action);
-    gboolean (*do_drop_dest)(XfdesktopIcon *icon, GList *src_icons, GdkDragAction action);
-
     gchar *(*get_identifier)(XfdesktopIcon *icon);
 
     void (*set_thumbnail_file)(XfdesktopIcon *icon, GFile *file);
@@ -94,14 +89,6 @@ gboolean xfdesktop_icon_set_position(XfdesktopIcon *icon,
 gboolean xfdesktop_icon_get_position(XfdesktopIcon *icon,
                                      gint16 *row,
                                      gint16 *col);
-
-GdkDragAction xfdesktop_icon_get_allowed_drag_actions(XfdesktopIcon *icon);
-
-GdkDragAction xfdesktop_icon_get_allowed_drop_actions(XfdesktopIcon *icon,
-                                                      GdkDragAction *suggested_action);
-gboolean xfdesktop_icon_do_drop_dest(XfdesktopIcon *icon,
-                                     GList *src_icons,
-                                     GdkDragAction action);
 
 gboolean xfdesktop_icon_activate(XfdesktopIcon *icon,
                                  GtkWindow *window);
