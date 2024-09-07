@@ -20,6 +20,7 @@
  *  Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
+#include "gdk/gdk.h"
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -86,6 +87,11 @@
 
 #define VOLUME_HASH_STR_PREFIX  "xfdesktop-volume-"
 
+#define TEXT_URI_LIST_NAME "text/uri-list"
+#define XDND_DIRECT_SAVE0_NAME "XdndDirectSave0"
+#define APPLICATION_OCTET_STREAM_NAME "application/octet-stream"
+#define NETSCAPE_URL_NAME "_NETSCAPE_URL"
+
 struct _XfdesktopFileIconManager
 {
     XfdesktopIconViewManager parent;
@@ -104,6 +110,11 @@ struct _XfdesktopFileIconManager
 
     GtkTargetList *drag_targets;
     GtkTargetList *drop_targets;
+
+    XfdesktopFileIcon *icon_on_drop_dest;
+    GFile *xdnd_direct_save_destination;
+    GdkDragAction selected_drop_action;
+    gboolean drag_dropped;
 
 #ifdef HAVE_THUNARX
     GList *thunarx_menu_providers;
@@ -131,6 +142,21 @@ typedef struct {
     XfdesktopIconPositionConfig *position_config;
 } MonitorData;
 
+static MonitorData *
+monitor_data_for_icon_view(GHashTable *monitor_datas, XfdesktopIconView *icon_view) {
+    GHashTableIter hiter;
+    g_hash_table_iter_init(&hiter, monitor_datas);
+
+    MonitorData *mdata;
+    while (g_hash_table_iter_next(&hiter, NULL, (gpointer)&mdata)) {
+        if (xfdesktop_icon_view_holder_get_icon_view(mdata->holder) == icon_view) {
+            return mdata;
+        }
+    }
+
+    return NULL;
+}
+
 static void
 monitor_data_free(MonitorData *mdata) {
     if (mdata->position_config != NULL) {
@@ -155,55 +181,37 @@ static void xfdesktop_file_icon_manager_get_property(GObject *object,
 static void xfdesktop_file_icon_manager_dispose(GObject *obj);
 static void xfdesktop_file_icon_manager_finalize(GObject *obj);
 
-static GdkDragAction xfdesktop_file_icon_manager_drag_actions_get(XfdesktopIconView *icon_view,
-                                                                  GtkTreeIter *iter,
-                                                                  MonitorData *mdata);
-static GdkDragAction xfdesktop_file_icon_manager_drop_actions_get(XfdesktopIconView *icon_view,
-                                                                  GtkTreeIter *iter,
-                                                                  GdkDragAction *suggested_action,
-                                                                  MonitorData *mdata);
-static gboolean xfdesktop_file_icon_manager_drag_drop_item(XfdesktopIconView *icon_view,
-                                                           GdkDragContext *context,
-                                                           GtkTreeIter *iter,
-                                                           gint row,
-                                                           gint col,
-                                                           guint time_,
-                                                           MonitorData *mdata);
-static gboolean xfdesktop_file_icon_manager_drag_drop_items(XfdesktopIconView *icon_view,
-                                                            GdkDragContext *context,
-                                                            GtkTreeIter *iter,
-                                                            GList *dropped_item_paths,
-                                                            GdkDragAction action,
-                                                            MonitorData *mdata);
-static GdkDragAction xfdesktop_file_icon_manager_drag_drop_ask(XfdesktopIconView *icon_view,
-                                                               GdkDragContext *context,
-                                                               GtkTreeIter *iter,
-                                                               gint row,
-                                                               gint col,
-                                                               guint time_,
-                                                               XfdesktopFileIconManager *fmanager);
-static void xfdesktop_file_icon_manager_drag_item_data_received(XfdesktopIconView *icon_view,
-                                                                GdkDragContext *context,
-                                                                GtkTreeIter *iter,
-                                                                gint row,
-                                                                gint col,
-                                                                GtkSelectionData *data,
-                                                                guint info,
-                                                                guint time_,
-                                                                MonitorData *mdata);
 static void xfdesktop_file_icon_manager_drag_data_get(GtkWidget *icon_view,
                                                       GdkDragContext *context,
                                                       GtkSelectionData *data,
                                                       guint info,
                                                       guint time_,
                                                       MonitorData *mdata);
-static GdkDragAction xfdesktop_file_icon_manager_drop_propose_action(XfdesktopIconView *icon_view,
-                                                                     GdkDragContext *context,
-                                                                     GtkTreeIter *iter,
-                                                                     GdkDragAction action,
-                                                                     GtkSelectionData *data,
-                                                                     guint info,
-                                                                     MonitorData *mdata);
+
+static gboolean xfdesktop_file_icon_manager_drag_motion(GtkWidget *icon_view,
+                                                        GdkDragContext *context,
+                                                        gint x,
+                                                        gint y,
+                                                        guint time_,
+                                                        MonitorData *mdata);
+static void xfdesktop_file_icon_manager_drag_data_received(GtkWidget *icon_view,
+                                                           GdkDragContext *context,
+                                                           gint x,
+                                                           gint y,
+                                                           GtkSelectionData *data,
+                                                           guint info,
+                                                           guint time_,
+                                                           MonitorData *mdata);
+static gboolean xfdesktop_file_icon_manager_drag_drop(GtkWidget *icon_view,
+                                                      GdkDragContext *context,
+                                                      gint x,
+                                                      gint y,
+                                                      guint time_,
+                                                      MonitorData *mdata);
+static GdkDragAction xfdesktop_file_icon_manager_drag_drop_ask(XfdesktopFileIconManager *fmanager,
+                                                               GtkWidget *parent,
+                                                               GdkDragAction allowed_actions,
+                                                               guint time_);
 
 static void xfdesktop_file_icon_manager_desktop_added(XfdesktopIconViewManager *manager,
                                                       XfceDesktop *desktop);
@@ -215,9 +223,10 @@ static void xfdesktop_file_icon_manager_sort_icons(XfdesktopIconViewManager *man
                                                    GtkSortType sort_type);
 
 static void xfdesktop_file_icon_manager_icon_moved(XfdesktopIconView *icon_view,
-                                                   GtkTreeIter *iter,
-                                                   gint new_row,
-                                                   gint new_col,
+                                                   XfdesktopIconView *source_icon_view,
+                                                   GtkTreeIter *source_iter,
+                                                   gint dest_row,
+                                                   gint dest_col,
                                                    MonitorData *mdata);
 static void xfdesktop_file_icon_manager_activate_selected(GtkWidget *widget,
                                                           XfdesktopFileIconManager *fmanager);
@@ -254,10 +263,10 @@ G_DEFINE_TYPE(XfdesktopFileIconManager, xfdesktop_file_icon_manager, XFDESKTOP_T
 
 enum
 {
-    TARGET_TEXT_URI_LIST = 0,
-    TARGET_XDND_DIRECT_SAVE0,
-    TARGET_NETSCAPE_URL,
-    TARGET_APPLICATION_OCTET_STREAM,
+    TARGET_TEXT_URI_LIST = 1000,
+    TARGET_XDND_DIRECT_SAVE0 = 1001,
+    TARGET_APPLICATION_OCTET_STREAM = 1002,
+    TARGET_NETSCAPE_URL = 1003,
 };
 
 static const struct
@@ -271,13 +280,13 @@ static const struct
 };
 
 static const GtkTargetEntry drag_targets[] = {
-    { "text/uri-list", 0, TARGET_TEXT_URI_LIST, },
+    { TEXT_URI_LIST_NAME, 0, TARGET_TEXT_URI_LIST, },
 };
 static const GtkTargetEntry drop_targets[] = {
-    { "text/uri-list", 0, TARGET_TEXT_URI_LIST, },
-    { "application/octet-stream", 0, TARGET_APPLICATION_OCTET_STREAM, },
-    { "XdndDirectSave0", 0, TARGET_XDND_DIRECT_SAVE0, },
-    { "_NETSCAPE_URL", 0, TARGET_NETSCAPE_URL, },
+    { TEXT_URI_LIST_NAME, 0, TARGET_TEXT_URI_LIST, },
+    { XDND_DIRECT_SAVE0_NAME, 0, TARGET_XDND_DIRECT_SAVE0 },
+    { APPLICATION_OCTET_STREAM_NAME, 0, TARGET_APPLICATION_OCTET_STREAM },
+    { NETSCAPE_URL_NAME, 0, TARGET_NETSCAPE_URL, },
 };
 
 static XfdesktopClipboardManager *clipboard_manager = NULL;
@@ -1230,23 +1239,19 @@ create_icon_view(XfdesktopFileIconManager *fmanager, XfceDesktop *desktop) {
                      G_CALLBACK(xfdesktop_file_icon_manager_icon_moved), mdata);
     g_signal_connect(icon_view, "icon-activated",
                      G_CALLBACK(xfdesktop_file_icon_manager_activate_selected), fmanager);
-    // DnD signals
-    g_signal_connect(icon_view, "drag-actions-get",
-                     G_CALLBACK(xfdesktop_file_icon_manager_drag_actions_get), mdata);
-    g_signal_connect(icon_view, "drop-actions-get",
-                     G_CALLBACK(xfdesktop_file_icon_manager_drop_actions_get), mdata);
-    g_signal_connect(icon_view, "drag-drop-ask",
-                     G_CALLBACK(xfdesktop_file_icon_manager_drag_drop_ask), fmanager);
-    g_signal_connect(icon_view, "drag-drop-item",
-                     G_CALLBACK(xfdesktop_file_icon_manager_drag_drop_item), mdata);
-    g_signal_connect(icon_view, "drag-drop-items",
-                     G_CALLBACK(xfdesktop_file_icon_manager_drag_drop_items), mdata);
+
+    // DnD src signals
     g_signal_connect(icon_view, "drag-data-get",
                      G_CALLBACK(xfdesktop_file_icon_manager_drag_data_get), mdata);
-    g_signal_connect(icon_view, "drag-item-data-received",
-                     G_CALLBACK(xfdesktop_file_icon_manager_drag_item_data_received), mdata);
-    g_signal_connect(icon_view, "drop-propose-action",
-                     G_CALLBACK(xfdesktop_file_icon_manager_drop_propose_action), mdata);
+
+    // DnD dest signals
+    g_signal_connect(icon_view, "drag-motion",
+                     G_CALLBACK(xfdesktop_file_icon_manager_drag_motion), mdata);
+    g_signal_connect(icon_view, "drag-data-received",
+                     G_CALLBACK(xfdesktop_file_icon_manager_drag_data_received), mdata);
+    g_signal_connect(icon_view, "drag-drop",
+                     G_CALLBACK(xfdesktop_file_icon_manager_drag_drop), mdata);
+
     // Below signals allow us to sort icons and replace them where they belong in the newly-sized view
     g_signal_connect(G_OBJECT(icon_view), "start-grid-resize",
                      G_CALLBACK(xfdesktop_file_icon_manager_start_grid_resize), mdata);
@@ -2278,6 +2283,664 @@ xfdesktop_file_icon_manager_drop_actions_get(XfdesktopIconView *icon_view,
     return icon != NULL ? xfdesktop_icon_get_allowed_drop_actions(XFDESKTOP_ICON(icon), suggested_action) : 0;
 }
 
+static void
+clear_drag_dest_data(XfdesktopFileIconManager *fmanager) {
+    fmanager->drag_dropped = FALSE;
+    fmanager->icon_on_drop_dest = NULL;
+    fmanager->selected_drop_action = 0;
+    g_clear_object(&fmanager->xdnd_direct_save_destination);
+}
+
+static gboolean
+xfdesktop_file_icon_manager_drag_motion(GtkWidget *icon_view,
+                                        GdkDragContext *context,
+                                        gint x,
+                                        gint y,
+                                        guint time_,
+                                        MonitorData *mdata)
+{
+    TRACE("entering");
+
+    if (g_object_get_data(G_OBJECT(context), "--xfdesktop-drag-dest-done-data") == NULL) {
+        g_object_set_data_full(G_OBJECT(context),
+                               "--xfdesktop-drag-dest-done-data",
+                               mdata->fmanager,
+                               (GDestroyNotify)clear_drag_dest_data);
+    }
+
+    GtkTreeIter iter;
+    if (xfdesktop_icon_view_widget_coords_to_item(XFDESKTOP_ICON_VIEW(icon_view), x, y, &iter)) {
+        mdata->fmanager->icon_on_drop_dest = xfdesktop_file_icon_model_filter_get_icon(mdata->filter, &iter);
+    } else {
+        mdata->fmanager->icon_on_drop_dest = NULL;
+    }
+
+    GdkAtom target = GDK_NONE;
+    if (xfdesktop_icon_view_is_icon_drag(XFDESKTOP_ICON_VIEW(icon_view), context, &target)) {
+        if (mdata->fmanager->icon_on_drop_dest != NULL) {
+            // We need the list of icons before we can tell if a drop is possible.
+            DBG("source is icons, dest is an icon");
+            gtk_drag_get_data(icon_view, context, target, time_);
+            return TRUE;
+        } else {
+            // Icon dropping on a blank space, let the icon view handle it.
+            DBG("icon drag over nothing, let icon view handle it");
+            mdata->fmanager->selected_drop_action = 0;
+            return FALSE;
+        }
+    } else {
+        target = gtk_drag_dest_find_target(icon_view, context, mdata->fmanager->drop_targets);
+        if (target == gdk_atom_intern_static_string(TEXT_URI_LIST_NAME)) {
+            // We need to know more about the URIs before we can tell if a drop
+            // is possible.
+            // TODO: Or do we?
+            DBG("source is uri-list");
+            gtk_drag_get_data(icon_view, context, target, time_);
+            return TRUE;
+        } else if (target == gdk_atom_intern_static_string(XDND_DIRECT_SAVE0_NAME)) {
+            DBG("target is XdndDirectSave0");
+
+            GFileInfo *file_info = mdata->fmanager->icon_on_drop_dest != NULL
+                ? xfdesktop_file_icon_peek_file_info(mdata->fmanager->icon_on_drop_dest)
+                : xfdesktop_file_icon_peek_file_info(mdata->fmanager->desktop_icon);
+
+            if (file_info == NULL
+                || g_file_info_get_file_type(file_info) != G_FILE_TYPE_DIRECTORY
+                || !g_file_info_get_attribute_boolean(file_info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
+            {
+                return FALSE;
+            } else {
+                mdata->fmanager->selected_drop_action = GDK_ACTION_COPY;
+                gdk_drag_status(context, mdata->fmanager->selected_drop_action, time_);
+                return TRUE;
+            }
+        } else if (target == gdk_atom_intern_static_string(NETSCAPE_URL_NAME)) {
+            DBG("source is netscape-url");
+            gboolean drop_ok = TRUE;
+
+            if (mdata->fmanager->icon_on_drop_dest != NULL) {
+                GFileInfo *info = xfdesktop_file_icon_peek_file_info(mdata->fmanager->icon_on_drop_dest);
+                if (info == NULL || g_file_info_get_file_type(info) != G_FILE_TYPE_DIRECTORY) {
+                    // We can only drop URLs on either the desktop itself, or on directory icons.
+                    drop_ok = FALSE;
+                }
+
+            }
+
+            if (drop_ok) {
+                mdata->fmanager->selected_drop_action = GDK_ACTION_LINK;
+                gdk_drag_status(context, mdata->fmanager->selected_drop_action, time_);
+            } else {
+                mdata->fmanager->selected_drop_action = 0;
+            }
+            return drop_ok;
+        } else {
+            // No idea what this is.
+            DBG("no idea (target=%s), not going to accept drop", gdk_atom_name(target));
+            mdata->fmanager->selected_drop_action = 0;
+            return FALSE;
+        }
+    }
+}
+
+static GdkDragAction
+select_drag_action(GdkDragAction allowed_src_actions,
+                   GdkDragAction allowed_dest_actions,
+                   GdkDragAction suggested_action)
+{
+    static const GdkDragAction action_priority[] = {
+        GDK_ACTION_MOVE,
+        GDK_ACTION_COPY,
+        GDK_ACTION_LINK,
+        GDK_ACTION_ASK,
+    };
+
+    DBG("allowed_src_actions=0x%08x, allowed_dest_actions=0x%08x, suggested_action=0x%08x",
+        allowed_src_actions, allowed_dest_actions, suggested_action);
+
+    GdkDragAction allowed_actions = allowed_src_actions & allowed_dest_actions;
+    if ((suggested_action & allowed_actions) == suggested_action) {
+        return suggested_action;
+    } else {
+        for (gsize i = 0; i < G_N_ELEMENTS(action_priority); ++i) {
+            if ((allowed_actions & action_priority[i]) == action_priority[i]) {
+                return action_priority[i];
+            }
+        }
+        return 0;
+    }
+}
+
+static gchar *
+fetch_xds_property(GdkDragContext *context, GdkAtom *out_actual_type) {
+    GdkAtom actual_type;
+    gint actual_format;
+    gint actual_length;
+    guchar *prop_data = NULL;
+
+    if (gdk_property_get(gdk_drag_context_get_source_window(context),
+                         gdk_atom_intern_static_string(XDND_DIRECT_SAVE0_NAME),
+                         GDK_NONE, // FIXME?
+                         0,
+                         G_MAXLONG,
+                         FALSE,
+                         &actual_type,
+                         &actual_format,
+                         &actual_length,
+                         &prop_data))
+    {
+        const gchar *type = gdk_atom_name(actual_type);
+        gchar *value = g_strcmp0(type, "text/plain") == 0 || g_str_has_prefix(type, "text/plain; charset=")
+            ? g_strndup((gchar *)prop_data, actual_length)
+            : NULL;
+        g_free(prop_data);
+
+        if (out_actual_type != NULL) {
+            *out_actual_type = actual_type;
+        }
+
+        return value;
+    } else {
+        return NULL;
+    }
+}
+
+static void
+update_xds_property(GdkDragContext *context, GdkAtom type, const gchar *value) {
+    gdk_property_change(gdk_drag_context_get_source_window(context),
+                        gdk_atom_intern_static_string(XDND_DIRECT_SAVE0_NAME),
+                        type,
+                        8,
+                        GDK_PROP_MODE_REPLACE,
+                        (const guchar *)value,
+                        strlen(value));
+}
+
+static gboolean
+handle_text_uri_list_drop_data(MonitorData *mdata,
+                               GdkDragContext *context,
+                               gint row,
+                               gint col,
+                               GtkSelectionData *data,
+                               GdkDragAction selected_action)
+{
+    GFileInfo *tinfo = NULL;
+    GFile *tfile = NULL;
+    if (mdata->fmanager->icon_on_drop_dest != NULL) {
+        tfile = xfdesktop_file_icon_peek_file(mdata->fmanager->icon_on_drop_dest);
+        tinfo = xfdesktop_file_icon_peek_file_info(mdata->fmanager->icon_on_drop_dest);
+    }
+
+    GList *file_list = xfdesktop_file_utils_file_list_from_string((const gchar *)gtk_selection_data_get_data(data));
+    if (file_list != NULL) {
+        XfdesktopIconView *icon_view = xfdesktop_icon_view_holder_get_icon_view(mdata->holder);
+        GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(icon_view));
+
+        gboolean drop_ok = FALSE;
+        if (tinfo != NULL && xfdesktop_file_utils_file_is_executable(tinfo)) {
+            drop_ok = xfdesktop_file_utils_execute(mdata->fmanager->folder,
+                                                   tfile, file_list,
+                                                   mdata->fmanager->gscreen,
+                                                   GTK_WINDOW(toplevel));
+        } else if (tfile != NULL && g_file_has_uri_scheme(tfile, "trash")) {
+            /* move files to the trash */
+            xfdesktop_file_utils_trash_files(file_list,
+                                             mdata->fmanager->gscreen,
+                                             GTK_WINDOW(toplevel));
+            drop_ok = TRUE;
+        } else {
+            gboolean dest_is_volume = mdata->fmanager->icon_on_drop_dest != NULL
+                && XFDESKTOP_IS_VOLUME_ICON(mdata->fmanager->icon_on_drop_dest);
+            /* if it's a volume, but we don't have |tinfo|, this just isn't
+             * going to work */
+            if (tinfo == NULL && dest_is_volume) {
+                xfdesktop_file_utils_file_list_free(file_list);
+                return FALSE;
+            }
+
+            GFile *base_dest_file;
+            if (tinfo != NULL && g_file_info_get_file_type(tinfo) == G_FILE_TYPE_DIRECTORY) {
+                base_dest_file = g_object_ref(tfile);
+            } else {
+                base_dest_file = g_object_ref(mdata->fmanager->folder);
+            }
+
+            gint cur_row = row;
+            gint cur_col = col;
+            GList *dest_file_list = NULL;
+            for (GList *l = file_list; l; l = l->next) {
+                gchar *dest_basename = g_file_get_basename(l->data);
+
+                if(dest_basename && *dest_basename != '\0') {
+                    /* If we copy a file, we need to use the new absolute filename
+                     * as the destination. If we move or link, we need to use the destination
+                     * directory. */
+                    if (selected_action == GDK_ACTION_COPY) {
+                        GFile *dest_file = g_file_get_child(base_dest_file, dest_basename);
+                        dest_file_list = g_list_prepend(dest_file_list, dest_file);
+                    } else {
+                        dest_file_list = g_list_prepend(dest_file_list, base_dest_file);
+                    }
+
+                    if (mdata->fmanager->icon_on_drop_dest == NULL && row != -1 && col != -1) {
+                        // We are copying/moving/linking new files onto the desktop.  In order to later place them
+                        // correctly (when the GFileMonitor gets notified about them), we need to store a little
+                        // bit of data about the new files based on the drop location.
+                        GFile *file = g_file_get_child(base_dest_file, dest_basename);
+                        xfdesktop_file_icon_model_add_pending_new_file(mdata->fmanager->model, file, cur_row, cur_col);
+                        if (!xfdesktop_icon_view_get_next_free_grid_position(icon_view,
+                                                                             cur_row, cur_col,
+                                                                             &cur_row, &cur_col))
+                        {
+                            cur_row = -1;
+                            cur_col = -1;
+                        }
+                    }
+                }
+
+                g_free(dest_basename);
+            }
+
+            g_object_unref(base_dest_file);
+
+            if(dest_file_list) {
+                dest_file_list = g_list_reverse(dest_file_list);
+                xfdesktop_file_utils_transfer_files(selected_action, file_list, dest_file_list, mdata->fmanager->gscreen);
+                drop_ok = TRUE;
+            }
+
+            if (selected_action == GDK_ACTION_COPY) {
+                xfdesktop_file_utils_file_list_free(dest_file_list);
+            } else {
+                g_list_free(dest_file_list);
+            }
+        }
+
+        return drop_ok;
+    } else {
+        return FALSE;
+    }
+}
+
+static gboolean  // finished or not finished, not success
+handle_xdnd_direct_save_drop_data(GtkWidget *widget, GdkDragContext *context, GtkSelectionData *data, guint32 time_) {
+    gboolean success = FALSE;
+
+    if (gtk_selection_data_get_length(data) == 1) {
+        DBG("XDS message: %1s", gtk_selection_data_get_data(data));
+        switch (gtk_selection_data_get_data(data)[0]) {
+            case 'S':
+                success = TRUE;
+                break;
+
+            case 'F': {
+                DBG("XDS source says they want us to save the file for them");
+                GdkAtom application_octet_stream_atom = gdk_atom_intern_static_string(APPLICATION_OCTET_STREAM_NAME);
+                GList *source_targets = gdk_drag_context_list_targets(context);
+                for (GList *l = source_targets; l != NULL; l = l->next) {
+                    GdkAtom target = GDK_POINTER_TO_ATOM(l->data);
+                    if (target == application_octet_stream_atom) {
+                        DBG("Ok, they support application/octet-stream; requesting data");
+                        gtk_drag_get_data(widget, context, application_octet_stream_atom, time_);
+                        return FALSE;
+                    }
+                }
+                break;
+            }
+
+            case 'E':
+            default:
+                break;
+        }
+    } else {
+        DBG("selection data type was %s, length was %d",
+            gdk_atom_name(gtk_selection_data_get_data_type(data)),
+            gtk_selection_data_get_length(data));
+    }
+
+    if (!success) {
+        update_xds_property(context, gdk_atom_intern_static_string("text/plain"), "");
+    }
+    gtk_drag_finish(context, success, FALSE, time_);
+
+    return TRUE;
+}
+
+static gboolean
+handle_application_octet_stream_drop_data(MonitorData *mdata, GdkDragContext *context, GtkSelectionData *data) {
+    gboolean success = FALSE;
+
+    if (mdata->fmanager->xdnd_direct_save_destination) {
+        GFile *new_file = mdata->fmanager->xdnd_direct_save_destination;
+
+        const guchar *file_data = gtk_selection_data_get_data(data);
+        gint file_len = gtk_selection_data_get_length(data);
+        DBG("got file data %p, len %d", file_data, file_len);
+
+        if (file_data != NULL) {
+            // TODO: make this async (and display progress?)
+            DBG("writing XDS file data to %s", g_file_peek_path(new_file));
+            GError *error = NULL;
+            GFileOutputStream *out = g_file_create(new_file, G_FILE_CREATE_NONE, NULL, &error);
+            if (out == NULL) {
+                g_message("Failed to create XDS-sent file '%s': %s", g_file_peek_path(new_file), error->message);
+                g_error_free(error);
+            } else {
+                if (!g_output_stream_write_all(G_OUTPUT_STREAM(out), file_data, file_len, NULL, NULL, &error)
+                    || !g_output_stream_close(G_OUTPUT_STREAM(out), NULL, &error))
+                {
+                    g_message("Failed to write XDS-sent file: '%s': %s", g_file_peek_path(new_file), error->message);
+                    g_error_free(error);
+                } else {
+                    success = TRUE;
+                }
+
+                g_object_unref(out);
+            }
+        }
+    }
+
+    if (!success) {
+        update_xds_property(context, gdk_atom_intern_static_string("text/plain"), "");
+    }
+    return success;
+}
+
+static gboolean
+handle_netscape_url_drop_data(MonitorData *mdata,
+                              GdkDragContext *context,
+                              gint row,
+                              gint col,
+                              GtkSelectionData *data,
+                              guint32 time_)
+{
+    GFile *source_file = NULL;
+    if (mdata->fmanager->icon_on_drop_dest != NULL) {
+        GFileInfo *finfo = xfdesktop_file_icon_peek_file_info(XFDESKTOP_FILE_ICON(mdata->fmanager->icon_on_drop_dest));
+        if (finfo != NULL && g_file_info_get_file_type(finfo) == G_FILE_TYPE_DIRECTORY) {
+            source_file = xfdesktop_file_icon_peek_file(XFDESKTOP_FILE_ICON(mdata->fmanager->icon_on_drop_dest));
+        }
+    } else {
+        source_file = mdata->fmanager->folder;
+    }
+
+    gboolean drop_ok = FALSE;
+    gchar *exo_desktop_item_edit = g_find_program_in_path("exo-desktop-item-edit");
+    if (source_file != NULL && exo_desktop_item_edit != NULL) {
+        /* data is "URL\nTITLE" */
+        gchar **parts = g_strsplit((const gchar *)gtk_selection_data_get_data(data), "\n", -1);
+
+        if (2 == g_strv_length(parts)) {
+            gchar *cwd = g_file_get_uri(source_file);
+            gchar *myargv[16];
+            gint i = 0;
+
+            /* use the argv form so we don't have to worry about quoting
+             * the link title */
+            myargv[i++] = exo_desktop_item_edit;
+            myargv[i++] = "--type=Link";
+            myargv[i++] = "--url";
+            myargv[i++] = parts[0];
+            myargv[i++] = "--name";
+            myargv[i++] = parts[1];
+            myargv[i++] = "--create-new";
+            myargv[i++] = cwd;
+            myargv[i++] = NULL;
+
+            drop_ok = xfce_spawn(mdata->fmanager->gscreen, NULL, myargv,
+                                 NULL, G_SPAWN_SEARCH_PATH, TRUE,
+                                 time_, NULL, TRUE, NULL);
+
+            g_free(cwd);
+        }
+
+        g_strfreev(parts);
+    }
+
+    g_free(exo_desktop_item_edit);
+
+    return drop_ok;
+}
+
+static void
+xfdesktop_file_icon_manager_drag_data_received(GtkWidget *icon_view,
+                                               GdkDragContext *context,
+                                               gint x,
+                                               gint y,
+                                               GtkSelectionData *data,
+                                               guint info,
+                                               guint time_,
+                                               MonitorData *mdata)
+{
+    TRACE("entering, %d", info);
+    DBG("selection data type: %s, target: %s",
+        gdk_atom_name(gtk_selection_data_get_data_type(data)),
+        gdk_atom_name(gtk_selection_data_get_target(data)));
+
+    if (info == xfdesktop_icon_view_get_icon_drag_info()) {
+        if (mdata->fmanager->icon_on_drop_dest != NULL) {
+            DBG("received data for icons dropping on an icon");
+            g_assert(gtk_selection_data_get_length(data) == sizeof(XfdesktopDraggedIconList));
+
+            XfdesktopDraggedIconList *icon_list = (gpointer)gtk_selection_data_get_data(data);
+            MonitorData *source_mdata = icon_list->source_icon_view == XFDESKTOP_ICON_VIEW(icon_view)
+                ? mdata
+                : monitor_data_for_icon_view(mdata->fmanager->monitor_data, icon_list->source_icon_view);
+            g_return_if_fail(source_mdata != NULL);
+
+            GdkDragAction suggested_action = 0;
+            GdkDragAction allowed_dest_actions = xfdesktop_icon_get_allowed_drop_actions(XFDESKTOP_ICON(mdata->fmanager->icon_on_drop_dest),
+                                                                                         &suggested_action);
+
+            GdkDragAction allowed_src_actions = GDK_ACTION_MOVE | GDK_ACTION_COPY | GDK_ACTION_LINK | GDK_ACTION_ASK;
+            GList *dragged_icons = NULL;
+            for (GList *l = icon_list->dragged_icons; l != NULL; l = l->next) {
+                GtkTreeIter *dragged_iter = l->data;
+                XfdesktopFileIcon *dragged_icon = xfdesktop_file_icon_model_filter_get_icon(source_mdata->filter, dragged_iter);
+                if (dragged_icon != NULL) {
+                    allowed_src_actions &= xfdesktop_icon_get_allowed_drag_actions(XFDESKTOP_ICON(dragged_icon));
+                    dragged_icons = g_list_prepend(dragged_icons, dragged_icon);
+                }
+            }
+
+            GdkDragAction selected_action = select_drag_action(allowed_src_actions, allowed_dest_actions, suggested_action);
+            DBG("selected_action=0x%08x", selected_action);
+            if (selected_action != 0) {
+                if (mdata->fmanager->drag_dropped) {
+                    // TODO: handle _ASK
+                    gboolean success = xfdesktop_icon_do_drop_dest(XFDESKTOP_ICON(mdata->fmanager->icon_on_drop_dest),
+                                                                   dragged_icons,
+                                                                   selected_action);
+                    gtk_drag_finish(context, success, FALSE, time_);
+                } else {
+                    mdata->fmanager->selected_drop_action = selected_action;
+                    gdk_drag_status(context, selected_action, time_);
+                }
+            } else {
+                if (mdata->fmanager->drag_dropped) {
+                    gtk_drag_finish(context, FALSE, FALSE, time_);
+                } else {
+                    mdata->fmanager->selected_drop_action = 0;
+                    gdk_drag_status(context, 0, time_);
+                }
+            }
+
+            g_list_free(dragged_icons);
+        } else {
+            DBG("icon data, not for us");
+        }
+    } else if (info == TARGET_XDND_DIRECT_SAVE0) {
+        if (mdata->fmanager->drag_dropped) {
+            DBG("dropped XDS");
+            if (handle_xdnd_direct_save_drop_data(icon_view, context, data, time_)) {
+                g_clear_object(&mdata->fmanager->xdnd_direct_save_destination);
+            }
+        } else {
+            DBG("got XDS data when we aren't dropped, weird");
+            gdk_drag_status(context, mdata->fmanager->selected_drop_action, time_);
+        }
+    } else if (info == TARGET_APPLICATION_OCTET_STREAM) {
+        if (mdata->fmanager->drag_dropped) {
+            gboolean success = handle_application_octet_stream_drop_data(mdata, context, data);
+            gtk_drag_finish(context, success, FALSE, time_);
+        }
+    } else if (info == TARGET_TEXT_URI_LIST || info == TARGET_NETSCAPE_URL) {
+        DBG("one of our targets");
+
+        GdkDragAction allowed_src_actions = gdk_drag_context_get_actions(context);
+        GdkDragAction allowed_dest_actions;
+        GdkDragAction suggested_action = 0;
+        if (mdata->fmanager->icon_on_drop_dest != NULL) {
+            allowed_dest_actions = xfdesktop_icon_get_allowed_drop_actions(XFDESKTOP_ICON(mdata->fmanager->icon_on_drop_dest),
+                                                                           &suggested_action);
+        } else {
+            allowed_dest_actions = GDK_ACTION_MOVE | GDK_ACTION_COPY | GDK_ACTION_LINK | GDK_ACTION_ASK;
+            suggested_action = GDK_ACTION_MOVE;
+        }
+
+        GdkDragAction selected_action = select_drag_action(allowed_src_actions, allowed_dest_actions, suggested_action);
+        DBG("selected_action=0x%08x", selected_action);
+
+        if (selected_action != 0) {
+            if (mdata->fmanager->drag_dropped) {
+                gboolean success;
+                gint drop_row, drop_col;
+                if (xfdesktop_icon_view_widget_coords_to_slot_coords(XFDESKTOP_ICON_VIEW(icon_view), x, y, &drop_row, &drop_col)) {
+                    if (info == TARGET_TEXT_URI_LIST) {
+                        success = handle_text_uri_list_drop_data(mdata,
+                                                                 context,
+                                                                 drop_row,
+                                                                 drop_col,
+                                                                 data,
+                                                                 selected_action);
+                    } else if (info == TARGET_NETSCAPE_URL) {
+                        success = handle_netscape_url_drop_data(mdata,
+                                                                context,
+                                                                drop_row,
+                                                                drop_col,
+                                                                data,
+                                                                time_);
+                    } else {
+                        success = FALSE;
+                        g_assert_not_reached();
+                    }
+                } else {
+                    success = FALSE;
+                }
+
+                gtk_drag_finish(context, success, FALSE, time_);
+            } else {
+                mdata->fmanager->selected_drop_action = selected_action;
+                gdk_drag_status(context, selected_action, time_);
+            }
+        } else {
+            if (mdata->fmanager->drag_dropped) {
+                gtk_drag_finish(context, FALSE, FALSE, time_);
+            } else {
+                mdata->fmanager->selected_drop_action = 0;
+                gdk_drag_status(context, 0, time_);
+            }
+        }
+    }
+}
+
+static gboolean
+handle_xdnd_direct_save_drop(MonitorData *mdata,
+                             XfdesktopIconView *icon_view,
+                             GdkDragContext *context,
+                             gint x,
+                             gint y)
+{
+    XfdesktopFileIcon *drop_icon = mdata->fmanager->icon_on_drop_dest != NULL
+        ? mdata->fmanager->icon_on_drop_dest
+        : mdata->fmanager->desktop_icon;
+    GFileInfo *file_info = xfdesktop_file_icon_peek_file_info(drop_icon);
+
+    if (file_info == NULL
+        || g_file_info_get_file_type(file_info) != G_FILE_TYPE_DIRECTORY
+        || !g_file_info_get_attribute_boolean(file_info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
+    {
+        return FALSE;
+    } else {
+        gboolean drop_ok = FALSE;
+
+        GdkAtom actual_type;
+        gchar *filename = fetch_xds_property(context, &actual_type);
+        if (filename != NULL) {
+            // TODO: check charset
+
+            if (strchr(filename, G_DIR_SEPARATOR) == NULL) {
+                GFile *file = xfdesktop_file_icon_peek_file(drop_icon);
+
+                GFile *save_file = g_file_get_child(file, filename);
+                mdata->fmanager->xdnd_direct_save_destination = xfdesktop_file_utils_next_new_file_name(save_file);
+                g_object_unref(save_file);
+
+                if (drop_icon == mdata->fmanager->desktop_icon) {
+                    gint drop_row, drop_col;
+                    if (xfdesktop_icon_view_widget_coords_to_slot_coords(icon_view, x, y, &drop_row, &drop_col)) {
+                        DBG("adding pending new file '%s' at (%d, %d)",
+                            g_file_peek_path(mdata->fmanager->xdnd_direct_save_destination),
+                            drop_row, drop_col);
+                        xfdesktop_file_icon_model_add_pending_new_file(mdata->fmanager->model,
+                                                                       mdata->fmanager->xdnd_direct_save_destination,
+                                                                       drop_row,
+                                                                       drop_col);
+                    }
+                }
+
+                gchar *uri = g_file_get_uri(mdata->fmanager->xdnd_direct_save_destination);
+                update_xds_property(context, actual_type, uri);
+                g_free(uri);
+
+                drop_ok = TRUE;
+            } else {
+                update_xds_property(context, gdk_atom_intern_static_string("text/plain"), "");
+            }
+
+            g_free(filename);
+        }
+
+        return drop_ok;
+    }
+}
+
+static gboolean
+xfdesktop_file_icon_manager_drag_drop(GtkWidget *icon_view,
+                                      GdkDragContext *context,
+                                      gint x,
+                                      gint y,
+                                      guint time_,
+                                      MonitorData *mdata)
+{
+    TRACE("entering");
+
+    if (mdata->fmanager->selected_drop_action != 0) {
+        GdkAtom target;
+        if (!xfdesktop_icon_view_is_icon_drag(XFDESKTOP_ICON_VIEW(icon_view), context, &target)) {
+            target = gtk_drag_dest_find_target(icon_view, context, mdata->fmanager->drop_targets);
+        }
+
+        if (target != GDK_NONE) {
+            DBG("dropped, getting data for target %s", gdk_atom_name(target));
+            mdata->fmanager->drag_dropped = TRUE;
+
+            if (target == gdk_atom_intern_static_string(XDND_DIRECT_SAVE0_NAME)
+                && !handle_xdnd_direct_save_drop(mdata, XFDESKTOP_ICON_VIEW(icon_view), context, x, y))
+            {
+                gtk_drag_finish(context, FALSE, FALSE, time_);
+                return FALSE;
+            } else {
+                gtk_drag_get_data(icon_view, context, target, time_);
+                return TRUE;
+            }
+        }
+    }
+
+    return FALSE;
+}
+
+#if 0
 static gboolean
 xfdesktop_file_icon_manager_drag_drop_items(XfdesktopIconView *icon_view,
                                             GdkDragContext *context,
@@ -2315,6 +2978,7 @@ xfdesktop_file_icon_manager_drag_drop_items(XfdesktopIconView *icon_view,
 
     return ret;
 }
+#endif
 
 static gboolean
 xfdesktop_file_icon_manager_drag_drop_item(XfdesktopIconView *icon_view,
@@ -2334,52 +2998,6 @@ xfdesktop_file_icon_manager_drag_drop_item(XfdesktopIconView *icon_view,
     GdkAtom target = gtk_drag_dest_find_target(widget, context, mdata->fmanager->drop_targets);
     if (target == GDK_NONE) {
         return FALSE;
-    } else if (target == gdk_atom_intern("XdndDirectSave0", FALSE)) {
-        /* X direct save protocol implementation copied more or less from
-         * Thunar, Copyright (c) Benedikt Meurer */
-        GFile *source_file;
-        if(drop_icon) {
-            GFileInfo *info = xfdesktop_file_icon_peek_file_info(XFDESKTOP_FILE_ICON(drop_icon));
-            if(!info)
-                return FALSE;
-
-            if(g_file_info_get_file_type(info) != G_FILE_TYPE_DIRECTORY)
-                return FALSE;
-
-            source_file = xfdesktop_file_icon_peek_file(XFDESKTOP_FILE_ICON(drop_icon));
-
-        } else
-            source_file = mdata->fmanager->folder;
-
-        gboolean ret = FALSE;
-        guchar *prop_val = NULL;
-        gint prop_len;
-        if(gdk_property_get(gdk_drag_context_get_source_window(context),
-                            gdk_atom_intern("XdndDirectSave0", FALSE),
-                            gdk_atom_intern("text/plain", FALSE),
-                            0, 1024, FALSE, NULL, NULL, &prop_len,
-                            &prop_val)
-           && prop_val != NULL)
-        {
-            gchar *prop_text = g_strndup((gchar *)prop_val, prop_len);
-
-            GFile *file = g_file_resolve_relative_path(source_file, (const gchar *)prop_text);
-            gchar *uri = g_file_get_uri(file);
-            g_object_unref(file);
-
-            gdk_property_change(gdk_drag_context_get_source_window(context),
-                                gdk_atom_intern("XdndDirectSave0", FALSE),
-                                gdk_atom_intern("text/plain", FALSE), 8,
-                                GDK_PROP_MODE_REPLACE, (const guchar *)uri,
-                                strlen(uri));
-
-            g_free(prop_text);
-            g_free(uri);
-            ret = TRUE;
-        }
-        g_free(prop_val);
-
-        return ret;
     } else if(target == gdk_atom_intern("_NETSCAPE_URL", FALSE)) {
         if(drop_icon) {
             /* don't allow a drop on an icon that isn't a folder (i.e., not
@@ -2408,13 +3026,10 @@ xfdesktop_dnd_item(GtkWidget *item, GdkDragAction *action) {
  * Copyright (c) 2009-2011 Jannis Pohlmann <jannis@xfce.org>
  **/
 static GdkDragAction
-xfdesktop_file_icon_manager_drag_drop_ask(XfdesktopIconView *icon_view,
-                                          GdkDragContext *context,
-                                          GtkTreeIter *iter,
-                                          gint row,
-                                          gint col,
-                                          guint time_,
-                                          XfdesktopFileIconManager *fmanager)
+xfdesktop_file_icon_manager_drag_drop_ask(XfdesktopFileIconManager *fmanager,
+                                          GtkWidget *parent,
+                                          GdkDragAction allowed_actions,
+                                          guint time_)
 {
     static const struct {
         GdkDragAction drag_action;
@@ -2428,17 +3043,20 @@ xfdesktop_file_icon_manager_drag_drop_ask(XfdesktopIconView *icon_view,
 
     GtkWidget *menu = gtk_menu_new();
     gtk_menu_set_reserve_toggle_size(GTK_MENU(menu), FALSE);
+    gtk_menu_attach_to_widget(GTK_MENU(menu), parent, NULL);
 
     /* This adds the Copy, Move, & Link options */
     GdkDragAction selected_action = 0;
     for(guint menu_item = 0; menu_item < G_N_ELEMENTS(actions); menu_item++) {
-        GIcon *icon = g_themed_icon_new(actions[menu_item].icon_name);
-        GtkWidget *item = add_menu_item(menu,
-                                        _(actions[menu_item].name),
-                                        icon,
-                                        G_CALLBACK(xfdesktop_dnd_item),
-                                        &selected_action);
-        g_object_set_data(G_OBJECT(item), "action", GUINT_TO_POINTER(actions[menu_item].drag_action));
+        if ((actions[menu_item].drag_action & allowed_actions) != 0) {
+            GIcon *icon = g_themed_icon_new(actions[menu_item].icon_name);
+            GtkWidget *item = add_menu_item(menu,
+                                            _(actions[menu_item].name),
+                                            icon,
+                                            G_CALLBACK(xfdesktop_dnd_item),
+                                            &selected_action);
+            g_object_set_data(G_OBJECT(item), "action", GUINT_TO_POINTER(actions[menu_item].drag_action));
+        }
     }
 
     add_menu_separator(menu);
@@ -2467,6 +3085,7 @@ xfdesktop_file_icon_manager_drag_drop_ask(XfdesktopIconView *icon_view,
     return selected_action;
 }
 
+#if 0
 static void
 xfdesktop_file_icon_manager_drag_item_data_received(XfdesktopIconView *icon_view,
                                                     GdkDragContext *context,
@@ -2494,22 +3113,7 @@ xfdesktop_file_icon_manager_drag_item_data_received(XfdesktopIconView *icon_view
         }
     }
 
-    if(info == TARGET_XDND_DIRECT_SAVE0) {
-        /* FIXME: we don't support XdndDirectSave stage 3, result F, i.e.,
-         * the app has to save the data itself given the filename we provided
-         * in stage 1 */
-        if(8 == gtk_selection_data_get_format(data)
-           && 1 == gtk_selection_data_get_length(data)
-           && 'F' == gtk_selection_data_get_data(data)[0])
-        {
-            gdk_property_change(gdk_drag_context_get_source_window(context),
-                                gdk_atom_intern("XdndDirectSave0", FALSE),
-                                gdk_atom_intern("text/plain", FALSE), 8,
-                                GDK_PROP_MODE_REPLACE, (const guchar *)"", 0);
-        }
-
-        drop_ok = TRUE;
-    } else if(info == TARGET_NETSCAPE_URL) {
+    if(info == TARGET_NETSCAPE_URL) {
         /* data is "URL\nTITLE" */
         GFile *source_file = NULL;
         if(drop_icon) {
@@ -2552,48 +3156,6 @@ xfdesktop_file_icon_manager_drag_item_data_received(XfdesktopIconView *icon_view
         }
 
         g_free(exo_desktop_item_edit);
-    } else if(info == TARGET_APPLICATION_OCTET_STREAM) {
-        gchar *filename;
-        gint length;
-        guchar *prop_val = NULL;
-        if(gdk_property_get(gdk_drag_context_get_source_window(context),
-                            gdk_atom_intern("XdndDirectSave0", FALSE),
-                            gdk_atom_intern("text/plain", FALSE), 0, 1024,
-                            FALSE, NULL, NULL, &length,
-                            &prop_val)
-           && length > 0)
-        {
-            filename = g_strndup((gchar *)prop_val, length);
-        } else {
-            filename = g_strdup(_("Untitled document"));
-        }
-        g_free(prop_val);
-
-        const gchar *folder = g_get_user_special_dir(G_USER_DIRECTORY_DESKTOP);
-        /* get unique filename in case of duplicate */
-        gchar *next_new_filename = xfdesktop_file_utils_next_new_file_name(filename, folder);
-        g_free(filename);
-        filename = next_new_filename;
-
-        gchar *filepath = g_strdup_printf("%s/%s", folder, filename);
-
-        GFile *dest = g_file_new_for_path(filepath);
-        GFileOutputStream *out = g_file_create(dest, G_FILE_CREATE_NONE, NULL, NULL);
-
-        if(out) {
-            const gchar *content = (const gchar *)gtk_selection_data_get_data(data);
-            length = gtk_selection_data_get_length(data);
-
-            if (g_output_stream_write_all(G_OUTPUT_STREAM(out), content, length, NULL, NULL, NULL)) {
-                g_output_stream_close(G_OUTPUT_STREAM(out), NULL, NULL);
-            }
-
-            g_object_unref(out);
-        }
-
-        g_free(filename);
-        g_free(filepath);
-        g_object_unref(dest);
     } else if(info == TARGET_TEXT_URI_LIST) {
         XfdesktopFileIcon *file_icon = NULL;
         GFileInfo *tinfo = NULL;
@@ -2700,6 +3262,7 @@ xfdesktop_file_icon_manager_drag_item_data_received(XfdesktopIconView *icon_view
 
     gtk_drag_finish(context, drop_ok, !copy_only, time_);
 }
+#endif
 
 static void
 xfdesktop_file_icon_manager_drag_data_get(GtkWidget *icon_view,
@@ -2918,21 +3481,29 @@ model_error(XfdesktopFileIconModel *fmodel, GError *error, XfdesktopFileIconMana
 
 static void
 xfdesktop_file_icon_manager_icon_moved(XfdesktopIconView *icon_view,
-                                       GtkTreeIter *iter,
-                                       gint new_row,
-                                       gint new_col,
+                                       XfdesktopIconView *source_icon_view,
+                                       GtkTreeIter *source_iter,
+                                       gint dest_row,
+                                       gint dest_col,
                                        MonitorData *mdata)
 {
-    XfdesktopFileIcon *icon = xfdesktop_file_icon_model_filter_get_icon(mdata->filter, iter);
+    TRACE("entering, (%d, %d)", dest_row, dest_col);
 
+    MonitorData *source_mdata = source_icon_view == icon_view
+        ? mdata
+        : monitor_data_for_icon_view(mdata->fmanager->monitor_data, source_icon_view);
+    g_return_if_fail(source_mdata != NULL);
+
+    XfdesktopFileIcon *icon = xfdesktop_file_icon_model_filter_get_icon(source_mdata->filter, source_iter);
     if (G_LIKELY(icon != NULL)) {
-        gint16 old_row, old_col;
+        XfceDesktop *desktop = xfdesktop_icon_view_holder_get_desktop(mdata->holder);
+        XfwMonitor *monitor = xfce_desktop_get_monitor(desktop);
 
-        if (!xfdesktop_icon_get_position(XFDESKTOP_ICON(icon), &old_row, &old_col)
-            || old_row != new_row
-            || old_col != new_col)
+        if (xfdesktop_icon_set_monitor(XFDESKTOP_ICON(icon), monitor)
+            || xfdesktop_icon_set_position(XFDESKTOP_ICON(icon), dest_row, dest_col))
         {
-            update_icon_position(mdata, icon, new_row, new_col);
+            DBG("updating icon position to (%d, %d)", dest_row, dest_col);
+            update_icon_position(mdata, icon, dest_row, dest_col);
         }
     }
 }
