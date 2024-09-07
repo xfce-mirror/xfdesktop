@@ -266,9 +266,8 @@ xfdesktop_file_utils_get_display_name(GFile *file,
 }
 
 /**
- * xfdesktop_file_utils_next_new_file_name
- * @filename : the filename which will be used as the basis/default
- * @folder : the directory to search for a free filename
+ * xfdesktop_file_utils_next_new_file_name:
+ * @file: the filename which will be used as the basis/default
  *
  * Returns a filename that is like @filename with the possible addition of
  * a number to differentiate it from other similarly named files. In other words
@@ -289,13 +288,12 @@ xfdesktop_file_utils_get_display_name(GFile *file,
  *
  * Return value: pointer to the new filename.
  **/
-gchar*
-xfdesktop_file_utils_next_new_file_name(const gchar *filename,
-                                        const gchar *folder)
-{
+GFile *
+xfdesktop_file_utils_next_new_file_name(GFile *file) {
+  GFile *folder = g_file_get_parent(file);
+  gchar *filename = g_file_get_basename(file);
   unsigned long   file_name_size  = strlen(filename);
   unsigned        count           = 0;
-  gboolean        found_duplicate = FALSE;
   gchar          *extension       = NULL;
   gchar          *new_name        = g_strdup(filename);
 
@@ -308,17 +306,15 @@ xfdesktop_file_utils_next_new_file_name(const gchar *filename,
   /* loop until new_name is unique */
   while(TRUE)
     {
-      GFile *file = g_file_new_build_filename(folder, new_name, NULL);
-      found_duplicate = g_file_query_exists(file, NULL);
-      g_object_unref(file);
+      GFile *new_file = g_file_get_child(folder, new_name);
+      if (!g_file_query_exists(new_file, NULL)) {
+          return new_file;
+      }
+      g_object_unref(new_file);
 
-      if (!found_duplicate)
-        break;
       g_free(new_name);
-      new_name = g_strdup_printf(_("%.*s (copy %u)%s"), (int) file_name_size, filename, ++count, extension ? extension : "");
+      new_name = g_strdup_printf(_("%.*s (%u)%s"), (int) file_name_size, filename, ++count, extension);
     }
-
-  return new_name;
 }
 
 GList *
