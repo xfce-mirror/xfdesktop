@@ -70,12 +70,6 @@ static void xfdesktop_special_file_icon_finalize(GObject *obj);
 
 static const gchar *xfdesktop_special_file_icon_peek_label(XfdesktopIcon *icon);
 static const gchar *xfdesktop_special_file_icon_peek_tooltip(XfdesktopIcon *icon);
-static GdkDragAction xfdesktop_special_file_icon_get_allowed_drag_actions(XfdesktopIcon *icon);
-static GdkDragAction xfdesktop_special_file_icon_get_allowed_drop_actions(XfdesktopIcon *icon,
-                                                                          GdkDragAction *suggested_action);
-static gboolean xfdesktop_special_file_icon_do_drop_dest(XfdesktopIcon *icon,
-                                                         GList *src_icons,
-                                                         GdkDragAction action);
 static gboolean xfdesktop_special_file_icon_populate_context_menu(XfdesktopIcon *icon,
                                                                   GtkWidget *menu);
 
@@ -117,9 +111,6 @@ xfdesktop_special_file_icon_class_init(XfdesktopSpecialFileIconClass *klass)
 
     icon_class->peek_label = xfdesktop_special_file_icon_peek_label;
     icon_class->peek_tooltip = xfdesktop_special_file_icon_peek_tooltip;
-    icon_class->get_allowed_drag_actions = xfdesktop_special_file_icon_get_allowed_drag_actions;
-    icon_class->get_allowed_drop_actions = xfdesktop_special_file_icon_get_allowed_drop_actions;
-    icon_class->do_drop_dest = xfdesktop_special_file_icon_do_drop_dest;
     icon_class->populate_context_menu = xfdesktop_special_file_icon_populate_context_menu;
 
     file_icon_class->get_gicon = xfdesktop_special_file_icon_get_gicon;
@@ -249,120 +240,6 @@ xfdesktop_special_file_icon_peek_label(XfdesktopIcon *icon)
         return _("Trash");
     else
         return info ? g_file_info_get_display_name(info) : NULL;
-}
-
-static GdkDragAction
-xfdesktop_special_file_icon_get_allowed_drag_actions(XfdesktopIcon *icon)
-{
-    XfdesktopSpecialFileIcon *special_file_icon = XFDESKTOP_SPECIAL_FILE_ICON(icon);
-    GdkDragAction actions = 0;
-
-    switch(special_file_icon->priv->type) {
-        case XFDESKTOP_SPECIAL_FILE_ICON_FILESYSTEM:
-            /* move is just impossible, and copy seems a bit retarded.  link
-             * is possible */
-            actions = GDK_ACTION_LINK;
-            break;
-
-        case XFDESKTOP_SPECIAL_FILE_ICON_HOME:
-            /* user shouldn't be able to move their own homedir.  copy might
-             * be a little silly, but allow it anyway.  link is fine. */
-            actions = GDK_ACTION_COPY | GDK_ACTION_LINK;
-            break;
-
-        case XFDESKTOP_SPECIAL_FILE_ICON_TRASH:
-            /* move is impossible, but we can copy and link the trash root
-             * anywhere */
-            actions = GDK_ACTION_COPY | GDK_ACTION_LINK;
-            break;
-    }
-
-    return actions;
-}
-
-static GdkDragAction
-xfdesktop_special_file_icon_get_allowed_drop_actions(XfdesktopIcon *icon,
-                                                     GdkDragAction *suggested_action)
-{
-    XfdesktopSpecialFileIcon *special_file_icon = XFDESKTOP_SPECIAL_FILE_ICON(icon);
-    GFileInfo *info;
-    GdkDragAction actions = 0;
-
-    if(special_file_icon->priv->type != XFDESKTOP_SPECIAL_FILE_ICON_TRASH) {
-        info = xfdesktop_file_icon_peek_file_info(XFDESKTOP_FILE_ICON(icon));
-        if(info) {
-            if(g_file_info_get_attribute_boolean(info,
-                                                 G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
-            {
-                XF_DEBUG("can move, copy, link and ask");
-                actions = GDK_ACTION_MOVE | GDK_ACTION_COPY | GDK_ACTION_LINK | GDK_ACTION_ASK;
-                if(suggested_action)
-                    *suggested_action = GDK_ACTION_MOVE;
-            }
-        }
-    } else {
-        XF_DEBUG("can move");
-        actions = GDK_ACTION_MOVE; /* everything else is just silly */
-        if(suggested_action)
-            *suggested_action = GDK_ACTION_MOVE;
-    }
-
-    if(suggested_action)
-        *suggested_action = 0;
-
-    return actions;
-}
-
-static gboolean
-xfdesktop_special_file_icon_do_drop_dest(XfdesktopIcon *icon,
-                                         GList *src_icons,
-                                         GdkDragAction action)
-{
-    XfdesktopSpecialFileIcon *special_file_icon = XFDESKTOP_SPECIAL_FILE_ICON(icon);
-    gboolean result = FALSE;
-
-    TRACE("entering");
-
-    g_return_val_if_fail(special_file_icon != NULL && src_icons != NULL, FALSE);
-    g_return_val_if_fail(xfdesktop_special_file_icon_get_allowed_drop_actions(icon, NULL),
-                         FALSE);
-
-    if(special_file_icon->priv->type == XFDESKTOP_SPECIAL_FILE_ICON_TRASH) {
-        GList *files = NULL;
-
-        XF_DEBUG("doing trash");
-
-        for (GList *l = src_icons; l != NULL; l = l->next) {
-            GFile *file = xfdesktop_file_icon_peek_file(XFDESKTOP_FILE_ICON(l->data));
-            if (file != NULL) {
-                files = g_list_prepend(files, file);
-            }
-        }
-        files = g_list_reverse(files);
-
-        if (files != NULL) {
-            /* let the trash service handle the trash operation */
-            xfdesktop_file_utils_trash_files(files, special_file_icon->priv->gscreen, NULL);
-            result = TRUE;
-        }
-    } else {
-        GList *src_files = NULL;
-        GList *dest_files = NULL;
-
-        xfdesktop_file_utils_build_transfer_file_lists(action, src_icons, XFDESKTOP_FILE_ICON(icon), &src_files, &dest_files);
-
-        /* let the file manager service move/copy/link the file */
-        if (src_files != NULL && dest_files != NULL) {
-            xfdesktop_file_utils_transfer_files(action, src_files, dest_files,
-                                               special_file_icon->priv->gscreen);
-            result = TRUE;
-        }
-
-        g_list_free_full(dest_files, g_object_unref);
-        g_list_free(src_files);
-    }
-
-    return result;
 }
 
 static const gchar *
