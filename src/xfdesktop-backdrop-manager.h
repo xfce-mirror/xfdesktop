@@ -25,12 +25,11 @@
 #ifndef __XFDESKTOP_BACKDROP_MANAGER_H__
 #define __XFDESKTOP_BACKDROP_MANAGER_H__
 
+#include <gio/gio.h>
 #include <gtk/gtk.h>
 
 #include <xfconf/xfconf.h>
 #include <libxfce4windowing/libxfce4windowing.h>
-
-#include "xfdesktop-backdrop-renderer.h"
 
 G_BEGIN_DECLS
 
@@ -39,8 +38,8 @@ G_BEGIN_DECLS
  * @surface: (transfer full): surface, or %NULL on error
  * @surface_region: the region of the surface that applies to the selected
  *                  desktop widget, in device pixels, or %NULL on error
- * @image_filename: filename of the backdrop image, or %NULL on error or if
- *                  there is no backdrop image
+ * @image_file: file of the backdrop image, or %NULL on error or if there is no
+ *              backdrop image
  * @error: error, or %NULL on success
  * @user_data: user data passed to function
  *
@@ -49,7 +48,7 @@ G_BEGIN_DECLS
  **/
 typedef void (*GetImageSurfaceCallback)(cairo_surface_t *surface,
                                         GdkRectangle *surface_region,
-                                        const gchar *image_filename,
+                                        GFile *image_file,
                                         GError *error,
                                         gpointer user_data);
 
