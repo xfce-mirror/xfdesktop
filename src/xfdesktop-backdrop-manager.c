@@ -26,10 +26,11 @@
 #include <config.h>
 #endif
 
+#include <glib.h>
+#include <gio/gio.h>
+#include <libxfce4util/libxfce4util.h>
 #include <stdio.h>
 #include <stdlib.h>
-
-#include <libxfce4util/libxfce4util.h>
 
 #include "xfdesktop-common.h"
 #include "xfdesktop-backdrop-cycler.h"
@@ -78,10 +79,12 @@ typedef struct {
 } Monitor;
 
 typedef struct {
+    XfdesktopBackdropManager *manager;
     cairo_surface_t *surface;
     gint width;
     gint height;
-    gchar *image_filename;
+    GFile *image_file;
+    GFileMonitor *image_file_monitor;
     XfdesktopBackdropCycler *cycler;
     gboolean is_spanning;
 } Backdrop;
@@ -100,7 +103,7 @@ typedef struct {
     GCancellable *main_cancellable;
     gchar *property_prefix;
     gboolean is_spanning;
-    gchar *image_filename;
+    GFile *image_file;
 
     GList *instances; // RenderInstanceData
 } RenderData;
@@ -238,7 +241,13 @@ monitor_get_from_identifier(GPtrArray *monitors, const gchar *identifier) {
 static void
 backdrop_free(Backdrop *backdrop) {
     cairo_surface_destroy(backdrop->surface);
-    g_free(backdrop->image_filename);
+    if (backdrop->image_file_monitor != NULL) {
+        g_file_monitor_cancel(backdrop->image_file_monitor);
+        g_object_unref(backdrop->image_file_monitor);
+    }
+    if (backdrop->image_file != NULL) {
+        g_object_unref(backdrop->image_file);
+    }
     g_object_unref(backdrop->cycler);
     g_free(backdrop);
 }
@@ -264,7 +273,9 @@ render_data_free(RenderData *rdata) {
     g_cancellable_cancel(rdata->main_cancellable);
     g_object_unref(rdata->main_cancellable);
     g_free(rdata->property_prefix);
-    g_free(rdata->image_filename);
+    if (rdata->image_file != NULL) {
+        g_object_unref(rdata->image_file);
+    }
     g_free(rdata);
 }
 
@@ -707,7 +718,7 @@ static void
 notify_complete(cairo_surface_t *surface,
                 Monitor *monitor,
                 gboolean is_spanning,
-                const gchar *image_filename,
+                GFile *image_file,
                 GetImageSurfaceCallback callback,
                 gpointer callback_user_data)
 {
@@ -720,7 +731,58 @@ notify_complete(cairo_surface_t *surface,
         region.x = region.y = 0;
     }
 
-    callback(surface, &region, image_filename, NULL, callback_user_data);
+    callback(surface, &region, image_file, NULL, callback_user_data);
+}
+
+static void
+backdrop_image_file_changed(GFileMonitor *fmonitor,
+                            GFile *file,
+                            GFile *other_file,
+                            GFileMonitorEvent event,
+                            Backdrop *backdrop)
+{
+    switch (event) {
+        case G_FILE_MONITOR_EVENT_DELETED: {
+            DBG("backdrop file '%s' deleted", g_file_peek_path(file));
+
+            g_file_monitor_cancel(backdrop->image_file_monitor);
+            g_clear_object(&backdrop->image_file_monitor);
+            g_clear_object(&backdrop->image_file);
+
+            // FIXME: this is super inefficient
+            GHashTableIter iter;
+            g_hash_table_iter_init(&iter, backdrop->manager->backdrops);
+
+            const gchar *property_prefix;
+            Backdrop *a_backdrop;
+            while (g_hash_table_iter_next(&iter, (gpointer)&property_prefix, (gpointer)&a_backdrop)) {
+                if (a_backdrop == backdrop) {
+                    invalidate_backdrops_for_property_prefix(backdrop->manager, property_prefix);
+                }
+            }
+            break;
+        }
+
+        case G_FILE_MONITOR_EVENT_CHANGES_DONE_HINT: {
+            DBG("backdrop file '%s' changed on disk", g_file_peek_path(file));
+
+            // FIXME: this is super inefficient
+            GHashTableIter iter;
+            g_hash_table_iter_init(&iter, backdrop->manager->backdrops);
+
+            const gchar *property_prefix;
+            Backdrop *a_backdrop;
+            while (g_hash_table_iter_next(&iter, (gpointer)&property_prefix, (gpointer)&a_backdrop)) {
+                if (a_backdrop == backdrop) {
+                    invalidate_backdrops_for_property_prefix(backdrop->manager, property_prefix);
+                }
+            }
+            break;
+        }
+
+        default:
+            break;
+    }
 }
 
 static void
@@ -729,7 +791,7 @@ render_finished(cairo_surface_t *surface, gint width, gint height, GError *error
     const gchar *property_prefix = rdata->property_prefix;
 
     if (error != NULL && !g_error_matches(error, G_IO_ERROR, G_IO_ERROR_CANCELLED)) {
-        g_message("Failed to load image file '%s': %s", rdata->image_filename, error->message);
+        g_message("Failed to load image file '%s': %s", g_file_peek_path(rdata->image_file), error->message);
     }
 
     if (surface != NULL) {
@@ -737,22 +799,38 @@ render_finished(cairo_surface_t *surface, gint width, gint height, GError *error
             Backdrop *backdrop = g_hash_table_lookup(rdata->manager->backdrops, rdata->property_prefix);
             if (backdrop == NULL) {
                 backdrop = g_new0(Backdrop, 1);
+                backdrop->manager = rdata->manager;
                 backdrop->cycler = xfdesktop_backdrop_cycler_new(rdata->manager->channel, rdata->property_prefix);
                 g_hash_table_insert(rdata->manager->backdrops, rdata->property_prefix, backdrop);
                 rdata->property_prefix = NULL;
             } else {
-                cairo_surface_destroy(backdrop->surface);
-                g_free(backdrop->image_filename);
+                g_clear_pointer(&backdrop->surface, cairo_surface_destroy);
+                g_clear_object(&backdrop->image_file);
             }
 
             // XXX: maybe we shouldn't cache if error is non-null
             backdrop->surface = surface;
             backdrop->width = width;
             backdrop->height = height;
-            backdrop->image_filename = rdata->image_filename;
+            if (rdata->image_file != NULL) {
+                backdrop->image_file = g_object_ref(rdata->image_file);
+            }
             backdrop->is_spanning = rdata->is_spanning;
 
-            rdata->image_filename = NULL;
+            if (backdrop->image_file_monitor != NULL) {
+                g_file_monitor_cancel(backdrop->image_file_monitor);
+                g_clear_object(&backdrop->image_file_monitor);
+            }
+            if (backdrop->image_file != NULL) {
+                backdrop->image_file_monitor = g_file_monitor_file(backdrop->image_file,
+                                                                   G_FILE_MONITOR_NONE,
+                                                                   NULL,
+                                                                   NULL);
+                if (backdrop->image_file_monitor == NULL) {
+                    g_signal_connect(backdrop->image_file_monitor, "changed",
+                                     G_CALLBACK(backdrop_image_file_changed), backdrop);
+                }
+            }
         }
 
         for (GList *l = rdata->instances; l != NULL; l = l->next) {
@@ -760,7 +838,7 @@ render_finished(cairo_surface_t *surface, gint width, gint height, GError *error
             notify_complete(surface,
                             ridata->monitor,
                             rdata->is_spanning,
-                            error == NULL ? rdata->image_filename : NULL,
+                            error == NULL ? rdata->image_file : NULL,
                             ridata->callback,
                             ridata->callback_user_data);
         }
@@ -815,6 +893,8 @@ create_backdrop(XfdesktopBackdropManager *manager,
     prop_name = g_strconcat(property_prefix, "/last-image", NULL);
     gchar *image_filename = xfconf_channel_get_string(channel, prop_name, NULL);
     g_free(prop_name);
+    GFile *image_file = image_filename != NULL ? g_file_new_for_path(image_filename) : NULL;
+    g_free(image_filename);
 
     GdkRectangle *geom;
     if (is_spanning) {
@@ -829,7 +909,7 @@ create_backdrop(XfdesktopBackdropManager *manager,
     rdata->main_cancellable = g_cancellable_new();
     rdata->property_prefix = property_prefix;
     rdata->is_spanning = is_spanning;
-    rdata->image_filename = image_filename;
+    rdata->image_file = image_file;
 
     RenderInstanceData *ridata = g_new0(RenderInstanceData, 1);
     ridata->cancellable = g_object_ref(cancellable);
@@ -849,7 +929,7 @@ create_backdrop(XfdesktopBackdropManager *manager,
                               &color1,
                               &color2,
                               image_style,
-                              image_filename,
+                              image_file,
                               geom->width,
                               geom->height,
                               render_finished,
@@ -888,7 +968,7 @@ xfdesktop_backdrop_manager_get_image_surface(XfdesktopBackdropManager *manager,
         notify_complete(backdrop->surface,
                         monitor,
                         is_spanning,
-                        backdrop->image_filename,
+                        backdrop->image_file,
                         callback,
                         callback_user_data);
     } else {

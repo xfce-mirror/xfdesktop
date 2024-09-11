@@ -266,7 +266,7 @@ set_accountsservice_user_bg(const gchar *background)
 }
 
 static void
-backdrop_loaded(cairo_surface_t *surface, GdkRectangle *region, const gchar *image_filename, GError *error, gpointer user_data) {
+backdrop_loaded(cairo_surface_t *surface, GdkRectangle *region, GFile *image_file, GError *error, gpointer user_data) {
     XfceDesktop *desktop = XFCE_DESKTOP(user_data);
 
     DBG("entering, surface=%p, dims=%dx%d+%d+%d",
@@ -303,7 +303,9 @@ backdrop_loaded(cairo_surface_t *surface, GdkRectangle *region, const gchar *ima
                 if (XFW_MONITOR(l->data) == desktop->priv->monitor) {
                     xfdesktop_x11_set_root_image_file_property(desktop->priv->gscreen,
                                                                monitor_idx,
-                                                               image_filename);
+                                                               image_file != NULL
+                                                               ? g_file_peek_path(image_file)
+                                                               : NULL);
                     break;
                 }
                 monitor_idx++;
@@ -316,7 +318,7 @@ backdrop_loaded(cairo_surface_t *surface, GdkRectangle *region, const gchar *ima
 #endif  /* ENABLE_X11 */
 
         if (xfw_monitor_is_primary(desktop->priv->monitor)) {
-            set_accountsservice_user_bg(image_filename);
+            set_accountsservice_user_bg(image_file != NULL ? g_file_peek_path(image_file) : NULL);
         }
 
         gtk_widget_queue_draw(GTK_WIDGET(desktop));
