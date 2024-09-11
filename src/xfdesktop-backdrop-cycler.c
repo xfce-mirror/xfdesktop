@@ -366,8 +366,7 @@ static int qsort_compare_pair_by_key(const void *a, const void *b) {
 
 static void
 xfdesktop_backdrop_cycler_update_image_filename(XfdesktopBackdropCycler *cycler,
-                                                const gchar *image_filename,
-                                                gboolean toggle)
+                                                const gchar *image_filename)
 {
     g_return_if_fail(XFDESKTOP_IS_BACKDROP_CYCLER(cycler));
 
@@ -383,10 +382,6 @@ xfdesktop_backdrop_cycler_update_image_filename(XfdesktopBackdropCycler *cycler,
     g_signal_handlers_block_by_func(cycler->channel,
                                     xfdesktop_backdrop_cycler_image_filename_changed,
                                     cycler);
-    if (toggle) {
-        // This is used if we need the same backdrop reloaded, such as when the file gets rewritten.
-        xfconf_channel_set_string(cycler->channel, property_name, "");
-    }
     xfconf_channel_set_string(cycler->channel, property_name, cycler->image_path);
     g_signal_handlers_unblock_by_func(cycler->channel,
                                       xfdesktop_backdrop_cycler_image_filename_changed,
@@ -469,20 +464,6 @@ cb_xfdesktop_backdrop_cycler_image_files_changed(GFileMonitor *monitor,
                 g_source_remove(cycler->timer_id);
                 cycler->timer_id = 0;
             }
-            break;
-
-        case G_FILE_MONITOR_EVENT_CHANGES_DONE_HINT:
-            changed_file = g_file_get_path(file);
-
-            XF_DEBUG("file changed: %s", changed_file);
-            XF_DEBUG("image_path: %s", cycler->image_path);
-
-            if (g_strcmp0(changed_file, cycler->image_path) == 0) {
-                DBG("match");
-                xfdesktop_backdrop_cycler_update_image_filename(cycler, changed_file, TRUE);
-            }
-
-            g_free(changed_file);
             break;
 
         default:
@@ -766,7 +747,7 @@ xfdesktop_backdrop_cycler_do_cycle(XfdesktopBackdropCycler *cycler) {
 
         /* Only emit the cycle signal if something changed */
         if (g_strcmp0(cycler->image_path, new_backdrop) != 0) {
-            xfdesktop_backdrop_cycler_update_image_filename(cycler, new_backdrop, FALSE);
+            xfdesktop_backdrop_cycler_update_image_filename(cycler, new_backdrop);
         }
 
         g_free(new_backdrop);
