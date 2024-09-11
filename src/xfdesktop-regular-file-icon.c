@@ -748,7 +748,6 @@ xfdesktop_regular_file_icon_peek_tooltip(XfdesktopIcon *icon)
             if(rcfile) {
                 xfce_rc_set_group(rcfile, "Desktop Entry");
                 comment = xfce_rc_read_entry(rcfile, "Comment", NULL);
-                xfce_rc_close(rcfile);
             }
             /* Prepend the comment to the tooltip */
             if(comment != NULL && *comment != '\0') {
@@ -757,6 +756,10 @@ xfdesktop_regular_file_icon_peek_tooltip(XfdesktopIcon *icon)
                                                                    comment,
                                                                    tooltip);
                 g_free(tooltip);
+            }
+
+            if (rcfile != NULL) {
+                xfce_rc_close(rcfile);
             }
         }
 
