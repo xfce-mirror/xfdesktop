@@ -43,7 +43,7 @@ typedef struct
 
     GdkPixbuf *canvas;
     XfceBackdropImageStyle image_style;
-    gchar *image_filename;
+    GFile *image_file;
     gint width;
     gint height;
 
@@ -99,7 +99,9 @@ image_data_free(ImageData *image_data) {
     gdk_pixbuf_loader_close(image_data->loader, NULL);
     g_object_unref(image_data->loader);
 
-    g_free(image_data->image_filename);
+    if (image_data->image_file != NULL) {
+        g_object_unref(image_data->image_file);
+    }
     g_object_unref(image_data->cancellable);
     g_object_unref(image_data->canvas);
     g_free(image_data->image_buffer);
@@ -507,15 +509,11 @@ file_input_stream_ready_cb(GObject *source_object, GAsyncResult *res, gpointer u
 
     if (bytes < 0) {
         g_input_stream_close(stream, NULL, NULL);
-        g_object_unref(source_object);
-
         image_data_error(image_data, error);
         image_data_free(image_data);
         g_error_free(error);
     } else if (bytes == 0) {
         g_input_stream_close(stream, NULL, NULL);
-        g_object_unref(source_object);
-
         if (!gdk_pixbuf_loader_close(image_data->loader, &error)) {
             image_data_error(image_data, error);
             image_data_free(image_data);
@@ -531,8 +529,6 @@ file_input_stream_ready_cb(GObject *source_object, GAsyncResult *res, gpointer u
                                   image_data);
     } else {
         g_input_stream_close(stream, NULL, NULL);
-        g_object_unref(source_object);
-
         image_data_error(image_data, error);
         image_data_free(image_data);
         g_error_free(error);
@@ -548,7 +544,6 @@ file_ready_cb(GObject *source_object, GAsyncResult *res, gpointer user_data) {
     GFile *file = G_FILE(source_object);
     GError *error = NULL;
     GFileInputStream *input_stream = g_file_read_finish(file, res, &error);
-    g_object_unref(file);
 
     if (input_stream == NULL) {
         image_data_error(image_data, error);
@@ -571,7 +566,7 @@ xfdesktop_backdrop_render(GCancellable *cancellable,
                           GdkRGBA *color1,
                           GdkRGBA *color2,
                           XfceBackdropImageStyle image_style,
-                          const gchar *image_filename,
+                          GFile *image_file,
                           gint width,
                           gint height,
                           RenderCompleteCallback callback,
@@ -602,19 +597,19 @@ xfdesktop_backdrop_render(GCancellable *cancellable,
         g_object_unref(canvas);
         callback(surface, width, height, NULL, callback_user_data);
     } else {
-        if (image_filename == NULL) {
-            image_filename = DEFAULT_BACKDROP;
+        if (image_file == NULL) {
+            image_file = g_file_new_for_path(DEFAULT_BACKDROP);
+        } else {
+            image_file = g_object_ref(image_file);
         }
 
-        XF_DEBUG("loading image %s", image_filename);
-
-        GFile *file = g_file_new_for_path(image_filename);
+        XF_DEBUG("loading image %s", g_file_peek_path(image_file));
 
         image_data = g_new0(ImageData, 1);
         image_data->cancellable = g_object_ref(cancellable);
         image_data->canvas = canvas;
         image_data->image_style = image_style;
-        image_data->image_filename = g_strdup(image_filename);
+        image_data->image_file = image_file;
         image_data->width = width;
         image_data->height = height;
         image_data->callback = callback;
@@ -628,7 +623,7 @@ xfdesktop_backdrop_render(GCancellable *cancellable,
         g_signal_connect(image_data->loader, "closed",
                          G_CALLBACK(loader_closed_cb), image_data);
 
-        g_file_read_async(file,
+        g_file_read_async(image_data->image_file,
                           G_PRIORITY_DEFAULT,
                           image_data->cancellable,
                           file_ready_cb,
