@@ -162,6 +162,8 @@ xfdesktop_icon_view_model_get_column_type(GtkTreeModel *model,
             return G_TYPE_ICON;
         case XFDESKTOP_ICON_VIEW_MODEL_COLUMN_TOOLTIP_TEXT:
             return G_TYPE_STRING;
+        case XFDESKTOP_ICON_VIEW_MODEL_COLUMN_MONITOR:
+            return GDK_TYPE_MONITOR;
         default:
             g_assert_not_reached();
     }
@@ -440,6 +442,24 @@ xfdesktop_icon_view_model_get_iter_for_key(XfdesktopIconViewModel *ivmodel,
             iter->stamp = 0;
         }
         return FALSE;
+    }
+}
+
+void
+xfdesktop_icon_view_model_set_monitor(XfdesktopIconViewModel *ivmodel, GtkTreeIter *iter, GdkMonitor *monitor) {
+    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW_MODEL(ivmodel));
+    g_return_if_fail(iter != NULL && iter->stamp == ITER_STAMP);
+    g_return_if_fail(monitor == NULL || GDK_IS_MONITOR(monitor));
+
+    XfdesktopIconViewModelClass *klass = XFDESKTOP_ICON_VIEW_MODEL_GET_CLASS(ivmodel);
+    if (klass->set_monitor(ivmodel, iter, monitor)) {
+        gpointer model_item = ((GList *)iter->user_data)->data;
+        gint index = g_list_index(ivmodel->priv->items, model_item);
+        GtkTreePath *path = gtk_tree_path_new_from_indices(index, -1);
+
+        gtk_tree_model_row_changed(GTK_TREE_MODEL(ivmodel), path, iter);
+
+        gtk_tree_path_free(path);
     }
 }
 
