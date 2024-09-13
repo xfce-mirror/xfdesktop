@@ -2814,7 +2814,7 @@ xfdesktop_icon_view_place_item(XfdesktopIconView *icon_view,
                                    icon_view->priv->col_column, &col,
                                    -1);
 
-                if (row >= 0 && row < icon_view->priv->nrows && col >= 0 && row < icon_view->priv->ncols) {
+                if (row >= 0 && row < icon_view->priv->nrows && col >= 0 && col < icon_view->priv->ncols) {
                     xfdesktop_icon_view_place_item_at(icon_view, item, row, col);
                 }
             }
