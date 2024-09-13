@@ -561,6 +561,12 @@ emit_backdrop_changed(XfdesktopBackdropManager *manager, const gchar *property_p
     Monitor *monitor = NULL;
     XfwWorkspace *workspace = NULL;
     if (parse_property_prefix(manager, property_prefix, NULL, &monitor, &workspace)) {
+        RenderData *rdata = g_hash_table_lookup(manager->in_progress_rendering, property_prefix);
+        if (rdata != NULL) {
+            g_cancellable_cancel(rdata->main_cancellable);
+            g_hash_table_remove(manager->in_progress_rendering, property_prefix);
+        }
+
         if (backdrop->is_spanning) {
             for (guint i = 0; i < manager->monitors->len; ++i) {
                 Monitor *a_monitor = g_ptr_array_index(manager->monitors, i);
@@ -585,8 +591,8 @@ invalidate_backdrops_for_property_prefix(XfdesktopBackdropManager *manager, cons
         if (backdrop->surface != NULL) {
             cairo_surface_destroy(backdrop->surface);
             backdrop->surface = NULL;
-            emit_backdrop_changed(manager, property_prefix, backdrop);
         }
+        emit_backdrop_changed(manager, property_prefix, backdrop);
     }
 }
 
@@ -620,8 +626,8 @@ backdrops_ht_invalidate(gpointer key, gpointer value, gpointer data) {
         if (backdrop->surface != NULL) {
             cairo_surface_destroy(backdrop->surface);
             backdrop->surface = NULL;
-            emit_backdrop_changed(bifd->manager, property_prefix, backdrop);
         }
+        emit_backdrop_changed(bifd->manager, property_prefix, backdrop);
     }
 }
 
