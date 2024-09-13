@@ -64,8 +64,6 @@
 #include "xfdesktop-common.h"
 #include "xfdesktop-thumbnailer.h"
 #include "xfdesktop-settings-ui.h"
-/* for XfceBackdropImageStyle && XfceBackdropColorStyle */
-#include "xfce-backdrop.h"
 
 #define MAX_ASPECT_RATIO 1.5f
 #define PREVIEW_HEIGHT   96
