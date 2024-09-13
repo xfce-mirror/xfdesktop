@@ -192,6 +192,11 @@ xfce_desktop_place_on_monitor(XfceDesktop *desktop) {
     GdkRectangle geom;
     xfw_monitor_get_logical_geometry(desktop->priv->monitor, &geom);
 
+    DBG("Moving desktop for geometry %dx%d+%d+%d for %s",
+        geom.width, geom.height,
+        geom.x, geom.y,
+        xfw_monitor_get_description(desktop->priv->monitor));
+
     gtk_widget_set_size_request(GTK_WIDGET(desktop), geom.width, geom.height);
 
 #ifdef ENABLE_X11
