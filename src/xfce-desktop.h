@@ -23,8 +23,9 @@
 
 #include <gtk/gtk.h>
 #include <xfconf/xfconf.h>
+#include <libxfce4windowing/libxfce4windowing.h>
 
-#include "xfce-backdrop.h"
+#include "xfdesktop-backdrop-manager.h"
 
 G_BEGIN_DECLS
 
@@ -41,13 +42,6 @@ typedef struct _XfceDesktopPrivate XfceDesktopPrivate;
 
 typedef void (*SessionLogoutFunc)();
 
-typedef enum
-{
-    XFCE_DESKTOP_ICON_STYLE_NONE = 0,
-    XFCE_DESKTOP_ICON_STYLE_WINDOWS,
-    XFCE_DESKTOP_ICON_STYLE_FILES,
-} XfceDesktopIconStyle;
-
 struct _XfceDesktop
 {
     GtkWindow window;
@@ -61,53 +55,27 @@ struct _XfceDesktopClass
     GtkWindowClass parent_class;
 };
 
-GType xfce_desktop_get_type                     (void) G_GNUC_CONST;
+GType xfce_desktop_get_type(void) G_GNUC_CONST;
 
 GtkWidget *xfce_desktop_new(GdkScreen *gscreen,
+                            XfwMonitor *monitor,
                             XfconfChannel *channel,
-                            const gchar *property_prefix);
+                            const gchar *property_prefix,
+                            XfdesktopBackdropManager *backdrop_manager);
 
-gint xfce_desktop_get_n_monitors(XfceDesktop *desktop);
-
-void xfce_desktop_set_icon_style(XfceDesktop *desktop,
-                                 XfceDesktopIconStyle style);
-XfceDesktopIconStyle xfce_desktop_get_icon_style(XfceDesktop *desktop);
-
-void xfce_desktop_set_icon_size(XfceDesktop *desktop,
-                                guint icon_size);
-
-void xfce_desktop_set_primary(XfceDesktop *desktop,
-                              gboolean primary);
-
-void xfce_desktop_set_use_icon_font_size(XfceDesktop *desktop,
-                                         gboolean use_system);
-void xfce_desktop_set_icon_font_size(XfceDesktop *desktop,
-                                     guint font_size_points);
-
-void xfce_desktop_set_center_text(XfceDesktop *desktop,
-                                  gboolean center_text);
-
-void xfce_desktop_set_session_logout_func(XfceDesktop *desktop,
-                                          SessionLogoutFunc logout_func);
+XfwMonitor *xfce_desktop_get_monitor(XfceDesktop *desktop);
+void xfce_desktop_update_monitor(XfceDesktop *desktop,
+                                 XfwMonitor *monitor);
 
 void xfce_desktop_freeze_updates(XfceDesktop *desktop);
 void xfce_desktop_thaw_updates(XfceDesktop *desktop);
 
-
-void xfce_desktop_popup_root_menu(XfceDesktop *desktop,
-                                  guint button,
-                                  guint activate_time);
-void xfce_desktop_popup_secondary_root_menu(XfceDesktop *desktop,
-                                            guint button,
-                                            guint activate_time);
+gboolean xfce_desktop_has_pointer(XfceDesktop *desktop);
 
 void xfce_desktop_refresh(XfceDesktop *desktop,
-                          gboolean advance_wallpaper,
-                          gboolean all_monitors);
+                          gboolean advance_wallpaper);
 
 void xfce_desktop_arrange_icons(XfceDesktop *desktop);
-
-gboolean xfce_desktop_get_cycle_backdrop(XfceDesktop *desktop);
 
 G_END_DECLS
 

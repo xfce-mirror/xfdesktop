@@ -21,10 +21,10 @@
 #ifndef __XFDESKTOP_REGULAR_FILE_ICON_H__
 #define __XFDESKTOP_REGULAR_FILE_ICON_H__
 
-#include <glib-object.h>
+#include <gdk/gdk.h>
+#include <xfconf/xfconf.h>
 
 #include "xfdesktop-file-icon.h"
-#include "xfdesktop-file-icon-manager.h"
 
 G_BEGIN_DECLS
 
@@ -51,10 +51,10 @@ struct _XfdesktopRegularFileIconClass
 
 GType xfdesktop_regular_file_icon_get_type(void) G_GNUC_CONST;
 
-XfdesktopRegularFileIcon *xfdesktop_regular_file_icon_new(GFile *file,
-                                                          GFileInfo *file_info,
-                                                          GdkScreen *screen,
-                                                          XfdesktopFileIconManager *fmanager);
+XfdesktopRegularFileIcon *xfdesktop_regular_file_icon_new(XfconfChannel *channel,
+                                                          GdkScreen *gdkscreen,
+                                                          GFile *file,
+                                                          GFileInfo *file_info);
 
 G_END_DECLS
 
