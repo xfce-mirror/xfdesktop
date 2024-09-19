@@ -50,6 +50,8 @@ compile_flags.txt: $(shell find . -name Makefile)
 		-DPACKAGE=\"xfdesktop\" \
 		-DGETTEXT_PACKAGE=\"xfdesktop\" \
 		-DVERSION=\"4.0.0\" \
+		-DVERSION_SHORT=\"4.0\" \
+		-DVERSION_FULL=VERSION \
 		-DENABLE_DESKTOP_ICONS=1 \
 		-DENABLE_X11=1 \
 		-DENABLE_WAYLAND=1 \

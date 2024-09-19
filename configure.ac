@@ -60,10 +60,11 @@ AC_SUBST([GETTEXT_PACKAGE])
 AM_GNU_GETTEXT_VERSION([0.19.8])
 AM_GNU_GETTEXT([external])
 
+AC_DEFINE([VERSION_FULL], [VERSION], [Full version string of xfdesktop])
 dnl define xfdesktop's short version (major.minor)
-AC_DEFINE([XFDESKTOP_VERSION_SHORT], ["xfdesktop_version_short"], [Short version string of xfdesktop])
+AC_DEFINE([VERSION_SHORT], ["xfdesktop_version_short"], [Short version string of xfdesktop])
 dnl replace the version in settings/xfce-backdrop-settings.desktop.in
-AC_SUBST([XFDESKTOP_VERSION_SHORT], [xfdesktop_version_short])
+AC_SUBST([VERSION_VERSION], [xfdesktop_version_short])
 
 dnl required
 XDT_CHECK_PACKAGE([GIO], [gio-2.0], [glib_minimum_version])

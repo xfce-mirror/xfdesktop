@@ -69,6 +69,10 @@
 
 #include "xfdesktop-application.h"
 
+#ifdef HAVE_XFCE_REVISION_H
+#include "xfce-revision.h"
+#endif
+
 #define ACTION_RELOAD "reload"
 #define ACTION_NEXT "next"
 #define ACTION_MENU "menu"
@@ -690,7 +694,7 @@ xfdesktop_application_handle_local_options(GApplication *g_application, GVariant
     /* Print the version info and exit */
     if (args->version) {
         g_print(_("This is %s version %s, running on Xfce %s.\n"), PACKAGE,
-                VERSION, xfce_version_string());
+                VERSION_FULL, xfce_version_string());
         g_print(_("Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."),
                 GTK_MAJOR_VERSION,GTK_MINOR_VERSION, GTK_MICRO_VERSION,
                 gtk_major_version, gtk_minor_version, gtk_micro_version);

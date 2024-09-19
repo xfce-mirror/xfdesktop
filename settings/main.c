@@ -67,6 +67,10 @@
 /* for XfceBackdropImageStyle && XfceBackdropColorStyle */
 #include "xfce-backdrop.h"
 
+#ifdef HAVE_XFCE_REVISION_H
+#include "xfce-revision.h"
+#endif
+
 #define MAX_ASPECT_RATIO 1.5f
 #define PREVIEW_HEIGHT   96
 #define PREVIEW_WIDTH    (PREVIEW_HEIGHT * MAX_ASPECT_RATIO)
@@ -2330,7 +2334,7 @@ xfdesktop_settings_response(GtkWidget *dialog, gint response_id, gpointer user_d
                                            "xfdesktop",
                                            "start",
                                            NULL,
-                                           XFDESKTOP_VERSION_SHORT);
+                                           VERSION_SHORT);
     } else {
         XfconfChannel *channel = (XfconfChannel*) user_data;
         GdkWindowState state;
@@ -2390,7 +2394,7 @@ main(int argc, char **argv)
     }
 
     if(G_UNLIKELY(opt_version)) {
-        g_print("%s %s (Xfce %s)\n\n", G_LOG_DOMAIN, VERSION, xfce_version_string());
+        g_print("%s %s (Xfce %s)\n\n", G_LOG_DOMAIN, VERSION_FULL, xfce_version_string());
         g_print("%s\n", "Copyright (c) 2004-2022");
         g_print("\t%s\n\n", _("The Xfce development team. All rights reserved."));
         g_print(_("Please report bugs to <%s>."), PACKAGE_BUGREPORT);

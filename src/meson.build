@@ -73,6 +73,8 @@ if enable_libnotify
   ]
 endif
 
+xfdesktop_sources += xfce_revision_h
+
 executable(
   'xfdesktop',
   xfdesktop_sources,
