@@ -35,6 +35,10 @@
 
 #include "xfdesktop-application.h"
 
+#ifdef ENABLE_FILE_ICONS
+#include "xfdesktop-monitor-chooser-ui.h"
+#endif
+
 int
 main(int argc, char **argv)
 {
@@ -49,6 +53,10 @@ main(int argc, char **argv)
 
     /* bind gettext textdomain */
     xfce_textdomain(GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
+
+#ifdef ENABLE_DESKTOP_ICONS
+    xfdesktop_monitor_chooser_ui_register_resource();
+#endif
 
     app = xfdesktop_application_get();
     g_application_add_option_group(G_APPLICATION(app), xfce_sm_client_get_option_group(argc, argv));
