@@ -38,6 +38,7 @@ struct _XfdesktopFileIconPrivate
 
 static void xfdesktop_file_icon_finalize(GObject *obj);
 
+static gchar *xfdesktop_file_icon_get_identifier(XfdesktopIcon *icon);
 static gboolean xfdesktop_file_icon_activate(XfdesktopIcon *icon,
                                              GtkWindow *window);
 
@@ -69,6 +70,7 @@ xfdesktop_file_icon_class_init(XfdesktopFileIconClass *klass)
     gobject_class->set_property = xfdesktop_file_icon_set_property;
     gobject_class->get_property = xfdesktop_file_icon_get_property;
 
+    icon_class->get_identifier = xfdesktop_file_icon_get_identifier;
     icon_class->activate = xfdesktop_file_icon_activate;
 
     g_object_class_install_property(gobject_class,
@@ -133,6 +135,21 @@ xfdesktop_file_icon_get_property(GObject *object,
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
             break;
     }
+}
+
+static gchar *
+xfdesktop_file_icon_get_identifier(XfdesktopIcon *icon) {
+    XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
+
+    g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON(icon), NULL);
+
+    GFile *file = xfdesktop_file_icon_peek_file(file_icon);
+    gchar *identifier = g_file_get_path(file);
+    if (identifier == NULL) {
+        identifier = g_file_get_uri(file);
+    }
+
+    return identifier;
 }
 
 static gboolean
@@ -255,6 +272,18 @@ xfdesktop_file_icon_can_delete_file(XfdesktopFileIcon *icon)
        return klass->can_delete_file(icon);
     else
         return FALSE;
+}
+
+gboolean
+xfdesktop_file_icon_is_hidden_file(XfdesktopFileIcon *icon) {
+    g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON(icon), FALSE);
+
+    XfdesktopFileIconClass *klass = XFDESKTOP_FILE_ICON_GET_CLASS(icon);
+    if (klass->is_hidden_file != NULL) {
+        return klass->is_hidden_file(icon);
+    } else {
+        return FALSE;
+    }
 }
 
 GIcon *
