@@ -229,11 +229,11 @@ xfdesktop_x11_set_desktop_manager_selection(GdkScreen *gscreen, GError **error) 
 
     gchar *common_selection_name = g_strdup_printf("_NET_DESKTOP_MANAGER_S%d", screen_num);
     GdkAtom common_selection_atom = gdk_atom_intern(common_selection_name, FALSE);
-    g_free(common_selection_name);
 
     gchar *xfce_selection_name = g_strdup_printf(XFDESKTOP_SELECTION_FMT, screen_num);
     GdkAtom xfce_selection_atom = gdk_atom_intern(xfce_selection_name, FALSE);
-    g_free(xfce_selection_name);
+
+    GdkWindow *selection_window = NULL;
 
     // We have to use Xlib for these, as the GDK functions only return
     // the selection owner if it's owned by a GdkWindow known to GDK,
@@ -243,89 +243,85 @@ xfdesktop_x11_set_desktop_manager_selection(GdkScreen *gscreen, GError **error) 
                              G_IO_ERROR_ADDRESS_IN_USE,
                              "Another desktop manager is already running on screen %d",
                              screen_num);
-        return NULL;
-    }
-    if (XGetSelectionOwner(display, gdk_x11_atom_to_xatom_for_display(gdisplay, xfce_selection_atom)) != None) {
+    } else if (XGetSelectionOwner(display, gdk_x11_atom_to_xatom_for_display(gdisplay, xfce_selection_atom)) != None) {
         *error = g_error_new(G_IO_ERROR,
                              G_IO_ERROR_ADDRESS_IN_USE,
                              "Another instance of xfdesktop is already running on screen %d",
                              screen_num);
-        return NULL;
+    } else {
+        GdkWindowAttr attrs = {
+            .window_type = GDK_WINDOW_TOPLEVEL,
+            .override_redirect = TRUE,
+            .width = 1,
+            .height = 1,
+            .x = -100,
+            .y = -100,
+            .wmclass_name = "xfdesktop",
+            .wmclass_class = "Xfdesktop",
+            .title = "Xfdesktop Manager Selection",
+            .event_mask = GDK_BUTTON_PRESS |
+                GDK_PROPERTY_CHANGE_MASK |
+                GDK_STRUCTURE_MASK |
+                GDK_SUBSTRUCTURE_MASK,
+        };
+        selection_window = gdk_window_new(gdk_screen_get_root_window(gscreen),
+                                          &attrs,
+                                          GDK_WA_TITLE |
+                                          GDK_WA_WMCLASS |
+                                          GDK_WA_X |
+                                          GDK_WA_Y |
+                                          GDK_WA_NOREDIR);
+
+        if (!gdk_selection_owner_set_for_display(gdisplay,
+                                                 selection_window,
+                                                 common_selection_atom,
+                                                 GDK_CURRENT_TIME,
+                                                 TRUE))
+        {
+            *error = g_error_new(G_IO_ERROR,
+                                 G_IO_ERROR_FAILED,
+                                 "Unable to acquire selection '%s'",
+                                 common_selection_name);
+        } else if (!gdk_selection_owner_set_for_display(gdisplay,
+                                                        selection_window,
+                                                        xfce_selection_atom,
+                                                        GDK_CURRENT_TIME,
+                                                        TRUE))
+        {
+            *error = g_error_new(G_IO_ERROR,
+                                 G_IO_ERROR_FAILED,
+                                 "Unable to acquire selection '%s'",
+                                 xfce_selection_name);
+        } else {
+            Window new_owner = XGetSelectionOwner(display, gdk_x11_atom_to_xatom_for_display(gdisplay, xfce_selection_atom));
+            if (new_owner != gdk_x11_window_get_xid(selection_window)) {
+                *error = g_error_new(G_IO_ERROR,
+                                     G_IO_ERROR_FAILED,
+                                     "Failed to acquire selection '%s'",
+                                     xfce_selection_name);
+            } else {
+                Window xroot = gdk_x11_window_get_xid(gdk_screen_get_root_window(gscreen));
+                XClientMessageEvent xev;
+                xev.type = ClientMessage;
+                xev.window = xroot;
+                xev.message_type = XInternAtom(display, "MANAGER", False);
+                xev.format = 32;
+                xev.data.l[0] = GDK_CURRENT_TIME;
+                xev.data.l[1] = gdk_x11_atom_to_xatom_for_display(gdisplay, xfce_selection_atom);
+                xev.data.l[2] = gdk_x11_window_get_xid(selection_window);
+                xev.data.l[3] = 0;    /* manager specific data */
+                xev.data.l[4] = 0;    /* manager specific data */
+                XSendEvent(display, xroot, False, StructureNotifyMask, (XEvent *)&xev);
+            }
+        }
     }
 
-    GdkWindowAttr attrs = {
-        .window_type = GDK_WINDOW_TOPLEVEL,
-        .override_redirect = TRUE,
-        .width = 1,
-        .height = 1,
-        .x = -100,
-        .y = -100,
-        .wmclass_name = "xfdesktop",
-        .wmclass_class = "Xfdesktop",
-        .title = "Xfdesktop Manager Selection",
-        .event_mask = GDK_BUTTON_PRESS |
-            GDK_PROPERTY_CHANGE_MASK |
-            GDK_STRUCTURE_MASK |
-            GDK_SUBSTRUCTURE_MASK,
-    };
-    GdkWindow *selection_window = gdk_window_new(gdk_screen_get_root_window(gscreen),
-                                                 &attrs,
-                                                 GDK_WA_TITLE |
-                                                 GDK_WA_WMCLASS |
-                                                 GDK_WA_X |
-                                                 GDK_WA_Y |
-                                                 GDK_WA_NOREDIR);
-
-    if (!gdk_selection_owner_set_for_display(gdisplay,
-                                             selection_window,
-                                             common_selection_atom,
-                                             GDK_CURRENT_TIME,
-                                             TRUE))
-    {
-        *error = g_error_new(G_IO_ERROR,
-                             G_IO_ERROR_FAILED,
-                             "Unable to acquire selection '%s'",
-                             gdk_atom_name(common_selection_atom));
-        gdk_window_destroy(selection_window);
-        return NULL;
+    if (*error != NULL) {
+        g_clear_pointer(&selection_window, gdk_window_destroy);
     }
 
-    if (!gdk_selection_owner_set_for_display(gdisplay,
-                                             selection_window,
-                                             xfce_selection_atom,
-                                             GDK_CURRENT_TIME,
-                                             TRUE))
-    {
-        *error = g_error_new(G_IO_ERROR,
-                             G_IO_ERROR_FAILED,
-                             "Unable to acquire selection '%s'",
-                             gdk_atom_name(xfce_selection_atom));
-        gdk_window_destroy(selection_window);
-        return NULL;
-    }
-
-    Window new_owner = XGetSelectionOwner(display, gdk_x11_atom_to_xatom_for_display(gdisplay, xfce_selection_atom));
-    if (new_owner != gdk_x11_window_get_xid(selection_window)) {
-        gdk_window_destroy(selection_window);
-        *error = g_error_new(G_IO_ERROR,
-                             G_IO_ERROR_FAILED,
-                             "Failed to acquire selection '%s'",
-                             gdk_atom_name(xfce_selection_atom));
-        return NULL;
-    }
-
-    Window xroot = gdk_x11_window_get_xid(gdk_screen_get_root_window(gscreen));
-    XClientMessageEvent xev;
-    xev.type = ClientMessage;
-    xev.window = xroot;
-    xev.message_type = XInternAtom(display, "MANAGER", False);
-    xev.format = 32;
-    xev.data.l[0] = GDK_CURRENT_TIME;
-    xev.data.l[1] = gdk_x11_atom_to_xatom_for_display(gdisplay, xfce_selection_atom);
-    xev.data.l[2] = gdk_x11_window_get_xid(selection_window);
-    xev.data.l[3] = 0;    /* manager specific data */
-    xev.data.l[4] = 0;    /* manager specific data */
-    XSendEvent(display, xroot, False, StructureNotifyMask, (XEvent *)&xev);
+    g_free(common_selection_name);
+    g_free(xfce_selection_name);
 
     return selection_window;
 }
