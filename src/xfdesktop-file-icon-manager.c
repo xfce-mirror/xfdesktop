@@ -4177,7 +4177,7 @@ xfdesktop_file_icon_manager_drag_data_get(GtkWidget *icon_view,
                     }
                 }
             }
-            g_list_free(selected_items);
+            g_list_free_full(selected_items, (GDestroyNotify)gtk_tree_path_free);
 
             if (i > 0) {
                 gtk_selection_data_set_uris(data, uris);
