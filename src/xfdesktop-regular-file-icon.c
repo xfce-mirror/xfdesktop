@@ -50,8 +50,9 @@
 #include <thunarx/thunarx.h>
 #endif
 
-#include "xfdesktop-file-utils.h"
 #include "xfdesktop-common.h"
+#include "xfdesktop-file-icon.h"
+#include "xfdesktop-file-utils.h"
 #include "xfdesktop-regular-file-icon.h"
 
 #define EMBLEM_UNREADABLE "emblem-unreadable"
@@ -60,32 +61,45 @@
 
 struct _XfdesktopRegularFileIconPrivate
 {
+    XfconfChannel *channel;
+    GdkScreen *gscreen;
+    GFile *file;
+    GFileInfo *file_info;
+
     gchar *display_name;
     gchar *tooltip;
-    GFileInfo *file_info;
     GFileInfo *filesystem_info;
-    GFile *file;
     GFile *thumbnail_file;
     GFileMonitor *monitor;
-    GdkScreen *gscreen;
-    XfdesktopFileIconManager *fmanager;
     gboolean show_thumbnails;
+    gboolean is_hidden;
 };
 
+enum {
+    PROP0,
+    PROP_CHANNEL,
+    PROP_GDK_SCREEN,
+    PROP_FILE,
+    PROP_FILE_INFO,
+    PROP_SHOW_THUMBNAILS,
+};
+
+static void xfdesktop_regular_file_icon_constructed(GObject *obj);
+static void xfdesktop_regular_file_icon_set_property(GObject *obj,
+                                                     guint property_id,
+                                                     const GValue *value,
+                                                     GParamSpec *pspec);
+static void xfdesktop_regular_file_icon_get_property(GObject *obj,
+                                                     guint property_id,
+                                                     GValue *value,
+                                                     GParamSpec *pspec);
 static void xfdesktop_regular_file_icon_finalize(GObject *obj);
 
 static void xfdesktop_regular_file_icon_set_thumbnail_file(XfdesktopIcon *icon, GFile *file);
 static void xfdesktop_regular_file_icon_delete_thumbnail_file(XfdesktopIcon *icon);
 
 static const gchar *xfdesktop_regular_file_icon_peek_label(XfdesktopIcon *icon);
-static gchar *xfdesktop_regular_file_icon_get_identifier(XfdesktopIcon *icon);
 static const gchar *xfdesktop_regular_file_icon_peek_tooltip(XfdesktopIcon *icon);
-static GdkDragAction xfdesktop_regular_file_icon_get_allowed_drag_actions(XfdesktopIcon *icon);
-static GdkDragAction xfdesktop_regular_file_icon_get_allowed_drop_actions(XfdesktopIcon *icon,
-                                                                          GdkDragAction *suggested_action);
-static gboolean xfdesktop_regular_file_icon_do_drop_dest(XfdesktopIcon *icon,
-                                                         GList *src_icons,
-                                                         GdkDragAction action);
 
 static GIcon *xfdesktop_regular_file_icon_get_gicon(XfdesktopFileIcon *icon);
 static GFileInfo *xfdesktop_regular_file_icon_peek_file_info(XfdesktopFileIcon *icon);
@@ -94,7 +108,14 @@ static GFile *xfdesktop_regular_file_icon_peek_file(XfdesktopFileIcon *icon);
 static void xfdesktop_regular_file_icon_update_file_info(XfdesktopFileIcon *icon,
                                                          GFileInfo *info);
 static gboolean xfdesktop_regular_file_can_write_parent(XfdesktopFileIcon *icon);
+static gboolean xfdesktop_regular_file_icon_is_hidden_file(XfdesktopFileIcon *icon);
 
+static void cb_folder_contents_changed(GFileMonitor *monitor,
+                                       GFile *file,
+                                       GFile *other_file,
+                                       GFileMonitorEvent event,
+                                       gpointer user_data);
+static gboolean is_file_hidden(GFile *file, GFileInfo *info);
 static gboolean is_folder_icon(GFile *file);
 
 #ifdef HAVE_THUNARX
@@ -143,14 +164,13 @@ xfdesktop_regular_file_icon_class_init(XfdesktopRegularFileIconClass *klass)
     XfdesktopIconClass *icon_class = (XfdesktopIconClass *)klass;
     XfdesktopFileIconClass *file_icon_class = (XfdesktopFileIconClass *)klass;
 
+    gobject_class->constructed = xfdesktop_regular_file_icon_constructed;
+    gobject_class->set_property = xfdesktop_regular_file_icon_set_property;
+    gobject_class->get_property = xfdesktop_regular_file_icon_get_property;
     gobject_class->finalize = xfdesktop_regular_file_icon_finalize;
 
     icon_class->peek_label = xfdesktop_regular_file_icon_peek_label;
-    icon_class->get_identifier = xfdesktop_regular_file_icon_get_identifier;
     icon_class->peek_tooltip = xfdesktop_regular_file_icon_peek_tooltip;
-    icon_class->get_allowed_drag_actions = xfdesktop_regular_file_icon_get_allowed_drag_actions;
-    icon_class->get_allowed_drop_actions = xfdesktop_regular_file_icon_get_allowed_drop_actions;
-    icon_class->do_drop_dest = xfdesktop_regular_file_icon_do_drop_dest;
     icon_class->set_thumbnail_file = xfdesktop_regular_file_icon_set_thumbnail_file;
     icon_class->delete_thumbnail_file = xfdesktop_regular_file_icon_delete_thumbnail_file;
 
@@ -161,6 +181,43 @@ xfdesktop_regular_file_icon_class_init(XfdesktopRegularFileIconClass *klass)
     file_icon_class->update_file_info = xfdesktop_regular_file_icon_update_file_info;
     file_icon_class->can_rename_file = xfdesktop_regular_file_can_write_parent;
     file_icon_class->can_delete_file = xfdesktop_regular_file_can_write_parent;
+    file_icon_class->is_hidden_file = xfdesktop_regular_file_icon_is_hidden_file;
+
+    g_object_class_install_property(gobject_class,
+                                    PROP_CHANNEL,
+                                    g_param_spec_object("channel",
+                                                        "channel",
+                                                        "xfconf channel",
+                                                        XFCONF_TYPE_CHANNEL,
+                                                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS));
+    g_object_class_install_property(gobject_class,
+                                    PROP_GDK_SCREEN,
+                                    g_param_spec_object("gdk-screen",
+                                                        "gdk-screen",
+                                                        "GDK screen",
+                                                        GDK_TYPE_SCREEN,
+                                                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS));
+    g_object_class_install_property(gobject_class,
+                                    PROP_FILE,
+                                    g_param_spec_object("file",
+                                                        "file",
+                                                        "GFile",
+                                                        G_TYPE_FILE,
+                                                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS));
+    g_object_class_install_property(gobject_class,
+                                    PROP_FILE_INFO,
+                                    g_param_spec_object("file-info",
+                                                        "file-info",
+                                                        "GFileInfo",
+                                                        G_TYPE_FILE_INFO,
+                                                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS));
+    g_object_class_install_property(gobject_class,
+                                    PROP_SHOW_THUMBNAILS,
+                                    g_param_spec_boolean("show-thumbnails",
+                                                         "show-thumbnails",
+                                                         "show-thumbnails",
+                                                         TRUE,
+                                                         G_PARAM_READWRITE));
 }
 
 static void
@@ -168,6 +225,109 @@ xfdesktop_regular_file_icon_init(XfdesktopRegularFileIcon *icon)
 {
     icon->priv = xfdesktop_regular_file_icon_get_instance_private(icon);
     icon->priv->display_name = NULL;
+    icon->priv->show_thumbnails = TRUE;
+}
+
+static void
+xfdesktop_regular_file_icon_constructed(GObject *obj) {
+    G_OBJECT_CLASS(xfdesktop_regular_file_icon_parent_class)->constructed(obj);
+
+    XfdesktopRegularFileIcon *regular_file_icon = XFDESKTOP_REGULAR_FILE_ICON(obj);
+
+    regular_file_icon->priv->display_name = xfdesktop_file_utils_get_display_name(regular_file_icon->priv->file,
+                                                                                  regular_file_icon->priv->file_info);
+
+    regular_file_icon->priv->filesystem_info = g_file_query_filesystem_info(regular_file_icon->priv->file,
+                                                                            XFDESKTOP_FILESYSTEM_INFO_NAMESPACE,
+                                                                            NULL, NULL);
+
+    regular_file_icon->priv->is_hidden = is_file_hidden(regular_file_icon->priv->file, regular_file_icon->priv->file_info);
+
+    if (g_file_info_get_file_type(regular_file_icon->priv->file_info) == G_FILE_TYPE_DIRECTORY) {
+        regular_file_icon->priv->monitor = g_file_monitor(regular_file_icon->priv->file,
+                                                          G_FILE_MONITOR_WATCH_MOVES,
+                                                          NULL,
+                                                          NULL);
+
+        g_signal_connect(regular_file_icon->priv->monitor, "changed",
+                         G_CALLBACK(cb_folder_contents_changed),
+                         regular_file_icon);
+
+    }
+
+    xfconf_g_property_bind(regular_file_icon->priv->channel,
+                           DESKTOP_ICONS_SHOW_THUMBNAILS,
+                           G_TYPE_BOOLEAN,
+                           regular_file_icon,
+                           "show-thumbnails");
+}
+
+static void
+xfdesktop_regular_file_icon_set_property(GObject *obj, guint property_id, const GValue *value, GParamSpec *pspec) {
+    XfdesktopRegularFileIcon *icon = XFDESKTOP_REGULAR_FILE_ICON(obj);
+
+    switch (property_id) {
+        case PROP_CHANNEL:
+            icon->priv->channel = g_value_dup_object(value);
+            break;
+
+        case PROP_GDK_SCREEN:
+            icon->priv->gscreen = g_value_get_object(value);
+            break;
+
+        case PROP_FILE:
+            icon->priv->file = g_value_dup_object(value);
+            break;
+
+        case PROP_FILE_INFO:
+            icon->priv->file_info = g_value_dup_object(value);
+            break;
+
+        case PROP_SHOW_THUMBNAILS:
+            if (icon->priv->show_thumbnails != g_value_get_boolean(value)) {
+                icon->priv->show_thumbnails = g_value_get_boolean(value);
+
+                XF_DEBUG("show-thumbnails changed! now: %s", icon->priv->show_thumbnails ? "TRUE" : "FALSE");
+                xfdesktop_file_icon_invalidate_icon(XFDESKTOP_FILE_ICON(icon));
+                xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(icon));
+            }
+            break;
+
+        default:
+            G_OBJECT_WARN_INVALID_PROPERTY_ID(obj, property_id, pspec);
+            break;
+    }
+}
+
+static void
+xfdesktop_regular_file_icon_get_property(GObject *obj, guint property_id, GValue *value, GParamSpec *pspec) {
+    XfdesktopRegularFileIcon *icon = XFDESKTOP_REGULAR_FILE_ICON(obj);
+
+    switch (property_id) {
+        case PROP_CHANNEL:
+            g_value_set_object(value, icon->priv->channel);
+            break;
+
+        case PROP_GDK_SCREEN:
+            g_value_set_object(value, icon->priv->gscreen);
+            break;
+
+        case PROP_FILE:
+            g_value_set_object(value, icon->priv->file);
+            break;
+
+        case PROP_FILE_INFO:
+            g_value_set_object(value, icon->priv->file_info);
+            break;
+
+        case PROP_SHOW_THUMBNAILS:
+            g_value_set_boolean(value, icon->priv->show_thumbnails);
+            break;
+
+        default:
+            G_OBJECT_WARN_INVALID_PROPERTY_ID(obj, property_id, pspec);
+            break;
+    }
 }
 
 static void
@@ -193,6 +353,8 @@ xfdesktop_regular_file_icon_finalize(GObject *obj)
 
     if(icon->priv->monitor)
         g_object_unref(icon->priv->monitor);
+
+    g_object_unref(icon->priv->channel);
 
     G_OBJECT_CLASS(xfdesktop_regular_file_icon_parent_class)->finalize(obj);
 }
@@ -253,33 +415,6 @@ xfdesktop_regular_file_icon_set_thumbnail_file(XfdesktopIcon *icon, GFile *file)
 
     xfdesktop_icon_pixbuf_changed(icon);
 }
-
-
-static void
-cb_show_thumbnails_notify(GObject *gobject,
-                          GParamSpec *pspec,
-                          gpointer user_data)
-{
-    XfdesktopRegularFileIcon *regular_file_icon;
-    gboolean show_thumbnails = FALSE;
-
-    TRACE("entering");
-
-    if(!user_data || !XFDESKTOP_IS_REGULAR_FILE_ICON(user_data))
-        return;
-
-    regular_file_icon = XFDESKTOP_REGULAR_FILE_ICON(user_data);
-
-    g_object_get(regular_file_icon->priv->fmanager, "show-thumbnails", &show_thumbnails, NULL);
-
-    if(regular_file_icon->priv->show_thumbnails != show_thumbnails) {
-        XF_DEBUG("show-thumbnails changed! now: %s", show_thumbnails ? "TRUE" : "FALSE");
-        regular_file_icon->priv->show_thumbnails = show_thumbnails;
-        xfdesktop_file_icon_invalidate_icon(XFDESKTOP_FILE_ICON(regular_file_icon));
-        xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(regular_file_icon));
-    }
-}
-
 
 /* builds a folder/file path and then tests if that file is a valid image.
  * returns the file location if it does, NULL if it doesn't */
@@ -556,143 +691,6 @@ xfdesktop_regular_file_icon_peek_label(XfdesktopIcon *icon)
     return regular_file_icon->priv->display_name;
 }
 
-static gchar *
-xfdesktop_regular_file_icon_get_identifier(XfdesktopIcon *icon)
-{
-    XfdesktopFileIcon *file_icon = XFDESKTOP_FILE_ICON(icon);
-
-    g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON(icon), NULL);
-
-    if(xfdesktop_file_icon_peek_file(file_icon) == NULL)
-        return NULL;
-
-    return g_file_get_path(xfdesktop_file_icon_peek_file(file_icon));
-}
-
-static GdkDragAction
-xfdesktop_regular_file_icon_get_allowed_drag_actions(XfdesktopIcon *icon)
-{
-    GFileInfo *info = xfdesktop_file_icon_peek_file_info(XFDESKTOP_FILE_ICON(icon));
-    GFile *file = xfdesktop_file_icon_peek_file(XFDESKTOP_FILE_ICON(icon));
-    GdkDragAction actions = GDK_ACTION_LINK;  /* we can always link */
-
-    if(!info)
-        return 0;
-
-    if(g_file_info_get_attribute_boolean(info,
-                                         G_FILE_ATTRIBUTE_ACCESS_CAN_READ))
-    {
-        GFileInfo *parent_info;
-        GFile *parent_file;
-
-        actions |= GDK_ACTION_COPY;
-
-        /* we can only move if the parent is writable */
-        parent_file = g_file_get_parent(file);
-        parent_info = g_file_query_info(parent_file,
-                                        XFDESKTOP_FILE_INFO_NAMESPACE,
-                                        G_FILE_QUERY_INFO_NONE,
-                                        NULL, NULL);
-        if(parent_info) {
-            if(g_file_info_get_attribute_boolean(parent_info,
-                                                 G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
-            {
-                actions |= GDK_ACTION_MOVE;
-            }
-            g_object_unref(parent_info);
-        }
-        g_object_unref(parent_file);
-    }
-
-    return actions;
-}
-
-static GdkDragAction
-xfdesktop_regular_file_icon_get_allowed_drop_actions(XfdesktopIcon *icon,
-                                                     GdkDragAction *suggested_action)
-{
-    GFileInfo *info = xfdesktop_file_icon_peek_file_info(XFDESKTOP_FILE_ICON(icon));
-
-    if(!info) {
-        if(suggested_action)
-            *suggested_action = 0;
-        return 0;
-    }
-
-    /* if it's executable we can 'copy'.  if it's a folder we can do anything
-     * if it's writable. */
-    if(g_file_info_get_file_type(info) == G_FILE_TYPE_DIRECTORY) {
-        if(g_file_info_get_attribute_boolean(info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE)) {
-            if(suggested_action)
-                *suggested_action = GDK_ACTION_MOVE;
-            return GDK_ACTION_MOVE | GDK_ACTION_COPY | GDK_ACTION_LINK | GDK_ACTION_ASK;
-        }
-    } else {
-        if(xfdesktop_file_utils_file_is_executable(info)) {
-            if(suggested_action)
-                *suggested_action = GDK_ACTION_COPY;
-            return GDK_ACTION_COPY;
-        }
-    }
-
-    if(suggested_action)
-        *suggested_action = 0;
-
-    return 0;
-}
-
-gboolean
-xfdesktop_regular_file_icon_do_drop_dest(XfdesktopIcon *icon,
-                                         GList *src_icons,
-                                         GdkDragAction action)
-{
-    XfdesktopRegularFileIcon *regular_file_icon = XFDESKTOP_REGULAR_FILE_ICON(icon);
-    gboolean result = FALSE;
-
-    TRACE("entering");
-
-    g_return_val_if_fail(regular_file_icon != NULL && src_icons != NULL, FALSE);
-    g_return_val_if_fail(xfdesktop_regular_file_icon_get_allowed_drop_actions(icon, NULL) != 0,
-                         FALSE);
-
-    if(g_file_info_get_file_type(regular_file_icon->priv->file_info) != G_FILE_TYPE_DIRECTORY
-       && xfdesktop_file_utils_file_is_executable(regular_file_icon->priv->file_info))
-    {
-        GList *files = NULL;
-
-        for (GList *l = src_icons; l != NULL; l = l->next) {
-            GFile *file = xfdesktop_file_icon_peek_file(XFDESKTOP_FILE_ICON(l->data));
-            if (file != NULL) {
-                files = g_list_prepend(files, file);
-            }
-        }
-        files = g_list_reverse(files);
-
-        if (files != NULL) {
-            xfdesktop_file_utils_execute(NULL, regular_file_icon->priv->file, files,
-                                         regular_file_icon->priv->gscreen, NULL);
-            g_list_free(files);
-            result = TRUE;
-        }
-    } else {
-        GList *src_files = NULL;
-        GList *dest_files = NULL;
-
-        xfdesktop_file_utils_build_transfer_file_lists(action, src_icons, XFDESKTOP_FILE_ICON(icon), &src_files, &dest_files);
-
-        if (src_files != NULL && dest_files != NULL) {
-            xfdesktop_file_utils_transfer_files(action, src_files, dest_files,
-                                                regular_file_icon->priv->gscreen);
-            result = TRUE;
-        }
-
-        g_list_free_full(dest_files, g_object_unref);
-        g_list_free(src_files);
-    }
-
-    return result;
-}
-
 static const gchar *
 xfdesktop_regular_file_icon_peek_tooltip(XfdesktopIcon *icon)
 {
@@ -801,6 +799,11 @@ xfdesktop_regular_file_can_write_parent(XfdesktopFileIcon *icon)
 
     return writable;
 
+}
+
+static gboolean
+xfdesktop_regular_file_icon_is_hidden_file(XfdesktopFileIcon *icon) {
+    return XFDESKTOP_REGULAR_FILE_ICON(icon)->priv->is_hidden;
 }
 
 static GFileInfo *
@@ -927,55 +930,76 @@ cb_folder_contents_changed(GFileMonitor     *monitor,
     }
 }
 
+/* if it's a .desktop file, and it has Hidden=true, or an
+ * OnlyShowIn Or NotShowIn that would hide it from Xfce, don't
+ * show it on the desktop (bug #4022) */
+static gboolean
+is_desktop_file_hidden(GFile *file) {
+    gboolean is_hidden = FALSE;
+
+    gchar *path = g_file_get_path(file);
+    XfceRc *rcfile = xfce_rc_simple_open(path, TRUE);
+    g_free(path);
+
+    if (rcfile != NULL) {
+        xfce_rc_set_group(rcfile, "Desktop Entry");
+        if (xfce_rc_read_bool_entry(rcfile, "Hidden", FALSE)) {
+            XF_DEBUG("Hidden Desktop Entry set (%s)", g_file_peek_path(file));
+            is_hidden = TRUE;
+        } else {
+            const gchar *value = xfce_rc_read_entry(rcfile, "OnlyShowIn", NULL);
+            if (value != NULL && !g_str_has_prefix(value, "XFCE;") && strstr(value, ";XFCE;") == NULL) {
+                XF_DEBUG("OnlyShowIn Desktop Entry set (%s)", g_file_peek_path(file));
+                is_hidden = TRUE;
+            } else if ((value = xfce_rc_read_entry(rcfile, "NotShowIn", NULL)) != NULL
+                       && (g_str_has_prefix(value, "XFCE;") || strstr(value, ";XFCE;") != NULL))
+            {
+                XF_DEBUG("NotShowIn Desktop Entry set (%s)", g_file_peek_path(file));
+                is_hidden = TRUE;
+            }
+        }
+
+        xfce_rc_close(rcfile);
+    }
+
+    return is_hidden;
+}
+
+static gboolean
+is_file_hidden(GFile *file, GFileInfo *info) {
+    if (g_file_info_get_is_hidden(info) || g_file_info_get_is_backup(info)) {
+        XF_DEBUG("hidden or backup file (%s)", g_file_peek_path(file));
+        return TRUE;
+    } else {
+        gboolean is_desktop_file = FALSE;
+        if (g_content_type_equals(g_file_info_get_content_type(info), "application/x-desktop")) {
+            is_desktop_file = TRUE;
+        } else {
+            gchar *uri = g_file_get_uri(file);
+            if (g_str_has_suffix(uri, ".desktop")) {
+                is_desktop_file = TRUE;
+            }
+            g_free(uri);
+        }
+
+        return is_desktop_file && is_desktop_file_hidden(file);
+    }
+}
+
+
 /* public API */
 
 XfdesktopRegularFileIcon *
-xfdesktop_regular_file_icon_new(GFile *file,
-                                GFileInfo *file_info,
-                                GdkScreen *screen,
-                                XfdesktopFileIconManager *fmanager)
-{
-    XfdesktopRegularFileIcon *regular_file_icon;
-
+xfdesktop_regular_file_icon_new(XfconfChannel *channel, GdkScreen *gdkscreen, GFile *file, GFileInfo *file_info) {
+    g_return_val_if_fail(XFCONF_IS_CHANNEL(channel), NULL);
+    g_return_val_if_fail(GDK_IS_SCREEN(gdkscreen), NULL);
     g_return_val_if_fail(G_IS_FILE(file), NULL);
     g_return_val_if_fail(G_IS_FILE_INFO(file_info), NULL);
-    g_return_val_if_fail(GDK_IS_SCREEN(screen), NULL);
 
-    regular_file_icon = g_object_new(XFDESKTOP_TYPE_REGULAR_FILE_ICON, NULL);
-
-    regular_file_icon->priv->file = g_object_ref(file);
-    regular_file_icon->priv->file_info = g_object_ref(file_info);
-
-    /* set the display name */
-    regular_file_icon->priv->display_name = xfdesktop_file_utils_get_display_name(file,
-                                                                                  file_info);
-
-    /* query file system information from GIO */
-    regular_file_icon->priv->filesystem_info = g_file_query_filesystem_info(regular_file_icon->priv->file,
-                                                                            XFDESKTOP_FILESYSTEM_INFO_NAMESPACE,
-                                                                            NULL, NULL);
-
-    regular_file_icon->priv->gscreen = screen;
-
-    regular_file_icon->priv->fmanager = fmanager;
-
-    if(g_file_info_get_file_type(regular_file_icon->priv->file_info) == G_FILE_TYPE_DIRECTORY) {
-        regular_file_icon->priv->monitor = g_file_monitor(regular_file_icon->priv->file,
-                                                          G_FILE_MONITOR_WATCH_MOVES,
-                                                          NULL,
-                                                          NULL);
-
-        g_signal_connect(regular_file_icon->priv->monitor, "changed",
-                         G_CALLBACK(cb_folder_contents_changed),
-                         regular_file_icon);
-
-        g_object_get(regular_file_icon->priv->fmanager,
-                     "show-thumbnails", &regular_file_icon->priv->show_thumbnails,
-                     NULL);
-
-        /* Keep an eye on the show-thumbnails property for folder thumbnails */
-        g_signal_connect(G_OBJECT(fmanager), "notify::show-thumbnails",
-                         G_CALLBACK(cb_show_thumbnails_notify), regular_file_icon);
-    }
-    return regular_file_icon;
+    return g_object_new(XFDESKTOP_TYPE_REGULAR_FILE_ICON,
+                        "channel", channel,
+                        "gdk-screen", gdkscreen,
+                        "file", file,
+                        "file-info", file_info,
+                        NULL);
 }
