@@ -227,6 +227,7 @@ static GtkMenu *xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewMa
                                                              GtkWidget *widget);
 static void xfdesktop_file_icon_manager_sort_icons(XfdesktopIconViewManager *manager,
                                                    GtkSortType sort_type);
+static void xfdesktop_file_icon_manager_reload(XfdesktopIconViewManager *manager);
 
 static void xfdesktop_file_icon_manager_icon_moved(XfdesktopIconView *icon_view,
                                                    XfdesktopIconView *source_icon_view,
@@ -316,6 +317,7 @@ xfdesktop_file_icon_manager_class_init(XfdesktopFileIconManagerClass *klass)
     ivm_class->desktop_removed = xfdesktop_file_icon_manager_desktop_removed;
     ivm_class->get_context_menu = xfdesktop_file_icon_manager_get_context_menu;
     ivm_class->sort_icons = xfdesktop_file_icon_manager_sort_icons;
+    ivm_class->reload = xfdesktop_file_icon_manager_reload;
 
     g_object_class_install_property(gobject_class,
                                     PROP_GDK_SCREEN,
@@ -1969,6 +1971,23 @@ xfdesktop_file_icon_manager_sort_icons(XfdesktopIconViewManager *manager, GtkSor
     }
 }
 
+static void
+xfdesktop_file_icon_manager_reload(XfdesktopIconViewManager *manager) {
+    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(manager);
+
+    GHashTableIter iter;
+    g_hash_table_iter_init(&iter, fmanager->monitor_data);
+
+    MonitorData *mdata;
+    while (g_hash_table_iter_next(&iter, NULL, (gpointer)&mdata)) {
+        XfdesktopIconView *icon_view = xfdesktop_icon_view_holder_get_icon_view(mdata->holder);
+        xfdesktop_icon_view_set_model(icon_view, NULL);
+    }
+
+    fmanager->ready = FALSE;
+    xfdesktop_file_icon_model_reload(fmanager->model);
+}
+
 static XfwMonitor *
 xfdesktop_file_icon_manager_get_cached_icon_position(XfdesktopFileIconManager *fmanager,
                                                      XfdesktopFileIcon *icon,
@@ -2108,22 +2127,6 @@ xfdesktop_file_icon_manager_end_grid_resize(XfdesktopIconView *icon_view, Monito
     }
 }
 
-static void
-xfdesktop_file_icon_manager_refresh_icons(XfdesktopFileIconManager *fmanager)
-{
-    fmanager->ready = FALSE;
-
-    GHashTableIter iter;
-    g_hash_table_iter_init(&iter, fmanager->monitor_data);
-
-    MonitorData *mdata;
-    while (g_hash_table_iter_next(&iter, NULL, (gpointer)&mdata)) {
-        XfdesktopIconView *icon_view = xfdesktop_icon_view_holder_get_icon_view(mdata->holder);
-        xfdesktop_icon_view_set_model(icon_view, NULL);
-    }
-    xfdesktop_file_icon_model_reload(fmanager->model);
-}
-
 static GList *
 xfdesktop_file_icon_manager_get_selected_icons(XfdesktopFileIconManager *fmanager)
 {
@@ -2227,7 +2230,7 @@ xfdesktop_file_icon_manager_key_press(GtkWidget *widget, GdkEventKey *evt, Xfdes
             }
             /* fall through */
         case GDK_KEY_F5:
-            xfdesktop_file_icon_manager_refresh_icons(fmanager);
+            xfdesktop_file_icon_manager_reload(XFDESKTOP_ICON_VIEW_MANAGER(fmanager));
             return TRUE;
 
         case GDK_KEY_F2: {
