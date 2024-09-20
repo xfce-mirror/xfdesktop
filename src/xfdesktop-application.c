@@ -458,6 +458,13 @@ reload_idle_cb(gpointer data)
         XfceDesktop *desktop = XFCE_DESKTOP(l->data);
         xfce_desktop_refresh(desktop, FALSE);
     }
+
+#ifdef ENABLE_DESKTOP_ICONS
+    if (app->icon_view_manager != NULL) {
+        xfdesktop_icon_view_manager_reload(app->icon_view_manager);
+    }
+#endif
+
     g_application_release(G_APPLICATION(app));
 
     return FALSE;
