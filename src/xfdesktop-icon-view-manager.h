@@ -49,6 +49,8 @@ struct _XfdesktopIconViewManagerClass
 
     void (*sort_icons)(XfdesktopIconViewManager *manager,
                        GtkSortType sort_type);
+
+    void (*reload)(XfdesktopIconViewManager *manager);
 };
 
 XfwScreen *xfdesktop_icon_view_manager_get_screen(XfdesktopIconViewManager *manager);
@@ -68,6 +70,8 @@ GtkMenu *xfdesktop_icon_view_manager_get_context_menu(XfdesktopIconViewManager *
                                                       GtkWidget *widget);
 void xfdesktop_icon_view_manager_sort_icons(XfdesktopIconViewManager *manager,
                                             GtkSortType sort_type);
+
+void xfdesktop_icon_view_manager_reload(XfdesktopIconViewManager *manager);
 
 G_END_DECLS
 
