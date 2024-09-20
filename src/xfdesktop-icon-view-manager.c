@@ -315,3 +315,12 @@ xfdesktop_icon_view_manager_sort_icons(XfdesktopIconViewManager *manager,
         klass->sort_icons(manager, sort_type);
     }
 }
+
+void
+xfdesktop_icon_view_manager_reload(XfdesktopIconViewManager *manager) {
+    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW_MANAGER(manager));
+    XfdesktopIconViewManagerClass *klass = XFDESKTOP_ICON_VIEW_MANAGER_GET_CLASS(manager);
+    if (klass->reload != NULL) {
+        klass->reload(manager);
+    }
+}
