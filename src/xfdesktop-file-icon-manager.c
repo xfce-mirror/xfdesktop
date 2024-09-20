@@ -2005,6 +2005,7 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager)
             } else {
                 /* Menu on non-folder icons */
                 GList *app_infos = NULL;
+                GtkWidget *app_infos_menu = NULL;
 
                 if(xfdesktop_file_utils_file_is_executable(info)) {
                     img = gtk_image_new_from_icon_name("system-run", GTK_ICON_SIZE_MENU);
@@ -2044,9 +2045,7 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager)
                 app_infos = g_app_info_get_all_for_type(g_file_info_get_content_type(info));
                 if(app_infos) {
                     GAppInfo *app_info, *default_application;
-                    GtkWidget *app_infos_menu;
                     GList *ap;
-                    gint list_len = 0;
 
                     /* move any default application in front of the list */
                     default_application = g_app_info_get_default_for_type (g_file_info_get_content_type(info), FALSE);
@@ -2073,17 +2072,15 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager)
                     g_object_unref(app_info);
 
                     if(app_infos->next) {
-                        list_len = g_list_length(app_infos->next);
+                        gboolean use_submenu = (g_list_length(app_infos->next) >= 3);
 
-                        if(!xfdesktop_file_utils_file_is_executable(info)
-                           && list_len < 3)
-                        {
+                        if (use_submenu || !xfdesktop_file_utils_file_is_executable(info)) {
                             mi = gtk_separator_menu_item_new();
                             gtk_widget_show(mi);
                             gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
                         }
 
-                        if(list_len >= 3) {
+                        if (use_submenu) {
                             img = gtk_image_new_from_icon_name("", GTK_ICON_SIZE_MENU);
                             mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Ope_n With"), img);
                             gtk_widget_show(mi);
@@ -2104,38 +2101,37 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager)
                             g_object_unref(app_info);
                         }
 
-                        if(list_len >= 3) {
+                        if (use_submenu) {
                             mi = gtk_separator_menu_item_new();
                             gtk_widget_show(mi);
                             gtk_menu_shell_append(GTK_MENU_SHELL(app_infos_menu), mi);
                         }
                     }
 
-                    img = gtk_image_new_from_icon_name("", GTK_ICON_SIZE_MENU);
-                    mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Ope_n With Other Application..."), img);
-                    gtk_widget_show(mi);
-                    if(list_len >= 3)
-                        gtk_menu_shell_append(GTK_MENU_SHELL(app_infos_menu), mi);
-                    else
-                        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-                    g_signal_connect(G_OBJECT(mi), "activate",
-                                     G_CALLBACK(xfdesktop_file_icon_menu_other_app),
-                                     fmanager);
+                    if (!multi_sel) {
+                        if (app_infos_menu == NULL)
+                            app_infos_menu = (GtkWidget *)menu;
 
-                    mi = gtk_separator_menu_item_new();
-                    gtk_widget_show(mi);
-                    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-
-                    img = gtk_image_new_from_icon_name("", GTK_ICON_SIZE_MENU);
-                    mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Set Defa_ult Application..."), img);
-                    gtk_widget_show(mi);
-                    if(list_len >= 3)
+                        img = gtk_image_new_from_icon_name("", GTK_ICON_SIZE_MENU);
+                        mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Ope_n With Other Application..."), img);
+                        gtk_widget_show(mi);
                         gtk_menu_shell_append(GTK_MENU_SHELL(app_infos_menu), mi);
-                    else
-                        gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
-                    g_signal_connect(G_OBJECT(mi), "activate",
-                                     G_CALLBACK(xfdesktop_file_icon_menu_set_default_app),
-                                     fmanager);
+                        g_signal_connect(G_OBJECT(mi), "activate",
+                                         G_CALLBACK(xfdesktop_file_icon_menu_other_app),
+                                         fmanager);
+
+                        mi = gtk_separator_menu_item_new();
+                        gtk_widget_show(mi);
+                        gtk_menu_shell_append(GTK_MENU_SHELL(app_infos_menu), mi);
+
+                        img = gtk_image_new_from_icon_name("", GTK_ICON_SIZE_MENU);
+                        mi = xfdesktop_menu_create_menu_item_with_mnemonic(_("Set Defa_ult Application..."), img);
+                        gtk_widget_show(mi);
+                        gtk_menu_shell_append(GTK_MENU_SHELL(app_infos_menu), mi);
+                        g_signal_connect(G_OBJECT(mi), "activate",
+                                         G_CALLBACK(xfdesktop_file_icon_menu_set_default_app),
+                                         fmanager);
+                    }
 
                     /* free the app info list */
                     g_list_free(app_infos);
