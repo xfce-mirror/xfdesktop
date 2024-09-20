@@ -747,6 +747,7 @@ handle_option(GApplication *app, GVariantDict *options) {
         gboolean arg_value;
     } options_to_actions[] = {
         { OPTION_QUIT, ACTION_QUIT, FALSE, FALSE, },
+        { OPTION_RELOAD, ACTION_RELOAD, FALSE, FALSE },
         { OPTION_NEXT, ACTION_NEXT, FALSE, FALSE, },
         { OPTION_MENU, ACTION_MENU, TRUE, TRUE },
         { OPTION_WINDOWLIST, ACTION_MENU, TRUE, FALSE },
