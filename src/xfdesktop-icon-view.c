@@ -1444,6 +1444,8 @@ xfdesktop_icon_view_button_press(GtkWidget *widget, GdkEventButton *evt) {
 
     DBG("entering");
 
+    gtk_widget_grab_focus(widget);
+
     if(evt->type == GDK_BUTTON_PRESS) {
         GList *item_l;
 
