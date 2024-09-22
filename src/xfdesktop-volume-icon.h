@@ -27,28 +27,8 @@
 
 G_BEGIN_DECLS
 
-#define XFDESKTOP_TYPE_VOLUME_ICON     (xfdesktop_volume_icon_get_type())
-#define XFDESKTOP_VOLUME_ICON(obj)     (G_TYPE_CHECK_INSTANCE_CAST((obj), XFDESKTOP_TYPE_VOLUME_ICON, XfdesktopVolumeIcon))
-#define XFDESKTOP_IS_VOLUME_ICON(obj)  (G_TYPE_CHECK_INSTANCE_TYPE((obj), XFDESKTOP_TYPE_VOLUME_ICON))
-
-typedef struct _XfdesktopVolumeIcon         XfdesktopVolumeIcon;
-typedef struct _XfdesktopVolumeIconClass    XfdesktopVolumeIconClass;
-typedef struct _XfdesktopVolumeIconPrivate  XfdesktopVolumeIconPrivate;
-
-struct _XfdesktopVolumeIcon
-{
-    XfdesktopFileIcon parent;
-
-    /*< private >*/
-    XfdesktopVolumeIconPrivate *priv;
-};
-
-struct _XfdesktopVolumeIconClass
-{
-    XfdesktopFileIconClass parent;
-};
-
-GType xfdesktop_volume_icon_get_type(void) G_GNUC_CONST;
+G_DECLARE_FINAL_TYPE(XfdesktopVolumeIcon, xfdesktop_volume_icon, XFDESKTOP, VOLUME_ICON, XfdesktopFileIcon)
+#define XFDESKTOP_TYPE_VOLUME_ICON (xfdesktop_volume_icon_get_type())
 
 XfdesktopVolumeIcon *xfdesktop_volume_icon_new(GVolume *volume,
                                                GdkScreen *screen);

@@ -59,7 +59,7 @@
 #define EMBLEM_READONLY   "emblem-readonly"
 #define EMBLEM_SYMLINK    "emblem-symbolic-link"
 
-struct _XfdesktopRegularFileIconPrivate
+struct _XfdesktopRegularFileIcon
 {
     XfconfChannel *channel;
     GdkScreen *gscreen;
@@ -124,12 +124,9 @@ static void xfdesktop_regular_file_icon_tfi_init(ThunarxFileInfoIface *iface);
 G_DEFINE_TYPE_EXTENDED(XfdesktopRegularFileIcon, xfdesktop_regular_file_icon,
                        XFDESKTOP_TYPE_FILE_ICON, 0,
                        G_IMPLEMENT_INTERFACE(THUNARX_TYPE_FILE_INFO,
-                                             xfdesktop_regular_file_icon_tfi_init)
-                       G_ADD_PRIVATE(XfdesktopRegularFileIcon)
-                       )
+                                             xfdesktop_regular_file_icon_tfi_init))
 #else
-G_DEFINE_TYPE_WITH_PRIVATE(XfdesktopRegularFileIcon, xfdesktop_regular_file_icon,
-                           XFDESKTOP_TYPE_FILE_ICON)
+G_DEFINE_TYPE(XfdesktopRegularFileIcon, xfdesktop_regular_file_icon, XFDESKTOP_TYPE_FILE_ICON)
 #endif
 
 
@@ -223,9 +220,9 @@ xfdesktop_regular_file_icon_class_init(XfdesktopRegularFileIconClass *klass)
 static void
 xfdesktop_regular_file_icon_init(XfdesktopRegularFileIcon *icon)
 {
-    icon->priv = xfdesktop_regular_file_icon_get_instance_private(icon);
-    icon->priv->display_name = NULL;
-    icon->priv->show_thumbnails = TRUE;
+    icon = xfdesktop_regular_file_icon_get_instance_private(icon);
+    icon->display_name = NULL;
+    icon->show_thumbnails = TRUE;
 }
 
 static void
@@ -234,28 +231,28 @@ xfdesktop_regular_file_icon_constructed(GObject *obj) {
 
     XfdesktopRegularFileIcon *regular_file_icon = XFDESKTOP_REGULAR_FILE_ICON(obj);
 
-    regular_file_icon->priv->display_name = xfdesktop_file_utils_get_display_name(regular_file_icon->priv->file,
-                                                                                  regular_file_icon->priv->file_info);
+    regular_file_icon->display_name = xfdesktop_file_utils_get_display_name(regular_file_icon->file,
+                                                                                  regular_file_icon->file_info);
 
-    regular_file_icon->priv->filesystem_info = g_file_query_filesystem_info(regular_file_icon->priv->file,
+    regular_file_icon->filesystem_info = g_file_query_filesystem_info(regular_file_icon->file,
                                                                             XFDESKTOP_FILESYSTEM_INFO_NAMESPACE,
                                                                             NULL, NULL);
 
-    regular_file_icon->priv->is_hidden = is_file_hidden(regular_file_icon->priv->file, regular_file_icon->priv->file_info);
+    regular_file_icon->is_hidden = is_file_hidden(regular_file_icon->file, regular_file_icon->file_info);
 
-    if (g_file_info_get_file_type(regular_file_icon->priv->file_info) == G_FILE_TYPE_DIRECTORY) {
-        regular_file_icon->priv->monitor = g_file_monitor(regular_file_icon->priv->file,
+    if (g_file_info_get_file_type(regular_file_icon->file_info) == G_FILE_TYPE_DIRECTORY) {
+        regular_file_icon->monitor = g_file_monitor(regular_file_icon->file,
                                                           G_FILE_MONITOR_WATCH_MOVES,
                                                           NULL,
                                                           NULL);
 
-        g_signal_connect(regular_file_icon->priv->monitor, "changed",
+        g_signal_connect(regular_file_icon->monitor, "changed",
                          G_CALLBACK(cb_folder_contents_changed),
                          regular_file_icon);
 
     }
 
-    xfconf_g_property_bind(regular_file_icon->priv->channel,
+    xfconf_g_property_bind(regular_file_icon->channel,
                            DESKTOP_ICONS_SHOW_THUMBNAILS,
                            G_TYPE_BOOLEAN,
                            regular_file_icon,
@@ -268,26 +265,26 @@ xfdesktop_regular_file_icon_set_property(GObject *obj, guint property_id, const 
 
     switch (property_id) {
         case PROP_CHANNEL:
-            icon->priv->channel = g_value_dup_object(value);
+            icon->channel = g_value_dup_object(value);
             break;
 
         case PROP_GDK_SCREEN:
-            icon->priv->gscreen = g_value_get_object(value);
+            icon->gscreen = g_value_get_object(value);
             break;
 
         case PROP_FILE:
-            icon->priv->file = g_value_dup_object(value);
+            icon->file = g_value_dup_object(value);
             break;
 
         case PROP_FILE_INFO:
-            icon->priv->file_info = g_value_dup_object(value);
+            icon->file_info = g_value_dup_object(value);
             break;
 
         case PROP_SHOW_THUMBNAILS:
-            if (icon->priv->show_thumbnails != g_value_get_boolean(value)) {
-                icon->priv->show_thumbnails = g_value_get_boolean(value);
+            if (icon->show_thumbnails != g_value_get_boolean(value)) {
+                icon->show_thumbnails = g_value_get_boolean(value);
 
-                XF_DEBUG("show-thumbnails changed! now: %s", icon->priv->show_thumbnails ? "TRUE" : "FALSE");
+                XF_DEBUG("show-thumbnails changed! now: %s", icon->show_thumbnails ? "TRUE" : "FALSE");
                 xfdesktop_file_icon_invalidate_icon(XFDESKTOP_FILE_ICON(icon));
                 xfdesktop_icon_pixbuf_changed(XFDESKTOP_ICON(icon));
             }
@@ -305,23 +302,23 @@ xfdesktop_regular_file_icon_get_property(GObject *obj, guint property_id, GValue
 
     switch (property_id) {
         case PROP_CHANNEL:
-            g_value_set_object(value, icon->priv->channel);
+            g_value_set_object(value, icon->channel);
             break;
 
         case PROP_GDK_SCREEN:
-            g_value_set_object(value, icon->priv->gscreen);
+            g_value_set_object(value, icon->gscreen);
             break;
 
         case PROP_FILE:
-            g_value_set_object(value, icon->priv->file);
+            g_value_set_object(value, icon->file);
             break;
 
         case PROP_FILE_INFO:
-            g_value_set_object(value, icon->priv->file_info);
+            g_value_set_object(value, icon->file_info);
             break;
 
         case PROP_SHOW_THUMBNAILS:
-            g_value_set_boolean(value, icon->priv->show_thumbnails);
+            g_value_set_boolean(value, icon->show_thumbnails);
             break;
 
         default:
@@ -335,26 +332,26 @@ xfdesktop_regular_file_icon_finalize(GObject *obj)
 {
     XfdesktopRegularFileIcon *icon = XFDESKTOP_REGULAR_FILE_ICON(obj);
 
-    if(icon->priv->file_info)
-        g_object_unref(icon->priv->file_info);
+    if(icon->file_info)
+        g_object_unref(icon->file_info);
 
-    if(icon->priv->filesystem_info)
-        g_object_unref(icon->priv->filesystem_info);
+    if(icon->filesystem_info)
+        g_object_unref(icon->filesystem_info);
 
-    g_object_unref(icon->priv->file);
+    g_object_unref(icon->file);
 
-    g_free(icon->priv->display_name);
+    g_free(icon->display_name);
 
-    if(icon->priv->tooltip)
-        g_free(icon->priv->tooltip);
+    if(icon->tooltip)
+        g_free(icon->tooltip);
 
-    if(icon->priv->thumbnail_file)
-        g_object_unref(icon->priv->thumbnail_file);
+    if(icon->thumbnail_file)
+        g_object_unref(icon->thumbnail_file);
 
-    if(icon->priv->monitor)
-        g_object_unref(icon->priv->monitor);
+    if(icon->monitor)
+        g_object_unref(icon->monitor);
 
-    g_object_unref(icon->priv->channel);
+    g_object_unref(icon->channel);
 
     G_OBJECT_CLASS(xfdesktop_regular_file_icon_parent_class)->finalize(obj);
 }
@@ -386,10 +383,7 @@ xfdesktop_regular_file_icon_delete_thumbnail_file(XfdesktopIcon *icon)
 
     file_icon = XFDESKTOP_REGULAR_FILE_ICON(icon);
 
-    if(file_icon->priv->thumbnail_file) {
-        g_object_unref(file_icon->priv->thumbnail_file);
-        file_icon->priv->thumbnail_file = NULL;
-    }
+    g_clear_object(&file_icon->thumbnail_file);
 
     xfdesktop_file_icon_invalidate_icon(XFDESKTOP_FILE_ICON(icon));
 
@@ -406,10 +400,10 @@ xfdesktop_regular_file_icon_set_thumbnail_file(XfdesktopIcon *icon, GFile *file)
 
     file_icon = XFDESKTOP_REGULAR_FILE_ICON(icon);
 
-    if(file_icon->priv->thumbnail_file)
-        g_object_unref(file_icon->priv->thumbnail_file);
+    if(file_icon->thumbnail_file)
+        g_object_unref(file_icon->thumbnail_file);
 
-    file_icon->priv->thumbnail_file = file;
+    file_icon->thumbnail_file = file;
 
     xfdesktop_file_icon_invalidate_icon(XFDESKTOP_FILE_ICON(icon));
 
@@ -483,7 +477,7 @@ xfdesktop_load_icon_from_desktop_file(XfdesktopRegularFileIcon *regular_icon)
     gboolean is_pixmaps = FALSE;
 
     /* try to load the file into memory */
-    if(!g_file_load_contents(regular_icon->priv->file, NULL, &contents, &length, NULL, NULL))
+    if(!g_file_load_contents(regular_icon->file, NULL, &contents, &length, NULL, NULL))
         return NULL;
 
     /* allocate a new key file */
@@ -595,34 +589,34 @@ xfdesktop_regular_file_icon_get_gicon(XfdesktopFileIcon *icon)
     TRACE("entering");
 
     /* Try to load the icon referenced in the .desktop file */
-    if(xfdesktop_file_utils_is_desktop_file(regular_icon->priv->file_info)) {
+    if(xfdesktop_file_utils_is_desktop_file(regular_icon->file_info)) {
         base_gicon = xfdesktop_load_icon_from_desktop_file(regular_icon);
 
-    } else if(g_file_info_get_file_type(regular_icon->priv->file_info) == G_FILE_TYPE_DIRECTORY) {
+    } else if(g_file_info_get_file_type(regular_icon->file_info) == G_FILE_TYPE_DIRECTORY) {
         /* Try to load a thumbnail from the standard folder image locations */
         gchar *thumbnail_file = NULL;
 
-        if(regular_icon->priv->show_thumbnails)
+        if(regular_icon->show_thumbnails)
             thumbnail_file = xfdesktop_load_icon_location_from_folder(file_icon);
 
         if(thumbnail_file) {
             /* If there's a folder thumbnail, use it */
-            regular_icon->priv->thumbnail_file = g_file_new_for_path(thumbnail_file);
-            base_gicon = g_file_icon_new(regular_icon->priv->thumbnail_file);
+            regular_icon->thumbnail_file = g_file_new_for_path(thumbnail_file);
+            base_gicon = g_file_icon_new(regular_icon->thumbnail_file);
             g_free(thumbnail_file);
         }
 
     } else {
         /* If we have a thumbnail then they are enabled, use it. */
-        if(regular_icon->priv->thumbnail_file) {
-            gchar *file = g_file_get_path(regular_icon->priv->file);
+        if(regular_icon->thumbnail_file) {
+            gchar *file = g_file_get_path(regular_icon->file);
             gchar *mimetype = xfdesktop_get_file_mimetype(file);
 
             /* Don't use thumbnails for svg, use the file itself */
             if(g_strcmp0(mimetype, "image/svg+xml") == 0)
-                base_gicon = g_file_icon_new(regular_icon->priv->file);
+                base_gicon = g_file_icon_new(regular_icon->file);
             else
-                base_gicon = g_file_icon_new(regular_icon->priv->thumbnail_file);
+                base_gicon = g_file_icon_new(regular_icon->thumbnail_file);
 
             g_free(mimetype);
             g_free(file);
@@ -631,7 +625,7 @@ xfdesktop_regular_file_icon_get_gicon(XfdesktopFileIcon *icon)
 
     /* If we still don't have an icon, use the default */
     if(!G_IS_ICON(base_gicon)) {
-        base_gicon = g_file_info_get_icon(regular_icon->priv->file_info);
+        base_gicon = g_file_info_get_icon(regular_icon->file_info);
         if(G_IS_ICON(base_gicon))
             g_object_ref(base_gicon);
     }
@@ -641,7 +635,7 @@ xfdesktop_regular_file_icon_get_gicon(XfdesktopFileIcon *icon)
     g_object_unref(base_gicon);
 
     /* load the unreadable emblem if necessary */
-    if(!g_file_info_get_attribute_boolean(regular_icon->priv->file_info,
+    if(!g_file_info_get_attribute_boolean(regular_icon->file_info,
                                           G_FILE_ATTRIBUTE_ACCESS_CAN_READ))
     {
         GIcon *themed_icon = g_themed_icon_new(EMBLEM_UNREADABLE);
@@ -653,7 +647,7 @@ xfdesktop_regular_file_icon_get_gicon(XfdesktopFileIcon *icon)
         g_object_unref(themed_icon);
     }
     /* load the read only emblem if necessary */
-    else if(!g_file_info_get_attribute_boolean(regular_icon->priv->file_info,
+    else if(!g_file_info_get_attribute_boolean(regular_icon->file_info,
                                                G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
     {
         GIcon *themed_icon = g_themed_icon_new(EMBLEM_READONLY);
@@ -666,7 +660,7 @@ xfdesktop_regular_file_icon_get_gicon(XfdesktopFileIcon *icon)
     }
 
     /* load the symlink emblem if necessary */
-    if(g_file_info_get_attribute_boolean(regular_icon->priv->file_info,
+    if(g_file_info_get_attribute_boolean(regular_icon->file_info,
                                          G_FILE_ATTRIBUTE_STANDARD_IS_SYMLINK))
     {
         GIcon *themed_icon = g_themed_icon_new(EMBLEM_SYMLINK);
@@ -688,7 +682,7 @@ xfdesktop_regular_file_icon_peek_label(XfdesktopIcon *icon)
 
     g_return_val_if_fail(XFDESKTOP_IS_REGULAR_FILE_ICON(icon), NULL);
 
-    return regular_file_icon->priv->display_name;
+    return regular_file_icon->display_name;
 }
 
 static const gchar *
@@ -696,7 +690,7 @@ xfdesktop_regular_file_icon_peek_tooltip(XfdesktopIcon *icon)
 {
     XfdesktopRegularFileIcon *regular_file_icon = XFDESKTOP_REGULAR_FILE_ICON(icon);
 
-    if(!regular_file_icon->priv->tooltip) {
+    if(!regular_file_icon->tooltip) {
         GFileInfo *info = xfdesktop_file_icon_peek_file_info(XFDESKTOP_FILE_ICON(icon));
         const gchar *content_type, *comment = NULL;
         gchar *description, *size_string, *time_string;
@@ -713,7 +707,7 @@ xfdesktop_regular_file_icon_peek_tooltip(XfdesktopIcon *icon)
         }
         else
         {
-          gchar *uri = g_file_get_uri(regular_file_icon->priv->file);
+          gchar *uri = g_file_get_uri(regular_file_icon->file);
           if(g_str_has_suffix(uri, ".desktop"))
               is_desktop_file = TRUE;
           g_free(uri);
@@ -731,15 +725,15 @@ xfdesktop_regular_file_icon_peek_tooltip(XfdesktopIcon *icon)
                                                  G_FILE_ATTRIBUTE_TIME_MODIFIED);
         time_string = xfdesktop_file_utils_format_time_for_display(mtime);
 
-        regular_file_icon->priv->tooltip =
+        regular_file_icon->tooltip =
             g_strdup_printf(_("Name: %s\nType: %s\nSize: %s\nLast modified: %s"),
-                            regular_file_icon->priv->display_name,
+                            regular_file_icon->display_name,
                             description, size_string, time_string);
 
         /* Extract the Comment entry from the .desktop file */
         if(is_desktop_file)
         {
-            gchar *path = g_file_get_path(regular_file_icon->priv->file);
+            gchar *path = g_file_get_path(regular_file_icon->file);
             XfceRc *rcfile = xfce_rc_simple_open(path, TRUE);
             g_free(path);
 
@@ -749,10 +743,8 @@ xfdesktop_regular_file_icon_peek_tooltip(XfdesktopIcon *icon)
             }
             /* Prepend the comment to the tooltip */
             if(comment != NULL && *comment != '\0') {
-                gchar *tooltip = regular_file_icon->priv->tooltip;
-                regular_file_icon->priv->tooltip = g_strdup_printf("%s\n%s",
-                                                                   comment,
-                                                                   tooltip);
+                gchar *tooltip = regular_file_icon->tooltip;
+                regular_file_icon->tooltip = g_strdup_printf("%s\n%s", comment, tooltip);
                 g_free(tooltip);
             }
 
@@ -766,7 +758,7 @@ xfdesktop_regular_file_icon_peek_tooltip(XfdesktopIcon *icon)
         g_free(description);
     }
 
-    return regular_file_icon->priv->tooltip;
+    return regular_file_icon->tooltip;
 }
 
 static gboolean
@@ -779,7 +771,7 @@ xfdesktop_regular_file_can_write_parent(XfdesktopFileIcon *icon)
 
     g_return_val_if_fail(file_icon, FALSE);
 
-    parent_file = g_file_get_parent(file_icon->priv->file);
+    parent_file = g_file_get_parent(file_icon->file);
     if(!parent_file)
         return FALSE;
 
@@ -803,28 +795,28 @@ xfdesktop_regular_file_can_write_parent(XfdesktopFileIcon *icon)
 
 static gboolean
 xfdesktop_regular_file_icon_is_hidden_file(XfdesktopFileIcon *icon) {
-    return XFDESKTOP_REGULAR_FILE_ICON(icon)->priv->is_hidden;
+    return XFDESKTOP_REGULAR_FILE_ICON(icon)->is_hidden;
 }
 
 static GFileInfo *
 xfdesktop_regular_file_icon_peek_file_info(XfdesktopFileIcon *icon)
 {
     g_return_val_if_fail(XFDESKTOP_IS_REGULAR_FILE_ICON(icon), NULL);
-    return XFDESKTOP_REGULAR_FILE_ICON(icon)->priv->file_info;
+    return XFDESKTOP_REGULAR_FILE_ICON(icon)->file_info;
 }
 
 static GFileInfo *
 xfdesktop_regular_file_icon_peek_filesystem_info(XfdesktopFileIcon *icon)
 {
     g_return_val_if_fail(XFDESKTOP_IS_REGULAR_FILE_ICON(icon), NULL);
-    return XFDESKTOP_REGULAR_FILE_ICON(icon)->priv->filesystem_info;
+    return XFDESKTOP_REGULAR_FILE_ICON(icon)->filesystem_info;
 }
 
 static GFile *
 xfdesktop_regular_file_icon_peek_file(XfdesktopFileIcon *icon)
 {
     g_return_val_if_fail(XFDESKTOP_IS_REGULAR_FILE_ICON(icon), NULL);
-    return XFDESKTOP_REGULAR_FILE_ICON(icon)->priv->file;
+    return XFDESKTOP_REGULAR_FILE_ICON(icon)->file;
 }
 
 static void
@@ -839,30 +831,30 @@ xfdesktop_regular_file_icon_update_file_info(XfdesktopFileIcon *icon,
     g_return_if_fail(G_IS_FILE_INFO(info));
 
     /* release the old file info */
-    if(regular_file_icon->priv->file_info) {
-        g_object_unref(regular_file_icon->priv->file_info);
-        regular_file_icon->priv->file_info = NULL;
+    if(regular_file_icon->file_info) {
+        g_object_unref(regular_file_icon->file_info);
+        regular_file_icon->file_info = NULL;
     }
 
-    regular_file_icon->priv->file_info = g_object_ref(info);
+    regular_file_icon->file_info = g_object_ref(info);
 
-    if(regular_file_icon->priv->filesystem_info)
-        g_object_unref(regular_file_icon->priv->filesystem_info);
+    if(regular_file_icon->filesystem_info)
+        g_object_unref(regular_file_icon->filesystem_info);
 
-    regular_file_icon->priv->filesystem_info = g_file_query_filesystem_info(regular_file_icon->priv->file,
-                                                                            XFDESKTOP_FILESYSTEM_INFO_NAMESPACE,
-                                                                            NULL, NULL);
+    regular_file_icon->filesystem_info = g_file_query_filesystem_info(regular_file_icon->file,
+                                                                      XFDESKTOP_FILESYSTEM_INFO_NAMESPACE,
+                                                                      NULL, NULL);
 
     /* get both, old and new display name */
-    old_display_name = regular_file_icon->priv->display_name;
-    new_display_name = xfdesktop_file_utils_get_display_name(regular_file_icon->priv->file,
-                                                             regular_file_icon->priv->file_info);
+    old_display_name = regular_file_icon->display_name;
+    new_display_name = xfdesktop_file_utils_get_display_name(regular_file_icon->file,
+                                                             regular_file_icon->file_info);
 
     /* check whether the display name has changed with the info update */
     if(g_strcmp0 (old_display_name, new_display_name) != 0) {
         /* replace the display name */
-        g_free (regular_file_icon->priv->display_name);
-        regular_file_icon->priv->display_name = new_display_name;
+        g_free (regular_file_icon->display_name);
+        regular_file_icon->display_name = new_display_name;
 
         /* notify listeners of the label change */
         xfdesktop_icon_label_changed(XFDESKTOP_ICON(icon));
@@ -872,8 +864,8 @@ xfdesktop_regular_file_icon_update_file_info(XfdesktopFileIcon *icon,
     }
 
     /* invalidate the tooltip */
-    g_free(regular_file_icon->priv->tooltip);
-    regular_file_icon->priv->tooltip = NULL;
+    g_free(regular_file_icon->tooltip);
+    regular_file_icon->tooltip = NULL;
 
     /* not really easy to check if this changed or not, so just invalidate it */
     xfdesktop_file_icon_invalidate_icon(XFDESKTOP_FILE_ICON(icon));
@@ -895,7 +887,7 @@ cb_folder_contents_changed(GFileMonitor     *monitor,
     regular_file_icon = XFDESKTOP_REGULAR_FILE_ICON(user_data);
 
     /* not showing thumbnails */
-    if(!regular_file_icon->priv->show_thumbnails)
+    if(!regular_file_icon->show_thumbnails)
         return;
 
     gboolean reload_icon;

@@ -32,13 +32,15 @@
 
 #include "xfdesktop-icon.h"
 
-struct _XfdesktopIconPrivate
+#define GET_PRIVATE(icon) ((XfdesktopIconPrivate *)xfdesktop_icon_get_instance_private(XFDESKTOP_ICON(icon)))
+
+typedef struct _XfdesktopIconPrivate
 {
     gchar *identifier;
     XfwMonitor *monitor;
     gint16 row;
     gint16 col;
-};
+} XfdesktopIconPrivate;
 
 enum {
     SIG_PIXBUF_CHANGED = 0,
@@ -92,15 +94,15 @@ xfdesktop_icon_class_init(XfdesktopIconClass *klass)
 static void
 xfdesktop_icon_init(XfdesktopIcon *icon)
 {
-    icon->priv = xfdesktop_icon_get_instance_private(icon);
-    icon->priv->row = -1;
-    icon->priv->col = -1;
+    XfdesktopIconPrivate *priv = GET_PRIVATE(icon);
+    priv->row = -1;
+    priv->col = -1;
 }
 
 static void
 xfdesktop_icon_finalize(GObject *object) {
-    XfdesktopIcon *icon = XFDESKTOP_ICON(object);
-    g_free(icon->priv->identifier);
+    XfdesktopIconPrivate *priv = GET_PRIVATE(object);
+    g_free(priv->identifier);
 
     G_OBJECT_CLASS(xfdesktop_icon_parent_class)->finalize(object);
 }
@@ -110,8 +112,9 @@ xfdesktop_icon_set_monitor(XfdesktopIcon *icon, XfwMonitor *monitor) {
     g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), FALSE);
     g_return_val_if_fail(monitor == NULL || XFW_IS_MONITOR(monitor), FALSE);
 
-    if (icon->priv->monitor != monitor) {
-        icon->priv->monitor = monitor;
+    XfdesktopIconPrivate *priv = GET_PRIVATE(icon);
+    if (priv->monitor != monitor) {
+        priv->monitor = monitor;
         return TRUE;
     } else {
         return FALSE;
@@ -121,7 +124,7 @@ xfdesktop_icon_set_monitor(XfdesktopIcon *icon, XfwMonitor *monitor) {
 XfwMonitor *
 xfdesktop_icon_get_monitor(XfdesktopIcon *icon) {
     g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), NULL);
-    return icon->priv->monitor;
+    return GET_PRIVATE(icon)->monitor;
 }
 
 gboolean
@@ -132,9 +135,10 @@ xfdesktop_icon_set_position(XfdesktopIcon *icon,
     g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), FALSE);
     g_return_val_if_fail((row >= 0 && col >= 0) || (row == -1 && col == -1), FALSE);
 
-    if (row != icon->priv->row || col != icon->priv->col) {
-        icon->priv->row = row;
-        icon->priv->col = col;
+    XfdesktopIconPrivate *priv = GET_PRIVATE(icon);
+    if (row != priv->row || col != priv->col) {
+        priv->row = row;
+        priv->col = col;
         g_signal_emit(G_OBJECT(icon), __signals[SIG_POS_CHANGED], 0, NULL);
         return TRUE;
     } else {
@@ -149,9 +153,10 @@ xfdesktop_icon_get_position(XfdesktopIcon *icon,
 {
     g_return_val_if_fail(XFDESKTOP_IS_ICON(icon) && row && col, FALSE);
 
-    if (icon->priv->row != -1 && icon->priv->col != -1) {
-        *row = icon->priv->row;
-        *col = icon->priv->col;
+    XfdesktopIconPrivate *priv = GET_PRIVATE(icon);
+    if (priv->row != -1 && priv->col != -1) {
+        *row = priv->row;
+        *col = priv->col;
         return TRUE;
     } else {
         return FALSE;
@@ -177,13 +182,14 @@ xfdesktop_icon_peek_identifier(XfdesktopIcon *icon)
 {
     g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), NULL);
 
-    if (icon->priv->identifier == NULL) {
+    XfdesktopIconPrivate *priv = GET_PRIVATE(icon);
+    if (priv->identifier == NULL) {
         XfdesktopIconClass *klass = XFDESKTOP_ICON_GET_CLASS(icon);
         g_return_val_if_fail(klass->get_identifier != NULL, NULL);
-        icon->priv->identifier = klass->get_identifier(icon);
+        priv->identifier = klass->get_identifier(icon);
     }
 
-    return icon->priv->identifier;
+    return priv->identifier;
 }
 
 /*< optional >*/
