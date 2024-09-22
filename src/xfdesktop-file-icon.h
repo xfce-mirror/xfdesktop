@@ -29,22 +29,8 @@
 
 G_BEGIN_DECLS
 
-#define XFDESKTOP_TYPE_FILE_ICON            (xfdesktop_file_icon_get_type())
-#define XFDESKTOP_FILE_ICON(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), XFDESKTOP_TYPE_FILE_ICON, XfdesktopFileIcon))
-#define XFDESKTOP_IS_FILE_ICON(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), XFDESKTOP_TYPE_FILE_ICON))
-#define XFDESKTOP_FILE_ICON_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), XFDESKTOP_TYPE_FILE_ICON, XfdesktopFileIconClass))
-
-typedef struct _XfdesktopFileIcon        XfdesktopFileIcon;
-typedef struct _XfdesktopFileIconClass   XfdesktopFileIconClass;
-typedef struct _XfdesktopFileIconPrivate XfdesktopFileIconPrivate;
-
-struct _XfdesktopFileIcon
-{
-    XfdesktopIcon parent;
-
-    /*< private >*/
-    XfdesktopFileIconPrivate *priv;
-};
+G_DECLARE_DERIVABLE_TYPE(XfdesktopFileIcon, xfdesktop_file_icon, XFDESKTOP, FILE_ICON, XfdesktopIcon)
+#define XFDESKTOP_TYPE_FILE_ICON (xfdesktop_file_icon_get_type())
 
 struct _XfdesktopFileIconClass
 {
@@ -66,8 +52,6 @@ struct _XfdesktopFileIconClass
     guint (*hash)(XfdesktopFileIcon *icon);
     gchar *(*get_sort_key)(XfdesktopFileIcon *icon);
 };
-
-GType xfdesktop_file_icon_get_type(void) G_GNUC_CONST;
 
 GFileInfo *xfdesktop_file_icon_peek_file_info(XfdesktopFileIcon *icon);
 GFileInfo *xfdesktop_file_icon_peek_filesystem_info(XfdesktopFileIcon *icon);
