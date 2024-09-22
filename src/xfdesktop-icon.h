@@ -21,28 +21,14 @@
 #ifndef __XFDESKTOP_ICON_H__
 #define __XFDESKTOP_ICON_H__
 
+#include <glib-object.h>
 #include <gtk/gtk.h>
 #include <libxfce4windowing/libxfce4windowing.h>
 
 G_BEGIN_DECLS
 
-#define XFDESKTOP_TYPE_ICON            (xfdesktop_icon_get_type())
-#define XFDESKTOP_ICON(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), XFDESKTOP_TYPE_ICON, XfdesktopIcon))
-#define XFDESKTOP_ICON_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), XFDESKTOP_TYPE_ICON, XfdesktopIconClass))
-#define XFDESKTOP_IS_ICON(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), XFDESKTOP_TYPE_ICON))
-#define XFDESKTOP_ICON_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), XFDESKTOP_TYPE_ICON, XfdesktopIconClass))
-
-typedef struct _XfdesktopIcon        XfdesktopIcon;
-typedef struct _XfdesktopIconClass   XfdesktopIconClass;
-typedef struct _XfdesktopIconPrivate XfdesktopIconPrivate;
-
-struct _XfdesktopIcon
-{
-    GObject parent;
-
-    /*< private >*/
-    XfdesktopIconPrivate *priv;
-};
+G_DECLARE_DERIVABLE_TYPE(XfdesktopIcon, xfdesktop_icon, XFDESKTOP, ICON, GObject)
+#define XFDESKTOP_TYPE_ICON (xfdesktop_icon_get_type())
 
 struct _XfdesktopIconClass
 {
@@ -68,8 +54,6 @@ struct _XfdesktopIconClass
     gboolean (*populate_context_menu)(XfdesktopIcon *icon,
                                       GtkWidget *menu);
 };
-
-GType xfdesktop_icon_get_type(void) G_GNUC_CONST;
 
 gboolean xfdesktop_icon_set_monitor(XfdesktopIcon *icon,
                                     XfwMonitor *monitor);
