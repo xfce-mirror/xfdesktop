@@ -28,28 +28,8 @@
 
 G_BEGIN_DECLS
 
-#define XFDESKTOP_TYPE_REGULAR_FILE_ICON     (xfdesktop_regular_file_icon_get_type())
-#define XFDESKTOP_REGULAR_FILE_ICON(obj)     (G_TYPE_CHECK_INSTANCE_CAST((obj), XFDESKTOP_TYPE_REGULAR_FILE_ICON, XfdesktopRegularFileIcon))
-#define XFDESKTOP_IS_REGULAR_FILE_ICON(obj)  (G_TYPE_CHECK_INSTANCE_TYPE((obj), XFDESKTOP_TYPE_REGULAR_FILE_ICON))
-
-typedef struct _XfdesktopRegularFileIcon         XfdesktopRegularFileIcon;
-typedef struct _XfdesktopRegularFileIconClass    XfdesktopRegularFileIconClass;
-typedef struct _XfdesktopRegularFileIconPrivate  XfdesktopRegularFileIconPrivate;
-
-struct _XfdesktopRegularFileIcon
-{
-    XfdesktopFileIcon parent;
-
-    /*< private >*/
-    XfdesktopRegularFileIconPrivate *priv;
-};
-
-struct _XfdesktopRegularFileIconClass
-{
-    XfdesktopFileIconClass parent;
-};
-
-GType xfdesktop_regular_file_icon_get_type(void) G_GNUC_CONST;
+G_DECLARE_FINAL_TYPE(XfdesktopRegularFileIcon, xfdesktop_regular_file_icon, XFDESKTOP, REGULAR_FILE_ICON, XfdesktopFileIcon)
+#define XFDESKTOP_TYPE_REGULAR_FILE_ICON (xfdesktop_regular_file_icon_get_type())
 
 XfdesktopRegularFileIcon *xfdesktop_regular_file_icon_new(XfconfChannel *channel,
                                                           GdkScreen *gdkscreen,
