@@ -179,7 +179,6 @@ struct _XfdesktopApplication
 
     GList *desktops;  // XfceDesktop
     GHashTable *monitors;  // XfwMonitor -> XfceDesktop
-    GList *mirrored_monitors;
 
     XfdesktopLocalArgs *args;
 
@@ -737,77 +736,29 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     return desktop;
 }
 
-static gboolean
-is_mirroring(XfwScreen *screen, XfwMonitor *monitor, GList **mirrored_monitors) {
-    GdkRectangle geom;
-    xfw_monitor_get_logical_geometry(monitor, &geom);
-
-    for (GList *l = xfw_screen_get_monitors(screen); l != NULL; l = l->next) {
-        XfwMonitor *a_monitor = XFW_MONITOR(l->data);
-        if (a_monitor != monitor) {
-            GdkRectangle a_geom;
-            xfw_monitor_get_logical_geometry(a_monitor, &a_geom);
-
-            if (a_geom.x == geom.x && a_geom.y == geom.y) {
-                *mirrored_monitors = g_list_prepend(*mirrored_monitors, a_monitor);
-            }
-        }
-    }
-
-    return *mirrored_monitors != NULL;
-}
-
-static XfwMonitor *
-preferred_mirror(XfwScreen *screen, XfwMonitor *monitor, GList *mirrored_monitors) {
-    XfwMonitor *primary = xfw_screen_get_primary_monitor(screen);
-    if (primary == monitor) {
-        return monitor;
-    } else if (g_list_find(mirrored_monitors, primary) != NULL) {
-        return primary;
-    } else {
-        GdkRectangle geom;
-        xfw_monitor_get_logical_geometry(monitor, &geom);
-
-        XfwMonitor *largest = monitor;
-        guint largest_area = geom.width * geom.height;
-
-        for (GList *l = mirrored_monitors; l != NULL; l = l->next) {
-            XfwMonitor *a_monitor = XFW_MONITOR(l->data);
-            xfw_monitor_get_logical_geometry(a_monitor, &geom);
-            guint area = geom.width * geom.height;
-            if (area > largest_area) {
-                largest = a_monitor;
-                largest_area = area;
-            }
-        }
-
-        return largest;
-    }
-}
-
 static void
 add_monitor_desktop(XfdesktopApplication *app, XfwMonitor *monitor) {
-    TRACE("entering, %s", xfw_monitor_get_description(monitor));
+    if (!g_hash_table_contains(app->monitors, monitor)) {
+        DBG("adding %s", xfw_monitor_get_description(monitor));
 
-    app->mirrored_monitors = g_list_remove(app->mirrored_monitors, monitor);
-
-    GtkWidget *desktop = create_desktop(app, monitor);
-    app->desktops = g_list_append(app->desktops, desktop);
-    g_hash_table_insert(app->monitors, monitor, desktop);
+        GtkWidget *desktop = create_desktop(app, monitor);
+        app->desktops = g_list_append(app->desktops, desktop);
+        g_hash_table_insert(app->monitors, monitor, desktop);
 
 #ifdef ENABLE_DESKTOP_ICONS
-    if (app->icon_view_manager != NULL) {
-        xfdesktop_icon_view_manager_desktop_added(app->icon_view_manager, XFCE_DESKTOP(desktop));
-    }
+        if (app->icon_view_manager != NULL) {
+            xfdesktop_icon_view_manager_desktop_added(app->icon_view_manager, XFCE_DESKTOP(desktop));
+        }
 #endif
+    }
 }
 
 static void
 remove_monitor_desktop(XfdesktopApplication *app, XfwMonitor *monitor) {
-    TRACE("entering, %s", xfw_monitor_get_description(monitor));
-
     XfceDesktop *desktop = g_hash_table_lookup(app->monitors, monitor);
     if (desktop != NULL) {
+        DBG("removing %s", xfw_monitor_get_description(monitor));
+
 #ifdef ENABLE_DESKTOP_ICONS
         if (app->icon_view_manager != NULL) {
             xfdesktop_icon_view_manager_desktop_removed(app->icon_view_manager, desktop);
@@ -821,42 +772,112 @@ remove_monitor_desktop(XfdesktopApplication *app, XfwMonitor *monitor) {
     }
 }
 
+// For each mirror set, we ensure the first monitor in the set is shown, and
+// the rest are hidden.
 static void
-handle_monitor(XfdesktopApplication *app, XfwMonitor *monitor) {
-    XfwMonitor *to_add;
-    GList *to_remove = NULL;
-    GList *mirrored_monitors = NULL;
+handle_new_mirror_sets(XfdesktopApplication *app, GList *mirror_sets) {
+    for (GList *lms = mirror_sets; lms != NULL; lms = lms->next) {
+        GList *mirror_set = lms->data;
 
-    if (is_mirroring(app->screen, monitor, &mirrored_monitors)) {
-        to_add = preferred_mirror(app->screen, monitor, mirrored_monitors);
+        XfwMonitor *preferred_monitor = g_list_nth_data(mirror_set, 0);
+        g_assert(preferred_monitor != NULL);
+        add_monitor_desktop(app, preferred_monitor);
 
-        if (to_add == monitor) {
-            to_remove = mirrored_monitors;
-        } else {
-            to_remove = g_list_remove(mirrored_monitors, to_add);
-            to_remove = g_list_prepend(to_remove, monitor);
+        for (GList *lm = mirror_set->next; lm != NULL; lm = lm->next) {
+            XfwMonitor *hidden_monitor = XFW_MONITOR(lm->data);
+            remove_monitor_desktop(app, hidden_monitor);
         }
+    }
+}
+
+// A monitor is "better" if it is primary.  If there are no primary monitors, a
+// monitor is "better" if it has a larger logical pixel area.
+static gint
+mirror_set_monitors_compare(gconstpointer a, gconstpointer b) {
+    XfwMonitor *am = XFW_MONITOR((gpointer)a);
+    XfwMonitor *bm = XFW_MONITOR((gpointer)b);
+
+    if (xfw_monitor_is_primary(am)) {
+        return -1;
+    } else if (xfw_monitor_is_primary(bm)) {
+        return 1;
     } else {
-        to_add = monitor;
-        to_remove = NULL;
-    }
+        GdkRectangle a_geom;
+        xfw_monitor_get_logical_geometry(am, &a_geom);
+        gint a_area = a_geom.width * a_geom.height;
 
-    for (GList *l = to_remove; l != NULL; l = l->next) {
-        XfwMonitor *a_monitor = XFW_MONITOR(l->data);
-        remove_monitor_desktop(app, a_monitor);
-        if (g_list_find(app->mirrored_monitors, a_monitor) == NULL) {
-            app->mirrored_monitors = g_list_prepend(app->mirrored_monitors, a_monitor);
+        GdkRectangle b_geom;
+        xfw_monitor_get_logical_geometry(bm, &b_geom);
+        gint b_area = a_geom.width * a_geom.height;
+
+        return CLAMP(b_area - a_area, -1, 1);
+    }
+}
+
+static GList *  // GList of GList of XfwMonitor (aka List<List<XfwMonitor>>)
+build_monitor_mirror_sets(XfdesktopApplication *app) {
+    GList *mirror_sets = NULL;
+
+    // First we build a list of "mirror sets".  This is a list of lists.  Each
+    // list contains a series of monitors that mirror each other.  If a monitor
+    // has no mirror, it will be the only monitor in the list.
+    GList *monitors = g_list_copy(xfw_screen_get_monitors(app->screen));
+    for (GList *lm = monitors; lm != NULL;) {
+        XfwMonitor *monitor = XFW_MONITOR(lm->data);
+        GList *cur_mirror_set = g_list_append(NULL, monitor);
+
+        GdkRectangle geom;
+        xfw_monitor_get_logical_geometry(monitor, &geom);
+
+        GList *remaining = lm->next;
+        for (GList *lr = remaining; lr != NULL;) {
+            GList *cur = lr;
+            lr = lr->next;
+
+            XfwMonitor *a_monitor = XFW_MONITOR(cur->data);
+            GdkRectangle a_geom;
+            xfw_monitor_get_logical_geometry(a_monitor, &a_geom);
+
+            // We define a mirror as two monitors with the same x & y
+            // coordinates.  It's possible that someone could set up a geometry
+            // where monitors overlap, but not with the same x & y coordinates.
+            // But I think we are just not going to handle that situation, in
+            // which case things will just be broken, and that's life.
+            if (a_geom.x == geom.x && a_geom.y == geom.y) {
+                remaining = g_list_delete_link(remaining, cur);
+                cur_mirror_set = g_list_append(cur_mirror_set, a_monitor);
+            }
         }
+
+        mirror_sets = g_list_append(mirror_sets, cur_mirror_set);
+
+        lm = remaining;
+    }
+    g_list_free(monitors);
+
+    // Now we sort each mirror set to decide which monitor in the mirror set is
+    // the one that gets an XfceDesktop associated with it.  That monitor will
+    // be placed first in that mirror set.
+    for (GList *ls = mirror_sets; ls != NULL; ls = ls->next) {
+        GList *mirror_set = ls->data;
+        mirror_set = g_list_sort(mirror_set, mirror_set_monitors_compare);
+        ls->data = mirror_set;
     }
 
-    if (!g_hash_table_contains(app->monitors, to_add)) {
-        add_monitor_desktop(app, to_add);
-    }
+    return mirror_sets;
+}
+
+static void
+handle_monitors_changed(XfdesktopApplication *app) {
+    GList *mirror_sets = build_monitor_mirror_sets(app);
+    handle_new_mirror_sets(app, mirror_sets);
+    g_list_free_full(mirror_sets, (GDestroyNotify)g_list_free);
 }
 
 static void
 monitor_changed(XfwMonitor *monitor, GParamSpec *pspec, XfdesktopApplication *app) {
-    handle_monitor(app, monitor);
+    TRACE("entering, %s", xfw_monitor_get_description(monitor));
+    handle_monitors_changed(app);
 }
 
 static void
@@ -868,31 +889,14 @@ screen_monitor_added(XfwScreen *screen, XfwMonitor *monitor, XfdesktopApplicatio
     g_signal_connect(monitor, "notify::is-primary",
                      G_CALLBACK(monitor_changed), app);
 
-    handle_monitor(app, monitor);
+    handle_monitors_changed(app);
 }
 
 static void
 screen_monitor_removed(XfwScreen *screen, XfwMonitor *monitor, XfdesktopApplication *app) {
     TRACE("entering, %s", xfw_monitor_get_description(monitor));
-
     g_signal_handlers_disconnect_by_data(monitor, app);
-
-    GList *ml = g_list_find(app->mirrored_monitors, monitor);
-    if (ml != NULL) {
-        app->mirrored_monitors = g_list_delete_link(app->mirrored_monitors, ml);
-    } else {
-        remove_monitor_desktop(app, monitor);
-
-        GList *l = app->mirrored_monitors;
-        while (l != NULL) {
-            GList *next = l->next;
-
-            XfwMonitor *mirrored_monitor = XFW_MONITOR(l->data);
-            handle_monitor(app, mirrored_monitor);
-
-            l = next;
-        }
-    }
+    handle_monitors_changed(app);
 }
 
 static void
