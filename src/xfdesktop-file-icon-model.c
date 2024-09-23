@@ -617,31 +617,9 @@ add_volume_icon(XfdesktopFileIconModel *fmodel, GVolume *volume) {
     }
 #endif
 
-    gboolean is_wanted = FALSE;
-    gchar *volume_type = g_volume_get_identifier(volume, G_VOLUME_IDENTIFIER_KIND_CLASS);
-
-    GDrive *drive = g_volume_get_drive(volume);
-    if (drive != NULL) {
-        is_wanted = g_drive_is_removable(drive) || g_volume_can_eject(volume);
-        g_object_unref(drive);
-    }
-
-    if (!is_wanted) {
-        // Nework devices won't show up as removable/ejectable GDrives.
-        is_wanted = g_strcmp0(volume_type, "network") == 0;
-    } else {
-        // But some removable/ejectable GDrives might have other types we don't
-        // want.
-        is_wanted = g_strcmp0(volume_type, "device") == 0 || volume_type == NULL;
-    }
-
-    if (is_wanted) {
-        XfdesktopVolumeIcon *icon = xfdesktop_volume_icon_new_for_volume(volume, fmodel->gdkscreen);
-        g_hash_table_insert(fmodel->volume_icons, g_object_ref(volume), icon);
-        add_icon(fmodel, XFDESKTOP_FILE_ICON(icon));
-    }
-
-    g_free(volume_type);
+    XfdesktopVolumeIcon *icon = xfdesktop_volume_icon_new_for_volume(volume, fmodel->gdkscreen);
+    g_hash_table_insert(fmodel->volume_icons, g_object_ref(volume), icon);
+    add_icon(fmodel, XFDESKTOP_FILE_ICON(icon));
 }
 
 static void
@@ -654,21 +632,9 @@ add_mount_icon(XfdesktopFileIconModel *fmodel, GMount *mount) {
     }
 #endif
 
-    GFile *root = g_mount_get_root(mount);
-    if (root != NULL) {
-        gboolean is_wanted =
-            !g_file_has_uri_scheme(root, "gphoto2")
-            && !g_file_has_uri_scheme(root, "mtp")
-            && !g_file_has_uri_scheme(root, "cdda");
-
-        if (is_wanted) {
-            XfdesktopVolumeIcon *icon = xfdesktop_volume_icon_new_for_mount(mount, fmodel->gdkscreen);
-            g_hash_table_insert(fmodel->volume_icons, g_object_ref(mount), icon);
-            add_icon(fmodel, XFDESKTOP_FILE_ICON(icon));
-        }
-
-        g_object_unref(root);
-    }
+    XfdesktopVolumeIcon *icon = xfdesktop_volume_icon_new_for_mount(mount, fmodel->gdkscreen);
+    g_hash_table_insert(fmodel->volume_icons, g_object_ref(mount), icon);
+    add_icon(fmodel, XFDESKTOP_FILE_ICON(icon));
 }
 
 static void
