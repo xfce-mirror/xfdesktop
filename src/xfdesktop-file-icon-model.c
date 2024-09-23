@@ -53,6 +53,7 @@ struct _XfdesktopFileIconModel
     GCancellable *cancel_enumeration;
 
     GVolumeMonitor *volume_monitor;
+    GHashTable *volume_icons;  // { GVolume | GMount } -> XfdesktopVolumeIcon
 
     GFileMonitor *metadata_monitor;
     guint metadata_timer;
@@ -163,6 +164,21 @@ static void volume_added(GVolumeMonitor *monitor,
 static void volume_removed(GVolumeMonitor *monitor,
                            GVolume *volume,
                            XfdesktopFileIconModel *fmodel);
+static void volume_changed(GVolumeMonitor *monitor,
+                           GVolume *volume,
+                           XfdesktopFileIconModel *fmodel);
+static void mount_added(GVolumeMonitor *monitor,
+                        GMount *mount,
+                        XfdesktopFileIconModel *fmodel);
+static void mount_removed(GVolumeMonitor *monitor,
+                          GMount *mount,
+                          XfdesktopFileIconModel *fmodel);
+static void mount_changed(GVolumeMonitor *monitor,
+                          GMount *mount,
+                          XfdesktopFileIconModel *fmodel);
+static void mount_pre_unmount(GVolumeMonitor *monitor,
+                              GMount *mount,
+                              XfdesktopFileIconModel *fmodel);
 
 static void load_desktop_folder(XfdesktopFileIconModel *fmodel);
 
@@ -283,6 +299,7 @@ xfdesktop_file_icon_model_init(XfdesktopFileIconModel *fmodel) {
                                           g_str_equal,
                                           g_free,
                                           g_object_unref);
+    fmodel->volume_icons = g_hash_table_new_full(g_direct_hash, g_direct_equal, g_object_unref, NULL);
 
 }
 
@@ -301,6 +318,16 @@ xfdesktop_file_icon_model_constructed(GObject *object) {
                      G_CALLBACK(volume_added), fmodel);
     g_signal_connect(fmodel->volume_monitor, "volume-removed",
                      G_CALLBACK(volume_removed), fmodel);
+    g_signal_connect(fmodel->volume_monitor, "volume-changed",
+                     G_CALLBACK(volume_changed), fmodel);
+    g_signal_connect(fmodel->volume_monitor, "mount-added",
+                     G_CALLBACK(mount_added), fmodel);
+    g_signal_connect(fmodel->volume_monitor, "mount-removed",
+                     G_CALLBACK(mount_removed), fmodel);
+    g_signal_connect(fmodel->volume_monitor, "mount-changed",
+                     G_CALLBACK(mount_changed), fmodel);
+    g_signal_connect(fmodel->volume_monitor, "mount-pre-unmount",
+                     G_CALLBACK(mount_pre_unmount), fmodel);
 
     xfconf_g_property_bind(fmodel->channel, DESKTOP_ICONS_SHOW_THUMBNAILS, G_TYPE_BOOLEAN, fmodel, "show-thumbnails");
 }
@@ -391,6 +418,7 @@ xfdesktop_file_icon_model_finalize(GObject *object) {
 
     g_object_unref(fmodel->thumbnailer);
 
+    g_hash_table_destroy(fmodel->volume_icons);
     g_hash_table_destroy(fmodel->icons);
     g_object_unref(fmodel->folder);
     g_object_unref(fmodel->channel);
@@ -608,7 +636,8 @@ add_volume_icon(XfdesktopFileIconModel *fmodel, GVolume *volume) {
     }
 
     if (is_wanted) {
-        XfdesktopVolumeIcon *icon = xfdesktop_volume_icon_new(volume, fmodel->gdkscreen);
+        XfdesktopVolumeIcon *icon = xfdesktop_volume_icon_new_for_volume(volume, fmodel->gdkscreen);
+        g_hash_table_insert(fmodel->volume_icons, g_object_ref(volume), icon);
         add_icon(fmodel, XFDESKTOP_FILE_ICON(icon));
     }
 
@@ -616,33 +645,137 @@ add_volume_icon(XfdesktopFileIconModel *fmodel, GVolume *volume) {
 }
 
 static void
+add_mount_icon(XfdesktopFileIconModel *fmodel, GMount *mount) {
+#if defined(DEBUG_TRACE) && DEBUG_TRACE > 0
+    {
+        gchar *name = g_mount_get_name(mount);
+        TRACE("entering: '%s'", name);
+        g_free(name);
+    }
+#endif
+
+    GFile *root = g_mount_get_root(mount);
+    if (root != NULL) {
+        gboolean is_wanted =
+            !g_file_has_uri_scheme(root, "gphoto2")
+            && !g_file_has_uri_scheme(root, "mtp")
+            && !g_file_has_uri_scheme(root, "cdda");
+
+        if (is_wanted) {
+            XfdesktopVolumeIcon *icon = xfdesktop_volume_icon_new_for_mount(mount, fmodel->gdkscreen);
+            g_hash_table_insert(fmodel->volume_icons, g_object_ref(mount), icon);
+            add_icon(fmodel, XFDESKTOP_FILE_ICON(icon));
+        }
+
+        g_object_unref(root);
+    }
+}
+
+static void
 volume_added(GVolumeMonitor *monitor, GVolume *volume, XfdesktopFileIconModel *fmodel) {
-    add_volume_icon(fmodel, volume);
+    TRACE("entering");
+    if (!g_hash_table_contains(fmodel->volume_icons, volume)) {
+        add_volume_icon(fmodel, volume);
+    }
 }
 
 static void
 volume_removed(GVolumeMonitor *monitor, GVolume *volume, XfdesktopFileIconModel *fmodel) {
-    gchar *ht_key;
-    XfdesktopFileIcon *icon;
-
-    ht_key = xfdesktop_volume_icon_sort_key_for_volume(volume);
-    icon = g_hash_table_lookup(fmodel->icons, ht_key);
-    g_free(ht_key);
+    XfdesktopFileIcon *icon = g_hash_table_lookup(fmodel->volume_icons, volume);
     if (icon != NULL) {
+        g_hash_table_remove(fmodel->volume_icons, volume);
         remove_icon(fmodel, icon);
+    }
+}
+
+static void
+volume_changed(GVolumeMonitor *monitor, GVolume *volume, XfdesktopFileIconModel *fmodel) {
+    XfdesktopFileIcon *icon = g_hash_table_lookup(fmodel->volume_icons, volume);
+    if (icon != NULL) {
+        xfdesktop_icon_view_model_changed(XFDESKTOP_ICON_VIEW_MODEL(fmodel), icon);
+    }
+}
+
+static void
+mount_added(GVolumeMonitor *monitor, GMount *mount, XfdesktopFileIconModel *fmodel) {
+    TRACE("entering");
+    XfdesktopFileIcon *icon = g_hash_table_lookup(fmodel->volume_icons, mount);
+    if (icon == NULL && !g_mount_is_shadowed(mount)) {
+        GVolume *volume = g_mount_get_volume(mount);
+        if (volume != NULL) {
+            DBG("got existing volume for mount");
+            icon = g_hash_table_lookup(fmodel->volume_icons, volume);
+            if (icon != NULL) {
+                DBG("got existing icon for volume for mount");
+                xfdesktop_volume_icon_mounted(XFDESKTOP_VOLUME_ICON(icon), mount);
+                xfdesktop_icon_view_model_changed(XFDESKTOP_ICON_VIEW_MODEL(fmodel), icon);
+            }
+            g_object_unref(volume);
+        } else {
+            add_mount_icon(fmodel, mount);
+        }
+    }
+}
+
+static void
+mount_removed(GVolumeMonitor *monitor, GMount *mount, XfdesktopFileIconModel *fmodel) {
+    XfdesktopFileIcon *icon = g_hash_table_lookup(fmodel->volume_icons, mount);
+    if (icon != NULL) {
+        g_hash_table_remove(fmodel->volume_icons, mount);
+
+        XfdesktopVolumeIcon *vicon = XFDESKTOP_VOLUME_ICON(icon);
+        xfdesktop_volume_icon_unmounted(vicon);
+
+        if (xfdesktop_volume_icon_peek_volume(vicon) == NULL && xfdesktop_volume_icon_peek_mount(vicon) == NULL) {
+            remove_icon(fmodel, icon);
+        }
+    }
+}
+
+static void
+mount_changed(GVolumeMonitor *monitor, GMount *mount, XfdesktopFileIconModel *fmodel) {
+    XfdesktopFileIcon *icon = g_hash_table_lookup(fmodel->volume_icons, mount);
+    if (icon != NULL) {
+        xfdesktop_icon_view_model_changed(XFDESKTOP_ICON_VIEW_MODEL(fmodel), icon);
+    }
+}
+
+static void
+mount_pre_unmount(GVolumeMonitor *monitor, GMount *mount, XfdesktopFileIconModel *fmodel) {
+    XfdesktopFileIcon *icon = g_hash_table_lookup(fmodel->volume_icons, mount);
+    if (icon == NULL) {
+        GVolume *volume = g_mount_get_volume(mount);
+        if (volume != NULL) {
+            icon = g_hash_table_lookup(fmodel->volume_icons, volume);
+            g_object_unref(volume);
+        }
+    }
+
+    if (icon != NULL) {
+        // XXX: do we need to bother with this?
+        xfdesktop_icon_view_model_changed(XFDESKTOP_ICON_VIEW_MODEL(fmodel), icon);
     }
 }
 
 static void
 load_removable_media(XfdesktopFileIconModel *fmodel) {
     DBG("entering");
+
     GList *volumes = g_volume_monitor_get_volumes(fmodel->volume_monitor);
     for (GList *l = volumes; l != NULL; l = l->next) {
         GVolume *volume = G_VOLUME(l->data);
-        add_volume_icon(fmodel, volume);
+        volume_added(fmodel->volume_monitor, volume, fmodel);
         g_object_unref(volume);
     }
     g_list_free(volumes);
+
+    GList *mounts = g_volume_monitor_get_mounts(fmodel->volume_monitor);
+    for (GList *l = mounts; l != NULL; l = l->next) {
+        GMount *mount = G_MOUNT(l->data);
+        mount_added(fmodel->volume_monitor, mount, fmodel);
+        g_object_unref(mount);
+    }
+    g_list_free(mounts);
 }
 
 static void
