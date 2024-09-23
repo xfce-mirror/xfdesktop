@@ -387,26 +387,56 @@ is_volume_visible(XfdesktopFileIconModelFilter *filter, XfdesktopVolumeIcon *ico
 
         GVolume *volume = xfdesktop_volume_icon_peek_volume(icon);
         if (volume != NULL) {
+            gboolean is_removable = g_volume_can_eject(volume);
+            if (!is_removable) {
+                GDrive *drive = g_volume_get_drive(volume);
+                if (drive != NULL) {
+                    is_removable = g_drive_is_removable(drive);
+                    g_object_unref(drive);
+                }
+            }
+
             gchar *volume_type = g_volume_get_identifier(volume, G_VOLUME_IDENTIFIER_KIND_CLASS);
             visible = (filter->show_network_volumes && g_strcmp0(volume_type, "network") == 0)
-                || (filter->show_device_volumes && g_strcmp0(volume_type, "device") == 0)
-                || (filter->show_unknown_volumes && volume_type == NULL);
+                || (filter->show_device_volumes && is_removable && g_strcmp0(volume_type, "device") == 0)
+                || (filter->show_unknown_volumes && is_removable && volume_type == NULL);
             g_free(volume_type);
         } else {
             GMount *mount = xfdesktop_volume_icon_peek_mount(icon);
             if (mount != NULL) {
+                gboolean is_removable;
+                gboolean is_local;
+                gboolean is_ignored_scheme;
+
+                GFile *root = g_mount_get_root(mount);
+                if (root != NULL) {
+                    is_ignored_scheme =
+                        g_file_has_uri_scheme(root, "gphoto2")
+                        || g_file_has_uri_scheme(root, "mtp")
+                        || g_file_has_uri_scheme(root, "cdda");
+                    g_object_unref(root);
+                } else {
+                    is_ignored_scheme = FALSE;
+                }
+
                 GDrive *drive = g_mount_get_drive(mount);
                 if (drive != NULL) {
+                    is_removable = g_drive_is_removable(drive) || g_mount_can_eject(mount);
+
                     gchar *unix_device = g_drive_get_identifier(drive, G_DRIVE_IDENTIFIER_KIND_UNIX_DEVICE);
-                    gboolean is_local = unix_device != NULL && unix_device[0] != '\0';
+                    is_local = unix_device != NULL && unix_device[0] != '\0';
                     g_free(unix_device);
 
-                    visible = filter->show_device_volumes
-                        && (g_drive_is_removable(drive) || (is_local && g_drive_can_eject(drive)));
+                    g_object_unref(drive);
                 } else {
-                    // As a guess, a GDrive-less mount might be a network volume.
-                    visible = filter->show_network_volumes;
+                    is_removable = g_mount_can_eject(mount);
+                    is_local = FALSE;  // Very weak guess, maybe should look at URI
                 }
+
+                visible = !is_ignored_scheme
+                    && (is_removable
+                        || (is_local && filter->show_device_volumes)
+                        || (!is_local && filter->show_network_volumes));
             } else {
                 visible = FALSE;
             }
