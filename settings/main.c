@@ -64,8 +64,6 @@
 #include "xfdesktop-common.h"
 #include "xfdesktop-thumbnailer.h"
 #include "xfdesktop-settings-ui.h"
-/* for XfceBackdropImageStyle && XfceBackdropColorStyle */
-#include "xfce-backdrop.h"
 
 #ifdef HAVE_XFCE_REVISION_H
 #include "xfce-revision.h"
