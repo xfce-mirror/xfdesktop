@@ -383,12 +383,35 @@ is_special_file_visible(XfdesktopFileIconModelFilter *filter, XfdesktopSpecialFi
 static gboolean
 is_volume_visible(XfdesktopFileIconModelFilter *filter, XfdesktopVolumeIcon *icon) {
     if (filter->show_removable_media) {
+        gboolean visible;
+
         GVolume *volume = xfdesktop_volume_icon_peek_volume(icon);
-        gchar *volume_type = g_volume_get_identifier(volume, G_VOLUME_IDENTIFIER_KIND_CLASS);
-        gboolean visible = (filter->show_network_volumes && g_strcmp0(volume_type, "network") == 0)
-            || (filter->show_device_volumes && g_strcmp0(volume_type, "device") == 0)
-            || (filter->show_unknown_volumes && volume_type == NULL);
-        g_free(volume_type);
+        if (volume != NULL) {
+            gchar *volume_type = g_volume_get_identifier(volume, G_VOLUME_IDENTIFIER_KIND_CLASS);
+            visible = (filter->show_network_volumes && g_strcmp0(volume_type, "network") == 0)
+                || (filter->show_device_volumes && g_strcmp0(volume_type, "device") == 0)
+                || (filter->show_unknown_volumes && volume_type == NULL);
+            g_free(volume_type);
+        } else {
+            GMount *mount = xfdesktop_volume_icon_peek_mount(icon);
+            if (mount != NULL) {
+                GDrive *drive = g_mount_get_drive(mount);
+                if (drive != NULL) {
+                    gchar *unix_device = g_drive_get_identifier(drive, G_DRIVE_IDENTIFIER_KIND_UNIX_DEVICE);
+                    gboolean is_local = unix_device != NULL && unix_device[0] != '\0';
+                    g_free(unix_device);
+
+                    visible = filter->show_device_volumes
+                        && (g_drive_is_removable(drive) || (is_local && g_drive_can_eject(drive)));
+                } else {
+                    // As a guess, a GDrive-less mount might be a network volume.
+                    visible = filter->show_network_volumes;
+                }
+            } else {
+                visible = FALSE;
+            }
+        }
+
         return visible;
     } else {
         return FALSE;
