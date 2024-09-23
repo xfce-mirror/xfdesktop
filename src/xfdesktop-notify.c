@@ -102,6 +102,8 @@ show_notification(const gchar *summary, const gchar *message, GIcon *icon, gint 
 #endif
         notify_notification_set_urgency(notification, NOTIFY_URGENCY_CRITICAL);
         notify_notification_set_timeout(notification, timeout);
+        notify_notification_set_hint(notification, "transient", g_variant_new_boolean(TRUE));
+
         notify_notification_show (notification, NULL);
 
         g_free(icon_name);
