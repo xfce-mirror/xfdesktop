@@ -2630,23 +2630,13 @@ handle_files_drop_data(MonitorData *mdata,
                         }
 
                         if (cur_row != -1 && cur_col != -1) {
-                            // We are copying/moving/linking new files onto the desktop.  In order to later place them
-                            // correctly (when the GFileMonitor gets notified about them), we need to store a little
-                            // bit of data about the new files based on the drop location.
                             GFile *pending_file = g_file_get_child(tfile, dest_basename);
-                            xfdesktop_file_icon_model_add_pending_new_file(mdata->fmanager->model,
-                                                                           pending_file,
-                                                                           cur_row,
-                                                                           cur_col);
-                            if (!xfdesktop_icon_view_get_next_free_grid_position(icon_view,
-                                                                                 cur_row,
-                                                                                 cur_col,
-                                                                                 &cur_row,
-                                                                                 &cur_col))
-                            {
-                                cur_row = -1;
-                                cur_col = -1;
-                            }
+                            xfdesktop_icon_position_configs_set_icon_position(mdata->fmanager->position_configs,
+                                                                              mdata->position_config,
+                                                                              g_file_peek_path(pending_file),
+                                                                              cur_row,
+                                                                              cur_col,
+                                                                              0);
                             g_object_unref(pending_file);
                         }
                     }
@@ -2802,10 +2792,12 @@ handle_netscape_url_drop_data(MonitorData *mdata,
                 if (xfdesktop_icon_view_widget_coords_to_slot_coords(icon_view, x, y, &drop_row, &drop_col)) {
                     gchar *name = g_strconcat(parts[1], ".desktop", NULL);
                     GFile *pending_file = g_file_get_child(source_file, name);
-                    xfdesktop_file_icon_model_add_pending_new_file(mdata->fmanager->model,
-                                                                   pending_file,
-                                                                   drop_row,
-                                                                   drop_col);
+                    xfdesktop_icon_position_configs_set_icon_position(mdata->fmanager->position_configs,
+                                                                      mdata->position_config,
+                                                                      g_file_peek_path(pending_file),
+                                                                      drop_row,
+                                                                      drop_col,
+                                                                      0);
 
                     g_free(name);
                     g_object_unref(pending_file);
@@ -2955,10 +2947,12 @@ handle_xdnd_direct_save_drop(MonitorData *mdata, GdkDragContext *context, gint x
                         DBG("adding pending new file '%s' at (%d, %d)",
                             g_file_peek_path(mdata->fmanager->xdnd_direct_save_destination),
                             drop_row, drop_col);
-                        xfdesktop_file_icon_model_add_pending_new_file(mdata->fmanager->model,
-                                                                       mdata->fmanager->xdnd_direct_save_destination,
-                                                                       drop_row,
-                                                                       drop_col);
+                        xfdesktop_icon_position_configs_set_icon_position(mdata->fmanager->position_configs,
+                                                                          mdata->position_config,
+                                                                          g_file_peek_path(mdata->fmanager->xdnd_direct_save_destination),
+                                                                          drop_row,
+                                                                          drop_col,
+                                                                          0);
                     }
                 }
 
