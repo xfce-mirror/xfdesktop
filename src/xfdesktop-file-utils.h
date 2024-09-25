@@ -38,8 +38,7 @@ GKeyFile *xfdesktop_file_utils_query_key_file(GFile *file,
                                               GError **error);
 gchar *xfdesktop_file_utils_get_display_name(GFile *file,
                                              GFileInfo *info);
-gchar* xfdesktop_file_utils_next_new_file_name(const gchar *filename,
-                                               const gchar *folder);
+GFile *xfdesktop_file_utils_next_new_file_name(GFile *file);
 
 GList *xfdesktop_file_utils_file_icon_list_to_file_list(GList *icon_list);
 GList *xfdesktop_file_utils_file_list_from_string(const gchar *string);
@@ -81,10 +80,18 @@ void xfdesktop_file_utils_create_file(GFile *parent_folder,
                                       const gchar *content_type,
                                       GdkScreen *screen,
                                       GtkWindow *parent);
-void xfdesktop_file_utils_create_file_from_template(GFile *parent_folder,
-                                                    GFile *template_file,
-                                                    GdkScreen *screen,
+GFile *xfdesktop_file_utils_prompt_for_template_file_name(GFile *parent_folder,
+                                                          GFile *template_file,
+                                                          GtkWindow *parent);
+GFile *xfdesktop_file_utils_prompt_for_new_folder_name(GFile *parent_folder,
+                                                       GtkWindow *parent);
+
+void xfdesktop_file_utils_create_file_from_template(GFile *template_file,
+                                                    GFile *dest_file,
                                                     GtkWindow *parent);
+void xfdesktop_file_utils_create_folder(GFile *folder,
+                                        GtkWindow *parent);
+
 /* element-type GFile */
 void xfdesktop_file_utils_show_properties_dialog(GList *files,
                                                  GdkScreen *screen,
