@@ -1624,13 +1624,16 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager, 
                                                                         FALSE);
                         }
 
-                        if(!gtk_container_get_children((GtkContainer*) tmpl_menu)) {
+                        GList *children = gtk_container_get_children(GTK_CONTAINER(tmpl_menu));
+                        if (children == NULL) {
                             GtkWidget *no_tmpl_mi = add_menu_item(tmpl_menu,
                                                                   _("No templates installed"),
                                                                    NULL,
                                                                    NULL,
                                                                    NULL);
                             gtk_widget_set_sensitive(no_tmpl_mi, FALSE);
+                        } else {
+                            g_list_free(children);
                         }
 
                         if (templates_dir) {
