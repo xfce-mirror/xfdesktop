@@ -69,9 +69,6 @@ struct _XfdesktopFileIconModel
     //   * Volume icons: xfdesktop_volume_icon_sort_key_for_volume()
     GHashTable *icons;
 
-    GList *pending_new_files;
-    guint pending_new_files_id;
-
     gboolean show_thumbnails;
 };
 
@@ -102,40 +99,6 @@ typedef enum {
     REMOVABLE_MEDIA_UNKNOWN = (1 << 2),
     REMOVABLE_MEDIA_ALL = REMOVABLE_MEDIA_NETWORK | REMOVABLE_MEDIA_DEVICE | REMOVABLE_MEDIA_UNKNOWN,
 } RemovableMediaMask;
-
-typedef struct {
-    GFile *file;
-    gint row;
-    gint col;
-} PendingNewFile;
-
-static PendingNewFile *
-pending_new_file_new(GFile *file,
-                     gint row,
-                     gint col)
-{
-    PendingNewFile *pnfile;
-
-    g_return_val_if_fail(G_IS_FILE(file), NULL);
-    g_return_val_if_fail(row >= 0 && col >= 0, NULL);
-
-    pnfile = g_slice_new0(PendingNewFile);
-    pnfile->file = g_object_ref(file);
-    pnfile->row = row;
-    pnfile->col = col;
-
-    return pnfile;
-}
-
-static void
-pending_new_file_free(PendingNewFile *pnfile)
-{
-    g_return_if_fail(pnfile != NULL);
-
-    g_object_unref(pnfile->file);
-    g_slice_free(PendingNewFile, pnfile);
-}
-
 
 static void xfdesktop_file_icon_model_constructed(GObject *object);
 static void xfdesktop_file_icon_model_set_property(GObject *object,
@@ -804,17 +767,6 @@ add_regular_icon(XfdesktopFileIconModel *fmodel,
     queue_thumbnail(fmodel, icon);
 }
 
-static gint
-find_pending_new_file(PendingNewFile *pnfile,
-                      GFile *file)
-{
-    if (g_file_equal(pnfile->file, file)) {
-        return 0;
-    } else {
-        return g_file_hash(file) - g_file_hash(pnfile->file);
-    }
-}
-
 static void
 file_monitor_changed(GFileMonitor *monitor,
                      GFile *file,
@@ -927,31 +879,13 @@ file_monitor_changed(GFileMonitor *monitor,
                     remove_icon(fmodel, icon);
                 }
 
-                gint16 row = -1, col = -1;
-
-                GList *pnfile_link = g_list_find_custom(fmodel->pending_new_files, file, (GCompareFunc)find_pending_new_file);
-                if (pnfile_link != NULL) {
-                    PendingNewFile *pnfile = (PendingNewFile *)pnfile_link->data;
-
-                    row = pnfile->row;
-                    col = pnfile->col;
-
-                    fmodel->pending_new_files = g_list_remove_link(fmodel->pending_new_files, pnfile_link);
-                    pending_new_file_free(pnfile);
-
-                    if (fmodel->pending_new_files == NULL && fmodel->pending_new_files_id != 0) {
-                        g_source_remove(fmodel->pending_new_files_id);
-                        fmodel->pending_new_files_id = 0;
-                    }
-                }
-
                 GFileInfo *file_info = g_file_query_info(file,
                                                          XFDESKTOP_FILE_INFO_NAMESPACE,
                                                          G_FILE_QUERY_INFO_NONE,
                                                          NULL,
                                                          NULL);
                 if (file_info != NULL) {
-                    add_regular_icon(fmodel, file, file_info, row, col, TRUE);
+                    add_regular_icon(fmodel, file, file_info, -1, -1, TRUE);
                     g_object_unref(file_info);
                 }
             }
@@ -1197,14 +1131,6 @@ xfdesktop_file_icon_model_set_show_thumbnails(XfdesktopFileIconModel *fmodel, gb
     }
 }
 
-static gboolean
-pending_new_files_timeout(gpointer data) {
-    XfdesktopFileIconModel *fmodel = XFDESKTOP_FILE_ICON_MODEL(data);
-    fmodel->pending_new_files_id = 0;
-    g_list_free_full(fmodel->pending_new_files, (GDestroyNotify)pending_new_file_free);
-    return FALSE;
-}
-
 static void
 xfdesktop_file_icon_model_append(XfdesktopFileIconModel *fmodel,
                                  XfdesktopFileIcon *icon,
@@ -1271,27 +1197,6 @@ xfdesktop_file_icon_model_get_icon_iter(XfdesktopFileIconModel *fmodel,
     g_return_val_if_fail(iter != NULL, FALSE);
 
     return xfdesktop_icon_view_model_get_iter_for_key(XFDESKTOP_ICON_VIEW_MODEL(fmodel), icon, iter);
-}
-
-void
-xfdesktop_file_icon_model_add_pending_new_file(XfdesktopFileIconModel *fmodel,
-                                               GFile *pending_file,
-                                               gint16 row,
-                                               gint16 col)
-{
-    g_return_if_fail(XFDESKTOP_IS_FILE_ICON_MODEL(fmodel));
-    g_return_if_fail(G_IS_FILE(pending_file));
-    g_return_if_fail(row >= 0 && col >= 0);
-
-    PendingNewFile *pnfile = pending_new_file_new(pending_file, row, col);
-    fmodel->pending_new_files = g_list_prepend(fmodel->pending_new_files, pnfile);
-
-    if (fmodel->pending_new_files_id != 0) {
-        g_source_remove(fmodel->pending_new_files_id);
-    }
-    fmodel->pending_new_files_id = g_timeout_add_seconds(PENDING_NEW_FILES_TIMEOUT,
-                                                         pending_new_files_timeout,
-                                                         fmodel);
 }
 
 void
