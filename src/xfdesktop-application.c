@@ -132,10 +132,14 @@ static gint xfdesktop_application_command_line(GApplication *g_application,
 static void popup_root_menu(XfdesktopApplication *app,
                             XfceDesktop *desktop,
                             guint button,
+                            gint x,
+                            gint y,
                             guint activate_time);
 static void popup_secondary_root_menu(XfdesktopApplication *app,
                                       XfceDesktop *desktop,
                                       guint button,
+                                      gint x,
+                                      gint y,
                                       guint activate_time);
 
 static gboolean xfce_desktop_button_press_event(GtkWidget *widget,
@@ -548,9 +552,9 @@ xfdesktop_application_action_activated(GAction *action, GVariant *parameter, gpo
             XfceDesktop *desktop = find_active_desktop(app);
             if (desktop != NULL) {
                 if (g_variant_get_boolean(parameter)) {
-                    popup_root_menu(app, desktop, 0, GDK_CURRENT_TIME);
+                    popup_root_menu(app, desktop, 0, -1, -1, GDK_CURRENT_TIME);
                 } else {
-                    popup_secondary_root_menu(app, desktop, 0, GDK_CURRENT_TIME);
+                    popup_secondary_root_menu(app, desktop, 0, -1, -1, GDK_CURRENT_TIME);
                 }
             }
         }
@@ -1198,6 +1202,8 @@ static void
 do_menu_popup(XfdesktopApplication *app,
               XfceDesktop *desktop,
               guint button,
+              gint x,
+              gint y,
               guint activate_time,
               gboolean populate_from_icon_view,
               PopulateMenuFunc populate_func)
@@ -1220,7 +1226,7 @@ do_menu_popup(XfdesktopApplication *app,
 
 #ifdef ENABLE_DESKTOP_ICONS
     if (populate_from_icon_view && app->icon_view_manager != NULL) {
-        menu = xfdesktop_icon_view_manager_get_context_menu(app->icon_view_manager, desktop);
+        menu = xfdesktop_icon_view_manager_get_context_menu(app->icon_view_manager, desktop, x, y);
     }
 #endif
 
@@ -1248,16 +1254,21 @@ do_menu_popup(XfdesktopApplication *app,
 
 
 static void
-popup_root_menu(XfdesktopApplication *app, XfceDesktop *desktop, guint button, guint activate_time) {
+popup_root_menu(XfdesktopApplication *app, XfceDesktop *desktop, guint button, gint x, gint y, guint activate_time) {
     DBG("entering");
-    do_menu_popup(app, desktop, button, activate_time, TRUE, menu_populate);
-
+    do_menu_popup(app, desktop, button, x, y, activate_time, TRUE, menu_populate);
 }
 
 static void
-popup_secondary_root_menu(XfdesktopApplication *app, XfceDesktop *desktop, guint button, guint activate_time) {
+popup_secondary_root_menu(XfdesktopApplication *app,
+                          XfceDesktop *desktop,
+                          guint button,
+                          gint x,
+                          gint y,
+                          guint activate_time)
+{
     DBG("entering");
-    do_menu_popup(app, desktop, button, activate_time, FALSE, windowlist_populate);
+    do_menu_popup(app, desktop, button, x, y, activate_time, FALSE, windowlist_populate);
 }
 
 static gboolean
@@ -1286,7 +1297,7 @@ xfce_desktop_button_press_event(GtkWidget *w, GdkEventButton *evt, XfdesktopAppl
                 gtk_grab_add(w);
             }
 
-            popup_root_menu(app, desktop, button, evt->time);
+            popup_root_menu(app, desktop, button, evt->x, evt->y, evt->time);
             return TRUE;
         } else if(button == 2 || (button == 1 && (state & GDK_SHIFT_MASK)
                                   && (state & GDK_CONTROL_MASK)))
@@ -1296,7 +1307,7 @@ xfce_desktop_button_press_event(GtkWidget *w, GdkEventButton *evt, XfdesktopAppl
                 gtk_grab_add(w);
             }
 
-            popup_secondary_root_menu(app, desktop, button, evt->time);
+            popup_secondary_root_menu(app, desktop, button, evt->x, evt->y, evt->time);
             return TRUE;
         }
     }
@@ -1318,6 +1329,7 @@ xfce_desktop_button_release_event(GtkWidget *w, GdkEventButton *evt, XfdesktopAp
 static gboolean
 xfce_desktop_popup_menu(GtkWidget *w, XfdesktopApplication *app) {
     GdkEvent *evt;
+    gint x, y;
     guint button, etime;
 
     DBG("entering");
@@ -1325,13 +1337,17 @@ xfce_desktop_popup_menu(GtkWidget *w, XfdesktopApplication *app) {
     evt = gtk_get_current_event();
     if(evt != NULL && (GDK_BUTTON_PRESS == evt->type || GDK_BUTTON_RELEASE == evt->type)) {
         button = evt->button.button;
+        x = evt->button.x;
+        y = evt->button.y;
         etime = evt->button.time;
     } else {
         button = 0;
+        x = -1;
+        y = -1;
         etime = gtk_get_current_event_time();
     }
 
-    popup_root_menu(app, XFCE_DESKTOP(w), button, etime);
+    popup_root_menu(app, XFCE_DESKTOP(w), button, x, y, etime);
 
     gdk_event_free((GdkEvent*)evt);
     return TRUE;
