@@ -69,7 +69,9 @@ static void xfdesktop_window_icon_manager_desktop_added(XfdesktopIconViewManager
 static void xfdesktop_window_icon_manager_desktop_removed(XfdesktopIconViewManager *manager,
                                                           XfceDesktop *desktop);
 static GtkMenu *xfdesktop_window_icon_manager_get_context_menu(XfdesktopIconViewManager *manager,
-                                                               XfceDesktop *desktop);
+                                                               XfceDesktop *desktop,
+                                                               gint popup_x,
+                                                               gint popup_y);
 static void xfdesktop_window_icon_manager_sort_icons(XfdesktopIconViewManager *manager,
                                                      GtkSortType sort_type);
 
@@ -187,7 +189,11 @@ xfdesktop_window_icon_manager_desktop_removed(XfdesktopIconViewManager *manager,
 }
 
 static GtkMenu *
-xfdesktop_window_icon_manager_get_context_menu(XfdesktopIconViewManager *manager, XfceDesktop *desktop) {
+xfdesktop_window_icon_manager_get_context_menu(XfdesktopIconViewManager *manager,
+                                               XfceDesktop *desktop,
+                                               gint popup_x,
+                                               gint popup_y)
+{
     XfdesktopWindowIconManager *wmanager = XFDESKTOP_WINDOW_ICON_MANAGER(manager);
     GHashTableIter iter;
     g_hash_table_iter_init(&iter, wmanager->monitor_data);
