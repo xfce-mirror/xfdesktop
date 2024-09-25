@@ -56,11 +56,6 @@ gboolean xfdesktop_file_icon_model_get_icon_iter(XfdesktopFileIconModel *fmodel,
                                                  XfdesktopFileIcon *icon,
                                                  GtkTreeIter *iter);
 
-void xfdesktop_file_icon_model_add_pending_new_file(XfdesktopFileIconModel *fmodel,
-                                                    GFile *pending_file,
-                                                    gint16 row,
-                                                    gint16 col);
-
 void xfdesktop_file_icon_model_reload(XfdesktopFileIconModel *fmodel);
 
 G_END_DECLS
