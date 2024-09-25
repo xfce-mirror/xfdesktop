@@ -27,6 +27,7 @@
 #include <libxfce4util/libxfce4util.h>
 #include <xfconf/xfconf.h>
 
+#include "xfce-desktop.h"
 #include "xfdesktop-common.h"
 #include "xfdesktop-icon-view-manager.h"
 
@@ -289,14 +290,14 @@ xfdesktop_icon_view_manager_desktop_removed(XfdesktopIconViewManager *manager, X
 }
 
 GtkMenu *
-xfdesktop_icon_view_manager_get_context_menu(XfdesktopIconViewManager *manager, GtkWidget *widget) {
+xfdesktop_icon_view_manager_get_context_menu(XfdesktopIconViewManager *manager, XfceDesktop *desktop) {
     XfdesktopIconViewManagerClass *klass;
 
     g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW_MANAGER(manager), NULL);
 
     klass = XFDESKTOP_ICON_VIEW_MANAGER_GET_CLASS(manager);
     if (klass->get_context_menu != NULL) {
-        return klass->get_context_menu(manager, widget);
+        return klass->get_context_menu(manager, desktop);
     } else {
         return NULL;
     }

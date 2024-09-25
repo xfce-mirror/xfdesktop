@@ -45,7 +45,7 @@ struct _XfdesktopIconViewManagerClass
                             XfceDesktop *desktop);
 
     GtkMenu *(*get_context_menu)(XfdesktopIconViewManager *manager,
-                                 GtkWidget *widget);
+                                 XfceDesktop *desktop);
 
     void (*sort_icons)(XfdesktopIconViewManager *manager,
                        GtkSortType sort_type);
@@ -67,7 +67,7 @@ void xfdesktop_icon_view_manager_desktop_removed(XfdesktopIconViewManager *manag
 /* virtual function accessors */
 
 GtkMenu *xfdesktop_icon_view_manager_get_context_menu(XfdesktopIconViewManager *manager,
-                                                      GtkWidget *widget);
+                                                      XfceDesktop *desktop);
 void xfdesktop_icon_view_manager_sort_icons(XfdesktopIconViewManager *manager,
                                             GtkSortType sort_type);
 
