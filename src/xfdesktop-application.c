@@ -1220,7 +1220,7 @@ do_menu_popup(XfdesktopApplication *app,
 
 #ifdef ENABLE_DESKTOP_ICONS
     if (populate_from_icon_view && app->icon_view_manager != NULL) {
-        menu = xfdesktop_icon_view_manager_get_context_menu(app->icon_view_manager, GTK_WIDGET(desktop));
+        menu = xfdesktop_icon_view_manager_get_context_menu(app->icon_view_manager, desktop);
     }
 #endif
 
