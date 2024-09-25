@@ -86,6 +86,8 @@
 #define BORDER         8
 
 #define VOLUME_HASH_STR_PREFIX  "xfdesktop-volume-"
+#define DEST_ROW_KEY "xfdesktop-file-icon-manager-dest-row"
+#define DEST_COL_KEY "xfdesktop-file-icon-manager-dest-col"
 
 #define TEXT_URI_LIST_NAME "text/uri-list"
 #define XDND_DIRECT_SAVE0_NAME "XdndDirectSave0"
@@ -224,7 +226,9 @@ static void xfdesktop_file_icon_manager_desktop_added(XfdesktopIconViewManager *
 static void xfdesktop_file_icon_manager_desktop_removed(XfdesktopIconViewManager *manager,
                                                         XfceDesktop *desktop);
 static GtkMenu *xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager,
-                                                             XfceDesktop *desktop);
+                                                             XfceDesktop *desktop,
+                                                             gint popup_x,
+                                                             gint popup_y);
 static void xfdesktop_file_icon_manager_sort_icons(XfdesktopIconViewManager *manager,
                                                    GtkSortType sort_type);
 static void xfdesktop_file_icon_manager_reload(XfdesktopIconViewManager *manager);
@@ -1001,25 +1005,52 @@ xfdesktop_file_icon_menu_create_launcher(GtkWidget *widget, MonitorData *mdata) 
 }
 
 static void
+xfdesktop_file_icon_manager_create_folder(MonitorData *mdata, gint dest_row, gint dest_col, GtkWindow *parent) {
+    GFile *new_folder = xfdesktop_file_utils_prompt_for_new_folder_name(mdata->fmanager->folder, parent);
+    if (new_folder != NULL) {
+        if (dest_row != -1 && dest_col != -1) {
+            xfdesktop_icon_position_configs_set_icon_position(mdata->fmanager->position_configs,
+                                                              mdata->position_config,
+                                                              g_file_peek_path(new_folder),
+                                                              dest_row,
+                                                              dest_col,
+                                                              0);
+        }
+
+        xfdesktop_file_utils_create_folder(new_folder, parent);
+        g_object_unref(new_folder);
+    }
+}
+
+static void
 xfdesktop_file_icon_menu_create_folder(GtkWidget *widget, MonitorData *mdata) {
-    xfdesktop_file_utils_create_file(mdata->fmanager->folder,
-                                     "inode/directory",
-                                     mdata->fmanager->gscreen,
-                                     toplevel_window_for_widget(widget));
+    GtkWindow *parent = toplevel_window_for_widget(widget);
+    gint dest_row = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), DEST_ROW_KEY));
+    gint dest_col = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), DEST_COL_KEY));
+    xfdesktop_file_icon_manager_create_folder(mdata, dest_row, dest_col, parent);
 }
 
 static void
 xfdesktop_file_icon_template_item_activated(GtkWidget *mi, MonitorData *mdata) {
     GFile *file = g_object_get_data(G_OBJECT(mi), "file");
 
-    if(file) {
-        xfdesktop_file_utils_create_file_from_template(mdata->fmanager->folder, file,
-                                                       mdata->fmanager->gscreen,
-                                                       toplevel_window_for_widget(mi));
-    } else {
-        xfdesktop_file_utils_create_file(mdata->fmanager->folder, "text/plain",
-                                         mdata->fmanager->gscreen,
-                                         toplevel_window_for_widget(mi));
+    GtkWindow *parent = toplevel_window_for_widget(mi);
+    GFile *dest_file = xfdesktop_file_utils_prompt_for_template_file_name(mdata->fmanager->folder, file, parent);
+    if (dest_file != NULL) {
+        gint dest_row = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(mi), DEST_ROW_KEY));
+        gint dest_col = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(mi), DEST_COL_KEY));
+
+        if (dest_row != -1 && dest_col != -1) {
+            xfdesktop_icon_position_configs_set_icon_position(mdata->fmanager->position_configs,
+                                                              mdata->position_config,
+                                                              g_file_peek_path(dest_file),
+                                                              dest_row,
+                                                              dest_col,
+                                                              0);
+        }
+
+        xfdesktop_file_utils_create_file_from_template(file, dest_file, parent);
+        g_object_unref(dest_file);
     }
 }
 
@@ -1049,6 +1080,8 @@ static void
 xfdesktop_file_icon_menu_fill_template_menu(GtkWidget *menu,
                                             GFile *template_dir,
                                             MonitorData *mdata,
+                                            gint dest_row,
+                                            gint dest_col,
                                             gboolean recursive)
 {
     g_return_if_fail(G_IS_FILE(template_dir));
@@ -1100,7 +1133,7 @@ xfdesktop_file_icon_menu_fill_template_menu(GtkWidget *menu,
         if(g_file_info_get_file_type(info) == G_FILE_TYPE_DIRECTORY) {
             submenu = gtk_menu_new();
 
-            xfdesktop_file_icon_menu_fill_template_menu(submenu, file, mdata, TRUE);
+            xfdesktop_file_icon_menu_fill_template_menu(submenu, file, mdata, dest_row, dest_col, TRUE);
 
             if(!gtk_container_get_children((GtkContainer*) submenu)) {
                 g_object_unref(file);
@@ -1131,6 +1164,8 @@ xfdesktop_file_icon_menu_fill_template_menu(GtkWidget *menu,
         } else {
             g_object_set_data_full(G_OBJECT(item), "file",
                                    g_object_ref(file), g_object_unref);
+            g_object_set_data(G_OBJECT(item), DEST_ROW_KEY, GINT_TO_POINTER(dest_row));
+            g_object_set_data(G_OBJECT(item), DEST_COL_KEY, GINT_TO_POINTER(dest_col));
 
             g_signal_connect(G_OBJECT(item), "activate",
                              G_CALLBACK(xfdesktop_file_icon_template_item_activated),
@@ -1461,7 +1496,11 @@ add_menu_separator(GtkWidget *menu) {
 }
 
 static GtkMenu *
-xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager, XfceDesktop *desktop) {
+xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager,
+                                             XfceDesktop *desktop,
+                                             gint popup_x,
+                                             gint popup_y)
+{
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(manager);
 
     TRACE("ENTERING");
@@ -1472,6 +1511,9 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager, 
     MonitorData *mdata = g_hash_table_lookup(fmanager->monitor_data, xfce_desktop_get_monitor(desktop));
     g_return_val_if_fail(mdata != NULL, GTK_MENU(menu));
     XfdesktopIconView *icon_view = xfdesktop_icon_view_holder_get_icon_view(mdata->holder);
+
+    gint dest_row = -1, dest_col = -1;
+    xfdesktop_icon_view_widget_coords_to_slot_coords(icon_view, popup_x, popup_y, &dest_row, &dest_col);
 
     GList *selected = xfdesktop_file_icon_manager_get_selected_icons(fmanager, icon_view);
     if(!selected) {
@@ -1578,6 +1620,8 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager, 
                                                                   G_CALLBACK(xfdesktop_file_icon_menu_create_launcher),
                                                                   mdata);
                     g_object_set_data(G_OBJECT(create_launcher_mi), "xfdesktop-launcher-type", "Application");
+                    g_object_set_data(G_OBJECT(create_launcher_mi), DEST_ROW_KEY, GINT_TO_POINTER(dest_row));
+                    g_object_set_data(G_OBJECT(create_launcher_mi), DEST_COL_KEY, GINT_TO_POINTER(dest_col));
 
                     /* create link item */
                     GtkWidget *create_url_mi = add_menu_item(menu,
@@ -1586,13 +1630,17 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager, 
                                                              G_CALLBACK(xfdesktop_file_icon_menu_create_launcher),
                                                              mdata);
                     g_object_set_data(G_OBJECT(create_url_mi), "xfdesktop-launcher-type", "Link");
+                    g_object_set_data(G_OBJECT(create_url_mi), DEST_ROW_KEY, GINT_TO_POINTER(dest_row));
+                    g_object_set_data(G_OBJECT(create_url_mi), DEST_COL_KEY, GINT_TO_POINTER(dest_col));
 
                     /* create folder item */
-                    add_menu_item(menu,
-                                  _("Create _Folder..."),
-                                  g_themed_icon_new("folder-new"),
-                                  G_CALLBACK(xfdesktop_file_icon_menu_create_folder),
-                                  mdata);
+                    GtkWidget *create_folder_mi = add_menu_item(menu,
+                                                                _("Create _Folder..."),
+                                                                g_themed_icon_new("folder-new"),
+                                                                G_CALLBACK(xfdesktop_file_icon_menu_create_folder),
+                                                                mdata);
+                    g_object_set_data(G_OBJECT(create_folder_mi), DEST_ROW_KEY, GINT_TO_POINTER(dest_row));
+                    g_object_set_data(G_OBJECT(create_folder_mi), DEST_COL_KEY, GINT_TO_POINTER(dest_col));
 
                     /* create document submenu, 0 disables the sub-menu */
                     if(fmanager->max_templates > 0) {
@@ -1610,6 +1658,7 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager, 
                          * templates if so. */
                         GFile *home_dir = g_file_new_for_path(xfce_get_homedir());
                         const gchar *templates_dir_path = g_get_user_special_dir(G_USER_DIRECTORY_TEMPLATES);
+                        DBG("templates dir path: %s", templates_dir_path);
                         GFile *templates_dir = NULL;
                         if(templates_dir_path) {
                             templates_dir = g_file_new_for_path(templates_dir_path);
@@ -1619,6 +1668,8 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager, 
                             xfdesktop_file_icon_menu_fill_template_menu(tmpl_menu,
                                                                         templates_dir,
                                                                         mdata,
+                                                                        dest_row,
+                                                                        dest_col,
                                                                         FALSE);
                         }
 
@@ -1642,11 +1693,13 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager, 
                         add_menu_separator(tmpl_menu);
 
                         /* add the "Empty File" template option */
-                        add_menu_item(tmpl_menu,
-                                      _("_Empty File"),
-                                      g_themed_icon_new("text-x-generic"),
-                                      G_CALLBACK(xfdesktop_file_icon_template_item_activated),
-                                      mdata);
+                        GtkWidget *create_empty_file_mi = add_menu_item(tmpl_menu,
+                                                                        _("_Empty File"),
+                                                                        g_themed_icon_new("text-x-generic"),
+                                                                        G_CALLBACK(xfdesktop_file_icon_template_item_activated),
+                                                                        mdata);
+                        g_object_set_data(G_OBJECT(create_empty_file_mi), DEST_ROW_KEY, GINT_TO_POINTER(dest_row));
+                        g_object_set_data(G_OBJECT(create_empty_file_mi), DEST_COL_KEY, GINT_TO_POINTER(dest_col));
                     }
                 } else {
                     /* Menu on folder icons */
@@ -1790,6 +1843,8 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager, 
                                                 G_CALLBACK(xfdesktop_file_icon_menu_paste),
                                                 mdata);
             gtk_widget_set_sensitive(paste_mi, xfdesktop_clipboard_manager_get_can_paste(clipboard_manager));
+            g_object_set_data(G_OBJECT(paste_mi), DEST_ROW_KEY, GINT_TO_POINTER(dest_row));
+            g_object_set_data(G_OBJECT(paste_mi), DEST_COL_KEY, GINT_TO_POINTER(dest_col));
 
             add_menu_separator(menu);
         } else if(!multi_sel_special) {
@@ -2220,7 +2275,7 @@ xfdesktop_file_icon_manager_key_press(GtkWidget *widget, GdkEventKey *evt, Monit
             {
                 return FALSE;
             }
-            xfdesktop_file_icon_menu_create_folder(widget, mdata);
+            xfdesktop_file_icon_manager_create_folder(mdata, -1, -1, toplevel_window_for_widget(widget));
             return TRUE;
 
         case GDK_KEY_r:
