@@ -1187,6 +1187,18 @@ xfdesktop_file_icon_model_get_icon(XfdesktopFileIconModel *fmodel,
     }
 }
 
+XfdesktopFileIcon *
+xfdesktop_file_icon_model_get_icon_for_file(XfdesktopFileIconModel *fmodel, GFile *file) {
+    g_return_val_if_fail(XFDESKTOP_IS_FILE_ICON_MODEL(fmodel), NULL);
+    g_return_val_if_fail(G_IS_FILE(file), NULL);
+
+    gchar *ht_sort_key = xfdesktop_file_icon_sort_key_for_file(file);
+    XfdesktopFileIcon *icon = g_hash_table_lookup(fmodel->icons, ht_sort_key);
+    g_free(ht_sort_key);
+
+    return icon;
+}
+
 gboolean
 xfdesktop_file_icon_model_get_icon_iter(XfdesktopFileIconModel *fmodel,
                                         XfdesktopFileIcon *icon,
