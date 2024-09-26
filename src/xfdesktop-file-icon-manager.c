@@ -676,71 +676,30 @@ xfdesktop_file_icon_menu_rename(GtkWidget *widget, MonitorData *mdata) {
 }
 
 static void
-xfdesktop_file_icon_manager_delete_files(MonitorData *mdata, GList *files) {
-    GList *gfiles = NULL;
-    for (GList *lp = g_list_last(files); lp != NULL; lp = lp->prev) {
-        gfiles = g_list_prepend(gfiles, xfdesktop_file_icon_peek_file(lp->data));
-    }
-
-    xfdesktop_file_utils_unlink_files(gfiles, mdata->fmanager->gscreen, toplevel_window_for_monitor_data(mdata));
-
-    g_list_free(gfiles);
-}
-
-static gboolean
-xfdesktop_file_icon_manager_trash_files(MonitorData *mdata, GList *files) {
-    GList *gfiles = NULL;
-    for (GList *lp = g_list_last(files); lp != NULL; lp = lp->prev) {
-        gfiles = g_list_prepend(gfiles, xfdesktop_file_icon_peek_file(lp->data));
-    }
-
-    xfdesktop_file_utils_trash_files(gfiles, mdata->fmanager->gscreen, toplevel_window_for_monitor_data(mdata));
-
-    g_list_free(gfiles);
-    return TRUE;
-}
-
-static void
-xfdesktop_file_icon_manager_delete_selected(MonitorData *mdata, GtkWidget *widget, gboolean force_delete) {
+xfdesktop_file_icon_manager_delete_selected(MonitorData *mdata, gboolean force_delete) {
     XfdesktopIconView *icon_view = xfdesktop_icon_view_holder_get_icon_view(mdata->holder);
     GList *selected = xfdesktop_file_icon_manager_get_selected_icons(mdata->fmanager, icon_view);
-    if(!selected)
-        return;
 
-    /* remove anybody that's not deletable */
-    for(GList *l = selected; l; ) {
-        if(!xfdesktop_file_icon_can_delete_file(XFDESKTOP_FILE_ICON(l->data))) {
-            GList *next = l->next;
-
-            if(l->prev)
-                l->prev->next = l->next;
-            else  /* this is the first item; reset |selected| */
-                selected = l->next;
-
-            if(l->next)
-                l->next->prev = l->prev;
-
-            l->next = l->prev = NULL;
-            g_list_free_1(l);
-
-            l = next;
-        } else
-            l = l->next;
+    GList *deletable_files = NULL;
+    for (GList *l = selected; l != NULL; l = l->next) {
+        XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(l->data);
+        if (xfdesktop_file_icon_can_delete_file(icon) && xfdesktop_file_icon_peek_file(icon) != NULL) {
+            GFile *file = xfdesktop_file_icon_peek_file(icon);
+            deletable_files = g_list_prepend(deletable_files, g_object_ref(file));
+        }
     }
+    g_list_free(selected);
 
-    if(G_UNLIKELY(!selected))
-        return;
+    if (deletable_files != NULL) {
+        GtkWindow *toplevel = toplevel_window_for_monitor_data(mdata);
+        if (!force_delete) {
+            xfdesktop_file_utils_trash_files(deletable_files, mdata->fmanager->gscreen, toplevel);
+        } else {
+            xfdesktop_file_utils_unlink_files(deletable_files, mdata->fmanager->gscreen, toplevel);
+        }
 
-    /* make sure the icons don't get destroyed while we're working */
-    g_list_foreach(selected, xfdesktop_object_ref, NULL);
-
-    if(!force_delete) {
-        xfdesktop_file_icon_manager_trash_files(mdata, selected);
-    } else {
-        xfdesktop_file_icon_manager_delete_files(mdata, selected);
+        g_list_free_full(deletable_files, g_object_unref);
     }
-
-    g_list_free_full(selected, g_object_unref);
 }
 
 static void
@@ -857,12 +816,12 @@ xfdesktop_file_icon_menu_copy(GtkWidget *widget, MonitorData *mdata) {
 
 static void
 xfdesktop_file_icon_menu_trash(GtkWidget *widget, MonitorData *mdata) {
-    xfdesktop_file_icon_manager_delete_selected(mdata, widget, FALSE);
+    xfdesktop_file_icon_manager_delete_selected(mdata, FALSE);
 }
 
 static void
 xfdesktop_file_icon_menu_delete(GtkWidget *widget, MonitorData *mdata) {
-    xfdesktop_file_icon_manager_delete_selected(mdata, widget, TRUE);
+    xfdesktop_file_icon_manager_delete_selected(mdata, TRUE);
 }
 
 static void
@@ -2318,7 +2277,7 @@ xfdesktop_file_icon_manager_key_press(GtkWidget *widget, GdkEventKey *evt, Monit
         case GDK_KEY_Delete:
         case GDK_KEY_KP_Delete: {
             gboolean force_delete = evt->state & GDK_SHIFT_MASK;
-            xfdesktop_file_icon_manager_delete_selected(mdata, widget, force_delete);
+            xfdesktop_file_icon_manager_delete_selected(mdata, force_delete);
             break;
         }
 
