@@ -30,6 +30,8 @@
 
 #include "xfdesktop-file-icon.h"
 
+typedef void (*CreateDesktopFileCallback)(GFile *file, GError *error, gpointer user_data);
+
 gboolean xfdesktop_file_utils_is_desktop_file(GFileInfo *info);
 gboolean xfdesktop_file_utils_file_is_executable(GFileInfo *info);
 gchar *xfdesktop_file_utils_format_time_for_display(guint64 file_time);
@@ -119,6 +121,14 @@ void xfdesktop_file_utils_transfer_files(GdkDragAction action,
                                          GList *target_files,
                                          GdkScreen *screen);
 
+void xfdesktop_file_utils_create_desktop_file(GdkScreen *screen,
+                                              GFile *folder,
+                                              const gchar *launcher_type,
+                                              const gchar *suggested_name,
+                                              const gchar *suggested_command_or_url,
+                                              GCancellable *cancellable,
+                                              CreateDesktopFileCallback callback,
+                                              gpointer callback_data);
 
 gboolean xfdesktop_file_utils_dbus_init(void);
 void xfdesktop_file_utils_dbus_cleanup(void);
