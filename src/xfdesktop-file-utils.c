@@ -19,6 +19,7 @@
  *  Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
+#include "libxfce4windowing/libxfce4windowing.h"
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -41,10 +42,10 @@
 #endif
 
 #include <gio/gio.h>
-#ifdef HAVE_GIO_UNIX
+#include <gio/gunixinputstream.h>
 #include <gio/gunixmounts.h>
-#endif
 
+#include <glib.h>
 #include <gtk/gtk.h>
 
 #include <libxfce4ui/libxfce4ui.h>
@@ -67,6 +68,21 @@ typedef struct {
     GtkWindow *parent;
     GFile *file;
 } ExecuteData;
+
+typedef struct {
+    GFile *dest_file;
+    GtkWindow *parent;
+} TemplateCreateData;
+
+typedef struct {
+    GCancellable *cancellable;
+
+    GString *output_string;
+    gchar buffer[256];
+
+    CreateDesktopFileCallback callback;
+    gpointer callback_data;
+} CreateDesktopFileData;
 
 static XfdesktopTrash       *xfdesktop_file_utils_peek_trash_proxy(void);
 static XfdesktopFileManager *xfdesktop_file_utils_peek_filemanager_proxy(void);
@@ -266,9 +282,8 @@ xfdesktop_file_utils_get_display_name(GFile *file,
 }
 
 /**
- * xfdesktop_file_utils_next_new_file_name
- * @filename : the filename which will be used as the basis/default
- * @folder : the directory to search for a free filename
+ * xfdesktop_file_utils_next_new_file_name:
+ * @file: the filename which will be used as the basis/default
  *
  * Returns a filename that is like @filename with the possible addition of
  * a number to differentiate it from other similarly named files. In other words
@@ -289,13 +304,12 @@ xfdesktop_file_utils_get_display_name(GFile *file,
  *
  * Return value: pointer to the new filename.
  **/
-gchar*
-xfdesktop_file_utils_next_new_file_name(const gchar *filename,
-                                        const gchar *folder)
-{
+GFile *
+xfdesktop_file_utils_next_new_file_name(GFile *file) {
+  GFile *folder = g_file_get_parent(file);
+  gchar *filename = g_file_get_basename(file);
   unsigned long   file_name_size  = strlen(filename);
   unsigned        count           = 0;
-  gboolean        found_duplicate = FALSE;
   gchar          *extension       = NULL;
   gchar          *new_name        = g_strdup(filename);
 
@@ -308,17 +322,15 @@ xfdesktop_file_utils_next_new_file_name(const gchar *filename,
   /* loop until new_name is unique */
   while(TRUE)
     {
-      GFile *file = g_file_new_build_filename(folder, new_name, NULL);
-      found_duplicate = g_file_query_exists(file, NULL);
-      g_object_unref(file);
+      GFile *new_file = g_file_get_child(folder, new_name);
+      if (!g_file_query_exists(new_file, NULL)) {
+          return new_file;
+      }
+      g_object_unref(new_file);
 
-      if (!found_duplicate)
-        break;
       g_free(new_name);
-      new_name = g_strdup_printf(_("%.*s (copy %u)%s"), (int) file_name_size, filename, ++count, extension ? extension : "");
+      new_name = g_strdup_printf(_("%.*s (%u)%s"), (int) file_name_size, filename, ++count, extension);
     }
-
-  return new_name;
 }
 
 GList *
@@ -1023,60 +1035,298 @@ xfdesktop_file_utils_create_file(GFile *parent_folder,
 }
 
 static void
-create_file_from_template_cb (GObject *source_object, GAsyncResult *res, gpointer user_data)
-{
+show_template_creation_error(GtkWindow *parent, GFile *dest_file, const gchar *template_name, GError *error) {
+    gchar *secondary = g_strdup_printf(_("Unable to create new file \"%1$s\" from template file \"%2$s\": %3$s"),
+                                       g_file_peek_path(dest_file),
+                                       template_name,
+                                       error->message);
+
+    xfce_message_dialog(parent,
+                        _("Create File Error"),
+                        "dialog-error",
+                        _("Could not create a new file"),
+                        secondary,
+                        XFCE_BUTTON_TYPE_MIXED,
+                        "window-close",
+                        _("_Close"),
+                        GTK_RESPONSE_ACCEPT,
+                        NULL);
+
+    g_free(secondary);
+}
+
+static void
+template_create_done(GObject *source, GAsyncResult *res, gpointer data) {
+    TemplateCreateData *tcdata = data;
+
     GError *error = NULL;
-    if (!xfdesktop_file_manager_call_create_file_from_template_finish(XFDESKTOP_FILE_MANAGER(source_object), res, &error))
-        xfdesktop_file_utils_async_handle_error(error, user_data);
+    if (!g_file_copy_finish(G_FILE(source), res, &error)) {
+        gchar *template_name = g_file_get_basename(G_FILE(source));
+        show_template_creation_error(tcdata->parent, tcdata->dest_file, template_name, error);
+        g_free(template_name);
+        g_error_free(error);
+    }
+
+    g_object_unref(tcdata->dest_file);
+    g_free(tcdata);
+}
+
+static void
+empty_file_close_done(GObject *source, GAsyncResult *res, gpointer data) {
+    TemplateCreateData *tcdata = data;
+    GOutputStream *stream = G_OUTPUT_STREAM(source);
+
+    GError *error = NULL;
+    if (!g_output_stream_close_finish(G_OUTPUT_STREAM(source), res, &error)) {
+        show_template_creation_error(tcdata->parent, tcdata->dest_file, _("Empty File"), error);
+        g_error_free(error);
+    }
+
+    g_object_unref(stream);
+    g_object_unref(tcdata->dest_file);
+    g_free(tcdata);
+}
+
+static void
+empty_file_create_done(GObject *source, GAsyncResult *res, gpointer data) {
+    GtkWindow *parent = data;
+
+    GError *error = NULL;
+    GFileOutputStream *stream = g_file_create_finish(G_FILE(source), res, &error);
+    if (stream != NULL) {
+        TemplateCreateData *tcdata = g_new0(TemplateCreateData, 1);
+        tcdata->parent = parent;
+        tcdata->dest_file = G_FILE(source);
+        g_output_stream_close_async(G_OUTPUT_STREAM(stream), G_PRIORITY_DEFAULT, NULL, empty_file_close_done, tcdata);
+    } else {
+        show_template_creation_error(parent, G_FILE(source), _("Empty File"), error);
+        g_error_free(error);
+        g_object_unref(source);
+    }
 }
 
 void
-xfdesktop_file_utils_create_file_from_template(GFile *parent_folder,
-                                               GFile *template_file,
-                                               GdkScreen *screen,
-                                               GtkWindow *parent)
-{
-    XfdesktopFileManager *fileman_proxy;
+xfdesktop_file_utils_create_file_from_template(GFile *template_file, GFile *dest_file, GtkWindow *parent) {
+    g_return_if_fail(template_file == NULL || G_IS_FILE(template_file));
+    g_return_if_fail(G_IS_FILE(dest_file));
+    g_return_if_fail(parent == NULL || GTK_IS_WINDOW(parent));
 
-    g_return_if_fail(G_IS_FILE(parent_folder));
-    g_return_if_fail(G_IS_FILE(template_file));
-    g_return_if_fail(GDK_IS_SCREEN(screen) || GTK_IS_WINDOW(parent));
+    if (template_file != NULL) {
+        TemplateCreateData *tcdata = g_new0(TemplateCreateData, 1);
+        tcdata->parent = parent;
+        tcdata->dest_file = g_object_ref(dest_file);
 
-    if(!screen)
-        screen = gtk_widget_get_screen(GTK_WIDGET(parent));
-
-    fileman_proxy = xfdesktop_file_utils_peek_filemanager_proxy();
-    if(fileman_proxy) {
-        gchar *parent_directory = g_file_get_uri(parent_folder);
-        gchar *template_uri = g_file_get_uri(template_file);
-        gchar *display_name = g_strdup(gdk_display_get_name(gdk_screen_get_display(screen)));
-        gchar *startup_id = g_strdup_printf("_TIME%d", gtk_get_current_event_time());
-
-        xfdesktop_file_utils_set_window_cursor(parent, GDK_WATCH);
-
-
-        xfdesktop_file_manager_call_create_file_from_template(fileman_proxy,
-                                                              parent_directory,
-                                                              template_uri,
-                                                              display_name,
-                                                              startup_id,
-                                                              NULL,
-                                                              create_file_from_template_cb,
-                                                              parent);
-
-        xfdesktop_file_utils_set_window_cursor(parent, GDK_LEFT_PTR);
-
-        g_free(startup_id);
-        g_free(display_name);
-        g_free(parent_directory);
+        g_file_copy_async(template_file,
+                          tcdata->dest_file,
+                          G_FILE_COPY_NONE,
+                          G_PRIORITY_DEFAULT,
+                          NULL,
+                          NULL,
+                          NULL,
+                          template_create_done,
+                          tcdata);
     } else {
+        g_file_create_async(g_object_ref(dest_file),
+                            G_FILE_CREATE_NONE,
+                            G_PRIORITY_DEFAULT,
+                            NULL,
+                            empty_file_create_done,
+                            parent);
+    }
+}
+
+static void
+folder_create_done(GObject *source, GAsyncResult *res, gpointer data) {
+    GError *error = NULL;
+    if (!g_file_make_directory_finish(G_FILE(source), res, &error)) {
+        GtkWindow *parent = data;
+        gchar *folder_name = g_file_get_basename(G_FILE(source));
+        gchar *secondary = g_strdup_printf(_("Unable to create new folder \"%1$s\": %2$s"),
+                                           folder_name,
+                                           error->message);
         xfce_message_dialog(parent,
-                            _("Create Document Error"), "dialog-error",
-                            _("Could not create a new document from the template"),
-                            _("This feature requires a file manager service to "
-                              "be present (such as the one supplied by Thunar)."),
-                            XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
+                            _("Create File Error"),
+                            "dialog-error",
+                            _("Could not create a new folder"),
+                            secondary,
+                            XFCE_BUTTON_TYPE_MIXED,
+                            "window-close",
+                            _("_Close"),
+                            GTK_RESPONSE_ACCEPT,
                             NULL);
+
+        g_free(folder_name);
+        g_free(secondary);
+        g_error_free(error);
+    }
+
+    g_object_unref(source);
+}
+
+void
+xfdesktop_file_utils_create_folder(GFile *folder, GtkWindow *parent) {
+    g_file_make_directory_async(g_object_ref(folder), G_PRIORITY_DEFAULT, NULL, folder_create_done, parent);
+}
+
+static gchar *
+show_editable_file_create_dialog(const gchar *title,
+                                 GIcon *icon,
+                                 const gchar *prompt,
+                                 const gchar *prefill,
+                                 GtkWindow *parent,
+                                 const gchar *error_primary_text)
+{
+    GtkWidget *dialog = gtk_dialog_new_with_buttons(title,
+                                                    parent,
+                                                    GTK_DIALOG_DESTROY_WITH_PARENT | GTK_DIALOG_MODAL,
+                                                    _("_Cancel"),
+                                                    GTK_RESPONSE_CANCEL,
+                                                    _("C_reate"),
+                                                    GTK_RESPONSE_ACCEPT,
+                                                    NULL);
+    gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_ACCEPT);
+    gtk_dialog_set_response_sensitive(GTK_DIALOG(dialog), GTK_RESPONSE_ACCEPT, FALSE);
+    gtk_window_set_default_size(GTK_WINDOW(dialog), 300, -1);
+
+    GtkWidget *hbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 6);
+    gtk_container_set_border_width(GTK_CONTAINER(hbox), 6);
+    gtk_container_add(GTK_CONTAINER(gtk_dialog_get_content_area(GTK_DIALOG(dialog))), hbox);
+
+    GtkWidget *image = gtk_image_new_from_gicon(icon, GTK_ICON_SIZE_DIALOG);
+    gtk_widget_set_margin_start(image, 6);
+    gtk_widget_set_margin_end(image, 6);
+    gtk_widget_set_margin_top(image, 6);
+    gtk_widget_set_margin_bottom(image, 6);
+    gtk_box_pack_start(GTK_BOX(hbox), image, FALSE, TRUE, 0);
+
+    GtkWidget *vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 3);
+    gtk_box_pack_start(GTK_BOX(hbox), vbox, TRUE, TRUE, 0);
+
+    GtkWidget *label = gtk_label_new(prompt);
+    gtk_label_set_xalign(GTK_LABEL(label), 0.0);
+    gtk_box_pack_start(GTK_BOX(vbox), label, FALSE, FALSE, 0);
+
+    GtkWidget *filename_input = g_object_new(XFCE_TYPE_FILENAME_INPUT,
+                                    "original-filename", prefill,
+                                    NULL);
+    gtk_box_pack_start(GTK_BOX(vbox), filename_input, FALSE, FALSE, 0);
+    g_signal_connect_swapped(filename_input, "text-invalid",
+                             G_CALLBACK(xfce_filename_input_desensitise_widget),
+                             gtk_dialog_get_widget_for_response(GTK_DIALOG(dialog), GTK_RESPONSE_ACCEPT));
+    g_signal_connect_swapped(filename_input, "text-valid",
+                             G_CALLBACK(xfce_filename_input_sensitise_widget),
+                             gtk_dialog_get_widget_for_response(GTK_DIALOG(dialog), GTK_RESPONSE_ACCEPT));
+
+    xfce_filename_input_check(XFCE_FILENAME_INPUT(filename_input));
+
+    GtkEntry *filename_entry = xfce_filename_input_get_entry(XFCE_FILENAME_INPUT(filename_input));
+
+    gtk_widget_show_all(hbox);
+    gtk_widget_grab_focus(GTK_WIDGET(filename_entry));
+
+    const gchar *ext = strrchr(prefill, '.');
+    if (ext != NULL) {
+        glong offset = g_utf8_pointer_to_offset(prefill, ext);
+        if (offset >= 1) {
+            gtk_editable_select_region(GTK_EDITABLE(filename_entry), 0, offset);
+        }
+    }
+
+    gint response = gtk_dialog_run(GTK_DIALOG(dialog));
+    if (response == GTK_RESPONSE_ACCEPT) {
+        const gchar *text = xfce_filename_input_get_text(XFCE_FILENAME_INPUT(filename_input));
+        gchar *filename = g_filename_from_utf8(text, -1, NULL, NULL, NULL);
+        gtk_widget_destroy(dialog);
+
+        if (filename == NULL) {
+            gchar *secondary = g_strdup_printf(_("Cannot convert filename \"%s\" to the local encoding"), text);
+            xfce_message_dialog(parent,
+                                _("Create File Error"),
+                                "dialog-error",
+                                error_primary_text,
+                                secondary,
+                                XFCE_BUTTON_TYPE_MIXED,
+                                "window-close",
+                                _("_Close"),
+                                GTK_RESPONSE_ACCEPT,
+                                NULL);
+            g_free(secondary);
+        }
+
+        return filename;
+    } else {
+        gtk_widget_destroy(dialog);
+        return NULL;
+    }
+}
+
+GFile *
+xfdesktop_file_utils_prompt_for_template_file_name(GFile *parent_folder, GFile *template_file, GtkWindow *parent) {
+    g_return_val_if_fail(G_IS_FILE(parent_folder), NULL);
+    g_return_val_if_fail(template_file == NULL || G_IS_FILE(template_file), NULL);
+    g_return_val_if_fail(parent == NULL || GTK_IS_WINDOW(parent), NULL);
+
+    GIcon *icon = NULL;
+    if (template_file != NULL) {
+        GFileInfo *info = g_file_query_info(template_file,
+                                            G_FILE_ATTRIBUTE_STANDARD_ICON,
+                                            G_FILE_QUERY_INFO_NONE,
+                                            NULL, NULL);
+        if (info != NULL) {
+            if (g_file_info_get_icon(info) != NULL) {
+                icon = g_object_ref(g_file_info_get_icon(info));
+            }
+            g_object_unref(info);
+        }
+    }
+
+    if (icon == NULL) {
+        icon = g_themed_icon_new("text-x-generic");
+    }
+
+    gchar *name = template_file != NULL ? g_file_get_basename(template_file) : g_strdup(_("Empty File"));
+    gchar *title = g_strdup_printf(_("Create Document from template \"%s\""), name);
+    gchar *filename = show_editable_file_create_dialog(title,
+                                                       icon,
+                                                       _("Enter the name:"),
+                                                       name,
+                                                       parent,
+                                                       _("Could not create a new file"));
+
+    g_free(name);
+    g_free(title);
+    g_object_unref(icon);
+
+    if (filename != NULL) {
+        GFile *target_file = g_file_get_child(parent_folder, filename);
+        g_free(filename);
+        return target_file;
+    } else {
+        return NULL;
+    }
+}
+
+GFile *
+xfdesktop_file_utils_prompt_for_new_folder_name(GFile *parent_folder, GtkWindow *parent) {
+    g_return_val_if_fail(G_IS_FILE(parent_folder), NULL);
+    g_return_val_if_fail(parent == NULL || GTK_IS_WINDOW(parent), NULL);
+
+    GIcon *icon = g_themed_icon_new("default-folder");
+    const gchar *prefill = _("New Folder");
+    gchar *folder_name = show_editable_file_create_dialog(_("Create New Folder"),
+                                                          icon,
+                                                          _("Enter the name:"),
+                                                          prefill,
+                                                          parent,
+                                                          _("Could not create a new folder"));
+    g_object_unref(icon);
+
+    if (folder_name != NULL) {
+        GFile *folder = g_file_get_child(parent_folder, folder_name);
+        g_free(folder_name);
+        return folder;
+    } else {
+        return NULL;
     }
 }
 
@@ -1563,6 +1813,188 @@ xfdesktop_file_utils_transfer_files(GdkDragAction action,
                             XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
                             NULL);
     }
+}
+
+static gboolean
+exo_desktop_item_edit_has_print_saved_uri_flag(void) {
+    const gchar *test_argv[] = {
+        "exo-desktop-item-edit",
+        "--help",
+        NULL,
+    };
+
+    gboolean has_print_saved_filename = FALSE;
+    gchar *cmd_stdout = NULL;
+    if (g_spawn_sync(NULL,
+                     (gchar **)test_argv,
+                     NULL,
+                     G_SPAWN_SEARCH_PATH | G_SPAWN_STDERR_TO_DEV_NULL,
+                     NULL,
+                     NULL,
+                     &cmd_stdout,
+                     NULL,
+                     NULL,
+                     NULL)
+        && cmd_stdout != NULL)
+    {
+        has_print_saved_filename = strstr(cmd_stdout, "--print-saved-uri") != NULL;
+    }
+    g_free(cmd_stdout);
+
+    return has_print_saved_filename;
+}
+
+static void
+create_desktop_file_data_free(CreateDesktopFileData *cdfdata) {
+    if (cdfdata->cancellable != NULL) {
+        g_object_unref(cdfdata->cancellable);
+    }
+    g_string_free(cdfdata->output_string, TRUE);
+    g_free(cdfdata);
+}
+
+static void
+create_desktop_file_stdout_data_ready(GObject *source, GAsyncResult *res, gpointer data) {
+    GInputStream *stdout_stream = G_INPUT_STREAM(source);
+    CreateDesktopFileData *cdfdata = data;
+
+    GError *error = NULL;
+    gssize bytes_read = g_input_stream_read_finish(stdout_stream, res, &error);
+    if (bytes_read < 0) {
+        g_input_stream_close(stdout_stream, NULL, NULL);
+        g_object_unref(stdout_stream);
+
+        cdfdata->callback(NULL, error, cdfdata->callback_data);
+        g_error_free(error);
+        create_desktop_file_data_free(cdfdata);
+    } else if (bytes_read == 0) {
+        g_input_stream_close(stdout_stream, NULL, NULL);
+        g_object_unref(stdout_stream);
+
+        while (g_str_has_suffix(cdfdata->output_string->str, "\n")) {
+            g_string_truncate(cdfdata->output_string, cdfdata->output_string->len - 1);
+        }
+
+        if (cdfdata->output_string->len == 0) {
+            error = g_error_new_literal(G_IO_ERROR, G_IO_ERROR_CANCELLED, "User cancelled dialog");
+            cdfdata->callback(NULL, error, cdfdata->callback_data);
+            g_error_free(error);
+        } else {
+            GFile *file = g_file_new_for_uri(cdfdata->output_string->str);
+            cdfdata->callback(file, NULL, cdfdata->callback_data);
+            g_object_unref(file);
+        }
+
+        create_desktop_file_data_free(cdfdata);
+    } else {
+        g_string_append_len(cdfdata->output_string, cdfdata->buffer, bytes_read);
+        g_input_stream_read_async(stdout_stream,
+                                  cdfdata->buffer,
+                                  sizeof(cdfdata->buffer),
+                                  G_PRIORITY_DEFAULT,
+                                  cdfdata->cancellable,
+                                  create_desktop_file_stdout_data_ready,
+                                  cdfdata);
+    }
+}
+
+void
+xfdesktop_file_utils_create_desktop_file(GdkScreen *screen,
+                                         GFile *folder,
+                                         const gchar *launcher_type,
+                                         const gchar *suggested_name,
+                                         const gchar *suggested_command_or_url,
+                                         GCancellable *cancellable,
+                                         CreateDesktopFileCallback callback,
+                                         gpointer callback_data)
+{
+    g_return_if_fail(screen == NULL || GDK_IS_SCREEN(screen));
+    g_return_if_fail(G_IS_FILE(folder));
+    g_return_if_fail(g_strcmp0(launcher_type, "Application") == 0 || g_strcmp0(launcher_type, "Link") == 0);
+
+    GStrvBuilder *argv_builder = g_strv_builder_new();
+    g_strv_builder_add(argv_builder, "exo-desktop-item-edit");
+
+    if (screen != NULL && xfw_windowing_get() == XFW_WINDOWING_X11) {
+        const gchar *display_name = gdk_display_get_name(gdk_screen_get_display(screen));
+        g_strv_builder_add(argv_builder, "--display");
+        g_strv_builder_add(argv_builder, display_name);
+    }
+
+    g_strv_builder_add(argv_builder, "--create-new");
+    g_strv_builder_add(argv_builder, "--type");
+    g_strv_builder_add(argv_builder, launcher_type);
+
+    if (suggested_name != NULL) {
+        g_strv_builder_add(argv_builder, "--name");
+        g_strv_builder_add(argv_builder, suggested_name);
+    }
+
+    if (suggested_command_or_url != NULL) {
+        if (g_strcmp0(launcher_type, "Application") == 0) {
+            g_strv_builder_add(argv_builder, "--command");
+        } else {
+            g_strv_builder_add(argv_builder, "--url");
+        }
+        g_strv_builder_add(argv_builder, suggested_command_or_url);
+    }
+
+    gboolean used_print_saved_uri = callback != NULL && exo_desktop_item_edit_has_print_saved_uri_flag();
+    if (used_print_saved_uri) {
+        g_strv_builder_add(argv_builder, "--print-saved-uri");
+    }
+
+    gchar *uri = g_file_get_uri(folder);
+    g_strv_builder_add(argv_builder, uri);
+    g_free(uri);
+
+    gchar **argv = g_strv_builder_end(argv_builder);
+
+    GError *error = NULL;
+    gint stdout_fd = -1;
+    if (g_spawn_async_with_pipes(NULL,
+                                 argv,
+                                 NULL,
+                                 G_SPAWN_SEARCH_PATH,
+                                 NULL,
+                                 NULL,
+                                 NULL,
+                                 NULL,
+                                 used_print_saved_uri ? &stdout_fd : NULL,
+                                 NULL,
+                                 &error))
+    {
+        if (used_print_saved_uri && stdout_fd >= 0) {
+            CreateDesktopFileData *cdfdata = g_new0(CreateDesktopFileData, 1);
+            cdfdata->cancellable = cancellable != NULL ? g_object_ref(cancellable) : NULL;
+            cdfdata->output_string = g_string_sized_new(sizeof(cdfdata->buffer));
+            cdfdata->callback = callback;
+            cdfdata->callback_data = callback_data;
+
+            GInputStream *stdout_stream = g_unix_input_stream_new(stdout_fd, TRUE);
+            g_input_stream_read_async(stdout_stream,
+                                      cdfdata->buffer,
+                                      sizeof(cdfdata->buffer),
+                                      G_PRIORITY_DEFAULT,
+                                      cdfdata->cancellable,
+                                      create_desktop_file_stdout_data_ready,
+                                      cdfdata);
+        } else if (callback != NULL) {
+            error = g_error_new_literal(G_IO_ERROR,
+                                        G_IO_ERROR_NOT_SUPPORTED,
+                                        "exo-desktop-item-edit doesn't support the --print-saved-uri option");
+            callback(NULL, error, callback_data);
+            g_error_free(error);
+        }
+    } else {
+        if (callback != NULL) {
+            callback(NULL, error, callback_data);
+        }
+        g_error_free(error);
+    }
+
+    g_strfreev(argv);
+    g_strv_builder_unref(argv_builder);
 }
 
 static gint dbus_ref_cnt = 0;
