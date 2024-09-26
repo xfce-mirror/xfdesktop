@@ -4149,6 +4149,19 @@ xfdesktop_icon_view_model_row_changed(GtkTreeModel *model,
             item->pixbuf_surface = NULL;
         }
         xfdesktop_icon_view_invalidate_item(icon_view, item, TRUE);
+
+        if (item->placed && icon_view->priv->row_column != -1 && icon_view->priv->col_column != -1) {
+            gint row, col;
+            gtk_tree_model_get(model, iter,
+                               icon_view->priv->row_column, &row,
+                               icon_view->priv->col_column, &col,
+                               -1);
+
+            if (row != item->row || col != item->col) {
+                xfdesktop_icon_view_unplace_item(icon_view, item);
+                xfdesktop_icon_view_place_item(icon_view, item, TRUE);
+            }
+        }
     }
 }
 
