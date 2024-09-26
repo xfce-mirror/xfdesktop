@@ -18,6 +18,7 @@
  *  Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
+#include "libxfce4windowing/libxfce4windowing.h"
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -30,13 +31,16 @@
 #include <gobject/gmarshal.h>
 
 #include "xfdesktop-icon.h"
-#include "xfdesktop-marshal.h"
 
-struct _XfdesktopIconPrivate
+#define GET_PRIVATE(icon) ((XfdesktopIconPrivate *)xfdesktop_icon_get_instance_private(XFDESKTOP_ICON(icon)))
+
+typedef struct _XfdesktopIconPrivate
 {
+    gchar *identifier;
+    XfwMonitor *monitor;
     gint16 row;
     gint16 col;
-};
+} XfdesktopIconPrivate;
 
 enum {
     SIG_PIXBUF_CHANGED = 0,
@@ -44,6 +48,8 @@ enum {
     SIG_POS_CHANGED,
     SIG_N_SIGNALS,
 };
+
+static void xfdesktop_icon_finalize(GObject *object);
 
 
 static guint __signals[SIG_N_SIGNALS] = { 0, };
@@ -54,6 +60,9 @@ G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE(XfdesktopIcon, xfdesktop_icon, G_TYPE_OBJECT
 static void
 xfdesktop_icon_class_init(XfdesktopIconClass *klass)
 {
+    GObjectClass *gobject_class = G_OBJECT_CLASS(klass);
+    gobject_class->finalize = xfdesktop_icon_finalize;
+
     __signals[SIG_PIXBUF_CHANGED] = g_signal_new("pixbuf-changed",
                                                  XFDESKTOP_TYPE_ICON,
                                                  G_SIGNAL_RUN_LAST,
@@ -85,22 +94,56 @@ xfdesktop_icon_class_init(XfdesktopIconClass *klass)
 static void
 xfdesktop_icon_init(XfdesktopIcon *icon)
 {
-    icon->priv = xfdesktop_icon_get_instance_private(icon);
-    icon->priv->row = -1;
-    icon->priv->col = -1;
+    XfdesktopIconPrivate *priv = GET_PRIVATE(icon);
+    priv->row = -1;
+    priv->col = -1;
 }
 
-void
+static void
+xfdesktop_icon_finalize(GObject *object) {
+    XfdesktopIconPrivate *priv = GET_PRIVATE(object);
+    g_free(priv->identifier);
+
+    G_OBJECT_CLASS(xfdesktop_icon_parent_class)->finalize(object);
+}
+
+gboolean
+xfdesktop_icon_set_monitor(XfdesktopIcon *icon, XfwMonitor *monitor) {
+    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), FALSE);
+    g_return_val_if_fail(monitor == NULL || XFW_IS_MONITOR(monitor), FALSE);
+
+    XfdesktopIconPrivate *priv = GET_PRIVATE(icon);
+    if (priv->monitor != monitor) {
+        priv->monitor = monitor;
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+XfwMonitor *
+xfdesktop_icon_get_monitor(XfdesktopIcon *icon) {
+    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), NULL);
+    return GET_PRIVATE(icon)->monitor;
+}
+
+gboolean
 xfdesktop_icon_set_position(XfdesktopIcon *icon,
                             gint16 row,
                             gint16 col)
 {
-    g_return_if_fail(XFDESKTOP_IS_ICON(icon));
+    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), FALSE);
+    g_return_val_if_fail((row >= 0 && col >= 0) || (row == -1 && col == -1), FALSE);
 
-    icon->priv->row = row;
-    icon->priv->col = col;
-
-    g_signal_emit(G_OBJECT(icon), __signals[SIG_POS_CHANGED], 0, NULL);
+    XfdesktopIconPrivate *priv = GET_PRIVATE(icon);
+    if (row != priv->row || col != priv->col) {
+        priv->row = row;
+        priv->col = col;
+        g_signal_emit(G_OBJECT(icon), __signals[SIG_POS_CHANGED], 0, NULL);
+        return TRUE;
+    } else {
+        return FALSE;
+    }
 }
 
 gboolean
@@ -110,10 +153,14 @@ xfdesktop_icon_get_position(XfdesktopIcon *icon,
 {
     g_return_val_if_fail(XFDESKTOP_IS_ICON(icon) && row && col, FALSE);
 
-    *row = icon->priv->row;
-    *col = icon->priv->col;
-
-    return TRUE;
+    XfdesktopIconPrivate *priv = GET_PRIVATE(icon);
+    if (priv->row != -1 && priv->col != -1) {
+        *row = priv->row;
+        *col = priv->col;
+        return TRUE;
+    } else {
+        return FALSE;
+    }
 }
 
 /*< required >*/
@@ -130,70 +177,19 @@ xfdesktop_icon_peek_label(XfdesktopIcon *icon)
 }
 
 /*< required >*/
-gchar *
-xfdesktop_icon_get_identifier(XfdesktopIcon *icon)
+const gchar *
+xfdesktop_icon_peek_identifier(XfdesktopIcon *icon)
 {
-    XfdesktopIconClass *klass;
-
     g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), NULL);
 
-    klass = XFDESKTOP_ICON_GET_CLASS(icon);
-
-    if(!klass->get_identifier)
-        return NULL;
-
-    return klass->get_identifier(icon);
-}
-
-/*< optional; drags aren't allowed if not provided >*/
-GdkDragAction
-xfdesktop_icon_get_allowed_drag_actions(XfdesktopIcon *icon)
-{
-    XfdesktopIconClass *klass;
-
-    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), FALSE);
-
-    klass = XFDESKTOP_ICON_GET_CLASS(icon);
-
-    if(!klass->get_allowed_drag_actions)
-        return 0;
-
-    return klass->get_allowed_drag_actions(icon);
-}
-
-/*< optional; drops aren't allowed if not provided >*/
-GdkDragAction
-xfdesktop_icon_get_allowed_drop_actions(XfdesktopIcon *icon,
-                                        GdkDragAction *suggested_action)
-{
-    XfdesktopIconClass *klass;
-
-    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), FALSE);
-
-    klass = XFDESKTOP_ICON_GET_CLASS(icon);
-
-    if(!klass->get_allowed_drop_actions) {
-        if(suggested_action)
-            *suggested_action = 0;
-        return 0;
+    XfdesktopIconPrivate *priv = GET_PRIVATE(icon);
+    if (priv->identifier == NULL) {
+        XfdesktopIconClass *klass = XFDESKTOP_ICON_GET_CLASS(icon);
+        g_return_val_if_fail(klass->get_identifier != NULL, NULL);
+        priv->identifier = klass->get_identifier(icon);
     }
 
-    return klass->get_allowed_drop_actions(icon, suggested_action);
-}
-
-/*< optional; required if get_allowed_drop_actions() can return nonzero >*/
-gboolean
-xfdesktop_icon_do_drop_dest(XfdesktopIcon *icon,
-                            GList *src_icons,
-                            GdkDragAction action)
-{
-    XfdesktopIconClass *klass;
-
-    g_return_val_if_fail(XFDESKTOP_IS_ICON(icon), FALSE);
-    klass = XFDESKTOP_ICON_GET_CLASS(icon);
-    g_return_val_if_fail(klass->do_drop_dest, FALSE);
-
-    return klass->do_drop_dest(icon, src_icons, action);
+    return priv->identifier;
 }
 
 /*< optional >*/

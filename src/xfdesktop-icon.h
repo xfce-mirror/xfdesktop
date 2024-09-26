@@ -21,27 +21,14 @@
 #ifndef __XFDESKTOP_ICON_H__
 #define __XFDESKTOP_ICON_H__
 
+#include <glib-object.h>
 #include <gtk/gtk.h>
+#include <libxfce4windowing/libxfce4windowing.h>
 
 G_BEGIN_DECLS
 
-#define XFDESKTOP_TYPE_ICON            (xfdesktop_icon_get_type())
-#define XFDESKTOP_ICON(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), XFDESKTOP_TYPE_ICON, XfdesktopIcon))
-#define XFDESKTOP_ICON_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), XFDESKTOP_TYPE_ICON, XfdesktopIconClass))
-#define XFDESKTOP_IS_ICON(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), XFDESKTOP_TYPE_ICON))
-#define XFDESKTOP_ICON_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), XFDESKTOP_TYPE_ICON, XfdesktopIconClass))
-
-typedef struct _XfdesktopIcon        XfdesktopIcon;
-typedef struct _XfdesktopIconClass   XfdesktopIconClass;
-typedef struct _XfdesktopIconPrivate XfdesktopIconPrivate;
-
-struct _XfdesktopIcon
-{
-    GObject parent;
-
-    /*< private >*/
-    XfdesktopIconPrivate *priv;
-};
+G_DECLARE_DERIVABLE_TYPE(XfdesktopIcon, xfdesktop_icon, XFDESKTOP, ICON, GObject)
+#define XFDESKTOP_TYPE_ICON (xfdesktop_icon_get_type())
 
 struct _XfdesktopIconClass
 {
@@ -57,11 +44,6 @@ struct _XfdesktopIconClass
     const gchar *(*peek_label)(XfdesktopIcon *icon);
     const gchar *(*peek_tooltip)(XfdesktopIcon *icon);
 
-    GdkDragAction (*get_allowed_drag_actions)(XfdesktopIcon *icon);
-
-    GdkDragAction (*get_allowed_drop_actions)(XfdesktopIcon *icon, GdkDragAction *suggested_action);
-    gboolean (*do_drop_dest)(XfdesktopIcon *icon, GList *src_icons, GdkDragAction action);
-
     gchar *(*get_identifier)(XfdesktopIcon *icon);
 
     void (*set_thumbnail_file)(XfdesktopIcon *icon, GFile *file);
@@ -73,30 +55,24 @@ struct _XfdesktopIconClass
                                       GtkWidget *menu);
 };
 
-GType xfdesktop_icon_get_type(void) G_GNUC_CONST;
+gboolean xfdesktop_icon_set_monitor(XfdesktopIcon *icon,
+                                    XfwMonitor *monitor);
+XfwMonitor *xfdesktop_icon_get_monitor(XfdesktopIcon *icon);
 
 /* xfdesktop virtual function accessors */
 
 const gchar *xfdesktop_icon_peek_label(XfdesktopIcon *icon);
 const gchar *xfdesktop_icon_peek_tooltip(XfdesktopIcon *icon);
 
-/* returns a unique identifier for the icon, free when done using it */
-gchar *xfdesktop_icon_get_identifier(XfdesktopIcon *icon);
+/* returns a unique identifier for the icon */
+const gchar *xfdesktop_icon_peek_identifier(XfdesktopIcon *icon);
 
-void xfdesktop_icon_set_position(XfdesktopIcon *icon,
-                                 gint16 row,
-                                 gint16 col);
+gboolean xfdesktop_icon_set_position(XfdesktopIcon *icon,
+                                     gint16 row,
+                                     gint16 col);
 gboolean xfdesktop_icon_get_position(XfdesktopIcon *icon,
                                      gint16 *row,
                                      gint16 *col);
-
-GdkDragAction xfdesktop_icon_get_allowed_drag_actions(XfdesktopIcon *icon);
-
-GdkDragAction xfdesktop_icon_get_allowed_drop_actions(XfdesktopIcon *icon,
-                                                      GdkDragAction *suggested_action);
-gboolean xfdesktop_icon_do_drop_dest(XfdesktopIcon *icon,
-                                     GList *src_icons,
-                                     GdkDragAction action);
 
 gboolean xfdesktop_icon_activate(XfdesktopIcon *icon,
                                  GtkWindow *window);

@@ -62,6 +62,8 @@
 
 #define KEYBOARD_NAVIGATION_TIMEOUT  1500
 
+#define XFDESKTOP_ICON_NAME "XFDESKTOP_ICON"
+
 #if defined(DEBUG) && DEBUG > 0
 #define DUMP_GRID_LAYOUT(icon_view) \
 {\
@@ -93,14 +95,6 @@ enum
     SIG_ACTIVATE_SELECTED_ITEMS,
     SIG_RESIZE_EVENT,
 
-    SIG_DRAG_ACTIONS_GET,
-    SIG_DROP_ACTIONS_GET,
-    SIG_DRAG_DROP_ASK,
-    SIG_DRAG_DROP_ITEM,
-    SIG_DRAG_DROP_ITEMS,
-    SIG_DRAG_ITEM_DATA_RECEIVED,
-    SIG_DROP_PROPOSE_ACTION,
-
     SIG_N_SIGNALS,
 };
 
@@ -113,6 +107,7 @@ enum
 {
     PROP_0 = 0,
     PROP_CHANNEL,
+    PROP_SCREEN,
     PROP_MODEL,
     PROP_ICON_SIZE,
     PROP_ICON_WIDTH,
@@ -300,7 +295,7 @@ int_compare(gconstpointer a,
 
 struct _XfdesktopIconViewPrivate
 {
-    GtkWidget *parent_window;
+    XfwScreen *screen;
 
     GtkTreeModel *model;
     gint pixbuf_column;
@@ -321,11 +316,8 @@ struct _XfdesktopIconViewPrivate
     gboolean font_size_set;
     gboolean center_text;
 
-    GList *items;
-    GList *selected_items;
-
-    gint width;
-    gint height;
+    GList *items;  // ViewItem
+    GList *selected_items;  // ViewItem
 
     gint xmargin;
     gint ymargin;
@@ -347,6 +339,9 @@ struct _XfdesktopIconViewPrivate
     gint press_start_y;
     GdkRectangle band_rect;
 
+    GdkEventButton *drag_timer_event;
+    guint drag_timer_id;
+
     XfconfChannel *channel;
 
     /* element-type gunichar */
@@ -356,9 +351,7 @@ struct _XfdesktopIconViewPrivate
     ViewItem *cursor;
     ViewItem *first_clicked_item;
     ViewItem *item_under_pointer;
-    ViewItem *drop_dest_item;
 
-    GtkTargetList *native_targets;
     GtkTargetList *source_targets;
     GtkTargetList *dest_targets;
 
@@ -369,9 +362,11 @@ struct _XfdesktopIconViewPrivate
     gboolean drag_dest_set;
     GdkDragAction foreign_dest_actions;
 
-    gboolean dropped;
-    GdkDragAction proposed_drop_action;
-    gint hover_row, hover_col;
+    gboolean drag_dropped;
+    gint drag_drop_row;
+    gint drag_drop_col;
+    gint highlight_row;
+    gint highlight_col;
 
     gint slot_padding;
     gint cell_spacing;
@@ -389,6 +384,28 @@ struct _XfdesktopIconViewPrivate
     XfdesktopIconViewGravity gravity;
 };
 
+typedef struct {
+    gint nrows;
+    gint ncols;
+
+    gint xspacing;
+    gint yspacing;
+
+    gint xmargin;
+    gint ymargin;
+} GridParams;
+
+typedef struct {
+    /*< public >*/
+    // To consumers, they think they are just getting this GtkTreeIter pointer.
+    GtkTreeIter iter;
+
+    /*< private >*/
+    ViewItem *item;
+    gint dest_row;
+    gint dest_col;
+} XfdesktopDraggedIcon;
+
 static void xfdesktop_icon_view_constructed(GObject *object);
 static void xfdesktop_icon_view_set_property(GObject *object,
                                              guint property_id,
@@ -402,26 +419,19 @@ static void xfdesktop_icon_view_dispose(GObject *obj);
 static void xfdesktop_icon_view_finalize(GObject *obj);
 
 static gboolean xfdesktop_icon_view_button_press(GtkWidget *widget,
-                                                 GdkEventButton *evt,
-                                                 gpointer user_data);
+                                                 GdkEventButton *evt);
 static gboolean xfdesktop_icon_view_button_release(GtkWidget *widget,
-                                                   GdkEventButton *evt,
-                                                   gpointer user_data);
+                                                   GdkEventButton *evt);
 static gboolean xfdesktop_icon_view_key_press(GtkWidget *widget,
-                                              GdkEventKey *evt,
-                                              gpointer user_data);
+                                              GdkEventKey *evt);
 static gboolean xfdesktop_icon_view_focus_in(GtkWidget *widget,
-                                             GdkEventFocus *evt,
-                                             gpointer user_data);
+                                             GdkEventFocus *evt);
 static gboolean xfdesktop_icon_view_focus_out(GtkWidget *widget,
-                                              GdkEventFocus *evt,
-                                              gpointer user_data);
+                                              GdkEventFocus *evt);
 static gboolean xfdesktop_icon_view_motion_notify(GtkWidget *widget,
-                                                  GdkEventMotion *evt,
-                                                  gpointer user_data);
+                                                  GdkEventMotion *evt);
 static gboolean xfdesktop_icon_view_leave_notify(GtkWidget *widget,
-                                                 GdkEventCrossing *evt,
-                                                 gpointer user_data);
+                                                 GdkEventCrossing *evt);
 static void xfdesktop_icon_view_style_updated(GtkWidget *widget);
 static void xfdesktop_icon_view_size_allocate(GtkWidget *widget,
                                               GtkAllocation *allocation);
@@ -431,6 +441,11 @@ static gboolean xfdesktop_icon_view_draw(GtkWidget *widget,
                                          cairo_t *cr);
 static void xfdesktop_icon_view_drag_begin(GtkWidget *widget,
                                            GdkDragContext *contest);
+static void xfdesktop_icon_view_drag_data_get(GtkWidget *widget,
+                                              GdkDragContext *context,
+                                              GtkSelectionData *data,
+                                              guint info,
+                                              guint time);
 static gboolean xfdesktop_icon_view_drag_motion(GtkWidget *widget,
                                                 GdkDragContext *context,
                                                 gint x,
@@ -452,8 +467,6 @@ static void xfdesktop_icon_view_drag_data_received(GtkWidget *widget,
                                                    guint info,
                                                    guint time_);
 
-static inline void xfdesktop_icon_view_clear_drag_highlight(XfdesktopIconView *icon_view);
-
 static void xfdesktop_icon_view_add_move_binding(GtkBindingSet *binding_set,
                                                  guint keyval,
                                                  guint modmask,
@@ -465,6 +478,11 @@ static void xfdesktop_icon_view_populate_items(XfdesktopIconView *icon_view);
 static gboolean xfdesktop_icon_view_place_item(XfdesktopIconView *icon_view,
                                                ViewItem *item,
                                                gboolean honor_model_position);
+static gboolean xfdesktop_icon_view_place_item_in_grid_at(XfdesktopIconView *icon_view,
+                                                          ViewItem **grid_layout,
+                                                          ViewItem *item,
+                                                          gint row,
+                                                          gint col);
 static gboolean xfdesktop_icon_view_place_item_at(XfdesktopIconView *icon_view,
                                                   ViewItem *item,
                                                   gint row,
@@ -492,19 +510,11 @@ static void xfdesktop_icon_view_unselect_item_internal(XfdesktopIconView *icon_v
                                                        gboolean emit_signal);
 
 static void xfdesktop_icon_view_size_grid(XfdesktopIconView *icon_view);
-static inline gboolean xfdesktop_grid_is_free_position(XfdesktopIconView *icon_view,
-                                                       gint row,
-                                                       gint col);
-static inline void xfdesktop_grid_set_position_free(XfdesktopIconView *icon_view,
-                                                    gint row,
-                                                    gint col);
-static inline gboolean xfdesktop_grid_unset_position_free_raw(XfdesktopIconView *icon_view,
-                                                              gint row,
-                                                              gint col,
-                                                              gpointer data);
 static void xfdesktop_icon_view_clear_grid_layout(XfdesktopIconView *icon_view);
-static inline ViewItem *xfdesktop_icon_view_item_in_slot_raw(XfdesktopIconView *icon_view,
-                                                             gint idx);
+static inline ViewItem *xfdesktop_icon_view_item_in_grid_slot(XfdesktopIconView *icon_view,
+                                                              ViewItem **grid_layout,
+                                                              gint row,
+                                                              gint col);
 static inline ViewItem *xfdesktop_icon_view_item_in_slot(XfdesktopIconView *icon_view,
                                                          gint row,
                                                          gint col);
@@ -512,14 +522,15 @@ static ViewItem *xfdesktop_icon_view_widget_coords_to_item_internal(XfdesktopIco
                                                                     gint wx,
                                                                     gint wy);
 
+static gboolean xfdesktop_icon_view_get_next_free_grid_position_for_grid(XfdesktopIconView *icon_view,
+                                                                         ViewItem **grid_layout,
+                                                                         gint row,
+                                                                         gint col,
+                                                                         gint *next_row,
+                                                                         gint *next_col);
 static gint xfdesktop_check_icon_clicked(gconstpointer data,
                                          gconstpointer user_data);
 
-static inline void xfdesktop_xy_to_rowcol(XfdesktopIconView *icon_view,
-                                          gint x,
-                                          gint y,
-                                          gint *row,
-                                          gint *col);
 static inline gboolean xfdesktop_rectangle_contains_point(GdkRectangle *rect,
                                                           gint x,
                                                           gint y);
@@ -570,7 +581,7 @@ static void xfdesktop_icon_view_items_free(XfdesktopIconView *icon_view);
 
 
 static const GtkTargetEntry icon_view_targets[] = {
-    { "XFDESKTOP_ICON", GTK_TARGET_SAME_APP, TARGET_XFDESKTOP_ICON }
+    { XFDESKTOP_ICON_NAME, GTK_TARGET_SAME_APP, TARGET_XFDESKTOP_ICON },
 };
 static const gint icon_view_n_targets = 1;
 
@@ -591,10 +602,8 @@ static const struct
     { DESKTOP_ICONS_GRAVITY_PROP, G_TYPE_INT, "gravity" },
 };
 
-static ViewItem *TOMBSTONE = NULL;
 
-
-G_DEFINE_TYPE_WITH_PRIVATE(XfdesktopIconView, xfdesktop_icon_view, GTK_TYPE_WIDGET)
+G_DEFINE_TYPE_WITH_PRIVATE(XfdesktopIconView, xfdesktop_icon_view, GTK_TYPE_EVENT_BOX)
 
 
 static void
@@ -621,7 +630,16 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
     widget_class->drag_motion = xfdesktop_icon_view_drag_motion;
     widget_class->drag_leave = xfdesktop_icon_view_drag_leave;
     widget_class->drag_drop = xfdesktop_icon_view_drag_drop;
+    widget_class->drag_data_get = xfdesktop_icon_view_drag_data_get;
     widget_class->drag_data_received = xfdesktop_icon_view_drag_data_received;
+
+    widget_class->motion_notify_event = xfdesktop_icon_view_motion_notify;
+    widget_class->leave_notify_event = xfdesktop_icon_view_leave_notify;
+    widget_class->key_press_event = xfdesktop_icon_view_key_press;
+    widget_class->button_press_event = xfdesktop_icon_view_button_press;
+    widget_class->button_release_event = xfdesktop_icon_view_button_release;
+    widget_class->focus_in_event = xfdesktop_icon_view_focus_in;
+    widget_class->focus_out_event = xfdesktop_icon_view_focus_out;
 
     klass->select_all = xfdesktop_icon_view_real_select_all;
     klass->unselect_all = xfdesktop_icon_view_real_unselect_all;
@@ -648,13 +666,26 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
                                                  g_cclosure_marshal_VOID__VOID,
                                                  G_TYPE_NONE, 0);
 
+    /**
+     * XfdesktopIconView::icon-moved:
+     * @icon_view: the destination #XfdesktopIconView.
+     * @source_icon_view: the source #XfdesktopIconView.
+     * @source_iter: the #GtkTreeIter for the icon with respect to @source_icon_view.
+     * @dest_row: the new row on @icon_view.
+     * @dest_col: the new row on @icon_view.
+     *
+     * Emitted when @icon_view has recieved icons from @source_icon_view.
+     * @source_iter refers to the icon with respect to @source_icon_view's
+     * model.  (@dest_row, @dest_col) is the new location on @icon_view.
+     **/
     __signals[SIG_ICON_MOVED] = g_signal_new("icon-moved",
                                              XFDESKTOP_TYPE_ICON_VIEW,
                                              G_SIGNAL_RUN_LAST,
                                              G_STRUCT_OFFSET(XfdesktopIconViewClass, icon_moved),
                                              NULL, NULL,
-                                             xfdesktop_marshal_VOID__BOXED_INT_INT,
-                                             G_TYPE_NONE, 3,
+                                             xfdesktop_marshal_VOID__OBJECT_BOXED_INT_INT,
+                                             G_TYPE_NONE, 4,
+                                             XFDESKTOP_TYPE_ICON_VIEW,
                                              GTK_TYPE_TREE_ITER,
                                              G_TYPE_INT,
                                              G_TYPE_INT);
@@ -685,7 +716,7 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
     __signals[SIG_END_GRID_RESIZE] = g_signal_new(I_("end-grid-resize"),
                                                     XFDESKTOP_TYPE_ICON_VIEW,
                                                     G_SIGNAL_RUN_LAST,
-                                                    G_STRUCT_OFFSET(XfdesktopIconViewClass, start_grid_resize),
+                                                    G_STRUCT_OFFSET(XfdesktopIconViewClass, end_grid_resize),
                                                     NULL, NULL,
                                                     g_cclosure_marshal_VOID__VOID,
                                                     G_TYPE_NONE, 0);
@@ -755,92 +786,6 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
                                                g_cclosure_marshal_VOID__VOID,
                                                G_TYPE_NONE, 0);
 
-    // Asks for what drag actions are allowed for the given item
-    __signals[SIG_DRAG_ACTIONS_GET] = g_signal_new(I_("drag-actions-get"),
-                                                   XFDESKTOP_TYPE_ICON_VIEW,
-                                                   G_SIGNAL_RUN_LAST,
-                                                   0,
-                                                   NULL, NULL,
-                                                   xfdesktop_marshal_FLAGS__BOXED,
-                                                   GDK_TYPE_DRAG_ACTION, 1,
-                                                   GTK_TYPE_TREE_ITER);
-    // Asks for what drop actions are allowed for the given item
-    __signals[SIG_DROP_ACTIONS_GET] = g_signal_new(I_("drop-actions-get"),
-                                                   XFDESKTOP_TYPE_ICON_VIEW,
-                                                   G_SIGNAL_RUN_LAST,
-                                                   0,
-                                                   NULL, NULL,
-                                                   xfdesktop_marshal_FLAGS__BOXED_POINTER,
-                                                   GDK_TYPE_DRAG_ACTION, 2,
-                                                   GTK_TYPE_TREE_ITER,
-                                                   G_TYPE_POINTER);
-    // Asks to present some UI to allow the user to select a drag action
-    __signals[SIG_DRAG_DROP_ASK] = g_signal_new(I_("drag-drop-ask"),
-                                                XFDESKTOP_TYPE_ICON_VIEW,
-                                                G_SIGNAL_RUN_LAST,
-                                                0,
-                                                NULL, NULL,
-                                                xfdesktop_marshal_FLAGS__OBJECT_BOXED_INT_INT_UINT,
-                                                GDK_TYPE_DRAG_ACTION, 5,
-                                                GDK_TYPE_DRAG_CONTEXT,
-                                                GTK_TYPE_TREE_ITER,
-                                                G_TYPE_INT,
-                                                G_TYPE_INT,
-                                                G_TYPE_UINT);
-    // Analogous to GtkWidget::drag-drop, item can be present and is a drop site, or null (drop on an empty location)
-    __signals[SIG_DRAG_DROP_ITEM] = g_signal_new(I_("drag-drop-item"),
-                                                 XFDESKTOP_TYPE_ICON_VIEW,
-                                                 G_SIGNAL_RUN_LAST,
-                                                 0,
-                                                 NULL, NULL,
-                                                 xfdesktop_marshal_BOOLEAN__OBJECT_BOXED_INT_INT_UINT,
-                                                 G_TYPE_BOOLEAN, 5,
-                                                 GDK_TYPE_DRAG_CONTEXT,
-                                                 GTK_TYPE_TREE_ITER,
-                                                 G_TYPE_INT,
-                                                 G_TYPE_INT,
-                                                 G_TYPE_UINT);
-    // Asks a (local) dest item to handle a drag of one or more (local) src items
-    __signals[SIG_DRAG_DROP_ITEMS] = g_signal_new(I_("drag-drop-items"),
-                                                  XFDESKTOP_TYPE_ICON_VIEW,
-                                                  G_SIGNAL_RUN_LAST,
-                                                  0,
-                                                  NULL, NULL,
-                                                  xfdesktop_marshal_BOOLEAN__OBJECT_BOXED_POINTER_FLAGS,
-                                                  G_TYPE_BOOLEAN, 4,
-                                                  GDK_TYPE_DRAG_CONTEXT,
-                                                  GTK_TYPE_TREE_ITER,
-                                                  G_TYPE_POINTER,
-                                                  GDK_TYPE_DRAG_ACTION);
-    // Fired when drag data is received to be dropped; item can be present and is a drop site, or null (drop on an empty location)
-    __signals[SIG_DRAG_ITEM_DATA_RECEIVED] = g_signal_new(I_("drag-item-data-received"),
-                                                          XFDESKTOP_TYPE_ICON_VIEW,
-                                                          G_SIGNAL_RUN_LAST,
-                                                          0,
-                                                          NULL, NULL,
-                                                          xfdesktop_marshal_VOID__OBJECT_BOXED_INT_INT_BOXED_UINT_UINT,
-                                                          G_TYPE_NONE, 7,
-                                                          GDK_TYPE_DRAG_CONTEXT,
-                                                          GTK_TYPE_TREE_ITER,
-                                                          G_TYPE_INT,
-                                                          G_TYPE_INT,
-                                                          GTK_TYPE_SELECTION_DATA,
-                                                          G_TYPE_UINT,
-                                                          G_TYPE_UINT);
-    // Asks for a proposed action based on a drop item (or null, if dropping on an empty area), and the drag data provided
-    __signals[SIG_DROP_PROPOSE_ACTION] = g_signal_new(I_("drop-propose-action"),
-                                                      XFDESKTOP_TYPE_ICON_VIEW,
-                                                      G_SIGNAL_RUN_LAST,
-                                                      0,
-                                                      NULL, NULL,
-                                                      xfdesktop_marshal_FLAGS__OBJECT_BOXED_FLAGS_BOXED_UINT,
-                                                      GDK_TYPE_DRAG_ACTION, 5,
-                                                      GDK_TYPE_DRAG_CONTEXT,
-                                                      GTK_TYPE_TREE_ITER,
-                                                      GDK_TYPE_DRAG_ACTION,
-                                                      GTK_TYPE_SELECTION_DATA,
-                                                      G_TYPE_UINT);
-
     gtk_widget_class_install_style_property(widget_class,
                                             g_param_spec_int("cell-spacing",
                                                              "Cell spacing",
@@ -895,6 +840,14 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
                                                         "channel",
                                                         XFCONF_TYPE_CHANNEL,
                                                         (PARAM_FLAGS | G_PARAM_CONSTRUCT_ONLY) & ~G_PARAM_CONSTRUCT));
+
+    g_object_class_install_property(gobject_class,
+                                    PROP_SCREEN,
+                                    g_param_spec_object("screen",
+                                                        "screen",
+                                                        "XfwScreen",
+                                                        XFW_TYPE_SCREEN,
+                                                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS));
 
     g_object_class_install_property(gobject_class, PROP_MODEL,
                                     g_param_spec_object("model",
@@ -1055,8 +1008,6 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
                                          GTK_MOVEMENT_VISUAL_POSITIONS, -1);
 
     gtk_widget_class_set_css_name (widget_class, "XfdesktopIconView");
-
-    TOMBSTONE = g_slice_new0(ViewItem);
 }
 
 static void
@@ -1082,6 +1033,11 @@ xfdesktop_icon_view_init(XfdesktopIconView *icon_view)
     icon_view->priv->tooltip_icon_size_style = 0;
 
     icon_view->priv->allow_rubber_banding = TRUE;
+
+    icon_view->priv->drag_drop_row = -1;
+    icon_view->priv->drag_drop_col = -1;
+    icon_view->priv->highlight_row = -1;
+    icon_view->priv->highlight_col = -1;
 }
 
 static void
@@ -1092,16 +1048,13 @@ xfdesktop_icon_view_constructed(GObject *object)
 
     G_OBJECT_CLASS(xfdesktop_icon_view_parent_class)->constructed(object);
 
-    icon_view->priv->native_targets = gtk_target_list_new(icon_view_targets,
-                                                          icon_view_n_targets);
-
     icon_view->priv->source_targets = gtk_target_list_new(icon_view_targets,
                                                           icon_view_n_targets);
-    gtk_drag_source_set(GTK_WIDGET(icon_view), 0, NULL, 0, GDK_ACTION_MOVE);
+    xfdesktop_icon_view_enable_drag_source(icon_view, GDK_BUTTON1_MASK, NULL, 0, GDK_ACTION_MOVE);
 
     icon_view->priv->dest_targets = gtk_target_list_new(icon_view_targets,
                                                         icon_view_n_targets);
-    gtk_drag_dest_set(GTK_WIDGET(icon_view), 0, NULL, 0, GDK_ACTION_MOVE);
+    xfdesktop_icon_view_enable_drag_dest(icon_view, NULL, 0, GDK_ACTION_MOVE);
 
     g_object_bind_property(icon_view, "show-tooltips", icon_view, "has-tooltip", G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE);
     g_signal_connect(G_OBJECT(icon_view), "query-tooltip",
@@ -1110,8 +1063,16 @@ xfdesktop_icon_view_constructed(GObject *object)
     g_signal_connect(icon_view->priv->channel, "property-changed::" DESKTOP_ICONS_TOOLTIP_SIZE_PROP,
                      G_CALLBACK(xfdesktop_icon_view_xfconf_tooltip_icon_size_changed), icon_view);
 
-    gtk_widget_set_has_window(GTK_WIDGET(icon_view), FALSE);
-    gtk_widget_set_can_focus(GTK_WIDGET(icon_view), FALSE);
+    gtk_widget_set_has_window(GTK_WIDGET(icon_view), TRUE);
+    gtk_widget_set_can_focus(GTK_WIDGET(icon_view), TRUE);
+    gtk_widget_add_events(GTK_WIDGET(icon_view), GDK_POINTER_MOTION_HINT_MASK
+                          | GDK_KEY_PRESS_MASK
+                          | GDK_BUTTON_PRESS_MASK
+                          | GDK_BUTTON_RELEASE_MASK
+                          | GDK_FOCUS_CHANGE_MASK
+                          | GDK_EXPOSURE_MASK
+                          | GDK_LEAVE_NOTIFY_MASK
+                          | GDK_POINTER_MOTION_MASK);
 
     context = gtk_widget_get_style_context(GTK_WIDGET(icon_view));
     gtk_style_context_add_class(context, GTK_STYLE_CLASS_VIEW);
@@ -1134,6 +1095,10 @@ xfdesktop_icon_view_dispose(GObject *obj)
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(obj);
 
+    if (icon_view->priv->drag_timer_id != 0) {
+        g_source_remove(icon_view->priv->drag_timer_id);
+    }
+
     if (icon_view->priv->keyboard_navigation_state_timeout != 0) {
         g_source_remove(icon_view->priv->keyboard_navigation_state_timeout);
         icon_view->priv->keyboard_navigation_state_timeout = 0;
@@ -1154,9 +1119,10 @@ xfdesktop_icon_view_finalize(GObject *obj)
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(obj);
 
-    gtk_target_list_unref(icon_view->priv->native_targets);
     gtk_target_list_unref(icon_view->priv->source_targets);
     gtk_target_list_unref(icon_view->priv->dest_targets);
+
+    g_object_unref(icon_view->priv->screen);
 
     G_OBJECT_CLASS(xfdesktop_icon_view_parent_class)->finalize(obj);
 }
@@ -1172,6 +1138,10 @@ xfdesktop_icon_view_set_property(GObject *object,
     switch(property_id) {
         case PROP_CHANNEL:
             icon_view->priv->channel = g_value_dup_object(value);
+            break;
+
+        case PROP_SCREEN:
+            icon_view->priv->screen = g_value_dup_object(value);
             break;
 
         case PROP_MODEL:
@@ -1263,6 +1233,10 @@ xfdesktop_icon_view_get_property(GObject *object,
     switch(property_id) {
         case PROP_CHANNEL:
             g_value_set_object(value, icon_view->priv->channel);
+            break;
+
+        case PROP_SCREEN:
+            g_value_set_object(value, icon_view->priv->screen);
             break;
 
         case PROP_MODEL:
@@ -1406,51 +1380,78 @@ xfdesktop_icon_view_add_move_binding(GtkBindingSet *binding_set,
 }
 
 static void
-xfdesktop_icon_view_clear_drag_event(XfdesktopIconView *icon_view,
-                                     GtkWidget *widget)
-{
+xfdesktop_icon_view_clear_drag_event(XfdesktopIconView *icon_view) {
     DBG("unsetting stuff");
     icon_view->priv->control_click = FALSE;
     icon_view->priv->double_click = FALSE;
     icon_view->priv->maybe_begin_drag = FALSE;
     icon_view->priv->definitely_dragging = FALSE;
-    xfdesktop_icon_view_clear_drag_highlight(icon_view);
+    xfdesktop_icon_view_unset_highlight(icon_view);
 
     if (icon_view->priv->definitely_rubber_banding) {
-        gint dx = 0, dy = 0;
-
-        gtk_widget_translate_coordinates(widget, GTK_WIDGET(icon_view), 0, 0, &dx, &dy);
-
         icon_view->priv->definitely_rubber_banding = FALSE;
-        gtk_widget_queue_draw_area(widget,
-                                   icon_view->priv->band_rect.x - dx,
-                                   icon_view->priv->band_rect.y - dy,
+        gtk_widget_queue_draw_area(GTK_WIDGET(icon_view),
+                                   icon_view->priv->band_rect.x,
+                                   icon_view->priv->band_rect.y,
                                    icon_view->priv->band_rect.width,
                                    icon_view->priv->band_rect.height);
     }
 }
 
 static gboolean
-xfdesktop_icon_view_button_press(GtkWidget *widget,
-                                 GdkEventButton *evt,
-                                 gpointer user_data)
-{
-    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(user_data);
-    gint x, y;
+context_menu_drag_timeout(gpointer data) {
+    TRACE("entering");
+
+    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(data);
+    xfdesktop_icon_view_clear_drag_event(icon_view);
+
+    GdkEventButton *evt = icon_view->priv->drag_timer_event;
+    gint orig_x = evt->x;
+    gint orig_y = evt->y;
+
+    GtkWidget *parent = gtk_widget_get_parent(GTK_WIDGET(icon_view));
+    gboolean ret = FALSE;
+    while (parent != NULL && !ret) {
+        if ((gtk_widget_get_events(parent) & GDK_BUTTON_PRESS_MASK) != 0) {
+            g_object_unref(evt->window);
+            evt->window = g_object_ref(gtk_widget_get_window(parent));
+
+            gint x, y;
+            if (gtk_widget_translate_coordinates(GTK_WIDGET(icon_view), parent, orig_x, orig_y, &x, &y)) {
+                evt->x = x;
+                evt->y = y;
+            }
+
+            g_signal_emit_by_name(parent, "button-press-event", evt, &ret);
+        }
+
+        parent = gtk_widget_get_parent(parent);
+    }
+
+    return FALSE;
+}
+
+static void
+context_menu_drag_timeout_destroy(XfdesktopIconView *icon_view) {
+    icon_view->priv->drag_timer_id = 0;
+    gdk_event_free((GdkEvent *)icon_view->priv->drag_timer_event);
+    icon_view->priv->drag_timer_event = NULL;
+}
+
+static gboolean
+xfdesktop_icon_view_button_press(GtkWidget *widget, GdkEventButton *evt) {
+    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
 
     DBG("entering");
 
-    if (!gtk_widget_translate_coordinates(widget, GTK_WIDGET(icon_view), evt->x, evt->y, &x, &y) || x < 0 || y < 0) {
-        return FALSE;
-    }
+    gtk_widget_grab_focus(widget);
 
     if(evt->type == GDK_BUTTON_PRESS) {
         GList *item_l;
-        GdkEventButton evt_copy;
 
         /* Clear drag event if ongoing */
         if(evt->button == 2 || evt->button == 3)
-            xfdesktop_icon_view_clear_drag_event(icon_view, widget);
+            xfdesktop_icon_view_clear_drag_event(icon_view);
 
         /* Let xfce-desktop handle button 2 */
         if(evt->button == 2) {
@@ -1465,10 +1466,7 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
         if(!gtk_widget_has_grab(widget))
             gtk_grab_add(widget);
 
-        memcpy(&evt_copy, evt, sizeof(evt_copy));
-        evt_copy.x = x;
-        evt_copy.y = y;
-        item_l = g_list_find_custom(icon_view->priv->items, &evt_copy,
+        item_l = g_list_find_custom(icon_view->priv->items, evt,
                                     (GCompareFunc)xfdesktop_check_icon_clicked);
         if (item_l != NULL) {
             ViewItem *item = item_l->data;
@@ -1519,8 +1517,24 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
                 icon_view->priv->maybe_begin_drag = TRUE;
                 icon_view->priv->definitely_dragging = FALSE;
                 icon_view->priv->definitely_rubber_banding = FALSE;
-                icon_view->priv->press_start_x = x;
-                icon_view->priv->press_start_y = y;
+                icon_view->priv->press_start_x = evt->x;
+                icon_view->priv->press_start_y = evt->y;
+            }
+
+            if (evt->button == 3) {
+                // We'll want a context menu to pop up, but we have to wait a
+                // short time just in case the user starts dragging.
+                GtkSettings *settings = gtk_settings_get_for_screen(gtk_widget_get_screen(widget));
+                gint delay = 0;
+                g_object_get(settings,
+                             "gtk-menu-popup-delay", &delay,
+                             NULL);
+                icon_view->priv->drag_timer_event = (GdkEventButton *)gdk_event_copy((GdkEvent *)evt);
+                icon_view->priv->drag_timer_id = g_timeout_add_full(G_PRIORITY_DEFAULT,
+                                                                    MAX(225, delay),
+                                                                    context_menu_drag_timeout,
+                                                                    icon_view,
+                                                                    (GDestroyNotify) context_menu_drag_timeout_destroy);
             }
 
             return TRUE;
@@ -1541,8 +1555,8 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
             {
                 icon_view->priv->maybe_begin_drag = TRUE;
                 icon_view->priv->definitely_dragging = FALSE;
-                icon_view->priv->press_start_x = x;
-                icon_view->priv->press_start_y = y;
+                icon_view->priv->press_start_x = evt->x;
+                icon_view->priv->press_start_y = evt->y;
             }
 
             /* Since we're not over any icons this won't be the start of a
@@ -1567,13 +1581,9 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
         icon_view->priv->definitely_rubber_banding = FALSE;
 
         if(evt->button == 1) {
-            GdkEventButton evt_copy;
             GList *icon_l;
 
-            memcpy(&evt_copy, evt, sizeof(evt_copy));
-            evt_copy.x = x;
-            evt_copy.y = y;
-            icon_l = g_list_find_custom(icon_view->priv->items, &evt_copy,
+            icon_l = g_list_find_custom(icon_view->priv->items, evt,
                                         (GCompareFunc)xfdesktop_check_icon_clicked);
             if (icon_l != NULL) {
                 ViewItem *item = icon_l->data;
@@ -1590,24 +1600,11 @@ xfdesktop_icon_view_button_press(GtkWidget *widget,
 }
 
 static gboolean
-xfdesktop_icon_view_button_release(GtkWidget *widget,
-                                   GdkEventButton *evt,
-                                   gpointer user_data)
-{
-    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(user_data);
-    gint x, y;
-    GdkEventButton evt_copy;
-    GList *icon_l = NULL;
+xfdesktop_icon_view_button_release(GtkWidget *widget, GdkEventButton *evt) {
+    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
+    gboolean ret = FALSE;
 
     DBG("entering btn=%d", evt->button);
-
-    if (!gtk_widget_translate_coordinates(widget, GTK_WIDGET(icon_view), evt->x, evt->y, &x, &y) || x < 0 || y < 0) {
-        return FALSE;
-    }
-
-    memcpy(&evt_copy, evt, sizeof(evt_copy));
-    evt_copy.x = x;
-    evt_copy.y = y;
 
     /* single-click */
     if(xfdesktop_icon_view_get_single_click(icon_view)
@@ -1619,14 +1616,15 @@ xfdesktop_icon_view_button_release(GtkWidget *widget,
        && !icon_view->priv->double_click)
     {
         /* Find out if we clicked on an icon */
-        icon_l = g_list_find_custom(icon_view->priv->items, &evt_copy,
-                                    (GCompareFunc)xfdesktop_check_icon_clicked);
+        GList *icon_l = g_list_find_custom(icon_view->priv->items, evt,
+                                           (GCompareFunc)xfdesktop_check_icon_clicked);
         if (icon_l != NULL) {
             ViewItem *item = icon_l->data;
             /* We did, activate it */
             icon_view->priv->cursor = item;
             g_signal_emit(G_OBJECT(icon_view), __signals[SIG_ICON_ACTIVATED], 0);
             xfdesktop_icon_view_unselect_all(icon_view);
+            ret = TRUE;
         }
     }
 
@@ -1635,45 +1633,36 @@ xfdesktop_icon_view_button_release(GtkWidget *widget,
        icon_view->priv->definitely_rubber_banding == FALSE &&
        icon_view->priv->maybe_begin_drag == TRUE)
     {
-        /* If we're in single click mode we may already have the icon, don't
-         * find it again. */
-        if(icon_l == NULL) {
-            icon_l = g_list_find_custom(icon_view->priv->items, &evt_copy,
-                                        (GCompareFunc)xfdesktop_check_icon_clicked);
-        }
-
-        /* If we clicked an icon then we didn't pop up the menu during the
-         * button press in order to support right click DND, pop up the menu
-         * now. */
-        if(icon_l && icon_l->data) {
-            gboolean dummy;
-            g_signal_emit_by_name(widget, "popup-menu", &dummy);
+        if (evt->button == 3 && icon_view->priv->drag_timer_id != 0) {
+            context_menu_drag_timeout(icon_view);
+            g_source_remove(icon_view->priv->drag_timer_id);
         }
     }
 
     if(evt->button == 1 && evt->state & GDK_CONTROL_MASK
        && icon_view->priv->control_click)
     {
-        icon_l = g_list_find_custom(icon_view->priv->items, &evt_copy,
-                                    (GCompareFunc)xfdesktop_check_icon_clicked);
+        GList *icon_l = g_list_find_custom(icon_view->priv->items, evt,
+                                           (GCompareFunc)xfdesktop_check_icon_clicked);
         if (icon_l != NULL) {
             ViewItem *item = icon_l->data;
             if (item->selected) {
                 /* clicked an already-selected icon; unselect it */
                 xfdesktop_icon_view_unselect_item_internal(icon_view, item, TRUE);
             }
+            ret = TRUE;
         }
     }
 
     if(evt->button == 1 || evt->button == 3 || evt->button == 0) {
-        xfdesktop_icon_view_clear_drag_event(icon_view, widget);
+        xfdesktop_icon_view_clear_drag_event(icon_view);
     }
 
     gtk_grab_remove(widget);
 
     /* TRUE: stop other handlers from being invoked for the event. FALSE: propagate the event further. */
     /* On FALSE this method will be called twice in single-click-mode (possibly a gtk3 bug)            */
-    return TRUE;
+    return ret;
 }
 
 static gboolean
@@ -1762,11 +1751,8 @@ xfdesktop_icon_view_keyboard_navigate(XfdesktopIconView *icon_view,
 }
 
 static gboolean
-xfdesktop_icon_view_key_press(GtkWidget *widget,
-                              GdkEventKey *evt,
-                              gpointer user_data)
-{
-    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(user_data);
+xfdesktop_icon_view_key_press(GtkWidget *widget, GdkEventKey *evt) {
+    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
     gboolean ret = FALSE;
     gboolean could_keyboard_navigate = FALSE;
 
@@ -1800,11 +1786,8 @@ xfdesktop_icon_view_key_press(GtkWidget *widget,
 }
 
 static gboolean
-xfdesktop_icon_view_focus_in(GtkWidget *widget,
-                             GdkEventFocus *evt,
-                             gpointer user_data)
-{
-    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(user_data);
+xfdesktop_icon_view_focus_in(GtkWidget *widget, GdkEventFocus *evt) {
+    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
 
     gtk_widget_grab_focus(GTK_WIDGET(icon_view));
     DBG("GOT FOCUS");
@@ -1817,11 +1800,8 @@ xfdesktop_icon_view_focus_in(GtkWidget *widget,
 }
 
 static gboolean
-xfdesktop_icon_view_focus_out(GtkWidget *widget,
-                              GdkEventFocus *evt,
-                              gpointer user_data)
-{
-    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(user_data);
+xfdesktop_icon_view_focus_out(GtkWidget *widget, GdkEventFocus *evt) {
+    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
 
     DBG("LOST FOCUS");
 
@@ -1830,20 +1810,14 @@ xfdesktop_icon_view_focus_out(GtkWidget *widget,
     }
 
     if(G_UNLIKELY(icon_view->priv->single_click)) {
-        if(G_LIKELY(gtk_widget_get_window(GTK_WIDGET(icon_view->priv->parent_window)) != NULL)) {
-            gdk_window_set_cursor(gtk_widget_get_window(GTK_WIDGET(icon_view->priv->parent_window)), NULL);
-        }
+        gdk_window_set_cursor(gtk_widget_get_window(GTK_WIDGET(icon_view)), NULL);
     }
 
     return FALSE;
 }
 
 static gboolean
-xfdesktop_icon_view_maybe_begin_drag(XfdesktopIconView *icon_view,
-                                     GdkEventMotion *evt,
-                                     gint x,
-                                     gint y)
-{
+xfdesktop_icon_view_maybe_begin_drag(XfdesktopIconView *icon_view, GdkEventMotion *evt) {
     GdkDragAction actions;
 
     /* sanity check */
@@ -1852,7 +1826,7 @@ xfdesktop_icon_view_maybe_begin_drag(XfdesktopIconView *icon_view,
     if(!gtk_drag_check_threshold(GTK_WIDGET(icon_view),
                                  icon_view->priv->press_start_x,
                                  icon_view->priv->press_start_y,
-                                 x, y))
+                                 evt->x, evt->y))
     {
         return FALSE;
     }
@@ -1866,16 +1840,16 @@ xfdesktop_icon_view_maybe_begin_drag(XfdesktopIconView *icon_view,
                                         actions,
                                         1,
                                         (GdkEvent *)evt,
-                                        x,
-                                        y);
+                                        evt->x,
+                                        evt->y);
     } else {
         gtk_drag_begin_with_coordinates(GTK_WIDGET(icon_view),
                                         icon_view->priv->source_targets,
                                         actions | GDK_ACTION_ASK,
                                         3,
                                         (GdkEvent *)evt,
-                                        x,
-                                        y);
+                                        evt->x,
+                                        evt->y);
     }
 
     return TRUE;
@@ -1966,16 +1940,12 @@ xfdesktop_icon_view_xfconf_tooltip_icon_size_changed(XfconfChannel *channel,
 }
 
 static gboolean
-xfdesktop_icon_view_motion_notify(GtkWidget *widget,
-                                  GdkEventMotion *evt,
-                                  gpointer user_data)
-{
-    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(user_data);
-    gint x, y;
+xfdesktop_icon_view_motion_notify(GtkWidget *widget, GdkEventMotion *evt) {
+    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
     gboolean ret = FALSE;
 
-    if (!gtk_widget_translate_coordinates(widget, GTK_WIDGET(icon_view), evt->x, evt->y, &x, &y) || x < 0 || y < 0) {
-        return FALSE;
+    if (icon_view->priv->drag_timer_id != 0) {
+        g_source_remove(icon_view->priv->drag_timer_id);
     }
 
     if(icon_view->priv->maybe_begin_drag
@@ -1983,8 +1953,7 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget,
        && !icon_view->priv->definitely_dragging)
     {
         /* we might have the start of an icon click + drag here */
-        icon_view->priv->definitely_dragging = xfdesktop_icon_view_maybe_begin_drag(icon_view,
-                                                                                    evt, x, y);
+        icon_view->priv->definitely_dragging = xfdesktop_icon_view_maybe_begin_drag(icon_view, evt);
         if(icon_view->priv->definitely_dragging) {
             icon_view->priv->maybe_begin_drag = FALSE;
             ret = TRUE;
@@ -1996,7 +1965,6 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget,
     {
         GdkRectangle old_rect, *new_rect, intersect;
         cairo_region_t *region;
-        gint dx = 0, dy = 0;
 
         /* we're dragging with no icon under the cursor -> rubber band start
          * OR, we're already doin' the band -> update it */
@@ -2011,10 +1979,10 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget,
         } else
             memcpy(&old_rect, new_rect, sizeof(old_rect));
 
-        new_rect->x = MIN(icon_view->priv->press_start_x, x);
-        new_rect->y = MIN(icon_view->priv->press_start_y, y);
-        new_rect->width = ABS(x - icon_view->priv->press_start_x) + 1;
-        new_rect->height = ABS(y - icon_view->priv->press_start_y) + 1;
+        new_rect->x = MIN(icon_view->priv->press_start_x, evt->x);
+        new_rect->y = MIN(icon_view->priv->press_start_y, evt->y);
+        new_rect->width = ABS(evt->x - icon_view->priv->press_start_x) + 1;
+        new_rect->height = ABS(evt->y - icon_view->priv->press_start_y) + 1;
 
         region = cairo_region_create_rectangle(&old_rect);
         cairo_region_union_rectangle(region, new_rect);
@@ -2035,8 +2003,6 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget,
             cairo_region_destroy(region_intersect);
         }
 
-        gtk_widget_translate_coordinates(widget, GTK_WIDGET(icon_view), 0, 0, &dx, &dy);
-        cairo_region_translate(region, -dx, -dy);
         gdk_window_invalidate_region(gtk_widget_get_window(widget), region, TRUE);
         cairo_region_destroy(region);
 
@@ -2099,7 +2065,7 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget,
 
             if (item->slot_extents.width < 0
                 || item->slot_extents.height < 0
-                || !xfdesktop_rectangle_contains_point(&item->slot_extents, x, y))
+                || !xfdesktop_rectangle_contains_point(&item->slot_extents, evt->x, evt->y))
             {
                 icon_view->priv->item_under_pointer = NULL;
                 xfdesktop_icon_view_invalidate_item(icon_view, item, FALSE);
@@ -2111,9 +2077,9 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget,
                 gdk_window_set_cursor(evt->window, NULL);
             }
 
-            item = xfdesktop_icon_view_widget_coords_to_item_internal(icon_view, x, y);
+            item = xfdesktop_icon_view_widget_coords_to_item_internal(icon_view, evt->x, evt->y);
             if (item != NULL
-                && xfdesktop_rectangle_contains_point(&item->slot_extents, x, y))
+                && xfdesktop_rectangle_contains_point(&item->slot_extents, evt->x, evt->y))
             {
                 icon_view->priv->item_under_pointer = item;
                 xfdesktop_icon_view_invalidate_item(icon_view, item, FALSE);
@@ -2127,11 +2093,8 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget,
 }
 
 static gboolean
-xfdesktop_icon_view_leave_notify(GtkWidget *widget,
-                                 GdkEventCrossing *evt,
-                                 gpointer user_data)
-{
-    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(user_data);
+xfdesktop_icon_view_leave_notify(GtkWidget *widget, GdkEventCrossing *evt) {
+    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
 
     if(icon_view->priv->item_under_pointer) {
         ViewItem *item = icon_view->priv->item_under_pointer;
@@ -2276,48 +2239,58 @@ xfdesktop_icon_view_drag_begin(GtkWidget *widget,
         gtk_drag_set_icon_surface(context, surface);
         cairo_surface_destroy(surface);
     }
+
+    icon_view->priv->drag_dropped = FALSE;
+    icon_view->priv->drag_drop_row = -1;
+    icon_view->priv->drag_drop_col = -1;
 }
 
-static inline void
-xfdesktop_xy_to_rowcol(XfdesktopIconView *icon_view,
-                       gint x,
-                       gint y,
-                       gint *row,
-                       gint *col)
+static void
+xfdesktop_icon_view_drag_data_get(GtkWidget *widget,
+                                  GdkDragContext *context,
+                                  GtkSelectionData *data,
+                                  guint info,
+                                  guint time)
 {
-    g_return_if_fail(row && col);
+    TRACE("entering, %d", info);
 
-    *row = (y - icon_view->priv->ymargin) / (SLOT_SIZE + icon_view->priv->yspacing);
-    *col = (x - icon_view->priv->xmargin) / (SLOT_SIZE + icon_view->priv->xspacing);
-}
+    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
 
-static inline void
-xfdesktop_icon_view_clear_drag_highlight(XfdesktopIconView *icon_view)
-{
-    ViewItem *item = icon_view->priv->drop_dest_item;
+    if (info == TARGET_XFDESKTOP_ICON) {
+        XfdesktopDraggedIconList icon_list = {
+            .source_icon_view = icon_view,
+            .dragged_icons = NULL,
+        };
 
-    if (item != NULL) {
-        /* remove highlight from icon */
-        icon_view->priv->drop_dest_item = NULL;
-        xfdesktop_icon_view_invalidate_item(icon_view, item, FALSE);
-    }
-}
+        for (GList *l = icon_view->priv->selected_items; l != NULL; l = l->next) {
+            ViewItem *item = l->data;
 
-static inline void
-xfdesktop_icon_view_draw_drag_highlight(XfdesktopIconView *icon_view,
-                                        guint16 row,
-                                        guint16 col)
-{
-    ViewItem *item = xfdesktop_icon_view_item_in_slot(icon_view, row, col);
+            XfdesktopDraggedIcon *dragged_icon = g_new0(XfdesktopDraggedIcon, 1);
+            if (view_item_get_iter(item, GTK_TREE_MODEL(icon_view->priv->model), &dragged_icon->iter)) {
+                dragged_icon->item = item;
+                dragged_icon->dest_row = -1;
+                dragged_icon->dest_col = -1;
+                icon_list.dragged_icons = g_list_prepend(icon_list.dragged_icons, dragged_icon);
+            } else {
+                g_free(dragged_icon);
+            }
+        }
+        icon_list.dragged_icons = g_list_reverse(icon_list.dragged_icons);
 
-    if (icon_view->priv->drop_dest_item != NULL && icon_view->priv->drop_dest_item != item) {
-        xfdesktop_icon_view_invalidate_item(icon_view, icon_view->priv->drop_dest_item, FALSE);
-        icon_view->priv->drop_dest_item = NULL;
-    }
-
-    if (item != NULL) {
-        icon_view->priv->drop_dest_item = item;
-        xfdesktop_icon_view_invalidate_item(icon_view, item, FALSE);
+        if (icon_list.dragged_icons != NULL) {
+            g_object_set_data_full(G_OBJECT(context),
+                                   "--xfdesktop-icon-view-xfdesktop-icon-drag-data",
+                                   icon_list.dragged_icons,
+                                   (GDestroyNotify)g_list_free);
+            gtk_selection_data_set(data,
+                                   gdk_atom_intern(XFDESKTOP_ICON_NAME, FALSE),
+                                   1,
+                                   (guchar *)&icon_list,
+                                   sizeof(icon_list));
+        } else {
+            DBG("no valid source icons, cancelling");
+            gtk_drag_cancel(context);
+        }
     }
 }
 
@@ -2328,183 +2301,66 @@ xfdesktop_icon_view_drag_motion(GtkWidget *widget,
                                 gint y,
                                 guint time_)
 {
+    TRACE("entering, (%d, %d)", x, y);
+
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
-    GdkAtom target;
-    gint hover_row = -1, hover_col = -1;
-    ViewItem *item_on_dest = NULL;
-    GdkDragAction our_action = 0;
-    gboolean is_local_drag;
 
-    target = gtk_drag_dest_find_target(widget, context,
-                                       icon_view->priv->native_targets);
-    if(target == GDK_NONE) {
-        target = gtk_drag_dest_find_target(widget, context,
-                                           icon_view->priv->dest_targets);
-        if(target == GDK_NONE)
+    gint drag_drop_row = -1, drag_drop_col = -1;
+    gboolean on_grid = xfdesktop_icon_view_widget_coords_to_slot_coords(icon_view,
+                                                                        x,
+                                                                        y,
+                                                                        &drag_drop_row,
+                                                                        &drag_drop_col);
+
+    gboolean slot_changed;
+    if (drag_drop_row != icon_view->priv->drag_drop_row || drag_drop_col != icon_view->priv->drag_drop_col) {
+        xfdesktop_icon_view_unset_highlight(icon_view);
+        icon_view->priv->drag_drop_row = drag_drop_row;
+        icon_view->priv->drag_drop_col = drag_drop_col;
+        slot_changed = TRUE;
+    } else {
+        slot_changed = FALSE;
+    }
+
+    if (on_grid) {
+        GdkAtom target = gtk_drag_dest_find_target(widget, context, icon_view->priv->dest_targets);
+        if (target == gdk_atom_intern(XFDESKTOP_ICON_NAME, FALSE)
+            && xfdesktop_icon_view_item_in_slot(icon_view,
+                                                icon_view->priv->drag_drop_row,
+                                                icon_view->priv->drag_drop_col) == NULL)
+        {
+            DBG("icon moving to empty slot");
+            if (slot_changed) {
+                xfdesktop_icon_view_draw_highlight(icon_view,
+                                                   icon_view->priv->drag_drop_row,
+                                                   icon_view->priv->drag_drop_col);
+            }
+            gdk_drag_status(context, GDK_ACTION_MOVE, time_);
+            return TRUE;
+        } else {
+            DBG("not icon source, or icon source moving over another icon");
             return FALSE;
-    }
-
-    /* can we drop here? */
-    xfdesktop_xy_to_rowcol(icon_view, x, y, &hover_row, &hover_col);
-    if(hover_row >= icon_view->priv->nrows || hover_col >= icon_view->priv->ncols)
-        return FALSE;
-    item_on_dest = xfdesktop_icon_view_item_in_slot(icon_view, hover_row,
-                                                    hover_col);
-    if (item_on_dest != NULL) {
-        GtkTreeIter iter;
-        if (view_item_get_iter(item_on_dest, icon_view->priv->model, &iter)) {
-            GdkDragAction drop_actions = 0;
-            GdkDragAction dummy;
-            g_signal_emit(icon_view, __signals[SIG_DROP_ACTIONS_GET], 0, &iter, &dummy, &drop_actions);
-            if (drop_actions == 0) {
-                return FALSE;
-            }
         }
-    } else if(!xfdesktop_grid_is_free_position(icon_view, hover_row, hover_col))
-        return FALSE;
-
-    is_local_drag = (target == gdk_atom_intern("XFDESKTOP_ICON", FALSE));
-
-    /* at this point there are four cases to account for:
-     * 1.  local drag, empty space -> MOVE
-     * 2.  local drag, icon is there -> depends on icon_on_dest
-     * 3.  foreign drag, empty space -> depends on the source
-     * 4.  foreign drag, icon is there -> depends on source and icon_on_dest
-     */
-
-    if (item_on_dest == NULL) {
-        if(is_local_drag)  /* # 1 */
-            our_action = GDK_ACTION_MOVE;
-        else  /* #3 */
-            our_action = gdk_drag_context_get_suggested_action(context);
     } else {
-        /* start with all available actions (may be filtered by modifier keys) */
-        GdkDragAction allowed_actions = gdk_drag_context_get_actions(context);
-
-        if(is_local_drag) {  /* #2 */
-            GtkTreeIter iter;
-            gboolean action_ask = FALSE;
-
-            /* check to make sure we aren't just hovering over ourself */
-            for(GList *l = icon_view->priv->selected_items; l; l = l->next) {
-                ViewItem *sel_item = l->data;
-                if (sel_item->row == hover_row && sel_item->col == hover_col) {
-                    xfdesktop_icon_view_clear_drag_highlight(icon_view);
-                    return FALSE;
-                }
-            }
-
-            if(allowed_actions & GDK_ACTION_ASK)
-                action_ask = TRUE;
-
-            if (view_item_get_iter(icon_view->priv->cursor, icon_view->priv->model, &iter)) {
-                GdkDragAction allowed_drag_actions = 0;
-                g_signal_emit(icon_view, __signals[SIG_DRAG_ACTIONS_GET], 0, &iter, &allowed_drag_actions);
-                allowed_actions &= allowed_drag_actions;
-            }
-
-            if (view_item_get_iter(item_on_dest, icon_view->priv->model, &iter)) {
-                /* for local drags, let the dest icon decide */
-                GdkDragAction allowed_drop_actions = 0;
-                g_signal_emit(icon_view, __signals[SIG_DROP_ACTIONS_GET], 0, &iter, &our_action, &allowed_drop_actions);
-                allowed_actions &= allowed_drop_actions;
-            }
-
-            /* check if drag&drop menu should be triggered */
-            if(action_ask) {
-                if(allowed_actions == (GDK_ACTION_MOVE | GDK_ACTION_COPY | GDK_ACTION_LINK)) {
-                    allowed_actions |= GDK_ACTION_ASK;
-                    our_action = GDK_ACTION_ASK;
-                }
-            }
-        } else {  /* #4 */
-            GtkTreeIter iter;
-
-            if (view_item_get_iter(item_on_dest, icon_view->priv->model, &iter)) {
-                GdkDragAction allowed_drop_actions = 0;
-                GdkDragAction dummy;
-                g_signal_emit(icon_view, __signals[SIG_DROP_ACTIONS_GET], 0, &iter, &dummy, &allowed_drop_actions);
-                allowed_actions &= allowed_drop_actions;
-            }
-
-            /* for foreign drags, take the action suggested by the source */
-            our_action = gdk_drag_context_get_suggested_action(context);
-        }
-
-        /* #2 or #4 */
-
-        /* fallback actions if the suggested action is not allowed,
-         * priority: move, copy, link */
-        if(!(our_action & allowed_actions)) {
-            if(allowed_actions & GDK_ACTION_MOVE)
-                our_action = GDK_ACTION_MOVE;
-            else if(allowed_actions & GDK_ACTION_COPY)
-                our_action = GDK_ACTION_COPY;
-            else if(allowed_actions & GDK_ACTION_LINK)
-                our_action = GDK_ACTION_LINK;
-            else
-                our_action = 0;
-        }
+        DBG("motion not on the grid");
+        return FALSE;
     }
-
-    /* allow the drag dest to override the selected action based on the drag data */
-    icon_view->priv->hover_row = hover_row;
-    icon_view->priv->hover_col = hover_col;
-    icon_view->priv->proposed_drop_action = our_action;
-    icon_view->priv->dropped = FALSE;
-    g_object_set_data(G_OBJECT(context), "--xfdesktop-icon-view-drop-icon",
-                      item_on_dest);
-    gtk_drag_get_data(widget, context, target, time_);
-
-    /* the actual call to gdk_drag_status() is deferred to
-     * xfdesktop_icon_view_drag_data_received() */
-
-    return TRUE;
 }
 
 static void
-xfdesktop_icon_view_drag_leave(GtkWidget *widget,
-                               GdkDragContext *context,
-                               guint time_)
-{
-    xfdesktop_icon_view_clear_drag_highlight(XFDESKTOP_ICON_VIEW(widget));
+xfdesktop_icon_view_drag_leave(GtkWidget *widget, GdkDragContext *context, guint time_) {
+    TRACE("entering");
+    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
+    xfdesktop_icon_view_unset_highlight(icon_view);
 }
 
-static void
-xfdesktop_next_slot(XfdesktopIconView *icon_view,
-                    gint *col,
-                    gint *row,
-                    gint ncols,
-                    gint nrows)
-{
-    gint scol = *col, srow = *row;
-
-    if(icon_view->priv->gravity & XFDESKTOP_ICON_VIEW_GRAVITY_HORIZONTAL) {
-        scol += (icon_view->priv->gravity & XFDESKTOP_ICON_VIEW_GRAVITY_RIGHT) ? -1 : 1;
-        if(scol < 0) {
-            scol = ncols - 1;
-            srow += (icon_view->priv->gravity & XFDESKTOP_ICON_VIEW_GRAVITY_BOTTOM) ? -1 : 1;
-        } else {
-            if(scol >= ncols) {
-                scol = 0;
-                srow += (icon_view->priv->gravity & XFDESKTOP_ICON_VIEW_GRAVITY_BOTTOM) ? -1 : 1;
-            }
-        }
+static gsize
+grid_layout_bytes(gint nrows, gint ncols) {
+    if (nrows <= 0 || ncols <= 0) {
+        return 0;
     } else {
-        srow += (icon_view->priv->gravity & XFDESKTOP_ICON_VIEW_GRAVITY_BOTTOM) ? -1 : 1;
-        if(srow < 0) {
-            srow = nrows - 1;
-            scol += (icon_view->priv->gravity & XFDESKTOP_ICON_VIEW_GRAVITY_RIGHT) ? -1 : 1;
-        } else {
-            if(srow >= nrows) {
-                srow = 0;
-                scol += (icon_view->priv->gravity & XFDESKTOP_ICON_VIEW_GRAVITY_RIGHT) ? -1 : 1;
-            }
-        }
+        return nrows * ncols * sizeof(ViewItem *);
     }
-
-    *col = scol;
-    *row = srow;
 }
 
 static gboolean
@@ -2514,140 +2370,45 @@ xfdesktop_icon_view_drag_drop(GtkWidget *widget,
                               gint y,
                               guint time_)
 {
+    TRACE("entering");
+
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
-    GdkAtom target;
-    gint row, col, offset_col, offset_row;
-    ViewItem *item_on_dest = NULL;
 
-    DBG("entering: (%d,%d)", x, y);
-
-    DBG("unsetting stuff");
+    icon_view->priv->drag_dropped = TRUE;
     icon_view->priv->control_click = FALSE;
     icon_view->priv->double_click = FALSE;
     icon_view->priv->maybe_begin_drag = FALSE;
     icon_view->priv->definitely_dragging = FALSE;
-    icon_view->priv->dropped = TRUE;
+    xfdesktop_icon_view_unset_highlight(icon_view);
 
-    target = gtk_drag_dest_find_target(widget, context,
-                                       icon_view->priv->native_targets);
-    if(target == GDK_NONE) {
-        target = gtk_drag_dest_find_target(widget, context,
-                                           icon_view->priv->dest_targets);
-        if(target == GDK_NONE)
-            return FALSE;
-    }
-    XF_DEBUG("target=%ld (%s)", (glong)target, gdk_atom_name(target));
+    GdkAtom target = gtk_drag_dest_find_target(widget, context, icon_view->priv->dest_targets);
+#ifdef DEBUG
+    gchar *target_name = gdk_atom_name(target);
+    DBG("dropped, target was %s, loc=(%d, %d)",
+        target_name,
+        icon_view->priv->drag_drop_row,
+        icon_view->priv->drag_drop_col);
+    g_free(target_name);
+#endif
 
-    xfdesktop_xy_to_rowcol(icon_view, x, y, &row, &col);
-    item_on_dest = xfdesktop_icon_view_item_in_slot(icon_view, row, col);
-
-    if(target == gdk_atom_intern("XFDESKTOP_ICON", FALSE)) {
-        GList *selected_items = NULL;
-
-        if (item_on_dest != NULL) {
-            gboolean ret = FALSE;
-            GtkTreeIter iter;
-
-            if (view_item_get_iter(item_on_dest, icon_view->priv->model, &iter)) {
-                GdkDragAction action = gdk_drag_context_get_selected_action(context);
-
-                if (action == GDK_ACTION_ASK) {
-                    g_signal_emit(icon_view, __signals[SIG_DRAG_DROP_ASK], 0,
-                                  context, &iter, row, col, time_, &action);
-                }
-
-                if (action == 0 || action == GDK_ACTION_ASK) {
-                    ret = FALSE;
-                } else {
-                    GList *dropped_paths = NULL;
-
-                    for (GList *l = icon_view->priv->selected_items; l != NULL; l = l->next) {
-                        GtkTreePath *path = view_item_get_path((ViewItem *)l->data, icon_view->priv->model);
-                        if (path != NULL) {
-                            dropped_paths = g_list_prepend(dropped_paths, path);
-                        }
-                    }
-                    dropped_paths = g_list_reverse(dropped_paths);
-
-                    g_signal_emit(icon_view, __signals[SIG_DRAG_DROP_ITEMS], 0,
-                                  context, &iter, dropped_paths, action, &ret);
-
-                    g_list_free_full(dropped_paths, (GDestroyNotify)gtk_tree_path_free);
-                }
-           }
-
-            gtk_drag_finish(context, ret, FALSE, time_);
-
-            return ret;
-        }
-
-        g_return_val_if_fail(icon_view->priv->cursor != NULL, FALSE);
-
-        /* 1: Get amount of offset between the old slot and new slot
-         *    of the icon that's being dragged.
-         * 2: Remove all the icons that are going to be moved from
-         *    the desktop. That's in case the icons being moved
-         *    want to rearrange themselves there.
-         * 3: We move all the icons using the offset. */
-        if (icon_view->priv->cursor->placed) {
-            offset_col = icon_view->priv->cursor->col - col;
-            offset_row = icon_view->priv->cursor->row - row;
-        } else {
-            offset_col = 0;
-            offset_row = 0;
-        }
-
-        selected_items = g_list_copy(icon_view->priv->selected_items);
-        for (GList *l = selected_items; l != NULL; l = l->next) {
-            ViewItem *item = l->data;
-
-            xfdesktop_icon_view_invalidate_item(icon_view, item, FALSE);
-
-            /* use offset to figure out where to put the icon*/
-            if (item->placed) {
-                col = (item->col - offset_col) % icon_view->priv->ncols;
-                row = (item->row - offset_row) % icon_view->priv->nrows;
-                /* wrap around the view */
-                while(col < 0)
-                    col += icon_view->priv->ncols;
-                while(row < 0)
-                    row += icon_view->priv->nrows;
-
-                xfdesktop_icon_view_unplace_item(icon_view, item);
-            }
-
-            /* Find the next available slot for an icon if offset slot is not available */
-            while(!xfdesktop_grid_is_free_position(icon_view, row, col)) {
-                xfdesktop_next_slot(icon_view, &col, &row, icon_view->priv->ncols, icon_view->priv->nrows);
-            }
-
-            /* set new position */
-            xfdesktop_icon_view_place_item_at(icon_view, item, row, col);
-        }
-        g_list_free(selected_items);
-
-        XF_DEBUG("drag succeeded");
-
-        gtk_drag_finish(context, TRUE, FALSE, time_);
+    if (target == gdk_atom_intern(XFDESKTOP_ICON_NAME, FALSE)
+        // We have to find the row/col again because the view manager may have
+        // eaten some drag-motion events.
+        && xfdesktop_icon_view_widget_coords_to_slot_coords(icon_view,
+                                                            x,
+                                                            y,
+                                                            &icon_view->priv->drag_drop_row,
+                                                            &icon_view->priv->drag_drop_col)
+        && xfdesktop_icon_view_item_in_slot(icon_view,
+                                            icon_view->priv->drag_drop_row,
+                                            icon_view->priv->drag_drop_col) == NULL)
+    {
+        DBG("got a moved icon");
+        gtk_drag_get_data(widget, context, target, time_);
+        return TRUE;
     } else {
-        gboolean ret = FALSE;
-        GtkTreeIter *iter = NULL;
-        GtkTreeIter dest_iter;
-
-        g_object_set_data(G_OBJECT(context), "--xfdesktop-icon-view-drop-icon",
-                          item_on_dest);
-
-        if (item_on_dest != NULL && view_item_get_iter(item_on_dest, icon_view->priv->model, &dest_iter)) {
-            iter = &dest_iter;
-        }
-
-        g_signal_emit(icon_view, __signals[SIG_DRAG_DROP_ITEM], 0,
-                      context, iter, row, col, time_, &ret);
-
-        return ret;
+        return FALSE;
     }
-
-    return TRUE;
 }
 
 static void
@@ -2659,47 +2420,124 @@ xfdesktop_icon_view_drag_data_received(GtkWidget *widget,
                                        guint info,
                                        guint time_)
 {
+    TRACE("entering, %d", info);
+
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
-    gint row, col;
-    ViewItem *item_on_dest = NULL;
-    GtkTreeIter *iter = NULL;
-    GtkTreeIter dest_iter;
 
-    DBG("entering");
+#ifdef DEBUG
+    gchar *data_type = gdk_atom_name(gtk_selection_data_get_data_type(data));
+    gchar *target_name = gdk_atom_name(gtk_selection_data_get_target(data));
+    DBG("selection data type: %s, target: %s", data_type, target_name);
+    g_free(data_type);
+    g_free(target_name);
+#endif
 
-    item_on_dest = g_object_get_data(G_OBJECT(context),
-                                     "--xfdesktop-icon-view-drop-icon");
-    if (item_on_dest != NULL && view_item_get_iter(item_on_dest, icon_view->priv->model, &dest_iter)) {
-        iter = &dest_iter;
-    }
+    if (info == TARGET_XFDESKTOP_ICON) {
+        gboolean slot_valid = icon_view->priv->drag_drop_row != -1 && icon_view->priv->drag_drop_col != -1;
+        gboolean slot_empty = slot_valid && xfdesktop_icon_view_item_in_slot(icon_view,
+                                                                             icon_view->priv->drag_drop_row, 
+                                                                             icon_view->priv->drag_drop_col) == NULL;
 
-    if(icon_view->priv->dropped) {
-        icon_view->priv->dropped = FALSE;
+        if (icon_view->priv->drag_dropped && slot_valid && slot_empty) {
+            g_assert(gtk_selection_data_get_length(data) == sizeof(XfdesktopDraggedIconList));
+            XfdesktopDraggedIconList *icon_list = (gpointer)gtk_selection_data_get_data(data);
+            g_assert(icon_list != NULL);
+            g_assert(icon_list->dragged_icons != NULL);
 
-        xfdesktop_icon_view_clear_drag_highlight(icon_view);
+            gint row_offset, col_offset;
+            GtkTreeIter cursor_iter;
+            gint cursor_row, cursor_col;
+            if (xfdesktop_icon_view_get_cursor(icon_list->source_icon_view, &cursor_iter, &cursor_row, &cursor_col)) {
+                row_offset = icon_view->priv->drag_drop_row - cursor_row;
+                col_offset = icon_view->priv->drag_drop_col - cursor_col;
+            } else {
+                XfdesktopDraggedIcon *first = icon_list->dragged_icons->data;
+                row_offset = icon_view->priv->drag_drop_row - first->item->row;
+                col_offset = icon_view->priv->drag_drop_row - first->item->col;
+            }
+            DBG("move offset: (%d, %d)", row_offset, col_offset);
 
-        xfdesktop_xy_to_rowcol(icon_view, x, y, &row, &col);
-        if(row >= icon_view->priv->nrows || col >= icon_view->priv->ncols)
-            return;
+            if (icon_list->source_icon_view == icon_view) {
+                // We're moving in the same icon view, so unplace the dropped
+                // icons so we can find new places for them without conflicts.
+                for (GList *l = icon_list->dragged_icons; l != NULL; l = l->next) {
+                    XfdesktopDraggedIcon *dragged_icon = l->data;
+                    xfdesktop_icon_view_unplace_item(icon_list->source_icon_view, dragged_icon->item);
+                }
+            }
 
-        g_signal_emit(icon_view, __signals[SIG_DRAG_ITEM_DATA_RECEIVED], 0,
-                      context, iter, row, col, data, info, time_);
-    } else {
-        /* FIXME: cannot use x and y here, for they don't seem to have any
-         * meaningful value */
-        GdkDragAction action = icon_view->priv->proposed_drop_action;
+            // Now we'll copy the existing grid and try to place the icons into
+            // it, figuring out where they can go.
+            gsize grid_size = grid_layout_bytes(icon_view->priv->nrows, icon_view->priv->ncols);
+            ViewItem **temp_grid_layout = g_malloc0(grid_size);
+            memcpy(temp_grid_layout, icon_view->priv->grid_layout, grid_size);
 
-        g_signal_emit(icon_view, __signals[SIG_DROP_PROPOSE_ACTION], 0,
-                      context, iter, action, data, info, &action);
+            GList *unplaceable = NULL;
+            for (GList *l = icon_list->dragged_icons; l != NULL; l = l->next) {
+                XfdesktopDraggedIcon *dragged_icon = l->data;
+                gint dest_row = dragged_icon->item->row + row_offset;
+                gint dest_col = dragged_icon->item->col + col_offset;
+                DBG("moving (%d, %d) -> (%d, %d)",
+                    dragged_icon->item->row, dragged_icon->item->col,
+                    dest_row, dest_col);
 
-        if(action == 0)
-            xfdesktop_icon_view_clear_drag_highlight(icon_view);
-        else
-            xfdesktop_icon_view_draw_drag_highlight(icon_view,
-                                                    icon_view->priv->hover_row,
-                                                    icon_view->priv->hover_col);
+                if (xfdesktop_icon_view_place_item_in_grid_at(icon_view, temp_grid_layout, dragged_icon->item, dest_row, dest_col)) {
+                    DBG("placement succeeded");
+                    dragged_icon->dest_row = dest_row;
+                    dragged_icon->dest_col = dest_col;
+                } else {
+                    DBG("placement failed");
+                    unplaceable = g_list_prepend(unplaceable, dragged_icon);
+                }
+            }
+            unplaceable = g_list_reverse(unplaceable);
 
-        gdk_drag_status(context, action, time_);
+            for (GList *l = unplaceable; l != NULL; l = l->next) {
+                XfdesktopDraggedIcon *dragged_icon = l->data;
+                gint dest_row = dragged_icon->item->row + row_offset;
+                gint dest_col = dragged_icon->item->col + col_offset;
+
+                if (xfdesktop_icon_view_get_next_free_grid_position_for_grid(icon_view,
+                                                                             temp_grid_layout,
+                                                                             dest_row,
+                                                                             dest_col,
+                                                                             &dest_row,
+                                                                             &dest_col))
+                {
+                    DBG("next avail slot: (%d, %d)", dest_row, dest_col);
+                    xfdesktop_icon_view_place_item_in_grid_at(icon_view,
+                                                              temp_grid_layout,
+                                                              dragged_icon->item,
+                                                              dest_row,
+                                                              dest_col);
+                    dragged_icon->dest_row = dest_row;
+                    dragged_icon->dest_col = dest_col;
+                } else {
+                    DBG("failed to find a new place");
+                    dragged_icon->dest_row = -1;
+                    dragged_icon->dest_col = -1;
+                }
+            }
+            g_list_free(unplaceable);
+            g_free(temp_grid_layout);
+
+            for (GList *l = icon_list->dragged_icons; l != NULL; l = l->next) {
+                XfdesktopDraggedIcon *dragged_icon = l->data;
+                g_signal_emit(icon_view, __signals[SIG_ICON_MOVED], 0,
+                              icon_list->source_icon_view,
+                              &dragged_icon->iter,
+                              dragged_icon->dest_row,
+                              dragged_icon->dest_col);
+            }
+
+            icon_view->priv->drag_dropped = FALSE;
+            gtk_drag_finish(context, TRUE, FALSE, time_);
+        } else if (icon_view->priv->drag_dropped) {
+            // Dropp has happened but we're not in a valid, empty slot.
+            gtk_drag_finish(context, FALSE, FALSE, time_);
+        } else {
+            gdk_drag_status(context, slot_valid && slot_empty ? GDK_ACTION_MOVE : 0, time_);
+        }
     }
 }
 
@@ -2887,17 +2725,11 @@ static void
 xfdesktop_icon_view_realize(GtkWidget *widget)
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
-    GdkWindow *topwin;
     GdkScreen *gscreen;
 
-    if (gtk_widget_get_realized(widget)) {
-        return;
-    }
+    GTK_WIDGET_CLASS(xfdesktop_icon_view_parent_class)->realize(widget);
 
-    icon_view->priv->parent_window = gtk_widget_get_toplevel(widget);
-    g_return_if_fail(icon_view->priv->parent_window);
-    topwin = gtk_widget_get_window(icon_view->priv->parent_window);
-    gtk_widget_set_window(widget, topwin);
+    gtk_widget_add_events(widget, GDK_EXPOSURE_MASK);
 
     g_signal_connect(icon_view, "notify::scale-factor",
                      G_CALLBACK(scale_factor_changed_cb), NULL);
@@ -2906,41 +2738,9 @@ xfdesktop_icon_view_realize(GtkWidget *widget)
      * those depend on custom style properties */
     xfdesktop_icon_view_style_updated(widget);
 
-    gtk_widget_set_realized(widget, TRUE);
-
-    gtk_window_set_accept_focus(GTK_WINDOW(icon_view->priv->parent_window),
-                                TRUE);
-    gtk_window_set_focus_on_map(GTK_WINDOW(icon_view->priv->parent_window),
-                                FALSE);
-
-    /* unfortunately GTK_NO_WINDOW widgets don't receive events, with the
-     * exception of draw events. */
-    gtk_widget_add_events(icon_view->priv->parent_window,
-                          GDK_POINTER_MOTION_HINT_MASK | GDK_KEY_PRESS_MASK
-                          | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK
-                          | GDK_FOCUS_CHANGE_MASK | GDK_EXPOSURE_MASK
-                          | GDK_LEAVE_NOTIFY_MASK | GDK_POINTER_MOTION_MASK);
-    g_signal_connect(G_OBJECT(icon_view->priv->parent_window),
-                     "motion-notify-event",
-                     G_CALLBACK(xfdesktop_icon_view_motion_notify), icon_view);
-    g_signal_connect(G_OBJECT(icon_view->priv->parent_window),
-                     "leave-notify-event",
-                     G_CALLBACK(xfdesktop_icon_view_leave_notify), icon_view);
-    g_signal_connect(G_OBJECT(icon_view->priv->parent_window),
-                     "key-press-event",
-                     G_CALLBACK(xfdesktop_icon_view_key_press), icon_view);
-    g_signal_connect(G_OBJECT(icon_view->priv->parent_window),
-                     "button-press-event",
-                     G_CALLBACK(xfdesktop_icon_view_button_press), icon_view);
-    g_signal_connect(G_OBJECT(icon_view->priv->parent_window),
-                     "button-release-event",
-                     G_CALLBACK(xfdesktop_icon_view_button_release), icon_view);
-    g_signal_connect(G_OBJECT(icon_view->priv->parent_window),
-                     "focus-in-event",
-                     G_CALLBACK(xfdesktop_icon_view_focus_in), icon_view);
-    g_signal_connect(G_OBJECT(icon_view->priv->parent_window),
-                     "focus-out-event",
-                     G_CALLBACK(xfdesktop_icon_view_focus_out), icon_view);
+    GtkWidget *toplevel = gtk_widget_get_toplevel(widget);
+    gtk_window_set_accept_focus(GTK_WINDOW(toplevel), TRUE);
+    gtk_window_set_focus_on_map(GTK_WINDOW(toplevel), FALSE);
 
     gscreen = gtk_widget_get_screen(widget);
     g_signal_connect_after(G_OBJECT(gtk_icon_theme_get_for_screen(gscreen)),
@@ -2957,28 +2757,14 @@ xfdesktop_icon_view_unrealize(GtkWidget *widget)
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
     GdkScreen *gscreen;
 
-    gtk_window_set_accept_focus(GTK_WINDOW(icon_view->priv->parent_window), FALSE);
+    GtkWidget *toplevel = gtk_widget_get_toplevel(widget);
+    gtk_window_set_accept_focus(GTK_WINDOW(toplevel), FALSE);
 
     gscreen = gtk_widget_get_screen(widget);
 
     g_signal_handlers_disconnect_by_func(G_OBJECT(gtk_icon_theme_get_for_screen(gscreen)),
                      G_CALLBACK(xfdesktop_icon_view_icon_theme_changed),
                      icon_view);
-
-    g_signal_handlers_disconnect_by_func(G_OBJECT(icon_view->priv->parent_window),
-                     G_CALLBACK(xfdesktop_icon_view_motion_notify), icon_view);
-    g_signal_handlers_disconnect_by_func(G_OBJECT(icon_view->priv->parent_window),
-                     G_CALLBACK(xfdesktop_icon_view_leave_notify), icon_view);
-    g_signal_handlers_disconnect_by_func(G_OBJECT(icon_view->priv->parent_window),
-                     G_CALLBACK(xfdesktop_icon_view_key_press), icon_view);
-    g_signal_handlers_disconnect_by_func(G_OBJECT(icon_view->priv->parent_window),
-                     G_CALLBACK(xfdesktop_icon_view_button_press), icon_view);
-    g_signal_handlers_disconnect_by_func(G_OBJECT(icon_view->priv->parent_window),
-                     G_CALLBACK(xfdesktop_icon_view_button_release), icon_view);
-    g_signal_handlers_disconnect_by_func(G_OBJECT(icon_view->priv->parent_window),
-                     G_CALLBACK(xfdesktop_icon_view_focus_in), icon_view);
-    g_signal_handlers_disconnect_by_func(G_OBJECT(icon_view->priv->parent_window),
-                     G_CALLBACK(xfdesktop_icon_view_focus_out), icon_view);
 
     g_signal_handlers_disconnect_by_func(G_OBJECT(icon_view),
                                          G_CALLBACK(scale_factor_changed_cb),
@@ -2992,8 +2778,7 @@ xfdesktop_icon_view_unrealize(GtkWidget *widget)
     g_free(icon_view->priv->grid_layout);
     icon_view->priv->grid_layout = NULL;
 
-    gtk_widget_set_window(widget, NULL);
-    gtk_widget_set_realized(widget, FALSE);
+    GTK_WIDGET_CLASS(xfdesktop_icon_view_parent_class)->unrealize(widget);
 }
 
 static gboolean
@@ -3031,7 +2816,7 @@ xfdesktop_icon_view_place_item(XfdesktopIconView *icon_view,
                                    icon_view->priv->col_column, &col,
                                    -1);
 
-                if (row >= 0 && row < icon_view->priv->nrows && col >= 0 && row < icon_view->priv->ncols) {
+                if (row >= 0 && row < icon_view->priv->nrows && col >= 0 && col < icon_view->priv->ncols) {
                     xfdesktop_icon_view_place_item_at(icon_view, item, row, col);
                 }
             }
@@ -3048,6 +2833,21 @@ xfdesktop_icon_view_place_item(XfdesktopIconView *icon_view,
 }
 
 static gboolean
+xfdesktop_icon_view_place_item_in_grid_at(XfdesktopIconView *icon_view, ViewItem **grid_layout, ViewItem *item, gint row, gint col) {
+    g_return_val_if_fail(grid_layout != NULL, FALSE);
+    g_return_val_if_fail(item != NULL, FALSE);
+    g_return_val_if_fail(row >= 0 && row < icon_view->priv->nrows, FALSE);
+    g_return_val_if_fail(col >= 0 && col < icon_view->priv->ncols, FALSE);
+
+    if (xfdesktop_icon_view_item_in_grid_slot(icon_view, grid_layout, row, col) == NULL) {
+        grid_layout[col * icon_view->priv->nrows + row] = item;
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+static gboolean
 xfdesktop_icon_view_place_item_at(XfdesktopIconView *icon_view,
                                   ViewItem *item,
                                   gint row,
@@ -3057,22 +2857,21 @@ xfdesktop_icon_view_place_item_at(XfdesktopIconView *icon_view,
     g_return_val_if_fail(col >= 0 && col < icon_view->priv->ncols, FALSE);
     g_return_val_if_fail(icon_view->priv->grid_layout != NULL, FALSE);
 
-    if (xfdesktop_icon_view_item_in_slot(icon_view, row, col) == NULL) {
-        GtkTreeIter iter;
-
+    if (xfdesktop_icon_view_place_item_in_grid_at(icon_view, icon_view->priv->grid_layout, item, row, col)) {
         item->row = row;
         item->col = col;
-        icon_view->priv->grid_layout[col * icon_view->priv->nrows + row] = item;
         item->placed = TRUE;
 
         xfdesktop_icon_view_invalidate_item(icon_view, item, TRUE);
 
+        GtkTreeIter iter;
         if (view_item_get_iter(item, icon_view->priv->model, &iter)) {
-            g_signal_emit(icon_view, __signals[SIG_ICON_MOVED], 0, &iter, item->row, item->col);
+            g_signal_emit(icon_view, __signals[SIG_ICON_MOVED], 0, icon_view, &iter, item->row, item->col);
         }
+        return TRUE;
+    } else {
+        return FALSE;
     }
-
-    return item->placed;
 }
 
 static void
@@ -3402,18 +3201,6 @@ xfdesktop_icon_view_draw_item(XfdesktopIconView *icon_view,
                                        flags,
                                        &item->text_extents);
 
-    if (item == icon_view->priv->drop_dest_item) {
-        GdkRectangle slot_rect = {
-            .x = 0,
-            .y = 0,
-            .width = SLOT_SIZE,
-            .height = SLOT_SIZE,
-        };
-
-        xfdesktop_icon_view_shift_to_slot_area(icon_view, item, &slot_rect, &slot_rect);
-        gtk_render_focus(style_context, cr, slot_rect.x, slot_rect.y, slot_rect.width, slot_rect.height);
-    }
-
     gtk_style_context_restore(style_context);
 }
 
@@ -3421,6 +3208,7 @@ static gboolean
 xfdesktop_icon_view_draw(GtkWidget *widget,
                          cairo_t *cr)
 {
+    TRACE("entering");
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
     cairo_rectangle_list_t *rects;
     cairo_rectangle_int_t temp;
@@ -3499,6 +3287,17 @@ xfdesktop_icon_view_draw(GtkWidget *widget,
 
         gtk_style_context_remove_class(context, GTK_STYLE_CLASS_RUBBERBAND);
         gtk_style_context_restore(context);
+    } else if (icon_view->priv->highlight_row != -1 && icon_view->priv->highlight_col != -1) {
+        gint x, y;
+        if (xfdesktop_icon_view_slot_coords_to_widget_coords(icon_view,
+                                                             icon_view->priv->highlight_row,
+                                                             icon_view->priv->highlight_col,
+                                                             &x,
+                                                             &y))
+        {
+            GtkStyleContext *style_context = gtk_widget_get_style_context(widget);
+            gtk_render_focus(style_context, cr, x, y, SLOT_SIZE, SLOT_SIZE);
+        }
     }
 
     cairo_rectangle_list_destroy(rects);
@@ -3806,27 +3605,6 @@ xfdesktop_icon_view_real_move_cursor(XfdesktopIconView *icon_view,
     return TRUE;
 }
 
-static inline gboolean
-xfdesktop_rectangle_equal(GdkRectangle *rect1, GdkRectangle *rect2)
-{
-    return (rect1->x == rect2->x && rect1->y == rect2->y
-            && rect1->width == rect2->width && rect1->height == rect2->height);
-}
-
-static inline gboolean
-xfdesktop_rectangle_is_bounded_by(GdkRectangle *rect,
-                                  GdkRectangle *bounds)
-{
-    GdkRectangle intersection;
-
-    if(gdk_rectangle_intersect(rect, bounds, &intersection)) {
-        if(xfdesktop_rectangle_equal(rect, &intersection))
-            return TRUE;
-    }
-
-    return FALSE;
-}
-
 static void
 xfdesktop_icon_view_temp_unplace_items(XfdesktopIconView *icon_view)
 {
@@ -3871,62 +3649,36 @@ xfdesktop_icon_view_place_items(XfdesktopIconView *icon_view)
     }
 }
 
-/* FIXME: add a cache for this so we don't have to compute this EVERY time */
-static void
-xfdesktop_icon_view_setup_grids_xinerama(XfdesktopIconView *icon_view)
+static gboolean
+_xfdesktop_icon_view_build_grid_params(XfdesktopIconView *icon_view,
+                                       GtkAllocation *allocation,
+                                       GridParams *grid_params)
 {
-    GdkDisplay *display;
-    GdkRectangle *monitor_geoms, cell_rect;
-    gint nmonitors, i, row, col;
-    gint dx = 0, dy = 0;
+    DBG("icon view size: %dx%d", allocation->width, allocation->height);
 
-    DBG("entering");
+    gint new_nrows = MAX((allocation->height - MIN_MARGIN * 2) / SLOT_SIZE, 0);
+    gint new_ncols = MAX((allocation->width - MIN_MARGIN * 2) / SLOT_SIZE, 0);
+    if (new_nrows <= 0 || new_ncols <= 0) {
+        return FALSE;
+    } else {
+        DBG("new grid size: rows=%d, cols=%d", new_nrows, new_ncols);
+        grid_params->nrows = new_nrows;
+        grid_params->ncols = new_ncols;
 
-    display = gtk_widget_get_display(GTK_WIDGET(icon_view));
-    nmonitors = gdk_display_get_n_monitors(display);
+        gint xrest = allocation->width - grid_params->ncols * SLOT_SIZE;
+        grid_params->xspacing = new_ncols > 1 ? (xrest - MIN_MARGIN * 2) / (new_ncols - 1) : 1;
+        grid_params->xmargin = (xrest - (grid_params->ncols - 1) * grid_params->xspacing) / 2;
 
-    if(nmonitors == 1)  /* optimisation */
-        return;
+        gint yrest = allocation->height - grid_params->nrows * SLOT_SIZE;
+        grid_params->yspacing = new_nrows > 1 ? (yrest - MIN_MARGIN * 2) / (new_nrows - 1) : 1;
+        grid_params->ymargin = (yrest - (grid_params->nrows - 1) * grid_params->yspacing) / 2;
 
-    gtk_widget_translate_coordinates(xfdesktop_icon_view_get_window_widget(icon_view),
-                                     GTK_WIDGET(icon_view),
-                                     0, 0, &dx, &dy);
+        DBG("margin: (%d, %d), spacing: (%d, %d)",
+            grid_params->xmargin, grid_params->ymargin,
+            grid_params->xspacing, grid_params->yspacing);
 
-    monitor_geoms = g_new0(GdkRectangle, nmonitors);
-
-    for(i = 0; i < nmonitors; ++i) {
-        gdk_monitor_get_geometry(gdk_display_get_monitor(display, i), &monitor_geoms[i]);
+        return TRUE;
     }
-
-    /* cubic time; w00t! */
-    cell_rect.width = cell_rect.height = SLOT_SIZE;
-    for(row = 0; row < icon_view->priv->nrows; ++row) {
-        for(col = 0; col < icon_view->priv->ncols; ++col) {
-            gboolean bounded = FALSE;
-
-            cell_rect.x = icon_view->priv->xmargin + col * SLOT_SIZE + col * icon_view->priv->xspacing - dx;
-            cell_rect.y = icon_view->priv->ymargin + row * SLOT_SIZE + row * icon_view->priv->yspacing - dy;
-
-            for(i = 0; i < nmonitors; ++i) {
-                if(xfdesktop_rectangle_is_bounded_by(&cell_rect,
-                                                     &monitor_geoms[i]))
-                {
-                    bounded = TRUE;
-                    break;
-                }
-            }
-
-            if(!bounded) {
-                xfdesktop_grid_unset_position_free_raw(icon_view, row, col, TOMBSTONE);
-            } else if (xfdesktop_icon_view_item_in_slot(icon_view, row, col) == TOMBSTONE) {
-                xfdesktop_grid_set_position_free(icon_view, row, col);
-            }
-        }
-    }
-
-    g_free(monitor_geoms);
-
-    DBG("exiting");
 }
 
 static void
@@ -3936,85 +3688,57 @@ xfdesktop_icon_view_size_grid(XfdesktopIconView *icon_view)
         return;
     }
 
-    gint xrest = 0, yrest = 0;
-    gsize old_size, new_size;
-    gint old_nrows, old_ncols;
-    gint new_nrows, new_ncols;
-    gboolean grid_changed;
-
     DBG("entering");
+
+    gint old_nrows = icon_view->priv->nrows;
+    gint old_ncols = icon_view->priv->ncols;
+    gsize old_size = grid_layout_bytes(old_nrows, old_ncols);
+    gint old_xmargin = icon_view->priv->xmargin;
+    gint old_ymargin = icon_view->priv->ymargin;
+    gint old_xspacing = icon_view->priv->xspacing;
+    gint old_yspacing = icon_view->priv->yspacing;
 
     GtkAllocation allocation;
     gtk_widget_get_allocation(GTK_WIDGET(icon_view), &allocation);
-    gint width = allocation.width;
-    gint height = allocation.height;
-    DBG("icon view size: %dx%d", width, height);
 
-    old_size = (guint)icon_view->priv->nrows * icon_view->priv->ncols * sizeof(ViewItem *);
-    old_nrows = icon_view->priv->nrows;
-    old_ncols = icon_view->priv->ncols;
-
-    new_nrows = MAX((height - MIN_MARGIN * 2) / SLOT_SIZE, 0);
-    new_ncols = MAX((width - MIN_MARGIN * 2) / SLOT_SIZE, 0);
-    if (new_nrows <= 0 || new_ncols <= 0) {
+    GridParams new_grid_params;
+    if (!_xfdesktop_icon_view_build_grid_params(icon_view, &allocation, &new_grid_params)) {
         return;
     }
-    grid_changed = old_nrows != new_nrows || old_ncols != new_ncols;
 
-    if (!grid_changed
-        && icon_view->priv->grid_layout != NULL
-        && icon_view->priv->width == width
-        && icon_view->priv->height == height)
+    gboolean grid_changed = old_nrows != new_grid_params.nrows || old_ncols != new_grid_params.ncols;
+    gsize new_size = grid_layout_bytes(new_grid_params.nrows, new_grid_params.ncols);
+
+    if (grid_changed
+        || old_xmargin != new_grid_params.xmargin
+        || old_ymargin != new_grid_params.ymargin
+        || old_xspacing != new_grid_params.xspacing
+        || old_yspacing != new_grid_params.yspacing)
     {
-        return;
+        xfdesktop_icon_view_invalidate_all(icon_view, FALSE);
     }
 
     if (grid_changed) {
-        g_signal_emit(icon_view, __signals[SIG_START_GRID_RESIZE], 0, new_nrows, new_ncols);
-        xfdesktop_icon_view_invalidate_all(icon_view, FALSE);
+        g_signal_emit(icon_view, __signals[SIG_START_GRID_RESIZE], 0, new_grid_params.nrows, new_grid_params.ncols);
         xfdesktop_icon_view_temp_unplace_items(icon_view);
     }
 
-    icon_view->priv->width = width;
-    icon_view->priv->height = height;
-    icon_view->priv->nrows = new_nrows;
-    icon_view->priv->ncols = new_ncols;
-
-    new_size = (guint)icon_view->priv->nrows * icon_view->priv->ncols * sizeof(ViewItem *);
-
-    xrest = icon_view->priv->width - icon_view->priv->ncols * SLOT_SIZE;
-    if (icon_view->priv->ncols > 1) {
-        icon_view->priv->xspacing = (xrest - MIN_MARGIN * 2) / (icon_view->priv->ncols - 1);
-    } else {
-        /* Let's not try to divide by 0 */
-        icon_view->priv->xspacing = 1;
-    }
-    icon_view->priv->xmargin = (xrest - (icon_view->priv->ncols - 1) * icon_view->priv->xspacing) / 2;
-
-    yrest = icon_view->priv->height - icon_view->priv->nrows * SLOT_SIZE;
-    if (icon_view->priv->nrows > 1) {
-        icon_view->priv->yspacing = (yrest - MIN_MARGIN * 2) / (icon_view->priv->nrows - 1);
-    } else {
-        /* Let's not try to divide by 0 */
-        icon_view->priv->yspacing = 1;
-    }
-    icon_view->priv->ymargin = (yrest - (icon_view->priv->nrows - 1) * icon_view->priv->yspacing) / 2;
+    icon_view->priv->nrows = new_grid_params.nrows;
+    icon_view->priv->ncols = new_grid_params.ncols;
+    icon_view->priv->xmargin = new_grid_params.xmargin;
+    icon_view->priv->ymargin = new_grid_params.ymargin;
+    icon_view->priv->xspacing = new_grid_params.xspacing;
+    icon_view->priv->yspacing = new_grid_params.yspacing;
 
     if (icon_view->priv->grid_layout == NULL) {
         icon_view->priv->grid_layout = g_malloc0(new_size);
-        xfdesktop_icon_view_setup_grids_xinerama(icon_view);
     } else if (old_size != new_size) {
         DBG("old_size != new_size; resizing grid");
-        icon_view->priv->grid_layout = g_realloc(icon_view->priv->grid_layout,
-                                                 new_size);
+        icon_view->priv->grid_layout = g_realloc(icon_view->priv->grid_layout, new_size);
 
         if (new_size > old_size) {
-            memset(((guint8 *)icon_view->priv->grid_layout) + old_size, 0,
-                   new_size - old_size);
+            memset(((guint8 *)icon_view->priv->grid_layout) + old_size, 0, new_size - old_size);
         }
-        xfdesktop_icon_view_setup_grids_xinerama(icon_view);
-    } else if (old_nrows != new_nrows || old_ncols != new_ncols) {
-        xfdesktop_icon_view_setup_grids_xinerama(icon_view);
     }
 
     if (grid_changed) {
@@ -4045,14 +3769,9 @@ xfdesktop_icon_view_queue_draw_item(XfdesktopIconView *icon_view,
     xfdesktop_icon_view_shift_to_slot_area(icon_view, item, &slot_rect, &slot_rect);
 
     if (item->slot_extents.width > 0 && item->slot_extents.height > 0) {
-        gint dx, dy;
-        gtk_widget_translate_coordinates(xfdesktop_icon_view_get_window_widget(icon_view),
-                                         GTK_WIDGET(icon_view),
-                                         0, 0, &dx, &dy);
-
         GdkRectangle extents_rect = {
-            .x = item->slot_extents.x - dx,
-            .y = item->slot_extents.y - dy,
+            .x = item->slot_extents.x,
+            .y = item->slot_extents.y,
             .width = item->slot_extents.width,
             .height = item->slot_extents.height,
         };
@@ -4075,7 +3794,7 @@ xfdesktop_icon_view_invalidate_item(XfdesktopIconView *icon_view,
 {
     g_return_if_fail(item != NULL);
 
-    if (item->row >= 0 && item->col >= 0) {
+    if (item->row >= 0 && item->row < icon_view->priv->nrows && item->col >= 0 && item->col < icon_view->priv->ncols) {
         if (!xfdesktop_icon_view_queue_draw_item(icon_view, item)) {
             recalc_extents = TRUE;
         }
@@ -4134,23 +3853,6 @@ xfdesktop_icon_view_unselect_item_internal(XfdesktopIconView *icon_view,
             g_signal_emit(icon_view, __signals[SIG_ICON_SELECTION_CHANGED], 0);
         }
     }
-}
-
-static inline gboolean
-xfdesktop_grid_is_free_position(XfdesktopIconView *icon_view,
-                                gint row,
-                                gint col)
-{
-    if(icon_view->priv->grid_layout == NULL) {
-        return FALSE;
-    }
-
-    if(row >= icon_view->priv->nrows || col >= icon_view->priv->ncols || row < 0 || col < 0)
-    {
-        return FALSE;
-    }
-
-    return !icon_view->priv->grid_layout[col * icon_view->priv->nrows + row];
 }
 
 static inline gboolean
@@ -4238,25 +3940,25 @@ next_pos(XfdesktopIconView *icon_view,
     return TRUE;
 }
 
-gboolean
-xfdesktop_icon_view_get_next_free_grid_position(XfdesktopIconView *icon_view,
-                                                gint row,
-                                                gint col,
-                                                gint *next_row,
-                                                gint *next_col)
+static gboolean
+xfdesktop_icon_view_get_next_free_grid_position_for_grid(XfdesktopIconView *icon_view,
+                                                         ViewItem **grid_layout,
+                                                         gint row,
+                                                         gint col,
+                                                         gint *next_row,
+                                                         gint *next_col)
 {
     gint cur_row = row;
     gint cur_col = col;
 
     g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view), FALSE);
-    g_return_val_if_fail(icon_view->priv->grid_layout != NULL, FALSE);
+    g_return_val_if_fail(grid_layout != NULL, FALSE);
     g_return_val_if_fail(row >= -1 && row < icon_view->priv->nrows, FALSE);
     g_return_val_if_fail(col >= -1 && col < icon_view->priv->ncols, FALSE);
     g_return_val_if_fail(next_row != NULL && next_col != NULL, FALSE);
 
     while (next_pos(icon_view, cur_row, cur_col, &cur_row, &cur_col)) {
-        gint idx = cur_col * icon_view->priv->nrows + cur_row;
-        if (icon_view->priv->grid_layout[idx] == NULL) {
+        if (xfdesktop_icon_view_item_in_grid_slot(icon_view, grid_layout, cur_row, cur_col) == NULL) {
             *next_row = cur_row;
             *next_col = cur_col;
             return TRUE;
@@ -4266,86 +3968,34 @@ xfdesktop_icon_view_get_next_free_grid_position(XfdesktopIconView *icon_view,
     return FALSE;
 }
 
-static inline void
-xfdesktop_grid_set_position_free(XfdesktopIconView *icon_view,
-                                 gint row,
-                                 gint col)
+gboolean
+xfdesktop_icon_view_get_next_free_grid_position(XfdesktopIconView *icon_view,
+                                                gint row,
+                                                gint col,
+                                                gint *next_row,
+                                                gint *next_col)
 {
-    g_return_if_fail(row < icon_view->priv->nrows
-                     && col < icon_view->priv->ncols
-                     && row >= 0 && col >= 0);
-
-#if 0 /*def DEBUG*/
-    DUMP_GRID_LAYOUT(icon_view);
-#endif
-
-    icon_view->priv->grid_layout[col * icon_view->priv->nrows + row] = NULL;
-
-#if 0 /*def DEBUG*/
-    DUMP_GRID_LAYOUT(icon_view);
-#endif
-}
-
-static inline gboolean
-xfdesktop_grid_unset_position_free_raw(XfdesktopIconView *icon_view,
-                                       gint row,
-                                       gint col,
-                                       gpointer data)
-{
-    gint idx;
-
-    g_return_val_if_fail(row < icon_view->priv->nrows
-                         && col < icon_view->priv->ncols
-                         && row >= 0 && col >= 0, FALSE);
-
-    idx = col * icon_view->priv->nrows + row;
-    if(icon_view->priv->grid_layout[idx])
-        return FALSE;
-
-#if 0 /*def DEBUG*/
-    DUMP_GRID_LAYOUT(icon_view);
-#endif
-
-    icon_view->priv->grid_layout[idx] = data;
-
-#if 0 /*def DEBUG*/
-    DUMP_GRID_LAYOUT(icon_view);
-#endif
-
-    return TRUE;
+    return xfdesktop_icon_view_get_next_free_grid_position_for_grid(icon_view,
+                                                                    icon_view->priv->grid_layout,
+                                                                    row,
+                                                                    col,
+                                                                    next_row,
+                                                                    next_col);
 }
 
 static inline ViewItem *
-xfdesktop_icon_view_item_in_slot_raw(XfdesktopIconView *icon_view,
-                                     gint idx)
-{
-    ViewItem *item = icon_view->priv->grid_layout[idx];
+xfdesktop_icon_view_item_in_grid_slot(XfdesktopIconView *icon_view, ViewItem **grid_layout, gint row, gint col) {
+    g_return_val_if_fail(grid_layout != NULL, NULL);
+    g_return_val_if_fail(row >= 0 && row < icon_view->priv->nrows, NULL);
+    g_return_val_if_fail(col >= 0 && col < icon_view->priv->ncols, NULL);
 
-    if (TOMBSTONE == item) {
-        return NULL;
-    } else {
-        return item;
-    }
+    gsize idx = col * icon_view->priv->nrows + row;
+    return grid_layout[idx];
 }
 
 static inline ViewItem *
-xfdesktop_icon_view_item_in_slot(XfdesktopIconView *icon_view,
-                                 gint row,
-                                 gint col)
-{
-    gint idx;
-
-    g_return_val_if_fail(row < icon_view->priv->nrows
-                         && col < icon_view->priv->ncols, NULL);
-
-    idx = col * icon_view->priv->nrows + row;
-
-    /* FIXME: that's why we can't drag icons to monitors on the left or above,
-     * the array maps positions on the grid starting from the icons_on_primary monitor. */
-    if (idx < 0)
-        return NULL;
-
-    return xfdesktop_icon_view_item_in_slot_raw(icon_view, idx);
+xfdesktop_icon_view_item_in_slot(XfdesktopIconView *icon_view, gint row, gint col) {
+    return xfdesktop_icon_view_item_in_grid_slot(icon_view, icon_view->priv->grid_layout, row, col);
 }
 
 static inline gboolean
@@ -4499,6 +4149,19 @@ xfdesktop_icon_view_model_row_changed(GtkTreeModel *model,
             item->pixbuf_surface = NULL;
         }
         xfdesktop_icon_view_invalidate_item(icon_view, item, TRUE);
+
+        if (item->placed && icon_view->priv->row_column != -1 && icon_view->priv->col_column != -1) {
+            gint row, col;
+            gtk_tree_model_get(model, iter,
+                               icon_view->priv->row_column, &row,
+                               icon_view->priv->col_column, &col,
+                               -1);
+
+            if (row != item->row || col != item->col) {
+                xfdesktop_icon_view_unplace_item(icon_view, item);
+                xfdesktop_icon_view_place_item(icon_view, item, TRUE);
+            }
+        }
     }
 }
 
@@ -4525,12 +4188,9 @@ xfdesktop_icon_view_model_row_deleted(GtkTreeModel *model,
 static void
 xfdesktop_icon_view_clear_grid_layout(XfdesktopIconView *icon_view)
 {
-    if (icon_view->priv->nrows > 0 && icon_view->priv->ncols > 0 && icon_view->priv->grid_layout != NULL) {
-        for (gint i = 0; i < icon_view->priv->nrows * icon_view->priv->ncols; ++i) {
-            if (icon_view->priv->grid_layout[i] != NULL && icon_view->priv->grid_layout[i] != TOMBSTONE) {
-                icon_view->priv->grid_layout[i] = NULL;
-            }
-        }
+    gsize size = grid_layout_bytes(icon_view->priv->nrows, icon_view->priv->ncols);
+    if (size > 0 && icon_view->priv->grid_layout != NULL) {
+        memset(icon_view->priv->grid_layout, 0, size);
     }
 }
 
@@ -4553,23 +4213,31 @@ xfdesktop_icon_view_items_free(XfdesktopIconView *icon_view)
 
 /* public api */
 
+guint
+xfdesktop_icon_view_get_icon_drag_info(void) {
+    return TARGET_XFDESKTOP_ICON;
+}
+
+GdkAtom
+xfdesktop_icon_view_get_icon_drag_target(void) {
+    return gdk_atom_intern(XFDESKTOP_ICON_NAME, FALSE);
+}
 
 GtkWidget *
-xfdesktop_icon_view_new(XfconfChannel *channel)
-{
+xfdesktop_icon_view_new(XfconfChannel *channel, XfwScreen *screen) {
     return g_object_new(XFDESKTOP_TYPE_ICON_VIEW,
                         "channel", channel,
+                        "screen", screen,
                         NULL);
 }
 
 GtkWidget *
-xfdesktop_icon_view_new_with_model(XfconfChannel *channel,
-                                   GtkTreeModel *model)
-{
+xfdesktop_icon_view_new_with_model(XfconfChannel *channel, XfwScreen *screen, GtkTreeModel *model) {
     g_return_val_if_fail(GTK_IS_TREE_MODEL(model), NULL);
 
     return g_object_new(XFDESKTOP_TYPE_ICON_VIEW,
                         "channel", channel,
+                        "screen", screen,
                         "model", model,
                         NULL);
 }
@@ -4823,23 +4491,19 @@ xfdesktop_icon_view_enable_drag_source(XfdesktopIconView *icon_view,
                                        GdkDragAction actions)
 {
     g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view));
+    g_return_if_fail((targets != NULL && n_targets > 0) || n_targets == 0);
 
-    if(icon_view->priv->drag_source_set) {
-        gtk_target_list_unref(icon_view->priv->source_targets);
-        icon_view->priv->source_targets = gtk_target_list_new(icon_view_targets,
-                                                              icon_view_n_targets);
-    }
+    gtk_target_list_unref(icon_view->priv->source_targets);
+    icon_view->priv->source_targets = gtk_target_list_new(targets, n_targets);
+    // Add our internal targets first because _add_table() prepends, and we
+    // want ours to be found first.
+    gtk_target_list_add_table(icon_view->priv->source_targets,
+                              icon_view_targets,
+                              icon_view_n_targets);
 
+    gtk_drag_source_set(GTK_WIDGET(icon_view), 0, NULL, 0, GDK_ACTION_MOVE | actions);
     icon_view->priv->foreign_source_actions = actions;
     icon_view->priv->foreign_source_mask = start_button_mask;
-
-    gtk_target_list_add_table(icon_view->priv->source_targets, targets,
-                              n_targets);
-
-    gtk_drag_source_set(GTK_WIDGET(icon_view), start_button_mask, NULL, 0,
-                        GDK_ACTION_MOVE | actions);
-    gtk_drag_source_set_target_list(GTK_WIDGET(icon_view),
-                                    icon_view->priv->source_targets);
 
     icon_view->priv->drag_source_set = TRUE;
 }
@@ -4851,22 +4515,19 @@ xfdesktop_icon_view_enable_drag_dest(XfdesktopIconView *icon_view,
                                      GdkDragAction actions)
 {
     g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view));
+    g_return_if_fail((targets != NULL && n_targets > 0) || n_targets == 0);
 
-    if(icon_view->priv->drag_dest_set) {
-        gtk_target_list_unref(icon_view->priv->dest_targets);
-        icon_view->priv->dest_targets = gtk_target_list_new(icon_view_targets,
-                                                            icon_view_n_targets);
-    }
+    gtk_target_list_unref(icon_view->priv->dest_targets);
+    icon_view->priv->dest_targets = gtk_target_list_new(targets, n_targets);
+    // Add our internal targets first because _add_table() prepends, and we
+    // want ours to be found first.
+    gtk_target_list_add_table(icon_view->priv->dest_targets,
+                              icon_view_targets,
+                              icon_view_n_targets);
 
+    gtk_drag_dest_set(GTK_WIDGET(icon_view), 0, NULL, 0, GDK_ACTION_MOVE | actions);
+    gtk_drag_dest_set_target_list(GTK_WIDGET(icon_view), icon_view->priv->dest_targets);
     icon_view->priv->foreign_dest_actions = actions;
-
-    gtk_target_list_add_table(icon_view->priv->dest_targets, targets,
-                              n_targets);
-
-    gtk_drag_dest_set(GTK_WIDGET(icon_view), 0, NULL, 0,
-                      GDK_ACTION_MOVE | actions);
-    gtk_drag_dest_set_target_list(GTK_WIDGET(icon_view),
-                                  icon_view->priv->dest_targets);
 
     icon_view->priv->drag_dest_set = TRUE;
 }
@@ -4876,20 +4537,14 @@ xfdesktop_icon_view_unset_drag_source(XfdesktopIconView *icon_view)
 {
     g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view));
 
-    if(!icon_view->priv->drag_source_set)
-        return;
-
-    if(icon_view->priv->source_targets)
+    if (icon_view->priv->drag_source_set) {
         gtk_target_list_unref(icon_view->priv->source_targets);
+        icon_view->priv->source_targets = gtk_target_list_new(icon_view_targets, icon_view_n_targets);
 
-    icon_view->priv->source_targets = gtk_target_list_new(icon_view_targets,
-                                                              icon_view_n_targets);
+        gtk_drag_source_set(GTK_WIDGET(icon_view), 0, NULL, 0, GDK_ACTION_MOVE);
 
-    gtk_drag_source_set(GTK_WIDGET(icon_view), 0, NULL, 0, GDK_ACTION_MOVE);
-    gtk_drag_source_set_target_list(GTK_WIDGET(icon_view),
-                                    icon_view->priv->source_targets);
-
-    icon_view->priv->drag_source_set = FALSE;
+        icon_view->priv->drag_source_set = FALSE;
+    }
 }
 
 void
@@ -4897,20 +4552,58 @@ xfdesktop_icon_view_unset_drag_dest(XfdesktopIconView *icon_view)
 {
     g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view));
 
-    if(!icon_view->priv->drag_dest_set)
-        return;
-
-    if(icon_view->priv->dest_targets)
+    if (icon_view->priv->drag_dest_set) {
         gtk_target_list_unref(icon_view->priv->dest_targets);
+        icon_view->priv->dest_targets = gtk_target_list_new(icon_view_targets, icon_view_n_targets);
 
-    icon_view->priv->dest_targets = gtk_target_list_new(icon_view_targets,
-                                                        icon_view_n_targets);
+        gtk_drag_dest_set(GTK_WIDGET(icon_view), 0, NULL, 0, GDK_ACTION_MOVE);
 
-    gtk_drag_dest_set(GTK_WIDGET(icon_view), 0, NULL, 0, GDK_ACTION_MOVE);
-    gtk_drag_dest_set_target_list(GTK_WIDGET(icon_view),
-                                  icon_view->priv->dest_targets);
+        icon_view->priv->drag_dest_set = FALSE;
+    }
+}
 
-    icon_view->priv->drag_dest_set = FALSE;
+void
+xfdesktop_icon_view_draw_highlight(XfdesktopIconView *icon_view, gint row, gint col) {
+    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view));
+    g_return_if_fail(row >= 0 && row < icon_view->priv->nrows);
+    g_return_if_fail(col >= 0 && col < icon_view->priv->ncols);
+
+    if (row != icon_view->priv->highlight_row || col != icon_view->priv->highlight_col) {
+        xfdesktop_icon_view_unset_highlight(icon_view);
+
+        gint x, y;
+        if (xfdesktop_icon_view_slot_coords_to_widget_coords(icon_view, row, col, &x, &y)) {
+            icon_view->priv->highlight_row = row;
+            icon_view->priv->highlight_col = col;
+
+            gtk_widget_queue_draw_area(GTK_WIDGET(icon_view), x, y, SLOT_SIZE, SLOT_SIZE);
+        }
+    }
+}
+
+void
+xfdesktop_icon_view_unset_highlight(XfdesktopIconView *icon_view) {
+    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view));
+
+    if (icon_view->priv->highlight_row != -1 && icon_view->priv->highlight_col != -1) {
+        gint row = icon_view->priv->highlight_row;
+        gint col = icon_view->priv->highlight_col;
+
+        icon_view->priv->highlight_row = -1;
+        icon_view->priv->highlight_col = -1;
+
+        gint x, y;
+        if (xfdesktop_icon_view_slot_coords_to_widget_coords(icon_view, row, col, &x, &y)) {
+            gtk_widget_queue_draw_area(GTK_WIDGET(icon_view), x, y, SLOT_SIZE, SLOT_SIZE);
+        }
+    }
+}
+
+
+GtkTargetList *
+xfdesktop_icon_view_get_drag_dest_targets(XfdesktopIconView *icon_view) {
+    g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view), NULL);
+    return icon_view->priv->dest_targets;
 }
 
 static ViewItem *
@@ -4920,12 +4613,12 @@ xfdesktop_icon_view_widget_coords_to_item_internal(XfdesktopIconView *icon_view,
 {
     gint row, col;
 
-    xfdesktop_xy_to_rowcol(icon_view, wx, wy, &row, &col);
-    if (row >= icon_view->priv->nrows || col >= icon_view->priv->ncols || row < 0 || col < 0) {
+    if (xfdesktop_icon_view_widget_coords_to_slot_coords(icon_view, wx, wy, &row, &col)) {
+        return xfdesktop_icon_view_item_in_slot(icon_view, row, col);
+    } else {
         return NULL;
     }
 
-    return xfdesktop_icon_view_item_in_slot(icon_view, row, col);
 }
 
 gboolean
@@ -4938,11 +4631,82 @@ xfdesktop_icon_view_widget_coords_to_item(XfdesktopIconView *icon_view,
 
     g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view), FALSE);
     g_return_val_if_fail(icon_view->priv->model != NULL, FALSE);
-    g_return_val_if_fail(iter != NULL, FALSE);
 
     item = xfdesktop_icon_view_widget_coords_to_item_internal(icon_view, wx, wy);
     if (item != NULL) {
-        return view_item_get_iter(item, icon_view->priv->model, iter);
+        return iter != NULL ? view_item_get_iter(item, icon_view->priv->model, iter) : TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+gboolean
+xfdesktop_icon_view_widget_coords_to_slot_coords(XfdesktopIconView *icon_view,
+                                                 gint wx,
+                                                 gint wy,
+                                                 gint *row_out,
+                                                 gint *col_out)
+{
+    g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view), FALSE);
+
+    gint row = (wy - icon_view->priv->ymargin) / (SLOT_SIZE + icon_view->priv->yspacing);
+    gint col = (wx - icon_view->priv->xmargin) / (SLOT_SIZE + icon_view->priv->xspacing);
+    if (row >= 0 && row < icon_view->priv->nrows && col >= 0 && col < icon_view->priv->ncols) {
+        if (row_out != NULL) {
+            *row_out = row;
+        }
+        if (col_out != NULL) {
+            *col_out = col;
+        }
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+gboolean
+xfdesktop_icon_view_slot_coords_to_widget_coords(XfdesktopIconView *icon_view,
+                                                 gint row,
+                                                 gint col,
+                                                 gint *wx_out,
+                                                 gint *wy_out)
+{
+    g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view), FALSE);
+    g_return_val_if_fail(row >= 0, FALSE);
+    g_return_val_if_fail(col >= 0, FALSE);
+
+    if (row < icon_view->priv->nrows && col < icon_view->priv->ncols) {
+        if (wx_out != NULL) {
+            *wx_out = icon_view->priv->xmargin + col * SLOT_SIZE + col * icon_view->priv->xspacing;
+        }
+        if (wy_out != NULL) {
+            *wy_out = icon_view->priv->ymargin + row * SLOT_SIZE + row * icon_view->priv->yspacing;
+        }
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+gboolean
+xfdesktop_icon_view_get_cursor(XfdesktopIconView *icon_view, GtkTreeIter *iter, gint *row, gint *col) {
+    g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view), FALSE);
+
+    if (icon_view->priv->cursor != NULL) {
+        if (iter != NULL) {
+            if (!view_item_get_iter(icon_view->priv->cursor, GTK_TREE_MODEL(icon_view->priv->model), iter)) {
+                return FALSE;
+            }
+        }
+
+        if (row != NULL) {
+            *row = icon_view->priv->cursor->row;
+        }
+        if (col != NULL) {
+            *col = icon_view->priv->cursor->col;
+        }
+
+        return TRUE;
     } else {
         return FALSE;
     }
@@ -5298,10 +5062,71 @@ xfdesktop_icon_view_get_tooltip_icon_size(XfdesktopIconView *icon_view)
 }
 
 
-GtkWidget *
-xfdesktop_icon_view_get_window_widget(XfdesktopIconView *icon_view)
-{
-    g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view), NULL);
+// For config migration only
+static void
+find_slot_for_coords(XfdesktopIconView *icon_view, GridParams *grid_params, gint x, gint y, gint *row, gint *col) {
+    // Algebraically rearranged from xfdesktop_icon_view_shift_to_slot_area()
+    *row = (y - grid_params->ymargin) / (SLOT_SIZE + grid_params->yspacing);
+    *col = (x - grid_params->xmargin) / (SLOT_SIZE + grid_params->xspacing);
+    DBG("row=%d, col=%d", *row, *col);
+}
 
-    return icon_view->priv->parent_window;
+// For config migration only
+gboolean
+xfdesktop_icon_view_grid_geometry_for_metrics(XfdesktopIconView *icon_view,
+                                              GdkRectangle *total_workarea,
+                                              GdkRectangle *monitor_workarea,
+                                              gint *first_row,
+                                              gint *first_col,
+                                              gint *last_row,
+                                              gint *last_col)
+{
+    xfdesktop_icon_view_style_updated(GTK_WIDGET(icon_view));
+
+    GtkAllocation allocation = {
+        .x = total_workarea->x,
+        .y = total_workarea->y,
+        .width = total_workarea->width,
+        .height = total_workarea->height,
+    };
+    GridParams grid_params;
+    if (!_xfdesktop_icon_view_build_grid_params(icon_view, &allocation, &grid_params)) {
+        return FALSE;
+    }
+
+    DBG("SLOT_SIZE=%.02f", SLOT_SIZE);
+
+    // If our monitor origin is all the way to the top or left, the margin will
+    // come into play, so add that buffer so our coord will actually be in the
+    // row/col.
+    gint xleftoff = monitor_workarea->x == total_workarea->x ? grid_params.xmargin : 0;
+    gint ytopoff = monitor_workarea->y == total_workarea->y ? grid_params.ymargin : 0;
+    gint xorigin = monitor_workarea->x + xleftoff;
+    gint yorigin = monitor_workarea->y + ytopoff;
+    DBG("xorigin=%d, yorigin=%d", xorigin, yorigin);
+    find_slot_for_coords(icon_view, &grid_params, xorigin, yorigin, first_row, first_col);
+
+    // If our monitor is all the way to the bottom or left, the margin will
+    // again come into play, so subtract that out.
+    gint xrightoff = monitor_workarea->x + monitor_workarea->width == total_workarea->x + total_workarea->width
+        ? grid_params.xmargin : 0;
+    gint ybottomoff = monitor_workarea->y + monitor_workarea->height == total_workarea->y + total_workarea->height
+        ? grid_params.ymargin : 0;
+    // + 1 on these next two is because SLOT_SIZE is floating-point, and we
+    // always want to round up to ensure we're actually inside the last slot.
+    gint xlast = monitor_workarea->x + monitor_workarea->width - xrightoff - SLOT_SIZE + 1;
+    gint ylast = monitor_workarea->y + monitor_workarea->height - ybottomoff - SLOT_SIZE + 1;
+    DBG("xlast=%d, ylast=%d", xlast, ylast);
+    find_slot_for_coords(icon_view, &grid_params, xlast, ylast, last_row, last_col);
+
+    return *first_row >= 0
+        && *first_row < grid_params.nrows
+        && *first_col >= 0
+        && *first_col < grid_params.ncols
+        && *last_row >= 0
+        && *last_row < grid_params.nrows
+        && *last_col >= 0
+        && *last_col < grid_params.ncols
+        && *first_row <= *last_row
+        && *first_col <= *last_col;
 }
