@@ -52,9 +52,12 @@ XfdesktopFileIconModel *xfdesktop_file_icon_model_new(XfconfChannel *channel,
 
 XfdesktopFileIcon *xfdesktop_file_icon_model_get_icon(XfdesktopFileIconModel *fmodel,
                                                       GtkTreeIter *iter);
+XfdesktopFileIcon *xfdesktop_file_icon_model_get_icon_for_file(XfdesktopFileIconModel *fmodel,
+                                                               GFile *file);
 gboolean xfdesktop_file_icon_model_get_icon_iter(XfdesktopFileIconModel *fmodel,
                                                  XfdesktopFileIcon *icon,
                                                  GtkTreeIter *iter);
+
 
 void xfdesktop_file_icon_model_reload(XfdesktopFileIconModel *fmodel);
 

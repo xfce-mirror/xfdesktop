@@ -19,6 +19,7 @@
  *  Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
  */
 
+#include "libxfce4windowing/libxfce4windowing.h"
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -41,10 +42,10 @@
 #endif
 
 #include <gio/gio.h>
-#ifdef HAVE_GIO_UNIX
+#include <gio/gunixinputstream.h>
 #include <gio/gunixmounts.h>
-#endif
 
+#include <glib.h>
 #include <gtk/gtk.h>
 
 #include <libxfce4ui/libxfce4ui.h>
@@ -72,6 +73,16 @@ typedef struct {
     GFile *dest_file;
     GtkWindow *parent;
 } TemplateCreateData;
+
+typedef struct {
+    GCancellable *cancellable;
+
+    GString *output_string;
+    gchar buffer[256];
+
+    CreateDesktopFileCallback callback;
+    gpointer callback_data;
+} CreateDesktopFileData;
 
 static XfdesktopTrash       *xfdesktop_file_utils_peek_trash_proxy(void);
 static XfdesktopFileManager *xfdesktop_file_utils_peek_filemanager_proxy(void);
@@ -1747,6 +1758,188 @@ xfdesktop_file_utils_transfer_files(GdkDragAction action,
                             XFCE_BUTTON_TYPE_MIXED, "window-close", _("_Close"), GTK_RESPONSE_ACCEPT,
                             NULL);
     }
+}
+
+static gboolean
+exo_desktop_item_edit_has_print_saved_uri_flag(void) {
+    const gchar *test_argv[] = {
+        "exo-desktop-item-edit",
+        "--help",
+        NULL,
+    };
+
+    gboolean has_print_saved_filename = FALSE;
+    gchar *cmd_stdout = NULL;
+    if (g_spawn_sync(NULL,
+                     (gchar **)test_argv,
+                     NULL,
+                     G_SPAWN_SEARCH_PATH | G_SPAWN_STDERR_TO_DEV_NULL,
+                     NULL,
+                     NULL,
+                     &cmd_stdout,
+                     NULL,
+                     NULL,
+                     NULL)
+        && cmd_stdout != NULL)
+    {
+        has_print_saved_filename = strstr(cmd_stdout, "--print-saved-uri") != NULL;
+    }
+    g_free(cmd_stdout);
+
+    return has_print_saved_filename;
+}
+
+static void
+create_desktop_file_data_free(CreateDesktopFileData *cdfdata) {
+    if (cdfdata->cancellable != NULL) {
+        g_object_unref(cdfdata->cancellable);
+    }
+    g_string_free(cdfdata->output_string, TRUE);
+    g_free(cdfdata);
+}
+
+static void
+create_desktop_file_stdout_data_ready(GObject *source, GAsyncResult *res, gpointer data) {
+    GInputStream *stdout_stream = G_INPUT_STREAM(source);
+    CreateDesktopFileData *cdfdata = data;
+
+    GError *error = NULL;
+    gssize bytes_read = g_input_stream_read_finish(stdout_stream, res, &error);
+    if (bytes_read < 0) {
+        g_input_stream_close(stdout_stream, NULL, NULL);
+        g_object_unref(stdout_stream);
+
+        cdfdata->callback(NULL, error, cdfdata->callback_data);
+        g_error_free(error);
+        create_desktop_file_data_free(cdfdata);
+    } else if (bytes_read == 0) {
+        g_input_stream_close(stdout_stream, NULL, NULL);
+        g_object_unref(stdout_stream);
+
+        while (g_str_has_suffix(cdfdata->output_string->str, "\n")) {
+            g_string_truncate(cdfdata->output_string, cdfdata->output_string->len - 1);
+        }
+
+        if (cdfdata->output_string->len == 0) {
+            error = g_error_new_literal(G_IO_ERROR, G_IO_ERROR_CANCELLED, "User cancelled dialog");
+            cdfdata->callback(NULL, error, cdfdata->callback_data);
+            g_error_free(error);
+        } else {
+            GFile *file = g_file_new_for_uri(cdfdata->output_string->str);
+            cdfdata->callback(file, NULL, cdfdata->callback_data);
+            g_object_unref(file);
+        }
+
+        create_desktop_file_data_free(cdfdata);
+    } else {
+        g_string_append_len(cdfdata->output_string, cdfdata->buffer, bytes_read);
+        g_input_stream_read_async(stdout_stream,
+                                  cdfdata->buffer,
+                                  sizeof(cdfdata->buffer),
+                                  G_PRIORITY_DEFAULT,
+                                  cdfdata->cancellable,
+                                  create_desktop_file_stdout_data_ready,
+                                  cdfdata);
+    }
+}
+
+void
+xfdesktop_file_utils_create_desktop_file(GdkScreen *screen,
+                                         GFile *folder,
+                                         const gchar *launcher_type,
+                                         const gchar *suggested_name,
+                                         const gchar *suggested_command_or_url,
+                                         GCancellable *cancellable,
+                                         CreateDesktopFileCallback callback,
+                                         gpointer callback_data)
+{
+    g_return_if_fail(screen == NULL || GDK_IS_SCREEN(screen));
+    g_return_if_fail(G_IS_FILE(folder));
+    g_return_if_fail(g_strcmp0(launcher_type, "Application") == 0 || g_strcmp0(launcher_type, "Link") == 0);
+
+    GStrvBuilder *argv_builder = g_strv_builder_new();
+    g_strv_builder_add(argv_builder, "exo-desktop-item-edit");
+
+    if (screen != NULL && xfw_windowing_get() == XFW_WINDOWING_X11) {
+        const gchar *display_name = gdk_display_get_name(gdk_screen_get_display(screen));
+        g_strv_builder_add(argv_builder, "--display");
+        g_strv_builder_add(argv_builder, display_name);
+    }
+
+    g_strv_builder_add(argv_builder, "--create-new");
+    g_strv_builder_add(argv_builder, "--type");
+    g_strv_builder_add(argv_builder, launcher_type);
+
+    if (suggested_name != NULL) {
+        g_strv_builder_add(argv_builder, "--name");
+        g_strv_builder_add(argv_builder, suggested_name);
+    }
+
+    if (suggested_command_or_url != NULL) {
+        if (g_strcmp0(launcher_type, "Application") == 0) {
+            g_strv_builder_add(argv_builder, "--command");
+        } else {
+            g_strv_builder_add(argv_builder, "--url");
+        }
+        g_strv_builder_add(argv_builder, suggested_command_or_url);
+    }
+
+    gboolean used_print_saved_uri = callback != NULL && exo_desktop_item_edit_has_print_saved_uri_flag();
+    if (used_print_saved_uri) {
+        g_strv_builder_add(argv_builder, "--print-saved-uri");
+    }
+
+    gchar *uri = g_file_get_uri(folder);
+    g_strv_builder_add(argv_builder, uri);
+    g_free(uri);
+
+    gchar **argv = g_strv_builder_end(argv_builder);
+
+    GError *error = NULL;
+    gint stdout_fd = -1;
+    if (g_spawn_async_with_pipes(NULL,
+                                 argv,
+                                 NULL,
+                                 G_SPAWN_SEARCH_PATH,
+                                 NULL,
+                                 NULL,
+                                 NULL,
+                                 NULL,
+                                 used_print_saved_uri ? &stdout_fd : NULL,
+                                 NULL,
+                                 &error))
+    {
+        if (used_print_saved_uri && stdout_fd >= 0) {
+            CreateDesktopFileData *cdfdata = g_new0(CreateDesktopFileData, 1);
+            cdfdata->cancellable = cancellable != NULL ? g_object_ref(cancellable) : NULL;
+            cdfdata->output_string = g_string_sized_new(sizeof(cdfdata->buffer));
+            cdfdata->callback = callback;
+            cdfdata->callback_data = callback_data;
+
+            GInputStream *stdout_stream = g_unix_input_stream_new(stdout_fd, TRUE);
+            g_input_stream_read_async(stdout_stream,
+                                      cdfdata->buffer,
+                                      sizeof(cdfdata->buffer),
+                                      G_PRIORITY_DEFAULT,
+                                      cdfdata->cancellable,
+                                      create_desktop_file_stdout_data_ready,
+                                      cdfdata);
+        } else if (callback != NULL) {
+            error = g_error_new_literal(G_IO_ERROR,
+                                        G_IO_ERROR_NOT_SUPPORTED,
+                                        "exo-desktop-item-edit doesn't support the --print-saved-uri option");
+            callback(NULL, error, callback_data);
+            g_error_free(error);
+        }
+    } else {
+        if (callback != NULL) {
+            callback(NULL, error, callback_data);
+        }
+        g_error_free(error);
+    }
+
+    g_strfreev(argv);
+    g_strv_builder_unref(argv_builder);
 }
 
 static gint dbus_ref_cnt = 0;
