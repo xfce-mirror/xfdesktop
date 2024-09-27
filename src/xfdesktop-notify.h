@@ -26,9 +26,14 @@
 G_BEGIN_DECLS
 
 void xfdesktop_notify_unmount        (GMount  *mount);
-void xfdesktop_notify_unmount_finish (GMount  *mount, gboolean unmount_successful);
-void xfdesktop_notify_eject          (GVolume *volume);
-void xfdesktop_notify_eject_finish   (GVolume *volume, gboolean eject_successful);
+void xfdesktop_notify_unmount_finish (GMount  *mount,
+                                      gboolean unmount_successful);
+void xfdesktop_notify_eject_mount(GMount *mount);
+void xfdesktop_notify_eject_mount_finish(GMount *mount,
+                                         gboolean eject_successful);
+void xfdesktop_notify_eject_volume(GVolume *volume);
+void xfdesktop_notify_eject_volume_finish(GVolume *volume,
+                                          gboolean eject_successful);
 void xfdesktop_notify_uninit         (void);
 
 G_END_DECLS
