@@ -27,26 +27,8 @@
 
 G_BEGIN_DECLS
 
-#define XFDESKTOP_TYPE_SPECIAL_FILE_ICON     (xfdesktop_special_file_icon_get_type())
-#define XFDESKTOP_SPECIAL_FILE_ICON(obj)     (G_TYPE_CHECK_INSTANCE_CAST((obj), XFDESKTOP_TYPE_SPECIAL_FILE_ICON, XfdesktopSpecialFileIcon))
-#define XFDESKTOP_IS_SPECIAL_FILE_ICON(obj)  (G_TYPE_CHECK_INSTANCE_TYPE((obj), XFDESKTOP_TYPE_SPECIAL_FILE_ICON))
-
-typedef struct _XfdesktopSpecialFileIcon         XfdesktopSpecialFileIcon;
-typedef struct _XfdesktopSpecialFileIconClass    XfdesktopSpecialFileIconClass;
-typedef struct _XfdesktopSpecialFileIconPrivate  XfdesktopSpecialFileIconPrivate;
-
-struct _XfdesktopSpecialFileIcon
-{
-    XfdesktopFileIcon parent;
-
-    /*< private >*/
-    XfdesktopSpecialFileIconPrivate *priv;
-};
-
-struct _XfdesktopSpecialFileIconClass
-{
-    XfdesktopFileIconClass parent;
-};
+G_DECLARE_FINAL_TYPE(XfdesktopSpecialFileIcon, xfdesktop_special_file_icon, XFDESKTOP, SPECIAL_FILE_ICON, XfdesktopFileIcon)
+#define XFDESKTOP_TYPE_SPECIAL_FILE_ICON (xfdesktop_special_file_icon_get_type())
 
 typedef enum
 {
@@ -54,8 +36,6 @@ typedef enum
     XFDESKTOP_SPECIAL_FILE_ICON_FILESYSTEM,
     XFDESKTOP_SPECIAL_FILE_ICON_TRASH,
 } XfdesktopSpecialFileIconType;
-
-GType xfdesktop_special_file_icon_get_type(void) G_GNUC_CONST;
 
 GFile *xfdesktop_special_file_icon_file_for_type(XfdesktopSpecialFileIconType type) G_GNUC_WARN_UNUSED_RESULT;
 

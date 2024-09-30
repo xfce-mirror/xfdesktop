@@ -25,9 +25,8 @@
 #ifndef _XFDESKTOP__WINDOWLIST_H_
 #define _XFDESKTOP__WINDOWLIST_H_
 
-#include "xfce-desktop.h"
-
 #include <xfconf/xfconf.h>
+#include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 

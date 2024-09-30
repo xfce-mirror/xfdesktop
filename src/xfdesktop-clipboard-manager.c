@@ -654,7 +654,7 @@ xfdesktop_clipboard_manager_has_cutted_file (XfdesktopClipboardManager *manager,
                                              const XfdesktopFileIcon       *file)
 {
   g_return_val_if_fail (XFDESKTOP_IS_CLIPBOARD_MANAGER (manager), FALSE);
-  g_return_val_if_fail (XFDESKTOP_IS_FILE_ICON (file), FALSE);
+  g_return_val_if_fail (XFDESKTOP_IS_FILE_ICON((gpointer)file), FALSE);
 
   return (manager->files_cutted && g_list_find (manager->files, file) != NULL);
 }
