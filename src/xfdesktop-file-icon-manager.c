@@ -467,6 +467,24 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     if (!xfdesktop_icon_position_configs_load(fmanager->position_configs, &error)) {
         if (!g_error_matches(error, G_IO_ERROR, G_IO_ERROR_NOT_FOUND)) {
             g_message("Unable to load icon positions: %s", error->message);
+            if (g_file_test(g_file_peek_path(positions_file), G_FILE_TEST_EXISTS)) {
+                GDateTime *now = g_date_time_new_now_local();
+                gchar *stamp = g_date_time_format_iso8601(now);
+                gchar *backup_file_relpath = g_strdup_printf("xfce4/desktop/icons.screen%d.invalid-%s.yaml",
+                                                             screen_num,
+                                                             stamp);
+                gchar *backup_file_path = xfce_resource_save_location(XFCE_RESOURCE_CONFIG, backup_file_relpath, TRUE);
+                GFile *backup_file = g_file_new_for_path(backup_file_path);
+
+                g_message("Backing up invalid icon positions configuration file to %s", backup_file_relpath);
+                g_file_move(positions_file, backup_file, G_FILE_COPY_NONE, NULL, NULL, NULL, NULL);
+
+                g_date_time_unref(now);
+                g_free(stamp);
+                g_free(backup_file_relpath);
+                g_free(backup_file_path);
+                g_object_unref(backup_file);
+            }
         }
         g_error_free(error);
     }
