@@ -694,6 +694,7 @@ xfdesktop_application_theme_changed (GtkSettings *settings,
                                                    GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
     }
     g_free(css);
+    g_free(theme);
 }
 
 static void
