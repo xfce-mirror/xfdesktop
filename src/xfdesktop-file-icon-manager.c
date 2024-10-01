@@ -2620,33 +2620,39 @@ xfdesktop_file_icon_manager_drag_motion(GtkWidget *icon_view,
         // this itself.
         return FALSE;
     } else if (!mdata->fmanager->drag_data_received) {
-        if (target == gdk_atom_intern_static_string(XDND_DIRECT_SAVE0_NAME)
-            || target == gdk_atom_intern_static_string(APPLICATION_OCTET_STREAM_NAME)
-            || target == gdk_atom_intern_static_string(NETSCAPE_URL_NAME))
-        {
-            // Here it's easy: as long as the target is a writable directory,
-            // the drag can succeed.
-
-            GdkDragAction action;
-            if (icon_is_writable_directory(mdata->fmanager->icon_on_drop_dest)) {
-                action = gdk_drag_context_get_selected_action(context);
-            } else {
-                action = 0;
-            }
-            handle_drag_highlight(XFDESKTOP_ICON_VIEW(icon_view), x, y, action);
-
-            gdk_drag_status(context, action, time_);
-            return TRUE;
-        } else if (target == xfdesktop_icon_view_get_icon_drag_target()
-                   || target == gdk_atom_intern_static_string(TEXT_URI_LIST_NAME))
+        if (target == xfdesktop_icon_view_get_icon_drag_target()
+            || target == gdk_atom_intern_static_string(TEXT_URI_LIST_NAME))
         {
             // We need drag data before we know what we can do.
             gtk_drag_get_data(icon_view, context, target, time_);
             gdk_drag_status(context, 0, time_);
             return TRUE;
         } else {
-            // Some other target; shouldn't happen, I don't think.
-            return FALSE;
+            if (icon_is_writable_directory(mdata->fmanager->icon_on_drop_dest)) {
+                GdkDragAction action;
+                if (target == gdk_atom_intern_static_string(XDND_DIRECT_SAVE0_NAME)
+                    || target == gdk_atom_intern_static_string(APPLICATION_OCTET_STREAM_NAME))
+                {
+                    // Direct save is more or less a "copy" of the data.
+                    action = GDK_ACTION_COPY;
+                } else if (target == gdk_atom_intern_static_string(NETSCAPE_URL_NAME)) {
+                    // URLs can only create .desktop files of type "Link".
+                    action = GDK_ACTION_LINK;
+                } else {
+                    // Some other target; shouldn't happen, I don't think.
+                    action = 0;
+                }
+
+                if (action != 0) {
+                    gdk_drag_status(context, action, time_);
+                    return TRUE;
+                } else {
+                    return FALSE;
+                }
+            } else {
+                // These types can only be dropped on the desktop or on folder icons.
+                return FALSE;
+            }
         }
     } else {
         // We have our drag data, so we can tell GDK which action we want.
