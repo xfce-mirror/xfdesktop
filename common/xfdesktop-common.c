@@ -1,7 +1,7 @@
 /*
  *  Copyright (C) 2002 Jasper Huijsmans (huysmans@users.sourceforge.net)
  *  Copyright (C) 2003 Benedikt Meurer (benedikt.meurer@unix-ag.uni-siegen.de)
- *  Copyright (c) 2004-2007 Brian Tarricone <brian@tarricone.org>
+ *  Copyright (c) 2004-2007,2024 Brian Tarricone <brian@tarricone.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by

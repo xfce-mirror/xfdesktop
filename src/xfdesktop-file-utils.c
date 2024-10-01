@@ -1,7 +1,7 @@
 /*
  *  xfdesktop - xfce4's desktop manager
  *
- *  Copyright(c) 2006      Brian Tarricone, <brian@tarricone.org>
+ *  Copyright(c) 2006,2024 Brian Tarricone, <brian@tarricone.org>
  *  Copyright(c) 2010-2011 Jannis Pohlmann, <jannis@xfce.org>
  *
  *  This program is free software; you can redistribute it and/or modify
