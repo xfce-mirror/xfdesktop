@@ -1815,7 +1815,6 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager,
                 if(app_infos) {
                     GAppInfo *app_info, *default_application;
                     GList *ap;
-                    gint list_len = 0;
 
                     /* move any default application in front of the list */
                     default_application = g_app_info_get_default_for_type (g_file_info_get_content_type(info), FALSE);
@@ -1842,15 +1841,13 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager,
 
                     GtkWidget *app_infos_menu;
                     if(app_infos->next) {
-                        list_len = g_list_length(app_infos->next);
+                        gboolean use_submenu = (g_list_length(app_infos->next) >= 3);
 
-                        if(!xfdesktop_file_utils_file_is_executable(info)
-                           && list_len < 3)
-                        {
+                        if (use_submenu || !xfdesktop_file_utils_file_is_executable(info)) {
                             add_menu_separator(menu);
                         }
 
-                        if(list_len >= 3) {
+                        if (use_submenu) {
                             GtkWidget *open_with_mi = add_menu_item(menu,
                                                                     _("Ope_n With"),
                                                                     NULL,
@@ -1871,26 +1868,28 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager,
                             g_object_unref(app_info);
                         }
 
-                        if(list_len >= 3) {
+                        if (use_submenu) {
                             add_menu_separator(app_infos_menu);
                         }
                     } else {
                         app_infos_menu = menu;
                     }
 
-                    add_menu_item(list_len >= 3 ? app_infos_menu : menu,
-                                  _("Ope_n With Other Application..."),
-                                  NULL,
-                                  G_CALLBACK(xfdesktop_file_icon_menu_other_app),
-                                  mdata);
+                    if (!multi_sel) {
+                        add_menu_item(app_infos_menu,
+                                      _("Ope_n With Other Application..."),
+                                      NULL,
+                                      G_CALLBACK(xfdesktop_file_icon_menu_other_app),
+                                      mdata);
 
-                    add_menu_separator(menu);
+                        add_menu_separator(app_infos_menu);
 
-                    add_menu_item(list_len >= 3 ? app_infos_menu : menu,
-                                  _("Set Defa_ult Application..."),
-                                  NULL,
-                                  G_CALLBACK(xfdesktop_file_icon_menu_set_default_app),
-                                  mdata);
+                        add_menu_item(app_infos_menu,
+                                      _("Set Defa_ult Application..."),
+                                      NULL,
+                                      G_CALLBACK(xfdesktop_file_icon_menu_set_default_app),
+                                      mdata);
+                    }
 
                     g_list_free(app_infos);
                 } else {
