@@ -195,6 +195,21 @@ create_desktop_file_with_position_data_free(CreateDesktopFileWithPositionData *c
     g_free(cdfwpdata);
 }
 
+typedef struct {
+    GdkDragContext *context;
+    GFile *new_file;
+    guchar *file_data;
+    gsize file_data_len;
+} XdsDropData;
+
+static void
+xds_drop_data_free(XdsDropData *xddata) {
+    g_object_unref(xddata->context);
+    g_object_unref(xddata->new_file);
+    g_free(xddata->file_data);
+    g_free(xddata);
+}
+
 static void xfdesktop_file_icon_manager_constructed(GObject *obj);
 static void xfdesktop_file_icon_manager_set_property(GObject *object,
                                                      guint property_id,
@@ -2856,8 +2871,90 @@ handle_xdnd_direct_save_drop_data(GtkWidget *widget,
     }
 }
 
+static void
+show_xds_drop_error(GFile *new_file, GError *error) {
+    gchar *primary = g_strdup_printf(_("Failed to save dropped file to '%s'"), g_file_peek_path(new_file));
+    xfce_message_dialog(NULL,
+                        _("Drop Failure"),
+                        "dialog-error",
+                        primary,
+                        error->message,
+                        _("_OK"),
+                        GTK_RESPONSE_ACCEPT,
+                        NULL);
+    g_free(primary);
+}
+
+static void
+close_xds_file_ready(GObject *source, GAsyncResult *res, gpointer data) {
+    GOutputStream *out = G_OUTPUT_STREAM(source);
+    XdsDropData *xddata = data;
+
+    GError *error = NULL;
+    if (!g_output_stream_close_finish(out, res, &error)) {
+        gtk_drag_finish(xddata->context, FALSE, FALSE, GDK_CURRENT_TIME);
+        show_xds_drop_error(xddata->new_file, error);
+        g_error_free(error);
+        update_xds_property(xddata->context, gdk_atom_intern_static_string("text/plain"), "");
+        g_file_delete(xddata->new_file, NULL, NULL);
+    } else {
+        gtk_drag_finish(xddata->context, TRUE, FALSE, GDK_CURRENT_TIME);
+    }
+
+    g_object_unref(out);
+    xds_drop_data_free(xddata);
+}
+
+static void
+write_all_xds_data_ready(GObject *source, GAsyncResult *res, gpointer data) {
+    GOutputStream *out = G_OUTPUT_STREAM(source);
+    XdsDropData *xddata = data;
+
+    GError *error = NULL;
+    if (!g_output_stream_write_all_finish(out, res, NULL, &error)) {
+        gtk_drag_finish(xddata->context, FALSE, FALSE, GDK_CURRENT_TIME);
+        show_xds_drop_error(xddata->new_file, error);
+        g_error_free(error);
+        update_xds_property(xddata->context, gdk_atom_intern_static_string("text/plain"), "");
+        g_output_stream_close(out, NULL, NULL);
+        g_object_unref(out);
+        g_file_delete(xddata->new_file, NULL, NULL);
+        xds_drop_data_free(xddata);
+    } else {
+        g_output_stream_close_async(out, G_PRIORITY_DEFAULT, NULL, close_xds_file_ready, xddata);
+    }
+}
+
+static void
+create_xds_file_ready(GObject *source, GAsyncResult *res, gpointer data) {
+    GFile *new_file = G_FILE(source);
+    XdsDropData *xddata = data;
+
+    GError *error = NULL;
+    GFileOutputStream *out = g_file_create_finish(new_file, res, &error);
+    if (out == NULL) {
+        gtk_drag_finish(xddata->context, FALSE, FALSE, GDK_CURRENT_TIME);
+        show_xds_drop_error(new_file, error);
+        g_error_free(error);
+        update_xds_property(xddata->context, gdk_atom_intern_static_string("text/plain"), "");
+        xds_drop_data_free(xddata);
+    } else {
+        g_output_stream_write_all_async(G_OUTPUT_STREAM(out),
+                                        xddata->file_data,
+                                        xddata->file_data_len,
+                                        G_PRIORITY_DEFAULT,
+                                        NULL,
+                                        write_all_xds_data_ready,
+                                        xddata);
+    }
+}
+
 static gboolean
-handle_application_octet_stream_drop_data(MonitorData *mdata, GdkDragContext *context, GtkSelectionData *data) {
+handle_application_octet_stream_drop_data(MonitorData *mdata,
+                                          GdkDragContext *context,
+                                          GtkSelectionData *data,
+                                          gboolean *done)
+{
     TRACE("entering");
 
     gboolean success = FALSE;
@@ -2870,34 +2967,37 @@ handle_application_octet_stream_drop_data(MonitorData *mdata, GdkDragContext *co
         DBG("got file data %p, len %d", file_data, file_len);
 
         if (file_data != NULL) {
-            // TODO: make this async (and display progress?)
             DBG("writing XDS file data to %s", g_file_peek_path(new_file));
-            GError *error = NULL;
-            GFileOutputStream *out = g_file_create(new_file, G_FILE_CREATE_NONE, NULL, &error);
-            if (out == NULL) {
-                g_message("Failed to create XDS-sent file '%s': %s", g_file_peek_path(new_file), error->message);
-                g_error_free(error);
-            } else {
-                if (!g_output_stream_write_all(G_OUTPUT_STREAM(out), file_data, file_len, NULL, NULL, &error)
-                    || !g_output_stream_close(G_OUTPUT_STREAM(out), NULL, &error))
-                {
-                    g_message("Failed to write XDS-sent file: '%s': %s", g_file_peek_path(new_file), error->message);
-                    g_error_free(error);
-                } else {
-                    success = TRUE;
-                }
 
-                g_object_unref(out);
-            }
+            XdsDropData *xddata = g_new0(XdsDropData, 1);
+            xddata->context = g_object_ref(context);
+            xddata->new_file = g_object_ref(new_file);
+            xddata->file_data = g_memdup2(file_data, file_len);
+            xddata->file_data_len = file_len;
+
+            g_file_create_async(new_file,
+                                G_FILE_CREATE_NONE,
+                                G_PRIORITY_DEFAULT,
+                                NULL,
+                                create_xds_file_ready,
+                                xddata);
+            success = TRUE;
+            *done = FALSE;
         }
     }
+
 
     if (!success) {
         update_xds_property(context, gdk_atom_intern_static_string("text/plain"), "");
     }
+    *done = !success;
 
-    XfdesktopIconView *icon_view = xfdesktop_icon_view_holder_get_icon_view(mdata->holder);
-    xfdesktop_file_icon_manager_drag_leave(GTK_WIDGET(icon_view), context, 0, mdata);
+    if (!*done) {
+        // Even though we're not done, we don't need this data anymore, as
+        // we've saved what we need in 'xddata'.
+        XfdesktopIconView *icon_view = xfdesktop_icon_view_holder_get_icon_view(mdata->holder);
+        xfdesktop_file_icon_manager_drag_leave(GTK_WIDGET(icon_view), context, 0, mdata);
+    }
 
     return success;
 }
@@ -3029,7 +3129,7 @@ xfdesktop_file_icon_manager_drag_data_received(GtkWidget *icon_view,
             } else if (info == TARGET_XDND_DIRECT_SAVE0) {
                 success = handle_xdnd_direct_save_drop_data(GTK_WIDGET(icon_view), context, data, time_, &done);
             } else if (info == TARGET_APPLICATION_OCTET_STREAM) {
-                success = handle_application_octet_stream_drop_data(mdata, context, data);
+                success = handle_application_octet_stream_drop_data(mdata, context, data, &done);
             } else if (info == TARGET_TEXT_URI_LIST) {
                 success = handle_files_drop_data(mdata, context, x, y, time_);
             } else if (info == TARGET_NETSCAPE_URL) {
