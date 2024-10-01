@@ -50,7 +50,8 @@ EXTRA_DIST = \
 	$(icons128_DATA) \
 	$(iconssc_DATA) \
 	$(pixmaps_DATA) \
-	$(pixmapsx_DATA)
+	$(pixmapsx_DATA) \
+	meson.build
 
 gtk_update_icon_cache = gtk-update-icon-cache -f -t $(datadir)/icons/hicolor
 

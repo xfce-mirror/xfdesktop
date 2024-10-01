@@ -32,5 +32,6 @@ test_icon_position_saving_LDADD = $(tests_ldadd)
 endif
 
 EXTRA_DIST = \
+	meson.build \
 	test-icon-position-parsing.c \
 	test-icon-position-saving.c

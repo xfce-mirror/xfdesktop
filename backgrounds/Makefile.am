@@ -15,4 +15,5 @@ backgrounds_DATA = \
 
 EXTRA_DIST = \
 	$(backgrounds_DATA) \
-	README.md
+	README.md \
+	meson.build

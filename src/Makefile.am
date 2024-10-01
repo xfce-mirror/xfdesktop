@@ -184,6 +184,7 @@ EXTRA_DIST = \
 	$(desktop_icon_sources) \
 	$(desktop_file_icon_sources) \
 	$(glade_files) \
+	meson.build \
 	xfdesktop-file-manager-fdo-dbus.xml \
 	xfdesktop-file-manager-dbus.xml \
 	xfdesktop-monitor-chooser-ui.gresource.xml \

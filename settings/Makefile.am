@@ -47,6 +47,7 @@ BUILT_SOURCES = \
 EXTRA_DIST = \
 	$(glade_files) \
 	$(desktop_in_files) \
+	meson.build \
 	xfdesktop-settings-ui.gresource.xml
 
 CLEANFILES = \

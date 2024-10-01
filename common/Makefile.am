@@ -32,6 +32,7 @@ BUILT_SOURCES = \
 	$(libxfdesktop_built_sources)
 
 EXTRA_DIST = \
+	meson.build \
 	tumbler-service-dbus.xml \
 	xfdesktop-marshal.list
 
