@@ -17,7 +17,6 @@ manpage_DATA = xfdesktop.1
 
 EXTRA_DIST = \
 	README.md \
-	TODO \
 	meson_options.txt \
 	meson.build \
 	po/meson.build \
