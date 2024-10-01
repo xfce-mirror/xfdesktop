@@ -3260,7 +3260,7 @@ xfdesktop_file_icon_manager_drag_leave(GtkWidget *icon_view,
 
     g_clear_object(&mdata->fmanager->xdnd_direct_save_destination);
 
-    // TODO: clear drag highlight
+    xfdesktop_icon_view_unset_highlight(XFDESKTOP_ICON_VIEW(icon_view));
 }
 
 static void
