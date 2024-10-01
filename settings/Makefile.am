@@ -46,7 +46,8 @@ BUILT_SOURCES = \
 
 EXTRA_DIST = \
 	$(glade_files) \
-	$(desktop_in_files)
+	$(desktop_in_files) \
+	xfdesktop-settings-ui.gresource.xml
 
 CLEANFILES = \
 	$(BUILT_SOURCES) \

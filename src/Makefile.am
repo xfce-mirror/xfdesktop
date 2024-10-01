@@ -177,7 +177,7 @@ glade_files = \
 BUILT_SOURCES = \
 	$(xfdesktop_built_sources)
 
-DISTCLEANFILES = \
+CLEANFILES = \
 	$(xfdesktop_built_sources)
 
 EXTRA_DIST = \
@@ -186,6 +186,7 @@ EXTRA_DIST = \
 	$(glade_files) \
 	xfdesktop-file-manager-fdo-dbus.xml \
 	xfdesktop-file-manager-dbus.xml \
+	xfdesktop-monitor-chooser-ui.gresource.xml \
 	xfdesktop-thunar-dbus.xml \
 	xfdesktop-trash-dbus.xml
 
