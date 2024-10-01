@@ -2909,11 +2909,8 @@ handle_netscape_url_drop_data(MonitorData *mdata,
 
     TRACE("entering");
 
-    GFile *source_file = xfdesktop_file_icon_peek_file(mdata->fmanager->icon_on_drop_dest);
-    GFileInfo *finfo = xfdesktop_file_icon_peek_file_info(mdata->fmanager->icon_on_drop_dest);
-    g_assert(finfo != NULL);
-
     gboolean drop_ok = FALSE;
+    GFile *source_file = xfdesktop_file_icon_peek_file(mdata->fmanager->icon_on_drop_dest);
     gchar *exo_desktop_item_edit = g_find_program_in_path("exo-desktop-item-edit");
     if (source_file != NULL && exo_desktop_item_edit != NULL) {
         /* data is "URL\nTITLE" */
