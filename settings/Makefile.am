@@ -1,9 +1,14 @@
 bin_PROGRAMS = xfdesktop-settings
 
-xfdesktop_settings_SOURCES = \
+xfdesktop_settings_built_sources = \
 	xfdesktop-settings-ui.h \
-	xfdesktop-settings-ui.c \
+	xfdesktop-settings-ui.c
+
+xfdesktop_settings_SOURCES = \
 	main.c
+
+nodist_xfdesktop_settings_SOURCES = \
+	$(xfdesktop_settings_built_sources)
 
 xfdesktop_settings_CFLAGS =						\
 	-I$(top_srcdir)								\
@@ -41,8 +46,7 @@ glade_files = \
 	xfdesktop-settings-appearance-frame-ui.glade
 
 BUILT_SOURCES = \
-	xfdesktop-settings-ui.h \
-	xfdesktop-settings-ui.c
+	$(xfdesktop_settings_built_sources)
 
 EXTRA_DIST = \
 	$(glade_files) \
@@ -51,8 +55,8 @@ EXTRA_DIST = \
 	xfdesktop-settings-ui.gresource.xml
 
 CLEANFILES = \
-	$(BUILT_SOURCES) \
-	$(desktop_DATA)
+	$(desktop_DATA) \
+	$(xfdesktop_settings_built_sources)
 
 %.desktop: $(srcdir)/%.desktop.in
 	$(AM_V_GEN) $(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o - | \

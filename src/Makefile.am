@@ -19,7 +19,6 @@ xfdesktop_notify_sources = \
 endif
 
 xfdesktop_SOURCES = \
-	$(xfdesktop_built_sources) \
 	$(xfdesktop_notify_sources) \
 	main.c \
 	menu.c \
@@ -170,6 +169,9 @@ xfdesktop_LDADD += \
 
 endif
 endif
+
+nodist_xfdesktop_SOURCES = \
+	$(xfdesktop_built_sources)
 
 glade_files = \
 	xfdesktop-monitor-chooser-ui.glade
