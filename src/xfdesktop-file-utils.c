@@ -329,7 +329,7 @@ xfdesktop_file_utils_next_new_file_name(GFile *file) {
       g_object_unref(new_file);
 
       g_free(new_name);
-      new_name = g_strdup_printf(_("%.*s (%u)%s"), (int) file_name_size, filename, ++count, extension);
+      new_name = g_strdup_printf(_("%.*s %u%s"), (int) file_name_size, filename, ++count, extension);
     }
 }
 
@@ -1000,6 +1000,14 @@ show_template_creation_error(GtkWindow *parent, GFile *dest_file, const gchar *t
     g_free(secondary);
 }
 
+static GFile *
+new_empty_file_name(GFile *folder) {
+    GFile *file = g_file_get_child(folder, _("New Empty File"));
+    GFile *next_file = xfdesktop_file_utils_next_new_file_name(file);
+    g_object_unref(file);
+    return next_file;
+}
+
 static void
 template_create_done(GObject *source, GAsyncResult *res, gpointer data) {
     TemplateCreateData *tcdata = data;
@@ -1023,7 +1031,9 @@ empty_file_close_done(GObject *source, GAsyncResult *res, gpointer data) {
 
     GError *error = NULL;
     if (!g_output_stream_close_finish(G_OUTPUT_STREAM(source), res, &error)) {
-        show_template_creation_error(tcdata->parent, tcdata->dest_file, _("Empty File"), error);
+        gchar *name = g_file_get_basename(G_FILE(source));
+        show_template_creation_error(tcdata->parent, tcdata->dest_file, name, error);
+        g_free(name);
         g_error_free(error);
     }
 
@@ -1034,19 +1044,20 @@ empty_file_close_done(GObject *source, GAsyncResult *res, gpointer data) {
 
 static void
 empty_file_create_done(GObject *source, GAsyncResult *res, gpointer data) {
-    GtkWindow *parent = data;
+    TemplateCreateData *tcdata = data;
 
     GError *error = NULL;
     GFileOutputStream *stream = g_file_create_finish(G_FILE(source), res, &error);
     if (stream != NULL) {
-        TemplateCreateData *tcdata = g_new0(TemplateCreateData, 1);
-        tcdata->parent = parent;
-        tcdata->dest_file = G_FILE(source);
         g_output_stream_close_async(G_OUTPUT_STREAM(stream), G_PRIORITY_DEFAULT, NULL, empty_file_close_done, tcdata);
     } else {
-        show_template_creation_error(parent, G_FILE(source), _("Empty File"), error);
+        gchar *name = g_file_get_basename(G_FILE(source));
+        show_template_creation_error(tcdata->parent, G_FILE(source), name, error);
+        g_free(name);
         g_error_free(error);
-        g_object_unref(source);
+
+        g_object_unref(tcdata->dest_file);
+        g_free(tcdata);
     }
 }
 
@@ -1056,11 +1067,11 @@ xfdesktop_file_utils_create_file_from_template(GFile *template_file, GFile *dest
     g_return_if_fail(G_IS_FILE(dest_file));
     g_return_if_fail(parent == NULL || GTK_IS_WINDOW(parent));
 
-    if (template_file != NULL) {
-        TemplateCreateData *tcdata = g_new0(TemplateCreateData, 1);
-        tcdata->parent = parent;
-        tcdata->dest_file = g_object_ref(dest_file);
+    TemplateCreateData *tcdata = g_new0(TemplateCreateData, 1);
+    tcdata->parent = parent;
+    tcdata->dest_file = g_object_ref(dest_file);
 
+    if (template_file != NULL) {
         g_file_copy_async(template_file,
                           tcdata->dest_file,
                           G_FILE_COPY_NONE,
@@ -1071,12 +1082,12 @@ xfdesktop_file_utils_create_file_from_template(GFile *template_file, GFile *dest
                           template_create_done,
                           tcdata);
     } else {
-        g_file_create_async(g_object_ref(dest_file),
+        g_file_create_async(dest_file,
                             G_FILE_CREATE_NONE,
                             G_PRIORITY_DEFAULT,
                             NULL,
                             empty_file_create_done,
-                            parent);
+                            tcdata);
     }
 }
 
@@ -1229,7 +1240,23 @@ xfdesktop_file_utils_prompt_for_template_file_name(GFile *parent_folder, GFile *
         icon = g_themed_icon_new("text-x-generic");
     }
 
-    gchar *name = template_file != NULL ? g_file_get_basename(template_file) : g_strdup(_("Empty File"));
+    gchar *name;
+    if (template_file != NULL) {
+        name = g_file_get_basename(template_file);
+        GFile *new_file = g_file_get_child(parent_folder, name);
+        g_free(name);
+
+        GFile *next_new_file = xfdesktop_file_utils_next_new_file_name(new_file);
+        name = g_file_get_basename(next_new_file);
+
+        g_object_unref(new_file);
+        g_object_unref(next_new_file);
+    } else {
+        GFile *new_file = new_empty_file_name(parent_folder);
+        name = g_file_get_basename(new_file);
+        g_object_unref(new_file);
+    }
+
     gchar *title = g_strdup_printf(_("Create Document from template \"%s\""), name);
     gchar *filename = show_editable_file_create_dialog(title,
                                                        icon,
@@ -1257,7 +1284,13 @@ xfdesktop_file_utils_prompt_for_new_folder_name(GFile *parent_folder, GtkWindow 
     g_return_val_if_fail(parent == NULL || GTK_IS_WINDOW(parent), NULL);
 
     GIcon *icon = g_themed_icon_new("default-folder");
-    const gchar *prefill = _("New Folder");
+
+    GFile *new_folder = g_file_get_child(parent_folder, _("New Folder"));
+    GFile *next_new_folder = xfdesktop_file_utils_next_new_file_name(new_folder);
+    gchar *prefill = g_file_get_basename(next_new_folder);
+    g_object_unref(new_folder);
+    g_object_unref(next_new_folder);
+
     gchar *folder_name = show_editable_file_create_dialog(_("Create New Folder"),
                                                           icon,
                                                           _("Enter the name:"),
@@ -1265,6 +1298,7 @@ xfdesktop_file_utils_prompt_for_new_folder_name(GFile *parent_folder, GtkWindow 
                                                           parent,
                                                           _("Could not create a new folder"));
     g_object_unref(icon);
+    g_free(prefill);
 
     if (folder_name != NULL) {
         GFile *folder = g_file_get_child(parent_folder, folder_name);
