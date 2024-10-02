@@ -348,6 +348,7 @@ struct _XfdesktopIconViewPrivate
     GArray *keyboard_navigation_state;
     guint keyboard_navigation_state_timeout;
 
+    gboolean draw_focus;
     ViewItem *cursor;
     ViewItem *first_clicked_item;
     ViewItem *item_under_pointer;
@@ -1038,6 +1039,8 @@ xfdesktop_icon_view_init(XfdesktopIconView *icon_view)
     icon_view->priv->drag_drop_col = -1;
     icon_view->priv->highlight_row = -1;
     icon_view->priv->highlight_col = -1;
+
+    icon_view->priv->draw_focus = TRUE;
 }
 
 static void
@@ -1438,6 +1441,15 @@ context_menu_drag_timeout_destroy(XfdesktopIconView *icon_view) {
     icon_view->priv->drag_timer_event = NULL;
 }
 
+static void
+xfdesktop_icon_view_set_cursor(XfdesktopIconView *icon_view, ViewItem *item, gboolean from_keyboard) {
+    if (icon_view->priv->cursor != NULL && icon_view->priv->draw_focus) {
+        xfdesktop_icon_view_invalidate_item(icon_view, icon_view->priv->cursor, FALSE);
+    }
+    icon_view->priv->cursor = item;
+    icon_view->priv->draw_focus = from_keyboard;
+}
+
 static gboolean
 xfdesktop_icon_view_button_press(GtkWidget *widget, GdkEventButton *evt) {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
@@ -1477,7 +1489,7 @@ xfdesktop_icon_view_button_press(GtkWidget *widget, GdkEventButton *evt) {
                 if(evt->state & GDK_CONTROL_MASK)
                     icon_view->priv->control_click = TRUE;
 
-                icon_view->priv->cursor = item;
+                xfdesktop_icon_view_set_cursor(icon_view, item, FALSE);
             } else {
                 /* clicked a non-selected icon */
                 if(icon_view->priv->sel_mode != GTK_SELECTION_MULTIPLE
@@ -1492,7 +1504,7 @@ xfdesktop_icon_view_button_press(GtkWidget *widget, GdkEventButton *evt) {
                         icon_view->priv->first_clicked_item = NULL;
                 }
 
-                icon_view->priv->cursor = item;
+                xfdesktop_icon_view_set_cursor(icon_view, item, FALSE);
 
                 if (icon_view->priv->first_clicked_item == NULL) {
                     icon_view->priv->first_clicked_item = item;
@@ -1547,7 +1559,7 @@ xfdesktop_icon_view_button_press(GtkWidget *widget, GdkEventButton *evt) {
                 xfdesktop_icon_view_unselect_all(icon_view);
             }
 
-            icon_view->priv->cursor = NULL;
+            xfdesktop_icon_view_set_cursor(icon_view, NULL, FALSE);
             icon_view->priv->first_clicked_item = NULL;
 
             if(icon_view->priv->allow_rubber_banding && evt->button == 1
@@ -1587,7 +1599,7 @@ xfdesktop_icon_view_button_press(GtkWidget *widget, GdkEventButton *evt) {
                                         (GCompareFunc)xfdesktop_check_icon_clicked);
             if (icon_l != NULL) {
                 ViewItem *item = icon_l->data;
-                icon_view->priv->cursor = item;
+                xfdesktop_icon_view_set_cursor(icon_view, item, FALSE);
                 g_signal_emit(G_OBJECT(icon_view), __signals[SIG_ICON_ACTIVATED], 0);
                 xfdesktop_icon_view_unselect_all(icon_view);
             }
@@ -1621,7 +1633,7 @@ xfdesktop_icon_view_button_release(GtkWidget *widget, GdkEventButton *evt) {
         if (icon_l != NULL) {
             ViewItem *item = icon_l->data;
             /* We did, activate it */
-            icon_view->priv->cursor = item;
+            xfdesktop_icon_view_set_cursor(icon_view, item, FALSE);
             g_signal_emit(G_OBJECT(icon_view), __signals[SIG_ICON_ACTIVATED], 0);
             xfdesktop_icon_view_unselect_all(icon_view);
             ret = TRUE;
@@ -1738,7 +1750,7 @@ xfdesktop_icon_view_keyboard_navigate(XfdesktopIconView *icon_view,
 
             if (matches) {
                 xfdesktop_icon_view_unselect_all(icon_view);
-                icon_view->priv->cursor = item;
+                xfdesktop_icon_view_set_cursor(icon_view, item, TRUE);
                 xfdesktop_icon_view_select_item_internal(icon_view, item, TRUE);
                 found_match = TRUE;
             }
@@ -2899,7 +2911,7 @@ xfdesktop_icon_view_unplace_item(XfdesktopIconView *icon_view,
     }
 
     if (icon_view->priv->cursor == item) {
-        icon_view->priv->cursor = NULL;
+        xfdesktop_icon_view_set_cursor(icon_view, NULL, TRUE);
     }
 
     if (icon_view->priv->first_clicked_item == item) {
@@ -3164,7 +3176,7 @@ xfdesktop_icon_view_draw_item(XfdesktopIconView *icon_view,
     state &= ~(GTK_STATE_FLAG_SELECTED | GTK_STATE_FLAG_PRELIGHT | GTK_STATE_FLAG_FOCUSED);
     has_focus = gtk_widget_has_focus(GTK_WIDGET(icon_view));
 
-    if (G_UNLIKELY(has_focus && item == icon_view->priv->cursor)) {
+    if (G_UNLIKELY(has_focus && item == icon_view->priv->cursor && icon_view->priv->draw_focus)) {
         flags |= GTK_CELL_RENDERER_FOCUSED;
     }
 
@@ -3460,7 +3472,7 @@ xfdesktop_icon_view_move_cursor_direction(XfdesktopIconView *icon_view,
             if ((modmask & GDK_CONTROL_MASK) == 0) {
                 xfdesktop_icon_view_unselect_all(icon_view);
             }
-            icon_view->priv->cursor = item;
+            xfdesktop_icon_view_set_cursor(icon_view, item, TRUE);
             xfdesktop_icon_view_select_item_internal(icon_view, item, TRUE);
         }
     } else {
@@ -3501,7 +3513,7 @@ xfdesktop_icon_view_move_cursor_direction(XfdesktopIconView *icon_view,
                 ViewItem *item = xfdesktop_icon_view_item_in_slot(icon_view, slot_row, slot_col);
 
                 if (item != NULL) {
-                    icon_view->priv->cursor = item;
+                    xfdesktop_icon_view_set_cursor(icon_view, item, TRUE);
                     if ((modmask & (GDK_SHIFT_MASK | GDK_CONTROL_MASK)) != 0 || remaining == 1) {
                         xfdesktop_icon_view_select_item_internal(icon_view, item, TRUE);
                     }
@@ -3519,7 +3531,7 @@ xfdesktop_icon_view_move_cursor_direction(XfdesktopIconView *icon_view,
             }
 
             if (item != NULL) {
-                icon_view->priv->cursor = item;
+                xfdesktop_icon_view_set_cursor(icon_view, item, TRUE);
                 xfdesktop_icon_view_select_item_internal(icon_view, item, TRUE);
             }
         }
@@ -3540,7 +3552,7 @@ xfdesktop_icon_view_move_cursor_begin_end(XfdesktopIconView *icon_view,
 
     if (item != NULL) {
         ViewItem *old_cursor = icon_view->priv->cursor;
-        icon_view->priv->cursor = item;
+        xfdesktop_icon_view_set_cursor(icon_view, item, TRUE);
 
         if (old_cursor != NULL && !old_cursor->selected) {
             xfdesktop_icon_view_invalidate_item(icon_view, old_cursor, FALSE);
