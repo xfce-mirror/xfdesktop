@@ -42,6 +42,7 @@ struct _XfdesktopFileIconModelFilter {
     gboolean show_removable_media;
     gboolean show_network_volumes;
     gboolean show_device_volumes;
+    gboolean show_fixed_device_volumes;
     gboolean show_unknown_volumes;
     gboolean show_hidden_files;
 };
@@ -57,6 +58,7 @@ enum {
     PROP_SHOW_REMOVABLE,
     PROP_SHOW_NETWORK_VOLUME,
     PROP_SHOW_DEVICE_VOLUME,
+    PROP_SHOW_FIXED_DEVICE_VOLUME,
     PROP_SHOW_UNKNOWN_VOLUME,
     PROP_SHOW_HIDDEN_FILES,
 };
@@ -99,6 +101,7 @@ static const struct
     { DESKTOP_ICONS_SHOW_REMOVABLE, G_TYPE_BOOLEAN, "show-removable" },
     { DESKTOP_ICONS_SHOW_NETWORK_REMOVABLE, G_TYPE_BOOLEAN, "show-network-volume" },
     { DESKTOP_ICONS_SHOW_DEVICE_REMOVABLE, G_TYPE_BOOLEAN, "show-device-volume" },
+    { DESKTOP_ICONS_SHOW_DEVICE_FIXED, G_TYPE_BOOLEAN, "show-fixed-device-volume" },
     { DESKTOP_ICONS_SHOW_UNKNWON_REMOVABLE, G_TYPE_BOOLEAN, "show-unknown-volume" },
     { DESKTOP_ICONS_SHOW_HIDDEN_FILES, G_TYPE_BOOLEAN, "show-hidden-files" },
 };
@@ -175,6 +178,13 @@ xfdesktop_file_icon_model_filter_class_init(XfdesktopFileIconModelFilterClass *k
                                                          TRUE,
                                                          G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
     g_object_class_install_property(gobject_class,
+                                    PROP_SHOW_FIXED_DEVICE_VOLUME,
+                                    g_param_spec_boolean("show-fixed-device-volume",
+                                                         "show fixed device volume",
+                                                         "show fixed device volume",
+                                                         TRUE,
+                                                         G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
+    g_object_class_install_property(gobject_class,
                                     PROP_SHOW_UNKNOWN_VOLUME,
                                     g_param_spec_boolean("show-unknown-volume",
                                                          "show unknown volume",
@@ -201,6 +211,7 @@ xfdesktop_file_icon_model_filter_init(XfdesktopFileIconModelFilter *filter) {
     filter->show_removable_media = TRUE;
     filter->show_network_volumes = TRUE;
     filter->show_device_volumes = TRUE;
+    filter->show_fixed_device_volumes = TRUE;
     filter->show_unknown_volumes = TRUE;
     filter->show_hidden_files = FALSE;
 }
@@ -266,6 +277,11 @@ xfdesktop_file_icon_model_filter_set_property(GObject *object, guint property_id
             gtk_tree_model_filter_refilter(GTK_TREE_MODEL_FILTER(filter));
             break;
 
+        case PROP_SHOW_FIXED_DEVICE_VOLUME:
+            filter->show_fixed_device_volumes = g_value_get_boolean(value);
+            gtk_tree_model_filter_refilter(GTK_TREE_MODEL_FILTER(filter));
+            break;
+
         case PROP_SHOW_UNKNOWN_VOLUME:
             filter->show_device_volumes = g_value_get_boolean(value);
             gtk_tree_model_filter_refilter(GTK_TREE_MODEL_FILTER(filter));
@@ -321,6 +337,10 @@ xfdesktop_file_icon_model_filter_get_property(GObject *object, guint property_id
 
         case PROP_SHOW_DEVICE_VOLUME:
             g_value_set_boolean(value, filter->show_device_volumes);
+            break;
+
+        case PROP_SHOW_FIXED_DEVICE_VOLUME:
+            g_value_set_boolean(value, filter->show_fixed_device_volumes);
             break;
 
         case PROP_SHOW_UNKNOWN_VOLUME:
@@ -397,8 +417,10 @@ is_volume_visible(XfdesktopFileIconModelFilter *filter, XfdesktopVolumeIcon *ico
             }
 
             gchar *volume_type = g_volume_get_identifier(volume, G_VOLUME_IDENTIFIER_KIND_CLASS);
+            gboolean is_device = g_strcmp0(volume_type, "device") == 0;
             visible = (filter->show_network_volumes && g_strcmp0(volume_type, "network") == 0)
-                || (filter->show_device_volumes && is_removable && g_strcmp0(volume_type, "device") == 0)
+                || (filter->show_device_volumes && is_removable && is_device)
+                || (filter->show_fixed_device_volumes && !is_removable && is_device)
                 || (filter->show_unknown_volumes && is_removable && volume_type == NULL);
             g_free(volume_type);
         } else {
@@ -435,7 +457,7 @@ is_volume_visible(XfdesktopFileIconModelFilter *filter, XfdesktopVolumeIcon *ico
 
                 visible = !is_ignored_scheme
                     && (is_removable
-                        || (is_local && filter->show_device_volumes)
+                        || (is_local && (filter->show_device_volumes || filter->show_fixed_device_volumes))
                         || (!is_local && filter->show_network_volumes));
             } else {
                 visible = FALSE;
