@@ -87,6 +87,7 @@
 #define DESKTOP_ICONS_SHOW_HIDDEN_FILES      "/desktop-icons/show-hidden-files"
 #define DESKTOP_ICONS_SHOW_NETWORK_REMOVABLE "/desktop-icons/file-icons/show-network-removable"
 #define DESKTOP_ICONS_SHOW_DEVICE_REMOVABLE  "/desktop-icons/file-icons/show-device-removable"
+#define DESKTOP_ICONS_SHOW_DEVICE_FIXED      "/desktop-icons/file-icons/show-device-fixed"
 #define DESKTOP_ICONS_SHOW_UNKNWON_REMOVABLE "/desktop-icons/file-icons/show-unknown-removable"
 #define DESKTOP_ICONS_SHOW_HOME              "/desktop-icons/file-icons/show-home"
 #define DESKTOP_ICONS_SHOW_TRASH             "/desktop-icons/file-icons/show-trash"
