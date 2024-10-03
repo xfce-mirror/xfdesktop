@@ -10,7 +10,7 @@ if get_option('tests')
       test_prog,
       [
         '@0@.c'.format(test_prog),
-        '../src/xfdesktop-icon-position-configs.c',
+        meson.project_source_root() / 'src' / 'xfdesktop-icon-position-configs.c',
       ],
       include_directories: [
         include_directories('../src'),
