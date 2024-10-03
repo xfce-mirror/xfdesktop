@@ -1408,8 +1408,8 @@ create_icon_view(XfdesktopFileIconManager *fmanager, XfceDesktop *desktop) {
 
     g_signal_connect(icon_view, "icon-moved",
                      G_CALLBACK(xfdesktop_file_icon_manager_icon_moved), mdata);
-    g_signal_connect(icon_view, "icon-activated",
-                     G_CALLBACK(xfdesktop_file_icon_manager_activate_selected), mdata);
+    g_signal_connect_swapped(icon_view, "icon-activated",
+                             G_CALLBACK(xfdesktop_file_icon_manager_activate_selected), mdata);
 
     // DnD src signals
     g_signal_connect(icon_view, "drag-data-get",
