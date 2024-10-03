@@ -1029,7 +1029,9 @@ enumerator_files_ready(GFileEnumerator *enumerator, GAsyncResult *result, Xfdesk
         g_list_free(files);
 
         g_file_enumerator_next_files_async(fmodel->enumerator,
-                                           10, G_PRIORITY_DEFAULT, NULL,
+                                           10,
+                                           G_PRIORITY_DEFAULT,
+                                           fmodel->cancel_enumeration,
                                            (GAsyncReadyCallback)enumerator_files_ready,
                                            fmodel);
     }
@@ -1068,6 +1070,14 @@ load_desktop_folder(XfdesktopFileIconModel *fmodel) {
     if (check_create_desktop_folder(fmodel)) {
         DBG("entering");
 
+        if (fmodel->cancel_enumeration != NULL) {
+            g_cancellable_cancel(fmodel->cancel_enumeration);
+            g_object_unref(fmodel->cancel_enumeration);
+        }
+        fmodel->cancel_enumeration = g_cancellable_new();
+
+        g_clear_object(&fmodel->enumerator);
+
         xfdesktop_icon_view_model_clear(XFDESKTOP_ICON_VIEW_MODEL(fmodel));
 
         for (gint i = 0; i <= XFDESKTOP_SPECIAL_FILE_ICON_TRASH; ++i) {
@@ -1076,10 +1086,6 @@ load_desktop_folder(XfdesktopFileIconModel *fmodel) {
         }
 
         load_removable_media(fmodel);
-
-        g_clear_object(&fmodel->enumerator);
-        g_clear_object(&fmodel->cancel_enumeration);
-        fmodel->cancel_enumeration = g_cancellable_new();
 
         g_file_enumerate_children_async(fmodel->folder,
                                         XFDESKTOP_FILE_INFO_NAMESPACE,
