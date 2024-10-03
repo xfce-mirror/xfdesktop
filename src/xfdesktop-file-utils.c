@@ -1237,7 +1237,7 @@ xfdesktop_file_utils_prompt_for_template_file_name(GFile *parent_folder, GFile *
     }
 
     if (icon == NULL) {
-        icon = g_themed_icon_new("text-x-generic");
+        icon = g_content_type_get_icon("text/plain");
     }
 
     gchar *name;
@@ -1283,7 +1283,7 @@ xfdesktop_file_utils_prompt_for_new_folder_name(GFile *parent_folder, GtkWindow 
     g_return_val_if_fail(G_IS_FILE(parent_folder), NULL);
     g_return_val_if_fail(parent == NULL || GTK_IS_WINDOW(parent), NULL);
 
-    GIcon *icon = g_themed_icon_new("default-folder");
+    GIcon *icon = g_content_type_get_icon("inode/directory");
 
     GFile *new_folder = g_file_get_child(parent_folder, _("New Folder"));
     GFile *next_new_folder = xfdesktop_file_utils_next_new_file_name(new_folder);
