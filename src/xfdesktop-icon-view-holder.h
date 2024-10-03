@@ -33,7 +33,8 @@ G_DECLARE_FINAL_TYPE(XfdesktopIconViewHolder, xfdesktop_icon_view_holder, XFDESK
 
 XfdesktopIconViewHolder *xfdesktop_icon_view_holder_new(XfwScreen *screen,
                                                         XfceDesktop *desktop,
-                                                        XfdesktopIconView *icon_view);
+                                                        XfdesktopIconView *icon_view,
+                                                        GtkAccelGroup *accel_group);
 
 XfceDesktop *xfdesktop_icon_view_holder_get_desktop(XfdesktopIconViewHolder *holder);
 XfdesktopIconView *xfdesktop_icon_view_holder_get_icon_view(XfdesktopIconViewHolder *holder);

@@ -96,6 +96,7 @@ executable(
     gtk,
     libxfce4util,
     libxfce4ui,
+    libxfce4kbd_private,
     libxfce4windowing,
     libxfce4windowingui,
     xfconf,
