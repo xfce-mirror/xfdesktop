@@ -547,11 +547,8 @@ static void xfdesktop_icon_view_xfconf_tooltip_icon_size_changed(XfconfChannel *
                                                                  const GValue *value,
                                                                  XfdesktopIconView *icon_view);
 
-static void xfdesktop_icon_view_real_select_all(XfdesktopIconView *icon_view);
-static void xfdesktop_icon_view_real_unselect_all(XfdesktopIconView *icon_view);
 static void xfdesktop_icon_view_real_select_cursor_item(XfdesktopIconView *icon_view);
 static void xfdesktop_icon_view_real_toggle_cursor_item(XfdesktopIconView *icon_view);
-static gboolean xfdesktop_icon_view_real_activate_selected_items(XfdesktopIconView *icon_view);
 static gboolean xfdesktop_icon_view_real_move_cursor(XfdesktopIconView *icon_view,
                                                      GtkMovementStep step,
                                                      gint count);
@@ -642,11 +639,8 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
     widget_class->focus_in_event = xfdesktop_icon_view_focus_in;
     widget_class->focus_out_event = xfdesktop_icon_view_focus_out;
 
-    klass->select_all = xfdesktop_icon_view_real_select_all;
-    klass->unselect_all = xfdesktop_icon_view_real_unselect_all;
     klass->select_cursor_item = xfdesktop_icon_view_real_select_cursor_item;
     klass->toggle_cursor_item = xfdesktop_icon_view_real_toggle_cursor_item;
-    klass->activate_selected_items = xfdesktop_icon_view_real_activate_selected_items;
     klass->move_cursor = xfdesktop_icon_view_real_move_cursor;
 
     __signals[SIG_ICON_SELECTION_CHANGED] = g_signal_new("icon-selection-changed",
@@ -722,24 +716,6 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
                                                     g_cclosure_marshal_VOID__VOID,
                                                     G_TYPE_NONE, 0);
 
-    __signals[SIG_SELECT_ALL] = g_signal_new(I_("select-all"),
-                                             XFDESKTOP_TYPE_ICON_VIEW,
-                                             G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-                                             G_STRUCT_OFFSET(XfdesktopIconViewClass,
-                                                             select_all),
-                                             NULL, NULL,
-                                             g_cclosure_marshal_VOID__VOID,
-                                             G_TYPE_NONE, 0);
-
-    __signals[SIG_UNSELECT_ALL] = g_signal_new(I_("unselect-all"),
-                                               XFDESKTOP_TYPE_ICON_VIEW,
-                                               G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-                                               G_STRUCT_OFFSET(XfdesktopIconViewClass,
-                                                               unselect_all),
-                                               NULL, NULL,
-                                               g_cclosure_marshal_VOID__VOID,
-                                               G_TYPE_NONE, 0);
-
     __signals[SIG_SELECT_CURSOR_ITEM] = g_signal_new(I_("select-cursor-item"),
                                                      XFDESKTOP_TYPE_ICON_VIEW,
                                                      G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
@@ -757,15 +733,6 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
                                                      NULL, NULL,
                                                      g_cclosure_marshal_VOID__VOID,
                                                      G_TYPE_NONE, 0);
-
-    __signals[SIG_ACTIVATE_SELECTED_ITEMS] = g_signal_new(I_("activate-selected-items"),
-                                                       XFDESKTOP_TYPE_ICON_VIEW,
-                                                       G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-                                                       G_STRUCT_OFFSET(XfdesktopIconViewClass,
-                                                                       activate_selected_items),
-                                                       NULL, NULL,
-                                                       xfdesktop_marshal_BOOLEAN__VOID,
-                                                       G_TYPE_BOOLEAN, 0);
 
     __signals[SIG_MOVE_CURSOR] = g_signal_new(I_("move-cursor"),
                                               XFDESKTOP_TYPE_ICON_VIEW,
@@ -951,26 +918,12 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
 #undef PARAM_FLAGS
 
     /* same binding entries as GtkIconView */
-    gtk_binding_entry_add_signal(binding_set, GDK_KEY_a, GDK_CONTROL_MASK,
-                                 "select-all", 0);
-    gtk_binding_entry_add_signal(binding_set, GDK_KEY_a,
-                                 GDK_CONTROL_MASK | GDK_SHIFT_MASK,
-                                 "unselect-all", 0);
+#if 0
     gtk_binding_entry_add_signal(binding_set, GDK_KEY_space, GDK_CONTROL_MASK,
                                  "toggle-cursor-item", 0);
     gtk_binding_entry_add_signal(binding_set, GDK_KEY_KP_Space, GDK_CONTROL_MASK,
                                  "toggle-cursor-item", 0);
-
-    gtk_binding_entry_add_signal(binding_set, GDK_KEY_space, 0,
-                                 "activate-selected-items", 0);
-    gtk_binding_entry_add_signal(binding_set, GDK_KEY_KP_Space, 0,
-                                 "activate-selected-items", 0);
-    gtk_binding_entry_add_signal(binding_set, GDK_KEY_Return, 0,
-                                 "activate-selected-items", 0);
-    gtk_binding_entry_add_signal(binding_set, GDK_KEY_ISO_Enter, 0,
-                                 "activate-selected-items", 0);
-    gtk_binding_entry_add_signal(binding_set, GDK_KEY_KP_Enter, 0,
-                                 "activate-selected-items", 0);
+#endif
 
     xfdesktop_icon_view_add_move_binding(binding_set, GDK_KEY_Up, 0,
                                          GTK_MOVEMENT_DISPLAY_LINES, -1);
@@ -3318,22 +3271,6 @@ xfdesktop_icon_view_draw(GtkWidget *widget,
 }
 
 static void
-xfdesktop_icon_view_real_select_all(XfdesktopIconView *icon_view)
-{
-    DBG("entering");
-
-    xfdesktop_icon_view_select_all(icon_view);
-}
-
-static void
-xfdesktop_icon_view_real_unselect_all(XfdesktopIconView *icon_view)
-{
-    DBG("entering");
-
-    xfdesktop_icon_view_unselect_all(icon_view);
-}
-
-static void
 xfdesktop_icon_view_real_select_cursor_item(XfdesktopIconView *icon_view)
 {
     DBG("entering");
@@ -3354,19 +3291,6 @@ xfdesktop_icon_view_real_toggle_cursor_item(XfdesktopIconView *icon_view)
             xfdesktop_icon_view_select_item_internal(icon_view, icon_view->priv->cursor, TRUE);
         }
     }
-}
-
-static gboolean
-xfdesktop_icon_view_real_activate_selected_items(XfdesktopIconView *icon_view)
-{
-    DBG("entering");
-
-    if (icon_view->priv->selected_items == NULL)
-        return FALSE;
-
-    g_signal_emit(G_OBJECT(icon_view), __signals[SIG_ICON_ACTIVATED], 0);
-
-    return TRUE;
 }
 
 static void
@@ -4782,18 +4706,19 @@ xfdesktop_icon_view_select_all(XfdesktopIconView *icon_view)
     gboolean selected_something = FALSE;
 
     g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view));
-    g_return_if_fail(xfdesktop_icon_view_get_selection_mode(icon_view) == GTK_SELECTION_MULTIPLE);
 
-    for (GList *l = icon_view->priv->items; l != NULL; l = l->next) {
-        ViewItem *item = l->data;
-        if (!item->selected) {
-            xfdesktop_icon_view_select_item_internal(icon_view, item, FALSE);
-            selected_something = TRUE;
+    if (icon_view->priv->sel_mode == GTK_SELECTION_MULTIPLE) {
+        for (GList *l = icon_view->priv->items; l != NULL; l = l->next) {
+            ViewItem *item = l->data;
+            if (!item->selected) {
+                xfdesktop_icon_view_select_item_internal(icon_view, item, FALSE);
+                selected_something = TRUE;
+            }
         }
-    }
 
-    if (selected_something) {
-        g_signal_emit(icon_view, __signals[SIG_ICON_SELECTION_CHANGED], 0);
+        if (selected_something) {
+            g_signal_emit(icon_view, __signals[SIG_ICON_SELECTION_CHANGED], 0);
+        }
     }
 }
 

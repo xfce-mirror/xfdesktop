@@ -155,8 +155,9 @@ forward_popup_menu_to_desktop(GtkWidget *widget, XfdesktopIconViewHolder *holder
 }
 
 static void
-init_for_wayland(XfdesktopIconViewHolder *holder) {
+init_for_wayland(XfdesktopIconViewHolder *holder, GtkAccelGroup *accel_group) {
     holder->container = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    gtk_window_add_accel_group(GTK_WINDOW(holder->container), accel_group);
     gtk_widget_set_app_paintable(holder->container, TRUE);
     gtk_widget_add_events(holder->container, GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK);
 
@@ -185,10 +186,15 @@ init_for_wayland(XfdesktopIconViewHolder *holder) {
 #endif  /* ENABLE_WAYLAND */
 
 XfdesktopIconViewHolder *
-xfdesktop_icon_view_holder_new(XfwScreen *screen, XfceDesktop *desktop, XfdesktopIconView *icon_view) {
+xfdesktop_icon_view_holder_new(XfwScreen *screen,
+                               XfceDesktop *desktop,
+                               XfdesktopIconView *icon_view,
+                               GtkAccelGroup *accel_group)
+{
     g_return_val_if_fail(XFW_IS_SCREEN(screen), NULL);
     g_return_val_if_fail(XFCE_IS_DESKTOP(desktop), NULL);
     g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view), NULL);
+    g_return_val_if_fail(GTK_IS_ACCEL_GROUP(accel_group), NULL);
 
     XfdesktopIconViewHolder *holder = g_object_new(XFDESKTOP_TYPE_ICON_VIEW_HOLDER, NULL);
     holder->screen = screen;
@@ -207,7 +213,7 @@ xfdesktop_icon_view_holder_new(XfwScreen *screen, XfceDesktop *desktop, Xfdeskto
 #endif
     } else if (xfw_windowing_get() == XFW_WINDOWING_WAYLAND) {
 #ifdef ENABLE_WAYLAND
-        init_for_wayland(holder);
+        init_for_wayland(holder, accel_group);
 #else
         g_error("Wayland unsupported");
 #endif

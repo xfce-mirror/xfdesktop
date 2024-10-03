@@ -59,6 +59,7 @@
 #include <thunarx/thunarx.h>
 #endif
 
+#include "common/xfdesktop-keyboard-shortcuts.h"
 #include "xfce-desktop.h"
 #include "xfdesktop-backdrop-manager.h"
 #include "xfdesktop-clipboard-manager.h"
@@ -71,6 +72,7 @@
 #include "xfdesktop-icon-position-configs.h"
 #include "xfdesktop-icon-position-migration.h"
 #include "xfdesktop-icon-view-holder.h"
+#include "xfdesktop-icon-view-manager.h"
 #include "xfdesktop-icon-view.h"
 #include "xfdesktop-icon-view-model.h"
 #include "xfdesktop-icon.h"
@@ -81,6 +83,7 @@
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4ui/libxfce4ui.h>
 #include <libxfce4windowing/libxfce4windowing.h>
+#include <xfconf/xfconf.h>
 
 #define SAVE_DELAY  1000
 #define BORDER         8
@@ -267,6 +270,9 @@ static GtkMenu *xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewMa
                                                              XfceDesktop *desktop,
                                                              gint popup_x,
                                                              gint popup_y);
+static void xfdesktop_file_icon_manager_activate_icons(XfdesktopIconViewManager *manager);
+static void xfdesktop_file_icon_manager_select_all_icons(XfdesktopIconViewManager *manager);
+static void xfdesktop_file_icon_manager_unselect_all_icons(XfdesktopIconViewManager *manager);
 static void xfdesktop_file_icon_manager_sort_icons(XfdesktopIconViewManager *manager,
                                                    GtkSortType sort_type);
 static void xfdesktop_file_icon_manager_reload(XfdesktopIconViewManager *manager);
@@ -277,17 +283,13 @@ static void xfdesktop_file_icon_manager_icon_moved(XfdesktopIconView *icon_view,
                                                    gint dest_row,
                                                    gint dest_col,
                                                    MonitorData *mdata);
-static void xfdesktop_file_icon_manager_activate_selected(GtkWidget *widget,
-                                                          MonitorData *mdata);
+static void xfdesktop_file_icon_manager_activate_selected(MonitorData *mdata);
 
 static GList *xfdesktop_file_icon_manager_get_selected_icons(XfdesktopFileIconManager *fmanager,
                                                              XfdesktopIconView *icon_view);
 
 static void xfdesktop_file_icon_manager_clipboard_changed(XfdesktopClipboardManager *cmanager,
                                                           XfdesktopFileIconManager *fmanager);
-static gboolean xfdesktop_file_icon_manager_key_press(GtkWidget *widget,
-                                                      GdkEventKey *evt,
-                                                      MonitorData *mdata);
 
 static void xfdesktop_file_icon_manager_start_grid_resize(XfdesktopIconView *icon_view,
                                                           gint new_rows,
@@ -311,6 +313,11 @@ static gboolean update_icon_position(MonitorData *mdata,
                                      XfdesktopFileIcon *icon,
                                      gint row,
                                      gint col);
+
+static MonitorData *find_active_monitor_data(XfdesktopFileIconManager *fmanager);
+
+static void file_icon_manager_action_fixup(XfceGtkActionEntry *entry);
+static void accel_map_changed(XfdesktopFileIconManager *fmanager);
 
 
 G_DEFINE_TYPE(XfdesktopFileIconManager, xfdesktop_file_icon_manager, XFDESKTOP_TYPE_ICON_VIEW_MANAGER)
@@ -364,6 +371,9 @@ xfdesktop_file_icon_manager_class_init(XfdesktopFileIconManagerClass *klass)
     ivm_class->desktop_added = xfdesktop_file_icon_manager_desktop_added;
     ivm_class->desktop_removed = xfdesktop_file_icon_manager_desktop_removed;
     ivm_class->get_context_menu = xfdesktop_file_icon_manager_get_context_menu;
+    ivm_class->activate_icons = xfdesktop_file_icon_manager_activate_icons;
+    ivm_class->select_all_icons = xfdesktop_file_icon_manager_select_all_icons;
+    ivm_class->unselect_all_icons = xfdesktop_file_icon_manager_unselect_all_icons;
     ivm_class->sort_icons = xfdesktop_file_icon_manager_sort_icons;
     ivm_class->reload = xfdesktop_file_icon_manager_reload;
 
@@ -427,6 +437,14 @@ xfdesktop_file_icon_manager_constructed(GObject *obj)
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(obj);
 
     G_OBJECT_CLASS(xfdesktop_file_icon_manager_parent_class)->constructed(obj);
+
+    accel_map_changed(fmanager);
+    g_signal_connect_data(gtk_accel_map_get(),
+                          "changed",
+                          G_CALLBACK(accel_map_changed),
+                          fmanager,
+                          NULL,
+                          G_CONNECT_SWAPPED | G_CONNECT_AFTER);
 
     fmanager->drag_targets = gtk_target_list_new(drag_targets, G_N_ELEMENTS(drag_targets));
     fmanager->drop_targets = gtk_target_list_new(drop_targets, G_N_ELEMENTS(drop_targets));
@@ -604,6 +622,13 @@ xfdesktop_file_icon_manager_dispose(GObject *obj)
 {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(obj);
 
+    g_signal_handlers_disconnect_by_func(gtk_accel_map_get(), accel_map_changed, fmanager);
+
+    gsize n_actions;
+    XfceGtkActionEntry *actions = xfdesktop_get_file_icon_manager_actions(file_icon_manager_action_fixup, &n_actions);
+    GtkAccelGroup *accel_group = xfdesktop_icon_view_manager_get_accel_group(XFDESKTOP_ICON_VIEW_MANAGER(fmanager));
+    xfce_gtk_accel_group_disconnect_action_entries(accel_group, actions, n_actions);
+
     for (GList *l = fmanager->pending_created_desktop_files; l != NULL; l = l->next) {
         CreateDesktopFileWithPositionData *cdfwpdata = l->data;
         cdfwpdata->mdata = NULL;
@@ -656,7 +681,7 @@ toplevel_window_for_monitor_data(MonitorData *mdata) {
 /* icon signal handlers */
 
 static void
-xfdesktop_file_icon_menu_executed(GtkWidget *widget, MonitorData *mdata) {
+xfdesktop_file_icon_manager_open_icon(MonitorData *mdata) {
     XfdesktopIconView *icon_view = xfdesktop_icon_view_holder_get_icon_view(mdata->holder);
     GList *selected = xfdesktop_file_icon_manager_get_selected_icons(mdata->fmanager, icon_view);
     if (selected != NULL && selected->next == NULL) {
@@ -668,12 +693,17 @@ xfdesktop_file_icon_menu_executed(GtkWidget *widget, MonitorData *mdata) {
 }
 
 static void
-xfdesktop_file_icon_menu_open_all(GtkWidget *widget, MonitorData *mdata) {
-    xfdesktop_file_icon_manager_activate_selected(widget, mdata);
+xfdesktop_file_icon_menu_executed(GtkWidget *widget, MonitorData *mdata) {
+    xfdesktop_file_icon_manager_open_icon(mdata);
 }
 
 static void
-xfdesktop_file_icon_menu_rename(GtkWidget *widget, MonitorData *mdata) {
+xfdesktop_file_icon_menu_open_all(GtkWidget *widget, MonitorData *mdata) {
+    xfdesktop_file_icon_manager_activate_selected(mdata);
+}
+
+static void
+xfdesktop_file_icon_manager_rename(MonitorData *mdata) {
     XfdesktopIconView *icon_view = xfdesktop_icon_view_holder_get_icon_view(mdata->holder);
     GList *selected = xfdesktop_file_icon_manager_get_selected_icons(mdata->fmanager, icon_view);
     GList *files = NULL;
@@ -706,6 +736,11 @@ xfdesktop_file_icon_menu_rename(GtkWidget *widget, MonitorData *mdata) {
 
     g_list_free(files);
     g_list_free(selected);
+}
+
+static void
+xfdesktop_file_icon_menu_rename(GtkWidget *widget, MonitorData *mdata) {
+    xfdesktop_file_icon_manager_rename(mdata);
 }
 
 static void
@@ -828,23 +863,33 @@ xfdesktop_file_icon_menu_set_default_app(GtkWidget *widget, MonitorData *mdata) 
 }
 
 static void
-xfdesktop_file_icon_menu_cut(GtkWidget *widget, MonitorData *mdata) {
+xfdesktop_file_icon_manager_cut_selected_files(MonitorData *mdata) {
     XfdesktopIconView *icon_view = xfdesktop_icon_view_holder_get_icon_view(mdata->holder);
-    GList *selected = xfdesktop_file_icon_manager_get_selected_icons(mdata->fmanager, icon_view);
-    if (selected != NULL) {
-        xfdesktop_clipboard_manager_cut_files(clipboard_manager, selected);
-        g_list_free(selected);
+    GList *selected_icons = xfdesktop_file_icon_manager_get_selected_icons(mdata->fmanager, icon_view);
+    if (selected_icons != NULL) {
+        xfdesktop_clipboard_manager_cut_files(clipboard_manager, selected_icons);
+        g_list_free(selected_icons);
     }
 }
 
 static void
-xfdesktop_file_icon_menu_copy(GtkWidget *widget, MonitorData *mdata) {
+xfdesktop_file_icon_menu_cut(GtkWidget *widget, MonitorData *mdata) {
+    xfdesktop_file_icon_manager_cut_selected_files(mdata);
+}
+
+static void
+xfdesktop_file_icon_manager_copy_selected_files(MonitorData *mdata) {
     XfdesktopIconView *icon_view = xfdesktop_icon_view_holder_get_icon_view(mdata->holder);
     GList *selected = xfdesktop_file_icon_manager_get_selected_icons(mdata->fmanager, icon_view);
     if (selected != NULL) {
         xfdesktop_clipboard_manager_copy_files(clipboard_manager, selected);
         g_list_free(selected);
     }
+}
+
+static void
+xfdesktop_file_icon_menu_copy(GtkWidget *widget, MonitorData *mdata) {
+    xfdesktop_file_icon_manager_copy_selected_files(mdata);
 }
 
 static void
@@ -863,7 +908,7 @@ xfdesktop_file_icon_menu_paste(GtkWidget *widget, MonitorData *mdata) {
 }
 
 static void
-xfdesktop_file_icon_menu_paste_into_folder(GtkWidget *widget, MonitorData *mdata) {
+xfdesktop_file_icon_manager_paste_into_folder(MonitorData *mdata) {
     XfdesktopIconView *icon_view = xfdesktop_icon_view_holder_get_icon_view(mdata->holder);
     GList *selected = xfdesktop_file_icon_manager_get_selected_icons(mdata->fmanager, icon_view);
     if (selected != NULL && selected->next == NULL) {
@@ -871,11 +916,16 @@ xfdesktop_file_icon_menu_paste_into_folder(GtkWidget *widget, MonitorData *mdata
         GFileInfo *info = xfdesktop_file_icon_peek_file_info(icon);
         if (info != NULL && g_file_info_get_file_type(info) == G_FILE_TYPE_DIRECTORY) {
             GFile *file = xfdesktop_file_icon_peek_file(icon);
-            xfdesktop_clipboard_manager_paste_files(clipboard_manager, file, widget, NULL);
+            xfdesktop_clipboard_manager_paste_files(clipboard_manager, file, GTK_WIDGET(icon_view), NULL);
         }
     }
 
     g_list_free(selected);
+}
+
+static void
+xfdesktop_file_icon_menu_paste_into_folder(GtkWidget *widget, MonitorData *mdata) {
+    xfdesktop_file_icon_manager_paste_into_folder(mdata);
 }
 
 static void
@@ -900,7 +950,7 @@ xfdesktop_file_icon_menu_next_background(GtkWidget *widget, MonitorData *mdata) 
 }
 
 static void
-xfdesktop_file_icon_menu_properties(GtkWidget *widget, MonitorData *mdata) {
+xfdesktop_file_icon_manager_show_selected_properties(MonitorData *mdata) {
     XfdesktopIconView *icon_view = xfdesktop_icon_view_holder_get_icon_view(mdata->holder);
     GList *selected = xfdesktop_file_icon_manager_get_selected_icons(mdata->fmanager, icon_view);
     for (GList *l = selected; l != NULL; l = l->next) {
@@ -913,6 +963,11 @@ xfdesktop_file_icon_menu_properties(GtkWidget *widget, MonitorData *mdata) {
         xfdesktop_file_utils_show_properties_dialog(selected, mdata->fmanager->gscreen, toplevel);
         g_list_free(selected);
     }
+}
+
+static void
+xfdesktop_file_icon_menu_properties(GtkWidget *widget, MonitorData *mdata) {
+    xfdesktop_file_icon_manager_show_selected_properties(mdata);
 }
 
 static void
@@ -1100,15 +1155,10 @@ xfdesktop_file_icon_menu_create_folder(GtkWidget *widget, MonitorData *mdata) {
 }
 
 static void
-xfdesktop_file_icon_template_item_activated(GtkWidget *mi, MonitorData *mdata) {
-    GFile *file = g_object_get_data(G_OBJECT(mi), FILE_KEY);
-
+create_from_template(MonitorData *mdata, GFile *template_file, gint dest_row, gint dest_col) {
     GtkWindow *parent = toplevel_window_for_monitor_data(mdata);
-    GFile *dest_file = xfdesktop_file_utils_prompt_for_template_file_name(mdata->fmanager->folder, file, parent);
+    GFile *dest_file = xfdesktop_file_utils_prompt_for_template_file_name(mdata->fmanager->folder, template_file, parent);
     if (dest_file != NULL) {
-        gint dest_row = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(mi), DEST_ROW_KEY));
-        gint dest_col = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(mi), DEST_COL_KEY));
-
         if (dest_row != -1 && dest_col != -1) {
             xfdesktop_icon_position_configs_set_icon_position(mdata->fmanager->position_configs,
                                                               mdata->position_config,
@@ -1118,9 +1168,17 @@ xfdesktop_file_icon_template_item_activated(GtkWidget *mi, MonitorData *mdata) {
                                                               0);
         }
 
-        xfdesktop_file_utils_create_file_from_template(file, dest_file, parent);
+        xfdesktop_file_utils_create_file_from_template(template_file, dest_file, parent);
         g_object_unref(dest_file);
     }
+}
+
+static void
+xfdesktop_file_icon_template_item_activated(GtkWidget *mi, MonitorData *mdata) {
+    GFile *file = g_object_get_data(G_OBJECT(mi), FILE_KEY);
+    gint dest_row = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(mi), DEST_ROW_KEY));
+    gint dest_col = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(mi), DEST_COL_KEY));
+    create_from_template(mdata, file, dest_row, dest_col);
 }
 
 static gint
@@ -1348,9 +1406,6 @@ create_icon_view(XfdesktopFileIconManager *fmanager, XfceDesktop *desktop) {
                                          drop_targets, G_N_ELEMENTS(drop_targets),
                                          GDK_ACTION_LINK | GDK_ACTION_COPY | GDK_ACTION_MOVE);
 
-    g_signal_connect(icon_view, "key-press-event",
-                     G_CALLBACK(xfdesktop_file_icon_manager_key_press), mdata);
-
     g_signal_connect(icon_view, "icon-moved",
                      G_CALLBACK(xfdesktop_file_icon_manager_icon_moved), mdata);
     g_signal_connect(icon_view, "icon-activated",
@@ -1376,7 +1431,8 @@ create_icon_view(XfdesktopFileIconManager *fmanager, XfceDesktop *desktop) {
     g_signal_connect(G_OBJECT(icon_view), "end-grid-resize",
                      G_CALLBACK(xfdesktop_file_icon_manager_end_grid_resize), mdata);
 
-    mdata->holder = xfdesktop_icon_view_holder_new(screen, desktop, icon_view);
+    GtkAccelGroup *accel_group = xfdesktop_icon_view_manager_get_accel_group(XFDESKTOP_ICON_VIEW_MANAGER(fmanager));
+    mdata->holder = xfdesktop_icon_view_holder_new(screen, desktop, icon_view, accel_group);
 
     XfwMonitor *monitor = xfce_desktop_get_monitor(desktop);
     XfdesktopIconPositionLevel level;
@@ -2105,6 +2161,32 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager,
 }
 
 static void
+xfdesktop_file_icon_manager_activate_icons(XfdesktopIconViewManager *manager) {
+    MonitorData *mdata = find_active_monitor_data(XFDESKTOP_FILE_ICON_MANAGER(manager));
+    if (mdata != NULL) {
+        xfdesktop_file_icon_manager_activate_selected(mdata);
+    }
+}
+
+static void
+xfdesktop_file_icon_manager_select_all_icons(XfdesktopIconViewManager *manager) {
+    MonitorData *mdata = find_active_monitor_data(XFDESKTOP_FILE_ICON_MANAGER(manager));
+    if (mdata != NULL) {
+        XfdesktopIconView *icon_view = xfdesktop_icon_view_holder_get_icon_view(mdata->holder);
+        xfdesktop_icon_view_select_all(icon_view);
+    }
+}
+
+static void
+xfdesktop_file_icon_manager_unselect_all_icons(XfdesktopIconViewManager *manager) {
+    MonitorData *mdata = find_active_monitor_data(XFDESKTOP_FILE_ICON_MANAGER(manager));
+    if (mdata != NULL) {
+        XfdesktopIconView *icon_view = xfdesktop_icon_view_holder_get_icon_view(mdata->holder);
+        xfdesktop_icon_view_unselect_all(icon_view);
+    }
+}
+
+static void
 xfdesktop_file_icon_manager_sort_icons(XfdesktopIconViewManager *manager, GtkSortType sort_type) {
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(manager);
     // XXX: should we rearrange within each monitor, or rearrange all onto the primary?
@@ -2304,101 +2386,254 @@ xfdesktop_file_icon_manager_get_selected_icons(XfdesktopFileIconManager *fmanage
     return selected_icons;
 }
 
-static gboolean
-xfdesktop_file_icon_manager_key_press(GtkWidget *widget, GdkEventKey *evt, MonitorData *mdata) {
-    switch(evt->keyval) {
-        case GDK_KEY_Delete:
-        case GDK_KEY_KP_Delete: {
-            gboolean force_delete = evt->state & GDK_SHIFT_MASK;
-            xfdesktop_file_icon_manager_delete_selected(mdata, force_delete);
-            break;
-        }
+static MonitorData *
+find_active_monitor_data(XfdesktopFileIconManager *fmanager) {
+    GHashTableIter iter;
+    g_hash_table_iter_init(&iter, fmanager->monitor_data);
 
-        case GDK_KEY_c:
-        case GDK_KEY_C: {
-            if(!(evt->state & GDK_CONTROL_MASK)
-               || (evt->state & (GDK_SHIFT_MASK|GDK_MOD1_MASK|GDK_MOD4_MASK)))
-            {
-                return FALSE;
-            }
-            XfdesktopIconView *icon_view = xfdesktop_icon_view_holder_get_icon_view(mdata->holder);
-            GList *selected_icons = xfdesktop_file_icon_manager_get_selected_icons(mdata->fmanager, icon_view);
-            if (selected_icons != NULL) {
-                xfdesktop_clipboard_manager_copy_files(clipboard_manager,
-                                                       selected_icons);
-                g_list_free(selected_icons);
-            }
-
-            break;
-        }
-
-        case GDK_KEY_x:
-        case GDK_KEY_X: {
-            if(!(evt->state & GDK_CONTROL_MASK)
-               || (evt->state & (GDK_SHIFT_MASK|GDK_MOD1_MASK|GDK_MOD4_MASK)))
-            {
-                return FALSE;
-            }
-            XfdesktopIconView *icon_view = xfdesktop_icon_view_holder_get_icon_view(mdata->holder);
-            GList *selected_icons = xfdesktop_file_icon_manager_get_selected_icons(mdata->fmanager, icon_view);
-            if (selected_icons != NULL) {
-                xfdesktop_clipboard_manager_cut_files(clipboard_manager,
-                                                       selected_icons);
-                g_list_free(selected_icons);
-            }
-            return TRUE;
-        }
-
-        case GDK_KEY_v:
-        case GDK_KEY_V:
-            if(!(evt->state & GDK_CONTROL_MASK)
-               || (evt->state & (GDK_SHIFT_MASK|GDK_MOD1_MASK|GDK_MOD4_MASK)))
-            {
-                return FALSE;
-            }
-            if(xfdesktop_clipboard_manager_get_can_paste(clipboard_manager)) {
-                xfdesktop_clipboard_manager_paste_files(clipboard_manager, mdata->fmanager->folder, widget, NULL);
-            }
-            return TRUE;
-
-        case GDK_KEY_n:
-        case GDK_KEY_N:
-            if(!(evt->state & GDK_CONTROL_MASK && evt->state & GDK_SHIFT_MASK)
-               || (evt->state & (GDK_MOD1_MASK|GDK_MOD4_MASK)))
-            {
-                return FALSE;
-            }
-            xfdesktop_file_icon_manager_create_folder(mdata, -1, -1, toplevel_window_for_monitor_data(mdata));
-            return TRUE;
-
-        case GDK_KEY_r:
-        case GDK_KEY_R:
-            if(!(evt->state & GDK_CONTROL_MASK)
-               || (evt->state & (GDK_SHIFT_MASK|GDK_MOD1_MASK|GDK_MOD4_MASK)))
-            {
-                return FALSE;
-            }
-            /* fall through */
-        case GDK_KEY_F5:
-            xfdesktop_file_icon_manager_reload(XFDESKTOP_ICON_VIEW_MANAGER(mdata->fmanager));
-            return TRUE;
-
-        case GDK_KEY_F2: {
-            XfdesktopIconView *icon_view = xfdesktop_icon_view_holder_get_icon_view(mdata->holder);
-            GList *selected_icons = xfdesktop_file_icon_manager_get_selected_icons(mdata->fmanager, icon_view);
-            if (selected_icons != NULL && selected_icons->next == NULL) {
-                XfdesktopFileIcon *icon = XFDESKTOP_FILE_ICON(selected_icons->data);
-                if(xfdesktop_file_icon_can_rename_file(icon)) {
-                    xfdesktop_file_icon_menu_rename(widget, mdata);
-                    return TRUE;
-                }
-            }
-            g_list_free(selected_icons);
-            break;
+    MonitorData *mdata;
+    while (g_hash_table_iter_next(&iter, NULL, (gpointer)&mdata)) {
+        GtkWindow *toplevel = toplevel_window_for_monitor_data(mdata);
+        if (gtk_window_has_toplevel_focus(toplevel)) {
+            return mdata;
         }
     }
 
-    return FALSE;
+    return NULL;
+}
+
+static void
+file_icon_manager_action_create_folder(XfdesktopFileIconManager *fmanager) {
+    MonitorData *mdata = find_active_monitor_data(fmanager);
+    if (mdata != NULL) {
+        xfdesktop_file_icon_manager_create_folder(mdata, -1, -1, toplevel_window_for_monitor_data(mdata));
+    }
+}
+
+static void
+file_icon_manager_action_create_document(XfdesktopFileIconManager *fmanager) {
+    MonitorData *mdata = find_active_monitor_data(fmanager);
+    if (mdata != NULL) {
+        create_from_template(mdata, NULL, -1, -1);
+    }
+}
+
+static void
+file_icon_manager_action_open(XfdesktopFileIconManager *fmanager) {
+    MonitorData *mdata = find_active_monitor_data(fmanager);
+    if (mdata != NULL) {
+        xfdesktop_file_icon_manager_open_icon(mdata);
+    }
+}
+
+static void
+file_icon_manager_action_open_with_other(XfdesktopFileIconManager *fmanager) {
+    // TODO
+}
+
+static void
+file_icon_manager_action_open_filesystem(XfdesktopFileIconManager *fmanager) {
+    GFile *file = g_file_new_for_uri("file:///");
+    GList link = {
+        .data = file,
+        .prev = NULL,
+        .next = NULL,
+    };
+    MonitorData *mdata = find_active_monitor_data(fmanager);
+    xfdesktop_file_utils_open_folders(&link,
+                                      fmanager->gscreen,
+                                      mdata != NULL ? toplevel_window_for_monitor_data(mdata) : NULL);
+    g_object_unref(file);
+}
+
+static void
+file_icon_manager_action_open_home(XfdesktopFileIconManager *fmanager) {
+    GFile *file = g_file_new_for_path(g_get_home_dir());
+    GList link = {
+        .data = file,
+        .prev = NULL,
+        .next = NULL,
+    };
+    MonitorData *mdata = find_active_monitor_data(fmanager);
+    xfdesktop_file_utils_open_folders(&link,
+                                      fmanager->gscreen,
+                                      mdata != NULL ? toplevel_window_for_monitor_data(mdata) : NULL);
+    g_object_unref(file);
+}
+
+static void
+file_icon_manager_action_open_trash(XfdesktopFileIconManager *fmanager) {
+    GFile *file = g_file_new_for_uri("trash:///");
+    GList link = {
+        .data = file,
+        .prev = NULL,
+        .next = NULL,
+    };
+    MonitorData *mdata = find_active_monitor_data(fmanager);
+    xfdesktop_file_utils_open_folders(&link,
+                                      fmanager->gscreen,
+                                      mdata != NULL ? toplevel_window_for_monitor_data(mdata) : NULL);
+    g_object_unref(file);
+}
+
+static void
+file_icon_manager_action_rename(XfdesktopFileIconManager *fmanager) {
+    MonitorData *mdata = find_active_monitor_data(fmanager);
+    if (mdata != NULL) {
+        xfdesktop_file_icon_manager_rename(mdata);
+    }
+}
+
+static void
+file_icon_manager_action_cut(XfdesktopFileIconManager *fmanager) {
+    MonitorData *mdata = find_active_monitor_data(fmanager);
+    if (mdata != NULL) {
+        xfdesktop_file_icon_manager_cut_selected_files(mdata);
+    }
+}
+
+static void
+file_icon_manager_action_copy(XfdesktopFileIconManager *fmanager) {
+    MonitorData *mdata = find_active_monitor_data(fmanager);
+    if (mdata != NULL) {
+        xfdesktop_file_icon_manager_copy_selected_files(mdata);
+    }
+}
+
+static void
+file_icon_manager_action_paste(XfdesktopFileIconManager *fmanager) {
+    MonitorData *mdata = find_active_monitor_data(fmanager);
+    if (mdata != NULL) {
+        xfdesktop_clipboard_manager_paste_files(clipboard_manager,
+                                                mdata->fmanager->folder,
+                                                GTK_WIDGET(xfdesktop_icon_view_holder_get_icon_view(mdata->holder)),
+                                                NULL);
+    }
+}
+
+static void
+file_icon_manager_action_paste_into_folder(XfdesktopFileIconManager *fmanager) {
+    MonitorData *mdata = find_active_monitor_data(fmanager);
+    if (mdata != NULL) {
+        xfdesktop_file_icon_manager_paste_into_folder(mdata);
+    }
+}
+
+static void
+file_icon_manager_action_trash(XfdesktopFileIconManager *fmanager) {
+    MonitorData *mdata = find_active_monitor_data(fmanager);
+    if (mdata != NULL) {
+        xfdesktop_file_icon_manager_delete_selected(mdata, FALSE);
+    }
+}
+
+static void
+file_icon_manager_action_delete(XfdesktopFileIconManager *fmanager) {
+    MonitorData *mdata = find_active_monitor_data(fmanager);
+    if (mdata != NULL) {
+        xfdesktop_file_icon_manager_delete_selected(mdata, TRUE);
+    }
+}
+
+static void
+file_icon_manager_action_empty_trash(XfdesktopFileIconManager *fmanager) {
+    MonitorData *mdata = find_active_monitor_data(fmanager);
+    xfdesktop_file_utils_empty_trash(fmanager->gscreen,
+                                     mdata != NULL ? toplevel_window_for_monitor_data(mdata) : NULL);
+}
+
+static void
+file_icon_manager_action_toggle_show_hidden(XfdesktopFileIconManager *fmanager) {
+    XfconfChannel *channel = xfdesktop_icon_view_manager_get_channel(XFDESKTOP_ICON_VIEW_MANAGER(fmanager));
+    gboolean value = xfconf_channel_get_bool(channel, DESKTOP_ICONS_SHOW_HIDDEN_FILES, FALSE);
+    xfconf_channel_set_bool(channel, DESKTOP_ICONS_SHOW_HIDDEN_FILES, !value);
+}
+
+static void
+file_icon_manager_action_properties(XfdesktopFileIconManager *fmanager) {
+    MonitorData *mdata = find_active_monitor_data(fmanager);
+    if (mdata != NULL) {
+        xfdesktop_file_icon_manager_show_selected_properties(mdata);
+    }
+}
+
+static void
+file_icon_manager_action_fixup(XfceGtkActionEntry *entry) {
+    switch (entry->id) {
+        case XFDESKTOP_FILE_ICON_MANAGER_ACTION_CREATE_FOLDER:
+            entry->callback = G_CALLBACK(file_icon_manager_action_create_folder);
+            break;
+        case XFDESKTOP_FILE_ICON_MANAGER_ACTION_CREATE_DOCUMENT:
+            entry->callback = G_CALLBACK(file_icon_manager_action_create_document);
+            break;
+        case XFDESKTOP_FILE_ICON_MANAGER_ACTION_OPEN:
+            entry->callback = G_CALLBACK(file_icon_manager_action_open);
+            break;
+        case XFDESKTOP_FILE_ICON_MANAGER_ACTION_OPEN_WITH_OTHER:
+            entry->callback = G_CALLBACK(file_icon_manager_action_open_with_other);
+            break;
+        case XFDESKTOP_FILE_ICON_MANAGER_ACTION_OPEN_FILESYSTEM:
+            entry->callback = G_CALLBACK(file_icon_manager_action_open_filesystem);
+            break;
+        case XFDESKTOP_FILE_ICON_MANAGER_ACTION_OPEN_HOME:
+            entry->callback = G_CALLBACK(file_icon_manager_action_open_home);
+            break;
+        case XFDESKTOP_FILE_ICON_MANAGER_ACTION_OPEN_TRASH:
+            entry->callback = G_CALLBACK(file_icon_manager_action_open_trash);
+            break;
+        case XFDESKTOP_FILE_ICON_MANAGER_ACTION_RENAME:
+            entry->callback = G_CALLBACK(file_icon_manager_action_rename);
+            break;
+        case XFDESKTOP_FILE_ICON_MANAGER_ACTION_CUT:
+        case XFDESKTOP_FILE_ICON_MANAGER_ACTION_CUT_ALT_1:
+            entry->callback = G_CALLBACK(file_icon_manager_action_cut);
+            break;
+        case XFDESKTOP_FILE_ICON_MANAGER_ACTION_COPY:
+        case XFDESKTOP_FILE_ICON_MANAGER_ACTION_COPY_ALT_1:
+            entry->callback = G_CALLBACK(file_icon_manager_action_copy);
+            break;
+        case XFDESKTOP_FILE_ICON_MANAGER_ACTION_PASTE:
+        case XFDESKTOP_FILE_ICON_MANAGER_ACTION_PASTE_ALT_1:
+            entry->callback = G_CALLBACK(file_icon_manager_action_paste);
+            break;
+        case XFDESKTOP_FILE_ICON_MANAGER_ACTION_PASTE_INTO_FOLDER:
+            entry->callback = G_CALLBACK(file_icon_manager_action_paste_into_folder);
+            break;
+        case XFDESKTOP_FILE_ICON_MANAGER_ACTION_TRASH:
+        case XFDESKTOP_FILE_ICON_MANAGER_ACTION_TRASH_ALT_1:
+        case XFDESKTOP_FILE_ICON_MANAGER_ACTION_TRASH_ALT_2:
+            entry->callback = G_CALLBACK(file_icon_manager_action_trash);
+            break;
+        case XFDESKTOP_FILE_ICON_MANAGER_ACTION_EMPTY_TRASH:
+            entry->callback = G_CALLBACK(file_icon_manager_action_empty_trash);
+            break;
+        case XFDESKTOP_FILE_ICON_MANAGER_ACTION_DELETE:
+        case XFDESKTOP_FILE_ICON_MANAGER_ACTION_DELETE_ALT_1:
+        case XFDESKTOP_FILE_ICON_MANAGER_ACTION_DELETE_ALT_2:
+            entry->callback = G_CALLBACK(file_icon_manager_action_delete);
+            break;
+        case XFDESKTOP_FILE_ICON_MANAGER_ACTION_TOGGLE_SHOW_HIDDEN:
+            entry->callback = G_CALLBACK(file_icon_manager_action_toggle_show_hidden);
+            break;
+        case XFDESKTOP_FILE_ICON_MANAGER_ACTION_PROPERTIES:
+        case XFDESKTOP_FILE_ICON_MANAGER_ACTION_PROPERTIES_ALT_1:
+        case XFDESKTOP_FILE_ICON_MANAGER_ACTION_PROPERTIES_ALT_2:
+            entry->callback = G_CALLBACK(file_icon_manager_action_properties);
+            break;
+        default:
+            g_assert_not_reached();
+            break;
+    }
+}
+
+static void
+accel_map_changed(XfdesktopFileIconManager *fmanager) {
+    gsize n_actions;
+    XfceGtkActionEntry *actions = xfdesktop_get_file_icon_manager_actions(file_icon_manager_action_fixup, &n_actions);
+    GtkAccelGroup *accel_group = xfdesktop_icon_view_manager_get_accel_group(XFDESKTOP_ICON_VIEW_MANAGER(fmanager));
+
+    xfce_gtk_accel_group_disconnect_action_entries(accel_group, actions, n_actions);
+    xfce_gtk_accel_group_connect_action_entries(accel_group, actions, n_actions, fmanager);
 }
 
 static void
@@ -3460,7 +3695,7 @@ xfdesktop_file_icon_manager_icon_moved(XfdesktopIconView *icon_view,
 }
 
 static void
-xfdesktop_file_icon_manager_activate_selected(GtkWidget *widget, MonitorData *mdata) {
+xfdesktop_file_icon_manager_activate_selected(MonitorData *mdata) {
     XfdesktopIconView *icon_view = xfdesktop_icon_view_holder_get_icon_view(mdata->holder);
     GList *selected_icons = xfdesktop_file_icon_manager_get_selected_icons(mdata->fmanager, icon_view);
 
@@ -3480,6 +3715,7 @@ XfdesktopIconViewManager *
 xfdesktop_file_icon_manager_new(XfwScreen *screen,
                                 GdkScreen *gdkscreen,
                                 XfconfChannel *channel,
+                                GtkAccelGroup *accel_group,
                                 XfdesktopBackdropManager *backdrop_manager,
                                 GList *desktops,
                                 GFile *folder)
@@ -3491,6 +3727,7 @@ xfdesktop_file_icon_manager_new(XfwScreen *screen,
                         "screen", screen,
                         "gdk-screen", gdkscreen,
                         "channel", channel,
+                        "accel-group", accel_group,
                         "backdrop-manager", backdrop_manager,
                         "desktops", desktops,
                         "folder", folder,

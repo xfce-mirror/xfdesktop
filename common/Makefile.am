@@ -12,6 +12,8 @@ libxfdesktop_la_SOURCES = \
 	xfdesktop-common.h \
 	xfdesktop-extensions.c \
 	xfdesktop-extensions.h \
+	xfdesktop-keyboard-shortcuts.c \
+	xfdesktop-keyboard-shortcuts.h \
 	xfdesktop-thumbnailer.c \
 	xfdesktop-thumbnailer.h
 
@@ -20,6 +22,7 @@ libxfdesktop_la_CFLAGS = \
 	-DBACKGROUNDS_DIR=\"$(datadir)/backgrounds/xfce\" \
 	$(LIBXFCE4UTIL_CFLAGS) \
 	$(LIBXFCE4WINDOWING_CFLAGS) \
+	$(LIBXFCE4UI_CFLAGS) \
 	$(GTK_CFLAGS) \
 	$(GIO_CFLAGS) \
 	$(GIO_UNIX_CFLAGS) \

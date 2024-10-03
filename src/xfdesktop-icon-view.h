@@ -73,13 +73,8 @@ struct _XfdesktopIconViewClass
                               gint new_cols);
     void (*end_grid_resize)(XfdesktopIconView *icon_view);
 
-    void (*select_all)(XfdesktopIconView *icon_view);
-    void (*unselect_all)(XfdesktopIconView *icon_view);
-
     void (*select_cursor_item)(XfdesktopIconView *icon_view);
     void (*toggle_cursor_item)(XfdesktopIconView *icon_view);
-
-    gboolean (*activate_selected_items)(XfdesktopIconView *icon_view);
 
     gboolean (*move_cursor)(XfdesktopIconView *icon_view,
                             GtkMovementStep step,

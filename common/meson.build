@@ -20,11 +20,9 @@ libxfdesktop = static_library(
   'libxfdesktop',
   [
     'xfdesktop-common.c',
-    'xfdesktop-common.h',
     'xfdesktop-extensions.c',
-    'xfdesktop-extensions.h',
+    'xfdesktop-keyboard-shortcuts.c',
     'xfdesktop-thumbnailer.c',
-    'xfdesktop-thumbnailer.h',
   ] + common_generated_sources,
   c_args: [
     '-DBACKGROUNDS_DIR="@0@/backgrounds/xfce"'.format(get_option('prefix') / get_option('datadir')),
@@ -37,6 +35,7 @@ libxfdesktop = static_library(
     gtk,
     libxfce4util,
     libxfce4windowing,
+    libxfce4ui,
     xfconf,
   ],
   install: false,
