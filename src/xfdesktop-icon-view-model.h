@@ -41,7 +41,6 @@ typedef enum
     XFDESKTOP_ICON_VIEW_MODEL_COLUMN_SORT_PRIORITY,
     XFDESKTOP_ICON_VIEW_MODEL_COLUMN_TOOLTIP_IMAGE,
     XFDESKTOP_ICON_VIEW_MODEL_COLUMN_TOOLTIP_TEXT,
-    XFDESKTOP_ICON_VIEW_MODEL_COLUMN_MONITOR,
 
     XFDESKTOP_ICON_VIEW_MODEL_COLUMN_N_COLUMNS,
 } XfdesktopIconViewModelColumn;
@@ -74,10 +73,6 @@ struct _XfdesktopIconViewModelClass
 };
 
 GType xfdesktop_icon_view_model_get_type(void) G_GNUC_CONST;
-
-void xfdesktop_icon_view_model_set_monitor(XfdesktopIconViewModel *ivmodel,
-                                           GtkTreeIter *iter,
-                                           GdkMonitor *monitor);
 
 /* The following should only be called by subclasses */
 
