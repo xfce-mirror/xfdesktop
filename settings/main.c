@@ -170,6 +170,7 @@ enum
     COL_ICON_NAME,
     COL_ICON_ENABLED,
     COL_ICON_PROPERTY,
+    COL_ICON_SENSITIVE,
     N_ICON_COLS,
 };
 
@@ -406,6 +407,17 @@ cb_special_icon_toggled(GtkCellRendererToggle *render, gchar *path, gpointer use
     gtk_tree_store_set(GTK_TREE_STORE(model), &iter,
                        COL_ICON_ENABLED, show_icon, -1);
 
+    if (g_strcmp0(icon_property, DESKTOP_ICONS_SHOW_REMOVABLE) == 0) {
+        GtkTreeIter child_iter;
+        if (gtk_tree_model_iter_children(model, &child_iter, &iter)) {
+            do {
+                gtk_tree_store_set(GTK_TREE_STORE(model), &child_iter,
+                                   COL_ICON_SENSITIVE, show_icon,
+                                   -1);
+            } while (gtk_tree_model_iter_next(model, &child_iter));
+        }
+    }
+
     gtk_tree_path_free(tree_path);
     g_free(icon_property);
 }
@@ -418,7 +430,7 @@ setup_special_icon_list(GtkBuilder *gxml,
     GtkTreeStore *ts;
     GtkTreeViewColumn *col;
     GtkCellRenderer *render;
-    GtkTreeIter iter, parent_iter, child_iter;
+    GtkTreeIter *iter, parent_iter, child_iter;
     const struct {
         const gchar *name;
         const gchar *icon_names[2];
@@ -448,27 +460,32 @@ setup_special_icon_list(GtkBuilder *gxml,
 
     gtk_icon_size_lookup(GTK_ICON_SIZE_MENU, &w, NULL);
 
-    ts = gtk_tree_store_new(N_ICON_COLS, G_TYPE_ICON, G_TYPE_STRING,
-                            G_TYPE_BOOLEAN, G_TYPE_STRING);
+    gboolean removable_devices_enabled = xfconf_channel_get_bool(channel, DESKTOP_ICONS_SHOW_REMOVABLE, TRUE);
+
+    ts = gtk_tree_store_new(N_ICON_COLS,
+                            G_TYPE_ICON,
+                            G_TYPE_STRING,
+                            G_TYPE_BOOLEAN,
+                            G_TYPE_STRING,
+                            G_TYPE_BOOLEAN);
     for(i = 0; icons[i].name; ++i) {
         GIcon *icon = g_themed_icon_new_from_names((char **)icons[i].icon_names, G_N_ELEMENTS(icons[i].icon_names));
 
         if(i < REMOVABLE_DEVICES) {
             gtk_tree_store_append(ts, &parent_iter, NULL);
-            iter = parent_iter;
+            iter = &parent_iter;
         } else {
             gtk_tree_store_append(ts, &child_iter, &parent_iter);
-            iter = child_iter;
+            iter = &child_iter;
         }
 
-        gtk_tree_store_set(ts, &iter,
+        gboolean sensitive = iter == &parent_iter || removable_devices_enabled;
+        gtk_tree_store_set(ts, iter,
                            COL_ICON_NAME, _(icons[i].name),
                            COL_ICON_PIX, icon,
                            COL_ICON_PROPERTY, icons[i].xfconf_property,
-                           COL_ICON_ENABLED,
-                           xfconf_channel_get_bool(channel,
-                                                   icons[i].xfconf_property,
-                                                   icons[i].state),
+                           COL_ICON_ENABLED, xfconf_channel_get_bool(channel, icons[i].xfconf_property, icons[i].state),
+                           COL_ICON_SENSITIVE, sensitive,
                            -1);
         if (icon != NULL)
             g_object_unref(icon);
@@ -483,6 +500,7 @@ setup_special_icon_list(GtkBuilder *gxml,
     render = gtk_cell_renderer_toggle_new();
     gtk_tree_view_column_pack_start(col, render, FALSE);
     gtk_tree_view_column_add_attribute(col, render, "active", COL_ICON_ENABLED);
+    gtk_tree_view_column_add_attribute(col, render, "sensitive", COL_ICON_SENSITIVE);
 
     g_signal_connect(G_OBJECT(render), "toggled",
                      G_CALLBACK(cb_special_icon_toggled), treeview);
@@ -490,10 +508,12 @@ setup_special_icon_list(GtkBuilder *gxml,
     render = gtk_cell_renderer_pixbuf_new();
     gtk_tree_view_column_pack_start(col, render, FALSE);
     gtk_tree_view_column_add_attribute(col, render, "gicon", COL_ICON_PIX);
+    gtk_tree_view_column_add_attribute(col, render, "sensitive", COL_ICON_SENSITIVE);
 
     render = gtk_cell_renderer_text_new();
     gtk_tree_view_column_pack_start(col, render, TRUE);
     gtk_tree_view_column_add_attribute(col, render, "text", COL_ICON_NAME);
+    gtk_tree_view_column_add_attribute(col, render, "sensitive", COL_ICON_SENSITIVE);
 
     gtk_tree_view_set_model(GTK_TREE_VIEW(treeview), GTK_TREE_MODEL(ts));
     g_object_unref(G_OBJECT(ts));
