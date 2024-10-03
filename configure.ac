@@ -7,7 +7,7 @@ dnl
 
 dnl minimum required versions
 m4_define([libx11_minimum_version], [1.6.7])
-m4_define([glib_minimum_version], [2.74.0])
+m4_define([glib_minimum_version], [2.72.0])
 m4_define([gtk_minimum_version], [3.24.0])
 m4_define([libxfce4util_minimum_version], [4.13.0])
 m4_define([libxfce4ui_minimum_version], [4.13.0])
@@ -26,7 +26,7 @@ m4_define([xfdesktop_version_short], [xdt_version_major].[xdt_version_minor])
 
 dnl init autoconf
 AC_INIT([xfdesktop], [xdt_version], [https://gitlab.xfce.org/xfce/xfdesktop])
-AC_PREREQ([2.60])
+AC_PREREQ([2.69])
 
 dnl init automake
 AM_INIT_AUTOMAKE([1.8 dist-bzip2 tar-ustar no-dist-gzip foreign subdir-objects])
