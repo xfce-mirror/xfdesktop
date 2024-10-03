@@ -92,14 +92,6 @@ enum {
     N_SIGS,
 };
 
-typedef enum {
-    REMOVABLE_MEDIA_NONE,
-    REMOVABLE_MEDIA_NETWORK = (1 << 0),
-    REMOVABLE_MEDIA_DEVICE = (1 << 1),
-    REMOVABLE_MEDIA_UNKNOWN = (1 << 2),
-    REMOVABLE_MEDIA_ALL = REMOVABLE_MEDIA_NETWORK | REMOVABLE_MEDIA_DEVICE | REMOVABLE_MEDIA_UNKNOWN,
-} RemovableMediaMask;
-
 static void xfdesktop_file_icon_model_constructed(GObject *object);
 static void xfdesktop_file_icon_model_set_property(GObject *object,
                                                    guint property_id,
@@ -143,8 +135,6 @@ static void mount_pre_unmount(GVolumeMonitor *monitor,
                               GMount *mount,
                               XfdesktopFileIconModel *fmodel);
 
-static void load_desktop_folder(XfdesktopFileIconModel *fmodel);
-
 static void thumbnail_ready(GtkWidget *widget,
                             gchar *srcfile,
                             gchar *thumbnail_filename,
@@ -153,11 +143,6 @@ static void thumbnail_ready(GtkWidget *widget,
 static void xfdesktop_file_icon_model_set_show_thumbnails(XfdesktopFileIconModel *fmodel,
                                                           gboolean show);
 
-static void xfdesktop_file_icon_model_append(XfdesktopFileIconModel *fmodel,
-                                             XfdesktopFileIcon *icon,
-                                             GtkTreeIter *iter);
-static void xfdesktop_file_icon_model_remove(XfdesktopFileIconModel *fmodel,
-                                             XfdesktopFileIcon *icon);
 
 G_DEFINE_TYPE_WITH_CODE(XfdesktopFileIconModel,
                         xfdesktop_file_icon_model,
@@ -542,8 +527,13 @@ add_icon(XfdesktopFileIconModel *fmodel, XfdesktopFileIcon *icon) {
         xfdesktop_icon_set_position(XFDESKTOP_ICON(icon), row, col);
     }
 
+    g_signal_connect_swapped(icon, "label-changed",
+                             G_CALLBACK(xfdesktop_icon_view_model_changed), fmodel);
+    g_signal_connect_swapped(icon, "pixbuf-changed",
+                             G_CALLBACK(xfdesktop_icon_view_model_changed), fmodel);
+
     g_hash_table_replace(fmodel->icons, g_strdup(xfdesktop_file_icon_peek_sort_key(icon)), icon);
-    xfdesktop_file_icon_model_append(fmodel, XFDESKTOP_FILE_ICON(icon), NULL);
+    xfdesktop_icon_view_model_append(XFDESKTOP_ICON_VIEW_MODEL(fmodel), icon, icon, NULL);
 }
 
 static void
@@ -558,8 +548,15 @@ remove_icon(XfdesktopFileIconModel *fmodel, XfdesktopFileIcon *icon) {
         }
     }
 
+    if (XFDESKTOP_IS_VOLUME_ICON(icon)) {
+        XfdesktopVolumeIcon *volume_icon = XFDESKTOP_VOLUME_ICON(icon);
+        g_hash_table_remove(fmodel->volume_icons, xfdesktop_volume_icon_peek_volume(volume_icon));
+        g_hash_table_remove(fmodel->volume_icons, xfdesktop_volume_icon_peek_mount(volume_icon));
+    }
+
     XF_DEBUG("removing icon %s from icon view", xfdesktop_icon_peek_label(XFDESKTOP_ICON(icon)));
-    xfdesktop_file_icon_model_remove(fmodel, icon);
+    xfdesktop_icon_view_model_remove(XFDESKTOP_ICON_VIEW_MODEL(fmodel), icon);
+    g_hash_table_remove(fmodel->icons, xfdesktop_file_icon_peek_sort_key(icon));
 }
 
 static void
@@ -705,35 +702,6 @@ load_removable_media(XfdesktopFileIconModel *fmodel) {
         g_object_unref(mount);
     }
     g_list_free(mounts);
-}
-
-static void
-remove_removable_media(XfdesktopFileIconModel *fmodel, RemovableMediaMask mask) {
-    GHashTableIter iter;
-    g_hash_table_iter_init(&iter, fmodel->icons);
-
-    GList *icons_to_remove = NULL;
-    XfdesktopFileIcon *icon;
-    while (g_hash_table_iter_next(&iter, NULL, (gpointer)&icon)) {
-        if (XFDESKTOP_IS_VOLUME_ICON(icon)) {
-            GVolume *volume = xfdesktop_volume_icon_peek_volume(XFDESKTOP_VOLUME_ICON(icon));
-            gchar *volume_type = g_volume_get_identifier(volume, G_VOLUME_IDENTIFIER_KIND_CLASS);
-
-            if ((g_strcmp0(volume_type, "network") == 0 && (mask & REMOVABLE_MEDIA_NETWORK) != 0)
-                || (g_strcmp0(volume_type, "device") == 0 && (mask & REMOVABLE_MEDIA_DEVICE) != 0)
-                || (volume_type == NULL && (mask & REMOVABLE_MEDIA_UNKNOWN) != 0))
-            {
-                icons_to_remove = g_list_prepend(icons_to_remove, icon);
-            }
-
-            g_free(volume_type);
-        }
-    }
-
-    for (GList *l = icons_to_remove; l != NULL; l = l->next) {
-        remove_icon(fmodel, XFDESKTOP_FILE_ICON(l->data));
-    }
-    g_list_free(icons_to_remove);
 }
 
 static void
@@ -1029,7 +997,9 @@ enumerator_files_ready(GFileEnumerator *enumerator, GAsyncResult *result, Xfdesk
         g_list_free(files);
 
         g_file_enumerator_next_files_async(fmodel->enumerator,
-                                           10, G_PRIORITY_DEFAULT, NULL,
+                                           10,
+                                           G_PRIORITY_DEFAULT,
+                                           fmodel->cancel_enumeration,
                                            (GAsyncReadyCallback)enumerator_files_ready,
                                            fmodel);
     }
@@ -1060,34 +1030,6 @@ file_enumerator_ready(GFile *file, GAsyncResult *result, XfdesktopFileIconModel 
                                            10, G_PRIORITY_DEFAULT, fmodel->cancel_enumeration,
                                            (GAsyncReadyCallback)enumerator_files_ready,
                                            fmodel);
-    }
-}
-
-static void
-load_desktop_folder(XfdesktopFileIconModel *fmodel) {
-    if (check_create_desktop_folder(fmodel)) {
-        DBG("entering");
-
-        xfdesktop_icon_view_model_clear(XFDESKTOP_ICON_VIEW_MODEL(fmodel));
-
-        for (gint i = 0; i <= XFDESKTOP_SPECIAL_FILE_ICON_TRASH; ++i) {
-            DBG("adding special file type %d", i);
-            add_special_file_icon(fmodel, i);
-        }
-
-        load_removable_media(fmodel);
-
-        g_clear_object(&fmodel->enumerator);
-        g_clear_object(&fmodel->cancel_enumeration);
-        fmodel->cancel_enumeration = g_cancellable_new();
-
-        g_file_enumerate_children_async(fmodel->folder,
-                                        XFDESKTOP_FILE_INFO_NAMESPACE,
-                                        G_FILE_QUERY_INFO_NONE,
-                                        G_PRIORITY_DEFAULT,
-                                        fmodel->cancel_enumeration,
-                                        (GAsyncReadyCallback)file_enumerator_ready,
-                                        fmodel);
     }
 }
 
@@ -1130,35 +1072,6 @@ xfdesktop_file_icon_model_set_show_thumbnails(XfdesktopFileIconModel *fmodel, gb
         }
     }
 }
-
-static void
-xfdesktop_file_icon_model_append(XfdesktopFileIconModel *fmodel,
-                                 XfdesktopFileIcon *icon,
-                                 GtkTreeIter *iter)
-{
-    g_return_if_fail(XFDESKTOP_IS_FILE_ICON_MODEL(fmodel));
-    g_return_if_fail(XFDESKTOP_IS_FILE_ICON(icon));
-
-    g_signal_connect_swapped(icon, "label-changed",
-                             G_CALLBACK(xfdesktop_icon_view_model_changed), fmodel);
-    g_signal_connect_swapped(icon, "pixbuf-changed",
-                             G_CALLBACK(xfdesktop_icon_view_model_changed), fmodel);
-
-    xfdesktop_icon_view_model_append(XFDESKTOP_ICON_VIEW_MODEL(fmodel), icon, icon, iter);
-}
-
-static void
-xfdesktop_file_icon_model_remove(XfdesktopFileIconModel *fmodel,
-                                 XfdesktopFileIcon *icon)
-{
-    g_return_if_fail(XFDESKTOP_IS_FILE_ICON_MODEL(fmodel));
-    g_return_if_fail(XFDESKTOP_IS_FILE_ICON(icon));
-
-    xfdesktop_icon_view_model_remove(XFDESKTOP_ICON_VIEW_MODEL(fmodel), icon);
-    g_hash_table_remove(fmodel->icons, xfdesktop_file_icon_peek_sort_key(icon));
-}
-
-
 
 XfdesktopFileIconModel *
 xfdesktop_file_icon_model_new(XfconfChannel *channel, GFile *folder, GdkScreen *gdkscreen) {
@@ -1213,11 +1126,15 @@ xfdesktop_file_icon_model_get_icon_iter(XfdesktopFileIconModel *fmodel,
 
 void
 xfdesktop_file_icon_model_reload(XfdesktopFileIconModel *fmodel) {
+    TRACE("entering");
+
     g_return_if_fail(XFDESKTOP_IS_FILE_ICON_MODEL(fmodel));
 
-    if (fmodel->volume_monitor != NULL) {
-        remove_removable_media(fmodel, REMOVABLE_MEDIA_ALL);
+    if (fmodel->cancel_enumeration != NULL) {
+        g_cancellable_cancel(fmodel->cancel_enumeration);
+        g_object_unref(fmodel->cancel_enumeration);
     }
+    fmodel->cancel_enumeration = g_cancellable_new();
 
     GList *icons = g_hash_table_get_values(fmodel->icons);
     for (GList *l = icons; l != NULL; l = l->next) {
@@ -1225,9 +1142,27 @@ xfdesktop_file_icon_model_reload(XfdesktopFileIconModel *fmodel) {
         remove_icon(fmodel, icon);
     }
     g_list_free(icons);
-    g_hash_table_remove_all(fmodel->icons);
+    g_assert(g_hash_table_size(fmodel->icons) == 0);
+    g_assert(g_hash_table_size(fmodel->volume_icons) == 0);
 
     xfdesktop_icon_view_model_clear(XFDESKTOP_ICON_VIEW_MODEL(fmodel));
 
-    load_desktop_folder(fmodel);
+    if (check_create_desktop_folder(fmodel)) {
+        g_clear_object(&fmodel->enumerator);
+
+        for (gint i = 0; i <= XFDESKTOP_SPECIAL_FILE_ICON_TRASH; ++i) {
+            DBG("adding special file type %d", i);
+            add_special_file_icon(fmodel, i);
+        }
+
+        load_removable_media(fmodel);
+
+        g_file_enumerate_children_async(fmodel->folder,
+                                        XFDESKTOP_FILE_INFO_NAMESPACE,
+                                        G_FILE_QUERY_INFO_NONE,
+                                        G_PRIORITY_DEFAULT,
+                                        fmodel->cancel_enumeration,
+                                        (GAsyncReadyCallback)file_enumerator_ready,
+                                        fmodel);
+    }
 }

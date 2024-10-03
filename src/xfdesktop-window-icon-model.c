@@ -273,9 +273,6 @@ xfdesktop_window_icon_model_get_value(GtkTreeModel *model,
             break;
         }
 
-        case XFDESKTOP_ICON_VIEW_MODEL_COLUMN_MONITOR:
-            break;
-
         default:
             g_warning("Invalid XfdesktopWindowIconManager column %d", column);
             break;
