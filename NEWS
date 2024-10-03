@@ -1,3 +1,110 @@
+4.19.4 (2024-10-03)
+======
+- Don't use XfceSMClient on Wayland
+- Fix crash when double-clicking file icons
+- Grey out children of removable devices option when disabled
+- Add more compiler flags to the meson build
+- Add editable keyboard shortcuts for the desktop and icon view
+- settings: Fix string leak
+- Remove xfdesktop_icon_view_model_set_monitor()
+- Simplify icon add/remove code in file icon model
+- Fix removable devices not getting removed properly on reload
+- Cancel desktop folder enumeration on reload
+- Add option to show fixed drives and devices
+- Only draw icon focus rectangle for keyboard-driven selections
+- Mirror thunar's behavior for the new file/folder dialogs
+- Ensure drag highlight is cleared when file drag ends
+- Make XdndDirectSave file write asynchronous
+- Remove TODO
+- Update some source file copyright years
+- Build on glib 2.72
+- Fix _NETSCAPE_URL drops
+- Remove unused variable
+- Fix string leak in xfdesktop_application_theme_changed
+- Don't ship generated sources in the dist tarball
+- Include meson build files in autotools dist tarball
+- Add gresource XML files to EXTRA_DIST
+- Back up invalid icon position config files instead of overwriting
+- Simplify deletion/trashing code
+- Use more reliable way to get a toplevel parent for dialogs
+- Fix icon positioning for create launcher/link
+- Check if icon position changed on row-changed and replace if needed
+- Fix new folders and template creation appearing in wrong position
+- Fix memleak when checking if template menu has items
+- Treat icon views independently when handling file icon selection
+- Fix icon drops from external sources showing up on the wrong monitor
+- Rewrite the monitor mirror detection and handling
+- Move all removable volume filtering into the filter model
+- Display icons for mounts that don't have an associated volume
+- Modernize GObject use in XfdesktopIcon & subclasses
+- Fix keyboard focus for icon view when clicked
+- Make file icon manager reload icons when asked
+- Add debugging for desktop reposition on monitor geom change
+- Fix race condition when monitor geometry changes
+- Fix typo in icon view placement code
+- Simplify how the "backdrop workspace" is tracked in XfceDesktop
+- Fix same-filename backdrop toggle causing issues
+- Implement new DnD
+- Simplify icon view widget coords -> slot coords code
+- Handle mirrored monitors
+- Fix copy/paste error
+- Fix context menu popups
+- Let XfdesktopIconView have its own window
+- Cache icon identifier in XfdesktopIcon
+- Fix X11 icon view positioning
+- Attempt to migrate old position config to new
+- Refactor the grid sizing code a little
+- Implement new multi-monitor support for the file icon manager
+- Ensure xfdesktop_icon_get_identifier() never returns NULL
+- Add new YAML icon position saving code
+- Simplify and clean up a bunch of code in the file icon manager
+- Reduce boilerplate when building file icon context menu
+- Move file icon settings filtering to a GtkTreeModelFilter subclass
+- Better way to deal with monitors coming and going
+- Migrate old .png background filenames to .svg
+- Clean up monitor workarea tracking in XfdesktopIconViewHolder
+- Track desktop monitor changes in XfdesktopIconViewHolder
+- Signal model row changed when XfwWindow:monitors changes
+- Redo how monitor changes are handled in the backdrop manager
+- Create/destroy/update XfceDesktop instances on monitors-changed
+- Prevent xfdesktop from quitting if there are no monitors
+- Fix dangling signal connections in XfceDesktop
+- XfceDesktop: clean up x11 compat properties management
+- Use GList for XfdesktopApplication->desktops
+- Allow dragging window icons between monitors
+- Clean up more gcc-analyzer warnings
+- Modernize gobject use in XfdesktopFileIconManager
+- Get rid of unused marshal functions
+- Move file icon loading/management to the model
+- Rewrite window icon manager to display on all monitors
+- Update everything to use XfwMonitor
+- Use a separate XfceDesktop widget/window per monitor
+- Fix --reload option
+- Fix memleak freeing result of xfdesktop_icon_view_get_selected_items()
+- Fix some memory leaks with gdk_atom_name()
+- Updates to meson build
+- Fix use-after-free in the regular file icon tooltip code
+- Revert text shadow change in fallback theme
+- Fix PangoLayout memory leak in XfdesktopCellRendererIconLabel
+- Improve fallback theme
+- Resolve conflicting mnemonics
+- fix HAVE_THUNARX
+- Fix wrong filename in EXTRA_DIST in backgrounds/
+- Add README for backgrounds, with provenance and licensing info
+- SVG wallpapers with licenses
+- Translation Updates:
+  Albanian, Amharic, Arabic, Armenian (Armenia), Asturian, Azerbaijani,
+  Basque, Belarusian, Belarusian (Tarask), Bulgarian, Catalan, Chinese
+  (China), Chinese (Hong Kong), Chinese (Taiwan), Croatian, Czech,
+  Danish, Dutch, Eastern Armenian, English (Australia), English
+  (Canada), English (United Kingdom), Estonian, Finnish, French,
+  Galician, Georgian, German, Greek, Hebrew, Hungarian, Icelandic,
+  Indonesian, Interlingue, Italian, Japanese, Kazakh, Korean,
+  Lithuanian, Malay, Norwegian Bokmål, Norwegian Nynorsk, Occitan
+  (post 1500), Persian (Iran), Polish, Portuguese, Portuguese (Brazil),
+  Romanian, Russian, Serbian, Slovak, Slovenian, Spanish, Swedish,
+  Thai, Ukrainian, Uyghur, Uzbek
+
 4.19.3 (2024-08-16)
 ======
 - Add false positives file for scan-build
