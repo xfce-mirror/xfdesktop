@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-10-02 12:55+0200\n"
+"POT-Creation-Date: 2024-10-03 00:56+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Pjotr <pjotrvertaalt@gmail.com>, 2013-2024\n"
 "Language-Team: Dutch (http://app.transifex.com/xfce/xfdesktop/language/nl/)\n"
@@ -35,23 +35,27 @@ msgid "Trash"
 msgstr "Prullenbak"
 
 #: settings/main.c:432
-msgid "Removable Devices"
-msgstr "Verwijderbare apparaten"
+msgid "Devices"
+msgstr "Apparaten"
 
 #: settings/main.c:434
 msgid "Network Shares"
 msgstr "Netwerk-Delen"
 
 #: settings/main.c:436
-msgid "Disks and Drives"
-msgstr "Schijven en stations"
+msgid "Removable Disks and Drives"
+msgstr ""
 
 #: settings/main.c:438
+msgid "Fixed Disks and Drives"
+msgstr ""
+
+#: settings/main.c:440
 msgid "Other Devices"
 msgstr "Andere apparaten"
 
 #. Display the file name, file type, and file size in the tooltip.
-#: settings/main.c:544
+#: settings/main.c:546
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -59,79 +63,79 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nType: %s\nGrootte: %s"
 
-#: settings/main.c:780
+#: settings/main.c:782
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "Bureaubladachtergrond voor beeldscherm %d (%s)"
 
-#: settings/main.c:783
+#: settings/main.c:785
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "Bureaubladachtergrond voor beeldscherm %d"
 
-#: settings/main.c:789
+#: settings/main.c:791
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "Verplaats dit dialoogvenster naar het scherm waarvan u de instellingen wilt bewerken."
 
-#: settings/main.c:796
+#: settings/main.c:798
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "Bureaubladachtergrond voor %s op beeldscherm %d (%s)"
 
-#: settings/main.c:800
+#: settings/main.c:802
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "Bureaubladachtergrond voor %s op beeldscherm %d"
 
-#: settings/main.c:807
+#: settings/main.c:809
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr "Verplaats dit dialoogvenster naar het scherm en het werkblad waarvan u de instellingen wil bewerken."
 
 #. Single monitor and single workspace
-#: settings/main.c:815
+#: settings/main.c:817
 msgid "Wallpaper for my desktop"
 msgstr "Achtergrond voor mijn bureaublad"
 
 #. Single monitor and per workspace wallpaper
-#: settings/main.c:821
+#: settings/main.c:823
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "Bureaubladachtergrond voor %s"
 
-#: settings/main.c:826
+#: settings/main.c:828
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "Verplaats dit dialoogvenster naar het werkblad waarvan u de instellingen wil bewerken."
 
-#: settings/main.c:1281
+#: settings/main.c:1283
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "Afbeeldingkeuze is niet beschikbaar wanneer de afbeeldingstijl op Geen is ingesteld."
 
-#: settings/main.c:1640
+#: settings/main.c:1642
 msgid "Spanning screens"
 msgstr "Schermen overbruggen"
 
 #. TRANSLATORS: Please split the message in half with '\n' so the dialog will
 #. not be too wide.
-#: settings/main.c:1947
+#: settings/main.c:1949
 msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
 msgstr "Wilt u alle bestaande pictogrammen rang-\nschikken overeenkomstig de gekozen oriëntatie?"
 
-#: settings/main.c:1953
+#: settings/main.c:1955
 msgid "Arrange icons"
 msgstr "Pictogrammen rangschikken"
 
 #. printf is to be translator-friendly
-#: settings/main.c:1961 src/xfdesktop-file-icon-manager.c:760
+#: settings/main.c:1963 src/xfdesktop-file-icon-manager.c:760
 #: src/xfdesktop-file-icon-manager.c:1309
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Kan '%s' niet starten:"
 
-#: settings/main.c:1962 src/xfdesktop-file-icon-manager.c:762
+#: settings/main.c:1964 src/xfdesktop-file-icon-manager.c:762
 #: src/xfdesktop-file-icon-manager.c:993
 #: src/xfdesktop-file-icon-manager.c:1041
 #: src/xfdesktop-file-icon-manager.c:1311 src/xfdesktop-file-utils.c:567
@@ -140,7 +144,7 @@ msgstr "Kan '%s' niet starten:"
 msgid "Launch Error"
 msgstr "Startfout"
 
-#: settings/main.c:1964 settings/xfdesktop-settings-ui.glade:198
+#: settings/main.c:1966 settings/xfdesktop-settings-ui.glade:198
 #: src/xfdesktop-file-icon-manager.c:703 src/xfdesktop-file-icon-manager.c:764
 #: src/xfdesktop-file-icon-manager.c:997
 #: src/xfdesktop-file-icon-manager.c:1045
@@ -159,54 +163,54 @@ msgstr "Startfout"
 msgid "_Close"
 msgstr "_Sluiten"
 
-#: settings/main.c:2136
+#: settings/main.c:2138
 msgid "Image files"
 msgstr "Afbeeldingbestanden"
 
 #. Change the title of the file chooser dialog
-#: settings/main.c:2144
+#: settings/main.c:2146
 msgid "Select a Directory"
 msgstr "Kies een map"
 
-#: settings/main.c:2359
+#: settings/main.c:2361
 msgid "Settings manager socket"
 msgstr "Contactpunt voor instellingenbeheerder"
 
-#: settings/main.c:2359
+#: settings/main.c:2361
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: settings/main.c:2360
+#: settings/main.c:2362
 msgid "Version information"
 msgstr "Versie-informatie"
 
-#: settings/main.c:2361 src/xfdesktop-application.c:280
+#: settings/main.c:2363 src/xfdesktop-application.c:280
 msgid "Enable debug messages"
 msgstr "Foutopsporingsberichten inschakelen"
 
-#: settings/main.c:2385
+#: settings/main.c:2387
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Tik '%s --help' voor gebruiksinformatie."
 
-#: settings/main.c:2397
+#: settings/main.c:2399
 msgid "The Xfce development team. All rights reserved."
 msgstr "De Xfce-ontwikkelploeg. Alle rechten voorbehouden."
 
-#: settings/main.c:2398
+#: settings/main.c:2400
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Gelieve fouten te melden aan <%s>"
 
-#: settings/main.c:2405
+#: settings/main.c:2407
 msgid "Desktop Settings"
 msgstr "Bureaubladinstellingen"
 
-#: settings/main.c:2407
+#: settings/main.c:2409
 msgid "Unable to contact settings server"
 msgstr "Kan geen contact maken met de instellingendienst"
 
-#: settings/main.c:2409
+#: settings/main.c:2411
 msgid "Quit"
 msgstr "Afsluiten"
 
