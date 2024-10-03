@@ -53,6 +53,7 @@
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4windowing/libxfce4windowing.h>
 
+#include "common/xfdesktop-keyboard-shortcuts.h"
 #include "menu.h"
 #include "windowlist.h"
 #include "xfce-desktop.h"
@@ -157,6 +158,8 @@ static gboolean xfce_desktop_delete_event(GtkWidget *w,
 static void xfdesktop_application_set_icon_style(XfdesktopApplication *app,
                                                  XfceDesktopIconStyle style);
 
+static void desktop_action_fixup(XfceGtkActionEntry *entry);
+
 #ifdef ENABLE_X11
 static void cancel_wait_for_wm(XfdesktopApplication *app);
 #endif
@@ -180,6 +183,8 @@ struct _XfdesktopApplication
     XfwScreen *screen;
     GdkScreen *gdkscreen;
     XfdesktopBackdropManager *backdrop_manager;
+
+    GtkAccelGroup *accel_group;
 
     GList *desktops;  // XfceDesktop
     GHashTable *monitors;  // XfwMonitor -> XfceDesktop
@@ -365,6 +370,16 @@ xfdesktop_application_finalize(GObject *object)
 {
     XfdesktopApplication *app = XFDESKTOP_APPLICATION(object);
 
+    if (app->accel_group != NULL) {
+        gsize n_actions;
+        XfceGtkActionEntry *actions = xfdesktop_get_desktop_actions(desktop_action_fixup, &n_actions);
+        xfce_gtk_accel_group_disconnect_action_entries(app->accel_group, actions, n_actions);
+        g_object_unref(app->accel_group);
+    }
+
+    g_signal_handlers_disconnect_by_data(gtk_accel_map_get(), app);
+    xfdesktop_keyboard_shortcuts_shutdown();
+
     g_free(app->args);
     g_hash_table_destroy(app->monitors);
 
@@ -532,6 +547,62 @@ find_active_desktop(XfdesktopApplication *app) {
 }
 
 static void
+desktop_action_reload(XfdesktopApplication *app) {
+    /* hold the app so it doesn't quit while we queue up a refresh */
+    g_application_hold(G_APPLICATION(app));
+    g_idle_add(reload_idle_cb, app);
+}
+
+static void
+desktop_action_primary_menu(XfdesktopApplication *app) {
+    XfceDesktop *desktop = find_active_desktop(app);
+    if (desktop != NULL) {
+        popup_root_menu(app, desktop, 0, -1, -1, GDK_CURRENT_TIME);
+    }
+}
+
+static void
+desktop_action_secondary_menu(XfdesktopApplication *app) {
+    XfceDesktop *desktop = find_active_desktop(app);
+    if (desktop != NULL) {
+        popup_secondary_root_menu(app, desktop, 0, -1, -1, GDK_CURRENT_TIME);
+    }
+}
+
+static void
+desktop_action_next_background(XfdesktopApplication *app) {
+    for (GList *l = app->desktops; l != NULL; l = l->next) {
+        XfceDesktop *desktop = XFCE_DESKTOP(l->data);
+        xfce_desktop_refresh(XFCE_DESKTOP(desktop), TRUE);
+    }
+}
+
+static void
+desktop_action_fixup(XfceGtkActionEntry *entry) {
+    switch (entry->id) {
+        case XFCE_DESKTOP_ACTION_RELOAD:
+        case XFCE_DESKTOP_ACTION_RELOAD_ALT_1:
+        case XFCE_DESKTOP_ACTION_RELOAD_ALT_2:
+            entry->callback = G_CALLBACK(desktop_action_reload);
+            break;
+        case XFCE_DESKTOP_ACTION_POPUP_PRIMARY_MENU:
+        case XFCE_DESKTOP_ACTION_POPUP_PRIMARY_MENU_ALT_1:
+            entry->callback = G_CALLBACK(desktop_action_primary_menu);
+            break;
+        case XFCE_DESKTOP_ACTION_POPUP_SECONDARY_MENU:
+        case XFCE_DESKTOP_ACTION_POPUP_SECONDARY_MENU_ALT_1:
+            entry->callback = G_CALLBACK(desktop_action_secondary_menu);
+            break;
+        case XFCE_DESKTOP_ACTION_NEXT_BACKGROUND:
+            entry->callback = G_CALLBACK(desktop_action_next_background);
+            break;
+        default:
+            g_assert_not_reached();
+            break;
+    }
+}
+
+static void
 xfdesktop_application_action_activated(GAction *action, GVariant *parameter, gpointer data) {
     XfdesktopApplication *app = XFDESKTOP_APPLICATION(data);
     const gchar *name = g_action_get_name(action);
@@ -539,23 +610,15 @@ xfdesktop_application_action_activated(GAction *action, GVariant *parameter, gpo
     TRACE("entering: %s", name);
 
     if (g_strcmp0(name, ACTION_RELOAD) == 0) {
-        /* hold the app so it doesn't quit while we queue up a refresh */
-        g_application_hold(G_APPLICATION(app));
-        g_idle_add(reload_idle_cb, app);
+        desktop_action_reload(app);
     } else if (g_strcmp0(name, ACTION_NEXT) == 0) {
-        for (GList *l = app->desktops; l != NULL; l = l->next) {
-            XfceDesktop *desktop = XFCE_DESKTOP(l->data);
-            xfce_desktop_refresh(XFCE_DESKTOP(desktop), TRUE);
-        }
+        desktop_action_next_background(app);
     } else if (g_strcmp0(name, ACTION_MENU) == 0) {
         if (g_variant_is_of_type(parameter, G_VARIANT_TYPE_BOOLEAN)) {
-            XfceDesktop *desktop = find_active_desktop(app);
-            if (desktop != NULL) {
-                if (g_variant_get_boolean(parameter)) {
-                    popup_root_menu(app, desktop, 0, -1, -1, GDK_CURRENT_TIME);
-                } else {
-                    popup_secondary_root_menu(app, desktop, 0, -1, -1, GDK_CURRENT_TIME);
-                }
+            if (g_variant_get_boolean(parameter)) {
+                desktop_action_primary_menu(app);
+            } else {
+                desktop_action_secondary_menu(app);
             }
         }
     } else if (g_strcmp0(name, ACTION_ARRANGE) == 0) {
@@ -626,6 +689,22 @@ wait_for_wm_complete(WaitForWMStatus status, gpointer data) {
 #endif
 
 static void
+accel_map_changed(XfdesktopApplication *app) {
+    TRACE("entering");
+
+    gsize n_actions;
+    XfceGtkActionEntry *actions = xfdesktop_get_desktop_actions(desktop_action_fixup, &n_actions);
+
+    if (app->accel_group != NULL) {
+        xfce_gtk_accel_group_disconnect_action_entries(app->accel_group, actions, n_actions);
+    } else {
+        app->accel_group = gtk_accel_group_new();
+    }
+
+    xfce_gtk_accel_group_connect_action_entries(app->accel_group, actions, n_actions, app);
+}
+
+static void
 xfdesktop_application_startup(GApplication *g_application)
 {
     XfdesktopApplication *app = XFDESKTOP_APPLICATION(g_application);
@@ -640,6 +719,16 @@ xfdesktop_application_startup(GApplication *g_application)
     g_clear_pointer(&app->args, g_free);
 
     G_APPLICATION_CLASS(xfdesktop_application_parent_class)->startup(g_application);
+
+    xfdesktop_keyboard_shortcuts_init();
+
+    accel_map_changed(app);
+    g_signal_connect_data(gtk_accel_map_get(),
+                          "changed",
+                          G_CALLBACK(accel_map_changed),
+                          app,
+                          NULL,
+                          G_CONNECT_SWAPPED | G_CONNECT_AFTER);
 
 #ifdef ENABLE_X11
     if(!app->disable_wm_check && xfw_windowing_get() == XFW_WINDOWING_X11) {
@@ -710,13 +799,18 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     gint screen_num = gdk_screen_get_number(app->gdkscreen);
 G_GNUC_END_IGNORE_DEPRECATIONS
     gchar *property_prefix = g_strdup_printf("/backdrop/screen%d/", screen_num);
-    GtkWidget *desktop = xfce_desktop_new(app->gdkscreen, monitor, app->channel, property_prefix, app->backdrop_manager);
+    GtkWidget *desktop = xfce_desktop_new(app->gdkscreen,
+                                          monitor,
+                                          app->channel,
+                                          property_prefix,
+                                          app->backdrop_manager);
     g_free(property_prefix);
 
     gtk_application_add_window(GTK_APPLICATION(app), GTK_WINDOW(desktop));
     g_signal_connect(desktop, "destroy",
                      G_CALLBACK(desktop_destroyed), app);
 
+    gtk_window_add_accel_group(GTK_WINDOW(desktop), app->accel_group);
     gtk_widget_add_events(desktop, GDK_BUTTON_PRESS_MASK
                           | GDK_BUTTON_RELEASE_MASK);
     g_signal_connect(desktop, "button-press-event",
@@ -1381,7 +1475,10 @@ xfdesktop_application_set_icon_style(XfdesktopApplication *app, XfceDesktopIconS
             break;
 
         case XFCE_DESKTOP_ICON_STYLE_WINDOWS:
-            app->icon_view_manager = xfdesktop_window_icon_manager_new(app->screen, app->channel, app->desktops);
+            app->icon_view_manager = xfdesktop_window_icon_manager_new(app->screen,
+                                                                       app->channel,
+                                                                       app->accel_group,
+                                                                       app->desktops);
             break;
 
 #ifdef ENABLE_FILE_ICONS
@@ -1391,6 +1488,7 @@ xfdesktop_application_set_icon_style(XfdesktopApplication *app, XfceDesktopIconS
             app->icon_view_manager = xfdesktop_file_icon_manager_new(app->screen,
                                                                      app->gdkscreen,
                                                                      app->channel,
+                                                                     app->accel_group,
                                                                      app->backdrop_manager,
                                                                      app->desktops,
                                                                      file);
@@ -1411,4 +1509,3 @@ xfdesktop_application_set_icon_style(XfdesktopApplication *app, XfceDesktopIconS
     }
 #endif
 }
-
