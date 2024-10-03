@@ -46,6 +46,7 @@ executable(
     x11_deps,
     libxfce4util,
     libxfce4ui,
+    libxfce4kbd_private,
     libxfce4windowing,
     xfconf,
     exo,

@@ -21,7 +21,7 @@
 #ifndef __XFDESKTOP_FILE_ICON_MANAGER_H__
 #define __XFDESKTOP_FILE_ICON_MANAGER_H__
 
-#include <gdk/gdk.h>
+#include <gtk/gtk.h>
 #include <xfconf/xfconf.h>
 #include <libxfce4windowing/libxfce4windowing.h>
 
@@ -36,6 +36,7 @@ G_DECLARE_FINAL_TYPE(XfdesktopFileIconManager, xfdesktop_file_icon_manager, XFDE
 XfdesktopIconViewManager *xfdesktop_file_icon_manager_new(XfwScreen *screen,
                                                           GdkScreen *gdkscreen,
                                                           XfconfChannel *channel,
+                                                          GtkAccelGroup *accel_group,
                                                           XfdesktopBackdropManager *backdrop_manager,
                                                           GList *desktops,
                                                           GFile *folder);
