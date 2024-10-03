@@ -179,7 +179,7 @@ static gchar *xfdesktop_settings_get_backdrop_image(AppearancePanel *panel);
 
 
 
-static const gchar *
+static gchar *
 system_data_lookup (void)
 {
     const gchar * const * dirs;
@@ -1987,8 +1987,8 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     XfwScreen *xfw_screen;
     XfwWorkspaceManager *workspace_manager;
     XfconfChannel *channel = panel->channel;
-    const gchar *path;
     GFile *file;
+    gchar *path;
     gchar *uri_path;
 
     TRACE("entering");
@@ -2155,6 +2155,7 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
         gtk_file_chooser_add_shortcut_folder_uri (GTK_FILE_CHOOSER(panel->btn_folder),
                                                   uri_path, NULL);
 
+        g_free (path);
         g_free (uri_path);
         g_object_unref (file);
     }
