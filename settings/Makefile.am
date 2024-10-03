@@ -17,6 +17,7 @@ xfdesktop_settings_CFLAGS =						\
 	-DDEFAULT_BACKDROP=\"$(DEFAULT_BACKDROP)\" \
 	$(LIBEXO_CFLAGS)							\
 	$(LIBXFCE4UI_CFLAGS)						\
+	$(LIBXFCE4KBD_PRIVATE_CFLAGS)				\
 	$(LIBXFCE4WINDOWING_CFLAGS)					\
 	$(XFCONF_CFLAGS)							\
 	$(GTHREAD_CFLAGS)							\
@@ -31,6 +32,7 @@ xfdesktop_settings_LDADD =						\
 	$(top_builddir)/common/libxfdesktop.la		\
 	$(XFCONF_LIBS)								\
 	$(LIBXFCE4UI_LIBS)							\
+	$(LIBXFCE4KBD_PRIVATE_LIBS)					\
 	$(LIBXFCE4WINDOWING_LIBS)					\
 	$(LIBEXO_LIBS)								\
 	$(GTHREAD_LIBS)								\
