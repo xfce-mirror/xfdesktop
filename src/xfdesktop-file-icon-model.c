@@ -143,11 +143,6 @@ static void thumbnail_ready(GtkWidget *widget,
 static void xfdesktop_file_icon_model_set_show_thumbnails(XfdesktopFileIconModel *fmodel,
                                                           gboolean show);
 
-static void xfdesktop_file_icon_model_append(XfdesktopFileIconModel *fmodel,
-                                             XfdesktopFileIcon *icon,
-                                             GtkTreeIter *iter);
-static void xfdesktop_file_icon_model_remove(XfdesktopFileIconModel *fmodel,
-                                             XfdesktopFileIcon *icon);
 
 G_DEFINE_TYPE_WITH_CODE(XfdesktopFileIconModel,
                         xfdesktop_file_icon_model,
@@ -532,8 +527,13 @@ add_icon(XfdesktopFileIconModel *fmodel, XfdesktopFileIcon *icon) {
         xfdesktop_icon_set_position(XFDESKTOP_ICON(icon), row, col);
     }
 
+    g_signal_connect_swapped(icon, "label-changed",
+                             G_CALLBACK(xfdesktop_icon_view_model_changed), fmodel);
+    g_signal_connect_swapped(icon, "pixbuf-changed",
+                             G_CALLBACK(xfdesktop_icon_view_model_changed), fmodel);
+
     g_hash_table_replace(fmodel->icons, g_strdup(xfdesktop_file_icon_peek_sort_key(icon)), icon);
-    xfdesktop_file_icon_model_append(fmodel, XFDESKTOP_FILE_ICON(icon), NULL);
+    xfdesktop_icon_view_model_append(XFDESKTOP_ICON_VIEW_MODEL(fmodel), icon, icon, NULL);
 }
 
 static void
@@ -555,7 +555,8 @@ remove_icon(XfdesktopFileIconModel *fmodel, XfdesktopFileIcon *icon) {
     }
 
     XF_DEBUG("removing icon %s from icon view", xfdesktop_icon_peek_label(XFDESKTOP_ICON(icon)));
-    xfdesktop_file_icon_model_remove(fmodel, icon);
+    xfdesktop_icon_view_model_remove(XFDESKTOP_ICON_VIEW_MODEL(fmodel), icon);
+    g_hash_table_remove(fmodel->icons, xfdesktop_file_icon_peek_sort_key(icon));
 }
 
 static void
@@ -1071,35 +1072,6 @@ xfdesktop_file_icon_model_set_show_thumbnails(XfdesktopFileIconModel *fmodel, gb
         }
     }
 }
-
-static void
-xfdesktop_file_icon_model_append(XfdesktopFileIconModel *fmodel,
-                                 XfdesktopFileIcon *icon,
-                                 GtkTreeIter *iter)
-{
-    g_return_if_fail(XFDESKTOP_IS_FILE_ICON_MODEL(fmodel));
-    g_return_if_fail(XFDESKTOP_IS_FILE_ICON(icon));
-
-    g_signal_connect_swapped(icon, "label-changed",
-                             G_CALLBACK(xfdesktop_icon_view_model_changed), fmodel);
-    g_signal_connect_swapped(icon, "pixbuf-changed",
-                             G_CALLBACK(xfdesktop_icon_view_model_changed), fmodel);
-
-    xfdesktop_icon_view_model_append(XFDESKTOP_ICON_VIEW_MODEL(fmodel), icon, icon, iter);
-}
-
-static void
-xfdesktop_file_icon_model_remove(XfdesktopFileIconModel *fmodel,
-                                 XfdesktopFileIcon *icon)
-{
-    g_return_if_fail(XFDESKTOP_IS_FILE_ICON_MODEL(fmodel));
-    g_return_if_fail(XFDESKTOP_IS_FILE_ICON(icon));
-
-    xfdesktop_icon_view_model_remove(XFDESKTOP_ICON_VIEW_MODEL(fmodel), icon);
-    g_hash_table_remove(fmodel->icons, xfdesktop_file_icon_peek_sort_key(icon));
-}
-
-
 
 XfdesktopFileIconModel *
 xfdesktop_file_icon_model_new(XfconfChannel *channel, GFile *folder, GdkScreen *gdkscreen) {

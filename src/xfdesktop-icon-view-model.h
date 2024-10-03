@@ -79,9 +79,9 @@ void xfdesktop_icon_view_model_set_monitor(XfdesktopIconViewModel *ivmodel,
                                            GtkTreeIter *iter,
                                            GdkMonitor *monitor);
 
-void xfdesktop_icon_view_model_clear(XfdesktopIconViewModel *ivmodel);
-
 /* The following should only be called by subclasses */
+
+void xfdesktop_icon_view_model_clear(XfdesktopIconViewModel *ivmodel);
 
 void xfdesktop_icon_view_model_append(XfdesktopIconViewModel *ivmodel,
                                       gpointer key,
