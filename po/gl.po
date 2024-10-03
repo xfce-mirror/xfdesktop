@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-10-02 12:55+0200\n"
+"POT-Creation-Date: 2024-10-03 00:56+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Daniel Muñiz Fontoira <dani@damufo.eu>, 2022\n"
 "Language-Team: Galician (http://app.transifex.com/xfce/xfdesktop/language/gl/)\n"
@@ -37,23 +37,27 @@ msgid "Trash"
 msgstr "Lixo"
 
 #: settings/main.c:432
-msgid "Removable Devices"
-msgstr "Dispositivos extraíbeis"
+msgid "Devices"
+msgstr "Dispositivo"
 
 #: settings/main.c:434
 msgid "Network Shares"
 msgstr "Comparticións na rede"
 
 #: settings/main.c:436
-msgid "Disks and Drives"
-msgstr "Discos e unidades"
+msgid "Removable Disks and Drives"
+msgstr ""
 
 #: settings/main.c:438
+msgid "Fixed Disks and Drives"
+msgstr ""
+
+#: settings/main.c:440
 msgid "Other Devices"
 msgstr "Outros dispositivos"
 
 #. Display the file name, file type, and file size in the tooltip.
-#: settings/main.c:544
+#: settings/main.c:546
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -61,79 +65,79 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nTipo: %s\nTamaño: %s"
 
-#: settings/main.c:780
+#: settings/main.c:782
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "Fondo de escritorio do monitor %d (%s)"
 
-#: settings/main.c:783
+#: settings/main.c:785
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "Fondo de escritorio do monitor %d"
 
-#: settings/main.c:789
+#: settings/main.c:791
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "Mova este diálogo para a pantalla cuxas propiedades desexe editar."
 
-#: settings/main.c:796
+#: settings/main.c:798
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "Fondo de pantalla para %s no monitor %d (%s)"
 
-#: settings/main.c:800
+#: settings/main.c:802
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "Fondo de pantalla para %s no monitor %d"
 
-#: settings/main.c:807
+#: settings/main.c:809
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr "Mova este diálogo para a pantalla e o espazo de traballo cuxas propiedades desexe editar."
 
 #. Single monitor and single workspace
-#: settings/main.c:815
+#: settings/main.c:817
 msgid "Wallpaper for my desktop"
 msgstr "Fondo do meu escritorio"
 
 #. Single monitor and per workspace wallpaper
-#: settings/main.c:821
+#: settings/main.c:823
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "Fondo de escritorio para %s"
 
-#: settings/main.c:826
+#: settings/main.c:828
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "Mova este diálogo para o espazo de traballo cuxas propiedades desexe editar."
 
-#: settings/main.c:1281
+#: settings/main.c:1283
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "A selección de imaxes non está dispoñíbel mentres o estilo de imaxe sexa Ningún."
 
-#: settings/main.c:1640
+#: settings/main.c:1642
 msgid "Spanning screens"
 msgstr "Atravesando os monitores"
 
 #. TRANSLATORS: Please split the message in half with '\n' so the dialog will
 #. not be too wide.
-#: settings/main.c:1947
+#: settings/main.c:1949
 msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
 msgstr "Desexa arrombar todas as iconas existentes\nde acordo coa orientación seleccionada?"
 
-#: settings/main.c:1953
+#: settings/main.c:1955
 msgid "Arrange icons"
 msgstr "Arrombar iconas"
 
 #. printf is to be translator-friendly
-#: settings/main.c:1961 src/xfdesktop-file-icon-manager.c:760
+#: settings/main.c:1963 src/xfdesktop-file-icon-manager.c:760
 #: src/xfdesktop-file-icon-manager.c:1309
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Non se puido iniciar «%s»:"
 
-#: settings/main.c:1962 src/xfdesktop-file-icon-manager.c:762
+#: settings/main.c:1964 src/xfdesktop-file-icon-manager.c:762
 #: src/xfdesktop-file-icon-manager.c:993
 #: src/xfdesktop-file-icon-manager.c:1041
 #: src/xfdesktop-file-icon-manager.c:1311 src/xfdesktop-file-utils.c:567
@@ -142,7 +146,7 @@ msgstr "Non se puido iniciar «%s»:"
 msgid "Launch Error"
 msgstr "Fallo ao iniciar"
 
-#: settings/main.c:1964 settings/xfdesktop-settings-ui.glade:198
+#: settings/main.c:1966 settings/xfdesktop-settings-ui.glade:198
 #: src/xfdesktop-file-icon-manager.c:703 src/xfdesktop-file-icon-manager.c:764
 #: src/xfdesktop-file-icon-manager.c:997
 #: src/xfdesktop-file-icon-manager.c:1045
@@ -161,54 +165,54 @@ msgstr "Fallo ao iniciar"
 msgid "_Close"
 msgstr "_Cerrar"
 
-#: settings/main.c:2136
+#: settings/main.c:2138
 msgid "Image files"
 msgstr "Ficheiros de imaxe"
 
 #. Change the title of the file chooser dialog
-#: settings/main.c:2144
+#: settings/main.c:2146
 msgid "Select a Directory"
 msgstr "Seleccione un directorio"
 
-#: settings/main.c:2359
+#: settings/main.c:2361
 msgid "Settings manager socket"
 msgstr "Conectador do xestor de configuración"
 
-#: settings/main.c:2359
+#: settings/main.c:2361
 msgid "SOCKET ID"
 msgstr "ID CONECTADOR"
 
-#: settings/main.c:2360
+#: settings/main.c:2362
 msgid "Version information"
 msgstr "Información da versión"
 
-#: settings/main.c:2361 src/xfdesktop-application.c:280
+#: settings/main.c:2363 src/xfdesktop-application.c:280
 msgid "Enable debug messages"
 msgstr "Activar as mensaxes de depuración"
 
-#: settings/main.c:2385
+#: settings/main.c:2387
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Introduza '%s --help'  para ver a información de uso."
 
-#: settings/main.c:2397
+#: settings/main.c:2399
 msgid "The Xfce development team. All rights reserved."
 msgstr "O equipo de desenvolvemento de Xfce. Tódolos dereitos reservados."
 
-#: settings/main.c:2398
+#: settings/main.c:2400
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Comuníquelle os fallos a <%s>."
 
-#: settings/main.c:2405
+#: settings/main.c:2407
 msgid "Desktop Settings"
 msgstr "Configuración do escritorio"
 
-#: settings/main.c:2407
+#: settings/main.c:2409
 msgid "Unable to contact settings server"
 msgstr "Non se puido contactar co servidor de configuración"
 
-#: settings/main.c:2409
+#: settings/main.c:2411
 msgid "Quit"
 msgstr "Saír"
 
