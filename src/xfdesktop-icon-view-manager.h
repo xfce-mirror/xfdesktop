@@ -49,6 +49,9 @@ struct _XfdesktopIconViewManagerClass
                                  gint popup_x,
                                  gint popup_y);
 
+    void (*activate_icons)(XfdesktopIconViewManager *manager);
+    void (*select_all_icons)(XfdesktopIconViewManager *manager);
+    void (*unselect_all_icons)(XfdesktopIconViewManager *manager);
     void (*sort_icons)(XfdesktopIconViewManager *manager,
                        GtkSortType sort_type);
 
@@ -58,6 +61,7 @@ struct _XfdesktopIconViewManagerClass
 XfwScreen *xfdesktop_icon_view_manager_get_screen(XfdesktopIconViewManager *manager);
 GList *xfdesktop_icon_view_manager_get_desktops(XfdesktopIconViewManager *manager);
 XfconfChannel *xfdesktop_icon_view_manager_get_channel(XfdesktopIconViewManager *manager);
+GtkAccelGroup *xfdesktop_icon_view_manager_get_accel_group(XfdesktopIconViewManager *manager);
 
 gboolean xfdesktop_icon_view_manager_get_show_icons_on_primary(XfdesktopIconViewManager *manager);
 
