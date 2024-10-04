@@ -598,7 +598,7 @@ invalidate_backdrops_for_property_prefix(XfdesktopBackdropManager *manager, cons
 
 static void
 channel_property_changed(XfdesktopBackdropManager *manager, const gchar *property_name, const GValue *value) {
-    DBG("entering");
+    DBG("entering(%s)", property_name);
 
     const gchar *last_slash = g_strrstr(property_name, "/");
     if (last_slash != NULL) {

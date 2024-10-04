@@ -611,8 +611,7 @@ xfdesktop_regular_file_icon_get_gicon(XfdesktopFileIcon *icon)
     } else {
         /* If we have a thumbnail then they are enabled, use it. */
         if(regular_icon->thumbnail_file) {
-            gchar *file = g_file_get_path(regular_icon->file);
-            gchar *mimetype = xfdesktop_get_file_mimetype(file);
+            gchar *mimetype = xfdesktop_get_file_mimetype(regular_icon->file);
 
             /* Don't use thumbnails for svg, use the file itself */
             if(g_strcmp0(mimetype, "image/svg+xml") == 0)
@@ -621,7 +620,6 @@ xfdesktop_regular_file_icon_get_gicon(XfdesktopFileIcon *icon)
                 base_gicon = g_file_icon_new(regular_icon->thumbnail_file);
 
             g_free(mimetype);
-            g_free(file);
         }
     }
 

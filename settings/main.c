@@ -541,7 +541,7 @@ image_list_compare(GtkTreeModel *model,
 
 static GtkTreeIter *
 xfdesktop_settings_image_iconview_add(GtkTreeModel *model,
-                                      const char *path,
+                                      GFile *file,
                                       GFileInfo *info,
                                       AppearancePanel *panel)
 {
@@ -553,10 +553,10 @@ xfdesktop_settings_image_iconview_add(GtkTreeModel *model,
     const gchar *content_type = g_file_info_get_content_type(info);
     goffset file_size = g_file_info_get_size(info);
 
-    if(!xfdesktop_image_file_is_valid(path))
+    if(!xfdesktop_image_file_is_valid(file))
         return NULL;
 
-    name = g_path_get_basename(path);
+    name = g_file_get_basename(file);
     if(name) {
         guint name_length = strlen(name);
         name_utf8 = g_filename_to_utf8(name, name_length,
@@ -587,7 +587,7 @@ xfdesktop_settings_image_iconview_add(GtkTreeModel *model,
                                               &iter,
                                               position,
                                               COL_NAME, name_markup,
-                                              COL_FILENAME, path,
+                                              COL_FILENAME, g_file_peek_path(file),
                                               COL_COLLATE_KEY, collate_key,
                                               -1);
             xfdesktop_settings_queue_preview(model, &iter, panel);
@@ -647,13 +647,12 @@ xfdesktop_image_list_add_item(gpointer user_data)
 
     /* Add one item to the icon view at a time so we don't block the UI */
     if((info = g_file_enumerator_next_file(dir_data->file_enumerator, NULL, NULL))) {
-        const gchar *file_name = g_file_info_get_name(info);
-        gchar *buf = g_strconcat(dir_data->file_path, "/", file_name, NULL);
+        GFile *file = g_file_enumerator_get_child(dir_data->file_enumerator, info);
 
-        iter = xfdesktop_settings_image_iconview_add(GTK_TREE_MODEL(dir_data->ls), buf, info, panel);
+        iter = xfdesktop_settings_image_iconview_add(GTK_TREE_MODEL(dir_data->ls), file, info, panel);
         if(iter) {
             if(!dir_data->selected_iter &&
-               !strcmp(buf, dir_data->last_image))
+               !strcmp(g_file_peek_path(file), dir_data->last_image))
             {
                 dir_data->selected_iter = iter;
             } else {
@@ -661,7 +660,7 @@ xfdesktop_image_list_add_item(gpointer user_data)
             }
         }
 
-        g_free(buf);
+        g_object_unref(file);
         g_object_unref(info);
 
         /* continue on the next idle callback so the user's events get priority */
