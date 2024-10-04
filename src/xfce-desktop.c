@@ -268,6 +268,7 @@ set_accountsservice_user_bg(const gchar *background)
         g_clear_error (&error);
     }
 
+    g_free (object_path);
     g_object_unref (bus);
 }
 
