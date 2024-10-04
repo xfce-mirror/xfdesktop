@@ -271,6 +271,7 @@ static GtkMenu *xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewMa
                                                              gint popup_x,
                                                              gint popup_y);
 static void xfdesktop_file_icon_manager_activate_icons(XfdesktopIconViewManager *manager);
+static void xfdesktop_file_icon_manager_toggle_cursor_icon(XfdesktopIconViewManager *manager);
 static void xfdesktop_file_icon_manager_select_all_icons(XfdesktopIconViewManager *manager);
 static void xfdesktop_file_icon_manager_unselect_all_icons(XfdesktopIconViewManager *manager);
 static void xfdesktop_file_icon_manager_sort_icons(XfdesktopIconViewManager *manager,
@@ -372,6 +373,7 @@ xfdesktop_file_icon_manager_class_init(XfdesktopFileIconManagerClass *klass)
     ivm_class->desktop_removed = xfdesktop_file_icon_manager_desktop_removed;
     ivm_class->get_context_menu = xfdesktop_file_icon_manager_get_context_menu;
     ivm_class->activate_icons = xfdesktop_file_icon_manager_activate_icons;
+    ivm_class->toggle_cursor_icon = xfdesktop_file_icon_manager_toggle_cursor_icon;
     ivm_class->select_all_icons = xfdesktop_file_icon_manager_select_all_icons;
     ivm_class->unselect_all_icons = xfdesktop_file_icon_manager_unselect_all_icons;
     ivm_class->sort_icons = xfdesktop_file_icon_manager_sort_icons;
@@ -2165,6 +2167,15 @@ xfdesktop_file_icon_manager_activate_icons(XfdesktopIconViewManager *manager) {
     MonitorData *mdata = find_active_monitor_data(XFDESKTOP_FILE_ICON_MANAGER(manager));
     if (mdata != NULL) {
         xfdesktop_file_icon_manager_activate_selected(mdata);
+    }
+}
+
+static void
+xfdesktop_file_icon_manager_toggle_cursor_icon(XfdesktopIconViewManager *manager) {
+    MonitorData *mdata = find_active_monitor_data(XFDESKTOP_FILE_ICON_MANAGER(manager));
+    if (mdata != NULL) {
+        XfdesktopIconView *icon_view = xfdesktop_icon_view_holder_get_icon_view(mdata->holder);
+        xfdesktop_icon_view_toggle_cursor(icon_view);
     }
 }
 

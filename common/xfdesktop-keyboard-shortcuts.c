@@ -90,6 +90,8 @@ static XfceGtkActionEntry icon_view_entries[] = {
     ENTRY(XFDESKTOP_ICON_VIEW_ACTION_ACTIVATE_ALT_2, "<Actions>/XfdesktopIconView/activate-3", "Return", NULL),
     ENTRY(XFDESKTOP_ICON_VIEW_ACTION_ACTIVATE_ALT_3, "<Actions>/XfdesktopIconView/activate-4", "ISO_Enter", NULL),
     ENTRY(XFDESKTOP_ICON_VIEW_ACTION_ACTIVATE_ALT_4, "<Actions>/XfdesktopIconView/activate-5", "KP_Enter", NULL),
+    ENTRY(XFDESKTOP_ICON_VIEW_ACTION_TOGGLE_CURSOR, "<Actions>/XfdesktopIconView/toggle-cursor", "<Primary>space", N_("_Toggle Cursor Icon")),
+    ENTRY(XFDESKTOP_ICON_VIEW_ACTION_TOGGLE_CURSOR_ALT_1, "<Actions>/XfdesktopIconView/toggle-cursor-2", "<Primary>KP_Space", NULL),
     ENTRY(XFDESKTOP_ICON_VIEW_ACTION_SELECT_ALL, "<Actions>/XfdesktopIconView/select-all", "<Primary>a", N_("Select _All")),
     ENTRY(XFDESKTOP_ICON_VIEW_ACTION_UNSELECT_ALL, "<Actions>/XfdesktopIconView/unselect-all", "Escape", N_("U_nselect All")),
     ENTRY(XFDESKTOP_ICON_VIEW_ACTION_ARRANGE_ICONS, "<Actions>/XfdesktopIconView/arrange-icons", "", N_("A_rrange Icons")),

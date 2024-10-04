@@ -74,6 +74,7 @@ static GtkMenu *xfdesktop_window_icon_manager_get_context_menu(XfdesktopIconView
                                                                gint popup_x,
                                                                gint popup_y);
 static void xfdesktop_window_icon_manager_activate_icons(XfdesktopIconViewManager *manager);
+static void xfdesktop_window_icon_manager_toggle_cursor_icon(XfdesktopIconViewManager *manager);
 static void xfdesktop_window_icon_manager_unselect_all_icons(XfdesktopIconViewManager *manager);
 static void xfdesktop_window_icon_manager_sort_icons(XfdesktopIconViewManager *manager,
                                                      GtkSortType sort_type);
@@ -118,6 +119,7 @@ xfdesktop_window_icon_manager_class_init(XfdesktopWindowIconManagerClass *klass)
     ivm_class->desktop_removed = xfdesktop_window_icon_manager_desktop_removed;
     ivm_class->get_context_menu = xfdesktop_window_icon_manager_get_context_menu;
     ivm_class->activate_icons = xfdesktop_window_icon_manager_activate_icons;
+    ivm_class->toggle_cursor_icon = xfdesktop_window_icon_manager_toggle_cursor_icon;
     ivm_class->unselect_all_icons = xfdesktop_window_icon_manager_unselect_all_icons;
     ivm_class->sort_icons = xfdesktop_window_icon_manager_sort_icons;
 }
@@ -270,6 +272,16 @@ xfdesktop_window_icon_manager_activate_icons(XfdesktopIconViewManager *manager) 
 }
 
 static void
+xfdesktop_window_icon_manager_toggle_cursor_icon(XfdesktopIconViewManager *manager) {
+    XfdesktopWindowIconManager *wmanager = XFDESKTOP_WINDOW_ICON_MANAGER(manager);
+    MonitorData *mdata = find_active_monitor_data(wmanager);
+    if (mdata != NULL) {
+        XfdesktopIconView *icon_view = xfdesktop_icon_view_holder_get_icon_view(mdata->holder);
+        xfdesktop_icon_view_toggle_cursor(icon_view);
+    }
+}
+
+static void
 xfdesktop_window_icon_manager_unselect_all_icons(XfdesktopIconViewManager *manager) {
     XfdesktopWindowIconManager *wmanager = XFDESKTOP_WINDOW_ICON_MANAGER(manager);
     MonitorData *mdata = find_active_monitor_data(wmanager);
@@ -418,17 +430,6 @@ filter_visible_func(GtkTreeModel *model, GtkTreeIter *iter, gpointer data) {
         XfwMonitor *desktop_monitor = xfce_desktop_get_monitor(desktop);
         XfwMonitor *monitor_override = g_object_get_data(G_OBJECT(window), WINDOW_MONITOR_OVERRIDE_KEY);
 
-        TRACE("is_skip_tasklist: %d, is_minimized: %d, window_workspace: %p, active_workspace: %p, is_pinned: %d, monitor_override: %p, desktop_monitor: %p",
-              xfw_window_is_skip_tasklist(window),
-              xfw_window_is_minimized(window),
-              window_workspace,
-              active_workspace,
-              xfw_window_is_pinned(window),
-              monitor_override,
-              desktop_monitor);
-        for (GList *l = xfw_window_get_monitors(window); l != NULL; l = l->next) {
-            TRACE("window on monitor: %p", l->data);
-        }
         gboolean visible = !xfw_window_is_skip_tasklist(window)
             && xfw_window_is_minimized(window)
             && (window_workspace == active_workspace || xfw_window_is_pinned(window))

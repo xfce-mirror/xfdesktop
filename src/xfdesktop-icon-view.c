@@ -87,12 +87,7 @@ enum
     SIG_QUERY_ICON_TOOLTIP,
     SIG_START_GRID_RESIZE,
     SIG_END_GRID_RESIZE,
-    SIG_SELECT_ALL,
-    SIG_UNSELECT_ALL,
-    SIG_SELECT_CURSOR_ITEM,
-    SIG_TOGGLE_CURSOR_ITEM,
     SIG_MOVE_CURSOR,
-    SIG_ACTIVATE_SELECTED_ITEMS,
     SIG_RESIZE_EVENT,
 
     SIG_N_SIGNALS,
@@ -547,8 +542,6 @@ static void xfdesktop_icon_view_xfconf_tooltip_icon_size_changed(XfconfChannel *
                                                                  const GValue *value,
                                                                  XfdesktopIconView *icon_view);
 
-static void xfdesktop_icon_view_real_select_cursor_item(XfdesktopIconView *icon_view);
-static void xfdesktop_icon_view_real_toggle_cursor_item(XfdesktopIconView *icon_view);
 static gboolean xfdesktop_icon_view_real_move_cursor(XfdesktopIconView *icon_view,
                                                      GtkMovementStep step,
                                                      gint count);
@@ -576,6 +569,8 @@ static void xfdesktop_icon_view_model_row_deleted(GtkTreeModel *model,
                                                   XfdesktopIconView *icon_view);
 
 static void xfdesktop_icon_view_items_free(XfdesktopIconView *icon_view);
+
+static void xfdesktop_icon_view_cancel_keyboard_navigation(XfdesktopIconView *icon_view);
 
 
 static const GtkTargetEntry icon_view_targets[] = {
@@ -639,8 +634,6 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
     widget_class->focus_in_event = xfdesktop_icon_view_focus_in;
     widget_class->focus_out_event = xfdesktop_icon_view_focus_out;
 
-    klass->select_cursor_item = xfdesktop_icon_view_real_select_cursor_item;
-    klass->toggle_cursor_item = xfdesktop_icon_view_real_toggle_cursor_item;
     klass->move_cursor = xfdesktop_icon_view_real_move_cursor;
 
     __signals[SIG_ICON_SELECTION_CHANGED] = g_signal_new("icon-selection-changed",
@@ -715,24 +708,6 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
                                                     NULL, NULL,
                                                     g_cclosure_marshal_VOID__VOID,
                                                     G_TYPE_NONE, 0);
-
-    __signals[SIG_SELECT_CURSOR_ITEM] = g_signal_new(I_("select-cursor-item"),
-                                                     XFDESKTOP_TYPE_ICON_VIEW,
-                                                     G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-                                                     G_STRUCT_OFFSET(XfdesktopIconViewClass,
-                                                                     select_cursor_item),
-                                                     NULL, NULL,
-                                                     g_cclosure_marshal_VOID__VOID,
-                                                     G_TYPE_NONE, 0);
-
-    __signals[SIG_TOGGLE_CURSOR_ITEM] = g_signal_new(I_("toggle-cursor-item"),
-                                                     XFDESKTOP_TYPE_ICON_VIEW,
-                                                     G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-                                                     G_STRUCT_OFFSET(XfdesktopIconViewClass,
-                                                                     toggle_cursor_item),
-                                                     NULL, NULL,
-                                                     g_cclosure_marshal_VOID__VOID,
-                                                     G_TYPE_NONE, 0);
 
     __signals[SIG_MOVE_CURSOR] = g_signal_new(I_("move-cursor"),
                                               XFDESKTOP_TYPE_ICON_VIEW,
@@ -916,14 +891,6 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
 
 #undef DECL_COLUMN_PROP
 #undef PARAM_FLAGS
-
-    /* same binding entries as GtkIconView */
-#if 0
-    gtk_binding_entry_add_signal(binding_set, GDK_KEY_space, GDK_CONTROL_MASK,
-                                 "toggle-cursor-item", 0);
-    gtk_binding_entry_add_signal(binding_set, GDK_KEY_KP_Space, GDK_CONTROL_MASK,
-                                 "toggle-cursor-item", 0);
-#endif
 
     xfdesktop_icon_view_add_move_binding(binding_set, GDK_KEY_Up, 0,
                                          GTK_MOVEMENT_DISPLAY_LINES, -1);
@@ -1409,6 +1376,8 @@ xfdesktop_icon_view_button_press(GtkWidget *widget, GdkEventButton *evt) {
 
     DBG("entering");
 
+    xfdesktop_icon_view_cancel_keyboard_navigation(icon_view);
+
     gtk_widget_grab_focus(widget);
 
     if(evt->type == GDK_BUTTON_PRESS) {
@@ -1630,18 +1599,26 @@ xfdesktop_icon_view_button_release(GtkWidget *widget, GdkEventButton *evt) {
     return ret;
 }
 
-static gboolean
-clear_keyboard_navigation_state(gpointer data)
-{
-    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(data);
+static void
+xfdesktop_icon_view_cancel_keyboard_navigation(XfdesktopIconView *icon_view) {
+    gtk_grab_remove(GTK_WIDGET(icon_view));
+
+    if (icon_view->priv->keyboard_navigation_state_timeout != 0) {
+        g_source_remove(icon_view->priv->keyboard_navigation_state_timeout);
+        icon_view->priv->keyboard_navigation_state_timeout = 0;
+    }
 
     if (icon_view->priv->keyboard_navigation_state != NULL) {
         g_array_free(icon_view->priv->keyboard_navigation_state, TRUE);
         icon_view->priv->keyboard_navigation_state = NULL;
     }
+}
 
+static gboolean
+keyboard_navigation_timeout(gpointer data) {
+    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(data);
     icon_view->priv->keyboard_navigation_state_timeout = 0;
-
+    xfdesktop_icon_view_cancel_keyboard_navigation(icon_view);
     return G_SOURCE_REMOVE;
 }
 
@@ -1663,8 +1640,10 @@ xfdesktop_icon_view_keyboard_navigate(XfdesktopIconView *icon_view,
     if (icon_view->priv->keyboard_navigation_state_timeout != 0) {
         g_source_remove(icon_view->priv->keyboard_navigation_state_timeout);
     }
+
+    gtk_grab_add(GTK_WIDGET(icon_view));
     icon_view->priv->keyboard_navigation_state_timeout = g_timeout_add(KEYBOARD_NAVIGATION_TIMEOUT,
-                                                                       clear_keyboard_navigation_state,
+                                                                       keyboard_navigation_timeout,
                                                                        icon_view);
 
     g_array_append_val(icon_view->priv->keyboard_navigation_state, lower_char);
@@ -1719,31 +1698,34 @@ static gboolean
 xfdesktop_icon_view_key_press(GtkWidget *widget, GdkEventKey *evt) {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
     gboolean ret = FALSE;
-    gboolean could_keyboard_navigate = FALSE;
 
-    DBG("entering");
+    if (icon_view->priv->keyboard_navigation_state == NULL) {
+        ret = GTK_WIDGET_CLASS(xfdesktop_icon_view_parent_class)->key_press_event(widget, evt);
+    }
 
-    /* since we're NO_WINDOW, events don't get delivered to us normally,
-     * so we have to activate the bindings manually */
-    ret = gtk_bindings_activate_event(G_OBJECT(icon_view), evt);
-    if(ret == FALSE) {
+    if (!ret) {
+        DBG("entering");
+
         GdkModifierType ignore_modifiers = gtk_accelerator_get_default_mod_mask();
-        if((evt->state & ignore_modifiers) == 0) {
-            /* Binding not found and key press is not part of a combo.
-             * Now inspect the pressed character. Let's try to find an
+        if ((evt->state & ignore_modifiers) == 0) {
+            /* Now inspect the pressed character. Let's try to find an
              * icon starting with this character and make the icon selected. */
             guint32 unicode = gdk_keyval_to_unicode(evt->keyval);
-            if (unicode != 0 && g_unichar_isgraph(unicode)) {
-                could_keyboard_navigate = TRUE;
+            if (unicode != 0 && g_unichar_isprint(unicode)) {
+                ret = TRUE;
                 xfdesktop_icon_view_keyboard_navigate(icon_view, g_unichar_tolower(unicode));
             }
         }
-    }
 
-    if (!could_keyboard_navigate) {
-        if (icon_view->priv->keyboard_navigation_state != NULL) {
-            g_array_free(icon_view->priv->keyboard_navigation_state, TRUE);
-            icon_view->priv->keyboard_navigation_state = NULL;
+        if (!ret) {
+            if (icon_view->priv->keyboard_navigation_state != NULL) {
+                g_array_free(icon_view->priv->keyboard_navigation_state, TRUE);
+                icon_view->priv->keyboard_navigation_state = NULL;
+
+                // Couldn't navigate further, so try to let the superclass
+                // handle it.
+                ret = GTK_WIDGET_CLASS(xfdesktop_icon_view_parent_class)->key_press_event(widget, evt);
+            }
         }
     }
 
@@ -1769,6 +1751,8 @@ xfdesktop_icon_view_focus_out(GtkWidget *widget, GdkEventFocus *evt) {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
 
     DBG("LOST FOCUS");
+
+    xfdesktop_icon_view_cancel_keyboard_navigation(icon_view);
 
     for (GList *l = icon_view->priv->selected_items; l != NULL; l = l->next) {
         xfdesktop_icon_view_invalidate_item_text(icon_view, (ViewItem *)l->data);
@@ -3271,29 +3255,6 @@ xfdesktop_icon_view_draw(GtkWidget *widget,
 }
 
 static void
-xfdesktop_icon_view_real_select_cursor_item(XfdesktopIconView *icon_view)
-{
-    DBG("entering");
-
-    if(icon_view->priv->cursor)
-        xfdesktop_icon_view_select_item_internal(icon_view, icon_view->priv->cursor, TRUE);
-}
-
-static void
-xfdesktop_icon_view_real_toggle_cursor_item(XfdesktopIconView *icon_view)
-{
-    DBG("entering");
-
-    if (icon_view->priv->cursor != NULL) {
-        if (icon_view->priv->cursor->selected) {
-            xfdesktop_icon_view_unselect_item_internal(icon_view, icon_view->priv->cursor, TRUE);
-        } else {
-            xfdesktop_icon_view_select_item_internal(icon_view, icon_view->priv->cursor, TRUE);
-        }
-    }
-}
-
-static void
 xfdesktop_icon_view_select_between(XfdesktopIconView *icon_view,
                                    ViewItem *start_item,
                                    ViewItem *end_item)
@@ -4697,6 +4658,19 @@ xfdesktop_icon_view_select_item(XfdesktopIconView *icon_view,
     item = xfdesktop_icon_view_find_item(icon_view, iter);
     if (item != NULL && !item->selected) {
         xfdesktop_icon_view_select_item_internal(icon_view, item, TRUE);
+    }
+}
+
+void
+xfdesktop_icon_view_toggle_cursor(XfdesktopIconView *icon_view) {
+    DBG("entering");
+
+    if (icon_view->priv->cursor != NULL) {
+        if (icon_view->priv->cursor->selected) {
+            xfdesktop_icon_view_unselect_item_internal(icon_view, icon_view->priv->cursor, TRUE);
+        } else {
+            xfdesktop_icon_view_select_item_internal(icon_view, icon_view->priv->cursor, TRUE);
+        }
     }
 }
 

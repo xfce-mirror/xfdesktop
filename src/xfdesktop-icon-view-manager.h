@@ -50,6 +50,7 @@ struct _XfdesktopIconViewManagerClass
                                  gint popup_y);
 
     void (*activate_icons)(XfdesktopIconViewManager *manager);
+    void (*toggle_cursor_icon)(XfdesktopIconViewManager *manager);
     void (*select_all_icons)(XfdesktopIconViewManager *manager);
     void (*unselect_all_icons)(XfdesktopIconViewManager *manager);
     void (*sort_icons)(XfdesktopIconViewManager *manager,

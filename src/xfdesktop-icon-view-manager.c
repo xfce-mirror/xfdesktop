@@ -278,6 +278,11 @@ icon_view_action_activate(XfdesktopIconViewManager *manager) {
 }
 
 static void
+icon_view_action_toggle_cursor(XfdesktopIconViewManager *manager) {
+    XFDESKTOP_ICON_VIEW_MANAGER_GET_CLASS(manager)->toggle_cursor_icon(manager);
+}
+
+static void
 icon_view_action_select_all(XfdesktopIconViewManager *manager) {
     XfdesktopIconViewManagerClass *klass = XFDESKTOP_ICON_VIEW_MANAGER_GET_CLASS(manager);
     if (klass->select_all_icons != NULL) {
@@ -304,6 +309,10 @@ icon_view_action_fixup(XfceGtkActionEntry *entry) {
         case XFDESKTOP_ICON_VIEW_ACTION_ACTIVATE_ALT_3:
         case XFDESKTOP_ICON_VIEW_ACTION_ACTIVATE_ALT_4:
             entry->callback = G_CALLBACK(icon_view_action_activate);
+            break;
+        case XFDESKTOP_ICON_VIEW_ACTION_TOGGLE_CURSOR:
+        case XFDESKTOP_ICON_VIEW_ACTION_TOGGLE_CURSOR_ALT_1:
+            entry->callback = G_CALLBACK(icon_view_action_toggle_cursor);
             break;
         case XFDESKTOP_ICON_VIEW_ACTION_SELECT_ALL:
             entry->callback = G_CALLBACK(icon_view_action_select_all);
