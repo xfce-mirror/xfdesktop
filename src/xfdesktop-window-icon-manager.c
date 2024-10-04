@@ -418,17 +418,6 @@ filter_visible_func(GtkTreeModel *model, GtkTreeIter *iter, gpointer data) {
         XfwMonitor *desktop_monitor = xfce_desktop_get_monitor(desktop);
         XfwMonitor *monitor_override = g_object_get_data(G_OBJECT(window), WINDOW_MONITOR_OVERRIDE_KEY);
 
-        TRACE("is_skip_tasklist: %d, is_minimized: %d, window_workspace: %p, active_workspace: %p, is_pinned: %d, monitor_override: %p, desktop_monitor: %p",
-              xfw_window_is_skip_tasklist(window),
-              xfw_window_is_minimized(window),
-              window_workspace,
-              active_workspace,
-              xfw_window_is_pinned(window),
-              monitor_override,
-              desktop_monitor);
-        for (GList *l = xfw_window_get_monitors(window); l != NULL; l = l->next) {
-            TRACE("window on monitor: %p", l->data);
-        }
         gboolean visible = !xfw_window_is_skip_tasklist(window)
             && xfw_window_is_minimized(window)
             && (window_workspace == active_workspace || xfw_window_is_pinned(window))
