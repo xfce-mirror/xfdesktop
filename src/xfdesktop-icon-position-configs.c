@@ -266,6 +266,7 @@ save_icons(XfdesktopIconPositionConfigs *configs, GError **error) {
                     new_filename,
                     strerror(errno));
         yaml_emitter_delete(&emitter);
+        g_free(new_filename);
         return FALSE;
     }
 
