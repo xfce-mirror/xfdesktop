@@ -67,10 +67,10 @@ static const struct {
     const gchar *property;
 } setting_bindings[] = {
     { "image-style", G_TYPE_UINT, "image-style" },
-    { "cycler-cycle-enable", G_TYPE_BOOLEAN, "enabled" },
-    { "cycler-cycle-period", G_TYPE_UINT, "period" },
-    { "cycler-cycle-timer", G_TYPE_UINT, "timer" },
-    { "cycler-cycle-random-order", G_TYPE_BOOLEAN, "random-order" },
+    { "backdrop-cycle-enable", G_TYPE_BOOLEAN, "enabled" },
+    { "backdrop-cycle-period", G_TYPE_UINT, "period" },
+    { "backdrop-cycle-timer", G_TYPE_UINT, "timer" },
+    { "backdrop-cycle-random-order", G_TYPE_BOOLEAN, "random-order" },
     // image-filename has to be set manually so we can block it when needed
 };
 
