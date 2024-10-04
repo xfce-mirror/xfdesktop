@@ -570,6 +570,8 @@ static void xfdesktop_icon_view_model_row_deleted(GtkTreeModel *model,
 
 static void xfdesktop_icon_view_items_free(XfdesktopIconView *icon_view);
 
+static void xfdesktop_icon_view_cancel_keyboard_navigation(XfdesktopIconView *icon_view);
+
 
 static const GtkTargetEntry icon_view_targets[] = {
     { XFDESKTOP_ICON_NAME, GTK_TARGET_SAME_APP, TARGET_XFDESKTOP_ICON },
@@ -1374,6 +1376,8 @@ xfdesktop_icon_view_button_press(GtkWidget *widget, GdkEventButton *evt) {
 
     DBG("entering");
 
+    xfdesktop_icon_view_cancel_keyboard_navigation(icon_view);
+
     gtk_widget_grab_focus(widget);
 
     if(evt->type == GDK_BUTTON_PRESS) {
@@ -1595,18 +1599,26 @@ xfdesktop_icon_view_button_release(GtkWidget *widget, GdkEventButton *evt) {
     return ret;
 }
 
-static gboolean
-clear_keyboard_navigation_state(gpointer data)
-{
-    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(data);
+static void
+xfdesktop_icon_view_cancel_keyboard_navigation(XfdesktopIconView *icon_view) {
+    gtk_grab_remove(GTK_WIDGET(icon_view));
+
+    if (icon_view->priv->keyboard_navigation_state_timeout != 0) {
+        g_source_remove(icon_view->priv->keyboard_navigation_state_timeout);
+        icon_view->priv->keyboard_navigation_state_timeout = 0;
+    }
 
     if (icon_view->priv->keyboard_navigation_state != NULL) {
         g_array_free(icon_view->priv->keyboard_navigation_state, TRUE);
         icon_view->priv->keyboard_navigation_state = NULL;
     }
+}
 
+static gboolean
+keyboard_navigation_timeout(gpointer data) {
+    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(data);
     icon_view->priv->keyboard_navigation_state_timeout = 0;
-
+    xfdesktop_icon_view_cancel_keyboard_navigation(icon_view);
     return G_SOURCE_REMOVE;
 }
 
@@ -1628,8 +1640,10 @@ xfdesktop_icon_view_keyboard_navigate(XfdesktopIconView *icon_view,
     if (icon_view->priv->keyboard_navigation_state_timeout != 0) {
         g_source_remove(icon_view->priv->keyboard_navigation_state_timeout);
     }
+
+    gtk_grab_add(GTK_WIDGET(icon_view));
     icon_view->priv->keyboard_navigation_state_timeout = g_timeout_add(KEYBOARD_NAVIGATION_TIMEOUT,
-                                                                       clear_keyboard_navigation_state,
+                                                                       keyboard_navigation_timeout,
                                                                        icon_view);
 
     g_array_append_val(icon_view->priv->keyboard_navigation_state, lower_char);
@@ -1682,18 +1696,22 @@ xfdesktop_icon_view_keyboard_navigate(XfdesktopIconView *icon_view,
 
 static gboolean
 xfdesktop_icon_view_key_press(GtkWidget *widget, GdkEventKey *evt) {
-    gboolean ret = GTK_WIDGET_CLASS(xfdesktop_icon_view_parent_class)->key_press_event(widget, evt);
+    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
+    gboolean ret = FALSE;
+
+    if (icon_view->priv->keyboard_navigation_state == NULL) {
+        ret = GTK_WIDGET_CLASS(xfdesktop_icon_view_parent_class)->key_press_event(widget, evt);
+    }
 
     if (!ret) {
         DBG("entering");
 
-        XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
         GdkModifierType ignore_modifiers = gtk_accelerator_get_default_mod_mask();
         if ((evt->state & ignore_modifiers) == 0) {
             /* Now inspect the pressed character. Let's try to find an
              * icon starting with this character and make the icon selected. */
             guint32 unicode = gdk_keyval_to_unicode(evt->keyval);
-            if (unicode != 0 && g_unichar_isgraph(unicode)) {
+            if (unicode != 0 && g_unichar_isprint(unicode)) {
                 ret = TRUE;
                 xfdesktop_icon_view_keyboard_navigate(icon_view, g_unichar_tolower(unicode));
             }
@@ -1703,6 +1721,10 @@ xfdesktop_icon_view_key_press(GtkWidget *widget, GdkEventKey *evt) {
             if (icon_view->priv->keyboard_navigation_state != NULL) {
                 g_array_free(icon_view->priv->keyboard_navigation_state, TRUE);
                 icon_view->priv->keyboard_navigation_state = NULL;
+
+                // Couldn't navigate further, so try to let the superclass
+                // handle it.
+                ret = GTK_WIDGET_CLASS(xfdesktop_icon_view_parent_class)->key_press_event(widget, evt);
             }
         }
     }
@@ -1729,6 +1751,8 @@ xfdesktop_icon_view_focus_out(GtkWidget *widget, GdkEventFocus *evt) {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
 
     DBG("LOST FOCUS");
+
+    xfdesktop_icon_view_cancel_keyboard_navigation(icon_view);
 
     for (GList *l = icon_view->priv->selected_items; l != NULL; l = l->next) {
         xfdesktop_icon_view_invalidate_item_text(icon_view, (ViewItem *)l->data);
