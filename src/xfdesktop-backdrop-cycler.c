@@ -456,6 +456,11 @@ cb_xfdesktop_backdrop_cycler_image_files_changed(GFileMonitor *monitor,
                  * so just add it */
                 cycler->image_files = g_list_prepend(cycler->image_files, g_object_ref(file));
             }
+
+            if (cycler->timer_id == 0 && xfdesktop_backdrop_cycler_is_enabled(cycler)) {
+                xfdesktop_backdrop_cycler_set_timer(cycler, cycler->timer);
+            }
+
             break;
 
         case G_FILE_MONITOR_EVENT_DELETED:
@@ -485,10 +490,13 @@ cb_xfdesktop_backdrop_cycler_image_files_changed(GFileMonitor *monitor,
                 *found_list = g_list_delete_link(*found_list, item);
             }
 
-            if (cycler->timer_id != 0) {
-                g_source_remove(cycler->timer_id);
-                cycler->timer_id = 0;
+            if (cycler->image_files == NULL && cycler->used_image_files == NULL) {
+                if (cycler->timer_id != 0) {
+                    g_source_remove(cycler->timer_id);
+                    cycler->timer_id = 0;
+                }
             }
+
             break;
 
         default:
@@ -643,6 +651,10 @@ xfdesktop_backdrop_cycler_load_image_files(XfdesktopBackdropCycler *cycler) {
                          cycler);
 
         g_object_unref(parent);
+    }
+
+    if (cycler->image_files != NULL && cycler->timer_id == 0 && xfdesktop_backdrop_cycler_is_enabled(cycler)) {
+        xfdesktop_backdrop_cycler_set_timer(cycler, cycler->timer);
     }
 }
 
