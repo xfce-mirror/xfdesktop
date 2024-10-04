@@ -45,6 +45,7 @@ struct _XfdesktopBackdropCycler {
     GFile *cur_image_file;
     /* Cached list of images in the same folder as image_path */
     GList *image_files;
+    GList *used_image_files;
     /* monitor for the image_files directory */
     GFileMonitor *monitor;
 };
@@ -313,6 +314,7 @@ xfdesktop_backdrop_cycler_finalize(GObject *object) {
     g_signal_handlers_disconnect_by_data(cycler->channel, cycler);
 
     g_list_free_full(cycler->image_files, g_object_unref);
+    g_list_free_full(cycler->used_image_files, g_object_unref);
     if (cycler->cur_image_file != NULL) {
         g_object_unref(cycler->cur_image_file);
     }
@@ -430,7 +432,9 @@ cb_xfdesktop_backdrop_cycler_image_files_changed(GFileMonitor *monitor,
             XF_DEBUG("file added: %s", g_file_peek_path(file));
 
             /* Make sure we don't already have the new file in the list */
-            if (g_list_find_custom(cycler->image_files, file, (GCompareFunc)xfdesktop_g_file_compare)) {
+            if (g_list_find_custom(cycler->image_files, file, (GCompareFunc)xfdesktop_g_file_compare) != NULL
+                || g_list_find_custom(cycler->used_image_files, file, (GCompareFunc)xfdesktop_g_file_compare) != NULL)
+            {
                 return;
             }
 
@@ -464,14 +468,21 @@ cb_xfdesktop_backdrop_cycler_image_files_changed(GFileMonitor *monitor,
             XF_DEBUG("file deleted: %s", g_file_peek_path(file));
 
             /* find the file in the list */
+            GList **found_list = &cycler->image_files;
             item = g_list_find_custom(cycler->image_files,
                                       file,
                                       (GCompareFunc)xfdesktop_g_file_compare);
+            if (item == NULL) {
+                found_list = &cycler->used_image_files;
+                item = g_list_find_custom(cycler->used_image_files,
+                                          file,
+                                          (GCompareFunc)xfdesktop_g_file_compare);
+            }
 
             /* remove it */
             if (item) {
                 g_object_unref(item->data);
-                cycler->image_files = g_list_delete_link(cycler->image_files, item);
+                *found_list = g_list_delete_link(*found_list, item);
             }
 
             if (cycler->timer_id != 0) {
@@ -612,7 +623,10 @@ xfdesktop_backdrop_cycler_load_image_files(XfdesktopBackdropCycler *cycler) {
 
     /* generate the image_files list if it doesn't exist and we're cycling
      * backdrops */
-    if (cycler->image_files == NULL && xfdesktop_backdrop_cycler_is_enabled(cycler)) {
+    if (cycler->image_files == NULL
+        && cycler->used_image_files == NULL
+        && xfdesktop_backdrop_cycler_is_enabled(cycler))
+    {
         xfdesktop_backdrop_clear_directory_monitor(cycler);
         cycler->image_files = list_image_files_in_dir(cycler, cycler->cur_image_file);
     }
@@ -675,8 +689,14 @@ xfdesktop_backdrop_cycler_choose_random(XfdesktopBackdropCycler *cycler) {
 
     g_return_val_if_fail(XFDESKTOP_IS_BACKDROP_CYCLER(cycler), NULL);
 
-    if (!cycler->image_files)
-        return NULL;
+    if (cycler->image_files == NULL) {
+        if (cycler->used_image_files == NULL) {
+            return NULL;
+        } else {
+            cycler->image_files = cycler->used_image_files;
+            cycler->used_image_files = NULL;
+        }
+    }
 
     n_items = g_list_length(cycler->image_files);
 
@@ -692,8 +712,11 @@ xfdesktop_backdrop_cycler_choose_random(XfdesktopBackdropCycler *cycler) {
 
     cycler->prev_random_index = cur_file;
 
-    /* return a copy of the new random item */
-    return G_FILE(g_list_nth(cycler->image_files, cur_file)->data);
+    GList *link = g_list_nth(cycler->image_files, cur_file);
+    cycler->image_files = g_list_remove_link(cycler->image_files, link);
+    cycler->used_image_files = g_list_concat(link, cycler->used_image_files);
+
+    return G_FILE(link->data);
 }
 
 /* Provides a mapping of image files in the parent folder of file. It selects
@@ -891,7 +914,7 @@ xfdesktop_backdrop_cycler_set_image_filename(XfdesktopBackdropCycler *cycler, co
     }
 
     /* We need to free the image_files if image_path changed directories */
-    if (cycler->image_files != NULL || cycler->monitor != NULL) {
+    if (cycler->image_files != NULL || cycler->used_image_files != NULL || cycler->monitor != NULL) {
         if (cycler->cur_image_file != NULL) {
             old_dir = g_file_get_parent(cycler->cur_image_file);
         }
@@ -902,10 +925,10 @@ xfdesktop_backdrop_cycler_set_image_filename(XfdesktopBackdropCycler *cycler, co
         /* Directories did change */
         if (!xfdesktop_g_file_equal0(old_dir, new_dir)) {
             /* Free the image list if we had one */
-            if (cycler->image_files != NULL) {
-                g_list_free_full(cycler->image_files, g_object_unref);
-                cycler->image_files = NULL;
-            }
+            g_list_free_full(cycler->image_files, g_object_unref);
+            cycler->image_files = NULL;
+            g_list_free_full(cycler->used_image_files, g_object_unref);
+            cycler->used_image_files = NULL;
 
             /* release the directory monitor */
             xfdesktop_backdrop_clear_directory_monitor(cycler);
@@ -943,12 +966,12 @@ xfdesktop_backdrop_cycler_set_enabled(XfdesktopBackdropCycler *cycler, gboolean 
             if (cycler->cur_image_file != NULL) {
                 xfdesktop_backdrop_cycler_load_image_files(cycler);
             }
-        }
-        else if (cycler->image_files)
-        {
+        } else {
             /* we're not cycling anymore, free the image files list */
             g_list_free_full(cycler->image_files, g_object_unref);
             cycler->image_files = NULL;
+            g_list_free_full(cycler->used_image_files, g_object_unref);
+            cycler->used_image_files = NULL;
         }
     }
 }
@@ -1082,7 +1105,12 @@ xfdesktop_backdrop_cycler_set_random_order(XfdesktopBackdropCycler *cycler, gboo
         cycler->random_order = random_order;
 
         /* If we have an image list and care about order now, sort the list */
-        if (!random_order && cycler->image_files) {
+        if (!random_order) {
+            if (cycler->used_image_files != NULL) {
+                cycler->image_files = g_list_concat(cycler->image_files, cycler->used_image_files);
+                cycler->used_image_files = NULL;
+            }
+
             guint num_items = g_list_length(cycler->image_files);
             if (num_items > 1) {
                 cycler->image_files = sort_image_list(cycler->image_files, num_items);
