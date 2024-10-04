@@ -87,12 +87,7 @@ enum
     SIG_QUERY_ICON_TOOLTIP,
     SIG_START_GRID_RESIZE,
     SIG_END_GRID_RESIZE,
-    SIG_SELECT_ALL,
-    SIG_UNSELECT_ALL,
-    SIG_SELECT_CURSOR_ITEM,
-    SIG_TOGGLE_CURSOR_ITEM,
     SIG_MOVE_CURSOR,
-    SIG_ACTIVATE_SELECTED_ITEMS,
     SIG_RESIZE_EVENT,
 
     SIG_N_SIGNALS,
@@ -547,8 +542,6 @@ static void xfdesktop_icon_view_xfconf_tooltip_icon_size_changed(XfconfChannel *
                                                                  const GValue *value,
                                                                  XfdesktopIconView *icon_view);
 
-static void xfdesktop_icon_view_real_select_cursor_item(XfdesktopIconView *icon_view);
-static void xfdesktop_icon_view_real_toggle_cursor_item(XfdesktopIconView *icon_view);
 static gboolean xfdesktop_icon_view_real_move_cursor(XfdesktopIconView *icon_view,
                                                      GtkMovementStep step,
                                                      gint count);
@@ -639,8 +632,6 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
     widget_class->focus_in_event = xfdesktop_icon_view_focus_in;
     widget_class->focus_out_event = xfdesktop_icon_view_focus_out;
 
-    klass->select_cursor_item = xfdesktop_icon_view_real_select_cursor_item;
-    klass->toggle_cursor_item = xfdesktop_icon_view_real_toggle_cursor_item;
     klass->move_cursor = xfdesktop_icon_view_real_move_cursor;
 
     __signals[SIG_ICON_SELECTION_CHANGED] = g_signal_new("icon-selection-changed",
@@ -715,24 +706,6 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
                                                     NULL, NULL,
                                                     g_cclosure_marshal_VOID__VOID,
                                                     G_TYPE_NONE, 0);
-
-    __signals[SIG_SELECT_CURSOR_ITEM] = g_signal_new(I_("select-cursor-item"),
-                                                     XFDESKTOP_TYPE_ICON_VIEW,
-                                                     G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-                                                     G_STRUCT_OFFSET(XfdesktopIconViewClass,
-                                                                     select_cursor_item),
-                                                     NULL, NULL,
-                                                     g_cclosure_marshal_VOID__VOID,
-                                                     G_TYPE_NONE, 0);
-
-    __signals[SIG_TOGGLE_CURSOR_ITEM] = g_signal_new(I_("toggle-cursor-item"),
-                                                     XFDESKTOP_TYPE_ICON_VIEW,
-                                                     G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-                                                     G_STRUCT_OFFSET(XfdesktopIconViewClass,
-                                                                     toggle_cursor_item),
-                                                     NULL, NULL,
-                                                     g_cclosure_marshal_VOID__VOID,
-                                                     G_TYPE_NONE, 0);
 
     __signals[SIG_MOVE_CURSOR] = g_signal_new(I_("move-cursor"),
                                               XFDESKTOP_TYPE_ICON_VIEW,
@@ -916,14 +889,6 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
 
 #undef DECL_COLUMN_PROP
 #undef PARAM_FLAGS
-
-    /* same binding entries as GtkIconView */
-#if 0
-    gtk_binding_entry_add_signal(binding_set, GDK_KEY_space, GDK_CONTROL_MASK,
-                                 "toggle-cursor-item", 0);
-    gtk_binding_entry_add_signal(binding_set, GDK_KEY_KP_Space, GDK_CONTROL_MASK,
-                                 "toggle-cursor-item", 0);
-#endif
 
     xfdesktop_icon_view_add_move_binding(binding_set, GDK_KEY_Up, 0,
                                          GTK_MOVEMENT_DISPLAY_LINES, -1);
@@ -1726,6 +1691,7 @@ xfdesktop_icon_view_key_press(GtkWidget *widget, GdkEventKey *evt) {
     /* since we're NO_WINDOW, events don't get delivered to us normally,
      * so we have to activate the bindings manually */
     ret = gtk_bindings_activate_event(G_OBJECT(icon_view), evt);
+    DBG("activated action? %d", ret);
     if(ret == FALSE) {
         GdkModifierType ignore_modifiers = gtk_accelerator_get_default_mod_mask();
         if((evt->state & ignore_modifiers) == 0) {
@@ -3271,29 +3237,6 @@ xfdesktop_icon_view_draw(GtkWidget *widget,
 }
 
 static void
-xfdesktop_icon_view_real_select_cursor_item(XfdesktopIconView *icon_view)
-{
-    DBG("entering");
-
-    if(icon_view->priv->cursor)
-        xfdesktop_icon_view_select_item_internal(icon_view, icon_view->priv->cursor, TRUE);
-}
-
-static void
-xfdesktop_icon_view_real_toggle_cursor_item(XfdesktopIconView *icon_view)
-{
-    DBG("entering");
-
-    if (icon_view->priv->cursor != NULL) {
-        if (icon_view->priv->cursor->selected) {
-            xfdesktop_icon_view_unselect_item_internal(icon_view, icon_view->priv->cursor, TRUE);
-        } else {
-            xfdesktop_icon_view_select_item_internal(icon_view, icon_view->priv->cursor, TRUE);
-        }
-    }
-}
-
-static void
 xfdesktop_icon_view_select_between(XfdesktopIconView *icon_view,
                                    ViewItem *start_item,
                                    ViewItem *end_item)
@@ -4697,6 +4640,19 @@ xfdesktop_icon_view_select_item(XfdesktopIconView *icon_view,
     item = xfdesktop_icon_view_find_item(icon_view, iter);
     if (item != NULL && !item->selected) {
         xfdesktop_icon_view_select_item_internal(icon_view, item, TRUE);
+    }
+}
+
+void
+xfdesktop_icon_view_toggle_cursor(XfdesktopIconView *icon_view) {
+    DBG("entering");
+
+    if (icon_view->priv->cursor != NULL) {
+        if (icon_view->priv->cursor->selected) {
+            xfdesktop_icon_view_unselect_item_internal(icon_view, icon_view->priv->cursor, TRUE);
+        } else {
+            xfdesktop_icon_view_select_item_internal(icon_view, icon_view->priv->cursor, TRUE);
+        }
     }
 }
 

@@ -74,6 +74,7 @@ static GtkMenu *xfdesktop_window_icon_manager_get_context_menu(XfdesktopIconView
                                                                gint popup_x,
                                                                gint popup_y);
 static void xfdesktop_window_icon_manager_activate_icons(XfdesktopIconViewManager *manager);
+static void xfdesktop_window_icon_manager_toggle_cursor_icon(XfdesktopIconViewManager *manager);
 static void xfdesktop_window_icon_manager_unselect_all_icons(XfdesktopIconViewManager *manager);
 static void xfdesktop_window_icon_manager_sort_icons(XfdesktopIconViewManager *manager,
                                                      GtkSortType sort_type);
@@ -118,6 +119,7 @@ xfdesktop_window_icon_manager_class_init(XfdesktopWindowIconManagerClass *klass)
     ivm_class->desktop_removed = xfdesktop_window_icon_manager_desktop_removed;
     ivm_class->get_context_menu = xfdesktop_window_icon_manager_get_context_menu;
     ivm_class->activate_icons = xfdesktop_window_icon_manager_activate_icons;
+    ivm_class->toggle_cursor_icon = xfdesktop_window_icon_manager_toggle_cursor_icon;
     ivm_class->unselect_all_icons = xfdesktop_window_icon_manager_unselect_all_icons;
     ivm_class->sort_icons = xfdesktop_window_icon_manager_sort_icons;
 }
@@ -266,6 +268,16 @@ xfdesktop_window_icon_manager_activate_icons(XfdesktopIconViewManager *manager) 
     MonitorData *mdata = find_active_monitor_data(wmanager);
     if (mdata != NULL) {
         icon_view_icon_activated(xfdesktop_icon_view_holder_get_icon_view(mdata->holder), mdata);
+    }
+}
+
+static void
+xfdesktop_window_icon_manager_toggle_cursor_icon(XfdesktopIconViewManager *manager) {
+    XfdesktopWindowIconManager *wmanager = XFDESKTOP_WINDOW_ICON_MANAGER(manager);
+    MonitorData *mdata = find_active_monitor_data(wmanager);
+    if (mdata != NULL) {
+        XfdesktopIconView *icon_view = xfdesktop_icon_view_holder_get_icon_view(mdata->holder);
+        xfdesktop_icon_view_toggle_cursor(icon_view);
     }
 }
 

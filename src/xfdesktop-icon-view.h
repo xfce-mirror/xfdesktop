@@ -73,9 +73,6 @@ struct _XfdesktopIconViewClass
                               gint new_cols);
     void (*end_grid_resize)(XfdesktopIconView *icon_view);
 
-    void (*select_cursor_item)(XfdesktopIconView *icon_view);
-    void (*toggle_cursor_item)(XfdesktopIconView *icon_view);
-
     gboolean (*move_cursor)(XfdesktopIconView *icon_view,
                             GtkMovementStep step,
                             gint count);
@@ -170,6 +167,7 @@ GList *xfdesktop_icon_view_get_selected_items(XfdesktopIconView *icon_view) G_GN
 
 void xfdesktop_icon_view_select_item(XfdesktopIconView *icon_view,
                                      GtkTreeIter *iter);
+void xfdesktop_icon_view_toggle_cursor(XfdesktopIconView *icon_view);
 void xfdesktop_icon_view_select_all(XfdesktopIconView *icon_view);
 void xfdesktop_icon_view_unselect_item(XfdesktopIconView *icon_view,
                                        GtkTreeIter *iter);
