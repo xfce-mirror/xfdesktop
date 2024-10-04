@@ -42,7 +42,7 @@ struct _XfdesktopBackdropCycler {
     guint timer_id;
     gint prev_random_index;
 
-    gchar *image_path;
+    GFile *cur_image_file;
     /* Cached list of images in the same folder as image_path */
     GList *image_files;
     /* monitor for the image_files directory */
@@ -279,7 +279,7 @@ xfdesktop_backdrop_cycler_get_property(GObject *object, guint property_id, GValu
             break;
 
         case PROP_IMAGE_FILENAME:
-            g_value_set_string(value, cycler->image_path);
+            g_value_set_string(value, cycler->cur_image_file != NULL ? g_file_peek_path(cycler->cur_image_file) : NULL);
             break;
 
         case PROP_ENABLED:
@@ -312,8 +312,10 @@ xfdesktop_backdrop_cycler_finalize(GObject *object) {
 
     g_signal_handlers_disconnect_by_data(cycler->channel, cycler);
 
-    g_list_free_full(cycler->image_files, g_free);
-    g_free(cycler->image_path);
+    g_list_free_full(cycler->image_files, g_object_unref);
+    if (cycler->cur_image_file != NULL) {
+        g_object_unref(cycler->cur_image_file);
+    }
 
     g_free(cycler->property_prefix);
     g_object_unref(cycler->channel);
@@ -337,13 +339,22 @@ xfdesktop_backdrop_clear_directory_monitor(XfdesktopBackdropCycler *cycler)
     }
 }
 
+static gboolean
+xfdesktop_g_file_equal0(GFile *a, GFile *b) {
+    if (a != NULL && b != NULL) {
+        return g_file_equal(a, b);
+    } else {
+        return a == NULL && b == NULL;
+    }
+}
+
 /* we compare by the collate key so the image listing is the same as how
  * xfdesktop-settings displays the images */
 static gint
-glist_compare_by_collate_key(const gchar *a, const gchar *b) {
+glist_compare_by_file_collate_key(GFile *a, GFile *b) {
     gint ret;
-    gchar *a_key = g_utf8_collate_key_for_filename(a, -1);
-    gchar *b_key = g_utf8_collate_key_for_filename(b, -1);
+    gchar *a_key = g_utf8_collate_key_for_filename(g_file_peek_path(a), -1);
+    gchar *b_key = g_utf8_collate_key_for_filename(g_file_peek_path(b), -1);
 
     ret = g_strcmp0(a_key, b_key);
 
@@ -355,24 +366,22 @@ glist_compare_by_collate_key(const gchar *a, const gchar *b) {
 
 typedef struct {
     gchar *key;
-    gchar *string;
-} KeyStringPair;
+    GFile *file;
+} KeyFilePair;
 
 static int qsort_compare_pair_by_key(const void *a, const void *b) {
-    const gchar *a_key = ((const KeyStringPair *)a)->key;
-    const gchar *b_key = ((const KeyStringPair *)b)->key;
+    const gchar *a_key = ((const KeyFilePair *)a)->key;
+    const gchar *b_key = ((const KeyFilePair *)b)->key;
     return g_strcmp0(a_key, b_key);
 }
 
 static void
-xfdesktop_backdrop_cycler_update_image_filename(XfdesktopBackdropCycler *cycler,
-                                                const gchar *image_filename)
-{
+xfdesktop_backdrop_cycler_update_image_file(XfdesktopBackdropCycler *cycler, GFile *image_file) {
     g_return_if_fail(XFDESKTOP_IS_BACKDROP_CYCLER(cycler));
+    g_return_if_fail(G_IS_FILE(image_file));
 
-    if (g_strcmp0(cycler->image_path, image_filename) != 0) {
-        g_free(cycler->image_path);
-        cycler->image_path = g_strdup(image_filename);
+    if (!xfdesktop_g_file_equal0(cycler->cur_image_file, image_file)) {
+        cycler->cur_image_file = g_object_ref(image_file);
     }
 
     // Usually we'd only do the following stuff if the file name hadn't
@@ -382,12 +391,23 @@ xfdesktop_backdrop_cycler_update_image_filename(XfdesktopBackdropCycler *cycler,
     g_signal_handlers_block_by_func(cycler->channel,
                                     xfdesktop_backdrop_cycler_image_filename_changed,
                                     cycler);
-    xfconf_channel_set_string(cycler->channel, property_name, cycler->image_path);
+    xfconf_channel_set_string(cycler->channel, property_name, g_file_peek_path(cycler->cur_image_file));
     g_signal_handlers_unblock_by_func(cycler->channel,
                                       xfdesktop_backdrop_cycler_image_filename_changed,
                                       cycler);
 
     g_free(property_name);
+}
+
+static gint
+xfdesktop_g_file_compare(GFile *a, GFile *b) {
+    if (g_file_equal(a, b)) {
+        return 0;
+    } else {
+        const gchar *path_a = g_file_peek_path(a);
+        const gchar *path_b = g_file_peek_path(b);
+        return g_strcmp0(path_a, path_b);
+    }
 }
 
 static void
@@ -398,7 +418,6 @@ cb_xfdesktop_backdrop_cycler_image_files_changed(GFileMonitor *monitor,
                                                  gpointer user_data)
 {
     XfdesktopBackdropCycler *cycler = XFDESKTOP_BACKDROP_CYCLER(user_data);
-    gchar *changed_file = NULL;
     GList *item;
 
     switch (event) {
@@ -408,20 +427,16 @@ cb_xfdesktop_backdrop_cycler_image_files_changed(GFileMonitor *monitor,
                 break;
             }
 
-            changed_file = g_file_get_path(file);
-
-            XF_DEBUG("file added: %s", changed_file);
+            XF_DEBUG("file added: %s", g_file_peek_path(file));
 
             /* Make sure we don't already have the new file in the list */
-            if (g_list_find(cycler->image_files, changed_file)) {
-                g_free(changed_file);
+            if (g_list_find_custom(cycler->image_files, file, (GCompareFunc)xfdesktop_g_file_compare)) {
                 return;
             }
 
             /* If the new file is not an image then we don't have to do
              * anything */
-            if (!xfdesktop_image_file_is_valid(changed_file)) {
-                g_free(changed_file);
+            if (!xfdesktop_image_file_is_valid(file)) {
                 return;
             }
 
@@ -430,12 +445,12 @@ cb_xfdesktop_backdrop_cycler_image_files_changed(GFileMonitor *monitor,
                  * it sorted to our list, don't free changed file, that will
                  * happen when it is removed */
                 cycler->image_files = g_list_insert_sorted(cycler->image_files,
-                                                                   changed_file,
-                                                                   (GCompareFunc)glist_compare_by_collate_key);
+                                                           g_object_ref(file),
+                                                           (GCompareFunc)glist_compare_by_file_collate_key);
             } else {
                 /* Same as above except we don't care about the list's order
                  * so just add it */
-                cycler->image_files = g_list_prepend(cycler->image_files, changed_file);
+                cycler->image_files = g_list_prepend(cycler->image_files, g_object_ref(file));
             }
             break;
 
@@ -445,20 +460,19 @@ cb_xfdesktop_backdrop_cycler_image_files_changed(GFileMonitor *monitor,
                 break;
             }
 
-            changed_file = g_file_get_path(file);
 
-            XF_DEBUG("file deleted: %s", changed_file);
+            XF_DEBUG("file deleted: %s", g_file_peek_path(file));
 
             /* find the file in the list */
             item = g_list_find_custom(cycler->image_files,
-                                      changed_file,
-                                      (GCompareFunc)g_strcmp0);
+                                      file,
+                                      (GCompareFunc)xfdesktop_g_file_compare);
 
             /* remove it */
-            if (item)
+            if (item) {
+                g_object_unref(item->data);
                 cycler->image_files = g_list_delete_link(cycler->image_files, item);
-
-            g_free(changed_file);
+            }
 
             if (cycler->timer_id != 0) {
                 g_source_remove(cycler->timer_id);
@@ -472,10 +486,10 @@ cb_xfdesktop_backdrop_cycler_image_files_changed(GFileMonitor *monitor,
 }
 
 /* Equivalent to (except for not being a stable sort), but faster than
- * g_list_sort(list, (GCompareFunc)glist_compare_by_collate_key) */
+ * g_list_sort(list, (GCompareFunc)glist_compare_by_file_collate_key) */
 static GList *
 sort_image_list(GList *list, guint list_size) {
-    KeyStringPair *array;
+    KeyFilePair *array;
     guint i;
     GList *l;
 
@@ -494,8 +508,9 @@ sort_image_list(GList *list, guint list_size) {
 
     /* Copy list contents to the array and generate collation keys */
     for (l = list, i = 0; l; l = l->next, ++i) {
-        array[i].string = l->data;
-        array[i].key = g_utf8_collate_key_for_filename(array[i].string, -1);
+        GFile *file = G_FILE(l->data);
+        array[i].file = file;
+        array[i].key = g_utf8_collate_key_for_filename(g_file_peek_path(file), -1);
     }
 
     /* Sort the array */
@@ -503,24 +518,26 @@ sort_image_list(GList *list, guint list_size) {
 
     /* Copy sorted array back to the list and deallocate the collation keys */
     for (l = list, i = 0; l; l = l->next, ++i) {
-        l->data = array[i].string;
+        l->data = array[i].file;
         g_free(array[i].key);
     }
 
     g_free(array);
 
 #if TEST_IMAGE_SORTING
-    list2 = g_list_sort(list2, (GCompareFunc)glist_compare_by_collate_key);
+    list2 = g_list_sort(list2, (GCompareFunc)glist_compare_by_file_collate_key);
     if (g_list_length(list) != g_list_length(list2)) {
         printf("Image sorting test FAILED: list size is not correct.");
     } else {
         GList *l2;
         gboolean data_matches = TRUE, pointers_match = TRUE;
         for (l = list, l2 = list2; l; l = l->next, l2 = l2->next) {
-            if (g_strcmp0(l->data, l2->data) != 0)
+            if (!g_file_equal(l->data, l2->data)) {
                 data_matches = FALSE;
-            if (l->data != l2->data)
+            }
+            if (l->data != l2->data) {
                 pointers_match = FALSE;
+            }
         }
         if (data_matches) {
             printf("Image sorting test SUCCEEDED: ");
@@ -550,37 +567,33 @@ sort_image_list(GList *list, guint list_size) {
 
 /* Returns a GList of all the image files in the parent directory of filename */
 static GList *
-list_image_files_in_dir(XfdesktopBackdropCycler *cycler, const gchar *filename) {
-    GDir *dir;
-    gboolean needs_slash = TRUE;
-    const gchar *file;
+list_image_files_in_dir(XfdesktopBackdropCycler *cycler, GFile *file) {
     GList *files = NULL;
     guint file_count = 0;
-    gchar *dir_name;
 
-    dir_name = g_path_get_dirname(filename);
+    GFile *parent = g_file_get_parent(file);
+    GFileEnumerator *dir = g_file_enumerate_children(parent, "standard::*", G_FILE_QUERY_INFO_NONE, NULL, NULL);
+    if (dir != NULL) {
+        for (;;) {
+            GFileInfo *file_info = g_file_enumerator_next_file(dir, NULL, NULL);
+            if (file_info == NULL) {
+                break;
+            }
 
-    dir = g_dir_open(dir_name, 0, 0);
-    if (!dir) {
-        g_free(dir_name);
-        return NULL;
+            GFile *current_file = g_file_enumerator_get_child(dir, file_info);
+            if (xfdesktop_image_file_is_valid(current_file)) {
+                files = g_list_prepend(files, current_file);
+                ++file_count;
+            } else {
+                g_object_unref(current_file);
+            }
+
+            g_object_unref(file_info);
+        }
+
+        g_object_unref(dir);
     }
-
-    if (dir_name[strlen(dir_name)-1] == '/')
-        needs_slash = FALSE;
-
-    while ((file = g_dir_read_name(dir))) {
-        gchar *current_file = g_strdup_printf(needs_slash ? "%s/%s" : "%s%s",
-                                              dir_name, file);
-        if (xfdesktop_image_file_is_valid(current_file)) {
-            files = g_list_prepend(files, current_file);
-            ++file_count;
-        } else
-            g_free(current_file);
-    }
-
-    g_dir_close(dir);
-    g_free(dir_name);
+    g_object_unref(parent);
 
     /* Only sort if there's more than 1 item and we're not randomly picking
      * images from the list */
@@ -593,70 +606,68 @@ list_image_files_in_dir(XfdesktopBackdropCycler *cycler, const gchar *filename) 
 
 static void
 xfdesktop_backdrop_cycler_load_image_files(XfdesktopBackdropCycler *cycler) {
+    g_return_if_fail(G_IS_FILE(cycler->cur_image_file));
+
     TRACE("entering");
 
     /* generate the image_files list if it doesn't exist and we're cycling
      * backdrops */
     if (cycler->image_files == NULL && xfdesktop_backdrop_cycler_is_enabled(cycler)) {
         xfdesktop_backdrop_clear_directory_monitor(cycler);
-        cycler->image_files = list_image_files_in_dir(cycler, cycler->image_path);
+        cycler->image_files = list_image_files_in_dir(cycler, cycler->cur_image_file);
     }
 
     /* Always monitor the directory even if we aren't cycling so we know if
      * our current wallpaper has changed by an external program/script */
-    if (cycler->image_style != XFCE_BACKDROP_IMAGE_NONE && cycler->image_path != NULL && cycler->monitor == NULL) {
-        gchar *dir_name = g_path_get_dirname(cycler->image_path);
-        GFile *gfile = g_file_new_for_path(dir_name);
+    if (cycler->image_style != XFCE_BACKDROP_IMAGE_NONE && cycler->cur_image_file != NULL && cycler->monitor == NULL) {
+        GFile *parent = g_file_get_parent(cycler->cur_image_file);
 
         /* monitor the directory for changes */
-        cycler->monitor = g_file_monitor(gfile, G_FILE_MONITOR_NONE, NULL, NULL);
+        cycler->monitor = g_file_monitor(parent, G_FILE_MONITOR_NONE, NULL, NULL);
         g_signal_connect(cycler->monitor, "changed",
                          G_CALLBACK(cb_xfdesktop_backdrop_cycler_image_files_changed),
                          cycler);
 
-        g_free(dir_name);
-        g_object_unref(gfile);
+        g_object_unref(parent);
     }
 }
 
 /* Gets the next valid image file in the folder. Free when done using it
  * returns NULL on fail. */
-static gchar *
+static GFile *
 xfdesktop_backdrop_cycler_choose_next(XfdesktopBackdropCycler *cycler) {
-    GList *current_file;
-    const gchar *filename;
-
     TRACE("entering");
 
     g_return_val_if_fail(XFDESKTOP_IS_BACKDROP_CYCLER(cycler), NULL);
-
-    filename = cycler->image_path;
 
     if (!cycler->image_files)
         return NULL;
 
     /* Get the our current background in the list */
-    current_file = g_list_find_custom(cycler->image_files, filename, (GCompareFunc)g_strcmp0);
+    GList *cur_link = g_list_find_custom(cycler->image_files,
+                                         cycler->cur_image_file,
+                                         (GCompareFunc)xfdesktop_g_file_compare);
 
     /* if somehow we don't have a valid file, grab the first one available */
-    if (current_file == NULL) {
-        current_file = g_list_first(cycler->image_files);
+    if (cur_link == NULL) {
+        cur_link = g_list_first(cycler->image_files);
     } else {
         /* We want the next valid image file in the dir */
-        current_file = g_list_next(current_file);
+        cur_link = g_list_next(cur_link);
 
         /* we hit the end of the list, wrap around to the front */
-        if (current_file == NULL)
-            current_file = g_list_first(cycler->image_files);
+        if (cur_link == NULL) {
+            cur_link = g_list_first(cycler->image_files);
+        }
     }
 
     /* return a copy of our new item */
-    return g_strdup(current_file->data);
+    return G_FILE(cur_link->data);
 }
 
 /* Gets a random valid image file in the folder. Free when done using it.
  * returns NULL on fail. */
-static gchar *
+static GFile *
 xfdesktop_backdrop_cycler_choose_random(XfdesktopBackdropCycler *cycler) {
     gint n_items = 0, cur_file;
 
@@ -671,7 +682,7 @@ xfdesktop_backdrop_cycler_choose_random(XfdesktopBackdropCycler *cycler) {
 
     /* If there's only 1 item, just return it, easy */
     if (1 == n_items) {
-        return g_strdup(g_list_first(cycler->image_files)->data);
+        return G_FILE(g_list_first(cycler->image_files)->data);
     }
 
     do {
@@ -682,14 +693,14 @@ xfdesktop_backdrop_cycler_choose_random(XfdesktopBackdropCycler *cycler) {
     cycler->prev_random_index = cur_file;
 
     /* return a copy of the new random item */
-    return g_strdup(g_list_nth(cycler->image_files, cur_file)->data);
+    return G_FILE(g_list_nth(cycler->image_files, cur_file)->data);
 }
 
 /* Provides a mapping of image files in the parent folder of file. It selects
  * the image based on the hour of the day scaled for how many images are in
  * the directory, using the first 24 if there are more.
  * Returns a new image path or NULL on failure. Free when done using it. */
-static gchar *
+static GFile *
 xfdesktop_backdrop_cycler_choose_chronological(XfdesktopBackdropCycler *cycler) {
     GDateTime *datetime;
     GList *new_file;
@@ -706,7 +717,7 @@ xfdesktop_backdrop_cycler_choose_chronological(XfdesktopBackdropCycler *cycler) 
 
     /* If there's only 1 item, just return it, easy */
     if (1 == n_items) {
-        return g_strdup(g_list_first(cycler->image_files)->data);
+        return G_FILE(g_list_first(cycler->image_files)->data);
     }
 
     datetime = g_date_time_new_now_local();
@@ -721,7 +732,7 @@ xfdesktop_backdrop_cycler_choose_chronological(XfdesktopBackdropCycler *cycler) 
     g_date_time_unref(datetime);
 
     /* return a copy of our new file */
-    return g_strdup(new_file->data);
+    return G_FILE(new_file->data);
 }
 
 static void
@@ -732,7 +743,7 @@ xfdesktop_backdrop_cycler_do_cycle(XfdesktopBackdropCycler *cycler) {
 
     /* sanity checks */
     if (xfdesktop_backdrop_cycler_is_enabled(cycler)) {
-        gchar *new_backdrop = NULL;
+        GFile *new_backdrop = NULL;
 
         if (cycler->period == XFCE_BACKDROP_PERIOD_CHRONOLOGICAL) {
             /* chronological first */
@@ -746,11 +757,9 @@ xfdesktop_backdrop_cycler_do_cycle(XfdesktopBackdropCycler *cycler) {
         }
 
         /* Only emit the cycle signal if something changed */
-        if (g_strcmp0(cycler->image_path, new_backdrop) != 0) {
-            xfdesktop_backdrop_cycler_update_image_filename(cycler, new_backdrop);
+        if (new_backdrop != NULL) {
+            xfdesktop_backdrop_cycler_update_image_file(cycler, new_backdrop);
         }
-
-        g_free(new_backdrop);
     }
 }
 
@@ -866,30 +875,35 @@ xfdesktop_backdrop_cycler_set_image_style(XfdesktopBackdropCycler *cycler, XfceB
  **/
 static void
 xfdesktop_backdrop_cycler_set_image_filename(XfdesktopBackdropCycler *cycler, const gchar *filename) {
-    gchar *old_dir = NULL, *new_dir = NULL;
+    GFile *old_dir = NULL, *new_dir = NULL;
     g_return_if_fail(XFDESKTOP_IS_BACKDROP_CYCLER(cycler));
 
     TRACE("entering, filename %s", filename);
 
+    GFile *file = filename != NULL ? g_file_new_for_path(filename) : NULL;
+
     /* Don't do anything if the filename doesn't change */
-    if (g_strcmp0(cycler->image_path, filename) == 0) {
+    if (xfdesktop_g_file_equal0(cycler->cur_image_file, file)) {
+        if (file != NULL) {
+            g_object_unref(file);
+        }
         return;
     }
 
     /* We need to free the image_files if image_path changed directories */
     if (cycler->image_files != NULL || cycler->monitor != NULL) {
-        if (cycler->image_path != NULL) {
-            old_dir = g_path_get_dirname(cycler->image_path);
+        if (cycler->cur_image_file != NULL) {
+            old_dir = g_file_get_parent(cycler->cur_image_file);
         }
-        if (filename != NULL) {
-            new_dir = g_path_get_dirname(filename);
+        if (file != NULL) {
+            new_dir = g_file_get_parent(file);
         }
 
         /* Directories did change */
-        if (g_strcmp0(old_dir, new_dir) != 0) {
+        if (!xfdesktop_g_file_equal0(old_dir, new_dir)) {
             /* Free the image list if we had one */
             if (cycler->image_files != NULL) {
-                g_list_free_full(cycler->image_files, g_free);
+                g_list_free_full(cycler->image_files, g_object_unref);
                 cycler->image_files = NULL;
             }
 
@@ -897,20 +911,18 @@ xfdesktop_backdrop_cycler_set_image_filename(XfdesktopBackdropCycler *cycler, co
             xfdesktop_backdrop_clear_directory_monitor(cycler);
         }
 
-        g_free(old_dir);
-        g_free(new_dir);
+        g_object_unref(old_dir);
+        g_object_unref(new_dir);
     }
 
-    /* Now we can free the old path and setup the new one */
-    g_free(cycler->image_path);
-
-    if (filename != NULL) {
-        cycler->image_path = g_strdup(filename);
-    } else {
-        cycler->image_path = NULL;
+    if (cycler->cur_image_file != NULL) {
+        g_object_unref(cycler->cur_image_file);
     }
+    cycler->cur_image_file = file;
     
-    xfdesktop_backdrop_cycler_load_image_files(cycler);
+    if (cycler->cur_image_file != NULL) {
+        xfdesktop_backdrop_cycler_load_image_files(cycler);
+    }
 
     g_object_notify(G_OBJECT(cycler), "image-filename");
 }
@@ -928,12 +940,14 @@ xfdesktop_backdrop_cycler_set_enabled(XfdesktopBackdropCycler *cycler, gboolean 
 
         if (cycle_backdrop) {
             /* We're cycling now, so load up an image list */
-            xfdesktop_backdrop_cycler_load_image_files(cycler);
+            if (cycler->cur_image_file != NULL) {
+                xfdesktop_backdrop_cycler_load_image_files(cycler);
+            }
         }
         else if (cycler->image_files)
         {
             /* we're not cycling anymore, free the image files list */
-            g_list_free_full(cycler->image_files, g_free);
+            g_list_free_full(cycler->image_files, g_object_unref);
             cycler->image_files = NULL;
         }
     }
@@ -1083,6 +1097,7 @@ xfdesktop_backdrop_cycler_image_filename_changed(XfconfChannel *channel,
                                                  const GValue *value,
                                                  XfdesktopBackdropCycler *cycler)
 {
+    TRACE("entering");
     // This callback handles external changes, like if the user changes the
     // filename in the settings UI.  If _we_ change the filename because it's
     // time to cycle, we block this signal handler temporarily.
@@ -1095,6 +1110,8 @@ XfdesktopBackdropCycler *
 xfdesktop_backdrop_cycler_new(XfconfChannel *channel, const gchar *property_prefix) {
     g_return_val_if_fail(XFCONF_IS_CHANNEL(channel), NULL);
     g_return_val_if_fail(property_prefix != NULL && property_prefix[0] == '/', NULL);
+
+    DBG("entering(%s)", property_prefix);
 
     return g_object_new(XFDESKTOP_TYPE_BACKDROP_CYCLER,
                         "channel", channel,
@@ -1111,7 +1128,9 @@ xfdesktop_backdrop_cycler_get_property_prefix(XfdesktopBackdropCycler *cycler) {
 gboolean
 xfdesktop_backdrop_cycler_is_enabled(XfdesktopBackdropCycler *cycler) {
     g_return_val_if_fail(XFDESKTOP_IS_BACKDROP_CYCLER(cycler), FALSE);
-    return cycler->enabled && cycler->image_style != XFCE_BACKDROP_IMAGE_NONE && cycler->image_path != NULL;
+    return cycler->enabled
+        && cycler->image_style != XFCE_BACKDROP_IMAGE_NONE
+        && cycler->cur_image_file != NULL;
 }
 
 void
