@@ -1682,34 +1682,28 @@ xfdesktop_icon_view_keyboard_navigate(XfdesktopIconView *icon_view,
 
 static gboolean
 xfdesktop_icon_view_key_press(GtkWidget *widget, GdkEventKey *evt) {
-    XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
-    gboolean ret = FALSE;
-    gboolean could_keyboard_navigate = FALSE;
+    gboolean ret = GTK_WIDGET_CLASS(xfdesktop_icon_view_parent_class)->key_press_event(widget, evt);
 
-    DBG("entering");
+    if (!ret) {
+        DBG("entering");
 
-    /* since we're NO_WINDOW, events don't get delivered to us normally,
-     * so we have to activate the bindings manually */
-    ret = gtk_bindings_activate_event(G_OBJECT(icon_view), evt);
-    DBG("activated action? %d", ret);
-    if(ret == FALSE) {
+        XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
         GdkModifierType ignore_modifiers = gtk_accelerator_get_default_mod_mask();
-        if((evt->state & ignore_modifiers) == 0) {
-            /* Binding not found and key press is not part of a combo.
-             * Now inspect the pressed character. Let's try to find an
+        if ((evt->state & ignore_modifiers) == 0) {
+            /* Now inspect the pressed character. Let's try to find an
              * icon starting with this character and make the icon selected. */
             guint32 unicode = gdk_keyval_to_unicode(evt->keyval);
             if (unicode != 0 && g_unichar_isgraph(unicode)) {
-                could_keyboard_navigate = TRUE;
+                ret = TRUE;
                 xfdesktop_icon_view_keyboard_navigate(icon_view, g_unichar_tolower(unicode));
             }
         }
-    }
 
-    if (!could_keyboard_navigate) {
-        if (icon_view->priv->keyboard_navigation_state != NULL) {
-            g_array_free(icon_view->priv->keyboard_navigation_state, TRUE);
-            icon_view->priv->keyboard_navigation_state = NULL;
+        if (!ret) {
+            if (icon_view->priv->keyboard_navigation_state != NULL) {
+                g_array_free(icon_view->priv->keyboard_navigation_state, TRUE);
+                icon_view->priv->keyboard_navigation_state = NULL;
+            }
         }
     }
 
