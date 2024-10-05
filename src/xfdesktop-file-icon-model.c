@@ -511,6 +511,9 @@ check_create_desktop_folder(XfdesktopFileIconModel *fmodel) {
         g_signal_emit(fmodel, signals[SIG_ERROR], 0, error);
         result = FALSE;
         g_error_free(error);
+    }
+
+    if (info != NULL) {
         g_object_unref(info);
     }
 
