@@ -239,18 +239,20 @@ gboolean xfdesktop_thumbnailer_service_available(XfdesktopThumbnailer *thumbnail
 
 gboolean
 xfdesktop_thumbnailer_is_supported(XfdesktopThumbnailer *thumbnailer,
-                                   gchar *file)
+                                   gchar *filename)
 {
     guint        n;
     gchar       *mime_type = NULL;
 
     g_return_val_if_fail(XFDESKTOP_IS_THUMBNAILER(thumbnailer), FALSE);
-    g_return_val_if_fail(file != NULL, FALSE);
+    g_return_val_if_fail(filename != NULL, FALSE);
 
+    GFile *file = g_file_new_for_path(filename);
     mime_type = xfdesktop_get_file_mimetype(file);
+    g_object_unref(file);
 
     if(mime_type == NULL) {
-        XF_DEBUG("File %s has no mime type", file);
+        XF_DEBUG("File %s has no mime type", filename);
         return FALSE;
     }
 
@@ -407,7 +409,7 @@ xfdesktop_thumbnailer_queue_request_timer(gpointer user_data)
         if(iter->data) {
             file = g_file_new_for_path(iter->data);
             uris[i] = g_file_get_uri(file);
-            mimetypes[i] = xfdesktop_get_file_mimetype(iter->data);
+            mimetypes[i] = xfdesktop_get_file_mimetype(file);
 
             g_object_unref(file);
         }
