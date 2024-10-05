@@ -130,8 +130,6 @@ struct _XfceDesktopPrivate
 #ifdef ENABLE_DESKTOP_ICONS
     gint style_refresh_timer;
 #endif
-
-    gchar *last_filename;
 };
 
 enum
@@ -540,7 +538,6 @@ xfce_desktop_init(XfceDesktop *desktop)
 {
     desktop->priv = xfce_desktop_get_instance_private(desktop);
     desktop->priv->single_workspace_num = -1;
-    desktop->priv->last_filename = g_strdup("");
 }
 
 static void
