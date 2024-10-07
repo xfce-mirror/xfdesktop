@@ -26,6 +26,7 @@
 #include <libxfce4ui/libxfce4ui.h>
 #include <libxfce4windowingui/libxfce4windowingui.h>
 
+#include "common/xfdesktop-common.h"
 #include "common/xfdesktop-keyboard-shortcuts.h"
 #include "xfce-desktop.h"
 #include "xfdesktop-icon-view-holder.h"
@@ -342,7 +343,14 @@ icon_view_icon_activated(XfdesktopIconView *icon_view, MonitorData *mdata) {
     GList *selected = xfdesktop_icon_view_get_selected_items(icon_view);
     XfwWindow *window = window_for_filter_path(mdata->wmanager, mdata, selected != NULL ? selected->data : NULL);
     if (window != NULL) {
-        xfw_window_activate(window, gtk_get_current_event_time(), NULL);
+        XfwSeat *seat = NULL;
+        GdkDevice *device = gtk_get_current_event_device();
+        if (device != NULL) {
+            XfwScreen *screen = xfdesktop_icon_view_manager_get_screen(XFDESKTOP_ICON_VIEW_MANAGER(mdata->wmanager));
+            GdkSeat *gdk_seat = gdk_device_get_seat(device);
+            seat = xfdesktop_find_xfw_seat_for_gdk_seat(screen, gdk_seat);
+        }
+        xfw_window_activate(window, seat, gtk_get_current_event_time(), NULL);
     }
     g_list_free_full(selected, (GDestroyNotify)gtk_tree_path_free);
 }

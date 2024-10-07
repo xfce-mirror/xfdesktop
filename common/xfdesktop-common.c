@@ -424,7 +424,33 @@ xfdesktop_object_unref(gpointer data,
     g_object_unref(data);
 }
 
+XfwSeat *
+xfdesktop_find_xfw_seat_for_gdk_seat(XfwScreen *screen, GdkSeat *gdk_seat) {
+    g_return_val_if_fail(XFW_IS_SCREEN(screen), NULL);
+    g_return_val_if_fail(gdk_seat == NULL || GDK_IS_SEAT(gdk_seat), NULL);
 
+    if (gdk_seat == NULL) {
+        gdk_seat = gdk_display_get_default_seat(gdk_display_get_default());
+    }
+    GdkDisplay *display = gdk_seat_get_display(gdk_seat);
+    GList *gseats = gdk_display_list_seats(display);
+    GList *xseats = xfw_screen_get_seats(screen);
+
+    XfwSeat *xseat = NULL;
+
+    if (g_list_length(gseats) == g_list_length(xseats)) {
+        for (GList *gl = gseats, *xl = xseats; gl != NULL && xl != NULL; gl = gl->next, xl = xl->next) {
+            if (gdk_seat == GDK_SEAT(gl->data)) {
+                xseat = XFW_SEAT(xl->data);
+                break;
+            }
+        }
+    }
+
+    g_list_free(gseats);
+
+    return xseat;
+}
 
 #ifdef G_ENABLE_DEBUG
 /* With --enable-debug=full turn on debugging messages from the start */

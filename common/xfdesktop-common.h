@@ -219,6 +219,9 @@ void xfdesktop_object_ref(gpointer data,
 void xfdesktop_object_unref(gpointer data,
                             GClosure *closure);
 
+XfwSeat *xfdesktop_find_xfw_seat_for_gdk_seat(XfwScreen *screen,
+                                              GdkSeat *gdk_seat);
+
 #if defined(G_HAVE_ISO_VARARGS)
 
 #define XF_DEBUG(...) xfdesktop_debug (__func__, __FILE__, __LINE__, __VA_ARGS__)

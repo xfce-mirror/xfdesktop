@@ -41,8 +41,8 @@
 #include <libxfce4windowing/libxfce4windowing.h>
 #include <libxfce4windowingui/libxfce4windowingui.h>
 
+#include "common/xfdesktop-common.h"
 #include "windowlist.h"
-#include "xfdesktop-common.h"
 
 #define WLIST_MAXLEN 30
 
@@ -117,7 +117,16 @@ activate_window(GtkWidget *w, gpointer user_data)
     if(!xfw_window_is_pinned(xfw_window)) {
         xfw_workspace_activate(xfw_window_get_workspace(xfw_window), NULL);
     }
-    xfw_window_activate(xfw_window, gtk_get_current_event_time(), NULL);
+
+    XfwSeat *seat = NULL;
+    GdkDevice *device = gtk_get_current_event_device();
+    if (device != NULL) {
+        XfwScreen *screen = xfw_window_get_screen(xfw_window);
+        GdkSeat *gdk_seat = gdk_device_get_seat(device);
+        seat = xfdesktop_find_xfw_seat_for_gdk_seat(screen, gdk_seat);
+    }
+
+    xfw_window_activate(xfw_window, seat, gtk_get_current_event_time(), NULL);
 }
 
 static gboolean
