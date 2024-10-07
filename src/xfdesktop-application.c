@@ -1040,7 +1040,7 @@ xfdesktop_application_start(XfdesktopApplication *app)
         g_object_add_weak_pointer(G_OBJECT(app->sm_client), (gpointer *)&app->sm_client);
         xfce_sm_client_set_restart_style(app->sm_client, XFCE_SM_CLIENT_RESTART_IMMEDIATELY);
         xfce_sm_client_set_priority(app->sm_client, XFCE_SM_CLIENT_PRIORITY_DESKTOP);
-        g_signal_connect(app->sm_client, "quit", G_CALLBACK(session_die), app);
+        g_signal_connect_swapped(app->sm_client, "quit", G_CALLBACK(session_die), app);
 
         if(!xfce_sm_client_connect(app->sm_client, &error) && error) {
             g_printerr("Failed to connect to session manager: %s\n", error->message);
