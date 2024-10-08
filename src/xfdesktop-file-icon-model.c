@@ -535,6 +535,7 @@ add_icon(XfdesktopFileIconModel *fmodel, XfdesktopFileIcon *icon) {
     g_signal_connect_swapped(icon, "pixbuf-changed",
                              G_CALLBACK(xfdesktop_icon_view_model_changed), fmodel);
 
+    XF_DEBUG("adding icon %s to icon view", xfdesktop_icon_peek_label(XFDESKTOP_ICON(icon)));
     g_hash_table_replace(fmodel->icons, g_strdup(xfdesktop_file_icon_peek_sort_key(icon)), icon);
     xfdesktop_icon_view_model_append(XFDESKTOP_ICON_VIEW_MODEL(fmodel), icon, icon, NULL);
 }
