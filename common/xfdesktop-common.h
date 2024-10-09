@@ -95,6 +95,7 @@
 #define DESKTOP_ICONS_SINGLE_CLICK_PROP      "/desktop-icons/single-click"
 #define DESKTOP_ICONS_SINGLE_CLICK_ULINE_PROP "/desktop-icons/single-click-underline-hover"
 #define DESKTOP_ICONS_GRAVITY_PROP           "/desktop-icons/gravity"
+#define DESKTOP_ICONS_CONFIRM_SORTING_PROP   "/desktop-icons/confirm-sorting"
 
 #define DESKTOP_ICONS_SHOW_THUMBNAILS        "/desktop-icons/show-thumbnails"
 #define DESKTOP_ICONS_SHOW_HIDDEN_FILES      "/desktop-icons/show-hidden-files"
