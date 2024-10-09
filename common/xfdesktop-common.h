@@ -78,6 +78,8 @@
 #define WINLIST_SHOW_WS_NAMES_PROP "/windowlist-menu/show-workspace-names"
 #define WINLIST_SHOW_WS_SUBMENUS_PROP "/windowlist-menu/show-submenus"
 #define WINLIST_SHOW_ADD_REMOVE_WORKSPACES_PROP "/windowlist-menu/show-add-remove-workspaces"
+#define WINLIST_SHOW_URGENT_WINDOWS_SECTION_PROP "/windowlist-menu/show-urgent-windows-section"
+#define WINLIST_SHOW_ALL_WORKSPACES_PROP "/windowlist-menu/show-all-workspaces"
 
 #define DESKTOP_ICONS_ON_PRIMARY_PROP        "/desktop-icons/primary"
 #define DESKTOP_ICONS_STYLE_PROP             "/desktop-icons/style"

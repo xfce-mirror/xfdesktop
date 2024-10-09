@@ -57,6 +57,8 @@ static const struct {
     { WINLIST_SHOW_WS_SUBMENUS_PROP, G_TYPE_BOOLEAN, "show-workspace-submenus" },
     { WINLIST_SHOW_STICKY_WIN_ONCE_PROP, G_TYPE_BOOLEAN, "show-sticky-windows-once" },
     { WINLIST_SHOW_ADD_REMOVE_WORKSPACES_PROP, G_TYPE_BOOLEAN, "show-workspace-actions" },
+    { WINLIST_SHOW_URGENT_WINDOWS_SECTION_PROP, G_TYPE_BOOLEAN, "show-urgent-windows-section" },
+    { WINLIST_SHOW_ALL_WORKSPACES_PROP, G_TYPE_BOOLEAN, "show-all-workspaces" },
 };
 
 GtkMenu *

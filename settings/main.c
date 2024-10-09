@@ -2320,14 +2320,26 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
                            gtk_builder_get_object(main_gxml, "chk_winlist_show_app_icons"),
                            "active");
 
+    xfconf_g_property_bind(channel,
+                           WINLIST_SHOW_ALL_WORKSPACES_PROP,
+                           G_TYPE_BOOLEAN,
+                           gtk_builder_get_object(main_gxml, "chk_show_all_workspaces"),
+                           "active");
+
     xfconf_g_property_bind(channel, WINLIST_SHOW_STICKY_WIN_ONCE_PROP,
                            G_TYPE_BOOLEAN,
                            gtk_builder_get_object(main_gxml, "chk_show_winlist_sticky_once"),
                            "active");
 
+    xfconf_g_property_bind(channel,
+                           WINLIST_SHOW_URGENT_WINDOWS_SECTION_PROP,
+                           G_TYPE_BOOLEAN,
+                           gtk_builder_get_object(main_gxml, "chk_show_urgent_windows_section"),
+                           "active");
+
     xfconf_g_property_bind(channel, WINLIST_SHOW_ADD_REMOVE_WORKSPACES_PROP,
                            G_TYPE_BOOLEAN,
-                           gtk_builder_get_object(main_gxml, "chk_show_app_remove_workspaces"),
+                           gtk_builder_get_object(main_gxml, "chk_show_add_remove_workspaces"),
                            "active");
 
     w = GTK_WIDGET(gtk_builder_get_object(main_gxml, "chk_show_winlist_ws_names"));
