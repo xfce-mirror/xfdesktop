@@ -41,6 +41,7 @@
 #include <libxfce4windowing/libxfce4windowing.h>
 #include <libxfce4windowingui/libxfce4windowingui.h>
 
+#include "common/xfdesktop-common.h"
 #include "windowlist.h"
 
 static XfconfChannel *wl_channel = NULL;
@@ -51,11 +52,11 @@ static const struct {
     GType setting_type;
     const gchar *property;
 } setting_bindings[] = {
-    { "/windowlist-menu/show-icons", G_TYPE_BOOLEAN, "show-icons" },
-    { "/windowlist-menu/show-workspace-names", G_TYPE_BOOLEAN, "show-workspace-names" },
-    { "/windowlist-menu/show-submenus", G_TYPE_BOOLEAN, "show-workspace-submenus" },
-    { "/windowlist-menu/show-sticky-once", G_TYPE_BOOLEAN, "show-sticky-windows-once" },
-    { "/windowlist-menu/show-add-remove-workspaces", G_TYPE_BOOLEAN, "show-workspace-actions" },
+    { WINLIST_SHOW_APP_ICONS_PROP, G_TYPE_BOOLEAN, "show-icons" },
+    { WINLIST_SHOW_WS_NAMES_PROP, G_TYPE_BOOLEAN, "show-workspace-names" },
+    { WINLIST_SHOW_WS_SUBMENUS_PROP, G_TYPE_BOOLEAN, "show-workspace-submenus" },
+    { WINLIST_SHOW_STICKY_WIN_ONCE_PROP, G_TYPE_BOOLEAN, "show-sticky-windows-once" },
+    { WINLIST_SHOW_ADD_REMOVE_WORKSPACES_PROP, G_TYPE_BOOLEAN, "show-workspace-actions" },
 };
 
 GtkMenu *
@@ -117,8 +118,8 @@ windowlist_init(XfconfChannel *channel)
 {
     if (channel != NULL) {
         wl_channel = g_object_ref(channel);
-        show_windowlist = xfconf_channel_get_bool(channel, "/windowlist-menu/show", TRUE);
-        g_signal_connect(G_OBJECT(channel), "property-changed::/windowlist-menu/show",
+        show_windowlist = xfconf_channel_get_bool(channel, WINLIST_SHOW_WINDOWS_MENU_PROP, TRUE);
+        g_signal_connect(G_OBJECT(channel), "property-changed::" WINLIST_SHOW_WINDOWS_MENU_PROP,
                          G_CALLBACK(windowlist_show_setting_changed), NULL);
     }
 }
