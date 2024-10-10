@@ -2090,6 +2090,38 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     spin_font_size = GTK_WIDGET(gtk_builder_get_object(main_gxml, "spin_font_size"));
     gtk_spin_button_set_value(GTK_SPIN_BUTTON(spin_font_size), 12);
 
+    GtkWidget *btn_custom_font_color = GTK_WIDGET(gtk_builder_get_object(main_gxml, "btn_custom_font_color"));
+    xfconf_g_property_bind_gdkrgba(panel->channel,
+                                   DESTKOP_ICONS_LABEL_TEXT_COLOR_PROP,
+                                   btn_custom_font_color,
+                                   "rgba");
+
+    GtkWidget *chk_custom_font_color = GTK_WIDGET(gtk_builder_get_object(main_gxml, "chk_custom_font_color"));
+    xfconf_g_property_bind(panel->channel,
+                           DESTKOP_ICONS_CUSTOM_LABEL_TEXT_COLOR_PROP,
+                           G_TYPE_BOOLEAN,
+                           chk_custom_font_color,
+                           "active");
+    g_object_bind_property(chk_custom_font_color, "active", btn_custom_font_color, "sensitive", G_BINDING_SYNC_CREATE);
+
+    GtkWidget *btn_custom_label_bg_color = GTK_WIDGET(gtk_builder_get_object(main_gxml, "btn_custom_label_bg_color"));
+    xfconf_g_property_bind_gdkrgba(panel->channel,
+                                   DESTKOP_ICONS_LABEL_BG_COLOR_PROP,
+                                   btn_custom_label_bg_color,
+                                   "rgba");
+
+    GtkWidget *chk_custom_label_bg_color = GTK_WIDGET(gtk_builder_get_object(main_gxml, "chk_custom_label_bg_color"));
+    xfconf_g_property_bind(panel->channel,
+                           DESTKOP_ICONS_CUSTOM_LABEL_BG_COLOR_PROP,
+                           G_TYPE_BOOLEAN,
+                           chk_custom_label_bg_color,
+                           "active");
+    g_object_bind_property(chk_custom_label_bg_color,
+                           "active",
+                           btn_custom_label_bg_color,
+                           "sensitive",
+                           G_BINDING_SYNC_CREATE);
+
     /* single click */
     chk_single_click = GTK_WIDGET(gtk_builder_get_object(main_gxml,
                                                          "chk_single_click"));
