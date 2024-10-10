@@ -404,6 +404,8 @@ xfdesktop_cell_renderer_icon_label_finalize(GObject *obj)
     }
 
     g_free(renderer->text);
+
+    G_OBJECT_CLASS(xfdesktop_cell_renderer_icon_label_parent_class)->finalize(obj);
 }
 
 static void
