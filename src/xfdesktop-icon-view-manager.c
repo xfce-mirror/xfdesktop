@@ -52,6 +52,7 @@ enum {
     PROP_CHANNEL,
     PROP_ACCEL_GROUP,
     PROP_ICON_ON_PRIMARY,
+    PROP_CONFIRM_SORTING,
 };
 
 static void xfdesktop_icon_view_manager_constructed(GObject *obj);

@@ -952,33 +952,38 @@ xfdesktop_file_icon_menu_paste_into_folder(GtkWidget *widget, MonitorData *mdata
 
 static void
 xfdesktop_file_icon_menu_arrange_icons(GtkWidget *widget, MonitorData *mdata) {
-    GtkWidget                *dialog, *checkbutton, *vbox;
-    GtkWidget                *window = gtk_widget_get_toplevel(widget);
-    XfconfChannel            *channel;
-    gboolean                  sort = TRUE;
+    gboolean sort = TRUE;
 
-    if(mdata->fmanager->confirm_sorting) {
-        dialog = xfce_message_dialog_new(GTK_WINDOW(window),
+    if (mdata->fmanager->confirm_sorting) {
+        GtkWidget *window = gtk_widget_get_toplevel(widget);
+        GtkWidget *dialog = xfce_message_dialog_new(GTK_WINDOW(window),
                                          NULL,
                                          "dialog-question",
                                          _("This will reorder all desktop items and place them on different screen positions.\nAre you sure?"),
                                          NULL,
-                                         _("_Cancel"), GTK_RESPONSE_NO,
-                                         _("_OK"), GTK_RESPONSE_YES,
+                                         _("_Cancel"), GTK_RESPONSE_CANCEL,
+                                         _("_OK"), GTK_RESPONSE_ACCEPT,
                                          NULL);
 
-        checkbutton = gtk_check_button_new_with_mnemonic(_("Do _not ask me again"));
-        vbox = gtk_dialog_get_content_area(GTK_DIALOG (dialog));
-        gtk_box_pack_end(GTK_BOX (vbox), checkbutton, FALSE, FALSE, 0);
-        g_object_set(G_OBJECT (checkbutton), "halign", GTK_ALIGN_START, "margin-start", 97, NULL);
-        gtk_widget_set_hexpand(checkbutton, TRUE);
-        gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_YES);
+        /* Get the vbox where the label is stored and add a checkbox to the end */
+        GtkWidget *box_lv1 = gtk_dialog_get_content_area(GTK_DIALOG(dialog));
+        GList *children = gtk_container_get_children (GTK_CONTAINER(box_lv1));
+        GtkWidget *box_lv2 = GTK_WIDGET((g_list_nth (children, 0))->data);
+        g_list_free(children);
+        children = gtk_container_get_children(GTK_CONTAINER(box_lv2));
+        GtkWidget *box_lv3 = GTK_WIDGET((g_list_nth(children, 1))->data);
+        GtkWidget *checkbutton = gtk_check_button_new_with_mnemonic(_("Do _not ask me again"));
+        gtk_box_pack_end(GTK_BOX(box_lv3), checkbutton, FALSE, FALSE, 0);
+
+        gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_ACCEPT);
         gtk_widget_show_all(dialog);
 
-        if(gtk_dialog_run(GTK_DIALOG(dialog)) != GTK_RESPONSE_YES)
+        if (gtk_dialog_run(GTK_DIALOG(dialog)) != GTK_RESPONSE_ACCEPT) {
             sort = FALSE;
-        else if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(checkbutton)) == TRUE) {
+        }
+        else if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(checkbutton))) {
             mdata->fmanager->confirm_sorting = FALSE;
+            XfconfChannel *channel;
             channel = xfdesktop_icon_view_manager_get_channel(XFDESKTOP_ICON_VIEW_MANAGER(mdata->fmanager));
             xfconf_channel_set_bool(channel, DESKTOP_ICONS_CONFIRM_SORTING_PROP, FALSE);
         }
@@ -986,8 +991,9 @@ xfdesktop_file_icon_menu_arrange_icons(GtkWidget *widget, MonitorData *mdata) {
         gtk_widget_destroy(dialog);
     }
     
-    if(sort == TRUE)
+    if (sort) {
         xfdesktop_file_icon_manager_sort_icons(XFDESKTOP_ICON_VIEW_MANAGER(mdata->fmanager), GTK_SORT_ASCENDING);
+    }
 }
 
 static void
