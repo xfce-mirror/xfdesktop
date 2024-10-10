@@ -266,8 +266,8 @@ sort_item_compare(SortItem *a,
     bl = b->label != NULL ? b->label : "";
 
     return sort_type == GTK_SORT_ASCENDING
-        ? g_utf8_collate(bl, al)
-        : g_utf8_collate(al, bl);
+        ? g_utf8_collate(al, bl)
+        : g_utf8_collate(bl, al);
 }
 
 static void
