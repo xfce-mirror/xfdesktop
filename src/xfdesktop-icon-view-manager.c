@@ -28,9 +28,10 @@
 #include <libxfce4ui/libxfce4ui.h>
 #include <xfconf/xfconf.h>
 
+#include "common/xfdesktop-common.h"
 #include "common/xfdesktop-keyboard-shortcuts.h"
 #include "xfce-desktop.h"
-#include "xfdesktop-common.h"
+#include "xfdesktop-backdrop-manager.h"
 #include "xfdesktop-icon-view-manager.h"
 
 #define XFDESKTOP_ICON_VIEW_MANAGER_GET_PRIVATE(manager) ((XfdesktopIconViewManagerPrivate *)xfdesktop_icon_view_manager_get_instance_private(XFDESKTOP_ICON_VIEW_MANAGER(manager)))
@@ -40,6 +41,7 @@ typedef struct _XfdesktopIconViewManagerPrivate
     XfwScreen *screen;
     GList *desktops;
     XfconfChannel *channel;
+    XfdesktopBackdropManager *backdrop_manager;
     GtkAccelGroup *accel_group;
 
     gboolean icons_on_primary;
@@ -51,6 +53,7 @@ enum {
     PROP_SCREEN,
     PROP_DESKTOPS,
     PROP_CHANNEL,
+    PROP_BACKDROP_MANAGER,
     PROP_ACCEL_GROUP,
     PROP_ICON_ON_PRIMARY,
     PROP_CONFIRM_SORTING,
@@ -121,6 +124,14 @@ xfdesktop_icon_view_manager_class_init(XfdesktopIconViewManagerClass *klass)
                                                         "xfconf channel",
                                                         XFCONF_TYPE_CHANNEL,
                                                         PARAM_FLAGS | G_PARAM_CONSTRUCT_ONLY));
+
+    g_object_class_install_property(gobject_class,
+                                    PROP_BACKDROP_MANAGER,
+                                    g_param_spec_object("backdrop-manager",
+                                                        "backdrop-manager",
+                                                        "backdrop manager",
+                                                        XFDESKTOP_TYPE_BACKDROP_MANAGER,
+                                                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS));
 
     g_object_class_install_property(gobject_class,
                                     PROP_ACCEL_GROUP,
@@ -202,6 +213,10 @@ xfdesktop_icon_view_manager_set_property(GObject *obj,
             priv->channel = g_value_dup_object(value);
             break;
 
+        case PROP_BACKDROP_MANAGER:
+            priv->backdrop_manager = g_value_dup_object(value);
+            break;
+
         case PROP_ACCEL_GROUP:
             priv->accel_group = g_value_dup_object(value);
             break;
@@ -242,6 +257,10 @@ xfdesktop_icon_view_manager_get_property(GObject *obj,
             g_value_set_object(value, priv->channel);
             break;
 
+        case PROP_BACKDROP_MANAGER:
+            g_value_set_object(value, priv->backdrop_manager);
+            break;
+
         case PROP_ACCEL_GROUP:
             g_value_set_object(value, priv->accel_group);
             break;
@@ -272,6 +291,7 @@ xfdesktop_icon_view_manager_finalize(GObject *obj)
     xfce_gtk_accel_group_disconnect_action_entries(priv->accel_group, actions, n_actions);
     g_object_unref(priv->accel_group);
 
+    g_object_unref(priv->backdrop_manager);
     g_object_unref(priv->channel);
     g_object_unref(priv->screen);
     g_list_free(priv->desktops);
@@ -377,6 +397,12 @@ xfdesktop_icon_view_manager_get_channel(XfdesktopIconViewManager *manager)
 {
     g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW_MANAGER(manager), NULL);
     return XFDESKTOP_ICON_VIEW_MANAGER_GET_PRIVATE(manager)->channel;
+}
+
+XfdesktopBackdropManager *
+xfdesktop_icon_view_manager_get_backdrop_manager(XfdesktopIconViewManager *manager) {
+    g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW_MANAGER(manager), NULL);
+    return XFDESKTOP_ICON_VIEW_MANAGER_GET_PRIVATE(manager)->backdrop_manager;
 }
 
 GtkAccelGroup *

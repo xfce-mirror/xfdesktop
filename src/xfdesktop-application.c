@@ -1475,6 +1475,7 @@ xfdesktop_application_set_icon_style(XfdesktopApplication *app, XfceDesktopIconS
             app->icon_view_manager = xfdesktop_window_icon_manager_new(app->screen,
                                                                        app->channel,
                                                                        app->accel_group,
+                                                                       app->backdrop_manager,
                                                                        app->desktops);
             break;
 
