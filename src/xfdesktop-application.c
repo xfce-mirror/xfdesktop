@@ -966,6 +966,19 @@ build_monitor_mirror_sets(XfdesktopApplication *app) {
 
 static void
 handle_monitors_changed(XfdesktopApplication *app) {
+    GList *monitors = xfw_screen_get_monitors(app->screen);
+    for (GList *l = app->desktops; l != NULL;) {
+        XfceDesktop *desktop = XFCE_DESKTOP(l->data);
+        GList *next = l->next;
+
+        XfwMonitor *monitor = xfce_desktop_get_monitor(desktop);
+        if (g_list_find(monitors, monitor) == NULL) {
+            remove_monitor_desktop(app, monitor);
+        }
+
+        l = next;
+    }
+
     GList *mirror_sets = build_monitor_mirror_sets(app);
     handle_new_mirror_sets(app, mirror_sets);
     g_list_free_full(mirror_sets, (GDestroyNotify)g_list_free);
