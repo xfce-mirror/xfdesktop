@@ -3707,10 +3707,14 @@ static void
 xfdesktop_icon_view_invalidate_item_text(XfdesktopIconView *icon_view, ViewItem *item) {
     g_return_if_fail(item != NULL);
 
-    if (item->text_extents.width > 0 && item->text_extents.height > 0) {
+    GdkRectangle slot_extents;
+    if (item->text_extents.width > 0
+        && item->text_extents.height > 0
+        && xfdesktop_icon_view_shift_to_slot_area(icon_view, item, &item->text_extents, &slot_extents))
+    {
         gtk_widget_queue_draw_area(GTK_WIDGET(icon_view),
-                                   item->text_extents.x, item->text_extents.y,
-                                   item->text_extents.width, item->text_extents.height);
+                                   slot_extents.x, slot_extents.y,
+                                   slot_extents.width, slot_extents.height);
     }
 }
 
