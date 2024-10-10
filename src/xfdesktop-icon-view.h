@@ -193,6 +193,16 @@ void xfdesktop_icon_view_set_use_font_size(XfdesktopIconView *icon_view,
 void xfdesktop_icon_view_set_center_text(XfdesktopIconView *icon_view,
                                          gboolean center_text);
 
+void xfdesktop_icon_view_set_icon_label_fg_color(XfdesktopIconView *icon_view,
+                                                 GdkRGBA *color);
+void xfdesktop_icon_view_set_use_icon_label_fg_color(XfdesktopIconView *icon_view,
+                                                     gboolean use);
+
+void xfdesktop_icon_view_set_icon_label_bg_color(XfdesktopIconView *icon_view,
+                                                 GdkRGBA *color);
+void xfdesktop_icon_view_set_use_icon_label_bg_color(XfdesktopIconView *icon_view,
+                                                     gboolean use);
+
 gboolean xfdesktop_icon_view_get_single_click(XfdesktopIconView *icon_view);
 void xfdesktop_icon_view_set_single_click(XfdesktopIconView *icon_view,
                                           gboolean single_click);

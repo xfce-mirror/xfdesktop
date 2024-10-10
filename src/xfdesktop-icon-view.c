@@ -32,6 +32,7 @@
 
 #include <gdk/gdk.h>
 #include <gdk/gdkkeysyms.h>
+#include <glib-object.h>
 #include <gtk/gtk.h>
 #include <exo/exo.h>
 
@@ -63,6 +64,11 @@
 #define KEYBOARD_NAVIGATION_TIMEOUT  1500
 
 #define XFDESKTOP_ICON_NAME "XFDESKTOP_ICON"
+
+#define LABEL_BG_COLOR_CSS_FMT \
+    "XfdesktopIconView.view.label {" \
+    "    background-color: alpha(#%02x%02x%02x, %.04f);" \
+    "}"
 
 #if defined(DEBUG) && DEBUG > 0
 #define DUMP_GRID_LAYOUT(icon_view) \
@@ -110,6 +116,10 @@ enum
     PROP_ICON_FONT_SIZE,
     PROP_ICON_FONT_SIZE_SET,
     PROP_ICON_CENTER_TEXT,
+    PROP_ICON_LABEL_FG_COLOR,
+    PROP_ICON_LABEL_FG_COLOR_SET,
+    PROP_ICON_LABEL_BG_COLOR,
+    PROP_ICON_LABEL_BG_COLOR_SET,
     PROP_SHOW_TOOLTIPS,
     PROP_SINGLE_CLICK,
     PROP_SINGLE_CLICK_UNDERLINE_HOVER,
@@ -310,6 +320,13 @@ struct _XfdesktopIconViewPrivate
     gdouble font_size;
     gboolean font_size_set;
     gboolean center_text;
+
+    GdkRGBA label_fg_color;
+    gboolean label_fg_color_set;
+
+    GdkRGBA label_bg_color;
+    gboolean label_bg_color_set;
+    GtkCssProvider *label_bg_color_provider;
 
     GList *items;  // ViewItem
     GList *selected_items;  // ViewItem
@@ -580,8 +597,7 @@ static const gint icon_view_n_targets = 1;
 
 static guint __signals[SIG_N_SIGNALS] = { 0, };
 
-static const struct
-{
+static struct {
     const gchar *setting;
     GType setting_type;
     const gchar *property;
@@ -593,6 +609,10 @@ static const struct
     { DESKTOP_ICONS_SINGLE_CLICK_PROP, G_TYPE_BOOLEAN, "single-click" },
     { DESKTOP_ICONS_SINGLE_CLICK_ULINE_PROP, G_TYPE_BOOLEAN, "single-click-underline-hover" },
     { DESKTOP_ICONS_GRAVITY_PROP, G_TYPE_INT, "gravity" },
+    { DESTKOP_ICONS_LABEL_TEXT_COLOR_PROP, G_TYPE_INVALID, "icon-label-fg-color" },
+    { DESTKOP_ICONS_CUSTOM_LABEL_TEXT_COLOR_PROP, G_TYPE_BOOLEAN, "icon-label-fg-color-set" },
+    { DESTKOP_ICONS_LABEL_BG_COLOR_PROP, G_TYPE_INVALID, "icon-label-bg-color" },
+    { DESTKOP_ICONS_CUSTOM_LABEL_BG_COLOR_PROP, G_TYPE_BOOLEAN, "icon-label-bg-color-set" },
 };
 
 
@@ -841,6 +861,38 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
                                                          DEFAULT_ICON_CENTER_TEXT,
                                                          PARAM_FLAGS));
 
+    g_object_class_install_property(gobject_class,
+                                    PROP_ICON_LABEL_FG_COLOR,
+                                    g_param_spec_boxed("icon-label-fg-color",
+                                                       "icon-label-fg-color",
+                                                       "icon label foreground color",
+                                                       GDK_TYPE_RGBA,
+                                                       G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
+
+    g_object_class_install_property(gobject_class,
+                                    PROP_ICON_LABEL_FG_COLOR_SET,
+                                    g_param_spec_boolean("icon-label-fg-color-set",
+                                                         "icon-label-fg-color-set",
+                                                         "icon label foreground color set",
+                                                         FALSE,
+                                                         G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
+
+    g_object_class_install_property(gobject_class,
+                                    PROP_ICON_LABEL_BG_COLOR,
+                                    g_param_spec_boxed("icon-label-bg-color",
+                                                       "icon-label-bg-color",
+                                                       "icon label background color",
+                                                       GDK_TYPE_RGBA,
+                                                       G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
+
+    g_object_class_install_property(gobject_class,
+                                    PROP_ICON_LABEL_BG_COLOR_SET,
+                                    g_param_spec_boolean("icon-label-bg-color-set",
+                                                         "icon-label-bg-color-set",
+                                                         "icon label background color set",
+                                                         FALSE,
+                                                         G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
+
     g_object_class_install_property(gobject_class, PROP_SHOW_TOOLTIPS,
                                     g_param_spec_boolean("show-tooltips",
                                                          "show tooltips",
@@ -929,6 +981,14 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
                                          GTK_MOVEMENT_VISUAL_POSITIONS, -1);
 
     gtk_widget_class_set_css_name (widget_class, "XfdesktopIconView");
+
+    for (gsize i = 0; i < G_N_ELEMENTS(setting_bindings); ++i) {
+        if (strcmp(setting_bindings[i].setting, DESTKOP_ICONS_LABEL_TEXT_COLOR_PROP) == 0) {
+            setting_bindings[i].setting_type = GDK_TYPE_RGBA;
+        } else if (strcmp(setting_bindings[i].setting, DESTKOP_ICONS_LABEL_BG_COLOR_PROP) == 0) {
+            setting_bindings[i].setting_type = GDK_TYPE_RGBA;
+        }
+    }
 }
 
 static void
@@ -948,6 +1008,20 @@ xfdesktop_icon_view_init(XfdesktopIconView *icon_view)
     icon_view->priv->icon_size = DEFAULT_ICON_SIZE;
     icon_view->priv->font_size = DEFAULT_ICON_FONT_SIZE;
     icon_view->priv->font_size_set = DEFAULT_ICON_FONT_SIZE_SET;
+    icon_view->priv->label_fg_color = (GdkRGBA){
+        .red = 1.0,
+        .green = 1.0,
+        .blue = 1.0,
+        .alpha = 1.0,
+    };
+    icon_view->priv->label_fg_color_set = FALSE;
+    icon_view->priv->label_bg_color = (GdkRGBA){
+        .red = 0.0,
+        .green = 0.0,
+        .blue = 0.0,
+        .alpha = 0.5,
+    };
+    icon_view->priv->label_bg_color_set = FALSE;
     icon_view->priv->gravity = DEFAULT_GRAVITY;
     icon_view->priv->show_tooltips = DEFAULT_SHOW_TOOLTIPS;
     icon_view->priv->tooltip_icon_size_xfconf = 0;
@@ -1005,11 +1079,18 @@ xfdesktop_icon_view_constructed(GObject *object)
     xfdesktop_icon_view_init_builtin_cell_renderers(icon_view);
 
     for (gsize i = 0; i < G_N_ELEMENTS(setting_bindings); ++i) {
-        xfconf_g_property_bind(icon_view->priv->channel,
-                               setting_bindings[i].setting,
-                               setting_bindings[i].setting_type,
-                               icon_view,
-                               setting_bindings[i].property);
+        if (setting_bindings[i].setting_type == GDK_TYPE_RGBA) {
+            xfconf_g_property_bind_gdkrgba(icon_view->priv->channel,
+                                           setting_bindings[i].setting,
+                                           icon_view,
+                                           setting_bindings[i].property);
+        } else {
+            xfconf_g_property_bind(icon_view->priv->channel,
+                                   setting_bindings[i].setting,
+                                   setting_bindings[i].setting_type,
+                                   icon_view,
+                                   setting_bindings[i].property);
+        }
     }
 }
 
@@ -1041,6 +1122,12 @@ static void
 xfdesktop_icon_view_finalize(GObject *obj)
 {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(obj);
+
+    if (icon_view->priv->label_bg_color_provider != NULL) {
+        gtk_style_context_remove_provider_for_screen(gdk_screen_get_default(),
+                                                     GTK_STYLE_PROVIDER(icon_view->priv->label_bg_color_provider));
+        g_object_unref(icon_view->priv->label_bg_color_provider);
+    }
 
     gtk_target_list_unref(icon_view->priv->source_targets);
     gtk_target_list_unref(icon_view->priv->dest_targets);
@@ -1121,6 +1208,22 @@ xfdesktop_icon_view_set_property(GObject *object,
 
         case PROP_ICON_CENTER_TEXT:
             xfdesktop_icon_view_set_center_text(icon_view, g_value_get_boolean(value));
+            break;
+
+        case PROP_ICON_LABEL_FG_COLOR:
+            xfdesktop_icon_view_set_icon_label_fg_color(icon_view, g_value_get_boxed(value));
+            break;
+
+        case PROP_ICON_LABEL_FG_COLOR_SET:
+            xfdesktop_icon_view_set_use_icon_label_fg_color(icon_view, g_value_get_boolean(value));
+            break;
+
+        case PROP_ICON_LABEL_BG_COLOR:
+            xfdesktop_icon_view_set_icon_label_bg_color(icon_view, g_value_get_boxed(value));
+            break;
+
+        case PROP_ICON_LABEL_BG_COLOR_SET:
+            xfdesktop_icon_view_set_use_icon_label_bg_color(icon_view, g_value_get_boolean(value));
             break;
 
         case PROP_SINGLE_CLICK:
@@ -1224,6 +1327,22 @@ xfdesktop_icon_view_get_property(GObject *object,
 
         case PROP_ICON_CENTER_TEXT:
             g_value_set_boolean(value, icon_view->priv->center_text);
+            break;
+
+        case PROP_ICON_LABEL_FG_COLOR:
+            g_value_set_boxed(value, &icon_view->priv->label_fg_color);
+            break;
+
+        case PROP_ICON_LABEL_FG_COLOR_SET:
+            g_value_set_boolean(value, icon_view->priv->label_fg_color_set);
+            break;
+
+        case PROP_ICON_LABEL_BG_COLOR:
+            g_value_set_boxed(value, &icon_view->priv->label_bg_color);
+            break;
+
+        case PROP_ICON_LABEL_BG_COLOR_SET:
+            g_value_set_boolean(value, icon_view->priv->label_bg_color_set);
             break;
 
         case PROP_SINGLE_CLICK:
@@ -4868,6 +4987,184 @@ xfdesktop_icon_view_set_center_text(XfdesktopIconView *icon_view,
     }
 
     g_object_notify(G_OBJECT(icon_view), "icon-center-text");
+}
+
+static void
+insert_icon_label_fg_color_attrs(XfdesktopIconView *icon_view) {
+    PangoAttribute *attr_fg = pango_attr_foreground_new(round(icon_view->priv->label_fg_color.red * G_MAXUINT16),
+                                                        round(icon_view->priv->label_fg_color.green * G_MAXUINT16),
+                                                        round(icon_view->priv->label_fg_color.blue * G_MAXUINT16));
+    attr_fg->start_index = 0;
+    attr_fg->end_index = -1;
+    PangoAttribute *attr_alpha = pango_attr_foreground_alpha_new(round(icon_view->priv->label_fg_color.alpha * G_MAXUINT16));
+    attr_alpha->start_index = 0;
+    attr_alpha->end_index = -1;
+
+    PangoAttrList *attrs = NULL;
+    g_object_get(icon_view->priv->text_renderer,
+                 "attributes", &attrs,
+                 NULL);
+
+    if (attrs != NULL) {
+        pango_attr_list_change(attrs, attr_fg);
+        pango_attr_list_change(attrs, attr_alpha);
+    } else {
+        attrs = pango_attr_list_new();
+        pango_attr_list_insert(attrs, attr_fg);
+        pango_attr_list_insert(attrs, attr_alpha);
+    }
+
+    g_object_set(icon_view->priv->text_renderer,
+                 "attributes", attrs,
+                 NULL);
+    pango_attr_list_unref(attrs);
+}
+
+void
+xfdesktop_icon_view_set_icon_label_fg_color(XfdesktopIconView *icon_view, GdkRGBA *color) {
+    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view));
+    g_return_if_fail(color != NULL);
+
+    if (color->red != icon_view->priv->label_fg_color.red
+        || color->green != icon_view->priv->label_fg_color.green
+        || color->blue != icon_view->priv->label_fg_color.blue
+        || color->alpha != icon_view->priv->label_fg_color.alpha)
+    {
+        icon_view->priv->label_fg_color = *color;
+
+        if (icon_view->priv->label_fg_color_set && icon_view->priv->text_renderer != NULL) {
+            insert_icon_label_fg_color_attrs(icon_view);
+
+            for (GList *l = icon_view->priv->items; l != NULL; l = l->next) {
+                ViewItem *item = l->data;
+                xfdesktop_icon_view_invalidate_item_text(icon_view, item);
+            }
+        }
+
+        g_object_notify(G_OBJECT(icon_view), "icon-label-fg-color");
+    }
+}
+
+static gboolean
+remove_fg_color_attrs(PangoAttribute *attr, gpointer user_data) {
+    return attr->klass->type == PANGO_ATTR_FOREGROUND
+        || attr->klass->type == PANGO_ATTR_FOREGROUND_ALPHA;
+}
+
+void
+xfdesktop_icon_view_set_use_icon_label_fg_color(XfdesktopIconView *icon_view, gboolean use) {
+    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view));
+
+    if (use != icon_view->priv->label_fg_color_set) {
+        icon_view->priv->label_fg_color_set = !!use;
+
+        if (icon_view->priv->label_fg_color_set) {
+            insert_icon_label_fg_color_attrs(icon_view);
+        } else {
+            PangoAttrList *attrs = NULL;
+            g_object_get(icon_view->priv->text_renderer,
+                         "attributes", &attrs,
+                         NULL);
+
+            if (attrs != NULL) {
+                PangoAttrList *removed_attrs = pango_attr_list_filter(attrs, remove_fg_color_attrs, NULL);
+                g_object_set(icon_view->priv->text_renderer,
+                             "attributes", &attrs,
+                             NULL);
+                pango_attr_list_unref(removed_attrs);
+                pango_attr_list_unref(attrs);
+            }
+        }
+
+        for (GList *l = icon_view->priv->items; l != NULL; l = l->next) {
+            ViewItem *item = l->data;
+            xfdesktop_icon_view_invalidate_item_text(icon_view, item);
+        }
+
+        g_object_notify(G_OBJECT(icon_view), "icon-label-fg-color-set");
+    }
+}
+
+static void
+remove_label_bg_style_provider(XfdesktopIconView *icon_view) {
+    if (icon_view->priv->label_bg_color_provider != NULL) {
+        gtk_style_context_remove_provider_for_screen(gdk_screen_get_default(),
+                                                     GTK_STYLE_PROVIDER(icon_view->priv->label_bg_color_provider));
+        g_clear_object(&icon_view->priv->label_bg_color_provider);
+    }
+}
+
+static void
+add_label_bg_style_provider(XfdesktopIconView *icon_view) {
+    gchar *css_data = g_strdup_printf(LABEL_BG_COLOR_CSS_FMT,
+                                      (int)round(icon_view->priv->label_bg_color.red * G_MAXUINT8),
+                                      (int)round(icon_view->priv->label_bg_color.green * G_MAXUINT8),
+                                      (int)round(icon_view->priv->label_bg_color.blue * G_MAXUINT8),
+                                      icon_view->priv->label_bg_color.alpha);
+    DBG("adding CSS %s", css_data);
+
+    icon_view->priv->label_bg_color_provider = gtk_css_provider_new();
+    if (gtk_css_provider_load_from_data(icon_view->priv->label_bg_color_provider,
+                                        css_data,
+                                        -1,
+                                        NULL))
+    {
+        gtk_style_context_add_provider_for_screen(gdk_screen_get_default(),
+                                                  GTK_STYLE_PROVIDER(icon_view->priv->label_bg_color_provider),
+                                                  GTK_STYLE_PROVIDER_PRIORITY_USER);
+    } else {
+        g_clear_object(&icon_view->priv->label_bg_color_provider);
+    }
+
+    g_free(css_data);
+}
+
+void
+xfdesktop_icon_view_set_icon_label_bg_color(XfdesktopIconView *icon_view, GdkRGBA *color) {
+    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view));
+    g_return_if_fail(color != NULL);
+
+    if (color->red != icon_view->priv->label_bg_color.red
+        || color->green != icon_view->priv->label_bg_color.green
+        || color->blue != icon_view->priv->label_bg_color.blue
+        || color->alpha != icon_view->priv->label_bg_color.alpha)
+    {
+        icon_view->priv->label_bg_color = *color;
+
+        if (icon_view->priv->label_bg_color_set) {
+            remove_label_bg_style_provider(icon_view);
+            add_label_bg_style_provider(icon_view);
+        }
+
+        for (GList *l = icon_view->priv->items; l != NULL; l = l->next) {
+            ViewItem *item = l->data;
+            xfdesktop_icon_view_invalidate_item_text(icon_view, item);
+        }
+
+        g_object_notify(G_OBJECT(icon_view), "icon-label-bg-color");
+    }
+}
+
+void
+xfdesktop_icon_view_set_use_icon_label_bg_color(XfdesktopIconView *icon_view, gboolean use) {
+    g_return_if_fail(XFDESKTOP_IS_ICON_VIEW(icon_view));
+
+    if (use != icon_view->priv->label_bg_color_set) {
+        icon_view->priv->label_bg_color_set = !!use;
+
+        if (icon_view->priv->label_bg_color_set) {
+            add_label_bg_style_provider(icon_view);
+        } else {
+            remove_label_bg_style_provider(icon_view);
+        }
+
+        for (GList *l = icon_view->priv->items; l != NULL; l = l->next) {
+            ViewItem *item = l->data;
+            xfdesktop_icon_view_invalidate_item_text(icon_view, item);
+        }
+
+        g_object_notify(G_OBJECT(icon_view), "icon-label-bg-color-set");
+    }
 }
 
 gboolean
