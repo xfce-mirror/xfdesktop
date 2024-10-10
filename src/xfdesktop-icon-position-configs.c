@@ -31,7 +31,7 @@
 
 #include "xfdesktop-icon-position-configs.h"
 
-#define SAVE_DELAY_S 3
+#define SAVE_DELAY_S 1
 
 #ifdef DEBUG
 static char spaces[512];
