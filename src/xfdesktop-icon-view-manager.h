@@ -27,6 +27,7 @@
 #include <libxfce4windowing/libxfce4windowing.h>
 
 #include "xfce-desktop.h"
+#include "xfdesktop-backdrop-manager.h"
 
 G_BEGIN_DECLS
 
@@ -62,6 +63,7 @@ struct _XfdesktopIconViewManagerClass
 XfwScreen *xfdesktop_icon_view_manager_get_screen(XfdesktopIconViewManager *manager);
 GList *xfdesktop_icon_view_manager_get_desktops(XfdesktopIconViewManager *manager);
 XfconfChannel *xfdesktop_icon_view_manager_get_channel(XfdesktopIconViewManager *manager);
+XfdesktopBackdropManager *xfdesktop_icon_view_manager_get_backdrop_manager(XfdesktopIconViewManager *manager);
 GtkAccelGroup *xfdesktop_icon_view_manager_get_accel_group(XfdesktopIconViewManager *manager);
 
 gboolean xfdesktop_icon_view_manager_get_show_icons_on_primary(XfdesktopIconViewManager *manager);
