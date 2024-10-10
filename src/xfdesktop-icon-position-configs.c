@@ -515,10 +515,9 @@ save_icons_idled(gpointer data) {
 
 static void
 schedule_save(XfdesktopIconPositionConfigs *configs) {
-    if (configs->scheduled_save_id != 0) {
-        g_source_remove(configs->scheduled_save_id);
+    if (configs->scheduled_save_id == 0) {
+        configs->scheduled_save_id = g_timeout_add_seconds(SAVE_DELAY_S, save_icons_idled, configs);
     }
-    configs->scheduled_save_id = g_timeout_add_seconds(SAVE_DELAY_S, save_icons_idled, configs);
 }
 
 static gboolean
