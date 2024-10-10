@@ -967,8 +967,8 @@ xfdesktop_file_icon_menu_arrange_icons(GtkWidget *widget, MonitorData *mdata) {
 
         /* Get the vbox where the label is stored and add a checkbox to the end */
         GtkWidget *box_lv1 = gtk_dialog_get_content_area(GTK_DIALOG(dialog));
-        GList *children = gtk_container_get_children (GTK_CONTAINER(box_lv1));
-        GtkWidget *box_lv2 = GTK_WIDGET((g_list_nth (children, 0))->data);
+        GList *children = gtk_container_get_children(GTK_CONTAINER(box_lv1));
+        GtkWidget *box_lv2 = GTK_WIDGET((g_list_nth(children, 0))->data);
         g_list_free(children);
         children = gtk_container_get_children(GTK_CONTAINER(box_lv2));
         GtkWidget *box_lv3 = GTK_WIDGET((g_list_nth(children, 1))->data);
