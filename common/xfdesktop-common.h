@@ -72,6 +72,15 @@
 #define SINGLE_WORKSPACE_MODE     "/backdrop/single-workspace-mode"
 #define SINGLE_WORKSPACE_NUMBER   "/backdrop/single-workspace-number"
 
+#define WINLIST_SHOW_WINDOWS_MENU_PROP "/windowlist-menu/show"
+#define WINLIST_SHOW_APP_ICONS_PROP "/windowlist-menu/show-icons"
+#define WINLIST_SHOW_STICKY_WIN_ONCE_PROP "/windowlist-menu/show-sticky-once"
+#define WINLIST_SHOW_WS_NAMES_PROP "/windowlist-menu/show-workspace-names"
+#define WINLIST_SHOW_WS_SUBMENUS_PROP "/windowlist-menu/show-submenus"
+#define WINLIST_SHOW_ADD_REMOVE_WORKSPACES_PROP "/windowlist-menu/show-add-remove-workspaces"
+#define WINLIST_SHOW_URGENT_WINDOWS_SECTION_PROP "/windowlist-menu/show-urgent-windows-section"
+#define WINLIST_SHOW_ALL_WORKSPACES_PROP "/windowlist-menu/show-all-workspaces"
+
 #define DESKTOP_ICONS_ON_PRIMARY_PROP        "/desktop-icons/primary"
 #define DESKTOP_ICONS_STYLE_PROP             "/desktop-icons/style"
 #define DESKTOP_ICONS_ICON_SIZE_PROP         "/desktop-icons/icon-size"
