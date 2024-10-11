@@ -7,6 +7,7 @@
 # Chipong Luo <chipong.luo@yahoo.com>, 2011-2013
 # Chris K. Zhang <plutino@gmail.com>, 2009
 # Hunt Xu <huntxu@live.cn>, 2009-2010
+# Wenbin Lv <wenbin816@gmail.com>, 2024
 # Cally Mal <zhouxiaobo.500@gmail.com>, 2013
 # 玉堂白鹤 <yjwork@qq.com>, 2013-2014
 # Yongtao Yang <yongtao.yang@telia.com>, 2004
@@ -20,9 +21,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-10-10 12:54+0200\n"
+"POT-Creation-Date: 2024-10-11 00:55+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
-"Last-Translator: 玉堂白鹤 <yjwork@qq.com>, 2013,2015-2024\n"
+"Last-Translator: Wenbin Lv <wenbin816@gmail.com>, 2024\n"
 "Language-Team: Chinese (China) (http://app.transifex.com/xfce/xfdesktop/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -190,54 +191,54 @@ msgstr "窗口图标"
 msgid "File Icons"
 msgstr "文件图标"
 
-#: settings/main.c:2207
+#: settings/main.c:2239
 msgid "Image files"
 msgstr "图片文件"
 
 #. Change the title of the file chooser dialog
-#: settings/main.c:2215
+#: settings/main.c:2247
 msgid "Select a Directory"
 msgstr "选择一个目录"
 
-#: settings/main.c:2448
+#: settings/main.c:2480
 msgid "Settings manager socket"
 msgstr "设置管理器套接字"
 
-#: settings/main.c:2448
+#: settings/main.c:2480
 msgid "SOCKET ID"
 msgstr "套接字 ID"
 
-#: settings/main.c:2449
+#: settings/main.c:2481
 msgid "Version information"
 msgstr "版本信息"
 
-#: settings/main.c:2450 src/xfdesktop-application.c:286
+#: settings/main.c:2482 src/xfdesktop-application.c:286
 msgid "Enable debug messages"
 msgstr "启用调试消息"
 
-#: settings/main.c:2474
+#: settings/main.c:2506
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "输入 ‘%s --help’ 获取用法。"
 
-#: settings/main.c:2486
+#: settings/main.c:2518
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce 开发团队。保留所有权利。"
 
-#: settings/main.c:2487
+#: settings/main.c:2519
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "请向 <%s> 报告缺陷。"
 
-#: settings/main.c:2494
+#: settings/main.c:2526
 msgid "Desktop Settings"
 msgstr "桌面设置"
 
-#: settings/main.c:2496
+#: settings/main.c:2528
 msgid "Unable to contact settings server"
 msgstr "未能与设置服务器联系"
 
-#: settings/main.c:2498
+#: settings/main.c:2530
 msgid "Quit"
 msgstr "退出"
 
@@ -593,51 +594,59 @@ msgstr "单击激活项目(_C)"
 msgid "_Underline text on hover"
 msgstr "悬停时给文本添加下划线(_U)"
 
-#: settings/xfdesktop-settings-ui.glade:1009
+#: settings/xfdesktop-settings-ui.glade:974
+msgid "Use custom font co_lor:"
+msgstr "使用自定义的字体颜色(_L)："
+
+#: settings/xfdesktop-settings-ui.glade:1012
+msgid "Use custom label bac_kground color:"
+msgstr "使用自定义的标签背景色(_K)："
+
+#: settings/xfdesktop-settings-ui.glade:1091
 msgid "<b>Appearance</b>"
 msgstr "<b>外观</b>"
 
-#: settings/xfdesktop-settings-ui.glade:1030
+#: settings/xfdesktop-settings-ui.glade:1112
 msgid "Desktop _Icons"
 msgstr "桌面图标(_I)"
 
-#: settings/xfdesktop-settings-ui.glade:1084
+#: settings/xfdesktop-settings-ui.glade:1166
 msgid ""
 "File/Launcher icons are not enabled. You can enable them from the \"Desktop "
 "Icons\" tab."
 msgstr "文件/启动器图标未启用。您可以从“桌面图标”选项卡启用它们。"
 
-#: settings/xfdesktop-settings-ui.glade:1130
+#: settings/xfdesktop-settings-ui.glade:1212
 msgid "Show hidden files on the desktop"
 msgstr "显示桌面上的隐藏文件。"
 
-#: settings/xfdesktop-settings-ui.glade:1146
+#: settings/xfdesktop-settings-ui.glade:1228
 msgid "Show t_humbnails"
 msgstr "显示缩略图(_H)"
 
-#: settings/xfdesktop-settings-ui.glade:1151
+#: settings/xfdesktop-settings-ui.glade:1233
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
 msgstr "选中此项在桌面上以自动生成的缩略图图标显示可预览的文件。"
 
-#: settings/xfdesktop-settings-ui.glade:1163
+#: settings/xfdesktop-settings-ui.glade:1245
 msgid "Show \"Delete\" option in file context menu"
 msgstr "在文件交互菜单中显示“删除”选项 "
 
-#: settings/xfdesktop-settings-ui.glade:1184
+#: settings/xfdesktop-settings-ui.glade:1266
 msgid "General"
 msgstr "常规"
 
-#: settings/xfdesktop-settings-ui.glade:1228
+#: settings/xfdesktop-settings-ui.glade:1310
 msgid "Default Icons"
 msgstr "默认图标"
 
-#: settings/xfdesktop-settings-ui.glade:1258
+#: settings/xfdesktop-settings-ui.glade:1340
 msgid "_File/Launcher Icons"
 msgstr "文件/启动器图标(_F)"
 
-#: settings/xfdesktop-settings-ui.glade:1284
+#: settings/xfdesktop-settings-ui.glade:1366
 msgid "_Keyboard Shortcuts"
 msgstr "键盘快捷键(_K)"
 
