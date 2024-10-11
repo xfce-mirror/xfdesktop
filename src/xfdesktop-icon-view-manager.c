@@ -43,6 +43,7 @@ typedef struct _XfdesktopIconViewManagerPrivate
     GtkAccelGroup *accel_group;
 
     gboolean icons_on_primary;
+    gboolean confirm_sorting;
 } XfdesktopIconViewManagerPrivate;
 
 enum {
@@ -69,6 +70,9 @@ static void xfdesktop_icon_view_manager_finalize(GObject *obj);
 static void xfdesktop_icon_view_manager_set_show_icons_on_primary(XfdesktopIconViewManager *manager,
                                                                   gboolean icons_on_primary);
 
+static void xfdesktop_icon_view_manager_set_confirm_sorting(XfdesktopIconViewManager *manager,
+                                                            gboolean confirm_sorting);
+
 static void icon_view_action_fixup(XfceGtkActionEntry *entry);
 static void accel_map_changed(XfdesktopIconViewManager *manager);
 
@@ -78,6 +82,7 @@ static const struct {
     const gchar *property;
 } setting_bindings[] = {
     { DESKTOP_ICONS_ON_PRIMARY_PROP, G_TYPE_BOOLEAN, "icons-on-primary" },
+    { DESKTOP_ICONS_CONFIRM_SORTING_PROP, G_TYPE_BOOLEAN, "confirm-sorting" },
 };
 
 
@@ -135,6 +140,13 @@ xfdesktop_icon_view_manager_class_init(XfdesktopIconViewManagerClass *klass)
                                                          DEFAULT_ICONS_ON_PRIMARY,
                                                          PARAM_FLAGS));
 
+    g_object_class_install_property(gobject_class, PROP_CONFIRM_SORTING,
+                                    g_param_spec_boolean("confirm-sorting",
+                                                         "confirm-sorting",
+                                                         "confirm-sorting",
+                                                         TRUE,
+                                                         PARAM_FLAGS));
+
 #undef PARAM_FLAGS
 }
 
@@ -143,6 +155,7 @@ xfdesktop_icon_view_manager_init(XfdesktopIconViewManager *manager)
 {
     XfdesktopIconViewManagerPrivate *priv = XFDESKTOP_ICON_VIEW_MANAGER_GET_PRIVATE(manager);
     priv->icons_on_primary = DEFAULT_ICONS_ON_PRIMARY;
+    priv->confirm_sorting = TRUE;
 }
 
 static void
@@ -201,6 +214,11 @@ xfdesktop_icon_view_manager_set_property(GObject *obj,
                                                                   g_value_get_boolean(value));
             break;
 
+        case PROP_CONFIRM_SORTING:
+            xfdesktop_icon_view_manager_set_confirm_sorting(manager,
+                                                            g_value_get_boolean(value));
+            break;
+
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(obj, prop_id, pspec);
             break;
@@ -234,6 +252,10 @@ xfdesktop_icon_view_manager_get_property(GObject *obj,
 
         case PROP_ICON_ON_PRIMARY:
             g_value_set_boolean(value, priv->icons_on_primary);
+            break;
+
+        case PROP_CONFIRM_SORTING:
+            g_value_set_boolean(value, priv->confirm_sorting);
             break;
 
         default:
@@ -270,6 +292,18 @@ xfdesktop_icon_view_manager_set_show_icons_on_primary(XfdesktopIconViewManager *
     if (priv->icons_on_primary != icons_on_primary) {
         priv->icons_on_primary = icons_on_primary;
         g_object_notify(G_OBJECT(manager), "icons-on-primary");
+    }
+}
+
+static void
+xfdesktop_icon_view_manager_set_confirm_sorting(XfdesktopIconViewManager *manager,
+                                                gboolean confirm_sorting)
+{
+    XfdesktopIconViewManagerPrivate *priv = XFDESKTOP_ICON_VIEW_MANAGER_GET_PRIVATE(manager);
+
+    if (priv->confirm_sorting != confirm_sorting) {
+        priv->confirm_sorting = confirm_sorting;
+        g_object_notify(G_OBJECT(manager), "confirm-sorting");
     }
 }
 
@@ -430,7 +464,40 @@ xfdesktop_icon_view_manager_sort_icons(XfdesktopIconViewManager *manager,
 
     klass = XFDESKTOP_ICON_VIEW_MANAGER_GET_CLASS(manager);
     if (klass->sort_icons != NULL) {
-        klass->sort_icons(manager, sort_type);
+        gboolean sort = TRUE;
+        XfdesktopIconViewManagerPrivate *priv = XFDESKTOP_ICON_VIEW_MANAGER_GET_PRIVATE(manager);
+        if (priv->confirm_sorting) {
+            GtkWidget *dialog = xfce_message_dialog_new(NULL,
+                                                        NULL,
+                                                        "dialog-question",
+                                                        _("This will reorder all desktop items and place them on different screen positions.\nAre you sure?"),
+                                                        NULL,
+                                                        _("_Cancel"), GTK_RESPONSE_CANCEL,
+                                                        _("_OK"), GTK_RESPONSE_ACCEPT,
+                                                        NULL);
+
+            GtkWidget *content_area = gtk_dialog_get_content_area(GTK_DIALOG(dialog));
+            GtkWidget *checkbutton = gtk_check_button_new_with_mnemonic(_("Do _not ask me again"));
+            gtk_box_pack_end(GTK_BOX(content_area), checkbutton, FALSE, FALSE, 0);
+            g_object_set (G_OBJECT (checkbutton), "margin-start", 20, NULL);
+
+            gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_ACCEPT);
+            gtk_widget_show_all(dialog);
+
+            if (gtk_dialog_run(GTK_DIALOG(dialog)) != GTK_RESPONSE_ACCEPT) {
+                sort = FALSE;
+            }
+            else if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(checkbutton))) {
+                priv->confirm_sorting = FALSE;
+                xfconf_channel_set_bool(priv->channel, DESKTOP_ICONS_CONFIRM_SORTING_PROP, FALSE);
+            }
+
+            gtk_widget_destroy(dialog);
+        }
+        
+        if (sort) {
+            klass->sort_icons(manager, sort_type);
+        }
     }
 }
 

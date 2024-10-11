@@ -965,15 +965,10 @@ xfdesktop_file_icon_menu_arrange_icons(GtkWidget *widget, MonitorData *mdata) {
                                          _("_OK"), GTK_RESPONSE_ACCEPT,
                                          NULL);
 
-        /* Get the vbox where the label is stored and add a checkbox to the end */
-        GtkWidget *box_lv1 = gtk_dialog_get_content_area(GTK_DIALOG(dialog));
-        GList *children = gtk_container_get_children(GTK_CONTAINER(box_lv1));
-        GtkWidget *box_lv2 = GTK_WIDGET((g_list_nth(children, 0))->data);
-        g_list_free(children);
-        children = gtk_container_get_children(GTK_CONTAINER(box_lv2));
-        GtkWidget *box_lv3 = GTK_WIDGET((g_list_nth(children, 1))->data);
+        GtkWidget *content_area = gtk_dialog_get_content_area(GTK_DIALOG(dialog));
         GtkWidget *checkbutton = gtk_check_button_new_with_mnemonic(_("Do _not ask me again"));
-        gtk_box_pack_end(GTK_BOX(box_lv3), checkbutton, FALSE, FALSE, 0);
+        gtk_box_pack_end(GTK_BOX(content_area), checkbutton, FALSE, FALSE, 0);
+        g_object_set (G_OBJECT (checkbutton), "margin-start", 20, NULL);
 
         gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_ACCEPT);
         gtk_widget_show_all(dialog);
@@ -983,8 +978,7 @@ xfdesktop_file_icon_menu_arrange_icons(GtkWidget *widget, MonitorData *mdata) {
         }
         else if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(checkbutton))) {
             mdata->fmanager->confirm_sorting = FALSE;
-            XfconfChannel *channel;
-            channel = xfdesktop_icon_view_manager_get_channel(XFDESKTOP_ICON_VIEW_MANAGER(mdata->fmanager));
+            XfconfChannel *channel = xfdesktop_icon_view_manager_get_channel(XFDESKTOP_ICON_VIEW_MANAGER(mdata->fmanager));
             xfconf_channel_set_bool(channel, DESKTOP_ICONS_CONFIRM_SORTING_PROP, FALSE);
         }
 
