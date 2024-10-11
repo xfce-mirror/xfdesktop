@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-10-10 12:54+0200\n"
+"POT-Creation-Date: 2024-10-11 00:55+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Emanuele Petriglia <transifex@emanuelepetriglia.com>, 2019-2024\n"
 "Language-Team: Italian (http://app.transifex.com/xfce/xfdesktop/language/it/)\n"
@@ -188,54 +188,54 @@ msgstr "Icone della finestra"
 msgid "File Icons"
 msgstr "Icone dei file"
 
-#: settings/main.c:2207
+#: settings/main.c:2239
 msgid "Image files"
 msgstr "File immagine"
 
 #. Change the title of the file chooser dialog
-#: settings/main.c:2215
+#: settings/main.c:2247
 msgid "Select a Directory"
 msgstr "Seleziona una cartella"
 
-#: settings/main.c:2448
+#: settings/main.c:2480
 msgid "Settings manager socket"
 msgstr "Socket del gestore delle impostazioni"
 
-#: settings/main.c:2448
+#: settings/main.c:2480
 msgid "SOCKET ID"
 msgstr "ID SOCKET"
 
-#: settings/main.c:2449
+#: settings/main.c:2481
 msgid "Version information"
 msgstr "Informazioni di versione"
 
-#: settings/main.c:2450 src/xfdesktop-application.c:286
+#: settings/main.c:2482 src/xfdesktop-application.c:286
 msgid "Enable debug messages"
 msgstr "Attiva i messaggi di debug"
 
-#: settings/main.c:2474
+#: settings/main.c:2506
 #, c-format
 msgid "Type '%s --help' for usage."
 msgstr "Digitare \"%s --help\" per le informazioni d'uso."
 
-#: settings/main.c:2486
+#: settings/main.c:2518
 msgid "The Xfce development team. All rights reserved."
 msgstr "Il gruppo di sviluppo di Xfce. Tutti i diritti riservati."
 
-#: settings/main.c:2487
+#: settings/main.c:2519
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Segnala eventuali problemi su <%s>."
 
-#: settings/main.c:2494
+#: settings/main.c:2526
 msgid "Desktop Settings"
 msgstr "Impostazioni della scrivania"
 
-#: settings/main.c:2496
+#: settings/main.c:2528
 msgid "Unable to contact settings server"
 msgstr "Impossibile contattare il server delle impostazioni"
 
-#: settings/main.c:2498
+#: settings/main.c:2530
 msgid "Quit"
 msgstr "Esci"
 
@@ -591,51 +591,59 @@ msgstr "Sin_golo clic per attivare gli elementi"
 msgid "_Underline text on hover"
 msgstr "_Sottolinea il testo al passaggio del puntatore"
 
-#: settings/xfdesktop-settings-ui.glade:1009
+#: settings/xfdesktop-settings-ui.glade:974
+msgid "Use custom font co_lor:"
+msgstr "Una co_lore personalizzato per il carattere:"
+
+#: settings/xfdesktop-settings-ui.glade:1012
+msgid "Use custom label bac_kground color:"
+msgstr "Usa un colore personalizzato per l'etichetta dello sfondo"
+
+#: settings/xfdesktop-settings-ui.glade:1091
 msgid "<b>Appearance</b>"
 msgstr "<b>Aspetto</b>"
 
-#: settings/xfdesktop-settings-ui.glade:1030
+#: settings/xfdesktop-settings-ui.glade:1112
 msgid "Desktop _Icons"
 msgstr "_Icone scrivania"
 
-#: settings/xfdesktop-settings-ui.glade:1084
+#: settings/xfdesktop-settings-ui.glade:1166
 msgid ""
 "File/Launcher icons are not enabled. You can enable them from the \"Desktop "
 "Icons\" tab."
 msgstr "Le icone per File/Avviatori non sono abilitati. È necessario abilitarli dalla scheda \"Icone scrivania\"."
 
-#: settings/xfdesktop-settings-ui.glade:1130
+#: settings/xfdesktop-settings-ui.glade:1212
 msgid "Show hidden files on the desktop"
 msgstr "Mostra file nascosti sulla scrivania"
 
-#: settings/xfdesktop-settings-ui.glade:1146
+#: settings/xfdesktop-settings-ui.glade:1228
 msgid "Show t_humbnails"
 msgstr "Mostra mi_niature"
 
-#: settings/xfdesktop-settings-ui.glade:1151
+#: settings/xfdesktop-settings-ui.glade:1233
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
 msgstr "Selezionare questa opzione per visualizzare le anteprime dei file come miniature generate automaticamente."
 
-#: settings/xfdesktop-settings-ui.glade:1163
+#: settings/xfdesktop-settings-ui.glade:1245
 msgid "Show \"Delete\" option in file context menu"
 msgstr "Mostra l'opzione \"Elimina\" dal menu contestuale del file"
 
-#: settings/xfdesktop-settings-ui.glade:1184
+#: settings/xfdesktop-settings-ui.glade:1266
 msgid "General"
 msgstr "Generali"
 
-#: settings/xfdesktop-settings-ui.glade:1228
+#: settings/xfdesktop-settings-ui.glade:1310
 msgid "Default Icons"
 msgstr "Icone predefinite"
 
-#: settings/xfdesktop-settings-ui.glade:1258
+#: settings/xfdesktop-settings-ui.glade:1340
 msgid "_File/Launcher Icons"
 msgstr "Icone per _File/Avviatori"
 
-#: settings/xfdesktop-settings-ui.glade:1284
+#: settings/xfdesktop-settings-ui.glade:1366
 msgid "_Keyboard Shortcuts"
 msgstr "_Scorciatoie da tastiera"
 
