@@ -133,7 +133,6 @@ struct _XfdesktopFileIconManager
 #endif
 
     gboolean show_delete_menu;
-    gboolean confirm_sorting;
     guint max_templates;
     guint templates_count;
 };
@@ -145,7 +144,6 @@ enum {
     PROP_FOLDER,
     PROP_SHOW_DELETE_MENU,
     PROP_MAX_TEMPLATES,
-    PROP_CONFIRM_SORTING,
 };
 
 typedef struct {
@@ -342,7 +340,6 @@ static const struct
 } setting_bindings[] = {
     { DESKTOP_MENU_DELETE, G_TYPE_BOOLEAN, "show-delete-menu" },
     { DESKTOP_MENU_MAX_TEMPLATE_FILES, G_TYPE_INT, "max-templates" },
-    { DESKTOP_ICONS_CONFIRM_SORTING_PROP, G_TYPE_BOOLEAN, "confirm-sorting" },
 };
 
 static const GtkTargetEntry drag_targets[] = {
@@ -422,13 +419,6 @@ xfdesktop_file_icon_manager_class_init(XfdesktopFileIconManagerClass *klass)
                                                       0, G_MAXUSHORT, 16,
                                                       G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
-    g_object_class_install_property(gobject_class, PROP_CONFIRM_SORTING,
-                                    g_param_spec_boolean("confirm-sorting",
-                                                         "confirm-sorting",
-                                                         "confirm-sorting",
-                                                         TRUE,
-                                                         G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
-
     xfdesktop_app_info_quark = g_quark_from_static_string("xfdesktop-app-info-quark");
 }
 
@@ -442,7 +432,6 @@ xfdesktop_file_icon_manager_init(XfdesktopFileIconManager *fmanager)
     fmanager->ready = FALSE;
     fmanager->show_delete_menu = TRUE;
     fmanager->max_templates = 16;
-    fmanager->confirm_sorting = TRUE;
 }
 
 static void
@@ -592,10 +581,6 @@ xfdesktop_file_icon_manager_set_property(GObject *object,
             fmanager->max_templates = MIN(g_value_get_uint(value), G_MAXUINT16);
             break;
 
-        case PROP_CONFIRM_SORTING:
-            fmanager->confirm_sorting = g_value_get_boolean(value);
-            break;
-
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
     }
@@ -628,10 +613,6 @@ xfdesktop_file_icon_manager_get_property(GObject *object,
 
         case PROP_MAX_TEMPLATES:
             g_value_set_int(value, fmanager->max_templates);
-            break;
-
-        case PROP_CONFIRM_SORTING:
-            g_value_set_boolean(value, fmanager->confirm_sorting);
             break;
 
         default:
@@ -952,42 +933,7 @@ xfdesktop_file_icon_menu_paste_into_folder(GtkWidget *widget, MonitorData *mdata
 
 static void
 xfdesktop_file_icon_menu_arrange_icons(GtkWidget *widget, MonitorData *mdata) {
-    gboolean sort = TRUE;
-
-    if (mdata->fmanager->confirm_sorting) {
-        GtkWidget *window = gtk_widget_get_toplevel(widget);
-        GtkWidget *dialog = xfce_message_dialog_new(GTK_WINDOW(window),
-                                         NULL,
-                                         "dialog-question",
-                                         _("This will reorder all desktop items and place them on different screen positions.\nAre you sure?"),
-                                         NULL,
-                                         _("_Cancel"), GTK_RESPONSE_CANCEL,
-                                         _("_OK"), GTK_RESPONSE_ACCEPT,
-                                         NULL);
-
-        GtkWidget *content_area = gtk_dialog_get_content_area(GTK_DIALOG(dialog));
-        GtkWidget *checkbutton = gtk_check_button_new_with_mnemonic(_("Do _not ask me again"));
-        gtk_box_pack_end(GTK_BOX(content_area), checkbutton, FALSE, FALSE, 0);
-        g_object_set (G_OBJECT (checkbutton), "margin-start", 20, NULL);
-
-        gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_ACCEPT);
-        gtk_widget_show_all(dialog);
-
-        if (gtk_dialog_run(GTK_DIALOG(dialog)) != GTK_RESPONSE_ACCEPT) {
-            sort = FALSE;
-        }
-        else if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(checkbutton))) {
-            mdata->fmanager->confirm_sorting = FALSE;
-            XfconfChannel *channel = xfdesktop_icon_view_manager_get_channel(XFDESKTOP_ICON_VIEW_MANAGER(mdata->fmanager));
-            xfconf_channel_set_bool(channel, DESKTOP_ICONS_CONFIRM_SORTING_PROP, FALSE);
-        }
-
-        gtk_widget_destroy(dialog);
-    }
-    
-    if (sort) {
-        xfdesktop_file_icon_manager_sort_icons(XFDESKTOP_ICON_VIEW_MANAGER(mdata->fmanager), GTK_SORT_ASCENDING);
-    }
+    xfdesktop_icon_view_manager_sort_icons(XFDESKTOP_ICON_VIEW_MANAGER(mdata->fmanager),  GTK_SORT_ASCENDING);
 }
 
 static void

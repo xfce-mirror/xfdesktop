@@ -467,27 +467,44 @@ xfdesktop_icon_view_manager_sort_icons(XfdesktopIconViewManager *manager,
         gboolean sort = TRUE;
         XfdesktopIconViewManagerPrivate *priv = XFDESKTOP_ICON_VIEW_MANAGER_GET_PRIVATE(manager);
         if (priv->confirm_sorting) {
-            GtkWidget *dialog = xfce_message_dialog_new(NULL,
-                                                        NULL,
-                                                        "dialog-question",
-                                                        _("This will reorder all desktop items and place them on different screen positions.\nAre you sure?"),
-                                                        NULL,
-                                                        _("_Cancel"), GTK_RESPONSE_CANCEL,
-                                                        _("_OK"), GTK_RESPONSE_ACCEPT,
-                                                        NULL);
+            GtkWidget *dialog = gtk_dialog_new_with_buttons(_("Arrange Icons"),
+                                                            NULL,
+                                                            GTK_DIALOG_DESTROY_WITH_PARENT,
+                                                            _("_Cancel"), GTK_RESPONSE_CANCEL,
+                                                            _("_OK"), GTK_RESPONSE_ACCEPT,
+                                                            NULL);
 
-            GtkWidget *content_area = gtk_dialog_get_content_area(GTK_DIALOG(dialog));
-            GtkWidget *checkbutton = gtk_check_button_new_with_mnemonic(_("Do _not ask me again"));
-            gtk_box_pack_end(GTK_BOX(content_area), checkbutton, FALSE, FALSE, 0);
-            g_object_set (G_OBJECT (checkbutton), "margin-start", 20, NULL);
+            GtkWidget *hbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 6);
+            gtk_container_add(GTK_CONTAINER(gtk_dialog_get_content_area(GTK_DIALOG(dialog))), hbox);
 
+            GIcon *icon = g_themed_icon_new("dialog-question");
+            GtkWidget *image = gtk_image_new_from_gicon(icon, GTK_ICON_SIZE_DIALOG);
+            g_object_set(image,
+                         "valign", GTK_ALIGN_START,
+                         NULL);
+            gtk_box_pack_start(GTK_BOX(hbox), image, FALSE, FALSE, 0);
+
+            GtkWidget *vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 6);
+            gtk_box_pack_start(GTK_BOX(hbox), vbox, TRUE, TRUE, 0);
+
+            const gchar *text = _("This will reorder all desktop items and place them on different screen positions.\nAre you sure?");
+            GtkWidget *label = gtk_label_new(text);
+            gtk_box_pack_start(GTK_BOX(vbox), label, FALSE, FALSE, 0);
+
+            GtkWidget *checkbox = gtk_check_button_new_with_mnemonic(_("Do _not ask me again"));
+            gtk_box_pack_start(GTK_BOX(vbox), checkbox, FALSE, FALSE, 0);
+
+            gtk_window_set_icon_name(GTK_WINDOW(dialog), "dialog-question");
+            gtk_window_set_resizable(GTK_WINDOW(dialog), FALSE);
+            /*gtk_window_set_transient_for(GTK_WINDOW(dialog), );*/
             gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_ACCEPT);
+
             gtk_widget_show_all(dialog);
 
             if (gtk_dialog_run(GTK_DIALOG(dialog)) != GTK_RESPONSE_ACCEPT) {
                 sort = FALSE;
             }
-            else if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(checkbutton))) {
+            else if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(checkbox))) {
                 priv->confirm_sorting = FALSE;
                 xfconf_channel_set_bool(priv->channel, DESKTOP_ICONS_CONFIRM_SORTING_PROP, FALSE);
             }
