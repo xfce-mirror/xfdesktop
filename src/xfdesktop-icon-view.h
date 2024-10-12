@@ -21,7 +21,6 @@
 #ifndef __XFDESKTOP_ICON_VIEW_H__
 #define __XFDESKTOP_ICON_VIEW_H__
 
-#include "glib-object.h"
 #include <gtk/gtk.h>
 #include <libxfce4windowing/libxfce4windowing.h>
 #include <xfconf/xfconf.h>
