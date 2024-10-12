@@ -30,35 +30,10 @@
 
 G_BEGIN_DECLS
 
-#define XFDESKTOP_TYPE_THUMBNAILER             (xfdesktop_thumbnailer_get_type())
-#define XFDESKTOP_THUMBNAILER(obj)             (G_TYPE_CHECK_INSTANCE_CAST((obj), XFDESKTOP_TYPE_THUMBNAILER, XfdesktopThumbnailer))
-#define XFDESKTOP_IS_THUMBNAILER(obj)          (G_TYPE_CHECK_INSTANCE_TYPE((obj), XFDESKTOP_TYPE_THUMBNAILER))
-#define XFDESKTOP_THUMBNAILER_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), XFDESKTOP_TYPE_THUMBNAILER, XfdesktopThumbnailerClass))
-#define XFDESKTOP_IS_THUMBNAILER_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), XFDESKTOP_TYPE_THUMBNAILER()))
+#define XFDESKTOP_TYPE_THUMBNAILER (xfdesktop_thumbnailer_get_type())
+G_DECLARE_FINAL_TYPE(XfdesktopThumbnailer, xfdesktop_thumbnailer, XFDESKTOP, THUMBNAILER, GObject)
 
-typedef struct _XfdesktopThumbnailer XfdesktopThumbnailer;
-typedef struct _XfdesktopThumbnailerPrivate XfdesktopThumbnailerPrivate;
-
-struct _XfdesktopThumbnailer
-{
-    GObject parent;
-
-    XfdesktopThumbnailerPrivate *priv;
-};
-
-typedef struct _XfdesktopThumbnailerClass XfdesktopThumbnailerClass;
-
-struct _XfdesktopThumbnailerClass
-{
-    GObjectClass parent_class;
-
-    /*< signals >*/
-    void (*thumbnail_ready)(gchar *src_file, gchar *thumb_file);
-};
-
-XfdesktopThumbnailer * xfdesktop_thumbnailer_new(void);
-
-GType xfdesktop_thumbnailer_get_type(void);
+XfdesktopThumbnailer *xfdesktop_thumbnailer_new(void);
 
 gboolean xfdesktop_thumbnailer_service_available(XfdesktopThumbnailer *thumbnailer);
 
