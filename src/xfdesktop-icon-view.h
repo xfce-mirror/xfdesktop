@@ -21,19 +21,15 @@
 #ifndef __XFDESKTOP_ICON_VIEW_H__
 #define __XFDESKTOP_ICON_VIEW_H__
 
+#include "glib-object.h"
 #include <gtk/gtk.h>
 #include <libxfce4windowing/libxfce4windowing.h>
 #include <xfconf/xfconf.h>
 
 G_BEGIN_DECLS
 
-#define XFDESKTOP_TYPE_ICON_VIEW     (xfdesktop_icon_view_get_type())
-#define XFDESKTOP_ICON_VIEW(obj)     (G_TYPE_CHECK_INSTANCE_CAST((obj), XFDESKTOP_TYPE_ICON_VIEW, XfdesktopIconView))
-#define XFDESKTOP_IS_ICON_VIEW(obj)  (G_TYPE_CHECK_INSTANCE_TYPE((obj), XFDESKTOP_TYPE_ICON_VIEW))
-
-typedef struct _XfdesktopIconView         XfdesktopIconView;
-typedef struct _XfdesktopIconViewClass    XfdesktopIconViewClass;
-typedef struct _XfdesktopIconViewPrivate  XfdesktopIconViewPrivate;
+#define XFDESKTOP_TYPE_ICON_VIEW (xfdesktop_icon_view_get_type())
+G_DECLARE_FINAL_TYPE(XfdesktopIconView, xfdesktop_icon_view, XFDESKTOP, ICON_VIEW, GtkEventBox)
 
 typedef enum
 {
@@ -42,50 +38,10 @@ typedef enum
     XFDESKTOP_ICON_VIEW_GRAVITY_BOTTOM     = 1 << 2,
 } XfdesktopIconViewGravity;
 
-struct _XfdesktopIconView
-{
-    GtkEventBox parent;
-
-    /*< private >*/
-    XfdesktopIconViewPrivate *priv;
-};
-
-struct _XfdesktopIconViewClass
-{
-    GtkEventBoxClass parent;
-
-    /*< signals >*/
-    void (*icon_selection_changed)(XfdesktopIconView *icon_view);
-    void (*icon_activated)(XfdesktopIconView *icon_view);
-    void (*icon_moved)(XfdesktopIconView *icon_view,
-                       GtkTreeIter *iter,
-                       gint new_row,
-                       gint new_col);
-    gboolean (*query_icon_tooltip)(XfdesktopIconView *icon_view,
-                                   GtkTreeIter *iter,
-                                   gint x,
-                                   gint y,
-                                   gboolean keyboard_tooltip,
-                                   GtkTooltip *tooltip);
-
-    void (*start_grid_resize)(XfdesktopIconView *icon_view,
-                              gint new_rows,
-                              gint new_cols);
-    void (*end_grid_resize)(XfdesktopIconView *icon_view);
-
-    gboolean (*move_cursor)(XfdesktopIconView *icon_view,
-                            GtkMovementStep step,
-                            gint count);
-
-    void (*resize_event)(XfdesktopIconView *icon_view);
-};
-
 typedef struct {
     XfdesktopIconView *source_icon_view;
     GList *dragged_icons;  // GtkTreeIter
 } XfdesktopDraggedIconList;
-
-GType xfdesktop_icon_view_get_type(void) G_GNUC_CONST;
 
 guint xfdesktop_icon_view_get_icon_drag_info(void);
 GdkAtom xfdesktop_icon_view_get_icon_drag_target(void);
