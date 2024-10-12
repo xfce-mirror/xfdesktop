@@ -25,37 +25,15 @@
 #include <xfconf/xfconf.h>
 #include <libxfce4windowing/libxfce4windowing.h>
 
+#include "glib-object.h"
 #include "xfdesktop-backdrop-manager.h"
 
 G_BEGIN_DECLS
 
-#define XFCE_TYPE_DESKTOP              (xfce_desktop_get_type())
-#define XFCE_DESKTOP(object)           (G_TYPE_CHECK_INSTANCE_CAST((object), XFCE_TYPE_DESKTOP, XfceDesktop))
-#define XFCE_DESKTOP_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), XFCE_TYPE_DESKTOP, XfceDesktopClass))
-#define XFCE_IS_DESKTOP(object)        (G_TYPE_CHECK_INSTANCE_TYPE((object), XFCE_TYPE_DESKTOP))
-#define XFCE_IS_DESKTOP_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE((klass), XFCE_TYPE_DESKTOP))
-#define XFCE_DESKTOP_GET_CLASS(object) (G_TYPE_INSTANCE_GET_CLASS((object), XFCE_TYPE_DESKTOP, XfceDesktopClass))
-
-typedef struct _XfceDesktop XfceDesktop;
-typedef struct _XfceDesktopClass XfceDesktopClass;
-typedef struct _XfceDesktopPrivate XfceDesktopPrivate;
+#define XFCE_TYPE_DESKTOP (xfce_desktop_get_type())
+G_DECLARE_FINAL_TYPE(XfceDesktop, xfce_desktop, XFCE, DESKTOP, GtkWindow)
 
 typedef void (*SessionLogoutFunc)();
-
-struct _XfceDesktop
-{
-    GtkWindow window;
-
-    /*< private >*/
-    XfceDesktopPrivate *priv;
-};
-
-struct _XfceDesktopClass
-{
-    GtkWindowClass parent_class;
-};
-
-GType xfce_desktop_get_type(void) G_GNUC_CONST;
 
 GtkWidget *xfce_desktop_new(GdkScreen *gscreen,
                             XfwMonitor *monitor,

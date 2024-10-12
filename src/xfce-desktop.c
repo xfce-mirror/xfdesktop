@@ -50,16 +50,17 @@
 #include <fcntl.h>
 #endif
 
-#include <ctype.h>
-#include <errno.h>
-
 #ifdef HAVE_TIME_H
 #include <time.h>
 #endif
 
+#include <gio/gio.h>
 #include <glib.h>
 #include <gtk/gtk.h>
-#include <gio/gio.h>
+#include <libxfce4util/libxfce4util.h>
+#include <libxfce4ui/libxfce4ui.h>
+#include <libxfce4windowing/libxfce4windowing.h>
+#include <xfconf/xfconf.h>
 
 #ifdef ENABLE_X11
 #include <X11/Xlib.h>
@@ -72,23 +73,6 @@
 #include <gtk-layer-shell.h>
 #endif
 
-#ifdef ENABLE_DESKTOP_ICONS
-#include "xfdesktop-icon-view.h"
-#include "xfdesktop-window-icon-manager.h"
-# ifdef ENABLE_FILE_ICONS
-# include "xfdesktop-file-icon-manager.h"
-# include "xfdesktop-special-file-icon.h"
-# endif
-#endif
-
-#include <libxfce4util/libxfce4util.h>
-#include <libxfce4ui/libxfce4ui.h>
-#include <libxfce4windowing/libxfce4windowing.h>
-
-#include <xfconf/xfconf.h>
-
-#include "menu.h"
-#include "windowlist.h"
 #include "xfdesktop-backdrop-manager.h"
 #include "xfdesktop-common.h"
 #include "xfce-desktop.h"
@@ -100,8 +84,9 @@
 /* disable setting the x background for bug 7442 */
 //#define DISABLE_FOR_BUG7442
 
-struct _XfceDesktopPrivate
-{
+struct _XfceDesktop {
+    GtkWindow parent_instance;
+
     GdkScreen *gscreen;
     XfwScreen *xfw_screen;
     XfwMonitor *monitor;
@@ -188,12 +173,12 @@ static struct
 static void
 xfce_desktop_place_on_monitor(XfceDesktop *desktop) {
     GdkRectangle geom;
-    xfw_monitor_get_logical_geometry(desktop->priv->monitor, &geom);
+    xfw_monitor_get_logical_geometry(desktop->monitor, &geom);
 
     DBG("Moving desktop for geometry %dx%d+%d+%d for %s",
         geom.width, geom.height,
         geom.x, geom.y,
-        xfw_monitor_get_description(desktop->priv->monitor));
+        xfw_monitor_get_description(desktop->monitor));
 
     gtk_widget_set_size_request(GTK_WIDGET(desktop), geom.width, geom.height);
 
@@ -285,28 +270,28 @@ backdrop_loaded(cairo_surface_t *surface, GdkRectangle *region, GFile *image_fil
         if (g_error_matches(error, G_IO_ERROR, G_IO_ERROR_CANCELLED)) {
             DBG("backdrop loading cancelled");
         } else {
-            g_clear_object(&desktop->priv->backdrop_load_cancellable);
+            g_clear_object(&desktop->backdrop_load_cancellable);
             g_message("Failed to load backdrop for monitor %s: %s",
-                      xfw_monitor_get_connector(desktop->priv->monitor),
+                      xfw_monitor_get_connector(desktop->monitor),
                       error->message);
         }
     } else if (surface != NULL) {
-        g_clear_object(&desktop->priv->backdrop_load_cancellable);
+        g_clear_object(&desktop->backdrop_load_cancellable);
 
-        if (desktop->priv->bg_surface != surface) {
-            if (desktop->priv->bg_surface != NULL) {
-                cairo_surface_destroy(desktop->priv->bg_surface);
+        if (desktop->bg_surface != surface) {
+            if (desktop->bg_surface != NULL) {
+                cairo_surface_destroy(desktop->bg_surface);
             }
-            desktop->priv->bg_surface = cairo_surface_reference(surface);
+            desktop->bg_surface = cairo_surface_reference(surface);
         }
-        desktop->priv->bg_surface_region = *region;
+        desktop->bg_surface_region = *region;
 
 #ifdef ENABLE_X11
-        if (xfw_monitor_is_primary(desktop->priv->monitor) && xfw_windowing_get() == XFW_WINDOWING_X11) {
+        if (xfw_monitor_is_primary(desktop->monitor) && xfw_windowing_get() == XFW_WINDOWING_X11) {
             gint monitor_idx = -1;
-            for (GList *l = xfw_screen_get_monitors(desktop->priv->xfw_screen); l != NULL; l = l->next) {
-                if (XFW_MONITOR(l->data) == desktop->priv->monitor) {
-                    xfdesktop_x11_set_root_image_file_property(desktop->priv->gscreen,
+            for (GList *l = xfw_screen_get_monitors(desktop->xfw_screen); l != NULL; l = l->next) {
+                if (XFW_MONITOR(l->data) == desktop->monitor) {
+                    xfdesktop_x11_set_root_image_file_property(desktop->gscreen,
                                                                monitor_idx,
                                                                image_file != NULL
                                                                ? g_file_peek_path(image_file)
@@ -317,12 +302,12 @@ backdrop_loaded(cairo_surface_t *surface, GdkRectangle *region, GFile *image_fil
             }
 
             /* do this again so apps watching the root win notice the update */
-            xfdesktop_x11_set_root_image_surface(desktop->priv->gscreen, surface);
+            xfdesktop_x11_set_root_image_surface(desktop->gscreen, surface);
             xfdesktop_x11_set_compat_properties(GTK_WIDGET(desktop));
         }
 #endif  /* ENABLE_X11 */
 
-        if (xfw_monitor_is_primary(desktop->priv->monitor)) {
+        if (xfw_monitor_is_primary(desktop->monitor)) {
             set_accountsservice_user_bg(image_file != NULL ? g_file_peek_path(image_file) : NULL);
         }
 
@@ -333,17 +318,17 @@ backdrop_loaded(cairo_surface_t *surface, GdkRectangle *region, GFile *image_fil
 static void
 fetch_backdrop(XfceDesktop *desktop) {
     TRACE("entering");
-    if (gtk_widget_get_realized(GTK_WIDGET(desktop)) && desktop->priv->backdrop_workspace != NULL) {
-        if (desktop->priv->backdrop_load_cancellable != NULL) {
-            g_cancellable_cancel(desktop->priv->backdrop_load_cancellable);
-            g_object_unref(desktop->priv->backdrop_load_cancellable);
+    if (gtk_widget_get_realized(GTK_WIDGET(desktop)) && desktop->backdrop_workspace != NULL) {
+        if (desktop->backdrop_load_cancellable != NULL) {
+            g_cancellable_cancel(desktop->backdrop_load_cancellable);
+            g_object_unref(desktop->backdrop_load_cancellable);
         }
-        desktop->priv->backdrop_load_cancellable = g_cancellable_new();
+        desktop->backdrop_load_cancellable = g_cancellable_new();
 
-        xfdesktop_backdrop_manager_get_image_surface(desktop->priv->backdrop_manager,
-                                                     desktop->priv->backdrop_load_cancellable,
-                                                     desktop->priv->monitor,
-                                                     desktop->priv->backdrop_workspace,
+        xfdesktop_backdrop_manager_get_image_surface(desktop->backdrop_manager,
+                                                     desktop->backdrop_load_cancellable,
+                                                     desktop->monitor,
+                                                     desktop->backdrop_workspace,
                                                      backdrop_loaded,
                                                      desktop);
     }
@@ -369,30 +354,30 @@ workspace_changed_cb(XfwWorkspaceGroup *group, XfwWorkspace *previously_active_s
 static void
 group_workspace_added(XfwWorkspaceGroup *group, XfwWorkspace *workspace, XfceDesktop *desktop) {
     DBG("entering");
-    desktop->priv->workspaces = g_list_prepend(desktop->priv->workspaces, workspace);
+    desktop->workspaces = g_list_prepend(desktop->workspaces, workspace);
     // Run this again; if ->single_workspace is NULL, it will try to populate it
-    xfce_desktop_set_single_workspace_number(desktop, desktop->priv->single_workspace_num);
+    xfce_desktop_set_single_workspace_number(desktop, desktop->single_workspace_num);
 }
 
 static void
 group_workspace_removed(XfwWorkspaceGroup *group, XfwWorkspace *workspace, XfceDesktop *desktop) {
-    desktop->priv->workspaces = g_list_remove(desktop->priv->workspaces, workspace);
-    if (desktop->priv->active_workspace == workspace) {
-        desktop->priv->active_workspace = NULL;
+    desktop->workspaces = g_list_remove(desktop->workspaces, workspace);
+    if (desktop->active_workspace == workspace) {
+        desktop->active_workspace = NULL;
     }
-    if (desktop->priv->single_workspace == workspace) {
-        desktop->priv->single_workspace = NULL;
+    if (desktop->single_workspace == workspace) {
+        desktop->single_workspace = NULL;
     }
-    if (desktop->priv->backdrop_workspace == workspace) {
-        desktop->priv->backdrop_workspace = NULL;
+    if (desktop->backdrop_workspace == workspace) {
+        desktop->backdrop_workspace = NULL;
         update_backdrop_workspace(desktop);
     }
 }
 
 static void
 group_monitor_added(XfwWorkspaceGroup *group, XfwMonitor *monitor, XfceDesktop *desktop) {
-    if (monitor == desktop->priv->monitor) {
-        desktop->priv->workspace_group = group;
+    if (monitor == desktop->monitor) {
+        desktop->workspace_group = group;
         g_signal_connect(group, "workspace-added",
                          G_CALLBACK(group_workspace_added), desktop);
         g_signal_connect(group, "workspace-removed",
@@ -405,8 +390,8 @@ group_monitor_added(XfwWorkspaceGroup *group, XfwMonitor *monitor, XfceDesktop *
 
 static void
 group_monitor_removed(XfwWorkspaceGroup *group, XfwMonitor *monitor, XfceDesktop *desktop) {
-    if (monitor == desktop->priv->monitor) {
-        desktop->priv->workspace_group = NULL;
+    if (monitor == desktop->monitor) {
+        desktop->workspace_group = NULL;
         g_signal_handlers_disconnect_by_func(group, group_workspace_added, desktop);
         g_signal_handlers_disconnect_by_func(group, group_workspace_removed, desktop);
         g_signal_handlers_disconnect_by_func(group, workspace_changed_cb, desktop);
@@ -429,8 +414,8 @@ workspace_group_created_cb(XfwWorkspaceManager* manager,
                      G_CALLBACK(group_monitor_removed), desktop);
 
     GList *monitors = xfw_workspace_group_get_monitors(group);
-    if (g_list_find(monitors, desktop->priv->monitor) != NULL) {
-        group_monitor_added(group, desktop->priv->monitor, desktop);
+    if (g_list_find(monitors, desktop->monitor) != NULL) {
+        group_monitor_added(group, desktop->monitor, desktop);
     }
 }
 
@@ -443,7 +428,7 @@ workspace_group_destroyed_cb(XfwWorkspaceManager *manager,
 
     TRACE("entering");
 
-    group_monitor_removed(group, desktop->priv->monitor, desktop);
+    group_monitor_removed(group, desktop->monitor, desktop);
     g_signal_handlers_disconnect_by_data(group, desktop);
 }
 
@@ -454,15 +439,15 @@ manager_backdrop_changed(XfdesktopBackdropManager *manager,
                          XfceDesktop *desktop)
 {
     DBG("entering: monitor=%p, our monitor=%p, workspace=%d, our workspace=%d",
-        monitor, desktop->priv->monitor, xfw_workspace_get_number(workspace),
-        xfw_workspace_get_number(desktop->priv->backdrop_workspace));
-    if (monitor == desktop->priv->monitor && workspace == desktop->priv->backdrop_workspace) {
+        monitor, desktop->monitor, xfw_workspace_get_number(workspace),
+        xfw_workspace_get_number(desktop->backdrop_workspace));
+    if (monitor == desktop->monitor && workspace == desktop->backdrop_workspace) {
         fetch_backdrop(desktop);
     }
 }
 
 
-G_DEFINE_TYPE_WITH_PRIVATE(XfceDesktop, xfce_desktop, GTK_TYPE_WINDOW)
+G_DEFINE_TYPE(XfceDesktop, xfce_desktop, GTK_TYPE_WINDOW)
 
 
 static void
@@ -536,8 +521,7 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
 static void
 xfce_desktop_init(XfceDesktop *desktop)
 {
-    desktop->priv = xfce_desktop_get_instance_private(desktop);
-    desktop->priv->single_workspace_num = -1;
+    desktop->single_workspace_num = -1;
 }
 
 static void
@@ -548,7 +532,7 @@ xfce_desktop_constructed(GObject *obj)
 
     G_OBJECT_CLASS(xfce_desktop_parent_class)->constructed(obj);
 
-    gtk_window_set_screen(GTK_WINDOW(desktop), desktop->priv->gscreen);
+    gtk_window_set_screen(GTK_WINDOW(desktop), desktop->gscreen);
     gtk_window_set_type_hint(GTK_WINDOW(desktop), GDK_WINDOW_TYPE_HINT_DESKTOP);
     /* Accept focus is needed for the menu pop up either by the menu key on
      * the keyboard or Shift+F10. */
@@ -565,18 +549,18 @@ xfce_desktop_constructed(GObject *obj)
     }
 #endif
 
-    if (desktop->priv->channel != NULL) {
+    if (desktop->channel != NULL) {
         for (gsize i = 0; i < G_N_ELEMENTS(setting_bindings); ++i) {
             g_assert(setting_bindings[i].setting_type != 0);
-            xfconf_g_property_bind(desktop->priv->channel,
+            xfconf_g_property_bind(desktop->channel,
                                    setting_bindings[i].setting, setting_bindings[i].setting_type,
                                    G_OBJECT(desktop), setting_bindings[i].property);
         }
     }
 
-    desktop->priv->xfw_screen = xfw_screen_get_default();
-    workspace_manager = xfw_screen_get_workspace_manager(desktop->priv->xfw_screen);
-    desktop->priv->workspace_manager = workspace_manager;
+    desktop->xfw_screen = xfw_screen_get_default();
+    workspace_manager = xfw_screen_get_workspace_manager(desktop->xfw_screen);
+    desktop->workspace_manager = workspace_manager;
 
     /* watch for workspace changes */
     for (GList *gl = xfw_workspace_manager_list_workspace_groups(workspace_manager);
@@ -590,7 +574,7 @@ xfce_desktop_constructed(GObject *obj)
     g_signal_connect(workspace_manager, "workspace-group-destroyed",
                      G_CALLBACK(workspace_group_destroyed_cb), desktop);
 
-    g_signal_connect(desktop->priv->backdrop_manager, "backdrop-changed",
+    g_signal_connect(desktop->backdrop_manager, "backdrop-changed",
                      G_CALLBACK(manager_backdrop_changed), desktop);
 }
 
@@ -599,35 +583,35 @@ xfce_desktop_finalize(GObject *object)
 {
     XfceDesktop *desktop = XFCE_DESKTOP(object);
 
-    g_signal_handlers_disconnect_by_data(desktop->priv->backdrop_manager, desktop);
-    g_signal_handlers_disconnect_by_data(desktop->priv->workspace_manager, desktop);
-    for (GList *l = xfw_workspace_manager_list_workspace_groups(desktop->priv->workspace_manager);
+    g_signal_handlers_disconnect_by_data(desktop->backdrop_manager, desktop);
+    g_signal_handlers_disconnect_by_data(desktop->workspace_manager, desktop);
+    for (GList *l = xfw_workspace_manager_list_workspace_groups(desktop->workspace_manager);
          l != NULL;
          l = l->next)
     {
         g_signal_handlers_disconnect_by_data(l->data, desktop);
     }
 
-    if (desktop->priv->backdrop_load_cancellable != NULL) {
-        g_cancellable_cancel(desktop->priv->backdrop_load_cancellable);
-        g_object_unref(desktop->priv->backdrop_load_cancellable);
+    if (desktop->backdrop_load_cancellable != NULL) {
+        g_cancellable_cancel(desktop->backdrop_load_cancellable);
+        g_object_unref(desktop->backdrop_load_cancellable);
     }
 
-    g_list_free(desktop->priv->workspaces);
-    g_object_unref(desktop->priv->xfw_screen);
+    g_list_free(desktop->workspaces);
+    g_object_unref(desktop->xfw_screen);
 
-    if (desktop->priv->channel != NULL) {
-        g_object_unref(G_OBJECT(desktop->priv->channel));
+    if (desktop->channel != NULL) {
+        g_object_unref(G_OBJECT(desktop->channel));
     }
-    g_free(desktop->priv->property_prefix);
+    g_free(desktop->property_prefix);
 
 #ifdef ENABLE_DESKTOP_ICONS
-    if(desktop->priv->style_refresh_timer != 0)
-        g_source_remove(desktop->priv->style_refresh_timer);
+    if(desktop->style_refresh_timer != 0)
+        g_source_remove(desktop->style_refresh_timer);
 #endif
 
-    g_signal_handlers_disconnect_by_data(desktop->priv->monitor, desktop);
-    g_object_unref(desktop->priv->monitor);
+    g_signal_handlers_disconnect_by_data(desktop->monitor, desktop);
+    g_object_unref(desktop->monitor);
 
     G_OBJECT_CLASS(xfce_desktop_parent_class)->finalize(object);
 }
@@ -642,7 +626,7 @@ xfce_desktop_set_property(GObject *object,
 
     switch(property_id) {
         case PROP_SCREEN:
-            desktop->priv->gscreen = g_value_get_object(value);
+            desktop->gscreen = g_value_get_object(value);
             break;
 
         case PROP_MONITOR:
@@ -650,15 +634,15 @@ xfce_desktop_set_property(GObject *object,
             break;
 
         case PROP_CHANNEL:
-            desktop->priv->channel = g_value_dup_object(value);
+            desktop->channel = g_value_dup_object(value);
             break;
 
         case PROP_PROPERTY_PREFIX:
-            desktop->priv->property_prefix = g_value_dup_string(value);
+            desktop->property_prefix = g_value_dup_string(value);
             break;
 
         case PROP_BACKDROP_MANAGER:
-            desktop->priv->backdrop_manager = g_value_get_object(value);
+            desktop->backdrop_manager = g_value_get_object(value);
             break;
 
         case PROP_SINGLE_WORKSPACE_MODE:
@@ -687,31 +671,31 @@ xfce_desktop_get_property(GObject *object,
 
     switch(property_id) {
         case PROP_SCREEN:
-            g_value_set_object(value, desktop->priv->gscreen);
+            g_value_set_object(value, desktop->gscreen);
             break;
 
         case PROP_MONITOR:
-            g_value_set_object(value, desktop->priv->monitor);
+            g_value_set_object(value, desktop->monitor);
             break;
 
         case PROP_CHANNEL:
-            g_value_set_object(value, desktop->priv->channel);
+            g_value_set_object(value, desktop->channel);
             break;
 
         case PROP_PROPERTY_PREFIX:
-            g_value_set_string(value, desktop->priv->property_prefix);
+            g_value_set_string(value, desktop->property_prefix);
             break;
 
         case PROP_BACKDROP_MANAGER:
-            g_value_set_object(value, desktop->priv->backdrop_manager);
+            g_value_set_object(value, desktop->backdrop_manager);
             break;
 
         case PROP_SINGLE_WORKSPACE_MODE:
-            g_value_set_boolean(value, desktop->priv->single_workspace_mode);
+            g_value_set_boolean(value, desktop->single_workspace_mode);
             break;
 
         case PROP_SINGLE_WORKSPACE_NUMBER:
-            g_value_set_int(value, desktop->priv->single_workspace_num);
+            g_value_set_int(value, desktop->single_workspace_num);
             break;
 
         default:
@@ -731,7 +715,7 @@ xfce_desktop_realize(GtkWidget *widget)
     if (xfw_windowing_get() == XFW_WINDOWING_WAYLAND) {
         GtkWindow *window = GTK_WINDOW(desktop);
         gtk_layer_set_layer(window, GTK_LAYER_SHELL_LAYER_BACKGROUND);
-        gtk_layer_set_monitor(window, xfw_monitor_get_gdk_monitor(desktop->priv->monitor));
+        gtk_layer_set_monitor(window, xfw_monitor_get_gdk_monitor(desktop->monitor));
         gtk_layer_set_anchor(window, GTK_LAYER_SHELL_EDGE_TOP, TRUE);
         gtk_layer_set_anchor(window, GTK_LAYER_SHELL_EDGE_LEFT, TRUE);
         gtk_layer_set_margin(window, GTK_LAYER_SHELL_EDGE_TOP, 0);
@@ -749,7 +733,7 @@ xfce_desktop_realize(GtkWidget *widget)
     xfce_desktop_place_on_monitor(desktop);
     gdk_window_lower(gtk_widget_get_window(widget));
 
-    g_signal_connect(G_OBJECT(desktop->priv->gscreen), "composited-changed",
+    g_signal_connect(G_OBJECT(desktop->gscreen), "composited-changed",
                      G_CALLBACK(screen_composited_changed_cb), desktop);
 
     gtk_widget_add_events(GTK_WIDGET(desktop), GDK_EXPOSURE_MASK);
@@ -766,18 +750,18 @@ xfce_desktop_unrealize(GtkWidget *widget)
 
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
 
-    g_signal_handlers_disconnect_by_func(G_OBJECT(desktop->priv->gscreen),
+    g_signal_handlers_disconnect_by_func(G_OBJECT(desktop->gscreen),
                                          G_CALLBACK(screen_composited_changed_cb), desktop);
 
 #ifdef ENABLE_X11
-    if (xfw_monitor_is_primary(desktop->priv->monitor) && xfw_windowing_get() == XFW_WINDOWING_X11) {
-        xfdesktop_x11_set_root_image_surface(desktop->priv->gscreen, NULL);
+    if (xfw_monitor_is_primary(desktop->monitor) && xfw_windowing_get() == XFW_WINDOWING_X11) {
+        xfdesktop_x11_set_root_image_surface(desktop->gscreen, NULL);
         xfdesktop_x11_set_compat_properties(NULL);
 
         gint monitor_idx = -1;
-        for (GList *l = xfw_screen_get_monitors(desktop->priv->xfw_screen); l != NULL; l = l->next) {
-            if (XFW_MONITOR(l->data) == desktop->priv->monitor) {
-                xfdesktop_x11_set_root_image_file_property(desktop->priv->gscreen,
+        for (GList *l = xfw_screen_get_monitors(desktop->xfw_screen); l != NULL; l = l->next) {
+            if (XFW_MONITOR(l->data) == desktop->monitor) {
+                xfdesktop_x11_set_root_image_file_property(desktop->gscreen,
                                                            monitor_idx,
                                                            NULL);
                 break;
@@ -787,9 +771,9 @@ xfce_desktop_unrealize(GtkWidget *widget)
      }
 #endif
 
-    if(desktop->priv->bg_surface) {
-        cairo_surface_destroy(desktop->priv->bg_surface);
-        desktop->priv->bg_surface = NULL;
+    if (desktop->bg_surface != NULL) {
+        cairo_surface_destroy(desktop->bg_surface);
+        desktop->bg_surface = NULL;
     }
 
     GTK_WIDGET_CLASS(xfce_desktop_parent_class)->unrealize(widget);
@@ -805,18 +789,18 @@ xfce_desktop_draw(GtkWidget *w,
 
     cairo_set_operator(cr, CAIRO_OPERATOR_SOURCE);
 
-    if (desktop->priv->bg_surface != NULL) {
-        gdouble scale = xfw_monitor_get_fractional_scale(desktop->priv->monitor);
+    if (desktop->bg_surface != NULL) {
+        gdouble scale = xfw_monitor_get_fractional_scale(desktop->monitor);
         cairo_scale(cr, 1.0 / scale, 1.0 / scale);
         cairo_set_source_surface(cr,
-                                 desktop->priv->bg_surface,
-                                 0 - desktop->priv->bg_surface_region.x,
-                                 0 - desktop->priv->bg_surface_region.y);
+                                 desktop->bg_surface,
+                                 0 - desktop->bg_surface_region.x,
+                                 0 - desktop->bg_surface_region.y);
         cairo_rectangle(cr,
                         0,
                         0,
-                        desktop->priv->bg_surface_region.width,
-                        desktop->priv->bg_surface_region.height);
+                        desktop->bg_surface_region.width,
+                        desktop->bg_surface_region.height);
         cairo_fill(cr);
     } else {
         cairo_set_source_rgba(cr, 0.0, 0.0, 0.0, 1.0);
@@ -839,7 +823,7 @@ xfce_desktop_draw(GtkWidget *w,
 static gboolean
 xfce_desktop_enter_leave_event(GtkWidget *w, GdkEventCrossing *event) {
     XfceDesktop *desktop = XFCE_DESKTOP(w);
-    desktop->priv->has_pointer = event->type == GDK_ENTER_NOTIFY;
+    desktop->has_pointer = event->type == GDK_ENTER_NOTIFY;
     return FALSE;
 }
 
@@ -852,15 +836,16 @@ style_refresh_cb(gpointer user_data)
 
     TRACE("entering");
 
-    desktop->priv->style_refresh_timer = 0;
+    desktop->style_refresh_timer = 0;
 
     g_return_val_if_fail(XFCE_IS_DESKTOP(desktop), FALSE);
 
     if(!gtk_widget_get_realized(GTK_WIDGET(desktop)))
         return FALSE;
 
-    if(desktop->priv->workspaces == NULL)
+    if (desktop->workspaces == NULL) {
         return FALSE;
+    }
 
     gtk_widget_queue_draw(GTK_WIDGET(desktop));
 
@@ -884,10 +869,11 @@ xfce_desktop_style_updated(GtkWidget *w)
 
     TRACE("entering");
 
-    if(desktop->priv->style_refresh_timer != 0)
-        g_source_remove(desktop->priv->style_refresh_timer);
+    if (desktop->style_refresh_timer != 0) {
+        g_source_remove(desktop->style_refresh_timer);
+    }
 
-    desktop->priv->style_refresh_timer = g_idle_add_full(G_PRIORITY_LOW,
+    desktop->style_refresh_timer = g_idle_add_full(G_PRIORITY_LOW,
                                                          style_refresh_cb,
                                                          desktop,
                                                          NULL);
@@ -900,24 +886,24 @@ static gboolean
 update_backdrop_workspace(XfceDesktop *desktop) {
     TRACE("entering");
 
-    if (desktop->priv->workspace_group != NULL) {
-        desktop->priv->active_workspace = xfw_workspace_group_get_active_workspace(desktop->priv->workspace_group);
+    if (desktop->workspace_group != NULL) {
+        desktop->active_workspace = xfw_workspace_group_get_active_workspace(desktop->workspace_group);
     } else {
-        desktop->priv->active_workspace = NULL;
+        desktop->active_workspace = NULL;
     }
 
-    XfwWorkspace *old_backdrop_workspace = desktop->priv->backdrop_workspace;
+    XfwWorkspace *old_backdrop_workspace = desktop->backdrop_workspace;
 
-    if (desktop->priv->single_workspace_mode && desktop->priv->single_workspace != NULL) {
+    if (desktop->single_workspace_mode && desktop->single_workspace != NULL) {
         DBG("using single_workspace");
-        desktop->priv->backdrop_workspace = desktop->priv->single_workspace;
-    } else if (desktop->priv->active_workspace != NULL) {
+        desktop->backdrop_workspace = desktop->single_workspace;
+    } else if (desktop->active_workspace != NULL) {
         DBG("using active_workspace");
-        desktop->priv->backdrop_workspace = desktop->priv->active_workspace;
+        desktop->backdrop_workspace = desktop->active_workspace;
     } else {
         XfwWorkspace *lowest_workspace = NULL;
 
-        for (GList *l = desktop->priv->workspaces; l != NULL; l = l->next) {
+        for (GList *l = desktop->workspaces; l != NULL; l = l->next) {
             XfwWorkspace *workspace = XFW_WORKSPACE(l->data);
             if (lowest_workspace == NULL ||
                 xfw_workspace_get_number(workspace) < xfw_workspace_get_number(lowest_workspace))
@@ -926,14 +912,14 @@ update_backdrop_workspace(XfceDesktop *desktop) {
             }
         }
         DBG("using lowest_workspace");
-        desktop->priv->backdrop_workspace = lowest_workspace;
+        desktop->backdrop_workspace = lowest_workspace;
     }
 
     XF_DEBUG("new_active_workspace %d, new_backdrop_workspace %d",
-             desktop->priv->active_workspace != NULL ? (gint)xfw_workspace_get_number(desktop->priv->active_workspace) : -1,
-             desktop->priv->backdrop_workspace != NULL ? (gint)xfw_workspace_get_number(desktop->priv->backdrop_workspace) : -1);
+             desktop->active_workspace != NULL ? (gint)xfw_workspace_get_number(desktop->active_workspace) : -1,
+             desktop->backdrop_workspace != NULL ? (gint)xfw_workspace_get_number(desktop->backdrop_workspace) : -1);
 
-    if (desktop->priv->backdrop_workspace != old_backdrop_workspace || desktop->priv->bg_surface == NULL) {
+    if (desktop->backdrop_workspace != old_backdrop_workspace || desktop->bg_surface == NULL) {
         fetch_backdrop(desktop);
         return TRUE;
     } else {
@@ -982,7 +968,7 @@ xfce_desktop_new(GdkScreen *gscreen,
 XfwMonitor *
 xfce_desktop_get_monitor(XfceDesktop *desktop) {
     g_return_val_if_fail(XFCE_IS_DESKTOP(desktop), NULL);
-    return desktop->priv->monitor;
+    return desktop->monitor;
 }
 
 void
@@ -990,13 +976,13 @@ xfce_desktop_update_monitor(XfceDesktop *desktop, XfwMonitor *monitor) {
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
     g_return_if_fail(XFW_IS_MONITOR(monitor));
 
-    if (desktop->priv->monitor != monitor) {
-        if (desktop->priv->monitor != NULL) {
-            g_signal_handlers_disconnect_by_data(desktop->priv->monitor, desktop);
-            g_object_unref(desktop->priv->monitor);
+    if (desktop->monitor != monitor) {
+        if (desktop->monitor != NULL) {
+            g_signal_handlers_disconnect_by_data(desktop->monitor, desktop);
+            g_object_unref(desktop->monitor);
         }
 
-        desktop->priv->monitor = g_object_ref(monitor);
+        desktop->monitor = g_object_ref(monitor);
 
         g_signal_connect(monitor, "notify::logical-geometry",
                          G_CALLBACK(monitor_prop_changed), desktop);
@@ -1019,8 +1005,8 @@ xfce_desktop_set_single_workspace_mode(XfceDesktop *desktop,
 {
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
 
-    if (single_workspace != desktop->priv->single_workspace_mode) {
-        desktop->priv->single_workspace_mode = single_workspace;
+    if (single_workspace != desktop->single_workspace_mode) {
+        desktop->single_workspace_mode = single_workspace;
         XF_DEBUG("single_workspace_mode now %s", single_workspace ? "TRUE" : "FALSE");
         update_backdrop_workspace(desktop);
     }
@@ -1033,19 +1019,19 @@ xfce_desktop_set_single_workspace_number(XfceDesktop *desktop,
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
 
     if (workspace_num >= 0
-        && (workspace_num != desktop->priv->single_workspace_num
-            || desktop->priv->single_workspace == NULL))
+        && (workspace_num != desktop->single_workspace_num
+            || desktop->single_workspace == NULL))
     {
-        if (workspace_num != desktop->priv->single_workspace_num) {
+        if (workspace_num != desktop->single_workspace_num) {
             XF_DEBUG("single_workspace_num now %d", workspace_num);
         }
-        desktop->priv->single_workspace_num = workspace_num;
+        desktop->single_workspace_num = workspace_num;
 
-        desktop->priv->single_workspace = NULL;
-        for (GList *l = desktop->priv->workspaces; l != NULL; l = l->next) {
+        desktop->single_workspace = NULL;
+        for (GList *l = desktop->workspaces; l != NULL; l = l->next) {
             XfwWorkspace *workspace = XFW_WORKSPACE(l->data);
             if ((gint)xfw_workspace_get_number(workspace) == workspace_num) {
-                desktop->priv->single_workspace = workspace;
+                desktop->single_workspace = workspace;
                 break;
             }
         }
@@ -1058,7 +1044,7 @@ void
 xfce_desktop_freeze_updates(XfceDesktop *desktop)
 {
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
-    desktop->priv->updates_frozen = TRUE;
+    desktop->updates_frozen = TRUE;
 }
 
 void
@@ -1066,8 +1052,8 @@ xfce_desktop_thaw_updates(XfceDesktop *desktop)
 {
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
 
-    if (desktop->priv->updates_frozen) {
-        desktop->priv->updates_frozen = FALSE;
+    if (desktop->updates_frozen) {
+        desktop->updates_frozen = FALSE;
         fetch_backdrop(desktop);
     }
 }
@@ -1075,21 +1061,21 @@ xfce_desktop_thaw_updates(XfceDesktop *desktop)
 gboolean
 xfce_desktop_has_pointer(XfceDesktop *desktop) {
     g_return_val_if_fail(XFCE_IS_DESKTOP(desktop), FALSE);
-    return desktop->priv->has_pointer;
+    return desktop->has_pointer;
 }
 
 void
 xfce_desktop_refresh(XfceDesktop *desktop, gboolean advance_wallpaper) {
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
 
-    if (desktop->priv->backdrop_workspace != NULL) {
+    if (desktop->backdrop_workspace != NULL) {
         if (advance_wallpaper) {
             // Block because we're going to unconditionally request the new backdrop below
-            g_signal_handlers_block_by_func(desktop->priv->backdrop_manager, manager_backdrop_changed, desktop);
-            xfdesktop_backdrop_manager_cycle_backdrop(desktop->priv->backdrop_manager,
-                                                      desktop->priv->monitor,
-                                                      desktop->priv->backdrop_workspace);
-            g_signal_handlers_unblock_by_func(desktop->priv->backdrop_manager, manager_backdrop_changed, desktop);
+            g_signal_handlers_block_by_func(desktop->backdrop_manager, manager_backdrop_changed, desktop);
+            xfdesktop_backdrop_manager_cycle_backdrop(desktop->backdrop_manager,
+                                                      desktop->monitor,
+                                                      desktop->backdrop_workspace);
+            g_signal_handlers_unblock_by_func(desktop->backdrop_manager, manager_backdrop_changed, desktop);
         }
 
         fetch_backdrop(desktop);
