@@ -452,6 +452,22 @@ xfdesktop_find_xfw_seat_for_gdk_seat(XfwScreen *screen, GdkSeat *gdk_seat) {
     return xseat;
 }
 
+XfwWorkspace *
+xfdesktop_find_active_workspace_on_monitor(XfwScreen *screen, XfwMonitor *monitor) {
+    XfwWorkspaceManager *workspace_manager = xfw_screen_get_workspace_manager(screen);
+    XfwWorkspaceGroup *group = NULL;
+    if (monitor != NULL) {
+        for (GList *l = xfw_workspace_manager_list_workspace_groups(workspace_manager); l != NULL; l = l->next) {
+            if (g_list_find(xfw_workspace_group_get_monitors(XFW_WORKSPACE_GROUP(l->data)), monitor)) {
+                group = XFW_WORKSPACE_GROUP(l->data);
+                return xfw_workspace_group_get_active_workspace(group);
+            }
+        }
+    }
+
+    return NULL;
+}
+
 #ifdef G_ENABLE_DEBUG
 /* With --enable-debug=full turn on debugging messages from the start */
 static gboolean enable_debug = TRUE;
