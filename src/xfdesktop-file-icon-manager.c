@@ -111,7 +111,6 @@ struct _XfdesktopFileIconManager
     XfdesktopIconPositionConfigs *position_configs;
 
     GdkScreen *gscreen;
-    XfdesktopBackdropManager *backdrop_manager;
 
     GFile *folder;
     XfdesktopFileIcon *desktop_icon;
@@ -140,7 +139,6 @@ struct _XfdesktopFileIconManager
 enum {
     PROP0 = 0,
     PROP_GDK_SCREEN,
-    PROP_BACKDROP_MANAGER,
     PROP_FOLDER,
     PROP_SHOW_DELETE_MENU,
     PROP_MAX_TEMPLATES,
@@ -387,14 +385,6 @@ xfdesktop_file_icon_manager_class_init(XfdesktopFileIconManagerClass *klass)
                                                         GDK_TYPE_SCREEN,
                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS));
 
-    g_object_class_install_property(gobject_class,
-                                    PROP_BACKDROP_MANAGER,
-                                    g_param_spec_object("backdrop-manager",
-                                                        "backdrop-manager",
-                                                        "backdrop manager",
-                                                        XFDESKTOP_TYPE_BACKDROP_MANAGER,
-                                                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS));
-
     g_object_class_install_property(gobject_class, PROP_FOLDER,
                                     g_param_spec_object("folder", "Desktop Folder",
                                                        "Folder this icon manager manages",
@@ -564,10 +554,6 @@ xfdesktop_file_icon_manager_set_property(GObject *object,
             fmanager->gscreen = g_value_get_object(value);
             break;
 
-        case PROP_BACKDROP_MANAGER:
-            fmanager->backdrop_manager = g_value_get_object(value);
-            break;
-
         case PROP_FOLDER:
             fmanager->folder = g_value_dup_object(value);
             break;
@@ -596,10 +582,6 @@ xfdesktop_file_icon_manager_get_property(GObject *object,
     switch(property_id) {
         case PROP_GDK_SCREEN:
             g_value_set_object(value, fmanager->gscreen);
-            break;
-
-        case PROP_BACKDROP_MANAGER:
-            g_value_set_object(value, fmanager->backdrop_manager);
             break;
 
         case PROP_FOLDER:
@@ -2108,24 +2090,15 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager,
                           G_CALLBACK(xfdesktop_file_icon_menu_arrange_icons),
                           mdata);
 
-            XfwMonitor *monitor = xfce_desktop_get_monitor(desktop);
-
             XfwScreen *xfw_screen = xfdesktop_icon_view_manager_get_screen(XFDESKTOP_ICON_VIEW_MANAGER(fmanager));
-            XfwWorkspaceManager *workspace_manager = xfw_screen_get_workspace_manager(xfw_screen);
-            XfwWorkspaceGroup *group = NULL;
-            if (monitor != NULL) {
-                for (GList *l = xfw_workspace_manager_list_workspace_groups(workspace_manager); l != NULL; l = l->next) {
-                    if (g_list_find(xfw_workspace_group_get_monitors(XFW_WORKSPACE_GROUP(l->data)), monitor)) {
-                        group = XFW_WORKSPACE_GROUP(l->data);
-                        break;
-                    }
-                }
-            }
-            XfwWorkspace *workspace = group != NULL ? xfw_workspace_group_get_active_workspace(group) : NULL;
+            XfwMonitor *monitor = xfce_desktop_get_monitor(desktop);
+            XfwWorkspace *workspace = xfdesktop_find_active_workspace_on_monitor(xfw_screen, monitor);
 
             if (monitor != NULL &&
                 workspace != NULL &&
-                xfdesktop_backdrop_manager_can_cycle_backdrop(fmanager->backdrop_manager, monitor, workspace))
+                xfdesktop_backdrop_manager_can_cycle_backdrop(xfdesktop_icon_view_manager_get_backdrop_manager(XFDESKTOP_ICON_VIEW_MANAGER(fmanager)),
+                                                              monitor,
+                                                              workspace))
             {
                 /* show next background option */
                 add_menu_item(menu,
