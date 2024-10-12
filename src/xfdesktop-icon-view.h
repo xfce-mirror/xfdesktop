@@ -184,9 +184,6 @@ gint xfdesktop_icon_view_get_icon_size(XfdesktopIconView *icon_view);
 void xfdesktop_icon_view_set_show_icons_on_primary(XfdesktopIconView *icon_view,
                                                    gboolean primary);
 
-void xfdesktop_icon_view_set_confirm_sorting(XfdesktopIconView *icon_view,
-                                             gboolean confirm_sorting);
-
 void xfdesktop_icon_view_set_font_size(XfdesktopIconView *icon_view,
                                        gdouble font_size_points);
 gdouble xfdesktop_icon_view_get_font_size(XfdesktopIconView *icon_view);

@@ -70,9 +70,6 @@ static void xfdesktop_icon_view_manager_finalize(GObject *obj);
 static void xfdesktop_icon_view_manager_set_show_icons_on_primary(XfdesktopIconViewManager *manager,
                                                                   gboolean icons_on_primary);
 
-static void xfdesktop_icon_view_manager_set_confirm_sorting(XfdesktopIconViewManager *manager,
-                                                            gboolean confirm_sorting);
-
 static void icon_view_action_fixup(XfceGtkActionEntry *entry);
 static void accel_map_changed(XfdesktopIconViewManager *manager);
 
@@ -215,8 +212,7 @@ xfdesktop_icon_view_manager_set_property(GObject *obj,
             break;
 
         case PROP_CONFIRM_SORTING:
-            xfdesktop_icon_view_manager_set_confirm_sorting(manager,
-                                                            g_value_get_boolean(value));
+            priv->confirm_sorting = g_value_get_boolean(value);
             break;
 
         default:
@@ -292,18 +288,6 @@ xfdesktop_icon_view_manager_set_show_icons_on_primary(XfdesktopIconViewManager *
     if (priv->icons_on_primary != icons_on_primary) {
         priv->icons_on_primary = icons_on_primary;
         g_object_notify(G_OBJECT(manager), "icons-on-primary");
-    }
-}
-
-static void
-xfdesktop_icon_view_manager_set_confirm_sorting(XfdesktopIconViewManager *manager,
-                                                gboolean confirm_sorting)
-{
-    XfdesktopIconViewManagerPrivate *priv = XFDESKTOP_ICON_VIEW_MANAGER_GET_PRIVATE(manager);
-
-    if (priv->confirm_sorting != confirm_sorting) {
-        priv->confirm_sorting = confirm_sorting;
-        g_object_notify(G_OBJECT(manager), "confirm-sorting");
     }
 }
 
@@ -496,7 +480,6 @@ xfdesktop_icon_view_manager_sort_icons(XfdesktopIconViewManager *manager,
 
             gtk_window_set_icon_name(GTK_WINDOW(dialog), "dialog-question");
             gtk_window_set_resizable(GTK_WINDOW(dialog), FALSE);
-            /*gtk_window_set_transient_for(GTK_WINDOW(dialog), );*/
             gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_ACCEPT);
 
             gtk_widget_show_all(dialog);

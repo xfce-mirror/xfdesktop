@@ -2051,7 +2051,7 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
               *chk_show_thumbnails, *chk_single_click, *chk_single_click_underline,
               *appearance_settings,
               *chk_show_tooltips, *spin_tooltip_size, *bnt_exit, *content_area,
-              *chk_show_hidden_files, *chk_confirm_icon_sorting;
+              *chk_show_hidden_files;
     GtkBuilder *appearance_gxml;
     GError *error = NULL;
     GtkFileFilter *filter;
@@ -2109,9 +2109,6 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     /* show hidden files */
     chk_show_hidden_files = GTK_WIDGET(gtk_builder_get_object(main_gxml,
                                                               "chk_show_hidden_files"));
-
-    chk_confirm_icon_sorting = GTK_WIDGET(gtk_builder_get_object(main_gxml,
-                                                                 "chk_confirm_icon_sorting"));
 
     /* tooltip options */
     chk_show_tooltips = GTK_WIDGET(gtk_builder_get_object(main_gxml, "chk_show_tooltips"));
@@ -2377,6 +2374,9 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     xfconf_g_property_bind(channel, DESKTOP_ICONS_ON_PRIMARY_PROP, G_TYPE_BOOLEAN,
                            G_OBJECT(gtk_builder_get_object(main_gxml, "primary")),
                            "active");
+    xfconf_g_property_bind(channel, DESKTOP_ICONS_CONFIRM_SORTING_PROP, G_TYPE_BOOLEAN,
+                           G_OBJECT(gtk_builder_get_object(main_gxml, "chk_confirm_icon_sorting")),
+                           "active");
     xfconf_g_property_bind(channel, DESKTOP_ICONS_FONT_SIZE_PROP, G_TYPE_DOUBLE,
                            G_OBJECT(gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(spin_font_size))),
                            "value");
@@ -2400,9 +2400,6 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
                            "active");
     xfconf_g_property_bind(channel, DESKTOP_ICONS_SINGLE_CLICK_ULINE_PROP,
                            G_TYPE_BOOLEAN, G_OBJECT(chk_single_click_underline),
-                           "active");
-    xfconf_g_property_bind(channel, DESKTOP_ICONS_CONFIRM_SORTING_PROP,
-                           G_TYPE_BOOLEAN, G_OBJECT(chk_confirm_icon_sorting),
                            "active");
 
     setup_special_icon_list(main_gxml, channel);
