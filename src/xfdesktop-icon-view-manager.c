@@ -448,7 +448,6 @@ xfdesktop_icon_view_manager_sort_icons(XfdesktopIconViewManager *manager,
 
     klass = XFDESKTOP_ICON_VIEW_MANAGER_GET_CLASS(manager);
     if (klass->sort_icons != NULL) {
-        gboolean sort = TRUE;
         XfdesktopIconViewManagerPrivate *priv = XFDESKTOP_ICON_VIEW_MANAGER_GET_PRIVATE(manager);
         if (priv->confirm_sorting) {
             GtkWidget *dialog = gtk_dialog_new_with_buttons(_("Arrange Icons"),
@@ -488,19 +487,16 @@ xfdesktop_icon_view_manager_sort_icons(XfdesktopIconViewManager *manager,
 
             gtk_widget_show_all(dialog);
 
-            if (gtk_dialog_run(GTK_DIALOG(dialog)) != GTK_RESPONSE_ACCEPT) {
-                sort = FALSE;
-            }
-
-            else if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(checkbox))) {
-                priv->confirm_sorting = FALSE;
-                xfconf_channel_set_bool(priv->channel, DESKTOP_ICONS_CONFIRM_SORTING_PROP, FALSE);
+            if (gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_ACCEPT) {
+                priv->confirm_sorting = !gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(checkbox));
+                if (!priv->confirm_sorting) {
+                    xfconf_channel_set_bool(priv->channel, DESKTOP_ICONS_CONFIRM_SORTING_PROP, FALSE);
+                }
+                klass->sort_icons(manager, sort_type);
             }
 
             gtk_widget_destroy(dialog);
-        }
-        
-        if (sort) {
+        } else {
             klass->sort_icons(manager, sort_type);
         }
     }
