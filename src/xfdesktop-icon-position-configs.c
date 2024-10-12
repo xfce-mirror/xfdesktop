@@ -1223,8 +1223,8 @@ xfdesktop_icon_position_configs_set_icon_position(XfdesktopIconPositionConfigs *
 
     for (GList *l = configs->configs; l != NULL; l = l->next) {
         XfdesktopIconPositionConfig *a_config = l->data;
-        if (a_config->level > config->level) {
-            DBG("removing icon from higher-prio config");
+        if (a_config->level >= config->level) {
+            DBG("removing icon from higher or equal prio config");
             // XXX: Do we want to do this for all configs, or only assigned
             // configs?  I could make an argument either way.
             g_hash_table_remove(a_config->icon_positions, identifier);
