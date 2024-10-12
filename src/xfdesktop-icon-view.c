@@ -67,7 +67,7 @@
 
 #define LABEL_BG_COLOR_CSS_FMT \
     "XfdesktopIconView.view.label {" \
-    "    background-color: rgba(%u, %u, %u, %u.%04u);" \
+    "    background-color: rgba(%u, %u, %u, %s);" \
     "}"
 
 #if defined(DEBUG) && DEBUG > 0
@@ -5074,24 +5074,12 @@ remove_label_bg_style_provider(XfdesktopIconView *icon_view) {
 
 static void
 add_label_bg_style_provider(XfdesktopIconView *icon_view) {
-    // If the locale settings call for using a comma as the decimal separator,
-    // GTK's CSS parser will reject the alpha value.  Instead of temporarily
-    // setting LC_NUMERIC to "C" (which maybe isn't so safe to do in a
-    // multithreaded program), let's just be a little clever.  Since the value
-    // is clamped between 0.0 and 1.0, and we only care about, say, four
-    // decimal places, we can just multiply it into an "integer" that certainly
-    // will not overflow, and then treat it as a sort of weird base-10 fixed
-    // point situation.
-    guint alpha_int = round(CLAMP(icon_view->label_bg_color.alpha, 0.0, 1.0) * 10000);
-    guint alpha_ipart = alpha_int / 10000;
-    guint alpha_fpart = alpha_int % 10000;
+    gchar alpha[G_ASCII_DTOSTR_BUF_SIZE];  // Avoid locale settings giving us a ','
     gchar *css_data = g_strdup_printf(LABEL_BG_COLOR_CSS_FMT,
                                       (int)round(icon_view->label_bg_color.red * G_MAXUINT8),
                                       (int)round(icon_view->label_bg_color.green * G_MAXUINT8),
                                       (int)round(icon_view->label_bg_color.blue * G_MAXUINT8),
-                                      alpha_ipart,
-                                      alpha_fpart);
-
+                                      g_ascii_dtostr(alpha, sizeof(alpha), CLAMP(icon_view->label_bg_color.alpha, 0.0, 1.0)));
     DBG("adding CSS %s", css_data);
 
     icon_view->label_bg_color_provider = gtk_css_provider_new();
