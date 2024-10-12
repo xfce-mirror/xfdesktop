@@ -2105,38 +2105,27 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget, GdkEventMotion *evt) {
             }
         }
     } else {
-
         /* normal movement; highlight icons as they go under the pointer */
+        ViewItem *old_item_under_pointer = icon_view->item_under_pointer;
+        icon_view->item_under_pointer = xfdesktop_icon_view_widget_coords_to_item_internal(icon_view, evt->x, evt->y);
 
-        if (icon_view->item_under_pointer != NULL) {
-            ViewItem *item = icon_view->item_under_pointer;
-
-            if (icon_view->single_click) {
-                GdkCursor *cursor = gdk_cursor_new_for_display(gtk_widget_get_display(widget), GDK_HAND2);
-                gdk_window_set_cursor(evt->window, cursor);
-                g_object_unref(cursor);
+        if (old_item_under_pointer != icon_view->item_under_pointer) {
+            if (old_item_under_pointer != NULL) {
+                xfdesktop_icon_view_invalidate_item(icon_view, old_item_under_pointer, FALSE);
             }
 
-            if (item->slot_extents.width < 0
-                || item->slot_extents.height < 0
-                || !xfdesktop_rectangle_contains_point(&item->slot_extents, evt->x, evt->y))
-            {
-                icon_view->item_under_pointer = NULL;
-                xfdesktop_icon_view_invalidate_item(icon_view, item, FALSE);
-            }
-        } else {
-            ViewItem *item;
+            if (icon_view->item_under_pointer != NULL) {
+                if (icon_view->single_click) {
+                    GdkCursor *cursor = gdk_cursor_new_for_display(gtk_widget_get_display(widget), GDK_HAND2);
+                    gdk_window_set_cursor(evt->window, cursor);
+                    g_object_unref(cursor);
+                }
 
-            if (icon_view->single_click) {
-                gdk_window_set_cursor(evt->window, NULL);
-            }
-
-            item = xfdesktop_icon_view_widget_coords_to_item_internal(icon_view, evt->x, evt->y);
-            if (item != NULL
-                && xfdesktop_rectangle_contains_point(&item->slot_extents, evt->x, evt->y))
-            {
-                icon_view->item_under_pointer = item;
-                xfdesktop_icon_view_invalidate_item(icon_view, item, FALSE);
+                xfdesktop_icon_view_invalidate_item(icon_view, icon_view->item_under_pointer, FALSE);
+            } else {
+                if (icon_view->single_click) {
+                    gdk_window_set_cursor(evt->window, NULL);
+                }
             }
         }
     }
