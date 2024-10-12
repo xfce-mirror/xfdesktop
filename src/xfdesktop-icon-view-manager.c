@@ -481,12 +481,17 @@ xfdesktop_icon_view_manager_sort_icons(XfdesktopIconViewManager *manager,
             gtk_window_set_icon_name(GTK_WINDOW(dialog), "dialog-question");
             gtk_window_set_resizable(GTK_WINDOW(dialog), FALSE);
             gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_ACCEPT);
+            
+            /* remove focus outline on checkbox widget visible when sorting via command line and putting the cursor over the checkbox */
+            GtkWidget *button = gtk_dialog_get_widget_for_response(GTK_DIALOG(dialog), GTK_RESPONSE_ACCEPT);
+            gtk_widget_grab_focus(button);
 
             gtk_widget_show_all(dialog);
 
             if (gtk_dialog_run(GTK_DIALOG(dialog)) != GTK_RESPONSE_ACCEPT) {
                 sort = FALSE;
             }
+
             else if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(checkbox))) {
                 priv->confirm_sorting = FALSE;
                 xfconf_channel_set_bool(priv->channel, DESKTOP_ICONS_CONFIRM_SORTING_PROP, FALSE);
