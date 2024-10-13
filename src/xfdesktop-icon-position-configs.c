@@ -486,6 +486,7 @@ G_STMT_END
         goto out_err;
     }
 
+    g_free(new_filename);
     return TRUE;
 
 out_err:
