@@ -2411,6 +2411,9 @@ xfdesktop_settings_dialog_setup_tabs(GtkBuilder *main_gxml,
     xfconf_g_property_bind(channel, DESKTOP_ICONS_ON_PRIMARY_PROP, G_TYPE_BOOLEAN,
                            G_OBJECT(gtk_builder_get_object(main_gxml, "primary")),
                            "active");
+    xfconf_g_property_bind(channel, DESKTOP_ICONS_CONFIRM_SORTING_PROP, G_TYPE_BOOLEAN,
+                           G_OBJECT(gtk_builder_get_object(main_gxml, "chk_confirm_icon_sorting")),
+                           "active");
     xfconf_g_property_bind(channel, DESKTOP_ICONS_FONT_SIZE_PROP, G_TYPE_DOUBLE,
                            G_OBJECT(gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(spin_font_size))),
                            "value");
