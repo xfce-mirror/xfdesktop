@@ -411,6 +411,7 @@ xfdesktop_file_icon_manager_class_init(XfdesktopFileIconManagerClass *klass)
                                                          "show-delete-menu",
                                                          TRUE,
                                                          G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
+
     g_object_class_install_property(gobject_class, PROP_MAX_TEMPLATES,
                                     g_param_spec_uint("max-templates",
                                                       "max-templates",
@@ -932,16 +933,7 @@ xfdesktop_file_icon_menu_paste_into_folder(GtkWidget *widget, MonitorData *mdata
 
 static void
 xfdesktop_file_icon_menu_arrange_icons(GtkWidget *widget, MonitorData *mdata) {
-    GtkWidget *window = gtk_widget_get_toplevel(widget);
-    if (xfce_dialog_confirm(GTK_WINDOW(window),
-                            NULL,
-                            _("_OK"),
-                            NULL,
-                            "%s",
-                            _("This will reorder all desktop items and place them on different screen positions.\nAre you sure?")))
-    {
-        xfdesktop_file_icon_manager_sort_icons(XFDESKTOP_ICON_VIEW_MANAGER(mdata->fmanager), GTK_SORT_ASCENDING);
-    }
+    xfdesktop_icon_view_manager_sort_icons(XFDESKTOP_ICON_VIEW_MANAGER(mdata->fmanager),  GTK_SORT_ASCENDING);
 }
 
 static void
