@@ -970,6 +970,22 @@
                           </packing>
                         </child>
                         <child>
+                          <object class="GtkCheckButton" id="chk_confirm_icon_sorting">
+                            <property name="label" translatable="yes">Show confirmation dialog before arranging icons</property>
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="receives-default">False</property>
+                            <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                            <property name="use-underline">True</property>
+                            <property name="active">True</property>
+                            <property name="draw-indicator">True</property>
+                          </object>
+                          <packing>
+                            <property name="left-attach">0</property>
+                            <property name="top-attach">9</property>
+                          </packing>
+                        </child>
+                        <child>
                           <object class="GtkCheckButton" id="chk_custom_font_color">
                             <property name="label" translatable="yes">Use custom font co_lor:</property>
                             <property name="visible">True</property>
