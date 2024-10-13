@@ -5047,7 +5047,7 @@ xfdesktop_icon_view_set_use_icon_label_fg_color(XfdesktopIconView *icon_view, gb
             if (attrs != NULL) {
                 PangoAttrList *removed_attrs = pango_attr_list_filter(attrs, remove_fg_color_attrs, NULL);
                 g_object_set(icon_view->text_renderer,
-                             "attributes", &attrs,
+                             "attributes", attrs,
                              NULL);
                 pango_attr_list_unref(removed_attrs);
                 pango_attr_list_unref(attrs);
