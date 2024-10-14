@@ -756,7 +756,7 @@ xfce_desktop_realize(GtkWidget *widget)
 
     gtk_widget_add_events(GTK_WIDGET(desktop), GDK_EXPOSURE_MASK);
 
-    xfce_desktop_refresh(desktop, FALSE);
+    xfce_desktop_refresh(desktop);
 
     TRACE("exiting");
 }
@@ -1127,19 +1127,21 @@ xfce_desktop_is_active(XfceDesktop *desktop) {
 }
 
 void
-xfce_desktop_refresh(XfceDesktop *desktop, gboolean advance_wallpaper) {
+xfce_desktop_refresh(XfceDesktop *desktop) {
     g_return_if_fail(XFCE_IS_DESKTOP(desktop));
 
     if (desktop->backdrop_workspace != NULL) {
-        if (advance_wallpaper) {
-            // Block because we're going to unconditionally request the new backdrop below
-            g_signal_handlers_block_by_func(desktop->backdrop_manager, manager_backdrop_changed, desktop);
-            xfdesktop_backdrop_manager_cycle_backdrop(desktop->backdrop_manager,
-                                                      desktop->monitor,
-                                                      desktop->backdrop_workspace);
-            g_signal_handlers_unblock_by_func(desktop->backdrop_manager, manager_backdrop_changed, desktop);
-        }
-
         fetch_backdrop(desktop);
+    }
+}
+
+void
+xfce_desktop_cycle_backdrop(XfceDesktop *desktop) {
+    g_return_if_fail(XFCE_IS_DESKTOP(desktop));
+
+    if (desktop->backdrop_workspace != NULL) {
+        xfdesktop_backdrop_manager_cycle_backdrop(desktop->backdrop_manager,
+                                                  desktop->monitor,
+                                                  desktop->backdrop_workspace);
     }
 }

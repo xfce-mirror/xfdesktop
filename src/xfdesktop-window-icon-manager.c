@@ -264,7 +264,7 @@ static void
 menu_next_background(GtkWidget *mi, MonitorData *mdata) {
     // FIXME: need to handle spanning in a special way?
     XfceDesktop *desktop = xfdesktop_icon_view_holder_get_desktop(mdata->holder);
-    xfce_desktop_refresh(desktop, TRUE);
+    xfce_desktop_cycle_backdrop(desktop);
 }
 
 static GtkWidget *

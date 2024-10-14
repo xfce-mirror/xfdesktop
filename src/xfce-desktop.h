@@ -52,8 +52,9 @@ void xfce_desktop_set_is_active(XfceDesktop *desktop,
                                 gboolean active);
 gboolean xfce_desktop_is_active(XfceDesktop *desktop);
 
-void xfce_desktop_refresh(XfceDesktop *desktop,
-                          gboolean advance_wallpaper);
+void xfce_desktop_refresh(XfceDesktop *desktop);
+
+void xfce_desktop_cycle_backdrop(XfceDesktop *desktop);
 
 void xfce_desktop_arrange_icons(XfceDesktop *desktop);
 

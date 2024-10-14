@@ -471,7 +471,7 @@ reload_idle_cb(gpointer data)
 
     for (GList *l = app->desktops; l != NULL; l = l->next) {
         XfceDesktop *desktop = XFCE_DESKTOP(l->data);
-        xfce_desktop_refresh(desktop, FALSE);
+        xfce_desktop_refresh(desktop);
     }
 
 #ifdef ENABLE_DESKTOP_ICONS
@@ -576,7 +576,7 @@ static void
 desktop_action_next_background(XfdesktopApplication *app) {
     for (GList *l = app->desktops; l != NULL; l = l->next) {
         XfceDesktop *desktop = XFCE_DESKTOP(l->data);
-        xfce_desktop_refresh(XFCE_DESKTOP(desktop), TRUE);
+        xfce_desktop_cycle_backdrop(XFCE_DESKTOP(desktop));
     }
 }
 
