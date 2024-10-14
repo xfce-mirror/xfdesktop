@@ -519,10 +519,16 @@ find_active_desktop(XfdesktopApplication *app) {
     }
 #endif
 
+#ifdef ENABLE_DESKTOP_ICONS
+    if (desktop == NULL && app->icon_view_manager != NULL) {
+        desktop = xfdesktop_icon_view_manager_get_focused_desktop(app->icon_view_manager);
+    }
+#endif
+
     if (desktop == NULL) {
         for (GList *l = app->desktops; l != NULL; l = l->next) {
             XfceDesktop *a_desktop = XFCE_DESKTOP(l->data);
-            if (gtk_widget_has_focus(GTK_WIDGET(a_desktop)) || xfce_desktop_has_pointer(a_desktop)) {
+            if (xfce_desktop_is_active(a_desktop)) {
                 desktop = a_desktop;
                 break;
             }
@@ -1070,6 +1076,10 @@ xfdesktop_application_start(XfdesktopApplication *app)
     g_signal_connect(app->screen, "monitor-removed",
                      G_CALLBACK(screen_monitor_removed), app);
 
+    if (g_list_length(app->desktops) == 1) {
+        xfce_desktop_set_is_active(XFCE_DESKTOP(g_list_nth_data(app->desktops, 0)), TRUE);
+    }
+
     xfconf_g_property_bind(app->channel, DESKTOP_ICONS_STYLE_PROP, XFCE_TYPE_DESKTOP_ICON_STYLE, app, "icon-style");
     if ((gint)app->icon_style == -1) {
         XfceDesktopIconStyle icon_style = xfconf_channel_get_int(app->channel,
@@ -1372,6 +1382,17 @@ icon_view_active(XfdesktopApplication *app) {
 #endif
 }
 
+static void
+update_active_desktop(XfdesktopApplication *app, XfceDesktop *desktop) {
+    for (GList *l = app->desktops; l != NULL; l = l->next) {
+        XfceDesktop *a_desktop = XFCE_DESKTOP(l->data);
+        if (a_desktop != desktop) {
+            xfce_desktop_set_is_active(a_desktop, FALSE);
+        }
+    }
+    xfce_desktop_set_is_active(desktop, TRUE);
+}
+
 static gboolean
 xfce_desktop_button_press_event(GtkWidget *w, GdkEventButton *evt, XfdesktopApplication *app) {
     guint button = evt->button;
@@ -1381,6 +1402,8 @@ xfce_desktop_button_press_event(GtkWidget *w, GdkEventButton *evt, XfdesktopAppl
     DBG("entering");
 
     g_return_val_if_fail(XFCE_IS_DESKTOP(w), FALSE);
+
+    update_active_desktop(app, desktop);
 
     if(evt->type == GDK_BUTTON_PRESS) {
         if(button == 3 || (button == 1 && (state & GDK_SHIFT_MASK))) {
@@ -1426,6 +1449,9 @@ xfce_desktop_popup_menu(GtkWidget *w, XfdesktopApplication *app) {
 
     DBG("entering");
 
+    XfceDesktop *desktop = XFCE_DESKTOP(w);
+    update_active_desktop(app, desktop);
+
     evt = gtk_get_current_event();
     if(evt != NULL && (GDK_BUTTON_PRESS == evt->type || GDK_BUTTON_RELEASE == evt->type)) {
         button = evt->button.button;
@@ -1439,7 +1465,7 @@ xfce_desktop_popup_menu(GtkWidget *w, XfdesktopApplication *app) {
         etime = gtk_get_current_event_time();
     }
 
-    popup_root_menu(app, XFCE_DESKTOP(w), button, x, y, etime);
+    popup_root_menu(app, desktop, button, x, y, etime);
 
     gdk_event_free((GdkEvent*)evt);
     return TRUE;

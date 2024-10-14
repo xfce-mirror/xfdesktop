@@ -110,6 +110,7 @@ struct _XfceDesktop {
     cairo_surface_t *bg_surface;
     GdkRectangle bg_surface_region;
 
+    gboolean is_active;
     gboolean has_pointer;
 
 #ifdef ENABLE_DESKTOP_ICONS
@@ -127,6 +128,7 @@ enum
     PROP_BACKDROP_MANAGER,
     PROP_SINGLE_WORKSPACE_MODE,
     PROP_SINGLE_WORKSPACE_NUMBER,
+    PROP_ACTIVE,
 };
 
 
@@ -148,6 +150,8 @@ static gboolean xfce_desktop_draw(GtkWidget *w,
                                   cairo_t *cr);
 static gboolean xfce_desktop_enter_leave_event(GtkWidget *w,
                                                GdkEventCrossing *event);
+static gboolean xfce_desktop_focus_in_out_event(GtkWidget *w,
+                                                GdkEventFocus *event);
 static void xfce_desktop_style_updated(GtkWidget *w);
 
 static void xfce_desktop_set_single_workspace_mode(XfceDesktop *desktop,
@@ -466,6 +470,8 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
     widget_class->draw = xfce_desktop_draw;
     widget_class->enter_notify_event = xfce_desktop_enter_leave_event;
     widget_class->leave_notify_event = xfce_desktop_enter_leave_event;
+    widget_class->focus_in_event = xfce_desktop_focus_in_out_event;
+    widget_class->focus_out_event = xfce_desktop_focus_in_out_event;
     widget_class->style_updated = xfce_desktop_style_updated;
 
     g_object_class_install_property(gobject_class, PROP_SCREEN,
@@ -516,6 +522,14 @@ xfce_desktop_class_init(XfceDesktopClass *klass)
                                                      "single-workspace-number",
                                                      -1, G_MAXINT16, -1,
                                                      G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS));
+
+    g_object_class_install_property(gobject_class,
+                                    PROP_ACTIVE,
+                                    g_param_spec_boolean("active",
+                                                         "active",
+                                                         "active",
+                                                         FALSE,
+                                                         G_PARAM_READABLE | G_PARAM_STATIC_STRINGS));
 }
 
 static void
@@ -698,6 +712,10 @@ xfce_desktop_get_property(GObject *object,
             g_value_set_int(value, desktop->single_workspace_num);
             break;
 
+        case PROP_ACTIVE:
+            g_value_set_boolean(value, xfce_desktop_is_active(desktop));
+            break;
+
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
             break;
@@ -823,8 +841,37 @@ xfce_desktop_draw(GtkWidget *w,
 static gboolean
 xfce_desktop_enter_leave_event(GtkWidget *w, GdkEventCrossing *event) {
     XfceDesktop *desktop = XFCE_DESKTOP(w);
+    gboolean old_is_active = xfce_desktop_is_active(desktop);
+
     desktop->has_pointer = event->type == GDK_ENTER_NOTIFY;
-    return FALSE;
+
+    gboolean (*callback)(GtkWidget *, GdkEventCrossing *) = desktop->has_pointer
+        ? GTK_WIDGET_CLASS(xfce_desktop_parent_class)->enter_notify_event
+        : GTK_WIDGET_CLASS(xfce_desktop_parent_class)->leave_notify_event;
+    gboolean ret = callback != NULL ? callback(w, event) : FALSE;
+
+    if (old_is_active != xfce_desktop_is_active(desktop)) {
+        g_object_notify(G_OBJECT(w), "active");
+    }
+
+    return ret;
+}
+
+static gboolean
+xfce_desktop_focus_in_out_event(GtkWidget *w, GdkEventFocus *event) {
+    gboolean has_focus = event->in;
+
+    gboolean (*callback)(GtkWidget *, GdkEventFocus *) = has_focus
+        ? GTK_WIDGET_CLASS(xfce_desktop_parent_class)->focus_in_event
+        : GTK_WIDGET_CLASS(xfce_desktop_parent_class)->focus_out_event;
+    gboolean ret = callback != NULL ? callback(w, event) : FALSE;
+
+    XfceDesktop *desktop = XFCE_DESKTOP(w);
+    if ((has_focus && !desktop->is_active) || (!has_focus && desktop->is_active)) {
+        g_object_notify(G_OBJECT(w), "active");
+    }
+
+    return ret;
 }
 
 #ifdef ENABLE_DESKTOP_ICONS
@@ -1058,10 +1105,25 @@ xfce_desktop_thaw_updates(XfceDesktop *desktop)
     }
 }
 
+void
+xfce_desktop_set_is_active(XfceDesktop *desktop, gboolean active) {
+    g_return_if_fail(XFCE_IS_DESKTOP(desktop));
+
+    if (active != desktop->is_active) {
+        desktop->is_active = active;
+
+        if (!gtk_window_has_toplevel_focus(GTK_WINDOW(desktop))) {
+            g_object_notify(G_OBJECT(desktop), "active");
+        }
+    }
+}
+
 gboolean
-xfce_desktop_has_pointer(XfceDesktop *desktop) {
+xfce_desktop_is_active(XfceDesktop *desktop) {
     g_return_val_if_fail(XFCE_IS_DESKTOP(desktop), FALSE);
-    return desktop->has_pointer;
+    return desktop->is_active
+        || desktop->has_pointer
+        || gtk_window_has_toplevel_focus(GTK_WINDOW(desktop));
 }
 
 void

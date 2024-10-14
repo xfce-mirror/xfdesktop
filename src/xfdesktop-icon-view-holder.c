@@ -154,6 +154,17 @@ forward_popup_menu_to_desktop(GtkWidget *widget, XfdesktopIconViewHolder *holder
     return ret;
 }
 
+static gboolean
+forward_enter_leave_to_desktop(GtkWidget *widget, GdkEventCrossing *event, XfdesktopIconViewHolder *holder) {
+    TRACE("entering");
+    gboolean ignored = FALSE;
+    g_signal_emit_by_name(holder->desktop,
+                          event->type == GDK_ENTER_NOTIFY ? "enter-notify-event" : "leave-notify-event",
+                          event,
+                          &ignored);
+    return FALSE;
+}
+
 static void
 init_for_wayland(XfdesktopIconViewHolder *holder, GtkAccelGroup *accel_group) {
     holder->container = gtk_window_new(GTK_WINDOW_TOPLEVEL);
@@ -177,6 +188,12 @@ init_for_wayland(XfdesktopIconViewHolder *holder, GtkAccelGroup *accel_group) {
                      G_CALLBACK(forward_button_to_desktop), holder);
     g_signal_connect(holder->container, "popup-menu",
                      G_CALLBACK(forward_popup_menu_to_desktop), holder);
+
+    g_signal_connect(holder->container, "enter-notify-event",
+                     G_CALLBACK(forward_enter_leave_to_desktop), holder);
+    g_signal_connect(holder->container, "leave-notify-event",
+                     G_CALLBACK(forward_enter_leave_to_desktop), holder);
+
 
     gtk_container_add(GTK_CONTAINER(holder->container), GTK_WIDGET(holder->icon_view));
     gtk_widget_show(GTK_WIDGET(holder->icon_view));
