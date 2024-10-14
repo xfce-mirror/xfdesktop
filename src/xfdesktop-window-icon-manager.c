@@ -22,6 +22,8 @@
 #include <config.h>
 #endif
 
+#include <glib.h>
+#include <gtk/gtk.h>
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4ui/libxfce4ui.h>
 #include <libxfce4windowingui/libxfce4windowingui.h>
@@ -29,6 +31,7 @@
 #include "common/xfdesktop-common.h"
 #include "common/xfdesktop-keyboard-shortcuts.h"
 #include "xfce-desktop.h"
+#include "xfdesktop-backdrop-manager.h"
 #include "xfdesktop-icon-view-holder.h"
 #include "xfdesktop-icon-view-manager.h"
 #include "xfdesktop-icon-view-model.h"
@@ -217,6 +220,105 @@ xfdesktop_window_icon_manager_desktop_removed(XfdesktopIconViewManager *manager,
     g_hash_table_remove(wmanager->monitor_data, xfce_desktop_get_monitor(desktop));
 }
 
+static void
+xfce4_appfinder_launch(GtkWidget *mi, const gchar *appfinder_path) {
+    gchar *cmdline = g_strconcat(appfinder_path, " --collapsed", NULL);
+    xfce_spawn_command_line(gtk_widget_get_screen(mi), cmdline, FALSE, TRUE, FALSE, NULL);
+    g_free(cmdline);
+}
+
+static void
+xfdesktop_settings_launch(GtkWidget *mi, const gchar *xfdesktop_settings_path) {
+    xfce_spawn_command_line(gtk_widget_get_screen(mi), xfdesktop_settings_path, FALSE, FALSE, TRUE, NULL);
+}
+
+static void
+menu_arrange_icons(GtkWidget *mi, MonitorData *mdata) {
+    xfdesktop_icon_view_manager_sort_icons(XFDESKTOP_ICON_VIEW_MANAGER(mdata->wmanager), GTK_SORT_ASCENDING);
+}
+
+static void
+menu_next_background(GtkWidget *mi, MonitorData *mdata) {
+    // FIXME: need to handle spanning in a special way?
+    XfceDesktop *desktop = xfdesktop_icon_view_holder_get_desktop(mdata->holder);
+    xfce_desktop_refresh(desktop, TRUE);
+}
+
+static GtkWidget *
+add_menu_item(GtkWidget *menu,
+              const gchar *label,
+              GIcon *icon,
+              GCallback callback,
+              gpointer callback_user_data)
+{
+    GtkWidget *image = gtk_image_new_from_gicon(icon, GTK_ICON_SIZE_MENU);
+    GtkWidget *mi = xfdesktop_menu_create_menu_item_with_mnemonic(label, image);
+    gtk_widget_show(mi);
+    gtk_menu_shell_append(GTK_MENU_SHELL(menu), mi);
+    g_signal_connect(mi, "activate", callback, callback_user_data);
+    g_object_unref(icon);
+    return mi;
+}
+
+static GtkMenu *
+build_root_context_menu(MonitorData *mdata) {
+    GtkWidget *menu = gtk_menu_new();
+    gtk_menu_set_reserve_toggle_size(GTK_MENU(menu), FALSE);
+
+    gchar *appfinder_path = g_find_program_in_path("xfce4-appfinder");
+    if (appfinder_path != NULL) {
+        GIcon *icon = g_themed_icon_new("org.xfce.appfinder");
+        g_themed_icon_append_name(G_THEMED_ICON(icon), "system-run");
+        GtkWidget *mi = add_menu_item(menu,
+                                      _("_Run Program..."),
+                                      icon,
+                                      G_CALLBACK(xfce4_appfinder_launch),
+                                      appfinder_path);
+        g_object_set_data_full(G_OBJECT(mi), "--xfdesktop-menu-callback-data", appfinder_path, g_free);
+
+        GtkWidget *separator = gtk_separator_menu_item_new();
+        gtk_widget_show(separator);
+        gtk_menu_shell_append(GTK_MENU_SHELL(menu), separator);
+    }
+
+    add_menu_item(menu,
+                  _("Arrange Desktop _Icons"),
+                  g_themed_icon_new("view-sort-ascending"),
+                  G_CALLBACK(menu_arrange_icons),
+                  mdata);
+
+    XfwScreen *xfw_screen = xfdesktop_icon_view_manager_get_screen(XFDESKTOP_ICON_VIEW_MANAGER(mdata->wmanager));
+    XfwMonitor *monitor = xfce_desktop_get_monitor(xfdesktop_icon_view_holder_get_desktop(mdata->holder));
+    XfwWorkspace *workspace = xfdesktop_find_active_workspace_on_monitor(xfw_screen, monitor);
+    XfdesktopBackdropManager *backdrop_manager = xfdesktop_icon_view_manager_get_backdrop_manager(XFDESKTOP_ICON_VIEW_MANAGER(mdata->wmanager));
+    if (monitor != NULL
+        && workspace != NULL
+        && xfdesktop_backdrop_manager_can_cycle_backdrop(backdrop_manager, monitor, workspace))
+    {
+        add_menu_item(menu,
+                      _("_Next Background"),
+                      g_themed_icon_new("go-next"),
+                      G_CALLBACK(menu_next_background),
+                      mdata);
+    }
+
+    gchar *xfdesktop_settings_path = g_find_program_in_path("xfdesktop-settings");
+    if (xfdesktop_settings_path != NULL) {
+        GtkWidget *separator = gtk_separator_menu_item_new();
+        gtk_widget_show(separator);
+        gtk_menu_shell_append(GTK_MENU_SHELL(menu), separator);
+
+        GtkWidget *mi = add_menu_item(menu,
+                                      _("Desktop _Settings..."),
+                                      g_themed_icon_new("preferences-desktop-wallpaper"),
+                                      G_CALLBACK(xfdesktop_settings_launch),
+                                      xfdesktop_settings_path);
+        g_object_set_data_full(G_OBJECT(mi), "--xfdesktop-menu-callback-data", xfdesktop_settings_path, g_free);
+    }
+
+    return GTK_MENU(menu);
+}
+
 static GtkMenu *
 xfdesktop_window_icon_manager_get_context_menu(XfdesktopIconViewManager *manager,
                                                XfceDesktop *desktop,
@@ -234,12 +336,16 @@ xfdesktop_window_icon_manager_get_context_menu(XfdesktopIconViewManager *manager
             XfdesktopIconView *icon_view = xfdesktop_icon_view_holder_get_icon_view(mdata->holder);
             GList *selected = xfdesktop_icon_view_get_selected_items(icon_view);
             XfwWindow *window = window_for_filter_path(wmanager, mdata, g_list_nth_data(selected, 0));
+
+            GtkMenu *menu;
             if (window != NULL) {
-                return GTK_MENU(xfw_window_action_menu_new(window));
+                menu = GTK_MENU(xfw_window_action_menu_new(window));
+            } else {
+                menu = build_root_context_menu(mdata);
             }
 
             g_list_free_full(selected, (GDestroyNotify)gtk_tree_path_free);
-            break;
+            return menu;
         }
     }
 
@@ -715,15 +821,18 @@ XfdesktopIconViewManager *
 xfdesktop_window_icon_manager_new(XfwScreen *screen,
                                   XfconfChannel *channel,
                                   GtkAccelGroup *accel_group,
+                                  XfdesktopBackdropManager *backdrop_manager,
                                   GList *desktops)
 {
     g_return_val_if_fail(XFW_IS_SCREEN(screen), NULL);
     g_return_val_if_fail(XFCONF_IS_CHANNEL(channel), NULL);
     g_return_val_if_fail(GTK_IS_ACCEL_GROUP(accel_group), NULL);
+    g_return_val_if_fail(XFDESKTOP_IS_BACKDROP_MANAGER(backdrop_manager), NULL);
 
     return g_object_new(XFDESKTOP_TYPE_WINDOW_ICON_MANAGER,
                         "screen", screen,
                         "channel", channel,
+                        "backdrop-manager", backdrop_manager,
                         "accel-group", accel_group,
                         "desktops", desktops,
                         NULL);
