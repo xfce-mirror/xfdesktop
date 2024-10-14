@@ -324,6 +324,9 @@ xfdesktop_file_utils_next_new_file_name(GFile *file) {
     {
       GFile *new_file = g_file_get_child(folder, new_name);
       if (!g_file_query_exists(new_file, NULL)) {
+          g_free(new_name);
+          g_free(filename);
+          g_object_unref(folder);
           return new_file;
       }
       g_object_unref(new_file);
