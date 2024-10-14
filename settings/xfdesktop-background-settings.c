@@ -618,7 +618,6 @@ xfdesktop_settings_update_iconview_frame_name(XfdesktopBackgroundSettings *backg
             gtk_label_set_text(GTK_LABEL(background_settings->infobar_label),
                                _("Move this dialog to the display you "
                                  "want to edit the settings for."));
-            gtk_widget_set_visible(background_settings->infobar, TRUE);
         } else {
             /* Multi-monitor per workspace wallpaper */
             if (background_settings->monitor_name != NULL) {
@@ -637,8 +636,9 @@ xfdesktop_settings_update_iconview_frame_name(XfdesktopBackgroundSettings *backg
             gtk_label_set_text(GTK_LABEL(background_settings->infobar_label),
                                _("Move this dialog to the display and "
                                  "workspace you want to edit the settings for."));
-            gtk_widget_set_visible(background_settings->infobar, TRUE);
         }
+
+        gtk_widget_show(background_settings->infobar);
     } else {
         if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(background_settings->chk_apply_to_all)) ||
            (workspace_count_total(workspace_manager) == 1)) {
@@ -646,7 +646,7 @@ xfdesktop_settings_update_iconview_frame_name(XfdesktopBackgroundSettings *backg
             label_text = g_strdup(_("Wallpaper for my desktop"));
 
             /* No need for the infobar */
-            gtk_widget_set_visible(background_settings->infobar, FALSE);
+            gtk_widget_hide(background_settings->infobar);
         } else {
             /* Single monitor and per workspace wallpaper */
             label_text = g_strdup_printf(_("Wallpaper for %s"), workspace_name);
@@ -656,7 +656,7 @@ xfdesktop_settings_update_iconview_frame_name(XfdesktopBackgroundSettings *backg
             gtk_label_set_text(GTK_LABEL(background_settings->infobar_label),
                                _("Move this dialog to the workspace you "
                                  "want to edit the settings for."));
-            gtk_widget_set_visible(background_settings->infobar, TRUE);
+            gtk_widget_show(background_settings->infobar);
         }
     }
 
@@ -1775,23 +1775,19 @@ xfdesktop_background_settings_init(XfdesktopSettings *settings) {
     gtk_notebook_set_show_tabs(GTK_NOTEBOOK(appearance_container), FALSE);
 
     /* icon view area */
-    background_settings->infobar = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
-                                                       "infobar_header"));
+    background_settings->infobar = GTK_WIDGET(gtk_builder_get_object(appearance_gxml, "infobar_header"));
 
     background_settings->infobar_label = gtk_label_new("This is some text");
     gtk_widget_show(background_settings->infobar_label);
-    gtk_widget_show(background_settings->infobar);
 
     /* Add the background_settings's infobar label to the infobar, with this setup
      * it's easy to update the text for the infobar. */
     GtkWidget *content_area = gtk_info_bar_get_content_area(GTK_INFO_BAR(background_settings->infobar));
     gtk_container_add(GTK_CONTAINER(content_area), background_settings->infobar_label);
 
-    background_settings->label_header = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
-                                                            "label_header"));
+    background_settings->label_header = GTK_WIDGET(gtk_builder_get_object(appearance_gxml, "label_header"));
 
-    background_settings->image_iconview = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
-                                                              "iconview_imagelist"));
+    background_settings->image_iconview = GTK_WIDGET(gtk_builder_get_object(appearance_gxml, "iconview_imagelist"));
     xfdesktop_settings_setup_image_iconview(background_settings);
 
     /* folder: file chooser button */
