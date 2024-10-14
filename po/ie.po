@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-10-14 00:55+0200\n"
+"POT-Creation-Date: 2024-10-14 12:55+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Caarmi, 2023-2024\n"
 "Language-Team: Interlingue (http://app.transifex.com/xfce/xfdesktop/language/ie/)\n"
@@ -18,42 +18,49 @@ msgstr ""
 "Language: ie\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: settings/main.c:433 src/xfdesktop-special-file-icon.c:232
-#: src/xfdesktop-special-file-icon.c:270
-msgid "Home"
-msgstr "Hem"
+#: settings/main.c:99
+msgid "Settings manager socket"
+msgstr "Socket del gerente de parametres"
 
-#: settings/main.c:435 src/xfdesktop-special-file-icon.c:234
-#: src/xfdesktop-special-file-icon.c:268
-msgid "File System"
-msgstr "Sistema de files"
+#: settings/main.c:99
+msgid "SOCKET ID"
+msgstr "ID DE SOCKET"
 
-#: settings/main.c:437 src/xfdesktop-special-file-icon.c:236
-msgid "Trash"
-msgstr "Paper-corb"
+#: settings/main.c:101
+msgid "Version information"
+msgstr "Information del version"
 
-#: settings/main.c:439
-msgid "Devices"
-msgstr "Aparates"
+#: settings/main.c:102 src/xfdesktop-application.c:286
+msgid "Enable debug messages"
+msgstr "Permisser debug-anuncies"
 
-#: settings/main.c:441
-msgid "Network Shares"
-msgstr "Partites de rete"
+#: settings/main.c:120
+#, c-format
+msgid "Type '%s --help' for usage."
+msgstr "Tippa '%s --help' por li usage."
 
-#: settings/main.c:443
-msgid "Removable Disks and Drives"
-msgstr ""
+#: settings/main.c:132
+msgid "The Xfce development team. All rights reserved."
+msgstr "The Xfce development team. All rights reserved."
 
-#: settings/main.c:445
-msgid "Fixed Disks and Drives"
-msgstr ""
+#: settings/main.c:133
+#, c-format
+msgid "Please report bugs to <%s>."
+msgstr "Ples raportar errores a <%s>."
 
-#: settings/main.c:447
-msgid "Other Devices"
-msgstr "Altri aparates"
+#: settings/main.c:139
+msgid "Desktop Settings"
+msgstr "Parametres del Pupitre"
 
-#. Display the file name, file type, and file size in the tooltip.
-#: settings/main.c:561
+#: settings/main.c:141
+msgid "Unable to contact settings server"
+msgstr "Ne successat comunicar con li servitore de parametres"
+
+#: settings/main.c:143
+msgid "Quit"
+msgstr "Salir"
+
+#: settings/xfdesktop-background-settings.c:356
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -61,93 +68,138 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nTip: %s\nGrandor: %s"
 
-#: settings/main.c:796
+#: settings/xfdesktop-background-settings.c:588
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "Tapete por li monitor %d (%s)"
 
-#: settings/main.c:799
+#: settings/xfdesktop-background-settings.c:592
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "Tapete por li monitor %d"
 
-#: settings/main.c:805
+#: settings/xfdesktop-background-settings.c:598
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "Move ti-ci dialog al monitor quel vu vole personalisar."
 
-#: settings/main.c:812
+#: settings/xfdesktop-background-settings.c:604
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "Tapete por %s sur li monitor %d (%s)"
 
-#: settings/main.c:816
+#: settings/xfdesktop-background-settings.c:609
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "Tapete por %s sur li monitor %d"
 
-#: settings/main.c:823
+#: settings/xfdesktop-background-settings.c:617
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr "Move ti-ci dialog al monitor e li labor-spacie quel vu vole personalisar."
 
 #. Single monitor and single workspace
-#: settings/main.c:831
+#: settings/xfdesktop-background-settings.c:625
 msgid "Wallpaper for my desktop"
 msgstr "Tapete por li Pupitre"
 
 #. Single monitor and per workspace wallpaper
-#: settings/main.c:837
+#: settings/xfdesktop-background-settings.c:631
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "Tapete por li %s"
 
-#: settings/main.c:842
+#: settings/xfdesktop-background-settings.c:636
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "Move ti-ci dialog al labor-spacie quel vu vole personalisar."
 
-#: settings/main.c:1297
+#: settings/xfdesktop-background-settings.c:951
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "On ne posse selecter un image quam li stil de image es «Null»."
 
-#: settings/main.c:1656
+#: settings/xfdesktop-background-settings.c:1331
 msgid "Spanning screens"
 msgstr "Extender trans ecranes"
 
+#: settings/xfdesktop-background-settings.c:1720
+msgid "Image files"
+msgstr "Files de images"
+
+#. Change the title of the file chooser dialog
+#: settings/xfdesktop-background-settings.c:1728
+msgid "Select a Directory"
+msgstr "Selecter un fólder"
+
+#: settings/xfdesktop-file-icon-settings.c:94
+#: src/xfdesktop-special-file-icon.c:232 src/xfdesktop-special-file-icon.c:270
+msgid "Home"
+msgstr "Hem"
+
+#: settings/xfdesktop-file-icon-settings.c:96
+#: src/xfdesktop-special-file-icon.c:234 src/xfdesktop-special-file-icon.c:268
+msgid "File System"
+msgstr "Sistema de files"
+
+#: settings/xfdesktop-file-icon-settings.c:98
+#: src/xfdesktop-special-file-icon.c:236
+msgid "Trash"
+msgstr "Paper-corb"
+
+#: settings/xfdesktop-file-icon-settings.c:100
+msgid "Devices"
+msgstr "Aparates"
+
+#: settings/xfdesktop-file-icon-settings.c:102
+msgid "Network Shares"
+msgstr "Partites de rete"
+
+#: settings/xfdesktop-file-icon-settings.c:104
+msgid "Removable Disks and Drives"
+msgstr ""
+
+#: settings/xfdesktop-file-icon-settings.c:106
+msgid "Fixed Disks and Drives"
+msgstr ""
+
+#: settings/xfdesktop-file-icon-settings.c:108
+msgid "Other Devices"
+msgstr "Altri aparates"
+
 #. TRANSLATORS: Please split the message in half with '\n' so the dialog will
 #. not be too wide.
-#: settings/main.c:1963
+#: settings/xfdesktop-icon-settings.c:90
 msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
 msgstr "Esque vu vole rearangear omni existent\nicones secun li orientation selectet?"
 
-#: settings/main.c:1969
+#: settings/xfdesktop-icon-settings.c:94
 msgid "Arrange icons"
 msgstr "Ordinar icones"
 
 #. printf is to be translator-friendly
-#: settings/main.c:1977 src/xfdesktop-file-icon-manager.c:798
-#: src/xfdesktop-file-icon-manager.c:1361
+#: settings/xfdesktop-icon-settings.c:98 src/xfdesktop-file-icon-manager.c:783
+#: src/xfdesktop-file-icon-manager.c:1348
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "Ne successat lansar «%s»:"
 
-#: settings/main.c:1978 src/xfdesktop-file-icon-manager.c:800
-#: src/xfdesktop-file-icon-manager.c:1042
-#: src/xfdesktop-file-icon-manager.c:1090
-#: src/xfdesktop-file-icon-manager.c:1363 src/xfdesktop-file-utils.c:567
+#: settings/xfdesktop-icon-settings.c:99 src/xfdesktop-file-icon-manager.c:785
+#: src/xfdesktop-file-icon-manager.c:1029
+#: src/xfdesktop-file-icon-manager.c:1077
+#: src/xfdesktop-file-icon-manager.c:1350 src/xfdesktop-file-utils.c:567
 #: src/xfdesktop-file-utils.c:1451 src/xfdesktop-file-utils.c:1476
 #: src/xfdesktop-file-utils.c:1583 src/xfdesktop-file-utils.c:1647
 msgid "Launch Error"
 msgstr "Errore de lansa"
 
-#: settings/main.c:1980 settings/xfdesktop-settings-ui.glade:198
-#: src/xfdesktop-file-icon-manager.c:736 src/xfdesktop-file-icon-manager.c:802
-#: src/xfdesktop-file-icon-manager.c:1046
-#: src/xfdesktop-file-icon-manager.c:1094
-#: src/xfdesktop-file-icon-manager.c:1365
-#: src/xfdesktop-file-icon-manager.c:3671 src/xfdesktop-file-utils.c:570
+#: settings/xfdesktop-icon-settings.c:101
+#: settings/xfdesktop-settings-ui.glade:198
+#: src/xfdesktop-file-icon-manager.c:721 src/xfdesktop-file-icon-manager.c:787
+#: src/xfdesktop-file-icon-manager.c:1033
+#: src/xfdesktop-file-icon-manager.c:1081
+#: src/xfdesktop-file-icon-manager.c:1352
+#: src/xfdesktop-file-icon-manager.c:3674 src/xfdesktop-file-utils.c:570
 #: src/xfdesktop-file-utils.c:688 src/xfdesktop-file-utils.c:743
 #: src/xfdesktop-file-utils.c:807 src/xfdesktop-file-utils.c:868
 #: src/xfdesktop-file-utils.c:929 src/xfdesktop-file-utils.c:977
@@ -161,73 +213,23 @@ msgstr "Errore de lansa"
 msgid "_Close"
 msgstr "_Cluder"
 
-#: settings/main.c:1994 settings/xfce-backdrop-settings.desktop.in:4
-#: settings/xfdesktop-settings-ui.glade:162 src/xfce-desktop.c:543
+#: settings/xfdesktop-keyboard-shortcuts-settings.c:42
+#: settings/xfce-backdrop-settings.desktop.in:4
+#: settings/xfdesktop-settings-ui.glade:162 src/xfce-desktop.c:557
 msgid "Desktop"
 msgstr "Pupitre"
 
-#: settings/main.c:2004
+#: settings/xfdesktop-keyboard-shortcuts-settings.c:52
 msgid "Icons"
 msgstr "Icones"
 
-#: settings/main.c:2013
+#: settings/xfdesktop-keyboard-shortcuts-settings.c:61
 msgid "Window Icons"
 msgstr ""
 
-#: settings/main.c:2023
+#: settings/xfdesktop-keyboard-shortcuts-settings.c:71
 msgid "File Icons"
 msgstr ""
-
-#: settings/main.c:2239
-msgid "Image files"
-msgstr "Files de images"
-
-#. Change the title of the file chooser dialog
-#: settings/main.c:2247
-msgid "Select a Directory"
-msgstr "Selecter un fólder"
-
-#: settings/main.c:2483
-msgid "Settings manager socket"
-msgstr "Socket del gerente de parametres"
-
-#: settings/main.c:2483
-msgid "SOCKET ID"
-msgstr "ID DE SOCKET"
-
-#: settings/main.c:2484
-msgid "Version information"
-msgstr "Information del version"
-
-#: settings/main.c:2485 src/xfdesktop-application.c:286
-msgid "Enable debug messages"
-msgstr "Permisser debug-anuncies"
-
-#: settings/main.c:2509
-#, c-format
-msgid "Type '%s --help' for usage."
-msgstr "Tippa '%s --help' por li usage."
-
-#: settings/main.c:2521
-msgid "The Xfce development team. All rights reserved."
-msgstr "The Xfce development team. All rights reserved."
-
-#: settings/main.c:2522
-#, c-format
-msgid "Please report bugs to <%s>."
-msgstr "Ples raportar errores a <%s>."
-
-#: settings/main.c:2529
-msgid "Desktop Settings"
-msgstr "Parametres del Pupitre"
-
-#: settings/main.c:2531
-msgid "Unable to contact settings server"
-msgstr "Ne successat comunicar con li servitore de parametres"
-
-#: settings/main.c:2533
-msgid "Quit"
-msgstr "Salir"
 
 #: settings/xfce-backdrop-settings.desktop.in:5
 msgid "Set desktop background and menu and icon behavior"
@@ -533,111 +535,115 @@ msgstr "<b>Menú de liste de fenestres</b>"
 msgid "_Menus"
 msgstr "_Menús"
 
-#: settings/xfdesktop-settings-ui.glade:771
-msgid "Icon _Type"
-msgstr "_Tip de icone"
+#: settings/xfdesktop-settings-ui.glade:753
+msgid "Icon _type:"
+msgstr "_Tip de icone:"
 
-#: settings/xfdesktop-settings-ui.glade:807
+#: settings/xfdesktop-settings-ui.glade:813
 msgid "Icon _size:"
 msgstr "Dimen_sion de icones:"
 
-#: settings/xfdesktop-settings-ui.glade:823
+#: settings/xfdesktop-settings-ui.glade:829
 msgid "48"
 msgstr "48"
 
-#: settings/xfdesktop-settings-ui.glade:837
-msgid "Icons _orientation:"
-msgstr "_Orientation de icones:"
+#: settings/xfdesktop-settings-ui.glade:840
+msgid "_Font size:"
+msgstr ""
 
-#: settings/xfdesktop-settings-ui.glade:868
-msgid "Show icons on primary display"
-msgstr "Monstrar icones sur li primari monitor"
-
-#: settings/xfdesktop-settings-ui.glade:881
-msgid "Use custom _font size:"
-msgstr "Personalisat dimension de _fonde:"
-
-#: settings/xfdesktop-settings-ui.glade:901
+#: settings/xfdesktop-settings-ui.glade:860
 msgid "12"
 msgstr "12"
 
-#: settings/xfdesktop-settings-ui.glade:912
-msgid "Show icon tooltips. Size:"
-msgstr "Monstrar information de icones. Dimension:"
+#: settings/xfdesktop-settings-ui.glade:871
+msgid "Show icon toolt_ips. Size:"
+msgstr ""
 
-#: settings/xfdesktop-settings-ui.glade:931
+#: settings/xfdesktop-settings-ui.glade:890
 msgid "Size of the tooltip preview image."
 msgstr "Dimension de miniatura in li panel de information."
 
-#: settings/xfdesktop-settings-ui.glade:933
+#: settings/xfdesktop-settings-ui.glade:892
 msgid "64"
 msgstr "64"
 
-#: settings/xfdesktop-settings-ui.glade:944
-msgid "Single _click to activate items"
-msgstr "Singul _clic por activar elementes"
-
-#: settings/xfdesktop-settings-ui.glade:959
-msgid "_Underline text on hover"
-msgstr "S_uperscrir li textu sub li apuntator"
-
-#: settings/xfdesktop-settings-ui.glade:974
-msgid "Show confirmation dialog before arranging icons"
+#: settings/xfdesktop-settings-ui.glade:903
+msgid "Font co_lor:"
 msgstr ""
 
-#: settings/xfdesktop-settings-ui.glade:990
-msgid "Use custom font co_lor:"
+#: settings/xfdesktop-settings-ui.glade:941
+msgid "Label bac_kground color:"
 msgstr ""
 
-#: settings/xfdesktop-settings-ui.glade:1028
-msgid "Use custom label bac_kground color:"
-msgstr ""
-
-#: settings/xfdesktop-settings-ui.glade:1107
+#: settings/xfdesktop-settings-ui.glade:984
 msgid "<b>Appearance</b>"
 msgstr "<b>Aspecte</b>"
 
-#: settings/xfdesktop-settings-ui.glade:1128
+#: settings/xfdesktop-settings-ui.glade:1019
+msgid "Icon placement _orientation:"
+msgstr ""
+
+#: settings/xfdesktop-settings-ui.glade:1059
+msgid "Show icons on _primary display"
+msgstr ""
+
+#: settings/xfdesktop-settings-ui.glade:1074
+msgid "Single _click to activate items"
+msgstr "Singul _clic por activar elementes"
+
+#: settings/xfdesktop-settings-ui.glade:1090
+msgid "_Underline text on hover"
+msgstr "S_uperscrir li textu sub li apuntator"
+
+#: settings/xfdesktop-settings-ui.glade:1106
+msgid "Show confirmation dialog before arran_ging icons"
+msgstr ""
+
+#: settings/xfdesktop-settings-ui.glade:1127
+msgid "Behavior"
+msgstr "Conduida"
+
+#: settings/xfdesktop-settings-ui.glade:1150
 msgid "Desktop _Icons"
 msgstr "_Icones del Pupitre"
 
-#: settings/xfdesktop-settings-ui.glade:1182
+#: settings/xfdesktop-settings-ui.glade:1204
 msgid ""
 "File/Launcher icons are not enabled. You can enable them from the \"Desktop "
 "Icons\" tab."
 msgstr "Icones de files e lansatores ne es activ. On posse activar les sur li carte «Icones del Pupitre»."
 
-#: settings/xfdesktop-settings-ui.glade:1228
+#: settings/xfdesktop-settings-ui.glade:1250
 msgid "Show hidden files on the desktop"
 msgstr "Monstrar celat files sur Pupitre"
 
-#: settings/xfdesktop-settings-ui.glade:1244
+#: settings/xfdesktop-settings-ui.glade:1266
 msgid "Show t_humbnails"
 msgstr "Monstrar _miniaturas"
 
-#: settings/xfdesktop-settings-ui.glade:1249
+#: settings/xfdesktop-settings-ui.glade:1271
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
 msgstr "Monstrar previsibil files sur li Pupitre quam miniaturas automaticmen creat."
 
-#: settings/xfdesktop-settings-ui.glade:1261
+#: settings/xfdesktop-settings-ui.glade:1283
 msgid "Show \"Delete\" option in file context menu"
 msgstr "Monstrar li element «Deleter» in li menú por files"
 
-#: settings/xfdesktop-settings-ui.glade:1282
+#: settings/xfdesktop-settings-ui.glade:1304
 msgid "General"
 msgstr "General"
 
-#: settings/xfdesktop-settings-ui.glade:1326
+#: settings/xfdesktop-settings-ui.glade:1348
 msgid "Default Icons"
 msgstr "Icones predefinit"
 
-#: settings/xfdesktop-settings-ui.glade:1356
+#: settings/xfdesktop-settings-ui.glade:1378
 msgid "_File/Launcher Icons"
 msgstr "Icones de _files e lansatores"
 
-#: settings/xfdesktop-settings-ui.glade:1382
+#: settings/xfdesktop-settings-ui.glade:1404
 msgid "_Keyboard Shortcuts"
 msgstr ""
 
@@ -685,237 +691,240 @@ msgstr "Ne atende por un gerente de fenestres al inicie"
 msgid "Cause xfdesktop to quit"
 msgstr "Terminar xfdesktop"
 
-#: src/xfdesktop-application.c:1183
+#: src/xfdesktop-application.c:1195
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "To ci es %s de version %s, executent in Xfce %s.\n"
 
-#: src/xfdesktop-application.c:1185
+#: src/xfdesktop-application.c:1197
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Constructet con GTK+ %d.%d.%d, ligat con GTK+ %d.%d.%d."
 
-#: src/xfdesktop-application.c:1189
+#: src/xfdesktop-application.c:1201
 msgid "Build options:\n"
 msgstr "Optiones del construction:\n"
 
-#: src/xfdesktop-application.c:1190
+#: src/xfdesktop-application.c:1202
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Menú del Pupitre:           %s\n"
 
-#: src/xfdesktop-application.c:1192 src/xfdesktop-application.c:1199
-#: src/xfdesktop-application.c:1206
+#: src/xfdesktop-application.c:1204 src/xfdesktop-application.c:1211
+#: src/xfdesktop-application.c:1218
 msgid "enabled"
 msgstr "permisset"
 
-#: src/xfdesktop-application.c:1194 src/xfdesktop-application.c:1201
-#: src/xfdesktop-application.c:1208
+#: src/xfdesktop-application.c:1206 src/xfdesktop-application.c:1213
+#: src/xfdesktop-application.c:1220
 msgid "disabled"
 msgstr "depermisset"
 
-#: src/xfdesktop-application.c:1197
+#: src/xfdesktop-application.c:1209
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Icones del Pupitre:         %s\n"
 
-#: src/xfdesktop-application.c:1204
+#: src/xfdesktop-application.c:1216
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Fil-icones sur li Pupitre:  %s\n"
 
-#: src/xfdesktop-file-icon-manager.c:733 src/xfdesktop-file-utils.c:739
+#: src/xfdesktop-file-icon-manager.c:718 src/xfdesktop-file-utils.c:739
 #: src/xfdesktop-file-utils.c:803
 msgid "Rename Error"
 msgstr "Errore de renomination"
 
-#: src/xfdesktop-file-icon-manager.c:734 src/xfdesktop-file-utils.c:804
+#: src/xfdesktop-file-icon-manager.c:719 src/xfdesktop-file-utils.c:804
 msgid "The files could not be renamed"
 msgstr "Li files ne posset esser renominat."
 
-#: src/xfdesktop-file-icon-manager.c:735
+#: src/xfdesktop-file-icon-manager.c:720
 msgid "None of the icons selected support being renamed."
 msgstr "Null selectet icones supporta renomination."
 
-#: src/xfdesktop-file-icon-manager.c:991
+#: src/xfdesktop-file-icon-manager.c:978
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "_Aperter per \"%s\""
 
-#: src/xfdesktop-file-icon-manager.c:994
+#: src/xfdesktop-file-icon-manager.c:981
 #, c-format
 msgid "Open With \"%s\""
 msgstr "Aperter per \"%s\""
 
-#: src/xfdesktop-file-icon-manager.c:1044
-#: src/xfdesktop-file-icon-manager.c:1092
+#: src/xfdesktop-file-icon-manager.c:1031
+#: src/xfdesktop-file-icon-manager.c:1079
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr "Non posset lansar «exo-desktop-item-edit» quel es necesse por crear e modificar lansatores e ligamentes sur li Pupitre."
 
-#: src/xfdesktop-file-icon-manager.c:1466
+#: src/xfdesktop-file-icon-manager.c:1453
 #, c-format
 msgid ""
 "Would you like to assign an existing desktop icon layout to monitor "
 "<b>%s</b>?"
 msgstr ""
 
-#: src/xfdesktop-file-icon-manager.c:1474
+#: src/xfdesktop-file-icon-manager.c:1461
 msgid "Monitors"
 msgstr ""
 
-#: src/xfdesktop-file-icon-manager.c:1742
+#: src/xfdesktop-file-icon-manager.c:1747
 msgid "_Open all"
 msgstr "_Aperter omnis"
 
-#: src/xfdesktop-file-icon-manager.c:1754
+#: src/xfdesktop-file-icon-manager.c:1759
 msgid "Create _Launcher..."
 msgstr "Crear _lansator..."
 
-#: src/xfdesktop-file-icon-manager.c:1764
+#: src/xfdesktop-file-icon-manager.c:1769
 msgid "Create _URL Link..."
 msgstr "Crear un ligament _URL..."
 
-#: src/xfdesktop-file-icon-manager.c:1774
+#: src/xfdesktop-file-icon-manager.c:1779
 msgid "Create _Folder..."
 msgstr "Crear un _fólder..."
 
-#: src/xfdesktop-file-icon-manager.c:1784
+#: src/xfdesktop-file-icon-manager.c:1789
 msgid "Create _Document"
 msgstr "Crear un _document"
 
-#: src/xfdesktop-file-icon-manager.c:1815
+#: src/xfdesktop-file-icon-manager.c:1820
 msgid "No templates installed"
 msgstr "Null modelles installat"
 
-#: src/xfdesktop-file-icon-manager.c:1833
+#: src/xfdesktop-file-icon-manager.c:1838
 msgid "_Empty File"
 msgstr "_Vacui file"
 
-#: src/xfdesktop-file-icon-manager.c:1843
+#: src/xfdesktop-file-icon-manager.c:1848
 msgid "_Open All"
 msgstr "_Aperter omnis"
 
-#: src/xfdesktop-file-icon-manager.c:1843
+#: src/xfdesktop-file-icon-manager.c:1848
 #: src/xfdesktop-special-file-icon.c:335 src/xfdesktop-volume-icon.c:756
 msgid "_Open"
 msgstr "_Aperter"
 
-#: src/xfdesktop-file-icon-manager.c:1856
+#: src/xfdesktop-file-icon-manager.c:1861
 msgid "_Execute"
 msgstr "_Executer"
 
-#: src/xfdesktop-file-icon-manager.c:1869
+#: src/xfdesktop-file-icon-manager.c:1874
 msgid "Edit _Launcher"
 msgstr ""
 
-#: src/xfdesktop-file-icon-manager.c:1917
+#: src/xfdesktop-file-icon-manager.c:1922
 msgid "Ope_n With"
 msgstr ""
 
-#: src/xfdesktop-file-icon-manager.c:1945
-#: src/xfdesktop-file-icon-manager.c:1962
+#: src/xfdesktop-file-icon-manager.c:1950
+#: src/xfdesktop-file-icon-manager.c:1967
 msgid "Ope_n With Other Application..."
 msgstr ""
 
-#: src/xfdesktop-file-icon-manager.c:1953
+#: src/xfdesktop-file-icon-manager.c:1958
 msgid "Set Defa_ult Application..."
 msgstr ""
 
-#: src/xfdesktop-file-icon-manager.c:1976
+#: src/xfdesktop-file-icon-manager.c:1981
 msgid "_Paste"
 msgstr "Co_llar"
 
-#: src/xfdesktop-file-icon-manager.c:1989
+#: src/xfdesktop-file-icon-manager.c:1994
 msgid "Cu_t"
 msgstr "Ci_ser"
 
-#: src/xfdesktop-file-icon-manager.c:1997
+#: src/xfdesktop-file-icon-manager.c:2002
 msgid "_Copy"
 msgstr "_Copiar"
 
-#: src/xfdesktop-file-icon-manager.c:2009
+#: src/xfdesktop-file-icon-manager.c:2014
 msgid "Paste Into Folder"
 msgstr "Collar ad-in li fólder"
 
-#: src/xfdesktop-file-icon-manager.c:2020
+#: src/xfdesktop-file-icon-manager.c:2025
 msgid "Mo_ve to Trash"
 msgstr "Mo_ver in li Paper-corb"
 
-#: src/xfdesktop-file-icon-manager.c:2029
+#: src/xfdesktop-file-icon-manager.c:2034
 msgid "_Delete"
 msgstr "_Deleter"
 
-#: src/xfdesktop-file-icon-manager.c:2040
+#: src/xfdesktop-file-icon-manager.c:2045
 msgid "_Rename..."
 msgstr "_Renominar..."
 
-#: src/xfdesktop-file-icon-manager.c:2091
+#: src/xfdesktop-file-icon-manager.c:2096
 msgid "_Open in New Window"
 msgstr "_Aperter in nov fenestre"
 
-#: src/xfdesktop-file-icon-manager.c:2098
+#: src/xfdesktop-file-icon-manager.c:2103
+#: src/xfdesktop-window-icon-manager.c:308
 msgid "Arrange Desktop _Icons"
 msgstr "Ordinar li _icones"
 
-#: src/xfdesktop-file-icon-manager.c:2124
+#: src/xfdesktop-file-icon-manager.c:2118
+#: src/xfdesktop-window-icon-manager.c:322
 msgid "_Next Background"
 msgstr "_Sequent funde"
 
-#: src/xfdesktop-file-icon-manager.c:2134
+#: src/xfdesktop-file-icon-manager.c:2128
+#: src/xfdesktop-window-icon-manager.c:335
 msgid "Desktop _Settings..."
 msgstr "_Parametres del Pupitre"
 
-#: src/xfdesktop-file-icon-manager.c:2141 src/xfdesktop-volume-icon.c:818
+#: src/xfdesktop-file-icon-manager.c:2135 src/xfdesktop-volume-icon.c:818
 msgid "_Properties..."
 msgstr "_Proprietás..."
 
-#: src/xfdesktop-file-icon-manager.c:3113
+#: src/xfdesktop-file-icon-manager.c:3116
 #, c-format
 msgid "Failed to save dropped file to '%s'"
 msgstr ""
 
-#: src/xfdesktop-file-icon-manager.c:3115
+#: src/xfdesktop-file-icon-manager.c:3118
 msgid "Drop Failure"
 msgstr ""
 
-#: src/xfdesktop-file-icon-manager.c:3119
-#: src/xfdesktop-icon-view-manager.c:457
+#: src/xfdesktop-file-icon-manager.c:3122
+#: src/xfdesktop-icon-view-manager.c:492
 msgid "_OK"
 msgstr "_OK"
 
-#: src/xfdesktop-file-icon-manager.c:3524
+#: src/xfdesktop-file-icon-manager.c:3527
 msgid "Copy _Here"
 msgstr "_Copiar ad ci"
 
-#: src/xfdesktop-file-icon-manager.c:3525
+#: src/xfdesktop-file-icon-manager.c:3528
 msgid "_Move Here"
 msgstr "_Mover ad ci"
 
-#: src/xfdesktop-file-icon-manager.c:3526
+#: src/xfdesktop-file-icon-manager.c:3529
 msgid "_Link Here"
 msgstr "_Ligar ad ci"
 
-#: src/xfdesktop-file-icon-manager.c:3551 src/xfdesktop-file-utils.c:1138
-#: src/xfdesktop-icon-view-manager.c:456
+#: src/xfdesktop-file-icon-manager.c:3554 src/xfdesktop-file-utils.c:1138
+#: src/xfdesktop-icon-view-manager.c:491
 msgid "_Cancel"
 msgstr "_Anullar"
 
-#: src/xfdesktop-file-icon-manager.c:3644
+#: src/xfdesktop-file-icon-manager.c:3647
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
 msgstr "Ne posset crear li fólder del Pupitre «%s»"
 
-#: src/xfdesktop-file-icon-manager.c:3652
+#: src/xfdesktop-file-icon-manager.c:3655
 msgid "Failed to load the desktop folder"
 msgstr "Ne posset cargar li fólder del Pupitre"
 
-#: src/xfdesktop-file-icon-manager.c:3661
+#: src/xfdesktop-file-icon-manager.c:3664
 msgid "A desktop file icon error occurred"
 msgstr ""
 
-#: src/xfdesktop-file-icon-manager.c:3665
+#: src/xfdesktop-file-icon-manager.c:3668
 msgid "Desktop Folder Error"
 msgstr "Errore de fólder del Pupitre"
 
@@ -1091,17 +1100,17 @@ msgstr "Errore de transferte"
 msgid "The file transfer could not be performed"
 msgstr "Li transferte de file ne esset possibil"
 
-#: src/xfdesktop-icon-view-manager.c:453
+#: src/xfdesktop-icon-view-manager.c:488
 msgid "Arrange Icons"
 msgstr ""
 
-#: src/xfdesktop-icon-view-manager.c:473
+#: src/xfdesktop-icon-view-manager.c:508
 msgid ""
 "This will reorder all desktop items and place them on different screen positions.\n"
 "Are you sure?"
 msgstr "To va reordinar omni elementes del Pupitre e metter les in nov positiones.\nEsque continuar?"
 
-#: src/xfdesktop-icon-view-manager.c:477
+#: src/xfdesktop-icon-view-manager.c:512
 msgid "Do _not ask me again"
 msgstr "_Ne questionar denov"
 
@@ -1256,3 +1265,7 @@ msgstr "_Desmonter volume"
 #: src/xfdesktop-volume-icon.c:808
 msgid "_Mount Volume"
 msgstr "_Monter volume"
+
+#: src/xfdesktop-window-icon-manager.c:296
+msgid "_Run Program..."
+msgstr ""
