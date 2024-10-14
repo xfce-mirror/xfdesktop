@@ -392,14 +392,6 @@ xfdesktop_find_toplevel(GtkWidget *widget)
 
 
 void
-xfdesktop_tree_path_free(gpointer data)
-{
-    gtk_tree_path_free((GtkTreePath *) data);
-}
-
-
-
-void
 xfdesktop_widget_unrealize(GtkWidget *widget,
                            gpointer data)
 {
