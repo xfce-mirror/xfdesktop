@@ -2007,6 +2007,7 @@ xfdesktop_icon_view_show_tooltip(GtkWidget *widget,
                 gtk_box_pack_start(GTK_BOX(box), label, TRUE, TRUE, 0);
 
                 g_free(padded_tip_text);
+                g_free(tip_text);
             }
 
             gtk_widget_show_all(box);
