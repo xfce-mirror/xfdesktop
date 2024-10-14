@@ -5,7 +5,13 @@ xfdesktop_settings_built_sources = \
 	xfdesktop-settings-ui.c
 
 xfdesktop_settings_SOURCES = \
-	main.c
+	main.c \
+    xfdesktop-background-settings.c \
+    xfdesktop-file-icon-settings.c \
+    xfdesktop-icon-settings.c \
+    xfdesktop-keyboard-shortcuts-settings.c \
+    xfdesktop-menu-settings.c \
+    xfdesktop-settings.h
 
 nodist_xfdesktop_settings_SOURCES = \
 	$(xfdesktop_settings_built_sources)
@@ -15,7 +21,6 @@ xfdesktop_settings_CFLAGS =						\
 	-I$(top_srcdir)/common						\
 	-I$(top_srcdir)/src 						\
 	-DDEFAULT_BACKDROP=\"$(DEFAULT_BACKDROP)\" \
-	$(LIBEXO_CFLAGS)							\
 	$(LIBXFCE4UI_CFLAGS)						\
 	$(LIBXFCE4KBD_PRIVATE_CFLAGS)				\
 	$(LIBXFCE4WINDOWING_CFLAGS)					\
@@ -23,7 +28,6 @@ xfdesktop_settings_CFLAGS =						\
 	$(GTHREAD_CFLAGS)							\
 	$(LIBX11_CFLAGS)							\
 	-DG_LOG_DOMAIN=\"xfdesktop-settings\"		\
-	-DEXO_API_SUBJECT_TO_CHANGE					\
 	-DLOCALEDIR=\"$(localedir)\"				\
 	-DDATADIR=\"$(datadir)\"					\
 	-DBINDIR=\"$(bindir)\"
@@ -34,7 +38,6 @@ xfdesktop_settings_LDADD =						\
 	$(LIBXFCE4UI_LIBS)							\
 	$(LIBXFCE4KBD_PRIVATE_LIBS)					\
 	$(LIBXFCE4WINDOWING_LIBS)					\
-	$(LIBEXO_LIBS)								\
 	$(GTHREAD_LIBS)								\
 	$(LIBX11_LIBS)								\
 	$(GTK_LIBS)
