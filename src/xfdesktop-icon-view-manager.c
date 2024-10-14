@@ -501,6 +501,7 @@ xfdesktop_icon_view_manager_sort_icons(XfdesktopIconViewManager *manager,
                          "valign", GTK_ALIGN_START,
                          NULL);
             gtk_box_pack_start(GTK_BOX(hbox), image, FALSE, FALSE, 0);
+            g_object_unref(icon);
 
             GtkWidget *vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 6);
             gtk_box_pack_start(GTK_BOX(hbox), vbox, TRUE, TRUE, 0);
