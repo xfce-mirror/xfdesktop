@@ -336,7 +336,9 @@ icon_view_action_unselect_all(XfdesktopIconViewManager *manager) {
 
 static void
 icon_view_action_arrange_icons(XfdesktopIconViewManager *manager) {
-    XFDESKTOP_ICON_VIEW_MANAGER_GET_CLASS(manager)->sort_icons(manager, GTK_SORT_ASCENDING);
+    XFDESKTOP_ICON_VIEW_MANAGER_GET_CLASS(manager)->sort_icons(manager,
+                                                               GTK_SORT_ASCENDING,
+                                                               XFDESKTOP_ICON_VIEW_MANAGER_SORT_NONE);
 }
 
 static void
@@ -446,6 +448,12 @@ xfdesktop_icon_view_manager_desktop_removed(XfdesktopIconViewManager *manager, X
     g_object_notify(G_OBJECT(manager), "desktops");
 }
 
+XfceDesktop *
+xfdesktop_icon_view_manager_get_focused_desktop(XfdesktopIconViewManager *manager) {
+    g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW_MANAGER(manager), NULL);
+    return XFDESKTOP_ICON_VIEW_MANAGER_GET_CLASS(manager)->get_focused_desktop(manager);
+}
+
 GtkMenu *
 xfdesktop_icon_view_manager_get_context_menu(XfdesktopIconViewManager *manager,
                                              XfceDesktop *desktop,
@@ -466,7 +474,8 @@ xfdesktop_icon_view_manager_get_context_menu(XfdesktopIconViewManager *manager,
 
 void
 xfdesktop_icon_view_manager_sort_icons(XfdesktopIconViewManager *manager,
-                                       GtkSortType sort_type)
+                                       GtkSortType sort_type,
+                                       XfdesktopIconViewManagerSortFlags flags)
 {
     XfdesktopIconViewManagerClass *klass;
 
@@ -518,12 +527,12 @@ xfdesktop_icon_view_manager_sort_icons(XfdesktopIconViewManager *manager,
                 if (!priv->confirm_sorting) {
                     xfconf_channel_set_bool(priv->channel, DESKTOP_ICONS_CONFIRM_SORTING_PROP, FALSE);
                 }
-                klass->sort_icons(manager, sort_type);
+                klass->sort_icons(manager, sort_type, flags);
             }
 
             gtk_widget_destroy(dialog);
         } else {
-            klass->sort_icons(manager, sort_type);
+            klass->sort_icons(manager, sort_type, flags);
         }
     }
 }
