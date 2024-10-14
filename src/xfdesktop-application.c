@@ -627,7 +627,9 @@ xfdesktop_application_action_activated(GAction *action, GVariant *parameter, gpo
     } else if (g_strcmp0(name, ACTION_ARRANGE) == 0) {
 #ifdef ENABLE_DESKTOP_ICONS
         if (app->icon_view_manager != NULL) {
-            xfdesktop_icon_view_manager_sort_icons(app->icon_view_manager, GTK_SORT_ASCENDING);
+            xfdesktop_icon_view_manager_sort_icons(app->icon_view_manager,
+                                                   GTK_SORT_ASCENDING,
+                                                   XFDESKTOP_ICON_VIEW_MANAGER_SORT_ALL_DESKTOPS);
         }
 #endif
     } else if (g_strcmp0(name, ACTION_QUIT) == 0) {
