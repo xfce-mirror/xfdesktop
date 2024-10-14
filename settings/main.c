@@ -1944,6 +1944,8 @@ cb_icon_style_changed(GtkComboBox *combo,
 {
     gtk_widget_set_sensitive(GTK_WIDGET(gtk_builder_get_object(main_gxml, "box_icons_appearance_settings")),
                              gtk_combo_box_get_active(combo) != 0);
+    gtk_widget_set_sensitive(GTK_WIDGET(gtk_builder_get_object(main_gxml, "box_icons_behavior_settings")),
+                             gtk_combo_box_get_active(combo) != 0);
 
 #ifdef ENABLE_FILE_ICONS
     gtk_widget_set_sensitive(GTK_WIDGET(gtk_builder_get_object(main_gxml, "tab_file_launcher_icons_content")),
