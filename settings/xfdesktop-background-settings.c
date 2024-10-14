@@ -1776,14 +1776,7 @@ xfdesktop_background_settings_init(XfdesktopSettings *settings) {
 
     /* icon view area */
     background_settings->infobar = GTK_WIDGET(gtk_builder_get_object(appearance_gxml, "infobar_header"));
-
-    background_settings->infobar_label = gtk_label_new("This is some text");
-    gtk_widget_show(background_settings->infobar_label);
-
-    /* Add the background_settings's infobar label to the infobar, with this setup
-     * it's easy to update the text for the infobar. */
-    GtkWidget *content_area = gtk_info_bar_get_content_area(GTK_INFO_BAR(background_settings->infobar));
-    gtk_container_add(GTK_CONTAINER(content_area), background_settings->infobar_label);
+    background_settings->infobar_label = GTK_WIDGET(gtk_builder_get_object(appearance_gxml, "infobar_label"));
 
     background_settings->label_header = GTK_WIDGET(gtk_builder_get_object(appearance_gxml, "label_header"));
 
