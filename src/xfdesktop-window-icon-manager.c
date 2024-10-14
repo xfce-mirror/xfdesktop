@@ -73,6 +73,7 @@ static void xfdesktop_window_icon_manager_desktop_added(XfdesktopIconViewManager
                                                         XfceDesktop *desktop);
 static void xfdesktop_window_icon_manager_desktop_removed(XfdesktopIconViewManager *manager,
                                                           XfceDesktop *desktop);
+static XfceDesktop *xfdesktop_window_icon_manager_get_focused_desktop(XfdesktopIconViewManager *manager);
 static GtkMenu *xfdesktop_window_icon_manager_get_context_menu(XfdesktopIconViewManager *manager,
                                                                XfceDesktop *desktop,
                                                                gint popup_x,
@@ -81,7 +82,8 @@ static void xfdesktop_window_icon_manager_activate_icons(XfdesktopIconViewManage
 static void xfdesktop_window_icon_manager_toggle_cursor_icon(XfdesktopIconViewManager *manager);
 static void xfdesktop_window_icon_manager_unselect_all_icons(XfdesktopIconViewManager *manager);
 static void xfdesktop_window_icon_manager_sort_icons(XfdesktopIconViewManager *manager,
-                                                     GtkSortType sort_type);
+                                                     GtkSortType sort_type,
+                                                     XfdesktopIconViewManagerSortFlags flags);
 
 static XfwWindow *window_for_filter_path(XfdesktopWindowIconManager *wmanager,
                                          MonitorData *mdata,
@@ -121,6 +123,7 @@ xfdesktop_window_icon_manager_class_init(XfdesktopWindowIconManagerClass *klass)
     XfdesktopIconViewManagerClass *ivm_class = XFDESKTOP_ICON_VIEW_MANAGER_CLASS(klass);
     ivm_class->desktop_added = xfdesktop_window_icon_manager_desktop_added;
     ivm_class->desktop_removed = xfdesktop_window_icon_manager_desktop_removed;
+    ivm_class->get_focused_desktop = xfdesktop_window_icon_manager_get_focused_desktop;
     ivm_class->get_context_menu = xfdesktop_window_icon_manager_get_context_menu;
     ivm_class->activate_icons = xfdesktop_window_icon_manager_activate_icons;
     ivm_class->toggle_cursor_icon = xfdesktop_window_icon_manager_toggle_cursor_icon;
@@ -220,6 +223,24 @@ xfdesktop_window_icon_manager_desktop_removed(XfdesktopIconViewManager *manager,
     g_hash_table_remove(wmanager->monitor_data, xfce_desktop_get_monitor(desktop));
 }
 
+static XfceDesktop *
+xfdesktop_window_icon_manager_get_focused_desktop(XfdesktopIconViewManager *manager) {
+    XfdesktopWindowIconManager *wmanager = XFDESKTOP_WINDOW_ICON_MANAGER(manager);
+    GHashTableIter iter;
+    g_hash_table_iter_init(&iter, wmanager->monitor_data);
+
+    MonitorData *mdata;
+    while (g_hash_table_iter_next(&iter, NULL, (gpointer)&mdata)) {
+        XfdesktopIconView *icon_view = xfdesktop_icon_view_holder_get_icon_view(mdata->holder);
+        GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(icon_view));
+        if (GTK_IS_WINDOW(toplevel) && gtk_window_has_toplevel_focus(GTK_WINDOW(toplevel))) {
+            return xfdesktop_icon_view_holder_get_desktop(mdata->holder);
+        }
+    }
+
+    return NULL;
+}
+
 static void
 xfce4_appfinder_launch(GtkWidget *mi, const gchar *appfinder_path) {
     gchar *cmdline = g_strconcat(appfinder_path, " --collapsed", NULL);
@@ -234,7 +255,9 @@ xfdesktop_settings_launch(GtkWidget *mi, const gchar *xfdesktop_settings_path) {
 
 static void
 menu_arrange_icons(GtkWidget *mi, MonitorData *mdata) {
-    xfdesktop_icon_view_manager_sort_icons(XFDESKTOP_ICON_VIEW_MANAGER(mdata->wmanager), GTK_SORT_ASCENDING);
+    xfdesktop_icon_view_manager_sort_icons(XFDESKTOP_ICON_VIEW_MANAGER(mdata->wmanager),
+                                           GTK_SORT_ASCENDING,
+                                           XFDESKTOP_ICON_VIEW_MANAGER_SORT_NONE);
 }
 
 static void
@@ -398,15 +421,26 @@ xfdesktop_window_icon_manager_unselect_all_icons(XfdesktopIconViewManager *manag
 }
 
 static void
-xfdesktop_window_icon_manager_sort_icons(XfdesktopIconViewManager *manager, GtkSortType sort_type) {
+xfdesktop_window_icon_manager_sort_icons(XfdesktopIconViewManager *manager,
+                                         GtkSortType sort_type,
+                                         XfdesktopIconViewManagerSortFlags flags)
+{
     XfdesktopWindowIconManager *wmanager = XFDESKTOP_WINDOW_ICON_MANAGER(manager);
+    gboolean sort_all = (flags & XFDESKTOP_ICON_VIEW_MANAGER_SORT_ALL_DESKTOPS) != 0;
+
     GHashTableIter iter;
     g_hash_table_iter_init(&iter, wmanager->monitor_data);
 
     MonitorData *mdata;
     while (g_hash_table_iter_next(&iter, NULL, (gpointer)&mdata)) {
-        XfdesktopIconView *icon_view = xfdesktop_icon_view_holder_get_icon_view(mdata->holder);
-        xfdesktop_icon_view_sort_icons(icon_view, sort_type);
+        XfceDesktop *desktop = xfdesktop_icon_view_holder_get_desktop(mdata->holder);
+        if (sort_all || xfce_desktop_is_active(desktop)) {
+            XfdesktopIconView *icon_view = xfdesktop_icon_view_holder_get_icon_view(mdata->holder);
+            xfdesktop_icon_view_sort_icons(icon_view, sort_type);
+            if (!sort_all) {
+                break;
+            }
+        }
     }
 }
 
