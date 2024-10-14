@@ -22,6 +22,7 @@
  *
  */
 
+#include "libxfce4ui/libxfce4ui.h"
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -93,6 +94,8 @@ struct _XfdesktopBackgroundSettings {
     GFile *selected_folder;
     GCancellable *cancel_enumeration;
     guint add_dir_idle_id;
+
+    guint last_image_signal_id;
 };
 
 typedef struct {
@@ -406,7 +409,7 @@ xfdesktop_settings_image_iconview_add(GtkTreeModel *model,
 }
 
 static void
-cb_destroy_add_dir_enumeration(AddDirData *dir_data) {
+dir_data_free(AddDirData *dir_data) {
     XfdesktopBackgroundSettings *background_settings = dir_data->background_settings;
 
     TRACE("entering");
@@ -426,100 +429,118 @@ cb_destroy_add_dir_enumeration(AddDirData *dir_data) {
     background_settings->add_dir_idle_id = 0;
 }
 
-static gboolean
-xfdesktop_image_list_add_item(gpointer user_data) {
+static void
+cb_enumerator_file_ready(GObject *source, GAsyncResult *res, gpointer user_data) {
     AddDirData *dir_data = user_data;
-    XfdesktopBackgroundSettings *background_settings = dir_data->background_settings;
 
-    /* Add one item to the icon view at a time so we don't block the UI */
-    GFileInfo *info = g_file_enumerator_next_file(dir_data->file_enumerator, NULL, NULL);
-    if (info != NULL) {
-        GFile *file = g_file_enumerator_get_child(dir_data->file_enumerator, info);
-
-        GtkTreeIter *iter = xfdesktop_settings_image_iconview_add(GTK_TREE_MODEL(dir_data->ls),
-                                                                  file,
-                                                                  info,
-                                                                  background_settings);
-        if (iter != NULL) {
-            if (dir_data->selected_iter == NULL && g_strcmp0(g_file_peek_path(file), dir_data->last_image) == 0) {
-                dir_data->selected_iter = iter;
-            } else {
-                gtk_tree_iter_free(iter);
-            }
+    GError *error = NULL;
+    GList *file_infos = g_file_enumerator_next_files_finish(G_FILE_ENUMERATOR(source), res, &error);
+    if (error != NULL) {
+        if (!g_error_matches(error, G_IO_ERROR, G_IO_ERROR_CANCELLED)) {
+            XfdesktopBackgroundSettings *background_settings = dir_data->background_settings;
+            xfce_dialog_show_error(GTK_WINDOW(background_settings->settings->settings_toplevel),
+                                   error,
+                                   _("Unable to load images from folder \"%s\""),
+                                   g_file_peek_path(background_settings->selected_folder));
+            g_error_free(error);
         }
+        dir_data_free(dir_data);
+    } else if (file_infos == NULL) {
+        XfdesktopBackgroundSettings *background_settings = dir_data->background_settings;
 
-        g_object_unref(file);
-        g_object_unref(info);
+        gtk_icon_view_set_model(GTK_ICON_VIEW(background_settings->image_iconview),
+                                GTK_TREE_MODEL(dir_data->ls));
 
-        /* continue on the next idle callback so the user's events get priority */
-        return TRUE;
-    }
-
-    /* If we get here we're done enumerating files in the directory */
-
-    gtk_icon_view_set_model(GTK_ICON_VIEW(background_settings->image_iconview),
-                            GTK_TREE_MODEL(dir_data->ls));
-
-    /* last_image is in the directory added then it should be selected */
-    if(dir_data->selected_iter) {
-        GtkTreePath *path;
-        path = gtk_tree_model_get_path(GTK_TREE_MODEL(dir_data->ls), dir_data->selected_iter);
-        gtk_tree_iter_free(dir_data->selected_iter);
-        if(path) {
+        if (dir_data->selected_iter != NULL) {
+            GtkTreePath *path = gtk_tree_model_get_path(GTK_TREE_MODEL(dir_data->ls), dir_data->selected_iter);
             gtk_icon_view_select_path(GTK_ICON_VIEW(background_settings->image_iconview), path);
             gtk_tree_path_free(path);
+        } else {
+            gchar *prop_name = xfdesktop_settings_generate_per_workspace_binding_string(background_settings, "backdrop-cycle-enable");
+            gboolean backdrop_cycle_enable = xfconf_channel_get_bool(background_settings->settings->channel, prop_name, FALSE);
+
+            if (backdrop_cycle_enable) {
+                gtk_widget_show(background_settings->btn_folder_apply);
+            }
+
+            g_free(prop_name);
         }
-     }
 
-    if (dir_data->selected_iter == NULL) {
-        gchar *prop_name = xfdesktop_settings_generate_per_workspace_binding_string(background_settings, "backdrop-cycle-enable");
-        gboolean backdrop_cycle_enable = xfconf_channel_get_bool(background_settings->settings->channel, prop_name, FALSE);
+        dir_data_free(dir_data);
+    } else {
 
-        if (backdrop_cycle_enable) {
-            gtk_widget_show(background_settings->btn_folder_apply);
+        XfdesktopBackgroundSettings *background_settings = dir_data->background_settings;
+        for (GList *l = file_infos; l != NULL; l = l->next) {
+            GFileInfo *info = G_FILE_INFO(l->data);
+            GFile *file = g_file_enumerator_get_child(dir_data->file_enumerator, info);
+
+            GtkTreeIter *iter = xfdesktop_settings_image_iconview_add(GTK_TREE_MODEL(dir_data->ls),
+                                                                      file,
+                                                                      info,
+                                                                      background_settings);
+            if (iter != NULL) {
+                if (dir_data->selected_iter == NULL && g_strcmp0(g_file_peek_path(file), dir_data->last_image) == 0) {
+                    dir_data->selected_iter = iter;
+                } else {
+                    gtk_tree_iter_free(iter);
+                }
+            }
+
+            g_object_unref(file);
+            g_object_unref(info);
         }
+        g_list_free(file_infos);
 
-        g_free(prop_name);
+        g_file_enumerator_next_files_async(dir_data->file_enumerator,
+                                           5,
+                                           G_PRIORITY_DEFAULT_IDLE,
+                                           background_settings->cancel_enumeration,
+                                           cb_enumerator_file_ready,
+                                           dir_data);
     }
-
-    /* cb_destroy_add_dir_enumeration will get called to clean up */
-    return FALSE;
 }
 
 static void
-xfdesktop_image_list_add_dir(GObject *source_object,
-                             GAsyncResult *res,
-                             gpointer user_data)
-{
-    XfdesktopBackgroundSettings *background_settings = user_data;
-    AddDirData *dir_data = g_new0(AddDirData, 1);
-
+xfdesktop_image_list_add_dir(GObject *source_object, GAsyncResult *res, gpointer user_data) {
     TRACE("entering");
 
-    dir_data->background_settings = background_settings;
+    XfdesktopBackgroundSettings *background_settings = user_data;
 
-    dir_data->ls = gtk_list_store_new(N_COLS,
-                                      GDK_TYPE_PIXBUF,
-                                      CAIRO_GOBJECT_TYPE_SURFACE,
-                                      G_TYPE_STRING,
-                                      G_TYPE_STRING,
-                                      G_TYPE_STRING,
-                                      G_TYPE_STRING);
+    GError *error = NULL;
+    GFileEnumerator *enumerator = g_file_enumerate_children_finish(background_settings->selected_folder,
+                                                                   res,
+                                                                   &error);
+    if (enumerator == NULL) {
+        xfce_dialog_show_error(GTK_WINDOW(background_settings->settings->settings_toplevel),
+                               error,
+                               _("Unable to load images from folder \"%s\""),
+                               g_file_peek_path(background_settings->selected_folder));
+        g_error_free(error);
+    } else {
+        AddDirData *dir_data = g_new0(AddDirData, 1);
+        dir_data->background_settings = background_settings;
+        dir_data->file_enumerator = enumerator;
 
-    /* Get the last image/current image displayed so we can select it in the
-     * icon view */
-    dir_data->last_image = xfdesktop_settings_get_backdrop_image(background_settings);
-    dir_data->file_path = g_file_get_path(background_settings->selected_folder);
-    dir_data->file_enumerator = g_file_enumerate_children_finish(background_settings->selected_folder,
-                                                                 res,
-                                                                 NULL);
+        dir_data->ls = gtk_list_store_new(N_COLS,
+                                          GDK_TYPE_PIXBUF,
+                                          CAIRO_GOBJECT_TYPE_SURFACE,
+                                          G_TYPE_STRING,
+                                          G_TYPE_STRING,
+                                          G_TYPE_STRING,
+                                          G_TYPE_STRING);
 
-    /* Individual items are added in an idle callback so everything is more
-     * responsive */
-    background_settings->add_dir_idle_id = g_idle_add_full(G_PRIORITY_DEFAULT_IDLE,
-                                             xfdesktop_image_list_add_item,
-                                             dir_data,
-                                             (GDestroyNotify)cb_destroy_add_dir_enumeration);
+        /* Get the last image/current image displayed so we can select it in the
+         * icon view */
+        dir_data->last_image = xfdesktop_settings_get_backdrop_image(background_settings);
+        dir_data->file_path = g_file_get_path(background_settings->selected_folder);
+
+        g_file_enumerator_next_files_async(dir_data->file_enumerator,
+                                           5,
+                                           G_PRIORITY_DEFAULT_IDLE,
+                                           background_settings->cancel_enumeration,
+                                           cb_enumerator_file_ready,
+                                           dir_data);
+    }
 }
 
 static XfwWorkspace *
@@ -597,7 +618,6 @@ xfdesktop_settings_update_iconview_frame_name(XfdesktopBackgroundSettings *backg
             gtk_label_set_text(GTK_LABEL(background_settings->infobar_label),
                                _("Move this dialog to the display you "
                                  "want to edit the settings for."));
-            gtk_widget_set_visible(background_settings->infobar, TRUE);
         } else {
             /* Multi-monitor per workspace wallpaper */
             if (background_settings->monitor_name != NULL) {
@@ -616,8 +636,9 @@ xfdesktop_settings_update_iconview_frame_name(XfdesktopBackgroundSettings *backg
             gtk_label_set_text(GTK_LABEL(background_settings->infobar_label),
                                _("Move this dialog to the display and "
                                  "workspace you want to edit the settings for."));
-            gtk_widget_set_visible(background_settings->infobar, TRUE);
         }
+
+        gtk_widget_show(background_settings->infobar);
     } else {
         if(gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(background_settings->chk_apply_to_all)) ||
            (workspace_count_total(workspace_manager) == 1)) {
@@ -625,7 +646,7 @@ xfdesktop_settings_update_iconview_frame_name(XfdesktopBackgroundSettings *backg
             label_text = g_strdup(_("Wallpaper for my desktop"));
 
             /* No need for the infobar */
-            gtk_widget_set_visible(background_settings->infobar, FALSE);
+            gtk_widget_hide(background_settings->infobar);
         } else {
             /* Single monitor and per workspace wallpaper */
             label_text = g_strdup_printf(_("Wallpaper for %s"), workspace_name);
@@ -635,7 +656,7 @@ xfdesktop_settings_update_iconview_frame_name(XfdesktopBackgroundSettings *backg
             gtk_label_set_text(GTK_LABEL(background_settings->infobar_label),
                                _("Move this dialog to the workspace you "
                                  "want to edit the settings for."));
-            gtk_widget_set_visible(background_settings->infobar, TRUE);
+            gtk_widget_show(background_settings->infobar);
         }
     }
 
@@ -860,11 +881,11 @@ stop_image_loading(XfdesktopBackgroundSettings *background_settings) {
     }
 }
 
-static void
-cb_folder_selection_changed(GtkWidget *button, XfdesktopBackgroundSettings *background_settings) {
+static gboolean
+update_icon_view_model(XfdesktopBackgroundSettings *background_settings) {
     TRACE("entering");
 
-    gchar *new_folder = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(button));
+    gchar *new_folder = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(background_settings->btn_folder));
     gchar *previous_folder = NULL;
     if (background_settings->selected_folder != NULL) {
         previous_folder = g_file_get_path(background_settings->selected_folder);
@@ -883,7 +904,7 @@ cb_folder_selection_changed(GtkWidget *button, XfdesktopBackgroundSettings *back
             g_free(current_folder);
             g_free(new_folder);
             g_free(previous_folder);
-            return;
+            return FALSE;
         } else {
             g_free(new_folder);
             new_folder = current_folder;
@@ -912,6 +933,13 @@ cb_folder_selection_changed(GtkWidget *button, XfdesktopBackgroundSettings *back
 
     g_free(new_folder);
     g_free(previous_folder);
+
+    return TRUE;
+}
+
+static void
+cb_folder_selection_changed(GtkWidget *button, XfdesktopBackgroundSettings *background_settings) {
+    update_icon_view_model(background_settings);
 }
 
 static void
@@ -991,11 +1019,11 @@ cb_xfdesktop_combo_color_changed(GtkComboBox *combo, XfdesktopBackgroundSettings
     }
 }
 
-static void
+static gboolean
 xfdesktop_settings_update_iconview_folder(XfdesktopBackgroundSettings *background_settings) {
     /* If we haven't found our window return now and wait for that */
     if (background_settings->xfw_window == NULL) {
-        return;
+        return FALSE;
     }
 
     TRACE("entering");
@@ -1008,10 +1036,54 @@ xfdesktop_settings_update_iconview_folder(XfdesktopBackgroundSettings *backgroun
     gtk_file_chooser_set_current_folder((GtkFileChooser*)background_settings->btn_folder, dirname);
 
     /* Workaround for a bug in GTK */
-    cb_folder_selection_changed(background_settings->btn_folder, background_settings);
+    gboolean ret = update_icon_view_model(background_settings);
 
     g_free(current_folder);
     g_free(dirname);
+
+    return ret;
+}
+
+static void
+last_image_changed(XfconfChannel *channel,
+                   const gchar *property_name,
+                   const GValue *value,
+                   XfdesktopBackgroundSettings *background_settings)
+{
+    if (!xfdesktop_settings_update_iconview_folder(background_settings)) {
+        if (G_VALUE_HOLDS_STRING(value)) {
+            const gchar *cur_filename = g_value_get_string(value);
+            GtkTreeModel *model = gtk_icon_view_get_model(GTK_ICON_VIEW(background_settings->image_iconview));
+            if (model != NULL) {
+                GtkTreeIter iter;
+                if (gtk_tree_model_get_iter_first(model, &iter)) {
+                    do {
+                        gchar *filename;
+                        gtk_tree_model_get(model, &iter,
+                                           COL_FILENAME, &filename,
+                                           -1);
+                        gboolean matches = g_strcmp0(cur_filename, filename) == 0;
+                        g_free(filename);
+
+                        if (matches) {
+                            g_signal_handlers_block_by_func(background_settings->image_iconview,
+                                                            cb_image_selection_changed,
+                                                            background_settings);
+
+                            GtkTreePath *path = gtk_tree_model_get_path(model, &iter);
+                            gtk_icon_view_select_path(GTK_ICON_VIEW(background_settings->image_iconview), path);
+                            gtk_tree_path_free(path);
+
+                            g_signal_handlers_unblock_by_func(background_settings->image_iconview,
+                                                              cb_image_selection_changed,
+                                                              background_settings);
+                            break;
+                        }
+                    } while (gtk_tree_model_iter_next(model, &iter));
+                }
+            }
+        }
+    }
 }
 
 /* This function is to add or remove all the bindings for the background
@@ -1053,6 +1125,20 @@ xfdesktop_settings_background_tab_change_bindings(XfdesktopBackgroundSettings *b
                                G_OBJECT(background_settings->image_style_combo), "active");
         /* determine if the iconview is sensitive */
         cb_xfdesktop_combo_image_style_changed(GTK_COMBO_BOX(background_settings->image_style_combo), background_settings);
+    }
+    g_free(buf);
+
+    buf = xfdesktop_settings_generate_per_workspace_binding_string(background_settings, "last-image");
+    if (remove_binding) {
+        if (background_settings->last_image_signal_id != 0) {
+            g_signal_handler_disconnect(channel, background_settings->last_image_signal_id);
+            background_settings->last_image_signal_id = 0;
+        }
+    } else {
+        gchar *signal = g_strconcat("property-changed::", buf, NULL);
+        background_settings->last_image_signal_id = g_signal_connect(channel, signal,
+                                                                     G_CALLBACK(last_image_changed), background_settings);
+        g_free(signal);
     }
     g_free(buf);
 
@@ -1689,23 +1775,12 @@ xfdesktop_background_settings_init(XfdesktopSettings *settings) {
     gtk_notebook_set_show_tabs(GTK_NOTEBOOK(appearance_container), FALSE);
 
     /* icon view area */
-    background_settings->infobar = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
-                                                       "infobar_header"));
+    background_settings->infobar = GTK_WIDGET(gtk_builder_get_object(appearance_gxml, "infobar_header"));
+    background_settings->infobar_label = GTK_WIDGET(gtk_builder_get_object(appearance_gxml, "infobar_label"));
 
-    background_settings->infobar_label = gtk_label_new("This is some text");
-    gtk_widget_show(background_settings->infobar_label);
-    gtk_widget_show(background_settings->infobar);
+    background_settings->label_header = GTK_WIDGET(gtk_builder_get_object(appearance_gxml, "label_header"));
 
-    /* Add the background_settings's infobar label to the infobar, with this setup
-     * it's easy to update the text for the infobar. */
-    GtkWidget *content_area = gtk_info_bar_get_content_area(GTK_INFO_BAR(background_settings->infobar));
-    gtk_container_add(GTK_CONTAINER(content_area), background_settings->infobar_label);
-
-    background_settings->label_header = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
-                                                            "label_header"));
-
-    background_settings->image_iconview = GTK_WIDGET(gtk_builder_get_object(appearance_gxml,
-                                                              "iconview_imagelist"));
+    background_settings->image_iconview = GTK_WIDGET(gtk_builder_get_object(appearance_gxml, "iconview_imagelist"));
     xfdesktop_settings_setup_image_iconview(background_settings);
 
     /* folder: file chooser button */
@@ -1797,6 +1872,10 @@ void
 xfdesktop_background_settings_destroy(XfdesktopBackgroundSettings *background_settings) {
     GdkScreen *screen = gtk_widget_get_screen(background_settings->settings->settings_toplevel);
     g_signal_handlers_disconnect_by_data(screen, background_settings);
+    if (background_settings->last_image_signal_id != 0) {
+        g_signal_handler_disconnect(background_settings->settings->channel,
+                                    background_settings->last_image_signal_id);
+    }
     stop_image_loading(background_settings);
     g_free(background_settings->monitor_name);
     g_object_unref(background_settings->xfw_screen);
