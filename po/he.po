@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-10-14 00:55+0200\n"
+"POT-Creation-Date: 2024-10-14 12:55+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Elishai Eliyahu <elishai@mailfence.com>, 2020-2024\n"
 "Language-Team: Hebrew (http://app.transifex.com/xfce/xfdesktop/language/he/)\n"
@@ -27,42 +27,49 @@ msgstr ""
 "Language: he\n"
 "Plural-Forms: nplurals=3; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: 2;\n"
 
-#: settings/main.c:433 src/xfdesktop-special-file-icon.c:232
-#: src/xfdesktop-special-file-icon.c:270
-msgid "Home"
-msgstr "בית"
+#: settings/main.c:99
+msgid "Settings manager socket"
+msgstr "Settings manager socket"
 
-#: settings/main.c:435 src/xfdesktop-special-file-icon.c:234
-#: src/xfdesktop-special-file-icon.c:268
-msgid "File System"
-msgstr "מערכת קבצים"
+#: settings/main.c:99
+msgid "SOCKET ID"
+msgstr "SOCKET ID"
 
-#: settings/main.c:437 src/xfdesktop-special-file-icon.c:236
-msgid "Trash"
-msgstr "אשפה"
+#: settings/main.c:101
+msgid "Version information"
+msgstr "Version information"
 
-#: settings/main.c:439
-msgid "Devices"
-msgstr "התקנים"
+#: settings/main.c:102 src/xfdesktop-application.c:286
+msgid "Enable debug messages"
+msgstr "Enable debug messages"
 
-#: settings/main.c:441
-msgid "Network Shares"
-msgstr "שיתופי רשת"
+#: settings/main.c:120
+#, c-format
+msgid "Type '%s --help' for usage."
+msgstr "Type '%s --help' for usage."
 
-#: settings/main.c:443
-msgid "Removable Disks and Drives"
-msgstr ""
+#: settings/main.c:132
+msgid "The Xfce development team. All rights reserved."
+msgstr "The Xfce development team. All rights reserved."
 
-#: settings/main.c:445
-msgid "Fixed Disks and Drives"
-msgstr ""
+#: settings/main.c:133
+#, c-format
+msgid "Please report bugs to <%s>."
+msgstr "Please report bugs to <%s>."
 
-#: settings/main.c:447
-msgid "Other Devices"
-msgstr "התקנים אחרים"
+#: settings/main.c:139
+msgid "Desktop Settings"
+msgstr "הגדרות שולחן עבודה"
 
-#. Display the file name, file type, and file size in the tooltip.
-#: settings/main.c:561
+#: settings/main.c:141
+msgid "Unable to contact settings server"
+msgstr "לא מסוגל ליצור קשר עם שרת הגדרות"
+
+#: settings/main.c:143
+msgid "Quit"
+msgstr "הפסק"
+
+#: settings/xfdesktop-background-settings.c:356
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -70,93 +77,138 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nטיפוס: %s\nגודל: %s"
 
-#: settings/main.c:796
+#: settings/xfdesktop-background-settings.c:588
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "טפט עבור צג %d (%s)"
 
-#: settings/main.c:799
+#: settings/xfdesktop-background-settings.c:592
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "טפט עבור צג %d"
 
-#: settings/main.c:805
+#: settings/xfdesktop-background-settings.c:598
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "הזז את דו שיח זה לתצוגה אשר את הגדרותיה ברצונך לערוך."
 
-#: settings/main.c:812
+#: settings/xfdesktop-background-settings.c:604
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "טפט עבור %s על צג %d (%s)"
 
-#: settings/main.c:816
+#: settings/xfdesktop-background-settings.c:609
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "טפט עבור %s על צג %d"
 
-#: settings/main.c:823
+#: settings/xfdesktop-background-settings.c:617
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr "הזז את דו שיח זה לתצוגה ולמשטח עבודה אשר את הגדרותיהם ברצונך לערוך."
 
 #. Single monitor and single workspace
-#: settings/main.c:831
+#: settings/xfdesktop-background-settings.c:625
 msgid "Wallpaper for my desktop"
 msgstr "טפט שולחן עבודה"
 
 #. Single monitor and per workspace wallpaper
-#: settings/main.c:837
+#: settings/xfdesktop-background-settings.c:631
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "טפט עבור %s"
 
-#: settings/main.c:842
+#: settings/xfdesktop-background-settings.c:636
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "הזז את דו שיח זה למשטח עבודה אשר את הגדרותיו ברצונך לערוך."
 
-#: settings/main.c:1297
+#: settings/xfdesktop-background-settings.c:951
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "מבחר תמונה אינו זמין בעת שסגנון תמונה הינו קבוע לשום דבר."
 
-#: settings/main.c:1656
+#: settings/xfdesktop-background-settings.c:1331
 msgid "Spanning screens"
 msgstr "פריסה על פני כל המסכים"
 
+#: settings/xfdesktop-background-settings.c:1720
+msgid "Image files"
+msgstr "קבצי תמונה"
+
+#. Change the title of the file chooser dialog
+#: settings/xfdesktop-background-settings.c:1728
+msgid "Select a Directory"
+msgstr "בחירת ספרייה"
+
+#: settings/xfdesktop-file-icon-settings.c:94
+#: src/xfdesktop-special-file-icon.c:232 src/xfdesktop-special-file-icon.c:270
+msgid "Home"
+msgstr "בית"
+
+#: settings/xfdesktop-file-icon-settings.c:96
+#: src/xfdesktop-special-file-icon.c:234 src/xfdesktop-special-file-icon.c:268
+msgid "File System"
+msgstr "מערכת קבצים"
+
+#: settings/xfdesktop-file-icon-settings.c:98
+#: src/xfdesktop-special-file-icon.c:236
+msgid "Trash"
+msgstr "אשפה"
+
+#: settings/xfdesktop-file-icon-settings.c:100
+msgid "Devices"
+msgstr "התקנים"
+
+#: settings/xfdesktop-file-icon-settings.c:102
+msgid "Network Shares"
+msgstr "שיתופי רשת"
+
+#: settings/xfdesktop-file-icon-settings.c:104
+msgid "Removable Disks and Drives"
+msgstr ""
+
+#: settings/xfdesktop-file-icon-settings.c:106
+msgid "Fixed Disks and Drives"
+msgstr ""
+
+#: settings/xfdesktop-file-icon-settings.c:108
+msgid "Other Devices"
+msgstr "התקנים אחרים"
+
 #. TRANSLATORS: Please split the message in half with '\n' so the dialog will
 #. not be too wide.
-#: settings/main.c:1963
+#: settings/xfdesktop-icon-settings.c:90
 msgid ""
 "Would you like to arrange all existing\n"
 "icons according to the selected orientation?"
 msgstr "האם ברצונך לסדר את כל האייקונים\nהקיימים לפי האוריינטציה הנבחרת?"
 
-#: settings/main.c:1969
+#: settings/xfdesktop-icon-settings.c:94
 msgid "Arrange icons"
 msgstr "סדר אייקונים"
 
 #. printf is to be translator-friendly
-#: settings/main.c:1977 src/xfdesktop-file-icon-manager.c:798
-#: src/xfdesktop-file-icon-manager.c:1361
+#: settings/xfdesktop-icon-settings.c:98 src/xfdesktop-file-icon-manager.c:783
+#: src/xfdesktop-file-icon-manager.c:1348
 #, c-format
 msgid "Unable to launch \"%s\":"
 msgstr "אין אפשרות לשגר \"%s\":"
 
-#: settings/main.c:1978 src/xfdesktop-file-icon-manager.c:800
-#: src/xfdesktop-file-icon-manager.c:1042
-#: src/xfdesktop-file-icon-manager.c:1090
-#: src/xfdesktop-file-icon-manager.c:1363 src/xfdesktop-file-utils.c:567
+#: settings/xfdesktop-icon-settings.c:99 src/xfdesktop-file-icon-manager.c:785
+#: src/xfdesktop-file-icon-manager.c:1029
+#: src/xfdesktop-file-icon-manager.c:1077
+#: src/xfdesktop-file-icon-manager.c:1350 src/xfdesktop-file-utils.c:567
 #: src/xfdesktop-file-utils.c:1451 src/xfdesktop-file-utils.c:1476
 #: src/xfdesktop-file-utils.c:1583 src/xfdesktop-file-utils.c:1647
 msgid "Launch Error"
 msgstr "שגיאת שיגור"
 
-#: settings/main.c:1980 settings/xfdesktop-settings-ui.glade:198
-#: src/xfdesktop-file-icon-manager.c:736 src/xfdesktop-file-icon-manager.c:802
-#: src/xfdesktop-file-icon-manager.c:1046
-#: src/xfdesktop-file-icon-manager.c:1094
-#: src/xfdesktop-file-icon-manager.c:1365
-#: src/xfdesktop-file-icon-manager.c:3671 src/xfdesktop-file-utils.c:570
+#: settings/xfdesktop-icon-settings.c:101
+#: settings/xfdesktop-settings-ui.glade:198
+#: src/xfdesktop-file-icon-manager.c:721 src/xfdesktop-file-icon-manager.c:787
+#: src/xfdesktop-file-icon-manager.c:1033
+#: src/xfdesktop-file-icon-manager.c:1081
+#: src/xfdesktop-file-icon-manager.c:1352
+#: src/xfdesktop-file-icon-manager.c:3674 src/xfdesktop-file-utils.c:570
 #: src/xfdesktop-file-utils.c:688 src/xfdesktop-file-utils.c:743
 #: src/xfdesktop-file-utils.c:807 src/xfdesktop-file-utils.c:868
 #: src/xfdesktop-file-utils.c:929 src/xfdesktop-file-utils.c:977
@@ -170,73 +222,23 @@ msgstr "שגיאת שיגור"
 msgid "_Close"
 msgstr "_סגור"
 
-#: settings/main.c:1994 settings/xfce-backdrop-settings.desktop.in:4
-#: settings/xfdesktop-settings-ui.glade:162 src/xfce-desktop.c:543
+#: settings/xfdesktop-keyboard-shortcuts-settings.c:42
+#: settings/xfce-backdrop-settings.desktop.in:4
+#: settings/xfdesktop-settings-ui.glade:162 src/xfce-desktop.c:557
 msgid "Desktop"
 msgstr "שולחן עבודה"
 
-#: settings/main.c:2004
+#: settings/xfdesktop-keyboard-shortcuts-settings.c:52
 msgid "Icons"
 msgstr "סמלים"
 
-#: settings/main.c:2013
+#: settings/xfdesktop-keyboard-shortcuts-settings.c:61
 msgid "Window Icons"
 msgstr ""
 
-#: settings/main.c:2023
+#: settings/xfdesktop-keyboard-shortcuts-settings.c:71
 msgid "File Icons"
 msgstr ""
-
-#: settings/main.c:2239
-msgid "Image files"
-msgstr "קבצי תמונה"
-
-#. Change the title of the file chooser dialog
-#: settings/main.c:2247
-msgid "Select a Directory"
-msgstr "בחירת ספרייה"
-
-#: settings/main.c:2483
-msgid "Settings manager socket"
-msgstr "Settings manager socket"
-
-#: settings/main.c:2483
-msgid "SOCKET ID"
-msgstr "SOCKET ID"
-
-#: settings/main.c:2484
-msgid "Version information"
-msgstr "Version information"
-
-#: settings/main.c:2485 src/xfdesktop-application.c:286
-msgid "Enable debug messages"
-msgstr "Enable debug messages"
-
-#: settings/main.c:2509
-#, c-format
-msgid "Type '%s --help' for usage."
-msgstr "Type '%s --help' for usage."
-
-#: settings/main.c:2521
-msgid "The Xfce development team. All rights reserved."
-msgstr "The Xfce development team. All rights reserved."
-
-#: settings/main.c:2522
-#, c-format
-msgid "Please report bugs to <%s>."
-msgstr "Please report bugs to <%s>."
-
-#: settings/main.c:2529
-msgid "Desktop Settings"
-msgstr "הגדרות שולחן עבודה"
-
-#: settings/main.c:2531
-msgid "Unable to contact settings server"
-msgstr "לא מסוגל ליצור קשר עם שרת הגדרות"
-
-#: settings/main.c:2533
-msgid "Quit"
-msgstr "הפסק"
 
 #: settings/xfce-backdrop-settings.desktop.in:5
 msgid "Set desktop background and menu and icon behavior"
@@ -542,111 +544,115 @@ msgstr "<b>תפריט רשימת חלונות</b>"
 msgid "_Menus"
 msgstr "ת_פריטים"
 
-#: settings/xfdesktop-settings-ui.glade:771
-msgid "Icon _Type"
-msgstr "_סוג איקון"
+#: settings/xfdesktop-settings-ui.glade:753
+msgid "Icon _type:"
+msgstr "_גודל סמל:"
 
-#: settings/xfdesktop-settings-ui.glade:807
+#: settings/xfdesktop-settings-ui.glade:813
 msgid "Icon _size:"
 msgstr "_גודל סמל:"
 
-#: settings/xfdesktop-settings-ui.glade:823
+#: settings/xfdesktop-settings-ui.glade:829
 msgid "48"
 msgstr "48"
 
-#: settings/xfdesktop-settings-ui.glade:837
-msgid "Icons _orientation:"
-msgstr "_אוריינטצית איקונים:"
+#: settings/xfdesktop-settings-ui.glade:840
+msgid "_Font size:"
+msgstr ""
 
-#: settings/xfdesktop-settings-ui.glade:868
-msgid "Show icons on primary display"
-msgstr "הצג איקונים במסך הראשי"
-
-#: settings/xfdesktop-settings-ui.glade:881
-msgid "Use custom _font size:"
-msgstr "_השתמש בגודל גופן מותאם:"
-
-#: settings/xfdesktop-settings-ui.glade:901
+#: settings/xfdesktop-settings-ui.glade:860
 msgid "12"
 msgstr "12"
 
-#: settings/xfdesktop-settings-ui.glade:912
-msgid "Show icon tooltips. Size:"
-msgstr "הצג תיבות צצות של סמל. גודל:"
+#: settings/xfdesktop-settings-ui.glade:871
+msgid "Show icon toolt_ips. Size:"
+msgstr ""
 
-#: settings/xfdesktop-settings-ui.glade:931
+#: settings/xfdesktop-settings-ui.glade:890
 msgid "Size of the tooltip preview image."
 msgstr "גודל של תיבה צצה של תצוגה מקדימה לתמונה."
 
-#: settings/xfdesktop-settings-ui.glade:933
+#: settings/xfdesktop-settings-ui.glade:892
 msgid "64"
 msgstr "64"
 
-#: settings/xfdesktop-settings-ui.glade:944
-msgid "Single _click to activate items"
-msgstr "אפשר לחיצה _בודדת כדי להפעיל פריטים"
-
-#: settings/xfdesktop-settings-ui.glade:959
-msgid "_Underline text on hover"
-msgstr "סמן טקסט בקו _תחתון בעת ריחוף עכבר"
-
-#: settings/xfdesktop-settings-ui.glade:974
-msgid "Show confirmation dialog before arranging icons"
+#: settings/xfdesktop-settings-ui.glade:903
+msgid "Font co_lor:"
 msgstr ""
 
-#: settings/xfdesktop-settings-ui.glade:990
-msgid "Use custom font co_lor:"
+#: settings/xfdesktop-settings-ui.glade:941
+msgid "Label bac_kground color:"
 msgstr ""
 
-#: settings/xfdesktop-settings-ui.glade:1028
-msgid "Use custom label bac_kground color:"
-msgstr ""
-
-#: settings/xfdesktop-settings-ui.glade:1107
+#: settings/xfdesktop-settings-ui.glade:984
 msgid "<b>Appearance</b>"
 msgstr "<b>מראה</b>"
 
-#: settings/xfdesktop-settings-ui.glade:1128
+#: settings/xfdesktop-settings-ui.glade:1019
+msgid "Icon placement _orientation:"
+msgstr ""
+
+#: settings/xfdesktop-settings-ui.glade:1059
+msgid "Show icons on _primary display"
+msgstr ""
+
+#: settings/xfdesktop-settings-ui.glade:1074
+msgid "Single _click to activate items"
+msgstr "אפשר לחיצה _בודדת כדי להפעיל פריטים"
+
+#: settings/xfdesktop-settings-ui.glade:1090
+msgid "_Underline text on hover"
+msgstr "סמן טקסט בקו _תחתון בעת ריחוף עכבר"
+
+#: settings/xfdesktop-settings-ui.glade:1106
+msgid "Show confirmation dialog before arran_ging icons"
+msgstr ""
+
+#: settings/xfdesktop-settings-ui.glade:1127
+msgid "Behavior"
+msgstr "התנהגות"
+
+#: settings/xfdesktop-settings-ui.glade:1150
 msgid "Desktop _Icons"
 msgstr "_איקונים שולחן עבודה"
 
-#: settings/xfdesktop-settings-ui.glade:1182
+#: settings/xfdesktop-settings-ui.glade:1204
 msgid ""
 "File/Launcher icons are not enabled. You can enable them from the \"Desktop "
 "Icons\" tab."
 msgstr "איקונים קובץ/מפעיל לא פעילים. אתה יכול להפעיל אותם מלשונית \"איקונים שולחן עבודה\"."
 
-#: settings/xfdesktop-settings-ui.glade:1228
+#: settings/xfdesktop-settings-ui.glade:1250
 msgid "Show hidden files on the desktop"
 msgstr "הצג קבצים נסתרים בשולחן עבודה"
 
-#: settings/xfdesktop-settings-ui.glade:1244
+#: settings/xfdesktop-settings-ui.glade:1266
 msgid "Show t_humbnails"
 msgstr "הצג תמונות ממו_זערות"
 
-#: settings/xfdesktop-settings-ui.glade:1249
+#: settings/xfdesktop-settings-ui.glade:1271
 msgid ""
 "Select this option to display preview-able files on the desktop as "
 "automatically generated thumbnail icons."
 msgstr "בחרו את אפשרות זו כדי להציג קבצים עם תצוגה מקדימה על שולחן עבודה בתור סמלי תמונות מוקטנות מופקות אוטומטית."
 
-#: settings/xfdesktop-settings-ui.glade:1261
+#: settings/xfdesktop-settings-ui.glade:1283
 msgid "Show \"Delete\" option in file context menu"
 msgstr "הצג אפשרות \"מחיקה\" בתפריט הקשר קובץ"
 
-#: settings/xfdesktop-settings-ui.glade:1282
+#: settings/xfdesktop-settings-ui.glade:1304
 msgid "General"
 msgstr "כללי"
 
-#: settings/xfdesktop-settings-ui.glade:1326
+#: settings/xfdesktop-settings-ui.glade:1348
 msgid "Default Icons"
 msgstr "איקונים ברירת מחדל"
 
-#: settings/xfdesktop-settings-ui.glade:1356
+#: settings/xfdesktop-settings-ui.glade:1378
 msgid "_File/Launcher Icons"
 msgstr "איקונים _קובץ/מפעיל"
 
-#: settings/xfdesktop-settings-ui.glade:1382
+#: settings/xfdesktop-settings-ui.glade:1404
 msgid "_Keyboard Shortcuts"
 msgstr ""
 
@@ -694,237 +700,240 @@ msgstr "Do not wait for a window manager on startup"
 msgid "Cause xfdesktop to quit"
 msgstr "Cause xfdesktop to quit"
 
-#: src/xfdesktop-application.c:1183
+#: src/xfdesktop-application.c:1195
 #, c-format
 msgid "This is %s version %s, running on Xfce %s.\n"
 msgstr "This is %s version %s, running on Xfce %s.\n"
 
-#: src/xfdesktop-application.c:1185
+#: src/xfdesktop-application.c:1197
 #, c-format
 msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 msgstr "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
 
-#: src/xfdesktop-application.c:1189
+#: src/xfdesktop-application.c:1201
 msgid "Build options:\n"
 msgstr "Build options:\n"
 
-#: src/xfdesktop-application.c:1190
+#: src/xfdesktop-application.c:1202
 #, c-format
 msgid "    Desktop Menu:        %s\n"
 msgstr "    Desktop Menu:        %s\n"
 
-#: src/xfdesktop-application.c:1192 src/xfdesktop-application.c:1199
-#: src/xfdesktop-application.c:1206
+#: src/xfdesktop-application.c:1204 src/xfdesktop-application.c:1211
+#: src/xfdesktop-application.c:1218
 msgid "enabled"
 msgstr "enabled"
 
-#: src/xfdesktop-application.c:1194 src/xfdesktop-application.c:1201
-#: src/xfdesktop-application.c:1208
+#: src/xfdesktop-application.c:1206 src/xfdesktop-application.c:1213
+#: src/xfdesktop-application.c:1220
 msgid "disabled"
 msgstr "disabled"
 
-#: src/xfdesktop-application.c:1197
+#: src/xfdesktop-application.c:1209
 #, c-format
 msgid "    Desktop Icons:       %s\n"
 msgstr "    Desktop Icons:       %s\n"
 
-#: src/xfdesktop-application.c:1204
+#: src/xfdesktop-application.c:1216
 #, c-format
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Desktop File Icons:  %s\n"
 
-#: src/xfdesktop-file-icon-manager.c:733 src/xfdesktop-file-utils.c:739
+#: src/xfdesktop-file-icon-manager.c:718 src/xfdesktop-file-utils.c:739
 #: src/xfdesktop-file-utils.c:803
 msgid "Rename Error"
 msgstr "שגיאת שינוי שם"
 
-#: src/xfdesktop-file-icon-manager.c:734 src/xfdesktop-file-utils.c:804
+#: src/xfdesktop-file-icon-manager.c:719 src/xfdesktop-file-utils.c:804
 msgid "The files could not be renamed"
 msgstr "לא ניתן לשנות את שמות הקבצים"
 
-#: src/xfdesktop-file-icon-manager.c:735
+#: src/xfdesktop-file-icon-manager.c:720
 msgid "None of the icons selected support being renamed."
 msgstr "אף אחד מן הסמלים שנבחרו תומך בשינוי שמו."
 
-#: src/xfdesktop-file-icon-manager.c:991
+#: src/xfdesktop-file-icon-manager.c:978
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "_פתח בעזרת \"%s\""
 
-#: src/xfdesktop-file-icon-manager.c:994
+#: src/xfdesktop-file-icon-manager.c:981
 #, c-format
 msgid "Open With \"%s\""
 msgstr "פתח בעזרת \"%s\""
 
-#: src/xfdesktop-file-icon-manager.c:1044
-#: src/xfdesktop-file-icon-manager.c:1092
+#: src/xfdesktop-file-icon-manager.c:1031
+#: src/xfdesktop-file-icon-manager.c:1079
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr "איו אפשרות להפעיל את \"exo-desktop-item-edit\", אשר נחוץ כדי ליצור ולערוך משגרים וקיצורי דרך על השולחן עבודה."
 
-#: src/xfdesktop-file-icon-manager.c:1466
+#: src/xfdesktop-file-icon-manager.c:1453
 #, c-format
 msgid ""
 "Would you like to assign an existing desktop icon layout to monitor "
 "<b>%s</b>?"
 msgstr ""
 
-#: src/xfdesktop-file-icon-manager.c:1474
+#: src/xfdesktop-file-icon-manager.c:1461
 msgid "Monitors"
 msgstr ""
 
-#: src/xfdesktop-file-icon-manager.c:1742
+#: src/xfdesktop-file-icon-manager.c:1747
 msgid "_Open all"
 msgstr "_פתח הכל"
 
-#: src/xfdesktop-file-icon-manager.c:1754
+#: src/xfdesktop-file-icon-manager.c:1759
 msgid "Create _Launcher..."
 msgstr "צור _משגר..."
 
-#: src/xfdesktop-file-icon-manager.c:1764
+#: src/xfdesktop-file-icon-manager.c:1769
 msgid "Create _URL Link..."
 msgstr "צור _קישור URL..."
 
-#: src/xfdesktop-file-icon-manager.c:1774
+#: src/xfdesktop-file-icon-manager.c:1779
 msgid "Create _Folder..."
 msgstr "צור _תיקייה..."
 
-#: src/xfdesktop-file-icon-manager.c:1784
+#: src/xfdesktop-file-icon-manager.c:1789
 msgid "Create _Document"
 msgstr "צור _מסמך"
 
-#: src/xfdesktop-file-icon-manager.c:1815
+#: src/xfdesktop-file-icon-manager.c:1820
 msgid "No templates installed"
 msgstr "אין תבניות מותקנות"
 
-#: src/xfdesktop-file-icon-manager.c:1833
+#: src/xfdesktop-file-icon-manager.c:1838
 msgid "_Empty File"
 msgstr "קובץ _ריק"
 
-#: src/xfdesktop-file-icon-manager.c:1843
+#: src/xfdesktop-file-icon-manager.c:1848
 msgid "_Open All"
 msgstr "_פתח הכל"
 
-#: src/xfdesktop-file-icon-manager.c:1843
+#: src/xfdesktop-file-icon-manager.c:1848
 #: src/xfdesktop-special-file-icon.c:335 src/xfdesktop-volume-icon.c:756
 msgid "_Open"
 msgstr "_פתח"
 
-#: src/xfdesktop-file-icon-manager.c:1856
+#: src/xfdesktop-file-icon-manager.c:1861
 msgid "_Execute"
 msgstr "_הפעל"
 
-#: src/xfdesktop-file-icon-manager.c:1869
+#: src/xfdesktop-file-icon-manager.c:1874
 msgid "Edit _Launcher"
 msgstr "ערוך _מפעיל"
 
-#: src/xfdesktop-file-icon-manager.c:1917
+#: src/xfdesktop-file-icon-manager.c:1922
 msgid "Ope_n With"
 msgstr "פת_ח בעזרת"
 
-#: src/xfdesktop-file-icon-manager.c:1945
-#: src/xfdesktop-file-icon-manager.c:1962
+#: src/xfdesktop-file-icon-manager.c:1950
+#: src/xfdesktop-file-icon-manager.c:1967
 msgid "Ope_n With Other Application..."
 msgstr "פת_ח בעזרת יישום אחר..."
 
-#: src/xfdesktop-file-icon-manager.c:1953
+#: src/xfdesktop-file-icon-manager.c:1958
 msgid "Set Defa_ult Application..."
 msgstr "קבע ישום _ברירת מחדל..."
 
-#: src/xfdesktop-file-icon-manager.c:1976
+#: src/xfdesktop-file-icon-manager.c:1981
 msgid "_Paste"
 msgstr "_הדבק"
 
-#: src/xfdesktop-file-icon-manager.c:1989
+#: src/xfdesktop-file-icon-manager.c:1994
 msgid "Cu_t"
 msgstr "גזו_ר"
 
-#: src/xfdesktop-file-icon-manager.c:1997
+#: src/xfdesktop-file-icon-manager.c:2002
 msgid "_Copy"
 msgstr "_העתק"
 
-#: src/xfdesktop-file-icon-manager.c:2009
+#: src/xfdesktop-file-icon-manager.c:2014
 msgid "Paste Into Folder"
 msgstr "הדבק לתוך תיקייה"
 
-#: src/xfdesktop-file-icon-manager.c:2020
+#: src/xfdesktop-file-icon-manager.c:2025
 msgid "Mo_ve to Trash"
 msgstr "הע_בר לאשפה"
 
-#: src/xfdesktop-file-icon-manager.c:2029
+#: src/xfdesktop-file-icon-manager.c:2034
 msgid "_Delete"
 msgstr "_מחק"
 
-#: src/xfdesktop-file-icon-manager.c:2040
+#: src/xfdesktop-file-icon-manager.c:2045
 msgid "_Rename..."
 msgstr "_שנה שם..."
 
-#: src/xfdesktop-file-icon-manager.c:2091
+#: src/xfdesktop-file-icon-manager.c:2096
 msgid "_Open in New Window"
 msgstr "_פתח בחלון חדש"
 
-#: src/xfdesktop-file-icon-manager.c:2098
+#: src/xfdesktop-file-icon-manager.c:2103
+#: src/xfdesktop-window-icon-manager.c:308
 msgid "Arrange Desktop _Icons"
 msgstr "_סדר סמלי שולחן עבודה"
 
-#: src/xfdesktop-file-icon-manager.c:2124
+#: src/xfdesktop-file-icon-manager.c:2118
+#: src/xfdesktop-window-icon-manager.c:322
 msgid "_Next Background"
 msgstr "הרקע _הבא"
 
-#: src/xfdesktop-file-icon-manager.c:2134
+#: src/xfdesktop-file-icon-manager.c:2128
+#: src/xfdesktop-window-icon-manager.c:335
 msgid "Desktop _Settings..."
 msgstr "הגדרות שולחן עבודה..."
 
-#: src/xfdesktop-file-icon-manager.c:2141 src/xfdesktop-volume-icon.c:818
+#: src/xfdesktop-file-icon-manager.c:2135 src/xfdesktop-volume-icon.c:818
 msgid "_Properties..."
 msgstr "מאפיינים..."
 
-#: src/xfdesktop-file-icon-manager.c:3113
+#: src/xfdesktop-file-icon-manager.c:3116
 #, c-format
 msgid "Failed to save dropped file to '%s'"
 msgstr ""
 
-#: src/xfdesktop-file-icon-manager.c:3115
+#: src/xfdesktop-file-icon-manager.c:3118
 msgid "Drop Failure"
 msgstr ""
 
-#: src/xfdesktop-file-icon-manager.c:3119
-#: src/xfdesktop-icon-view-manager.c:457
+#: src/xfdesktop-file-icon-manager.c:3122
+#: src/xfdesktop-icon-view-manager.c:492
 msgid "_OK"
 msgstr "_אישור"
 
-#: src/xfdesktop-file-icon-manager.c:3524
+#: src/xfdesktop-file-icon-manager.c:3527
 msgid "Copy _Here"
 msgstr "העתק ל_כאן"
 
-#: src/xfdesktop-file-icon-manager.c:3525
+#: src/xfdesktop-file-icon-manager.c:3528
 msgid "_Move Here"
 msgstr "ה_עבר לכאן"
 
-#: src/xfdesktop-file-icon-manager.c:3526
+#: src/xfdesktop-file-icon-manager.c:3529
 msgid "_Link Here"
 msgstr "_קשר לכאן"
 
-#: src/xfdesktop-file-icon-manager.c:3551 src/xfdesktop-file-utils.c:1138
-#: src/xfdesktop-icon-view-manager.c:456
+#: src/xfdesktop-file-icon-manager.c:3554 src/xfdesktop-file-utils.c:1138
+#: src/xfdesktop-icon-view-manager.c:491
 msgid "_Cancel"
 msgstr "_בטל"
 
-#: src/xfdesktop-file-icon-manager.c:3644
+#: src/xfdesktop-file-icon-manager.c:3647
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
 msgstr "לא היתה אפשרות ליצור תיקיית שולחן עבודה \"%s\""
 
-#: src/xfdesktop-file-icon-manager.c:3652
+#: src/xfdesktop-file-icon-manager.c:3655
 msgid "Failed to load the desktop folder"
 msgstr "נכשל לטעון תיקיית שולחן עבודה"
 
-#: src/xfdesktop-file-icon-manager.c:3661
+#: src/xfdesktop-file-icon-manager.c:3664
 msgid "A desktop file icon error occurred"
 msgstr ""
 
-#: src/xfdesktop-file-icon-manager.c:3665
+#: src/xfdesktop-file-icon-manager.c:3668
 msgid "Desktop Folder Error"
 msgstr "שגיאת תיקיית שולחן עבודה"
 
@@ -1100,17 +1109,17 @@ msgstr "שגיאת העברה"
 msgid "The file transfer could not be performed"
 msgstr "לא היתה אפשרות לבצע העברת קובץ"
 
-#: src/xfdesktop-icon-view-manager.c:453
+#: src/xfdesktop-icon-view-manager.c:488
 msgid "Arrange Icons"
 msgstr ""
 
-#: src/xfdesktop-icon-view-manager.c:473
+#: src/xfdesktop-icon-view-manager.c:508
 msgid ""
 "This will reorder all desktop items and place them on different screen positions.\n"
 "Are you sure?"
 msgstr "פעולה זו תארגן מחדש את כל הפריטים בשולחן העבודה ותמקם אותם באזורים שונים במסך.\nלהמשיך?"
 
-#: src/xfdesktop-icon-view-manager.c:477
+#: src/xfdesktop-icon-view-manager.c:512
 msgid "Do _not ask me again"
 msgstr "_אל תשאל אותי שוב"
 
@@ -1265,3 +1274,7 @@ msgstr "_חלץ כרך"
 #: src/xfdesktop-volume-icon.c:808
 msgid "_Mount Volume"
 msgstr "_עגן כרך"
+
+#: src/xfdesktop-window-icon-manager.c:296
+msgid "_Run Program..."
+msgstr ""
