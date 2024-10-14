@@ -93,6 +93,8 @@ struct _XfdesktopBackgroundSettings {
     GFile *selected_folder;
     GCancellable *cancel_enumeration;
     guint add_dir_idle_id;
+
+    guint last_image_signal_id;
 };
 
 typedef struct {
@@ -860,11 +862,11 @@ stop_image_loading(XfdesktopBackgroundSettings *background_settings) {
     }
 }
 
-static void
-cb_folder_selection_changed(GtkWidget *button, XfdesktopBackgroundSettings *background_settings) {
+static gboolean
+update_icon_view_model(XfdesktopBackgroundSettings *background_settings) {
     TRACE("entering");
 
-    gchar *new_folder = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(button));
+    gchar *new_folder = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(background_settings->btn_folder));
     gchar *previous_folder = NULL;
     if (background_settings->selected_folder != NULL) {
         previous_folder = g_file_get_path(background_settings->selected_folder);
@@ -883,7 +885,7 @@ cb_folder_selection_changed(GtkWidget *button, XfdesktopBackgroundSettings *back
             g_free(current_folder);
             g_free(new_folder);
             g_free(previous_folder);
-            return;
+            return FALSE;
         } else {
             g_free(new_folder);
             new_folder = current_folder;
@@ -912,6 +914,13 @@ cb_folder_selection_changed(GtkWidget *button, XfdesktopBackgroundSettings *back
 
     g_free(new_folder);
     g_free(previous_folder);
+
+    return TRUE;
+}
+
+static void
+cb_folder_selection_changed(GtkWidget *button, XfdesktopBackgroundSettings *background_settings) {
+    update_icon_view_model(background_settings);
 }
 
 static void
@@ -991,11 +1000,11 @@ cb_xfdesktop_combo_color_changed(GtkComboBox *combo, XfdesktopBackgroundSettings
     }
 }
 
-static void
+static gboolean
 xfdesktop_settings_update_iconview_folder(XfdesktopBackgroundSettings *background_settings) {
     /* If we haven't found our window return now and wait for that */
     if (background_settings->xfw_window == NULL) {
-        return;
+        return FALSE;
     }
 
     TRACE("entering");
@@ -1008,10 +1017,54 @@ xfdesktop_settings_update_iconview_folder(XfdesktopBackgroundSettings *backgroun
     gtk_file_chooser_set_current_folder((GtkFileChooser*)background_settings->btn_folder, dirname);
 
     /* Workaround for a bug in GTK */
-    cb_folder_selection_changed(background_settings->btn_folder, background_settings);
+    gboolean ret = update_icon_view_model(background_settings);
 
     g_free(current_folder);
     g_free(dirname);
+
+    return ret;
+}
+
+static void
+last_image_changed(XfconfChannel *channel,
+                   const gchar *property_name,
+                   const GValue *value,
+                   XfdesktopBackgroundSettings *background_settings)
+{
+    if (!xfdesktop_settings_update_iconview_folder(background_settings)) {
+        if (G_VALUE_HOLDS_STRING(value)) {
+            const gchar *cur_filename = g_value_get_string(value);
+            GtkTreeModel *model = gtk_icon_view_get_model(GTK_ICON_VIEW(background_settings->image_iconview));
+            if (model != NULL) {
+                GtkTreeIter iter;
+                if (gtk_tree_model_get_iter_first(model, &iter)) {
+                    do {
+                        gchar *filename;
+                        gtk_tree_model_get(model, &iter,
+                                           COL_FILENAME, &filename,
+                                           -1);
+                        gboolean matches = g_strcmp0(cur_filename, filename) == 0;
+                        g_free(filename);
+
+                        if (matches) {
+                            g_signal_handlers_block_by_func(background_settings->image_iconview,
+                                                            cb_image_selection_changed,
+                                                            background_settings);
+
+                            GtkTreePath *path = gtk_tree_model_get_path(model, &iter);
+                            gtk_icon_view_select_path(GTK_ICON_VIEW(background_settings->image_iconview), path);
+                            gtk_tree_path_free(path);
+
+                            g_signal_handlers_unblock_by_func(background_settings->image_iconview,
+                                                              cb_image_selection_changed,
+                                                              background_settings);
+                            break;
+                        }
+                    } while (gtk_tree_model_iter_next(model, &iter));
+                }
+            }
+        }
+    }
 }
 
 /* This function is to add or remove all the bindings for the background
@@ -1053,6 +1106,20 @@ xfdesktop_settings_background_tab_change_bindings(XfdesktopBackgroundSettings *b
                                G_OBJECT(background_settings->image_style_combo), "active");
         /* determine if the iconview is sensitive */
         cb_xfdesktop_combo_image_style_changed(GTK_COMBO_BOX(background_settings->image_style_combo), background_settings);
+    }
+    g_free(buf);
+
+    buf = xfdesktop_settings_generate_per_workspace_binding_string(background_settings, "last-image");
+    if (remove_binding) {
+        if (background_settings->last_image_signal_id != 0) {
+            g_signal_handler_disconnect(channel, background_settings->last_image_signal_id);
+            background_settings->last_image_signal_id = 0;
+        }
+    } else {
+        gchar *signal = g_strconcat("property-changed::", buf, NULL);
+        background_settings->last_image_signal_id = g_signal_connect(channel, signal,
+                                                                     G_CALLBACK(last_image_changed), background_settings);
+        g_free(signal);
     }
     g_free(buf);
 
@@ -1797,6 +1864,10 @@ void
 xfdesktop_background_settings_destroy(XfdesktopBackgroundSettings *background_settings) {
     GdkScreen *screen = gtk_widget_get_screen(background_settings->settings->settings_toplevel);
     g_signal_handlers_disconnect_by_data(screen, background_settings);
+    if (background_settings->last_image_signal_id != 0) {
+        g_signal_handler_disconnect(background_settings->settings->channel,
+                                    background_settings->last_image_signal_id);
+    }
     stop_image_loading(background_settings);
     g_free(background_settings->monitor_name);
     g_object_unref(background_settings->xfw_screen);
