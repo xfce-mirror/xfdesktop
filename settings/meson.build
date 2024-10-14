@@ -30,6 +30,11 @@ executable(
   'xfdesktop-settings',
   [
     'main.c',
+    'xfdesktop-background-settings.c',
+    'xfdesktop-file-icon-settings.c',
+    'xfdesktop-icon-settings.c',
+    'xfdesktop-keyboard-shortcuts-settings.c',
+    'xfdesktop-menu-settings.c',
     settings_generated_sources,
     xfce_revision_h,
   ],
@@ -49,7 +54,6 @@ executable(
     libxfce4kbd_private,
     libxfce4windowing,
     xfconf,
-    exo,
   ],
   link_with: [
     libxfdesktop,

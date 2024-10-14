@@ -72,6 +72,9 @@
 #define SINGLE_WORKSPACE_MODE     "/backdrop/single-workspace-mode"
 #define SINGLE_WORKSPACE_NUMBER   "/backdrop/single-workspace-number"
 
+#define DESKTOP_MENU_SHOW_PROP "/desktop-menu/show"
+#define DESKTOP_MENU_SHOW_ICONS_PROP "/desktop-menu/show-icons"
+
 #define WINLIST_SHOW_WINDOWS_MENU_PROP "/windowlist-menu/show"
 #define WINLIST_SHOW_APP_ICONS_PROP "/windowlist-menu/show-icons"
 #define WINLIST_SHOW_STICKY_WIN_ONCE_PROP "/windowlist-menu/show-sticky-once"
@@ -221,8 +224,6 @@ gboolean xfdesktop_workspace_get_number_and_total(XfwWorkspaceManager *workspace
                                                   gint *total_workspace_count);
 
 GtkWindow * xfdesktop_find_toplevel(GtkWidget *widget);
-
-void xfdesktop_tree_path_free(gpointer data);
 
 void xfdesktop_widget_unrealize(GtkWidget *widget,
                                 gpointer data);
