@@ -28,9 +28,10 @@
 #include <libxfce4ui/libxfce4ui.h>
 #include <xfconf/xfconf.h>
 
+#include "common/xfdesktop-common.h"
 #include "common/xfdesktop-keyboard-shortcuts.h"
 #include "xfce-desktop.h"
-#include "xfdesktop-common.h"
+#include "xfdesktop-backdrop-manager.h"
 #include "xfdesktop-icon-view-manager.h"
 
 #define XFDESKTOP_ICON_VIEW_MANAGER_GET_PRIVATE(manager) ((XfdesktopIconViewManagerPrivate *)xfdesktop_icon_view_manager_get_instance_private(XFDESKTOP_ICON_VIEW_MANAGER(manager)))
@@ -40,9 +41,11 @@ typedef struct _XfdesktopIconViewManagerPrivate
     XfwScreen *screen;
     GList *desktops;
     XfconfChannel *channel;
+    XfdesktopBackdropManager *backdrop_manager;
     GtkAccelGroup *accel_group;
 
     gboolean icons_on_primary;
+    gboolean confirm_sorting;
 } XfdesktopIconViewManagerPrivate;
 
 enum {
@@ -50,8 +53,10 @@ enum {
     PROP_SCREEN,
     PROP_DESKTOPS,
     PROP_CHANNEL,
+    PROP_BACKDROP_MANAGER,
     PROP_ACCEL_GROUP,
     PROP_ICON_ON_PRIMARY,
+    PROP_CONFIRM_SORTING,
 };
 
 static void xfdesktop_icon_view_manager_constructed(GObject *obj);
@@ -77,6 +82,7 @@ static const struct {
     const gchar *property;
 } setting_bindings[] = {
     { DESKTOP_ICONS_ON_PRIMARY_PROP, G_TYPE_BOOLEAN, "icons-on-primary" },
+    { DESKTOP_ICONS_CONFIRM_SORTING_PROP, G_TYPE_BOOLEAN, "confirm-sorting" },
 };
 
 
@@ -120,6 +126,14 @@ xfdesktop_icon_view_manager_class_init(XfdesktopIconViewManagerClass *klass)
                                                         PARAM_FLAGS | G_PARAM_CONSTRUCT_ONLY));
 
     g_object_class_install_property(gobject_class,
+                                    PROP_BACKDROP_MANAGER,
+                                    g_param_spec_object("backdrop-manager",
+                                                        "backdrop-manager",
+                                                        "backdrop manager",
+                                                        XFDESKTOP_TYPE_BACKDROP_MANAGER,
+                                                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS));
+
+    g_object_class_install_property(gobject_class,
                                     PROP_ACCEL_GROUP,
                                     g_param_spec_object("accel-group",
                                                         "accel-group",
@@ -134,6 +148,13 @@ xfdesktop_icon_view_manager_class_init(XfdesktopIconViewManagerClass *klass)
                                                          DEFAULT_ICONS_ON_PRIMARY,
                                                          PARAM_FLAGS));
 
+    g_object_class_install_property(gobject_class, PROP_CONFIRM_SORTING,
+                                    g_param_spec_boolean("confirm-sorting",
+                                                         "confirm-sorting",
+                                                         "confirm-sorting",
+                                                         TRUE,
+                                                         PARAM_FLAGS));
+
 #undef PARAM_FLAGS
 }
 
@@ -142,6 +163,7 @@ xfdesktop_icon_view_manager_init(XfdesktopIconViewManager *manager)
 {
     XfdesktopIconViewManagerPrivate *priv = XFDESKTOP_ICON_VIEW_MANAGER_GET_PRIVATE(manager);
     priv->icons_on_primary = DEFAULT_ICONS_ON_PRIMARY;
+    priv->confirm_sorting = TRUE;
 }
 
 static void
@@ -191,6 +213,10 @@ xfdesktop_icon_view_manager_set_property(GObject *obj,
             priv->channel = g_value_dup_object(value);
             break;
 
+        case PROP_BACKDROP_MANAGER:
+            priv->backdrop_manager = g_value_dup_object(value);
+            break;
+
         case PROP_ACCEL_GROUP:
             priv->accel_group = g_value_dup_object(value);
             break;
@@ -198,6 +224,10 @@ xfdesktop_icon_view_manager_set_property(GObject *obj,
         case PROP_ICON_ON_PRIMARY:
             xfdesktop_icon_view_manager_set_show_icons_on_primary(manager,
                                                                   g_value_get_boolean(value));
+            break;
+
+        case PROP_CONFIRM_SORTING:
+            priv->confirm_sorting = g_value_get_boolean(value);
             break;
 
         default:
@@ -227,12 +257,20 @@ xfdesktop_icon_view_manager_get_property(GObject *obj,
             g_value_set_object(value, priv->channel);
             break;
 
+        case PROP_BACKDROP_MANAGER:
+            g_value_set_object(value, priv->backdrop_manager);
+            break;
+
         case PROP_ACCEL_GROUP:
             g_value_set_object(value, priv->accel_group);
             break;
 
         case PROP_ICON_ON_PRIMARY:
             g_value_set_boolean(value, priv->icons_on_primary);
+            break;
+
+        case PROP_CONFIRM_SORTING:
+            g_value_set_boolean(value, priv->confirm_sorting);
             break;
 
         default:
@@ -253,6 +291,7 @@ xfdesktop_icon_view_manager_finalize(GObject *obj)
     xfce_gtk_accel_group_disconnect_action_entries(priv->accel_group, actions, n_actions);
     g_object_unref(priv->accel_group);
 
+    g_object_unref(priv->backdrop_manager);
     g_object_unref(priv->channel);
     g_object_unref(priv->screen);
     g_list_free(priv->desktops);
@@ -297,7 +336,9 @@ icon_view_action_unselect_all(XfdesktopIconViewManager *manager) {
 
 static void
 icon_view_action_arrange_icons(XfdesktopIconViewManager *manager) {
-    XFDESKTOP_ICON_VIEW_MANAGER_GET_CLASS(manager)->sort_icons(manager, GTK_SORT_ASCENDING);
+    XFDESKTOP_ICON_VIEW_MANAGER_GET_CLASS(manager)->sort_icons(manager,
+                                                               GTK_SORT_ASCENDING,
+                                                               XFDESKTOP_ICON_VIEW_MANAGER_SORT_NONE);
 }
 
 static void
@@ -360,6 +401,12 @@ xfdesktop_icon_view_manager_get_channel(XfdesktopIconViewManager *manager)
     return XFDESKTOP_ICON_VIEW_MANAGER_GET_PRIVATE(manager)->channel;
 }
 
+XfdesktopBackdropManager *
+xfdesktop_icon_view_manager_get_backdrop_manager(XfdesktopIconViewManager *manager) {
+    g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW_MANAGER(manager), NULL);
+    return XFDESKTOP_ICON_VIEW_MANAGER_GET_PRIVATE(manager)->backdrop_manager;
+}
+
 GtkAccelGroup *
 xfdesktop_icon_view_manager_get_accel_group(XfdesktopIconViewManager *manager) {
     g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW_MANAGER(manager), NULL);
@@ -401,6 +448,12 @@ xfdesktop_icon_view_manager_desktop_removed(XfdesktopIconViewManager *manager, X
     g_object_notify(G_OBJECT(manager), "desktops");
 }
 
+XfceDesktop *
+xfdesktop_icon_view_manager_get_focused_desktop(XfdesktopIconViewManager *manager) {
+    g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW_MANAGER(manager), NULL);
+    return XFDESKTOP_ICON_VIEW_MANAGER_GET_CLASS(manager)->get_focused_desktop(manager);
+}
+
 GtkMenu *
 xfdesktop_icon_view_manager_get_context_menu(XfdesktopIconViewManager *manager,
                                              XfceDesktop *desktop,
@@ -421,7 +474,8 @@ xfdesktop_icon_view_manager_get_context_menu(XfdesktopIconViewManager *manager,
 
 void
 xfdesktop_icon_view_manager_sort_icons(XfdesktopIconViewManager *manager,
-                                       GtkSortType sort_type)
+                                       GtkSortType sort_type,
+                                       XfdesktopIconViewManagerSortFlags flags)
 {
     XfdesktopIconViewManagerClass *klass;
 
@@ -429,7 +483,57 @@ xfdesktop_icon_view_manager_sort_icons(XfdesktopIconViewManager *manager,
 
     klass = XFDESKTOP_ICON_VIEW_MANAGER_GET_CLASS(manager);
     if (klass->sort_icons != NULL) {
-        klass->sort_icons(manager, sort_type);
+        XfdesktopIconViewManagerPrivate *priv = XFDESKTOP_ICON_VIEW_MANAGER_GET_PRIVATE(manager);
+        if (priv->confirm_sorting) {
+            GtkWidget *dialog = gtk_dialog_new_with_buttons(_("Arrange Icons"),
+                                                            NULL,
+                                                            GTK_DIALOG_DESTROY_WITH_PARENT,
+                                                            _("_Cancel"), GTK_RESPONSE_CANCEL,
+                                                            _("_OK"), GTK_RESPONSE_ACCEPT,
+                                                            NULL);
+
+            GtkWidget *hbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 6);
+            gtk_container_add(GTK_CONTAINER(gtk_dialog_get_content_area(GTK_DIALOG(dialog))), hbox);
+
+            GIcon *icon = g_themed_icon_new("dialog-question");
+            GtkWidget *image = gtk_image_new_from_gicon(icon, GTK_ICON_SIZE_DIALOG);
+            g_object_set(image,
+                         "valign", GTK_ALIGN_START,
+                         NULL);
+            gtk_box_pack_start(GTK_BOX(hbox), image, FALSE, FALSE, 0);
+
+            GtkWidget *vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 6);
+            gtk_box_pack_start(GTK_BOX(hbox), vbox, TRUE, TRUE, 0);
+
+            const gchar *text = _("This will reorder all desktop items and place them on different screen positions.\nAre you sure?");
+            GtkWidget *label = gtk_label_new(text);
+            gtk_box_pack_start(GTK_BOX(vbox), label, FALSE, FALSE, 0);
+
+            GtkWidget *checkbox = gtk_check_button_new_with_mnemonic(_("Do _not ask me again"));
+            gtk_box_pack_start(GTK_BOX(vbox), checkbox, FALSE, FALSE, 0);
+
+            gtk_window_set_icon_name(GTK_WINDOW(dialog), "dialog-question");
+            gtk_window_set_resizable(GTK_WINDOW(dialog), FALSE);
+            gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_ACCEPT);
+            
+            /* remove focus outline on checkbox widget visible when sorting via command line and putting the cursor over the checkbox */
+            GtkWidget *button = gtk_dialog_get_widget_for_response(GTK_DIALOG(dialog), GTK_RESPONSE_ACCEPT);
+            gtk_widget_grab_focus(button);
+
+            gtk_widget_show_all(dialog);
+
+            if (gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_ACCEPT) {
+                priv->confirm_sorting = !gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(checkbox));
+                if (!priv->confirm_sorting) {
+                    xfconf_channel_set_bool(priv->channel, DESKTOP_ICONS_CONFIRM_SORTING_PROP, FALSE);
+                }
+                klass->sort_icons(manager, sort_type, flags);
+            }
+
+            gtk_widget_destroy(dialog);
+        } else {
+            klass->sort_icons(manager, sort_type, flags);
+        }
     }
 }
 

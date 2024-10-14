@@ -111,7 +111,6 @@ struct _XfdesktopFileIconManager
     XfdesktopIconPositionConfigs *position_configs;
 
     GdkScreen *gscreen;
-    XfdesktopBackdropManager *backdrop_manager;
 
     GFile *folder;
     XfdesktopFileIcon *desktop_icon;
@@ -140,7 +139,6 @@ struct _XfdesktopFileIconManager
 enum {
     PROP0 = 0,
     PROP_GDK_SCREEN,
-    PROP_BACKDROP_MANAGER,
     PROP_FOLDER,
     PROP_SHOW_DELETE_MENU,
     PROP_MAX_TEMPLATES,
@@ -266,6 +264,7 @@ static void xfdesktop_file_icon_manager_desktop_added(XfdesktopIconViewManager *
                                                       XfceDesktop *desktop);
 static void xfdesktop_file_icon_manager_desktop_removed(XfdesktopIconViewManager *manager,
                                                         XfceDesktop *desktop);
+static XfceDesktop *xfdesktop_file_icon_manager_get_focused_desktop(XfdesktopIconViewManager *manager);
 static GtkMenu *xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager,
                                                              XfceDesktop *desktop,
                                                              gint popup_x,
@@ -275,7 +274,8 @@ static void xfdesktop_file_icon_manager_toggle_cursor_icon(XfdesktopIconViewMana
 static void xfdesktop_file_icon_manager_select_all_icons(XfdesktopIconViewManager *manager);
 static void xfdesktop_file_icon_manager_unselect_all_icons(XfdesktopIconViewManager *manager);
 static void xfdesktop_file_icon_manager_sort_icons(XfdesktopIconViewManager *manager,
-                                                   GtkSortType sort_type);
+                                                   GtkSortType sort_type,
+                                                   XfdesktopIconViewManagerSortFlags flags);
 static void xfdesktop_file_icon_manager_reload(XfdesktopIconViewManager *manager);
 
 static void xfdesktop_file_icon_manager_icon_moved(XfdesktopIconView *icon_view,
@@ -371,6 +371,7 @@ xfdesktop_file_icon_manager_class_init(XfdesktopFileIconManagerClass *klass)
 
     ivm_class->desktop_added = xfdesktop_file_icon_manager_desktop_added;
     ivm_class->desktop_removed = xfdesktop_file_icon_manager_desktop_removed;
+    ivm_class->get_focused_desktop = xfdesktop_file_icon_manager_get_focused_desktop;
     ivm_class->get_context_menu = xfdesktop_file_icon_manager_get_context_menu;
     ivm_class->activate_icons = xfdesktop_file_icon_manager_activate_icons;
     ivm_class->toggle_cursor_icon = xfdesktop_file_icon_manager_toggle_cursor_icon;
@@ -385,14 +386,6 @@ xfdesktop_file_icon_manager_class_init(XfdesktopFileIconManagerClass *klass)
                                                         "gdk-screen",
                                                         "GdkScreen",
                                                         GDK_TYPE_SCREEN,
-                                                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS));
-
-    g_object_class_install_property(gobject_class,
-                                    PROP_BACKDROP_MANAGER,
-                                    g_param_spec_object("backdrop-manager",
-                                                        "backdrop-manager",
-                                                        "backdrop manager",
-                                                        XFDESKTOP_TYPE_BACKDROP_MANAGER,
                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS));
 
     g_object_class_install_property(gobject_class, PROP_FOLDER,
@@ -411,6 +404,7 @@ xfdesktop_file_icon_manager_class_init(XfdesktopFileIconManagerClass *klass)
                                                          "show-delete-menu",
                                                          TRUE,
                                                          G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
+
     g_object_class_install_property(gobject_class, PROP_MAX_TEMPLATES,
                                     g_param_spec_uint("max-templates",
                                                       "max-templates",
@@ -564,10 +558,6 @@ xfdesktop_file_icon_manager_set_property(GObject *object,
             fmanager->gscreen = g_value_get_object(value);
             break;
 
-        case PROP_BACKDROP_MANAGER:
-            fmanager->backdrop_manager = g_value_get_object(value);
-            break;
-
         case PROP_FOLDER:
             fmanager->folder = g_value_dup_object(value);
             break;
@@ -596,10 +586,6 @@ xfdesktop_file_icon_manager_get_property(GObject *object,
     switch(property_id) {
         case PROP_GDK_SCREEN:
             g_value_set_object(value, fmanager->gscreen);
-            break;
-
-        case PROP_BACKDROP_MANAGER:
-            g_value_set_object(value, fmanager->backdrop_manager);
             break;
 
         case PROP_FOLDER:
@@ -932,23 +918,16 @@ xfdesktop_file_icon_menu_paste_into_folder(GtkWidget *widget, MonitorData *mdata
 
 static void
 xfdesktop_file_icon_menu_arrange_icons(GtkWidget *widget, MonitorData *mdata) {
-    GtkWidget *window = gtk_widget_get_toplevel(widget);
-    if (xfce_dialog_confirm(GTK_WINDOW(window),
-                            NULL,
-                            _("_OK"),
-                            NULL,
-                            "%s",
-                            _("This will reorder all desktop items and place them on different screen positions.\nAre you sure?")))
-    {
-        xfdesktop_file_icon_manager_sort_icons(XFDESKTOP_ICON_VIEW_MANAGER(mdata->fmanager), GTK_SORT_ASCENDING);
-    }
+    xfdesktop_icon_view_manager_sort_icons(XFDESKTOP_ICON_VIEW_MANAGER(mdata->fmanager),
+                                           GTK_SORT_ASCENDING,
+                                           XFDESKTOP_ICON_VIEW_MANAGER_SORT_NONE);
 }
 
 static void
 xfdesktop_file_icon_menu_next_background(GtkWidget *widget, MonitorData *mdata) {
     // FIXME: need to handle spanning in a special way?
     XfceDesktop *desktop = xfdesktop_icon_view_holder_get_desktop(mdata->holder);
-    xfce_desktop_refresh(desktop, TRUE);
+    xfce_desktop_cycle_backdrop(desktop);
 }
 
 static void
@@ -1607,6 +1586,24 @@ xfdesktop_file_icon_manager_desktop_removed(XfdesktopIconViewManager *manager, X
     }
 }
 
+static XfceDesktop *
+xfdesktop_file_icon_manager_get_focused_desktop(XfdesktopIconViewManager *manager) {
+    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(manager);
+    GHashTableIter iter;
+    g_hash_table_iter_init(&iter, fmanager->monitor_data);
+
+    MonitorData *mdata;
+    while (g_hash_table_iter_next(&iter, NULL, (gpointer)&mdata)) {
+        XfdesktopIconView *icon_view = xfdesktop_icon_view_holder_get_icon_view(mdata->holder);
+        GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(icon_view));
+        if (GTK_IS_WINDOW(toplevel) && gtk_window_has_toplevel_focus(GTK_WINDOW(toplevel))) {
+            return xfdesktop_icon_view_holder_get_desktop(mdata->holder);
+        }
+    }
+
+    return NULL;
+}
+
 static GtkWidget *
 add_menu_item(GtkWidget *menu,
               const gchar *mnemonic_text,
@@ -2108,24 +2105,13 @@ xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager,
                           G_CALLBACK(xfdesktop_file_icon_menu_arrange_icons),
                           mdata);
 
-            XfwMonitor *monitor = xfce_desktop_get_monitor(desktop);
-
             XfwScreen *xfw_screen = xfdesktop_icon_view_manager_get_screen(XFDESKTOP_ICON_VIEW_MANAGER(fmanager));
-            XfwWorkspaceManager *workspace_manager = xfw_screen_get_workspace_manager(xfw_screen);
-            XfwWorkspaceGroup *group = NULL;
-            if (monitor != NULL) {
-                for (GList *l = xfw_workspace_manager_list_workspace_groups(workspace_manager); l != NULL; l = l->next) {
-                    if (g_list_find(xfw_workspace_group_get_monitors(XFW_WORKSPACE_GROUP(l->data)), monitor)) {
-                        group = XFW_WORKSPACE_GROUP(l->data);
-                        break;
-                    }
-                }
-            }
-            XfwWorkspace *workspace = group != NULL ? xfw_workspace_group_get_active_workspace(group) : NULL;
-
-            if (monitor != NULL &&
-                workspace != NULL &&
-                xfdesktop_backdrop_manager_can_cycle_backdrop(fmanager->backdrop_manager, monitor, workspace))
+            XfwMonitor *monitor = xfce_desktop_get_monitor(desktop);
+            XfwWorkspace *workspace = xfdesktop_find_active_workspace_on_monitor(xfw_screen, monitor);
+            XfdesktopBackdropManager *backdrop_manager = xfdesktop_icon_view_manager_get_backdrop_manager(XFDESKTOP_ICON_VIEW_MANAGER(fmanager));
+            if (monitor != NULL
+                && workspace != NULL
+                && xfdesktop_backdrop_manager_can_cycle_backdrop(backdrop_manager, monitor, workspace))
             {
                 /* show next background option */
                 add_menu_item(menu,
@@ -2197,17 +2183,26 @@ xfdesktop_file_icon_manager_unselect_all_icons(XfdesktopIconViewManager *manager
 }
 
 static void
-xfdesktop_file_icon_manager_sort_icons(XfdesktopIconViewManager *manager, GtkSortType sort_type) {
+xfdesktop_file_icon_manager_sort_icons(XfdesktopIconViewManager *manager,
+                                       GtkSortType sort_type,
+                                       XfdesktopIconViewManagerSortFlags flags)
+{
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(manager);
-    // XXX: should we rearrange within each monitor, or rearrange all onto the primary?
+    gboolean sort_all = (flags & XFDESKTOP_ICON_VIEW_MANAGER_SORT_ALL_DESKTOPS) != 0;
 
     GHashTableIter iter;
     g_hash_table_iter_init(&iter, fmanager->monitor_data);
 
     MonitorData *mdata;
     while (g_hash_table_iter_next(&iter, NULL, (gpointer)&mdata)) {
-        XfdesktopIconView *icon_view = xfdesktop_icon_view_holder_get_icon_view(mdata->holder);
-        xfdesktop_icon_view_sort_icons(icon_view, sort_type);
+        XfceDesktop *desktop = xfdesktop_icon_view_holder_get_desktop(mdata->holder);
+        if (sort_all || xfce_desktop_is_active(desktop)) {
+            XfdesktopIconView *icon_view = xfdesktop_icon_view_holder_get_icon_view(mdata->holder);
+            xfdesktop_icon_view_sort_icons(icon_view, sort_type);
+            if (!sort_all) {
+                break;
+            }
+        }
     }
 }
 

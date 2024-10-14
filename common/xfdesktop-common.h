@@ -72,6 +72,9 @@
 #define SINGLE_WORKSPACE_MODE     "/backdrop/single-workspace-mode"
 #define SINGLE_WORKSPACE_NUMBER   "/backdrop/single-workspace-number"
 
+#define DESKTOP_MENU_SHOW_PROP "/desktop-menu/show"
+#define DESKTOP_MENU_SHOW_ICONS_PROP "/desktop-menu/show-icons"
+
 #define WINLIST_SHOW_WINDOWS_MENU_PROP "/windowlist-menu/show"
 #define WINLIST_SHOW_APP_ICONS_PROP "/windowlist-menu/show-icons"
 #define WINLIST_SHOW_STICKY_WIN_ONCE_PROP "/windowlist-menu/show-sticky-once"
@@ -95,6 +98,7 @@
 #define DESKTOP_ICONS_SINGLE_CLICK_PROP      "/desktop-icons/single-click"
 #define DESKTOP_ICONS_SINGLE_CLICK_ULINE_PROP "/desktop-icons/single-click-underline-hover"
 #define DESKTOP_ICONS_GRAVITY_PROP           "/desktop-icons/gravity"
+#define DESKTOP_ICONS_CONFIRM_SORTING_PROP   "/desktop-icons/confirm-sorting"
 
 #define DESKTOP_ICONS_SHOW_THUMBNAILS        "/desktop-icons/show-thumbnails"
 #define DESKTOP_ICONS_SHOW_HIDDEN_FILES      "/desktop-icons/show-hidden-files"
@@ -221,8 +225,6 @@ gboolean xfdesktop_workspace_get_number_and_total(XfwWorkspaceManager *workspace
 
 GtkWindow * xfdesktop_find_toplevel(GtkWidget *widget);
 
-void xfdesktop_tree_path_free(gpointer data);
-
 void xfdesktop_widget_unrealize(GtkWidget *widget,
                                 gpointer data);
 
@@ -234,6 +236,9 @@ void xfdesktop_object_unref(gpointer data,
 
 XfwSeat *xfdesktop_find_xfw_seat_for_gdk_seat(XfwScreen *screen,
                                               GdkSeat *gdk_seat);
+
+XfwWorkspace *xfdesktop_find_active_workspace_on_monitor(XfwScreen *screen,
+                                                         XfwMonitor *monitor);
 
 #if defined(G_HAVE_ISO_VARARGS)
 

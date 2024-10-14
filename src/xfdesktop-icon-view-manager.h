@@ -27,11 +27,17 @@
 #include <libxfce4windowing/libxfce4windowing.h>
 
 #include "xfce-desktop.h"
+#include "xfdesktop-backdrop-manager.h"
 
 G_BEGIN_DECLS
 
 G_DECLARE_DERIVABLE_TYPE(XfdesktopIconViewManager, xfdesktop_icon_view_manager, XFDESKTOP, ICON_VIEW_MANAGER, GObject)
 #define XFDESKTOP_TYPE_ICON_VIEW_MANAGER (xfdesktop_icon_view_manager_get_type())
+
+typedef enum {
+    XFDESKTOP_ICON_VIEW_MANAGER_SORT_NONE = 0,
+    XFDESKTOP_ICON_VIEW_MANAGER_SORT_ALL_DESKTOPS = (1 << 0),
+} XfdesktopIconViewManagerSortFlags;
 
 struct _XfdesktopIconViewManagerClass
 {
@@ -44,6 +50,8 @@ struct _XfdesktopIconViewManagerClass
     void (*desktop_removed)(XfdesktopIconViewManager *manager,
                             XfceDesktop *desktop);
 
+    XfceDesktop *(*get_focused_desktop)(XfdesktopIconViewManager *manager);
+
     GtkMenu *(*get_context_menu)(XfdesktopIconViewManager *manager,
                                  XfceDesktop *desktop,
                                  gint popup_x,
@@ -54,7 +62,8 @@ struct _XfdesktopIconViewManagerClass
     void (*select_all_icons)(XfdesktopIconViewManager *manager);
     void (*unselect_all_icons)(XfdesktopIconViewManager *manager);
     void (*sort_icons)(XfdesktopIconViewManager *manager,
-                       GtkSortType sort_type);
+                       GtkSortType sort_type,
+                       XfdesktopIconViewManagerSortFlags flags);
 
     void (*reload)(XfdesktopIconViewManager *manager);
 };
@@ -62,6 +71,7 @@ struct _XfdesktopIconViewManagerClass
 XfwScreen *xfdesktop_icon_view_manager_get_screen(XfdesktopIconViewManager *manager);
 GList *xfdesktop_icon_view_manager_get_desktops(XfdesktopIconViewManager *manager);
 XfconfChannel *xfdesktop_icon_view_manager_get_channel(XfdesktopIconViewManager *manager);
+XfdesktopBackdropManager *xfdesktop_icon_view_manager_get_backdrop_manager(XfdesktopIconViewManager *manager);
 GtkAccelGroup *xfdesktop_icon_view_manager_get_accel_group(XfdesktopIconViewManager *manager);
 
 gboolean xfdesktop_icon_view_manager_get_show_icons_on_primary(XfdesktopIconViewManager *manager);
@@ -73,12 +83,15 @@ void xfdesktop_icon_view_manager_desktop_removed(XfdesktopIconViewManager *manag
 
 /* virtual function accessors */
 
+XfceDesktop *xfdesktop_icon_view_manager_get_focused_desktop(XfdesktopIconViewManager *manager);
+
 GtkMenu *xfdesktop_icon_view_manager_get_context_menu(XfdesktopIconViewManager *manager,
                                                       XfceDesktop *desktop,
                                                       gint popup_x,
                                                       gint popup_y);
 void xfdesktop_icon_view_manager_sort_icons(XfdesktopIconViewManager *manager,
-                                            GtkSortType sort_type);
+                                            GtkSortType sort_type,
+                                            XfdesktopIconViewManagerSortFlags flags);
 
 void xfdesktop_icon_view_manager_reload(XfdesktopIconViewManager *manager);
 

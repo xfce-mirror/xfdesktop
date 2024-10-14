@@ -1106,7 +1106,11 @@ xfdesktop_icon_view_dispose(GObject *obj)
         icon_view->keyboard_navigation_state = NULL;
     }
 
-    g_clear_object(&icon_view->channel);
+    if (icon_view->channel != NULL) {
+        g_signal_handlers_disconnect_by_data(icon_view->channel, icon_view);
+        g_clear_object(&icon_view->channel);
+    }
+
     xfdesktop_icon_view_set_model(icon_view, NULL);  // Call so ->items are freed too
 
     G_OBJECT_CLASS(xfdesktop_icon_view_parent_class)->dispose(obj);
@@ -5047,7 +5051,7 @@ xfdesktop_icon_view_set_use_icon_label_fg_color(XfdesktopIconView *icon_view, gb
             if (attrs != NULL) {
                 PangoAttrList *removed_attrs = pango_attr_list_filter(attrs, remove_fg_color_attrs, NULL);
                 g_object_set(icon_view->text_renderer,
-                             "attributes", &attrs,
+                             "attributes", attrs,
                              NULL);
                 pango_attr_list_unref(removed_attrs);
                 pango_attr_list_unref(attrs);
