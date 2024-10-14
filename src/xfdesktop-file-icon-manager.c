@@ -274,7 +274,8 @@ static void xfdesktop_file_icon_manager_toggle_cursor_icon(XfdesktopIconViewMana
 static void xfdesktop_file_icon_manager_select_all_icons(XfdesktopIconViewManager *manager);
 static void xfdesktop_file_icon_manager_unselect_all_icons(XfdesktopIconViewManager *manager);
 static void xfdesktop_file_icon_manager_sort_icons(XfdesktopIconViewManager *manager,
-                                                   GtkSortType sort_type);
+                                                   GtkSortType sort_type,
+                                                   XfdesktopIconViewManagerSortFlags flags);
 static void xfdesktop_file_icon_manager_reload(XfdesktopIconViewManager *manager);
 
 static void xfdesktop_file_icon_manager_icon_moved(XfdesktopIconView *icon_view,
@@ -917,7 +918,9 @@ xfdesktop_file_icon_menu_paste_into_folder(GtkWidget *widget, MonitorData *mdata
 
 static void
 xfdesktop_file_icon_menu_arrange_icons(GtkWidget *widget, MonitorData *mdata) {
-    xfdesktop_icon_view_manager_sort_icons(XFDESKTOP_ICON_VIEW_MANAGER(mdata->fmanager),  GTK_SORT_ASCENDING);
+    xfdesktop_icon_view_manager_sort_icons(XFDESKTOP_ICON_VIEW_MANAGER(mdata->fmanager),
+                                           GTK_SORT_ASCENDING,
+                                           XFDESKTOP_ICON_VIEW_MANAGER_SORT_NONE);
 }
 
 static void
@@ -2180,17 +2183,26 @@ xfdesktop_file_icon_manager_unselect_all_icons(XfdesktopIconViewManager *manager
 }
 
 static void
-xfdesktop_file_icon_manager_sort_icons(XfdesktopIconViewManager *manager, GtkSortType sort_type) {
+xfdesktop_file_icon_manager_sort_icons(XfdesktopIconViewManager *manager,
+                                       GtkSortType sort_type,
+                                       XfdesktopIconViewManagerSortFlags flags)
+{
     XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(manager);
-    // XXX: should we rearrange within each monitor, or rearrange all onto the primary?
+    gboolean sort_all = (flags & XFDESKTOP_ICON_VIEW_MANAGER_SORT_ALL_DESKTOPS) != 0;
 
     GHashTableIter iter;
     g_hash_table_iter_init(&iter, fmanager->monitor_data);
 
     MonitorData *mdata;
     while (g_hash_table_iter_next(&iter, NULL, (gpointer)&mdata)) {
-        XfdesktopIconView *icon_view = xfdesktop_icon_view_holder_get_icon_view(mdata->holder);
-        xfdesktop_icon_view_sort_icons(icon_view, sort_type);
+        XfceDesktop *desktop = xfdesktop_icon_view_holder_get_desktop(mdata->holder);
+        if (sort_all || xfce_desktop_is_active(desktop)) {
+            XfdesktopIconView *icon_view = xfdesktop_icon_view_holder_get_icon_view(mdata->holder);
+            xfdesktop_icon_view_sort_icons(icon_view, sort_type);
+            if (!sort_all) {
+                break;
+            }
+        }
     }
 }
 
