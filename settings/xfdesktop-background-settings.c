@@ -30,6 +30,7 @@
 #include <glib-object.h>
 #include <glib.h>
 #include <gtk/gtk.h>
+#include <libxfce4ui/libxfce4ui.h>
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4windowing/libxfce4windowing.h>
 #include <xfconf/xfconf.h>
@@ -408,7 +409,7 @@ xfdesktop_settings_image_iconview_add(GtkTreeModel *model,
 }
 
 static void
-cb_destroy_add_dir_enumeration(AddDirData *dir_data) {
+dir_data_free(AddDirData *dir_data) {
     XfdesktopBackgroundSettings *background_settings = dir_data->background_settings;
 
     TRACE("entering");
@@ -428,100 +429,118 @@ cb_destroy_add_dir_enumeration(AddDirData *dir_data) {
     background_settings->add_dir_idle_id = 0;
 }
 
-static gboolean
-xfdesktop_image_list_add_item(gpointer user_data) {
+static void
+cb_enumerator_file_ready(GObject *source, GAsyncResult *res, gpointer user_data) {
     AddDirData *dir_data = user_data;
-    XfdesktopBackgroundSettings *background_settings = dir_data->background_settings;
 
-    /* Add one item to the icon view at a time so we don't block the UI */
-    GFileInfo *info = g_file_enumerator_next_file(dir_data->file_enumerator, NULL, NULL);
-    if (info != NULL) {
-        GFile *file = g_file_enumerator_get_child(dir_data->file_enumerator, info);
-
-        GtkTreeIter *iter = xfdesktop_settings_image_iconview_add(GTK_TREE_MODEL(dir_data->ls),
-                                                                  file,
-                                                                  info,
-                                                                  background_settings);
-        if (iter != NULL) {
-            if (dir_data->selected_iter == NULL && g_strcmp0(g_file_peek_path(file), dir_data->last_image) == 0) {
-                dir_data->selected_iter = iter;
-            } else {
-                gtk_tree_iter_free(iter);
-            }
+    GError *error = NULL;
+    GList *file_infos = g_file_enumerator_next_files_finish(G_FILE_ENUMERATOR(source), res, &error);
+    if (error != NULL) {
+        if (!g_error_matches(error, G_IO_ERROR, G_IO_ERROR_CANCELLED)) {
+            XfdesktopBackgroundSettings *background_settings = dir_data->background_settings;
+            xfce_dialog_show_error(GTK_WINDOW(background_settings->settings->settings_toplevel),
+                                   error,
+                                   _("Unable to load images from folder \"%s\""),
+                                   g_file_peek_path(background_settings->selected_folder));
+            g_error_free(error);
         }
+        dir_data_free(dir_data);
+    } else if (file_infos == NULL) {
+        XfdesktopBackgroundSettings *background_settings = dir_data->background_settings;
 
-        g_object_unref(file);
-        g_object_unref(info);
+        gtk_icon_view_set_model(GTK_ICON_VIEW(background_settings->image_iconview),
+                                GTK_TREE_MODEL(dir_data->ls));
 
-        /* continue on the next idle callback so the user's events get priority */
-        return TRUE;
-    }
-
-    /* If we get here we're done enumerating files in the directory */
-
-    gtk_icon_view_set_model(GTK_ICON_VIEW(background_settings->image_iconview),
-                            GTK_TREE_MODEL(dir_data->ls));
-
-    /* last_image is in the directory added then it should be selected */
-    if(dir_data->selected_iter) {
-        GtkTreePath *path;
-        path = gtk_tree_model_get_path(GTK_TREE_MODEL(dir_data->ls), dir_data->selected_iter);
-        gtk_tree_iter_free(dir_data->selected_iter);
-        if(path) {
+        if (dir_data->selected_iter != NULL) {
+            GtkTreePath *path = gtk_tree_model_get_path(GTK_TREE_MODEL(dir_data->ls), dir_data->selected_iter);
             gtk_icon_view_select_path(GTK_ICON_VIEW(background_settings->image_iconview), path);
             gtk_tree_path_free(path);
+        } else {
+            gchar *prop_name = xfdesktop_settings_generate_per_workspace_binding_string(background_settings, "backdrop-cycle-enable");
+            gboolean backdrop_cycle_enable = xfconf_channel_get_bool(background_settings->settings->channel, prop_name, FALSE);
+
+            if (backdrop_cycle_enable) {
+                gtk_widget_show(background_settings->btn_folder_apply);
+            }
+
+            g_free(prop_name);
         }
-     }
 
-    if (dir_data->selected_iter == NULL) {
-        gchar *prop_name = xfdesktop_settings_generate_per_workspace_binding_string(background_settings, "backdrop-cycle-enable");
-        gboolean backdrop_cycle_enable = xfconf_channel_get_bool(background_settings->settings->channel, prop_name, FALSE);
+        dir_data_free(dir_data);
+    } else {
 
-        if (backdrop_cycle_enable) {
-            gtk_widget_show(background_settings->btn_folder_apply);
+        XfdesktopBackgroundSettings *background_settings = dir_data->background_settings;
+        for (GList *l = file_infos; l != NULL; l = l->next) {
+            GFileInfo *info = G_FILE_INFO(l->data);
+            GFile *file = g_file_enumerator_get_child(dir_data->file_enumerator, info);
+
+            GtkTreeIter *iter = xfdesktop_settings_image_iconview_add(GTK_TREE_MODEL(dir_data->ls),
+                                                                      file,
+                                                                      info,
+                                                                      background_settings);
+            if (iter != NULL) {
+                if (dir_data->selected_iter == NULL && g_strcmp0(g_file_peek_path(file), dir_data->last_image) == 0) {
+                    dir_data->selected_iter = iter;
+                } else {
+                    gtk_tree_iter_free(iter);
+                }
+            }
+
+            g_object_unref(file);
+            g_object_unref(info);
         }
+        g_list_free(file_infos);
 
-        g_free(prop_name);
+        g_file_enumerator_next_files_async(dir_data->file_enumerator,
+                                           5,
+                                           G_PRIORITY_DEFAULT_IDLE,
+                                           background_settings->cancel_enumeration,
+                                           cb_enumerator_file_ready,
+                                           dir_data);
     }
-
-    /* cb_destroy_add_dir_enumeration will get called to clean up */
-    return FALSE;
 }
 
 static void
-xfdesktop_image_list_add_dir(GObject *source_object,
-                             GAsyncResult *res,
-                             gpointer user_data)
-{
-    XfdesktopBackgroundSettings *background_settings = user_data;
-    AddDirData *dir_data = g_new0(AddDirData, 1);
-
+xfdesktop_image_list_add_dir(GObject *source_object, GAsyncResult *res, gpointer user_data) {
     TRACE("entering");
 
-    dir_data->background_settings = background_settings;
+    XfdesktopBackgroundSettings *background_settings = user_data;
 
-    dir_data->ls = gtk_list_store_new(N_COLS,
-                                      GDK_TYPE_PIXBUF,
-                                      CAIRO_GOBJECT_TYPE_SURFACE,
-                                      G_TYPE_STRING,
-                                      G_TYPE_STRING,
-                                      G_TYPE_STRING,
-                                      G_TYPE_STRING);
+    GError *error = NULL;
+    GFileEnumerator *enumerator = g_file_enumerate_children_finish(background_settings->selected_folder,
+                                                                   res,
+                                                                   &error);
+    if (enumerator == NULL) {
+        xfce_dialog_show_error(GTK_WINDOW(background_settings->settings->settings_toplevel),
+                               error,
+                               _("Unable to load images from folder \"%s\""),
+                               g_file_peek_path(background_settings->selected_folder));
+        g_error_free(error);
+    } else {
+        AddDirData *dir_data = g_new0(AddDirData, 1);
+        dir_data->background_settings = background_settings;
+        dir_data->file_enumerator = enumerator;
 
-    /* Get the last image/current image displayed so we can select it in the
-     * icon view */
-    dir_data->last_image = xfdesktop_settings_get_backdrop_image(background_settings);
-    dir_data->file_path = g_file_get_path(background_settings->selected_folder);
-    dir_data->file_enumerator = g_file_enumerate_children_finish(background_settings->selected_folder,
-                                                                 res,
-                                                                 NULL);
+        dir_data->ls = gtk_list_store_new(N_COLS,
+                                          GDK_TYPE_PIXBUF,
+                                          CAIRO_GOBJECT_TYPE_SURFACE,
+                                          G_TYPE_STRING,
+                                          G_TYPE_STRING,
+                                          G_TYPE_STRING,
+                                          G_TYPE_STRING);
 
-    /* Individual items are added in an idle callback so everything is more
-     * responsive */
-    background_settings->add_dir_idle_id = g_idle_add_full(G_PRIORITY_DEFAULT_IDLE,
-                                             xfdesktop_image_list_add_item,
-                                             dir_data,
-                                             (GDestroyNotify)cb_destroy_add_dir_enumeration);
+        /* Get the last image/current image displayed so we can select it in the
+         * icon view */
+        dir_data->last_image = xfdesktop_settings_get_backdrop_image(background_settings);
+        dir_data->file_path = g_file_get_path(background_settings->selected_folder);
+
+        g_file_enumerator_next_files_async(dir_data->file_enumerator,
+                                           5,
+                                           G_PRIORITY_DEFAULT_IDLE,
+                                           background_settings->cancel_enumeration,
+                                           cb_enumerator_file_ready,
+                                           dir_data);
+    }
 }
 
 static XfwWorkspace *
