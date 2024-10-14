@@ -264,6 +264,7 @@ static void xfdesktop_file_icon_manager_desktop_added(XfdesktopIconViewManager *
                                                       XfceDesktop *desktop);
 static void xfdesktop_file_icon_manager_desktop_removed(XfdesktopIconViewManager *manager,
                                                         XfceDesktop *desktop);
+static XfceDesktop *xfdesktop_file_icon_manager_get_focused_desktop(XfdesktopIconViewManager *manager);
 static GtkMenu *xfdesktop_file_icon_manager_get_context_menu(XfdesktopIconViewManager *manager,
                                                              XfceDesktop *desktop,
                                                              gint popup_x,
@@ -369,6 +370,7 @@ xfdesktop_file_icon_manager_class_init(XfdesktopFileIconManagerClass *klass)
 
     ivm_class->desktop_added = xfdesktop_file_icon_manager_desktop_added;
     ivm_class->desktop_removed = xfdesktop_file_icon_manager_desktop_removed;
+    ivm_class->get_focused_desktop = xfdesktop_file_icon_manager_get_focused_desktop;
     ivm_class->get_context_menu = xfdesktop_file_icon_manager_get_context_menu;
     ivm_class->activate_icons = xfdesktop_file_icon_manager_activate_icons;
     ivm_class->toggle_cursor_icon = xfdesktop_file_icon_manager_toggle_cursor_icon;
@@ -1579,6 +1581,24 @@ xfdesktop_file_icon_manager_desktop_removed(XfdesktopIconViewManager *manager, X
 
         g_hash_table_remove(fmanager->monitor_data, monitor);
     }
+}
+
+static XfceDesktop *
+xfdesktop_file_icon_manager_get_focused_desktop(XfdesktopIconViewManager *manager) {
+    XfdesktopFileIconManager *fmanager = XFDESKTOP_FILE_ICON_MANAGER(manager);
+    GHashTableIter iter;
+    g_hash_table_iter_init(&iter, fmanager->monitor_data);
+
+    MonitorData *mdata;
+    while (g_hash_table_iter_next(&iter, NULL, (gpointer)&mdata)) {
+        XfdesktopIconView *icon_view = xfdesktop_icon_view_holder_get_icon_view(mdata->holder);
+        GtkWidget *toplevel = gtk_widget_get_toplevel(GTK_WIDGET(icon_view));
+        if (GTK_IS_WINDOW(toplevel) && gtk_window_has_toplevel_focus(GTK_WINDOW(toplevel))) {
+            return xfdesktop_icon_view_holder_get_desktop(mdata->holder);
+        }
+    }
+
+    return NULL;
 }
 
 static GtkWidget *

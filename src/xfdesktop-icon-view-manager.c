@@ -446,6 +446,12 @@ xfdesktop_icon_view_manager_desktop_removed(XfdesktopIconViewManager *manager, X
     g_object_notify(G_OBJECT(manager), "desktops");
 }
 
+XfceDesktop *
+xfdesktop_icon_view_manager_get_focused_desktop(XfdesktopIconViewManager *manager) {
+    g_return_val_if_fail(XFDESKTOP_IS_ICON_VIEW_MANAGER(manager), NULL);
+    return XFDESKTOP_ICON_VIEW_MANAGER_GET_CLASS(manager)->get_focused_desktop(manager);
+}
+
 GtkMenu *
 xfdesktop_icon_view_manager_get_context_menu(XfdesktopIconViewManager *manager,
                                              XfceDesktop *desktop,

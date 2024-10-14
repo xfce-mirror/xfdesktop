@@ -48,7 +48,9 @@ void xfce_desktop_update_monitor(XfceDesktop *desktop,
 void xfce_desktop_freeze_updates(XfceDesktop *desktop);
 void xfce_desktop_thaw_updates(XfceDesktop *desktop);
 
-gboolean xfce_desktop_has_pointer(XfceDesktop *desktop);
+void xfce_desktop_set_is_active(XfceDesktop *desktop,
+                                gboolean active);
+gboolean xfce_desktop_is_active(XfceDesktop *desktop);
 
 void xfce_desktop_refresh(XfceDesktop *desktop,
                           gboolean advance_wallpaper);

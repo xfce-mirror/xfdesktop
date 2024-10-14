@@ -45,6 +45,8 @@ struct _XfdesktopIconViewManagerClass
     void (*desktop_removed)(XfdesktopIconViewManager *manager,
                             XfceDesktop *desktop);
 
+    XfceDesktop *(*get_focused_desktop)(XfdesktopIconViewManager *manager);
+
     GtkMenu *(*get_context_menu)(XfdesktopIconViewManager *manager,
                                  XfceDesktop *desktop,
                                  gint popup_x,
