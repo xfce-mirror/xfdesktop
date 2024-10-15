@@ -200,5 +200,9 @@ xfdesktop_file_icon_settings_init(XfdesktopSettings *settings) {
     xfconf_g_property_bind(settings->channel, DESKTOP_MENU_DELETE, G_TYPE_BOOLEAN,
                            G_OBJECT(chk_show_delete_option), "active");
 
+    GtkWidget *chk_sort_folders_before_files = GTK_WIDGET(gtk_builder_get_object(settings->main_gxml, "chk_sort_folders_before_files"));
+    xfconf_g_property_bind(settings->channel, DESKTOP_ICONS_SORT_FOLDERS_BEFORE_FILES_PROP, G_TYPE_BOOLEAN,
+                           G_OBJECT(chk_sort_folders_before_files), "active");
+
     special_icon_list_init(settings->main_gxml, settings->channel);
 }
