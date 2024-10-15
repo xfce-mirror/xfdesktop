@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-10-14 12:55+0200\n"
+"POT-Creation-Date: 2024-10-15 00:54+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>, 2007,2020-2024\n"
 "Language-Team: Albanian (http://app.transifex.com/xfce/xfdesktop/language/sq/)\n"
@@ -63,7 +63,7 @@ msgstr "S’arrihet të lidhet me shërbyesin e rregullimeve"
 msgid "Quit"
 msgstr "Dilni"
 
-#: settings/xfdesktop-background-settings.c:356
+#: settings/xfdesktop-background-settings.c:359
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -71,65 +71,71 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nLloj: %s\nMadhësi: %s"
 
-#: settings/xfdesktop-background-settings.c:588
+#: settings/xfdesktop-background-settings.c:443
+#: settings/xfdesktop-background-settings.c:516
+#, c-format
+msgid "Unable to load images from folder \"%s\""
+msgstr "S’arrihet të ngarkohen figura nga dosja “%s”"
+
+#: settings/xfdesktop-background-settings.c:609
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "Sfond desktopi për Monitorin %d (%s)"
 
-#: settings/xfdesktop-background-settings.c:592
+#: settings/xfdesktop-background-settings.c:613
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "Sfond desktopi për Monitorin %d"
 
-#: settings/xfdesktop-background-settings.c:598
+#: settings/xfdesktop-background-settings.c:619
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "Shpjereni këtë dialog te ekrani të cilit doni t’i përpunoni rregullimet."
 
-#: settings/xfdesktop-background-settings.c:604
+#: settings/xfdesktop-background-settings.c:624
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "Sfond desktopi për %s te Monitori %d (%s)"
 
-#: settings/xfdesktop-background-settings.c:609
+#: settings/xfdesktop-background-settings.c:629
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "Sfond desktopi për %s te Monitori %d"
 
-#: settings/xfdesktop-background-settings.c:617
+#: settings/xfdesktop-background-settings.c:637
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr "Shpjereni këtë dialog te ekrani dhe hapësira e punës të cilëve doni t’u përpunoni rregullimet."
 
 #. Single monitor and single workspace
-#: settings/xfdesktop-background-settings.c:625
+#: settings/xfdesktop-background-settings.c:646
 msgid "Wallpaper for my desktop"
 msgstr "Sfond desktopi për desktopin tim"
 
 #. Single monitor and per workspace wallpaper
-#: settings/xfdesktop-background-settings.c:631
+#: settings/xfdesktop-background-settings.c:652
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "Sfond desktopi për %s"
 
-#: settings/xfdesktop-background-settings.c:636
+#: settings/xfdesktop-background-settings.c:657
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "Shpjereni këtë dialog te hapësira e punës të cilës doni t’i përpunoni rregullimet."
 
-#: settings/xfdesktop-background-settings.c:951
+#: settings/xfdesktop-background-settings.c:979
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "S’bëhet dot përzgjedhje figurash kur stili i figurës është caktuar si Asnjë."
 
-#: settings/xfdesktop-background-settings.c:1331
+#: settings/xfdesktop-background-settings.c:1417
 msgid "Spanning screens"
 msgstr "Shtrirje në ekrane"
 
-#: settings/xfdesktop-background-settings.c:1720
+#: settings/xfdesktop-background-settings.c:1795
 msgid "Image files"
 msgstr "Kartela figurë"
 
 #. Change the title of the file chooser dialog
-#: settings/xfdesktop-background-settings.c:1728
+#: settings/xfdesktop-background-settings.c:1803
 msgid "Select a Directory"
 msgstr "Përzgjidhni Drejtori"
 
@@ -238,6 +244,10 @@ msgstr "Ikona Kartelash"
 msgid "Set desktop background and menu and icon behavior"
 msgstr "Caktoni sfond desktopi dhe sjellje menush dhe ikonash"
 
+#: settings/xfce-backdrop-settings.desktop.in:17
+msgid "desktop;background;wallpaper;settings;xfce;"
+msgstr "desktop;sfond;rregullime;xfce;"
+
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:19
 msgid "Solid color"
 msgstr "Ngjyrë e plotë"
@@ -254,135 +264,135 @@ msgstr "Përshkallëzim vertikal"
 msgid "Transparent"
 msgstr "I tejdukshëm"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:106
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:137
 msgid "Choose the folder to select wallpapers from."
 msgstr "Zgjidhni dosje prej nga të përzgjidhen sfonde desktopi."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:117
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:148
 msgid "Apply"
 msgstr "Zbatoje"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:132
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:163
 msgid "St_yle:"
 msgstr "_Stil:"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:147
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:178
 msgid "Specify how the image will be resized to fit the screen."
 msgstr "Përcaktoni si të ripërmasohet figura për ta nxënë ekrani."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:149
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:180
 #: settings/xfdesktop-settings-ui.glade:60
 #: settings/xfdesktop-settings-ui.glade:97
 #: settings/xfdesktop-settings-ui.glade:117
 msgid "None"
 msgstr "Asnjë"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:150
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:181
 msgid "Centered"
 msgstr "Në qendër"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:151
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:182
 msgid "Tiled"
 msgstr "Tjegullzuar"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:152
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:183
 msgid "Stretched"
 msgstr "Tërhequr"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:153
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:184
 msgid "Scaled"
 msgstr "Përshkallëzuar"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:154
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:185
 msgid "Zoomed"
 msgstr "Zoom-uar"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:155
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:186
 msgid "Spanning Screens"
 msgstr "Shtrirje Në Ekrane"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:168
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:199
 msgid "Specify the style of the color drawn behind the backdrop image."
 msgstr "Përcaktoni stilin e ngjyrës së vizatuar pas figurës <em>backdrop</em>."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:190
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:221
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
 msgstr "Përcakton ngjyrën e plotë, ose ngjyrën e përshkallëzuesit për “majtas” ose “në krye”."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:191
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:222
 msgid "Select First Color"
 msgstr "Përzgjidhni Ngjyrën Parësore"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:204
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:235
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient."
 msgstr "Përcakton ngjyrën e përshkallëzuesit për “djathtas” ose “poshtë”."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:205
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:236
 msgid "Select Second Color"
 msgstr "Përzgjidhni Ngjyrën Dytësore"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:214
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:245
 msgid "Apply to all _workspaces"
 msgstr "Aplikoje mbi krejt _hapësirat e punës"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:232
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:263
 msgid "_Folder:"
 msgstr "_Dosje:"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:247
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:278
 msgid "C_olor:"
 msgstr "_Ngjyrë:"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:302
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:333
 msgid "Change the _background "
 msgstr "Ndryshoni sf_ondin "
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:307
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:338
 msgid ""
 "Automatically select a different background from the current directory."
 msgstr "Përzgjidh automatikisht një sfond tjetër nga drejtoria atë çast."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:323
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:354
 msgid "Specify how often the background will change."
 msgstr "Përcaktoni sa shpesh do të ndryshojë sfondi."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:325
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:356
 msgid "in seconds:"
 msgstr "në sekonda:"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:326
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:357
 msgid "in minutes:"
 msgstr "në minuta:"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:327
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:358
 msgid "in hours:"
 msgstr "në orë:"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:328
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:359
 msgid "at start up"
 msgstr "gjatë nisjes"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:329
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:360
 msgid "every hour"
 msgstr "çdo orë"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:330
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:361
 msgid "every day"
 msgstr "çdo ditë"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:331
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:362
 msgid "chronologically"
 msgstr "kronologjikisht"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:346
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:377
 msgid "Amount of time before a different background is selected."
 msgstr "Sasi kohe përpara se të përzgjidhet një tjetër sfond."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:357
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:388
 msgid "_Random Order"
 msgstr "Rend _Kuturu"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:363
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:394
 msgid ""
 "Randomly selects another image from the same directory when the wallpaper is"
 " to cycle."
@@ -551,8 +561,8 @@ msgid "48"
 msgstr "48"
 
 #: settings/xfdesktop-settings-ui.glade:840
-msgid "_Font size:"
-msgstr ""
+msgid "Fo_nt size:"
+msgstr "Madhësi shkr_onjash"
 
 #: settings/xfdesktop-settings-ui.glade:860
 msgid "12"
@@ -560,7 +570,7 @@ msgstr "12"
 
 #: settings/xfdesktop-settings-ui.glade:871
 msgid "Show icon toolt_ips. Size:"
-msgstr ""
+msgstr "Shfaq _ndihmëza ikonash. Madhësi:"
 
 #: settings/xfdesktop-settings-ui.glade:890
 msgid "Size of the tooltip preview image."
@@ -572,27 +582,27 @@ msgstr "64"
 
 #: settings/xfdesktop-settings-ui.glade:903
 msgid "Font co_lor:"
-msgstr ""
+msgstr "Ngjyrë sh_kronjash:"
 
 #: settings/xfdesktop-settings-ui.glade:941
 msgid "Label bac_kground color:"
-msgstr ""
+msgstr "Ngjyrë _sfondi etiketash:"
 
 #: settings/xfdesktop-settings-ui.glade:984
 msgid "<b>Appearance</b>"
 msgstr "<b>Dukje</b>"
 
 #: settings/xfdesktop-settings-ui.glade:1019
-msgid "Icon placement _orientation:"
-msgstr ""
+msgid "Placement _direction:"
+msgstr "_Kah vendosjeje:"
 
 #: settings/xfdesktop-settings-ui.glade:1059
-msgid "Show icons on _primary display"
-msgstr ""
+msgid "Show icons only on _primary display"
+msgstr "Shfaqi ikonat vetëm në ekranin _parësor"
 
 #: settings/xfdesktop-settings-ui.glade:1074
-msgid "Single _click to activate items"
-msgstr "Klikim _njësh për aktivizim elementësh"
+msgid "Single click to _activate items"
+msgstr "Klikim njësh për të _aktivizuar objekte"
 
 #: settings/xfdesktop-settings-ui.glade:1090
 msgid "_Underline text on hover"
@@ -600,7 +610,7 @@ msgstr "_Nënvijëzoje tekstin, kur i kalohet kursori përsipër"
 
 #: settings/xfdesktop-settings-ui.glade:1106
 msgid "Show confirmation dialog before arran_ging icons"
-msgstr ""
+msgstr "Shfaq dialog ripohimi, para sis_temimit të ikonave"
 
 #: settings/xfdesktop-settings-ui.glade:1127
 msgid "Behavior"
@@ -1107,13 +1117,13 @@ msgstr "S’u krye dot shpërngulja e kartelës"
 msgid "Arrange Icons"
 msgstr "Sistemo Ikonat"
 
-#: src/xfdesktop-icon-view-manager.c:508
+#: src/xfdesktop-icon-view-manager.c:509
 msgid ""
 "This will reorder all desktop items and place them on different screen positions.\n"
 "Are you sure?"
 msgstr "Kjo do të risistemojë krejt objektet e desktopit dhe do t’i vendosë në pozicione të ndryshme në ekran.\nJeni i sigurt?"
 
-#: src/xfdesktop-icon-view-manager.c:512
+#: src/xfdesktop-icon-view-manager.c:513
 msgid "Do _not ask me again"
 msgstr "Mos _më pyet më"
 
@@ -1271,4 +1281,4 @@ msgstr "_Montoje Vëllimin"
 
 #: src/xfdesktop-window-icon-manager.c:296
 msgid "_Run Program..."
-msgstr ""
+msgstr "_Xhironi Program…"
