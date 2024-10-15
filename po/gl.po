@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-10-14 12:55+0200\n"
+"POT-Creation-Date: 2024-10-15 00:54+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Daniel Muñiz Fontoira <dani@damufo.eu>, 2022\n"
 "Language-Team: Galician (http://app.transifex.com/xfce/xfdesktop/language/gl/)\n"
@@ -64,7 +64,7 @@ msgstr "Non se puido contactar co servidor de configuración"
 msgid "Quit"
 msgstr "Saír"
 
-#: settings/xfdesktop-background-settings.c:356
+#: settings/xfdesktop-background-settings.c:359
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -72,65 +72,71 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nTipo: %s\nTamaño: %s"
 
-#: settings/xfdesktop-background-settings.c:588
+#: settings/xfdesktop-background-settings.c:443
+#: settings/xfdesktop-background-settings.c:516
+#, c-format
+msgid "Unable to load images from folder \"%s\""
+msgstr ""
+
+#: settings/xfdesktop-background-settings.c:609
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "Fondo de escritorio do monitor %d (%s)"
 
-#: settings/xfdesktop-background-settings.c:592
+#: settings/xfdesktop-background-settings.c:613
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "Fondo de escritorio do monitor %d"
 
-#: settings/xfdesktop-background-settings.c:598
+#: settings/xfdesktop-background-settings.c:619
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "Mova este diálogo para a pantalla cuxas propiedades desexe editar."
 
-#: settings/xfdesktop-background-settings.c:604
+#: settings/xfdesktop-background-settings.c:624
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "Fondo de pantalla para %s no monitor %d (%s)"
 
-#: settings/xfdesktop-background-settings.c:609
+#: settings/xfdesktop-background-settings.c:629
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "Fondo de pantalla para %s no monitor %d"
 
-#: settings/xfdesktop-background-settings.c:617
+#: settings/xfdesktop-background-settings.c:637
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr "Mova este diálogo para a pantalla e o espazo de traballo cuxas propiedades desexe editar."
 
 #. Single monitor and single workspace
-#: settings/xfdesktop-background-settings.c:625
+#: settings/xfdesktop-background-settings.c:646
 msgid "Wallpaper for my desktop"
 msgstr "Fondo do meu escritorio"
 
 #. Single monitor and per workspace wallpaper
-#: settings/xfdesktop-background-settings.c:631
+#: settings/xfdesktop-background-settings.c:652
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "Fondo de escritorio para %s"
 
-#: settings/xfdesktop-background-settings.c:636
+#: settings/xfdesktop-background-settings.c:657
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "Mova este diálogo para o espazo de traballo cuxas propiedades desexe editar."
 
-#: settings/xfdesktop-background-settings.c:951
+#: settings/xfdesktop-background-settings.c:979
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "A selección de imaxes non está dispoñíbel mentres o estilo de imaxe sexa Ningún."
 
-#: settings/xfdesktop-background-settings.c:1331
+#: settings/xfdesktop-background-settings.c:1417
 msgid "Spanning screens"
 msgstr "Atravesando os monitores"
 
-#: settings/xfdesktop-background-settings.c:1720
+#: settings/xfdesktop-background-settings.c:1795
 msgid "Image files"
 msgstr "Ficheiros de imaxe"
 
 #. Change the title of the file chooser dialog
-#: settings/xfdesktop-background-settings.c:1728
+#: settings/xfdesktop-background-settings.c:1803
 msgid "Select a Directory"
 msgstr "Seleccione un directorio"
 
@@ -239,6 +245,10 @@ msgstr ""
 msgid "Set desktop background and menu and icon behavior"
 msgstr "Definir o fondo do escritorio e o comportamento do menú e das iconas"
 
+#: settings/xfce-backdrop-settings.desktop.in:17
+msgid "desktop;background;wallpaper;settings;xfce;"
+msgstr ""
+
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:19
 msgid "Solid color"
 msgstr "Cor sólida"
@@ -255,135 +265,135 @@ msgstr "Gradación vertical"
 msgid "Transparent"
 msgstr "Transparente"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:106
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:137
 msgid "Choose the folder to select wallpapers from."
 msgstr "Escolla o cartafol no que seleccionar os fondos de escritorio."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:117
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:148
 msgid "Apply"
 msgstr "Aplicar"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:132
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:163
 msgid "St_yle:"
 msgstr "Est_ilo:"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:147
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:178
 msgid "Specify how the image will be resized to fit the screen."
 msgstr "Indique como desexa que a imaxe se redimensione para axustala á pantalla."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:149
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:180
 #: settings/xfdesktop-settings-ui.glade:60
 #: settings/xfdesktop-settings-ui.glade:97
 #: settings/xfdesktop-settings-ui.glade:117
 msgid "None"
 msgstr "Ningún"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:150
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:181
 msgid "Centered"
 msgstr "Centrado"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:151
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:182
 msgid "Tiled"
 msgstr "Mosaico"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:152
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:183
 msgid "Stretched"
 msgstr "Estirado"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:153
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:184
 msgid "Scaled"
 msgstr "Escalado"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:154
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:185
 msgid "Zoomed"
 msgstr "Ampliado"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:155
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:186
 msgid "Spanning Screens"
 msgstr "Atravesando os monitores"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:168
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:199
 msgid "Specify the style of the color drawn behind the backdrop image."
 msgstr "Especifica o estilo de cor que se debuxa detrás da imaxe de fondo."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:190
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:221
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
 msgstr "Especifica a cor sólida, ou da «esquerda» ou «superior» da gradación"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:191
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:222
 msgid "Select First Color"
 msgstr "Seleccione a primeira cor"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:204
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:235
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient."
 msgstr "Especifica a cor da «dereita» ou «inferior» da gradación."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:205
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:236
 msgid "Select Second Color"
 msgstr "Seleccione a segunda cor"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:214
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:245
 msgid "Apply to all _workspaces"
 msgstr "Aplicar a todos os _espazos de traballo"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:232
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:263
 msgid "_Folder:"
 msgstr "Carta_fol:"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:247
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:278
 msgid "C_olor:"
 msgstr "C_or:"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:302
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:333
 msgid "Change the _background "
 msgstr "Cambiar o _fondo do escritorio"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:307
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:338
 msgid ""
 "Automatically select a different background from the current directory."
 msgstr "Seleccionar automaticamente un fondo diferente do directorio actual."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:323
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:354
 msgid "Specify how often the background will change."
 msgstr "Indique a frecuencia coa que desexa que cambie o fondo."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:325
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:356
 msgid "in seconds:"
 msgstr "en segundos:"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:326
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:357
 msgid "in minutes:"
 msgstr "en minutos:"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:327
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:358
 msgid "in hours:"
 msgstr "en horas:"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:328
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:359
 msgid "at start up"
 msgstr "no inicio"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:329
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:360
 msgid "every hour"
 msgstr "cada hora"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:330
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:361
 msgid "every day"
 msgstr "cada día"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:331
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:362
 msgid "chronologically"
 msgstr "cronoloxicamente"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:346
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:377
 msgid "Amount of time before a different background is selected."
 msgstr "Cantidade de tempo antes de que se seleccione un fondo distinto."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:357
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:388
 msgid "_Random Order"
 msgstr "O_rde aleatoria"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:363
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:394
 msgid ""
 "Randomly selects another image from the same directory when the wallpaper is"
 " to cycle."
@@ -552,7 +562,7 @@ msgid "48"
 msgstr "48"
 
 #: settings/xfdesktop-settings-ui.glade:840
-msgid "_Font size:"
+msgid "Fo_nt size:"
 msgstr ""
 
 #: settings/xfdesktop-settings-ui.glade:860
@@ -584,16 +594,16 @@ msgid "<b>Appearance</b>"
 msgstr "<b>Aparencia</b>"
 
 #: settings/xfdesktop-settings-ui.glade:1019
-msgid "Icon placement _orientation:"
+msgid "Placement _direction:"
 msgstr ""
 
 #: settings/xfdesktop-settings-ui.glade:1059
-msgid "Show icons on _primary display"
+msgid "Show icons only on _primary display"
 msgstr ""
 
 #: settings/xfdesktop-settings-ui.glade:1074
-msgid "Single _click to activate items"
-msgstr "Un único _clic para activar os elementos"
+msgid "Single click to _activate items"
+msgstr ""
 
 #: settings/xfdesktop-settings-ui.glade:1090
 msgid "_Underline text on hover"
@@ -1108,13 +1118,13 @@ msgstr "Non se puido realizar a transferencia de ficheiro"
 msgid "Arrange Icons"
 msgstr ""
 
-#: src/xfdesktop-icon-view-manager.c:508
+#: src/xfdesktop-icon-view-manager.c:509
 msgid ""
 "This will reorder all desktop items and place them on different screen positions.\n"
 "Are you sure?"
 msgstr "Isto volverá ordenar todos os elementos do escritorio situándoos en diferentes posicións da pantalla.\nTen certeza?"
 
-#: src/xfdesktop-icon-view-manager.c:512
+#: src/xfdesktop-icon-view-manager.c:513
 msgid "Do _not ask me again"
 msgstr "_Non preguntar de novo"
 
