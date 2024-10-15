@@ -472,9 +472,9 @@ xfdesktop_file_icon_model_get_value(GtkTreeModel *model,
             } else if (XFDESKTOP_IS_VOLUME_ICON(icon)) {
                 priority = 1;
             } else if (XFDESKTOP_IS_REGULAR_FILE_ICON(icon)) {
-                if(XFDESKTOP_FILE_ICON_MODEL(model)->sort_folders_before_files) {
+                if (XFDESKTOP_FILE_ICON_MODEL(model)->sort_folders_before_files) {
                     GFileInfo *file_info = xfdesktop_file_icon_peek_file_info(icon);
-                    if(g_file_info_get_file_type(file_info) == G_FILE_TYPE_DIRECTORY) {
+                    if (g_file_info_get_file_type(file_info) == G_FILE_TYPE_DIRECTORY) {
                         priority = 2;
                     } else {
                         priority = 3;
