@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-10-14 12:55+0200\n"
+"POT-Creation-Date: 2024-10-15 00:54+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2019-2024\n"
 "Language-Team: Japanese (http://app.transifex.com/xfce/xfdesktop/language/ja/)\n"
@@ -63,7 +63,7 @@ msgstr "設定サーバーに接続できません"
 msgid "Quit"
 msgstr "終了"
 
-#: settings/xfdesktop-background-settings.c:356
+#: settings/xfdesktop-background-settings.c:359
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -71,65 +71,71 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nタイプ: %s\nサイズ: %s"
 
-#: settings/xfdesktop-background-settings.c:588
+#: settings/xfdesktop-background-settings.c:443
+#: settings/xfdesktop-background-settings.c:516
+#, c-format
+msgid "Unable to load images from folder \"%s\""
+msgstr ""
+
+#: settings/xfdesktop-background-settings.c:609
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "モニター %d (%s) の壁紙"
 
-#: settings/xfdesktop-background-settings.c:592
+#: settings/xfdesktop-background-settings.c:613
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "モニター %d の壁紙"
 
-#: settings/xfdesktop-background-settings.c:598
+#: settings/xfdesktop-background-settings.c:619
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "設定したいディスプレイにこのダイアログを移動してください。"
 
-#: settings/xfdesktop-background-settings.c:604
+#: settings/xfdesktop-background-settings.c:624
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "モニター %2$d (%3$s) %1$s の壁紙"
 
-#: settings/xfdesktop-background-settings.c:609
+#: settings/xfdesktop-background-settings.c:629
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "モニター %2$d %1$s の壁紙"
 
-#: settings/xfdesktop-background-settings.c:617
+#: settings/xfdesktop-background-settings.c:637
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr "設定したいディスプレイおよびワークスペースにこのダイアログを移動してください。"
 
 #. Single monitor and single workspace
-#: settings/xfdesktop-background-settings.c:625
+#: settings/xfdesktop-background-settings.c:646
 msgid "Wallpaper for my desktop"
 msgstr "デスクトップの壁紙"
 
 #. Single monitor and per workspace wallpaper
-#: settings/xfdesktop-background-settings.c:631
+#: settings/xfdesktop-background-settings.c:652
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "%s の壁紙"
 
-#: settings/xfdesktop-background-settings.c:636
+#: settings/xfdesktop-background-settings.c:657
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "設定したいワークスペースにこのダイアログを移動してください。"
 
-#: settings/xfdesktop-background-settings.c:951
+#: settings/xfdesktop-background-settings.c:979
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "画像のスタイルが「なし」の時、壁紙は無効になります。"
 
-#: settings/xfdesktop-background-settings.c:1331
+#: settings/xfdesktop-background-settings.c:1417
 msgid "Spanning screens"
 msgstr "複数画面にまたがって表示する"
 
-#: settings/xfdesktop-background-settings.c:1720
+#: settings/xfdesktop-background-settings.c:1795
 msgid "Image files"
 msgstr "画像ファイル"
 
 #. Change the title of the file chooser dialog
-#: settings/xfdesktop-background-settings.c:1728
+#: settings/xfdesktop-background-settings.c:1803
 msgid "Select a Directory"
 msgstr "ディレクトリを選択してください"
 
@@ -238,6 +244,10 @@ msgstr "ファイルアイコン"
 msgid "Set desktop background and menu and icon behavior"
 msgstr "デスクトップの背景およびメニューとアイコンの振る舞いを設定します"
 
+#: settings/xfce-backdrop-settings.desktop.in:17
+msgid "desktop;background;wallpaper;settings;xfce;"
+msgstr ""
+
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:19
 msgid "Solid color"
 msgstr "単一色"
@@ -254,135 +264,135 @@ msgstr "垂直グラデーション"
 msgid "Transparent"
 msgstr "透明"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:106
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:137
 msgid "Choose the folder to select wallpapers from."
 msgstr "壁紙が保存されているフォルダーを選択します"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:117
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:148
 msgid "Apply"
 msgstr "適用"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:132
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:163
 msgid "St_yle:"
 msgstr "スタイル(_Y):"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:147
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:178
 msgid "Specify how the image will be resized to fit the screen."
 msgstr "画像を画面に合わせるスタイルを指定します"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:149
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:180
 #: settings/xfdesktop-settings-ui.glade:60
 #: settings/xfdesktop-settings-ui.glade:97
 #: settings/xfdesktop-settings-ui.glade:117
 msgid "None"
 msgstr "無し"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:150
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:181
 msgid "Centered"
 msgstr "中央揃え"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:151
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:182
 msgid "Tiled"
 msgstr "タイル揃え"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:152
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:183
 msgid "Stretched"
 msgstr "縦横比を維持せず全画面化"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:153
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:184
 msgid "Scaled"
 msgstr "長辺を画面に合わせる"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:154
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:185
 msgid "Zoomed"
 msgstr "短辺を画面に合わせる"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:155
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:186
 msgid "Spanning Screens"
 msgstr "複数画面にわたって表示する"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:168
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:199
 msgid "Specify the style of the color drawn behind the backdrop image."
 msgstr "背景画像の後ろで描画される背景色のスタイルを指定します"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:190
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:221
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
 msgstr "グラデーションの \"左側\" または \"上側\" の色を指定します"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:191
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:222
 msgid "Select First Color"
 msgstr "第一色の選択"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:204
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:235
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient."
 msgstr "グラデーションの \"右側\" または \"下側\" の色を指定します"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:205
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:236
 msgid "Select Second Color"
 msgstr "第二色の選択"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:214
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:245
 msgid "Apply to all _workspaces"
 msgstr "全ワークスペースに適用する(_W)"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:232
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:263
 msgid "_Folder:"
 msgstr "フォルダー(_F):"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:247
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:278
 msgid "C_olor:"
 msgstr "配色(_O):"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:302
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:333
 msgid "Change the _background "
 msgstr "背景を自動的に切り替える(_B)"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:307
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:338
 msgid ""
 "Automatically select a different background from the current directory."
 msgstr "現在のフォルダー内の壁紙を自動的に選択します。"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:323
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:354
 msgid "Specify how often the background will change."
 msgstr "壁紙をどのくらいの頻度で切り替えるかを指定します"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:325
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:356
 msgid "in seconds:"
 msgstr "秒単位:"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:326
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:357
 msgid "in minutes:"
 msgstr "分単位:"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:327
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:358
 msgid "in hours:"
 msgstr "時間単位:"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:328
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:359
 msgid "at start up"
 msgstr "起動時"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:329
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:360
 msgid "every hour"
 msgstr "1 時間毎"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:330
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:361
 msgid "every day"
 msgstr "1 日毎"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:331
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:362
 msgid "chronologically"
 msgstr "古い順に"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:346
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:377
 msgid "Amount of time before a different background is selected."
 msgstr "壁紙を切り替える間隔を指定します。"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:357
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:388
 msgid "_Random Order"
 msgstr "ランダム表示(_R)"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:363
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:394
 msgid ""
 "Randomly selects another image from the same directory when the wallpaper is"
 " to cycle."
@@ -551,8 +561,8 @@ msgid "48"
 msgstr "48"
 
 #: settings/xfdesktop-settings-ui.glade:840
-msgid "_Font size:"
-msgstr "フォントサイズ(_F):"
+msgid "Fo_nt size:"
+msgstr ""
 
 #: settings/xfdesktop-settings-ui.glade:860
 msgid "12"
@@ -583,16 +593,16 @@ msgid "<b>Appearance</b>"
 msgstr "<b>外観</b>"
 
 #: settings/xfdesktop-settings-ui.glade:1019
-msgid "Icon placement _orientation:"
-msgstr "アイコンの配置方向(_O):"
+msgid "Placement _direction:"
+msgstr ""
 
 #: settings/xfdesktop-settings-ui.glade:1059
-msgid "Show icons on _primary display"
-msgstr "プライマリディスプレイにアイコンを表示(_P)"
+msgid "Show icons only on _primary display"
+msgstr ""
 
 #: settings/xfdesktop-settings-ui.glade:1074
-msgid "Single _click to activate items"
-msgstr "シングルクリックでアイテムをアクティベートする(_C)"
+msgid "Single click to _activate items"
+msgstr ""
 
 #: settings/xfdesktop-settings-ui.glade:1090
 msgid "_Underline text on hover"
@@ -1107,13 +1117,13 @@ msgstr "ファイル転送を実行できませんでした"
 msgid "Arrange Icons"
 msgstr "アイコンを整列する"
 
-#: src/xfdesktop-icon-view-manager.c:508
+#: src/xfdesktop-icon-view-manager.c:509
 msgid ""
 "This will reorder all desktop items and place them on different screen positions.\n"
 "Are you sure?"
 msgstr "すべてのデスクトップアイテムが並べ替えられて、異なる位置に配置されます。\nよろしいですか？"
 
-#: src/xfdesktop-icon-view-manager.c:512
+#: src/xfdesktop-icon-view-manager.c:513
 msgid "Do _not ask me again"
 msgstr "次回から確認しない(_N)"
 
