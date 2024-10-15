@@ -24,11 +24,11 @@ msgstr ""
 
 #: settings/main.c:99
 msgid "Settings manager socket"
-msgstr "Sätete halduri pistik"
+msgstr "Seadistuste halduri sokkel"
 
 #: settings/main.c:99
 msgid "SOCKET ID"
-msgstr "PISTIK"
+msgstr "SOKKEL"
 
 #: settings/main.c:101
 msgid "Version information"
@@ -76,7 +76,7 @@ msgstr "<b>%s</b>\nTüüp: %s\nSuurus: %s"
 #: settings/xfdesktop-background-settings.c:516
 #, c-format
 msgid "Unable to load images from folder \"%s\""
-msgstr ""
+msgstr "Piltide laadimine kaustast „%s“ ei õnnestu"
 
 #: settings/xfdesktop-background-settings.c:609
 #, c-format
@@ -192,7 +192,7 @@ msgstr "Paiguta ikoonid"
 #: src/xfdesktop-file-icon-manager.c:1348
 #, c-format
 msgid "Unable to launch \"%s\":"
-msgstr "„%s“ käivitamine ebaõnnestus:"
+msgstr "„%s“ käivitamine ei õnnestunud:"
 
 #: settings/xfdesktop-icon-settings.c:99 src/xfdesktop-file-icon-manager.c:785
 #: src/xfdesktop-file-icon-manager.c:1029
@@ -247,7 +247,7 @@ msgstr "Määra töölaua taust ning menüüde ja ikoonide käitumine"
 
 #: settings/xfce-backdrop-settings.desktop.in:17
 msgid "desktop;background;wallpaper;settings;xfce;"
-msgstr ""
+msgstr "töölaud;taust;taustapilt;seadistused;sätted;seaded;xfce;"
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:19
 msgid "Solid color"
@@ -519,7 +519,7 @@ msgstr "Näit_a menüüs rakenduste ikoone"
 
 #: settings/xfdesktop-settings-ui.glade:583
 msgid "List windows on a_ll workspaces"
-msgstr ""
+msgstr "Näita aknaid kõikide_l tööaladel"
 
 #: settings/xfdesktop-settings-ui.glade:600
 msgid "Show workspace _names in list"
@@ -535,7 +535,7 @@ msgstr "Näita _kinnitatud aknaid ainult käesoleval tööalal"
 
 #: settings/xfdesktop-settings-ui.glade:662
 msgid "Show a section listing all _urgent windows on other workspaces"
-msgstr ""
+msgstr "Näita infoplokki, kus on loendatud kõik olulised aknad m_uudel tööaladel"
 
 #: settings/xfdesktop-settings-ui.glade:678
 msgid "Show a_dd and remove workspace options in list"
@@ -563,7 +563,7 @@ msgstr "48"
 
 #: settings/xfdesktop-settings-ui.glade:840
 msgid "Fo_nt size:"
-msgstr ""
+msgstr "Fo_ndi suurus:"
 
 #: settings/xfdesktop-settings-ui.glade:860
 msgid "12"
@@ -571,7 +571,7 @@ msgstr "12"
 
 #: settings/xfdesktop-settings-ui.glade:871
 msgid "Show icon toolt_ips. Size:"
-msgstr ""
+msgstr "Näita _ikoonide teabemulle suurusega:"
 
 #: settings/xfdesktop-settings-ui.glade:890
 msgid "Size of the tooltip preview image."
@@ -583,11 +583,11 @@ msgstr "64"
 
 #: settings/xfdesktop-settings-ui.glade:903
 msgid "Font co_lor:"
-msgstr ""
+msgstr "Fondi vä_rv:"
 
 #: settings/xfdesktop-settings-ui.glade:941
 msgid "Label bac_kground color:"
-msgstr ""
+msgstr "Sildi tau_stavärv:"
 
 #: settings/xfdesktop-settings-ui.glade:984
 msgid "<b>Appearance</b>"
@@ -595,15 +595,15 @@ msgstr "<b>Välimus</b>"
 
 #: settings/xfdesktop-settings-ui.glade:1019
 msgid "Placement _direction:"
-msgstr ""
+msgstr "Paigutuse suun_d:"
 
 #: settings/xfdesktop-settings-ui.glade:1059
 msgid "Show icons only on _primary display"
-msgstr ""
+msgstr "Näita ikoone vaid _põhiekraanil"
 
 #: settings/xfdesktop-settings-ui.glade:1074
 msgid "Single click to _activate items"
-msgstr ""
+msgstr "_Aktiveeri objektid ühe klõpsuga"
 
 #: settings/xfdesktop-settings-ui.glade:1090
 msgid "_Underline text on hover"
@@ -611,7 +611,7 @@ msgstr "K_ui fookus on teksti  kohal, siis jooni ta alla"
 
 #: settings/xfdesktop-settings-ui.glade:1106
 msgid "Show confirmation dialog before arran_ging icons"
-msgstr ""
+msgstr "Enne ikoonide ümberpai_gutamist küsi kinnitust"
 
 #: settings/xfdesktop-settings-ui.glade:1127
 msgid "Behavior"
@@ -1116,7 +1116,7 @@ msgstr "Faili ei õnnestunud üle kanda"
 
 #: src/xfdesktop-icon-view-manager.c:488
 msgid "Arrange Icons"
-msgstr ""
+msgstr "Paiguta ikoonid"
 
 #: src/xfdesktop-icon-view-manager.c:509
 msgid ""
@@ -1282,4 +1282,4 @@ msgstr "_Haagi andmekandja"
 
 #: src/xfdesktop-window-icon-manager.c:296
 msgid "_Run Program..."
-msgstr ""
+msgstr "Käivita _rakendus..."
