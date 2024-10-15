@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-10-14 12:55+0200\n"
+"POT-Creation-Date: 2024-10-15 00:54+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: 玉堂白鹤 <yjwork@qq.com>, 2013,2015-2024\n"
 "Language-Team: Chinese (China) (http://app.transifex.com/xfce/xfdesktop/language/zh_CN/)\n"
@@ -73,7 +73,7 @@ msgstr "未能与设置服务器联系"
 msgid "Quit"
 msgstr "退出"
 
-#: settings/xfdesktop-background-settings.c:356
+#: settings/xfdesktop-background-settings.c:359
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -81,65 +81,71 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\n类型： %s\n大小：%s"
 
-#: settings/xfdesktop-background-settings.c:588
+#: settings/xfdesktop-background-settings.c:443
+#: settings/xfdesktop-background-settings.c:516
+#, c-format
+msgid "Unable to load images from folder \"%s\""
+msgstr ""
+
+#: settings/xfdesktop-background-settings.c:609
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "显示器 %d (%s) 壁纸"
 
-#: settings/xfdesktop-background-settings.c:592
+#: settings/xfdesktop-background-settings.c:613
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "显示器 %d 壁纸"
 
-#: settings/xfdesktop-background-settings.c:598
+#: settings/xfdesktop-background-settings.c:619
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "将此对话框移动到您想修改设置的显示器上。"
 
-#: settings/xfdesktop-background-settings.c:604
+#: settings/xfdesktop-background-settings.c:624
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "%s 的壁纸，位于%d (%s) 显示器"
 
-#: settings/xfdesktop-background-settings.c:609
+#: settings/xfdesktop-background-settings.c:629
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "%s 的壁纸，位于 %d 显示器"
 
-#: settings/xfdesktop-background-settings.c:617
+#: settings/xfdesktop-background-settings.c:637
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr "将此对话框移动到您想修改设置的显示器和工作区上。"
 
 #. Single monitor and single workspace
-#: settings/xfdesktop-background-settings.c:625
+#: settings/xfdesktop-background-settings.c:646
 msgid "Wallpaper for my desktop"
 msgstr "我的桌面壁纸"
 
 #. Single monitor and per workspace wallpaper
-#: settings/xfdesktop-background-settings.c:631
+#: settings/xfdesktop-background-settings.c:652
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "%s 壁纸"
 
-#: settings/xfdesktop-background-settings.c:636
+#: settings/xfdesktop-background-settings.c:657
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "将此对话框移动到您想修改设置的工作区上。"
 
-#: settings/xfdesktop-background-settings.c:951
+#: settings/xfdesktop-background-settings.c:979
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "图片样式设为空时图片选择器无效。"
 
-#: settings/xfdesktop-background-settings.c:1331
+#: settings/xfdesktop-background-settings.c:1417
 msgid "Spanning screens"
 msgstr "跨屏幕"
 
-#: settings/xfdesktop-background-settings.c:1720
+#: settings/xfdesktop-background-settings.c:1795
 msgid "Image files"
 msgstr "图片文件"
 
 #. Change the title of the file chooser dialog
-#: settings/xfdesktop-background-settings.c:1728
+#: settings/xfdesktop-background-settings.c:1803
 msgid "Select a Directory"
 msgstr "选择一个目录"
 
@@ -248,6 +254,10 @@ msgstr "文件图标"
 msgid "Set desktop background and menu and icon behavior"
 msgstr "设置桌面背景、菜单和图标行为"
 
+#: settings/xfce-backdrop-settings.desktop.in:17
+msgid "desktop;background;wallpaper;settings;xfce;"
+msgstr ""
+
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:19
 msgid "Solid color"
 msgstr "纯色"
@@ -264,135 +274,135 @@ msgstr "竖直渐变"
 msgid "Transparent"
 msgstr "透明"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:106
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:137
 msgid "Choose the folder to select wallpapers from."
 msgstr "选择图片来源目录。"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:117
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:148
 msgid "Apply"
 msgstr "应用"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:132
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:163
 msgid "St_yle:"
 msgstr "样式(_Y)： "
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:147
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:178
 msgid "Specify how the image will be resized to fit the screen."
 msgstr "指定如何调整图片大小以适应屏幕。"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:149
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:180
 #: settings/xfdesktop-settings-ui.glade:60
 #: settings/xfdesktop-settings-ui.glade:97
 #: settings/xfdesktop-settings-ui.glade:117
 msgid "None"
 msgstr "无"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:150
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:181
 msgid "Centered"
 msgstr "居中"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:151
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:182
 msgid "Tiled"
 msgstr "平铺"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:152
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:183
 msgid "Stretched"
 msgstr "拉伸"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:153
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:184
 msgid "Scaled"
 msgstr "伸缩"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:154
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:185
 msgid "Zoomed"
 msgstr "缩放"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:155
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:186
 msgid "Spanning Screens"
 msgstr "跨屏幕"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:168
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:199
 msgid "Specify the style of the color drawn behind the backdrop image."
 msgstr "指定背景图片后的颜色绘制样式。"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:190
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:221
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
 msgstr "指定纯色，或渐变区“左边”或“上边”的颜色。"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:191
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:222
 msgid "Select First Color"
 msgstr "选择第一种颜色"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:204
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:235
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient."
 msgstr "指定渐变区“右边”或“下边”的颜色。"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:205
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:236
 msgid "Select Second Color"
 msgstr "选择第二种颜色"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:214
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:245
 msgid "Apply to all _workspaces"
 msgstr "应用到所有工作区（_W）"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:232
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:263
 msgid "_Folder:"
 msgstr "目录(_F)："
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:247
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:278
 msgid "C_olor:"
 msgstr "颜色(_C)："
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:302
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:333
 msgid "Change the _background "
 msgstr "修改背景(_b)"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:307
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:338
 msgid ""
 "Automatically select a different background from the current directory."
 msgstr "自动从当前目录中选择不同的背景"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:323
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:354
 msgid "Specify how often the background will change."
 msgstr "更改背景的时间间隔。"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:325
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:356
 msgid "in seconds:"
 msgstr "间隔秒数："
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:326
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:357
 msgid "in minutes:"
 msgstr "间隔分钟数："
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:327
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:358
 msgid "in hours:"
 msgstr "间隔小时数："
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:328
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:359
 msgid "at start up"
 msgstr "启动时"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:329
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:360
 msgid "every hour"
 msgstr "每小时"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:330
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:361
 msgid "every day"
 msgstr "每天"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:331
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:362
 msgid "chronologically"
 msgstr "按时间顺序"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:346
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:377
 msgid "Amount of time before a different background is selected."
 msgstr "在选择不同的背景前请选择间隔时间。"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:357
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:388
 msgid "_Random Order"
 msgstr "随机排序"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:363
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:394
 msgid ""
 "Randomly selects another image from the same directory when the wallpaper is"
 " to cycle."
@@ -561,8 +571,8 @@ msgid "48"
 msgstr "48"
 
 #: settings/xfdesktop-settings-ui.glade:840
-msgid "_Font size:"
-msgstr "字体大小(_F)："
+msgid "Fo_nt size:"
+msgstr ""
 
 #: settings/xfdesktop-settings-ui.glade:860
 msgid "12"
@@ -593,16 +603,16 @@ msgid "<b>Appearance</b>"
 msgstr "<b>外观</b>"
 
 #: settings/xfdesktop-settings-ui.glade:1019
-msgid "Icon placement _orientation:"
-msgstr "图标放置方向(_O)："
+msgid "Placement _direction:"
+msgstr ""
 
 #: settings/xfdesktop-settings-ui.glade:1059
-msgid "Show icons on _primary display"
-msgstr "在主显示屏上显示图标(_P)"
+msgid "Show icons only on _primary display"
+msgstr ""
 
 #: settings/xfdesktop-settings-ui.glade:1074
-msgid "Single _click to activate items"
-msgstr "单击激活项目(_C)"
+msgid "Single click to _activate items"
+msgstr ""
 
 #: settings/xfdesktop-settings-ui.glade:1090
 msgid "_Underline text on hover"
@@ -1117,13 +1127,13 @@ msgstr "未能执行文件传输"
 msgid "Arrange Icons"
 msgstr "排列图标"
 
-#: src/xfdesktop-icon-view-manager.c:508
+#: src/xfdesktop-icon-view-manager.c:509
 msgid ""
 "This will reorder all desktop items and place them on different screen positions.\n"
 "Are you sure?"
 msgstr "这将重新排列所有桌面项目并将它们放置在不同的屏幕位置。\n您确定?"
 
-#: src/xfdesktop-icon-view-manager.c:512
+#: src/xfdesktop-icon-view-manager.c:513
 msgid "Do _not ask me again"
 msgstr "不再询问(_N)"
 
