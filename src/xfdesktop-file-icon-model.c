@@ -70,6 +70,7 @@ struct _XfdesktopFileIconModel
     GHashTable *icons;
 
     gboolean show_thumbnails;
+    gboolean sort_folders_before_files;
 };
 
 struct _XfdesktopFileIconModelClass
@@ -83,6 +84,7 @@ typedef enum {
     PROP_CHANNEL,
     PROP_FOLDER,
     PROP_SHOW_THUMBNAILS,
+    PROP_SORT_FOLDERS_BEFORE_FILES,
 } ModelPropertyId;
 
 enum {
@@ -154,6 +156,14 @@ G_DEFINE_QUARK("xfdesktop-file-icon-model-error-quark", xfdesktop_file_icon_mode
 
 static guint signals[N_SIGS] = { 0, };
 
+static const struct {
+    const gchar *setting;
+    GType setting_type;
+    const gchar *property;
+} setting_bindings[] = {
+    { DESKTOP_ICONS_SHOW_THUMBNAILS, G_TYPE_BOOLEAN, "show-thumbnails" },
+    { DESKTOP_ICONS_SORT_FOLDERS_BEFORE_FILES_PROP, G_TYPE_BOOLEAN, "sort-folders-before-files" },
+};
 
 static void
 xfdesktop_file_icon_model_class_init(XfdesktopFileIconModelClass *klass)
@@ -192,6 +202,13 @@ xfdesktop_file_icon_model_class_init(XfdesktopFileIconModelClass *klass)
                                                          "show-thumbnails",
                                                          TRUE,
                                                          G_PARAM_READWRITE));
+    g_object_class_install_property(gobject_class,
+                                    PROP_SORT_FOLDERS_BEFORE_FILES,
+                                    g_param_spec_boolean("sort-folders-before-files",
+                                                         "sort-folders-before-files",
+                                                         "sort-folders-before-files",
+                                                         TRUE,
+                                                         G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     XfdesktopIconViewModelClass *ivmodel_class = XFDESKTOP_ICON_VIEW_MODEL_CLASS(klass);
     ivmodel_class->model_item_ref = g_object_ref;
@@ -243,6 +260,7 @@ xfdesktop_file_icon_model_tree_model_init(GtkTreeModelIface *iface)
 static void
 xfdesktop_file_icon_model_init(XfdesktopFileIconModel *fmodel) {
     fmodel->show_thumbnails = TRUE;
+    fmodel->sort_folders_before_files = TRUE;
     fmodel->icons = g_hash_table_new_full(g_str_hash,
                                           g_str_equal,
                                           g_free,
@@ -277,7 +295,13 @@ xfdesktop_file_icon_model_constructed(GObject *object) {
     g_signal_connect(fmodel->volume_monitor, "mount-pre-unmount",
                      G_CALLBACK(mount_pre_unmount), fmodel);
 
-    xfconf_g_property_bind(fmodel->channel, DESKTOP_ICONS_SHOW_THUMBNAILS, G_TYPE_BOOLEAN, fmodel, "show-thumbnails");
+    for (gsize i = 0; i < G_N_ELEMENTS(setting_bindings); ++i) {
+        xfconf_g_property_bind(fmodel->channel,
+                               setting_bindings[i].setting,
+                               setting_bindings[i].setting_type,
+                               fmodel,
+                               setting_bindings[i].property);
+    }
 }
 
 static void
@@ -299,6 +323,10 @@ xfdesktop_file_icon_model_set_property(GObject *object, guint property_id, const
 
         case PROP_SHOW_THUMBNAILS:
             xfdesktop_file_icon_model_set_show_thumbnails(fmodel, g_value_get_boolean(value));
+            break;
+
+        case PROP_SORT_FOLDERS_BEFORE_FILES:
+            fmodel->sort_folders_before_files = g_value_get_boolean(value);
             break;
 
         default:
@@ -327,6 +355,11 @@ xfdesktop_file_icon_model_get_property(GObject *object, guint property_id, GValu
         case PROP_SHOW_THUMBNAILS:
             g_value_set_boolean(value, fmodel->show_thumbnails);
             break;
+
+        case PROP_SORT_FOLDERS_BEFORE_FILES:
+            g_value_set_boolean(value, fmodel->sort_folders_before_files);
+            break;
+
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
             break;
@@ -439,9 +472,18 @@ xfdesktop_file_icon_model_get_value(GtkTreeModel *model,
             } else if (XFDESKTOP_IS_VOLUME_ICON(icon)) {
                 priority = 1;
             } else if (XFDESKTOP_IS_REGULAR_FILE_ICON(icon)) {
-                priority = 2;
+                if(XFDESKTOP_FILE_ICON_MODEL(model)->sort_folders_before_files) {
+                    GFileInfo *file_info = xfdesktop_file_icon_peek_file_info(icon);
+                    if(g_file_info_get_file_type(file_info) == G_FILE_TYPE_DIRECTORY) {
+                        priority = 2;
+                    } else {
+                        priority = 3;
+                    }
+                } else {
+                    priority = 2;
+                }
             } else {
-                priority = 3;
+                priority = 4;
             }
 
             g_value_init(value, G_TYPE_INT);
