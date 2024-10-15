@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-10-14 12:55+0200\n"
+"POT-Creation-Date: 2024-10-15 00:54+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Źmicier Turok <nashtlumach@gmail.com>, 2019-2020\n"
 "Language-Team: Belarusian (http://app.transifex.com/xfce/xfdesktop/language/be/)\n"
@@ -62,7 +62,7 @@ msgstr "Немагчыма падлучыцца да сервера налад"
 msgid "Quit"
 msgstr "Выйсці"
 
-#: settings/xfdesktop-background-settings.c:356
+#: settings/xfdesktop-background-settings.c:359
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -70,65 +70,71 @@ msgid ""
 "Size: %s"
 msgstr "Тып: %s\nПамер: %s\nАпошняя змена: %s"
 
-#: settings/xfdesktop-background-settings.c:588
+#: settings/xfdesktop-background-settings.c:443
+#: settings/xfdesktop-background-settings.c:516
+#, c-format
+msgid "Unable to load images from folder \"%s\""
+msgstr ""
+
+#: settings/xfdesktop-background-settings.c:609
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "Шпалеры для манітора %d (%s)"
 
-#: settings/xfdesktop-background-settings.c:592
+#: settings/xfdesktop-background-settings.c:613
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "Шпалеры для манітора %d"
 
-#: settings/xfdesktop-background-settings.c:598
+#: settings/xfdesktop-background-settings.c:619
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "Перамясціць дыялог на экран, які вы хочаце наладзіць."
 
-#: settings/xfdesktop-background-settings.c:604
+#: settings/xfdesktop-background-settings.c:624
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "Шпалеры для %s манітора %d (%s)"
 
-#: settings/xfdesktop-background-settings.c:609
+#: settings/xfdesktop-background-settings.c:629
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "Шпалеры для %s манітора %d"
 
-#: settings/xfdesktop-background-settings.c:617
+#: settings/xfdesktop-background-settings.c:637
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr "Перамясціць дыялог на экран і працоўную прастору, якія вы хочаце наладзіць."
 
 #. Single monitor and single workspace
-#: settings/xfdesktop-background-settings.c:625
+#: settings/xfdesktop-background-settings.c:646
 msgid "Wallpaper for my desktop"
 msgstr "Шпалеры для працоўнага стала"
 
 #. Single monitor and per workspace wallpaper
-#: settings/xfdesktop-background-settings.c:631
+#: settings/xfdesktop-background-settings.c:652
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "Шпалеры для %s"
 
-#: settings/xfdesktop-background-settings.c:636
+#: settings/xfdesktop-background-settings.c:657
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "Перамясціць дыялог на працоўную прастору, якую вы хочаце наладзіць."
 
-#: settings/xfdesktop-background-settings.c:951
+#: settings/xfdesktop-background-settings.c:979
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "Абраць выяву немагчыма, калі не вызначыць стыль выявы."
 
-#: settings/xfdesktop-background-settings.c:1331
+#: settings/xfdesktop-background-settings.c:1417
 msgid "Spanning screens"
 msgstr "Аб'яднаныя экраны"
 
-#: settings/xfdesktop-background-settings.c:1720
+#: settings/xfdesktop-background-settings.c:1795
 msgid "Image files"
 msgstr "Файлы выяў"
 
 #. Change the title of the file chooser dialog
-#: settings/xfdesktop-background-settings.c:1728
+#: settings/xfdesktop-background-settings.c:1803
 msgid "Select a Directory"
 msgstr "Абраць каталог"
 
@@ -237,6 +243,10 @@ msgstr ""
 msgid "Set desktop background and menu and icon behavior"
 msgstr "Наладка фону працоўнага стала, меню і значкоў"
 
+#: settings/xfce-backdrop-settings.desktop.in:17
+msgid "desktop;background;wallpaper;settings;xfce;"
+msgstr ""
+
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:19
 msgid "Solid color"
 msgstr "Суцэльны колер"
@@ -253,135 +263,135 @@ msgstr "Вертыкальны градыент"
 msgid "Transparent"
 msgstr "Празрыста"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:106
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:137
 msgid "Choose the folder to select wallpapers from."
 msgstr "Абярыце каталог з фонавымі выявамі."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:117
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:148
 msgid "Apply"
 msgstr "Ужыць"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:132
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:163
 msgid "St_yle:"
 msgstr "Сты_ль:"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:147
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:178
 msgid "Specify how the image will be resized to fit the screen."
 msgstr "Вызначыць спосаб змены памеру выявы да памераў экрана."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:149
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:180
 #: settings/xfdesktop-settings-ui.glade:60
 #: settings/xfdesktop-settings-ui.glade:97
 #: settings/xfdesktop-settings-ui.glade:117
 msgid "None"
 msgstr "Ніякі"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:150
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:181
 msgid "Centered"
 msgstr "Па цэнтры"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:151
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:182
 msgid "Tiled"
 msgstr "Пліткамі"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:152
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:183
 msgid "Stretched"
 msgstr "Расцягнута"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:153
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:184
 msgid "Scaled"
 msgstr "Маштабавана"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:154
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:185
 msgid "Zoomed"
 msgstr "Павялічана"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:155
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:186
 msgid "Spanning Screens"
 msgstr "Аб'яднаныя экраны"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:168
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:199
 msgid "Specify the style of the color drawn behind the backdrop image."
 msgstr "Вызначыць стыль колеру пад фонавай выявай."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:190
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:221
 msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
 msgstr "Вызначыць суцэльны колер, \"левы\" альбо \"верхні\" колер градыента."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:191
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:222
 msgid "Select First Color"
 msgstr "Абраць першы колер"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:204
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:235
 msgid "Specifies the \"right\" or \"bottom\" color of the gradient."
 msgstr "Вызначыць \"правы\" альбо \"ніжні\" колер градыента."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:205
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:236
 msgid "Select Second Color"
 msgstr "Абраць другі колер"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:214
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:245
 msgid "Apply to all _workspaces"
 msgstr "Ужыць да ўсіх _працоўных прастораў"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:232
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:263
 msgid "_Folder:"
 msgstr "_Каталог:"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:247
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:278
 msgid "C_olor:"
 msgstr "Ко_лер:"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:302
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:333
 msgid "Change the _background "
 msgstr "Змяніць _фон "
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:307
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:338
 msgid ""
 "Automatically select a different background from the current directory."
 msgstr "Аўтаматычна абіраць фонавую выяву з бягучага каталога."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:323
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:354
 msgid "Specify how often the background will change."
 msgstr "Як часта змяняць фонавую выяву."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:325
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:356
 msgid "in seconds:"
 msgstr "праз секунд:"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:326
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:357
 msgid "in minutes:"
 msgstr "праз хвілін:"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:327
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:358
 msgid "in hours:"
 msgstr "праз гадзін:"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:328
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:359
 msgid "at start up"
 msgstr "падчас запуску"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:329
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:360
 msgid "every hour"
 msgstr "штогадзіну"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:330
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:361
 msgid "every day"
 msgstr "штодзень"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:331
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:362
 msgid "chronologically"
 msgstr "храналагічна"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:346
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:377
 msgid "Amount of time before a different background is selected."
 msgstr "Прамежак часу паміж зменай фонавых выяў."
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:357
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:388
 msgid "_Random Order"
 msgstr "_Выпадковы парадак"
 
-#: settings/xfdesktop-settings-appearance-frame-ui.glade:363
+#: settings/xfdesktop-settings-appearance-frame-ui.glade:394
 msgid ""
 "Randomly selects another image from the same directory when the wallpaper is"
 " to cycle."
@@ -550,7 +560,7 @@ msgid "48"
 msgstr "48"
 
 #: settings/xfdesktop-settings-ui.glade:840
-msgid "_Font size:"
+msgid "Fo_nt size:"
 msgstr ""
 
 #: settings/xfdesktop-settings-ui.glade:860
@@ -582,16 +592,16 @@ msgid "<b>Appearance</b>"
 msgstr "<b>Выгляд</b>"
 
 #: settings/xfdesktop-settings-ui.glade:1019
-msgid "Icon placement _orientation:"
+msgid "Placement _direction:"
 msgstr ""
 
 #: settings/xfdesktop-settings-ui.glade:1059
-msgid "Show icons on _primary display"
+msgid "Show icons only on _primary display"
 msgstr ""
 
 #: settings/xfdesktop-settings-ui.glade:1074
-msgid "Single _click to activate items"
-msgstr "Задзейнічаць элементы _адной пстрычкай"
+msgid "Single click to _activate items"
+msgstr ""
 
 #: settings/xfdesktop-settings-ui.glade:1090
 msgid "_Underline text on hover"
@@ -1106,13 +1116,13 @@ msgstr "Не атрымалася перадаць файлы"
 msgid "Arrange Icons"
 msgstr ""
 
-#: src/xfdesktop-icon-view-manager.c:508
+#: src/xfdesktop-icon-view-manager.c:509
 msgid ""
 "This will reorder all desktop items and place them on different screen positions.\n"
 "Are you sure?"
 msgstr ""
 
-#: src/xfdesktop-icon-view-manager.c:512
+#: src/xfdesktop-icon-view-manager.c:513
 msgid "Do _not ask me again"
 msgstr "Больш н_е пытацца"
 
