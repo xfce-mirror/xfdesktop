@@ -2012,6 +2012,7 @@ xfdesktop_icon_view_show_tooltip(GtkWidget *widget,
 
             gtk_widget_show_all(box);
             gtk_tooltip_set_custom(tooltip, box);
+            gtk_tooltip_set_tip_area(tooltip, &icon_view->item_under_pointer->slot_extents);
 
             result = TRUE;
         }
