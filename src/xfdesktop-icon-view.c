@@ -492,7 +492,6 @@ static void xfdesktop_icon_view_add_move_binding(GtkBindingSet *binding_set,
                                                  GtkMovementStep step,
                                                  gint count);
 
-static void xfdesktop_icon_view_init_builtin_cell_renderers(XfdesktopIconView *icon_view);
 static void xfdesktop_icon_view_populate_items(XfdesktopIconView *icon_view);
 static gboolean xfdesktop_icon_view_place_item(XfdesktopIconView *icon_view,
                                                ViewItem *item,
@@ -1029,6 +1028,32 @@ xfdesktop_icon_view_init(XfdesktopIconView *icon_view)
     icon_view->highlight_col = -1;
 
     icon_view->draw_focus = TRUE;
+
+    icon_view->icon_renderer = gtk_cell_renderer_pixbuf_new();
+    icon_view->text_renderer = xfdesktop_cell_renderer_icon_label_new();
+
+    PangoAttrList *attr_list = NULL;
+#if PANGO_VERSION_CHECK (1, 44, 0)
+    attr_list = pango_attr_list_new();
+    {
+        PangoAttribute *attr = pango_attr_insert_hyphens_new(FALSE);
+        attr->start_index = 0;
+        attr->end_index = -1;
+        pango_attr_list_change(attr_list, attr);
+    }
+#endif
+
+    g_object_set(icon_view->text_renderer,
+                 "attributes", attr_list,
+                 "underline-when-prelit", icon_view->single_click && icon_view->single_click_underline_hover,
+                 "wrap-mode", PANGO_WRAP_WORD_CHAR,
+                 "xalign", (gfloat)0.5,
+                 "yalign", (gfloat)0.0,
+                 NULL);
+
+    if (attr_list != NULL) {
+        pango_attr_list_unref(attr_list);
+    }
 }
 
 static void
@@ -1068,10 +1093,6 @@ xfdesktop_icon_view_constructed(GObject *object)
 
     context = gtk_widget_get_style_context(GTK_WIDGET(icon_view));
     gtk_style_context_add_class(context, GTK_STYLE_CLASS_VIEW);
-
-    icon_view->icon_renderer = gtk_cell_renderer_pixbuf_new();
-    icon_view->text_renderer = xfdesktop_cell_renderer_icon_label_new();
-    xfdesktop_icon_view_init_builtin_cell_renderers(icon_view);
 
     for (gsize i = 0; i < G_N_ELEMENTS(setting_bindings); ++i) {
         if (setting_bindings[i].setting_type == GDK_TYPE_RGBA) {
@@ -2728,24 +2749,22 @@ xfdesktop_icon_view_style_updated(GtkWidget *widget)
     XF_DEBUG("ellipsize icon label is %s", icon_view->ellipsize_icon_labels ? "true" : "false");
     XF_DEBUG("label radius is %f", icon_view->label_radius);
 
-    if (icon_view->text_renderer != NULL) {
-        gint width = TEXT_WIDTH + icon_view->label_radius * 2;
-        g_object_set(icon_view->text_renderer,
-                     "alignment", icon_view->center_text
-                                  ? PANGO_ALIGN_CENTER
-                                  : (gtk_widget_get_direction(GTK_WIDGET(icon_view)) == GTK_TEXT_DIR_RTL
-                                     ? PANGO_ALIGN_RIGHT
-                                     : PANGO_ALIGN_LEFT),
-                     "align-set", TRUE,
-                     "ellipsize", icon_view->ellipsize_icon_labels ? PANGO_ELLIPSIZE_END : PANGO_ELLIPSIZE_NONE,
-                     "ellipsize-set", TRUE,
-                     "unselected-height", (gint)(TEXT_HEIGHT + icon_view->label_radius * 2),
-                     "width", (gint)width,
-                     "wrap-width", (gint)(width * PANGO_SCALE),
-                     "xpad", (gint)icon_view->label_radius,
-                     "ypad", (gint)icon_view->label_radius,
-                     NULL);
-    }
+    gint width = TEXT_WIDTH + icon_view->label_radius * 2;
+    g_object_set(icon_view->text_renderer,
+                 "alignment", icon_view->center_text
+                 ? PANGO_ALIGN_CENTER
+                 : (gtk_widget_get_direction(GTK_WIDGET(icon_view)) == GTK_TEXT_DIR_RTL
+                    ? PANGO_ALIGN_RIGHT
+                    : PANGO_ALIGN_LEFT),
+                 "align-set", TRUE,
+                 "ellipsize", icon_view->ellipsize_icon_labels ? PANGO_ELLIPSIZE_END : PANGO_ELLIPSIZE_NONE,
+                 "ellipsize-set", TRUE,
+                 "unselected-height", (gint)(TEXT_HEIGHT + icon_view->label_radius * 2),
+                 "width", (gint)width,
+                 "wrap-width", (gint)(width * PANGO_SCALE),
+                 "xpad", (gint)icon_view->label_radius,
+                 "ypad", (gint)icon_view->label_radius,
+                 NULL);
 
     if (gtk_widget_get_realized(widget)) {
         if (need_grid_resize) {
@@ -2998,8 +3017,6 @@ xfdesktop_icon_view_set_cell_properties(XfdesktopIconView *icon_view,
     GtkTreeIter iter;
 
     g_return_if_fail(GTK_IS_TREE_MODEL(icon_view->model));
-    g_return_if_fail(icon_view->icon_renderer != NULL);
-    g_return_if_fail(icon_view->text_renderer != NULL);
 
     if (icon_view->pixbuf_column != -1) {
         cairo_surface_t *surface = xfdesktop_icon_view_get_surface_for_item(icon_view, item);
@@ -3027,9 +3044,6 @@ xfdesktop_icon_view_set_cell_properties(XfdesktopIconView *icon_view,
 static void
 xfdesktop_icon_view_unset_cell_properties(XfdesktopIconView *icon_view)
 {
-    g_return_if_fail(icon_view->icon_renderer != NULL);
-    g_return_if_fail(icon_view->text_renderer != NULL);
-
     g_object_set(icon_view->icon_renderer,
                  "surface", NULL,
                  NULL);
@@ -4031,37 +4045,6 @@ xfdesktop_check_icon_clicked(gconstpointer data,
 }
 
 static void
-xfdesktop_icon_view_init_builtin_cell_renderers(XfdesktopIconView *icon_view)
-{
-    PangoAttrList *attr_list = NULL;
-
-    g_return_if_fail(icon_view->icon_renderer != NULL);
-    g_return_if_fail(icon_view->text_renderer != NULL);
-
-#if PANGO_VERSION_CHECK (1, 44, 0)
-    attr_list = pango_attr_list_new();
-    {
-        PangoAttribute *attr = pango_attr_insert_hyphens_new(FALSE);
-        attr->start_index = 0;
-        attr->end_index = -1;
-        pango_attr_list_change(attr_list, attr);
-    }
-#endif
-
-    g_object_set(icon_view->text_renderer,
-                 "attributes", attr_list,
-                 "underline-when-prelit", icon_view->single_click && icon_view->single_click_underline_hover,
-                 "wrap-mode", PANGO_WRAP_WORD_CHAR,
-                 "xalign", (gfloat)0.5,
-                 "yalign", (gfloat)0.0,
-                 NULL);
-
-    if (attr_list != NULL) {
-        pango_attr_list_unref(attr_list);
-    }
-}
-
-static void
 xfdesktop_icon_view_populate_items(XfdesktopIconView *icon_view)
 {
     g_return_if_fail(icon_view->model != NULL);
@@ -4902,11 +4885,9 @@ xfdesktop_icon_view_set_font_size(XfdesktopIconView *icon_view,
 
     icon_view->font_size = font_size_points;
 
-    if (icon_view->text_renderer != NULL) {
-        g_object_set(icon_view->text_renderer,
-                     "size-points", font_size_points,
-                     NULL);
-    }
+    g_object_set(icon_view->text_renderer,
+                 "size-points", font_size_points,
+                 NULL);
 
     if (icon_view->font_size_set && gtk_widget_get_realized(GTK_WIDGET(icon_view))) {
         xfdesktop_icon_view_size_grid(icon_view);
@@ -4935,11 +4916,9 @@ xfdesktop_icon_view_set_use_font_size(XfdesktopIconView *icon_view,
 
     icon_view->font_size_set = use_font_size;
 
-    if (icon_view->text_renderer != NULL) {
-        g_object_set(icon_view->text_renderer,
-                     "size-points-set", use_font_size,
-                     NULL);
-    }
+    g_object_set(icon_view->text_renderer,
+                 "size-points-set", use_font_size,
+                 NULL);
 
     if (gtk_widget_get_realized(GTK_WIDGET(icon_view))) {
         xfdesktop_icon_view_size_grid(icon_view);
@@ -4961,16 +4940,14 @@ xfdesktop_icon_view_set_center_text(XfdesktopIconView *icon_view,
 
     icon_view->center_text = center_text;
 
-    if (icon_view->text_renderer != NULL) {
-        g_object_set(icon_view->text_renderer,
-                     "alignment", center_text
-                     ? PANGO_ALIGN_CENTER
-                     : (gtk_widget_get_direction(GTK_WIDGET(icon_view)) == GTK_TEXT_DIR_RTL
-                        ? PANGO_ALIGN_RIGHT
-                        : PANGO_ALIGN_LEFT),
-                     "align-set", TRUE,
-                     NULL);
-    }
+    g_object_set(icon_view->text_renderer,
+                 "alignment", center_text
+                 ? PANGO_ALIGN_CENTER
+                 : (gtk_widget_get_direction(GTK_WIDGET(icon_view)) == GTK_TEXT_DIR_RTL
+                    ? PANGO_ALIGN_RIGHT
+                    : PANGO_ALIGN_LEFT),
+                 "align-set", TRUE,
+                 NULL);
 
     if (gtk_widget_get_realized(GTK_WIDGET(icon_view))) {
         xfdesktop_icon_view_invalidate_all(icon_view, TRUE);
@@ -5022,7 +4999,7 @@ xfdesktop_icon_view_set_icon_label_fg_color(XfdesktopIconView *icon_view, GdkRGB
     {
         icon_view->label_fg_color = *color;
 
-        if (icon_view->label_fg_color_set && icon_view->text_renderer != NULL) {
+        if (icon_view->label_fg_color_set) {
             insert_icon_label_fg_color_attrs(icon_view);
 
             for (GList *l = icon_view->items; l != NULL; l = l->next) {
@@ -5178,11 +5155,9 @@ xfdesktop_icon_view_set_single_click(XfdesktopIconView *icon_view,
 
     icon_view->single_click = single_click;
 
-    if (icon_view->text_renderer != NULL) {
-        g_object_set(icon_view->text_renderer,
-                     "underline-when-prelit", icon_view->single_click && icon_view->single_click_underline_hover,
-                     NULL);
-    }
+    g_object_set(icon_view->text_renderer,
+                 "underline-when-prelit", icon_view->single_click && icon_view->single_click_underline_hover,
+                 NULL);
 
     if(gtk_widget_get_realized(GTK_WIDGET(icon_view))) {
         for (GList *l = icon_view->selected_items; l != NULL; l = l->next) {
@@ -5202,11 +5177,9 @@ xfdesktop_icon_view_set_single_click_underline_hover(XfdesktopIconView *icon_vie
     if (single_click_underline_hover != icon_view->single_click_underline_hover) {
         icon_view->single_click_underline_hover = single_click_underline_hover;
 
-        if (icon_view->text_renderer != NULL) {
-            g_object_set(icon_view->text_renderer,
-                         "underline-when-prelit", icon_view->single_click && icon_view->single_click_underline_hover,
-                         NULL);
-        }
+        g_object_set(icon_view->text_renderer,
+                     "underline-when-prelit", icon_view->single_click && icon_view->single_click_underline_hover,
+                     NULL);
 
         if (gtk_widget_get_realized(GTK_WIDGET(icon_view)) && icon_view->item_under_pointer != NULL) {
             ViewItem *item = icon_view->item_under_pointer;
