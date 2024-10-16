@@ -786,18 +786,12 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
                                                               0, MAX_TOOLTIP_ICON_SIZE, DEFAULT_TOOLTIP_ICON_SIZE,
                                                               G_PARAM_READABLE));
 
-#define PARAM_FLAGS  (G_PARAM_READWRITE \
-                      | G_PARAM_CONSTRUCT \
-                      | G_PARAM_STATIC_NAME \
-                      | G_PARAM_STATIC_NICK \
-                      | G_PARAM_STATIC_BLURB)
-
     g_object_class_install_property(gobject_class, PROP_CHANNEL,
                                     g_param_spec_object("channel",
                                                         "channel",
                                                         "channel",
                                                         XFCONF_TYPE_CHANNEL,
-                                                        (PARAM_FLAGS | G_PARAM_CONSTRUCT_ONLY) & ~G_PARAM_CONSTRUCT));
+                                                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS));
 
     g_object_class_install_property(gobject_class,
                                     PROP_SCREEN,
@@ -812,14 +806,14 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
                                                         "model",
                                                         "model",
                                                         GTK_TYPE_TREE_MODEL,
-                                                        PARAM_FLAGS));
+                                                        G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     g_object_class_install_property(gobject_class, PROP_ICON_SIZE,
                                     g_param_spec_int("icon-size",
                                                      "icon size",
                                                      "icon size",
                                                      MIN_ICON_SIZE, MAX_ICON_SIZE, DEFAULT_ICON_SIZE,
-                                                     PARAM_FLAGS));
+                                                     G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS));
 
     g_object_class_install_property(gobject_class, PROP_ICON_WIDTH,
                                     g_param_spec_int("icon-width",
@@ -840,21 +834,21 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
                                                         "icon font size",
                                                         "icon font size",
                                                         MIN_ICON_FONT_SIZE, MAX_ICON_FONT_SIZE, DEFAULT_ICON_FONT_SIZE,
-                                                        PARAM_FLAGS));
+                                                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS));
 
     g_object_class_install_property(gobject_class, PROP_ICON_FONT_SIZE_SET,
                                     g_param_spec_boolean("icon-font-size-set",
                                                          "icon font size set",
                                                          "icon font size set",
                                                          DEFAULT_ICON_FONT_SIZE_SET,
-                                                         PARAM_FLAGS));
+                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS));
 
     g_object_class_install_property(gobject_class, PROP_ICON_CENTER_TEXT,
                                     g_param_spec_boolean("icon-center-text",
                                                          "icon center text",
                                                          "icon center text",
                                                          DEFAULT_ICON_CENTER_TEXT,
-                                                         PARAM_FLAGS));
+                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS));
 
     g_object_class_install_property(gobject_class,
                                     PROP_ICON_LABEL_FG_COLOR,
@@ -893,28 +887,28 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
                                                          "show tooltips",
                                                          "show tooltips on icon hover",
                                                          DEFAULT_SHOW_TOOLTIPS,
-                                                         PARAM_FLAGS));
+                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS));
 
     g_object_class_install_property(gobject_class, PROP_SINGLE_CLICK,
                                     g_param_spec_boolean("single-click",
                                                          "single-click",
                                                          "single-click",
                                                          DEFAULT_SINGLE_CLICK,
-                                                         PARAM_FLAGS));
+                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS));
 
     g_object_class_install_property(gobject_class, PROP_SINGLE_CLICK_UNDERLINE_HOVER,
                                     g_param_spec_boolean("single-click-underline-hover",
                                                          "single-click-underline-hover",
                                                          "single-click-underline-hover",
                                                          DEFAULT_SINGLE_CLICK_ULINE,
-                                                         PARAM_FLAGS));
+                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS));
 
     g_object_class_install_property(gobject_class, PROP_GRAVITY,
                                     g_param_spec_int("gravity",
                                                      "gravity",
                                                      "set gravity of icons placement",
                                                      MIN_GRAVITY, MAX_GRAVITY, DEFAULT_GRAVITY,
-                                                     PARAM_FLAGS));
+                                                     G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS));
 #define DECL_COLUMN_PROP(prop_id, name) \
     g_object_class_install_property(gobject_class, \
                                     prop_id, \
@@ -924,8 +918,9 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
                                                      -1, \
                                                      G_MAXINT, \
                                                      -1, \
-                                                     PARAM_FLAGS))
+                                                     G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS))
 
+    // NB: be sure to initialize these to -1 in xfdesktop_icon_view_init()
     DECL_COLUMN_PROP(PROP_PIXBUF_COLUMN, "pixbuf-column");
     DECL_COLUMN_PROP(PROP_ICON_OPACITY_COLUMN, "icon-opacity-column");
     DECL_COLUMN_PROP(PROP_TEXT_COLUMN, "text-column");
@@ -937,7 +932,6 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
     DECL_COLUMN_PROP(PROP_COL_COLUMN, "col-column");
 
 #undef DECL_COLUMN_PROP
-#undef PARAM_FLAGS
 
     xfdesktop_icon_view_add_move_binding(binding_set, GDK_KEY_Up, 0,
                                          GTK_MOVEMENT_DISPLAY_LINES, -1);
@@ -993,6 +987,7 @@ xfdesktop_icon_view_init(XfdesktopIconView *icon_view)
     icon_view->icon_opacity_column = -1;
     icon_view->text_column = -1;
     icon_view->search_column = -1;
+    icon_view->sort_priority_column = -1;
     icon_view->tooltip_icon_column = -1;
     icon_view->tooltip_text_column = -1;
     icon_view->row_column = -1;
