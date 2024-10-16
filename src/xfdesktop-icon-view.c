@@ -2035,7 +2035,11 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget, GdkEventMotion *evt) {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
     gboolean ret = FALSE;
 
-    if (icon_view->maybe_begin_drag && icon_view->item_under_pointer != NULL && !icon_view->definitely_dragging) {
+    if (icon_view->maybe_begin_drag
+        && icon_view->cursor != NULL
+        && icon_view->item_under_pointer != NULL
+        && !icon_view->definitely_dragging)
+    {
         /* we might have the start of an icon click + drag here */
         icon_view->definitely_dragging = xfdesktop_icon_view_maybe_begin_drag(icon_view, evt);
         if (icon_view->definitely_dragging) {
