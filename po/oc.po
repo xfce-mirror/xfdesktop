@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-10-15 00:54+0200\n"
+"POT-Creation-Date: 2024-10-16 01:05+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
-"Last-Translator: Cédric Valmary <cvalmary@yahoo.fr>, 2013,2016\n"
+"Last-Translator: Quentin PAGÈS, 2020-2024\n"
 "Language-Team: Occitan (post 1500) (http://app.transifex.com/xfce/xfdesktop/language/oc/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -74,7 +74,7 @@ msgstr "<b>%s</b>\nTipe : %s\nTalha : %s"
 #: settings/xfdesktop-background-settings.c:516
 #, c-format
 msgid "Unable to load images from folder \"%s\""
-msgstr ""
+msgstr "Cargament impossible dels imatges del dorsièr « %s »"
 
 #: settings/xfdesktop-background-settings.c:609
 #, c-format
@@ -195,9 +195,9 @@ msgstr "Impossible d'aviar « %s » :"
 #: settings/xfdesktop-icon-settings.c:99 src/xfdesktop-file-icon-manager.c:785
 #: src/xfdesktop-file-icon-manager.c:1029
 #: src/xfdesktop-file-icon-manager.c:1077
-#: src/xfdesktop-file-icon-manager.c:1350 src/xfdesktop-file-utils.c:567
-#: src/xfdesktop-file-utils.c:1451 src/xfdesktop-file-utils.c:1476
-#: src/xfdesktop-file-utils.c:1583 src/xfdesktop-file-utils.c:1647
+#: src/xfdesktop-file-icon-manager.c:1350 src/xfdesktop-file-utils.c:570
+#: src/xfdesktop-file-utils.c:1454 src/xfdesktop-file-utils.c:1479
+#: src/xfdesktop-file-utils.c:1586 src/xfdesktop-file-utils.c:1650
 msgid "Launch Error"
 msgstr "Error al moment de l'aviada"
 
@@ -207,15 +207,15 @@ msgstr "Error al moment de l'aviada"
 #: src/xfdesktop-file-icon-manager.c:1033
 #: src/xfdesktop-file-icon-manager.c:1081
 #: src/xfdesktop-file-icon-manager.c:1352
-#: src/xfdesktop-file-icon-manager.c:3674 src/xfdesktop-file-utils.c:570
-#: src/xfdesktop-file-utils.c:688 src/xfdesktop-file-utils.c:743
-#: src/xfdesktop-file-utils.c:807 src/xfdesktop-file-utils.c:868
-#: src/xfdesktop-file-utils.c:929 src/xfdesktop-file-utils.c:977
-#: src/xfdesktop-file-utils.c:996 src/xfdesktop-file-utils.c:1110
-#: src/xfdesktop-file-utils.c:1206 src/xfdesktop-file-utils.c:1394
-#: src/xfdesktop-file-utils.c:1455 src/xfdesktop-file-utils.c:1478
-#: src/xfdesktop-file-utils.c:1587 src/xfdesktop-file-utils.c:1651
-#: src/xfdesktop-file-utils.c:1722 src/xfdesktop-file-utils.c:1792
+#: src/xfdesktop-file-icon-manager.c:3674 src/xfdesktop-file-utils.c:573
+#: src/xfdesktop-file-utils.c:691 src/xfdesktop-file-utils.c:746
+#: src/xfdesktop-file-utils.c:810 src/xfdesktop-file-utils.c:871
+#: src/xfdesktop-file-utils.c:932 src/xfdesktop-file-utils.c:980
+#: src/xfdesktop-file-utils.c:999 src/xfdesktop-file-utils.c:1113
+#: src/xfdesktop-file-utils.c:1209 src/xfdesktop-file-utils.c:1397
+#: src/xfdesktop-file-utils.c:1458 src/xfdesktop-file-utils.c:1481
+#: src/xfdesktop-file-utils.c:1590 src/xfdesktop-file-utils.c:1654
+#: src/xfdesktop-file-utils.c:1725 src/xfdesktop-file-utils.c:1795
 #: src/xfdesktop-volume-icon.c:395 src/xfdesktop-volume-icon.c:443
 #: src/xfdesktop-volume-icon.c:525
 msgid "_Close"
@@ -245,7 +245,7 @@ msgstr "Reglar lo fons d'ecran del burèu, lo menú e lo comportament de las ic�
 
 #: settings/xfce-backdrop-settings.desktop.in:17
 msgid "desktop;background;wallpaper;settings;xfce;"
-msgstr ""
+msgstr "burèu;fons;rèireplan;papièr;pintrat;paramètres;reglatges;configuracion;xfce;"
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:19
 msgid "Solid color"
@@ -517,7 +517,7 @@ msgstr "Afichar las icònas _de las aplicacions dins lo menú"
 
 #: settings/xfdesktop-settings-ui.glade:583
 msgid "List windows on a_ll workspaces"
-msgstr ""
+msgstr "Listar las fenèstras sus totes _los espacis de trabalh"
 
 #: settings/xfdesktop-settings-ui.glade:600
 msgid "Show workspace _names in list"
@@ -533,7 +533,7 @@ msgstr "Far la lista de las fenèstras _pegantas unicament dins l'espaci de trab
 
 #: settings/xfdesktop-settings-ui.glade:662
 msgid "Show a section listing all _urgent windows on other workspaces"
-msgstr ""
+msgstr "Afichar una seleccion que lista totas las fenèstras _urgentas dels autres espacis de trabalh"
 
 #: settings/xfdesktop-settings-ui.glade:678
 msgid "Show a_dd and remove workspace options in list"
@@ -561,7 +561,7 @@ msgstr "48"
 
 #: settings/xfdesktop-settings-ui.glade:840
 msgid "Fo_nt size:"
-msgstr ""
+msgstr "Talha p_olissa :"
 
 #: settings/xfdesktop-settings-ui.glade:860
 msgid "12"
@@ -581,7 +581,7 @@ msgstr "64"
 
 #: settings/xfdesktop-settings-ui.glade:903
 msgid "Font co_lor:"
-msgstr ""
+msgstr "Co_lor polissa :"
 
 #: settings/xfdesktop-settings-ui.glade:941
 msgid "Label bac_kground color:"
@@ -597,11 +597,11 @@ msgstr ""
 
 #: settings/xfdesktop-settings-ui.glade:1059
 msgid "Show icons only on _primary display"
-msgstr ""
+msgstr "Afichar las icònas sonque sus l’ecran _principal"
 
 #: settings/xfdesktop-settings-ui.glade:1074
 msgid "Single click to _activate items"
-msgstr ""
+msgstr "Un sol clic per _activar los elements"
 
 #: settings/xfdesktop-settings-ui.glade:1090
 msgid "_Underline text on hover"
@@ -643,19 +643,23 @@ msgstr "Seleccionatz aquesta opcion per representar los fichièrs imatges o vid�
 msgid "Show \"Delete\" option in file context menu"
 msgstr "Afichar l’opcion « Suprimir » al menú contextual fichièr"
 
-#: settings/xfdesktop-settings-ui.glade:1304
+#: settings/xfdesktop-settings-ui.glade:1300
+msgid "_Arrange folders before files"
+msgstr "_Dispausar los dorsièrs abans los fichièrs"
+
+#: settings/xfdesktop-settings-ui.glade:1321
 msgid "General"
 msgstr "General"
 
-#: settings/xfdesktop-settings-ui.glade:1348
+#: settings/xfdesktop-settings-ui.glade:1365
 msgid "Default Icons"
 msgstr "Icònas per defaut"
 
-#: settings/xfdesktop-settings-ui.glade:1378
+#: settings/xfdesktop-settings-ui.glade:1395
 msgid "_File/Launcher Icons"
 msgstr "Icònas _fichièr/aviador"
 
-#: settings/xfdesktop-settings-ui.glade:1404
+#: settings/xfdesktop-settings-ui.glade:1421
 msgid "_Keyboard Shortcuts"
 msgstr "_Acorchis clavièr"
 
@@ -742,12 +746,12 @@ msgstr "    Icònas del burèu :       %s\n"
 msgid "    Desktop File Icons:  %s\n"
 msgstr "   Icònas dels fichièrs del burèu :  %s\n"
 
-#: src/xfdesktop-file-icon-manager.c:718 src/xfdesktop-file-utils.c:739
-#: src/xfdesktop-file-utils.c:803
+#: src/xfdesktop-file-icon-manager.c:718 src/xfdesktop-file-utils.c:742
+#: src/xfdesktop-file-utils.c:806
 msgid "Rename Error"
 msgstr "Error de cambiament de nom"
 
-#: src/xfdesktop-file-icon-manager.c:719 src/xfdesktop-file-utils.c:804
+#: src/xfdesktop-file-icon-manager.c:719 src/xfdesktop-file-utils.c:807
 msgid "The files could not be renamed"
 msgstr "Los fichièrs pòdon pas èsser renomenats"
 
@@ -918,7 +922,7 @@ msgstr "_Desplaçar aicí"
 msgid "_Link Here"
 msgstr "_Ligar aicí"
 
-#: src/xfdesktop-file-icon-manager.c:3554 src/xfdesktop-file-utils.c:1138
+#: src/xfdesktop-file-icon-manager.c:3554 src/xfdesktop-file-utils.c:1141
 #: src/xfdesktop-icon-view-manager.c:491
 msgid "_Cancel"
 msgstr "_Anullar"
@@ -940,7 +944,7 @@ msgstr "Una error d'icòna de fichièr de burèu s'es producha"
 msgid "Desktop Folder Error"
 msgstr "Error dins lo repertòri del burèu"
 
-#: src/xfdesktop-file-icon-model.c:510
+#: src/xfdesktop-file-icon-model.c:552
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr "Un fichièr normal qu'a lo meteis nom existís ja. Suprimissètz-lo o lo tornar nomenar."
@@ -970,151 +974,151 @@ msgid "%x at %X"
 msgstr "%x a %X"
 
 #. the file_time is invalid
-#: src/xfdesktop-file-utils.c:206 src/xfdesktop-file-utils.c:1717
+#: src/xfdesktop-file-utils.c:206 src/xfdesktop-file-utils.c:1720
 msgid "Unknown"
 msgstr "Desconegut"
 
-#: src/xfdesktop-file-utils.c:332
+#: src/xfdesktop-file-utils.c:335
 #, c-format
 msgid "%.*s %u%s"
 msgstr "%.*s %u%s"
 
-#: src/xfdesktop-file-utils.c:568
+#: src/xfdesktop-file-utils.c:571
 msgid "The folder could not be opened"
 msgstr "Lo repertòri a pas pogut èsser dobèrt"
 
-#: src/xfdesktop-file-utils.c:685
+#: src/xfdesktop-file-utils.c:688
 msgid "Error"
 msgstr "Error"
 
-#: src/xfdesktop-file-utils.c:686
+#: src/xfdesktop-file-utils.c:689
 msgid "The requested operation could not be completed"
 msgstr "L'operacion demandada a pas pogut èsser acabada"
 
-#: src/xfdesktop-file-utils.c:740
+#: src/xfdesktop-file-utils.c:743
 msgid "The file could not be renamed"
 msgstr "Lo fichièr a pas pogut èsser renomenada"
 
-#: src/xfdesktop-file-utils.c:741 src/xfdesktop-file-utils.c:805
-#: src/xfdesktop-file-utils.c:866 src/xfdesktop-file-utils.c:1392
-#: src/xfdesktop-file-utils.c:1453 src/xfdesktop-file-utils.c:1585
-#: src/xfdesktop-file-utils.c:1649 src/xfdesktop-file-utils.c:1790
+#: src/xfdesktop-file-utils.c:744 src/xfdesktop-file-utils.c:808
+#: src/xfdesktop-file-utils.c:869 src/xfdesktop-file-utils.c:1395
+#: src/xfdesktop-file-utils.c:1456 src/xfdesktop-file-utils.c:1588
+#: src/xfdesktop-file-utils.c:1652 src/xfdesktop-file-utils.c:1793
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
 msgstr "Aquesta foncionalitat requerís la preséncia d'un gestionari de fichièrs (coma Thunar)."
 
-#: src/xfdesktop-file-utils.c:864
+#: src/xfdesktop-file-utils.c:867
 msgid "Delete Error"
 msgstr "Error de supression"
 
-#: src/xfdesktop-file-utils.c:865
+#: src/xfdesktop-file-utils.c:868
 msgid "The selected files could not be deleted"
 msgstr "Los fichièrs seleccionats an pas pogut èsser suprimits"
 
-#: src/xfdesktop-file-utils.c:925 src/xfdesktop-file-utils.c:973
+#: src/xfdesktop-file-utils.c:928 src/xfdesktop-file-utils.c:976
 msgid "Trash Error"
 msgstr "Error de l'escobilhièr"
 
-#: src/xfdesktop-file-utils.c:926
+#: src/xfdesktop-file-utils.c:929
 msgid "The selected files could not be moved to the trash"
 msgstr "Los fichièrs seleccionats an pas pogut èsser desplaçats dins l'escobilhièr"
 
-#: src/xfdesktop-file-utils.c:927 src/xfdesktop-file-utils.c:975
+#: src/xfdesktop-file-utils.c:930 src/xfdesktop-file-utils.c:978
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
 msgstr "Aquesta foncionalitat requesís la preséncia d'un servici d'escobilhièr (tal coma lo qu'es provesit per Thunar)."
 
-#: src/xfdesktop-file-utils.c:974
+#: src/xfdesktop-file-utils.c:977
 msgid "Could not empty the trash"
 msgstr "Impossible de voidar l'escobilhièr"
 
-#: src/xfdesktop-file-utils.c:984
+#: src/xfdesktop-file-utils.c:987
 #, c-format
 msgid "Unable to create new file \"%1$s\" from template file \"%2$s\": %3$s"
 msgstr "Creacion impossible del fichièr novèl « %1$s » a partir del modèl« %2$s » : %3$s"
 
-#: src/xfdesktop-file-utils.c:990 src/xfdesktop-file-utils.c:1104
-#: src/xfdesktop-file-utils.c:1200
+#: src/xfdesktop-file-utils.c:993 src/xfdesktop-file-utils.c:1107
+#: src/xfdesktop-file-utils.c:1203
 msgid "Create File Error"
 msgstr "Error de creacion del fichièr"
 
-#: src/xfdesktop-file-utils.c:992 src/xfdesktop-file-utils.c:1266
+#: src/xfdesktop-file-utils.c:995 src/xfdesktop-file-utils.c:1269
 msgid "Could not create a new file"
 msgstr "Impossible de crear un fichièr novèl"
 
-#: src/xfdesktop-file-utils.c:1005
+#: src/xfdesktop-file-utils.c:1008
 msgid "New Empty File"
 msgstr "Novèl fichièr void"
 
-#: src/xfdesktop-file-utils.c:1100
+#: src/xfdesktop-file-utils.c:1103
 #, c-format
 msgid "Unable to create new folder \"%1$s\": %2$s"
 msgstr "Creacion impossibla del dorsièr novèl « %1$s » : %2$s"
 
-#: src/xfdesktop-file-utils.c:1106 src/xfdesktop-file-utils.c:1299
+#: src/xfdesktop-file-utils.c:1109 src/xfdesktop-file-utils.c:1302
 msgid "Could not create a new folder"
 msgstr "Creacion impossibla d’un dorsièr novèl"
 
-#: src/xfdesktop-file-utils.c:1140
+#: src/xfdesktop-file-utils.c:1143
 msgid "C_reate"
 msgstr "C_rear"
 
-#: src/xfdesktop-file-utils.c:1198
+#: src/xfdesktop-file-utils.c:1201
 #, c-format
 msgid "Cannot convert filename \"%s\" to the local encoding"
 msgstr "Pòt pas convertir lo nom del fichièr « %s » cap a l'encodatge local"
 
-#: src/xfdesktop-file-utils.c:1260
+#: src/xfdesktop-file-utils.c:1263
 #, c-format
 msgid "Create Document from template \"%s\""
 msgstr "Crear un document amb lo modèl « %s »"
 
-#: src/xfdesktop-file-utils.c:1263 src/xfdesktop-file-utils.c:1296
+#: src/xfdesktop-file-utils.c:1266 src/xfdesktop-file-utils.c:1299
 msgid "Enter the name:"
 msgstr "Picatz lo nom :"
 
-#: src/xfdesktop-file-utils.c:1288
+#: src/xfdesktop-file-utils.c:1291
 msgid "New Folder"
 msgstr "Novèl dorsièr"
 
-#: src/xfdesktop-file-utils.c:1294
+#: src/xfdesktop-file-utils.c:1297
 msgid "Create New Folder"
 msgstr "Crear un novèl dorsièr"
 
-#: src/xfdesktop-file-utils.c:1390
+#: src/xfdesktop-file-utils.c:1393
 msgid "File Properties Error"
 msgstr "Error de proprietats de fichièr"
 
-#: src/xfdesktop-file-utils.c:1391
+#: src/xfdesktop-file-utils.c:1394
 msgid "The file properties dialog could not be opened"
 msgstr "La bóstia de dialòg de las proprietats del fichièr a pas pogut èsser dobèrt"
 
-#: src/xfdesktop-file-utils.c:1452
+#: src/xfdesktop-file-utils.c:1455
 msgid "The file could not be opened"
 msgstr "Lo fichièr a pas pogut èsser dobèrt"
 
-#: src/xfdesktop-file-utils.c:1473 src/xfdesktop-file-utils.c:1580
+#: src/xfdesktop-file-utils.c:1476 src/xfdesktop-file-utils.c:1583
 #, c-format
 msgid "Failed to run \"%s\""
 msgstr "Impossible d'aviar « %s »"
 
-#: src/xfdesktop-file-utils.c:1648
+#: src/xfdesktop-file-utils.c:1651
 msgid "The application chooser could not be opened"
 msgstr "Lo selector d'aplicacions a pas pogut èsser dobèrt"
 
-#: src/xfdesktop-file-utils.c:1719 src/xfdesktop-file-utils.c:1788
+#: src/xfdesktop-file-utils.c:1722 src/xfdesktop-file-utils.c:1791
 msgid "Transfer Error"
 msgstr "Error de transferiment"
 
-#: src/xfdesktop-file-utils.c:1720 src/xfdesktop-file-utils.c:1789
+#: src/xfdesktop-file-utils.c:1723 src/xfdesktop-file-utils.c:1792
 msgid "The file transfer could not be performed"
 msgstr "Lo transferiment de fichièr a pas pogut èsser efectuat"
 
 #: src/xfdesktop-icon-view-manager.c:488
 msgid "Arrange Icons"
-msgstr ""
+msgstr "Organizar las icònas"
 
 #: src/xfdesktop-icon-view-manager.c:509
 msgid ""
@@ -1280,4 +1284,4 @@ msgstr "_Montar lo volum"
 
 #: src/xfdesktop-window-icon-manager.c:296
 msgid "_Run Program..."
-msgstr ""
+msgstr "_Executar lo programa..."
