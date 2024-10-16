@@ -30,6 +30,7 @@
 #include <math.h>
 #endif
 
+#include <cairo.h>
 #include <gdk/gdk.h>
 #include <gdk/gdkkeysyms.h>
 #include <glib-object.h>
@@ -69,6 +70,9 @@
     "XfdesktopIconView.view.label {" \
     "    background-color: rgba(%u, %u, %u, %s);" \
     "}"
+
+#define GDK_RECT_FROM_CAIRO(crect) (GdkRectangle){ .x = (crect)->x, .y = (crect)->y, .width = (crect)->width, .height = (crect)->height }
+#define CAIRO_RECT_INT_FROM_GDK(grect) (cairo_rectangle_int_t){ .x = (crect)->x, .y = (crect)->y, .width = (crect)->width, .height = (crect)->height }
 
 #if defined(DEBUG) && DEBUG > 0
 #define DUMP_GRID_LAYOUT(icon_view) \
@@ -149,8 +153,7 @@ typedef struct
 
     GdkRectangle icon_extents;
     GdkRectangle text_extents;
-
-    GdkRectangle slot_extents;
+    cairo_region_t *icon_slot_region;
 
     cairo_surface_t *pixbuf_surface;
 
@@ -175,6 +178,7 @@ view_item_new(GtkTreeModel *model, GtkTreeIter *iter)
     item->col = -1;
     item->has_iter = (gtk_tree_model_get_flags(model) & GTK_TREE_MODEL_ITERS_PERSIST) != 0;
     item->sensitive = TRUE;
+    item->icon_slot_region = cairo_region_create();
 
     if (item->has_iter) {
         item->ref.iter = *iter;
@@ -241,6 +245,7 @@ view_item_free(ViewItem *item)
     if (!item->has_iter && item->ref.row_ref != NULL) {
         gtk_tree_row_reference_free(item->ref.row_ref);
     }
+    cairo_region_destroy(item->icon_slot_region);
     g_slice_free(ViewItem, item);
 }
 
@@ -544,10 +549,6 @@ static gboolean xfdesktop_icon_view_get_next_free_grid_position_for_grid(Xfdeskt
                                                                          gint *next_col);
 static gint xfdesktop_check_icon_clicked(gconstpointer data,
                                          gconstpointer user_data);
-
-static inline gboolean xfdesktop_rectangle_contains_point(GdkRectangle *rect,
-                                                          gint x,
-                                                          gint y);
 
 static gboolean xfdesktop_icon_view_show_tooltip(GtkWidget *widget,
                                                  gint x,
@@ -1490,7 +1491,16 @@ xfdesktop_icon_view_set_cursor(XfdesktopIconView *icon_view, ViewItem *item, gbo
 static void
 update_item_under_pointer(XfdesktopIconView *icon_view, GdkWindow *event_window, gdouble x, gdouble y) {
     ViewItem *old_item_under_pointer = icon_view->item_under_pointer;
-    icon_view->item_under_pointer = xfdesktop_icon_view_widget_coords_to_item_internal(icon_view, x, y);
+
+    icon_view->item_under_pointer = NULL;
+    for (GList *l = icon_view->items; l != NULL; l = l->next) {
+        ViewItem *item = l->data;
+
+        if (item->placed && cairo_region_contains_point(item->icon_slot_region, x, y)) {
+            icon_view->item_under_pointer = item;
+            break;
+        }
+    }
 
     if (old_item_under_pointer != icon_view->item_under_pointer) {
         if (old_item_under_pointer != NULL) {
@@ -2012,7 +2022,11 @@ xfdesktop_icon_view_show_tooltip(GtkWidget *widget,
 
             gtk_widget_show_all(box);
             gtk_tooltip_set_custom(tooltip, box);
-            gtk_tooltip_set_tip_area(tooltip, &icon_view->item_under_pointer->slot_extents);
+
+            cairo_rectangle_int_t cextents;
+            cairo_region_get_extents(icon_view->item_under_pointer->icon_slot_region, &cextents);
+            GdkRectangle extents = GDK_RECT_FROM_CAIRO(&cextents);
+            gtk_tooltip_set_tip_area(tooltip, &extents);
 
             result = TRUE;
         }
@@ -2035,7 +2049,11 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget, GdkEventMotion *evt) {
     XfdesktopIconView *icon_view = XFDESKTOP_ICON_VIEW(widget);
     gboolean ret = FALSE;
 
-    if (icon_view->maybe_begin_drag && icon_view->item_under_pointer != NULL && !icon_view->definitely_dragging) {
+    if (icon_view->maybe_begin_drag
+        && icon_view->cursor != NULL
+        && icon_view->item_under_pointer != NULL
+        && !icon_view->definitely_dragging)
+    {
         /* we might have the start of an icon click + drag here */
         icon_view->definitely_dragging = xfdesktop_icon_view_maybe_begin_drag(icon_view, evt);
         if (icon_view->definitely_dragging) {
@@ -2051,14 +2069,13 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget, GdkEventMotion *evt) {
                     && !icon_view->definitely_rubber_banding)
                    || icon_view->definitely_rubber_banding))
     {
-        GdkRectangle old_rect, *new_rect, intersect;
-        cairo_region_t *region;
 
         /* we're dragging with no icon under the cursor -> rubber band start
          * OR, we're already doin' the band -> update it */
 
-        new_rect = &icon_view->band_rect;
+        cairo_rectangle_int_t *new_rect = &icon_view->band_rect;
 
+        cairo_rectangle_int_t old_rect;
         if (!icon_view->definitely_rubber_banding) {
             icon_view->definitely_rubber_banding = TRUE;
             old_rect.x = icon_view->press_start_x;
@@ -2073,12 +2090,11 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget, GdkEventMotion *evt) {
         new_rect->width = ABS(evt->x - icon_view->press_start_x) + 1;
         new_rect->height = ABS(evt->y - icon_view->press_start_y) + 1;
 
-        region = cairo_region_create_rectangle(&old_rect);
+        cairo_region_t *region = cairo_region_create_rectangle(&old_rect);
         cairo_region_union_rectangle(region, new_rect);
 
-        if(gdk_rectangle_intersect(&old_rect, new_rect, &intersect)
-           && intersect.width > 2 && intersect.height > 2)
-        {
+        cairo_rectangle_int_t intersect;
+        if (gdk_rectangle_intersect(&old_rect, new_rect, &intersect) && intersect.width > 2 && intersect.height > 2) {
             cairo_region_t *region_intersect;
 
             /* invalidate border too */
@@ -2093,26 +2109,23 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget, GdkEventMotion *evt) {
         }
 
         gdk_window_invalidate_region(gtk_widget_get_window(widget), region, TRUE);
-        cairo_region_destroy(region);
 
         /* update list of selected icons */
 
         /* first pass: if the rubber band area got smaller at least in
          * one dimension, we can try first to just remove icons that
          * aren't in the band anymore */
-        if(old_rect.width > new_rect->width
-           || old_rect.height > new_rect->height)
-        {
+        if (old_rect.width > new_rect->width || old_rect.height > new_rect->height) {
             GList *l = icon_view->selected_items;
             while(l) {
-                GdkRectangle dummy;
                 ViewItem *item = l->data;
 
                 /* To be removed, it must intersect the old rectangle and
                  * not intersect the new one. This way CTRL + rubber band
                  * works properly (Bug 10275) */
-                if (gdk_rectangle_intersect(&item->slot_extents, &old_rect, NULL)
-                    && !gdk_rectangle_intersect(&item->slot_extents, new_rect, &dummy))
+
+                if (cairo_region_contains_rectangle(item->icon_slot_region, &old_rect) != CAIRO_REGION_OVERLAP_OUT
+                    && cairo_region_contains_rectangle(item->icon_slot_region, new_rect) == CAIRO_REGION_OVERLAP_OUT)
                 {
                     /* remove the icon from the selected list */
                     l = l->next;
@@ -2125,20 +2138,21 @@ xfdesktop_icon_view_motion_notify(GtkWidget *widget, GdkEventMotion *evt) {
 
         /* second pass: if at least one dimension got larger, unfortunately
          * we have to figure out what icons to add to the selected list */
-        if(old_rect.width < new_rect->width
-           || old_rect.height < new_rect->height)
-        {
+        if (old_rect.width < new_rect->width || old_rect.height < new_rect->height) {
             for (GList *l = icon_view->items; l != NULL; l = l->next) {
-                GdkRectangle dummy;
                 ViewItem *item = l->data;
 
-                if (!item->selected && gdk_rectangle_intersect(&item->slot_extents, new_rect, &dummy)) {
+                if (!item->selected
+                    && cairo_region_contains_rectangle(item->icon_slot_region, new_rect) != CAIRO_REGION_OVERLAP_OUT)
+                {
                     /* since _select_item() prepends to the list, we
                      * should be ok just calling this */
                     xfdesktop_icon_view_select_item_internal(icon_view, item, TRUE);
                 }
             }
         }
+
+        cairo_region_destroy(region);
     } else {
         /* normal movement; highlight icons as they go under the pointer */
         update_item_under_pointer(icon_view, evt->window, evt->x, evt->y);
@@ -2942,6 +2956,11 @@ xfdesktop_icon_view_unplace_item(XfdesktopIconView *icon_view,
     xfdesktop_icon_view_invalidate_item(icon_view, item, FALSE);
 
     item->placed = FALSE;
+    if (!cairo_region_is_empty(item->icon_slot_region)) {
+        cairo_region_destroy(item->icon_slot_region);
+        item->icon_slot_region = cairo_region_create();
+    }
+
     if (icon_view->grid_layout != NULL
         && row >= 0 && row < icon_view->nrows
         && col >= 0 && row < icon_view->ncols
@@ -3022,7 +3041,6 @@ xfdesktop_icon_view_update_item_extents(XfdesktopIconView *icon_view,
 {
     GtkRequisition min_req, nat_req;
     GtkRequisition *req;
-    GdkRectangle total_extents;
 
     if (!item->placed) {
         if (G_UNLIKELY(!xfdesktop_icon_view_place_item(icon_view, item, TRUE))) {
@@ -3031,9 +3049,6 @@ xfdesktop_icon_view_update_item_extents(XfdesktopIconView *icon_view,
     }
 
     xfdesktop_icon_view_set_cell_properties(icon_view, item);
-
-    total_extents.x = total_extents.y = 0;
-    total_extents.width = total_extents.height = -1;
 
     // Icon renderer
     gtk_cell_renderer_get_preferred_size(icon_view->icon_renderer, GTK_WIDGET(icon_view), &min_req, NULL);
@@ -3050,14 +3065,25 @@ xfdesktop_icon_view_update_item_extents(XfdesktopIconView *icon_view,
     item->text_extents.x = MAX(0, (SLOT_SIZE - item->text_extents.width) / 2);
     item->text_extents.y = icon_view->slot_padding + ICON_SIZE + icon_view->slot_padding;
 
-    gdk_rectangle_union(&item->icon_extents, &item->text_extents, &total_extents);
-    item->slot_extents.x = item->slot_extents.y = item->slot_extents.width = item->slot_extents.height = 0;
-    xfdesktop_icon_view_shift_to_slot_area(icon_view, item, &total_extents, &item->slot_extents);
+    if (!cairo_region_is_empty(item->icon_slot_region)) {
+        cairo_region_destroy(item->icon_slot_region);
+        item->icon_slot_region = cairo_region_create();
+    }
+    GdkRectangle slot_part_extents;
+    xfdesktop_icon_view_shift_to_slot_area(icon_view, item, &item->icon_extents, &slot_part_extents);
+    // Ther is a blank space (->slot_padding high) between the icon and the
+    // label, which we want included in the region.
+    slot_part_extents.height += icon_view->slot_padding;
+    cairo_region_union_rectangle(item->icon_slot_region, &slot_part_extents);
+    xfdesktop_icon_view_shift_to_slot_area(icon_view, item, &item->text_extents, &slot_part_extents);
+    cairo_region_union_rectangle(item->icon_slot_region, &slot_part_extents);
 
 #if 0
     DBG("new icon extents: %dx%d+%d+%d", item->icon_extents.width, item->icon_extents.height, item->icon_extents.x, item->icon_extents.y);
     DBG("new text extents: %dx%d+%d+%d", item->text_extents.width, item->text_extents.height, item->text_extents.x, item->text_extents.y);
-    DBG("new slot extents: %dx%d+%d+%d", item->slot_extents.width, item->slot_extents.height, item->slot_extents.x, item->slot_extents.y);
+    cairo_rectangle_int_t slot_extents;
+    cairo_region_get_extents(item->icon_slot_region, &slot_extents);
+    DBG("new slot extents: %dx%d+%d+%d", slot_extents.width, slot_extents.height, slot_extents.x, slot_extents.y);
 #endif
 }
 
@@ -3756,33 +3782,24 @@ static gboolean
 xfdesktop_icon_view_queue_draw_item(XfdesktopIconView *icon_view,
                                     ViewItem *item)
 {
-    gboolean ret = FALSE;
-
-    GdkRectangle slot_rect = {
-        .x = 0,
-        .y = 0,
-        .width = SLOT_SIZE,
-        .height = SLOT_SIZE,
-    };
-    xfdesktop_icon_view_shift_to_slot_area(icon_view, item, &slot_rect, &slot_rect);
-
-    if (item->slot_extents.width > 0 && item->slot_extents.height > 0) {
-        GdkRectangle extents_rect = {
-            .x = item->slot_extents.x,
-            .y = item->slot_extents.y,
-            .width = item->slot_extents.width,
-            .height = item->slot_extents.height,
+    if (!cairo_region_is_empty(item->icon_slot_region)) {
+        GdkRectangle slot_rect = {
+            .x = 0,
+            .y = 0,
+            .width = SLOT_SIZE,
+            .height = SLOT_SIZE,
         };
-        gdk_rectangle_union(&extents_rect, &slot_rect, &slot_rect);
+        xfdesktop_icon_view_shift_to_slot_area(icon_view, item, &slot_rect, &slot_rect);
+        cairo_region_t *draw_region = cairo_region_create_rectangle(&slot_rect);
+        cairo_region_union(draw_region, item->icon_slot_region);
 
-        gtk_widget_queue_draw_area(GTK_WIDGET(icon_view),
-                                   slot_rect.x, slot_rect.y,
-                                   slot_rect.width, slot_rect.height);
+        gtk_widget_queue_draw_region(GTK_WIDGET(icon_view), draw_region);
+        cairo_region_destroy(draw_region);
 
-        ret = TRUE;
+        return TRUE;
+    } else {
+        return FALSE;
     }
-
-    return ret;
 }
 
 static void
@@ -3808,14 +3825,14 @@ static void
 xfdesktop_icon_view_invalidate_item_text(XfdesktopIconView *icon_view, ViewItem *item) {
     g_return_if_fail(item != NULL);
 
-    GdkRectangle slot_extents;
+    GdkRectangle text_slot_extents;
     if (item->text_extents.width > 0
         && item->text_extents.height > 0
-        && xfdesktop_icon_view_shift_to_slot_area(icon_view, item, &item->text_extents, &slot_extents))
+        && xfdesktop_icon_view_shift_to_slot_area(icon_view, item, &item->text_extents, &text_slot_extents))
     {
         gtk_widget_queue_draw_area(GTK_WIDGET(icon_view),
-                                   slot_extents.x, slot_extents.y,
-                                   slot_extents.width, slot_extents.height);
+                                   text_slot_extents.x, text_slot_extents.y,
+                                   text_slot_extents.width, text_slot_extents.height);
     }
 }
 
@@ -4000,20 +4017,6 @@ xfdesktop_icon_view_item_in_slot(XfdesktopIconView *icon_view, gint row, gint co
     return xfdesktop_icon_view_item_in_grid_slot(icon_view, icon_view->grid_layout, row, col);
 }
 
-static inline gboolean
-xfdesktop_rectangle_contains_point(GdkRectangle *rect, gint x, gint y)
-{
-    if(x > rect->x + rect->width
-            || x < rect->x
-            || y > rect->y + rect->height
-            || y < rect->y)
-    {
-        return FALSE;
-    }
-
-    return TRUE;
-}
-
 static gint
 xfdesktop_check_icon_clicked(gconstpointer data,
                              gconstpointer user_data)
@@ -4021,7 +4024,7 @@ xfdesktop_check_icon_clicked(gconstpointer data,
     ViewItem *item = (ViewItem *)data;
     GdkEventButton *evt = (GdkEventButton *)user_data;
 
-    return xfdesktop_rectangle_contains_point(&item->slot_extents, evt->x, evt->y) ? 0 : 1;
+    return cairo_region_contains_point(item->icon_slot_region, evt->x, evt->y) ? 0 : 1;
 }
 
 static void
