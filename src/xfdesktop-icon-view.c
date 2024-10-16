@@ -1131,6 +1131,9 @@ xfdesktop_icon_view_finalize(GObject *obj)
     gtk_target_list_unref(icon_view->source_targets);
     gtk_target_list_unref(icon_view->dest_targets);
 
+    g_object_unref(icon_view->icon_renderer);
+    g_object_unref(icon_view->text_renderer);
+
     g_object_unref(icon_view->screen);
 
     G_OBJECT_CLASS(xfdesktop_icon_view_parent_class)->finalize(obj);
