@@ -1,3 +1,89 @@
+4.19.5 (2024-10-16)
+======
+- Rework how icon pointer "hit detection" works
+- Fix g-critical warning when starting a drag *just* outside the icon
+  area
+- Tell GtkTooltip the region the tooltip is for
+- Add option to sort folders before files (Issue #332)
+- Fix leaks in xfdesktop_file_utils_next_new_file_name
+- Fix string leak in xfdesktop_icon_view_show_tooltip
+- Fix GIcon leak in xfdesktop_icon_view_manager_sort_icons
+- Reword a couple settings option names, fix some accelerators
+- Only clear drag/context menu timeout if a drag actually starts
+- settings: define infobar_label in glade file, not in code
+- settings: avoid flashing an empty info bar on startup
+- settings: enumerate image folder fully asynchronously
+- settings: change icon view selection if background changes externally
+- Merge branch xfdesktop:master into master
+- Refactor settings dialog code
+- Fix memory corruption in icon view's tooltip size changed handler
+- Redesign the 'Desktop Icons' tab in the settings dialog
+- Decouple refreshing the desktop with cycling the backdrop
+- Sort all desktops vs. just one based on where the event came from
+- Improve how the "active" desktop is tracked
+- Add a root context menu for the window icon manager
+- Fix invalid read when changing foreground color
+- Fix string leak in save_icons
+- Make icon sorting confirmation dialog optional (Issue #266)
+- Added missing Keywords entry to .desktop file
+- Don't remove icon position from current config
+- Use g_ascii_dtostr() instead of custom decimal-printing hack
+- Update icon view's item_under_pointer on button presses as well
+- Simplify XfdesktopIconView->item_under_pointer tracking code
+- Fix icon DnD between two monitors with the same priority
+- Modernize GObject usage in XfdesktopThumbnailer
+- Modernize GObject usage in XfceDesktop
+- Remove spurious newly added #include
+- Modernize GObject in XfdesktopIconView
+- Avoid printing GTK CSS with commas as the decimal separator
+- Add ability to set custom icon label text and background colors
+- Fix xfdesktop_icon_view_invalidate_item_text()
+- Fix memleak when XfdesktopCellRendererIconLabel freed
+- Better way to fix monitor removal
+- Don't reschedule icon positions save
+- Reduce icon positions save delay to 1 second
+- Fix desktops not being removed when a monitor is disconnected
+- Fix icon view ascending vs. descending sort order
+- I give up.  Icon label backgrounds are transparent again.
+- Add windowlist options for showing all workspaces & urgent windows
+- Use #defines for windowlist prop names everywhere
+- Use windowlist menu widget from libxfce4windowingui
+- Add XF_DEBUG when icon added to file model
+- Actually rearrange the settings panels
+- Use new xfw_window_activate() signature in libwindowing 4.19.6
+- Use a swapped signal connection so session_die() gets the right arg
+- Exclude some menu entries from multi selection
+- Simplify menu code
+- Move Keyboard Shortcuts settings tab to the end
+- Fix timer getting stopped on file deletion
+- Don't repeat backdrop images when cycling randomly
+- Change the backdrop cycler to use GFile throughout
+- Fix backdrop cycler property names
+- Fix GFileInfo leak in check_create_desktop_folder
+- Remove unused last_filename field to fix leak
+- Fix string leak in save_icons
+- Fix string leak in set_accountsservice_user_bg
+- Allow space chars to work for keyboard navigation
+- Remove manual activation of icon view binding set
+- Add configurable keybinding for toggle-cursor for the icon view
+- Remove unneeded debugging statements
+- Don't use meson.project_source_root()
+- Don't use relative source path in tests/meson.build
+- build: Adjust requirements for Xfce 4.20
+- Fix new-folder icon missing on some icon themes
+- Translation Updates:
+  Albanian, Amharic, Arabic, Armenian (Armenia), Asturian, Azerbaijani,
+  Basque, Belarusian, Belarusian (Tarask), Bulgarian, Catalan, Chinese
+  (China), Chinese (Hong Kong), Chinese (Taiwan), Croatian, Czech,
+  Danish, Dutch, Eastern Armenian, English (Australia), English
+  (Canada), English (United Kingdom), Estonian, Finnish, French,
+  Galician, Georgian, German, Greek, Hebrew, Hungarian, Icelandic,
+  Indonesian, Interlingue, Italian, Japanese, Kazakh, Korean,
+  Lithuanian, Malay, Norwegian Bokmål, Norwegian Nynorsk, Occitan
+  (post 1500), Persian (Iran), Polish, Portuguese, Portuguese (Brazil),
+  Romanian, Russian, Serbian, Slovak, Slovenian, Spanish, Swedish,
+  Thai, Ukrainian, Uyghur, Uzbek
+
 4.19.4 (2024-10-03)
 ======
 - Don't use XfceSMClient on Wayland
