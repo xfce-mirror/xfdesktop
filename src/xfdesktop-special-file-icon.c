@@ -138,6 +138,10 @@ xfdesktop_special_file_icon_finalize(GObject *obj)
     if(icon->file_info)
         g_object_unref(icon->file_info);
 
+    if (icon->filesystem_info != NULL) {
+        g_object_unref(icon->filesystem_info);
+    }
+
     if(icon->tooltip)
         g_free(icon->tooltip);
 
