@@ -839,6 +839,7 @@ cb_image_selection_changed(GtkIconView *icon_view, XfdesktopBackgroundSettings *
 
     g_list_free_full(selected_items, (GDestroyNotify)gtk_tree_path_free);
     g_free(current_filename);
+    g_free(filename);
 }
 
 static void
