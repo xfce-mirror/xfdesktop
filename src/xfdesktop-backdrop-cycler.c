@@ -383,6 +383,9 @@ xfdesktop_backdrop_cycler_update_image_file(XfdesktopBackdropCycler *cycler, GFi
     g_return_if_fail(G_IS_FILE(image_file));
 
     if (!xfdesktop_g_file_equal0(cycler->cur_image_file, image_file)) {
+        if (cycler->cur_image_file != NULL) {
+            g_object_unref(cycler->cur_image_file);
+        }
         cycler->cur_image_file = g_object_ref(image_file);
     }
 
