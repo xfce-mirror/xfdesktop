@@ -133,23 +133,80 @@ static void cb_xfdesktop_chk_apply_to_all(GtkCheckButton *button,
 
 
 
-static gchar *
-system_data_lookup(void) {
-    const gchar * const * dirs;
-    gchar *path = NULL;
-    guint i;
+static gboolean
+path_has_image_files(GFile *dir) {
+    GFileEnumerator *enumerator = g_file_enumerate_children(dir,
+                                                            G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE,
+                                                            G_FILE_QUERY_INFO_NONE,
+                                                            NULL,
+                                                            NULL);
+    if (enumerator != NULL) {
+        gboolean has_image_files = FALSE;
 
-    dirs = g_get_system_data_dirs ();
-    for (i = 0; path == NULL && dirs[i] != NULL; ++i) {
-        path = g_build_path (G_DIR_SEPARATOR_S, dirs[i], "backgrounds", NULL);
-        if (g_path_is_absolute (path) && g_file_test (path, G_FILE_TEST_IS_DIR))
-            return path;
+        for (;;) {
+            GFileInfo *file_info = g_file_enumerator_next_file(enumerator, NULL, NULL);
+            if (file_info == NULL) {
+                break;
+            } else {
+                const gchar *content_type = g_file_info_get_content_type(file_info);
+                has_image_files = content_type != NULL && g_str_has_prefix(content_type, "image/");
+                g_object_unref(file_info);
 
-        g_free (path);
-        path = NULL;
+                if (has_image_files) {
+                    break;
+                }
+            }
+        }
+
+        g_object_unref(enumerator);
+        return has_image_files;
+    } else {
+        return FALSE;
+    }
+}
+
+static gint
+xfdesktop_g_file_compare(gconstpointer a, gconstpointer b) {
+    GFile *fa = G_FILE((gpointer)a);
+    GFile *fb = G_FILE((gpointer)b);
+    return g_file_equal(fa, fb) ? 0 : -1;
+}
+
+static GList *
+find_background_directories(void) {
+    GList *directories = NULL;
+
+    gchar **xfce_background_dirs = xfce_resource_lookup_all(XFCE_RESOURCE_DATA, "backgrounds/xfce/");
+    gchar **background_dirs = xfce_resource_lookup_all(XFCE_RESOURCE_DATA, "backgrounds/");
+    gchar **dirs_dirs[] = {
+        xfce_background_dirs,
+        background_dirs,
+    };
+
+    for (gsize i = 0; i < G_N_ELEMENTS(dirs_dirs); ++i) {
+        for (gsize j = 0; dirs_dirs[i][j] != NULL; ++j) {
+            GFile *dir = g_file_new_for_path(dirs_dirs[i][j]);
+            if (path_has_image_files(dir) && g_list_find_custom(directories, dir, xfdesktop_g_file_compare) == NULL) {
+                directories = g_list_prepend(directories, dir);
+            } else {
+                g_object_unref(dir);
+            }
+        }
+        g_strfreev(dirs_dirs[i]);
     }
 
-    return path;
+    directories = g_list_reverse(directories);
+
+    GFile *default_background = g_file_new_for_path(DEFAULT_BACKDROP);
+    GFile *parent = g_file_get_parent(default_background);
+    if (g_list_find_custom(directories, parent, xfdesktop_g_file_compare) == NULL) {
+        directories = g_list_prepend(directories, parent);
+    } else {
+        g_object_unref(parent);
+    }
+    g_object_unref(default_background);
+
+    return directories;
 }
 
 static void
@@ -1802,19 +1859,15 @@ xfdesktop_background_settings_init(XfdesktopSettings *settings) {
     /* Change the title of the file chooser dialog */
     gtk_file_chooser_button_set_title(GTK_FILE_CHOOSER_BUTTON(background_settings->btn_folder), _("Select a Directory"));
 
-    /* Get default wallpaper folder */
-    gchar *path = system_data_lookup();
-
-    if (path != NULL) {
-        GFile *file = g_file_new_for_path(path);
+    /* Get default wallpaper folders */
+    GList *background_dirs = find_background_directories();
+    for (GList *l = background_dirs; l != NULL; l = l->next) {
+        GFile *file = G_FILE(l->data);
         gchar *uri_path = g_file_get_uri(file);
-
         gtk_file_chooser_add_shortcut_folder_uri(GTK_FILE_CHOOSER(background_settings->btn_folder), uri_path, NULL);
-
-        g_free(path);
         g_free(uri_path);
-        g_object_unref(file);
     }
+    g_list_free_full(background_dirs, g_object_unref);
 
     /* Image and color style options */
     background_settings->image_style_combo = GTK_WIDGET(gtk_builder_get_object(appearance_gxml, "combo_style"));
