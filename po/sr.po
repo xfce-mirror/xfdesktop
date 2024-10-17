@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-10-15 00:54+0200\n"
+"POT-Creation-Date: 2024-10-16 01:05+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Саша Петровић <salepetronije@gmail.com>, 2013-2015,2017,2019,2024\n"
 "Language-Team: Serbian (http://app.transifex.com/xfce/xfdesktop/language/sr/)\n"
@@ -77,7 +77,7 @@ msgstr "<b>%s</b>\nВрста: %s\nВеличина: %s"
 #: settings/xfdesktop-background-settings.c:516
 #, c-format
 msgid "Unable to load images from folder \"%s\""
-msgstr ""
+msgstr "Нисам успео да учитам слике из фасцикле „%s“"
 
 #: settings/xfdesktop-background-settings.c:609
 #, c-format
@@ -198,9 +198,9 @@ msgstr "Нисам успео да покренем „%s“:"
 #: settings/xfdesktop-icon-settings.c:99 src/xfdesktop-file-icon-manager.c:785
 #: src/xfdesktop-file-icon-manager.c:1029
 #: src/xfdesktop-file-icon-manager.c:1077
-#: src/xfdesktop-file-icon-manager.c:1350 src/xfdesktop-file-utils.c:567
-#: src/xfdesktop-file-utils.c:1451 src/xfdesktop-file-utils.c:1476
-#: src/xfdesktop-file-utils.c:1583 src/xfdesktop-file-utils.c:1647
+#: src/xfdesktop-file-icon-manager.c:1350 src/xfdesktop-file-utils.c:570
+#: src/xfdesktop-file-utils.c:1454 src/xfdesktop-file-utils.c:1479
+#: src/xfdesktop-file-utils.c:1586 src/xfdesktop-file-utils.c:1650
 msgid "Launch Error"
 msgstr "Грешка покретања програма"
 
@@ -210,15 +210,15 @@ msgstr "Грешка покретања програма"
 #: src/xfdesktop-file-icon-manager.c:1033
 #: src/xfdesktop-file-icon-manager.c:1081
 #: src/xfdesktop-file-icon-manager.c:1352
-#: src/xfdesktop-file-icon-manager.c:3674 src/xfdesktop-file-utils.c:570
-#: src/xfdesktop-file-utils.c:688 src/xfdesktop-file-utils.c:743
-#: src/xfdesktop-file-utils.c:807 src/xfdesktop-file-utils.c:868
-#: src/xfdesktop-file-utils.c:929 src/xfdesktop-file-utils.c:977
-#: src/xfdesktop-file-utils.c:996 src/xfdesktop-file-utils.c:1110
-#: src/xfdesktop-file-utils.c:1206 src/xfdesktop-file-utils.c:1394
-#: src/xfdesktop-file-utils.c:1455 src/xfdesktop-file-utils.c:1478
-#: src/xfdesktop-file-utils.c:1587 src/xfdesktop-file-utils.c:1651
-#: src/xfdesktop-file-utils.c:1722 src/xfdesktop-file-utils.c:1792
+#: src/xfdesktop-file-icon-manager.c:3674 src/xfdesktop-file-utils.c:573
+#: src/xfdesktop-file-utils.c:691 src/xfdesktop-file-utils.c:746
+#: src/xfdesktop-file-utils.c:810 src/xfdesktop-file-utils.c:871
+#: src/xfdesktop-file-utils.c:932 src/xfdesktop-file-utils.c:980
+#: src/xfdesktop-file-utils.c:999 src/xfdesktop-file-utils.c:1113
+#: src/xfdesktop-file-utils.c:1209 src/xfdesktop-file-utils.c:1397
+#: src/xfdesktop-file-utils.c:1458 src/xfdesktop-file-utils.c:1481
+#: src/xfdesktop-file-utils.c:1590 src/xfdesktop-file-utils.c:1654
+#: src/xfdesktop-file-utils.c:1725 src/xfdesktop-file-utils.c:1795
 #: src/xfdesktop-volume-icon.c:395 src/xfdesktop-volume-icon.c:443
 #: src/xfdesktop-volume-icon.c:525
 msgid "_Close"
@@ -248,7 +248,7 @@ msgstr "Подеси позадину површи и понашање избо�
 
 #: settings/xfce-backdrop-settings.desktop.in:17
 msgid "desktop;background;wallpaper;settings;xfce;"
-msgstr ""
+msgstr "радна површ;позадина;слика позадине;поставке;иксфце"
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:19
 msgid "Solid color"
@@ -564,7 +564,7 @@ msgstr "48"
 
 #: settings/xfdesktop-settings-ui.glade:840
 msgid "Fo_nt size:"
-msgstr ""
+msgstr "Величина_ словолика;"
 
 #: settings/xfdesktop-settings-ui.glade:860
 msgid "12"
@@ -596,15 +596,15 @@ msgstr "<b>Изглед</b>"
 
 #: settings/xfdesktop-settings-ui.glade:1019
 msgid "Placement _direction:"
-msgstr ""
+msgstr "Усмерење_ смештаја;"
 
 #: settings/xfdesktop-settings-ui.glade:1059
 msgid "Show icons only on _primary display"
-msgstr ""
+msgstr "Приказуј сличице на главном_ заслону"
 
 #: settings/xfdesktop-settings-ui.glade:1074
 msgid "Single click to _activate items"
-msgstr ""
+msgstr "Један клик за _покретање ставки"
 
 #: settings/xfdesktop-settings-ui.glade:1090
 msgid "_Underline text on hover"
@@ -646,19 +646,23 @@ msgstr "Одаберите ову могућност да би се приказ
 msgid "Show \"Delete\" option in file context menu"
 msgstr "Приказуј „Избриши“ у приручном изборнику"
 
-#: settings/xfdesktop-settings-ui.glade:1304
+#: settings/xfdesktop-settings-ui.glade:1300
+msgid "_Arrange folders before files"
+msgstr "_Распореди фасцикле пре датотека"
+
+#: settings/xfdesktop-settings-ui.glade:1321
 msgid "General"
 msgstr "Опште"
 
-#: settings/xfdesktop-settings-ui.glade:1348
+#: settings/xfdesktop-settings-ui.glade:1365
 msgid "Default Icons"
 msgstr "Подразумеване сличице"
 
-#: settings/xfdesktop-settings-ui.glade:1378
+#: settings/xfdesktop-settings-ui.glade:1395
 msgid "_File/Launcher Icons"
 msgstr "Сличице _датотеке/покретача"
 
-#: settings/xfdesktop-settings-ui.glade:1404
+#: settings/xfdesktop-settings-ui.glade:1421
 msgid "_Keyboard Shortcuts"
 msgstr "_Пречица дугмади"
 
@@ -745,12 +749,12 @@ msgstr "    Сличице радне површи:       %s\n"
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Сличице датотека радне површи:  %s\n"
 
-#: src/xfdesktop-file-icon-manager.c:718 src/xfdesktop-file-utils.c:739
-#: src/xfdesktop-file-utils.c:803
+#: src/xfdesktop-file-icon-manager.c:718 src/xfdesktop-file-utils.c:742
+#: src/xfdesktop-file-utils.c:806
 msgid "Rename Error"
 msgstr "Грешка преименовања"
 
-#: src/xfdesktop-file-icon-manager.c:719 src/xfdesktop-file-utils.c:804
+#: src/xfdesktop-file-icon-manager.c:719 src/xfdesktop-file-utils.c:807
 msgid "The files could not be renamed"
 msgstr "Нисам успео да преименујем датотеке"
 
@@ -921,7 +925,7 @@ msgstr "_Премести овде"
 msgid "_Link Here"
 msgstr "_Повежи овде"
 
-#: src/xfdesktop-file-icon-manager.c:3554 src/xfdesktop-file-utils.c:1138
+#: src/xfdesktop-file-icon-manager.c:3554 src/xfdesktop-file-utils.c:1141
 #: src/xfdesktop-icon-view-manager.c:491
 msgid "_Cancel"
 msgstr "_Откажи"
@@ -943,7 +947,7 @@ msgstr "Десила се грешка сличице датотеке радн�
 msgid "Desktop Folder Error"
 msgstr "Грешка фасцикле радне површи"
 
-#: src/xfdesktop-file-icon-model.c:510
+#: src/xfdesktop-file-icon-model.c:552
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr "Обична датотека са истим именом већ постоји. Преименујте је или је избришите."
@@ -973,145 +977,145 @@ msgid "%x at %X"
 msgstr "%x у %X"
 
 #. the file_time is invalid
-#: src/xfdesktop-file-utils.c:206 src/xfdesktop-file-utils.c:1717
+#: src/xfdesktop-file-utils.c:206 src/xfdesktop-file-utils.c:1720
 msgid "Unknown"
 msgstr "Непознато"
 
-#: src/xfdesktop-file-utils.c:332
+#: src/xfdesktop-file-utils.c:335
 #, c-format
 msgid "%.*s %u%s"
 msgstr "%.*s %u%s"
 
-#: src/xfdesktop-file-utils.c:568
+#: src/xfdesktop-file-utils.c:571
 msgid "The folder could not be opened"
 msgstr "Нисам успео да отворим фасциклу"
 
-#: src/xfdesktop-file-utils.c:685
+#: src/xfdesktop-file-utils.c:688
 msgid "Error"
 msgstr "Грешка"
 
-#: src/xfdesktop-file-utils.c:686
+#: src/xfdesktop-file-utils.c:689
 msgid "The requested operation could not be completed"
 msgstr "Нисам успео да обавим захтевани поступак"
 
-#: src/xfdesktop-file-utils.c:740
+#: src/xfdesktop-file-utils.c:743
 msgid "The file could not be renamed"
 msgstr "Нисам успео да преименујем датотеку"
 
-#: src/xfdesktop-file-utils.c:741 src/xfdesktop-file-utils.c:805
-#: src/xfdesktop-file-utils.c:866 src/xfdesktop-file-utils.c:1392
-#: src/xfdesktop-file-utils.c:1453 src/xfdesktop-file-utils.c:1585
-#: src/xfdesktop-file-utils.c:1649 src/xfdesktop-file-utils.c:1790
+#: src/xfdesktop-file-utils.c:744 src/xfdesktop-file-utils.c:808
+#: src/xfdesktop-file-utils.c:869 src/xfdesktop-file-utils.c:1395
+#: src/xfdesktop-file-utils.c:1456 src/xfdesktop-file-utils.c:1588
+#: src/xfdesktop-file-utils.c:1652 src/xfdesktop-file-utils.c:1793
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
 msgstr "Ова могућност захтева присутност услуге управника датотека (као што је она што долази с Тунаром)."
 
-#: src/xfdesktop-file-utils.c:864
+#: src/xfdesktop-file-utils.c:867
 msgid "Delete Error"
 msgstr "Грешка брисања"
 
-#: src/xfdesktop-file-utils.c:865
+#: src/xfdesktop-file-utils.c:868
 msgid "The selected files could not be deleted"
 msgstr "Нисам успео да избришем означену датотеку"
 
-#: src/xfdesktop-file-utils.c:925 src/xfdesktop-file-utils.c:973
+#: src/xfdesktop-file-utils.c:928 src/xfdesktop-file-utils.c:976
 msgid "Trash Error"
 msgstr "Грешка смећа"
 
-#: src/xfdesktop-file-utils.c:926
+#: src/xfdesktop-file-utils.c:929
 msgid "The selected files could not be moved to the trash"
 msgstr "Нисам успео да означену датотеку преместим у смеће"
 
-#: src/xfdesktop-file-utils.c:927 src/xfdesktop-file-utils.c:975
+#: src/xfdesktop-file-utils.c:930 src/xfdesktop-file-utils.c:978
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
 msgstr "Ова могућност захтева присутност услуге корпе смећа (као што је она коју пружа Тунар)."
 
-#: src/xfdesktop-file-utils.c:974
+#: src/xfdesktop-file-utils.c:977
 msgid "Could not empty the trash"
 msgstr "Нисам успео да испразним смеће"
 
-#: src/xfdesktop-file-utils.c:984
+#: src/xfdesktop-file-utils.c:987
 #, c-format
 msgid "Unable to create new file \"%1$s\" from template file \"%2$s\": %3$s"
 msgstr "Нисам успео да створим нову датотеку „%1$s“ из датотеке обрасца „%2$s“:%3$s"
 
-#: src/xfdesktop-file-utils.c:990 src/xfdesktop-file-utils.c:1104
-#: src/xfdesktop-file-utils.c:1200
+#: src/xfdesktop-file-utils.c:993 src/xfdesktop-file-utils.c:1107
+#: src/xfdesktop-file-utils.c:1203
 msgid "Create File Error"
 msgstr "Грешка стварања датотеке"
 
-#: src/xfdesktop-file-utils.c:992 src/xfdesktop-file-utils.c:1266
+#: src/xfdesktop-file-utils.c:995 src/xfdesktop-file-utils.c:1269
 msgid "Could not create a new file"
 msgstr "Нисам успео да направим нову датотеку"
 
-#: src/xfdesktop-file-utils.c:1005
+#: src/xfdesktop-file-utils.c:1008
 msgid "New Empty File"
 msgstr "Нова празна датотека"
 
-#: src/xfdesktop-file-utils.c:1100
+#: src/xfdesktop-file-utils.c:1103
 #, c-format
 msgid "Unable to create new folder \"%1$s\": %2$s"
 msgstr "Нисам успео да створим нову датотеку „%1$s“:%2$s"
 
-#: src/xfdesktop-file-utils.c:1106 src/xfdesktop-file-utils.c:1299
+#: src/xfdesktop-file-utils.c:1109 src/xfdesktop-file-utils.c:1302
 msgid "Could not create a new folder"
 msgstr "Нисам успео да створим нову фасциклу"
 
-#: src/xfdesktop-file-utils.c:1140
+#: src/xfdesktop-file-utils.c:1143
 msgid "C_reate"
 msgstr "_Направи"
 
-#: src/xfdesktop-file-utils.c:1198
+#: src/xfdesktop-file-utils.c:1201
 #, c-format
 msgid "Cannot convert filename \"%s\" to the local encoding"
 msgstr "Не могу да преведем име датотеке „%s“ у локално кодирање"
 
-#: src/xfdesktop-file-utils.c:1260
+#: src/xfdesktop-file-utils.c:1263
 #, c-format
 msgid "Create Document from template \"%s\""
 msgstr "Направи документ на основу обрасца „%s“"
 
-#: src/xfdesktop-file-utils.c:1263 src/xfdesktop-file-utils.c:1296
+#: src/xfdesktop-file-utils.c:1266 src/xfdesktop-file-utils.c:1299
 msgid "Enter the name:"
 msgstr "Унесите назив:"
 
-#: src/xfdesktop-file-utils.c:1288
+#: src/xfdesktop-file-utils.c:1291
 msgid "New Folder"
 msgstr "Нова фасцикла"
 
-#: src/xfdesktop-file-utils.c:1294
+#: src/xfdesktop-file-utils.c:1297
 msgid "Create New Folder"
 msgstr "Направи нову фасциклу"
 
-#: src/xfdesktop-file-utils.c:1390
+#: src/xfdesktop-file-utils.c:1393
 msgid "File Properties Error"
 msgstr "Грешка својстава датотеке"
 
-#: src/xfdesktop-file-utils.c:1391
+#: src/xfdesktop-file-utils.c:1394
 msgid "The file properties dialog could not be opened"
 msgstr "Нисам успео да отворим прозорче својства датотеке"
 
-#: src/xfdesktop-file-utils.c:1452
+#: src/xfdesktop-file-utils.c:1455
 msgid "The file could not be opened"
 msgstr "Нисам успео да отворим датотеку"
 
-#: src/xfdesktop-file-utils.c:1473 src/xfdesktop-file-utils.c:1580
+#: src/xfdesktop-file-utils.c:1476 src/xfdesktop-file-utils.c:1583
 #, c-format
 msgid "Failed to run \"%s\""
 msgstr "Нисам успео да покренем „%s“"
 
-#: src/xfdesktop-file-utils.c:1648
+#: src/xfdesktop-file-utils.c:1651
 msgid "The application chooser could not be opened"
 msgstr "Нисам успео да отворим изабирача програма"
 
-#: src/xfdesktop-file-utils.c:1719 src/xfdesktop-file-utils.c:1788
+#: src/xfdesktop-file-utils.c:1722 src/xfdesktop-file-utils.c:1791
 msgid "Transfer Error"
 msgstr "Грешка преноса"
 
-#: src/xfdesktop-file-utils.c:1720 src/xfdesktop-file-utils.c:1789
+#: src/xfdesktop-file-utils.c:1723 src/xfdesktop-file-utils.c:1792
 msgid "The file transfer could not be performed"
 msgstr "Нисам успео да извршим пренос датотека"
 
