@@ -1143,6 +1143,8 @@ xfdesktop_backdrop_cycler_image_filename_changed(XfconfChannel *channel,
     // time to cycle, we block this signal handler temporarily.
     if (G_VALUE_HOLDS_STRING(value)) {
         xfdesktop_backdrop_cycler_set_image_filename(cycler, g_value_get_string(value));
+        // If the user has selected a new file manually, reset the timer.
+        xfdesktop_backdrop_cycler_set_timer(cycler, cycler->timer);
     }
 }
 
