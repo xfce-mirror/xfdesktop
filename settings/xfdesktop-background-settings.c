@@ -950,8 +950,9 @@ update_icon_view_model(XfdesktopBackgroundSettings *background_settings) {
 
     /* Check to see if the folder actually did change */
     if (g_strcmp0(new_folder, previous_folder) == 0) {
-        const gchar *current_filename = xfdesktop_settings_get_backdrop_image(background_settings);
+        gchar *current_filename = xfdesktop_settings_get_backdrop_image(background_settings);
         gchar *current_folder = g_path_get_dirname(current_filename);
+        g_free(current_filename);
 
         /* workaround another gtk bug - if the user sets the file chooser
          * button to something then it can't be changed with a set folder
