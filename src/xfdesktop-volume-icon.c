@@ -803,7 +803,7 @@ xfdesktop_volume_icon_populate_context_menu(XfdesktopIcon *icon,
                         menu, G_CALLBACK(xfdesktop_volume_icon_menu_unmount));
     }
 
-    if (mount == NULL && (volume != NULL && g_volume_can_mount(volume))) {
+    if (mount == NULL && volume != NULL) {
         icon_name = "drive-removable-media";
         icon_label = _("_Mount Volume");
         xfdesktop_volume_icon_add_context_menu_option(icon, icon_name, icon_label,
