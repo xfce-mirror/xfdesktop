@@ -79,6 +79,8 @@ xfdesktop_keyboard_shortcut_settings_init(XfdesktopSettings *settings) {
     gsize n_sections = editor_sections->len;
     XfceShortcutsEditorSection *sections = (XfceShortcutsEditorSection *)(gpointer)g_array_free(editor_sections, FALSE);
     GtkWidget *shortcuts_editor = xfce_shortcuts_editor_new_array(sections, n_sections);
+    g_free(sections);
+
     gtk_container_add(GTK_CONTAINER(keyboard_tab), shortcuts_editor);
     gtk_widget_show_all(shortcuts_editor);
 }
