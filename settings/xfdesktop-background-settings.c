@@ -1266,10 +1266,11 @@ xfdesktop_settings_background_tab_change_bindings(XfdesktopBackgroundSettings *b
         }
 
         /* Now bind to the new value */
-        background_settings->color1_btn_id = xfconf_g_property_bind_gdkrgba(channel,
-                                                                            buf,
-                                                                            G_OBJECT(background_settings->color1_btn),
-                                                                            "rgba");
+        background_settings->color1_btn_id = xfconf_g_property_bind(channel,
+                                                                    buf,
+                                                                    G_TYPE_PTR_ARRAY,
+                                                                    G_OBJECT(background_settings->color1_btn),
+                                                                    "rgba");
     }
     g_free(buf);
 
@@ -1304,10 +1305,11 @@ xfdesktop_settings_background_tab_change_bindings(XfdesktopBackgroundSettings *b
         }
 
         /* Now bind to the new value */
-        background_settings->color2_btn_id = xfconf_g_property_bind_gdkrgba(channel,
-                                                                            buf,
-                                                                            G_OBJECT(background_settings->color2_btn),
-                                                                            "rgba");
+        background_settings->color2_btn_id = xfconf_g_property_bind(channel,
+                                                                    buf,
+                                                                    G_TYPE_PTR_ARRAY,
+                                                                    G_OBJECT(background_settings->color2_btn),
+                                                                    "rgba");
     }
     g_free(buf);
 

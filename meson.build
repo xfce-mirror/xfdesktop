@@ -23,6 +23,7 @@ dependency_versions = {
   'libxfce4windowing': '>= 4.19.7',
   'libyaml': '>= 0.2.5',
   'xfce4': '>= 4.18.0',
+  'xfconf': '>= 4.19.3',
   'gtk-layer-shell': '>= 0.7.0',
 }
 
@@ -35,7 +36,7 @@ libxfce4ui = dependency('libxfce4ui-2', version: dependency_versions['xfce4'])
 libxfce4kbd_private = dependency('libxfce4kbd-private-3', version: dependency_versions['xfce4'])
 libxfce4windowing = dependency('libxfce4windowing-0', version: dependency_versions['libxfce4windowing'])
 libxfce4windowingui = dependency('libxfce4windowingui-0', version: dependency_versions['libxfce4windowing'])
-xfconf = dependency('libxfconf-0', version: dependency_versions['xfce4'])
+xfconf = dependency('libxfconf-0', version: dependency_versions['xfconf'])
 exo = dependency('exo-2', version: dependency_versions['xfce4'])
 libm = cc.find_library('m', required: false)
 

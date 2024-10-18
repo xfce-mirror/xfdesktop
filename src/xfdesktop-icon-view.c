@@ -973,9 +973,9 @@ xfdesktop_icon_view_class_init(XfdesktopIconViewClass *klass)
 
     for (gsize i = 0; i < G_N_ELEMENTS(setting_bindings); ++i) {
         if (strcmp(setting_bindings[i].setting, DESTKOP_ICONS_LABEL_TEXT_COLOR_PROP) == 0) {
-            setting_bindings[i].setting_type = GDK_TYPE_RGBA;
+            setting_bindings[i].setting_type = G_TYPE_PTR_ARRAY;
         } else if (strcmp(setting_bindings[i].setting, DESTKOP_ICONS_LABEL_BG_COLOR_PROP) == 0) {
-            setting_bindings[i].setting_type = GDK_TYPE_RGBA;
+            setting_bindings[i].setting_type = G_TYPE_PTR_ARRAY;
         }
     }
 }
@@ -1090,18 +1090,11 @@ xfdesktop_icon_view_constructed(GObject *object)
     gtk_style_context_add_class(context, GTK_STYLE_CLASS_VIEW);
 
     for (gsize i = 0; i < G_N_ELEMENTS(setting_bindings); ++i) {
-        if (setting_bindings[i].setting_type == GDK_TYPE_RGBA) {
-            xfconf_g_property_bind_gdkrgba(icon_view->channel,
-                                           setting_bindings[i].setting,
-                                           icon_view,
-                                           setting_bindings[i].property);
-        } else {
-            xfconf_g_property_bind(icon_view->channel,
-                                   setting_bindings[i].setting,
-                                   setting_bindings[i].setting_type,
-                                   icon_view,
-                                   setting_bindings[i].property);
-        }
+        xfconf_g_property_bind(icon_view->channel,
+                               setting_bindings[i].setting,
+                               setting_bindings[i].setting_type,
+                               icon_view,
+                               setting_bindings[i].property);
     }
 }
 

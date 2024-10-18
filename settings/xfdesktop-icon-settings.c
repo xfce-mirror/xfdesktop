@@ -156,10 +156,11 @@ xfdesktop_icon_settings_init(XfdesktopSettings *settings) {
                            chk_custom_font_color,
                            "active");
     GtkWidget *btn_custom_font_color = GTK_WIDGET(gtk_builder_get_object(settings->main_gxml, "btn_custom_font_color"));
-    xfconf_g_property_bind_gdkrgba(settings->channel,
-                                   DESTKOP_ICONS_LABEL_TEXT_COLOR_PROP,
-                                   btn_custom_font_color,
-                                   "rgba");
+    xfconf_g_property_bind(settings->channel,
+                           DESTKOP_ICONS_LABEL_TEXT_COLOR_PROP,
+                           G_TYPE_PTR_ARRAY,
+                           btn_custom_font_color,
+                           "rgba");
     g_object_bind_property(chk_custom_font_color, "active", btn_custom_font_color, "sensitive", G_BINDING_SYNC_CREATE);
 
     GtkWidget *chk_custom_label_bg_color = GTK_WIDGET(gtk_builder_get_object(settings->main_gxml, "chk_custom_label_bg_color"));
@@ -169,10 +170,11 @@ xfdesktop_icon_settings_init(XfdesktopSettings *settings) {
                            chk_custom_label_bg_color,
                            "active");
     GtkWidget *btn_custom_label_bg_color = GTK_WIDGET(gtk_builder_get_object(settings->main_gxml, "btn_custom_label_bg_color"));
-    xfconf_g_property_bind_gdkrgba(settings->channel,
-                                   DESTKOP_ICONS_LABEL_BG_COLOR_PROP,
-                                   btn_custom_label_bg_color,
-                                   "rgba");
+    xfconf_g_property_bind(settings->channel,
+                           DESTKOP_ICONS_LABEL_BG_COLOR_PROP,
+                           G_TYPE_PTR_ARRAY,
+                           btn_custom_label_bg_color,
+                           "rgba");
     g_object_bind_property(chk_custom_label_bg_color,
                            "active",
                            btn_custom_label_bg_color,
