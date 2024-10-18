@@ -681,6 +681,7 @@ mount_added(GVolumeMonitor *monitor, GMount *mount, XfdesktopFileIconModel *fmod
                 DBG("got existing icon for volume for mount");
                 xfdesktop_volume_icon_mounted(XFDESKTOP_VOLUME_ICON(icon), mount);
                 xfdesktop_icon_view_model_changed(XFDESKTOP_ICON_VIEW_MODEL(fmodel), icon);
+                g_hash_table_insert(fmodel->volume_icons, g_object_ref(mount), icon);
             }
             g_object_unref(volume);
         } else {
