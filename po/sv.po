@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-10-15 00:54+0200\n"
+"POT-Creation-Date: 2024-10-16 01:05+0200\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Luna Jernberg <droidbittin@gmail.com>, 2024\n"
 "Language-Team: Swedish (http://app.transifex.com/xfce/xfdesktop/language/sv/)\n"
@@ -205,9 +205,9 @@ msgstr "Det gick inte att starta \"%s\":"
 #: settings/xfdesktop-icon-settings.c:99 src/xfdesktop-file-icon-manager.c:785
 #: src/xfdesktop-file-icon-manager.c:1029
 #: src/xfdesktop-file-icon-manager.c:1077
-#: src/xfdesktop-file-icon-manager.c:1350 src/xfdesktop-file-utils.c:567
-#: src/xfdesktop-file-utils.c:1451 src/xfdesktop-file-utils.c:1476
-#: src/xfdesktop-file-utils.c:1583 src/xfdesktop-file-utils.c:1647
+#: src/xfdesktop-file-icon-manager.c:1350 src/xfdesktop-file-utils.c:570
+#: src/xfdesktop-file-utils.c:1454 src/xfdesktop-file-utils.c:1479
+#: src/xfdesktop-file-utils.c:1586 src/xfdesktop-file-utils.c:1650
 msgid "Launch Error"
 msgstr "Startfel"
 
@@ -217,15 +217,15 @@ msgstr "Startfel"
 #: src/xfdesktop-file-icon-manager.c:1033
 #: src/xfdesktop-file-icon-manager.c:1081
 #: src/xfdesktop-file-icon-manager.c:1352
-#: src/xfdesktop-file-icon-manager.c:3674 src/xfdesktop-file-utils.c:570
-#: src/xfdesktop-file-utils.c:688 src/xfdesktop-file-utils.c:743
-#: src/xfdesktop-file-utils.c:807 src/xfdesktop-file-utils.c:868
-#: src/xfdesktop-file-utils.c:929 src/xfdesktop-file-utils.c:977
-#: src/xfdesktop-file-utils.c:996 src/xfdesktop-file-utils.c:1110
-#: src/xfdesktop-file-utils.c:1206 src/xfdesktop-file-utils.c:1394
-#: src/xfdesktop-file-utils.c:1455 src/xfdesktop-file-utils.c:1478
-#: src/xfdesktop-file-utils.c:1587 src/xfdesktop-file-utils.c:1651
-#: src/xfdesktop-file-utils.c:1722 src/xfdesktop-file-utils.c:1792
+#: src/xfdesktop-file-icon-manager.c:3674 src/xfdesktop-file-utils.c:573
+#: src/xfdesktop-file-utils.c:691 src/xfdesktop-file-utils.c:746
+#: src/xfdesktop-file-utils.c:810 src/xfdesktop-file-utils.c:871
+#: src/xfdesktop-file-utils.c:932 src/xfdesktop-file-utils.c:980
+#: src/xfdesktop-file-utils.c:999 src/xfdesktop-file-utils.c:1113
+#: src/xfdesktop-file-utils.c:1209 src/xfdesktop-file-utils.c:1397
+#: src/xfdesktop-file-utils.c:1458 src/xfdesktop-file-utils.c:1481
+#: src/xfdesktop-file-utils.c:1590 src/xfdesktop-file-utils.c:1654
+#: src/xfdesktop-file-utils.c:1725 src/xfdesktop-file-utils.c:1795
 #: src/xfdesktop-volume-icon.c:395 src/xfdesktop-volume-icon.c:443
 #: src/xfdesktop-volume-icon.c:525
 msgid "_Close"
@@ -653,19 +653,23 @@ msgstr "Välj det här alternativet för att visa förhandsgranskningsbara filer
 msgid "Show \"Delete\" option in file context menu"
 msgstr "Visa alternativet \"Ta bort\" i snabbmenyn för filer"
 
-#: settings/xfdesktop-settings-ui.glade:1304
+#: settings/xfdesktop-settings-ui.glade:1300
+msgid "_Arrange folders before files"
+msgstr "_Arrangera mappar före filer"
+
+#: settings/xfdesktop-settings-ui.glade:1321
 msgid "General"
 msgstr "Allmänt"
 
-#: settings/xfdesktop-settings-ui.glade:1348
+#: settings/xfdesktop-settings-ui.glade:1365
 msgid "Default Icons"
 msgstr "Standardikoner"
 
-#: settings/xfdesktop-settings-ui.glade:1378
+#: settings/xfdesktop-settings-ui.glade:1395
 msgid "_File/Launcher Icons"
 msgstr "_Filer/programstartare ikoner"
 
-#: settings/xfdesktop-settings-ui.glade:1404
+#: settings/xfdesktop-settings-ui.glade:1421
 msgid "_Keyboard Shortcuts"
 msgstr "_Tangentbordsgenvägar"
 
@@ -752,12 +756,12 @@ msgstr "Skrivbordsikoner: %s\n"
 msgid "    Desktop File Icons:  %s\n"
 msgstr "Skrivbordsikoner för filer: %s\n"
 
-#: src/xfdesktop-file-icon-manager.c:718 src/xfdesktop-file-utils.c:739
-#: src/xfdesktop-file-utils.c:803
+#: src/xfdesktop-file-icon-manager.c:718 src/xfdesktop-file-utils.c:742
+#: src/xfdesktop-file-utils.c:806
 msgid "Rename Error"
 msgstr "Fel vid namnbyte"
 
-#: src/xfdesktop-file-icon-manager.c:719 src/xfdesktop-file-utils.c:804
+#: src/xfdesktop-file-icon-manager.c:719 src/xfdesktop-file-utils.c:807
 msgid "The files could not be renamed"
 msgstr "Filerna kunde inte döpas om"
 
@@ -928,7 +932,7 @@ msgstr "_Flytta hit"
 msgid "_Link Here"
 msgstr "_Länka hit"
 
-#: src/xfdesktop-file-icon-manager.c:3554 src/xfdesktop-file-utils.c:1138
+#: src/xfdesktop-file-icon-manager.c:3554 src/xfdesktop-file-utils.c:1141
 #: src/xfdesktop-icon-view-manager.c:491
 msgid "_Cancel"
 msgstr "_Avbryt"
@@ -950,7 +954,7 @@ msgstr "Ett skrivbordsfil ikon fel inträffade"
 msgid "Desktop Folder Error"
 msgstr "Skrivbordsfel"
 
-#: src/xfdesktop-file-icon-model.c:510
+#: src/xfdesktop-file-icon-model.c:552
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr "En vanlig fil med samma namn finns redan. Ta bort eller byt namn på den."
@@ -980,145 +984,145 @@ msgid "%x at %X"
 msgstr "%x kl %X"
 
 #. the file_time is invalid
-#: src/xfdesktop-file-utils.c:206 src/xfdesktop-file-utils.c:1717
+#: src/xfdesktop-file-utils.c:206 src/xfdesktop-file-utils.c:1720
 msgid "Unknown"
 msgstr "Okänd"
 
-#: src/xfdesktop-file-utils.c:332
+#: src/xfdesktop-file-utils.c:335
 #, c-format
 msgid "%.*s %u%s"
 msgstr "%.*s %u%s"
 
-#: src/xfdesktop-file-utils.c:568
+#: src/xfdesktop-file-utils.c:571
 msgid "The folder could not be opened"
 msgstr "Mappen gick inte att öppna"
 
-#: src/xfdesktop-file-utils.c:685
+#: src/xfdesktop-file-utils.c:688
 msgid "Error"
 msgstr "Fel"
 
-#: src/xfdesktop-file-utils.c:686
+#: src/xfdesktop-file-utils.c:689
 msgid "The requested operation could not be completed"
 msgstr "Den begärda operationen kunde inte slutföras"
 
-#: src/xfdesktop-file-utils.c:740
+#: src/xfdesktop-file-utils.c:743
 msgid "The file could not be renamed"
 msgstr "Filen kunde inte döpas om"
 
-#: src/xfdesktop-file-utils.c:741 src/xfdesktop-file-utils.c:805
-#: src/xfdesktop-file-utils.c:866 src/xfdesktop-file-utils.c:1392
-#: src/xfdesktop-file-utils.c:1453 src/xfdesktop-file-utils.c:1585
-#: src/xfdesktop-file-utils.c:1649 src/xfdesktop-file-utils.c:1790
+#: src/xfdesktop-file-utils.c:744 src/xfdesktop-file-utils.c:808
+#: src/xfdesktop-file-utils.c:869 src/xfdesktop-file-utils.c:1395
+#: src/xfdesktop-file-utils.c:1456 src/xfdesktop-file-utils.c:1588
+#: src/xfdesktop-file-utils.c:1652 src/xfdesktop-file-utils.c:1793
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
 msgstr "Den här funktionen kräver att en filhanterartjänst körs (som till exempel den som tillhandahålls av Thunar)."
 
-#: src/xfdesktop-file-utils.c:864
+#: src/xfdesktop-file-utils.c:867
 msgid "Delete Error"
 msgstr "Fel vid borttagning"
 
-#: src/xfdesktop-file-utils.c:865
+#: src/xfdesktop-file-utils.c:868
 msgid "The selected files could not be deleted"
 msgstr "De markerade filerna kunde inte tas bort"
 
-#: src/xfdesktop-file-utils.c:925 src/xfdesktop-file-utils.c:973
+#: src/xfdesktop-file-utils.c:928 src/xfdesktop-file-utils.c:976
 msgid "Trash Error"
 msgstr "Papperskorgsfel"
 
-#: src/xfdesktop-file-utils.c:926
+#: src/xfdesktop-file-utils.c:929
 msgid "The selected files could not be moved to the trash"
 msgstr "De markerade filerna kunde inte flyttas till papperskorgen"
 
-#: src/xfdesktop-file-utils.c:927 src/xfdesktop-file-utils.c:975
+#: src/xfdesktop-file-utils.c:930 src/xfdesktop-file-utils.c:978
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
 msgstr "Den här funktionen kräver att att en papperskorgstjänst körs (som till exempel den som tillhandahålls av Thunar)."
 
-#: src/xfdesktop-file-utils.c:974
+#: src/xfdesktop-file-utils.c:977
 msgid "Could not empty the trash"
 msgstr "Det gick inte att tömma papperskorgen"
 
-#: src/xfdesktop-file-utils.c:984
+#: src/xfdesktop-file-utils.c:987
 #, c-format
 msgid "Unable to create new file \"%1$s\" from template file \"%2$s\": %3$s"
 msgstr "Misslyckades med att skapa ny fil \"%1$s\" från mallfil \"%2$s\": %3$s"
 
-#: src/xfdesktop-file-utils.c:990 src/xfdesktop-file-utils.c:1104
-#: src/xfdesktop-file-utils.c:1200
+#: src/xfdesktop-file-utils.c:993 src/xfdesktop-file-utils.c:1107
+#: src/xfdesktop-file-utils.c:1203
 msgid "Create File Error"
 msgstr "Fel vid borttagning av fil"
 
-#: src/xfdesktop-file-utils.c:992 src/xfdesktop-file-utils.c:1266
+#: src/xfdesktop-file-utils.c:995 src/xfdesktop-file-utils.c:1269
 msgid "Could not create a new file"
 msgstr "Det gick inte att skapa en ny fil"
 
-#: src/xfdesktop-file-utils.c:1005
+#: src/xfdesktop-file-utils.c:1008
 msgid "New Empty File"
 msgstr "Ny tom fil"
 
-#: src/xfdesktop-file-utils.c:1100
+#: src/xfdesktop-file-utils.c:1103
 #, c-format
 msgid "Unable to create new folder \"%1$s\": %2$s"
 msgstr "Misslyckades med att skapa ny mapp \"%1$s\": %2$s"
 
-#: src/xfdesktop-file-utils.c:1106 src/xfdesktop-file-utils.c:1299
+#: src/xfdesktop-file-utils.c:1109 src/xfdesktop-file-utils.c:1302
 msgid "Could not create a new folder"
 msgstr "Kunde inte skapa en ny mapp"
 
-#: src/xfdesktop-file-utils.c:1140
+#: src/xfdesktop-file-utils.c:1143
 msgid "C_reate"
 msgstr "S_kapa"
 
-#: src/xfdesktop-file-utils.c:1198
+#: src/xfdesktop-file-utils.c:1201
 #, c-format
 msgid "Cannot convert filename \"%s\" to the local encoding"
 msgstr "Kan inte konvertera filnamnet \"%s\" till lokal teckenkodning"
 
-#: src/xfdesktop-file-utils.c:1260
+#: src/xfdesktop-file-utils.c:1263
 #, c-format
 msgid "Create Document from template \"%s\""
 msgstr "Skapa dokument från mallen \"%s\""
 
-#: src/xfdesktop-file-utils.c:1263 src/xfdesktop-file-utils.c:1296
+#: src/xfdesktop-file-utils.c:1266 src/xfdesktop-file-utils.c:1299
 msgid "Enter the name:"
 msgstr "Fyll i namnet:"
 
-#: src/xfdesktop-file-utils.c:1288
+#: src/xfdesktop-file-utils.c:1291
 msgid "New Folder"
 msgstr "Ny mapp"
 
-#: src/xfdesktop-file-utils.c:1294
+#: src/xfdesktop-file-utils.c:1297
 msgid "Create New Folder"
 msgstr "Skapa ny mapp"
 
-#: src/xfdesktop-file-utils.c:1390
+#: src/xfdesktop-file-utils.c:1393
 msgid "File Properties Error"
 msgstr "Fel i filegenskaper"
 
-#: src/xfdesktop-file-utils.c:1391
+#: src/xfdesktop-file-utils.c:1394
 msgid "The file properties dialog could not be opened"
 msgstr "Dialogrutan för filegenskaper kunde inte öppnas"
 
-#: src/xfdesktop-file-utils.c:1452
+#: src/xfdesktop-file-utils.c:1455
 msgid "The file could not be opened"
 msgstr "Filen kunde inte öppnas"
 
-#: src/xfdesktop-file-utils.c:1473 src/xfdesktop-file-utils.c:1580
+#: src/xfdesktop-file-utils.c:1476 src/xfdesktop-file-utils.c:1583
 #, c-format
 msgid "Failed to run \"%s\""
 msgstr "Misslyckades med att köra \"%s\""
 
-#: src/xfdesktop-file-utils.c:1648
+#: src/xfdesktop-file-utils.c:1651
 msgid "The application chooser could not be opened"
 msgstr "Programväljaren kunde inte öppnas"
 
-#: src/xfdesktop-file-utils.c:1719 src/xfdesktop-file-utils.c:1788
+#: src/xfdesktop-file-utils.c:1722 src/xfdesktop-file-utils.c:1791
 msgid "Transfer Error"
 msgstr "Överföringsfel"
 
-#: src/xfdesktop-file-utils.c:1720 src/xfdesktop-file-utils.c:1789
+#: src/xfdesktop-file-utils.c:1723 src/xfdesktop-file-utils.c:1792
 msgid "The file transfer could not be performed"
 msgstr "Filöverföringen kunde inte utföras"
 
