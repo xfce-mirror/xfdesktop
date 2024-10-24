@@ -460,6 +460,7 @@ static gboolean xfdesktop_icon_view_draw(GtkWidget *widget,
                                          cairo_t *cr);
 static void xfdesktop_icon_view_drag_begin(GtkWidget *widget,
                                            GdkDragContext *contest);
+static void free_dragged_icons(gpointer data);
 static void xfdesktop_icon_view_drag_data_get(GtkWidget *widget,
                                               GdkDragContext *context,
                                               GtkSelectionData *data,
@@ -2329,6 +2330,11 @@ xfdesktop_icon_view_drag_begin(GtkWidget *widget,
 }
 
 static void
+free_dragged_icons(gpointer data) {
+    g_list_free_full(data, g_free);
+}
+
+static void
 xfdesktop_icon_view_drag_data_get(GtkWidget *widget,
                                   GdkDragContext *context,
                                   GtkSelectionData *data,
@@ -2364,7 +2370,7 @@ xfdesktop_icon_view_drag_data_get(GtkWidget *widget,
             g_object_set_data_full(G_OBJECT(context),
                                    "--xfdesktop-icon-view-xfdesktop-icon-drag-data",
                                    icon_list.dragged_icons,
-                                   (GDestroyNotify)g_list_free);
+                                   (GDestroyNotify)free_dragged_icons);
             gtk_selection_data_set(data,
                                    gdk_atom_intern(XFDESKTOP_ICON_NAME, FALSE),
                                    1,
