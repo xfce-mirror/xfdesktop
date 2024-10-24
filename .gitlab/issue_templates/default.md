@@ -35,7 +35,7 @@ issue.  Include any relevant logs our console output.  If a screenshot
 or screencast video may be helpful, attach it here.
 -->
 
-# Versions
+# Environment & Versions
 
 <!--
 If you are running a stable release, please try to test with the latest
@@ -48,4 +48,6 @@ that you test with the current state of git master.
 * xfdesktop version (git hash if not a release):
 * Windowing system (X11/Wayland):
 * Compositor and version (if Wayland):
-
+* GTK Theme:
+* Icon Theme:
+* UI Scale Factor:
