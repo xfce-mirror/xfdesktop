@@ -1,3 +1,31 @@
+4.19.6 (2024-11-01)
+======
+- Add a few environment settings to gitlab issue template
+- Fix leak when dragging icons
+- bump copyright
+- Bump libxfce4windowing requirement to 4.19.8
+- Ignore the result of g_volume_can_mount()
+- Add GMount instances to the hash table always
+- Bump xfconf requirement and stop using 
+  xfconf_g_property_bind_gdkrgba()
+- Fix GArray leak in xfdesktop_keyboard_shortcut_settings_init
+- Add issue template
+- Fix string leak in cb_image_selection_changed
+- Fix string leak in update_icon_view_model
+- Fix GFile leak in backdrop cycler
+- Reset backdrop cycler timer if user manually changes the image
+- Add all background dirs to the settings chooser button shortcuts
+- Fix GFileInfo leak in xfdesktop_special_file_icon_new
+- Clean up PARAM_FLAGS in icon view
+- Clean up cell renderer init & management in the icon view
+- Fix leaks in xfdesktop_icon_view_constructed
+- Remove unused version.sh script
+- Translation Updates:
+  Albanian, Bulgarian, Chinese (China), Dutch, English (United
+  Kingdom), Estonian, French, Galician, German, Italian, Japanese,
+  Lithuanian, Occitan (post 1500), Polish, Portuguese, Serbian,
+  Swedish, Ukrainian
+
 4.19.5 (2024-10-16)
 ======
 - Rework how icon pointer "hit detection" works
