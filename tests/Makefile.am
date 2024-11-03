@@ -1,5 +1,7 @@
 if ENABLE_TESTS
 
+if ENABLE_FILE_ICONS
+
 noinst_PROGRAMS = \
 	test-icon-position-parsing \
 	test-icon-position-saving
@@ -28,6 +30,8 @@ test_icon_position_saving_SOURCES = \
 	$(top_srcdir)/src/xfdesktop-icon-position-configs.c
 test_icon_position_saving_CFLAGS = $(tests_cflags)
 test_icon_position_saving_LDADD = $(tests_ldadd)
+
+endif
 
 endif
 

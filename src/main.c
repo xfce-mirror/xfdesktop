@@ -54,7 +54,7 @@ main(int argc, char **argv)
     /* bind gettext textdomain */
     xfce_textdomain(GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
 
-#ifdef ENABLE_DESKTOP_ICONS
+#ifdef ENABLE_FILE_ICONS
     xfdesktop_monitor_chooser_ui_register_resource();
 #endif
 

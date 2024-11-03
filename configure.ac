@@ -119,19 +119,16 @@ dnl do we want desktop icons at all?
 AC_ARG_ENABLE([desktop-icons],
     [AS_HELP_STRING([--disable-desktop-icons],
             [Do not compile in support for desktop icons (default=enabled)])],
-        [ac_cv_enable_desktop_icons=$enableval],
-        [ac_cv_enable_desktop_icons=yes])
-if test "x$ac_cv_enable_desktop_icons" = "xno"; then
-    enable_desktop_icons="no"
-else
-    enable_desktop_icons="yes"
+        [enable_desktop_icons=$enableval],
+        [enable_desktop_icons=yes])
+if test "x$enable_desktop_icons" = "xyes"; then
     AC_DEFINE([ENABLE_DESKTOP_ICONS], [1], [Set if desktop icon support is enabled])
 fi
 AM_CONDITIONAL([ENABLE_DESKTOP_ICONS], [test "x$enable_desktop_icons" = "xyes"])
 
 dnl if we want desktop icons, do we also want file icons?
 if test x"$enable_desktop_icons" != x"yes"; then
-    xdt_cv_FILE_ICONS_enabled=no
+    enable_file_icons=no
 fi
 XDT_CHECK_OPTIONAL_FEATURE([FILE_ICONS],
                            [file-icons],
