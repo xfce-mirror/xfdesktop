@@ -807,6 +807,9 @@ render_finished(cairo_surface_t *surface, gint width, gint height, GError *error
                 backdrop = g_new0(Backdrop, 1);
                 backdrop->manager = rdata->manager;
                 backdrop->cycler = xfdesktop_backdrop_cycler_new(rdata->manager->channel, rdata->property_prefix);
+                if (rdata->image_file != NULL) {
+                    g_object_set(backdrop->cycler, "image-filename", g_file_peek_path(rdata->image_file), NULL);
+                }
                 g_hash_table_insert(rdata->manager->backdrops, rdata->property_prefix, backdrop);
                 rdata->property_prefix = NULL;
             } else {
