@@ -35,7 +35,8 @@ G_DECLARE_FINAL_TYPE(XfdesktopBackdropCycler, xfdesktop_backdrop_cycler, XFDESKT
 #define XFDESKTOP_TYPE_BACKDROP_CYCLER (xfdesktop_backdrop_cycler_get_type())
 
 XfdesktopBackdropCycler *xfdesktop_backdrop_cycler_new(XfconfChannel *channel,
-                                                       const gchar *property_prefix);
+                                                       const gchar *property_prefix,
+                                                       GFile *image_file);
 
 const gchar *xfdesktop_backdrop_cycler_get_property_prefix(XfdesktopBackdropCycler *cycler);
 

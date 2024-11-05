@@ -1152,7 +1152,7 @@ xfdesktop_backdrop_cycler_image_filename_changed(XfconfChannel *channel,
 }
 
 XfdesktopBackdropCycler *
-xfdesktop_backdrop_cycler_new(XfconfChannel *channel, const gchar *property_prefix) {
+xfdesktop_backdrop_cycler_new(XfconfChannel *channel, const gchar *property_prefix, GFile *image_file) {
     g_return_val_if_fail(XFCONF_IS_CHANNEL(channel), NULL);
     g_return_val_if_fail(property_prefix != NULL && property_prefix[0] == '/', NULL);
 
@@ -1161,6 +1161,7 @@ xfdesktop_backdrop_cycler_new(XfconfChannel *channel, const gchar *property_pref
     return g_object_new(XFDESKTOP_TYPE_BACKDROP_CYCLER,
                         "channel", channel,
                         "property-prefix", property_prefix,
+                        "image-filename", image_file != NULL ? g_file_peek_path(image_file) : NULL,
                         NULL);
 }
 
