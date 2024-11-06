@@ -590,7 +590,7 @@ msgstr "Barva písma:"
 
 #: settings/xfdesktop-settings-ui.glade:941
 msgid "Label bac_kground color:"
-msgstr ""
+msgstr "Barva po_zadí popisků"
 
 #: settings/xfdesktop-settings-ui.glade:984
 msgid "<b>Appearance</b>"
@@ -598,15 +598,15 @@ msgstr "<b>Vzhled</b>"
 
 #: settings/xfdesktop-settings-ui.glade:1019
 msgid "Placement _direction:"
-msgstr ""
+msgstr "_Směr umístění:"
 
 #: settings/xfdesktop-settings-ui.glade:1059
 msgid "Show icons only on _primary display"
-msgstr ""
+msgstr "Zobrazit ikony pouze na _primárním displeji"
 
 #: settings/xfdesktop-settings-ui.glade:1074
 msgid "Single click to _activate items"
-msgstr ""
+msgstr "_Aktivace položek jediným kliknutím"
 
 #: settings/xfdesktop-settings-ui.glade:1090
 msgid "_Underline text on hover"
@@ -614,7 +614,7 @@ msgstr "Podtrhnout text při umístění kurzoru"
 
 #: settings/xfdesktop-settings-ui.glade:1106
 msgid "Show confirmation dialog before arran_ging icons"
-msgstr ""
+msgstr "Zobrazit potvrzovací dialo_gové okno před přesunem ikon"
 
 #: settings/xfdesktop-settings-ui.glade:1127
 msgid "Behavior"
@@ -650,7 +650,7 @@ msgstr "Povolit volbu „Smazat“ v kontextové nabídce"
 
 #: settings/xfdesktop-settings-ui.glade:1300
 msgid "_Arrange folders before files"
-msgstr ""
+msgstr "Uspořád_at složky před soubory"
 
 #: settings/xfdesktop-settings-ui.glade:1321
 msgid "General"
@@ -666,7 +666,7 @@ msgstr "Ikony souborů a spouštěčů"
 
 #: settings/xfdesktop-settings-ui.glade:1421
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "_Klávesové zkratky"
 
 #: src/menu.c:86
 msgid "_Applications"
@@ -786,11 +786,11 @@ msgstr "Nelze spustit \"exo-desktop-item-edit\". Tato aplikace je vyžadována p
 msgid ""
 "Would you like to assign an existing desktop icon layout to monitor "
 "<b>%s</b>?"
-msgstr ""
+msgstr "Chcete existující ikonu rozložení pracovní plochy přidělit monitoru <b>%s</b>?"
 
 #: src/xfdesktop-file-icon-manager.c:1461
 msgid "Monitors"
-msgstr ""
+msgstr "Monitory"
 
 #: src/xfdesktop-file-icon-manager.c:1747
 msgid "_Open all"
@@ -904,11 +904,11 @@ msgstr "_Vlastnosti..."
 #: src/xfdesktop-file-icon-manager.c:3116
 #, c-format
 msgid "Failed to save dropped file to '%s'"
-msgstr ""
+msgstr "Uložení souboru přemístěného do %s se nezdařilo"
 
 #: src/xfdesktop-file-icon-manager.c:3118
 msgid "Drop Failure"
-msgstr ""
+msgstr "Umístění se nezdařilo"
 
 #: src/xfdesktop-file-icon-manager.c:3122
 #: src/xfdesktop-icon-view-manager.c:492
@@ -943,7 +943,7 @@ msgstr "Složku pracovní plochu se nepodařilo načíst"
 
 #: src/xfdesktop-file-icon-manager.c:3664
 msgid "A desktop file icon error occurred"
-msgstr ""
+msgstr "Došlo k chybě ikony souboru plochy"
 
 #: src/xfdesktop-file-icon-manager.c:3668
 msgid "Desktop Folder Error"
@@ -1042,7 +1042,7 @@ msgstr "Nelze vysypat koš"
 #: src/xfdesktop-file-utils.c:987
 #, c-format
 msgid "Unable to create new file \"%1$s\" from template file \"%2$s\": %3$s"
-msgstr ""
+msgstr "Nelze vytvořit nový soubor z „%1$s“ ze souboru šablony „%2$s“ˇ: %3$s"
 
 #: src/xfdesktop-file-utils.c:993 src/xfdesktop-file-utils.c:1107
 #: src/xfdesktop-file-utils.c:1203
@@ -1060,11 +1060,11 @@ msgstr "Nový prázdný soubor"
 #: src/xfdesktop-file-utils.c:1103
 #, c-format
 msgid "Unable to create new folder \"%1$s\": %2$s"
-msgstr ""
+msgstr "Nelze vytvořit novou složku „%1$s“: %2$s"
 
 #: src/xfdesktop-file-utils.c:1109 src/xfdesktop-file-utils.c:1302
 msgid "Could not create a new folder"
-msgstr ""
+msgstr "Nelze vytvořit novou složku"
 
 #: src/xfdesktop-file-utils.c:1143
 msgid "C_reate"
@@ -1123,7 +1123,7 @@ msgstr "Přenos souboru nelze uskutečnit"
 
 #: src/xfdesktop-icon-view-manager.c:488
 msgid "Arrange Icons"
-msgstr ""
+msgstr "Uspořádat ikony"
 
 #: src/xfdesktop-icon-view-manager.c:509
 msgid ""
@@ -1261,7 +1261,7 @@ msgstr "Připojení se nezdařilo"
 
 #: src/xfdesktop-volume-icon.c:780
 msgid "Safely _Remove Volume"
-msgstr ""
+msgstr "Bezpečně odeb_rat svazek"
 
 #: src/xfdesktop-volume-icon.c:783
 msgid "_Disconnect Volume"
@@ -1277,7 +1277,7 @@ msgstr "_Uzamknout svazek"
 
 #: src/xfdesktop-volume-icon.c:792
 msgid "_Eject Volume"
-msgstr ""
+msgstr "_Vysunout médium"
 
 #: src/xfdesktop-volume-icon.c:801
 msgid "_Unmount Volume"
@@ -1289,4 +1289,4 @@ msgstr "_Připojit svazek"
 
 #: src/xfdesktop-window-icon-manager.c:296
 msgid "_Run Program..."
-msgstr ""
+msgstr "Spustit p_rogram…"
