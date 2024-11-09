@@ -509,11 +509,13 @@ file_input_stream_ready_cb(GObject *source_object, GAsyncResult *res, gpointer u
 
     if (bytes < 0) {
         g_input_stream_close(stream, NULL, NULL);
+        g_object_unref(stream);
         image_data_error(image_data, error);
         image_data_free(image_data);
         g_error_free(error);
     } else if (bytes == 0) {
         g_input_stream_close(stream, NULL, NULL);
+        g_object_unref(stream);
         if (!gdk_pixbuf_loader_close(image_data->loader, &error)) {
             image_data_error(image_data, error);
             image_data_free(image_data);
@@ -529,6 +531,7 @@ file_input_stream_ready_cb(GObject *source_object, GAsyncResult *res, gpointer u
                                   image_data);
     } else {
         g_input_stream_close(stream, NULL, NULL);
+        g_object_unref(stream);
         image_data_error(image_data, error);
         image_data_free(image_data);
         g_error_free(error);
