@@ -85,6 +85,9 @@ static void xfdesktop_backdrop_cycler_get_property(GObject *object,
                                                    guint property_id,
                                                    GValue *value,
                                                    GParamSpec *pspec);
+
+static void xfdesktop_backdrop_cycler_remove_backdrop_timer(XfdesktopBackdropCycler *cycler);
+
 static void xfdesktop_backdrop_cycler_finalize(GObject *object);
 
 static void cb_xfdesktop_backdrop_cycler_image_files_changed(GFileMonitor *monitor,
@@ -308,6 +311,8 @@ xfdesktop_backdrop_cycler_get_property(GObject *object, guint property_id, GValu
 static void
 xfdesktop_backdrop_cycler_finalize(GObject *object) {
     XfdesktopBackdropCycler *cycler = XFDESKTOP_BACKDROP_CYCLER(object);
+
+    xfdesktop_backdrop_cycler_remove_backdrop_timer(cycler);
 
     xfdesktop_backdrop_clear_directory_monitor(cycler);
 
