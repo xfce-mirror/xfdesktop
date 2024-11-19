@@ -1,0 +1,1157 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Michael O'Connor, 2023
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-05-30 00:56+0200\n"
+"PO-Revision-Date: 2020-12-28 17:18+0000\n"
+"Last-Translator: Michael O'Connor, 2023\n"
+"Language-Team: Irish (https://app.transifex.com/xfce/teams/16840/ga/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ga\n"
+"Plural-Forms: nplurals=5; plural=(n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n<11 ? 3 : 4);\n"
+
+#: ../settings/main.c:419 ../src/xfdesktop-special-file-icon.c:292
+#: ../src/xfdesktop-special-file-icon.c:478
+msgid "Home"
+msgstr "Baile"
+
+#: ../settings/main.c:421 ../src/xfdesktop-special-file-icon.c:294
+#: ../src/xfdesktop-special-file-icon.c:476
+msgid "File System"
+msgstr "Córas Comhad"
+
+#: ../settings/main.c:423 ../src/xfdesktop-special-file-icon.c:296
+msgid "Trash"
+msgstr "Bosca Athchúrsala"
+
+#: ../settings/main.c:425
+msgid "Removable Devices"
+msgstr "Gléasanna Inbhainte"
+
+#: ../settings/main.c:427
+msgid "Network Shares"
+msgstr ""
+
+#: ../settings/main.c:429
+msgid "Disks and Drives"
+msgstr "Dioscaí agus Tiomántáin"
+
+#: ../settings/main.c:431
+msgid "Other Devices"
+msgstr "Gléasanna Eile"
+
+#. Display the file name, file type, and file size in the tooltip.
+#: ../settings/main.c:541
+#, c-format
+msgid ""
+"<b>%s</b>\n"
+"Type: %s\n"
+"Size: %s"
+msgstr ""
+"<b>%s</b>\n"
+"Saghas: %s\n"
+"Méid: %s"
+
+#: ../settings/main.c:728
+#, c-format
+msgid "Wallpaper for Monitor %d (%s)"
+msgstr "Cúlbhrat do Mhonatóir %d(%s)"
+
+#: ../settings/main.c:731
+#, c-format
+msgid "Wallpaper for Monitor %d"
+msgstr "Cúlbhrat do Mhonatóir %d"
+
+#: ../settings/main.c:737
+msgid "Move this dialog to the display you want to edit the settings for."
+msgstr ""
+"Bog an dialóg seo go dtí an scáileán gur mion leat na socruithe a chur in "
+"eagar. "
+
+#: ../settings/main.c:744
+#, c-format
+msgid "Wallpaper for %s on Monitor %d (%s)"
+msgstr "Cúlbhrat do %s ar Mhonatóir %d (%s)"
+
+#: ../settings/main.c:748
+#, c-format
+msgid "Wallpaper for %s on Monitor %d"
+msgstr ""
+
+#: ../settings/main.c:755
+msgid ""
+"Move this dialog to the display and workspace you want to edit the settings "
+"for."
+msgstr ""
+
+#. Single monitor and single workspace
+#: ../settings/main.c:763
+#, c-format
+msgid "Wallpaper for my desktop"
+msgstr "Cúlbhrat do mo dheasc"
+
+#. Single monitor and per workspace wallpaper
+#: ../settings/main.c:769
+#, c-format
+msgid "Wallpaper for %s"
+msgstr "Cúlbhrat do %s"
+
+#: ../settings/main.c:774
+msgid "Move this dialog to the workspace you want to edit the settings for."
+msgstr ""
+
+#: ../settings/main.c:1193
+msgid "Image selection is unavailable while the image style is set to None."
+msgstr ""
+"Níl roghnúchán íomhá ar fháil nuair atá an stíl íomhá socruithe go Gan."
+
+#: ../settings/main.c:1553
+msgid "Spanning screens"
+msgstr ""
+
+#. TRANSLATORS: Please split the message in half with '\n' so the dialog will
+#. not be too wide.
+#: ../settings/main.c:1721
+msgid ""
+"Would you like to arrange all existing\n"
+"icons according to the selected orientation?"
+msgstr ""
+
+#: ../settings/main.c:1727
+msgid "Arrange icons"
+msgstr "Eagraigh íocóin"
+
+#. printf is to be translator-friendly
+#: ../settings/main.c:1735 ../src/xfdesktop-file-icon-manager.c:798
+#: ../src/xfdesktop-file-icon-manager.c:1353
+#, c-format
+msgid "Unable to launch \"%s\":"
+msgstr "Ní féidir le \"%s\" a bheith lainseála"
+
+#: ../settings/main.c:1736 ../src/xfdesktop-file-icon-manager.c:800
+#: ../src/xfdesktop-file-icon-manager.c:1102
+#: ../src/xfdesktop-file-icon-manager.c:1354 ../src/xfdesktop-file-utils.c:683
+#: ../src/xfdesktop-file-utils.c:1217 ../src/xfdesktop-file-utils.c:1295
+#: ../src/xfdesktop-file-utils.c:1319 ../src/xfdesktop-file-utils.c:1381
+msgid "Launch Error"
+msgstr "Earráid Lainseála"
+
+#: ../settings/main.c:1738 ../settings/xfdesktop-settings-ui.glade.h:20
+#: ../src/xfdesktop-file-icon-manager.c:562
+#: ../src/xfdesktop-file-icon-manager.c:581
+#: ../src/xfdesktop-file-icon-manager.c:666
+#: ../src/xfdesktop-file-icon-manager.c:802
+#: ../src/xfdesktop-file-icon-manager.c:1106
+#: ../src/xfdesktop-file-icon-manager.c:1356
+#: ../src/xfdesktop-file-icon-manager.c:2953 ../src/xfdesktop-file-utils.c:686
+#: ../src/xfdesktop-file-utils.c:706 ../src/xfdesktop-file-utils.c:761
+#: ../src/xfdesktop-file-utils.c:825 ../src/xfdesktop-file-utils.c:886
+#: ../src/xfdesktop-file-utils.c:947 ../src/xfdesktop-file-utils.c:995
+#: ../src/xfdesktop-file-utils.c:1050 ../src/xfdesktop-file-utils.c:1108
+#: ../src/xfdesktop-file-utils.c:1160 ../src/xfdesktop-file-utils.c:1221
+#: ../src/xfdesktop-file-utils.c:1297 ../src/xfdesktop-file-utils.c:1323
+#: ../src/xfdesktop-file-utils.c:1385 ../src/xfdesktop-file-utils.c:1444
+#: ../src/xfdesktop-file-utils.c:1460 ../src/xfdesktop-file-utils.c:1522
+#: ../src/xfdesktop-file-utils.c:1540 ../src/xfdesktop-volume-icon.c:523
+#: ../src/xfdesktop-volume-icon.c:569 ../src/xfdesktop-volume-icon.c:605
+msgid "_Close"
+msgstr "_Scoir"
+
+#: ../settings/main.c:1893
+msgid "Image files"
+msgstr "Comhaid íomhá"
+
+#. Change the title of the file chooser dialog
+#: ../settings/main.c:1901
+msgid "Select a Directory"
+msgstr "Roghnaigh Comhadlann"
+
+#: ../settings/main.c:2106
+msgid "Settings manager socket"
+msgstr ""
+
+#: ../settings/main.c:2106
+msgid "SOCKET ID"
+msgstr ""
+
+#: ../settings/main.c:2107
+msgid "Version information"
+msgstr "Faisnéis leagain"
+
+#: ../settings/main.c:2108 ../src/xfdesktop-application.c:842
+msgid "Enable debug messages"
+msgstr ""
+
+#: ../settings/main.c:2132
+#, c-format
+msgid "Type '%s --help' for usage."
+msgstr "Clóscríobh '%s --help' chun sonraí úsáide a fheiceáil."
+
+#: ../settings/main.c:2144
+msgid "The Xfce development team. All rights reserved."
+msgstr "An foireann forbartha Xfce. Gach ceart ar cosaint."
+
+#: ../settings/main.c:2145
+#, c-format
+msgid "Please report bugs to <%s>."
+msgstr ""
+
+#: ../settings/main.c:2152
+msgid "Desktop Settings"
+msgstr "Socruithe Deisce"
+
+#: ../settings/main.c:2154
+msgid "Unable to contact settings server"
+msgstr ""
+
+#: ../settings/main.c:2156
+msgid "Quit"
+msgstr "Scoir"
+
+#: ../settings/xfce-backdrop-settings.desktop.in.in.h:1
+#: ../settings/xfdesktop-settings-ui.glade.h:18 ../src/xfce-desktop.c:1176
+msgid "Desktop"
+msgstr "Deisc"
+
+#: ../settings/xfce-backdrop-settings.desktop.in.in.h:2
+msgid "Set desktop background and menu and icon behavior"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
+msgid "Solid color"
+msgstr "Dath amháin ar fad"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
+msgid "Horizontal gradient"
+msgstr "Grádán cothrománach"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
+msgid "Vertical gradient"
+msgstr "Grádán ceartingearach"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
+msgid "Transparent"
+msgstr "Trédhearcach"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
+msgid "Choose the folder to select wallpapers from."
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
+msgid "St_yle:"
+msgstr "S_tíl"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
+msgid "Specify how the image will be resized to fit the screen."
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
+#: ../settings/xfdesktop-settings-ui.glade.h:4
+msgid "None"
+msgstr "Gan"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
+msgid "Centered"
+msgstr "Lárnaithe"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
+msgid "Tiled"
+msgstr "Tílithe"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
+msgid "Stretched"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
+msgid "Scaled"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
+msgid "Zoomed"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
+msgid "Spanning Screens"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
+msgid "Specify the style of the color drawn behind the backdrop image."
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
+msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
+msgid "Select First Color"
+msgstr "Roghnaigh an chéad dath"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
+msgid "Specifies the \"right\" or \"bottom\" color of the gradient."
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
+msgid "Select Second Color"
+msgstr "Roghnaigh an dara dath"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
+msgid "Apply to all _workspaces"
+msgstr "Cuir i bhfeidm do ghach _spás oibre"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
+msgid "_Folder:"
+msgstr "_Fillteán"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
+msgid "C_olor:"
+msgstr "_Dath"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
+msgid "Change the _background "
+msgstr "Athraigh an _cúlra"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
+msgid ""
+"Automatically select a different background from the current directory."
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
+msgid "Specify how often the background will change."
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
+msgid "in seconds:"
+msgstr "i soicindí"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
+msgid "in minutes:"
+msgstr "i nóiméid:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
+msgid "in hours:"
+msgstr "in uaireanta:"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
+msgid "at start up"
+msgstr "ag dúiseacht"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
+msgid "every hour"
+msgstr "gach uair"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
+msgid "every day"
+msgstr "gach lá"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
+msgid "chronologically"
+msgstr "go croineolaíoch"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
+msgid "Amount of time before a different background is selected."
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
+msgid "_Random Order"
+msgstr "_Ord Fánach"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
+msgid ""
+"Randomly selects another image from the same directory when the wallpaper is"
+" to cycle."
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:1
+msgid "Left"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:2
+msgid "Middle"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:3
+msgid "Right"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:5
+msgid "Shift"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:6
+msgid "Alt"
+msgstr "Alt"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:7
+msgid "Control"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:8
+msgid "Minimized application icons"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:9
+msgid "File/launcher icons"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:10
+msgid "Top Left Vertical"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:11
+msgid "Top Left Horizontal"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:12
+msgid "Top Right Vertical"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:13
+msgid "Top Right Horizontal"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:14
+msgid "Bottom Left Vertical"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:15
+msgid "Bottom Left Horizontal"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:16
+msgid "Bottom Right Vertical"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:17
+msgid "Bottom Right Horizontal"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:19
+msgid "_Help"
+msgstr "_Cabhrach"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:21
+msgid "_Background"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:22
+msgid "Include applications menu on _desktop right click"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:23
+msgid "_Button:"
+msgstr "_Cnaipe"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:24
+msgid "Mo_difier:"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:25
+msgid "Show _application icons in menu"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:26
+msgid "_Edit desktop menu"
+msgstr "_Cuir roghchlár deisce in eagar"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:27
+msgid "<b>Desktop Menu</b>"
+msgstr "<b>Roghchlár Deisce</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:28
+msgid "Show _window list menu on desktop middle click"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:29
+msgid "B_utton:"
+msgstr "_Cnaipe"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:30
+msgid "Modi_fier:"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:31
+msgid "Sh_ow application icons in menu"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:32
+msgid "Show workspace _names in list"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:33
+msgid "Use _submenus for the windows in each workspace"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:34
+msgid "Show s_ticky windows only in active workspace"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:35
+msgid "Show a_dd and remove workspace options in list"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:36
+msgid "<b>Window List Menu</b>"
+msgstr "<b>Roghchlár Liosta Fuinneoig</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:37
+msgid "_Menus"
+msgstr "Roghchláir"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:38
+msgid "Icon _type:"
+msgstr "_Saghas íocóin"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:39
+msgid "Icon _size:"
+msgstr "_Méid íocóin"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:40
+msgid "48"
+msgstr "48"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:41
+msgid "Icons _orientation:"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:42
+msgid "Show icons on primary display"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:43
+msgid "Use custom _font size:"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:44
+msgid "12"
+msgstr "12"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:45
+msgid "Show icon tooltips. Size:"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:46
+msgid "Size of the tooltip preview image."
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:47
+msgid "128"
+msgstr "128"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:48
+msgid "Show t_humbnails"
+msgstr "_Taispeáin mionsamhlacha"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:49
+msgid ""
+"Select this option to display preview-able files on the desktop as "
+"automatically generated thumbnail icons."
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:50
+msgid "Show hidden files on the desktop"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:51
+msgid "Single _click to activate items"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:52
+msgid "<b>Appearance</b>"
+msgstr "<b>Dealramh</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:53
+msgid "<b>Default Icons</b>"
+msgstr "<b>Íocóin Reamhshocrú</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:54
+msgid "_Icons"
+msgstr "_Íocóin"
+
+#: ../src/menu.c:93
+msgid "_Applications"
+msgstr "_Feidhmchláir"
+
+#: ../src/windowlist.c:73
+#, c-format
+msgid "Remove Workspace %d"
+msgstr "Scrios Spás Oibre %d"
+
+#: ../src/windowlist.c:74
+#, c-format
+msgid ""
+"Do you really want to remove workspace %d?\n"
+"Note: You are currently on workspace %d."
+msgstr ""
+
+#: ../src/windowlist.c:78
+#, c-format
+msgid "Remove Workspace '%s'"
+msgstr "Bain Spás Oibre '%s'"
+
+#: ../src/windowlist.c:79
+#, c-format
+msgid ""
+"Do you really want to remove workspace '%s'?\n"
+"Note: You are currently on workspace '%s'."
+msgstr ""
+"An bhfuil fonn ort spás oibre '%s' a scriosadh?\n"
+"Fógra: Tá tú ar spás oibre '%s' faoi láthair."
+
+#. Popup a dialog box confirming that the user wants to remove a
+#. * workspace
+#: ../src/windowlist.c:86
+msgid "Remove"
+msgstr "Scrios"
+
+#: ../src/windowlist.c:272
+msgid "Window List"
+msgstr "Liosta Fuinneog"
+
+#: ../src/windowlist.c:297
+#, c-format
+msgid "<b>Workspace %d</b>"
+msgstr "<b>Spás Oibre %d</b>"
+
+#: ../src/windowlist.c:393 ../src/windowlist.c:395
+msgid "_Add Workspace"
+msgstr "_Cuir Spás Oibre Leis"
+
+#: ../src/windowlist.c:403
+#, c-format
+msgid "_Remove Workspace %d"
+msgstr "_Bain Spás Oibre %d"
+
+#: ../src/windowlist.c:406
+#, c-format
+msgid "_Remove Workspace '%s'"
+msgstr "_Bain Spás Oibre '%s'"
+
+#: ../src/xfdesktop-application.c:834
+msgid "Display version information"
+msgstr "Taispeáin faisnéis leagain"
+
+#: ../src/xfdesktop-application.c:835
+msgid "Reload all settings"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:836
+msgid "Advance to the next wallpaper on the current workspace"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:837
+msgid "Pop up the menu (at the current mouse position)"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:838
+msgid "Pop up the window list (at the current mouse position)"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:840
+msgid "Automatically arrange all the icons on the desktop"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:843
+msgid "Disable debug messages"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:844
+msgid "Do not wait for a window manager on startup"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:845
+msgid "Cause xfdesktop to quit"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:860
+#, c-format
+msgid "Failed to parse arguments: %s\n"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:871
+#, c-format
+msgid "This is %s version %s, running on Xfce %s.\n"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:873
+#, c-format
+msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
+msgstr ""
+
+#: ../src/xfdesktop-application.c:877
+#, c-format
+msgid "Build options:\n"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:878
+#, c-format
+msgid "    Desktop Menu:        %s\n"
+msgstr ""
+"    Roghchlár Deisce:        %s\n"
+"   \n"
+
+#: ../src/xfdesktop-application.c:880 ../src/xfdesktop-application.c:887
+#: ../src/xfdesktop-application.c:894
+msgid "enabled"
+msgstr "cumasaithe"
+
+#: ../src/xfdesktop-application.c:882 ../src/xfdesktop-application.c:889
+#: ../src/xfdesktop-application.c:896
+msgid "disabled"
+msgstr "díchumasaithe"
+
+#: ../src/xfdesktop-application.c:885
+#, c-format
+msgid "    Desktop Icons:       %s\n"
+msgstr "   Íocóin Deisce:          %s\n"
+
+#: ../src/xfdesktop-application.c:892
+#, c-format
+msgid "    Desktop File Icons:  %s\n"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:554
+#: ../src/xfdesktop-file-icon-manager.c:572
+#, c-format
+msgid "Could not create the desktop folder \"%s\""
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:559
+#: ../src/xfdesktop-file-icon-manager.c:577
+msgid "Desktop Folder Error"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:579
+msgid ""
+"A normal file with the same name already exists. Please delete or rename it."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:663 ../src/xfdesktop-file-utils.c:757
+#: ../src/xfdesktop-file-utils.c:821
+msgid "Rename Error"
+msgstr "Earráid Athainmnithe"
+
+#: ../src/xfdesktop-file-icon-manager.c:664 ../src/xfdesktop-file-utils.c:822
+msgid "The files could not be renamed"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:665
+msgid "None of the icons selected support being renamed."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1027
+#, c-format
+msgid "_Open With \"%s\""
+msgstr "_Oscail le \"%s\""
+
+#: ../src/xfdesktop-file-icon-manager.c:1030
+#, c-format
+msgid "Open With \"%s\""
+msgstr "Oscail le \"%s\""
+
+#: ../src/xfdesktop-file-icon-manager.c:1104
+msgid ""
+"Unable to launch \"exo-desktop-item-edit\", which is required to create and "
+"edit launchers and links on the desktop."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1423
+msgid "_Open all"
+msgstr "_Oscail gach rud"
+
+#: ../src/xfdesktop-file-icon-manager.c:1443
+msgid "Create _Launcher..."
+msgstr "Cruthaigh _Lainseálaí..."
+
+#: ../src/xfdesktop-file-icon-manager.c:1457
+msgid "Create _URL Link..."
+msgstr "Cruthaigh Nasc URL"
+
+#: ../src/xfdesktop-file-icon-manager.c:1471
+msgid "Create _Folder..."
+msgstr "Cruthaigh _Fillteán "
+
+#: ../src/xfdesktop-file-icon-manager.c:1483
+msgid "Create _Document"
+msgstr "Cruthaigh _Doiciméad"
+
+#: ../src/xfdesktop-file-icon-manager.c:1508
+msgid "No templates installed"
+msgstr "Níl aon teimpléad suiteáilte"
+
+#: ../src/xfdesktop-file-icon-manager.c:1524
+msgid "_Empty File"
+msgstr "_Comhaid Follamh"
+
+#: ../src/xfdesktop-file-icon-manager.c:1534
+#: ../src/xfdesktop-special-file-icon.c:545 ../src/xfdesktop-volume-icon.c:811
+msgid "_Open"
+msgstr "_Oscail"
+
+#: ../src/xfdesktop-file-icon-manager.c:1550
+msgid "_Execute"
+msgstr "_Rith"
+
+#: ../src/xfdesktop-file-icon-manager.c:1568
+msgid "_Edit Launcher"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1627
+msgid "Open With"
+msgstr "Oscail le"
+
+#: ../src/xfdesktop-file-icon-manager.c:1654
+#: ../src/xfdesktop-file-icon-manager.c:1668
+msgid "Open With Other _Application..."
+msgstr "Oscail le _Feidhmchlár Eile"
+
+#: ../src/xfdesktop-file-icon-manager.c:1686
+msgid "_Paste"
+msgstr "_Greamaigh"
+
+#: ../src/xfdesktop-file-icon-manager.c:1704
+msgid "Cu_t"
+msgstr "G_earr"
+
+#: ../src/xfdesktop-file-icon-manager.c:1716
+msgid "_Copy"
+msgstr "_Cóipeáil"
+
+#: ../src/xfdesktop-file-icon-manager.c:1728
+msgid "Paste Into Folder"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1747
+msgid "Mo_ve to Trash"
+msgstr "Bog go "
+
+#: ../src/xfdesktop-file-icon-manager.c:1759
+msgid "_Delete"
+msgstr "_Scrios"
+
+#: ../src/xfdesktop-file-icon-manager.c:1776
+msgid "_Rename..."
+msgstr "_Athainmnigh..."
+
+#: ../src/xfdesktop-file-icon-manager.c:1842
+msgid "_Open in New Window"
+msgstr "_Oscail in Fuinneog Nua"
+
+#: ../src/xfdesktop-file-icon-manager.c:1851
+msgid "Arrange Desktop _Icons"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1861
+msgid "_Next Background"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1871
+msgid "Desktop _Settings..."
+msgstr "_Socruithe Deisce..."
+
+#: ../src/xfdesktop-file-icon-manager.c:1879
+#: ../src/xfdesktop-volume-icon.c:852
+msgid "P_roperties..."
+msgstr "Ai_ríonna"
+
+#: ../src/xfdesktop-file-icon-manager.c:2950
+msgid "Load Error"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:2952
+msgid "Failed to load the desktop folder"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:3518
+msgid "Copy _Here"
+msgstr "Cóipeáil _Anseo"
+
+#: ../src/xfdesktop-file-icon-manager.c:3518
+msgid "_Move Here"
+msgstr "_Bog Anseo"
+
+#: ../src/xfdesktop-file-icon-manager.c:3518
+msgid "_Link Here"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:3553
+msgid "_Cancel"
+msgstr "_Cealaigh"
+
+#: ../src/xfdesktop-file-icon-manager.c:3683
+msgid "Untitled document"
+msgstr ""
+
+#. TRANSLATORS: file was modified less than one day ago
+#: ../src/xfdesktop-file-utils.c:159
+#, c-format
+msgid "Today at %X"
+msgstr "Inniu ag %X"
+
+#. TRANSLATORS: file was modified less than two days ago
+#: ../src/xfdesktop-file-utils.c:163
+#, c-format
+msgid "Yesterday at %X"
+msgstr "Inné ag %X"
+
+#. Days from last week
+#: ../src/xfdesktop-file-utils.c:168
+#, c-format
+msgid "%A at %X"
+msgstr "%A ag %X"
+
+#. Any other date
+#: ../src/xfdesktop-file-utils.c:171
+#, c-format
+msgid "%x at %X"
+msgstr "%x ag %X"
+
+#. the file_time is invalid
+#: ../src/xfdesktop-file-utils.c:181
+msgid "Unknown"
+msgstr "Anaithnid"
+
+#: ../src/xfdesktop-file-utils.c:684
+msgid "The folder could not be opened"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:703
+msgid "Error"
+msgstr "Earráid"
+
+#: ../src/xfdesktop-file-utils.c:704
+msgid "The requested operation could not be completed"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:758
+msgid "The file could not be renamed"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:759 ../src/xfdesktop-file-utils.c:823
+#: ../src/xfdesktop-file-utils.c:884 ../src/xfdesktop-file-utils.c:1048
+#: ../src/xfdesktop-file-utils.c:1106 ../src/xfdesktop-file-utils.c:1158
+#: ../src/xfdesktop-file-utils.c:1219 ../src/xfdesktop-file-utils.c:1321
+#: ../src/xfdesktop-file-utils.c:1383 ../src/xfdesktop-file-utils.c:1458
+#: ../src/xfdesktop-file-utils.c:1538
+msgid ""
+"This feature requires a file manager service to be present (such as the one "
+"supplied by Thunar)."
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:882
+msgid "Delete Error"
+msgstr "Scrios Earráid"
+
+#: ../src/xfdesktop-file-utils.c:883
+msgid "The selected files could not be deleted"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:943 ../src/xfdesktop-file-utils.c:991
+msgid "Trash Error"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:944
+msgid "The selected files could not be moved to the trash"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:945 ../src/xfdesktop-file-utils.c:993
+msgid ""
+"This feature requires a trash service to be present (such as the one "
+"supplied by Thunar)."
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:992
+msgid "Could not empty the trash"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:1046
+msgid "Create File Error"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:1047
+msgid "Could not create a new file"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:1104
+msgid "Create Document Error"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:1105
+msgid "Could not create a new document from the template"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:1156
+msgid "File Properties Error"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:1157
+msgid "The file properties dialog could not be opened"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:1218
+msgid "The file could not be opened"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:1292 ../src/xfdesktop-file-utils.c:1316
+#, c-format
+msgid "Failed to run \"%s\""
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:1382
+msgid "The application chooser could not be opened"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:1441 ../src/xfdesktop-file-utils.c:1456
+#: ../src/xfdesktop-file-utils.c:1519 ../src/xfdesktop-file-utils.c:1536
+msgid "Transfer Error"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:1442 ../src/xfdesktop-file-utils.c:1457
+#: ../src/xfdesktop-file-utils.c:1520 ../src/xfdesktop-file-utils.c:1537
+msgid "The file transfer could not be performed"
+msgstr ""
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:127
+msgid "Unmounting device"
+msgstr ""
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:130
+#, c-format
+msgid ""
+"The device \"%s\" is being unmounted by the system. Please do not remove the"
+" media or disconnect the drive"
+msgstr ""
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:137 ../src/xfdesktop-notify.c:322
+msgid "Writing data to device"
+msgstr ""
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:140 ../src/xfdesktop-notify.c:325
+#, c-format
+msgid ""
+"There is data that needs to be written to the device \"%s\" before it can be"
+" removed. Please do not remove the media or disconnect the drive"
+msgstr ""
+
+#: ../src/xfdesktop-notify.c:221
+msgid "Unmount Finished"
+msgstr ""
+
+#: ../src/xfdesktop-notify.c:223 ../src/xfdesktop-notify.c:408
+#, c-format
+msgid "The device \"%s\" has been safely removed from the system. "
+msgstr ""
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:313
+msgid "Ejecting device"
+msgstr "Gléas á dhíbirt"
+
+#. TRANSLATORS: Please use the same translation here as in Thunar
+#: ../src/xfdesktop-notify.c:316
+#, c-format
+msgid "The device \"%s\" is being ejected. This may take some time"
+msgstr ""
+
+#: ../src/xfdesktop-notify.c:406
+msgid "Eject Finished"
+msgstr ""
+
+#: ../src/xfdesktop-regular-file-icon.c:817
+#, c-format
+msgid ""
+"Name: %s\n"
+"Type: %s\n"
+"Size: %s\n"
+"Last modified: %s"
+msgstr ""
+
+#: ../src/xfdesktop-special-file-icon.c:461
+msgid "Trash is empty"
+msgstr "Tá an bosca athchúrsála follamh"
+
+#: ../src/xfdesktop-special-file-icon.c:464
+msgid "Trash contains one item"
+msgstr "Tá rud amhain sa bhosca athchúrsála"
+
+#: ../src/xfdesktop-special-file-icon.c:465
+#, c-format
+msgid "Trash contains %d items"
+msgstr "Tá %drud sa bhosca athchúrsála"
+
+#: ../src/xfdesktop-special-file-icon.c:494
+#, c-format
+msgid ""
+"%s\n"
+"Size: %s\n"
+"Last modified: %s"
+msgstr ""
+"%s\n"
+"Méid: %s\n"
+"Athrú deireanach: %s"
+
+#: ../src/xfdesktop-special-file-icon.c:561
+msgid "_Empty Trash"
+msgstr "_Follmhaigh an Bosca Athchúrsála"
+
+#: ../src/xfdesktop-volume-icon.c:480
+#, c-format
+msgid ""
+"Removable Volume\n"
+"Mounted in \"%s\"\n"
+"%s left (%s total)"
+msgstr ""
+
+#: ../src/xfdesktop-volume-icon.c:487
+msgid ""
+"Removable Volume\n"
+"Not mounted yet"
+msgstr ""
+
+#: ../src/xfdesktop-volume-icon.c:516 ../src/xfdesktop-volume-icon.c:562
+#, c-format
+msgid "Failed to eject \"%s\""
+msgstr ""
+
+#: ../src/xfdesktop-volume-icon.c:521 ../src/xfdesktop-volume-icon.c:567
+msgid "Eject Failed"
+msgstr ""
+
+#: ../src/xfdesktop-volume-icon.c:600
+#, c-format
+msgid "Failed to mount \"%s\""
+msgstr ""
+
+#: ../src/xfdesktop-volume-icon.c:603
+msgid "Mount Failed"
+msgstr ""
+
+#: ../src/xfdesktop-volume-icon.c:825
+msgid "E_ject Volume"
+msgstr ""
+
+#: ../src/xfdesktop-volume-icon.c:832
+msgid "_Unmount Volume"
+msgstr ""
+
+#: ../src/xfdesktop-volume-icon.c:839
+msgid "_Mount Volume"
+msgstr ""
+
+#: ../src/xfdesktop-window-icon.c:193
+msgid "_Window Actions"
+msgstr ""
