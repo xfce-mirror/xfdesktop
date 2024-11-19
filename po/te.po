@@ -1,894 +1,1118 @@
-# Xfce Telugu Translation.
-# Copyright (C) 2011 Telugu Linux Development Team.
-# This file is distributed under the same license as the xfdesktop package.
-# Praveen Illa <mail2ipn@gmail.com>, 2011.
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Nick Schermer <nick@xfce.org>, 2022
+# ప్రవీణ్ ఇళ్ళ <mail2ipn@gmail.com>, 2022
+# Xfce Bot <transifex@xfce.org>, 2022
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: xfdesktop.master\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-21 10:13+0000\n"
-"PO-Revision-Date: 2011-07-13 20:19+0530\n"
-"Last-Translator: Praveen Illa <mail2ipn@gmail.com>\n"
-"Language-Team: Telugu <indlinux-telugu@lists.sourceforge.net>\n"
+"POT-Creation-Date: 2023-05-30 00:57+0200\n"
+"PO-Revision-Date: 2022-12-22 11:24+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>, 2022\n"
+"Language-Team: Telugu (https://app.transifex.com/xfce/teams/16840/te/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: te\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-Language: Telugu\n"
-"X-Poedit-Country: INDIA\n"
 
-#: ../common/xfdesktop-common.c:96 ../common/xfdesktop-common.c:200
-#, c-format
-msgid "Backdrop list file is not valid"
-msgstr ""
-
-#. no need to escape markup; it's already done for us
-#: ../settings/main.c:163
-#, c-format
-msgid ""
-"%s\n"
-"<i>Size: %dx%d</i>"
-msgstr ""
-"%s\n"
-"<i>పరిమాణం: %dx%d</i>"
-
-#: ../settings/main.c:289 ../src/xfdesktop-special-file-icon.c:256
-#: ../src/xfdesktop-special-file-icon.c:419
+#: ../settings/main.c:430 ../src/xfdesktop-special-file-icon.c:290
+#: ../src/xfdesktop-special-file-icon.c:456
 msgid "Home"
 msgstr "నివాసం"
 
-#: ../settings/main.c:291
-msgid "Filesystem"
-msgstr "ఫైల్ వ్యవస్థ"
+#: ../settings/main.c:432 ../src/xfdesktop-special-file-icon.c:292
+#: ../src/xfdesktop-special-file-icon.c:454
+msgid "File System"
+msgstr "దస్త్ర వ్యవస్థ"
 
-#: ../settings/main.c:293
+#: ../settings/main.c:434 ../src/xfdesktop-special-file-icon.c:294
 msgid "Trash"
 msgstr "చెత్తబుట్ట"
 
-#: ../settings/main.c:295
+#: ../settings/main.c:436
 msgid "Removable Devices"
 msgstr "తీసివేయదగిన పరికరాలు"
 
-#: ../settings/main.c:475
-#, c-format
-msgid "Cannot create backdrop list \"%s\""
+#: ../settings/main.c:438
+msgid "Network Shares"
 msgstr ""
 
-#: ../settings/main.c:479 ../settings/main.c:802
-msgid "Backdrop List Error"
+#: ../settings/main.c:440
+msgid "Disks and Drives"
 msgstr ""
 
-#: ../settings/main.c:504
-msgid "Create/Load Backdrop List"
-msgstr ""
+#: ../settings/main.c:442
+msgid "Other Devices"
+msgstr "ఇతర పరికరాలు"
 
-#: ../settings/main.c:528
+#. Display the file name, file type, and file size in the tooltip.
+#: ../settings/main.c:546
 #, c-format
 msgid ""
-"File \"%s\" is not a valid backdrop list file.  Do you wish to overwrite it?"
+"<b>%s</b>\n"
+"Type: %s\n"
+"Size: %s"
 msgstr ""
 
-#: ../settings/main.c:533
-msgid "Invalid List File"
-msgstr "చెల్లని జాబితా ఫైల్"
-
-#: ../settings/main.c:536
-msgid "Overwriting the file will cause its contents to be lost."
-msgstr ""
-
-#: ../settings/main.c:538
-msgid "Replace"
-msgstr "పునఃస్థాపించు"
-
-#: ../settings/main.c:798
+#: ../settings/main.c:744
 #, c-format
-msgid "Failed to write backdrop list to \"%s\""
+msgid "Wallpaper for Monitor %d (%s)"
 msgstr ""
 
-#: ../settings/main.c:825
-msgid "Add Image File(s)"
-msgstr "బొమ్మ ఫైళ్ళను జతచేయి"
+#: ../settings/main.c:747
+#, c-format
+msgid "Wallpaper for Monitor %d"
+msgstr ""
 
-#: ../settings/main.c:834
+#: ../settings/main.c:753
+msgid "Move this dialog to the display you want to edit the settings for."
+msgstr ""
+
+#: ../settings/main.c:760
+#, c-format
+msgid "Wallpaper for %s on Monitor %d (%s)"
+msgstr ""
+
+#: ../settings/main.c:764
+#, c-format
+msgid "Wallpaper for %s on Monitor %d"
+msgstr ""
+
+#: ../settings/main.c:771
+msgid ""
+"Move this dialog to the display and workspace you want to edit the settings "
+"for."
+msgstr ""
+
+#. Single monitor and single workspace
+#: ../settings/main.c:779
+#, c-format
+msgid "Wallpaper for my desktop"
+msgstr ""
+
+#. Single monitor and per workspace wallpaper
+#: ../settings/main.c:785
+#, c-format
+msgid "Wallpaper for %s"
+msgstr ""
+
+#: ../settings/main.c:790
+msgid "Move this dialog to the workspace you want to edit the settings for."
+msgstr ""
+
+#: ../settings/main.c:1243
+msgid "Image selection is unavailable while the image style is set to None."
+msgstr ""
+
+#: ../settings/main.c:1603
+msgid "Spanning screens"
+msgstr ""
+
+#. TRANSLATORS: Please split the message in half with '\n' so the dialog will
+#. not be too wide.
+#: ../settings/main.c:1784
+msgid ""
+"Would you like to arrange all existing\n"
+"icons according to the selected orientation?"
+msgstr ""
+
+#: ../settings/main.c:1790
+msgid "Arrange icons"
+msgstr ""
+
+#. printf is to be translator-friendly
+#: ../settings/main.c:1798 ../src/xfdesktop-file-icon-manager.c:817
+#: ../src/xfdesktop-file-icon-manager.c:1413
+#, c-format
+msgid "Unable to launch \"%s\":"
+msgstr ""
+
+#: ../settings/main.c:1799 ../src/xfdesktop-file-icon-manager.c:819
+#: ../src/xfdesktop-file-icon-manager.c:1162
+#: ../src/xfdesktop-file-icon-manager.c:1414 ../src/xfdesktop-file-utils.c:725
+#: ../src/xfdesktop-file-utils.c:1392 ../src/xfdesktop-file-utils.c:1417
+#: ../src/xfdesktop-file-utils.c:1524 ../src/xfdesktop-file-utils.c:1588
+msgid "Launch Error"
+msgstr "ప్రారంభ దోషము"
+
+#: ../settings/main.c:1801 ../settings/xfdesktop-settings-ui.glade.h:20
+#: ../src/xfdesktop-file-icon-manager.c:585
+#: ../src/xfdesktop-file-icon-manager.c:604
+#: ../src/xfdesktop-file-icon-manager.c:689
+#: ../src/xfdesktop-file-icon-manager.c:821
+#: ../src/xfdesktop-file-icon-manager.c:1166
+#: ../src/xfdesktop-file-icon-manager.c:1416
+#: ../src/xfdesktop-file-icon-manager.c:3080 ../src/xfdesktop-file-utils.c:728
+#: ../src/xfdesktop-file-utils.c:846 ../src/xfdesktop-file-utils.c:901
+#: ../src/xfdesktop-file-utils.c:965 ../src/xfdesktop-file-utils.c:1026
+#: ../src/xfdesktop-file-utils.c:1087 ../src/xfdesktop-file-utils.c:1135
+#: ../src/xfdesktop-file-utils.c:1190 ../src/xfdesktop-file-utils.c:1248
+#: ../src/xfdesktop-file-utils.c:1335 ../src/xfdesktop-file-utils.c:1396
+#: ../src/xfdesktop-file-utils.c:1419 ../src/xfdesktop-file-utils.c:1528
+#: ../src/xfdesktop-file-utils.c:1592 ../src/xfdesktop-file-utils.c:1663
+#: ../src/xfdesktop-file-utils.c:1733 ../src/xfdesktop-volume-icon.c:508
+#: ../src/xfdesktop-volume-icon.c:554 ../src/xfdesktop-volume-icon.c:638
+msgid "_Close"
+msgstr "మూసివేయి (_C)"
+
+#: ../settings/main.c:1961
 msgid "Image files"
 msgstr "బొమ్మ ఫైళ్ళు"
 
-#: ../settings/main.c:839
-msgid "All files"
-msgstr "అన్ని ఫైళ్ళు"
+#. Change the title of the file chooser dialog
+#: ../settings/main.c:1969
+msgid "Select a Directory"
+msgstr ""
 
-#: ../settings/main.c:1271
-#, c-format
-msgid "Screen %d, Monitor %d (%s)"
-msgstr "తెర %d, మానిటర్ %d (%s)"
-
-#: ../settings/main.c:1275
-#, c-format
-msgid "Screen %d, Monitor %d"
-msgstr "తెర %d, మానిటర్ %d"
-
-#: ../settings/main.c:1278
-#, c-format
-msgid "Screen %d"
-msgstr "తెర %d"
-
-#: ../settings/main.c:1283
-#, c-format
-msgid "Monitor %d (%s)"
-msgstr "మానిటర్ %d (%s)"
-
-#: ../settings/main.c:1287
-#, c-format
-msgid "Monitor %d"
-msgstr "మానిటర్ %d"
-
-#: ../settings/main.c:1500
+#: ../settings/main.c:2178
 msgid "Settings manager socket"
-msgstr "అమరికల నిర్వాహకము సాకెట్"
+msgstr "అమరికల నిర్వాహకం సాకెట్"
 
-#: ../settings/main.c:1500
+#: ../settings/main.c:2178
 msgid "SOCKET ID"
 msgstr "సాకెట్ ఐడి"
 
-#: ../settings/main.c:1501
+#: ../settings/main.c:2179
 msgid "Version information"
 msgstr "రూపాంతర సమాచారం"
 
-#: ../settings/main.c:1521
+#: ../settings/main.c:2180 ../src/xfdesktop-application.c:848
+msgid "Enable debug messages"
+msgstr ""
+
+#: ../settings/main.c:2204
 #, c-format
 msgid "Type '%s --help' for usage."
-msgstr "వాడుటకు '%s --help' టైపు చేయండి."
+msgstr "వాడుటకు '%s --help' టైపు చేయండి."
 
-#: ../settings/main.c:1533
+#: ../settings/main.c:2216
 msgid "The Xfce development team. All rights reserved."
-msgstr "Xfce అభివృద్ధి బృందం. అన్ని హక్కులు కేటాయించబడినవి."
+msgstr "Xfce అభివృద్ధి బృందం. అన్ని హక్కులు పొందివున్నారు."
 
-#: ../settings/main.c:1534
+#: ../settings/main.c:2217
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "దయచేసి బగ్‌లను <%s>కు నివేదించండి."
 
-#: ../settings/main.c:1541
+#: ../settings/main.c:2224
 msgid "Desktop Settings"
 msgstr "డెస్క్‍టాప్ అమరికలు"
 
-#: ../settings/main.c:1543
+#: ../settings/main.c:2226
 msgid "Unable to contact settings server"
 msgstr "అమరికల సేవకాన్ని సంప్రదించలేకపోతుంది"
 
-#: ../settings/xfce-backdrop-settings.desktop.in.h:1
-msgid "Desktop "
-msgstr "డెస్క్‍టాప్"
+#: ../settings/main.c:2228
+msgid "Quit"
+msgstr "నిష్క్రమించు"
 
-#: ../settings/xfce-backdrop-settings.desktop.in.h:2
-msgid "Set desktop background and menu and icon behaviour"
-msgstr "డెస్క్‍టాప్ నేపథ్యాన్ని, మెనూని మరియు ప్రతీక ప్రవర్తనను అమర్చు"
+#: ../settings/xfce-backdrop-settings.desktop.in.in.h:1
+#: ../settings/xfdesktop-settings-ui.glade.h:18 ../src/xfce-desktop.c:1158
+msgid "Desktop"
+msgstr "డెస్క్‌టాప్"
+
+#: ../settings/xfce-backdrop-settings.desktop.in.in.h:2
+msgid "Set desktop background and menu and icon behavior"
+msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:1
-msgid "<b>Adjustments</b>"
-msgstr "<b>సవరణలు</b>"
+msgid "Solid color"
+msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:2
-msgid "<b>Colors</b>"
-msgstr "<b>రంగులు</b>"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
-msgid "<b>Image</b>"
-msgstr "<b>బొమ్మ</b>"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
-msgid "<b>Images</b>"
-msgstr "<b>బొమ్మలు</b>"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
-msgid "Add an image to the list"
-msgstr "జాబితాకు ఒక బొమ్మను జతచేయి"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
-#: ../settings/xfdesktop-settings-ui.glade.h:6
-msgid "Auto"
-msgstr "స్వయం"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
-msgid "Automatically pick a random image from a list file"
-msgstr "జాబితా ఫైల్ నుండి స్వయంచాలకంగా ఒక యాదృచ్ఛిక బొమ్మను తీసుకొను"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
-msgid "B_rightness:"
-msgstr "ప్రకాశత (_r):"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
-#: ../settings/xfdesktop-settings-ui.glade.h:8
-msgid "Centered"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
-msgid "Create a new list, or load an existing one"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
-msgid "Don't display an image at all"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
-#: ../settings/xfdesktop-settings-ui.glade.h:12
 msgid "Horizontal gradient"
 msgstr ""
 
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:3
+msgid "Vertical gradient"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:4
+msgid "Transparent"
+msgstr "పారదర్శకం"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:5
+msgid "Choose the folder to select wallpapers from."
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:6
+msgid "Apply"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:7
+msgid "St_yle:"
+msgstr "శైలి (_y):"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:8
+msgid "Specify how the image will be resized to fit the screen."
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:9
+#: ../settings/xfdesktop-settings-ui.glade.h:4
+msgid "None"
+msgstr "ఏదీకాదు"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:10
+msgid "Centered"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:11
+msgid "Tiled"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:12
+msgid "Stretched"
+msgstr "సాగదీయబడినది"
+
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:13
-msgid "Image _list"
-msgstr "బొమ్మ జాబితా (_l)"
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
-msgid "Increase or decrease the brightness of the final image"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
-msgid "Increase or decrease the color saturation of the final image"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
-msgid "Remove the selected image(s) from the list"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
-msgid "Sa_turation:"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
-#: ../settings/xfdesktop-settings-ui.glade.h:23
 msgid "Scaled"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:14
+msgid "Zoomed"
+msgstr "జూమ్‌చేసినది"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:15
+msgid "Spanning Screens"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:16
+msgid "Specify the style of the color drawn behind the backdrop image."
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:17
+msgid "Specifies the solid color, or the \"left\" or \"top\" color of the gradient."
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:18
 msgid "Select First Color"
 msgstr "మొదటి రంగుని ఎంచుకొను"
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:19
+msgid "Specifies the \"right\" or \"bottom\" color of the gradient."
+msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:20
 msgid "Select Second Color"
 msgstr "రెండవ రంగుని ఎంచుకొను"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:21
-msgid "Select a single image as the backdrop"
+msgid "Apply to all _workspaces"
 msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:22
-#: ../settings/xfdesktop-settings-ui.glade.h:32
-msgid "Solid color"
-msgstr ""
+msgid "_Folder:"
+msgstr "సంచయం (_F):"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:23
-msgid "Specifies the \"right\" or \"bottom\" color of the gradient"
-msgstr ""
+msgid "C_olor:"
+msgstr "రంగు (_o):"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:24
-msgid ""
-"Specifies the solid color, or the \"left\" or \"top\" color of the gradient"
-msgstr ""
+msgid "Change the _background "
+msgstr "నేపథ్యాన్ని మార్చు (_b)"
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:25
-msgid "Specify how the image will be resized to fit the screen"
+msgid ""
+"Automatically select a different background from the current directory."
 msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:26
-msgid "Specify the style of the color drawn behind the backdrop image"
+msgid "Specify how often the background will change."
 msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:27
-msgid "St_yle:"
-msgstr "శైలి (_y):"
+msgid "in seconds:"
+msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:28
-#: ../settings/xfdesktop-settings-ui.glade.h:34
-msgid "Stretched"
-msgstr "సాగదీయబడినది"
+msgid "in minutes:"
+msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:29
-#: ../settings/xfdesktop-settings-ui.glade.h:35
-msgid "Tiled"
+msgid "in hours:"
 msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:30
-#: ../settings/xfdesktop-settings-ui.glade.h:36
-msgid "Transparent"
-msgstr "పారదర్శకం"
+msgid "at start up"
+msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:31
-#: ../settings/xfdesktop-settings-ui.glade.h:39
-msgid "Vertical gradient"
+msgid "every hour"
 msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:32
-#: ../settings/xfdesktop-settings-ui.glade.h:40
-msgid "Zoomed"
-msgstr "జూమ్‌చేసినది"
+msgid "every day"
+msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:33
-msgid "_None"
-msgstr "ఏదీకాదు (_N)"
+msgid "chronologically"
+msgstr ""
 
 #: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:34
-msgid "_Single image"
-msgstr "ఒకే బొమ్మ (_S)"
+msgid "Amount of time before a different background is selected."
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:35
+msgid "_Random Order"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-appearance-frame-ui.glade.h:36
+msgid ""
+"Randomly selects another image from the same directory when the wallpaper is"
+" to cycle."
+msgstr ""
 
 #: ../settings/xfdesktop-settings-ui.glade.h:1
-msgid "<b>Appearance</b>"
-msgstr "<b>కనిపించువిధము</b>"
+msgid "Left"
+msgstr "ఎడుమ"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:2
-msgid "<b>Default Icons</b>"
-msgstr "<b>అప్రమేయ ప్రతీకలు</b>"
+msgid "Middle"
+msgstr "మధ్యన"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:3
-msgid "<b>Desktop Menu</b>"
-msgstr "<b>డెస్క్‍టాప్ మెను</b>"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:4
-msgid "<b>Window List Menu</b>"
-msgstr "<b>విండో జాబితా మెను</b>"
+msgid "Right"
+msgstr "కుడి"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:5
+msgid "Shift"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:6
 msgid "Alt"
 msgstr "Alt"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:7
-msgid "B_utton:"
-msgstr "బటన్ (_u):"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:9
 msgid "Control"
 msgstr "నియంత్రణ"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:10 ../src/xfce-desktop.c:737
-msgid "Desktop"
-msgstr "డెస్క్‍టాప్"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:11
-msgid "File/launcher icons"
-msgstr "ఫైల్/ప్రారంభకము ప్రతీకలు"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:13
-msgid "Icon _size:"
-msgstr "ప్రతీక పరిమాణం (_s):"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:14
-msgid "Icon _type:"
-msgstr "ప్రతీక రకము (_t):"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:15
-msgid "Label trans_parency:"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-ui.glade.h:16
-msgid "Left"
-msgstr "ఎడమ"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:17
-msgid "Middle"
-msgstr "మధ్యన"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:18
+#: ../settings/xfdesktop-settings-ui.glade.h:8
 msgid "Minimized application icons"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-ui.glade.h:19
-msgid "Mo_difier:"
+#: ../settings/xfdesktop-settings-ui.glade.h:9
+msgid "File/launcher icons"
+msgstr "ఫైల్/ప్రారంభకము ప్రతీకలు"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:10
+msgid "Top Left Vertical"
 msgstr ""
 
-#: ../settings/xfdesktop-settings-ui.glade.h:20
-msgid "Modi_fier:"
+#: ../settings/xfdesktop-settings-ui.glade.h:11
+msgid "Top Left Horizontal"
 msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:12
+msgid "Top Right Vertical"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:13
+msgid "Top Right Horizontal"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:14
+msgid "Bottom Left Vertical"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:15
+msgid "Bottom Left Horizontal"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:16
+msgid "Bottom Right Vertical"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:17
+msgid "Bottom Right Horizontal"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:19
+msgid "_Help"
+msgstr "సహాయం (_H)"
 
 #: ../settings/xfdesktop-settings-ui.glade.h:21
-msgid "None"
-msgstr "ఏదీకాదు"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:22
-msgid "Right"
-msgstr "కుడి"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:24
-msgid "Set desktop background and menu and icon behavior"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-ui.glade.h:25
-msgid "Sh_ow application icons in menu"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-ui.glade.h:26
-msgid "Shift"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-ui.glade.h:27
-msgid "Show _application icons in menu"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-ui.glade.h:28
-msgid "Show _window list menu on desktop middle click"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-ui.glade.h:29
-msgid "Include applications menu on _desktop right click"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-ui.glade.h:30
-msgid "Show s_ticky windows only in active workspace"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-ui.glade.h:31
-msgid "Show workspace _names in list"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-ui.glade.h:33
-msgid ""
-"Specify the transparency level for the rounded label drawn behind the icon "
-"text"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-ui.glade.h:37
-msgid "Use _submenus for the windows in each workspace"
-msgstr ""
-
-#: ../settings/xfdesktop-settings-ui.glade.h:38
-msgid "Use custom _font size:"
-msgstr "అనురూపిత ఫాంటు పరిమాణాన్ని వాడు (_f):"
-
-#: ../settings/xfdesktop-settings-ui.glade.h:41
 msgid "_Background"
 msgstr "నేపథ్యం (_B)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:42
+#: ../settings/xfdesktop-settings-ui.glade.h:22
+msgid "Enable \"Delete\" option in file context menu"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:23
+msgid "Include applications menu on _desktop right click"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:24
 msgid "_Button:"
 msgstr "బటన్ (_B):"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:43
+#: ../settings/xfdesktop-settings-ui.glade.h:25
+msgid "Mo_difier:"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:26
+msgid "Show _application icons in menu"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:27
 msgid "_Edit desktop menu"
 msgstr "డెస్క్‍టాప్ మెనూ సవరించు (_E)"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:44
-msgid "_Icons"
-msgstr "ప్రతీకలు (_I)"
+#: ../settings/xfdesktop-settings-ui.glade.h:28
+msgid "<b>Desktop Menu</b>"
+msgstr "<b>డెస్క్‍టాప్ మెను</b>"
 
-#: ../settings/xfdesktop-settings-ui.glade.h:45
+#: ../settings/xfdesktop-settings-ui.glade.h:29
+msgid "Show _window list menu on desktop middle click"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:30
+msgid "B_utton:"
+msgstr "బటన్ (_u):"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:31
+msgid "Modi_fier:"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:32
+msgid "Sh_ow application icons in menu"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:33
+msgid "Show workspace _names in list"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:34
+msgid "Use _submenus for the windows in each workspace"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:35
+msgid "Show s_ticky windows only in active workspace"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:36
+msgid "Show a_dd and remove workspace options in list"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:37
+msgid "<b>Window List Menu</b>"
+msgstr "<b>విండో జాబితా మెను</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:38
 msgid "_Menus"
 msgstr "మెనూలు (_M)"
 
-#: ../src/main.c:238
-msgid "Display version information"
-msgstr "రూపాంతర సమాచారాన్ని చూపించు"
+#: ../settings/xfdesktop-settings-ui.glade.h:39
+msgid "Icon _type:"
+msgstr "ప్రతీక రకము (_t):"
 
-#: ../src/main.c:239
-msgid "Reload all settings, refresh image list"
-msgstr "అన్ని అమరికలను తిరిగినింపు, బొమ్మ జాబితాని తాజాపరుచు"
+#: ../settings/xfdesktop-settings-ui.glade.h:40
+msgid "Icon _size:"
+msgstr "ప్రతీక పరిమాణం (_s):"
 
-#: ../src/main.c:240
-msgid "Pop up the menu (at the current mouse position)"
+#: ../settings/xfdesktop-settings-ui.glade.h:41
+msgid "48"
 msgstr ""
 
-#: ../src/main.c:241
-msgid "Pop up the window list (at the current mouse position)"
+#: ../settings/xfdesktop-settings-ui.glade.h:42
+msgid "Icons _orientation:"
 msgstr ""
 
-#: ../src/main.c:242
-msgid "Cause xfdesktop to quit"
+#: ../settings/xfdesktop-settings-ui.glade.h:43
+msgid "Show icons on primary display"
 msgstr ""
 
-#: ../src/main.c:262
-#, c-format
-msgid "Failed to parse arguments: %s\n"
+#: ../settings/xfdesktop-settings-ui.glade.h:44
+msgid "Use custom _font size:"
+msgstr "అనురూపిత ఫాంటు పరిమాణాన్ని వాడు (_f):"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:45
+msgid "12"
 msgstr ""
 
-#: ../src/main.c:270
-#, c-format
-msgid "This is %s version %s, running on Xfce %s.\n"
+#: ../settings/xfdesktop-settings-ui.glade.h:46
+msgid "Show icon tooltips. Size:"
 msgstr ""
 
-#: ../src/main.c:272
-#, c-format
-msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
+#: ../settings/xfdesktop-settings-ui.glade.h:47
+msgid "Size of the tooltip preview image."
 msgstr ""
 
-#: ../src/main.c:276
-#, c-format
-msgid "Build options:\n"
+#: ../settings/xfdesktop-settings-ui.glade.h:48
+msgid "64"
 msgstr ""
 
-#: ../src/main.c:277
-#, c-format
-msgid "    Desktop Menu:        %s\n"
-msgstr "    డెస్క్‍టాప్ మెను:        %s\n"
-
-#: ../src/main.c:279 ../src/main.c:286 ../src/main.c:293
-msgid "enabled"
-msgstr "చేతనమైంది"
-
-#: ../src/main.c:281 ../src/main.c:288 ../src/main.c:295
-msgid "disabled"
-msgstr "అచేతనమైంది"
-
-#: ../src/main.c:284
-#, c-format
-msgid "    Desktop Icons:       %s\n"
-msgstr "    డెస్క్‍టాప్ ప్రతీకలు:       %s\n"
-
-#: ../src/main.c:291
-#, c-format
-msgid "    Desktop File Icons:  %s\n"
-msgstr "    డెస్క్‍టాప్ ఫైల్ ప్రతీకలు:  %s\n"
-
-#: ../src/main.c:322
-#, c-format
-msgid "%s is not running.\n"
+#: ../settings/xfdesktop-settings-ui.glade.h:49
+msgid "Show t_humbnails"
 msgstr ""
 
-#: ../src/menu.c:106
+#: ../settings/xfdesktop-settings-ui.glade.h:50
+msgid ""
+"Select this option to display preview-able files on the desktop as "
+"automatically generated thumbnail icons."
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:51
+msgid "Show hidden files on the desktop"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:52
+msgid "Single _click to activate items"
+msgstr ""
+
+#: ../settings/xfdesktop-settings-ui.glade.h:53
+msgid "<b>Appearance</b>"
+msgstr "<b>కనిపించువిధము</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:54
+msgid "<b>Default Icons</b>"
+msgstr "<b>అప్రమేయ ప్రతీకలు</b>"
+
+#: ../settings/xfdesktop-settings-ui.glade.h:55
+msgid "_Icons"
+msgstr "ప్రతీకలు (_I)"
+
+#: ../src/menu.c:94
 msgid "_Applications"
 msgstr "అనువర్తనాలు (_A)"
 
-#: ../src/windowlist.c:235
+#: ../src/windowlist.c:75
+#, c-format
+msgid "Remove Workspace %d"
+msgstr "%d కార్యక్షేత్రాన్ని తీసివేయి"
+
+#: ../src/windowlist.c:76
+#, c-format
+msgid ""
+"Do you really want to remove workspace %d?\n"
+"Note: You are currently on workspace %d."
+msgstr ""
+
+#: ../src/windowlist.c:80
+#, c-format
+msgid "Remove Workspace '%s'"
+msgstr ""
+
+#: ../src/windowlist.c:81
+#, c-format
+msgid ""
+"Do you really want to remove workspace '%s'?\n"
+"Note: You are currently on workspace '%s'."
+msgstr ""
+
+#. Popup a dialog box confirming that the user wants to remove a
+#. * workspace
+#: ../src/windowlist.c:88
+msgid "Remove"
+msgstr ""
+
+#: ../src/windowlist.c:283
 msgid "Window List"
 msgstr "విండో జాబితా"
 
-#: ../src/windowlist.c:261
+#: ../src/windowlist.c:311
 #, c-format
 msgid "<b>Workspace %d</b>"
 msgstr "<b>కార్యక్షేత్రం %d</b>"
 
-#: ../src/windowlist.c:270
-#, c-format
-msgid "Workspace %d"
-msgstr "కార్యక్షేత్రం %d"
-
-#: ../src/windowlist.c:272
-#, c-format
-msgid "<i>Workspace %d</i>"
-msgstr "<i>కార్యక్షేత్రం %d</i>"
-
-#: ../src/windowlist.c:368 ../src/windowlist.c:371
+#: ../src/windowlist.c:407 ../src/windowlist.c:409
 msgid "_Add Workspace"
 msgstr "కార్యక్షేత్రమును జతచేయి (_A)"
 
-#: ../src/windowlist.c:379
+#: ../src/windowlist.c:417
 #, c-format
 msgid "_Remove Workspace %d"
 msgstr "కార్యక్షేత్రం %d ని తీసివేయి (_R)"
 
-#: ../src/windowlist.c:382
+#: ../src/windowlist.c:420
 #, c-format
 msgid "_Remove Workspace '%s'"
 msgstr "కార్యక్షేత్రం '%s' ని తీసివేయి (_R)"
 
-#: ../src/xfce-desktop.c:1018
-#, c-format
-msgid "Unable to load image from backdrop list file \"%s\""
+#: ../src/xfdesktop-application.c:840
+msgid "Display version information"
+msgstr "రూపాంతర సమాచారాన్ని చూపించు"
+
+#: ../src/xfdesktop-application.c:841
+msgid "Reload all settings"
+msgstr "అన్ని అమరికలను తిరిగినింపు"
+
+#: ../src/xfdesktop-application.c:842
+msgid "Advance to the next wallpaper on the current workspace"
 msgstr ""
 
-#: ../src/xfce-desktop.c:1020
-msgid "Desktop Error"
-msgstr "డెస్క్‍టాప్ దోషము"
+#: ../src/xfdesktop-application.c:843
+msgid "Pop up the menu (at the current mouse position)"
+msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:465
-#: ../src/xfdesktop-file-icon-manager.c:482
+#: ../src/xfdesktop-application.c:844
+msgid "Pop up the window list (at the current mouse position)"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:846
+msgid "Automatically arrange all the icons on the desktop"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:849
+msgid "Disable debug messages"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:850
+msgid "Do not wait for a window manager on startup"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:851
+msgid "Cause xfdesktop to quit"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:866
+#, c-format
+msgid "Failed to parse arguments: %s\n"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:877
+#, c-format
+msgid "This is %s version %s, running on Xfce %s.\n"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:879
+#, c-format
+msgid "Built with GTK+ %d.%d.%d, linked with GTK+ %d.%d.%d."
+msgstr ""
+
+#: ../src/xfdesktop-application.c:883
+#, c-format
+msgid "Build options:\n"
+msgstr ""
+
+#: ../src/xfdesktop-application.c:884
+#, c-format
+msgid "    Desktop Menu:        %s\n"
+msgstr "    డెస్క్‍టాప్ మెను:        %s\n"
+
+#: ../src/xfdesktop-application.c:886 ../src/xfdesktop-application.c:893
+#: ../src/xfdesktop-application.c:900
+msgid "enabled"
+msgstr "చేతనమైంది"
+
+#: ../src/xfdesktop-application.c:888 ../src/xfdesktop-application.c:895
+#: ../src/xfdesktop-application.c:902
+msgid "disabled"
+msgstr "అచేతనమైంది"
+
+#: ../src/xfdesktop-application.c:891
+#, c-format
+msgid "    Desktop Icons:       %s\n"
+msgstr "    డెస్క్‍టాప్ ప్రతీకలు:       %s\n"
+
+#: ../src/xfdesktop-application.c:898
+#, c-format
+msgid "    Desktop File Icons:  %s\n"
+msgstr "    డెస్క్‍టాప్ ఫైల్ ప్రతీకలు:  %s\n"
+
+#: ../src/xfdesktop-file-icon-manager.c:577
+#: ../src/xfdesktop-file-icon-manager.c:595
 #, c-format
 msgid "Could not create the desktop folder \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:470
-#: ../src/xfdesktop-file-icon-manager.c:487
+#: ../src/xfdesktop-file-icon-manager.c:582
+#: ../src/xfdesktop-file-icon-manager.c:600
 msgid "Desktop Folder Error"
 msgstr "డెస్క్‍టాప్ సంచయపు దోషం"
 
-#: ../src/xfdesktop-file-icon-manager.c:489
+#: ../src/xfdesktop-file-icon-manager.c:602
 msgid ""
 "A normal file with the same name already exists. Please delete or rename it."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:592
-#: ../src/xfdesktop-file-icon-manager.c:636 ../src/xfdesktop-file-utils.c:880
-#: ../src/xfdesktop-file-utils.c:895 ../src/xfdesktop-file-utils.c:927
-#: ../src/xfdesktop-file-utils.c:941
-msgid "Trash Error"
-msgstr "చెత్తబుట్ట దోషము"
+#: ../src/xfdesktop-file-icon-manager.c:686 ../src/xfdesktop-file-utils.c:897
+#: ../src/xfdesktop-file-utils.c:961
+msgid "Rename Error"
+msgstr "పేరుమార్చుట దోషం"
 
-#: ../src/xfdesktop-file-icon-manager.c:593
-#: ../src/xfdesktop-file-icon-manager.c:637
-msgid "The selected files could not be trashed"
+#: ../src/xfdesktop-file-icon-manager.c:687 ../src/xfdesktop-file-utils.c:962
+msgid "The files could not be renamed"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:594
-#: ../src/xfdesktop-file-icon-manager.c:638 ../src/xfdesktop-file-utils.c:729
-#: ../src/xfdesktop-file-utils.c:779 ../src/xfdesktop-file-utils.c:838
-#: ../src/xfdesktop-file-utils.c:996 ../src/xfdesktop-file-utils.c:1052
-#: ../src/xfdesktop-file-utils.c:1102 ../src/xfdesktop-file-utils.c:1152
-#: ../src/xfdesktop-file-utils.c:1229 ../src/xfdesktop-file-utils.c:1290
-#: ../src/xfdesktop-file-utils.c:1363 ../src/xfdesktop-file-utils.c:1441
+#: ../src/xfdesktop-file-icon-manager.c:688
+msgid "None of the icons selected support being renamed."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1016
 msgid ""
-"This feature requires a file manager service to be present (such as the one "
-"supplied by Thunar)."
+"This will reorder all desktop items and place them on different screen positions.\n"
+"Are you sure?"
 msgstr ""
 
-#. printf is to be translator-friendly
-#: ../src/xfdesktop-file-icon-manager.c:738
-#: ../src/xfdesktop-file-icon-manager.c:1296
-#, c-format
-msgid "Unable to launch \"%s\":"
+#: ../src/xfdesktop-file-icon-manager.c:1020
+msgid "_OK"
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:740
-#: ../src/xfdesktop-file-icon-manager.c:984
-#: ../src/xfdesktop-file-icon-manager.c:1297 ../src/xfdesktop-file-utils.c:712
-#: ../src/xfdesktop-file-utils.c:727 ../src/xfdesktop-file-utils.c:1135
-#: ../src/xfdesktop-file-utils.c:1150 ../src/xfdesktop-file-utils.c:1202
-#: ../src/xfdesktop-file-utils.c:1227 ../src/xfdesktop-file-utils.c:1273
-#: ../src/xfdesktop-file-utils.c:1288
-msgid "Launch Error"
-msgstr "ప్రారంభ దోషము"
-
-#: ../src/xfdesktop-file-icon-manager.c:908
+#: ../src/xfdesktop-file-icon-manager.c:1088
 #, c-format
 msgid "_Open With \"%s\""
 msgstr "\"%s\"తో తెరువు (_O)"
 
-#: ../src/xfdesktop-file-icon-manager.c:911
+#: ../src/xfdesktop-file-icon-manager.c:1091
 #, c-format
 msgid "Open With \"%s\""
 msgstr "\"%s\"తో తెరువు"
 
-#: ../src/xfdesktop-file-icon-manager.c:986
+#: ../src/xfdesktop-file-icon-manager.c:1164
 msgid ""
 "Unable to launch \"exo-desktop-item-edit\", which is required to create and "
 "edit launchers and links on the desktop."
 msgstr ""
 
-#: ../src/xfdesktop-file-icon-manager.c:1354
+#: ../src/xfdesktop-file-icon-manager.c:1529
 msgid "_Open all"
 msgstr "అన్నిటినీ తెరువు (_O)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1370
-msgid "_Open in New Window"
-msgstr "కొత్త విండోలో తెరువు (_O)"
-
-#: ../src/xfdesktop-file-icon-manager.c:1372
-#: ../src/xfdesktop-special-file-icon.c:489 ../src/xfdesktop-volume-icon.c:663
-msgid "_Open"
-msgstr "తెరువు (_O)"
-
-#. create launcher item
-#: ../src/xfdesktop-file-icon-manager.c:1391
+#: ../src/xfdesktop-file-icon-manager.c:1549
 msgid "Create _Launcher..."
 msgstr "ప్రారంభకాన్ని సృష్టించు...(_L)"
 
-#. create link item
-#: ../src/xfdesktop-file-icon-manager.c:1407
+#: ../src/xfdesktop-file-icon-manager.c:1563
 msgid "Create _URL Link..."
 msgstr "URL లింకును సృష్టించు...(_U)"
 
-#. create folder item
-#: ../src/xfdesktop-file-icon-manager.c:1423
+#: ../src/xfdesktop-file-icon-manager.c:1577
 msgid "Create _Folder..."
 msgstr "సంచయమును సృష్టించు...(_F)"
 
-#. create from template submenu
-#: ../src/xfdesktop-file-icon-manager.c:1438
-msgid "Create From _Template"
-msgstr "టెంప్లేటు నుండి సృష్టించు (_T)"
+#: ../src/xfdesktop-file-icon-manager.c:1589
+msgid "Create _Document"
+msgstr "పత్రమును సృష్టించు (_D)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1464
+#: ../src/xfdesktop-file-icon-manager.c:1614
+msgid "No templates installed"
+msgstr "ఏ టెంప్లేటులు స్థాపించబడిలేవు"
+
+#: ../src/xfdesktop-file-icon-manager.c:1630
 msgid "_Empty File"
-msgstr "ఖాళీ ఫైల్ (_E)"
+msgstr "ఖాళీ దస్త్రం (_E)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1480
+#: ../src/xfdesktop-file-icon-manager.c:1640
+msgid "_Open All"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1640
+#: ../src/xfdesktop-special-file-icon.c:528 ../src/xfdesktop-volume-icon.c:868
+msgid "_Open"
+msgstr "తెరువు (_O)"
+
+#: ../src/xfdesktop-file-icon-manager.c:1657
 msgid "_Execute"
 msgstr "అమలుపరుచు (_E)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1500
+#: ../src/xfdesktop-file-icon-manager.c:1675
 msgid "_Edit Launcher"
 msgstr "ప్రారంభకాన్ని సవరించు (_E)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1535
+#: ../src/xfdesktop-file-icon-manager.c:1734
 msgid "Open With"
 msgstr "దీనితో తెరువు"
 
-#: ../src/xfdesktop-file-icon-manager.c:1561
+#: ../src/xfdesktop-file-icon-manager.c:1761
+#: ../src/xfdesktop-file-icon-manager.c:1786
 msgid "Open With Other _Application..."
-msgstr "వేరొక అనువర్తనముతో తెరువు...(_A)"
+msgstr "ఇతర అనువర్తనముతో తెరువు...(_A)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1649
+#: ../src/xfdesktop-file-icon-manager.c:1772
+msgid "Set _Default Application..."
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1804
+msgid "_Paste"
+msgstr "అతికించు (_P)"
+
+#: ../src/xfdesktop-file-icon-manager.c:1822
+msgid "Cu_t"
+msgstr "కత్తిరించు (_t)"
+
+#: ../src/xfdesktop-file-icon-manager.c:1834
+msgid "_Copy"
+msgstr "నకలుతీయి (_C)"
+
+#: ../src/xfdesktop-file-icon-manager.c:1846
+msgid "Paste Into Folder"
+msgstr "సంచయములోనికి అతికించు"
+
+#: ../src/xfdesktop-file-icon-manager.c:1865
+msgid "Mo_ve to Trash"
+msgstr "చెత్తబుట్టకు తరలించు (_v)"
+
+#: ../src/xfdesktop-file-icon-manager.c:1878
+msgid "_Delete"
+msgstr "తొలగించు (_D)"
+
+#: ../src/xfdesktop-file-icon-manager.c:1896
 msgid "_Rename..."
 msgstr "పేరుమార్చు...(_R)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1667
+#: ../src/xfdesktop-file-icon-manager.c:1961
+msgid "_Open in New Window"
+msgstr "కొత్త విండోలో తెరువు (_O)"
+
+#: ../src/xfdesktop-file-icon-manager.c:1970
+msgid "Arrange Desktop _Icons"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1980
+msgid "_Next Background"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:1990
 msgid "Desktop _Settings..."
 msgstr "డెస్క్‍టాప్ అమరికలు...(_S)"
 
-#: ../src/xfdesktop-file-icon-manager.c:1677
-#: ../src/xfdesktop-volume-icon.c:711
+#: ../src/xfdesktop-file-icon-manager.c:1998
+#: ../src/xfdesktop-volume-icon.c:935
 msgid "P_roperties..."
 msgstr "గుణములు...(_P)"
 
-#: ../src/xfdesktop-file-icon-manager.c:2234
+#: ../src/xfdesktop-file-icon-manager.c:3077
 msgid "Load Error"
 msgstr "నింపు దోషము"
 
-#: ../src/xfdesktop-file-icon-manager.c:2236
+#: ../src/xfdesktop-file-icon-manager.c:3079
 msgid "Failed to load the desktop folder"
 msgstr "డెస్క్‍టాప్ సంచయాన్ని నింపుటలో విఫలమైంది"
 
+#: ../src/xfdesktop-file-icon-manager.c:3625
+msgid "Copy _Here"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:3625
+msgid "_Move Here"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:3625
+msgid "_Link Here"
+msgstr ""
+
+#: ../src/xfdesktop-file-icon-manager.c:3660
+msgid "_Cancel"
+msgstr "రద్దుచేయి (_C)"
+
+#: ../src/xfdesktop-file-icon-manager.c:3789
+msgid "Untitled document"
+msgstr ""
+
 #. TRANSLATORS: file was modified less than one day ago
-#: ../src/xfdesktop-file-utils.c:137
+#: ../src/xfdesktop-file-utils.c:170
 #, c-format
 msgid "Today at %X"
 msgstr "ఈ రోజు %X వద్ద"
 
 #. TRANSLATORS: file was modified less than two days ago
-#: ../src/xfdesktop-file-utils.c:141
+#: ../src/xfdesktop-file-utils.c:174
 #, c-format
 msgid "Yesterday at %X"
 msgstr "నిన్న %X వద్ద"
 
 #. Days from last week
-#: ../src/xfdesktop-file-utils.c:146
+#: ../src/xfdesktop-file-utils.c:179
 #, c-format
 msgid "%A at %X"
-msgstr ""
+msgstr "%A at %X"
 
 #. Any other date
-#: ../src/xfdesktop-file-utils.c:149
+#: ../src/xfdesktop-file-utils.c:182
 #, c-format
 msgid "%x at %X"
-msgstr ""
+msgstr "%x at %X"
 
 #. the file_time is invalid
-#: ../src/xfdesktop-file-utils.c:159
+#: ../src/xfdesktop-file-utils.c:192 ../src/xfdesktop-file-utils.c:1658
 msgid "Unknown"
 msgstr "తెలియదు"
 
-#: ../src/xfdesktop-file-utils.c:713 ../src/xfdesktop-file-utils.c:728
+#: ../src/xfdesktop-file-utils.c:320
+#, c-format
+msgid "%.*s (copy %u)%s"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:726
 msgid "The folder could not be opened"
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:762 ../src/xfdesktop-file-utils.c:777
-msgid "Rename Error"
-msgstr "పేరుమార్చుట దోషం"
+#: ../src/xfdesktop-file-utils.c:843
+msgid "Error"
+msgstr "దోషం"
 
-#: ../src/xfdesktop-file-utils.c:763 ../src/xfdesktop-file-utils.c:778
+#: ../src/xfdesktop-file-utils.c:844
+msgid "The requested operation could not be completed"
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:898
 msgid "The file could not be renamed"
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:821 ../src/xfdesktop-file-utils.c:836
+#: ../src/xfdesktop-file-utils.c:899 ../src/xfdesktop-file-utils.c:963
+#: ../src/xfdesktop-file-utils.c:1024 ../src/xfdesktop-file-utils.c:1188
+#: ../src/xfdesktop-file-utils.c:1246 ../src/xfdesktop-file-utils.c:1333
+#: ../src/xfdesktop-file-utils.c:1394 ../src/xfdesktop-file-utils.c:1526
+#: ../src/xfdesktop-file-utils.c:1590 ../src/xfdesktop-file-utils.c:1731
+msgid ""
+"This feature requires a file manager service to be present (such as the one "
+"supplied by Thunar)."
+msgstr ""
+
+#: ../src/xfdesktop-file-utils.c:1022
 msgid "Delete Error"
 msgstr "దోషాన్ని తొలగించు"
 
-#: ../src/xfdesktop-file-utils.c:822 ../src/xfdesktop-file-utils.c:837
+#: ../src/xfdesktop-file-utils.c:1023
 msgid "The selected files could not be deleted"
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:881 ../src/xfdesktop-file-utils.c:896
+#: ../src/xfdesktop-file-utils.c:1083 ../src/xfdesktop-file-utils.c:1131
+msgid "Trash Error"
+msgstr "చెత్తబుట్ట దోషము"
+
+#: ../src/xfdesktop-file-utils.c:1084
 msgid "The selected files could not be moved to the trash"
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:897 ../src/xfdesktop-file-utils.c:943
+#: ../src/xfdesktop-file-utils.c:1085 ../src/xfdesktop-file-utils.c:1133
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:928 ../src/xfdesktop-file-utils.c:942
+#: ../src/xfdesktop-file-utils.c:1132
 msgid "Could not empty the trash"
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:979 ../src/xfdesktop-file-utils.c:994
+#: ../src/xfdesktop-file-utils.c:1186
 msgid "Create File Error"
 msgstr "ఫైల్ సృష్టించుట దోషం"
 
-#: ../src/xfdesktop-file-utils.c:980 ../src/xfdesktop-file-utils.c:995
+#: ../src/xfdesktop-file-utils.c:1187
 msgid "Could not create a new file"
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:1035 ../src/xfdesktop-file-utils.c:1050
+#: ../src/xfdesktop-file-utils.c:1244
 msgid "Create Document Error"
 msgstr "పత్రము సృష్టించుట దోషము"
 
-#: ../src/xfdesktop-file-utils.c:1036 ../src/xfdesktop-file-utils.c:1051
+#: ../src/xfdesktop-file-utils.c:1245
 msgid "Could not create a new document from the template"
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:1085 ../src/xfdesktop-file-utils.c:1100
+#: ../src/xfdesktop-file-utils.c:1331
 msgid "File Properties Error"
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:1086 ../src/xfdesktop-file-utils.c:1101
+#: ../src/xfdesktop-file-utils.c:1332
 msgid "The file properties dialog could not be opened"
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:1136 ../src/xfdesktop-file-utils.c:1151
+#: ../src/xfdesktop-file-utils.c:1393
 msgid "The file could not be opened"
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:1199 ../src/xfdesktop-file-utils.c:1224
+#: ../src/xfdesktop-file-utils.c:1414 ../src/xfdesktop-file-utils.c:1521
 #, c-format
 msgid "Failed to run \"%s\""
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:1274 ../src/xfdesktop-file-utils.c:1289
+#: ../src/xfdesktop-file-utils.c:1589
 msgid "The application chooser could not be opened"
 msgstr ""
 
-#: ../src/xfdesktop-file-utils.c:1347 ../src/xfdesktop-file-utils.c:1361
-#: ../src/xfdesktop-file-utils.c:1423 ../src/xfdesktop-file-utils.c:1439
+#: ../src/xfdesktop-file-utils.c:1660 ../src/xfdesktop-file-utils.c:1729
 msgid "Transfer Error"
 msgstr "బదిలీ దోషము"
 
-#: ../src/xfdesktop-file-utils.c:1348 ../src/xfdesktop-file-utils.c:1362
-#: ../src/xfdesktop-file-utils.c:1424 ../src/xfdesktop-file-utils.c:1440
+#: ../src/xfdesktop-file-utils.c:1661 ../src/xfdesktop-file-utils.c:1730
 msgid "The file transfer could not be performed"
 msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:128
+#: ../src/xfdesktop-notify.c:127
 msgid "Unmounting device"
-msgstr ""
+msgstr "పరికరాన్ని అనధిరోహిస్తున్నది"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:131
+#: ../src/xfdesktop-notify.c:130
 #, c-format
 msgid ""
-"The device \"%s\" is being unmounted by the system. Please do not remove the "
-"media or disconnect the drive"
+"The device \"%s\" is being unmounted by the system. Please do not remove the"
+" media or disconnect the drive"
 msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:138 ../src/xfdesktop-notify.c:262
+#: ../src/xfdesktop-notify.c:137 ../src/xfdesktop-notify.c:322
 msgid "Writing data to device"
-msgstr ""
+msgstr "డేటాను పరికరానికి వ్రాస్తున్నది"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:141 ../src/xfdesktop-notify.c:265
+#: ../src/xfdesktop-notify.c:140 ../src/xfdesktop-notify.c:325
 #, c-format
 msgid ""
-"There is data that needs to be written to the device \"%s\" before it can be "
-"removed. Please do not remove the media or disconnect the drive"
+"There is data that needs to be written to the device \"%s\" before it can be"
+" removed. Please do not remove the media or disconnect the drive"
+msgstr ""
+
+#: ../src/xfdesktop-notify.c:221
+msgid "Unmount Finished"
+msgstr ""
+
+#: ../src/xfdesktop-notify.c:223 ../src/xfdesktop-notify.c:408
+#, c-format
+msgid "The device \"%s\" has been safely removed from the system. "
 msgstr ""
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:253
+#: ../src/xfdesktop-notify.c:313
 msgid "Ejecting device"
-msgstr ""
+msgstr "పరికరాన్ని నెట్టివేస్తున్నది"
 
 #. TRANSLATORS: Please use the same translation here as in Thunar
-#: ../src/xfdesktop-notify.c:256
+#: ../src/xfdesktop-notify.c:316
 #, c-format
 msgid "The device \"%s\" is being ejected. This may take some time"
 msgstr ""
 
-#: ../src/xfdesktop-regular-file-icon.c:472
+#: ../src/xfdesktop-notify.c:406
+msgid "Eject Finished"
+msgstr ""
+
+#: ../src/xfdesktop-regular-file-icon.c:795
 #, c-format
 msgid ""
+"Name: %s\n"
 "Type: %s\n"
 "Size: %s\n"
 "Last modified: %s"
 msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:258
-#: ../src/xfdesktop-special-file-icon.c:417
-msgid "File System"
-msgstr "ఫైల్ వ్యవస్థ"
-
-#: ../src/xfdesktop-special-file-icon.c:402
+#: ../src/xfdesktop-special-file-icon.c:439
 msgid "Trash is empty"
 msgstr "చెత్తబుట్ట ఖాళీగావుంది"
 
-#: ../src/xfdesktop-special-file-icon.c:405
+#: ../src/xfdesktop-special-file-icon.c:442
 msgid "Trash contains one item"
 msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:406
+#: ../src/xfdesktop-special-file-icon.c:443
 #, c-format
 msgid "Trash contains %d items"
 msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:434
+#: ../src/xfdesktop-special-file-icon.c:472
 #, c-format
 msgid ""
 "%s\n"
@@ -896,46 +1120,78 @@ msgid ""
 "Last modified: %s"
 msgstr ""
 
-#: ../src/xfdesktop-special-file-icon.c:507
+#: ../src/xfdesktop-special-file-icon.c:544
 msgid "_Empty Trash"
+msgstr "చెత్తబుట్టను ఖాళీచేయి (_E)"
+
+#: ../src/xfdesktop-volume-icon.c:458
+msgid "(not mounted)"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:423
+#: ../src/xfdesktop-volume-icon.c:459 ../src/xfdesktop-volume-icon.c:460
+msgid "(unknown)"
+msgstr "(తెలియదు)"
+
+#: ../src/xfdesktop-volume-icon.c:464
 #, c-format
 msgid ""
-"Removable Volume\n"
-"Mounted in \"%s\"\n"
-"%s left (%s total)"
+"Name: %s\n"
+"Type: %s\n"
+"Mounted at: %s\n"
+"Size: %s\n"
+"Free Space: %s"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:430
-msgid ""
-"Removable Volume\n"
-"Not mounted yet"
+#: ../src/xfdesktop-volume-icon.c:466
+msgid "Removable Volume"
 msgstr ""
 
-#: ../src/xfdesktop-volume-icon.c:456 ../src/xfdesktop-volume-icon.c:498
+#: ../src/xfdesktop-volume-icon.c:501 ../src/xfdesktop-volume-icon.c:547
 #, c-format
 msgid "Failed to eject \"%s\""
-msgstr ""
+msgstr "\"%s\"ని నెట్టివేయుటలో విఫలమైంది"
 
-#: ../src/xfdesktop-volume-icon.c:461 ../src/xfdesktop-volume-icon.c:503
+#: ../src/xfdesktop-volume-icon.c:506 ../src/xfdesktop-volume-icon.c:552
 msgid "Eject Failed"
 msgstr "నెట్టివేయుట విఫలమైంది"
 
-#: ../src/xfdesktop-volume-icon.c:535
+#: ../src/xfdesktop-volume-icon.c:633
 #, c-format
 msgid "Failed to mount \"%s\""
-msgstr ""
+msgstr "\"%s\" అధిరోహించుటలో విఫలమైంది"
 
-#: ../src/xfdesktop-volume-icon.c:538
+#: ../src/xfdesktop-volume-icon.c:636
 msgid "Mount Failed"
 msgstr "అధిరోహించుట విఫలమైంది"
 
-#: ../src/xfdesktop-volume-icon.c:679 ../src/xfdesktop-volume-icon.c:682
+#: ../src/xfdesktop-volume-icon.c:894
+msgid "_Safely Remove Volume"
+msgstr ""
+
+#: ../src/xfdesktop-volume-icon.c:897
+msgid "_Disconnect Volume"
+msgstr ""
+
+#: ../src/xfdesktop-volume-icon.c:900
+msgid "_Stop the Multi-Disk Drive"
+msgstr ""
+
+#: ../src/xfdesktop-volume-icon.c:903
+msgid "_Lock Volume"
+msgstr ""
+
+#: ../src/xfdesktop-volume-icon.c:906
 msgid "E_ject Volume"
 msgstr "సంపుటమును నెట్టివేయి (_j)"
 
-#: ../src/xfdesktop-volume-icon.c:689
+#: ../src/xfdesktop-volume-icon.c:915
+msgid "_Unmount Volume"
+msgstr ""
+
+#: ../src/xfdesktop-volume-icon.c:922
 msgid "_Mount Volume"
 msgstr "సంపుటమును అధిరోహించు (_M)"
+
+#: ../src/xfdesktop-window-icon.c:193
+msgid "_Window Actions"
+msgstr ""
