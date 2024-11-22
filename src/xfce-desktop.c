@@ -356,16 +356,23 @@ workspace_changed_cb(XfwWorkspaceGroup *group, XfwWorkspace *previously_active_s
 }
 
 static void
+update_workspaces(XfceDesktop *desktop, XfwWorkspaceGroup *group)
+{
+    g_list_free(g_steal_pointer(&desktop->workspaces));
+    desktop->workspaces = g_list_copy(xfw_workspace_group_list_workspaces(group));
+}
+
+static void
 group_workspace_added(XfwWorkspaceGroup *group, XfwWorkspace *workspace, XfceDesktop *desktop) {
     DBG("entering");
-    desktop->workspaces = g_list_prepend(desktop->workspaces, workspace);
+    update_workspaces(desktop, group);
     // Run this again; if ->single_workspace is NULL, it will try to populate it
     xfce_desktop_set_single_workspace_number(desktop, desktop->single_workspace_num);
 }
 
 static void
 group_workspace_removed(XfwWorkspaceGroup *group, XfwWorkspace *workspace, XfceDesktop *desktop) {
-    desktop->workspaces = g_list_remove(desktop->workspaces, workspace);
+    update_workspaces(desktop, group);
     if (desktop->active_workspace == workspace) {
         desktop->active_workspace = NULL;
     }
@@ -388,6 +395,8 @@ group_monitor_added(XfwWorkspaceGroup *group, XfwMonitor *monitor, XfceDesktop *
                          G_CALLBACK(group_workspace_removed), desktop);
         g_signal_connect(group, "active-workspace-changed",
                          G_CALLBACK(workspace_changed_cb), desktop);
+        update_workspaces(desktop, group);
+        xfce_desktop_set_single_workspace_number(desktop, desktop->single_workspace_num);
         update_backdrop_workspace(desktop);
     }
 }
