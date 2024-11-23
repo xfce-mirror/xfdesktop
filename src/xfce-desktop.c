@@ -358,7 +358,9 @@ workspace_changed_cb(XfwWorkspaceGroup *group, XfwWorkspace *previously_active_s
 static void
 group_workspace_added(XfwWorkspaceGroup *group, XfwWorkspace *workspace, XfceDesktop *desktop) {
     DBG("entering");
-    desktop->workspaces = g_list_prepend(desktop->workspaces, workspace);
+    if (g_list_find(desktop->workspaces, workspace) == NULL) {
+        desktop->workspaces = g_list_prepend(desktop->workspaces, workspace);
+    }
     // Run this again; if ->single_workspace is NULL, it will try to populate it
     xfce_desktop_set_single_workspace_number(desktop, desktop->single_workspace_num);
 }
@@ -388,6 +390,9 @@ group_monitor_added(XfwWorkspaceGroup *group, XfwMonitor *monitor, XfceDesktop *
                          G_CALLBACK(group_workspace_removed), desktop);
         g_signal_connect(group, "active-workspace-changed",
                          G_CALLBACK(workspace_changed_cb), desktop);
+        for (GList *l = xfw_workspace_group_list_workspaces(group); l; l = l->next) {
+            group_workspace_added(desktop->workspace_group, XFW_WORKSPACE(l->data), desktop);
+        }
         update_backdrop_workspace(desktop);
     }
 }
