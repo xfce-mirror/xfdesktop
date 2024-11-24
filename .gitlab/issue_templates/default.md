@@ -1,6 +1,7 @@
 <!--
-Please fill this template out in full. Issue reports with missing
-relevant information may be closed without comment.
+Please fill this template out in full. Issue reports that do not use
+this template, or that have missing relevant information may be closed
+without comment.
 -->
 
 # Issue Description
@@ -31,8 +32,10 @@ Often it isn't clear: what did you expect to happen that didn't happen?
 
 <!--
 Please list the values of any settings that may be relevant to the
-issue.  Include any relevant logs our console output.  If a screenshot
-or screencast video may be helpful, attach it here.
+issue.  Include any relevant logs our console output.  If this is a
+build problem, paste your build output, including all commands you used
+to run the build.  If a screenshot or screencast video may be helpful,
+attach it here.
 -->
 
 # Environment & Versions
