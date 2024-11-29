@@ -7,6 +7,7 @@ install_data(
     'xfce-shapes.svg',
     'xfce-flower.svg',
     'xfce-leaves.svg',
+    'xfce-x.svg',
   ],
   install_dir: get_option('datadir') / 'backgrounds' / 'xfce',
 )
