@@ -203,8 +203,8 @@ XDT_CHECK_OPTIONAL_PACKAGE([LIBNOTIFY], [libnotify], [0.4.0], [notifications],
 
 AC_ARG_WITH([default-backdrop-filename],
             [AS_HELP_STRING([--with-default-backdrop-filename=PATH],
-                            [Specify the path to the default desktop backdrop image (default=${datadir}/backgrounds/xfce/xfce-shapes.svg)])],
-            [default_backdrop_filename=$withval], [default_backdrop_filename="${datadir}/backgrounds/xfce/xfce-shapes.svg"])
+                            [Specify the path to the default desktop backdrop image (default=${datadir}/backgrounds/xfce/xfce-x.svg)])],
+            [default_backdrop_filename=$withval], [default_backdrop_filename="${datadir}/backgrounds/xfce/xfce-x.svg"])
 dnl can't use AC_DEFINE_UNQUOTED here as it only expands shell variables once,
 dnl so ${datadir} just becomes ${datarootdir}, which of course cpp won't expand
 DEFAULT_BACKDROP="$default_backdrop_filename"
