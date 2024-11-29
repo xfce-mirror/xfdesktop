@@ -10,6 +10,7 @@ install_data(
     'xfce-x.svg',
     'xfce-light.svg',
     'xfce-mouserace.svg',
+    'xfce-cp-dark.svg',
   ],
   install_dir: get_option('datadir') / 'backgrounds' / 'xfce',
 )
