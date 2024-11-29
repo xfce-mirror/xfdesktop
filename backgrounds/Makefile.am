@@ -11,8 +11,8 @@ backgrounds_DATA = \
     xfce-shapes.svg \
     xfce-flower.svg \
     xfce-leaves.svg \
-    xfce-x.svg
-
+    xfce-x.svg \
+    xfce-light.svg
 
 EXTRA_DIST = \
 	$(backgrounds_DATA) \
