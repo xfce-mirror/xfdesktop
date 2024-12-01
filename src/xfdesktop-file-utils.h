@@ -53,6 +53,7 @@ GdkPixbuf *xfdesktop_file_utils_get_fallback_icon(gint size,
 
 void xfdesktop_file_utils_set_window_cursor(GtkWindow *window,
                                             GdkCursorType cursor_type);
+void xfdesktop_file_utils_unset_window_cursor(GtkWindow *window);
 
 gboolean xfdesktop_file_utils_app_info_launch(GAppInfo *app_info,
                                               GFile *working_directory,
