@@ -477,6 +477,17 @@ xfdesktop_file_utils_set_window_cursor(GtkWindow *window,
     }
 }
 
+static void
+xfdesktop_file_utils_unset_window_cursor(GtkWindow *window)
+{
+    if (window != NULL) {
+        GdkWindow *gdk_window = gtk_widget_get_window(GTK_WIDGET(window));
+        if (gdk_window != NULL) {
+            gdk_window_set_cursor(gdk_window, NULL);
+        }
+    }
+}
+
 static gchar *
 xfdesktop_file_utils_change_working_directory (const gchar *new_directory)
 {
@@ -732,7 +743,7 @@ xfdesktop_file_utils_rename_file(GFile *file,
                                                 rename_cb,
                                                 parent);
 
-        xfdesktop_file_utils_set_window_cursor(parent, GDK_LEFT_PTR);
+        xfdesktop_file_utils_unset_window_cursor(parent);
 
         g_free(startup_id);
         g_free(uri);
@@ -795,7 +806,7 @@ xfdesktop_file_utils_bulk_rename(GFile *working_directory,
                                           bulk_rename_cb,
                                           parent);
 
-        xfdesktop_file_utils_set_window_cursor(parent, GDK_LEFT_PTR);
+        xfdesktop_file_utils_unset_window_cursor(parent);
 
         g_free(directory);
         g_free(startup_id);
@@ -857,7 +868,7 @@ xfdesktop_file_utils_unlink_files(GList *files,
                                                  unlink_files_cb,
                                                  parent);
 
-        xfdesktop_file_utils_set_window_cursor(parent, GDK_LEFT_PTR);
+        xfdesktop_file_utils_unset_window_cursor(parent);
 
         g_free(startup_id);
         g_strfreev(uris);
@@ -918,7 +929,7 @@ xfdesktop_file_utils_trash_files(GList *files,
                                            trash_files_cb,
                                            parent);
 
-        xfdesktop_file_utils_set_window_cursor(parent, GDK_LEFT_PTR);
+        xfdesktop_file_utils_unset_window_cursor(parent);
 
         g_free(startup_id);
         g_strfreev(uris);
@@ -967,7 +978,7 @@ xfdesktop_file_utils_empty_trash(GdkScreen *screen,
                                          empty_trash_cb,
                                          parent);
 
-        xfdesktop_file_utils_set_window_cursor(parent, GDK_LEFT_PTR);
+        xfdesktop_file_utils_unset_window_cursor(parent);
 
         g_free(startup_id);
         g_free(display_name);
@@ -1365,7 +1376,7 @@ xfdesktop_file_utils_show_properties_dialog(GList *files,
                                                           show_properties_fdo_cb,
                                                           parent);
 
-        xfdesktop_file_utils_set_window_cursor(parent, GDK_LEFT_PTR);
+        xfdesktop_file_utils_unset_window_cursor(parent);
 
         g_strfreev(uris);
         g_free(startup_id);
@@ -1383,7 +1394,7 @@ xfdesktop_file_utils_show_properties_dialog(GList *files,
                                                             show_properties_cb,
                                                             parent);
 
-        xfdesktop_file_utils_set_window_cursor(parent, GDK_LEFT_PTR);
+        xfdesktop_file_utils_unset_window_cursor(parent);
 
         g_free(startup_id);
         g_free(uri);
@@ -1441,7 +1452,7 @@ xfdesktop_file_utils_launch(GFile *file,
                                                  launch_cb,
                                                  parent);
 
-        xfdesktop_file_utils_set_window_cursor(parent, GDK_LEFT_PTR);
+        xfdesktop_file_utils_unset_window_cursor(parent);
 
         g_free(startup_id);
         g_free(uris[0]);
@@ -1640,7 +1651,7 @@ xfdesktop_file_utils_display_app_chooser_dialog(GFile *file,
                                                                        display_chooser_cb,
                                                                        parent);
 
-        xfdesktop_file_utils_set_window_cursor(parent, GDK_LEFT_PTR);
+        xfdesktop_file_utils_unset_window_cursor(parent);
 
         g_free(startup_id);
         g_free(uri);
