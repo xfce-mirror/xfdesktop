@@ -5,6 +5,24 @@ the following Xfce releases, and are licensed as follows:
 
 ## Currently Shipped Backgrounds
 
+### Xfce 4.20
+
+For this release, we had a [design contest](https://gitlab.xfce.org/artwork/public/-/issues/18).
+Since two wallpapers were tied for the third place, we added four new wallpapers.
+
+* `xfce-x`, by [kaz sb](https://gitlab.xfce.org/kazz),
+  [Creative Commons Attribution Share-Alike
+  4.0](http://creativecommons.org/licenses/by-sa/4.0/).
+* `xfce-light`, by [Denys DEKUVE](https://gitlab.xfce.org/denys),
+  [Creative Commons Attribution Share-Alike
+  4.0](http://creativecommons.org/licenses/by-sa/4.0/).
+* `xfce-mouserace`, by [Rose Pierce](https://gitlab.xfce.org/rowie324),
+  [Creative Commons Attribution Share-Alike
+  4.0](http://creativecommons.org/licenses/by-sa/4.0/).
+* `xfce-cp-dark`, by [Farhang Bakhshi](https://gitlab.xfce.org/farhangbakhshi),
+  [Creative Commons Attribution Share-Alike
+  4.0](http://creativecommons.org/licenses/by-sa/4.0/).
+
 ### Xfce 4.18
 
 For this release, we had a [design
