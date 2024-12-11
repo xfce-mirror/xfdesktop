@@ -2373,7 +2373,7 @@ xfdesktop_icon_view_drag_data_get(GtkWidget *widget,
                                    (GDestroyNotify)free_dragged_icons);
             gtk_selection_data_set(data,
                                    gdk_atom_intern(XFDESKTOP_ICON_NAME, FALSE),
-                                   1,
+                                   8,
                                    (guchar *)&icon_list,
                                    sizeof(icon_list));
         } else {
