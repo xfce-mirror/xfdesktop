@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfdesktop\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-10-16 01:05+0200\n"
+"POT-Creation-Date: 2024-12-12 00:52+0100\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
 "Last-Translator: Elishai Eliyahu <elishai@mailfence.com>, 2020-2024\n"
 "Language-Team: Hebrew (http://app.transifex.com/xfce/xfdesktop/language/he/)\n"
@@ -26,6 +26,127 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: he\n"
 "Plural-Forms: nplurals=3; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: 2;\n"
+
+#: common/xfdesktop-keyboard-shortcuts.c:75
+msgid "_Reload"
+msgstr "_רענון"
+
+#: common/xfdesktop-keyboard-shortcuts.c:78
+msgid "Activate _Primary Menu"
+msgstr ""
+
+#: common/xfdesktop-keyboard-shortcuts.c:80
+msgid "Activate _Secondary Menu"
+msgstr ""
+
+#: common/xfdesktop-keyboard-shortcuts.c:82
+msgid "Cycle Next Background"
+msgstr ""
+
+#: common/xfdesktop-keyboard-shortcuts.c:88
+msgid "_Activate Icon"
+msgstr ""
+
+#: common/xfdesktop-keyboard-shortcuts.c:93
+msgid "_Toggle Cursor Icon"
+msgstr ""
+
+#: common/xfdesktop-keyboard-shortcuts.c:95
+msgid "Select _All"
+msgstr ""
+
+#: common/xfdesktop-keyboard-shortcuts.c:96
+msgid "U_nselect All"
+msgstr ""
+
+#: common/xfdesktop-keyboard-shortcuts.c:97
+msgid "A_rrange Icons"
+msgstr ""
+
+#: common/xfdesktop-keyboard-shortcuts.c:101
+msgid "Un_minimize Window"
+msgstr ""
+
+#: common/xfdesktop-keyboard-shortcuts.c:102
+msgid "_Close Window"
+msgstr "ס_גירת החלון"
+
+#: common/xfdesktop-keyboard-shortcuts.c:107
+msgid "Create _Folder"
+msgstr ""
+
+#: common/xfdesktop-keyboard-shortcuts.c:108
+#: src/xfdesktop-file-icon-manager.c:1789
+msgid "Create _Document"
+msgstr "צור _מסמך"
+
+#: common/xfdesktop-keyboard-shortcuts.c:109
+#: src/xfdesktop-file-icon-manager.c:1848
+#: src/xfdesktop-special-file-icon.c:339 src/xfdesktop-volume-icon.c:756
+msgid "_Open"
+msgstr "_פתח"
+
+#: common/xfdesktop-keyboard-shortcuts.c:110
+msgid "Ope_n With Other Application"
+msgstr ""
+
+#: common/xfdesktop-keyboard-shortcuts.c:111
+msgid "Open _Filesystem"
+msgstr ""
+
+#: common/xfdesktop-keyboard-shortcuts.c:112
+msgid "Open _Home"
+msgstr ""
+
+#: common/xfdesktop-keyboard-shortcuts.c:113
+msgid "Open _Trash"
+msgstr ""
+
+#: common/xfdesktop-keyboard-shortcuts.c:114
+msgid "_Rename"
+msgstr "שי_נוי שם"
+
+#: common/xfdesktop-keyboard-shortcuts.c:115
+#: src/xfdesktop-file-icon-manager.c:1994
+msgid "Cu_t"
+msgstr "גזו_ר"
+
+#: common/xfdesktop-keyboard-shortcuts.c:117
+#: src/xfdesktop-file-icon-manager.c:2002
+msgid "_Copy"
+msgstr "_העתק"
+
+#: common/xfdesktop-keyboard-shortcuts.c:119
+#: src/xfdesktop-file-icon-manager.c:1981
+msgid "_Paste"
+msgstr "_הדבק"
+
+#: common/xfdesktop-keyboard-shortcuts.c:121
+msgid "Paste _Into Folder"
+msgstr ""
+
+#: common/xfdesktop-keyboard-shortcuts.c:122
+#: src/xfdesktop-file-icon-manager.c:2025
+msgid "Mo_ve to Trash"
+msgstr "הע_בר לאשפה"
+
+#: common/xfdesktop-keyboard-shortcuts.c:125
+#: src/xfdesktop-special-file-icon.c:355
+msgid "_Empty Trash"
+msgstr "_רוקן אשפה"
+
+#: common/xfdesktop-keyboard-shortcuts.c:126
+#: src/xfdesktop-file-icon-manager.c:2034
+msgid "_Delete"
+msgstr "_מחק"
+
+#: common/xfdesktop-keyboard-shortcuts.c:129
+msgid "Show _Hidden Files"
+msgstr "הצגת קבצים _נסתרים"
+
+#: common/xfdesktop-keyboard-shortcuts.c:130
+msgid "_Properties"
+msgstr "_מאפיינים"
 
 #: settings/main.c:99
 msgid "Settings manager socket"
@@ -69,7 +190,21 @@ msgstr "לא מסוגל ליצור קשר עם שרת הגדרות"
 msgid "Quit"
 msgstr "הפסק"
 
-#: settings/xfdesktop-background-settings.c:359
+#: settings/xfce-backdrop-settings.desktop.in:4
+#: settings/xfdesktop-keyboard-shortcuts-settings.c:42
+#: settings/xfdesktop-settings-ui.glade:162 src/xfce-desktop.c:562
+msgid "Desktop"
+msgstr "שולחן עבודה"
+
+#: settings/xfce-backdrop-settings.desktop.in:5
+msgid "Set desktop background and menu and icon behavior"
+msgstr "הגדר התנהגות רקע, תפריט וסמלי שולחן עבודה"
+
+#: settings/xfce-backdrop-settings.desktop.in:17
+msgid "desktop;background;wallpaper;settings;xfce;"
+msgstr "desktop;background;wallpaper;settings;xfce;"
+
+#: settings/xfdesktop-background-settings.c:416
 #, c-format
 msgid ""
 "<b>%s</b>\n"
@@ -77,86 +212,86 @@ msgid ""
 "Size: %s"
 msgstr "<b>%s</b>\nטיפוס: %s\nגודל: %s"
 
-#: settings/xfdesktop-background-settings.c:443
-#: settings/xfdesktop-background-settings.c:516
+#: settings/xfdesktop-background-settings.c:500
+#: settings/xfdesktop-background-settings.c:573
 #, c-format
 msgid "Unable to load images from folder \"%s\""
 msgstr "לא יכול לטעון תמונות מהתיקייה \"%s\""
 
-#: settings/xfdesktop-background-settings.c:609
+#: settings/xfdesktop-background-settings.c:666
 #, c-format
 msgid "Wallpaper for Monitor %d (%s)"
 msgstr "טפט עבור צג %d (%s)"
 
-#: settings/xfdesktop-background-settings.c:613
+#: settings/xfdesktop-background-settings.c:670
 #, c-format
 msgid "Wallpaper for Monitor %d"
 msgstr "טפט עבור צג %d"
 
-#: settings/xfdesktop-background-settings.c:619
+#: settings/xfdesktop-background-settings.c:676
 msgid "Move this dialog to the display you want to edit the settings for."
 msgstr "הזז את דו שיח זה לתצוגה אשר את הגדרותיה ברצונך לערוך."
 
-#: settings/xfdesktop-background-settings.c:624
+#: settings/xfdesktop-background-settings.c:681
 #, c-format
 msgid "Wallpaper for %s on Monitor %d (%s)"
 msgstr "טפט עבור %s על צג %d (%s)"
 
-#: settings/xfdesktop-background-settings.c:629
+#: settings/xfdesktop-background-settings.c:686
 #, c-format
 msgid "Wallpaper for %s on Monitor %d"
 msgstr "טפט עבור %s על צג %d"
 
-#: settings/xfdesktop-background-settings.c:637
+#: settings/xfdesktop-background-settings.c:694
 msgid ""
 "Move this dialog to the display and workspace you want to edit the settings "
 "for."
 msgstr "הזז את דו שיח זה לתצוגה ולמשטח עבודה אשר את הגדרותיהם ברצונך לערוך."
 
 #. Single monitor and single workspace
-#: settings/xfdesktop-background-settings.c:646
+#: settings/xfdesktop-background-settings.c:703
 msgid "Wallpaper for my desktop"
 msgstr "טפט שולחן עבודה"
 
 #. Single monitor and per workspace wallpaper
-#: settings/xfdesktop-background-settings.c:652
+#: settings/xfdesktop-background-settings.c:709
 #, c-format
 msgid "Wallpaper for %s"
 msgstr "טפט עבור %s"
 
-#: settings/xfdesktop-background-settings.c:657
+#: settings/xfdesktop-background-settings.c:714
 msgid "Move this dialog to the workspace you want to edit the settings for."
 msgstr "הזז את דו שיח זה למשטח עבודה אשר את הגדרותיו ברצונך לערוך."
 
-#: settings/xfdesktop-background-settings.c:979
+#: settings/xfdesktop-background-settings.c:1038
 msgid "Image selection is unavailable while the image style is set to None."
 msgstr "מבחר תמונה אינו זמין בעת שסגנון תמונה הינו קבוע לשום דבר."
 
-#: settings/xfdesktop-background-settings.c:1417
+#: settings/xfdesktop-background-settings.c:1478
 msgid "Spanning screens"
 msgstr "פריסה על פני כל המסכים"
 
-#: settings/xfdesktop-background-settings.c:1795
+#: settings/xfdesktop-background-settings.c:1856
 msgid "Image files"
 msgstr "קבצי תמונה"
 
 #. Change the title of the file chooser dialog
-#: settings/xfdesktop-background-settings.c:1803
+#: settings/xfdesktop-background-settings.c:1864
 msgid "Select a Directory"
 msgstr "בחירת ספרייה"
 
 #: settings/xfdesktop-file-icon-settings.c:94
-#: src/xfdesktop-special-file-icon.c:232 src/xfdesktop-special-file-icon.c:270
+#: src/xfdesktop-special-file-icon.c:236 src/xfdesktop-special-file-icon.c:274
 msgid "Home"
 msgstr "בית"
 
 #: settings/xfdesktop-file-icon-settings.c:96
-#: src/xfdesktop-special-file-icon.c:234 src/xfdesktop-special-file-icon.c:268
+#: src/xfdesktop-special-file-icon.c:238 src/xfdesktop-special-file-icon.c:272
 msgid "File System"
 msgstr "מערכת קבצים"
 
 #: settings/xfdesktop-file-icon-settings.c:98
-#: src/xfdesktop-special-file-icon.c:236
+#: src/xfdesktop-special-file-icon.c:240
 msgid "Trash"
 msgstr "אשפה"
 
@@ -202,9 +337,9 @@ msgstr "אין אפשרות לשגר \"%s\":"
 #: settings/xfdesktop-icon-settings.c:99 src/xfdesktop-file-icon-manager.c:785
 #: src/xfdesktop-file-icon-manager.c:1029
 #: src/xfdesktop-file-icon-manager.c:1077
-#: src/xfdesktop-file-icon-manager.c:1350 src/xfdesktop-file-utils.c:570
-#: src/xfdesktop-file-utils.c:1454 src/xfdesktop-file-utils.c:1479
-#: src/xfdesktop-file-utils.c:1586 src/xfdesktop-file-utils.c:1650
+#: src/xfdesktop-file-icon-manager.c:1350 src/xfdesktop-file-utils.c:581
+#: src/xfdesktop-file-utils.c:1465 src/xfdesktop-file-utils.c:1490
+#: src/xfdesktop-file-utils.c:1597 src/xfdesktop-file-utils.c:1661
 msgid "Launch Error"
 msgstr "שגיאת שיגור"
 
@@ -214,25 +349,19 @@ msgstr "שגיאת שיגור"
 #: src/xfdesktop-file-icon-manager.c:1033
 #: src/xfdesktop-file-icon-manager.c:1081
 #: src/xfdesktop-file-icon-manager.c:1352
-#: src/xfdesktop-file-icon-manager.c:3674 src/xfdesktop-file-utils.c:573
-#: src/xfdesktop-file-utils.c:691 src/xfdesktop-file-utils.c:746
-#: src/xfdesktop-file-utils.c:810 src/xfdesktop-file-utils.c:871
-#: src/xfdesktop-file-utils.c:932 src/xfdesktop-file-utils.c:980
-#: src/xfdesktop-file-utils.c:999 src/xfdesktop-file-utils.c:1113
-#: src/xfdesktop-file-utils.c:1209 src/xfdesktop-file-utils.c:1397
-#: src/xfdesktop-file-utils.c:1458 src/xfdesktop-file-utils.c:1481
-#: src/xfdesktop-file-utils.c:1590 src/xfdesktop-file-utils.c:1654
-#: src/xfdesktop-file-utils.c:1725 src/xfdesktop-file-utils.c:1795
+#: src/xfdesktop-file-icon-manager.c:3674 src/xfdesktop-file-utils.c:584
+#: src/xfdesktop-file-utils.c:702 src/xfdesktop-file-utils.c:757
+#: src/xfdesktop-file-utils.c:821 src/xfdesktop-file-utils.c:882
+#: src/xfdesktop-file-utils.c:943 src/xfdesktop-file-utils.c:991
+#: src/xfdesktop-file-utils.c:1010 src/xfdesktop-file-utils.c:1124
+#: src/xfdesktop-file-utils.c:1220 src/xfdesktop-file-utils.c:1408
+#: src/xfdesktop-file-utils.c:1469 src/xfdesktop-file-utils.c:1492
+#: src/xfdesktop-file-utils.c:1601 src/xfdesktop-file-utils.c:1665
+#: src/xfdesktop-file-utils.c:1736 src/xfdesktop-file-utils.c:1806
 #: src/xfdesktop-volume-icon.c:395 src/xfdesktop-volume-icon.c:443
 #: src/xfdesktop-volume-icon.c:525
 msgid "_Close"
 msgstr "_סגור"
-
-#: settings/xfdesktop-keyboard-shortcuts-settings.c:42
-#: settings/xfce-backdrop-settings.desktop.in:4
-#: settings/xfdesktop-settings-ui.glade:162 src/xfce-desktop.c:557
-msgid "Desktop"
-msgstr "שולחן עבודה"
 
 #: settings/xfdesktop-keyboard-shortcuts-settings.c:52
 msgid "Icons"
@@ -245,14 +374,6 @@ msgstr "איקוני חלון"
 #: settings/xfdesktop-keyboard-shortcuts-settings.c:71
 msgid "File Icons"
 msgstr "איקוני קובץ"
-
-#: settings/xfce-backdrop-settings.desktop.in:5
-msgid "Set desktop background and menu and icon behavior"
-msgstr "הגדר התנהגות רקע, תפריט וסמלי שולחן עבודה"
-
-#: settings/xfce-backdrop-settings.desktop.in:17
-msgid "desktop;background;wallpaper;settings;xfce;"
-msgstr "desktop;background;wallpaper;settings;xfce;"
 
 #: settings/xfdesktop-settings-appearance-frame-ui.glade:19
 msgid "Solid color"
@@ -753,12 +874,12 @@ msgstr "    Desktop Icons:       %s\n"
 msgid "    Desktop File Icons:  %s\n"
 msgstr "    Desktop File Icons:  %s\n"
 
-#: src/xfdesktop-file-icon-manager.c:718 src/xfdesktop-file-utils.c:742
-#: src/xfdesktop-file-utils.c:806
+#: src/xfdesktop-file-icon-manager.c:718 src/xfdesktop-file-utils.c:753
+#: src/xfdesktop-file-utils.c:817
 msgid "Rename Error"
 msgstr "שגיאת שינוי שם"
 
-#: src/xfdesktop-file-icon-manager.c:719 src/xfdesktop-file-utils.c:807
+#: src/xfdesktop-file-icon-manager.c:719 src/xfdesktop-file-utils.c:818
 msgid "The files could not be renamed"
 msgstr "לא ניתן לשנות את שמות הקבצים"
 
@@ -810,10 +931,6 @@ msgstr "צור _קישור URL..."
 msgid "Create _Folder..."
 msgstr "צור _תיקייה..."
 
-#: src/xfdesktop-file-icon-manager.c:1789
-msgid "Create _Document"
-msgstr "צור _מסמך"
-
 #: src/xfdesktop-file-icon-manager.c:1820
 msgid "No templates installed"
 msgstr "אין תבניות מותקנות"
@@ -825,11 +942,6 @@ msgstr "קובץ _ריק"
 #: src/xfdesktop-file-icon-manager.c:1848
 msgid "_Open All"
 msgstr "_פתח הכל"
-
-#: src/xfdesktop-file-icon-manager.c:1848
-#: src/xfdesktop-special-file-icon.c:335 src/xfdesktop-volume-icon.c:756
-msgid "_Open"
-msgstr "_פתח"
 
 #: src/xfdesktop-file-icon-manager.c:1861
 msgid "_Execute"
@@ -852,29 +964,9 @@ msgstr "פת_ח בעזרת יישום אחר..."
 msgid "Set Defa_ult Application..."
 msgstr "קבע ישום _ברירת מחדל..."
 
-#: src/xfdesktop-file-icon-manager.c:1981
-msgid "_Paste"
-msgstr "_הדבק"
-
-#: src/xfdesktop-file-icon-manager.c:1994
-msgid "Cu_t"
-msgstr "גזו_ר"
-
-#: src/xfdesktop-file-icon-manager.c:2002
-msgid "_Copy"
-msgstr "_העתק"
-
 #: src/xfdesktop-file-icon-manager.c:2014
 msgid "Paste Into Folder"
 msgstr "הדבק לתוך תיקייה"
-
-#: src/xfdesktop-file-icon-manager.c:2025
-msgid "Mo_ve to Trash"
-msgstr "הע_בר לאשפה"
-
-#: src/xfdesktop-file-icon-manager.c:2034
-msgid "_Delete"
-msgstr "_מחק"
 
 #: src/xfdesktop-file-icon-manager.c:2045
 msgid "_Rename..."
@@ -929,7 +1021,7 @@ msgstr "ה_עבר לכאן"
 msgid "_Link Here"
 msgstr "_קשר לכאן"
 
-#: src/xfdesktop-file-icon-manager.c:3554 src/xfdesktop-file-utils.c:1141
+#: src/xfdesktop-file-icon-manager.c:3554 src/xfdesktop-file-utils.c:1152
 #: src/xfdesktop-icon-view-manager.c:491
 msgid "_Cancel"
 msgstr "_בטל"
@@ -981,7 +1073,7 @@ msgid "%x at %X"
 msgstr "%x בשעה %X"
 
 #. the file_time is invalid
-#: src/xfdesktop-file-utils.c:206 src/xfdesktop-file-utils.c:1720
+#: src/xfdesktop-file-utils.c:206 src/xfdesktop-file-utils.c:1731
 msgid "Unknown"
 msgstr "לא ידוע"
 
@@ -990,136 +1082,136 @@ msgstr "לא ידוע"
 msgid "%.*s %u%s"
 msgstr "%.*s %u%s"
 
-#: src/xfdesktop-file-utils.c:571
+#: src/xfdesktop-file-utils.c:582
 msgid "The folder could not be opened"
 msgstr "לא היתה אפשרות לפתוח את התיקייה"
 
-#: src/xfdesktop-file-utils.c:688
+#: src/xfdesktop-file-utils.c:699
 msgid "Error"
 msgstr "שגיאה"
 
-#: src/xfdesktop-file-utils.c:689
+#: src/xfdesktop-file-utils.c:700
 msgid "The requested operation could not be completed"
 msgstr "אין אפשרות להשלים את הפעולה המבוקשת"
 
-#: src/xfdesktop-file-utils.c:743
+#: src/xfdesktop-file-utils.c:754
 msgid "The file could not be renamed"
 msgstr "לא היתה אפשרות לשנות את שם הקובץ"
 
-#: src/xfdesktop-file-utils.c:744 src/xfdesktop-file-utils.c:808
-#: src/xfdesktop-file-utils.c:869 src/xfdesktop-file-utils.c:1395
-#: src/xfdesktop-file-utils.c:1456 src/xfdesktop-file-utils.c:1588
-#: src/xfdesktop-file-utils.c:1652 src/xfdesktop-file-utils.c:1793
+#: src/xfdesktop-file-utils.c:755 src/xfdesktop-file-utils.c:819
+#: src/xfdesktop-file-utils.c:880 src/xfdesktop-file-utils.c:1406
+#: src/xfdesktop-file-utils.c:1467 src/xfdesktop-file-utils.c:1599
+#: src/xfdesktop-file-utils.c:1663 src/xfdesktop-file-utils.c:1804
 msgid ""
 "This feature requires a file manager service to be present (such as the one "
 "supplied by Thunar)."
 msgstr "תכונה זו מצריכה נוכחות של שירות סייר קבצים (כגון זה שמסופק על ידי Thunar)."
 
-#: src/xfdesktop-file-utils.c:867
+#: src/xfdesktop-file-utils.c:878
 msgid "Delete Error"
 msgstr "שגיאת מחיקה"
 
-#: src/xfdesktop-file-utils.c:868
+#: src/xfdesktop-file-utils.c:879
 msgid "The selected files could not be deleted"
 msgstr "אין אפשרות למחוק את הקבצים הנבחרים"
 
-#: src/xfdesktop-file-utils.c:928 src/xfdesktop-file-utils.c:976
+#: src/xfdesktop-file-utils.c:939 src/xfdesktop-file-utils.c:987
 msgid "Trash Error"
 msgstr "שגיאת אשפה"
 
-#: src/xfdesktop-file-utils.c:929
+#: src/xfdesktop-file-utils.c:940
 msgid "The selected files could not be moved to the trash"
 msgstr "אין אפשרות להעביר את הקבצים הנבחרים אל האשפה"
 
-#: src/xfdesktop-file-utils.c:930 src/xfdesktop-file-utils.c:978
+#: src/xfdesktop-file-utils.c:941 src/xfdesktop-file-utils.c:989
 msgid ""
 "This feature requires a trash service to be present (such as the one "
 "supplied by Thunar)."
 msgstr "תכונה זו מצריכה נוכחות של שירות אשפה (כגון זה שמסופק על ידי Thunar)."
 
-#: src/xfdesktop-file-utils.c:977
+#: src/xfdesktop-file-utils.c:988
 msgid "Could not empty the trash"
 msgstr "לא היתה אפשרות לרוקן את האשפה"
 
-#: src/xfdesktop-file-utils.c:987
+#: src/xfdesktop-file-utils.c:998
 #, c-format
 msgid "Unable to create new file \"%1$s\" from template file \"%2$s\": %3$s"
 msgstr "לא ניתן ליצור קובץ חדש \"%1$s\" מקובץ תבנית \"%2$s\":%3$s"
 
-#: src/xfdesktop-file-utils.c:993 src/xfdesktop-file-utils.c:1107
-#: src/xfdesktop-file-utils.c:1203
+#: src/xfdesktop-file-utils.c:1004 src/xfdesktop-file-utils.c:1118
+#: src/xfdesktop-file-utils.c:1214
 msgid "Create File Error"
 msgstr "שגיאת יצירת קובץ"
 
-#: src/xfdesktop-file-utils.c:995 src/xfdesktop-file-utils.c:1269
+#: src/xfdesktop-file-utils.c:1006 src/xfdesktop-file-utils.c:1280
 msgid "Could not create a new file"
 msgstr "לא היתה אפשרות ליצור קובץ חדש"
 
-#: src/xfdesktop-file-utils.c:1008
+#: src/xfdesktop-file-utils.c:1019
 msgid "New Empty File"
 msgstr "קובץ ריק חדש"
 
-#: src/xfdesktop-file-utils.c:1103
+#: src/xfdesktop-file-utils.c:1114
 #, c-format
 msgid "Unable to create new folder \"%1$s\": %2$s"
 msgstr "לא ניתן ליצור תיקיה חדשה \"%1$s\":%2$s"
 
-#: src/xfdesktop-file-utils.c:1109 src/xfdesktop-file-utils.c:1302
+#: src/xfdesktop-file-utils.c:1120 src/xfdesktop-file-utils.c:1313
 msgid "Could not create a new folder"
 msgstr "לא ניתן ליצור תיקיה חדשה"
 
-#: src/xfdesktop-file-utils.c:1143
+#: src/xfdesktop-file-utils.c:1154
 msgid "C_reate"
 msgstr "_צור"
 
-#: src/xfdesktop-file-utils.c:1201
+#: src/xfdesktop-file-utils.c:1212
 #, c-format
 msgid "Cannot convert filename \"%s\" to the local encoding"
 msgstr "לא ניתן להמיר את שם הקובץ \"%s\" לקידוד הנוכחי"
 
-#: src/xfdesktop-file-utils.c:1263
+#: src/xfdesktop-file-utils.c:1274
 #, c-format
 msgid "Create Document from template \"%s\""
 msgstr "צור מסמך מתוך תבנית \"%s\""
 
-#: src/xfdesktop-file-utils.c:1266 src/xfdesktop-file-utils.c:1299
+#: src/xfdesktop-file-utils.c:1277 src/xfdesktop-file-utils.c:1310
 msgid "Enter the name:"
 msgstr "הכנס את השם:"
 
-#: src/xfdesktop-file-utils.c:1291
+#: src/xfdesktop-file-utils.c:1302
 msgid "New Folder"
 msgstr "תיקייה חדשה"
 
-#: src/xfdesktop-file-utils.c:1297
+#: src/xfdesktop-file-utils.c:1308
 msgid "Create New Folder"
 msgstr "צור תיקייה חדשה"
 
-#: src/xfdesktop-file-utils.c:1393
+#: src/xfdesktop-file-utils.c:1404
 msgid "File Properties Error"
 msgstr "שגיאת מאפייני קובץ"
 
-#: src/xfdesktop-file-utils.c:1394
+#: src/xfdesktop-file-utils.c:1405
 msgid "The file properties dialog could not be opened"
 msgstr "לא היתה אפשרות לפתוח דו שיח מאפייני קובץ"
 
-#: src/xfdesktop-file-utils.c:1455
+#: src/xfdesktop-file-utils.c:1466
 msgid "The file could not be opened"
 msgstr "לא היתה אפשרות לפתוח את הקובץ"
 
-#: src/xfdesktop-file-utils.c:1476 src/xfdesktop-file-utils.c:1583
+#: src/xfdesktop-file-utils.c:1487 src/xfdesktop-file-utils.c:1594
 #, c-format
 msgid "Failed to run \"%s\""
 msgstr "נכשל להריץ את \"%s\""
 
-#: src/xfdesktop-file-utils.c:1651
+#: src/xfdesktop-file-utils.c:1662
 msgid "The application chooser could not be opened"
 msgstr "לא היתה אפשרות לפתוח בורר יישומים"
 
-#: src/xfdesktop-file-utils.c:1722 src/xfdesktop-file-utils.c:1791
+#: src/xfdesktop-file-utils.c:1733 src/xfdesktop-file-utils.c:1802
 msgid "Transfer Error"
 msgstr "שגיאת העברה"
 
-#: src/xfdesktop-file-utils.c:1723 src/xfdesktop-file-utils.c:1792
+#: src/xfdesktop-file-utils.c:1734 src/xfdesktop-file-utils.c:1803
 msgid "The file transfer could not be performed"
 msgstr "לא היתה אפשרות לבצע העברת קובץ"
 
@@ -1196,30 +1288,26 @@ msgid ""
 "Last modified: %s"
 msgstr "שם: %s\nסוג: %s\nגודל: %s\nהשינוי האחרון: %s"
 
-#: src/xfdesktop-special-file-icon.c:254
+#: src/xfdesktop-special-file-icon.c:258
 msgid "Trash is empty"
 msgstr "האשפה ריקה"
 
-#: src/xfdesktop-special-file-icon.c:257
+#: src/xfdesktop-special-file-icon.c:261
 msgid "Trash contains one item"
 msgstr "האשפה מכילה פריט אחד"
 
-#: src/xfdesktop-special-file-icon.c:258
+#: src/xfdesktop-special-file-icon.c:262
 #, c-format
 msgid "Trash contains %d items"
 msgstr "האשפה מכילה %d פריטים"
 
-#: src/xfdesktop-special-file-icon.c:286
+#: src/xfdesktop-special-file-icon.c:290
 #, c-format
 msgid ""
 "%s\n"
 "Size: %s\n"
 "Last modified: %s"
 msgstr "%s\nגודל: %s\nשונה לאחרונה: %s"
-
-#: src/xfdesktop-special-file-icon.c:351
-msgid "_Empty Trash"
-msgstr "_רוקן אשפה"
 
 #: src/xfdesktop-volume-icon.c:334
 msgid "(not mounted)"
