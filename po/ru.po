@@ -46,23 +46,23 @@ msgstr "_Обновить"
 
 #: common/xfdesktop-keyboard-shortcuts.c:78
 msgid "Activate _Primary Menu"
-msgstr ""
+msgstr "Активировать главное мен_ю"
 
 #: common/xfdesktop-keyboard-shortcuts.c:80
 msgid "Activate _Secondary Menu"
-msgstr ""
+msgstr "Активировать _вторичное меню"
 
 #: common/xfdesktop-keyboard-shortcuts.c:82
 msgid "Cycle Next Background"
-msgstr ""
+msgstr "Циклировать следующий фон"
 
 #: common/xfdesktop-keyboard-shortcuts.c:88
 msgid "_Activate Icon"
-msgstr ""
+msgstr "_Активировать значок"
 
 #: common/xfdesktop-keyboard-shortcuts.c:93
 msgid "_Toggle Cursor Icon"
-msgstr ""
+msgstr "П_ереключить значок курсора"
 
 #: common/xfdesktop-keyboard-shortcuts.c:95
 msgid "Select _All"
@@ -74,7 +74,7 @@ msgstr "Сня_ть выбор со всех"
 
 #: common/xfdesktop-keyboard-shortcuts.c:97
 msgid "A_rrange Icons"
-msgstr "Упорядочить знач_ки"
+msgstr "Расставить знач_ки"
 
 #: common/xfdesktop-keyboard-shortcuts.c:101
 msgid "Un_minimize Window"
@@ -101,19 +101,19 @@ msgstr "_Открыть"
 
 #: common/xfdesktop-keyboard-shortcuts.c:110
 msgid "Ope_n With Other Application"
-msgstr ""
+msgstr "Откры_ть в другом приложении"
 
 #: common/xfdesktop-keyboard-shortcuts.c:111
 msgid "Open _Filesystem"
-msgstr ""
+msgstr "Открыть ф_айловую систему"
 
 #: common/xfdesktop-keyboard-shortcuts.c:112
 msgid "Open _Home"
-msgstr ""
+msgstr "Отк_рыть домашний каталог"
 
 #: common/xfdesktop-keyboard-shortcuts.c:113
 msgid "Open _Trash"
-msgstr ""
+msgstr "Открыть корзи_ну"
 
 #: common/xfdesktop-keyboard-shortcuts.c:114
 msgid "_Rename"
@@ -136,7 +136,7 @@ msgstr "Вст_авить"
 
 #: common/xfdesktop-keyboard-shortcuts.c:121
 msgid "Paste _Into Folder"
-msgstr ""
+msgstr "Вс_тавить в папку"
 
 #: common/xfdesktop-keyboard-shortcuts.c:122
 #: src/xfdesktop-file-icon-manager.c:2025
@@ -726,7 +726,7 @@ msgstr "Цвет _шрифта:"
 
 #: settings/xfdesktop-settings-ui.glade:941
 msgid "Label bac_kground color:"
-msgstr ""
+msgstr "Фоновый цвет яр_лыка:"
 
 #: settings/xfdesktop-settings-ui.glade:984
 msgid "<b>Appearance</b>"
@@ -734,15 +734,15 @@ msgstr "<b>Внешний вид</b>"
 
 #: settings/xfdesktop-settings-ui.glade:1019
 msgid "Placement _direction:"
-msgstr ""
+msgstr "Напра_вление размещения:"
 
 #: settings/xfdesktop-settings-ui.glade:1059
 msgid "Show icons only on _primary display"
-msgstr ""
+msgstr "Показывать _значки только на главном экране"
 
 #: settings/xfdesktop-settings-ui.glade:1074
 msgid "Single click to _activate items"
-msgstr ""
+msgstr "Единичный щелчок для актива_ции элементов"
 
 #: settings/xfdesktop-settings-ui.glade:1090
 msgid "_Underline text on hover"
@@ -750,7 +750,7 @@ msgstr "Подчё_ркивать текст при наведении курс�
 
 #: settings/xfdesktop-settings-ui.glade:1106
 msgid "Show confirmation dialog before arran_ging icons"
-msgstr ""
+msgstr "_Показывать диалог подтверждения перед расстановкой значков"
 
 #: settings/xfdesktop-settings-ui.glade:1127
 msgid "Behavior"
@@ -786,7 +786,7 @@ msgstr "Показать опцию \"Удалить\" в контекстном
 
 #: settings/xfdesktop-settings-ui.glade:1300
 msgid "_Arrange folders before files"
-msgstr ""
+msgstr "Упорядочить папки перед _файлами"
 
 #: settings/xfdesktop-settings-ui.glade:1321
 msgid "General"
@@ -922,7 +922,7 @@ msgstr "Невозможно запустить «exo-desktop-item-edit», ко�
 msgid ""
 "Would you like to assign an existing desktop icon layout to monitor "
 "<b>%s</b>?"
-msgstr ""
+msgstr "Хотите назначить существующий макет значков рабочего стола для монитора <b>%s</b>?"
 
 #: src/xfdesktop-file-icon-manager.c:1461
 msgid "Monitors"
@@ -1011,11 +1011,11 @@ msgstr "_Свойства..."
 #: src/xfdesktop-file-icon-manager.c:3116
 #, c-format
 msgid "Failed to save dropped file to '%s'"
-msgstr ""
+msgstr "Не удалось сохранить вставленный файл в «%s»"
 
 #: src/xfdesktop-file-icon-manager.c:3118
 msgid "Drop Failure"
-msgstr ""
+msgstr "Ошибка вставки"
 
 #: src/xfdesktop-file-icon-manager.c:3122
 #: src/xfdesktop-icon-view-manager.c:492
@@ -1149,7 +1149,7 @@ msgstr "Невозможно очистить корзину"
 #: src/xfdesktop-file-utils.c:998
 #, c-format
 msgid "Unable to create new file \"%1$s\" from template file \"%2$s\": %3$s"
-msgstr ""
+msgstr "Не удаётся создать новый файл «%1$s» из файла шаблона «%2$s»: %3$s"
 
 #: src/xfdesktop-file-utils.c:1004 src/xfdesktop-file-utils.c:1118
 #: src/xfdesktop-file-utils.c:1214
@@ -1167,7 +1167,7 @@ msgstr "Новый файл"
 #: src/xfdesktop-file-utils.c:1114
 #, c-format
 msgid "Unable to create new folder \"%1$s\": %2$s"
-msgstr ""
+msgstr "Не удаётся создать новую папку «%1$s»: %2$s"
 
 #: src/xfdesktop-file-utils.c:1120 src/xfdesktop-file-utils.c:1313
 msgid "Could not create a new folder"
@@ -1380,7 +1380,7 @@ msgstr "_Блокировать том"
 
 #: src/xfdesktop-volume-icon.c:792
 msgid "_Eject Volume"
-msgstr ""
+msgstr "Гром_кость извелечения"
 
 #: src/xfdesktop-volume-icon.c:801
 msgid "_Unmount Volume"
@@ -1392,4 +1392,4 @@ msgstr "_Подключить том"
 
 #: src/xfdesktop-window-icon-manager.c:296
 msgid "_Run Program..."
-msgstr ""
+msgstr "Выполнить _программу…"
