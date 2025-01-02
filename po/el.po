@@ -9,7 +9,7 @@
 # Efstathios Iosifidis <iefstathios@gmail.com>, 2015,2018
 # Efstathios Iosifidis <iosifidis@opensuse.org>, 2012
 # Ioannis LM, 2018,2022
-# Ioannis LM, 2018,2022-2024
+# Ioannis LM, 2018,2022-2025
 # Michales Michaloudes, 2024
 # Stathis Kamperis <ekamperi@auth.gr>, 2006
 # Stavros Giannouris <stavrosg@hellug.gr>, 2008
@@ -21,7 +21,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2024-12-12 00:52+0100\n"
 "PO-Revision-Date: 2013-07-02 20:50+0000\n"
-"Last-Translator: Ioannis LM, 2018,2022-2024\n"
+"Last-Translator: Ioannis LM, 2018,2022-2025\n"
 "Language-Team: Greek (http://app.transifex.com/xfce/xfdesktop/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -90,7 +90,7 @@ msgstr "Άνοι_γμα"
 
 #: common/xfdesktop-keyboard-shortcuts.c:110
 msgid "Ope_n With Other Application"
-msgstr "Άνοιγμα με άλλη εφ_αρμογή..."
+msgstr "Άνοιγμα με άλλη εφ_αρμογή"
 
 #: common/xfdesktop-keyboard-shortcuts.c:111
 msgid "Open _Filesystem"
@@ -218,7 +218,7 @@ msgstr "<b>%s</b>\nΤύπος: %s\nΜέγεθος: %s"
 #: settings/xfdesktop-background-settings.c:573
 #, c-format
 msgid "Unable to load images from folder \"%s\""
-msgstr "Αδυναμία φόρτωσης εικόνων από τον φάκελο \"%s\""
+msgstr "Αδυναμία φόρτωσης εικόνων από το φάκελο \"%s\""
 
 #: settings/xfdesktop-background-settings.c:666
 #, c-format
@@ -663,7 +663,7 @@ msgstr "Εμφάνιση συ_γκόλλησης παραθύρων μόνο σ�
 
 #: settings/xfdesktop-settings-ui.glade:662
 msgid "Show a section listing all _urgent windows on other workspaces"
-msgstr "Δείξε μία λίστα τομέα με όλα τα ε_πείγοντα παράθυρα σε όλους τους χώρους εργασίας"
+msgstr "Εμφάνιση όλων των επειγόντων παραθύρων σε άλλους _χώρους εργασίας"
 
 #: settings/xfdesktop-settings-ui.glade:678
 msgid "Show a_dd and remove workspace options in list"
@@ -1039,7 +1039,7 @@ msgstr "Απέτυχε το άνοιγμα του φακέλου της επιφ
 
 #: src/xfdesktop-file-icon-manager.c:3664
 msgid "A desktop file icon error occurred"
-msgstr ""
+msgstr "Σφάλμα στο εικονίδιο αρχείου της επιφάνειας εργασίας"
 
 #: src/xfdesktop-file-icon-manager.c:3668
 msgid "Desktop Folder Error"
@@ -1138,7 +1138,7 @@ msgstr "Δεν μπόρεσε να αδειάσει ο κάδος απορριμ
 #: src/xfdesktop-file-utils.c:998
 #, c-format
 msgid "Unable to create new file \"%1$s\" from template file \"%2$s\": %3$s"
-msgstr ""
+msgstr "Αδυναμία δημιουργίας του νέου αρχείου \"%1$s\" από το πρότυπο \"%2$s\": %3$s"
 
 #: src/xfdesktop-file-utils.c:1004 src/xfdesktop-file-utils.c:1118
 #: src/xfdesktop-file-utils.c:1214
@@ -1381,4 +1381,4 @@ msgstr "Προ_σάρτηση τόμου"
 
 #: src/xfdesktop-window-icon-manager.c:296
 msgid "_Run Program..."
-msgstr ""
+msgstr "Εκτέλεση _προγράμματος..."
