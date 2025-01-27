@@ -1445,7 +1445,7 @@ create_icon_view(XfdesktopFileIconManager *fmanager, XfceDesktop *desktop) {
     if (mdata->position_config == NULL) {
         g_assert(candidates != NULL);
 
-        GtkBuilder *builder = gtk_builder_new_from_resource("/org/xfce/xfdesktop/monitor-candidates-chooser.glade");
+        GtkBuilder *builder = gtk_builder_new_from_resource("/org/xfce/xfdesktop/settings/xfdesktop-monitor-chooser-ui.glade");
         g_assert(builder != NULL);
 
         GtkWidget *dialog = GTK_WIDGET(gtk_builder_get_object(builder, "monitor_candidates_chooser"));
