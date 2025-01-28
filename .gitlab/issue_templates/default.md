@@ -32,7 +32,7 @@ Often it isn't clear: what did you expect to happen that didn't happen?
 
 <!--
 Please list the values of any settings that may be relevant to the
-issue.  Include any relevant logs our console output.  If this is a
+issue.  Include any relevant logs or console output.  If this is a
 build problem, paste your build output, including all commands you used
 to run the build.  If a screenshot or screencast video may be helpful,
 attach it here.
