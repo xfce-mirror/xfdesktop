@@ -32,6 +32,7 @@
 
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4ui/libxfce4ui.h>
+#include <libxfce4windowing/libxfce4windowing.h>
 
 #include "xfdesktop-application.h"
 
@@ -59,7 +60,11 @@ main(int argc, char **argv)
 #endif
 
     app = xfdesktop_application_get();
-    g_application_add_option_group(G_APPLICATION(app), xfce_sm_client_get_option_group(argc, argv));
+#ifdef ENABLE_X11
+    if (xfw_windowing_get() == XFW_WINDOWING_X11) {
+        g_application_add_option_group(G_APPLICATION(app), xfce_sm_client_get_option_group(argc, argv));
+    }
+#endif
 
     ret = g_application_run(G_APPLICATION(app), argc, argv);
 
