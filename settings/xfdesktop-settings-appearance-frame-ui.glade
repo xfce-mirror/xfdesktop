@@ -130,20 +130,6 @@
         <property name="row-spacing">6</property>
         <property name="column-spacing">12</property>
         <child>
-          <object class="GtkFileChooserButton" id="btn_folder">
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
-            <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-            <property name="tooltip-text" translatable="yes">Choose the folder to select wallpapers from.</property>
-            <property name="hexpand">True</property>
-            <property name="action">select-folder</property>
-          </object>
-          <packing>
-            <property name="left-attach">1</property>
-            <property name="top-attach">0</property>
-          </packing>
-        </child>
-        <child>
           <object class="GtkButton" id="btn_folder_apply">
             <property name="label" translatable="yes">Apply</property>
             <property name="can-focus">True</property>
@@ -262,7 +248,6 @@
             <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
             <property name="label" translatable="yes">_Folder:</property>
             <property name="use-underline">True</property>
-            <property name="mnemonic-widget">btn_folder</property>
             <property name="xalign">0</property>
           </object>
           <packing>
@@ -283,6 +268,20 @@
           <packing>
             <property name="left-attach">0</property>
             <property name="top-attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox" id="box_btn_folder">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="orientation">vertical</property>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="left-attach">1</property>
+            <property name="top-attach">0</property>
           </packing>
         </child>
         <child>

@@ -69,6 +69,8 @@ struct _XfdesktopBackgroundSettings {
     GtkWidget *infobar_label;
     GtkWidget *label_header;
     GtkWidget *image_iconview;
+    GtkWidget *box_btn_folder;
+    GtkWidget *label_folder;
     GtkWidget *btn_folder;
     GtkWidget *btn_folder_apply;
     GtkWidget *chk_apply_to_all;
@@ -131,7 +133,7 @@ static gchar *xfdesktop_settings_get_backdrop_image(XfdesktopBackgroundSettings 
 static void cb_xfdesktop_chk_apply_to_all(GtkCheckButton *button,
                                           XfdesktopBackgroundSettings *background_settings);
 
-
+static gboolean update_icon_view_model(XfdesktopBackgroundSettings *background_settings);
 
 static gboolean
 path_has_image_files(GFile *dir) {
@@ -207,6 +209,32 @@ find_background_directories(void) {
     g_object_unref(default_background);
 
     return directories;
+}
+
+static void
+cb_folder_selection_changed(GtkWidget *button, XfdesktopBackgroundSettings *background_settings) {
+    update_icon_view_model(background_settings);
+}
+
+static void
+create_file_chooser_button(XfdesktopBackgroundSettings *background_settings) {
+    if (background_settings->btn_folder != NULL) {
+        gtk_widget_destroy(background_settings->btn_folder);
+    }
+
+    background_settings->btn_folder = g_object_new(GTK_TYPE_FILE_CHOOSER_BUTTON,
+                                                   "tooltip-text", _("Choose the folder to select wallpapers from."),
+                                                   "action", GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER,
+                                                   "hexpand", TRUE,
+                                                   "can-focus", TRUE,
+                                                   NULL);
+    gtk_widget_show(background_settings->btn_folder);
+    gtk_container_add(GTK_CONTAINER(background_settings->box_btn_folder), background_settings->btn_folder);
+
+    g_signal_connect(G_OBJECT(background_settings->btn_folder), "selection-changed",
+                     G_CALLBACK(cb_folder_selection_changed), background_settings);
+
+    gtk_label_set_mnemonic_widget(GTK_LABEL(background_settings->label_folder), background_settings->btn_folder);
 }
 
 static void
@@ -997,11 +1025,6 @@ update_icon_view_model(XfdesktopBackgroundSettings *background_settings) {
 }
 
 static void
-cb_folder_selection_changed(GtkWidget *button, XfdesktopBackgroundSettings *background_settings) {
-    update_icon_view_model(background_settings);
-}
-
-static void
 cb_folder_apply_clicked(GtkWidget *button, XfdesktopBackgroundSettings *background_settings) {
     GList *selected = gtk_icon_view_get_selected_items(GTK_ICON_VIEW(background_settings->image_iconview));
     if (G_LIKELY(selected == NULL)) {
@@ -1092,6 +1115,7 @@ xfdesktop_settings_update_iconview_folder(XfdesktopBackgroundSettings *backgroun
 
     XF_DEBUG("current_folder %s, dirname %s", current_folder, dirname);
 
+    create_file_chooser_button(background_settings);
     gtk_file_chooser_set_current_folder((GtkFileChooser*)background_settings->btn_folder, dirname);
 
     /* Workaround for a bug in GTK */
@@ -1844,10 +1868,14 @@ xfdesktop_background_settings_init(XfdesktopSettings *settings) {
     background_settings->image_iconview = GTK_WIDGET(gtk_builder_get_object(appearance_gxml, "iconview_imagelist"));
     xfdesktop_settings_setup_image_iconview(background_settings);
 
-    /* folder: file chooser button */
-    background_settings->btn_folder = GTK_WIDGET(gtk_builder_get_object(appearance_gxml, "btn_folder"));
-    g_signal_connect(G_OBJECT(background_settings->btn_folder), "selection-changed",
-                     G_CALLBACK(cb_folder_selection_changed), background_settings);
+    // We create the file chooser button manually because GTK has a weird bug that makes
+    // it so if the user sets a folder on the button, we can't change it programmatially
+    // later (for instance, if they pick an inaccessible folder, we want to revert it to
+    // the previous folder).
+    background_settings->label_folder = GTK_WIDGET(gtk_builder_get_object(appearance_gxml, "label_folder"));
+    background_settings->box_btn_folder = GTK_WIDGET(gtk_builder_get_object(appearance_gxml, "box_btn_folder"));
+    create_file_chooser_button(background_settings);
+
     background_settings->btn_folder_apply = GTK_WIDGET(gtk_builder_get_object(appearance_gxml, "btn_folder_apply"));
     g_signal_connect(G_OBJECT(background_settings->btn_folder_apply), "clicked",
                      G_CALLBACK(cb_folder_apply_clicked), background_settings);
